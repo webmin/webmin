@@ -29,6 +29,10 @@ while(<PKGINFO>) {
 			$packages{$i,'name'} = $1;
 			$packages{$i,'arch'} = $2;
 			}
+		if ($packages{$i,'desc'} =~ /^(all|amd64|x86|arm)\s+(\S.*)/) {
+			$packages{$i,'arch'} = $1;
+			$packages{$i,'desc'} = $2;
+			}
 		$i++;
 		}
 	}
@@ -71,7 +75,7 @@ else {
 	}
 return () if ($? || $out =~ /Package .* is not available/i);
 local @rv = ( $_[0], &alphabet_name($_[0]) );
-push(@rv, $out =~ /Description:\s+([\0-\177]*\S)/i ? $1
+push(@rv, $out =~ /Description(-en)?:\s+((.*\n)(\s+.*\n)*)/i ? $2
 						   : $text{'debian_unknown'});
 push(@rv, $out =~ /Architecture:\s+(\S+)/i ? $1 : $text{'debian_unknown'});
 push(@rv, $out =~ /Version:\s+(\S+)/i ? $1 : $text{'debian_unknown'});

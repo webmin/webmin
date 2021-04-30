@@ -1,0 +1,152 @@
+index_title=خادم PPTP VPN
+index_version=إصدار PoPToP$1
+index_epptpd=لم يتم العثور على ملقم PoPToP PPTP $1 على نظامك ، أو أنه ليس البرنامج الصحيح. ربما لم يتم تثبيته أو أن <a href='$2'>تهيئة الوحدة النمطية</a> غير صحيحة.
+index_econfig=لم يتم العثور على ملف تكوين ملقم PPTP $1 على نظامك. ربما <a href='$2'>تهيئة الوحدة النمطية</a> غير صحيحة.
+index_stop=إيقاف خادم PPTP
+index_stopdesc=انقر فوق هذا الزر لإيقاف تشغيل خادم PPTP الجاري تشغيله ، حتى لا يتم قبول أي اتصالات جديدة. على الرغم من ذلك ، ستظل اتصالات VPN الحالية نشطة.
+index_start=قم بتشغيل خادم PPTP
+index_startdesc=انقر فوق هذا الزر لبدء عملية خادم PPTP بحيث يمكنه تلقي اتصالات VPN من العملاء.
+index_apply=تطبيق التكوين
+index_applydesc=انقر فوق هذا الزر لتطبيق خيارات خادم PPTP الحالية عن طريق إيقاف عملية خادم PPTP وإعادة تشغيلها. سيتم دائمًا تطبيق التغييرات على خيارات PPP وحسابات PPP على أي اتصالات جديدة
+index_return=مؤشر الوحدة
+index_epppd=برنامج ملقم PPP $1 غير مثبت على نظامك. يعتمد PPTP عليه للعمل.
+
+conf_title=خيارات خادم PPTP
+conf_ecannot=لا يسمح لك بتحرير خيارات خادم PPTP
+conf_header=تكوين خادم PPTP
+conf_speed=معدل الباود PPP
+conf_baud=بت في الثانية
+conf_listen=استمع على العنوان
+conf_all=جميع العناوين
+conf_localip=عناوين IP لنهاية الاتصال بالخادم
+conf_remoteip=عناوين IP لتخصيصها للعملاء
+conf_ipxnets=شبكات IPX للتخصيص
+conf_from=من عند
+conf_to=إلى
+conf_option=ملف خيارات PPP
+conf_mode0=الاعدادات العامة
+conf_mode1=الإعدادات الخاصة بـ PPTP
+conf_mode2=ملف مخصص
+conf_ipdesc=يمكن إدخال عنوان IP في كلا النطاقين بشكل فردي (مثل 192.168.1.1) أو كنطاقات (مثل 192.168.2.32-64)
+conf_err=فشل في حفظ خيارات الخادم
+conf_espeed=معدل الباود مفقود أو غير صالح
+conf_elisten=عنوان مفقود أو غير صالح للاستماع إليه
+conf_eoption=ملف خيارات PPP مخصص مفقود أو غير صالح
+conf_elocalip=إن '$1' ليس نطاق أو نطاق IP محلي صالح
+conf_eremoteip=إن '$1' ليس نطاق أو عنوان IP عن بعد صالحًا
+conf_efrom=شبكة IPX مفقودة أو غير صالحة من العنوان
+conf_eto=شبكة IPX مفقودة أو غير صالحة للتصدي لها
+
+options_title=خيارات PPP
+options_ecannot=لا يسمح لك بتحرير خيارات PPP
+options_desc0=تنطبق خيارات PPP أدناه من$1 على كافة الاتصالات الواردة التي يتلقاها نظامك ، بما في ذلك تلك الخاصة بأجهزة مودم الطلب الهاتفي.
+options_desc1=تنطبق خيارات PPP أدناه من$1 فقط على كافة اتصالات PPTP.
+options_desc2=سيتم استخدامها من قبل أي اتصالات جديدة تم إنشاؤها بعد حفظ هذا النموذج.
+options_header=خيارات اتصال PPP
+options_proxyarp=إنشاء إدخال ARP الوكيل؟
+options_lock=قفل ملف جهاز PTY؟
+options_auth=هل تريد المصادقة؟
+options_auth0=لا ، ولكن منع عناوين IP الموجهة
+options_auth1=أبدا
+options_auth2=دائما
+options_login=أيضا هل مصادقة يونكس؟
+options_pap=مصادقة PAP
+options_chap=مصادقة CHAP
+options_req=لابد من استخدامه
+options_all=يمكن استخدامها
+options_ref=لا يمكن استخدامها
+options_name=اسم الخادم للمصادقة
+options_hn=اسم المضيف الحقيقي
+options_mtu=الحد الأقصى لحجم حزمة الإرسال
+options_mru=أقصى حجم لحزمة الاستقبال
+options_err=فشل حفظ خيارات PPP
+options_emtu=الحد الأقصى لحجم حزمة الإرسال مفقود أو غير صالح
+options_emru=حجم حزمة الاستلام الأقصى مفقود أو غير صالح
+options_ename=اسم خادم مفقود أو غير صالح للمصادقة
+options_version=إصدار PPPd$1
+options_msdesc=تعمل الخيارات أدناه على تمكين طريقة مصادقة MS-CHAP وتشفير MPPE ، ويتم استخدامها افتراضيًا من قبل عملاء Windows VPN. ومع ذلك ، يتطلب MPPE دعمًا في كل من البرنامج الخفي PPP و kernel لنظام التشغيل.
+options_mschap=مصادقة MS-CHAP
+options_mschap-v2=مصادقة الإصدار 2 من MS-CHAP
+options_chapms=مصادقة MS-CHAP
+options_chapms-v2=مصادقة الإصدار 2 من MS-CHAP
+
+secrets_title=حسابات PPP
+secrets_ecannot=لا يسمح لك بتحرير حسابات PPP
+secrets_return=فهرس
+secrets_none=لم يتم إنشاء حسابات PPP حتى الآن.
+secrets_enopfile=ملف كلمات مرور PPP $1 غير موجود على نظامك. ربما لم يتم تثبيت PPP ، أو أن <a href='$2'>تكوين الوحدة النمطية</a> الخاص بك غير صحيح.
+secrets_table=حسابات PPP لـ$1
+secrets_user=اسم المستخدم
+secrets_ips=عناوين الانترنت بروتوكول
+secrets_uany=أي
+secrets_sany=أي
+secrets_create=إنشاء حساب PPP جديد.
+secrets_desc=حسابات PPP المدرجة في هذه الصفحة مأخوذة من الملف$1 ، المستخدم لمصادقة$3. تظهر فقط تلك الخاصة بخادمك$2 ، وليست حسابات لإجراء اتصالات صادرة.
+secrets_delete=حذف حسابات PPP المحددة
+
+edit_secret_etitle=تحرير حساب PPP
+edit_secret_ctitle=إنشاء حساب PPP
+edit_secret_acc=حساب PPP
+edit_secret_user=اسم المستخدم
+edit_secret_serv=الخادم
+edit_secret_sany=أي
+edit_secret_uany=أي
+edit_secret_pass=كلمه السر
+edit_secret_none=لا يوجد
+edit_secret_ffile=من - الملف
+edit_secret_leave=اتركه دون تغيير
+edit_secret_setto=ضبط ل
+edit_secret_vaddr=عناوين صالحة
+edit_secret_aany=السماح بأي
+edit_secret_anone=لا تسمح بأي شيء
+edit_secret_alist=القائمه المتاحه ..
+edit_secret_save=حفظ
+edit_secret_del=حذف
+edit_secret_return=قائمة الحسابات
+
+save_secret_esave=فشل في حفظ الحساب
+save_secret_enoip=إن '$1' ليس عنوانًا صالحًا
+
+stop_err=فشل إيقاف خادم PPTP
+stop_egone=لم يعد يعمل
+stop_ecannot=لا يسمح لك بإيقاف خادم PPTP
+
+start_err=فشل بدء تشغيل خادم PPTP
+start_ecannot=غير مسموح لك ببدء تشغيل خادم PPTP
+
+apply_err=فشل إعادة تشغيل خادم PPTP
+apply_ecannot=غير مسموح لك بإعادة تشغيل خادم PPTP
+
+conns_title=اتصالات نشطة
+conns_ecannot=لا يسمح لك بإدارة الاتصالات النشطة
+conns_desc=تسرد هذه الصفحة اتصالات PPTP النشطة حاليًا بالخادم. لفصل واحد بالقوة ، انقر فوق اسم واجهته.
+conns_iface=واجهة PPP
+conns_client=عنوان العميل
+conns_stime=متصل منذ ذلك الحين
+conns_local=عنوان VPN للخادم
+conns_remote=عنوان VPN الخاص بالعميل
+conns_none=يبدو أنه لا توجد اتصالات PPTP نشطة في هذا الوقت.
+conns_unknown=مجهول
+conns_user=اسم المستخدم
+
+disc_err=فشل قطع الاتصال
+disc_egone=الاتصالات لم تعد نشطة
+disc_ekill=لم تعد العملية قيد التشغيل
+
+log_secret_create=إنشاء حساب PPP$1
+log_secret_modify=حساب PPP المعدل$1
+log_secret_delete=حساب PPP المحذوف$1
+log_deletes=تم حذف$1 حسابات PPP
+log_conf=خيارات خادم PPTP المعدلة
+log_options=خيارات PPP المعدلة
+log_disc=عميل غير متصل$1
+log_start=بدء خادم PPTP
+log_stop=توقف خادم PPTP
+log_apply=تكوين خادم PPTP التطبيقي
+
+acl_conf=يمكن تحرير التكوين؟
+acl_options=يمكن تحرير الخيارات؟
+acl_secrets=يمكن إدارة حسابات PPTP؟
+acl_conns=يمكن عرض الاتصالات؟
+acl_stop=يمكن إيقاف وبدء خادم PPTP؟
+acl_apply=يمكن تطبيق التكوين؟

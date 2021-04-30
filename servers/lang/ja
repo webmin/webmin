@@ -1,0 +1,152 @@
+index_title=Webmin サーバ
+index_edit=編集
+index_noservers=登録されているサーバはありません。
+index_add=新規のサーバを登録
+index_broad=サーバのブロードキャスト
+index_findmsg=ご使用のローカル ネットワークの Webmin サーバ バージョン 0.75 以降を自動的に検索するには、このボタンをクリックしてください。
+index_scan=サーバのスキャン
+index_scanmsg=ネットワーク $1 で Webmin サーバのバージョン 0.75 以降の各アドレスを調べるには、このボタンをクリックしてください。
+index_return=Webmin サーバ
+index_host=Hostname and port
+index_desc=Description
+index_os=Server type
+index_group=Group
+index_none=登録されたサーバはありません。
+index_logout=logout
+index_defuser=デフォルトログインユーザ
+index_defpass=デフォルトパスワード
+index_defport=Webmin ポート
+index_delete=選択したサーバを削除
+index_auto=自動的にサーバを検索
+index_automsg=ボタンをクリックすると、自動的に新しいWebminサーバをネットワーク上での定期的に検索する設定をします。
+
+edit_title=サーバの編集
+create_title=サーバの登録
+edit_details=サーバの詳細
+edit_host=ホスト名
+edit_realhost=Real hostname
+edit_port=ポート
+edit_type=サーバの種類
+edit_ssl=SSL サーバですか?
+edit_link=リンクの種類
+edit_mode0=サーバへの標準リンク
+edit_mode1=Webmin 経由でログイン:
+edit_mode2=アイコンをクリックしたときにログイン
+edit_mode3=Login with username and password from this server
+edit_user=ユーザ名
+edit_luser=Username for remote server
+edit_lpass=Password for remote server
+edit_pass=パスワード
+edit_ecannot=サーバを編集できません
+edit_desc=説明文
+edit_desc_def=ホスト名とポートから生成
+edit_group=サーバグループのメンバ
+edit_none=なし
+edit_exists=既存グループ
+edit_new=新規グループ
+edit_fast=高速 RPC 呼び出しをしますか?
+edit_auto=自動的に決定
+edit_status=Server status
+edit_timeout=Timeout connecting
+edit_failed=Failed to connect
+edit_baduser=Login rejected
+edit_invalid=User cannot do RPC
+edit_version=Running Webmin $1
+edit_same=Only available not in session authentication mode, and when the password is made available to Webmin programs.
+
+save_err=サーバを保存できませんでした
+save_ehost=ホスト名がないか無効です
+save_ehost2=Host does not exist
+save_eport=ポートがないか無効です
+save_euser=ユーザ名がありません
+save_epass=パスワードがありません
+save_egroup=Missing group name
+save_elogin=Invalid login or password to host
+save_egroup2=Invalid new group name
+
+find_title=サーバの検索
+find_new=新規のサーバが $1 として見つかりました
+find_but=Found new server at $1, but authentication failed : $2
+find_already=既知のサーバが $1 として見つかりました
+find_skip=Ignoring server at $1
+find_me=このサーバが $1 として見つかりました
+find_escan=スキャンするネットワークはクラス C ネットワーク アドレスである必要があります。
+find_eiface=Could not find interface to scan
+find_none=スキャンに応答するサーバがありません。
+find_ecannot=サーバを検索できません
+find_scanning=サーバを $1 のネットワークでスキャン中 ..
+find_broading=サーバを $1 のアドレスでブロードキャスト中 ..
+find_eport=Missing or invalid port number
+
+log_modify=サーバ $1 を変更しました
+log_create=サーバ $1 を登録しました
+log_delete=サーバ $1 を削除しました
+log_find=サーバ $1 を見つけました
+log_deletes=Deleted $1 servers
+
+link_elogin=$1 に $2 としてログインできませんでした
+link_ecannot=このサーバは使用できません
+link_essl=perl Net::SSLeay ライブラリがインストールされていません
+link_eautologin=Invalid login or password for $1. <a href='$2'>Click here</a> to try again.
+
+lib_other=その他
+
+acl_edit=サーバを編集可能
+acl_find=サーバを検索可能
+acl_servers=サーバを使用可能
+acl_sall=すべてのサーバ
+acl_ssel=選択..
+acl_auto=Can setup automatic detection of servers?
+acl_add=Can register new servers?
+acl_forcefast=Force fast RPC mode to default?
+acl_forcetype=Force OS type to default?
+acl_forcelink=Force login type to default?
+acl_links=Can connect through to servers?
+
+login_title=Login to Server
+login_desc=You must supply a username and password to login to the Webmin server $1.
+login_header=Webmin authentication
+login_user=Username
+login_pass=Password
+login_login=Login
+login_esame=The option to use the same login as this server can only be used when not in session authentication mode, and when the password is made available to Webmin programs.
+
+this_server=this server
+
+delete_err=Failed to delete servers
+delete_enone=None selected
+delete_ecannot=You are not allowed to delete servers
+
+auto_title=サーバの自動探索
+auto_header=サーバ自動登録オプション
+auto_sched=新しいサーバをチェックしますか?
+auto_sched1=はい、$1 分ごとに
+auto_net=IP ネットワークをスキャン
+auto_auto=ローカルネットワーク
+auto_ip=IP ネットワーク $1
+auto_iface=インターフェイスのネットワーク $1
+auto_user=新しいサーバのユーザ名
+auto_pass=新しいサーバのパスワード
+auto_type=デフォルトのシステム
+auto_err=自動探索設定の保存に失敗しました
+auto_emins=Missing or invalid number of minutes
+auto_enet=Missing or invalid network address
+auto_eiface=Missing or invalid network interface
+auto_euser=ユーザ名がありません
+auto_cluster-software=Add to Cluster Software Packages?
+auto_remove=登録されたサーバが見つからなかったら削除しますか?
+auto_email=メール通知の送り先
+auto_none=送信しない
+auto_eemail=Missing email address for notifications
+auto_smtp=SMTP サーバ経由で送信
+auto_self=このサーバ
+auto_esmtp=Missing or invalid SMTP server
+auto_findself=このサーバも登録しますか?
+
+config_deftype=Default system type
+config_typeauto=システム自動決定
+
+email_regsubject=System $1 registered
+email_reg=The system $1 has been automatically registered.
+email_unregsubject=System $1 un-registered
+email_unreg=The system $1 has been automatically un-registered.

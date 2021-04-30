@@ -1,0 +1,8 @@
+index_title=SSH لاگ ان
+index_warn=Warning! This telnet session is <b>not</b> encrypted.
+index_nojava=اس ماڈیول میں جاوا کو کام کرنے کی ضرورت ہے ، لیکن آپ کا براؤزر جاوا کو سپورٹ نہیں کرتا ہے
+index_credits=Applet developed under GPL by <a href='$1' target=_top>Matthias L. Jugel &amp; Marcus Mei�ner</a>.
+index_sshcredits=Includes software developed by the Cryptix Development Team (<a href=$1 target=_top>$1</a>).
+index_esocket=$1 پورٹ$2 پر کوئی ٹیل نیٹ سرور چل نہیں رہا ہے۔
+index_esocket2=$1 پورٹ$2 پر کوئی SSH سرور چل نہیں رہا ہے۔
+index_elookup=ٹیل نٹ یا ایس ایس ایچ سرور کی جانچ کرنے کے لئے$1 کیلئے IP ایڈریس تلاش کرنے میں ناکام۔

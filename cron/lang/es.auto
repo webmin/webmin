@@ -1,0 +1,45 @@
+index_none3=Aún no tienes ningún trabajo cron.
+index_manual=Edite manualmente trabajos cron.
+index_next=Próxima carrera
+index_nunknown=Desconocido
+index_ecrondir=El directorio de trabajos de Cron $1 no existe. ¿Quizás la configuración del módulo es incorrecta o Cron no está instalado?
+index_ecrondir_create=¿Intenta crear el directorio de trabajos $1 ?
+index_delete=Eliminar trabajos seleccionados
+index_disable=Deshabilitar trabajos seleccionados
+index_enable=Habilitar trabajos seleccionados
+index_esearch=Ningún trabajo coincide con su búsqueda de $1.
+index_toomany2=Hay demasiados trabajos para mostrar. Use el formulario de búsqueda anterior para limitar la lista.
+index_search=Encuentra trabajos de Cron que coincidan
+index_ok=Buscar
+index_searchres=Cron empleos que coinciden con $1 ..
+index_reset=Restablecer búsqueda.
+index_econfigcheck=Los trabajos Cron no se pueden administrar en su sistema, ya que la configuración del módulo no es válida : $1 
+
+edit_next=Próximo tiempo de ejecución
+edit_saverun=Guardar y ejecutar ahora
+edit_clone=Trabajo clon
+
+save_eidx=El trabajo de Cron se guardó correctamente, pero no se puede ejecutar porque no se encontró.
+
+acl_hourly=¿Limitar trabajos a lo más por hora?
+acl_hourlydef=Según lo establecido en la configuración del módulo
+
+log_crons_delete=Empleos eliminados de $1 Cron
+log_crons_disable=Deshabilitado $1 Cron empleos
+log_crons_enable=Habilitado $1 Cron trabajos
+
+when_interval=cada $1 segundos
+when_boot=en el momento del inicio
+
+ucwhen_interval=Cada $1 segundos
+ucwhen_boot=En el momento del inicio
+
+delete_err=Error al eliminar trabajos de Cron
+delete_enone=Ninguna seleccionada
+
+manual_title=Editar manualmente trabajos de Cron
+manual_edit=Cron archivo para editar:
+manual_ok=Editar
+manual_editing=Use el cuadro de texto a continuación para editar trabajos Cron en $1. ¡Tenga cuidado, ya que Webmin no realizará ninguna validación!
+manual_efile=¡El archivo seleccionado no es válido!
+manual_ecannot=No tiene permiso para editar manualmente trabajos cron

@@ -1,0 +1,40 @@
+index_add4=새로운 NFSv4 내보내기를 추가하십시오.
+index_delete=선택된 내보내기 삭제
+index_disable=선택된 비활성화
+index_enable=선택 사용
+
+edit_vers=NFS 버전
+edit_nfs_vers=NFS 버전
+edit_pfs=내보낼 NFSv4 의사 파일 시스템
+edit_network4=IPv4 네트워크
+edit_network6=IPv6 네트워크
+edit_address=주소
+edit_prefix=/
+edit_subtree_check=하위 트리 검사를 비활성화 하시겠습니까?
+edit_hide=파일 시스템을 숨기시겠습니까?
+edit_auth=(인증 유무에 관계없이)
+edit_secs=보안 수준
+edit_integrity=청렴
+edit_privacy=개인 정보 (무결성 포함)
+edit_v2opts=NFSv2 관련 옵션
+edit_sync=모든 쓰기를 즉시 동기화 하시겠습니까?
+edit_sync1=예
+edit_sync2=아니
+edit_sync0=기본
+edit_in=에
+edit_sec_sys=보안이 없음
+edit_sec_krb5=Kerberos 인증
+edit_sec_krb5i=Kerberos 무결성
+edit_sec_krb5p=Kerberos 프라이버시
+edit_sec_lipkey=립키
+edit_sec_spkm=SPKM
+
+save_epfs=의사 파일 시스템 경로 '$1'이 (가) 절대 경로처럼 보이지 않습니다
+save_pfs='$1'은 (는) 이미 디렉토리로 내보내졌습니다.
+save_create_dir='$1'디렉토리를 만들 수 없습니다
+save_eanonuid=잘못된 익명 액세스 사용자 이름
+save_eanongid=잘못된 익명 액세스 그룹 이름
+
+exports_gss=인증 된 네트워크 : $1 
+
+log_delete_exports=$1 NFS 내보내기 삭제

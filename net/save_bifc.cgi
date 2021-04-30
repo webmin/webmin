@@ -45,12 +45,12 @@ else {
 		$in{'virtual'} =~ /^\d+$/ ||
 			&error($text{'bifc_evirt'});
 		$in{'virtual'} >= $min_virtual_number ||
-			&error(&text('aifc_evirtmin', $min_virtual_number));
+			&error(&text('aifc_evirtmin', &html_escape($min_virtual_number)));
 		foreach $eb (@boot) {
 			if ($eb->{'name'} eq $in{'name'} &&
 			    $eb->{'virtual'} eq $in{'virtual'}) {
 				&error(&text('bifc_evirtdup',
-				       "$in{'name'}:$in{'virtual'}"));
+				       &html_escape("$in{'name'}:$in{'virtual'}")));
 				}
 			}
 		$b->{'name'} = $in{'name'};
@@ -65,11 +65,11 @@ else {
 		foreach $eb (@boot) {
 			if ($eb->{'name'} eq $2 &&
 			    $eb->{'virtual'} eq $4) {
-				&error(&text('bifc_evirtdup', $in{'name'}));
+				&error(&text('bifc_evirtdup', &html_escape($in{'name'})));
 				}
 			}
 		$4 >= $min_virtual_number ||
-			&error(&text('aifc_evirtmin', $min_virtual_number));
+			&error(&text('aifc_evirtmin', &html_escape($min_virtual_number)));
 		$b->{'name'} = $1;
 		$b->{'virtual'} = $4;
 		$b->{'fullname'} = $b->{'name'}.":".$b->{'virtual'};
@@ -109,7 +109,7 @@ else {
 		# Check for clash
 		foreach $eb (@boot) {
 			if ($eb->{'fullname'} eq $b->{'fullname'}) {
-				&error(&text('bifc_edup', $in{'name'}));
+				&error(&text('bifc_edup', &html_escape($in{'name'})));
 				}
 			}
 		}
@@ -121,7 +121,7 @@ else {
 	    ($in{'new'} || $oldb->{'address'} ne $in{'address'})) {
 		($clash) = grep { $_->{'address'} eq $in{'address'} &&
 				  $_->{'up'} } @boot;
-		$clash && &error(&text('aifc_eclash', $clash->{'fullname'}));
+		$clash && &error(&text('aifc_eclash', &html_escape($clash->{'fullname'})));
 		}
 
 	# Validate and store inputs
@@ -139,7 +139,7 @@ else {
 		}
 	else {
 		&valid_boot_address($in{'address'}) ||
-			&error(&text('bifc_eip', $in{'address'}));
+			&error(&text('bifc_eip', &html_escape($in{'address'})));
 		$b->{'address'} = $in{'address'};
 		}
 
@@ -169,7 +169,7 @@ else {
 	elsif (&can_edit("netmask", $b) && $access{'netmask'}) {
 		$auto && !$in{'netmask'} ||
 		    &check_netmask($in{'netmask'}, $in{'address'}) ||
-			&error(&text('bifc_emask', $in{'netmask'}));
+			&error(&text('bifc_emask', &html_escape($in{'netmask'})));
 		$b->{'netmask'} = $in{'netmask'};
 		}
 
@@ -177,18 +177,26 @@ else {
 		# No broadcast needed
 		delete($b->{'broadcast'});
 		}
-	elsif (!$access{'broadcast'} || $in{'broadcast_def'}) {
-		# Work out broadcast
-		if ($in{'new'}) {
+	elsif (!$access{'broadcast'} && $in{'new'}) {
+		# Work out broadcast if user isn't allowed to set it
+		$b->{'broadcast'} = &compute_broadcast(
+			$b->{'address'}, $b->{'netmask'});
+		}
+	elsif ($in{'broadcast_def'}) {
+		# If system needs broadcast to be computed, do it here
+		if (!&can_broadcast_def()) {
 			$b->{'broadcast'} = &compute_broadcast(
 				$b->{'address'}, $b->{'netmask'});
+			}
+		else {
+			$b->{'broadcast'} = undef;
 			}
 		}
 	elsif (&can_edit("broadcast", $b)) {
 		# Manually entered broadcast
 		($auto && !$in{'broadcast'}) ||
 			&check_ipaddress($in{'broadcast'}) ||
-			&error(&text('bifc_ebroad', $in{'broadcast'}));
+			&error(&text('bifc_ebroad', &html_escape($in{'broadcast'})));
 		$b->{'broadcast'} = $in{'broadcast'};
 		}
 
@@ -202,14 +210,14 @@ else {
 		$auto && !$in{'mtu'} ||
 			$in{'mtu_def'} ||
 			$in{'mtu'} =~ /^\d+$/ ||
-			&error(&text('bifc_emtu', $in{'mtu'}));
+			&error(&text('bifc_emtu', &html_escape($in{'mtu'})));
 		$b->{'mtu'} = $in{'mtu_def'} ? undef : $in{'mtu'};
 		}
 
 	# MAC address
 	if (defined($in{'ether'}) && !$in{'ether_def'}) {
 		$in{'ether'} =~ /^[A-Fa-f0-9:]+$/ ||
-			&error(&text('aifc_ehard', $in{'ether'}));
+			&error(&text('aifc_ehard', &html_escape($in{'ether'})));
 		$b->{'ether'} = $in{'ether'};
 		}
 	else {
@@ -252,7 +260,7 @@ else {
 				&check_ip6address($in{'address6_'.$i}) ||
 					&error(&text('aifc_eaddress6', $i+1));
 				$c = $clash6{$in{'address6_'.$i}};
-				$c && &error(&text('aifc_eclash6', $i+1, $c->{'name'}));
+				$c && &error(&text('aifc_eclash6', $i+1, &html_escape($c->{'name'})));
 				push(@address6, $in{'address6_'.$i});
 				$in{'netmask6_'.$i} =~ /^\d+$/ &&
 				    $in{'netmask6_'.$i} > 0 &&
@@ -325,9 +333,20 @@ else {
 		}
 	else {
 		$b->{'fullname'} = $b->{'name'}.
-				( $b->{'virtual'} eq '' ? '' : ':'.$b->{'virtual'});
+			( $b->{'virtual'} eq '' ? '' : ':'.$b->{'virtual'});
 		}
 	&save_interface($b, \@boot);
+
+	# If switching from DHCP to static and there is no default gateway
+	# set, copy the active one
+	if ($oldb{'dhcp'} && !$b{'dhcp'} && $b{'virtual'} eq '' &&
+	    defined(&get_default_gateway) && defined(&list_routes)) {
+		my $oldgw = &get_default_gateway();
+		my ($dr) = grep { $_->{'dest'} eq '0.0.0.0' } &list_routes();
+		if (!$oldgw && $dr) {
+			&set_default_gateway($dr->{'gateway'}, $b{'name'});
+			}
+		}
 
 	if ($in{'activate'}) {
 		# Make this interface active (if possible)

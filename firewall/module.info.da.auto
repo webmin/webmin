@@ -1,0 +1,3 @@
+name_da=Firewall
+desc_da=Linux Firewall
+longdesc_da=Konfigurer en Linux-firewall vha. Iptables. Tillader redigering af alle tabeller, kæder, regler og indstillinger.

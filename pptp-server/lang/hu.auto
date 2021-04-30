@@ -1,0 +1,152 @@
+index_title=PPTP VPN szerver
+index_version=A PoPToP $1 verziója
+index_epptpd=A (z) $1 PoPToP PPTP szervert nem található a rendszerén, vagy nem a megfelelő program. Lehet, hogy nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+index_econfig=A (z) $1 PPTP szerver konfigurációs fájl nem található a rendszerén. Lehet, hogy a <a href='$2'>modul konfigurációja</a> helytelen.
+index_stop=Állítsa le a PPTP szervert
+index_stopdesc=Kattintson erre a gombra a futó PPTP szerver folyamatának leállításához, hogy új kapcsolatok ne kerüljenek elfogadásra. A meglévő VPN-kapcsolatok azonban aktívak maradnak.
+index_start=Indítsa el a PPTP szervert
+index_startdesc=Kattintson erre a gombra a PPTP-kiszolgáló folyamatának elindításához, hogy VPN-kapcsolatokat fogadjon az ügyfelektől.
+index_apply=Alkalmazza a konfigurációt
+index_applydesc=Kattintson erre a gombra a jelenlegi PPTP-kiszolgáló-beállítások alkalmazásához, leállítva és újraindítva a PPTP-kiszolgáló folyamatát. A PPP-beállítások és a PPP-fiókok változásait minden új kapcsolatra mindig alkalmazni kell
+index_return=modul index
+index_epppd=A (z) $1 PPP szerver program nincs telepítve a rendszerére. A PPTP működésétől függ.
+
+conf_title=PPTP szerver opciók
+conf_ecannot=A PPTP-kiszolgáló beállításait nem szabad szerkeszteni
+conf_header=PPTP szerver konfiguráció
+conf_speed=PPP adatátviteli sebesség
+conf_baud=bps
+conf_listen=Figyelj a címre
+conf_all=Minden cím
+conf_localip=IP-címek a kiszolgáló kapcsolatának végére
+conf_remoteip=Az ügyfeleknek kiosztandó IP-címek
+conf_ipxnets=Kiosztandó IPX hálózatok
+conf_from=Tól től
+conf_to=nak nek
+conf_option=PPP beállítások fájl
+conf_mode0=Általános beállítások
+conf_mode1=PPTP-specifikus beállítások
+conf_mode2=Egyéni fájl
+conf_ipdesc=Az IP-cím mindkét tartományban egyedileg (például 192.168.1.1) vagy tartományként (például 192.168.2.32-64) adható meg.
+conf_err=Nem sikerült menteni a szerver beállításait
+conf_espeed=Hiányzó vagy érvénytelen adatátviteli sebesség
+conf_elisten=Hiányzó vagy érvénytelen cím hallgatni
+conf_eoption=Hiányzó vagy érvénytelen megjelenésű egyéni PPP-beállítások fájl
+conf_elocalip=A '$1' nem érvényes helyi IP-cím vagy tartomány
+conf_eremoteip=A '$1' nem érvényes távoli IP-cím vagy tartomány
+conf_efrom=Hiányzó vagy érvénytelen IPX hálózat a címből
+conf_eto=Hiányzó vagy érvénytelen IPX hálózat a címhez
+
+options_title=PPP beállítások
+options_ecannot=A PPP beállításait nem szabad szerkeszteni
+options_desc0=A következő PPP lehetőségek $1 -től vonatkoznak az összes bejövő kapcsolatra, amelyeket a rendszer fogad, beleértve a telefonos modemekhez tartozókat is.
+options_desc1=A következő PPP lehetőségek $1 -től kezdődően csak az összes PPTP kapcsolatra vonatkoznak.
+options_desc2=Ezeket az űrlap mentése után létrehozott új kapcsolatokban használják.
+options_header=PPP csatlakozási lehetőségek
+options_proxyarp=Proxy ARP bejegyzés létrehozása?
+options_lock=Zárolja a PTY eszköz fájlt?
+options_auth=Hitelesítést igényel?
+options_auth0=Nem, de megakadályozzuk a továbbított IP-ket
+options_auth1=Soha
+options_auth2=Mindig
+options_login=Ugyancsak elvégezzék a unix hitelesítést?
+options_pap=PAP hitelesítés
+options_chap=CHAP hitelesítés
+options_req=Fel kell használni
+options_all=Használható
+options_ref=Nem használható
+options_name=Szerver neve a hitelesítéshez
+options_hn=Valódi hostnév
+options_mtu=A küldő csomag maximális mérete
+options_mru=A fogadó csomag maximális mérete
+options_err=A PPP-beállítások mentése nem sikerült
+options_emtu=Hiányzik vagy érvénytelen a küldő csomag maximális mérete
+options_emru=Hiányzó vagy érvénytelen maximális fogadási csomagméret
+options_ename=Hiányzó vagy érvénytelen szervernév a hitelesítéshez
+options_version=$1 PPPd verzió
+options_msdesc=Az alábbi lehetőségek lehetővé teszik az MS-CHAP hitelesítési módszert és az MPPE titkosítást, amelyet alapértelmezés szerint a Windows VPN kliensek használnak. Az MPPE azonban támogatást igényel mind a PPP démonban, mind az operációs rendszer kernelében.
+options_mschap=MS-CHAP hitelesítés
+options_mschap-v2=MS-CHAP 2. verzió hitelesítés
+options_chapms=MS-CHAP hitelesítés
+options_chapms-v2=MS-CHAP 2. verzió hitelesítés
+
+secrets_title=PPP számlák
+secrets_ecannot=A PPP-fiókok nem szerkeszthetők
+secrets_return=index
+secrets_none=Még nem hoztak létre PPP-fiókot.
+secrets_enopfile=A (z) $1 PPP jelszófájl nem létezik a rendszeren. Lehet, hogy a PPP nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+secrets_table=A PPP a $1 -t adja
+secrets_user=Felhasználónév
+secrets_ips=IP-címek
+secrets_uany=BÁRMI
+secrets_sany=BÁRMI
+secrets_create=Hozzon létre új PPP-fiókot.
+secrets_desc=Az ezen az oldalon felsorolt PPP-fiókok a $1 fájlból származnak, amelyet a $3 hitelesítéshez használnak. Csak a (z) $2 szerver adatai jelennek meg, a kimenő kapcsolatok létrehozására szolgáló számlák nem.
+secrets_delete=Törölje a kiválasztott PPP-fiókokat
+
+edit_secret_etitle=A PPP-fiók szerkesztése
+edit_secret_ctitle=Hozzon létre PPP-fiókot
+edit_secret_acc=PPP számla
+edit_secret_user=Felhasználónév
+edit_secret_serv=szerver
+edit_secret_sany=Bármi
+edit_secret_uany=Bármi
+edit_secret_pass=Jelszó
+edit_secret_none=Egyik sem
+edit_secret_ffile=A fájlból
+edit_secret_leave=Hagyja változatlanul
+edit_secret_setto=Állítva
+edit_secret_vaddr=Érvényes címek
+edit_secret_aany=Engedjen meg bármilyen
+edit_secret_anone=Ne engedje meg
+edit_secret_alist=Engedélyezze a felsorolt ..
+edit_secret_save=Megment
+edit_secret_del=Töröl
+edit_secret_return=fióklista
+
+save_secret_esave=Nem sikerült menteni a fiókot
+save_secret_enoip=A '$1' nem érvényes cím
+
+stop_err=Nem sikerült leállítani a PPTP szervert
+stop_egone=Már nem fut
+stop_ecannot=A PPTP szervert nem szabad leállítani
+
+start_err=Nem sikerült elindítani a PPTP szervert
+start_ecannot=A PPTP szerver nem indítható el
+
+apply_err=A PPTP-kiszolgáló újraindítása nem sikerült
+apply_ecannot=A PPTP-kiszolgáló nem indítható újra
+
+conns_title=Aktív kapcsolatok
+conns_ecannot=Nem engedélyezi az aktív kapcsolatok kezelését
+conns_desc=Ez az oldal felsorolja a szerverhez jelenleg aktív PPTP-kapcsolatokat. Az egyik erőszakos leválasztásához kattintson az interfész nevére.
+conns_iface=PPP interfész
+conns_client=Ügyfél címe
+conns_stime=Csatlakozik azóta
+conns_local=Szerver VPN címe
+conns_remote=Ügyfél VPN címe
+conns_none=Jelenleg egyetlen PPTP kapcsolat sem aktív.
+conns_unknown=Ismeretlen
+conns_user=Felhasználónév
+
+disc_err=Nem sikerült a leválasztás
+disc_egone=A kapcsolatok már nem aktívak
+disc_ekill=A folyamat már nem fut
+
+log_secret_create=Létrehozta a (z) $1 PPP-fiókot
+log_secret_modify=Módosított $1 PPP-fiók
+log_secret_delete=Törölt $1 PPP-fiók
+log_deletes=Törölt $1 PPP-fiók
+log_conf=Módosított PPTP szerver beállítások
+log_options=Módosított PPP lehetőségek
+log_disc=A leválasztott kliens $1 
+log_start=Indított PPTP szerver
+log_stop=Leállított PPTP szerver
+log_apply=Alkalmazott PPTP szerver konfiguráció
+
+acl_conf=Szerkesztheti a konfigurációt?
+acl_options=Szerkesztheti az opciókat?
+acl_secrets=Kezelni tudja a PPTP-fiókokat?
+acl_conns=Megtekintheti a kapcsolatokat?
+acl_stop=Leállíthatom és elindíthatom a PPTP szervert?
+acl_apply=Használhatja a konfigurációt?

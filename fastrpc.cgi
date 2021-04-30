@@ -151,7 +151,8 @@ while(1) {
 			if (open(FILE, ">$file")) {
 				binmode(FILE);
 				print STDERR "fastrpc: tcpwrite $file writing\n" if ($gconfig{'rpcdebug'});
-				while(read(TRANS, $buf, 1024) > 0) {
+				my $bs = &get_buffer_size();
+				while(read(TRANS, $buf, $bs) > 0) {
 					local $ok = (print FILE $buf);
 					if (!$ok) {
 						$err = "Write to $file failed : $!";
@@ -178,9 +179,10 @@ while(1) {
 		# Transfer data from a file
 		print STDERR "fastrpc: read $arg->{'file'}\n" if ($gconfig{'rpcdebug'});
 		local ($data, $got);
-		open(FILE, $arg->{'file'});
+		open(FILE, "<$arg->{'file'}");
 		binmode(FILE);
-		while(read(FILE, $got, 1024) > 0) {
+		my $bs = &get_buffer_size();
+		while(read(FILE, $got, $bs) > 0) {
 			$data .= $got;
 			}
 		close(FILE);
@@ -194,7 +196,7 @@ while(1) {
 			$rawrv = &serialise_variable(
 				{ 'status' => 1, 'rv' => [ undef, "$arg->{'file'} is a directory" ] } );
 			}
-		elsif (!open(FILE, $arg->{'file'})) {
+		elsif (!open(FILE, "<$arg->{'file'}")) {
 			$rawrv = &serialise_variable(
 				{ 'status' => 1, 'rv' => [ undef, "Failed to open $arg->{'file'} : $!" ] } );
 			}

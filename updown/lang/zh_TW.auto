@@ -1,0 +1,63 @@
+index_zip=提取存檔或壓縮文件？
+index_zipyes=是的，然後刪除
+index_header3=將文件從服務器下載到PC
+index_fetch=檔案下載
+index_ok2=下載
+index_show=如果可能，在瀏覽器中顯示？
+index_tabdownload=從網上下載
+index_tabupload=上載到服務器
+index_tabfetch=從服務器下載
+index_descdownload=該表單使您可以將文件或網頁從HTTP或FTP URL下載到運行Webmin的系統。下載可以立即完成，也可以安排在將來的某個時間進行。
+index_descupload=該頁面允許您從運行Web瀏覽器的PC上向運行Webmin的系統上載一個或多個文件。
+index_descfetch=該頁面用於從運行Webmin的系統下載文件以在瀏覽器中顯示或保存在同一系統上。
+index_email=完成下載後發送電子郵件嗎？
+index_emailto=是的，解決
+index_email2=上傳完成後發送電子郵件嗎？
+
+upload_ecmd=缺少命令 $1
+upload_eextract=，無法提取： $1
+upload_extracted=，並提取文件 ..
+upload_deleted=並提取文件，然後再刪除存檔 ..
+upload_notcomp=不是ZIP或TAR文件
+upload_eemail=缺少要通知的電子郵件地址
+upload_saving=正在保存文件 $1 ..
+upload_saved=..寫了 $1
+upload_unzipping=提取文件 $1 ..
+upload_unzipdone=.. $1
+
+download_enone=沒有輸入要下載的網址
+
+acl_nosched=是的，但不是背景
+acl_max=最大上傳大小
+acl_unlim=無限
+acl_b=個字節
+acl_fetch=可以將文件下載到PC嗎？
+
+fetch_err=下載文件失敗
+fetch_ecannot=不允許將文件下載到PC
+fetch_efile=沒有輸入文件名
+fetch_eexists2=文件或目錄不存在
+fetch_eopen=無法打開文件： $1
+fetch_eaccess=您不允許從 $1下載文件
+fetch_ezip=除非安裝了<tt>zip</tt>命令，否則無法下載目錄
+fetch_eroot=根目錄無法下載！
+
+email_downmsg=以下下載已完成：
+email_downurl=網址： $1
+email_downerr=錯誤消息： $1
+email_downpath=目標文件名： $1
+email_downsize=下載的大小： $1
+email_subjectd=下載完成
+email_eextract=失敗： $1
+email_extfailed=提取失敗： $1
+email_extdone_zip=ZIP文件已提取
+email_extdone_tar=提取TAR文件
+email_extdone_tgz=解壓縮的TAR文件
+email_extdone_tbz2=解壓縮後的TAR文件
+email_extdone_lha=提取LHArc文件
+email_upfile=原始文件名： $1
+email_uppath=目標文件名： $1
+email_upsize=上傳的大小： $1
+email_upextract=提取狀態： $1
+email_subjectu=上傳完成
+email_upmsg=以下上傳已完成：

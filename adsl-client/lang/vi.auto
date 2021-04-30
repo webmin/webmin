@@ -1,0 +1,66 @@
+index_title=Máy khách ADSL
+index_eadsl=Lệnh RP-PPPoE $1 không được tìm thấy trên hệ thống của bạn hoặc không hợp lệ. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+index_econfig=Không tìm thấy tệp cấu hình ADSL RP-PPPoE $1 trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+index_emodem=Tệp cấu hình hiện tại dành cho modem trên Redhat Linux, không phải kết nối ADSL. Sử dụng trang <a href='$2'>cấu hình mô-đun</a> để chỉ định một trong các tệp <tt>ifcfg-ppp *</tt> khác trong $1 hoặc một tệp chưa tồn tại để mô-đun chưa tồn tại có thể tạo ra nó cho bạn
+index_stop=Tắt ADSL
+index_stopdesc=Kết nối ADSL của bạn hiện đang hoạt động với địa chỉ IP $1. Nhấp vào nút này để tắt nó bằng lệnh $2.
+index_start=Khởi động ADSL
+index_startdesc=Kết nối ADSL của bạn hiện không hoạt động. Nhấp vào nút này để khởi động nó bằng lệnh $1.
+index_boot=Bắt đầu lúc khởi động
+index_bootdesc=Thay đổi tùy chọn này để kiểm soát xem kết nối ADSL của bạn có được đưa lên khi khởi động hay không.
+index_return=chỉ số mô-đun
+index_version=Phiên bản RP-PPPoE $1 
+index_esetup=Tệp cấu hình Redhat ADSL $1 không tồn tại trên hệ thống của bạn. Tuy nhiên, mô-đun này có thể thiết lập nó cho bạn với các mặc định cơ bản bằng cách nhấp vào nút bên dưới.
+index_setup=Cài đặt tập tin cấu hình
+index_cancel=Hủy kết nối
+index_canceldesc=Máy khách ADSL hiện đang cố gắng thiết lập kết nối. Nhấp vào nút này để hủy bỏ nỗ lực với lệnh $1.
+index_cdemand=Hủy theo yêu cầu
+index_cdemanddesc=Máy khách ADSL hiện đang chờ yêu cầu kết nối theo yêu cầu. Nhấp vào nút này để dừng nó với comnmand $1.
+
+index_header=Tùy chọn cấu hình máy khách ADSL
+index_desc=Các cài đặt bên dưới áp dụng cho mọi kết nối ADSL mới được hệ thống của bạn bắt đầu. Nếu bạn thay đổi chúng, kết nối phải được tắt và khởi động lại để các sửa đổi có hiệu lực.
+index_eth=Giao diện Ethernet
+index_other=Khác ..
+index_demand=Kết nối theo yêu cầu?
+index_timeout=Vâng, với thời gian chờ
+index_secs=giây
+index_user=Đăng nhập với tư cách người dùng
+index_sec=Đăng nhập bằng mật khẩu
+index_dns=Nhận cấu hình DNS từ ISP?
+index_save=Lưu cấu hình
+index_mss=Giới hạn kích thước gói?
+index_psize=Đồng ý với
+index_bytes=byte
+index_fw=Tường lửa để kích hoạt kết nối
+index_fw_none=không ai
+index_fw_standalone=Đối với máy chủ duy nhất
+index_fw_masquerade=Đối với cổng NAT
+index_connect=Thời gian thử kết nối cho
+index_forever=Mãi mãi
+
+start_err=Không thể bắt đầu kết nối ADSL
+start_title=Khởi động ADSL
+start_ip=Kết nối ADSL đã được thiết lập với địa chỉ IP $1.
+start_demand=Vì chế độ kết nối theo yêu cầu được bật, kết nối ADSL của bạn sẽ chỉ được bắt đầu khi cần.
+start_bg=Kết nối ADSL không được bắt đầu trong vòng 20 giây. Máy khách ADSL sẽ tiếp tục cố gắng kết nối trong nền cho đến khi thành công.
+
+save_err=Không thể lưu cấu hình ADSL
+save_eeth=Giao diện ethernet bị thiếu hoặc không hợp lệ
+save_etimeout=Thiếu hoặc không hợp lệ thời gian chờ theo yêu cầu
+save_euser=Tên người dùng bị thiếu hoặc không hợp lệ
+save_econnect=Hết thời gian chờ kết nối bị thiếu hoặc không hợp lệ
+save_emss=Kích thước gói tối đa bị thiếu hoặc không hợp lệ
+save_title=Lưu cấu hình
+save_desc=Cấu hình máy khách ADSL của bạn đã được lưu thành công, nhưng sẽ không được sử dụng cho đến khi bạn kết nối lại.
+
+stop_err=Không thể tắt kết nối ADSL
+stop_title=Tắt ADSL
+stop_ok=Kết nối ADSL của bạn đã được tắt thành công.
+stop_failed=Kết nối ADSL của bạn vẫn hoạt động vì một số lý do!
+
+log_save=Cấu hình máy khách đã lưu
+log_stop=Tắt ADSL
+log_start=Bắt đầu lên ADSL
+log_bootup=ADSL được kích hoạt khi khởi động
+log_bootdown=ADSL bị vô hiệu hóa khi khởi động
+log_setup=Thiết lập cấu hình mặc định

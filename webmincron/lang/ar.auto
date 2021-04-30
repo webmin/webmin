@@ -1,0 +1,20 @@
+edit_mins=الدقائق
+edit_hours=ساعات
+edit_days=أيام
+edit_months=الشهور
+edit_weekdays=أيام الأسبوع
+edit_all=الكل
+edit_selected=المحدد ..
+edit_run=اركض الآن
+edit_clone=وظيفة استنساخ
+edit_return=وظيفة كرون
+edit_special1=جدول بسيط ..
+edit_special0=الأوقات والتواريخ المحددة أدناه ..
+edit_special_hourly=ساعيا
+edit_special_daily=يوميًا (في منتصف الليل)
+edit_special_weekly=أسبوعيًا (يوم الأحد)
+edit_special_monthly=شهريًا (في الأول)
+edit_special_yearly=سنويًا (في 1 يناير)
+
+log_success=تم تشغيل <tt>$2</tt> بنجاح في <tt>$1</tt>
+log_failure=فشل تشغيل <tt>$2</tt> في <tt>$1</tt> :$3

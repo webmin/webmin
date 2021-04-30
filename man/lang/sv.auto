@@ -1,0 +1,17 @@
+index_custom=Anpassad dokumentation
+index_google=Google Sök
+index_others=När du söker dokumentation från en annan modul, tillåta sökning i ..
+index_other_google=Googles sökmotor
+index_other_kde=KDE-dokumentation
+index_and=Matcha alla
+index_or=Matcha vilken som helst
+
+search_custom=Anpassad dokumentation
+search_google=Googles sökresultat
+search_doxfer=Webmin dokumentation online
+
+man_epath=Manuell sida kan inte vara väg!
+
+acl_allow=Kan redigera tillåtna söktyper?
+
+check_ecannot=Du får inte redigera tillåtna söktyper

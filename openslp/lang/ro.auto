@@ -1,0 +1,50 @@
+index_title=Configurare OpenSLP
+index_return=Configurație OpenSLP
+index_eslpd=Daemon OpenSLP $1 nu a fost găsit în sistemul dvs. Poate că nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
+index_econf=Fișierul de configurare OpenSLP $1 nu a fost găsit în sistemul dvs. Poate că nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
+index_version=Versiunea OpenSLP $1 
+
+slp_apply=Aplica schimbarile
+slp_stop=Opriți OpenSLP
+
+snda_title=Domeniul static și DA
+snda_useScopes=Lista statică a scopurilor
+snda_DAAddresses=Lista statică a agenților de director (DA)
+
+netcfg_title=Configurarea Rețelei
+netcfg_isBroadcastOnly=Forțați difuzarea în loc de multicast
+netcfg_passiveDADetection=Utilizați detectarea pasivă a DA
+netcfg_activeDADetection=Folosiți detecție activă de DA (restricționați numai la adresele DHCP sau DA)
+netcfg_DAActiveDiscoveryInterval=Descoperire activă în câteva secunde (0 dezactivează Discovery Active)
+netcfg_multicastTTL=Multicast TTL (0-255)
+netcfg_DADiscoveryMaximumWait=Timpul maxim de așteptare pentru solicitările de descoperire DA (în milisecunde)
+netcfg_DADiscoveryTimeouts=Timpuri de așteptare succesive ale descoperirii DA (în milisecunde)
+netcfg_HintsFile=Calea către fișierul cu indicii OpenSLP
+netcfg_multicastMaximumWait=Așteptare maximă la cererile multicast (în milisecunde)
+netcfg_multicastTimeouts=Timpuri de așteptare multicast succesive (în milisecunde)
+netcfg_unicastMaximumWait=Perioada maximă de timp între cererile de unicast (în milisecunde)
+netcfg_randomWaitBound=Valoarea maximă pentru toți parametrii de așteptare aleatorii (în milisecunde)
+netcfg_MTU=Dimensiunea pachetului MTU (în octeți)
+netcfg_interfaces=Adresele IP ale interfețelor pe care DA/SA ar trebui să le asculte
+
+dacfg_title=Configurare DA
+dacfg_isDA=Funcționează doar ca DA (citiți ghidul utilizatorilor înainte de a schimba acest lucru)
+
+log_title=Urmărirea și exploatarea
+log_traceDATraffic=Tipăriți mesaje de trafic DA
+log_traceMsg=Printează mesaje de detaliu SLP
+log_traceDrop=Print SLP a renunțat la informațiile despre mesaje
+log_traceReg=Tipăriți informațiile privind înregistrarea și anularea DA și SA
+
+error_open=Eroare la deschiderea fișierului
+error_flock_on=Eroare la crearea blocării fișierului
+error_flock_off=Eroare la distrugerea blocării fișierului
+error_hup=Eroare la repornirea OpenSLP cu PID
+
+index_start=Porniți OpenSLP
+index_startmsg=Faceți clic pe acest buton pentru a porni demonul OpenSLP pe sistemul dvs.
+index_stop=Opriți OpenSLP
+index_stopmsg=Faceți clic pe acest buton pentru a opri demonul OpenSLP de pe sistemul dvs.
+
+stop_err=Nu a reușit oprirea OpenSLP
+start_err=Eroare la pornirea OpenSLP

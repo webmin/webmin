@@ -1,0 +1,16 @@
+index_drivesub=Estado de la unidad $1, disco $2 
+index_attrs=Atributos SMART adicionales
+index_raw=Informe completo de estado SMART
+index_family=Familia modelo
+index_serial=Número de serie
+index_capacity=Capacidad
+index_norm=Normalizado
+
+monitor_type2=Desgaste SSD
+monitor_errorsinc=Sí, pero solo alerta si el recuento de errores aumenta
+monitor_errorsfound=Se informaron $1 errores
+monitor_errorsinced=Los errores aumentaron de $2 a $1 
+monitor_wearlevel=Falla si el nivel de desgaste cae por debajo
+monitor_ewearlevel=Porcentaje de nivel de desgaste no válido
+monitor_nowearout=La unidad no informa un indicador de desgaste SSD
+monitor_wornout=El nivel de desgaste ha caído a $1 

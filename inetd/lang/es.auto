@@ -1,0 +1,16 @@
+index_edit=Editar servicio:
+index_search=Mostrar servicios coincidentes:
+index_sok=Buscar
+index_toomany=Hay demasiados servicios de internet para mostrar en esta página.
+index_none=No hay servicios de internet que coincidan con su búsqueda.
+
+error_smfservice=Error al actualizar el servicio smf con cmd '$1', código de error $2 
+error_smf_cmdfield=Para smf, el nombre de archivo del programa '$1' debe coincidir con el primer argumento del campo de comando, es decir, ser '$2'
+
+editrpc_act=Estado del programa
+editrpc_stream=Corriente
+editrpc_dgram=Datagrama
+editrpc_tli=TLI
+
+editserv_qm=El comando puede no existir?
+editserv_ename=No existe ningún servicio con ese nombre y protocolo

@@ -13,7 +13,7 @@ sub list_rules {
     my @ret;
     my $id = 0;
 
-    open(HOSTS, $file) || return ();
+    open(HOSTS, "<".$file) || return ();
     my $line;
     my $last_line = '';
     my $lnum = 0;

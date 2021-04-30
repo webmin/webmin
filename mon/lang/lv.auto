@@ -1,0 +1,200 @@
+index_title=MON servisa monitors
+index_return=MON indekss
+index_edir=MON direktorijs $1 neeksistē. Varbūt MON nav instalēts vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+mon_global_title=Globālā mainīgo konfigurācija
+mon_conf_title=Pamata konfigurācija
+mon_status_title=Darbības statuss
+hostgroups_title=MON konfigurācijas-saimnieku grupas
+services_title=Uzraudzības grupas - pakalpojumu definīcijas
+
+head_hostgroups=Saimnieku grupas un pakalpojumi
+head_groups=Saimnieku grupas nosaukums
+head_members=Uzņēmējas grupas dalībnieki
+head_services=Skatāmie saimnieku grupas pakalpojumi
+head_service=Serviss, ko skatīties
+head_param=Apkopes parametri
+head_watch=Noskatīties grupu?
+head_monauth=Sniedziet MONCMD autentifikāciju
+head_usr=Lietotājvārds
+head_pass=Parole
+head_mand=(RED COLOR parametri ir obligāti)
+
+err_nomon=pakotne “mon” nav instalēta sistēmā
+err_nomonconf=MON konfigurācijas fails $1 jūsu sistēmā netika atrasts. Varbūt MON nav instalēts vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+err_nowatch=Nav atlasīta neviena uzraudzības grupa. Atlasiet vismaz vienu uzraudzības grupu, lai turpinātu.
+err_noserv=Skatītāju grupai nav izvēlēts neviens pakalpojums
+err_nomemb=Uzraudzības grupai nav atlasīti mitinātāji/dalībnieki
+err_monrun=MON nedarbojas ar galveno datoru. Lūdzu, sāciet MON.
+stop_err=Neizdevās apturēt MON
+stop_epid=Vairs neskrienu
+start_err=Neizdevās sākt MON
+restart_err=Neizdevās restartēt MON
+restart_epid=Neizdevās iegūt PID
+
+other=Cits (telpa atdalīta)
+next=Nākamais
+mon_stat=MON statuss
+mon_off=MON pakalpojumi nav sākti
+mon_start=Sāciet MON Services
+mon_stop=Pārtrauciet MON pakalpojumus
+mon_restart=Restartējiet MON Services
+mon_startdesc=Noklikšķiniet uz šīs pogas, lai startētu MON serveri. Kamēr tas nav sākts, konfigurēta uzraudzība netiks veikta.
+mon_stopdesc=Noklikšķiniet uz šīs pogas, lai apturētu MON serveri. Apstājoties, konfigurētā uzraudzība tiks pārtraukta.
+mon_restartdesc=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējo MON konfigurāciju, restartējot servera procesu.
+line=(pa vienai katrā rindiņā)
+save_apply=Saglabājiet un piesakieties
+watch=Skatītāju grupa
+members=Locekļi
+def_perargs=wd {Sat-Sun}
+
+def_desc=apraksts
+def_inter=intervāls
+def_mon=monitors
+def_dep=pavadīt
+def_per=periods
+def_alert=trauksme
+def_alertevr=brīdinājums
+def_alertaft=tūlīt pēc tam
+def_alertstr=startupalert
+def_allow=atļaut_izmēra_grupa
+def_traptime=traptimeout
+def_trapdur=trapduration
+def_rand=randskew
+def_exclhost=izslēgt spokus
+def_exclper=izslēgt periodu
+
+groups_title=Uzņēmējas grupas
+groups_group=Grupas nosaukums
+groups_members=Locekļu saimnieki
+
+watches_title=Skatīties sarakstus
+watches_group=Vērojošā grupa
+watches_services=Pakalpojumi, kurus novēro
+watches_sadd=Pievienot pakalpojumu ..
+watches_add=Pievienot grupas novērošanas sarakstu :
+watches_return=skatīšanās saraksti
+watches_none=Pagaidām nav definēts neviens skatīšanās saraksts.
+
+global_title=Globālās iespējas
+global_header=Globālās MON konfigurācijas iespējas
+global_maxprocs=Maksimālie MON procesi
+global_histlength=Pasākuma vēstures garums
+global_alertdir=Brīdinājumu programmu katalogs
+global_mondir=Monitor programmu direktorijā
+global_authtype=Autentifikācijas tips
+global_authtype_=Noklusējums
+global_authtype_getpwnam=Sistēmas zvani
+global_authtype_userfile=MON lietotāju fails
+global_authtype_shadow=Ēnu fails
+global_userfile=MON lietotāja fails
+global_emaxprocs=Trūkst vai nav derīgs MON procesu skaits
+global_ehistlength=Trūkst vai nav derīgs notikumu vēstures garums
+global_ealertdir=Trūkst vai nav derīgs brīdinājumu programmu direktorijs
+global_emondir=Trūkst vai nav derīgs monitoru programmu direktorijs
+global_euserfile=Trūkst MON lietotāju faila
+
+watch_title=Rediģēt novērošanas sarakstu
+watch_header=Uzņēmējas grupas skatīšanās informācija
+watch_group=Saimnieku grupa, kuru skatīties
+watch_services=Pakalpojumi, kurus novēro
+watch_service=Pakalpojuma nosaukums
+watch_monitor=Monitors izmantošanai
+watch_interval=Pārbaudiet katru
+watch_periods=Uzraudzības periodi
+
+service_title=Pievienot pakalpojumu
+service_title2=Rediģēšanas pakalpojums
+service_header=Noskatījos informāciju par pakalpojumu
+service_name=Pakalpojuma nosaukums
+service_interval=Pārbaudiet katru
+service_desc=Apraksts
+service_units_s=sekundes
+service_units_m=minūtes
+service_units_h=stundas
+service_units_d=dienas
+service_units_w=nedēļas
+service_monitor=Izmantojot monitoru
+service_mon1=Standarta monitors
+service_mon0=Cits monitors ..
+service_args=Monitora parametri
+service_period=Monitoringa periods $1 
+service_days=Pārbaudes dienas
+service_hours=Pārbaudes stundas
+service_all=Visi
+service_pstr=Perioda specifikācija
+service_new=Jauns uzraudzības periods
+service_alerts=Brīdinājumi par periodu
+service_alert=Brīdinājums
+service_atype=Palaist kad
+service_atype_alert=Pakalpojums samazinās
+service_atype_upalert=Parādās pakalpojumi
+service_atype_startupalert=MON sāk darboties
+service_aargs=Papildu parametri
+service_every=Nosūtīt brīdinājumu
+service_every_def=Katru reizi, kad tiek palaists monitors
+service_every_time=Katrs
+service_num=Maksimālais nosūtāmo brīdinājumu skaits
+service_unlimited=Neierobežots
+service_after=Neveiksmes pirms trauksmes
+service_immediate=Tūlīt
+service_after_num=Pēc $1 kļūmēm
+service_aftertime=Laika intervālā
+service_newperiod=Pievienojiet jaunu periodu
+service_delperiod=Dzēst šo periodu
+service_err=Neizdevās saglabāt pakalpojumu
+service_ename=Trūkst vai nav derīgs pakalpojuma nosaukums
+service_einterval=Trūkst vai nav derīgs pārbaudes intervāls
+service_eother=Trūkst vai nav derīgs monitors
+service_ehour=Trūkst vai nav derīga stunda periodam $1 (jābūt plkst. 9:00 un 17:00).
+service_eperiod=Periodam $1 nav norādītas dienas vai stundas
+service_eevery=Trūkst vai nav derīgs servisa brīdinājuma intervāls
+service_eafter=Trūkst vai nav derīgs kļūdu skaits pirms trauksmes signāla
+service_enum=Trūkst vai nav derīgi nosūtītie maksimālie brīdinājumi
+service_epstr=Trūkst perioda specifikācijas
+service_known0=<tt>Laiks::Periods</tt> virkne
+service_known1=Norādītās dienas un stundas
+service_known2=Noteikts periods
+
+status_title=MON statuss
+status_ecgi=MON statusa CGI programma $1 neeksistē. Varbūt tas nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+status_eperl=MON statusa CGI programmai ir nepieciešams modulis $1 perl. <a href='$2'>Noklikšķiniet šeit</a>, lai instalētu to tieši no CPAN.
+status_esame=MON statusa CGI programma $1 šajā Webmin modulī ir iestatīta uz <tt>mon.cgi</tt> skriptu, nevis uz CGI programmu, kas nāk komplektā ar MON. Pielāgojiet <a href='$2'>moduļa konfigurāciju</a>, lai izmantotu pareizo ceļu.
+
+users_title=MON lietotāji
+users_etype=MON lietotāju sarakstu nevar rediģēt, jo MON pašlaik nav konfigurēts tā izmantošanai autentifikācijai <a href='$1'>globālo iespēju</a> lapā.
+users_header=Atļautie MON lietotāji $1 
+users_nousers=$1 nav definēts neviens MON lietotājs.
+users_add=Izveidojiet jaunu lietotāju.
+users_return=MON lietotāju saraksts
+
+user_create=Izveidot MON lietotāju
+user_edit=Rediģēt MON lietotāju
+user_header=MON lietotāja informācija
+user_user=Lietotājvārds
+user_pass=Parole
+user_leave=Atstājiet nemainītu
+user_err=Neizdevās saglabāt lietotāju
+user_euser=Trūkst vai nav derīgs lietotājvārds
+user_esame=Lietotājs ar tādu pašu vārdu jau pastāv
+
+auth_title=Klientu komandas
+auth_desc=Šī lapa ļauj jums kontrolēt, kuras MON komandas var palaist kādi lietotāji, izmantojot klientu programmas.
+auth_cmd=MON komanda
+auth_users=Atļautie lietotāji
+auth_none=Neviens
+auth_all=Visi
+auth_sel=Tikai lietotāji
+auth_err=Neizdevās saglabāt klienta komandas
+auth_eusers=Neviens lietotājs neievada komandu $1 
+
+periods_title=Noteiktie periodi
+periods_period=Perioda nosaukums
+periods_times=Dienas un laiki
+periods_alldays=Visas dienas
+periods_allhours=Visas stundas
+periods_err=Neizdevās saglabāt noteiktos periodus
+periods_ename='$1' nav derīgs perioda nosaukums
+periods_ehour=Trūkst vai nav derīga stunda periodam $1 (jābūt plkst. 9:00 un 17:00).
+
+show_title=Darbības statuss
+show_ecgi=MON statusa programma $1 neeksistē. Varbūt tas nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.

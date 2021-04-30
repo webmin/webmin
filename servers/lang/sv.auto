@@ -1,0 +1,114 @@
+index_noservers=Inga servrar har registrerats.
+index_nosearch=Inga servrar matchar din sökning.
+index_host=Värdnamn och port
+index_desc=Beskrivning
+index_os=Servertyp
+index_group=Grupp
+index_logout=logga ut
+index_defuser=Standardinloggning för servrar
+index_defpass=Standardlösenord
+index_defport=Webmin-port
+index_delete=Radera valda servrar
+index_auto=Hitta servrar automatiskt
+index_automsg=Klicka på den här knappen för att ställa in den automatiska periodiska upptäckten av nya Webmin-servrar i ditt nätverk.
+index_search=Visa matchande servrar:
+index_ok=Sök
+
+edit_realhost=Riktigt värdnamn
+edit_portnone=Ingen uppsättning
+edit_checkssl=Kontrollera fjärr SSL-certifikat?
+edit_mode2=Logga in när du klickar på ikonen
+edit_mode3=Logga in med användarnamn och lösenord från denna server
+edit_luser=Användarnamn för fjärrserver
+edit_lpass=Lösenord för fjärrserver
+edit_desc=Beskrivning
+edit_desc_def=Från värdnamn och port
+edit_group=Medlem i servergrupper
+edit_none=Ingen
+edit_exists=Befintlig grupp
+edit_new=Ny grupp
+edit_fast=Ringa snabba RPC-samtal?
+edit_auto=Bestäm automatiskt
+edit_status=Serverstatus
+edit_timeout=Timeout-anslutning
+edit_failed=Det gick inte att ansluta
+edit_baduser=Inloggning avvisad
+edit_invalid=Användaren kan inte göra RPC
+edit_version=Kör Webmin $1 
+edit_same=Endast tillgängligt inte i sessionverifieringsläge och när lösenordet görs tillgängligt för Webmin-program.
+
+save_ehost2=Värd finns inte
+save_eport2=En port måste anges om en länktyp med en inloggning är vald
+save_egroup=Gruppnamn saknas
+save_elogin=Ogiltig inloggning eller lösenord som värd
+save_egroup2=Ogiltigt nytt gruppnamn
+
+find_but=Hittade ny server på $1, men verifiering misslyckades : $2 
+find_already2=Hittade känd servervärd på $1 
+find_skip=Ignorerar servern med $1 
+find_eiface=Det gick inte att hitta gränssnittet för att skanna
+find_scanning=Skanna efter servrar i nätverk $1 ..
+find_broading=Sändning för servrar på adress $1 ..
+find_eport=Portnummer saknas eller ogiltigt
+
+log_deletes=$1 -servrar har raderats
+
+link_eautologin=Ogiltigt inloggning eller lösenord för $1. <a href='$2'>Klicka här</a> för att försöka igen.
+
+acl_auto=Kan man ställa in automatisk upptäckt av servrar?
+acl_add=Kan registrera nya servrar?
+acl_forcefast=Tvinga snabbt RPC-läge till standard?
+acl_forcetype=Tvinga OS-typ till standard?
+acl_forcelink=Tvinga inloggningstyp till standard?
+acl_links=Kan ansluta till servrar?
+
+login_title=Logga in på servern
+login_desc=Du måste ange ett användarnamn och lösenord för att logga in på Webmin-servern $1.
+login_header=Webmin-autentisering
+login_user=Användarnamn
+login_pass=Lösenord
+login_login=Logga in
+login_esame=Alternativet att använda samma inloggning som den här servern kan bara användas när den inte är i sessionens autentiseringsläge och när lösenordet görs tillgängligt för Webmin-program.
+
+this_server=den här servern
+
+delete_err=Det gick inte att ta bort servrar
+delete_enone=Ingen vald
+delete_ecannot=Du får inte ta bort servrar
+delete_title=Ta bort servrar
+delete_rusure=Är du säker på att du vill ta bort de valda servrarna $1 ?
+delete_confirm=Radera nu
+
+auto_title=Hitta servrar automatiskt
+auto_header=Automatiska serverregistreringsalternativ
+auto_sched=Leta efter nya servrar?
+auto_sched1=Ja, varje $1 minut
+auto_net=IP-nätverk att skanna
+auto_auto=Lokalt nätverk
+auto_ip=IP-nätverk $1 
+auto_iface=Nätverk på gränssnitt $1 
+auto_user=Användarnamn för nya servrar
+auto_pass=Lösenord för nya servrar
+auto_type=Standard systemtyp
+auto_err=Det gick inte att spara automatiska sökinställningar
+auto_emins=Saknas eller ogiltigt antal minuter
+auto_enet=Saknad eller ogiltig nätverksadress
+auto_eiface=Saknat eller ogiltigt nätverksgränssnitt
+auto_euser=Saknar användarnamn
+auto_cluster-software=Lägg till Cluster-programvarupaket?
+auto_remove=Ta bort registrerade servrar som inte hittas?
+auto_email=Skicka e-postmeddelande till
+auto_none=Skicka inte
+auto_eemail=E-postadress saknas för aviseringar
+auto_smtp=Skicka via SMTP-server
+auto_self=Detta system
+auto_esmtp=Saknad eller ogiltig SMTP-server
+auto_findself=Registrera det här systemet också?
+
+config_deftype=Standard systemtyp
+config_typeauto=Automatisk
+
+email_regsubject=System $1 registrerat
+email_reg=Systemet $1 har automatiskt registrerats.
+email_unregsubject=System $1 oregistrerat
+email_unreg=Systemet $1 har automatiskt avregistrerats.

@@ -1,0 +1,70 @@
+index_title=Järjestelmän aika
+index_timeserver=Aikapalvelin
+index_addresses=Aikapalvelimen isäntänimet tai osoitteet
+index_zone=Aikavyöhyke
+index_eformat=Tunnistamaton <tt>hwclock</tt> -muoto
+index_sched=Synkronoidaan aikataulun mukaan?
+index_schedyes=Kyllä, ajoittain alla ..
+index_sync=Synkronoi ja käytä
+index_hardware2=Aseta myös laitteistoaika
+index_boot=Synkronoidaan, kun Webmin käynnistyy?
+index_tzheader=Aikavyöhyke
+index_tz=Muuta aikavyöhyke arvoon
+index_ehwclock=$1 epäonnistui : $2 
+index_tabtime=Asettaa aika
+index_tabzone=Vaihda aikavyöhyke
+index_tabsync=Aikapalvelimen synkronointi
+index_desctime=Tämä muoto on tarkoitettu järjestelmän nykyisen ajan muuttamiseen, jota kaikki käynnissä olevat prosessit käyttävät. Käyttöjärjestelmissä, joissa on erillinen laitteistokello, sitä voidaan käyttää myös tämän asettamiseen.
+index_desczone=Tämän lomakkeen avulla voit asettaa järjestelmän oletusaikavyöhykkeen, jota käytetään muuntamaan järjestelmän aika ihmisen luettavaan muotoon ja siirtymään.
+index_descsync=Tämä lomake on tarkoitettu järjestelmän määrittämiseen synkronoimaan aika automaattisesti etäpalvelimen kanssa. Synkronointi tapahtuu käyttämällä Unix <tt>time</tt> -protokollaa tai NTP-protokollaa riippuen asennetuista komennoista ja siitä, mitä etäjärjestelmä tukee.
+
+action_save=Tallentaa
+action_apply=Käytä
+action_sync=Aseta järjestelmän aika laitteistoajan mukaan
+action_sync_s=Aseta laitteistoaika järjestelmäajan mukaan
+action_timeserver_sys=Synkronoi järjestelmän aika
+action_timeserver_hw=Synkronoi laitteistoaika
+action_savezone=Vaihda aikavyöhyke
+
+acl_sys=Käyttäjä voi muokata järjestelmän aikaa?
+acl_hw=Käyttäjä voi muokata laitteistoaikaa?
+acl_timezone=Käyttäjä voi asettaa aikavyöhykkeen?
+acl_ntp=Voiko synkronoida aikapalvelimen kanssa?
+acl_yes=Joo
+acl_no=Ei
+acl_error=Sinulla on pääsy järjestelmän aikamoduuliin, mutta et voi muokata järjestelmän tai laitteiston aikaa
+acl_nosys=Sinulla ei ole oikeutta muokata järjestelmän aikaa
+acl_nohw=Laitteiston aikaa ei saa muokata
+acl_nontp=Sinulla ei ole synkronointia aikapalvelimen kanssa
+
+sys_title=Järjestelmän aika
+hw_title=Laitteistoaika
+
+day=Päivä
+month=Kuukausi
+date=Päivämäärä
+hour=Tunnin
+year=vuosi
+minute=minuutti
+second=Toinen
+
+error_cnf=Virhe: $1 -komentoa ei löytynyt
+error_hw=Laitteiston aikaa ei voi asettaa : $1 
+error_sync=Ei voi synkronoida järjestelmän ajan kanssa : $1 
+error_ediff=Aikapalvelin, joka poikkeaa paikallisesta ajasta, on liian suuri: $1 päivää
+error_entp=NTP-ajan synkronointi epäonnistui : $1 
+error_etimeserver=Ei synkronoitavia aikapalvelimia syötettyjen kanssa
+
+log_set_date=Aseta järjestelmän aikaksi $1 
+log_set_hwclock=Aseta laitteiston kello arvoon $1 
+log_remote_date=Haettu järjestelmän aika $2 : sta
+log_remote_hwclock=Haettu laitteistoaika $2 : sta
+log_remote_date_l=Haettu järjestelmän aika $1 $2 : sta
+log_remote_hwclock_l=Haettu laitteistoaika $1 kohdasta $2 
+log_sync=Synkronoitu järjestelmän aika laitteistoajan kanssa
+log_sync_s=Synkronoitu laitteistoaika järjestelmän ajan kanssa
+log_timezone=Vaihdettu aikavyöhyke $1 : ksi
+
+timezone_err=Aikavyöhykkeen tallentaminen epäonnistui
+timezone_ecannot=Et voi muuttaa aikavyöhykettä
+timezone_enone=Ei vyöhykettä valittu

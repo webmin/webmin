@@ -14,8 +14,8 @@ if ($config{'auth_ldap'}) {
 else {
 	if ($_[0]) {
 		return 1 if (!$config{'ldap_host'} || !$config{'login'} ||
-			     !$config{'pass'} || !$config{'user_base'} ||
-			     !$config{'group_base'});
+			     ( !$config{'pass'} && !$config{'ldap_pass_file'} ) || 
+					!$config{'user_base'} || !$config{'group_base'});
 		}
 	}
 if ($_[0]) {

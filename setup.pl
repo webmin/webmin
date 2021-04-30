@@ -19,9 +19,12 @@ open(VERSION, "$wadir/version") ||
 	&errorexit("Cannot find the Webmin install directory");
 chop($ver = <VERSION>);
 close(VERSION);
-
+my $spaces_count_def = 10;
+my $verleneach = int(length($ver) / 2);
+my $space_count = int($spaces_count_def - $verleneach);
+my $space_count_cond = " " x $space_count;
 print "***********************************************************************\n";
-print "*            Welcome to the Webmin setup script, version $ver        *\n";
+print "* $space_count_cond Welcome to the Webmin setup script, version $ver $space_count_cond *\n";
 print "***********************************************************************\n";
 print "Webmin is a web-based interface that allows Unix-like operating\n";
 print "systems and common Unix services to be easily administered.\n";
@@ -213,7 +216,7 @@ else {
 	print "***********************************************************************\n";
 	$autoos = $ENV{'autoos'} || 2;
 	$temp = &tempname();
-	$ex = system("$perl ".&quote_path("$srcdir/oschooser.pl")." ".&quote_path("$srcdir/os_list.txt")." $temp $autoos");
+	$ex = system("$perl ".&quote_path("$srcdir/oschooser.pl")." ".&quote_path("$srcdir/os_list.txt")." ".&quote_path($temp)." $autoos");
 	exit($ex) if ($ex);
 	&read_env_file($temp, \%osinfo);
 	$os_type = $osinfo{'os_type'};
@@ -236,8 +239,7 @@ else {
 		if (!&has_command("process.exe")) {
 			&errorexit("The command process.exe must be installed to run Webmin on Windows");
 			}
-		eval "use Win32::Daemon";
-		if ($@) {
+		if (eval "use Win32::Daemon; 1") {
 			&errorexit("The Perl module Win32::Daemon must be installed to run Webmin on Windows");
 			}
 		}
@@ -619,6 +621,11 @@ if (!defined($miniserv{'passdelay'}) && $os_type ne 'windows') {
 	$miniserv{'passdelay'} = 1;
 	}
 
+# Turn on referer checks
+if (!defined($gconfig{'referers_none'})) {
+	$gconfig{'referers_none'} = 1;
+	}
+
 # Save configs
 &put_miniserv_config(\%miniserv);
 &write_file("$config_directory/config", \%gconfig);
@@ -730,6 +737,9 @@ if (!$ENV{'nostart'}) {
 		print "presented, as it does not recognize the CA. Say yes.\n";
 		print "\n";
 		}
+	} else {
+		print "***********************************************************************\n";
+		print "Webmin has been installed but not started!\n\n";
 	}
 
 if ($oldwadir ne $wadir && $upgrading && !$ENV{'deletedold'}) {
@@ -752,7 +762,7 @@ sub copy_to_wadir
 {
 if ($wadir ne $srcdir) {
 	print "Copying files to $wadir ..\n";
-	if (&has_command("tar")) {
+	if ("$^O" !~ /MSWin32/) {
 		# Unix tar exists
 		system("cd ".&quote_path($srcdir)." && tar cf - . | (cd ".&quote_path($wadir)." ; tar xf -)");
 		}

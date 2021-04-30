@@ -1,0 +1,79 @@
+index_title=Dokumentacija sustava
+index_header=Pretraživanje dokumentacije sustava
+index_for=Traziti
+index_where=Traži u
+index_alldoc=Sva dokumentacija
+index_man=Priručne stranice
+index_doc=Dokumentacija paketa
+index_kernel=Kernel dokumentacija
+index_info=Info stranice
+index_howto=KAKO dokumenata
+index_kde=KDE dokumentacija
+index_perl=Dokumentacija modula Perl
+index_custom=Prilagođena dokumentacija
+index_help=Pomoć za webmin
+index_reset=Reset
+index_search=traži
+index_return=obrazac za pretraživanje
+index_type=utakmica
+index_name=Samo ime
+index_data=Naziv i sadržaj
+index_google=Google pretraživanje
+index_others=Kad tražite dokumentaciju s drugog modula, dopustite pretraživanje u ..
+index_other_man=Priručne stranice
+index_other_help=Webmin pomoć
+index_other_doc=Dokumentacija paketa
+index_other_kernel=Kernel dokumentacija
+index_other_howto=KAKO dokumenata
+index_other_perl=Dokumentacija modula Perl
+index_other_google=Google pretraživač
+index_other_kde=KDE dokumentacija
+index_and=Odgovaraju svima
+index_or=Odgovarajte bilo kojem
+
+search_efor=Nema ručne stranice za traženje unesenog
+search_title=Rezultati pretraživanja
+search_desc=Opis
+search_type=Tip
+search_file=Stranica ili datoteka
+search_man=Stranica s priručnikom
+search_howto=KAKO dokument
+search_doc=Dokumentacija paketa
+search_kernel=Kernel dokumentacija
+search_kde=KDE dokumentacija
+search_perl=Perl modul
+search_help=Pomoć za webmin
+search_custom=Prilagođena dokumentacija
+search_none=Nije pronađena dokumentacija koja odgovara $1.
+search_for=Za $1 
+search_google=Google rezultat pretraživanja
+search_doxfer=Webmin dokumentacija na mreži
+
+howto_title=KAKO Dokument
+howto_header=KAKO datoteka datoteke $1 
+howto_epath=Nevažeća staza dokumenta HOWTO
+
+doc_title=Dokumentacija paketa
+doc_header=Datoteka dokumenta paketa $1 
+doc_epath=Nevažeća staza dokumentacije paketa
+
+man_title=Stranica s priručnikom
+man_header=Stranica za upotrebu za $1 ($2)
+man_noentry=Ručna stranica za $1 ne postoji!
+man_epath=Stranica s priručnikom ne može biti put!
+
+kernel_title=Kernel Document
+kernel_header=Datoteka kernel dokumenta $1 
+kernel_epath=Nevažeća staza dokumenta kernela
+
+kde_title=KDE Dokumentacija
+kde_header=KDE datoteka dokumenta $1 
+kde_epath=Nevažeći put dokumentacije KDE
+
+perl_title=Perl modul
+perl_header=Dokumentacija za Perl modul $1 
+perl_emod=Nevažeće ime modula Perl
+
+acl_allow=Mogu li uređivati dopuštene vrste pretraživanja?
+
+check_ecannot=Nije vam dopušteno uređivanje dopuštenih vrsta pretraživanja

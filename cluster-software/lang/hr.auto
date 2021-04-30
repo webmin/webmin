@@ -1,0 +1,8 @@
+index_thost=Ime računala
+index_tdesc=Opis
+index_tcount=paketi
+index_ttype=Vrsta OS-a
+
+install_ealready=Verzija $1 je već instalirana
+
+do_success2=Instalirano $1 na $2.

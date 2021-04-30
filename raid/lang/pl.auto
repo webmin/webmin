@@ -1,0 +1,107 @@
+index_eprogs=Ani narzędzia RAID, ani pakiety MDADM nie są zainstalowane w systemie.
+index_mdadm=Korzystanie z MDADM w wersji $1 
+index_raidtools=Korzystanie z RaidTools
+index_name=Nazwa urządzenia
+index_active=Aktywny?
+index_errors=Błędy
+index_status=Status
+index_level=Poziom RAID
+index_size=Rozmiar użytkowy
+index_members=Członkowe urządzenia dyskowe
+index_header=Opcje powiadamiania o problemach RAID
+index_mailaddr=Wyślij powiadomienia do
+index_mailaddrnone=Nie wysyłaj
+index_mailfrom=Z adresu do powiadomień
+index_mailfromnone=Domyślnie (<tt>root</tt>)
+index_program=Polecenie do uruchomienia po wykryciu problemów
+index_programnone=Nie uruchamiaj żadnych
+index_monitor=Monitorowanie włączone?
+
+raid6=RAID6 (podwójna parzystość rozproszona)
+raid10=RAID10 (paski i odbicie lustrzane)
+blocks=Bloki
+
+create_missing=Czy dołączyć aktualnie brakujący dysk?
+create_assume=Pominąć inicjalizację urządzeń?
+create_lvm=LVM VG $1, LV $2 
+create_group=Członek grupy rezerwowej
+create_nogroup=Brak (użyj tylko własnych części zamiennych)
+create_oldgroup=Istniejąca grupa
+create_newgroup=Nowa grupa
+create_enewgroup=Brakująca lub niealfanumeryczna nazwa grupy zapasowej
+create_n2_layout=2 w pobliżu kopii
+create_f2_layout=2 dalekie kopie
+create_o2_layout=2 kopie offsetowe
+create_n3_layout=3 w pobliżu kopii
+create_f3_layout=3 dalekie kopie
+create_o3_layout=3 kopie offsetowe
+
+view_uuid=UUID
+view_errors=Błędy RAID
+view_bad=Awaria dysków $1 
+view_mount=Do montażu na $1 
+view_lvm=Używany w LVM VG $1 
+view_iscsi=Używany przez urządzenie współdzielone iSCSI $1 
+view_stopdesc=Kliknij ten przycisk, aby zamknąć urządzenie RAID i uniemożliwić dostęp do niego.
+view_startdesc=Kliknij ten przycisk, aby ponownie aktywować to urządzenie RAID.
+view_delayed=Oczekiwanie na innym urządzeniu
+view_cannot2=To urządzenie RAID nie może być montowane, dezaktywowane, usuwane ani ponownie formatowane, ponieważ jest obecnie aktywne.
+view_mkfs2=Utwórz system plików typu:
+view_mkfsdesc=Wybierz typ systemu plików i kliknij ten przycisk, aby utworzyć nowy system plików na tym woluminie logicznym. Spowoduje to usunięcie danych aktualnie znajdujących się w woluminie.
+view_add=Dodaj partycję:
+view_adddesc=Wybierz nieużywaną partycję i kliknij ten przycisk, aby dodać ją do urządzenia RAID.
+view_delete=Usuń macierz RAID
+view_deletedesc=Kliknij ten przycisk, aby całkowicie usunąć to urządzenie RAID. Wszelkie dane, które zawiera, prawie na pewno zostaną utracone!
+view_remove=Usuń partycję:
+view_removedesc=Wybierz partycję, która jest częścią urządzenia RAID i kliknij ten przycisk, aby ją usunąć. Może to spowodować utratę danych!
+view_remove_det=Usuń odłączony
+view_remove_detdesc=Usuń partycje, które są już fizycznie odłączone od systemu.
+view_replace=Zamień partycję:
+view_replacedesc=Wybierz partycję, którą chcesz wymienić. (Hot Replace)
+view_grow=Rozwijaj RAID:
+view_growdesc=Rozwijaj tablicę (konwertuj gorące części na aktywnych członków)
+view_convert_to_raid6=Konwertuj na RAID6
+view_convert_to_raid6desc=Konwertuj poziom RAID na RAID6, dodając jeden lub więcej dysków.
+view_convert_to_raid5=Konwertuj na RAID5
+view_convert_to_raid5desc=Konwertuj poziom RAID na RAID5, usuwając dysk.
+view_state=Status RAID
+view_rebuild=Postęp odbudowy
+view_newmount=Zamontuj RAID na:
+view_newmount2=Zamontuj RAID jako pamięć wirtualną
+view_mountmsg=Wprowadź katalog i kliknij ten przycisk, aby przejść do formularza montażu urządzenia RAID, które musi już zawierać system plików.
+view_mountmsg2=Kliknij ten przycisk, aby użyć tego urządzenia RAID dla pamięci wirtualnej w systemie.
+view_blocks=$1 bloków
+view_sparegroup=Grupa zapasowa
+
+mkfs_header2=Ten formularz umożliwia zbudowanie nowego systemu plików $2 na $1. <b>Wszystkie</b> istniejące dane zostaną usunięte!
+
+emdadmstop=<tt>mdadm</tt> in <tt>--stop</tt> mode failed : $1
+emdadmcreate=<tt>mdadm</tt> in <tt>--create</tt> mode failed : $1
+emdadmadd=<tt>mdadm</tt> in <tt>--manage --add</tt> mode failed : $1
+emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
+emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
+emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
+emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
+log_add=Dodano partycję $2 do urządzenia RAID $1 
+log_remove=Usunięto partycję $2 z urządzenia RAID $1 
+log_replace=Wymieniona na gorąco partycja $2 w urządzeniu RAID $1 z wolną partycją $3 
+log_grow=Wyhodowano urządzenie RAID $1 do łącznie $2 dysków
+log_convert_to_raid6=Konwertowane urządzenie RAID5 $1 na urządzenie RAID6
+log_convert_to_raid5=Konwertowane urządzenie RAID6 $1 na urządzenie RAID5
+log_notif=Zaktualizowano opcje powiadamiania o problemach RAID
+
+notif_err=Nie udało się zapisać opcji powiadamiania o problemie RAID
+notif_emailaddr=Brakujący lub nieprawidłowy adres powiadomienia
+notif_emailfrom=Brak lub nieprawidłowy adres nadawcy
+notif_eprogram=Brakujący lub nieistniejący program do uruchomienia
+
+delete_title=Usuń macierz RAID
+delete_rusure=Czy na pewno chcesz usunąć macierz RAID $1, która zajmuje $2 miejsca na dysku?
+delete_ok=Tak, usuń to
+delete_eidx=Nie wybrano macierzy RAID!
+
+remove_title=Usuń partycję z macierzy RAID
+remove_rusure=Czy na pewno chcesz usunąć partycję $2 z macierzy RAID $1 ?
+remove_ok=Tak, usuń to
+remove_eidx=Nie wybrano macierzy RAID!

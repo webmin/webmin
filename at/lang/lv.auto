@@ -1,0 +1,81 @@
+index_title=Ieplānotās komandas
+index_header=Jauna ieplānota komanda
+index_user=Palaist kā lietotājam
+index_date=Skrien datumā
+index_time=Palaist laikā
+index_cmd=Komandas izpildīt
+index_mail=Vai sūtīt e-pastu pēc pabeigšanas?
+index_id=Darba ID
+index_exec=Skrien plkst
+index_created=Izveidots
+index_dir=Palaist direktorijā
+index_return=komandu saraksts
+index_cdate=Šodienas datums
+index_ctime=Pašreizējais laiks
+index_allow=Atļautie ieplānoto komandu lietotāji
+index_amode=Lietotāji atļauj
+index_amode0=Visi Unix lietotāji
+index_amode1=Tikai uzskaitītie lietotāji ..
+index_amode2=Visi, izņemot uzskaitītos lietotājus ..
+index_delete=Atcelt atlasītās komandas
+index_noat=Komanda $1 jūsu sistēmā netika atrasta - varbūt tā nav instalēta vai nav pieejama jūsu operētājsistēmai.
+index_nostyle=Webmin nezina, kā pārvaldīt grafika komandas šajā operētājsistēmā.
+index_stop=Pārtraukt ieplānoto komandu serveri
+index_stopdesc=Izslēdziet <tt>atd</tt> fona servera procesu, kas izpilda ieplānotās komandas. Tas novērsīs komandu izpildi noteiktajā laikā.
+index_start=Startējiet ieplānoto komandu serveri
+index_startdesc=Sāciet <tt>atd</tt> fona servera procesu, kas izpilda ieplānotās komandas. Tas ir nepieciešams, lai komandas varētu izpildīt noteiktajā laikā.
+index_boot=Vai sākt serveri palaišanas laikā?
+index_bootdesc=Mainiet šo iestatījumu, lai iespējotu vai atspējotu ieplānoto komandu servera palaišanu sistēmas sāknēšanas laikā.
+
+edit_title=Plānotā komanda
+edit_cmd=Pilns izpildāmais skripts
+edit_shortcmd=Komanda izpildīt
+edit_header=Plānotā komandas informācija
+edit_delete=Atcelt šo komandu
+edit_run=Palaist tagad
+edit_ejob=Plānotā komanda vairs nepastāv!
+edit_ecannot=Jums nav atļauts rediģēt šo ieplānoto komandu
+edit_showfull=Rādīt pilnu skriptu.
+
+create_err=Neizdevās izveidot grafika komandu
+create_euser=Trūkst vai nav derīgs lietotājvārds
+create_edate=Trūkst vai nav derīgs datums vai laiks
+create_ecmd=Nav ievadītas komandas
+create_efuture=Datums un laiks ir pagātnē
+create_edir=Trūkst vai nav derīgs direktorijs
+create_ecannot=Jums nav atļauts izveidot ieplānotas komandas šim lietotājam
+create_eallow=Norādītajam lietotājam nav atļauts palaist plānotās komandas
+
+delete_err=Neizdevās atcelt komandu
+delete_egone=Komanda jau ir palaista vai izdzēsta
+
+acl_users=Var rediģēt ieplānotās komandas
+acl_all=Visi lietotāji
+acl_this=Pašreizējais Webmin lietotājs
+acl_only=Tikai lietotāji
+acl_except=Visi, izņemot lietotājus
+acl_allow=Vai lietotāji var rediģēt?
+
+run_title=Darbojošā komanda
+run_output=Izeja no plānotās komandas ..
+run_none=Netika ģenerēta izvade
+
+allow_err=Neizdevās saglabāt atļautos lietotājus
+allow_ecannot=Jums nav atļauts pārvaldīt atļautos lietotājus
+allow_eusers=Nav ievadīts neviens lietotājs
+
+deletes_err=Neizdevās atcelt komandas
+deletes_enone=Nav atlasīts
+
+log_allow=Mainīti atļautie lietotāji
+log_create_job=Izveidota plānota komanda $1 
+log_delete_job=Atcelta plānotā komanda $1 
+log_exec_job=Izpildīta plānotā komanda $1 
+log_delete_jobs=Atceltas $1 plānotās komandas
+log_stop=Apturēts ieplānoto komandu serveris
+log_start=Sācis ieplānoto komandu serveris
+log_bootup=Iespējojot ieplānoto komandu serveri
+log_bootdown=Sāknēšanas laikā atspējots ieplānoto komandu serveris
+
+stop_err=Neizdevās apturēt serveri
+start_err=Neizdevās palaist serveri

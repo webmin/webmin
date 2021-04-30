@@ -1,0 +1,39 @@
+index_start_wb=Iniciar servidores Winbind
+index_startmsg_wb=Os servidores Winbind não parecem estar em execução no seu sistema.
+index_restart_wb=Reinicie os servidores Winbind
+index_restartmsg_wb=Clique neste botão para reiniciar os servidores Winbind em execução no seu sistema.
+index_stop_wb=Parar servidores Winbind
+index_stopmsg_wb=Clique neste botão para desligar os servidores Winbind em execução no seu sistema.
+
+convert_who=Usuários Unix para converter
+convert_who0=Somente usuários listados ou intervalos de UID
+convert_who1=Todos, exceto usuários listados e intervalos de UID
+
+net_ip=endereço de IP
+
+smb_master_auto=Automático
+smb_server=Servidor de senhas
+
+euser_locked=A conta está bloqueada
+
+mkpass_added=Adicionado
+mkpass_user=Nome do usuário
+mkpass_action=Medida tomada
+mkpass_skipcount=$1 usuários foram ignorados para conversão.
+
+savefshare_emkdir=Falha ao criar o diretório : $1 
+
+start_err_wb=Falha ao iniciar servidores Winbind
+
+restart_err=Falha ao reiniciar os servidores Samba
+restart_err_wb=Falha ao reiniciar os servidores Winbind
+
+viewu_refresh=Atualizar a página.
+
+log_apply_wb=Servidores Winbind reiniciados
+log_stop_wb=Servidores Winbind parados
+log_start_wb=Servidores Winbind iniciados
+
+acl_bind=Pode acessar as opções do winbind?
+
+bind_defaultdomain=Sempre usar domínio padrão?

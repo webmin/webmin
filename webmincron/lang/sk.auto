@@ -1,0 +1,20 @@
+edit_mins=minúty
+edit_hours=hodiny
+edit_days=Dni
+edit_months=mesiaca
+edit_weekdays=Dni v týždni
+edit_all=všetko
+edit_selected=Vybraný ..
+edit_run=Spustiť
+edit_clone=Klonovať prácu
+edit_return=cron job
+edit_special1=Jednoduchý rozvrh ..
+edit_special0=Nižšie uvedené časy a dátumy.
+edit_special_hourly=hodinový
+edit_special_daily=Denne (o polnoci)
+edit_special_weekly=Týždenne (v nedeľu)
+edit_special_monthly=Mesačne (1.)
+edit_special_yearly=Ročne (1. januára)
+
+log_success=Úspešne bežal <tt>$2</tt> v <tt>$1</tt>
+log_failure=Nepodarilo sa spustiť <tt>$2</tt> v <tt>$1</tt> : $3 

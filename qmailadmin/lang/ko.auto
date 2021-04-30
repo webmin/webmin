@@ -1,0 +1,405 @@
+index_title=QMail 메일 서버
+index_edir=QMail 기본 디렉토리 $1 이 (가) 없습니다. QMail이 설치되어 있지 않거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+index_edir2=$1 디렉토리는 QMail 기본 디렉토리가 아닙니다. QMail이 설치되어 있지 않거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+index_return=QMail 구성
+index_stop=QMail 프로세스 중지
+index_stopmsg=대기중인 메일 배달을 담당하는 백그라운드 QMail 프로세스를 중지하려면이 단추를 클릭하십시오. 이러한 프로세스가 없으면 메일이 시스템에서 제대로 전송되거나 전달되지 않습니다.
+index_start=QMail 프로세스 시작
+index_startmsg=대기중인 메일 배달을 담당하는 백그라운드 QMail 프로세스를 시작하려면이 단추를 클릭하십시오. 이러한 프로세스가 없으면 메일이 시스템에서 제대로 전송되거나 전달되지 않습니다.
+
+opts_title=QMail 옵션
+opts_me=로컬 호스트 이름
+opts_helo=SMTP HELO의 호스트 이름
+opts_toconnect=SMTP 연결 시간 초과
+opts_secs=초
+opts_toremote=SMTP 발신 응답 시간 초과
+opts_bytes=최대 메시지 크기
+opts_unlimited=제한 없는
+opts_timeout=SMTP 수신 데이터 시간 초과
+opts_localip=로컬 IP 주소로 이메일을 보내는 호스트 이름
+opts_greet=SMTP 인사말 메시지
+opts_err=QMail 옵션을 저장하지 못했습니다
+opts_eme=잘못된 로컬 호스트 이름
+opts_etoconnect=잘못된 SMTP 연결 시간 초과
+opts_etoremote=잘못된 SMTP 발신 응답 시간 초과
+opts_ebytes=최대 메시지 크기가 잘못되었습니다
+opts_etimeout=잘못된 SMTP 수신 데이터 시간 초과
+opts_elocalip=잘못된 로컬 IP 주소 호스트 이름
+
+aliases_title=메일 별칭
+aliases_addr=주소
+aliases_to=에일 리 어스
+aliases_type1=주소 1
+aliases_type2=메일 디렉토리 $1 
+aliases_type3=메일 파일 $1 
+aliases_type4=프로그램 $1 
+aliases_type5=자동 회신 파일 $1 
+aliases_type6=필터 파일 $1 적용
+aliases_none=없음
+aliases_return=별칭 목록
+aliases_toomany=시스템에이 페이지에 표시 할 메일 별명이 너무 많습니다.
+aliases_go=일치하는 별명 찾기 :
+aliases_delete=선택된 별칭 삭제
+
+aform_type0=없음
+aform_type1=이메일 주소
+aform_type2=메일 디렉토리
+aform_type3=메일 파일
+aform_type4=프로그램 피드
+aform_type5=파일에서 자동 회신
+aform_type6=필터 파일 적용
+aform_edit=별명 편집
+aform_create=별명 작성
+aform_name=주소
+aform_val=별칭
+aform_afile=편집하다 ..
+aform_novirt=&lt;모든 도메인&gt;
+aform_return=별명
+
+asave_err=별칭을 저장하지 못했습니다
+asave_eaddr='$1'은 (는) 유효한 주소가 아닙니다
+asave_ealready='$1'의 별칭이 이미 존재합니다
+asave_etype1='$1'은 (는) 유효한 이메일 주소가 아닙니다
+asave_etype2='$1'은 (는) 유효한 메일 디렉토리가 아닙니다
+asave_etype3='$1'은 (는) 유효한 메일 파일 이름이 아닙니다.
+asave_etype4='$1'은 (는) 유효한 프로그램이 아니거나 존재하지 않습니다
+asave_etype5=자동 회신 파일 '$1'이 (가) 유효하지 않습니다
+asave_etype4none=주어진 프로그램이 없습니다
+asave_etype6=필터 파일 '$1'이 (가) 유효하지 않습니다
+
+adelete_err=별칭을 삭제하지 못했습니다.
+adelete_enone=선택된 사항 없음
+
+locals_title=로컬 도메인
+locals_domains=이 서버의 로컬 도메인
+locals_desc=Qmail은 왼쪽 텍스트 상자에 나열된 도메인 및 호스트 이름으로 로컬 사용자에게 이메일을 전달할 수 있습니다. 메일 서버가 여러 전자 메일 도메인을 처리하도록하려면이 도메인에 모두 나열해야합니다.
+locals_only=로컬 호스트 이름 $1 만
+locals_sel=아래에 나열된 도메인 ..
+
+rcpts_title=허용 도메인
+rcpts_domains=허용 된 로컬 및 릴레이 도메인
+rcpts_all=모든 도메인
+rcpts_sel=아래에 나열된 도메인 ..
+rcpts_desc=Qmail은 왼쪽의 텍스트 상자에 나열된 도메인 및 호스트 이름으로 메일을 중계 또는 로컬 배달 만 허용합니다. <tt>.foo.com</tt>과 같은 도메인의 모든 호스트와 일치하는 와일드 카드를 입력 할 수도 있습니다. 메일 서버가 클라이언트의 이메일을 릴레이하도록하려면 모든 도메인의 메일을 수락해야합니다.
+rcpts_domains2=추가 로컬 및 릴레이 도메인
+rcpts_desc2=허용되는 도메인 수가 많으면이 텍스트 상자에 덜 일반적으로 사용되는 도메인을 입력해야합니다. 일반적으로 처음 50 개의 허용 도메인은 상단 텍스트 상자에 입력하고 나머지는이 도메인에 입력해야합니다.
+
+bads_title=거부 된 주소
+bads_addresses=거부 된 이메일 주소
+bads_desc=QMail은 왼쪽의 텍스트 상자에 나열된 주소 중 하나에서 <tt>username @ domainname</tt>으로 입력해야 배달 또는 중계 될 메일을 거부합니다. 전체 도메인에서 메일을 거부하려면 <tt>@domainname</tt>으로 입력해야합니다.
+
+routes_title=도메인 라우팅
+routes_toomany=시스템에이 페이지에 표시 할 도메인 경로가 너무 많습니다.
+routes_go=일치하는 도메인 경로 찾기 :
+routes_from=도메인 메일
+routes_to=서버를 통해 전송
+routes_direct=직접 전달
+routes_defroute=다음을 통해 다른 모든 발신 메일을 배달하십시오.
+routes_return=도메인 경로
+routes_delete=선택된 도메인 경로 삭제
+
+rform_edit=도메인 경로 편집
+rform_create=도메인 경로 만들기
+rform_from=호스트 또는 도메인의 메일
+rform_to=SMTP 서버를 통해 전송
+rform_port=SMTP 포트
+
+rsave_err=도메인 경로를 저장하지 못했습니다
+rsave_efrom='$1'은 (는) 유효한 도메인 이름이 아닙니다.
+rsave_eto='$1'은 (는) 유효한 SMTP 서버가 아닙니다
+rsave_eport='$1'은 (는) 유효한 포트 번호가 아닙니다
+
+rdelete_err=도메인 경로를 삭제하지 못했습니다.
+
+percents_title=주소 도메인 비율
+percents_domains=% 주소를 지원하는 도메인
+percents_desc=Qtt는 <tt>seconddomain</tt>이 왼쪽의 텍스트 상자에 표시되면 <tt>user%firstdomain@seconddomain</tt> 형식의 주소를 가진 이메일을 수락합니다. 이 형식의 메시지는이 메일 서버에 의해 <tt>user@firstdomain</tt>으로 전달됩니다.
+
+virts_title=가상 매핑
+virts_toomany=시스템에이 페이지에 표시 할 가상 매핑이 너무 많습니다.
+virts_go=일치하는 가상 매핑 찾기 :
+virts_from=메일
+virts_prepend=접두사
+virts_all=모든 주소
+virts_none=가상이 아님
+virts_desc=QMail은 가상 맵핑을 사용하여 추가 처리 전에 이메일 주소의 사용자 부분에 텍스트를 추가하여 서버의 다른 도메인에 대한 이메일을 처리합니다. 도메인에 대한 새 가상 매핑을 만든 다음 <a href='$1'>메일 별칭</a> 페이지를 사용하여 해당 도메인 내에 별칭을 생성하여 가상 메일 도메인을 설정하는 데 사용할 수 있습니다.
+virts_return=가상 매핑
+virts_delete=선택된 가상 매핑 삭제
+
+vform_edit=가상 매핑 편집
+vform_create=가상 매핑 생성
+vform_from=주소 메일
+vform_all=다른 가상 매핑과 일치하지 않는 주소
+vform_domain=도메인이있는 주소
+vform_user=주소
+vform_to=사용자 이름 앞에 추가
+vform_none=아무것도
+vform_prepend=지정된 접두사
+vform_auto=자동으로 선택된 접두사
+
+vsave_err=가상 매핑을 저장하지 못했습니다
+vsave_edomain='$1'은 (는) 유효한 이메일 도메인이 아닙니다
+vsave_euser='$1'은 (는) 유효한 이메일 사용자 이름이 아닙니다
+vsave_eprepend='$1'은 (는) 유효한 매핑 접두사가 아닙니다.
+vsave_eboth='다른 가상 매핑과 일치하지 않는 주소'와 '아무것도'를 모두 선택할 수 없습니다
+
+vdelete_err=가상 매핑을 삭제하지 못했습니다.
+
+stop_err=qmail-send 프로세스가 더 이상 실행되지 않습니다
+
+log_stop=중지 된 QMail 프로세스
+log_start=QMail 프로세스 시작
+log_opts=변경된 QMail 옵션
+log_alias_create=생성 된 별칭 $1 
+log_alias_delete=별칭 $1 삭제
+log_alias_modify=수정 된 별칭 $1 
+log_delete_aliases=$1 별칭 삭제
+log_virt_create=가상 매핑 $1 을 (를) 생성했습니다
+log_virt_delete=삭제 된 가상 매핑 $1 
+log_virt_modify=수정 된 가상 매핑 $1 
+log_delete_virts=$1 개의 가상 매핑이 삭제되었습니다.
+log_virtall_create=catchall 가상 매핑 생성
+log_virtall_delete=catchall 가상 매핑이 삭제되었습니다.
+log_virtall_modify=수정 된 catchall 가상 매핑
+log_locals=변경된 로컬 도메인
+log_rcpts=허용 도메인 변경
+log_bads=거부 된 주소 변경
+log_percents=% 주소 도메인 변경
+log_route_create=$1 에 대한 경로 생성
+log_route_delete=$1 의 삭제 된 경로
+log_route_modifed=$1 에 대한 수정 된 경로
+log_delete_routes=$1 경로 삭제
+log_defroute=수정 된 기본 경로
+log_assign_create=메일 사용자 $1 을 (를) 작성했습니다.
+log_assign_delete=삭제 된 메일 사용자 $1 
+log_assign_modifed=수정 된 메일 사용자 $1 
+log_delete_assigns=$1 명의 메일 사용자를 삭제했습니다.
+log_delmail=$2 에서 $1 개의 메시지를 삭제했습니다.
+log_movemail=$1 메시지를 $2 에서 $3 (으)로 이동했습니다.
+log_send=$1 에게 메일을 보냈습니다.
+
+rfile_title=자동 회신 파일 편집
+rfile_desc=아래 텍스트 영역을 사용하여 자동 회신 메시지를 $1 에서 편집하십시오. 메시지에는 $SUBJECT, $FROM, $TO, $DATE 및 $BODY 매크로가 포함될 수 있으며 자동 회신이 활성화 될 때 확장됩니다.
+rfile_desc2=<br><tt> 보낸 사람 : foo@bar.com </tt><tt> 제목 : 휴일에 </tt><br> 메시지 상단에 단일 빈 줄로 본문과 구분됩니다.
+rfile_efile=$1 을 (를) 편집 할 수 없습니다.
+rfile_undo=변경 사항 취소
+rfile_replies=메일 루프를 방지하기 위해 회신을 추적 하시겠습니까?
+rfile_none=아니
+rfile_file=예, 로그 파일 사용
+rfile_period=답글 사이의 최소 간격
+rfile_default=기본 (1 시간)
+rfile_secs=초
+rfile_ereplies=회신 추적 로그 파일이 없습니다.
+rfile_eperiod=답글 사이에 누락되거나 잘못된 초 수
+rfile_no_autoreply=자동 회신을 보내지 마십시오
+rfile_from=보낸 사람 : 회신 주소
+rfile_auto=자동 (수신자 주소 기준)
+rfile_efrom=발신인 : 주소
+rfile_fromdesc=자동 방법이 신뢰할 수 없으므로 From : 주소는 가능한 한 항상 지정해야합니다.
+
+ffile_title=필터 파일 편집
+ffile_desc=$1 파일에서 필터 규칙을 설정하려면 아래 양식을 사용하십시오.
+ffile_efile=$1 을 (를) 편집 할 수 없습니다.
+ffile_line=$1 필드가 $2 $3 이면 $4 (으)로 전달
+ffile_from=...에서
+ffile_to=에
+ffile_subject=제목
+ffile_cc=CC
+ffile_body=몸
+ffile_what0=일치하지 않습니다
+ffile_what1=성냥
+ffile_other=그렇지 않으면 $1 로 전달
+ffile_err=필터 파일을 저장하지 못했습니다
+ffile_ematch=일치하지 않는 항목
+ffile_eaction=전달 주소가 없습니다.
+
+queue_title=메일 대기열
+queue_count=$1 메시지
+queue_none=현재 대기중인 메일 메시지가 없습니다
+queue_id=메일 ID
+queue_date=보냄
+queue_from=에서
+queue_to=에
+queue_cc=참조
+queue_subject=제목
+queue_return=메일 대기열
+queue_delete=선택된 메시지 삭제
+queue_all=모두 선택
+queue_invert=반전 선택
+queue_refresh=메일 대기열 새로 고침
+queue_refreshdesc=메일 큐의 현재 상태를 표시하려면이 페이지를 다시로드하십시오.
+
+qview_title=대기중인 메시지
+qview_desc=파일 $1 에서
+qview_headers=메일 헤더
+qview_attach=첨부
+
+assigns_title=메일 사용자 할당
+assigns_return=메일 사용자 할당
+assigns_toomany=시스템에이 페이지에 표시 할 메일 사용자가 너무 많습니다.
+assigns_go=일치하는 메일 사용자 찾기 :
+assigns_address=우편 주소
+assigns_user=유닉스 사용자
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=홈 디렉토리
+assigns_desc=메일 사용자 지정을 사용하면 Unix 사용자 목록에 정의되지 않은 사용자의 메일 함을 작성할 수 있습니다. 각 과제는 마치 실제 Unix 사용자의 사서함으로 배달되는 것처럼 선택한 사용자 이름 또는 사용자 이름 패턴으로 메일을 배달합니다.
+assigns_delete=선택된 메일 사용자 삭제
+
+sform_edit=메일 사용자 편집
+sform_create=메일 사용자 생성
+sform_address=주소 사용자 이름
+sform_mode0=정확한 사용자 이름
+sform_mode1=로 시작하는 사용자 이름
+sform_user=유닉스 사용자
+sform_uid=UID
+sform_gid=GID
+sform_home=홈 디렉토리
+
+ssave_err=메일 사용자를 저장하지 못했습니다
+ssave_eaddress=주소 사용자 이름이 없거나 잘못되었습니다
+ssave_euser=유닉스 사용자가 없거나 잘못되었습니다
+ssave_euid=UID가 없거나 유효하지 않습니다
+ssave_egid=누락되거나 잘못된 GID
+ssave_ehome=홈 디렉토리가 없거나 유효하지 않습니다
+
+sdelete_err=메일 사용자를 삭제하지 못했습니다.
+
+delete_egone=대기중인 메시지가 더 이상 존재하지 않습니다
+delete_ebogus=잘못된 대기열 파일 이름
+
+boxes_title=사용자 사서함
+boxes_user=사용자
+boxes_size=사서함 크기
+boxes_none=메일이 없습니다
+boxes_return=우편함
+boxes_sent=보낸 편지함
+boxes_ecannot=이메일을 읽을 수 없습니다
+boxes_toomany=시스템에 모든 사서함을 나열하기에는 사용자가 너무 많습니다.
+boxes_go=사용자 메일보기 :
+
+mail_title=사용자 이메일
+mail_from=에서
+mail_date=데이트
+mail_subject=제목
+mail_to=에
+mail_cc=참조
+mail_bcc=숨은 참조
+mail_pri=우선 순위
+mail_highest=제일 높은
+mail_high=높은
+mail_normal=표준
+mail_low=낮은
+mail_lowest=최저
+mail_for=$1 에서
+mail_for2=사용자 $1 의 경우
+mail_sent=보낸 메일 목록에서
+mail_size=크기
+mail_delete=지우다
+mail_compose=짓다
+mail_return=사용자 사서함
+mail_pos=$3 의 $1 에서 $2 까지의 메시지
+mail_none=이 사서함에는 메시지가 없습니다
+mail_ecannot=이 사용자의 이메일을 읽을 수 없습니다
+mail_all=모두 선택
+mail_invert=반전 선택
+mail_search=메시지를 찾을 수있는 곳
+mail_body=몸
+mail_match=성냥
+mail_ok=검색
+mail_nonefrom=없음
+mail_mark=로 표시 :
+mail_mark0=읽히지 않는
+mail_mark1=읽다
+mail_mark2=특별한
+mail_forward=앞으로
+mail_rfc=라인에서
+mail_move=이동 :
+mail_eexists=더 이상 메시지가 없습니다!
+
+view_title=이메일 읽기
+view_desc=$2 의 메시지 $1 
+view_desc2=사용자 $2 에 대한 메시지 $1 
+view_desc3=$1 메시지
+view_sent=보낸 메일 목록의 메시지 $1 
+view_qdesc=대기중인 메시지 $1 
+view_headers=메일 헤더
+view_allheaders=모든 헤더보기
+view_noheaders=기본 헤더보기
+view_attach=첨부
+view_reply=댓글
+view_reply2=모두에게 답장
+view_enew=새로운 것으로 편집
+view_forward=앞으로
+view_delete=지우다
+view_strip=첨부 파일 제거
+view_ecannot=이 사용자의 이메일을 읽을 수 없습니다
+view_mark=메시지를 다음과 같이 표시하십시오.
+view_mark0=읽히지 않는
+view_mark1=읽다
+view_mark2=특별한
+view_return=원본 이메일
+view_sub=첨부 된 이메일
+
+compose_title=이메일을 쓰다
+reply_title=이메일에 회신
+forward_title=이메일 전달
+enew_title=이메일 수정
+reply_headers=메일 헤더
+reply_attach=전달 된 첨부 파일
+reply_mailforward=전달 된 메시지
+reply_attach2=클라이언트 및 서버 측 첨부
+reply_send=메일을 보내다
+reply_ecannot=이 사용자로 메일을 보낼 수 없습니다
+
+send_err=메일을 보내지 못했습니다
+send_eto=누락 된 주소
+send_efrom=발신자 주소
+send_title=보낸 메일
+send_ok=메일이 $1 (으)로 전송되었습니다
+send_ecannot=이 사용자로 메일을 보낼 수 없습니다
+send_esmtp=SMTP 명령 $1 실패  : $2 
+send_efile=첨부 된 파일 $1 이 (가) 없습니다
+send_eattach=첨부 파일의 크기는 $1 KB를 초과 할 수 없습니다.
+send_eperms=$1 사용자가 $2 을 읽을 수 없습니다
+send_eperms2=$1 파일을 보낼 수 없습니다
+send_epath=Sendmail 실행 파일 $1 이 (가) 없습니다.
+
+delete_title=메일 삭제
+delete_rusure=$2 에서 선택한 $1 개의 메시지를 삭제 하시겠습니까? 대용량 메일 파일의 경우 시간이 다소 걸릴 수 있습니다. 삭제가 완료 될 때까지 다른 조치를 수행하지 않아야합니다.
+delete_rusure2=$1 에서이 메시지를 삭제 하시겠습니까? 대용량 메일 파일의 경우 시간이 다소 걸릴 수 있습니다. 삭제가 완료 될 때까지 다른 조치를 수행하지 않아야합니다.
+delete_ok=지금 삭제
+delete_ecannot=이제이 사용자로부터 메일을 삭제할 수 있습니다
+delete_enone=삭제할 메일이 선택되지 않았습니다
+delete_emnone=표시 할 메일이 선택되지 않았습니다
+delete_nobutton=버튼을 클릭하지 않았습니다
+
+search_title=검색 결과
+search_ecannot=이 사용자의 이메일을 검색 할 수 없습니다
+search_ematch=일치시킬 텍스트를 입력해야합니다.
+search_efield=검색 유형을 선택해야합니다.
+search_none=메시지가 없습니다.
+search_results2=$2 와 (과) 일치하는 $1 메일 메시지.
+search_results3=$1 메일 메시지가 $2 과 (와) 일치하지 않습니다.
+
+match_from=보낸 사람 : 일치
+match_subject=제목 : 성냥
+match_to=받는 사람 : 일치
+match_cc=참조 : 일치
+match_date=날짜 : 일치
+match_body=신체 경기
+match_size=크기가보다 큼
+match_headers=헤더 일치
+match_=-----------------
+match_!from=보낸 사람 : 일치하지 않습니다
+match_!subject=제목 : 일치하지 않습니다
+match_!to=받는 사람 : 일치하지 않습니다
+match_!cc=참조 : 일치하지 않습니다
+match_!date=날짜 : 일치하지 않습니다
+match_!body=본문이 일치하지 않습니다
+match_!size=크기가
+match_!headers=헤더가 일치하지 않습니다
+
+delq_titles=메시지 삭제
+delq_rusure=선택한 $1 개의 대기열에있는 메시지를 삭제 하시겠습니까?
+delq_confirm=메시지 삭제

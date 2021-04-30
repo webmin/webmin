@@ -1,0 +1,22 @@
+index_title=集群外殼命令
+index_cmd=運行命令
+index_old=要么
+index_server=在服務器上運行
+index_run=立即運行命令
+index_return=模塊索引
+index_this=這個服務器
+index_all=&lt;所有主機&gt;
+index_group=$1的成員
+index_clear=清除歷史記錄
+index_edit=編輯上一個
+
+run_title=運行命令
+run_err=運行命令失敗
+run_ecmd=沒有輸入命令
+run_failed=無法在 $1上運行： $2
+run_success=$1..的輸出
+run_enone=沒有服務器要運行在選定
+
+log_clear=清除命令歷史
+log_run=在 $2台服務器上運行了 $1
+log_run_l=在 $2上跑了 $1

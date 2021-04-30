@@ -1,0 +1,3 @@
+desc_vi=Xác thực PAM
+name_vi=PAM
+longdesc_vi=Định cấu hình các bước xác thực PAM được sử dụng bởi các dịch vụ như telnet, POP và FTP.

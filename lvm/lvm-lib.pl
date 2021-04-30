@@ -755,7 +755,7 @@ else {
 sub parse_colon_file
 {
 local %rv;
-open(FILE, $_[0]);
+open(FILE, "<".$_[0]);
 while(<FILE>) {
 	if (/^([^:]+):\s*(.*)/) {
 		$rv{$1} = $2;
@@ -824,7 +824,7 @@ else {
 sub list_lvmtab
 {
 local @rv;
-open(TAB, $lvm_tab);
+open(TAB, "<".$lvm_tab);
 local $/ = "\0";
 while(<TAB>) {
 	chop;

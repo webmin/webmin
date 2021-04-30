@@ -1,0 +1,112 @@
+index_title=PPTP VPNクライアント
+index_epptp=PPTPクライアントプログラム $1がシステムで見つかりませんでした。インストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
+index_eppp=PPPサーバープログラム $1がシステムにインストールされていません。 PPTPは、その動作に依存しています。
+index_eoptions=グローバルPPTP PPPオプションファイル $1は存在しません。作成するか、<a href='$2'>モジュール構成</a>を調整して別のファイルを使用するか、まったく使用しません。
+index_header=定義済みトンネル
+index_none=PPTPトンネルはまだ定義されていません。
+index_tunnel=トンネル $1
+index_add=新しいPPTP VPNトンネルを追加します。
+index_conn=に接続します：
+index_pass=オプションのパスワード：
+index_conndesc=このボタンをクリックして、現在の構成を使用して選択したPPTP VPNトンネルを接続します。
+index_disc=切断：
+index_discdesc=このボタンをクリックして、選択した現在アクティブなPPTP VPNトンネルを切断し、それを通るすべてのルートを削除します。
+index_return=PPTPトンネルリスト
+index_opts=グローバルPPPオプションの編集
+index_optsdesc=このボタンをクリックして、すべてのPPTP VPNトンネルに適用されるPPPオプションを編集します。
+index_version=PPPdバージョン $1
+index_boot=起動時に接続します。
+index_noboot=&lt;接続しない&gt;
+index_bootdesc=このオプションを変更して、選択したPPTP VPN接続を起動時に開始するかどうかを制御します。
+
+disc_err=トンネルの切断に失敗しました
+disc_egone=もはやアクティブではありません
+disc_ekill=pppdプロセスを強制終了できませんでした
+disc_done=トンネル $1は正常に切断されました。
+
+conn_err=トンネルの接続に失敗しました
+conn_egone=トンネルはもう存在しません
+cone_ealready=接続済み
+conn_einvalid=構成ファイルにサーバーIPアドレスがありません
+conn_title=接続トンネル
+conn_cmd=コマンド $1でPPTP接続を確立しています ..
+conn_ok=..インターフェイス $1を使用して接続が正常にアクティブ化されました。ローカルアドレスは $2、リモートアドレスは $3です。
+conn_timeout=.. 接続に失敗しました！理由については、以下のログメッセージを確認してください。
+conn_routes=コマンドによるルートの追加 ..
+conn_mppe=VPN暗号化のMPPEプロトコルには、PPPデーモンとカーネルのサポートが必要です。ただし、上記のエラーは、システムで一方または両方が使用できないことを示しています。 PPTPサーバーがMPPEを必要としない場合、<a href='$1'>グローバルPPPオプション</a>ページでそれに関連するすべてのオプションをオフにしてみてください。
+
+edit_title1=PPTPトンネルを追加
+edit_title2=PPTPトンネルを編集
+edit_header=PPTP VPNトンネルオプション
+edit_name=トンネル名
+edit_server=サーバーに接続する
+edit_login=ユーザーとしてログイン
+edit_same=システムのホスト名
+edit_pass=パスワードでログイン
+edit_remote=サーバーの名前
+edit_auto=自動
+edit_adddef=デフォルトルートを追加しますか？
+edit_def1=反対側経由
+edit_def2=ゲートウェイ経由 ..
+edit_deldef=古いデフォルトルートを削除しますか？
+edit_routes=接続後に追加するルート
+edit_type=タイプ
+edit_type0=&nbsp;
+edit_type1=通信網
+edit_type2=単一ホスト
+edit_net=ネットワークまたはホスト
+edit_mask=ネットマスク
+edit_gw=ゲートウェイ経由
+edit_gw_def=違った終わり方
+edit_unknown=その他の<tt>route</tt>コマンド
+edit_file=PPPオプションファイル
+edit_none=なし
+edit_global=標準グローバルファイル
+edit_ofile=その他のファイル ..
+
+save_err=トンネルを保存できませんでした
+save_ename=トンネル名がありません
+save_eserver=接続するサーバーが見つからないか無効です
+save_elogin=ログイン名がないか無効です
+save_eremote=リモートサーバーの名前がないか無効です
+save_edef=デフォルトルートゲートウェイが見つからないか無効です
+save_enet=ルート $1のネットワークアドレスが無効です
+save_emask=ルート $1のネットマスクが無効です
+save_egw=ルート $1のネットワークのゲートウェイが無効です
+save_ehost=ルート $1のホストIPアドレスが無効です
+save_emask2=ホストルート $1にはネットマスクは必要ありません
+save_egw2=ルート $1のホストの無効なゲートウェイ
+save_erename=トンネルファイルの名前変更に失敗しました
+save_eclash=同じ名前のトンネルまたはPPPピアが既に存在します
+save_efile=PPPオプションファイルが見つからないか無効です
+
+opts_title=グローバルPPPオプション
+opts_desc=以下の設定は $1から取得され、標準のグローバルPPPオプションファイルを使用するように設定されているすべてのトンネルに適用されます。
+opts_header=すべてのトンネルのPPPオプション
+opts_mtu=最大送信パケットサイズ
+opts_mru=最大受信パケットサイズ
+opts_err=グローバルPPPオプションを保存できませんでした
+opts_emtu=最大送信パケットサイズがないか、無効です
+opts_emru=最大受信パケットサイズがないか、無効です
+opts_msdesc=以下のオプションは、Windows VPNサーバーで使用されるMPPE暗号化を有効にします。ただし、MPPEでは、PPPデーモンとオペレーティングシステムカーネルの両方でのサポートが必要です。
+
+mppe_mppe-40=40ビットMPPE暗号化を使用しますか？
+mppe_mppe-128=128ビットMPPE暗号化を使用しますか？
+mppe_mppe-stateless=ステートレスMPPEモードを有効にしますか？
+mppe_mppe=MPPE暗号化を有効にしますか？
+mppe_m2=使用する必要があります
+mppe_m0=使用できません
+mppe_d0=無効
+mppe_d1=許可された
+mppe_mppe-stateful=ステートフルMPPEモードを有効にしますか？
+mppe_old=警告-PPPデーモンが新しいスタイルのディレクティブをサポートしているにもかかわらず、構成ファイルに古いスタイルのMPPEディレクティブ $1が見つかりました。
+mppe_new=警告-PPPデーモンが古いスタイルのディレクティブのみをサポートしている場合でも、新しいスタイルのMPPEディレクティブ $1が構成ファイルに見つかりました。
+
+log_create=PPTPトンネル $1を作成しました
+log_update=変更されたPPTPトンネル $1
+log_delete=削除されたPPTPトンネル $1
+log_conn=接続されたトンネル $1
+log_conn_l=ローカルアドレス $2で接続されたトンネル $1
+log_failed=トンネル $1の接続に失敗しました
+log_disc=切断されたトンネル $1
+log_opts=編集されたグローバルPPPオプション

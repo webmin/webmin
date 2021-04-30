@@ -1,0 +1,68 @@
+acl_ggid=Groupes avec GID à portée
+
+egroup_listalldesc=Cliquez sur ce bouton pour afficher une liste de tous les systèmes de fichiers sur lesquels ce groupe a des quotas de disque, avec des liens pour les modifier.
+
+euser_listalldesc=Cliquez sur ce bouton pour afficher une liste de tous les systèmes de fichiers sur lesquels cet utilisateur dispose de quotas de disque, avec des liens pour les modifier.
+
+gfilesys_editdesc=Affichez et modifiez les quotas pour ce groupe sur un autre système de fichiers sur lequel il n'a actuellement pas de quotas.
+gfilesys_copydesc=Copiez les limites de quota pour ce groupe sur tous les systèmes de fichiers vers certains ou tous les autres groupes.
+gfilesys_enone=Aucun nom de groupe saisi
+
+index_supported=Quotas non encore pris en charge
+index_enable2=Activer le support
+index_euserdesc=Saisissez ou sélectionnez un utilisateur, puis cliquez sur ce bouton pour afficher ses quotas sur tous les systèmes de fichiers.
+index_egroupdesc=Entrez ou sélectionnez un groupe, puis cliquez sur ce bouton pour afficher ses quotas sur tous les systèmes de fichiers.
+
+lgroups_tablist=Liste des groupes
+lgroups_mass=Mettre à jour les groupes sélectionnés
+lgroups_to=Destination e-mail
+lgroups_tosame=Boîte aux lettres portant le même nom que le groupe
+lgroups_tofixed=Adresse 1
+lgroups_emailheader=Courriel aux groupes approchant le quota
+lgroups_email=Envoyer un e-mail aux groupes?
+lgroups_tovirt=Propriétaire de domaine Virtualmin
+
+ufilesys_editdesc=Affichez et modifiez les quotas de cet utilisateur sur un autre système de fichiers sur lequel il n'a actuellement pas de quotas.
+ufilesys_copydesc=Copiez les limites de quota pour cet utilisateur sur tous les systèmes de fichiers vers certains ou tous les autres utilisateurs.
+ufilesys_enone=Aucun nom d'utilisateur entré
+
+lusers_tablist=Liste d'utilisateur
+lusers_tabdefault=Quotas par défaut
+lusers_tabemail=Notifications par email
+lusers_pc_sblocks=Doux %
+luser_virtualmin=Obtenir un domaine de Virtualmin?
+lusers_mass=Mettre à jour les utilisateurs sélectionnés
+lusers_cc=Envoyez également un e-mail à
+lusers_nocc=Personne
+
+log_email_user=Modifier les options de messagerie des utilisateurs sur $1 
+log_email_group=Modifier les options de messagerie de groupe sur $1 
+log_support=Prise en charge des quotas activée pour $1 
+
+email_ecc=Cc manquant ou invalide: adresse
+gemail_msg=L'utilisation du disque pour le groupe $1 sur le système de fichiers $2 a atteint $3% du quota autorisé. $4 d'espace disque est utilisé, sur un maximum de $5.
+gemail_subject=quota de disque dépassée
+email_eto=Adresse e-mail de destination manquante
+
+umass_title=Mettre à jour les quotas d'utilisateurs
+umass_header=Modifications de quota à appliquer aux utilisateurs sélectionnés
+umass_sblocks=Limite de bloc souple
+umass_hblocks=Limite de bloc dur
+umass_sfiles=Limite des fichiers logiciels
+umass_hfiles=Limite des fichiers durs
+umass_leave=Laisser inchangé
+umass_unlimited=Défini sur illimité
+umass_set=Mis à
+umass_ok=Mettre à jour les utilisateurs
+umass_esblocks=Limite de bloc logiciel manquante ou non valide
+umass_ehblocks=Limite de bloc dur manquante ou non valide
+umass_esfiles=Limite de fichier logiciel manquante ou non valide
+umass_ehfiles=Limite de fichier dur manquante ou invalide
+umass_count=Les modifications ci-dessous s'appliqueront à $1 utilisateurs sélectionnés.
+umass_err=Échec de la mise à jour des quotas d'utilisateurs
+
+gmass_title=Mettre à jour les quotas de groupe
+gmass_header=Modifications de quota à appliquer aux groupes sélectionnés
+gmass_count=Les modifications ci-dessous s'appliqueront aux $1 groupes sélectionnés.
+gmass_ok=Mettre à jour les groupes
+gmass_err=Échec de la mise à jour des quotas de groupe

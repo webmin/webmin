@@ -21,7 +21,7 @@ if ($file =~ /\.(gif|jpg|jpeg|png)$/i) {
 # read the help file
 $path = &help_file($module, $file);
 @st = stat($path);
-open(HELP, $path) || &helperror(&text('help_efile', $path));
+open(HELP, "<$path") || &helperror(&text('help_efile', $path));
 read(HELP, $help, $st[7]);
 close(HELP);
 
@@ -64,7 +64,7 @@ else {
 	# including from this module
 	local $ipath = &help_file($module, $_[0]);
 	@st = stat($ipath);
-	open(INC, $ipath) ||
+	open(INC, "<$ipath") ||
 		return "<i>".&text('help_einclude', $_[0])."</i><br>\n";
 	read(INC, $inc, $st[7]);
 	close(INC);

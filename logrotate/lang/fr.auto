@@ -1,0 +1,11 @@
+period_bytes=octets
+
+edit_minsize=Taille minimale à faire pivoter
+edit_nominsize=Toujours
+edit_dateext=Utiliser l'extension de date pour les fichiers pivotés
+edit_default=Par défaut ($1)
+
+save_eminsize=Taille minimale manquante ou invalide
+save_enofiles=Aucun fichier à faire pivoter entré
+
+sched_when=Temps d'exécution

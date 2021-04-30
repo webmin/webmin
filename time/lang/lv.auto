@@ -1,0 +1,70 @@
+index_title=Sistēmas laiks
+index_timeserver=Laika serveris
+index_addresses=Laika servera resursdatori vai adreses
+index_zone=Laika zona
+index_eformat=Neatpazīts <tt>hwclock</tt> izvades formāts
+index_sched=Sinhronizēt pēc grafika?
+index_schedyes=Jā, reizēm zem ..
+index_sync=Sinhronizēt un lietot
+index_hardware2=Iestatiet arī aparatūras laiku
+index_boot=Sinhronizēt, kad sākas Webmin?
+index_tzheader=Laika zona
+index_tz=Mainīt laika joslu uz
+index_ehwclock=$1 neizdevās : $2 
+index_tabtime=Uzstādīt laiku
+index_tabzone=Mainīt laika joslu
+index_tabsync=Laika servera sinhronizācija
+index_desctime=Šī forma ir paredzēta, lai mainītu sistēmas pašreizējo laiku, kuru izmanto visi darbojošie procesi. Operētājsistēmās, kurām ir atsevišķs aparatūras pulkstenis, to var izmantot arī šī iestatīšanai.
+index_desczone=Šī forma ļauj iestatīt sistēmas noklusējuma laika joslu, kas tiek izmantota, lai pārveidotu sistēmas laiku cilvēkam lasāmā formātā un nobīdē.
+index_descsync=Šī veidlapa ir paredzēta sistēmas konfigurēšanai, lai automātiski sinhronizētu laiku ar attālo serveri. Sinhronizācija tiks veikta, izmantojot Unix <tt>laiks</tt> protokolu vai NTP, atkarībā no tā, kuras komandas ir instalētas un ko atbalsta attālā sistēma.
+
+action_save=Saglabāt
+action_apply=Piesakies
+action_sync=Iestatiet sistēmas laiku atbilstoši aparatūras laikam
+action_sync_s=Iestatiet aparatūras laiku atbilstoši sistēmas laikam
+action_timeserver_sys=Sinhronizēt sistēmas laiku
+action_timeserver_hw=Sinhronizēt aparatūras laiku
+action_savezone=Mainīt laika joslu
+
+acl_sys=Lietotājs var rediģēt sistēmas laiku?
+acl_hw=Lietotājs var rediģēt aparatūras laiku?
+acl_timezone=Lietotājs var iestatīt laika joslu?
+acl_ntp=Vai var sinhronizēt ar laika serveri?
+acl_yes=Jā
+acl_no=Nē
+acl_error=Jums ir pieeja sistēmas laika modulim, taču jūs nevarat rediģēt ne sistēmas, ne aparatūras laiku
+acl_nosys=Jums nav atļauts rediģēt sistēmas laiku
+acl_nohw=Jums nav atļauts rediģēt aparatūras laiku
+acl_nontp=Jums nav atļauts sinhronizēt ar laika serveri
+
+sys_title=Sistēmas laiks
+hw_title=Aparatūras laiks
+
+day=Diena
+month=Mēnesis
+date=Datums
+hour=Stunda
+year=Gads
+minute=Minūti
+second=Otrkārt
+
+error_cnf=Kļūda: komanda $1 nav atrasta
+error_hw=Nevar iestatīt aparatūras laiku : $1 
+error_sync=Nevar sinhronizēt ar sistēmas laiku : $1 
+error_ediff=Laika serveris, kas atšķiras no vietējā laika, ir pārāk liels: $1 dienas
+error_entp=Neizdevās NTP laika sinhronizācija : $1 
+error_etimeserver=Nav laika serveru, kurus sinhronizēt ar ievadītajiem
+
+log_set_date=Iestatiet sistēmas laiku uz $1 
+log_set_hwclock=Iestatiet aparatūras pulksteni uz $1 
+log_remote_date=Ielādētās sistēmas laiks no $2 
+log_remote_hwclock=Ielādēts aparatūras laiks no $2 
+log_remote_date_l=Ielādēts sistēmas laiks $1 no $2 
+log_remote_hwclock_l=Ielādēts aparatūras laiks $1 no $2 
+log_sync=Sinhronizēts sistēmas laiks ar aparatūras laiku
+log_sync_s=Sinhronizēts aparatūras laiks ar sistēmas laiku
+log_timezone=Laika josla mainīta uz $1 
+
+timezone_err=Laika joslu neizdevās saglabāt
+timezone_ecannot=Jums nav atļauts mainīt laika joslu
+timezone_enone=Nav atlasīta neviena zona

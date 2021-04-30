@@ -1,0 +1,52 @@
+index_title=NFSエクスポート
+index_add=新しいエクスポートを追加します。
+index_dirs=ディレクトリ
+index_clients=クライアント
+index_everyone=全員
+index_none=エクスポートはまだ定義されていません。
+index_delete=選択したエクスポートを削除
+index_apply=変更を適用
+index_applydesc=このボタンをクリックして、現在のファイルエクスポート設定を適用します。これにより、上記のすべてのディレクトリが指定されたオプションで利用可能になります。
+index_return=輸出リスト
+index_echeck=NFSサーバーはこのシステムでは使用できません： $1
+
+check_ecmd=NFSサーバーコマンド $1がインストールされていません
+
+delete_err=エクスポートを削除できませんでした
+delete_enone=何も選択されていません
+
+edit_title1=エクスポートを編集
+edit_title2=エクスポートを作成
+edit_header1=エクスポートオプション
+edit_dirs=エクスポートするディレクトリ
+edit_alldirs=サブディレクトリをエクスポートしますか？
+edit_ro=読み取り専用？
+edit_kerb=Kerberosを使用しますか？
+edit_header2=リモートユーザーマッピング
+edit_maproot=ルートユーザーをマッピングする
+edit_mapusers=すべてのユーザーをマッピングする
+edit_unpriv=非特権ユーザー
+edit_uid=ユーザー/ UID
+edit_gids=そしてグループ/ GID
+edit_mapall=すべてのユーザーをマッピングする
+edit_header3=このエクスポートのクライアント
+edit_clients=クライアント
+edit_hosts=ホスト/ネットグループ
+edit_network=通信網
+edit_mask=マスク
+
+save_err=エクスポートを保存できませんでした
+save_edir=「$1」はディレクトリではないか、存在しません
+save_enone=エクスポートするには、少なくとも1つのディレクトリを入力する必要があります
+save_esub=<b>サブディレクトリのエクスポート</b>オプションが選択されている場合、指定できるディレクトリは1つのみです
+save_eroot=<b>サブディレクトリのエクスポート</b>オプションを使用する場合、エクスポートされるディレクトリは<i>ローカル</i>ファイルシステムのルートでなければなりません
+save_euser=「$1」は有効なユーザーまたはUIDではありません
+save_egroup=「$1」は有効なグループまたはGIDではありません
+save_ekerb=ルートユーザーのマップ、すべてのユーザーのマップ、およびkerberosオプションは相互に排他的です
+save_ehosts=エクスポート先のホストを少なくとも1つ入力する必要があります
+save_enetwork=「$1」は有効なネットワークではありません
+save_enetmask=「$1」は有効なネットマスクではありません
+save_esame1=ディレクトリ<tt>$1</tt>はすでに<tt>$2</tt>にエクスポートされています。オペレーティングシステムでは、同じ<i>local</i>ファイルシステム上のディレクトリを同じホストに個別にエクスポートすることはできません
+save_esame2=ディレクトリ<tt>$1</tt>はすでに<tt>$2</tt>にエクスポートされています。オペレーティングシステムでは、同じ<i>local</i>ファイルシステム上のディレクトリを同じネットワークに個別にエクスポートすることはできません
+
+restart_err=変更を適用できませんでした

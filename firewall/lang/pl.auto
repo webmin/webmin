@@ -1,0 +1,30 @@
+index_title_v=Zapora IPv4
+index_title_v6=Zapora IPv6
+index_evalid=OSTRZEŻENIE! Twoja bieżąca konfiguracja IPtables jest nieprawidłowa : $1 
+index_no_comment=
+index_fail2ban=Wygląda na to, że Fail2Ban jest używany do zarządzania niektórymi regułami zapory. Powinieneś je zmodyfikować za pomocą <a href='$1'>modułu Fail2Ban</a> i filtrować <a href=$2>f2b -. *</a> lub <a href=$2>fail2ban -. *</a>.
+index_filter_chain=nie jest zarządzany przez zaporę ogniową.
+index_filter_nodirect=Wykryto zewnętrzne zarządzane reguły. Aktywuj „<a href=$1>Bezpośrednio edytuj reguły zapory”</a>, w przeciwnym razie reguły zapory mogą się zepsuć.
+index_ipset=Zestaw IP
+index_ipset_title=Aktywne zestawy adresów IP, z których mogą korzystać reguły zapory
+index_ipset_name=Nazwa zestawu adresów IP
+index_ipset_type=Rodzaj
+index_ipset_elem=# Elementy
+index_ipset_maxe=# Max
+index_ipset_size=Rozmiar
+index_ipvxmode=Zmień wersję protokołu IP:
+index_ipvx4=IPv4
+index_ipvx6=IPv6
+
+desc_icmpv6-type=Typ ICMP to $1 
+desc_icmpv6-type!=Typ ICMP nie jest $1 
+desc_ctstate=stan połączenia to $1 
+desc_ctstate!=stan połączenia to nie $1 
+desc_args--match-set=$2 jest zawarty w zestawie IP $1 
+desc_src=źródło
+desc_dest=Miejsce docelowe
+
+edit_state_snat=Źródło NATd
+edit_state_dnat=Miejsce docelowe NATd
+
+add_enone=Brak wybranych serwerów do dodania!

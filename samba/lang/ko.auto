@@ -1,0 +1,199 @@
+index_version=삼바 버전 $1 
+index_samba=삼바
+
+index_start_wb=Winbind 서버 시작
+index_startmsg_wb=시스템에서 Winbind 서버가 실행되고 있지 않습니다.
+index_restart_wb=Winbind 서버 재시작
+index_restartmsg_wb=시스템에서 실행중인 Winbind 서버를 다시 시작하려면이 단추를 클릭하십시오.
+index_restartmsg2=또한 서버와의 연결이 끊어 지므로 현재 구성을 즉시 적용하지 않으려면 Samba가 구성을 자동으로 다시로드 할 때까지 1 분 정도 기다려야합니다.
+index_stop=삼바 서버 중지
+index_stop_wb=Winbind 서버 중지
+index_stopmsg=시스템에서 실행중인 Samba 서버를 종료하려면이 단추를 클릭하십시오. 현재 로그인 한 모든 사용자가 강제로 연결이 끊어집니다.
+index_stopmsg_wb=시스템에서 실행중인 Winbind 서버를 종료하려면이 단추를 클릭하십시오.
+index_einclude=경고-Samba 구성 파일 $1 에 $2 또는 $3 지시문이 있습니다. 이로 인해 Webmin이 파일을 잘못 수정할 수 있습니다.
+index_delete=선택된 공유 삭제
+
+global_users=삼바 사용자
+global_group=삼바 그룹
+global_bind=Winbind 옵션
+
+convert_ncdesc=변환하지 않는 사용자 목록에는 사용자 이름, UID, <tt>@</tt> 접두사가 붙은 그룹 이름 또는 <i>500-1000</i> 또는 <i>500-</ i와 같은 UID 범위가 포함될 수 있습니다 >.
+convert_cannot=유닉스 사용자는 삼바 사용자로 전환 할 수 없습니다
+convert_who=유닉스 사용자 변환
+convert_who0=나열된 사용자 또는 UID 범위 만
+convert_who1=나열된 사용자 및 UID 범위를 제외한 모든
+
+net_ip=IP 주소
+
+passwd_sync=유닉스 비밀번호도 변경 하시겠습니까?
+
+smb_descriptionnone=없음
+smb_master_auto=자동적 인
+smb_server=비밀번호 서버
+smb_ads=활성 디렉토리
+
+smbuser_cannot=삼바 사용자를 나열 할 수 없습니다
+
+euser_noexpire=비밀번호는 절대 만료되지 않습니다
+euser_locked=계정이 잠겨 있습니다
+
+fmisc_oplocks=oplock을 사용 하시겠습니까?
+fmisc_level2=읽기 전용 oplock?
+
+share_create=디렉토리를 자동으로 생성 하시겠습니까?
+share_owner=소유자와 함께 작성
+share_createperms=권한으로 작성
+share_group=그룹으로 만들기
+share_samedesc1=참고-이 설정은 모든 파일 공유의 기본값에도 영향을줍니다.
+share_samedesc2=참고-이 설정은 모든 프린터 공유의 기본값에도 영향을줍니다.
+
+esync_del_profile=Unix 사용자가 삭제 될 때 로밍 프로필 삭제
+esync_chg_profile=Unix 사용자 이름이 변경되면 로밍 프로필 이름 변경
+esync_gid=신규 사용자를위한 그룹 SID 또는 RID
+esync_cannot=사용자 동기화를 구성 할 수 없습니다
+esync_egid=누락 된 그룹 SID 또는 RID
+
+mkpass_added=추가
+mkpass_user=사용자 이름
+mkpass_action=취한 조치
+mkpass_skipcount=전환을 위해 $1 명의 사용자를 건너 뛰었습니다.
+
+savecopy_ename=공유 이름이 입력되지 않았습니다
+
+saveuser_ews=기존 사용자는 '워크 스테이션 트러스트 계정'옵션을 사용할 수 없습니다
+
+savefshare_owner=새 디렉토리의 소유자가 없거나 잘못되었습니다
+savefshare_group=새 디렉토리에 대한 그룹이 없거나 유효하지 않습니다
+savefshare_perms=새 디렉토리에 대한 권한이 없거나 유효하지 않습니다
+savefshare_emkdir=디렉토리를 만들지 못했습니다  : $1 
+
+start_err_wb=Winbind 서버를 시작하지 못했습니다
+
+restart_err=Samba 서버를 다시 시작하지 못했습니다
+restart_err_wb=Winbind 서버를 다시 시작하지 못했습니다
+
+viewu_locks=파일 열기
+viewu_none=없음
+viewu_ecmd=Samba 상태 프로그램 $1 이 (가) 시스템에 설치되지 않은 것 같습니다. <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+viewu_kill=선택된 사용자 연결 끊기
+viewu_enone=선택된 사용자가 없습니다
+viewu_refresh=페이지를 새로 고칩니다.
+
+log_apply_wb=다시 시작된 Winbind 서버
+log_stop=Samba 서버 중지
+log_stop_wb=Winbind 서버 중지
+log_start_wb=Winbind 서버 시작
+log_kills=연결이 끊어진 $1 프로세스
+log_skills=공유 $2 에서 $1 프로세스의 연결이 끊어졌습니다.
+log_delete_shares=$1 개의 공유를 삭제했습니다.
+log_bind=Winbind 옵션 변경
+log_create_group=삼바 그룹 $1 생성
+log_modify_group=삼바 그룹 $1 수정
+log_delete_group=삼바 그룹 $1 을 (를) 삭제했습니다.
+log_gsync=구성된 유닉스 그룹 동기화
+log_manual=수동으로 편집 한 구성 파일 $1 
+
+swat_logout=SWAT의 로그 아웃
+
+eacl_pcrs=공유 만들기
+
+acl_manual=구성 파일을 수동으로 편집 할 수 있습니까?
+acl_group_opts=삼바 그룹 옵션
+acl_maint_groups=그룹을보고, 편집하고 추가 할 수 있습니까?
+acl_maint_gsync=Auto Unix-Samba 그룹 동기화를 유지할 수 있습니까?
+acl_winbind=도메인에 바인딩 할 수 있습니까?
+acl_bind=winbind 옵션에 액세스 할 수 있습니까?
+
+groups_title=삼바 그룹
+groups_name=그룹 이름
+groups_unix=유닉스 그룹
+groups_nounix=없음
+groups_type=유형
+groups_type_d=도메인 그룹
+groups_type_b=NT 내장
+groups_type_l=지역 그룹
+groups_type_u=알 수 없는
+groups_sid=SID
+groups_none=Samba 그룹이 아직 정의되지 않았습니다.
+groups_return=그룹 목록
+groups_add=새 삼바 그룹을 추가하십시오.
+groups_ecannot=Samba 그룹을 보거나 편집 할 수 없습니다
+groups_cannot=삼바 그룹을 나열 할 수 없습니다
+
+gedit_title2=삼바 그룹 편집
+gedit_title1=삼바 그룹 만들기
+gedit_header=삼바 그룹 정보
+gedit_name=그룹 이름
+gedit_type=그룹 유형
+gedit_sid=그룹 SID
+gedit_desc=기술
+gedit_priv=특권
+gedit_unix=유닉스 그룹
+gedit_unixgr=그룹 ..
+gedit_none=없음
+gedit_set=상장 ..
+
+gsave_err=그룹을 저장하지 못했습니다
+gsave_eunix=유닉스 그룹 이름 또는 GID가 없거나 잘못되었습니다
+gsave_ename=누락 된 그룹 이름
+gsave_epriv=누락 된 그룹 권한
+gsave_elocal=로컬 그룹에 대해서만 권한을 설정할 수 있습니다
+
+gsync_title=그룹 동기화
+gsync_msg=Webmin은 Unix 그룹 목록에 대한 변경 사항이 Samba 그룹 목록에 자동으로 적용되도록 구성 할 수 있습니다. <b>사용자 및 그룹</b> Webmin 모듈을 사용하여 그룹을 추가, 삭제 또는 변경하는 경우에만 작동합니다.
+gsync_add=유닉스 그룹이 추가 될 때 삼바 그룹 추가
+gsync_chg=유닉스 그룹이 변경 될 때 삼바 그룹 변경
+gsync_del=Unix 그룹이 삭제되면 Samba 그룹을 삭제하십시오.
+gsync_apply=대다
+gsync_type=새로운 그룹의 유형
+gsync_priv=새 그룹에 대한 권한 (로컬 인 경우)
+gsync_ecannot=그룹 동기화를 구성 할 수 없습니다
+gsync_cannot=그룹 동기화를 구성 할 수 없습니다
+
+check_user1=$1 : <a href='$2'>인증</a> 페이지에서 암호화 된 비밀번호를 사용할 수 없습니다.
+check_user2=$1 : Samba 비밀번호 파일 또는 pdbedit 경로가 <a href='$2'>모듈 구성</a> 페이지에 설정되어 있지 않습니다.
+check_group1=$1 : 그룹은 Samba 버전 3에서만 지원됩니다.
+check_group2=$1 : smbgroupedit 또는 net 명령의 경로는 <a href='$2'>모듈 구성</a> 페이지에 설정되어 있지 않습니다.
+
+winbind_title=도메인에 바인딩
+winbind_ecannot=도메인에 바인딩 할 수 없습니다
+winbind_msg=이 양식은 Samba 서버를 일반적으로 다른 서버에서 관리하는 Windows 도메인에 바인딩하는 데 사용할 수 있습니다.
+winbind_header=Windows 도메인에 바인딩
+winbind_user=사용자로 바인딩
+winbind_dom=도메인에 바인딩
+winbind_save=지금 바인딩
+winbind_default=Samba 구성의 도메인
+winbind_pass=사용자 비밀번호
+winbind_err=도메인에 바인딩하지 못했습니다
+winbind_euser=사용자 이름이 없습니다
+winbind_edom=누락 된 도메인 이름
+winbind_cmd=$1 명령으로 도메인에 바인딩
+winbind_failed=.. 실패했습니다! 이유는 위의 출력을 참조하십시오.
+winbind_ok=.. 완료
+
+bind_title=Winbind 옵션
+bind_ecannot=winbind 옵션을 편집 할 수 없습니다
+bind_header=Windows 도메인 바인딩 옵션
+bind_local=로컬 계정에 Winbind를 사용 하시겠습니까?
+bind_trust=도메인 서버 사용자를 신뢰 하시겠습니까?
+bind_users=사용자 목록을 허용하지 않습니까?
+bind_groups=그룹 목록을 허용하지 않습니까?
+bind_defaultdomain=항상 기본 도메인을 사용 하시겠습니까?
+bind_realm=도메인 서버의 Kerberos 영역
+bind_cache=에 대한 사용자 정보를 캐시하는 시간 (초)
+bind_uid=Windows 사용자를위한 다양한 UID
+bind_gid=Windows 그룹의 GID 범위
+bind_backend=계정 매핑을위한 LDAP 백엔드
+bind_err=Winbind 옵션을 저장하지 못했습니다
+bind_erealm=잘못된 Kerberos 영역
+bind_ecache=캐시 시간이 없거나 유효하지 않습니다
+bind_euid=잘못된 UID 범위-20000-30000과 같아야합니다.
+bind_egid=유효하지 않은 GID 범위-20000-30000과 같아야합니다.
+
+manual_title=구성 파일 편집
+manual_desc=Samba 구성 파일 $1 편집 중 ..
+manual_err=구성 파일을 저장하지 못했습니다
+manual_edata=아무것도 입력되지 않았습니다!
+
+delete_err=공유를 삭제하지 못했습니다.
+delete_enone=선택된 사항 없음

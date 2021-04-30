@@ -1,0 +1,179 @@
+index_epackagecmd=Sistem pakej $1 memerlukan perintah $2 
+index_eupdatecmd=Sistem kemas kini $1 memerlukan perintah $2 
+index_epackagecheck=Sistem pengurusan pakej yang dipilih tidak sah: $1. <br>Anda mungkin perlu memilih sistem lain pada halaman<a href='$2'> konfigurasi modul </a>.
+index_eupdatecheck=Sistem kemas kini yang dipilih tidak sah: $1. <br>Anda mungkin perlu memilih kaedah kemas kini yang berbeza pada halaman<a href='$2'> konfigurasi modul </a>.
+index_echeckpackage=Tiada sistem pakej yang dikesan!
+index_echeckupdate=Tiada sistem kemas kini yang dikesan!
+index_filter=Pake Penapis
+index_filterclear=Kosongkan Penapis
+index_filtered=Memaparkan pakej <tt>$1</tt> daripada <tt>$2</tt>
+
+edit_listdesc=Tunjukkan semua fail dalam pakej ini, dan status pengesahan semasa mereka.
+edit_uninstdesc=Keluarkan pakej ini dari sistem anda.
+
+delete_rusure2=Adakah anda pasti mahu memadamkan pakej $1 ?
+delete_purge=Purge files configuration?
+delete_depstoo=Mengeluarkan dependensi yang tidak digunakan juga?
+
+install_eupdate=Tiada pakej untuk dipasang dimasukkan
+
+rpm_findrpm=Nama fail pakej
+rpm_finddistro=Pengedaran
+rpm_finddesc=Penerangan
+
+slack_edir=Direktori pakej Slackware yang tiada $1 
+
+log_install_yum_l=Pakej terpasang $1 dari YUM
+log_install_yum=Pakej $2 dipasang dari YUM
+log_install_rhn_l=Pakej terpasang $1 dari Redhat Network
+log_install_rhn=Dipasang pakej $2 dari Redhat Network
+log_urpmi_update=Pakej URPMI yang telah dikemas kini
+log_urpmi_upgrade=Pakej URPMI yang telah dinaik taraf
+log_upgrade_yum_l=Pakej naik taraf $1 dari YUM
+log_upgrade_yum=Pakej $2 ditingkatkan daripada YUM
+log_check_rhn_l=Pakej ditingkatkan $1 dari Redhat Network
+log_check_rhn=Peningkatan $2 pakej dari Redhat Network
+
+rhn_header=Pilihan naik taraf pakej automatik
+rhn_name=Rangkaian Redhat
+
+apt_mode2=Peningkatan edaran (<tt>upgrade-dist</tt>)
+apt_title=Cari APT
+apt_name=APT
+apt_repo_url=URL asas repositori
+apt_repo_path=Komponen laluan pengedaran
+apt_repo_eurl=URL asas yang hilang atau tidak sah
+apt_repo_epath=Jalan pengedaran yang tiada
+
+yum_title=Semak imbas YUM
+yum_name=YUM
+yum_enable=Dayakan repositori:
+yum_none=&lt;Tiada&gt;
+yum_repo_id=ID repositori
+yum_repo_name=Penerangan repositori
+yum_repo_url=URL asas pakej
+yum_repo_gpg=Fail sijil GPG
+yum_repo_none=Tidak ditandatangani
+yum_repo_eid=ID repositori yang hilang atau tidak sah - hanya huruf dan nombor yang dibenarkan
+yum_repo_eidclash=ID Repositori sudah digunakan
+yum_repo_ename=Nama repositori yang tiada
+yum_repo_eurl=URL repositori yang hilang atau tidak sah
+yum_repo_egpg=Fail cert cert GPG hilang atau tidak wujud
+yum_repo_efile=Fail repositori sudah wujud!
+
+urpmi_name=URPMI
+urpmi_input=Pakej dari URPMI
+urpmi_find=Semak imbas URPMI ..
+urpmi_form=Naik Taraf Semua Pakej
+urpmi_update=Kemas kini Pakej URPMI yang ada
+urpmi_upgrade=Menaiktaraf Pakej URPMI yang Dipasang Untuk Versi Terkini
+urpmi_title_update=Mengemas kini Pakej yang Sedia Ada
+urpmi_title_upgrade=Meningkatkan Pakej Yang Dipasang
+urpmi_updatedesc=Arahan berjalan $1 ..
+uprmi_upgradefailed=.. gagal!
+urpmi_upgradeok=.. lengkap.
+urpmi_install=Memasang pakej dengan arahan $1 ..
+urpmi_ok=.. pasang lengkap.
+urpmi_failed=.. memasang gagal!
+
+emerge_title=Cari Portage
+emerge_name=Portage
+
+cygwin_badpostscript=Amaran: skrip ini tidak kelihatan telah dijalankan
+cygwin_edb=Pangkalan data bungkusan Cygwin yang tiada $1 
+
+csw_input=Pakej dari CSW
+csw_install=Memasang pakej dengan arahan $1 ..
+csw_ok=.. pasang lengkap.
+csw_failed=.. memasang gagal!
+csw_already=.. sudah dipasang.
+csw_retry=.. cuba lagi dengan ketergantungan baru.
+csw_find=Semak imbas CSW ..
+csw_package=Pakej
+csw_version=Versi
+csw_title=Lihat CSW
+csw_name=CSW
+csw_form=Pakej Peningkatan
+csw_upgrade=Naik Taraf Semua Pakej Terpasang
+csw_updatedesc=Menaiktaraf semua pakej yang dipasang dengan perintah $1 ..
+
+missing_msg=Pakej $1 boleh dipasang secara automatik oleh Webmin menggunakan $2.
+missing_now=Install sekarang
+
+find_title=Cari Pakej
+find_search=Cari pakej sepadan:
+find_name=Nama
+find_version=Versi
+find_desc=Penerangan
+find_none=Tiada pakej yang sepadan dengan carian anda ditemui.
+
+msi_users=Buat aplikasi baru boleh didapati
+msi_users0=Tiada siapa
+msi_users1=Pengguna semasa
+msi_users2=Semua pengguna
+msi_missing=Tidak wujud
+msi_size=Salah saiz
+
+hpux_create_target_path=Buat laluan sasaran?
+hpux_mount_all_filesystems=Gunung semua sistem fail?
+hpux_reinstall=Pasang semula?
+hpux_reinstall_files=Pasang semula fail?
+hpux_reinstall_files_use_cksum=Pasang semula fail menggunakan checksum?
+hpux_allow_multiple_versions=Izinkan berbilang versi?
+hpux_defer_configure=Menunda konfigurasi?
+hpux_autorecover_product=Produk autorecover?
+hpux_allow_downdate=Benarkan downdate?
+hpux_allow_incompatible=Benarkan tidak serasi?
+hpux_autoselect_dependencies=Dependen autoselect?
+hpux_enforce_dependencies=Menguatkuasakan dependencies?
+hpux_enforce_scripts=Menguatkan skrip?
+hpux_enforce_dsa=Menguatkan analisis ruang cakera?
+hpux_root=Direktori akar
+
+ports_install=Memasang port FreeBSD $1 ..
+ports_failed=.. beberapa pelabuhan gagal
+ports_ok=.. pasang lengkap
+ports_input=Pakej dari pelabuhan
+ports_find=Carian Pelabuhan
+ports_name=Port FreeBSD
+ports_form=Kemas kini Pangkalan Data Pelabuhan
+ports_apply=Muat turun Snapshot Terkini
+ports_upgrade=Memuat turun Ports Snapshot
+ports_running=Arahan berjalan $1 ..
+
+pkg_install=Memasang pakej FreeBSD $1 ..
+pkg_failed=.. beberapa pakej gagal
+pkg_ok=.. pasang lengkap
+pkg_find=Cari pkgng
+pkg_input=Pakej dari pkgng
+
+pkgsrc_install=Memasang pakej pkgsrc $1 ..
+pkgsrc_failed=.. beberapa pakej gagal
+pkgsrc_ok=.. pasang lengkap
+pkgsrc_find=Cari pkgng
+pkgsrc_input=Pakej dari pkgsrc
+
+log_IPKG_update=Pangkalan data IPKG yang dikemas kini
+log_IPKG_upgrade=Pakej IPKG yang telah dinaik taraf
+
+IPKG_name=IPKG
+IPKG_input=Pakej dari IPKG
+IPKG_find=Semak imbas IPKG ..
+IPKG_form=Urus Pakej IPKG
+IPKG_update=Kemas kini Pangkalan Data Pakej IPKG
+IPKG_upgrade=Menaiktaraf Pakej IPKG yang Dipasang
+IPKG_title_update=Mengemaskini Databse IPKG
+IPKG_title_upgrade=Meningkatkan Pakej Yang Dipasang
+IPKG_updatedesc=Arahan berjalan $1 ..
+IPKG_upgradefailed=.. gagal!
+IPKG_upgradeok=.. lengkap.
+IPKG_install=Memasang pakej dengan arahan $1 ..
+IPKG_ok=.. pasang lengkap.
+IPKG_failed=.. memasang gagal!
+IPKG_index_tree=Urus Pakej IPKG
+IPKG_install_package=Pasang
+IPKG_install_packagedesc=Pasang pakej ini pada sistem anda
+IPKG_noupgrade=Tiada apa-apa untuk menaik taraf
+IPKG-edit_title=Urus Pakej IPKG
+IPKG_update_avail=Kemas kini tersedia:
+IPKG_not_installed=Pakej tidak dipasang

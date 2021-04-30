@@ -1,13 +1,18 @@
 @ECHO off
-ECHO Helper Script to install Webmin on Windows
-ECHO (c) gnadelwartz https:://gitbub.com/gnadelwartz
+:: (c) gnadelwartz https:://gitbub.com/gnadelwartz
+ECHO UNOFFICIAL helper script to guide less experienced users on Windows
+ECHO for information on installing webmin on Windows manually see:
+ECHO http://www.webmin.com/windows.html
+ECHO .
+ECHO NOTE: Webmin on Windows is community provided and not suppored officially!
+ECHO last reported working insallations was on Windows 8.1
 ECHO .
 
 :: prepare unautenticated Setup
 SET WEBMIN_download=https://sourceforge.net/projects/webadmin/
 SET WRT_download=https://www.microsoft.com/download/details.aspx?id=17657
-SET PROCESS_download=http://retired.beyondlogic.org/solutions/processutil/processutil.htm
-SET PERL_download=https://www.activestate.com/activeperl/
+SET PROCESS_download=https://web.archive.org/web/20180105215524/http://retired.beyondlogic.org/solutions/processutil/processutil.htm
+SET PERL_download=https://platform.activestate.com/ActiveState/ActivePerl-5.26
 SET perl_path32=C:\Perl
 SET perl_path64=C:\Perl64
 SET inst_dir=C:\webmin
@@ -20,6 +25,7 @@ SET admin=10000
 SET ssl=0
 SET login=admin
 SET password=admin
+SET nostart=nostart
 SET INSTALL=setup.pl
 
 :: check if we are in webmin dir
@@ -36,6 +42,7 @@ IF NOT EXIST %INSTALL% (
 )
 
 :: check if perl is installed
+ECHO Check for Webmin  prerequisites ...
 IF EXIST %perl_path32% (
     SET perl_path=%perl_path32%
     ECHO Perl detected
@@ -44,7 +51,7 @@ IF EXIST %perl_path32% (
 	SET perl_path=%perl_path64%
 	echo Perl64 detected
     ) ELSE (
-	ECHO Perl is not installed! Please download it from
+	ECHO No Perl detected! Please adjust perl_path or download active state perl
 	ECHO %PERL_download% and install it!
 	start "" %PERL_download%
 	ECHO .
@@ -56,7 +63,7 @@ IF EXIST %perl_path32% (
 WHERE process >nul 2>&1
 IF %ERRORLEVEL% NEQ 0 (
 	ECHO Required process.exe is not installed! Please download it from
-	ECHO %PROCESS_download% and xopy it to C:\Windows!
+	ECHO %PROCESS_download% and copy it to C:\Windows!
 	start "" %PROCESS_download%
 	ECHO .
 	SET INSTALL=false
@@ -65,11 +72,10 @@ IF %ERRORLEVEL% NEQ 0 (
 :: check if rescource kit is installed
 WHERE sc >nul 2>&1
 IF %ERRORLEVEL% NEQ 0 (
-	ECHO Windows Resource Toolkit is not installed! Please download it from
-	ECHO %WRT_download% and install it!
+	ECHO Windows Resource Toolkit is not installed you may not able to run Webmin as a Service!
+	ECHO Please download from %WRT_download% and install it!
 	start "" %WRT_download%
 	ECHO .
-	SET INSTALL=false
 )
 
 :: check if needed dir exist
@@ -92,7 +98,10 @@ IF EXIST %INSTALL% (
     SET perl_path=%perl_path%\bin\perl.exe
     perl %INSTALL% %wa_dir%
 ) ELSE (
-	ECHO Webmin can not installed becasue of missing depedencies!
+	ECHO Webmin can not installed because of missing  prerequisites!
+	ECHO see http://www.webmin.com/windows.html for manual installation instructions
+	ECHO .
+	ECHO If you are able to improve/fix installtion on newer Windows Versions report them pls
 )
 ECHO .
 PAUSE

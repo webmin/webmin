@@ -190,38 +190,46 @@ function ts_sort_filesize(a,b) {
     matchB = bb.match(regex);
 
     // Give file size class an integer value, if we don't already have one
-    if (matchA[1] == 'none') valA = -999;
-    else if (matchA[1] == 'empty') valA = 0;
-    else if (matchA[1] == '0') valA = 0;
-    else if (matchA[1] == 'unlimited') valA = 999;
-    else if (matchA[2] == 'b' || matchA[2] == 'bytes') valA = 1;
-    else if (matchA[2] == undefined || matchA[2] == '') valA = 1;
-    else if (matchA[2] == 'kb') valA = 2;
-    else if (matchA[2] == 'mb') valA = 3;
-    else if (matchA[2] == 'gb') valA = 4;
-    else if (matchA[2] == 'tb') valA = 5;
-
-    if (matchB[1] == 'none') valB = -999;
-    else if (matchB[1] == 'empty') valB = 0;
-    else if (matchB[1] == '0') valB = 0;
-    else if (matchB[1] == 'unlimited') valB = 999;
-    else if (matchB[2] == 'b' || matchB[2] == 'bytes') valB = 1;
-    else if (matchB[2] == undefined || matchB[2] == '') valB = 1;
-    else if (matchB[2] == 'kb') valB = 2;
-    else if (matchB[2] == 'mb') valB = 3;
-    else if (matchB[2] == 'gb') valB = 4;
-    else if (matchB[2] == 'tb') valB = 5;
-
-    if (valA == valB) {
-			if ( isNaN(matchA[1])) return -1;
-      if ( isNaN(matchB[1])) return 1;
-      // Files are in the same size class kb/gb/mb/etc
-      // just do a numeric sort on the file size
-			return matchA[1]-matchB[1];
-    } else if (valA < valB) {
-      return -1;
-    } else if (valA > valB) {
-      return 1;
+    if (matchA) {
+        if (matchA[1] == 'none') valA = -999;
+        else if (matchA[1] == 'empty') valA = 0;
+        else if (matchA[1] == '0') valA = 0;
+        else if (matchA[1] == 'unlimited') valA = 999;
+        else if (matchA[2] == 'b' || matchA[2] == 'bytes') valA = 1;
+        else if (matchA[2] == undefined || matchA[2] == '') valA = 1;
+        else if (matchA[2] == 'kb') valA = 2;
+        else if (matchA[2] == 'mb') valA = 3;
+        else if (matchA[2] == 'gb') valA = 4;
+        else if (matchA[2] == 'tb') valA = 5;
+    }
+    if (matchB){
+        if (matchB[1] == 'none') valB = -999;
+        else if (matchB[1] == 'empty') valB = 0;
+        else if (matchB[1] == '0') valB = 0;
+        else if (matchB[1] == 'unlimited') valB = 999;
+        else if (matchB[2] == 'b' || matchB[2] == 'bytes') valB = 1;
+        else if (matchB[2] == undefined || matchB[2] == '') valB = 1;
+        else if (matchB[2] == 'kb') valB = 2;
+        else if (matchB[2] == 'mb') valB = 3;
+        else if (matchB[2] == 'gb') valB = 4;
+        else if (matchB[2] == 'tb') valB = 5;
+    }
+    if (typeof valA !== 'undefined' && typeof valB !== 'undefined') {
+        if (valA == valB) {
+    	  if ( matchA && isNaN(matchA[1])) return -1;
+          if ( matchB && isNaN(matchB[1])) return 1;
+          // Files are in the same size class kb/gb/mb/etc
+          // just do a numeric sort on the file size
+          if (matchA && matchB) {
+    		return matchA[1]-matchB[1];
+          }
+        } else if (valA < valB) {
+          return -1;
+        } else if (valA > valB) {
+          return 1;
+        }
+    } else {
+        return 1;
     }
 }
 

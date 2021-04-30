@@ -614,7 +614,7 @@ sub zone_has_webmin
 {
 local ($zinfo) = @_;
 local $root = &get_zone_root($zinfo);
-open(VERSION, $root.$config_directory."/version") || return 0;
+open(VERSION, "<".$root.$config_directory."/version") || return 0;
 local $version = <VERSION>;
 close(VERSION);
 chop($version);

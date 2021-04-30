@@ -1,0 +1,50 @@
+index_title=การกำหนดค่า OpenSLP
+index_return=การกำหนดค่า OpenSLP
+index_eslpd=ไม่พบ OpenSLP daemon $1 ในระบบของคุณ อาจไม่ได้ติดตั้งไว้หรือ <a href='$2'>การกำหนดค่าโมดูล</a> ของคุณไม่ถูกต้อง
+index_econf=ไม่พบไฟล์การกำหนดค่า OpenSLP ในระบบของคุณ อาจไม่ได้ติดตั้งไว้หรือ <a href='$2'>การกำหนดค่าโมดูล</a> ของคุณไม่ถูกต้อง
+index_version=OpenSLP เวอร์ชั่น $1 
+
+slp_apply=ใช้การเปลี่ยนแปลง
+slp_stop=หยุด OpenSLP
+
+snda_title=ขอบเขตคงที่และ DA
+snda_useScopes=รายการคงที่ของขอบเขต
+snda_DAAddresses=รายการคงที่ของตัวแทนไดเรกทอรี (DA)
+
+netcfg_title=การกำหนดค่าเครือข่าย
+netcfg_isBroadcastOnly=บังคับให้ใช้การออกอากาศแทนมัลติคาสต์
+netcfg_passiveDADetection=ใช้การตรวจจับ DA แบบพาสซีฟ
+netcfg_activeDADetection=ใช้การตรวจจับ DA ที่ใช้งานอยู่ (จำกัด เฉพาะที่อยู่ DHCP หรือ DA เท่านั้น)
+netcfg_DAActiveDiscoveryInterval=Active Discovery ในไม่กี่วินาที (0 ปิดการใช้งาน Active Discovery)
+netcfg_multicastTTL=มัลติคาสต์ TTL (0-255)
+netcfg_DADiscoveryMaximumWait=เวลารอสูงสุดสำหรับคำร้องขอค้นหา DA (เป็นมิลลิวินาที)
+netcfg_DADiscoveryTimeouts=การค้นพบ DA ต่อเนื่องครั้งรอ (เป็นมิลลิวินาที)
+netcfg_HintsFile=เส้นทางไปยังไฟล์คำแนะนำของ OpenSLP
+netcfg_multicastMaximumWait=รอสูงสุดสำหรับการร้องขอหลายผู้รับ (ในหน่วยมิลลิวินาที)
+netcfg_multicastTimeouts=เวลารอหลายผู้รับต่อเนื่อง (เป็นมิลลิวินาที)
+netcfg_unicastMaximumWait=จำนวนเวลาสูงสุดระหว่างคำร้องขอ unicast (หน่วยเป็นมิลลิวินาที)
+netcfg_randomWaitBound=ค่าสูงสุดสำหรับพารามิเตอร์การรอแบบสุ่มทั้งหมด (เป็นมิลลิวินาที)
+netcfg_MTU=ขนาดแพ็คเก็ต MTU (เป็นไบต์)
+netcfg_interfaces=ที่อยู่ IP ของอินเทอร์เฟซที่ DA/SA ควรฟัง
+
+dacfg_title=การกำหนดค่า DA
+dacfg_isDA=ฟังก์ชั่นเป็น DA เท่านั้น (อ่านคู่มือผู้ใช้ก่อนเปลี่ยนสิ่งนี้)
+
+log_title=การติดตามและการบันทึก
+log_traceDATraffic=พิมพ์ข้อความจราจร DA
+log_traceMsg=พิมพ์ข้อความรายละเอียด SLP
+log_traceDrop=พิมพ์ SLP ลดลงข้อมูลข้อความ
+log_traceReg=พิมพ์การลงทะเบียน DA และ SA และข้อมูลการลงทะเบียนซ้ำ
+
+error_open=เกิดข้อผิดพลาดในการเปิดไฟล์
+error_flock_on=เกิดข้อผิดพลาดในการสร้างการล็อกไฟล์
+error_flock_off=เกิดข้อผิดพลาดในการทำลายล็อคไฟล์
+error_hup=เกิดข้อผิดพลาดในการรีสตาร์ท OpenSLP ด้วย PID
+
+index_start=เริ่ม OpenSLP
+index_startmsg=คลิกที่ปุ่มนี้เพื่อเริ่มต้น OpenSLP daemon บนระบบของคุณ
+index_stop=หยุด OpenSLP
+index_stopmsg=คลิกที่ปุ่มนี้เพื่อหยุด OpenSLP daemon บนระบบของคุณ
+
+stop_err=ไม่สามารถหยุด OpenSLP
+start_err=ไม่สามารถเริ่ม OpenSLP

@@ -1,0 +1,39 @@
+index_title=Exporturi NFS
+index_add=Adăugați un nou export NFS
+index_dir=Director
+index_hosts=Gazde permise
+index_all=Toate gazdele
+index_none=Nu au fost definite încă exporturi NFS.
+index_apply=Aplicați configurare
+index_applydesc=Faceți clic pe acest buton pentru a activa toate exporturile enumerate mai sus, cu opțiunile configurate.
+index_return=lista exporturilor
+
+edit_title1=Creați Export
+edit_title2=Editați Export
+edit_header=Detalii despre export
+edit_dir=Director pentru export
+edit_hosts=Export la gazde/grupuri de retea
+edit_ro=Read-only?
+edit_wsync=Sincronizează după ce scrie?
+edit_anon=Permisiunile utilizatorului rădăcină
+edit_anon1=Implicit (tratați ca <tt>nimeni</tt>)
+edit_anon2=Interzice accesul
+edit_anon0=Tratați ca utilizator
+edit_rw=Acces citit/scris
+edit_root=Acces la fișierul rădăcină
+edit_access=Acces de montaj
+edit_all=Toate gazdele
+edit_sel=Gazde enumerate ..
+edit_none=Fără gazde
+
+save_err=Nu a reușit să salveze exportul
+save_edir=Directorul care lipsește sau care nu există
+save_eanon=Utilizator rădăcină care lipsește sau este nevalid
+save_erw=Nu a fost introdusă nicio gazdă de scriere citită
+save_eroot=Nu a fost introdusă nicio gazdă de acces la fișierul root
+save_eaccess=Nu a fost introdusă nicio gazdă de acces de montaj
+
+log_create_export=Export creat de $1 
+log_delete_export=Export șters de $1 
+log_modify_export=Export modificat de $1 
+log_apply=Configurație aplicată

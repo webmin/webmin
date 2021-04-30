@@ -39,3 +39,5 @@ checkconf=named-checkconf
 other_slaves=1
 force_random=0
 spf_record=0
+pid_file=/var/run/named/pid
+dnssec_info=1

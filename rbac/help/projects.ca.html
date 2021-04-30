@@ -1,42 +1,42 @@
 <header>Projectes</header>
 
-Els projectes proporcionen una manera de forçar límits sobre l'ús dels recursos
+Els projectes proporcionen una manera de forÃ§ar lÃ­mits sobre l'Ãºs dels recursos
 per a diferents usuaris i grups. Es poden utilitzar per restringir el nombre
-de fitxers que un usuari pot obrir, la mida màxima de fitxer, ús de la CPU,
-allotjament de memòria i altres. <p>
+de fitxers que un usuari pot obrir, la mida mÃ xima de fitxer, Ãºs de la CPU,
+allotjament de memÃ²ria i altres. <p>
 
-Cada procés i usuari pertany a un o més projectes. El projecte inicial d'un
-usuari es determina en el moment d'entrar, i serà o bé el <tt>projecte per
-defecte</tt> o bé el projecte configurat a la secció <b>Atributs d'Usuari</b>
-d'aquest mòdul. Els usuaris es poden canviar entre diferents projectes 
+Cada procÃ©s i usuari pertany a un o mÃ©s projectes. El projecte inicial d'un
+usuari es determina en el moment d'entrar, i serÃ  o bÃ© el <tt>projecte per
+defecte</tt> o bÃ© el projecte configurat a la secciÃ³ <b>Atributs d'Usuari</b>
+d'aquest mÃ²dul. Els usuaris es poden canviar entre diferents projectes 
 utilitzant l'ordre <tt>newtask</tt>. <p>
 
-Cada projecte té una llista d'usuaris i grups que hi tenen permès l'accés,
+Cada projecte tÃ© una llista d'usuaris i grups que hi tenen permÃ¨s l'accÃ©s,
 per exemple fent el canvi amb l'ordre <tt>newtask</tt>. Que un usuari sigui
-membre d'un projecte no vol dir necessàriament que hi pertanyi automàticament
-en entrar al sistema . això s'ha de configurar a la secció
+membre d'un projecte no vol dir necessÃ riament que hi pertanyi automÃ ticament
+en entrar al sistema . aixÃ² s'ha de configurar a la secciÃ³
 <b>Atributs d'Usuari</b>. <p>
 
-Els atributs més importants d'un projecte són els límits de recursos que
-s'apliquen als seus usuaris membres. Cadascun té els atributs següents:<br>
+Els atributs mÃ©s importants d'un projecte sÃ³n els lÃ­mits de recursos que
+s'apliquen als seus usuaris membres. Cadascun tÃ© els atributs segÃ¼ents:<br>
 
 <dl>
 <dt><b>Recurs</b><br>
-<dd>El recurs que controla, com ara <tt>process.max-file-descriptor</tt> per a la mida màxima de creació de fitxers, o <tt>process.max-cpu-time</tt> per al temps de CPU que un procés pot consumir.
+<dd>El recurs que controla, com ara <tt>process.max-file-descriptor</tt> per a la mida mÃ xima de creaciÃ³ de fitxers, o <tt>process.max-cpu-time</tt> per al temps de CPU que un procÃ©s pot consumir.
 
 <dt><b>Tipus de recurs</b><br>
-<dd>Determina qui pot modificar el límit d'aquest recurs, i gairebé sempre està configurat a <b>Privilegiat</b>. Aquest atribut és opcional - si se selecciona <b>&lt;Cap&gt;</b>, s'aplicarà el límit global del recurs del sistema. EL significat de les altres opcions és:
+<dd>Determina qui pot modificar el lÃ­mit d'aquest recurs, i gairebÃ© sempre estÃ  configurat a <b>Privilegiat</b>. Aquest atribut Ã©s opcional - si se selecciona <b>&lt;Cap&gt;</b>, s'aplicarÃ  el lÃ­mit global del recurs del sistema. EL significat de les altres opcions Ã©s:
 	<ul>
-	<li><b>Privilegiat</b> - Només ho poden modificar els usuaris privilegiats (superusuaris).
-	<li><b>Sistema</b> - Fix per a tota la duració de la instància del sistema operatiu.
-	<li><b>Bàsic</b> - El propietari del procés ho pot modificar.
+	<li><b>Privilegiat</b> - NomÃ©s ho poden modificar els usuaris privilegiats (superusuaris).
+	<li><b>Sistema</b> - Fix per a tota la duraciÃ³ de la instÃ ncia del sistema operatiu.
+	<li><b>BÃ sic</b> - El propietari del procÃ©s ho pot modificar.
 	</ul>
 
-<dt><b>Límit superior</b><br>
-<dd>El límit superior d'ús que un procés té permès de consumir abans que es dispari l'acció. Això s'introdueix en bytes, segons o nombre de fils, depenent del tipus de recurs.
+<dt><b>LÃ­mit superior</b><br>
+<dd>El lÃ­mit superior d'Ãºs que un procÃ©s tÃ© permÃ¨s de consumir abans que es dispari l'acciÃ³. AixÃ² s'introdueix en bytes, segons o nombre de fils, depenent del tipus de recurs.
 
-<dt><b>Acció quan s'excedeix</b><br>
-<dd>Determina el que passa a un procés quan excedeix el límit. Típicament està configurat a <b>Denega</b>, que provoca la fallada de la crida del sistema que ha intentat excedir el límit. No obstant, també poden ser útils les opcions d'enviar un senyal al procés.
+<dt><b>AcciÃ³ quan s'excedeix</b><br>
+<dd>Determina el que passa a un procÃ©s quan excedeix el lÃ­mit. TÃ­picament estÃ  configurat a <b>Denega</b>, que provoca la fallada de la crida del sistema que ha intentat excedir el lÃ­mit. No obstant, tambÃ© poden ser Ãºtils les opcions d'enviar un senyal al procÃ©s.
 
 </dl>
 

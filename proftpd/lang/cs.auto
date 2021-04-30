@@ -1,0 +1,39 @@
+index_applymsg2=Klepnutím na toto tlačítko použijete aktuální konfiguraci zastavením a opětovným spuštěním ProFTPD.
+index_stop=Zastavte server
+index_stopmsg=Klepnutím na toto tlačítko zastavíte FTP server, který zabrání připojení nových FTP klientů.
+index_proftpd=ProFTPd
+
+dir_header5=Globálně pro adresář $1 
+
+manual_etest=Byla zjištěna chyba konfiguračního souboru : $1 
+
+limit_header7=Globálně pro příkazy $1 
+
+dserv_eanondir=Adresář musí být v anonymním adresáři FTP
+
+mod_core_octal=Oktální maska
+mod_core_umask_d=Nová maska adresáře
+mod_core_nowhere=Protokolování zakázáno
+mod_core_foreign=Povolit zahraniční přenosy dat?
+mod_core_firstcdt=Vždy ukazovat
+
+mod_ls_options=Možnosti seznamu adresářů
+mod_ls_strict=Přepsat možnosti uživatele?
+
+stop_err=Zastavení FTP serveru se nezdařilo
+stop_einetd=V režimu inetd nemůžete zastavit démona serveru.
+stop_erun=Nefunguje
+
+apply_err=Nepodařilo se použít konfiguraci FTP
+apply_egone=Už neběží
+
+log_anonc=Nastavit anonymní FTP pro server $1 
+log_anons=Překonfigurovaný anonymní FTP pro server $1 
+log_anond=Odstraněn anonymní FTP pro server $1 
+log_anonm=Ručně upravený anonymní FTP pro server $1 
+log_anon=Byl změněn $1 v anonymním FTP pro server $2 
+
+eafter=Ověření konfigurace se nezdařilo: $1 Změny nebyly uloženy.
+proftpd_apply=Aplikuj změny
+proftpd_stop=Zastavte ProFTPd
+proftpd_start=Spusťte ProFTPd

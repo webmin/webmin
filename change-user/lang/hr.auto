@@ -1,0 +1,8 @@
+index_langglobal2=Globalni jezik.. $1 ($2)
+index_overlay=Prekrivanje teme
+index_overlaydef=Nema - koristite zadane postavke teme
+index_passagain=Ponovno unesite zaporku
+
+change_epass2=Nove lozinke ne odgovaraju
+change_eoverlay=Ne možete odabrati sloj teme osim ako nije odabran i UI tema
+change_eoverlay2=Odabrani sloj teme nije kompatibilan s odabranom temom UI

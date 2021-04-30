@@ -19,66 +19,7 @@ sub list_processes
 {
 local($pcmd, $line, $i, %pidmap, @plist, $dummy, @w, $_);
 local $ver = &get_ps_version();
-if ($ver >= 2) {
-	# New version of ps, as found in redhat 6
-	local $width;
-	if ($ver >= 3.2) {
-		# Use width format character if allowed
-		$width = ":80";
-		}
-	open(PS, "ps --cols 2048 -eo user$width,ruser$width,group$width,rgroup$width,pid,ppid,pgid,pcpu,vsz,nice,etime,time,stime,tty,args 2>/dev/null |");
-	$dummy = <PS>;
-	my @now = localtime(time());
-	for($i=0; $line=<PS>; $i++) {
-		chop($line);
-		$line =~ s/^\s+//g;
-		eval { @w = split(/\s+/, $line, -1); };
-		if ($@) {
-			# Hit a split loop
-			$i--; next;
-			}
-		if ($line =~ /ps --cols 500 -eo user/) {
-			# Skip process ID 0 or ps command
-			$i--; next;
-			}
-		if (@_ && &indexof($w[4], @_) < 0) {
-			# Not interested in this PID
-			$i--; next;
-			}
-		$plist[$i]->{"pid"} = $w[4];
-		$plist[$i]->{"ppid"} = $w[5];
-		$plist[$i]->{"user"} = $w[0];
-		$plist[$i]->{"cpu"} = "$w[7] %";
-		$plist[$i]->{"size"} = "$w[8] kB";
-		$plist[$i]->{"bytes"} = $w[8]*1024;
-		$plist[$i]->{"time"} = $w[11];
-		$plist[$i]->{"_stime"} = $w[12];
-		eval {
-			if ($w[12] =~ /^(\d+):(\d+)$/ ||
-			    $w[12] =~ /^(\d+):(\d+):(\d+)$/) {
-				# Started today
-				$plist[$i]->{"_stime_unix"} =
-					timelocal($3 || 0, $2, $1,
-						  $now[3], $now[4], $now[5]);
-				}
-			elsif ($w[12] =~ /^(\S\S\S)\s*(\d+)$/) {
-				# Started on some other day
-				$plist[$i]->{"_stime_unix"} =
-					timelocal(0, 0, 0, $2,
-						&month_to_number($1), $now[5]);
-				}
-			};
-		$plist[$i]->{"nice"} = $w[9];
-		$plist[$i]->{"args"} = @w<15 ? "defunct" : join(' ', @w[14..$#w]);
-		$plist[$i]->{"_group"} = $w[2];
-		$plist[$i]->{"_ruser"} = $w[1];
-		$plist[$i]->{"_rgroup"} = $w[3];
-		$plist[$i]->{"_pgid"} = $w[6];
-		$plist[$i]->{"_tty"} = $w[13] =~ /\?/ ? $text{'edit_none'} : "/dev/$w[13]";
-		}
-	close(PS);
-	}
-else {
+if ($ver && $ver < 2) {
 	# Old version of ps
 	$pcmd = join(' ' , @_);
 	open(PS, "ps aulxhwwww $pcmd 2>/dev/nul |");
@@ -114,6 +55,66 @@ else {
 			$plist[$pidmap{$2}]->{"cpu"} = $3;
 			$plist[$pidmap{$2}]->{"_mem"} = "$4 %";
 			}
+		}
+	close(PS);
+}
+else {
+	# New version of ps, as found in redhat 6
+	local $width;
+	if (!$ver || $ver >= 3.2) {
+		# Use width format character if allowed
+		$width = ":80";
+		}
+	open(PS, "ps --cols 2048 -eo user$width,ruser$width,group$width,rgroup$width,pid,ppid,pgid,pcpu,vsz,nice,etime,time,stime,tty,args 2>/dev/null |");
+	$dummy = <PS>;
+	my @now = localtime(time());
+	for($i=0; $line=<PS>; $i++) {
+		chop($line);
+		$line =~ s/^\s+//g;
+		eval { @w = split(/\s+/, $line, -1); };
+		if ($@) {
+			# Hit a split loop
+			$i--; next;
+			}
+		if ($line =~ /ps --cols 500 -eo user/) {
+			# Skip process ID 0 or ps command
+			$i--; next;
+			}
+		if (@_ && &indexof($w[4], @_) < 0) {
+			# Not interested in this PID
+			$i--; next;
+			}
+		$plist[$i]->{"pid"} = $w[4];
+		$plist[$i]->{"ppid"} = $w[5];
+		$plist[$i]->{"user"} = $w[0];
+		$plist[$i]->{"cpu"} = "$w[7] %";
+		$plist[$i]->{"size"} = "$w[8] kB";
+		$plist[$i]->{"bytes"} = $w[8]*1024;
+		$plist[$i]->{"time"} = $w[11];
+		$plist[$i]->{"_stime"} = $w[12];
+		eval {
+			if (($w[12] =~ /^(\d+):(\d+)$/ ||
+			     $w[12] =~ /^(\d+):(\d+):(\d+)$/) &&
+			    $3 < 60 && $2 < 60 && $1 < 24) {
+				# Started today
+				$plist[$i]->{"_stime_unix"} =
+					timelocal($3 || 0, $2, $1,
+						  $now[3], $now[4], $now[5]);
+				}
+			elsif ($w[12] =~ /^(\S\S\S)\s*(\d+)$/ && $2 < 32) {
+				# Started on some other day
+				$plist[$i]->{"_stime_unix"} =
+					timelocal(0, 0, 0, $2,
+						&month_to_number($1), $now[5]);
+				}
+			};
+		$plist[$i]->{"nice"} = $w[9];
+		$plist[$i]->{"args"} = @w<15 ? "defunct" : join(' ', @w[14..$#w]);
+		$plist[$i]->{"_group"} = $w[2];
+		$plist[$i]->{"_ruser"} = $w[1];
+		$plist[$i]->{"_rgroup"} = $w[3];
+		$plist[$i]->{"_pgid"} = $w[6];
+		$plist[$i]->{"_tty"} = $w[13] =~ /\?/ ? $text{'edit_none'} : "/dev/$w[13]";
 		}
 	close(PS);
 	}
@@ -223,7 +224,7 @@ else {
 # Disconnects this process from it's controlling PTY, if connected
 sub close_controlling_pty
 {
-if (open(DEVTTY, "/dev/tty")) {
+if (open(DEVTTY, "</dev/tty")) {
 	# Special ioctl to disconnect (TIOCNOTTY)
 	ioctl(DEVTTY, 0x5422, 0);
 	close(DEVTTY);
@@ -248,7 +249,7 @@ sub get_memory_info
 {
 local %m;
 local $memburst;
-if (&running_in_openvz() && open(BEAN, "/proc/user_beancounters")) {
+if (&running_in_openvz() && open(BEAN, "</proc/user_beancounters")) {
 	# If we are running under Virtuozzo, there may be a limit on memory
 	# use in force that is less than the real system's memory. Or it may be
 	# a higher 'burstable' limit. Use this, unless it is unreasonably
@@ -267,7 +268,7 @@ if (&running_in_openvz() && open(BEAN, "/proc/user_beancounters")) {
 		}
 	close(BEAN);
 	}
-open(MEMINFO, "/proc/meminfo") || return ();
+open(MEMINFO, "</proc/meminfo") || return ();
 while(<MEMINFO>) {
 	if (/^(\S+):\s+(\d+)/) {
 		$m{lc($1)} = $2;
@@ -306,11 +307,11 @@ return ( $memtotal,
 # CPU mhz, model, vendor, cache and count
 sub os_get_cpu_info
 {
-open(LOAD, "/proc/loadavg") || return ();
+open(LOAD, "</proc/loadavg") || return ();
 local @load = split(/\s+/, <LOAD>);
 close(LOAD);
 local %c;
-open(CPUINFO, "/proc/cpuinfo");
+open(CPUINFO, "</proc/cpuinfo");
 while(<CPUINFO>) {
 	if (/^(\S[^:]*\S)\s*:\s*(.*)/) {
 		$c{lc($1)} = $2;
@@ -493,21 +494,67 @@ return $? ? $out : undef;
 sub get_current_cpu_temps
 {
 my @rv;
+my @rvx;
+my $rxx;
 if (&has_command("sensors")) {
         my $fh = "SENSORS";
+        my $aa;
+        my $ab;
+        my $ac;
         &open_execute_command($fh, "sensors </dev/null 2>/dev/null", 1);
         while(<$fh>) {
                 if (/Core\s+(\d+):\s+([\+\-][0-9\.]+)/) {
+                        $rxx++;
                         push(@rv, { 'core' => $1,
                                     'temp' => $2 });
                         }
                 elsif (/CPU:\s+([\+\-][0-9\.]+)/) {
+                        $rxx++;
                         push(@rv, { 'core' => 0,
                                     'temp' => $1 });
                         }
+                else {
+                    # New line - new device (disallow, if no either fan or voltage data)
+                    $aa = 0 if (/^\s*$/);
+                    # Device has either fan or voltage data (sign of CPU)
+                    $aa = 1 if (/fan[\d+]:\s+[0-9]+\s+RPM/i ||
+                                /in[\d+]:\s+[\+\-0-9\.]+\s+V/i);
+                    # Get odd output like in #1253
+                    if ($aa && /temp(\d+):\s+([\+\-][0-9\.]+)\s+.*?[=+].*?\)/) {
+                            # Adjust to start from `0` as all other outputs
+                            push(@rvx, { 'core' => (int($1) - 1),
+                                         'temp' => $2 });
+                            }
+                    
+                    # New line - new device
+                    $ab = 0 if (/^\s*$/);
+                    # Check for CPU
+                    $ab = 1 if (/cpu_thermal-virtual-[\d]+/i);
+                    # Get odd output like in #1280
+                    if ($ab && /temp(\d+):\s+([\+\-][0-9\.]+)/) {
+                        push(@rvx, { 'core' => $1,
+                                     'temp' => $2 });
+                        }
+
+                    # AMD Ryzen oddness
+                    $ac = 0 if (/^\s*$/);
+                    # Check for CPU
+                    $ac = 1 if (/[\d]+temp-pci/i);
+                    # Get odd output like in #discussion/600155
+                    if ($ac && /Tdie:\s+([\+\-][0-9\.]+)/) {
+                        push(@rvx, { 'core' => 0,
+                                     'temp' => $1 });
+                        }
+                    }
                 }
         close($fh);
         }
+
+# Add non standard output only if we haven't 
+# already grabbed standard output for CPU
+if (!$rxx) {
+    @rv = (@rv, @rvx);
+}
 return @rv;
 }
 

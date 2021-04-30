@@ -1,0 +1,17 @@
+index_title=Конфигурация Kerberos5
+index_econf=Файл конфигурации Kerberos5 $1 не найден в вашей системе. Возможно, он не установлен или <a href='$2'>конфигурация модуля</a> неверна.
+
+logging=Лог-файлы
+default_log=Файл журнала по умолчанию
+kdc_log=Файл журнала KDC
+admin_log=Файл журнала сервера администратора
+
+libdefaults=Конфигурация по умолчанию
+dns_kdc=Используйте DNS для поиска KDC
+default_realm=область
+domain=Доменное имя
+default_kdc=KDC
+default_admin=Администратор сервера
+default_domain=Доменное имя по умолчанию
+
+save=Обновить конфигурацию

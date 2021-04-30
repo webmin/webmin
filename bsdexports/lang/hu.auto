@@ -1,0 +1,52 @@
+index_title=NFS Export
+index_add=Új exportálás hozzáadása.
+index_dirs=Könyvtárak
+index_clients=Ügyfeleink
+index_everyone=Mindenki
+index_none=Még nem határoztak meg exportot.
+index_delete=Törölje a kiválasztott exportálást
+index_apply=Módosítások elfogadása
+index_applydesc=Kattintson erre a gombra az aktuális fájl exportálási konfiguráció alkalmazásához. Ez a fent felsorolt összes könyvtárat elérhetővé teszi a megadott lehetőségekkel.
+index_return=export lista
+index_echeck=Az NFS szerver nem használható ebben a rendszeren : $1 
+
+check_ecmd=A (z) $1 NFS szerver parancs nincs telepítve
+
+delete_err=Az export törlése nem sikerült
+delete_enone=Egy sincs kiválasztva
+
+edit_title1=Exportálás szerkesztése
+edit_title2=Exportálás létrehozása
+edit_header1=Exportálási lehetőségek
+edit_dirs=Exportálni kívánt könyvtárak
+edit_alldirs=Exportál alkönyvtárakat?
+edit_ro=Csak olvasható?
+edit_kerb=Használd a Kerberot?
+edit_header2=Távoli felhasználó leképezése
+edit_maproot=A root felhasználó leképezése a
+edit_mapusers=Az összes felhasználót leképezze
+edit_unpriv=Kihívás nélküli felhasználó
+edit_uid=Felhasználó / UID
+edit_gids=És csoportok / GID-ek
+edit_mapall=Az összes felhasználót leképezze
+edit_header3=Ügyfelek ehhez az exporthoz
+edit_clients=Ügyfeleink
+edit_hosts=Házigazdák / hálózati csoportok
+edit_network=Hálózat
+edit_mask=Maszk
+
+save_err=Az exportálás mentése nem sikerült
+save_edir=A '$1' nem könyvtár, vagy nem létezik
+save_enone=Legalább egy könyvtárat meg kell adnia az exportáláshoz
+save_esub=Csak egy könyvtár adható meg, ha az <b>alkönyvtárak exportálása</b> lehetőséget választja
+save_eroot=Az <b>alkönyvtárak exportálása</b> opció használatakor az exportált könyvtárnak a <i>helyi</i> fájlrendszer gyökerének kell lennie.
+save_euser=A '$1' nem érvényes felhasználó vagy UID
+save_egroup=A '$1' nem érvényes csoport vagy GID
+save_ekerb=A térkép gyökér felhasználói, az összes felhasználó térkép és a kerberos beállítások kölcsönösen kizárják egymást
+save_ehosts=Legalább egy hostot be kell írnia, ahova exportálni szeretne
+save_enetwork=A '$1' nem érvényes hálózat
+save_enetmask=A '$1' nem érvényes hálómaszk
+save_esame1=A <tt>$1</tt> könyvtárat már exportálják a <tt>$2</tt> könyvtárba. Az operációs rendszer nem engedélyezi az azonos <i>helyi</i> fájlrendszer könyvtárainak külön-külön exportálását ugyanarra a gazdagépre
+save_esame2=A <tt>$1</tt> könyvtárat már exportálják a <tt>$2</tt> könyvtárba. Az operációs rendszer nem engedélyezi az azonos <i>helyi</i> fájlrendszer könyvtárainak külön-külön exportálását ugyanarra a hálózatra
+
+restart_err=Nem sikerült alkalmazni a módosításokat

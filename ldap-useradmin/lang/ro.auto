@@ -1,0 +1,103 @@
+index_title=Utilizatori și grupuri LDAP
+index_ebase=Nu a fost găsit niciun fișier de configurare a clientului LDAP în sistemul dvs., deci bazele de utilizator și de grup trebuie setate pe pagina <a href='$1'>de configurare a modulului</a>.
+index_eperl=Modulul $1 Perl pe care îl solicită acest modul nu este instalat sau nu funcționează corect. <a href='$2'>Faceți clic aici</a> pentru al descărca și instala acum.
+index_eperl2=Eroarea semnalată de Perl la încercarea de încărcare a modulului a fost :
+index_eldap=$1. Faceți clic aici pentru a regla <a href='$2'>configurația modulului</a>.
+index_eschema=Webmin s-a conectat la serverul LDAP, dar nu a reușit să preia schema. Asigurați-vă că accesul nu a fost refuzat în modulul <a href='$1'>Server LDAP</a>.
+index_eimap=$1. Poate că configurația modulului <a href='$2'></a> este incorectă.
+index_emd5=Acest modul a fost configurat <a href='$1'></a> pentru a utiliza criptarea MD5 pentru parole, dar modulul $2 Perl nu este instalat. <a href='$3'>Faceți clic aici</a> pentru a descărca și instala modulul $2.
+index_eslappasswd=Acest modul a fost configurat <a href='$1'></a> pentru a utiliza criptarea LDAP MD5 pentru parole, dar programul <tt>$2</tt> folosit pentru criptarea unei parole nu este instalat.
+index_eusearch=Nu a reușit să caute utilizatori sub $1 : $2 
+index_uadd=Adăugați un nou utilizator LDAP.
+index_gadd=Adăugați un grup LDAP nou.
+index_unone=Nu a fost găsit niciun utilizator LDAP sub $1.
+index_gnone=Nu s-au găsit grupuri LDAP sub $1.
+index_return=lista de utilizatori
+index_greturn=lista grupurilor
+index_egsearch=Căutare de grupuri sub $1 : $2 
+index_samba=Samba?
+index_cyrus=IMAP?
+index_users=Utilizatori LDAP
+index_groups=Grupuri LDAP
+
+imap_econn=Conectarea la serverul IMAP $1 nu a reușit
+imap_elogin=Eroare la autentificarea pe serverul IMAP $1 ca $2 : $3 
+conn_eldap_host=Nu a fost găsit niciun fișier de configurare client LDAP în sistemul dvs., astfel încât serverul LDAP trebuie să fie setat pe pagina Modul Config
+conn_elogin=Niciun fișier de configurare a clientului LDAP nu a fost găsit în sistemul dvs., deci conectarea LDAP trebuie setată pe pagina Modul Config
+conn_efile_open=Nu s-a putut deschide fișierul de acreditări de legare LDAP:
+
+uedit_cap=Capabilitățile utilizatorului
+uedit_samba=Autentificare Samba?
+uedit_cyrus=Autentificare server IMAP?
+uedit_dn=DNAP-ul utilizatorului
+uedit_classes=Clasele de obiecte LDAP
+uedit_alias=Aliasuri de e-mail
+uedit_fields=Câmpuri LDAP suplimentare
+uedit_firstname=Nume
+uedit_lastname=Numele de familie
+uedit_raw=Atributele LDAP
+uedit_return=detalii despre utilizator
+uedit_quota=Cota IMAP
+uedit_unquota=Nu schimba
+uedit_sambapassopts=Opțiuni parolă Samba
+uedit_sambapwdlastset=Ultima actualizare a parolei
+uedit_sambapwdcanchange=Parola se poate schimba
+uedit_sambabadpasswordcount=Numărul de parole necorespunzător
+uedit_sambaacctflags=Steagurile contului
+
+usave_eadd=Eroare la adăugarea utilizatorului în baza de date LDAP : $1 
+usave_emod=Eroare la modificarea utilizatorului în baza de date LDAP : $1 
+usave_emoddn=Nu a reușit să redenumească utilizatorul în baza de date LDAP : $1 
+usave_egroupmod=Eroare la modificarea grupului $1 în baza de date LDAP : $2 
+usave_edelete=Nu a reușit să ștergeți utilizatorul din baza de date LDAP : $1 
+usave_eicreate=Crearea utilizatorului nu a reușit
+usave_eiacl=Eroarea acordării drepturilor la administrator
+usave_eimap=Utilizatorul a fost salvat cu succes în baza de date LDAP, dar a apărut o eroare IMAP: $1 : $2 
+usave_eisub=Eroare la abonarea utilizatorului la folderul $1 
+usave_eiquota=Setarea cotei IMAP nu a reușit
+usave_eifolder=Crearea folderului $1 nu a reușit
+usave_eilogin=Nu a reușit autentificarea ca utilizator nou
+usave_ecyruspass=Parola normală a utilizatorului trebuie introdusă sau trebuie selectată opțiunea Fără parolă necesară atunci când activează IMAP.
+usave_ebook=Nu a reușit să creeze o intrare în agendă : $1 
+usave_emodbook=Eroare la modificarea intrării din agenda de adrese : $1 
+usave_emodbookdn=Nu a reușit să redenumească intrarea în agenda de adrese : $1 
+usave_egone=Utilizatorul nu mai există!
+usave_ex86=Acest modul nu poate fi utilizat pentru a seta parola pentru un utilizator Samba pe sisteme non-Intel, deoarece depinde de un program x86 compilat.
+usave_esamba=Acest modul nu poate fi utilizat pentru a seta parola pentru un utilizator Samba, deoarece modulul de partajare a fișierelor Samba Windows nu este instalat.
+usave_ealiasdup=Alias $1 este deja utilizat de $2 
+usave_eattrdup=Obiectul $1 utilizează deja $2 $3 
+usave_eattrdupu=Utilizatorul $1 utilizează deja $2 $3 
+usave_eattrdupg=Grupul $1 utilizează deja $2 $3 
+usave_ereal=Lipsesc numele real
+usave_equota=Cota IMAP lipsește sau este nevalidă
+
+search_err=Căutarea $1 sub $2 a eșuat : $3 
+
+gedit_dn=DNAP LDAP al grupului
+gedit_return=detalii de grup
+gedit_cap=Capabilități de grup
+gedit_samba=Samba grup?
+
+gsave_egone=Grupul nu mai există!
+gsave_edelete=Nu a reușit să ștergeți grupul din baza de date LDAP : $1 
+gsave_eadd=Eroare la adăugarea grupului în baza de date LDAP : $1 
+gsave_emod=Eroare la modificarea grupului în baza de date LDAP : $1 
+gsave_emoddn=Nu a putut redenumi grupul în baza de date LDAP : $1 
+
+gdel_group=Ștergerea intrării grupului LDAP ..
+
+udel_pass=Ștergerea intrării utilizatorului LDAP ..
+udel_book=Ștergerea din agenda de adrese ..
+udel_imap=Ștergerea dosarului IMAP ..
+udel_warnimap=Căsuța poștală existentă va fi ștersă la ștergerea directorului de acasă!
+udel_failed=.. a eșuat!  : $1 
+
+raw_title=Atributele LDAP
+raw_name=Numele atributului
+raw_value=valori
+raw_for=Pentru $1 
+
+batch_samba=Creați un cont Samba pentru utilizatori noi?
+batch_imap=Creați un cont IMAP pentru utilizatori noi?
+batch_descafter3=În liniile <b>creați</b> și <b>modificați</b>, puteți, în mod opțional, să adăugați câmpuri suplimentare care conțin atribute LDAP în <i>nume</i> = <i>valoare</i> în format să fie atribuite utilizatorilor noi sau modificați.
+batch_eattr=Atributul LDAP nevalid este la linia $1 : $2 

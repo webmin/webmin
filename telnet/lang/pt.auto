@@ -1,0 +1,4 @@
+index_sshcredits=Inclui software desenvolvido pela Cryptix Development Team (<a href=$1 target=_top>$1</a>).
+index_esocket=Não há servidor de telnet em execução na porta $1 $2.
+index_esocket2=Não há servidor SSH em execução na porta $1 $2.
+index_elookup=Falha ao procurar o endereço IP para $1 para testar o servidor Telnet ou SSH.

@@ -1,0 +1,8 @@
+index_actions=Comportamiento
+
+edit_emissing=¡El trabajo de Cron ya no existe!
+
+log_deletes=Se eliminaron $1 clúster de trabajos cron
+
+delete_err=Error al eliminar trabajos cron del clúster
+delete_enone=Ninguna seleccionada

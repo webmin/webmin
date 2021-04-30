@@ -1,4 +1,3 @@
-risk=low medium high
 name=Time
 category=hardware
 os_support=*-linux solaris hpux macos freebsd netbsd openserver irix

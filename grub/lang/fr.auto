@@ -1,0 +1,11 @@
+title_modules=Modules supplémentaires
+title_none1=Aucun
+title_none2=(entrée de menu sans démarrage)
+
+log_create_title=Option de démarrage créée $1 
+log_delete_title=Option de démarrage supprimée $1 
+log_modify_title=Option de démarrage modifiée $1 
+log_up_title=Option de démarrage déplacée $1 
+log_down_title=Option de démarrage vers le bas $1 
+log_global=Options globales modifiées
+log_install=GRUB installé

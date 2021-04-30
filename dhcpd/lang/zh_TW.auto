@@ -1,0 +1,30 @@
+index_dhcpdver2=DHCP服務器<tt>$1</tt>似乎不是正確的版本。 Webmin僅支持ISC DHCPD版本 $2到 $3。
+
+listl_mode=顯示模式 ：
+listl_mode_0=DHCP租約
+listl_mode_1=子網和用法
+listl_size=IP總數
+listl_used=已分配
+listl_pc=百分比
+listl_err=刪除租約失敗
+listl_enone=未選擇
+
+listl_refresh=刷新清單
+
+restart_conftext=$2中 $1附近的行：
+
+sopt_ecval=自定義選項“$1”的值缺失
+sopt_ecip=自定義選項'$1'的值必須是IP地址
+
+plib_toffset=時間偏移
+plib_serverid=DHCP服務器標識符
+
+eopt_domsearch=要搜索的DNS域
+eopt_cname=名稱
+
+eacl_uniqh=創建具有重複硬件地址的主機
+eacl_uniqi=創建具有重複IP地址的主機
+
+acl_zones=可以編輯動態DNS區域嗎？
+
+zone_ecannot=您無權編輯DNS區域

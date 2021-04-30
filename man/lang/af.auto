@@ -1,0 +1,79 @@
+index_title=Stelseldokumentasie
+index_header=Stelsel dokumentasie soek
+index_for=Soek vir
+index_where=Soek in
+index_alldoc=Alle dokumentasie
+index_man=Handleiding bladsye
+index_doc=Pakketdokumentasie
+index_kernel=Kerndokumentasie
+index_info=Inligtingsbladsye
+index_howto=HOWTO dokumente
+index_kde=KDE-dokumentasie
+index_perl=Perl module dokumentasie
+index_custom=Pasgemaakte dokumentasie
+index_help=Webmin hulp
+index_reset=herstel
+index_search=Soek
+index_return=soekvorm
+index_type=wedstryd
+index_name=Naam slegs
+index_data=Naam en inhoud
+index_google=Google soektog
+index_others=As u dokumentasie in 'n ander module soek, laat dit toe om in te soek.
+index_other_man=Handleiding bladsye
+index_other_help=Webmin Hulp
+index_other_doc=Pakketdokumentasie
+index_other_kernel=Kerndokumentasie
+index_other_howto=HOWTO dokumente
+index_other_perl=Perl module dokumentasie
+index_other_google=Google-soekenjin
+index_other_kde=KDE-dokumentasie
+index_and=Pas almal saam
+index_or=Pas by enige
+
+search_efor=Geen handleiding bladsy om in te voer nie
+search_title=Soek Resultate
+search_desc=beskrywing
+search_type=tipe
+search_file=Bladsy of lêer
+search_man=Handleiding bladsy
+search_howto=HOWTO-dokument
+search_doc=Pakketdokumentasie
+search_kernel=Kerndokumentasie
+search_kde=KDE-dokumentasie
+search_perl=Perl-module
+search_help=Webmin hulp
+search_custom=Pasgemaakte dokumentasie
+search_none=Geen dokumentasie wat ooreenstem met $1 gevind nie.
+search_for=Vir $1 
+search_google=Google-soekresultaat
+search_doxfer=Webmin aanlyn dokumentasie
+
+howto_title=HOWTO-dokument
+howto_header=HOWTO-dokumentlêer $1 
+howto_epath=Ongeldige HOWTO-dokumentpad
+
+doc_title=Pakketdokumentasie
+doc_header=Pakketdokumentlêer $1 
+doc_epath=Ongeldige pakket dokumentasie pad
+
+man_title=Handleiding bladsy
+man_header=Handleiding bladsy vir $1 ($2)
+man_noentry=Handleiding bladsy vir $1 bestaan nie!
+man_epath=Hand bladsy kan nie pad wees nie!
+
+kernel_title=Kerndokument
+kernel_header=Kerndokumentlêer $1 
+kernel_epath=Ongeldige kern-dokumentpad
+
+kde_title=KDE-dokumentasie
+kde_header=KDE-dokumentlêer $1 
+kde_epath=Ongeldige KDE-dokumentasiepad
+
+perl_title=Perl-module
+perl_header=Dokumentasie vir Perl-module $1 
+perl_emod=Ongeldige Perl-modulenaam
+
+acl_allow=Kan toegelate soektipes gewysig word?
+
+check_ecannot=U mag nie die toegelate soektipes redigeer nie

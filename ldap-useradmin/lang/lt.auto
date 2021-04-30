@@ -1,0 +1,103 @@
+index_title=LDAP vartotojai ir grupės
+index_ebase=Jūsų sistemoje nerastas nė vienas LDAP kliento konfigūracijos failas, todėl vartotojo ir grupės pagrindus reikia nustatyti puslapyje <a href='$1'>modulio konfigūracija</a>.
+index_eperl=$1 „Perl“ modulis, kurio reikia šiam moduliui, neįdiegtas arba netinkamai veikia. <a href='$2'>Spustelėkite čia</a>, jei norite atsisiųsti ir įdiegti dabar.
+index_eperl2=Klaida, kurią pranešė Perlas bandant įkelti modulį, buvo :
+index_eldap=$1. Spustelėkite čia, norėdami pakoreguoti <a href='$2'>modulio konfigūraciją</a>.
+index_eschema=„Webmin“ prisijungė prie LDAP serverio, bet nepavyko gauti schemos. Įsitikinkite, kad prieiga nebuvo atmesta <a href='$1'>LDAP serverio</a> modulyje.
+index_eimap=$1. Galbūt jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_emd5=Šis modulis buvo <a href='$1'>sukonfigūruotas</a>, kad slaptažodžiams būtų naudojamas MD5 šifravimas, tačiau $2 „Perl“ modulis neįdiegtas. <a href='$3'>Spustelėkite čia</a>, jei norite atsisiųsti ir įdiegti $2 modulį.
+index_eslappasswd=Šis modulis buvo <a href='$1'>sukonfigūruotas</a>, kad slaptažodžiams būtų naudojamas LDAP MD5 šifravimas, tačiau slaptažodžio šifravimui naudojama programa <tt>$2</tt> neįdiegta.
+index_eusearch=Nepavyko ieškoti vartotojų, esančių $1 : $2 
+index_uadd=Pridėkite naują LDAP vartotoją.
+index_gadd=Pridėkite naują LDAP grupę.
+index_unone=Nebuvo rasta nė vieno LDAP vartotojo pagal $1.
+index_gnone=Nebuvo rasta LDAP grupių pagal $1.
+index_return=vartotojų sąrašas
+index_greturn=grupių sąrašas
+index_egsearch=Nepavyko ieškoti grupių, esančių $1 : $2 
+index_samba=Samba?
+index_cyrus=IMAP?
+index_users=LDAP vartotojai
+index_groups=LDAP grupės
+
+imap_econn=Nepavyko prisijungti prie IMAP serverio $1 
+imap_elogin=Nepavyko prisijungti prie IMAP serverio $1 kaip $2 : $3 
+conn_eldap_host=Jūsų sistemoje nerastas nė vienas LDAP kliento konfigūracijos failas, todėl LDAP serveris turi būti nustatytas „Module Config“ puslapyje
+conn_elogin=Jūsų sistemoje nerastas nė vienas LDAP kliento konfigūracijos failas, todėl LDAP prisijungimas turi būti nustatytas „Module Config“ puslapyje
+conn_efile_open=Nepavyko atidaryti LDAP įrišimo kredencialų failo:
+
+uedit_cap=Vartotojo galimybės
+uedit_samba=Samba prisijungimas?
+uedit_cyrus=IMAP serverio prisijungimas?
+uedit_dn=Vartotojo LDAP DN
+uedit_classes=LDAP objektų klasės
+uedit_alias=Pašto slapyvardžiai
+uedit_fields=Papildomi LDAP laukai
+uedit_firstname=Pirmas vardas
+uedit_lastname=Pavardė
+uedit_raw=LDAP atributai
+uedit_return=vartotojo informacija
+uedit_quota=IMAP kvota
+uedit_unquota=Nekeisk
+uedit_sambapassopts=„Samba“ slaptažodžio parinktys
+uedit_sambapwdlastset=Paskutinis slaptažodžio atnaujinimas
+uedit_sambapwdcanchange=Slaptažodis gali keistis
+uedit_sambabadpasswordcount=Netinkamas slaptažodžio skaičius
+uedit_sambaacctflags=Sąskaitų vėliavos
+
+usave_eadd=Nepavyko pridėti vartotojo į LDAP duomenų bazę : $1 
+usave_emod=Nepavyko modifikuoti vartotojo LDAP duomenų bazėje : $1 
+usave_emoddn=Nepavyko pervardyti vartotojo LDAP duomenų bazėje : $1 
+usave_egroupmod=Nepavyko modifikuoti $1 grupės LDAP duomenų bazėje : $2 
+usave_edelete=Nepavyko ištrinti vartotojo iš LDAP duomenų bazės : $1 
+usave_eicreate=Nepavyko sukurti vartotojo
+usave_eiacl=Nepavyko suteikti teisių administratoriui
+usave_eimap=Vartotojas sėkmingai išsaugotas LDAP duomenų bazėje, tačiau įvyko IMAP klaida: $1 : $2 
+usave_eisub=Nepavyko užsiprenumeruoti vartotojo $1 aplanko
+usave_eiquota=Nepavyko nustatyti IMAP kvotos
+usave_eifolder=Nepavyko sukurti aplanko $1 
+usave_eilogin=Nepavyko prisijungti kaip naujam vartotojui
+usave_ecyruspass=Įjungdami IMAP, turite įvesti įprastą vartotojo slaptažodį arba pasirinkti parinktį Nereikia slaptažodžio.
+usave_ebook=Nepavyko sukurti adresų knygos įrašo : $1 
+usave_emodbook=Nepavyko pakeisti adresų knygos įrašo : $1 
+usave_emodbookdn=Nepavyko pervardyti adresų knygos įrašo : $1 
+usave_egone=Vartotojo nebeegzistuoja!
+usave_ex86=Šis modulis negali būti naudojamas „Samba“ vartotojo slaptažodžio nustatymui ne „Intel“ sistemose, nes tai priklauso nuo sudarytos x86 programos.
+usave_esamba=Šis modulis negali būti naudojamas nustatant „Samba“ vartotojo slaptažodį, nes „Samba Windows File Sharing“ modulis neįdiegtas.
+usave_ealiasdup=Slapyvardį $1 jau naudoja $2 
+usave_eattrdup=Objektas $1 jau naudoja $2 $3 
+usave_eattrdupu=Vartotojas $1 jau naudoja $2 $3 
+usave_eattrdupg=Grupė $1 jau naudoja $2 $3 
+usave_ereal=Trūksta tikrojo vardo
+usave_equota=Trūksta arba netinkama IMAP kvota
+
+search_err=$1 ieškoti $2 nepavyko : $3 
+
+gedit_dn=Grupės LDAP DN
+gedit_return=grupės duomenys
+gedit_cap=Grupės galimybės
+gedit_samba=„Samba“ grupė?
+
+gsave_egone=Grupės nebeegzistuoja!
+gsave_edelete=Nepavyko ištrinti grupės iš LDAP duomenų bazės : $1 
+gsave_eadd=Nepavyko pridėti grupės prie LDAP duomenų bazės : $1 
+gsave_emod=Nepavyko modifikuoti grupės LDAP duomenų bazėje : $1 
+gsave_emoddn=Nepavyko pervardyti grupės LDAP duomenų bazėje : $1 
+
+gdel_group=Ištrinamas LDAP grupės įrašas
+
+udel_pass=Ištrinamas LDAP vartotojo įrašas
+udel_book=Ištrinama iš adresų knygos ..
+udel_imap=Trinamas IMAP aplankas.
+udel_warnimap=Ištrynus namų katalogą, esamas pašto dėžutė bus ištrinta!
+udel_failed=.. nepavyko!  : $1 
+
+raw_title=LDAP atributai
+raw_name=Atributo vardas
+raw_value=Vertybės
+raw_for=$1 
+
+batch_samba=Sukurti „Samba“ paskyrą naujiems vartotojams?
+batch_imap=Sukurti IMAP paskyrą naujiems vartotojams?
+batch_descafter3=Eilutėse <b>kurti</b> ir <b>modifikuoti</b> galite pasirinktinai pridėti papildomų laukų, kuriuose yra LDAP atributai <i>vardas</i> = <i>reikšmė</i> formatu, prie būti priskirtas naujiems ar modifikuotiems vartotojams.
+batch_eattr=Netinkamas LDAP atributas $1 eilutėje : $2 

@@ -1,0 +1,133 @@
+index_delete1=Desactivar interfaces seleccionadas
+index_delete2=Eliminar interfaces seleccionadas
+index_delete3=Eliminar y aplicar interfaces seleccionadas
+index_apply2=Aplicar interfaces seleccionadas
+index_vmin=Virtualmin
+
+ifcs_activedesc=Las interfaces enumeradas en esta tabla están actualmente activas en el sistema. En la mayoría de los casos, debe editarlos en la pestaña <b>Activado en el arranque</b>.
+ifcs_bootdesc=Las interfaces enumeradas en esta tabla se activarán cuando se inicie el sistema, y generalmente también estarán activas ahora.
+ifcs_ip6=Dirección IPv6
+ifcs_desc=Descripción de la interfaz
+ifcs_badd=Agrega un nuevo puente.
+ifcs_auto6=Desde el descubrimiento de IPv6
+ifcs_static2=Configuración estática
+ifcs_static3=IPv6 habilitado
+ifcs_noaddress=Ninguna dirección configurada
+ifcs_nonetmask=Ninguna
+ifcs_mode=Dirección IPv4
+ifcs_mode6=Direcciones IPv6
+ifcs_address6=Dirección IPv6
+ifcs_netmask6=Máscara de red
+ifcs_mode6a=Direcciones IPv6
+ifcs_none6=IPv6 deshabilitado
+ifcs_link=Estado del enlace de red
+ifcs_linkyes=Conectado
+ifcs_linkno=Desconectado
+ifcs_speed=Velocidad de interfaz
+ifcs_duplex=, $1 dúplex
+
+aifc_eaddress6=La dirección IPv6 en la fila $1 no es válida
+aifc_enetmask6=La máscara de red IPv6 en la fila $1 debe ser un número entero entre 1 y 128
+aifc_eclash6=La dirección IPv6 en la fila $1 ya está en uso por la interfaz $2 
+aifc_eaddresses6=No se ingresaron direcciones IPv6
+
+bifc_act=¿Activar en el arranque?
+bifc_bridgeto=Conecte el puente a la interfaz
+bifc_nobridge=&lt;Ninguno&gt;
+bifc_ebridgeto=Se debe seleccionar una interfaz Ethernet existente para que este puente la use
+bifc_ebridgeto2=La interfaz seleccionada para el puente no debe tener ninguna dirección asignada
+bifc_ebridge=La interfaz del puente debe ser un número
+bifc_bridgestp=Protocolo Spanning Tree
+bifc_bridgefd=Retardo de avance
+bifc_bridgewait=Retraso para estar disponible
+bifc_ebond=La interfaz de enlace debe ser un número
+
+bonding_add=Agregue una nueva interfaz de enlace.
+bonding_create=Crear interfaz de enlace
+bonding_teamparts=Socios de trabajo en equipo
+bonding_teampartsdesc=Socios separados con espacios en blanco, p. "eth2 eth4"
+bonding_teammode=Modo de trabajo en equipo
+bonding_primary=Interfaz primaria
+bonding_primarydesc=Solo aplicable con los modos de agrupación activebackup, balance-tlb o balance-alb
+bonding_miimon=Intervalo de Mii-Monitoreo
+bonding_miimondesc=(Dejar en blanco para deshabilitar la supervisión de enlaces)
+bonding_updelay=Updelay
+bonding_downdelay=Downdelay
+
+vlan_add=Agregar interfaz etiquetada Vlan
+vlan_physical=Dispositivo físico
+vlan_id=ID de Vlan
+vlan_create=Crear interfaz VLAN
+
+bridge_create=Crear interfaz de puente
+
+routes_default6=Enrutador IPv6 predeterminado
+routes_gateway6=Puerta de enlace IPv6
+routes_edefault6='$1' no es un enrutador predeterminado válido de IPv6
+routes_egateway6='$1' no es una puerta de enlace IPv6 válida
+routes_defaults6=Enrutadores IPv6 predeterminados
+routes_eclash6=Solo se puede definir una ruta predeterminada para cualquier interfaz IPv6
+routes_def6=Ruta IPv6 predeterminada
+routes_delete=Eliminar rutas seleccionadas
+routes_cheader=Crear ruta activa
+routes_cdest=Destino de ruta
+routes_cdef=Ruta por defecto
+routes_cnetmask=Máscara de red para el destino
+routes_cvia=Ruta a través de
+routes_ciface=Interfaz de red $1 
+routes_cgw=Gateway $1 
+routes_cerr=Error al crear la ruta activa
+routes_ecdest=Dirección IP o red de destino faltante o no válida
+routes_ecnetmask=Máscara de red faltante o inválida
+routes_ecgw=Dirección de puerta de enlace faltante o no válida
+routes_derr=Error al eliminar rutas
+routes_denone=Ninguna seleccionada
+routes_ecnetmask2=No se puede especificar una máscara de red para la ruta predeterminada
+routes_ggw=Use el enrutador $1 a través de la interfaz $2 
+routes_tabboot=Configuración de tiempo de arranque
+routes_tabactive=Configuración activa
+routes_descactive=Esta sección enumera las rutas que el sistema ha configurado actualmente y le permite agregar o eliminar rutas activas en algunos sistemas. Tenga cuidado al hacer esto, ya que los cambios incorrectos pueden cortar el sistema que ejecuta Webmin del resto de la red.
+routes_descboot=Esta sección le permite configurar las rutas que se activan cuando el sistema se inicia o cuando la configuración de red se vuelve a aplicar por completo.
+
+hosts_active=Habilitado?
+hosts_delete=Eliminar direcciones de host seleccionadas
+
+ipnodes_title=Direcciones de host IPv6
+ipnodes_ip=Dirección IPv6
+ipnodes_host=Nombres de host
+ipnodes_add=Agregue una nueva dirección de host IPv6.
+ipnodes_edit=Editar dirección de host IPv6
+ipnodes_create=Crear dirección de host IPv6
+ipnodes_detail=Anfitrión y Direcciones
+ipnodes_return=Lista de direcciones de host IPv6
+ipnodes_ecannot=No tiene permiso para editar direcciones de host IPv6
+ipnodes_none=Aún no se han definido direcciones de host IPv6.
+ipnodes_delete=Eliminar direcciones de host IPv6 seleccionadas
+
+log_create_ipnode=Dirección de host IPv6 creada $1 
+log_delete_ipnode=Dirección de host IPv6 eliminada $1 
+log_modify_ipnode=Dirección de host IPv6 modificada $1 
+log_delete_hosts=Direcciones de host $1 eliminadas
+log_delete_ipnodes=Direcciones de host $1 IPv6 eliminadas
+log_delete_afics=Eliminar $1 interfaces activas
+log_delete_bfics=Eliminar $1 interfaces de tiempo de arranque
+log_apply_bfics=Interfaces $1 de tiempo de arranque activadas
+log_create_route=Ruta activa creada para $1 
+log_create_defroute=Ruta activa activa predeterminada
+log_delete_routes=Rutas activas $1 eliminadas
+
+acl_sysinfo=Mostrar las interfaces de red disponibles en el Tablero
+
+mod_virtualmin=el servidor Virtualmin <tt>$1</tt>
+mod_reseller=el revendedor de Virtualmin <tt>$1</tt>
+
+dafics_err=Error al desactivar las interfaces
+daifcs_enone=Ninguna seleccionada
+daifcs_egone=¡La interfaz ya no existe!
+
+dbifcs_err=Error al eliminar interfaces
+dbifcs_err2=Error al activar las interfaces
+
+hdelete_err=Error al eliminar las direcciones de host
+hdelete_enone=Ninguna seleccionada
+idelete_err=Error al eliminar las direcciones de host IPv6

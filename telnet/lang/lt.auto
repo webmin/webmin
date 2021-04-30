@@ -1,0 +1,8 @@
+index_title=SSH prisijungimas
+index_warn=Įspėjimas! Šis telnet seansas <b>nėra</b> užšifruotas.
+index_nojava=Šis modulis reikalauja, kad „Java“ veiktų, tačiau jūsų naršyklė nepalaiko „Java“
+index_credits=Programėlę, kurią GPL sukūrė <a href='$1' target=_top>Matthias L. Jugel ir Marcus Mei�ner</a>.
+index_sshcredits=Apima „Cryptix“ plėtros komandos sukurtą programinę įrangą (<a href=$1 target=_top>$1</a>).
+index_esocket=Nėra telnet serverio, veikiančio $1 prievado $2.
+index_esocket2=Nėra SSH serverio, veikiančio prie $1 prievado $2.
+index_elookup=Nepavyko ieškoti $1 IP adreso, kad būtų galima išbandyti telnetą ar SSH serverį.

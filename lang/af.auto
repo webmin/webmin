@@ -1,0 +1,194 @@
+main_title3=Webmin $1 ($2)
+main_readonly=(Leesalleen modus)
+main_unused=Ongebruikte modules
+main_refreshmods=Verfris modules
+
+link_essl=Die Net::SSLeay Perl-module wat nodig is om HTTPS-verbindings te maak, is nie op u stelsel geïnstalleer nie.
+
+category_=Gereedskap
+
+longcategory_servers=Modules vir konfigurasie-web-, e-pos-, FTP- en ander bedieners
+longcategory_hardware=Modules vir konfigurasie van drukker, skyf en ander hardeware
+longcategory_system=Modules vir gebruikers, lêerstelsels, Cron-take en ander stelselinstellings
+longcategory_webmin=Modules vir die opstel van Webmin self
+longcategory_net=Modules vir die opstel van netwerk- en netwerkdienste
+longcategory_cluster=Modules wat verskeie bedieners vanaf 'n enkele koppelvlak kan bestuur
+longcategory_info=Modules wat inligting oor u stelsel vertoon
+longcategory_=Modules wat ander diverse take verrig
+
+error_previous=vorige bladsy
+error_stack=Bel stapelspoor
+error_file=lêer
+error_line=lyn
+error_sub=funksie
+error_stackline=In lêer $1 by reël $2 roeping $3
+efileclose=Kon nie skryf aan $1 tydens sluiting nie : $2
+efileopen=Kon nie $1 vir skryf : $2
+fail=misluk
+euserdbacl=Kon nie ACL van die gebruiker ophaal nie : $1
+euserdbacl2=Kon nie gebruikers ACL opdateer : $1
+egroupdbacl=Kon nie ACL-groep ophaal nie : $1
+egroupdbacl2=Kon nie ACL bywerk nie : $1
+
+chooser_date=Kies Datum
+chooser_eopen=Listing misluk : $1
+
+modules_title1=Kies modules ..
+modules_title2=Kies module ..
+modules_sel=Geselekteerde modules
+modules_all=Alle modules
+modules_ok=ok
+modules_cancel=kanselleer
+modules_clear=duidelik
+
+config_emodule=Module bestaan nie
+config_nochange=Moenie verander nie
+config_setto=Stel na
+config_ewebmin=Parameter tipe 14 werk slegs in Webmin
+
+referer_fix1=If this is a legitimate link, you can allow links from this URL as follows :<ul><li>Login to Webmin normally.</li><li>Go to the <b>Webmin Configuration</b> module.</li><li>Click on the Trusted Referrers icon.</li><li>Enter the hostname $1 into the <b>Trusted websites</b> field, and click <b>Save</b></li>.</ul>
+referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.</li><li>Save the file.</li></ul>
+referer_fix3u=Maak seker dat u blaaier opgestel is om verwysingsinligting te stuur sodat dit deur Webmin geverifieer kan word.
+referer_fix2u=Alternately, you can configure Webmin to allow links from unknown referers by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Find the line <tt>referers_none=1</tt> and change it to <tt>referers_none=0</tt>.</li><li>Save the file.</li></ul><p></p>WARNING - this has the side effect of opening your system up to reflected XSS attacks and so is not recommended!
+
+session_twofactor=Tweefaktor-teken
+session_twofailed=Twee-faktor-verifikasie het misluk : $1
+
+pam_header=Teken in op Webmin
+pam_mesg=U moet op die onderstaande vraag reageer om aan te meld by die Webmin-bediener op $1.
+pam_mesg2=U moet op die onderstaande vraag reageer om aan te meld.
+pam_login=Aanhou
+pam_restart=Begin oor
+
+acl_otherdirs=Ander sigbare kaarte in lêerkieser
+acl_nodot=Versteek kollêers in lêerkieser?
+acl_feedback3=Ja, met config-lêers
+acl_readonly2=Gebruiker is in demo-modus?
+acl_readonlyyes=Ja (sommige modules is moontlik nie beskikbaar nie)
+acl_negative=Verleen u nuwe toestemmings aan die gebruiker?
+acl_fileunix=Blaai deur lêers as Unix-gebruiker
+acl_sameunix=Dieselfde as Webmin-aanmelding
+acl_webminsearch=Wys Webmin-soekveld?
+
+emodulecheck=Die $1 module is nie op u stelsel beskikbaar nie
+elock_tries2=Kon nie lêer $1 na $2 minute nie sluit nie. Laaste fout was : $3
+
+progress_size2=Laai $1 af ($2) ..
+progress_datan=Ontvang $1 ($2 %)
+progress_data2n=Ontvang $1
+progress_incache=$1 in die kas gevind
+
+readparse_cdheader=Ontbrekende inhoud-disposisiekopie
+readparse_enc=Daar word van kodering van vormdata verwag, maar het normale kodering
+readparse_max=Data het die maksimum grootte van $1 grepe oorskry
+
+password_expired=U wagwoord is verval, en u moet 'n nuwe een kies.
+password_temp=U moet 'n nuwe wagwoord kies om u tydelike aanmelding te vervang.
+password_header=Kies 'n nuwe wagwoord
+password_user=Gebruikersnaam
+password_old=Huidige Sleutelwoord
+password_new1=Nuwe Wagwoord
+password_new2=Nuwe wagwoord weer
+password_ok=verandering
+password_clear=duidelik
+password_done=U wagwoord is suksesvol verander. U kan nou weer <a href='$1'>weer aanmeld</a> met die nuwe wagwoord.
+password_err=Kon nie wagwoord verander nie
+password_euser=U aanmeldnaam is nie in die wagwoordlêer gevind nie!
+password_eold=Die huidige wagwoord is verkeerd
+password_enew1=Geen nuwe wagwoord is ingevoer nie
+password_enew2=U nuwe wagwoorde stem nie ooreen nie
+password_epam=PAM-fout : $1
+password_emodpam=Die Authen::PAM perl-module wat nodig is om wagwoordveranderings te doen, is nie geïnstalleer nie!
+password_enewpass=Nuwe wagwoord word nie toegelaat nie : $1
+
+ui_mandatory=Hierdie veld is verpligtend
+ui_checkmandatory=Niks is gekies nie
+ui_errors=Verskeie foute is gevind :
+ui_nothing=Niks het ingekom nie
+ui_searchcol=Soek rye waar
+ui_searchfor=Bevat die teks
+ui_searchok=Soek
+ui_selall=Kies alles.
+ui_selinv=Keer die keuse om.
+ui_edate=Ongeldige datum
+ui_etime=Ongeldige tyd
+ui_paging=Toon rye $1 aan $2 van $3
+ui_rowlabel=$2 in ry $1 :
+ui_filterbox=Tik om te filter ..
+
+header_statusmsg=$1 aangemeld $2 $3 op $4 ($5)
+
+uptracker_title=Laai tans lêer op
+uptracker_file=Lêernaam
+uptracker_size=grootte
+uptracker_pc=vordering
+uptracker_eid=Geen oplaai-ID gespesifiseer nie
+uptracker_eid2=Oplaai-ID is ongeldig!
+uptracker_of=$1 of $2
+
+wsearch_title=Soek $1
+wsearch_modt=module
+wsearch_mtitle=Module naam
+wsearch_what=Bypassende bladsy
+wsearch_type=Passingsoort
+wsearch_mod=$1 module
+wsearch_config_webmin=Webmin module opstel
+wsearch_config_usermin=Usermin-voorkeure
+wsearch_help=Hulp bladsy
+wsearch_inmod=In $1
+wsearch_text=Gebruikerskoppelvlak teks
+wsearch_esearch=Niks om na te soek is ingevoer nie.
+wsearch_enone=Geen Webmin-modules of bladsye wat ooreenstem met $1 is gevind nie.
+wsearch_on=(Op $1)
+wsearch_helpfor=Hulp vir <i>$1</i>
+wsearch_htext=Bypassende teks
+wsearch_htype=Bron
+wsearch_hcgis=verwysings
+wsearch_type_mod=Module naam
+wsearch_type_config=opset
+wsearch_type_help=Hulp bladsy
+wsearch_type_text=Gebruikerskoppelvlak
+wsearch_type_dir=Module-URL
+wsearch_hmod=module
+wsearch_moddir=URL-pad /$1/
+wsearch_searching=Soek na $1 ..
+wsearch_found=gevind $1 resultate :
+
+sql_emysqldriver=Kon nie die MySQL DBI-bestuurder laai nie
+sql_emysqlconnect=Kon nie verbinding maak met MySQL-databasis nie : $1
+sql_epostgresqldriver=Kon nie PostgreSQL DBI-bestuurder laai nie
+sql_epostgresqlconnect=Kon nie konnekteer met PostgreSQL-databasis nie : $1
+sql_eldapdriver=Kon nie LDAP-perl-module laai nie
+sql_eldapconnect=Kon nie aan die LDAP-bediener koppel nie $1
+sql_eldaptls=Kon nie TLS-kodering vir LDAP begin nie : $1
+sql_eldaplogin=Kon nie by LDAP-bediener aanmeld as $1 : $2 
+
+log_email_subject=Webmin-aksie in $1
+log_email_global=Webmin wêreldwye aksie
+log_email_desc=Hierdie e-pos is deur Webmin gestuur in reaksie op 'n gebruikerhandeling.
+log_email_mod=Webmin module: $1
+log_email_moddesc=Module titel: $1
+log_email_time=Handeling wat uitgevoer word by: $1
+log_email_system=Op die stelsel uitgevoer: $1
+log_email_user=Uitgevoer deur gebruiker: $1
+log_email_script=Webmin-skrip: $1
+log_email_session=Sessie-ID: $1
+log_email_remote=Kliëntadres: $1
+
+nice_size_PB=PB
+nice_size_PiB=PIB
+nice_size_TB=TB
+nice_size_TiB=TIB
+nice_size_GB=GB
+nice_size_GiB=GIB
+nice_size_MB=MB
+nice_size_MiB=MiB
+nice_size_kB=KG
+nice_size_kiB=KIB
+nice_size_b=grepe
+
+langauto_include=Sluit masjienvertalings in
+
+file_truncated_message=het $1 van die data gehaal, $2 uit $3 afgekap
+file_truncated_message_head=begin $1 van die data, afgekap $2 uit $3 
+file_truncated_message_tail=beëindig $1 van die data, afgekap $2 uit $3 

@@ -1,0 +1,40 @@
+index_add4=Lägg till en ny NFSv4-export.
+index_delete=Radera vald export
+index_disable=Inaktivera vald
+index_enable=Aktivera vald
+
+edit_vers=NFS-version
+edit_nfs_vers=NFS-version
+edit_pfs=NFSv4 Pseudofilesystem att exportera
+edit_network4=IPv4-nätverk
+edit_network6=IPv6-nätverk
+edit_address=Adress
+edit_prefix=/
+edit_subtree_check=Inaktivera undergranskontroll?
+edit_hide=Göm filsystemet?
+edit_auth=(med eller utan verifiering)
+edit_secs=Säkerhetsnivåer
+edit_integrity=Integritet
+edit_privacy=Integritet (inklusive integritet)
+edit_v2opts=NFSv2-specifika alternativ
+edit_sync=Omedelbart synkronisera alla skrivningar?
+edit_sync1=Ja
+edit_sync2=Nej
+edit_sync0=Standard
+edit_in=i
+edit_sec_sys=Ingen säkerhet
+edit_sec_krb5=Kerberos-autentisering
+edit_sec_krb5i=Kerberos integritet
+edit_sec_krb5p=Kerberos integritet
+edit_sec_lipkey=LIPKEY
+edit_sec_spkm=SPKM
+
+save_epfs=Pseudo-filsystemväg '$1' ser inte ut som en absolut sökväg
+save_pfs='$1' exporteras redan som en katalog
+save_create_dir=Det går inte att skapa katalogen '$1'
+save_eanonuid=Ogiltigt anonymt användarnamn
+save_eanongid=Ogiltigt anonymt åtkomstgruppens namn
+
+exports_gss=Autentiserat nätverk: $1 
+
+log_delete_exports=$1 NFS-export raderades

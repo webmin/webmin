@@ -66,8 +66,13 @@ our $dnssec_dlv_zone = "dlv.isc.org.";
 our @dnssec_dlv_key = ( 257, 3, 5, '"BEAAAAPHMu/5onzrEE7z1egmhg/WPO0+juoZrW3euWEn4MxDCE1+lLy2brhQv5rN32RKtMzX6Mj70jdzeND4XknW58dnJNPCxn8+jAGl2FZLK8t+1uq4W+nnA3qO2+DL+k6BD4mewMLbIYFwe0PG73Te9fZ2kJb56dhgMde5ymX4BI/oQ+cAK50/xvJv00Frf8kw6ucMTwFlgPe+jnGxPPEmHAte/URkY62ZfkLoBAADLHQ9IrS2tryAe7mbBZVcOwIeU/Rw/mRx/vwwMCTgNboMQKtUdvNXDrYJDSHZws3xiRXF1Rf+al9UmZfSav/4NWLKjHzpT59k/VStTDN0YUuWrBNh"' );
 
 my $rand_flag;
-if ($gconfig{'os_type'} =~ /-linux$/ && -r "/dev/urandom" &&
-    !$config{'force_random'}) {
+if ($gconfig{'os_type'} =~ /-linux$/ && 
+    -r "/dev/urandom" &&
+    !$config{'force_random'} &&
+    $bind_version &&
+    &compare_version_numbers($bind_version, '9.14') < 0) {
+	# Version: 9.14.2 deprecated the use of -r option 
+	# in favor of using /dev/random [bugs:#5370]
 	$rand_flag = "-r /dev/urandom";
 	}
 
@@ -98,7 +103,7 @@ sub get_bind_version
 {
 if (&has_command($config{'named_path'})) {
 	my $out = &backquote_command("$config{'named_path'} -v 2>&1");
-	if ($out =~ /(bind|named)\s+([0-9\.]+)/i) {
+	if ($out && $out =~ /(bind|named)\s+([0-9\.]+)/i) {
 		return $2;
 		}
 	}
@@ -1047,11 +1052,13 @@ if ($config{'short_names'} && defined($_[5])) {
 	}
 
 # TTL field
-if ($rec{'ttl'} =~ /^(\d+)([SMHDW]?)$/i) {
-	$ttl = $1; $ttlunit = $2;
+if ($rec{'ttl'} && $rec{'ttl'} =~ /^(\d+)([SMHDW]?)$/i) {
+	$ttl = $1;
+	$ttlunit = $2;
 	}
 else {
-	$ttl = $rec{'ttl'}; $ttlunit = "";
+	$ttl = $rec{'ttl'} || '';
+	$ttlunit = "";
 	}
 print &ui_table_row($text{'edit_ttl'},
 	&ui_opt_textbox("ttl", $ttl, 8, $text{'default'})." ".
@@ -1063,7 +1070,7 @@ if ($rec{'values'}) {
 	@v = @{$rec{'values'}};
 	}
 else {
-	@v = undef;
+	@v = ( );
 	}
 if ($type eq "A" || $type eq "AAAA") {
 	print &ui_table_row($text{'value_A1'},
@@ -1295,6 +1302,20 @@ elsif ($type eq "NSEC3PARAM") {
 	print &ui_table_row($text{'value_NSEC3PARAM4'},
 		&ui_textbox("value3", $v[3], 20));
 
+	}
+elsif ($type eq "CAA") {
+	# CAA records have a flag, tag and issuer domain
+	print &ui_table_row($text{'value_CAA0'},
+		&ui_yesno_radio("value0", $v[0] || 0));
+
+	print &ui_table_row($text{'value_CAA1'},
+		&ui_select("value1", $v[1],
+			   [ [ "issue", $text{'value_caa_issue'} ],
+			     [ "issuewild", $text{'value_caa_issuewild'} ],
+			     [ "iodef", $text{'value_caa_iodef'} ] ]));
+
+	print &ui_table_row($text{'value_CAA2'},
+		&ui_textbox("value2", $v[2], 40));
 	}
 else {
 	# All other types just have a text box
@@ -1581,16 +1602,8 @@ if (($opts = &find("options", $conf)) &&
 return 1;
 }
 
-# check_bind_8()
-# Returns the --help output if non BIND 8/9, or undef if is
-sub check_bind_8
-{
-my $fflag = $gconfig{'os_type'} eq 'windows' ? '-f' : '';
-my $out = `$config{'named_path'} -help $fflag 2>&1`;
-return $out !~ /\[-f\]/ && $out !~ /\[-f\|/ ? $out : undef;
-}
-
 my $get_chroot_cache;
+
 # get_chroot()
 # Returns the chroot directory BIND is running under
 sub get_chroot
@@ -2147,7 +2160,7 @@ my ($zone) = @_;
 if (!$freeze_zone_count{$zone->{'name'}}) {
 	my ($out, $ok) = &try_cmd(
 		"freeze ".quotemeta($zone->{'name'})." IN ".
-		quotemeta($zone->{'view'} || "")." 2>&1 </dev/null");
+		quotemeta($zone->{'view'} || ""));
 	if ($ok) {
 		$freeze_zone_count{$zone->{'name'}}++;
 		&register_error_handler(\&after_editing, $zone);
@@ -2162,9 +2175,8 @@ sub after_editing
 my ($zone) = @_;
 if ($freeze_zone_count{$zone->{'name'}}) {
 	$freeze_zone_count{$zone->{'name'}}--;
-	&try_cmd(
-		"thaw ".quotemeta($zone->{'name'})." IN ".
-		quotemeta($zone->{'view'} || "")." 2>&1 </dev/null");
+	&try_cmd("thaw ".quotemeta($zone->{'name'})." IN ".
+		 quotemeta($zone->{'view'} || ""));
 	}
 }
 
@@ -2177,20 +2189,17 @@ my ($dom, $view) = @_;
 my ($out, $ex);
 if ($view) {
 	# Reload a zone in a view
-	&try_cmd("freeze ".quotemeta($dom)." IN ".quotemeta($view).
-		 " 2>&1 </dev/null");
-	$out = &try_cmd("reload ".quotemeta($dom)." IN ".quotemeta($view).
-			" 2>&1 </dev/null");
+	&try_cmd("freeze ".quotemeta($dom)." IN ".quotemeta($view));
+	$out = &try_cmd("reload ".quotemeta($dom)." IN ".quotemeta($view));
 	$ex = $?;
-	&try_cmd("thaw ".quotemeta($dom)." IN ".quotemeta($view).
-		 " 2>&1 </dev/null");
+	&try_cmd("thaw ".quotemeta($dom)." IN ".quotemeta($view));
 	}
 else {
 	# Just reload one top-level zone
-	&try_cmd("freeze ".quotemeta($dom)." 2>&1 </dev/null");
-	$out = &try_cmd("reload ".quotemeta($dom)." 2>&1 </dev/null");
+	&try_cmd("freeze ".quotemeta($dom));
+	$out = &try_cmd("reload ".quotemeta($dom));
 	$ex = $?;
-	&try_cmd("thaw ".quotemeta($dom)." 2>&1 </dev/null");
+	&try_cmd("thaw ".quotemeta($dom));
 	}
 if ($out =~ /not found/i) {
 	# Zone is not known to BIND yet - do a total reload
@@ -2389,13 +2398,13 @@ foreach my $k (keys %znc) {
 		$filecount++;
 		$donefile{$1}++;
 		my @fst = stat($1);
-		if ($fst[9] > $st[9]) {
+		if (!@st || !@fst || $fst[9] > $st[9]) {
 			$changed = 1;
 			}
 		}
 	}
 if ($changed || $znc{'version'} != $zone_names_version ||
-    $config{'no_chroot'} != $znc{'no_chroot_config'} ||
+    int($config{'no_chroot'}) != int($znc{'no_chroot_config'}) ||
     $config{'pid_file'} ne $znc{'pidfile_config'}) {
 	# Yes .. need to rebuild
 	%znc = ( );
@@ -2793,7 +2802,9 @@ foreach my $slave (@slaves) {
 				  map { &to_ipaddress($_->{'host'}) }
 				      grep { $_ ne $slave } @slaves;
 		}
-	push(@otherslaves, split(/\s+/, $config{'extra_slaves'}));
+	if ($config{'extra_slaves'}) {
+		push(@otherslaves, split(/\s+/, $config{'extra_slaves'}));
+		}
 	if ($moreslaves) {
 		push(@otherslaves, @$moreslaves);
 		}
@@ -2966,7 +2977,7 @@ $slave_error = $_[0];
 
 sub get_forward_record_types
 {
-return ("A", "NS", "CNAME", "MX", "HINFO", "TXT", "SPF", "DMARC", "WKS", "RP", "PTR", "LOC", "SRV", "KEY", "TLSA", "SSHFP", "NSEC3PARAM", $config{'support_aaaa'} ? ( "AAAA" ) : ( ), @extra_forward);
+return ("A", "NS", "CNAME", "MX", "HINFO", "TXT", "SPF", "DMARC", "WKS", "RP", "PTR", "LOC", "SRV", "KEY", "TLSA", "SSHFP", "CAA", "NSEC3PARAM", $config{'support_aaaa'} ? ( "AAAA" ) : ( ), @extra_forward);
 }
 
 sub get_reverse_record_types
@@ -2978,15 +2989,16 @@ return ("PTR", "NS", "CNAME", @extra_reverse);
 # Try calling rndc and ndc with the same args, to see which one works
 sub try_cmd
 {
-my $args = $_[0];
-my $rndc_args = $_[1] || $_[0];
+my ($args, $rndc_args) = @_;
+$rndc_args ||= $args;
 my $out = "";
 my $ex;
 if (&has_ndc() == 2) {
 	# Try with rndc
+	my $conf = $config{'rndc_conf'} && -r $config{'rndc_conf'} ?
+			" -c $config{'rndc_conf'}" : "";
 	$out = &backquote_logged(
-		$config{'rndc_cmd'}.
-		($config{'rndc_conf'} ? " -c $config{'rndc_conf'}" : "").
+		$config{'rndc_cmd'}.$conf.
 		" ".$rndc_args." 2>&1 </dev/null");
 	$ex = $?;
 	}
@@ -3046,12 +3058,13 @@ my ($file) = @_;
 $file ||= &make_chroot($config{'named_conf'});
 my $chroot = &get_chroot();
 my $out = &backquote_command("$config{'checkconf'} -h 2>&1 </dev/null");
-my $zflag = $out =~ /\[-z\]/ ? "-z" : "";
+my $zflag = $out =~ /\[-z\]|\[-\S*z\S*\]/ ? "-z" : "";
 $out = &backquote_command(
         $config{'checkconf'}.
 	($chroot && $chroot ne "/" ? " -t ".quotemeta($chroot) : "").
 	" $zflag 2>&1 </dev/null");
-return $? ? grep { !/loaded\s+serial/ } split(/\r?\n/, $out) : ( );
+return $? ? &unique(grep { !/loaded\s+serial|already\s+exists/ }
+		         split(/\r?\n/, $out)) : ( );
 }
 
 # delete_records_file(file)
@@ -3086,6 +3099,7 @@ sub move_zone_button
 {
 my ($conf, $view, $zonename) = @_;
 my @views = grep { &can_edit_view($_) } &find("view", $conf);
+$view = '' if (!defined($view));
 if ($view eq '' && @views || $view ne '' && @views > 1) {
 	return &ui_buttons_row("move_zone.cgi",
                 $text{'master_move'},
@@ -3147,26 +3161,33 @@ my ($zone) = @_;
 my @rv;
 if (!$access{'ro'} && $access{'apply'}) {
 	my $r = $ENV{'REQUEST_METHOD'} eq 'POST' ? 0 : 1;
+	my $link_params = "";
+	if ($zone) {
+		$link_params = "&zone=$zone->{'name'}&type=$zone->{'type'}";
+		if ($zone->{'viewindex'}) {
+			$link_params .= "&view=$zone->{'viewindex'}";
+			}
+		}
 	if (&is_bind_running()) {
 		if ($zone && ($access{'apply'} == 1 || $access{'apply'} == 2)) {
 			# Apply this zone
-            my $link = "restart_zone.cgi?return=$r&".
-                        "view=$zone->{'viewindex'}&".
-                        "zone=$zone->{'name'}";
+		        my $link = "restart_zone.cgi?return=$r&".
+				   "view=$zone->{'viewindex'}&".
+				   "zone=$zone->{'name'}";
 			push(@rv, &ui_link($link, $text{'links_apply'}) );
 			}
 		# Apply whole config
 		if ($access{'apply'} == 1 || $access{'apply'} == 3) {
-			push(@rv, &ui_link("restart.cgi?return=$r", $text{'links_restart'}) );
+			push(@rv, &ui_link("restart.cgi?return=$r$link_params", $text{'links_restart'}) );
 			}
 		if ($access{'apply'} == 1) {
 			# Stop BIND
-			push(@rv, &ui_link("stop.cgi?return=$r", $text{'links_stop'}) );
+			push(@rv, &ui_link("stop.cgi?return=$r$link_params", $text{'links_stop'}) );
 			}
 		}
 	elsif ($access{'apply'} == 1) {
 		# Start BIND
-		push(@rv, &ui_link("start.cgi?return=$r", $text{'links_start'}));
+		push(@rv, &ui_link("start.cgi?return=$r$link_params", $text{'links_start'}));
 		}
 	}
 return join('<br>', @rv);
@@ -3464,30 +3485,36 @@ while($tries++ < 10) {
 		" -f ".quotemeta($signed)." ".
 		quotemeta($chrootfn)." 2>&1");
 	last if (!$?);
+	if ($out =~ /out\s+of\s+range/i) {
+		# Journal files are out of sync
+		&try_cmd("sync -clean");
+		}
 	}
 return $out if ($tries >= 10);
 
 # Merge records back into original file, by deleting all NSEC and RRSIG records
 # and then copying over
-for(my $i=$#recs; $i>=0; $i--) {
-	if ($recs[$i]->{'type'} eq 'NSEC' ||
-	    $recs[$i]->{'type'} eq 'NSEC3' ||
-	    $recs[$i]->{'type'} eq 'RRSIG' ||
-	    $recs[$i]->{'type'} eq 'NSEC3PARAM') {
-		&delete_record($fn, $recs[$i]);
+my @delrecs;
+foreach my $r (@recs) {
+	if ($r->{'type'} eq 'NSEC' ||
+	    $r->{'type'} eq 'NSEC3' ||
+	    $r->{'type'} eq 'RRSIG' ||
+	    $r->{'type'} eq 'NSEC3PARAM') {
+		push(@delrecs, $r);
 		}
 	}
+&delete_multiple_records($fn, \@delrecs);
 my @signedrecs = &read_zone_file($fn.".webmin-signed", $dom);
+my @addrecs;
 foreach my $r (@signedrecs) {
 	if ($r->{'type'} eq 'NSEC' ||
 	    $r->{'type'} eq 'NSEC3' ||
 	    $r->{'type'} eq 'RRSIG' ||
 	    $r->{'type'} eq 'NSEC3PARAM') {
-		&create_record($fn, $r->{'name'}, $r->{'ttl'}, $r->{'class'},
-			       $r->{'type'}, join(" ", @{$r->{'values'}}),
-			       $r->{'comment'});
+		push(@addrecs, $r);
 		}
 	}
+&create_multiple_records($fn, \@addrecs);
 &unlink_file($signed);
 return undef;
 }
@@ -3578,7 +3605,8 @@ foreach my $f (readdir(ZONEDIR)) {
 		$rv->{'public'} = $pub->{'values'}->[3];
 		$rv->{'values'} = $pub->{'values'};
 		$rv->{'publictext'} = &read_file_contents("$dir/$f");
-		while($rv->{'publictext'} =~ s/^;.*\r?\n//) { }
+		while($rv->{'publictext'} =~ s/^;.*\r?\n//) { };
+		$rv->{'publictext'} = format_dnssec_public_key($rv->{'publictext'});
 		}
 	elsif ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.private$/) {
 		# Found the private key file
@@ -4230,6 +4258,42 @@ return @rv;
 sub flush_dnssec_expired_domains
 {
 &unlink_file($dnssec_expiry_cache);
+}
+
+# get_virtualmin_domains(name)
+# Returns the Virtualmin domain objects for this zone, if any
+sub get_virtualmin_domains
+{
+my ($name) = @_;
+my @rv;
+if (&foreign_check("virtual-server")) {
+	&foreign_require("virtual-server");
+	my $d = &virtual_server::get_domain_by("dom", $name);
+	push(@rv, $d) if ($d);
+	push(@rv, &virtual_server::get_domain_by("dns_subof", $d->{'id'})) if ($d);
+	}
+return wantarray ? @rv : $rv[0];
+}
+
+# zone_subhead(&zone)
+# Returns a ui_header subtitle for a zone
+sub zone_subhead
+{
+my ($zone) = @_;
+my $desc = &ip6int_to_net(&arpa_to_ip($zone->{'name'}));
+my $view = $zone->{'view'};
+return $view ? &text('master_inview', $desc, $view) : $desc;
+}
+
+# format_dnssec_public_key(pubkey)
+# Format public dnssec public key, each on new line
+sub format_dnssec_public_key
+{
+my ($pubkey) = @_;
+my @krvalues = split(/\s+/, $pubkey);
+my @kvalues = @krvalues[0..5];
+my $kvspace = " " x length("@kvalues");
+return join(" ", @kvalues) . " " . join("\n$kvspace ", splice(@krvalues, 6));
 }
 
 1;

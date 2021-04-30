@@ -1,0 +1,103 @@
+index_title=Monitor de batimentos cardíacos
+index_return=monitor de batimentos cardíacos
+index_edir=O diretório de configuração de pulsação $1 não existe. Talvez o Heartbeat não esteja instalado ou a sua <a href='$2'>configuração do módulo</a> esteja incorreta.
+index_start=Iniciar monitor de batimentos cardíacos
+index_startmsg=Clique neste botão para iniciar o processo do monitor de pulsação. Isso permitirá o failover automático de serviço em seu sistema com a configuração atual.
+index_apply=Aplicar mudanças
+index_applymsg=Clique neste botão para forçar o processo do monitor Heartbeat em execução a recarregar a configuração atual.
+index_eha_cf=O arquivo de configuração de pulsação $1 não foi encontrado no seu sistema. Talvez ainda não tenha sido copiado no lugar ou a <a href='$2'>configuração do módulo</a> está incorreta.
+index_eharesources=O arquivo de recursos $1 não foi encontrado no seu sistema. Talvez ainda não tenha sido copiado no lugar ou a <a href='$2'>configuração do módulo</a> está incorreta.
+index_eauthkeys=O arquivo de chaves de autenticação $1 não foi encontrado no seu sistema. Talvez ainda não tenha sido copiado no lugar ou a <a href='$2'>configuração do módulo</a> está incorreta.
+index_ereq_resource_cmd=O script para solicitar recursos do outro nó ($1) não foi encontrado no seu sistema. Talvez ainda não tenha sido copiado no lugar ou a <a href='$2'>configuração do módulo</a> está incorreta.
+index_version=Versão de pulsação $1 
+index_noversion=Aviso - A versão do Heartbeat instalada no seu sistema não pôde ser detectada automaticamente. Você deve configurá-lo na página <a href='$1'>configuração do módulo</a>.
+index_status=Status de pulsação
+
+conf_title=Opções de configuração
+conf_header=Opções de configuração de pulsação
+conf_serials=Portas de pulsação serial
+conf_baud=Taxa de transmissão para porta serial
+conf_bcasts=Interfaces de pulsação Ethernet
+conf_none=Nenhum
+conf_udpport=Porta de pulsação UDP
+conf_mcast=Dispositivo de pulsação multicast
+conf_mcastv=Dispositivo $1, grupo $2, porta $3, TTL $4, loopback $5 
+conf_enabled=ativado
+conf_disabled=Desativado
+conf_keepalive=Tempo entre batimentos cardíacos
+conf_nice_failback=Bom comportamento de failback
+conf_secs=segundos
+conf_deadtime=Tempo antes do nó ser considerado morto
+conf_watchdog=Arquivo de dispositivo de watchdog
+conf_node=Hosts em cluster
+conf_logfile=Arquivo de log de pulsação
+conf_logfacility=Recurso Syslog Log
+conf_initdead=Tempo morto inicial
+conf_ok=Salvar opções
+conf_err=Falha ao salvar opções
+conf_ebaud=Taxa de transmissão ausente ou inválida
+conf_ebcast=Nenhuma interface de transmissão de pulsação inserida
+conf_ebcastif='$1' não é uma interface de transmissão válida
+conf_eudpport=Porta de pulsação ausente ou inválida
+conf_ekeepalive=Tempo ausente ou inválido entre os batimentos cardíacos
+conf_edeadtime=Tempo morto ausente ou inválido
+conf_ewatchdog=Arquivo de dispositivo de vigilância ausente ou inexistente
+conf_enonode=Nenhum host de cluster inserido
+conf_ethisnode=Este host $1 não está na lista de hosts do cluster
+conf_elogfile=Nome de arquivo de log ausente ou inválido
+conf_einitdead=Tempo morto inicial ausente ou inválido
+conf_einitdead2=O tempo morto inicial deve ser pelo menos duas vezes o tempo antes que um nó seja considerado morto
+conf_emcast_dev=Dispositivo multicast ausente ou inválido
+conf_emcast_ip=Endereço de grupo multicast ausente ou inválido
+conf_emcast_port=Número da porta multicast ausente ou inválida
+conf_emcast_ttl=Tempo de vida do multicast ausente ou inválido
+conf_auto_on=$ {conf_enabled}
+conf_auto_off=$ {conf_disabled}
+conf_auto_legacy=Modo legado
+conf_auto_=$ {padrão}
+
+res_title=Recursos de cluster
+res_node=Nó Primário
+res_ips=Endereços IP
+res_servs=Serviços de nó
+res_none=Nenhum
+res_nores=Nenhum recurso de cluster foi definido em seu sistema.
+res_add=Adicionar um recurso de cluster
+res_return=lista de recursos
+res_active=Status do Recurso
+res_getserv=Obter Recurso
+res_hbdown=Batimento cardíaco baixo
+res_up=ACIMA
+res_down=BAIXA
+
+node_create=Adicionar recurso de cluster
+node_edit=Editar recurso de cluster
+node_header=Detalhes do recurso de cluster
+node_node=Nó primário para recurso
+node_ips=Endereços IP para recurso
+node_ip=endereço de IP
+node_cidr=CIDR da máscara de rede
+node_broad=Endereço de transmissão
+node_servs=Serviços para recursos
+node_serv=Serviço
+node_args=Argumentos adicionais
+node_err=Falha ao salvar o recurso de cluster
+node_enone=Nó principal ausente ou inválido
+node_eip='$1' não é um endereço IP válido
+node_ecidr='$1' não é um CIDR válido
+node_ebroad='$1' não é um endereço de transmissão válido
+
+auth_title=Chaves de autenticação
+auth_header=Autenticação de nó de cluster
+auth_mode=Modo de autenticação
+auth_crc=CRC (sem segurança)
+auth_sha1=SHA1 com senha
+auth_md5=MD5 com senha
+auth_err=Falha ao salvar chaves de autenticação
+auth_emd5=Senha MD5 ausente ou inválida
+auth_esha1=Senha SHA1 ausente ou inválida
+
+start_err=Falha ao iniciar o batimento cardíaco
+
+apply_err=Falha ao aplicar as alterações
+apply_epid=O processo não está mais em execução

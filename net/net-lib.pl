@@ -7,26 +7,32 @@ use WebminCore;
 %access = &get_module_acl();
 $access{'ipnodes'} = $access{'hosts'};
 
-# XXX detect this automatically rather than using a bunch of links?
 if (-r "$module_root_directory/$gconfig{'os_type'}-$gconfig{'os_version'}-lib.pl") {
 	do "$gconfig{'os_type'}-$gconfig{'os_version'}-lib.pl";
+	$net_mode = $gconfig{'os_type'}."/".$gconfig{'os_version'};
 	}
 elsif ($gconfig{'os_type'} eq 'suse-linux' &&
        $gconfig{'os_version'} >= 9.2) {
 	# Special case for SuSE 9.2+
 	do "$gconfig{'os_type'}-9.2-ALL-lib.pl";
+	$net_mode = $gconfig{'os_type'}."/9.2";
 	}
 elsif ($gconfig{'os_type'} eq 'slackware-linux' &&
        $gconfig{'os_version'} >= 9.1) {
 	# Special case for Slackware 9.1+
 	do "$gconfig{'os_type'}-9.1-ALL-lib.pl";
+	$net_mode = $gconfig{'os_type'}."/9.1";
 	}
-elsif ($gconfig{'os_type'} eq 'debian-linux' && -d "/etc/netplan") {
+elsif ($gconfig{'os_type'} eq 'debian-linux' && 
+       &has_command("netplan") &&
+       -d "/etc/netplan") {
 	# Special case for newer Ubuntu versions
 	do "netplan-lib.pl";
+	$net_mode = "netplan";
 	}
 else {
 	do "$gconfig{'os_type'}-lib.pl";
+	$net_mode = $gconfig{'os_type'};
 	}
 
 # list_hosts()
@@ -169,20 +175,24 @@ return "<input type=button onClick='ifield = document.forms[$form].$_[0]; choose
 # Converts a number like 24 to a mask like 255.255.255.0
 sub prefix_to_mask
 {
-return $_[0] >= 24 ? "255.255.255.".(256-(2 ** (32-$_[0]))) :
-       $_[0] >= 16 ? "255.255.".(256-(2 ** (24-$_[0]))).".0" :
-       $_[0] >= 8 ? "255.".(256-(2 ** (16-$_[0]))).".0.0" :
-		     (256-(2 ** (8-$_[0]))).".0.0.0";
+local ($p) = @_;
+return !defined($p) ? undef :
+       $p >= 24 ? "255.255.255.".(256-(2 ** (32-$p))) :
+       $p >= 16 ? "255.255.".(256-(2 ** (24-$p))).".0" :
+       $p >= 8 ? "255.".(256-(2 ** (16-$p))).".0.0" :
+		 (256-(2 ** (8-$p))).".0.0.0";
 }
 
 # mask_to_prefix(mask)
 # Converts a mask like 255.255.255.0 to a prefix like 24
 sub mask_to_prefix
 {
-return $_[0] =~ /^255\.255\.255\.(\d+)$/ ? 32-&log2(256-$1) :
-       $_[0] =~ /^255\.255\.(\d+)\.0$/ ? 24-&log2(256-$1) :
-       $_[0] =~ /^255\.(\d+)\.0\.0$/ ? 16-&log2(256-$1) :
-       $_[0] =~ /^(\d+)\.0\.0\.0$/ ? 8-&log2(256-$1) : 32;
+local ($m) = @_;
+return !defined($m) ? undef :
+       $m =~ /^255\.255\.255\.(\d+)$/ ? 32-&log2(256-$1) :
+       $m =~ /^255\.255\.(\d+)\.0$/ ? 24-&log2(256-$1) :
+       $m =~ /^255\.(\d+)\.0\.0$/ ? 16-&log2(256-$1) :
+       $m =~ /^(\d+)\.0\.0\.0$/ ? 8-&log2(256-$1) : 32;
 }
 
 sub log2
@@ -286,6 +296,11 @@ if ($access{'ifcs'} == 3) {
 else {
 	return !$can{$name};
 	}
+}
+
+sub can_broadcast_def
+{
+return 0;
 }
 
 sub can_create_iface
@@ -452,6 +467,13 @@ foreach my $w (@w) {
 		}
 	}
 return lc(join(":", @w));
+}
+
+sub iface_sort
+{
+return $a->{'name'} cmp $b->{'name'} if ($a->{'name'} cmp $b->{'name'});
+return $a->{'virtual'} eq '' ? -1 :
+       $b->{'virtual'} eq '' ? 1 : $a->{'virtual'} <=> $b->{'virtual'};
 }
 
 1;

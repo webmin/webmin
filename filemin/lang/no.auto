@@ -1,0 +1,5 @@
+acl_allowed_paths_explain=For rotkompatibel bruker, hvis tillatt katalog bare er satt til $HOME, vil den være ekvivalent med / (full disktilgang)
+
+acls=Tilgangskontrolliste
+file_detect_encoding=Registrer filkoding automatisk
+index_return=filoppføring

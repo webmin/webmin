@@ -1,0 +1,54 @@
+index_add4=添加一個新的NFSv4導出。
+index_delete=刪除選定的導出
+index_disable=禁用選擇
+index_enable=啟用選定
+
+edit_vers=NFS版本
+edit_nfs_vers=NFS版本
+edit_pfs=要導出的NFSv4偽文件系統
+edit_network4=IPv4網絡
+edit_network6=IPv6網絡
+edit_address=地址
+edit_prefix=/
+edit_security=出口安全
+edit_subtree_check=禁用子樹檢查？
+edit_hide=隱藏文件系統？
+edit_auth=（帶有或不帶有身份驗證）
+edit_secs=安全等級
+edit_integrity=廉潔
+edit_privacy=隱私權（包括完整性）
+edit_v2opts=NFSv2特定的選項
+edit_sync=立即同步所有寫入？
+edit_sync1=是
+edit_sync2=沒有
+edit_sync0=默認
+edit_in=在
+edit_sec_sys=沒有安全感
+edit_sec_krb5=Kerberos身份驗證
+edit_sec_krb5i=Kerberos完整性
+edit_sec_krb5p=Kerberos隱私
+edit_sec_lipkey=利比
+edit_sec_spkm=知識管理
+
+save_epfs=偽文件系統路徑'$1'看起來不像絕對路徑
+save_pfs='$1'已經作為目錄導出
+save_create_dir=無法創建目錄“$1”
+save_eanonuid=無效的匿名訪問用戶名
+save_eanongid=無效的匿名訪問組名稱
+
+exports_webnfs=WebNFS客戶端
+exports_ngroup=網絡組 $1
+exports_net=網絡 $1
+exports_all=大家
+exports_hosts=主機 $1
+exports_host=主機 $1
+exports_gss=經過身份驗證的網絡： $1
+
+log_modify=修改後的NFS導出 $1
+log_modify_l=已將NFS導出 $1更改為 $2
+log_delete=已刪除NFS導出 $1
+log_delete_l=已將NFS導出 $1導出到 $2
+log_create=已創建NFS導出 $1
+log_create_l=已創建NFS導出 $1到 $2
+log_apply=應用的配置
+log_delete_exports=已刪除 $1 NFS導出

@@ -1,0 +1,35 @@
+index_title=Úkoly cronu v clustru
+index_add=Vytvoření nového úkolu Cronu v clustru
+index_none=V clustru není definována žádná úloha cronu.
+index_servers=Spustit na servrech
+index_return=seznam úkolů cronu v clustru
+index_more=$1 další ..
+index_run=Spustit..
+
+edit_title=Úprava úkolu Cronu v clustru
+create_title=Vytvoření úkolu Cronu v clustru
+edit_servers=Spustit na servrech
+edit_group=Členové z $1
+edit_this=tento server
+edit_all=&lt;Všichni hostitelé&gt;
+
+save_err=Uložení úkolu cronu v clastru selhalo
+
+exec_title=Vykonání úkolu Cronu v clustru
+exec_cmd=$1 spuštěn na označených servrech ..
+exec_failed=Spuštění selhalo na $1 : $2
+exec_success=Výstup z $1 ..
+exec_nohosts=Žádný hostitel není vybrán pro spuštění nebo vybraná skupina neobsahuje zádného použitelného hostitele.
+
+log_run=$1 spuštěno na $2 servrech
+log_run_l=$1 spuštěno na $2
+log_create=Vytvořen úkol Cronu v clustru pro $1
+log_create_l=Vytvořen úkol Cronu $2 v clustru pro $1
+log_modify=Změněn úkol Cronu v clustru pro $1
+log_modify_l=Změněn úkol Cronu $2 v clustru pro $1
+log_delete=Vymazán úkol Cronu v clustru pro $1
+log_delete_l=Vymazán úkol Cronu $2 v clustru pro $1
+log_deletes=Vymazán $1 úkol Cronu v clustru
+
+delete_err=Mazání úkolu cronu v clustru selhalo
+delete_enone=Není vybráno

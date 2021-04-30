@@ -1,0 +1,79 @@
+index_title=Tài liệu hệ thống
+index_header=Tìm kiếm tài liệu hệ thống
+index_for=Tìm kiếm
+index_where=Tìm kiếm ở
+index_alldoc=Tất cả tài liệu
+index_man=Trang hướng dẫn
+index_doc=Gói tài liệu
+index_kernel=Tài liệu hạt nhân
+index_info=Trang thông tin
+index_howto=Tài liệu HOWTO
+index_kde=Tài liệu KDE
+index_perl=Tài liệu mô-đun Perl
+index_custom=Tài liệu tùy chỉnh
+index_help=Webmin giúp
+index_reset=Cài lại
+index_search=Tìm kiếm
+index_return=Form tìm kiếm
+index_type=Trận đấu
+index_name=Chỉ tên
+index_data=Tên và nội dung
+index_google=Tìm kiếm Google
+index_others=Khi tìm kiếm tài liệu từ một mô-đun khác, cho phép tìm kiếm trong ..
+index_other_man=Trang hướng dẫn
+index_other_help=Trợ giúp Webmin
+index_other_doc=Gói tài liệu
+index_other_kernel=Tài liệu hạt nhân
+index_other_howto=Tài liệu HOWTO
+index_other_perl=Tài liệu mô-đun Perl
+index_other_google=Công cụ tìm kiếm Google
+index_other_kde=Tài liệu KDE
+index_and=Phù hợp với tất cả
+index_or=Phù hợp với bất kỳ
+
+search_efor=Không có trang hướng dẫn để tìm kiếm đã nhập
+search_title=kết quả tìm kiếm
+search_desc=Sự miêu tả
+search_type=Kiểu
+search_file=Trang hoặc tập tin
+search_man=Trang hướng dẫn
+search_howto=Tài liệu HOWTO
+search_doc=Gói tài liệu
+search_kernel=Tài liệu hạt nhân
+search_kde=Tài liệu KDE
+search_perl=Mô-đun Perl
+search_help=Webmin giúp
+search_custom=Tài liệu tùy chỉnh
+search_none=Không tìm thấy tài liệu phù hợp với $1.
+search_for=Cho 1
+search_google=Kết quả tìm kiếm Google
+search_doxfer=Tài liệu trực tuyến trên Webmin
+
+howto_title=Tài liệu HOWTO
+howto_header=Tệp tài liệu HOWTO $1 
+howto_epath=Đường dẫn tài liệu HOWTO không hợp lệ
+
+doc_title=Tài liệu trọn gói
+doc_header=Gói tài liệu tệp $1 
+doc_epath=Đường dẫn tài liệu gói không hợp lệ
+
+man_title=Trang hướng dẫn
+man_header=Trang hướng dẫn cho $1 ($2)
+man_noentry=Trang hướng dẫn cho $1 không tồn tại!
+man_epath=Trang hướng dẫn không thể là đường dẫn!
+
+kernel_title=Tài liệu hạt nhân
+kernel_header=Tệp tài liệu kernel $1 
+kernel_epath=Đường dẫn tài liệu kernel không hợp lệ
+
+kde_title=Tài liệu KDE
+kde_header=Tệp tài liệu KDE $1 
+kde_epath=Đường dẫn tài liệu KDE không hợp lệ
+
+perl_title=Mô-đun Perl
+perl_header=Tài liệu cho mô-đun Perl $1 
+perl_emod=Tên mô-đun Perl không hợp lệ
+
+acl_allow=Có thể chỉnh sửa các loại tìm kiếm được phép?
+
+check_ecannot=Bạn không được phép chỉnh sửa các loại tìm kiếm được phép

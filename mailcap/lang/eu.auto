@@ -1,0 +1,46 @@
+index_title=MIME motako programak
+index_none=Oraindik ez da MIME motako kudeatzailearen programarik zehaztu.
+index_add=Gehitu MIME motako programa berria.
+index_type=MIME mota
+index_program=Kudeatzaile programa
+index_cmt=deskribapena
+index_delete=Ezabatu Hautatuta
+index_disable=Desgaitu hautatua
+index_enable=Gaitu hautatua
+index_enabled=Gaituta?
+index_return=programa zerrenda
+
+edit_title1=Sortu MIME motako programa
+edit_title2=Editatu MIME motako programa
+edit_header=MIME motako kudeatzailearen programaren xehetasunak
+edit_type=MIME mota
+edit_enabled=Gaituta?
+edit_program=Kudeatzaile programa
+edit_cmt=deskribapena
+edit_egone=Programa ez dago jada!
+edit_test=Proba komandoa
+edit_none=Bat ere (beti erabili programa)
+edit_term=Bistaratu irteera terminalean?
+edit_copious=Irteera asko sortzen du?
+edit_desc=MIME motaren deskribapena
+
+save_err=Huts egin du MIME motako programa gordetzean
+save_etype=MIME mota falta edo baliogabea da
+save_eprogram=Manipulazioko programa falta da
+save_eclash=Sartutako MIME motarako gaitutako programa bat lehendik dago
+save_etest=Testaren komando falta edo baliogabea
+save_edesc=MIME motaren deskribapen baliogabea
+
+delete_err=Ezin izan da MIME motako programak ezabatu
+disable_err=Ezin izan da MIME motako programak desgaitu
+disable_eclash=$1 MIME mota ezgaitu bat dagoeneko
+enable_err=Ezin izan da MIME motako programak gaitu
+enable_eclash=$1 erako MIME motako programa gaituta dago
+delete_enone=Ez da hautatu
+
+log_delete_mailcap=Ezabatu MIME motako programa $1 -erako
+log_create_mailcap=$1 programa MIME mota sortu du
+log_modify_mailcap=$1 erako MIME motako programa aldatua
+log_delete_mailcaps=$1 MIME motako programak ezabatu dira
+log_disable_mailcaps=$1 MIME motako programak desgaituta daude
+log_enable_mailcaps=$1 MIME motako programak gaituta daude

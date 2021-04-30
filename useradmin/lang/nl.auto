@@ -1,0 +1,15 @@
+index_pft=Databasetype: $1
+index_pft0=Oud /etc/passwd
+index_pft1=BSD master.passwd
+index_pft2=Normaal /etc/passwd & /etc/shadow
+index_pft3=Gebruiker commando's
+index_pft4=AIX
+index_pft5=SCO /etc/passwd & /etc/shadow
+index_pft6=MacOS NetINFO
+index_pft7=MacOS DSCL
+
+uedit_clone=Gebruiker klonen
+
+usave_epasswd_cmd=Wachtwoordvalidatieopdracht mislukt
+
+gedit_clone=Clone Group

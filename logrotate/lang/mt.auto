@@ -1,0 +1,115 @@
+index_title=Ġurnal tal-File Rotation
+index_econf=Il-fajl tal-konfigurazzjoni tar-rotazzjoni tal-log $1 ma nstabx fis-sistema tiegħek. Forsi logrotate mhuwiex installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
+index_ecmd=Il-programm ta ’rotazzjoni tal-log $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-<a href='$2'>konfigurazzjoni tal-modulu</a> mhix korretta.
+index_eversion=Ma rnexxielux jikseb il-verżjoni tal-logrotate bil-kmand $1 : $2 
+index_version=Verżjoni logrotate $1 
+index_add=Żid fajl tal-ġurnal ġdid biex iddawwar.
+index_file=Log fajl
+index_period=Perjodu ta 'rotazzjoni
+index_post=Kmand ta 'wara r-rotazzjoni
+index_none=L-ebda fajl ta 'reġistrazzjoni ma ġie definit s'issa.
+index_global=Editja l-Għażliet Globali
+index_globaldesc=Ikklikkja din il-buttuna biex teditja l-issettjar li japplika għall-fajls tal-log kollha, u tiddefinixxi n-nuqqasijiet għaż-zkuk.
+index_sched=Editja Skeda
+index_scheddesc=Ikklikkja din il-buttuna biex teditja l-iskeda li fiha l-logrotate huwa mmexxi minn Cron, jew iattiva jew iwaqqafha.
+index_nocmd=Xejn
+index_notset=Mhux imwaqqaf
+index_return=lista ta 'fajls ta' log
+index_force=Forza tar-Rotazzjoni tal-Ġurnal
+index_forcedesc=Forza r-rotazzjoni immedjata tal-fajls tal-ġurnal kollha, anke jekk għadu mhux il-ħin.
+index_logrotate=Logrotate
+index_delete=Ħassar Rotazzjonijiet ta 'Ġurnal magħżula
+
+period_daily=Kuljum
+period_weekly=Kull ġimgħa
+period_monthly=Kull xahar
+period_never=Qatt
+period_bytes=bytes
+
+edit_title1=Editja l-File File
+edit_title2=Oħloq File Log
+edit_header=Dettalji mdawra tal-fajl tal-ġurnal
+edit_file=Log fajls mogħdija
+edit_sched=Skeda ta 'rotazzjoni
+edit_rotate=Numru ta 'zkuk antiki li għandhom jinżammu
+edit_compress=Ikkompressa fajls tal-ġurnal qodma?
+edit_delaycompress=Iddewwem il-kompressjoni saċ-ċiklu li jmiss?
+edit_copytruncate=Tqassar il-fajl tal-log fis-seħħ?
+edit_ifempty=Dawwar anke jekk il-fajl tal-ġurnal ikun vojt?
+edit_missingok=Injora l-fajl tal-log jekk tkun nieqsa?
+edit_size=Daqs massimu qabel ma ddur
+edit_always=Injorat
+edit_minsize=Daqs minimu biex idur
+edit_nominsize=Dejjem
+edit_ext=Estensjoni għall-ismijiet tal-fajls imdawrin
+edit_dateext=Uża l-estensjoni tad-data għal fajls imdawrin
+edit_mail=Ibgħat il-fajl tal-ġurnal tal-email qabel ma tħassar?
+edit_mailto=Iva, biex tindirizza
+edit_mailno=Le, m'għandekx imejl
+edit_mailfl=Idħol fil-fajl bl-email
+edit_mailfirst=L-aktar ġdid li kien biss imdawwar
+edit_maillast=Oldest li wasal biex jitħassar
+edit_create=Erġa 'toħloq file log wara rotazzjoni?
+edit_createas=Iva, bil-mod $1 u l-proprjetà ta 'l-utent $2 u l-grupp $3 
+edit_createno=Le, toħloqx mill-ġdid
+edit_createsame=Iva, bil-permessi qodma
+edit_olddir=Aħżen zkuk imdawrin qodma
+edit_olddirto=Direttorju
+edit_olddirsame=L-istess direttorju bħall-fajl tal-ġurnal
+edit_errors=Email messaġġi ta 'żball lil
+edit_errorsno=Ħadd
+edit_errorsto=Indirizz jew utent
+edit_post=Kmandi biex jimxu wara rotazzjoni
+edit_pre=Kmandi biex jimxu qabel ir-rotazzjoni
+edit_default=Default ($1)
+edit_sharedscripts=Ħaddem skripts darba biss għall-fajls kollha?
+edit_now=Dawwar Issa
+
+global_title=Għażliet Globali
+global_header=Għażliet awtomatiċi għall-fajls kollha tal-ġurnal
+
+save_err=Ma rnexxielux isalva l-log
+save_efile=Isem tal-fajl tal-ġurnal nieqes jew invalidu
+save_esize=Daqs massimu nieqes jew invalidu
+save_eminsize=Daqs minimu jew invalidu
+save_erotate=In-numru massimu nieqes jew invalidu ta ’zkuk antiki li għandhom jinżammu
+save_ecreatemode=Mod nieqes ta '3 jew 4 ċifri modalità nieqsa jew invalida
+save_ecreateuser=Utent tal-ħolqien nieqes jew invalidu
+save_ecreategroup=Grupp ta ’ħolqien nieqes jew invalidu
+save_emust1=Trid tidħol fil-modalità tal-ħolqien meta tidħol għal utent tal-ħolqien
+save_emust2=Trid tidħol utent ta 'ħolqien meta tidħol fi grupp ta' ħolqien
+save_eolddirto=Direttorju nieqes jew invalidu għal zkuk imdawrin qodma
+save_eext=Nieqes l-estensjoni għall-ismijiet tal-fajls tal-ġurnal imdawrin
+save_emailto=Nieqes l-indirizz tal-email għal zkuk imdawrin
+save_eerrors=Indirizz tal-email nieqes għal messaġġi ta 'żball
+save_epre=Skritt ta 'qabel ir-rotazzjoni ma jistax ikollu linja <tt>endscript</tt> jew <tt>endrotate</tt>
+save_epost=Skritt wara r-rotazzjoni ma jistax ikun fih linja <tt>endscript</tt> jew <tt>endrotate</tt>
+save_enofiles=L-ebda fajl ma jdur iddaħħal
+
+log_modify_sched=Inbidlet ir-rotazzjoni tal-log tal-impjieg Cron
+log_create_sched=Ħoloq xogħol ta 'rotazzjoni ta' log Cron
+log_delete_sched=Impjieg ta 'Cron b'rotazzjoni ta' log imħassar
+log_global=Għażliet globali modifikati
+log_create=Rotazzjoni miżjuda għall-fajl tal-ġurnal $1 
+log_modify=Rotazzjoni modifikata għall-fajl tal-ġurnal $1 
+log_delete=Rotazzjoni mħassra għall-fajl tal-ġurnal $1 
+log_delete_logs=Rotazzjoni mħassra għal fajls ta 'reġistrazzjoni $1 
+
+sched_title=Skeda ta ’Rotazzjoni tal-Ġurnal
+sched_desc=Sabiex ir-rotazzjoni tal-ġurnal ikkonfigurata bl-użu ta 'dan il-modulu biex titwettaq, il-kmand $1 għandu jkun immexxi minn Cron fi skeda regolari (ġeneralment kuljum).
+sched_runparts=Bħalissa, il-kmand ta 'rotazzjoni tal-log qed jitmexxa mill-iskritt $1 $2, u ma jistax jiġi aġġustat.
+sched_sched=Irreġistra r-rotazzjoni tax-xogħol cron
+sched_disabled=B'diżabilità
+sched_enabled=Abilitata, f'ħinijiet hawn taħt ..
+sched_save=Aġġorna Xogħol Cron
+sched_err=Ma rnexxielux isalva l-iskeda tar-rotazzjoni
+sched_when=Żminijiet biex jispiċċaw
+
+force_title=Forza tar-Rotazzjoni tal-Ġurnal
+force_doing=Tġiegħel ir-rotazzjoni immedjata tal-fajls tal-ġurnal kollha ..
+force_doingone=Tġiegħel ir-rotazzjoni immedjata ta 'fajl tal-log.
+force_done=.. ghamel.
+force_failed=.. naqas! Ara l-output hawn fuq għar-raġuni għaliex.
+
+delete_err=Ma rnexxielhiex tħassar iz-zkuk
+delete_enone=L-ebda magħżul

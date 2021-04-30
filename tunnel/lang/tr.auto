@@ -1,0 +1,8 @@
+index_url=Açmak için URL girin:
+index_open=Açık
+
+link_ebadurl=$1 URL'sine erişmenize izin verilmiyor
+link_mconfig=Oturum açmayı değiştirmek için <a href='$1'>modül yapılandırması</a> sayfasını kullanın.
+
+seturl_err=URL açılamadı
+seturl_eurl=Geçersiz URL girildi

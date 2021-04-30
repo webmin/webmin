@@ -1,35 +1,35 @@
 <header>Podstawianie ekspedycji</header>
 
-Fakultatywny plik ekspedycji okre¶la odwzorowanie z&nbsp;hierarchii domen
-na metody ekspedycji wiadomo¶ci i/lub hosty po¶rednicz±ce. Odwzorowanie to
+Fakultatywny plik ekspedycji okreÅ›la odwzorowanie z&nbsp;hierarchii domen
+na metody ekspedycji wiadomoÅ›ci i/lub hosty poÅ›redniczÄ…ce. Odwzorowanie to
 jest wykorzystywane przez demona trivial-rewrite(8). <p>
 
-Format tabeli ekspedycji jest nastêpuj±cy:
+Format tabeli ekspedycji jest nastÄ™pujÄ…cy:
 
 <ul>
 <li><b><tt>domena</tt></b> podstawiana..
-<b><tt>ekspedycja:nastêpnyskok</tt></b>: Poczta do domeny domena jest
-dorêczana metod± transport poprzez nastêpnyskok.
+<b><tt>ekspedycja:nastÄ™pnyskok</tt></b>: Poczta do domeny domena jest
+dorÄ™czana metodÄ… transport poprzez nastÄ™pnyskok.
 <li><b><tt>.domena</tt></b> podstawiana..
-<b><tt>ekspedycja:nastêpnyskok</tt></b>: Poczta do dowolnej poddomeny domeny
-domena jest dorêczana metod± transport poprzez nastêpnyskok.
+<b><tt>ekspedycja:nastÄ™pnyskok</tt></b>: Poczta do dowolnej poddomeny domeny
+domena jest dorÄ™czana metodÄ… transport poprzez nastÄ™pnyskok.
 </ul>
 
-Uwaga: wpisy w&nbsp;tabeli ekspedycji przejmuj± priorytety dla domen
-okre¶lone przez parametr <tt>mydestination</tt>. Je¶li korzystasz
-z&nbsp;fakultatywnego odwzorowania ekspedycji, bezpieczniejsze mo¿e byæ
-dodanie jawnych wpisów dla wszystkich domen podanych w&nbsp;mydestination,
-na przyk³ad:
+Uwaga: wpisy w&nbsp;tabeli ekspedycji przejmujÄ… priorytety dla domen
+okreÅ›lone przez parametr <tt>mydestination</tt>. JeÅ›li korzystasz
+z&nbsp;fakultatywnego odwzorowania ekspedycji, bezpieczniejsze moÅ¼e byÄ‡
+dodanie jawnych wpisÃ³w dla wszystkich domen podanych w&nbsp;mydestination,
+na przykÅ‚ad:
 
 <ul>
 <li><tt>nazwahosta.moja.domena</tt> ... <tt>local:</tt>
 <li><tt>localhost.moja.domena</tt> ... <tt>local:</tt>
 </ul>
 
-Interpretacja pola nastêpnyskok zale¿y od rodzaju transportu.
-W&nbsp;przypadku SMTP, podaje siê <tt>host:us³uga</tt> dla niestandardowego
+Interpretacja pola nastÄ™pnyskok zaleÅ¼y od rodzaju transportu.
+W&nbsp;przypadku SMTP, podaje siÄ™ <tt>host:usÅ‚uga</tt> dla niestandardowego
 portu serwera, a&nbsp;<tt>[host]</tt> lub <tt>[host:port]</tt> w&nbsp;celu
-wy³±czenia poszukiwañ rekordów MX (serwer poczty) w&nbsp;DNS-ie. Postaci
-<tt>[]</tt> mo¿na równie¿ u¿ywaæ z&nbsp;adresami IP zamiast nazw hostów.
+wyÅ‚Ä…czenia poszukiwaÅ„ rekordÃ³w MX (serwer poczty) w&nbsp;DNS-ie. Postaci
+<tt>[]</tt> moÅ¼na rÃ³wnieÅ¼ uÅ¼ywaÄ‡ z&nbsp;adresami IP zamiast nazw hostÃ³w.
 
 <hr>

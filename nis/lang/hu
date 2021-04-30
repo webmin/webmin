@@ -24,13 +24,13 @@ switch_service=Service
 switch_srcs=Data sources
 switch_return=client services
 
-order_=&nbsp;
+order_= 
 order_nisplus=NIS+
 order_nis=NIS
 order_dns=DNS
 order_files=Files
 order_db=DB Files
-order_compat=NIS &amp; Files
+order_compat=NIS & Files
 order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=User printers
@@ -304,6 +304,3 @@ eswitch_continue=Continue search
 eswitch_none=None
 eswitch_err=Failed to save service
 eswitch_enone=No sources selected!
-
-
-__norefs=1

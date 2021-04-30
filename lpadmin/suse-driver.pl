@@ -40,14 +40,14 @@ $apsfilter_base = "/etc/apsfilterrc";
 $driver_dir = "/etc/gs.upp";
 $webmin_windows_driver = 1;
 
-open(DRIVERS, "$module_root_directory/drivers");
+open(DRIVERS, "<$module_root_directory/drivers");
 while(<DRIVERS>) {
 	if (/^(\S+)\s+(.*)/) {
 		$driver{$1} = $2 if (!$driver{$1});
 		}
 	}
 close(DRIVERS);
-open(STP, "stp");
+open(STP, "<stp");
 while(<STP>) {
 	if (/^(\S+)\s+(.*)/) {
 		$stp{$1} = $2 if (!$stp{$1});

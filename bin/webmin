@@ -41,7 +41,7 @@ sub main {
     if ($opt{'list'}) {
         list_commands(\%opt);
         exit 0;
-    } elsif ($opt{'man'} || $opt{'help'}) {
+    } elsif ($opt{'man'} || $opt{'help'} || !defined($remain[0])) {
         # Show the full manual page
         man_command(\%opt, $subcmd);
         exit 0;
@@ -253,6 +253,6 @@ non-0 on error
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2018 Jamie Cameron <jcameron@webmin.com>, Joe Cooper
+Copyright 2020 Jamie Cameron <jcameron@webmin.com>, Joe Cooper
 <joe@virtualmin.com>.
 

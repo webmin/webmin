@@ -1,0 +1,19 @@
+users_dsa=DSA (SSH 2) 인증을 허용 하시겠습니까?
+users_authkeys_set=집에서 신청
+users_eauthkeys=권한이없는 키 파일이 없거나 잘못 표시됨
+users_maxauthtries=연결 당 최대 로그인 시도
+users_emaxauthtries=연결 당 누락되거나 숫자가 아닌 로그인 시도 횟수
+users_chal=챌린지 응답 인증을 사용합니까?
+
+net_all4=모든 IPv4 주소
+net_all6=모든 IPv6 주소
+net_sel=주소 ..
+
+host_prots1=1 만
+host_prots2=2 만
+host_prots12=1과 2
+host_prots21=2 그리고 1
+
+keys_title=호스트 SSH 키
+keys_desc=이 페이지에서이 호스트의 SSH 키를 볼 수 있습니다.
+keys_none=SSHD 구성에서 HostKey 항목을 찾을 수 없습니다.

@@ -1,0 +1,52 @@
+index_title=Eksport NFS
+index_add=Tambah eksport baru.
+index_dirs=Direktori
+index_clients=Pelanggan
+index_everyone=Semua orang
+index_none=Tiada eksport telah ditakrifkan lagi.
+index_delete=Padamkan Eksport Terpilih
+index_apply=Terapkan Perubahan
+index_applydesc=Klik butang ini untuk menerapkan konfigurasi eksport fail semasa. Ini akan menjadikan semua direktori yang disenaraikan di atas tersedia dengan pilihan yang ditentukan.
+index_return=senarai eksport
+index_echeck=Pelayan NFS tidak boleh digunakan pada sistem ini : $1 
+
+check_ecmd=Perintah pelayan NFS $1 tidak dipasang
+
+delete_err=Gagal memadamkan eksport
+delete_enone=Tiada yang dipilih
+
+edit_title1=Edit Eksport
+edit_title2=Buat Eksport
+edit_header1=Pilihan eksport
+edit_dirs=Direktori untuk eksport
+edit_alldirs=Subdirektori eksport?
+edit_ro=Baca sahaja?
+edit_kerb=Gunakan Kerberos?
+edit_header2=Pemetaan pengguna jauh
+edit_maproot=Pengguna akar peta kepada
+edit_mapusers=Peta semua pengguna ke
+edit_unpriv=Pengguna tidak bernasib baik
+edit_uid=Pengguna / UID
+edit_gids=Dan kumpulan / GIDs
+edit_mapall=Peta semua pengguna ke
+edit_header3=Pelanggan untuk eksport ini
+edit_clients=Pelanggan
+edit_hosts=Hos / kumpulan kumpulan
+edit_network=Rangkaian
+edit_mask=Topeng
+
+save_err=Gagal menyimpan eksport
+save_edir='$1' bukan direktori atau tidak wujud
+save_enone=Anda mesti memasukkan sekurang-kurangnya satu direktori untuk dieksport
+save_esub=Hanya satu direktori yang boleh diberikan jika pilihan <b>eksport subdirektori</b> dipilih
+save_eroot=Apabila menggunakan pilihan <b>eksport subdirektori</b>, direktori yang dieksport mestilah menjadi akar sistem fail <i>setempat</i>
+save_euser='$1' bukan pengguna yang sah atau UID
+save_egroup='$1' bukan kumpulan yang sah atau GID
+save_ekerb=Pengguna root peta, peta semua pengguna dan pilihan kerberos saling eksklusif
+save_ehosts=Anda mesti memasukkan sekurang-kurangnya satu hos untuk mengeksport
+save_enetwork='$1' bukan rangkaian yang sah
+save_enetmask='$1' bukanlah netmask yang sah
+save_esame1=Direktori <tt>$1</tt> sudah dieksport ke <tt>$2</tt>. Sistem pengendalian anda tidak membenarkan direktori pada sistem fail <i>lokal</i> yang sama dieksport ke hos yang sama secara berasingan
+save_esame2=Direktori <tt>$1</tt> sudah dieksport ke <tt>$2</tt>. Sistem pengendalian anda tidak membenarkan direktori pada sistem fail <i>lokal</i> yang sama dieksport ke rangkaian yang sama secara berasingan
+
+restart_err=Gagal menggunakan perubahan

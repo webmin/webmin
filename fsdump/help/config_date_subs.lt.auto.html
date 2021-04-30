@@ -1,0 +1,126 @@
+<header> Ar atsarginės paskirties vietos pakeičiamos strftime? </header> Jei ši parinktis nustatyta kaip <b>Taip</b> , atsarginės paskirties failo pavadinime gali būti naudojami tokie kodai kaip%d,%m,%Y ir%u. Kai atsarginės kopijos bus padarytos, jos bus pakeistos atitinkamai diena, mėnesiu ir savaitės diena. Tai naudinga, jei kiekvieną dieną norite išsaugoti skirtingą atsarginę kopiją, kad galėtumėte sugrąžinti sistemą į ankstesnę datą. <p> Kai kurie kiti kodai, kuriuos galima naudoti, yra šie: <br><pre> <font size=-1>
+ %a Sutrumpintas savaitės dienos pavadinimas pagal cur
+        nuomos lokalė.
+
+ %A Visas savaitės dienos pavadinimas pagal esamą
+        lokalė.
+
+ %b Sutrumpintas mėnesio pavadinimas pagal einamąjį
+        lokalė.
+
+ %B Pilno mėnesio pavadinimas pagal dabartinį
+        lokalė.
+
+ %c Pageidaujama datos ir laiko atvaizdavimas
+        dabartinė lokalė.
+
+ %C Amžiaus numeris (metai / 100) kaip 2 skaitmenų sveikasis skaičius.
+
+ %d Mėnesio diena kaip dešimtainis skaičius (01 intervalas
+        į 31).
+
+ %e Kaip%d, mėnesio diena kaip dešimtainis skaičius,
+        bet pirmaujantis nulis pakeičiamas tarpu.
+
+ %E modifikatorius: naudokite alternatyvų formatą, žiūrėkite žemiau.
+
+ %G ISO 8601 metai su šimtmečiu kaip dešimtainis skaičius.
+        Keturių skaitmenų metai, atitinkantys ISO savaitės numerį
+        ber (žr.%V). Tai turi tą patį formatą ir vertę
+        %y, išskyrus atvejus, kai priklauso ISO savaitės numeris
+        į ankstesnius ar kitus metus naudojami tie metai
+        vietoj to.
+
+ %g Kaip%G, bet be šimtmečio, ty su 2 skaitmenimis
+        metai (00–99).
+
+ %h prilygsta%b.
+
+ %H Valanda kaip dešimtainis skaičius, naudojant 24 valandų laikrodį
+        (diapazonas nuo 00 iki 23).
+
+ %I Valanda kaip dešimtainis skaičius naudojant 12 valandų laikrodį
+        (diapazonas nuo 01 iki 12).
+
+ %j Metų diena kaip dešimtainis skaičius (diapazonas 001
+        iki 366).
+
+ %k Valanda (24 valandų laikrodis) kaip dešimtainis skaičius (intervalas
+        Nuo 0 iki 23); prieš atskirus skaitmenis rašoma tuščia.
+        (Taip pat žiūrėkite%H.)
+
+ %l Valanda (12 valandų laikrodis) kaip dešimtainis skaičius (intervalas
+        Nuo 1 iki 12); prieš atskirus skaitmenis rašoma tuščia.
+        (Taip pat žiūrėkite%I.)
+
+ %m Mėnesis kaip dešimtainis skaičius (intervalas nuo 01 iki 12).
+
+ %M Minimalus skaičius kaip dešimtainis skaičius (intervalas nuo 00 iki 59).
+
+ %n Nauja eilutės simbolis.
+
+ %O keitiklis: naudokite alternatyvų formatą, žr. Toliau.
+
+ %p „AM“ arba „PM“ pagal nurodytą laiką
+        reikšmė arba atitinkamos srovės eilutės
+        lokalė. Vidurdienis laikomas „pm“, o vidurnaktis - kaip
+        „esu“.
+
+ %P Kaip%p, bet mažosiomis raidėmis: „am“ arba „pm“ arba taisymas
+        esanti dabartinės lokalės eilutė.
+
+ %r Laiko žymėjimas am ar pm. POSIX
+        lokalė tai yra lygi „%I:%M:%S%p“.
+
+ %R Laikas, nurodytas per 24 valandas (%H:%M). Dėl
+        versiją su sekundėmis, žiūrėkite%T žemiau.
+
+ %s sekundžių skaičius nuo epochos, ty nuo
+        1970-01-01 00:00:00 UTC.
+
+ %S Antrasis kaip dešimtainis skaičius (intervalas nuo 00 iki 61).
+
+ %t Skirtuko simbolis.
+
+ %T Laikas, nurodytas per 24 valandas (%H:%M:%S).
+
+ %u Savaitės diena, po kablelio, nuo 1 iki 7,
+        Pirmadienis yra 1. Taip pat žiūrėkite%w.
+
+ %U Einamųjų metų savaitės numeris po kablelio
+        skaičius nuo 00 iki 53, pradedant nuo pirmojo
+        Sekmadienis, kaip pirmoji 01 savaitės diena. Taip pat žiūrėkite%V ir
+        %W.
+
+ %V einamųjų metų ISO 8601: 1988 savaitės numeris
+        kaip dešimtainis skaičius, intervalas nuo 01 iki 53, kur 1 savaitė
+        yra pirmoji savaitė, kurioje yra mažiausiai 4 dienos
+        einamaisiais metais, o pirmadienis yra pirmoji 2006 m. diena
+        savaitė. Taip pat žiūrėkite%U ir%W.
+
+ %w Savaitės diena po kablelio nuo 0 iki 6,
+        Sekmadienis yra 0. Taip pat žiūrėkite%u.
+
+ %W Einamųjų metų savaitės numeris po kablelio
+        skaičius nuo 00 iki 53, pradedant nuo pirmojo
+        Pirmadienis, kaip pirmoji 01 savaitės diena.
+
+ %x Pageidaujama dabartinės datos atvaizdavimas
+        lokalė be laiko.
+
+ %X Srovės pageidaujamas laiko vaizdas
+        lokalė be datos.
+
+ %y metai kaip dešimtainis skaičius be šimtmečio
+        (diapazonas nuo 00 iki 99).
+
+ %Y metai po dešimtainio skaičiaus, įskaitant šimtmetį.
+
+ %z Laiko juosta, išreikšta valanda nuo GMT. Privaloma
+        skleisti RFC822 reikalavimus atitinkančias datas (naudojant „%a,%d%b%Y
+        %H:%M:%S%z &quot;).
+
+ %Z Laiko juosta arba vardas ar santrumpa.
+
+ %% Žodinis „%“ simbolis.
+</font> </pre><footer>

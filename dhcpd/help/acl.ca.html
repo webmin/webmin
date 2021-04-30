@@ -1,7 +1,7 @@
 <!doctype html public "-//w3c//dtd html 4.0 transitional//en">
 <html>
 <head>
-   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
    <meta name="GENERATOR" content="Mozilla/4.72 [en] (X11; U; Linux 2.2.14-6.1.1 i686) [Netscape]">
 </head>
 <body>
@@ -10,22 +10,22 @@
 
 <h3>
 OBJECTIUS:</h3>
-&nbsp;&nbsp;&nbsp; Els objectius principals del subsistema acl són subministrar
-un mecanisme de control d'accés potent, flexible y extensible de diferents
-objectes amb configuració dhcpd. Aquests objectes són xarxes compartides,
+&nbsp;&nbsp;&nbsp; Els objectius principals del subsistema acl sÃ³n subministrar
+un mecanisme de control d'accÃ©s potent, flexible y extensible de diferents
+objectes amb configuraciÃ³ dhcpd. Aquests objectes sÃ³n xarxes compartides,
 subxarxes, grups de hosts i hosts.
 <br>&nbsp;&nbsp;&nbsp; El subsistema acl permet controlar algunes altres
-característiques, com ara: noms únics d'objecte, aplicació de la 
-configuració modificada, visualització i supressió de <i>leases</i> dhcpd
+caracterÃ­stiques, com ara: noms Ãºnics d'objecte, aplicaciÃ³ de la 
+configuraciÃ³ modificada, visualitzaciÃ³ i supressiÃ³ de <i>leases</i> dhcpd
 <h3>
 CONCEPTES:</h3>
-&nbsp;&nbsp;&nbsp; Podem veure el fitxer de configuració dhcpd com una estructura d'arbre.
-Cada node d'aquest arbre representa una configuració d'objectes dhcp diferents
+&nbsp;&nbsp;&nbsp; Podem veure el fitxer de configuraciÃ³ dhcpd com una estructura d'arbre.
+Cada node d'aquest arbre representa una configuraciÃ³ d'objectes dhcp diferents
 (fig. 0).
-<p>&nbsp;&nbsp;&nbsp; El subsistema acl té 2 nivells de permisos:
+<p>&nbsp;&nbsp;&nbsp; El subsistema acl tÃ© 2 nivells de permisos:
 <ul>
 <li>
-global: lectura, escriptura, creació;</li>
+global: lectura, escriptura, creaciÃ³;</li>
 
 <li>
 per objecte: lectura, escriptura.</li>
@@ -33,22 +33,22 @@ per objecte: lectura, escriptura.</li>
 &nbsp;&nbsp;&nbsp; Existeixen permisos globals per a cada tipus d'objecte
 (hosts, grups, subxarxes, xarxes compartides) i controlen les operacions
 d'un conjunt sencer d'un tipus donat.
-<br>Creació global
+<br>CreaciÃ³ global
 <br>Lectura global
 <br>Escriptura global
-<br>&nbsp;&nbsp;&nbsp; Els permisos per objecte donen una forma més
-flexible de control d'accés. Existeixen permisos acl per objecte per
-cada objecte individual. Per ara, només estan implementades les acls 
+<br>&nbsp;&nbsp;&nbsp; Els permisos per objecte donen una forma mÃ©s
+flexible de control d'accÃ©s. Existeixen permisos acl per objecte per
+cada objecte individual. Per ara, nomÃ©s estan implementades les acls 
 per objecte de hosts i subxarxes.
 <br>Lectura per objecte
 <br>Escriptura per objecte
 <br>&nbsp;&nbsp;&nbsp; El subsistema acl pot operar en 4 nivells diferents
 de seguretat (o modes).
-<br><img SRC="ctree0.gif" ALT="arbre de configuració dhcpd, nivell de seguretat 0, comprovació de permisos subnetX" height=229 width=314>
+<br><img SRC="ctree0.gif" ALT="arbre de configuraciÃ³ dhcpd, nivell de seguretat 0, comprovaciÃ³ de permisos subnetX" height=229 width=314>
 <br>&nbsp;
-<p><img SRC="ctree1.gif" ALT="arbre de configuració dhcpd, nivell de seguretat 1, comprovació de permisos subnetX" height=229 width=314>
-<p><img SRC="ctree2.gif" ALT="arbre de configuració dhcpd, nivell de seguretat 2, comprovació de permisos subnetX" height=229 width=314>
-<p><img SRC="ctree3.gif" ALT="arbre de configuració dhcpd, nivell de seguretat 3, comprovació de permisos subnetX" height=229 width=314>
+<p><img SRC="ctree1.gif" ALT="arbre de configuraciÃ³ dhcpd, nivell de seguretat 1, comprovaciÃ³ de permisos subnetX" height=229 width=314>
+<p><img SRC="ctree2.gif" ALT="arbre de configuraciÃ³ dhcpd, nivell de seguretat 2, comprovaciÃ³ de permisos subnetX" height=229 width=314>
+<p><img SRC="ctree3.gif" ALT="arbre de configuraciÃ³ dhcpd, nivell de seguretat 3, comprovaciÃ³ de permisos subnetX" height=229 width=314>
 <h3>
 NOTES D'USUARI:</h3>
 &nbsp;

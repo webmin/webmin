@@ -1,0 +1,21 @@
+index_elink=Nu s-a stabilit încă o adresă URL către tunel.
+index_url=Introdu URL pentru a deschide:
+index_open=Deschis
+
+link_eurl=URL-ul tunelului nevalid : $1 
+link_elogin=Nu a reușit autentificarea la $1 ca $2.
+link_eautologin=Logare sau parolă nevalide pentru $1. <a href='$2'>Faceți clic aici</a> pentru a vă autentifica.
+link_enouser=Este necesar un nume de utilizator și o parolă pentru a vă conecta la $1, dar niciuna nu a fost configurată.
+link_ebadurl=Nu aveți voie să accesați adresa URL $1 
+link_mconfig=Utilizați pagina <a href='$1'>configurația modulului</a> pentru a schimba autentificarea.
+
+login_title=Autentificați-vă pe site-ul web
+login_desc=Trebuie să furnizați un nume de utilizator și o parolă pentru a vă conecta la $1.
+login_header=Autentificarea site-ului web
+login_user=Nume de utilizator
+login_pass=Parola
+login_login=Autentificare
+login_clear=clar
+
+seturl_err=Eroare la deschiderea adresei URL
+seturl_eurl=Adresa URL nevalidă

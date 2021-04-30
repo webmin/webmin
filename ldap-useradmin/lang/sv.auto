@@ -1,0 +1,103 @@
+index_title=LDAP-användare och grupper
+index_ebase=Ingen LDAP-klientkonfigurationsfil hittades på ditt system, så användar- och gruppbaser måste ställas in på <a href='$1'>modulkonfigur</a> </a>.
+index_eperl=Modulen $1 Perl som den här modulen kräver är inte installerad eller fungerar inte korrekt. <a href='$2'>Klicka här</a> för att hämta och installera det nu.
+index_eperl2=Det fel som Perl rapporterade när man försökte ladda modulen var :
+index_eldap=$1. Klicka här för att justera <a href='$2'>modulkonfiguration</a>.
+index_eschema=Webmin har anslutit sig till LDAP-servern, men kunde inte hämta schemat. Se till att åtkomst inte har nekats i <a href='$1'>LDAP Server</a> -modulen.
+index_eimap=$1. Kanske är din <a href='$2'>modulkonfiguration</a> felaktig.
+index_emd5=Denna modul har <a href='$1'>konfigurerats</a> för att använda MD5-kryptering för lösenord, men $2 Perl-modulen är inte installerad. <a href='$3'>Klicka här</a> för att ladda och installera modulen $2.
+index_eslappasswd=Denna modul har <a href='$1'>konfigurerats</a> för att använda LDAP MD5-kryptering för lösenord, men programmet <tt>$2</tt> som används för att kryptera ett lösenord är inte installerat.
+index_eusearch=Det gick inte att söka efter användare under $1 : $2 
+index_uadd=Lägg till en ny LDAP-användare.
+index_gadd=Lägg till en ny LDAP-grupp.
+index_unone=Inga LDAP-användare hittades under $1.
+index_gnone=Inga LDAP-grupper hittades under $1.
+index_return=användarlista
+index_greturn=grupplista
+index_egsearch=Det gick inte att söka efter grupper under $1 : $2 
+index_samba=Samba?
+index_cyrus=IMAP?
+index_users=LDAP-användare
+index_groups=LDAP-grupper
+
+imap_econn=Det gick inte att ansluta till IMAP-servern $1 
+imap_elogin=Det gick inte att logga in på IMAP-servern $1 som $2 : $3 
+conn_eldap_host=Ingen LDAP-klientkonfigurationsfil hittades på ditt system, så LDAP-servern måste ställas in på sidan Modulkonfigurering
+conn_elogin=Ingen LDAP-klientkonfigurationsfil hittades på ditt system, så LDAP-inloggningen måste ställas in på sidan Modulkonfigurering
+conn_efile_open=Det gick inte att öppna LDAP-bindningsuppgifterna:
+
+uedit_cap=Användarfunktioner
+uedit_samba=Samba inloggning?
+uedit_cyrus=IMAP-serverinloggning?
+uedit_dn=Användarens LDAP DN
+uedit_classes=LDAP-objektklasser
+uedit_alias=Mail alias
+uedit_fields=Ytterligare LDAP-fält
+uedit_firstname=Förnamn
+uedit_lastname=Efternamn
+uedit_raw=LDAP-attribut
+uedit_return=användarinformation
+uedit_quota=IMAP-kvot
+uedit_unquota=Ändra inte
+uedit_sambapassopts=Samba lösenordalternativ
+uedit_sambapwdlastset=Senaste lösenordsuppdatering
+uedit_sambapwdcanchange=Lösenord kan ändras
+uedit_sambabadpasswordcount=Dåligt lösenord räknas
+uedit_sambaacctflags=Kontoflaggor
+
+usave_eadd=Det gick inte att lägga till användare i LDAP-databasen : $1 
+usave_emod=Det gick inte att ändra användaren i LDAP-databasen : $1 
+usave_emoddn=Det gick inte att byta namn på användare i LDAP-databasen : $1 
+usave_egroupmod=Det gick inte att ändra grupp $1 i LDAP-databasen : $2 
+usave_edelete=Det gick inte att ta bort användare från LDAP-databasen : $1 
+usave_eicreate=Det gick inte att skapa användare
+usave_eiacl=Det gick inte att bevilja rättigheter till admin
+usave_eimap=Användaren sparades framgångsrikt i LDAP-databasen, men ett IMAP-fel inträffade: $1 : $2 
+usave_eisub=Det gick inte att prenumerera användaren på mappen $1 
+usave_eiquota=Det gick inte att ställa in IMAP-kvot
+usave_eifolder=Det gick inte att skapa mapp $1 
+usave_eilogin=Det gick inte att logga in som ny användare
+usave_ecyruspass=Användarens vanliga lösenord måste anges eller alternativet Inget lösenord krävs valt när du aktiverar IMAP.
+usave_ebook=Det gick inte att skapa adressbokspost : $1 
+usave_emodbook=Det gick inte att ändra posten i adressboken : $1 
+usave_emodbookdn=Det gick inte att byta namn på adressbok : $1 
+usave_egone=Användaren finns inte längre!
+usave_ex86=Den här modulen kan inte användas för att ställa in lösenordet för en Samba-användare på icke-Intel-system, eftersom det beror på ett kompilerat x86-program.
+usave_esamba=Denna modul kan inte användas för att ställa in lösenordet för en Samba-användare, eftersom Samba Windows File Sharing-modulen inte är installerad.
+usave_ealiasdup=Alias $1 används redan av $2 
+usave_eattrdup=Objektet $1 använder redan $2 $3 
+usave_eattrdupu=Användaren $1 använder redan $2 $3 
+usave_eattrdupg=Gruppen $1 använder redan $2 $3 
+usave_ereal=Saknar riktigt namn
+usave_equota=IMAP-kvot saknas eller ogiltig
+
+search_err=Sökning efter $1 under $2 misslyckades : $3 
+
+gedit_dn=Gruppens LDAP DN
+gedit_return=gruppinformation
+gedit_cap=Gruppfunktioner
+gedit_samba=Samba grupp?
+
+gsave_egone=Grupp finns inte längre!
+gsave_edelete=Det gick inte att ta bort gruppen från LDAP-databasen : $1 
+gsave_eadd=Det gick inte att lägga till grupp i LDAP-databasen : $1 
+gsave_emod=Det gick inte att ändra gruppen i LDAP-databasen : $1 
+gsave_emoddn=Det gick inte att byta namn på grupp i LDAP-databas : $1 
+
+gdel_group=Ta bort post i LDAP-grupp ..
+
+udel_pass=Ta bort LDAP-användarpost. ..
+udel_book=Ta bort från adressboken ..
+udel_imap=Tar bort IMAP-mapp ..
+udel_warnimap=Den befintliga postlådan raderas när du tar bort hemmakatalogen!
+udel_failed=.. misslyckades!  : $1 
+
+raw_title=LDAP-attribut
+raw_name=Attributnamn
+raw_value=värden
+raw_for=För $1 
+
+batch_samba=Skapa Samba-konto för nya användare?
+batch_imap=Skapa IMAP-konto för nya användare?
+batch_descafter3=I <b>skapa</b> och <b>modifiera</b> rader kan du eventuellt lägga till extra fält som innehåller LDAP-attribut i <i>namn</i> = <i>värde</i> -format, till tilldelas de nya eller modifierade användarna.
+batch_eattr=Ogiltigt LDAP-attribut på rad $1 : $2 

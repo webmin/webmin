@@ -1,0 +1,12 @@
+index_elink=Még nincs beállítva az alagút URL-je.
+
+link_elogin=Nem sikerült bejelentkezni a $1 -be $2 -ként
+link_eautologin=Érvénytelen bejelentkezési név vagy jelszó a (z) $1 számára. <a href='$2'>Kattintson ide</a> a bejelentkezéshez.
+link_enouser=A $1 -be való belépéshez felhasználónevet és jelszót kell megadni, de nincs konfigurálva.
+link_ebadurl=Nem férhet hozzá a (z) $1 URL-hez
+link_mconfig=A bejelentkezés megváltoztatásához használja a <a href='$1'>modulkonfiguráció</a> oldalt.
+
+login_desc=A $1 -be történő bejelentkezéshez megadnia kell egy felhasználónevet és jelszót.
+login_header=Webhely-hitelesítés
+
+seturl_err=Nem sikerült megnyitni az URL-t

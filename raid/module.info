@@ -1,4 +1,3 @@
-risk=high
 name=RAID
 category=hardware
 os_support=*-linux

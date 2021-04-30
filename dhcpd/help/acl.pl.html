@@ -12,21 +12,21 @@ DHCPD podsystem ACL</h1></center>
 
 <h3>
 CELE:</h3>
-&nbsp;&nbsp;&nbsp; G³ównym celem podsystemu acl jest zapwenienie
-potê¿nego i rozszerzalnego mechanizmu kontroli dostêpu do ró¿nych obiektów
-w konfiguracji dhcpd. Te obiekty to sieci wspó³dzielone, podsieci, grupy hostów
+&nbsp;&nbsp;&nbsp; GÅ‚Ã³wnym celem podsystemu acl jest zapwenienie
+potÄ™Å¼nego i rozszerzalnego mechanizmu kontroli dostÄ™pu do rÃ³Å¼nych obiektÃ³w
+w konfiguracji dhcpd. Te obiekty to sieci wspÃ³Å‚dzielone, podsieci, grupy hostÃ³w
 i hosty.
 <br>&nbsp;&nbsp;&nbsp; Dodatkowo podsystem acl pozwoli ci na kontrole innych
-funkcji takich jak: unikatlne nazwy obiektów, zastosowanie i zmienianie
-konfiguracji, wy¶wietlanie i usuwanie dzier¿aw dhcp.
+funkcji takich jak: unikatlne nazwy obiektÃ³w, zastosowanie i zmienianie
+konfiguracji, wyÅ›wietlanie i usuwanie dzierÅ¼aw dhcp.
 <h3>
 KONCEPCJE:</h3>
-&nbsp;&nbsp;&nbsp; Plik konfiguracyjny dhcpd mo¿na wy¶wietliæ w strukturze
-drzewa. Ka¿dy wêze³ w tym drzewie reprezentuje konfiguracje innego
+&nbsp;&nbsp;&nbsp; Plik konfiguracyjny dhcpd moÅ¼na wyÅ›wietliÄ‡ w strukturze
+drzewa. KaÅ¼dy wÄ™zeÅ‚ w tym drzewie reprezentuje konfiguracje innego
 obiektu dhcp.
 Each node of this tree represents a configuration of different dhcp objects
 (rys. 0).
-<p>&nbsp;&nbsp;&nbsp; Podsystem acl posiada 2 poziomy uprawnieñ:
+<p>&nbsp;&nbsp;&nbsp; Podsystem acl posiada 2 poziomy uprawnieÅ„:
 <ul>
 <li>
 globalny: odczyt, zapis, tworzenie;</li>
@@ -34,25 +34,25 @@ globalny: odczyt, zapis, tworzenie;</li>
 <li>
 na obiekt: odczyt, zapis.</li>
 </ul>
-&nbsp;&nbsp;&nbsp; Globalne uprawnienia istniej± w ka¿dym typie obiektów
-(hosty, grupy, podsieci, wspó³dzielone sieci) i kontroluj± operacje w ca³ym
+&nbsp;&nbsp;&nbsp; Globalne uprawnienia istniejÄ… w kaÅ¼dym typie obiektÃ³w
+(hosty, grupy, podsieci, wspÃ³Å‚dzielone sieci) i kontrolujÄ… operacje w caÅ‚ym
 obiekcie.
 <br>Globalne tworzenie
 <br>Globalny odczyt
 <br>Globalny zapis
-<br>&nbsp;&nbsp;&nbsp;Na obiekt - te uprawnienia daj± ci  wiêcej elastyczno¶ci
-przy kontroli dostêpu. Uprawnienia na obiekt acl dla ka¿dego obiektu istnieje
-pojedynczy obiekt. Aktualnie zaimplementowane s± tylko uprawnienia na obiekt
-dla hostów i podsieci.
+<br>&nbsp;&nbsp;&nbsp;Na obiekt - te uprawnienia dajÄ… ci  wiÄ™cej elastycznoÅ›ci
+przy kontroli dostÄ™pu. Uprawnienia na obiekt acl dla kaÅ¼dego obiektu istnieje
+pojedynczy obiekt. Aktualnie zaimplementowane sÄ… tylko uprawnienia na obiekt
+dla hostÃ³w i podsieci.
 <br>Na obiekt odczyt
 <br>Na obiekt zapis
-<br>&nbsp;&nbsp;&nbsp; Podsystem acl mo¿e operowaæ na 4 ró¿nych poziomach
-zabezpieczeñ (lub trybach).
-<br><img SRC="ctree0.gif" ALT="drzewo konfiguracji dhcpd, poziom zabezpieczeñ 0, check subnetX permissions" height=229 width=314>
+<br>&nbsp;&nbsp;&nbsp; Podsystem acl moÅ¼e operowaÄ‡ na 4 rÃ³Å¼nych poziomach
+zabezpieczeÅ„ (lub trybach).
+<br><img SRC="ctree0.gif" ALT="drzewo konfiguracji dhcpd, poziom zabezpieczeÅ„ 0, check subnetX permissions" height=229 width=314>
 <br>&nbsp;
-<p><img SRC="ctree1.gif" ALT="drzewko konfiguracji dhcpd, poziom zabezpieczeñ 1, check subnetX permissions" height=229 width=314>
-<p><img SRC="ctree2.gif" ALT="drzewko konfiguracji dhcpd, poziom zabezpieczeñ 2, check subnetX permissions" height=229 width=314>
-<p><img SRC="ctree3.gif" ALT="drzewko konfiguracji dhcpd, poziom zabezpieczeñ 3, check subnetX permissions" height=229 width=314>
+<p><img SRC="ctree1.gif" ALT="drzewko konfiguracji dhcpd, poziom zabezpieczeÅ„ 1, check subnetX permissions" height=229 width=314>
+<p><img SRC="ctree2.gif" ALT="drzewko konfiguracji dhcpd, poziom zabezpieczeÅ„ 2, check subnetX permissions" height=229 width=314>
+<p><img SRC="ctree3.gif" ALT="drzewko konfiguracji dhcpd, poziom zabezpieczeÅ„ 3, check subnetX permissions" height=229 width=314>
 <h3>
 UWAGI:</h3>
 &nbsp;

@@ -1,0 +1,3 @@
+desc_lv=Webmin lietotāji
+name_lv=AdministratorUsers
+longdesc_lv=Izveidojiet Webmin lietotājus un konfigurējiet, kuriem moduļiem un funkcijām viņiem ir atļauts piekļūt.

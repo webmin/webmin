@@ -1,0 +1,1 @@
+<header>信任远程用户</header>确定服务器上信任客户机上的哪些Unix用户。 <br>提供三个选项： <dl><dt> <b>大家</b> <dd>服务器将对所有客户端用户进行相同处理<dt> <b>除root以外的所有人</b> <dd>客户端上的<tt>root</tt>用户被服务器视为<a href="anonuid">不受信任的用户</a> ，但是所有其他用户都是受信任的。 <dt> <b>没有人</b> <dd>客户端上的所有用户均被视为<a href="anonuid">不受信任的用户</a> 。导出到不受控制的系统（例如单用户PC）或导出到所有人时，最好使用此选项。 </dl> <i>exportfs选项：root_squash，no_root_squash，all_squash</i> <hr>

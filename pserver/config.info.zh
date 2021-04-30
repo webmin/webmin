@@ -1,0 +1,6 @@
+line1=可设置的选项,11
+cvsroot=CVS root 目录,7
+view_header=浏览储存库头文件,0
+cvsenc=从Webmin的语言，设定储存库文件字符集,3
+line2=系统配置,11
+cvs=CVS执行路径,0

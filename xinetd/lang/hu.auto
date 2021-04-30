@@ -1,0 +1,14 @@
+index_none=Még nem határoztak meg hálózati szolgáltatásokat.
+index_estart=A Xinetd $1 indítására szolgáló parancs nem létezik. Lehet, hogy nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+index_enable=Engedélyezze a Kiválasztott lehetőséget
+index_disable=Letiltva a kiválasztott
+
+restart_epid=Már nem fut
+
+log_enable=Engedélyezve $1 szolgáltatás
+log_disable=$1 szolgáltatás letiltva
+log_enable_l=Engedélyezett szolgáltatások $1 
+log_disable_l=Fogyatékkal élő szolgáltatások $1 
+
+config_dirdef=Xinetd konfigurációs fájl
+config_dirto=Új fájl a könyvtárban

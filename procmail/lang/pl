@@ -1,33 +1,38 @@
-__norefs=1
-check_epostfix=Procmail nie jest w³±czony w twojej konfiguracji Postfix. W pliku konfiguracyjnym <tt>$2</tt> opcja  <tt>$1</tt> musi byæ ustawiona na <tt>$3</tt>.
-check_esendmail=Sendmail nie jest skonfigurowany, aby u¿ywaæ Procmail. Mo¿esz to ustawiæ w module <a href='$1'>Sendmail - serwer e-mailowy</a>
-config_eline=Nieznana linia $1 w $2 : $3
-delete_enone=Nic nie wybrano
-delete_err=b³±d usuwania
+index_title=Procmail - filtr e-mail
+index_procmail=Procmail - filtr poczty
+index_action=Akcja do wykonania
+index_conds=Warunki
+index_move=PrzenieÅ›
+index_ba=Dodaj
+index_lt=Rozmiar jest < $1
+index_gt=Rozmiar jest > $1
+index_add=Dodaj nowÄ… akcjÄ™ filtru
+index_eadd=Dodaj nowe ustawienie zmiennej.
+index_badd=Dodaj nowy blok warunkowy.
+index_iadd=Dodaj nowy plik
+index_return=listy dziaÅ‚aÅ„
+index_man=RÄ™cznie edytuj konfiguracjÄ™
+index_mandesc=BezpoÅ›rednia edycja pliku konfiguracji Procmail. Pozwala stworzyÄ‡ wÅ‚asne reguÅ‚y, zmienne i instrukcje warunkwe.
+index_delete=UsuÅ„ wybrane akcje
+
 edit_action=Tryb dostarczania
-edit_amode_0=Do³±cz do pliku
+edit_amode_0=DoÅ‚Ä…cz do pliku
 edit_amode_1=Zapisz do katalogu MH
 edit_amode_3=Przekieruj na adres
-edit_amode_6=Ustaw zmienn±
-env_name=Nazwa zmiennej
+edit_amode_6=Ustaw zmiennÄ…
+
 env_title1=Tworzenie zmiennej
 env_title2=Edycja zmiennej
-env_value=Warto¶æ
-inc_einc=Nie wpisano pliku do za³±czenia
-inc_inc=Za³±cz plik
-index_action=Akcja do wykonania
-index_add=Dodaj now± akcjê filtru
-index_ba=Dodaj
-index_badd=Dodaj nowy blok warunkowy.
-index_conds=Warunki
-index_delete=Usuñ wybrane akcje
-index_eadd=Dodaj nowe ustawienie zmiennej.
-index_gt=Rozmiar jest > $1
-index_iadd=Dodaj nowy plik
-index_lt=Rozmiar jest < $1
-index_man=Rêcznie edytuj konfiguracjê
-index_mandesc=Bezpo¶rednia edycja pliku konfiguracji Procmail. Pozwala stworzyæ w³asne regu³y, zmienne i instrukcje warunkwe.
-index_move=Przenie¶
-index_procmail=Procmail - filtr poczty
-index_return=listy dzia³añ
-index_title=Procmail - filtr e-mail
+env_name=Nazwa zmiennej
+env_value=WartoÅ›Ä‡
+
+inc_inc=ZaÅ‚Ä…cz plik
+inc_einc=Nie wpisano pliku do zaÅ‚Ä…czenia
+
+config_eline=Nieznana linia $1 w $2 : $3
+
+delete_err=bÅ‚Ä…d usuwania
+delete_enone=Nic nie wybrano
+
+check_epostfix=Procmail nie jest wÅ‚Ä…czony w twojej konfiguracji Postfix. W pliku konfiguracyjnym <tt>$2</tt> opcja  <tt>$1</tt> musi byÄ‡ ustawiona na <tt>$3</tt>.
+check_esendmail=Sendmail nie jest skonfigurowany, aby uÅ¼ywaÄ‡ Procmail. MoÅ¼esz to ustawiÄ‡ w module <a href='$1'>Sendmail - serwer e-mailowy</a>

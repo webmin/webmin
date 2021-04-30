@@ -236,7 +236,7 @@ if (!$_[0]) {
 		 'desc' => 'None' };
 	}
 if (&has_ghostscript()) {
-	open(DRV, $_[0]);
+	open(DRV, "<".$_[0]);
 	for($i=0; $i<4; $i++) { $l .= <DRV>; }
 	close(DRV);
 	if ($l =~ /# Name: (.*)\n# Type: (.*)\n# DPI: (.*)\n/) {
@@ -271,7 +271,7 @@ sub is_webmin_windows_driver
 {
 local($i, $l);
 if (!&has_smbclient()) { return undef; }
-open(DRV, $_[0]);
+open(DRV, "<".$_[0]);
 for($i=0; $i<8; $i++) { $l .= <DRV>; }
 close(DRV);
 if ($l =~ /# Name: (.*)\n# Server: (.*)\n# Share: (.*)\n# User: (.*)\n# Password: (.*)\n# Workgroup: (.*)\n# Program: (.*)\n/) {
@@ -313,7 +313,7 @@ sub is_hpnp_driver
 {
 local($i, $l);
 if (!&has_hpnp()) { return undef; }
-open(DRV, $_[0]);
+open(DRV, "<".$_[0]);
 for($i=0; $i<5; $i++) { $l .= <DRV>; }
 close(DRV);
 if ($l =~ /# Name: (.*)\n# Server: (.*)\n# Port: (.*)\n# Program: (.*)\n/) {
@@ -424,7 +424,7 @@ elsif ($in{'drv'} == 3) {
 sub list_webmin_drivers
 {
 local(@rv, $_);
-open(DRIVERS, "$module_root_directory/drivers");
+open(DRIVERS, "<$module_root_directory/drivers");
 while(<DRIVERS>) {
 	/^(\S+)\s+(.*)/;
 	push(@rv, [ $1, $2 ]);
@@ -484,7 +484,7 @@ if ($out =~ /Search path:\n((\s+.*\n)+)/i) {
 		while($f = readdir(DIR)) {
 			next if ($f !~ /^(.*)\.upp$/);
 			local $upp = $1;
-			open(UPP, "$d/$f");
+			open(UPP, "<$d/$f");
 			local $line = <UPP>;
 			close(UPP);
 			next if ($line !~ /upModel="(.*)"/i);
@@ -533,7 +533,7 @@ if ($file =~ /\.gz$/) {
 	open(PPD, "gunzip -c ".quotemeta($file)." |");
 	}
 else {
-	open(PPD, $file);
+	open(PPD, "<".$file);
 	}
 while(<PPD>) {
 	if (/^\s*\*(\S+):\s*"(.*)"/ || /^\s*\*(\S+):\s*(\S+)/) {

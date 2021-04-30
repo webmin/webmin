@@ -1,0 +1,57 @@
+index_title=NFS Akzioak
+index_add=Hasi direktorio berria partekatzen.
+index_dir=Directory
+index_clients=Bezeroak
+index_everyone=Denek
+index_delete=Ezabatu hautatutako akzioak
+index_none=Oraindik ez da direktoriorik esportatzen sistema honetan.
+index_apply=Aplikatu aldaketak
+index_applydesc=Egin klik botoi honetan uneko fitxategiak partekatzeko konfigurazioa aplikatzeko. Horrek goian zerrendatutako direktorio guztiak eskuragarri jarriko ditu zehaztutako aukerekin.
+index_return=akzioen zerrenda
+
+edit_title1=Editatu Partekatu
+edit_title2=Sortu Partekatu
+edit_header1=Partekatu xehetasunak
+edit_dir=Directory
+edit_desc=deskribapena
+edit_ro=Irakurtzeko soilik
+edit_rw=Irakurtzeko eta idazteko sarbidea
+edit_root=Sustraien sarbidea
+edit_none=Bat ere ez
+edit_all=Ostalari guztiak
+edit_listed=Zerrendatutako ostalariak ..
+edit_header2=Partekatzeko aukerak
+edit_nosub=Onartu azpidatzien muntaketa?
+edit_nosuid=Baimendu setuid fitxategiak?
+edit_des=Bezeroek DES erabili behar dute?
+edit_kerberos=Bezeroek kerberoak erabili behar dituzte?
+edit_anon=Erabiltzaile anonimoa
+edit_anon0=Ez dago ezarri
+edit_anon1=Sarbiderik ez
+edit_aclok=Baimendu ACLak?
+edit_public=WebNFS partekatzea?
+edit_index=WebNFS aurkibide fitxategia
+
+save_err=Ezin izan da partekatu gordetzea
+save_edirectory='$1' ez da baliozko direktorioaren izena
+save_edirectory2=Ez da '$1' direktorioaren direktoriorik
+save_erw=Ez duzu ostalaririk zerrendatu irakurketarekin idazteko
+save_ero=Ez duzu ostalaririk zerrendatu irakurtzeko soilik partekatzeko
+save_eroot=Ez duzu ostalaririk zerrendatu rootarekin partekatzeko
+save_ealready='$1' direktorioa partekatzen ari da dagoeneko
+save_ehost='$1' ostalaria ez da existitzen
+
+log_modify=$1 aldatutako NFS kuota
+log_rename=Aldatutako NFS $1 etik $2 ra aldatzen da
+log_create=NFS $1 partekatua sortu da
+log_delete=NFS $1 ezabatu da
+log_apply=Aplikatutako aldaketak
+
+acl_view=NFS akzioak editatu al ditzake?
+
+ecannot=Ezin duzu NFS akzioak kudeatu
+
+delete_err=Ezin izan da akzioak ezabatu
+delete_enone=Ez da hautatu
+
+restart_err=Ezin izan dira aldaketak aplikatu

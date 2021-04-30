@@ -14,11 +14,11 @@ else {
 	}
 
 foreach $f (@files) {
-	open(IN, $f);
+	open(IN, "<".$f);
 	@lines = <IN>;
 	close(IN);
 	if ($lines[0] =~ /^#!\/\S*perl\S*(.*)/) {
-		open(OUT, "> $f");
+		open(OUT, ">".$f);
 		print OUT "#!$ppath$1\n";
 		for($i=1; $i<@lines; $i++) {
 			print OUT $lines[$i];

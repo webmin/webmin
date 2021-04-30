@@ -1,0 +1,3 @@
+desc_tr=Linux Güvenlik Duvarı
+longdesc_tr=İptables kullanarak bir Linux güvenlik duvarı yapılandırın. Tüm tabloların, zincirlerin, kuralların ve seçeneklerin düzenlenmesine izin verir.
+name_tr=Firewall

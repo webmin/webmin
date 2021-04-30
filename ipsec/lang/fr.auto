@@ -1,0 +1,128 @@
+index_eipsec=La commande FreeSWAN $1 est introuvable sur votre système ou n'est pas le bon programme. Il n'est peut-être pas installé ou la configuration de votre <a href='$2'>module</a> est incorrecte.
+index_out=La sortie de $1 était :
+index_econfig=Le fichier de configuration FreeSWAN $1 est introuvable sur votre système. Il n'est peut-être pas installé ou la configuration de votre <a href='$2'>module</a> est incorrecte.
+index_nokey=Aucune clé d'hôte ne semble répertoriée dans le fichier $1. Un doit être généré pour votre système avant de pouvoir définir des connexions VPN.
+index_newkey=Générer une clé pour l'hôte:
+index_adddef=Ajoutez des valeurs par défaut pour toutes les connexions.
+index_defconn=Valeurs par défaut pour toutes les connexions
+index_nopol=Aucune stratégie réseau n'a été trouvée. La <a href='$1'>configuration réseau</a> est peut-être incorrecte.
+
+restart_err=Impossible de redémarrer le serveur IPsec
+start_elog=Les erreurs suivantes ont été enregistrées : $1 
+
+newkey_err=Impossible de générer la clé
+newkey_ehost=Nom d'hôte manquant ou invalide
+
+edit_auto=Au démarrage d'IPsec
+edit_amodeadd=Ajouter une connexion
+edit_amodeignore=Ignorer
+edit_cmodeyes=Oui
+edit_cmodeno=Non
+edit_pfs=Parfait secret de transmission?
+edit_pmodeyes=Oui
+edit_pmodeno=Non
+edit_tmodetransport=Transport (hôte à hôte uniquement)
+edit_tmodepassthrough=Passthrough (pas de cryptage)
+edit_addr-1=Aucun
+edit_addr0=De l'itinéraire par défaut
+edit_addr3=Adresse ou nom d'hôte ..
+edit_subnet=Sous-réseau privé derrière le système
+edit_hop=Saut suivant vers un autre système
+edit_key=Clé publique du système
+edit_key2=Entré ci-dessous ..
+edit_default=Valeurs par défaut pour toutes les connexions
+edit_return=détails de connexion
+edit_rsasigsecret=Clé RSA ou secret partagé
+edit_never=Ne jamais autoriser l'authentification
+edit_keying=Nouvelle tentative de saisie
+edit_keylife=Durée de vie de la clé de connexion
+edit_ikelifetime=Durée de vie du canal de saisie
+
+config_ifaces2=Interface de route par défaut
+config_ifaces3=Énumérés ci-dessous ..
+config_riface=Interface réelle
+config_iiface=Interface IPsec
+config_syslog=Niveau de journalisation Syslog
+config_fac=Connectez-vous à l'installation
+config_pri=avec priorité
+config_fwd=Activer le transfert IP?
+config_nat=Activer la traversée NAT?
+config_err=Impossible d'enregistrer la configuration du serveur
+config_eri=L'interface réelle «$1» est répertoriée plusieurs fois
+config_enone=Aucune interface réseau n'a été spécifiée
+
+showkey_desc1=La clé publique RSA illustrée ci-dessous doit être copiée dans la configuration des autres systèmes se connectant à celui-ci, dans la section relative à cet hôte.
+showkey_desc2=Les valeurs indiquées ci-dessous peuvent être utilisées pour créer un enregistrement DNS KEY pour cet hôte, afin que les autres systèmes qui s'y connectent puissent rechercher sa clé publique.
+showkey_flags=Drapeaux
+
+policy_longdesc_block=La communication avec les réseaux sélectionnés ci-dessous ne sera jamais autorisée.
+policy_longdesc_clear-or-private=La communication avec les réseaux sélectionnés ci-dessous sera claire sauf si l'autre extrémité lance le cryptage IPsec.
+policy_longdesc=Les réseaux sélectionnés ci-dessous sont utilisés pour la stratégie $1.
+policy_err=Échec de l'enregistrement des réseaux
+policy_enet=Adresse IP réseau non valide sur la ligne $1 
+policy_emask=Longueur de préfixe non valide sur la ligne $2 
+
+save_err=Échec de l'enregistrement de la connexion
+save_ename=Nom de connexion manquant ou invalide
+save_ekeying=Nombre de tentatives de saisie manquant ou non valide
+save_eleft=Adresse du serveur local ou nom d'hôte manquant ou invalide
+save_eright=Adresse ou nom d'hôte du serveur distant manquant ou non valide
+save_eleftid1=Serveur local manquant ou invalide identifiant l'adresse IP
+save_erightid1=Serveur distant manquant ou invalide identifiant l'adresse IP
+save_eleftid2=Serveur local manquant ou non valide identifiant le nom d'hôte
+save_erightid2=Serveur distant manquant ou non valide identifiant le nom d'hôte
+save_eleftsubnet=Sous-réseau de serveur local manquant ou non valide
+save_erightsubnet=Sous-réseau de serveur distant manquant ou non valide
+save_eleftkey=Clé publique du serveur local manquante
+save_erightkey=Clé publique du serveur distant manquante
+save_elefthop=Passerelle du tronçon suivant du serveur local manquante ou non valide
+save_erighthop=Passerelle du tronçon suivant du serveur distant manquante ou non valide
+save_eleftcert=Certificat de serveur local manquant ou invalide
+save_erightcert=Certificat de serveur distant manquant ou non valide
+save_ekeylife=Durée de vie de la clé de connexion manquante ou non valide
+save_eikelifetime=Durée de vie du canal de saisie manquante ou non valide
+
+log_create_conn=Connexion créée $1 
+log_delete_conn=Connexion supprimée $1 
+log_modify_conn=Connexion modifiée $1 
+log_import_conn=Connexion importée $1 
+log_up=Connexion démarrée $1 
+log_policy=$1 enregistré
+log_start=Serveur IPsec démarré
+log_stop=Serveur IPsec arrêté
+log_restart=Redémarrage du serveur IPsec
+log_boot=IPsec activé au démarrage
+log_unboot=IPsec désactivé au démarrage
+log_config=Configuration du serveur enregistrée
+log_create_secret=Clé secrète créée pour $1 
+log_modify_secret=Clé secrète modifiée pour $1 
+log_delete_secret=Clé secrète supprimée pour $1 
+log_create_secret_nn=Clé secrète créée pour tout hôte
+log_modify_secret_nn=Clé secrète modifiée pour tout hôte
+log_delete_secret_nn=Clé secrète supprimée pour tout hôte
+
+export_desc=Ce formulaire peut être utilisé pour exporter la section du fichier de configuration pour la connexion $1, afin qu'il puisse être facilement importé sur le serveur à l'autre extrémité.
+export_err=Échec de l'exportation de la configuration
+export_efile=Nom de fichier manquant
+export_esave=Impossible d'écrire dans le fichier : $1 
+export_done=Configuration exportée pour la connexion $1 à $2 ($3 octets).
+
+import_desc=Ce formulaire peut être utilisé pour importer une section de fichier de configuration pour une connexion, telle que celle créée par la fonction d'exportation du module sur un autre système.
+import_upload=Importer à partir du fichier de téléchargement ..
+import_file=Importer depuis un fichier côté serveur ..
+import_ok=Importer maintenant
+
+import_eupload=Aucun fichier sélectionné pour le téléchargement
+import_efile=Aucun fichier côté serveur entré
+import_eopen=Le fichier côté serveur n'existe pas
+import_eformat=Aucune connexion IPsec trouvée dans le fichier - ce n'est peut-être pas un fichier d'exportation valide
+import_eclash=Une connexion appelée $1 existe déjà.
+import_done1=La nouvelle connexion IPsec $1 a été ajoutée avec succès.
+import_done2=Mise à jour réussie de la connexion IPsec $1.
+import_over=Remplacer la connexion existante avec le même nom?
+
+secret_rsa=RSA $1 
+secret_err=Impossible d'enregistrer la clé secrète
+secret_elast=La dernière clé secrète restante ne peut pas être supprimée
+secret_ename=Hôtes manquants pour cette clé
+secret_ersa=Valeur manquante pour RSA $1 

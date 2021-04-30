@@ -1,0 +1,3 @@
+longdesc_pl=Edytuj udziały plików z pliku FreeBSD /etc/exports.
+name_pl=BSDexports
+desc_pl=Wywóz NFS

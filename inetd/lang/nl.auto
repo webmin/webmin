@@ -1,0 +1,9 @@
+index_search=Services weergeven die overeenkomen met:
+index_sok=Zoeken
+index_toomany=Er zijn te veel internetservices om op deze pagina weer te geven.
+index_none=Geen enkele internetdienst kwam overeen met uw zoekopdracht.
+
+editrpc_act=Programmastatus
+editrpc_stream=Stroom
+editrpc_dgram=Datagram
+editrpc_tli=TLI

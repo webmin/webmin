@@ -22,6 +22,7 @@ local (@rv, @newpacks);
 # Build the command to run
 $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
+$update =~ s/\\(-)|\\(.)/$1$2/g;
 local $cmd = "$apt_get_command -y ".($force ? " -f" : "")." install $update";
 print "<b>",&text('apt_install', "<tt>$cmd</tt>"),"</b><p>\n";
 print "<pre>";
@@ -167,7 +168,7 @@ local (@rv, $pkg, %done);
 # Use dump to get versions
 &execute_command("$apt_get_command update");
 &clean_language();
-&open_execute_command(DUMP, "apt-cache dump 2>/dev/null", 1, 1);
+&open_execute_command(DUMP, "apt-cache dumpavail 2>/dev/null", 1, 1);
 while(<DUMP>) {
 	if (/^\s*Package:\s*(\S+)/) {
 		$pkg = { 'name' => $1 };
@@ -270,6 +271,32 @@ if (&has_command("apt-show-versions")) {
 			if ($pkg->{'version'} =~ s/^(\S+)://) {
 				$pkg->{'epoch'} = $1;
 				}
+			push(@rv, $pkg);
+			}
+		}
+	close(PKGS);
+	&reset_environment();
+	@rv = &filter_held_packages(@rv);
+	foreach my $pkg (@rv) {
+		$pkg->{'security'} = 1 if ($pkg->{'source'} =~ /security/i);
+		}
+	return @rv;
+	}
+elsif (&has_command("apt")) {
+	# Use the apt list command
+	local @rv;
+	&clean_language();
+	&open_execute_command(PKGS, "apt list --upgradable 2>/dev/null", 1, 1);
+	while(<PKGS>) {
+		if (/^(\S+)\/(\S+)\s+(\S+)\s+(\S+)\s+\[upgradable\s+from:\s+(\S+)\]/ && !$holds{$1}) {
+			local $pkg = { 'name' => $1,
+				       'source' => $2,
+				       'version' => $3,
+				       'arch' => $4 };
+			if ($pkg->{'version'} =~ s/^(\S+)://) {
+				$pkg->{'epoch'} = $1;
+				}
+			$pkg->{'source'} =~ s/,.*$//;
 			push(@rv, $pkg);
 			}
 		}
@@ -395,6 +422,19 @@ if (&has_command("aptitude")) {
 	&open_execute_command(PKGS, "aptitude search '~ahold' 2>/dev/null", 1, 1);
 	while(<PKGS>) { 
 		if (/^\.h\s+(\S+)/) {
+			$hold{$1} = 1;
+			}
+		}
+	close(PKGS);
+	&reset_environment();
+	}
+
+# Get holds from apt-mark
+if (&has_command("apt-mark")) {
+	&clean_language();
+	&open_execute_command(PKGS, "apt-mark showhold 2>/dev/null", 1, 1);
+	while(<PKGS>) { 
+		if (/^([^:\s]+)/) {
 			$hold{$1} = 1;
 			}
 		}

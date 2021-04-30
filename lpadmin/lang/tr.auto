@@ -1,0 +1,39 @@
+index_cluster=Küme Sunucuları
+index_clusterdesc=Yazıcıların oluşturulacağı, güncelleneceği ve silineceği ek Webmin sunucuları ayarlamak için bu düğmeyi tıklatın.
+index_delete=Seçilen Yazıcıları Sil
+
+save_evalid=Yazdırma sistemi bu yazıcıya izin vermedi
+save_errslave=Yazıcı bu sistemde Tamam oluşturdu, ancak küme sistemlerinde aşağıdaki hatalar oluştu : $1 
+save_egone='$1' adlı yazıcı bulunamadı
+save_errdelslave=Yazıcı bu sistemde Tamam'ı sildi, ancak küme sistemlerinde aşağıdaki hatalar oluştu : $1 
+
+jobs_cancelsel=Seçilen İşleri İptal Et
+jobs_on=Yazıcıda $1 
+jobs_return=yazdırma işleri listesi
+
+acl_delete=Yazıcıları silebilir mi?
+acl_cluster=Yazıcı kümesini yönetebilir mi?
+
+log_cancel_sel=$1 üzerindeki $2 yazdırma işi iptal edildi
+
+cluster_title=Küme Yazıcı Sunucuları
+cluster_none=Yazıcı kümesine henüz hiç sunucu eklenmedi.
+cluster_host=Hostadı
+cluster_desc=Açıklama
+cluster_os=İşletim sistemi
+cluster_add=Sunucu ekle
+cluster_gadd=Gruba sunucu ekle
+cluster_need=Burada yönetilebilmeleri için Webmin Sunucuları Dizin modülüne oturum açma adı ve şifresi olan sunucular eklemeniz gerekir.
+cluster_return=küme sunucuları
+cluster_delete=Seçilenleri Kaldır
+cluster_ecannot=Küme yazıcı sunucularını yönetme izniniz yok
+
+add_title=Sunucu Ekle
+add_msg=$1 ekleniyor ..
+add_gmsg=$1 grubuna sunucu ekleniyor.
+add_err=Sunucu eklenemedi
+add_gerr=Grup eklenemedi
+add_echeck=$1 sunucusunda Yazıcı Yönetim modülü yok
+add_ediff=$1 sunucusu bu sunucuya farklı bir yazdırma sistemi ($2) kullanıyor
+add_ediff2=$1 sunucusu bu sunucuya farklı bir yazıcı sürücüsü ($2) kullanıyor
+add_ok=$2 yazıcı ile $1 eklendi.

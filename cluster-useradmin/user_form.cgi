@@ -21,7 +21,7 @@ foreach $h (@hosts) {
 		push(@glist, $g) if (!$donegroup{$g->{'group'}}++);
 		}
 	}
-open(SHELLS, "/etc/shells");
+open(SHELLS, "</etc/shells");
 while(<SHELLS>) {
 	s/\r|\n//g;
 	s/#.*$//;
@@ -29,243 +29,182 @@ while(<SHELLS>) {
 	}
 close(SHELLS);
 
-print "<form action=create_user.cgi method=post>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'uedit_details'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("create_user.cgi", "post");
+print &ui_table_start($text{'uedit_details'}, "width=100%", 2);
 
-print "<tr> <td><b>$text{'user'}</b></td>\n";
-print "<td><input name=user size=10></td>\n";
+# Username
+print &ui_table_row($text{'user'},
+	&ui_textbox("user", undef, 40));
 
 # Find the first free UID above the base
-print "<td><b>$text{'uid'}</b></td>\n";
 $newuid = int($uconfig{'base_uid'});
 while($used{$newuid}) {
 	$newuid++;
 	}
-print "<td><input name=uid size=10 value='$newuid'></td> </tr>\n";
+print &ui_table_row($text{'uid'},
+	&ui_textbox("uid", $newuid, 10));
 
+# Real name and possibly other fields
 if ($uconfig{'extra_real'}) {
-	print "<tr> <td><b>$text{'real'}</b></td>\n";
-	print "<td><input name=real size=20></td>\n";
+        print &ui_table_row($text{'real'},
+                &ui_textbox("real", undef, 40));
 
-	print "<td><b>$text{'office'}</b></td>\n";
-	print "<td><input name=office size=20 value=\"$real[1]\"></td> </tr>\n";
+        print &ui_table_row($text{'office'},
+		&ui_textbox("office", undef, 20));
 
-	print "<tr> <td><b>$text{'workph'}</b></td>\n";
-	print "<td><input name=workph size=20></td>\n";
+        print &ui_table_row($text{'workph'},
+		&ui_textbox("workph", undef, 20));
 
-	print "<td><b>$text{'homeph'}</b></td>\n";
-	print "<td><input name=homeph size=20></td> </tr>\n";
+        print &ui_table_row($text{'homeph'},
+		&ui_textbox("homeph", undef, 20));
 
-	print "<tr> <td><b>$text{'extra'}</b></td>\n";
-	print "<td><input name=extra size=20></td>\n";
+        print &ui_table_row($text{'extra'},
+		&ui_textbox("extra", undef, 20));
 	}
 else {
-	print "<tr> <td><b>$text{'real'}</b></td>\n";
-	print "<td><input name=real size=20></td>\n";
+	print &ui_table_row($text{'real'},
+		&ui_textbox("real", undef, 40));
 	}
 
-print "<td><b>$text{'home'}</b></td>\n";
-print "<td>\n";
-if ($uconfig{'home_base'}) {
-	printf "<input type=radio name=home_base value=1 checked> %s\n",
-		$text{'uedit_auto'};
-	printf "<input type=radio name=home_base value=0>\n";
-	printf "<input name=home size=25> %s\n",
-		&file_chooser_button("home", 1);
-	}
-else {
-	print "<input name=home size=25>\n",
-	      &file_chooser_button("home", 1);
-	}
-print "</td> </tr>\n";
+# Home directory
+print &ui_table_row($text{'home'},
+	$uconfig{'home_base'} ?
+		&ui_radio("home_base", 1,
+			  [ [ 1, $text{'uedit_auto'} ],
+			    [ 0, &ui_filebox("home", "", 40) ] ]) :
+		&ui_filebox("home", "", 40));
 
-print "<tr> <td valign=top><b>$text{'shell'}</b></td>\n";
-print "<td valign=top><select name=shell>\n";
+# Login shell
 @shlist = &unique(@shlist);
-foreach $s (@shlist) {
-	printf "<option value='%s'>%s</option>\n", $s,
-		$s eq "" ? "&lt;None&gt;" : $s;
-	}
-print "<option value=*>$text{'uedit_other'}</option>\n";
-print "</select></td>\n";
+push(@shlist, [ "*", $text{'uedit_other'} ]);
+print &ui_table_row($text{'shell'},
+	&ui_select("shell", undef, \@shlist)." ".
+	&ui_filebox("othersh", undef, 25));
 
-&seed_random();
-foreach (1 .. 15) {
-	$random_password .= $random_password_chars[
-				rand(scalar(@random_password_chars))];
-	}
-print "<td valign=top rowspan=4><b>$text{'pass'}</b>",
-      "</td> <td rowspan=4 valign=top>\n";
-printf "<input type=radio name=passmode value=0> %s<br>\n",
-	$uconfig{'empty_mode'} ? $text{'none1'} : $text{'none2'};
-printf "<input type=radio name=passmode value=1 checked> %s<br>\n",
-	$text{'nologin'};
-printf "<input type=radio name=passmode value=3> %s\n",
-	$text{'clear'};
-printf "<input %s name=pass size=15 value='%s'><br>\n",
-	$uconfig{'passwd_stars'} ? "type=password" : "",
-	$uconfig{'random_password'} ? $random_password : "";
-printf "<input type=radio name=passmode value=2> $text{'encrypted'}\n";
-printf "<input name=encpass size=13>\n";
-print "</td> </tr>\n";
+# Password or locked account
+$rp = $uconfig{'random_password'} ? &useradmin::generate_random_password() : "";
+$pfield = $uconfig{'passwd_stars'} ? &ui_password("pass", $rp, 40)
+				   : &ui_textbox("pass", $rp, 40);
+print &ui_table_row($text{'pass'},
+	&ui_radio_table("passmode", 1,
+	    [ [ 0, $uconfig{'empty_mode'} ? $text{'none1'} : $text{'none2'} ],
+	      [ 1, $text{'nologin'} ],
+	      [ 3, $text{'clear'}, $pfield ],
+	      [ 2, &ui_textbox("encpass", undef, 40) ] ]));
 
-print "<tr> <td valign=top>$text{'uedit_other'}</td>\n";
-print "<td valign=top><input size=25 name=othersh>\n";
-print &file_chooser_button("othersh", 0),"</td> </tr>\n";
-print "<tr> <td colspan=2><br></td> </tr>\n";
-print "</table></td></tr></table><p>\n";
+print &ui_table_end();
 
 $pft = &foreign_call("useradmin", "passfiles_type");
 if ($pft == 1 || $pft == 6) {
 	# This is a BSD system.. a few extra password options are supported
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'uedit_passopts'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
-	print "<tr> <td><b>$text{'change2'}</b></td>\n";
-	print "<td>";
-	&date_input("", "", "", 'change');
-	print " &nbsp; <input name=changeh size=3>";
-	print ":<input name=changemi size=3></td>\n";
+	print &ui_table_start($text{'uedit_passopts'}, undef, 2);
 
-	print "<td><b>$text{'expire2'}</b></td>\n";
-	print "<td>";
-	&date_input("", "", "", 'expire');
-	print " &nbsp; <input name=expireh size=3>";
-	print ":<input name=expiremi size=3></td> </tr>\n";
+	print &ui_table_row($text{'change2'},
+		&useradmin::date_input("", "", "", 'change')." ".
+		&ui_textbox("changeh", "", 3).":".
+		&ui_textbox("changemi", "", 3));
 
-	print "<tr> <td><b>$text{'class'}</b></td>\n";
-	print "<td><input name=class size=10></td>\n";
-	print "</tr>\n";
-	print "</table></td></tr></table><p>\n";
+	print &ui_table_row($text{'expire2'},
+		&useradmin::date_input("", "", "", 'expire')." ".
+		&ui_textbox("expireh", "", 3).":".
+		&ui_textbox("expiremi", "", 3));
+
+	print &ui_table_row($text{'class'},
+		&ui_textbox("class", "", 10));
+
+	print &ui_table_end();
 	}
 elsif ($pft == 2) {
 	# System has a shadow password file as well.. which means it supports
 	# password expiry and so on
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'uedit_passopts'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
+	print &ui_table_start($text{'uedit_passopts'}, undef, 2);
 
-	print "<td><b>$text{'expire'}</b></td>\n";
-	print "<td>";
-	&date_input($eday, $emon, $eyear, 'expire');
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'expire'},
+		&useradmin::date_input($eday, $emon, $eyear, 'expire'));
 
-	print "<tr> <td><b>$text{'min'}</b></td>\n";
-	print "<td><input size=5 name=min></td>\n";
+	print &ui_table_row($text{'min'},
+		&ui_textbox("min", undef, 5));
 
-	print "<td><b>$text{'max'}</b></td>\n";
-	print "<td><input size=5 name=max></td></tr>\n";
+	print &ui_table_row($text{'max'},
+		&ui_textbox("max", undef, 5));
 
-	print "<tr> <td><b>$text{'warn'}</b></td>\n";
-	print "<td><input size=5 name=warn></td>\n";
+	print &ui_table_row($text{'warn'},
+		&ui_textbox("warn", undef, 5));
 
-	print "<td><b>$text{'inactive'}</b></td>\n";
-	print "<td><input size=5 name=inactive></td></tr>\n";
+	print &ui_table_row($text{'inactive'},
+		&ui_textbox("inactive", undef, 5));
 
-	print "</table></td></tr></table><p>\n";
+	print &ui_table_end();
 	}
 elsif ($pft == 4) {
 	# This is an AIX system
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'uedit_passopts'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
+	print &ui_table_start($text{'uedit_passopts'}, undef, 2);
 
-	print "<tr> <td><b>$text{'expire'}</b></td>\n";
-	print "<td>";
-	&date_input("", "", "", 'expire');
-	print " &nbsp; <input name=expireh size=3>";
-	print "<b>:</b><input name=expiremi size=3></td> </tr>\n";
+	print &ui_table_row($text{'expire'},
+		&useradmin::date_input("", "", "", 'expire')." ".
+		&ui_textbox("expireh", undef, 3).":".
+		&ui_textbox("expiremi", undef, 3));
 
-	print "<tr> <td><b>$text{'min_weeks'}</b></td>\n";
-	print "<td><input size=5 name=min></td>\n";
+	print &ui_table_row($text{'min_weeks'},
+		&ui_textbox("min", undef, 5));
 
-	print "<td><b>$text{'max_weeks'}</b></td>\n";
-	print "<td><input size=5 name=max></td></tr>\n";
+	print &ui_table_row($text{'max_weeks'},
+		&ui_textbox("max", undef, 5));
 
-	print "<tr> <td valign=top><b>$text{'warn'}</b></td>\n";
-	print "<td valign=top><input size=5 name=warn></td>\n";
+	print &ui_table_row($text{'warn'},
+		&ui_textbox("warn", undef, 5));
 
-	print "<td valign=top><b>$text{'flags'}</b></td> <td>\n";
-	printf "<input type=checkbox name=flags value=admin> %s<br>\n",
-		$text{'uedit_admin'};
-	printf "<input type=checkbox name=flags value=admchg> %s<br>\n",
-		$text{'uedit_admchg'};
-	printf "<input type=checkbox name=flags value=nocheck> %s\n",
-		$text{'uedit_nocheck'};
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'flags'},
+		&ui_checkbox("flags", "admin", $text{'uedit_admin'})." ".
+		&ui_checkbox("flags", "admchg", $text{'uedit_admchg'})." ".
+		&ui_checkbox("flags", "nocheck", $text{'uedit_nocheck'}));
 
-	print "</table></td></tr></table><p>\n";
+	print &ui_table_end();
 	}
 
-# Output group memberships
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'uedit_gmem'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
-print "<tr> <td valign=top><b>$text{'group'}</b></td> <td valign=top>\n";
-printf "<input name=gid size=8 value=\"%s\">\n",
-	$uconfig{'default_group'};
-print "<input type=button onClick='ifield = document.forms[0].gid; chooser = window.open(\"/useradmin/my_group_chooser.cgi?multi=0&group=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=300,height=200\"); chooser.ifield = ifield' value=\"...\"></td>\n";
+print &ui_table_start($text{'uedit_gmem'}, "width=100%", 2);
 
-print "<td valign=top><b>$text{'uedit_2nd'}</b></td>\n";
-print "<td><select name=sgid multiple size=5>\n";
+# Primary group
+print &ui_table_row($text{'group'},
+	&ui_group_textbox("gid", $uconfig{'default_group'}));
+
+# Secondary groups
 @glist = sort { $a->{'group'} cmp $b->{'group'} } @glist
 	if ($uconfig{'sort_mode'});
-foreach $g (@glist) {
-	@mems = split(/,/ , $g->{'members'});
-	print "<option value=\"$g->{'gid'}\">$g->{'group'} ($g->{'gid'})</option>\n";
-	}
-print "</select></td> </tr>\n";
-print "</table></td></tr></table><p>\n";
+print &ui_table_row($text{'uedit_2nd'},
+	&ui_select("sgid", undef,
+		[ map { [ $_->{'gid'}, $_->{'group'} ] } @glist ],
+		5, 1));
 
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'uedit_oncreate'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_table_end();
 
-print "<tr> <td><b>$text{'uedit_makehome'}</b></td>\n";
-print "<td><input type=radio name=makehome value=1 checked> $text{'yes'}</td>\n";
-print "<td><input type=radio name=makehome value=0> $text{'no'}</td> </tr>\n";
+print &ui_table_start($text{'uedit_oncreate'}, "width=100%", 2);
 
+# Create home dir?
+print &ui_table_row($text{'uedit_makehome'},
+	&ui_yesno_radio("makehome", 1));
+
+# Copy home dir files?
 if ($uconfig{'user_files'} =~ /\S/) {
-	print "<tr> <td><b>$text{'uedit_copy'}<b></td>\n";
-	print "<td><input type=radio name=copy_files ",
-	      "value=1 checked> $text{'yes'}</td>\n";
-	print "<td><input type=radio name=copy_files ",
-	      "value=0> $text{'no'}</td> </tr>\n";
+	print &ui_table_row($text{'uedit_copy'},
+		&ui_yesno_radio("copy_files", 1));
 	}
 
-# Show make home on all servers option
-print "<tr> <td><b>$text{'uedit_servs'}</b></td>\n";
-print "<td><input type=radio name=servs value=1> $text{'uedit_mall'}</td>\n";
-print "<td><input type=radio name=servs value=0 checked> $text{'uedit_mthis'}</td> </tr>\n";
+# Create home dir on all servers?
+print &ui_table_row($text{'uedit_servs'},
+	&ui_radio("servs", 0, [ [ 1, $text{'uedit_mall'} ],
+			 	[ 0, $text{'uedit_mthis'} ] ]));
 
 # Show other modules option
-print "<tr> <td><b>$text{'uedit_others'}</b></td>\n";
-print "<td><input type=radio name=others value=1 checked> $text{'yes'}</td>\n";
-print "<td><input type=radio name=others value=0> $text{'no'}</td> </tr>\n";
+print &ui_table_row($text{'uedit_others'},
+        &ui_yesno_radio("others", 1));
 
 # Show selector for hosts to create on
-&create_on_input($text{'uedit_servers'});
+print &ui_table_row($text{'uedit_servers'},
+	&create_on_input());
 
-print "</table></td> </tr></table><p>\n";
-
-print "<input type=submit value=\"$text{'create'}\"></form><p>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'create'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
-
-# date_input(day, month, year, prefix)
-sub date_input
-{
-print "<input name=$_[3]d size=3 value='$_[0]'>";
-print "/<select name=$_[3]m>\n";
-local $m;
-foreach $m (1..12) {
-	printf "<option value=%d %s>%s</option>\n",
-		$m, $_[1] eq $m ? 'selected' : '', $text{"smonth_$m"};
-	}
-print "</select>";
-print "/<input name=$_[3]y size=5 value='$_[2]'>";
-print &date_chooser_button("$_[3]d", "$_[3]m", "$_[3]y");
-}
 

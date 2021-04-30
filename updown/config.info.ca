@@ -1,0 +1,7 @@
+home_only=Limita les pujades i baixades al directori arrel,1,1-Sí,0-No
+root=Altres directoris permesos,9,30,4
+upload=Permet la puja de fitxers,1,1-Sí,0-No
+download=Permet la baixada de fitxers des d'URLs,1,1-Sí,0-No
+fetch=Permet la baixada de fitxers al PC,1,1-Sí,0-No
+background=Permet baixades en segon pla,1,1-Sí,0-No
+max=Mida màxima permesa de puja,3,Il·limitada,8,,bytes

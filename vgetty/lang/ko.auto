@@ -1,0 +1,118 @@
+index_title=음성 메일 서버
+index_ecmd=시스템에서 Vgetty 명령 $1 을 (를) 찾을 수 없습니다. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+index_econfig=시스템에서 Vgetty 구성 파일 $1 을 (를) 찾을 수 없습니다. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+index_return=음성 사서함 색인
+
+vgetty_title=직렬 포트 구성
+vgetty_desc=서버가 직렬 포트에 연결된 모뎀으로 음성 통화에 응답하려면 아래 목록에 있어야합니다. 이 목록에 포트를 추가하면 $1 프로그램이 전화에 응답하고 메시지를 재생하도록 구성됩니다.
+vgetty_add=새로운 시리얼 포트 추가
+vgetty_tty=시리얼 장치
+vgetty_type=유형
+vgetty_vgetty=목소리
+vgetty_mgetty=데이터/팩스
+vgetty_none=음성 메일 용으로 아직 직렬 포트가 구성되지 않았습니다.
+vgetty_apply=구성 적용
+vgetty_applydesc=이 버튼을 클릭하면 $1 명령을 실행하고 모든 Vgetty 프로세스를 종료하여 현재 음성 메일 서버 구성을 적용 할 수 있습니다.
+vgetty_applyerr=구성을 적용하지 못했습니다
+vgetty_return=직렬 포트 목록
+vgetty_create=직렬 포트 추가
+vgetty_edit=직렬 포트 편집
+vgetty_header=직렬 포트 구성 옵션
+vgetty_ts=시리얼 포트 $1 
+vgetty_other=다른 장치 ..
+vgetty_rings=응답하기 전에 울림
+vgetty_default=글로벌 기본값
+vgetty_ans=응답 모드
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=목소리
+vgetty_ans_fax=팩스
+vgetty_ans_data=데이터
+vgetty_err=직렬 포트를 저장하지 못했습니다
+vgetty_etty=누락되었거나 존재하지 않는 직렬 장치
+vgetty_erings=링 수가 없거나 잘못되었습니다
+vgetty_erings2=고리 수는 2 이상이어야합니다
+vgetty_eans=선택된 응답 모드가 없습니다
+vgetty_eclash=직렬 포트 $1 이 (가) 이미 사용 중입니다
+
+options_title=음성 메일 서버 옵션
+options_header=모든 직렬 포트에 대한 옵션
+options_maxlen=최대 메시지 길이
+options_secs=초
+options_minlen=최소 메시지 길이
+options_silence=메시지 끝에서 침묵을 제거 하시겠습니까?
+options_thresh=침묵 임계 값 수준
+options_rgain=녹음 음량
+options_tgain=재생 음량 레벨
+options_rings=응답하기 전에 울림
+options_perport=각 시리얼 포트에 설정 가능
+options_ans=응답 모드
+options_keep=데이터 또는 DTMF 코드가 포함 된 메시지를 유지 하시겠습니까?
+options_light=수신 후 자동 응답 표시등을 사용 하시겠습니까?
+options_owner=메시지 파일의 유닉스 소유자
+options_group=메시지 파일의 유닉스 그룹
+options_mode=메시지 파일에 대한 권한
+options_prog=메시지를 녹음 한 후
+options_prog0=아무것도하지 마세요
+options_prog1=WAV 형식의 이메일
+options_prog2=메시지 파일에서 명령 실행
+options_err=음성 사서함 옵션을 저장하지 못했습니다
+options_erings=링 수가 없거나 잘못되었습니다
+options_erings2=고리 수는 2 이상이어야합니다
+options_emaxlen=최대 메시지 길이가 없거나 잘못되었습니다
+options_eminlen=최소 메시지 길이가 없거나 잘못되었습니다
+options_ethresh=침묵 임계 값이 없거나 유효하지 않습니다
+options_ergain=녹음 볼륨 레벨이 없거나 유효하지 않습니다
+options_ergain2=녹음 음량은 0에서 100 사이 여야합니다.
+options_etgain=재생 볼륨 레벨이 없거나 유효하지 않습니다
+options_etgain2=재생 음량 레벨은 0에서 100 사이 여야합니다.
+options_eemail=이메일 주소가 없거나 잘못되었습니다
+options_eprog=실행할 프로그램이 없거나 존재하지 않습니다
+options_eowner=메시지 파일에 대한 유닉스 사용자가 없거나 잘못되었습니다
+options_egroup=메시지 파일에 대한 유닉스 그룹이 없거나 유효하지 않습니다
+options_emode=메시지 파일에 대한 8 진 권한이 없거나 유효하지 않습니다.
+
+received_title=받은 메시지
+recieved_desc=서버가 수신 한 음성 메일 메시지는 다음과 같습니다. 메시지를 들으려면 첫 번째 열에서 날짜/시간을 클릭하십시오.
+received_none=수신 된 음성 메일 메시지가 없습니다.
+received_date=에 받았습니다
+received_size=파일 크기
+received_speed=샘플 레이트
+received_type=오디오 포맷
+received_delete=선택된 메시지 삭제
+received_move=선택한 인사말로 변환
+received_all=모두 선택
+received_invert=반전 선택
+
+listen_efile=메시지 이름이 잘못되었습니다!
+listen_epath=음성 사서함 메시지가 더 이상 존재하지 않습니다
+
+delete_efile=메시지 이름이 잘못되었습니다!
+
+messages_title=인사말 메시지
+messages_desc=이 페이지에는 발신자가 음성 메일 서버에 연결할 때 재생되는 인사말 메시지가 표시됩니다. 하나 이상이 있으면 임의로 선택한 단일 메시지가 사용됩니다.
+messages_file=파일 이름
+messages_none=인사말 메시지가 없습니다.
+messages_updesc=이 양식을 사용하면 추가 인사말 메시지 WAV 파일을 업로드 할 수 있으며 모뎀에서 사용하기 위해 선택한 형식으로 변환됩니다. 업로드 된 WAV의 샘플 속도는 선택한 형식과 마찬가지로 수신 된 메시지의 샘플 속도와 같아야합니다.
+messages_upload=메시지 업로드
+messages_fmt=~로 변환하다
+
+pvfdesc=$1, $2 비트
+
+upload_err=메시지를 추가하지 못했습니다
+upload_emessage=선택된 WAV 파일이 없습니다
+upload_ewav=WAV 파일을 변환하지 못했습니다  : $1 
+upload_epvf=RMD 파일을 만들지 못했습니다  : $1 
+upload_esame=메시지 파일 $1 이 (가) 이미 존재합니다
+
+log_apply=적용되는 구성
+log_upload=인사말 메시지 $1 을 (를) 업로드했습니다.
+log_move=$1 받은 메시지 변환
+log_delete0=$1 받은 메시지를 삭제했습니다.
+log_delete1=인사말 $1 개를 삭제했습니다.
+log_options=변경된 음성 메일 옵션
+log_vgetty_create=시리얼 포트 $1 추가
+log_vgetty_modify=수정 된 직렬 포트 $1 
+log_vgetty_delete=직렬 포트 $1 을 (를) 삭제했습니다.
+
+email_subject=음성 사서함 메시지
+email_body=$1 에서 $2 이 (가) 음성 메일 메시지를 받았습니다.

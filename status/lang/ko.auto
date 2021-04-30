@@ -1,0 +1,132 @@
+index_refsel=선택한 새로 고침
+
+type_sslcert=SSL 인증서
+type_fail2ban=Fail2Ban 서버
+type_du=디렉토리 크기
+type_dovecot=도브 코트 IMAP/POP3 서버
+type_init=부팅 동작
+type_slapd=LDAP 서버
+type_ldap=LDAP 연결
+
+mon_virtualmin=경고! 이 모니터는 Virtualmin 도메인 $1 에 연결되어 있으므로 여기에서 편집하거나 삭제하면 안됩니다.
+mon_ontimeout=모니터 시간이 초과되면 명령을 실행하십시오.
+mon_eremote2=Webmin 서버 $1 에 접속할 수 없습니다  : $2 
+mon_etype=잘못된 모니터 유형 이름
+mon_onemem=한 멤버
+mon_header4=상태 기록
+mon_hwhen=날짜 확인
+mon_hold=이전 상태
+mon_hnew=새로운 상태
+mon_hvalue=값
+mon_changes0=모든 이벤트 유형 표시
+mon_changes1=변경 사항 만 표시
+mon_all=모든 역사적 사건 표시
+mon_nochanges=마지막 $1 기록 이벤트에서 상태 변경이 발생하지 않았습니다.
+
+sched_warn3=서비스가 작동하는 한
+sched_esmsname=누락되거나 잘못된 SMS 번호
+sched_subject=SMS 메시지 제목
+sched_subject0=없음 (경고는 본문에 있음)
+sched_subject1=경고 텍스트 (본문은 비워 둡니다)
+sched_subject2=맞춤 텍스트
+sched_esubject=SMS 메시지 제목 누락
+
+proc_thresh=모니터가 실행중인 것으로 간주하기 위해 존재해야하는 프로세스 수
+proc_asuser=사용자로 실행
+proc_anyuser=모든 사용자
+proc_easuser=존재하지 않는 프로세스를 실행할 사용자
+
+exec_mode=종료 상태 확인
+exec_mode0=명령이 실패하면 모니터 실패
+exec_mode1=명령이 성공하면 모니터 실패
+exec_mode2=성공 또는 실패 무시
+exec_regexp=출력을 정규 표현식과 비교
+exec_noregexp=확인하지 마십시오
+exec_remode=정규식 확인
+exec_remode0=출력이 일치하지 않으면 실패
+exec_remode1=출력이 일치하면 실패
+
+file_elarge=파일이 너무 큼  : $1 
+file_esmall=파일이 너무 작습니다  : $1 
+file_eowner=소유자가 잘못된 파일  : $1 
+file_egroup=그룹이 잘못된 파일  : $1 
+file_owner=파일 소유자는
+file_group=파일 그룹은
+file_nocheck=아무것도
+file_perms=8 진 권한은
+file_eperm=권한이 잘못된 파일  : $1 
+
+space_mode0=절대 크기
+space_mode1=총 백분율
+space_epc=여유 공간 백분율이 없거나 유효하지 않습니다
+space_merr=여유 공간 $1 개만
+space_perr=$1% 만 무료
+space_dferr=파일 시스템 크기를 가져 오지 못했습니다
+
+log_refresh=새로 고침 된 모니터 상태
+
+memory_freeswap=가상 메모리 여유 $1 
+memory_freelow=실제 메모리는 $1 개만 사용 가능
+memory_freelowswap=사용 가능한 $1 가상 메모리 만
+memory_minswap=최소 여유 가상 메모리
+memory_eminswap=사용 가능한 가상 메모리가 없거나 유효하지 않습니다
+
+init_action=확인할 조치
+init_eaction=선택된 조치가 없습니다
+
+refresh_doing2=선택된 모니터 $1 의 상태를 새로 고칩니다.
+
+monitor_sub_isup=$2 에 $1 
+monitor_pager_isup=$1 : "$2"가 $3 상승했습니다
+monitor_snmp_isup=$1:$2 
+monitor_email_isup=$1 에서 '$2'에 대한 모니터가 서비스가 $3 에서 작동 중임을 감지했습니다.
+monitor_email_stat=현재 상태 : $1 
+
+deletes_enone=선택된 모니터가 없습니다
+
+ftp_tls=TLS 암호화를 사용 하시겠습니까?
+ftp_etls=$1 Perl 모듈이 설치되어 있지 않으면 TLS를 사용할 수 없습니다
+ftp_econn=TLS FTP 연결 실패
+ftp_econn2=TLS FTP 연결 실패  : $1 
+ftp_elogin=TLS FTP 로그인 실패  : $1 
+ftp_etlsfile=TLS FTP 다운로드 실패  : $1 
+
+rssh_haspass=암호
+rssh_port=SSH 서버 포트
+rssh_eport=포트 번호가 없거나 유효하지 않습니다
+
+sslcert_src=인증서 위치
+sslcert_url=HTTPS URL에서
+sslcert_file=서버의 파일에서
+sslcert_eurl=SSL URL이 없거나 잘못되었거나 유효하지 않습니다
+sslcert_efile=인증서 파일이 없거나 유효하지 않습니다
+sslcert_ecert=인증서를 얻을 수 없습니다
+sslcert_edown=웹 서버가 다운되었습니다
+sslcert_days=만료 전날 실패
+sslcert_when=만료되었을 때
+sslcert_mismatch=호스트 이름이 일치하지 않습니까?
+sslcert_edays=누락되었거나 유효하지 않은 일수
+sslcert_eopenssl=인증서를 확인하려면 <tt>openssl</tt> 명령이 필요합니다
+sslcert_estart=$1 까지 유효하지 않습니다
+sslcert_eend=$1 이후에는 유효하지 않습니다
+sslcert_left=최대-만기일까지 $1 일
+sslcert_ematch=호스트 이름 $1 이 (가) 인증서 $2 와 일치하지 않습니다
+sslcert_emismatch=인증서 호스트 이름 확인은 URL을 확인할 때만 사용할 수 있습니다
+
+du_dir=모니터링 할 디렉토리
+du_max=최대 크기
+du_edir=없거나 절대적이지 않은 디렉토리 경로
+du_emax=최대 또는 크기가 아닌 최대 크기
+du_over=크기는 $1 입니다
+du_under=크기는 $1 에 불과합니다
+
+ldap_edriver=Perl 모듈 $1 이 (가) 설치되지 않았습니다
+ldap_host=LDAP 서버 호스트 이름
+ldap_port=LDAP 서버 포트
+ldap_ssl=SSL 연결을 사용 하시겠습니까?
+ldap_user=LDAP 서버 로그인
+ldap_pass=LDAP 서버 비밀번호
+
+info_desc=시스템 모니터
+info_last=현재 상태
+info_title=시스템 및 서버 상태

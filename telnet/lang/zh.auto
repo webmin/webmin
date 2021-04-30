@@ -1,0 +1,2 @@
+index_esocket2=$1端口 $2上没有运行SSH服务器。
+index_elookup=无法为 $1查找IP地址以测试telnet或SSH服务器。

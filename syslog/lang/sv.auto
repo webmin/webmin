@@ -1,0 +1,36 @@
+index_econf=Syslog-konfigurationsfilen $1 hittades inte på ditt system. Kanske är syslog inte installerat, eller en nyare version som syslog-ng används, eller <a href='$2'>modulkonfiguration</a> är felaktig.
+index_socket=Unix socket-fil $1 
+index_cmd=Utgång från $1 
+index_viewfile=Visa loggfil:
+index_viewok=Se
+
+restart_ecannot=Du får inte starta om syslog
+
+start_ecannot=Du får inte starta syslog
+edit_socket=Unix-domänfack
+edit_return=logga detaljer
+edit_ecannot=Du får inte redigera logginställningar
+edit_ecannot2=Du får inte redigera den här loggen
+
+view_filter=Visa bara rader med text $1 
+
+save_esocket=Saknad eller ogiltig unix-domänuttag
+save_ecannot1=Du får inte ta bort den här loggen
+save_ecannot2=Du får inte se denna logg
+save_ecannot3=Du får inte skapa en logg med den här destinationen
+save_ecannot4=Du får inte spara en logg med den här destinationen
+save_ecannot5=Du får inte ändra denna logg
+save_ecannot6=Du får inte se godtyckliga loggar
+save_ecannot7=Du får inte se den här extra loggen
+save_emissing=Saknad loggfil för att visa
+
+log_start=Startade loggningsserver
+
+acl_noedit=Kan bara visa loggar?
+acl_any=Kan du se vilken fil som helst som en logg?
+acl_logs=Kan visa och konfigurera loggfiler
+acl_all=Alla loggar
+acl_sel=Endast listade filer och de under listade kataloger ..
+acl_extra=Extra loggfiler för den här användaren
+acl_syslog=Kan du se loggar från syslog?
+acl_others=Kan visa loggar från andra moduler?

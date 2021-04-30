@@ -9,12 +9,14 @@ do 'at-lib.pl';
 sub backup_config_files
 {
 my @rv;
-opendir(my $DIR, $config{'at_dir'});
-while(my $f = readdir($DIR)) {
-	next if ($f eq "." || $f eq ".." || $f eq ".SEQ");
-	if (!-d "$config{'at_dir'}/$f") {
-		push(@rv, "$config{'at_dir'}/$f");
+if (opendir(my $DIR, $config{'at_dir'})) {
+	while(my $f = readdir($DIR)) {
+		next if ($f eq "." || $f eq ".." || $f eq ".SEQ");
+		if (!-d "$config{'at_dir'}/$f") {
+			push(@rv, "$config{'at_dir'}/$f");
+			}
 		}
+	closedir($DIR);
 	}
 return @rv;
 }

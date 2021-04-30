@@ -1,0 +1,15 @@
+index_test=Stačí ukázať, čo sa obnoví?
+
+edit_header2=Príkazy na zálohovanie vopred a po ňom
+edit_header3=Plán zálohovania
+edit_other2=Ostatné súbory na obnovenie
+edit_pre=Príkaz predbežného zálohovania
+edit_post=Príkaz po zálohe
+
+restore_emods=Nie sú vybrané žiadne moduly ani iné súbory
+restore_testing=Extrahuje sa obsah zálohy z $1 ..
+restore_done2=.. súbory v zálohe sú :
+
+email_pre=Spúšťa sa príkaz na zálohovanie $1 ..
+email_post=Spúšťa sa príkaz na zálohovanie $1 ..
+email_prefailed=Príkaz na predbežné zálohovanie zlyhal!

@@ -1,0 +1,20 @@
+edit_mins=Minute
+edit_hours=Ure
+edit_days=dae
+edit_months=maande
+edit_weekdays=weeksdae
+edit_all=Almal
+edit_selected=Geselekteer ..
+edit_run=Begin nou
+edit_clone=Kloon Job
+edit_return=cron job
+edit_special1=Eenvoudige skedule ..
+edit_special0=Tye en datums hieronder gekies ..
+edit_special_hourly=uurlikse
+edit_special_daily=Daagliks (om middernag)
+edit_special_weekly=Weekliks (op Sondag)
+edit_special_monthly=Maandeliks (op die 1ste)
+edit_special_yearly=Jaarliks (op 1 Januarie)
+
+log_success=<tt>$2</tt> in <tt>$1</tt> suksesvol geloop
+log_failure=Kon nie <tt>$2</tt> in <tt>$1</tt> voer nie : $3 

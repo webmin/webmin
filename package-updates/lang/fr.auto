@@ -1,0 +1,34 @@
+index_manynew=Il existe $1 packages disponibles pour l'installation. Utilisez le champ de recherche pour trouver ceux que vous souhaitez installer.
+index_tabpkgs=Mises à jour du package
+index_tabscheds=Mises à niveau planifiées
+index_tabsrepos=Référentiels de packages
+index_scheddesc=Ce formulaire peut être utilisé pour installer automatiquement les mises à jour de packages à intervalles réguliers.
+index_reposdesc=Cette page vous permet de configurer les dépôts qui seront utilisés pour les packages nouveaux ou mis à jour.
+index_reposname=Nom du référentiel
+index_reposenabled=Activée?
+index_reposurl=URL du package
+index_reposdisable=Désactiver les référentiels
+index_reposenable=Activer les référentiels
+index_reposdelete=Supprimer les référentiels
+index_repoheader=Nouvelles options de référentiel de packages
+
+update_title2=Installer des packages
+update_enone=Aucun forfait sélectionné
+
+log_enable_repos=Référentiels de packages $1 activés
+log_disable_repos=Référentiels de packages $1 désactivés
+log_delete_repos=Référentiels de packages $1 supprimés
+log_enable_repo=Référentiel de packages activé $1 
+log_disable_repo=Référentiel de packages désactivé $1 
+log_delete_repo=Référentiel de packages supprimé $1 
+log_create_repo=Référentiel de packages créé $1 
+
+repos_err_disable=Impossible de désactiver les référentiels
+repos_err_enable=Impossible d'activer les référentiels
+repos_err_delete=Impossible de supprimer les référentiels
+repos_err_create=Impossible de créer le référentiel
+repos_ebutton=Aucun bouton cliqué!
+repos_enone=Aucune sélection
+repos_title=Supprimer les référentiels
+repos_rusure=Voulez-vous vraiment supprimer les référentiels de packages $1 sélectionnés? Les packages installés à partir d'eux seront toujours disponibles, mais ne pourront pas être mis à jour.
+repos_ok=Effacer maintenant

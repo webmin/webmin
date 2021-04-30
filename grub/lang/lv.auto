@@ -1,0 +1,75 @@
+index_title=GRUB Bagāžnieks
+index_add=Pievienojiet jaunu sāknēšanas opciju.
+index_global=Rediģēt globālās iespējas
+index_globalmsg=Rediģējiet globālās sāknēšanas opcijas, kas attiecas uz visām sāknēšanas izvēlnes izvēlēm, un izvēlieties ierīci, kurā GRUB ir instalēts.
+index_install=Instalējiet GRUB
+index_installmsg=Instalējiet GRUB sāknēšanas ielādētāju vietnē $1, lai sāknēšanas laikā parādītu iepriekš minētās opcijas. Tas ignorēs visus esošos sāknēšanas ielādētājus, piemēram, LILO, un var padarīt jūsu sistēmu bez sāknēšanas!
+index_none=Nav definētas sāknēšanas opcijas. Pirms grub instalēšanas noteikti pievienojiet vismaz vienu.
+index_efile=GRUB izvēlnes fails $1 jūsu sistēmā netika atrasts. Varbūt GRUB nav instalēts, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_epath=GRUB izpildāmais $1 jūsu sistēmā netika atrasts. Varbūt GRUB nav instalēts, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_return=iespēju saraksts
+
+title_add=Pievienojiet sāknēšanas opciju
+title_edit=Rediģēt sāknēšanas opciju
+title_header=Sāknēšanas izvēlnes opcijas informācija
+title_title=Opcijas nosaukums
+title_root=Sāknēšanas attēla nodalījums
+title_noverify=Neuzstādiet un nepārbaudiet nodalījumu
+title_other=Cits ierīces fails
+title_sel=Atlasīts
+title_boot=Operētājsistēma sāknēšanai
+title_kernel=Kodols
+title_kfile=Ceļš uz kodolu
+title_args=Kodolu iespējas
+title_initrd=Sākotnējais ramdisk fails
+title_modules=Papildu moduļi
+title_chain=Citas OS
+title_chain_def=Sākot ar pirmo nodalījuma sektoru
+title_chain_file=No ķēdes ielādētāja faila
+title_makeactive=Vai padarīt saknes nodalījumu aktīvu?
+title_none1=Nav
+title_none2=(izvēlnes ieraksts, kas netiek sāknēts)
+title_err=Neizdevās saglabāt sāknēšanas opciju
+title_etitle=Trūkst opcijas nosaukuma
+title_eroot=Trūkst saknes nodalījuma
+title_ekernel=Trūkst vai nav derīgs kodola ceļš
+title_echain=Trūkst vai nav derīgs ķēdes ielādes fails
+title_edev=Neatbalstīta saknes nodalījuma ierīce $1 
+title_einitrd=Trūkst sākotnējā ramdisk faila nosaukuma
+title_lock=Parole ir bloķēta?
+
+global_title=Globālās iespējas
+global_header=Globālās sāknēšanas izvēlnes opcijas
+global_default=Noklusējuma sāknēšanas opcija
+global_fallback=Fallback boot opcija
+global_first=Pirmais sarakstā
+global_timeout=Taimauts pirms noklusējuma ielādēšanas
+global_forever=Gaidiet mūžīgi
+global_secs=sekundes
+global_install=Instalējiet GRUB uz diska/nodalījuma
+global_sel=Atlasīts
+global_other=Cits
+global_password=Sāknēšanas parole
+global_none=Nav
+global_password_file=Izmantojiet izvēlnes failu, ja ir ievadīta parole:
+global_err=Neizdevās saglabāt globālās iespējas
+global_etimeout=Trūkst vai nav derīgs taimauts
+global_edev=Neatbalstīts instalēšanas disks/nodalījums $1 
+global_eother=Trūkst vai nav derīgs disks/nodalījums
+global_epassword=Trūkst vai nav derīga sāknēšanas parole
+global_epasswordfile=Trūkst alternatīvās izvēlnes faila nosaukuma
+
+install_title=Instalējiet GRUB
+install_err=Neizdevās instalēt GRUB
+install_efind=Nevarēju atrast izvēlnes failu
+install_desc=GRUB instalēšana $1 ar komandām $2 un $3.
+install_ok=.. instalēšana pabeigta.
+install_failed=.. instalēšana neizdevās!
+
+log_create_title=Izveidota sāknēšanas opcija $1 
+log_delete_title=Dzēsta sāknēšanas opcija $1 
+log_modify_title=Modificēta sāknēšanas opcija $1 
+log_up_title=Pārvietota augšupielādes opcija $1 
+log_down_title=Pārvietota sāknēšanas opcija $1 
+log_global=Mainītas globālās iespējas
+log_install=Instalēta GRUB

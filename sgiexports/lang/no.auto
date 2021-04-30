@@ -1,0 +1,39 @@
+index_title=NFS Eksport
+index_add=Legg til en ny NFS-eksport
+index_dir=Directory
+index_hosts=Tillatte verter
+index_all=Alle verter
+index_none=Det er ikke definert noen NFS-eksport ennå.
+index_apply=Bruk konfigurasjon
+index_applydesc=Klikk på denne knappen for å gjøre alle eksportene oppført ovenfor med de konfigurerte alternativene.
+index_return=eksportliste
+
+edit_title1=Lag eksport
+edit_title2=Rediger eksport
+edit_header=Eksporter detaljer
+edit_dir=Katalog som skal eksporteres
+edit_hosts=Eksporter til verter/netgrupper
+edit_ro=Read-only?
+edit_wsync=Synkronisere etter skriver?
+edit_anon=Root-brukertillatelser
+edit_anon1=Standard (behandle som <tt>ingen</tt>)
+edit_anon2=Nekte adgang
+edit_anon0=Behandle som bruker
+edit_rw=Lese/skrive tilgang
+edit_root=Rotfiltilgang
+edit_access=Monter tilgang
+edit_all=Alle verter
+edit_sel=Oppførte verter ..
+edit_none=Ingen verter
+
+save_err=Kunne ikke lagre eksporten
+save_edir=Manglende eller ikke-eksisterende katalog for eksport
+save_eanon=Manglende eller ugyldig rotbruker
+save_erw=Ingen lese-skriv verter angitt
+save_eroot=Ingen rotfiltilgangsverter er angitt
+save_eaccess=Ingen angitte verter for monteringstilgang
+
+log_create_export=Opprettet eksport av $1 
+log_delete_export=Slettet eksport av $1 
+log_modify_export=Endret eksport av $1 
+log_apply=Anvendt konfigurasjon

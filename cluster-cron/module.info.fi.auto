@@ -1,0 +1,3 @@
+desc_fi=Cluster Cron -työt
+desc_de_fi=Cluster Cron-Jobs
+longdesc_fi=Luo ajoitettuja Cron-töitä, jotka toimivat useilla palvelimilla samanaikaisesti.

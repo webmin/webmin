@@ -1,0 +1,52 @@
+index_title=NFS eksportas
+index_add=Pridėti naują eksportą.
+index_dirs=Katalogai
+index_clients=Klientai
+index_everyone=Visi
+index_none=Dar nėra apibrėžtas eksportas.
+index_delete=Ištrinti pasirinktus eksportus
+index_apply=Taikyti pakeitimus
+index_applydesc=Spustelėkite šį mygtuką, kad pritaikytumėte dabartinę failų eksporto konfigūraciją. Tai leis visus aukščiau išvardytus katalogus pasiekti su nurodytomis parinktimis.
+index_return=eksporto sąrašas
+index_echeck=NFS serverio negalima naudoti šioje sistemoje : $1 
+
+check_ecmd=NFS serverio komanda $1 neįdiegta
+
+delete_err=Nepavyko ištrinti eksporto
+delete_enone=Nepasirinkta
+
+edit_title1=Redaguoti eksportą
+edit_title2=Sukurti eksportą
+edit_header1=Eksporto parinktys
+edit_dirs=Eksportuojami katalogai
+edit_alldirs=Eksportuoti pakatalogius?
+edit_ro=Tik skaitymui?
+edit_kerb=Naudoti Kerberos?
+edit_header2=Nuotolinis vartotojo žemėlapis
+edit_maproot=Žemėlapio pagrindinio vartotojo žemėlapis su
+edit_mapusers=Žemėlapį visiems vartotojams
+edit_unpriv=Neprivalomas vartotojas
+edit_uid=Vartotojas / UID
+edit_gids=Ir grupės / GID
+edit_mapall=Žemėlapį visiems vartotojams
+edit_header3=Šio eksporto klientai
+edit_clients=Klientai
+edit_hosts=Šeimininkai / tinklo grupės
+edit_network=Tinklas
+edit_mask=Kaukė
+
+save_err=Nepavyko išsaugoti eksporto
+save_edir=„$1“ nėra katalogas arba jo nėra
+save_enone=Norėdami eksportuoti, turite įvesti bent vieną katalogą
+save_esub=Galima pasirinkti tik vieną katalogą, jei pasirinkta parinktis <b>eksportuoti pakatalogius</b>
+save_eroot=Kai naudojate parinktį <b>eksportuoti pakatalogius</b>, eksportuotas katalogas turi būti <i>vietinės</i> failų sistemos šaknis.
+save_euser=„$1“ nėra teisingas vartotojas arba UID
+save_egroup=„$1“ nėra tinkama grupė ar GID
+save_ekerb=Žemėlapio šaknies vartotojai, žemėlapis visiems vartotojams ir „Kerberos“ parinktys yra viena nuo kitos nesuderinamos
+save_ehosts=Turite įvesti bent vieną pagrindinį kompiuterį, į kurį norite eksportuoti
+save_enetwork=„$1“ nėra tinkamas tinklas
+save_enetmask=„$1“ nėra tinkamas tinklo maskavimas
+save_esame1=Katalogas <tt>$1</tt> jau eksportuojamas į <tt>$2</tt>. Jūsų operacinė sistema neleidžia eksportuoti katalogų toje pačioje <i>vietinėje</i> failų sistemoje į tą patį pagrindinį kompiuterį atskirai
+save_esame2=Katalogas <tt>$1</tt> jau eksportuojamas į <tt>$2</tt>. Jūsų operacinė sistema neleidžia eksportuoti katalogų toje pačioje <i>vietinėje</i> failų sistemoje į tą patį tinklą atskirai
+
+restart_err=Nepavyko pritaikyti pakeitimų

@@ -1,34 +1,34 @@
 <header>Usuaris i Classes</header>
 
-El servidor FTP WU permet classificar els usuaris basant-se en l'adreÁa
+El servidor FTP WU permet classificar els usuaris basant-se en l'adre√ßa
 des de la qual es connecten i el seu tipus d'usuari. Els tres tipus
-d'usuari sÛn:
+d'usuari s√≥n:
 <ul>
 <li><b>Unix</b> - Usuaris normals del teu sistema.
 <li><b>Convidat</b> - Usuaris Unix classificats com a convidats.
-<li><b>AnÚnim</b> - Entrades amb usuari <tt>anonymous</tt> o <tt>ftp</tt>,
-si est‡ permËs al sistema.
+<li><b>An√≤nim</b> - Entrades amb usuari <tt>anonymous</tt> o <tt>ftp</tt>,
+si est√† perm√®s al sistema.
 </ul>
 <p>
 
-La secciÛ superior d'aquesta p‡gina permet definir classes, basant-se en
-el tipus d'usuari i l'adreÁa font. Cada entrada es classifica dins de la
-primera classe que coincideixi, aixÌ que les classes s'haurien d'ordenar
-de la mÈs especÌfica a la mÈs general. Les adreces coincidents de cada
-classe poden ser adreces IP completes o parcials, xarxes/m‡scares IP,
-noms de host, escarrassos (com <tt>*.foo.com</tt>), o bÈ el camÌ absolut
+La secci√≥ superior d'aquesta p√†gina permet definir classes, basant-se en
+el tipus d'usuari i l'adre√ßa font. Cada entrada es classifica dins de la
+primera classe que coincideixi, aix√≠ que les classes s'haurien d'ordenar
+de la m√©s espec√≠fica a la m√©s general. Les adreces coincidents de cada
+classe poden ser adreces IP completes o parcials, xarxes/m√†scares IP,
+noms de host, escarrassos (com <tt>*.foo.com</tt>), o b√© el cam√≠ absolut
 dels fitxers que contenen les adreces addicionals. Totes les adreces es
 poden precedir amb un " per negar-les.
 <p>
 
-La secciÛ del mig d'aquesta p‡gina permet controlar quins usuaris Unix
-s'han de classificar com a convidats. Un usuari convidat tÈ drets
-similars a u Usuari Unix corrent, perÚ est‡ restringit a un cert directori
+La secci√≥ del mig d'aquesta p√†gina permet controlar quins usuaris Unix
+s'han de classificar com a convidats. Un usuari convidat t√© drets
+similars a u Usuari Unix corrent, per√≤ est√† restringit a un cert directori
 utilitzant <tt>chroot</tt>.
 <p>
 
-La secciÛ inferior de la p‡gina controla quins usuaris Unix i usuaris
-convidats tindran l'accÈs denegat al servidor FTP. Pots especificar els
+La secci√≥ inferior de la p√†gina controla quins usuaris Unix i usuaris
+convidats tindran l'acc√©s denegat al servidor FTP. Pots especificar els
 usuaris per nom, per GID (com  <tt>%3000</tt>) o rang de GIDs (com 
 <tt>%3000-3010</tt>).
 <p>

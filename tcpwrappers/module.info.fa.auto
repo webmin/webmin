@@ -1,0 +1,3 @@
+desc_fa=بسته بندی TCP
+longdesc_fa=پرونده های کنترل كننده دسترسی به شبكه های TCP را پیكربندی كنید
+name_fa=tcpwrappers

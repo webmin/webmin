@@ -1,0 +1,405 @@
+index_title=QMail-postipalvelin
+index_edir=QMail-kantahakemistoa $1 ei ole. Ehkä QMailia ei ole asennettu tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
+index_edir2=Hakemisto $1 ei näytä olevan QMail-pohjahakemisto. Ehkä QMailia ei ole asennettu tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
+index_return=QMail-asetukset
+index_stop=Pysäytä QMail-prosessit
+index_stopmsg=Napsauta tätä painiketta, jos haluat pysäyttää jonossa olevan postin toimittamisesta vastaavat QMail-taustaprosessit. Ilman näitä prosesseja postia ei lähetetä tai toimiteta järjestelmästä oikein.
+index_start=Käynnistä QMail-prosessit
+index_startmsg=Napsauta tätä painiketta, jos haluat käynnistää taustalla olevat QMail-prosessit, jotka vastaavat jonotetun postin toimittamisesta. Ilman näitä prosesseja postia ei lähetetä tai toimiteta järjestelmästä oikein.
+
+opts_title=QMail-asetukset
+opts_me=Paikallinen isäntänimi
+opts_helo=Isäntänimi SMTP HELO: lle
+opts_toconnect=SMTP-yhteyden aikakatkaisu
+opts_secs=sekuntia
+opts_toremote=SMTP lähtevän vastauksen aikakatkaisu
+opts_bytes=Viestin enimmäiskoko
+opts_unlimited=Rajoittamaton
+opts_timeout=Saapuvien tietojen SMTP-aikakatkaisu
+opts_localip=Isäntänimi sähköpostiin paikalliselle IP-osoitteelle
+opts_greet=SMTP-tervehdysviesti
+opts_err=QMail-asetusten tallentaminen epäonnistui
+opts_eme=Virheellinen paikallinen isäntänimi
+opts_etoconnect=Virheellinen SMTP-yhteyden aikakatkaisu
+opts_etoremote=Virheellinen SMTP-lähtevän vastauksen aikakatkaisu
+opts_ebytes=Virheellinen viestin enimmäiskoko
+opts_etimeout=Virheellinen saapuvan SMTP-tiedon aikakatkaisu
+opts_elocalip=Virheellinen paikallisen IP-osoitteen isäntänimi
+
+aliases_title=Postin aliakset
+aliases_addr=Osoite
+aliases_to=Alias to ..
+aliases_type1=Osoite 1
+aliases_type2=Postihakemisto $1 
+aliases_type3=Postitiedosto $1 
+aliases_type4=Ohjelma $1 
+aliases_type5=Vastaa tiedosto $1 
+aliases_type6=Käytä suodatustiedostoa $1 
+aliases_none=Ei mitään
+aliases_return=alias luettelo
+aliases_toomany=Järjestelmässäsi on liian monta postin aliaksia, jotta sitä voidaan näyttää tällä sivulla.
+aliases_go=Etsi aliakset, jotka vastaavat:
+aliases_delete=Poista valitut aliakset
+
+aform_type0=Ei mitään
+aform_type1=Sähköpostiosoite
+aform_type2=Postihakemisto
+aform_type3=Postitiedosto
+aform_type4=Syötä ohjelmalle
+aform_type5=Automaattinen vastaus tiedostosta
+aform_type6=Käytä suodatustiedostoa
+aform_edit=Muokkaa aliasta
+aform_create=Luo alias
+aform_name=Osoite
+aform_val=Alias
+aform_afile=Muokata ..
+aform_novirt=&lt;Kaikki verkkotunnukset&gt;
+aform_return=alias
+
+asave_err=Aliaksen tallentaminen epäonnistui
+asave_eaddr='$1' ei ole kelvollinen osoite
+asave_ealready=Alias nimelle '$1' on jo olemassa
+asave_etype1='$1' ei ole kelvollinen sähköpostiosoite
+asave_etype2='$1' ei ole kelvollinen postihakemisto
+asave_etype3='$1' ei ole kelvollinen postitiedostonimi
+asave_etype4='$1' ei ole kelvollinen ohjelma tai sitä ei ole olemassa
+asave_etype5=Automaattivastaustiedosto '$1' ei kelpaa
+asave_etype4none=Ohjelmaa ei ole annettu
+asave_etype6=Suodata tiedosto '$1' ei kelpaa
+
+adelete_err=Aliasten poistaminen epäonnistui
+adelete_enone=Mitään ei ole valittu
+
+locals_title=Paikalliset verkkotunnukset
+locals_domains=Tämän palvelimen paikalliset verkkotunnukset
+locals_desc=Qmail hyväksyy toimituksen paikallisille käyttäjille sähköpostitse vasemmalla olevassa tekstiruudussa luetelluille verkkotunnuksille ja isäntänimille. Jos haluat, että postipalvelimesi käsittelee useita sähköpostiverkkotunnuksia, niiden kaikkien tulee olla tässä lomakkeessa.
+locals_only=Vain paikallinen isäntänimi $1 
+locals_sel=Alla luetellut alueet ..
+
+rcpts_title=Hyväksytyt verkkotunnukset
+rcpts_domains=Hyväksytyt paikalliset ja välitysdomeenit
+rcpts_all=Mikä tahansa verkkotunnus
+rcpts_sel=Alla luetellut alueet ..
+rcpts_desc=Qmail hyväksyy välittämisen tai paikallisen jakelun vain sähköpostit vasemmalla olevassa tekstiruudussa luetelluille verkkotunnuksille ja isäntänimille. Voit myös kirjoittaa jokerimerkkejä, jotka vastaavat kaikkia verkkotunnuksen, kuten <tt>.foo.com</tt>, isäntiä. Jos haluat, että postipalvelimesi välittää sähköpostia asiakkaille, sinun on hyväksyttävä postit mistä tahansa verkkotunnuksesta.
+rcpts_domains2=Muita paikallisia ja välitysdomeeneja
+rcpts_desc2=Jos sinulla on suuri määrä hyväksyttyjä verkkotunnuksia, harvemmin käytetyt verkkotunnukset tulisi kirjoittaa tähän tekstiruutuun. Yleensä 50 ensimmäistä sallittua verkkotunnustasi tulee kirjoittaa ylempään tekstikenttään ja loput tähän.
+
+bads_title=Hylätyt osoitteet
+bads_addresses=Hylätyt sähköpostiosoitteet
+bads_desc=QMail hylkää postin toimittamiseksi tai välittämiseksi mistä tahansa vasemmalla olevassa tekstikenttään luetellusta osoitteesta, jotka on annettava nimellä <tt>käyttäjänimi @ verkkotunnus</tt>. Jos haluat hylätä postin kokonaan verkkotunnuksesta, se tulee kirjoittaa nimellä <tt>@domainname</tt>.
+
+routes_title=Verkkotunnuksen reititys
+routes_toomany=Järjestelmässäsi on liian monta verkkotunnusreittiä, jotta sitä voidaan näyttää tällä sivulla.
+routes_go=Etsi verkkotunnuksen reittejä, jotka vastaavat:
+routes_from=Sähköposti verkkotunnukselle
+routes_to=Lähetä palvelimen kautta
+routes_direct=Toimita suoraan
+routes_defroute=Toimita kaikki muut lähtevät postit:
+routes_return=verkkotunnuksen reitit
+routes_delete=Poista valitut toimialuereitit
+
+rform_edit=Muokkaa verkkotunnuksen reittiä
+rform_create=Luo verkkotunnuksen reitti
+rform_from=Sähköposti isäntälle tai verkkotunnukselle
+rform_to=Lähetä SMTP-palvelimen kautta
+rform_port=SMTP-portti
+
+rsave_err=Verkkotunnuksen reitin tallentaminen epäonnistui
+rsave_efrom='$1' ei ole kelvollinen verkkotunnus
+rsave_eto='$1' ei ole kelvollinen SMTP-palvelin
+rsave_eport='$1' ei ole kelvollinen porttinumero
+
+rdelete_err=Verkkotunnuksen reittien poistaminen epäonnistui
+
+percents_title=% Osoitealueita
+percents_domains=Verkkotunnukset, jotka tukevat % osoitteita
+percents_desc=QMail hyväksyy sähköpostit, joiden osoitteet ovat muodossa <tt>user%firstdomain@seconddomain</tt>, jos <tt>seconddomain</tt> on lueteltu vasemmalla olevaan tekstikenttään. Tämän muotoinen viesti välitetään tämän jälkeen edelleen <tt>user@firstdomain</tt> tälle sähköpostipalvelimelle.
+
+virts_title=Virtuaalikartoitukset
+virts_toomany=Järjestelmässäsi on liian monta virtuaalista kartoitusta, jotta sitä voidaan näyttää tällä sivulla.
+virts_go=Löydä vastaavia virtuaalikartoituksia:
+virts_from=Lähetä sähköpostia
+virts_prepend=Lisää prefiksi
+virts_all=Kaikki osoitteet
+virts_none=Ei virtuaalinen
+virts_desc=QMail käyttää virtuaalisia kartoituksia sähköpostin käsittelemiseen palvelimen eri verkkotunnuksille valmistelemalla tekstiä sähköpostiosoitteen käyttäjäosaan ennen jatkokäsittelyä. Voit käyttää niitä virtuaalisten sähköpostiosoitteiden määrittämiseen luomalla uuden verkkotunnuksen virtuaalikartoituksen ja luomalla sitten aliaksia kyseisellä verkkotunnuksella <a href='$1'>Mail Aliases</a> -sivulla.
+virts_return=virtuaaliset kartoitukset
+virts_delete=Poista valitut virtuaalikartoitukset
+
+vform_edit=Muokkaa virtuaalikartoitusta
+vform_create=Luo virtuaalinen kartoitus
+vform_from=Sähköpostiosoite
+vform_all=Mikä tahansa osoite ei vastaa toista virtuaalikartoitusta
+vform_domain=Osoitteet verkkotunnuksella
+vform_user=Osoite
+vform_to=Lisää käyttäjänimeen
+vform_none=Ei mitään
+vform_prepend=Määritetty etuliite
+vform_auto=Automaattisesti valittu etuliite
+
+vsave_err=Virtuaalikartoituksen tallentaminen epäonnistui
+vsave_edomain='$1' ei ole kelvollinen sähköpostiverkkotunnus
+vsave_euser='$1' ei ole kelvollinen sähköpostin käyttäjänimi
+vsave_eprepend='$1' ei ole kelvollinen kuvausliite
+vsave_eboth=Et voi valita sekä "Mitään osoitetta, joka ei vastaa toista virtuaalikartoitusta" että "Ei mitään"
+
+vdelete_err=Virtuaalikarttojen poistaminen epäonnistui
+
+stop_err=qmail-send-prosessi ei ole enää käynnissä
+
+log_stop=Pysäytetyt QMail-prosessit
+log_start=Käynnistettiin QMail-prosessit
+log_opts=Muutetut QMail-asetukset
+log_alias_create=Luotu alias $1 
+log_alias_delete=Poista alias $1 
+log_alias_modify=Muokattu alias $1 
+log_delete_aliases=Poistettu $1 aliaksia
+log_virt_create=Luotu virtuaalikartoitus $1 
+log_virt_delete=Poistettu virtuaalikartoitus $1 
+log_virt_modify=Muokattu virtuaalikartoitus $1 
+log_delete_virts=Poistettu $1 virtuaalikartoitukset
+log_virtall_create=Luotu catchall-virtuaalikartoitus
+log_virtall_delete=Poistettu catchall-virtuaalikartoitus
+log_virtall_modify=Muokattu catchall-virtuaalikartoitus
+log_locals=Vaihdetut paikalliset verkkotunnukset
+log_rcpts=Muutettu hyväksyttyjä verkkotunnuksia
+log_bads=Vaihdetut hylätyt osoitteet
+log_percents=% Osoitealueita muutettu
+log_route_create=Luotu reitti $1 : lle
+log_route_delete=Poistettu reitti kohteelle $1 
+log_route_modifed=Muokattu reitti kohteelle $1 
+log_delete_routes=Poistettu $1 reittiä
+log_defroute=Muokattu oletusreitti
+log_assign_create=Luotu postin käyttäjä $1 
+log_assign_delete=Poistettu postin käyttäjä $1 
+log_assign_modifed=Muokattu sähköpostin käyttäjä $1 
+log_delete_assigns=Poistettu $1 sähköpostin käyttäjää
+log_delmail=Poistettu $1 viestiä $2 : sta
+log_movemail=Siirretty $1 viestiä $2 : sta $3 : een
+log_send=Lähetetyt postit $1 : lle
+
+rfile_title=Muokkaa automaattisen vastauksen tiedostoa
+rfile_desc=Käytä alla olevaa tekstialuetta muokataksesi automaattivastausviestiä $1 : ssä. Viesti voi sisältää makroja $SUBJECT, $FROM, $TO, $DATE ja $BODY, joita laajennetaan, kun automaattinen vastaus aktivoidaan.
+rfile_desc2=Voit myös asettaa posti otsikot, jotka lisäävät tai korvaavat automaattisessa vastauksessa käytetyt oletusasetukset asettamalla rivit kuten: <br><tt> Lähettäjä: foo@bar.com </tt><br> <tt>Aihe: lomalla</tt> <br> viestin yläosassa, erotettuna rungosta yhdellä tyhjellä rivillä.
+rfile_efile=Sinulla ei ole oikeutta muokata tuotetta $1.
+rfile_undo=Peru muutokset
+rfile_replies=Seurataan vastauksia estääksesi postisilmukoita?
+rfile_none=Ei
+rfile_file=Kyllä, lokitiedoston avulla
+rfile_period=Minimiväli vastausten välillä
+rfile_default=Oletus (1 tunti)
+rfile_secs=sekuntia
+rfile_ereplies=Puuttuu vastauksenseurannan lokitiedosto
+rfile_eperiod=Puuttuva tai virheellinen sekuntimäärä vastausten välillä
+rfile_no_autoreply=Älä lähetä automaattivastauksia
+rfile_from=Lähettäjä: vastausosoite
+rfile_auto=Automaattinen (perustuu vastaanottajan osoitteeseen)
+rfile_efrom=Puuttuu: osoite
+rfile_fromdesc=Alkaen: Osoite on aina määritettävä, kun mahdollista, koska automaattinen menetelmä ei ehkä ole luotettava.
+
+ffile_title=Muokkaa suodatustiedostoa
+ffile_desc=Asenna alla olevan lomakkeen suodatussäännöt tiedostoon $1.
+ffile_efile=Sinulla ei ole oikeutta muokata tuotetta $1.
+ffile_line=Jos $1 -kenttä $2 $3, siirry eteenpäin kohtaan $4 
+ffile_from=alkaen
+ffile_to=että
+ffile_subject=aihe
+ffile_cc=CC
+ffile_body=ruumis
+ffile_what0=ei vastaa
+ffile_what1=Ottelut
+ffile_other=Muutoin eteenpäin $1 : een
+ffile_err=Suodatustiedoston tallentaminen epäonnistui
+ffile_ematch=Puuttuu ottelu
+ffile_eaction=Puuttuva edelleenlähetysosoite
+
+queue_title=Postijono
+queue_count=$1 viestiä
+queue_none=Ei postitusviestejä ole tällä hetkellä jonossa toimitusta varten
+queue_id=Postin tunnus
+queue_date=Lähetetyt
+queue_from=alkaen
+queue_to=jotta
+queue_cc=cc
+queue_subject=aihe
+queue_return=postijono
+queue_delete=Poista valitut viestit
+queue_all=Valitse kaikki
+queue_invert=Käänteinen valinta
+queue_refresh=Päivitä postijono
+queue_refreshdesc=Lataa tämä sivu uudelleen, jos haluat nähdä postijonon nykyisen tilan.
+
+qview_title=Jonossa oleva viesti
+qview_desc=Tiedostosta $1 
+qview_headers=Postin otsikot
+qview_attach=Liitteet
+
+assigns_title=Postin käyttäjän tehtävät
+assigns_return=sähköpostin käyttäjän tehtävät
+assigns_toomany=Järjestelmässäsi on liian monta sähköpostin käyttäjää näkyäkseen tällä sivulla.
+assigns_go=Löydä vastaavia sähköpostin käyttäjiä:
+assigns_address=Sähköpostiosoitteeseen
+assigns_user=Unix-käyttäjä
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=Kotihakemisto
+assigns_desc=Mail-käyttäjän tehtävät antavat sinun luoda postilaatikoita käyttäjille, joita ei ole määritelty Unix-käyttäjäluettelossa. Jokainen tehtävä luovuttaa postin valitulle käyttäjätunnukselle tai käyttäjänimelle, ikään kuin se olisi toimitettu oikean Unix-käyttäjän postilaatikkoon.
+assigns_delete=Poista valitut sähköpostin käyttäjät
+
+sform_edit=Muokkaa sähköpostin käyttäjää
+sform_create=Luo sähköpostin käyttäjä
+sform_address=Osoitteen käyttäjänimi
+sform_mode0=Tarkka käyttäjänimi
+sform_mode1=Käyttäjätunnukset alkavat
+sform_user=Unix-käyttäjä
+sform_uid=UID
+sform_gid=GID
+sform_home=Kotihakemisto
+
+ssave_err=Sähköpostin käyttäjän tallentaminen epäonnistui
+ssave_eaddress=Puuttuva tai virheellinen osoitteen käyttäjänimi
+ssave_euser=Puuttuva tai virheellinen Unix-käyttäjä
+ssave_euid=Puuttuva tai virheellinen UID
+ssave_egid=Puuttuva tai virheellinen GID
+ssave_ehome=Puuttuva tai virheellinen kotihakemisto
+
+sdelete_err=Sähköpostin käyttäjien poistaminen epäonnistui
+
+delete_egone=Jonossa oleva viesti ei ole enää olemassa
+delete_ebogus=Virheellinen jonotiedostonimi
+
+boxes_title=Käyttäjän postilaatikot
+boxes_user=käyttäjä
+boxes_size=Postilaatikon koko
+boxes_none=Ei postia
+boxes_return=postilaatikot
+boxes_sent=Lähetetty posti
+boxes_ecannot=Et saa lukea sähköpostia
+boxes_toomany=Järjestelmässäsi on liian monta käyttäjää luetteloimaan kaikki heidän postilaatikkonsa.
+boxes_go=Näytä käyttäjän posti:
+
+mail_title=Käyttäjän sähköposti
+mail_from=alkaen
+mail_date=Päivämäärä
+mail_subject=aihe
+mail_to=jotta
+mail_cc=cc
+mail_bcc=bcc
+mail_pri=prioriteetti
+mail_highest=Korkein
+mail_high=Korkea
+mail_normal=normaali
+mail_low=Matala
+mail_lowest=alin
+mail_for=Kohdassa 1
+mail_for2=Käyttäjälle $1 
+mail_sent=Lähetettyjen postituslistalla
+mail_size=Koko
+mail_delete=Poistaa
+mail_compose=Säveltää
+mail_return=käyttäjän postilaatikko
+mail_pos=Viestit $1 - $2 / $3 
+mail_none=Tässä postilaatikossa ei ole viestejä
+mail_ecannot=Et voi lukea tämän käyttäjän sähköpostia
+mail_all=Valitse kaikki
+mail_invert=Käänteinen valinta
+mail_search=Etsi viestejä missä
+mail_body=ruumis
+mail_match=Ottelut
+mail_ok=Hae
+mail_nonefrom=Ei mitään
+mail_mark=Merkitse:
+mail_mark0=Lukemattomat
+mail_mark1=Lukea
+mail_mark2=erityinen
+mail_forward=Eteenpäin
+mail_rfc=Linjalta
+mail_move=Muuttaa:
+mail_eexists=Viestiä ei enää ole!
+
+view_title=Lue sähköposti
+view_desc=Viesti $1 $2 : ssa
+view_desc2=Viesti $1 käyttäjälle $2 
+view_desc3=Viesti $1 
+view_sent=Viesti $1 lähetetyn postin luettelossa
+view_qdesc=Jonossa oleva viesti $1 
+view_headers=Postin otsikot
+view_allheaders=Näytä kaikki otsikot
+view_noheaders=Näytä perusotsikot
+view_attach=Liitteet
+view_reply=Vastaa
+view_reply2=Vastaa kaikille
+view_enew=Muokkaa uutena
+view_forward=Eteenpäin
+view_delete=Poistaa
+view_strip=Poista liitteet
+view_ecannot=Et voi lukea tämän käyttäjän sähköpostia
+view_mark=Merkitse viesti:
+view_mark0=Lukemattomat
+view_mark1=Lukea
+view_mark2=erityinen
+view_return=alkuperäinen sähköposti
+view_sub=Liitetty sähköposti
+
+compose_title=Kirjoita sähköposti
+reply_title=Vastaa sähköpostiin
+forward_title=Lähetä edelleen
+enew_title=Muokkaa sähköpostia
+reply_headers=Postin otsikot
+reply_attach=Välitetyt liitteet
+reply_mailforward=Välitetyt viestit
+reply_attach2=Asiakas- ja palvelinpuolen liitteet
+reply_send=Lähetä postia
+reply_ecannot=Sinulla ei ole oikeutta lähettää postia tällä käyttäjällä
+
+send_err=Postin lähettäminen epäonnistui
+send_eto=Puuttuu osoite
+send_efrom=Puuttuu osoitteesta
+send_title=Posti lähetetty
+send_ok=Postin lähettäminen onnistuneesti osoitteeseen $1 
+send_ecannot=Sinulla ei ole oikeutta lähettää postia tällä käyttäjällä
+send_esmtp=SMTP-komento $1 epäonnistui : $2 
+send_efile=Liitetiedostoa $1 ei ole
+send_eattach=Liitteiden koko voi olla enintään $1 kt.
+send_eperms=Käyttäjä $1 ei voi lukea $2 
+send_eperms2=Sinulla ei ole oikeutta lähettää tiedostoa $1 
+send_epath=Sendmail-suoritettavaa $1 ei ole olemassa.
+
+delete_title=Poista viesti
+delete_rusure=Haluatko varmasti poistaa valitut $1 viestit kohdasta $2 ? Tämä voi viedä jonkin aikaa suuren postitiedoston luomiseen. Muita toimia ei pidä suorittaa, ennen kuin poisto on päättynyt.
+delete_rusure2=Haluatko varmasti poistaa tämän viestin kohdasta $1 ? Tämä voi viedä jonkin aikaa suuren postitiedoston luomiseen. Muita toimia ei pidä suorittaa, ennen kuin poisto on päättynyt.
+delete_ok=Poista nyt
+delete_ecannot=Sinulla on nyt oikeus poistaa tämän käyttäjän viestit
+delete_enone=Poistettavaa postia ei ole valittu
+delete_emnone=Ei merkintää valittu postia
+delete_nobutton=Yhtään painiketta ei napsautettu
+
+search_title=Hakutulokset
+search_ecannot=Et voi tehdä hakuja tämän käyttäjän sähköpostista
+search_ematch=Sinun on kirjoitettava teksti, jota haluat verrata.
+search_efield=Sinun on valittava hakutyyppi.
+search_none=Viestejä ei löytynyt.
+search_results2=$1 viestiä, jotka vastaavat $2 ..
+search_results3=$1 sähköpostiviestiä, joka ei vastaa $2 ..
+
+match_from=Alkaen: ottelut
+match_subject=Aihe: ottelut
+match_to=Vastaanottaja: ottelut
+match_cc=Kopio: vastaa
+match_date=Päivämäärä: ottelut
+match_body=Rungon ottelut
+match_size=Koko on suurempi kuin
+match_headers=Otsikot vastaavat
+match_=-----------------
+match_!from=Alkaen: ei vastaa
+match_!subject=Aihe: ei vastaa
+match_!to=Vastaanottaja: ei vastaa
+match_!cc=Kopio: ei vastaa
+match_!date=Päivämäärä: ei vastaa
+match_!body=Runko ei vastaa
+match_!size=Koko on alle
+match_!headers=Otsikot eivät täsmää
+
+delq_titles=Viestien poistaminen
+delq_rusure=Haluatko varmasti poistaa valitut jonossa olevat $1 viestit?
+delq_confirm=Poista viestit

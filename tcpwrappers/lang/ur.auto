@@ -1,0 +1,33 @@
+index_title=ٹی سی پی ریپرس
+index_return=انڈیکس
+index_allowtitle=اجازت شدہ میزبان
+index_denytitle=مسترد کردہ میزبان
+index_norule=No rules have been defined in <tt>$1</tt> yet.
+index_nofile=File '$1' doesn't exist - check your <a href="/config.cgi?tcpwrappers">module configuration</a>
+index_add=ایک نیا قاعدہ شامل کریں۔
+index_service=ڈیمون
+index_hosts=میزبان
+index_cmd=کمانڈ
+index_delete=منتخب کردہ کو حذف کریں
+index_none=کوئی نہیں
+
+edit_title1allow=اجازت دیں اصول بنائیں
+edit_title2allow=اصول کی اجازت دیں
+edit_title1deny=انکار رول بنائیں
+edit_title2deny=اصول سے انکار کریں
+edit_eid=یہ اصول نہیں ملا تھا
+edit_header=اصول کے اختیارات
+edit_service=خدمات
+edit_except=خدمات کے علاوہ
+edit_hosts=ریموٹ میزبان
+edit_hostsexcept=سوائے میزبانوں کے
+edit_cmd=شیل حکم دیتا ہے
+edit_efound=ڈیمون '$1' xinetd تشکیل میں نہیں مل سکی۔
+
+save_errtitle=بچانے کے اصول میں خرابی
+save_ehost=میزبان ان پٹ میں خراب حرف ہوتے ہیں
+save_ecmd=کمانڈ ان پٹ میں خراب حرف ہوتے ہیں
+save_eservice=ڈیمون ناموں میں خراب حرف ہوتے ہیں
+
+del_errtitle=قواعد کو حذف کرنے میں خرابی
+del_enone=حذف کرنے کے لئے کوئی اصول نشان زد نہیں

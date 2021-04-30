@@ -1,0 +1,58 @@
+index_title=SMART Status Drive
+index_ecmd=Comanda de control SMART $1 nu a fost găsită pe sistemul dvs. sau nu este setată corect în configurația modulului <a href='$2'></a>. Trebuie să fie instalat înainte ca acest modul să poată fi utilizat.
+index_ecmd2=Comanda $1 nu pare a fi comanda de control SMART. Trebuie să fie setat corect în <a href='$2'>configurația modulului</a> înainte de a putea fi utilizat.
+index_version=Versiunea SMARTsuite $1 
+index_show=Afișează starea unității:
+index_ok=Spectacol
+index_eidescsi=Nu s-au găsit unități IDE, SCSI sau SATA în sistemul dvs.
+index_drive=Starea unității $1 
+index_drivesub=Starea unității $1, discul $2 
+index_desc=Locație
+index_size=Dimensiunea unității
+index_model=Marcă și model
+index_support=Suportă SMART?
+index_enabled=SMART activat?
+index_check=Verificați unitatea de control?
+index_short=Autotestare scurtă
+index_ext=Autotest extins
+index_data=Test de colectare a datelor
+index_errors=Erorile înregistrate
+index_ecount=$1 erori detectate
+index_attrs=Atribute SMART suplimentare
+index_raw=Raport complet de stare SMART
+index_return=indexul modulului
+index_family=Familia model
+index_serial=Număr de serie
+index_capacity=Capacitate
+index_norm=normalizată:
+
+monitor_type=Verificare unitate SMART
+monitor_type2=SSD Wearout
+monitor_drive=Conduceți pentru a verifica
+monitor_errors=Verificați și jurnalul de erori?
+monitor_errorsinc=Da, dar alertă doar dacă numărul de erori crește
+monitor_other=Alte ..
+monitor_edrive=Unitatea lipsește sau este nevalidă pentru a verifica
+monitor_nosuch=Nici o astfel de unitate
+monitor_nosmart=Fără suport SMART
+monitor_errorsfound=Raportate erori $1 
+monitor_errorsinced=Erorile au crescut de la $2 la $1 
+monitor_wearlevel=Eșec dacă nivelul de uzură scade sub
+monitor_ewearlevel=Procent procentaj nevalid
+monitor_nowearout=Drive nu raportează un indicator de uzură SSD
+monitor_wornout=Nivelul de uzură a scăzut la $1 
+
+short_title=Autotestare scurtă
+short_doing=Începerea autotestului scurt de $1 ..
+short_failed=.. a eșuat!
+short_ok=.. testul a început OK. Consultați starea unității din pagina principală a modulului pentru rezultate.
+
+ext_title=Autotest extins
+ext_doing=Începerea testării extinse de $1 ..
+ext_failed=.. a eșuat!
+ext_ok=.. testul a început OK. Consultați starea unității din pagina principală a modulului pentru rezultate.
+
+data_title=Test de colectare a datelor
+data_doing=Începând colectarea de date offline pe $1 ..
+data_failed=.. a eșuat!
+data_ok=.. colecția a început OK. Consultați starea unității din pagina principală a modulului pentru rezultate.

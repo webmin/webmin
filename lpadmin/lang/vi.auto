@@ -1,0 +1,316 @@
+index_title=Quản trị máy in
+index_header=Máy in có sẵn
+index_name=Máy in
+index_desc=Sự miêu tả
+index_to=In ra
+index_driver=Người lái xe
+index_enabled=Đã bật?
+index_accepting=Chấp nhận?
+index_jobs=Việc làm
+index_none=Không có máy in được cài đặt trên hệ thống này.
+index_list=Danh sách ..
+index_jlist=Việc làm ..
+index_jcount=$1 việc làm ..
+index_add=Thêm một máy in mới.
+index_stop=Dừng lịch trình
+index_stopmsg=Nhấn vào nút này để dừng quá trình lập lịch in đang chạy. Điều này sẽ ngăn bất kỳ người dùng địa phương hoặc từ xa in trên hệ thống của bạn.
+index_start=Bắt đầu lên lịch
+index_startmsg=Nhấn vào nút này để bắt đầu quá trình lập lịch in. Điều này sẽ cho phép người dùng địa phương và từ xa in trên hệ thống của bạn.
+index_restart=Khởi động lại lịch trình
+index_restartmsg=Nhấn vào nút này để khởi động lại quá trình lập lịch in. Điều này sẽ buộc cấu hình in hiện tại được áp dụng.
+index_return=danh sách máy in
+index_esystem=Cài đặt phần mềm cho hệ thống in bạn đã chọn hoặc sử dụng <a href='$1'>cấu hình mô-đun</a> để thay đổi phần mềm.
+index_style=Hệ thống in: $1 
+index_cluster=Máy chủ cụm
+index_clusterdesc=Nhấp vào nút này để thiết lập các máy chủ Webmin bổ sung mà máy in sẽ được tạo, cập nhật và xóa.
+index_delete=Xóa các máy in đã chọn
+
+style_solaris=Solaris
+style_linux=Linux LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=CUPS
+style_irix=IRIX
+style_aix=AIX
+
+edit_eedit=Bạn không được phép chỉnh sửa máy in này
+edit_eadd=Bạn không được phép thêm máy in
+edit_add=Tạo máy in
+edit_edit=Chỉnh sửa máy in
+edit_conf=Cấu hình máy in
+edit_name=Tên
+edit_acc=Chấp nhận yêu cầu?
+edit_why=Không - Tại sao không
+edit_desc=Sự miêu tả
+edit_ena=Kích hoạt in ấn?
+edit_acl=Kiểm soát truy cập
+edit_allow=Cho phép mọi người
+edit_deny=Từ chối tất cả mọi người
+edit_allowu=Cho phép người dùng được liệt kê ..
+edit_denyu=Từ chối người dùng được liệt kê ..
+edit_banner=In banner?
+edit_opt=Không bắt buộc
+edit_default=In mặc định?
+edit_already=Đã là máy in mặc định
+edit_max=Kích thước công việc in tối đa
+edit_unlimited=Vô hạn
+edit_dacc=Tài xế chấp nhận
+edit_dtext=Bản văn
+edit_dpost=Bản thảo
+edit_dother=Khác
+edit_alt=Tên máy in thay thế
+edit_dest=Điểm đến in
+edit_dev=Thiết bị cục bộ
+edit_file=Tập tin cục bộ
+edit_remote=Máy chủ Unix từ xa
+edit_rqueue=Máy in
+edit_type=Kiểu
+edit_smb=Máy chủ Windows từ xa
+edit_share=Máy in
+edit_user=Người sử dụng
+edit_pass=Mật khẩu
+edit_wgroup=Nhóm làm việc
+edit_hpnp=Máy chủ HPNP từ xa
+edit_port=Hải cảng
+edit_direct=Kết nối TCP trực tiếp
+edit_dport=Hải cảng
+edit_driver=Trình điều khiển máy in
+edit_check=Kiểm tra xem máy chủ từ xa đã lên chưa?
+
+blocks=khối
+
+save_err=Không thể lưu máy in
+save_eadd=Bạn không được phép thêm máy in
+save_eedit=Bạn không được phép chỉnh sửa máy in này
+save_ename='$1' không phải là tên máy in hợp lệ
+save_edup=Một máy in có tên '$1' đã tồn tại
+save_eallow=Không có người dùng cho phép nhập
+save_edeny=Không có người dùng từ chối nhập
+save_euser=Người dùng '$1' không tồn tại
+save_etype=Bạn phải chọn ít nhất một loại để trình điều khiển này chấp nhận
+save_emax=Kích thước lệnh in tối đa phải là số nguyên
+save_efile='$1' không tồn tại
+save_erhost=Máy chủ từ xa '$1' không tồn tại
+save_erport=Cổng từ xa '$1' không hợp lệ
+save_erqueue='$1' không phải là tên hàng đợi từ xa hợp lệ
+save_eremote=Trình điều khiển không thể được sử dụng với máy in Unix từ xa
+save_edhost=Máy chủ trực tiếp '$1' không tồn tại
+save_edport=Cổng trực tiếp bị thiếu hoặc không hợp lệ
+save_evalid=Hệ thống in không cho phép máy in này
+save_errslave=Máy in đã tạo OK trên hệ thống này, nhưng đã xảy ra các lỗi sau trên hệ thống cụm : $1 
+save_egone=Không tìm thấy máy in có tên '$1'
+save_errdelslave=Máy in đã xóa OK trên hệ thống này, nhưng đã xảy ra các lỗi sau trên hệ thống cụm : $1 
+
+jobs_title=Công việc in
+jobs_header=In công việc trên $1 
+jobs_id=ID công việc
+jobs_size=Kích thước
+jobs_by=Gửi bởi
+jobs_when=Gửi tại
+jobs_file=Tên tệp
+jobs_cancel=Nhấp vào ID công việc từ danh sách trên để hủy bỏ.
+jobs_cancelview=Nhấp vào ID công việc từ danh sách trên để hủy hoặc nhấp vào kích thước công việc để xem.
+jobs_none=Máy in $1 không có bất kỳ công việc đang chờ xử lý nào.
+jobs_all=Hủy tất cả các công việc in
+jobs_bytes=byte
+jobs_test=Trang thử nghiệm in
+jobs_cancelsel=Hủy công việc đã chọn
+jobs_on=Trên máy in $1 
+jobs_return=danh sách các công việc in ấn
+
+cancel_ecannot=Bạn không được phép hủy công việc in
+cancel_err=Không thể hủy công việc in
+cancel_egone=Công việc in $1 không còn tồn tại
+
+view_ecannot=Bạn không thể xem công việc in này
+view_egone=Công việc in này không còn tồn tại
+
+start_ecannot=Bạn không được phép khởi động lịch trình
+start_err=Không thể bắt đầu lên lịch
+
+stop_ecannot=Bạn không được phép dừng lịch trình
+stop_err=Không thể dừng lịch trình
+
+restart_ecannot=Bạn không được phép khởi động lại lịch trình
+restart_err=Không thể khởi động lại lịch trình
+
+webmin_none=không ai
+webmin_nonemsg=Máy in hoặc máy in văn bản
+webmin_remotemsg=Máy in từ xa
+webmin_model=Mô hình
+webmin_prog=Chương trình
+webmin_driver=Trình điều khiển webmin
+webmin_uniprint=Trình điều khiển uniprint
+webmin_edrivers=Không thể tải trình điều khiển từ $1. Trình điều khiển máy in Webmin sử dụng ghostscript không khả dụng
+webmin_egs=Lệnh $1 không được tìm thấy. Trình điều khiển máy in Webmin sử dụng ghostscript không khả dụng
+webmin_edriver='$1' không tồn tại
+
+caldera_none=không ai
+caldera_nonemsg=Máy in từ xa hoặc thô
+caldera_prog=Chương trình
+caldera_coas=Trình điều khiển COAS
+caldera_printer=Máy in và độ phân giải
+caldera_eof=Gửi EOF?
+caldera_paper=Khổ giấy
+caldera_double=In hai mặt?
+caldera_gsopts=Tùy chọn GS bổ sung
+caldera_uniprint=Trình điều khiển uniprint
+caldera_eprog='$1' không tồn tại
+caldera_edriver=Không có trình điều khiển máy in được chọn
+caldera_eres=Không có độ phân giải được chọn
+
+redhat_none=không ai
+redhat_nonemsg=Máy in hoặc máy in văn bản
+redhat_prog=Chương trình
+redhat_driver=Lái xe đỏ
+redhat_printer=Máy in và độ phân giải
+redhat_eof=Gửi EOF?
+redhat_paper=Khổ giấy
+redhat_pages=Trang trên mỗi trang đầu ra
+redhat_gsopts=Tùy chọn GS bổ sung
+redhat_hmargin=Lề phải/trái
+redhat_vmargin=Lề trên/dưới
+redhat_crlf=Sửa văn bản bước cầu thang?
+redhat_eprog='$1' không tồn tại
+redhat_edriver=Không có trình điều khiển máy in được chọn
+redhat_ehmargin=Thiếu hoặc không hợp lệ lề phải/trái
+redhat_evmargin=Thiếu lề trên/dưới không hợp lệ
+redhat_eres=Không có độ phân giải được chọn
+redhat_printer2=Mô hình máy in và trình điều khiển
+
+suse_none=không ai
+suse_nonemsg=Máy in hoặc máy in văn bản
+suse_prog=Chương trình
+suse_driver=Trình điều khiển APSfilter
+suse_printer=Loại máy in
+suse_res=Nghị quyết trong DPI
+suse_colour=Máy in màu?
+suse_paper=Khổ giấy
+suse_method=Phương pháp lọc
+suse_auto=Tự động
+suse_ascii=ASCII
+suse_raw=Nguyên
+suse_extra=Tùy chọn ghostscript thêm
+suse_yast2=Trình điều khiển YAST2
+suse_edriver=Không có loại máy in được chọn
+suse_eres=Thiếu hoặc giải quyết không hợp lệ
+
+estop=Không thể dừng lpd : $1 
+
+acl_printers=Máy in người dùng này có thể cấu hình
+acl_add=Có thể thêm máy in mới?
+acl_cancel=Có thể hủy công việc in?
+acl_stop=Có thể dừng hoặc bắt đầu lên lịch?
+acl_restart=Chỉ khởi động lại
+acl_listed=Chỉ trên các máy in được chọn ..
+acl_pall=Tất cả máy in
+acl_psel=Đã chọn ..
+acl_view=Hiển thị máy in không cấu hình?
+acl_test=Có thể in trang thử nghiệm?
+acl_user=Quản lý công việc in thuộc sở hữu của
+acl_user_all=Tất cả người dùng
+acl_user_this=Người dùng Webmin hiện tại
+acl_delete=Có thể xóa máy in?
+acl_cluster=Có thể quản lý cụm máy in?
+
+log_stop=Lịch trình in bị dừng
+log_start=Bắt đầu in lịch trình
+log_restart=Khởi động lại lịch trình in
+log_cancel_job=Đã hủy công việc in $2 trên $1 
+log_cancel_all=Đã hủy tất cả các lệnh in trên $1 
+log_cancel_sel=Đã hủy $2 công việc in trên $1 
+log_create=Đã tạo máy in $1 trên $2 
+log_modify=Máy in đã sửa đổi $1 trên $2 
+log_delete=Đã xóa máy in $1 trên $2 
+log_create_l=Đã tạo $3 máy in $1 trên $2 
+log_modify_l=Đã sửa đổi $3 máy in $1 trên $2 
+log_delete_l=Đã xóa $3 máy in $1 trên $2 
+
+linux_paralel=Cổng song song $1 
+linux_serial=Cổng nối tiếp $1 (COM $1)
+linux_null=Thiết bị Null
+linux_usb=Máy in USB $1 
+linux_ecmd=Lệnh $1 không được tìm thấy trên hệ thống của bạn, điều này cho biết rằng hệ thống in Linux chưa được cài đặt.
+linux_espool=Thư mục spool $1 không tồn tại trên hệ thống của bạn, điều này cho biết rằng hệ thống in Linux chưa được cài đặt.
+
+freebsd_paralel=Cổng song song
+freebsd_serial=Cổng nối tiếp $1 (COM $1)
+freebsd_ecmd=Lệnh $1 không được tìm thấy trên hệ thống của bạn, điều này cho thấy hệ thống in FreeBSD chưa được cài đặt.
+freebsd_espool=Thư mục spool $1 không tồn tại trên hệ thống của bạn, điều này cho biết rằng hệ thống in FreeBSD chưa được cài đặt.
+
+openbsd_paralel=Cổng song song
+openbsd_serial=Cổng nối tiếp $1 (COM $1)
+
+unixware_paralel=Cổng song song $1 
+unixware_serial=Cổng nối tiếp $1 
+unixware_null=Thiết bị Null
+unixware_ecmd=Lệnh $1 không được tìm thấy trên hệ thống của bạn, điều này cho thấy hệ thống in UnixWare chưa được cài đặt.
+
+hpux_paralel=Song song $1 
+hpux_serial=Nối tiếp $1 
+hpux_null=Thiết bị Null
+hpux_ecmd=Không tìm thấy lệnh $1 trên hệ thống của bạn, điều này cho biết rằng hệ thống in HPUX chưa được cài đặt.
+hpux_eiface=Thư mục tập lệnh giao diện $1 không tồn tại trên hệ thống của bạn, điều này cho biết rằng hệ thống in HPUX chưa được cài đặt.
+
+lprng_paralel=Cổng song song $1 
+lprng_serial=Cổng nối tiếp $1 (COM $1)
+lprng_null=Thiết bị Null
+lprng_ecmd=Không tìm thấy lệnh $1 trên hệ thống của bạn, điều này cho thấy hệ thống in LPRng chưa được cài đặt.
+lprng_espool=Thư mục spool $1 không tồn tại trên hệ thống của bạn, điều này cho biết rằng hệ thống in LPRng chưa được cài đặt.
+
+solaris_paralel=Cổng song song
+solaris_uparalel=Cổng song song Ultra 5/10
+solaris_serial=Cổng nối tiếp $1 
+solaris_null=Thiết bị Null
+solaris_ecmd=Lệnh $1 không được tìm thấy trên hệ thống của bạn, điều này cho biết rằng hệ thống in Solaris chưa được cài đặt.
+
+test_title=Trang thử nghiệm in
+test_ecannot=Bạn không được phép in các trang thử nghiệm
+test_desc=Biểu mẫu này cho phép bạn in trang thử nghiệm cho máy in $1. Chọn loại trang bạn muốn in :
+test_0=Trang Postcript đen trắng
+test_1=Trang Bản tin màu
+test_2=Văn bản ASCII đơn giản
+test_3=Bất kỳ tập tin tải lên
+test_print=Trang in
+test_exec=In trang thử nghiệm bằng lệnh $1 ..
+test_failed=.. Lệnh không thành công!
+test_ok=.. lệnh hoàn thành.
+
+cups_none=không ai
+cups_nonemsg=Máy in từ xa hoặc thô
+cups_prog=Chương trình
+cups_driver=Trình điều khiển CUPS
+cups_eprog='$1' không phải là chương trình hợp lệ
+cups_opts=Tùy chọn cho $1 
+cups_ecmd=Không tìm thấy lệnh $1 trên hệ thống của bạn, điều này cho biết rằng hệ thống in CUPS chưa được cài đặt.
+
+irix_ecmd=Không tìm thấy lệnh $1 trên hệ thống của bạn, điều này cho biết rằng hệ thống in IRIX chưa được cài đặt.
+irix_eiface=Thư mục giao diện tập lệnh $1 không tồn tại trên hệ thống của bạn, điều này cho biết rằng hệ thống in IRIX chưa được cài đặt.
+
+aix_port=Cổng máy in $1 
+aix_edesc=Mô tả không hợp lệ - chỉ cho phép chữ và số và không có khoảng trắng
+aix_ecmd=Không tìm thấy máy chủ AIX $1. Có thể nó chưa được cài đặt hoặc hệ thống in khác đang được sử dụng.
+
+cluster_title=Máy chủ cụm máy in
+cluster_none=Chưa có máy chủ nào được thêm vào cụm máy in.
+cluster_host=Tên máy chủ
+cluster_desc=Sự miêu tả
+cluster_os=Hệ điều hành
+cluster_add=Thêm máy chủ
+cluster_gadd=Thêm máy chủ trong nhóm
+cluster_need=Bạn phải thêm các máy chủ có thông tin đăng nhập và mật khẩu trong mô-đun Chỉ mục Máy chủ Webmin trước khi chúng có thể được quản lý tại đây.
+cluster_return=máy chủ cụm
+cluster_delete=Bỏ đã chọn
+cluster_ecannot=Bạn không được phép quản lý máy chủ cụm máy in
+
+add_title=Thêm máy chủ
+add_msg=Thêm $1 ..
+add_gmsg=Thêm máy chủ trong nhóm $1 ..
+add_err=Không thể thêm máy chủ
+add_gerr=Không thể thêm nhóm
+add_echeck=Máy chủ $1 không có mô-đun Quản trị máy in
+add_ediff=Máy chủ $1 đang sử dụng một hệ thống in khác ($2) cho máy chủ này
+add_ediff2=Máy chủ $1 đang sử dụng trình điều khiển in khác ($2) cho máy chủ này
+add_ok=Đã thêm $1, với $2 máy in.

@@ -1,0 +1,120 @@
+index_title=IM server Jabber
+index_econfig=Konfiguračný súbor Jabber $1 neexistuje. Buď nie je nainštalovaný Jabber alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_edir=Základný adresár Jabber $1 neexistuje. Buď nie je nainštalovaný Jabber alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_emodules=Moduly Perl $1 a $2, ktoré vyžaduje Webmin na spracovanie konfigurácie XML Jabberu, nie sú nainštalované. <a href='$3'>Kliknite sem</a> a nainštalujte ich priamo z CPAN.
+index_emodule=Nie je nainštalovaný modul Perl $1, ktorý vyžaduje Webmin na spracovanie konfigurácie XML Jabberu. <a href='$2'>Kliknite sem</a> a nainštalujte ho priamo z CPAN.
+index_expat=Pred inštaláciou modulov Perl sa uistite, že máte nainštalovanú knižnicu a hlavičky Expat C, pretože na nich závisia a ak nie sú k dispozícii, zlyhajú.
+index_eparse=Modul $1 perl nemohol analyzovať váš konfiguračný súbor Jabber : $2 
+index_ejabberd=Program servera Jabber $1 nebol vo vašom systéme nájdený. Buď nie je nainštalovaný Jabber alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_eversion=Webmin podporuje iba Jabber verziu $2, ale príkaz $3 vykázal nasledujúce informácie o verzii : $1 
+index_eversion2=Webmin podporuje iba verzie Jabber pod $2, ale príkaz $3 vykázal nasledujúce informácie o verzii : $1 
+index_start=Spustite server Jabber
+index_startmsg=Kliknutím na toto tlačidlo spustíte server Jabber vo vašom systéme. Kým sa nespustí, nebudú ho môcť používať žiadni klienti okamžitých správ.
+index_stop=Zastavte server Jabber
+index_stopmsg=Kliknutím na toto tlačidlo zastavíte bežiaci server Jabber vo vašom systéme. Po zastavení ho nebudú môcť používať žiadni klienti okamžitých správ.
+index_restart=Aplikovať zmeny
+index_restartmsg=Kliknutím na toto tlačidlo použijete aktuálnu konfiguráciu zastavením a opätovným spustením servera Jabber.
+index_comments=Upozornenie - váš konfiguračný súbor Jabber $1 obsahuje komentáre, ktoré sa odstránia, ak sa pomocou tohto modulu vykonajú akékoľvek zmeny konfigurácie.
+index_return=Jabber menu
+index_version=Jabber verzia $1 
+
+general_title=Všeobecné možnosti
+general_header=Možnosti globálneho servera Jabber
+general_host=Názov hostiteľa vášho servera
+general_elog=Súbor denníka chýb
+general_elogfmt=Formát denníka chýb
+general_rlog=Prístup k súboru denníka
+general_rlogfmt=Prístup k formátu denníka
+general_pidfile=Spracovať ID súbor
+general_err=Uloženie všeobecných možností zlyhalo
+general_ehost=Chýba alebo je neplatný názov hostiteľa servera
+general_eelog=Chýba alebo je neplatný protokolový súbor chýb
+general_eelogfmt=Chýba formát denníka chýb
+general_erlog=Chýba alebo je neplatný súbor denníka premávky
+general_erlogfmt=Chýba formát denníka prevádzky
+general_epidfile=Chýba alebo je neplatný súbor ID procesu
+
+messages_title=správy
+messages_header=Správa servera Jabber pre klientov
+messages_wsubject=Predmet uvítacej správy
+messages_wbody=Telo uvítacej správy
+messages_vcard=Server vCard
+messages_rinstr=Pokyny na registráciu
+messages_rnotify=Upozorniť administrátora na registráciu?
+messages_rfields=Povinné registračné polia
+messages_vcard2jud=Chcete odoslať vizitku vCard do adresára používateľa Jabber?
+messages_err=Uloženie správ zlyhalo
+messages_evcard=Neplatný formát XML vCard : $1 
+messages_etag=Server vCard XML sa nezačína s kartou &lt;vCard&gt;
+
+modules_title=Jabber moduly
+modules_desc=Nižšie uvedené moduly sa používajú na spracovanie správ prijatých správcom relácií Jabber. Tento zoznam by ste mali zmeniť iba vtedy, ak viete, čo robíte.
+modules_header=Moduly manažéra relácie servera Jabber
+modules_mod=Názov modulu
+modules_so=Zdieľaná knižnica
+modules_err=Nepodarilo sa uložiť moduly Jabber
+modules_emod='$1' nie je platný názov modulu
+modules_eso=Zdieľaná knižnica „$1“ neexistuje
+
+karma_title=Karma Traffic Control
+karma_header=Možnosti riadenia rýchlosti premávky
+karma_rate=Nadmerná manipulácia s pripojením
+karma_rate_def=invalidný
+karma_rate_sel=Blokujte klienta na $2 s po pripojení $1 
+karma_mode=Režim Karma
+karma_none=Bez limitov
+karma_low=Nízke dopravné limity
+karma_medium=Stredné dopravné limity
+karma_high=Vysoké dopravné limity
+karma_sel=Použite nastavenia vybrané nižšie.
+karma_heartbeat=Dĺžka periódy v sekundách (<tt>tlkot srdca</tt>)
+karma_init=Inicializačné obdobia (<tt>init</tt>)
+karma_max=Maximum karmy (<tt>max</tt>)
+karma_inc=Prírastok karmy (<tt>inc</tt>)
+karma_dec=Degradácia karmy (<tt>december</tt>)
+karma_penalty=Tresty (<tt>pokuta</tt>)
+karma_restore=Obdobia obnovenia série (<tt>obnoviť</tt>)
+karma_err=Možnosti karmy sa nepodarilo uložiť
+karma_eheartbeat=Chýbajúca alebo neplatná dĺžka obdobia
+karma_einit=Chýbajúce alebo neplatné inicializačné obdobia
+karma_emax=Chýbajúce alebo neplatné maximum karmy
+karma_einc=Chýbajúci alebo neplatný prírastok karmy
+karma_edec=Chýbajúce alebo neplatné zníženie karmy
+karma_epenalty=Chýbajúce alebo neplatné trestné obdobia
+karma_erestore=Chýbajúce alebo neplatné obdobia obnovenia
+karma_epoints=Chýba alebo je neplatný počet spojení
+karma_etime=Chýbajúci alebo neplatný čas na zablokovanie
+
+ips_title=Kontrola prístupu IP
+ips_header=Kontrola prístupu IP servera Jabber
+ips_allow=Povolené adresy IP klientov
+ips_all=Všetky adresy
+ips_deny=Odmietnuté adresy IP klientov
+ips_none=nikto
+ips_sel=Zoznam adries/sieťových masiek ..
+ips_err=Uloženie riadenia prístupu IP zlyhalo
+ips_eaddr='$1' nie je platná IP adresa alebo IP adresa/maska siete
+
+file_title=Upraviť konfiguračný súbor
+file_desc=Použite nasledujúci formulár na priamu úpravu konfiguračného súboru Jabber. Toto by sa malo vykonať iba vtedy, ak rozumiete konfiguračnému formátu XML.
+file_header=Upravte konfiguračný súbor Jabber
+file_err=Nepodarilo sa uložiť konfiguračný súbor
+
+admin_title=Administratívni používatelia
+admin_header=Používatelia správy servera
+admin_read=Správcovia prístupu na čítanie
+admin_write=Správcovia prístupu na zápis
+admin_reply=Automaticky na správu správ?
+admin_rsubject=Autoreply predmet
+admin_rbody=Autoreply message
+
+filter_title=Používateľské filtre
+filter_header=Povolenia filtra používateľa
+filter_max=Maximálne pravidlá filtrovania
+filter_conds=Povolené podmienky filtra
+filter_acts=Povolené akcie filtra
+
+restart_err=Nepodarilo sa uplatniť zmeny
+stop_err=Nepodarilo sa zastaviť Jabbera
+stop_epid=Nepodarilo sa nájsť proces Jabber
+start_err=Nepodarilo sa spustiť Jabber

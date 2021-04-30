@@ -1,0 +1,52 @@
+index_title=NFS eksports
+index_add=Pievienojiet jaunu eksportu.
+index_dirs=Katalogi
+index_clients=Klienti
+index_everyone=Visi
+index_none=Eksports vēl nav definēts.
+index_delete=Dzēst atlasītos eksportus
+index_apply=Lietot izmaiņas
+index_applydesc=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējo failu eksporta konfigurāciju. Tādējādi visi iepriekš uzskaitītie direktoriji būs pieejami ar norādītajām opcijām.
+index_return=eksporta saraksts
+index_echeck=NFS serveri nevar izmantot šajā sistēmā : $1 
+
+check_ecmd=NFS servera komanda $1 nav instalēta
+
+delete_err=Neizdevās izdzēst eksportu
+delete_enone=Nav atlasīts
+
+edit_title1=Rediģēt eksportēšanu
+edit_title2=Izveidot eksportu
+edit_header1=Eksportēšanas iespējas
+edit_dirs=Eksportējamie katalogi
+edit_alldirs=Vai eksportēt apakšdirektorijas?
+edit_ro=Tikai lasīt?
+edit_kerb=Vai izmantot Kerberos?
+edit_header2=Attālā lietotāja kartēšana
+edit_maproot=Karte saknes lietotājam uz
+edit_mapusers=Kartējiet visus lietotājus uz
+edit_unpriv=Neprivilēts lietotājs
+edit_uid=Lietotājs / UID
+edit_gids=Un grupas / GID
+edit_mapall=Kartējiet visus lietotājus uz
+edit_header3=Klienti šim eksportam
+edit_clients=Klienti
+edit_hosts=Saimnieki / tīkla grupas
+edit_network=Tīkls
+edit_mask=Maska
+
+save_err=Neizdevās saglabāt eksportu
+save_edir='$1' nav direktorijs vai neeksistē
+save_enone=Lai ievadītu eksportu, jums jāievada vismaz viens direktorijs
+save_esub=Var izvēlēties tikai vienu direktoriju, ja ir izvēlēta opcija <b>eksportēt apakšdirektorijas</b>
+save_eroot=Izmantojot iespēju <b>eksportēt apakšdirektorijas</b>, eksportētajam direktorijam jābūt <i>vietējās</i> failu sistēmas saknei.
+save_euser='$1' nav derīgs lietotājs vai UID
+save_egroup=“$1” nav derīga grupa vai GID
+save_ekerb=Kartes saknes lietotāji, visu lietotāju karte un kerberos opcijas ir savstarpēji izslēdzošas
+save_ehosts=Jāievada vismaz viens resursdators, uz kuru eksportēt
+save_enetwork='$1' nav derīgs tīkls
+save_enetmask='$1' nav derīgs tīkla masks
+save_esame1=Mape <tt>$1</tt> jau tiek eksportēta uz <tt>$2</tt>. Jūsu operētājsistēma neļauj vienas <i>vietējās</i> failu sistēmas direktorijus eksportēt uz vienu un to pašu resursdatoru atsevišķi
+save_esame2=Mape <tt>$1</tt> jau tiek eksportēta uz <tt>$2</tt>. Jūsu operētājsistēma neļauj vienā un tajā pašā <i>vietējā</i> failu sistēmā direktorijus eksportēt uz to pašu tīklu atsevišķi
+
+restart_err=Neizdevās piemērot izmaiņas

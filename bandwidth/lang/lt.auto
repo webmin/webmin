@@ -1,0 +1,83 @@
+index_title=Pralaidumo stebėjimas
+index_efiresys=Nei viena iš palaikomų ugniasienių (IPtable, IPFW, IPFilter ar Shorewall) nebuvo nustatyta jūsų sistemoje. Patikrinkite tinkamus modulius ir įsitikinkite, kad jie sukonfigūruoti.
+index_efiresys2=Konfigūruota $1 ugniasienės sistema jūsų sistemoje nerasta. Norėdami naudoti tinkamą ugniasienę, sureguliuokite <a href='$2'>modulio konfigūraciją</a>.
+index_elog=Failas $1, naudojamas pralaidumui registruoti, iš tikrųjų yra jūsų sistemos katalogas. Norėdami naudoti kitą kelią, sureguliuokite <a href='$2'>modulio konfigūraciją</a>.
+index_edir=Duomenų pralaidumo duomenų saugojimo katalogas $1 neegzistuoja arba nėra katalogas. Norėdami naudoti kitą kelią, sureguliuokite <a href='$2'>modulio konfigūraciją</a>.
+index_emod=„Webmin“ modulis $1 neįdiegtas šioje sistemoje arba jo nepalaiko jūsų OS. Pralaidumo stebėjimo modulis negali veikti be jo.
+index_esyslog=Nei vienas iš sistemos žurnalų modulių nėra įdiegtas šioje sistemoje ir nepalaikomas jūsų OS. Pralaidumo stebėjimo modulis negali veikti be vieno iš jų.
+index_firesys=Naudojant $1 užkardą ir $2 
+index_setupcannot=Tačiau jūs neturite leidimų jį nustatyti!
+index_setupdesc=Kad šis modulis galėtų pranešti apie tinklo naudojimą jūsų sistemoje, jis turi būti nustatytas stebint srautą pasirinktoje išorinėje tinklo sąsajoje.
+index_setupdesc2=<b>Įspėjimas - šis modulis užregistruos VISĄ tinklo srautą, išsiųstą ar gautą pasirinktoje sąsajoje. Tai užims daug vietos diske ir procesoriaus laiką greitam tinklo ryšiui.</b>
+index_missing3=Turi būti pridėtos kelios ugniasienės taisyklės ir sukurtas syslog konfigūracijos įrašas.
+index_missing2=Turi būti pridėtos kelios ugniasienės taisyklės.
+index_missing1=Turi būti sukurtas „syslog“ konfigūracijos įrašas.
+index_iface=Išorinė tinklo sąsaja
+index_other=Kiti ..
+index_setup=Sąranka dabar
+index_by=Rodyti srautą pagal
+index_hour=valanda
+index_host=šeimininkas
+index_proto=protokolas
+index_iport=vidinis uostas
+index_oport=išorinis uostas
+index_port=uostas
+index_for=dėl
+index_all=&lt;viskas&gt;
+index_forhour=valanda ..
+index_forhost=šeimininkas ..
+index_forproto=protokolas ..
+index_foriport=vidinis uostas ..
+index_foroport=išorinis uostas ..
+index_search=Sukurti ataskaitą
+index_none=Šis modulis dar neapibendrino srauto. Jei ką tik nustatėte, srautas gali būti apdorotas mažiausiai valandą.
+index_ehour=Neteisinga valanda - turi būti pateiktas formatu: mmmm-mm-dd hh: mm
+index_eport=Nežinomas uosto pavadinimas
+index_eproto=Trūksta protokolo
+index_ehost=Trūksta arba netinkamas pagrindinis kompiuteris
+index_from=Eismui po
+index_to=Eismui anksčiau
+index_efrom=Netinkama pradžios data ir laikas
+index_eto=Netinkama pabaigos data ir laikas
+index_err=Nepavyko sugeneruoti ataskaitos
+index_usage=Tinklo srautas <font color=#ff0000>atsisiųstas</font> ir <font color=#0000ff>įkeltas</font>
+index_hhour=Valanda
+index_hhost=Priimančioji
+index_hday=Diena
+index_hproto=Protokolas
+index_hiport=Uostas
+index_hoport=Uostas
+index_hport=Uostas
+index_low=Tik serverio prievadai?
+index_resolv=Išspręsti pagrindinius vardus?
+index_nomatch=Nei vienas srautas neatitiko pasirinktų kriterijų.
+index_turnoff=Išjunkite stebėjimą
+index_turnoffdesc=Spustelėkite šį mygtuką, kad pašalintumėte ugniasienės taisykles, „syslog“ konfigūraciją ir „Cron“ užduotį, naudojamą pralaidumo stebėjimui. Visi turimi surinkti duomenys liks neliečiami.
+index_rotate=Atnaujinkite statistiką
+index_rotatedesc=Spustelėkite šį mygtuką, kad apdorotumėte visą prisijungusį tinklo srautą iki dabartinio laiko, kad jis būtų nedelsiant prieinamas ataskaitoms.
+index_eiptables=Įspėjimas - jūsų IPtable konfigūracijoje yra klaida: $1. Nustačius pralaidumo stebėjimą, bus pašalintos visos ugniasienės taisyklės.
+index_return=ataskaitos forma
+
+log_setup=Nustatykite pralaidumo stebėjimą sąsajoje $1 
+log_turnoff=Išjungtas pralaidumo stebėjimas
+log_rotate=Atnaujinta statistika
+
+acl_setup=Ar galima nustatyti ir išjungti stebėjimą?
+
+turnoff_ecannot=Jums neleidžiama išjungti stebėjimo
+
+setup_ecannot=Jums neleidžiama įjungti stebėjimo
+setup_eiface=Trūksta arba netinkamas sąsajos pavadinimas
+setup_ezone=Nepavyko rasti pasirinktos sąsajos „Shorewall“ zonos
+
+system_firewall=IP lentelės
+system_ipfw=IPFW
+system_ipfilter=„IPFilter“
+system_shorewall=Shorewall
+
+syslog_syslog=„Syslog“
+syslog_syslog-ng=„Syslog-NG“
+
+rotate_title=Statistikos atnaujinimas
+rotate_doing=Apdorojamas prisijungęs tinklo srautas.
+rotate_done=.. padaryta.

@@ -1,0 +1,120 @@
+index_title=خادم جابر للرسائل الفورية
+index_econfig=ملف تكوين Jabber $1 غير موجود. إما أن Jabber غير مثبت أو أن <a href='$2'>تهيئة الوحدة النمطية</a> غير صحيحة.
+index_edir=دليل جابر الأساسي$1 غير موجود. إما أن Jabber غير مثبت أو أن <a href='$2'>تهيئة الوحدة النمطية</a> غير صحيحة.
+index_emodules=لم يتم تثبيت وحدتي Perl $1 و$2 المطلوبة بواسطة Webmin لمعالجة تكوين XML الخاص بـ Jabber. <a href='$3'>انقر هنا</a> لتثبيتها مباشرة من CPAN.
+index_emodule=لم يتم تثبيت الوحدة النمطية Perl $1 المطلوبة بواسطة Webmin لمعالجة تكوين XML الخاص بـ Jabber. <a href='$2'>انقر هنا</a> لتثبيته مباشرة من CPAN.
+index_expat=تأكد من تثبيت مكتبة Expat C والرؤوس قبل محاولة تثبيت وحدات Perl النمطية ، لأنها تعتمد عليها وستفشل إذا لم تكن متاحة.
+index_eparse=تعذر على الوحدة النمطية$1 perl تحليل ملف تكوين Jabber الخاص بك :$2
+index_ejabberd=لم يتم العثور على برنامج خادم Jabber $1 على نظامك. إما أن Jabber غير مثبت أو أن <a href='$2'>تهيئة الوحدة النمطية</a> غير صحيحة.
+index_eversion=يدعم Webmin الإصدار Jabber $2 فقط ، لكن الأمر$3 أبلغ عن معلومات الإصدار التالية :$1
+index_eversion2=يدعم Webmin فقط إصدارات Jabber أقل من$2 ، لكن الأمر$3 أبلغ عن معلومات الإصدار التالية :$1
+index_start=ابدأ تشغيل Jabber Server
+index_startmsg=انقر فوق هذا الزر لبدء تشغيل خادم Jabber على نظامك. حتى يتم تشغيله ، لن يتمكن عملاء المراسلة الفورية من استخدامه.
+index_stop=أوقف خادم جابر
+index_stopmsg=انقر فوق هذا الزر لإيقاف تشغيل خادم Jabber على نظامك. لن يتمكن عملاء المراسلة الفورية من استخدامه عند إيقافه.
+index_restart=تطبيق التغييرات
+index_restartmsg=انقر فوق هذا الزر لتطبيق التكوين الحالي عن طريق إيقاف خادم Jabber وإعادة تشغيله.
+index_comments=تحذير - يحتوي ملف تكوين Jabber $1 الخاص بك على التعليقات ، والتي ستتم إزالتها إذا تم إجراء أي تغييرات في التكوين باستخدام هذه الوحدة.
+index_return=قائمة جابر
+index_version=إصدار Jabber$1
+
+general_title=خيارات عامة
+general_header=خيارات خادم جابر العالمي
+general_host=اسم مضيف الخادم الخاص بك
+general_elog=ملف سجل الخطأ
+general_elogfmt=تنسيق سجل الخطأ
+general_rlog=ملف سجل الوصول
+general_rlogfmt=تنسيق سجل الوصول
+general_pidfile=ملف معرف العملية
+general_err=فشل في حفظ الخيارات العامة
+general_ehost=اسم مضيف الخادم مفقود أو غير صالح
+general_eelog=ملف سجل خطأ مفقود أو غير صالح
+general_eelogfmt=تنسيق سجل الخطأ مفقود
+general_erlog=ملف سجل حركة المرور مفقود أو غير صالح
+general_erlogfmt=تنسيق سجل حركة المرور مفقود
+general_epidfile=ملف معرف العملية مفقود أو غير صالح
+
+messages_title=الرسائل
+messages_header=رسالة خادم جابر للعملاء
+messages_wsubject=موضوع رسالة الترحيب
+messages_wbody=نص رسالة الترحيب
+messages_vcard=خادم vCard
+messages_rinstr=تعليمات التسجيل
+messages_rnotify=إبلاغ المسؤول عند التسجيل؟
+messages_rfields=حقول التسجيل المطلوبة
+messages_vcard2jud=إرسال vCard إلى دليل مستخدم Jabber؟
+messages_err=فشل في حفظ الرسائل
+messages_evcard=XML vCard غير صالح :$1
+messages_etag=لا يبدأ خادم vCard XML بـ &lt;vCard&gt;
+
+modules_title=وحدات جابر
+modules_desc=يتم استخدام الوحدات المدرجة أدناه من أجل معالجة الرسائل التي تلقاها مدير جلسة Jabber. يجب عليك تغيير هذه القائمة فقط إذا كنت تعرف ما تفعله.
+modules_header=وحدات إدارة جلسة خادم جابر
+modules_mod=اسم وحدة
+modules_so=مكتبة مشتركة
+modules_err=فشل في حفظ وحدات جابر
+modules_emod=إن '$1' ليس اسم وحدة صالح
+modules_eso=المكتبة المشتركة '$1' غير موجودة
+
+karma_title=مراقبة حركة مرور الكرمة
+karma_header=خيارات التحكم في معدل حركة المرور
+karma_rate=التعامل مع الاتصال المفرط
+karma_rate_def=معاق
+karma_rate_sel=حظر العميل لمدة$2 ثانية بعد اتصالات$1
+karma_mode=وضع الكارما
+karma_none=لا حدود
+karma_low=حدود حركة المرور منخفضة
+karma_medium=حدود حركة المرور المتوسطة
+karma_high=حدود حركة المرور عالية
+karma_sel=استخدم الإعدادات المحددة أدناه ..
+karma_heartbeat=طول الفترة بالثواني (<tt>نبضات القلب</tt>)
+karma_init=فترات التهيئة (<tt>init</tt>)
+karma_max=Karma max (<tt>max</tt>)
+karma_inc=زيادة الكارما (<tt>inc</tt>)
+karma_dec=إنقاص الكارما (<tt>dec</tt>)
+karma_penalty=فترات العقوبة (<tt>عقوبة</tt>)
+karma_restore=فترات استعادة الاندفاع (<tt>استعادة</tt>)
+karma_err=فشل حفظ خيارات الكارما
+karma_eheartbeat=طول الفترة الزمنية مفقود أو غير صالح
+karma_einit=فترات التهيئة مفقودة أو غير صالحة
+karma_emax=الكارما مفقودة أو غير صالحة كحد أقصى
+karma_einc=زيادة الكارما مفقودة أو غير صالحة
+karma_edec=نقص الكارما مفقود أو غير صالح
+karma_epenalty=فترات عقوبة مفقودة أو غير صالحة
+karma_erestore=فترات استعادة مفقودة أو غير صالحة
+karma_epoints=عدد الاتصالات مفقود أو غير صالح
+karma_etime=وقت مفقود أو غير صالح لحظره
+
+ips_title=التحكم في الوصول IP
+ips_header=التحكم في الوصول إلى خادم جابر
+ips_allow=عناوين IP للعميل المسموح بها
+ips_all=جميع العناوين
+ips_deny=تم رفض عناوين IP الخاصة بالعميل
+ips_none=لا يوجد
+ips_sel=العناوين المدرجة/netmasks ..
+ips_err=فشل في حفظ التحكم في الوصول إلى IP
+ips_eaddr=إن '$1' ليس عنوان IP صالحًا أو عنوان IP/قناع الشبكة
+
+file_title=تحرير ملف التكوين
+file_desc=استخدم النموذج أدناه لتحرير ملف Jabber config مباشرة. يجب أن يتم ذلك فقط إذا فهمت تنسيق تكوين XML.
+file_header=تحرير ملف تكوين جابر
+file_err=فشل في حفظ ملف التكوين
+
+admin_title=المستخدمون الإداريون
+admin_header=مستخدمي إدارة الخادم
+admin_read=قراءة مدراء الوصول
+admin_write=مدراء الوصول الكتابة
+admin_reply=هل تريد الرد تلقائيًا على رسائل المشرف؟
+admin_rsubject=موضوع الرد التلقائي
+admin_rbody=رسالة الرد التلقائي
+
+filter_title=مرشحات المستخدم
+filter_header=أذونات تصفية المستخدم
+filter_max=قواعد التصفية القصوى
+filter_conds=شروط التصفية المسموح بها
+filter_acts=إجراءات التصفية المسموح بها
+
+restart_err=فشل في تطبيق التغييرات
+stop_err=فشل في إيقاف جابر
+stop_epid=فشل في إيجاد عملية جابر
+start_err=فشل بدء تشغيل جابر

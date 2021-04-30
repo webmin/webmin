@@ -1,0 +1,71 @@
+<header> Wrapper TCP </header>
+<h3> Patterns </h3> Il linguaggio di controllo degli accessi implementa i seguenti schemi: <ul>
+    <li> Una stringa che inizia con un &#39;.&#39; carattere. Un nome host viene abbinato se gli ultimi componenti del suo nome corrispondono al modello specificato. Ad esempio, il modello &#39;.tue.nl&#39; corrisponde al nome host &#39;wzv.win.tue.nl&#39;. </li>
+    <li> Una stringa che termina con un &#39;.&#39; carattere. Un indirizzo host viene abbinato se i suoi primi campi numerici corrispondono alla stringa specificata. Ad esempio, il modello &quot;131.155&quot;. corrisponde all&#39;indirizzo di (quasi) ogni host sulla rete dell&#39;Università di Eindhoven (131.155.xx). </li>
+    <li> Una stringa che inizia con un carattere &#39;@&#39; viene considerata come un nome di netgroup NIS (precedentemente YP). Un nome host viene abbinato se è un membro host del netgroup specificato. Le corrispondenze di netgroup non sono supportate per i nomi dei processi daemon o per i nomi utente client. </li>
+    <li> Un&#39;espressione della forma &#39;nnnn / mmmm&#39; viene interpretata come una coppia &#39;net/mask&#39;. Un indirizzo host IPv4 viene abbinato se &#39;net&#39; è uguale all&#39;AND bit a bit dell&#39;indirizzo e alla &#39;maschera&#39;. Ad esempio, il modello net/mask &#39;131.155.72.0/255.255.254.0&#39; corrisponde a tutti gli indirizzi nell&#39;intervallo da &#39;131.155.72.0&#39; a &#39;131.155.73.255&#39;. </li>
+    <li> Un&#39;espressione della forma &#39;[n: n: n: n: n: n: n: n] / m&#39; viene interpretata come una coppia &#39;[net]/prefixlen&#39;. Un indirizzo host IPv6 viene associato se i bit &quot;prefixlen&quot; di &quot;net&quot; sono uguali ai bit &quot;prefixlen&quot; dell&#39;indirizzo. Ad esempio, il modello [net]/prefixlen &#39;[3ffe: 505: 2: 1 ::]/64&#39; corrisponde a tutti gli indirizzi nell&#39;intervallo &#39;3ffe: 505: 2: 1:&#39;? tramite &quot;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&quot;. </li>
+    <li> Una stringa che inizia con un carattere &#39;/&#39; viene trattata come un nome file. Un nome host o indirizzo viene abbinato se corrisponde a qualsiasi nome host o modello di indirizzo elencato nel file indicato. Il formato del file è zero o più righe con zero o più nomi host o schemi di indirizzi separati da spazi bianchi. Un modello di nome file può essere utilizzato ovunque sia possibile utilizzare un nome host o un modello di indirizzo. </li>
+    <li> Caratteri jolly &#39;*&#39; e &#39;?&#39; può essere utilizzato per abbinare nomi host o indirizzi IP. Questo metodo di corrispondenza non può essere utilizzato insieme alla corrispondenza &quot;net/mask&quot;, la corrispondenza del nome host inizia con &quot;.&quot; o corrispondenza dell&#39;indirizzo IP che termina con &#39;.&#39;. </li>
+</ul>
+<h3> I caratteri jolly </h3> Il linguaggio di controllo dell&#39;accesso supporta caratteri jolly espliciti: <table border>
+    <tr>
+        <td> <b>TUTTI</b> </td>
+        <td> Il carattere jolly universale corrisponde sempre. </td>
+    </tr>
+    <tr>
+        <td> <b>LOCALE</b> </td>
+        <td> Corrisponde a qualsiasi host il cui nome non contiene un carattere punto. </td>
+    </tr>
+    <tr>
+        <td> <b>SCONOSCIUTO</b> </td>
+        <td> Corrisponde a qualsiasi utente il cui nome è sconosciuto e corrisponde a qualsiasi host il cui nome o indirizzo sono sconosciuti. Questo modello deve essere usato con cura: i nomi host potrebbero non essere disponibili a causa di problemi temporanei del server dei nomi. Un indirizzo di rete non sarà disponibile quando il software non è in grado di capire con quale tipo di rete sta parlando. </td>
+    </tr>
+    <tr>
+        <td> <b>CONOSCIUTO</b> </td>
+        <td> Corrisponde a qualsiasi utente il cui nome è noto e corrisponde a qualsiasi host il cui nome e indirizzo sono noti. Questo modello deve essere usato con cura: i nomi host potrebbero non essere disponibili a causa di problemi temporanei del server dei nomi. Un indirizzo di rete non sarà disponibile quando il software non è in grado di capire con quale tipo di rete sta parlando. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOICO</b> </td>
+        <td> Corrisponde a qualsiasi host il cui nome non corrisponde al suo indirizzo. Quando tcpd è creato con -DPARANOID (modalità predefinita), elimina le richieste da tali client anche prima di guardare le tabelle di controllo degli accessi. Crea senza -DPARANOID quando desideri un maggiore controllo su tali richieste. </td>
+    </tr>
+</table>
+<h3> operatori </h3> <b>TRANNE L&#39;</b> uso previsto è nel formato: &#39;list_1 EXCEPT list_2&#39;; questo costrutto corrisponde a tutto ciò che corrisponde a list_1 a meno che non corrisponda a list_2. L&#39;operatore EXCEPT può essere utilizzato in daemon_lists e in client_lists. L&#39;operatore EXCEPT può essere nidificato: se la lingua di controllo consentirebbe l&#39;uso delle parentesi, &quot;a EXCEPT b EXCEPT c&quot; analizzerebbe come &quot;(a EXCEPT (b EXCEPT c))&quot;. <h3> Comandi Shell </h3> Se la regola di controllo di accesso con prima corrispondenza contiene un comando shell, tale comando è soggetto a% <letter> sostituzioni (vedere la sezione successiva). Il risultato viene eseguito da un processo figlio /bin/sh con input, output ed errore standard collegati a /dev/null. Specificare un &#39;&amp;&#39; alla fine del comando se non si desidera attendere fino al completamento. <p> I comandi della shell non devono fare affidamento sull&#39;impostazione PATH di inetd. Invece, dovrebbero usare nomi di percorso assoluti o dovrebbero iniziare con un&#39;istruzione esplicita PATH = what-ever. <h3> % Espansioni </h3> Le seguenti espansioni sono disponibili nei comandi shell: <table>
+            <tr>
+                <td>%a (%A)</td>
+                <td> L&#39;indirizzo host del client (server). </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Informazioni sul cliente: user@host, user@address, un nome host o solo un indirizzo, a seconda della quantità di informazioni disponibili. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> Il nome del processo daemon (valore argv[0]). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Il nome host o l&#39;indirizzo del client (server), se il nome host non è disponibile. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> Il nome host del client (server) (o &quot;sconosciuto&quot; o &quot;paranoico&quot;). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> L&#39;ID del processo daemon. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Informazioni sul server: daemon@host, daemon@address o solo un nome daemon, a seconda della quantità di informazioni disponibili. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Il nome utente del client (o &quot;sconosciuto&quot;). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Si espande in un singolo &#39;%? carattere. </td>
+            </tr>
+        </table> I caratteri in%espansioni che possono confondere la shell sono sostituiti da caratteri di sottolineatura.
+        <hr />

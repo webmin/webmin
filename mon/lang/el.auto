@@ -1,0 +1,200 @@
+index_title=MON Service Monitor
+index_return=Δείκτης MON
+index_edir=Ο κατάλογος MON $1 δεν υπάρχει. Ίσως το MON δεν είναι εγκατεστημένο, ή η διαμόρφωση της μονάδας σας <a href='$2'></a> είναι εσφαλμένη.
+mon_global_title=Διαμόρφωση γενικών διαφόρων παραμέτρων
+mon_conf_title=Βασική διαμόρφωση
+mon_status_title=Κατάσταση λειτουργίας
+hostgroups_title=Διαμόρφωση MON-Hostgroups
+services_title=Ορισμοί υπηρεσίας ομάδων παρακολούθησης
+
+head_hostgroups=Ομάδες υποδοχής και υπηρεσίες
+head_groups=Όνομα ομάδας υποδοχής
+head_members=Μέλη υποδοχής
+head_services=Υπηρεσίες Hostgroup για παρακολούθηση
+head_service=Υπηρεσία για παρακολούθηση
+head_param=Παράμετροι υπηρεσίας
+head_watch=Παρακολουθήστε την Ομάδα;
+head_monauth=Παρέχετε έλεγχο ταυτότητας για MONCMD
+head_usr=Όνομα χρήστη
+head_pass=Κωδικός πρόσβασης
+head_mand=(Οι παράμετροι στο "RED COLOR" είναι υποχρεωτικές)
+
+err_nomon=το πακέτο 'mon' δεν είναι εγκατεστημένο στο σύστημα
+err_nomonconf=Το αρχείο ρύθμισης MON $1 δεν βρέθηκε στο σύστημά σας. Ίσως το MON δεν είναι εγκατεστημένο, ή η διαμόρφωση της μονάδας σας <a href='$2'></a> είναι εσφαλμένη.
+err_nowatch=Δεν έχουν επιλεγεί ομάδες παρακολούθησης. Επιλέξτε τουλάχιστον μία ομάδα παρακολούθησης για να συνεχίσετε.
+err_noserv=Δεν έχουν επιλεγεί υπηρεσίες για την ομάδα παρακολούθησης
+err_nomemb=Δεν έχουν οριστεί Hosts/Μέλη για την ομάδα παρακολούθησης
+err_monrun=Το MON δεν τρέχει στο hostmachine. Ξεκινήστε τον MON.
+stop_err=Δεν μπόρεσε να σταματήσει η MON
+stop_epid=Δεν λειτουργεί πλέον
+start_err=Αποτυχία εκκίνησης του MON
+restart_err=Αποτυχία επανεκκίνησης του MON
+restart_epid=Αποτυχία λήψης του PID
+
+other=Άλλο (χώρος χωριστός)
+next=Επόμενο
+mon_stat=MON Status
+mon_off=Υπηρεσίες MON δεν έχουν ξεκινήσει
+mon_start=Ξεκινήστε τις υπηρεσίες MON
+mon_stop=Σταματήστε Υπηρεσίες MON
+mon_restart=Επανεκκινήστε τις Υπηρεσίες MON
+mon_startdesc=Κάντε κλικ σε αυτό το κουμπί για να ξεκινήσετε τον διακομιστή MON. Μέχρι να ξεκινήσει, δεν θα γίνει καμία παραμετροποιημένη παρακολούθηση.
+mon_stopdesc=Κάντε κλικ σε αυτό το κουμπί για να σταματήσετε τον διακομιστή MON. Κατά τη διακοπή, η ρυθμισμένη παρακολούθηση θα σταματήσει.
+mon_restartdesc=Κάντε κλικ σε αυτό το κουμπί για να εφαρμόσετε την τρέχουσα διαμόρφωση MON, επανεκκινώντας τη διαδικασία του διακομιστή.
+line=(ένα σε κάθε γραμμή)
+save_apply=Αποθήκευση και Εφαρμογή
+watch=Ομάδα παρακολούθησης
+members=Μέλη
+def_perargs=wd {Σάβ-Κυρ}
+
+def_desc=περιγραφή
+def_inter=διάστημα
+def_mon=οθόνη
+def_dep=dpend
+def_per=περίοδος
+def_alert=συναγερμός
+def_alertevr=Ειδοποίηση
+def_alertaft=ειδοποιείστε
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=παγίδευση
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=Ομάδες υποδοχής
+groups_group=Ονομα ομάδας
+groups_members=Μέλη υποδοχής
+
+watches_title=Παρακολουθήστε λίστες
+watches_group=Παρακολούθηση ομάδας
+watches_services=Παρακολούθηση υπηρεσιών
+watches_sadd=Προσθήκη υπηρεσίας ..
+watches_add=Προσθήκη λίστας παρακολούθησης για ομάδα :
+watches_return=λίστες παρακολούθησης
+watches_none=Δεν έχουν οριστεί ακόμη λίστες παρακολούθησης.
+
+global_title=Γενικές επιλογές
+global_header=Παγκόσμια επιλογές διαμόρφωσης MON
+global_maxprocs=Μέγιστες διαδικασίες MON
+global_histlength=Μήκος ιστορικού συμβάντος
+global_alertdir=Κατάλογος προγραμμάτων ειδοποιήσεων
+global_mondir=Παρακολουθήστε τον κατάλογο προγραμμάτων
+global_authtype=Τύπος ελέγχου ταυτότητας
+global_authtype_=Προκαθορισμένο
+global_authtype_getpwnam=Τηλεφωνικές κλήσεις
+global_authtype_userfile=Χρήστες του αρχείου MON
+global_authtype_shadow=Αρχείο σκίασης
+global_userfile=MON του χρήστη
+global_emaxprocs=Λείπει ή μη έγκυρος αριθμός διαδικασιών MON
+global_ehistlength=Μήκος ιστορικού συμβάντος που λείπει ή είναι άκυρο
+global_ealertdir=Έλλειψη ή μη έγκυρος κατάλογος προγραμμάτων ειδοποιήσεων
+global_emondir=Έλλειψη ή μη έγκυρος κατάλογος προγραμμάτων παρακολούθησης
+global_euserfile=Λείπει το αρχείο χρηστών MON
+
+watch_title=Επεξεργασία λίστας παρακολούθησης
+watch_header=Λεπτομέρειες παρακολούθησης της ομάδας υποδοχής
+watch_group=Ομάδα υποδοχής για παρακολούθηση
+watch_services=Παρακολούθηση υπηρεσιών
+watch_service=Ονομα Υπηρεσίας
+watch_monitor=Παρακολούθηση για χρήση
+watch_interval=Ελέγξτε κάθε
+watch_periods=Περίοδοι παρακολούθησης
+
+service_title=Προσθήκη υπηρεσίας
+service_title2=Επεξεργασία υπηρεσίας
+service_header=Παρακολούθησαν λεπτομέρειες υπηρεσίας
+service_name=Όνομα υπηρεσίας
+service_interval=Ελέγξτε κάθε
+service_desc=Περιγραφή
+service_units_s=δευτερολέπτων
+service_units_m=λεπτά
+service_units_h=ώρες
+service_units_d=ημέρες
+service_units_w=εβδομάδες
+service_monitor=Χρησιμοποιώντας οθόνη
+service_mon1=Τυπική οθόνη
+service_mon0=Άλλες οθόνες ..
+service_args=Παρακολούθηση παραμέτρων
+service_period=Περίοδος παρακολούθησης $1 
+service_days=Ημέρες για έλεγχο
+service_hours=Ώρες για έλεγχο
+service_all=Ολα
+service_pstr=Προδιαγραφές περιόδου
+service_new=Νέα περίοδος παρακολούθησης
+service_alerts=Ειδοποιήσεις για περίοδο
+service_alert=Συναγερμός
+service_atype=Εκτέλεση όταν
+service_atype_alert=Η υπηρεσία σβήνει
+service_atype_upalert=Οι υπηρεσίες εμφανίζονται
+service_atype_startupalert=Το MON ξεκινά
+service_aargs=Πρόσθετες παράμετροι
+service_every=Αποστολή ειδοποίησης
+service_every_def=Κάθε φορά που τρέχει η οθόνη
+service_every_time=Κάθε
+service_num=Μέγιστες ειδοποιήσεις για αποστολή
+service_unlimited=Απεριόριστος
+service_after=Αποτυχίες πριν από την προειδοποίηση
+service_immediate=Αμέσως
+service_after_num=Μετά από $1 αποτυχίες
+service_aftertime=Εντός χρονικού διαστήματος
+service_newperiod=Προσθέστε μια νέα περίοδο
+service_delperiod=Διαγράψτε αυτήν την περίοδο
+service_err=Αποτυχία αποθήκευσης υπηρεσίας
+service_ename=Λείπει ή μη έγκυρο όνομα υπηρεσίας
+service_einterval=Έλλειψη ή μη έγκυρο διάστημα ελέγχου
+service_eother=Έλλειψη ή μη έγκυρη οθόνη
+service_ehour=Λείπει ή μη έγκυρη ώρα για την περίοδο $1 (πρέπει να είναι 9 π.μ. ή 5μμ)
+service_eperiod=Δεν έχουν οριστεί ημέρες ή ώρες για την περίοδο $1 
+service_eevery=Έλλειψη ή μη έγκυρο διάστημα ειδοποίησης υπηρεσίας
+service_eafter=Έλλειψη ή μη έγκυρος αριθμός αποτυχιών πριν από την ειδοποίηση
+service_enum=Λανθασμένες ή μη έγκυρες μέγιστες ειδοποιήσεις προς αποστολή
+service_epstr=Λείπει προδιαγραφή περιόδου
+service_known0=<tt>Χρονική περίοδος</tt>
+service_known1=Ορισμένες ημέρες και ώρες
+service_known2=Ορισμένη περίοδος
+
+status_title=MON Status
+status_ecgi=Το πρόγραμμα CGI κατάστασης MON $1 δεν υπάρχει. Ίσως να μην έχει εγκατασταθεί ή η διαμόρφωση της μονάδας σας <a href='$2'></a> είναι εσφαλμένη.
+status_eperl=Το πρόγραμμα CGI κατάστασης MON απαιτεί την υπομονάδα $1 perl. <a href='$2'>Πατήστε εδώ</a> για να το εγκαταστήσετε απευθείας από το CPAN.
+status_esame=Το πρόγραμμα CGI κατάστασης MON $1 έχει οριστεί στο σενάριο <tt>mon.cgi</tt> σε αυτήν την ενότητα Webmin, όχι στο πρόγραμμα CGI που συνοδεύει το MON. Ρυθμίστε τη διαμόρφωση μονάδας <a href='$2'></a> για να χρησιμοποιήσετε τη σωστή διαδρομή.
+
+users_title=Χρήστες MON
+users_etype=Δεν είναι δυνατή η επεξεργασία της λίστας χρηστών MON επειδή η MON δεν έχει ρυθμιστεί ώστε να τη χρησιμοποιεί για έλεγχο ταυτότητας στη σελίδα <a href='$1'>Global Options</a>.
+users_header=Επιτρέπονται χρήστες MON στο $1 
+users_nousers=Δεν έχουν οριστεί χρήστες MON σε $1.
+users_add=Δημιουργήστε έναν νέο χρήστη.
+users_return=Λίστα χρηστών MON
+
+user_create=Δημιουργία χρήστη MON
+user_edit=Επεξεργασία χρήστη MON
+user_header=Λεπτομέρειες χρήστη MON
+user_user=Όνομα χρήστη
+user_pass=Κωδικός πρόσβασης
+user_leave=Αφήστε αμετάβλητη
+user_err=Αποτυχία αποθήκευσης χρήστη
+user_euser=Λείπει ή μη έγκυρο όνομα χρήστη
+user_esame=Ένας χρήστης με το ίδιο όνομα υπάρχει ήδη
+
+auth_title=Εντολές πελάτη
+auth_desc=Αυτή η σελίδα σάς επιτρέπει να ελέγχετε ποιες εντολές MON μπορούν να εκτελεστούν από τους χρήστες κατά τη χρήση των προγραμμάτων-πελατών.
+auth_cmd=MON εντολή
+auth_users=Επιτρέπονται χρήστες
+auth_none=Κανείς
+auth_all=Ολοι
+auth_sel=Μόνο χρήστες
+auth_err=Αποτυχία αποθήκευσης εντολών πελάτη
+auth_eusers=Δεν εισέρχονται χρήστες για εντολή $1 
+
+periods_title=Ορισμένες περίοδοι
+periods_period=Όνομα περιόδου
+periods_times=Ημέρες και ώρες
+periods_alldays=Ολες τις ΗΜΕΡΕΣ
+periods_allhours=Όλες οι ώρες
+periods_err=Αποτυχία αποθήκευσης καθορισμένων περιόδων
+periods_ename=Το '$1' δεν είναι έγκυρο όνομα περιόδου
+periods_ehour=Λείπει ή μη έγκυρη ώρα για την περίοδο $1 (πρέπει να είναι 9 π.μ. ή 5μμ)
+
+show_title=Κατάσταση λειτουργίας
+show_ecgi=Το πρόγραμμα κατάστασης MON $1 δεν υπάρχει. Ίσως να μην έχει εγκατασταθεί ή η διαμόρφωση της μονάδας σας <a href='$2'></a> είναι εσφαλμένη.

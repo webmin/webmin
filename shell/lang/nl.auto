@@ -1,0 +1,5 @@
+index_trunced=De totale output van $2 is ingekort op $1.
+index_timedout=De opdracht is beëindigd na $1 seconden te hebben gedraaid.
+
+acl_shellenv=De geselecteerde gebruikersomgeving gebruiken?
+acl_chroot=Chroot naar directory

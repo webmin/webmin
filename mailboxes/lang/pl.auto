@@ -1,0 +1,282 @@
+index_none=Nie możesz czytać wiadomości e-mail dla użytkowników w tym systemie.
+index_empty=Brak poczty
+index_return=Lista użytkowników
+index_esystem=Żaden z obsługiwanych serwerów pocztowych (Exim, Qmail, Postfix i Sendmail) nie został wykryty w twoim systemie. Konieczne będzie dostosowanie <a href='$1'>konfiguracji modułu</a>, aby ręcznie ustawić serwer poczty i ewentualnie ścieżki poczty.
+index_esystem2=Serwer poczty ustawiony w <a href='$1'>konfiguracji modułu</a> nie został znaleziony w twoim systemie. Będziesz musiał dostosować konfigurację, aby używać poprawnego serwera.
+index_esystem3=Wystąpił błąd podczas łączenia się z systemem poczty ustawionym w konfiguracji modułu <a href='$1'></a>: $2.
+index_toomany=W systemie jest zbyt wielu użytkowników, aby wyświetlić je na jednej stronie.
+index_find=Znajdź użytkowników, gdzie nazwa użytkownika
+index_equals=równa się
+index_contains=zawiera
+index_eperl=Moduł Perla $1 wymagany dla wybranego trybu uwierzytelniania SMTP nie jest zainstalowany lub brakuje modułu zależnego. <a href='$2'>Kliknij tutaj</a>, aby zainstalować teraz.
+index_nousers=Nie znaleziono użytkowników!
+index_nousersmail=Nie znaleziono użytkowników z e-mailem.
+
+mail_level=Wynik
+mail_nosort=Zresetuj sortowanie.
+mail_eexists=Wiadomość już nie istnieje!
+mail_black=Odmów nadawcom
+mail_white=Zezwalaj nadawcom
+mail_whitemove=Zezwalaj nadawcom i skrzynce odbiorczej
+mail_efile=Plik poczty nie istnieje
+mail_fromsrch=Znajdź e-maila z tym samym nadawcą
+mail_subsrch=Znajdź e-maila z tym samym tematem
+mail_tosrch=Znajdź adres e-mail z odbiorcą
+mail_fromfilter=Utwórz filtr według nadawcy
+mail_tofilter=Utwórz filtr według odbiorcy
+mail_subfilter=Utwórz filtr według tematu
+
+mail_sign=Podpisać za pomocą klucza
+mail_nosign=&lt;Nie podpisuj&gt;
+mail_crypt=Szyfruj dla
+mail_nocrypt=&lt;Nie szyfruj&gt;
+mail_samecrypt=&lt;Klucze z adresów docelowych&gt;
+mail_err=Wystąpił błąd podczas wyświetlania poczty w tym folderze : $1
+mail_logindesc=Musisz podać nazwę użytkownika i hasło, aby uzyskać dostęp do poczty <br> w skrzynce odbiorczej na serwerze pocztowym $1.
+mail_sig=Edytuj podpis
+mail_search3=Znajdź z wynikiem powyżej:
+mail_esystem=Wystąpił błąd podczas łączenia się z systemem pocztowym: $1. Musi to naprawić administrator systemu.
+mail_specialsync=Synchronizacja specjalna
+
+view_aview=Widok
+view_sub=Dołączony e-mail
+view_sub2=Załączony e-mail od $1
+view_egone=Ta wiadomość już nie istnieje
+view_eugone=Ten użytkownik nie istnieje
+
+view_gnupg=Weryfikacja podpisu GnuPG
+view_gnupg_0=Podpis przez $1 jest ważny.
+view_gnupg_1=Podpis przez $1 jest prawidłowy, ale nie można ustanowić łańcucha zaufania.
+view_gnupg_2=Podpis od $1 jest <b>NIE</b> ważny.
+view_gnupg_3=Identyfikatora klucza $1 nie ma na liście, więc nie można zweryfikować podpisu.
+view_gnupg_4=Nie udało się zweryfikować podpisu : $1
+view_crypt=Deszyfrowanie poczty GnuPG
+view_crypt_1=Wiadomość jest szyfrowana, ale obsługa GnuPG nie jest zainstalowana.
+view_crypt_2=Nie udało się odszyfrować wiadomości : $1
+view_crypt_3=Poczta została pomyślnie odszyfrowana.
+view_crypt_4=Zaszyfrowana część wiadomości została pomyślnie odszyfrowana.
+view_recv=<a href='$2'>Pobierz identyfikator klucza $1 z serwera kluczy</a>.
+view_folder=Wróć do skrzynki pocztowej
+view_dheader=Odłącz załącznik do serwera
+view_detach=Odłącz plik:
+view_dall=&lt;Wszystkie pliki&gt;
+view_dir=do pliku lub katalogu serwera:
+view_black=Odmów nadawcy
+view_white=Zezwól nadawcy
+view_whitemove=Zezwalaj na nadawcę i skrzynkę odbiorczą
+view_razor=Zgłoś spam
+view_ham=Zgłoś Szynkę
+view_hammove=Zgłoś szynkę i skrzynkę odbiorczą
+view_razordel=Usuń spam
+view_dstatus=Status dostawy nieudanej
+view_dstatusok=Status dostawy pomyślny
+view_final-recipient=Ostateczny odbiorca
+view_diagnostic-code=Powód niepowodzenia
+view_remote-mta=Zdalny serwer pocztowy
+view_reporting-mta=Serwer poczty raportowania
+view_images=Pokaż zdjęcia
+view_raw=Wyświetl nieprzetworzoną wiadomość
+
+enew_title=Edytuj adres e-mail
+reply_mailforward=Przekazywane wiadomości
+reply_attach3=Przesłane załączniki
+reply_body=Wiadomość tekstowa
+reply_errc=Nie udało się skopiować wiadomości
+reply_errm=Nie udało się przenieść poczty
+reply_return=komponować pocztę
+reply_efwdnone=Żadna z przesłanych wiadomości nie istnieje
+reply_dsn=Zażądać powiadomienia o statusie odczytu?
+reply_del=Zażądać powiadomienia o stanie dostawy?
+reply_aboot=Dodać odbiorców do książki adresowej?
+reply_tabfrom=Od
+reply_tabto=Do
+reply_tabreplyto=Odpowiedzieć do
+reply_tabcc=DW
+reply_tabbcc=UDW
+reply_tabsigning=Podpisywanie
+reply_taboptions=Opcje
+reply_addattach=Dodaj pole załącznika.
+reply_addssattach=Dodaj pole załącznika po stronie serwera.
+reply_html0=Utwórz tekst
+reply_html1=Utwórz HTML
+
+reply_spell=Sprawdź błędy ortograficzne?
+reply_draft=Zapisz jako szkic
+reply_save=Zapisz i edytuj
+
+send_esubject=Brakujący temat wiadomości e-mail
+send_title2=Mail Saved
+send_sending=Wysyłanie poczty do $1 ..
+send_epath=Plik wykonywalny Sendmail $1 nie istnieje.
+send_efile=Nie można odczytać załącznika $1 : $2 
+send_done=.. gotowy.
+
+send_epass=Nie możesz podpisać wiadomości, ponieważ twoje hasło nie zostało jeszcze skonfigurowane w module GnuPG.
+send_esign=Nie udało się podpisać wiadomości : $1
+send_ekey=Nie można znaleźć klucza do adresu e-mail $1
+send_ecrypt=Nie udało się zaszyfrować wiadomości : $1
+send_eword=Błędne słowo $1
+send_eword2=Błędnie napisane słowo $1 - możliwe poprawki $2
+send_eline=W linii $1 :
+send_espell=W Twojej wiadomości znaleziono następujące błędy ortograficzne. ..
+send_draft=Wyślij do $1 zapisanego w folderze Robocze.
+send_drafting=Zapisywanie wiadomości do $1 w folderze Robocze.
+send_eattachsize=Załącznik wiadomości przekroczył maksymalny dozwolony rozmiar $1 bajtów
+
+delete_title=Usuń pocztę
+delete_rusure=Czy na pewno chcesz usunąć wybrane wiadomości $1 z $2? W przypadku dużego pliku poczty może to zająć trochę czasu. Do czasu zakończenia usuwania nie należy wykonywać żadnych innych czynności.
+delete_rusure2=Czy na pewno chcesz usunąć tę wiadomość z $1? W przypadku dużego pliku poczty może to zająć trochę czasu. Do czasu zakończenia usuwania nie należy wykonywać żadnych innych czynności.
+delete_ok=Usuń teraz
+delete_efnone=Nie wybrano poczty do przekazania
+delete_ebnone=Nie wybrano żadnej poczty do odrzucenia
+delete_ewnone=Nie wybrano poczty do zezwolenia
+delete_ernone=Nie wybrano poczty zgłaszanej jako spam
+delete_ehnone=Nie wybrano żadnej poczty do zgłoszenia jako szynka
+delete_emoveuser=Użytkownik do przeniesienia poczty nie istnieje
+delete_ecopyuser=Użytkownik do skopiowania poczty nie istnieje
+delete_emovecannot=Nie możesz przenosić poczty do określonego użytkownika
+delete_ecopycannot=Nie możesz kopiować poczty do określonego użytkownika
+delete_emovenone=Nie wybrano poczty do przeniesienia
+delete_ecopynone=Nie wybrano poczty do skopiowania
+delete_nobutton=Nie kliknięto żadnego przycisku
+delete_ereport=Nie udało się zgłosić jako spam : $1
+delete_errc=Nie udało się skopiować wiadomości
+delete_errm=Nie udało się przenieść poczty
+
+confirm_title=Potwierdź usunięcie
+confirm_warn=Czy na pewno chcesz usunąć wybrane wiadomości $1 z tego folderu?
+confirm_warnf=Czy na pewno chcesz usunąć wybrane wiadomości $1 z folderu <b>$2</b>?
+confirm_warn2=Ze względu na rozmiar i format skrzynki pocztowej może to zająć trochę czasu. Do czasu zakończenia usuwania nie należy wykonywać żadnych innych czynności.
+confirm_warn3=Czy na pewno chcesz usunąć tę wiadomość?
+confirm_warn4=Do czasu zakończenia usuwania nie należy wykonywać żadnych innych czynności.
+confirm_ok=Usuń teraz
+confirm_warnall=Czy na pewno chcesz usunąć wszystkie wiadomości z tego folderu?
+confirm_warnallf=Czy na pewno chcesz usunąć wszystkie wiadomości z folderu <b>$1</b>?
+
+search_escore=Brakujący lub nieprawidłowy wynik spamu
+search_efield=Musisz wybrać typ wyszukiwania.
+search_ewhat=Brak tekstu do dopasowania dla wprowadzonego dla wiersza $1
+search_enone=Nie wprowadzono kryteriów wyszukiwania
+search_results2=$1 pasujące wiadomości e-mail $2
+search_results3=$1 wiadomości e-mail niepasujące $2
+search_results4=$1 wiadomości e-mail pasujące do wyszukiwania
+search_results5=$1 wiadomości e-mail, w których $2 odpowiada $3
+search_msg2=Wyniki wyszukiwania dla $1
+search_msg4=Wyniki wyszukiwania
+search_msg5=Wyniki wyszukiwania spamu z wynikiem $1
+search_msg6=Wyniki wyszukiwania dla $1 w polu $2
+search_local=W lokalnych folderach
+search_all=We wszystkich folderach
+search_limit=(od ostatnich $1 wiadomości)
+search_status=Ze statusem
+search_attach=Musisz mieć załączniki?
+search_allstatus=Każdy
+search_onestatus=Tylko status
+search_latest=Wiadomości do wyszukiwania
+search_nolatest=Wszystko w folderze
+search_latestnum=Tylko najnowsze
+search_elatest=Brakująca lub niepoprawna liczba wiadomości do przeszukania
+search_withstatus=, ze statusem $1
+
+folder_inbox=W pudełku
+folder_sent=Wysłany mail
+folder_drafts=Warcaby
+folder_trash=Śmieci
+
+detach_err=Nie można odłączyć pliku
+detach_edir=Brak pliku lub katalogu do zapisania we wpisanym
+detach_eopen=Nie udało się otworzyć $1 : $2 
+detach_ewrite=Nie udało się napisać do $1 : $2 
+detach_title=Odłącz plik
+detach_ok=Napisano załącznik do pliku po stronie serwera $1 ($2).
+
+sform_header=Zaawansowane opcje wyszukiwania wiadomości e-mail
+sform_andmode=Tryb kryteriów
+sform_and=Znajdź wiadomości spełniające wszystkie poniższe kryteria ..
+sform_or=Znajdź wiadomości spełniające poniższe kryteria.
+sform_neg0=zawiera
+sform_neg1=nie zawiera
+sform_folder2=Szukaj w folderach
+sform_all=&lt;Wszystkie foldery&gt;
+sform_local=&lt;Foldery lokalne&gt;
+sform_text=tekst
+sform_from=Od: nagłówek
+sform_subject=Temat: nagłówek
+sform_to=Do: nagłówek
+sform_cc=DW: nagłówek
+sform_bcc=UDW: nagłówek
+sform_date=Data: nagłówek
+sform_body=treść wiadomości
+sform_headers=dowolny nagłówek
+sform_allmsg=cała wiadomość
+
+find_enone=Nie znaleziono użytkowników pasujących do wyszukiwania
+find_title=Wyniki wyszukiwania
+find_results=Użytkownicy pasujący do wyszukiwania $1 ..
+find_user=Nazwa Użytkownika
+find_real=Prawdziwe imię
+find_group=Grupa
+find_home=Katalog domowy
+find_size=Rozmiar wiadomości
+find_incount=E-maile
+find_sentcount=Wysłano
+find_fcount=Lornetka składana
+find_in=$1 w $2
+
+acl_unlimited=bez limitu
+acl_candetach=Czy można odłączyć pliki na serwerze?
+acl_usersm=Użytkownicy pasujący
+acl_usersu=Z UID w zasięgu
+acl_sec=Uwzględnić grupy drugorzędne?
+acl_dir=Czyta pliki poczty w katalogu
+acl_dirauto=Zdecyduj automatycznie (gdziekolwiek wszyscy użytkownicy są widoczni, nigdzie indziej)
+
+emodified=Ten folder został zmodyfikowany od czasu jego ostatniego przeglądania! Wróć do <a href='$1'>listy mailowej</a> i spróbuj ponownie.
+
+razor_title=Zgłaszanie jako spam
+razor_title2=Zgłaszanie jako szynka
+razor_report=Zgłaszanie tej wiadomości do Razor i innych baz danych blokujących spam SpamAssassin ..
+razor_report2=Zgłaszanie wybranych wiadomości do Razor i innych baz danych blokujących spam SpamAssassin ..
+razor_report3=Cofnięcie zgłoszenia wybranych wiadomości do Razor i innych baz danych blokujących spam SpamAssassin.
+razor_done=.. gotowy
+razor_err=.. nie powiodło się! Zobacz powyższy komunikat o błędzie, z jakiego powodu.
+razor_moved=.. gotowe i przeniesiono do folderu $1.
+razor_deleted=... zrobione, a także usunięte wiadomości.
+
+ham_title=Zgłaszanie jako szynka
+ham_report=Zgłaszanie tej wiadomości jako nie-spam do Razor i innych baz danych SpamAssassin ..
+
+black_title=Odmawianie nadawcy
+black_done=Dodano adres e-mail $1 do listy odmówionych adresów SpamAssassin.
+black_already=Adres e-mail $1 znajduje się już na liście odmówionych adresów SpamAssassin.
+
+white_title=Zezwalanie na nadawcę
+white_done=Dodano adres e-mail $1 do listy dozwolonych adresów SpamAssassin.
+white_already=Adres e-mail $1 znajduje się już na liście dozwolonych adresów SpamAssassin.
+
+ldap_emod=Brakujący moduł Perla $1 potrzebny do połączenia z LDAP
+ldap_econn=Nie udało się połączyć z serwerem LDAP $1 port $2
+ldap_elogin=Nie udało się powiązać z serwerem LDAP $1 jako $2 : $3 
+ldap_ehost=Brak serwera LDAP w konfiguracji modułu
+ldap_eport=W konfiguracji modułu nie ustawiono prawidłowego portu serwera LDAP
+ldap_euser=Brak konfiguracji logowania LDAP w konfiguracji modułu
+ldap_ebase=Brak podstawowej nazwy wyróżniającej LDAP w konfiguracji modułu
+
+delall_title=Usuń całą pocztę
+delall_rusure=Czy na pewno chcesz usunąć cały e-mail z $1? $2 wiadomości o łącznej wartości $3 zostaną usunięte na zawsze.
+delall_ok=Usuń teraz
+
+slide_title=Załączone obrazy
+slide_prev=Poprzedni
+slide_next=Kolejny
+
+left_mail=Poczta
+left_search=Szukaj:
+left_folders=Zarządzaj folderami
+left_addresses=Książka adresowa
+left_prefs=Preferencje poczty
+left_forward=Prześlij dalej e-mail
+left_autoreply=Automatyczna odpowiedź
+left_filter=Filtry e-mail
+left_pass=Zmień hasło
+left_sig=Edytuj podpis

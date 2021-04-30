@@ -1,0 +1,116 @@
+index_title=FirewallD
+index_atboot=Povolit firewall při spuštění?
+index_bootup=Aktivovat při spuštění
+index_bootupdesc=Změňte tuto možnost, abyste určili, zda je váš firewall aktivován v době spuštění nebo ne.
+index_apply=Použít konfiguraci
+index_applydesc=Klepnutím na toto tlačítko aktivujete výše uvedenou konfiguraci brány firewall. Všechna aktuálně platná pravidla brány firewall budou vyprázdněna a nahrazena
+index_restart=Použít konfiguraci
+index_restartdesc=Aktivujte všechny výše uvedené povolené služby a porty ve všech zónách. Všechna aktivní pravidla, která nebyla trvale vytvořena, budou nahrazena.
+index_start=Spusťte FirewallD
+index_startdesc=Spusťte server FirewallD a použijte výše uvedená pravidla.
+index_stop=Zastavte FirewallD
+index_stopdesc=Vypněte server FirewallD a odeberte všechna výše uvedená pravidla.
+index_cerr=Nelze použít modul FirewallD : $1 
+index_zone=Zobrazit pravidla v zóně:
+index_zoneok=Změna
+index_zoneadd=Přidat zónu ..
+index_zonedel=Smazat zónu
+index_zonedef=Nastavit jako výchozí
+index_type=Typ pravidla
+index_port=Přístav nebo služba
+index_proto=Protokol
+index_tservice=Služba
+index_tport=Přístav
+index_tforward=Vpřed
+index_padd=Přidejte povolený port.
+index_sadd=Přidat povolenou službu.
+index_fadd=Přidejte port dopředu.
+index_delete=Odstranit vybraná pravidla
+index_return=seznam zón
+index_ezones=Nebyly nalezeny žádné zóny FirewallD!
+index_none=Tato zóna zatím nemá žádné povolené porty nebo služby.
+index_ifaces=Použít pravidla na rozhraní:
+
+port_edit=Upravit port
+port_create=Přidat port
+port_header=Povolené možnosti portu
+port_zone=Povoleno v zóně
+port_port=Port to umožňuje
+port_mode0=Jeden port
+port_mode1=Rozsah portů
+port_mode2=Stejné jako původní port
+port_proto=Síťový protokol
+port_ezone=Zóna neexistuje!
+port_err=Port se nepodařilo uložit
+port_eport=Chybějící nebo neplatné číslo nebo název portu
+port_eportlow=Nízký port musí být číslo
+port_eporthigh=Vysoký port musí být číslo
+port_eportrange=Nízký port musí být pod vysokým portem
+
+serv_edit=Upravit službu
+serv_create=Přidat službu
+serv_header=Povolené možnosti služeb
+serv_name=Služba umožňuje
+serv_err=Uložení služby se nezdařilo
+
+forward_edit=Upravit vpřed
+forward_create=Vytvořit vpřed
+forward_header=Možnosti předávání portů
+forward_zone=Vpřed pro zónu
+forward_err=Nepodařilo se uložit dopředu
+forward_port=Zdrojový port
+forward_dstport=Desintační port
+forward_dstaddr=Cílová adresa
+forward_dstlocal=Tento systém
+forward_edstaddr=Neplatná cílová adresa IPv4
+forward_eneither=Musíte zadat buď cílovou adresu nebo port, nebo oba
+
+check_ecmd=Příkaz ovládání FirewallD $1 nebyl ve vašem systému nalezen
+
+delete_err=Pravidla se nepodařilo smazat
+delete_enone=Žádné vybrané!
+delete_edel=Odstranění $1 selhalo : $2 
+
+zone_title=Vytvořit zónu
+zone_header=Nové možnosti zóny
+zone_name=Název zóny
+zone_mode=Povolené porty a služby
+zone_mode0=Žádné (veškerý provoz bude blokován)
+zone_mode1=Kopírovat ze zóny
+zone_mode2=Pouze SSH, IDENT a Webmin
+zone_mode3=SSH, IDENT, Webmin a vysoké porty
+zone_mode4=Porty používané pro virtuální hosting
+zone_err=Vytvoření zóny se nezdařilo
+zone_ename=Chybějící nebo neplatný název zóny
+zone_eclash=Zóna se stejným názvem již existuje
+
+delzone_title=Smazat zónu
+delzone_err=Odstranění zóny se nezdařilo
+delzone_edefault=Výchozí zónu nelze odstranit
+delzone_rusure=Opravdu chcete odstranit zónu $1, která obsahuje $2 porty a služby $3 ?
+
+defzone_err=Nepodařilo se nastavit zónu jako výchozí
+
+restart_err=Nepodařilo se použít konfiguraci
+
+stop_err=FirewallD se nepodařilo zastavit
+start_err=Spuštění aplikace FirewallD se nezdařilo
+log_stop=Zastaveno FirewallD
+log_start=Spuštěn FirewallD
+log_restart=Použitá konfigurace FirewallD
+log_bootup=Povoleno FirewallD při spuštění
+log_bootdown=Zakázáno FirewallD při spuštění
+log_create_port=Přidán povolený port $1 
+log_delete_port=Byl odebrán povolený port $1 
+log_update_port=Aktualizovaný povolený port $1 
+log_create_serv=Přidána povolená služba $1 
+log_delete_serv=Odebrána povolená služba $1 
+log_update_serv=Aktualizovaná povolená služba $1 
+log_create_forward=Přidáno dopředu $1 
+log_delete_forward=Odebráno dopředu $1 
+log_update_forward=Aktualizováno dopředu $1 
+log_delete_rules=Byly odebrány $1 povolené porty
+log_ifaces_zone=Aktualizovaná rozhraní pro zónu $1 
+log_create_zone=Vytvořená zóna $1 
+log_delete_zone=Odstraněná zóna $1 
+log_default_zone=Výchozí byla zóna $1 

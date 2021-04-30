@@ -47,4 +47,3 @@ save_esame1=De directory <tt>$1</tt> is reeds geexporteerd naar <tt>$2</tt>. Uw 
 save_esame2=De directory <tt>$1</tt> is reeds geexporteerd naar <tt>$2</tt>. Uw besturing systeem staat niet toe dat directory's op hetzelfde <i>locale</i> filesysteem apart worden geexporteerd naar hetzelfde netwerk
 
 restart_err=Mislukt om wijzigingen toe te voegen
-__norefs=1

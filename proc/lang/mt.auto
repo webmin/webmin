@@ -1,0 +1,205 @@
+index_title=Ġiri ta 'Proċessi
+index_display=Wiri
+index_tree=PID
+index_user=Utent
+index_size=Memorja
+index_cpu=CPU
+index_search=Fittex
+index_zone=Żona
+index_run=Imexxi ..
+index_return=lista tal-proċess
+index_mem2=<b>Memorja reali:</b> $1 total / $2 b'xejn
+index_mem3=<b>Memorja reali:</b> $1 total / $2 b'xejn / $3 cache
+index_swap2=<b>Ispazju tpartit:</b> $1 total / $2 b'xejn
+index_burst=<b>Memorja li tista ’tinħoloq:</b> $1 b’kollox
+index_loadname=Medji tat-tagħbija tas-CPU:
+index_loadnums=$1 (1 min), $2 (5 minuti), $3 (15 minuti)
+index_cpuname=Tip ta 'CPU:
+index_inzone=Fiż-żona $1 
+
+pid=ID
+owner=Sidha
+command=Kmand
+cpu=CPU
+size=Daqs
+parent=Proċess tal-ġenituri
+runtime=Ħaddem
+nice=Livell sabiħ
+stime=Beda
+sclass=IO Skedar Klassi
+sprio=Prijorità IO
+
+search_user=Proprjetà ta '
+search_match=Tqabbil
+search_cpupc=Uża aktar minn $1% CPU
+search_cpupc2=Tuża aktar CPU minn
+search_fs=Bl-użu tas-sistema tal-fajls
+search_files=Uża l-fajl
+search_submit=Fittex
+search_none=L-ebda proċess ta 'tqabbil ma nstab.
+search_kill=Ibgħat Sinjal
+search_ignore=Injora l-proċessi tat-tiftix fir-riżultat
+search_return=formola ta ’tfittxija
+search_sigterm=Temm il-Proċessi
+search_sigkill=Proċessi ta 'Joqtol
+search_port=Uża port
+search_protocol=protokoll
+search_ip=Uża l-indirizz IP
+
+run_command=Kmand biex titmexxa
+run_submit=Mexxi
+run_mode=Mexxi l-mod
+run_bg=Mexxi fl-isfond
+run_fg=Stenna sakemm titlesta
+run_input=Input għall-kmand
+run_title=Output Kmand
+run_output=Ħruġ minn $1 ..
+run_none=L-ebda output iġġenerat
+run_ecannot=M'għandekx permess tmexxi kmandi
+run_as=Ħaddem bħala utent
+run_euser=Username nieqes jew invalidu
+run_euser2=M'għandekx permess tmexxi kmandi bħala l-utent magħżul
+
+edit_title=Ipproċessa Informazzjoni
+edit_gone=Dan il-proċess ma għadux għaddej
+edit_sub=Sottoprocessi
+edit_subid=ID
+edit_subcmd=Sub-proċess tal-kmand
+edit_kill=Ibgħat Sinjal
+edit_change=Ibdel
+edit_prilow=Prijorità baxxa
+edit_prihigh=Prijorità għolja
+edit_pridef=Default
+edit_none=Xejn
+edit_ecannot=M'għandekx permess teditja l-proċessi
+edit_sigterm=Itemm
+edit_sigkill=Joqtlu
+edit_sigstop=Issospendi
+edit_sigcont=Kompli
+edit_open=Fajls u Konnessjonijiet
+edit_trace=Proċess ta ’Traċċar
+edit_return=dettalji tal-proċess
+
+kill_err=Naqas milli jibgħat is-sinjal $1 għall-proċess $2 
+kill_title=Ibgħat Sinjal
+kill_sent=mibgħut
+kill_ecannot=M'għandekx permess toqtol proċessi
+
+renice_err=Ma rnexxilux jerġa 'jibda l-proċess $1 
+renice_ecannot=M'għandekx permess li terġa 'titlaq mill-ġdid il-proċessi
+
+linux_pri=Prijorità
+linux_tty=TTY
+linux_status=Status
+linux_wchan=Stennija Ġewwa
+linux_mem=Memorja
+linux_group=Grupp
+linux_ruser=Utent reali
+linux_rgroup=Grupp reali
+linux_pgid=ID tal-grupp tal-proċess
+linux_stime=Beda
+
+linuxstat_R=Ġiri
+linuxstat_S=Irqad
+linuxstat_D=Irqad fil-fond
+linuxstat_T=Waqaf
+linuxstat_Z=Zombie
+
+linux_real=Ħin reali
+linux_be=Aħjar sforz
+linux_idle=Idle
+
+freebsd_ruser=Utent reali
+freebsd_rgroup=Grupp reali
+freebsd_tty=TTY
+freebsd_pgid=Grupp tal-proċess
+freebsd_stime=Beda
+freebsd_lim=Limitu tal-memorja
+
+hpux_pri=Prijorità
+hpux_tty=TTY
+hpux_status=Status
+hpux_wchan=Nistenna għal
+hpux_stime=Beda
+
+hpuxstat_0=Mhux konformi
+hpuxstat_S=Irqad
+hpuxstat_W=Stennija
+hpuxstat_R=Ġiri
+hpuxstat_I=Intermedju
+hpuxstat_Z=Zombie
+hpuxstat_T=Waqaf
+hpuxstat_G=Jikber
+
+macos_tty=TTY
+
+sysv_group=Grupp
+sysv_ruser=Utent reali
+sysv_rgroup=Grupp reali
+sysv_pgid=ID tal-grupp tal-proċess
+sysv_tty=TTY
+sysv_stime=Beda
+sysv_task=ID tal-Kompitu
+sysv_zone=Isem taż-żona
+
+log_run=Ikkomanda l-kmand "$1"
+log_kill=Intbagħat sinjal $1 biex jipproċessa $2 
+log_kills=Ibgħat is-sinjal $1 sa $2 proċessi
+log_kill_l=Intbagħat sinjal $1 biex jipproċessa $2 
+log_kills_l=Intbagħat sinjal $1 għal proċessi <br> $2 
+log_renice=Prijorità mibdula tal-proċess $2 għal $1 
+
+acl_manage=Immaniġġja l-proċessi bħala utent
+acl_manage_def=Utent Webmin attwali
+acl_edit=Jista 'joqtol u jerġa' jibda l-proċessi?
+acl_run=Tista 'tmexxi kmandi?
+acl_only=Tista 'tara biss il-proċessi stess?
+acl_who=Jista 'jimmaniġġja proċessi għall-utenti
+acl_who0=L-utenti kollha
+acl_who1=Utent Webmin attwali
+acl_who2=Utenti elenkati ..
+
+kill_kill=Proċess ta 'Joqtol
+kill_term=Itemm
+kill_hup=Erġa ibda
+kill_stop=Waqfa
+kill_cont=Kompli
+
+open_title=Fajls Miftuħa u Konnessjonijiet
+open_proc=Għall-proċess $1 (PID $2)
+open_header1=Fajls miftuħa
+open_header2=Konnessjonijiet tan - netwerk miftuħa
+open_type=Tip
+open_proto=Protokoll
+open_desc=Dettalji
+open_fd=Deskrittur tal-Fajl
+open_listen1=Nisimgħu fuq il-port $1 
+open_listen2=Nisma 'fuq l-indirizz $1 port $2 
+open_recv=Tirċievi fuq $1:$2 
+open_conn=Konnessi minn $1 sa $2 fl-istat $3 
+open_cwd=Dir kurrenti
+open_rtd=Għerq dir
+open_txt=Kodiċi tal-programm
+open_mem=Librerija komuni
+open_dir=Direttorju
+open_reg=Fajl regolari
+open_chr=Karattru speċjali
+open_blk=Blokk speċjali
+open_size=Daqs tal-fajl
+open_inode=Inode
+open_file=Triq
+
+trace_title=Proċess ta ’Traċċar
+trace_start=Tibda sistema ta ’traċċa ta’ sejħa għal $1 ..
+trace_doing=Traċċa tas-sejħa tas-sistema għal $1  :
+trace_done=.. il-proċess intemm.
+trace_failed=.. irnexxielu jsegwi!
+trace_sorry=Din il-paġna teħtieġ appoġġ Java fil-browser tiegħek. Biex tuża traċċa ta 'proċess ta' test biss, aġġusta l-konfigurazzjoni tal-modulu.
+trace_syscalls=Sejħiet fuq sistema ta ’traċċar:
+trace_all=Kollha
+trace_sel=Elenkati ..
+trace_change=Ibdel
+
+windows_threads=Ħjut fil-proċess
+
+syslog_dmesg=Messaġġi Kernel

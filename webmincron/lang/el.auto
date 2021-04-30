@@ -1,0 +1,20 @@
+edit_mins=Λεπτά
+edit_hours=Ωρες
+edit_days=Ημέρες
+edit_months=Μήνες
+edit_weekdays=Εργάσιμες
+edit_all=Ολα
+edit_selected=Επιλεγμένα ..
+edit_run=Τρέξε τώρα
+edit_clone=Κλωνοποίηση εργασίας
+edit_return=cron δουλειά
+edit_special1=Απλό πρόγραμμα ..
+edit_special0=Οι ώρες και οι ημερομηνίες που επιλέχθηκαν παρακάτω ..
+edit_special_hourly=Ωριαίος
+edit_special_daily=Καθημερινά (τα μεσάνυχτα)
+edit_special_weekly=Εβδομαδιαία (Κυριακή)
+edit_special_monthly=Μηνιαία (στον 1ο)
+edit_special_yearly=Ετήσια (1η Ιανουαρίου)
+
+log_success=Επιτυχής εκτέλεση <tt>$2</tt> στο <tt>$1</tt>
+log_failure=Δεν ήταν δυνατή η εκτέλεση <tt>$2</tt> στο <tt>$1</tt> : $3 

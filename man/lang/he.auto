@@ -1,0 +1,79 @@
+index_title=תיעוד מערכת
+index_header=חיפוש תיעוד מערכת
+index_for=לחפש אחר
+index_where=חפשי ב
+index_alldoc=כל התיעוד
+index_man=דפים ידניים
+index_doc=תיעוד חבילה
+index_kernel=תיעוד ליבה
+index_info=דפי מידע
+index_howto=מסמכי HOWTO
+index_kde=תיעוד KDE
+index_perl=תיעוד מודול פרל
+index_custom=תיעוד מותאם אישית
+index_help=עזרה של Webmin
+index_reset=אפס
+index_search=לחפש
+index_return=טופס חיפוש
+index_type=התאמה
+index_name=שם בלבד
+index_data=שם ותכולה
+index_google=חיפוש בגוגל
+index_others=כשאתה מחפש תיעוד ממודול אחר, אפשר לחפש ..
+index_other_man=דפים ידניים
+index_other_help=עזרה של Webmin
+index_other_doc=תיעוד חבילה
+index_other_kernel=תיעוד ליבה
+index_other_howto=מסמכי HOWTO
+index_other_perl=תיעוד מודול פרל
+index_other_google=מנוע החיפוש של גוגל
+index_other_kde=תיעוד KDE
+index_and=התאמה לכולם
+index_or=התאם לכל אחד
+
+search_efor=אין דף ידני לחיפוש שהוזן
+search_title=תוצאות חיפוש
+search_desc=תיאור
+search_type=סוג
+search_file=עמוד או קובץ
+search_man=עמוד ידני
+search_howto=מסמך HOWTO
+search_doc=תיעוד חבילה
+search_kernel=תיעוד ליבה
+search_kde=תיעוד KDE
+search_perl=מודול פרל
+search_help=עזרה של Webmin
+search_custom=תיעוד מותאם אישית
+search_none=לא נמצאו תיעוד התואם $1.
+search_for=בשביל 1
+search_google=תוצאת חיפוש בגוגל
+search_doxfer=תיעוד מקוון של Webmin
+
+howto_title=מסמך HOWTO
+howto_header=קובץ מסמך HOWTO $1 
+howto_epath=נתיב מסמך HOWTO לא חוקי
+
+doc_title=תיעוד חבילה
+doc_header=קובץ מסמך חבילה $1 
+doc_epath=נתיב תיעוד חבילה לא חוקי
+
+man_title=עמוד ידני
+man_header=דף ידני עבור $1 ($2)
+man_noentry=דף ידני עבור $1 אינו קיים!
+man_epath=דף ידני לא יכול להיות נתיב!
+
+kernel_title=מסמך ליבנה
+kernel_header=קובץ מסמך ליבנה $1 
+kernel_epath=נתיב מסמך גרעיני לא חוקי
+
+kde_title=תיעוד KDE
+kde_header=קובץ מסמך KDE $1 
+kde_epath=נתיב תיעוד KDE לא חוקי
+
+perl_title=מודול פרל
+perl_header=תיעוד עבור מודול Perl $1 
+perl_emod=שם מודול Perl לא חוקי
+
+acl_allow=האם ניתן לערוך סוגי חיפוש מותרים?
+
+check_ecannot=אינך רשאי לערוך סוגי חיפוש מותרים

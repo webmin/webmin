@@ -12,83 +12,63 @@ $server = &foreign_call("servers", "get_server", $in{'id'});
 @packages = @{$host->{'packages'}};
 
 # Show host details
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'host_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_table_start($text{'host_header'}, undef, 4);
 
-print "<tr> <td><b>$text{'host_name'}</b></td>\n";
+my $hmsg;
 if ($server->{'id'}) {
-	print "<td>";
-	printf &ui_link("/servers/link.cgi/%s/","%s"),
-		$server->{'id'},
+	$hmsg = &ui_link("/servers/link.cgi/$server->{'id'}/",
 		$server->{'desc'} ?
-			"$server->{'desc'} ($server->{'host'}:$server->{'port'})" :
-			"$server->{'host'}:$server->{'port'}";
-	print "</td>";
+		    "$server->{'desc'} ($server->{'host'}:$server->{'port'})" :
+		    "$server->{'host'}:$server->{'port'}");
 	}
 else {
-	print "<td><a href=/>$text{'this_server'}</a></td>\n";
+	$hmsg = &ui_link("/", $text{'this_server'});
 	}
+print &ui_table_row($text{'host_name'}, $hmsg, 3);
 
 if ($server->{'id'}) {
-	print "<td><b>$text{'host_type'}</b></td> <td>\n";
-	foreach $t (@servers::server_types) {
-		print $t->[1] if ($t->[0] eq $server->{'type'});
-		}
-	print "</td>\n";
+	my ($t) = grep { $_->[0] eq $server->{'type'} } @servers::server_types;
+	print &ui_table_row($text{'host_type'}, $t ? $t->[1] : "");
 	}
-print "</tr>\n";
 
-print "<tr> <td><b>$text{'host_users'}</b></td>\n";
-printf "<td>%d</td>\n", scalar(@{$host->{'users'}});
+print &ui_table_row($text{'host_userscount'},
+	scalar(@{$host->{'users'}}));
 
-print "<td><b>$text{'host_groups'}</b></td>\n";
-printf "<td>%d</td> </tr>\n", scalar(@{$host->{'groups'}});
+print &ui_table_row($text{'host_groupscount'},
+	scalar(@{$host->{'groups'}}));
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
 
 # Show delete and refresh buttons
-print "<table width=100%><tr>\n";
+print &ui_buttons_start();
 
-print "<td><form action=delete_host.cgi>\n";
-print "<input type=hidden name=id value=$in{'id'}>\n";
-print "<input type=submit value='$text{'host_delete'}'>\n";
-print "</form></td>\n";
+print &ui_buttons_row("delete_host.cgi", $text{'host_delete'}, undef,
+		      [ [ "id", $in{'id'} ] ]);
 
-print "<td align=right><form action=refresh.cgi>\n";
-print "<input type=hidden name=id value=$in{'id'}>\n";
-print "<input type=submit value='$text{'host_refresh'}'>\n";
-print "</form></td>\n";
+print &ui_buttons_row("refresh.cgi", $text{'host_refresh'}, undef,
+		      [ [ "id", $in{'id'} ] ]);
 
-print "</tr></table>\n";
+print &ui_buttons_end();
 
 # Show users and groups
 print &ui_hr();
-print &ui_subheading($text{'host_ulist'});
-print "<table width=100% border>\n";
-print "<tr $tb> <td><b>$text{'index_users'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
-foreach $u (@{$host->{'users'}}) {
-	if ($i%4 == 0) { print "<tr>\n"; }
-	print "<td><a href=\"edit_user.cgi?user=$u->{'user'}&",
-	      "host=$server->{'id'}\">$u->{'user'}</a></td>\n";
-	if ($i%4 == 3) { print "</tr>\n"; }
-	$i++;
+print &ui_table_start($text{'host_users'}, undef, 2);
+my @ugrid;
+foreach my $u (@{$host->{'users'}}) {
+	push(@ugrid, &ui_link("edit_user.cgi?user=".&urlize($u->{'user'}).
+			      "&host=".&urlize($server->{'id'}), $u->{'user'}));
 	}
-print "</table></td> </tr></table>\n";
+print &ui_table_row(undef, &ui_grid_table(\@ugrid, 4), 2);
+print &ui_table_end();
 
-print &ui_subheading($text{'host_glist'});
-print "<table width=100% border>\n";
-print "<tr $tb> <td><b>$text{'index_groups'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_table_start($text{'host_groups'}, undef, 2);
+my @ggrid;
 foreach $g (@{$host->{'groups'}}) {
-	if ($j%4 == 0) { print "<tr>\n"; }
-	print "<td><a href=\"edit_group.cgi?group=$g->{'group'}&",
-	      "host=$server->{'id'}\">$g->{'group'}</a></td>\n";
-	if ($j%4 == 3) { print "</tr>\n"; }
-	$j++;
+	push(@ggrid, &ui_link("edit_group.cgi?group=".&urlize($g->{'group'}).
+			     "&host=".&urlize($server->{'id'}), $g->{'group'}));
 	}
-print "</table></td> </tr></table>\n";
+print &ui_table_row(undef, &ui_grid_table(\@ggrid, 4), 2);
+print &ui_table_end();
 
 &ui_print_footer("", $text{'index_return'});
 

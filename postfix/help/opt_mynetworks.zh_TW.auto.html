@@ -1,0 +1,1 @@
+<header>本地網絡</header><center> <tt>mynetworks</tt> </center> <hr>此參數指定此計算機本地網絡的列表。該列表由反UCE軟件用來區分本地客戶和陌生人。請參閱SMTP配置中的<tt>permit_mynetworks</tt>和<a href=opt_smtpd_recipient_restrictions><tt>smtpd_recipient_restrictions</tt></a> 。 <p>默認值是計算機連接的所有網絡的列表：完整的A類網絡（X.0.0.0 / 8），完整的B類網絡（XX0.0 / 16），依此類推。如果需要更嚴格的控制，請指定網絡/掩碼模式的列表，其中掩碼指定主機地址的網絡部分中的位數。您也可以指定特徵碼文件的絕對路徑名，而不是在此處列出特徵碼。 <hr>

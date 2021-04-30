@@ -1,0 +1,200 @@
+index_title=MON 서비스 모니터
+index_return=월 인덱스
+index_edir=MON 디렉토리 $1 이 (가) 없습니다. MON이 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+mon_global_title=글로벌 변수 구성
+mon_conf_title=기본 구성
+mon_status_title=운영 상태
+hostgroups_title=MON 구성-호스트 그룹
+services_title=감시 그룹 서비스 정의
+
+head_hostgroups=호스트 그룹 및 서비스
+head_groups=호스트 그룹 이름
+head_members=호스트 그룹 회원
+head_services=주목할 호스트 그룹 서비스
+head_service=시청하는 서비스
+head_param=서비스 매개 변수
+head_watch=그룹을 보시겠습니까?
+head_monauth=MONCMD에 대한 인증 제공
+head_usr=사용자 이름
+head_pass=암호
+head_mand=("RED COLOR"의 매개 변수는 필수입니다)
+
+err_nomon='mon'패키지가 시스템에 설치되어 있지 않습니다
+err_nomonconf=시스템에서 MON 구성 파일 $1 을 (를) 찾을 수 없습니다. MON이 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+err_nowatch=선택된 감시 그룹이 없습니다. 계속하려면 하나 이상의 감시 그룹을 선택하십시오.
+err_noserv=감시 그룹에 대해 선택된 서비스가 없습니다
+err_nomemb=감시 그룹에 선택된 호스트/멤버가 없습니다.
+err_monrun=호스트 시스템에서 MON이 실행되고 있지 않습니다. MON을 시작하십시오.
+stop_err=MON을 중지하지 못했습니다.
+stop_epid=더 이상 달리지 않는다
+start_err=MON을 시작하지 못했습니다
+restart_err=MON을 다시 시작하지 못했습니다
+restart_epid=PID를 가져 오지 못했습니다
+
+other=기타 (공간 분리)
+next=다음
+mon_stat=MON 상태
+mon_off=MON 서비스가 시작되지 않았습니다
+mon_start=MON 서비스 시작
+mon_stop=MON 서비스 중지
+mon_restart=MON 서비스를 다시 시작하십시오.
+mon_startdesc=MON 서버를 시작하려면이 단추를 클릭하십시오. 시작될 때까지 구성된 모니터링이 수행되지 않습니다.
+mon_stopdesc=MON 서버를 중지하려면이 단추를 클릭하십시오. 중지하면 구성된 모니터링이 중단됩니다.
+mon_restartdesc=서버 프로세스를 다시 시작하여 현재 MON 구성을 적용하려면이 단추를 클릭하십시오.
+line=(각 줄에 하나씩)
+save_apply=저장하고 적용
+watch=워치 그룹
+members=회원
+def_perargs=wd {토-일}
+
+def_desc=기술
+def_inter=간격
+def_mon=감시 장치
+def_dep=찌르다
+def_per=기간
+def_alert=경보
+def_alertevr=경고하는
+def_alertaft=경보
+def_alertstr=스타트 업
+def_allow=allow_empty_group
+def_traptime=트랩 타임 아웃
+def_trapdur=파쇄
+def_rand=랜드 스크
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=호스트 그룹
+groups_group=그룹 이름
+groups_members=회원 호스트
+
+watches_title=감시 목록
+watches_group=감시 그룹
+watches_services=보고있는 서비스
+watches_sadd=서비스 추가
+watches_add=그룹에 대한 관심 목록 추가  :
+watches_return=감시 목록
+watches_none=아직 감시 목록이 정의되지 않았습니다.
+
+global_title=글로벌 옵션
+global_header=글로벌 MON 구성 옵션
+global_maxprocs=최대 MON 프로세스
+global_histlength=이벤트 히스토리 길이
+global_alertdir=경보 프로그램 디렉토리
+global_mondir=모니터 프로그램 디렉토리
+global_authtype=인증 유형
+global_authtype_=기본
+global_authtype_getpwnam=시스템 호출
+global_authtype_userfile=MON 사용자 파일
+global_authtype_shadow=그림자 파일
+global_userfile=MON 사용자 파일
+global_emaxprocs=MON 프로세스 수가 없거나 유효하지 않습니다
+global_ehistlength=누락되거나 잘못된 이벤트 기록 길이
+global_ealertdir=누락되거나 잘못된 경고 프로그램 디렉토리
+global_emondir=없거나 잘못된 모니터 프로그램 디렉토리
+global_euserfile=MON 사용자 파일이 없습니다.
+
+watch_title=감시 목록 편집
+watch_header=호스트 그룹 감시 세부 사항
+watch_group=볼 호스트 그룹
+watch_services=보고있는 서비스
+watch_service=서비스 이름
+watch_monitor=사용할 모니터
+watch_interval=모든 점검
+watch_periods=모니터링 기간
+
+service_title=서비스 추가
+service_title2=서비스 편집
+service_header=시청 한 서비스 세부 사항
+service_name=서비스 이름
+service_interval=모든 점검
+service_desc=기술
+service_units_s=초
+service_units_m=의사록
+service_units_h=시간
+service_units_d=일
+service_units_w=주
+service_monitor=모니터 사용
+service_mon1=표준 모니터
+service_mon0=다른 모니터 ..
+service_args=모니터 파라미터
+service_period=모니터링 기간 $1 
+service_days=확인할 일
+service_hours=확인 시간
+service_all=모두
+service_pstr=기간 사양
+service_new=새로운 모니터링 기간
+service_alerts=기간 알림
+service_alert=경보
+service_atype=때 실행
+service_atype_alert=서비스가 중단됩니다
+service_atype_upalert=서비스가 나타납니다
+service_atype_startupalert=MON 시작
+service_aargs=추가 매개 변수
+service_every=알림 보내기
+service_every_def=모니터가 실행될 때마다
+service_every_time=마다
+service_num=보낼 최대 알림
+service_unlimited=제한 없는
+service_after=경고 전 실패
+service_immediate=바로
+service_after_num=$1 실패 후
+service_aftertime=시간 간격 내
+service_newperiod=새로운 기간 추가
+service_delperiod=이 기간 삭제
+service_err=서비스를 저장하지 못했습니다
+service_ename=없거나 잘못된 서비스 이름
+service_einterval=확인 간격이 없거나 잘못되었습니다
+service_eother=모니터가 없거나 유효하지 않습니다
+service_ehour=$1 기간 동안 누락되었거나 유효하지 않은 시간 (오전 9시 또는 5시)
+service_eperiod=기간 $1 에 지정된 요일 또는 시간이 없습니다.
+service_eevery=누락되거나 잘못된 서비스 경고 간격
+service_eafter=경고 전에 누락 또는 잘못된 실패 횟수
+service_enum=보낼 최대 알림이 없거나 잘못되었습니다.
+service_epstr=누락 된 기간 사양
+service_known0=<tt>시간 :: 기간</tt> 문자열
+service_known1=지정된 요일과 시간
+service_known2=정해진 기간
+
+status_title=MON 상태
+status_ecgi=MON 상태 CGI 프로그램 $1 이 (가) 없습니다. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+status_eperl=MON 상태 CGI 프로그램에는 $1 perl 모듈이 필요합니다. CPAN에서 직접 설치하려면 <a href='$2'>여기를 클릭</a>하십시오.
+status_esame=MON 상태 CGI 프로그램 $1 이 (가)이 Webmin 모듈에서 MON과 함께 제공되는 CGI 프로그램이 아닌 <tt>mon.cgi</tt> 스크립트로 설정되었습니다. 올바른 경로를 사용하도록 <a href='$2'>모듈 구성</a>을 조정하십시오.
+
+users_title=월 사용자
+users_etype=MON이 <a href='$1'>글로벌 옵션</a> 페이지에서 인증에 사용하도록 MON이 현재 구성되어 있지 않으므로 MON 사용자 목록을 편집 할 수 없습니다.
+users_header=$1 의 MON 사용자 허용
+users_nousers=$1 에 MON 사용자가 정의되지 않았습니다.
+users_add=새 사용자를 작성하십시오.
+users_return=MON 사용자 목록
+
+user_create=MON 사용자 생성
+user_edit=MON 사용자 편집
+user_header=MON 사용자 정보
+user_user=사용자 이름
+user_pass=암호
+user_leave=그대로 두십시오
+user_err=사용자를 저장하지 못했습니다
+user_euser=사용자 이름이 없거나 잘못되었습니다
+user_esame=같은 이름의 사용자가 이미 존재합니다
+
+auth_title=클라이언트 명령
+auth_desc=이 페이지에서는 클라이언트 프로그램을 사용할 때 어떤 사용자가 어떤 MON 명령을 실행할 수 있는지 제어 할 수 있습니다.
+auth_cmd=MON 명령
+auth_users=허용 된 사용자
+auth_none=아무도
+auth_all=각자 모두
+auth_sel=사용자 만
+auth_err=클라이언트 명령을 저장하지 못했습니다
+auth_eusers=$1 명령에 사용자가 입력하지 않았습니다
+
+periods_title=정의 된 기간
+periods_period=기간 이름
+periods_times=요일과 시간
+periods_alldays=모든 날
+periods_allhours=모든 시간
+periods_err=정의 된 기간을 저장하지 못했습니다.
+periods_ename='$1'은 (는) 유효한 기간 이름이 아닙니다.
+periods_ehour=$1 기간 동안 누락되었거나 유효하지 않은 시간 (오전 9시 또는 5시)
+
+show_title=운영 상태
+show_ecgi=MON 상태 프로그램 $1 이 (가) 없습니다. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.

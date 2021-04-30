@@ -1,0 +1,5 @@
+index_langglobal2=Langue globale.. $1 ($2)
+index_overlay=Superposition de thème
+
+change_eoverlay=Vous ne pouvez pas sélectionner une superposition de thème à moins qu'un thème d'interface utilisateur ne soit également choisi
+change_eoverlay2=La superposition de thème sélectionnée n'est pas compatible avec le thème d'interface utilisateur choisi

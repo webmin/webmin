@@ -1,0 +1,3 @@
+name_pt_BR=Procmail
+desc_pt_BR=Filtro de email Procmail
+longdesc_pt_BR=Edite receitas no arquivo global /etc/procmailrc , que se aplica a todos os emails recebidos.

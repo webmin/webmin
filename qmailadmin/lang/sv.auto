@@ -1,0 +1,405 @@
+index_title=QMail Mail Server
+index_edir=QMail-baskatalogen $1 finns inte. Kanske är QMail inte installerad eller så har din <a href='$2'>modulkonfiguration</a> fel.
+index_edir2=Katalogen $1 verkar inte vara QMail-baskatalogen. Kanske är QMail inte installerad eller så har din <a href='$2'>modulkonfiguration</a> fel.
+index_return=QMail-konfiguration
+index_stop=Stoppa QMail-processer
+index_stopmsg=Klicka på den här knappen för att stoppa QMail-processens bakgrund som är ansvarig för att leverera kö i e-post. Utan dessa processer skickas inte e-post från eller levereras till ditt system ordentligt.
+index_start=Starta QMail-processer
+index_startmsg=Klicka på den här knappen för att starta bakgrunden QMail-processer ansvariga för att leverera kö i e-post. Utan dessa processer skickas inte e-post från eller levereras till ditt system ordentligt.
+
+opts_title=QMail-alternativ
+opts_me=Lokalt värdnamn
+opts_helo=Värdnamn för SMTP HELO
+opts_toconnect=SMTP-anslutningsgräns
+opts_secs=sekunder
+opts_toremote=SMTP-utgående svarstid
+opts_bytes=Maximal meddelandestorlek
+opts_unlimited=Obegränsat
+opts_timeout=SMTP-inkommande data-timeout
+opts_localip=Värdnamn för e-post till lokal IP-adress
+opts_greet=SMTP-hälsningsmeddelande
+opts_err=Det gick inte att spara QMail-alternativ
+opts_eme=Ogiltigt lokalt värdnamn
+opts_etoconnect=Ogiltig timeout för SMTP-anslutning
+opts_etoremote=Ogiltig SMTP-utgångstid för utgående svar
+opts_ebytes=Ogiltig maximal meddelandestorlek
+opts_etimeout=Ogiltig SMTP-inkommande datatid
+opts_elocalip=Ogiltigt lokalt IP-adressvärdnamn
+
+aliases_title=Maila alias
+aliases_addr=Adress
+aliases_to=Alias till ..
+aliases_type1=Adress 1
+aliases_type2=E-postkatalog $1 
+aliases_type3=E-postfil $1 
+aliases_type4=Program $1 
+aliases_type5=Skicka filen $1 automatiskt
+aliases_type6=Använd filterfil $1 
+aliases_none=Ingen
+aliases_return=aliaslista
+aliases_toomany=Det finns för många e-postalias på ditt system för att visas på den här sidan.
+aliases_go=Hitta alias matchande:
+aliases_delete=Radera valda alias
+
+aform_type0=Ingen
+aform_type1=E-postadress
+aform_type2=E-postkatalog
+aform_type3=E-postfil
+aform_type4=Mata till programmet
+aform_type5=Skriv automatiskt från filen
+aform_type6=Använd filterfil
+aform_edit=Redigera Alias
+aform_create=Skapa alias
+aform_name=Adress
+aform_val=Alias till
+aform_afile=Redigera ..
+aform_novirt=&lt;Alla domäner&gt;
+aform_return=alias
+
+asave_err=Det gick inte att spara alias
+asave_eaddr='$1' är inte en giltig adress
+asave_ealready=Ett alias för '$1' finns redan
+asave_etype1='$1' är inte en giltig e-postadress
+asave_etype2='$1' är inte en giltig e-postkatalog
+asave_etype3='$1' är inte ett giltigt e-postfilnamn
+asave_etype4='$1' är inte ett giltigt program eller finns inte
+asave_etype5=Filen '$1' automatiskt kan inte gälla
+asave_etype4none=Inget program ges
+asave_etype6=Filterfil "$1" är inte giltig
+
+adelete_err=Det gick inte att ta bort alias
+adelete_enone=Ingen vald
+
+locals_title=Lokala domäner
+locals_domains=Lokala domäner för den här servern
+locals_desc=Qmail accepterar för leverans till lokala användare e-post till domäner och värdnamn som listas i textrutan till vänster. Om du vill att din e-postserver ska hantera flera e-postdomäner bör de alla anges på detta formulär.
+locals_only=Endast lokalt värdnamn $1 
+locals_sel=Domäner listade nedan ..
+
+rcpts_title=Godkända domäner
+rcpts_domains=Godkända lokala och relädomäner
+rcpts_all=Alla domäner
+rcpts_sel=Domäner listade nedan ..
+rcpts_desc=Qmail accepterar endast för e-post till domäner och värdnamn som listas i textrutan till vänster för vidarebefordran eller lokal leverans. Du kan också ange jokertecken som matchar alla värdar i en domän som <tt>.foo.com</tt>. Om du vill att din e-postserver ska vidarebefordra e-post till klienter måste du acceptera e-post från alla domäner.
+rcpts_domains2=Ytterligare lokala och relädomäner
+rcpts_desc2=Om du har ett stort antal accepterade domäner bör mindre vanliga domäner matas in i den här textrutan. Generellt sett bör dina första 50 tillåtna domäner matas in i den övre textrutan, och resten till den här.
+
+bads_title=Avvisade adresser
+bads_addresses=Avvisade e-postadresser
+bads_desc=QMail avvisar e-post för leverans eller vidarebefordran från någon av adresserna i textrutan till vänster, som måste anges som <tt>användarnamn @ domännamn</tt>. Om du vill avvisa e-post från en hel domän bör den matas in som <tt>@ domännamn</tt>.
+
+routes_title=Domänrutning
+routes_toomany=Det finns för många domänvägar på ditt system för att visas på den här sidan.
+routes_go=Hitta domänvägar som matchar:
+routes_from=Maila för domän
+routes_to=Skicka via server
+routes_direct=Leverera direkt
+routes_defroute=Leverera all annan utgående post via:
+routes_return=domänvägar
+routes_delete=Radera valda domänrutor
+
+rform_edit=Redigera domänväg
+rform_create=Skapa domänväg
+rform_from=Maila för värd eller domän
+rform_to=Skicka via SMTP-server
+rform_port=SMTP-port
+
+rsave_err=Det gick inte att spara domänväg
+rsave_efrom='$1' är inte ett giltigt domännamn
+rsave_eto='$1' är inte en giltig SMTP-server
+rsave_eport='$1' är inte ett giltigt portnummer
+
+rdelete_err=Det gick inte att ta bort domänrutor
+
+percents_title=% Adressdomäner
+percents_domains=Domäner som stöder % adresser
+percents_desc=QMail accepterar e-postmeddelanden med adresser i formatet <tt>user%firstdomain@seconddomain</tt> om <tt>seconddomain</tt> listas i textrutan till vänster. Meddelanden i detta format kommer sedan att vidarebefordras till <tt>user@firstdomain</tt> av denna e-postserver.
+
+virts_title=Virtuella kartläggningar
+virts_toomany=Det finns för många virtuella mappningar på ditt system för att visas på den här sidan.
+virts_go=Hitta virtuella mappningar som matchar:
+virts_from=Maila för
+virts_prepend=Prepend prefix
+virts_all=Alla adresser
+virts_none=Inte virtuellt
+virts_desc=Virtuella mappningar används av QMail för att hantera e-post till olika domäner på din server genom att förbereda text till användardelen av e-postadressen innan vidare bearbetning. Du kan använda dem för att konfigurera virtuella e-postdomäner genom att skapa en ny virtuell mappning för en domän och sedan använda sidan <a href='$1'>E-postalias</a> för att skapa alias inom den domänen.
+virts_return=virtuella kartläggningar
+virts_delete=Radera valda virtuella kartläggningar
+
+vform_edit=Redigera virtuell kartläggning
+vform_create=Skapa virtuell kartläggning
+vform_from=Maila för adress
+vform_all=Alla adresser som inte matchar en annan virtuell kartläggning
+vform_domain=Adresser med domän
+vform_user=Adress
+vform_to=Förbered dig på användarnamn
+vform_none=Ingenting
+vform_prepend=Specificerat prefix
+vform_auto=Automatiskt valt prefix
+
+vsave_err=Det gick inte att spara virtuell mappning
+vsave_edomain='$1' är inte en giltig e-postdomän
+vsave_euser='$1' är inte ett giltigt användarnamn för e-post
+vsave_eprepend='$1' är inte ett giltigt mappningsprefix
+vsave_eboth=Du kan inte välja både "Alla adresser som inte matchar en annan virtuell mappning" och "Ingenting"
+
+vdelete_err=Det gick inte att ta bort virtuella mappningar
+
+stop_err=qmail-skicka processen körs inte längre
+
+log_stop=Stoppade QMail-processer
+log_start=Startade QMail-processer
+log_opts=Ändrade QMail-alternativ
+log_alias_create=Skapat alias $1 
+log_alias_delete=Radera alias $1 
+log_alias_modify=Modifierat alias $1 
+log_delete_aliases=$1 alias raderade
+log_virt_create=Skapat virtuell mappning $1 
+log_virt_delete=Raderad virtuell mappning $1 
+log_virt_modify=Modifierad virtuell kartläggning $1 
+log_delete_virts=$1 virtuella mappningar har raderats
+log_virtall_create=Skapad catchall virtual mapping
+log_virtall_delete=Raderad catchall virtuell kartläggning
+log_virtall_modify=Modifierad catchall virtuell kartläggning
+log_locals=Ändrade lokala domäner
+log_rcpts=Ändrade accepterade domäner
+log_bads=Ändrade avvisade adresser
+log_percents=Ändrade % adressdomäner
+log_route_create=Skapad rutt för $1 
+log_route_delete=Raderad rutt för $1 
+log_route_modifed=Ändrad rutt för $1 
+log_delete_routes=$1 rutter har raderats
+log_defroute=Modifierad standardrutt
+log_assign_create=Skapad e-postanvändare $1 
+log_assign_delete=E-postanvändare $1 raderad
+log_assign_modifed=Ändrad e-postanvändare $1 
+log_delete_assigns=$1 e-postanvändare raderade
+log_delmail=$1 meddelanden har tagits bort från $2 
+log_movemail=Flyttade $1 meddelanden från $2 till $3 
+log_send=Skickat e-post till $1 
+
+rfile_title=Redigera Autoreply File
+rfile_desc=Använd textområdet nedan för att redigera autosvarmeddelandet i $1. Meddelandet kan innehålla makron $SUBJECT, $FROM, $TO, $DATE och $BODY som kommer att utökas när autoreply aktiveras.
+rfile_desc2=Du kan också ställa e-posthuvuden som lägger till eller ersätter standardinställningarna som används i autoskyddet genom att sätta rader som: <br><tt> Från: foo@bar.com </tt><br> <tt>Ämne: På semester</tt> <br> högst upp i meddelandet, separerat från kroppen med en enda tom rad.
+rfile_efile=Du får inte redigera $1.
+rfile_undo=Ångra ändringar
+rfile_replies=Spåra svar för att förhindra e-postslingor?
+rfile_none=Nej
+rfile_file=Ja, med loggfil
+rfile_period=Minsta intervall mellan svar
+rfile_default=Standard (1 timme)
+rfile_secs=sekunder
+rfile_ereplies=Saknad loggfil för svarspårning
+rfile_eperiod=Saknas eller ogiltigt antal sekunder mellan svar
+rfile_no_autoreply=Skicka inte autosvar till
+rfile_from=Från: adress för svar
+rfile_auto=Automatisk (baserad på mottagarens adress)
+rfile_efrom=Saknas från: adress
+rfile_fromdesc=A Från: adress ska alltid anges där det är möjligt eftersom den automatiska metoden kanske inte är tillförlitlig.
+
+ffile_title=Redigera filterfil
+ffile_desc=Använd formuläret nedan för att ställa in filterregler i filen $1.
+ffile_efile=Du får inte redigera $1.
+ffile_line=Om fältet $1 $2 $3, vidarebefordra till $4 
+ffile_from=från
+ffile_to=till
+ffile_subject=ämne
+ffile_cc=CC
+ffile_body=kropp
+ffile_what0=matchar inte
+ffile_what1=tändstickor
+ffile_other=Annars vidare till $1 
+ffile_err=Det gick inte att spara filterfilen
+ffile_ematch=Matchen saknas
+ffile_eaction=Saknad vidarebefordringsadress
+
+queue_title=E-postkö
+queue_count=$1 meddelanden
+queue_none=Inga e-postmeddelanden står för närvarande i kö för leverans
+queue_id=Mail-ID
+queue_date=sände
+queue_from=Från
+queue_to=Till
+queue_cc=cc
+queue_subject=Ämne
+queue_return=postkö
+queue_delete=Radera valda meddelanden
+queue_all=Välj alla
+queue_invert=Invertera valet
+queue_refresh=Uppdatera e-postkön
+queue_refreshdesc=Ladda om den här sidan för att visa aktuell status för e-postkön.
+
+qview_title=Meddelande i kö
+qview_desc=Från fil $1 
+qview_headers=E-posthuvuden
+qview_attach=bilagor
+
+assigns_title=Mailanvändaruppdrag
+assigns_return=mail användaruppdrag
+assigns_toomany=Det finns för många e-postanvändare på ditt system för att visas på den här sidan.
+assigns_go=Hitta e-postanvändare som matchar:
+assigns_address=Maila till adress
+assigns_user=Unix-användare
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=Hemkatalog
+assigns_desc=Med e-postanvändartilldelningar kan du skapa brevlådor för användare som inte är definierade i Unix-användarlistan. Varje uppdrag kommer att leverera e-post för ett valt användarnamn eller användarnamnmönster, som om det levererades till en riktig Unix-användares postlåda.
+assigns_delete=Radera valda postanvändare
+
+sform_edit=Redigera e-postanvändare
+sform_create=Skapa e-postanvändare
+sform_address=Adressnamn
+sform_mode0=Exakt användarnamn
+sform_mode1=Användarnamn som börjar med
+sform_user=Unix-användare
+sform_uid=UID
+sform_gid=GID
+sform_home=Hemkatalog
+
+ssave_err=Det gick inte att spara e-postanvändare
+ssave_eaddress=Saknar eller ogiltigt adressnamn
+ssave_euser=Unix-användare saknas eller ogiltig
+ssave_euid=Saknad eller ogiltig UID
+ssave_egid=GID saknas eller ogiltig
+ssave_ehome=Saknad eller ogiltig hemmakatalog
+
+sdelete_err=Det gick inte att ta bort e-postanvändare
+
+delete_egone=Meddelandet i kö finns inte längre
+delete_ebogus=Ogiltigt könamn
+
+boxes_title=Användarbrevlådor
+boxes_user=Användare
+boxes_size=Postlådestorlek
+boxes_none=Ingen post
+boxes_return=brevlådor
+boxes_sent=Skickade post
+boxes_ecannot=Du får inte läsa e-post
+boxes_toomany=Det finns för många användare på ditt system för att lista alla sina brevlådor.
+boxes_go=Visa e-post för användare:
+
+mail_title=Användar-e-post
+mail_from=Från
+mail_date=Datum
+mail_subject=Ämne
+mail_to=Till
+mail_cc=cc
+mail_bcc=bcc
+mail_pri=Prioritet
+mail_highest=Högsta
+mail_high=Hög
+mail_normal=Vanligt
+mail_low=Låg
+mail_lowest=Lägst
+mail_for=I 1
+mail_for2=För användare $1 
+mail_sent=I skickad e-postlista
+mail_size=Storlek
+mail_delete=Radera
+mail_compose=Komponera
+mail_return=användarens brevlåda
+mail_pos=Meddelanden $1 till $2 av $3 
+mail_none=Den här brevlådan har inga meddelanden
+mail_ecannot=Du får inte läsa den här användarens e-post
+mail_all=Välj alla
+mail_invert=Invertera valet
+mail_search=Hitta meddelanden där
+mail_body=Kropp
+mail_match=tändstickor
+mail_ok=Sök
+mail_nonefrom=Ingen
+mail_mark=Markera som:
+mail_mark0=Oläst
+mail_mark1=Läsa
+mail_mark2=Särskild
+mail_forward=Framåt
+mail_rfc=Från rad
+mail_move=Flytta till:
+mail_eexists=Meddelandet finns inte längre!
+
+view_title=Läs e-post
+view_desc=Meddelande $1 i $2 
+view_desc2=Meddelande $1 för användare $2 
+view_desc3=Meddelande $1 
+view_sent=Meddelande $1 i skickad e-postlista
+view_qdesc=Meddelande i kö $1 
+view_headers=E-posthuvuden
+view_allheaders=Visa alla rubriker
+view_noheaders=Visa grundläggande rubriker
+view_attach=bilagor
+view_reply=Svar
+view_reply2=Svara alla
+view_enew=Redigera som nytt
+view_forward=Framåt
+view_delete=Radera
+view_strip=Ta bort bilagor
+view_ecannot=Du får inte läsa den här användarens e-post
+view_mark=Markera meddelande som:
+view_mark0=Oläst
+view_mark1=Läsa
+view_mark2=Särskild
+view_return=original e-post
+view_sub=Bifogad e-post
+
+compose_title=Skriv e-post
+reply_title=Svara på e-post
+forward_title=Vidarebefordra e-post
+enew_title=Redigera e-post
+reply_headers=E-posthuvuden
+reply_attach=Vidarebefordrade bilagor
+reply_mailforward=Vidarebefordrade meddelanden
+reply_attach2=Klient- och serversidan Bilagor
+reply_send=Skicka brev
+reply_ecannot=Du får inte skicka e-post som den här användaren
+
+send_err=Det gick inte att skicka e-post
+send_eto=Saknas till adress
+send_efrom=Saknas från adress
+send_title=Mail skickat
+send_ok=E-post skickas till $1 
+send_ecannot=Du får inte skicka e-post som den här användaren
+send_esmtp=SMTP-kommando $1 misslyckades : $2 
+send_efile=Den bifogade filen $1 finns inte
+send_eattach=Bilagor kan inte uppgå till mer än $1 kB i storlek.
+send_eperms=Användare $1 kan inte läsa $2 
+send_eperms2=Du får inte skicka fil $1 
+send_epath=Sendmail körbar $1 finns inte.
+
+delete_title=Ta bort post
+delete_rusure=Är du säker på att du vill ta bort de $1 markerade meddelandena från $2 ? Det kan ta lite tid för en stor e-postfil. Tills raderingen är klar bör ingen annan åtgärd utföras.
+delete_rusure2=Är du säker på att du vill ta bort det här meddelandet från $1 ? Det kan ta lite tid för en stor e-postfil. Tills raderingen är klar bör ingen annan åtgärd utföras.
+delete_ok=Radera nu
+delete_ecannot=Du får nu ta bort e-post från den här användaren
+delete_enone=Ingen e-post har valts för att radera
+delete_emnone=Ingen e-post vald för att markera
+delete_nobutton=Ingen knapp klickade
+
+search_title=sökresultat
+search_ecannot=Du får inte söka i den här användarens e-post
+search_ematch=Du måste ange text för att matcha mot.
+search_efield=Du måste välja en söktyp.
+search_none=Inga meddelanden hittades.
+search_results2=$1 e-postmeddelanden som matchar $2 ..
+search_results3=$1 e-postmeddelanden som inte matchar $2 ..
+
+match_from=Från: matcher
+match_subject=Ämne: matcher
+match_to=Till: matcher
+match_cc=Cc: matcher
+match_date=Datum: matcher
+match_body=Kroppsmatcher
+match_size=Storleken är större än
+match_headers=Rubriker matchar
+match_=-----------------
+match_!from=Från: stämmer inte
+match_!subject=Ämne: stämmer inte
+match_!to=Till: stämmer inte
+match_!cc=Cc: stämmer inte
+match_!date=Datum: stämmer inte
+match_!body=Kroppen matchar inte
+match_!size=Storleken är mindre än
+match_!headers=Rubriker matchar inte
+
+delq_titles=Radera meddelanden
+delq_rusure=Är du säker på att du vill ta bort de $1 markerade kömeddelandena?
+delq_confirm=Radera meddelanden

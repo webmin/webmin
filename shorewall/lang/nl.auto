@@ -1,0 +1,28 @@
+providers_return=lijst met routingproviders
+
+route_rules_title=Routingregels
+route_rules_desc=De pagina bepaalt welk verkeer wordt omgeleid naar de providers die zijn gedefinieerd op de pagina Aanvullende routeproviders.
+route_rules_ip=IP-adres, netwerk of interface
+route_rules_add=Voeg een nieuwe routeringsregel toe.
+route_rules_none=Er zijn nog geen routeringsregels gedefinieerd.
+route_rules_0=Verkeersbron
+route_rules_1=Verkeersbestemming
+route_rules_2=Aanbieder
+route_rules_3=Prioriteit
+route_rules_4=Mark
+route_rules_header=Opties voor routeringsregels
+
+route_rules_src=Verkeersbron
+route_rules_dst=Verkeersbestemming
+route_rules_prov=Route via provider
+route_rules_main=Standaard routeringstabel
+route_rules_pri=Regelprioriteit
+route_rules_mark=Markeer pakket met
+route_rules_nomark=Niets
+route_rules_esrc=Ontbrekende verkeersbron
+route_rules_edst=Ontbrekende verkeersbestemming
+route_rules_epri=Regelprioriteit moet een getal zijn
+route_rules_emark=Pakketmarkering moet de nummer- of nummer-/maskerindeling hebben
+route_rules_return=lijst met routeringsregels
+route_rules_edit=Routingregel bewerken
+route_rules_create=Maak een routeringsregel

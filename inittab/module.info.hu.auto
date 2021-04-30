@@ -1,0 +1,3 @@
+name_hu=inittabban
+longdesc_hu=Konfigurálja az alacsony szintű szolgáltatásokat a rendszerindításkor történő futtatáshoz, és válassza ki a kezdeti futási szintet.
+desc_hu=Kezdeti rendszerindítás

@@ -1,0 +1,69 @@
+index_where=Keresni valamiben
+index_alldoc=Minden dokumentáció
+index_man=Kézi oldalak
+index_doc=Csomag dokumentáció
+index_kernel=Kernel dokumentáció
+index_info=Információs oldalak
+index_howto=HOGYAN dokumentumok
+index_kde=KDE dokumentáció
+index_perl=A Perl modul dokumentációja
+index_custom=Egyéni dokumentáció
+index_help=Webmin súgó
+index_type=mérkőzés
+index_name=Csak név
+index_data=Név és tartalom
+index_google=Google kereső
+index_others=Ha dokumentációt keres egy másik modulról, engedélyezze a keresést a ..
+index_other_man=Kézi oldalak
+index_other_help=Webmin súgó
+index_other_doc=Csomag dokumentáció
+index_other_kernel=Kernel dokumentáció
+index_other_howto=HOGYAN dokumentumok
+index_other_perl=A Perl modul dokumentációja
+index_other_google=Google keresőmotor
+index_other_kde=KDE dokumentáció
+index_and=Minden egyezés
+index_or=Bármelyik
+
+search_type=típus
+search_file=Oldal vagy fájl
+search_man=Kézi oldal
+search_howto=HOGYAN dokumentum
+search_doc=Csomag dokumentáció
+search_kernel=Kernel dokumentáció
+search_kde=KDE dokumentáció
+search_perl=Perl modul
+search_help=Webmin súgó
+search_custom=Egyéni dokumentáció
+search_for=$1 esetében
+search_google=Google keresési eredmény
+search_doxfer=A Webmin online dokumentációja
+
+howto_title=HOGYAN Dokumentum
+howto_header=HOGYAN $1 dokumentumfájl
+howto_epath=Érvénytelen HOWTO dokumentum elérési útja
+
+doc_title=Csomagok dokumentációja
+doc_header=Csomagdokumentum $1 
+doc_epath=Érvénytelen csomagdokumentációs útvonal
+
+man_title=Kézi oldal
+man_header=Kézi oldal a következőhöz: $1 ($2)
+man_noentry=A (z) $1 kézi oldala nem létezik!
+man_epath=A kézi oldal nem lehet út!
+
+kernel_title=Kernel dokumentum
+kernel_header=$1 kernel dokumentumfájl
+kernel_epath=Érvénytelen kerneldokumentum-útvonal
+
+kde_title=KDE dokumentáció
+kde_header=$1 KDE dokumentumfájl
+kde_epath=Érvénytelen KDE dokumentációs útvonal
+
+perl_title=Perl modul
+perl_header=A $1 Perl-modul dokumentációja
+perl_emod=Érvénytelen Perl-modulnév
+
+acl_allow=Szerkesztheti az engedélyezett keresési típusokat?
+
+check_ecannot=Az engedélyezett keresési típusokat nem szabad szerkeszteni

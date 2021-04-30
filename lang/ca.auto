@@ -1,0 +1,27 @@
+category_=Eines
+
+longcategory_=Mòduls que realitzen altres tasques diverses
+
+config_emodule=El mòdul no existeix
+
+progress_size2=Baixant $1 ($2) ..
+progress_datan=S'ha rebut $1 ($2 %)
+progress_data2n=S'ha rebut $1
+
+nice_size_PB=PB
+nice_size_PiB=PiB
+nice_size_TB=TB
+nice_size_TiB=TiB
+nice_size_GB=GB
+nice_size_GiB=GiB
+nice_size_MB=MB
+nice_size_MiB=MiB
+nice_size_kB=kB
+nice_size_kiB=KiB
+nice_size_b=bytes
+
+langauto_include=Inclou traduccions automàtiques
+
+file_truncated_message=s'ha obtingut $1 de dades, s'ha truncat $2 de $3 
+file_truncated_message_head=s'ha obtingut l'inici de $1 de dades, s'ha truncat $2 de $3 
+file_truncated_message_tail=S'ha obtingut el final $1 de dades, s'ha truncat $2 de $3 

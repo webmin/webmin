@@ -18,6 +18,7 @@ if ($in{'delete'}) {
 	&delete_file_if_empty($vconf->{'file'});
 	&flush_file_lines();
 	&unlock_file($vconf->{'file'});
+	&update_last_config_change();
 
 	&after_changing();
 

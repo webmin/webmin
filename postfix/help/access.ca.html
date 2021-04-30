@@ -1,30 +1,30 @@
-<header>Mapa d'accés de taules</header>
+<header>Mapa d'accÃ©s de taules</header>
 
-El mapa opcional d'accés de taules adreça el servidor SMTP Postfix per a rebutjar o acceptar correu selectivament. L'accés es pot permetre o denegar
-per a noms de host, noms de domini, xarxes adreces de host o adreces de correu específics.
+El mapa opcional d'accÃ©s de taules adreÃ§a el servidor SMTP Postfix per a rebutjar o acceptar correu selectivament. L'accÃ©s es pot permetre o denegar
+per a noms de host, noms de domini, xarxes adreces de host o adreces de correu especÃ­fics.
 
 <p><b>Mapes d'adreces de correu</b></p>
 <ul>
-<li> <b><tt>usuari@domini</tt></b> coincideix amb l'adreça de correu especificada</li>
-<li> <b><tt>domini.tld</tt></b> coincideix amb domini.tld com a la part del domini d'una adreça de correu</li>
+<li> <b><tt>usuari@domini</tt></b> coincideix amb l'adreÃ§a de correu especificada</li>
+<li> <b><tt>domini.tld</tt></b> coincideix amb domini.tld com a la part del domini d'una adreÃ§a de correu</li>
 <li> <b><tt>usuari@</tt></b> coincideix amb totes les adreces amb la part d'usuari especificada</li>
 </ul>
 
 <p><b>Mapes de Noms de host/Adreces IP</b></p>
 <ul>
 <li> <b><tt>xar.xa.adr.ess<br>xar.xa.adr<br>xar.xa<br>net</tt></b> 
-   coincideix amb l'adreça de host IPV4 o subxarxa especificada</li>
+   coincideix amb l'adreÃ§a de host IPV4 o subxarxa especificada</li>
 <li> <b><tt>xar:xa:adr:ess<br>xar:xa:adr<br>xar:xa<br>net</tt></b> 
-   coincideix amb l'adreça de host IPV6 o subxarxa especificada</li>
+   coincideix amb l'adreÃ§a de host IPV6 o subxarxa especificada</li>
 </ul>
 <p>
 
-<p><b>Acció en coincidir</b></p>
+<p><b>AcciÃ³ en coincidir</b></p>
 <ul>
 <li> <b><tt>OK</tt></b> Accepta el correu.</li>
-<li> <b><tt>REJECT [missatge]</tt></b> Rebutja el correu, i respon amb un [missatge] o un error genèric.</li>
+<li> <b><tt>REJECT [missatge]</tt></b> Rebutja el correu, i respon amb un [missatge] o un error genÃ¨ric.</li>
 <li> <b><tt>DISCARD [missatge]</tt></b> Descarta el correu en silenci; opcionalment escriu un [missatge] de registre.</li>
-<li> <B><tt>REDIRECT spam@elteudomini.com</tt></b> reenvia el correu a una altra adreça</li>
+<li> <B><tt>REDIRECT spam@elteudomini.com</tt></b> reenvia el correu a una altra adreÃ§a</li>
 </ul>
 
 <footer>

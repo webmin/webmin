@@ -1,0 +1,18 @@
+index_none=尚未定义任何网络服务。
+index_name=服务名称
+index_estart=启动Xinetd $1的命令不存在。可能未安装，或者您的<a href='$2'>模块配置</a>不正确。
+index_noport=未知
+index_enable=启用选定
+index_disable=禁用选择
+
+serv_id=服务名称
+
+restart_epid=不再运行
+
+log_enable=已启用 $1服务
+log_disable=禁用的 $1服务
+log_enable_l=已启用的服务 $1
+log_disable_l=残障人士服务 $1
+
+config_dirdef=Xinetd配置文件
+config_dirto=目录中的新文件

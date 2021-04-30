@@ -1,0 +1,67 @@
+index_title=클러스터 복사 파일
+index_add=예약 된 새 파일 사본을 작성하십시오.
+index_none=예약 된 파일 사본이 정의되지 않았습니다.
+index_servers=서버에 복사
+index_return=클러스터 사본 목록
+index_more=$1 개 더 ..
+index_run=지금 ..
+index_files=복사 할 파일
+index_sched=예약?
+index_when=예, $1 
+index_act=동작
+index_exec=실행
+index_delete=선택한 사본 삭제
+
+edit_title=클러스터 사본 편집
+create_title=클러스터 사본 생성
+edit_header=클러스터 사본 세부 사항
+edit_files=복사 할 파일
+edit_dest=대상 디렉토리
+edit_cmd=복사 후 실행할 명령
+edit_before=복사하기 전에 실행할 명령
+edit_remote=원격 서버에서
+edit_dmode0=디렉토리 아래에 전체 경로 복사
+edit_dmode1=이 디렉토리에 복사
+edit_servers=서버에 복사
+edit_group=$1 의 회원
+edit_this=이 서버
+edit_all=&lt;모든 호스트&gt;
+edit_sched=일정에 따라 복사 하시겠습니까?
+edit_schedyes=예, 아래 선택된 시간에 ..
+edit_run=지금 복사
+edit_return=클러스터 사본
+edit_email=에 이메일 출력
+edit_none=아무도
+
+save_err=클러스터 크론 작업을 저장하지 못했습니다.
+save_efiles=복사 할 파일이 입력되지 않았습니다
+save_edest=대상 디렉토리가 없습니다.
+save_eservers=복사 할 서버가 없습니다.
+save_efile='$1'을 (를) 복사 할 파일이 절대 경로가 아닙니다
+save_eemail=이메일 주소가 없거나 잘못되었습니다
+
+exec_title=파일 복사
+exec_files1=선택한 서버 $2 에 $1 파일을 복사하는 중입니다.
+exec_files2=선택한 서버 $2 에 $1 을 복사 중입니다.
+exec_under=($1 디렉토리 아래)
+exec_failed=$1 에 복사하지 못했습니다  : $2 
+exec_success=다음 파일을 $1 에 복사했습니다.
+exec_made=$1 에 다음 디렉토리를 작성했습니다.
+exec_nohosts=실행하도록 선택된 호스트가 없거나 선택된 그룹에 사용 가능한 호스트가 없습니다.
+exec_nothing=파일이 $1 에 성공적으로 복사되지 않았습니다.
+exec_not=다음 파일을 $1 에 복사하지 못했습니다  :
+exec_cmd=$1 의 복사 후 명령 출력  :
+exec_before=$1 에서 복사 전 명령 출력  :
+exec_on=$1 에서 실행하지 못했습니다  : $2 
+
+log_create=서버 $1 에서 $2 까지의 복사본을 만들었습니다.
+log_modify=$1 에서 $2 서버에 대한 수정 된 사본
+log_delete=$1 에서 $2 서버에 대한 삭제 된 사본
+log_exec=$1 에서 $2 서버로 복사
+log_deletes=$1 개 사본을 삭제했습니다.
+
+email_subject_succeeded=$1 의 클러스터 복사에 성공했습니다
+email_subject_failed=$1 의 클러스터 복사에 실패했습니다
+
+delete_err=사본을 삭제하지 못했습니다.
+delete_enone=선택된 사항 없음

@@ -16,7 +16,7 @@ sub get_config
 {
 local @rv;
 local $lnum = 0;
-open(FILE, $config{'file'});
+open(FILE, "<".$config{'file'});
 while(<FILE>) {
 	s/\r|\n//g;
 	if (/^\s*(#?)\s*(\S+)\s*(\S*)\s*$/) {
@@ -69,7 +69,7 @@ elsif (defined($_[2])) {
 # Returns the PID of the running PPTP server process
 sub get_pptpd_pid
 {
-open(PID, $config{'pid_file'}) || return undef;
+open(PID, "<".$config{'pid_file'}) || return undef;
 local $pid = <PID>;
 $pid = int($pid);
 close(PID);
@@ -93,7 +93,7 @@ sub parse_ppp_options
 {
 local @rv;
 local $lnum = 0;
-open(OPTS, $_[0]);
+open(OPTS, "<".$_[0]);
 while(<OPTS>) {
 	s/\r|\n//g;
 	s/#.*$//g;

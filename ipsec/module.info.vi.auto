@@ -1,0 +1,3 @@
+name_vi=IPsec
+desc_vi=Cấu hình VPN IPsec
+longdesc_vi=Thiết lập máy khách hoặc máy chủ cho IPsec VPN bằng FreeSWAN.

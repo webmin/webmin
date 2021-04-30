@@ -1,0 +1,67 @@
+index_title=קבצי העתקת אשכול
+index_add=צור עותק קובץ מתוזמן חדש.
+index_none=לא הוגדרו עותקי קבצים מתוזמנים.
+index_servers=העתק לשרתים
+index_return=רשימת עותקי אשכול
+index_more=$1 יותר ..
+index_run=רוץ עכשיו ..
+index_files=קבצים להעתקה
+index_sched=מתוזמן?
+index_when=כן, $1 
+index_act=פעולה
+index_exec=לבצע
+index_delete=מחק עותקים שנבחרו
+
+edit_title=ערוך העתק אשכול
+create_title=צור העתק אשכול
+edit_header=פרטי העתקת אשכול
+edit_files=קבצים להעתקה
+edit_dest=מדריך יעד
+edit_cmd=פקודה לפעול לאחר ההעתקה
+edit_before=פקודה להפעלה לפני ההעתקה
+edit_remote=בשרתים מרוחקים
+edit_dmode0=העתק נתיבים מלאים תחת מדריך
+edit_dmode1=העתק לספרייה זו
+edit_servers=העתק לשרתים
+edit_group=חברים ב- $1 
+edit_this=שרת זה
+edit_all=&lt;כל המארחים&gt;
+edit_sched=להעתיק לפי לוח הזמנים?
+edit_schedyes=כן, לפעמים נבחרים למטה ..
+edit_run=העתק עכשיו
+edit_return=עותק אשכול
+edit_email=פלט דוא"ל אל
+edit_none=אף אחד
+
+save_err=שמירת עבודת cron באשכול נכשלה
+save_efiles=לא נכנסו קבצים להעתקה
+save_edest=ספריית יעד חסרה
+save_eservers=אין שרתים להעתקה להיכנס
+save_efile=קובץ להעתקת '$1' אינו נתיב מוחלט
+save_eemail=כתובת דוא"ל חסרה או לא חוקית
+
+exec_title=העתקת קבצים
+exec_files1=מעתיק $1 קבצים לשרתים שנבחרו $2 ..
+exec_files2=מעתיק $1 לשרתים שנבחרו $2 ..
+exec_under=(תחת מדריך $1)
+exec_failed=ההעתקה נכשלה ל- $1 : $2 
+exec_success=העתיקו את הקבצים הבאים ל- $1  :
+exec_made=יצר את הספריות הבאות ב- $1  :
+exec_nohosts=אין מארחים שנבחרו לרוץ, או קבוצות שנבחרו אינם מכילים מארחים שמישים.
+exec_nothing=לא הועתקו בהצלחה קבצים ל- $1.
+exec_not=העתקת הקבצים הבאים ל- $1 נכשלה :
+exec_cmd=פלט פקודה לאחר ההעתקה ב- $1  :
+exec_before=פלט פקודה לפני העתקה ב- $1  :
+exec_on=ההפעלה של $1 : $2 נכשלה
+
+log_create=נוצר עותק עבור שרתי $1 עד $2 
+log_modify=עותק שונה עבור שרתי $1 עד $2 
+log_delete=העתק נמחק עבור שרתי $1 עד $2 
+log_exec=הועתקו שרתי $1 ל- $2 
+log_deletes=$1 עותקים נמחקו
+
+email_subject_succeeded=עותק האשכול של $1 הצליח
+email_subject_failed=עותק האשכול של $1 נכשל
+
+delete_err=מחיקת העותקים נכשלה
+delete_enone=לא נבחר

@@ -1,1 +1,1 @@
-desc_fr=Téléverser et Télécharger
+desc_fr=TÃ©lÃ©verser et TÃ©lÃ©charger

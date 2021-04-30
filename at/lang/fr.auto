@@ -1,0 +1,21 @@
+index_noat=La commande $1 est introuvable sur votre système - elle n'est peut-être pas installée ou n'est pas disponible pour votre système d'exploitation.
+index_nostyle=Webmin ne sait pas comment gérer les commandes de planification sur ce système d'exploitation.
+index_stop=Arrêter le serveur de commandes programmées
+index_stopdesc=Arrêtez le processus du serveur d'arrière-plan <tt>atd</tt> qui exécute les commandes planifiées. Cela empêchera les commandes de s'exécuter aux heures spécifiées.
+index_start=Démarrer le serveur de commandes programmées
+index_startdesc=Démarrez le processus du serveur d'arrière-plan <tt>atd</tt> qui exécute les commandes planifiées. Ceci est nécessaire pour que les commandes s'exécutent aux heures spécifiées.
+index_boot=Démarrer le serveur au démarrage?
+index_bootdesc=Modifiez ce paramètre pour activer ou désactiver le démarrage du serveur de commandes planifiées au moment du démarrage du système.
+
+log_allow=Utilisateurs autorisés modifiés
+log_create_job=Commande planifiée créée pour $1 
+log_delete_job=Commande planifiée annulée pour $1 
+log_exec_job=Commande planifiée exécutée pour $1 
+log_delete_jobs=Commandes programmées $1 annulées
+log_stop=Serveur de commandes planifiées arrêté
+log_start=Démarrage du serveur de commandes planifiées
+log_bootup=Serveur de commandes planifiées activé au démarrage
+log_bootdown=Serveur de commandes planifiées désactivé au démarrage
+
+stop_err=Échec de l'arrêt du serveur
+start_err=Échec du démarrage du serveur

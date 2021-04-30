@@ -388,7 +388,7 @@ elsif ($in{'mode'} == 1) {
 sub read_rhs_drivers
 {
 local (@rv, $drv);
-open(DRV, $rhs_drivers_file);
+open(DRV, "<".$rhs_drivers_file);
 while(<DRV>) {
 	s/#.*$//g;
 	s/\r|\n//g;

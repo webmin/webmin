@@ -1,0 +1,66 @@
+index_ouser=Webmin kullanıcısı olmayan tarafından
+index_yesterday=Sadece dün için
+index_week=Geçen hafta boyunca
+index_susers=Webmin kullanıcılarının eylemleri
+index_smods=Modüldeki işlemler
+index_sfile=Dosyada değişiklik yapan işlemler
+index_sdiff=Dosya değiştirme veya komut çalıştırma
+index_dall=Herhangi bir değişiklik
+index_diff=İçeren değişiklikler
+index_stimes=Tarihlerdeki işlemler
+index_sdesc=İşlem açıklaması şunları içerir
+index_shost=Kaynak Webmin sunucusu
+index_long=Tüm eylem açıklamaları gösterilsin mi?
+index_global=&lt;Hiçbir modülde yok&gt;
+
+search_none2=İşlem aramanızla eşleşen işlem yok
+search_critd=burada açıklama <tt>$1</tt>
+search_global=Yok
+search_global_login=Webmin'de oturum açıldı
+search_global_logout=Webmin oturumunu kapattı
+search_global_failed=Webmin'e giriş başarısız : $1 
+search_global_expiredpass=Şifrenin zamanı doldu
+search_global_wronguser=Geçersiz kullanıcı
+search_global_wrongpass=Geçersiz şifre
+search_global_baduser=Kötü kullanıcı adı
+search_global_badpass=Hatalı parola
+search_global_twofactor=Geçersiz iki faktörlü simge
+search_csv=CSV olarak dışa aktarın.
+
+view_rollback2=Seçilen Dosyaları Geri Al
+view_return=eylem ayrıntıları
+view_input=Komuta giriş
+view_anno=Günlük girişi ek açıklaması
+view_output=Webmin sayfa içeriği
+view_files=Dosyalar değişti ve komutlar çalıştırıldı
+view_raw=Ham günlük verileri
+view_rawname=Parametre adı
+view_rawvalue=Parametre değeri
+
+acl_self=Sadece benlik
+acl_rollback=Eylemleri geri alabilir mi?
+
+rollback_title=Geri Alma İşlemi
+rollback_rusure=Bu işlem gerçekleştirilmeden önce, aşağıda listelenen tüm dosyaları içeriklerine geri döndürmek istediğinizden emin misiniz? Şu anda içerdikleri tüm verilerin üzerine aşağıdaki değişiklikler yazılır :
+rollback_isdir=Bir dizin - değişiklik yapılmayacak.
+rollback_link=Bağlantı hedefi $2 iken $1 olarak değiştirilecek.
+rollback_nolink=Bağlantı hedefi değişmedi.
+rollback_clink=$1 adresine bağlantı oluşturulacak.
+rollback_makefile=$1 bağlantısının yeri :
+rollback_makelink=Tüm dosya, $1 bağlantıyla değiştirilecek.
+rollback_changes=Aşağıdaki değişiklikler yapılacak :
+rollback_nochanges=Bu dosya değişmedi.
+rollback_delete=Dosya silinecek.
+rollback_nodelete=Dosya eylemden önce mevcut değildi ve şimdi mevcut değil.
+rollback_fillfile=Dosya içeriklerle oluşturulacak :
+rollback_none=Tüm dosyalar, bu işlem yapılmadan önceki içeriğe sahiptir. Hiçbir değişiklik gerekli değildir.
+rollback_ok=Dosyaları Şimdi Geri Al
+rollback_skipdir=$1 dizini atlanıyor.
+rollback_madelink=$1 - $2 bağlantısı oluşturuldu.
+rollback_madefile=$1 bağlantısı dosya ile değiştirildi.
+rollback_modfile=$1 dosyasının içeriği geri alındı.
+rollback_deleted=$1 dosyası silindi.
+rollback_nodeleted=Var olmayan dosya $1 atlandı.
+rollback_enone=Hiçbir dosya seçilmedi
+
+log_rollback=$2 modülünde $1 geri alma işlemi

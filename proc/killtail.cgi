@@ -3,7 +3,7 @@
 require './proc-lib.pl';
 &ReadParse();
 $idfile = "$module_config_directory/$in{'id'}.tail";
-open(IDFILE, $idfile) || exit;
+open(IDFILE, "<$idfile") || exit;
 chop($pid = <IDFILE>);
 close(IDFILE);
 $pid || exit;

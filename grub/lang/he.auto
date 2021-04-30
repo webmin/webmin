@@ -1,0 +1,75 @@
+index_title=מטען אתחול GRUB
+index_add=הוסף אפשרות אתחול חדשה.
+index_global=ערוך אפשרויות גלובליות
+index_globalmsg=ערוך את אפשרויות האתחול הגלובליות החלות על כל אפשרויות תפריט האתחול ובחר במכשיר עליו מותקן GRUB.
+index_install=התקן GRUB
+index_installmsg=התקן את מטעין האתחול GRUB ב- $1 כדי להציג את האפשרויות שלמעלה בזמן האתחול. זה יעקוף כל מטעין אתחול קיים כמו LILO, ועלול להפוך את המערכת שלך ללא ניתנת לניתוח!
+index_none=לא הוגדרו אפשרויות אתחול. הקפד להוסיף לפחות אחד לפני התקנת גרגר.
+index_efile=קובץ התפריט GRUB $1 לא נמצא במערכת שלך. אולי GRUB אינו מותקן, או <a href='$2'>תצורת המודול</a> שגויה.
+index_epath=ההפעלה של GRUB $1 לא נמצאה במערכת שלך. אולי GRUB אינו מותקן, או <a href='$2'>תצורת המודול</a> שגויה.
+index_return=רשימת אפשרויות
+
+title_add=הוסף אפשרות אתחול
+title_edit=ערוך את אפשרות האתחול
+title_header=פרטי אפשרות תפריט אתחול
+title_title=כותרת אפשרות
+title_root=מחיצת תמונות אתחול
+title_noverify=אל תעלה ואמת את המחיצה
+title_other=קובץ מכשיר אחר
+title_sel=נבחר
+title_boot=מערכת הפעלה לאתחל
+title_kernel=ליבה
+title_kfile=נתיב לגרעין
+title_args=אפשרויות ליבה
+title_initrd=קובץ ramdisk ראשוני
+title_modules=מודולים נוספים
+title_chain=מערכת הפעלה אחרת
+title_chain_def=מהמגזר הראשון של החלוקה
+title_chain_file=מקובץ טוען שרשרת
+title_makeactive=להפוך את מחיצת השורש לפעילה?
+title_none1=אף אחד
+title_none2=(כניסת תפריט ללא אתחול)
+title_err=שמירת אפשרות האתחול נכשלה
+title_etitle=חסר כותרת אופציה
+title_eroot=מחיצת שורש חסרה
+title_ekernel=נתיב גרעין חסר או לא חוקי
+title_echain=קובץ טוען שרשרת חסר או לא חוקי
+title_edev=התקן מחיצת שורש לא נתמך $1 
+title_einitrd=חסר שם קובץ ramdisk ראשוני
+title_lock=סיסמא נעולה?
+
+global_title=אופציות עולמיות
+global_header=אפשרויות תפריט אתחול גלובליות
+global_default=אפשרות ברירת מחדל לאתחול
+global_fallback=אפשרות אתחול Fallback
+global_first=ראשונה ברשימה
+global_timeout=פסק זמן לפני טעינת ברירת המחדל
+global_forever=חכה לנצח
+global_secs=שניות
+global_install=התקן GRUB בדיסק/מחיצה
+global_sel=נבחר
+global_other=אחר
+global_password=אתחול סיסמא
+global_none=אף אחד
+global_password_file=השתמש בקובץ תפריט אם הזנת סיסמה:
+global_err=שמירת האופציות הגלובליות נכשלה
+global_etimeout=פסק זמן חסר או לא תקף
+global_edev=התקנת דיסק/מחיצה $1 אינה נתמכת
+global_eother=דיסק/מחיצה חסרים או לא חוקיים
+global_epassword=סיסמת אתחול חסרה או לא חוקית
+global_epasswordfile=חסר שם קובץ חלופי בתפריט
+
+install_title=התקן GRUB
+install_err=התקנת GRUB נכשלה
+install_efind=לא נמצא קובץ תפריט
+install_desc=התקנת GRUB על $1 עם פקודות $2 ו- $3.
+install_ok=.. התקן הושלם.
+install_failed=.. ההתקנה נכשלה!
+
+log_create_title=נוצר אפשרות אתחול $1 
+log_delete_title=אפשרות האתחול $1 נמחקה
+log_modify_title=אפשרות אתחול שונה $1 
+log_up_title=אפשרות האתחול $1 הועברה
+log_down_title=אפשרות האתחול למטה $1 הועברה
+log_global=אפשרויות גלובליות השתנו
+log_install=מותקן GRUB

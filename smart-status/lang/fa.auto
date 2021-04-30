@@ -1,0 +1,58 @@
+index_title=وضعیت درایو SMART
+index_ecmd=فرمان کنترل SMART $1 در سیستم شما یافت نشد ، و یا به طور صحیح در پیکربندی ماژول <a href='$2'>تنظیم نشده است</a>. قبل از استفاده از این ماژول باید نصب شود.
+index_ecmd2=به نظر نمی رسد که فرمان$1 فرمان کنترل SMART باشد. قبل از استفاده از این ماژول باید به طور صحیح در <a href='$2'>پیکربندی ماژول</a> تنظیم شود.
+index_version=نسخه SMARTsuite$1
+index_show=نمایش وضعیت درایو:
+index_ok=نشان دادن
+index_eidescsi=هیچ درایو IDE ، SCSI یا SATA روی سیستم شما یافت نشد.
+index_drive=وضعیت درایو$1
+index_drivesub=وضعیت درایو$1 ، دیسک$2
+index_desc=محل
+index_size=اندازه درایو
+index_model=ساخت و مدل
+index_support=پشتیبانی از SMART؟
+index_enabled=SMART فعال است؟
+index_check=چک درایو گذشت؟
+index_short=آزمون کوتاه خودآزمایی
+index_ext=تست خود تمدید شده
+index_data=آزمون جمع آوری داده ها
+index_errors=خطاها وارد شدند
+index_ecount=خطاهای$1 شناسایی شدند
+index_attrs=ویژگی های اضافی SMART
+index_raw=گزارش وضعیت کامل SMART
+index_return=فهرست ماژول
+index_family=خانواده مدل
+index_serial=شماره سریال
+index_capacity=ظرفیت
+index_norm=نرمال:
+
+monitor_type=بررسی درایو SMART
+monitor_type2=SSD Wearout
+monitor_drive=رانندگی برای بررسی
+monitor_errors=ورود به سیستم خطا را هم بررسی کنید؟
+monitor_errorsinc=بله ، اما فقط در صورت افزایش تعداد خطا ، هشدار می دهید
+monitor_other=دیگر ..
+monitor_edrive=درایو موجود یا نامعتبر است برای بررسی
+monitor_nosuch=چنین درایو وجود ندارد
+monitor_nosmart=بدون پشتیبانی SMART
+monitor_errorsfound=خطای$1 گزارش شده است
+monitor_errorsinced=خطاها از$2 به$1 افزایش یافته است
+monitor_wearlevel=اگر سطح سایش پایین بیفتد ، شکست بخورید
+monitor_ewearlevel=درصد سطح سایش نامعتبر است
+monitor_nowearout=درایو یک نشانگر سایش SSD را گزارش نمی کند
+monitor_wornout=سطح لباس به$1 کاهش یافته است
+
+short_title=آزمون کوتاه خودآزمایی
+short_doing=شروع خودکارآزمایی کوتاه$1 ..
+short_failed=.. ناموفق!
+short_ok=.. تست خوب شد وضعیت درایو را در صفحه اصلی ماژول برای نتایج مشاهده کنید.
+
+ext_title=تست خود تمدید شده
+ext_doing=شروع تست تست طولانی از$1 ..
+ext_failed=.. ناموفق!
+ext_ok=.. تست خوب شد وضعیت درایو را در صفحه اصلی ماژول برای نتایج مشاهده کنید.
+
+data_title=آزمون جمع آوری داده ها
+data_doing=شروع جمع آوری داده آفلاین با$1 ..
+data_failed=.. ناموفق!
+data_ok=.. مجموعه شروع شد. وضعیت درایو را در صفحه اصلی ماژول برای نتایج مشاهده کنید.

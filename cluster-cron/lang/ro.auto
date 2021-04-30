@@ -1,0 +1,37 @@
+index_title=Cluster Cron Jobs
+index_add=Creați un nou job cron de cluster.
+index_none=Nu au fost definite joburi cron de cluster.
+index_servers=Rulați pe servere
+index_return=cluster cron joburi
+index_more=încă $1 ..
+index_run=Rula acum ..
+index_actions=acţiuni
+
+edit_title=Editează Cluster Cron Job
+create_title=Creați Job Cron Cluster
+edit_servers=Rulați pe servere
+edit_group=Membrii $1 
+edit_this=acest server
+edit_all=&lt;Toate gazdele&gt;
+edit_emissing=Jobul Cron nu mai există!
+
+save_err=Nu a reușit să salvați lucrarea cron de cluster
+
+exec_title=Executați jobul Cluster Cron
+exec_cmd=Se execută $1 pe serverele selectate ..
+exec_failed=Nu a putut fi executat pe $1 : $2 
+exec_success=Ieșire din $1 ..
+exec_nohosts=Nicio gazdă selectată pentru a rula sau grupurile selectate nu conțin nicio gazdă utilizabilă.
+
+log_run=Rulați $1 pe serverele $2 
+log_run_l=Range $1 pe $2 
+log_create=S-a creat job de cron de cluster pentru $1 
+log_create_l=Crearea jobului cron de cluster $2 pentru $1 
+log_modify=Lucrare cron modificată pentru cluster pentru $1 
+log_modify_l=Job modificat cron de cluster $2 pentru $1 
+log_delete=S-a șters jobul cron de cluster pentru $1 
+log_delete_l=S-a șters jobul cron de cluster $2 pentru $1 
+log_deletes=Lucrări șterse de cron de cluster $1 
+
+delete_err=Nu a reușit să ștergeți lucrările cron de cluster
+delete_enone=Nimic selectat

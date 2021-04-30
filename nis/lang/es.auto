@@ -1,0 +1,34 @@
+index_enis2=Solo se podrá utilizar la función de servicios al cliente de este módulo.
+
+client_enis=Parece que su máquina no tiene instalado el soporte de cliente NIS.
+
+switch_srcs=Fuentes de datos
+switch_return=servicios al cliente
+
+server_epwdir=Directorio de archivos fuente de contraseña inválida
+
+desc_auto.home=Inicio del montador automático
+desc_auto.master=Mapas de montadores automáticos
+desc_auto.local=Automounter local
+
+security_domain=Dominio NIS
+
+eswitch_title=Servicio de edición
+eswitch_egone=El servicio no existe!
+eswitch_header=Detalles del servicio
+eswitch_name=Nombre del Servicio
+eswitch_0=Primera fuente de datos
+eswitch_1=Segunda fuente de datos
+eswitch_2=Tercera fuente de datos
+eswitch_3=Cuarta fuente de datos
+eswitch_4=Quinta fuente de datos
+eswitch_nth=Fuente de datos $1 
+eswitch_success=En el éxito
+eswitch_notfound=Si no se encuentra
+eswitch_unavail=Si no está disponible
+eswitch_tryagain=No disponible temporalmente
+eswitch_return=Resultado devuelto
+eswitch_continue=Continuar buscando
+eswitch_none=Ninguna
+eswitch_err=Error al guardar el servicio
+eswitch_enone=No hay fuentes seleccionadas!

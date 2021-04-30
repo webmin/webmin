@@ -1,0 +1,37 @@
+index_title=Clron Cron Jobs
+index_add=สร้างงาน cron ของคลัสเตอร์ใหม่
+index_none=ไม่มีการกำหนดงาน cron ของคลัสเตอร์
+index_servers=ทำงานบนเซิร์ฟเวอร์
+index_return=รายการงาน cron ของคลัสเตอร์
+index_more=อีก $1 ..
+index_run=เรียกใช้ในขณะนี้ ..
+index_actions=การปฏิบัติ
+
+edit_title=แก้ไขงาน Cron ของคลัสเตอร์
+create_title=สร้างงานกลุ่ม Cron
+edit_servers=ทำงานบนเซิร์ฟเวอร์
+edit_group=สมาชิกของ $1 
+edit_this=เซิร์ฟเวอร์นี้
+edit_all=&lt;โฮสต์ทั้งหมด&gt;
+edit_emissing=งาน Cron ไม่มีอยู่อีกต่อไป!
+
+save_err=ไม่สามารถบันทึกงาน cron ของคลัสเตอร์
+
+exec_title=เรียกใช้งาน Cron Cluster
+exec_cmd=เล่น $1 บนเซิร์ฟเวอร์ที่เลือก
+exec_failed=ไม่สามารถเรียกใช้บน $1 : $2 
+exec_success=ผลผลิตจาก $1 ..
+exec_nohosts=ไม่มีโฮสต์ที่เลือกให้ทำงานหรือกลุ่มที่เลือกไม่มีโฮสต์ที่ใช้งานได้
+
+log_run=Ran $1 บนเซิร์ฟเวอร์ $2 
+log_run_l=วิ่ง $1 กับ $2 
+log_create=สร้างงาน cron ของคลัสเตอร์สำหรับ $1 
+log_create_l=สร้างงาน cron ของคลัสเตอร์ $2 สำหรับ $1 แล้ว
+log_modify=งาน cron ของคลัสเตอร์ที่แก้ไขสำหรับ $1 
+log_modify_l=งาน cron ของคลัสเตอร์ที่แก้ไข $2 สำหรับ $1 
+log_delete=ลบงาน cron ของคลัสเตอร์สำหรับ $1 แล้ว
+log_delete_l=ลบงาน cron คลัสเตอร์ $2 สำหรับ $1 แล้ว
+log_deletes=ลบงาน cron คลัสเตอร์ $1 แล้ว
+
+delete_err=ไม่สามารถลบงาน cron ของคลัสเตอร์
+delete_enone=ไม่ได้เลือก

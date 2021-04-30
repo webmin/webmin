@@ -70,7 +70,7 @@ if ($update_system) {
 sub uncompress_if_needed
 {
 return $_[0] if (&is_readonly_mode());	# don't even bother
-open(PFILE, $_[0]);
+open(PFILE, "<".$_[0]);
 read(PFILE, $two, 2);
 close(PFILE);
 if ($two eq "\037\235") {
@@ -204,7 +204,14 @@ local $pkg = &update_system_resolve($name);
 return undef if (!$pkg);
 local ($cpkg) = caller();
 local $caller = eval '$'.$cpkg.'::module_name';
-return &text('missing_link', $desc, "../$module_name/install_pack.cgi?source=3&update=".&urlize($pkg)."&return=".&urlize($return)."&returndesc=".&urlize($returndesc)."&caller=".&urlize($caller), $text{$update_system."_name"});
+return &ui_form_start("$gconfig{'webprefix'}/$module_name/install_pack.cgi", "get").
+       &text('missing_msg', $desc, $text{$update_system."_name"})."\n".
+       &ui_hidden("source", 3).
+       &ui_hidden("update", $pkg).
+       &ui_hidden("return", $return).
+       &ui_hidden("returndesc", $returndesc).
+       &ui_hidden("caller", $caller).
+       &ui_form_end([ [ undef, $text{'missing_now'} ] ]);
 }
 
 # update_system_button(field-name, label)

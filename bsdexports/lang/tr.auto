@@ -1,0 +1,52 @@
+index_title=NFS Dışa Aktarma
+index_add=Yeni bir dışa aktarma ekleyin.
+index_dirs=Dizinler
+index_clients=Müşteriler
+index_everyone=Herkes
+index_none=Henüz herhangi bir ihracat tanımlanmadı.
+index_delete=Seçilen Dışa Aktarmaları Sil
+index_apply=Değişiklikleri uygula
+index_applydesc=Geçerli dosya dışa aktarma yapılandırmasını uygulamak için bu düğmeyi tıklatın. Bu, yukarıda listelenen tüm dizinleri belirtilen seçeneklerle kullanılabilir hale getirecektir.
+index_return=ihracat listesi
+index_echeck=NFS sunucusu bu sistemde kullanılamaz : $1 
+
+check_ecmd=$1 NFS sunucu komutu yüklü değil
+
+delete_err=Dışa aktarmalar silinemedi
+delete_enone=Hiçbiri seçilmedi
+
+edit_title1=Dışa Aktarmayı Düzenle
+edit_title2=Dışa Aktarma Oluştur
+edit_header1=Dışa aktarma seçenekleri
+edit_dirs=Dışa aktarılacak dizinler
+edit_alldirs=Alt dizinler dışa aktarılsın mı?
+edit_ro=Sadece oku?
+edit_kerb=Kerberos mu kullanıyorsunuz?
+edit_header2=Uzaktan kullanıcı eşleme
+edit_maproot=Kök kullanıcıyı şununla eşle:
+edit_mapusers=Tüm kullanıcıları şuraya eşle:
+edit_unpriv=Ayrıcalıksız kullanıcı
+edit_uid=Kullanıcı / UID
+edit_gids=Ve gruplar / GID'ler
+edit_mapall=Tüm kullanıcıları şuraya eşle:
+edit_header3=Bu ihracat için müşteriler
+edit_clients=Müşteriler
+edit_hosts=Ana bilgisayarlar / ağ grupları
+edit_network=Ağ
+edit_mask=maskelemek
+
+save_err=Dışa aktarma kaydedilemedi
+save_edir='$1' bir dizin değil veya mevcut değil
+save_enone=Dışa aktarmak için en az bir dizin girmelisiniz
+save_esub=<b>Alt dizinleri dışa aktar</b> seçeneği seçiliyse yalnızca bir dizin verilebilir
+save_eroot=<b>Alt dizinleri dışa aktar</b> seçeneğini kullanırken, dışa aktarılan dizinin bir <i>yerel</i> dosya sisteminin kökü olması gerekir
+save_euser='$1' geçerli bir kullanıcı veya UID değil
+save_egroup='$1' geçerli bir grup veya GID değil
+save_ekerb=Harita kökü kullanıcıları, tüm kullanıcıları haritala ve kerberos seçenekleri birbirini dışlar
+save_ehosts=Dışa aktarmak için en az bir ana bilgisayar girmelisiniz
+save_enetwork='$1' geçerli bir ağ değil
+save_enetmask='$1' geçerli bir ağ maskesi değil
+save_esame1=<tt>$1</tt> dizini zaten <tt>$2</tt> klasörüne aktarılıyor. İşletim sisteminiz, aynı <i>yerel</i> dosya sistemindeki dizinlerin aynı ana bilgisayara ayrı olarak dışa aktarılmasına izin vermiyor
+save_esame2=<tt>$1</tt> dizini zaten <tt>$2</tt> klasörüne aktarılıyor. İşletim sisteminiz, aynı <i>yerel</i> dosya sistemindeki dizinlerin aynı ağa ayrı olarak verilmesine izin vermiyor
+
+restart_err=Değişiklikler uygulanamadı

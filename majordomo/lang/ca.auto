@@ -1,0 +1,18 @@
+index_esendmail=La configuració <tt>$1</tt> de la configuració del mòdul està configurada en <tt>$2</tt>, la qual cosa no existeix. Potser la vostra configuració del mòdul <a href='$3'></a> és incorrecta o no hi ha instal·lat cap missatge de correu electrònic.
+index_name=Nom de la llista
+index_info=Informació de llista
+index_mail=Direcció de correu
+index_moderated=Moderada
+index_count=# d’usuaris
+global_saved=(desat)
+create_minimum=Informació mínima requerida
+edit_return=llista d'enviament
+check_title=Consulteu Majordomo Config
+check_test=Prova de. ..
+check_result=Resultat / revisió addicional
+check_status=Estat
+check_perm=Permisos
+check_exec=executable mundial!
+check_write=escriptura mundial!
+check_read=llegible mundialment!
+check_possible=Possible problema

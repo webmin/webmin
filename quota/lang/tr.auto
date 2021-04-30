@@ -1,0 +1,72 @@
+acl_ggid=GID aralığı olan gruplar
+
+egroup_listalldesc=Bu grubun üzerinde disk kotalarının bulunduğu tüm dosya sistemlerinin listesini düzenlemek için bağlantılarla birlikte görüntülemek üzere bu düğmeyi tıklatın.
+
+euser_listalldesc=Bu kullanıcının disk kotalarına sahip olduğu tüm dosya sistemlerinin listesini düzenlemek için bağlantılarla birlikte listesini görüntülemek için bu düğmeyi tıklatın.
+
+gfilesys_editdesc=Bu grubun kotalarını, şu anda kotası bulunmayan diğer bazı dosya sistemlerinde görüntüleyin ve düzenleyin.
+gfilesys_copydesc=Tüm dosya sistemlerinde bu grubun kota sınırlarını başka grupların tümüne veya tümüne kopyalayın.
+gfilesys_enone=Grup adı girilmedi
+
+index_supported=Kotalar henüz desteklenmiyor
+index_enable2=Desteği etkinleştir
+index_euserdesc=Bir kullanıcı girin veya seçin ve kotalarını tüm dosya sistemlerinde görüntülemek için bu düğmeyi tıklayın.
+index_egroupdesc=Bir grup girin veya seçin ve kotalarını tüm dosya sistemlerinde görüntülemek için bu düğmeyi tıklatın.
+
+lgroups_tablist=Grup listesi
+lgroups_mass=Seçilen Grupları Güncelle
+lgroups_to=E-posta hedefi
+lgroups_tosame=Grupla aynı ada sahip posta kutusu
+lgroups_tofixed=Adres $1 
+lgroups_emailheader=Kotaya yaklaşan gruplara e-posta gönder
+lgroups_email=Gruplara e-posta gönderilsin mi?
+lgroups_tovirt=Virtualmin alan sahibi
+
+ufilesys_editdesc=Bu kullanıcının kotalarını şu anda kotası olmadığı diğer dosya sistemlerinde görüntüleyin ve düzenleyin.
+ufilesys_copydesc=Tüm dosya sistemlerinde bu kullanıcının kota sınırlarını, başka bir veya tüm kullanıcılara kopyalayın.
+ufilesys_enone=Kullanıcı adı girilmedi
+
+lusers_tablist=Kullanıcı listesi
+lusers_tabdefault=Varsayılan kotalar
+lusers_tabemail=E-posta Bildirimleri
+lusers_pc_sblocks=Yumuşak %
+luser_virtualmin=Virtualmin'den alan adı al?
+lusers_from=Gönderen: e-posta adresi
+lusers_mass=Seçilen Kullanıcıları Güncelle
+lusers_cc=Ayrıca e-posta gönder
+lusers_nocc=Kimse
+
+log_email_user=$1 kullanıcı e-posta seçeneklerini değiştirme
+log_email_group=$1 üzerindeki grup e-posta seçeneklerini değiştirme
+log_support=$1 için kota desteği etkinleştirildi
+
+email_efrom=Eksik veya geçersiz Kimden: adresi
+email_ecc=Eksik veya geçersiz Bilgi: adresi
+email_msg=$2 dosya sisteminde $1 kullanıcısı için disk kullanımı, izin verilen kotanın $3% 'süne ulaştı. Maksimum $5 'ten $4 disk alanı kullanılıyor.
+gemail_msg=$2 dosya sisteminde $1 grubu için disk kullanımı, izin verilen kotanın $3% 'süne ulaştı. Maksimum $5 'ten $4 disk alanı kullanılıyor.
+email_subject=Disk kotası aşıldı
+gemail_subject=Disk kotası aşıldı
+email_eto=Hedef e-posta adresi eksik
+
+umass_title=Kullanıcı Kotalarını Güncelle
+umass_header=Seçilen kullanıcılara uygulanacak kota değişiklikleri
+umass_sblocks=Yumuşak blok sınırı
+umass_hblocks=Sert blok sınırı
+umass_sfiles=Yazılım dosyaları sınırı
+umass_hfiles=Sabit dosyalar limiti
+umass_leave=Değişmeden bırak
+umass_unlimited=Sınırsız olarak ayarla
+umass_set=Ayarlanır
+umass_ok=Kullanıcıları Güncelle
+umass_esblocks=Eksik veya geçersiz geçici engelleme sınırı
+umass_ehblocks=Eksik veya geçersiz sabit blok sınırı
+umass_esfiles=Eksik veya geçersiz geçici dosya sınırı
+umass_ehfiles=Eksik veya geçersiz sabit dosya sınırı
+umass_count=Aşağıdaki değişiklikler seçilen $1 kullanıcı için geçerli olacak ..
+umass_err=Kullanıcı kotaları güncellenemedi
+
+gmass_title=Grup Kotalarını Güncelle
+gmass_header=Seçilen gruplara uygulanacak kota değişiklikleri
+gmass_count=Aşağıdaki değişiklikler $1 seçilen gruba uygulanacak.
+gmass_ok=Grupları Güncelle
+gmass_err=Grup kotaları güncellenemedi

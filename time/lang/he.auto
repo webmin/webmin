@@ -1,0 +1,70 @@
+index_title=זמן מערכת
+index_timeserver=שרת זמן
+index_addresses=שמות מארחים או כתובות של Timeserver
+index_zone=אזור זמן
+index_eformat=פורמט פלט <tt>hwlock</tt> לא מזוהה
+index_sched=לסנכרן לפי לוח הזמנים?
+index_schedyes=כן, לפעמים למטה ..
+index_sync=סנכרן והחל
+index_hardware2=קבע גם זמן חומרה
+index_boot=לסנכרן כאשר Webmin מתחיל?
+index_tzheader=אזור זמן
+index_tz=שנה את אזור הזמן ל-
+index_ehwclock=$1 נכשל : $2 
+index_tabtime=זמן מוגדר
+index_tabzone=שנה אזור זמן
+index_tabsync=סינכרון שרת זמן
+index_desctime=טופס זה מיועד לשינוי הזמן הנוכחי של המערכת, המשמש את כל התהליכים הרצים. במערכות הפעלה עם שעון חומרה נפרד, ניתן להשתמש בה גם כדי להגדיר את זה.
+index_desczone=טופס זה מאפשר לך להגדיר את אזור הזמן המוגדר כברירת מחדל של המערכת, המשמש להמרת זמן המערכת לפורמט וקיזוז אנושי.
+index_descsync=טופס זה מיועד להגדרת המערכת לסנכרון אוטומטי של הזמן עם שרת מרוחק. הסנכרון ייעשה באמצעות פרוטוקול <tt>זמן</em> Unix או NTP, תלוי באיזו פקודות מותקנות ומה תומכת במערכת המרוחקת.
+
+action_save=להציל
+action_apply=להגיש מועמדות
+action_sync=הגדר זמן מערכת בהתאם לזמן החומרה
+action_sync_s=הגדר זמן חומרה בהתאם לזמן המערכת
+action_timeserver_sys=סנכרן זמן מערכת
+action_timeserver_hw=סנכרן זמן חומרה
+action_savezone=שנה אזור זמן
+
+acl_sys=המשתמש יכול לערוך זמן מערכת?
+acl_hw=המשתמש יכול לערוך זמן חומרה?
+acl_timezone=המשתמש יכול להגדיר אזור זמן?
+acl_ntp=האם ניתן לסנכרן עם שרת זמן?
+acl_yes=כן
+acl_no=לא
+acl_error=יש לך גישה למודול זמן המערכת, אך אינך יכול לערוך את זמן המערכת או את זמן החומרה
+acl_nosys=אינך רשאי לערוך את זמן המערכת
+acl_nohw=אינך מורשה לערוך זמן חומרה
+acl_nontp=אינך מורשה לסנכרן עם שרת זמן
+
+sys_title=זמן מערכת
+hw_title=זמן חומרה
+
+day=יום
+month=חודש
+date=תאריך
+hour=שעה
+year=שנה
+minute=דקה
+second=שני
+
+error_cnf=שגיאה: הפקודה $1 לא נמצאה
+error_hw=לא ניתן להגדיר את זמן החומרה : $1 
+error_sync=לא ניתן לסנכרן עם זמן המערכת : $1 
+error_ediff=שרת זמן שונה עם זמן מקומי גדול מדי: $1 ימים
+error_entp=סנכרון זמן NTP נכשל : $1 
+error_etimeserver=אין שרתים לסנכרון עם נכנסים
+
+log_set_date=הגדר את זמן המערכת ל- $1 
+log_set_hwclock=הגדר את שעון החומרה ל- $1 
+log_remote_date=זמן מערכת אחז מ- $2 
+log_remote_hwclock=זמן חומרה נלקח מ- $2 
+log_remote_date_l=זמן מערכת אחז $1 מ- $2 
+log_remote_hwclock_l=זמן החומרה אחז $1 מ- $2 
+log_sync=זמן מערכת מסונכרן עם זמן חומרה
+log_sync_s=זמן חומרה מסונכרן עם זמן מערכת
+log_timezone=אזור הזמן שינה ל $1 
+
+timezone_err=שמירת אזור הזמן נכשלה
+timezone_ecannot=אינך מורשה לשנות את אזור הזמן
+timezone_enone=לא נבחר אזור

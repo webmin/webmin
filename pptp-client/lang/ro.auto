@@ -1,0 +1,112 @@
+index_title=Client VPN PPTP
+index_epptp=Programul client PPTP $1 nu a fost găsit în sistemul dvs. Poate că nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
+index_eppp=Programul serverului PPP $1 nu este instalat pe sistemul dvs. PPTP depinde de acesta să funcționeze.
+index_eoptions=Fișierul global de opțiuni PPTP PPP $1 nu există. Fie creați-l, fie ajustați configurația modulului <a href='$2'></a> pentru a utiliza un fișier diferit sau deloc.
+index_header=Tunele definite
+index_none=Nu au fost definite încă tuneluri PPTP.
+index_tunnel=Tunel $1 
+index_add=Adăugați un nou tunel VPN PPTP.
+index_conn=Conectează la:
+index_pass=cu parolă opțională:
+index_conndesc=Faceți clic pe acest buton pentru a conecta tunelul VPN PPTP selectat utilizând configurația curentă.
+index_disc=Deconectați-vă de la:
+index_discdesc=Faceți clic pe acest buton pentru a deconecta tunelul VPN VPN selectat curent activ și pentru a elimina toate rutele prin acesta.
+index_return=Lista tunelurilor PPTP
+index_opts=Editați Opțiuni PPP globale
+index_optsdesc=Faceți clic pe acest buton pentru a edita opțiunile PPP care se aplică tuturor tunelurilor VPN PPTP.
+index_version=Versiunea PPPd $1 
+index_boot=Conectați-vă la pornire:
+index_noboot=&lt;Nu vă conectați&gt;
+index_bootdesc=Modificați această opțiune pentru a controla dacă conexiunea VPN PPTP selectată este pornită sau nu la momentul de pornire.
+
+disc_err=Nu a reușit să deconecteze tunelul
+disc_egone=Nu mai este activ
+disc_ekill=Procesul pppd nu a reușit să omoare
+disc_done=Tunelul $1 a fost deconectat cu succes.
+
+conn_err=Conectarea la tunel nu a reușit
+conn_egone=Tunelul nu mai există
+cone_ealready=Deja conectat
+conn_einvalid=Lipsește adresa IP a serverului în fișierul de configurare
+conn_title=Conectarea tunelului
+conn_cmd=Stabilirea unei conexiuni PPTP cu comanda $1 ..
+conn_ok=.. conexiunea a fost activată cu succes folosind interfața $1. Adresa dvs. locală este $2, iar adresa de la distanță $3.
+conn_timeout=.. conexiune esuata! Verificați mesajele de jurnal de mai jos pentru informații de ce.
+conn_routes=Adăugarea rutelor cu comenzi ..
+conn_mppe=Protocolul MPPE pentru criptarea VPN necesită demonizare PPP și suport pentru kernel. Cu toate acestea, erorile de mai sus sugerează că una sau ambele nu sunt disponibile pe sistemul dvs. Dacă serverul PPTP nu necesită MPPE, încercați să dezactivați toate opțiunile aferente acestuia în pagina <a href='$1'>opțiuni globale PPP</a>.
+
+edit_title1=Adăugați tunelul PPTP
+edit_title2=Editează tunelul PPTP
+edit_header=Opțiuni pentru tunel VPN PPTP
+edit_name=Numele tunelului
+edit_server=Conectați-vă la server
+edit_login=Conectați-vă ca utilizator
+edit_same=Nume gazdă sistem
+edit_pass=Autentificare cu parolă
+edit_remote=Numele serverului
+edit_auto=Automat
+edit_adddef=Adăugați ruta implicită?
+edit_def1=Prin alt capăt
+edit_def2=Via gateway ..
+edit_deldef=Ștergeți ruta implicită veche?
+edit_routes=Rute de adăugat după conectare
+edit_type=Tip
+edit_type0=&nbsp;
+edit_type1=Reţea
+edit_type2=O singură gazdă
+edit_net=Rețea sau gazdă
+edit_mask=Mască de rețea
+edit_gw=Via gateway
+edit_gw_def=Alt sfârșit
+edit_unknown=Alte comenzi <tt>route</tt>
+edit_file=Fișier opțiuni PPP
+edit_none=Nici unul
+edit_global=Fișier global standard
+edit_ofile=Alt fișier ..
+
+save_err=Nu a reușit să salveze tunelul
+save_ename=Lipsește numele tunelului
+save_eserver=Serverul care lipsește sau este nevalid pentru a vă conecta
+save_elogin=Numele de autentificare lipsește sau este nevalid
+save_eremote=Numele serverului de la distanță lipsește sau este nevalid
+save_edef=Poarta de acces rutieră implicită lipsă sau nevalidă
+save_enet=Adresa de rețea nevalidă pe ruta $1 
+save_emask=Mască netă nevalidă pe ruta $1 
+save_egw=Gateway nevalid pentru rețeaua din ruta $1 
+save_ehost=Adresa IP de gazdă nevalidă pe ruta $1 
+save_emask2=Nu este necesară o mască net pentru ruta gazdă $1 
+save_egw2=Gateway nevalid pentru gazda din ruta $1 
+save_erename=Eroare la redenumirea fișierului tunel
+save_eclash=Există deja un tunel sau PPP peer cu același nume
+save_efile=Fișierul cu opțiuni PPP lipsă sau nevalid
+
+opts_title=Opțiuni globale PPP
+opts_desc=Setările de mai jos sunt preluate din $1 și se vor aplica tuturor tunelurilor care sunt setate să utilizeze fișierul standard de opțiuni PPP global.
+opts_header=Opțiuni PPP pentru toate tunelurile
+opts_mtu=Dimensiunea maximă a pachetului de trimitere
+opts_mru=Dimensiunea maximă a pachetului de primire
+opts_err=Nu a reușit să salvați opțiunile PPP globale
+opts_emtu=Lipsește sau nu este valabilă dimensiunea maximă a pachetului de trimitere
+opts_emru=Lipsește sau nu este valabil dimensiunea maximă a pachetului de primire
+opts_msdesc=Opțiunile de mai jos permit criptarea MPPE, folosită de serverele VPN Windows. Cu toate acestea, MPPE necesită sprijin atât în demonul PPP, cât și în nucleul sistemului de operare.
+
+mppe_mppe-40=Folosiți criptare MPPE pe 40 de biți?
+mppe_mppe-128=Folosiți criptare MPPE pe 128 de biți?
+mppe_mppe-stateless=Activați modul MPPE fără stat?
+mppe_mppe=Activați criptarea MPPE?
+mppe_m2=Trebuie sa fie folosit
+mppe_m0=Nu poate fi folosit
+mppe_d0=Dezactivat
+mppe_d1=Permis
+mppe_mppe-stateful=Activați modul de stat MPPE?
+mppe_old=Avertisment - Directivele MPPE în stil vechi $1 au fost găsite în fișierul dvs. de configurare, chiar dacă daemonul dvs. PPP acceptă directivele în stil nou.
+mppe_new=Avertisment - Noile directive MPPE în stil $1 au fost găsite în fișierul dvs. de configurare, chiar dacă daemonul dvs. PPP acceptă doar directivele în stil vechi.
+
+log_create=Creat tunel PPTP $1 
+log_update=Tunel PPTP modificat $1 
+log_delete=S-a șters tunelul PPTP $1 
+log_conn=Tunel conectat $1 
+log_conn_l=Tunel conectat $1 cu adresa locală $2 
+log_failed=Conectarea tunelului $1 nu a reușit
+log_disc=Tunel deconectat $1 
+log_opts=Opțiuni PPP globale editate

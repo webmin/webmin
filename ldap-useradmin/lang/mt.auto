@@ -1,0 +1,103 @@
+index_title=Utenti u Gruppi LDAP
+index_ebase=L-ebda fajl ta 'konfigurazzjoni tal-klijent LDAP ma nstab fis-sistema tiegħek, u għalhekk il-bażijiet tal-utenti u tal-grupp għandhom jiġu stabbiliti fuq il-paġna <a href='$1'>config</a>.
+index_eperl=Il-modulu Perl $1 li jeħtieġ dan il-modulu mhux installat jew mhux qed jaħdem kif suppost. <a href='$2'>Ikklikkja hawn</a> biex tniżżlu u jiġu installati issa.
+index_eperl2=L-iżball irrappurtat minn Perl meta ppruvaw jgħabbi l-modulu kien :
+index_eldap=$1. Ikklikkja hawn biex taġġusta l-<a href='$2'>konfigurazzjoni tal-modulu</a>.
+index_eschema=Webmin ikkonnettja mas-server LDAP, iżda ma rnexxielux iġib l-iskema. Kun żgur li l-aċċess ma ġiex miċħud fil-modulu <a href='$1'>LDAP Server</a>.
+index_eimap=$1. Forsi l-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
+index_emd5=Dan il-modulu ġie kkonfigurat <a href='$1'></a> biex juża encryption MD5 għall-passwords, iżda l-modulu $2 Perl mhuwiex installat. <a href='$3'>Ikklikkja hawn</a> biex il-modulu $2 jitniżżel u jiġi installat.
+index_eslappasswd=Dan il-modulu <a href='$1'>ġie kkonfigurat</a> biex juża l-kriptaġġ LDAP MD5 għall-passwords, iżda l-programm <tt>$2</tt> użat għall-kriptaġġ ta 'password mhuwiex installat.
+index_eusearch=Ma rnexxielux ifittex għal utenti taħt $1 : $2 
+index_uadd=Żid utent LDAP ġdid.
+index_gadd=Żid grupp LDAP ġdid.
+index_unone=L-ebda utent LDAP ma nstab taħt $1.
+index_gnone=L-ebda grupp LDAP ma nstab taħt $1.
+index_return=lista tal-utenti
+index_greturn=Lista tal-gruppi
+index_egsearch=Ma rnexxiex tfittex gruppi taħt $1 : $2 
+index_samba=Samba?
+index_cyrus=IMAP?
+index_users=Utenti LDAP
+index_groups=Gruppi LDAP
+
+imap_econn=Ma rnexxielux jaqbad mas-server IMAP $1 
+imap_elogin=Naqset milli tidħol mas-server IMAP $1 bħala $2 : $3 
+conn_eldap_host=L-ebda fajl ta 'konfigurazzjoni tal-klijent LDAP ma nstab fis-sistema tiegħek, għalhekk is-server LDAP għandu jkun issettjat fuq il-paġna tal-Modulu ta' Konfigurazzjoni
+conn_elogin=L-ebda fajl ta 'konfigurazzjoni tal-klijent LDAP ma nstab fis-sistema tiegħek, għalhekk il-login LDAP għandu jkun issettjat fuq il-paġna tal-Modulu ta' Konfigurazzjoni
+conn_efile_open=Ma setax jiftaħ il-fajl tal-kredenzjali tal-irbit LDAP:
+
+uedit_cap=Kapaċitajiet tal-Utent
+uedit_samba=Samba login?
+uedit_cyrus=Login fis-server IMAP?
+uedit_dn=DNAP LDAP tal-Utent
+uedit_classes=Klassijiet ta 'oġġett LDAP
+uedit_alias=Psewdonimi tal-posta
+uedit_fields=Oqsma addizzjonali LDAP
+uedit_firstname=Isem
+uedit_lastname=Kunjom
+uedit_raw=Attributi LDAP
+uedit_return=dettalji tal-utent
+uedit_quota=Kwota IMAP
+uedit_unquota=Tbiddilx
+uedit_sambapassopts=Għażliet ta 'Password Samba
+uedit_sambapwdlastset=Aġġornament tal-Last Password
+uedit_sambapwdcanchange=Il-password tista 'tinbidel
+uedit_sambabadpasswordcount=Għadd ħażin ta 'password
+uedit_sambaacctflags=Bnadar tal-kont
+
+usave_eadd=Naqas milli jżid utent fid-database LDAP : $1 
+usave_emod=Ma rnexxielux jimmodifika l-utent fid-database LDAP : $1 
+usave_emoddn=Ma rnexxielux isemmi l-utent fid-database LDAP : $1 
+usave_egroupmod=Ma rnexxiex timmodifika l-grupp $1 fid-database LDAP : $2 
+usave_edelete=Ma rnexxiex tħassar l-utent mid-database LDAP : $1 
+usave_eicreate=Ma rnexxielux joħloq utent
+usave_eiacl=Naqset milli tagħti d-drittijiet lill-amministratur
+usave_eimap=L-utent ġie ffrankat b'suċċess fid-database LDAP, iżda seħħ żball IMAP: $1 : $2 
+usave_eisub=Ma rnexxielux jissottoskrivi l-utent għall-folder $1 
+usave_eiquota=Ma rnexxielux jistabbilixxi kwota IMAP
+usave_eifolder=Ma rnexxielux joħloq folder $1 
+usave_eilogin=Naqset milli tidħol bħala utent ġdid
+usave_ecyruspass=Il-password normali tal-utent għandha tiddaħħal u l-għażla tal-ebda password meħtieġa ma tintgħażel meta tippermetti IMAP.
+usave_ebook=Ma rnexxielux joħloq dħul fil-ktieb ta ’l-indirizz : $1 
+usave_emodbook=Ma rnexxieliex timmodifika d-dħul fil-ktieb ta ’l-indirizz : $1 
+usave_emodbookdn=Ma rnexxielux isemmi l-iskrizzjoni tal-indirizz tal-indirizz : $1 
+usave_egone=Utent m'għadux jeżisti!
+usave_ex86=Dan il-modulu ma jistax jintuża biex jistabbilixxi l-password għal utent Samba fuq sistemi mhux Intel, peress li jiddependi fuq programm x86 miġbur.
+usave_esamba=Dan il-modulu ma jistax jintuża biex jistabbilixxi l-password għal utent tas-Samba, peress li l-modulu Samba Windows File Sharing mhuwiex installat.
+usave_ealiasdup=L-alias $1 huwa diġà użat minn $2 
+usave_eattrdup=L-oġġett $1 diġà qed juża l- $2 $3 
+usave_eattrdupu=L-utent $1 diġà qed juża l- $2 $3 
+usave_eattrdupg=Il-grupp $1 diġà qed juża l- $2 $3 
+usave_ereal=Nieqes l-isem veru
+usave_equota=Kwota IMAP nieqsa jew invalida
+
+search_err=It-tfittxija għal $1 taħt $2 falliet : $3 
+
+gedit_dn=LDAP DN tal-Grupp
+gedit_return=dettalji tal-grupp
+gedit_cap=Kapaċitajiet tal-Grupp
+gedit_samba=Samba grupp?
+
+gsave_egone=Grupp m'għadux jeżisti!
+gsave_edelete=Ma rnexxielux jitħassar grupp mid-database LDAP : $1 
+gsave_eadd=Naqset milli żżid grupp mad-database LDAP : $1 
+gsave_emod=Ma rnexxiex timmodifika l-grupp fid-database LDAP : $1 
+gsave_emoddn=Ma rnexxielux isemmi grupp fid-database LDAP : $1 
+
+gdel_group=Tħassar id-dħul tal-grupp LDAP ..
+
+udel_pass=Tħassar id-dħul ta 'l-utent LDAP ..
+udel_book=Ħassar mill-addressbook ..
+udel_imap=Tħassir ta 'folder IMAP ..
+udel_warnimap=Il-kaxxa postali eżistenti se titħassar meta tħassar id-direttorju tad-dar!
+udel_failed=.. naqas!  : $1 
+
+raw_title=Attributi LDAP
+raw_name=Isem tal-attribut
+raw_value=Valuri
+raw_for=Għal $1 
+
+batch_samba=Oħloq kont Samba għal utenti ġodda?
+batch_imap=Oħloq kont IMAP għal utenti ġodda?
+batch_descafter3=Fil-linji <b>joħolqu</b> u <b>jimmodifikaw</b>, int tista 'tehmeż kampijiet żejda li fihom attributi LDAP f' <i>isem</i> = <i>valur</i>, għal jiġi assenjat lill-utenti l-ġodda jew modifikati.
+batch_eattr=Attribut LDAP invalidu fil-linja $1 : $2 

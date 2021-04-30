@@ -1,0 +1,50 @@
+index_title=„OpenSLP“ konfigūracija
+index_return=„OpenSLP“ konfigūracija
+index_eslpd=Jūsų sistemoje nerastas „OpenSLP“ demonas $1. Galbūt jis neįdiegtas, arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_econf=Jūsų sistemoje nerastas „OpenSLP“ konfigūracijos failas $1. Galbūt jis neįdiegtas, arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_version=„OpenSLP“ $1 versija
+
+slp_apply=Taikyti pakeitimus
+slp_stop=Sustabdykite „OpenSLP“
+
+snda_title=Statinė taikymo sritis ir DA
+snda_useScopes=Statinis taikymo sričių sąrašas
+snda_DAAddresses=Statinis katalogų agentų sąrašas (DA)
+
+netcfg_title=Tinklo konfigūracija
+netcfg_isBroadcastOnly=Priverstinės transliacijos bus naudojamos vietoj daugiareikšmių transliacijų
+netcfg_passiveDADetection=Naudokite pasyvų DA aptikimą
+netcfg_activeDADetection=Naudoti aktyvų DA aptikimą (apsiriboti tik DHCP arba DA adresais)
+netcfg_DAActiveDiscoveryInterval=Aktyvus atradimas sekundėmis (0 išjungia aktyvųjį atradimą)
+netcfg_multicastTTL=Multicast TTL (0–255)
+netcfg_DADiscoveryMaximumWait=Maksimalus laukimo laikas DA atradimo užklausoms (milisekundėmis)
+netcfg_DADiscoveryTimeouts=Eilinis DA atradimo laukimo laikas (milisekundėmis)
+netcfg_HintsFile=Kelias į „OpenSLP“ užuominų failą
+netcfg_multicastMaximumWait=Maksimalus laukimas, kai prašoma daugiašaškių užklausų (milisekundžių)
+netcfg_multicastTimeouts=Iš eilės laukiama kelių daugialaidžių pokalbių laiko (milisekundžių)
+netcfg_unicastMaximumWait=Maksimalus laiko tarpas tarp unicast užklausų (milisekundžių)
+netcfg_randomWaitBound=Didžiausia visų atsitiktinių laukimo parametrų vertė (milisekundėmis)
+netcfg_MTU=MTU paketo dydis (baitais)
+netcfg_interfaces=Sąsajų, kurių turėtų klausytis DA/SA, IP adresai
+
+dacfg_title=DA konfigūracija
+dacfg_isDA=Veikia tik kaip DA (perskaitykite vartotojo vadovą prieš tai pakeisdami)
+
+log_title=Sekimas ir registravimas
+log_traceDATraffic=Spausdinti DA eismo pranešimus
+log_traceMsg=Spausdinkite išsamius SLP pranešimus
+log_traceDrop=Spausdinti SLP atsisakyta pranešimo informacija
+log_traceReg=Atspausdinkite DA ir SA registracijos ir išregistravimo informaciją
+
+error_open=Klaida atidarant failą
+error_flock_on=Klaida kuriant failo užraktą
+error_flock_off=Klaida sunaikinant failų užraktą
+error_hup=Klaida paleidžiant „OpenSLP“ naudojant PID
+
+index_start=Paleiskite „OpenSLP“
+index_startmsg=Spustelėkite šį mygtuką, norėdami paleisti „OpenSLP“ demoną savo sistemoje.
+index_stop=Sustabdykite „OpenSLP“
+index_stopmsg=Spustelėkite šį mygtuką, norėdami sustabdyti „OpenSLP“ demoną jūsų sistemoje.
+
+stop_err=Nepavyko sustabdyti „OpenSLP“
+start_err=Nepavyko paleisti „OpenSLP“

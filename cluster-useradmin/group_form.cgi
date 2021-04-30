@@ -4,7 +4,7 @@
 
 require './cluster-useradmin-lib.pl';
 &ReadParse();
-&ui_print_header(undef, $text{'gedit_title2'}, "", "create_group");
+&ui_print_header(undef, $text{'gedit_title2'}, "", undef);
 @hosts = &list_useradmin_hosts();
 @servers = &list_servers();
 
@@ -37,9 +37,8 @@ print "<input type=radio name=passmode value=2> $text{'clear'}\n";
 print "<input name=pass size=15></td>\n";
 
 print "<td valign=top><b>$text{'gedit_members'}</b></td>\n";
-print "<td><table><tr><td><textarea wrap=auto name=members rows=5 cols=10>",
-      "</textarea></td>\n";
-print "<td valign=top><input type=button onClick='ifield = document.forms[0].members; chooser = window.open(\"/useradmin/my_user_chooser.cgi?multi=1&user=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=500,height=200\"); chooser.ifield = ifield' value=\"...\"></td></tr></table></td> </tr>\n";
+print "<td valign=top><input name=members size=14>",
+	"<input type=button onClick='ifield = document.forms[0].members; chooser = window.open(\"/useradmin/my_user_chooser.cgi?multi=1&user=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=500,height=200\"); chooser.ifield = ifield' value=\"...\"></td> </tr>\n";
 print "</table></td></tr></table><p>\n";
 
 print "<table border width=100%>\n";
@@ -51,11 +50,11 @@ print "<td><input type=radio name=others value=1 checked> $text{'yes'}</td>\n";
 print "<td><input type=radio name=others value=0> $text{'no'}</td> </tr>\n";
 
 # Show server selection input
-&create_on_input($text{'uedit_servers'});
+print "<tr> <td>$text{'uedit_servers'}</td> ",
+      "<td>",&create_on_input(),"</td> </tr>\n";
 
-print "</table></td> </tr></table><p>\n";
+print "</table></td> </tr></table><p></p><p></p>\n";
 
 print "<input type=submit value=\"$text{'create'}\"></form><p>\n";
 
 &ui_print_footer("", $text{'index_return'});
-

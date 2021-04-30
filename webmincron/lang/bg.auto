@@ -1,0 +1,20 @@
+edit_mins=Минути
+edit_hours=Часа
+edit_days=дни
+edit_months=Месеци
+edit_weekdays=делници
+edit_all=всичко
+edit_selected=Избрано ..
+edit_run=Изпълни сега
+edit_clone=Clone Job
+edit_return=работа с крон
+edit_special1=Прост график ..
+edit_special0=Подбрани по-долу време и дати ..
+edit_special_hourly=всеки час
+edit_special_daily=Ежедневно (в полунощ)
+edit_special_weekly=Ежеседмично (в неделя)
+edit_special_monthly=Месечно (на 1-во)
+edit_special_yearly=Годишно (на 1 януари)
+
+log_success=Успешно изпълни <tt>$2</tt> в <tt>$1</tt>
+log_failure=Неуспешно стартиране <tt>$2</tt> в <tt>$1</tt> : $3 

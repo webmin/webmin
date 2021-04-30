@@ -1,0 +1,71 @@
+<header> TCP-indpakning </header>
+<h3> Mønstre </h3> Adgangskontrolsproget implementerer følgende mønstre: <ul>
+    <li> En streng, der begynder med en &#39;.&#39; Karakter. Et værtsnavn matches, hvis de sidste komponenter i dets navn matcher det specificerede mønster. For eksempel matcher mønsteret &#39;.tue.nl&#39; værtsnavnet &#39;wzv.win.tue.nl&#39;. </li>
+    <li> En streng, der slutter med en &#39;.&#39; Karakter. En host-adresse matches, hvis dens første numeriske felter stemmer overens med den givne streng. For eksempel mønsteret &#39;131.155.&#39; matcher adressen på (næsten) hver vært på Eindhoven University-netværket (131.155.xx). </li>
+    <li> En streng, der begynder med et &#39;@&#39; tegn, behandles som et NIS (tidligere YP) netgruppenavn. Et værtsnavn matches, hvis det er et værtsmedlem i den specificerede netgruppe. Netgroup-matchninger understøttes ikke til daemon-procesnavne eller til klientbrugernavne. </li>
+    <li> Et udtryk af formen &#39;nnnn / mmmm&#39; fortolkes som et &#39;net/maske&#39; par. En IPv4-hostadresse matches, hvis &#39;net&#39; er lig med den bitvise AND af adressen og &#39;masken&#39;. F.eks. Matcher net/maskemønsteret &#39;131.155.72.0/255.255.254.0&#39; hver adresse i området &#39;131.155.72.0&#39; til &#39;131.155.73.255&#39;. </li>
+    <li> Et udtryk for formen &#39;[n: n: n: n: n: n: n: n] / m&#39; fortolkes som et &#39;[net]/præfikslen&#39; -par. En IPv6-hostadresse matches, hvis &#39;præfikslen&#39; -bits af &#39;net&#39; er lig med &#39;præfikslen&#39; -bitene til adressen. For eksempel matcher [net]/præfikslen mønster &#39;[3ffe: 505: 2: 1 ::]/64&#39; hver adresse i området &#39;3ffe: 505: 2: 1:&#39;? gennem &#39;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&#39;. </li>
+    <li> En streng, der begynder med et &#39;/&#39; -tegn, behandles som et filnavn. Et værtsnavn eller -adresse matches, hvis det matcher et hvilket som helst værtsnavn eller adressemønster, der er anført i den navngivne fil. Filformatet er nul eller flere linjer med nul eller flere værtsnavn eller adressemønstre adskilt med hvidafstand. Et filnavnsmønster kan bruges overalt hvor et værtsnavn eller adressemønster kan bruges. </li>
+    <li> Wildcards &#39;*&#39; og &#39;?&#39; kan bruges til at matche hostnavne eller IP-adresser. Denne metode til matching kan ikke bruges sammen med &#39;net/maske&#39; matching, hostname matching begynder med &#39;.&#39; eller IP-adresse matching, der slutter med &#39;.&#39;. </li>
+</ul>
+<h3> Wildcards </h3> Adgangskontrolsproget understøtter eksplicitte jokertegn: <table border>
+    <tr>
+        <td> <b>ALLE</b> </td>
+        <td> Det universelle jokertegn matcher altid. </td>
+    </tr>
+    <tr>
+        <td> <b>LOKAL</b> </td>
+        <td> Matcher enhver vært, hvis navn ikke indeholder et prikketegn. </td>
+    </tr>
+    <tr>
+        <td> <b>UKENDT</b> </td>
+        <td> Matcher enhver bruger, hvis navn er ukendt, og matcher enhver vært, hvis navn eller adresse er ukendt. Dette mønster skal bruges med omhu: værtsnavne kan være utilgængelige på grund af midlertidige navneserverproblemer. En netværksadresse vil ikke være tilgængelig, når softwaren ikke kan finde ud af, hvilken type netværk den taler med. </td>
+    </tr>
+    <tr>
+        <td> <b>KENDTE</b> </td>
+        <td> Matcher enhver bruger, hvis navn er kendt, og matcher enhver vært, hvis navn og adresse er kendt. Dette mønster skal bruges med omhu: værtsnavne kan være utilgængelige på grund af midlertidige navneserverproblemer. En netværksadresse vil ikke være tilgængelig, når softwaren ikke kan finde ud af, hvilken type netværk den taler med. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOID</b> </td>
+        <td> Matcher enhver vært, hvis navn ikke svarer til dens adresse. Når tcpd er bygget med -DPARANOID (standardtilstand), falder det anmodninger fra sådanne klienter, selv før man ser på adgangskontroltabellerne. Byg uden -DPARANOID, når du ønsker mere kontrol over sådanne anmodninger. </td>
+    </tr>
+</table>
+<h3> Operatører </h3> <b>BEMÆRK</b> Tilsigtet brug er af formularen: &#39;liste_1 EXCEPT liste_2&#39;; denne konstruktion matcher alt, der matcher liste_1, medmindre det matcher liste_2. EXCEPT-operatoren kan bruges i daemon_lists og i client_lists. EXCEPT-operatøren kan indlejres: hvis kontrolsproget tillader brug af parenteser, &#39;a EXCEPT b EXCEPT c&#39; vil parse som &#39;(a EXCEPT (b EXCEPT c))&#39;. <h3> Shell-kommandoer </h3> Hvis den første matchede adgangskontrolregel indeholder en shell-kommando, underkastes denne kommando% <letter> udskiftninger (se næste afsnit). Resultatet udføres af en /bin/sh-underordnede proces med standardindgang, output og fejl forbundet til /dev/null. Angiv en &#39;&amp;&#39; i slutningen af kommandoen, hvis du ikke vil vente til den er afsluttet. <p> Shell-kommandoer skal ikke stole på indstillingen PATH for inetd. I stedet skal de bruge absolutte stienavne, eller de skulle begynde med en eksplicit PATH = udsagn overhovedet. <h3> % Udvidelser </h3> Følgende udvidelser er tilgængelige inden for shell-kommandoer: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> Klient (server) vært adresse. </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Klientinformation: bruger @ vært, bruger @ adresse, et værtsnavn eller bare en adresse, afhængigt af hvor meget information der er tilgængelig. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> Daemon-procesnavnet (argv[0] -værdi). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Klient (server) værtsnavn eller adresse, hvis værtsnavnet ikke er tilgængeligt. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> Klient (server) værtens navn (eller &quot;ukendt&quot; eller &quot;paranoid&quot;). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> Idéen til dæmonen-processen. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Serverinformation: daemon@host, daemon @ adresse eller bare et daemon navn, afhængigt af hvor meget information der er tilgængelig. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Klientbrugernavnet (eller &quot;ukendt&quot;). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Udvides til en enkelt &#39;%? Karakter. </td>
+            </tr>
+        </table> Tegn i%udvidelser, der kan forvirre shell, erstattes af understregninger.
+        <hr />

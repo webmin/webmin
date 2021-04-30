@@ -1,0 +1,3 @@
+name_pt_BR=BSDexports
+longdesc_pt_BR=Edite compartilhamentos de arquivos a partir do arquivo /etc/exports do FreeBSD.
+desc_pt_BR=Exportações NFS

@@ -1,0 +1,21 @@
+index_eidescsi=Vo vašom systéme sa nenašli žiadne jednotky IDE, SCSI alebo SATA.
+index_drivesub=Stav jednotky $1, disk $2 
+index_attrs=Ďalšie atribúty SMART
+index_raw=Úplná správa o stave SMART
+index_family=Modelová rodina
+index_serial=Sériové číslo
+index_capacity=kapacita
+index_norm=normalizovali:
+
+monitor_type2=Wearout SSD
+monitor_errorsinc=Áno, ale upozorniť iba v prípade zvýšenia počtu chýb
+monitor_other=Other ..
+monitor_edrive=Chýba alebo neplatná jednotka na kontrolu
+monitor_nosuch=Žiadny taký pohon
+monitor_nosmart=Žiadna podpora SMART
+monitor_errorsfound=Nahlásené $1 chyby
+monitor_errorsinced=Chyby sa zvýšili z $2 na $1 
+monitor_wearlevel=Porucha, ak úroveň opotrebenia klesne pod
+monitor_ewearlevel=Neplatné percento opotrebenia
+monitor_nowearout=Jednotka nehlási indikátor väzby SSD
+monitor_wornout=Úroveň opotrebenia klesla na $1 

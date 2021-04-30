@@ -1,0 +1,200 @@
+index_title=MON Service Monitor
+index_return=MON-index
+index_edir=MON-katalogen $1 finns inte. Kanske är MON inte installerat, eller är din <a href='$2'>modulkonfiguration</a> felaktig.
+mon_global_title=Global varibleskonfiguration
+mon_conf_title=Grundläggande konfiguration
+mon_status_title=Driftsstatus
+hostgroups_title=MON-konfiguration-värdgrupper
+services_title=Watchgroups-service definitioner
+
+head_hostgroups=Värdgrupper och tjänster
+head_groups=Värdgruppens namn
+head_members=Värdgruppens medlemmar
+head_services=Hostgroup-tjänster att titta på
+head_service=Service att titta på
+head_param=Serviceparametrar
+head_watch=Titta på gruppen?
+head_monauth=Ange autentisering för MONCMD
+head_usr=Användarnamn
+head_pass=Lösenord
+head_mand=(Parametrar i "RÖD FÄRG" är obligatoriska)
+
+err_nomon=paketet "mon" är inte installerat på systemet
+err_nomonconf=MON-konfigurationsfilen $1 hittades inte på ditt system. Kanske är MON inte installerat, eller är din <a href='$2'>modulkonfiguration</a> felaktig.
+err_nowatch=Inga vaktgrupper har valts. Välj minst en Watchgroup för att fortsätta.
+err_noserv=Inga tjänster valda för vaktgruppen
+err_nomemb=Inga värdar/medlemmar valda för vaktgruppen
+err_monrun=MON körs inte på värdmaskinen. Vänligen starta MON.
+stop_err=Det gick inte att stoppa MON
+stop_epid=Kör inte längre
+start_err=Det gick inte att starta MON
+restart_err=Det gick inte att starta om MON
+restart_epid=Det gick inte att få PID
+
+other=Annat (rymdseparerat)
+next=Nästa
+mon_stat=MON-status
+mon_off=MON-tjänster inte startade
+mon_start=Starta MON-tjänster
+mon_stop=Stoppa MON-tjänster
+mon_restart=Starta om MON-tjänster
+mon_startdesc=Klicka på den här knappen för att starta MON-servern. Tills det har startats kommer ingen konfigurerad övervakning att göras.
+mon_stopdesc=Klicka på den här knappen för att stoppa MON-servern. Vid stopp kommer den konfigurerade övervakningen att upphöra.
+mon_restartdesc=Klicka på den här knappen för att tillämpa den aktuella MON-konfigurationen genom att starta om serverprocessen.
+line=(en på varje rad)
+save_apply=Spara och applicera
+watch=Watchgroup
+members=medlemmar
+def_perargs=wd {Sat-Sun}
+
+def_desc=beskrivning
+def_inter=intervall
+def_mon=övervaka
+def_dep=dpend
+def_per=period
+def_alert=varna
+def_alertevr=alertevery
+def_alertaft=alertafter
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=trapduration
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=Värdgrupper
+groups_group=Grupp namn
+groups_members=Medlem värdar
+
+watches_title=Titta på listor
+watches_group=Titta på grupp
+watches_services=Tjänster som övervakas
+watches_sadd=Lägg till tjänst ..
+watches_add=Lägg till övervakningslista för grupp :
+watches_return=vaktlistor
+watches_none=Inga vaktlistor har definierats än.
+
+global_title=Globala alternativ
+global_header=Globala MON-konfigurationsalternativ
+global_maxprocs=Maximal MON-processer
+global_histlength=Händelseshistorikens längd
+global_alertdir=Varningsprogramkatalog
+global_mondir=Övervaka programkatalogen
+global_authtype=Autentiseringstyp
+global_authtype_=Standard
+global_authtype_getpwnam=Systemsamtal
+global_authtype_userfile=MON-användare fil
+global_authtype_shadow=Skuggefil
+global_userfile=MON-användarens fil
+global_emaxprocs=Det saknas eller ogiltigt antal MON-processer
+global_ehistlength=Saknad eller ogiltig händelseshistorikslängd
+global_ealertdir=Katalog för varningsprogram saknas eller ogiltig
+global_emondir=Saknad eller ogiltig katalog för övervakningsprogram
+global_euserfile=Filen från MON-användare saknas
+
+watch_title=Redigera bevakningslista
+watch_header=Värdgrupps klockuppgifter
+watch_group=Värdgrupp att titta på
+watch_services=Tjänster som övervakas
+watch_service=Service namn
+watch_monitor=Övervaka att använda
+watch_interval=Kontrollera alla
+watch_periods=Övervakningsperioder
+
+service_title=Lägg till service
+service_title2=Redigera tjänsten
+service_header=Titta på servicedetaljer
+service_name=Tjänstens namn
+service_interval=Kontrollera alla
+service_desc=Beskrivning
+service_units_s=sekunder
+service_units_m=minuter
+service_units_h=timmar
+service_units_d=dagar
+service_units_w=Veckor
+service_monitor=Använda skärmen
+service_mon1=Standard monitor
+service_mon0=Övrig skärm ..
+service_args=Övervaka parametrar
+service_period=Övervakningsperiod $1 
+service_days=Dagar att kontrollera
+service_hours=Öppettider att kontrollera
+service_all=Allt
+service_pstr=Periodspecifikation
+service_new=Ny övervakningsperiod
+service_alerts=Varningar för period
+service_alert=Varna
+service_atype=Kör när
+service_atype_alert=Tjänsten går ner
+service_atype_upalert=Tjänster kommer upp
+service_atype_startupalert=MON startar
+service_aargs=Ytterligare parametrar
+service_every=Skicka varning
+service_every_def=Varje gång monitor körs
+service_every_time=Varje
+service_num=Maximala varningar att skicka
+service_unlimited=Obegränsat
+service_after=Fel före varning
+service_immediate=Omedelbart
+service_after_num=Efter $1 -misslyckanden
+service_aftertime=Inom tidsintervallet
+service_newperiod=Lägg till en ny period
+service_delperiod=Ta bort denna period
+service_err=Det gick inte att spara tjänsten
+service_ename=Saknat eller ogiltigt servicenamn
+service_einterval=Missande eller ogiltigt kontrollintervall
+service_eother=Saknad eller ogiltig bildskärm
+service_ehour=Saknas eller ogiltig timme för period $1 (måste vara som 09:00 eller 17:00)
+service_eperiod=Inga dagar eller timmar angivna för period $1 
+service_eevery=Saknad eller ogiltig serviceintervall
+service_eafter=Saknas eller ogiltigt antal fel innan varning
+service_enum=Saknade eller ogiltiga maximala varningar som skickats
+service_epstr=Saknas periodspecifikation
+service_known0=<tt>Tid::Period</tt> sträng
+service_known1=Specificerade dagar och timmar
+service_known2=Definierad period
+
+status_title=MON-status
+status_ecgi=MON-status CGI-programmet $1 finns inte. Kanske är den inte installerad eller så är din <a href='$2'>modulkonfiguration</a> felaktig.
+status_eperl=MON-status CGI-programmet kräver $1 perl-modulen. <a href='$2'>Klicka här</a> för att installera det direkt från CPAN.
+status_esame=MON-status CGI-programmet $1 har ställts in på <tt>mon.cgi</tt> -skriptet i denna Webmin-modul, inte CGI-programmet som följer med MON. Justera <a href='$2'>modulkonfiguration</a> för att använda rätt sökväg.
+
+users_title=MON-användare
+users_etype=MON-användarlistan kan inte redigeras eftersom MON för närvarande inte är konfigurerad för att använda den för autentisering på sidan <a href='$1'>Globala alternativ</a>.
+users_header=Tillåtna MON-användare i $1 
+users_nousers=Inga MON-användare har definierats i $1.
+users_add=Skapa en ny användare.
+users_return=MON-användare lista
+
+user_create=Skapa MON-användare
+user_edit=Redigera MON-användare
+user_header=MON användarinformation
+user_user=Användarnamn
+user_pass=Lösenord
+user_leave=Lämna oförändrat
+user_err=Det gick inte att spara användaren
+user_euser=Saknat eller ogiltigt användarnamn
+user_esame=En användare med samma namn finns redan
+
+auth_title=Klientkommandon
+auth_desc=Denna sida låter dig styra vilka MON-kommandon som kan köras av vilka användare när du använder klientprogrammen.
+auth_cmd=MON-kommando
+auth_users=Tillåtna användare
+auth_none=Ingen
+auth_all=Alla
+auth_sel=Endast användare
+auth_err=Det gick inte att spara klientkommandon
+auth_eusers=Inga användare anger kommandot $1 
+
+periods_title=Definierade perioder
+periods_period=Periodnamn
+periods_times=Dagar och tider
+periods_alldays=Alla dagar
+periods_allhours=Alla timmar
+periods_err=Det gick inte att spara definierade perioder
+periods_ename='$1' är inte ett giltigt periodnamn
+periods_ehour=Saknas eller ogiltig timme för period $1 (måste vara som 09:00 eller 17:00)
+
+show_title=Driftsstatus
+show_ecgi=MON-statusprogrammet $1 finns inte. Kanske är den inte installerad eller så är din <a href='$2'>modulkonfiguration</a> felaktig.

@@ -64,3 +64,5 @@ Converted all pages to use the common Webmin UI library for a more consistent in
 Made all code Perl strict and warnings compliant.
 ---- Changes since 1.670 ----
 Added a button for adding multiple Webmin users to a group.
+---- Changes since 1.930 ----
+Added support for creating "safe-mode" Webmin users who have access only to modules and permissions that don't grant root access.

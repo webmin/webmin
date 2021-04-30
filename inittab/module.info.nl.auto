@@ -1,0 +1,3 @@
+longdesc_nl=Configureer low-level services die tijdens het opstarten moeten worden uitgevoerd en selecteer het eerste runlevel.
+name_nl=inittab
+desc_nl=Eerste systeemstart

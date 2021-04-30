@@ -1,0 +1,8 @@
+index_langglobal2=Globální jazyk.. $1 ($2)
+index_overlay=Překrytí motivu
+index_overlaydef=Žádné - použijte výchozí nastavení motivu
+index_passagain=Znovu zadejte heslo
+
+change_epass2=Nová hesla se neshodují
+change_eoverlay=Nelze vybrat překrytí motivu, pokud není vybráno také téma uživatelského rozhraní
+change_eoverlay2=Vybrané překrytí motivu není kompatibilní s vybraným motivem uživatelského rozhraní

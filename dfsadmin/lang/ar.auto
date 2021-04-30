@@ -1,0 +1,57 @@
+index_title=أسهم NFS
+index_add=ابدأ مشاركة دليل جديد.
+index_dir=الدليل
+index_clients=عملاء
+index_everyone=كل واحد
+index_delete=حذف الأسهم المختارة
+index_none=لا يتم حاليًا تصدير أدلة على هذا النظام.
+index_apply=تطبيق التغييرات
+index_applydesc=انقر فوق هذا الزر لتطبيق تكوين مشاركة الملفات الحالي. سيؤدي ذلك إلى إتاحة جميع الدلائل المذكورة أعلاه مع الخيارات المحددة.
+index_return=قائمة الأسهم
+
+edit_title1=تحرير المشاركة
+edit_title2=إنشاء مشاركة
+edit_header1=مشاركة التفاصيل
+edit_dir=الدليل
+edit_desc=وصف
+edit_ro=حق الوصول للقراءة فقط
+edit_rw=الوصول للقراءة والكتابة
+edit_root=الوصول إلى الجذر
+edit_none=لا شيء
+edit_all=جميع المضيفين
+edit_listed=المضيفون المدرجون ..
+edit_header2=مشاركة الخيارات
+edit_nosub=السماح بتركيب الغواصات؟
+edit_nosuid=السماح للملفات setuid؟
+edit_des=يجب على العملاء استخدام DES؟
+edit_kerberos=يجب على العملاء استخدام kerberos؟
+edit_anon=مستخدم مجهول
+edit_anon0=غير مضبوط
+edit_anon1=ممنوع الدخول
+edit_aclok=السماح بقوائم ACL؟
+edit_public=حصة WebNFS؟
+edit_index=ملف فهرس WebNFS
+
+save_err=فشل في حفظ المشاركة
+save_edirectory=إن '$1' ليس اسم دليل صالح
+save_edirectory2=الدليل '$1' غير موجود
+save_erw=لم تقم بإدراج أي مضيفين للمشاركة في القراءة والكتابة معهم
+save_ero=لم تدرج أي مضيفين للمشاركة معهم للقراءة فقط
+save_eroot=لم تقم بإدراج أي مضيفين للمشاركة معهم الجذر
+save_ealready=تتم مشاركة الدليل '$1' بالفعل
+save_ehost=المضيف '$1' غير موجود
+
+log_modify=مشاركة NFS المعدلة$1
+log_rename=تم تغيير مشاركة NFS $1 إلى$2
+log_create=تم إنشاء مشاركة NFS$1
+log_delete=مشاركة NFS المحذوفة$1
+log_apply=التغييرات التطبيقية
+
+acl_view=يمكن تحرير أسهم NFS؟
+
+ecannot=لا يسمح لك بإدارة أسهم NFS
+
+delete_err=فشل حذف المشاركات
+delete_enone=لا شيء محدد
+
+restart_err=فشل في تطبيق التغييرات

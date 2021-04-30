@@ -1,0 +1,43 @@
+index_title=SMART stav zařízení
+index_ecmd=Příkaz pro kontrolu SMART $1 nebyl ve vašem systému nalezen nebo není správně nastaven v <a href='$2'>konfiguraci modulu</a>. Tento příkaz musí být nainstalován než může být modul použit.
+index_ecmd2=Příkaz $1 neodpovídá příkazu pro kontrolu SMART. Tento příkaz musí být správně nastaven v <a href='$2'>konfiguraci modulu</a>, aby mohl být modul použit.
+index_version=Verze $1 SMART soupravy
+index_show=Zobrazit stav zařízení:
+index_ok=Zobrazit
+index_eidescsi=Ve vašem systému nebyly nalezeny žádné IDE nebo SCSI zařízení
+index_drive=Stav zařízení $1
+index_desc=Umístění
+index_size=Velikost zařízení
+index_model=Provedení a model
+index_support=Podporuje SMART?
+index_enabled=Povolený SMART?
+index_check=Vynechaná kontrola zařízení?
+index_short=zkrácený vnitřní test
+index_ext=Rozšířený vnitřní test
+index_data=Test sběru dat
+index_errors=Chyby byly zapsány do logu
+index_ecount=bylo detekováno $1 chyb
+index_return=seznam modulů
+
+monitor_type=SMART kontrola zařízení
+monitor_drive=Zarízení ke kontrole
+monitor_errors=Logovat taktéž chyby při kontrole?
+monitor_other=Jiné..
+monitor_edrive=Chybějící nebo neplatné zařízení ke kontrole
+monitor_nosuch=Žádné zařízení
+monitor_nosmart=Není podporáváno žádné SMART
+
+short_title=Zkrácený vnitřní test
+short_doing=Startuje se zkrácený vnitřní test z $1 ..
+short_failed=.. chyba!
+short_ok=.. test proběhl v pořádku. Podívejte na stav zařízení ve seznamu výsledků na úvodní straně modulu.
+
+ext_title=Rozšířený vnitřní test
+ext_doing=Startuje se rozšířený vnitřní test z $1 ..
+ext_failed=$short_failed
+ext_ok=$short_ok
+
+data_title=Test sběru dat
+data_doing=Startuje se offline sběr dat na $1 ..
+data_failed=.. chyba!
+data_ok=.. sběr proběhl v pořádku. Podívejte na stav zařízení ve seznamu výsledků na úvodní straně modulu.

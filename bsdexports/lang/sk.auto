@@ -1,0 +1,52 @@
+index_title=Vývoz NFS
+index_add=Pridajte nový export.
+index_dirs=adresára
+index_clients=klienti
+index_everyone=Každý
+index_none=Zatiaľ nebol definovaný žiadny vývoz.
+index_delete=Odstrániť vybraté vývozy
+index_apply=Aplikovať zmeny
+index_applydesc=Kliknutím na toto tlačidlo použijete aktuálnu konfiguráciu exportu súboru. Tým sa sprístupnia všetky vyššie uvedené adresáre so špecifikovanými možnosťami.
+index_return=zoznam exportov
+index_echeck=Server NFS sa v tomto systéme nedá použiť : $1 
+
+check_ecmd=Nie je nainštalovaný príkaz servera NFS $1 
+
+delete_err=Export sa nepodarilo odstrániť
+delete_enone=Žiadne vybraté
+
+edit_title1=Upraviť export
+edit_title2=Vytvoriť export
+edit_header1=Možnosti exportu
+edit_dirs=Adresáre na export
+edit_alldirs=Exportovať podadresáre?
+edit_ro=Iba na čítanie?
+edit_kerb=Používate Kerberos?
+edit_header2=Vzdialené mapovanie používateľov
+edit_maproot=Mapujte užívateľa root na
+edit_mapusers=Mapujte všetkých používateľov na
+edit_unpriv=Neprivilegovaný používateľ
+edit_uid=Používateľ / UID
+edit_gids=A skupiny / GID
+edit_mapall=Mapujte všetkých používateľov na
+edit_header3=Klienti pre tento export
+edit_clients=klienti
+edit_hosts=Hostitelia / sieťové skupiny
+edit_network=sieť
+edit_mask=maskovať
+
+save_err=Export sa nepodarilo uložiť
+save_edir=$1 nie je adresár alebo neexistuje
+save_enone=Ak chcete exportovať, musíte zadať aspoň jeden adresár
+save_esub=Ak je vybraná možnosť <b>exportovať podadresáre</b>, je možné zadať iba jeden adresár
+save_eroot=Pri použití voľby <b>exportovať podadresáre</b> musí byť exportovaný adresár koreňovým adresárom <i>lokálneho</i> súborového systému.
+save_euser=$1 nie je platný používateľ alebo identifikátor UID
+save_egroup=$1 nie je platná skupina alebo GID
+save_ekerb=Používatelia rootov mapy, možnosti mapovania všetkých používateľov a kerberos sa vzájomne vylučujú
+save_ehosts=Ak chcete exportovať, musíte zadať aspoň jedného hostiteľa
+save_enetwork=$1 nie je platná sieť
+save_enetmask='$1' nie je platná maska siete
+save_esame1=Adresár <tt>$1</tt> sa už exportuje do <tt>$2</tt>. Váš operačný systém nepovoľuje export adresárov v rovnakom <i>miestnom</i> súborovom systéme na toho istého hostiteľa osobitne.
+save_esame2=Adresár <tt>$1</tt> sa už exportuje do <tt>$2</tt>. Váš operačný systém nepovoľuje export adresárov v rovnakom <i>miestnom</i> súborovom systéme do rovnakej siete osobitne.
+
+restart_err=Nepodarilo sa uplatniť zmeny

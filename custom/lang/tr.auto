@@ -1,0 +1,70 @@
+index_sedit=SQL komutunu düzenle.
+index_screate=Yeni bir SQL komutu oluşturun.
+index_acts=Hareketler
+index_actform=Form
+index_actrun=Çalıştırmak
+index_actsql=Form
+index_acted=Açık
+
+edit_desc2=HTML açıklaması
+edit_must=Gereklidir?
+edit_type12=Çoklu menü ..
+edit_type13=Geniş çoklu menü ..
+edit_type14=Sol-sağ menü ..
+edit_type15=tarih
+edit_type16=Gönder düğmesi ..
+edit_format=Çıktı stili
+edit_format0=Webmin kullanıcı arayüzünde göster
+edit_format1=MIME türü ile çıktı
+edit_format2=Dizine yönlendir
+edit_format3=Forma yönlendir
+edit_format4=Mümkün olduğunda indirin
+edit_servers=Webmin sunucularında çalıştır
+edit_this=bu sunucu
+edit_clone=Klon
+
+save_eusermin=Diğer sunucularda çalışan komutlar Usermin'den çalıştırılamaz
+save_eformat=Geçersiz çıkış MIME türü
+save_eopts=$1 parametresi için eksik seçenekler dosyası
+save_eopts2=$1 parametresi için seçenekler dosyası veya varsayılan değer şunları içeremez :
+
+run_outon=$2 üzerinde $1 'den çıktı.
+run_out2on=$2 üzerindeki komuttan çıktı.
+run_eupload=Yüklenecek dosya seçilmedi
+run_emust='$1' parametresi için eksik değer
+run_failed=$1 çıkış durumuyla komut başarısız oldu
+
+file_beforeedit=Düzenlemeden önce çalıştırma komutu
+file_id=Editör Kimliği
+
+view_header=$1 dosyasını düzenleme
+view_ebeforeedit=Düzenlemeden önce komut başarısız oldu : $1 
+view_ebefore=Kaydetmeden önce komut başarısız oldu : $1 
+view_eafter=Kayıt sonrası komutu başarısız oldu : $1 
+
+form_edit=Düzenle
+
+sql_title1=SQL Komutu Oluştur
+sql_title2=SQL Komutunu Düzenle
+sql_header=SQL komut ayrıntıları
+sql_edrivers=Kurulu Perl DBI modülü yok. Webmin <a href='$1'>MySQL</a> veya <a href='$2'>PostgreSQL</a> sürücülerini otomatik olarak indirip yükleyebilirsiniz.
+sql_type=Veritabanı türü
+sql_db=Veri tabanı ismi
+sql_cmd=Yürütmek için SQL komutu
+sql_user=Kullanıcı olarak giriş yap
+sql_pass=Şifre ile
+sql_host=Veritabanı sunucusu ana bilgisayarı
+sql_local=Bu sunucu
+sql_err=SQL komutu kaydedilemedi
+sql_esql=SQL girilmedi
+sql_ehost=Eksik veya geçersiz veritabanı sunucusu ana bilgisayarı
+sql_edb=Eksik veya geçersiz veritabanı adı
+
+srun_title=SQL Komutunu Yürüt
+srun_err=SQL komutu yürütülemedi
+srun_edriver=DBI sürücüsü yüklenemedi
+srun_econnect=Veritabanına bağlanılamadı : $1 
+srun_cmd=$1 SQL komutu çalıştırılıyor.
+srun_eprepare=.. SQL hatası : $1 
+srun_eexecute=.. yürütme hatası : $1 
+srun_none=.. sonuç döndürülmedi.

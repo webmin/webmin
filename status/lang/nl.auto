@@ -1,0 +1,52 @@
+type_fail2ban=Fail2Ban-server
+type_init=Opstartactie
+type_slapd=LDAP-server
+type_ldap=LDAP-verbinding
+
+mon_virtualmin=Waarschuwing! Deze monitor is gekoppeld aan het Virtualmin-domein $1 en mag hier dus niet worden bewerkt of verwijderd.
+mon_etype=Ongeldige naam voor monitortype
+
+sched_warn3=Zolang de service is afgelopen
+sched_subject=Onderwerpregel voor sms-berichten
+sched_subject0=Geen (waarschuwing zit in het lichaam)
+sched_subject1=Waarschuwingstekst (laat het lichaam leeg)
+sched_subject2=Aangepaste tekst
+sched_esubject=Onderwerp van sms-bericht ontbreekt
+
+exec_mode=Statuscontrole afsluiten
+exec_mode0=Monitor mislukken als opdracht mislukt
+exec_mode1=Monitor mislukken als opdracht slaagt
+exec_mode2=Negeer succes of mislukking
+exec_regexp=Vergelijk output met regexp
+exec_noregexp=Controleer het niet
+exec_remode=Regexp-controle
+exec_remode0=Falen als de uitvoer niet overeenkomt
+exec_remode1=Falen als de uitvoer overeenkomt
+
+file_eowner=Bestanden met verkeerde eigenaar : $1 
+file_egroup=Bestanden met verkeerde groep : $1 
+file_owner=De bestandseigenaar moet zijn
+file_group=Bestandsgroep moet zijn
+file_nocheck=Iets
+file_perms=Octale rechten moeten zijn
+file_eperm=Bestanden met verkeerde rechten : $1 
+
+init_action=Actie om te controleren
+init_eaction=Geen actie geselecteerd
+
+monitor_sub_isup=$1 gestegen ten opzichte van $2 
+monitor_pager_isup=$1 : "$2" is $3 gestegen
+monitor_snmp_isup=$1:$2 
+monitor_email_isup=Monitor op $1 voor '$2' heeft gedetecteerd dat de service op $3 is gestegen
+monitor_email_stat=Huidige status: $1 
+
+ldap_edriver=De Perl-module $1 is niet geïnstalleerd
+ldap_host=Hostnaam van LDAP-server
+ldap_port=LDAP-serverpoort
+ldap_ssl=SSL-verbinding gebruiken?
+ldap_user=Aanmelden bij LDAP-server
+ldap_pass=LDAP-serverwachtwoord
+
+info_desc=Systeemmonitor
+info_last=Huidige status
+info_title=Systeem- en serverstatus

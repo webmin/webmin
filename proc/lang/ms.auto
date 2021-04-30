@@ -1,0 +1,205 @@
+index_title=Proses Running
+index_display=Paparan
+index_tree=PID
+index_user=Pengguna
+index_size=Memori
+index_cpu=CPU
+index_search=Carian
+index_zone=Kawasan
+index_run=Jalankan ..
+index_return=senarai proses
+index_mem2=<b>Ingatan sebenar:</b> $1 total / $2 percuma
+index_mem3=<b>Ingatan sebenar:</b> $1 jumlah / $2 percuma / $3 cache
+index_swap2=<b>Ruang swap:</b> $1 total / $2 percuma
+index_burst=<b>Memori terbakar:</b> $1 total
+index_loadname=Purata beban CPU:
+index_loadnums=$1 (1 minit), $2 (5 minit), $3 (15 minit)
+index_cpuname=Jenis CPU:
+index_inzone=Dalam zon $1 
+
+pid=ID
+owner=Pemilik
+command=Perintah
+cpu=CPU
+size=Saiz
+parent=Proses ibu bapa
+runtime=Jalankan masa
+nice=Tahap yang baik
+stime=Dimulakan
+sclass=Kelas penjadualan IO
+sprio=Keutamaan IO
+
+search_user=Dimiliki oleh
+search_match=Pemadanan
+search_cpupc=Menggunakan lebih daripada $1% CPU
+search_cpupc2=Menggunakan lebih banyak CPU daripada
+search_fs=Menggunakan sistem fail
+search_files=Menggunakan fail
+search_submit=Carian
+search_none=Tiada proses sepadan yang dijumpai.
+search_kill=Hantar Isyarat
+search_ignore=Abaikan proses carian dalam hasil
+search_return=borang carian
+search_sigterm=Tamatkan Proses
+search_sigkill=Membunuh Proses
+search_port=Menggunakan port
+search_protocol=protokol
+search_ip=Menggunakan alamat IP
+
+run_command=Perintah untuk lari
+run_submit=Jalankan
+run_mode=Jalankan mod
+run_bg=Jalankan di latar belakang
+run_fg=Tunggu sehingga selesai
+run_input=Input untuk arahan
+run_title=Output Perintah
+run_output=Output dari $1 ..
+run_none=Tiada output yang dijana
+run_ecannot=Anda tidak dibenarkan menjalankan arahan
+run_as=Jalankan sebagai pengguna
+run_euser=Nama pengguna yang hilang atau tidak sah
+run_euser2=Anda tidak dibenarkan menjalankan arahan sebagai pengguna yang dipilih
+
+edit_title=Maklumat Proses
+edit_gone=Proses ini tidak lagi berjalan
+edit_sub=Subprocesses
+edit_subid=ID
+edit_subcmd=Perintah sub-proses
+edit_kill=Hantar Isyarat
+edit_change=Ubah
+edit_prilow=Keutamaan rendah
+edit_prihigh=Keutamaan yang tinggi
+edit_pridef=Lalai
+edit_none=Tiada
+edit_ecannot=Anda tidak dibenarkan mengedit proses
+edit_sigterm=Selesaikan
+edit_sigkill=Bunuh
+edit_sigstop=Tangguhkan
+edit_sigcont=Teruskan
+edit_open=Fail dan Sambungan
+edit_trace=Melacak Proses
+edit_return=butiran proses
+
+kill_err=Gagal menghantar isyarat $1 untuk memproses $2 
+kill_title=Hantar Isyarat
+kill_sent=dihantar
+kill_ecannot=Anda tidak dibenarkan membunuh proses
+
+renice_err=Gagal merombak proses $1 
+renice_ecannot=Anda tidak dibenarkan mengubah proses
+
+linux_pri=Keutamaan
+linux_tty=TTY
+linux_status=Status
+linux_wchan=Menunggu Dalam
+linux_mem=Memori
+linux_group=Kumpulan
+linux_ruser=Pengguna sebenar
+linux_rgroup=Kumpulan sebenar
+linux_pgid=ID kumpulan proses
+linux_stime=Dimulakan
+
+linuxstat_R=Berjalan
+linuxstat_S=Tidur
+linuxstat_D=Tidur nyenyak
+linuxstat_T=Berhenti
+linuxstat_Z=Zombie
+
+linux_real=Waktu sebenar
+linux_be=Usaha terbaik
+linux_idle=Idle
+
+freebsd_ruser=Pengguna sebenar
+freebsd_rgroup=Kumpulan sebenar
+freebsd_tty=TTY
+freebsd_pgid=Kumpulan proses
+freebsd_stime=Dimulakan
+freebsd_lim=Had ingatan
+
+hpux_pri=Keutamaan
+hpux_tty=TTY
+hpux_status=Status
+hpux_wchan=Menunggu
+hpux_stime=Dimulakan
+
+hpuxstat_0=Tidak ada
+hpuxstat_S=Tidur
+hpuxstat_W=Menunggu
+hpuxstat_R=Berjalan
+hpuxstat_I=Perantaraan
+hpuxstat_Z=Zombie
+hpuxstat_T=Berhenti
+hpuxstat_G=Berkembang
+
+macos_tty=TTY
+
+sysv_group=Kumpulan
+sysv_ruser=Pengguna sebenar
+sysv_rgroup=Kumpulan sebenar
+sysv_pgid=ID kumpulan proses
+sysv_tty=TTY
+sysv_stime=Dimulakan
+sysv_task=ID Petugas
+sysv_zone=Nama zon
+
+log_run=Perintah Ran "$1"
+log_kill=Isyarat dihantar $1 untuk memproses $2 
+log_kills=Hantar isyarat $1 hingga $2 proses
+log_kill_l=Isyarat dihantar $1 untuk memproses $2 
+log_kills_l=Isyarat dihantar $1 ke proses $2 
+log_renice=Mengganti keutamaan proses $2 hingga $1 
+
+acl_manage=Menguruskan proses sebagai pengguna
+acl_manage_def=Pengguna Webmin semasa
+acl_edit=Bolehkah membunuh dan mengubah proses?
+acl_run=Bolehkah arahan?
+acl_only=Bolehkah hanya melihat proses sendiri?
+acl_who=Boleh mengurus proses untuk pengguna
+acl_who0=Semua pengguna
+acl_who1=Pengguna Webmin semasa
+acl_who2=Pengguna tersenarai ..
+
+kill_kill=Bunuh Proses
+kill_term=Selesaikan
+kill_hup=Mula semula
+kill_stop=Berhenti
+kill_cont=Teruskan
+
+open_title=Buka Fail dan Sambungan
+open_proc=Untuk proses $1 (PID $2)
+open_header1=Buka fail
+open_header2=Sambungan rangkaian terbuka
+open_type=Taipkan
+open_proto=Protokol
+open_desc=Butiran
+open_fd=Deskriptor Fail
+open_listen1=Mendengar pada port $1 
+open_listen2=Mendengar alamat $1 port $2 
+open_recv=Menerima pada $1:$2 
+open_conn=Disambungkan dari $1 hingga $2 dalam keadaan $3 
+open_cwd=Dir dir
+open_rtd=Root dir
+open_txt=Kod program
+open_mem=Perpustakaan dikongsi
+open_dir=Direktori
+open_reg=Fail tetap
+open_chr=Watak istimewa
+open_blk=Blok khas
+open_size=Saiz fail
+open_inode=Inode
+open_file=Jalan
+
+trace_title=Melacak Proses
+trace_start=Memulakan jejak panggilan sistem untuk $1 ..
+trace_doing=Jejak panggilan sistem untuk $1  :
+trace_done=.. proses telah ditamatkan.
+trace_failed=.. tracing gagal!
+trace_sorry=Halaman ini memerlukan sokongan Java dalam penyemak imbas anda. Untuk menggunakan jejak proses teks sahaja, laraskan konfigurasi modul.
+trace_syscalls=Panggilan sistem jejak:
+trace_all=Semua
+trace_sel=Disenaraikan ..
+trace_change=Ubah
+
+windows_threads=Thread dalam proses
+
+syslog_dmesg=Mesej kernel

@@ -1,0 +1,58 @@
+index_title=SMART Drive Status
+index_ecmd=SMART-kontrollkommandot $1 hittades inte på ditt system eller är inte korrekt inställt i <a href='$2'>modulkonfiguration</a>. Den måste installeras innan den här modulen kan användas.
+index_ecmd2=Kommandot $1 verkar inte vara SMART-kontrollkommandot. Det måste ställas in korrekt i <a href='$2'>modulkonfiguration</a> innan den här modulen kan användas.
+index_version=SMARTsuite-version $1 
+index_show=Visa status för enhet:
+index_ok=Visa
+index_eidescsi=Inga IDE-, SCSI- eller SATA-enheter hittades på ditt system.
+index_drive=Status för enhet $1 
+index_drivesub=Status för enhet $1, disk $2 
+index_desc=Plats
+index_size=Drive storlek
+index_model=Märke och modellera
+index_support=Stöder SMART?
+index_enabled=SMART aktiverat?
+index_check=Har du passerat körkontrollen?
+index_short=Kort självtest
+index_ext=Utökat självtest
+index_data=Test för datainsamling
+index_errors=Fel inloggade
+index_ecount=$1 -fel upptäckt
+index_attrs=Ytterligare SMART-attribut
+index_raw=Fullständig SMART-statusrapport
+index_return=modulindex
+index_family=Modellfamilj
+index_serial=Serienummer
+index_capacity=Kapacitet
+index_norm=normaliseras:
+
+monitor_type=SMART Drive Check
+monitor_type2=SSD Wearout
+monitor_drive=Kör för att kontrollera
+monitor_errors=Kolla också felloggen?
+monitor_errorsinc=Ja, men endast varning om felantalet ökar
+monitor_other=Övrig ..
+monitor_edrive=Saknad eller ogiltig enhet för att kontrollera
+monitor_nosuch=Ingen sådan enhet
+monitor_nosmart=Inget SMART-stöd
+monitor_errorsfound=Rapporterade $1 -fel
+monitor_errorsinced=Fel ökade från $2 till $1 
+monitor_wearlevel=Misslyckas om slitagenivån faller under
+monitor_ewearlevel=Ogiltig förslitningsnivå
+monitor_nowearout=Drive rapporterar inte en SSD-wearout-indikator
+monitor_wornout=Slitagivån har sjunkit till $1 
+
+short_title=Kort självtest
+short_doing=Starta kort självtest på $1 ..
+short_failed=.. misslyckades!
+short_ok=.. testet började OK. Se enhetsstatus på modulens startsida för resultat.
+
+ext_title=Utökat självtest
+ext_doing=Starta utökat självtest på $1 ..
+ext_failed=.. misslyckades!
+ext_ok=.. testet började OK. Se enhetsstatus på modulens startsida för resultat.
+
+data_title=Test för datainsamling
+data_doing=Starta datainsamling offline $1 ..
+data_failed=.. misslyckades!
+data_ok=.. samling började OK. Se enhetsstatus på modulens startsida för resultat.

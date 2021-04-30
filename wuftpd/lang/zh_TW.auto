@@ -1,0 +1,16 @@
+index_startmsg2=單擊此按鈕以當前配置啟動FTP服務器。您還可以使用inetd或某些等效程序將服務器配置為在需要時自動啟動。
+index_version=WU-FTPd版本 $1
+
+log_sysxfer=兩個目的地
+
+log_class=更改的用戶和類別
+log_message=更改消息和橫幅
+log_acl=更改限制和訪問控制
+log_net=更改網絡選項
+log_log=更改了日誌記錄選項
+log_alias=別名和路徑已更改
+log_anon=更改了匿名FTP
+log_perm=更改的權限選項
+log_misc=更改了其他選項
+log_restart=應用已更改
+log_start=啟動FTP服務器

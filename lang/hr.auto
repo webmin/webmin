@@ -1,0 +1,385 @@
+main_homepage=Početna stranica
+main_feedback=Povratne informacije ..
+main_switch=Promijeni korisnika ..
+main_logout=Odjavite se
+main_version=Verzija $1 na $2 ($3)
+main_title=Webmin $1 na $2 ($3)
+main_title2=Webmin
+main_title3=Webmin $1 ($2)
+main_none=Nemate pristup nijednom Webmin modulu.
+main_skill=Razina vještine
+main_readonly=(Način rada samo za čitanje)
+main_return=Vratite se na $1
+main_unused=Neiskorišteni moduli
+main_refreshmods=Osvježite module
+
+link_essl=Modul Net::SSLeay Perl potreban za povezivanje HTTPS nije instaliran na vašem sustavu.
+
+category_servers=Poslužitelji
+category_hardware=Hardver
+category_system=Sustav
+category_webmin=Webmin
+category_net=Umrežavanje
+category_syslet=Syslets
+category_cluster=Klastera
+category_info=Informacija
+category_=Alati
+
+longcategory_servers=Moduli za konfiguracijski web, e-poštu, FTP i druge poslužitelje
+longcategory_hardware=Moduli za konfiguraciju pisača, diska i drugog hardvera
+longcategory_system=Moduli za korisnike, datotečne sustave, Cron zadatke i ostale postavke sustava
+longcategory_webmin=Moduli za konfiguriranje samog Webmin-a
+longcategory_net=Moduli za konfiguriranje mrežnih i mrežnih usluga
+longcategory_cluster=Moduli koji mogu upravljati s više poslužitelja s jednog sučelja
+longcategory_info=Moduli koji prikazuju informacije o vašem sustavu
+longcategory_=Moduli koji izvode druge razne zadatke
+
+header_webmin=Webmin indeks
+header_module=Indeks modula
+header_help=Pomozite ..
+header_config=Konfiguriranje modula
+header_servers=Webmin poslužitelji
+
+index=indeks
+yes=Da
+no=Ne
+save=Uštedjeti
+create=Stvoriti
+delete=Izbrisati
+find=Pronaći
+error=greška
+error_previous=Prethodna stranica
+error_stack=Track stack poziva
+error_file=Datoteka
+error_line=Crta
+error_sub=Funkcija
+error_stackline=U datoteci $1 u retku $2 poziva $3
+efilewrite=Pisanje u $1 nije uspjelo : $2
+efileclose=Pisanje $1 nije uspjelo prilikom zatvaranja : $2
+efileopen=Otvaranje $1 nije uspjelo za pisanje : $2
+default=Zadano
+modify=Izmjena
+reset=Reset
+ok=u redu
+cancel=Otkazati
+fail=Neuspjeh
+helpsearch=Pretraživanje dokumenata ..
+switch_remote_euser=Unix korisnik $1 ne postoji.
+programname=Webmin
+euserdbacl=Dohvaćanje ACL korisnika nije uspjelo : $1
+euserdbacl2=Ažuriranje korisničkog ACL-a nije uspjelo : $1
+egroupdbacl=Nije uspjelo dohvatiti grupu ACL : $1
+egroupdbacl2=Ažuriranje ACL grupe: nije uspjelo : $1
+
+chooser_title1=Odaberite datoteku ..
+chooser_title2=Odaberite Directory ..
+chooser_dir=Imenik $1
+chooser_ok=U redu
+chooser_date=Odaberite datum
+chooser_eopen=Unos nije uspio : $1
+
+users_title1=Odaberite Korisnici ..
+users_title2=Odaberite korisnika ..
+users_sel=Odabrani korisnici
+users_all=Svi korisnici
+users_ok=U redu
+users_cancel=Otkazati
+users_clear=Čisto
+
+groups_title1=Odaberite Grupe ..
+groups_title2=Odaberite Grupu ..
+groups_all=Sve grupe
+groups_sel=Odabrane grupe
+groups_ok=U redu
+groups_cancel=Otkazati
+groups_clear=Čisto
+
+modules_title1=Odaberite Module ..
+modules_title2=Odaberite Modul ..
+modules_sel=Odabrani moduli
+modules_all=Svi moduli
+modules_ok=U redu
+modules_cancel=Otkazati
+modules_clear=Čisto
+
+config_ecannot=Nije vam dopušteno konfigurirati ovaj modul
+config_title=Konfiguracija
+config_dir=Za modul $1
+config_header=Podesive opcije za $1
+config_none=nijedan
+config_eaccess=Nije vam dopušteno pristupiti ovom modulu
+config_emodule=Modul ne postoji
+config_err=Konfiguracija nije spremljena
+config_nochange=Ne mijenjajte se
+config_setto=Postavljen
+config_ewebmin=Tip parametra 14 djeluje samo u Webminu
+
+help_err=Pomoć nije prikazana
+help_epath=Nedostaje ili nevažeći put pomoći
+help_efile=Nije uspjelo čitanje datoteke pomoći $1
+help_eheader=Nedostaje odjeljak &lt;header&gt;
+help_einclude=Nije uspjelo $1
+help_eif=$1 nije uspio : $2
+help_eexec=$1 nije uspio : $2
+
+referer_title=Sigurnosno upozorenje
+referer_warn=<b>Upozorenje!</b> Webmin je otkrio da je program $2 povezan sa URL-om $1, za koji se čini da je izvan Webmin poslužitelj. Ovo može biti pokušaj prevare vašeg poslužitelja u izvršavanju opasne naredbe.
+referer_warn_unknown=<b>Upozorenje!</b> Webmin je otkrio da je program $1 povezan s nepoznatog URL-a, koji se čini izvan Webmin poslužitelja. Ovo može biti pokušaj prevare vašeg poslužitelja u izvršavanju opasne naredbe.
+referer_fix1=If this is a legitimate link, you can allow links from this URL as follows :<ul><li>Login to Webmin normally.</li><li>Go to the <b>Webmin Configuration</b> module.</li><li>Click on the Trusted Referrers icon.</li><li>Enter the hostname $1 into the <b>Trusted websites</b> field, and click <b>Save</b></li>.</ul>
+referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.</li><li>Save the file.</li></ul>
+referer_fix3u=Provjerite je li vaš preglednik konfiguriran za slanje podataka preporuke tako da ih Webmin može provjeriti.
+referer_fix2u=Alternately, you can configure Webmin to allow links from unknown referers by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Find the line <tt>referers_none=1</tt> and change it to <tt>referers_none=0</tt>.</li><li>Save the file.</li></ul><p></p>WARNING - this has the side effect of opening your system up to reflected XSS attacks and so is not recommended!
+
+session_header=Prijavite se na Webmin
+session_mesg=Morate unijeti korisničko ime i lozinku za prijavu na Webmin poslužitelj na $1.
+session_mesg2=Za prijavu morate unijeti korisničko ime i lozinku.
+session_user=Korisničko ime
+session_pass=Zaporka
+session_twofactor=Dvojica s dva faktora
+session_login=Prijaviti se
+session_clear=Čisto
+session_failed=Prijava nije uspjela. Molim te pokušaj ponovno.
+session_twofailed=Dvofaktorna provjera identiteta nije uspjela : $1
+session_logout=Odjava je uspješna. Upotrijebite donji obrazac za ponovnu prijavu.
+session_timed_out=Vrijeme je isteklo nakon $1 minuta neaktivnosti.
+session_save=Trajno se sjećate prijave?
+
+pam_header=Prijavite se na Webmin
+pam_mesg=Morate odgovoriti na dolje postavljeno pitanje kako biste se prijavili na webminski poslužitelj na $1.
+pam_mesg2=Za prijavu morate odgovoriti na dolje postavljeno pitanje.
+pam_login=Nastaviti
+pam_restart=Ponovno pokretanje
+
+acl_root=Korijenski imenik za odabir datoteka
+acl_otherdirs=Ostale vidljive mape u izborniku datoteka
+acl_nodot=Sakriti skrivene datoteke u programu za odabir datoteka?
+acl_home=Korisnikov kućni imenik
+acl_uedit=Korisnici vidljivi u biraču korisnika
+acl_uedit_all=Svi korisnici
+acl_uedit_none=Nema korisnika
+acl_uedit_only=Samo korisnici
+acl_uedit_except=Svi osim korisnika
+acl_uedit_uid=Korisnici s UID-ovima u dometu
+acl_uedit_group=Korisnici s grupom
+acl_gedit=Grupe vidljive u biraču grupe
+acl_gedit_all=Sve grupe
+acl_gedit_none=Nema grupa
+acl_gedit_only=Samo grupe
+acl_gedit_except=Sve osim grupa
+acl_gedit_gid=Grupe s GID-ovima u rasponu
+acl_feedback=Možete li poslati e-poštu s povratnim informacijama?
+acl_feedback2=Da
+acl_feedback1=Da, ali ne sa config datotekama
+acl_feedback0=Ne
+acl_feedback3=Da, s datotekama za konfiguriranje
+acl_rpc=Mogu li prihvatiti RPC pozive?
+acl_rpc2=Samo za <tt>root</tt> ili <tt>admin</tt>
+acl_rpc1=Da
+acl_rpc0=Ne
+acl_readonly2=Korisnik je u demo načinu?
+acl_readonlyyes=Da (Neki moduli možda nisu dostupni)
+acl_negative=Dodijelite korisnička dopuštenja za nove module?
+acl_fileunix=Pregledavajte datoteke kao Unix korisnik
+acl_sameunix=Isto kao i Webmin prijava
+acl_webminsearch=Prikaži polje pretraživanja Webmin?
+
+month_1=siječanj
+month_2=veljača
+month_3=ožujak
+month_4=travanj
+month_5=svibanj
+month_6=lipanj
+month_7=srpanj
+month_8=kolovoz
+month_9=rujan
+month_10=listopad
+month_11=studeni
+month_12=prosinac
+
+day_0=nedjelja
+day_1=ponedjeljak
+day_2=utorak
+day_3=srijeda
+day_4=četvrtak
+day_5=petak
+day_6=subota
+
+smonth_1=Jan
+smonth_2=veljače
+smonth_3=pokvariti
+smonth_4=travnja
+smonth_5=svibanj
+smonth_6=lipnja
+smonth_7=srpnja
+smonth_8=kolovoz
+smonth_9=rujna
+smonth_10=listopada
+smonth_11=studeni
+smonth_12=prosinca
+
+sday_0=Su
+sday_1=Mo
+sday_2=Tu
+sday_3=Mi
+sday_4=th
+sday_5=fr
+sday_6=sa
+
+emodule=Pristup odbijen: Korisniku $1 nije dopušteno korištenje modula $2
+emodulecheck=Modul $1 nije dostupan u vašem sustavu
+elock_tries2=Nije uspjelo zaključavanje datoteke $1 nakon $2 minuta. Zadnja pogreška bila je : $3
+
+skill_high=Stručnjak
+skill_medium=srednji
+skill_low=Novak
+
+feedback_title=Povratne informacije putem Webmin-a
+feedback_desc=Ovaj obrazac omogućuje prijavljivanje grešaka na davanje prijedloga programerima Webmin u vezi bilo kakvih problema ili nedostajućih značajki koje ste pronašli. Kada se klikne gumb Pošalji, detalji unijeti u obrazac bit će poslati e-poštom na $1.
+feedback_desc2=Ove će povratne informacije biti poslane programeru Webmina, a ne vašem administratoru sustava, davatelju internetskih usluga ili tvrtki koja pruža usluge hostinga. Molimo napišite svoje povratne informacije na engleskom jeziku, čak i ako trenutno pokrećete Webmin na nekom drugom jeziku.
+feedback_header=Pojedinosti o povratnim informacijama
+feedback_name=Tvoje ime
+feedback_email=Vaša email adresa
+feedback_module=Što se tiče modula
+feedback_all=Svi moduli
+feedback_text=Opis problema ili prijedloga
+feedback_os=Jeste li u e-poštu uključili detalje operativnog sustava?
+feedback_osdesc=Ako je odabrana ta opcija, automatska povratna veza e-pošte sadrži naziv i verziju vašeg operativnog sustava.
+feedback_config=Uključiti konfiguraciju modula u e-poštu?
+feedback_configdesc=Ako je odabrano, e-pošta će sadržavati konfiguraciju povezanog modula i sadržaj svih konfiguracijskih datoteka koje modul koristi. Na primjer, ako su se povratne informacije odnosile na modul <i>Korisnici i grupe</i>, vaše <tt>/etc/passwd</tt> i <tt>/etc/shadow</tt> datoteke će biti poslane ,
+feedback_attach=Dodatne datoteke za prilog
+feedback_send=Pošalji povratne informacije
+feedback_mailserver=Slanje putem SMTP poslužitelja
+feedback_mailserver_def=Lokalni sendmail program
+feedback_err=Slanje povratnih informacija nije uspjelo
+feedback_emodule=Odlučili ste uključiti konfiguraciju modula u e-poštu, ali niste odabrali modul.
+feedback_emodule2=Odabrani modul ne postoji
+feedback_econfig=Nemate puni pristup odabranom modulu.
+feedback_via=Poslana povratna informacija $1 putem SMTP poslužitelja $2
+feedback_prog=Poslana je povratna informacija $1 pomoću programa sendmail $2
+feedback_esend=Slanje povratnih informacija putem programa sendmail ili lokalnog SMTP poslužitelja nije uspjelo.
+feedback_to=Pošaljite povratne informacije na adrese
+feedback_enoto=Nisu unesene adrese na koje bismo mogli poslati povratne informacije
+feedback_ecannot=Nije vam dopušteno slanje povratnih informacija
+feedback_ecannot2=Nije vam dopušteno slati povratne informacije koje sadrže konfiguracijske datoteke
+
+progress_size2=Preuzimanje $1 ($2) ..
+progress_nosize=Preuzimanje $1 ..
+progress_datan=Primljeno $1 ($2 %)
+progress_data2n=Primljeno $1
+progress_done=.. skidanje dovršeno.
+progress_incache=Pronađeno je $1 u predmemoriji ..
+
+readparse_cdheader=Nedostaje zaglavlje Sadržaj-Dispozicija
+readparse_enc=Očekivao je kodiranje podataka oblika, ali dobio je normalno kodiranje
+readparse_max=Podaci su premašili maksimalnu veličinu $1 bytes
+
+password_expired=Vaša lozinka je istekla i mora se odabrati nova.
+password_temp=Morate odabrati novu lozinku da biste zamijenili privremenu prijavu.
+password_header=Odaberite Nova lozinka
+password_user=Korisničko ime
+password_old=Trenutna lozinka
+password_new1=Nova lozinka
+password_new2=Ponovno nova lozinka
+password_ok=Promijeniti
+password_clear=Čisto
+password_done=Vaša lozinka je uspješno promijenjena. Sada se možete <a href='$1'>ponovno prijaviti</a> s novom zaporkom.
+password_err=Promjena zaporke nije uspjela
+password_euser=Vaše ime za prijavu nije pronađeno u datoteci s lozinkom!
+password_eold=Trenutačna lozinka nije ispravna
+password_enew1=Nije unesena nova lozinka
+password_enew2=Vaše nove lozinke ne odgovaraju
+password_epam=PAM pogreška : $1
+password_emodpam=Authen::PAM perl modul potreban za izmjenu lozinke nije instaliran!
+password_enewpass=Nova lozinka nije dopuštena : $1
+
+ui_mandatory=Ovo je polje obavezno
+ui_checkmandatory=Ništa nije odabrano
+ui_errors=Pronađeno je više pogrešaka :
+ui_nothing=Ništa nije ušlo
+ui_searchcol=Pronađite redove gdje
+ui_searchfor=Sadrži tekst
+ui_searchok=traži
+ui_selall=Odaberi sve.
+ui_selinv=Invert izbor.
+ui_edate=Nevažeći datum
+ui_etime=Nevažeće vrijeme
+ui_paging=Prikazivanje redaka $1 do $2 od $3
+ui_rowlabel=$2 u retku $1 :
+ui_filterbox=Unesite za filtriranje ..
+
+header_statusmsg=$1 prijavljen je u $2 $3 na $4 ($5)
+
+uptracker_title=Prijenos datoteke
+uptracker_file=Naziv datoteke
+uptracker_size=Veličina
+uptracker_pc=Napredak
+uptracker_eid=Nije naveden ID za prijenos
+uptracker_eid2=ID prijenosa nije valjan!
+uptracker_of=$1 od $2
+
+wsearch_title=Pretražite $1
+wsearch_modt=Modul
+wsearch_mtitle=Naziv modula
+wsearch_what=Odgovarajuća stranica
+wsearch_type=Vrsta podudaranja
+wsearch_mod=$1
+wsearch_config_webmin=Konfiguracija webmin modula
+wsearch_config_usermin=Postavke korisnika
+wsearch_help=Stranica pomoći
+wsearch_inmod=U $1
+wsearch_text=Tekst korisničkog sučelja
+wsearch_esearch=Ništa nije traženo.
+wsearch_enone=Nisu pronađeni Webmin moduli ili stranice koje odgovaraju $1.
+wsearch_on=(Na $1)
+wsearch_helpfor=Pomoć za <i>$1</i>
+wsearch_htext=Tekst koji odgovara
+wsearch_htype=Izvor
+wsearch_hcgis=Reference
+wsearch_type_mod=Naziv modula
+wsearch_type_config=Konfiguracija
+wsearch_type_help=Stranica pomoći
+wsearch_type_text=Korisničko sučelje
+wsearch_type_dir=URL modula
+wsearch_hmod=Modul
+wsearch_moddir=URL staza /$1/
+wsearch_searching=Pretraživanje $1. ,
+wsearch_found=Pronađeno $1 rezultata :
+
+sql_emysqldriver=Učitavanje MySQL DBI upravljačkog programa nije uspjelo
+sql_emysqlconnect=Nije uspjelo povezivanje s MySQL bazom podataka : $1
+sql_epostgresqldriver=Nije uspjelo učitavanje PostgreSQL DBI upravljačkog programa
+sql_epostgresqlconnect=Nije uspjelo povezivanje s PostgreSQL bazom podataka : $1
+sql_eldapdriver=Nije uspjelo učitavanje LDAP perl modula
+sql_eldapconnect=Nije uspjelo povezivanje s poslužiteljem LDAP $1
+sql_eldaptls=Nije uspjelo pokretanje TLS enkripcije za LDAP : $1
+sql_eldaplogin=Nije uspjela prijava na LDAP poslužitelj kao $1 : $2 
+
+log_email_subject=Akcija webmin-a u $1
+log_email_global=Webmin globalna akcija
+log_email_desc=Webmin je poslao ovu poruku e-pošte kao odgovor na korisničku akciju.
+log_email_mod=Webmin modul: $1
+log_email_moddesc=Naziv modula: $1
+log_email_time=Radnja izvedena u: $1
+log_email_system=Izvodi se u sustavu: $1
+log_email_user=Izvodi korisnik: $1
+log_email_script=Webmin skripta: $1
+log_email_session=ID sesije: $1
+log_email_remote=Adresa klijenta: $1
+
+nice_size_PB=PB
+nice_size_PiB=PiB
+nice_size_TB=TB
+nice_size_TiB=TiB
+nice_size_GB=GB
+nice_size_GiB=GiB
+nice_size_MB=MB
+nice_size_MiB=MiB
+nice_size_kB=kB
+nice_size_kiB=KiB
+nice_size_b=bajtova
+
+langauto_include=Uključite strojne prijevode
+
+file_truncated_message=dohvatio $1 podataka, skratio $2 od $3 
+file_truncated_message_head=dohvaćen početak $1 podataka, skraćen $2 od $3 
+file_truncated_message_tail=dohvaćen završetak $1 podataka, skraćen $2 od $3 

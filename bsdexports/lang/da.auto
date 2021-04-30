@@ -1,0 +1,52 @@
+index_title=NFS-eksport
+index_add=Tilføj en ny eksport.
+index_dirs=Directories
+index_clients=Kunder
+index_everyone=Alle sammen
+index_none=Der er endnu ikke defineret nogen eksport.
+index_delete=Slet valgte eksport
+index_apply=Anvend ændringer
+index_applydesc=Klik på denne knap for at anvende den aktuelle konfiguration af fileksport. Dette gør alle de mapper, der er anført ovenfor, tilgængelige med de specificerede indstillinger.
+index_return=eksportliste
+index_echeck=NFS-serveren kan ikke bruges på dette system : $1 
+
+check_ecmd=NFS-serverkommando $1 er ikke installeret
+
+delete_err=Kunne ikke slette eksporten
+delete_enone=Ingen valgt
+
+edit_title1=Rediger eksport
+edit_title2=Opret eksport
+edit_header1=Eksportindstillinger
+edit_dirs=Kataloger til eksport
+edit_alldirs=Eksporter undermapper?
+edit_ro=Læs kun?
+edit_kerb=Brug Kerberos?
+edit_header2=Ekstern brugerkortlægning
+edit_maproot=Kort root-bruger til
+edit_mapusers=Kortlægger alle brugere til
+edit_unpriv=Ikke-privilegeret bruger
+edit_uid=Bruger / UID
+edit_gids=Og grupper / GID'er
+edit_mapall=Kortlægger alle brugere til
+edit_header3=Kunder til denne eksport
+edit_clients=Kunder
+edit_hosts=Værter / netgrupper
+edit_network=Netværk
+edit_mask=Maske
+
+save_err=Eksporten kunne ikke gemmes
+save_edir='$1' er ikke et bibliotek eller findes ikke
+save_enone=Du skal indtaste mindst et bibliotek for at eksportere
+save_esub=Der kan kun gives et bibliotek, hvis indstillingen <b>eksportunderkataloger</b> er valgt
+save_eroot=Når du bruger indstillingen <b>eksportunderkataloger</b>, skal det eksporterede bibliotek være roden til et <i>lokalt</i> filsystem
+save_euser='$1' er ikke en gyldig bruger eller UID
+save_egroup='$1' er ikke en gyldig gruppe eller GID
+save_ekerb=Brugere af kortrot, kortlægning af alle brugere og indstillinger for kerberos er gensidigt eksklusive
+save_ehosts=Du skal indtaste mindst en vært for at eksportere til
+save_enetwork='$1' er ikke et gyldigt netværk
+save_enetmask='$1' er ikke en gyldig netmaske
+save_esame1=Kataloget <tt>$1</tt> eksporteres allerede til <tt>$2</tt>. Dit operativsystem tillader ikke, at mapper på det samme <i>lokale</i> filsystem eksporteres til den samme vært separat
+save_esame2=Kataloget <tt>$1</tt> eksporteres allerede til <tt>$2</tt>. Dit operativsystem tillader ikke, at mapper på det samme <i>lokale</i> filsystem eksporteres til det samme netværk separat
+
+restart_err=Kunne ikke anvende ændringer

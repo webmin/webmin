@@ -10,7 +10,7 @@ sub parse_inittab
 {
 local @rv;
 local $lnum = 0;
-open(INITTAB, $config{'inittab_file'});
+open(INITTAB, "<".$config{'inittab_file'});
 while(<INITTAB>) {
 	s/\r|\n//g;
 	#s/#.*$//g;

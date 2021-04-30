@@ -1,0 +1,37 @@
+index_title=Cluster Cron -työt
+index_add=Luo uusi klusterin cron-työ.
+index_none=Klusterin cron-töitä ei ole määritelty.
+index_servers=Suorita palvelimilla
+index_return=cluster cron -työluettelo
+index_more=$1 Lisää ..
+index_run=Juokse nyt ..
+index_actions=Toiminnot
+
+edit_title=Muokkaa Cluster Cron Job
+create_title=Luo klusterin Cron Job
+edit_servers=Suorita palvelimilla
+edit_group=$1 : n jäsenet
+edit_this=tämä palvelin
+edit_all=&lt;Kaikki isännät&gt;
+edit_emissing=Cron-työtä ei enää ole!
+
+save_err=Klusterin cron-työn tallentaminen epäonnistui
+
+exec_title=Suorita klusterin Cron Job
+exec_cmd=Suoritetaan $1 valituilla palvelimilla ..
+exec_failed= $1:$2  : n suorittaminen epäonnistui
+exec_success=Lähtö $1 : stä ..
+exec_nohosts=Mikään isäntä, jota ei ole valittu toimimaan, tai valitut ryhmät eivät sisällä käyttökelpoisia isäntiä.
+
+log_run=Näytti $1 $2 -palvelimilla
+log_run_l=Todettiin $1 $2 : lla
+log_create=Luonut klusterin cron-työn $1 : lle
+log_create_l=Luonut klusterin cron-työn $2 $1 : lle
+log_modify=Muokattu klusterin cron-tehtävä $1 : lle
+log_modify_l=Muokattu klusterin cron-tehtävä $2 $1 : lle
+log_delete=Poistettu klusterin cron-tehtävä $1 : lle
+log_delete_l=Poistettu ryppää cron -työ $2 kohdasta $1 
+log_deletes=Poistettu $1 klusterin cron-työt
+
+delete_err=Klusterin cron-töiden poistaminen epäonnistui
+delete_enone=Mitään ei ole valittu

@@ -1,0 +1,16 @@
+sec1=Настройка portsentry,11
+portsentry=Путь к демону portsentry,0
+portsentry_config=Путь к файлу конфигурации portsentry,0
+portsentry_pid=Файл PID portsentry,3,Нет
+portsentry_ignore=Файл игнорируемых узлов portsentry,3,Из файла конфигурации
+portsentry_start=Команда для запуска portsentry,3,Запускать демоны в указанных ниже режимах
+portsentry_stop=Команда для останова portsentry,3,Снять процессы
+portsentry_tmode=Режим TCP portsentry,1,tcp-Базовый режим,stcp-Режим невидимости,atcp-Улучшенный режим невидимости
+portsentry_umode=Режим UDP portsentry,1,udp-Базовый режим,sudp-Режим невидимости,audp-Улучшенный режим невидимости
+sec2=Настройка hostsentry,11
+hostsentry=Путь к сценарию python hostsentry.py,0
+hostsentry_config=Путь к файлу конфигурации hostsentry,0
+hostsentry_start=Команда для запуска hostsentry,3,Запускать сценарий python
+hostsentry_stop=Команда для останова hostsentry,3,Снять процессы
+sec3=Настройка Logcheck,11
+logcheck=Пусть к сценарию logcheck.sh,0

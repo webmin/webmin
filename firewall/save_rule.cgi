@@ -96,9 +96,9 @@ else {
 		}
 	if ($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'POSTROUTING') {
 		if ($rule->{'j'}->[1] eq 'DNAT' && !$in{'dnatdef'}) {
-			!$in{'dipfrom'} || &check_ipaddress($in{'dipfrom'}) ||
+			!$in{'dipfrom'} || &check_ipvx_ipaddress($in{'dipfrom'})||
 				&error($text{'save_edipfrom'});
-			!$in{'dipto'} || &check_ipaddress($in{'dipto'}) ||
+			!$in{'dipto'} || &check_ipvx_ipaddress($in{'dipto'}) ||
 				&error($text{'save_edipto'});
 			local $v = $in{'dipfrom'};
 			$v .= "-".$in{'dipto'} if ($in{'dipto'});
@@ -124,9 +124,9 @@ else {
 	    $rule->{'chain'} ne 'OUTPUT') {
 		if ($rule->{'j'}->[1] eq 'SNAT' && !$in{'snatdef'}) {
 			(!$in{'sipfrom'} && !$in{'sipto'}) ||
-			    &check_ipaddress($in{'sipfrom'}) ||
+			    &check_ipvx_ipaddress($in{'sipfrom'}) ||
 				&error($text{'save_esipfrom'});
-			!$in{'sipto'} || &check_ipaddress($in{'sipto'}) ||
+			!$in{'sipto'} || &check_ipvx_ipaddress($in{'sipto'}) ||
 				&error($text{'save_esipto'});
 			local $v = $in{'sipfrom'};
 			$v .= "-".$in{'sipto'} if ($in{'sipto'});
@@ -321,11 +321,13 @@ else {
 
 	# Save connection states and TOS
 	my $sd = &supports_conntrack() ? "ctstate" : "state";
+	my $nonsd = $sd eq "ctstate" ? "state" : "ctstate";
 	if (&parse_mode($sd, $rule, $sd)) {
 		@states = split(/\0/, $in{$sd});
 		@states || &error($text{'save_estates'});
 		$rule->{$sd}->[1] = join(",", @states);
 		push(@mods, $sd eq "state" ? "state" : "conntrack");
+		delete($rule->{$nonsd});
 		}
 	if (&parse_mode("tos", $rule, "tos")) {
 		$rule->{'tos'}->[1] = $in{'tos'};

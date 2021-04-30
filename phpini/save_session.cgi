@@ -16,7 +16,18 @@ if ($in{"session.save_path_def"}) {
 	&save_directive($conf, "session.save_path", undef);
 	}
 else {
-	-d $in{"session.save_path"} || &error($text{'session_epath'});
+	if($in{"session.save_handler"} == "redis") {
+		my @hasRedis = `php -m | grep redis` == "redis";
+		if(!@hasRedis) {
+			&error($text{'session_eredis'});
+			}
+		}
+	else {
+		# file path must not be checked with other handlers (e.g. redis)
+		-d $in{"session.save_path"} || &error($text{'session_epath'});
+		}
+
+
 	&save_directive($conf, "session.save_path",
 			$in{"session.save_path"});
 	}
@@ -43,7 +54,7 @@ else {
 			$in{"session.gc_maxlifetime"});
 	}
 
-&flush_file_lines_as_user($in{'file'});
+&flush_file_lines_as_user($in{'file'}, undef, 1);
 &unlock_file($in{'file'});
 &graceful_apache_restart($in{'file'});
 &webmin_log("session", undef, $in{'file'});

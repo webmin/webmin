@@ -1,0 +1,33 @@
+index_title=TCP 래퍼
+index_return=인덱스
+index_allowtitle=허용 된 호스트
+index_denytitle=거부 된 호스트
+index_norule=<tt>$1</tt>에 아직 정의 된 규칙이 없습니다.
+index_nofile='$1'파일이 존재하지 않습니다. <a href="/config.cgi?tcpwrappers">모듈 구성</a>을 확인하십시오.
+index_add=새 규칙을 추가하십시오.
+index_service=악마
+index_hosts=호스트
+index_cmd=명령
+index_delete=선택된 것을 지워 라
+index_none=none
+
+edit_title1allow=허용 규칙 생성
+edit_title2allow=허용 규칙 편집
+edit_title1deny=거부 규칙 생성
+edit_title2deny=거부 규칙 편집
+edit_eid=이 규칙을 찾을 수 없습니다
+edit_header=규칙 옵션
+edit_service=서비스
+edit_except=서비스 제외
+edit_hosts=원격 호스트
+edit_hostsexcept=호스트 제외
+edit_cmd=쉘 명령
+edit_efound=xinetd 구성에서 데몬 '$1'을 (를) 찾을 수 없습니다.
+
+save_errtitle=저장 규칙 오류
+save_ehost=호스트 입력에 잘못된 문자가 포함되어 있습니다
+save_ecmd=명령 입력에 잘못된 문자가 포함되어 있습니다
+save_eservice=데몬 이름에 잘못된 문자가 포함되어 있습니다
+
+del_errtitle=규칙 삭제 오류
+del_enone=삭제할 것으로 표시된 규칙이 없습니다.

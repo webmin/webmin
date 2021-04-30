@@ -110,11 +110,17 @@ foreach my $a (@ann) {
 	# Check if this announcement should be skipped
 	next if ($hide{$a->{'file'}});
 	next if ($a->{'skip_virtualmin_pro'} && $vmpro);
+	next if ($a->{'skip_virtualmin_gpl'} && %vminfo && !$vmpro);
 	next if ($a->{'skip_cloudmin_pro'} && $cmpro);
+	next if ($a->{'skip_cloudmin_gpl'} && %cminfo && !$cmpro);
 	next if ($a->{'skip_pro'} && ($vmpro || $cmpro));
 	next if ($a->{'atleast_version'} && $ver < $a->{'atleast_version'});
 	next if ($a->{'atmost_version'} && $ver > $a->{'atmost_version'});
 	next if ($a->{'user_types'} && $a->{'user_types'} !~ /\Q$utype\E/);
+	next if ($a->{'beta'} && !$gconfig{'beta_announce'});
+	next if ($a->{'depends'} && !&foreign_check($a->{'depends'}));
+	next if ($a->{'installed'} &&
+		 &foreign_installed($a->{'installed'}, 1) != 2);
 	
 	(my $id = $a->{'file'}) =~ s/\.//;
 	my $info = { 'id' => "announce_".$id,

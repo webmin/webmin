@@ -1,0 +1,52 @@
+index_title=Exporturi NFS
+index_add=Adăugați un nou export.
+index_dirs=Directoare
+index_clients=Clienți
+index_everyone=Toata lumea
+index_none=Nu au fost definite încă exporturi.
+index_delete=Ștergeți exporturile selectate
+index_apply=Aplica schimbarile
+index_applydesc=Faceți clic pe acest buton pentru a aplica configurația actuală a exporturilor de fișiere. Acest lucru va face ca toate directoarele enumerate mai sus să fie disponibile cu opțiunile specificate.
+index_return=lista exporturilor
+index_echeck=Serverul NFS nu poate fi utilizat pe acest sistem : $1 
+
+check_ecmd=Comanda serverului NFS $1 nu este instalată
+
+delete_err=Nu a reușit ștergerea exporturilor
+delete_enone=Nimic selectat
+
+edit_title1=Editați Export
+edit_title2=Creați Export
+edit_header1=Opțiuni de export
+edit_dirs=Directoare de export
+edit_alldirs=Exportați subdirectoare?
+edit_ro=Numai citit?
+edit_kerb=Folosește Kerberos?
+edit_header2=Cartografierea utilizatorului de la distanță
+edit_maproot=Utilizați o hartă root pentru
+edit_mapusers=Faceți harta tuturor utilizatorilor
+edit_unpriv=Utilizator neprotejat
+edit_uid=Utilizator / UID
+edit_gids=Și grupuri / GID
+edit_mapall=Faceți harta tuturor utilizatorilor
+edit_header3=Clienți pentru acest export
+edit_clients=Clienți
+edit_hosts=Gazde / grupuri de Internet
+edit_network=Reţea
+edit_mask=Masca
+
+save_err=Nu a reușit să salveze exportul
+save_edir=„$1” nu este un director sau nu există
+save_enone=Pentru a exporta trebuie să introduceți cel puțin un director
+save_esub=Doar un director poate fi dat dacă opțiunea <b>subdirectorii de export</b> este aleasă
+save_eroot=Când utilizați opțiunea <b>subdirectorii de export</b>, directorul exportat trebuie să fie rădăcina unui sistem de fișiere <i>local</i>
+save_euser=„$1” nu este un utilizator valid sau un UID
+save_egroup=„$1” nu este un grup valid sau GID
+save_ekerb=Utilizatorii rădăcină ai hărții, hărți toți utilizatorii și opțiunile kerberos se exclud reciproc
+save_ehosts=Pentru a exporta, trebuie să introduceți cel puțin o gazdă
+save_enetwork=„$1” nu este o rețea validă
+save_enetmask=„$1” nu este o mască netă validă
+save_esame1=Directorul <tt>$1</tt> este deja exportat în <tt>$2</tt>. Sistemul de operare nu permite exportarea directoarelor din același sistem de fișiere <i>local</i> către aceeași gazdă separat
+save_esame2=Directorul <tt>$1</tt> este deja exportat în <tt>$2</tt>. Sistemul dvs. de operare nu permite exportul directoarelor din același sistem de fișiere <i>local</i> în aceeași rețea separat
+
+restart_err=Eroare la aplicarea modificărilor

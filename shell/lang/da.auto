@@ -1,0 +1,18 @@
+index_title=Kommandoskal
+index_ok=Udfør kommando:
+index_history=Kommandohistorie
+index_clear=Ryd historie
+index_clearcmds=Ryd kommandoer
+index_desc=Indtast en shell-kommando, der skal udføres i tekstfeltet herunder. Kommandoen <tt>cd</tt> kan bruges til at ændre katalog til efterfølgende kommandoer.
+index_pok=Udfør forrige kommando
+index_edit=Rediger forrige
+index_trunced=Den samlede produktion på $2 blev trunkeret til $1.
+index_timedout=Kommandoen blev afsluttet efter at have kørt i $1 sekunder.
+
+acl_user=Udfør kommandoer som bruger
+acl_user_def=Nuværende Webmin-bruger
+acl_shellenv=Brug den valgte brugers miljø?
+acl_chroot=Chroot til katalog
+
+log_run=Kørte kommando $1 
+log_clear=Ryddet kommandohistorie

@@ -1,0 +1,39 @@
+index_title=NFS 수출
+index_add=새로운 NFS 내보내기 추가
+index_dir=예배 규칙서
+index_hosts=허용 된 호스트
+index_all=모든 호스트
+index_none=아직 NFS 내보내기가 정의되지 않았습니다.
+index_apply=구성 적용
+index_applydesc=이 버튼을 클릭하면 위에 나열된 모든 내보내기가 구성된 옵션으로 활성화됩니다.
+index_return=수출 목록
+
+edit_title1=내보내기 만들기
+edit_title2=내보내기 편집
+edit_header=수출 세부 사항
+edit_dir=내보낼 디렉토리
+edit_hosts=호스트/넷 그룹으로 내보내기
+edit_ro=읽기 전용?
+edit_wsync=쓰기 후 동기화?
+edit_anon=루트 사용자 권한
+edit_anon1=기본값 (<tt>아무도</tt>로 처리)
+edit_anon2=접근을 거부하다
+edit_anon0=사용자로 취급
+edit_rw=읽기/쓰기 액세스
+edit_root=루트 파일 액세스
+edit_access=마운트 액세스
+edit_all=모든 호스트
+edit_sel=나열된 호스트 ..
+edit_none=호스트가 없습니다
+
+save_err=내보내기를 저장하지 못했습니다
+save_edir=내보낼 디렉토리가 없거나 존재하지 않습니다
+save_eanon=누락되거나 잘못된 루트 사용자
+save_erw=읽기 / 쓰기 호스트가 입력되지 않았습니다
+save_eroot=루트 파일 액세스 호스트가 입력되지 않았습니다
+save_eaccess=마운트 액세스 호스트가 입력되지 않았습니다
+
+log_create_export=$1 의 내보내기를 생성했습니다
+log_delete_export=$1 의 삭제 된 내보내기
+log_modify_export=$1 의 수정 된 내보내기
+log_apply=적용되는 구성

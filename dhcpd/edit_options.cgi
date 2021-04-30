@@ -197,9 +197,9 @@ else {
 		print "<td><b>$text{'eopt_custom'}</b></td>\n";
 		print "<td nowrap>$text{'eopt_cnum'}\n";
 		my ($ov, @v) = @{$o->{'values'}};
-        print &ui_textbox("cnum_".$i, ( $ov =~ /^option-(\S+)$/ ? $1 : '' ), 4);
+		print &ui_textbox("cnum_".$i, ( $ov =~ /^option-(\S+)$/ ? $1 : '' ), 4);
 		print "$text{'eopt_cval'}\n";
-        print &ui_textbox("cval_".$i, join(" ", @v), 15);
+		print &ui_textbox("cval_".$i, join(" ", @v), 15);
 		print "</tr>\n" if ($i%2 != 0);
 		}
 	}

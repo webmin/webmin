@@ -1,0 +1,57 @@
+index_title=NFS: n osakkeet
+index_add=Aloita uuden hakemiston jakaminen.
+index_dir=hakemisto
+index_clients=asiakkaat
+index_everyone=jokainen
+index_delete=Poista valitut osakkeet
+index_none=Tällä järjestelmällä ei tällä hetkellä viedä hakemistoja.
+index_apply=Ota muutokset käyttöön
+index_applydesc=Napsauta tätä painiketta, jos haluat käyttää nykyistä tiedostojen jakamismääritystä. Tämän avulla kaikki yllä luetellut hakemistot ovat käytettävissä määritettyjen asetusten kanssa.
+index_return=osakeluettelo
+
+edit_title1=Muokkaa jaa
+edit_title2=Luo jaa
+edit_header1=Jaa yksityiskohdat
+edit_dir=hakemisto
+edit_desc=Kuvaus
+edit_ro=Vain luku -oikeus
+edit_rw=Luku- ja kirjoitusoikeudet
+edit_root=Pääsy juurille
+edit_none=Ei mitään
+edit_all=Kaikki isännät
+edit_listed=Listatut isännät ..
+edit_header2=Osakeoptiot
+edit_nosub=Sallitaanko aluslevyjen asennus?
+edit_nosuid=Sallivatko asetustiedostot?
+edit_des=Asiakkaiden on käytettävä DES: ää?
+edit_kerberos=Asiakkaiden on käytettävä kerberoja?
+edit_anon=Tuntematon käyttäjä
+edit_anon0=Ei valittu
+edit_anon1=Ei pääsyä
+edit_aclok=Sallivatko ACL: t?
+edit_public=WebNFS-jako?
+edit_index=WebNFS-hakemistotiedosto
+
+save_err=Jaon tallentaminen epäonnistui
+save_edirectory='$1' ei ole kelvollinen hakemistonimi
+save_edirectory2=Hakemistoa '$1' ei ole
+save_erw=Et ole luonut mitään isäntiä, joiden kanssa jaettaisiin kirjoitus-kirjoitus
+save_ero=Et ole luonut mitään isäntiä, joiden kanssa jaettaisiin vain luku -tyyppinen
+save_eroot=Et luetellut mitään isäntiä, joiden kanssa jaettaisiin juuri
+save_ealready=Hakemisto '$1' on jo jaettu
+save_ehost=Isäntä '$1' ei ole olemassa
+
+log_modify=Muokattu NFS-osuus $1 
+log_rename=NFS: n osuus muutettu $1 - $2 
+log_create=Luotu NFS-osuus $1 
+log_delete=Poistettu NFS-osuus $1 
+log_apply=Sovelletut muutokset
+
+acl_view=Voiko NFS-osakkeita muokata?
+
+ecannot=Sinulla ei ole oikeutta hallita NFS-osakkeita
+
+delete_err=Osakkeiden poistaminen epäonnistui
+delete_enone=Mitään ei ole valittu
+
+restart_err=Muutosten asettaminen epäonnistui

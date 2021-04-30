@@ -1,0 +1,17 @@
+index_title=การกำหนดค่า Kerberos5
+index_econf=ไม่พบไฟล์การกำหนดค่า Kerberos5 บนระบบของคุณ อาจไม่ได้ติดตั้งไว้หรือ <a href='$2'>การกำหนดค่าโมดูล</a> ไม่ถูกต้อง
+
+logging=ล็อกไฟล์
+default_log=ไฟล์บันทึกเริ่มต้น
+kdc_log=ไฟล์บันทึก KDC
+admin_log=ไฟล์บันทึกของเซิร์ฟเวอร์ผู้ดูแลระบบ
+
+libdefaults=การกำหนดค่าเริ่มต้น
+dns_kdc=ใช้ DNS เพื่อค้นหา KDC
+default_realm=ดินแดน
+domain=ชื่อโดเมน
+default_kdc=KDC
+default_admin=เซิร์ฟเวอร์ผู้ดูแลระบบ
+default_domain=ชื่อโดเมนเริ่มต้น
+
+save=อัปเดตการกำหนดค่า

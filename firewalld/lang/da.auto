@@ -1,0 +1,116 @@
+index_title=FirewallD
+index_atboot=Vil du aktivere firewall ved starttidspunktet?
+index_bootup=Aktivér ved opstart
+index_bootupdesc=Skift denne mulighed for at kontrollere, om din firewall er aktiveret ved starttidspunktet eller ej.
+index_apply=Anvend konfiguration
+index_applydesc=Klik på denne knap for at aktivere firewall-konfigurationen, der er anført ovenfor, aktiv. Eventuelle firewallregler, der i øjeblikket er gældende, skylles og udskiftes
+index_restart=Anvend konfiguration
+index_restartdesc=Aktivér alle de tilladte tjenester og porte, der er anført ovenfor, i alle zoner. Alle aktive regler, der ikke blev oprettet permanent, erstattes.
+index_start=Start FirewallD
+index_startdesc=Start FirewallD-serveren, og anvend reglerne ovenfor.
+index_stop=Stop FirewallD
+index_stopdesc=Luk FirewallD-serveren, og fjern alle ovenstående regler.
+index_cerr=FirewallD-modulet kan ikke bruges : $1 
+index_zone=Vis regler i zone:
+index_zoneok=Lave om
+index_zoneadd=Tilføj zone ..
+index_zonedel=Slet zone
+index_zonedef=Lav standard
+index_type=Regeltype
+index_port=Havn eller service
+index_proto=protokol
+index_tservice=Service
+index_tport=Havn
+index_tforward=Frem
+index_padd=Tilføj tilladt port.
+index_sadd=Tilføj tilladt service.
+index_fadd=Tilføj port fremad.
+index_delete=Slet valgte regler
+index_return=liste over zoner
+index_ezones=Der blev ikke fundet nogen FirewallD-zoner!
+index_none=Denne zone har endnu ikke tilladte porte eller tjenester.
+index_ifaces=Anvend regler på grænseflader:
+
+port_edit=Rediger port
+port_create=Tilføj port
+port_header=Tilladte portindstillinger
+port_zone=Tilladt i zone
+port_port=Port for at tillade
+port_mode0=Enkelt havn
+port_mode1=Port rækkevidde
+port_mode2=Samme som den originale port
+port_proto=Netværksprotokol
+port_ezone=Zone findes ikke!
+port_err=Kunne ikke gemme porten
+port_eport=Manglende eller ugyldigt portnummer eller navn
+port_eportlow=Lav port skal være et tal
+port_eporthigh=Høj port skal være et tal
+port_eportrange=Lav port skal være under den høje port
+
+serv_edit=Rediger service
+serv_create=Tilføj service
+serv_header=Tilladte servicemuligheder
+serv_name=Service tillader
+serv_err=Kunne ikke gemme tjenesten
+
+forward_edit=Rediger frem
+forward_create=Opret fremad
+forward_header=Indstillinger for portvideresendelse
+forward_zone=Frem til zone
+forward_err=Kunne ikke gemme frem
+forward_port=Kildeport
+forward_dstport=Desintation port
+forward_dstaddr=Destinationsadresse
+forward_dstlocal=Dette system
+forward_edstaddr=Ugyldig IPv4-destinationsadresse
+forward_eneither=Enten skal der indtastes en destinationsadresse eller port eller begge dele
+
+check_ecmd=FirewallD-kontrolkommandoen $1 blev ikke fundet på dit system
+
+delete_err=Kunne ikke slette regler
+delete_enone=Ingen valgt!
+delete_edel=Fjernelse af $1 mislykkedes : $2 
+
+zone_title=Opret zone
+zone_header=Nye zonemuligheder
+zone_name=Zone navn
+zone_mode=Tilladte havne og tjenester
+zone_mode0=Ingen (al trafik blokeres)
+zone_mode1=Kopier fra zone
+zone_mode2=SSH, IDENT og Webmin kun
+zone_mode3=SSH, IDENT, Webmin og høje porte
+zone_mode4=Porte brugt til virtuel hosting
+zone_err=Kunne ikke oprette zone
+zone_ename=Manglende eller ugyldigt zonnavn
+zone_eclash=En zone med samme navn findes allerede
+
+delzone_title=Slet zone
+delzone_err=Zonet kunne ikke slettes
+delzone_edefault=Standardzonen kan ikke fjernes
+delzone_rusure=Er du sikker på, at du vil slette zonen $1, der indeholder $2 -porte og $3 -tjenester?
+
+defzone_err=Kunne ikke gøre zone som standard
+
+restart_err=Kunne ikke anvende konfiguration
+
+stop_err=Kunne ikke stoppe FirewallD
+start_err=Kunne ikke starte FirewallD
+log_stop=Stopet firewallD
+log_start=Startet firewallD
+log_restart=Anvendt FirewallD-konfiguration
+log_bootup=Aktiveret firewallD ved opstart
+log_bootdown=Deaktiveret firewallD ved opstart
+log_create_port=Tilføjet tilladt port $1 
+log_delete_port=Fjernet tilladt port $1 
+log_update_port=Opdateret tilladt port $1 
+log_create_serv=Tilføjet tilladt service $1 
+log_delete_serv=Fjernet tilladt service $1 
+log_update_serv=Opdateret tilladt service $1 
+log_create_forward=Tilføjet fremad $1 
+log_delete_forward=Fjernet frem $1 
+log_update_forward=Opdateret fremad $1 
+log_delete_rules=Fjernet $1 tilladte porte
+log_ifaces_zone=Opdaterede grænseflader for zone $1 
+log_create_zone=Oprettet zone $1 
+log_delete_zone=Zonet $1 er slettet
+log_default_zone=Oprettet zone $1 til standard

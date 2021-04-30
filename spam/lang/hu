@@ -189,7 +189,6 @@ priv_escore=Missing or invalid score for spam phrase '$1'
 
 usually=Usually $1
 ecannot=You are not allowed to use this page
-
 setup_title=Setup Procmail For SpamAssassin
 setup_desc_webmin=This form can be used to setup Procmail in $1 to run SpamAssassin on all email messages received by your system. However, this will only have any effect if your mail server has been configured to use Procmail for local delivery, or for users whose <tt>.forward</tt> files are set up to run Procmail.
 setup_desc_usermin=This form can be used to setup Procmail in $1 to run SpamAssassin on all email messages sent to your account. However, this will only have any effect if the mail server has been configured to use Procmail for local delivery, or if your <tt>.forward</tt> files is set up to feed all email to Procmail.
@@ -236,9 +235,9 @@ mail_desc=This page lists messages that have been classified as spam, and are aw
 mail_level=Score
 mail_level2=Spam score
 mail_inbox=Move to Inbox
-mail_whitelist2=Allow Sender &amp; Inbox
-mail_razor=Report as Spam &amp; Delete
-mail_ham=Report as Ham &amp; Inbox
+mail_whitelist2=Allow Sender & Inbox
+mail_razor=Report as Spam & Delete
+mail_ham=Report as Ham & Inbox
 mail_delete=Delete
 mail_return=spam mail list
 mail_pos=Spam messages $1 to $2 of $3
@@ -380,4 +379,3 @@ dawl_ecannot=You are not allowed to manage the auto-whitelist for this user
 dawl_doing=Deleting auto-whitelists for all users ..
 dawl_done=.. deleted $2 entries from $1 users.
 dawl_title=Delete All Auto-Whitelists
-__norefs=1

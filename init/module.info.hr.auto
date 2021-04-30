@@ -1,0 +1,3 @@
+longdesc_hr=Skripte za postavljanje koje se pokreću u vrijeme dizanja iz /etc/init.d ili /etc/rc.local.
+name_hr=Boot Manager
+desc_hr=Bootup i isključivanje

@@ -1,0 +1,51 @@
+index_filter=Filtruj pakiety
+index_filterclear=Czysty filtr
+index_filtered=Wyświetlanie <tt>$1</tt> pakietów z <tt>$2</tt>
+
+edit_listdesc=Pokaż wszystkie pliki w tym pakiecie i ich bieżący stan weryfikacji.
+edit_uninstdesc=Usuń ten pakiet z systemu.
+
+apt_repo_url=Podstawowy adres URL repozytorium
+apt_repo_path=Komponenty ścieżki dystrybucji
+apt_repo_eurl=Brakujący lub nieprawidłowo wyglądający podstawowy adres URL
+apt_repo_epath=Brak ścieżki dystrybucji
+
+yum_repo_id=ID repozytorium
+yum_repo_name=Opis repozytorium
+yum_repo_url=Podstawowy adres URL pakietu
+yum_repo_gpg=Plik certyfikatu GPG
+yum_repo_none=Niepodpisany
+yum_repo_eid=Brakujący lub nieprawidłowy identyfikator repozytorium - dozwolone są tylko litery i cyfry
+yum_repo_eidclash=Identyfikator repozytorium jest już w użyciu
+yum_repo_ename=Brak nazwy repozytorium
+yum_repo_eurl=Brakujący lub nieprawidłowy adres URL repozytorium
+yum_repo_egpg=Brak pliku certyfikatu GPG lub nie istnieje
+yum_repo_efile=Plik repozytorium już istnieje!
+
+missing_msg=Pakiet $1 może zostać automatycznie zainstalowany przez Webmina za pomocą $2.
+missing_now=Zainstaluj teraz
+
+log_IPKG_update=Zaktualizowana baza danych IPKG
+log_IPKG_upgrade=Uaktualnione zainstalowane pakiety IPKG
+
+IPKG_name=IPKG
+IPKG_input=Pakiet od IPKG
+IPKG_find=Przeglądaj IPKG ..
+IPKG_form=Zarządzaj pakietami IPKG
+IPKG_update=Zaktualizuj bazę danych pakietów IPKG
+IPKG_upgrade=Uaktualnij zainstalowane pakiety IPKG
+IPKG_title_update=Aktualizowanie IPKG Databse
+IPKG_title_upgrade=Uaktualnianie zainstalowanych pakietów
+IPKG_updatedesc=Uruchamianie polecenia $1 ..
+IPKG_upgradefailed=.. nie powiodło się!
+IPKG_upgradeok=.. ukończone.
+IPKG_install=Instalowanie pakietów za pomocą polecenia $1 ..
+IPKG_ok=.. instalacja zakończona.
+IPKG_failed=.. instalacja nie powiodła się!
+IPKG_index_tree=Zarządzaj pakietami IPKG
+IPKG_install_package=zainstalować
+IPKG_install_packagedesc=Zainstaluj ten pakiet w swoim systemie
+IPKG_noupgrade=Nic do uaktualnienia
+IPKG-edit_title=Zarządzaj pakietem IPKG
+IPKG_update_avail=Aktualizacja dostępna:
+IPKG_not_installed=Pakiet nie jest zainstalowany

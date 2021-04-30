@@ -1,0 +1,100 @@
+index_noservers=没有注册服务器。
+index_nosearch=没有服务器符合您的搜索条件。
+index_logout=登出
+index_defuser=服务器的默认登录
+index_defpass=默认密码
+index_defport=Webmin端口
+index_delete=删除选定的服务器
+index_auto=自动查找服务器
+index_automsg=单击此按钮可以设置自动定期发现网络上的新Webmin服务器。
+index_search=显示匹配的服务器：
+index_ok=搜索
+
+edit_realhost=真实主机名
+edit_portnone=没有设置
+edit_checkssl=检查远程SSL证书？
+edit_mode2=单击图标时登录
+edit_mode3=使用此服务器的用户名和密码登录
+edit_luser=远程服务器的用户名
+edit_lpass=远程服务器的密码
+edit_status=服务器状态
+edit_timeout=超时连接
+edit_failed=连接失败
+edit_baduser=登录被拒绝
+edit_invalid=用户无法执行RPC
+edit_version=运行Webmin $1
+edit_same=仅在会话身份验证模式下以及密码对Webmin程序可用时可用。
+
+save_ehost2=主机不存在
+save_eport2=如果选择带有登录名的链接类型，则必须提供端口
+save_egroup2=无效的新群组名称
+
+find_but=在 $1找到新服务器，但认证失败： $2
+find_already2=在 $1找到了已知的服务器主机
+find_skip=忽略 $1处的服务器
+find_eiface=找不到要扫描的界面
+find_scanning=扫描网络 $1..中的服务器
+find_broading=在地址 $1..上广播服务器
+find_eport=端口号丢失或无效
+
+log_deletes=已删除 $1台服务器
+
+link_eautologin=$1的无效登录名或密码。 <a href='$2'>单击此处</a>重试。
+
+acl_auto=可以设置服务器自动检测功能吗？
+acl_add=可以注册新服务器吗？
+acl_forcefast=强制将快速RPC模式设置为默认值？
+acl_forcetype=强制将操作系统类型设置为默认值？
+acl_forcelink=强制登录类型为默认值？
+acl_links=可以连接到服务器吗？
+
+login_title=登录服务器
+login_desc=您必须提供用户名和密码才能登录Webmin服务器 $1。
+login_header=Webmin认证
+login_user=用户名
+login_pass=密码
+login_login=登录
+login_esame=与该服务器使用相同登录名的选项只能在未处于会话身份验证模式下以及Webmin程序可以使用密码时使用。
+
+this_server=这个服务器
+
+delete_err=删除服务器失败
+delete_enone=未选择
+delete_ecannot=您不允许删除服务器
+delete_title=删除服务器
+delete_rusure=您确定要删除 $1个选定的服务器吗？
+delete_confirm=立即删除
+
+auto_title=自动查找服务器
+auto_header=服务器自动注册选项
+auto_sched=检查新服务器？
+auto_sched1=是的，每 $1分钟
+auto_net=IP网络扫描
+auto_auto=本地网络
+auto_ip=IP网络 $1
+auto_iface=接口 $1上的网络
+auto_user=新服务器的用户名
+auto_pass=新服务器的密码
+auto_type=默认系统类型
+auto_err=保存自动查找设置失败
+auto_emins=分钟丢失或无效的分钟数
+auto_enet=缺少或无效的网络地址
+auto_eiface=网络接口丢失或无效
+auto_euser=用户名丢失
+auto_cluster-software=添加到群集软件包吗？
+auto_remove=删除找不到的注册服务器？
+auto_email=发送电子邮件通知给
+auto_none=不要发送
+auto_eemail=缺少通知的电子邮件地址
+auto_smtp=通过SMTP服务器发送
+auto_self=这个系统
+auto_esmtp=缺少或无效的SMTP服务器
+auto_findself=也注册这个系统吗？
+
+config_deftype=默认系统类型
+config_typeauto=自动
+
+email_regsubject=系统 $1已注册
+email_reg=系统 $1已自动注册。
+email_unregsubject=系统 $1未注册
+email_unreg=系统 $1已自动取消注册。

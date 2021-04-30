@@ -1,0 +1,115 @@
+index_title=Loglêerrotasie
+index_econf=Die log-rotasie-opstellinglêer $1 is nie op u stelsel gevind nie. Miskien is logrotate nie geïnstalleer nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
+index_ecmd=Die log-rotasieprogram $1 is nie op u stelsel gevind nie. Miskien is dit nie geïnstalleer nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
+index_eversion=Kon nie die weergawe van logrotate met die opdrag $1 : $2 kry nie
+index_version=Logrotate weergawe $1 
+index_add=Voeg 'n nuwe loglêer by om te draai.
+index_file=Loglêer
+index_period=Rotasieperiode
+index_post=Na-rotasie opdrag
+index_none=Geen loglêers is nog gedefinieër nie.
+index_global=Wysig globale opsies
+index_globaldesc=Klik op hierdie knoppie om die instelling te wysig wat op alle loglêers van toepassing is, en om die standaard vir logboeke te definieer.
+index_sched=Wysig skedule
+index_scheddesc=Klik op hierdie knoppie om die skedule te wysig waarop logrotate deur Cron bestuur word, of om dit in te skakel of uit te skakel.
+index_nocmd=Geen
+index_notset=Nie gestel nie
+index_return=loglêers lys
+index_force=Dwing log-rotasie
+index_forcedesc=Dwing die onmiddellike rotasie van alle loglêers, selfs al is dit nog nie tyd nie.
+index_logrotate=Logrotate
+index_delete=Vee geselekteerde log-rotasies uit
+
+period_daily=daaglikse
+period_weekly=weeklikse
+period_monthly=maandelikse
+period_never=nooit
+period_bytes=grepe
+
+edit_title1=Redigeer loglêer
+edit_title2=Skep loglêer
+edit_header=Geroteerde loglêerbesonderhede
+edit_file=Loglêerpaaie
+edit_sched=Rotasie skedule
+edit_rotate=Aantal ou houtblokke om te hou
+edit_compress=Druk ou loglêers saam?
+edit_delaycompress=Vertraag kompressie tot die volgende siklus?
+edit_copytruncate=Snoei die loglêer in plek?
+edit_ifempty=Draai, selfs as die loglêer leeg is?
+edit_missingok=Ignoreer loglêer indien ontbreek?
+edit_size=Maksimum grootte voordat u draai
+edit_always=geïgnoreer
+edit_minsize=Minimum grootte om te draai
+edit_nominsize=altyd
+edit_ext=Uitbreiding vir geroteerde lêernaam
+edit_dateext=Gebruik datumuitbreiding vir geroteerde lêers
+edit_mail=E-pos loglêer voordat u dit uitvee?
+edit_mailto=Ja, om aan te spreek
+edit_mailno=Nee, moenie e-pos nie
+edit_mailfl=Teken lêer na e-pos
+edit_mailfirst=Nuutste wat pas geroteer is
+edit_maillast=Die oudste wat op die punt staan om uit te vee
+edit_create=Skep loglêers weer na rotasie?
+edit_createas=Ja, met modus $1 en word besit deur gebruiker $2 en groep $3 
+edit_createno=Nee, moenie weer skep nie
+edit_createsame=Ja, met ou toestemmings
+edit_olddir=Bêre ou geroteerde logboeke in
+edit_olddirto=Gids
+edit_olddirsame=Dieselfde gids as loglêer
+edit_errors=Stuur foutboodskappe per e-pos aan
+edit_errorsno=niemand
+edit_errorsto=Adres of gebruiker
+edit_post=Opdragte om te draai na rotasie
+edit_pre=Opdragte om te draai voor rotasie
+edit_default=Standaard ($1)
+edit_sharedscripts=Voer slegs skripte een keer vir alle lêers uit?
+edit_now=Draai nou
+
+global_title=Wêreldwye opsies
+global_header=Standaardopsies vir alle loglêers
+
+save_err=Kon nie die log stoor nie
+save_efile=Ontbrekende of ongeldige loglêernaam
+save_esize=Die maksimum grootte ontbreek of ongeldig
+save_eminsize=Minimale grootte ontbreek of ongeldig
+save_erotate=Maksimum of ongeldige maksimum aantal ou logboeke wat u moet bewaar, ontbreek
+save_ecreatemode=Ontbrekende of ongeldige 3 tot 4-syfer octale skeppingsmodus ontbreek
+save_ecreateuser=Ontbrekende of ongeldige skeppingsgebruiker
+save_ecreategroup=Skeppingsgroep ontbreek of ongeldig
+save_emust1=U moet 'n skeppingsmodus betree wanneer u 'n skeppingsgebruiker betree
+save_emust2=U moet 'n skeppingsgebruiker betree as u 'n skeppingsgroep betree
+save_eolddirto=Ontbrekende of ongeldige gids vir ou geroteerde logs
+save_eext=Uitbreiding ontbreek vir roterende log-lêernaam
+save_emailto=E-posadres ontbreek vir geroteerde logboeke
+save_eerrors=E-posadres ontbreek vir foutboodskappe
+save_epre=Voor-rotasieskript kan nie 'n <tt>eindskrif</tt> of <tt>endrotaat</tt> -reël bevat nie
+save_epost=Na-rotasie-skrif kan nie 'n <tt>eindskrif</tt> of <tt>endrotaat</tt> -reël bevat nie
+save_enofiles=Geen lêers om te draai is ingevoer nie
+
+log_modify_sched=Verander log-rotasie Cron-baan
+log_create_sched=Log rotasie Cron werk geskep
+log_delete_sched=Log-rotasie Cron-baan is uitgevee
+log_global=Gewysigde globale opsies
+log_create=Rotasie bygevoeg vir loglêer $1 
+log_modify=Gewysigde rotasie vir loglêer $1 
+log_delete=Rotasie vir loglêer $1 is uitgevee
+log_delete_logs=Rotasie is verwyder vir $1 loglêers
+
+sched_title=Teken rotasie skedule
+sched_desc=Vir die log-rotasie wat met hierdie module gekonfigureer word om uit te voer, moet die opdrag $1 op 'n gewone skema (gewoonlik daagliks) uitgevoer word deur Cron.
+sched_runparts=Tans word die log-rotasie-opdrag vanaf die script $1 $2 uitgevoer en kan nie aangepas word nie.
+sched_sched=Log rotasie cron werk
+sched_disabled=gestremde
+sched_enabled=Geaktiveer, soms hieronder.
+sched_save=Dateer Cron Job op
+sched_err=Kon nie die rotasieskedule stoor nie
+sched_when=Tyd om te hardloop
+
+force_title=Dwing log-rotasie
+force_doing=Dwing die onmiddellike rotasie van alle loglêers ..
+force_doingone=Dwing die onmiddellike rotasie van een loglêer ..
+force_done=.. klaar.
+force_failed=.. misluk! Kyk na die afvoer hierbo vir die rede waarom.
+
+delete_err=Kon nie logboeke uitvee nie
+delete_enone=Geen gekies nie

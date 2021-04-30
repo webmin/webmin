@@ -1,0 +1,50 @@
+index_title=OpenSLP konfigurācija
+index_return=OpenSLP konfigurācija
+index_eslpd=Jūsu sistēmā netika atrasts OpenSLP dēmons $1. Varbūt tas nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_econf=Jūsu sistēmā netika atrasts OpenSLP konfigurācijas fails $1. Varbūt tas nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_version=OpenSLP versija $1 
+
+slp_apply=Lietot izmaiņas
+slp_stop=Apturiet OpenSLP
+
+snda_title=Statiskā darbības joma un DA
+snda_useScopes=Statiskais darbības jomu saraksts
+snda_DAAddresses=Statiskais direktoriju aģentu saraksts (DA)
+
+netcfg_title=Tīkla konfigurācija
+netcfg_isBroadcastOnly=Piespiest apraidi izmantot multicast vietā
+netcfg_passiveDADetection=Izmantojiet pasīvu DA noteikšanu
+netcfg_activeDADetection=Izmantojiet aktīvo DA noteikšanu (tikai DHCP vai DA adresēm)
+netcfg_DAActiveDiscoveryInterval=Aktīva meklēšana dažās sekundēs (0 atspējo aktīvo meklēšanu)
+netcfg_multicastTTL=Multicast TTL (0–255)
+netcfg_DADiscoveryMaximumWait=Maksimālais gaidīšanas laiks DA atklāšanas pieprasījumiem (milisekundēs)
+netcfg_DADiscoveryTimeouts=Secīgi DA atklāšanas gaidīšanas laiki (milisekundēs)
+netcfg_HintsFile=Ceļš uz OpenSLP ieteikumu failu
+netcfg_multicastMaximumWait=Maksimālā nogaidīšana uz multiraides pieprasījumiem (milisekundēs)
+netcfg_multicastTimeouts=Secīgi vairāku raidījumu gaidīšanas laiki (milisekundēs)
+netcfg_unicastMaximumWait=Maksimālais laika periods starp unicast pieprasījumiem (milisekundēs)
+netcfg_randomWaitBound=Visu izlases veida gaidīšanas parametru maksimālā vērtība (milisekundēs)
+netcfg_MTU=MTU paketes lielums (baitos)
+netcfg_interfaces=Interfeisu IP adreses, kuras DA/SA vajadzētu klausīties
+
+dacfg_title=DA konfigurācija
+dacfg_isDA=Darbojas tikai kā DA (pirms mainīt to izlasiet lietotāja rokasgrāmatu)
+
+log_title=Izsekošana un reģistrēšana
+log_traceDATraffic=Izdrukājiet DA satiksmes ziņojumus
+log_traceMsg=Izdrukājiet SLP detalizētos ziņojumus
+log_traceDrop=Drukāt SLP izmesto ziņojumu informāciju
+log_traceReg=Izdrukājiet DA un SA reģistrācijas un dereģistrācijas informāciju
+
+error_open=Kļūda, atverot failu
+error_flock_on=Izveidojot faila bloķēšanu, radās kļūda
+error_flock_off=Kļūda, iznīcinot faila bloķēšanu
+error_hup=Restartējot OpenSLP ar PID, radās kļūda
+
+index_start=Sāciet OpenSLP
+index_startmsg=Noklikšķiniet uz šīs pogas, lai savā sistēmā sāktu OpenSLP dēmonu.
+index_stop=Apturiet OpenSLP
+index_stopmsg=Noklikšķiniet uz šīs pogas, lai apturētu OpenSLP dēmonu jūsu sistēmā.
+
+stop_err=Neizdevās apturēt OpenSLP
+start_err=Neizdevās palaist OpenSLP

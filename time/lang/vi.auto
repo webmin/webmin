@@ -1,0 +1,70 @@
+index_title=Giờ hệ thống
+index_timeserver=Máy chủ thời gian
+index_addresses=Tên máy chủ hoặc địa chỉ của Timeserver
+index_zone=Múi giờ
+index_eformat=Định dạng đầu ra <tt>hwclock</tt> không được nhận dạng
+index_sched=Đồng bộ hóa theo lịch trình?
+index_schedyes=Vâng, vào những thời điểm dưới đây ..
+index_sync=Đồng bộ hóa và áp dụng
+index_hardware2=Đặt thời gian phần cứng quá
+index_boot=Đồng bộ hóa khi Webmin bắt đầu?
+index_tzheader=Múi giờ
+index_tz=Thay đổi múi giờ thành
+index_ehwclock=$1 thất bại : $2 
+index_tabtime=Cài đặt thời gian
+index_tabzone=Thay đổi múi giờ
+index_tabsync=Đồng bộ hóa máy chủ thời gian
+index_desctime=Biểu mẫu này là để thay đổi thời gian hiện tại của hệ thống, được sử dụng bởi tất cả các quy trình đang chạy. Trên các hệ điều hành có đồng hồ phần cứng riêng, nó cũng có thể được sử dụng để đặt điều đó.
+index_desczone=Biểu mẫu này cho phép bạn đặt múi giờ mặc định của hệ thống, được sử dụng để chuyển đổi thời gian hệ thống sang định dạng và phần bù có thể đọc được của con người.
+index_descsync=Hình thức này là để cấu hình hệ thống để tự động đồng bộ hóa thời gian với một máy chủ từ xa. Đồng bộ hóa sẽ được thực hiện bằng giao thức <tt>time</tt> Unix hoặc NTP, tùy thuộc vào lệnh nào được cài đặt và hệ thống từ xa hỗ trợ gì.
+
+action_save=Tiết kiệm
+action_apply=Ứng dụng
+action_sync=Đặt thời gian hệ thống theo thời gian phần cứng
+action_sync_s=Đặt thời gian phần cứng theo thời gian hệ thống
+action_timeserver_sys=Đồng bộ hóa thời gian hệ thống
+action_timeserver_hw=Đồng bộ hóa thời gian phần cứng
+action_savezone=Thay đổi múi giờ
+
+acl_sys=Người dùng có thể chỉnh sửa thời gian hệ thống?
+acl_hw=Người dùng có thể chỉnh sửa thời gian phần cứng?
+acl_timezone=Người dùng có thể đặt múi giờ?
+acl_ntp=Có thể đồng bộ hóa với máy chủ thời gian?
+acl_yes=Đúng
+acl_no=Không
+acl_error=Bạn có quyền truy cập vào mô-đun thời gian hệ thống, nhưng bạn không thể chỉnh sửa cả thời gian hệ thống hoặc thời gian phần cứng
+acl_nosys=Bạn không được phép chỉnh sửa thời gian hệ thống
+acl_nohw=Bạn không được phép chỉnh sửa thời gian phần cứng
+acl_nontp=Bạn không được phép đồng bộ hóa với máy chủ thời gian
+
+sys_title=Giờ hệ thống
+hw_title=Thời gian phần cứng
+
+day=ngày
+month=tháng
+date=Ngày
+hour=Giờ
+year=Năm
+minute=Phút
+second=Thứ hai
+
+error_cnf=Lỗi: Không tìm thấy lệnh $1 
+error_hw=Không thể đặt thời gian phần cứng : $1 
+error_sync=Không thể đồng bộ hóa với thời gian hệ thống : $1 
+error_ediff=Máy chủ thời gian khác với giờ địa phương quá lớn: $1 ngày
+error_entp=Đồng bộ hóa thời gian NTP không thành công : $1 
+error_etimeserver=Không có máy chủ thời gian để đồng bộ hóa với đã nhập
+
+log_set_date=Đặt thời gian hệ thống thành $1 
+log_set_hwclock=Đặt đồng hồ phần cứng thành $1 
+log_remote_date=Thời gian hệ thống lấy từ $2 
+log_remote_hwclock=Thời gian phần cứng được tìm nạp từ $2 
+log_remote_date_l=Thời gian tìm nạp hệ thống $1 từ $2 
+log_remote_hwclock_l=Đã tải thời gian phần cứng $1 từ $2 
+log_sync=Đồng bộ hóa thời gian hệ thống với thời gian phần cứng
+log_sync_s=Thời gian phần cứng được đồng bộ hóa với thời gian hệ thống
+log_timezone=Thay đổi múi giờ thành $1 
+
+timezone_err=Không thể lưu múi giờ
+timezone_ecannot=Bạn không được phép thay đổi múi giờ
+timezone_enone=Không có vùng được chọn

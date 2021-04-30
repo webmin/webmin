@@ -1,0 +1,3 @@
+longdesc_es=Los scripts de configuración se ejecutarán en el momento del arranque desde /etc/init.d o /etc/rc.local.
+name_es=Gestor de arranque
+desc_es=Arranque y apagado

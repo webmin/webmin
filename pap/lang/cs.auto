@@ -1,0 +1,9 @@
+index_delete=Smazat vybrané účty
+
+log_deletes=Smazané účty $1 PPP
+
+sync_ecannot=Není dovoleno upravovat možnosti synchronizace unix-ppp
+sync_title=Synchronizace uživatelů
+
+delete_err=Smazání účtů se nezdařilo
+delete_enone=Nebyl vybrán žádný

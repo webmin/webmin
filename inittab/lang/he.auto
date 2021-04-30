@@ -1,0 +1,53 @@
+inittab_new=צור תהליך init חדש.
+inittab_id=תעודת זהות
+inittab_active=פעיל?
+inittab_runlevels=מפלס אתחול
+inittab_action=פעולה
+inittab_process=תהליך
+inittab_none=אף אחד
+inittab_respawn=תהליך משוחרר מחדש
+inittab_wait=חכה
+inittab_once=פעם פעם ברמה
+inittab_boot=זמן אתחול
+inittab_bootwait=זמן אתחול, המתן עד לסיום
+inittab_off=לעשות כלום
+inittab_ondemand=בכל פעם ב- A, B, C
+inittab_initdefault=לאחר אתחול המערכת
+inittab_sysinit=במהלך אתחול המערכת
+inittab_powerwait=הכוח יורד
+inittab_powerfail=הכוח יורד בלי לחכות
+inittab_powerokwait=הכוח משוחזר
+inittab_powerfailnow=כוח להיכשל
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=שילוב מקשים מיוחד
+inittab_kbrequest=שילוב מקשים מיוחד
+inittab_return=רשימת תהליכים
+inittab_apply=החל תצורת Init
+inittab_applymsg=לחץ על כפתור זה כדי להחיל את תצורת ה- SysV Init הנוכחית על ידי הפעלת הפקודה <tt>telinit q</tt>. שימו לב כי טעויות בתצורה שלכם עלולות להפוך את המערכת לבלתי שמישה כאשר הפקודה הזו מופעלת.
+index_delete=מחק תהליכים שנבחרו
+inittab_none2=לא נמצאו תהליכי אתחול במערכת שלך. זה כנראה מצביע על כך שהוא אינו משתמש בקובץ התצורה של SysV init.
+
+edit_inittab_err=אסור לך לערוך תהליך
+edit_inittab_title=ערוך את התהליך $1 
+edit_inittab_details=עיבוד פרטי
+edit_inittab_del=מחק
+edit_inittab_save=להציל
+
+new_inittab_err=אינך מורשה ליצור תהליך חדש
+new_inittab_title=תהליך חדש
+
+save_inittab_err=אסור לך לשמור תהליך
+save_inittab_noid=שגיאה, לא הוזן תהליך שם
+save_inittab_already=שגיאה, תהליך השם כבר קיים
+
+log_modify=תהליך init שונה $1 
+log_rename=שינוי שם תהליך זה $1 ל- $2 
+log_create=נוצר תהליך init $1 
+log_delete=תהליך ההתחלה $1 נמחק
+log_apply=תצורה מיושמת
+log_deletes=נמחקו תהליכי init של $1 
+
+apply_err=החלת התצורה נכשלה
+
+delete_err=מחיקת תהליכים נכשלה
+delete_enone=לא נבחר

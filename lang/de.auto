@@ -1,0 +1,9 @@
+category_=Werkzeuge
+
+longcategory_=Module, die andere verschiedene Aufgaben ausführen
+
+langauto_include=Fügen Sie maschinelle Übersetzungen hinzu
+
+file_truncated_message=$1 der Daten abgerufen, $2 von $3 abgeschnitten
+file_truncated_message_head=Anfang $1 der Daten abgerufen, $2 von $3 abgeschnitten
+file_truncated_message_tail=Abgerufenes Ende $1 der Daten, abgeschnittenes $2 von $3 

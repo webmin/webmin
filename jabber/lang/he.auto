@@ -1,0 +1,120 @@
+index_title=שרת IM של ג'אבר
+index_econfig=קובץ התצורה Jabber $1 אינו קיים. ג'אבר לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+index_edir=ספריית בסיס Jabber $1 אינה קיימת. ג'אבר לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+index_emodules=מודולי Perl $1 ו- $2 הנדרשים על ידי Webmin לטיפול בתצורת ה- XML של Jabber אינם מותקנים. <a href='$3'>לחץ כאן</a> כדי להתקין אותם ישירות מ- CPAN.
+index_emodule=מודול Perl $1 הנדרש על ידי Webmin לטיפול בתצורת ה- XML של Jabber אינו מותקן. <a href='$2'>לחץ כאן</a> כדי להתקין אותו ישירות מ- CPAN.
+index_expat=הקפד להתקין את ספריית הכותרות של Expat C לפני שתנסה להתקין את המודולים של פרל, מכיוון שהם תלויים בה ויכשלו אם הם אינם זמינים.
+index_eparse=מודול $1 perl לא הצליח לנתח את קובץ ה- Jabber שלך : $2 
+index_ejabberd=תוכנית שרת Jabber $1 לא נמצאה במערכת שלך. ג'אבר לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+index_eversion=Webmin תומך רק בגירסת Jabber $2, אך הפקודה $3 דיווחה על פרטי הגרסה הבאה : $1 
+index_eversion2=Webmin תומך רק בגרסאות ג'אבר מתחת ל- $2, אך הפקודה $3 דיווחה על מידע הגירסאות הבא : $1 
+index_start=הפעל את שרת Jabber
+index_startmsg=לחץ על כפתור זה כדי להפעיל את שרת Jabber במערכת שלך. עד שתתחיל, אף לקוח להודעות מיידיות לא יוכל להשתמש בו.
+index_stop=עצור את שרת ג'אבר
+index_stopmsg=לחץ על כפתור זה כדי להפסיק את הפעלת שרת Jabber במערכת שלך. אף לקוח להודעות מיידיות לא יוכל להשתמש בו בעת עצירתו.
+index_restart=החל שינויים
+index_restartmsg=לחץ על כפתור זה כדי להחיל את התצורה הנוכחית על ידי עצירה והפעלה מחדש של שרת Jabber.
+index_comments=אזהרה - קובץ ה- Jabber config $1 שלך מכיל הערות, שיוסרו אם יבוצעו שינויים בתצורה באמצעות מודול זה.
+index_return=תפריט ג'אבר
+index_version=גרסת ג'אבר $1 
+
+general_title=אפשרויות כלליות
+general_header=אפשרויות שרת ג'אבר גלובליות
+general_host=שם המארח של השרת שלך
+general_elog=קובץ יומן שגיאות
+general_elogfmt=פורמט יומן שגיאות
+general_rlog=גישה לקובץ יומן
+general_rlogfmt=גישה לפורמט יומן
+general_pidfile=עיבוד קובץ מזהה
+general_err=שמירת אפשרויות כלליות נכשלה
+general_ehost=שם מארח של שרת חסר או לא חוקי
+general_eelog=קובץ יומן שגיאות חסר או לא חוקי
+general_eelogfmt=פורמט יומן שגיאות חסר
+general_erlog=קובץ יומן תנועה חסר או לא חוקי
+general_erlogfmt=פורמט חסר ביומן התעבורה חסר
+general_epidfile=קובץ זיהוי תהליכים חסר או לא חוקי
+
+messages_title=הודעות
+messages_header=הודעת שרת ג'אבר ללקוחות
+messages_wsubject=נושא הודעת ברוך הבא
+messages_wbody=גוף הודעה ברוך הבא
+messages_vcard=שרת vCard
+messages_rinstr=הוראות רישום
+messages_rnotify=להודיע למנהל על ההרשמה?
+messages_rfields=שדות רישום חובה
+messages_vcard2jud=לשלוח vCard לספריית המשתמשים של ג'אבר?
+messages_err=שמירת ההודעות נכשלה
+messages_evcard=XML לא חוקי של vCard : $1 
+messages_etag=שרת vCard XML אינו מתחיל ב- &lt;vCard&gt;
+
+modules_title=מודולי ג'אבר
+modules_desc=המודולים המפורטים להלן משמשים לעיבוד הודעות שהתקבלו על ידי מנהל ההפעלה של ג'אבר. עליך לשנות רשימה זו רק אם אתה יודע מה אתה עושה.
+modules_header=מודולים של מנהל שרת ג'אבר
+modules_mod=שם המודול
+modules_so=ספריה משותפת
+modules_err=שמירת מודולי Jabber נכשלה
+modules_emod='$1' אינו שם מודול תקף
+modules_eso=הספרייה המשותפת '$1' אינה קיימת
+
+karma_title=בקרת תנועה בקרמה
+karma_header=אפשרויות בקרת תעבורה
+karma_rate=טיפול חיבור מוגזם
+karma_rate_def=נכים
+karma_rate_sel=חסום לקוח למשך $2 שניות לאחר חיבורי $1 
+karma_mode=מצב קארמה
+karma_none=ללא גבולות
+karma_low=מגבלות תנועה נמוכות
+karma_medium=מגבלות תנועה בינוניות
+karma_high=מגבלות תנועה גבוהות
+karma_sel=השתמש בהגדרות שנבחרו למטה.
+karma_heartbeat=אורך תקופה בשניות (<tt>פעימות לב</em>)
+karma_init=תקופות אתחול (<tt>init</tt>)
+karma_max=Karma maximum (<tt>max</tt>)
+karma_inc=תוספת קרמה (<tt>inc</tt>)
+karma_dec=הצהרת קארמה (<tt>דצמבר</strong>)
+karma_penalty=תקופות עונשין (<tt>עונש</strong>)
+karma_restore=תקופות שחזור פרץ (<tt>שחזור</strong>)
+karma_err=שמירת אפשרויות הקארמה נכשלה
+karma_eheartbeat=אורך תקופה חסר או לא תקף
+karma_einit=תקופות אתחול חסרות או לא חוקיות
+karma_emax=מקסימום חסר קארמה או לא תקף
+karma_einc=תוספת קארמה חסרה או לא תקפה
+karma_edec=צמצום קארמה חסר או לא תקף
+karma_epenalty=תקופות עונש חסרות או לא תקפות
+karma_erestore=תקופות שחזור חסרות או לא חוקיות
+karma_epoints=מספר חיבורים חסר או לא חוקי
+karma_etime=זמן חסר או לא חוקי לחסימה עבור
+
+ips_title=בקרת גישה IP
+ips_header=בקרת גישת IP של שרת ג'אבר
+ips_allow=כתובות IP של לקוחות מורשים
+ips_all=כל הכתובות
+ips_deny=כתובות IP של לקוחות שנדחו
+ips_none=אף אחד
+ips_sel=כתובות/רשתות רשומות ..
+ips_err=שמירת בקרת הגישה ל- IP נכשלה
+ips_eaddr='$1' אינו כתובת IP חוקית או כתובת IP/מסיכת רשת
+
+file_title=ערוך קובץ תצורה
+file_desc=השתמש בטופס שלהלן כדי לערוך ישירות את קובץ ה- Jabber. יש לעשות זאת רק אם אתה מבין את תבנית תצורת XML.
+file_header=ערוך את קובץ התצורה של ג'אבר
+file_err=שמירת קובץ התצורה נכשלה
+
+admin_title=משתמשים אדמיניסטרטיביים
+admin_header=משתמשי ניהול שרתים
+admin_read=קרא מנהלי גישה לקריאה
+admin_write=כתוב מנהלי גישה
+admin_reply=הגש באופן אוטומטי להודעות מנהל?
+admin_rsubject=נושא באופן אוטומטי
+admin_rbody=שלח הודעה אוטומטית
+
+filter_title=מסנני משתמש
+filter_header=הרשאות סינון משתמשים
+filter_max=כללי סינון מרביים
+filter_conds=תנאי סינון מורשים
+filter_acts=פעולות סינון מותרות
+
+restart_err=החלת השינויים נכשלה
+stop_err=לא הצליח לעצור את ג'אבר
+stop_epid=לא מצא את תהליך ג'אבר
+start_err=ההפעלה של ג'אבר נכשלה

@@ -1,0 +1,118 @@
+index_title=Poslužitelj govorne pošte
+index_ecmd=Naredba Vgetty $1 nije pronađena u vašem sustavu. Možda nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
+index_econfig=Vgetty config datoteka $1 nije pronađena u vašem sustavu. Možda nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
+index_return=indeks glasovne pošte
+
+vgetty_title=Konfiguracija serijskog porta
+vgetty_desc=Da bi vaš poslužitelj mogao odgovarati na glasovne pozive s modemom povezanim na serijski ulaz, mora biti naveden u nastavku. Kada na ovaj popis dodate port, program $1 bit će konfiguriran za odgovaranje na pozive i reprodukciju poruke.
+vgetty_add=Dodajte novi serijski ulaz
+vgetty_tty=Serijski uređaj
+vgetty_type=Tip
+vgetty_vgetty=Glas
+vgetty_mgetty=Podaci/fax
+vgetty_none=Još nisu konfigurirani serijski priključci za govornu poštu.
+vgetty_apply=Primijeni konfiguraciju
+vgetty_applydesc=Kliknite ovaj gumb kako biste primijenili trenutnu konfiguraciju poslužitelja govorne pošte pokretanjem naredbe $1 i ubijanjem svih Vgetty procesa.
+vgetty_applyerr=Konfiguracija nije primijenjena
+vgetty_return=popis serijskih porta
+vgetty_create=Dodajte serijski ulaz
+vgetty_edit=Uredi serijski ulaz
+vgetty_header=Opcije konfiguracije serijskog porta
+vgetty_ts=Serijski priključak $1 
+vgetty_other=Drugi uređaj ..
+vgetty_rings=Zvoni prije odgovora
+vgetty_default=Globalna zadana vrijednost
+vgetty_ans=Način odgovaranja
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=Glas
+vgetty_ans_fax=Faks
+vgetty_ans_data=Podaci
+vgetty_err=Spremanje serijskog porta nije uspjelo
+vgetty_etty=Nedostaje ili ne postoji serijski uređaj
+vgetty_erings=Nedostaje ili nevažeći broj zvona
+vgetty_erings2=Broj prstenova mora biti najmanje 2
+vgetty_eans=Nije odabran nijedan način odgovaranja
+vgetty_eclash=Serijski ulaz $1 je već u upotrebi
+
+options_title=Opcije poslužitelja glasovne pošte
+options_header=Opcije za sve serijske portove
+options_maxlen=Maksimalna duljina poruke
+options_secs=sekundi
+options_minlen=Minimalna duljina poruke
+options_silence=Ukloniti tišinu s kraja poruka?
+options_thresh=Razina praga tišine
+options_rgain=Snimanje glasnoće
+options_tgain=Razina glasnoće pri reprodukciji
+options_rings=Zvoni prije odgovora
+options_perport=Može se postaviti za svaki serijski ulaz
+options_ans=Način odgovaranja
+options_keep=Zadržati poruke koje sadrže podatke ili DTMF kodove?
+options_light=Želite li uključiti svjetlo automatskog odgovora nakon primanja?
+options_owner=Vlasnik Unixa za datoteke s porukama
+options_group=Unix grupa za datoteke s porukama
+options_mode=Dozvole za datoteke s porukama
+options_prog=Nakon snimanja poruke
+options_prog0=Ne radi ništa
+options_prog1=Pošaljite e-poštu u WAV formatu
+options_prog2=Pokrenite naredbu na datoteci poruke
+options_err=Spremanje opcija glasovne pošte nije uspjelo
+options_erings=Nedostaje ili nevažeći broj zvona
+options_erings2=Broj prstenova mora biti najmanje 2
+options_emaxlen=Maksimalna duljina poruke nedostaje ili je nevaljana
+options_eminlen=Nedostaje ili nije važeća minimalna duljina poruke
+options_ethresh=Nedostaje ili nije važeći prag šutnje
+options_ergain=Nedostaje ili nije važeća razina jačine zvuka
+options_ergain2=Razina glasnoće za snimanje mora biti između 0 i 100
+options_etgain=Nedostaje ili nije važeća razina glasnoće reprodukcije
+options_etgain2=Razina glasnoće pri reprodukciji mora biti između 0 i 100
+options_eemail=Nedostaje ili nevažeća adresa e-pošte
+options_eprog=Nedostaje ili nepostojeći program za pokretanje
+options_eowner=Nedostaje ili je nevažeći Unix korisnik za datoteke s porukama
+options_egroup=Nedostaje ili nije važeća Unix grupa za datoteke s porukama
+options_emode=Nedostaju ili su nevaljani oktalni dozvoli za datoteke s porukama
+
+received_title=Primljene poruke
+recieved_desc=Poruke glasovne pošte koje je primio vaš poslužitelj navedene su u nastavku. Da biste preslušali poruku, kliknite datum/vrijeme u prvom stupcu.
+received_none=Nisu pronađene primljene poruke govorne pošte.
+received_date=Primljeno u
+received_size=Veličina datoteke
+received_speed=Uzorak stope
+received_type=Format zvuka
+received_delete=Izbrišite odabrane poruke
+received_move=Pretvori odabrane u pozdrave
+received_all=Odaberi sve
+received_invert=Invert izbor
+
+listen_efile=Nevažeće ime datoteke poruke!
+listen_epath=Poruka glasovne pošte više ne postoji
+
+delete_efile=Nevažeće ime datoteke poruke!
+
+messages_title=Pozdravne poruke
+messages_desc=Ova stranica sadrži čestitke koje će se reproducirati kada se pozivatelj poveže s vašim poslužiteljem govorne pošte. Ako imate više njih, koristit će se jedna nasumično odabrana poruka.
+messages_file=Naziv datoteke
+messages_none=Nisu dostupne čestitke.
+messages_updesc=Ovaj obrazac omogućuje vam da dodate dodatnu WAV datoteku s pozdravnom porukom, koja će se pretvoriti u odabrani format za upotrebu vašeg modema. Brzina uzorka prenesenih WAV-ova trebala bi biti ista kao stopa uzorkovanja primljenih poruka, kao i odabrani format.
+messages_upload=Pošaljite poruku
+messages_fmt=pretvoriti u
+
+pvfdesc=$1, $2 bita
+
+upload_err=Nije uspjelo dodavanje poruke
+upload_emessage=Nije odabrana WAV datoteka
+upload_ewav=Nije uspjelo pretvoriti WAV datoteku : $1 
+upload_epvf=Nije uspjelo stvaranje RMD datoteke : $1 
+upload_esame=Datoteka poruke $1 već postoji
+
+log_apply=Primijenjena konfiguracija
+log_upload=Prenesena čestitka $1 
+log_move=Pretvoreno $1 primljene poruke
+log_delete0=Izbrisana je $1 primljena poruka
+log_delete1=Izbrisane su $1 pozdravne poruke
+log_options=Izmijenjene su opcije govorne pošte
+log_vgetty_create=Dodan je serijski ulaz $1 
+log_vgetty_modify=Izmijenjena serijska vrata $1 
+log_vgetty_delete=Izbrisan je serijski ulaz $1 
+
+email_subject=Poruka glasovne pošte
+email_body=Poruka glasovne pošte primljena u $1 od $2.

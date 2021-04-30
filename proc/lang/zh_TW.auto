@@ -1,0 +1,122 @@
+index_zone=區
+index_mem2=<b>實際內存：</b>總計 $1 /空閒 $2
+index_mem3=<b>實際內存：</b>總計 $1 /空閒 $2 /已緩存 $3
+index_swap2=<b>交換空間：</b>總計 $1 /空閒 $2
+index_burst=<b>可突發內存：</b>總計 $1
+index_loadname=平均CPU負載：
+index_loadnums=$1（1分鐘）， $2（5分鐘）， $3（15分鐘）
+index_cpuname=CPU類型：
+index_inzone=在 $1區域
+
+stime=已開始
+sclass=IO調度類
+sprio=IO優先級
+
+search_cpupc=使用超過 $1％的CPU
+search_cpupc2=使用更多的CPU
+search_ignore=忽略結果中的搜索過程
+search_sigterm=終止流程
+search_sigkill=殺死進程
+search_port=使用端口
+search_protocol=協議
+search_ip=使用IP地址
+
+run_ecannot=您不允許運行命令
+run_as=以用戶身份運行
+run_euser=用戶名缺失或無效
+run_euser2=您不允許以所選用戶身份運行命令
+
+edit_subid=ID
+edit_subcmd=子流程命令
+edit_prilow=低優先級
+edit_prihigh=高優先級
+edit_pridef=默認
+edit_none=沒有
+edit_ecannot=您無權編輯流程
+edit_sigterm=終止
+edit_sigkill=殺
+edit_sigstop=暫停
+edit_sigcont=恢復
+edit_open=文件和連接
+edit_trace=追踪過程
+edit_return=工藝細節
+
+kill_ecannot=您無權殺死進程
+
+renice_ecannot=您不得取消流程
+
+linux_stime=已開始
+
+linux_real=即時的
+linux_be=最大努力
+linux_idle=閒
+
+freebsd_stime=已開始
+
+hpux_stime=已開始
+
+sysv_stime=已開始
+sysv_task=任務ID
+sysv_zone=區域名稱
+
+log_run=冉命令“$1”
+log_kill=已發送信號 $1以處理 $2
+log_kills=將信號 $1發送到 $2進程
+log_kill_l=已發送信號 $1以處理 $2
+log_kills_l=已將信號 $1發送到進程<br> $2
+log_renice=將進程 $2的優先級更改為 $1
+
+acl_manage=以用戶身份管理流程
+acl_manage_def=Webmin當前用戶
+acl_edit=可以殺死並破壞進程嗎？
+acl_run=可以運行命令嗎？
+acl_only=只能看到自己的流程嗎？
+acl_who=可以為用戶管理流程
+acl_who0=所有用戶
+acl_who1=Webmin當前用戶
+acl_who2=列出的用戶 ..
+
+kill_kill=殺死過程
+kill_term=終止
+kill_hup=重新開始
+kill_stop=停止
+kill_cont=繼續
+
+open_title=打開文件和連接
+open_proc=對於進程 $1（PID $2）
+open_header1=打開文件
+open_header2=打開網絡連接
+open_type=類型
+open_proto=協議
+open_desc=細節
+open_fd=文件描述符
+open_listen1=在端口 $1上監聽
+open_listen2=正在監聽地址 $1端口 $2
+open_recv=在 $1上接收： $2
+open_conn=在 $3狀態下從 $1連接到 $2
+open_cwd=當前目錄
+open_rtd=根目錄
+open_txt=程式碼
+open_mem=共享庫
+open_dir=目錄
+open_reg=常規文件
+open_chr=特殊字符
+open_blk=塊特
+open_size=文件大小
+open_inode=索引節點
+open_file=路徑
+
+trace_title=追踪過程
+trace_start=正在啟動 $1的系統調用跟踪。
+trace_doing=$1的系統調用跟踪：
+trace_done=..流程已終止。
+trace_failed=..追踪失敗！
+trace_sorry=此頁面需要瀏覽器中的Java支持。要使用純文本過程跟踪，請調整模塊配置。
+trace_syscalls=跟踪系統調用：
+trace_all=所有
+trace_sel=上市 ..
+trace_change=更改
+
+windows_threads=處理中的線程
+
+syslog_dmesg=內核消息

@@ -1,0 +1,37 @@
+index_title=Vaihda kieli ja teema
+index_lang=Webmin-käyttöliittymän kieli
+index_langglobal2=Globaali kieli.. $1 ($2)
+index_langset=Henkilökohtainen valinta ..
+index_theme=Webmin UI-teema
+index_overlay=Teeman peittokuva
+index_overlaydef=Ei mitään - käytä teeman oletusasetuksia
+index_themeglobal=Globaali teema ($1)
+index_themeset=Henkilökohtainen valinta ..
+index_pass=Webmin-sisäänkirjautumissalasana
+index_passleave=Jätä muuttumattomaksi
+index_passset=Asetettu ..
+index_passagain=Kirjoita salasana uudelleen
+index_ok=Tehdä muutoksia
+index_themedef=Vanha Webmin-teema
+index_desc2=Tätä moduulia voidaan käyttää muuttamaan $1, vain Webmin-tilillesi.
+index_d3=$1, $2 ja $3 
+index_d2=$1 ja $2 
+index_d1=$1 
+index_dlang=kieli, jolla moduulit näytetään
+index_dtheme=teema, joka hallitsee Webminin ulkonäköä
+index_dpass=salasana, jota käytetään sisäänkirjautumiseen
+
+change_title=Asetusten muuttaminen
+change_user=Webmin-kirjautumisen muokkaaminen ..
+change_done=.. valmis
+change_restart=Päivitetään Webmin ..
+change_redirect=Uudelleenohjaus päävalikkoon ..
+change_ecolon=Salasanasi ei voi sisältää: merkkiä
+change_epass2=Uudet salasanat eivät täsmää
+change_epass=Uusi salasana ei kelpaa : $1 
+change_eoverlay=Teeman päällekkäisyyttä ei voi valita, ellei myös valittu käyttöliittymän teema
+change_eoverlay2=Valittu teeman peittokuva ei ole yhteensopiva valitun käyttöliittymän teeman kanssa
+
+acl_lang=Voiko kieltä vaihtaa?
+acl_theme=Voiko teema vaihtaa?
+acl_pass=Voiko salasana vaihtaa (kun se on asetettu Webminiin)?

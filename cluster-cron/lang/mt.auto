@@ -1,0 +1,37 @@
+index_title=Impjiegi ta 'Cluster Cron
+index_add=Oħloq xogħol ta 'cron ta' cluster ġdid.
+index_none=L-ebda impjiegi ta 'cron tal-cluster ma ġew definiti.
+index_servers=Ħaddem fuq servers
+index_return=cluster cron jobs lista
+index_more=$1 aktar ..
+index_run=Ħaddem issa ..
+index_actions=Azzjonijiet
+
+edit_title=Editja Cluster Cron Job
+create_title=Oħloq Job Cluster Cron
+edit_servers=Ħaddem fuq servers
+edit_group=Membri ta ' $1 
+edit_this=dan is-server
+edit_all=&lt;L-ospiti kollha&gt;
+edit_emissing=Impjieg Cron m'għadux jeżisti!
+
+save_err=Ma rnexxielux isalva xogħol ta 'cron tal-cluster
+
+exec_title=Eżegwixxi xogħol ta 'Cron Cluster
+exec_cmd=Ġiri $1 fuq is-servers magħżula ..
+exec_failed=Ma rnexxielux jaħdem fuq $1 : $2 
+exec_success=Ħruġ minn $1 ..
+exec_nohosts=L-ebda host magħżul biex jimxi fuqu, jew gruppi magħżula ma fihom xi ospiti li jistgħu jintużaw.
+
+log_run=Mexxi $1 fuq is-servers $2 
+log_run_l=Firxa $1 fuq $2 
+log_create=Ħoloq xogħol ta 'cron cluster għal $1 
+log_create_l=Ħoloq xogħol ta 'cron tal-cluster $2 għal $1 
+log_modify=Xogħol ta 'cron modifikat għall-kluster għal $1 
+log_modify_l=Impjieg Cron tal-Kluster modifikat $2 għal $1 
+log_delete=Impjieg ta 'cron ta' cluster imħassar għal $1 
+log_delete_l=Imħassar xogħol ta 'cron tal-cluster $2 għal $1 
+log_deletes=Impjiegi ta 'cron tal-cluster $1 imħassra
+
+delete_err=Naqset milli tħassar l-impjiegi ta 'cron tal-cluster
+delete_enone=L-ebda magħżul

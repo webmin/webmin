@@ -1,0 +1,3 @@
+desc_zh_TW=Procmail郵件過濾器
+longdesc_zh_TW=在全局/etc/procmailrc 文件中編輯配方，該配方適用於所有傳入電子郵件。
+name_zh_TW=郵件

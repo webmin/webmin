@@ -299,7 +299,8 @@ if ($mode == 0) {
 	$file = &date_subs($path);
 	}
 else {
-	$file = &transname();
+	my $ext = &has_command("gzip") ? '.tar.gz' : '.tar';
+	$file = &transname_timestamped("backup", $ext);
 	}
 
 # Get module descriptions
@@ -495,7 +496,7 @@ else {
 	}
 
 # Validate archive
-open(FILE, $file);
+open(FILE, "<".$file);
 my $two;
 read(FILE, $two, 2);
 close(FILE);
@@ -537,7 +538,7 @@ my %mfiles;
 my @files;
 while($m = readdir(DIR)) {
 	next if ($m eq "." || $m eq ".." || !$hasmod{$m});
-	open(MAN, "$manifests_dir/$m");
+	open(MAN, "<$manifests_dir/$m");
 	my @mfiles;
 	while(<MAN>) {
 		s/\r|\n//g;

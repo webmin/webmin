@@ -1,0 +1,131 @@
+index_epackagecmd=$1 패키지 시스템에는 $2 명령이 필요합니다
+index_eupdatecmd=$1 업데이트 시스템에는 $2 명령이 필요합니다
+index_epackagecheck=선택한 패키지 관리 시스템이 유효하지 않습니다 : $1. <br><a href='$2'> 모듈 구성 </a> 페이지에서 다른 시스템을 선택해야 할 수도 있습니다.
+index_eupdatecheck=선택한 업데이트 시스템이 유효하지 않습니다 : $1. <br><a href='$2'> 모듈 구성 </a> 페이지에서 다른 업데이트 방법을 선택해야 할 수도 있습니다.
+index_echeckpackage=패키지 시스템이 감지되지 않았습니다!
+index_echeckupdate=업데이트 시스템이 감지되지 않았습니다!
+index_filter=필터 패키지
+index_filterclear=필터 지우기
+index_filtered=<tt>$2</tt> 중 <tt>$1</tt> 패키지 표시
+
+edit_listdesc=이 패키지의 모든 파일과 현재 확인 상태를 표시하십시오.
+edit_uninstdesc=시스템에서이 패키지를 제거하십시오.
+
+delete_efile=삭제할 임시 파일
+delete_purge=구성 파일을 제거 하시겠습니까?
+delete_depstoo=사용하지 않는 종속성도 제거 했습니까?
+
+install_eupdate=설치할 패키지가 없습니다
+
+slack_edir=슬랙웨어 패키지 디렉토리 $1 이 (가) 없습니다.
+
+log_install_yum_l=YUM에서 설치된 패키지 $1 
+log_install_yum=YUM에서 $2 패키지 설치
+log_install_rhn_l=Redhat Network에서 설치된 패키지 $1 
+log_install_rhn=Redhat Network에서 $2 패키지 설치
+
+apt_repo_url=리포지토리 기본 URL
+apt_repo_path=분배 경로 구성 요소
+apt_repo_eurl=기본 URL이 없거나 잘못되었습니다
+apt_repo_epath=분배 경로 누락
+
+yum_find=YUM 찾아보기
+yum_title=YUM 찾아보기
+yum_repo_id=리포지토리 ID
+yum_repo_name=리포지토리 설명
+yum_repo_url=패키지 기본 URL
+yum_repo_gpg=GPG 인증서 파일
+yum_repo_none=서명하지 않음
+yum_repo_eid=리포지토리 ID가 없거나 잘못되었습니다. 문자와 숫자 만 허용됩니다.
+yum_repo_eidclash=리포지토리 ID가 이미 사용 중입니다
+yum_repo_ename=누락 된 저장소 이름
+yum_repo_eurl=리포지토리 URL이 없거나 잘못되었습니다
+yum_repo_egpg=GPG 인증서 파일이 없거나 존재하지 않습니다
+yum_repo_efile=리포지토리 파일이 이미 존재합니다!
+
+urpmi_find=URPMI 찾아보기
+
+aix_unknown=알 수 없는
+aix_device=소프트웨어의 입력 장치 / 디렉토리
+aix_commit=소프트웨어 업데이트를 커밋 하시겠습니까?
+aix_save=교체 된 파일을 저장 하시겠습니까?
+aix_auto=필수 소프트웨어를 자동으로 설치 하시겠습니까?
+aix_extend=공간이 필요한 경우 파일 시스템을 확장 하시겠습니까?
+aix_verify=파일 크기를 확인하고 설치 하시겠습니까?
+aix_include=해당 언어 파일 세트를 포함 하시겠습니까?
+aix_detail=자세한 출력?
+aix_process=여러 볼륨을 처리 하시겠습니까?
+
+emerge_class=수업
+emerge_noreplace=기존 패키지를 교체 하시겠습니까?
+
+cygwin_lmissing=링크 포인트가없는 파일
+cygwin_edb=Cygwin 패키지 데이터베이스 $1 이 (가) 없습니다.
+
+csw_find=CSW 찾아보기
+csw_title=CSW 찾아보기
+
+missing_msg=$1 패키지는 Webmin이 $2 를 사용하여 자동으로 설치할 수 있습니다.
+missing_now=지금 설치
+
+msi_users=새로운 응용 프로그램 사용 가능
+msi_users0=아무도
+
+hpux_create_target_path=대상 경로를 만드시겠습니까?
+hpux_reinstall_files_use_cksum=체크섬을 사용하여 파일을 다시 설치 하시겠습니까?
+hpux_defer_configure=구성을 연기 하시겠습니까?
+hpux_autorecover_product=자동 복구 제품?
+hpux_allow_downdate=다운 타임을 허용 하시겠습니까?
+hpux_allow_incompatible=호환되지 않습니까?
+hpux_autoselect_dependencies=종속성 자동 선택?
+hpux_enforce_dependencies=의존성을 강요합니까?
+hpux_enforce_scripts=스크립트를 시행 하시겠습니까?
+hpux_enforce_dsa=디스크 공간 분석을 시행 하시겠습니까?
+
+ports_install=FreeBSD 포트 $1 설치 중 ..
+ports_failed=.. 일부 포트가 실패했습니다
+ports_ok=.. 설치 완료
+ports_input=포트에서 패키지
+ports_find=검색 포트
+ports_name=FreeBSD 포트
+ports_form=포트 데이터베이스 업데이트
+ports_apply=최신 스냅 샷 다운로드
+ports_upgrade=포트 스냅 샷 다운로드
+ports_running=$1 명령을 실행 중입니다.
+
+pkg_install=FreeBSD 패키지 $1 설치 중 ..
+pkg_failed=.. 일부 패키지가 실패했습니다
+pkg_ok=.. 설치 완료
+pkg_find=pkgng 검색
+pkg_input=pkgng에서 패키지
+
+pkgsrc_install=pkgsrc 패키지 $1 설치 중 ..
+pkgsrc_failed=.. 일부 패키지가 실패했습니다
+pkgsrc_ok=.. 설치 완료
+pkgsrc_find=pkgng 검색
+pkgsrc_input=pkgsrc에서 패키지
+
+log_IPKG_update=업데이트 된 IPKG 데이터베이스
+log_IPKG_upgrade=업그레이드 된 설치된 IPKG 패키지
+
+IPKG_name=IPKG
+IPKG_input=IPKG에서 패키지
+IPKG_find=IPKG 찾아보기
+IPKG_form=IPKG 패키지 관리
+IPKG_update=IPKG 패키지 데이터베이스 업데이트
+IPKG_upgrade=설치된 IPKG 패키지 업그레이드
+IPKG_title_update=IPKG 데이터베이스 업데이트
+IPKG_title_upgrade=설치된 패키지 업그레이드
+IPKG_updatedesc=$1 명령을 실행 중입니다.
+IPKG_upgradefailed=.. 실패했습니다!
+IPKG_upgradeok=.. 완료
+IPKG_install=$1 명령으로 패키지 설치
+IPKG_ok=.. 설치가 완료되었습니다.
+IPKG_failed=.. 설치 실패!
+IPKG_index_tree=IPKG 패키지 관리
+IPKG_install_package=설치
+IPKG_install_packagedesc=이 패키지를 시스템에 설치하십시오
+IPKG_noupgrade=업그레이드 할 것이 없습니다
+IPKG-edit_title=IPKG 패키지 관리
+IPKG_update_avail=사용 가능한 업데이트 :
+IPKG_not_installed=패키지가 설치되지 않았습니다

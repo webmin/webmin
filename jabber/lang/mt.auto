@@ -1,0 +1,120 @@
+index_title=Jabber IM Server
+index_econfig=Il-fajl konfigurazzjoni Jabber $1 ma jeżistix. Jew Jabber mhuwiex installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
+index_edir=Id-direttorju tal-bażi Jabber $1 ma jeżistix. Jew Jabber mhuwiex installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
+index_emodules=Il-moduli Perl $1 u $2 li huma meħtieġa minn Webmin għall-immaniġġjar tal-konfigurazzjoni XML ta 'Jabber mhumiex installati. <a href='$3'>Ikklikkja hawn</a> biex tinstallahom direttament minn CPAN.
+index_emodule=Il-modulu Perl $1 li huwa meħtieġ minn Webmin għall-immaniġġjar tal-konfigurazzjoni XML ta 'Jabber mhuwiex installat. <a href='$2'>Ikklikkja hawn</a> biex tinstallaha direttament minn CPAN.
+index_expat=Kun żgur li għandek il-librerija u l-intestaturi tal-Expat C installati qabel ma tipprova tinstalla l-moduli Perl, peress li jiddependu minnha u se jonqsu jekk ma tkunx disponibbli.
+index_eparse=Il-modulu ta ' $1 perl ma setax jiddekorri l-fajl ta' konfigurazzjoni Jabber tiegħek : $2 
+index_ejabberd=Il-programm tas-server Jabber $1 ma nstabx fis-sistema tiegħek. Jew Jabber mhuwiex installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
+index_eversion=Webmin jappoġġja biss il-verżjoni Jabber $2, iżda l-kmand $3 irrapporta l-informazzjoni tal-verżjoni li ġejja : $1 
+index_eversion2=Webmin jappoġġja biss il-verżjonijiet Jabber taħt $2, iżda l-kmand $3 irrapporta l-informazzjoni tal-verżjoni li ġejja : $1 
+index_start=Ibda Jabber Server
+index_startmsg=Ikklikkja din il-buttuna biex tibda s-server Jabber fis-sistema tiegħek. Sakemm jinbeda, l-ebda klijenti ta 'messaġġi istantanji ma jkunu jistgħu jużawha.
+index_stop=Waqqaf is-Server Jabber
+index_stopmsg=Ikklikkja din il-buttuna biex twaqqaf il-ġiri tas-server Jabber fis-sistema tiegħek. Ebda klijenti ta 'messaġġi istantanji ma jkunu jistgħu jużawha meta titwaqqaf.
+index_restart=Applika l-Bidliet
+index_restartmsg=Ikklikkja din il-buttuna biex tapplika l-konfigurazzjoni kurrenti billi twaqqaf u terġa 'tibda s-server Jabber.
+index_comments=Twissija - il-fajl ta 'konfigurazzjoni Jabber tiegħek $1 fih kummenti, li jitneħħew jekk isiru xi tibdiliet fil-konfigurazzjoni billi tuża dan il-modulu.
+index_return=Menu Jabber
+index_version=Verżjoni Jabber $1 
+
+general_title=Għażliet Ġenerali
+general_header=Għażliet ta 'server Global Jabber
+general_host=Il-hostname tas-server tiegħek
+general_elog=Żball fil-fajl tal-ġurnal
+general_elogfmt=Żball fil-format tal-ġurnal
+general_rlog=Aċċess għall-fajl tal-ġurnal
+general_rlogfmt=Aċċess fil-format tal-ġurnal
+general_pidfile=Proċess tal-ID tal-fajl
+general_err=Ma rnexxielux isalva l-għażliet ġenerali
+general_ehost=Isem tas-server nieqes jew invalidu
+general_eelog=Fajl tal-ġurnal tal-iżball nieqes jew invalidu
+general_eelogfmt=Nieqes il-format tal-ġurnal tal-iżball
+general_erlog=Fajl tal-ġurnal tat-traffiku nieqes jew invalidu
+general_erlogfmt=Format tal-ġurnal tat-traffiku nieqes
+general_epidfile=Fajl ID tal-proċess nieqes jew invalidu
+
+messages_title=Messaġġi
+messages_header=Messaġġ tas-server Jabber għall-klijenti
+messages_wsubject=Messaġġ ta 'merħba suġġett
+messages_wbody=Ġisem ta 'messaġġ ta' merħba
+messages_vcard=Server vCard
+messages_rinstr=Istruzzjonijiet għar-reġistrazzjoni
+messages_rnotify=Tinnotifika lill-amministratur dwar ir-reġistrazzjoni?
+messages_rfields=Oqsma meħtieġa reġistrazzjoni
+messages_vcard2jud=Ibgħat vCard lid-direttorju tal-utenti ta 'Jabber?
+messages_err=Ma rnexxielux isalva messaġġi
+messages_evcard=XML vCard mhux validu : $1 
+messages_etag=Server XML vCard ma jibda bl-&lt;vCard&gt;
+
+modules_title=Moduli Jabber
+modules_desc=Il-moduli elenkati hawn taħt jintużaw sabiex jipproċessaw messaġġi riċevuti mill-maniġer tas-sessjoni Jabber. Għandek tibdel din il-lista biss jekk taf x'qed tagħmel.
+modules_header=Moduli ta 'maniġer ta' sessjoni server Jabber
+modules_mod=Isem il-Modulu
+modules_so=Librerija komuni
+modules_err=Ma rnexxielux isalva l-moduli Jabber
+modules_emod="$1" mhux isem tal-modulu validu
+modules_eso=Librerija komuni "$1" ma teżistix
+
+karma_title=Kontroll tat-Traffiku tal-Karma
+karma_header=Għażliet ta 'kontroll tar-rata tat-traffiku
+karma_rate=Immaniġġjar eċċessiv tal - konnessjoni
+karma_rate_def=B'diżabilità
+karma_rate_sel=Imblokka klijent għal $2 sekondi wara konnessjonijiet $1 
+karma_mode=Modalità Karma
+karma_none=L-ebda limiti
+karma_low=Limiti baxxi tat-traffiku
+karma_medium=Limiti tat-traffiku medji
+karma_high=Limiti ta 'traffiku għoljin
+karma_sel=Uża s-settings magħżula hawn taħt ..
+karma_heartbeat=Tul tal-perjodu f'sekondi (<tt>taħbit tal-qalb</tt>)
+karma_init=Perjodi ta 'inizjalizzazzjoni (<tt>init</tt>)
+karma_max=Karma massimu (<tt>mass</tt>)
+karma_inc=Increment tal-karma (<tt>inc</tt>)
+karma_dec=Digriet tal-karma (<tt>dec</tt>)
+karma_penalty=Perjodi ta 'piena (<tt>piena</tt>)
+karma_restore=Fqigħ perjodi ta 'restawr (<tt>restawr</tt>)
+karma_err=Ma rnexxielux isalva l-għażliet tal-karma
+karma_eheartbeat=It-tul tal-perjodu nieqes jew invalidu
+karma_einit=Perjodi ta 'inizjalizzazzjoni nieqsa jew invalidi
+karma_emax=Massimu tal-karma nieqes jew invalidu
+karma_einc=Żieda fil-karma nieqsa jew invalida
+karma_edec=Tnaqqis tal-karma nieqes jew invalidu
+karma_epenalty=Perjodi ta 'penalità nieqsa jew invalidi
+karma_erestore=Perjodi ta ’restawr nieqsa jew invalidi
+karma_epoints=Numru ta 'konnessjonijiet nieqsa jew invalidi
+karma_etime=Nieqes il-ħin jew invalidu biex tibblokka għalih
+
+ips_title=Kontroll tal-Aċċess IP
+ips_header=Kontroll tal-aċċess għall-IP tas-server Jabber
+ips_allow=IPs tal-klijent permessi
+ips_all=L-indirizzi kollha
+ips_deny=IPs tal-klijenti miċħuda
+ips_none=Xejn
+ips_sel=Elenki indirizzi/netmasks ..
+ips_err=Ma rnexxielux isalva l-kontroll tal-aċċess għall-IP
+ips_eaddr="$1" mhuwiex indirizz IP validu jew indirizz IP/netmask
+
+file_title=Editja l-File Config
+file_desc=Uża l-formola hawn taħt biex teditja l-fajl konfigurazzjoni Jabber direttament. Dan għandu jsir biss jekk tifhem il-format tal-konfigurazzjoni XML.
+file_header=Editja l-fajl tal-konfigurazzjoni Jabber
+file_err=Ma rnexxielux isalva l-fajl tal-konfigurazzjoni
+
+admin_title=Utenti Amministrattivi
+admin_header=Utenti ta 'amministrazzjoni ta' server
+admin_read=Aqra l-amministraturi tal-aċċess
+admin_write=Ikteb l-aċċess għall-amministraturi
+admin_reply=Aworeply għall-messaġġi admin?
+admin_rsubject=Suġġett awtomatikament
+admin_rbody=Messaġġ awtomatiku
+
+filter_title=Filtri tal-Utenti
+filter_header=Permessi tal-filtru tal-utent
+filter_max=Ir-regoli massimi tal-filtri
+filter_conds=Kondizzjonijiet tal-filtru permessi
+filter_acts=Azzjonijiet tal-filtru permessi
+
+restart_err=Ma rnexxielux japplika tibdil
+stop_err=Naqset milli twaqqaf Jabber
+stop_epid=Naqas milli jsib il-proċess ta ’Jabber
+start_err=Naqset milli tibda Jabber

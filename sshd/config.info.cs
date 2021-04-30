@@ -1,0 +1,10 @@
+line2=Konfigurace systému,11
+sshd_path=Úplná cesta k sshd programu,0
+sshd_config=Úplná cesta k sshd konfiguračnímu souboru,0
+client_config=Úplná cesta ke konfiguračnímu programu ssh klienta,0
+pid_file=Úplná cesta k sshd PID souboru,0
+start_cmd=Příkaz pro spuštění sshd,3,Právě běžící server
+restart_cmd=Příkaz aplikující konfiguraci sshd,3,Poslání HUP signálu
+stop_cmd=Příkaz pro zastavení sshd,3,Ukončující proces
+keygen_path=Úplná cesta k ssh-keygen programu,0
+sshd_version=Verze SSH serveru,3,Zjistit automaticky

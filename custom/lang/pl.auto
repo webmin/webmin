@@ -1,0 +1,6 @@
+edit_format4=Pobierz, jeśli to możliwe
+
+save_eopts=Brak pliku opcji dla parametru $1 
+save_eopts2=Plik opcji lub wartość domyślna parametru $1 nie może zawierać :
+
+run_failed=Komenda nie powiodła się ze statusem wyjścia $1 

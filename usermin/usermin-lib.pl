@@ -64,13 +64,20 @@ Returns the version number of Usermin on this system.
 =cut
 sub get_usermin_version
 {
+my ($ui_format_dev) = @_;
 local %miniserv;
 &get_usermin_miniserv_config(\%miniserv);
-open(VERSION, "$miniserv{'root'}/version");
+open(VERSION, "<$miniserv{'root'}/version");
 local $version = <VERSION>;
 close(VERSION);
 $version =~ s/\r|\n//g;
-return $version;
+# Format dev version nicely
+if ($ui_format_dev && length($version) == 13) {
+	return substr($version, 0, 5) . "." . substr($version, 5, 5 - 1) . "." . substr($version, 5 * 2 - 1);
+	}
+else {
+	return $version;
+	}
 }
 
 =head2 restart_usermin_miniserv
@@ -85,7 +92,7 @@ return undef if (&is_readonly_mode());
 local($pid, %miniserv, $addr, $i);
 &get_usermin_miniserv_config(\%miniserv) || return;
 $miniserv{'inetd'} && return;
-open(PID, $miniserv{'pidfile'}) || &error("Failed to open PID file");
+open(PID, "<".$miniserv{'pidfile'}) || &error("Failed to open PID file");
 chop($pid = <PID>);
 close(PID);
 if (!$pid) { &error("Invalid PID file"); }
@@ -106,7 +113,7 @@ local %miniserv;
 $miniserv{'inetd'} && return;
 
 local($pid, $addr, $i);
-open(PID, $miniserv{'pidfile'}) || &error("Failed to open PID file");
+open(PID, "<".$miniserv{'pidfile'}) || &error("Failed to open PID file");
 chop($pid = <PID>);
 close(PID);
 if (!$pid) { &error("Invalid PID file"); }
@@ -174,7 +181,6 @@ my %done;
 foreach my $theme (&list_themes()) {
         my $iscurr = $curr && $theme->{'dir'} eq $curr;
         next if (-l $root_directory."/".$theme->{'dir'} &&
-                 $theme->{'dir'} =~ /\d+$/ &&
                  !$iscurr);
         next if ($done{$theme->{'desc'}}++ && !$iscurr);
         push(@rv, $theme);
@@ -326,7 +332,7 @@ sub read_usermin_acl
 {
 local($user, $_, @mods);
 if (!%usermin_acl_hash_cache) {
-	open(ACL, &usermin_acl_filename());
+	open(ACL, "<".&usermin_acl_filename());
 	while(<ACL>) {
 		if (/^(\S+):\s*(.*)/) {
 			local(@mods);
@@ -382,7 +388,7 @@ if (&is_readonly_mode()) {
 	}
 
 # Uncompress the module file if needed
-open(MFILE, $file);
+open(MFILE, "<".$file);
 read(MFILE, $two, 2);
 close(MFILE);
 if ($two eq "\037\235") {
@@ -423,7 +429,7 @@ local %miniserv;
 
 # Check if this is an RPM usermin module or theme
 local ($type, $redirect_to);
-open(TYPE, "../install-type");
+open(TYPE, "<../install-type");
 chop($type = <TYPE>);
 close(TYPE);
 if ($type eq 'rpm' && $file =~ /\.rpm$/i &&
@@ -572,7 +578,7 @@ else {
 		}
 	if ($need_unlink) { unlink($file); }
 	local $perl;
-	open(PERL, "$miniserv{'root'}/miniserv.pl");
+	open(PERL, "<$miniserv{'root'}/miniserv.pl");
 	<PERL> =~ /^#!(\S+)/; $perl = $1;
 	close(PERL);
 	local @st = stat($0);
@@ -639,7 +645,7 @@ a flag and an array ref of module names. The flag can be one of :
 sub list_usermin_usermods
 {
 local @rv;
-open(USERMODS, "$config{'usermin_dir'}/usermin.mods");
+open(USERMODS, "<$config{'usermin_dir'}/usermin.mods");
 while(<USERMODS>) {
 	if (/^([^:]+):(\+|-|):(.*)/) {
 		push(@rv, [ $1, $2, [ split(/\s+/, $3) ] ]);
@@ -676,7 +682,7 @@ sub get_usermin_miniserv_users
 local %miniserv;
 &get_usermin_miniserv_config(\%miniserv);
 local @rv;
-open(USERS, $miniserv{'userfile'});
+open(USERS, "<".$miniserv{'userfile'});
 while(<USERS>) {
 	s/\r|\n//g;
 	local @u = split(/:/, $_);
@@ -803,7 +809,7 @@ else {
 		}
 	closedir(DIR);
 
-	open(TYPE, "$mdir/install-type");
+	open(TYPE, "<$mdir/install-type");
 	chop($type = <TYPE>);
 	close(TYPE);
 
@@ -846,7 +852,7 @@ sub stop_usermin
 local %miniserv;
 &get_usermin_miniserv_config(\%miniserv);
 local $pid;
-if (open(PID, $miniserv{'pidfile'}) && ($pid = int(<PID>))) {
+if (open(PID, "<".$miniserv{'pidfile'}) && ($pid = int(<PID>))) {
 	&kill_logged('TERM', $pid) || return &text('stop_ekill', $!);
 	close(PID);
 	}
@@ -877,7 +883,7 @@ sub get_install_type
 {
 local (%miniserv, $mode);
 &get_usermin_miniserv_config(\%miniserv);
-if (open(MODE, "$miniserv{'root'}/install-type")) {
+if (open(MODE, "<$miniserv{'root'}/install-type")) {
 	chop($mode = <MODE>);
 	close(MODE);
 	}

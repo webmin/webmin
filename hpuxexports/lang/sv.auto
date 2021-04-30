@@ -1,0 +1,31 @@
+index_sel_ro=utvalda värdar läsåtkomst
+index_all_ro=alla värdar läsåtkomst
+index_ro_rw=alla värdar läsåtkomst, valda värdar skrivåtkomst
+index_sel_rw=valda värdar skrivåtkomst
+index_all_rw=alla värdar skrivtillgång
+index_sel_root=valda värd root-åtkomst
+
+edit_security=Exportera säkerhet
+edit_sel_ro=Listade värdar läsåtkomst
+edit_all_ro=Alla värdar läsåtkomst
+edit_ro_rw=Alla värdar läsåtkomst, listade värdar skrivåtkomst
+edit_sel_rw=Listade värdar skrivtillgång
+edit_all_rw=Alla värdar skrivåtkomst
+edit_sel_hosts=Listade värdar
+edit_all_hosts=Alla värdar
+edit_user_access=Användaråtkomst
+edit_root_access=Root-åtkomst
+edit_anon_access=Anonym användare
+edit_anon_notset=Inte inställd
+edit_anon_noaccess=Ingen åtkomst
+edit_async=Asynkron skriver
+
+save_enohost='$1' - Du listade inga värdar
+
+log_modify=Modifierad NFS-export $1 
+log_modify_l=Modifierad NFS-export $1 till $2 
+log_delete=NFS-export $1 har tagits bort
+log_delete_l=NFS-export $1 till $2 har tagits bort
+log_create=Skapade NFS-export $1 
+log_create_l=Skapade NFS-export $1 till $2 
+log_apply=Tillämpad konfiguration

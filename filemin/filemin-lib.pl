@@ -3,9 +3,21 @@
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
+
+use lib './lib';
+use POSIX;
 use Encode qw(decode encode);
 use File::Basename;
-use POSIX;
+eval "use File::MimeInfo";
+
+
+sub get_acls_status {
+  return has_command('getfacl');
+}
+
+sub get_list_acls_command {
+  return has_command('getfacl') . " -p ";
+}
 
 sub get_attr_status {
   return has_command('lsattr');
@@ -16,9 +28,9 @@ sub get_attr_command {
 }
 
 sub get_selinux_status {
-  # return 1;
   return is_selinux_enabled();
 }
+
 sub get_selinux_command_type {
   my $out = backquote_command("ls --help 2>&1 </dev/null");
   return $out =~ /--scontext/ ? 1 : 0;
@@ -49,7 +61,7 @@ sub get_paths {
         &switch_to_unix_user(\@remote_user_info);
     }
     else {
-        # The Webmin user we are connected as
+        # Run as the Webmin user we are connected as
         &switch_to_remote_user();
     }
 
@@ -59,15 +71,20 @@ sub get_paths {
         # Add paths from Usermin config
         push(@allowed_paths, split(/\t+/, $config{'allowed_paths'}));
     }
-    if($remote_user_info[0] eq 'root' || $allowed_paths[0] eq '$ROOT') {
-        # Assume any directory can be accessed
+    if ($remote_user_info[0] eq 'root' && @allowed_paths == 1 &&
+        ($allowed_paths[0] eq '$HOME' || $allowed_paths[0] eq '$ROOT')) {
+	# If the user is running as root and the only allowed path is $HOME
+	# or $ROOT, assume that all files are allowed
         $base = "/";
         @allowed_paths = ( $base );
     } else {
-        @allowed_paths = map { $_ eq '$HOME' ? @remote_user_info[7] : $_ }
-                             @allowed_paths;
+	# Resolve actual allowed paths
+        @allowed_paths = map { $_ eq '$HOME' ? @remote_user_info[7] :
+			       $_ eq '$ROOT' ? '/' : $_ } @allowed_paths;
         @allowed_paths = map { s/\$USER/$remote_user/g; $_ } @allowed_paths;
         @allowed_paths = &unique(@allowed_paths);
+	@allowed_paths = map { my $p = $_; $p =~ s/\/\.\//\//; $p }
+			     @allowed_paths;
         if (scalar(@allowed_paths) == 1) {
             $base = $allowed_paths[0];
         } else {
@@ -75,8 +92,12 @@ sub get_paths {
         }
     }
     @allowed_paths = map { &simplify_path($_) } &unique(@allowed_paths);
-    $path = un_urlize($in{'path'}) || '';
-    $html_escaped_path = html_escape($path);
+    if ($in{'path'} =~ /^%2F/) {
+        $path = un_urlize($in{'path'}, 1) || '';
+    } else {
+        $path = $in{'path'} || '';
+    }
+    $quote_escaped_path = quote_escape($path);
     $urlized_path = urlize($path);
     
     $cwd = &simplify_path($base.$path);
@@ -116,6 +137,7 @@ sub get_paths {
     } else {
         &read_file_cached("$confdir/.config", \%userconfig);
     }
+    &load_module_preferences(&get_module_name(), \%userconfig);
 }
 
 sub print_template {
@@ -224,7 +246,7 @@ sub print_interface {
         for(my $i = 1; $i <= scalar(@breadcr)-1; $i++) {
             chomp($breadcr[$i]);
             $cp = $cp.'/'.$breadcr[$i];
-            print "<a href='index.cgi?path=$cp'>".
+            print "<a href='index.cgi?path=".&urlize($cp)."'>".
                   &html_escape($breadcr[$i])."</a> / ";
         }
         print "<br />";
@@ -282,6 +304,7 @@ sub print_interface {
     push @ui_columns, ('<span data-head-size>' . $text{'size'} . '</span>') if($userconfig{'columns'} =~ /size/);
     push @ui_columns, ('<span data-head-owner_user>' . $text{'ownership'} . '</span>') if($userconfig{'columns'} =~ /owner_user/);
     push @ui_columns, ('<span data-head-permissions>' . $text{'permissions'} . '</span>') if($userconfig{'columns'} =~ /permissions/);
+    push @ui_columns, ('<span data-head-acls>' . $text{'acls'} . '</span>') if(get_acls_status() && $userconfig{'columns'} =~ /acls/);
     push @ui_columns, ('<span data-head-attributes>' . $text{'attributes'} . '</span>') if(get_attr_status() && $userconfig{'columns'} =~ /attributes/);
     push @ui_columns, ('<span data-head-selinux>' . $text{'selinux'} . '</span>') if(get_selinux_status() && $userconfig{'columns'} =~ /selinux/);
     push @ui_columns, ('<span data-head-last_mod_time>' . $text{'last_mod_time'} . '</span>') if($userconfig{'columns'} =~ /last_mod_time/);
@@ -292,16 +315,15 @@ sub print_interface {
         if ($count > scalar(@list)) { last; }
         my $class = $count & 1 ? "odd" : "even";
         my $link = $list[$count - 1][0];
-        my $selinux;
+        my $acls;
         my $attributes;
+        my $selinux;
         $link =~ s/\Q$cwd\E\///;
         $link =~ s/^\///g;
         $vlink = html_escape($link);
         $vlink = quote_escape($vlink);
-        $vlink = decode('UTF-8', $vlink, Encode::FB_DEFAULT);
-	my $hlink = html_escape($vlink);
+        my $hlink = html_escape($vlink);
         $vpath = quote_escape($vpath);
-        $vpath = decode('UTF-8', $vpath, Encode::FB_DEFAULT);
 
         my $type = $list[$count - 1][14];
         $type =~ s/\//\-/g;
@@ -319,6 +341,10 @@ sub print_interface {
 
         if(get_attr_status() && $userconfig{'columns'} =~ /attributes/) {
           $attributes = $list[$count - 1][18];
+        }
+
+        if(get_acls_status() && $userconfig{'columns'} =~ /acls/) {
+          $acls = $list[$count - 1][19];
         }
 
         $mod_time = POSIX::strftime('%Y/%m/%d - %T', localtime($list[$count - 1][10]));
@@ -374,6 +400,7 @@ sub print_interface {
         push @row_data, $size if($userconfig{'columns'} =~ /size/);
         push @row_data, $user.':'.$group if($userconfig{'columns'} =~ /owner_user/);
         push @row_data, $permissions if($userconfig{'columns'} =~ /permissions/);
+        push @row_data, $acls if(get_acls_status() && $userconfig{'columns'} =~ /acls/);
         push @row_data, $attributes if(get_attr_status() && $userconfig{'columns'} =~ /attributes/);
         push @row_data, $selinux if(get_selinux_status() && $userconfig{'columns'} =~ /selinux/);
         push @row_data, $mod_time if($userconfig{'columns'} =~ /last_mod_time/);
@@ -381,7 +408,7 @@ sub print_interface {
         print &ui_checked_columns_row(\@row_data, "", "name", $vlink);
     }
     print ui_columns_end();
-    print &ui_hidden("path", $urlized_path),"\n";
+    print &ui_hidden("path", $path),"\n";
     print &ui_form_end();
 }
 
@@ -427,6 +454,22 @@ foreach my $allowed_path (@allowed_paths) {
 	}
 $error && &error(&text('notallowed', '`' . &html_escape($file) . '`',
 		   '`' . &html_escape(join(" , ", @allowed_paths)) . '`.'));
+}
+
+sub clean_mimetype
+{
+my ($f) = @_;
+my $t = mimetype($f);
+eval { utf8::encode($t) if (utf8::is_utf8($t)) };
+return $t;
+}
+
+sub test_allowed_paths
+{
+if (@allowed_paths == 1 && $allowed_paths[0] eq '/') {
+	return 0;
+	}
+return 1;
 }
 
 1;

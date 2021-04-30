@@ -1,0 +1,3 @@
+name_sl=NIS
+desc_sl=Odjemalec in strežnik NIS
+longdesc_sl=Nastavite sistem kot NIS odjemalca, glavnega ali pomožnega strežnika. Upoštevajte, da NIS + ni podprt.

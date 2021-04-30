@@ -1,0 +1,131 @@
+index_epackagecmd=El sistema de paquetes $1 requiere el comando $2 
+index_eupdatecmd=El sistema de actualización $1 requiere el comando $2 
+index_epackagecheck=El sistema de administración de paquetes seleccionado no es válido: $1. <br>Es posible que deba seleccionar un sistema diferente en la página<a href='$2'> configuración del módulo </a>.
+index_eupdatecheck=El sistema de actualización seleccionado no es válido: $1. <br>Es posible que deba seleccionar un método de actualización diferente en la página<a href='$2'> configuración del módulo </a>.
+index_echeckpackage=¡No se detectó ningún sistema de paquete!
+index_echeckupdate=¡No se detectó ningún sistema de actualización!
+index_filter=Paquetes de filtros
+index_filterclear=Filtro claro
+index_filtered=Visualización de paquetes <tt>$1</tt> de <tt>$2</tt>
+
+edit_listdesc=Mostrar todos los archivos de este paquete y su estado de verificación actual.
+edit_uninstdesc=Elimine este paquete de su sistema.
+
+delete_rusure2=¿Está seguro de que desea eliminar el paquete $1 ?
+delete_purge=¿Purgar archivos de configuración?
+delete_depstoo=¿Se eliminaron las dependencias no utilizadas también?
+
+install_eupdate=No se ha introducido ningún paquete para instalar
+
+rpm_findrpm=Nombre del paquete
+rpm_finddistro=Distribución
+rpm_finddesc=Descripción
+
+slack_edir=Falta el directorio de paquetes de Slackware $1 
+
+log_install_yum_l=Paquete (s) instalado (s) $1 de YUM
+log_install_yum=$2 paquete (s) instalado desde YUM
+log_install_rhn_l=Paquete (s) instalado (s) $1 de Redhat Network
+log_install_rhn=Se instalaron $2 paquete (s) de Redhat Network
+
+rhn_header=Opciones de actualización automática de paquetes
+
+apt_header=Opciones de actualización del paquete APT
+apt_repo_url=URL base del repositorio
+apt_repo_path=Componentes de ruta de distribución
+apt_repo_eurl=URL base faltante o de aspecto no válido
+apt_repo_epath=Falta la ruta de distribución
+
+yum_repo_id=ID del repositorio
+yum_repo_name=Descripción del repositorio
+yum_repo_url=URL base del paquete
+yum_repo_gpg=Archivo de certificado GPG
+yum_repo_none=No firmado
+yum_repo_eid=ID de repositorio faltante o no válida: solo se permiten letras y números
+yum_repo_eidclash=La ID del repositorio ya está en uso
+yum_repo_ename=Falta el nombre del repositorio
+yum_repo_eurl=URL del repositorio faltante o no válida
+yum_repo_egpg=Falta el archivo de certificado GPG o no existe
+yum_repo_efile=¡El archivo del repositorio ya existe!
+
+cygwin_edb=Falta la base de datos de paquetes de Cygwin $1 
+
+csw_already=.. ya instalado.
+csw_retry=.. intentando de nuevo con nuevas dependencias.
+csw_form=Paquetes de actualización
+csw_upgrade=Actualizar todos los paquetes instalados
+csw_updatedesc=Actualización de todos los paquetes instalados con el comando $1 ..
+
+missing_msg=Webmin puede instalar automáticamente el paquete $1 con $2.
+missing_now=Instalar ahora
+
+msi_users=Poner a disposición una nueva aplicación para
+msi_users0=Nadie
+msi_users1=Usuario actual
+msi_users2=Todos los usuarios
+msi_missing=No existe
+msi_size=Tamaño equivocado
+
+hpux_create_target_path=Crear ruta de destino?
+hpux_mount_all_filesystems=¿Montar todos los sistemas de archivos?
+hpux_reinstall=¿Reinstalar?
+hpux_reinstall_files=Reinstalar archivos?
+hpux_reinstall_files_use_cksum=¿Reinstalar archivos usa suma de comprobación?
+hpux_allow_multiple_versions=¿Permitir múltiples versiones?
+hpux_defer_configure=¿Aplazar configuración?
+hpux_autorecover_product=Producto de autorrecuperación?
+hpux_allow_downdate=¿Permitir downdate?
+hpux_allow_incompatible=Permitir incompatible?
+hpux_autoselect_dependencies=¿Autoseleccionar dependencias?
+hpux_enforce_dependencies=¿Hacer cumplir las dependencias?
+hpux_enforce_scripts=¿Hacer cumplir los guiones?
+hpux_enforce_dsa=¿Hacer cumplir el análisis de espacio en disco?
+hpux_root=Directorio raíz
+
+ports_install=Instalando puertos FreeBSD $1 ..
+ports_failed=.. algunos puertos fallaron
+ports_ok=.. instalación completa
+ports_input=Paquete de puertos
+ports_find=Buscar puertos
+ports_name=Puertos FreeBSD
+ports_form=Actualizar la base de datos de puertos
+ports_apply=Descargar la última instantánea
+ports_upgrade=Descargando Instantánea de Puertos
+ports_running=Ejecutando el comando $1 ..
+
+pkg_install=Instalando paquetes de FreeBSD $1 ..
+pkg_failed=.. algunos paquetes fallaron
+pkg_ok=.. instalación completa
+pkg_find=Búsqueda pkgng
+pkg_input=Paquete de pkgng
+
+pkgsrc_install=Instalación de paquetes pkgsrc $1 ..
+pkgsrc_failed=.. algunos paquetes fallaron
+pkgsrc_ok=.. instalación completa
+pkgsrc_find=Búsqueda pkgng
+pkgsrc_input=Paquete de pkgsrc
+
+log_IPKG_update=Base de datos IPKG actualizada
+log_IPKG_upgrade=Paquetes IPKG instalados actualizados
+
+IPKG_name=IPKG
+IPKG_input=Paquete de IPKG
+IPKG_find=Examinar IPKG ..
+IPKG_form=Administrar paquetes IPKG
+IPKG_update=Actualizar la base de datos del paquete IPKG
+IPKG_upgrade=Actualizar paquetes de IPKG instalados
+IPKG_title_update=Actualización de IPKG Databse
+IPKG_title_upgrade=Actualización de paquetes instalados
+IPKG_updatedesc=Ejecutando el comando $1 ..
+IPKG_upgradefailed=.. ¡ha fallado!
+IPKG_upgradeok=.. completo.
+IPKG_install=Instalación de paquete (s) con el comando $1 ..
+IPKG_ok=.. instalación completa.
+IPKG_failed=.. ¡instalación fallida!
+IPKG_index_tree=Administrar paquetes IPKG
+IPKG_install_package=Instalar en pc
+IPKG_install_packagedesc=Instale este paquete en su sistema
+IPKG_noupgrade=Nada que actualizar
+IPKG-edit_title=Gestionar paquete IPKG
+IPKG_update_avail=Actualización disponible:
+IPKG_not_installed=El paquete no está instalado

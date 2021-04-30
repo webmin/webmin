@@ -1,0 +1,118 @@
+index_title=صوتی میل سرور
+index_ecmd=The Vgetty command $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_econfig=The Vgetty config file $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_return=صوتی میل انڈیکس
+
+vgetty_title=سیریل پورٹ کنفیگریشن
+vgetty_desc=آپ کے سرور کو سیریل پورٹ سے منسلک موڈیم کے ذریعہ وائس کالز کا جواب دینے کے ل it ، اسے نیچے درج ہونا ضروری ہے۔ جب آپ اس فہرست میں بندرگاہ شامل کرتے ہیں تو ،$1 پروگرام کالوں کے جوابات دینے اور پیغام چلانے کے لئے تشکیل کیا جائے گا۔
+vgetty_add=ایک نیا سیریل پورٹ شامل کریں
+vgetty_tty=سیریل ڈیوائس
+vgetty_type=ٹائپ کریں
+vgetty_vgetty=آواز
+vgetty_mgetty=ڈیٹا/فیکس
+vgetty_none=صوتی میل کے لئے ابھی تک کوئی سیریل پورٹ تشکیل نہیں کیا گیا ہے۔
+vgetty_apply=ترتیب کا اطلاق کریں
+vgetty_applydesc=$1 کمانڈ چلا کر اور تمام ویجیٹی پروسیس کو ختم کرکے موجودہ وائس میل سرور کنفیگریشن کو لاگو کرنے کے لئے اس بٹن پر کلک کریں۔
+vgetty_applyerr=تشکیل دینے میں ناکام
+vgetty_return=سیریل پورٹ لسٹ
+vgetty_create=سیریل پورٹ شامل کریں
+vgetty_edit=سیریل پورٹ میں ترمیم کریں
+vgetty_header=سیریل پورٹ ترتیب کے اختیارات
+vgetty_ts=سیریل پورٹ$1
+vgetty_other=دیگر آلہ ..
+vgetty_rings=جواب دینے سے پہلے بجتی ہے
+vgetty_default=عالمی سطح پر طے شدہ
+vgetty_ans=جواب موڈ
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=آواز
+vgetty_ans_fax=فیکس
+vgetty_ans_data=ڈیٹا
+vgetty_err=سیریل پورٹ کو بچانے میں ناکام
+vgetty_etty=لاپتہ یا غیر موجود سیریل ڈیوائس
+vgetty_erings=حلقوں کی گمشدہ یا غلط تعداد
+vgetty_erings2=انگوٹھوں کی تعداد کم سے کم 2 ہونا ضروری ہے
+vgetty_eans=کوئی جوابی طریقہ منتخب نہیں کیا گیا
+vgetty_eclash=سیریل پورٹ$1 پہلے سے استعمال میں ہے
+
+options_title=صوتی میل سرور کے اختیارات
+options_header=تمام سیریل پورٹس کے لئے اختیارات
+options_maxlen=پیغام کی زیادہ سے زیادہ لمبائی
+options_secs=سیکنڈ
+options_minlen=پیغام کی کم از کم لمبائی
+options_silence=پیغامات کے اختتام سے خاموشی کو دور کریں؟
+options_thresh=خاموشی کی دہلیز کی سطح
+options_rgain=ریکارڈنگ حجم کی سطح
+options_tgain=پلے بیک حجم کی سطح
+options_rings=جواب دینے سے پہلے بجتی ہے
+options_perport=ہر سیریل پورٹ کے لئے سیٹ کیا جاسکتا ہے
+options_ans=جواب موڈ
+options_keep=ڈیٹا یا ڈیٹی ایم ایف کوڈ والے پیغامات کو رکھیں؟
+options_light=موصول ہونے کے بعد آٹو جواب لائٹ کو فعال کریں؟
+options_owner=پیغام فائلوں کے لئے یونکس کا مالک
+options_group=میسج فائلوں کے لئے یونکس گروپ
+options_mode=پیغام کی فائلوں کے ل for اجازت
+options_prog=پیغام ریکارڈ کرنے کے بعد
+options_prog0=کچھ نہ کرو
+options_prog1=WAV فارمیٹ میں ای میل کریں
+options_prog2=میسج فائل پر کمانڈ چلائیں
+options_err=صوتی میل کے اختیارات کو بچانے میں ناکام
+options_erings=حلقوں کی گمشدہ یا غلط تعداد
+options_erings2=انگوٹھوں کی تعداد کم سے کم 2 ہونا ضروری ہے
+options_emaxlen=لاپتہ یا زیادہ سے زیادہ پیغام کی لمبائی
+options_eminlen=گمشدہ یا کم سے کم پیغام کی لمبائی
+options_ethresh=لاپتہ یا غلط سکوت کی دہلیز
+options_ergain=گم شدہ یا غلط ریکارڈنگ والیوم کی سطح
+options_ergain2=ریکارڈنگ حجم کی سطح 0 اور 100 کے درمیان ہونی چاہئے
+options_etgain=پلے بیک حجم کی سطح غائب یا غلط
+options_etgain2=پلے بیک حجم کی سطح 0 اور 100 کے درمیان ہونی چاہئے
+options_eemail=لاپتہ یا غلط ای میل پتہ
+options_eprog=چلانے کے لئے لاپتہ یا غیر موجود پروگرام
+options_eowner=میسج فائلوں کے ل Un یونکس کا صارف لاپتہ یا غلط
+options_egroup=میسج فائلوں کے ل Un یونکس گروپ لاپتہ یا غلط
+options_emode=پیغام کی فائلوں کے لئے غائب یا غلط آکٹل اجازتیں
+
+received_title=موصولہ پیغامات
+recieved_desc=آپ کے سرور کے ذریعہ موصول ہونے والے صوتی میل کے پیغامات نیچے درج ہیں۔ کوئی پیغام سننے کے لئے ، پہلے کالم میں تاریخ/وقت پر کلک کریں۔
+received_none=موصولہ وائس میل پیغامات نہیں ملے۔
+received_date=پر موصول ہوا
+received_size=فائل کا ناپ
+received_speed=نمونہ کی شرح
+received_type=آڈیو فارمیٹ
+received_delete=منتخب کردہ پیغامات کو حذف کریں
+received_move=منتخب شدہ کو مبارکباد میں تبدیل کریں
+received_all=تمام منتخب کریں
+received_invert=الٹا انتخاب
+
+listen_efile=غلط پیغام نام کا نام!
+listen_epath=صوتی میل کا پیغام اب موجود نہیں ہے
+
+delete_efile=غلط پیغام نام کا نام!
+
+messages_title=مبارکباد کے پیغامات
+messages_desc=اس صفحے میں سلامی پیغامات کی فہرست ہے جو کالر آپ کے صوتی میل سرور سے رابطہ قائم کرنے پر کھیلا جائے گا۔ اگر آپ کے پاس اس سے کہیں زیادہ ہے تو ، تصادفی منتخب کردہ ایک واحد پیغام استعمال کیا جائے گا۔
+messages_file=فائل کا نام
+messages_none=کوئی مبارکبادی پیغام دستیاب نہیں ہے۔
+messages_updesc=یہ فارم آپ کو ایک اضافی سلامتی پیغام WAV فائل اپ لوڈ کرنے کی اجازت دیتا ہے ، جو آپ کے موڈیم کے ذریعہ استعمال کیلئے منتخب کردہ فارمیٹ میں تبدیل ہوجائے گا۔ اپ لوڈ کردہ WAV کے نمونے کی شرح موصولہ پیغامات کے نمونے کی شرح کے برابر ہونی چاہئے ، جیسا کہ منتخب کردہ فارمیٹ ہونا چاہئے۔
+messages_upload=پیغام اپ لوڈ کریں
+messages_fmt=میں تبدیل
+
+pvfdesc=$1 ،$2 بٹس
+
+upload_err=پیغام شامل کرنے میں ناکام
+upload_emessage=کوئی WAV فائل منتخب نہیں کی گئی ہے
+upload_ewav=WAV فائل میں تبدیلی کرنے میں ناکام :$1
+upload_epvf=RMD فائل بنانے میں ناکام :$1
+upload_esame=پیغام فائل$1 پہلے سے موجود ہے
+
+log_apply=اطلاق شدہ ترتیب
+log_upload=مبارکباد کا پیغام$1 اپ لوڈ کیا
+log_move=تبدیل شدہ$1 موصولہ پیغامات
+log_delete0=حذف شدہ$1 موصولہ پیغامات
+log_delete1=$1 مبارکباد کے پیغامات کو حذف کردیا گیا
+log_options=تبدیل شدہ صوتی میل کے اختیارات
+log_vgetty_create=سیریل پورٹ$1 شامل کر دیا گیا
+log_vgetty_modify=ترمیم شدہ سیریل پورٹ$1
+log_vgetty_delete=حذف شدہ سیریل پورٹ$1
+
+email_subject=صوتی میل کا پیغام
+email_body=صوتی میل کا پیغام$1 بذریعہ$2 موصول ہوا۔

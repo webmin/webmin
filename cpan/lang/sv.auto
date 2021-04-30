@@ -1,0 +1,70 @@
+index_sub=submoduler
+index_ver=Version
+index_forcecpan=Installera alltid den senaste versionen från källan
+index_pversion=Perl-version $1 
+index_delete=Avinstallera moduler
+index_upgrade=Uppgradera moduler
+index_recs=Följande Perl-moduler rekommenderas för installation av Webmin :
+index_user=$1 (används av $2)
+index_recsok=Installera valda moduler
+index_recsgot=Alla följande Perl-moduler som rekommenderas av Webmin är installerade : $1 
+index_ezone=Perl verkar delas med den globala zonen, så moduler kan inte installeras här. De måste istället installeras i den globala zonen.
+index_none=Inga installerade Perl-moduler hittades på ditt system.
+index_tabmods=Befintliga moduler
+index_tabinstall=Installera modulen
+index_tabsuggest=Föreslagna moduler
+index_allmods2=Saknade moduler som används av Webmin
+index_wantmods=Moduler att installera
+
+download_mods=Modulnamn
+download_pres=Förutsättningar
+download_eisperl=Modul $1 är en del av standard Perl-distributionen
+download_ecpangz=URL $1 är inte CPAN-modullistan. Kontrollera modulkonfigurationen.
+download_envs=<tt>Makefile.PL</tt> miljövariabler
+download_name=namn
+download_value=Värde
+download_emodname=Ingen modul att installera angavs
+download_need=Hämtar saknade förkrav
+download_missing=$1 -moduler saknas
+download_nomissing=Allt installerat
+download_ebuild=En eller flera av Perl-modulerna behöver $1 för att byggas, men denna Perl-modul är inte installerad.
+download_yum=Installera Perl-modul $1 från paket $2 ..
+download_missingok=Moduler saknas i CPAN
+download_fallback=Vissa moduler kunde inte installeras från paket, utan försökte installationen från källan istället ..
+
+install_doing_0=Gör $1 ..
+install_doing_1=Tillverkning och testning av $1 ..
+install_doing_2=Skapa och installera $1 ..
+install_doing_3=Skapa, testa och installera $1 ..
+install_err2=Du kan också installera modulen från CPAN med kommandot $1.
+install_needunlink=Du kan försöka installera igen genom att gå tillbaka till föregående sida och välja olika alternativ. Annars <a href='$1'>klicka här för att ta bort de tillfälliga paketfilerna</a> för att spara diskutrymme.
+
+cpan_search=Hitta moduler som heter
+cpan_match=Moduler som matchar $1 ..
+cpan_none=Inga matchningar funna.
+
+edit_subs=submoduler
+edit_none=Ingen tillgänglig
+edit_return=modulinformation
+edit_uninstall=Avinstallera modul och undermoduler
+edit_upgrade=Uppgradera modulen från CPAN
+edit_method=Installerad från
+edit_rpm=RPM-paket $1 
+edit_debian=Debian-paketet $1 
+edit_manual=Manuell installation av Perl-modulen
+
+uninstall_title=Avinstallera modulen
+uninstall_rusure=Är du säker på att du vill avinstallera Perl-modulen $1 ? Följande filer kommer att raderas :
+uninstall_rusure2=Är du säker på att du vill avinstallera Perl-modulen $1 och undermodul (er) $2 ? <br> Följande filer kommer att raderas :
+uninstall_ok=Avinstallera nu
+uninstall_rpm=Modulen tas bort genom att avinstallera paketet $1 RPM.
+uninstall_debian=Modulen tas bort genom att avinstallera Debian-paketet $1.
+uninstall_err=Det gick inte att avinstallera modulen
+
+delete_efile=Ogiltig paketfil!
+
+uninstalls_title=Avinstallera moduler
+uninstalls_err=Det gick inte att avinstallera moduler
+uninstalls_enone=Ingen vald
+uninstalls_emod=$1 misslyckades : $2 
+uninstalls_rusure=Är du säker på att du vill avinstallera de valda $1 -modulerna? $2 undermoduler och $3 filer kommer att tas bort.

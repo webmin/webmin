@@ -1,0 +1,129 @@
+index_title=Penapis Mail Procmail
+index_procmail=Penapis mel Procmail
+index_desc_other=Tindakan procmail di bawah dari $1 akan diterapkan ke e-mel <b>semua</b> yang dihantar kepada pengguna pada sistem anda. Walau bagaimanapun, mereka hanya akan digunakan jika Procmail dipasang dan pelayan mel anda dikonfigurasikan untuk menggunakannya.
+index_mserr=Amaran - sebarang peraturan yang ditakrifkan di bawah tidak akan digunakan : $1 
+index_action=Tindakan untuk diambil
+index_conds=Syarat-syarat
+index_move=Pindah
+index_ba=Tambah
+index_act6=Tetapkan pemboleh ubah $1 
+index_act5=Jalankan blok kondisional
+index_act4=Feed ke program $1 
+index_act3=Teruskan ke $1 
+index_act2=Tulis kepada maildir $1 
+index_act1=Tulis ke folder MH $1 
+index_act0=Tambah ke fail $1 
+index_noconds=Sentiasa laksanakan tindakan
+index_re=Perlawanan regexp $1 
+index_nre=Tidak sepadan dengan regexp $1 
+index_shell=Menilai arahan $1 
+index_exit=Keluar status perintah $1 
+index_lt=Saiz ialah < $1 
+index_gt=Saiz ialah> $1 
+index_add=Tambah tindakan penapis baru.
+index_eadd=Tambah tetapan pembolehubah baru.
+index_badd=Tambah blok bersyarat baru.
+index_iadd=Tambah fail termasuk baru.
+index_none=Tiada tindakan Procmail yang telah dikonfigurasi lagi.
+index_return=senarai tindakan
+index_env=Tetapkan pembolehubah $1 hingga $2 
+index_include=Proses termasuk fail $1 
+index_man=Secara automatik Edit Konfigurasi
+index_mandesc=Terus mengedit fail konfigurasi Procmail secara langsung, untuk membuat peraturan, pemboleh ubah dan blok anda sendiri.
+index_ecmd=Program Procmail $1 tidak dijumpai pada sistem anda. Sama ada ia tidak dipasang, atau konfigurasi modul <a href='$2'></a> tidak betul.
+index_delete=Padam Tindakan Terpilih
+
+edit_title2=Edit Tindakan
+edit_title1=Buat Tindakan
+edit_header1=Butiran tindakan penghantaran
+edit_header2=Syarat tindakan
+edit_action=Mod penghantaran
+edit_block=Kod Procmail untuk dilaksanakan
+edit_amode_0=Tambahkan ke fail
+edit_amode_1=Tulis kepada folder MH
+edit_amode_2=Tulis kepada maildir
+edit_amode_3=Teruskan untuk alamat
+edit_amode_4=Makan ke program
+edit_amode_6=Tetapkan pembolehubah
+edit_flag_H=Memohon syarat untuk pengepala
+edit_flag_B=Memohon syarat kepada badan
+edit_flag_D=Padanan sensitif kes
+edit_flag_h=Tajuk utama ke destinasi
+edit_flag_b=Badan suapan ke destinasi
+edit_flag_c=Teruskan memproses walaupun keadaan sepadan
+edit_flag_w=Tunggu program tindakan selesai, dan semak keputusan
+edit_flag_W=Tunggu program tindakan selesai, tetapi abaikan keputusan
+edit_flag_i=Abaikan menulis ralat semasa penghantaran
+edit_flag_r=Tulis surat dalam mod mentah
+edit_flag_f=Program tindakan adalah penapis
+edit_lockfile=Fail kunci penghantaran
+edit_cmode_re=Memadankan ungkapan biasa
+edit_cmode_nre=Tidak sepadan dengan ungkapan biasa
+edit_cmode_shell=Menilai output arahan
+edit_cmode_exit=Semak status keluar arahan
+edit_cmode_lt=Mail lebih kecil daripada
+edit_cmode_gt=Mel adalah lebih besar daripada
+edit_conddesc=Untuk tindakan di atas yang akan dijalankan, semua syarat di bawah mesti sepadan. Sekiranya tidak ada syarat, tindakan akan sentiasa dilaksanakan.
+edit_none=Tiada
+edit_lock=Fail spesifik
+edit_ctype=Jenis keadaan
+edit_cvalue=Ungkapan atau arahan yang kerap
+
+save_err=Gagal menyimpan tindakan
+save_eaction_0=Fail yang hilang untuk dilampirkan
+save_eaction_1=Folder MH hilang untuk menulis ke
+save_eaction_2=Maildir hilang untuk menulis kepada
+save_eaction_3=Alamat hilang untuk diteruskan
+save_eaction_4=Program yang hilang untuk memberi makan
+save_eaction_6=Pembolehubah yang hilang untuk ditetapkan
+save_eactionvar=Pembolehubah untuk tetapkan mesti dimasukkan seperti NAME = nilai
+save_elockfile=Nama fail kunci hilang
+save_esize=Saiz e-mel yang hilang atau tidak sah untuk keadaan $1 
+save_ere=Ungkapan biasa yang hilang untuk keadaan $1 
+save_eshell=Perintah hilang untuk keadaan $1 
+
+env_title1=Buat Pembolehubah
+env_title2=Edit Variabel
+env_header=Pembolehubah persekitaran Procmail
+env_name=Nama berubah
+env_value=Nilai
+env_err=Gagal menyimpan pembolehubah
+env_ename=Nama pembolehubah hilang atau tidak sah
+
+inc_title1=Tambah Sertakan Fail
+inc_title2=Edit Sertakan Fail
+inc_header=Termasuk fail peraturan procmail
+inc_inc=Fail termasuk
+inc_einc=Tidak termasuk fail yang dimasukkan
+
+config_eline=Baris tidak diketahui $1 dalam $2 : $3 
+
+manual_title=Edit Konfigurasi
+manual_desc=Halaman ini boleh digunakan untuk mengedit fail konfigurasi Procmail secara manual $1. Berhati-hati, kerana tiada pemeriksaan sintaks akan dilakukan.
+manual_edata=Tiada data yang dibekalkan oleh penyemak imbas anda!
+
+log_create_rec=Resipi yang dicipta kepada $1 
+log_delete_rec=Resipi dipadamkan ke $1 
+log_modify_rec=Resipi diubahsuai ke $1 
+log_delete_recs=Resit $1 dibuang
+log_act5=laksanakan blok bersyarat
+log_act4=suapan untuk progam $1 
+log_act3=ke hadapan untuk $1 
+log_act2=tulis kepada maildir $1 
+log_act1=tulis ke folder MH $1 
+log_act0=tambah fail $1 
+log_create_env=Pembolehubah persekitaran yang dibuat $1 
+log_modify_env=Pembolehubah persekitaran diubahsuai $1 
+log_delete_env=Pembolehubah persekitaran yang dipadam $1 
+log_create_inc=Dibuat termasuk fail $1 
+log_modify_inc=Diubah suai termasuk fail $1 
+log_delete_inc=Dihapus termasuk fail $1 
+log_manual=Konfigurasi disunting secara manual
+log_up=Memindahkan kemasukan ke atas
+log_down=Memindahkan entri ke bawah
+
+delete_err=Gagal memadamkan tindakan
+delete_enone=Tiada yang dipilih
+
+check_epostfix=Procmail tidak didayakan dalam konfigurasi Postfix anda. Fail konfigurasi <tt>$2</tt> mestilah mempunyai set <tt>$1</tt> kepada <tt>$3</tt>.
+check_esendmail=Sendmail bukan persediaan untuk menggunakan Procmail untuk penghantaran tempatan. Ini boleh dikonfigurasikan dalam modul <a href='$1'>Pelayan Mel Sendmail</a> Webmin.

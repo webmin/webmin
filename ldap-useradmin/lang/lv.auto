@@ -1,0 +1,103 @@
+index_title=LDAP lietotāji un grupas
+index_ebase=Jūsu sistēmā netika atrasts LDAP klienta konfigurācijas fails, tāpēc <a href='$1'>moduļa konfigurēšanas</a> lapā ir jāiestata lietotāju un grupu bāzes.
+index_eperl=Modulis $1 Perl, kas nepieciešams šim modulim, nav instalēts vai nedarbojas pareizi. <a href='$2'>Noklikšķiniet šeit</a>, lai to lejupielādētu un instalētu tūlīt.
+index_eperl2=Kļūda, par kuru Perls ziņoja, mēģinot ielādēt moduli, bija :
+index_eldap=$1. Noklikšķiniet šeit, lai pielāgotu <a href='$2'>moduļa konfigurāciju</a>.
+index_eschema=Webmin ir izveidojis savienojumu ar LDAP serveri, bet neizdevās atnest shēmu. Pārliecinieties, vai <a href='$1'>LDAP serverī</a> nav liegta pieeja.
+index_eimap=$1. Varbūt jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_emd5=Šis modulis ir <a href='$1'>konfigurēts</a>, lai parolēm izmantotu MD5 šifrēšanu, taču modulis $2 Perl nav instalēts. <a href='$3'>Noklikšķiniet šeit</a>, lai lejupielādētu un instalētu moduli $2.
+index_eslappasswd=Šis modulis ir <a href='$1'>konfigurēts</a>, lai parolēm izmantotu LDAP MD5 šifrēšanu, bet paroles šifrēšanai izmantotā programma <tt>$2</tt> nav instalēta.
+index_eusearch=Neizdevās meklēt lietotājus zem $1 : $2 
+index_uadd=Pievienojiet jaunu LDAP lietotāju.
+index_gadd=Pievienojiet jaunu LDAP grupu.
+index_unone=Neviens LDAP lietotājs netika atrasts zem $1.
+index_gnone=Neviena LDAP grupa netika atrasta zem $1.
+index_return=lietotāju saraksts
+index_greturn=grupu saraksts
+index_egsearch=Neizdevās meklēt grupas zem $1 : $2 
+index_samba=Samba?
+index_cyrus=IMAP?
+index_users=LDAP lietotāji
+index_groups=LDAP grupas
+
+imap_econn=Neizdevās izveidot savienojumu ar IMAP serveri $1 
+imap_elogin=Neizdevās pieteikties IMAP serverī $1 kā $2 : $3 
+conn_eldap_host=Jūsu sistēmā netika atrasts LDAP klienta konfigurācijas fails, tāpēc LDAP serveris jāiestata Moduļa konfigurācijas lapā
+conn_elogin=Jūsu sistēmā netika atrasts LDAP klienta konfigurācijas fails, tāpēc LDAP pieteikšanās ir jāiestata Moduļa konfigurācijas lapā
+conn_efile_open=Nevarēja atvērt LDAP saistīšanas akreditācijas datu failu:
+
+uedit_cap=Lietotāja iespējas
+uedit_samba=Samba pieteikšanās?
+uedit_cyrus=IMAP servera pieteikšanās?
+uedit_dn=Lietotāja LDAP DN
+uedit_classes=LDAP objektu klases
+uedit_alias=Pasta aizstājvārdi
+uedit_fields=Papildu LDAP lauki
+uedit_firstname=Vārds
+uedit_lastname=Uzvārds
+uedit_raw=LDAP atribūti
+uedit_return=lietotāja informācija
+uedit_quota=IMAP kvota
+uedit_unquota=Nemaini
+uedit_sambapassopts=Samba paroles opcijas
+uedit_sambapwdlastset=Pēdējā paroles atjaunināšana
+uedit_sambapwdcanchange=Parole var mainīties
+uedit_sambabadpasswordcount=Nepareizs paroļu skaits
+uedit_sambaacctflags=Kontu karodziņi
+
+usave_eadd=Neizdevās pievienot lietotāju LDAP datu bāzei : $1 
+usave_emod=Neizdevās modificēt lietotāju LDAP datu bāzē : $1 
+usave_emoddn=Neizdevās pārdēvēt lietotāju LDAP datu bāzē : $1 
+usave_egroupmod=Neizdevās pārveidot grupu $1 LDAP datu bāzē : $2 
+usave_edelete=Neizdevās izdzēst lietotāju no LDAP datu bāzes : $1 
+usave_eicreate=Neizdevās izveidot lietotāju
+usave_eiacl=Neizdevās piešķirt tiesības administratoram
+usave_eimap=Lietotājs tika veiksmīgi saglabāts LDAP datu bāzē, bet notika IMAP kļūda: $1 : $2 
+usave_eisub=Neizdevās abonēt lietotāju mapei $1 
+usave_eiquota=Neizdevās iestatīt IMAP kvotu
+usave_eifolder=Neizdevās izveidot mapi $1 
+usave_eilogin=Neizdevās pieteikties kā jaunam lietotājam
+usave_ecyruspass=Aktivizējot IMAP, jāievada lietotāja parastā parole vai jāizvēlas opcija Nav nepieciešama parole.
+usave_ebook=Neizdevās izveidot adrešu grāmatas ierakstu : $1 
+usave_emodbook=Neizdevās modificēt adrešu grāmatas ierakstu : $1 
+usave_emodbookdn=Neizdevās pārdēvēt adrešu grāmatas ierakstu : $1 
+usave_egone=Lietotājs vairs nepastāv!
+usave_ex86=Šo moduli nevar izmantot, lai iestatītu paroli Samba lietotājam sistēmās, kas nav Intel, jo tas ir atkarīgs no apkopotās x86 programmas.
+usave_esamba=Šo moduli nevar izmantot, lai iestatītu paroli Samba lietotājam, jo nav instalēts Samba Windows failu koplietošanas modulis.
+usave_ealiasdup=Pseidonīmu $1 jau izmanto $2 
+usave_eattrdup=Objekts $1 jau izmanto $2 $3 
+usave_eattrdupu=Lietotājs $1 jau izmanto $2 $3 
+usave_eattrdupg=Grupa $1 jau izmanto $2 $3 
+usave_ereal=Trūkst īstā vārda
+usave_equota=Trūkst vai nav derīga IMAP kvota
+
+search_err=$1 meklēšana $2 neizdevās : $3 
+
+gedit_dn=Grupas LDAP DN
+gedit_return=grupas informācija
+gedit_cap=Grupas iespējas
+gedit_samba=Samba grupa?
+
+gsave_egone=Grupas vairs nav!
+gsave_edelete=Neizdevās izdzēst grupu no LDAP datu bāzes : $1 
+gsave_eadd=Neizdevās pievienot grupu LDAP datu bāzei : $1 
+gsave_emod=Neizdevās modificēt grupu LDAP datu bāzē : $1 
+gsave_emoddn=Neizdevās pārdēvēt grupu LDAP datu bāzē : $1 
+
+gdel_group=Notiek LDAP grupas ieraksta dzēšana.
+
+udel_pass=Notiek LDAP lietotāja ieraksta dzēšana.
+udel_book=Notiek dzēšana no adrešu grāmatas ..
+udel_imap=Notiek IMAP mapes dzēšana.
+udel_warnimap=Dzēšot mājas direktoriju, esošā pasta pastkaste tiks izdzēsta!
+udel_failed=.. neizdevās!  : $1 
+
+raw_title=LDAP atribūti
+raw_name=Atribūta nosaukums
+raw_value=Vērtības
+raw_for=$1 
+
+batch_samba=Vai izveidot Samba kontu jauniem lietotājiem?
+batch_imap=Vai izveidot IMAP kontu jauniem lietotājiem?
+batch_descafter3=Līnijās <b>izveidot</b> un <b>modificēt</b> jūs pēc izvēles varat pievienot papildu laukus, kas satur LDAP atribūtus <i>name</i> = <i>vērtība</i> tiks piešķirts jaunajiem vai modificētajiem lietotājiem.
+batch_eattr=Nederīgs LDAP atribūts rindā $1 : $2 

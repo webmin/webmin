@@ -1,0 +1,2 @@
+desc_ro=Detectorul de intruziune Fail2Ban
+longdesc_ro=Fail2ban vă protejează sistemul împotriva atacurilor de forță brută detectându-le și blocând IP-urile sursă ale acestora.

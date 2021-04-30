@@ -1,0 +1,34 @@
+index_manynew=Dostępnych jest $1 pakietów do instalacji. Użyj pola wyszukiwania, aby znaleźć te, które chcesz zainstalować.
+index_tabpkgs=Aktualizacje pakietów
+index_tabscheds=Zaplanowane aktualizacje
+index_tabsrepos=Repozytoria paczek
+index_scheddesc=Tego formularza można użyć do automatycznego instalowania aktualizacji pakietów zgodnie z regularnym harmonogramem.
+index_reposdesc=Ta strona pozwala skonfigurować, które repozytoria będą używane dla nowych lub zaktualizowanych pakietów.
+index_reposname=Nazwa repozytorium
+index_reposenabled=Włączony?
+index_reposurl=URL pakietu
+index_reposdisable=Wyłącz repozytoria
+index_reposenable=Włącz repozytoria
+index_reposdelete=Usuń repozytoria
+index_repoheader=Nowe opcje repozytorium pakietów
+
+update_title2=Zainstaluj pakiety
+update_enone=Nie wybrano żadnych pakietów
+
+log_enable_repos=Włączono repozytoria pakietów $1 
+log_disable_repos=Wyłączono repozytoria pakietów $1 
+log_delete_repos=Usunięte repozytoria pakietów $1 
+log_enable_repo=Włączone repozytorium pakietów $1 
+log_disable_repo=Wyłączone repozytorium pakietów $1 
+log_delete_repo=Usunięte repozytorium pakietów $1 
+log_create_repo=Utworzono repozytorium pakietów $1 
+
+repos_err_disable=Nie udało się wyłączyć repozytoriów
+repos_err_enable=Nie udało się włączyć repozytoriów
+repos_err_delete=Nie udało się usunąć repozytoriów
+repos_err_create=Nie udało się utworzyć repozytorium
+repos_ebutton=Nie kliknięto żadnego przycisku!
+repos_enone=Nie wybrano
+repos_title=Usuń repozytoria
+repos_rusure=Czy na pewno chcesz usunąć $1 wybranych repozytoriów pakietów? Zainstalowane z nich pakiety będą nadal dostępne, ale mogą nie być aktualizowane.
+repos_ok=Usuń teraz

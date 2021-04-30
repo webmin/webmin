@@ -1,0 +1,58 @@
+index_title=SMART驱动器状态
+index_ecmd=在系统上找不到SMART控制命令 $1，或者在<a href='$2'>模块配置</a>中未正确设置。必须先安装它，然后才能使用该模块。
+index_ecmd2=命令 $1似乎不是SMART控制命令。必须在<a href='$2'>模块配置</a>中正确设置它，然后才能使用该模块。
+index_version=SMARTsuite版本 $1
+index_show=显示驱动器状态：
+index_ok=节目
+index_eidescsi=在您的系统上找不到IDE，SCSI或SATA驱动器。
+index_drive=驱动器 $1的状态
+index_drivesub=驱动器 $1，磁盘 $2的状态
+index_desc=位置
+index_size=驱动器大小
+index_model=制作和建模
+index_support=支持SMART吗？
+index_enabled=启用SMART？
+index_check=通过了驱动器检查？
+index_short=简短的自测
+index_ext=扩展自测
+index_data=数据收集测试
+index_errors=记录错误
+index_ecount=检测到 $1个错误
+index_attrs=其他SMART属性
+index_raw=完整的SMART状态报告
+index_return=模块索引
+index_family=模特家族
+index_serial=序列号
+index_capacity=容量
+index_norm=标准化：
+
+monitor_type=智能驱动器检查
+monitor_type2=SSD磨损
+monitor_drive=开车检查
+monitor_errors=还检查错误日志吗？
+monitor_errorsinc=是的，但仅在错误计数增加时发出警报
+monitor_other=其他 ..
+monitor_edrive=缺少驱动器或驱动器无效
+monitor_nosuch=没有这样的驱动器
+monitor_nosmart=不支持SMART
+monitor_errorsfound=报告了 $1个错误
+monitor_errorsinced=错误从 $2增加到 $1
+monitor_wearlevel=如果磨损水平降至以下则失败
+monitor_ewearlevel=无效的磨损水平百分比
+monitor_nowearout=驱动器未报告SSD磨损指示
+monitor_wornout=磨损程度已降至 $1
+
+short_title=简短的自测
+short_doing=开始对 $1..进行简短的自检
+short_failed=..失败了！
+short_ok=..测试开始OK。有关结果，请参见模块主页上的驱动器状态。
+
+ext_title=扩展自测
+ext_doing=开始对 $1..进行扩展的自检
+ext_failed=..失败了！
+ext_ok=..测试开始OK。有关结果，请参见模块主页上的驱动器状态。
+
+data_title=数据收集测试
+data_doing=在 $1上开始脱机数据收集 ..
+data_failed=..失败了！
+data_ok=..收集开始正常。有关结果，请参见模块主页上的驱动器状态。

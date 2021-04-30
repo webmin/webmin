@@ -24,7 +24,7 @@ if (!defined($get_config_cache{$file})) {
 	local @rv = ( );
 	local $lnum = 0;
 	local $section;
-	open(CONFIG, $file) || return undef;
+	open(CONFIG, "<".$file) || return undef;
 	if ($fmt eq "ini") {
 		# Classic php.ini format
 		while(<CONFIG>) {
@@ -117,13 +117,13 @@ else {
 	}
 if (defined($value) && $old) {
 	# Update existing value
-	$lref = &read_file_lines($old->{'file'});
+	$lref = &read_file_lines_as_user($old->{'file'});
 	$lref->[$old->{'line'}] = $newline;
 	$old->{'value'} = $value;
 	}
 elsif (defined($value) && !$old && $cmt) {
 	# Update existing commented value
-	$lref = &read_file_lines($cmt->{'file'});
+	$lref = &read_file_lines_as_user($cmt->{'file'});
 	$lref->[$cmt->{'line'}] = $newline;
 	$cmt->{'value'} = $value;
 	$cmt->{'enabled'} = 1;
@@ -143,13 +143,13 @@ elsif (defined($value) && !$old && !$cmt) {
 				"section $newsection");
 		$lastfile = $last->{'file'};
 		$lastline = $last->{'line'};
-		$lref = &read_file_lines($lastfile);
+		$lref = &read_file_lines_as_user($lastfile);
 		}
 	else {
 		# Just add at the end
 		$lastfile = @$conf ? $conf->[0]->{'file'} : undef;
 		$lastfile || &error("Don't know which file to add to");
-		$lref = &read_file_lines($lastfile);
+		$lref = &read_file_lines_as_user($lastfile);
 		$lastline = scalar(@$lref);
 		}
 
@@ -166,14 +166,14 @@ elsif (defined($value) && !$old && !$cmt) {
 	}
 elsif (!defined($value) && $old && $cmt) {
 	# Totally remove a value
-	$lref = &read_file_lines($old->{'file'});
+	$lref = &read_file_lines_as_user($old->{'file'});
 	splice(@$lref, $old->{'line'}, 1);
 	@$conf = grep { $_ ne $old } @$conf;
 	&renumber($conf, $old->{'line'}, -1);
 	}
 elsif (!defined($value) && $old && !$cmt) {
 	# Turn a value into a comment
-	$lref = &read_file_lines($old->{'file'});
+	$lref = &read_file_lines_as_user($old->{'file'});
 	$old->{'enabled'} = 0;
 	$lref->[$old->{'line'}] = "; ".$lref->[$old->{'line'}];
 	}
@@ -230,7 +230,12 @@ foreach my $ai (split(/\t+/, $access{'php_inis'})) {
 	local ($f, $d) = split(/=/, $ai);
 	push(@rv, [ $f, $d || $f ]);
 	}
-if (&foreign_installed("virtual-server")) {
+foreach my $i (@rv) {
+	if (-d $i->[0] && -r "$i->[0]/php.ini") {
+		$i->[0] = "$i->[0]/php.ini";
+		}
+	}
+if ($access{'global'} && &foreign_installed("virtual-server")) {
 	&foreign_require("virtual-server");
 	foreach my $v (&virtual_server::list_available_php_versions()) {
 		if ($v->[0]) {
@@ -329,17 +334,30 @@ else {
 	}
 }
 
+# read_file_lines_as_user(file, ...)
+sub read_file_lines_as_user
+{
+local @args = @_;
+if ($access{'user'} && $access{'user'} ne 'root' && $< == 0) {
+	return &eval_as_unix_user(
+		$access{'user'}, sub { &read_file_lines(@args) });
+	}
+else {
+	return &read_file_lines(@args);
+	}
+}
+
 # flush_file_lines_as_user(file)
 # Writes out a file as the Unix user configured in this module's ACL
 sub flush_file_lines_as_user
 {
-local ($file) = @_;
+local ($file, $eof, $ignore) = @_;
 if ($access{'user'} && $access{'user'} ne 'root' && $< == 0) {
 	&eval_as_unix_user($access{'user'}, 
-		sub { &flush_file_lines($file) });
+		sub { &flush_file_lines($file, $eof, $ignore) });
 	}
 else {
-	&flush_file_lines($file);
+	&flush_file_lines($file, $eof, $ignore);
 	}
 }
 

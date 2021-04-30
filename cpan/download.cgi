@@ -125,7 +125,7 @@ elsif ($in{'source'} == 3) {
 		print "<p>\n";
 
 		# Make sure it is valid
-		open(PFILE, $packages_file);
+		open(PFILE, "<$packages_file");
 		read(PFILE, $two, 2);
 		close(PFILE);
 		if ($two ne "\037\213") {
@@ -204,7 +204,7 @@ else {
 
 # Check if the file looks like a perl module
 foreach $pfile (@pfile) {
-	open(TAR, "( gunzip -c $pfile | tar tf - ) 2>&1 |");
+	open(TAR, "( gunzip -c ".quotemeta($pfile)." | tar tf - ) 2>&1 |");
 	while($line = <TAR>) {
 		if ($line =~ /^\.\/([^\/]+)\/(.*)$/ ||
 		    $line =~ /^([^\/]+)\/(.*)$/) {
@@ -219,7 +219,8 @@ foreach $pfile (@pfile) {
 	close(TAR);
 	if ($?) {
 		unlink(@pfile) if ($need_unlink);
-		&install_error(&text('download_etar', "<tt>$tar</tt>"));
+		&install_error(&text('download_etar',
+			"<tt>".&html_escape($tar)."</tt>"));
 		}
 	}
 if (@dirs == 0 || $file{'Makefile.PL'}+$file{'Build.PL'} < @dirs) {
@@ -273,7 +274,7 @@ foreach $d (@dirs) {
 		system("$cmd >/dev/null 2>&1 </dev/null");
 		}
 	local @prereqs;
-	open(MAKEFILE, "$mtemp/$d/Makefile");
+	open(MAKEFILE, "<$mtemp/$d/Makefile");
 	while(<MAKEFILE>) {
 		last if /MakeMaker post_initialize section/;
 		if (/^#\s+PREREQ_PM\s+=>\s+(.+)/) {

@@ -1,0 +1,37 @@
+index_title=משרות אשכול Cron
+index_add=צור עבודת cron אשכול חדשה.
+index_none=לא הוגדרו משרות cron מצרר.
+index_servers=הפעל בשרתים
+index_return=רשימת עבודות אשכול cron
+index_more=$1 יותר ..
+index_run=רוץ עכשיו ..
+index_actions=פעולות
+
+edit_title=ערוך את Cluster Cron Job
+create_title=צור ג'ון Cruster Job
+edit_servers=הפעל בשרתים
+edit_group=חברים ב- $1 
+edit_this=שרת זה
+edit_all=&lt;כל המארחים&gt;
+edit_emissing=תפקיד Cron כבר לא קיים!
+
+save_err=שמירת עבודת cron באשכול נכשלה
+
+exec_title=ביצוע אשכול Cron Job
+exec_cmd=מריץ $1 בשרתים שנבחרו ..
+exec_failed=ההפעלה של $1 : $2 נכשלה
+exec_success=תפוקה מ- $1 ..
+exec_nohosts=אין מארחים שנבחרו לרוץ, או קבוצות שנבחרו אינם מכילים מארחים שמישים.
+
+log_run=רץ $1 על $2 שרתי
+log_run_l=רץ $1 על $2 
+log_create=יצר עבודת cron באשכול עבור $1 
+log_create_l=יצר משימת cron cluster $2 עבור $1 
+log_modify=עבודת cron אשכול שונה עבור $1 
+log_modify_l=משימת cron אשכול שונה $2 עבור $1 
+log_delete=העבודה של cron באשכול נמחקה עבור $1 
+log_delete_l=העבודה של cron באשכול $2 עבור $1 נמחקה
+log_deletes=נמחקו $1 עבודות cron באשכול
+
+delete_err=מחיקת עבודות cron באשכול נכשלה
+delete_enone=לא נבחר

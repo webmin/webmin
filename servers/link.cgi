@@ -183,7 +183,9 @@ else {
 	}
 
 # read back the rest of the page
-if ($header{'content-type'} =~ /text\/html/ && !$header{'x-no-links'}) {
+if ($header{'content-type'} &&
+    $header{'content-type'} =~ /text\/html/ &&
+    !$header{'x-no-links'}) {
 	# Fix up HTML
 	while($_ = &read_http_connection($con)) {
 		s/src='(\/[^']*)'/src='$url$1'/gi;
@@ -210,7 +212,9 @@ if ($header{'content-type'} =~ /text\/html/ && !$header{'x-no-links'}) {
 			}
 		}
 	}
-elsif ($header{'content-type'} =~ /text\/css/ && !$header{'x-no-links'}) {
+elsif ($header{'content-type'} &&
+       $header{'content-type'} =~ /text\/css/ &&
+       !$header{'x-no-links'}) {
 	# Fix up CSS
 	while($_ = &read_http_connection($con)) {
 		s/url\("(\/[^"]*)"\)/url\("$url$1"\)/gi;
@@ -219,7 +223,8 @@ elsif ($header{'content-type'} =~ /text\/css/ && !$header{'x-no-links'}) {
 	}
 else {
 	# Just pass through
-	while(my $buf = &read_http_connection($con, 1024)) {
+	my $bs = &get_buffer_size();
+	while(my $buf = &read_http_connection($con, $bs)) {
 		print $buf;
 		}
 	}

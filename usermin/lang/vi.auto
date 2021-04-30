@@ -1,0 +1,500 @@
+index_title=Cấu hình Usermin
+index_econfig=Thư mục $1 không tồn tại trên hệ thống của bạn hoặc không phải là thư mục cấu hình Usermin. Có thể Usermin chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+index_return=Cấu hình Usermin
+index_stop=Ngừng sử dụng
+index_stopmsg=Nhấp vào nút này để dừng máy chủ Usermin chạy trên hệ thống của bạn. Sau khi dừng lại, sẽ không có người dùng nào có thể đăng nhập vào nó.
+index_start=Bắt đầu sử dụng
+index_startmsg=Nhấp vào nút này để khởi động máy chủ Usermin trên hệ thống của bạn. Cho đến khi nó được bắt đầu, người dùng sẽ không thể đăng nhập.
+index_version=Sử dụng $1 
+index_boot=Bắt đầu lúc khởi động
+index_bootmsg=Thay đổi tùy chọn này để kiểm soát xem Usermin có được khởi động khi khởi động hay không. Nếu nó hiện không được khởi động khi khởi động và Có được chọn, một tập lệnh init mới sẽ được tạo.
+index_install=Webmin có thể tự động tải xuống và cài đặt phiên bản Usermin mới nhất cho bạn. Tuy nhiên, điều này không nên được thực hiện nếu chương trình đã được cài đặt và đang sử dụng một thư mục cấu hình khác.
+index_rpm=Cài đặt gói RPM Usermin
+index_tgz=Cài đặt gói Usermin tar.gz
+index_deb=Cài đặt gói Debian Usermin
+index_esame=Thư mục cấu hình Usermin $1 được đặt trên trang <a href='$2'>cấu hình mô-đun</a> giống với thư mục của Webmin, không chính xác.
+index_eroot=Thư mục cấu hình Usermin $1 tồn tại, nhưng thư mục gốc của chương trình $2 mà nó đề cập đến thì không! Bạn nên tải xuống và cài đặt lại Usermin theo cách thủ công.
+index_restart=Khởi động lại Usermin
+index_restartmsg=Nhấp vào nút này để bắt đầu lại quy trình máy chủ Usermin. Điều này có thể cần thiết nếu gần đây bạn đã nâng cấp Perl.
+
+access_title=Kiểm soát truy cập IP
+access_desc=Máy chủ Usermin có thể được cấu hình để từ chối hoặc chỉ cho phép truy cập từ một số địa chỉ IP nhất định sử dụng mẫu này. Tên máy chủ (như foo.bar.com) và mạng IP (như 10.254.3.0 hoặc 10.254.1.0/255.255.255.128 hoặc 10.254.1.0/25 hoặc 10.254.1.5-10.254.97.127) cũng có thể được nhập. Bạn nên giới hạn quyền truy cập vào máy chủ của mình đến các địa chỉ đáng tin cậy, đặc biệt nếu có thể truy cập từ Internet. Nếu không, bất cứ ai đoán mật khẩu của bạn sẽ có toàn quyền kiểm soát hệ thống của bạn.
+
+bind_title=Cổng và địa chỉ
+bind_desc2=Biểu mẫu này có thể được sử dụng để thay đổi số cổng mà Usermin nghe hoặc chỉ nghe trên một địa chỉ IP duy nhất trên hệ thống của bạn. Bạn cũng có thể định cấu hình nó để chấp nhận kết nối trên nhiều cổng hoặc để nghe trên một số địa chỉ IP. Lưu ý - trình duyệt web của bạn có thể nhắc bạn đăng nhập lại sau khi thay đổi cổng hoặc địa chỉ ràng buộc.
+bind_erestart=Xảy ra lỗi khi bắt đầu Usermin với cài đặt cổng và địa chỉ mới : $1 
+
+mods_title=Mô-đun Usermin
+umods_title=Mô-đun Usermin
+mods_desc1=Các mô-đun Usermin có thể được thêm vào sau khi cài đặt bằng cách sử dụng biểu mẫu bên phải. Các mô-đun thường được phân phối trong các tệp <tt>.wbm</tt>, mỗi mô-đun có thể chứa một hoặc nhiều mô-đun. Các mô-đun cũng có thể được cài đặt từ các tệp RPM nếu được hệ điều hành của bạn hỗ trợ.
+mods_install=Cài đặt mô-đun
+mods_local=Từ tập tin cục bộ
+mods_uploaded=Từ tập tin tải lên
+mods_ftp=Từ URL ftp hoặc http
+mods_nodeps=Bỏ qua các phụ thuộc mô-đun khi cài đặt
+mods_installok=Cài đặt Module từ tệp
+mods_desc2=Nếu bạn muốn có nhiều bản sao của cùng một mô-đun với các cấu hình khác nhau, biểu mẫu bên phải cho phép bạn sao chép bất kỳ mô-đun hiện có nào. Bản sao sẽ có tên mới, cấu hình mô-đun mới và có thể được cung cấp cho những người dùng khác nhau.
+mods_clone=Mô-đun nhân bản
+mods_cname=Mô-đun để nhân bản
+mods_cnew=Tên mô-đun nhân bản
+mods_ccat=Chỉ định danh mục
+mods_csame=Giống như bản gốc
+mods_cloneok=Mô-đun nhân bản
+mods_desc3=Các mô-đun hiện có có thể được xóa bằng cách sử dụng mẫu dưới đây. Khi một mô-đun đã bị xóa, nó phải được cài đặt lại trước khi bạn có thể sử dụng lại nó. Một mô-đun không thể bị xóa nếu các mô-đun khác phụ thuộc vào nó.
+mods_delete=Xóa các mô-đun
+mods_deleteok=Xóa các mô-đun đã chọn
+mods_desc4=Các mô-đun đã cài đặt có thể được xuất dưới dạng tệp wbm.gz bằng cách sử dụng mẫu dưới đây. Một tập tin mô-đun sau đó có thể được cài đặt vào một hệ thống khác chạy Usermin.
+
+os_title=Hệ điều hành và môi trường
+os_desc3=Trang này hiển thị hệ điều hành được Usermin phát hiện khi cài đặt và hệ thống hiện được phát hiện. Nếu chúng khác nhau, bạn có thể chọn cập nhật thông tin hệ điều hành của Usermin, điều này có thể cần thiết nếu bạn đã nâng cấp gần đây.
+os_desc2=Bạn cũng có thể thay đổi đường dẫn tìm kiếm được sử dụng bởi Usermin khi chạy các chương trình và đường dẫn thư viện dùng chung được chuyển đến bất kỳ chương trình nào.
+os_usermin=Hệ điều hành theo Usermin
+os_iusermin=Mã hệ điều hành nội bộ được sử dụng bởi Usermin
+os_update=Cập nhật Usermin để sử dụng HĐH được phát hiện
+
+lang_title=Ngôn ngữ
+lang_title2=Ngôn ngữ Usermin
+lang_intro=Trang này cho phép bạn chọn ngôn ngữ Usermin sẽ sử dụng để hiển thị tiêu đề, lời nhắc và tin nhắn
+
+session_title=Xác thực
+session_desc1=Khi được bật, thời gian chờ mật khẩu sẽ bảo vệ máy chủ Usermin của bạn khỏi các cuộc tấn công bẻ khóa mật khẩu mạnh mẽ bằng cách thêm độ trễ mở rộng liên tục giữa mỗi lần đăng nhập thất bại cho cùng một người dùng.
+session_desc2=Khi xác thực phiên được bật, mỗi phiên của người dùng đã đăng nhập sẽ được Usermin theo dõi, giúp người dùng nhàn rỗi có thể tự động đăng xuất. Xin lưu ý rằng việc bật hoặc tắt xác thực phiên có thể buộc tất cả người dùng đăng nhập lại.
+session_remember=Đề nghị nhớ đăng nhập vĩnh viễn?
+session_hostname=Hiển thị tên máy chủ trên màn hình đăng nhập?
+session_realname=Hiển thị tên máy chủ thực sự thay vì tên từ URL?
+session_authmode=Phương pháp xác thực
+session_authmode0=Sử dụng PAM để xác thực, nếu có sẵn
+session_authmode1=Xác thực bằng tệp mật khẩu $1 cột $2 và $3 
+session_authmode2=Sử dụng chương trình xác thực kiểu mực bên ngoài
+session_eauthmode1=Bạn phải nhập một tệp mật khẩu nếu bạn đã chọn tùy chọn đó
+session_eauthmode2=Bạn phải nhập chương trình xác thực bên ngoài nếu bạn đã chọn tùy chọn đó
+session_domain=Tự động thử gắn tên miền vào tên người dùng?
+session_strip=Tự động thử tước tên miền từ tên người dùng?
+session_usermap=Sử dụng tệp ánh xạ tên người dùng
+session_userfmt=Định dạng tệp
+session_userfmt0=Chung ổn định (tên đến địa chỉ)
+session_userfmt1=Virtusertable (địa chỉ để đặt tên)
+session_eusermap=Tệp ánh xạ tên người dùng bị thiếu hoặc không tồn tại
+session_blank=Nhắc người dùng với mật khẩu trống để chọn một lần đăng nhập đầu tiên?
+session_homedir=Tạo thư mục nhà bị thiếu sau khi đăng nhập?
+session_homedir_perms=Quyền cho thư mục mới
+session_ehomedir_perms=Thiếu hoặc không hợp lệ quyền thư mục nhà bát phân
+
+themes_title=Chủ đề Usermin
+themes_desc=Chủ đề kiểm soát sự xuất hiện của giao diện người dùng Usermin, bao gồm các biểu tượng, màu sắc, hình nền và có thể là bố cục của các trang. Hộp lựa chọn bên dưới có thể được sử dụng để chọn một trong những chủ đề được cài đặt trên hệ thống của bạn sẽ là mặc định cho người dùng Usermin.
+themes_sel=Chủ đề hiện tại :
+themes_default=Chủ đề Usermin cũ
+themes_change=Thay đổi
+themes_installdesc=Sử dụng mẫu dưới đây để cài đặt một chủ đề Usermin mới trên hệ thống của bạn. Chủ đề thường được phân phối trong các tệp <tt>.wbt</tt>, nhưng cũng có thể được cài đặt từ các tệp RPM nếu được hệ điều hành của bạn hỗ trợ.
+themes_installok=Cài đặt chủ đề
+themes_err1=Không thể cài đặt chủ đề từ $1 
+themes_efile=Tập tin không tồn tại
+themes_err2=Không thể cài đặt chủ đề đã tải lên
+themes_ebrowser=Trình duyệt của bạn không hỗ trợ tải lên tập tin
+themes_err3=Không thể cài đặt chủ đề từ $1 
+themes_eurl=URL không hợp lệ
+themes_etar=Không phải là tệp chủ đề hợp lệ : $1 
+themes_einfo=Chủ đề $1 thiếu tệp theme.info
+themes_enone=Tệp không xuất hiện để chứa bất kỳ chủ đề
+themes_eextract=Trích xuất thất bại : $1 
+themes_done=Các chủ đề sau đã được cài đặt thành công trên hệ thống của bạn :
+themes_line=$1 trong $2 ($3 kB)
+themes_ecomp=Tệp được nén, nhưng không tìm thấy lệnh $1 trên hệ thống của bạn
+themes_ecomp2=Không thể giải nén tệp : $1 
+themes_egzip=Tệp được nén, nhưng không tìm thấy lệnh $1 trên hệ thống của bạn
+themes_egzip2=Không thể gửi tệp gunzip : $1 
+themes_erpm=Không phải RPM chủ đề Usermin
+themes_eirpm=Cài đặt RPM không thành công : $1 
+themes_ok=Chủ đề đã thay đổi thành công.. chuyển hướng đến trang chỉ mục Webmin.
+themes_delete=Biểu mẫu này có thể được sử dụng để xóa một trong những chủ đề được cài đặt trên hệ thống của bạn hiện không được sử dụng.
+themes_delok=Chủ đề cần xóa :
+
+themes_desc4=Các chủ đề đã cài đặt có thể được xuất dưới dạng tệp wbt.gz bằng cách sử dụng mẫu dưới đây. Một tập tin chủ đề sau đó có thể được cài đặt vào một hệ thống khác chạy Usermin.
+
+configs_ecannot=Bạn không được phép cấu hình mô-đun này
+configs_title=Cấu hình mô đun Usermin
+configs_header=Các mô-đun cấu hình
+configs_title2=Cấu hình mô-đun
+configs_desc=Chọn mô-đun mà bạn muốn cấu hình từ danh sách bên dưới ..
+configs_uheader=Tùy chọn người dùng mặc định cho $1 
+configs_return=Cấu hình mô đun Usermin
+configs_prefs=Người dùng có thể chỉnh sửa tùy chọn?
+configs_sels=Chỉ được chọn ..
+configs_global=Cấu hình mô đun toàn cầu
+configs_globaldesc=Các cài đặt trong biểu mẫu này áp dụng cho tất cả người dùng mô-đun và thường đặt các tùy chọn liên quan đến các chương trình và tệp mà nó sử dụng.
+configs_user=Tùy chọn người dùng mặc định
+configs_userdesc=Các cài đặt trong biểu mẫu này xác định mặc định cho các tùy chọn có thể chỉnh sửa của người dùng cho mô-đun này. Trừ khi bạn chỉ định khác, họ có thể bị người dùng cá nhân vượt quá.
+
+acl_title=Mô-đun có sẵn
+acl_desc=Sử dụng trang này để chọn mô-đun Usermin đã cài đặt hiển thị cho người dùng.
+
+ssl_title=Mã hóa SSL
+ssl_desc1=Máy chủ lưu trữ Usermin đang chạy dường như đã cài đặt mô-đun SSLeay Perl. Sử dụng điều này, Usermin hỗ trợ giao tiếp được mã hóa SSL giữa trình duyệt của bạn và máy chủ. Nếu người dùng đang truy cập máy chủ Usermin của bạn qua Internet, thì bạn chắc chắn nên xem xét sử dụng SSL để ngăn chặn kẻ tấn công chiếm được mật khẩu của họ.
+ssl_desc2=Cảnh báo - chỉ bật hỗ trợ SSL nếu bạn có trình duyệt hỗ trợ SSL và không có yêu cầu chặn tường lửa <tt>https</tt> giữa trình duyệt của bạn và máy chủ Usermin.
+ssl_newkey=Biểu mẫu này có thể được sử dụng để tạo khóa SSL mới cho máy chủ Usermin của bạn.
+ssl_hole=Vì bạn hiện đang sử dụng khóa SSL Usermin mặc định mà mọi người đều có quyền truy cập, nên bạn nên tạo một khóa mới ngay lập tức. Nếu không, kết nối SSL của bạn không an toàn!
+ssl_savekey=Biểu mẫu này cho phép bạn tải lên chứng chỉ và khóa riêng SSL định dạng PEM hiện có cho máy chủ Usermin của bạn để sử dụng.
+ssl_copycert=Sao chép chứng chỉ từ Webmin
+ssl_copycertdesc=Sao chép chứng chỉ SSL, khóa riêng, chứng chỉ CA và các cài đặt khác mà Webmin đang sử dụng.
+
+ca_email=Địa chỉ email
+ca_ou=Phòng ban
+ca_o=Cơ quan
+ca_sp=Tiểu bang
+ca_c=Mã quốc gia
+
+newkey_ok=Tạo thành công khóa SSL sau cho Usermin.
+
+stop_err=Không thể ngăn chặn Usermin
+stop_ekill=Không thể giết tiến trình : $1 
+stop_efile=Đã dừng
+stop_ecannot=Bạn không được phép dừng Usermin
+
+start_err=Không thể bắt đầu Usermin
+start_ecannot=Bạn không được phép bắt đầu Usermin
+
+users_title=Người dùng và nhóm được phép
+users_desc=Usermin có thể được cấu hình để giới hạn những người dùng và nhóm unix nào được phép đăng nhập, sử dụng mẫu này. Để chỉ định tất cả các thành viên chính của một nhóm unix, hãy nhập <tt>@groupname</tt> vào danh sách.
+users_desc2=Để khớp với một loạt các UID, hãy nhập <tt>start-end</tt>, <tt>start -</tt> hoặc <tt>-end</tt> vào danh sách.
+users_header=Kiểm soát truy cập đăng nhập Usermin
+users_all=Cho phép tất cả người dùng
+users_allow=Chỉ cho phép người dùng được liệt kê ..
+users_deny=Từ chối người dùng được liệt kê ..
+users_err=Không thể cập nhật danh sách người dùng
+users_none=Không có người dùng nào được nhập
+users_euser='$1' không phải là tên người dùng hợp lệ
+users_egroup='$1' không phải là tên nhóm hợp lệ
+users_shells=Từ chối người dùng có vỏ không có trong tệp
+users_eshells=Tập tin shell thiếu hoặc không tồn tại
+
+defacl_title=Tùy chọn kiểm soát truy cập
+defacl_desc=Trang này cho phép bạn định cấu hình tùy chọn kiểm soát truy cập khác nhau áp dụng cho các mô-đun và người dùng Usermin. Các tùy chọn này tương tự như các tùy chọn trong Global ACL cho mỗi người dùng trong mô-đun Người dùng Webmin.
+defacl_header=Tùy chọn kiểm soát truy cập cho người dùng Usermin
+defacl_err=Không thể lưu các tùy chọn kiểm soát truy cập
+
+install_err1=Không thể cài đặt mô-đun từ $1 
+install_efile=Tập tin không tồn tại
+install_err2=Không thể cài đặt mô-đun tải lên
+install_ebrowser=Trình duyệt của bạn không hỗ trợ tải lên tập tin
+install_err3=Không thể cài đặt mô-đun từ $1 
+install_eurl=URL không hợp lệ
+install_etar=Không phải là tệp mô-đun hợp lệ : $1 
+install_einfo=Mô-đun $1 thiếu tệp module.info
+install_enone=Tệp không xuất hiện để chứa bất kỳ mô-đun
+install_eos=Mô-đun $1 không hỗ trợ hệ điều hành này ($2 $3)
+install_eusermin=Mô-đun $1 dành cho Webmin, không phải Usermin
+install_ever=Mô-đun $1 yêu cầu phiên bản Usermin $2 trở lên
+install_edep=Mô-đun $1 yêu cầu mô-đun $2 
+install_eperldep=Mô-đun $1 yêu cầu mô-đun Perl $2. <br>Tuy nhiên, bạn có thể có Webmin<a href='$3'> tải xuống và cài đặt </a> mô-đun Perl cho bạn.
+install_eextract=Trích xuất thất bại : $1 
+install_title=Cài đặt mô-đun
+install_desc=Các mô-đun sau đây đã được cài đặt và thêm thành công vào danh sách kiểm soát truy cập của tất cả người dùng :
+install_line2=$1 trong $2 ($3 kB) trong danh mục $4 
+install_ecomp=Tệp được nén, nhưng không tìm thấy lệnh $1 trên hệ thống của bạn
+install_ecomp2=Không thể giải nén tệp : $1 
+install_egzip=Tệp được nén, nhưng không tìm thấy lệnh $1 trên hệ thống của bạn
+install_egzip2=Không thể gửi tệp gunzip : $1 
+install_erpm=Không phải mô-đun Usermin hoặc RPM chủ đề
+install_eirpm=Cài đặt RPM không thành công : $1 
+install_cat=Theo danh mục $1.
+install_eneither=RPM không chứa mô-đun hoặc chủ đề usermin
+
+delete_err=Không thể xóa các mô-đun
+delete_edep=Mô-đun $1 không thể bị xóa, vì mô-đun $2 phụ thuộc vào nó
+delete_desc1=$1 (Bản sao của $2)
+delete_desc2=$1 trong $2 ($3 kB)
+delete_title=Xóa các mô-đun
+delete_msg=Các mô-đun sau đã được xóa thành công khỏi cài đặt Usermin của bạn :
+delete_rusure=Bạn có chắc chắn muốn xóa (các) mô-đun $2 không? $1 kB tệp sẽ bị xóa vĩnh viễn.
+delete_rusure2=Bạn có chắc chắn muốn xóa chủ đề $2 không? $1 kB tệp sẽ bị xóa vĩnh viễn.
+delete_enone=Không có mô-đun được chọn
+
+ui_title=Giao diện người dùng
+ui_desc=Biểu mẫu này cho phép bạn chỉnh sửa các tùy chọn giao diện người dùng được sử dụng bởi tất cả các mô-đun Usermin.
+ui_header=Tùy chọn giao diện người dùng
+ui_default=Mặc định
+cs_page=Trang nền
+cs_text=Văn bản bình thường
+cs_table=Bảng nền
+cs_header=Bảng tiêu đề
+cs_link=văn bản liên kết
+ui_texttitles=Hiển thị tiêu đề dưới dạng văn bản?
+ui_sysinfo=Hiển thị tên đăng nhập và tên máy chủ
+ui_sysinfo0=Ở cuối trình duyệt
+ui_sysinfo1=Trong tiêu đề trình duyệt
+ui_sysinfo2=Tiêu đề trang trên
+ui_sysinfo3=Hư không
+ui_sysinfo4=Thay vì tiêu đề trình duyệt
+ui_err=Không thể lưu giao diện người dùng
+ui_ered=Giá trị đỏ không hợp lệ cho '$1'
+ui_egreen=Giá trị xanh không hợp lệ cho '$1'
+ui_eblue=Giá trị màu xanh không hợp lệ cho '$1'
+ui_feedback=Gửi phản hồi tới
+ui_feedbackmode=Cho phép gửi phản hồi?
+ui_feednocc=Chỉ đến địa chỉ trên
+ui_gotoone=Chuyển trực tiếp đến module <br> nếu người dùng chỉ có một?
+ui_gotonone=&lt;Không&gt;
+ui_gotomodule=Sau khi đăng nhập, luôn luôn đi đến mô-đun
+ui_nohost=Hiển thị phiên bản, tên máy chủ và hệ điều hành trên menu chính?
+ui_feedbackyes=Vâng, đến địa chỉ
+ui_feedbackmail=Gửi phản hồi qua
+ui_feedbackmail1=Chương trình gửi thư địa phương
+ui_feedbackmail0=máy chủ SMTP
+ui_efeedback=Thiếu địa chỉ email phản hồi
+ui_efeedbackmail=Máy chủ SMTP bị thiếu hoặc không hợp lệ
+ui_feedbackhost=Tên máy chủ trong phản hồi Từ: địa chỉ
+ui_feedbackthis=Tên máy chủ của hệ thống
+ui_hostnamemode=Tên máy chủ để hiển thị trong Usermin
+ui_hnm0=Tên máy chủ thực sự
+ui_hnm1=Tên máy chủ từ URL
+ui_hnm2=Tên miền từ URL
+ui_hnm3=Tên khác ..
+ui_tabs=Phân loại mô-đun?
+
+upgrade_title=Nâng cấp Usermin
+upgrade_title2=Cài đặt Usermin
+upgrade_desc=Biểu mẫu này cho phép bạn nâng cấp toàn bộ cài đặt Usermin của bạn lên phiên bản mới. Bạn có thể cài đặt từ một tệp cục bộ, một tệp được tải lên hoặc từ phiên bản mới nhất tại <a href=http://www.usermin.com/>www.usermin.com</a>. Giống như nâng cấp thủ công, tất cả các cài đặt cấu hình và mô-đun của bên thứ ba sẽ được giữ nguyên.
+upgrade_descrpm=Biểu mẫu này cho phép bạn nâng cấp toàn bộ cài đặt Usermin của bạn lên phiên bản mới bằng tùy chọn nâng cấp của RPM. Bạn có thể cài đặt từ tệp RPM cục bộ, tệp đã tải lên hoặc từ phiên bản mới nhất tại <a href=http://www.usermin.com/>www.usermin.com</a>. Giống như nâng cấp thủ công, tất cả các cài đặt cấu hình và mô-đun của bên thứ ba sẽ được giữ nguyên.
+upgrade_descdeb=Biểu mẫu này cho phép bạn nâng cấp toàn bộ cài đặt Usermin của bạn lên phiên bản mới bằng cách nâng cấp gói Debian của nó. Bạn có thể cài đặt từ tệp.deb cục bộ, tệp đã tải lên hoặc từ phiên bản mới nhất tại <a href=http://www.usermin.com/>www.usermin.com</a>. Giống như nâng cấp thủ công, tất cả các cài đặt cấu hình và mô-đun của bên thứ ba sẽ được giữ nguyên.
+upgrade_local=Từ tập tin cục bộ
+upgrade_uploaded=Từ tập tin tải lên
+upgrade_url=Từ URL ftp hoặc http
+upgrade_ftp=Phiên bản mới nhất từ www.usermin.com
+upgrade_delete=Xóa thư mục của phiên bản cũ sau khi nâng cấp?
+upgrade_ok=Nâng cấp Usermin
+upgrade_err1=Không thể nâng cấp từ $1 
+upgrade_err2=Không thể nâng cấp từ tệp đã tải lên
+upgrade_err3=Không thể nâng cấp từ www.usermin.com
+upgrade_err5=Không thể nâng cấp từ URL $1 
+upgrade_eurl=URL bị thiếu hoặc không hợp lệ
+upgrade_efile=Tập tin không tồn tại
+upgrade_ebrowser=Trình duyệt của bạn không hỗ trợ tải lên tập tin
+upgrade_eversion=Không thể hạ cấp xuống phiên bản $1 
+upgrade_elatest=Bạn đang chạy phiên bản mới nhất của Usermin
+upgrade_erpm=Không phải là tệp RPM Usermin hợp lệ
+upgrade_egunzip=Hệ thống của bạn không có lệnh <tt>gunzip</tt>
+upgrade_egzip=Không thể gửi tệp gunzip : $1 
+upgrade_etar=Không phải là tệp tar Usermin hợp lệ
+upgrade_euntar=Không thể xóa tệp : $1 
+upgrade_emod=Tệp là mô-đun Usermin, không phải là bản nâng cấp Usermin hoàn chỉnh. Bạn có thể muốn sử dụng trang <a href='$1'>Mô-đun Usermin</a> để cài đặt nó.
+upgrade_ewebmin=Tệp là phiên bản Webmin $1, không phải là bản cập nhật Usermin.
+upgrade_setup=Nâng cấp Usermin bằng lệnh $1 ..
+upgrade_setup2=Cài đặt Usermin bằng lệnh $1 ..
+upgrade_done=.. nâng cấp hoàn tất.
+upgrade_failed=.. nâng cấp thất bại!
+upgrade_updates=Có $1 bản cập nhật cho phiên bản mới này của Usermin. <a href='$2'>Nhấp vào đây</a> để tự động tải xuống và cài đặt chúng ngay bây giờ.
+upgrade_eupdates=Không thể tải xuống danh sách các bản cập nhật : $1 
+
+update_desc1=Biểu mẫu này cho phép bạn nâng cấp các mô-đun Usermin đã được tìm thấy có chứa lỗi hoặc lỗ hổng bảo mật từ trang <a href=http://www.usermin.com/uupdates.html>Cập nhật Usermin</a> hoặc từ một nguồn khác. Điều này sẽ so sánh các mô-đun hiện được cài đặt với các mô-đun có sẵn để cập nhật và tùy chọn tự động tải xuống và cài đặt bất kỳ mô-đun nào đã lỗi thời.
+update_header1=Cập nhật các mô-đun ngay bây giờ
+update_header2=Cập nhật các mô-đun theo lịch trình
+update_webmin=Cập nhật từ www.usermin.com
+update_other=Cập nhật từ một nguồn khác
+update_show=Chỉ hiển thị các mô-đun sẽ được cập nhật
+update_missing=Cài đặt các mô-đun hiện chưa được cài đặt
+update_quiet=Chỉ báo cáo cập nhật
+update_ok=Cập nhật các mô-đun
+update_email=Báo cáo cập nhật email đến
+update_enabled=Cập nhật theo lịch trình hiện được kích hoạt
+update_apply=Lưu và áp dụng
+update_sched=Cập nhật các mô-đun ở $1 : 00 mỗi $2 ngày
+update_none=Không có bản cập nhật Usermin cho phiên bản này.
+update_failed=Không thể cài đặt mô-đun : $1 
+update_desc2=Biểu mẫu này là để lên lịch cập nhật tự động các mô-đun Usermin có chứa lỗi hoặc lỗ hổng bảo mật từ trang <a href=http://www.usermin.com/uupdates.html>Cập nhật Usermin</a> hoặc từ một nguồn khác. Mặc dù dịch vụ này hữu ích, bạn nên cẩn thận khi sử dụng vì nó có thể cho phép kẻ tấn công chiếm quyền hệ thống của bạn nếu máy chủ cập nhật bị xâm phạm.
+
+assignment_title=Tái chỉ định mô-đun
+assignment_header=Bài tập thể loại
+assignment_ok=Thay đổi danh mục
+assignment_desc=Biểu mẫu này cho phép bạn định cấu hình danh mục mà mỗi mô-đun được hiển thị bên dưới trang chỉ mục Usermin.
+
+categories_title=Chỉnh sửa danh mục
+categories_header=ID danh mục và mô tả
+categories_desc=Biểu mẫu này cho phép bạn đổi tên các danh mục Usermin hiện có và tạo các danh mục mới để gán mô-đun cho. Phần trên cùng của bảng là để thay đổi các mô tả của các danh mục tích hợp, trong khi phần dưới cùng là để thêm các ID và mô tả danh mục mới.
+categories_ok=Lưu danh mục
+categories_err=Không thể lưu các danh mục
+categories_edesc=Thiếu mô tả cho $1 
+categories_ecat=ID loại $1 đã được sử dụng
+categories_code=TÔI
+categories_name=Mô tả hiển thị
+
+log_access=Thay đổi kiểm soát truy cập IP
+log_bind=Thay đổi cổng và địa chỉ
+log_log=Thay đổi đăng nhập tùy chọn
+log_proxy=Thay đổi máy chủ proxy
+log_ui=Thay đổi tùy chọn giao diện người dùng
+log_install=Đã cài đặt mô-đun $1 
+log_tinstall=Đã cài đặt chủ đề $1 
+log_clone=Mô-đun nhân bản $1 đến $2 
+log_delete=Đã xóa mô-đun $1 
+log_os=Thay đổi hệ điều hành
+log_lang=Thay đổi ngôn ngữ toàn cầu
+log_startpage=Tùy chọn trang chỉ mục đã thay đổi
+log_upgrade=Nâng cấp Usermin lên phiên bản $1 
+log_uinstall=Đã cài đặt phiên bản Usermin $1 
+log_session=Thay đổi tùy chọn xác thực
+log_ssl=Thay đổi chế độ mã hóa SSL
+log_copycert=Cài đặt SSL được sao chép từ Webmin
+log_newkey=Tạo khóa SSL mới
+log_setupca=Thiết lập thẩm quyền chứng chỉ
+log_changeca=Cơ quan cấp chứng chỉ đã thay đổi
+log_stopca=Tắt giấy chứng nhận
+log_assignment=Thay đổi danh mục mô-đun
+log_categories=Thay đổi tên danh mục
+log_theme=Thay đổi chủ đề thành $1 
+log_theme_def=Thay đổi chủ đề thành Usermin mặc định
+log_referers=Thay đổi người giới thiệu đáng tin cậy
+log_config=Thay đổi cấu hình cho $1 
+log_uconfig=Thay đổi cấu hình người dùng cho $1 
+log_defacl=Thay đổi tùy chọn kiểm soát truy cập
+log_users=Thay đổi cho phép người dùng và nhóm
+log_acl=Thay đổi người dùng có sẵn
+log_restrict_create=Đã tạo hạn chế cho $1 
+log_restrict_modify=Hạn chế sửa đổi cho $1 
+log_restrict_delete=Đã xóa giới hạn cho $1 
+log_restrict_move=Đã hạn chế di chuyển cho $1 
+
+log_all=tất cả người dùng
+log_group=nhóm 1
+log_switch=Đã chuyển sang người dùng Usermin $1 
+log_logout=Đã thay đổi thời gian đăng xuất tự động
+log_dav=Thay đổi cài đặt máy chủ DAV
+log_advanced=Thay đổi tùy chọn nâng cao
+log_mobile=Thay đổi tùy chọn thiết bị di động
+
+update_err=Không thể cập nhật các mô-đun
+update_eurl=URL cập nhật bị thiếu hoặc không hợp lệ
+update_title=Cập nhật các mô-đun
+update_info=Cập nhật các mô-đun Usermin ..
+update_mmissing=Mô-đun $1 không được cài đặt trên hệ thống này.
+update_malready=Mô-đun $1 đã được cập nhật.
+update_mshow=Cần cập nhật cho mô-đun $1 lên phiên bản $2.
+update_mok=Cập nhật mô-đun $1 lên phiên bản $2.
+update_fixes=Khắc phục sự cố
+update_mdesc=Mô-đun đã cài đặt $1 ($2 Kb)
+update_mos=Cập nhật lên mô-đun $1 không liên quan đến HĐH này.
+update_efile=Mô-đun cập nhật tập tin nguồn không hợp lệ
+update_ehour=Thiếu hoặc không hợp lệ giờ để cập nhật vào
+update_edays=Số ngày bị thiếu hoặc không hợp lệ
+update_rv=Kiểm tra các mô-đun Usermin được cập nhật từ $1 
+update_eemail=Bạn phải nhập địa chỉ email nếu chỉ hiển thị những gì sẽ được cập nhật.
+update_subject=Báo cáo cập nhật mô-đun Usermin
+update_version=Bản phát hành mới của Usermin (phiên bản $1) hiện có sẵn để tải xuống. Bản cập nhật trong tương lai sẽ chỉ được phát hành cho phiên bản mới nhất.
+
+restrict_title=Giới hạn mô-đun
+restrict_desc=Trang này cho phép bạn kiểm soát các mô-đun Usermin nào có sẵn cho các người dùng và nhóm khác nhau. Tất cả các bổ sung và mô đun trong danh sách đều được áp dụng, không chỉ là mô đun đầu tiên phù hợp với từng người dùng. <br>Các mô-đun không được chọn trên trang<a href='$1'> mô-đun khả dụng </a> sẽ không bao giờ khả dụng người dùng, ngay cả khi họ được chọn ở đây.
+restrict_who=Người dùng Usermin
+restrict_what=Các mô-đun có sẵn
+restrict_all=Tất cả người dùng
+restrict_group=Nhóm 1
+restrict_file=Người dùng trong tệp $1 
+restrict_plus=<b>Tất cả cộng</b> $1 
+restrict_minus=<b>Tất cả ngoại trừ</b> $1 
+restrict_set=<b>Chỉ</b> $1 
+restrict_nomods=<b>Không có mô-đun</b>
+restrict_add=Thêm hạn chế người dùng hoặc nhóm mới
+restrict_edit=Chỉnh sửa hạn chế
+restrict_create=Tạo hạn chế
+restrict_header=Chi tiết hạn chế mô-đun Usermin
+restrict_who2=Áp dụng đối với
+restrict_umode0=Người dùng Unix
+restrict_umode1=Thành viên của nhóm
+restrict_umode2=Tất cả người dùng
+restrict_umode3=Người dùng và nhóm trong tệp
+restrict_mods=Mô-đun
+restrict_modsdesc=(Những người có màu đỏ đã bị vô hiệu hóa trên trang <a href='$1'>Các mô-đun có sẵn</a>)
+restrict_mmode0=Chỉ được chọn ..
+restrict_mmode1=Thêm lựa chọn ..
+restrict_mmode2=Bỏ đã chọn ..
+restrict_return=danh sách hạn chế
+restrict_err=Không thể lưu hạn chế
+restrict_euser=Tên người dùng bị thiếu hoặc không hợp lệ
+restrict_egroup=Tên nhóm bị thiếu hoặc không hợp lệ
+restrict_efile=Tập tin người dùng và nhóm bị thiếu, không tồn tại hoặc không tuyệt đối
+restrict_move=Di chuyển
+bootup_ecannot=Bạn không được phép cấu hình khởi động
+
+acl_icons=Trang cấu hình được phép
+acl_mods=Có thể cấu hình các mô-đun
+acl_all=Tất cả các mô-đun
+acl_sel=Chọn bên dưới ..
+acl_stop=Có thể dừng lại và bắt đầu Usermin?
+acl_bootup=Có thể cấu hình bắt đầu lúc khởi động?
+acl_ecannot=Bạn không được phép sử dụng trang này
+
+clone_err=Không thể sao chép mô-đun
+clone_elink=liên kết tượng trưng không thành công : $1 
+clone_ecopy=không thể sao chép cấu hình : $1 
+clone_desc=Bản sao của $1 
+
+sessions_title=Phiên đăng nhập hiện tại
+sessions_desc=Đăng nhập phiên Usermin hiện tại được liệt kê dưới đây. Để hủy phiên hiện có và buộc người dùng đăng nhập lại, hãy nhấp vào ID phiên của nó.
+sessions_id=ID phiên
+sessions_user=Người dùng Unix
+sessions_host=địa chỉ IP
+sessions_login=Đăng nhập tại
+sessions_none=Không có người dùng hiện đang đăng nhập vào Usermin.
+sessions_switch=Chuyển sang người dùng Usermin:
+sessions_ok=Công tắc điện
+
+referers_title=Người giới thiệu đáng tin cậy
+referers_desc=Trang này cho phép bạn định cấu hình hỗ trợ kiểm tra người giới thiệu của Usermin, được sử dụng để ngăn các liên kết độc hại từ các trang web khác lừa trình duyệt của người dùng của bạn thực hiện những điều nguy hiểm với Usermin. Tuy nhiên, nếu bạn có liên kết đến Usermin từ các trang web của riêng bạn mà bạn không muốn được cảnh báo về việc bạn nên thêm các trang web đó vào danh sách bên dưới.
+
+anon_title=Truy cập mô-đun ẩn danh
+anon_desc=Trang này cho phép bạn cấp quyền truy cập vào các mô-đun và đường dẫn Usermin đã chọn mà không cần khách hàng đăng nhập. Đối với mỗi đường dẫn mô-đun mà bạn nhập bên dưới (chẳng hạn như / lệnh hoặc / changepass), bạn cũng phải nhập tên của người dùng Unix có quyền sẽ được sử dụng để truy cập mô-đun.
+anon_user=Người dùng Unix
+anon_euser=Người dùng Unix bị thiếu hoặc không hợp lệ cho đường dẫn URL '$1'
+
+logout_title=Thời gian đăng xuất tự động
+logout_desc=Trang này có thể được sử dụng để định cấu hình thời gian đăng xuất không hoạt động khác nhau cho những người dùng Usermin khác nhau. Thời gian chờ phải được nhập theo phút và thời gian chờ bằng 0 có nghĩa là các phiên cho người dùng phù hợp sẽ không bao giờ được đăng xuất tự động.
+logout_type=Kiểu
+logout_who=Người dùng, nhóm hoặc tập tin
+logout_time=Hết giờ
+logout_user=Người sử dụng ..
+logout_group=Thành viên của nhóm ..
+logout_file=Người dùng trong tập tin ..
+logout_err=Không thể lưu thời gian đăng xuất
+logout_euser=Người dùng bị thiếu hoặc không hợp lệ trong hàng $1 
+logout_egroup=Nhóm bị thiếu hoặc không hợp lệ trong hàng $1 
+logout_efile=Tệp bị thiếu hoặc không tồn tại trong hàng $1 
+logout_etime=Hết thời gian chờ hoặc không hợp lệ trong hàng $1 
+logout_ecannot=Bạn không được phép định cấu hình thời gian đăng xuất
+
+dav_title=Máy chủ DAV
+dav_header=Tùy chọn máy chủ DAV
+dav_path=Đã bật DAV?
+dav_disabled=Tàn tật
+dav_enabled=Đã bật, trong đường dẫn URL $1 
+dav_root=Cho phép truy cập vào thư mục
+dav_root0=Toàn bộ hệ thống tập tin
+dav_root1=Thư mục nhà của người dùng
+dav_root2=Thư mục $1 
+dav_ecannot=Bạn không được phép cấu hình máy chủ DAV
+dav_emodule=Mô-đun Perl $1 cần thiết để kích hoạt DAV chưa được cài đặt.
+dav_cpan=<a href='$1'>Nhấp vào đây</a> để tải xuống Webmin và tự động cài đặt nó cho bạn.
+dav_desc=Hỗ trợ DAV của Usermin cho phép các máy khách hỗ trợ giao thức DAV kết nối với máy chủ Usermin này và đọc và ghi tệp. Tất cả quyền truy cập tệp được thực hiện với các đặc quyền Unix của người dùng đã đăng nhập và sẽ bị giới hạn trong thư mục được chỉ định.
+dav_err=Không thể lưu tùy chọn máy chủ DAV
+dav_epath=Đường dẫn URL bị thiếu hoặc không hợp lệ
+dav_eroot=Thư mục gốc bị thiếu hoặc không hợp lệ
+dav_users=Người dùng có thể sử dụng DAV
+dav_users1=Tất cả người dùng
+dav_users0=Người dùng và nhóm được liệt kê dưới đây ..
+dav_eusers=Không có người dùng nào được nhập
+
+syslog_errorlog=Nhật ký lỗi Usermin
+
+descs_title=Tiêu đề mô-đun
+descs_info=Trang này cho phép bạn chỉ định các tiêu đề thay thế cho các mô-đun Usermin, để ghi đè các mô tả tiêu chuẩn của chúng.
+
+advanced_title=Tùy chọn nâng cao
+advanced_pass=Cung cấp mật khẩu cho các chương trình Usermin? <br><font size=-1> (Không hoạt động khi bật xác thực phiên) </font>
+
+blocked_title=Máy chủ và người dùng bị chặn
+blocked_none=Không có máy chủ hoặc người dùng hiện đang bị chặn bởi Usermin.
+blocked_user=Người dùng Usermin
+blocked_cleardesc=Nhấp vào nút này để xóa tất cả các khối máy chủ và người dùng hiện tại, bằng cách khởi động lại quy trình máy chủ Usermin.
+
+mobile_title=Tùy chọn thiết bị di động
+
+copycert_err=Không thể sao chép cài đặt SSL từ Webmin
+copycert_essl=SSL không được kích hoạt
+copycert_ekeyfile=Không có tệp khóa riêng nào được đặt trong Webmin

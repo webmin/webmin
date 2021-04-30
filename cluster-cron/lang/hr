@@ -1,30 +1,35 @@
-create_title=Kreiraj Skupinu Cron
-delete_enone=NIöta nije odabrano
-delete_err=Neuspjeli pokuöaj brisanja skupine cron
-edit_all=&lt;Svi hostinzi&gt;
-edit_group=ƒålanovi iz $1
-edit_servers=Pokreni na posluûiteljima
-edit_this=ovaj posluûitelj
-edit_title=Uredi Skupinu Cron
-exec_cmd=Pokreni $1 na odabranim posluûiteljima ..
-exec_failed=Neuspjeli pokuöaj pokretanja $1 : $2
-exec_nohosts=Nije odabran ni jedan host za pokretanje, ili odabrana grupa ne sadrûi ni jedan iskoristivi host.
-exec_success=Izlaz iz $1 ..
-exec_title=Izvröi Skupinu Cron
-index_add=Kreiraj novu skupinu cron.
-index_more=$1 viöe ..
-index_none=Ni jedan jedna skupina clon nije definirana.
-index_return=lista skupina cron
-index_run=Pokreni&nbsp;sada..
-index_servers=pokreni na posluûiteljima
 index_title=Skupina Cron
+index_add=Kreiraj novu skupinu cron.
+index_none=Ni jedan jedna skupina clon nije definirana.
+index_servers=pokreni na poslu≈æiteljima
+index_return=lista skupina cron
+index_more=$1 vi≈°e ..
+index_run=Pokreni¬†sada..
+
+edit_title=Uredi Skupinu Cron
+create_title=Kreiraj Skupinu Cron
+edit_servers=Pokreni na poslu≈æiteljima
+edit_group=ƒålanovi iz $1
+edit_this=ovaj poslu≈æitelj
+edit_all=&lt;Svi hostinzi&gt;
+
+save_err=Neuspjeli poku≈°aj spremanja skupine cron
+
+exec_title=Izvr≈°i Skupinu Cron
+exec_cmd=Pokreni $1 na odabranim poslu≈æiteljima ..
+exec_failed=Neuspjeli poku≈°aj pokretanja $1 : $2
+exec_success=Izlaz iz $1 ..
+exec_nohosts=Nije odabran ni jedan host za pokretanje, ili odabrana grupa ne sadr≈æi ni jedan iskoristivi host.
+
+log_run=Pokreni $1 na $2 poslu≈æiteljima
+log_run_l=Pokreni $1 na $2
 log_create=Kreiraj skupinu cron za $1
 log_create_l=Kreiraj skupinu cron $2 za $1
-log_delete=Izbriöi skupinu cron za $1
-log_delete_l=Izbriöi skupinu cron $2 za $1
-log_deletes=Izbriöi $1 skupinu cron
 log_modify=Uredi skupinu cron za $1
 log_modify_l=Uredi skupinu cron $2 za $1
-log_run=Pokreni $1 na $2 posluûiteljima
-log_run_l=Pokreni $1 na $2
-save_err=Neuspjeli pokuöaj spremanja skupine cron
+log_delete=Izbri≈°i skupinu cron za $1
+log_delete_l=Izbri≈°i skupinu cron $2 za $1
+log_deletes=Izbri≈°i $1 skupinu cron
+
+delete_err=Neuspjeli poku≈°aj brisanja skupine cron
+delete_enone=NI≈°ta nije odabrano

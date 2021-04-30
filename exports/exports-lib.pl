@@ -17,7 +17,7 @@ sub list_exports
 {
 my (@rv, $pos, $h, $o, $line);
 return @list_exports_cache if (@list_exports_cache);
-open(EXP, $config{'exports_file'});
+open(EXP, "<".$config{'exports_file'});
 my $lnum = 0;
 while(my $line = <EXP>) {
 	my $slnum = $lnum;
@@ -44,6 +44,7 @@ while(my $line = <EXP>) {
 			$exp{'active'} = $active;
 			$exp{'dir'} = $dir;
 			$exp{'host'} = $1;
+			$exp{'options'} = { };
 			my $ostr = $2;
 			$rest = $3;
 			while($ostr =~ /^([a-z_]+)=([0-9,\-]+)\s*,\s*(.*)$/ ||

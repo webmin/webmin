@@ -1,0 +1,52 @@
+index_title=NFS-vienti
+index_add=Lisää uusi vienti.
+index_dirs=hakemistot
+index_clients=asiakkaat
+index_everyone=jokainen
+index_none=Vientiä ei ole vielä määritelty.
+index_delete=Poista valitut vientit
+index_apply=Ota muutokset käyttöön
+index_applydesc=Napsauta tätä painiketta, jos haluat käyttää nykyisiä tiedostojen vientimäärityksiä. Tämän avulla kaikki yllä luetellut hakemistot ovat käytettävissä määritettyjen asetusten kanssa.
+index_return=vientiluettelo
+index_echeck=NFS-palvelinta ei voi käyttää tässä järjestelmässä : $1 
+
+check_ecmd=NFS-palvelinkomentoa $1 ei ole asennettu
+
+delete_err=Viennin poistaminen epäonnistui
+delete_enone=Mitään ei ole valittu
+
+edit_title1=Muokkaa vientiä
+edit_title2=Luo vienti
+edit_header1=Vie asetukset
+edit_dirs=Vientiä koskevat hakemistot
+edit_alldirs=Viekö alihakemistoja?
+edit_ro=Lue ainoastaan?
+edit_kerb=Käytätkö Kerberosia?
+edit_header2=Etäkäyttäjien kartoitus
+edit_maproot=Kartta pääkäyttäjälle
+edit_mapusers=Kartta kaikille käyttäjille
+edit_unpriv=Epäoikeutettu käyttäjä
+edit_uid=Käyttäjä / UID
+edit_gids=Ja ryhmät / GID: t
+edit_mapall=Kartta kaikille käyttäjille
+edit_header3=Tämän viennin asiakkaat
+edit_clients=asiakkaat
+edit_hosts=Isännät / verkkoryhmät
+edit_network=verkko
+edit_mask=Naamio
+
+save_err=Viennin tallennus epäonnistui
+save_edir='$1' ei ole hakemistoa tai sitä ei ole
+save_enone=Sinun on annettava ainakin yksi hakemisto viedäksesi
+save_esub=Vain yksi hakemisto voidaan antaa, jos <b>vie alihakemistot</b> -vaihtoehto on valittu
+save_eroot=Kun käytetään <b>vienti alihakemistot</b> -vaihtoehtoa, viedyn hakemiston on oltava <i>paikallisen</i> tiedostojärjestelmän juuri
+save_euser='$1' ei ole kelvollinen käyttäjä tai UID
+save_egroup='$1' ei ole kelvollinen ryhmä tai GID
+save_ekerb=Kartan pääkäyttäjät, kaikkien käyttäjien kartta ja kerberos-vaihtoehdot ovat toisiaan poissulkevia
+save_ehosts=Sinun on annettava vähintään yksi isäntä vietäväksi
+save_enetwork='$1' ei ole kelvollinen verkko
+save_enetmask='$1' ei ole kelvollinen verkkomaski
+save_esame1=Hakemisto <tt>$1</tt> viedään jo hakemistoon <tt>$2</tt>. Käyttöjärjestelmäsi ei salli saman <i>paikallisen</i> tiedostojärjestelmän hakemistojen viemistä samaan isäntään erikseen
+save_esame2=Hakemisto <tt>$1</tt> viedään jo hakemistoon <tt>$2</tt>. Käyttöjärjestelmäsi ei salli saman <i>paikallisen</i> tiedostojärjestelmän hakemistojen viemistä samaan verkkoon erikseen
+
+restart_err=Muutosten asettaminen epäonnistui

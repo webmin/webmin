@@ -1,0 +1,17 @@
+index_title=Konfiguracja Kerberos5
+index_econf=Plik konfiguracyjny Kerberos5 $1 nie został znaleziony w twoim systemie. Być może nie jest zainstalowany lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+
+logging=Pliki dziennika
+default_log=Domyślny plik dziennika
+kdc_log=Plik dziennika KDC
+admin_log=Plik dziennika serwera administracyjnego
+
+libdefaults=Domyślna konfiguracja
+dns_kdc=Użyj DNS, aby wyszukać KDC
+default_realm=Królestwo
+domain=Nazwa domeny
+default_kdc=KDC
+default_admin=Serwer administracyjny
+default_domain=Domyślna nazwa domeny
+
+save=Zaktualizuj konfigurację

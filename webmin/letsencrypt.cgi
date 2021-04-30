@@ -13,6 +13,10 @@ our %config;
 our $module_name;
 &error_setup($text{'letsencrypt_err'});
 
+# Re-check if let's encrypt is available
+my $err = &check_letsencrypt();
+&error($err) if ($err);
+
 # Validate inputs
 &ReadParse();
 my @doms = split(/\s+/, $in{'dom'});

@@ -71,7 +71,7 @@ serv_eserver=Il nome del programma manca o non e' valido
 serv_erhost=L'host su cui ridirigere manca o non e' valido
 serv_erport=La porta su cui ridirigere manca o non e' valida
 serv_enice=Il livello di priorita' manca o non e' valido
-serv_ecps0=Il numero di connessioni per secondo manca o non &#232; valido
+serv_ecps0=Il numero di connessioni per secondo manca o non è valido
 serv_ecps1=Il ritardo manca o non e' valido
 serv_etimes=L'ora di accesso deve essere nel formato: HH:MM-HH:MM
 
@@ -122,5 +122,3 @@ log_delete_serv=Cancellato $2 servizio $1
 log_start=Avviato il server Xinetd
 log_apply=Applicate le modifiche
 log_defaults=Cambiate le opzioni di default
-
-

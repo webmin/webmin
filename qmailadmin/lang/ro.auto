@@ -1,0 +1,405 @@
+index_title=QMail Mail Server
+index_edir=Directorul de bază QMail $1 nu există. Poate că QMail nu este instalat sau <a href='$2'>configurația modulului</a> este incorectă.
+index_edir2=Directorul $1 nu pare a fi directorul de bază QMail. Poate că QMail nu este instalat sau <a href='$2'>configurația modulului</a> este incorectă.
+index_return=Configurația QMail
+index_stop=Opriți procesele QMail
+index_stopmsg=Faceți clic pe acest buton pentru a opri procesele QMail în fundal responsabile de livrarea de mailuri în coadă. Fără aceste procese, e-mailurile nu vor fi expediate sau livrate în sistem în mod corespunzător.
+index_start=Porniți procesele QMail
+index_startmsg=Faceți clic pe acest buton pentru a porni procesele QMail în fundal responsabile de livrarea de e-mailuri în coadă. Fără aceste procese, e-mailurile nu vor fi expediate sau livrate în sistem în mod corespunzător.
+
+opts_title=Opțiuni QMail
+opts_me=Numele gazdei locale
+opts_helo=Nume gazdă pentru SMTP HELO
+opts_toconnect=Timp de conectare SMTP
+opts_secs=secunde
+opts_toremote=Timp de răspuns de ieșire SMTP
+opts_bytes=Dimensiunea maximă a mesajului
+opts_unlimited=Nelimitat
+opts_timeout=Timp de expirare a datelor SMTP
+opts_localip=Nume gazdă pentru e-mail la adresa IP locală
+opts_greet=Mesaj de salut SMTP
+opts_err=Nu a reușit să salvați opțiunile QMail
+opts_eme=Nume de gazdă locală nevalid
+opts_etoconnect=Termenul de expirare a conexiunii SMTP este nevalid
+opts_etoremote=Timp de răspuns de ieșire SMTP nevalid
+opts_ebytes=Dimensiunea maximă a mesajului este nevalidă
+opts_etimeout=Timp de expirare a datelor SMTP nevalide
+opts_elocalip=Numele de gazdă al adresei IP locale nevalide
+
+aliases_title=Aliasuri prin poștă
+aliases_addr=Abordare
+aliases_to=Alias pentru ..
+aliases_type1=Adresa 1
+aliases_type2=Directory mail $1 
+aliases_type3=Fișier mail $1 
+aliases_type4=Programul $1 
+aliases_type5=Fișier automat $1
+aliases_type6=Aplicați fișierul de filtru $1 
+aliases_none=Nici unul
+aliases_return=lista de alias
+aliases_toomany=Există prea multe aliasuri de e-mail pe sistemul dvs. pentru a fi afișate pe această pagină.
+aliases_go=Găsiți alias-uri potrivite:
+aliases_delete=Ștergeți pseudonimele selectate
+
+aform_type0=Nici unul
+aform_type1=Adresa de email
+aform_type2=Directory mail
+aform_type3=Fișier mail
+aform_type4=Feed pentru program
+aform_type5=În mod automat din fișier
+aform_type6=Aplicați fișierul de filtru
+aform_edit=Editează Alias
+aform_create=Creați alias
+aform_name=Abordare
+aform_val=Alias pentru
+aform_afile=Editați | × ..
+aform_novirt=&lt;Toate domeniile&gt;
+aform_return=alias
+
+asave_err=Nu a reușit să salveze alias
+asave_eaddr=„$1” nu este o adresă validă
+asave_ealready=Există deja un alias pentru „$1”
+asave_etype1=„$1” nu este o adresă de e-mail validă
+asave_etype2=„$1” nu este un director de e-mail valid
+asave_etype3=„$1” nu este un nume de fișier de e-mail valid
+asave_etype4=„$1” nu este un program valid sau nu există
+asave_etype5=Fișierul automat „$1” nu este valid
+asave_etype4none=Nici un program dat
+asave_etype6=Fișierul de filtrare „$1” nu este valid
+
+adelete_err=Nu a reușit să ștergeți pseudonimele
+adelete_enone=Nimic selectat
+
+locals_title=Domenii locale
+locals_domains=Domenii locale pentru acest server
+locals_desc=Qmail va accepta pentru livrare către utilizatorii locali un e-mail către domeniile și numele de gazdă listate în caseta de text din stânga. Dacă doriți ca serverul dvs. de poștă să gestioneze mai multe domenii de e-mail, acestea ar trebui să fie listate în acest formular.
+locals_only=Numai numele local de gazdă $1 
+locals_sel=Domenii enumerate mai jos ..
+
+rcpts_title=Domenii acceptate
+rcpts_domains=Domenii locale și relee acceptate
+rcpts_all=Orice domeniu
+rcpts_sel=Domenii enumerate mai jos ..
+rcpts_desc=Qmail va accepta pentru redare sau livrare locală doar poștă către domenii și nume de gazdă listate în caseta de text din stânga. Puteți introduce, de asemenea, wildcard-uri care se potrivesc tuturor gazdelor dintr-un domeniu precum <tt>.foo.com</tt>. Dacă doriți ca serverul dvs. de poștă să transmită un e-mail pentru clienți, trebuie să acceptați e-mailurile din orice domeniu.
+rcpts_domains2=Domenii suplimentare locale și releu
+rcpts_desc2=Dacă aveți un număr mare de domenii acceptate, în această casetă de text ar trebui introduse cele mai puțin utilizate. În general, primele 50 de domenii permise trebuie introduse în caseta de text superioară, iar restul în aceasta.
+
+bads_title=Adresele respinse
+bads_addresses=Adresele de e-mail respinse
+bads_desc=QMail va respinge e-mailul pentru livrare sau transmisie de la oricare dintre adresele enumerate în caseta de text din stânga, care trebuie introdusă ca <tt>nume utilizator @ nume de domeniu</tt>. Dacă doriți să respingeți e-mailurile dintr-un întreg domeniu, ar trebui introduse ca <tt>@domainname</tt>.
+
+routes_title=Routing de domenii
+routes_toomany=Există prea multe rute de domeniu pe sistemul dvs. pentru a fi afișate pe această pagină.
+routes_go=Găsiți rutele de domeniu potrivite:
+routes_from=Mail pentru domeniu
+routes_to=Trimiteți prin server
+routes_direct=Livrați direct
+routes_defroute=Livrați toate celelalte e-mailuri prin:
+routes_return=rutele de domeniu
+routes_delete=Ștergeți rutele de domeniu selectate
+
+rform_edit=Editează traseul domeniului
+rform_create=Creați traseu de domeniu
+rform_from=Mail pentru gazdă sau domeniu
+rform_to=Trimiteți prin server SMTP
+rform_port=Port SMTP
+
+rsave_err=Nu a reușit să salveze ruta domeniului
+rsave_efrom=„$1” nu este un nume de domeniu valid
+rsave_eto=„$1” nu este un server SMTP valid
+rsave_eport=„$1” nu este un număr de port valid
+
+rdelete_err=Nu a reușit să ștergi rutele de domeniu
+
+percents_title=% Domenii de adresă
+percents_domains=Domenii care acceptă % adrese
+percents_desc=QMail va accepta e-mailul cu adrese în format <tt>user%firstdomain@seconddomain</tt> dacă <tt>seconddomain</tt> este listat în caseta de text din stânga. Mesajele în acest format vor fi apoi transmise către <tt>user@firstdomain</tt> de acest server de e-mail.
+
+virts_title=Mapări virtuale
+virts_toomany=Există prea multe mapări virtuale pe sistemul dvs. pentru a fi afișate pe această pagină.
+virts_go=Găsiți mapări virtuale care se potrivesc:
+virts_from=Mail pentru
+virts_prepend=Prefixul prepend
+virts_all=Toate adresele
+virts_none=Nu virtual
+virts_desc=QMail utilizează mapările virtuale pentru a gestiona e-mailul către diferite domenii de pe serverul dvs., preplătind text către partea de utilizator a adresei de e-mail înainte de procesarea ulterioară. Puteți să le utilizați pentru a configura domenii de poștă virtuală prin crearea unei noi mapări virtuale pentru un domeniu, apoi utilizând pagina <a href='$1'>Mail Aliases</a> pentru a crea alias în acel domeniu.
+virts_return=mapări virtuale
+virts_delete=Ștergeți mapări virtuale selectate
+
+vform_edit=Editați maparea virtuală
+vform_create=Creați mapare virtuală
+vform_from=Mail pentru adresă
+vform_all=Orice adresă care nu se potrivește cu o altă mapare virtuală
+vform_domain=Adrese cu domeniu
+vform_user=Abordare
+vform_to=Prepend cu numele de utilizator
+vform_none=Nimic
+vform_prepend=Prefix specificat
+vform_auto=Prefixul ales automat
+
+vsave_err=Nu a reușit să salvați maparea virtuală
+vsave_edomain=„$1” nu este un domeniu de e-mail valid
+vsave_euser=„$1” nu este un nume de utilizator e-mail valid
+vsave_eprepend=„$1” nu este un prefix de mapare valid
+vsave_eboth=Nu puteți selecta atât „Orice adresă care nu corespunde unei alte mapări virtuale”, cât și „Nimic”
+
+vdelete_err=Nu a reușit să ștergeți mapările virtuale
+
+stop_err=Procesul qmail-send nu mai rulează
+
+log_stop=Procese QMail oprite
+log_start=Au început procesele QMail
+log_opts=Opțiuni QMail modificate
+log_alias_create=Alias creat 1
+log_alias_delete=Ștergeți alias $1 
+log_alias_modify=Alias modificat $1 
+log_delete_aliases=Ștergeri $1 alias
+log_virt_create=Crearea mapării virtuale $1 
+log_virt_delete=Mapare virtuală ștersă $1 
+log_virt_modify=Mapare virtuală modificată $1 
+log_delete_virts=Mapări virtuale $1 șterse
+log_virtall_create=Creare mapare virtuală catchall
+log_virtall_delete=Mapare virtuală catchall ștersă
+log_virtall_modify=Cartografiere virtuală catchall modificată
+log_locals=Domenii locale schimbate
+log_rcpts=Schimbarea domeniilor acceptate
+log_bads=Adresele respinse au fost modificate
+log_percents=% De domenii de adresă modificate
+log_route_create=Ruta creată pentru $1 
+log_route_delete=Ruta ștersă pentru $1 
+log_route_modifed=Traseul modificat pentru $1 
+log_delete_routes=Rute $1 șterse
+log_defroute=Rută implicită modificată
+log_assign_create=Utilizator de e-mail creat $1 
+log_assign_delete=Utilizatorul de e-mail șters $1 
+log_assign_modifed=Utilizator de e-mail modificat $1 
+log_delete_assigns=Utilizatori de e-mail $1 ștersi
+log_delmail=Mesaje $1 șterse de la $2 
+log_movemail=Mutat mesaje $1 de la $2 la $3 
+log_send=A fost trimis un e-mail la $1 
+
+rfile_title=Editați fișierul automat
+rfile_desc=Utilizați zona de text de mai jos pentru a edita mesajul de autoreply în $1. Mesajul poate conține macros macro $SUBJECT, $FROM, $TO, $DATE și $BODY, care vor fi extinse atunci când este activată automată.
+rfile_desc2=Puteți seta, de asemenea, anteturi de e-mail care adaugă sau înlocuiește valorile implicite utilizate în autoreply introducând linii precum: <br><tt> De la: foo@bar.com </tt><br> <tt>Subiect: În vacanță</tt> <br> în partea de sus a mesajului, separată de corp printr-o singură linie goală.
+rfile_efile=Nu aveți voie să editați $1.
+rfile_undo=Anulează modificările
+rfile_replies=Urmăriți răspunsurile pentru a preveni buclele de e-mail?
+rfile_none=Nu
+rfile_file=Da, folosind fișierul jurnal
+rfile_period=Interval minim între răspunsuri
+rfile_default=Implicit (1 oră)
+rfile_secs=secunde
+rfile_ereplies=Lipsește fișierul jurnal de urmărire a răspunsului
+rfile_eperiod=Lipsește sau este nevalid un număr de secunde între răspunsuri
+rfile_no_autoreply=Nu trimiteți autoreplici la
+rfile_from=De la: adresa pentru răspuns
+rfile_auto=Automat (bazat pe adresa destinatarului)
+rfile_efrom=Lipsește de la: adresa
+rfile_fromdesc=O adresă From: ar trebui să fie întotdeauna specificată acolo unde este posibil, deoarece metoda automată poate să nu fie fiabilă.
+
+ffile_title=Editează fișierul de filtrare
+ffile_desc=Utilizați formularul de mai jos pentru a configura regulile de filtrare din fișierul $1.
+ffile_efile=Nu aveți voie să editați $1.
+ffile_line=Dacă câmpul $1 $2 $3 atunci trimiteți la $4 
+ffile_from=din
+ffile_to=la
+ffile_subject=subiect
+ffile_cc=CC
+ffile_body=corp
+ffile_what0=nu se potrivește
+ffile_what1=chibrituri
+ffile_other=În caz contrar, transmiteți $1 
+ffile_err=Nu a reușit să salvați fișierul de filtru
+ffile_ematch=Meciul lipsă
+ffile_eaction=Adresa de expediere lipsește
+
+queue_title=Coadă de e-mail
+queue_count=$1 Mesaje
+queue_none=În prezent, nu există mesaje de e-mail în coadă pentru livrare
+queue_id=ID de e-mail
+queue_date=Trimis
+queue_from=Din
+queue_to=La
+queue_cc=Cc
+queue_subject=Subiect
+queue_return=coadă de mail
+queue_delete=Ștergeți mesajele selectate
+queue_all=Selectează tot
+queue_invert=Inverseaza selectia
+queue_refresh=Actualizează coada de e-mail
+queue_refreshdesc=Reîncărcați această pagină pentru a afișa starea curentă a cozii de e-mail.
+
+qview_title=Mesaj în coadă
+qview_desc=Din fișierul $1 
+qview_headers=Anteturi de e-mail
+qview_attach=Fișiere atașate
+
+assigns_title=Trimitere prin corespondență utilizator
+assigns_return=misiunile utilizatorilor de e-mail
+assigns_toomany=Există prea mulți utilizatori de poștă pe sistemul dvs. pentru a fi afișate pe această pagină.
+assigns_go=Găsiți utilizatori de e-mail care se potrivesc:
+assigns_address=Adresa de e-mail
+assigns_user=Utilizator Unix
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=Director de acasă
+assigns_desc=Sarcinile utilizatorilor prin poștă vă permit să creați căsuțe poștale pentru utilizatorii care nu sunt definiți în lista de utilizatori Unix. Fiecare misiune va livra e-mail pentru un nume de utilizator sau model de utilizator ales, ca și cum ar fi fost livrat la căsuța poștală a unui utilizator Unix.
+assigns_delete=Ștergeți utilizatorii de poștă selectați
+
+sform_edit=Editare utilizator de e-mail
+sform_create=Creați un utilizator de e-mail
+sform_address=Adresa de utilizator
+sform_mode0=Nume utilizator exact
+sform_mode1=Nume de utilizator începând cu
+sform_user=Utilizator Unix
+sform_uid=UID
+sform_gid=GID
+sform_home=Director de acasă
+
+ssave_err=Nu a reușit salvarea utilizatorului de e-mail
+ssave_eaddress=Numele de utilizator al adresei lipsă sau nevalid
+ssave_euser=Utilizator Unix lipsă sau nevalid
+ssave_euid=UID lipsă sau nevalid
+ssave_egid=GID lipsă sau nevalidă
+ssave_ehome=Directorul principal lipsit sau nevalid
+
+sdelete_err=Nu a reușit să ștergeți utilizatorii de e-mail
+
+delete_egone=Mesajul în coadă nu mai există
+delete_ebogus=Nume de fișier coadă nevalid
+
+boxes_title=Căsuțe poștale pentru utilizator
+boxes_user=Utilizator
+boxes_size=Dimensiunea căsuței poștale
+boxes_none=Fără mail
+boxes_return=cutiile poștale
+boxes_sent=E-mail trimis
+boxes_ecannot=Nu aveți voie să citiți e-mailuri
+boxes_toomany=Există prea mulți utilizatori pe sistemul dvs. pentru a lista toate căsuțele poștale.
+boxes_go=Vizualizare e-mail pentru utilizator:
+
+mail_title=E-mail utilizator
+mail_from=Din
+mail_date=Data
+mail_subject=Subiect
+mail_to=La
+mail_cc=Cc
+mail_bcc=Bcc
+mail_pri=Prioritate
+mail_highest=Cel mai inalt
+mail_high=Înalt
+mail_normal=Normal
+mail_low=Scăzut
+mail_lowest=Cel mai mic
+mail_for=În 1
+mail_for2=Pentru utilizator $1 
+mail_sent=În lista de e-mailuri trimise
+mail_size=mărimea
+mail_delete=Șterge
+mail_compose=Compune
+mail_return=căsuța poștală a utilizatorului
+mail_pos=Mesaje $1 la $2 din $3 
+mail_none=Această căsuță poștală nu are mesaje
+mail_ecannot=Nu aveți voie să citiți e-mailul acestui utilizator
+mail_all=Selectează tot
+mail_invert=Inverseaza selectia
+mail_search=Găsiți mesaje unde
+mail_body=Corp
+mail_match=chibrituri
+mail_ok=Căutare
+mail_nonefrom=Nici unul
+mail_mark=Marcați ca:
+mail_mark0=necitită
+mail_mark1=Citit
+mail_mark2=Special
+mail_forward=Redirecţiona
+mail_rfc=Din linie
+mail_move=Treceți la:
+mail_eexists=Mesajul nu mai există!
+
+view_title=Citiți e-mail
+view_desc=Mesaj $1 în $2 
+view_desc2=Mesaj $1 pentru utilizator $2 
+view_desc3=Mesajul $1 
+view_sent=Mesaj $1 în lista de e-mailuri trimise
+view_qdesc=Mesaj în coada $1 
+view_headers=Anteturi de e-mail
+view_allheaders=Vizualizați toate anteturile
+view_noheaders=Vizualizați anteturile de bază
+view_attach=Fișiere atașate
+view_reply=Răspuns
+view_reply2=Răspunde la toți
+view_enew=Editează ca nou
+view_forward=Redirecţiona
+view_delete=Șterge
+view_strip=Eliminați atașamentele
+view_ecannot=Nu aveți voie să citiți e-mailul acestui utilizator
+view_mark=Marcați mesajul ca:
+view_mark0=necitită
+view_mark1=Citit
+view_mark2=Special
+view_return=e-mail original
+view_sub=E-mail atașat
+
+compose_title=Scrie un email
+reply_title=Răspundeți la e-mail
+forward_title=Redirecționare email
+enew_title=Editează e-mail
+reply_headers=Anteturi de e-mail
+reply_attach=Atașamente transmise
+reply_mailforward=Mesaje transmise
+reply_attach2=Atașamente din partea clientului și a serverului
+reply_send=Trimite e-mail
+reply_ecannot=Nu aveți voie să trimiteți e-mail ca utilizator
+
+send_err=Eroare la trimiterea e-mailului
+send_eto=Lipsește adresa
+send_efrom=Lipsește de la adresa
+send_title=Mail trimis
+send_ok=E-mail a fost trimis cu succes către $1 
+send_ecannot=Nu aveți voie să trimiteți e-mail ca utilizator
+send_esmtp=Comanda SMTP $1 a eșuat : $2 
+send_efile=Fișierul atașat $1 nu există
+send_eattach=Fișierele atașate nu pot totaliza mai mult de $1 kB.
+send_eperms=Utilizatorul $1 nu poate citi $2 
+send_eperms2=Nu aveți voie să trimiteți fișierul $1 
+send_epath=Sendmail executabil $1 nu există.
+
+delete_title=Ștergeți e-mail
+delete_rusure=Sigur doriți să ștergeți mesajele selectate $1 din $2 ? Este posibil să dureze ceva timp pentru un fișier de mail mare. Până la terminarea ștergerii, nu trebuie efectuată nicio altă acțiune.
+delete_rusure2=Sigur doriți să ștergeți acest mesaj din $1 ? Este posibil să dureze ceva timp pentru un fișier de mail mare. Până la terminarea ștergerii, nu trebuie efectuată nicio altă acțiune.
+delete_ok=Șterge acum
+delete_ecannot=Acum vi se permite să ștergeți e-mailul de la acest utilizator
+delete_enone=Nu a fost selectată nicio e-mail pentru ștergere
+delete_emnone=Nu a fost selectată poștă pentru a marca
+delete_nobutton=Nu a apăsat niciun buton
+
+search_title=rezultatele cautarii
+search_ecannot=Nu aveți voie să căutați pe e-mailul acestui utilizator
+search_ematch=Trebuie să introduceți text pentru a se potrivi cu.
+search_efield=Trebuie să selectați un tip de căutare.
+search_none=Nu a fost găsit niciun mesaj.
+search_results2=$1 mesaje de poștă potrivite $2 ..
+search_results3=$1 mesaje de e-mail care nu corespund $2 ..
+
+match_from=Din: meciuri
+match_subject=Subiect: meciuri
+match_to=Către: meciuri
+match_cc=Cc: chibrituri
+match_date=Data: meciuri
+match_body=Chibrituri de corp
+match_size=Dimensiunea este mai mare decât
+match_headers=Meciul anteturilor
+match_=-----------------
+match_!from=De la: nu se potrivește
+match_!subject=Subiect: nu se potrivește
+match_!to=Pentru: nu se potrivește
+match_!cc=Cc: nu se potrivește
+match_!date=Data: nu se potrivește
+match_!body=Corpul nu se potrivește
+match_!size=Dimensiunea este mai mică decât
+match_!headers=Anteturile nu se potrivesc
+
+delq_titles=Ștergerea mesajelor
+delq_rusure=Sigur doriți să ștergeți mesajele selectate la coada selectate $1 ?
+delq_confirm=Ștergeți mesajele

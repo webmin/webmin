@@ -1,0 +1,3 @@
+name_th=ด้วง
+desc_th=GRUB Boot Loader
+longdesc_th=กำหนดค่าบูตโหลดเดอร์ Linux GRUB เพื่ออนุญาตการเลือกระบบปฏิบัติการและเมล็ดต่าง ๆ ในเวลาบูต

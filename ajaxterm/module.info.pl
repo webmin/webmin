@@ -1,2 +1,2 @@
 desc_pl=Tryb tekstowy (konsola)
-longdesc_pl=Dostêp do pow³oki systemowej bez konieczno¶ci u¿ywania oddzielnego klienta SSH, u¿ywaj±c Ajaxterm
+longdesc_pl=DostÄ™p do powÅ‚oki systemowej bez koniecznoÅ›ci uÅ¼ywania oddzielnego klienta SSH, uÅ¼ywajÄ…c Ajaxterm

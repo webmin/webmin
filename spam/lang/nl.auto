@@ -1,0 +1,41 @@
+index_unknown=onbekend
+white_addr2=Adres van ontvanger
+
+amavisd_title=Amavisd Spam Levering
+amavisd_desc=Het formulier kan worden gebruikt om de Amavisd-configuratie te wijzigen die bepaalt wat er gebeurt met berichten die als spam zijn geclassificeerd.
+amavis_ok=Amavisd-levering wijzigen
+amavis_tab_config=Amavisd-configuratie
+amavis_tab_quarantine=Spam Quarantine
+amavis_warn=Als u Amavisd gebruikt voor spamfiltering, worden sommige opties genegeerd.
+amavis_econfig=Het Amavisd-configuratiebestand $1 is niet gevonden op uw systeem. Misschien is Amavisd niet geïnstalleerd of is uw <a href='$2'>moduleconfiguratie</a> onjuist.
+amavis_hits=Klappen waarboven een bericht als spam wordt beschouwd.
+amavis_ehit=Klappen waarboven een bericht als spam wordt beschouwd, is geen waarde!
+amavis_ekill=Hits waarboven een Spam-bericht in quarantaine is geplaatst, is geen waarde!
+amavis_edsn=Hits waarboven geen melding naar de afzender wordt verzonden, is geen waarde!
+amavis_ecut=Hits waarboven een Spam-bericht wordt verwijderd, is geen waarde!
+amavis_eheader=Waarde voor onderwerp wijzigen: koptekst is geen waarde!
+amavis_esize=Waarde voor grootte boven welke een bericht niet is aangevinkt Spam is geen waarde!
+amavis_echar=Er moet een enkel teken worden ingevoerd voor de X-Spam-Level: header
+amavis_esubject=Waarde voor tekst vooraf aan onderwerp: koptekst is geen waarde!
+amavis_elocal=Waarde voor het uitschakelen van internetbronnen is geen waarde!
+amavis_quarantine_level=Hits waarboven een Spam-bericht in quarantaine is geplaatst.
+amavis_dsn_level=Klappen waarboven geen melding naar afzender wordt verzonden.
+amavis_delete_level=Hits waarboven een Spam-bericht wordt verwijderd.
+amavis_report_header=X-Spam-header invoegen in Spam-bericht?
+
+amavis_level_char=Teken dat wordt gebruikt om Spam-niveau weer te geven in X-Spam-niveau: koptekst.
+amavis_rewrite=Onderwerp wijzigen: header van spam?
+amavis_rsubject=Tekst voorafzetten naar Onderwerp: koptekst
+amavis_size_limit=Berichtgrootte in bytes boven welk bericht niet is gecontroleerd op spam.
+amavis_local_only=Internetbronnen uitschakelen voor spamcontroles?
+amavis_quarantine_desc=Laat zien waar Spam in quarantaine is geplaatst door Amavisd, geef ook spamstatistieken weer als lokale quarantaine is ingeschakeld. Als Quarantaine is uitgeschakeld of doorgestuurd naar een e-mailadres, kunnen spamstatistieken niet worden weergegeven.
+amavis_quarantine_off=Spam Quarantine is uitgeschakeld op uw systeem. Wijzig <tt>spam_Quarantine_to</tt> in <tt>spamquarantaine</tt> in bestand <tt>$1</tt> om Quaratine in te schakelen.
+amavis_nostat=Het is niet mogelijk om spamstatistieken weer te geven.
+amavis_spam_admin=E-mailadres waarnaar meldingen worden verzonden (Spam-beheerder)
+amavis_quarantine_mail=Spam in Quarantaine wordt doorgestuurd naar e-mailadres
+amavis_quarantine_bsmtp=Spam is in quarantaine geplaatst in BSMTP-indeling op het lokale bestandssysteem als
+amavis_quarantine_local=Spam is in quarantaine geplaatst in MBOX-indeling op het lokale bestandssysteem als
+amavis_quarantine_today=Spam-mails vandaag in Quarantine (24 uur)
+amavis_quarantine_week=Spam-mails in Quarantaine deze week (7 dagen)
+amavis_quarantine_month=Spam-mails in Quarantaine deze maand (30 dagen)
+amavis_quarantine_total=Totaal aantal spam-mails in quarantaine

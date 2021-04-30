@@ -13,7 +13,7 @@ my $dom = $zone->{'name'};
 	&error($text{'recs_ecannot'});
 &can_edit_type($in{'type'}, \%access) ||
 	&error($text{'recs_ecannottype'});
-my $desc = &text('recs_header', &ip6int_to_net(&arpa_to_ip($dom)));
+my $desc = &text('recs_header', &zone_subhead($zone));
 my $typedesc = $text{"recs_$in{'type'}"} || $in{'type'};
 &ui_print_header($desc, &text('recs_title', $typedesc), "",
 		 undef, undef, undef, undef, &restart_links($zone));
@@ -89,7 +89,7 @@ else {
 my %hmap;
 if (@recs) {
 	@recs = &sort_records(@recs);
-	foreach my $v (keys %text) {
+	foreach my $v (sort { $a cmp $b } keys %text) {
 		if ($v =~ /^value_([A-Z0-9]+)(\d+)/) {
 			$hmap{$1}->[$2-1] = $text{$v};
 			}
@@ -180,7 +180,7 @@ for(my $i=0; $i<@_; $i++) {
 	if ($in{'type'} eq 'ALL') {
 		push(@cols, $r->{'type'});
 		}
-	if ($r->{'ttl'} =~ /(\d+)([SMHDW]?)/i) {
+	if ($r->{'ttl'} && $r->{'ttl'} =~ /(\d+)([SMHDW]?)/i) {
 		$r->{'ttl'} =~ s/S//i;
 		if ($r->{'ttl'} =~ s/M//i) { $r->{'ttl'} *= 60; }
 		if ($r->{'ttl'} =~ s/H//i) { $r->{'ttl'} *= 3600; }
@@ -237,6 +237,14 @@ for(my $i=0; $i<@_; $i++) {
 					}
 				$v = $v ? $v." (".$r->{'values'}->[$j].")"
 					: $r->{'values'}->[$j];
+				}
+			elsif ($in{'type'} eq "CAA") {
+				if ($j == 0) {
+					$v = $v ? $text{'yes'} : $text{'no'};
+					}
+				elsif ($j == 1) {
+					$v = $text{'value_caa_'.$v} || $v;
+					}
 				}
 			}
 		if (length($v) > 80) {

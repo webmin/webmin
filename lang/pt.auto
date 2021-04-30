@@ -1,0 +1,59 @@
+category_=Ferramentas
+
+longcategory_=Módulos que realizam outras tarefas diversas
+
+fail=Falhou
+euserdbacl=Falha ao buscar a ACL do usuário : $1
+euserdbacl2=Falha ao atualizar a ACL do usuário : $1
+egroupdbacl=Falha ao buscar a ACL do grupo : $1
+egroupdbacl2=Falha ao atualizar o grupo ACL : $1
+
+config_emodule=O módulo não existe
+
+referer_fix3u=Verifique se o seu navegador está configurado para enviar informações de referência para que possam ser verificadas pelo Webmin.
+
+session_twofactor=Token de dois fatores
+session_twofailed=Falha na autenticação de dois fatores : $1
+
+elock_tries2=Falha ao bloquear o arquivo $1 após $2 minutos. O último erro foi : $3
+
+ui_filterbox=Digite para filtrar ..
+
+sql_emysqldriver=Falha ao carregar o driver DBI do MySQL
+sql_emysqlconnect=Falha ao conectar ao banco de dados MySQL : $1
+sql_epostgresqldriver=Falha ao carregar o driver PostgreSQL DBI
+sql_epostgresqlconnect=Falha ao conectar ao banco de dados PostgreSQL : $1
+sql_eldapdriver=Falha ao carregar o módulo perl LDAP
+sql_eldapconnect=Falha ao conectar ao servidor LDAP $1
+sql_eldaptls=Falha ao iniciar a criptografia TLS para LDAP : $1
+sql_eldaplogin=Falha ao efetuar login no servidor LDAP como $1 : $2 
+
+log_email_subject=Ação Webmin em $1
+log_email_global=Ação global Webmin
+log_email_desc=Este email foi enviado pelo Webmin em resposta a uma ação do usuário.
+log_email_mod=Módulo Webmin: $1
+log_email_moddesc=Título do módulo: $1
+log_email_time=Ação executada em: $1
+log_email_system=Executado no sistema: $1
+log_email_user=Executado pelo usuário: $1
+log_email_script=Script Webmin: $1
+log_email_session=ID da sessão: $1
+log_email_remote=Endereço do cliente: $1
+
+nice_size_PB=PB
+nice_size_PiB=PiB
+nice_size_TB=tb
+nice_size_TiB=TiB
+nice_size_GB=GB
+nice_size_GiB=GiB
+nice_size_MB=MB
+nice_size_MiB=MiB
+nice_size_kB=kB
+nice_size_kiB=KiB
+nice_size_b=bytes
+
+langauto_include=Incluir traduções automáticas
+
+file_truncated_message=buscou $1 de dados, truncado $2 de $3 
+file_truncated_message_head=buscado começando $1 de dados, truncado $2 de $3 
+file_truncated_message_tail=obtido até o final de $1 de dados, truncado $2 de $3 

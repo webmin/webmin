@@ -1,0 +1,3 @@
+longdesc_it=Configurare un sistema come client NIS, server master o slave. Si noti che NIS + non è supportato.
+name_it=NIS
+desc_it=Client e server NIS

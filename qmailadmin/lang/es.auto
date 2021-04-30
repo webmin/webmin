@@ -1,0 +1,181 @@
+aliases_delete=Eliminar alias seleccionados
+
+adelete_err=Error al eliminar alias
+adelete_enone=Ninguna seleccionada
+
+routes_delete=Eliminar rutas de dominio seleccionadas
+
+rdelete_err=Error al eliminar rutas de dominio
+
+virts_delete=Eliminar asignaciones virtuales seleccionadas
+
+vdelete_err=Error al eliminar asignaciones virtuales
+
+log_delete_aliases=$1 alias eliminados
+log_delete_virts=Se eliminaron $1 asignaciones virtuales
+log_delete_routes=Rutas $1 eliminadas
+log_delete_assigns=$1 usuarios de correo eliminados
+log_delmail=Mensajes $1 eliminados de $2 
+log_movemail=Se movieron $1 mensajes de $2 a $3 
+log_send=Correo enviado a $1 
+
+rfile_desc2=También puede establecer encabezados de correo que agreguen o reemplacen los valores predeterminados utilizados en la respuesta automática colocando líneas como: <br><tt> De: foo@bar.com </tt><br> <tt>Asunto: En vacaciones</tt> <br> en la parte superior del mensaje, separados del cuerpo por una sola línea en blanco.
+rfile_replies=¿Rastrear respuestas para evitar bucles de correo?
+rfile_none=No
+rfile_file=Sí, usando el archivo de registro
+rfile_period=Intervalo mínimo entre respuestas
+rfile_default=Por defecto (1 hora)
+rfile_secs=segundos
+rfile_ereplies=Falta el archivo de registro de seguimiento de respuestas
+rfile_eperiod=Número de segundos faltantes o inválidos entre respuestas
+rfile_no_autoreply=No envíe respuestas automáticas a
+rfile_from=De: dirección para respuesta
+rfile_auto=Automático (según la dirección del destinatario)
+rfile_efrom=Falta de: dirección
+rfile_fromdesc=Siempre se debe especificar una dirección De: siempre que sea posible, ya que el método automático puede no ser confiable.
+
+queue_count=$1 mensajes
+queue_refresh=Actualizar la cola de correo
+queue_refreshdesc=Vuelva a cargar esta página para mostrar el estado actual de la cola de correo.
+
+qview_title=Mensaje en cola
+qview_desc=Del archivo $1 
+qview_headers=Encabezados de correo
+qview_attach=Archivos adjuntos
+
+assigns_delete=Eliminar usuarios de correo seleccionados
+
+sdelete_err=Error al eliminar usuarios de correo
+
+delete_ebogus=Nombre de archivo de cola no válido
+
+boxes_user=Usuario
+boxes_size=Tamaño del buzón
+boxes_none=Sin correo
+boxes_return=buzones
+boxes_sent=Correo enviado
+boxes_ecannot=No tienes permiso para leer correos electrónicos
+boxes_toomany=Hay demasiados usuarios en su sistema para enumerar todos sus buzones.
+boxes_go=Ver correo para el usuario:
+
+mail_title=Email del usuario
+mail_from=Desde
+mail_date=Fecha
+mail_subject=Tema
+mail_to=A
+mail_cc=Cc
+mail_bcc=Bcc
+mail_pri=Prioridad
+mail_highest=Más alto
+mail_high=Alto
+mail_normal=Normal
+mail_low=Bajo
+mail_lowest=Más bajo
+mail_for=En 1
+mail_for2=Para el usuario $1 
+mail_sent=En la lista de correo enviado
+mail_size=Talla
+mail_delete=Eliminar
+mail_compose=Componer
+mail_return=buzón de usuario
+mail_pos=Mensajes $1 a $2 de $3 
+mail_none=Este buzón no tiene mensajes.
+mail_ecannot=No tiene permiso para leer el correo electrónico de este usuario
+mail_all=Seleccionar todo
+mail_invert=Invertir selección
+mail_search=Encuentra mensajes donde
+mail_body=Cuerpo
+mail_match=partidos
+mail_ok=Buscar
+mail_nonefrom=Ninguna
+mail_mark=Marcar como:
+mail_mark0=No leído
+mail_mark1=Leer
+mail_mark2=Especial
+mail_forward=Adelante
+mail_rfc=De la línea
+mail_move=Mover a:
+mail_eexists=¡El mensaje ya no existe!
+
+view_desc2=Mensaje $1 para el usuario $2 
+view_desc3=Mensaje $1 
+view_sent=Mensaje $1 en la lista de correo enviado
+view_qdesc=Mensaje en cola $1 
+view_allheaders=Ver todos los encabezados
+view_noheaders=Ver encabezados básicos
+view_reply=Respuesta
+view_reply2=Responder a todos
+view_enew=Editar como nuevo
+view_forward=Adelante
+view_delete=Eliminar
+view_strip=Eliminar archivos adjuntos
+view_ecannot=No tiene permiso para leer el correo electrónico de este usuario
+view_mark=Marcar mensaje como:
+view_mark0=No leído
+view_mark1=Leer
+view_mark2=Especial
+view_return=correo original
+view_sub=Correo adjunto
+
+compose_title=Escribir correo
+reply_title=Responder a un correo electrónico
+forward_title=Redirigir correo
+enew_title=Editar correo electrónico
+reply_headers=Encabezados de correo
+reply_attach=Adjuntos enviados
+reply_mailforward=Mensajes reenviados
+reply_attach2=Adjuntos del lado del cliente y del servidor
+reply_send=Enviar correo
+reply_ecannot=No tienes permiso para enviar correos como este usuario
+
+send_err=Error al enviar correo
+send_eto=Falta a la dirección
+send_efrom=Dirección de falta
+send_title=Correo enviado
+send_ok=Correo enviado con éxito a $1 
+send_ecannot=No tienes permiso para enviar correos como este usuario
+send_esmtp=El comando SMTP $1 falló : $2 
+send_efile=El archivo adjunto $1 no existe
+send_eattach=Los archivos adjuntos no pueden sumar más de $1 kB de tamaño.
+send_eperms=El usuario $1 no puede leer $2 
+send_eperms2=No tiene permiso para enviar el archivo $1 
+send_epath=El ejecutable de Sendmail $1 no existe.
+
+delete_title=Eliminar correo
+delete_rusure=¿Está seguro de que desea eliminar los mensajes seleccionados $1 de $2 ? Esto puede tomar algún tiempo para un archivo de correo grande. Hasta que la eliminación haya finalizado, no se debe realizar ninguna otra acción.
+delete_rusure2=¿Seguro que quieres eliminar este mensaje de $1 ? Esto puede tomar algún tiempo para un archivo de correo grande. Hasta que la eliminación haya finalizado, no se debe realizar ninguna otra acción.
+delete_ok=Elimina ahora
+delete_ecannot=Ahora puede borrar el correo de este usuario
+delete_enone=Ningún correo seleccionado para eliminar
+delete_emnone=Ningún correo seleccionado para marcar
+delete_nobutton=No se hizo clic en ningún botón
+
+search_title=Resultados de la búsqueda
+search_ecannot=No tiene permitido buscar el correo electrónico de este usuario
+search_ematch=Debes ingresar texto para comparar.
+search_efield=Debes seleccionar un tipo de búsqueda.
+search_none=No se han encontrado mensajes.
+search_results2=$1 mensajes de correo que coinciden con $2 ..
+search_results3=$1 mensajes de correo no coinciden con $2 ..
+
+match_from=De: partidos
+match_subject=Asunto: partidos
+match_to=Para: coincidencias
+match_cc=Cc: partidos
+match_date=Fecha: partidos
+match_body=Partidos del cuerpo
+match_size=El tamaño es mayor que
+match_headers=Encabezados coinciden
+match_=-----------------
+match_!from=De: no coincide
+match_!subject=Asunto: no coincide
+match_!to=Para: no coincide
+match_!cc=Cc: no coincide
+match_!date=Fecha: no coincide
+match_!body=El cuerpo no coincide
+match_!size=El tamaño es menor que
+match_!headers=Los encabezados no coinciden
+
+delq_titles=Eliminar mensajes
+delq_rusure=¿Está seguro de que desea eliminar los mensajes en cola seleccionados $1 ?
+delq_confirm=Eliminar mensajes

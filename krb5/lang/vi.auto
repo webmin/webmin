@@ -1,0 +1,17 @@
+index_title=Cấu hình Kerberos5
+index_econf=Không tìm thấy tệp cấu hình Kerberos5 $1 trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> không chính xác.
+
+logging=Đăng nhập tập tin
+default_log=Tệp nhật ký mặc định
+kdc_log=Tệp nhật ký KDC
+admin_log=Tệp nhật ký máy chủ quản trị
+
+libdefaults=Cấu hình mặc định
+dns_kdc=Sử dụng DNS để tra cứu KDC
+default_realm=Vương quốc
+domain=Tên miền
+default_kdc=KDC
+default_admin=Máy chủ quản trị
+default_domain=Tên miền mặc định
+
+save=Cập nhật cấu hình

@@ -1,0 +1,34 @@
+index_manual=Bewerk configuratiebestanden
+
+manual_title=Bewerk configuratiebestanden
+manual_file=Selecteer een configuratiebestand om te bewerken:
+manual_change=Verandering
+manual_editing=Gebruik het onderstaande tekstvak om de configs in $1 handmatig te bewerken. Wees voorzichtig, omdat er geen syntaxis of geldigheidscontrole wordt uitgevoerd.
+manual_err=Kan configuratiebestand niet opslaan
+manual_efile=Ongeldige configuratie bestandsnaam!
+manual_ecannot=Het is niet toegestaan om configuratiebestanden handmatig te bewerken
+
+acl_nodns=Opzoeken uitschakelen?
+
+ech_siq2=ICP-vragen weigeren?
+
+elogs_squid=Inktvis standaard
+
+eports_all=Allemaal
+
+eprogs_sppe=Ping-programma ingeschakeld?
+eprogs_startup=Programma's om in eerste instantie te starten
+eprogs_idle=Minimale programma's om uit te voeren
+eprogs_concurrency=Aantal gelijktijdige aanvragen per programma
+
+sprog_emsg10='$1' is geen geldige TTL
+sprog_echildren=Aantal programma's moet een getal groter dan nul zijn
+
+ext_children=Aantal uit te voeren programma's
+ext_children_u=programma's
+ext_echildren=Ontbrekend of ongeldig aantal programma's
+
+iptables_enabled3=Poortomleiding is ingeschakeld voor clients op het netwerk
+iptables_enabled4=Poortomleiding is ingeschakeld voor clients op de interface
+
+syslog_access=Squid toegangslogboek

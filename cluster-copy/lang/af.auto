@@ -1,0 +1,67 @@
+index_title=Cluster Copy lêers
+index_add=Skep 'n nuwe geskeduleerde lêerkopie.
+index_none=Geen geskeduleerde lêerkopieë is gedefinieer nie.
+index_servers=Kopieer na bedieners
+index_return=lys van groepe kopieë
+index_more=$1 meer ..
+index_run=nou loop ..
+index_files=Lêers om te kopieër
+index_sched=Geskeduleer?
+index_when=Ja, $1 
+index_act=aksie
+index_exec=uit te voer
+index_delete=Vee geselekteerde kopieë uit
+
+edit_title=Wysig klusterkopie
+create_title=Skep klusterkopie
+edit_header=Besonderhede oor klusterkopie
+edit_files=Lêers om te kopieër
+edit_dest=Bestemmingsgids
+edit_cmd=Opdrag om te loop na kopiëring
+edit_before=Opdrag om te loop voor kopiëring
+edit_remote=Op afgeleë bedieners
+edit_dmode0=Kopieer volledige paaie onder die gids
+edit_dmode1=Kopieer na hierdie gids
+edit_servers=Kopieer na bedieners
+edit_group=Lede van $1 
+edit_this=hierdie bediener
+edit_all=&lt;Alle gashere&gt;
+edit_sched=Kopieer volgens skedule?
+edit_schedyes=Ja, soms hieronder gekies.
+edit_run=Kopieer nou
+edit_return=klusterkopie
+edit_email=E-posuitvoer na
+edit_none=niemand
+
+save_err=Kon nie cluster-cron-werk stoor nie
+save_efiles=Geen lêers om te kopieer is ingevoer nie
+save_edest=Ontbrekende bestemmingsgids
+save_eservers=Geen bedieners om in te voer nie
+save_efile=Lêer om '$1' te kopieer, is nie 'n absolute pad nie
+save_eemail=E-posadres ontbreek of ongeldig
+
+exec_title=Kopieer lêers
+exec_files1=Kopieer $1 lêers na geselekteerde bedieners $2.
+exec_files2=Kopieer $1 na geselekteerde bedieners $2.
+exec_under=(onder gids $1)
+exec_failed=Kon nie na $1 : $2 kopieër nie
+exec_success=Die volgende lêers is na $1 gekopieër :
+exec_made=Skep die volgende kaarte op $1  :
+exec_nohosts=Geen leërskare is gekies om mee te hardloop nie, of geselekteerde groepe bevat geen bruikbare leërskare nie.
+exec_nothing=Geen lêers is suksesvol na $1 gekopieër nie.
+exec_not=Kon nie die volgende lêers na $1 kopieër nie :
+exec_cmd=Na-kopie opdraguitset op $1  :
+exec_before=Vooropskrifopdrag op $1  :
+exec_on=Kon nie op $1 : $2 loop nie
+
+log_create=Geskep kopie vir $1 tot $2 bedieners
+log_modify=Gewysigde kopie vir $1 tot $2 bedieners
+log_delete=Kopie vir $1 tot $2 bedieners is uitgevee
+log_exec=$1 tot $2 bedieners is gekopieër
+log_deletes=$1 eksemplare is uitgevee
+
+email_subject_succeeded=Klusterkopie van $1 het daarin geslaag
+email_subject_failed=Klusterkopie van $1 het misluk
+
+delete_err=Kon nie kopieë uitvee nie
+delete_enone=Geen gekies nie

@@ -1,0 +1,18 @@
+index_title=Komentokuori
+index_ok=Suorita komento:
+index_history=Komentohistoria
+index_clear=Tyhjennä historia
+index_clearcmds=Tyhjennä komennot
+index_desc=Kirjoita suoritettava kuorikomento alla olevaan tekstikenttään. <tt>cd</tt> -komentoa voidaan käyttää seuraavien komentojen hakemiston vaihtamiseen.
+index_pok=Suorita edellinen komento
+index_edit=Muokkaa edellinen
+index_trunced=$2 : n kokonaistuotanto katkaistiin pisteeseen $1.
+index_timedout=Komento lopetettiin suoritettuaan $1 sekunnin.
+
+acl_user=Suorita komennot käyttäjänä
+acl_user_def=Nykyinen Webmin-käyttäjä
+acl_shellenv=Käytätkö valittua käyttäjän ympäristöä?
+acl_chroot=Chroot hakemistoon
+
+log_run=Ran komento $1 
+log_clear=Puhdistettu komentohistoria

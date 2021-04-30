@@ -1,0 +1,28 @@
+providers_return=az útválasztási szolgáltatók listája
+
+route_rules_title=Útválasztási szabályok
+route_rules_desc=Az oldal határozza meg, hogy mely forgalom irányuljon a További útválasztási szolgáltatók oldalon meghatározott szolgáltatókhoz.
+route_rules_ip=IP-cím, hálózat vagy interfész
+route_rules_add=Adjon hozzá egy új útválasztási szabályt.
+route_rules_none=Még nem határoztak meg útválasztási szabályokat.
+route_rules_0=Forgalom forrása
+route_rules_1=Forgalmi rendeltetési hely
+route_rules_2=ellátó
+route_rules_3=Kiemelten fontos
+route_rules_4=Mark
+route_rules_header=Útválasztási szabályok
+
+route_rules_src=Forgalom forrása
+route_rules_dst=Forgalmi rendeltetési hely
+route_rules_prov=Útvonal a szolgáltatón keresztül
+route_rules_main=Alapértelmezett útválasztási táblázat
+route_rules_pri=Szabály prioritása
+route_rules_mark=Jelölje meg a csomagot
+route_rules_nomark=Semmi
+route_rules_esrc=Hiányzik a forgalmi forrás
+route_rules_edst=Hiányzik a forgalmi rendeltetési hely
+route_rules_epri=A szabály prioritásának számnak kell lennie
+route_rules_emark=A csomagjelnek számnak vagy számnak/maszknak kell lennie
+route_rules_return=az útválasztási szabályok listája
+route_rules_edit=Útvonalszabály szerkesztése
+route_rules_create=Hozzon létre útválasztási szabályt

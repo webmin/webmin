@@ -1,0 +1,152 @@
+index_title=PPTP VPN服务器
+index_version=PoPToP版本 $1
+index_epptpd=在您的系统上找不到PoPToP PPTP服务器 $1，或者它不是正确的程序。可能未安装，或者您的<a href='$2'>模块配置</a>不正确。
+index_econfig=在系统上找不到PPTP服务器配置文件 $1。也许您的<a href='$2'>模块配置</a>不正确。
+index_stop=停止PPTP服务器
+index_stopdesc=单击此按钮关闭正在运行的PPTP服务器进程，以便不接受任何新连接。现有的VPN连接将保持活动状态。
+index_start=启动PPTP服务器
+index_startdesc=单击此按钮以启动PPTP服务器进程，以便它可以从客户端接收VPN连接。
+index_apply=应用配置
+index_applydesc=单击此按钮可通过停止并重新启动PPTP服务器进程来应用当前的PPTP服务器选项。对PPP选项和PPP帐户的更改将始终应用于任何新连接
+index_return=模块索引
+index_epppd=系统上未安装PPP服务器程序 $1。 PPTP依靠它来运行。
+
+conf_title=PPTP服务器选项
+conf_ecannot=您无权编辑PPTP服务器选项
+conf_header=PPTP服务器配置
+conf_speed=PPP波特率
+conf_baud=bps
+conf_listen=听地址
+conf_all=所有地址
+conf_localip=服务器连接结束的IP地址
+conf_remoteip=分配给客户端的IP地址
+conf_ipxnets=IPX网络分配
+conf_from=从
+conf_to=至
+conf_option=PPP选项文件
+conf_mode0=全局设置
+conf_mode1=PPTP特定的设置
+conf_mode2=自定义文件
+conf_ipdesc=两个范围内的IP地址可以单独输入（如192.168.1.1），也可以作为范围（如192.168.2.32-64）输入
+conf_err=无法保存服务器选项
+conf_espeed=波特率丢失或无效
+conf_elisten=缺少地址或无效的地址来监听
+conf_eoption=自定义PPP选项文件缺失或外观无效
+conf_elocalip='$1'不是有效的本地IP地址或范围
+conf_eremoteip='$1'不是有效的远程IP地址或范围
+conf_efrom=地址缺少或无效的IPX网络
+conf_eto=IPX网络缺失或无效
+
+options_title=PPP选项
+options_ecannot=您无权编辑PPP选项
+options_desc0=以下 $1中的PPP选项适用于系统接收的所有传入连接，包括那些拨号调制解调器的传入连接。
+options_desc1=以下来自 $1的PPP选项仅适用于所有PPTP连接。
+options_desc2=保存此表单后，所有建立的新连接都将使用它们。
+options_header=PPP连接选项
+options_proxyarp=创建代理ARP条目？
+options_lock=锁定PTY设备文件？
+options_auth=需要验证？
+options_auth0=否，但禁止路由IP
+options_auth1=决不
+options_auth2=总是
+options_login=还要做unix认证吗？
+options_pap=PAP认证
+options_chap=CHAP认证
+options_req=必须使用
+options_all=可能用过了
+options_ref=不能使用
+options_name=认证服务器名称
+options_hn=真实主机名
+options_mtu=最大发送数据包大小
+options_mru=最大接收包大小
+options_err=保存PPP选项失败
+options_emtu=最大发送数据包大小丢失或无效
+options_emru=最大接收数据包大小丢失或无效
+options_ename=用于身份验证的服务器名称丢失或无效
+options_version=PPPd版本 $1
+options_msdesc=下面的选项启用Windows VPN客户端默认使用的MS-CHAP身份验证方法和MPPE加密。但是，MPPE在PPP守护程序和操作系统内核中都需要支持。
+options_mschap=MS-CHAP身份验证
+options_mschap-v2=MS-CHAP版本2身份验证
+options_chapms=MS-CHAP身份验证
+options_chapms-v2=MS-CHAP版本2身份验证
+
+secrets_title=PPP帐户
+secrets_ecannot=您无权编辑PPP帐户
+secrets_return=指数
+secrets_none=尚未创建PPP帐户。
+secrets_enopfile=PPP密码文件 $1在您的系统上不存在。也许未安装PPP，或者您的<a href='$2'>模块配置</a>不正确。
+secrets_table=PPP占 $1
+secrets_user=用户名
+secrets_ips=IP地址
+secrets_uany=任何
+secrets_sany=任何
+secrets_create=创建新的PPP帐户。
+secrets_desc=此页面上列出的PPP帐户取自文件 $1，该文件用于 $3身份验证。仅显示服务器 $2的服务器，而不显示建立传出连接的帐户。
+secrets_delete=删除选定的PPP帐户
+
+edit_secret_etitle=编辑PPP帐户
+edit_secret_ctitle=创建PPP帐户
+edit_secret_acc=PPP帐户
+edit_secret_user=用户名
+edit_secret_serv=服务器
+edit_secret_sany=任何
+edit_secret_uany=任何
+edit_secret_pass=密码
+edit_secret_none=没有
+edit_secret_ffile=从文件
+edit_secret_leave=保持不变
+edit_secret_setto=调成
+edit_secret_vaddr=有效地址
+edit_secret_aany=允许任何
+edit_secret_anone=不准
+edit_secret_alist=允许列出 ..
+edit_secret_save=保存
+edit_secret_del=删除
+edit_secret_return=帐户清单
+
+save_secret_esave=无法保存帐户
+save_secret_enoip=“$1”不是有效地址
+
+stop_err=停止PPTP服务器失败
+stop_egone=不再运行
+stop_ecannot=您无权停止PPTP服务器
+
+start_err=无法启动PPTP服务器
+start_ecannot=您不允许启动PPTP服务器
+
+apply_err=重新启动PPTP服务器失败
+apply_ecannot=您不允许重新启动PPTP服务器
+
+conns_title=活动连接
+conns_ecannot=您无权管理活动连接
+conns_desc=此页面列出了当前与服务器的活动PPTP连接。要强制断开连接，请单击其接口名称。
+conns_iface=PPP接口
+conns_client=客户地址
+conns_stime=自连接
+conns_local=服务器VPN地址
+conns_remote=客户端VPN地址
+conns_none=此时没有PPTP连接似乎处于活动状态。
+conns_unknown=未知
+conns_user=用户名
+
+disc_err=无法断开连接
+disc_egone=连接不再有效
+disc_ekill=进程不再运行
+
+log_secret_create=已创建PPP帐户 $1
+log_secret_modify=修改后的PPP帐户 $1
+log_secret_delete=删除的PPP帐户 $1
+log_deletes=已删除 $1个PPP帐户
+log_conf=修改的PPTP服务器选项
+log_options=修改后的PPP选项
+log_disc=断开连接的客户端 $1
+log_start=启动PPTP服务器
+log_stop=PPTP服务器已停止
+log_apply=应用的PPTP服务器配置
+
+acl_conf=可以编辑配置吗？
+acl_options=可以编辑选项吗？
+acl_secrets=可以管理PPTP帐户吗？
+acl_conns=可以查看连接吗？
+acl_stop=可以停止并启动PPTP服务器吗？
+acl_apply=可以申请配置吗？

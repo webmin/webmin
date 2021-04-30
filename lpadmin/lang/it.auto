@@ -1,0 +1,177 @@
+index_header=Stampanti disponibili
+index_enabled=Abilitato?
+index_accepting=Accettare?
+index_jlist=Lavori ..
+index_jcount=$1 lavori ..
+index_restart=Riavvia Scheduler
+index_restartmsg=Fare clic su questo pulsante per riavviare il processo dello scheduler di stampa. Ciò forzerà l'applicazione della configurazione di stampa corrente.
+index_esystem=Installa il software per il tuo sistema di stampa scelto o usa la <a href='$1'>configurazione del modulo</a> per cambiarlo.
+index_style=Sistema di stampa: $1 
+index_cluster=Server cluster
+index_clusterdesc=Fare clic su questo pulsante per configurare server Webmin aggiuntivi su cui verranno create, aggiornate ed eliminate le stampanti.
+index_delete=Elimina stampanti selezionate
+
+style_solaris=Solaris
+style_linux=Linux LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=CUPS
+style_irix=IRIX
+style_aix=AIX
+
+edit_unlimited=Illimitato
+edit_direct=Connessione TCP diretta
+edit_dport=Porta
+edit_check=Controlla se il server remoto è attivo?
+
+save_erport=La porta remota '$1' non è valida
+save_edhost=L'host diretto '$1' non esiste
+save_edport=Porta diretta mancante o non valida
+save_evalid=Il sistema di stampa non ha consentito questa stampante
+save_errslave=La stampante ha creato OK su questo sistema, ma i seguenti errori si sono verificati sui sistemi cluster : $1 
+save_egone=Nessuna stampante denominata '$1' è stata trovata
+save_errdelslave=La stampante ha eliminato OK su questo sistema, ma i seguenti errori si sono verificati sui sistemi cluster : $1 
+
+jobs_all=Annulla tutti i lavori di stampa
+jobs_bytes=byte
+jobs_test=Stampa pagina di prova
+jobs_cancelsel=Annulla lavori selezionati
+jobs_on=Sulla stampante $1 
+jobs_return=elenco di lavori di stampa
+
+restart_ecannot=Non è consentito riavviare lo scheduler
+restart_err=Impossibile riavviare lo scheduler
+
+redhat_printer2=Modello e driver della stampante
+
+suse_none=Nessuna
+suse_nonemsg=PostScript o stampante di testo
+suse_prog=Programma
+suse_driver=Driver APSfilter
+suse_printer=Tipo di stampante
+suse_res=Risoluzione in DPI
+suse_colour=Stampante a colori?
+suse_paper=Misura del foglio
+suse_method=Metodo di filtro
+suse_auto=Automatico
+suse_ascii=ASCII
+suse_raw=Crudo
+suse_extra=Opzioni extra di ghostscript
+suse_yast2=Driver YAST2
+suse_edriver=Nessun tipo di stampante selezionato
+suse_eres=Risoluzione mancante o non valida
+
+estop=Impossibile arrestare lpd : $1 
+
+acl_restart=Riavvia solo
+acl_pall=Tutte le stampanti
+acl_psel=Selezionato ..
+acl_view=Mostra stampanti non configurabili?
+acl_test=È possibile stampare pagine di prova?
+acl_user=Gestire i lavori di stampa di proprietà di
+acl_user_all=Tutti gli utenti
+acl_user_this=Utente Webmin corrente
+acl_delete=È possibile eliminare le stampanti?
+acl_cluster=È possibile gestire il cluster di stampanti?
+
+log_stop=Pianificatore di stampa interrotto
+log_start=Pianificatore di stampa avviato
+log_restart=Pianificatore di stampa riavviato
+log_cancel_job=Processo di stampa annullato $2 su $1 
+log_cancel_all=Annullati tutti i lavori di stampa su $1 
+log_cancel_sel=$2 lavori di stampa annullati su $1 
+log_create=Stampante creata $1 su $2 
+log_modify=Stampante modificata $1 su $2 
+log_delete=Stampante eliminata $1 su $2 
+log_create_l=Creazione $3 stampante $1 su $2 
+log_modify_l=$3 stampante modificata $1 su $2 
+log_delete_l=$3 stampante eliminata $1 su $2 
+
+linux_paralel=Porta parallela $1 
+linux_serial=Porta seriale $1 (COM $1)
+linux_null=Dispositivo nullo
+linux_usb=Stampante USB $1 
+linux_ecmd=Il comando $1 non è stato trovato sul tuo sistema, a indicare che il sistema di stampa Linux non è installato.
+linux_espool=La directory di spool $1 non esiste sul tuo sistema, il che indica che il sistema di stampa Linux non è installato.
+
+freebsd_paralel=Porta parallela
+freebsd_serial=Porta seriale $1 (COM $1)
+freebsd_ecmd=Il comando $1 non è stato trovato sul tuo sistema, il che indica che il sistema di stampa di FreeBSD non è installato.
+freebsd_espool=La directory di spool $1 non esiste sul tuo sistema, il che indica che il sistema di stampa di FreeBSD non è installato.
+
+openbsd_paralel=Porta parallela
+openbsd_serial=Porta seriale $1 (COM $1)
+
+unixware_paralel=Porta parallela $1 
+unixware_serial=Porta seriale $1 
+unixware_null=Dispositivo nullo
+unixware_ecmd=Il comando $1 non è stato trovato sul tuo sistema, a indicare che il sistema di stampa UnixWare non è installato.
+
+hpux_paralel=Parallelo $1 
+hpux_serial=Seriale $1 
+hpux_null=Dispositivo nullo
+hpux_ecmd=Il comando $1 non è stato trovato sul tuo sistema, a indicare che il sistema di stampa HPUX non è installato.
+hpux_eiface=La directory degli script di interfaccia $1 non esiste sul sistema, a indicare che il sistema di stampa HPUX non è installato.
+
+lprng_paralel=Porta parallela $1 
+lprng_serial=Porta seriale $1 (COM $1)
+lprng_null=Dispositivo nullo
+lprng_ecmd=Il comando $1 non è stato trovato sul tuo sistema, il che indica che il sistema di stampa LPRng non è installato.
+lprng_espool=La directory di spool $1 non esiste sul sistema, il che indica che il sistema di stampa LPRng non è installato.
+
+solaris_paralel=Porta parallela
+solaris_uparalel=Porta parallela Ultra 5/10
+solaris_serial=Porta seriale $1 
+solaris_null=Dispositivo nullo
+solaris_ecmd=Il comando $1 non è stato trovato sul sistema, a indicare che il sistema di stampa Solaris non è installato.
+
+test_title=Stampa pagina di prova
+test_ecannot=Non è consentito stampare pagine di prova
+test_desc=Questo modulo consente di stampare una pagina di prova per la stampante $1. Seleziona il tipo di pagina che desideri stampare :
+test_0=Pagina Postscript in bianco e nero
+test_1=Pagina Postscript a colori
+test_2=Testo ASCII semplice
+test_3=Qualsiasi file caricato
+test_print=Stampa pagina
+test_exec=Stampa della pagina di prova con il comando $1 ..
+test_failed=.. comando fallito!
+test_ok=.. comando completato.
+
+cups_none=Nessuna
+cups_nonemsg=Stampante remota o raw
+cups_prog=Programma
+cups_driver=Driver CUPS
+cups_eprog='$1' non è un programma valido
+cups_opts=Opzioni per $1 
+cups_ecmd=Il comando $1 non è stato trovato sul tuo sistema, a indicare che il sistema di stampa CUPS non è installato.
+
+irix_ecmd=Il comando $1 non è stato trovato sul tuo sistema, il che indica che il sistema di stampa IRIX non è installato.
+irix_eiface=La directory degli script di interfaccia $1 non esiste sul sistema, a indicare che il sistema di stampa IRIX non è installato.
+
+aix_port=Porta stampante $1 
+aix_edesc=Descrizione non valida: sono consentite solo lettere e numeri e nessuno spazio
+aix_ecmd=Il server di stampa AIX $1 non è stato trovato. Forse non è installato o è in uso un altro sistema di stampa.
+
+cluster_title=Server di stampa cluster
+cluster_none=Nessun server è stato ancora aggiunto al cluster di stampanti.
+cluster_host=Nome host
+cluster_desc=Descrizione
+cluster_os=Sistema operativo
+cluster_add=Aggiungi server
+cluster_gadd=Aggiungi server nel gruppo
+cluster_need=È necessario aggiungere server con un login e una password nel modulo Indice server Webmin prima che possano essere gestiti qui.
+cluster_return=server cluster
+cluster_delete=Rimuovi i selezionati
+cluster_ecannot=Non è consentito gestire server di stampanti cluster
+
+add_title=Aggiungi server
+add_msg=Aggiunta di $1 ..
+add_gmsg=Aggiunta di server nel gruppo $1 ..
+add_err=Impossibile aggiungere il server
+add_gerr=Impossibile aggiungere il gruppo
+add_echeck=Il server $1 non ha il modulo di amministrazione della stampante
+add_ediff=Il server $1 utilizza un sistema di stampa diverso ($2) da questo server
+add_ediff2=Il server $1 utilizza un driver di stampa diverso ($2) a questo server
+add_ok=Aggiunto $1, con $2 stampanti.

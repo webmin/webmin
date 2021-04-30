@@ -1,0 +1,17 @@
+index_title=Kerberos5-opstelling
+index_econf=Die Kerberos5-konfigurasielêer $1 is nie op u stelsel gevind nie. Miskien is dit nie geïnstalleer nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
+
+logging=Log lêers
+default_log=Verstek loglêer
+kdc_log=KDC-loglêer
+admin_log=Admin-bediener-loglêer
+
+libdefaults=Standaardkonfigurasie
+dns_kdc=Gebruik DNS om KDC op te soek
+default_realm=gebied
+domain=Domeinnaam
+default_kdc=KDC
+default_admin=Adminbediener
+default_domain=Verstek domeinnaam
+
+save=Dateer die opstelling op

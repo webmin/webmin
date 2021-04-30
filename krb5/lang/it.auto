@@ -1,0 +1,17 @@
+index_title=Configurazione Kerberos5
+index_econf=Il file di configurazione Kerberos5 $1 non è stato trovato sul tuo sistema. Forse non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
+
+logging=Log files
+default_log=File di registro predefinito
+kdc_log=File di registro KDC
+admin_log=File di registro del server di amministrazione
+
+libdefaults=Configurazione predefinita
+dns_kdc=Usa DNS per cercare KDC
+default_realm=Regno
+domain=Nome del dominio
+default_kdc=KDC
+default_admin=Server di amministrazione
+default_domain=Nome dominio predefinito
+
+save=Aggiorna configurazione

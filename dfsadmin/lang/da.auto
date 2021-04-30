@@ -1,0 +1,57 @@
+index_title=NFS-aktier
+index_add=Begynd at dele et nyt bibliotek.
+index_dir=Vejviser
+index_clients=Kunder
+index_everyone=Alle sammen
+index_delete=Slet valgte dele
+index_none=Der eksporteres i øjeblikket ingen mapper til dette system.
+index_apply=Anvend ændringer
+index_applydesc=Klik på denne knap for at anvende den aktuelle konfiguration af fildeling. Dette gør alle de mapper, der er anført ovenfor, tilgængelige med de specificerede indstillinger.
+index_return=liste over aktier
+
+edit_title1=Rediger Del
+edit_title2=Opret deling
+edit_header1=Del detaljer
+edit_dir=Vejviser
+edit_desc=Beskrivelse
+edit_ro=Skrivebeskyttet adgang
+edit_rw=Læse-skriveadgang
+edit_root=Root-adgang
+edit_none=Ingen
+edit_all=Alle værter
+edit_listed=Listede værter ..
+edit_header2=Aktieoptioner
+edit_nosub=Tillade montering af undermapper?
+edit_nosuid=Tillade setuid-filer?
+edit_des=Kunder skal bruge DES?
+edit_kerberos=Kunder skal bruge kerberoer?
+edit_anon=Anonym bruger
+edit_anon0=Ikke indstillet
+edit_anon1=Ingen adgang
+edit_aclok=Tillad ACL'er?
+edit_public=WebNFS-andel?
+edit_index=WebNFS indeksfil
+
+save_err=Kunne ikke gemme delingen
+save_edirectory='$1' er ikke et gyldigt katalognavn
+save_edirectory2=Kataloget '$1' findes ikke
+save_erw=Du har ikke vist nogen værter, som du kan dele læse-skrive med
+save_ero=Du har ikke vist nogen værter, du kan skrive til skrivebeskyttet med
+save_eroot=Du har ikke vist nogen værter at dele rod med
+save_ealready=Kataloget '$1' deles allerede
+save_ehost=Værten '$1' findes ikke
+
+log_modify=Ændret NFS-andel $1 
+log_rename=Ændret NFS-andel $1 til $2 
+log_create=Oprettet NFS-andel $1 
+log_delete=NFS-andel $1 er slettet
+log_apply=Anvendte ændringer
+
+acl_view=Kan redigere NFS-aktier?
+
+ecannot=Du har ikke tilladelse til at administrere NFS-aktier
+
+delete_err=Kunne ikke slette delinger
+delete_enone=Ingen valgt
+
+restart_err=Kunne ikke anvende ændringer

@@ -1,0 +1,37 @@
+index_title=Cluster Cron Jobs
+index_add=Създайте нова работа на клъстер крон.
+index_none=Не са дефинирани задания за клъстер крон.
+index_servers=Стартирайте на сървъри
+index_return=списък с работни места на клъстер крон
+index_more=$1 повече ..
+index_run=Стартирай сега ..
+index_actions=мерки
+
+edit_title=Редактиране на Cluster Cron Job
+create_title=Създайте Cluster Cron Job
+edit_servers=Стартирайте на сървъри
+edit_group=Членове на $1 
+edit_this=този сървър
+edit_all=&lt;Всички хостове&gt;
+edit_emissing=Cron работа вече не съществува!
+
+save_err=Неуспешно запазване на клъстерния крон
+
+exec_title=Изпълнете Cluster Cron Job
+exec_cmd=Изпълнява се $1 на избрани сървъри ..
+exec_failed=Неуспешно стартиране на $1 : $2 
+exec_success=Резултат от $1 ..
+exec_nohosts=Няма избрани хостове за стартиране или избрани групи не съдържат гостоприемни хостове.
+
+log_run=Класира се $1 на $2 сървъри
+log_run_l=Клас $1 на $2 
+log_create=Създаден клъстер cron за $1 
+log_create_l=Създаден клъстер cron задача $2 за $1 
+log_modify=Модифицирана работа на клъстерния крон за $1 
+log_modify_l=Модифицирана задача на клъстерния крон $2 за $1 
+log_delete=Изтрита задача на клъстер крон за $1 
+log_delete_l=Изтрита задача на клъстер крон $2 за $1 
+log_deletes=Изтрити $1 задания на клъстер cron
+
+delete_err=Изтриването на клъстерни задания на cron не успя
+delete_enone=Няма избран

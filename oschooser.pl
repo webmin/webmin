@@ -10,7 +10,7 @@
 $| = 1;
 
 ($oslist, $out, $auto) = @ARGV;
-open(OS, $oslist) || die "failed to open $oslist : $!";
+open(OS, "<".$oslist) || die "failed to open $oslist : $!";
 while(<OS>) {
 	chop;
 	if (/^([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+([^\t]+)\t*(.*)$/) {
@@ -32,8 +32,13 @@ if ($auto) {
 	if (-r "/etc/os-release") {
 		$os_release = `cat /etc/os-release`;
 		}
-	$uname = `uname -a 2>/dev/null`;
+	if (&has_command('uname')) {
+		$uname = `uname -a 2>/dev/null`;
+		}
 	foreach $o (@list) {
+		if ("$^O" =~ /MSWin32/ && "$o->[2]" !~ /windows/) {
+			next;
+		}
 		if ($o->[4] && eval "$o->[4]") {
 			# Got a match! Resolve the versions
 			$ver = $o;

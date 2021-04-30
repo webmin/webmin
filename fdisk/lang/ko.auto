@@ -1,0 +1,118 @@
+index_parted=<tt>parted</tt> 사용
+index_fdisk=<tt>fdisk</tt> 사용
+index_ecmd=파티션 관리에 $1 명령을 사용하도록 선택했지만 시스템에 설치되어 있지 않습니다.
+index_size=크기
+index_hdparmdesc=DMA 모드, 대기 시간 초과 및 읽은 섹터 수와 같은 IDE 드라이브의 설정을 변경하십시오.
+index_smart=스마트 상태 표시
+index_smartdesc=온도 및 오류율을 포함하여이 드라이브가보고 한 상태를 표시합니다.
+index_blink=드라이브 식별
+index_relabel=파티션 지우기
+index_relabeldesc=기존 파티션을 모두 삭제하고 다른 형식으로 새 파티션 테이블을 작성하십시오.
+index_relabel2=파티션 테이블 생성
+index_relabeldesc2=파티션을 추가 할 수 있도록이 디스크에 빈 파티션 테이블을 새로 만드십시오.
+index_dname=디스크 이름
+index_dsize=총합 크기
+index_dmodel=제작 및 모델
+index_dctrl=제어 장치
+index_dacts=행위
+index_dhdparm=IDE 매개 변수
+index_dsmart=스마트 상태
+index_dscsi=SCSI 장치 $1 컨트롤러 $2 
+index_draid=RAID 레벨 $1 
+index_dparts=파티션
+index_none2=이 시스템에 디스크가 없습니다.
+
+megabytes=메가 바이트
+select_cpq=Compaq RAID $1 드라이브 $2 
+select_cpart=Compaq RAID $1 드라이브 $2 파티션 $3 
+select_scsi=SCSI 컨트롤러 $1 버스 $2 대상 $3 LUN $4 
+select_spart=SCSI 컨트롤러 $1 버스 $2 대상 $3 LUN $4 파티션 $5 
+select_newide=IDE 컨트롤러 $1 버스 $2 디스크 $3 
+select_snewide=IDE 컨트롤러 $1 버스 $2 디스크 $3 파티션 $5 
+select_smart=Compaq 스마트 어레이 $1 드라이브 $2 
+select_smartpart=Compaq Smart Array $1 드라이브 $2 파티션 $3 
+select_promise=약속 된 RAID 드라이브 $1 
+select_ppart=약속 된 RAID 드라이브 $1 파티션 $2 
+select_nvme=NVME SSD $1 드라이브 $2 
+select_nvmepart=NVME SSD $1 드라이브 $2 파티션 $3 
+
+edit_mountlvm=LVM 볼륨 그룹 $1 의 일부
+edit_mountiscsi=iSCSI 공유 장치 $1 
+edit_name=파티션 이름
+edit_volid=볼륨 ID
+edit_mkfs2=파일 시스템 생성
+edit_mkfsmsg2=이 파티션에서 선택한 유형의 새 파일 시스템을 빌드하여 기존 파일을 영구적으로 지 웁니다. 새 파티션을 만들거나 기존 파티션을 변경 한 후에이 작업을 수행해야합니다.
+edit_newmount=파티션 마운트 켜기 :
+edit_newmount2=마운트 파티션
+edit_mountas=같이
+edit_mountmsg=파일을 저장하는 데 사용할 수 있도록 시스템의 새 디렉토리에이 파티션을 마운트하십시오. 파일 시스템이 파티션에 이미 생성되어 있어야합니다.
+edit_mountmsg2=사용 가능한 메모리 양을 늘리려면이 파티션을 시스템에서 가상 메모리로 마운트하십시오.
+
+ext3_j=저널 파일 크기
+
+msdos_ff=FAT의 수
+msdos_F_other=다른 ..
+
+xfs_force=파일 시스템 생성 강제
+xfs_b=블록 크기
+
+jfs_s=로그 크기
+jfs_c=불량 블록을 확인 하시겠습니까?
+
+btrfs_l=잎 크기
+btrfs_n=노드 크기
+btrfs_s=섹터 크기
+
+fatx_none=FATX 파일 시스템에 사용할 수있는 옵션이 없습니다.
+
+acl_view=편집 할 수없는 디스크를 볼 수 있습니까?
+
+blink_title=드라이브 식별
+blink_desc=드라이브의 활동 LED가 이제 60 번 켜집니다.
+blink_back=돌아 가기
+
+fs_ext2=오래된 리눅스 네이티브
+fs_minix=미닉스
+fs_msdos=MS-DOS
+fs_vfat=윈도우
+fs_reiserfs=ReiserFS
+fs_ext3=리눅스 네이티브
+fs_ext4=새로운 리눅스 네이티브
+fs_xfs=SGI
+fs_jfs=IBM 저널링
+fs_btrfs=BTR
+
+delete_title=파티션 삭제
+delete_rusure=$1 ($2)을 (를) 삭제 하시겠습니까? 이 파티션의 데이터는 영구적으로 손실 될 수 있습니다.
+delete_ok=지금 삭제
+
+disk_title=디스크 파티션 편집
+disk_egone=디스크가 더 이상 존재하지 않습니다!
+disk_no=번호
+disk_type=유형
+disk_extent=범위
+disk_start=스타트
+disk_end=종료
+disk_use=에 의해 사용
+disk_free=자유 공간
+disk_vm=가상 메모리
+disk_iscsi=iSCSI 공유 장치 $1 
+disk_none=이 디스크에는 아직 파티션이 없습니다.
+disk_size=크기
+disk_dsize=<b>디스크 크기 :</b> $1 
+disk_model=<b>만들기와 모델 :</b> $1 
+disk_cylinders=<b>실린더 :</b> $1 
+disk_table=<b>파티션 테이블 형식 :</b> $1 
+disk_notable=<b>파티션 테이블 형식 :</b> 없음
+disk_needtable=파티션 테이블 없이는 파티션을 만들 수 없습니다.
+disk_return=파티션 목록
+
+relabel_title=파티션 지우기
+relabel_warn=디스크 레이블을 다시 작성하여 $1 ($2)의 모든 파티션을 지우시겠습니까? 기존의 모든 데이터 및 파일 시스템이 손실됩니다!
+relabel_parts=기존 파티션
+relabel_noparts=아직 생성되지 않았습니다
+relabel_table=파티션 테이블 형식
+relabel_ok=닦고 라벨 다시
+
+table_msdos=MS-DOS (표준 파티션 형식)
+table_gpt=GPT (2T 이상의 디스크)

@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 our (%text, %in, %access, %config);
-do 'fail2ban-lib.pl';
+require 'fail2ban-lib.pl';
 
 # syslog_getlogs()
 # Returns the Fail2Ban log

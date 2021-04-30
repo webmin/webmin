@@ -1,0 +1,250 @@
+index_eshow=Il programma di stato MySQL $1 non è stato trovato sul tuo sistema. Forse MySQL non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
+index_estart=Lo script di avvio MySQL $1 non è stato trovato sul tuo sistema. Forse MySQL non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
+index_version2=$3 versione $1 su $2 
+index_eenvpass=Il programma client MySQL $1 non accetta le password passate utilizzando la variabile di ambiente <tt>MYSQL_PWD</tt>. Per garantire che Webmin sia in grado di comunicare completamente con MySQL, questa opzione deve essere disattivata nella pagina <a href='$2'>configurazione del modulo</a>. In alternativa, puoi rimuovere qualsiasi password impostata nel file <tt>root</tt> dell'utente <tt>.my.cnf</tt>.
+index_ecnf=Il file di configurazione MySQL $1 non è stato trovato sul tuo sistema. Utilizzare la pagina <a href='$2'>configurazione del modulo</a> per impostare il percorso corretto.
+index_nodbs3=Nessun database MySQL corrisponde alla tua ricerca.
+index_mysqladmin=Programma di amministrazione MySQL
+index_mysql=Programma client MySQL
+index_mysqlshow=Programma di stato MySQL
+index_mysqlstatus=Script di avvio di MySQL
+index_toomany=Ci sono troppi database da visualizzare. Trova database corrispondenti:
+
+dbase_header=Tabelle, indici e viste del database
+dbase_empty=Database vuoto
+dbase_name=Nome
+dbase_toomany=Ci sono troppe tabelle da visualizzare. Trova le tabelle corrispondenti:
+dbase_vjump=Modifica vista:
+dbase_ijump=Modifica indice:
+dbase_type=genere
+dbase_typetable=Tabella 1)
+dbase_typeindex=Indice
+dbase_typeview=Visualizza
+
+ddrop_rusure2=Sei sicuro di voler svuotare il database $1 ? $2 tabelle contenenti $3 righe di dati verranno eliminate.
+ddrop_empty2=Elimina tutte le tabelle
+
+table_copy2=Copia i campi dal database
+table_copy2t=e tavolo
+
+field_current=Ora attuale
+field_defval=Valore
+field_defdef=MySQL predefinito
+field_defnone=Nessun valore predefinito
+field_defempty=Stringa vuota
+field_defleave=Non cambiare
+field_dmode1=Nullo
+
+view_refresh=ricaricare
+view_match4=più grande di
+view_match5=meno di
+view_searchheadnot=Risultati della ricerca per non $1 nel campo $2 ..
+view_go=Partire
+view_sqlrun=Risultati generati dalla query SQL : $1 
+
+users_syncwhen=Quando sincronizzare
+users_ssl=Certificato
+users_dtitle=Elimina autorizzazioni utente
+users_drusure=Sei sicuro di voler eliminare le autorizzazioni utente MySQL $1 selezionate?
+users_dok=Elimina utenti
+
+user_vwarning=ATTENZIONE: questo utente MySQL è il login di amministrazione per il dominio Virtualmin $1. La modifica di qualsiasi impostazione qui può causare errori in Virtualmin.
+user_locked=Bloccato
+user_priv_select=Seleziona i dati della tabella
+user_priv_insert=Inserisci i dati della tabella
+user_priv_update=Aggiorna i dati della tabella
+user_priv_delete=Elimina i dati della tabella
+user_priv_create=Crea tabelle
+user_priv_drop=Elimina tabelle
+user_priv_reload=Ricarica sovvenzioni
+user_priv_shutdown=Database di spegnimento
+user_priv_process=Gestire i processi
+user_priv_file=Operazioni sui file
+user_priv_grant=Concedi privilegi
+user_priv_references=Operazioni di riferimento
+user_priv_index=Gestisci gli indici
+user_priv_alter=Modifica tabelle
+user_priv_show_db=Mostra database
+user_priv_super=superuser
+user_priv_create_tmp_table=Crea tabelle temporanee
+user_priv_lock=Blocca le tabelle
+user_priv_lock_tables=Blocca le tabelle
+user_priv_execute=Eseguire
+user_priv_repl_slave=Replicazione slave
+user_priv_repl_client=Replica client
+user_priv_create_view=Crea vista
+user_priv_show_view=Mostra vista
+user_priv_create_routine=Crea routine
+user_priv_alter_routine=Modifica routine
+user_priv_create_user=Creare un utente
+user_priv_event=Crea Evento
+user_priv_trigger=Crea trigger
+user_priv_create_tablespace=Crea tablespace
+user_eslash=MySQL non supporta una password contenente una barra rovesciata
+user_ssl=Tipo di certificato richiesto
+user_cipher=Cifratura SSL
+user_ssl_=Nessuna
+user_ssl_any=SSL
+user_ssl_x509=X509
+user_max_user_connections=Numero massimo di accessi simultanei
+user_max_connections=Numero massimo di connessioni all'ora
+user_max_updates=Aggiornamenti massimi all'ora
+user_max_questions=Numero massimo di query all'ora
+user_maxunlimited=Illimitato
+user_maxatmost=Al massimo
+user_emax_user_connections=Il numero massimo di accessi simultanei deve essere un numero
+user_emax_connections=Il numero massimo di connessioni all'ora deve essere un numero
+user_emax_updates=Gli aggiornamenti massimi all'ora devono essere un numero
+user_emax_questions=Il numero massimo di query all'ora deve essere un numero
+
+dbs_dtitle=Elimina autorizzazioni database
+dbs_drusure=Sei sicuro di voler eliminare le autorizzazioni del database MySQL $1 selezionato?
+dbs_dok=Elimina autorizzazioni
+
+hosts_dtitle=Elimina autorizzazioni host
+hosts_drusure=Sei sicuro di voler eliminare le autorizzazioni host MySQL $1 selezionate?
+hosts_dok=Elimina autorizzazioni
+hosts_return=autorizzazioni host
+
+host_sel=Selezionato
+host_otherdb=Modello di corrispondenza
+
+newdb_tname=Di nome
+newdb_collation=Ordine di confronto
+
+exec_header2a=Questo può anche essere usato per ripristinare un backup MySQL, che è solo un file di comandi SQL.
+exec_tabexec=Esegui SQL
+exec_tabfile=Esegui SQL dal file
+exec_tabimport=Importa file di testo
+exec_isource=Origine del file di testo
+exec_iheader=Opzioni di importazione dei file di testo
+exec_created=$1 tabelle sono state create.
+exec_inserted=Sono stati inseriti $1 record.
+exec_cs=Set di caratteri per i dati
+
+tprivs_dtitle=Elimina autorizzazioni tabella
+tprivs_drusure=Sei sicuro di voler eliminare le autorizzazioni della tabella MySQL $1 selezionate?
+tprivs_dok=Elimina autorizzazioni
+
+tpriv_edb=Nome del database mancante o non valido
+
+cprivs_add2=Aggiungi nuove autorizzazioni :
+cprivs_dtitle=Elimina autorizzazioni colonna
+cprivs_drusure=Sei sicuro di voler eliminare le autorizzazioni di colonna MySQL $1 selezionate?
+cprivs_dok=Elimina autorizzazioni
+
+cpriv_edb=Nome del database mancante o non valido
+
+acl_files=È possibile eseguire SQL da file locali?
+
+log_set=Variabili $1 di MySQL modificate
+log_root=Password di amministrazione modificata
+log_manual=File di configurazione modificato manualmente
+
+backup_prefix=Prefisso nome file
+backup_eprefix=Il prefisso del nome file non può contenere /
+backup_noprefix=Nessuna
+backup_download=Scarica nel browser
+backup_path=Percorso sul server
+backup_single=Backup all'interno di una transazione?
+backup_quick=Scaricare le file una alla volta?
+backup_eisdir=La destinazione di backup $1 è una directory
+backup_gzip=gzip
+backup_bzip2=bzip2
+backup_email=Invia e-mail di stato del backup a
+backup_notify=Invia e-mail per
+backup_notify0=Tutti i backup
+backup_notify1=Solo in caso di fallimento
+backup_notify2=Solo in caso di successo
+backup_allsubject_failed=Il backup di $2 database MySQL ha riscontrato degli errori su $3 
+backup_allsubject_ok=Il backup di $2 database MySQL è riuscito su $3 
+backup_subject_failed=Il backup del database MySQL $1 ha riscontrato alcuni errori su $3 
+backup_subject_ok=Il backup del database MySQL $1 è riuscito su $3 
+backup_body=Backup di $2 database MySQL su $1 ..
+backup_bodydoing=Backup da $1 a $2 ..
+backup_bodyfailed=.. backup non riuscito : $1 
+backup_bodyok=.. backup di $1 creato OK
+backup_bodytotal=Dimensione totale del backup : $1 
+backup_bodyspace=Dimensione del filesystem: $1 Spazio libero : $2 
+backup_bodyall=tutti
+backup_edownloadall=È possibile scaricare un solo backup del database
+backup_edownloadsave=La modalità di download non può essere utilizzata per i backup pianificati
+
+csv_format0=CSV con virgolette
+csv_format1=CSV senza virgolette
+
+cnf_socket=Presa Unix MySQL
+cnf_stor=Motore di archiviazione tabella predefinito
+cnf_esocket=Nome file socket Unix mancante
+cnf_key_buffer_size=Dimensione buffer chiave
+cnf_query_cache_size=Dimensione della cache della query in byte
+cnf_equery_cache_size=Dimensione della cache della query non valida
+cnf_table_cache=Tabelle da memorizzare nella cache
+cnf_table_open_cache=Tabelle da memorizzare nella cache
+cnf_sort_buffer_size=Ordina le dimensioni del buffer
+cnf_ekey_buffer_size=Dimensione buffer chiave mancante o non valida
+cnf_etable_cache=Tabelle mancanti o non valide da memorizzare nella cache
+cnf_esort_buffer=Dimensione buffer di ordinamento mancante o non valida
+cnf_esort_buffer_size=Dimensione buffer di ordinamento mancante o non valida
+cnf_restart=Salva e riavvia MySQL
+cnf_fpt=File separato per ogni tabella InnoDB?
+cnf_ilt=Timeout blocco InnoDB (in secondi)
+cnf_eilt=Il timeout del blocco InnoDB deve essere un numero intero
+
+manual_title=Modifica file di configurazione
+manual_file=Modifica file di configurazione:
+manual_ok=ok
+manual_efile=File di configurazione non valido!
+manual_err=Impossibile salvare il file di configurazione
+
+index_unique=Unico
+index_fulltext=Testo intero
+
+syslog_desc2=Messaggio di errore di MySQL
+
+view_merge=Unisci SQL
+view_check=Inserisci controllo
+view_cascaded=Viste sottostanti
+
+procs_id=ID
+procs_db=Banca dati
+procs_cmd=Modalità
+
+vars_desc=Avvertenza: le variabili impostate in questa pagina verranno ripristinate ai valori predefiniti al riavvio di MySQL. Le impostazioni permanenti devono essere effettuate nella pagina <a href='$1'>Configurazione del server MySQL</a>.
+vars_search=Mostra le variabili corrispondenti:
+vars_ok=Ricerca
+vars_none2=Nessuna variabile di sistema corrisponde alla tua ricerca.
+vars_none=Nessuna variabile di sistema trovata!
+
+compat_ansi=ANSI
+compat_mysql323=MySQL 3.2.3
+compat_mysql40=MySQL 4.0
+compat_postgresql=PostgreSQL
+
+compat_oracle=Oracolo
+compat_mssql=Microsoft SQL
+compat_db2=DB2
+compat_maxdb=MaxDB
+
+config_echarset=Set di caratteri mancanti o non validi
+
+root_title=Cambia password di amministrazione
+root_header=Nuova password di amministrazione
+root_user=Accesso amministrativo
+root_pass=Password attuale
+root_newpass1=Nuova password
+root_newpass2=ripeti la password
+root_ok=Cambia ora
+root_err=Impossibile modificare la password di amministrazione
+root_epass1=Nessuna nuova password inserita
+root_epass2=le passwords non corrispondono
+root_none=No Password!
+root_auto=Automatico (in genere <tt>root</tt>)
+
+mysqlpass_err=Modalità sicura di MySQL
+mysqlpass_esafecmd=Il comando $1 necessario per avviare MySQL con l'autenticazione disabilitata non è stato trovato
+mysqlpass_eshutdown=Arresto non riuscito : $1 
+mysqlpass_esafe=Avvio in modalità provvisoria non riuscito : $1 
+mysqlpass_estartup=Avvio non riuscito : $1 
+mysqlpass_echange=Modifica della password non riuscita : $1 
+mysqlpass_echange_forcepass=Forza l'override della password fornita, se persa o dimenticata

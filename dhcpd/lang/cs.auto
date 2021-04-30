@@ -1,0 +1,25 @@
+listl_mode=Zobrazovací mód  :
+listl_mode_0=Pronájem DHCP
+listl_mode_1=Podsítě a použití
+listl_size=Celkem IP
+listl_used=Přidělené
+listl_pc=Procento
+listl_err=Nepodařilo se smazat pronájmy
+listl_enone=Nebyl vybrán žádný
+
+listl_refresh=Obnovit seznam
+
+restart_conftext=Řádky kolem $1 v $2  :
+
+sopt_ecval=Chybí hodnota pro vlastní možnost '$1'
+sopt_ecip=Hodnota pro vlastní možnost „$1“ musí být adresa IP
+
+eopt_domsearch=Domény DNS k vyhledávání
+eopt_cname=název
+
+eacl_uniqh=vytvářet hostitele s duplicitními hardwarovými adresami
+eacl_uniqi=vytvářet hostitele s duplicitními IP adresami
+
+acl_zones=Lze upravovat dynamické zóny DNS?
+
+zone_ecannot=Není dovoleno upravovat zóny DNS

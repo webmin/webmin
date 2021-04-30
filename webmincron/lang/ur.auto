@@ -1,0 +1,20 @@
+edit_mins=منٹ
+edit_hours=اوقات
+edit_days=دن
+edit_months=مہینے
+edit_weekdays=ہفتے کے دن
+edit_all=سب
+edit_selected=منتخب شدہ ..
+edit_run=ابھی چلائیں
+edit_clone=کلون جاب
+edit_return=کرون کام
+edit_special1=آسان شیڈول ..
+edit_special0=ذیل میں منتخب کردہ اوقات اور تاریخیں ..
+edit_special_hourly=فی گھنٹہ
+edit_special_daily=روزانہ (آدھی رات کو)
+edit_special_weekly=ہفتہ وار (اتوار کے روز)
+edit_special_monthly=ماہانہ (یکم تاریخ)
+edit_special_yearly=سالانہ (یکم جنوری)
+
+log_success=Successfully ran <tt>$2</tt> in <tt>$1</tt>
+log_failure=Failed to run <tt>$2</tt> in <tt>$1</tt> : $3

@@ -1,0 +1,9 @@
+index_langglobal2=全局语言.. $1（$2）
+index_overlay=主题叠加
+index_overlaydef=无-使用主题默认值
+index_passagain=重新输入密码
+
+change_epass2=新密码不匹配
+change_epass=新密码无效： $1
+change_eoverlay=除非还选择了UI主题，否则您无法选择主题叠加层
+change_eoverlay2=所选主题叠加层与所选UI主题不兼容

@@ -27,7 +27,7 @@ if (!$_[0]) {
 	return { 'mode' => 0,
 		 'desc' => 'None' };
 	}
-open(DRV, $_[0]);
+open(DRV, "<".$_[0]);
 local @lines = <DRV>;
 close(DRV);
 if ($lines[1] =~ /^source ($driver_dir\/\S+)/) {
@@ -54,7 +54,7 @@ if ($lines[1] =~ /^source ($driver_dir\/\S+)/) {
 		}
 	else {
 		# A caldera printer driver
-		open(COAS, $config{'coas_printers'});
+		open(COAS, "<".$config{'coas_printers'});
 		local $plist = &parse_coas(COAS);
 		close(COAS);
 		local ($desc, $p);
@@ -114,7 +114,7 @@ else {
 	&write_env_file("$driver_dir/$_[0]->{'name'}", \%conf);
 
 	# Create the standard driver program
-	open(DRIVER, $base_driver);
+	open(DRIVER, "<".$base_driver);
 	local @lines = <DRIVER>;
 	close(DRIVER);
 	$lines[1] = "source $driver_dir/$_[0]->{'name'}\n";
@@ -153,7 +153,7 @@ print "<td><table width=100%>\n";
 
 print "<tr> <td valign=top><b>$text{'caldera_printer'}</b></td>\n";
 print "<td colspan=3><select size=5 name=gsdevice onChange='setres(0)'>\n";
-open(COAS, $config{'coas_printers'});
+open(COAS, "<".$config{'coas_printers'});
 local $plist = &parse_coas(COAS);
 close(COAS);
 local ($i, $j, $p, $k, $found, $select_res);
@@ -285,7 +285,7 @@ elsif ($in{'mode'} == 2) {
 	}
 elsif ($in{'mode'} == 1) {
 	# Normal ghostscript driver
-	open(COAS, $config{'coas_printers'});
+	open(COAS, "<".$config{'coas_printers'});
 	local $plist = &parse_coas(COAS);
 	close(COAS);
 	$in{'gsdevice'} || &error($text{'caldera_edriver'});

@@ -1,0 +1,16 @@
+index_startmsg2=Cliquez sur ce bouton pour démarrer le serveur FTP avec la configuration actuelle. Vous pouvez également configurer le serveur pour qu'il démarre automatiquement en cas de besoin en utilisant inetd ou un programme équivalent.
+index_version=Version WU-FTPd $1 
+
+log_sysxfer=Les deux destinations
+
+log_class=Utilisateurs et classes modifiés
+log_message=Messages et bannières modifiés
+log_acl=Modification des limites et du contrôle d'accès
+log_net=Options de mise en réseau modifiées
+log_log=Options de journalisation modifiées
+log_alias=Alias et chemins modifiés
+log_anon=FTP anonyme modifié
+log_perm=Options d'autorisations modifiées
+log_misc=Options diverses modifiées
+log_restart=Appliqué modifié
+log_start=Serveur FTP démarré

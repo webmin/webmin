@@ -1,0 +1,205 @@
+index_title=Kører processer
+index_display=Skærm
+index_tree=PID
+index_user=Bruger
+index_size=Hukommelse
+index_cpu=CPU
+index_search=Søg
+index_zone=Zone
+index_run=Løb ..
+index_return=proces liste
+index_mem2=<b>Reel hukommelse:</b> $1 totalt / $2 gratis
+index_mem3=<b>Reel hukommelse:</b> $1 samlet / $2 fri / $3 cachelagret
+index_swap2=<b>Skift plads:</b> $1 totalt / $2 gratis
+index_burst=<b>Burstable hukommelse:</b> $1 i alt
+index_loadname=CPU-belastning gennemsnit:
+index_loadnums=$1 (1 min), $2 (5 minutter), $3 (15 minutter)
+index_cpuname=CPU-type:
+index_inzone=I zone $1 
+
+pid=ID
+owner=Ejer
+command=Kommando
+cpu=CPU
+size=Størrelse
+parent=Forældreproces
+runtime=Kørselstid
+nice=Dejligt niveau
+stime=Startede
+sclass=IO-planlægningsklasse
+sprio=IO-prioritet
+
+search_user=Ejet af
+search_match=Matching
+search_cpupc=Brug af mere end $1% CPU
+search_cpupc2=Brug af mere CPU end
+search_fs=Brug af filsystem
+search_files=Brug af fil
+search_submit=Søg
+search_none=Der blev ikke fundet nogen matchende processer.
+search_kill=Send signal
+search_ignore=Ignorer søgeprocesser i resultatet
+search_return=søgeform
+search_sigterm=Afslut processer
+search_sigkill=Dræb processer
+search_port=Brug af port
+search_protocol=protokol
+search_ip=Brug af IP-adresse
+
+run_command=Kommando til at køre
+run_submit=Løb
+run_mode=Kør tilstand
+run_bg=Kør i baggrunden
+run_fg=Vent indtil det er afsluttet
+run_input=Input til kommando
+run_title=Kommandooutput
+run_output=Output fra $1 ..
+run_none=Ingen output genereret
+run_ecannot=Du har ikke tilladelse til at køre kommandoer
+run_as=Kør som bruger
+run_euser=Manglende eller ugyldigt brugernavn
+run_euser2=Du har ikke tilladelse til at køre kommandoer som den valgte bruger
+
+edit_title=Process Information
+edit_gone=Denne proces kører ikke længere
+edit_sub=delprocesser
+edit_subid=ID
+edit_subcmd=Underproces-kommando
+edit_kill=Send signal
+edit_change=Lave om
+edit_prilow=Lav prioritet
+edit_prihigh=Høj prioritet
+edit_pridef=Standard
+edit_none=Ingen
+edit_ecannot=Du har ikke tilladelse til at redigere processer
+edit_sigterm=Opsige
+edit_sigkill=Dræbe
+edit_sigstop=Suspendere
+edit_sigcont=Genoptag
+edit_open=Filer og forbindelser
+edit_trace=Sporeproces
+edit_return=process detaljer
+
+kill_err=Kunne ikke sende signal $1 til proces $2 
+kill_title=Send signal
+kill_sent=sendt
+kill_ecannot=Du må ikke dræbe processer
+
+renice_err=Kunne ikke omdøbe processen $1 
+renice_ecannot=Du har ikke tilladelse til at omdøbe processer
+
+linux_pri=Prioritet
+linux_tty=TTY
+linux_status=status
+linux_wchan=Venter ind
+linux_mem=Hukommelse
+linux_group=Gruppe
+linux_ruser=Rigtig bruger
+linux_rgroup=Rigtig gruppe
+linux_pgid=Procesgruppe-ID
+linux_stime=Startede
+
+linuxstat_R=Løb
+linuxstat_S=sovende
+linuxstat_D=Dyb søvn
+linuxstat_T=Holdt op
+linuxstat_Z=Zombie
+
+linux_real=Realtid
+linux_be=Bedste forsøg
+linux_idle=Ledig
+
+freebsd_ruser=Rigtig bruger
+freebsd_rgroup=Rigtig gruppe
+freebsd_tty=TTY
+freebsd_pgid=Procesgruppe
+freebsd_stime=Startede
+freebsd_lim=Hukommelsesgrænse
+
+hpux_pri=Prioritet
+hpux_tty=TTY
+hpux_status=status
+hpux_wchan=Venter på
+hpux_stime=Startede
+
+hpuxstat_0=ikke-eksisterende
+hpuxstat_S=sovende
+hpuxstat_W=Venter
+hpuxstat_R=Løb
+hpuxstat_I=Intermediate
+hpuxstat_Z=Zombie
+hpuxstat_T=Holdt op
+hpuxstat_G=Voksende
+
+macos_tty=TTY
+
+sysv_group=Gruppe
+sysv_ruser=Rigtig bruger
+sysv_rgroup=Rigtig gruppe
+sysv_pgid=Procesgruppe-ID
+sysv_tty=TTY
+sysv_stime=Startede
+sysv_task=Opgave-ID
+sysv_zone=Zone navn
+
+log_run=Kørte kommandoen "$1"
+log_kill=Sendt signal $1 til proces $2 
+log_kills=Send signal $1 til $2 processer
+log_kill_l=Sendt signal $1 til proces $2 
+log_kills_l=Sendt signal $1 til processer <br> $2 
+log_renice=Ændret prioritet for proces $2 til $1 
+
+acl_manage=Administrer processer som bruger
+acl_manage_def=Nuværende Webmin-bruger
+acl_edit=Kan dræbe og genudnytte processer?
+acl_run=Kan køre kommandoer?
+acl_only=Kan kun se egne processer?
+acl_who=Kan administrere processer for brugere
+acl_who0=Alle brugere
+acl_who1=Nuværende Webmin-bruger
+acl_who2=Noterede brugere ..
+
+kill_kill=Dræb processen
+kill_term=Opsige
+kill_hup=Genstart
+kill_stop=Hold op
+kill_cont=Blive ved
+
+open_title=Åbn filer og forbindelser
+open_proc=For proces $1 (PID $2)
+open_header1=Åbn filer
+open_header2=Åbn netværksforbindelser
+open_type=Type
+open_proto=protokol
+open_desc=detaljer
+open_fd=Filbeskrivelse
+open_listen1=Lytter til port $1 
+open_listen2=Lytter på adresse $1 port $2 
+open_recv=Modtagelse på $1:$2 
+open_conn=Tilsluttet fra $1 til $2 i tilstand $3 
+open_cwd=Nuværende dir
+open_rtd=Root dir
+open_txt=Programkode
+open_mem=Delt bibliotek
+open_dir=Vejviser
+open_reg=Regelmæssig fil
+open_chr=Tegn speciel
+open_blk=Blokér special
+open_size=Filstørrelse
+open_inode=inode
+open_file=Sti
+
+trace_title=Sporeproces
+trace_start=Starter systemopkaldsspor for $1 ..
+trace_doing=Systemopkaldsspor for $1  :
+trace_done=.. processen er afsluttet.
+trace_failed=.. sporingen mislykkedes!
+trace_sorry=Denne side kræver Java-understøttelse i din browser. For at bruge et tekst-processpor, skal du justere modulkonfigurationen.
+trace_syscalls=Sporingssystemopkald:
+trace_all=Alle
+trace_sel=Børsnoterede ..
+trace_change=Lave om
+
+windows_threads=Tråde i gang
+
+syslog_dmesg=Kernemeddelelser

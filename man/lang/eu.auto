@@ -1,0 +1,79 @@
+index_title=Sistemaren Dokumentazioa
+index_header=Sistemaren dokumentazioa bilatzea
+index_for=Bilatu
+index_where=Bilatu
+index_alldoc=Dokumentazio guztia
+index_man=Eskuliburu orriak
+index_doc=Paketearen dokumentazioa
+index_kernel=Nukleoaren dokumentazioa
+index_info=Informazio orriak
+index_howto=HOWTO dokumentuak
+index_kde=KDE dokumentazioa
+index_perl=Perl moduluaren dokumentazioa
+index_custom=Neurrira egindako dokumentazioa
+index_help=Webmin laguntza
+index_reset=berrezarri
+index_search=Search
+index_return=bilaketa orria
+index_type=Match
+index_name=Izen bakarra
+index_data=Izena eta edukia
+index_google=Google Bilaketa
+index_others=Dokumentazioa beste modulu bat bilatzean, baimendu ..
+index_other_man=Eskuliburu orriak
+index_other_help=Webmin Laguntza
+index_other_doc=Paketearen dokumentazioa
+index_other_kernel=Nukleoaren dokumentazioa
+index_other_howto=HOWTO dokumentuak
+index_other_perl=Perl moduluaren dokumentazioa
+index_other_google=Google bilatzailea
+index_other_kde=KDE dokumentazioa
+index_and=Lotu guztiak
+index_or=Bat etorri
+
+search_efor=Ez da eskuzko orrialderik sartu
+search_title=Bilaketaren emaitzak
+search_desc=deskribapena
+search_type=Mota
+search_file=Orrialdea edo fitxategia
+search_man=Eskuliburua
+search_howto=HOWTO dokumentua
+search_doc=Paketearen dokumentazioa
+search_kernel=Nukleoaren dokumentazioa
+search_kde=KDE dokumentazioa
+search_perl=Perl modulua
+search_help=Webmin laguntza
+search_custom=Neurrira egindako dokumentazioa
+search_none=Ez da $1 bat datorren dokumentaziorik aurkitu.
+search_for=$1 erako
+search_google=Google bilaketaren emaitza
+search_doxfer=Webmin lineako dokumentazioa
+
+howto_title=HOWTO dokumentua
+howto_header=HOWTO $1 dokumentuaren fitxategia
+howto_epath=HOWTO dokumentuaren bide baliogabea
+
+doc_title=Paketearen dokumentazioa
+doc_header=$1 paketearen dokumentuaren fitxategia
+doc_epath=Paketeen dokumentazio bide baliogabea
+
+man_title=Eskuliburua
+man_header=$1 ($2) orrialdeko eskuliburua
+man_noentry=$1 eskuliburuko orria ez da existitzen!
+man_epath=Eskuzko orria ezin da bidea izan!
+
+kernel_title=Nukleoaren dokumentua
+kernel_header=Kernel dokumentuaren $1 fitxategia
+kernel_epath=Nukleoaren dokumentu bide baliogabea
+
+kde_title=KDEren dokumentazioa
+kde_header=$1 KDE dokumentua
+kde_epath=KDE dokumentazio bide baliogabea
+
+perl_title=Perl modulua
+perl_header=$1 Perl modulurako dokumentazioa
+perl_emod=Perl moduluaren izen baliogabea
+
+acl_allow=Baimendu daitezke bilaketa mota baimenduak?
+
+check_ecannot=Ezin duzu baimendu bilaketa mota editatzea

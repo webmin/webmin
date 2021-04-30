@@ -1,0 +1,118 @@
+index_title=Server de mesagerie vocală
+index_ecmd=Comanda Vgetty $1 nu a fost găsită în sistemul dvs. Poate că nu este instalat, sau <a href='$2'>configurația modulului</a> este incorectă.
+index_econfig=Fișierul de configurare Vgetty $1 nu a fost găsit în sistemul dvs. Poate că nu este instalat, sau <a href='$2'>configurația modulului</a> este incorectă.
+index_return=indice vocal
+
+vgetty_title=Configurare port serial
+vgetty_desc=Pentru ca serverul dvs. să răspundă apelurilor vocale cu un modem conectat la un port serial, trebuie să fie listat mai jos. Când adăugați un port la această listă, programul $1 va fi configurat pentru a răspunde la apeluri și a reda un mesaj.
+vgetty_add=Adăugați un nou port serial
+vgetty_tty=Dispozitiv serial
+vgetty_type=Tip
+vgetty_vgetty=Voce
+vgetty_mgetty=Date/fax
+vgetty_none=Încă nu au fost configurate porturi seriale pentru poștă vocală.
+vgetty_apply=Aplicați configurare
+vgetty_applydesc=Faceți clic pe acest buton pentru a aplica configurația curentă a serverului de mesagerie vocală rulând comanda $1 și omorând toate procesele Vgetty.
+vgetty_applyerr=Eroare la aplicarea configurației
+vgetty_return=lista porturilor seriale
+vgetty_create=Adăugați Serial Port
+vgetty_edit=Editează portul serial
+vgetty_header=Opțiuni de configurare a portului serial
+vgetty_ts=Port serial $1 
+vgetty_other=Alt dispozitiv ..
+vgetty_rings=Inele înainte de a răspunde
+vgetty_default=Implicit global
+vgetty_ans=Modul de răspuns
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=Voce
+vgetty_ans_fax=Fax
+vgetty_ans_data=Date
+vgetty_err=Nu a reușit salvarea portului serial
+vgetty_etty=Dispozitiv serial lipsă sau inexistent
+vgetty_erings=Număr de inele lipsă sau nevalid
+vgetty_erings2=Numărul de inele trebuie să fie de cel puțin 2
+vgetty_eans=Nu au fost selectate moduri de răspuns
+vgetty_eclash=Portul serial $1 este deja utilizat
+
+options_title=Opțiuni server vocal
+options_header=Opțiuni pentru toate porturile seriale
+options_maxlen=Lungimea maximă a mesajului
+options_secs=secunde
+options_minlen=Lungimea minimă a mesajului
+options_silence=Înlăturați tăcerea de la sfârșitul mesajelor?
+options_thresh=Nivelul pragului de tăcere
+options_rgain=Înregistrarea nivelului de volum
+options_tgain=Nivelul volumului de redare
+options_rings=Inele înainte de a răspunde
+options_perport=Poate fi setat pentru fiecare port serial
+options_ans=Modul de răspuns
+options_keep=Păstrați mesajele care conțin date sau coduri DTMF?
+options_light=Activați lumina cu răspuns automat după primire?
+options_owner=Proprietar Unix pentru fișierele de mesaje
+options_group=Grup Unix pentru fișierele de mesaje
+options_mode=Permisiunile pentru fișierele de mesaje
+options_prog=După înregistrarea mesajului
+options_prog0=Nu face nimic
+options_prog1=E-mail în format WAV pentru
+options_prog2=Rulați comanda pe fișierul de mesaje
+options_err=Nu a reușit să salvați opțiunile de mesagerie vocală
+options_erings=Număr de inele lipsă sau nevalid
+options_erings2=Numărul de inele trebuie să fie de cel puțin 2
+options_emaxlen=Lipsă sau nevalidă lungimea maximă a mesajului
+options_eminlen=Lipsă sau nevalidă lungimea minimă a mesajului
+options_ethresh=Pragul de tăcere lipsă sau invalid
+options_ergain=Nivelul volumului de înregistrare lipsă sau nevalid
+options_ergain2=Nivelul volumului de înregistrare trebuie să fie cuprins între 0 și 100
+options_etgain=Nivelul volumului de redare lipsă sau nevalid
+options_etgain2=Nivelul volumului de redare trebuie să fie cuprins între 0 și 100
+options_eemail=Adresa de e-mail lipsă sau nevalidă
+options_eprog=Programul care lipsește sau care nu există
+options_eowner=Utilizator Unix lipsă sau nevalid pentru fișierele de mesaje
+options_egroup=Grupul Unix lipsă sau nevalid pentru fișierele de mesaje
+options_emode=Permisele octale lipsă sau nevalide pentru fișierele de mesaje
+
+received_title=Mesaje primite
+recieved_desc=Mesajele vocale primite de serverul dvs. sunt enumerate mai jos. Pentru a asculta un mesaj, faceți clic pe data/ora din prima coloană.
+received_none=Nu au fost găsite mesaje vocale primite.
+received_date=Primite la
+received_size=Mărime fișier
+received_speed=Rata simpla
+received_type=Formatul audio
+received_delete=Ștergeți mesajele selectate
+received_move=Convertiți selecția în felicitări
+received_all=Selectează tot
+received_invert=Inverseaza selectia
+
+listen_efile=Nume de fișier mesaj nevalid!
+listen_epath=Mesajul vocal nu mai există
+
+delete_efile=Nume de fișier mesaj nevalid!
+
+messages_title=Mesaje de salut
+messages_desc=Această pagină listează mesajele de salut care vor fi redate atunci când un apelant se conectează la serverul dvs. de mesagerie vocală. Dacă aveți mai multe, va fi utilizat un singur mesaj ales la întâmplare.
+messages_file=Nume de fișier
+messages_none=Nu sunt disponibile mesaje de salut.
+messages_updesc=Acest formular vă permite să încărcați un mesaj suplimentar de fișier WAV, care va fi convertit în formatul ales pentru a fi utilizat de modemul dvs. Rata de probă a WAV-ului încărcat ar trebui să fie aceeași cu rata de eșantionare a mesajelor primite, la fel ca și formatul selectat.
+messages_upload=Încărcați mesajul
+messages_fmt=schimba in
+
+pvfdesc=$1, $2 biți
+
+upload_err=Eroare la adăugarea mesajului
+upload_emessage=Nu a fost selectat niciun fișier WAV
+upload_ewav=Conversia fișierului WAV nu a reușit : $1 
+upload_epvf=Crearea fișierului RMD nu a reușit : $1 
+upload_esame=Fișierul de mesaj $1 există deja
+
+log_apply=Configurație aplicată
+log_upload=A fost încărcat mesajul de salut $1 
+log_move=Conversia $1 a primit mesaje
+log_delete0=$1 au fost șterse mesaje
+log_delete1=Mesaje de felicitare $1 șterse
+log_options=Opțiuni modificate pentru mesajele vocale
+log_vgetty_create=Se adaugă portul serial $1 
+log_vgetty_modify=Port seriat modificat $1 
+log_vgetty_delete=Portul serial șterge $1 
+
+email_subject=Mesaj vocal
+email_body=Mesajul vocal primit la $1 cu $2.

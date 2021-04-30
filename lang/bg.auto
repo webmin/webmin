@@ -1,0 +1,183 @@
+main_title3=Webmin $1 ($2)
+main_readonly=(Режим само за четене)
+main_unused=Неизползвани модули
+main_refreshmods=Обновяване на модули
+
+category_=Инструменти
+
+longcategory_=Модули, които изпълняват други различни задачи
+
+error_previous=предишна страница
+error_stack=Проследяване на стека на обажданията
+error_file=досие
+error_line=линия
+error_sub=функция
+error_stackline=Във файл $1 в ред $2 извиква се $3
+efileclose=Неуспешно записване при $1 при затваряне : $2
+efileopen=Неуспешно отваряне $1 за писане : $2
+fail=Се провали
+euserdbacl=Неуспешно извличане на потребител ACL : $1
+euserdbacl2=Неуспешно актуализиране на потребителски ACL : $1
+egroupdbacl=Неуспешно извличане на група ACL : $1
+egroupdbacl2=Неуспешно актуализиране на групата ACL : $1
+
+chooser_date=Изберете дата
+chooser_eopen=Обявата не бе успешна : $1
+
+modules_title1=Изберете Модули ..
+modules_title2=Изберете Модул ..
+modules_sel=Избрани модули
+modules_all=Всички модули
+modules_ok=Добре
+modules_cancel=Отказ
+modules_clear=ясно
+
+config_emodule=Модул не съществува
+config_ewebmin=Тип параметър 14 работи само в Webmin
+
+referer_fix1=If this is a legitimate link, you can allow links from this URL as follows :<ul><li>Login to Webmin normally.</li><li>Go to the <b>Webmin Configuration</b> module.</li><li>Click on the Trusted Referrers icon.</li><li>Enter the hostname $1 into the <b>Trusted websites</b> field, and click <b>Save</b></li>.</ul>
+referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.</li><li>Save the file.</li></ul>
+referer_fix3u=Уверете се, че вашият браузър е конфигуриран да изпраща информация за реферала, така че да може да бъде проверен от Webmin.
+referer_fix2u=Alternately, you can configure Webmin to allow links from unknown referers by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Find the line <tt>referers_none=1</tt> and change it to <tt>referers_none=0</tt>.</li><li>Save the file.</li></ul><p></p>WARNING - this has the side effect of opening your system up to reflected XSS attacks and so is not recommended!
+
+session_twofactor=Двуфакторно означение
+session_twofailed=Двуфакторното удостоверяване не бе успешно : $1
+
+pam_header=Влезте в Webmin
+pam_mesg=Трябва да отговорите на въпроса по-долу, за да влезете в сървъра на Webmin на $1.
+pam_mesg2=Трябва да отговорите на въпроса по-долу, за да влезете.
+pam_login=продължи
+pam_restart=Рестартирам
+
+acl_otherdirs=Други видими директории в инструмента за избор на файлове
+acl_nodot=Скриване на точкови файлове в инструмента за избор на файлове?
+acl_feedback3=Да, с конфигурационни файлове
+acl_readonly2=Потребителят е в демо режим?
+acl_readonlyyes=Да (някои модули може да не са налични)
+acl_negative=Давате ли разрешения за нов модул на потребителя?
+acl_fileunix=Преглеждайте файлове като потребител на Unix
+acl_sameunix=Същото като вход в Webmin
+acl_webminsearch=Показване на полето за търсене в Webmin?
+
+emodulecheck=Модулът $1 не е наличен във вашата система
+elock_tries2=Неуспешно заключване на файл $1 след $2 минути. Последната грешка беше : $3
+
+progress_size2=Изтегляне на $1 ($2) ..
+progress_datan=Получени $1 ($2 %)
+progress_data2n=Получено $1
+progress_incache=Намерено $1 в кеша ..
+
+readparse_cdheader=Липсва заглавието на съдържание-разположение
+readparse_enc=Очаквайте кодиране на данни за формуляр, но получи нормално кодиране
+readparse_max=Данните надвишават максималния размер на $1 байта
+
+password_expired=Вашата парола е изтекла и трябва да бъде избрана нова.
+password_temp=Трябва да изберете нова парола, за да замените временното си влизане.
+password_header=Изберете Нова парола
+password_user=Потребител
+password_old=Настояща парола
+password_new1=Нова парола
+password_new2=Нова парола отново
+password_ok=промяна
+password_clear=ясно
+password_done=Паролата ви е била променена успешно. Вече можете <a href='$1'>да влезете отново</a> с новата парола.
+password_err=Промяната на паролата не можа
+password_euser=Вашето име за вход не бе намерено във файла с паролата!
+password_eold=Текущата парола е неправилна
+password_enew1=Не беше въведена нова парола
+password_enew2=Новите ви пароли не съвпадат
+password_epam=PAM грешка : $1
+password_emodpam=Perhen модулът Authen::PAM, необходим за промяна на паролата, не е инсталиран!
+password_enewpass=Нова парола не е разрешена : $1
+
+ui_mandatory=Това поле е задължително
+ui_checkmandatory=Нищо не е избрано
+ui_errors=Открити са множество грешки :
+ui_nothing=Нищо не влезе
+ui_searchcol=Намерете редове къде
+ui_searchfor=Съдържа текста
+ui_searchok=Търсене
+ui_selall=Маркирай всичко.
+ui_selinv=Инвертиране на селекцията.
+ui_edate=Невалидна дата
+ui_etime=Невалидно време
+ui_paging=Показване на редове $1 до $2 от $3
+ui_rowlabel=$2 в ред $1 :
+ui_filterbox=Въведете за филтриране ..
+
+header_statusmsg=$1 влезете в $2 $3 на $4 ($5)
+
+uptracker_title=Качване на файл
+uptracker_file=Име на файл
+uptracker_size=размер
+uptracker_pc=прогрес
+uptracker_eid=Не е посочен идентификационен номер за качване
+uptracker_eid2=Идент. № за качване е невалиден!
+uptracker_of=$1 от $2
+
+wsearch_title=Търсене $1
+wsearch_modt=модул
+wsearch_mtitle=Име на модул
+wsearch_what=Съответстваща страница
+wsearch_type=Тип съвпадение
+wsearch_mod=$1
+wsearch_config_webmin=Конфигурация на модул Webmin
+wsearch_config_usermin=Предпочитания за потребител
+wsearch_help=Страница за помощ
+wsearch_inmod=В $1
+wsearch_text=Текст на потребителския интерфейс
+wsearch_esearch=Не беше въведено нищо за търсене.
+wsearch_enone=Не са намерени модули или страници на Webmin, съвпадащи $1.
+wsearch_on=(От $1)
+wsearch_helpfor=Помощ за <i>$1</i>
+wsearch_htext=Съвпадащ текст
+wsearch_htype=източник
+wsearch_hcgis=Препратки
+wsearch_type_mod=Име на модул
+wsearch_type_config=Конфигурация
+wsearch_type_help=Страница за помощ
+wsearch_type_text=Потребителски интерфейс
+wsearch_type_dir=URL адрес на модул
+wsearch_hmod=модул
+wsearch_moddir=URL пътека /$1/
+wsearch_searching=Търсене на $1. ,
+wsearch_found=намерени $1 резултати :
+
+sql_emysqldriver=Неуспешно зареждане на MySQL DBI драйвер
+sql_emysqlconnect=Неуспешно свързване с базата данни на MySQL : $1
+sql_epostgresqldriver=Неуспешно зареждане на PostgreSQL DBI драйвер
+sql_epostgresqlconnect=Неуспешно свързване с база данни PostgreSQL : $1
+sql_eldapdriver=Неуспешно зареждане на LDAP perl модул
+sql_eldapconnect=Неуспешно свързване с LDAP сървър $1
+sql_eldaptls=Неуспешно стартиране на TLS криптиране за LDAP : $1
+sql_eldaplogin=Неуспешно влизане в LDAP сървъра като $1 : $2 
+
+log_email_subject=Действие на Webmin в $1
+log_email_global=Webmin глобално действие
+log_email_desc=Този имейл е изпратен от Webmin в отговор на потребителско действие.
+log_email_mod=Модул Webmin: $1
+log_email_moddesc=Заглавие на модула: $1
+log_email_time=Действие, извършено на: $1
+log_email_system=Извършва се в система: $1
+log_email_user=Изпълнява се от потребител: $1
+log_email_script=Скрипт за Webmin: $1
+log_email_session=Идентификационен номер на сесията: $1
+log_email_remote=Адрес на клиента: $1
+
+nice_size_PB=PB
+nice_size_PiB=ПиБ
+nice_size_TB=туберкулоза
+nice_size_TiB=TiB
+nice_size_GB=GB
+nice_size_GiB=GiB
+nice_size_MB=MB
+nice_size_MiB=MiB
+nice_size_kB=КБ
+nice_size_kiB=KiB
+nice_size_b=байта
+
+langauto_include=Включете машинни преводи
+
+file_truncated_message=извлечен $1 от данни, съкратен $2 от $3 
+file_truncated_message_head=извлечено начало $1 от данни, съкратено $2 от $3 
+file_truncated_message_tail=извлечен завършващ $1 от данни, съкратен $2 от $3 

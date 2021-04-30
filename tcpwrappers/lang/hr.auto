@@ -1,0 +1,33 @@
+index_title=TCP Wrappers
+index_return=indeks
+index_allowtitle=Dozvoljeni domaćini
+index_denytitle=Odbijeni domaćini
+index_norule=Još nisu definirana pravila u <tt>$1</tt>.
+index_nofile=Datoteka "$1" ne postoji - provjerite <a href="/config.cgi?tcpwrappers">konfiguraciju modula</a>
+index_add=Dodajte novo pravilo.
+index_service=Demon
+index_hosts=domaćini
+index_cmd=naredba
+index_delete=Obriši odabrano
+index_none=nijedan
+
+edit_title1allow=Stvori Dopusti pravilo
+edit_title2allow=Uredi Dopusti pravilo
+edit_title1deny=Stvorite pravilo zabrane
+edit_title2deny=Uredi pravilo odbijanja
+edit_eid=Ovo pravilo nije pronađeno
+edit_header=Opcije pravila
+edit_service=usluge
+edit_except=Osim usluga
+edit_hosts=Udaljeni domaćini
+edit_hostsexcept=Osim domaćina
+edit_cmd=Naredbe granata
+edit_efound=Daemon '$1' nije pronađen u xinetd konfiguraciji.
+
+save_errtitle=Pogreška kod pravila spremanja
+save_ehost=Unos domaćina sadrži loše znakove
+save_ecmd=Ulaz naredbe sadrži loše znakove
+save_eservice=Imena demona sadrže loše znakove
+
+del_errtitle=Pogreška pri brisanju pravila
+del_enone=Nema pravila označena za brisanje

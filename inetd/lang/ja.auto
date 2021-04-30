@@ -1,0 +1,18 @@
+index_edit=サービスを編集：
+index_search=一致するサービスを表示：
+index_sok=探す
+index_toomany=このページに表示するにはインターネットサービスが多すぎます。
+index_none=検索に一致するインターネットサービスはありません。
+
+error_user=実行するユーザーが見つからないか無効です
+error_group=実行するグループが欠落しているか無効です
+error_smfservice=cmd '$1'でsmfサービスを更新できませんでした、エラーコード $2
+error_smf_cmdfield=smfの場合、プログラム '$1'のファイル名はコマンドフィールドの最初の引数に一致する必要があります。つまり、 '$2'になります。
+
+editrpc_act=プログラム状態
+editrpc_stream=ストリーム
+editrpc_dgram=データグラム
+editrpc_tli=TLI
+
+editserv_qm=コマンドが存在しない可能性がありますか？
+editserv_ename=その名前とプロトコルのサービスは存在しません

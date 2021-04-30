@@ -12,7 +12,7 @@ sub get_config
 {
 local @rv;
 local $lnum = 0;
-open(FILE, $config{'pppoe_conf'}) || return undef;
+open(FILE, "<".$config{'pppoe_conf'}) || return undef;
 while(<FILE>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//;

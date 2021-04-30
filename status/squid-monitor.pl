@@ -18,7 +18,7 @@ if ($str) {
 else {
 	$file = $sconfig{'pid_file'};
 	}
-if (open(PID, $file) && <PID> =~ /(\d+)/ && kill(0, $1)) {
+if (open(PID, "<".$file) && <PID> =~ /(\d+)/ && kill(0, $1)) {
 	close(PID);
 	local @st = stat($file);
 	return { 'up' => 1,

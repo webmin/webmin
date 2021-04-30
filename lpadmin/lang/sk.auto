@@ -1,0 +1,316 @@
+index_title=Správa tlačiarne
+index_header=Dostupné tlačiarne
+index_name=tlačiareň
+index_desc=popis
+index_to=Tlačte na
+index_driver=vodič
+index_enabled=Povolené?
+index_accepting=Prijímať?
+index_jobs=jobs
+index_none=V tomto systéme nie sú nainštalované žiadne tlačiarne.
+index_list=Zoznam ..
+index_jlist=Jobs ..
+index_jcount=$1 pracovných miest ..
+index_add=Pridajte novú tlačiareň.
+index_stop=Zastaviť plánovač
+index_stopmsg=Kliknutím na toto tlačidlo zastavíte bežiaci proces plánovania tlače. Zabráni to tým miestnym alebo vzdialeným používateľom v tlači na vašom systéme.
+index_start=Spustite plánovač
+index_startmsg=Kliknutím na toto tlačidlo spustíte proces plánovania tlače. To umožní miestnym a vzdialeným používateľom tlačiť na vašom systéme.
+index_restart=Reštartujte plánovač
+index_restartmsg=Kliknutím na toto tlačidlo reštartujete proces plánovania tlače. Vynúti sa použitie aktuálnej konfigurácie tlače.
+index_return=zoznam tlačiarní
+index_esystem=Nainštalujte softvér pre vybraný tlačový systém alebo ho zmeňte pomocou <a href='$1'>konfigurácie modulu</a>.
+index_style=Tlačový systém: $1 
+index_cluster=Clusterové servery
+index_clusterdesc=Kliknutím na toto tlačidlo nastavíte ďalšie servery Webmin, na ktorých sa budú tlačiarne vytvárať, aktualizovať a odstraňovať.
+index_delete=Odstrániť vybrané tlačiarne
+
+style_solaris=solaris
+style_linux=Linux LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=CUPS
+style_irix=IRIX
+style_aix=AIX
+
+edit_eedit=Nemáte povolenie upravovať túto tlačiareň
+edit_eadd=Nemáte povolenie pridávať tlačiarne
+edit_add=Vytvorte tlačiareň
+edit_edit=Upravte tlačiareň
+edit_conf=Konfigurácia tlačiarne
+edit_name=názov
+edit_acc=Prijímate žiadosti?
+edit_why=Nie - Prečo nie
+edit_desc=popis
+edit_ena=Tlač je povolená?
+edit_acl=Riadenie prístupu
+edit_allow=Povoliť všetkým
+edit_deny=Odmietnite všetkých
+edit_allowu=Povoliť registrovaných používateľov.
+edit_denyu=Odmietnuť používateľov uvedených na zozname ..
+edit_banner=Tlačiť banner?
+edit_opt=voliteľný
+edit_default=Predvolená tlačiareň?
+edit_already=Už je predvolená tlačiareň
+edit_max=Maximálna veľkosť tlačovej úlohy
+edit_unlimited=neobmedzený
+edit_dacc=Vodič prijíma
+edit_dtext=text
+edit_dpost=dovetok
+edit_dother=ostatné
+edit_alt=Alternatívne názvy tlačiarní
+edit_dest=Cieľ tlače
+edit_dev=Lokálne zariadenie
+edit_file=Lokálny súbor
+edit_remote=Vzdialený server Unix
+edit_rqueue=tlačiareň
+edit_type=typ
+edit_smb=Vzdialený server Windows
+edit_share=tlačiareň
+edit_user=užívateľ
+edit_pass=heslo
+edit_wgroup=Workgroup
+edit_hpnp=Vzdialený server HPNP
+edit_port=prístav
+edit_direct=Priame pripojenie TCP
+edit_dport=prístav
+edit_driver=Ovládač tlačiarne
+edit_check=Skontrolujte, či je vzdialený server zapnutý?
+
+blocks=bloky
+
+save_err=Uloženie tlačiarne zlyhalo
+save_eadd=Nemáte povolenie pridávať tlačiarne
+save_eedit=Nemáte povolenie upravovať túto tlačiareň
+save_ename='$1' nie je platný názov tlačiarne
+save_edup=Tlačiareň s názvom „$1“ už existuje
+save_eallow=Neboli zadaní žiadni používatelia, ktorí by to mohli povoliť
+save_edeny=Neboli zadaní žiadni používatelia, ktorí by odmietli
+save_euser=Používateľ „$1“ neexistuje
+save_etype=Musíte vybrať aspoň jeden typ, aby tento ovládač prijal
+save_emax=Maximálna veľkosť tlačovej úlohy musí byť celé číslo
+save_efile=$1 neexistuje
+save_erhost=Vzdialený hostiteľ „$1“ neexistuje
+save_erport=Vzdialený port „$1“ nie je platný
+save_erqueue='$1' nie je platný názov vzdialeného frontu
+save_eremote=Ovládače nie je možné používať so vzdialenými tlačiarňami Unix
+save_edhost=Priamy hostiteľ „$1“ neexistuje
+save_edport=Chýba alebo je neplatný priamy port
+save_evalid=Tlačový systém túto tlačiareň nepovolil
+save_errslave=Tlačiareň vytvorila v tomto systéme OK, ale v klastrových systémoch sa vyskytli nasledujúce chyby : $1 
+save_egone=Nenašla sa žiadna tlačiareň s názvom '$1'
+save_errdelslave=Tlačiareň bola v tomto systéme odstránená, ale v klastrových systémoch sa vyskytli nasledujúce chyby : $1 
+
+jobs_title=Tlačové úlohy
+jobs_header=Tlačové úlohy na $1 
+jobs_id=ID úlohy
+jobs_size=veľkosť
+jobs_by=Predloženej
+jobs_when=Odoslané o
+jobs_file=Názov súboru
+jobs_cancel=Kliknutím na ID úlohy z vyššie uvedeného zoznamu zrušíte výber.
+jobs_cancelview=Kliknutím na ID úlohy z vyššie uvedeného zoznamu zrušíte, alebo kliknutím na veľkosť úlohy ju zobrazíte.
+jobs_none=Tlačiareň $1 nemá žiadne čakajúce úlohy.
+jobs_all=Zrušte všetky tlačové úlohy
+jobs_bytes=bajtov
+jobs_test=Tlač testovacej stránky
+jobs_cancelsel=Zrušiť vybraté úlohy
+jobs_on=Na tlačiarni $1 
+jobs_return=zoznam tlačových úloh
+
+cancel_ecannot=Nie je povolené rušiť tlačové úlohy
+cancel_err=Zrušenie tlačovej úlohy zlyhalo
+cancel_egone=Tlačová úloha $1 už neexistuje
+
+view_ecannot=Túto tlačovú úlohu nemôžete zobraziť
+view_egone=Táto tlačová úloha už neexistuje
+
+start_ecannot=Nemáte povolenie na spustenie plánovača
+start_err=Plánovač sa nepodarilo spustiť
+
+stop_ecannot=Nemáte povolenie zastaviť plánovač
+stop_err=Nepodarilo sa zastaviť plánovač
+
+restart_ecannot=Nemáte povolenie na reštartovanie plánovača
+restart_err=Plánovač sa nepodarilo reštartovať
+
+webmin_none=nikto
+webmin_nonemsg=Postskriptová alebo textová tlačiareň
+webmin_remotemsg=Vzdialená tlačiareň
+webmin_model=Model
+webmin_prog=Program
+webmin_driver=Webmin ovládač
+webmin_uniprint=Ovládač uniprintov
+webmin_edrivers=Nepodarilo sa získať ovládače z $1. Ovládače tlačiarne Webmin, ktoré používajú ghostscript, nie sú k dispozícii
+webmin_egs=Príkaz $1 nebol nájdený. Ovládače tlačiarne Webmin, ktoré používajú ghostscript, nie sú k dispozícii
+webmin_edriver=$1 neexistuje
+
+caldera_none=nikto
+caldera_nonemsg=Vzdialená alebo surová tlačiareň
+caldera_prog=Program
+caldera_coas=Vodič COAS
+caldera_printer=Tlačiareň a rozlíšenie
+caldera_eof=Poslať EOF?
+caldera_paper=Veľkosť papiera
+caldera_double=Tlačiť obojstranne?
+caldera_gsopts=Ďalšie možnosti GS
+caldera_uniprint=Ovládač uniprintov
+caldera_eprog=$1 neexistuje
+caldera_edriver=Nie je vybratý žiadny ovládač tlačiarne
+caldera_eres=Nie je vybraté žiadne rozlíšenie
+
+redhat_none=nikto
+redhat_nonemsg=Postskriptová alebo textová tlačiareň
+redhat_prog=Program
+redhat_driver=Redhat vodič
+redhat_printer=Tlačiareň a rozlíšenie
+redhat_eof=Poslať EOF?
+redhat_paper=Veľkosť papiera
+redhat_pages=Počet stránok na výstupnú stránku
+redhat_gsopts=Ďalšie možnosti GS
+redhat_hmargin=Pravý/ľavý okraj
+redhat_vmargin=Horný/dolný okraj
+redhat_crlf=Opraviť schodový krokový text?
+redhat_eprog=$1 neexistuje
+redhat_edriver=Nie je vybratý žiadny ovládač tlačiarne
+redhat_ehmargin=Chýbajúci alebo neplatný pravý/ľavý okraj
+redhat_evmargin=Chýba alebo je neplatný horný/dolný okraj
+redhat_eres=Nie je vybraté žiadne rozlíšenie
+redhat_printer2=Model tlačiarne a ovládač
+
+suse_none=nikto
+suse_nonemsg=Postskriptová alebo textová tlačiareň
+suse_prog=Program
+suse_driver=Ovládač filtra APS
+suse_printer=Typ tlačiarne
+suse_res=Rozlíšenie v DPI
+suse_colour=Farebná tlačiareň?
+suse_paper=Veľkosť papiera
+suse_method=Metóda filtrovania
+suse_auto=automatický
+suse_ascii=ASCII
+suse_raw=surový
+suse_extra=Extra možnosti duchov
+suse_yast2=Ovládač YAST2
+suse_edriver=Nie je vybratý žiadny typ tlačiarne
+suse_eres=Chýbajúce alebo neplatné rozlíšenie
+
+estop=Nepodarilo sa zastaviť lpd : $1 
+
+acl_printers=Tlačiarne, ktoré môže tento užívateľ konfigurovať
+acl_add=Môžete pridať nové tlačiarne?
+acl_cancel=Môžete zrušiť tlačové úlohy?
+acl_stop=Môže plánovač zastaviť alebo spustiť?
+acl_restart=Iba reštartovať
+acl_listed=Iba na vybraných tlačiarňach ..
+acl_pall=Všetky tlačiarne
+acl_psel=Vybraný ..
+acl_view=Zobraziť nenakonfigurovateľné tlačiarne?
+acl_test=Môžu tlačiť testovacie stránky?
+acl_user=Spravujte tlačové úlohy vo vlastníctve
+acl_user_all=Všetci používatelia
+acl_user_this=Aktuálny užívateľ Webmin
+acl_delete=Môžete odstrániť tlačiarne?
+acl_cluster=Dokážete spravovať klaster tlačiarní?
+
+log_stop=Zastavený plánovač tlače
+log_start=Spustený plánovač tlače
+log_restart=Reštartovaný plánovač tlače
+log_cancel_job=Zrušená tlačová úloha $2 na $1 
+log_cancel_all=Zrušené všetky tlačové úlohy na $1 
+log_cancel_sel=Zrušené $2 tlačové úlohy na $1 
+log_create=Vytvorená tlačiareň $1 na $2 
+log_modify=Upravená tlačiareň $1 na $2 
+log_delete=Odstránená tlačiareň $1 na $2 
+log_create_l=Vytvorená $3 tlačiareň $1 na $2 
+log_modify_l=Upravená $3 tlačiareň $1 na $2 
+log_delete_l=Odstránená $3 tlačiareň $1 na $2 
+
+linux_paralel=Paralelný port $1 
+linux_serial=Sériový port $1 (COM $1)
+linux_null=Null Device
+linux_usb=USB tlačiareň $1 
+linux_ecmd=Príkaz $1 sa vo vašom systéme nenašiel, čo znamená, že tlačový systém Linux nie je nainštalovaný.
+linux_espool=Vo vašom systéme neexistuje spoolový adresár $1, čo naznačuje, že tlačový systém Linux nie je nainštalovaný.
+
+freebsd_paralel=Paralelný port
+freebsd_serial=Sériový port $1 (COM $1)
+freebsd_ecmd=Príkaz $1 nebol vo vašom systéme nájdený, čo naznačuje, že tlačový systém FreeBSD nie je nainštalovaný.
+freebsd_espool=Vo vašom systéme neexistuje spoolový adresár $1, čo naznačuje, že tlačový systém FreeBSD nie je nainštalovaný.
+
+openbsd_paralel=Paralelný port
+openbsd_serial=Sériový port $1 (COM $1)
+
+unixware_paralel=Paralelný port $1 
+unixware_serial=Sériový port $1 
+unixware_null=Null Device
+unixware_ecmd=Príkaz $1 nebol vo vašom systéme nájdený, čo naznačuje, že tlačový systém UnixWare nie je nainštalovaný.
+
+hpux_paralel=Paralelné $1 
+hpux_serial=Sériové $1 
+hpux_null=Null Device
+hpux_ecmd=Príkaz $1 nebol vo vašom systéme nájdený, čo znamená, že tlačový systém HPUX nie je nainštalovaný.
+hpux_eiface=Adresár skriptov rozhrania $1 vo vašom systéme neexistuje, čo naznačuje, že tlačový systém HPUX nie je nainštalovaný.
+
+lprng_paralel=Paralelný port $1 
+lprng_serial=Sériový port $1 (COM $1)
+lprng_null=Null Device
+lprng_ecmd=Príkaz $1 sa vo vašom systéme nenašiel, čo znamená, že tlačový systém LPRng nie je nainštalovaný.
+lprng_espool=Vo vašom systéme neexistuje spoolový adresár $1, čo naznačuje, že tlačový systém LPRng nie je nainštalovaný.
+
+solaris_paralel=Paralelný port
+solaris_uparalel=Paralelný port Ultra 5/10
+solaris_serial=Sériový port $1 
+solaris_null=Null Device
+solaris_ecmd=Príkaz $1 nebol vo vašom systéme nájdený, čo znamená, že tlačový systém Solaris nie je nainštalovaný.
+
+test_title=Tlač testovacej stránky
+test_ecannot=Nemáte dovolené tlačiť testovacie stránky
+test_desc=Tento formulár umožňuje tlač skúšobnej stránky pre tlačiareň $1. Vyberte typ stránky, ktorú chcete vytlačiť :
+test_0=Čiernobiela postskriptová stránka
+test_1=Farebná postskriptová stránka
+test_2=Obyčajný text ASCII
+test_3=Akýkoľvek nahraný súbor
+test_print=Vytlačiť stránku
+test_exec=Tlač skúšobnej stránky príkazom $1 ..
+test_failed=.. príkaz zlyhal!
+test_ok=.. príkaz dokončený.
+
+cups_none=nikto
+cups_nonemsg=Vzdialená alebo surová tlačiareň
+cups_prog=Program
+cups_driver=Ovládač CUPS
+cups_eprog=$1 nie je platný program
+cups_opts=Možnosti pre $1 
+cups_ecmd=Príkaz $1 nebol vo vašom systéme nájdený, čo znamená, že tlačový systém CUPS nie je nainštalovaný.
+
+irix_ecmd=Príkaz $1 nebol vo vašom systéme nájdený, čo naznačuje, že tlačový systém IRIX nie je nainštalovaný.
+irix_eiface=Adresár skriptov rozhrania $1 vo vašom systéme neexistuje, čo naznačuje, že tlačový systém IRIX nie je nainštalovaný.
+
+aix_port=Port tlačiarne $1 
+aix_edesc=Neplatný popis - sú povolené iba písmená a čísla, bez medzier
+aix_ecmd=Tlačový server AIX $1 nebol nájdený. Možno nie je nainštalovaný alebo sa používa iný tlačový systém.
+
+cluster_title=Servery klastrových tlačiarní
+cluster_none=Do klastra tlačiarne ešte neboli pridané žiadne servery.
+cluster_host=Meno hosťa
+cluster_desc=popis
+cluster_os=Operačný systém
+cluster_add=Pridať server
+cluster_gadd=Pridajte servery do skupiny
+cluster_need=Predtým, ako ich budete môcť spravovať, musíte do modulu Webmin Servers Index pridať servery s prihlasovacím menom a heslom.
+cluster_return=klastrové servery
+cluster_delete=Vymazať označené
+cluster_ecannot=Nemáte oprávnenie spravovať servery klastrových tlačiarní
+
+add_title=Pridať servery
+add_msg=Pridáva sa $1 ..
+add_gmsg=Pridávanie serverov do skupiny $1 ..
+add_err=Server sa nepodarilo pridať
+add_gerr=Nepodarilo sa pridať skupinu
+add_echeck=Server $1 nemá modul Správa tlačiarne
+add_ediff=Server $1 používa iný tlačový systém ($2) ako tento server
+add_ediff2=Server $1 používa iný tlačový ovládač ($2) ako tento server
+add_ok=Pridané $1, s $2 tlačiarňami.

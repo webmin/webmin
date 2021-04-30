@@ -1,0 +1,116 @@
+index_title=FirewallD
+index_atboot=Уключыць брандмаўэр падчас загрузкі?
+index_bootup=Актываваць пры загрузцы
+index_bootupdesc=Змяніце гэтую опцыю, каб кантраляваць, ці з'яўляецца брандмаўэр актываваны падчас загрузкі.
+index_apply=Прымяніць канфігурацыю
+index_applydesc=Націсніце гэтую кнопку, каб зрабіць пералічаную вышэй канфігурацыю брандмаўэра. Любыя правілы брандмаўэра, якія дзейнічаюць у цяперашні час, будуць ачышчаны і заменены
+index_restart=Прымяніць канфігурацыю
+index_restartdesc=Актывуйце ўсе дазволеныя службы і парты, пералічаныя вышэй, ва ўсіх зонах. Любыя актыўныя правілы, якія не былі створаны пастаянна, будуць заменены.
+index_start=Запусціце FirewallD
+index_startdesc=Запусціце сервер FirewallD і прымяніце правілы, пералічаныя вышэй.
+index_stop=Спыніць FirewallD
+index_stopdesc=Выключыце сервер FirewallD і выдаліце ўсе правілы, пералічаныя вышэй.
+index_cerr=Модуль FirewallD нельга выкарыстоўваць : $1 
+index_zone=Паказаць правілы ў зоне:
+index_zoneok=Змена
+index_zoneadd=Дадаць зону ..
+index_zonedel=Выдаліць зону
+index_zonedef=Зрабіце па змаўчанні
+index_type=Тып правілаў
+index_port=Порт або паслуга
+index_proto=Пратакол
+index_tservice=Служба
+index_tport=Порт
+index_tforward=Наперад
+index_padd=Дадайце дазволены порт.
+index_sadd=Дадайце дазволены сэрвіс.
+index_fadd=Дадаць порт наперад.
+index_delete=Выдаліць выбраныя правілы
+index_return=спіс зон
+index_ezones=Зон FirewallD не знойдзены!
+index_none=У гэтай зоне пакуль няма дазволеных партоў ці паслуг.
+index_ifaces=Прымяніць правілы да інтэрфейсаў:
+
+port_edit=Рэдагаваць порт
+port_create=Дадаць порт
+port_header=Дазволеныя параметры порта
+port_zone=Дазволена ў зону
+port_port=Порт дазволіць
+port_mode0=Адзіны порт
+port_mode1=Дыяпазон порта
+port_mode2=Гэтак жа, як арыгінальны порт
+port_proto=Сеткавы пратакол
+port_ezone=Зоны не існуе!
+port_err=Не атрымалася захаваць порт
+port_eport=Адсутнічае альбо недапушчальны нумар або імя порта
+port_eportlow=Нізкі порт павінен быць нумарам
+port_eporthigh=Высокі порт павінен быць нумарам
+port_eportrange=Нізкі порт павінен быць ніжэй высокага порта
+
+serv_edit=Служба рэдагавання
+serv_create=Дадайце сэрвіс
+serv_header=Дазволеныя варыянты абслугоўвання
+serv_name=Сэрвіс дазволіць
+serv_err=Не атрымалася захаваць службу
+
+forward_edit=Рэдагаваць наперад
+forward_create=Стварыць наперад
+forward_header=Параметры пераадрасацыі партоў
+forward_zone=Наперад да зоны
+forward_err=Не атрымалася захаваць наперад
+forward_port=Крыніца порта
+forward_dstport=Дэзінацыйны порт
+forward_dstaddr=Адрас прызначэння
+forward_dstlocal=Гэта сістэма
+forward_edstaddr=Несапраўдны адрас прызначэння IPv4
+forward_eneither=Трэба ўвесці альбо адрас, альбо порт, альбо абодва
+
+check_ecmd=Каманда кіравання FirewallD $1 не знойдзена ў вашай сістэме
+
+delete_err=Немагчыма выдаліць правілы
+delete_enone=Ні адзін не абраны!
+delete_edel=Выдаленне $1 не атрымалася : $2 
+
+zone_title=Стварыць зону
+zone_header=Новыя варыянты зоны
+zone_name=Назва зоны
+zone_mode=Дазволеныя парты і паслугі
+zone_mode0=Няма (увесь трафік будзе заблакіраваны)
+zone_mode1=Копія з зоны
+zone_mode2=SSH, IDENT і толькі Webmin
+zone_mode3=SSH, IDENT, Webmin і высокія парты
+zone_mode4=Парты, якія выкарыстоўваюцца для віртуальнага хостынгу
+zone_err=Не атрымалася стварыць зону
+zone_ename=Адсутнічае альбо недапушчальнае імя зоны
+zone_eclash=Зона з такой назвай ужо існуе
+
+delzone_title=Выдаліць зону
+delzone_err=Не ўдалося выдаліць зону
+delzone_edefault=Зона па змаўчанні не можа быць выдалена
+delzone_rusure=Вы ўпэўнены, што хочаце выдаліць зону $1, якая змяшчае $2 парты і паслугі $3 ?
+
+defzone_err=Не атрымалася зрабіць зону па змаўчанні
+
+restart_err=Не атрымалася прымяніць канфігурацыю
+
+stop_err=Не атрымалася спыніць FirewallD
+start_err=Не атрымалася запусціць FirewallD
+log_stop=Спынены FirewallD
+log_start=Пачала FirewallD
+log_restart=Прыкладная канфігурацыя FirewallD
+log_bootup=Уключаны FirewallD пры загрузцы
+log_bootdown=Адключылі FirewallD пры загрузцы
+log_create_port=Дададзены дазволены порт $1 
+log_delete_port=Выдалены дазволены порт $1 
+log_update_port=Абноўлены дазволены порт $1 
+log_create_serv=Дададзены дазволены сэрвіс $1 
+log_delete_serv=Дазволены сэрвіс $1 
+log_update_serv=Абноўлены дазволены сэрвіс $1 
+log_create_forward=Дададзены наперад $1 
+log_delete_forward=Выдалены наперад $1 
+log_update_forward=Абноўлены наперад $1 
+log_delete_rules=Выдалены $1 дазволены парты
+log_ifaces_zone=Абноўлены інтэрфейс для зоны $1 
+log_create_zone=Створана зона $1 
+log_delete_zone=Выдалена зона $1 
+log_default_zone=Зроблена зона $1 па змаўчанні

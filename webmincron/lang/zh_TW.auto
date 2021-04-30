@@ -1,0 +1,20 @@
+edit_mins=分鐘
+edit_hours=小時
+edit_days=天
+edit_months=月數
+edit_weekdays=平日
+edit_all=所有
+edit_selected=選擇 ..
+edit_run=現在跑步
+edit_clone=克隆作業
+edit_return=計劃工作
+edit_special1=簡單的時間表 ..
+edit_special0=下面選擇的時間和日期 ..
+edit_special_hourly=每小時一次
+edit_special_daily=每日（午夜）
+edit_special_weekly=每週（週日）
+edit_special_monthly=每月（1日）
+edit_special_yearly=每年（1月1日）
+
+log_success=在<tt>$1</tt>中成功運行了<tt>$2</tt>
+log_failure=無法在<tt>$1</tt>中運行<tt>$2</tt>： $3

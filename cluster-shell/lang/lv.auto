@@ -1,0 +1,22 @@
+index_title=Klastera čaulas komandas
+index_cmd=Komanda palaist
+index_old=vai
+index_server=Palaist serveros
+index_run=Palaist komandu tagad
+index_return=moduļa indekss
+index_this=šis serveris
+index_all=&lt;Visi saimnieki&gt;
+index_group=$1 dalībnieki
+index_clear=Skaidra vēsture
+index_edit=Rediģēt iepriekšējo
+
+run_title=Palaist komandu
+run_err=Neizdevās palaist komandu
+run_ecmd=Nav ievadīta komanda
+run_failed=Neizdevās palaist $1 : $2 
+run_success=Izeja no $1.
+run_enone=Nav serveru, kas darbotos atlasītajos
+
+log_clear=Notīrīta komandu vēsture
+log_run=Darbināja $1 uz $2 serveriem
+log_run_l=Notika $1 uz $2 

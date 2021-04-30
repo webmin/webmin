@@ -1,0 +1,53 @@
+inittab_new=Skep 'n nuwe init-proses.
+inittab_id=ID
+inittab_active=Aktief?
+inittab_runlevels=Opstartvlak
+inittab_action=aksie
+inittab_process=proses
+inittab_none=Geen
+inittab_respawn=Hervestigde proses
+inittab_wait=wag
+inittab_once=Eens keer op vlak
+inittab_boot=Boot tyd
+inittab_bootwait=Boot tyd, wag tot beëindiging
+inittab_off=Doen niks
+inittab_ondemand=Telkens wanneer in A, B, C
+inittab_initdefault=Na die stelsellaaier
+inittab_sysinit=Tydens die stelsellaai
+inittab_powerwait=Krag gaan af
+inittab_powerfail=Krag gaan af sonder om te wag
+inittab_powerokwait=Krag word herstel
+inittab_powerfailnow=Krag misluk
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Spesiale sleutelkombinasie
+inittab_kbrequest=Spesiale sleutelkombinasie
+inittab_return=proseslys
+inittab_apply=Pas Init-konfigurasie toe
+inittab_applymsg=Klik op hierdie knoppie om die huidige SysV Init-konfigurasie toe te pas deur die opdrag <tt>telinit q</tt> uit te voer. Let daarop dat enige foute in u konfigurasie die stelsel onbruikbaar kan maak as hierdie opdrag uitgevoer word.
+index_delete=Vee geselekteerde prosesse uit
+inittab_none2=Geen opstartprosesse is op u stelsel gevind nie. Dit dui waarskynlik daarop dat dit nie die SysV-init-konfigurasielêer gebruik nie.
+
+edit_inittab_err=U mag nie 'n proses wysig nie
+edit_inittab_title=Proses wysig $1 
+edit_inittab_details=Prosesbesonderhede
+edit_inittab_del=Delete
+edit_inittab_save=Save
+
+new_inittab_err=U mag nie 'n nuwe proses skep nie
+new_inittab_title=Nuwe proses
+
+save_inittab_err=U mag nie 'n proses stoor nie
+save_inittab_noid=Fout, geen naamproses ingevoer nie
+save_inittab_already=Fout, die naamproses bestaan reeds
+
+log_modify=Gewysigde initproses $1 
+log_rename=Die init-proses $1 tot $2 hernoem
+log_create=Geskep proses $1 
+log_delete=Init-proses $1 is uitgevee
+log_apply=Toegepaste konfigurasie
+log_deletes=$1 init prosesse is uitgevee
+
+apply_err=Kon nie konfigurasie toepas nie
+
+delete_err=Kon nie prosesse uitvee nie
+delete_enone=Geen gekies nie

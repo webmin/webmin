@@ -1,0 +1,67 @@
+index_title=Klasterio kopijavimo failai
+index_add=Sukurkite naują suplanuotą failo kopiją.
+index_none=Nebuvo apibrėžtos suplanuotos failo kopijos.
+index_servers=Nukopijuokite į serverius
+index_return=klasterio kopijų sąrašas
+index_more=Dar $1 ..
+index_run=Vykdyk dabar ..
+index_files=Nukopijuoti failai
+index_sched=Suplanuota?
+index_when=Taip, $1 
+index_act=Veiksmas
+index_exec=Vykdyti
+index_delete=Ištrinti pasirinktas kopijas
+
+edit_title=Redaguoti klasterio kopiją
+create_title=Sukurti klasterio kopiją
+edit_header=Informacija apie klasterio kopiją
+edit_files=Nukopijuoti failai
+edit_dest=Paskirties katalogas
+edit_cmd=Komanda paleisti nukopijavus
+edit_before=Komanda paleisti prieš kopijuojant
+edit_remote=Nuotoliniuose serveriuose
+edit_dmode0=Nukopijuokite visus maršrutus į katalogą
+edit_dmode1=Nukopijuokite į šį katalogą
+edit_servers=Nukopijuokite į serverius
+edit_group=$1 nariai
+edit_this=šį serverį
+edit_all=&lt;Visi šeimininkai&gt;
+edit_sched=Kopijuoti pagal grafiką?
+edit_schedyes=Taip, žemiau nurodytais laikais ..
+edit_run=Kopijuoti dabar
+edit_return=klasterio kopija
+edit_email=El. Pašto išvestis į
+edit_none=Niekas
+
+save_err=Nepavyko išsaugoti klasterio crono darbo
+save_efiles=Įvestų failų nėra
+save_edest=Trūksta tikslo katalogo
+save_eservers=Nėra serverių, į kuriuos reikia nukopijuoti
+save_efile=„$1“ kopijuoti skirtas failas nėra absoliutus kelias
+save_eemail=Trūksta arba netinkamas el. Pašto adresas
+
+exec_title=Kopijuoti failus
+exec_files1=Kopijuojami $1 failai į pasirinktus serverius $2.
+exec_files2=Kopijuojama $1 į pasirinktus serverius $2 ..
+exec_under=(aplanke $1)
+exec_failed=Nepavyko nukopijuoti į $1 : $2 
+exec_success=Nukopijavo šiuos failus į $1  :
+exec_made=Sukūrė šiuos katalogus $1  :
+exec_nohosts=Nepasirinkta jokie pagrindiniai kompiuteriai, arba pasirinktose grupėse nėra jokių tinkamų kompiuterių.
+exec_nothing=Nei vienas failas nebuvo sėkmingai nukopijuotas į $1.
+exec_not=Nepavyko nukopijuoti šių failų į $1  :
+exec_cmd=Po kopijavimo išvesties $1  :
+exec_before=Prieš kopijuodami komandos išvestį $1  :
+exec_on=Nepavyko paleisti $1 : $2 
+
+log_create=Sukurta kopija $1 iki $2 serveriams
+log_modify=Modifikuota kopija $1 iki $2 serveriams
+log_delete=Ištrinta kopija, skirta $1 - $2 serveriams
+log_exec=Nukopijuota $1 į $2 serverius
+log_deletes=Ištrinta $1 kopija
+
+email_subject_succeeded=$1 kopijos kopija pavyko
+email_subject_failed=Nepavyko surinkti $1 kopijos kopijos
+
+delete_err=Nepavyko ištrinti kopijų
+delete_enone=Nepasirinkta

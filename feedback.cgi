@@ -125,7 +125,7 @@ if ($in{'config'} && !$gconfig{'nofeedbackconfig'}) {
 		next if (!$f || -d $f);
 		next if ($f =~ /\/var\/log\//);
 		local $/ = undef;
-		open(FILE, $f) || next;
+		open(FILE, "<$f") || next;
 		local $data = <FILE>;
 		close(FILE);
 		local $count = ($data =~ tr/[\000-\176]/[\000-\176]/);

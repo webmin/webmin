@@ -1,0 +1,8 @@
+index_versionbacula=Bacula $1 
+index_versionbareos=Bareos $1 
+
+proc_bareos-sd=Demonio de almacenamiento
+proc_bareos-fd=Demonio de archivo
+proc_bareos-dir=Bacula Director Demonio
+
+fileset_lzo=Compresión LZO

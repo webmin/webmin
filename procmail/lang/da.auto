@@ -1,0 +1,129 @@
+index_title=Procmail Mail-filter
+index_procmail=Procmail mail-filter
+index_desc_other=Procmail-handlingerne nedenfor fra $1 gælder for <b>al</b> e-mail, der er leveret til brugere på dit system. De bruges dog kun, hvis Procmail er installeret, og din mailserver er konfigureret til at bruge den.
+index_mserr=Advarsel - eventuelle regler defineret nedenfor vil ikke blive brugt : $1 
+index_action=Handling at tage
+index_conds=Betingelser
+index_move=Bevæge sig
+index_ba=Tilføje
+index_act6=Indstil variabel $1 
+index_act5=Udfør betinget blok
+index_act4=Feed til program $1 
+index_act3=Videresend til $1 
+index_act2=Skriv til maildir $1 
+index_act1=Skriv til MH-mappen $1 
+index_act0=Tilføj til filen $1 
+index_noconds=Udfør altid handling
+index_re=Match regexp $1 
+index_nre=Ikke match regexp $1 
+index_shell=Evaluer kommando $1 
+index_exit=Afslut status for kommando $1 
+index_lt=Størrelse er < $1 
+index_gt=Størrelse er> $1 
+index_add=Tilføj en ny filterhandling.
+index_eadd=Tilføj en ny variabel indstilling.
+index_badd=Tilføj en ny betinget blok.
+index_iadd=Tilføj en ny inkluderingsfil.
+index_none=Der er ikke konfigureret nogen Procmail-handlinger endnu.
+index_return=handlingsliste
+index_env=Indstil variabel $1 til $2 
+index_include=Processen inkluderer fil $1 
+index_man=Rediger konfiguration manuelt
+index_mandesc=Rediger direkte den primære Procmail-konfigurationsfil for at oprette dine egne regler, variabler og blokke.
+index_ecmd=Procmail-programmet $1 blev ikke fundet på dit system. Enten er den ikke installeret, eller <a href='$2'>modulkonfiguration</a> er forkert.
+index_delete=Slet valgte handlinger
+
+edit_title2=Rediger handling
+edit_title1=Opret handling
+edit_header1=Detaljer om leveringshandlingen
+edit_header2=Handlingsbetingelser
+edit_action=Leveringstilstand
+edit_block=Procmail-kode til udførelse
+edit_amode_0=Tilføj til filen
+edit_amode_1=Skriv til MH-mappen
+edit_amode_2=Skriv til maildir
+edit_amode_3=Videresend til adresse
+edit_amode_4=Feed til program
+edit_amode_6=Indstil variabel
+edit_flag_H=Anvend betingelser på overskrifter
+edit_flag_B=Anvend betingelser på kroppen
+edit_flag_D=Stemmefølsom matchning
+edit_flag_h=Indfør overskrifter til destinationen
+edit_flag_b=Før kroppen til destinationen
+edit_flag_c=Fortsæt med behandlingen, selv om forholdene stemmer overens
+edit_flag_w=Vent til handlingsprogrammet er afsluttet, og kontroller resultatet
+edit_flag_W=Vent til handlingsprogrammet er afsluttet, men ignorer resultatet
+edit_flag_i=Ignorer skrivefejl ved levering
+edit_flag_r=Skriv mail i rå tilstand
+edit_flag_f=Handlingsprogram er et filter
+edit_lockfile=Leveringslåsfil
+edit_cmode_re=Tilsvarer regelmæssigt udtryk
+edit_cmode_nre=Stemmer ikke med almindeligt udtryk
+edit_cmode_shell=Evaluer output af kommandoen
+edit_cmode_exit=Kontroller exit-status for kommandoen
+edit_cmode_lt=Mail er mindre end
+edit_cmode_gt=Mail er større end
+edit_conddesc=For at ovennævnte handling skal udføres, skal alle nedenstående forhold stemme overens. Hvis der ikke er nogen betingelser, udføres handlingen altid.
+edit_none=Ingen
+edit_lock=Specifik fil
+edit_ctype=Tilstandstype
+edit_cvalue=Regelmæssig udtryk eller kommando
+
+save_err=Gemt handling ikke
+save_eaction_0=Manglende fil, der skal tilføjes
+save_eaction_1=MH-mappen mangler at skrive til
+save_eaction_2=Manglende maildir at skrive til
+save_eaction_3=Manglende adresse at videresende til
+save_eaction_4=Manglende program at feed til
+save_eaction_6=Manglende variabel til at indstille
+save_eactionvar=Variabel, der skal indstilles, skal indtastes som NAME = værdi
+save_elockfile=Manglende navn på låsefil
+save_esize=Manglende eller ugyldig poststørrelse for tilstand $1 
+save_ere=Manglende regelmæssigt udtryk for tilstand $1 
+save_eshell=Manglende kommando til betingelse $1 
+
+env_title1=Opret variabel
+env_title2=Rediger variabel
+env_header=Procmail-miljøvariabel
+env_name=Variabel navn
+env_value=Værdi
+env_err=Kunne ikke gemme variablen
+env_ename=Manglende eller ugyldigt variabelnavn
+
+inc_title1=Tilføj inkluder fil
+inc_title2=Rediger Inkluder fil
+inc_header=Inkluderet procmail-regler fil
+inc_inc=Inkluderet fil
+inc_einc=Ingen inkluderet fil indtastet
+
+config_eline=Ukendt linje $1 i $2 : $3 
+
+manual_title=Rediger konfiguration
+manual_desc=Denne side kan bruges til manuelt at redigere Procmail-konfigurationsfilen $1. Vær forsigtig, da der ikke foretages nogen syntaksekontrol.
+manual_edata=Der blev ikke leveret nogen data fra din browser!
+
+log_create_rec=Oprettet opskrift til $1 
+log_delete_rec=Slettet opskrift til $1 
+log_modify_rec=Ændret opskrift til $1 
+log_delete_recs=$1 opskrifter er slettet
+log_act5=udfør betinget blok
+log_act4=foder til progam $1 
+log_act3=frem til $1 
+log_act2=skriv til maildir $1 
+log_act1=skriv til MH-mappen $1 
+log_act0=tilføj filen $1 
+log_create_env=Oprettet miljøvariabel $1 
+log_modify_env=Ændret miljøvariabel $1 
+log_delete_env=Slettet miljøvariabel $1 
+log_create_inc=Oprettet inkluderer fil $1 
+log_modify_inc=Ændret inkluderer fil $1 
+log_delete_inc=Slettet inkluderer fil $1 
+log_manual=Manuel redigeret konfiguration
+log_up=Flyttede en post op
+log_down=Flyttede en post nede
+
+delete_err=Kunne ikke slette handlinger
+delete_enone=Ingen valgt
+
+check_epostfix=Procmail er ikke aktiveret i din Postfix-konfiguration. Konfigurationsfilen <tt>$2</tt> skal have indstillingen <tt>$1</tt> indstillet til <tt>$3</tt>.
+check_esendmail=Sendmail er ikke opsat til at bruge Procmail til lokal levering. Dette kan konfigureres i Webmins <a href='$1'>Sendmail Mail Server</a> modul.

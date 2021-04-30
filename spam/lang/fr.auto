@@ -1,0 +1,179 @@
+index_unknown=inconnue
+index_edb=Impossible de se connecter à la base de données de configuration SpamAssassin: $1. Vérifiez la <a href='$2'>configuration du module</a> pour vous assurer que vous utilisez les bons paramètres.
+index_spamassassin=SpamAssassin
+index_ecannot=Vous n'êtes pas autorisé à gérer le fichier de configuration de SpamAssassin $1 
+
+white_addr2=Adresse du destinataire
+white_rcvd2=L'expéditeur ne doit jamais être classé comme spam
+white_tabham=Adresses autorisées
+white_tabspam=Adresses refusées
+white_tabsome=Adresses de destination
+white_tabimport=Importer des adresses
+
+score_trusted=Réseaux et hôtes de confiance
+score_bayes=Utiliser le classificateur d'apprentissage bayésien?
+
+report_safe2=Oui, en texte brut
+
+header_switch=Passez en mode simple ..
+header_eclash=Le nom du test '$1' apparaît plusieurs fois
+header_eregexp2=Expression manquante pour le test '$1'
+header_eflags='$1' ne sont pas des indicateurs d'expression régulière valides
+
+setup_email=Transférer à l'adresse e-mail
+
+setup_eemail=Adresse e-mail manquante ou invalide
+
+log_procmail=Configuration Procmail modifiée
+log_manual=Fichier de configuration modifié manuellement
+
+acl_file=Fichier de configuration de SpamAssassin à modifier
+acl_filedef=Fichier de configuration globale
+acl_awl=Utilisateurs autorisés pour la modification de la liste blanche automatique
+acl_awl0=Tous les utilisateurs
+acl_awl1=Uniquement les utilisateurs répertoriés $1 
+acl_awl2=Uniquement les membres des groupes $1 
+
+amavisd_title=Amavisd Spam Delivery
+amavisd_desc=Le formulaire peut être utilisé pour modifier la configuration d'Amavisd qui détermine ce qui arrive aux messages classés comme spam.
+amavis_ok=Modifier la livraison d'Amavisd
+amavis_tab_config=Configuration d'Amavisd
+amavis_tab_quarantine=Spam Quarantine
+amavis_warn=Si vous utilisez Amavisd pour le filtrage anti-spam, certaines options seront ignorées.
+amavis_econfig=Le fichier de configuration Amavisd $1 est introuvable sur votre système. Peut-être qu'Amavisd n'est pas installé ou que la <a href='$2'>configuration du module</a> est incorrecte.
+amavis_hits=Résultats au-dessus desquels un message est considéré comme du spam.
+amavis_ehit=Les coups au-dessus desquels un message est considéré comme du spam ne sont pas une valeur!
+amavis_ekill=Les coups au-dessus desquels un message de spam est mis en quarantaine n'est pas une valeur!
+amavis_edsn=Les coups au-dessus desquels aucune notification n'est envoyée à l'expéditeur ne sont pas une valeur!
+amavis_ecut=Les coups au-dessus desquels un message de spam est supprimé ne sont pas une valeur!
+amavis_eheader=Valeur pour Modifier l'objet: l'en-tête n'est pas une valeur!
+amavis_esize=La valeur de la taille au-dessus de laquelle un message n'est pas vérifié pour le spam n'est pas une valeur!
+amavis_echar=Un seul caractère doit être saisi pour l'en-tête X-Spam-Level:
+amavis_esubject=Valeur pour ajouter du texte à l'objet: l'en-tête n'est pas une valeur!
+amavis_elocal=La valeur pour désactiver les sources Internet n'est pas une valeur!
+amavis_quarantine_level=Résultats au-dessus desquels un message indésirable est mis en quarantaine.
+amavis_dsn_level=Résultats au-dessus desquels aucune notification n'est envoyée à l'expéditeur.
+amavis_delete_level=Résultats au-dessus desquels un message de spam est supprimé.
+amavis_report_header=Insérer X-Spam-Header dans le message Spam?
+amavis_level_char=Caractère utilisé pour afficher le niveau de spam dans l'en-tête X-Spam-Level :.
+amavis_rewrite=Modifier le sujet: en-tête de spam?
+amavis_rsubject=Ajouter le texte à l'objet: en-tête
+amavis_size_limit=Taille du message en octets au-dessus de laquelle un message n'est pas vérifié pour le spam.
+amavis_local_only=Désactiver les sources Internet pour les contrôles anti-spam?
+amavis_quarantine_desc=Afficher où le spam est mis en quarantaine par Amavisd, afficher également les statistiques du spam si la quarantaine locale est activée. Si la quarantaine est désactivée ou transmise à une adresse e-mail, les statistiques du spam ne peuvent pas être affichées.
+amavis_quarantine_off=La mise en quarantaine du spam est désactivée sur votre système. Remplacez <tt>spam_Quarantine_to</tt> par <tt>spam-quarantine</tt> dans le fichier <tt>$1</tt> pour activer Quaratine.
+amavis_nostat=Il n'est pas possible d'afficher les statistiques de spam.
+amavis_spam_admin=Adresse e-mail d'où les notifications sont envoyées (administrateur du spam)
+amavis_quarantine_mail=Le spam en quarantaine est transmis à l'adresse e-mail
+amavis_quarantine_bsmtp=Le spam est mis en quarantaine au format BSMTP sur le système de fichiers local comme
+amavis_quarantine_local=Le spam est mis en quarantaine au format MBOX sur le système de fichiers local comme
+amavis_quarantine_today=Spam mails en quarantaine aujourd'hui (24h)
+amavis_quarantine_week=Spam mails en quarantaine cette semaine (7 jours)
+amavis_quarantine_month=Spam mails en quarantaine ce mois-ci (30 jours)
+amavis_quarantine_total=Nombre total de spams en quarantaine
+
+procmail_title=Procmail Spam Delivery
+procmail_ok=Modifier la livraison Procmail
+procmail_desc=Le formulaire peut être utilisé pour modifier la configuration de Procmail qui détermine ce qui arrive aux messages classés comme spam.
+
+simple_title=Tests d'en-tête et de corps
+simple_desc=Cette page vous permet de définir des tests supplémentaires que SpamAssassin appliquera aux e-mails, en fonction des en-têtes de message, du contenu du corps et des URL trouvées dans le corps. Le nom attribué à chaque test dépend de vous, mais est généralement quelque chose comme CONTAINS_FOO.
+simple_switch=Passer en mode avancé ..
+simple_header=Tests de message à appliquer
+simple_name=Nom du test
+simple_for=Vérifier
+simple_regexp=Expression de correspondance
+simple_score=Score à appliquer
+simple_describe=La description
+simple_err=Échec de l'enregistrement des tests de message
+
+before_ecmd=Échec de la commande avant l'enregistrement : $1 
+after_ecmd=Échec de la commande après l'enregistrement : $1 
+
+connect_emysql=Impossible de charger le pilote de base de données $1 
+connect_elogin=Impossible de se connecter à la base de données $1:$2.
+connect_equery=La base de données $1 ne contient pas la table de préférences $2 
+connect_eldapmod=Le module Perl $1 nécessaire pour communiquer avec LDAP n'est pas installé ou ne peut pas être chargé
+connect_eldap=Impossible de se connecter au serveur LDAP $1 sur le port $2 
+connect_eldaplogin=Impossible de se connecter au serveur LDAP $1 en tant que $2 : $3 
+connect_ebase=Le DN de base LDAP $1 n'est pas valide : $2 
+
+eldap=Échec de l'opération LDAP : $1 
+esql=Échec de SQL : $1 
+ldap_euser=Impossible de trouver l'objet utilisateur LDAP pour $1 
+
+db_title=Bases de données SQL et LDAP
+db_header=Options de base de données de stockage de configuration
+db_dsn=Stocker les configurations utilisateur dans
+db_mode0=Fichiers de configuration
+db_mode1=Base de données SQL
+db_mode3=Base de données LDAP
+db_mode4=Autre DSN
+db_user=Nom d'utilisateur de la base de données SQL
+db_pass=Mot de passe de la base de données SQL
+db_luser=Nom d'utilisateur du serveur LDAP
+db_lpass=Mot de passe du serveur LDAP
+db_dbdriver=Type de base de données
+db_dbhost=Nom d'hôte du serveur de base de données
+db_dbdb=Nom de la base de données
+db_dbport=Numéro de port
+db_err=Échec de l'enregistrement des bases de données
+db_edbhost=Nom d'hôte du serveur SQL manquant ou non valide
+db_edbdb=Nom de base de données manquant ou non valide
+db_edbport=Numéro de port du serveur SQL manquant ou non valide
+db_edsn=Autre DSN manquant
+db_eusername=Nom d'utilisateur de base de données manquant ou invalide - aucun espace n'est autorisé
+db_ldaphost=Nom d'hôte du serveur LDAP
+db_ldapport=Numéro de port
+db_ldapdn=DN de base pour les utilisateurs
+db_ldapattr=Attribut pour les préférences de SpamAssassin
+db_ldapscope=Profondeur de recherche
+db_ldapsub=Sous-arbre entier
+db_ldapone=Un niveau
+db_ldapbase=Base uniquement
+db_ldapuid=Attribut pour le nom d'utilisateur
+db_eldaphost=Nom d'hôte du serveur LDAP manquant ou non valide
+db_eldapport=Numéro de port du serveur LDAP manquant ou non valide
+db_eldapdn=DN de base manquant ou invalide - aucun espace n'est autorisé
+db_eldapattr=Attribut SpamAssassin manquant ou non valide
+db_eldapuid=Attribut de nom d'utilisateur manquant ou non valide
+
+awl_title=Gérer les listes blanches automatiques
+awl_search=Rechercher dans la liste blanche:
+awl_ok=Chercher
+awl_searching=Affichage des entrées de liste blanche automatique correspondant à $1 ..
+awl_email=Adresse électronique
+awl_ip=IP ou réseau de l'expéditeur
+awl_count=Messages reçus
+awl_score=Score à appliquer
+awl_none=Aucun
+awl_unknown=Inconnue
+awl_delete=Supprimer les entrées sélectionnées
+awl_white=Autoriser définitivement
+awl_black=Refuser définitivement
+awl_cannot=Usermin n'a pas pu ouvrir votre fichier de liste blanche automatique <tt>$1</tt>, peut-être parce qu'il est dans un format non pris en charge.
+awl_empty=Votre fichier de liste blanche automatique <tt>$1</tt> ne contient aucune entrée. Il sera rempli par SpamAssassin lorsque le courrier sera traité par le système.
+awl_user=Afficher la liste blanche automatique pour l'utilisateur:
+awl_uok=Spectacle
+awl_nofile=L'utilisateur $1 n'a pas de fichier de liste blanche automatique.
+awl_nouser=L'utilisateur $1 n'existe pas.
+awl_cannotuser=Vous n'êtes pas autorisé à modifier la liste blanche automatique pour l'utilisateur $1.
+awl_toomany=Il y a $1 entrées dans la liste blanche automatique, mais au plus $2 peut être affiché. Utilisez le formulaire de recherche ci-dessus pour limiter ceux affichés.
+awl_deleteone=Effacer la liste blanche automatique
+awl_deleteonedesc=Supprimez toutes les entrées de liste blanche automatique pour l'utilisateur $1.
+awl_deleteall=Effacer toutes les listes blanches automatiques
+awl_deletealldesc=Supprimez toutes les entrées de la liste blanche automatique pour tous les utilisateurs du système.
+
+dawl_err=Échec de la suppression de la liste blanche automatique
+dawl_eopen=Impossible d'ouvrir la liste blanche
+dawl_enone=Aucune adresse à supprimer sélectionnée
+dawl_ecannot=Vous n'êtes pas autorisé à gérer la liste blanche automatique pour cet utilisateur
+dawl_doing=Suppression des listes blanches automatiques pour tous les utilisateurs.
+dawl_done=.. supprimé $2 entrées de $1 utilisateurs.
+dawl_title=Supprimer toutes les listes blanches automatiques
+
+manual_title=Modifier les fichiers de configuration
+manual_file=Modifier le fichier de configuration:
+manual_ok=D'accord
+manual_efile=Fichier de configuration non valide!
+manual_err=Impossible d'enregistrer le fichier de configuration

@@ -1,0 +1,92 @@
+index_when=時々走る
+index_comment=説明
+index_none3=まだcronジョブがありません。
+index_manual=cronジョブを手動で編集します。
+index_next=次の実行
+index_nunknown=わからない
+index_run=ランニング？
+index_ecmd=ユーザーCron構成を管理するためのコマンド $1が見つかりませんでした。たぶん、Cronはこのシステムにインストールされていませんか？
+index_esingle=Cronジョブをリストするファイル $1は存在しません。たぶん、Cronはこのシステムにインストールされていませんか？
+index_ecrondir=Cronジョブディレクトリ $1は存在しません。モジュールの構成が正しくないか、Cronがインストールされていない可能性がありますか？
+index_ecrondir_create=ジョブディレクトリ $1を作成してみてください？
+index_delete=選択したジョブを削除
+index_disable=選択したジョブを無効にする
+index_enable=選択したジョブを有効にする
+index_esearch=$1の検索に一致するジョブはありません。
+index_toomany2=表示するジョブが多すぎます。上記の検索フォームを使用して、リストを制限します。
+index_search=一致するCronジョブを検索
+index_ok=探す
+index_searchres=$1に一致するCronジョブ ..
+index_reset=検索をリセットします。
+index_econfigcheck=モジュール構成が無効であるため、cronジョブをシステムで管理できません： $1
+
+edit_next=次回の実行
+edit_comment=説明
+edit_range=実行する日付範囲
+edit_saverun=今すぐ保存して実行
+edit_clone=ジョブの複製
+lcedit_special_hourly=毎時
+lcedit_special_daily=毎日（深夜）
+lcedit_special_weekly=毎週（日曜日）
+lcedit_special_monthly=毎月（1日）
+lcedit_special_yearly=毎年（1月1日）
+lcedit_special_reboot=システムが起動するとき
+
+save_ecannot2=cronジョブを作成することはできません
+save_eidx=Cronジョブは正常に保存されましたが、見つからなかったため実行できません！
+
+env_where2=環境変数を移動する
+env_leave=現在位置
+
+exec_cmdbg=バックグラウンドプロセスとしてコマンド $1を実行しています。
+
+acl_command=Cronコマンドを表示および編集できますか？
+acl_create=Cronジョブを作成できますか？
+acl_delete=Cronジョブを削除できますか？
+acl_move=Cronジョブを移動できますか？
+acl_kill=Cronジョブを終了できますか？
+acl_hourly=ジョブを最大1時間に制限しますか？
+acl_hourlydef=Module Configで設定されたとおり
+
+log_kill=$1のCronジョブを終了しました
+log_kill_l=$1のCronジョブ「$2」を終了しました
+log_crons_delete=$1 Cronジョブを削除しました
+log_crons_disable=$1 Cronジョブを無効にしました
+log_crons_enable=$1 Cronジョブを有効にしました
+
+when_interval=$1秒ごと
+when_boot=起動時
+
+ucwhen_min=毎分
+ucwhen_hour=1時間ごとに1時間ごとに $1
+ucwhen_day=毎日 $2:$1で
+ucwhen_month=毎月 $3日の $2:$1
+ucwhen_weekday=$2:$1で $3ごと
+ucwhen_cron=cron時に $1
+ucwhen_interval=$1秒ごと
+ucwhen_boot=起動時
+
+kill_err=Cronジョブを終了できませんでした
+kill_ecannot=このジョブを終了することはできません
+kill_egone=もう走っていない
+kill_ekill=キルに失敗しました： $1
+kill_title=Cronジョブの終了
+kill_rusure=プロセス $1をPID $2で終了してもよろしいですか？
+kill_rusure2=プロセス $1をPID $2とそのすべてのサブプロセスで終了してもよろしいですか？
+kill_ok=はい、終了します
+
+range_all=任意の日に実行
+range_start=$1からのみ実行
+range_end=$1へ
+range_estart=実行範囲内の開始日がないか無効です
+range_eend=実行範囲内の終了日が欠落しているか無効です
+
+delete_err=Cronジョブを削除できませんでした
+delete_enone=何も選択されていません
+
+manual_title=Cronジョブを手動で編集する
+manual_edit=編集するcronファイル：
+manual_ok=編集
+manual_editing=以下のテキストボックスを使用して、 $1のCronジョブを編集します。 Webminによる検証は行われないため、注意してください！
+manual_efile=選択したファイルは無効です！
+manual_ecannot=cronジョブを手動で編集することはできません

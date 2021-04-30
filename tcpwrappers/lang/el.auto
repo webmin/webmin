@@ -1,0 +1,33 @@
+index_title=TCP Wrappers
+index_return=δείκτης
+index_allowtitle=Επιτρέπονται κεντρικοί υπολογιστές
+index_denytitle=Αποκλεισμένοι οικοδεσπότες
+index_norule=Δεν έχουν οριστεί κανόνες στο <tt>$1</tt> ακόμα.
+index_nofile=Το αρχείο '$1' δεν υπάρχει - ελέγξτε τη <a href="/config.cgi?tcpwrappers">διαμόρφωση μονάδας</a>
+index_add=Προσθέστε έναν νέο κανόνα.
+index_service=Δαίμονας
+index_hosts=Οικοδεσπότες
+index_cmd=Εντολή
+index_delete=Διαγραφή επιλεγμένων
+index_none=κανένας
+
+edit_title1allow=Δημιουργία επιτρέπεται κανόνα
+edit_title2allow=Επεξεργασία επιτρέπεται κανόνας
+edit_title1deny=Δημιουργία κανόνα άρνησης
+edit_title2deny=Επεξεργασία κανόνα άρνησης
+edit_eid=Αυτός ο κανόνας δεν βρέθηκε
+edit_header=Επιλογές κανόνων
+edit_service=Υπηρεσίες
+edit_except=Εκτός από τις υπηρεσίες
+edit_hosts=Απομακρυσμένοι υπολογιστές
+edit_hostsexcept=Εκτός από τους οικοδεσπότες
+edit_cmd=Shell εντολές
+edit_efound=Ο δαίμονας '$1' δεν βρέθηκε στη διαμόρφωση xinetd.
+
+save_errtitle=Σφάλμα κατά την αποθήκευση κανόνα
+save_ehost=Η είσοδος κεντρικού υπολογιστή περιέχει κακούς χαρακτήρες
+save_ecmd=Η είσοδος εντολών περιέχει κακούς χαρακτήρες
+save_eservice=Τα ονόματα δαίμονα περιέχουν κακούς χαρακτήρες
+
+del_errtitle=Σφάλμα σχετικά με τη διαγραφή των κανόνων
+del_enone=Δεν έχουν επισημανθεί κανόνες για διαγραφή

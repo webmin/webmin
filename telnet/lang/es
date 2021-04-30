@@ -1,8 +1,8 @@
-index_credits=Applet desarrollada bajo GPL por <a href='$1'>Matthias L. Jugel &amp; Marcus Mei&#223;ner</a>.
-index_elookup=No se pudo acceder a la direcci&#243;n IP para $1 para probar el servidor telnet o SSH.
-index_esocket=No hay servidor Telnet ejecut&#225;ndose en $1 puerto $2.
-index_esocket2=No hay servidor SSH ejecut&#225;ndose en $1 puerto $2.
-index_nojava=Este m&#243;dulo requiere de java para que funcione pero su navegador no lo soporta
+index_title=Conexión Telnet/SSH
+index_warn=¡Aviso! Esta sesión telnet <b>no</b> está encriptada.
+index_nojava=Este módulo requiere de java para que funcione pero su navegador no lo soporta
+index_credits=Applet desarrollada bajo GPL por <a href='$1'>Matthias L. Jugel & Marcus Meißner</a>.
 index_sshcredits=Incluye software desarrollado por el Cryptix Development Team (<a href=$1>$1</a>).
-index_title=Conexi&#243;n Telnet/SSH
-index_warn=&#161;Aviso! Esta sesi&#243;n telnet <b>no</b> est&#225; encriptada.
+index_esocket=No hay servidor Telnet ejecutándose en $1 puerto $2.
+index_esocket2=No hay servidor SSH ejecutándose en $1 puerto $2.
+index_elookup=No se pudo acceder a la dirección IP para $1 para probar el servidor telnet o SSH.

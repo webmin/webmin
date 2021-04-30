@@ -1,0 +1,39 @@
+index_tabdownload=Lataa verkosta
+index_tabupload=Lataa palvelimelle
+index_tabfetch=Lataa palvelimelta
+index_descdownload=Tämä lomake antaa sinun ladata tiedostoja tai verkkosivuja HTTP- tai FTP-URL-osoitteista Webmin-järjestelmään. Lataus voidaan tehdä heti tai ajoittaa jonkin aikaa tulevaisuudessa.
+index_descupload=Tällä sivulla voit lähettää yhden tai useamman tiedoston tietokoneelta, jolla selaimesi toimii, järjestelmään, jossa Webmin toimii.
+index_descfetch=Tämä sivu on tarkoitettu tiedoston lataamiseen järjestelmästä, jossa Webmin toimii, selaimeesi näyttämistä tai tallennusta varten samassa järjestelmässä.
+index_email=Lähetä sähköpostia, kun lataus on valmis?
+index_emailto=Kyllä, osoitteeseen
+index_email2=Lähetä sähköpostia, kun lataus on valmis?
+
+upload_eemail=Puuttuu ilmoitettava sähköpostiosoite
+upload_saving=Tallennetaan tiedosto $1 ..
+upload_saved=.. kirjoitti $1 
+upload_unzipping=Tiedoston $1 purkaminen ..
+upload_unzipdone=.. $1 
+
+fetch_eexists2=Tiedostoa tai hakemistoa ei ole
+fetch_ezip=Hakemistoa ei voi ladata, ellei <tt>zip</tt> -komento ole asennettu
+fetch_eroot=Juurikansiota ei voi ladata!
+
+email_downmsg=Seuraava lataus on valmis :
+email_downurl=URL: $1 
+email_downerr=Virheviesti: $1 
+email_downpath=Kohdetiedostonimi: $1 
+email_downsize=Ladattu koko: $1 
+email_subjectd=Lataus valmis
+email_eextract=Epäonnistui : $1 
+email_extfailed=louhinta epäonnistui : $1 
+email_extdone_zip=ZIP-tiedosto purettu
+email_extdone_tar=TAR-tiedosto purettu
+email_extdone_tgz=Gzipattu TAR-tiedosto purettu
+email_extdone_tbz2=Bzipped TAR-tiedosto purettu
+email_extdone_lha=LHArc-tiedosto purettu
+email_upfile=Alkuperäinen tiedostonimi: $1 
+email_uppath=Kohdetiedostonimi: $1 
+email_upsize=Lähetetty koko: $1 
+email_upextract=Uutotila: $1 
+email_subjectu=Lataa loppuun
+email_upmsg=Seuraavat lataukset on suoritettu :

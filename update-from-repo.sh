@@ -3,7 +3,7 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks @rostovtsev
 #
-VERS="1.6.8, 2018-10-30"
+VERS="1.6.9, 2020-06-18"
 #
 COPY=" Kay Marquardt <kay@rrr.de>         https://github.com/gnadelwartz"
 #############################################################################
@@ -33,9 +33,6 @@ if [[ -t 1 && "${NCOLOR}" != "YES" ]] ;  then
     CYAN='\e[36m'
     NC='\e[0m'
 fi
-
-# Clear screen for better readability
-[[ "${ASK}" == "YES" ]] && clear
 
 # Get webmin/usermin dir based on script's location
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -317,7 +314,7 @@ fi
     # start processing pulled source
     # add latest changeset date to original version, works with git 1.7+
     if [[ "${RRELEASE}" == "" ]] ; then
-        version="`head -c -1 ${TEMP}/version``cd ${TEMP}; date -d @$(${GIT} log -n1 --format='%at') '+%m%d%H%M'`"
+        version="`head -n 1 ${TEMP}/version``cd ${TEMP}; ${GIT} log -n1 --pretty='format:%cd' --date=format:'%m%d%H%M'`"
     else
         version="${RRELEASE}"
     fi
@@ -352,7 +349,6 @@ fi
           cp -r -L ${TEMP}/${module} ${TARBALL}/
         fi
     done
-    cp "${WTEMP}/chinese-to-utf8.pl" "${TARBALL}/"
 
     # insert perl path
     config_dir=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/.*_WEBMIN_CONFIG=//'`
@@ -376,15 +372,6 @@ fi
             echo -e "${RED}Error: update failed, ${PROD} may in a bad state! ${NC}aborting ..."
             rm -rf .~files
             exit 6
-        fi
-
-        # postprocessing
-        # "compile" UTF-8 lang files
-        echo -en "\n${CYAN}Compile UTF-8 lang files${NC} ..."
-        if [[ `which iconv 2> /dev/null` != '' ]] ; then
-            perl "${TEMP}/chinese-to-utf8.pl" . 2>&1 | while read input; do echo -n "."; done
-        else
-            echo -e "${BLUE} iconv not found, skipping lang files!${NC}"
         fi
 
         # run authenric-thme update, possible unattended

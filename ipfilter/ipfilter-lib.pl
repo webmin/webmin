@@ -6,7 +6,7 @@ use WebminCore;
 &foreign_require("net", "net-lib.pl");
 
 # Get the detected ipf version
-if (open(VERSION, "$module_config_directory/version")) {
+if (open(VERSION, "<$module_config_directory/version")) {
 	chop($ipf_version = <VERSION>);
 	close(VERSION);
 	}
@@ -47,7 +47,7 @@ local $file = $_[0] || $config{'ipf_conf'};
 return $get_config_cache{$file} if ($get_config_cache{$file});
 local @rv;
 local $lnum = 0;
-open(FILE, $file);
+open(FILE, "<".$file);
 while(<FILE>) {
 	# Read each line, splitting into words
 	s/\r|\n//g;
@@ -951,7 +951,7 @@ sub get_ipnat_config
 {
 local $file = $_[0] || $config{'ipnat_conf'};
 return $get_ipnat_config_cache{$file} if ($get_ipnat_config_cache{$file});
-open(FILE, $file);
+open(FILE, "<".$file);
 while(<FILE>) {
 	# Read each line, splitting into words
 	s/\r|\n//g;
@@ -1191,7 +1191,7 @@ sub list_protocols
 {
 local @stdprotos = ( 'tcp', 'udp', 'icmp' );
 local @otherprotos;
-open(PROTOS, "/etc/protocols");
+open(PROTOS, "</etc/protocols");
 while(<PROTOS>) {
 	s/\r|\n//g;
 	s/#.*$//;

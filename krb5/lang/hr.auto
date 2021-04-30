@@ -1,0 +1,17 @@
+index_title=Kerberos5 konfiguracija
+index_econf=Kerberos5 konfiguracijska datoteka $1 nije pronađena u vašem sustavu. Možda nije instaliran ili je <a href='$2'>konfiguracija modula</a> netočna.
+
+logging=Dnevnik datoteka
+default_log=Zadana datoteka dnevnika
+kdc_log=KDC datoteka zapisa
+admin_log=Datoteka dnevnika poslužitelja administratora
+
+libdefaults=Zadana konfiguracija
+dns_kdc=Upotrijebite DNS za traženje KDC-a
+default_realm=carstvo
+domain=Naziv domene
+default_kdc=KDC
+default_admin=Administratorski poslužitelj
+default_domain=Zadani naziv domene
+
+save=Ažuriraj konfiguraciju

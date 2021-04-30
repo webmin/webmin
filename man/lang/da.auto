@@ -1,0 +1,79 @@
+index_title=Systemdokumentation
+index_header=System dokumentationssøgning
+index_for=Søge efter
+index_where=Søg i
+index_alldoc=Al dokumentation
+index_man=Manuelle sider
+index_doc=Pakkedokumentation
+index_kernel=Kernedokumentation
+index_info=Info sider
+index_howto=HOWTO-dokumenter
+index_kde=KDE-dokumentation
+index_perl=Perl modul dokumentation
+index_custom=Tilpasset dokumentation
+index_help=Webmin hjælp
+index_reset=Nulstil
+index_search=Søg
+index_return=søgeform
+index_type=Match
+index_name=Navn kun
+index_data=Navn og indhold
+index_google=Google søgning
+index_others=Når du søger dokumentation fra et andet modul, skal du tillade søgning i ..
+index_other_man=Manuelle sider
+index_other_help=Webmin Hjælp
+index_other_doc=Pakkedokumentation
+index_other_kernel=Kernedokumentation
+index_other_howto=HOWTO-dokumenter
+index_other_perl=Perl modul dokumentation
+index_other_google=Googles søgemaskine
+index_other_kde=KDE-dokumentation
+index_and=Match alle
+index_or=Match enhver
+
+search_efor=Ingen manuel side til søgning efter indtastet
+search_title=Søgeresultater
+search_desc=Beskrivelse
+search_type=Type
+search_file=Side eller fil
+search_man=Manuel side
+search_howto=HOWTO-dokument
+search_doc=Pakkedokumentation
+search_kernel=Kernedokumentation
+search_kde=KDE-dokumentation
+search_perl=Perl modul
+search_help=Webmin hjælp
+search_custom=Tilpasset dokumentation
+search_none=Der blev ikke fundet nogen dokumentation, der matchede $1.
+search_for=For $1 
+search_google=Googles søgeresultat
+search_doxfer=Webmin online-dokumentation
+
+howto_title=HOWTO-dokument
+howto_header=HOWTO dokumentfil $1 
+howto_epath=Ugyldig HOWTO-dokumentsti
+
+doc_title=Pakkedokumentation
+doc_header=Pakkedokumentfil $1 
+doc_epath=Ugyldig pakkedokumentationssti
+
+man_title=Manuel side
+man_header=Manuel side for $1 ($2)
+man_noentry=Manuel side for $1 findes ikke!
+man_epath=Manuel side kan ikke være sti!
+
+kernel_title=Kernedokument
+kernel_header=Kernedokumentfil $1 
+kernel_epath=Ugyldig kerne-dokumentsti
+
+kde_title=KDE-dokumentation
+kde_header=KDE-dokumentfil $1 
+kde_epath=Ugyldig KDE-dokumentationssti
+
+perl_title=Perl-modul
+perl_header=Dokumentation for Perl-modul $1 
+perl_emod=Ugyldigt Perl-modulnavn
+
+acl_allow=Kan redigere tilladte søgetyper?
+
+check_ecannot=Du har ikke tilladelse til at redigere tilladte søgetyper

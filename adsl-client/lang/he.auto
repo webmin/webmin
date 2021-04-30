@@ -1,0 +1,66 @@
+index_title=לקוח ADSL
+index_eadsl=הפקודה RP-PPPoE $1 לא נמצאה במערכת שלך או אינה תקפה. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+index_econfig=קובץ התצורה RP-PPPoE ADSL $1 לא נמצא במערכת שלך. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+index_emodem=קובץ התצורה הנוכחי מיועד למודם ב- Redhat Linux, ולא לחיבור ADSL. השתמש בדף <a href='$2'>תצורת המודול</a> כדי לציין את אחד הקבצים האחרים <tt>ifcfg-ppp *</tt> ב- $1, או אחד שעדיין לא קיים כך שהמודול יכול ליצור את זה בשבילך.
+index_stop=כבה את ADSL
+index_stopdesc=חיבור ADSL שלך פעיל כרגע עם כתובת IP $1. לחץ על כפתור זה כדי לכבות אותו באמצעות הפקודה $2.
+index_start=הפעלת ADSL
+index_startdesc=חיבור ה- ADSL שלך אינו פעיל כרגע. לחץ על כפתור זה כדי להפעיל אותו עם הפקודה $1.
+index_boot=התחל בזמן האתחול
+index_bootdesc=שנה אפשרות זו כדי לקבוע אם חיבור ה- ADSL שלך יעלה בזמן האתחול או לא.
+index_return=אינדקס מודול
+index_version=גרסת RP-PPPoE $1 
+index_esetup=קובץ התצורה Redhat ADSL $1 אינו קיים במערכת שלך. עם זאת, מודול זה יכול להגדיר אותו עבורך עם ברירת מחדל בסיסית על ידי לחיצה על הכפתור למטה.
+index_setup=הגדרת קובץ תצורה
+index_cancel=בטל חיבור
+index_canceldesc=לקוח ADSL מנסה כעת ליצור חיבור. לחץ על כפתור זה כדי לבטל את הניסיון עם הפקודה $1.
+index_cdemand=בטל לפי דרישה
+index_cdemanddesc=לקוח ADSL ממתין כעת לבקשת חיבור לפי דרישה. לחץ על כפתור זה כדי לעצור אותו באמצעות הסימן $1.
+
+index_header=אפשרויות תצורת לקוח ADSL
+index_desc=ההגדרות שלהלן חלות על כל חיבור ADSL חדש שהמערכת שלך התחילה. אם תשנה אותם, יש לכבות את החיבור ולהתחיל מחדש כדי שהשינויים ייכנסו לתוקף.
+index_eth=ממשק אתרנט
+index_other=אחר ..
+index_demand=להתחבר לפי דרישה?
+index_timeout=כן, עם פסק זמן
+index_secs=שניות
+index_user=התחבר כמשתמש
+index_sec=כניסה עם סיסמא
+index_dns=מקבלים תצורת DNS מ- ISP?
+index_save=שמור תצורה
+index_mss=להגביל את גודל המנות?
+index_psize=כן ל
+index_bytes=בתים
+index_fw=חומת אש להפעלה בחיבור
+index_fw_none=אף אחד
+index_fw_standalone=למארח יחיד
+index_fw_masquerade=לשער NAT
+index_connect=זמן לנסות להתחבר
+index_forever=לנצח
+
+start_err=הפעלת חיבור ADSL נכשלה
+start_title=הפעלת ADSL
+start_ip=נוצר חיבור ADSL עם כתובת IP $1.
+start_demand=מכיוון שמצב חיבור לפי דרישה מופעל, חיבור ה- ADSL שלך יופעל רק בעת הצורך.
+start_bg=חיבור ADSL לא הופעל תוך 20 שניות. לקוח ADSL ימשיך לנסות להתחבר ברקע עד להצליח.
+
+save_err=שמירת תצורת ADSL נכשלה
+save_eeth=ממשק אתרנט חסר או לא חוקי
+save_etimeout=פסק זמן חסר או לא תקף לפי דרישה
+save_euser=שם משתמש חסר או לא חוקי
+save_econnect=פסק זמן לחיבור חסר או לא תקף
+save_emss=גודל מנות מקסימלי חסר או לא חוקי
+save_title=שמור תצורה
+save_desc=תצורת לקוח ADSL שלך נשמרה בהצלחה, אך לא תשמש אותה לפני שתתחבר מחדש.
+
+stop_err=כיבוי חיבור ADSL
+stop_title=כבה את ADSL
+stop_ok=חיבור ADSL שלך הושבת בהצלחה.
+stop_failed=חיבור ADSL שלך עדיין פעיל מסיבה כלשהי!
+
+log_save=תצורת לקוח שמורה
+log_stop=כבה את ADSL
+log_start=הפעל את ADSL
+log_bootup=ADSL מופעל בזמן האתחול
+log_bootdown=ADSL מושבת בזמן האתחול
+log_setup=הגדר תצורת ברירת מחדל

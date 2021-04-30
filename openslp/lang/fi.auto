@@ -1,0 +1,50 @@
+index_title=OpenSLP-määritykset
+index_return=OpenSLP-määritykset
+index_eslpd=OpenSLP-demonia $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
+index_econf=OpenSLP-määritystiedostoa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
+index_version=OpenSLP-versio $1 
+
+slp_apply=Ota muutokset käyttöön
+slp_stop=Lopeta OpenSLP
+
+snda_title=Staattinen laajuus ja DA
+snda_useScopes=Staattinen luettelo laajuuksista
+snda_DAAddresses=Kiinteä luettelo hakemistoagentteista (DA)
+
+netcfg_title=Verkon kokoonpano
+netcfg_isBroadcastOnly=Pakota lähetykset käytettäväksi ryhmälähetysten sijasta
+netcfg_passiveDADetection=Käytä passiivista DA-tunnistusta
+netcfg_activeDADetection=Käytä aktiivista DA-tunnistusta (rajoitu vain DHCP- tai DA-osoitteisiin)
+netcfg_DAActiveDiscoveryInterval=Aktiivinen etsintä sekunneissa (0 poistaa aktiivisen etsinnän käytöstä)
+netcfg_multicastTTL=Multicast TTL (0-255)
+netcfg_DADiscoveryMaximumWait=Suurin odotusaika DA-etsintäpyyntöihin (millisekunnissa)
+netcfg_DADiscoveryTimeouts=Peräkkäiset DA-etsinnän odotusajat (millisekunnissa)
+netcfg_HintsFile=Polku OpenSLP-vihjeisiin tiedostoon
+netcfg_multicastMaximumWait=Suurin odotus ryhmälähetyspyynnöissä (millisekuntina)
+netcfg_multicastTimeouts=Peräkkäiset ryhmälähetysten odotusajat (millisekunnissa)
+netcfg_unicastMaximumWait=Enimmäisaika unicast-pyyntöjen välillä (millisekunnissa)
+netcfg_randomWaitBound=Kaikkien satunnaisten odotusparametrien enimmäisarvo (millisekunnissa)
+netcfg_MTU=MTU-paketin koko (tavuina)
+netcfg_interfaces=Niiden rajapintojen IP-osoitteet, joita DA/SA: n tulisi kuunnella
+
+dacfg_title=DA-kokoonpano
+dacfg_isDA=Toimii vain DA: na (lue käyttöohjeet ennen tämän muuttamista)
+
+log_title=Jäljitys ja kirjaaminen
+log_traceDATraffic=Tulosta DA-liikenneviestit
+log_traceMsg=Tulosta SLP-yksityiskohtaiset viestit
+log_traceDrop=Tulosta SLP pudotti viestitiedot
+log_traceReg=Tulosta DA- ja SA-rekisteröinti- ja rekisteröintitiedot
+
+error_open=Virhe tiedoston avaamisessa
+error_flock_on=Virhe tiedostojen lukituksen luomisessa
+error_flock_off=Virhe tiedostojen lukituksen tuhoamisessa
+error_hup=Virhe käynnistettäessä OpenSLP PID: llä
+
+index_start=Käynnistä OpenSLP
+index_startmsg=Napsauta tätä painiketta, kun haluat käynnistää OpenSLP-palvelun järjestelmässä.
+index_stop=Lopeta OpenSLP
+index_stopmsg=Napsauta tätä painiketta, kun haluat pysäyttää järjestelmän OpenSLP-palvelun.
+
+stop_err=OpenSLP: n pysäyttäminen epäonnistui
+start_err=OpenSLP: n käynnistäminen epäonnistui

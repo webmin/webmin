@@ -197,7 +197,7 @@ sub show_times_input
 {
 my ($job, $special) = @_;
 $special = 0 if (!defined($special));
-my $rv = "<table width=100%>\n";
+my $rv = "<table data-schedule width=100%>\n";
 if ($special || $job->{'special'}) {
 	# Allow selection of special @ times
 	$rv .= "<tr $cb> <td colspan=6>\n";

@@ -1,0 +1,17 @@
+index_custom=カスタム文書
+index_google=Google検索
+index_others=別のモジュールからドキュメントを検索する場合、..での検索を許可します
+index_other_google=Google検索エンジン
+index_other_kde=KDEドキュメント
+index_and=すべてに一致
+index_or=いずれかに一致
+
+search_custom=カスタム文書
+search_google=Google検索結果
+search_doxfer=Webminオンラインドキュメント
+
+man_epath=マニュアルページをパスにすることはできません！
+
+acl_allow=許可された検索タイプを編集できますか？
+
+check_ecannot=許可された検索タイプを編集することはできません

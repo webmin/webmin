@@ -1,0 +1,11 @@
+index_title=idmapd konfigurazioa
+index_eidmapd=Ezin da Idmapd daemon $1 aurkitu. Agian ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+general=Konfigurazio Orokorra
+mapping=Maparen konfigurazioa
+pipefs_dir=Pipefs direktorioa
+domain=Domeinu izena
+nobody_user=Erabiltzaile inor ez
+nobody_group=Inork ez du taldea
+save=Gorde konfigurazioa eta berrabiarazi daemon
+save_err=Huts egin du $1 konfigurazio fitxategia gordetzean
+error_dir=$1 direktorio ez da existitzen

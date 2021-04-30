@@ -700,7 +700,7 @@ local ($template, $target, $find_replace_arrayref, @template_data,
 	$find_replace_expr, @tdata, $find, $replace, $linenum, $line,
 	@replace_data, $i);
 ($template, $target, $find_replace_arrayref) = @_;
-open(TEMPLATE, "$module_root_directory/$template");
+open(TEMPLATE, "<$module_root_directory/$template");
 @template_data = <TEMPLATE>;
 close(TEMPLATE);
 foreach $find_replace_expr (@$find_replace_arrayref) {

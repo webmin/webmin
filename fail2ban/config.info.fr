@@ -1,0 +1,4 @@
+config_dir=Répertoire de configuration Fail2Ban,0
+client_cmd=Chemin complet de la commande fail2ban-client,0
+server_cmd=Chemin complet de la commande fail2ban-server,0
+init_script=Noms des actions de démarrage,3,Aucun configuré

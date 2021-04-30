@@ -50,6 +50,18 @@ if (!$in{'confirm'}) {
 	# Ask the user if he is sure
 	&ui_print_header(undef, $text{'massdelete_title'}, "");
 
+	# Check if any are used by Virtualmin
+	my @doms;
+	foreach my $z (@znames) {
+		push(@doms, &get_virtualmin_domains($z));
+		}
+	my $vwarn;
+	if (@doms) {
+		my $f = "<tt>$doms[0]->{'dom'}</tt>";
+		$vwarn = @doms == 1 ? &text('massdelete_vwarn', $f)
+				    : &text('massdelete_vwarn2', $f, @doms-1);
+		}
+
 	my @servers = &list_slave_servers();
 	print &ui_confirmation_form("mass_delete.cgi",
 		&text('massdelete_rusure', scalar(@zones),
@@ -59,6 +71,7 @@ if (!$in{'confirm'}) {
 		@servers && $access{'remote'} ?
 			$text{'delete_onslave'}." ".
 			&ui_yesno_radio("onslave", 1) : "",
+		$vwarn,
 		);
 
 	&ui_print_footer("", $text{'index_return'});

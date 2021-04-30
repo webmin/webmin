@@ -1,0 +1,116 @@
+index_title=FirewallD
+index_atboot=Ativar firewall no momento da inicialização?
+index_bootup=Ativar na inicialização
+index_bootupdesc=Altere esta opção para controlar se o seu firewall está ativado no momento da inicialização ou não.
+index_apply=Aplicar configuração
+index_applydesc=Clique neste botão para ativar a configuração do firewall listada acima. Quaisquer regras de firewall atualmente em vigor serão liberadas e substituídas
+index_restart=Aplicar configuração
+index_restartdesc=Ative todos os serviços e portas permitidos listados acima, em todas as zonas. Quaisquer regras ativas que não foram criadas permanentemente serão substituídas.
+index_start=Iniciar o FirewallD
+index_startdesc=Inicie o servidor FirewallD e aplique as regras listadas acima.
+index_stop=Pare o FirewallD
+index_stopdesc=Desligue o servidor FirewallD e remova todas as regras listadas acima.
+index_cerr=O módulo FirewallD não pode ser usado : $1 
+index_zone=Mostrar regras na zona:
+index_zoneok=mudança
+index_zoneadd=Adicionar zona ..
+index_zonedel=Excluir zona
+index_zonedef=Tornar padrão
+index_type=Tipo de regra
+index_port=Porto ou serviço
+index_proto=Protocolo
+index_tservice=Serviço
+index_tport=Porta
+index_tforward=frente
+index_padd=Adicione porta permitida.
+index_sadd=Adicione serviço permitido.
+index_fadd=Adicione a porta a frente.
+index_delete=Excluir regras selecionadas
+index_return=lista de zonas
+index_ezones=Nenhuma zona FirewallD encontrada!
+index_none=Esta zona ainda não possui portas ou serviços permitidos.
+index_ifaces=Aplique regras às interfaces:
+
+port_edit=Editar porta
+port_create=Adicionar porta
+port_header=Opções de porta permitidas
+port_zone=Permitido na zona
+port_port=Porta para permitir
+port_mode0=Porta única
+port_mode1=Intervalo de portas
+port_mode2=Igual à porta original
+port_proto=Protocolo de rede
+port_ezone=Zona não existe!
+port_err=Falha ao salvar a porta
+port_eport=Número ou nome da porta ausente ou inválida
+port_eportlow=Porta baixa deve ser um número
+port_eporthigh=Porta alta deve ser um número
+port_eportrange=A porta baixa deve estar abaixo da porta alta
+
+serv_edit=Serviço de edição
+serv_create=Adicionar serviço
+serv_header=Opções de serviço permitidas
+serv_name=Serviço para permitir
+serv_err=Falha ao salvar o serviço
+
+forward_edit=Editar para a frente
+forward_create=Criar Encaminhamento
+forward_header=Opções de encaminhamento de porta
+forward_zone=Encaminhar para zona
+forward_err=Falha ao salvar adiante
+forward_port=Porta de origem
+forward_dstport=Porta de desintegração
+forward_dstaddr=Endereço de destino
+forward_dstlocal=Este sistema
+forward_edstaddr=Endereço de destino IPv4 inválido
+forward_eneither=É necessário inserir um endereço ou porta de destino ou ambos.
+
+check_ecmd=O comando de controle FirewallD $1 não foi encontrado no seu sistema
+
+delete_err=Falha ao excluir regras
+delete_enone=Nenhum selecionado!
+delete_edel=Falha na remoção de $1 : $2 
+
+zone_title=Criar zona
+zone_header=Novas opções de zona
+zone_name=Nome da zona
+zone_mode=Portas e serviços permitidos
+zone_mode0=Nenhum (todo o tráfego será bloqueado)
+zone_mode1=Copiar da zona
+zone_mode2=Apenas SSH, IDENT e Webmin
+zone_mode3=SSH, IDENT, Webmin e portas altas
+zone_mode4=Portas usadas para hospedagem virtual
+zone_err=Falha ao criar zona
+zone_ename=Nome de zona ausente ou inválido
+zone_eclash=Já existe uma zona com o mesmo nome
+
+delzone_title=Excluir zona
+delzone_err=Falha ao excluir a zona
+delzone_edefault=A zona padrão não pode ser removida
+delzone_rusure=Tem certeza de que deseja excluir a zona $1, que contém $2 portas e $3 serviços?
+
+defzone_err=Falha ao tornar a zona o padrão
+
+restart_err=Falha ao aplicar a configuração
+
+stop_err=Falha ao parar o FirewallD
+start_err=Falha ao iniciar o FirewallD
+log_stop=Firewall ParadoD
+log_start=Firewall iniciadoD
+log_restart=Configuração aplicada do FirewallD
+log_bootup=FirewallD ativado na inicialização
+log_bootdown=FirewallD desativado na inicialização
+log_create_port=Porta permitida $1 adicionada
+log_delete_port=Porta permitida $1 removida
+log_update_port=Porta permitida $1 atualizada
+log_create_serv=Adicionado serviço permitido $1 
+log_delete_serv=Serviço permitido $1 removido
+log_update_serv=Serviço permitido atualizado $1 
+log_create_forward=Adiante $1 
+log_delete_forward=Removido para a frente $1 
+log_update_forward=Atualizado para a frente $1 
+log_delete_rules=$1 portas permitidas removidas
+log_ifaces_zone=Interfaces atualizadas para a zona $1 
+log_create_zone=Zona criada $1 
+log_delete_zone=Zona excluída $1 
+log_default_zone=Tornou a zona $1 o padrão

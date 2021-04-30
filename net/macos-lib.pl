@@ -293,6 +293,11 @@ sub can_edit
 return $_[0] =~ /netmask|broadcast|dhcp|bootp/;
 }
 
+sub can_broadcast_def
+{
+return 0;
+}
+
 # valid_boot_address(address)
 # Is some address valid for a bootup interface
 sub valid_boot_address
@@ -422,7 +427,7 @@ elsif ($in{'router_mode'} == 1) {
 	}
 else {
 	$r = $in{'router'};
-	&check_ipaddress($r) || &error(&text('routes_edefault', $r));
+	&check_ipaddress($r) || &error(&text('routes_edefault', &html_escape($r)));
 	}
 &lock_file($hostconfig_file);
 &set_hostconfig("ROUTER", $r);

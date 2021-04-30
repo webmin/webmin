@@ -1,0 +1,52 @@
+index_active=¿Activo?
+index_cron=Comprobación programada
+index_crondesc=Haga clic en este botón para crear, cambiar o eliminar un trabajo de Cron para que Fetchmail se ejecute automáticamente según lo programado para verificar y descargar el correo electrónico utilizando la configuración anterior.
+index_crondesc2=Haga clic en este botón para crear, cambiar o eliminar un trabajo de Cron para que Fetchmail se ejecute automáticamente según lo programado para verificar y descargar el correo electrónico de todos los usuarios enumerados.
+index_version=Fetchmail versión $1 
+index_header=Usuarios con configuraciones de Fetchmail
+index_search=Mostrar configuración de Fetchmail para:
+index_show=mostrar
+index_toomany=Hay demasiados usuarios en su sistema para mostrar.
+
+poll_auth=Método de autentificación
+poll_usually=Por lo general no
+poll_ssl=¿Conectar en modo SSL?
+poll_eboth=Las opciones para dejar mensajes en el servidor y buscar siempre todos los mensajes son incompatibles
+poll_eusername=¡El usuario no existe!
+poll_foruser=Para el usuario $1 
+
+stop_ecannot=No tienes permiso para detener fetchmail
+start_ecannot=No tienes permiso para iniciar fetchmail
+
+log_create_cron=Comprobación programada habilitada
+log_update_cron=Verificación programada modificada
+log_delete_cron=Comprobación programada desactivada
+
+acl_cron=¿Se puede configurar la comprobación programada?
+acl_daemon=¿Se puede configurar el demonio Fetchmail?
+
+cron_title=Comprobación programada
+cron_desc=Esta página se puede usar para habilitar o deshabilitar un trabajo de Cron para verificar los servidores de correo en su configuración de Fetchmail en un horario regular. Usar un trabajo Cron superior a la ejecución del demonio Fetchmail, ya que no necesita reiniciarse en el momento del arranque.
+cron_header=Configuraciones programadas de Fetchmail
+cron_enabled=¿Comprobación programada habilitada?
+cron_yes=Sí, a veces configurado a continuación.
+cron_output=Destino para la salida de Fetchmail
+cron_file=Escribir en el archivo $1 
+cron_mail=Correo electrónico a la dirección $1 
+cron_throw=Descarte
+cron_cron=Salida a cron
+cron_owner=Correo electrónico al usuario cuya configuración se está verificando
+cron_user=Ejecuta Fetchmail como usuario
+cron_err=Error al guardar la comprobación programada
+cron_efile=Nombre de archivo de salida faltante o no válido
+cron_email=Dirección de correo electrónico faltante o inválida
+cron_euser=Usuario de Unix perdido o no válido
+cron_errors=¿Solo salida si ocurre un error?
+cron_ecannot2=No tiene permiso para configurar la comprobación programada
+
+user_title=Configuración de Fetchmail
+user_header=Para el usuario $1 
+user_return=configuración del usuario
+
+email_ok=Salida de Fetchmail
+email_failed=Error de fetchmail

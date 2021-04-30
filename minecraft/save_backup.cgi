@@ -16,9 +16,11 @@ if (!$in{'enabled'}) {
 		&webmincron::delete_webmin_cron($job);
 		}
 	&webmin_log("disable", "backup");
+	&redirect("");
 	}
 else {
 	# Validate inputs
+	&has_command("zip") || &error($text{'backup_ezip'});
 	$job ||= { 'module' => $module_name,
 		   'func' => 'backup_worlds' };
 	&webmincron::parse_times_input($job, \%in);
@@ -45,5 +47,26 @@ else {
 	&unlock_file($module_config_file);
 	&webmincron::save_webmin_cron($job);
 	&webmin_log("enable", "backup", $in{'backup_dir'});
+
+	# Backup now if selected
+	if ($in{'now'}) {
+		&ui_print_unbuffered_header(undef, $text{'backup_title'}, "");
+
+		print $text{'backup_doing'},"<p>\n";
+		my ($out, $failed) = &execute_backup_worlds();
+		foreach my $o (@$out) {
+			print $o,"<br>\n";
+			}
+		if ($failed) {
+			print $text{'backup_failed'},"<p>\n";
+			}
+		else {
+			print $text{'backup_done'},"<p>\n";
+			}
+
+		&ui_print_footer("", $text{'index_return'});
+		}
+	else {
+		&redirect("");
+		}
 	}
-&redirect("");

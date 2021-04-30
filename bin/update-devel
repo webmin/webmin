@@ -1,0 +1,79 @@
+#!/usr/bin/env perl
+# update-devel - Update Webmin/Usermin and/or Authentic Theme from Git, with latest unstable, development version.
+
+use strict;
+use warnings;
+
+use 5.010;
+
+use Getopt::Long qw(:config permute pass_through);
+use Pod::Usage;
+use Term::ANSIColor qw(:constants);
+use File::Basename;
+use Cwd qw(cwd);
+
+my %opt;
+GetOptions('help|h'      => \$opt{'help'},
+           'product|p=s' => \$opt{'product'},
+           'theme|t:s'   => \$opt{'theme'});
+pod2usage(0) if ($opt{'help'} || !$opt{'product'});
+
+# Get current path
+my $path = cwd;
+
+# Check Webmin lib
+my $lib = "web-lib-funcs.pl";
+if (!-r "$path/$lib") {
+    $path = dirname(dirname($0));
+    if (!-r "$path/$lib") {
+        $path = $path = Cwd::realpath('..');
+    }
+}
+
+# Run actual update or throw an error
+my $p = $opt{'product'};
+
+if ($p =~ /^webmin$|^usermin$/i) {
+    if ($p =~ /^usermin$/i) {
+        $path =~ s/webmin/$p/;
+    }
+    my $cmd = "cd $path && ./update-from-repo.sh -force";
+    if (defined($opt{'theme'})) {
+        my $tver = $opt{'theme'} ? " -release:$opt{'theme'}" : "";
+        $cmd = "cd $path/authentic-theme && ./theme-update.sh$tver -force";
+    } 
+    system($cmd);
+} else {
+    say RED, "Unknow product name: $p", RESET;
+    exit 0;
+}
+
+=pod
+
+=head1 NAME
+
+update-devel
+
+=head1 DESCRIPTION
+
+Update Webmin/Usermin and/or Authentic Theme from Git, with latest unstable, development version.
+
+=head1 SYNOPSIS
+
+update-devel [options] --product <webmin|usermin> [--theme]
+
+=head1 OPTIONS
+
+=over
+
+=item --product, -p
+
+Specify product name to update, like "webmin" or "usermin".
+
+=item --theme, -t
+
+If set, only Authentic Theme will be updated for specified product
+
+=item --help, -h
+
+=back

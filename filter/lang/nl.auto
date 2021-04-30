@@ -1,0 +1,21 @@
+index_forever=Voor altijd
+index_ondate=Datum
+index_subject=Onderwerp bericht automatisch beantwoorden
+
+edit_apply=Toon overeenkomende e-mail in map:
+edit_move=Toepassen op e-mail in map:
+
+save_egone=Filter bestaat niet meer!
+
+auto_subject=E-mail onderwerp
+
+move_err=Kan filter niet toepassen
+move_esrc=Bronmap $1 bestaat niet!
+move_edest=Bestemmingsmap $1 bestaat niet!
+move_esame=Bron en doelmap zijn hetzelfde
+move_title=Voeg filter toe
+move_finding=Zoeken naar berichten die overeenkomen met het filter in $1 ..
+move_none=.. geen gevonden!
+move_found=.. $1 berichten gevonden
+move_moving=$1 berichten verplaatsen naar $2 ..
+move_done=.. gedaan

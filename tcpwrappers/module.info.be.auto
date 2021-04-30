@@ -1,0 +1,3 @@
+name_be=tcpwrappers
+desc_be=Абгорткі TCP
+longdesc_be=Наладзьце TCP абгорткі сеткавых файлаў кіравання доступам

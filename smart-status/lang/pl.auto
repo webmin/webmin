@@ -1,0 +1,58 @@
+index_title=Status napędu SMART
+index_ecmd=Komenda sterująca SMART $1 nie została znaleziona w systemie lub nie jest poprawnie ustawiona w konfiguracji modułu <a href='$2'></a>. Musi zostać zainstalowany, zanim będzie można korzystać z tego modułu.
+index_ecmd2=Polecenie $1 nie wydaje się być poleceniem sterującym SMART. Należy go poprawnie ustawić w <a href='$2'>konfiguracji modułu</a>, aby można było korzystać z tego modułu.
+index_version=Wersja SMARTsuite $1 
+index_show=Pokaż stan dysku:
+index_ok=Pokazać
+index_eidescsi=W systemie nie znaleziono dysków IDE, SCSI ani SATA.
+index_drive=Status napędu $1 
+index_drivesub=Status napędu $1, dysku $2 
+index_desc=Lokalizacja
+index_size=Rozmiar dysku
+index_model=Robić i modelować
+index_support=Obsługuje SMART?
+index_enabled=SMART włączony?
+index_check=Przeszedłeś kontrolę dysku?
+index_short=Krótki autotest
+index_ext=Rozszerzony autotest
+index_data=Test zbierania danych
+index_errors=Zarejestrowane błędy
+index_ecount=Wykryto błędy $1 
+index_attrs=Dodatkowe atrybuty SMART
+index_raw=Pełny raport stanu SMART
+index_return=indeks modułu
+index_family=Rodzina modeli
+index_serial=Numer seryjny
+index_capacity=Pojemność
+index_norm=Znormalizowane:
+
+monitor_type=SMART Drive Check
+monitor_type2=Zużycie SSD
+monitor_drive=Jedź, aby sprawdzić
+monitor_errors=Sprawdź także dziennik błędów?
+monitor_errorsinc=Tak, ale ostrzegaj tylko, jeśli liczba błędów wzrośnie
+monitor_other=Inny ..
+monitor_edrive=Brakujący lub nieprawidłowy dysk do sprawdzenia
+monitor_nosuch=Brak takiego napędu
+monitor_nosmart=Brak obsługi SMART
+monitor_errorsfound=Zgłoszone błędy $1 
+monitor_errorsinced=Błędy wzrosły z $2 do $1 
+monitor_wearlevel=Błąd, jeśli poziom zużycia spadnie poniżej
+monitor_ewearlevel=Nieprawidłowy procent poziomu zużycia
+monitor_nowearout=Dysk nie zgłasza wskaźnika zużycia dysku SSD
+monitor_wornout=Poziom zużycia spadł do $1 
+
+short_title=Krótki autotest
+short_doing=Rozpoczęcie krótkiego autotestu $1 ..
+short_failed=.. nie powiodło się!
+short_ok=.. test zaczął się OK. Zobacz status napędu na stronie głównej modułu, aby zobaczyć wyniki.
+
+ext_title=Rozszerzony autotest
+ext_doing=Uruchamianie rozszerzonego autotestu $1 ..
+ext_failed=.. nie powiodło się!
+ext_ok=.. test zaczął się OK. Zobacz status napędu na stronie głównej modułu, aby zobaczyć wyniki.
+
+data_title=Test zbierania danych
+data_doing=Rozpoczynam zbieranie danych offline na $1 ..
+data_failed=.. nie powiodło się!
+data_ok=.. kolekcja zaczęła się OK. Zobacz status napędu na stronie głównej modułu, aby zobaczyć wyniki.

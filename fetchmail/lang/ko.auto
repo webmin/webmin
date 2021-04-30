@@ -1,0 +1,104 @@
+index_active=유효한?
+index_global=기본 설정을 편집하십시오.
+index_start=페치 메일 데몬 시작
+index_stop=페치 메일 데몬 중지
+index_startmsg=이 서버에서 fetchmail 데몬을 시작하고 $1 초마다 메일을 확인하도록하려면이 버튼을 클릭하십시오. 데몬은 사용자 $2 로 실행되며 위의 구성을 사용합니다.
+index_stopmsg=현재 사용자 $1 (으)로 실행중인 fetchmail 데몬을 중지하려면이 단추를 클릭하십시오. 더 이상 $2 초마다 메일이 자동으로 다운로드되지 않습니다.
+index_efetchmail=페치 메일 프로그램 $1 을 (를) 찾을 수 없습니다. 시스템에 fetchmail이 설치되어 있지 않거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+index_none=유닉스 사용자는 <tt>.fetchmailrc</tt> 파일을 가지고 있지 않습니다.
+index_cron=예약 확인
+index_crondesc=이 구성을 사용하여 이메일을 확인하고 다운로드하기 위해 Fetchmail이 스케줄대로 자동 실행되도록하려면 Cron 작업을 작성, 변경 또는 제거하려면이 단추를 클릭하십시오.
+index_crondesc2=이 버튼을 클릭하면 스케줄에 따라 Fetchmail이 자동으로 실행되어 나열된 모든 사용자의 이메일을 확인하고 다운로드하도록 Cron 작업을 작성, 변경 또는 제거 할 수 있습니다.
+index_version=페치 메일 버전 $1 
+index_header=Fetchmail 구성이있는 사용자
+index_search=다음에 대한 Fetchmail 구성 표시
+index_show=보여 주다
+index_toomany=시스템에 표시 할 사용자가 너무 많습니다.
+
+poll_auth=인증 방법
+poll_usually=보통 아니
+poll_ssl=SSL 모드로 연결 하시겠습니까?
+poll_eboth=서버에 메시지를 남기고 항상 모든 메시지를 가져 오는 옵션이 호환되지 않습니다
+poll_adduser=다른 사용자 추가
+poll_check=이 서버를 확인
+poll_interface=상태 확인
+poll_interface_def=항상 확인
+poll_interface_ifc=인터페이스가 작동하는 경우에만
+poll_interface_ip=주소 / 넷 마스크
+poll_einterface=네트워크 인터페이스가 없거나 유효하지 않습니다
+poll_enet=주소가 없거나 잘못되었습니다
+poll_emask=잘못된 주소 넷 마스크
+poll_preconnect=연결하기 전에 실행할 명령
+poll_postconnect=연결을 끊은 후 실행할 명령
+poll_ecannot=이 사용자의 페치 메일 설정을 편집 할 수 없습니다
+poll_efile=사용자의 페치 메일 설정 파일 만 편집 할 수 있습니다
+poll_eusername=사용자가 존재하지 않습니다!
+poll_foruser=사용자 $1 의 경우
+
+stop_err=페치 메일을 중지하지 못했습니다.
+stop_ecannot=fetchmail을 중지 할 수 없습니다
+start_err=페치 메일을 시작하지 못했습니다
+start_einterval=점검 간격이 없거나 유효하지 않음
+start_ecannot=fetchmail을 시작할 수 없습니다
+
+check_title=서버 확인
+check_exec=$1 명령으로 서버에서 메일을 확인 중입니다.
+check_ok=.. 점검 완료.
+check_failed=.. 확인 실패!
+
+global_title=기본 설정
+global_header=모든 서버의 기본 설정
+global_err=기본 설정을 저장하지 못했습니다
+
+log_create_poll_file=파일 $2 에 서버 $1 을 (를) 추가했습니다.
+log_modify_poll_file=파일 $2 의 수정 된 서버 $1 
+log_delete_poll_file=$2 파일에서 $1 서버를 삭제했습니다.
+log_create_poll_user=사용자 $2 에 대한 서버 $1 을 (를) 추가했습니다.
+log_modify_poll_user=사용자 $2 에 대한 수정 된 서버 $1 
+log_delete_poll_user=사용자 $2 에 대한 서버 $1 을 (를) 삭제했습니다.
+log_check_file_file=파일 $1 의 모든 서버를 확인했습니다.
+log_check_file_server=파일 $1 에서 서버 $2 을 (를) 확인했습니다.
+log_check_user_file=사용자 $1 의 모든 서버를 확인했습니다.
+log_check_user_server=사용자 $1 의 서버 $2 을 (를) 확인했습니다.
+log_check_server_l=파일 $1 에서 서버 $2 을 (를) 확인했습니다.
+log_global_user=사용자 $1 의 전역 설정이 변경되었습니다.
+log_global_file=파일 $1 의 전역 설정이 변경되었습니다.
+log_start=페치 메일 데몬 시작
+log_stop=페치 메일 데몬 중지
+log_create_cron=활성화 된 예약 확인
+log_update_cron=수정 된 예약 확인
+log_delete_cron=비활성화 된 예약 확인
+
+acl_users=fetchmail 설정을 편집 할 수 있습니다.
+acl_all=모든 사용자들
+acl_this=현재 웹민 사용자
+acl_only=사용자 만
+acl_except=사용자를 제외한 모두
+acl_cron=예약 확인을 구성 할 수 있습니까?
+acl_daemon=Fetchmail 데몬을 구성 할 수 있습니까?
+
+cron_title=예약 확인
+cron_desc=이 페이지는 정기적으로 Fetchmail 구성의 메일 서버를 확인하기 위해 Cron 작업을 활성화 또는 비활성화하는 데 사용할 수 있습니다. 부팅시 다시 시작할 필요가 없으므로 Fetchmail 데몬 실행보다 우수한 Cron 작업 사용
+cron_header=예약 된 페치 메일 설정
+cron_enabled=예약 확인이 가능합니까?
+cron_yes=예, 아래에 구성된 시간에 ..
+cron_output=Fetchmail 출력 대상
+cron_file=$1 파일에 쓰기
+cron_mail=$1 주소로 이메일 보내기
+cron_throw=포기
+cron_cron=cron으로 출력
+cron_owner=구성을 확인중인 사용자에게 이메일
+cron_user=Fetchmail을 사용자로 실행
+cron_err=예약 확인을 저장하지 못했습니다
+cron_efile=출력 파일 이름이 없거나 잘못되었습니다
+cron_email=이메일 주소가 없거나 잘못되었습니다
+cron_euser=유닉스 사용자가 없거나 잘못되었습니다
+cron_errors=에러가 발생했을 때만 출력합니까?
+cron_ecannot2=예약 확인을 구성 할 수 없습니다
+
+user_title=페치 메일 구성
+user_header=사용자 $1 의 경우
+user_return=사용자 구성
+
+email_ok=페치 메일 출력
+email_failed=페치 메일 오류

@@ -1,0 +1,103 @@
+index_title=Sykemittari
+index_return=sykemittari
+index_edir=Sykemäärityshakemistoa $1 ei ole. Ehkä Heartbeatia ei ole asennettu tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
+index_start=Käynnistä sykemittari
+index_startmsg=Napsauta tätä painiketta, kun haluat käynnistää Heartbeat-näyttöprosessin. Tämä mahdollistaa automaattisen palvelun virheensiirron järjestelmässä nykyisellä kokoonpanolla.
+index_apply=Ota muutokset käyttöön
+index_applymsg=Napsauta tätä painiketta, kun haluat pakottaa käynnissä olevan Heartbeat-näyttöprosessin lataamaan nykyiset kokoonpanot uudelleen.
+index_eha_cf=Sykemääritystiedostoa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole vielä kopioitu paikalleen tai <a href='$2'>moduulin kokoonpano</a> on väärä.
+index_eharesources=Resurssitiedostoa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole vielä kopioitu paikalleen tai <a href='$2'>moduulin kokoonpano</a> on väärä.
+index_eauthkeys=Autentikointiavaintiedostoa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole vielä kopioitu paikalleen tai <a href='$2'>moduulin kokoonpano</a> on väärä.
+index_ereq_resource_cmd=Skriptiä resurssien pyytämiseksi toiselta solmulta ($1) ei löytynyt järjestelmästäsi. Ehkä sitä ei ole vielä kopioitu paikalleen tai <a href='$2'>moduulin kokoonpano</a> on väärä.
+index_version=Sykeversio $1 
+index_noversion=Varoitus - Järjestelmään asennettua Heartbeat-versiota ei voitu tunnistaa automaattisesti. Sinun tulisi asettaa se <a href='$1'>moduulin kokoonpano</a> -sivulle.
+index_status=Sydämen syke
+
+conf_title=Kokoonpanoasetukset
+conf_header=Sydämen sykeasetukset
+conf_serials=Sarjallinen sykeportti
+conf_baud=Sarjaportin äänenvoimakkuus
+conf_bcasts=Ethernet-sykerajapinnat
+conf_none=Ei mitään
+conf_udpport=UDP-sykeportti
+conf_mcast=Multicast-sykelaite
+conf_mcastv=Laite $1, ryhmä $2, portti $3, TTL $4, silmukka $5 
+conf_enabled=käytössä
+conf_disabled=Liikuntarajoitteinen
+conf_keepalive=Aika sydämenlyöntien välillä
+conf_nice_failback=Mukava epäonnistuminen
+conf_secs=sekuntia
+conf_deadtime=Aikaa ennen solmua pidetään kuollut
+conf_watchdog=Vahtikoiralaitetiedosto
+conf_node=Isännät klusterissa
+conf_logfile=Sydämen syke lokitiedosto
+conf_logfacility=Syslog-lokipalvelu
+conf_initdead=Alkuperäinen kuollut aika
+conf_ok=Tallenna asetukset
+conf_err=Asetusten tallentaminen epäonnistui
+conf_ebaud=Puuttuva tai virheellinen siirtonopeus
+conf_ebcast=Ei sykelähetysrajapintoja syötetty
+conf_ebcastif='$1' ei ole kelvollinen lähetysrajapinta
+conf_eudpport=Puuttuva tai virheellinen sykeportti
+conf_ekeepalive=Puuttuva tai kelpaamaton sydämenlyöntien välinen aika
+conf_edeadtime=Puuttuva tai kelpaamaton kuollut aika
+conf_ewatchdog=Puuttuva tai puuttuva valvontalaitetiedosto
+conf_enonode=Klusterin isäntiä ei annettu
+conf_ethisnode=Tätä isäntä $1 ei ole klusterin isäntäluettelossa
+conf_elogfile=Puuttuva tai virheellinen lokitiedostonimi
+conf_einitdead=Alkuperäinen kuollut aika puuttuu tai on virheellinen
+conf_einitdead2=Alkuperäisen kuollut ajan on oltava vähintään kahdesti aika ennen kuin solmua pidetään kuollut
+conf_emcast_dev=Puuttuva tai virheellinen ryhmälähetyslaite
+conf_emcast_ip=Puuttuva tai virheellinen ryhmälähetysryhmän osoite
+conf_emcast_port=Puuttuva tai virheellinen ryhmälähetysportin numero
+conf_emcast_ttl=Puuttuva tai virheellinen ryhmälähetys
+conf_auto_on=$ {Conf_enabled}
+conf_auto_off=$ {Conf_disabled}
+conf_auto_legacy=Vanha tila
+conf_auto_=$ {Default}
+
+res_title=Ryhmäresurssit
+res_node=Ensisijainen solmu
+res_ips=IP-osoitteet
+res_servs=Solmupalvelut
+res_none=Ei mitään
+res_nores=Ryhmäresursseja ei ole määritetty järjestelmässäsi.
+res_add=Lisää klusterin resurssi
+res_return=resurssiluettelo
+res_active=Resurssien tila
+res_getserv=Hanki resurssi
+res_hbdown=Sydämen syke
+res_up=UP
+res_down=ALAS
+
+node_create=Lisää klusterresurssi
+node_edit=Muokkaa klusterijärjestelmää
+node_header=Ryhmäresurssin yksityiskohdat
+node_node=Ensisijainen solmu resurssille
+node_ips=Resurssin IP-osoitteet
+node_ip=IP-osoite
+node_cidr=Verkkomaskin CIDR
+node_broad=Lähetysosoite
+node_servs=Palvelut resursseja varten
+node_serv=palvelu
+node_args=Lisäväitteet
+node_err=Ryhmäresurssin tallentaminen epäonnistui
+node_enone=Puuttuva tai virheellinen ensisijainen solmu
+node_eip='$1' ei ole kelvollinen IP-osoite
+node_ecidr='$1' ei ole kelvollinen CIDR
+node_ebroad='$1' ei ole kelvollinen lähetysosoite
+
+auth_title=Todennusnäppäimet
+auth_header=Klusterisolmun todennus
+auth_mode=Todennustila
+auth_crc=CRC (ei turvaa)
+auth_sha1=SHA1 salasanalla
+auth_md5=MD5 salasanalla
+auth_err=Todennusavainten tallennus epäonnistui
+auth_emd5=Puuttuva tai virheellinen MD5-salasana
+auth_esha1=Puuttuva tai virheellinen SHA1-salasana
+
+start_err=Sydämen sykkeen aloittaminen epäonnistui
+
+apply_err=Muutosten asettaminen epäonnistui
+apply_epid=Prosessi ei ole enää käynnissä

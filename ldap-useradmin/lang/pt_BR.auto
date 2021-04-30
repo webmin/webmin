@@ -1,0 +1,9 @@
+conn_efile_open=Não foi possível abrir o arquivo de credenciais de vinculação do LDAP:
+
+uedit_sambapassopts=Opções de senha do Samba
+uedit_sambapwdlastset=Última atualização de senha
+uedit_sambapwdcanchange=A senha pode mudar
+uedit_sambabadpasswordcount=Contagem de senha incorreta
+uedit_sambaacctflags=Sinalizadores de conta
+
+batch_imap=Criar conta IMAP para novos usuários?

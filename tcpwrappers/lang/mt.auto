@@ -1,0 +1,33 @@
+index_title=Tgeżwir TCP
+index_return=indiċi
+index_allowtitle=Ospitanti permessi
+index_denytitle=Ospitanti miċħuda
+index_norule=L-ebda regola ma ġiet definita f '<tt>$1</tt> s'issa.
+index_nofile=Fajl "$1" ma jeżistix - iċċekkja l-<a href="/config.cgi?tcpwrappers">konfigurazzjoni tal-modulu</a>
+index_add=Żid regola ġdida.
+index_service=Daemon
+index_hosts=L-ospiti
+index_cmd=Kmand
+index_delete=Ħassar Magħżul
+index_none=xejn
+
+edit_title1allow=Oħloq Ħalli Regola
+edit_title2allow=Edit Ħalli r-Regola
+edit_title1deny=Oħloq Regola taċ-Ċaħda
+edit_title2deny=Editja Regola ta 'Ċaħda
+edit_eid=Din ir-regola ma nstabetx
+edit_header=Għażliet tar-Regola
+edit_service=Servizzi
+edit_except=Ħlief servizzi
+edit_hosts=Ospitanti mill-bogħod
+edit_hostsexcept=Ħlief l-ospiti
+edit_cmd=Shell jikkmanda
+edit_efound=Daemon '$1' ma nstabx fil-konfigurazzjoni ta 'xinetd.
+
+save_errtitle=Żball fir-regola tas-salvataġġ
+save_ehost=Input ospitanti fih karattri ħżiena
+save_ecmd=Input tal-kmand fih karattri ħżiena
+save_eservice=Ismijiet tad-demoni fihom karattri ħżiena
+
+del_errtitle=Żball fuq ir-regoli li jitħassru
+del_enone=Ebda regoli mmarkati biex jitħassru

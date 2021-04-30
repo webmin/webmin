@@ -1,0 +1,71 @@
+<header> TCP Wrappers </header>
+<h3> Motifs </h3> Le langage de contrôle d&#39;accès implémente les modèles suivants: <ul>
+    <li> Une chaîne qui commence par un &#39;.&#39; personnage. Un nom d&#39;hôte est mis en correspondance si les derniers composants de son nom correspondent au modèle spécifié. Par exemple, le modèle &#39;.tue.nl&#39; correspond au nom d&#39;hôte &#39;wzv.win.tue.nl&#39;. </li>
+    <li> Une chaîne qui se termine par un «.» personnage. Une adresse d&#39;hôte est mise en correspondance si ses premiers champs numériques correspondent à la chaîne donnée. Par exemple, le modèle «131.155». correspond à l&#39;adresse de (presque) chaque hôte du réseau de l&#39;Université d&#39;Eindhoven (131.155.xx). </li>
+    <li> Une chaîne qui commence par un caractère «@» est traitée comme un nom de groupe de réseaux NIS (anciennement YP). Un nom d&#39;hôte est mis en correspondance s&#39;il est membre d&#39;hôte du groupe de réseaux spécifié. Les correspondances de Netgroup ne sont pas prises en charge pour les noms de processus démon ou pour les noms d&#39;utilisateur client. </li>
+    <li> Une expression de la forme «nnnn / mmmm» est interprétée comme une paire «net/masque». Une adresse d&#39;hôte IPv4 est mise en correspondance si «net» est égal au ET au niveau du bit de l&#39;adresse et du «masque». Par exemple, le modèle de réseau / masque «131.155.72.0/255.255.254.0» correspond à chaque adresse dans la plage «131.155.72.0» à «131.155.73.255». </li>
+    <li> Une expression de la forme «[n: n: n: n: n: n: n: n] / m» est interprétée comme une paire «[net]/prefixlen». Une adresse d&#39;hôte IPv6 est mise en correspondance si les bits «prefixlen» de «net» sont égaux aux bits «prefixlen» de l&#39;adresse. Par exemple, le modèle [net]/prefixlen &#39;[3ffe: 505: 2: 1 ::]/64&#39; correspond à chaque adresse de la plage &#39;3ffe: 505: 2: 1:&#39;? jusqu&#39;à «3ffe: 505: 2: 1: ffff: ffff: ffff: ffff». </li>
+    <li> Une chaîne qui commence par un caractère &#39;/&#39; est traitée comme un nom de fichier. Un nom d&#39;hôte ou une adresse est mis en correspondance s&#39;il correspond à un nom d&#39;hôte ou à un modèle d&#39;adresse répertorié dans le fichier nommé. Le format de fichier est zéro ou plusieurs lignes avec zéro ou plusieurs noms d&#39;hôte ou modèles d&#39;adresse séparés par des espaces. Un modèle de nom de fichier peut être utilisé partout où un modèle d&#39;hôte ou d&#39;adresse peut être utilisé. </li>
+    <li> Caractères génériques &#39;*&#39; et &#39;?&#39; peut être utilisé pour faire correspondre les noms d&#39;hôte ou les adresses IP. Cette méthode de correspondance ne peut pas être utilisée conjointement avec la correspondance «net/mask», la correspondance du nom d&#39;hôte commençant par «.» ou correspondance d&#39;adresse IP se terminant par &#39;.&#39;. </li>
+</ul>
+<h3> Caractères génériques </h3> Le langage de contrôle d&#39;accès prend en charge les caractères génériques explicites: <table border>
+    <tr>
+        <td> <b>TOUT</b> </td>
+        <td> Le caractère générique universel correspond toujours. </td>
+    </tr>
+    <tr>
+        <td> <b>LOCAL</b> </td>
+        <td> Correspond à tout hôte dont le nom ne contient pas de caractère point. </td>
+    </tr>
+    <tr>
+        <td> <b>INCONNUE</b> </td>
+        <td> Correspond à tout utilisateur dont le nom est inconnu et correspond à tout hôte dont le nom ou l&#39;adresse sont inconnus. Ce modèle doit être utilisé avec précaution: les noms d&#39;hôte peuvent ne pas être disponibles en raison de problèmes temporaires de serveur de noms. Une adresse réseau ne sera pas disponible lorsque le logiciel ne pourra pas déterminer à quel type de réseau il parle. </td>
+    </tr>
+    <tr>
+        <td> <b>CONNU</b> </td>
+        <td> Correspond à tout utilisateur dont le nom est connu et correspond à tout hôte dont le nom et l&#39;adresse sont connus. Ce modèle doit être utilisé avec précaution: les noms d&#39;hôte peuvent ne pas être disponibles en raison de problèmes temporaires de serveur de noms. Une adresse réseau ne sera pas disponible lorsque le logiciel ne pourra pas déterminer à quel type de réseau il parle. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOÏAQUE</b> </td>
+        <td> Correspond à tout hôte dont le nom ne correspond pas à son adresse. Lorsque tcpd est construit avec -DPARANOID (mode par défaut), il supprime les requêtes de ces clients avant même de consulter les tables de contrôle d&#39;accès. Générez sans -DPARANOID lorsque vous souhaitez plus de contrôle sur ces demandes. </td>
+    </tr>
+</table>
+<h3> Les opérateurs </h3> <b>SAUF</b> L&#39;utilisation prévue est de la forme: &#39;list_1 EXCEPT list_2&#39;; cette construction correspond à tout ce qui correspond à list_1, sauf si elle correspond à list_2. L&#39;opérateur EXCEPT peut être utilisé dans daemon_lists et dans client_lists. L&#39;opérateur EXCEPT peut être imbriqué: si le langage de contrôle permet l&#39;utilisation de parenthèses, «a EXCEPT b EXCEPT c» est analysé comme «(a EXCEPT (b EXCEPT c))». <h3> Commandes shell </h3> Si la première règle de contrôle d&#39;accès correspondant contient une commande shell, cette commande est soumise à% <letter> substitutions (voir section suivante). Le résultat est exécuté par un processus enfant /bin/sh avec une entrée, une sortie et une erreur standard connectées à /dev/null. Spécifiez un «&amp;» à la fin de la commande si vous ne voulez pas attendre qu&#39;elle soit terminée. <p> Les commandes shell ne doivent pas s&#39;appuyer sur le paramètre PATH de inetd. Au lieu de cela, ils devraient utiliser des noms de chemin absolus ou commencer par une instruction PATH = what-ever explicite. <h3> % D&#39;expansion </h3> Les extensions suivantes sont disponibles dans les commandes shell: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> L&#39;adresse d&#39;hôte du client (serveur). </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Informations sur le client: utilisateur @ hôte, utilisateur @ adresse, un nom d&#39;hôte ou simplement une adresse, selon la quantité d&#39;informations disponibles. </td>
+            </tr>
+            <tr>
+                <td>%d</td>
+                <td> Le nom du processus démon (valeur argv[0]). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Le nom d&#39;hôte ou l&#39;adresse du client (serveur), si le nom d&#39;hôte n&#39;est pas disponible. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> Le nom d&#39;hôte du client (serveur) (ou &quot;inconnu&quot; ou &quot;paranoïaque&quot;). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> L&#39;ID du processus démon. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Informations sur le serveur: daemon@host, daemon@address ou simplement un nom de démon, selon la quantité d&#39;informations disponibles. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Le nom d&#39;utilisateur du client (ou &quot;inconnu&quot;). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Se développe à un seul%? personnage. </td>
+            </tr>
+        </table> Les caractères en%d&#39;extensions qui peuvent perturber le shell sont remplacés par des traits de soulignement.
+        <hr />

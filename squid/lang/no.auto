@@ -1,0 +1,104 @@
+manual_editing=Bruk tekstboksen nedenfor for å redigere konfigurasjonene manuelt i $1. Vær forsiktig, da det ikke blir gjort noen syntaks eller gyldighetskontroll.
+
+acl_nodns=Deaktiver oppslag?
+
+ech_digest=Hostens cache-digest URL
+ech_miss=Tillat glippforespørsler?
+ech_force=Tving verten: header til
+
+emem_gdsf=Grådig-dobbelt størrelse frekvens
+emem_hlru=Heap minst brukt
+
+emisc_fua=Fake User-Agent
+
+eports_a=Noen
+
+eprogs_ttl=Autentiseringsbuffertid
+eprogs_aittl=Autentiser IP-hurtigbuffertid
+
+sadmin_msg1=Du har endret brukeren eller gruppen som blekksprut kjører som. For at dette skal tre i kraft riktig, bør eierskapet til alle cache- og loggfiler oppdateres og blekksprut på nytt.
+
+scache_emsg3='$1' er ikke en gyldig mislykket forespørselsbuffertid
+scache_emaxrs=Ugyldig maksimal kroppsstørrelse i rad $1
+
+log_ports=Endrede porter og nettverksalternativer
+log_icp=Endret andre cache-alternativer
+log_progs=Endrede alternativ for hjelperprogram
+log_authparam=Endrede alternativer for godkjenningsprogram
+log_http_create=Opprettet proxy-begrensning
+log_http_modify=Endret proxy-begrensning
+log_http_delete=Proxy-begrensning er slettet
+log_http_move=Flyttet proxy-begrensning
+log_https_delete=Slettet $1 proxy-begrensninger
+log_headeracc_create=Opprettet hovedtilgangsregel
+log_headeracc_modify=Endret hovedtilgangsregel
+log_headeracc_delete=Slettet hovedtilgangsregel
+log_headeracc_move=Flyttet hovedtilgangsregel
+log_host_create=Opprettet cache-vert $1
+log_host_modify=Endret cache-verten $1
+log_host_delete=Slettet cache vert $1
+log_hosts_delete=Slettet $1 cache-verter
+log_always_create=Opprettet direkte hentede ACL-er
+
+log_always_modify=Modifiserte direkte hentede ACL-er
+log_always_delete=Slettede direkte hentede ACL-er
+log_always_move=Flyttet direkte hentet ACL-er
+log_never_create=Laget aldri direkte hente ACL-er
+log_never_modify=Modifiserte hentet ikke ACL-er direkte
+log_never_delete=Slett aldri direkte hente ACL-er
+log_never_move=Flyttet aldri hente ACL-er
+log_delay=Endrede alternativ for forsinkelsesbasseng
+log_pool_create=Lagt til forsinkelsesbasseng $1
+log_pool_modify=Endret forsinkelsesbasseng $1
+log_pool_delete=Slettet forsinkelsesbasseng $1
+log_pools_delete=Slettet $1 forsinkelsesbassenger
+log_delay_create=Lagt til ACL for forsinkelsesbasseng $1
+log_delay_modify=Endret ACL for forsinkelsesbasseng $1
+log_delay_delete=Slettet ACL for forsinkelsesbasseng $1
+
+log_delay_move=Flyttet ACL for forsinkelsesbasseng $1
+log_refresh_create=Opprettet oppdateringsregel for $1
+log_refresh_modify=Endret oppdateringsregel for $1
+log_refresh_delete=Slettet oppdateringsregel for $1
+
+log_refresh_move=Flyttet oppdateringsregel for $1
+log_refreshes_delete=Slettet $1 oppdateringsregler
+log_purge=Fjernet URL $1 fra cachen
+log_cachemgr=Endrede passord for hurtigbehandler
+
+never_create=Lag indirekte henting
+never_edit=Rediger indirekte henting
+never_header=Hent aldri direkte forespørsler som samsvarer med ACL-er
+
+pool_header=Forsink bassengalternativer
+pool_class=Bassengklasse
+pool_agg=Samlet grense (for klasse 1, 2 og 3)
+pool_tag=Taggrense (for klasse 5)
+pool_err=Kunne ikke lagre forsinkelsesbassenget
+pool_elimit1='$1' er ikke et gyldig antall byte/sekund
+pool_elimit2='$1' er ikke et gyldig maksimum antall byte
+pool_aclheader=ACL-er for å matche for bassenget
+pool_noacl=Ingen ACL-er å matche for dette bassenget er ennå ikke definert.
+pool_add=Legg til en ny ACL for dette bassenget
+
+header_none=Ingen kontrolltilgangskontrollregler er definert ennå.
+
+header_add=Legg til en ny kontrollkontrollregel for header.
+header_create=Opprett hovedtilgangsregel
+header_create_request_header_access=Opprett forespørsel Header Access-regel
+header_create_reply_header_access=Opprett svarhode for tilgangsregel
+header_edit_request_header_access=Rediger forespørsel om tilgang til hovedtekst
+header_edit_reply_header_access=Rediger svarhovedtilgangsregel
+header_header=Detaljer om HTTP-kontroll for tilgangskontroll
+header_return=Oversikt over kontrollregler for overskrifter
+
+refresh_override-expire=Håndhev minimumsalder over alder angitt av server
+refresh_override-lastmod=Håndhev minstealder selv på nylig modifiserte objekter
+refresh_reload-into-ims=Konverter klientens ikke-cache-overskrifter til Hvis-modifisert-siden
+refresh_ignore-reload=Ignorer klientens ikke-cache eller last inn overskrifter
+refresh_emin=Manglende eller ugyldig minumtid
+refresh_emax=Manglende eller ugyldig maksimal tid
+refresh_epc=Manglende eller ugyldig aldersprosent
+purge_err=Kunne ikke fjerne URL fra cachen
+purge_title=Tøm hurtigbufret URL
+purge_doing=Tømmer URL $1 ..

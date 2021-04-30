@@ -9,6 +9,7 @@
 
 
 require './postfix-lib.pl';
+&ReadParse();
 
 $access{'body'} || &error($text{'body_ecannot'});
 &ui_print_header(undef, $text{'body_title'}, "", "body");

@@ -70,8 +70,11 @@ else {
 my @match;
 my %index;
 &build_log_index(\%index);
-open(LOG, $webmin_logfile);
+open(LOG, "<$webmin_logfile");
 while(my ($id, $idx) = each %index) {
+	if ($id =~ /^last/) {
+	    next;
+	}
 	my ($pos, $time, $user, $module, $sid) = split(/\s+/, $idx);
 	$time ||= 0;
 	$module ||= "";
@@ -169,7 +172,7 @@ if ($in{'csv'}) {
 		if ($config{'host_search'}) {
 			push(@cols, $act->{'webmin'});
 			}
-		push(@cols, &make_date($act->{'time'}));
+		push(@cols, &make_date($act->{'time'},0 , "yyyy-mm-dd"));
 		print join(",", map { "\"$_\"" } @cols),"\n";
 		}
 	}
@@ -225,7 +228,7 @@ elsif (@match) {
 		if ($config{'host_search'}) {
 			push(@cols, $act->{'webmin'});
 			}
-		push(@cols, split(/\s+/, &make_date($act->{'time'})));
+		push(@cols, split(/\s+/, &make_date($act->{'time'}, 0, "yyyy/mm/dd")));
 		print &ui_columns_row(\@cols);
 		}
 	print &ui_columns_end();

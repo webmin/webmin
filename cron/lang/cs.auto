@@ -1,0 +1,22 @@
+index_manual=Ručně upravte úlohy cronu.
+index_next=Další běh
+index_nunknown=Neznámý
+index_ecrondir_create=Zkuste vytvořit adresář úloh $1 ?
+
+edit_next=Čas příštího běhu
+edit_saverun=Uložit a spustit hned
+
+save_eidx=Úloha Cron byla úspěšně uložena, ale nelze ji spustit, protože nebyla nalezena!
+
+when_interval=každých $1 sekund
+when_boot=v době spuštění
+
+ucwhen_interval=Každých $1 sekund
+ucwhen_boot=V době spuštění
+
+manual_title=Ručně upravte úlohy Cron
+manual_edit=Soubor Cron pro úpravy:
+manual_ok=Upravit
+manual_editing=Pomocí textového pole níže upravte úlohy Cronu v $1. Buďte opatrní, protože Webmin nebude provádět žádné ověření!
+manual_efile=Vybraný soubor není platný!
+manual_ecannot=Není dovoleno manuálně upravovat úlohy cron

@@ -1,0 +1,58 @@
+index_title=Status SMART pogona
+index_ecmd=Nadzorni ukaz SMART $1 ni bil najden v vašem sistemu ali ni pravilno nastavljen v konfiguraciji modula <a href='$2'></a>. Pred uporabo tega modula ga morate namestiti.
+index_ecmd2=Zdi se, da ukaz $1 ni nadzorni ukaz SMART. Pred uporabo tega modula mora biti pravilno nastavljen v konfiguraciji modula <a href='$2'></a>.
+index_version=SMARTspletna različica $1 
+index_show=Prikaži stanje pogona:
+index_ok=Pokaži
+index_eidescsi=V vašem sistemu ni bilo najdenih pogonov IDE, SCSI ali SATA.
+index_drive=Status pogona $1 
+index_drivesub=Stanje pogona $1, disk $2 
+index_desc=Lokacija
+index_size=Velikost pogona
+index_model=Znamka in model
+index_support=Podpira SMART?
+index_enabled=SMART omogočen?
+index_check=Preverjeno preverjanje pogona?
+index_short=Kratek samopreizkus
+index_ext=Podaljšani samopreizkus
+index_data=Test zbiranja podatkov
+index_errors=Napake so zabeležene
+index_ecount=Odkritih je bilo $1 napak
+index_attrs=Dodatni atributi SMART
+index_raw=Celotno poročilo o stanju SMART
+index_return=kazalo modula
+index_family=Družina modelov
+index_serial=Serijska številka
+index_capacity=Zmogljivost
+index_norm=Normalizirano:
+
+monitor_type=SMART Drive Check
+monitor_type2=SSD Wearout
+monitor_drive=Vozite, da preverite
+monitor_errors=Preverite tudi dnevnik napak?
+monitor_errorsinc=Da, vendar opozorite le, če se število napak poveča
+monitor_other=Drugo ..
+monitor_edrive=Manjka ali neveljaven pogon za preverjanje
+monitor_nosuch=Ni takšnega pogona
+monitor_nosmart=Brez SMART podpore
+monitor_errorsfound=Poročanih $1 napak
+monitor_errorsinced=Napake so se povečale z $2 na $1 
+monitor_wearlevel=Neuspešno, če raven obrabe pade pod
+monitor_ewearlevel=Neveljaven odstotek obrabe
+monitor_nowearout=Pogon ne poroča o indikatorju SSD
+monitor_wornout=Raven obrabe je padla na $1 
+
+short_title=Kratek samopreizkus
+short_doing=Začetek kratkega samotesta $1.
+short_failed=.. ni uspelo!
+short_ok=.. test se je začel v redu. Za rezultate glejte stanje pogona na glavni strani modula.
+
+ext_title=Podaljšani samopreizkus
+ext_doing=Začetek podaljšanega samopreizkušanja v $1 ..
+ext_failed=.. ni uspelo!
+ext_ok=.. test se je začel v redu. Za rezultate glejte stanje pogona na glavni strani modula.
+
+data_title=Test zbiranja podatkov
+data_doing=Začetek zbiranja podatkov brez povezave na $1 ..
+data_failed=.. ni uspelo!
+data_ok=.. zbiranje se je začelo v redu. Za rezultate glejte stanje pogona na glavni strani modula.

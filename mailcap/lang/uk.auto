@@ -1,0 +1,46 @@
+index_title=Програми типу MIME
+index_none=Жодних програм для оброблення типу MIME ще не визначено.
+index_add=Додайте нову програму типу MIME.
+index_type=Тип MIME
+index_program=Програма обробника
+index_cmt=Опис
+index_delete=Видалити вибране
+index_disable=Вимкнути вибране
+index_enable=Увімкнути вибране
+index_enabled=Увімкнено?
+index_return=перелік програм
+
+edit_title1=Створіть програму типу MIME
+edit_title2=Редагувати програму типу MIME
+edit_header=Інформація про програму обробника типу MIME
+edit_type=Тип MIME
+edit_enabled=Увімкнено?
+edit_program=Програма обробника
+edit_cmt=Опис
+edit_egone=Програми вже немає!
+edit_test=Команда тесту
+edit_none=Немає (завжди використовуйте програму)
+edit_term=Відобразити вихід у терміналі?
+edit_copious=Випускає багато продукції?
+edit_desc=Опис типу MIME
+
+save_err=Не вдалося зберегти програму типу MIME
+save_etype=Відсутній або недійсний тип MIME
+save_eprogram=Відсутня програма обробника
+save_eclash=Увімкнена програма для введеного типу MIME вже існує
+save_etest=Відсутня або недійсна команда тесту
+save_edesc=Недійсний опис типу MIME
+
+delete_err=Не вдалося видалити програми типу MIME
+disable_err=Не вдалося вимкнути програми типу MIME
+disable_eclash=Уже відключена програма типу MIME для $1 
+enable_err=Не вдалося включити програми типу MIME
+enable_eclash=Увімкнена програма типу MIME для $1 вже існує
+delete_enone=Не вибрано жодного
+
+log_delete_mailcap=Видалити програму типу MIME для $1 
+log_create_mailcap=Створено програму типу MIME для $1 
+log_modify_mailcap=Модифікована програма типу MIME для $1 
+log_delete_mailcaps=Видалено $1 програми типу MIME
+log_disable_mailcaps=Вимкнено програми $1 MIME
+log_enable_mailcaps=Увімкнено програми $1 MIME

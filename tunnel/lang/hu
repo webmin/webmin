@@ -1,10 +1,12 @@
-__norefs=1
-index_open=Megnyitás
-index_url=Írja be a megnyitandó URL címet:
-link_eurl=Érvénytelen alagút URL : $1
-login_clear=Törlés
-login_login=Belépés
-login_pass=Jelszó
-login_title=Weboldal belépés
-login_user=Felhasználó név
-seturl_eurl=Érvénytelen URL
+index_url=Ãrja be a megnyitandÃ³ URL cÃ­met:
+index_open=MegnyitÃ¡s
+
+link_eurl=Ã‰rvÃ©nytelen alagÃºt URL : $1
+
+login_title=Weboldal belÃ©pÃ©s
+login_user=FelhasznÃ¡lÃ³ nÃ©v
+login_pass=JelszÃ³
+login_login=BelÃ©pÃ©s
+login_clear=TÃ¶rlÃ©s
+
+seturl_eurl=Ã‰rvÃ©nytelen URL

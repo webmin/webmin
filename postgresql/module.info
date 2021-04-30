@@ -1,5 +1,4 @@
 category=servers
-risk=low medium high
 desc=PostgreSQL Database Server
 name=PostgreSQL
 longdesc=Manage databases, tables and users in your PostgreSQL database server.

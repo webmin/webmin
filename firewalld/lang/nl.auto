@@ -1,0 +1,116 @@
+index_title=FirewallD
+index_atboot=Firewall inschakelen tijdens opstarten?
+index_bootup=Activeer bij het opstarten
+index_bootupdesc=Wijzig deze optie om te bepalen of uw firewall tijdens het opstarten wordt geactiveerd of niet.
+index_apply=Configuratie toepassen
+index_applydesc=Klik op deze knop om de hierboven vermelde firewallconfiguratie actief te maken. Alle momenteel geldende firewallregels worden doorgespoeld en vervangen
+index_restart=Configuratie toepassen
+index_restartdesc=Activeer alle toegestane services en poorten hierboven vermeld, in alle zones. Alle actieve regels die niet permanent zijn gemaakt, worden vervangen.
+index_start=Start FirewallD
+index_startdesc=Start de FirewallD-server en pas de bovenstaande regels toe.
+index_stop=Stop FirewallD
+index_stopdesc=Sluit de FirewallD-server af en verwijder alle bovenstaande regels.
+index_cerr=De FirewallD-module kan niet worden gebruikt : $1 
+index_zone=Toon regels in zone:
+index_zoneok=Verandering
+index_zoneadd=Zone toevoegen. ..
+index_zonedel=Zone verwijderen
+index_zonedef=Maak standaard
+index_type=Regeltype
+index_port=Haven of dienst
+index_proto=Protocol
+index_tservice=Onderhoud
+index_tport=Haven
+index_tforward=Vooruit
+index_padd=Toegestane poort toevoegen.
+index_sadd=Toegestane service toevoegen.
+index_fadd=Poort doorsturen toevoegen.
+index_delete=Verwijder geselecteerde regels
+index_return=lijst van zones
+index_ezones=Geen FirewallD-zones gevonden!
+index_none=Deze zone heeft nog geen toegestane poorten of services.
+index_ifaces=Pas regels toe op interfaces:
+
+port_edit=Poort bewerken
+port_create=Poort toevoegen
+port_header=Toegestane poortopties
+port_zone=Toegestaan in zone
+port_port=Poort om toe te staan
+port_mode0=Enkele poort
+port_mode1=Poort bereik
+port_mode2=Hetzelfde als de originele poort
+port_proto=Netwerkprotocol
+port_ezone=Zone bestaat niet!
+port_err=Poort kan niet worden opgeslagen
+port_eport=Ontbrekend of ongeldig poortnummer of naam
+port_eportlow=Lage poort moet een nummer zijn
+port_eporthigh=Hoge poort moet een nummer zijn
+port_eportrange=Lage poort moet onder de hoge poort zijn
+
+serv_edit=Service bewerken
+serv_create=Service toevoegen
+serv_header=Toegestane serviceopties
+serv_name=Service om toe te staan
+serv_err=Kan service niet opslaan
+
+forward_edit=Vooruit bewerken
+forward_create=Maak Forward
+forward_header=Port forwarding opties
+forward_zone=Doorsturen voor zone
+forward_err=Vooruit opslaan mislukt
+forward_port=Bronpoort
+forward_dstport=Desintation poort
+forward_dstaddr=Bestemmingsadres
+forward_dstlocal=Dit systeem
+forward_edstaddr=Ongeldig IPv4-bestemmingsadres
+forward_eneither=Er moet een bestemmingsadres of poort of beide worden ingevoerd
+
+check_ecmd=De FirewallD-besturingsopdracht $1 is niet gevonden op uw systeem
+
+delete_err=Kan regels niet verwijderen
+delete_enone=Geen geselecteerd!
+delete_edel=Verwijderen van $1 is mislukt : $2 
+
+zone_title=Zone maken
+zone_header=Nieuwe zone-opties
+zone_name=Zone naam
+zone_mode=Toegestane poorten en services
+zone_mode0=Geen (al het verkeer wordt geblokkeerd)
+zone_mode1=Kopieer uit zone
+zone_mode2=Alleen SSH, IDENT en Webmin
+zone_mode3=SSH, IDENT, Webmin en hoge poorten
+zone_mode4=Poorten gebruikt voor virtuele hosting
+zone_err=Kan zone niet maken
+zone_ename=Ontbrekende of ongeldige zonenaam
+zone_eclash=Er bestaat al een zone met dezelfde naam
+
+delzone_title=Zone verwijderen
+delzone_err=Kan zone niet verwijderen
+delzone_edefault=De standaardzone kan niet worden verwijderd
+delzone_rusure=Weet u zeker dat u zone $1 wilt verwijderen, die $2 poorten en $3 services bevat?
+
+defzone_err=Kan zone niet als standaard instellen
+
+restart_err=Configuratie mislukt
+
+stop_err=Kan FirewallD niet stoppen
+start_err=Kan FirewallD niet starten
+log_stop=Gestopt FirewallD
+log_start=Gestart FirewallD
+log_restart=Toegepaste FirewallD-configuratie
+log_bootup=Ingeschakeld FirewallD bij opstarten
+log_bootdown=FirewallD uitgeschakeld bij opstarten
+log_create_port=Toegestane poort $1 toegevoegd
+log_delete_port=Toegestane poort $1 verwijderd
+log_update_port=Toegestane poort $1 bijgewerkt
+log_create_serv=Toegestane service $1 toegevoegd
+log_delete_serv=Toegestane service $1 verwijderd
+log_update_serv=Toegestane service $1 bijgewerkt
+log_create_forward=Vooruit $1 toegevoegd
+log_delete_forward=Vooruit $1 verwijderd
+log_update_forward=Vooruit bijgewerkt $1 
+log_delete_rules=$1 toegestane poorten verwijderd
+log_ifaces_zone=Bijgewerkte interfaces voor zone $1 
+log_create_zone=Zone $1 gemaakt
+log_delete_zone=Zone $1 verwijderd
+log_default_zone=Zone $1 de standaard gemaakt

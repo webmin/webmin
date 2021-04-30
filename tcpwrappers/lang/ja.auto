@@ -1,0 +1,33 @@
+index_title=TCPラッパー
+index_return=インデックス
+index_allowtitle=許可されたホスト
+index_denytitle=拒否されたホスト
+index_norule=<tt>$1</tt>にはまだルールが定義されていません。
+index_nofile=ファイル '$1'は存在しません-<a href="/config.cgi?tcpwrappers">モジュール構成</a>を確認してください
+index_add=新しいルールを追加します。
+index_service=デーモン
+index_hosts=ホスト
+index_cmd=コマンド
+index_delete=選択を削除します
+index_none=なし
+
+edit_title1allow=許可ルールを作成
+edit_title2allow=許可ルールを編集
+edit_title1deny=拒否ルールを作成
+edit_title2deny=拒否ルールを編集
+edit_eid=このルールは見つかりませんでした
+edit_header=ルールオプション
+edit_service=サービス
+edit_except=サービスを除く
+edit_hosts=リモートホスト
+edit_hostsexcept=ホストを除く
+edit_cmd=シェルコマンド
+edit_efound=デーモン '$1'はxinetd構成で見つかりませんでした。
+
+save_errtitle=保存ルールのエラー
+save_ehost=ホスト入力に不良文字が含まれています
+save_ecmd=コマンド入力に不良文字が含まれています
+save_eservice=デーモン名に不良文字が含まれています
+
+del_errtitle=ルールの削除エラー
+del_enone=削除するマークが付けられたルールはありません

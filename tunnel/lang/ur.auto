@@ -1,0 +1,21 @@
+index_elink=سرنگ کے لئے ابھی تک کوئی URL ترتیب نہیں دیا گیا ہے۔
+index_url=کھولنے کے لئے یو آر ایل درج کریں:
+index_open=کھولو
+
+link_eurl=غلط سرنگ یو آر ایل :$1
+link_elogin=$1 پر بطور$2 لاگ ان ہونے میں ناکام۔
+link_eautologin=Invalid login or password for $1. <a href='$2'>Click here</a> to login.
+link_enouser=$1 میں لاگ ان ہونے کے لئے صارف نام اور پاس ورڈ کی ضرورت ہے ، لیکن کوئی بھی تشکیل نہیں کیا گیا ہے۔
+link_ebadurl=آپ کو URL $1 تک رسائی حاصل کرنے کی اجازت نہیں ہے
+link_mconfig=Use the <a href='$1'>module configuration</a> page to change the login.
+
+login_title=ویب سائٹ پر لاگ ان کریں
+login_desc=آپ کو$1 پر لاگ ان ہونے کیلئے صارف نام اور پاس ورڈ فراہم کرنا ہوگا۔
+login_header=ویب سائٹ کی توثیق
+login_user=صارف نام
+login_pass=پاس ورڈ
+login_login=لاگ ان کریں
+login_clear=صاف
+
+seturl_err=URL کھولنے میں ناکام
+seturl_eurl=غلط URL درج کیا گیا

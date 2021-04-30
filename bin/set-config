@@ -159,7 +159,7 @@ Specify which module configuration to modify. If none given, configuration will 
 
 Specify the option to change.
 
-=item --value, -o
+=item --value, -v
 
 The value to change the option to.
 

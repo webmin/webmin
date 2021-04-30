@@ -1,0 +1,22 @@
+title_noverify=Nie montuj i nie weryfikuj partycji
+title_initrd=Początkowy plik ramdysku
+title_modules=Dodatkowe moduły
+title_none1=Żaden
+title_none2=(pozycja menu bez uruchamiania)
+title_einitrd=Brak początkowej nazwy ramdysku
+title_lock=Hasło zablokowane?
+
+global_forever=Czekać w nieskończoność
+global_password=Hasło rozruchowe
+global_none=Żaden
+global_password_file=Użyj pliku menu, jeśli hasło zostało wprowadzone:
+global_epassword=Brakujące lub nieprawidłowe hasło rozruchowe
+global_epasswordfile=Brak alternatywnej nazwy pliku menu
+
+log_create_title=Utworzono opcję rozruchu $1 
+log_delete_title=Usunięto opcję rozruchu $1 
+log_modify_title=Zmodyfikowana opcja rozruchu $1 
+log_up_title=Opcja rozruchu w górę $1 
+log_down_title=Przeniesiono opcję uruchamiania w dół $1 
+log_global=Zmieniono opcje globalne
+log_install=Zainstalowany GRUB

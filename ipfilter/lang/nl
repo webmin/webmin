@@ -313,5 +313,3 @@ nat_erdrips=Geen bestemming IP's ingevuld
 nat_erdrport=Ontbrekende of ongeldige bestemming poort
 
 boot_esmf=De SMF service $1 bestaat niet of is in een onbekende status
-
-__norefs=1

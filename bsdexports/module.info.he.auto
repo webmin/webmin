@@ -1,0 +1,3 @@
+name_he=BSDexports
+desc_he=יצוא NFS
+longdesc_he=ערוך שיתופי קבצים מקובץ /etc/exports export /etc/exports FreeBSD.

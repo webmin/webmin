@@ -169,6 +169,11 @@ else {
 	}
 }
 
+sub can_broadcast_def
+{
+return 0;
+}
+
 # valid_boot_address(address)
 # Is some address valid for a bootup interface
 sub valid_boot_address
@@ -268,25 +273,25 @@ for($i=0; defined($dev = $in{"lr_dev_$i"}); $i++) {
 	$net = $in{"lr_net_$i"}; $mask = $in{"lr_mask_$i"};
 	next if (!$dev && !$net && !$mask);
 	&to_ipaddress($net) ||
-		&error(&text('routes_enet', $net));
+		&error(&text('routes_enet', &html_escape($net)));
 	&check_ipaddress($mask) ||
-		&error(&text('routes_emask', $mask));
+		&error(&text('routes_emask', &html_escape($mask)));
 	$route .= "$net\t\t0.0.0.0\t\t$mask\t\t$dev\n";
 	}
 for($i=0; defined($gw = $in{"sr_gw_$i"}); $i++) {
 	$net = $in{"sr_net_$i"}; $mask = $in{"sr_mask_$i"};
 	next if (!$gw && !$net && !$mask);
 	&to_ipaddress($gw) ||
-		&error(&text('routes_egateway', $gw));
+		&error(&text('routes_egateway', &html_escape($gw)));
 	&to_ipaddress($net) ||
-		&error(&text('routes_enet', $net));
+		&error(&text('routes_enet', &html_escape($net)));
 	&check_ipaddress($mask) ||
-		&error(&text('routes_emask', $mask));
+		&error(&text('routes_emask', &html_escape($mask)));
 	$route .= "$net\t\t$gw\t\t$mask\n";
 	}
 if (!$in{'default_def'}) {
 	&to_ipaddress($in{'default'}) ||
-		&error(&text('routes_edefault', $in{'default'}));
+		&error(&text('routes_edefault', &html_escape($in{'default'})));
 	$route .= "default\t\t$in{'default'}\n";
 	}
 &open_tempfile(ROUTE, ">$route_conf");

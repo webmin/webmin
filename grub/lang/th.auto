@@ -1,0 +1,75 @@
+index_title=GRUB Boot Loader
+index_add=เพิ่มตัวเลือกการบูตใหม่
+index_global=แก้ไขตัวเลือกทั่วโลก
+index_globalmsg=แก้ไขตัวเลือกการบูตทั่วโลกที่ใช้กับตัวเลือกเมนูการบูตทั้งหมดและเลือกอุปกรณ์ที่ติดตั้ง GRUB ไว้
+index_install=ติดตั้ง GRUB
+index_installmsg=ติดตั้งบูตโหลดเดอร์ GRUB บน $1 เพื่อแสดงตัวเลือกข้างต้นในเวลาบูตเครื่อง สิ่งนี้จะแทนที่บูตเดอร์ที่มีอยู่เช่น LILO และอาจทำให้ระบบของคุณไม่สามารถบูตได้!
+index_none=ไม่มีการกำหนดตัวเลือกการบูต ให้แน่ใจว่าคุณเพิ่มอย่างน้อยหนึ่งก่อนที่จะติดตั้งด้วง
+index_efile=ไม่พบไฟล์เมนู GRUB บนระบบของคุณ อาจไม่ได้ติดตั้ง GRUB หรือ <a href='$2'>การกำหนดค่าโมดูล</a> ไม่ถูกต้อง
+index_epath=ไม่พบ GRUB แบบปฏิบัติการได้ 1 บนระบบของคุณ อาจไม่ได้ติดตั้ง GRUB หรือ <a href='$2'>การกำหนดค่าโมดูล</a> ไม่ถูกต้อง
+index_return=รายการตัวเลือก
+
+title_add=เพิ่มตัวเลือกการบูต
+title_edit=แก้ไขตัวเลือกการบูต
+title_header=รายละเอียดตัวเลือกเมนู Boot
+title_title=ชื่อตัวเลือก
+title_root=พาร์ติชั่นอิมเมจสำหรับบูต
+title_noverify=อย่าต่อเชื่อมและตรวจสอบพาร์ติชั่น
+title_other=ไฟล์อุปกรณ์อื่น ๆ
+title_sel=เลือก
+title_boot=ระบบปฏิบัติการที่จะบู๊ต
+title_kernel=เมล็ด
+title_kfile=พา ธ ไปยังเคอร์เนล
+title_args=ตัวเลือกเคอร์เนล
+title_initrd=ไฟล์ ramdisk เริ่มต้น
+title_modules=โมดูลเสริม
+title_chain=ระบบปฏิบัติการอื่น ๆ
+title_chain_def=จากภาคแรกของพาร์ทิชัน
+title_chain_file=จากไฟล์ chainloader
+title_makeactive=ทำให้รูตพาร์ติชันทำงานหรือไม่
+title_none1=ไม่มี
+title_none2=(รายการเมนูที่ไม่บูต)
+title_err=ไม่สามารถบันทึกตัวเลือกการบูต
+title_etitle=ไม่มีชื่อตัวเลือก
+title_eroot=พาร์ทิชันรากหายไป
+title_ekernel=เส้นทางเคอร์เนลที่ขาดหายไปหรือไม่ถูกต้อง
+title_echain=ไฟล์ chainloader ที่ขาดหายไปหรือไม่ถูกต้อง
+title_edev=อุปกรณ์พาร์ติชันรูทที่ไม่รองรับ $1 
+title_einitrd=ไม่มีชื่อไฟล์ ramdisk เริ่มต้น
+title_lock=รหัสผ่านถูกล็อค?
+
+global_title=ตัวเลือกสากล
+global_header=ตัวเลือกเมนูการบูตทั่วโลก
+global_default=ตัวเลือกการเริ่มต้น
+global_fallback=ตัวเลือกการบูตทางเลือก
+global_first=ครั้งแรกในรายการ
+global_timeout=หมดเวลาก่อนโหลดค่าเริ่มต้น
+global_forever=รอตลอดไป
+global_secs=วินาที
+global_install=ติดตั้ง GRUB บนดิสก์/พาร์ติชัน
+global_sel=เลือก
+global_other=อื่น ๆ
+global_password=รหัสผ่านสำหรับบู๊ต
+global_none=ไม่มี
+global_password_file=ใช้ไฟล์เมนูหากป้อนรหัสผ่าน:
+global_err=ไม่สามารถบันทึกตัวเลือกสากล
+global_etimeout=การหมดเวลาที่ขาดหายไปหรือไม่ถูกต้อง
+global_edev=ติดตั้งดิสก์/พาร์ติชัน $1 ที่ไม่รองรับ
+global_eother=ดิสก์/พาร์ติชันที่ขาดหายไปหรือไม่ถูกต้อง
+global_epassword=รหัสผ่านการบูตขาดหายไปหรือไม่ถูกต้อง
+global_epasswordfile=ไม่มีชื่อไฟล์เมนูอื่น
+
+install_title=ติดตั้ง GRUB
+install_err=ไม่สามารถติดตั้ง GRUB
+install_efind=ไม่พบไฟล์เมนู
+install_desc=การติดตั้ง GRUB ใน $1 ด้วยคำสั่ง $2 และ $3 ..
+install_ok=.. ติดตั้งเสร็จสมบูรณ์
+install_failed=.. การติดตั้งล้มเหลว!
+
+log_create_title=สร้างตัวเลือกการบูต $1 แล้ว
+log_delete_title=ตัวเลือกการบูตที่ถูกลบ $1 
+log_modify_title=ตัวเลือกการบูตที่ปรับเปลี่ยน $1 
+log_up_title=ย้ายตัวเลือกการบูต $1 แล้ว
+log_down_title=ย้ายตัวเลือกการบูตลงแล้ว $1 
+log_global=เปลี่ยนตัวเลือกระดับโลก
+log_install=ติดตั้งด้วง

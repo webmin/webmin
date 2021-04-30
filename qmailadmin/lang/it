@@ -66,8 +66,6 @@ asave_etype5=Autoreply file '$1' is not valid
 asave_etype4none=No program given
 asave_etype6=Filter file '$1' is not valid
 
-boxes_title=User Mailboxes
-
 locals_title=Local Domains
 locals_domains=Local domains for this server
 locals_desc=Qmail will accept for delivery to local users email to the domains and hostnames listed in the text box to the left. If you want your mail server to handle multiple email domains, they should all be listed on this form.
@@ -194,11 +192,6 @@ queue_cc=Cc
 queue_subject=Subject
 queue_return=mail queue
 
-view_title=Queued Message
-view_desc=From file $1
-view_headers=Mail headers
-view_attach=Attachments
-
 assigns_title=Mail User Assignments
 assigns_return=mail user assignments
 assigns_toomany=There are too many mail users on your system to display on this page.
@@ -229,3 +222,9 @@ ssave_ehome=Missing or invalid home directory
 
 delete_egone=Queued message no longer exists
 
+boxes_title=User Mailboxes
+
+view_title=Queued Message
+view_desc=From file $1
+view_headers=Mail headers
+view_attach=Attachments

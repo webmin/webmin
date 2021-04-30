@@ -1,0 +1,26 @@
+dump_exclude=건너 뛸 파일 및 디렉토리
+dump_ehuser2=사용자 이름은 @ 문자를 포함 할 수 없습니다
+dump_fok=명령이 실패하면 중지
+dump_fok2=명령이 실패하면 실패보고
+dump_aok=백업이 실패하더라도 명령 건너 뛰기
+dump_gzip3=예, XZ 사용
+dump_update2=보관할 새 파일을 추가 하시겠습니까?
+dump_ignoreread=파일의 읽기 오류를 무시 하시겠습니까?
+dump_egzip3=gzip 압축 옵션은 아카이브에 새 파일을 추가하는 옵션과 호환되지 않습니다
+dump_eftpupdate=FTP를 사용할 때는 기존 아카이브에 파일을 추가 할 수 없습니다.
+dump_eleveldir=파일 시스템 마운트 포인트가 아닌 디렉토리에는 레벨 0 백업 만 허용됩니다.
+dump_eupdatedir=<tt>/etc/dumpdates</tt> 파일은 파일 시스템 마운트 포인트 인 디렉토리에 대해서만 업데이트 할 수 있습니다.
+
+edit_title3=클론 백업
+edit_enabled_af=다음 후 사용 :
+edit_when=백업시기
+edit_clone=클론
+
+restore_over1=백업보다 새로운 것이 아니라면
+restore_efile=복원 할 파일 또는 장치가 없습니다.
+restore_ehost=복원 할 호스트가 없거나 유효하지 않습니다
+restore_ehuser=호스트에서 복원 할 잘못된 사용자 이름
+restore_ehfile=호스트에서 복원 할 파일 또는 장치가 없거나 유효하지 않습니다.
+restore_equestion=복원에서 알 수없는 질문  : $1 
+
+log_kill=$1 에 대한 백업 종료

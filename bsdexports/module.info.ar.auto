@@ -1,0 +1,3 @@
+name_ar=BSDexports
+longdesc_ar=تحرير مشاركات الملفات من ملف FreeBSD /etc/exports.
+desc_ar=صادرات NFS

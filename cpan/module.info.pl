@@ -1,2 +1,2 @@
-desc_pl=Perl - modu≥y (CPAN)
-longdesc_pl=Instaluj nowe modu≥y Perla i sprawdº jakie juø s± zainstalowane.
+desc_pl=Perl - modu≈Çy (CPAN)
+longdesc_pl=Instaluj nowe modu≈Çy Perla i sprawd≈∫ jakie ju≈º sƒÖ zainstalowane.

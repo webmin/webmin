@@ -1,0 +1,6 @@
+index_user=$1（$2で使用）
+index_allmods2=Webminが使用するモジュールがありません
+index_wantmods=インストールするモジュール
+
+download_missingok=CPANにないモジュール
+download_fallback=一部のモジュールはパッケージからのインストールに失敗し、代わりにソースからのインストールを試みました。

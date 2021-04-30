@@ -17,6 +17,8 @@ else {
 map { $access_types{$_}++ } @access_types;
 $site_file = ($config{'webmin_apache'} || $module_config_directory)."/site";
 $httpd_info_cache = $module_config_directory."/httpd-info";
+$last_config_change_flag = $module_var_directory."/config-flag";
+$last_restart_time_flag = $module_var_directory."/restart-flag";
 
 # Check if a list of supported modules needs to be built. This is done
 # if the Apache binary changes, when Webmin is upgraded, or once every five
@@ -541,6 +543,7 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 			%v = (	"line", $change->{'line'}+1,
 				"eline", $change->{'line'}+1,
 				"file", $change->{'file'},
+				"indent", $change->{'indent'},
 				"type", 0,
 				"name", $_[0],
 				"value", $v,
@@ -550,7 +553,8 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 			splice(@{$_[2]}, $j, 0, \%v);
 			$lref = &read_file_lines($v{'file'});
 			push(@files, $v{'file'});
-			splice(@$lref, $v{'line'}, 0, "$_[0] $v");
+			splice(@$lref, $v{'line'}, 0,
+				(" " x $v{'indent'})."$_[0] $v");
 			$change = \%v;
 			}
 		else {
@@ -571,6 +575,7 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 			%v = (	"line", $l,
 				"eline", $l,
 				"file", $f,
+				"indent", $_[2]->[$j-1]->{'indent'},
 				"type", 0,
 				"name", $_[0],
 				"value", $v,
@@ -578,7 +583,8 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 			&renumber($_[3], $l, $f, 1);
 			splice(@{$_[2]}, $j, 0, \%v);
 			push(@files, $f);
-			splice(@$lref, $l, 0, "$_[0] $v");
+			splice(@$lref, $l, 0, 
+				(" " x $v{'indent'})."$_[0] $v");
 			}
 		}
 	elsif ($i >= @{$_[1]}) {
@@ -606,6 +612,7 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 		$change = $old[$i];
 		}
 	}
+&update_last_config_change();
 return &unique(@files);
 }
 
@@ -620,7 +627,15 @@ local $file = $olddir ? $olddir->{'file'} :
 	      $newdir->{'file'} ? $newdir->{'file'} : $pconf->[0]->{'file'};
 local $lref = &read_file_lines($file);
 local $oldlen = $olddir ? $olddir->{'eline'}-$olddir->{'line'}+1 : undef;
-local @newlines = $newdir ? &directive_lines($newdir) : ( );
+local @newlines;
+if ($newdir) {
+	my $isrc = $olddir ? $olddir :
+		   @$pconf ? $pconf->[0] : undef;
+	if ($isrc) {
+		&recursive_set_indent($newdir, $isrc->{'indent'});
+		}
+	@newlines = &directive_lines($newdir);
+	}
 if ($olddir && $newdir) {
 	# Update in place
 	if ($first) {
@@ -684,6 +699,20 @@ elsif (!$olddir && $newdir) {
 		&recursive_set_lines_files($newdir->{'members'},
 					   $newdir->{'line'}+1,
 					   $newdir->{'file'});
+		}
+	}
+&update_last_config_change();
+}
+
+# recursive_set_indent(&directive, indent)
+# Set the indent to match another at the same level
+sub recursive_set_indent
+{
+my ($dir, $indent) = @_;
+$dir->{'indent'} = $indent if (!defined($dir->{'indent'}));
+if ($dir->{'type'}) {
+	foreach my $m (@{$dir->{'members'}}) {
+		&recursive_set_indent($m, $indent+4);
 		}
 	}
 }
@@ -942,6 +971,7 @@ sub parse_opt
 {
 local($i, $re);
 local $v = $in{$_[0]};
+$v =~ /\r|\n|\0/ && &error($text{'enewline'});
 if ($in{"$_[0]_def"}) { return ( [ ] ); }
 for($i=1; $i<@_; $i+=2) {
 	$re = $_[$i];
@@ -979,8 +1009,13 @@ return $rv;
 # parse_choice(name, default)
 sub parse_choice
 {
-if (lc($in{$_[0]}) eq lc($_[1])) { return ( [ ] ); }
-else { return ( [ $in{$_[0]} ] ); }
+if (lc($in{$_[0]}) eq lc($_[1])) {
+	return ( [ ] );
+	}
+else {
+	$in{$_[0]} =~ /\r|\n|\0/ && &error($text{'enewline'});
+	return ( [ $in{$_[0]} ] );
+	}
 }
 
 # select_input(value, name, default, [choice]+)
@@ -1027,8 +1062,13 @@ return &ui_select($_[1], undef, \@sel, 1);
 # parse_handler(name)
 sub parse_handler
 {
-if ($in{$_[0]} eq "") { return ( [ ] ); }
-else { return ( [ $in{$_[0]} ] ); }
+if ($in{$_[0]} eq "") {
+	return ( [ ] );
+	}
+else {
+	$in{$_[0]} =~ /\r|\n|\0/ && &error($text{'enewline'});
+	return ( [ $in{$_[0]} ] );
+	}
 }
 
 # filters_input(&values, name)
@@ -1046,14 +1086,16 @@ foreach $f (@{$_[0]}) {
 	push(@fl, $f) if (&indexof($f, @fl) < 0);
 	}
 foreach $f (&unique(@fl)) {
-    $rv .= &ui_checkbox($_[1], $f, $f, (&indexof($f, @{$_[0]}) < 0 ? 0 : 1 ) ); 
+	$rv .= &ui_checkbox($_[1], $f, $f, (&indexof($f, @{$_[0]}) < 0 ? 0 : 1 ) ); 
 	}
+$rv ||= &ui_textbox($_[1], "", 20);
 return $rv;
 }
 
 # parse_filters(name)
 sub parse_filters
 {
+$in{$_[0]} =~ /\r|\n|\0/ && &error($text{'enewline'});
 local @f = split(/\0/, $in{$_[0]});
 return @f ? ( [ join(";", @f) ] ) : ( [ ] );
 }
@@ -1154,12 +1196,18 @@ print "<p>\n";
 # Returns HTML for a link to put in the top-right corner of every page
 sub restart_button
 {
-local $rv;
-$args = "redir=".&urlize($gconfig{'webprefix'} . &this_url());
+local $args = "redir=".&urlize(&this_url());
 local @rv;
 if (&is_apache_running()) {
 	if ($access{'apply'}) {
-		push(@rv, &ui_link("restart.cgi?$args", $text{'apache_apply'}) );
+		my $n = &needs_config_restart();
+		if ($n) {
+			push(@rv, &ui_link("restart.cgi?$args&newconfig=1",
+					"<b>$text{'apache_apply'}</b>") );
+			}
+		else {
+			push(@rv, &ui_link("restart.cgi?$args", $text{'apache_apply'}) );
+			}
 		}
 	if ($access{'stop'}) {
 		push(@rv, &ui_link("stop.cgi?$args", $text{'apache_stop'}) );
@@ -1386,13 +1434,14 @@ sub directive_lines
 local @rv;
 foreach $d (@_) {
 	next if ($d->{'name'} eq 'dummy');
+	my $indent = (" " x $d->{'indent'});
 	if ($d->{'type'}) {
-		push(@rv, "<$d->{'name'} $d->{'value'}>");
+		push(@rv, $indent."<$d->{'name'} $d->{'value'}>");
 		push(@rv, &directive_lines(@{$d->{'members'}}));
-		push(@rv, "</$d->{'name'}>");
+		push(@rv, $indent."</$d->{'name'}>");
 		}
 	else {
-		push(@rv, "$d->{'name'} $d->{'value'}");
+		push(@rv, $indent."$d->{'name'} $d->{'value'}");
 		}
 	}
 return @rv;
@@ -1573,6 +1622,7 @@ else {
 	&kill_logged('HUP', $1) || return &text('restart_esig', $1);
 	&wait_for_graceful();
 	}
+&restart_last_restart_time();
 return undef;
 }
 
@@ -1587,7 +1637,7 @@ local @st = stat($errorlog);
 my $start = time();
 while(time() - $start < $timeout) {
 	sleep(1);
-	open(ERRORLOG, $errorlog);
+	open(ERRORLOG, "<".$errorlog);
 	seek(ERRORLOG, $st[7], 0);
 	local $/ = undef;
 	local $rest = <ERRORLOG>;
@@ -1622,7 +1672,7 @@ elsif (-x $config{'apachectl_path'}) {
 else {
 	# kill the process
 	$pidfile = &get_pid_file();
-	open(PID, $pidfile) || return &text('stop_epid', $pidfile);
+	open(PID, "<".$pidfile) || return &text('stop_epid', $pidfile);
 	<PID> =~ /(\d+)/ || return &text('stop_epid2', $pidfile);
 	close(PID);
 	&kill_logged('TERM', $1) || return &text('stop_esig', $1);
@@ -1705,6 +1755,7 @@ if (!&is_apache_running()) {
 		return "$text{'start_eafter'} : <pre>$out</pre>";
 		}
 	}
+&restart_last_restart_time();
 return undef;
 }
 
@@ -2025,6 +2076,34 @@ return $d if ($d);
 $n =~ s/^www\.//i;
 local $d = &virtual_server::get_domain_by("dom", $n);
 return $d;
+}
+
+# update_last_config_change()
+# Updates the flag file indicating when the config was changed
+sub update_last_config_change
+{
+&open_tempfile(FLAG, ">$last_config_change_flag", 0, 1);
+&close_tempfile(FLAG);
+}
+
+# restart_last_restart_time()
+# Updates the flag file indicating when the config was changed
+sub restart_last_restart_time
+{
+&open_tempfile(FLAG, ">$last_restart_time_flag", 0, 1);
+&close_tempfile(FLAG);
+}
+
+# needs_config_restart()
+# Returns 1 if a restart is needed for sure after a config change
+sub needs_config_restart
+{
+my @cst = stat($last_config_change_flag);
+my @rst = stat($last_restart_time_flag);
+if (@cst && @rst && $cst[9] > $rst[9]) {
+	return 1;
+	}
+return 0;
 }
 
 1;

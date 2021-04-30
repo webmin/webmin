@@ -1,0 +1,405 @@
+index_title=שרת דואר QMail
+index_edir=ספריית בסיס QMail $1 אינה קיימת. אולי QMail אינו מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+index_edir2=נראה כי הספרייה $1 אינה ספריית הבסיס של QMail. אולי QMail אינו מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+index_return=תצורת QMail
+index_stop=עצור תהליכי QMail
+index_stopmsg=לחץ על כפתור זה כדי לעצור את תהליכי QMail ברקע האחראים למסירת דואר בתור. ללא תהליכים אלה, הדואר לא יישלח ממערכת שלך או יימסר כראוי.
+index_start=התחל תהליכי QMail
+index_startmsg=לחץ על כפתור זה כדי להתחיל בתהליכי QMail ברקע האחראים למסירת דואר בתור. ללא תהליכים אלה, הדואר לא יישלח ממערכת שלך או יימסר כראוי.
+
+opts_title=אפשרויות QMail
+opts_me=שם מארח מקומי
+opts_helo=שם מארח עבור SMTP HELO
+opts_toconnect=פסק זמן לחיבור SMTP
+opts_secs=שניות
+opts_toremote=פסק זמן לתגובה יוצאת מ- SMTP
+opts_bytes=גודל הודעה מרבי
+opts_unlimited=ללא הגבלה
+opts_timeout=פסק זמן לנתונים נכנסים של SMTP
+opts_localip=שם מארח לדוא"ל לכתובת IP מקומית
+opts_greet=הודעת ברכת SMTP
+opts_err=שמירת אפשרויות QMail נכשלה
+opts_eme=שם מארח מקומי לא חוקי
+opts_etoconnect=פסק זמן לחיבור SMTP לא חוקי
+opts_etoremote=פסק זמן לתגובה יוצאת מ- SMTP לא חוקי
+opts_ebytes=גודל הודעה מקסימלי לא חוקי
+opts_etimeout=פסק זמן לנתונים נכנסים של SMTP לא חוקי
+opts_elocalip=שם מארח לא חוקי של כתובת IP מקומית
+
+aliases_title=כינויי דואר
+aliases_addr=כתובת
+aliases_to=כינוי ל ..
+aliases_type1=כתובת 1
+aliases_type2=מדריך הדואר $1 
+aliases_type3=קובץ דואר $1 
+aliases_type4=תוכנית $1 
+aliases_type5=הקלד אוטומטית את הקובץ $1 
+aliases_type6=החל קובץ מסנן $1 
+aliases_none=אף אחד
+aliases_return=רשימת כינוי
+aliases_toomany=יש יותר מדי כיווני דואר במערכת שלך בכדי להציג אותם בדף זה.
+aliases_go=מצא כינויים תואמים:
+aliases_delete=מחק כינויים נבחרים
+
+aform_type0=אף אחד
+aform_type1=כתובת דוא"ל
+aform_type2=ספריית דואר
+aform_type3=קובץ דואר
+aform_type4=הזן לתכנית
+aform_type5=הגש אוטומטית מהקובץ
+aform_type6=החל קובץ פילטר
+aform_edit=ערוך את הכינוי
+aform_create=צור כינוי
+aform_name=כתובת
+aform_val=כינוי ל
+aform_afile=ערוך ..
+aform_novirt=&lt;כל התחומים&gt;
+aform_return=כינוי
+
+asave_err=שמירת הכינוי נכשלה
+asave_eaddr='$1' אינה כתובת חוקית
+asave_ealready=Alias עבור '$1' כבר קיים
+asave_etype1='$1' אינה כתובת דוא"ל חוקית
+asave_etype2='$1' אינו ספריית דואר חוקית
+asave_etype3='$1' אינו שם קובץ דואר חוקי
+asave_etype4='$1' אינה תוכנית חוקית או אינה קיימת
+asave_etype5=הקובץ באופן אוטומטי בתיבה '$1' אינו תקף
+asave_etype4none=לא ניתן תוכנית
+asave_etype6=קובץ הסינון '$1' אינו תקף
+
+adelete_err=מחיקת הכינויים נכשלה
+adelete_enone=לא נבחר
+
+locals_title=דומיינים מקומיים
+locals_domains=דומיינים מקומיים עבור שרת זה
+locals_desc=Qmail תקבל למשלוח למשתמשים מקומיים דוא"ל לדומיינים ולשמות המארחים המופיעים בתיבת הטקסט משמאל. אם אתה רוצה ששרת הדואר שלך יטפל במספר תחומי דוא"ל, כולם צריכים להיות רשומים בטופס זה.
+locals_only=רק שם מארח מקומי $1 
+locals_sel=דומיינים המפורטים להלן ..
+
+rcpts_title=דומיינים מקובלים
+rcpts_domains=דומיינים מקומיים וממסר מקובלים
+rcpts_all=כל תחום
+rcpts_sel=דומיינים המפורטים להלן ..
+rcpts_desc=Qmail תקבל למשלוח דואר או משלוח מקומי רק לדומיינים ושמות מארחים המופיעים בתיבת הטקסט משמאל. אתה יכול גם להזין תווים כלליים התואמים את כל המארחים בתחום כמו <tt>.foo.com</tt>. אם אתה רוצה ששרת הדואר שלך ישלח דוא"ל ללקוחות, עליך לקבל דואר מכל תחום שהוא.
+rcpts_domains2=דומיינים מקומיים ומעברים נוספים
+rcpts_desc2=אם יש לך מספר גדול של דומיינים מקובלים, יש להזין בתיבת טקסט זו תחומים פחות נפוצים. באופן כללי, יש להזין את 50 הדומיינים הראשונים הראשונים שלך בתיבת הטקסט העליונה, והשאר לדומיין זה.
+
+bads_title=כתובות שנדחו
+bads_addresses=כתובות דוא"ל שנדחו
+bads_desc=QMail ידחה דואר למסירה או העברה מחדש מכל אחת מהכתובות המופיעות בתיבת הטקסט משמאל, שיש להזין אותה כ- <tt>username @ domainname</tt>. אם ברצונך לדחות דואר מדומיין שלם, יש להזין אותו כ- <tt>@domainname</tt>.
+
+routes_title=ניתוב דומיין
+routes_toomany=יש יותר מדי נתיבי דומיין במערכת שלך בכדי להציג אותם בדף זה.
+routes_go=מצא נתיבי דומיין התואמים:
+routes_from=דואר לתחום
+routes_to=שלח דרך השרת
+routes_direct=לספק באופן ישיר
+routes_defroute=העברת כל הדואר היוצא אחר באמצעות:
+routes_return=מסלולי דומיין
+routes_delete=מחק נתיבי דומיין שנבחרו
+
+rform_edit=ערוך מסלול דומיין
+rform_create=צור מסלול דומיין
+rform_from=דואר למארח או לתחום
+rform_to=שלח באמצעות שרת SMTP
+rform_port=יציאת SMTP
+
+rsave_err=שמירת מסלול הדומיין נכשלה
+rsave_efrom='$1' אינו שם תחום תקף
+rsave_eto='$1' אינו שרת SMTP חוקי
+rsave_eport='$1' אינו מספר יציאה חוקי
+
+rdelete_err=מחיקת נתיבי הדומיין נכשלה
+
+percents_title=% תחומי כתובת
+percents_domains=דומיינים התומכים בכתובות % 
+percents_desc=QMail יקבל דוא"ל עם כתובות בפורמט <tt>user%firstdomain@seconddomain</tt> אם ה- <tt>domainshain</tt> מופיע בתיבת הטקסט משמאל. לאחר מכן, ההודעות בפורמט זה יועברו ל <tt>user@firstdomain</tt> על ידי שרת דואר זה.
+
+virts_title=מיפויים וירטואליים
+virts_toomany=יש יותר מדי מיפויים וירטואליים במערכת שלך בכדי להציג אותם בדף זה.
+virts_go=מצא מיפויים וירטואליים תואמים:
+virts_from=דואר עבור
+virts_prepend=הכן קידומת
+virts_all=כל הכתובות
+virts_none=לא וירטואלי
+virts_desc=מיפויים וירטואליים משמשים QMail לטיפול בדוא"ל לדומיינים שונים בשרת שלך, על ידי הוספת טקסט לחלק המשתמש בכתובת הדוא"ל לפני העיבוד נוסף. אתה יכול להשתמש בהם כדי להגדיר דומיינים של דואר וירטואלי על ידי יצירת מיפוי וירטואלי חדש לתחום, ואז להשתמש בדף <a href='$1'>כיווני דואר</a> כדי ליצור כינויים בתוך אותו תחום.
+virts_return=מיפויים וירטואליים
+virts_delete=מחק מיפויים וירטואליים שנבחרו
+
+vform_edit=ערוך מיפוי וירטואלי
+vform_create=צור מיפוי וירטואלי
+vform_from=דואר לכתובת
+vform_all=כל כתובת שאינה מתאימה למיפוי וירטואלי אחר
+vform_domain=כתובות עם תחום
+vform_user=כתובת
+vform_to=הכן לשם משתמש
+vform_none=שום דבר
+vform_prepend=קידומת שצוינה
+vform_auto=קידומת שנבחרה אוטומטית
+
+vsave_err=שמירת מיפוי וירטואלי נכשלה
+vsave_edomain='$1' אינו תחום דוא"ל תקף
+vsave_euser='$1' אינו שם משתמש תקף בדוא"ל
+vsave_eprepend='$1' אינו קידומת מיפוי תקפה
+vsave_eboth=אינך יכול לבחור הן 'כל כתובת שאינה תואמת מיפוי וירטואלי אחר' וגם 'כלום'.
+
+vdelete_err=מחיקת מיפויים וירטואליים נכשלה
+
+stop_err=תהליך שליחת qmail כבר לא פועל
+
+log_stop=תהליכי QMail הופסקו
+log_start=תהליכי QMail התחילו
+log_opts=אפשרויות QMail שונו
+log_alias_create=נוצר כינוי $1 
+log_alias_delete=מחק כינוי $1 
+log_alias_modify=כינוי שונה $1 
+log_delete_aliases=כינויים של $1 נמחקו
+log_virt_create=יצר מיפוי וירטואלי $1 
+log_virt_delete=מיפוי וירטואלי $1 נמחק
+log_virt_modify=מיפוי וירטואלי שונה $1 
+log_delete_virts=נמחקו $1 מיפויים וירטואליים
+log_virtall_create=נוצר מיפוי וירטואלי
+log_virtall_delete=כל המיפוי הווירטואלי נמחק
+log_virtall_modify=מיפוי וירטואלי שונה
+log_locals=דומיינים מקומיים השתנו
+log_rcpts=תחומים מקובלים שונו
+log_bads=כתובות שנדחו שונו
+log_percents=% דומיינים של כתובת השתנו
+log_route_create=נוצר מסלול עבור $1 
+log_route_delete=מסלול נמחק עבור $1 
+log_route_modifed=מסלול שונה ב- $1 
+log_delete_routes=$1 מסלולים נמחקו
+log_defroute=מסלול ברירת מחדל שונה
+log_assign_create=יצר משתמש דואר $1 
+log_assign_delete=משתמש הדואר נמחק $1 
+log_assign_modifed=משתמש דואר שונה $1 
+log_delete_assigns=$1 משתמשי דואר נמחקו
+log_delmail=נמחקו $1 הודעות מ- $2 
+log_movemail=הועבר $1 הודעות מ- $2 ל- $3 
+log_send=שלח דואר ל- $1 
+
+rfile_title=ערוך קובץ להפעלה אוטומטית
+rfile_desc=השתמש באזור הטקסט שלהלן כדי לערוך את הודעת ההרשאה אוטומטית ב- $1. ההודעה עשויה להכיל את המאקרואים $SUBJECT, $FROM, $TO, $DATE ו- $BODY אשר יורחבו כאשר ההפעלה אוטומטית מופעלת.
+rfile_desc2=אתה יכול גם להגדיר כותרות דואר שמוסיפות או מחליפים את ברירות המחדל המשמשות בהגנה אוטומטית על ידי הצבת שורות כמו: <br><tt> מאת: foo@bar.com </tt><br> <tt>נושא: בחופשה</tt> <br> בראש ההודעה, מופרדים מהגוף בשורה אחת ריקה.
+rfile_efile=אינך רשאי לערוך $1.
+rfile_undo=בטל שינויים
+rfile_replies=לעקוב אחר תשובות למניעת לולאות דואר?
+rfile_none=לא
+rfile_file=כן, באמצעות קובץ יומן
+rfile_period=מרווח מינימלי בין התשובות
+rfile_default=ברירת מחדל (שעה)
+rfile_secs=שניות
+rfile_ereplies=חסר קובץ יומן מעקב אחר תשובות
+rfile_eperiod=מספר שניות חסר או לא חוקי בין התשובות
+rfile_no_autoreply=אל תשלח תגובה אוטומטית ל-
+rfile_from=מאת: כתובת לתשובה
+rfile_auto=אוטומטי (מבוסס על כתובת הנמען)
+rfile_efrom=חסר מהכתובת
+rfile_fromdesc=כתובת תמיד צריכה להיות מוגדרת במידת האפשר, מכיוון שהשיטה האוטומטית עשויה להיות לא אמינה.
+
+ffile_title=ערוך את קובץ הסינון
+ffile_desc=השתמש בטופס שלהלן כדי להגדיר כללי סינון בקובץ $1.
+ffile_efile=אינך רשאי לערוך $1.
+ffile_line=אם השדה $1 $2 $3, קדימה אל $4 
+ffile_from=מ
+ffile_to=ל
+ffile_subject=נושא
+ffile_cc=CC
+ffile_body=גוף
+ffile_what0=לא תואם
+ffile_what1=התאמות
+ffile_other=אחרת קדימה ל- $1 
+ffile_err=שמירת קובץ המסנן נכשלה
+ffile_ematch=משחק חסר
+ffile_eaction=כתובת חסרה
+
+queue_title=תור דואר
+queue_count=$1 הודעות
+queue_none=כרגע אין הודעות דואר בתור למסירה
+queue_id=מזהה דואר
+queue_date=נשלח
+queue_from=מ
+queue_to=ל
+queue_cc=עותק
+queue_subject=נושא
+queue_return=תור דואר
+queue_delete=מחק הודעות שנבחרו
+queue_all=בחר הכל
+queue_invert=בחירה הפוך
+queue_refresh=רענן תור לדואר
+queue_refreshdesc=טען מחדש עמוד זה כדי להציג את המצב הנוכחי של תור הדואר.
+
+qview_title=הודעה בתור
+qview_desc=מהקובץ $1 
+qview_headers=כותרות דואר
+qview_attach=קבצים מצורפים
+
+assigns_title=משימות משתמש בדואר
+assigns_return=מטלות משתמש בדואר
+assigns_toomany=יש יותר מדי משתמשי דואר במערכת שלך בכדי להציג אותם בדף זה.
+assigns_go=מצא משתמשי דואר התואמים:
+assigns_address=דואר לכתובת
+assigns_user=משתמש יוניקס
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=מדריך ביתי
+assigns_desc=הקצאות של משתמשים בדואר מאפשרות לך ליצור תיבות דואר למשתמשים שאינם מוגדרים ברשימת המשתמשים של Unix. כל משימה תעביר דואר עבור שם משתמש או תבנית שם משתמש שנבחרו, כאילו הועברה לתיבת הדואר של משתמש יוניקס אמיתי.
+assigns_delete=מחק משתמשי דואר שנבחרו
+
+sform_edit=ערוך משתמש דואר
+sform_create=צור משתמש דואר
+sform_address=שם משתמש כתובת
+sform_mode0=שם משתמש מדויק
+sform_mode1=שמות משתמש החל מ
+sform_user=משתמש יוניקס
+sform_uid=UID
+sform_gid=GID
+sform_home=מדריך ביתי
+
+ssave_err=שמירת משתמש הדואר נכשלה
+ssave_eaddress=שם משתמש של כתובת חסרה או לא חוקית
+ssave_euser=משתמש Unix חסר או לא חוקי
+ssave_euid=UID חסר או לא תקף
+ssave_egid=GID חסר או לא תקף
+ssave_ehome=מדריך בית חסר או לא חוקי
+
+sdelete_err=מחיקת משתמשי הדואר נכשלה
+
+delete_egone=הודעה בתור כבר לא קיימת
+delete_ebogus=שם קובץ לא חוקי של התור
+
+boxes_title=תיבות דואר של משתמשים
+boxes_user=משתמש
+boxes_size=גודל תיבת דואר
+boxes_none=אין דואר
+boxes_return=תיבות דואר
+boxes_sent=שלח מייל
+boxes_ecannot=אינך מורשה לקרוא דוא"ל
+boxes_toomany=יש יותר מדי משתמשים במערכת שלך בכדי לרשום את כל תיבות הדואר שלהם.
+boxes_go=הצגת דואר למשתמש:
+
+mail_title=דוא"ל משתמש
+mail_from=מ
+mail_date=תאריך
+mail_subject=נושא
+mail_to=ל
+mail_cc=עותק
+mail_bcc=Bcc
+mail_pri=עדיפות
+mail_highest=הכי גבוה
+mail_high=גבוה
+mail_normal=רגיל
+mail_low=נמוך
+mail_lowest=הנמוך ביותר
+mail_for=ב- $1 
+mail_for2=למשתמש $1 
+mail_sent=ברשימת דואר שנשלחה
+mail_size=גודל
+mail_delete=מחק
+mail_compose=לחבר
+mail_return=תיבת דואר של המשתמש
+mail_pos=הודעות $1 עד $2 מתוך $3 
+mail_none=לתיבת דואר זו אין הודעות
+mail_ecannot=אינך מורשה לקרוא את הדוא"ל של משתמש זה
+mail_all=בחר הכל
+mail_invert=בחירה הפוך
+mail_search=מצא הודעות איפה
+mail_body=גוף
+mail_match=התאמות
+mail_ok=לחפש
+mail_nonefrom=אף אחד
+mail_mark=סמן כ:
+mail_mark0=לא נקרא
+mail_mark1=לקרוא
+mail_mark2=מיוחד
+mail_forward=קדימה
+mail_rfc=מקו
+mail_move=לעבור ל:
+mail_eexists=ההודעה כבר לא קיימת!
+
+view_title=קרא דוא"ל
+view_desc=הודעה $1 ב- $2 
+view_desc2=הודעה $1 למשתמש $2 
+view_desc3=הודעה $1 
+view_sent=הודעה $1 ברשימת הדואר שנשלחה
+view_qdesc=הודעה בתור $1 
+view_headers=כותרות דואר
+view_allheaders=הצג את כל הכותרות
+view_noheaders=צפה בכותרות בסיסיות
+view_attach=קבצים מצורפים
+view_reply=תשובה
+view_reply2=השב לכולם
+view_enew=ערוך כחדש
+view_forward=קדימה
+view_delete=מחק
+view_strip=הסר קבצים מצורפים
+view_ecannot=אינך מורשה לקרוא את הדוא"ל של משתמש זה
+view_mark=סמן הודעה כ:
+view_mark0=לא נקרא
+view_mark1=לקרוא
+view_mark2=מיוחד
+view_return=דוא"ל מקורי
+view_sub=אימייל מצורף
+
+compose_title=כתוב מייל אלקטרוני
+reply_title=תגובה לדוא"ל
+forward_title=העברת דוא"ל
+enew_title=ערוך דוא"ל
+reply_headers=כותרות דואר
+reply_attach=קבצים מצורפים שהועברו
+reply_mailforward=הודעות שהועברו
+reply_attach2=קבצים מצורפים בצד הלקוח ושרת
+reply_send=שלח מייל
+reply_ecannot=אינך רשאי לשלוח דואר כמשתמש זה
+
+send_err=שליחת הדואר נכשלה
+send_eto=כתובת חסרה
+send_efrom=כתובת חסרה
+send_title=דואר נשלח
+send_ok=דואר נשלח בהצלחה ל- $1 
+send_ecannot=אינך רשאי לשלוח דואר כמשתמש זה
+send_esmtp=פקודת SMTP $1 נכשלה : $2 
+send_efile=הקובץ המצורף $1 אינו קיים
+send_eattach=קבצים מצורפים לא יכולים להסתכם בכ- $1 kB.
+send_eperms=המשתמש $1 לא יכול לקרוא את $2 
+send_eperms2=אינך רשאי לשלוח את הקובץ $1 
+send_epath=ההפעלה של Sendmail $1 אינה קיימת.
+
+delete_title=מחק דואר
+delete_rusure=האם אתה בטוח שברצונך למחוק את $1 ההודעות שנבחרו מ- $2 ? זה עשוי לקחת זמן עד שקובץ דואר גדול. עד לסיום המחיקה, אין לבצע שום פעולה אחרת.
+delete_rusure2=האם אתה בטוח שברצונך למחוק הודעה זו מ- $1 ? זה עשוי לקחת זמן עד שקובץ דואר גדול. עד לסיום המחיקה, אין לבצע שום פעולה אחרת.
+delete_ok=תמחק עכשיו
+delete_ecannot=כעת אתה רשאי למחוק דואר ממשתמש זה
+delete_enone=לא נבחר דואר למחיקה
+delete_emnone=לא נבחר דואר לסמן
+delete_nobutton=לא לחצו על כפתור
+
+search_title=תוצאות חיפוש
+search_ecannot=אינך רשאי לחפש בדוא"ל של משתמש זה
+search_ematch=עליך להזין טקסט כדי להתאים.
+search_efield=עליך לבחור סוג חיפוש.
+search_none=לא נמצאו הודעות.
+search_results2=$1 הודעות דואר תואמות $2 ..
+search_results3=$1 הודעות דואר לא תואמות $2 ..
+
+match_from=מאת: גפרורים
+match_subject=נושא: גפרורים
+match_to=אל: גפרורים
+match_cc=עותק: גפרורים
+match_date=תאריך: גפרורים
+match_body=משחקי גוף
+match_size=הגודל גדול מ-
+match_headers=כותרות מתאימות
+match_=-----------------
+match_!from=מאת: לא תואם
+match_!subject=הנושא: לא תואם
+match_!to=אל: לא תואם
+match_!cc=עותק: לא תואם
+match_!date=תאריך: לא תואם
+match_!body=הגוף לא תואם
+match_!size=גודל הוא פחות מ
+match_!headers=כותרות לא תואמות
+
+delq_titles=מחיקת הודעות
+delq_rusure=האם אתה בטוח שברצונך למחוק את ההודעות שנבחרו בתור $1 ?
+delq_confirm=מחק הודעות

@@ -1,0 +1,11 @@
+index_forcecpan=Uvijek instalirajte najnoviju verziju iz izvora
+index_user=$1 (koristi $2)
+index_none=Na vašem sustavu nisu pronađeni instalirani Perl moduli.
+index_tabmods=Postojeći moduli
+index_tabinstall=Instalirajte modul
+index_tabsuggest=Predloženi moduli
+index_allmods2=Nedostaju moduli koje koristi Webmin
+index_wantmods=Moduli koje treba instalirati
+
+download_missingok=Moduli nedostaju iz CPAN-a
+download_fallback=Neki se moduli nisu uspjeli instalirati iz paketa, umjesto toga pokušali su instalirati iz izvora ..

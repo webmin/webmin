@@ -1,0 +1,126 @@
+<header> Cseréli-e a mentési célállomások strftime időben? </header> Ha ezt az opciót <b>Igen</b> értékre állítja, akkor a%d,%m,%Y és%u kódok használhatók a biztonsági mentési célnévben. Ezeket helyettesíti a biztonsági másolat készítésének napja, hónapja év és a hét napja. Ez akkor hasznos, ha másolatot szeretne menteni minden nap, hogy visszatekerje a rendszert egy korábbi dátumra. <p> Néhány további használható kód: <br><pre> <font size=-1>
+ %a Rövidített hétköznapi név a jelenlegi szerint
+        bérleti díj.
+
+ %A A hét teljes napja az aktuális szerint
+        locale.
+
+ %b A rövidített hónap neve az aktuális szerint
+        locale.
+
+ %B A teljes hónap neve az aktuális szerint
+        locale.
+
+ %c. A
+        jelenlegi területi beállítás.
+
+ %C Az évszázad száma (év / 100) két számjegyű egész számként.
+
+ %d A hónap napja tizedes számként (01 tartomány
+        - 31).
+
+ %e, mint a%d, a hónap napja tizedes számként,
+        de a vezető nullát helyettesíti egy szóköz.
+
+ %E módosító: használjon alternatív formátumot, lásd alább.
+
+ %G Az ISO 8601 év évszázaddal.
+        Az ISO hét számának megfelelő négy számjegyű év
+        ber (lásd%V). Ennek ugyanaz a formátuma és értéke
+        %y-ként, kivéve, ha az ISO hét száma tartozik
+        az előző vagy a következő évre, azt az évet használják
+        helyette.
+
+ %g Mint%G, de évszázad nélkül, azaz két számjeggyel
+        év (00-99).
+
+ %h%b-val egyenértékű.
+
+ %H Az óra tizedes számként, egy 24 órás órával
+        (tartomány 00–23).
+
+ %I Az óra tizedes számként, 12 órás órával
+        (tartomány: 01–12).
+
+ %j Az év napja tizedes számként (001 tartomány
+        366).
+
+ %k Az óra (24 órás óra) tizedes számként (tartomány
+        0–23); az egy számjegyet egy üres előzi meg.
+        (Lásd még%H.)
+
+ %l Az óra (12 órás óra) tizedes számként (tartomány
+        1–12); az egy számjegyet egy üres előzi meg.
+        (Lásd még%I.)
+
+ %m A hónap decimális számként (tartomány 01–12).
+
+ %M A perc tizedes számként (00 és 59 közötti tartomány).
+
+ %n Új sor karakter.
+
+ %O módosító: használjon alternatív formátumot, lásd alább.
+
+ %p Az AM vagy a PM az adott időnek megfelelően
+        érték, vagy az áram megfelelő karakterlánca
+        locale. A délt „pm” -ként, éjfélkor pedig „éjfélként” kell kezelni
+        `vagyok”.
+
+ %P Mint%p, de kisbetűkkel: „am” vagy „pm”, vagy ennek megfelelője
+        sponding string az aktuális lokálhoz.
+
+ %r Az idő am vagy pm jelöléssel. A POSIX-ban
+        a locale ez egyenértékű a &quot;%I:%M:%S%p&quot; értékkel.
+
+ %R Az idő 24 órás jelöléssel (%H:%M). Egy a
+        verziót a másodpercekkel együtt, lásd az alábbi%T oldalt.
+
+ %s A korszak óta eltelt másodpercek száma, azaz azóta
+        1970-01-01 00:00:00 UTC.
+
+ %S A második tizedes számként (00 és 61 közötti tartomány).
+
+ %t Lap karakter.
+
+ %T Az idő 24 órás jelöléssel (%H:%M:%S).
+
+ %u A hét napja decimálisan, 1-7 tartományban,
+        1. hétfő. Lásd még%w.
+
+ %U A folyó év heti száma decimálisan
+        szám, a 00 és 53 közötti tartomány, az elsőtől kezdve
+        Vasárnap, mint a 01. hét első napja. Lásd még%V és
+        %W.
+
+ %V A tárgyév ISO 8601: 1988 heti száma
+        tizedes számként, a 01 és 53 közötti tartományban, ahol az 1. hét
+        az első hét, amelyen legalább 4 nap van
+        a folyó évben, és hétfővel, mint az első nap
+        a hét. Lásd még%U és%W.
+
+ %w A hét napja decimálisan, 0 és 6 közötti tartomány,
+        Vasárnap 0 lesz. Lásd még%u.
+
+ %W A folyó év heti száma decimálisan
+        szám, a 00 és 53 közötti tartomány, az elsőtől kezdve
+        Hétfő, mint a 01. hét első napja.
+
+ %x Az aktuális dátum ábrázolása
+        időjárás nélkül.
+
+ %X Az áram előnyben részesített ideje
+        dátum nélkül.
+
+ %y Az év decimális számként, század nélkül
+        (tartomány: 00–99).
+
+ %Y Az év decimális számként, a századot is beleértve.
+
+ %z Az időzóna óránként eltolva a GMT-től. Szükséges
+        sugároznak RFC822-nek megfelelő dátumokat (&quot;%a,%d%b%Y felhasználásával&quot;)
+        %H:%M:%S%z &quot;).
+
+ %Z Az időzóna vagy a név vagy rövidítés.
+
+ %%Egy `% &#39;karakter.
+</font> </pre><footer>

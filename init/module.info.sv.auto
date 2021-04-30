@@ -1,0 +1,3 @@
+name_sv=Boot Manager
+longdesc_sv=Installationsskript som ska köras vid starttid från /etc/init.d eller /etc/rc.local.
+desc_sv=Uppstart och avstängning

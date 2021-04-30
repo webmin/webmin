@@ -1,0 +1,3 @@
+longdesc_af=Stel 'n Linux-firewall op met behulp van ip6-tabelle. Laat die redigering van alle tabelle, kettings, reëls en opsies toe.
+name_af=Firewall6
+desc_af=Linux IPv6 Firewall

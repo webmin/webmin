@@ -1,0 +1,16 @@
+index_digest2=El cifrado implícito está habilitado en la configuración del módulo, pero el comando $1 o el módulo $2 Perl necesario para él no está instalado.
+index_delete=Desproteger directorios seleccionados
+index_remove=Desproteger y eliminar archivos
+
+dir_header2=Opciones de sincronización del usuario
+dir_ecannotcreate=No tiene permiso para configurar qué directorios están protegidos
+dir_delete=Desproteger
+dir_delete2=Desproteger y eliminar archivos
+dir_delete3=Desproteger y eliminar archivo
+dir_apache=Editar opciones de Apache
+dir_efiledir='$1' es un directorio, por lo que no se puede usar como un archivo de usuario
+dir_egfiledir='$1' es un directorio, por lo que no se puede usar como un archivo de grupos
+
+acl_uonly=¿Se pueden agregar y cambiar directorios protegidos?
+
+log_delete_dirs=Directorios $1 eliminados

@@ -1,0 +1,79 @@
+index_title=Sistēmas dokumentācija
+index_header=Sistēmas dokumentācijas meklēšana
+index_for=Meklēt
+index_where=Meklēt
+index_alldoc=Visa dokumentācija
+index_man=Manuālās lapas
+index_doc=Iepakojuma dokumentācija
+index_kernel=Kodola dokumentācija
+index_info=Informācijas lapas
+index_howto=HOWTO dokumenti
+index_kde=KDE dokumentācija
+index_perl=Perl moduļa dokumentācija
+index_custom=Pielāgota dokumentācija
+index_help=Webmin palīdzība
+index_reset=Atiestatīt
+index_search=Meklēt
+index_return=meklēšanas forma
+index_type=Sakritība
+index_name=Tikai vārds
+index_data=Vārds un saturs
+index_google=Google meklēšanu
+index_others=Meklējot dokumentāciju no cita moduļa, ļaujiet meklēt ..
+index_other_man=Manuālās lapas
+index_other_help=Webmin palīdzība
+index_other_doc=Iepakojuma dokumentācija
+index_other_kernel=Kodola dokumentācija
+index_other_howto=HOWTO dokumenti
+index_other_perl=Perl moduļa dokumentācija
+index_other_google=Google meklētājprogramma
+index_other_kde=KDE dokumentācija
+index_and=Sakritiet visiem
+index_or=Saskaņojiet jebkuru
+
+search_efor=Nav manuālas lapas, lai meklētu ievadīto
+search_title=Meklēšanas rezultāti
+search_desc=Apraksts
+search_type=Veids
+search_file=Lapa vai fails
+search_man=Manuālā lapa
+search_howto=HOWTO dokuments
+search_doc=Iepakojuma dokumentācija
+search_kernel=Kodola dokumentācija
+search_kde=KDE dokumentācija
+search_perl=Perla modulis
+search_help=Webmin palīdzība
+search_custom=Pielāgota dokumentācija
+search_none=Nav atrasta $1 atbilstoša dokumentācija.
+search_for=$1 
+search_google=Google meklēšanas rezultāts
+search_doxfer=Webmin tiešsaistes dokumentācija
+
+howto_title=HOWTO dokuments
+howto_header=HOWTO dokumenta fails $1 
+howto_epath=Nederīgs HOWTO dokumenta ceļš
+
+doc_title=Pakas dokumentācija
+doc_header=Pakotnes dokumenta fails $1 
+doc_epath=Nederīgs paketes dokumentācijas ceļš
+
+man_title=Manuālā lapa
+man_header=Manuālā lapa $1 ($2)
+man_noentry=Manuālā lapa $1 neeksistē!
+man_epath=Manuālā lapa nevar būt ceļš!
+
+kernel_title=Kodola dokuments
+kernel_header=Kodola dokumenta fails $1 
+kernel_epath=Nederīgs kodola dokumenta ceļš
+
+kde_title=KDE dokumentācija
+kde_header=KDE dokumenta fails $1 
+kde_epath=Nederīgs KDE dokumentācijas ceļš
+
+perl_title=Perla modulis
+perl_header=Perl moduļa $1 dokumentācija
+perl_emod=Nederīgs Perl moduļa nosaukums
+
+acl_allow=Vai var rediģēt atļautos meklēšanas veidus?
+
+check_ecannot=Jums nav atļauts rediģēt atļautos meklēšanas veidus

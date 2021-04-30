@@ -1,0 +1,212 @@
+access_elibwrap=$1 Perlモジュールがインストールされていないため、TCPラッパーを使用したIPアクセス制御は使用できません。
+access_libwrapcpan=<a href='$1'>ここをクリック</a>して、不足しているPerlモジュールをWebminに自動的にインストールさせます。
+
+access_eip6=「$1」は完全なIPv6またはネットワークアドレスではありません
+access_ecidr8=IPv6ネットワークサイズ「$1」は8で割り切れる必要があります
+access_trust=プロキシが提供するリモートIPアドレスを信頼しますか？
+
+bind_firewall=ファイアウォールで新しいポートを開きますか？
+bind_eipv6=$1 Perlモジュールがインストールされていない場合、IPv6を有効にできません
+bind_redirecting=新しいURLへのリダイレクト ..
+bind_elsof=新しいポート$1はすでに別のプロセスで使用されています
+bind_eonsystem=IPアドレス$1はこのシステムでアクティブではないため、使用できません
+bind_maxconns=同時接続の最大合計
+bind_maxconns_per_ip=IPあたりの最大同時接続数
+bind_maxconns_per_net=ネットワークあたりの最大同時接続数
+bind_emaxconns=最大同時接続数は1より大きい数である必要があります
+bind_emaxconns_per_ip=IPあたりの最大同時接続数は1より大きい数である必要があります
+bind_emaxconns_per_net=ネットワークあたりの最大同時接続数は1より大きい数である必要があります
+
+log_global=&lt;グローバルアクション&gt;
+log_sched=スケジュールされた機能を記録しますか？
+log_login=アクションログにWebminログインとログアウトを含めますか？
+log_email=記録されたアクションをメールで送信する
+log_emailnone=送信しない
+log_inmodsemail=のアクションのメールを送信する
+
+ui_nice_size_type=バイナリ測定単位を使用する（KB、MB、GBではなく、KiB、MiB、GiB）
+ui_showhost=ページタイトルにホスト名を追加しますか？
+
+mods_checksig=ダウンロードしたモジュールの署名ファイルを確認しますか？
+
+ssl_honorcipherorder=サーバー定義の暗号順序の使用を強制しますか？
+ssl_extracasnone=このIPアドレスにはなし
+ssl_ekey2=SSL秘密鍵ファイル$1にはPEM形式の鍵が含まれていません
+ssl_ecert2=SSL証明書ファイル$1にはPEM形式の証明書が含まれていません
+ssl_newcsr=このフォームを使用して、Webminサーバーの新しいSSLキーと証明書署名要求（CSR）を作成できます。 CSRは、使用する前に認証局（CA）によって署名される必要があります。
+ssl_strong=強力なPCI準拠の暗号のみ
+ssl_pfs=完全な前方秘匿性を持つ強力な暗号のみ
+ssl_edhparams=PFS DH paramsファイルの生成に失敗しました：$1
+ssl_epfsversion=PFSにはNet::SSLeayバージョン$2が必要ですが、このシステムにはバージョン$1しかありません
+ssl_fromcsr=この秘密鍵は、[<b>証明書署名リクエスト</b>]タブを使用して生成されました。 CSRに応じてCAから提供された証明書を以下に入力する必要があります。
+ssl_privchain=チェーン証明書テキスト
+ssl_nochain=連鎖証明書なし
+ssl_tabcsr=証明書署名リクエスト
+ssl_tablets=暗号化しましょう
+ssl_csralready=最新のキーとCSRを表示 ..
+ssl_already2=以前に生成された証明書署名要求：
+ssl_letsdesc=Let's Encryptは、Webminで使用するSSL証明書を生成するために使用できる、無料の自動化されたオープンな認証局です。
+ssl_letserr=残念ながら、Let's Encryptはシステムで使用できません：$1。
+ssl_letserr2=または、<a href='$1'>モジュール構成</a>ページを確認して、<tt>letsencrypt</tt>コマンドへの正しいパスを使用していることを確認してください。
+ssl_letsdesc2=このページを使用して新しい証明書を要求すると、Webminで現在構成されている他の証明書が上書きされます。ただし、Let's Encryptサービスでは、このシステムがドメインのWebサイトをホストしていることを確認して、証明書ドメインの所有権を検証する必要があります。これを行うには、Webサイトのドキュメントディレクトリに小さな一時ファイルを配置します。
+ssl_letsheader=新しいSSL証明書のオプション
+ssl_letsdoms=証明書のホスト名
+ssl_webroot=検証ファイルのWebサイトのルートディレクトリ
+ssl_webroot0=ホスト名に一致するApache仮想ホスト
+ssl_webroot1=別のApache仮想ホスト
+ssl_webroot2=その他のディレクトリ
+ssl_webroot3=検証にDNSドメインを使用する
+ssl_letsok=証明書のリクエスト
+ssl_letsonly=更新を更新するだけ
+ssl_usewebmin=新しいキーと証明書をWebminにコピーしますか？
+ssl_letsrenew=自動更新間の月
+ssl_letsnotrenew=手動でのみ更新する
+ssl_staging=サーバーを暗号化しましょう
+ssl_staging0=リアル
+ssl_staging1=ステージング（テストのみ）
+
+newkey_ecns=サーバー名が入力されていません
+
+newcsr_ok=次のSSL証明書リクエストが正常に生成されました：
+newcsr_ok2=このCSRは、署名された証明書を返す署名機関に送信する必要があります。これは、<b>証明書のアップロード</b>タブを使用して上記のキーでインストールできます。
+
+upgrade_eportage=Portageパッケージからインストールした場合、Webminのアップグレード機能は現在動作しません。代わりにPortageツールを使用してアップグレードしてください。
+
+update_checksig=非Webminリポジトリの署名を確認する
+
+ca_alt=追加のドメイン
+
+session_syslog3=<tt>syslog</tt>にエラーを記録しますか？
+session_ip=セッションを同じクライアントIPアドレスに制限しますか？
+session_pamend=PAMステータスを他のモジュールに渡しますか？
+session_sha512=SHA512暗号化を使用する
+session_esha512mod=Perl $1モジュールがインストールされていないため、SHA512暗号化は使用できません。
+
+categories_custom=カスタム
+
+log_debug=デバッグログファイルオプションの変更
+log_delete_webmincron=$1スケジュール機能を削除しました
+log_run_webmincron=$1スケジュールされた関数を実行しました
+log_save_webmincron=モジュール$1のスケジュールされた機能を更新しました
+log_onedelete_webmincron=モジュール$1のスケジュールされた関数を削除しました
+log_letsencrypt=Let's Encryptに新しいSSL証明書を要求しました
+log_letsencryptdns=$1のDNSレコードを暗号化しよう
+log_letsencryptcleanup=$1のDNSレコードの暗号化を削除しました
+
+themes_overdesc=オーバーレイは、色、背景、アイコンを変更することにより、テーマの外観を変更します。レイアウトは変更されません。
+
+themes_ok2=テーマオーバーレイが正常に変更されました.. Webminインデックスページにリダイレクトされます。
+themes_eoverlay=選択したオーバーレイは現在のグローバルテーマと互換性がありません
+
+ipkey_ips2=IPアドレスとホスト名の場合
+ipkey_eip2=「$1」は有効なIPアドレスまたはホスト名ではありません
+ipkey_eextraca=追加の証明書ファイル$1は存在しません
+
+descs_etitle=クローン '$1'のタイトルがありません
+
+advanced_precache=事前キャッシュするテキストファイル？
+advanced_precache2=シェルパターンに一致するファイル$1
+advanced_eprecache=事前キャッシュするシェルパターンのリストがありません
+advanced_chattr=不変ファイルの変更を許可しますか？
+advanced_gzip=Gzipは静的ファイルを圧縮しますか？
+advanced_gzipauto=事前に圧縮された.gzファイルが存在する場合のみ
+advanced_gzip0=決して
+advanced_gzip1=事前に圧縮されたファイルを使用して動的に圧縮する
+advanced_egzip=$1 perlモジュールがインストールされていない場合、Gzip圧縮を有効にできません
+advanced_redir0=プロトコル、ホスト、ポート、パス
+advanced_listdir=インデックスファイルなしでディレクトリをリストしますか？
+advanced_headers=追加のHTTPヘッダー
+advanced_eheader=ヘッダーは、<tt>Header：Value</tt>のような形式にする必要があります
+advanced_sortconfigs=キーでソートされた構成ファイルを保存しますか？
+advanced_bufsize=ネットワークバッファサイズ（バイト単位）
+advanced_ebufsize=ネットワークバッファサイズはゼロより大きい数値である必要があります
+
+savekey_echain=PEM形式のチェーン証明書が欠落しているか無効です
+savekey_done3=提供された連鎖SSL証明書は、ファイル$1に保存されています。
+
+debug_modules=デバッグをモジュールに制限する
+debug_inmods=デバッグログを書き込むモジュール
+debug_emodules=選択したモジュールに対してデバッグするモジュールはありません
+
+notif_upgrade=Webminバージョン$1が利用可能になりましたが、バージョン$2を実行しています。
+notif_updatemsg=Webminモジュールの更新に続く$1が利用可能になりました ..
+notif_reboot=最近のパッケージの更新（新しいカーネルバージョンなど）を完全に適用するには再起動が必要です。
+
+sendmail_desc=このページは、スケジュールされたバックアップやバックグラウンド監視などから、Webminが電子メールを送信する方法を制御します。また、Read User Mailモジュールを使用して送信される電子メールにも影響します。
+sendmail_port=SMTPポート
+sendmail_ssl0=暗号化しない
+sendmail_ssl1=常にTLSを使用する
+sendmail_ssl2=STARTTLSで切り替える
+sendmail_from=Webminからの電子メールの送信元アドレス
+sendmail_esmtp=SMTPサーバーのホスト名がないか、解決できない
+sendmail_esasl=<a href=$1>$2</a> Perlモジュールがインストールされていない場合、SMTP認証を有効にできません。
+sendmail_desc2=このフォームを使用して、上記の設定でテストメールを送信し、メールが正しく配信されていることを確認できます。
+sendmail_url=電子メールで使用するためのWebminURL
+sendmail_url_def=デフォルト（$1）
+sendmail_url_custom=カスタムURL
+sendmail_eurl=カスタムURLがないか無効です
+
+testmail_done=..メッセージが送信されました。宛先アドレスのメールボックスをチェックして、実際に配信されたことを確認します。
+
+webmincron_none=Webminスケジュール機能はまだ作成されていません。これらは通常、ユーザーではなく、他のモジュールによって作成されます。
+webmincron_einterval=間隔はゼロより大きい秒数である必要があります
+
+twofactor_apikey=Authy APIキー
+twofactor_test=プロバイダーのテストモードを使用しますか？
+twofactor_desc=2要素認証により、Webminユーザーは、ログイン時に追加の認証デバイス（ワンタイムパスコードジェネレーターなど）を使用できるようになります。このページで有効にしたユーザーは、選択した認証プロバイダーに個別に登録する必要があります。
+twofactor_eusers=次のユーザーが現在登録されているため、二要素認証を無効にすることはできません：$1
+twofactor_eapikey=APIキーが見つからないか無効です
+twofactor_authy=真正
+twofactor_eemail=メールアドレスが見つからないか無効です-user@domain.comのような形式にする必要があります
+twofactor_ecountry=国コードがないか無効です-65などの数字である必要があります
+twofactor_ephone=電話番号がないか無効です-数字、ダッシュ、スペースのみ使用できます
+twofactor_eauthykey=Authy APIキーが無効であるか、モードが間違っています
+twofactor_eauthy=AuthyでのAPIキーの検証エラー：$1
+twofactor_eauthyenroll=登録に失敗しました：$1
+twofactor_eauthyid=AuthyユーザーIDは数字でなければなりません
+twofactor_eauthytoken=Authyトークンは数字でなければなりません
+twofactor_eauthyotp=認証トークンが無効です
+twofactor_enrolllink=<a href='$1'>Webmin Users</a>モジュールで2要素認証に登録できるようになりました。
+twofactor_url=$1の詳細については、Webサイト<a href='$2' target=_blank>$2</a>をご覧ください。
+twofactor_etotpmodule=2要素認証に必要なPerlモジュール<tt>$1</tt>はインストールされていません。 Webminの<a href='$2'>Perlモジュール</a>ページを使用してインストールします。
+twofactor_qrcode=Google認証システムアプリでシークレットコード$1を入力するか、以下のQRコードをスキャンします。
+twofactor_etotpid=無効なTOPT base32エンコードシークレット
+twofactor_esecret=秘密鍵は正確に16文字の長さで、文字と数字のみを含む必要があります
+twofactor_esession=セッションベース認証がアクティブでない限り、二要素認証は使用できません
+
+letsencrypt_title=証明書リクエストを暗号化しましょう
+letsencrypt_err=証明書を要求できませんでした
+letsencrypt_ecmds=Let's Encrypt clientコマンド<tt>certbot</tt>も<tt>python</tt>コマンドもシステムで見つかりませんでした
+letsencrypt_epythonmod=組み込みのLet's Encryptクライアントに必要なPythonモジュール$1がインストールされていません
+letsencrypt_epythonver=Pythonバージョンの取得に失敗しました：$1
+letsencrypt_epythonver2=Pythonバージョン$1以上が必要ですが、バージョン$2しかありません。
+letsencrypt_certbot=サーボット
+letsencrypt_edroot=Apache仮想ホスト$1にはドキュメントディレクトリがありません！
+letsencrypt_edom=ドメイン名がないか無効です
+letsencrypt_erenew=更新間隔の欠落または非数値
+letsencrypt_ewebroot=ウェブサイトのドキュメントディレクトリが存在しません
+letsencrypt_evhost=$1に一致する仮想ホストが見つかりませんでした
+letsencrypt_efull=予想される完全な証明書ファイル$1が見つかりませんでした
+letsencrypt_ecert=期待される証明書ファイル$1が見つかりませんでした
+letsencrypt_ekey=予期される秘密鍵ファイル$1が見つかりませんでした
+letsencrypt_doing=ウェブサイトのディレクトリ$2を使用して、$1の新しい証明書を要求します。
+letsencrypt_doingdns=DNS検証を使用して、$1の新しい証明書を要求しています。
+letsencrypt_failed=..リクエストに失敗しました：$1
+letsencrypt_done=..リクエストが成功しました！
+letsencrypt_show=新しい証明書と秘密鍵は、次のファイルに書き込まれました。
+letsencrypt_cert=SSL証明書
+letsencrypt_key=SSL秘密鍵
+letsencrypt_chain=連鎖CA証明書
+letsencrypt_webmin=新しい証明書とキーを使用するためのWebminの構成 ..
+letsencrypt_wdone=..完了！
+letsencrypt_eaccountkey=アカウントキーを生成できませんでした：$1
+letsencrypt_etiny=証明書の要求に失敗しました：$1
+letsencrypt_echain=チェーン証明書のダウンロードに失敗しました：$1
+letsencrypt_echain2=$1からダウンロードしたチェーン証明書は空です
+letsencrypt_ecsr=CSRの生成に失敗しました：$1
+letsencrypt_ekeygen=秘密鍵の生成に失敗しました：$1
+letsencrypt_enative=ネイティブのLet's Encryptクライアント（certbot）はこのシステムで以前に使用されたものであり、将来のすべての証明書要求に使用する必要があります
+letsencrypt_eacmedns=公式のLet's EncryptクライアントのみがDNSベースの検証をサポートします
+
+announce_hide=このお知らせを非表示
+alert_hide=アラートを非表示

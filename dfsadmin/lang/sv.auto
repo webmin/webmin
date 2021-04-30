@@ -1,0 +1,51 @@
+index_title=NFS-aktier
+index_add=Börja dela en ny katalog.
+index_dir=Directory
+index_clients=kunder
+index_everyone=Alla
+index_delete=Radera valda aktier
+index_none=Inga kataloger exporteras för närvarande med det här systemet.
+index_apply=Applicera förändringar
+index_applydesc=Klicka på den här knappen för att tillämpa den aktuella fildelningskonfigurationen. Detta kommer att göra alla kataloger listade ovan tillgängliga med de angivna alternativen.
+index_return=lista över aktier
+
+edit_title1=Redigera Dela
+edit_title2=Skapa Dela
+edit_header1=Dela detaljer
+edit_dir=Directory
+edit_desc=Beskrivning
+edit_ro=Skrivskyddad åtkomst
+edit_rw=Läs-skrivåtkomst
+edit_root=Root-åtkomst
+edit_none=Ingen
+edit_all=Alla värdar
+edit_listed=Listade värdar ..
+edit_header2=Aktieoptioner
+edit_nosub=Tillåter montering av undermappar?
+edit_nosuid=Tillåt setuid-filer?
+edit_des=Kunder måste använda DES?
+edit_kerberos=Kunder måste använda kerberos?
+edit_anon=Anonym användare
+edit_anon0=Inte inställd
+edit_anon1=Ingen åtkomst
+edit_aclok=Tillåt ACL: er?
+edit_public=WebNFS-aktie?
+edit_index=WebNFS-indexfil
+
+save_err=Det gick inte att spara delningen
+save_edirectory='$1' är inte ett giltigt katalognamn
+save_edirectory2=Katalogen '$1' finns inte
+save_erw=Du listade inga värdar att dela läs-skriva med
+save_ero=Du listade inga värdar att dela skrivskyddad med
+save_eroot=Du listade inga värdar att dela rot med
+save_ealready=Katalogen '$1' delas redan
+save_ehost=Värden "$1" finns inte
+
+acl_view=Kan redigera NFS-aktier?
+
+ecannot=Du får inte hantera NFS-aktier
+
+delete_err=Det gick inte att ta bort delningar
+delete_enone=Ingen vald
+
+restart_err=Det gick inte att tillämpa ändringar

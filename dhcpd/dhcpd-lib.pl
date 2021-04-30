@@ -70,7 +70,7 @@ sub tokenize_file
 {
 local $lines = 0;
 local ($line, $cmode);
-open(FILE, $_[0]);
+open(FILE, "<".$_[0]);
 while($line = <FILE>) {
 	# strip comments
 	$line =~ s/\r|\n//g;
@@ -958,7 +958,12 @@ sub get_pid_file
 {
 local $conf = &get_config();
 local $file = &find_value("pid-file-name", $conf);
-return $file || $config{'pid_file'};
+return $file if ($file);
+local @pids = split(/\s+/, $config{'pid_file'});
+foreach my $f (@pids) {
+	return $f if (-r $f);
+	}
+return $pids[0];
 }
 
 sub expand_ip_range
@@ -1010,6 +1015,24 @@ sub unlock_all_files
 foreach my $f (reverse(&get_all_config_files())) {
 	&unlock_file($f);
 	}
+}
+
+sub lookup_mac_vendor
+{
+my ($mac) = @_;
+if (!%mac_vendor_cache) {
+	%mac_vendor_cache = ();
+	my $lref = &read_file_lines(
+		$module_root_directory."/mac-vendor.txt", 1);
+	foreach my $l (@$lref) {
+		$l =~ s/#.*$//;
+		my ($pfx, $vendor, $desc) = split(/\t+/, $l);
+		$mac_vendor_cache{$pfx} = $vendor;
+		}
+	}
+$mac =~ s/://g;
+$mac = uc($mac);
+return $mac_vendor_cache{substr($mac, 0, 6)};
 }
 
 1;

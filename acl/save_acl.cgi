@@ -49,7 +49,9 @@ else {
 	# Validate and store ACL settings
 	&error_setup($text{'acl_err'});
 	my %maccess;
-	$maccess{'noconfig'} = $in{'noconfig'};
+	if (defined($in{'noconfig'})) {
+		$maccess{'noconfig'} = $in{'noconfig'};
+		}
 	if ($in{'rbac'}) {
 		# RBAC overrides everything
 		$maccess{'rbac'} = 1;

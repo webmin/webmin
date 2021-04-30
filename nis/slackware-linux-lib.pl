@@ -21,7 +21,7 @@ return $rv;
 sub get_client_config
 {
 local $nis;
-open(CONF, $config{'client_conf'});
+open(CONF, "<".$config{'client_conf'});
 while(<CONF>) {
 	s/\r|\n//g;
 	s/#.*$//g;
@@ -36,7 +36,7 @@ while(<CONF>) {
 		}
 	}
 close(CONF);
-if (open(DOMAIN, $default_domain)) {
+if (open(DOMAIN, "<".$default_domain)) {
 	chop($nis->{'domain'} = <DOMAIN>);
 	close(DOMAIN);
 	}
@@ -157,7 +157,7 @@ printf "<td><input name=mingid size=10 value='%s'></td> </tr>\n",
 	$var->{'MINGID'}->{'value'};
 
 print "<tr> <td><b>$text{'server_slaves'}</b></td>\n";
-open(SLAVES, "/var/yp/ypservers");
+open(SLAVES, "</var/yp/ypservers");
 while(<SLAVES>) {
 	s/\s//g;
 	push(@slaves, $_) if ($_);

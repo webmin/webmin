@@ -1,0 +1,37 @@
+index_title=Cluster Cron Jobs
+index_add=Стварыце новае заданне па кластэрным крон.
+index_none=Ніякіх задач кластарных крон не вызначана.
+index_servers=Запуск на серверах
+index_return=спіс працоўных месцаў кластарнага крона
+index_more=$1 больш ..
+index_run=Бяжы зараз ..
+index_actions=Дзеянні
+
+edit_title=Рэдагаваць працу Cluster Cron
+create_title=Стварыце Cluster Cron Job
+edit_servers=Запуск на серверах
+edit_group=Члены $1 
+edit_this=гэты сервер
+edit_all=&lt;Усе гаспадары&gt;
+edit_emissing=Праца ў Cron больш не існуе!
+
+save_err=Не атрымалася захаваць заданне кластарнага крона
+
+exec_title=Выканаць працу Cluster Cron
+exec_cmd=Запуск $1 на выбраных серверах ..
+exec_failed=Не атрымалася запусціць $1 : $2 
+exec_success=Выснова ад $1.
+exec_nohosts=Ні адзін хост, абраны для запуску, альбо выбраныя групы не ўтрымліваюць узроўняў, якія можна выкарыстоўваць.
+
+log_run=Ацаніў $1 на $2 серверах
+log_run_l=Узровень $1 на $2 
+log_create=Створаны кластарны заданне cron для $1 
+log_create_l=Створаны кластарны заданне cron $2 для $1 
+log_modify=Мадыфікаванае заданне кластара ў $1 
+log_modify_l=Мадыфікавана заданне кластара Cron $2 для $1 
+log_delete=Выдалены заданне cron cluster для $1 
+log_delete_l=Выдалены заданне cron cluster $2 для $1 
+log_deletes=Выдалены $1 заданні кластара
+
+delete_err=Не атрымалася выдаліць заданні cron cluster
+delete_enone=Ні адзін не абраны

@@ -1,0 +1,75 @@
+index_title=GRUB Boot Loader
+index_add=یک گزینه جدید boot اضافه کنید.
+index_global=گزینه های جهانی را ویرایش کنید
+index_globalmsg=گزینه های راه اندازی جهانی را که برای همه گزینه های منوی بوت اعمال می شود ، ویرایش کنید و دستگاهی را که GRUB روی آن نصب شده است ، انتخاب کنید.
+index_install=GRUB را نصب کنید
+index_installmsg=GRUB boot loader را در$1 نصب کنید تا گزینه های فوق در زمان راه اندازی نمایش داده شود. این باعث می شود هر بوت لودر موجود مانند LILO نادیده گرفته شود و سیستم شما را غیر قابل کنترل کند!
+index_none=هیچ گزینه boot تعریف نشده است. اطمینان حاصل کنید که حداقل یک مورد را قبل از نصب grub اضافه کنید.
+index_efile=پرونده منوی GRUB $1 در سیستم شما یافت نشد. شاید GRUB نصب نشده باشد ، یا <a href='$2'>پیکربندی ماژول</a> نادرست باشد.
+index_epath=GRUB اجرایی$1 در سیستم شما یافت نشد. شاید GRUB نصب نشده باشد ، یا <a href='$2'>پیکربندی ماژول</a> نادرست باشد.
+index_return=لیست گزینه ها
+
+title_add=گزینه Boot را اضافه کنید
+title_edit=گزینه Boot را ویرایش کنید
+title_header=جزئیات گزینه Boot menu
+title_title=عنوان گزینه
+title_root=پارتیشن تصویر بوت
+title_noverify=پارتیشن را سوار و تأیید نکنید
+title_other=پرونده دستگاه دیگر
+title_sel=انتخاب شد
+title_boot=سیستم عامل برای بوت شدن
+title_kernel=هسته
+title_kfile=مسیر به هسته
+title_args=گزینه های هسته
+title_initrd=پرونده ramdisk اولیه
+title_modules=ماژول های اضافی
+title_chain=سیستم عامل دیگر
+title_chain_def=از بخش اول پارتیشن
+title_chain_file=از پرونده زنجیره ای
+title_makeactive=پارتیشن ریشه را فعال کنید؟
+title_none1=هیچ یک
+title_none2=(ورود به منوی غیر بوت)
+title_err=گزینه بوت ذخیره نشد
+title_etitle=عنوان گزینه وجود ندارد
+title_eroot=پارتیشن ریشه ای موجود نیست
+title_ekernel=مسیر هسته وجود ندارد یا نامعتبر است
+title_echain=پرونده زنجیره بارگیر یا نامعتبر است
+title_edev=دستگاه تقسیم ریشه پشتیبانی نشده$1
+title_einitrd=نام اولیه ramdisk وجود ندارد
+title_lock=رمز عبور قفل شده است؟
+
+global_title=گزینه های جهانی
+global_header=گزینه های منوی بوت جهانی
+global_default=گزینه پیش فرض بوت
+global_fallback=گزینه Fallback boot
+global_first=اول در لیست
+global_timeout=زمان قبل از بارگیری پیش فرض
+global_forever=برای همیشه صبر کنید
+global_secs=ثانیه
+global_install=GRUB را بر روی دیسک/پارتیشن نصب کنید
+global_sel=انتخاب شد
+global_other=دیگر
+global_password=رمز عبور بوت
+global_none=هیچ یک
+global_password_file=در صورت وارد کردن گذرواژه از پرونده منو استفاده کنید:
+global_err=گزینه های جهانی ذخیره نشد
+global_etimeout=زمان بندی نامعتبر یا نامعتبر است
+global_edev=دیسک/پارتیشن نصب پشتیبانی نشده $1
+global_eother=دیسک/پارتیشن موجود نیست یا نامعتبر است
+global_epassword=رمز عبور بوت نشد یا نامعتبر است
+global_epasswordfile=نام منوی جایگزین موجود نیست
+
+install_title=GRUB را نصب کنید
+install_err=نصب GRUB انجام نشد
+install_efind=پرونده منو یافت نشد
+install_desc=نصب GRUB در$1 با دستورات $2 و$3 ..
+install_ok=.. نصب کامل.
+install_failed=.. نصب نشد!
+
+log_create_title=گزینه بوت $1 ایجاد شد
+log_delete_title=گزینه راه انداز$1 حذف شد
+log_modify_title=گزینه بوت اصلاح شده$1
+log_up_title=گزینه boot $1 منتقل شد
+log_down_title=گزینه پایین بوت $1 منتقل شد
+log_global=گزینه های جهانی تغییر یافته است
+log_install=GRUB نصب شده است

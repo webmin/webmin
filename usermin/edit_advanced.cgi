@@ -57,6 +57,10 @@ elsif ($preloads[0]->[0] eq "main" && $preloads[0]->[1] eq "web-lib-funcs.pl") {
 print &ui_table_row($text{'advanced_umask'},
 	    &ui_opt_textbox("umask", $uconfig{'umask'}, 5, $text{'default'}));
 
+# Sort config file's keys alphabetically
+print &ui_table_row($text{'advanced_sortconfigs'},
+	    &ui_yesno_radio("sortconfigs", $uconfig{'sortconfigs'}));
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 

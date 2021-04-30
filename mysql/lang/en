@@ -21,9 +21,11 @@ index_ever=The MySQL client program $1 does not appear to be the correct version
 index_nouser=Your Webmin account is configured to connect to the MySQL server as user $1, but this user has been denied access. 
 index_db=Database name
 index_tables=Tables
+index_indexes=Indexes
+index_views=Views
 index_elibrary=The MySQL client program $1 could not be run because it could not find the MySQL shared libraries. Check the <a href='$2'>module configuration</a> and make sure the <i>Path to MySQL shared libraries</i> is set.
-index_version=MySQL version $1
-index_version2=MySQL version $1 on $2
+index_version=$2 version $1
+index_version2=$3 version $1 on $2
 index_nomod=Warning: The Perl module $1 is not installed on your system, so Webmin will not be able to reliably access your MySQL database. <a href='$2'>Click here</a> to install it now.
 index_nomods=Warning: The Perl modules $1 and $2 are not installed on your system, so Webmin will not be able to reliably access your MySQL database. <a href='$3'>Click here</a> to install them now.
 index_mysqlver=The command <tt>$1</tt> returned :
@@ -201,6 +203,7 @@ view_none=This table contains no data.
 view_edit=Edit selected rows
 view_new=Add row
 view_delete=Delete selected rows
+view_refresh=Refresh
 view_nokey=Data in this table cannot be edited because it has no primary key.
 view_all=Select all
 view_invert=Invert selection
@@ -221,7 +224,8 @@ view_sorthead2=Sorting by $1, ascending order
 view_sortreset=Reset sort
 view_field=Field name
 view_data=New data
-view_jump=Jump to row :
+view_jump=Jump to row
+view_go=Go
 view_download=Download..
 view_keep=Leave unchanged
 view_set=Set to contents of file..
@@ -263,6 +267,7 @@ user_user=Username
 user_all=Anonymous user
 user_pass=Password
 user_leave=Don't change
+user_locked=Locked
 user_none=None
 user_any=Any
 user_set=Set to..
@@ -728,6 +733,7 @@ cnf_max_connections=Maximum number of connections
 cnf_query_cache_size=Query cache size in bytes
 cnf_equery_cache_size=Invalid query cache size
 cnf_table_cache=Tables to cache
+cnf_table_open_cache=Tables to cache
 cnf_sort_buffer=Sort buffer size
 cnf_sort_buffer_size=Sort buffer size
 cnf_net_buffer_length=Network buffer size
@@ -769,6 +775,7 @@ index_header=Index $1 in database $2
 index_ecannot=You are not allowed to manage indexes
 
 syslog_desc=MySQL error messages
+syslog_desc2=MySQL error message
 syslog_logdesc=MySQL queries
 
 fdrop_err=Failed to delete fields
@@ -854,4 +861,13 @@ root_epass1=No new password entered
 root_epass2=Passwords do not match
 root_none=No password!
 root_auto=Automatic (typically <tt>root</tt>)
+
+mysqlpass_err=MySQL safe mode
+mysqlpass_esafecmd=The command $1 needed to start MySQL with authentication disabled was not found
+mysqlpass_eshutdown=Shutdown failed : $1
+mysqlpass_esafe=Startup in safe mode failed : $1
+mysqlpass_estartup=Startup failed : $1
+mysqlpass_echange=Password change failed : $1
+mysqlpass_echange_forcepass=Force override the given password, if lost or forgotten
+
 __norefs=1

@@ -1,0 +1,17 @@
+index_title=Kerberos5配置
+index_econf=在系统上找不到Kerberos5配置文件 $1。可能未安装，或者<a href='$2'>模块配置</a>不正确。
+
+logging=日志文件
+default_log=默认日志文件
+kdc_log=KDC日志文件
+admin_log=管理服务器日志文件
+
+libdefaults=默认配置
+dns_kdc=使用DNS查找KDC
+default_realm=领域
+domain=域名
+default_kdc=KDC
+default_admin=管理服务器
+default_domain=默认域名
+
+save=更新配置

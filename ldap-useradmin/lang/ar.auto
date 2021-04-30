@@ -1,0 +1,103 @@
+index_title=مستخدمي ومجموعات LDAP
+index_ebase=لم يتم العثور على ملف تهيئة عميل LDAP على نظامك ، لذا يجب تعيين قواعد المستخدم والمجموعة في صفحة <a href='$1'>تهيئة الوحدة النمطية</a>.
+index_eperl=الوحدة النمطية$1 Perl التي تتطلبها هذه الوحدة النمطية غير مثبتة أو لا تعمل بشكل صحيح. <a href='$2'>انقر هنا</a> لتنزيله وتثبيته الآن.
+index_eperl2=كان الخطأ الذي أبلغ عنه Perl عند محاولة تحميل الوحدة النمطية هو :
+index_eldap=$1. انقر هنا لتعديل <a href='$2'>تهيئة الوحدة النمطية</a>.
+index_eschema=اتصل Webmin بخادم LDAP ، لكنه فشل في جلب المخطط. تأكد من عدم رفض الوصول في وحدة <a href='$1'>LDAP Server</a>.
+index_eimap=$1. ربما <a href='$2'>تهيئة الوحدة النمطية</a> غير صحيحة.
+index_emd5=تم <a href='$1'>تكوين هذه الوحدة النمطية</a> لاستخدام تشفير MD5 لكلمات المرور ، ولكن لم يتم تثبيت الوحدة النمطية$2 Perl. <a href='$3'>انقر هنا</a> لتنزيل وحدة$2 وتثبيتها.
+index_eslappasswd=تم <a href='$1'>تكوين هذه الوحدة النمطية</a> لاستخدام تشفير LDAP MD5 لكلمات المرور ، ولكن البرنامج <tt>$2</tt> المستخدم لتشفير كلمة المرور غير مثبت.
+index_eusearch=فشل البحث عن مستخدمين تحت $1 : $2 
+index_uadd=قم بإضافة مستخدم LDAP جديد.
+index_gadd=أضف مجموعة LDAP جديدة.
+index_unone=لم يتم العثور على مستخدمي LDAP تحت$1.
+index_gnone=لم يتم العثور على مجموعات LDAP تحت$1.
+index_return=قائمة المستخدم
+index_greturn=قائمة المجموعة
+index_egsearch=فشل البحث عن مجموعات تحت $1 : $2 
+index_samba=سامبا؟
+index_cyrus=الوصول عبر IMAP؟
+index_users=مستخدمو LDAP
+index_groups=مجموعات LDAP
+
+imap_econn=فشل الاتصال بخادم IMAP$1
+imap_elogin=فشل تسجيل الدخول إلى خادم IMAP $1 كـ $2 : $3 
+conn_eldap_host=لم يتم العثور على ملف تهيئة عميل LDAP على نظامك ، لذا يجب تعيين خادم LDAP على صفحة تهيئة الوحدة النمطية
+conn_elogin=لم يتم العثور على ملف تهيئة عميل LDAP على نظامك ، لذا يجب تعيين تسجيل دخول LDAP على صفحة تهيئة الوحدة النمطية
+conn_efile_open=تعذر فتح ملف بيانات اعتماد ربط LDAP:
+
+uedit_cap=قدرات المستخدم
+uedit_samba=تسجيل الدخول سامبا؟
+uedit_cyrus=تسجيل الدخول إلى خادم IMAP؟
+uedit_dn=الاسم المميز لـ LDAP للمستخدم
+uedit_classes=فئات كائن LDAP
+uedit_alias=الأسماء المستعارة للبريد
+uedit_fields=حقول LDAP إضافية
+uedit_firstname=الاسم الاول
+uedit_lastname=الكنية
+uedit_raw=سمات LDAP
+uedit_return=بيانات المستخدم
+uedit_quota=حصة IMAP
+uedit_unquota=لا تتغير
+uedit_sambapassopts=خيارات كلمة مرور سامبا
+uedit_sambapwdlastset=آخر تحديث لكلمة المرور
+uedit_sambapwdcanchange=يمكن تغيير كلمة المرور
+uedit_sambabadpasswordcount=عدد كلمات المرور غير صحيح
+uedit_sambaacctflags=أعلام الحساب
+
+usave_eadd=فشلت إضافة المستخدم إلى قاعدة بيانات LDAP :$1
+usave_emod=فشل تعديل المستخدم في قاعدة بيانات LDAP :$1
+usave_emoddn=فشل في إعادة تسمية المستخدم في قاعدة بيانات LDAP :$1
+usave_egroupmod=فشل تعديل المجموعة$1 في قاعدة بيانات LDAP :$2
+usave_edelete=فشل في حذف المستخدم من قاعدة بيانات LDAP :$1
+usave_eicreate=فشل إنشاء المستخدم
+usave_eiacl=فشل منح الحقوق للمشرف
+usave_eimap=تم حفظ المستخدم بنجاح في قاعدة بيانات LDAP ، ولكن حدث خطأ IMAP: $1 : $2 
+usave_eisub=فشل في اشتراك المستخدم في المجلد$1
+usave_eiquota=فشل تعيين حصة IMAP
+usave_eifolder=فشل في إنشاء المجلد$1
+usave_eilogin=فشل تسجيل الدخول كمستخدم جديد
+usave_ecyruspass=يجب إدخال كلمة المرور العادية للمستخدم أو تحديد الخيار "لا كلمة المرور المطلوبة" عند تمكين IMAP.
+usave_ebook=فشل في إنشاء إدخال دفتر العناوين :$1
+usave_emodbook=فشل تعديل إدخال دفتر العناوين :$1
+usave_emodbookdn=فشل في إعادة تسمية إدخال دفتر العناوين :$1
+usave_egone=المستخدم لم يعد موجودًا!
+usave_ex86=لا يمكن استخدام هذه الوحدة لتعيين كلمة المرور لمستخدم Samba على أنظمة غير Intel ، لأنها تعتمد على برنامج x86 مترجم.
+usave_esamba=لا يمكن استخدام هذه الوحدة لتعيين كلمة المرور لمستخدم Samba ، لأن وحدة Samba Windows File Sharing غير مثبتة.
+usave_ealiasdup=الاسم المستعار$1 مستخدم بالفعل من قبل$2
+usave_eattrdup=الكائن$1 يستخدم بالفعل$2 $3
+usave_eattrdupu=المستخدم$1 يستخدم بالفعل$2 $3
+usave_eattrdupg=تستخدم المجموعة$1 بالفعل$2 $3
+usave_ereal=الاسم الحقيقي مفقود
+usave_equota=حصة IMAP مفقودة أو غير صالحة
+
+search_err=فشل البحث عن$1 ضمن $2 : $3 
+
+gedit_dn=مجموعة LDAP DN
+gedit_return=تفاصيل المجموعة
+gedit_cap=قدرات المجموعة
+gedit_samba=مجموعة سامبا؟
+
+gsave_egone=المجموعة لم تعد موجودة!
+gsave_edelete=فشل في حذف المجموعة من قاعدة بيانات LDAP :$1
+gsave_eadd=فشل في إضافة مجموعة إلى قاعدة بيانات LDAP :$1
+gsave_emod=فشل تعديل المجموعة في قاعدة بيانات LDAP :$1
+gsave_emoddn=فشل في إعادة تسمية المجموعة في قاعدة بيانات LDAP :$1
+
+gdel_group=حذف إدخال مجموعة LDAP ..
+
+udel_pass=حذف إدخال مستخدم LDAP ..
+udel_book=جاري الحذف من دفتر العناوين ..
+udel_imap=جارٍ حذف مجلد IMAP ..
+udel_warnimap=سيتم حذف صندوق بريد البريد الحالي عند حذف الدليل الرئيسي!
+udel_failed=.. فشل!  :$1
+
+raw_title=سمات LDAP
+raw_name=اسم السمة
+raw_value=القيم
+raw_for=ل 1
+
+batch_samba=إنشاء حساب سامبا للمستخدمين الجدد؟
+batch_imap=هل تريد إنشاء حساب IMAP للمستخدمين الجدد؟
+batch_descafter3=في <b>إنشاء</b> و <b>تعديل</b> خطوط ، يمكنك بشكل اختياري إلحاق حقول إضافية تحتوي على سمات LDAP بتنسيق <i>name</i> = <i>value</i> ، إلى يتم تعيينها للمستخدمين الجدد أو المعدلين.
+batch_eattr=سمة LDAP غير صالحة في السطر $1 : $2 

@@ -1,0 +1,115 @@
+index_title=Lokitiedoston kierto
+index_econf=Lokin rotaation määritystiedostoa $1 ei löydy järjestelmästäsi. Ehkä logrotatea ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
+index_ecmd=Lokin kierto-ohjelmaa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin kokoonpano</a> on väärä.
+index_eversion=Logrotate-version hakeminen komennolla $1 epäonnistui : $2 
+index_version=Logrotate-versio $1 
+index_add=Lisää uusi lokitiedosto kiertääksesi.
+index_file=Loki tiedosto
+index_period=Kiertoaika
+index_post=Kiertoajan jälkeinen komento
+index_none=Lokitiedostoja ei ole vielä määritetty.
+index_global=Muokkaa yleisiä asetuksia
+index_globaldesc=Napsauta tätä painiketta, jos haluat muokata kaikkia lokitiedostoja koskevaa asetusta ja määrittää lokien oletusasetukset.
+index_sched=Muokkaa aikataulua
+index_scheddesc=Napsauta tätä painiketta, jos haluat muokata aikataulua, jolla Cron käyttää logrotatea, tai ottaa sen käyttöön tai poistaa sen käytöstä.
+index_nocmd=Ei mitään
+index_notset=Ei valittu
+index_return=lokitiedostoluettelo
+index_force=Pakota lokin kierto
+index_forcedesc=Pakota kaikkien lokitiedostojen välitön kierto, vaikka se ei olisi vielä aika.
+index_logrotate=logrotate
+index_delete=Poista valitut lokin rotaatiot
+
+period_daily=Päivittäin
+period_weekly=Viikoittain
+period_monthly=Kuukausittain
+period_never=Ei koskaan
+period_bytes=tavua
+
+edit_title1=Muokkaa lokitiedostoa
+edit_title2=Luo lokitiedosto
+edit_header=Lokitiedoston käännetyt tiedot
+edit_file=Lokitiedostopolut
+edit_sched=Kiertoaikataulu
+edit_rotate=Säilytettävien vanhojen lokien lukumäärä
+edit_compress=Pakkaako vanhat lokitiedostot?
+edit_delaycompress=Viivästytä pakkausta seuraavaan jaksoon asti?
+edit_copytruncate=Katkaise lokitiedosto paikallaan?
+edit_ifempty=Kierrä, vaikka lokitiedosto olisi tyhjä?
+edit_missingok=Ohita lokitiedosto, jos puuttuu?
+edit_size=Enimmäiskoko ennen kiertämistä
+edit_always=huomiotta
+edit_minsize=Minimikoko pyöritettäväksi
+edit_nominsize=Aina
+edit_ext=Laajennus käännetyille tiedostonimille
+edit_dateext=Käytä päivämäärän laajennusta kiertäviin tiedostoihin
+edit_mail=Lokitiedosto sähköpostitse ennen poistamista?
+edit_mailto=Kyllä, osoitteeseen
+edit_mailno=Ei, älä lähetä sähköpostia
+edit_mailfl=Lokitiedosto sähköpostiin
+edit_mailfirst=Uusin, jota juuri käännettiin
+edit_maillast=Vanhin, joka poistetaan
+edit_create=Luoko lokitiedosto uudelleen kiertämisen jälkeen?
+edit_createas=Kyllä, tilassa $1 ja käyttäjän $2 ja ryhmän $3 omistama
+edit_createno=Ei, älä luo uudelleen
+edit_createsame=Kyllä, vanhoilla luvilla
+edit_olddir=Tallenna vanhat kääntyneet logit sisään
+edit_olddirto=hakemisto
+edit_olddirsame=Sama hakemisto kuin lokitiedosto
+edit_errors=Lähetä virheilmoitukset sähköpostitse
+edit_errorsno=ei kukaan
+edit_errorsto=Osoite tai käyttäjä
+edit_post=Komennot ajaa kiertämisen jälkeen
+edit_pre=Komennot ajaa ennen kiertoa
+edit_default=Oletus ($1)
+edit_sharedscripts=Suoritako kaikkien tiedostojen skriptit vain kerran?
+edit_now=Kierrä nyt
+
+global_title=Globaalit vaihtoehdot
+global_header=Kaikkien lokitiedostojen oletusasetukset
+
+save_err=Lokin tallentaminen epäonnistui
+save_efile=Puuttuva tai virheellinen lokitiedostonimi
+save_esize=Puuttuva tai virheellinen enimmäiskoko
+save_eminsize=Puuttuva tai virheellinen minimikoko
+save_erotate=Puuttuva tai virheellinen säilytettävien vanhojen lokien enimmäismäärä
+save_ecreatemode=Puuttuva tai virheellinen 3 tai 4 numeroinen oktaalimooditila
+save_ecreateuser=Puuttuva tai virheellinen luomisen käyttäjä
+save_ecreategroup=Puuttuva tai virheellinen luomisryhmä
+save_emust1=Sinun on siirryttävä luontitilaan, kun syötät luomuksen käyttäjää
+save_emust2=Sinun on annettava luomuksen käyttäjä syöttäessäsi luomisryhmää
+save_eolddirto=Puuttuva tai virheellinen hakemisto vanhoille kääntyneille lokille
+save_eext=Puuttuva käännös lokitiedostonimistä
+save_emailto=Puuttuu sähköpostiosoite kierretyille lokille
+save_eerrors=Puuttuu sähköpostiosoite virheilmoituksista
+save_epre=Esikiertoa edeltävä komentosarja ei voi sisältää <tt>loppukirjoitusta</tt> tai <tt>endrotate</tt> -riviä
+save_epost=Kiertämisen jälkeinen komentosarja ei voi sisältää riviä <tt>loppukirjoitus</tt> tai <tt>endrotate</tt>
+save_enofiles=Ei annettu kiertäviä tiedostoja
+
+log_modify_sched=Muutettu lokin kierto Cron-työ
+log_create_sched=Luotu lokin kierto Cron-työ
+log_delete_sched=Poistettu lokin kierto Cron-työ
+log_global=Muokatut globaalit vaihtoehdot
+log_create=Lisätty lokitiedoston rotaatio $1 
+log_modify=Lokitiedoston $1 muutettu rotaatio
+log_delete=Lokitiedoston $1 kierto on poistettu
+log_delete_logs=Poistettu kierto $1 lokitiedostoille
+
+sched_title=Lokien kiertoaikataulu
+sched_desc=Tämän moduulin avulla määritetty lokin kierto suoritetaan, Cron suorittaa komennon $1 säännöllisessä aikataulussa (yleensä päivittäin).
+sched_runparts=Lokin kierto-komentoa ajataan tällä hetkellä komentosarjasta $1 $2, eikä sitä voida säätää.
+sched_sched=Lokien kierto cron -työ
+sched_disabled=Liikuntarajoitteinen
+sched_enabled=Käytössä, ajoittain alla ..
+sched_save=Päivitä Cron Job
+sched_err=Kiertoaikataulun tallentaminen epäonnistui
+sched_when=Ajat juosta
+
+force_title=Pakota lokin kierto
+force_doing=Kaikkien lokitiedostojen välittömän kiertämisen pakottaminen ..
+force_doingone=Yhden lokitiedoston välitön kierto pakotetaan ..
+force_done=.. valmis.
+force_failed=.. epäonnistui! Katso syy miksi yllä olevassa tuotossa.
+
+delete_err=Lokien poistaminen epäonnistui
+delete_enone=Mitään ei ole valittu

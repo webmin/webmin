@@ -1,0 +1,9 @@
+conn_efile_open=Kan het LDAP-bindreferentiesbestand niet openen:
+
+uedit_sambapassopts=Samba-wachtwoordopties
+uedit_sambapwdlastset=Laatste wachtwoordupdate
+uedit_sambapwdcanchange=Wachtwoord kan veranderen
+uedit_sambabadpasswordcount=Aantal ongeldige wachtwoorden
+uedit_sambaacctflags=Accountvlaggen
+
+batch_imap=IMAP-account aanmaken voor nieuwe gebruikers?

@@ -1,0 +1,152 @@
+index_title=PPTP VPNサーバー
+index_version=PoPToPバージョン $1
+index_epptpd=PoPToP PPTPサーバー $1がシステムで見つからなかったか、適切なプログラムではありません。インストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
+index_econfig=PPTPサーバー構成ファイル $1がシステムに見つかりませんでした。 <a href='$2'>モジュール設定</a>が間違っている可能性があります。
+index_stop=PPTPサーバーを停止する
+index_stopdesc=このボタンをクリックして、実行中のPPTPサーバープロセスをシャットダウンし、新しい接続が受け入れられないようにします。ただし、既存のVPN接続はアクティブのままです。
+index_start=PPTPサーバーを起動する
+index_startdesc=このボタンをクリックしてPPTPサーバープロセスを起動し、クライアントからVPN接続を受信できるようにします。
+index_apply=設定を適用
+index_applydesc=このボタンをクリックして、PPTPサーバープロセスを停止して再起動することにより、現在のPPTPサーバーオプションを適用します。 PPPオプションとPPPアカウントの変更は、新しい接続に常に適用されます
+index_return=モジュールインデックス
+index_epppd=PPPサーバープログラム $1がシステムにインストールされていません。 PPTPは、その動作に依存しています。
+
+conf_title=PPTPサーバーオプション
+conf_ecannot=PPTPサーバーオプションを編集することはできません
+conf_header=PPTPサーバーの構成
+conf_speed=PPPボーレート
+conf_baud=bps
+conf_listen=アドレスを聞く
+conf_all=すべての住所
+conf_localip=サーバー接続のIPアドレス
+conf_remoteip=クライアントに割り当てるIPアドレス
+conf_ipxnets=割り当てるIPXネットワーク
+conf_from=から
+conf_to=に
+conf_option=PPPオプションファイル
+conf_mode0=全体設定
+conf_mode1=PPTP固有の設定
+conf_mode2=カスタムファイル
+conf_ipdesc=両方の範囲のIPアドレスは、単独で（192.168.1.1など）または範囲として（192.168.2.32-64など）入力できます。
+conf_err=サーバーオプションを保存できませんでした
+conf_espeed=ボーレートが欠落しているか無効です
+conf_elisten=リッスンするアドレスがないか無効です
+conf_eoption=カスタムPPPオプションファイルが見つからないか無効に見える
+conf_elocalip=「$1」は有効なローカルIPアドレスまたは範囲ではありません
+conf_eremoteip=「$1」は有効なリモートIPアドレスまたは範囲ではありません
+conf_efrom=アドレスからIPXネットワークが欠落しているか無効です
+conf_eto=アドレス指定するIPXネットワークがないか、無効です
+
+options_title=PPPオプション
+options_ecannot=PPPオプションを編集することはできません
+options_desc0=以下の $1からのPPPオプションは、ダイヤルアップモデムへの接続を含む、システムが受信するすべての着信接続に適用されます。
+options_desc1=以下の $1からのPPPオプションは、すべてのPPTP接続にのみ適用されます。
+options_desc2=これらは、このフォームが保存された後に確立された新しい接続で使用されます。
+options_header=PPP接続オプション
+options_proxyarp=プロキシARPエントリを作成しますか？
+options_lock=PTYデバイスファイルをロックしますか？
+options_auth=認証が必要ですか？
+options_auth0=いいえ、ただしルーティングされたIPを防ぎます
+options_auth1=決して
+options_auth2=常に
+options_login=UNIX認証も行いますか？
+options_pap=PAP認証
+options_chap=CHAP認証
+options_req=使用する必要があります
+options_all=使用できます
+options_ref=使用できません
+options_name=認証用のサーバー名
+options_hn=実際のホスト名
+options_mtu=最大送信パケットサイズ
+options_mru=最大受信パケットサイズ
+options_err=PPPオプションを保存できませんでした
+options_emtu=最大送信パケットサイズがないか、無効です
+options_emru=最大受信パケットサイズがないか、無効です
+options_ename=認証用のサーバー名が欠落しているか無効です
+options_version=PPPdバージョン $1
+options_msdesc=以下のオプションは、Windows VPNクライアントがデフォルトで使用するMS-CHAP認証方法とMPPE暗号化を有効にします。ただし、MPPEでは、PPPデーモンとオペレーティングシステムカーネルの両方でのサポートが必要です。
+options_mschap=MS-CHAP認証
+options_mschap-v2=MS-CHAPバージョン2認証
+options_chapms=MS-CHAP認証
+options_chapms-v2=MS-CHAPバージョン2認証
+
+secrets_title=PPPアカウント
+secrets_ecannot=PPPアカウントの編集は許可されていません
+secrets_return=インデックス
+secrets_none=PPPアカウントはまだ作成されていません。
+secrets_enopfile=PPPパスワードファイル $1はシステムに存在しません。 PPPがインストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
+secrets_table=$1のPPPアカウント
+secrets_user=ユーザー名
+secrets_ips=IPアドレス
+secrets_uany=どれか
+secrets_sany=どれか
+secrets_create=新しいPPPアカウントを作成します。
+secrets_desc=このページにリストされているPPPアカウントは、 $3認証に使用されるファイル $1から取得されます。サーバー $2のアカウントのみが表示され、発信接続を行うためのアカウントは表示されません。
+secrets_delete=選択したPPPアカウントを削除
+
+edit_secret_etitle=PPPアカウントを編集
+edit_secret_ctitle=PPPアカウントを作成する
+edit_secret_acc=PPPアカウント
+edit_secret_user=ユーザー名
+edit_secret_serv=サーバ
+edit_secret_sany=どれか
+edit_secret_uany=どれか
+edit_secret_pass=パスワード
+edit_secret_none=なし
+edit_secret_ffile=ファイルから
+edit_secret_leave=そのままにしておきます
+edit_secret_setto=に設定
+edit_secret_vaddr=有効な住所
+edit_secret_aany=許可する
+edit_secret_anone=許可しない
+edit_secret_alist=リストに許可します。
+edit_secret_save=セーブ
+edit_secret_del=削除する
+edit_secret_return=アカウントリスト
+
+save_secret_esave=アカウントを保存できませんでした
+save_secret_enoip=「$1」は有効な住所ではありません
+
+stop_err=PPTPサーバーを停止できませんでした
+stop_egone=もう走っていない
+stop_ecannot=PPTPサーバーを停止することはできません
+
+start_err=PPTPサーバーの起動に失敗しました
+start_ecannot=PPTPサーバーを起動することはできません
+
+apply_err=PPTPサーバーの再起動に失敗しました
+apply_ecannot=PPTPサーバーを再起動することはできません
+
+conns_title=アクティブな接続
+conns_ecannot=アクティブな接続を管理することはできません
+conns_desc=このページには、サーバーへの現在アクティブなPPTP接続が一覧表示されます。強制的に切断するには、インターフェース名をクリックします。
+conns_iface=PPPインターフェース
+conns_client=クライアントアドレス
+conns_stime=から接続しました
+conns_local=サーバーVPNアドレス
+conns_remote=クライアントVPNアドレス
+conns_none=現時点では、アクティブなPPTP接続はありません。
+conns_unknown=わからない
+conns_user=ユーザー名
+
+disc_err=切断できませんでした
+disc_egone=接続はアクティブではありません
+disc_ekill=プロセスはもう実行されていません
+
+log_secret_create=PPPアカウント $1を作成しました
+log_secret_modify=変更されたPPPアカウント $1
+log_secret_delete=PPPアカウント $1を削除しました
+log_deletes=$1 PPPアカウントを削除しました
+log_conf=変更されたPPTPサーバーオプション
+log_options=変更されたPPPオプション
+log_disc=切断されたクライアント $1
+log_start=PPTPサーバーを起動しました
+log_stop=停止したPPTPサーバー
+log_apply=適用されたPPTPサーバー構成
+
+acl_conf=構成を編集できますか？
+acl_options=オプションを編集できますか？
+acl_secrets=PPTPアカウントを管理できますか？
+acl_conns=接続を表示できますか？
+acl_stop=PPTPサーバーを停止および起動できますか？
+acl_apply=構成を適用できますか？

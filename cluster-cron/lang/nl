@@ -1,32 +1,36 @@
-__norefs=1
-create_title=Cluster Cron Taak Aanmaken
-delete_enone=Niets geselecteerd
-delete_err=Mislukt om cluster cron taken te verwijderen
-edit_all=&lt;Alle hosts&gt;
-edit_group=Leden van $1
-edit_servers=Uitvoeren op servers
-edit_this=deze server
+index_title=Cluster Cron Taken
+index_add=Nieuwe cluster cron taak aanmaken.
+index_none=Er zijn geen cluster cron taken gedefinieerd.
+index_servers=Uitvoeren op servers
+index_return=cluster cron taken lijst
+index_more=$1 meer ..
+index_run=Nu uitvoeren..
+index_actions=Acties
+
 edit_title=Bewerk Cluster Cron Taak
+create_title=Cluster Cron Taak Aanmaken
+edit_servers=Uitvoeren op servers
+edit_group=Leden van $1
+edit_this=deze server
+edit_all=&lt;Alle hosts&gt;
+
+save_err=Mislukt om cluster cron taak op te slaan
+
+exec_title=Cluster Cron Taak Uitvoeren
 exec_cmd=Bezig met uitvoeren van $1 op geselecteerde servers ..
 exec_failed=Uitvoeren mislukt op $1: $2
-exec_nohosts=Geen hosts geselecteerd om de taak op uit te voeren, of de geselecteerde groepen bevatten geen bruikbare hosts.
 exec_success=Resultaat van $1 ..
-exec_title=Cluster Cron Taak Uitvoeren
-index_actions=Acties
-index_add=Nieuwe cluster cron taak aanmaken.
-index_more=$1 meer ..
-index_none=Er zijn geen cluster cron taken gedefinieerd.
-index_return=cluster cron taken lijst
-index_run=Nu&nbsp;uitvoeren..
-index_servers=Uitvoeren op servers
-index_title=Cluster Cron Taken
+exec_nohosts=Geen hosts geselecteerd om de taak op uit te voeren, of de geselecteerde groepen bevatten geen bruikbare hosts.
+
+log_run=$1 uitgevoerd op $2 servers
+log_run_l=$1 uitgevoerd op $2
 log_create=Cluster cron taak aangemaakt voor $1
 log_create_l=Cluster cron taak $2 aangemaakt voor $1
+log_modify=Cluster cron taak aangepast voor $1
+log_modify_l=Cluster cron taak $2 aangepast voor $1
 log_delete=Cluster cron taak verwijderd voor $1
 log_delete_l=Cluster cron taak $2 verwijderd voor $1
 log_deletes=$1 cluster cron taak verwijdert
-log_modify=Cluster cron taak aangepast voor $1
-log_modify_l=Cluster cron taak $2 aangepast voor $1
-log_run=$1 uitgevoerd op $2 servers
-log_run_l=$1 uitgevoerd op $2
-save_err=Mislukt om cluster cron taak op te slaan
+
+delete_err=Mislukt om cluster cron taken te verwijderen
+delete_enone=Niets geselecteerd

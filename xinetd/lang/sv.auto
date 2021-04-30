@@ -1,0 +1,15 @@
+index_none=Inga nätverkstjänster har definierats än.
+index_estart=Kommandot att starta Xinetd $1 finns inte. Kanske är den inte installerad eller så är din <a href='$2'>modulkonfiguration</a> felaktig.
+index_noport=Okänd
+index_enable=Aktivera vald
+index_disable=Inaktivera vald
+
+restart_epid=Kör inte längre
+
+log_enable=Aktiverad $1 -tjänster
+log_disable=Inaktiverade $1 -tjänster
+log_enable_l=Aktiverade tjänster $1 
+log_disable_l=Inaktiverade tjänster $1 
+
+config_dirdef=Xinetd konfigurationsfil
+config_dirto=Ny fil i katalogen

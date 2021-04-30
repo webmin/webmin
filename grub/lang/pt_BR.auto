@@ -1,0 +1,75 @@
+index_title=Carregador de Inicialização GRUB
+index_add=Adicione uma nova opção de inicialização.
+index_global=Editar opções globais
+index_globalmsg=Edite as opções globais de inicialização que se aplicam a todas as opções do menu de inicialização e escolha o dispositivo em que o GRUB está instalado.
+index_install=Instale o GRUB
+index_installmsg=Instale o carregador de inicialização GRUB no $1 para exibir as opções acima no momento da inicialização. Isso substituirá qualquer carregador de inicialização existente, como o LILO, e poderá tornar seu sistema não inicializável!
+index_none=Nenhuma opção de inicialização foi definida. Certifique-se de adicionar pelo menos um antes de instalar o grub.
+index_efile=O arquivo de menu do GRUB $1 não foi encontrado no seu sistema. Talvez o GRUB não esteja instalado ou a <a href='$2'>configuração do módulo</a> esteja incorreta.
+index_epath=O executável do GRUB $1 não foi encontrado no seu sistema. Talvez o GRUB não esteja instalado ou a <a href='$2'>configuração do módulo</a> esteja incorreta.
+index_return=lista de opções
+
+title_add=Adicionar opção de inicialização
+title_edit=Editar opção de inicialização
+title_header=Detalhes da opção do menu Boot
+title_title=Título da opção
+title_root=Partição de imagem de inicialização
+title_noverify=Não monte e verifique a partição
+title_other=Outro arquivo de dispositivo
+title_sel=Selecionado
+title_boot=Sistema operacional para inicializar
+title_kernel=Núcleo
+title_kfile=Caminho para o kernel
+title_args=Opções de kernel
+title_initrd=Arquivo ramdisk inicial
+title_modules=Módulos extras
+title_chain=Outro SO
+title_chain_def=Do primeiro setor de partição
+title_chain_file=Do arquivo chainloader
+title_makeactive=Tornar a partição raiz ativa?
+title_none1=Nenhum
+title_none2=(entrada de menu sem inicialização)
+title_err=Falha ao salvar a opção de inicialização
+title_etitle=Título da opção ausente
+title_eroot=Partição raiz ausente
+title_ekernel=Caminho do kernel ausente ou inválido
+title_echain=Arquivo de carregador de cadeia ausente ou inválido
+title_edev=Dispositivo de partição raiz não suportado $1 
+title_einitrd=Nome de arquivo ramdisk inicial ausente
+title_lock=Senha bloqueada?
+
+global_title=Opções Globais
+global_header=Opções globais do menu de inicialização
+global_default=Opção de inicialização padrão
+global_fallback=Opção de inicialização de fallback
+global_first=Primeiro na lista
+global_timeout=Tempo limite antes de carregar o padrão
+global_forever=Esperar para sempre
+global_secs=segundos
+global_install=Instale o GRUB no disco/partição
+global_sel=Selecionado
+global_other=De outros
+global_password=Senha de inicialização
+global_none=Nenhum
+global_password_file=Use o arquivo de menu se a senha for digitada:
+global_err=Falha ao salvar opções globais
+global_etimeout=Tempo limite ausente ou inválido
+global_edev=Disco/partição de instalação não suportada $1 
+global_eother=Disco/partição ausente ou inválida
+global_epassword=Senha de inicialização ausente ou inválida
+global_epasswordfile=Nome de arquivo do menu alternativo ausente
+
+install_title=Instale o GRUB
+install_err=Falha ao instalar o GRUB
+install_efind=Não foi possível encontrar o arquivo de menu
+install_desc=Instalando o GRUB no $1 com os comandos $2 e $3 ..
+install_ok=.. instalar completo.
+install_failed=.. instalação falhou!
+
+log_create_title=Opção de inicialização criada $1 
+log_delete_title=Opção de inicialização excluída $1 
+log_modify_title=Opção de inicialização modificada $1 
+log_up_title=Movida a opção de inicialização $1 
+log_down_title=Movido para baixo a opção de inicialização $1 
+log_global=Opções globais alteradas
+log_install=GRUB instalado

@@ -1,0 +1,70 @@
+index_title_v=Firewall IPv4
+index_title_v6=Firewall IPv6
+index_evalid=ATENÇÃO! Sua configuração atual de tabelas de IP é inválida : $1 
+index_no_comment=
+index_crename=Renomear cadeia
+index_cmovesel=Mover selecionado
+index_unapply2=Salvar configuração
+index_unapply2desc=Clique neste botão para salvar a configuração acima no arquivo de configuração permanente do firewall.
+index_firewalld=Parece que o FirewallD está sendo usado para gerar o firewall do seu sistema. Talvez você deva usar o <a href='$1'>módulo FirewallD</a>.
+index_fail2ban=Parece que o Fail2Ban está sendo usado para gerenciar algumas regras de firewall. Você deve modificá-los com o <a href='$1'>módulo Fail2Ban</a> e filtrar <a href=$2>f2b -. *</a> ou <a href=$2>fail2ban -. *</a>.
+index_filter_chain=não é gerenciado pelo firewall.
+index_filter_nodirect=Regras gerenciadas externas detectadas. Ative "<a href=$1>Edite diretamente regras de firewall"</a> ou suas regras de firewall podem quebrar.
+index_ipset=Conjunto de IP
+index_ipset_title=Conjuntos de IP ativos que podem ser usados pelas regras de firewall
+index_ipset_name=Nome do conjunto de IP
+index_ipset_type=Tipo
+index_ipset_elem=# Elementos
+index_ipset_maxe=# Max
+index_ipset_size=Tamanho
+index_ipvxmode=Alterar a versão do protocolo IP:
+index_ipvx4=IPv4
+index_ipvx6=IPv6
+
+desc_icmpv6-type=O tipo de ICMP é $1 
+desc_icmpv6-type!=O tipo de ICMP não é $1 
+desc_ctstate=o estado da conexão é $1 
+desc_ctstate!=estado da conexão não é $1 
+desc_physdev-in=interface física de entrada é $1 
+desc_physdev-in!=interface física de entrada não é $1 
+desc_physdev-out=interface física de saída é $1 
+desc_physdev-out!=interface física de saída não é $1 
+desc_args--match-set=$2 está contido no conjunto de IP $1 
+desc_src=fonte
+desc_dest=destino
+
+redhat_einstalled=Nenhuma ação de inicialização <tt>iptables (6)</tt> foi encontrada, indicando que o pacote IPtables não está instalado no seu sistema
+
+edit_state_snat=NATd de origem
+edit_state_dnat=NATd de destino
+edit_physdevin=Interface física de entrada
+edit_physdevout=Interface física de saída
+edit_physdevisin=Pacote recebido na interface de ponte
+edit_physdevisout=Saída de pacotes na interface de ponte
+edit_physdevisbridged=Pacote está sendo ponte
+
+save_ephysdevin=Interface física de entrada ausente ou inválida
+save_ephysdevout=Interface física de saída ausente ou inválida
+
+log_rename_chain=Cadeia renomeada $1 na tabela $2 
+log_movesel_chain=$3 regras foram movidas da cadeia $1 na tabela $2 
+log_openports=Portas de firewall abertas $1 
+
+add_enone=Nenhum servidor para adicionar selecionado!
+
+move_title=Regras de movimentação
+move_count=Regras selecionadas
+move_chain=Mudança atual
+move_dest=Cadeia de destino
+move_ok=Mexa-se agora
+move_header=Opções de movimentação de regras
+
+rename_title=Renomear cadeia
+rename_count=Regras em cadeia
+rename_chain=Nome atual
+rename_name=Novo nome
+rename_ok=Renomear agora
+rename_header=Opções de renomeação de cadeia
+rename_adjust=Modificar outras regras que saltam para essa cadeia?
+rename_none=Nenhum
+rename_ecannot=Você não tem permissão para renomear cadeias

@@ -1,0 +1,39 @@
+index_title=Exportations NFS
+index_add=Ajouter une nouvelle exportation NFS
+index_dir=Annuaire
+index_hosts=Hôtes autorisés
+index_all=Tous les hôtes
+index_none=Aucune exportation NFS n'a encore été définie.
+index_apply=Appliquer la configuration
+index_applydesc=Cliquez sur ce bouton pour activer toutes les exportations répertoriées ci-dessus, avec leurs options configurées.
+index_return=liste des exportations
+
+edit_title1=Créer une exportation
+edit_title2=Modifier l'exportation
+edit_header=Détails sur l'exportation
+edit_dir=Répertoire à exporter
+edit_hosts=Exporter vers des hôtes/netgroups
+edit_ro=Lecture seulement?
+edit_wsync=Synchroniser après les écritures?
+edit_anon=Autorisations des utilisateurs root
+edit_anon1=Par défaut (traiter comme <tt>personne</tt>)
+edit_anon2=Refuser l'accès
+edit_anon0=Traiter comme un utilisateur
+edit_rw=Accès en lecture/écriture
+edit_root=Accès au fichier racine
+edit_access=Accès au mont
+edit_all=Tous les hôtes
+edit_sel=Hôtes répertoriés ..
+edit_none=Aucun hôte
+
+save_err=Échec de l'enregistrement de l'exportation
+save_edir=Répertoire manquant ou inexistant à exporter
+save_eanon=Utilisateur root manquant ou non valide
+save_erw=Aucun hôte en lecture-écriture entré
+save_eroot=Aucun hôte d'accès au fichier racine saisi
+save_eaccess=Aucun hôte d'accès au montage entré
+
+log_create_export=Exportation créée de $1 
+log_delete_export=Exportation supprimée de $1 
+log_modify_export=Exportation modifiée de $1 
+log_apply=Configuration appliquée

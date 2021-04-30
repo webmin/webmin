@@ -1,0 +1,192 @@
+index_version=Versione Samba $1 
+index_samba=Samba
+
+index_start_wb=Avviare i server Winbind
+index_startmsg_wb=I server Winbind non sembrano essere in esecuzione sul sistema.
+index_restart_wb=Riavvia i server Winbind
+index_restartmsg_wb=Fare clic su questo pulsante per riavviare i server Winbind in esecuzione sul sistema.
+index_stop=Arresta i server Samba
+index_stop_wb=Arresta i server Winbind
+index_stopmsg=Fare clic su questo pulsante per chiudere i server Samba in esecuzione sul sistema. Tutti gli utenti attualmente connessi verranno disconnessi forzatamente.
+index_stopmsg_wb=Fare clic su questo pulsante per chiudere i server Winbind in esecuzione sul sistema.
+index_einclude=Avviso: il file di configurazione Samba $1 contiene la direttiva $2 o $3. Ciò può causare Webmin per modificare il file in modo errato.
+index_delete=Elimina le condivisioni selezionate
+
+global_users=Utenti Samba
+global_group=Gruppi Samba
+global_bind=Opzioni di Winbind
+
+convert_ncdesc=L'elenco di utenti da non convertire può contenere nomi utente, UID, nomi di gruppo con il prefisso <tt>@</tt> o intervalli UID come <i>500-1000</i> o <i>500 -</ i >.
+convert_cannot=Gli utenti Unix non possono essere convertiti in utenti Samba
+convert_who=Utenti Unix da convertire
+convert_who0=Solo utenti elencati o intervalli UID
+convert_who1=Tutti tranne gli utenti elencati e gli intervalli UID
+
+net_ip=indirizzo IP
+
+passwd_sync=Cambia anche la password Unix?
+
+smb_descriptionnone=Nessuna
+smb_master_auto=Automatico
+smb_server=Server password
+smb_ads=Directory attiva
+
+smbuser_cannot=Gli utenti Samba non possono essere elencati
+
+euser_noexpire=La password non ha scadenza
+euser_locked=L'account è bloccato
+
+fmisc_oplocks=Abilitare gli oplock?
+fmisc_level2=Oplock di sola lettura?
+
+share_create=Creare automaticamente una directory?
+share_owner=Crea con il proprietario
+share_createperms=Crea con le autorizzazioni
+share_group=Crea con il gruppo
+share_samedesc1=Nota: queste impostazioni influiscono anche sui valori predefiniti per tutte le condivisioni di file.
+share_samedesc2=Nota: queste impostazioni influiscono anche sui valori predefiniti per tutte le condivisioni della stampante.
+
+esync_del_profile=Eliminazione del profilo comune quando un utente Unix viene eliminato
+esync_chg_profile=Rinomina il profilo comune quando viene rinominato un utente Unix
+esync_gid=Raggruppa SID o RID per i nuovi utenti
+esync_cannot=La sincronizzazione utente non può essere configurata
+esync_egid=Gruppo SID o RID mancante
+
+mkpass_added=aggiunto
+mkpass_user=Nome utente
+mkpass_action=Azione intrapresa
+mkpass_skipcount=$1 utenti sono stati ignorati per la conversione.
+
+savecopy_ename=Nessun nome di condivisione inserito
+
+saveuser_ews=L'opzione "Account di fiducia workstation" non può essere abilitata per gli utenti esistenti
+
+savefshare_owner=Proprietario mancante o non valido per la nuova directory
+savefshare_group=Gruppo mancante o non valido per la nuova directory
+savefshare_perms=Autorizzazioni mancanti o non valide per la nuova directory
+savefshare_emkdir=Impossibile creare la directory : $1 
+
+start_err_wb=Impossibile avviare i server Winbind
+
+restart_err=Impossibile riavviare i server Samba
+restart_err_wb=Impossibile riavviare i server Winbind
+
+viewu_ecmd=Il programma di stato Samba $1 non sembra essere installato sul tuo sistema. Forse la <a href='$2'>configurazione del modulo</a> non è corretta.
+viewu_kill=Disconnetti gli utenti selezionati
+viewu_enone=Nessun utente selezionato
+viewu_refresh=Aggiorna pagina.
+
+log_apply_wb=Server Winbind riavviati
+log_stop=Server Samba arrestati
+log_stop_wb=Server Winbind arrestati
+log_start_wb=Server Winbind avviati
+log_kills=Processi $1 disconnessi
+log_skills=Processi $1 disconnessi dalla condivisione $2 
+log_delete_shares=Eliminate $1 condivisioni
+log_bind=Modifica le opzioni di Winbind
+log_create_group=Creato gruppo Samba $1 
+log_modify_group=Gruppo Samba modificato $1 
+log_delete_group=Gruppo Samba eliminato $1 
+log_gsync=Sincronizzazione del gruppo Unix configurata
+log_manual=File di configurazione $1 modificato manualmente
+
+acl_manual=È possibile modificare manualmente il file di configurazione?
+acl_group_opts=Opzioni del gruppo Samba
+acl_maint_groups=Puoi visualizzare, modificare e aggiungere gruppi?
+acl_maint_gsync=È possibile mantenere la sincronizzazione automatica dei gruppi da Unix a Samba?
+acl_winbind=Può legare ai domini?
+acl_bind=È possibile accedere alle opzioni di winbind?
+
+groups_title=Gruppi Samba
+groups_name=Nome del gruppo
+groups_unix=Gruppo Unix
+groups_nounix=Nessuna
+groups_type=genere
+groups_type_d=Gruppo di dominio
+groups_type_b=NT incorporato
+groups_type_l=Gruppo locale
+groups_type_u=Sconosciuto
+groups_sid=SID
+groups_none=Nessun gruppo Samba è stato ancora definito.
+groups_return=elenco dei gruppi
+groups_add=Aggiungi un nuovo gruppo Samba.
+groups_ecannot=Non puoi vedere o modificare gruppi Samba
+groups_cannot=I gruppi di samba non possono essere elencati
+
+gedit_title2=Modifica gruppo Samba
+gedit_title1=Crea gruppo Samba
+gedit_header=Dettagli del gruppo Samba
+gedit_name=Nome del gruppo
+gedit_type=Tipo di gruppo
+gedit_sid=SID di gruppo
+gedit_desc=Descrizione
+gedit_priv=privilegi
+gedit_unix=Gruppo Unix
+gedit_unixgr=Gruppo ..
+gedit_none=Nessuna
+gedit_set=Elencato ..
+
+gsave_err=Impossibile salvare il gruppo
+gsave_eunix=Nome o GID del gruppo Unix mancante o non valido
+gsave_ename=Nome del gruppo mancante
+gsave_epriv=Privilegi di gruppo mancanti
+gsave_elocal=I privilegi possono essere impostati solo per gruppi locali
+
+gsync_title=Sincronizzazione di gruppo
+gsync_msg=Webmin può essere configurato in modo tale che le modifiche all'elenco dei gruppi Unix vengano applicate automaticamente all'elenco dei gruppi Samba. Funzionerà solo quando il modulo <min>Utenti e gruppi</min> Webmin viene utilizzato per aggiungere, eliminare o modificare gruppi.
+gsync_add=Aggiungi un gruppo Samba quando viene aggiunto un gruppo Unix
+gsync_chg=Cambia il gruppo Samba quando viene modificato un gruppo Unix
+gsync_del=Elimina il gruppo Samba quando viene eliminato un gruppo Unix
+gsync_apply=Applicare
+gsync_type=Tipo di nuovi gruppi
+gsync_priv=Privilegi per nuovi gruppi (se locale)
+gsync_ecannot=Non è consentito configurare la sincronizzazione di gruppo
+gsync_cannot=La sincronizzazione di gruppo non può essere configurata
+
+check_user1=$1 : le password crittografate non sono abilitate nella pagina <a href='$2'>Autenticazione</a>.
+check_user2=$1 : Né il file della password di Samba né il percorso di pdbedit sono impostati nella pagina <a href='$2'>Configurazione del modulo</a>.
+check_group1=$1 : i gruppi sono supportati solo in Samba versione 3.
+check_group2=$1 : Né il percorso per smbgroupedit né i comandi net è impostato nella pagina <a href='$2'>Configurazione modulo</a>.
+
+winbind_title=Associa al dominio
+winbind_ecannot=Non ti è consentito associare domini
+winbind_msg=Questo modulo può essere utilizzato per associare il server Samba a un dominio Windows, in genere gestito da un altro server.
+winbind_header=Associare a un dominio Windows
+winbind_user=Associa come utente
+winbind_dom=Associa al dominio
+winbind_save=Associa ora
+winbind_default=Dominio dalla configurazione di Samba
+winbind_pass=Password dell'utente
+winbind_err=Impossibile eseguire il bind al dominio
+winbind_euser=Nome utente mancante
+winbind_edom=Nome di dominio mancante
+winbind_cmd=Associare al dominio con il comando $1 ..
+winbind_failed=.. fallito! Vedere l'output sopra per il motivo.
+winbind_ok=.. completare.
+
+bind_title=Opzioni di Winbind
+bind_ecannot=Non puoi modificare le opzioni di winbind
+bind_header=Opzioni di associazione del dominio Windows
+bind_local=Abilitare Winbind per gli account locali?
+bind_trust=Fidati degli utenti dei server di dominio?
+bind_users=Non consentire l'elenco degli utenti?
+bind_groups=Non è possibile elencare i gruppi?
+bind_defaultdomain=Usa sempre il dominio predefinito?
+bind_realm=Reame Kerberos sul server di dominio
+bind_cache=Secondi per memorizzare nella cache i dettagli dell'utente per
+bind_uid=Gamma di UID per utenti Windows
+bind_gid=Gamma di GID per gruppi di Windows
+bind_backend=Backend LDAP per il mapping degli account
+bind_err=Impossibile salvare le opzioni di Winbind
+bind_erealm=Reame Kerberos non valido
+bind_ecache=Tempo cache mancante o non valido
+bind_euid=Intervallo UID non valido: deve essere compreso tra 20000-30000
+bind_egid=Intervallo GID non valido: deve essere compreso tra 20000-30000
+
+manual_title=Modifica file di configurazione
+manual_desc=Modifica del file di configurazione di Samba $1 ..
+manual_err=Impossibile salvare il file di configurazione
+manual_edata=Non è entrato niente!
+
+delete_err=Impossibile eliminare le condivisioni
+delete_enone=Nessuno selezionato

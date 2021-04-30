@@ -1,0 +1,66 @@
+index_title=Client ADSL
+index_eadsl=Comanda RP-PPPoE $1 nu a fost găsită pe sistemul dvs. sau nu este valabilă. Poate că nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
+index_econfig=Fișierul de configurare RP-PPPoE ADSL $1 nu a fost găsit în sistemul dvs. Poate că nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
+index_emodem=Fișierul de configurare curent este pentru un modem pe Redhat Linux, nu pentru o conexiune ADSL. Utilizați pagina <a href='$2'>configurația modulului</a> pentru a specifica unul dintre celelalte fișiere <tt>ifcfg-ppp *</tt> din $1 sau unul care nu există încă, astfel încât modulul o pot crea pentru tine.
+index_stop=Opriți ADSL
+index_stopdesc=Conexiunea dvs. ADSL este activă în prezent cu adresa IP $1. Faceți clic pe acest buton pentru a-l opri cu comanda $2.
+index_start=Porniți ADSL
+index_startdesc=Conexiunea dvs. ADSL este în prezent inactivă. Faceți clic pe acest buton pentru al porni cu comanda $1.
+index_boot=Începeți la ora de pornire
+index_bootdesc=Modificați această opțiune pentru a controla dacă conexiunea dvs. ADSL este creată la momentul de pornire sau nu.
+index_return=indexul modulului
+index_version=Versiunea RP-PPPoE $1 
+index_esetup=Fișierul de configurare Redhat ADSL $1 nu există pe sistemul dvs. Cu toate acestea, acest modul îl poate configura pentru dvs. cu valori implicite de bază, făcând clic pe butonul de mai jos.
+index_setup=Configurarea fișierului de configurare
+index_cancel=Anulați conexiunea
+index_canceldesc=Clientul ADSL încearcă în prezent să stabilească o conexiune. Faceți clic pe acest buton pentru a anula încercarea cu comanda $1.
+index_cdemand=Anulați la cerere
+index_cdemanddesc=Clientul ADSL așteaptă în prezent o cerere de conectare la cerere. Faceți clic pe acest buton pentru ao opri cu comnmand $1.
+
+index_header=Opțiuni de configurare a clientului ADSL
+index_desc=Setările de mai jos se aplică oricărei noi conexiuni ADSL pornite de sistemul dvs. Dacă le schimbați, conexiunea trebuie să fie oprită și reluată pentru ca modificările să aibă efect.
+index_eth=Interfață Ethernet
+index_other=Alte ..
+index_demand=Conectare la cerere?
+index_timeout=Da, cu timeout
+index_secs=secunde
+index_user=Conectați-vă ca utilizator
+index_sec=Autentificare cu parolă
+index_dns=Obțineți configurare DNS de la ISP?
+index_save=Salvați configurația
+index_mss=Limitați dimensiunea pachetului?
+index_psize=Da pentru
+index_bytes=bytes
+index_fw=Firewall pentru a activa la conexiune
+index_fw_none=Nici unul
+index_fw_standalone=Pentru o singură gazdă
+index_fw_masquerade=Pentru gateway NAT
+index_connect=E timpul să încercați conexiunea pentru
+index_forever=Pentru totdeauna
+
+start_err=Eroare la pornirea conexiunii ADSL
+start_title=Porniți ADSL
+start_ip=S-a stabilit o conexiune ADSL cu adresa IP $1.
+start_demand=Deoarece modul de conectare la cerere este activat, conexiunea dvs. ADSL va fi pornită numai atunci când este nevoie.
+start_bg=Conexiunea ADSL nu a fost pornită în 20 de secunde. Clientul ADSL va continua să încerce să se conecteze în fundal până la succes.
+
+save_err=Nu a reușit să salveze configurația ADSL
+save_eeth=Interfață Ethernet care lipsește sau are aspect nevalid
+save_etimeout=Lipsește sau este nevalid un interval de timp la cerere
+save_euser=Nume de utilizator lipsă sau nevalid
+save_econnect=Lipsește sau nu este valabil timpul de conectare
+save_emss=Dimensiunea maximă a pachetului lipsește sau este nevalidă
+save_title=Salvați configurarea
+save_desc=Configurația clientului dvs. ADSL a fost salvată cu succes, dar nu va fi utilizată până când vă reconectați.
+
+stop_err=Nu a reușit să oprească conexiunea ADSL
+stop_title=Închideți ADSL
+stop_ok=Conexiunea dvs. ADSL a fost oprită cu succes.
+stop_failed=Conexiunea dvs. ADSL este încă activă din anumite motive!
+
+log_save=Configurarea clientului salvat
+log_stop=Opriți ADSL
+log_start=A început ADSL
+log_bootup=Activare ADSL la momentul de pornire
+log_bootdown=Dezactivat ADSL la momentul de pornire
+log_setup=Configurați configurația implicită

@@ -1,0 +1,53 @@
+inittab_new=Tạo một quá trình init mới.
+inittab_id=TÔI
+inittab_active=Chủ động?
+inittab_runlevels=Khởi động runlevel
+inittab_action=Hoạt động
+inittab_process=Quá trình
+inittab_none=không ai
+inittab_respawn=Quá trình hồi sinh
+inittab_wait=Chờ đợi
+inittab_once=Một lần ở cấp độ
+inittab_boot=Thời gian khởi động
+inittab_bootwait=Thời gian khởi động, chờ cho đến khi chấm dứt
+inittab_off=Không làm gì cả
+inittab_ondemand=Bất cứ khi nào trong A, B, C
+inittab_initdefault=Sau khi khởi động hệ thống
+inittab_sysinit=Trong quá trình khởi động hệ thống
+inittab_powerwait=Mất điện
+inittab_powerfail=Mất điện mà không chờ đợi
+inittab_powerokwait=Điện được phục hồi
+inittab_powerfailnow=Điện không
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Tổ hợp phím đặc biệt
+inittab_kbrequest=Tổ hợp phím đặc biệt
+inittab_return=danh sách quy trình
+inittab_apply=Áp dụng cấu hình init
+inittab_applymsg=Nhấp vào nút này để áp dụng Cấu hình khởi động SysV hiện tại bằng cách chạy lệnh <tt>telinit q</tt>. Xin lưu ý rằng mọi lỗi trong cấu hình của bạn có thể khiến hệ thống không sử dụng được khi lệnh này được chạy.
+index_delete=Xóa các quy trình được chọn
+inittab_none2=Không có quá trình khởi động được tìm thấy trên hệ thống của bạn. Điều này có thể chỉ ra rằng nó không sử dụng tệp cấu hình SysV init.
+
+edit_inittab_err=Bạn không được phép chỉnh sửa một quy trình
+edit_inittab_title=Chỉnh sửa quy trình $1 
+edit_inittab_details=Chi tiết quy trình
+edit_inittab_del=Xóa bỏ
+edit_inittab_save=Tiết kiệm
+
+new_inittab_err=Bạn không được phép tạo quy trình mới
+new_inittab_title=Quy trình mới
+
+save_inittab_err=Bạn không được phép lưu quy trình
+save_inittab_noid=Lỗi, không có quá trình tên được nhập
+save_inittab_already=Lỗi, quá trình tên đã tồn tại
+
+log_modify=Đã sửa đổi quy trình init 1
+log_rename=Đổi tên quy trình init $1 thành $2 
+log_create=Đã tạo quá trình init $1 
+log_delete=Đã xóa tiến trình init 1
+log_apply=Cấu hình ứng dụng
+log_deletes=Đã xóa $1 init process
+
+apply_err=Không thể áp dụng cấu hình
+
+delete_err=Không thể xóa các quy trình
+delete_enone=Không được chọn

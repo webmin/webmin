@@ -53,7 +53,7 @@ if ($in{'all'}) {
 	    &ui_textbox("file", $c{'backup_'.$in{'db'}}, 60)." ".
 	    &file_chooser_button("file"));
 	print &ui_table_row($text{'backup_prefix'},
-	    &ui_opt_textbox("prefix", $c{'prefix_'}, 10,
+	    &ui_opt_textbox("prefix", $c{'backup_prefix_'}, 10,
 			    $text{'backup_noprefix'}));
 	}
 else {
@@ -103,7 +103,7 @@ print &ui_table_row($text{'backup_drop'},
 	&ui_yesno_radio("drop", $d ? 1 : 0));
 
 # Show input for character set
-$s = $c{'backup_charset_'.$in{'db'}};
+$s = $c{'backup_charset_'.$in{'db'}} || $c{'charset'};
 print &ui_table_row($text{'backup_charset'},
 	&ui_radio("charset_def", $s ? 0 : 1,
 	       [ [ 1, $text{'default'} ],

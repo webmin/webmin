@@ -13,7 +13,7 @@ print "<tr $cb> <td><table width=100%>\n";
 
 $rings = &find_value("rings", \@conf);
 if ($rings =~ /^\//) {
-	open(TF, $rings);
+	open(TF, "<$rings");
 	chop($rc = <TF>);
 	close(TF);
 	}
@@ -26,7 +26,7 @@ print "</td> </tr>\n";
 
 $ans = &find_value("answer_mode", \@conf);
 if ($ans =~ /^\//) {
-	open(TF, $ans);
+	open(TF, "<$ans");
 	chop($rc = <TF>);
 	close(TF);
 	}

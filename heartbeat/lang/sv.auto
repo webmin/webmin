@@ -1,0 +1,103 @@
+index_title=Heartbeat Monitor
+index_return=hjärtslag monitor
+index_edir=Hjärtslagkonfigurationskatalogen $1 finns inte. Kanske är Heartbeat inte installerat, eller är din <a href='$2'>modulkonfiguration</a> felaktig.
+index_start=Starta Heartbeat Monitor
+index_startmsg=Klicka på den här knappen för att starta Heartbeat-monitorprocessen. Detta möjliggör automatisk service failover på ditt system med den aktuella konfigurationen.
+index_apply=Applicera förändringar
+index_applymsg=Klicka på den här knappen för att tvinga den pågående Heartbeat-monitorprocessen att ladda den aktuella konfigurationen igen.
+index_eha_cf=Hjärtslagkonfigurationsfilen $1 hittades inte på ditt system. Kanske har den inte kopierats på plats ännu, eller <a href='$2'>modulkonfiguration</a> är felaktig.
+index_eharesources=Resursfilen $1 hittades inte på ditt system. Kanske har den inte kopierats på plats ännu, eller <a href='$2'>modulkonfiguration</a> är felaktig.
+index_eauthkeys=Autentiseringsnyckelfilen $1 hittades inte på ditt system. Kanske har den inte kopierats på plats ännu, eller <a href='$2'>modulkonfiguration</a> är felaktig.
+index_ereq_resource_cmd=Skriptet för att begära resurser från den andra noden ($1) hittades inte på ditt system. Kanske har den inte kopierats på plats ännu, eller <a href='$2'>modulkonfiguration</a> är felaktig.
+index_version=Hjärtslagversion $1 
+index_noversion=Varning - Versionen av Heartbeat installerad på ditt system kunde inte upptäckas automatiskt. Du bör ställa in den på <a href='$1'>modulkonfiguration</a> -sidan.
+index_status=Hjärtslagstatus
+
+conf_title=Konfigurationsalternativ
+conf_header=Konfigurationsalternativ för hjärtslag
+conf_serials=Seriella hjärtslagsportar
+conf_baud=Baud rate för serieport
+conf_bcasts=Ethernet-hjärtslaggränssnitt
+conf_none=Ingen
+conf_udpport=UDP-hjärtslagsport
+conf_mcast=Multicast-hjärtslagsenhet
+conf_mcastv=Enhet $1, grupp $2, port $3, TTL $4, loopback $5 
+conf_enabled=Aktiverad
+conf_disabled=Inaktiverad
+conf_keepalive=Tid mellan hjärtslag
+conf_nice_failback=Trevligt misslyckande beteende
+conf_secs=sekunder
+conf_deadtime=Tiden innan noden betraktas som död
+conf_watchdog=Watchdog-enhetsfil
+conf_node=Värdar i kluster
+conf_logfile=Hjärtslagloggfil
+conf_logfacility=Syslog logfunktion
+conf_initdead=Inledande dödtid
+conf_ok=Spara alternativ
+conf_err=Det gick inte att spara alternativ
+conf_ebaud=Saknad eller ogiltig baudfrekvens
+conf_ebcast=Inga hjärtslagssändningsgränssnitt anges
+conf_ebcastif='$1' är inte ett giltigt sändningsgränssnitt
+conf_eudpport=Saknad eller ogiltig hjärtslagsport
+conf_ekeepalive=Saknas eller ogiltig tid mellan hjärtslag
+conf_edeadtime=Saknad eller ogiltig dödtid
+conf_ewatchdog=Saknad eller icke-befintlig fil för vakthundenhet
+conf_enonode=Inga klustervärdar anges
+conf_ethisnode=Denna värd $1 finns inte på listan över klustervärdar
+conf_elogfile=Saknat eller ogiltigt loggfilnamn
+conf_einitdead=Inledande dödtid saknas eller ogiltig
+conf_einitdead2=Den initiala dödtiden måste vara minst två gånger tiden innan en nod betraktas som död
+conf_emcast_dev=Saknad eller ogiltig multicast-enhet
+conf_emcast_ip=Saknad eller ogiltig multicast-gruppadress
+conf_emcast_port=Saknat eller ogiltigt multicast-portnummer
+conf_emcast_ttl=Saknad eller ogiltig multicast-tid att leva
+conf_auto_on=$ {Conf_enabled}
+conf_auto_off=$ {Conf_disabled}
+conf_auto_legacy=Äldre läge
+conf_auto_=$ {Default}
+
+res_title=Klusterresurser
+res_node=Primär nod
+res_ips=IP-adresser
+res_servs=Nodtjänster
+res_none=Ingen
+res_nores=Inga klusterresurser har definierats på ditt system.
+res_add=Lägg till en klusterresurs
+res_return=resurslista
+res_active=Resursstatus
+res_getserv=Skaffa resurs
+res_hbdown=Hjärtslag ner
+res_up=UPP
+res_down=NER
+
+node_create=Lägg till klusterresurs
+node_edit=Redigera Cluster Resource
+node_header=Detaljer om klusterresurs
+node_node=Primär nod för resurs
+node_ips=IP-adresser för resurs
+node_ip=IP-adress
+node_cidr=Netmask CIDR
+node_broad=Sändningsadress
+node_servs=Tjänster för resurs
+node_serv=Service
+node_args=Ytterligare argument
+node_err=Det gick inte att spara klusterresurs
+node_enone=Primär nod saknas eller ogiltig
+node_eip='$1' är inte en giltig IP-adress
+node_ecidr='$1' är inte en giltig CIDR
+node_ebroad='$1' är inte en giltig sändningsadress
+
+auth_title=Autentiseringsnycklar
+auth_header=Verifiering av klusternod
+auth_mode=Autentiseringsläge
+auth_crc=CRC (Ingen säkerhet)
+auth_sha1=SHA1 med lösenord
+auth_md5=MD5 med lösenord
+auth_err=Det gick inte att spara autentiseringsnycklar
+auth_emd5=Saknat eller ogiltigt MD5-lösenord
+auth_esha1=SHA1-lösenord saknas eller
+
+start_err=Det gick inte att starta hjärtslag
+
+apply_err=Det gick inte att tillämpa ändringar
+apply_epid=Processen körs inte längre

@@ -1,0 +1,316 @@
+index_title=Amministrazzjoni tal-istampatur
+index_header=Stampaturi disponibbli
+index_name=Stampatur
+index_desc=Deskrizzjoni
+index_to=Stampa lil
+index_driver=Sewwieq
+index_enabled=Abilitata?
+index_accepting=Taċċetta?
+index_jobs=Impjiegi
+index_none=L-ebda printers ma huma installati fuq din is-sistema.
+index_list=Lista ..
+index_jlist=Impjiegi ..
+index_jcount=Impjiegi $1 ..
+index_add=Żid printer ġdid.
+index_stop=Scheduler Ieqaf
+index_stopmsg=Ikklikkja din il-buttuna biex twaqqaf il-proċess tal-iskedar tat-tħaddim stampat. Dan jipprevjeni kwalunkwe utenti lokali jew remoti milli jistampaw fis-sistema tiegħek.
+index_start=Ibda Scheduler
+index_startmsg=Ikklikkja din il-buttuna biex tibda l-proċess tal-istampar tal-iskedar. Dan jippermetti lill-utenti lokali u remoti jipprintjaw fis-sistema tiegħek.
+index_restart=Irristartja Scheduler
+index_restartmsg=Ikklikkja din il-buttuna biex terġa 'tibda l-proċess tal-istampar tal-iskedar. Dan se jġiegħel il-konfigurazzjoni stampata attwali tiġi applikata.
+index_return=lista tal-istampaturi
+index_esystem=Jew installa l-software għas-sistema ta 'stampar magħżula tiegħek, jew uża l- <a href='$1'>konfigurazzjoni tal-modulu</a> biex tibdelha.
+index_style=Sistema ta 'stampar: $1 
+index_cluster=Servers ta 'Kluster
+index_clusterdesc=Ikklikkja din il-buttuna biex twaqqaf servers addizzjonali tal-Webmin li fuqhom se jinħolqu, jiġu aġġornati u mħassra printers.
+index_delete=Ħassar Printers magħżula
+
+style_solaris=Solaris
+style_linux=LPR Linux
+style_freebsd=LBS FreeBSD
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=CUPS
+style_irix=IRIX
+style_aix=ESTRA
+
+edit_eedit=M'għandekx permess teditja din il-printer
+edit_eadd=M'għandekx permess li żżid printers
+edit_add=Oħloq Printer
+edit_edit=Editja Printer
+edit_conf=Konfigurazzjoni tal-Printer
+edit_name=Isem
+edit_acc=Taċċetta t-talbiet?
+edit_why=Le - Għaliex le
+edit_desc=Deskrizzjoni
+edit_ena=L-istampar ippermetta?
+edit_acl=Kontroll tal-aċċess
+edit_allow=Ħalli kulħadd
+edit_deny=Iċħad lil kulħadd
+edit_allowu=Ħalli l-utenti elenkati ..
+edit_denyu=Iċħad l-utenti elenkati ..
+edit_banner=Stampa tal-banner?
+edit_opt=Mhux obbligatorju
+edit_default=Stampatur awtomatiku?
+edit_already=Diġà l-istampatur default
+edit_max=Daqs massimu tax-xogħol tal-istampar
+edit_unlimited=Illimitat
+edit_dacc=Is-sewwieq jaċċetta
+edit_dtext=Test
+edit_dpost=Postscript
+edit_dother=Oħrajn
+edit_alt=Ismijiet tal-istampatur alternattivi
+edit_dest=Stampa tad-Destinazzjoni
+edit_dev=Apparat lokali
+edit_file=Fajl lokali
+edit_remote=Server Unix mill-bogħod
+edit_rqueue=Stampatur
+edit_type=Tip
+edit_smb=Server Windows mill-bogħod
+edit_share=Stampatur
+edit_user=Utent
+edit_pass=Password
+edit_wgroup=Grupp tax-xogħol
+edit_hpnp=Server HPNP mill-bogħod
+edit_port=Port
+edit_direct=Konnessjoni TCP diretta
+edit_dport=Port
+edit_driver=Sewwieq tal-istampatur
+edit_check=Iċċekkja jekk is-server mill-bogħod hux?
+
+blocks=blokki
+
+save_err=Ma rnexxielux isalva l-istampatur
+save_eadd=M'għandekx permess li żżid printers
+save_eedit=M'għandekx permess teditja din il-printer
+save_ename="$1" mhuwiex isem tal-istampatur validu
+save_edup=Stampatur imsejjaħ "$1" diġà jeżisti
+save_eallow=L-ebda utent ma jippermetti li jiddaħħal
+save_edeny=L-ebda utent ma ċaħad li daħal
+save_euser=L-utent "$1" ma jeżistix
+save_etype=Int trid tagħżel mill-inqas tip wieħed biex dan ix-xufier jaċċetta
+save_emax=Id-daqs massimu tax-xogħol tal-istampar għandu jkun numru sħiħ
+save_efile="$1" ma jeżistix
+save_erhost=Ospitanti remoti "$1" ma jeżistux
+save_erport=Il-port mill-bogħod "$1" mhux validu
+save_erqueue="$1" mhuwiex isem tal-kju remot validu
+save_eremote=Is-sewwieqa ma jistgħux jintużaw bi stampaturi Unix remoti
+save_edhost=Ospitanti diretti "$1" ma jeżistux
+save_edport=Port dirett nieqes jew invalidu
+save_evalid=Is-sistema tal-istampar ma tippermettix din il-printer
+save_errslave=Stampatur ħoloq OK fuq din is-sistema, iżda seħħew l-iżbalji li ġejjin fuq sistemi ta 'raggruppament : $1 
+save_egone=L-ebda printer bl-isem ta '"$1" ma nstab
+save_errdelslave=Stampatur imħassar OK minn din is-sistema, iżda seħħew l-iżbalji li ġejjin fuq sistemi ta 'raggruppament : $1 
+
+jobs_title=Impjiegi Stampati
+jobs_header=Impjiegi stampati fuq $1 
+jobs_id=Identifikazzjoni tal-impjieg
+jobs_size=Daqs
+jobs_by=Sottomessi minn
+jobs_when=Sottomessi At
+jobs_file=Isem tal-fajl
+jobs_cancel=Ikklikkja fuq ID ta 'xogħol mil-lista ta' hawn fuq biex tikkanċella.
+jobs_cancelview=Ikklikkja fuq ID ta 'xogħol mil-lista ta' hawn fuq biex tikkanċella, jew ikklikkja fuq id-daqs ta 'xogħol biex taraha.
+jobs_none=L-istampatur $1 m'għandux xogħol pendenti.
+jobs_all=Ikkanċella l-impjiegi kollha stampati
+jobs_bytes=bytes
+jobs_test=Stampa paġna tat-test
+jobs_cancelsel=Ikkanċella l-Impjiegi magħżula
+jobs_on=Fuq printer $1 
+jobs_return=lista tal-impjiegi stampati
+
+cancel_ecannot=M'għandekx permess tikkanċella xogħol stampat
+cancel_err=Ma rnexxielux jikkanċella xogħol stampat
+cancel_egone=Xogħol stampat $1 m'għadux jeżisti
+
+view_ecannot=Ma tistax tara dan ix-xogħol stampat
+view_egone=Dan ix-xogħol stampat m'għadux jeżisti
+
+start_ecannot=M'għandekx permess li tibda l-iskedar
+start_err=Naqset milli tibda Scheduler
+
+stop_ecannot=M'għandekx permess twaqqaf l-iskedar
+stop_err=Naqset milli twaqqaf l-iskedar
+
+restart_ecannot=M'għandekx permess terġa 'tibda l-iskedar
+restart_err=Ma rnexxielux jerġa 'jibda l-iskedar
+
+webmin_none=Xejn
+webmin_nonemsg=Postscript jew test printer
+webmin_remotemsg=Stampatur mill-bogħod
+webmin_model=Mudell
+webmin_prog=Programm
+webmin_driver=Sewwieq tal-Webmin
+webmin_uniprint=Sewwieq uniprint
+webmin_edrivers=Ma rnexxielux jikseb sewwieqa minn $1. Is-sewwieqa tal-istampatur Webmin li jużaw ghostscript mhumiex disponibbli
+webmin_egs=Il-kmand $1 ma nstabx. Is-sewwieqa tal-istampatur Webmin li jużaw ghostscript mhumiex disponibbli
+webmin_edriver="$1" ma jeżistix
+
+caldera_none=Xejn
+caldera_nonemsg=Stampatur mill-bogħod jew mhux maħdum
+caldera_prog=Programm
+caldera_coas=Sewwieq COAS
+caldera_printer=Printer u riżoluzzjoni
+caldera_eof=Ibgħat EOF?
+caldera_paper=Daqs tal-Karta
+caldera_double=Stampa b'żewġ naħat?
+caldera_gsopts=Għażliet addizzjonali tal-GS
+caldera_uniprint=Sewwieq uniprint
+caldera_eprog="$1" ma jeżistix
+caldera_edriver=L-ebda sewwieq tal-istampatur ma jintgħażel
+caldera_eres=Ebda riżoluzzjoni magħżula
+
+redhat_none=Xejn
+redhat_nonemsg=Postscript jew test printer
+redhat_prog=Programm
+redhat_driver=Sewwieq Redhat
+redhat_printer=Printer u riżoluzzjoni
+redhat_eof=Ibgħat EOF?
+redhat_paper=Daqs tal-Karta
+redhat_pages=Paġni għal kull paġna tal-ħruġ
+redhat_gsopts=Għażliet addizzjonali tal-GS
+redhat_hmargin=Marġini lemin/xellug
+redhat_vmargin=Marġni ta 'fuq/isfel
+redhat_crlf=Tiffissa t-test li jtejjeb it-turġien?
+redhat_eprog="$1" ma jeżistix
+redhat_edriver=L-ebda sewwieq tal-istampatur ma jintgħażel
+redhat_ehmargin=Marġini lemin/xellug nieqes jew invalidi
+redhat_evmargin=Nieqes jew invalidu l-marġni ta 'fuq/ta' isfel
+redhat_eres=Ebda riżoluzzjoni magħżula
+redhat_printer2=Mudell tal-istampatur u xufier
+
+suse_none=Xejn
+suse_nonemsg=Postscript jew test printer
+suse_prog=Programm
+suse_driver=Sewwieq APSfilter
+suse_printer=Tip ta ’stampatur
+suse_res=Riżoluzzjoni f'DPI
+suse_colour=Stampatur bil-kulur?
+suse_paper=Daqs tal-Karta
+suse_method=Metodu tal-filtru
+suse_auto=Awtomatiku
+suse_ascii=ASCII
+suse_raw=Nej
+suse_extra=Għażliet ta 'ghostscript żejda
+suse_yast2=Sewwieq YAST2
+suse_edriver=Ma ntgħażel l-ebda tip ta 'stampatur
+suse_eres=Riżoluzzjoni nieqsa jew invalida
+
+estop=Ma rnexxiex twaqqaf lpd : $1 
+
+acl_printers=Stampaturi li dan l-utent jista 'jikkonfigura
+acl_add=Tista 'żżid printers ġodda?
+acl_cancel=Tista 'tħassar l-impjiegi stampati?
+acl_stop=Tista 'twaqqaf jew tibda Scheduler?
+acl_restart=Irristartja biss
+acl_listed=Fuq stampaturi magħżula biss ..
+acl_pall=Il-printers kollha
+acl_psel=Magħżula ..
+acl_view=Uri printers mhux konfigurabbli?
+acl_test=Tista 'tipprintja paġni tat-test?
+acl_user=Immaniġġja l-impjiegi stampati tal-proprjetà
+acl_user_all=L-utenti kollha
+acl_user_this=Utent Webmin attwali
+acl_delete=Tista 'tħassar il-printers?
+acl_cluster=Tista 'tmexxi cluster tal-istampatur?
+
+log_stop=Waqqaf Skedar Stampar
+log_start=Beda l-istampar Scheduler
+log_restart=Irrestartja l-iskedar tal-istampar
+log_cancel_job=Xogħol stampat imħassar $2 fuq $1 
+log_cancel_all=Ikkanċellaw l-impjiegi kollha stampati fuq $1 
+log_cancel_sel=Ikkanċellat $2 xogħol stampat fuq $1 
+log_create=Inħoloq printer $1 fuq $2 
+log_modify=Stampatur modifikat $1 fuq $2 
+log_delete=Stampatur imħassar $1 fuq $2 
+log_create_l=Inħoloq $3 printer $1 fuq $2 
+log_modify_l=Immodifikat $3 printer $1 fuq $2 
+log_delete_l=Imħassar $3 printer $1 fuq $2 
+
+linux_paralel=Port paralleli $1 
+linux_serial=Port tas-serje $1 (COM $1)
+linux_null=Apparat Nul
+linux_usb=Stampatur USB $1 
+linux_ecmd=Il-kmand $1 ma nstabx fis-sistema tiegħek, li jindika li s-sistema tal-istampar Linux mhix installata.
+linux_espool=Id-direttorju spool $1 ma jeżistix fis-sistema tiegħek, li jindika li s-sistema ta 'stampar Linux mhix installata.
+
+freebsd_paralel=Port parallel
+freebsd_serial=Port tas-serje $1 (COM $1)
+freebsd_ecmd=Il-kmand $1 ma nstabx fis-sistema tiegħek, li jindika li s-sistema tal-istampar FreeBSD mhix installata.
+freebsd_espool=Id-direttorju spool $1 ma jeżistix fis-sistema tiegħek, li jindika li s-sistema ta 'stampar FreeBSD mhix installata.
+
+openbsd_paralel=Port parallel
+openbsd_serial=Port tas-serje $1 (COM $1)
+
+unixware_paralel=Port paralleli $1 
+unixware_serial=Port tas-serje $1 
+unixware_null=Apparat Nul
+unixware_ecmd=Il-kmand $1 ma nstabx fis-sistema tiegħek, li jindika li s-sistema tal-istampar UnixWare mhix installata.
+
+hpux_paralel=$1 paralleli
+hpux_serial=$1 tas-serje
+hpux_null=Apparat Nul
+hpux_ecmd=Il-kmand $1 ma nstabx fis-sistema tiegħek, li jindika li s-sistema tal-istampar HPUX mhix installata.
+hpux_eiface=Id-direttorju tal-iskripts tal-interface $1 ma jeżistix fis-sistema tiegħek, li jindika li s-sistema tal-istampar HPUX mhix installata.
+
+lprng_paralel=Port paralleli $1 
+lprng_serial=Port tas-serje $1 (COM $1)
+lprng_null=Apparat Nul
+lprng_ecmd=Il-kmand $1 ma nstabx fis-sistema tiegħek, li jindika li s-sistema tal-istampar LPRng mhix installata.
+lprng_espool=Id-direttorju spool $1 ma jeżistix fis-sistema tiegħek, li jindika li s-sistema tal-istampar LPRng mhix installata.
+
+solaris_paralel=Port parallel
+solaris_uparalel=Port Parallel Ultra 5/10
+solaris_serial=Port tas-serje $1 
+solaris_null=Apparat Nul
+solaris_ecmd=Il-kmand $1 ma nstabx fis-sistema tiegħek, li jindika li s-sistema ta 'stampar Solaris mhix installata.
+
+test_title=Stampa paġna tat-test
+test_ecannot=M'għandekx permess tipprintja paġni tat-test
+test_desc=Din il-formola jippermettilek tipprintja paġna tat-test għall-istampatur $1. Agħżel it-tip ta 'paġna li trid tipprintja :
+test_0=Iswed u abjad paġna Postscript
+test_1=Postscript bil-kulur fil-paġna
+test_2=Test sempliċi tal-ASCII
+test_3=Kull fajl imtella '
+test_print=Stampa paġna
+test_exec=Stampar ta ’paġna tat-test bil-kmand $1 ..
+test_failed=.. kmand falla!
+test_ok=.. kmand komplut.
+
+cups_none=Xejn
+cups_nonemsg=Stampatur mill-bogħod jew mhux maħdum
+cups_prog=Programm
+cups_driver=Sewwieq CUPS
+cups_eprog="$1" mhuwiex programm validu
+cups_opts=Għażliet għal $1 
+cups_ecmd=Il-kmand $1 ma nstabx fis-sistema tiegħek, li jindika li s-sistema ta 'stampar CUPS mhix installata.
+
+irix_ecmd=Il-kmand $1 ma nstabx fis-sistema tiegħek, li jindika li s-sistema tal-istampar IRIX mhix installata.
+irix_eiface=Id-direttorju tal-iskripts tal-interface $1 ma jeżistix fis-sistema tiegħek, li jindika li s-sistema tal-istampar IRIX mhix installata.
+
+aix_port=Port tal-istampatur $1 
+aix_edesc=Deskrizzjoni mhux valida - huma permessi biss ittri u numri, u l-ebda spazji
+aix_ecmd=Is-server tal-istampatur AIX $1 ma nstabx. Forsi mhuwiex installat, jew sistema stampata oħra qed tintuża.
+
+cluster_title=Cluster Servers Printer
+cluster_none=L-ebda server ma ġew miżjuda mal-istampatur tal-istampatur.
+cluster_host=L-isem tal-host
+cluster_desc=Deskrizzjoni
+cluster_os=Sistema operattiva
+cluster_add=Żid server
+cluster_gadd=Żid is-servers fi grupp
+cluster_need=Trid iżżid is-servers bil-login u l-password fil-modulu tal-Indiċi Servers tal-Webmin qabel ma jkunu jistgħu jiġu ġestiti hawn.
+cluster_return=Servers ta 'raggruppament
+cluster_delete=Neħħi Magħżul
+cluster_ecannot=M'għandekx permess timmaniġġja servers ta 'printer tal-cluster
+
+add_title=Żid is-Servers
+add_msg=Żieda ta ' $1 ..
+add_gmsg=Żieda ta 'servers fil-grupp $1 ..
+add_err=Naqas milli jżid server
+add_gerr=Naqset milli żżid grupp
+add_echeck=Server $1 m'għandux il-modulu Amministrazzjoni tal-Printer
+add_ediff=Is-server $1 qed juża sistema ta ’print differenti ($2) għal dan is-server
+add_ediff2=Is-server $1 qed juża driver ta 'stampar differenti ($2) ma' dan is-server
+add_ok=Miżjud $1, ma 'printers $2.

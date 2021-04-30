@@ -1,0 +1,57 @@
+index_title=NFS akcijos
+index_add=Pradėkite bendrinti naują katalogą.
+index_dir=Katalogas
+index_clients=Klientai
+index_everyone=Visi
+index_delete=Ištrinti pasirinktas akcijas
+index_none=Šiuo metu šioje sistemoje neeksportuojami jokie katalogai.
+index_apply=Taikyti pakeitimus
+index_applydesc=Spustelėkite šį mygtuką, kad pritaikytumėte dabartinę failų bendrinimo konfigūraciją. Tai leis visus aukščiau išvardytus katalogus pasiekti su nurodytomis parinktimis.
+index_return=akcijų sąrašas
+
+edit_title1=Redaguoti Bendrinti
+edit_title2=Sukurti bendrinimą
+edit_header1=Dalytis informacija
+edit_dir=Katalogas
+edit_desc=apibūdinimas
+edit_ro=Tik skaitymo prieiga
+edit_rw=Prieiga prie skaitymo ir rašymo
+edit_root=Prieiga prie šaknų
+edit_none=Nė vienas
+edit_all=Visi šeimininkai
+edit_listed=Išvardyti šeimininkai ..
+edit_header2=Akcijų pasirinkimo sandoriai
+edit_nosub=Leisti montuoti paklotus?
+edit_nosuid=Leisti setuid failus?
+edit_des=Klientai privalo naudoti DES?
+edit_kerberos=Klientai privalo naudoti kerberus?
+edit_anon=Anonimas vartotojas
+edit_anon0=Nenustatyta
+edit_anon1=Nėra leidimo
+edit_aclok=Leisti ACL?
+edit_public=„WebNFS“ dalis?
+edit_index=„WebNFS“ rodyklės failas
+
+save_err=Nepavyko išsaugoti bendrinimo
+save_edirectory='$1' yra neteisingas katalogo pavadinimas
+save_edirectory2=Katalogo „$1“ nėra
+save_erw=Neįrašėte jokių kompiuterių, su kuriais dalintumėtės skaitydami ir rašydami
+save_ero=Neįrašėte jokių prieglobų, kuriomis galėtumėte dalintis tik skaitymo priemonėmis
+save_eroot=Neįrašėte jokių prieglobų, su kuriomis turėtų dalintis šaknimis
+save_ealready=Katalogas „$1“ jau yra bendrinamas
+save_ehost=Pagrindinio kompiuterio „$1“ nėra
+
+log_modify=Modifikuota NFS dalis $1 
+log_rename=Pakeista NFS dalis nuo $1 iki $2 
+log_create=Sukurta NFS dalis $1 
+log_delete=Ištrinta NFS dalis $1 
+log_apply=Taikomi pakeitimai
+
+acl_view=Ar galite redaguoti NFS dalis?
+
+ecannot=Jums neleidžiama valdyti NFS akcijų
+
+delete_err=Nepavyko ištrinti bendrinimo
+delete_enone=Nepasirinkta
+
+restart_err=Nepavyko pritaikyti pakeitimų

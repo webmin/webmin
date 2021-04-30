@@ -7,8 +7,8 @@ $access{'themes'} || &error($text{'acl_ecannot'});
 &ReadParse();
 &ui_print_header(undef, $text{'themes_title'}, "");
 
-@themes = &list_themes();
 &get_usermin_config(\%uconfig);
+@themes = &list_visible_themes($uconfig{'theme'});
 $prog = "edit_themes.cgi?mode=";
 
 # Start tabs
@@ -30,8 +30,8 @@ if (@themes) {
         print &ui_form_start("change_theme.cgi");
         print "<b>$text{'themes_sel'}</b>\n";
         print &ui_select("theme", $uconfig{'theme'},
-                [ [ '', $text{'themes_default'} ],
-                  map { [ $_->{'dir'}, $_->{'desc'} ] } @themes ]),"<p>\n";
+                [ !$uconfig{'theme'} ? [ '', $text{'themes_default'} ] : (),
+                map { [ $_->{'dir'}, $_->{'desc'} ] } @themes ]),"<p>\n";
         print &ui_form_end([ [ undef, $text{'themes_change'} ] ]);
         print &ui_tabs_end_tab("mode", "change");
 	}

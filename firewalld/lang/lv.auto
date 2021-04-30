@@ -1,0 +1,116 @@
+index_title=FirewallD
+index_atboot=Vai iespējot ugunsmūri sāknēšanas laikā?
+index_bootup=Aktivizējiet sāknēšanas laikā
+index_bootupdesc=Mainiet šo opciju, lai kontrolētu, vai ugunsmūris tiek aktivizēts sāknēšanas laikā vai nē.
+index_apply=Lietot konfigurāciju
+index_applydesc=Noklikšķiniet uz šīs pogas, lai aktivizētu iepriekš uzskaitīto ugunsmūra konfigurāciju. Visi pašreiz spēkā esošie ugunsmūra noteikumi tiks aizpildīti un aizstāti
+index_restart=Lietot konfigurāciju
+index_restartdesc=Aktivizējiet visus iepriekš uzskaitītos atļautos pakalpojumus un ostas visās zonās. Visi aktīvie noteikumi, kas netika izveidoti neatgriezeniski, tiks aizstāti.
+index_start=Startējiet FirewallD
+index_startdesc=Palaidiet FirewallD serveri un piemērojiet iepriekš uzskaitītos noteikumus.
+index_stop=Apturēt FirewallD
+index_stopdesc=Izslēdziet FirewallD serveri un noņemiet visus iepriekš uzskaitītos noteikumus.
+index_cerr=FirewallD moduli nevar izmantot : $1 
+index_zone=Rādīt noteikumus zonā:
+index_zoneok=Pārmaiņas
+index_zoneadd=Pievienot zonu ..
+index_zonedel=Dzēst zonu
+index_zonedef=Padarīt noklusējumu
+index_type=Noteikumu tips
+index_port=Osta vai pakalpojums
+index_proto=Protokols
+index_tservice=apkalpošana
+index_tport=Osta
+index_tforward=Uz priekšu
+index_padd=Pievienojiet atļauto ostu.
+index_sadd=Pievienojiet atļauto pakalpojumu.
+index_fadd=Pievienojiet portu uz priekšu.
+index_delete=Dzēst atlasītos noteikumus
+index_return=zonu saraksts
+index_ezones=Neviena FirewallD zona nav atrasta.
+index_none=Šajā zonā vēl nav nevienas atļautas ostas vai pakalpojuma.
+index_ifaces=Pielietojiet noteikumus saskarnēm:
+
+port_edit=Rediģēt ostu
+port_create=Pievienot ostu
+port_header=Atļautās porta iespējas
+port_zone=Atļauts zonā
+port_port=Osta atļaut
+port_mode0=Viena osta
+port_mode1=Ostu diapazons
+port_mode2=Tas pats, kas oriģinālais ports
+port_proto=Tīkla protokols
+port_ezone=Zona neeksistē!
+port_err=Neizdevās saglabāt portu
+port_eport=Trūkst vai nav derīgs porta numurs vai nosaukums
+port_eportlow=Zemam portam jābūt skaitlim
+port_eporthigh=Augstajam portam jābūt skaitlim
+port_eportrange=Zemai ostai jābūt zemāk par augsto ostu
+
+serv_edit=Rediģēšanas pakalpojums
+serv_create=Pievienot pakalpojumu
+serv_header=Atļautās pakalpojumu iespējas
+serv_name=Pakalpojums atļaut
+serv_err=Neizdevās saglabāt pakalpojumu
+
+forward_edit=Rediģēt uz priekšu
+forward_create=Izveidot uz priekšu
+forward_header=Ostas pāradresācijas iespējas
+forward_zone=Pārsūtīt uz zonu
+forward_err=Neizdevās saglabāt priekšu
+forward_port=Avota osta
+forward_dstport=Desintation osta
+forward_dstaddr=Galamērķa adrese
+forward_dstlocal=Šī sistēma
+forward_edstaddr=Nederīga IPv4 adresāta adrese
+forward_eneither=Jāievada mērķa adrese vai osta, vai arī abi
+
+check_ecmd=FirewallD vadības komanda $1 jūsu sistēmā netika atrasta
+
+delete_err=Neizdevās izdzēst kārtulas
+delete_enone=Neviens nav atlasīts!
+delete_edel=$1 noņemšana neizdevās : $2 
+
+zone_title=Izveidot zonu
+zone_header=Jaunas zonas iespējas
+zone_name=Zonas nosaukums
+zone_mode=Atļautās ostas un pakalpojumi
+zone_mode0=Nav (visa satiksme tiks bloķēta)
+zone_mode1=Kopēt no zonas
+zone_mode2=Tikai SSH, IDENT un Webmin
+zone_mode3=SSH, IDENT, Webmin un augstas porti
+zone_mode4=Ostas, ko izmanto virtuālajai mitināšanai
+zone_err=Neizdevās izveidot zonu
+zone_ename=Trūkst vai nav derīgs zonas nosaukums
+zone_eclash=Zona ar tādu pašu nosaukumu jau pastāv
+
+delzone_title=Dzēst zonu
+delzone_err=Neizdevās izdzēst zonu
+delzone_edefault=Noklusējuma zonu nevar noņemt
+delzone_rusure=Vai tiešām vēlaties izdzēst zonu $1, kurā ir $2 porti un $3 pakalpojumi?
+
+defzone_err=Neizdevās padarīt zonu par noklusējuma
+
+restart_err=Neizdevās piemērot konfigurāciju
+
+stop_err=Neizdevās apturēt FirewallD
+start_err=Neizdevās palaist FirewallD
+log_stop=Pārtraukta FirewallD
+log_start=Startēja FirewallD
+log_restart=Lietotā FirewallD konfigurācija
+log_bootup=Iespējot FirewallD
+log_bootdown=Atspējots FirewallD sāknēšanas laikā
+log_create_port=Pievienots atļautais ports $1 
+log_delete_port=Noņemta atļautā osta $1 
+log_update_port=Atjaunināta atļautā osta $1 
+log_create_serv=Pievienots atļautais pakalpojums $1 
+log_delete_serv=Noņemts atļautais pakalpojums $1 
+log_update_serv=Atjaunināts atļautais pakalpojums $1 
+log_create_forward=Pievienots priekšu $1 
+log_delete_forward=Noņemts uz priekšu $1 
+log_update_forward=Atjaunināts uz priekšu $1 
+log_delete_rules=Noņemtas $1 atļautās ostas
+log_ifaces_zone=Atjauninātās saskarnes zonai $1 
+log_create_zone=Izveidota zona $1 
+log_delete_zone=Dzēsta zona $1 
+log_default_zone=Zona $1 ir noklusējuma

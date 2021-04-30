@@ -6,7 +6,7 @@ sub list_services
 local(@rv, $l);
 $l = 0;
 system("$config{'get_services_command'}") if ($config{'get_services_command'});
-open(SERVICES, $config{services_file});
+open(SERVICES, "<".$config{services_file});
 while(<SERVICES>) {
 	chop; s/#.*$//g;
 	if (/^(\S+)\s+([0-9]+)\/(\S+)\s*(.*)$/) {
@@ -53,7 +53,7 @@ sub modify_service
 local(@serv, $p);
 $p = $_[3];
 $p =~ s/6.*$//;
-open(SERVICES, $config{services_file});
+open(SERVICES, "<".$config{services_file});
 @serv = <SERVICES>;
 close(SERVICES);
 $serv[$_[0]] = "$_[1]\t$_[2]/$p".($_[4] ? "\t$_[4]\n" : "\n");
@@ -67,7 +67,7 @@ system("$config{'put_services_command'}") if ($config{'put_services_command'});
 sub delete_service
 {
 local(@serv);
-open(SERVICES, $config{services_file});
+open(SERVICES, "<".$config{services_file});
 @serv = <SERVICES>;
 close(SERVICES);
 splice(@serv, $_[0], 1);
@@ -82,7 +82,7 @@ system("$config{'put_services_command'}") if ($config{'put_services_command'});
 sub list_protocols
 {
 local(@rv);
-open(PROT, $config{protocols_file});
+open(PROT, "<".$config{protocols_file});
 while(<PROT>) {
 	chop; s/#.*$//g;
 	if (!/\S/) { next; }

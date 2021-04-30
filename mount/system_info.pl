@@ -13,6 +13,7 @@ sub list_system_info
     my $html;
     my $open = 0;
     if (@disk_space) {
+        &load_theme_library();
         $html = ui_columns_start(
                                  [ucwords($text{'index_dir'}), ucwords($text{'index_type'}),
                                   ucwords($text{'edit_free'}), ucwords($text{'sysinfo_total'}),
@@ -33,12 +34,12 @@ sub list_system_info
                     my $free_percent_html;
 
                     if ($free_percent > 49) {
-                        $free_percent_html = ui_text_type("$free_percent%", 'success');
+                        $free_percent_html = ui_text_color("$free_percent%", 'success');
                     } elsif ($free_percent > 9) {
-                        $free_percent_html = ui_text_type("$free_percent%", 'warn');
+                        $free_percent_html = ui_text_color("$free_percent%", 'warn');
                     } else {
                         $open = 1;
-                        $free_percent_html = ui_text_type("$free_percent%", 'danger');
+                        $free_percent_html = ui_text_color("$free_percent%", 'danger');
                     }
                     $html .= ui_columns_row([$dir, $type, $free_percent_html . " ($free_nice)", $total_nice, $dev_id,]);
                 }

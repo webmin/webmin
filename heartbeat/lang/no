@@ -1,98 +1,103 @@
-__norefs=1
-apply_epid=Prosessen kj&#248;rer ikke lenger
-apply_err=Kunne ikke ta i bruk endringer
-auth_crc=CRC (Ingen sikkerhet)
-auth_emd5=Manglende eller ugyldig MD5 passord
-auth_err=Kunne ikke lagre autentiserings n&#248;kler
-auth_esha1=Manglende eller ugyldig SHA1 passord
-auth_header=Klynge-node autentisering
-auth_md5=MD5 med passord
-auth_mode=Autentiseringsmodus
-auth_sha1=SHA1 med passord
-auth_title=Autentiseringsn&#248;kler
-conf_auto_=${default}
-conf_auto_legacy=Legacy modus
-conf_auto_off=${conf_disabled}
-conf_auto_on=${conf_enabled}
+index_title=Heartbeat overvåker
+index_return=heartbeat overvåker
+index_edir=Heartbeat konfig.katalogen $1 finnes ikke. Kanskje Heartbeat ikke er installert, eller så er <a href='$2'>modulkonfigurasjonen</a> feil.
+index_start=Start Heartbeat overvåker
+index_startmsg=Klikk på denne knappen for å starte Hearbeat overvåker-prosessen. Dette vil aktivere automatisk feiltoleranse på systemet ditt, med gjeldende konfigurasjon.
+index_apply=Bruk endringer
+index_applymsg=Klikk på denne knappen for å tvinge Heartbeat overvåkerprosessen å laste gjeldende konfigurasjon på nytt.
+index_eha_cf=Heartbeat konfigurasjonsfilen $1 ble ikke funnet på systemet ditt. Kanskje den ikke er kopiert til riktig plass enda, eller så er <a href='$2'>modulkonfigurasjonen</a> feil.
+index_eharesources=Ressursfilen $1 ble ikke funnet på systemet ditt. Kanskje den ikke er kopiert til riktig plass enda, eller så er <a href='$2'>modulkonfigurasjonen</a> feil.
+index_eauthkeys=Filen $1 med autentiseringsnøkler ble ikke funnet på systemet ditt. Kanskje den ikke er kopiert til riktig plass enda, eller så er <a href='$2'>modulkonfigurasjonen</a> feil.
+index_ereq_resource_cmd=Scriptet for å be om ressurser fra den andre noden ($1) ble ikke funnet på systemet ditt. Kanskje det ikke er kopiert til riktig plass enda, eller så er <a href='$2'>modulkonfigurasjonen</a> feil.
+index_version=Heartbeat versjon $1
+index_noversion=Advarsel - versjonen av Heartbeat som er installert på systemet ditt kunne ikke bestemmes automatisk. Du må angi riktig versjon på siden for <a href='$1'>modulkonfigurasjon</a> .
+index_status=Heartbeat status
+
+conf_title=Konfigurasjonsinnstillinger
+conf_header=Heartbet konfigurasjonsinnstillinger
+conf_serials=Serielle heartbeat porter
 conf_baud=Baud rate for serieport
 conf_bcasts=Ethernet heartbeat grensesnitt
-conf_deadtime=Tid f&#248;r noden er betraktet som d&#248;d
+conf_none=Ingen
+conf_udpport=UDP heartbeat port
+conf_mcast=Multicast heartbeat enhet
+conf_mcastv=Enhet $1, gruppe $2, port $3, TTL $4, loopback $5
+conf_enabled=Aktivert
 conf_disabled=Deaktivert
+conf_keepalive=Tid mellom hjerteslag
+conf_nice_failback=Pen Fallback oppførsel
+conf_secs=sekunder
+conf_deadtime=Tid før noden er betraktet som død
+conf_watchdog=Watchdog enhetsfil
+conf_node=Verter i klynge
+conf_logfile=Heartbeat logg-fil
+conf_logfacility=Syslog logg-fasilitet
+conf_initdead=Initiell død-tid
+conf_ok=Lagre innstillinger
+conf_err=Kunne ikke lagre innstillinger
 conf_ebaud=Manglende eller ugyldig baud rate
 conf_ebcast=Ingen hearbeat broadcast grensesnitt angitt
 conf_ebcastif='$1' er ikke et gyldig broadcast grensesnitt
-conf_edeadtime=Manglende eller ugyldig d&#248;d-tid
-conf_einitdead=Manglende eller ugyldig initiell d&#248;d-tid
-conf_einitdead2=Intiell d&#248;d-tid m&#229; v&#230;re minst to ganger st&#248;rre en tiden f&#248;r en node betraktes som d&#248;d
+conf_eudpport=Manglende eller ugyldig heartbeat port
 conf_ekeepalive=Manglende eller ugyldig tid mellom hjerteslag
+conf_edeadtime=Manglende eller ugyldig død-tid
+conf_ewatchdog=Manglende eller ikke-eksisterende watchdog enhetsfil
+conf_enonode=Ingen klynge-verter angitt
+conf_ethisnode=Verten $1 er ikke på listen over klynge-verter
 conf_elogfile=Manglende eller ugyldig logg filnavn
+conf_einitdead=Manglende eller ugyldig initiell død-tid
+conf_einitdead2=Intiell død-tid må være minst to ganger større en tiden før en node betraktes som død
 conf_emcast_dev=Manglende eller ugyldig multicast enhet
 conf_emcast_ip=Manglende eller ugyldig multicast gruppeadresse
 conf_emcast_port=Manglende eller ugyldig multicast portnummer
 conf_emcast_ttl=Manglende eller ugyldig multicast time-to-live
-conf_enabled=Aktivert
-conf_enonode=Ingen klynge-verter angitt
-conf_err=Kunne ikke lagre innstillinger
-conf_ethisnode=Verten $1 er ikke p&#229; listen over klynge-verter
-conf_eudpport=Manglende eller ugyldig heartbeat port
-conf_ewatchdog=Manglende eller ikke-eksisterende watchdog enhetsfil
-conf_header=Heartbet konfigurasjonsinnstillinger
-conf_initdead=Initiell d&#248;d-tid
-conf_keepalive=Tid mellom hjerteslag
-conf_logfacility=Syslog logg-fasilitet
-conf_logfile=Heartbeat logg-fil
-conf_mcast=Multicast heartbeat enhet
-conf_mcastv=Enhet $1, gruppe $2, port $3, TTL $4, loopback $5
-conf_nice_failback=Pen Fallback oppf&#248;rsel
-conf_node=Verter i klynge
-conf_none=Ingen
-conf_ok=Lagre innstillinger
-conf_secs=sekunder
-conf_serials=Serielle heartbeat porter
-conf_title=Konfigurasjonsinnstillinger
-conf_udpport=UDP heartbeat port
-conf_watchdog=Watchdog enhetsfil
-index_apply=Bruk endringer
-index_applymsg=Klikk p&#229; denne knappen for &#229; tvinge Heartbeat overv&#229;kerprosessen &#229; laste gjeldende konfigurasjon p&#229; nytt.
-index_eauthkeys=Filen $1 med autentiseringsn&#248;kler ble ikke funnet p&#229; systemet ditt. Kanskje den ikke er kopiert til riktig plass enda, eller s&#229; er <a href='$2'>modulkonfigurasjonen</a> feil.
-index_edir=Heartbeat konfig.katalogen $1 finnes ikke. Kanskje Heartbeat ikke er installert, eller s&#229; er <a href='$2'>modulkonfigurasjonen</a> feil.
-index_eha_cf=Heartbeat konfigurasjonsfilen $1 ble ikke funnet p&#229; systemet ditt. Kanskje den ikke er kopiert til riktig plass enda, eller s&#229; er <a href='$2'>modulkonfigurasjonen</a> feil.
-index_eharesources=Ressursfilen $1 ble ikke funnet p&#229; systemet ditt. Kanskje den ikke er kopiert til riktig plass enda, eller s&#229; er <a href='$2'>modulkonfigurasjonen</a> feil.
-index_ereq_resource_cmd=Scriptet for &#229; be om ressurser fra den andre noden ($1) ble ikke funnet p&#229; systemet ditt. Kanskje det ikke er kopiert til riktig plass enda, eller s&#229; er <a href='$2'>modulkonfigurasjonen</a> feil.
-index_noversion=Advarsel - versjonen av Heartbeat som er installert p&#229; systemet ditt kunne ikke bestemmes automatisk. Du m&#229; angi riktig versjon p&#229; siden for <a href='$1'>modulkonfigurasjon</a> .
-index_return=heartbeat overv&#229;ker
-index_start=Start Heartbeat overv&#229;ker
-index_startmsg=Klikk p&#229; denne knappen for &#229; starte Hearbeat overv&#229;ker-prosessen. Dette vil aktivere automatisk feiltoleranse p&#229; systemet ditt, med gjeldende konfigurasjon.
-index_status=Heartbeat status
-index_title=Heartbeat overv&#229;ker
-index_version=Heartbeat versjon $1
-node_args=Ekstra argumenter
-node_broad=Broadcast adresse
-node_cidr=Nettmaske CIDR
-node_create=Ny klynge-ressurs
-node_ebroad='$1' er ikke en gyldig broadcast adresse
-node_ecidr='$1' er ikke en gyldig CIDR
-node_edit=Rediger klynge-ressurs
-node_eip='$1' er ikke en gyldig IP adresse
-node_enone=Manglende eller ugyldig prim&#230;r node
-node_err=Kunne ikke lagre klynge-ressurs
-node_header=Detaljer for klynge-ressurs
-node_ip=IP adresse
-node_ips=IP adresser for ressurs
-node_node=Prim&#230;r node for ressurs
-node_serv=Tjeneste
-node_servs=Tjenester for ressurs
-res_active=Ressurs status
+conf_auto_on=${conf_enabled}
+conf_auto_off=${conf_disabled}
+conf_auto_legacy=Legacy modus
+conf_auto_=${default}
+
+res_title=Klynge ressurser
+res_node=Primær node
+res_ips=IP adresser
+res_servs=Node tjenester
+res_none=Ingen
+res_nores=Ingen klynge ressurser er definert på systemet ditt
 res_add=Legg til klynge-ressurs
-res_down=NED
+res_return=ressurs liste
+res_active=Ressurs status
 res_getserv=Hent ressurs
 res_hbdown=Heartbeat nede
-res_ips=IP adresser
-res_node=Prim&#230;r node
-res_none=Ingen
-res_nores=Ingen klynge ressurser er definert p&#229; systemet ditt
-res_return=ressurs liste
-res_servs=Node tjenester
-res_title=Klynge ressurser
 res_up=OPP
+res_down=NED
+
+node_create=Ny klynge-ressurs
+node_edit=Rediger klynge-ressurs
+node_header=Detaljer for klynge-ressurs
+node_node=Primær node for ressurs
+node_ips=IP adresser for ressurs
+node_ip=IP adresse
+node_cidr=Nettmaske CIDR
+node_broad=Broadcast adresse
+node_servs=Tjenester for ressurs
+node_serv=Tjeneste
+node_args=Ekstra argumenter
+node_err=Kunne ikke lagre klynge-ressurs
+node_enone=Manglende eller ugyldig primær node
+node_eip='$1' er ikke en gyldig IP adresse
+node_ecidr='$1' er ikke en gyldig CIDR
+node_ebroad='$1' er ikke en gyldig broadcast adresse
+
+auth_title=Autentiseringsnøkler
+auth_header=Klynge-node autentisering
+auth_mode=Autentiseringsmodus
+auth_crc=CRC (Ingen sikkerhet)
+auth_sha1=SHA1 med passord
+auth_md5=MD5 med passord
+auth_err=Kunne ikke lagre autentiserings nøkler
+auth_emd5=Manglende eller ugyldig MD5 passord
+auth_esha1=Manglende eller ugyldig SHA1 passord
+
 start_err=Kunne ikke starte heartbeat
+
+apply_err=Kunne ikke ta i bruk endringer
+apply_epid=Prosessen kjører ikke lenger

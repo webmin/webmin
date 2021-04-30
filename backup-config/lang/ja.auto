@@ -1,0 +1,15 @@
+index_test=復元されるものを表示するだけですか？
+
+edit_header2=バックアップ前後のコマンド
+edit_header3=バックアップスケジュール
+edit_other2=復元するその他のファイル
+edit_pre=事前バックアップコマンド
+edit_post=バックアップ後コマンド
+
+restore_emods=モジュールまたはその他のファイルが選択されていません
+restore_testing=$1からバックアップの内容を抽出しています ..
+restore_done2=..バックアップ内のファイルは次のとおりです。
+
+email_pre=バックアップ前コマンド $1..を実行しています
+email_post=バックアップ後コマンド $1..を実行しています
+email_prefailed=バックアップ前のコマンドが失敗しました！

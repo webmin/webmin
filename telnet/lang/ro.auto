@@ -1,0 +1,8 @@
+index_title=Autentificare SSH
+index_warn=Avertizare! Această sesiune telnet este <b>nu</b> criptată.
+index_nojava=Acest modul necesită ca Java să funcționeze, dar browserul dvs. nu acceptă java
+index_credits=Applet dezvoltat în cadrul GPL de <a href='$1' target=_top>Matthias L. Jugel și Marcus Mei�ner</a>.
+index_sshcredits=Include software dezvoltat de echipa de dezvoltare Cryptix (<a href=$1 target=_top>$1</a>).
+index_esocket=Nu există un server telnet care rulează pe portul $1 $2.
+index_esocket2=Nu există un server SSH care rulează pe portul $1 $2.
+index_elookup=Eroare la adresa IP de căutare pentru $1 pentru a testa telnet sau server SSH.

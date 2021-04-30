@@ -1,4 +1,3 @@
-risk=low medium high
 name=DHCPD
 category=servers
 os_support=debian-linux freebsd osf1 redhat-linux mandrake-linux slackware-linux solaris suse-linux united-linux unixware openserver open-linux turbo-linux openbsd corel-linux cobalt-linux irix netbsd msc-linux generic-linux gentoo-linux hpux trustix-linux macos sol-linux coherent-linux openmamba-linux pardus-linux

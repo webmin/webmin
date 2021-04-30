@@ -1,0 +1,14 @@
+inittab_active=Aktiva?
+inittab_kbrequest=Special tangentkombination
+inittab_apply=Använd Init-konfiguration
+inittab_applymsg=Klicka på den här knappen för att tillämpa den aktuella SysV Init-konfigurationen genom att köra kommandot <tt>telinit q</tt>. Var medveten om att eventuella misstag i din konfiguration kan göra systemet oanvändbart när detta kommando körs.
+index_delete=Radera valda processer
+inittab_none2=Inga uppstartsprocesser hittades på ditt system. Detta indikerar förmodligen att den inte använder SysV init-konfigurationsfilen.
+
+log_apply=Tillämpad konfiguration
+log_deletes=$1 init-processer raderade
+
+apply_err=Det gick inte att tillämpa konfigurationen
+
+delete_err=Det gick inte att ta bort processer
+delete_enone=Ingen vald

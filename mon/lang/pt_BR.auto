@@ -1,0 +1,200 @@
+index_title=MON Service Monitor
+index_return=Índice MON
+index_edir=O diretório MON $1 não existe. Talvez o MON não esteja instalado ou a sua <a href='$2'>configuração do módulo</a> esteja incorreta.
+mon_global_title=Configuração global de variáveis
+mon_conf_title=Configuração básica
+mon_status_title=Estado operacional
+hostgroups_title=Grupos de hosts de configuração MON
+services_title=Definições de serviço de grupos de observação
+
+head_hostgroups=Grupos de Host e Serviços
+head_groups=Nome do grupo de host
+head_members=Membros do grupo de host
+head_services=Serviços de grupo de host para assistir
+head_service=Serviço para assistir
+head_param=Parâmetros de serviço
+head_watch=Assista ao grupo?
+head_monauth=Fornecer autenticação para MONCMD
+head_usr=Nome do usuário
+head_pass=Senha
+head_mand=(Os parâmetros em "VERMELHO" são obrigatórios)
+
+err_nomon=pacote 'mon' não está instalado no sistema
+err_nomonconf=O arquivo de configuração MON $1 não foi encontrado no seu sistema. Talvez o MON não esteja instalado ou a sua <a href='$2'>configuração do módulo</a> esteja incorreta.
+err_nowatch=Nenhum grupo de observação selecionado. Selecione pelo menos um grupo de observação para continuar.
+err_noserv=Nenhum serviço selecionado para o grupo de observação
+err_nomemb=Nenhum host/membro selecionado para o grupo de observação
+err_monrun=O MON não está sendo executado na máquina host. Por favor, inicie o MON.
+stop_err=Falha ao parar o MON
+stop_epid=Não está mais em execução
+start_err=Falha ao iniciar o MON
+restart_err=Falha ao reiniciar o MON
+restart_epid=Falha ao obter o PID
+
+other=Outro (espaço separado)
+next=Próximo
+mon_stat=Status MON
+mon_off=Serviços MON não iniciados
+mon_start=Iniciar serviços MON
+mon_stop=Interromper serviços MON
+mon_restart=Reinicie os serviços MON
+mon_startdesc=Clique neste botão para iniciar o servidor MON. Até que seja iniciado, nenhum monitoramento configurado será feito.
+mon_stopdesc=Clique neste botão para parar o servidor MON. Ao parar, o monitoramento configurado cessará.
+mon_restartdesc=Clique neste botão para aplicar a configuração atual do MON, reiniciando o processo do servidor.
+line=(um em cada linha)
+save_apply=Salvar e aplicar
+watch=Grupo de observação
+members=Membros
+def_perargs=wd {sab-dom}
+
+def_desc=descrição
+def_inter=intervalo
+def_mon=monitor
+def_dep=pendurar
+def_per=período
+def_alert=alerta
+def_alertevr=alertevery
+def_alertaft=alertafter
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=armadilha
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=Grupos de Anfitriões
+groups_group=Nome do grupo
+groups_members=Anfitriões membros
+
+watches_title=Assista Listas
+watches_group=Grupo assistindo
+watches_services=Serviços vigiados
+watches_sadd=Adicionar serviço ..
+watches_add=Adicionar lista de observação para o grupo :
+watches_return=listas de observação
+watches_none=Nenhuma lista de observação foi definida ainda.
+
+global_title=Opções Globais
+global_header=Opções de configuração global do MON
+global_maxprocs=Máximo de processos MON
+global_histlength=Duração do histórico de eventos
+global_alertdir=Diretório de programas de alerta
+global_mondir=Diretório de programas do monitor
+global_authtype=Tipo de Autenticação
+global_authtype_=Padrão
+global_authtype_getpwnam=Chamadas do sistema
+global_authtype_userfile=Arquivo de usuários MON
+global_authtype_shadow=Arquivo sombra
+global_userfile=Arquivo do usuário MON
+global_emaxprocs=Número ausente ou inválido de processos MON
+global_ehistlength=Comprimento do histórico de eventos ausente ou inválido
+global_ealertdir=Diretório de programas de alerta ausente ou inválido
+global_emondir=Diretório de programas de monitor ausente ou inválido
+global_euserfile=Arquivo de usuários MON ausentes
+
+watch_title=Editar lista de observação
+watch_header=Detalhes de exibição do grupo host
+watch_group=Grupo anfitrião para assistir
+watch_services=Serviços vigiados
+watch_service=Nome do Serviço
+watch_monitor=Monitor para usar
+watch_interval=Verifique cada
+watch_periods=Períodos de monitoramento
+
+service_title=Adicionar serviço
+service_title2=Serviço de edição
+service_header=Detalhes do serviço assistido
+service_name=Nome do serviço
+service_interval=Verifique cada
+service_desc=Descrição
+service_units_s=segundos
+service_units_m=minutos
+service_units_h=horas
+service_units_d=dias
+service_units_w=semanas
+service_monitor=Usando o monitor
+service_mon1=Monitor padrão
+service_mon0=Outro monitor ..
+service_args=Parâmetros do monitor
+service_period=Período de monitoramento $1 
+service_days=Dias para verificar
+service_hours=Horas a verificar
+service_all=Todos
+service_pstr=Especificação do período
+service_new=Novo período de monitoramento
+service_alerts=Alertas por período
+service_alert=Alerta
+service_atype=Executar quando
+service_atype_alert=Serviço cai
+service_atype_upalert=Serviços surgem
+service_atype_startupalert=MON inicia
+service_aargs=Parâmetros adicionais
+service_every=Enviar alerta
+service_every_def=Toda vez que o monitor é executado
+service_every_time=Cada
+service_num=Alertas máximos para enviar
+service_unlimited=Ilimitado
+service_after=Falhas antes do alerta
+service_immediate=Imediatamente
+service_after_num=Após $1 falhas
+service_aftertime=Dentro do intervalo de tempo
+service_newperiod=Adicionar um novo período
+service_delperiod=Excluir este período
+service_err=Falha ao salvar o serviço
+service_ename=Nome de serviço ausente ou inválido
+service_einterval=Intervalo de verificação ausente ou inválido
+service_eother=Monitor ausente ou inválido
+service_ehour=Hora ausente ou inválida para o período $1 (deve ser 9:00 ou 17:00)
+service_eperiod=Não há dias ou horas especificados para o período $1 
+service_eevery=Intervalo de alerta de serviço ausente ou inválido
+service_eafter=Número de falhas ausente ou inválido antes do alerta
+service_enum=Alertas máximos ausentes ou inválidos para envio
+service_epstr=Especificação de período ausente
+service_known0=<tt>Time::Period</tt> string
+service_known1=Dias e horas especificados
+service_known2=Período definido
+
+status_title=Status MON
+status_ecgi=O programa CGI de status MON $1 não existe. Talvez não esteja instalado ou sua <a href='$2'>configuração do módulo</a> está incorreta.
+status_eperl=O programa CGI de status MON requer o módulo $1 perl. <a href='$2'>Clique aqui</a> para instalá-lo diretamente do CPAN.
+status_esame=O programa CGI de status MON $1 foi definido como o script <tt>mon.cgi</tt> neste módulo Webmin, não o programa CGI que acompanha o MON. Ajuste a <a href='$2'>configuração do módulo</a> para usar o caminho correto.
+
+users_title=Usuários MON
+users_etype=A lista de usuários do MON não pode ser editada porque o MON não está atualmente configurado para usá-lo para autenticação na página <a href='$1'>Opções globais</a>.
+users_header=Usuários MON permitidos em $1 
+users_nousers=Nenhum usuário MON foi definido em $1.
+users_add=Crie um novo usuário.
+users_return=Lista de usuários MON
+
+user_create=Criar usuário MON
+user_edit=Editar usuário MON
+user_header=Detalhes do usuário MON
+user_user=Nome do usuário
+user_pass=Senha
+user_leave=Deixar inalterado
+user_err=Falha ao salvar o usuário
+user_euser=Nome de usuário ausente ou inválido
+user_esame=Um usuário com o mesmo nome já existe
+
+auth_title=Comandos do cliente
+auth_desc=Esta página permite controlar quais comandos MON podem ser executados por quais usuários ao usar os programas clientes.
+auth_cmd=Comando MON
+auth_users=Usuários permitidos
+auth_none=Ninguém
+auth_all=Todo o mundo
+auth_sel=Somente usuários
+auth_err=Falha ao salvar comandos do cliente
+auth_eusers=Nenhum usuário entra no comando $1 
+
+periods_title=Períodos definidos
+periods_period=Nome do período
+periods_times=Dias e horários
+periods_alldays=Todos os dias
+periods_allhours=Todas as horas
+periods_err=Falha ao salvar períodos definidos
+periods_ename='$1' não é um nome de período válido
+periods_ehour=Hora ausente ou inválida para o período $1 (deve ser 9:00 ou 17:00)
+
+show_title=Estado operacional
+show_ecgi=O programa de status MON $1 não existe. Talvez não esteja instalado ou sua <a href='$2'>configuração do módulo</a> está incorreta.

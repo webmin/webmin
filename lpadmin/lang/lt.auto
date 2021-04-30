@@ -1,0 +1,316 @@
+index_title=Spausdintuvo administravimas
+index_header=Galimi spausdintuvai
+index_name=Spausdintuvas
+index_desc=apibūdinimas
+index_to=Spausdinti į
+index_driver=Vairuotojas
+index_enabled=Įjungtas?
+index_accepting=Priimate?
+index_jobs=Darbai
+index_none=Šioje sistemoje nėra įdiegtų spausdintuvų.
+index_list=Sąrašas ..
+index_jlist=Darbai ..
+index_jcount=$1 darbo vietų ..
+index_add=Pridėkite naują spausdintuvą.
+index_stop=Sustabdyti planuotoją
+index_stopmsg=Spustelėkite šį mygtuką, norėdami sustabdyti vykdomą spausdinimo planavimo procesą. Tai neleis vietiniams ar nuotoliniams vartotojams spausdinti jūsų sistemoje.
+index_start=Pradėti planuotoją
+index_startmsg=Spustelėkite šį mygtuką, kad pradėtumėte spausdinimo planavimo procesą. Tai leis vietiniams ir nuotoliniams vartotojams spausdinti jūsų sistemoje.
+index_restart=Iš naujo paleiskite planuoklę
+index_restartmsg=Spustelėkite šį mygtuką, kad iš naujo paleistumėte spausdinimo planavimo procesą. Tai privers pritaikyti dabartinę spausdinimo konfigūraciją.
+index_return=spausdintuvų sąrašas
+index_esystem=Įdėkite pasirinktos spausdinimo sistemos programinę įrangą arba naudokite <a href='$1'>modulio konfigūraciją</a>, kad ją pakeistumėte.
+index_style=Spausdinimo sistema: $1 
+index_cluster=Klasterių serveriai
+index_clusterdesc=Spustelėkite šį mygtuką norėdami nustatyti papildomus „Webmin“ serverius, kuriuose bus kuriami, atnaujinami ir ištrinami spausdintuvai.
+index_delete=Ištrinti pasirinktus spausdintuvus
+
+style_solaris=Solaris
+style_linux=„Linux LPR“
+style_freebsd=„FreeBSD LPR“
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=„UnixWare“
+style_cups=CUPS
+style_irix=IRIX
+style_aix=AIX
+
+edit_eedit=Jums neleidžiama redaguoti šio spausdintuvo
+edit_eadd=Jums neleidžiama pridėti spausdintuvų
+edit_add=Kurti spausdintuvą
+edit_edit=Redaguoti spausdintuvą
+edit_conf=Spausdintuvo konfigūracija
+edit_name=vardas
+edit_acc=Priimate užklausas?
+edit_why=Ne - Kodėl gi ne?
+edit_desc=apibūdinimas
+edit_ena=Spausdinimas įjungtas?
+edit_acl=Prieigos kontrolė
+edit_allow=Leisk visiems
+edit_deny=Neigia visų
+edit_allowu=Leisti sąraše esantiems vartotojams ..
+edit_denyu=Neleisti išvardytų vartotojų ..
+edit_banner=Spausdinti reklamjuostę?
+edit_opt=Nebūtina
+edit_default=Numatytasis spausdintuvas?
+edit_already=Jau numatytasis spausdintuvas
+edit_max=Maksimalus spausdinimo užduoties dydis
+edit_unlimited=Neribota
+edit_dacc=Vairuotojas sutinka
+edit_dtext=Tekstas
+edit_dpost=Postraštis
+edit_dother=Kiti
+edit_alt=Alternatyvūs spausdintuvų pavadinimai
+edit_dest=Spausdinti paskirties vietą
+edit_dev=Vietinis įrenginys
+edit_file=Vietinė byla
+edit_remote=Nuotolinis „Unix“ serveris
+edit_rqueue=Spausdintuvas
+edit_type=Tipas
+edit_smb=Nuotolinis „Windows“ serveris
+edit_share=Spausdintuvas
+edit_user=Vartotojas
+edit_pass=Slaptažodis
+edit_wgroup=Darbo grupė
+edit_hpnp=Nuotolinis HPNP serveris
+edit_port=Uostas
+edit_direct=Tiesioginis TCP ryšys
+edit_dport=Uostas
+edit_driver=Spausdintuvo tvarkyklė
+edit_check=Patikrinkite, ar neveikia nuotolinis serveris?
+
+blocks=blokai
+
+save_err=Nepavyko išsaugoti spausdintuvo
+save_eadd=Jums neleidžiama pridėti spausdintuvų
+save_eedit=Jums neleidžiama redaguoti šio spausdintuvo
+save_ename=„$1“ nėra teisingas spausdintuvo pavadinimas
+save_edup=Spausdintuvas, vadinamas „$1“, jau yra
+save_eallow=Jokių vartotojų leisti įeiti
+save_edeny=Nei vienas vartotojas negali paneigti
+save_euser=Vartotojo '$1' neegzistuoja
+save_etype=Turite pasirinkti bent vieną tipą, kurį ši tvarkyklė priims
+save_emax=Didžiausias spausdinimo užduoties dydis turi būti sveikasis skaičius
+save_efile=„$1“ neegzistuoja
+save_erhost=Nuotolinio kompiuterio „$1“ nėra
+save_erport=Nuotolinis prievadas '$1' negalioja
+save_erqueue=„$1“ nėra teisingas nuotolinės eilės pavadinimas
+save_eremote=Tvarkyklės negali būti naudojamos su nuotoliniais „Unix“ spausdintuvais
+save_edhost=Tiesioginio pagrindinio kompiuterio „$1“ nėra
+save_edport=Trūksta arba netinkamas tiesioginis prievadas
+save_evalid=Spausdinimo sistema neleido šio spausdintuvo
+save_errslave=Šioje sistemoje spausdintuvas sukūrė gerai, tačiau grupių grupėse įvyko šios klaidos : $1 
+save_egone=Nerastas spausdintuvas pavadinimu '$1'
+save_errdelslave=Spausdintuvas ištrynė gerai šioje sistemoje, tačiau grupių grupėse įvyko šios klaidos : $1 
+
+jobs_title=Spausdinimo darbai
+jobs_header=Spausdinimo užduotys $1 
+jobs_id=Darbovietės ID
+jobs_size=Dydis
+jobs_by=Pateikė
+jobs_when=Pateikta
+jobs_file=Failo pavadinimas
+jobs_cancel=Norėdami atšaukti, spustelėkite aukščiau esančiame sąraše darbo ID.
+jobs_cancelview=Spustelėkite darbo ID iš aukščiau esančio sąrašo, kad atšauktumėte, arba spustelėkite darbo dydį, kad jį peržiūrėtumėte.
+jobs_none=Spausdintuvas $1 neturi laukiančių darbų.
+jobs_all=Atšaukite visus spausdinimo darbus
+jobs_bytes=baitų
+jobs_test=Spausdinti bandomąjį puslapį
+jobs_cancelsel=Atšaukti pasirinktus darbus
+jobs_on=Spausdintuve $1 
+jobs_return=spausdinimo darbų sąrašas
+
+cancel_ecannot=Jums neleidžiama atšaukti spausdinimo darbų
+cancel_err=Nepavyko atšaukti spausdinimo užduoties
+cancel_egone=Spausdinimo užduotis $1 nebeegzistuoja
+
+view_ecannot=Negalite peržiūrėti šio spausdinimo darbo
+view_egone=Ši spausdinimo užduotis nebeegzistuoja
+
+start_ecannot=Jums neleidžiama pradėti planuoti
+start_err=Nepavyko paleisti planavimo priemonės
+
+stop_ecannot=Jums neleidžiama sustabdyti planuotojo
+stop_err=Nepavyko sustabdyti planavimo priemonės
+
+restart_ecannot=Jums neleidžiama iš naujo paleisti planavimo priemonės
+restart_err=Nepavyko iš naujo paleisti planavimo priemonės
+
+webmin_none=Nė vienas
+webmin_nonemsg=„Postcript“ arba teksto spausdintuvas
+webmin_remotemsg=Nuotolinis spausdintuvas
+webmin_model=Modelis
+webmin_prog=Programa
+webmin_driver=„Webmin“ tvarkyklė
+webmin_uniprint=„Uniprint“ tvarkyklė
+webmin_edrivers=Nepavyko gauti tvarkyklių iš $1. „Webmin“ spausdintuvo tvarkyklės, naudojančios „ghostscript“, nėra
+webmin_egs=Komanda $1 nerasta. „Webmin“ spausdintuvo tvarkyklės, naudojančios „ghostscript“, nėra
+webmin_edriver=„$1“ neegzistuoja
+
+caldera_none=Nė vienas
+caldera_nonemsg=Nuotolinis arba neapdorotas spausdintuvas
+caldera_prog=Programa
+caldera_coas=COAS vairuotojas
+caldera_printer=Spausdintuvas ir skiriamoji geba
+caldera_eof=Siųsti EOF?
+caldera_paper=Popieriaus dydis
+caldera_double=Spausdinti dvipusį?
+caldera_gsopts=Papildomos GS parinktys
+caldera_uniprint=„Uniprint“ tvarkyklė
+caldera_eprog=„$1“ neegzistuoja
+caldera_edriver=Nepasirinkta spausdintuvo tvarkyklė
+caldera_eres=Nepasirinkta jokia skiriamoji geba
+
+redhat_none=Nė vienas
+redhat_nonemsg=„Postcript“ arba teksto spausdintuvas
+redhat_prog=Programa
+redhat_driver=Redhat vairuotojas
+redhat_printer=Spausdintuvas ir skiriamoji geba
+redhat_eof=Siųsti EOF?
+redhat_paper=Popieriaus dydis
+redhat_pages=Puslapiai išvesties puslapyje
+redhat_gsopts=Papildomos GS parinktys
+redhat_hmargin=Dešinė/kairė paraštė
+redhat_vmargin=Viršutinė/apatinė paraštė
+redhat_crlf=Pataisyti laiptų pakopų tekstą?
+redhat_eprog=„$1“ neegzistuoja
+redhat_edriver=Nepasirinkta spausdintuvo tvarkyklė
+redhat_ehmargin=Trūksta arba neteisinga dešinė/kairė paraštė
+redhat_evmargin=Trūksta arba netinkama viršutinė/apatinė paraštė
+redhat_eres=Nepasirinkta jokia skiriamoji geba
+redhat_printer2=Spausdintuvo modelis ir tvarkyklė
+
+suse_none=Nė vienas
+suse_nonemsg=„Postcript“ arba teksto spausdintuvas
+suse_prog=Programa
+suse_driver=APSfiltro tvarkyklė
+suse_printer=Spausdintuvo tipas
+suse_res=Rezoliucija DPI
+suse_colour=Spalvotas spausdintuvas?
+suse_paper=Popieriaus dydis
+suse_method=Filtravimo metodas
+suse_auto=Automatinis
+suse_ascii=ASCII
+suse_raw=Neapdorotas
+suse_extra=Papildomos „ghostscript“ parinktys
+suse_yast2=YAST2 vairuotojas
+suse_edriver=Nepasirinktas spausdintuvo tipas
+suse_eres=Trūksta arba netinkama rezoliucija
+
+estop=Nepavyko sustabdyti lpd : $1 
+
+acl_printers=Spausdintuvai, kuriuos šis vartotojas gali sukonfigūruoti
+acl_add=Ar galite pridėti naujų spausdintuvų?
+acl_cancel=Ar galima atšaukti spausdinimo užduotis?
+acl_stop=Ar galima sustoti ar pradėti planuoti?
+acl_restart=Tik paleiskite iš naujo
+acl_listed=Tik pasirinktuose spausdintuvuose ..
+acl_pall=Visi spausdintuvai
+acl_psel=Pasirinkta ..
+acl_view=Rodyti nekonfigūruojamus spausdintuvus?
+acl_test=Ar galima spausdinti bandomuosius puslapius?
+acl_user=Tvarkykite spausdinimo užduotis, priklausančias
+acl_user_all=Visi vartotojai
+acl_user_this=Dabartinis „Webmin“ vartotojas
+acl_delete=Ar galima ištrinti spausdintuvus?
+acl_cluster=Ar gali valdyti spausdintuvų grupę?
+
+log_stop=Sustabdytas spausdinimo planavimas
+log_start=Pradėtas spausdinimo planavimas
+log_restart=Iš naujo paleistas spausdinimo planavimas
+log_cancel_job=Atšaukta $2 spausdinimo užduotis $1 
+log_cancel_all=Atšaukė visas spausdinimo užduotis $1 
+log_cancel_sel=$2 spausdinimo užduotys atšauktos
+log_create=Sukurtas spausdintuvas $1 $2 
+log_modify=Modifikuotas spausdintuvas $1 $2 
+log_delete=Ištrintas spausdintuvas $1 iš $2 
+log_create_l=Sukurtas $3 spausdintuvas $1 $2 
+log_modify_l=Modifikuotas $3 spausdintuvas $1 $2 
+log_delete_l=Ištrintas $3 spausdintuvas $1 iš $2 
+
+linux_paralel=Lygiagretus prievadas $1 
+linux_serial=$1 nuoseklusis prievadas (COM $1)
+linux_null=Null įrenginys
+linux_usb=USB spausdintuvas $1 
+linux_ecmd=Komanda $1 jūsų sistemoje nerasta. Tai rodo, kad „Linux“ spausdinimo sistema neįdiegta.
+linux_espool=Jūsų sistemos spiralės aplanko $1 nėra, o tai rodo, kad „Linux“ spausdinimo sistema neįdiegta.
+
+freebsd_paralel=Lygiagretus uostas
+freebsd_serial=$1 nuoseklusis prievadas (COM $1)
+freebsd_ecmd=Komanda $1 jūsų sistemoje nerasta, tai rodo, kad „FreeBSD“ spausdinimo sistema neįdiegta.
+freebsd_espool=Ritinių katalogo $1 jūsų sistemoje nėra, o tai rodo, kad „FreeBSD“ spausdinimo sistema neįdiegta.
+
+openbsd_paralel=Lygiagretus uostas
+openbsd_serial=$1 nuoseklusis prievadas (COM $1)
+
+unixware_paralel=Lygiagretus prievadas $1 
+unixware_serial=Serijos prievadas $1 
+unixware_null=Null įrenginys
+unixware_ecmd=Komanda $1 jūsų sistemoje nerasta. Tai rodo, kad „UnixWare“ spausdinimo sistema neįdiegta.
+
+hpux_paralel=Lygiagretus $1 
+hpux_serial=Serija $1 
+hpux_null=Null įrenginys
+hpux_ecmd=Komanda $1 jūsų sistemoje nerasta. Tai rodo, kad HPUX spausdinimo sistema neįdiegta.
+hpux_eiface=Sąsajos scenarijų katalogo $1 jūsų sistemoje nėra. Tai rodo, kad HPUX spausdinimo sistema neįdiegta.
+
+lprng_paralel=Lygiagretus prievadas $1 
+lprng_serial=$1 nuoseklusis prievadas (COM $1)
+lprng_null=Null įrenginys
+lprng_ecmd=Komanda $1 jūsų sistemoje nerasta. Tai rodo, kad LPRng spausdinimo sistema neįdiegta.
+lprng_espool=Ryšio aplanko $1 jūsų sistemoje nėra, o tai rodo, kad LPRng spausdinimo sistema neįdiegta.
+
+solaris_paralel=Lygiagretus uostas
+solaris_uparalel=„Ultra 5/10“ lygiagretus prievadas
+solaris_serial=Serijos prievadas $1 
+solaris_null=Null įrenginys
+solaris_ecmd=Komanda $1 jūsų sistemoje nerasta. Tai rodo, kad „Solaris“ spausdinimo sistema neįdiegta.
+
+test_title=Spausdinti bandomąjį puslapį
+test_ecannot=Jums neleidžiama spausdinti bandomųjų puslapių
+test_desc=Ši forma leidžia spausdinti bandomąjį puslapį spausdintuvui $1. Pasirinkite norimo spausdinti puslapio tipą :
+test_0=Nespalvotas „PostScript“ puslapis
+test_1=Spalvotas „PostScript“ puslapis
+test_2=Paprastas ASCII tekstas
+test_3=Bet koks įkeltas failas
+test_print=Spausdinti puslapį
+test_exec=Spausdinamas bandomasis puslapis su komanda $1 ..
+test_failed=.. komanda nepavyko!
+test_ok=.. komanda baigta.
+
+cups_none=Nė vienas
+cups_nonemsg=Nuotolinis arba neapdorotas spausdintuvas
+cups_prog=Programa
+cups_driver=CUPS vairuotojas
+cups_eprog=„$1“ nėra tinkama programa
+cups_opts=„ $1 “ parinktys
+cups_ecmd=Komanda $1 jūsų sistemoje nerasta. Tai rodo, kad CUPS spausdinimo sistema neįdiegta.
+
+irix_ecmd=Komanda $1 jūsų sistemoje nerasta. Tai rodo, kad IRIX spausdinimo sistema neįdiegta.
+irix_eiface=Sąsajos scenarijų katalogo $1 jūsų sistemoje nėra. Tai rodo, kad IRIX spausdinimo sistema neįdiegta.
+
+aix_port=Spausdintuvo prievadas $1 
+aix_edesc=Netinkamas aprašymas - leidžiamos tik raidės ir skaičiai, be tarpų
+aix_ecmd=AIX spausdintuvo serveris $1 nerastas. Galbūt jis neįdiegtas, arba naudojama kita spausdinimo sistema.
+
+cluster_title=Klasterinių spausdintuvų serveriai
+cluster_none=Prie spausdintuvų grupės dar nepridėta serverių.
+cluster_host=Pagrindinio kompiuterio vardas
+cluster_desc=apibūdinimas
+cluster_os=Operacinė sistema
+cluster_add=Pridėti serverį
+cluster_gadd=Įtraukite serverius į grupę
+cluster_need=„Webmin“ serverių rodyklės modulyje turite pridėti serverius su prisijungimo vardu ir slaptažodžiu, kad juos būtų galima valdyti čia.
+cluster_return=klasterių serveriai
+cluster_delete=Pašalinti pasirinktą
+cluster_ecannot=Jums neleidžiama valdyti klasterinių spausdintuvų serverių
+
+add_title=Pridėti serverius
+add_msg=Pridedama $1 ..
+add_gmsg=Serverių pridėjimas grupėje $1 ..
+add_err=Nepavyko pridėti serverio
+add_gerr=Nepavyko pridėti grupės
+add_echeck=Serveris $1 neturi spausdintuvo administravimo modulio
+add_ediff=Serveris $1 naudoja kitą serverio spausdinimo sistemą ($2)
+add_ediff2=Serveris $1 naudoja kitą šio serverio spausdinimo tvarkyklę ($2)
+add_ok=Pridėta $1, su $2 spausdintuvais.

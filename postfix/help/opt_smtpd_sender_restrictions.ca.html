@@ -3,42 +3,42 @@
 <center><tt>smtpd_sender_restrictions</tt></center>
 <hr>
 
-Aquest par‡metre especifica les restriccions opcionals sobre les adreces
+Aquest par√†metre especifica les restriccions opcionals sobre les adreces
 remitents que els clients SMTP poden enviar en ordres MAIL FROM.
 
 <p>
 
-El valor per defecte Ès permetre qualsevol adreÁa remitent.
-Es troben disponibles les restriccions seg¸ents:
+El valor per defecte √©s permetre qualsevol adre√ßa remitent.
+Es troben disponibles les restriccions seg√ºents:
 
 <ul>
-<li><tt>permit_mynetworks:</tt> permet si l'adreÁa del client coincideix amb
+<li><tt>permit_mynetworks:</tt> permet si l'adre√ßa del client coincideix amb
         <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
-<li><tt>reject_unknown_client:</tt> rebutja la peticiÛ si el nom de host client Ès desconegut.
-<li><tt>reject_maps_rbl:</tt> rebutja si el client est‡ llistat a
+<li><tt>reject_unknown_client:</tt> rebutja la petici√≥ si el nom de host client √©s desconegut.
+<li><tt>reject_maps_rbl:</tt> rebutja si el client est√† llistat a
         <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
 <li><tt>reject_invalid_hostname:</tt> rebutja nom de host HELO amb sintaxi incorrecta.
 <li><tt>reject_unknown_hostname:</tt> rebutja nom de host HELO sense cap registre DNS A o MX.
 <li><tt>reject_unknown_sender_domain:</tt> rebutja domini remitent sense cap registre A o MX.
-<li><tt>check_sender_access maptype:mapname:</tt> consulta l'adreÁa remitent, domini pare, o partlocal@.
-    	Rebutja si el resultat Ès REJECT o &quot;[45]xx text&quot;
+<li><tt>check_sender_access maptype:mapname:</tt> consulta l'adre√ßa remitent, domini pare, o partlocal@.
+    	Rebutja si el resultat √©s REJECT o &quot;[45]xx text&quot;
         Permet altrament.
 <li><tt>check_client_access maptype:mapname:</tt> vegeu
         <a href=opt_smtpd_client_restrictions>smtpd_client_restrictions</a>.
 <li><tt>check_helo_access maptype:mapname:</tt> vegeu
         <a href=opt_smtpd_helo_restrictions>smtpd_helo_restrictions</a>.
-<li><tt>reject_non_fqdn_hostname:</tt> rebutja nom de host HELO que no est‡ en format FQDN
-<li><tt>reject_non_fqdn_sender:</tt> rebutja adreÁa remitent que no est‡ en format FQDN
-<li><tt>reject:</tt> rebutja la peticiÛ. Posa-ho al final d'una restricciÛ.
-<li><tt>permit:</tt> permet la peticiÛ. Posa-ho al final d'una restricciÛ.
+<li><tt>reject_non_fqdn_hostname:</tt> rebutja nom de host HELO que no est√† en format FQDN
+<li><tt>reject_non_fqdn_sender:</tt> rebutja adre√ßa remitent que no est√† en format FQDN
+<li><tt>reject:</tt> rebutja la petici√≥. Posa-ho al final d'una restricci√≥.
+<li><tt>permit:</tt> permet la petici√≥. Posa-ho al final d'una restricci√≥.
 </ul>
 
-Les restriccions s'apliquen en l'ordre especificat; la primera restricciÛ
+Les restriccions s'apliquen en l'ordre especificat; la primera restricci√≥
 que coincideixi guanya.
 
 <p>
 
 Especifica una llista de restriccions, separades per comes i/o espais.
-Continua les lÌnies llargues comenÁant la lÌnia seg¸ent amb un espai.
+Continua les l√≠nies llargues comen√ßant la l√≠nia seg√ºent amb un espai.
 
 <hr>

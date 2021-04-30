@@ -1,0 +1,21 @@
+index_elink=Oraindik ez da ezarri tuneleko URLrik.
+index_url=Sartu URL irekitzeko:
+index_open=Open
+
+link_eurl=Tunelaren URL baliogabea : $1 
+link_elogin=Huts egin du $1 gisa $1 saiatzean.
+link_eautologin=$1 sarbide edo pasahitz baliogabea. <a href='$2'>Egin klik hemen</a> saioa hasteko.
+link_enouser=Erabiltzaile-izena eta pasahitza behar dira $1 era sartzeko, baina ez da batere konfiguratu.
+link_ebadurl=Ezin duzu $1 URL sartzeko baimenik
+link_mconfig=Erabili <a href='$1'>moduluaren konfigurazioa</a> orria saioa hasteko.
+
+login_title=Sartu webgunera
+login_desc=Erabiltzaile izena eta pasahitza eman behar dituzu $1 era sartzeko.
+login_header=Webgunearen autentifikazioa
+login_user=Erabiltzaile izena
+login_pass=Pasahitza
+login_login=Saioa hasi
+login_clear=Garbitu
+
+seturl_err=Ezin izan da URL ireki
+seturl_eurl=URL baliogabea sartu da

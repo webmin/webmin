@@ -1,0 +1,405 @@
+index_title=QMail-posbediener
+index_edir=Die QMail-basisgids $1 bestaan nie. Miskien is QMail nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
+index_edir2=Die gids $1 blyk nie die QMail-basisgids te wees nie. Miskien is QMail nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
+index_return=QMail-konfigurasie
+index_stop=Stop QMail-prosesse
+index_stopmsg=Klik op hierdie knoppie om die agtergrondproses van QMail te stop wat verantwoordelik is vir die aflewering van e-pos in die tou. Sonder hierdie prosesse, sal pos nie van u gestuur word of na u stelsel gestuur word nie.
+index_start=Begin QMail-prosesse
+index_startmsg=Klik op hierdie knoppie om die agtergrond-QMail-prosesse te begin wat verantwoordelik is vir die aflewering van e-pos in die tou. Sonder hierdie prosesse, sal pos nie van u gestuur word of na u stelsel gestuur word nie.
+
+opts_title=QMail-opsies
+opts_me=Plaaslike gasheernaam
+opts_helo=Gasheernaam vir SMTP HELO
+opts_toconnect=SMTP-verbindingstyd
+opts_secs=sekondes
+opts_toremote=SMTP uitgaande reaksietyd
+opts_bytes=Maksimum boodskapgrootte
+opts_unlimited=Unlimited
+opts_timeout=SMTP-inkomende datatydperk
+opts_localip=Gasheernaam vir e-pos na die plaaslike IP-adres
+opts_greet=SMTP-groetboodskap
+opts_err=Kon nie QMail-opsies stoor nie
+opts_eme=Ongeldige plaaslike gasheernaam
+opts_etoconnect=Ongeldige SMTP-verbindingstydperk
+opts_etoremote=Ongeldige SMTP-uitgaande reaksietydperk
+opts_ebytes=Ongeldige maksimum boodskapgrootte
+opts_etimeout=Ongeldige SMTP-inkomende datatydperk
+opts_elocalip=Ongeldige plaaslike IP-adres gasheernaam
+
+aliases_title=Mail Aliases
+aliases_addr=adres
+aliases_to=Alias na ..
+aliases_type1=Adres 1
+aliases_type2=Posgids $1 
+aliases_type3=Poslêer $1 
+aliases_type4=Program $1 
+aliases_type5=Lêer $1 outomaties in
+aliases_type6=Pas filterlêer $1 toe
+aliases_none=Geen
+aliases_return=alias lys
+aliases_toomany=Daar is te veel posaliasies op u stelsel om op hierdie bladsy te vertoon.
+aliases_go=Vind aliasse wat ooreenstem:
+aliases_delete=Vee geselekteerde Aliases uit
+
+aform_type0=Geen
+aform_type1=E-pos adres
+aform_type2=Posgids
+aform_type3=Poslêer
+aform_type4=Voer na program
+aform_type5=Beantwoord outomaties vanaf lêer
+aform_type6=Pas die filterlêer toe
+aform_edit=Alias wysig
+aform_create=Skep alias
+aform_name=adres
+aform_val=Alias na
+aform_afile=Wysig ..
+aform_novirt=&lt;Alle domeine&gt;
+aform_return=alias
+
+asave_err=Kon nie alias stoor nie
+asave_eaddr='$1' is nie 'n geldige adres nie
+asave_ealready='N Alias vir'$1'bestaan reeds
+asave_etype1='$1' is nie 'n geldige e-posadres nie
+asave_etype2='$1' is nie 'n geldige posgids nie
+asave_etype3='$1' is nie 'n geldige e-poslêernaam nie
+asave_etype4='$1' is nie 'n geldige program of bestaan nie
+asave_etype5=Lêer '$1' outomaties beantwoord is nie geldig nie
+asave_etype4none=Geen program gegee nie
+asave_etype6=Filterlêer '$1' is nie geldig nie
+
+adelete_err=Kon nie aliasse uitvee nie
+adelete_enone=Geen gekies nie
+
+locals_title=Plaaslike domeine
+locals_domains=Plaaslike domeine vir hierdie bediener
+locals_desc=Qmail sal e-pos na die domeine en gasheername wat aan die linkerkant in die teksblokkie gelys word, vir plaaslike gebruikers aanvaar. As u wil hê dat u e-posbediener verskeie e-posdomeine moet hanteer, moet hulle almal op hierdie vorm verskyn.
+locals_only=Slegs plaaslike gasheernaam $1 
+locals_sel=Domeine hieronder gelys ..
+
+rcpts_title=Aanvaarde domeine
+rcpts_domains=Aanvaarde plaaslike en aflos domeine
+rcpts_all=Enige domein
+rcpts_sel=Domeine hieronder gelys ..
+rcpts_desc=Qmail aanvaar slegs vir die herlewering of plaaslike aflewering van e-pos na domeine en gasheername wat in die teksblokkie aan die linkerkant gelys word. U kan ook wildkaarte inskryf wat ooreenstem met al die leërskare in 'n domein soos <tt>.foo.com</tt>. As u wil hê dat u e-posbediener e-pos aan kliënte moet oordra, moet u e-pos vanaf enige domein aanvaar.
+rcpts_domains2=Bykomende plaaslike en aflos domeine
+rcpts_desc2=As u 'n groot aantal aanvaarde domeine het, moet die minder gebruikte domeine in hierdie tekskassie ingevoer word. In die algemeen moet u eerste 50 toegelate domeine in die boonste tekskassie ingevoer word, en die res in hierdie.
+
+bads_title=Adres afgekeur
+bads_addresses=E-posadresse verwerp
+bads_desc=QMail verwerp die pos vir aflewering of heraflewering van een van die adresse wat in die tekskassie aan die linkerkant gelys word, wat as <tt>gebruikersnaam @ domainname</tt> ingevoer moet word. As u e-pos vanaf 'n hele domein wil verwerp, moet dit as <tt>@domeinnaam</tt> ingevoer word.
+
+routes_title=Domeinroetering
+routes_toomany=Daar is te veel domeinroetes op u stelsel om op hierdie bladsy te vertoon.
+routes_go=Vind domeinroetes wat ooreenstem:
+routes_from=Pos vir domein
+routes_to=Stuur via bediener
+routes_direct=Lewer direk
+routes_defroute=Lewer alle ander uitgaande pos via:
+routes_return=domeinroetes
+routes_delete=Vee geselekteerde domeinroetes uit
+
+rform_edit=Wysig domeinroete
+rform_create=Skep domeinroete
+rform_from=Pos vir gasheer of domein
+rform_to=Stuur via SMTP-bediener
+rform_port=SMTP-poort
+
+rsave_err=Kon nie domeinroete stoor nie
+rsave_efrom='$1' is nie 'n geldige domeinnaam nie
+rsave_eto='$1' is nie 'n geldige SMTP-bediener nie
+rsave_eport='$1' is nie 'n geldige poortnommer nie
+
+rdelete_err=Kon nie domeinroetes uitvee nie
+
+percents_title=% Adresdomeine
+percents_domains=Domeine wat % adresse ondersteun
+percents_desc=QMail sal e-pos met adresse in die formaat <tt>user%firstdomain@seconddomain</tt> aanvaar as die <tt>seconddomain</tt> in die teksblokkie aan die linkerkant gelys is. Boodskappe in hierdie formaat word dan deur hierdie e-posbediener aan <tt>user@firstdomain</tt> deurgestuur.
+
+virts_title=Virtuele kartering
+virts_toomany=Daar is te veel virtuele kartering op u stelsel om op hierdie bladsy te vertoon.
+virts_go=Vind virtuele karterings wat ooreenstem:
+virts_from=Pos vir
+virts_prepend=Sit voorvoegsel voor
+virts_all=Alle adresse
+virts_none=Nie virtueel nie
+virts_desc=Virtuele kartering word deur QMail gebruik om e-pos na verskillende domeine op u bediener te hanteer, deur teks voor te berei na die gebruikersgedeelte van die e-posadres voordat dit verder verwerk word. U kan dit gebruik om virtuele posdomeine op te stel deur 'n nuwe virtuele kartering vir 'n domein te skep en dan die <a href='$1'>Mail Aliases</a> bladsy te gebruik om aliasse binne daardie domein te skep.
+virts_return=virtuele kartering
+virts_delete=Vee geselekteerde virtuele kartering uit
+
+vform_edit=Wysig virtuele kartering
+vform_create=Skep virtuele kartering
+vform_from=Pos vir adres
+vform_all=Enige adres wat nie ooreenstem met 'n ander virtuele kartering nie
+vform_domain=Adresse met domein
+vform_user=adres
+vform_to=Berei uself voor vir gebruikersnaam
+vform_none=niks
+vform_prepend=Gespesifiseerde voorvoegsel
+vform_auto=Outomaties gekose voorvoegsel
+
+vsave_err=Kon nie virtuele kartering stoor nie
+vsave_edomain='$1' is nie 'n geldige e-posdomein nie
+vsave_euser='$1' is nie 'n geldige e-pos gebruikersnaam nie
+vsave_eprepend='$1' is nie 'n geldige karteringvoorvoegsel nie
+vsave_eboth=U kan nie beide 'Enige adres wat nie ooreenstem met 'n ander virtuele kartering' en 'Niks', kies nie.
+
+vdelete_err=Kon nie virtuele kartering uitvee nie
+
+stop_err=qmail-send proses loop nie meer nie
+
+log_stop=Gestop QMail prosesse
+log_start=Met QMail-prosesse begin
+log_opts=Verander QMail-opsies
+log_alias_create=Alias $1 geskep
+log_alias_delete=Vee alias $1 uit
+log_alias_modify=Gewysigde alias $1 
+log_delete_aliases=$1 aliases uitgevee
+log_virt_create=Skep virtuele kartering $1 
+log_virt_delete=Virtuele kartering $1 is uitgevee
+log_virt_modify=Gewysigde virtuele kartering $1 
+log_delete_virts=$1 virtuele kartering is uitgevee
+log_virtall_create=Sorg vir 'n virtuele kartering
+log_virtall_delete=Vang alle virtuele kartering uit
+log_virtall_modify=Gewysigde catchall virtuele kartering
+log_locals=Verander plaaslike domeine
+log_rcpts=Aanvaarde domeine verander
+log_bads=Verwerpte adresse verander
+log_percents=% Adresdomeine verander
+log_route_create=Skep roete vir $1 
+log_route_delete=Roete vir $1 is uitgevee
+log_route_modifed=Gewysigde roete vir $1 
+log_delete_routes=$1 roetes is uitgevee
+log_defroute=Gewysigde standaardroete
+log_assign_create=Skep e-posgebruiker $1 
+log_assign_delete=Posgebruiker $1 is uitgevee
+log_assign_modifed=Gewysigde posgebruiker $1 
+log_delete_assigns=$1 posgebruikers is uitgevee
+log_delmail=$1 boodskappe van $2 is verwyder
+log_movemail=$1 boodskappe van $2 na $3 geskuif
+log_send=E-pos gestuur na $1 
+
+rfile_title=Wysig lêer outomaties aan
+rfile_desc=Gebruik die onderstaande teksarea om die outoritiese boodskap in $1 te wysig. Die boodskap kan die makro's bevat $SUBJECT, $FROM, $TO, $DATE en $ LIGGAAM wat uitgebrei sal word wanneer die outoreplaas geaktiveer is.
+rfile_desc2=U kan ook poshoofde instel wat die standaardinstellings wat in die outorepassing gebruik word, byvoeg of vervang deur lyne soos: <br><tt> Vanaf: foo@bar.com </tt><br> <tt>Onderwerp: Op vakansie</tt> <br> aan die bokant van die boodskap, geskei van die liggaam met 'n enkele leë lyn.
+rfile_efile=U mag nie $1 wysig nie.
+rfile_undo=Ontdoen veranderinge
+rfile_replies=Beantwoord antwoorde om e-poslusse te voorkom?
+rfile_none=Geen
+rfile_file=Ja, gebruik loglêer
+rfile_period=Minimum interval tussen antwoorde
+rfile_default=Standaard (1 uur)
+rfile_secs=sekondes
+rfile_ereplies=Ontbrekende antwoordlêerlêer ontbreek
+rfile_eperiod=Ontbrekende of ongeldige aantal sekondes tussen antwoorde
+rfile_no_autoreply=Moenie outoreprodukte stuur nie
+rfile_from=Van: adres vir antwoord
+rfile_auto=Outomaties (gebaseer op die adres van die ontvanger)
+rfile_efrom=Ontbreek vanaf: adres
+rfile_fromdesc=A Van: adres moet altyd gespesifiseer word waar moontlik, aangesien die outomatiese metode moontlik nie betroubaar is nie.
+
+ffile_title=Wysig filterlêer
+ffile_desc=Gebruik die onderstaande vorm om filterreëls in die lêer $1 op te stel.
+ffile_efile=U mag nie $1 wysig nie.
+ffile_line=As die $1 veld $2 $3 dan vorentoe gaan na $4 
+ffile_from=van
+ffile_to=om
+ffile_subject=vak
+ffile_cc=CC
+ffile_body=liggaam
+ffile_what0=stem nie ooreen nie
+ffile_what1=wedstryde
+ffile_other=Andersins na $1 aangestuur
+ffile_err=Kon nie die filterlêer stoor nie
+ffile_ematch=Ontbrekende wedstryd
+ffile_eaction=Aanstuuradres ontbreek
+
+queue_title=Mail Queue
+queue_count=$1 boodskappe
+queue_none=Geen posboodskappe staan tans in die ry vir aflewering nie
+queue_id=Pos-ID
+queue_date=gestuur
+queue_from=Van
+queue_to=om
+queue_cc=cc
+queue_subject=Vak
+queue_return=pos tou
+queue_delete=Vee geselekteerde boodskappe uit
+queue_all=Kies alles
+queue_invert=Keer die keuse om
+queue_refresh=Verfris e-poswaglys
+queue_refreshdesc=Herlaai hierdie bladsy om die huidige stand van die e-poswag te wys.
+
+qview_title=Boodskap in die ry
+qview_desc=Van lêer $1 af
+qview_headers=Posopskrifte
+qview_attach=aanhegsels
+
+assigns_title=Posopdraggebruikeropdragte
+assigns_return=pos gebruiker opdragte
+assigns_toomany=Daar is te veel e-posgebruikers op u stelsel om op hierdie bladsy te vertoon.
+assigns_go=Soek e-posgebruikers wat ooreenstem:
+assigns_address=Pos na adres
+assigns_user=Unix-gebruiker
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=Tuisgids
+assigns_desc=Met e-posopdragte kan u posbusse skep vir gebruikers wat nie in die Unix-gebruikerslys gedefinieër is nie. Elke opdrag lewer pos vir 'n gekose gebruikersnaam of gebruikersnaampatroon, asof dit afgelewer word in 'n regte Unix-gebruiker se posbus.
+assigns_delete=Vee geselekteerde posgebruikers uit
+
+sform_edit=Wysig posgebruiker
+sform_create=Skep e-posgebruiker
+sform_address=Adres gebruikersnaam
+sform_mode0=Presiese gebruikersnaam
+sform_mode1=Gebruikersname begin met
+sform_user=Unix-gebruiker
+sform_uid=UID
+sform_gid=GID
+sform_home=Tuisgids
+
+ssave_err=Kon nie die posgebruiker stoor nie
+ssave_eaddress=Ontbrekende of ongeldige adresnaam van adres
+ssave_euser=Unix-gebruiker ontbreek of ongeldig
+ssave_euid=UID ontbreek of ongeldig
+ssave_egid=GID ontbreek of ongeldig
+ssave_ehome=Ontbrekende of ongeldige tuisgids
+
+sdelete_err=Kon nie e-posgebruikers uitvee nie
+
+delete_egone=Boodskap in die ry bestaan nie meer nie
+delete_ebogus=Ongeldige wagwoordlêernaam
+
+boxes_title=Gebruiker se posbusse
+boxes_user=gebruiker
+boxes_size=Posbusgrootte
+boxes_none=Geen pos nie
+boxes_return=posbusse
+boxes_sent=Gestuurde pos
+boxes_ecannot=U mag nie e-pos lees nie
+boxes_toomany=Daar is te veel gebruikers op u stelsel om al hul posbusse te lys.
+boxes_go=Kyk e-pos vir gebruiker:
+
+mail_title=Gebruiker e-pos
+mail_from=Van
+mail_date=datum
+mail_subject=Vak
+mail_to=om
+mail_cc=cc
+mail_bcc=Bcc
+mail_pri=prioriteit
+mail_highest=hoogste
+mail_high=hoë
+mail_normal=Normaal
+mail_low=lae
+mail_lowest=laagste
+mail_for=In $1 
+mail_for2=Vir gebruiker $1 
+mail_sent=In gestuurde poslys
+mail_size=grootte
+mail_delete=Delete
+mail_compose=Komponeer
+mail_return=gebruikersposbus
+mail_pos=Boodskappe $1 tot $2 van $3 
+mail_none=Hierdie posbus het geen boodskappe nie
+mail_ecannot=U mag nie die gebruiker se e-pos lees nie
+mail_all=Kies alles
+mail_invert=Keer die keuse om
+mail_search=Soek boodskappe waar
+mail_body=liggaam
+mail_match=wedstryde
+mail_ok=Soek
+mail_nonefrom=Geen
+mail_mark=Merk as:
+mail_mark0=ongelees
+mail_mark1=Lees
+mail_mark2=spesiale
+mail_forward=vorentoe
+mail_rfc=Van lyn af
+mail_move=Skuif na:
+mail_eexists=Boodskap bestaan nie meer nie!
+
+view_title=Lees e-pos
+view_desc=Boodskap $1 in $2 
+view_desc2=Boodskap $1 vir gebruiker $2 
+view_desc3=Boodskap $1 
+view_sent=Boodskap $1 in die gestuurde poslys
+view_qdesc=Boodskap in waglys $1 
+view_headers=Posopskrifte
+view_allheaders=Bekyk alle opskrifte
+view_noheaders=Kyk na basiese opskrifte
+view_attach=aanhegsels
+view_reply=antwoord
+view_reply2=Antwoord alles
+view_enew=Wysig as nuut
+view_forward=vorentoe
+view_delete=Delete
+view_strip=Verwyder aanhegsels
+view_ecannot=U mag nie die gebruiker se e-pos lees nie
+view_mark=Merk boodskap as:
+view_mark0=ongelees
+view_mark1=Lees
+view_mark2=spesiale
+view_return=oorspronklike e-pos
+view_sub=Aangehegde e-posadres
+
+compose_title=Skryf e-pos
+reply_title=Antwoord op e-pos
+forward_title=Stuur e-pos
+enew_title=Redigeer e-pos
+reply_headers=Posopskrifte
+reply_attach=Aanstuurde aanhegsels
+reply_mailforward=Aangestuurde boodskappe
+reply_attach2=Aanhangsels van die kliënt en bediener
+reply_send=Stuur pos
+reply_ecannot=U mag nie e-pos as hierdie gebruiker stuur nie
+
+send_err=Kon nie e-pos stuur nie
+send_eto=Ontbreek aan adres
+send_efrom=Ontbreek vanaf adres
+send_title=Pos gestuur
+send_ok=E-pos suksesvol gestuur na $1 
+send_ecannot=U mag nie e-pos as hierdie gebruiker stuur nie
+send_esmtp=SMTP-opdrag $1 het misluk : $2 
+send_efile=Die aangehegte lêer $1 bestaan nie
+send_eattach=Aanhangsels kan nie meer as $1 kB groot wees nie.
+send_eperms=Gebruiker $1 kan nie $2 lees nie
+send_eperms2=U mag nie lêer $1 stuur nie
+send_epath=Sendmail-uitvoerbare $1 bestaan nie.
+
+delete_title=Vee pos uit
+delete_rusure=Is u seker dat u die $1 geselekteerde boodskappe van $2 wil verwyder? Dit kan 'n tydjie neem vir 'n groot poslêer. Totdat die skrap klaar is, mag geen ander aksie uitgevoer word nie.
+delete_rusure2=Is u seker dat u hierdie boodskap van $1 wil verwyder? Dit kan 'n tydjie neem vir 'n groot poslêer. Totdat die skrap klaar is, mag geen ander aksie uitgevoer word nie.
+delete_ok=Vee nou uit
+delete_ecannot=U mag nou e-pos van hierdie gebruiker uitvee
+delete_enone=Geen e-pos gekies om uit te vee nie
+delete_emnone=Geen e-pos gekies om te merk nie
+delete_nobutton=Geen knoppie geklik nie
+
+search_title=Soek Resultate
+search_ecannot=U mag nie die e-pos van hierdie gebruiker deursoek nie
+search_ematch=U moet teks invoer om mee te stem.
+search_efield=U moet 'n soektipe kies.
+search_none=Geen boodskappe gevind nie.
+search_results2=$1 e-posboodskappe wat ooreenstem met $2.
+search_results3=$1 e-posboodskappe stem nie ooreen met $2 nie.
+
+match_from=Van: vuurhoutjies
+match_subject=Onderwerp: vuurhoutjies
+match_to=Aan: vuurhoutjies
+match_cc=Cc: wedstryde
+match_date=Datum: vuurhoutjies
+match_body=Liggaamswedstryde
+match_size=Grootte is groter as
+match_headers=Opskrifte wedstryd
+match_=-----------------
+match_!from=Van: stem nie ooreen nie
+match_!subject=Onderwerp: stem nie ooreen nie
+match_!to=Aan: stem nie ooreen nie
+match_!cc=Cc: stem nie ooreen nie
+match_!date=Datum: stem nie ooreen nie
+match_!body=Liggaam stem nie ooreen nie
+match_!size=Grootte is minder as
+match_!headers=Opskrifte stem nie ooreen nie
+
+delq_titles=Boodskappe uitgevee
+delq_rusure=Is u seker dat u die $1 geselekteerde touboodskappe wil uitvee?
+delq_confirm=Vee boodskappe uit

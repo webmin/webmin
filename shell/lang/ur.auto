@@ -1,0 +1,18 @@
+index_title=کمانڈ شیل
+index_ok=عملدرآمد:
+index_history=کمانڈ کی تاریخ
+index_clear=ماضی مٹا دو
+index_clearcmds=احکامات صاف کریں
+index_desc=Enter a shell command to execute in the text field below. The <tt>cd</tt> command may be used to change directory for subsequent commands.
+index_pok=پچھلی کمانڈ پر عمل کریں
+index_edit=پچھلے میں ترمیم کریں
+index_trunced=$2 کی کل پیداوار$1 پر چھوٹی تھی۔
+index_timedout=کمانڈ$1 سیکنڈ تک چلنے کے بعد ختم کردی گئی۔
+
+acl_user=احکامات بطور صارف پر عمل کریں
+acl_user_def=موجودہ ویب مین صارف
+acl_shellenv=منتخب شدہ صارف کا ماحول استعمال کریں؟
+acl_chroot=ڈائریکٹری میں Chroot
+
+log_run=کمانڈ$1
+log_clear=کمانڈ کی تاریخ صاف ہوگئی

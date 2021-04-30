@@ -1,0 +1,316 @@
+index_title=Administracija pisača
+index_header=Dostupni pisači
+index_name=printer
+index_desc=Opis
+index_to=Ispis u
+index_driver=Vozač
+index_enabled=Omogućeno?
+index_accepting=Prihvaćanje?
+index_jobs=Posao
+index_none=Na ovom sustavu nisu instalirani pisači.
+index_list=Popis ..
+index_jlist=Poslovi ..
+index_jcount=$1 poslovi ..
+index_add=Dodajte novi pisač.
+index_stop=Zaustavi Scheduler
+index_stopmsg=Kliknite ovaj gumb za zaustavljanje pokretanja postupka rasporeda ispisa. To će spriječiti da lokalni ili udaljeni korisnici ispisuju na vašem sustavu.
+index_start=Pokrenite Scheduler
+index_startmsg=Kliknite ovaj gumb za pokretanje postupka rasporeda ispisa. To će omogućiti lokalnim i udaljenim korisnicima ispis na vašem sustavu.
+index_restart=Ponovo pokrenite Scheduler
+index_restartmsg=Kliknite ovaj gumb da biste ponovno pokrenuli postupak rasporeda ispisa. To će primorati primijeniti trenutnu konfiguraciju ispisa.
+index_return=popis pisača
+index_esystem=Instalirajte softver za svoj odabrani sustav ispisa ili ga promijenite konfiguracijom <a href='$1'></a>.
+index_style=Sustav ispisa: $1 
+index_cluster=Poslužitelji klastera
+index_clusterdesc=Kliknite ovaj gumb za postavljanje dodatnih Webmin poslužitelja na kojima će se pisači stvarati, ažurirati i brisati.
+index_delete=Izbrišite odabrane pisače
+
+style_solaris=Solaris
+style_linux=Linux LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=CUPS
+style_irix=IRIX
+style_aix=AIX
+
+edit_eedit=Nije vam dopušteno uređivanje ovog pisača
+edit_eadd=Ne možete dodati pisače
+edit_add=Stvorite pisač
+edit_edit=Uredi pisač
+edit_conf=Konfiguracija pisača
+edit_name=Ime
+edit_acc=Prihvaćate zahtjeve?
+edit_why=Ne - zašto ne
+edit_desc=Opis
+edit_ena=Ispis je omogućen?
+edit_acl=Kontrola pristupa
+edit_allow=Dopusti svima
+edit_deny=Negirajte sve
+edit_allowu=Dopusti popisanim korisnicima ..
+edit_denyu=Zabrani na popisu korisnika ..
+edit_banner=Ispis banera?
+edit_opt=neobavezan
+edit_default=Zadani pisač?
+edit_already=Već zadani pisač
+edit_max=Maksimalna veličina zadatka za ispis
+edit_unlimited=Neograničen
+edit_dacc=Vozač prihvaća
+edit_dtext=Tekst
+edit_dpost=dodatak pismu
+edit_dother=drugo
+edit_alt=Alternativna imena pisača
+edit_dest=Ispis odredišta
+edit_dev=Lokalni uređaj
+edit_file=Lokalna datoteka
+edit_remote=Udaljeni Unix server
+edit_rqueue=printer
+edit_type=Tip
+edit_smb=Udaljeni Windows poslužitelj
+edit_share=printer
+edit_user=Korisnik
+edit_pass=Zaporka
+edit_wgroup=Radna grupa
+edit_hpnp=Udaljeni HPNP poslužitelj
+edit_port=Luka
+edit_direct=Izravna TCP veza
+edit_dport=Luka
+edit_driver=Upravljački program pisača
+edit_check=Provjerite je li udaljeni poslužitelj uključen?
+
+blocks=blokovi
+
+save_err=Spremanje pisača nije uspjelo
+save_eadd=Ne možete dodati pisače
+save_eedit=Nije vam dopušteno uređivanje ovog pisača
+save_ename='$1' nije valjano ime pisača
+save_edup=Pisač pod nazivom "$1" već postoji
+save_eallow=Nema unesenih korisnika
+save_edeny=Korisnici ne mogu odbiti uneseni
+save_euser=Korisnički '$1' ne postoji
+save_etype=Morate odabrati najmanje jednu vrstu koju će ovaj vozač prihvatiti
+save_emax=Maksimalna veličina zadatka za ispis mora biti cijeli broj
+save_efile='$1' ne postoji
+save_erhost=Daljinski host '$1' ne postoji
+save_erport=Daljinski priključak '$1' nije važeći
+save_erqueue="$1" nije valjano ime udaljenog reda čekanja
+save_eremote=Upravljačke programe nije moguće koristiti s udaljenim Unix pisačima
+save_edhost=Izravni host '$1' ne postoji
+save_edport=Nedostaje ili nije važeći izravni port
+save_evalid=Sustav ispisa nije dopuštao ovaj pisač
+save_errslave=Pisač je u ovom sustavu kreiran u redu, ali na slijedećim greškama na sustavima klastera : $1 
+save_egone=Nije pronađen nijedan pisač s imenom "$1"
+save_errdelslave=Pisač je izbrisan u redu na ovom sustavu, ali na sistemima klastera došlo je do sljedeće pogreške : $1 
+
+jobs_title=Poslovi ispisa
+jobs_header=Ispiši zadatke na $1 
+jobs_id=ID posla
+jobs_size=Veličina
+jobs_by=Predložio
+jobs_when=Poslano u
+jobs_file=Naziv datoteke
+jobs_cancel=Kliknite ID posla s gornjeg popisa da biste ga odustali.
+jobs_cancelview=Kliknite ID posla s gornjeg popisa da biste ga odustali ili kliknite veličinu posla kako biste ga vidjeli.
+jobs_none=Pisač $1 nema nijednog zadanog posla.
+jobs_all=Otkažite sve zadatke ispisa
+jobs_bytes=bajtova
+jobs_test=Ispiši stranicu za testiranje
+jobs_cancelsel=Otkaži odabrane zadatke
+jobs_on=Na pisaču $1 
+jobs_return=popis poslova ispisa
+
+cancel_ecannot=Ne možete otkazati zadatke ispisa
+cancel_err=Otkazivanje zadatka ispisa nije uspjelo
+cancel_egone=Zadatak ispisa $1 više ne postoji
+
+view_ecannot=Ne možete pregledavati ovaj zadatak ispisa
+view_egone=Ovaj posao ispisa više ne postoji
+
+start_ecannot=Nije vam dopušteno pokrenuti planer
+start_err=Nisu pokrenuli planer
+
+stop_ecannot=Nije vam dopušteno zaustaviti planer
+stop_err=Zaustavljanje planera nije uspjelo
+
+restart_ecannot=Ne možete ponovno pokrenuti planer
+restart_err=Ponovno pokretanje planera nije uspjelo
+
+webmin_none=nijedan
+webmin_nonemsg=PostScript ili pisač teksta
+webmin_remotemsg=Daljinski pisač
+webmin_model=Model
+webmin_prog=Program
+webmin_driver=Vozač Webmin-a
+webmin_uniprint=Vozač Uniprint
+webmin_edrivers=Dobijanje upravljačkih programa od $1 nije uspjelo. Upravljački programi za webmin pisače koji koriste ghostscript nisu dostupni
+webmin_egs=Naredba $1 nije pronađena. Upravljački programi za webmin pisače koji koriste ghostscript nisu dostupni
+webmin_edriver='$1' ne postoji
+
+caldera_none=nijedan
+caldera_nonemsg=Daljinski ili sirovi pisač
+caldera_prog=Program
+caldera_coas=COAS vozač
+caldera_printer=Pisač i razlučivost
+caldera_eof=Pošalji EOF?
+caldera_paper=Veličina papira
+caldera_double=Ispis dvostranog?
+caldera_gsopts=Dodatne GS opcije
+caldera_uniprint=Vozač Uniprint
+caldera_eprog='$1' ne postoji
+caldera_edriver=Nije odabran nijedan upravljački program pisača
+caldera_eres=Nije odabrana rezolucija
+
+redhat_none=nijedan
+redhat_nonemsg=PostScript ili pisač teksta
+redhat_prog=Program
+redhat_driver=Redhat vozač
+redhat_printer=Pisač i razlučivost
+redhat_eof=Pošalji EOF?
+redhat_paper=Veličina papira
+redhat_pages=Stranice po izlaznoj stranici
+redhat_gsopts=Dodatne GS opcije
+redhat_hmargin=Desna/lijeva margina
+redhat_vmargin=Gornja/donja margina
+redhat_crlf=Popravi tekst stepenica na stepenicama?
+redhat_eprog='$1' ne postoji
+redhat_edriver=Nije odabran nijedan upravljački program pisača
+redhat_ehmargin=Nedostaje ili nije valjana desna/lijeva margina
+redhat_evmargin=Nedostaje ili nevaljana gornja/donja margina
+redhat_eres=Nije odabrana rezolucija
+redhat_printer2=Model pisača i upravljački program
+
+suse_none=nijedan
+suse_nonemsg=PostScript ili pisač teksta
+suse_prog=Program
+suse_driver=APSfilter vozač
+suse_printer=Vrsta pisača
+suse_res=Rezolucija u DPI
+suse_colour=Pisač u boji?
+suse_paper=Veličina papira
+suse_method=Metoda filtriranja
+suse_auto=Automatski
+suse_ascii=ASCII
+suse_raw=sirov
+suse_extra=Dodatne mogućnosti ghostscripta
+suse_yast2=YAST2 vozač
+suse_edriver=Nije odabrana vrsta pisača
+suse_eres=Nedostaje ili nevažeća rezolucija
+
+estop=Zaustavljanje lpd-a nije uspjelo : $1 
+
+acl_printers=Pisači koje ovaj korisnik može konfigurirati
+acl_add=Mogu li dodati nove pisače?
+acl_cancel=Mogu li otkazati zadatke za ispis?
+acl_stop=Može li se zaustaviti ili pokrenuti planer?
+acl_restart=Ponovo pokreni
+acl_listed=Samo na odabranim pisačima ..
+acl_pall=Svi pisači
+acl_psel=Odabran ..
+acl_view=Pokazati pisače koji se ne mogu konfigurirati?
+acl_test=Mogu li ispisati testne stranice?
+acl_user=Upravljajte poslovima ispisa u vlasništvu
+acl_user_all=Svi korisnici
+acl_user_this=Trenutačni korisnik Webmina
+acl_delete=Mogu li izbrisati pisače?
+acl_cluster=Može li upravljati grupom pisača?
+
+log_stop=Zaustavljen planer ispisa
+log_start=Započeo planer ispisa
+log_restart=Restartirani planer ispisa
+log_cancel_job=Otkazani zadatak ispisa $2 na $1 
+log_cancel_all=Otkazani su svi zadaci ispisa na $1 
+log_cancel_sel=Otkazani su zadaci ispisa $2 na $1 
+log_create=Izrađen pisač $1 na $2 
+log_modify=Izmijenjen pisač $1 na $2 
+log_delete=Izbrisan je pisač $1 na $2 
+log_create_l=Izrađen $3 pisač $1 na $2 
+log_modify_l=Izmijenjeno $3 pisača $1 na $2 
+log_delete_l=Izbrisan je pisač $3 $1 na $2 
+
+linux_paralel=Luka paralele $1 
+linux_serial=Serijski priključak $1 (COM $1)
+linux_null=Nulti uređaj
+linux_usb=USB pisač $1 
+linux_ecmd=Naredba $1 nije pronađena u vašem sustavu, što ukazuje da Linux ispisni sustav nije instaliran.
+linux_espool=Imenik spool $1 ne postoji u vašem sustavu, što ukazuje da Linux ispisni sustav nije instaliran.
+
+freebsd_paralel=Paralelni port
+freebsd_serial=Serijski priključak $1 (COM $1)
+freebsd_ecmd=Naredba $1 nije pronađena u vašem sustavu, što znači da FreeBSD sustav ispisa nije instaliran.
+freebsd_espool=Imenik spool $1 ne postoji u vašem sustavu, što znači da FreeBSD sustav ispisa nije instaliran.
+
+openbsd_paralel=Paralelni port
+openbsd_serial=Serijski priključak $1 (COM $1)
+
+unixware_paralel=Luka paralele $1 
+unixware_serial=Serijski ulaz $1 
+unixware_null=Nulti uređaj
+unixware_ecmd=Naredba $1 nije pronađena u vašem sustavu, što pokazuje da UnixWare sustav ispisa nije instaliran.
+
+hpux_paralel=Paralela $1 
+hpux_serial=Serijski $1 
+hpux_null=Nulti uređaj
+hpux_ecmd=Naredba $1 nije pronađena u vašem sustavu, što znači da HPUX sustav ispisa nije instaliran.
+hpux_eiface=U vašem sustavu ne postoji direktorij skripti sučelja $1, što znači da HPUX sustav ispisa nije instaliran.
+
+lprng_paralel=Luka paralele $1 
+lprng_serial=Serijski priključak $1 (COM $1)
+lprng_null=Nulti uređaj
+lprng_ecmd=Naredba $1 nije pronađena u vašem sustavu, što znači da LPRng sustav ispisa nije instaliran.
+lprng_espool=Imenik spool $1 ne postoji u vašem sustavu, što znači da LPRng sustav ispisa nije instaliran.
+
+solaris_paralel=Paralelni port
+solaris_uparalel=Ultra 5/10 paralelni port
+solaris_serial=Serijski ulaz $1 
+solaris_null=Nulti uređaj
+solaris_ecmd=Naredba $1 nije pronađena u vašem sustavu, što znači da Solaris sustav ispisa nije instaliran.
+
+test_title=Ispiši stranicu za testiranje
+test_ecannot=Nije vam dopušteno ispisati testne stranice
+test_desc=Ovaj obrazac omogućuje vam ispis probne stranice za pisač $1. Odaberite vrstu stranice koju želite ispisati :
+test_0=Stranica crno-bijelih postscript-a
+test_1=Stranica u boji skripti u boji
+test_2=Običan tekst ASCII
+test_3=Svaka prenesena datoteka
+test_print=Ispiši stranicu
+test_exec=Ispis probne stranice sa naredbom $1 ..
+test_failed=.. naredba nije uspjela!
+test_ok=.. naredba dovršena.
+
+cups_none=nijedan
+cups_nonemsg=Daljinski ili sirovi pisač
+cups_prog=Program
+cups_driver=CUPS vozač
+cups_eprog='$1' nije valjan program
+cups_opts=Opcije za $1 
+cups_ecmd=Naredba $1 nije pronađena u vašem sustavu, što znači da CUPS sustav ispisa nije instaliran.
+
+irix_ecmd=Naredba $1 nije pronađena u vašem sustavu, što znači da IRIX sustav ispisa nije instaliran.
+irix_eiface=Imenik skripti sučelja $1 ne postoji u vašem sustavu, što znači da IRIX sustav ispisa nije instaliran.
+
+aix_port=Prilaz pisača $1 
+aix_edesc=Nevažeći opis - dopuštena su samo slova i brojevi i nema razmaka
+aix_ecmd=AIX poslužitelj pisača $1 nije pronađen. Možda nije instaliran ili se koristi drugi sustav ispisa.
+
+cluster_title=Poslužitelji klasterskih pisača
+cluster_none=Još nisu dodani poslužitelji u cluster pisača.
+cluster_host=Ime računala
+cluster_desc=Opis
+cluster_os=Operacijski sustav
+cluster_add=Dodavanje poslužitelja
+cluster_gadd=Dodajte poslužitelje u grupi
+cluster_need=Prije nego što se njima ovdje može upravljati, morate dodati servere s prijavom i zaporkom u modulu Webmin Servers Index.
+cluster_return=poslužitelji klastera
+cluster_delete=Ukloni odabrano
+cluster_ecannot=Nije vam dopušteno upravljanje poslužiteljima klastera pisača
+
+add_title=Dodajte poslužitelje
+add_msg=Dodavanje $1.
+add_gmsg=Dodavanje poslužitelja u grupu $1 ..
+add_err=Nije uspjelo dodavanje poslužitelja
+add_gerr=Nije uspjelo dodavanje grupe
+add_echeck=Server $1 nema modul Printer Administration
+add_ediff=Poslužitelj $1 koristi drugi sustav ispisa ($2) na ovom poslužitelju
+add_ediff2=Poslužitelj $1 koristi drugi pogonitelj ispisa ($2) na ovom poslužitelju
+add_ok=Dodano $1, s pisačima $2.

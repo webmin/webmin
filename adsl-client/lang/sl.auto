@@ -1,0 +1,66 @@
+index_title=Stranka ADSL
+index_eadsl=Ukaza RP-PPPoE $1 v vašem sistemu ni bilo mogoče najti ali ni veljaven. Mogoče ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
+index_econfig=Konfiguracijske datoteke RP-PPPoE ADSL $1 v vašem sistemu ni bilo mogoče najti. Mogoče ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
+index_emodem=Trenutna konfiguracijska datoteka je za modem v Redhat Linuxu, ne za ADSL povezavo. Uporabite stran <a href='$2'>konfiguracija modula</a>, da določite eno od drugih datotek <tt>ifcfg-ppp *</tt> v $1 ali tisto, ki še ne obstaja, tako da modul lahko ustvari za vas.
+index_stop=Ugasni ADSL
+index_stopdesc=Vaša povezava ADSL je trenutno aktivna z IP naslovom $1. Kliknite ta gumb, da ga zaprete z ukazom $2.
+index_start=Zaženite ADSL
+index_startdesc=Vaša povezava ADSL je trenutno neaktivna. Kliknite ta gumb, da ga zaženete z ukazom $1.
+index_boot=Začnite ob zagonu
+index_bootdesc=Spremenite to možnost, če želite nadzirati, ali je vaša povezava ADSL vzpostavljena ob zagonu ali ne.
+index_return=kazalo modula
+index_version=RP-PPPoE različica $1 
+index_esetup=Konfiguracijska datoteka Redhat ADSL v sistemu ne obstaja. Vendar ga lahko ta modul nastavi za osnovne privzete nastavitve s klikom na spodnji gumb.
+index_setup=Konfiguracijska datoteka nastavitve
+index_cancel=Prekini povezavo
+index_canceldesc=Odjemalec ADSL trenutno poskuša vzpostaviti povezavo. Kliknite ta gumb, če želite preklicati poskus z ukazom $1.
+index_cdemand=Prekliči na zahtevo
+index_cdemanddesc=Odjemalec ADSL trenutno čaka na zahtevo po povezavi. Kliknite ta gumb, da ga zaustavite s sporočilom $1.
+
+index_header=Možnosti konfiguracije odjemalca ADSL
+index_desc=Spodnje nastavitve veljajo za vse nove povezave ADSL, ki jih je začel vaš sistem. Če jih spremenite, morate povezavo izklopiti in znova zagnati, da bodo spremembe začele veljati.
+index_eth=Ethernet vmesnik
+index_other=Drugo ..
+index_demand=Povežite se na zahtevo?
+index_timeout=Da, s časovno omejitvijo
+index_secs=sekund
+index_user=Prijavite se kot uporabnik
+index_sec=Prijavite se z geslom
+index_dns=Ali dobite konfiguracijo DNS pri ponudniku internetnih storitev?
+index_save=Shrani konfiguracijo
+index_mss=Omejite velikost paketa?
+index_psize=Da, v
+index_bytes=bajti
+index_fw=Požarni zid, ki ga želite vključiti ob povezavi
+index_fw_none=Noben
+index_fw_standalone=Za enega samega gostitelja
+index_fw_masquerade=Za NAT prehod
+index_connect=Čas za poskus povezave za
+index_forever=Za vedno
+
+start_err=Zagon povezave ADSL ni uspel
+start_title=Zaženite ADSL
+start_ip=Vzpostavljena je bila povezava ADSL z naslovom IP $1.
+start_demand=Ker je omogočen način povezovanja na zahtevo, se bo povezava ADSL zagnala le, kadar je to potrebno.
+start_bg=ADSL povezava ni bila vzpostavljena v 20 sekundah. Odjemalec ADSL se bo še naprej poskušal povezati v ozadju, dokler ne bo uspešen.
+
+save_err=Konfiguracije ADSL ni bilo mogoče shraniti
+save_eeth=Manjkajoč ali neveljaven ethernet vmesnik
+save_etimeout=Manjkajoča ali neveljavna časovna omejitev na zahtevo
+save_euser=Manjkajoče ali neveljavno uporabniško ime
+save_econnect=Manjkajoča ali neveljavna časovna omejitev povezave
+save_emss=Manjkajoča ali neveljavna največja velikost paketa
+save_title=Shrani konfiguracijo
+save_desc=Konfiguracija odjemalca ADSL je bila uspešno shranjena, vendar ne bo uporabljena, dokler se ponovno ne povežete.
+
+stop_err=Povezave ADSL ni bilo mogoče izklopiti
+stop_title=Ugasni ADSL
+stop_ok=Vaša ADSL povezava je bila uspešno prekinjena.
+stop_failed=Vaša povezava ADSL je iz neznanega razloga še vedno aktivna!
+
+log_save=Shranjena konfiguracija odjemalca
+log_stop=Ugasni ADSL
+log_start=Začela ADSL
+log_bootup=Omogočen ADSL ob zagonu
+log_bootdown=Onemogočen ADSL ob zagonu
+log_setup=Nastavite privzeto konfiguracijo

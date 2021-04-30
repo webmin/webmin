@@ -1,0 +1,39 @@
+index_title=NFS-vienti
+index_add=Lisää uusi NFS-vienti
+index_dir=hakemisto
+index_hosts=Sallitut isännät
+index_all=Kaikki isännät
+index_none=NFS-vientiä ei ole vielä määritelty.
+index_apply=Käytä määritystä
+index_applydesc=Napsauta tätä painiketta, jos haluat kaikkien yllä lueteltujen vientien aktivoituneiksi määritettyjen asetusten kanssa.
+index_return=vientiluettelo
+
+edit_title1=Luo vienti
+edit_title2=Muokkaa vientiä
+edit_header=Vie yksityiskohdat
+edit_dir=Viejä hakemisto
+edit_hosts=Vie isäntiin/verkkoryhmiin
+edit_ro=Lue ainoastaan?
+edit_wsync=Synkronoitko kirjoittamisen jälkeen?
+edit_anon=Pääkäyttäjän oikeudet
+edit_anon1=Oletus (kohdella <tt>kukaan</tt>)
+edit_anon2=Estä pääsy
+edit_anon0=Kohtele käyttäjänä
+edit_rw=Luku-/kirjoitusoikeudet
+edit_root=Juuritiedostojen käyttö
+edit_access=Mount pääsy
+edit_all=Kaikki isännät
+edit_sel=Listatut isännät ..
+edit_none=Ei isäntiä
+
+save_err=Viennin tallennus epäonnistui
+save_edir=Puuttuva tai puuttuva hakemisto vietäväksi
+save_eanon=Puuttuva tai virheellinen pääkäyttäjä
+save_erw=Ei luku- ja kirjoitusisäntäjä kirjoitettu
+save_eroot=Juuritiedoston käyttöoikeutta ei ole annettu
+save_eaccess=Mount käyttöoikeuksia ei annettu
+
+log_create_export=Luotu $1 : n vienti
+log_delete_export=$1 vienti poistettu
+log_modify_export=$1 muutettu vienti
+log_apply=Sovellettu kokoonpano

@@ -31,7 +31,7 @@ $zipdir = "zips";
 	  "config-macos", "LICENCE",
 	  "session_login.cgi", "acl_security.pl",
 	  "defaultacl", "rpc.cgi", "date_chooser.cgi", "switch_skill.cgi",
-	  "install-module.pl", "LICENCE.ja",
+	  "safeacl", "install-module.pl", "LICENCE.ja", 
 	  "favicon.ico", "config-netbsd", "fastrpc.cgi",
 	  "defaulttheme", "feedback.cgi", "feedback_form.cgi",
 	  "javascript-lib.pl", "webmin-pam", "webmin-debian-pam", "maketemp.pl",
@@ -43,7 +43,7 @@ $zipdir = "zips";
 	  "uptracker.cgi", "create-module.pl", "webmin_search.cgi",
 	  "webmin-search-lib.pl", "WebminCore.pm",
 	  "record-login.pl", "record-logout.pl", "robots.txt",
-	  "unauthenticated",
+	  "unauthenticated", "bin",
 	 );
 if ($min) {
 	# Only those required by others
@@ -52,34 +52,14 @@ if ($min) {
 	}
 else {
 	# All the modules
-	@mlist =
-	  ("cron", "dfsadmin", "exports", "inetd", "init",
-	  "mount", "samba", "useradmin", "fdisk", "format", "proc", "webmin",
-	  "quota", "software", "pap", "acl", "apache", "lpadmin", "bind8",
-	  "sendmail", "squid", "bsdexports", "hpuxexports",
-	  "net", "dhcpd", "custom", "telnet", "servers",
-	  "time", "wuftpd", "syslog", "mysql", "man",
-	  "inittab", "raid", "postfix", "webminlog", "postgresql", "xinetd",
-	  "status", "cpan", "pam", "nis", "shell", "grub",
-	  "fetchmail", "passwd", "at", "proftpd", "sshd",
-	  "heartbeat", "cluster-software", "cluster-useradmin", "qmailadmin",
-	  "mon", "jabber", "stunnel", "usermin",
-	  "fsdump", "lvm", "procmail",
-	  "cluster-webmin", "firewall", "sgiexports", "vgetty", "openslp",
-	  "webalizer", "shorewall", "adsl-client", "updown", "ppp-client",
-	  "pptp-server", "pptp-client", "ipsec", "ldap-useradmin",
-	  "change-user", "cluster-shell", "cluster-cron", "spam",
-	  "htaccess-htpasswd", "logrotate", "cluster-passwd", "mailboxes",
-	  "ipfw", "sarg", "bandwidth", "cluster-copy", "backup-config",
-	  "smart-status", "idmapd", "krb5", "smf", "ipfilter", "rbac",
-	  "tunnel", "zones", "cluster-usermin", "dovecot", "syslog-ng",
-	  "mailcap", "blue-theme", "ldap-client", "phpini", "filter",
-	  "bacula-backup", "ldap-server", "exim", "tcpwrappers",
-	  "package-updates", "system-status", "webmincron", "ajaxterm",
-	  "shorewall6", "iscsi-server", "iscsi-client", "gray-theme",
-	  "iscsi-target", "iscsi-tgtd", "bsdfdisk", "fail2ban",
-	  "authentic-theme", "firewalld", "filemin", "firewall6",
-	  );
+	my $mod_def_list;
+	my $curr_dir = $0;
+	($curr_dir) = $curr_dir =~ /^(.+)\/[^\/]+$/;
+	$curr_dir = "." if ($curr_dir !~ /^\//);
+	open(my $fh, '<', "$curr_dir/mod_def_list.txt") || die "Error opening \"mod_def_list.txt\" : $!\n";
+	$mod_def_list = do { local $/; <$fh> };
+	close($fh);
+	@mlist = split(/\s+/, $mod_def_list);
 	}
 @dirlist = ( "WebminUI", "JSON" );
 
@@ -162,14 +142,14 @@ while($d = readdir(DIR)) {
 	}
 closedir(DIR);
 
-# Create UTF-8 encodings
-print "Creating UTF-8 language encodings\n";
-system("./koi8-to-cp1251.pl $tardir/$dir");
-system("./chinese-to-utf8.pl $tardir/$dir");
+# Make blue-theme a symlink instead of a copy
+if (!$min && -r "$tardir/$dir/gray-theme") {
+	system("cd $tardir/$dir && ln -s gray-theme blue-theme");
+	}
 
 # Remove useless .bak, test and other files, and create the tar.gz file
 print "Creating webmin-$vfile.tar.gz\n";
-system("cd $tardir ; tar cvhf - $dir 2>/dev/null | gzip -c >webmin-$vfile.tar.gz");
+system("cd $tardir ; tar cvf - $dir 2>/dev/null | gzip -c >webmin-$vfile.tar.gz");
 
 if (!$min && -d $zipdir) {
 	# Create a .zip file too

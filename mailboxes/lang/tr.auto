@@ -1,0 +1,67 @@
+index_return=Kullanıcı listesi
+
+mail_whitemove=Gönderenlere ve Gelen Kutusuna İzin Ver
+mail_tofilter=Alıcıya göre filtre oluştur
+
+mail_selunread=Okunmamışları seçin.
+mail_selspecial=Özel'i seçin.
+mail_specialsync=Özel Senkronizasyon
+
+view_nobody=Bu iletinin gövde içeriği yok.
+view_afile=Ek adı
+view_atype=Ek tipi
+view_aactions=Hareketler
+view_aview=Görünüm
+view_aopen=Açık
+view_asave=Kayıt etmek
+view_aplain=Çiğ
+view_anofile=Dosya adı yok
+view_asize=Dosya boyutu
+view_markas0=Okunmamış
+view_markas1=Okuma
+view_markas2=Özel
+view_sub2=$1 'den ekli e-posta
+
+view_dheader=Eki sunucuya ayır
+view_whitemove=Gönderene ve Gelen Kutusuna İzin Ver
+view_hammove=Ham ve Gelen Kutusunu Bildir
+view_images=Fotoğrafları göster
+view_aall=Tüm ekleri ZIP olarak kaydedin.
+view_aslideshow=Tüm resimleri göster.
+
+reply_attach3=Yüklenen ekler
+reply_dsn=Okundu durumu bildirimi ister misiniz?
+reply_del=Teslimat durumu bildirimi talep edilsin mi?
+reply_aboot=Adres defterine alıcı eklensin mi?
+reply_tabfrom=itibaren
+reply_tabto=için
+reply_tabreplyto=Yanıt Adresi
+reply_tabcc=cc
+reply_tabbcc=Gizli
+reply_tabsigning=İmzalama
+reply_taboptions=Seçenekler
+reply_addattach=Ek alanı ekle.
+reply_addssattach=Sunucu tarafı ek alanı ekleyin.
+reply_html0=Metin oluştur
+reply_html1=HTML oluştur
+
+reply_save=Kaydet ve Düzenle
+
+send_title2=Posta Kaydedildi
+
+search_msg6=$2 alanında $1 için arama sonuçları
+search_attach=Ekleri olmalı mı?
+
+sform_header=Gelişmiş e-posta arama seçenekleri
+sform_andmode=Ölçüt modu
+sform_folder2=Klasörlerde ara
+sform_bcc=Gizli: başlık
+sform_allmsg=tüm mesaj
+
+razor_moved=.. tamamlandı ve $1 klasörüne taşındı.
+
+slide_title=Ekli Resimler
+slide_prev=Önceki
+slide_next=Sonraki
+
+left_mail=Posta

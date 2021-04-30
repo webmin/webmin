@@ -1,0 +1,14 @@
+line2=Konfigurace systému,11
+man_cmd=Příkaz pro zobrazení manuálových stránek,0
+man_cmd_sect=Příkaz pro zobrazení manuálových stránek v sekci,0
+search_cmd=Příkaz pro hledání stránkek,0
+man_dir=Adresář manuálových stránek (MANPATH),0
+list_cmd=Příkaz pro zobrazení cesty manuálové stránky,0
+list_cmd_sect=Příkaz pro zobrazení cesty manuálové stránky v sekci,0
+man2html_path=Cesta k man2html,3,Nepoužívat man2html
+doc_dir=Adresář dokumentačních balíčků,3,Nic
+howto_dir=Adresáře HOWTO dokumentu,3,Nic
+kernel_dir=Adresář dokumentace k jádru,3,Nic
+kde_dir=Adresář dokumentace KDE,3,Nic
+custom_dir=Volitelný adresář dokumentace,3,Nic
+custom_desc=Volitelný název dokumentace,3,Výchozí

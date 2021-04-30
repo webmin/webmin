@@ -1,0 +1,24 @@
+index_errors=Fouten
+index_status=Toestand
+
+create_n2_layout=2 Near Copies
+create_f2_layout=2 verre kopieën
+create_o2_layout=2 offset-kopieën
+create_n3_layout=3 Near Copies
+create_f3_layout=3 verre kopieën
+create_o3_layout=3 offset-kopieën
+
+view_uuid=UUID
+view_iscsi=Gebruikt door iSCSI gedeeld apparaat $1 
+view_delayed=Wachten op een ander apparaat
+view_replace=Vervang partitie:
+view_replacedesc=Selecteer een partitie die moet worden vervangen. (Hot vervangen)
+
+emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
+
+log_replace=Hot vervangen partitie $2 in RAID-apparaat $1 door reservepartitie $3 
+
+remove_title=Partitie verwijderen uit RAID-array
+remove_rusure=Weet u zeker dat u partitie $2 van RAID-array $1 wilt verwijderen?
+remove_ok=Ja, verwijder het
+remove_eidx=Geen RAID-array geselecteerd!

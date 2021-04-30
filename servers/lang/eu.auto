@@ -1,0 +1,14 @@
+index_nosearch=Ez da zerbitzaririk bat etorri zure bilaketarekin.
+index_search=Erakutsi bat datozen zerbitzariak:
+index_ok=Search
+
+edit_portnone=Ez da batere ezarri
+edit_checkssl=Egiaztatu urruneko SSL ziurtagiria?
+
+save_eport2=Sarbide bat duen lotura mota bat hautatuta badago, ataka eman behar da
+
+find_already2=$1 zerbitzariaren ostalari ezaguna aurkitu da
+
+delete_title=Ezabatu zerbitzariak
+delete_rusure=Ziur $1 hautatutako zerbitzariak kendu nahi dituzula?
+delete_confirm=Ezabatu orain

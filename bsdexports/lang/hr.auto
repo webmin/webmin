@@ -1,0 +1,52 @@
+index_title=Izvoz NFS-a
+index_add=Dodajte novi izvoz.
+index_dirs=Katalozi
+index_clients=klijenti
+index_everyone=Svatko
+index_none=Još nije definiran izvoz.
+index_delete=Izbriši odabrane izvoze
+index_apply=Primijeni promjene
+index_applydesc=Kliknite ovaj gumb da biste primijenili trenutnu konfiguraciju izvoza datoteka. Ovo će učiniti dostupnim sve opcije s navedenim opcijama.
+index_return=izvozni popis
+index_echeck=NFS poslužitelj se ne može koristiti u ovom sustavu : $1 
+
+check_ecmd=Naredba NFS poslužitelja $1 nije instalirana
+
+delete_err=Izvoz nije uspio
+delete_enone=Nijedna nije odabrana
+
+edit_title1=Uredi izvoz
+edit_title2=Stvorite izvoz
+edit_header1=Opcije izvoza
+edit_dirs=Katalozi za izvoz
+edit_alldirs=Izvoz poddirektoriju?
+edit_ro=Samo za čitanje?
+edit_kerb=Koristite Kerberos?
+edit_header2=Daljinsko mapiranje korisnika
+edit_maproot=Korisnik root karte u
+edit_mapusers=Označite sve korisnike na
+edit_unpriv=Neprivilegirani korisnik
+edit_uid=Korisnik / UID
+edit_gids=I grupe / GID-ovi
+edit_mapall=Označite sve korisnike na
+edit_header3=Klijenti za ovaj izvoz
+edit_clients=klijenti
+edit_hosts=Domaćini / mreže
+edit_network=Mreža
+edit_mask=Maska
+
+save_err=Spremanje izvoza nije uspjelo
+save_edir='$1' nije direktorij ili ne postoji
+save_enone=Za izvoz morate unijeti barem jedan direktorij
+save_esub=Ako se odabere opcija <b>izvozni poddirektoriji</b>, može se dati samo jedan direktorij
+save_eroot=Kada koristite opciju <b>izvozni poddirektoriji</b>, izvezeni direktorij mora biti korijen <i>lokalnog</i> datotečnog sustava
+save_euser="$1" nije važeći korisnik ili UID
+save_egroup="$1" nije važeća skupina ili GID
+save_ekerb=Korisnici korijena karte, karte svih korisnika i opcije kerberosa međusobno se isključuju
+save_ehosts=Morate unijeti barem jednog domaćina u koji želite izvoziti
+save_enetwork='$1' nije važeća mreža
+save_enetmask='$1' nije važeća maska mreže
+save_esame1=Mapa <tt>$1</tt> već se izvozi u <tt>$2</tt>. Vaš operativni sustav ne dopušta da se direktori na istom <i>lokalnom</i> datotečnom sustavu odvojeno izvoze na isti host
+save_esame2=Mapa <tt>$1</tt> već se izvozi u <tt>$2</tt>. Vaš operativni sustav ne dopušta odvojeno izvoz direktorija u istom datotečnom sustavu <i>lokal</i> u istu mrežu
+
+restart_err=Primjena promjena nije uspjela

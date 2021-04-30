@@ -1,0 +1,83 @@
+index_title=Monitoraggio della larghezza di banda
+index_efiresys=Nessuno dei firewall supportati (IPtables, IPFW, IPFilter o Shorewall) è stato rilevato dal sistema. Controllare i moduli appropriati per assicurarsi che siano configurati.
+index_efiresys2=Il sistema firewall $1 configurato non è stato trovato sul tuo sistema. Modifica la <a href='$2'>configurazione del modulo</a> per utilizzare il firewall corretto.
+index_elog=Il file $1 utilizzato per la registrazione della larghezza di banda è in realtà una directory sul sistema. Modifica la <a href='$2'>configurazione del modulo</a> per utilizzare un percorso diverso.
+index_edir=La directory per l'archiviazione dei dati sulla larghezza di banda $1 non esiste o non è una directory. Modifica la <a href='$2'>configurazione del modulo</a> per utilizzare un percorso diverso.
+index_emod=Il modulo Webmin $1 non è installato su questo sistema o non è supportato dal sistema operativo in uso. Il modulo di monitoraggio della larghezza di banda non può funzionare senza di esso.
+index_esyslog=Nessuno dei moduli dei registri di sistema è installato su questo sistema e supportato dal sistema operativo in uso. Il modulo di monitoraggio della larghezza di banda non può funzionare senza uno di essi.
+index_firesys=Utilizzando $1 firewall e $2 
+index_setupcannot=Tuttavia, non hai i permessi per configurarlo!
+index_setupdesc=Prima che questo modulo possa riferire sull'utilizzo della rete sul sistema, è necessario configurarlo per monitorare il traffico sull'interfaccia di rete esterna selezionata.
+index_setupdesc2=<b>Avviso: questo modulo registra TUTTO il traffico di rete inviato o ricevuto sull'interfaccia selezionata. Ciò richiederà una grande quantità di spazio su disco e tempo CPU su una connessione di rete veloce.</b>
+index_missing3=È necessario aggiungere diverse regole firewall e creare una voce di configurazione syslog.
+index_missing2=È necessario aggiungere diverse regole del firewall.
+index_missing1=È necessario creare una voce di configurazione syslog.
+index_iface=Interfaccia di rete esterna
+index_other=Altro ..
+index_setup=Installa Ora
+index_by=Mostra traffico per
+index_hour=ora
+index_host=ospite
+index_proto=protocollo
+index_iport=porta interna
+index_oport=porta esterna
+index_port=porta
+index_for=per
+index_all=&lt;Tutto&gt;
+index_forhour=ora ..
+index_forhost=ospite ..
+index_forproto=protocollo ..
+index_foriport=porta interna ..
+index_foroport=porta esterna ..
+index_search=Genera rapporto
+index_none=Nessun traffico è stato ancora riassunto da questo modulo. Se l'hai appena impostato, l'elaborazione del traffico potrebbe richiedere almeno un'ora.
+index_ehour=Ora non valida - deve nel formato aaaa-mm-gg hh: mm
+index_eport=Nome della porta sconosciuto
+index_eproto=Protocollo mancante
+index_ehost=Host mancante o non valido
+index_from=Per il traffico dopo
+index_to=Per il traffico prima
+index_efrom=Data e ora di inizio non valide
+index_eto=Data e ora di fine non valide
+index_err=Generazione del rapporto non riuscita
+index_usage=Traffico di rete <font color=#ff0000>scaricato</font> e <font color=#0000ff>caricato</font>
+index_hhour=Ora
+index_hhost=Ospite
+index_hday=Giorno
+index_hproto=Protocollo
+index_hiport=Porta
+index_hoport=Porta
+index_hport=Porta
+index_low=Solo porte server?
+index_resolv=Risolvi i nomi host?
+index_nomatch=Nessun traffico corrisponde ai criteri selezionati.
+index_turnoff=Disattiva il monitoraggio
+index_turnoffdesc=Fare clic su questo pulsante per rimuovere le regole del firewall, la configurazione syslog e il processo Cron utilizzati per il monitoraggio della larghezza di banda. Tutti i dati raccolti esistenti rimarranno intatti.
+index_rotate=Aggiorna statistiche
+index_rotatedesc=Fare clic su questo pulsante per elaborare tutto il traffico di rete registrato fino all'ora corrente, rendendolo immediatamente disponibile per i rapporti.
+index_eiptables=Avviso: la configurazione della tua IPtables ha un errore: $1. L'impostazione del monitoraggio della larghezza di banda cancella tutte le regole del firewall.
+index_return=modulo di rapporto
+
+log_setup=Impostazione del monitoraggio della larghezza di banda sull'interfaccia $1 
+log_turnoff=Monitoraggio della larghezza di banda disabilitato
+log_rotate=Statistiche aggiornate
+
+acl_setup=È possibile impostare e disabilitare il monitoraggio?
+
+turnoff_ecannot=Non è consentito disabilitare il monitoraggio
+
+setup_ecannot=Non è consentito abilitare il monitoraggio
+setup_eiface=Nome dell'interfaccia mancante o non valido
+setup_ezone=Impossibile trovare la zona Shorewall per l'interfaccia selezionata
+
+system_firewall=IPtables
+system_ipfw=IPFW
+system_ipfilter=IPFilter
+system_shorewall=Shorewall
+
+syslog_syslog=syslog
+syslog_syslog-ng=Syslog-NG
+
+rotate_title=Aggiornamento delle statistiche
+rotate_doing=Elaborazione del traffico di rete registrato.
+rotate_done=.. fatto.

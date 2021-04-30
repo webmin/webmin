@@ -1,2 +1,2 @@
 desc_pl=WU-FTP - serwer
-longdesc_pl=Konfiguracja dostêpu, anonimowego FTP i innych opcji dla WU-FTPd.
+longdesc_pl=Konfiguracja dostÄ™pu, anonimowego FTP i innych opcji dla WU-FTPd.

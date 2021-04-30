@@ -1,0 +1,116 @@
+index_title=„FirewallD“
+index_atboot=Įgalinti užkardą įkrovos metu?
+index_bootup=Suaktyvinkite įkrovos metu
+index_bootupdesc=Pakeiskite šią parinktį norėdami valdyti, ar ugniasienė įjungiama įkrovos metu, ar ne.
+index_apply=Taikyti konfigūraciją
+index_applydesc=Spustelėkite šį mygtuką, kad pirmiau išvardytos ugniasienės konfigūracija būtų aktyvi. Visos galiojančios ugniasienės taisyklės bus išbrauktos ir pakeistos
+index_restart=Taikyti konfigūraciją
+index_restartdesc=Suaktyvinkite visas aukščiau išvardytas leidžiamas paslaugas ir prievadus visose zonose. Visos aktyvios taisyklės, kurios nebuvo sukurtos visam laikui, bus pakeistos.
+index_start=Paleiskite „FirewallD“
+index_startdesc=Paleiskite „FirewallD“ serverį ir pritaikykite aukščiau išvardytas taisykles.
+index_stop=Sustabdykite „FirewallD“
+index_stopdesc=Išjunkite „FirewallD“ serverį ir pašalinkite visas aukščiau išvardytas taisykles.
+index_cerr=„FirewallD“ modulio naudoti negalima : $1 
+index_zone=Rodyti taisykles zonoje:
+index_zoneok=Keisti
+index_zoneadd=Pridėti zoną ..
+index_zonedel=Ištrinti zoną
+index_zonedef=Padaryti numatytuoju
+index_type=Taisyklės tipas
+index_port=Uostas ar paslauga
+index_proto=Protokolas
+index_tservice=Aptarnavimas
+index_tport=Uostas
+index_tforward=Persiųsti
+index_padd=Pridėti leidžiamą prievadą.
+index_sadd=Pridėti leidžiamą paslaugą.
+index_fadd=Pridėti prievadą į priekį.
+index_delete=Ištrinti pasirinktas taisykles
+index_return=zonų sąrašas
+index_ezones=Nerasta „FirewallD“ zonų!
+index_none=Šioje zonoje dar nėra leidžiamų uostų ar paslaugų.
+index_ifaces=Taikykite sąsajų taisykles:
+
+port_edit=Redaguoti uostą
+port_create=Pridėti prievadą
+port_header=Leidžiamos uosto parinktys
+port_zone=Leidžiama zonoje
+port_port=Uostas leisti
+port_mode0=Vienas uostas
+port_mode1=Uosto diapazonas
+port_mode2=Tas pats, kaip originalus uostas
+port_proto=Tinklo protokolas
+port_ezone=Zona neegzistuoja!
+port_err=Nepavyko išsaugoti prievado
+port_eport=Trūksta arba netinkamas prievado numeris arba vardas
+port_eportlow=Žemas prievadas turi būti skaičius
+port_eporthigh=Aukštas prievadas turi būti skaičius
+port_eportrange=Žemas prievadas turi būti žemiau aukšto uosto
+
+serv_edit=Redaguoti paslaugą
+serv_create=Pridėti paslaugą
+serv_header=Leidžiamos paslaugų parinktys
+serv_name=Paslauga leisti
+serv_err=Nepavyko išsaugoti paslaugos
+
+forward_edit=Redaguoti Pirmyn
+forward_create=Sukurti pirmyn
+forward_header=Uosto ekspedijavimo parinktys
+forward_zone=Pirmyn zonai
+forward_err=Nepavyko išsaugoti į priekį
+forward_port=Šaltinio uostas
+forward_dstport=Desintation uostas
+forward_dstaddr=Paskirties adresas
+forward_dstlocal=Ši sistema
+forward_edstaddr=Netinkamas IPv4 paskirties adresas
+forward_eneither=Reikia įvesti tikslo adresą arba uostą, arba abu
+
+check_ecmd=„FirewallD“ valdymo komanda $1 jūsų sistemoje nerasta
+
+delete_err=Nepavyko ištrinti taisyklių
+delete_enone=Nepasirinkta!
+delete_edel=Nepavyko pašalinti $1 : $2 
+
+zone_title=Sukurti zoną
+zone_header=Naujos zonos parinktys
+zone_name=Zonos pavadinimas
+zone_mode=Leidžiami uostai ir paslaugos
+zone_mode0=Nėra (visas srautas bus užblokuotas)
+zone_mode1=Kopija iš zonos
+zone_mode2=Tik SSH, IDENT ir Webmin
+zone_mode3=SSH, IDENT, Webmin ir aukšti prievadai
+zone_mode4=Uostai, naudojami virtualiam prieglobai
+zone_err=Nepavyko sukurti zonos
+zone_ename=Trūksta arba netinkamas zonos pavadinimas
+zone_eclash=Zona tuo pačiu pavadinimu jau egzistuoja
+
+delzone_title=Ištrinti zoną
+delzone_err=Nepavyko ištrinti zonos
+delzone_edefault=Numatytosios zonos negalima pašalinti
+delzone_rusure=Ar tikrai norite ištrinti zoną $1, kurioje yra $2 prievadai ir $3 paslaugos?
+
+defzone_err=Nepavyko zonos padaryti numatytąja
+
+restart_err=Nepavyko pritaikyti konfigūracijos
+
+stop_err=Nepavyko sustabdyti „FirewallD“
+start_err=Nepavyko paleisti „FirewallD“
+log_stop=Sustabdyta „FirewallD“
+log_start=Paleista „FirewallD“
+log_restart=Taikoma „FirewallD“ konfigūracija
+log_bootup=Įjungta „FirewallD“ įkrovos metu
+log_bootdown=Išjungta „FirewallD“ įkrovos metu
+log_create_port=Pridėtas leidžiamas prievadas $1 
+log_delete_port=Pašalintas leidžiamas prievadas $1 
+log_update_port=Atnaujintas leidžiamas prievadas $1 
+log_create_serv=Pridėta leistina paslauga $1 
+log_delete_serv=Pašalinta leistina paslauga $1 
+log_update_serv=Atnaujinta leistina paslauga $1 
+log_create_forward=Pridėta pirmyn $1 
+log_delete_forward=Pašalinta į priekį $1 
+log_update_forward=Atnaujinta pirmyn $1 
+log_delete_rules=Pašalinti $1 leidžiami prievadai
+log_ifaces_zone=Atnaujintos $1 zonos sąsajos
+log_create_zone=Sukurta zona $1 
+log_delete_zone=Ištrinta zona $1 
+log_default_zone=$1 zona padaryta numatytąja

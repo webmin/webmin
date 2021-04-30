@@ -1,0 +1,3 @@
+desc_pt=Cliente e servidor NIS
+name_pt=NIS
+longdesc_pt=Configure um sistema como um cliente NIS, servidor mestre ou escravo. Observe que o NIS + não é suportado.

@@ -1,0 +1,5 @@
+index_trunced=$2的總輸出在 $1處被截斷。
+index_timedout=運行 $1秒後命令已終止。
+
+acl_shellenv=使用所選用戶的環境？
+acl_chroot=chroot到目錄

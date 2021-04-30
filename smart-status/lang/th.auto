@@ -1,0 +1,58 @@
+index_title=สถานะไดรฟ์ SMART
+index_ecmd=ไม่พบคำสั่งควบคุม SMART $1 บนระบบของคุณหรือตั้งค่าไม่ถูกต้องใน <a href='$2'>การกำหนดค่าโมดูล</a> จะต้องติดตั้งก่อนจึงจะสามารถใช้โมดูลนี้ได้
+index_ecmd2=คำสั่ง $1 ดูเหมือนจะไม่เป็นคำสั่งควบคุมของ SMART จะต้องตั้งค่าอย่างถูกต้องใน <a href='$2'>การกำหนดค่าโมดูล</a> ก่อนที่จะสามารถใช้โมดูลนี้ได้
+index_version=SMARTsuite เวอร์ชั่น $1 
+index_show=แสดงสถานะของไดรฟ์:
+index_ok=แสดง
+index_eidescsi=ไม่พบไดรฟ์ IDE, SCSI หรือ SATA ในระบบของคุณ
+index_drive=สถานะของไดรฟ์ $1 
+index_drivesub=สถานะของไดรฟ์ $1, ดิสก์ $2 
+index_desc=ที่ตั้ง
+index_size=ขนาดไดรฟ์
+index_model=ทำและรูปแบบ
+index_support=รองรับสมาร์ท
+index_enabled=เปิดใช้งาน SMART หรือไม่
+index_check=ผ่านการตรวจสอบไดรฟ์?
+index_short=การทดสอบตัวเองระยะสั้น
+index_ext=ขยายการทดสอบด้วยตนเอง
+index_data=การทดสอบการเก็บข้อมูล
+index_errors=บันทึกข้อผิดพลาด
+index_ecount=ตรวจพบข้อผิดพลาด $1 
+index_attrs=แอตทริบิวต์ SMART เพิ่มเติม
+index_raw=รายงานสถานะ SMART เต็มรูปแบบ
+index_return=ดัชนีโมดูล
+index_family=ครอบครัวต้นแบบ
+index_serial=หมายเลขซีเรียล
+index_capacity=ความจุ
+index_norm=ปกติ:
+
+monitor_type=ตรวจสอบ SMART Drive
+monitor_type2=SSD Wearout
+monitor_drive=ขับรถไปตรวจสอบ
+monitor_errors=ตรวจสอบบันทึกข้อผิดพลาดด้วยหรือไม่
+monitor_errorsinc=ใช่ แต่เตือนเมื่อจำนวนข้อผิดพลาดเพิ่มขึ้น
+monitor_other=อื่น ๆ ..
+monitor_edrive=ตรวจสอบไดรฟ์ที่ขาดหายไปหรือไม่ถูกต้อง
+monitor_nosuch=ไม่มีไดรฟ์ดังกล่าว
+monitor_nosmart=ไม่รองรับ SMART
+monitor_errorsfound=รายงานข้อผิดพลาด $1 
+monitor_errorsinced=ข้อผิดพลาดเพิ่มขึ้นจาก $2 เป็น $1 
+monitor_wearlevel=ล้มเหลวหากระดับการสึกหรอต่ำกว่าระดับ
+monitor_ewearlevel=เปอร์เซ็นต์ระดับการสึกหรอไม่ถูกต้อง
+monitor_nowearout=ไดรฟ์ไม่รายงานตัวบ่งชี้การสึกหรอของ SSD
+monitor_wornout=ระดับการสึกหรอลดลงเป็น $1 
+
+short_title=การทดสอบตัวเองระยะสั้น
+short_doing=เริ่มการทดสอบตัวเองสั้น ๆ ของ $1 ..
+short_failed=.. ล้มเหลว!
+short_ok=.. การทดสอบเริ่มต้นตกลง ดูสถานะของไดรฟ์ในหน้าหลักของโมดูลเพื่อดูผลลัพธ์
+
+ext_title=ขยายการทดสอบด้วยตนเอง
+ext_doing=เริ่มการทดสอบตัวเองแบบขยายที่ $1 ..
+ext_failed=.. ล้มเหลว!
+ext_ok=.. การทดสอบเริ่มต้นตกลง ดูสถานะของไดรฟ์ในหน้าหลักของโมดูลเพื่อดูผลลัพธ์
+
+data_title=การทดสอบการเก็บข้อมูล
+data_doing=เริ่มต้นการรวบรวมข้อมูลออฟไลน์ใน $1 ..
+data_failed=.. ล้มเหลว!
+data_ok=.. คอลเลกชันเริ่มต้นตกลง ดูสถานะของไดรฟ์ในหน้าหลักของโมดูลเพื่อดูผลลัพธ์

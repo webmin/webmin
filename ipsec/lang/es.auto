@@ -1,0 +1,34 @@
+index_version2=$2 versión $1 
+
+edit_pfs=Perfecto reenvío secreto?
+edit_pmodeyes=si
+edit_pmodeno=No
+edit_pmode=Predeterminado (generalmente Sí)
+edit_cert=Nombre del certificado
+edit_keying=Reintentos de incrustación
+edit_esp=Algoritmo ESP
+edit_espdef=Predeterminado (generalmente MD5)
+edit_espmd5=MD5
+edit_espsha=SHA1
+edit_esp128=AES-128bit-MD5
+edit_esponly=¿Acepta este algoritmo ESP solamente?
+edit_auth=Modo de autenticación
+edit_authdef=Predeterminado (generalmente ESP)
+edit_authesp=ESP
+edit_authah=AH
+edit_keylife=Clave de conexión de por vida
+edit_ikelifetime=Keying canal de por vida
+edit_unit_s=segundos
+edit_unit_m=minutos
+edit_unit_h=horas
+edit_unit_d=dias
+
+config_nat=¿Habilitar el recorrido NAT?
+
+policy_desc_private=Redes encriptadas
+
+save_ekeying=Falta o no es válido el número de reintentos
+save_eleftcert=Certificado de servidor local faltante o no válido
+save_erightcert=Certificado de servidor remoto faltante o no válido
+save_ekeylife=Clave de conexión faltante o inválida de por vida
+save_eikelifetime=Duración del canal de codificación faltante o no válida

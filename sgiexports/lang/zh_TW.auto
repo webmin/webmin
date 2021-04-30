@@ -1,0 +1,39 @@
+index_title=NFS出口
+index_add=添加新的NFS導出
+index_dir=目錄
+index_hosts=允許的主機
+index_all=所有主機
+index_none=尚未定義NFS導出。
+index_apply=應用配置
+index_applydesc=單擊此按鈕可激活上面列出的所有導出及其配置的選項。
+index_return=出口清單
+
+edit_title1=創建導出
+edit_title2=編輯導出
+edit_header=匯出詳細資料
+edit_dir=導出目錄
+edit_hosts=導出到主機/網絡組
+edit_ro=只讀？
+edit_wsync=寫入後同步？
+edit_anon=根用戶權限
+edit_anon1=默認值（按<tt>nobody</tt>處理）
+edit_anon2=拒絕訪問
+edit_anon0=視為用戶
+edit_rw=讀/寫訪問
+edit_root=根文件訪問
+edit_access=掛載訪問
+edit_all=所有主機
+edit_sel=列出的主機
+edit_none=沒有主機
+
+save_err=無法保存導出
+save_edir=缺少或不存在要導出的目錄
+save_eanon=根用戶丟失或無效
+save_erw=沒有輸入讀寫主機
+save_eroot=沒有輸入根文件訪問主機
+save_eaccess=沒有輸入安裝訪問主機
+
+log_create_export=已創建 $1的導出
+log_delete_export=已刪除 $1的導出
+log_modify_export=已修改 $1的導出
+log_apply=應用的配置

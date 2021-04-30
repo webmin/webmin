@@ -1,0 +1,4 @@
+delete_title=Supprimer la matrice RAID
+delete_rusure=Voulez-vous vraiment supprimer la matrice RAID $1, qui utilise $2 d'espace disque?
+delete_ok=Oui, supprimez-le
+delete_eidx=Aucune matrice RAID sélectionnée!

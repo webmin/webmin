@@ -1,0 +1,11 @@
+index_none=您無權訪問任何用戶來更改其密碼。
+
+passwd_expire=強制用戶在下次登錄時更改密碼？
+passwd_others=更改其他模塊的密碼？
+passwd_ok2=用戶 $1的密碼已成功更改。
+
+acl_self=始終允許更改自己的密碼？
+acl_opt=可選的
+acl_expire=可以強制用戶在下次登錄時更改密碼嗎？
+acl_sec=包括中學組？
+acl_notusers=用戶除外

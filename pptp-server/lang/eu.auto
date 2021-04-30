@@ -1,0 +1,152 @@
+index_title=PPTP VPN zerbitzaria
+index_version=$1 bertsio PoPToP
+index_epptpd=$1 PoPToP PPTP zerbitzaria ez da zure sisteman aurkitu edo ez da programa egokia. Agian ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_econfig=Ez da aurkitu zure sisteman PPTP zerbitzariaren $1 konfigurazio fitxategia. Agian zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_stop=Gelditu PPTP zerbitzaria
+index_stopdesc=Egin klik botoi honetan PPTP zerbitzariaren exekuzio prozesua itzaltzeko, konexio berririk ez da onartuko. Oraindik VPN konexioak aktibo egongo dira.
+index_start=Hasi PPTP zerbitzaria
+index_startdesc=Egin klik botoi honetan PPTP zerbitzariaren prozesua abiarazteko bezeroen VPN konexioak jaso ahal izateko.
+index_apply=Aplikatu konfigurazioa
+index_applydesc=Egin klik botoi honetan uneko PPTP zerbitzariaren aukerak aplikatzeko PPTP zerbitzariaren prozesua geldituz eta berriro martxan jarriz. PPP aukeren eta PPP kontuen aldaketak aplikatuko dira konexio berri guztietan
+index_return=moduluaren aurkibidea
+index_epppd=$1 PPP zerbitzariaren programa ez dago zure sisteman instalatuta. PPTP funtzionamenduaren araberakoa da.
+
+conf_title=PPTP zerbitzariaren aukerak
+conf_ecannot=Ezin duzu PPTP zerbitzariaren aukerak editatu
+conf_header=PPTP zerbitzariaren konfigurazioa
+conf_speed=PPP baudien tasa
+conf_baud=bps
+conf_listen=Helbidea entzun
+conf_all=Helbide guztiak
+conf_localip=Konexio amaierako zerbitzariaren IP helbideak
+conf_remoteip=Bezeroei zuzentzeko IP helbideak
+conf_ipxnets=IPX sareak esleitzeko
+conf_from=aurrera
+conf_to=to
+conf_option=PPP aukeren fitxategia
+conf_mode0=Ezarpen orokorrak
+conf_mode1=PPTPren berariazko ezarpenak
+conf_mode2=Fitxategi pertsonalizatua
+conf_ipdesc=Bi tarteetako IP helbidea bakarka (192.168.1.1 bezala) edo barrutietan sar daiteke (192.168.2.32-64 bezala)
+conf_err=Huts egin du zerbitzariaren aukerak gordetzean
+conf_espeed=Galdutako baud tasa edo baliogabea
+conf_elisten=Helbidea ez ikusteko edo baliogabeko helbidea
+conf_eoption=Falta edo itxura baliogabeko itxura du PPP aukerak fitxategian
+conf_elocalip='$1' ez da baliozko IP helbide edo barruti lokal bat
+conf_eremoteip='$1' ez da baliozko urruneko IP helbide edo barrutia
+conf_efrom=Helbideko IPX sare falta edo baliogabea
+conf_eto=Helbidea zuzentzeko IPX sare falta edo baliogabea
+
+options_title=PPP Aukerak
+options_ecannot=Ezin duzu PPP aukerak editatu
+options_desc0=$1 etik beherako PPP aukerak zure sistemak jasotzen dituen sarrerako konexio guztiei aplikatzen zaizkie, baita markatzeko modemak ere.
+options_desc1=$1 etik beherako PPP aukerak PPTP konexio guztiei aplikatzen zaizkie.
+options_desc2=Inprimaki hau gorde ondoren finkatutako konexio berriek erabiliko dute.
+options_header=PPP konexio aukerak
+options_proxyarp=Sortu proxy ARP sarrera?
+options_lock=PTY gailuaren fitxategia blokeatu nahi duzu?
+options_auth=Autentifikazioa behar duzu?
+options_auth0=Ez, baina bideratutako IPak saihestu
+options_auth1=Inoiz ez
+options_auth2=beti
+options_login=Unix autentikazioa ere egiten al duzu?
+options_pap=PAP autentifikazioa
+options_chap=CHAP autentifikazioa
+options_req=Erabili behar da
+options_all=Erabil daiteke
+options_ref=Ezin da erabili
+options_name=Autentifikazio zerbitzariaren izena
+options_hn=Benetako ostalariaren izena
+options_mtu=Gehienezko paketearen tamaina bidaltzea
+options_mru=Gehienezko paketearen tamaina jasotzeko
+options_err=Ezin izan da PPP aukerak gorde
+options_emtu=Pakete-tamaina bidaltzeko gehienezko falta edo baliogabea
+options_emru=Gehienezko paketeen tamaina jasotzeko edo falta da
+options_ename=Autentifikaziorako zerbitzariaren izen falta edo baliogabea
+options_version=PPPd $1 bertsioa
+options_msdesc=Beheko aukerek MS-CHAP autentifikazio metodoa eta MPPE enkriptatzea gaitzen dute, lehenetsitako Windows VPN bezeroek erabilita. Hala ere, MPPEk laguntza behar du bai PPP demonian bai sistema eragilearen nukleoan.
+options_mschap=MS-CHAP autentifikazioa
+options_mschap-v2=MS-CHAP 2. bertsioa autentifikazioa
+options_chapms=MS-CHAP autentifikazioa
+options_chapms-v2=MS-CHAP 2. bertsioa autentifikazioa
+
+secrets_title=PPP kontuak
+secrets_ecannot=Ezin duzu PPP kontuak editatu
+secrets_return=indizea
+secrets_none=Oraindik ez da PPP kontuik sortu.
+secrets_enopfile=PPP pasahitzen $1 fitxategia ez da zure sisteman existitzen. Agian PPP ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+secrets_table=PPP $1 da
+secrets_user=Erabiltzaile izena
+secrets_ips=IP helbideak
+secrets_uany=INOLAKO
+secrets_sany=INOLAKO
+secrets_create=Sortu PPP kontu berria.
+secrets_desc=Orrialde honetan agertzen diren PPP kontuak $1 fitxategitik hartuak dira, $3 autentifikaziorako erabiltzen direnak. $2 zerbitzariarentzako bakarrik agertzen dira, ez irteerak konexioak egiteko kontuak.
+secrets_delete=Ezabatu hautatutako PPP kontuak
+
+edit_secret_etitle=Editatu PPP kontua
+edit_secret_ctitle=Sortu PPP kontua
+edit_secret_acc=PPP kontua
+edit_secret_user=Erabiltzaile izena
+edit_secret_serv=zerbitzaria
+edit_secret_sany=Edozein
+edit_secret_uany=Edozein
+edit_secret_pass=Pasahitza
+edit_secret_none=Bat ere ez
+edit_secret_ffile=Fitxategitik
+edit_secret_leave=Utzi aldatu gabe
+edit_secret_setto=Ezarrita
+edit_secret_vaddr=Baliozko helbideak
+edit_secret_aany=Baimendu edozein
+edit_secret_anone=Onartu ez
+edit_secret_alist=Baimendu zerrendatuta ..
+edit_secret_save=Save
+edit_secret_del=Ezabatu
+edit_secret_return=kontu zerrenda
+
+save_secret_esave=Ezin izan da kontua gorde
+save_secret_enoip='$1' ez da baliozko helbide bat
+
+stop_err=Ezin izan da PPTP zerbitzaria gelditu
+stop_egone=Jada ez da martxan
+stop_ecannot=Ezin duzu PPTP zerbitzaria gelditu
+
+start_err=Huts egin du PPTP zerbitzaria abiaraztean
+start_ecannot=Ezin duzu PPTP zerbitzaria abiarazi
+
+apply_err=Huts egin du PPTP zerbitzaria berriro abiaraztean
+apply_ecannot=Ezin duzu PPTP zerbitzaria berriro hasi
+
+conns_title=Konexio aktiboak
+conns_ecannot=Ezin duzu konexio aktiboak kudeatu
+conns_desc=Orrialde honetan une honetan PPTP konexioak zure zerbitzariarekin zerrendatzen dira. Bat desbideratzeko, egin klik haren interfazearen izenean.
+conns_iface=PPP interfazea
+conns_client=Bezeroaren helbidea
+conns_stime=Geroztik konektatua
+conns_local=Zerbitzariaren VPN helbidea
+conns_remote=Bezeroaren VPN helbidea
+conns_none=Momentuz ez da PPTP konexiorik aktibatuta egongo.
+conns_unknown=ezezaguna
+conns_user=Erabiltzaile izena
+
+disc_err=Ezin izan da deskonektatu
+disc_egone=Konexioak ez dago aktibo
+disc_ekill=Prozesua ez da exekutatzen
+
+log_secret_create=$1 PPP kontua sortu da
+log_secret_modify=$1 aldatutako PPP kontua
+log_secret_delete=$1 PPP kontua ezabatu da
+log_deletes=$1 PPP kontuak ezabatu dira
+log_conf=PPTP zerbitzariaren aukerak aldatu
+log_options=PPP aukerak aldatu
+log_disc=Konektatutako bezero $1 
+log_start=PPTP zerbitzaria hasi da
+log_stop=PPTP zerbitzaria gelditu da
+log_apply=PPTP zerbitzariaren konfigurazioa aplikatu da
+
+acl_conf=Ezin duzu konfigurazioa editatu?
+acl_options=Aukerak editatu al ditzake?
+acl_secrets=Kudeatu al ditzake PPTP kontuak?
+acl_conns=Konexioak ikusi daitezke?
+acl_stop=PPTP zerbitzaria gelditu eta abiarazi dezake?
+acl_apply=Konfigurazioa aplika al dezakezu?

@@ -1,0 +1,40 @@
+index_enis2=이 모듈의 클라이언트 서비스 기능 만 사용할 수 있습니다.
+
+client_enis=시스템에 NIS 클라이언트 지원이 설치되지 않은 것 같습니다.
+
+switch_srcs=데이터 소스
+switch_return=고객 서비스
+
+server_epwdir=잘못된 비밀번호 소스 파일 디렉토리
+
+tables_find=$2 가 $3 과 (와) 일치하는 $1 찾기
+tables_search=검색
+tables_nomatch=검색어와 일치하는 기록이 없습니다
+tables_build=NIS 테이블 재 구축
+tables_buildmsg=테이블 데이터에서 NIS 데이터베이스를 다시 빌드하려면이 단추를 클릭하십시오. 변경 한 경우 NIS 클라이언트가 사용할 수 있도록 변경해야합니다.
+
+desc_auto.home=오토 마운터 홈
+desc_auto.master=자동 마운터 맵
+desc_auto.local=오토 마운터 로컬
+
+security_domain=NIS 도메인
+
+eswitch_title=서비스 편집
+eswitch_egone=서비스가 존재하지 않습니다!
+eswitch_header=서비스 내용
+eswitch_name=서비스 이름
+eswitch_0=첫 번째 데이터 소스
+eswitch_1=두 번째 데이터 소스
+eswitch_2=세 번째 데이터 소스
+eswitch_3=네 번째 데이터 소스
+eswitch_4=다섯 번째 데이터 소스
+eswitch_nth=데이터 소스 $1 
+eswitch_success=성공에
+eswitch_notfound=찾을 수없는 경우
+eswitch_unavail=사용할 수없는 경우
+eswitch_tryagain=일시적으로 사용할 수 없음
+eswitch_return=반환 결과
+eswitch_continue=검색 계속
+eswitch_none=없음
+eswitch_err=서비스를 저장하지 못했습니다
+eswitch_enone=선택된 소스가 없습니다!

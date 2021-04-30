@@ -1,0 +1,39 @@
+index_title=NFS eksportas
+index_add=Pridėti naują NFS eksportą
+index_dir=Katalogas
+index_hosts=Leidžiami šeimininkai
+index_all=Visi šeimininkai
+index_none=Dar nėra apibrėžtas NFS eksportas.
+index_apply=Taikyti konfigūraciją
+index_applydesc=Spustelėkite šį mygtuką, kad visas pirmiau nurodytas eksportas būtų aktyvus su jų sukonfigūruotomis parinktimis.
+index_return=eksporto sąrašas
+
+edit_title1=Sukurti eksportą
+edit_title2=Redaguoti eksportą
+edit_header=Eksportuoti informaciją
+edit_dir=Eksportuoti skirtas katalogas
+edit_hosts=Eksportuoti į pagrindinius kompiuterius/tinklo grupes
+edit_ro=Tik skaitymui?
+edit_wsync=Sinchronizuoti po rašymo?
+edit_anon=Pagrindinio vartotojo leidimai
+edit_anon1=Numatytasis (traktuoti kaip <tt>niekas</tt>)
+edit_anon2=Uždrausti prieigą
+edit_anon0=Elkitės kaip su vartotoju
+edit_rw=Skaitymo/rašymo prieiga
+edit_root=Prieiga prie šakninių failų
+edit_access=Prieiga prie kalno
+edit_all=Visi šeimininkai
+edit_sel=Išvardyti šeimininkai ..
+edit_none=Nėra šeimininkų
+
+save_err=Nepavyko išsaugoti eksporto
+save_edir=Trūksta arba jo nėra, kad būtų galima eksportuoti
+save_eanon=Trūksta arba netinkamas šaknies vartotojas
+save_erw=Neįvestas skaitymo ir rašymo kompiuteris
+save_eroot=Neįvesta šakninių failų prieigos prieglobos
+save_eaccess=Įvestų prieigos kompiuterių nėra
+
+log_create_export=Sukurtas $1 eksportas
+log_delete_export=Panaikintas $1 eksportas
+log_modify_export=Modifikuotas $1 eksportas
+log_apply=Taikoma konfigūracija

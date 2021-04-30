@@ -1,0 +1,118 @@
+index_title=Server tal-Vuċi
+index_ecmd=Il-kmand Vgetty $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
+index_econfig=Il-fajl config Vgetty $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
+index_return=Indiċi tal-voicemail
+
+vgetty_title=Konfigurazzjoni tal-Port Serjali
+vgetty_desc=Sabiex is-server tiegħek iwieġeb sejħiet bil-vuċi bil-modem konness ma 'port tas-serje, għandu jkun elenkat hawn taħt. Meta żżid port ma 'din il-lista, il-programm $1 jiġi kkonfigurat biex iwieġeb sejħiet u jilgħab messaġġ.
+vgetty_add=Żid port tas-serje ġdid
+vgetty_tty=Apparat tas-serje
+vgetty_type=Tip
+vgetty_vgetty=Leħen
+vgetty_mgetty=Dejta/faks
+vgetty_none=L-ebda port tas-serje ma ġie kkonfigurat għal posta elettronika.
+vgetty_apply=Applika Konfigurazzjoni
+vgetty_applydesc=Ikklikkja din il-buttuna biex tapplika l-konfigurazzjoni attwali tas-server tal-voicemail billi tħaddem il-kmand $1 u toqtol il-proċessi Vgetty kollha.
+vgetty_applyerr=Ma rnexxielux japplika l-konfigurazzjoni
+vgetty_return=Lista tal-port serjali
+vgetty_create=Żid il-Port tas-Serje
+vgetty_edit=Editja l-Port tas-Serje
+vgetty_header=Għażliet ta 'konfigurazzjoni tal-port serjali
+vgetty_ts=Port tas-serje $1 
+vgetty_other=Apparat ieħor ..
+vgetty_rings=Ċrieki qabel ma twieġeb
+vgetty_default=Inadempjenza globali
+vgetty_ans=Mod ta ’tweġiba
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=Leħen
+vgetty_ans_fax=Fax
+vgetty_ans_data=Dejta
+vgetty_err=Ma rnexxielux isalva l-port tas-serje
+vgetty_etty=Apparat tas-serje nieqes jew ineżistenti
+vgetty_erings=Numru ta 'ċrieki nieqsa jew invalidi
+vgetty_erings2=In-numru ta 'ċrieki għandu jkun mill-inqas 2
+vgetty_eans=Ma jintgħażlu l-ebda modi ta 'tweġiba
+vgetty_eclash=Il-port tas-serje $1 diġà qiegħed jintuża
+
+options_title=Għażliet tas-Server tal-Voicemail
+options_header=Għażliet għall-portijiet tas-serje kollha
+options_maxlen=It-tul massimu tal-messaġġ
+options_secs=sekondi
+options_minlen=It-tul minimu tal-messaġġ
+options_silence=Neħħi s-silenzju minn tmiem il-messaġġi?
+options_thresh=Livell tal-limitu tas-silenzju
+options_rgain=Livell ta 'volum ta' reġistrazzjoni
+options_tgain=Livell tal-volum tal-daqq
+options_rings=Ċrieki qabel ma twieġeb
+options_perport=Tista 'tiġi ssettjata għal kull port tas-serje
+options_ans=Mod ta ’tweġiba
+options_keep=Żomm messaġġi li fihom dejta jew kodiċi DTMF?
+options_light=Jippermetti r-risposta awtomatika ħafifa wara li tirċievi?
+options_owner=Sid tal-Unix għall-fajls tal-messaġġi
+options_group=Grupp Unix għall-fajls tal-messaġġi
+options_mode=Permessi għal fajls ta 'messaġġi
+options_prog=Wara li tirrekordja messaġġ
+options_prog0=Taghmel xejn
+options_prog1=Email fil-format WAV lil
+options_prog2=Ħaddem kmand fuq il-fajl tal-messaġġ
+options_err=Ma rnexxielux isalva l-għażliet tal-voicemail
+options_erings=Numru ta 'ċrieki nieqsa jew invalidi
+options_erings2=In-numru ta 'ċrieki għandu jkun mill-inqas 2
+options_emaxlen=It-tul massimu tal-messaġġ nieqes jew invalidu
+options_eminlen=It-tul minimu tal-messaġġ nieqes jew invalidu
+options_ethresh=Limitu ta 'silenzju nieqes jew invalidu
+options_ergain=Livell ta 'volum ta' reġistrazzjoni nieqes jew invalidu
+options_ergain2=Il-livell ta 'volum ta' reġistrazzjoni għandu jkun bejn 0 u 100
+options_etgain=Livell ta 'volum ta' daqq nieqes jew invalidu
+options_etgain2=Il-livell ta 'volum ta' daqq għandu jkun bejn 0 u 100
+options_eemail=Indirizz tal-email nieqes jew invalidu
+options_eprog=Programm nieqes jew ineżistenti biex jitħaddem
+options_eowner=Utent Unix nieqes jew invalidu għall-fajls tal-messaġġi
+options_egroup=Grupp Unix nieqes jew invalidu għall-fajls tal-messaġġi
+options_emode=Permessi nieqsa jew invalidi għall-fajls tal-messaġġi
+
+received_title=Messaġġi riċevuti
+recieved_desc=Il-messaġġi tal-voicemail li rċevew is-server tiegħek huma elenkati hawn taħt. Biex tisma 'messaġġ, ikklikkja fuq id-data/il-ħin fl-ewwel kolonna.
+received_none=Ma nstabu l-ebda messaġġi ta 'voicemail.
+received_date=Waslet għand
+received_size=Daqs tal-fajl
+received_speed=Rata tal-kampjun
+received_type=Format tal-awdjo
+received_delete=Ħassar il-messaġġi magħżula
+received_move=Ikkonverti magħżula għal awguri
+received_all=Agħżel kollox
+received_invert=Inverti l-għażla
+
+listen_efile=Isem tal-fajl tal-messaġġ mhux validu!
+listen_epath=Il-messaġġ tal-voicemail ma jeżistix
+
+delete_efile=Isem tal-fajl tal-messaġġ mhux validu!
+
+messages_title=Messaġġi ta 'Awguri
+messages_desc=Din il-paġna telenka messaġġi ta 'awguri li se jintlagħbu meta min iċempel jgħaqqad mas-server tal-posta tal-posta. Jekk ikollok aktar minn dak wieħed, se jintuża messaġġ wieħed magħżul bl-addoċċ.
+messages_file=Isem tal-fajl
+messages_none=M'hemm l-ebda messaġġ ta 'tislima.
+messages_updesc=Din il-formola jippermettilek ittella 'messaġġ ta' awguri addizzjonali ta 'fajl WAV, li jiġi kkonvertit għall-format magħżul għall-użu mill-modem tiegħek. Ir-rata tal-kampjun tal-WAV imtellgħa għandha tkun l-istess bħar-rata tal-kampjun tal-messaġġi rċevuti, bħalma għandu l-format magħżul.
+messages_upload=Itella 'messaġġ
+messages_fmt=taqleb għal
+
+pvfdesc=$1, $2 bits
+
+upload_err=Ma rnexxielux iżid messaġġ
+upload_emessage=L-ebda fajl WAV ma ntgħażel
+upload_ewav=Ma rnexxielux jikkonverti l-fajl WAV : $1 
+upload_epvf=Ma rnexxielux joħloq fajl RMD : $1 
+upload_esame=Il-fajl tal-messaġġ $1 diġà jeżisti
+
+log_apply=Konfigurazzjoni applikata
+log_upload=Imtella 'l-messaġġ ta' awguri $1 
+log_move=Mibdula $1 messaġġi riċevuti
+log_delete0=Messaġġi rċevuti $1 imħassra
+log_delete1=Messaġġi ta 'awguri ta' $1 imħassra
+log_options=Inbidlu b'għażliet tal-voicemail
+log_vgetty_create=Port tas-serje $1 miżjud
+log_vgetty_modify=Port tas-serje modifikat $1 
+log_vgetty_delete=Port tas-serje mħassar $1 
+
+email_subject=Messaġġ tal-voicemail
+email_body=Messaġġ tal-voicemail riċevut fi $1 minn $2.

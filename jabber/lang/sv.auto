@@ -1,0 +1,120 @@
+index_title=Jabber IM Server
+index_econfig=Jabber-konfigurationsfilen $1 finns inte. Antingen är Jabber inte installerad eller så är din <a href='$2'>modulkonfiguration</a> fel.
+index_edir=Jabber-baskatalogen $1 finns inte. Antingen är Jabber inte installerad eller så är din <a href='$2'>modulkonfiguration</a> fel.
+index_emodules=Perl-modulerna $1 och $2 som krävs av Webmin för att hantera Jabbers XML-konfiguration är inte installerade. <a href='$3'>Klicka här</a> för att installera dem direkt från CPAN.
+index_emodule=Perl-modulen $1 som krävs av Webmin för att hantera Jabbers XML-konfiguration är inte installerad. <a href='$2'>Klicka här</a> för att installera det direkt från CPAN.
+index_expat=Se till att du har Expat C-biblioteket och rubrikerna installerat innan du försöker installera Perl-modulerna, eftersom de är beroende av det och kommer att misslyckas om det inte är tillgängligt.
+index_eparse=Modulen $1 perl kunde inte analysera din Jabber-konfigurationsfil : $2 
+index_ejabberd=Jabber-serverprogrammet $1 hittades inte på ditt system. Antingen är Jabber inte installerad eller så är din <a href='$2'>modulkonfiguration</a> fel.
+index_eversion=Webmin stöder endast Jabber version $2, men kommandot $3 rapporterade följande versioninformation : $1 
+index_eversion2=Webmin stöder endast Jabber-versioner under $2, men kommandot $3 rapporterade följande versioninformation : $1 
+index_start=Starta Jabber Server
+index_startmsg=Klicka på den här knappen för att starta Jabber-servern på ditt system. Tills det har startats kan inga snabbmeddelandeklienter använda det.
+index_stop=Stoppa Jabber Server
+index_stopmsg=Klicka på den här knappen för att stoppa den drivande Jabber-servern på ditt system. Inga snabbmeddelandeklienter kan använda det när det stoppas.
+index_restart=Applicera förändringar
+index_restartmsg=Klicka på den här knappen för att tillämpa den aktuella konfigurationen genom att stoppa och starta om Jabber-servern.
+index_comments=Varning - din Jabber-konfigurationsfil $1 innehåller kommentarer, som kommer att tas bort om några konfigurationsändringar görs med den här modulen.
+index_return=Jabber-menyn
+index_version=Jabber-version $1 
+
+general_title=Generella val
+general_header=Globala Jabber-serveralternativ
+general_host=Din serverns värdnamn
+general_elog=Felloggfil
+general_elogfmt=Felloggformat
+general_rlog=Åtkomstloggfil
+general_rlogfmt=Åtkomstloggformat
+general_pidfile=Process ID-fil
+general_err=Det gick inte att spara allmänna alternativ
+general_ehost=Saknad eller ogiltigt servervärdnamn
+general_eelog=Saknad eller ogiltig felloggfil
+general_eelogfmt=Det saknas felloggformat
+general_erlog=Saknad eller ogiltig trafikloggfil
+general_erlogfmt=Trafikloggformat saknas
+general_epidfile=Process-ID-fil saknas eller ogiltig
+
+messages_title=meddelanden
+messages_header=Jabber-servermeddelande för klienter
+messages_wsubject=Välkommen meddelande ämne
+messages_wbody=Välkomstmeddelande
+messages_vcard=Server vCard
+messages_rinstr=Registreringsinstruktioner
+messages_rnotify=Meddela administratör vid registrering?
+messages_rfields=Obligatoriska registreringsfält
+messages_vcard2jud=Skicka vCard till Jabber användarkatalog?
+messages_err=Det gick inte att spara meddelanden
+messages_evcard=Ogiltig vCard XML : $1 
+messages_etag=Server vCard XML startar inte med &lt;vCard&gt;
+
+modules_title=Jabber-moduler
+modules_desc=Modulerna nedan används för att bearbeta meddelanden som mottagits av Jabber session manager. Du bör bara ändra listan om du vet vad du gör.
+modules_header=Jabber-moduler för serverhanteringssession
+modules_mod=Modulnamn
+modules_so=Delat bibliotek
+modules_err=Det gick inte att spara Jabber-moduler
+modules_emod='$1' är inte ett giltigt modulnamn
+modules_eso=Delat bibliotek "$1" finns inte
+
+karma_title=Karma Traffic Control
+karma_header=Alternativ för trafikstyrning
+karma_rate=Överdriven hantering av anslutningar
+karma_rate_def=Inaktiverad
+karma_rate_sel=Blockera klient i $2 sekunder efter $1 -anslutningar
+karma_mode=Karma-läge
+karma_none=Inga gränser
+karma_low=Låga trafikgränser
+karma_medium=Medium trafikgränser
+karma_high=Höga trafikgränser
+karma_sel=Använd inställningar valda nedan ..
+karma_heartbeat=Periodlängd i sekunder (<tt>hjärtslag</tt>)
+karma_init=Initieringsperioder (<tt>init</tt>)
+karma_max=Karma maximum (<tt>max</tt>)
+karma_inc=Karma-inkrement (<tt>inc</tt>)
+karma_dec=Karma-dekrement (<tt>dec</tt>)
+karma_penalty=Straffperioder (<tt>straff</tt>)
+karma_restore=Perfekt återställningsperioder (<tt>återställning</tt>)
+karma_err=Det gick inte att spara karma-alternativ
+karma_eheartbeat=Saknad eller ogiltig periodlängd
+karma_einit=Saknade eller ogiltiga initialiseringsperioder
+karma_emax=Karma maximalt saknas eller ogiltigt
+karma_einc=Karmaökning saknas eller ogiltig
+karma_edec=Saknad eller ogiltig karmadekrement
+karma_epenalty=Saknade eller ogiltiga straffperioder
+karma_erestore=Saknade eller ogiltiga återställningsperioder
+karma_epoints=Saknade eller ogiltiga antal anslutningar
+karma_etime=Saknas eller ogiltig tid att blockera för
+
+ips_title=IP-åtkomstkontroll
+ips_header=Jabber-server IP-åtkomstkontroll
+ips_allow=Tillåtna klient-IP: er
+ips_all=Alla adresser
+ips_deny=Nekade klient-IP: er
+ips_none=Ingen
+ips_sel=Listade adresser/netmasks ..
+ips_err=Det gick inte att spara IP-åtkomstkontroll
+ips_eaddr='$1' är inte en giltig IP-adress eller IP-adress/netmask
+
+file_title=Redigera Config File
+file_desc=Använd formuläret nedan för att redigera Jabber-konfigurationsfilen direkt. Detta bör endast göras om du förstår XML-konfigurationsformatet.
+file_header=Redigera Jabber-konfigurationsfilen
+file_err=Det gick inte att spara konfigurationsfilen
+
+admin_title=Administrativa användare
+admin_header=Användare av serveradministration
+admin_read=Läs åtkomstadministratörer
+admin_write=Skrivåtkomstadministratörer
+admin_reply=Svara automatiskt på adminmeddelanden?
+admin_rsubject=Ämne automatiskt
+admin_rbody=Skriv meddelandet automatiskt
+
+filter_title=Användarfilter
+filter_header=Användarfilterbehörigheter
+filter_max=Maximala filterregler
+filter_conds=Tillåtna filtervillkor
+filter_acts=Tillåtna filteråtgärder
+
+restart_err=Det gick inte att tillämpa ändringar
+stop_err=Det gick inte att stoppa Jabber
+stop_epid=Det gick inte att hitta Jabber-processen
+start_err=Det gick inte att starta Jabber

@@ -1,0 +1,205 @@
+index_title=Darbības procesi
+index_display=Displejs
+index_tree=PID
+index_user=Lietotājs
+index_size=Atmiņas
+index_cpu=Procesors
+index_search=Meklēt
+index_zone=Zona
+index_run=Skrien ..
+index_return=procesu saraksts
+index_mem2=<b>Īstā atmiņa:</b> $1 kopā / $2 bez maksas
+index_mem3=<b>Īstā atmiņa:</b> $1 kopā / $2 bez maksas / $3 kešatmiņā
+index_swap2=<b>Apmaiņas vieta:</b> $1 kopā / $2 bez maksas
+index_burst=<b>Pārvietojamā atmiņa:</b> $1 kopā
+index_loadname=CPU slodzes vidējie lielumi:
+index_loadnums=$1 (1 minūtes), $2 (5 minūtes), $3 (15 minūtes)
+index_cpuname=CPU tips:
+index_inzone=Zonā $1 
+
+pid=ID
+owner=Īpašnieks
+command=Pavēle
+cpu=Procesors
+size=Izmērs
+parent=Vecāku process
+runtime=Darbības laiks
+nice=Jauks līmenis
+stime=Sākās
+sclass=IO plānošanas klase
+sprio=IO prioritāte
+
+search_user=Pieder
+search_match=Saskaņošana
+search_cpupc=Izmantojot vairāk nekā $1% CPU
+search_cpupc2=Izmantojot vairāk CPU nekā
+search_fs=Izmantojot failu sistēmu
+search_files=Izmantojot failu
+search_submit=Meklēt
+search_none=Netika atrasts neviens atbilstošs process.
+search_kill=Sūtīt signālu
+search_ignore=Ignorējiet meklēšanas procesus
+search_return=meklēšanas forma
+search_sigterm=Procesa pārtraukšana
+search_sigkill=Nogalināt procesus
+search_port=Izmantojot ostu
+search_protocol=protokols
+search_ip=Izmantojot IP adresi
+
+run_command=Komanda palaist
+run_submit=Skrien
+run_mode=Darbības režīms
+run_bg=Palaist fonā
+run_fg=Pagaidiet, līdz tas ir pabeigts
+run_input=Ievade komandā
+run_title=Komandu izvade
+run_output=Izeja no $1.
+run_none=Netika ģenerēta izvade
+run_ecannot=Jums nav atļauts palaist komandas
+run_as=Palaist kā lietotājam
+run_euser=Trūkst vai nav derīgs lietotājvārds
+run_euser2=Jums nav atļauts palaist komandas kā izvēlētajam lietotājam
+
+edit_title=Informācija par procesu
+edit_gone=Šis process vairs nedarbojas
+edit_sub=Apakšprocesi
+edit_subid=ID
+edit_subcmd=Apakšprocesa komanda
+edit_kill=Sūtīt signālu
+edit_change=Pārmaiņas
+edit_prilow=Zema prioritāte
+edit_prihigh=Augsta prioritāte
+edit_pridef=Noklusējums
+edit_none=Nav
+edit_ecannot=Jums nav atļauts rediģēt procesus
+edit_sigterm=Izbeigt
+edit_sigkill=Nogalini
+edit_sigstop=Apturēt
+edit_sigcont=Turpināt
+edit_open=Faili un savienojumi
+edit_trace=Izsekošanas process
+edit_return=procesa detaļas
+
+kill_err=Neizdevās nosūtīt signālu $1, lai apstrādātu $2 
+kill_title=Sūtīt signālu
+kill_sent=nosūtīts
+kill_ecannot=Jums nav atļauts nogalināt procesus
+
+renice_err=Neizdevās pārnest procesu $1 
+renice_ecannot=Jums nav atļauts nomāt procesus
+
+linux_pri=Prioritāte
+linux_tty=TTY
+linux_status=Statuss
+linux_wchan=Gaidīšana
+linux_mem=Atmiņas
+linux_group=Grupa
+linux_ruser=Īsts lietotājs
+linux_rgroup=Īsta grupa
+linux_pgid=Procesa grupas ID
+linux_stime=Sākās
+
+linuxstat_R=Skriešana
+linuxstat_S=Guļ
+linuxstat_D=Dziļš miegs
+linuxstat_T=Apstājās
+linuxstat_Z=Zombijs
+
+linux_real=Īsts laiks
+linux_be=Vislabākās pūles
+linux_idle=Dīkstāvē
+
+freebsd_ruser=Īsts lietotājs
+freebsd_rgroup=Īsta grupa
+freebsd_tty=TTY
+freebsd_pgid=Procesa grupa
+freebsd_stime=Sākās
+freebsd_lim=Atmiņas ierobežojums
+
+hpux_pri=Prioritāte
+hpux_tty=TTY
+hpux_status=Statuss
+hpux_wchan=Gaidu
+hpux_stime=Sākās
+
+hpuxstat_0=Neeksistējošs
+hpuxstat_S=Guļ
+hpuxstat_W=Gaida
+hpuxstat_R=Skriešana
+hpuxstat_I=Starpposms
+hpuxstat_Z=Zombijs
+hpuxstat_T=Apstājās
+hpuxstat_G=Aug
+
+macos_tty=TTY
+
+sysv_group=Grupa
+sysv_ruser=Īsts lietotājs
+sysv_rgroup=Īsta grupa
+sysv_pgid=Procesa grupas ID
+sysv_tty=TTY
+sysv_stime=Sākās
+sysv_task=Uzdevuma ID
+sysv_zone=Zonas nosaukums
+
+log_run=Notika komanda "$1"
+log_kill=Nosūtīts signāls $1, lai apstrādātu $2 
+log_kills=Sūtīt signālu no $1 uz $2 procesiem
+log_kill_l=Nosūtīts signāls $1, lai apstrādātu $2 
+log_kills_l=Nosūtīts signāls $1 procesiem <br> $2 
+log_renice=Mainīta procesa $2 prioritāte uz $1 
+
+acl_manage=Pārvaldiet procesus kā lietotājs
+acl_manage_def=Pašreizējais Webmin lietotājs
+acl_edit=Vai var nogalināt un nomierināt procesus?
+acl_run=Vai var palaist komandas?
+acl_only=Vai var redzēt tikai savus procesus?
+acl_who=Var pārvaldīt procesus lietotājiem
+acl_who0=Visi lietotāji
+acl_who1=Pašreizējais Webmin lietotājs
+acl_who2=Sarakstā iekļautie lietotāji ..
+
+kill_kill=Nogalināšanas process
+kill_term=Izbeigt
+kill_hup=Restartēt
+kill_stop=Pietura
+kill_cont=Turpināt
+
+open_title=Atveriet failus un savienojumus
+open_proc=Procesam $1 (PID $2)
+open_header1=Atveriet failus
+open_header2=Atveriet tīkla savienojumus
+open_type=Veids
+open_proto=Protokols
+open_desc=Sīkāka informācija
+open_fd=Failu aprakstītājs
+open_listen1=Klausīšanās ostā $1 
+open_listen2=Klausos adresē $1 ports $2 
+open_recv=Saņemšana uz $1:$2 
+open_conn=Savienots no $1 līdz $2 stāvoklī $3 
+open_cwd=Pašreizējais rež
+open_rtd=Saknes rež
+open_txt=Programmas kods
+open_mem=Kopīga bibliotēka
+open_dir=Katalogs
+open_reg=Parastais fails
+open_chr=Raksturs īpašs
+open_blk=Bloķēt īpašu
+open_size=Faila lielums
+open_inode=Inode
+open_file=Ceļš
+
+trace_title=Izsekošanas process
+trace_start=Sākuma sistēmas zvana izsekošana $1.
+trace_doing=Sistēmas zvana izsekošana $1  :
+trace_done=.. process ir beidzies.
+trace_failed=.. izsekot neizdevās!
+trace_sorry=Šī lapa prasa Java atbalstu jūsu pārlūkprogrammā. Lai izmantotu tikai teksta procesa izsekošanu, pielāgojiet moduļa konfigurāciju.
+trace_syscalls=Izsekošanas sistēmas zvani:
+trace_all=Visi
+trace_sel=Sarakstā ..
+trace_change=Pārmaiņas
+
+windows_threads=Pavedieni procesā
+
+syslog_dmesg=Kodola ziņas

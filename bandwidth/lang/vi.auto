@@ -1,0 +1,83 @@
+index_title=Giám sát băng thông
+index_efiresys=Không có tường lửa nào được hỗ trợ (IPtables, IPFW, IPFilter hoặc Shorewall) được phát hiện hệ thống của bạn. Kiểm tra các mô-đun thích hợp để đảm bảo rằng chúng được cấu hình.
+index_efiresys2=Không tìm thấy hệ thống tường lửa $1 được cấu hình trên hệ thống của bạn. Điều chỉnh <a href='$2'>cấu hình mô-đun</a> để sử dụng tường lửa chính xác.
+index_elog=Tệp $1 được sử dụng để ghi nhật ký băng thông thực sự là một thư mục trên hệ thống của bạn. Điều chỉnh <a href='$2'>cấu hình mô-đun</a> để sử dụng một đường dẫn khác.
+index_edir=Thư mục lưu trữ dữ liệu băng thông $1 không tồn tại hoặc không phải là thư mục. Điều chỉnh <a href='$2'>cấu hình mô-đun</a> để sử dụng một đường dẫn khác.
+index_emod=Mô-đun Webmin $1 không được cài đặt trên hệ thống này hoặc không được hệ điều hành của bạn hỗ trợ. Mô-đun giám sát băng thông không thể hoạt động mà không có nó.
+index_esyslog=Cả hai mô-đun Nhật ký hệ thống đều được cài đặt trên hệ thống này và được hệ điều hành của bạn hỗ trợ. Mô-đun giám sát băng thông không thể hoạt động mà không có một trong số chúng.
+index_firesys=Sử dụng tường lửa $1 và $2 
+index_setupcannot=Tuy nhiên, bạn không có quyền để thiết lập nó!
+index_setupdesc=Trước khi mô-đun này có thể báo cáo về việc sử dụng mạng trên hệ thống của bạn, nó phải được thiết lập để giám sát lưu lượng trên giao diện mạng bên ngoài đã chọn.
+index_setupdesc2=<b>Cảnh báo - mô-đun này sẽ ghi lại TẤT CẢ lưu lượng truy cập mạng được gửi hoặc nhận trên giao diện đã chọn. Điều này sẽ tiêu tốn một lượng lớn dung lượng ổ đĩa và thời gian CPU trên kết nối mạng nhanh.</B>
+index_missing3=Một số quy tắc tường lửa phải được thêm vào và một mục cấu hình nhật ký hệ thống được tạo.
+index_missing2=Một số quy tắc tường lửa phải được thêm vào.
+index_missing1=Một mục cấu hình nhật ký hệ thống phải được tạo.
+index_iface=Giao diện mạng bên ngoài
+index_other=Khác ..
+index_setup=Cài đặt ngay
+index_by=Hiển thị lưu lượng truy cập theo
+index_hour=giờ
+index_host=tổ chức
+index_proto=giao thức
+index_iport=cổng nội bộ
+index_oport=cổng ngoài
+index_port=Hải cảng
+index_for=cho
+index_all=&lt;mọi thứ&gt;
+index_forhour=giờ ..
+index_forhost=tổ chức ..
+index_forproto=giao thức ..
+index_foriport=cổng nội bộ ..
+index_foroport=cổng ngoài ..
+index_search=Tạo báo cáo
+index_none=Không có lưu lượng đã được tóm tắt bởi mô-đun này chưa. Nếu bạn vừa thiết lập nó, có thể mất ít nhất một giờ để lưu lượng được xử lý.
+index_ehour=Giờ không hợp lệ - phải ở định dạng yyyy-mm-dd hh: mm
+index_eport=Tên cổng không xác định
+index_eproto=Thiếu giao thức
+index_ehost=Máy chủ bị thiếu hoặc không hợp lệ
+index_from=Đối với giao thông sau
+index_to=Đối với giao thông trước
+index_efrom=Ngày và giờ bắt đầu không hợp lệ
+index_eto=Ngày và thời gian kết thúc không hợp lệ
+index_err=Không thể tạo báo cáo
+index_usage=Lưu lượng truy cập mạng <font color=#ff0000>đã tải xuống</font> và <font color=#0000ff>đã tải lên</font>
+index_hhour=Giờ
+index_hhost=Tổ chức
+index_hday=ngày
+index_hproto=Giao thức
+index_hiport=Hải cảng
+index_hoport=Hải cảng
+index_hport=Hải cảng
+index_low=Cổng máy chủ chỉ?
+index_resolv=Giải quyết tên máy chủ?
+index_nomatch=Không có lưu lượng phù hợp với tiêu chí đã chọn.
+index_turnoff=Tắt giám sát
+index_turnoffdesc=Nhấp vào nút này để xóa quy tắc tường lửa, cấu hình nhật ký hệ thống và công việc Cron được sử dụng để giám sát băng thông. Tất cả các dữ liệu thu thập hiện có sẽ vẫn còn nguyên.
+index_rotate=Cập nhật số liệu thống kê
+index_rotatedesc=Nhấp vào nút này để xử lý tất cả lưu lượng truy cập mạng đã đăng nhập cho đến thời điểm hiện tại, làm cho nó có sẵn để báo cáo ngay lập tức.
+index_eiptables=Cảnh báo - Cấu hình IPtables của bạn có lỗi: $1. Thiết lập giám sát băng thông sẽ xóa tất cả các quy tắc tường lửa.
+index_return=mẫu báo cáo
+
+log_setup=Thiết lập giám sát băng thông trên giao diện $1 
+log_turnoff=Giám sát băng thông bị vô hiệu hóa
+log_rotate=Thống kê cập nhật
+
+acl_setup=Có thể thiết lập và vô hiệu hóa giám sát?
+
+turnoff_ecannot=Bạn không được phép vô hiệu hóa giám sát
+
+setup_ecannot=Bạn không được phép kích hoạt giám sát
+setup_eiface=Tên giao diện bị thiếu hoặc không hợp lệ
+setup_ezone=Không thể tìm thấy vùng Shorewall cho giao diện đã chọn
+
+system_firewall=IPtables
+system_ipfw=IPFW
+system_ipfilter=Bộ lọc IP
+system_shorewall=Bờ biển
+
+syslog_syslog=Nhật ký hệ thống
+syslog_syslog-ng=Syslog-NG
+
+rotate_title=Cập nhật số liệu thống kê
+rotate_doing=Xử lý lưu lượng mạng đã đăng nhập ..
+rotate_done=.. làm xong.

@@ -1,0 +1,93 @@
+index_header=Tillgängliga skrivare
+index_jlist=Jobb ..
+index_jcount=$1 jobb ..
+index_esystem=Antingen installera programvaran för ditt valda utskriftssystem, eller använd <a href='$1'>modulkonfiguration</a> för att ändra det.
+index_style=Utskriftssystem: $1 
+index_cluster=Cluster-servrar
+index_clusterdesc=Klicka på den här knappen för att ställa in ytterligare webmin-servrar som skrivare skapas, uppdateras och raderas.
+index_delete=Radera valda skrivare
+
+style_solaris=Solaris
+style_linux=Linux LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=Unixware
+style_cups=CUPS
+style_irix=IRIX
+style_aix=AIX
+
+save_erport=Fjärrporten '$1' är inte giltig
+save_evalid=Utskriftssystemet tillät inte denna skrivare
+save_errslave=Skrivare skapade OK på det här systemet, men följande fel inträffade i klustrsystem : $1 
+save_egone=Ingen skrivare med namnet '$1' hittades
+save_errdelslave=Skrivaren raderade OK på det här systemet, men följande fel inträffade på klustrsystem : $1 
+
+jobs_cancelsel=Avbryt valda jobb
+jobs_on=På skrivaren $1 
+jobs_return=lista över utskriftsjobb
+
+redhat_printer2=Skrivarmodell och drivrutin
+
+suse_raw=Rå
+suse_extra=Extra ghostscript-alternativ
+suse_yast2=YAST2 förare
+suse_edriver=Ingen skrivartyp har valts
+suse_eres=Saknad eller ogiltig upplösning
+
+acl_user=Hantera utskriftsjobb som ägs av
+acl_user_all=Alla användare
+acl_user_this=Nuvarande Webmin-användare
+acl_delete=Kan radera skrivare?
+acl_cluster=Kan hantera skrivarkluster?
+
+log_cancel_sel=Avbruten $2 utskriftsjobb på $1 
+
+linux_ecmd=Kommandot $1 hittades inte på ditt system, vilket indikerar att Linux-utskriftssystemet inte är installerat.
+linux_espool=Spoolkatalogen $1 finns inte på ditt system, vilket indikerar att Linux-utskriftssystemet inte är installerat.
+
+freebsd_ecmd=Kommandot $1 hittades inte på ditt system, vilket indikerar att FreeBSD-utskriftssystemet inte är installerat.
+freebsd_espool=Spoolkatalogen $1 finns inte i ditt system, vilket indikerar att FreeBSD-skrivarsystemet inte är installerat.
+
+unixware_ecmd=Kommandot $1 hittades inte på ditt system, vilket indikerar att UnixWare-utskriftssystemet inte är installerat.
+
+hpux_ecmd=Kommandot $1 hittades inte på ditt system, vilket indikerar att HPUX-skrivarsystemet inte är installerat.
+hpux_eiface=Gränssnittsskriptkatalogen $1 finns inte på ditt system, vilket indikerar att HPUX-utskriftssystemet inte är installerat.
+
+lprng_ecmd=Kommandot $1 hittades inte på ditt system, vilket indikerar att LPRng-skrivarsystemet inte är installerat.
+lprng_espool=Spoolkatalogen $1 finns inte i ditt system, vilket indikerar att LPRng-skrivarsystemet inte är installerat.
+
+solaris_ecmd=Kommandot $1 hittades inte på ditt system, vilket indikerar att Solaris-skrivarsystemet inte är installerat.
+
+cups_eprog='$1' är inte ett giltigt program
+cups_opts=Alternativ för $1 
+cups_ecmd=Kommandot $1 hittades inte på ditt system, vilket indikerar att CUPS-utskriftssystemet inte är installerat.
+
+irix_ecmd=Kommandot $1 hittades inte på ditt system, vilket indikerar att IRIX-skrivarsystemet inte är installerat.
+irix_eiface=Gränssnittsskriptkatalogen $1 finns inte på ditt system, vilket indikerar att IRIX-skrivarsystemet inte är installerat.
+
+aix_port=Skrivarport $1 
+aix_edesc=Ogiltig beskrivning - endast bokstäver och siffror är tillåtna och inga mellanslag
+aix_ecmd=AIX-skrivarservern $1 hittades inte. Kanske är det inte installerat, eller så används ett annat utskriftssystem.
+
+cluster_title=Cluster-skrivarservrar
+cluster_none=Inga servrar har lagts till i skrivarklustret ännu.
+cluster_host=Värdnamn
+cluster_desc=Beskrivning
+cluster_os=Operativ system
+cluster_add=Lägg till server
+cluster_gadd=Lägg till servrar i grupp
+cluster_need=Du måste lägga till servrar med inloggning och lösenord i Webmin Servers Index-modulen innan de kan hanteras här.
+cluster_return=klustrservrar
+cluster_delete=Ta bort valda
+cluster_ecannot=Du får inte hantera klusterskrivarservrar
+
+add_title=Lägg till servrar
+add_msg=Lägger till $1 ..
+add_gmsg=Lägga till servrar i grupp $1 ..
+add_err=Det gick inte att lägga till server
+add_gerr=Det gick inte att lägga till grupp
+add_echeck=Servern $1 har inte skrivaradministrationsmodulen
+add_ediff=Servern $1 använder ett annat utskriftssystem ($2) än den här servern
+add_ediff2=Servern $1 använder en annan skrivardrivrutin ($2) till den här servern
+add_ok=Lade till $1, med $2 skrivare.

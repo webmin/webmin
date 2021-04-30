@@ -1,0 +1,53 @@
+inittab_new=Стварыце новы працэс init.
+inittab_id=Пасведчанне асобы
+inittab_active=Актыўны?
+inittab_runlevels=Загрузка запуску
+inittab_action=Дзея
+inittab_process=Працэс
+inittab_none=Не
+inittab_respawn=Працэс аднаўлення
+inittab_wait=Пачакай
+inittab_once=Раз на ўзроўні
+inittab_boot=Час загрузкі
+inittab_bootwait=Час загрузкі, дачакайцеся скасавання
+inittab_off=Нічога не рабіць
+inittab_ondemand=Кожны раз, калі ў A, B, C
+inittab_initdefault=Пасля загрузкі сістэмы
+inittab_sysinit=Падчас загрузкі сістэмы
+inittab_powerwait=Сіла падае
+inittab_powerfail=Харчаванне сціхае, не чакаючы
+inittab_powerokwait=Харчаванне аднаўляецца
+inittab_powerfailnow=Выключэнне электраэнергіі
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Спецыяльная камбінацыя клавіш
+inittab_kbrequest=Спецыяльная камбінацыя клавіш
+inittab_return=Спіс працэсаў
+inittab_apply=Прымяніць канфігурацыю Init
+inittab_applymsg=Націсніце гэтую кнопку, каб прымяніць бягучую канфігурацыю SysV Init, запусціўшы каманду <tt>telinit q</tt>. Памятайце, што любыя памылкі ў вашай канфігурацыі могуць зрабіць сістэму непрыдатнай пры выкананні гэтай каманды.
+index_delete=Выдаліць выбраныя працэсы
+inittab_none2=У вашай сістэме не знойдзена ніякіх працэсаў загрузкі. Гэта, верагодна, паказвае на тое, што ён не выкарыстоўвае файл канфігурацыі init SysV.
+
+edit_inittab_err=Вам не дазволена рэдагаваць працэс
+edit_inittab_title=Працэс рэдагавання $1 
+edit_inittab_details=Падрабязнасці працэсу
+edit_inittab_del=Выдаліць
+edit_inittab_save=Захаваць
+
+new_inittab_err=Вам не дазволена стварыць новы працэс
+new_inittab_title=Новы працэс
+
+save_inittab_err=Вам не дазволена захаваць працэс
+save_inittab_noid=Памылка, працэс уводу імёнаў не ўведзены
+save_inittab_already=Памылка, працэс назвы ўжо існуе
+
+log_modify=Мадыфікаваны працэс init $1 
+log_rename=Перайменаваны працэс init $1 да $2 
+log_create=Створана працэс init $1 
+log_delete=Выдалены працэс init $1 
+log_apply=Прыкладная канфігурацыя
+log_deletes=Выдалены $1 працэсы init
+
+apply_err=Не атрымалася прымяніць канфігурацыю
+
+delete_err=Не атрымалася выдаліць працэсы
+delete_enone=Ні адзін не абраны

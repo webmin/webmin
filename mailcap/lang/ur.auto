@@ -1,0 +1,46 @@
+index_title=مائم ٹائپ پروگرامز
+index_none=ابھی تک MIME قسم کے ہینڈلر پروگراموں کی تعریف نہیں کی گئی ہے۔
+index_add=نیا MIME ٹائپ پروگرام شامل کریں۔
+index_type=MIME قسم
+index_program=ہینڈلر پروگرام
+index_cmt=تفصیل
+index_delete=منتخب کردہ کو حذف کریں
+index_disable=غیر فعال منتخب
+index_enable=منتخب شدہ کو فعال کریں
+index_enabled=قابل کیا گیا؟
+index_return=پروگراموں کی فہرست
+
+edit_title1=مائم ٹائپ پروگرام بنائیں
+edit_title2=MIME ٹائپ پروگرام میں ترمیم کریں
+edit_header=MIME قسم ہینڈلر پروگرام کی تفصیلات
+edit_type=MIME قسم
+edit_enabled=قابل کیا گیا؟
+edit_program=ہینڈلر پروگرام
+edit_cmt=تفصیل
+edit_egone=پروگرام اب موجود نہیں ہے!
+edit_test=ٹیسٹ کمانڈ
+edit_none=کوئی نہیں (ہمیشہ پروگرام استعمال کریں)
+edit_term=ٹرمینل میں آؤٹ پٹ ڈسپلے کریں گے؟
+edit_copious=بہت ساری پیداوار تیار کرتا ہے؟
+edit_desc=مائم قسم کی تفصیل
+
+save_err=MIME ٹائپ پروگرام کو بچانے میں ناکام
+save_etype=گمشدہ یا غلط MIME قسم
+save_eprogram=غائب ہینڈلر پروگرام
+save_eclash=داخل کردہ MIME قسم کیلئے ایک فعال پروگرام پہلے سے موجود ہے
+save_etest=گمشدہ یا غلط ٹیسٹ کمانڈ
+save_edesc=غلط قسم کی تفصیل
+
+delete_err=MIME قسم کے پروگراموں کو حذف کرنے میں ناکام
+disable_err=MIME قسم کے پروگراموں کو غیر فعال کرنے میں ناکام
+disable_eclash=$1 کیلئے غیر فعال MIME قسم کا پروگرام پہلے سے موجود ہے
+enable_err=MIME قسم کے پروگراموں کو فعال کرنے میں ناکام
+enable_eclash=$1 کیلئے قابل MIME ٹائپ پروگرام پہلے سے موجود ہے
+delete_enone=کوئی بھی منتخب نہیں ہوا
+
+log_delete_mailcap=$1 کے لئے MIME ٹائپ پروگرام حذف کریں
+log_create_mailcap=$1 کے لئے MIME ٹائپ پروگرام بنایا
+log_modify_mailcap=$1 کیلئے ترمیم شدہ MIME قسم پروگرام
+log_delete_mailcaps=حذف شدہ$1 MIME قسم کے پروگرام
+log_disable_mailcaps=$1 MIME قسم کے پروگراموں کو غیر فعال کردیا گیا
+log_enable_mailcaps=$1 MIME قسم کے پروگراموں کو فعال کیا گیا

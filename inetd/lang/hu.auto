@@ -1,0 +1,18 @@
+index_edit=Szerkesztési szolgáltatás:
+index_search=Megfelelő megjelenítési szolgáltatások:
+index_sok=Keresés
+index_toomany=Túl sok az internetszolgáltatás ahhoz, hogy megjelenjen ezen az oldalon.
+index_none=Egyik internetes szolgáltatás sem felel meg a keresésnek.
+
+error_user=Hiányzó vagy érvénytelen felhasználó hajtja végre
+error_group=Hiányzó vagy érvénytelen csoport, amellyel végrehajtható
+error_smfservice=Nem sikerült frissíteni az smf szolgáltatást a '$1' cmd-vel, $2 hibakóddal
+error_smf_cmdfield=Az smf esetében a '$1' program fájlnévének meg kell egyeznie a parancsmező első argumentumával, azaz '$2'.
+
+editrpc_act=A program állapota
+editrpc_stream=Folyam
+editrpc_dgram=datagram
+editrpc_tli=TLI
+
+editserv_qm=Lehet, hogy a parancs nem létezik?
+editserv_ename=Nincs ilyen szolgáltatással ilyen név és protokoll

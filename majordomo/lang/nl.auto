@@ -1,0 +1,17 @@
+index_esendmail=De <tt>$1</tt> -setting van uw modulconfiguratie is ingesteld op <tt>$2</tt>, die niet bestaat. Misschien is uw <a href='$3'>moduleconfiguratie</a> onjuist, of is er geen mailer-deamon geïnstalleerd.
+index_name=Lijstnaam
+index_info=Lijstinfo
+index_mail=Mail adres
+index_moderated=Gemodereerd
+index_count=# gebruikers
+global_saved=(opgeslagen)
+create_minimum=Minimaal vereiste informatie
+check_title=Controleer Majordomo Config
+check_test=Test voor. ..
+check_result=Resultaat / aanvullende controle
+check_status=Toestand
+check_perm=Rechten
+check_exec=wereld uitvoerbaar!
+check_write=wereld beschrijfbaar!
+check_read=leesbare wereld!
+check_possible=Mogelijk probleem

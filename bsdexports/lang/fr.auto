@@ -1,0 +1,52 @@
+index_title=Exportations NFS
+index_add=Ajoutez une nouvelle exportation.
+index_dirs=Répertoires
+index_clients=Clients
+index_everyone=Toutes les personnes
+index_none=Aucune exportation n'a encore été définie.
+index_delete=Supprimer les exportations sélectionnées
+index_apply=Appliquer les modifications
+index_applydesc=Cliquez sur ce bouton pour appliquer la configuration d'exportation de fichiers actuelle. Cela rendra tous les répertoires répertoriés ci-dessus disponibles avec les options spécifiées.
+index_return=liste des exportations
+index_echeck=Le serveur NFS ne peut pas être utilisé sur ce système : $1 
+
+check_ecmd=La commande du serveur NFS $1 n'est pas installée
+
+delete_err=Impossible de supprimer les exportations
+delete_enone=Aucune sélection
+
+edit_title1=Modifier l'exportation
+edit_title2=Créer une exportation
+edit_header1=Options d'exportation
+edit_dirs=Répertoires à exporter
+edit_alldirs=Exporter des sous-répertoires?
+edit_ro=Lecture seulement?
+edit_kerb=Utilisez Kerberos?
+edit_header2=Mappage d'utilisateurs distants
+edit_maproot=Mapper l'utilisateur root à
+edit_mapusers=Mapper tous les utilisateurs à
+edit_unpriv=Utilisateur non privilégié
+edit_uid=Utilisateur / UID
+edit_gids=Et groupes / GID
+edit_mapall=Mapper tous les utilisateurs à
+edit_header3=Clients pour cette exportation
+edit_clients=Clients
+edit_hosts=Hôtes / groupes de réseau
+edit_network=Réseau
+edit_mask=Masque
+
+save_err=Échec de l'enregistrement de l'exportation
+save_edir='$1' n'est pas un répertoire ou n'existe pas
+save_enone=Vous devez saisir au moins un répertoire pour exporter
+save_esub=Un seul répertoire peut être indiqué si l'option <b>exporter les sous-répertoires</b> est choisie
+save_eroot=Lorsque vous utilisez l'option <b>exporter les sous-répertoires</b>, le répertoire exporté doit être la racine d'un système de fichiers <i>local</i>
+save_euser='$1' n'est pas un utilisateur ou un UID valide
+save_egroup='$1' n'est pas un groupe ou un GID valide
+save_ekerb=Les utilisateurs root de la carte, la carte de tous les utilisateurs et les options kerberos s'excluent mutuellement
+save_ehosts=Vous devez saisir au moins un hôte vers lequel exporter
+save_enetwork='$1' n'est pas un réseau valide
+save_enetmask='$1' n'est pas un masque de réseau valide
+save_esame1=Le répertoire <tt>$1</tt> est déjà en cours d'exportation vers <tt>$2</tt>. Votre système d'exploitation n'autorise pas l'exportation des répertoires du même système de fichiers <i>local</i> vers le même hôte séparément
+save_esame2=Le répertoire <tt>$1</tt> est déjà en cours d'exportation vers <tt>$2</tt>. Votre système d'exploitation n'autorise pas l'exportation des répertoires du même système de fichiers <i>local</i> vers le même réseau séparément
+
+restart_err=Échec de l'application des modifications

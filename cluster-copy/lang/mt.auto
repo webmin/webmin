@@ -1,0 +1,67 @@
+index_title=Kluster ta 'Fajls ta' Kopja
+index_add=Oħloq kopja skedata ta 'fajl ġdid.
+index_none=L-ebda kopja skedata tal-fajl ma ġiet definita.
+index_servers=Ikkopja lil servers
+index_return=Lista ta ’kopji ta’ raggruppament
+index_more=$1 aktar ..
+index_run=Ħaddem issa ..
+index_files=Fajls biex tikkopja
+index_sched=Skedat?
+index_when=Iva, $1 
+index_act=Azzjoni
+index_exec=Teżegwixxi
+index_delete=Ħassar Kopji magħżula
+
+edit_title=Editja Kopja tal-Kluster
+create_title=Oħloq Kopja Cluster
+edit_header=Dettalji tal-kopja tal-grupp
+edit_files=Fajls biex tikkopja
+edit_dest=Direttorju tad-destinazzjoni
+edit_cmd=Kmand biex timxi wara li tkun ikkupjat
+edit_before=Kmand biex titmexxa qabel tikkopja
+edit_remote=Fuq servers mill-bogħod
+edit_dmode0=Ikkopja mogħdijiet sħaħ taħt id-direttorju
+edit_dmode1=Kopja għal dan id-direttorju
+edit_servers=Ikkopja lil servers
+edit_group=Membri ta ' $1 
+edit_this=dan is-server
+edit_all=&lt;L-ospiti kollha&gt;
+edit_sched=Kopja skont l-iskeda?
+edit_schedyes=Iva, f'ħinijiet magħżula hawn taħt ..
+edit_run=Ikkopja Issa
+edit_return=Kopja ta 'raggruppament
+edit_email=Produzzjoni tal - Email lil
+edit_none=Ħadd
+
+save_err=Ma rnexxielux isalva xogħol ta 'cron tal-cluster
+save_efiles=L-ebda fajl għall-kopja ma jiddaħħal
+save_edest=Direttorju tad-destinazzjoni nieqes
+save_eservers=L-ebda server li kopja ma jiddaħħal
+save_efile=Fajl li tikkopja "$1" mhix triq assoluta
+save_eemail=Indirizz tal-email nieqes jew invalidu
+
+exec_title=Kopja ta 'Fajls
+exec_files1=Ikkopja fajls $1 fuq servers magħżula $2 ..
+exec_files2=Ikkopja $1 fuq is-servers magħżula $2 ..
+exec_under=(taħt id-direttorju $1)
+exec_failed=Ma rnexxielux jikkopja ma ' $1 : $2 
+exec_success=Ikkopja l-fajls li ġejjin għal $1  :
+exec_made=Ħoloq id-direttorji li ġejjin fuq $1  :
+exec_nohosts=L-ebda host magħżul biex jimxi fuqu, jew gruppi magħżula ma fihom xi ospiti li jistgħu jintużaw.
+exec_nothing=L-ebda fajl ma ġie kkupjat b'suċċess f ' $1.
+exec_not=Naqset milli tikkopja l-fajls li ġejjin għal $1  :
+exec_cmd=Produzzjoni tal-kmand ta 'wara l-kopja fuq $1  :
+exec_before=Output tal-kmand qabel il-kopja fuq $1  :
+exec_on=Ma rnexxielux jaħdem fuq $1 : $2 
+
+log_create=Kopja maħluqa għal servers ta ' $1 sa $2 
+log_modify=Kopja modifikata għas-servers $1 sa $2 
+log_delete=Kopja mħassra għas-servers $1 sa $2 
+log_exec=Ikkopja servers ta ' $1 sa $2 
+log_deletes=Kopji mħassra $1 
+
+email_subject_succeeded=Kopja ta 'cluster ta' $1 irnexxielha
+email_subject_failed=Kopja tal-kluster ta ' $1 falliet
+
+delete_err=Naqset milli tħassar il-kopji
+delete_enone=L-ebda magħżul

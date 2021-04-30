@@ -1,0 +1,3 @@
+name_ja=DFSadmin
+longdesc_ja=/etc/dfs/dfstab ファイルで定義されているファイル共有を編集します。
+desc_ja=NFS共有

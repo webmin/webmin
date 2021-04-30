@@ -1,0 +1,70 @@
+index_title=Sistemaren Ordua
+index_timeserver=Denbora zerbitzaria
+index_addresses=Timeserver ostalariaren izenak edo helbideak
+index_zone=Ordu eremu
+index_eformat=Aitortu gabeko <tt>hwclock</tt> irteera formatua
+index_sched=Sinkronizatu egitarauan?
+index_schedyes=Bai, behean une batzuetan ..
+index_sync=Sinkronizatu eta aplikatu
+index_hardware2=Ezarri hardware denbora ere
+index_boot=Sinkronizatu Webmin hasten denean?
+index_tzheader=Ordu eremu
+index_tz=Aldatu ordu zona
+index_ehwclock=$1 huts egin du : $2 
+index_tabtime=Ezarri ordua
+index_tabzone=Aldatu zona-eremua
+index_tabsync=Denbora zerbitzariaren sinkronizazioa
+index_desctime=Inprimaki hau sistemaren ordua aldatzeko da, exekutatzen ari diren prozesu guztiek erabiltzen dutena. Aparteko hardware erloju bat duten sistema eragileetan ere erabil daiteke.
+index_desczone=Inprimaki honek sistemaren ordu-zona lehenetsia egiteko aukera ematen du, sistemaren ordua gizakiaren irakurketa formatua eta desplazamendu bihurtzeko erabiltzen dena.
+index_descsync=Inprimaki hau sistema automatikoki denbora urruneko zerbitzari batekin sinkronizatzeko konfiguratzeko da. Sinkronizazioa Unix <tt>time</tt> protokoloa edo NTP erabiliz egingo da, zein komando instalatuta dauden eta zer urruneko sistema onartzen duen.
+
+action_save=Save
+action_apply=aplikatu
+action_sync=Ezarri sistemaren denbora hardwarearen denboraren arabera
+action_sync_s=Ezarri hardware-denbora sistemaren orduaren arabera
+action_timeserver_sys=Sinkronizatu sistemaren denbora
+action_timeserver_hw=Sinkronizatu hardware-denbora
+action_savezone=Aldatu zona-eremua
+
+acl_sys=Erabiltzaileak sistemaren denbora edita dezake?
+acl_hw=Erabiltzaileak hardware denbora edita dezake?
+acl_timezone=Erabiltzaileak ordu-zona ezar dezake?
+acl_ntp=Denbora zerbitzariarekin sinkroniza daiteke?
+acl_yes=Bai
+acl_no=Ez
+acl_error=Sistemaren modulura sartzeko aukera duzu, baina ezin duzu aldatu sistemaren denborarik edo hardware denborarik
+acl_nosys=Ez duzu baimenik sistema aldatzeko denbora
+acl_nohw=Ezin duzu hardware denbora editatu
+acl_nontp=Ezin duzu denbora zerbitzari batekin sinkronizatu
+
+sys_title=Sistemaren Ordua
+hw_title=Hardwarearen ordua
+
+day=eguna
+month=hilabetea
+date=data
+hour=Ordua
+year=Urtea
+minute=Minute
+second=bigarren
+
+error_cnf=Errorea: $1 komandoa ez da aurkitu
+error_hw=Ezin da hardwarearen denbora ezarri : $1 
+error_sync=Ezin da sinkronizatu sistemaren denborarekin : $1 
+error_ediff=Denbora-zerbitzaria ezberdina da ordu lokalarekin: $1 egun
+error_entp=NTP denboraren sinkronizazioak huts egin du : $1 
+error_etimeserver=Ez da sartu denborarekin zerbitzaririk sinkronizatzeko
+
+log_set_date=Ezarri sistemaren denbora $1 gisa
+log_set_hwclock=Ezarri hardware-erlojua $1 -era
+log_remote_date=Eskatutako sistemaren denbora $2 tik
+log_remote_hwclock=$2 tik lortutako hardware denbora
+log_remote_date_l=Eskatutako sistemaren denbora $1 $2 -tik hasita
+log_remote_hwclock_l=Eskuratutako hardware denbora $1 $2 -tik
+log_sync=Sinkronizatutako sistemaren denbora hardware denborarekin
+log_sync_s=Hardwarearen sinkronizatutako denbora sistemaren denborarekin
+log_timezone=Ordu-zona $1 era aldatu da
+
+timezone_err=Huts egin du ordu-zona gordetzean
+timezone_ecannot=Ezin duzu ordu-eremua aldatu
+timezone_enone=Ez da zona hautatu

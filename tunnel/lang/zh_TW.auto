@@ -1,0 +1,21 @@
+index_elink=尚未設置要傳送到的URL。
+index_url=輸入網址以打開：
+index_open=打開
+
+link_eurl=無效的隧道URL： $1
+link_elogin=無法以 $2身份登錄 $1。
+link_eautologin=$1的無效登錄名或密碼。 <a href='$2'>單擊此處</a>登錄。
+link_enouser=登錄到 $1需要用戶名和密碼，但尚未配置。
+link_ebadurl=您無權訪問URL $1
+link_mconfig=使用<a href='$1'>模塊配置</a>頁面更改登錄名。
+
+login_title=登錄網站
+login_desc=您必須提供用戶名和密碼才能登錄 $1。
+login_header=網站認證
+login_user=用戶名
+login_pass=密碼
+login_login=登錄
+login_clear=明確
+
+seturl_err=無法打開URL
+seturl_eurl=輸入的網址無效

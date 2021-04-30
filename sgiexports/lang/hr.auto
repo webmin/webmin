@@ -1,0 +1,39 @@
+index_title=Izvoz NFS-a
+index_add=Dodajte novi izvoz NFS
+index_dir=Imenik
+index_hosts=Dozvoljeni domaćini
+index_all=Svi domaćini
+index_none=Još nije definiran izvoz NFS-a.
+index_apply=Primijeni konfiguraciju
+index_applydesc=Kliknite ovaj gumb kako biste aktivirali sav gore navedeni izvoz, sa svojim konfiguriranim opcijama.
+index_return=izvozni popis
+
+edit_title1=Stvorite izvoz
+edit_title2=Uredi izvoz
+edit_header=Izvoz detalja
+edit_dir=Imenik za izvoz
+edit_hosts=Izvezi u host/netgroups
+edit_ro=Samo za čitanje?
+edit_wsync=Želite li sinkronizirati nakon pisanja?
+edit_anon=Osnovna dopuštenja korisnika
+edit_anon1=Zadano (tretirajte kao <tt>niko</tt>)
+edit_anon2=Odbij pristup
+edit_anon0=Tretirajte se kao korisnika
+edit_rw=Pristup čitanju/pisanju
+edit_root=Korijenski pristup datotekama
+edit_access=Pristup montiranju
+edit_all=Svi domaćini
+edit_sel=Domaćini s popisa ..
+edit_none=Nema domaćina
+
+save_err=Spremanje izvoza nije uspjelo
+save_edir=Nedostaje ili ne postoji direktorij za izvoz
+save_eanon=Nedostaje ili nije važeći korijenski korisnik
+save_erw=Nisu uneseni hostovi za čitanje i pisanje
+save_eroot=Nisu upisani hostovi pristup korijenskim datotekama
+save_eaccess=Nisu upisani hostovi za pristup montiranju
+
+log_create_export=Izrađen izvoz $1 
+log_delete_export=Izbrisani izvoz $1 
+log_modify_export=Izmijenjeni izvoz od $1 
+log_apply=Primijenjena konfiguracija

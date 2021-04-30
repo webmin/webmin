@@ -1,0 +1,33 @@
+index_title=Pelindung TCP
+index_return=indeks
+index_allowtitle=Hos yang dibenarkan
+index_denytitle=Hos yang dinafikan
+index_norule=Tiada peraturan yang telah dinyatakan pada <tt>$1</tt>
+index_nofile=Fail '$1' tidak wujud - sila periksa <a href="/config.cgi?tcpwrappers">konfigurasi modul</a> anda
+index_add=Tambah peraturan baharu.
+index_service=Daemon
+index_hosts=Hos
+index_cmd=Arahan
+index_delete=Padam yang dipilih
+index_none=tiada
+
+edit_title1allow=Cipta Peraturan Membenarkan
+edit_title2allow=Sunting Peraturan Membenarkan
+edit_title1deny=Cipta Peraturan Menyekat
+edit_title2deny=Sunting Peraturan Menyekat
+edit_eid=Peraturan ini tidak dijumpai
+edit_header=Pilihan peraturan
+edit_service=Servis
+edit_except=Kecuali servis
+edit_hosts=Hos capaian jauh
+edit_hostsexcept=Kecuali hos
+edit_cmd=Arahan Shell
+edit_efound=Daemon '$1' tidak dijumpai pada konfigurasi xinted.
+
+save_errtitle=Ralat ketika menyimpan peraturan
+save_ehost=Hos yang dimasukkan mengandungi aksara yang tidak baik
+save_ecmd=Arahan yang dimasukkan mengandungi aksara yang tidak baik
+save_eservice=Nama Daemon mengandungi aksara yang tidak baik
+
+del_errtitle=Ralat pada peraturan padam
+del_enone=Ada peraturan ditandakan untuk dipadam

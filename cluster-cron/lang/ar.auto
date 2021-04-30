@@ -1,0 +1,37 @@
+index_title=وظائف الكتلة كرون
+index_add=إنشاء مهمة كرون كتلة جديدة.
+index_none=لم يتم تحديد وظائف cron العنقودية.
+index_servers=تعمل على الخوادم
+index_return=قائمة وظائف الكتلة كرون
+index_more=$1 أكثر ..
+index_run=اركض الآن ..
+index_actions=أجراءات
+
+edit_title=تحرير وظيفة الكتلة كرون
+create_title=إنشاء وظيفة الكتلة كرون
+edit_servers=تعمل على الخوادم
+edit_group=أعضاء$1
+edit_this=هذا الخادم
+edit_all=&lt;جميع المضيفين&gt;
+edit_emissing=وظيفة كرون لم تعد موجودة!
+
+save_err=فشل في حفظ مهمة cron للكتلة
+
+exec_title=تنفيذ مهمة الكتلة Cron
+exec_cmd=جاري تشغيل$1 على خوادم محددة ..
+exec_failed=فشل في التشغيل على $1 : $2 
+exec_success=الإخراج من$1 ..
+exec_nohosts=لم يتم تحديد مضيفات للتشغيل عليها ، أو أن المجموعات المحددة لا تحتوي على مضيفات قابلة للاستخدام.
+
+log_run=تم تشغيل$1 على$2 ملقمات
+log_run_l=تم تشغيل$1 على$2
+log_create=تم إنشاء مهمة cron للكتلة لـ$1
+log_create_l=تم إنشاء مهمة cron للكتلة$2 لـ$1
+log_modify=تعديل مهمة cron للكتلة لـ$1
+log_modify_l=تعديل مهمة cron للكتلة$2 لـ$1
+log_delete=تم حذف مهمة cron للكتلة لـ$1
+log_delete_l=تم حذف مهمة cron للكتلة$2 لـ$1
+log_deletes=تم حذف مهام cron للكتلة$1
+
+delete_err=فشل في حذف وظائف cron للكتلة
+delete_enone=لا شيء محدد

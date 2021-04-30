@@ -4,6 +4,7 @@
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
+
 require 'view-lib.pl';
 if ($config{'mysql_libs'}) {
 	$ENV{$gconfig{'ld_env'}} .= ':' if ($ENV{$gconfig{'ld_env'}});
@@ -74,6 +75,13 @@ use DBI;
 \$driver_handle = DBI->install_driver("mysql");
 EOF
 }
+
+# Fix text if we're running MariaDB
+if ($mysql_version =~ /mariadb/i) {
+	foreach my $t (keys %text) {
+		$text{$t} =~ s/MySQL/MariaDB/g;
+		}
+	}
 
 if (&compare_version_numbers($mysql_version, "5.5") >= 0) {
 	@mysql_set_variables = ( "key_buffer_size", "sort_buffer_size",
@@ -267,7 +275,8 @@ return &execute_sql_safe(@_);
 }
 
 # execute_sql_safe(database, command, [param, ...])
-# Executes some SQL and returns the results
+# Executes some SQL and returns the results as a hash ref with titles and
+# data keys.
 sub execute_sql_safe
 {
 local $sql = $_[1];
@@ -801,11 +810,16 @@ sub get_remote_mysql_variant
 my $rv = &get_remote_mysql_version();
 return ($rv) if ($rv <= 0);
 my $variant = "mysql";
-if ($rv =~ /^([0-9\.]+)\-(.*)/) {
-	$rv = $1;
-	$variant = $2;
+my ($ver, $variant_) = $rv =~ /^([0-9\.]+)\-(.*)/;
+if ($ver && $variant_ && 
+	($rv !~ /ubuntu/i || ($rv =~ /ubuntu/i && $rv =~ /mariadb/i && $ver > 10))) {
+	$rv      = $ver;
+	$variant = $variant_;
 	if ($variant =~ /mariadb/i) {
 		$variant = "mariadb";
+		}
+	else {
+		$variant = "mysql";
 		}
 	}
 return ($rv, $variant);
@@ -1329,7 +1343,7 @@ if (&compare_version_numbers(&get_remote_mysql_version(), "4.1") < 0) {
 	}
 else {
 	local $d = &execute_sql($db, "show character set");
-	@rv = map { [ $_->[0], $_->[1] ] } @{$d->{'data'}};
+	@rv = map { [ $_->[0], "$_->[1] ($_->[0])" ] } @{$d->{'data'}};
 	}
 return sort { lc($a->[1]) cmp lc($b->[1]) } @rv;
 }
@@ -1413,7 +1427,7 @@ return map { [ $_, $text{'compat_'.$_} ] }
 # 4 for zip
 sub compression_format
 {
-open(BACKUP, $_[0]);
+open(BACKUP, "<".$_[0]);
 local $two;
 read(BACKUP, $two, 2);
 close(BACKUP);
@@ -1445,7 +1459,7 @@ local $dropsql = $drop ? "--add-drop-table" : "";
 local $singlesql = $single ? "--single-transaction" : "";
 local $forcesql = $force ? "--force" : "";
 local $quicksql = $quick ? "--quick" : "";
-local $wheresql = $where ? "\"--where=$in{'where'}\"" : "";
+local $wheresql = $where ? "--where=".quotemeta($in{'where'}) : "";
 local $charsetsql = $charset ?
 	"--default-character-set=".quotemeta($charset) : "";
 local $compatiblesql = @$compatible ?
@@ -1466,7 +1480,7 @@ eval {
 	};
 if ($user && $user ne "root") {
 	# Actual writing of output is done as another user
-	$writer = &command_as_user($user, undef, $writer);
+	$writer = &command_as_user($user, 0, $writer);
 	}
 local $cmd = "$config{'mysqldump'} $authstr $dropsql $singlesql $forcesql $quicksql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql $eventssql $gtidsql | $writer";
 if (&shell_is_bash()) {
@@ -1501,6 +1515,381 @@ sub get_all_mysqld_files
 {
 my $conf = &get_mysql_config();
 return &unique(map { $_->{'file'} } @$conf);
+}
+
+# get_change_pass_sql(unescaped_plaintext_password, user, host)
+# Get the right query for changing user password
+sub get_change_pass_sql
+{
+my ($unescaped_plainpass, $user, $host) = @_;
+my $plugin = &get_mysql_plugin(1);
+my $escaped_pass = &escapestr($unescaped_plainpass);
+my $sql;
+my ($ver, $variant) = &get_remote_mysql_variant();
+my $mysql_mariadb_with_auth_string = 
+   $variant eq "mariadb" && &compare_version_numbers($ver, "10.2") >= 0 ||
+   $variant eq "mysql" && &compare_version_numbers($ver, "5.7.6") >= 0;
+if ($mysql_mariadb_with_auth_string && $unescaped_plainpass) {
+	$sql = "alter user '$user'\@'$host' identified $plugin by '$escaped_pass'";
+	}
+else {
+	$sql = "set password for '".$user."'\@'".$host."' = ".
+	       "$password_func('$escaped_pass')";
+	}
+return $sql;
+}
+
+# get_mysql_plugin(query_ready)
+# Returns the name of the default plugin used by MySQL/MariaDB
+sub get_mysql_plugin
+{
+my ($query) = @_;
+my @plugin = &execute_sql($master_db, 
+    "show variables LIKE '%default_authentication_plugin%'");
+my $plugin = $plugin[0]->{'data'}->[0]->[1];
+if ($plugin && $query) {
+	$plugin = " with $plugin ";
+	}
+return $plugin;
+}
+
+# perms_column_to_privilege_map(col)
+# Returns a privilege name based on given column for MySQL 8+ and MariaDB 10.4
+sub perms_column_to_privilege_map
+{
+my ($column) = @_;
+my %priv = (
+	'Alter_priv', 'alter',
+	'Alter_routine_priv', 'alter routine',
+	'Create_priv', 'create',
+	'Create_routine_priv', 'create routine',
+	'Create_tablespace_priv', 'create tablespace',
+	'Create_tmp_table_priv', 'create temporary tables',
+	'Create_user_priv', 'create user',
+	'Create_view_priv', 'create view',
+	'Delete_priv', 'delete',
+	'Drop_priv', 'drop',
+	'Event_priv', 'event',
+	'Execute_priv', 'execute',
+	'File_priv', 'file',
+	'Grant_priv', 'grant option',
+	'Index_priv', 'index',
+	'Insert_priv', 'insert',
+	'Lock_tables_priv', 'lock tables',
+	'Process_priv', 'process',
+	'References_priv', 'references',
+	'Reload_priv', 'reload',
+	'Repl_client_priv', 'replication client',
+	'Repl_slave_priv', 'replication slave',
+	'Select_priv', 'select',
+	'Show_db_priv', 'show databases',
+	'Show_view_priv', 'show view',
+	'Shutdown_priv', 'shutdown',
+	'Super_priv', 'super',
+	'Trigger_priv', 'trigger',
+	'Update_priv', 'update',
+
+	'Delete_history_priv', 'delete history',
+
+	# 'Create_role_priv', 'create role',
+	# 'Drop_role_priv', 'drop role',
+	# 'proxies_priv', 'proxy',
+
+	);
+return defined($column) ? $priv{$column} : \%priv;
+}
+
+# update_privileges(\%sconfig)
+# Update user privileges
+sub update_privileges
+{
+my ($sc) = @_;
+
+my $user = $sc->{'user'};
+my $host = $sc->{'host'};
+my $perms = $sc->{'perms'};
+my $pfields = $sc->{'pfields'};
+
+my ($ver, $variant) = &get_remote_mysql_variant();
+
+if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
+	# Assign permissions
+	my $col_to_priv_map = &perms_column_to_privilege_map();
+	foreach my $grant (keys %{ $perms }) {
+		my $grant_priv = &perms_column_to_privilege_map($grant);
+		&execute_sql_logged($mysql::master_db, "grant $grant_priv on *.* to '$user'\@'$host'");
+		delete $col_to_priv_map->{$grant};
+		}
+	foreach my $revoke_priv (values %{ $col_to_priv_map }) {
+		&execute_sql_logged($mysql::master_db, "revoke $revoke_priv on *.* from '$user'\@'$host'");
+		}
+	}
+else {
+	$sql = "update user set ".
+	       join(", ",map { "$_ = ?" } @{ $pfields }).
+	       " where host = ? and user = ?";
+	&execute_sql_logged($master_db, $sql,
+		(map { $perms{$_} ? 'Y' : 'N' } @{ $pfields }),
+		$host, $user);
+	}
+&execute_sql_logged($master_db, 'flush privileges');
+}
+
+
+# rename_user(\%sconfig)
+# Rename SQL user
+sub rename_user
+{
+my ($sc) = @_;
+my $user = $sc->{'user'};
+my $olduser = $sc->{'olduser'};
+my $host = $sc->{'host'};
+my $oldhost = $sc->{'oldhost'};
+
+my ($ver, $variant) = &get_remote_mysql_variant();
+my $sql;
+if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
+	&execute_sql_logged($master_db, "rename user '$olduser'\@'$oldhost' to '$user'\@'$host'");
+	}
+else {
+	&execute_sql_logged($master_db,
+		"update user set host = ?, user = ? where host = ? and user = ?",
+		$host, $user,
+		$oldhost, $olduser);
+	}
+&update_config_credentials({
+		'user', $user,
+		'olduser', $olduser,
+		});
+&execute_sql_logged($master_db, 'flush privileges');
+}
+
+# create_user(\%sconfig)
+# Create new SQL user
+sub create_user
+{
+my ($sc) = @_;
+my $user = $sc->{'user'};
+my $pass = $sc->{'pass'};
+my $host = $sc->{'host'};
+my $perms = $sc->{'perms'};
+my $pfields = $sc->{'pfields'};
+my $ssl_field_names = $sc->{'ssl_field_names'};
+my $ssl_field_values = $sc->{'ssl_field_values'};
+my $other_field_names = $sc->{'other_field_names'};
+my $other_field_values = $sc->{'other_field_values'};
+
+my ($ver, $variant) = &get_remote_mysql_variant();
+my $plugin = &get_mysql_plugin(1);
+
+if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
+	my $sql = "create user '$user'\@'$host' identified $plugin by ".
+		"'".&escapestr($pass)."'";
+	&execute_sql_logged($master_db, $sql);
+	&execute_sql_logged($master_db, 'flush privileges');
+
+	# Update existing user privileges
+	&update_privileges({(
+		'user', $user,
+		'host', $host,
+		'perms', $perms,
+		'pfields', $pfields
+		)});
+	}
+else {
+	my $sql = "insert into user (host, user, ".
+	       join(", ", @{ $pfields }, @{ $ssl_field_names },
+			  @{ $other_field_names }).
+	       ") values (?, ?, ".
+	       join(", ", map { "?" } (@{ $pfields }, @{ $ssl_field_names },
+				       @{ $other_field_names })).")";
+	&execute_sql_logged($master_db, $sql,
+		$host, $user,
+		(map { $perms->{$_} ? 'Y' : 'N' } @{ $pfields }),
+		@{ $ssl_field_values }, @{ $other_field_values });
+	&execute_sql_logged($master_db, 'flush privileges');
+	}
+}
+
+# change_user_password(plainpass, user, host)
+# Change user password
+sub change_user_password
+{
+my ($plainpass, $user, $host) = @_;
+
+my ($ver, $variant) = &get_remote_mysql_variant();
+my $plugin = &get_mysql_plugin(1);
+my $lock_supported = $variant eq "mysql" && &compare_version_numbers($ver, "8.0.19");
+my $mysql_mariadb_with_auth_string = 
+	$variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0 ||
+	$variant eq "mysql" && &compare_version_numbers($ver, "5.7.6") >= 0;
+
+my $sql;
+my $pass = &escapestr($plainpass);
+$host ||= '%';
+my $lock = !defined($plainpass);
+if ($lock) {
+	$pass = sprintf("%x", rand 16) for 1..30;
+	}
+if ($mysql_mariadb_with_auth_string) {
+	my $sp = "identified $plugin by '".$pass."'";
+	if ($lock_supported) {
+		$sp = $lock ? "account lock" : "$sp account unlock";
+		}
+	$sql = "alter user '$user'\@'$host' $sp";
+	&execute_sql_logged($master_db, $sql);
+	}
+else {
+	$sql = &get_change_pass_sql($plainpass, $user, $host);
+	&execute_sql_logged($master_db, $sql);
+	}
+
+# Update module password when needed
+&update_config_credentials({
+		'user', $user,
+		'olduser', $user,
+		'pass', $plainpass,
+		});
+&execute_sql_logged($master_db, 'flush privileges');
+}
+
+# Update Webmin module login and pass
+sub update_config_credentials
+{
+return if($access{'user'});
+my ($c) = @_;
+my $conf_user = $config{'login'} || "root";
+return if($c->{'olduser'} ne $conf_user);
+return if(!$c->{'user'});
+
+$config{'login'} = $c->{'user'};
+$mysql_login = $c->{'user'};
+if (defined($c->{'pass'})) {
+	$config{'pass'} = $c->{'pass'};
+	$mysql_pass = $c->{'pass'};
+	}
+&lock_file($module_config_file);
+&save_module_config();
+&unlock_file($module_config_file);
+&stop_mysql();
+&start_mysql();
+}
+
+# force_set_mysql_admin_pass(user, pass)
+# Forcibly change MySQL admin password, if lost or forgotten
+sub force_set_mysql_admin_pass
+{
+my ($user, $pass) = @_;
+&error_setup($text{'mysqlpass_err'});
+&foreign_require("proc");
+
+# Find the mysqld_safe command
+my $safe = &has_command("mysqld_safe");
+if (!$safe) {
+	&error(&text('mysqlpass_esafecmd', "<tt>mysqld_safe</tt>"));
+	}
+
+# Shut down server if running
+if (&is_mysql_running()) {
+	my $err = &stop_mysql();
+	if ($err) {
+		&error(&text('mysqlpass_esafecmdeshutdown', $err));
+		}
+	}
+
+# Start up with skip-grants flag
+my $cmd = $safe." --skip-grant-tables";
+
+# Running with `mysqld_safe` - when called, command doesn't create "mysqld" directory under
+# "/var/run" eventually resulting in DBI connect failed error on all MySQL versions
+my $ver = &get_mysql_version();
+if ($ver !~ /mariadb/i) {
+	my $mysockdir = '/var/run/mysqld';
+	my $myusergrp = 'mysql';
+	my $myconf = &get_mysql_config();
+	if ($myconf) {
+		my ($mysqld) = grep { $_->{'name'} eq 'mysqld' } @$myconf;
+		if ($mysqld) {
+			my $members = $mysqld->{'members'};
+
+			# Look for user
+			my $myusergrp_ = &find_value("user", $members);
+			if ($myusergrp_) {
+				$myusergrp = $myusergrp_;
+				}
+
+			# Look for socket
+			my $mysockdir_ = &find_value("socket", $members);
+			if ($mysockdir_) {
+				$mysockdir = $mysockdir_;
+				$mysockdir =~ s/^(.+)\/([^\/]+)$/$1/;
+				}
+			}
+		}
+	$cmd = "mkdir -p $mysockdir && chown $myusergrp:$myusergrp $mysockdir && $cmd";
+	}
+my ($pty, $pid) = &proc::pty_process_exec($cmd, 0, 0);
+sleep(5);
+if (!$pid || !kill(0, $pid)) {
+	my $err = <$pty>;
+	&error(&text('mysqlpass_esafe', $err));
+	}
+
+# Update password by running command directly
+my $cmd = $config{'mysql'} || 'mysql';
+my $sql = &get_change_pass_sql($pass, $user, 'localhost');
+my $out = &backquote_command("$cmd -D $master_db -e ".
+		quotemeta("flush privileges; $sql")." 2>&1 </dev/null");
+if ($?) {
+		$out =~ s/\n/ /gm;
+		&error(&text('mysqlpass_echange', "$out"));
+		}
+else {
+
+	# Update root password now for other
+	# hosts, using regular database connection
+	my $d = &execute_sql_safe($master_db,
+		"select host from user where user = ?", $user);
+	@hosts = map { $_->[0] ne 'localhost' } @{$d->{'data'}};
+	foreach my $host (@hosts) {
+		$sql = get_change_pass_sql($pass, $user, $host);
+		eval {
+			local $main::error_must_die = 1;
+			&execute_sql_logged($master_db, 'flush privileges');
+			&execute_sql_logged($master_db, $sql);
+			&execute_sql_logged($master_db, 'flush privileges');
+			sleep 1;
+			};
+		}
+	}
+
+# Shut down again, with the mysqladmin command
+my $mysql_shutdown = $config{'mysqladmin'} || 'mysqladmin';
+my $out = &backquote_logged("$mysql_shutdown shutdown 2>&1 </dev/null");
+if ($?) {
+	$out =~ s/\n/ /gm;
+	&error(&text('mysqlpass_eshutdown', $out));
+	}
+
+# Finally, re-start in normal mode
+my $err = &start_mysql();
+if ($err) {
+	&error(&text('mysqlpass_estartup', $err));
+	}
+&error_setup($text{'login_err'});
+}
+
+# create_module_info_overrides()
+# Update the overrides file used for module.info to reflect MariaDB
+sub create_module_info_overrides
+{
+my %info = &get_module_info(&get_module_name(), 0, 1);
+my %overs;
+if ($mysql_version =~ /mariadb/i) {
+	$overs{'desc'} = $info{'original_desc'} || $info{'desc'};
+	$overs{'desc'} =~ s/MySQL/MariaDB/g;
+	}
+&write_file("$module_config_directory/module.info.override", \%overs);
 }
 
 1;

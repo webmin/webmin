@@ -1,0 +1,103 @@
+index_title=Utenti e gruppi LDAP
+index_ebase=Non è stato trovato alcun file di configurazione del client LDAP sul sistema, quindi le basi utente e gruppo devono essere impostate nella pagina <a href='$1'>modulo config</a>.
+index_eperl=Il modulo Perl $1 richiesto da questo modulo non è installato o non funziona correttamente. <a href='$2'>Fai clic qui</a> per scaricarlo e installarlo ora.
+index_eperl2=L'errore segnalato da Perl durante il tentativo di caricare il modulo era :
+index_eldap=$1. Fai clic qui per regolare la <a href='$2'>configurazione del modulo</a>.
+index_eschema=Webmin si è connesso al server LDAP, ma non è riuscito a recuperare lo schema. Assicurarsi che l'accesso non sia stato negato nel modulo <a href='$1'>Server LDAP</a>.
+index_eimap=$1. Forse la tua <a href='$2'>configurazione del modulo</a> non è corretta.
+index_emd5=Questo modulo è stato <a href='$1'>configurato</a> per utilizzare la crittografia MD5 per le password, ma il modulo $2 Perl non è installato. <a href='$3'>Fai clic qui</a> per scaricare e installare il modulo $2.
+index_eslappasswd=Questo modulo è stato <a href='$1'>configurato</a> per utilizzare la crittografia LDAP MD5 per le password, ma il programma <tt>$2</tt> utilizzato per crittografare una password non è installato.
+index_eusearch=Impossibile cercare utenti con $1 : $2 
+index_uadd=Aggiungi un nuovo utente LDAP.
+index_gadd=Aggiungi un nuovo gruppo LDAP.
+index_unone=Nessun utente LDAP trovato in $1.
+index_gnone=Nessun gruppo LDAP è stato trovato in $1.
+index_return=lista degli utenti
+index_greturn=elenco di gruppi
+index_egsearch=Ricerca di gruppi non riuscita in $1 : $2 
+index_samba=Samba?
+index_cyrus=IMAP?
+index_users=Utenti LDAP
+index_groups=Gruppi LDAP
+
+imap_econn=Impossibile connettersi al server IMAP $1 
+imap_elogin=Accesso al server IMAP $1 non riuscito come $2 : $3 
+conn_eldap_host=Non è stato trovato alcun file di configurazione del client LDAP sul sistema, quindi il server LDAP deve essere impostato nella pagina Configurazione modulo
+conn_elogin=Non è stato trovato alcun file di configurazione del client LDAP sul sistema, quindi l'accesso LDAP deve essere impostato nella pagina Configurazione modulo
+conn_efile_open=Impossibile aprire il file delle credenziali di associazione LDAP:
+
+uedit_cap=Funzionalità dell'utente
+uedit_samba=Login Samba?
+uedit_cyrus=Login al server IMAP?
+uedit_dn=DN LDAP dell'utente
+uedit_classes=Classi di oggetti LDAP
+uedit_alias=Alias di posta
+uedit_fields=Campi LDAP aggiuntivi
+uedit_firstname=nome di battesimo
+uedit_lastname=Cognome
+uedit_raw=Attributi LDAP
+uedit_return=dettagli dell'utente
+uedit_quota=Quota IMAP
+uedit_unquota=Non cambiare
+uedit_sambapassopts=Opzioni password Samba
+uedit_sambapwdlastset=Ultimo aggiornamento password
+uedit_sambapwdcanchange=La password può cambiare
+uedit_sambabadpasswordcount=Conteggio password errato
+uedit_sambaacctflags=Flag dell'account
+
+usave_eadd=Impossibile aggiungere l'utente al database LDAP : $1 
+usave_emod=Impossibile modificare l'utente nel database LDAP : $1 
+usave_emoddn=Impossibile rinominare l'utente nel database LDAP : $1 
+usave_egroupmod=Impossibile modificare il gruppo $1 nel database LDAP : $2 
+usave_edelete=Impossibile eliminare l'utente dal database LDAP : $1 
+usave_eicreate=Impossibile creare l'utente
+usave_eiacl=Impossibile concedere i diritti di amministratore
+usave_eimap=L'utente è stato salvato correttamente nel database LDAP, ma si è verificato un errore IMAP: $1 : $2 
+usave_eisub=Impossibile iscrivere l'utente alla cartella $1 
+usave_eiquota=Impossibile impostare la quota IMAP
+usave_eifolder=Impossibile creare la cartella $1 
+usave_eilogin=Impossibile accedere come nuovo utente
+usave_ecyruspass=È necessario inserire la normale password dell'utente o selezionare l'opzione Nessuna password richiesta quando si abilita IMAP.
+usave_ebook=Impossibile creare la voce della rubrica : $1 
+usave_emodbook=Impossibile modificare la voce della rubrica : $1 
+usave_emodbookdn=Impossibile rinominare la voce della rubrica : $1 
+usave_egone=L'utente non esiste più!
+usave_ex86=Questo modulo non può essere utilizzato per impostare la password per un utente Samba su sistemi non Intel, poiché dipende da un programma x86 compilato.
+usave_esamba=Questo modulo non può essere utilizzato per impostare la password per un utente Samba, poiché il modulo di condivisione file di Samba Windows non è installato.
+usave_ealiasdup=L'alias $1 è già utilizzato da $2 
+usave_eattrdup=L'oggetto $1 sta già utilizzando $2 $3 
+usave_eattrdupu=L'utente $1 sta già utilizzando $2 $3 
+usave_eattrdupg=Il gruppo $1 sta già utilizzando $2 $3 
+usave_ereal=Nome reale mancante
+usave_equota=Quota IMAP mancante o non valida
+
+search_err=Ricerca $1 in $2 non riuscita : $3 
+
+gedit_dn=DN LDAP del gruppo
+gedit_return=dettagli del gruppo
+gedit_cap=Funzionalità di gruppo
+gedit_samba=Gruppo Samba?
+
+gsave_egone=Il gruppo non esiste più!
+gsave_edelete=Impossibile eliminare il gruppo dal database LDAP : $1 
+gsave_eadd=Impossibile aggiungere il gruppo al database LDAP : $1 
+gsave_emod=Impossibile modificare il gruppo nel database LDAP : $1 
+gsave_emoddn=Impossibile rinominare il gruppo nel database LDAP : $1 
+
+gdel_group=Eliminazione della voce di gruppo LDAP.
+
+udel_pass=Eliminazione voce utente LDAP.
+udel_book=Eliminazione dalla rubrica.
+udel_imap=Eliminazione cartella IMAP ..
+udel_warnimap=La casella postale esistente verrà eliminata quando si elimina la home directory!
+udel_failed=.. fallito!  : $1 
+
+raw_title=Attributi LDAP
+raw_name=Nome attributo
+raw_value=Valori
+raw_for=Per $1 
+
+batch_samba=Creare un account Samba per i nuovi utenti?
+batch_imap=Creare un account IMAP per i nuovi utenti?
+batch_descafter3=Nelle righe <b>crea</b> e <b>modifica</b>, puoi facoltativamente aggiungere campi extra contenenti attributi LDAP nel formato <i>nome</i> = <i>valore</i>, a essere assegnato agli utenti nuovi o modificati.
+batch_eattr=Attributo LDAP non valido alla riga $1 : $2 

@@ -1,0 +1,3 @@
+name_tr=IPsec
+longdesc_tr=FreeSWAN kullanarak IPsec VPN için bir istemci veya sunucu ayarlayın.
+desc_tr=IPsec VPN Yapılandırması

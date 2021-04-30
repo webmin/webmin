@@ -1,0 +1,75 @@
+index_title=Trình tải khởi động GRUB
+index_add=Thêm một tùy chọn khởi động mới.
+index_global=Chỉnh sửa tùy chọn toàn cầu
+index_globalmsg=Chỉnh sửa các tùy chọn khởi động toàn cầu áp dụng cho tất cả các lựa chọn menu khởi động và chọn thiết bị GRUB được cài đặt.
+index_install=Cài đặt GRUB
+index_installmsg=Cài đặt bộ tải khởi động GRUB trên $1 để hiển thị các tùy chọn ở trên tại thời điểm khởi động. Điều này sẽ ghi đè bất kỳ trình tải khởi động hiện có nào như LILO và có thể khiến hệ thống của bạn không thể khởi động!
+index_none=Không có tùy chọn khởi động đã được xác định. Hãy chắc chắn rằng bạn thêm ít nhất một trước khi cài đặt grub.
+index_efile=Không tìm thấy tệp menu GRUB $1 trên hệ thống của bạn. Có thể GRUB chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> không chính xác.
+index_epath=Không thể tìm thấy GRUB thực thi $1 trên hệ thống của bạn. Có thể GRUB chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> không chính xác.
+index_return=danh sách tùy chọn
+
+title_add=Thêm tùy chọn khởi động
+title_edit=Chỉnh sửa tùy chọn khởi động
+title_header=Tùy chọn menu khởi động chi tiết
+title_title=Tiêu đề tùy chọn
+title_root=Phân vùng ảnh khởi động
+title_noverify=Không gắn kết và xác minh phân vùng
+title_other=Tập tin thiết bị khác
+title_sel=Đã chọn
+title_boot=Hệ điều hành để khởi động
+title_kernel=Hạt nhân
+title_kfile=Đường dẫn đến kernel
+title_args=Tùy chọn hạt nhân
+title_initrd=Tập tin ramdisk ban đầu
+title_modules=Các mô-đun bổ sung
+title_chain=HĐH khác
+title_chain_def=Từ khu vực đầu tiên của phân vùng
+title_chain_file=Từ tập tin chainloader
+title_makeactive=Làm cho phân vùng gốc hoạt động?
+title_none1=không ai
+title_none2=(mục menu không khởi động)
+title_err=Không thể lưu tùy chọn khởi động
+title_etitle=Thiếu tiêu đề tùy chọn
+title_eroot=Thiếu phân vùng gốc
+title_ekernel=Đường dẫn kernel bị thiếu hoặc không hợp lệ
+title_echain=Tập tin chainloader bị thiếu hoặc không hợp lệ
+title_edev=Thiết bị phân vùng gốc không được hỗ trợ $1 
+title_einitrd=Thiếu tên tệp ramdisk ban đầu
+title_lock=Mật khẩu bị khóa?
+
+global_title=Tùy chọn toàn cầu
+global_header=Tùy chọn menu khởi động toàn cầu
+global_default=Tùy chọn khởi động mặc định
+global_fallback=Tùy chọn khởi động dự phòng
+global_first=Đầu tiên trong danh sách
+global_timeout=Hết thời gian chờ trước khi tải mặc định
+global_forever=Đợi mãi
+global_secs=giây
+global_install=Cài đặt GRUB trên đĩa/phân vùng
+global_sel=Đã chọn
+global_other=Khác
+global_password=Mật khẩu khởi động
+global_none=không ai
+global_password_file=Sử dụng tệp menu nếu mật khẩu được nhập:
+global_err=Không thể lưu các tùy chọn toàn cầu
+global_etimeout=Hết giờ hoặc không hợp lệ
+global_edev=Cài đặt đĩa/phân vùng không được hỗ trợ $1 
+global_eother=Thiếu/không hợp lệ đĩa/phân vùng
+global_epassword=Mật khẩu khởi động bị thiếu hoặc không hợp lệ
+global_epasswordfile=Thiếu tên tệp menu thay thế
+
+install_title=Cài đặt GRUB
+install_err=Không thể cài đặt GRUB
+install_efind=Không thể tìm thấy tập tin menu
+install_desc=Cài đặt GRUB trên $1 bằng các lệnh $2 và $3 ..
+install_ok=.. cài đặt hoàn tất.
+install_failed=.. Cài đặt không thành công!
+
+log_create_title=Đã tạo tùy chọn khởi động $1 
+log_delete_title=Đã xóa tùy chọn khởi động $1 
+log_modify_title=Tùy chọn khởi động được sửa đổi $1 
+log_up_title=Đã chuyển lên tùy chọn khởi động $1 
+log_down_title=Đã chuyển xuống tùy chọn khởi động $1 
+log_global=Thay đổi tùy chọn toàn cầu
+log_install=Đã cài đặt GRUB

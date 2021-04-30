@@ -1,0 +1,71 @@
+<header> TCP iesaiņojumi </header>
+<h3> Raksti </h3> Piekļuves kontroles valoda īsteno šādus modeļus: <ul>
+    <li> Virkne, kas sākas ar &#39;.&#39; raksturs. Resursdatora nosaukums tiek saskaņots, ja tā nosaukuma pēdējie komponenti atbilst norādītajam modelim. Piemēram, modelis &#39;.tue.nl&#39; atbilst resursdatora nosaukumam &#39;wzv.win.tue.nl&#39;. </li>
+    <li> Virkne, kas beidzas ar “.” raksturs. Resursdatora adrese tiek saskaņota, ja tās pirmie skaitļu lauki atbilst dotajai virknei. Piemēram, modelis “131.155.” atbilst (gandrīz) katras saimnieces adresei Eindhovenas universitātes tīklā (131.155.xx). </li>
+    <li> Virkne, kas sākas ar burtu “@”, tiek uzskatīta par NIS (iepriekš YP) tīkla grupas nosaukumu. Resursdatora nosaukums tiek saskaņots, ja tas ir norādītās tīkla grupas saimniekdators. Netgroup spēles netiek atbalstītas dēmonu procesu nosaukumiem vai klientu lietotāju vārdiem. </li>
+    <li> Formas “nnnn / mmmm” izteicienu interpretē kā “tīkla / maskas” pāri. IPv4 resursdatora adrese tiek saskaņota, ja “net” ir vienāds ar adreses un “maskas” bitu UN. Piemēram, tīkla / maskas modelis &#39;131.155.72.0/255.255.254.0&#39; atbilst visām adresēm diapazonā no &#39;131.155.72.0&#39; līdz &#39;131.155.73.255&#39;. </li>
+    <li> Formas izteiksme “[n: n: n: n: n: n: n: n] / m” tiek interpretēta kā “[neto] / prefiksa” pāris. IPv6 resursdatora adrese tiek saskaņota, ja “net” biti “prefixlen” ir vienādi ar adreses “prefixlen” bitiem. Piemēram, [neto] / prefiksa modelis &#39;[3ffe: 505: 2: 1 ::]/64&#39; atbilst visām adresēm diapazonā &#39;3ffe: 505: 2: 1:&#39;? caur &#39;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&#39;. </li>
+    <li> Virkne, kas sākas ar &#39;/&#39; rakstzīmi, tiek uzskatīta par faila nosaukumu. Resursdatora nosaukums vai adrese tiek saskaņota, ja tas atbilst jebkuram resursdatora nosaukumam vai adreses modelim, kas norādīts nosauktajā failā. Faila formāts ir nulle vai vairāk rindu ar nulli vai vairāk resursdatora nosaukuma vai adreses modeļiem, kas atdalīti ar atstarpi. Faila nosaukuma shēmu var izmantot visur, kur var izmantot resursdatora vārdu vai adreses modeli. </li>
+    <li> Aizstājējzīmes &#39;*&#39; un &#39;?&#39; var izmantot, lai atbilstu resursdatoru nosaukumiem vai IP adresēm. Šo saskaņošanas metodi nevar izmantot kopā ar “net/mask” atbilstību, resursdatora nosaukuma atbilstību sākot ar “.” vai IP adreses atbilstība, kas beidzas ar “.”. </li>
+</ul>
+<h3> Aizstājējzīmes </h3> Piekļuves kontroles valoda atbalsta skaidras aizstājējzīmes: <table border>
+    <tr>
+        <td> <b>VISI</b> </td>
+        <td> Universālā aizstājējzīme vienmēr sakrīt. </td>
+    </tr>
+    <tr>
+        <td> <b>VIETĒJĀ</b> </td>
+        <td> Atbilst jebkurai saimniecei, kuras nosaukumā nav punktveida burta. </td>
+    </tr>
+    <tr>
+        <td> <b>NEZINĀMS</b> </td>
+        <td> Atbilst jebkuram lietotājam, kura vārds nav zināms, un atbilst jebkuram resursdatoram, kura vārds vai adrese nav zināma. Šis modelis jāizmanto uzmanīgi: resursdatora nosaukumi var nebūt pieejami īslaicīgu vārdu servera problēmu dēļ. Tīkla adrese nebūs pieejama, ja programmatūra nevar izdomāt, ar kāda veida tīklu tā runā. </td>
+    </tr>
+    <tr>
+        <td> <b>ZINĀT</b> </td>
+        <td> Atbilst jebkuram lietotājam, kura vārds ir zināms, un atbilst jebkuram resursdatoram, kura vārds un adrese ir zināmi. Šis modelis jāizmanto uzmanīgi: resursdatora nosaukumi var nebūt pieejami īslaicīgu vārdu servera problēmu dēļ. Tīkla adrese nebūs pieejama, ja programmatūra nevar izdomāt, ar kāda veida tīklu tā runā. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOĪDS</b> </td>
+        <td> Atbilst jebkuram resursdatoram, kura vārds neatbilst tā adresei. Kad tcpd tiek veidots ar -DPARANOID (noklusējuma režīms), tas atmet pieprasījumus no šādiem klientiem pat pirms piekļuves kontroles tabulu apskatīšanas. Veidojiet bez -DPARANOID, kad vēlaties vairāk kontrolēt šādus pieprasījumus. </td>
+    </tr>
+</table>
+<h3> Operatori </h3> <b>EXCEPT</b> Paredzētais lietojums ir šāds: &#39;list_1 EXCEPT list_2&#39;; šis konstrukts atbilst visam, kas atbilst sarakstam_1, ja vien tas neatbilst sarakstam_2. Operators EXCEPT var tikt izmantots daemon_lists un client_lists. EXCEPT operatoru var ligzdot: ja kontroles valoda ļautu izmantot iekavas, “a EXCEPT b EXCEPT c” parsētu kā “(EXCEPT (b EXCEPT c))”. <h3> Čaulas komandas </h3> Ja pirmās atbilstības piekļuves kontroles noteikums satur čaulas komandu, šī komanda tiek pakļauta% <letter> aizvietojumi (skatīt nākamo sadaļu). Rezultātu nodrošina /bin/sh bērna process ar standarta ievadi, izvadi un kļūdu, kas savienota ar /dev/null. Komandas beigās norādiet “&amp;”, ja nevēlaties gaidīt, līdz tā ir pabeigta. <p> Apvalka komandām nevajadzētu paļauties uz inetd iestatījumu PATH. Tā vietā viņiem vajadzētu izmantot absolūtos ceļu nosaukumus vai arī viņiem vajadzētu sākt ar skaidru PATH = neatkarīgi no tā, kāds paziņojums ir sniegts. <h3> % Paplašinājumi </h3> Čaulas komandās ir pieejami šādi paplašinājumi: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> Klienta (servera) resursdatora adrese. </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Informācija par klientu: lietotājs @ resursdators, lietotāja @ adrese, resursdatora nosaukums vai vienkārši adrese atkarībā no pieejamās informācijas. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> Dēmona procesa nosaukums (argv[0] vērtība). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Klienta (servera) resursdatora nosaukums vai adrese, ja resursdatora nosaukums nav pieejams. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> Klienta (servera) resursdatora nosaukums (vai “nezināms” vai “paranoisks”). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> Dēmona procesa ID. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Informācija par serveri: daemon @ resursdators, daemon @ adrese vai tikai dēmona vārds atkarībā no pieejamās informācijas. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Klienta lietotāja vārds (vai &quot;nezināms&quot;). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Paplašina līdz vienam%? raksturs. </td>
+            </tr>
+        </table> Rakstzīmes%paplašinājumos, kas var sajaukt apvalku, tiek aizstātas ar pasvītrojumiem.
+        <hr />

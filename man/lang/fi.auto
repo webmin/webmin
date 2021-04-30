@@ -1,0 +1,79 @@
+index_title=Järjestelmädokumentaatio
+index_header=Järjestelmädokumentaation haku
+index_for=Etsiä
+index_where=Etsi
+index_alldoc=Kaikki asiakirjat
+index_man=Manuaaliset sivut
+index_doc=Pakkausasiakirjat
+index_kernel=Ytimen dokumentaatio
+index_info=Tietosivut
+index_howto=HOWTO-asiakirjat
+index_kde=KDE-dokumentaatio
+index_perl=Perl-moduulin dokumentaatio
+index_custom=Mukautettu dokumentaatio
+index_help=Webmin-ohje
+index_reset=Nollaa
+index_search=Hae
+index_return=hakulomake
+index_type=Ottelu
+index_name=Vain nimi
+index_data=Nimi ja sisältö
+index_google=Google haku
+index_others=Kun etsit dokumentteja toisesta moduulista, salli hakujen ..
+index_other_man=Manuaaliset sivut
+index_other_help=Webmin-ohje
+index_other_doc=Pakkausasiakirjat
+index_other_kernel=Ytimen dokumentaatio
+index_other_howto=HOWTO-asiakirjat
+index_other_perl=Perl-moduulin dokumentaatio
+index_other_google=Google-hakukone
+index_other_kde=KDE-dokumentaatio
+index_and=Vastaa kaikkia
+index_or=Vastaa mitä tahansa
+
+search_efor=Ei manuaalista sivua etsimään syötettyjä
+search_title=Hakutulokset
+search_desc=Kuvaus
+search_type=Tyyppi
+search_file=Sivu tai tiedosto
+search_man=Manuaalinen sivu
+search_howto=HOWTO-asiakirja
+search_doc=Pakkausasiakirjat
+search_kernel=Ytimen dokumentaatio
+search_kde=KDE-dokumentaatio
+search_perl=Perl-moduuli
+search_help=Webmin-ohje
+search_custom=Mukautettu dokumentaatio
+search_none=$1 vastaavaa dokumentaatiota ei löytynyt.
+search_for=$1 : lle
+search_google=Google-hakutulos
+search_doxfer=Webminin online-dokumentaatio
+
+howto_title=HOWTO-asiakirja
+howto_header=HOWTO-tiedosto tiedosto $1 
+howto_epath=Virheellinen HOWTO-dokumenttipolku
+
+doc_title=Pakkausdokumentaatio
+doc_header=Pakkausdokumentitiedosto $1 
+doc_epath=Virheellinen paketin dokumentointipolku
+
+man_title=Manuaalinen sivu
+man_header=Manuaalinen sivu sivulle $1 ($2)
+man_noentry=Kohdan $1 manuaalista sivua ei ole!
+man_epath=Manuaalinen sivu ei voi olla polku!
+
+kernel_title=Ydindokumentti
+kernel_header=Ydindokumentitiedosto $1 
+kernel_epath=Virheellinen ytimen asiakirjapolku
+
+kde_title=KDE-dokumentaatio
+kde_header=KDE-dokumentitiedosto $1 
+kde_epath=Virheellinen KDE-dokumentointipolku
+
+perl_title=Perl-moduuli
+perl_header=Perl-moduulin $1 dokumentaatio
+perl_emod=Virheellinen Perl-moduulin nimi
+
+acl_allow=Voiko muokata sallittuja hakutyyppejä?
+
+check_ecannot=Et voi muokata sallittuja hakutyyppejä

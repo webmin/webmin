@@ -1,0 +1,14 @@
+inittab_active=アクティブですか？
+inittab_kbrequest=特別なキーの組み合わせ
+inittab_apply=初期設定を適用する
+inittab_applymsg=このボタンをクリックして、<tt>telinit q</tt>コマンドを実行することにより、現在のSysV Init Configurationを適用します。構成に誤りがあると、このコマンドの実行時にシステムが使用できなくなる可能性があることに注意してください。
+index_delete=選択したプロセスを削除
+inittab_none2=システムで起動プロセスが見つかりませんでした。これはおそらく、SysV init構成ファイルを使用していないことを示しています。
+
+log_apply=適用された構成
+log_deletes=$1の初期化プロセスを削除しました
+
+apply_err=構成を適用できませんでした
+
+delete_err=プロセスを削除できませんでした
+delete_enone=何も選択されていません

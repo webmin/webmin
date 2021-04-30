@@ -1,0 +1,1 @@
+<header>本地网络</header><center> <tt>mynetworks</tt> </center> <hr>此参数指定此计算机本地网络的列表。该列表由反UCE软件用来区分本地客户和陌生人。请参阅SMTP配置中的<tt>permit_mynetworks</tt>和<a href=opt_smtpd_recipient_restrictions><tt>smtpd_recipient_restrictions</tt></a> 。 <p>默认值是计算机连接的所有网络的列表：完整的A类网络（X.0.0.0 / 8），完整的B类网络（XX0.0 / 16），依此类推。如果需要更严格的控制，请指定网络/掩码模式的列表，其中掩码指定主机地址的网络部分中的位数。您也可以指定特征码文件的绝对路径名，而不是在此处列出特征码。 <hr>

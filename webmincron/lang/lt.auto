@@ -1,0 +1,20 @@
+edit_mins=Minutės
+edit_hours=Valandos
+edit_days=Dienos
+edit_months=Mėnesių
+edit_weekdays=Darbo dienomis
+edit_all=Visi
+edit_selected=Pasirinkta ..
+edit_run=Vykdyk dabar
+edit_clone=Klonas Darbas
+edit_return=krono darbas
+edit_special1=Paprastas tvarkaraštis ..
+edit_special0=Laikai ir datos, pasirinkti žemiau.
+edit_special_hourly=Kas valandą
+edit_special_daily=Kasdien (vidurnaktį)
+edit_special_weekly=Kas savaitę (sekmadienį)
+edit_special_monthly=Kas mėnesį (pirmą dieną)
+edit_special_yearly=Kasmet (sausio 1 d.)
+
+log_success=Sėkmingai paleidote <tt>$2</tt> į <tt>$1</tt>
+log_failure=Nepavyko paleisti <tt>$2</tt> <tt>$1</tt> : $3 

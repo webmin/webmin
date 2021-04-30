@@ -5,8 +5,6 @@
 # Rene Mayrhofer, July 2000
 # Some code has been taken from redhat-linux-lib.pl
 
-use File::Copy;
-
 $network_interfaces_config = '/etc/network/interfaces';
 $modules_config = '/etc/modprobe.d/arch/i386';
 if (!-d $modules_config) {
@@ -98,11 +96,6 @@ foreach $iface (@ifaces) {
 		$cfg->{'edit'} = ($cfg->{'name'} !~ /^ppp|lo/);
 		$cfg->{'index'} = scalar(@rv);	
 		$cfg->{'file'} = $network_interfaces_config;
-		if (!$cfg->{'broadcast'} &&
-		    $cfg->{'address'} && $cfg->{'netmask'}) {
-			$cfg->{'broadcast'} = &compute_broadcast(
-				$cfg->{'address'}, $cfg->{'netmask'});
-			}
 		push(@rv, $cfg);
 		}
 	elsif ($addrfam eq "inet6") {
@@ -392,7 +385,7 @@ sub modify_module_def
 	my $modify_block = 0;
 	
 	# make a backup copy
-	copy("$modules_config", "$modules_config~");
+	&copy_source_dest($modules_config, "$modules_config~");
 	local *OLDCFGFILE, *NEWCFGFILE;
 	&open_readfile(OLDCFGFILE, "$modules_config~") ||
 		error("Unable to open $modules_config");
@@ -494,7 +487,7 @@ sub new_module_def
 {
 	local ($name, $mode, $miimon, $downdelay, $updelay) = @_;
         return if (!$modules_config);
-	copy("$modules_config", "$modules_config~");
+	&copy_source_dest($modules_config, "$modules_config~");
 	local *CFGFILE;
 	&open_lock_tempfile(CFGFILE, ">> $modules_config") ||
 		error("Unable to open $modules_config");
@@ -541,6 +534,11 @@ sub can_edit
 return $_[0];
 }
 
+sub can_broadcast_def
+{
+return 1;
+}
+
 # valid_boot_address(address)
 # Is some address valid for a bootup interface
 sub valid_boot_address
@@ -556,7 +554,7 @@ $hn =~ s/\r|\n//g;
 if ($hn) {
 	return $hn;
 	}
-return &get_system_hostname(1);
+return &get_system_hostname();
 }
 
 # save_hostname(name)
@@ -689,7 +687,7 @@ sub parse_routing
 local ($dev, $gw);
 if (!$in{'gateway_def'}) {
 	&check_ipaddress($in{'gateway'}) ||
-		&error(&text('routes_egateway', $in{'gateway'}));
+		&error(&text('routes_egateway', &html_escape($in{'gateway'})));
 	$gw = $in{'gateway'};
 	$dev = $in{'gatewaydev'};
 	}
@@ -702,7 +700,7 @@ if (@ifaces6) {
 	local ($dev6, $gw6);
 	if (!$in{'gateway6_def'}) {
 		&check_ip6address($in{'gateway6'}) ||
-			&error(&text('routes_egateway6', $in{'gateway6'}));
+			&error(&text('routes_egateway6', &html_escape($in{'gateway6'})));
 		$gw6 = $in{'gateway6'};
 		$dev6 = $in{'gatewaydev6'};
 		}
@@ -718,11 +716,11 @@ for($i=0; defined($dev = $in{"dev_$i"}); $i++) {
 	local $net = $in{"net_$i"};
 	local $netmask = $in{"netmask_$i"};
 	local $gw = $in{"gw_$i"};
-	$dev =~ /^\S+$/ || &error(&text('routes_edevice', $dev));
-	&to_ipaddress($net) || &error(&text('routes_enet', $net));
+	$dev =~ /^\S+$/ || &error(&text('routes_edevice', &html_escape($dev)));
+	&to_ipaddress($net) || &error(&text('routes_enet', &html_escape($net)));
 	&check_ipaddress_any($netmask) ||
-		&error(&text('routes_emask', $netmask));
-	&to_ipaddress($gw) || &error(&text('routes_egateway', $gw));
+		&error(&text('routes_emask', &html_escape($netmask)));
+	&to_ipaddress($gw) || &error(&text('routes_egateway', &html_escape($gw)));
 	local $prefix = &mask_to_prefix($netmask);
 	push(@{$st{$dev}}, [ "up", "ip route add $net/$prefix via $gw" ]);
 	}
@@ -731,12 +729,12 @@ for($i=0; defined($dev = $in{"ldev_$i"}); $i++) {
 	local $net = $in{"lnet_$i"};
 	local $netmask = $in{"lnetmask_$i"};
 	next if (!$dev && !$net);
-	$dev =~ /^\S+$/ || &error(&text('routes_edevice', $dev));
+	$dev =~ /^\S+$/ || &error(&text('routes_edevice', &html_escape($dev)));
 	&to_ipaddress($net) ||
 	    $net =~ /^(\S+)\/(\d+)$/ && &to_ipaddress("$1") ||
-		&error(&text('routes_enet', $net));
+		&error(&text('routes_enet', &html_escape($net)));
 	&check_ipaddress_any($netmask) ||
-		&error(&text('routes_emask', $netmask));
+		&error(&text('routes_emask', &html_escape($netmask)));
 	local $prefix = &mask_to_prefix($netmask);
 	push(@{$hr{$dev}}, [ "up", "ip route add $net/$prefix dev $dev" ]);
 	}
@@ -779,8 +777,7 @@ sub get_interface_defs
 {
 local *CFGFILE;
 my @ret;
-&open_readfile(CFGFILE, $network_interfaces_config) ||
-	error("Unable to open $network_interfaces_config");
+&open_readfile(CFGFILE, $network_interfaces_config) || return ();
 # read the file line by line
 $line = <CFGFILE>;
 while (defined $line) {
@@ -841,7 +838,7 @@ while (defined $line) {
 		push(@ret, [$name, $addrfam, $method, \@iface_options]);
 		}
 	else {
-		error("Error reading file $pathname: unexpected line '$line'");
+		error("Error reading file $network_interfaces_config: unexpected line '$line'");
 		}
 	}
 close(CFGFILE);
@@ -902,7 +899,7 @@ sub modify_interface_def
 {
 my ($name, $addrfam, $method, $options, $mode) = @_;
 # make a backup copy
-copy("$network_interfaces_config", "$network_interfaces_config~");
+&copy_source_dest($network_interfaces_config, "$network_interfaces_config~");
 local *OLDCFGFILE, *NEWCFGFILE;
 &open_readfile(OLDCFGFILE, "$network_interfaces_config~") ||
 	error("Unable to open $network_interfaces_config");
@@ -969,7 +966,7 @@ close(OLDCFGFILE);
 sub new_interface_def
 {
 # make a backup copy
-copy("$network_interfaces_config", "$network_interfaces_config~");
+&copy_source_dest($network_interfaces_config, "$network_interfaces_config~");
 local *CFGFILE;
 &open_lock_tempfile(CFGFILE, ">> $network_interfaces_config") ||
 	error("Unable to open $network_interfaces_config");

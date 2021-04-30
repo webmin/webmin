@@ -1,0 +1,71 @@
+<header> TCP Wrappers </header>
+<h3> Patrones </h3> El lenguaje de control de acceso implementa los siguientes patrones: <ul>
+    <li> Una cadena que comienza con un &#39;.&#39; personaje. Un nombre de host coincide si los últimos componentes de su nombre coinciden con el patrón especificado. Por ejemplo, el patrón &#39;.tue.nl&#39; coincide con el nombre de host &#39;wzv.win.tue.nl&#39;. </li>
+    <li> Una cadena que termina con un &#39;.&#39; personaje. Una dirección de host coincide si sus primeros campos numéricos coinciden con la cadena dada. Por ejemplo, el patrón &#39;131.155.&#39; coincide con la dirección de (casi) cada host en la red de la Universidad de Eindhoven (131.155.xx). </li>
+    <li> Una cadena que comienza con un carácter &#39;@&#39; se trata como un nombre de grupo de red NIS (anteriormente YP). Un nombre de host coincide si es un miembro de host del grupo de red especificado. Las coincidencias de Netgroup no son compatibles con los nombres de proceso de daemon ni con los nombres de usuario del cliente. </li>
+    <li> Una expresión de la forma &#39;nnnn / mmmm&#39; se interpreta como un par &#39;net/mask&#39;. Una dirección de host IPv4 coincide si &#39;net&#39; es igual al bit Y de la dirección y la &#39;máscara&#39;. Por ejemplo, el patrón de red / máscara &#39;131.155.72.0/255.255.254.0&#39; coincide con cada dirección en el rango &#39;131.155.72.0&#39; a &#39;131.155.73.255&#39;. </li>
+    <li> Una expresión de la forma &#39;[n: n: n: n: n: n: n: n] / m&#39; se interpreta como un par &#39;[net]/prefixlen&#39;. Una dirección de host IPv6 coincide si los bits &#39;prefixlen&#39; de &#39;net&#39; son iguales a los bits &#39;prefixlen&#39; de la dirección. Por ejemplo, el patrón [net]/prefixlen &#39;[3ffe: 505: 2: 1 ::]/64&#39; coincide con cada dirección en el rango &#39;3ffe: 505: 2: 1:&#39;? a través de &#39;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&#39;. </li>
+    <li> Una cadena que comienza con un carácter &#39;/&#39; se trata como un nombre de archivo. Un nombre de host o una dirección coinciden si coinciden con cualquier nombre de host o patrón de dirección enumerado en el archivo con nombre. El formato del archivo es cero o más líneas con cero o más nombres de host o patrones de dirección separados por espacios en blanco. Se puede usar un patrón de nombre de archivo en cualquier lugar donde se pueda usar un nombre de host o un patrón de dirección. </li>
+    <li> Comodines &#39;*&#39; y &#39;?&#39; se puede usar para hacer coincidir nombres de host o direcciones IP. Este método de coincidencia no se puede usar junto con la coincidencia &#39;net/mask&#39;, la coincidencia de nombre de host comienza con &#39;.&#39; o coincidencia de dirección IP que termina con &#39;.&#39;. </li>
+</ul>
+<h3> Comodines </h3> El lenguaje de control de acceso admite comodines explícitos: <table border>
+    <tr>
+        <td> <b>TODAS</b> </td>
+        <td> El comodín universal, siempre coincide. </td>
+    </tr>
+    <tr>
+        <td> <b>LOCAL</b> </td>
+        <td> Coincide con cualquier host cuyo nombre no contenga un carácter de punto. </td>
+    </tr>
+    <tr>
+        <td> <b>DESCONOCIDO</b> </td>
+        <td> Coincide con cualquier usuario cuyo nombre se desconoce y con cualquier host cuyo nombre o dirección se desconocen. Este patrón debe usarse con cuidado: los nombres de host pueden no estar disponibles debido a problemas temporales del servidor de nombres. Una dirección de red no estará disponible cuando el software no pueda determinar con qué tipo de red está hablando. </td>
+    </tr>
+    <tr>
+        <td> <b>CONOCIDO</b> </td>
+        <td> Coincide con cualquier usuario cuyo nombre se conoce, y coincide con cualquier host cuyo nombre y dirección se conocen. Este patrón debe usarse con cuidado: los nombres de host pueden no estar disponibles debido a problemas temporales del servidor de nombres. Una dirección de red no estará disponible cuando el software no pueda determinar con qué tipo de red está hablando. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOICO</b> </td>
+        <td> Coincide con cualquier host cuyo nombre no coincida con su dirección. Cuando tcpd se crea con -DPARANOID (modo predeterminado), elimina las solicitudes de dichos clientes incluso antes de mirar las tablas de control de acceso. Construya sin PDARANOID cuando desee tener más control sobre tales solicitudes. </td>
+    </tr>
+</table>
+<h3> Operadores </h3> <b>EXCEPTO</b> El uso previsto tiene la forma: &#39;list_1 EXCEPT list_2&#39;; esta construcción coincide con cualquier cosa que coincida con list_1 a menos que coincida con list_2. El operador EXCEPTO se puede usar en daemon_lists y en client_lists. El operador EXCEPT puede estar anidado: si el lenguaje de control permitiera el uso de paréntesis, &#39;a EXCEPT b EXCEPT c&#39; se analizaría como &#39;(a EXCEPT (b EXCEPT c))&#39;. <h3> Comandos de Shell </h3> Si la primera regla de control de acceso coincidente contiene un comando de shell, ese comando está sujeto a% <letter> sustituciones (ver la siguiente sección). El resultado se ejecuta mediante un proceso secundario /bin/sh con entrada, salida y error estándar conectados a /dev/null. Especifique un &#39;&amp;&#39; al final del comando si no desea esperar hasta que se haya completado. <p> Los comandos de Shell no deben depender de la configuración PATH del inetd. En su lugar, deberían usar nombres de ruta absolutos, o deberían comenzar con una declaración explícita PATH = anyeverever. <h3> % Expansiones </h3> Las siguientes expansiones están disponibles dentro de los comandos de shell: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> La dirección de host del cliente (servidor). </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Información del cliente: usuario @ host, usuario @ dirección, un nombre de host o simplemente una dirección, dependiendo de la cantidad de información disponible. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> El nombre del proceso daemon (valor argv[0]). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> El nombre o la dirección del host del cliente (servidor), si el nombre del host no está disponible. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> El nombre de host del cliente (servidor) (o &quot;desconocido&quot; o &quot;paranoico&quot;). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> La identificación del proceso daemon. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Información del servidor: daemon@host, daemon@address, o simplemente un nombre de daemon, dependiendo de la cantidad de información disponible. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> El nombre de usuario del cliente (o &quot;desconocido&quot;). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Se expande a un solo &#39;%? personaje. </td>
+            </tr>
+        </table> Los caracteres en%de expansiones que pueden confundir al shell se reemplazan por guiones bajos.
+        <hr />

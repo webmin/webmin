@@ -206,6 +206,11 @@ sub can_edit
 return $_[0] ne "bootp";
 }
 
+sub can_broadcast_def
+{
+return 0;
+}
+
 # valid_boot_address(address)
 # Is some address valid for a bootup interface
 sub valid_boot_address
@@ -221,7 +226,7 @@ $hn =~ s/\r|\n//g;
 if ($hn) {
 	return $hn;
 	}
-return &get_system_hostname(1);
+return &get_system_hostname();
 }
 
 # save_hostname(name)
@@ -260,7 +265,7 @@ sub parse_routing
 local $gw = "";
 if (!$in{'gw_def'}) {
 	&check_ipaddress($in{'gw'}) ||
-		&error(&text('routes_edefault', $in{'gw'}));
+		&error(&text('routes_edefault', &html_escape($in{'gw'})));
 	$gw = $in{'gw'};
 	}
 &lock_file($rc_init);

@@ -1,0 +1,50 @@
+index_title=OpenSLP konfigurazioa
+index_return=OpenSLP konfigurazioa
+index_eslpd=$1 OpenSLP daemon ez da zure sisteman aurkitu. Agian ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_econf=$1 OpenSLP konfigurazio fitxategia ez da zure sisteman aurkitu. Agian ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_version=$1 bertsio OpenSLP
+
+slp_apply=Aplikatu aldaketak
+slp_stop=Utzi OpenSLP
+
+snda_title=Esparru estatikoa eta DA
+snda_useScopes=Esparruen zerrenda estatikoa
+snda_DAAddresses=Direktorioko agenteen zerrenda estatikoa (DA)
+
+netcfg_title=Sarearen konfigurazioa
+netcfg_isBroadcastOnly=Eman behartu emisioak multikastearen ordez
+netcfg_passiveDADetection=Erabili DA hautemate pasiboa
+netcfg_activeDADetection=Erabili DA detektazio aktiboa (DHCP edo DA helbideetara mugatu bakarrik)
+netcfg_DAActiveDiscoveryInterval=Aurkikuntza aktiboa segundotan (0 Discovery aktiboa desgaitzen du)
+netcfg_multicastTTL=Multicast TTL (0-255)
+netcfg_DADiscoveryMaximumWait=DA aurkikuntza eskaeren gehienez itxaron denbora (milisegundotan)
+netcfg_DADiscoveryTimeouts=DA aurkikuntzaren itxaron denbora segidan (milisegundotan)
+netcfg_HintsFile=Path OpenSLP iradokizunen fitxategira
+netcfg_multicastMaximumWait=Gehieneko itxaron multicast eskaeretan (milisegundotan)
+netcfg_multicastTimeouts=Multicast itxaron denbora segidan (milisegundotan)
+netcfg_unicastMaximumWait=Unicast eskaeraren arteko gehienezko denbora (milisegundotan)
+netcfg_randomWaitBound=Ausazko itxaron parametro guztientzako gehienezko balioa (milisegundotan)
+netcfg_MTU=MTU paketeen tamaina (byteetan)
+netcfg_interfaces=DA/SAk entzun beharko lituzkeen interfazeen IP helbideak
+
+dacfg_title=DA konfigurazioa
+dacfg_isDA=Funtzionatu DA soilik (irakurri erabiltzaileen gida hau aldatu aurretik)
+
+log_title=Trazadura eta erregistroa
+log_traceDATraffic=Inprimatu DA trafikoko mezuak
+log_traceMsg=Inprimatu SLP xehetasuneko mezuak
+log_traceDrop=Inprimatu SLPk mezuen informazioa bota du
+log_traceReg=Inprimatu DA eta SA erregistratzeari eta erregistratzeari buruzko informazioa
+
+error_open=Errorea gertatu da fitxategia irekitzean
+error_flock_on=Errorea gertatu da fitxategien blokeoa sortzean
+error_flock_off=Errorea gertatu da fitxategien blokeoa suntsitzerakoan
+error_hup=Errorea OpenSLP PID-rekin berrabiatzean
+
+index_start=Hasi OpenSLP
+index_startmsg=Egin klik botoi honetan OpenSLP deabrua zure sisteman hasteko.
+index_stop=Utzi OpenSLP
+index_stopmsg=Egin klik botoi honetan OpenSLP deabrua sisteman gelditzeko.
+
+stop_err=Ezin izan da OpenSLP gelditu
+start_err=Ezin izan da OpenSLP abiarazi

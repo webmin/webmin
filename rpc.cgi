@@ -55,7 +55,7 @@ if ($arg->{'newsession'}) {
 		while(1) {
 			local ($rawcmd, $cmd, @rv);
 			alarm($rcount ? 360 : 60);
-			open(FIFO, $fifo1) || last;
+			open(FIFO, "<$fifo1") || last;
 			while(<FIFO>) {
 				$rawcmd .= $_;
 				}
@@ -145,7 +145,7 @@ elsif ($arg->{'action'} eq 'write') {
 elsif ($arg->{'action'} eq 'read') {
 	# Transfer data from a file
 	local ($data, $got);
-	open(FILE, $arg->{'file'});
+	open(FILE, "<$arg->{'file'}");
 	while(read(FILE, $got, 1024) > 0) {
 		$data .= $got;
 		}
@@ -158,7 +158,7 @@ else {
 	open(FIFO, ">$session->[0]");
 	print FIFO $rawarg;
 	close(FIFO);
-	open(FIFO, $session->[1]);
+	open(FIFO, "<$session->[1]");
 	while(<FIFO>) {
 		print;
 		}

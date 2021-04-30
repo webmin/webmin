@@ -1,0 +1,405 @@
+index_title=Serwer poczty QMail
+index_edir=Podstawowy katalog QMail $1 nie istnieje. Być może QMail nie jest zainstalowany lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+index_edir2=Katalog $1 nie wydaje się być katalogiem podstawowym QMail. Być może QMail nie jest zainstalowany lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+index_return=Konfiguracja QMail
+index_stop=Zatrzymaj procesy QMail
+index_stopmsg=Kliknij ten przycisk, aby zatrzymać procesy QMail w tle odpowiedzialne za dostarczanie poczty w kolejce. Bez tych procesów poczta nie zostanie poprawnie wysłana lub dostarczona do systemu.
+index_start=Rozpocznij procesy QMail
+index_startmsg=Kliknij ten przycisk, aby uruchomić procesy QMail w tle odpowiedzialne za dostarczanie poczty w kolejce. Bez tych procesów poczta nie zostanie poprawnie wysłana lub dostarczona do systemu.
+
+opts_title=Opcje QMail
+opts_me=Nazwa lokalnego hosta
+opts_helo=Nazwa hosta dla SMTP HELO
+opts_toconnect=Limit czasu połączenia SMTP
+opts_secs=sekundy
+opts_toremote=Limit czasu wychodzących odpowiedzi SMTP
+opts_bytes=Maksymalny rozmiar wiadomości
+opts_unlimited=bez limitu
+opts_timeout=Limit czasu danych przychodzących SMTP
+opts_localip=Nazwa hosta dla wiadomości e-mail na lokalny adres IP
+opts_greet=Wiadomość powitalna SMTP
+opts_err=Nie udało się zapisać opcji QMail
+opts_eme=Niepoprawna nazwa lokalnego hosta
+opts_etoconnect=Niepoprawny limit czasu połączenia SMTP
+opts_etoremote=Niepoprawny limit czasu wychodzących odpowiedzi SMTP
+opts_ebytes=Nieprawidłowy maksymalny rozmiar wiadomości
+opts_etimeout=Niepoprawny limit czasu przychodzących danych SMTP
+opts_elocalip=Niepoprawna nazwa hosta lokalnego adresu IP
+
+aliases_title=Aliasy poczty
+aliases_addr=Adres
+aliases_to=Alias do ..
+aliases_type1=Adres 1
+aliases_type2=Katalog poczty $1 
+aliases_type3=Plik poczty $1 
+aliases_type4=Program $1 
+aliases_type5=Plik odpowiedzi automatycznej $1 
+aliases_type6=Zastosuj plik filtru $1 
+aliases_none=Żaden
+aliases_return=lista aliasów
+aliases_toomany=W systemie jest zbyt wiele aliasów poczty, aby można je było wyświetlić na tej stronie.
+aliases_go=Znajdź pasujące aliasy:
+aliases_delete=Usuń wybrane aliasy
+
+aform_type0=Żaden
+aform_type1=Adres e-mail
+aform_type2=Katalog poczty
+aform_type3=Plik poczty
+aform_type4=Kanał do programu
+aform_type5=Automatycznie odpowiedz z pliku
+aform_type6=Zastosuj plik filtru
+aform_edit=Edytuj alias
+aform_create=Utwórz alias
+aform_name=Adres
+aform_val=Alias do
+aform_afile=Edytować ..
+aform_novirt=&lt;Wszystkie domeny&gt;
+aform_return=Alias
+
+asave_err=Nie udało się zapisać aliasu
+asave_eaddr=„$1” nie jest prawidłowym adresem
+asave_ealready=Alias dla „$1” już istnieje
+asave_etype1=„$1” nie jest prawidłowym adresem e-mail
+asave_etype2=„$1” nie jest prawidłowym katalogiem poczty
+asave_etype3=„$1” nie jest prawidłową nazwą pliku poczty
+asave_etype4=„$1” nie jest prawidłowym programem lub nie istnieje
+asave_etype5=Plik odpowiedzi „$1” jest nieprawidłowy
+asave_etype4none=Nie podano programu
+asave_etype6=Plik filtru „$1” jest nieprawidłowy
+
+adelete_err=Nie udało się usunąć aliasów
+adelete_enone=Nie wybrano
+
+locals_title=Domeny lokalne
+locals_domains=Domeny lokalne dla tego serwera
+locals_desc=Qmail przyjmie dostawę do lokalnych użytkowników wiadomości e-mail do domen i nazw hostów wymienionych w polu tekstowym po lewej stronie. Jeśli chcesz, aby Twój serwer pocztowy obsługiwał wiele domen e-mail, wszystkie powinny być wymienione w tym formularzu.
+locals_only=Tylko lokalna nazwa hosta $1 
+locals_sel=Domeny wymienione poniżej ..
+
+rcpts_title=Zaakceptowane domeny
+rcpts_domains=Akceptowane domeny lokalne i przekaźnikowe
+rcpts_all=Dowolna domena
+rcpts_sel=Domeny wymienione poniżej ..
+rcpts_desc=Qmail zaakceptuje do przekazywania lub dostarczania lokalnego tylko pocztę do domen i nazw hostów wymienionych w polu tekstowym po lewej stronie. Możesz także wprowadzić symbole wieloznaczne pasujące do wszystkich hostów w domenie, np. <tt>.foo.com</tt>. Jeśli chcesz, aby Twój serwer pocztowy przekazywał pocztę e-mail dla klientów, musisz zaakceptować pocztę z dowolnej domeny.
+rcpts_domains2=Dodatkowe domeny lokalne i przekaźnikowe
+rcpts_desc2=Jeśli masz dużą liczbę zaakceptowanych domen, w tym polu tekstowym należy wprowadzić rzadziej używane domeny. Zasadniczo pierwsze 50 dozwolonych domen należy wprowadzić w górnym polu tekstowym, a pozostałe w tej.
+
+bads_title=Odrzucone adresy
+bads_addresses=Odrzucone adresy e-mail
+bads_desc=QMail odrzuci pocztę w celu dostarczenia lub przekazania z dowolnego z adresów wymienionych w polu tekstowym po lewej stronie, które należy wprowadzić jako <tt>nazwa użytkownika @ nazwa domeny</tt>. Jeśli chcesz odrzucić pocztę z całej domeny, wpisz ją jako <tt>@domenaname</tt>.
+
+routes_title=Routing domen
+routes_toomany=W systemie jest zbyt wiele tras domen, aby można je było wyświetlić na tej stronie.
+routes_go=Znajdź pasujące trasy domen:
+routes_from=Poczta dla domeny
+routes_to=Wyślij przez serwer
+routes_direct=Dostarcz bezpośrednio
+routes_defroute=Dostarcz wszystkie pozostałe wiadomości wychodzące za pośrednictwem:
+routes_return=trasy domen
+routes_delete=Usuń wybrane trasy domen
+
+rform_edit=Edytuj trasę domeny
+rform_create=Utwórz trasę domeny
+rform_from=Poczta dla hosta lub domeny
+rform_to=Wyślij przez serwer SMTP
+rform_port=Port SMTP
+
+rsave_err=Nie udało się zapisać trasy domeny
+rsave_efrom=„$1” nie jest prawidłową nazwą domeny
+rsave_eto=„$1” nie jest prawidłowym serwerem SMTP
+rsave_eport=„$1” nie jest prawidłowym numerem portu
+
+rdelete_err=Nie udało się usunąć tras domeny
+
+percents_title=% Adresów domen
+percents_domains=Domeny obsługujące % adresów
+percents_desc=QMail zaakceptuje wiadomość e-mail z adresami w formacie <tt>user%firstdomain@seconddomain</tt>, jeśli <tt>seconddomain</tt> znajduje się w polu tekstowym po lewej stronie. Wiadomości w tym formacie będą następnie przekazywane do <tt>użytkowni<tt>user@firstdomain</tt> przez ten serwer pocztowy.
+
+virts_title=Wirtualne mapowania
+virts_toomany=W twoim systemie jest zbyt wiele wirtualnych mapowań, aby można je było wyświetlić na tej stronie.
+virts_go=Znajdź wirtualne mapowania pasujące:
+virts_from=Mail dla
+virts_prepend=Dodaj prefiks
+virts_all=Wszystkie adresy
+virts_none=Nie wirtualny
+virts_desc=Wirtualne odwzorowania są używane przez QMail do obsługi wiadomości e-mail w różnych domenach na twoim serwerze, przygotowując tekst do części adresu e-mail użytkownika przed dalszym przetwarzaniem. Możesz ich użyć do skonfigurowania wirtualnych domen poczty, tworząc nowe wirtualne mapowanie dla domeny, a następnie korzystając ze strony <a href='$1'>Mail Alias</a>, aby utworzyć aliasy w tej domenie.
+virts_return=wirtualne mapowania
+virts_delete=Usuń wybrane wirtualne mapowania
+
+vform_edit=Edytuj wirtualne mapowanie
+vform_create=Utwórz wirtualne mapowanie
+vform_from=Mail na adres
+vform_all=Dowolny adres niezgodny z innym mapowaniem wirtualnym
+vform_domain=Adresy z domeną
+vform_user=Adres
+vform_to=Przygotuj do nazwy użytkownika
+vform_none=Nic
+vform_prepend=Określony przedrostek
+vform_auto=Automatycznie wybrany prefiks
+
+vsave_err=Nie udało się zapisać wirtualnego mapowania
+vsave_edomain=„$1” nie jest prawidłową domeną e-mail
+vsave_euser=„$1” nie jest prawidłową nazwą użytkownika e-mail
+vsave_eprepend=„$1” nie jest prawidłowym prefiksem odwzorowania
+vsave_eboth=Nie można wybrać zarówno „Dowolnego adresu niezgodnego z innym mapowaniem wirtualnym”, jak i „Nic”
+
+vdelete_err=Nie udało się usunąć wirtualnych mapowań
+
+stop_err=Proces qmail-send nie jest już uruchomiony
+
+log_stop=Zatrzymano procesy QMail
+log_start=Rozpoczęte procesy QMail
+log_opts=Zmieniono opcje QMail
+log_alias_create=Utworzono alias $1 
+log_alias_delete=Usuń alias $1 
+log_alias_modify=Zmodyfikowany alias $1 
+log_delete_aliases=Usunięto aliasy $1 
+log_virt_create=Utworzono wirtualne mapowanie $1 
+log_virt_delete=Usunięto wirtualne mapowanie $1 
+log_virt_modify=Zmodyfikowane wirtualne mapowanie $1 
+log_delete_virts=Usunięto wirtualne mapowania $1 
+log_virtall_create=Utworzono wirtualne mapowanie catchall
+log_virtall_delete=Usunięto wirtualne mapowanie catchall
+log_virtall_modify=Zmodyfikowane wirtualne mapowanie catchall
+log_locals=Zmieniono domeny lokalne
+log_rcpts=Zmieniono zaakceptowane domeny
+log_bads=Zmieniono odrzucone adresy
+log_percents=Zmieniono % domen adresowych
+log_route_create=Utworzono trasę dla $1 
+log_route_delete=Usunięto trasę dla $1 
+log_route_modifed=Zmodyfikowana trasa dla $1 
+log_delete_routes=Usunięto trasy $1 
+log_defroute=Zmodyfikowana domyślna trasa
+log_assign_create=Utworzono użytkownika poczty $1 
+log_assign_delete=Usunięty użytkownik poczty $1 
+log_assign_modifed=Zmodyfikowany użytkownik poczty $1 
+log_delete_assigns=Usunięto $1 użytkowników poczty
+log_delmail=Usunięto wiadomości $1 z $2 
+log_movemail=Przeniesiono wiadomości $1 z $2 do $3 
+log_send=Wysłano pocztę do $1 
+
+rfile_title=Edytuj plik odpowiedzi automatycznej
+rfile_desc=Użyj pola tekstowego poniżej, aby edytować wiadomość z automatyczną odpowiedzią w $1. Wiadomość może zawierać makra $SUBJECT, $FROM, $TO, $DATE i $BODY, które zostaną rozwinięte po aktywowaniu odpowiedzi automatycznej.
+rfile_desc2=Możesz także ustawić nagłówki wiadomości, które dodają lub zastępują wartości domyślne używane w odpowiedzi automatycznej, wstawiając wiersze takie jak: <br><tt> Od: foo@bar.com </tt><br> <tt>Temat: W wakacje</tt> <br> u góry wiadomości, oddzielone od treści pojedynczym pustym wierszem.
+rfile_efile=Nie możesz edytować $1.
+rfile_undo=Cofnij zmiany
+rfile_replies=Śledzić odpowiedzi, aby uniknąć pętli poczty?
+rfile_none=Nie
+rfile_file=Tak, używając pliku dziennika
+rfile_period=Minimalny odstęp między odpowiedziami
+rfile_default=Domyślnie (1 godzina)
+rfile_secs=sekundy
+rfile_ereplies=Brak pliku dziennika śledzenia odpowiedzi
+rfile_eperiod=Brakująca lub niepoprawna liczba sekund między odpowiedziami
+rfile_no_autoreply=Nie wysyłaj odpowiedzi automatycznych na adres
+rfile_from=Od: adres do odpowiedzi
+rfile_auto=Automatyczny (na podstawie adresu odbiorcy)
+rfile_efrom=Brakuje od: adres
+rfile_fromdesc=Adres Od: należy zawsze podawać w miarę możliwości, ponieważ metoda automatyczna może nie być wiarygodna.
+
+ffile_title=Edytuj plik filtru
+ffile_desc=Skorzystaj z poniższego formularza, aby ustawić reguły filtrowania w pliku $1.
+ffile_efile=Nie możesz edytować $1.
+ffile_line=Jeśli pole $1 $2 $3, przejdź do $4 
+ffile_from=od
+ffile_to=do
+ffile_subject=Przedmiot
+ffile_cc=CC
+ffile_body=ciało
+ffile_what0=nie pasuje
+ffile_what1=mecze
+ffile_other=W przeciwnym razie przejdź do $1 
+ffile_err=Nie udało się zapisać pliku filtru
+ffile_ematch=Brakujący mecz
+ffile_eaction=Brak adresu do przekazania
+
+queue_title=Kolejka pocztowa
+queue_count=$1 wiadomości
+queue_none=Żadne wiadomości e-mail nie są obecnie w kolejce do dostarczenia
+queue_id=Identyfikator poczty
+queue_date=Wysłano
+queue_from=Od
+queue_to=Do
+queue_cc=DW
+queue_subject=Przedmiot
+queue_return=kolejka pocztowa
+queue_delete=Usuń wybrane wiadomości
+queue_all=Zaznacz wszystko
+queue_invert=Odwróć wybór
+queue_refresh=Odśwież kolejkę poczty
+queue_refreshdesc=Załaduj ponownie tę stronę, aby wyświetlić bieżący stan kolejki pocztowej.
+
+qview_title=Wiadomość w kolejce
+qview_desc=Z pliku $1 
+qview_headers=Nagłówki wiadomości
+qview_attach=Załączniki
+
+assigns_title=Przypisania użytkownika poczty
+assigns_return=zadania użytkowników poczty
+assigns_toomany=W systemie jest zbyt wielu użytkowników poczty, aby wyświetlić je na tej stronie.
+assigns_go=Znajdź użytkowników poczty pasujących:
+assigns_address=Mail na adres
+assigns_user=Użytkownik systemu Unix
+assigns_uid=UID
+assigns_gid=KOŁOWACIZNA
+assigns_home=Katalog domowy
+assigns_desc=Przypisania użytkowników poczty pozwalają tworzyć skrzynki pocztowe dla użytkowników, którzy nie są zdefiniowani na liście użytkowników systemu Unix. Każde zadanie dostarczy pocztę dla wybranej nazwy użytkownika lub wzorca nazwy użytkownika, tak jakby była dostarczana do skrzynki pocztowej prawdziwego użytkownika systemu Unix.
+assigns_delete=Usuń wybranych użytkowników poczty
+
+sform_edit=Edytuj użytkownika poczty
+sform_create=Utwórz użytkownika poczty
+sform_address=Adres nazwy użytkownika
+sform_mode0=Dokładna nazwa użytkownika
+sform_mode1=Nazwy użytkowników zaczynające się od
+sform_user=Użytkownik systemu Unix
+sform_uid=UID
+sform_gid=KOŁOWACIZNA
+sform_home=Katalog domowy
+
+ssave_err=Nie udało się zapisać użytkownika poczty
+ssave_eaddress=Brak nazwy użytkownika lub jej nieprawidłowy adres
+ssave_euser=Brakujący lub nieprawidłowy użytkownik systemu Unix
+ssave_euid=Brakujący lub nieprawidłowy UID
+ssave_egid=Brakujący lub nieprawidłowy GID
+ssave_ehome=Brakujący lub nieprawidłowy katalog domowy
+
+sdelete_err=Nie udało się usunąć użytkowników poczty
+
+delete_egone=Wiadomość w kolejce już nie istnieje
+delete_ebogus=Niepoprawna nazwa kolejki
+
+boxes_title=Skrzynki użytkownika
+boxes_user=Użytkownik
+boxes_size=Rozmiar skrzynki pocztowej
+boxes_none=Brak poczty
+boxes_return=skrzynki pocztowe
+boxes_sent=Wysłany mail
+boxes_ecannot=Nie możesz czytać wiadomości e-mail
+boxes_toomany=W systemie jest zbyt wielu użytkowników, aby wyświetlić wszystkie ich skrzynki pocztowe.
+boxes_go=Wyświetl pocztę dla użytkownika:
+
+mail_title=E-mail użytkownika
+mail_from=Od
+mail_date=Data
+mail_subject=Przedmiot
+mail_to=Do
+mail_cc=DW
+mail_bcc=UDW
+mail_pri=Priorytet
+mail_highest=Najwyższy
+mail_high=Wysoki
+mail_normal=Normalna
+mail_low=Niska
+mail_lowest=Najniższy
+mail_for=W 1
+mail_for2=Dla użytkownika $1 
+mail_sent=Na liście wysłanych wiadomości
+mail_size=Rozmiar
+mail_delete=Usunąć
+mail_compose=Komponować
+mail_return=skrzynka użytkownika
+mail_pos=Wiadomości $1 do $2 z $3 
+mail_none=Ta skrzynka pocztowa nie zawiera wiadomości
+mail_ecannot=Nie możesz czytać wiadomości e-mail tego użytkownika
+mail_all=Zaznacz wszystko
+mail_invert=Odwróć wybór
+mail_search=Znajdź wiadomości gdzie
+mail_body=Ciało
+mail_match=mecze
+mail_ok=Szukaj
+mail_nonefrom=Żaden
+mail_mark=Oznacz jako:
+mail_mark0=nieprzeczytane
+mail_mark1=Czytać
+mail_mark2=Specjalny
+mail_forward=Naprzód
+mail_rfc=Z linii
+mail_move=Przenieś do:
+mail_eexists=Wiadomość już nie istnieje!
+
+view_title=Czytaj email
+view_desc=Wiadomość $1 w $2 
+view_desc2=Wiadomość $1 dla użytkownika $2 
+view_desc3=Wiadomość $1 
+view_sent=Wiadomość $1 na liście wysłanych wiadomości
+view_qdesc=Wiadomość w kolejce $1 
+view_headers=Nagłówki wiadomości
+view_allheaders=Zobacz wszystkie nagłówki
+view_noheaders=Wyświetl podstawowe nagłówki
+view_attach=Załączniki
+view_reply=Odpowiadać
+view_reply2=Odpowiedz wszystkim
+view_enew=Edytuj jako nowy
+view_forward=Naprzód
+view_delete=Usunąć
+view_strip=Usuń załączniki
+view_ecannot=Nie możesz czytać wiadomości e-mail tego użytkownika
+view_mark=Oznacz wiadomość jako:
+view_mark0=nieprzeczytane
+view_mark1=Czytać
+view_mark2=Specjalny
+view_return=oryginalny e-mail
+view_sub=Dołączony e-mail
+
+compose_title=Komponować wiadomość e-mail
+reply_title=Odpowiedz na e-mail
+forward_title=Prześlij dalej e-mail
+enew_title=Edytuj adres e-mail
+reply_headers=Nagłówki wiadomości
+reply_attach=Przekazane załączniki
+reply_mailforward=Przekazywane wiadomości
+reply_attach2=Załączniki po stronie klienta i serwera
+reply_send=Wyślij maila
+reply_ecannot=Nie możesz wysyłać poczty jako ten użytkownik
+
+send_err=Nie udało się wysłać poczty
+send_eto=Brak adresu
+send_efrom=Brak adresu od
+send_title=Mail wysłany
+send_ok=Wiadomość wysłano pomyślnie do $1 
+send_ecannot=Nie możesz wysyłać poczty jako ten użytkownik
+send_esmtp=Komenda SMTP $1 nie powiodła się : $2 
+send_efile=Załączony plik $1 nie istnieje
+send_eattach=Załączniki nie mogą mieć więcej niż $1 kB.
+send_eperms=Użytkownik $1 nie może odczytać $2 
+send_eperms2=Nie możesz wysłać pliku $1 
+send_epath=Plik wykonywalny Sendmail $1 nie istnieje.
+
+delete_title=Usuń pocztę
+delete_rusure=Czy na pewno chcesz usunąć $1 wybranych wiadomości z $2 ? W przypadku dużego pliku poczty może to zająć trochę czasu. Do czasu zakończenia usuwania nie należy wykonywać żadnych innych czynności.
+delete_rusure2=Czy na pewno chcesz usunąć tę wiadomość z $1 ? W przypadku dużego pliku poczty może to zająć trochę czasu. Do czasu zakończenia usuwania nie należy wykonywać żadnych innych czynności.
+delete_ok=Usuń teraz
+delete_ecannot=Możesz teraz usuwać pocztę od tego użytkownika
+delete_enone=Nie wybrano poczty do usunięcia
+delete_emnone=Nie wybrano poczty do oznaczenia
+delete_nobutton=Nie kliknięto żadnego przycisku
+
+search_title=Wyniki wyszukiwania
+search_ecannot=Nie możesz przeszukiwać wiadomości e-mail tego użytkownika
+search_ematch=Musisz wpisać tekst, aby dopasować.
+search_efield=Musisz wybrać typ wyszukiwania.
+search_none=Nie znaleziono wiadomości.
+search_results2=$1 wiadomości e-mail pasujących do $2 ..
+search_results3=Wiadomości $1 nie pasują do $2 ..
+
+match_from=Od: mecze
+match_subject=Temat: mecze
+match_to=Do: mecze
+match_cc=DW: dopasowania
+match_date=Data: mecze
+match_body=Dopasowane ciała
+match_size=Rozmiar jest większy niż
+match_headers=Nagłówki pasują
+match_=-----------------
+match_!from=Od: nie pasuje
+match_!subject=Temat: nie pasuje
+match_!to=Do: nie pasuje
+match_!cc=DW: nie pasuje
+match_!date=Data: nie pasuje
+match_!body=Ciało nie pasuje
+match_!size=Rozmiar jest mniejszy niż
+match_!headers=Nagłówki się nie zgadzają
+
+delq_titles=Usuwanie wiadomości
+delq_rusure=Czy na pewno chcesz usunąć $1 wybranych wiadomości w kolejce?
+delq_confirm=Usuń wiadomości

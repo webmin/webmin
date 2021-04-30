@@ -1,5 +1,5 @@
-index_credits=VNC klientskı applet vytvorenı AT&amp;T. Viac informácií nájdete na <a href=http://www.uk.research.att.com/vnc>http://www.uk.research.att.com/vnc</a>
-index_esocket=Na $1 a porte $2 nebe¾í ¾iadny VNC server.
-index_nojava=Tento modul potrebuje pre svoje fungovanie Javu, no Vá¹ prehliadaè nepodporuje Javu.
 index_title=VNC klient
-index_warn=Upozornenie! Toto VNC spojenie <b>nie je</b> ¹ifrované.
+index_warn=Upozornenie! Toto VNC spojenie <b>nie je</b> Å¡ifrovanÃ©.
+index_nojava=Tento modul potrebuje pre svoje fungovanie Javu, no VÃ¡Å¡ prehliadaÄ nepodporuje Javu.
+index_credits=VNC klientskÃ½ applet vytvorenÃ½ AT&T. Viac informÃ¡ciÃ­ nÃ¡jdete na <a href=http://www.uk.research.att.com/vnc>http://www.uk.research.att.com/vnc</a>
+index_esocket=Na $1 a porte $2 nebeÅ¾Ã­ Å¾iadny VNC server.

@@ -1,0 +1,11 @@
+index_delete=Eliminar copias seleccionadas
+
+exec_on=No se pudo ejecutar en $1 : $2 
+
+log_deletes=$1 copias eliminadas
+
+email_subject_succeeded=La copia de clúster de $1 se realizó correctamente
+email_subject_failed=La copia de clúster de $1 falló
+
+delete_err=Error al eliminar copias
+delete_enone=Ninguna seleccionada

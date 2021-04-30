@@ -9,7 +9,7 @@ $ucproduct = ucfirst($product);
 
 if ($init_mode eq "local") {
 	# Remove from /etc/webmin/start from boot time rc script
-	open(LOCAL, $config{'local_script'});
+	open(LOCAL, "<".$config{'local_script'});
 	@local = <LOCAL>;
 	close(LOCAL);
 	$start = "$config_directory/start";

@@ -1,0 +1,9 @@
+acl_order=Ordem
+
+oadd_err=Falha ao criar novo objeto
+
+gencert_epath=Os arquivos de certificado e chave na configuração do servidor LDAP devem ser caminhos absolutos
+
+eacl_what2=Objetos sem DN
+eacl_order=Ordem das regras
+eacl_noorder=Nenhuma definida

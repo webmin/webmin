@@ -1,0 +1,3 @@
+name_sk=Používatelia klastra
+desc_sk=Používatelia a skupiny klastrov
+longdesc_sk=Vytvárajte, aktualizujte a odstraňujte používateľov a skupiny na viacerých serveroch. Na rozdiel od NIS má každý server svoje vlastné súbory passwd a group, ktoré sú týmto modulom diaľkovo aktualizované.

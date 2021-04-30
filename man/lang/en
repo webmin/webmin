@@ -18,7 +18,7 @@ index_return=search form
 index_type=Match
 index_name=Name only
 index_data=Name and contents
-index_google=Google search engine
+index_google=Google Search
 index_others=When searching documentation from another module, allow searching in ..
 index_other_man=Manual pages
 index_other_help=Webmin Help
@@ -73,5 +73,9 @@ kde_epath=Invalid KDE documentation path
 perl_title=Perl Module
 perl_header=Documentation for Perl module $1
 perl_emod=Invalid Perl module name
+
+acl_allow=Can edit allowed search types?
+
+check_ecannot=You are not allowed to edit allowed search types
 
 __norefs=1

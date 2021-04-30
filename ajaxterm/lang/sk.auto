@@ -1,0 +1,5 @@
+index_title=Textové prihlásenie
+index_epython=Ajaxterm vyžaduje spustenie Pythonu, ale príkaz $1 nebol vo vašom systéme nájdený.
+index_estart=Ajaxterm nezačal prijímať pripojenia na porte $2 po $1 sekundách.
+index_popup=Otvoriť v samostatnom okne.
+index_credits=Používa kód od <a href='$1' target=_new>Ajaxterm</a> od Antony Lesuisse.

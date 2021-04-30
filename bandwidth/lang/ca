@@ -1,21 +1,21 @@
-index_title=MonitoritzaciÛ d'Amplada de Banda
-index_efiresys=No s'ha detectat al sistema cap dels tallafoc suportats (IPtables, IPFW, IPFilter o Shorewall). Comprova els mÚduls apropiats per assegurar que estan configurats.
-index_efiresys2=No s'ha trobat al sistema el tallafoc $1 configurat. Ajusta la <a href='$2'>configuraciÛ del mÚdul</a> per utilitzar el tallafoc correcte.
-index_elog=El fitxer $1 utilitzat per al registre d'amplada de banda Ès de fet un directori del sistema. Ajusta la <a href='$2'>configuraciÛ del mÚdul</a> per utilitzar un camÌ diferent.
-index_edir=El directori per emmagatzemar les dades $1 de bandwidth no existeix, o no Ès un directori. Ajusta la <a href='$2'>configuraciÛ del mÚdul</a> per utilitzar un camÌ diferent.
-index_emod=El mÚdul $1 de Webmin no es troba instal∑lat al sistema, o bÈ no est‡ suportat pel SO. El mÚdul de MonitoritzaciÛ d'Amplada de Banda no pot operar sense ell.
-index_esyslog=No hi ha cap mÚdul de Registres del Sistema instal∑lat ni suportat pel sistema. El mÚdul de MonitoritzaciÛ d'Amplada de Banda no pot operar sense  un d'ells.
-index_firesys=S'est‡ utilitzant el tallafoc $1 i $2
-index_setupcannot=De totes maneres, tu no tens permÌs per configurar-lo.
-index_setupdesc=Abans que aquest mÚdul pugui informar de l'˙s de la xarxa al sistema, cal configurar-lo per monitoritzar el tr‡nsit en la interfÌcie de xarxa externa seleccionada.
-index_setupdesc2=<b>AtenciÛ - aquest mÚdul registrar‡ TOT el transit de xarxa enviat o rebut sobre la interfÌcie seleccionada. AixÚ consumir‡ molt espai al disc dur i molt temps de CPU en una connexiÛ de xarxa r‡pida.</b>
-index_missing3=S'han d'afegir algunes regles del tallafoc, i crear una entrada de configuraciÛ de syslog.
+index_title=Monitoritzaci√≥ d'Amplada de Banda
+index_efiresys=No s'ha detectat al sistema cap dels tallafoc suportats (IPtables, IPFW, IPFilter o Shorewall). Comprova els m√≤duls apropiats per assegurar que estan configurats.
+index_efiresys2=No s'ha trobat al sistema el tallafoc $1 configurat. Ajusta la <a href='$2'>configuraci√≥ del m√≤dul</a> per utilitzar el tallafoc correcte.
+index_elog=El fitxer $1 utilitzat per al registre d'amplada de banda √©s de fet un directori del sistema. Ajusta la <a href='$2'>configuraci√≥ del m√≤dul</a> per utilitzar un cam√≠ diferent.
+index_edir=El directori per emmagatzemar les dades $1 de bandwidth no existeix, o no √©s un directori. Ajusta la <a href='$2'>configuraci√≥ del m√≤dul</a> per utilitzar un cam√≠ diferent.
+index_emod=El m√≤dul $1 de Webmin no es troba instal¬∑lat al sistema, o b√© no est√† suportat pel SO. El m√≤dul de Monitoritzaci√≥ d'Amplada de Banda no pot operar sense ell.
+index_esyslog=No hi ha cap m√≤dul de Registres del Sistema instal¬∑lat ni suportat pel sistema. El m√≤dul de Monitoritzaci√≥ d'Amplada de Banda no pot operar sense  un d'ells.
+index_firesys=S'est√† utilitzant el tallafoc $1 i $2
+index_setupcannot=De totes maneres, tu no tens perm√≠s per configurar-lo.
+index_setupdesc=Abans que aquest m√≤dul pugui informar de l'√∫s de la xarxa al sistema, cal configurar-lo per monitoritzar el tr√†nsit en la interf√≠cie de xarxa externa seleccionada.
+index_setupdesc2=<b>Atenci√≥ - aquest m√≤dul registrar√† TOT el transit de xarxa enviat o rebut sobre la interf√≠cie seleccionada. Aix√≤ consumir√† molt espai al disc dur i molt temps de CPU en una connexi√≥ de xarxa r√†pida.</b>
+index_missing3=S'han d'afegir algunes regles del tallafoc, i crear una entrada de configuraci√≥ de syslog.
 index_missing2=S'han d'afegir algunes regles del tallafoc.
-index_missing1=S'ha de crear una entrada de configuraciÛ de syslog.
-index_iface=InterfÌcie de xarxa externa
+index_missing1=S'ha de crear una entrada de configuraci√≥ de syslog.
+index_iface=Interf√≠cie de xarxa externa
 index_other=Altres...
 index_setup=Configura-ho Ara
-index_by=Mostra el tr‡nsit pe
+index_by=Mostra el tr√†nsit pe
 index_hour=hora
 index_host=host
 index_proto=protocol
@@ -30,17 +30,17 @@ index_forproto=protocol...
 index_foriport=port intern...
 index_foroport=port extern...
 index_search=Genera Informe
-index_none=Aquest mÚdul encara no ha fet cap resum del tr‡nsit. Si l'acabeu de configurar, el processament del tr‡nsit encara pot trigar almenys una hora.
-index_ehour=Hora inv‡lida - ha de ser en el format aaaa-mm-dd hh:mm
+index_none=Aquest m√≤dul encara no ha fet cap resum del tr√†nsit. Si l'acabeu de configurar, el processament del tr√†nsit encara pot trigar almenys una hora.
+index_ehour=Hora inv√†lida - ha de ser en el format aaaa-mm-dd hh:mm
 index_eport=Nom de port desconegut
 index_eproto=Hi falta el protocol
-index_ehost=Hi falta el nom de host o bÈ Ès inv‡lid
-index_from=Per al tr‡nsit desprÈs de
-index_to=Per al tr‡nsit abans de
-index_efrom=Data i hora inicial inv‡lida
-index_eto=Data i hora final inv‡lida
+index_ehost=Hi falta el nom de host o b√© √©s inv√†lid
+index_from=Per al tr√†nsit despr√©s de
+index_to=Per al tr√†nsit abans de
+index_efrom=Data i hora inicial inv√†lida
+index_eto=Data i hora final inv√†lida
 index_err=No s'ha pogut generar l'informe
-index_usage=Tr‡nsit de la xarxa <font color=#ff0000>baixat</font> i <font color=#0000ff>pujat</font>
+index_usage=Tr√†nsit de la xarxa <font color=#ff0000>baixat</font> i <font color=#0000ff>pujat</font>
 index_hhour=Hora
 index_hhost=Host
 index_hday=Dia
@@ -48,27 +48,27 @@ index_hproto=Protocol
 index_hiport=Port
 index_hoport=Port
 index_hport=Port
-index_low=NomÈs els ports del servidor
+index_low=Nom√©s els ports del servidor
 index_resolv=Resol els noms de host
-index_nomatch=No hi ha tr‡nsit que coincideixi amb els criteris seleccionats.
-index_turnoff=Desactiva la MonitoritzaciÛ
-index_turnoffdesc=Fes clic sobre aquest botÛ per eliminar les regles del tallafoc, la configuraciÛ syslog i el treball cron utilitzats per a la monitoritzaciÛ de l'amplada de banda. Totes les dades recollides existents es mantindran intactes.
-index_rotate=Actualitza les EstadÌstiques
-index_rotatedesc=Fes clic sobre aquest botÛ per processar tot el tr‡nsit de xarxa registrat fins ara, fent-lo immediatament disponible per a l'informe.
-index_eiptables=AtenciÛ - La teva configuraciÛ d'IPtables tÈ un error: $1. Establir la monitoritzaciÛ d'amplada de banda esborrar‡ totes les regles del tallafoc.
+index_nomatch=No hi ha tr√†nsit que coincideixi amb els criteris seleccionats.
+index_turnoff=Desactiva la Monitoritzaci√≥
+index_turnoffdesc=Fes clic sobre aquest bot√≥ per eliminar les regles del tallafoc, la configuraci√≥ syslog i el treball cron utilitzats per a la monitoritzaci√≥ de l'amplada de banda. Totes les dades recollides existents es mantindran intactes.
+index_rotate=Actualitza les Estad√≠stiques
+index_rotatedesc=Fes clic sobre aquest bot√≥ per processar tot el tr√†nsit de xarxa registrat fins ara, fent-lo immediatament disponible per a l'informe.
+index_eiptables=Atenci√≥ - La teva configuraci√≥ d'IPtables t√© un error: $1. Establir la monitoritzaci√≥ d'amplada de banda esborrar√† totes les regles del tallafoc.
 index_return=al formulari d'informe
 
-log_setup=S'ha configurat la monitoritzaciÛ de l'amplada de banda sobre la interfÌcie $1
-log_turnoff=S'ha desactivat la monitoritzaciÛ de l'amplada de banda
-log_rotate=EstadÌstiques actualitzades
+log_setup=S'ha configurat la monitoritzaci√≥ de l'amplada de banda sobre la interf√≠cie $1
+log_turnoff=S'ha desactivat la monitoritzaci√≥ de l'amplada de banda
+log_rotate=Estad√≠stiques actualitzades
 
-acl_setup=Pot configurar i desactivar la monitoritzaciÛ
+acl_setup=Pot configurar i desactivar la monitoritzaci√≥
 
-turnoff_ecannot=No tens permÌs per desactivar la monitoritzaciÛ
+turnoff_ecannot=No tens perm√≠s per desactivar la monitoritzaci√≥
 
-setup_ecannot=No tens permÌs per activar la monitoritzaciÛ
-setup_eiface=Hi falta el nom de la interfÌcie o bÈ Ès inv‡lid
-setup_ezone=No s'ha pogut trobar cap zona Shorewall per a la interfÌcies seleccionada
+setup_ecannot=No tens perm√≠s per activar la monitoritzaci√≥
+setup_eiface=Hi falta el nom de la interf√≠cie o b√© √©s inv√†lid
+setup_ezone=No s'ha pogut trobar cap zona Shorewall per a la interf√≠cies seleccionada
 
 system_firewall=IPtables
 system_ipfw=IPFW
@@ -78,8 +78,6 @@ system_shorewall=Shorewall
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
 
-rotate_title=ActualitzaciÛ d'EstadÌstiques
-rotate_doing=S'est‡ processant el tr‡nsit de xarxa registrat...
+rotate_title=Actualitzaci√≥ d'Estad√≠stiques
+rotate_doing=S'est√† processant el tr√†nsit de xarxa registrat...
 rotate_done=...fet.
-
-__norefs=1

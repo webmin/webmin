@@ -2,14 +2,9 @@ index_title=Avvio e Spegnimento
 index_add=Crea una nuova azione di avvio o spegnimento
 index_reboot=Riavvia Sistema
 index_rebootmsg=Clicca questo pulsante per riavviare immediatamente il
-sistema. Tutti gli utenti saranno disconnessi e tutti i servizi riavviati.
 index_shutdown=Spegni Sistema
 index_shutdownmsg=Clicca questo pulsante per spegnere immediatamente il
-sistema. Tutti i servizi verranno bloccati, tutti gli utenti disconnessi ed
-il computer verr&agrave; spento (se l'hardware lo supporta).
-index_script=Lo script $1 verr&agrave; lanciato all'avvio. Puoi aggiungere i
-tuoi comandi per riavviare i demoni o i server quando il sistema viene
-riavviato.
+index_script=Lo script $1 verrà lanciato all'avvio. Puoi aggiungere i
 index_return=azioni di avvio e spegnimento
 
 edit_title=Edit Action
@@ -60,4 +55,3 @@ acl_script=Can edit the bootup script?
 acl_actions=Can edit, create and delete actions?
 acl_reboot=Can reboot the system?
 acl_shutdown=Can shutdown the system?
-

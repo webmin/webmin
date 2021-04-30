@@ -1,0 +1,118 @@
+index_title=Serveur de messagerie vocale
+index_ecmd=La commande Vgetty $1 est introuvable sur votre système. Il n'est peut-être pas installé ou la configuration de votre <a href='$2'>module</a> est incorrecte.
+index_econfig=Le fichier de configuration Vgetty $1 est introuvable sur votre système. Il n'est peut-être pas installé ou la configuration de votre <a href='$2'>module</a> est incorrecte.
+index_return=index de la messagerie vocale
+
+vgetty_title=Configuration du port série
+vgetty_desc=Pour que votre serveur réponde aux appels vocaux avec un modem connecté à un port série, il doit être répertorié ci-dessous. Lorsque vous ajoutez un port à cette liste, le programme $1 sera configuré pour répondre aux appels et lire un message.
+vgetty_add=Ajouter un nouveau port série
+vgetty_tty=Périphérique série
+vgetty_type=Type
+vgetty_vgetty=Voix
+vgetty_mgetty=Données/fax
+vgetty_none=Aucun port série n'a encore été configuré pour la messagerie vocale.
+vgetty_apply=Appliquer la configuration
+vgetty_applydesc=Cliquez sur ce bouton pour appliquer la configuration actuelle du serveur de messagerie vocale en exécutant la commande $1 et en supprimant tous les processus Vgetty.
+vgetty_applyerr=Impossible d'appliquer la configuration
+vgetty_return=liste des ports série
+vgetty_create=Ajouter un port série
+vgetty_edit=Modifier le port série
+vgetty_header=Options de configuration du port série
+vgetty_ts=Port série $1 
+vgetty_other=Autre appareil ..
+vgetty_rings=Sonne avant de répondre
+vgetty_default=Défaut global
+vgetty_ans=Mode de réponse
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=Voix
+vgetty_ans_fax=Fax
+vgetty_ans_data=Les données
+vgetty_err=Impossible d'enregistrer le port série
+vgetty_etty=Périphérique série manquant ou inexistant
+vgetty_erings=Nombre de sonneries manquant ou invalide
+vgetty_erings2=Le nombre d'anneaux doit être d'au moins 2
+vgetty_eans=Aucun mode de réponse sélectionné
+vgetty_eclash=Le port série $1 est déjà utilisé
+
+options_title=Options du serveur de messagerie vocale
+options_header=Options pour tous les ports série
+options_maxlen=Longueur maximale des messages
+options_secs=secondes
+options_minlen=Longueur minimale du message
+options_silence=Supprimer le silence de la fin des messages?
+options_thresh=Niveau de seuil de silence
+options_rgain=Niveau de volume d'enregistrement
+options_tgain=Niveau de volume de lecture
+options_rings=Sonne avant de répondre
+options_perport=Peut être réglé pour chaque port série
+options_ans=Mode de réponse
+options_keep=Conserver les messages contenant des données ou des codes DTMF?
+options_light=Activer le voyant de réponse automatique après réception?
+options_owner=Propriétaire Unix pour les fichiers de messages
+options_group=Groupe Unix pour les fichiers de messages
+options_mode=Autorisations pour les fichiers de messages
+options_prog=Après l'enregistrement du message
+options_prog0=Ne fais rien
+options_prog1=Envoyez un e-mail au format WAV à
+options_prog2=Exécuter la commande sur le fichier de messages
+options_err=Échec de l'enregistrement des options de messagerie vocale
+options_erings=Nombre de sonneries manquant ou invalide
+options_erings2=Le nombre d'anneaux doit être d'au moins 2
+options_emaxlen=Longueur maximale de message manquante ou non valide
+options_eminlen=Longueur minimale du message manquante ou non valide
+options_ethresh=Seuil de silence manquant ou invalide
+options_ergain=Niveau de volume d'enregistrement manquant ou non valide
+options_ergain2=Le niveau du volume d'enregistrement doit être compris entre 0 et 100
+options_etgain=Niveau de volume de lecture manquant ou non valide
+options_etgain2=Le niveau du volume de lecture doit être compris entre 0 et 100
+options_eemail=Adresse e-mail manquante ou invalide
+options_eprog=Programme manquant ou inexistant à exécuter
+options_eowner=Utilisateur Unix manquant ou invalide pour les fichiers de messages
+options_egroup=Groupe Unix manquant ou non valide pour les fichiers de messages
+options_emode=Autorisations octales manquantes ou non valides pour les fichiers de messages
+
+received_title=Messages reçus
+recieved_desc=Les messages vocaux reçus par votre serveur sont répertoriés ci-dessous. Pour écouter un message, cliquez sur la date/heure dans la première colonne.
+received_none=Aucun message vocal reçu n'a été trouvé.
+received_date=Reçu à
+received_size=Taille du fichier
+received_speed=Taux d'échantillonnage
+received_type=Format audio
+received_delete=Supprimer les messages sélectionnés
+received_move=Convertir la sélection en salutations
+received_all=Tout sélectionner
+received_invert=Inverser la sélection
+
+listen_efile=Nom de fichier du message non valide!
+listen_epath=Le message vocal n'existe plus
+
+delete_efile=Nom de fichier du message non valide!
+
+messages_title=Messages de salutation
+messages_desc=Cette page répertorie les messages d'accueil qui seront lus lorsqu'un appelant se connecte à votre serveur de messagerie vocale. Si vous en avez plusieurs, un seul message choisi au hasard sera utilisé.
+messages_file=Nom de fichier
+messages_none=Aucun message d'accueil n'est disponible.
+messages_updesc=Ce formulaire vous permet de télécharger un fichier WAV de message d'accueil supplémentaire, qui sera converti au format choisi pour être utilisé par votre modem. Le taux d'échantillonnage du WAV téléchargé doit être le même que le taux d'échantillonnage des messages reçus, de même que le format sélectionné.
+messages_upload=Envoyer un message
+messages_fmt=convertir en
+
+pvfdesc=$1, $2 bits
+
+upload_err=Échec de l'ajout du message
+upload_emessage=Aucun fichier WAV sélectionné
+upload_ewav=Impossible de convertir le fichier WAV : $1 
+upload_epvf=Impossible de créer le fichier RMD : $1 
+upload_esame=Le fichier de message $1 existe déjà
+
+log_apply=Configuration appliquée
+log_upload=Message d'accueil téléchargé $1 
+log_move=$1 messages reçus convertis
+log_delete0=$1 messages reçus supprimés
+log_delete1=$1 messages d'accueil supprimés
+log_options=Options de messagerie vocale modifiées
+log_vgetty_create=Port série $1 ajouté
+log_vgetty_modify=Port série modifié $1 
+log_vgetty_delete=Port série supprimé $1 
+
+email_subject=Message vocal
+email_body=Message vocal reçu à $1 par $2.

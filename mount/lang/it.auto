@@ -1,0 +1,165 @@
+index_used=Usato
+index_none=Non hai accesso a nessun filesystem montato.
+index_mount2=Montare con password:
+index_root=File system di root
+
+edit_usage=Uso del disco
+edit_comm_opt=Opzioni di montaggio comuni
+edit_ext_opt=ext2 / ext3 opzioni specifiche
+edit_nfs_opt=Opzioni specifiche di NFS
+edit_nfs_opt4=Opzioni specifiche di NFSv4
+edit_dos_opt=Opzioni per filesystem basati su DOS
+edit_hpfs_opt=opzioni specifiche di hpfs
+edit_iso9660_opt=Opzioni specifiche ISO9660
+edit_autofs_opt=opzioni specifiche di autofs
+edit_smbfs_opt=Opzioni dei filesystem CIFS
+edit_reiserfs_opt=Reiserfs opzioni specifiche
+edit_tmpfs_opt=Opzioni specifiche di tmpfs
+edit_xfs_opt=opzioni specifiche xfs
+edit_ntfs_opt=opzioni specifiche ntfs
+edit_3_or_lower=3 (o inferiore)
+edit_advanced=Modalità avanzata
+
+save_force=Non è stato possibile rimuovere il mount su $1, poiché il mount è attualmente in uso. Per tentare un disinstallazione forzata, fare clic sul pulsante in basso
+save_fapply=Forza Un-Mount
+
+nfs_seldirv4=Per un mount NFSv4, è necessario selezionare '/'
+
+smb_eworkgroup=Nessun gruppo di lavoro impostato nella pagina Configurazione modulo
+smb_emaster=Nessun master di ricerca trovato per workgroup $1
+
+solaris_idedev=Controller IDE $1 unità $2 partizione $3
+solaris_lvm=Dispositivo LVM
+solaris_vg=Gruppo di volumi
+solaris_lv=Volume logico
+solaris_vxfs=Dispositivo VXFS
+solaris_hfs=Dispositivo HFS
+
+linux_burnerdev=Unità masterizzatore CD
+linux_uuid=Partizione con ID $1
+linux_usel=Partizione con ID
+linux_nodev=Non consentire i file del dispositivo?
+linux_noexec=Non consentire l'esecuzione di file binari?
+linux_ifuser=Se montabile dagli utenti
+linux_quotaj=Tipo di archiviazione delle quote
+linux_quotaj1=journalling
+linux_quotaj0=Regolare
+linux_etimeo=Il timeout deve essere un numero
+linux_credentials=File delle credenziali
+linux_noatime=Evitare di aggiornare gli ultimi orari di accesso?
+linux_netdev=Aspettare che le interfacce di rete siano attive?
+linux_nofail=Continuare l'avvio anche se il montaggio non riesce?
+linux_bind=Directory originale
+linux_ebind=Directory originale mancante o inesistente
+linux_eserver=Nome del server mancante
+linux_eshare=Nome della condivisione mancante
+linux_rsize=Leggi le dimensioni del buffer
+linux_wsize=Scrivi la dimensione del buffer
+linux_auth=Modalità di autenticazione
+linux_sec=Livello di sicurezza
+linux_integrity=Integrità
+linux_privacy=Privacy (compresa l'integrità)
+linux_nfsvers=Forza versione NFS
+linux_nfsdefault=Usa la versione predefinita
+linux_transfert=RPC / Protocollo di trasferimento
+linux_swappri=Priorità di memoria virtuale
+linux_eswappri=Priorità numerica della memoria virtuale mancante o non valida
+linux_codepage=Codice pagina
+linux_iocharset=Set di caratteri IO
+linux_ecodepage=Pagina di codice mancante o non valida
+linux_eiocharset=Set di caratteri IO mancanti o non validi
+linux_nounix=Disabilitare le estensioni Unix CIFS?
+linux_noserverino=Generare numeri di inode sul lato client?
+linux_cvers=Versione CIFS
+linux_ecvers=La versione CIFS deve essere un numero
+
+log_swap=File di scambio creato $1
+
+irix_nhost=Nome host NFS
+irix_ndir=Directory NFS
+irix_part=Partizione locale
+irix_mode0=Partizione $2 di destinazione $2 del controller SCSI $3
+irix_mode1=Altro dispositivo o file
+irix_ro=sola lettura?
+irix_nosuid=Non consentire i programmi setuid?
+irix_grpid=I file ereditano il GID padre?
+irix_nodev=Non consentire i file del dispositivo?
+irix_bg=Riprova i mount in background?
+irix_soft=Errore di ritorno sui timeout?
+irix_nointr=Consenti interruzione utente?
+irix_version=versione NFS
+irix_proto=protocollo NFS
+irix_port=Porta NFS
+irix_timeo=Timeout
+irix_retrans=Numero di ritrasmissioni
+irix_noopts=Nessuna opzione disponibile
+irix_quota=Abilitare le quote?
+irix_noatime=Aggiorna i tempi di accesso?
+irix_wsync=Tutte le modifiche sono sincrone?
+irix_quotano=Sì, ma non applicare
+irix_cd=CD-ROM locale
+irix_mode0cd=Target $1 controller SCSI $2
+irix_setx=Rendi eseguibili tutti i file?
+irix_rock=Usa le estensioni di Rock Ridge?
+irix_nofsck=Controlla il filesystem all'avvio?
+irix_auto=Fonte automounter
+irix_automap=File mappa
+
+irix_ehost=L'host '$1' non esiste
+irix_eloss=L'host '$1' è inattivo
+irix_eshowmount=L'host '$1' non supporta NFS
+irix_emountlist=Impossibile ottenere la lista di montaggio: $1
+irix_edirlist='$1' non è un nome di directory valido. Le directory disponibili su '$2' sono: $3
+irix_enotexist=La directory '$1' non esiste sull'host '$2' Le directory disponibili sono: $3
+irix_epermission=Questo host non è autorizzato a montare la directory '$1' dall'host '$2'
+irix_enfserr=Errore NFS: $1
+irix_ectrlr='$1' non è un controller SCSI valido
+irix_edrive='$1' non è un'unità SCSI valida
+irix_epart='$1' non è un numero di partizione valido
+irix_edevice=Il dispositivo disco '$1' non esiste
+irix_eswapfile=Il dispositivo di scambio '$1' non esiste
+irix_efstyp2=Impossibile ottenere il tipo di filesystem $1: $2
+irix_efstyp=Il tipo di filesystem su $1 è $2, non $3
+irix_eautomap=Il file della mappa di montaggio automatico '$1' non esiste
+irix_eauthmap2=File della mappa di montaggio automatico mancante o non valido
+
+irix_devroot=Partizione root
+irix_devswap=Scambia partizione
+irix_autohosts=Tutte le esportazioni NFS
+
+acl_only=Consentire solo il montaggio e lo smontaggio?
+acl_fs=File system che possono essere modificati
+acl_types=Tipi di filesystem che possono essere utilizzati
+acl_all=Tutti
+acl_list=Sotto le directory elencate
+acl_create=Puoi aggiungere nuovi filesystem?
+acl_fslist=Nomi di tipi elencati
+acl_user=Puoi modificare solo i tuoi filesystem?
+acl_hide=Nascondere filesystem non modificabili?
+acl_simple=Mostra modulo di montaggio semplice?
+acl_simopts=Mostra le opzioni del filesystem semplificato?
+acl_browse=Mostra file e condividi i pulsanti di navigazione?
+
+egcc=Il compilatore GCC o CC necessario per creare un programma per elencare i filesystem montati sul proprio sistema non è disponibile.
+ecompile=Si è verificato un errore durante la creazione di un programma per elencare i filesystem montati sul tuo sistema : $1
+
+freebsd_eaddr=Indirizzo del server mancante o non valido
+freebsd_eworkgroup=Gruppo di lavoro mancante o non valido
+freebsd_ide=Disco rigido IDE
+freebsd_device=Dispositivo
+freebsd_slice=Fetta
+freebsd_part=Partizione
+freebsd_scsi=Disco SCSI
+freebsd_other=Altro dispositivo
+freebsd_select=Partizione del disco
+freebsd_idedev=Dispositivo IDE $1, slice $2, partizione $3
+freebsd_scsidev=Dispositivo SCSI $1, slice $2, partizione $3
+freebsd_edevpath=L'altro dispositivo deve essere un percorso assoluto, come <tt>/dev/cdrom</tt>
+freebsd_edevfile=Il file del dispositivo '$1' non esiste
+
+cswap_file=Il file di scambio $1 non esiste.
+cswap_size=Crea e monta un file di scambio con dimensioni
+
+acl_sysinfo=Mostra i dati del disco disponibili su Dashboard?
+sysinfo_total=Totale
+sysinfo_dev=ID del dispositivo

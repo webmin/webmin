@@ -1,0 +1,46 @@
+index_title=MIME-program
+index_none=Inga MIME-typprogram har definierats än.
+index_add=Lägg till ett nytt program av MIME-typ.
+index_type=MIME-typ
+index_program=Hanterarprogram
+index_cmt=Beskrivning
+index_delete=Radera valda
+index_disable=Inaktivera vald
+index_enable=Aktivera vald
+index_enabled=Aktiverad?
+index_return=lista över program
+
+edit_title1=Skapa MIME-typprogram
+edit_title2=Redigera MIME-typprogram
+edit_header=MIME-typ hanterarprogramdetaljer
+edit_type=MIME-typ
+edit_enabled=Aktiverad?
+edit_program=Hanterarprogram
+edit_cmt=Beskrivning
+edit_egone=Programmet finns inte längre!
+edit_test=Testkommando
+edit_none=Inget (använd alltid program)
+edit_term=Visa utgång i terminal?
+edit_copious=Producerar massor av produktion?
+edit_desc=MIME-typbeskrivning
+
+save_err=Det gick inte att spara program av MIME-typ
+save_etype=MIME-typ saknas eller ogiltig
+save_eprogram=Programmet saknas
+save_eclash=Ett aktiverat program för den angivna MIME-typen finns redan
+save_etest=Saknat eller ogiltigt testkommando
+save_edesc=Ogiltig beskrivning av MIME-typ
+
+delete_err=Det gick inte att ta bort program av MIME-typ
+disable_err=Det gick inte att inaktivera program av MIME-typ
+disable_eclash=Ett inaktiverat MIME-program för $1 finns redan
+enable_err=Det gick inte att aktivera MIME-program
+enable_eclash=Ett aktiverat MIME-program för $1 finns redan
+delete_enone=Ingen vald
+
+log_delete_mailcap=Radera MIME-program för $1 
+log_create_mailcap=Skapat MIME-program för $1 
+log_modify_mailcap=Modifierat MIME-program för $1 
+log_delete_mailcaps=Raderade $1 MIME-program
+log_disable_mailcaps=Inaktiverad $1 MIME-program
+log_enable_mailcaps=Aktiverat $1 MIME-program

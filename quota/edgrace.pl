@@ -13,10 +13,10 @@ $ft = $ENV{'QUOTA_FTIME'};
 $fu = $ENV{'QUOTA_FUNITS'};
 $f = $ARGV[0];
 
-open(FILE, $f);
+open(FILE, "<".$f);
 while(<FILE>) { $qdata .= $_; }
 close(FILE);
 $nqdata = &edit_grace_file($qdata, $fs, $bt, $bu, $ft, $fu);
-open(FILE, "> $f");
+open(FILE, ">$f");
 print FILE $nqdata;
 close(FILE);

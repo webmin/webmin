@@ -12,20 +12,20 @@ require './cluster-software-lib.pl';
 
 print &ui_subheading(&text('list_files', "<tt>$in{'package'}</tt>",
 		   $s->{'desc'} ? $s->{'desc'} : $s->{'host'}));
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'list_path'}</b></td> ",
-      "<td><b>$text{'list_owner'}</b></td> ",
-      "<td><b>$text{'list_group'}</b></td> ",
-      "<td><b>$text{'list_type'}</b></td> ",
-      "<td><b>$text{'list_size'}</b></td> ",
-      "<td><b>$text{'list_status'}</b></td> </tr>\n";
+print "<table class='table table-striped table-hover table-condensed' width=100%>\n";
+print "<thead><tr><th>$text{'list_path'}</th> ",
+      "<th>$text{'list_owner'}</th> ",
+      "<th>$text{'list_group'}</th> ",
+      "<th>$text{'list_type'}</th> ",
+      "<th>$text{'list_size'}</th> ",
+      "<th>$text{'list_status'}</th> </tr></thead><tbody>\n";
 $n = &remote_foreign_call($s->{'host'}, "software",
 			  "check_files", $in{'package'});
 $files = &remote_eval($s->{'host'}, "software", "\\%files");
 for($i=0; $i<$n; $i++) {
 	$sz = $files->{$i,'size'};
 	$ty = $files->{$i,'type'};
-	print "<tr $cb>\n";
+	print "<tr>\n";
 	if ($ty == 3 || $ty == 4) {
 		print "<td valign=top>$files->{$i,'path'} -> ",
 		      "$files->{$i,'link'}</td>\n";
@@ -59,7 +59,7 @@ for($i=0; $i<$n; $i++) {
 	else { print "<td valign=top>$text{'list_ok'}</td>\n"; }
 	print "</tr>\n";
 	}
-print "</table><p>\n";
+print "</tbody></table><p>\n";
 
 &remote_finished();
 &ui_print_footer("edit_pack.cgi?package=".&urlize($in{'package'})."&search=".&urlize($in{'search'}), $text{'edit_return'});

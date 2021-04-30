@@ -1,0 +1,22 @@
+index_ouser=Webmin이 아닌 사용자가
+index_sdesc=활동 설명
+index_long=전체 작업 설명을 표시 하시겠습니까?
+index_global=&lt;어떤 모듈에도 없음&gt;
+
+search_critd=여기서 설명은 <tt>$1</tt>을 포함합니다.
+search_global=없음
+search_global_login=Webmin에 로그인
+search_global_logout=Webmin에서 로그 아웃
+search_global_failed=Webmin에 로그인하지 못했습니다  : $1 
+search_global_expiredpass=비밀번호 만료
+search_global_wronguser=잘못된 사용자
+search_global_wrongpass=잘못된 비밀번호
+search_global_baduser=잘못된 사용자 이름
+search_global_badpass=잘못된 비밀번호
+search_global_twofactor=유효하지 않은 2 단계 토큰
+search_csv=CSV로 내 보냅니다.
+
+view_output=Webmin 페이지 내용
+view_files=파일 변경 및 명령 실행
+
+acl_self=자기 만

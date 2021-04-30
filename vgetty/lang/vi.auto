@@ -1,0 +1,118 @@
+index_title=Máy chủ thư thoại
+index_ecmd=Lệnh Vgetty $1 không được tìm thấy trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+index_econfig=Không tìm thấy tệp cấu hình Vgetty $1 trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+index_return=chỉ số thư thoại
+
+vgetty_title=Cấu hình cổng nối tiếp
+vgetty_desc=Để máy chủ của bạn trả lời các cuộc gọi thoại với modem được kết nối với cổng nối tiếp, nó phải được liệt kê bên dưới. Khi bạn thêm một cổng vào danh sách này, chương trình $1 sẽ được cấu hình để trả lời các cuộc gọi và phát một tin nhắn.
+vgetty_add=Thêm một cổng nối tiếp mới
+vgetty_tty=Thiết bị nối tiếp
+vgetty_type=Kiểu
+vgetty_vgetty=Tiếng nói
+vgetty_mgetty=Dữ liệu/fax
+vgetty_none=Chưa có cổng nối tiếp nào được định cấu hình cho thư thoại.
+vgetty_apply=Áp dụng cấu hình
+vgetty_applydesc=Nhấp vào nút này để áp dụng cấu hình máy chủ thư thoại hiện tại bằng cách chạy lệnh $1 và hủy tất cả các quy trình Vgetty.
+vgetty_applyerr=Không thể áp dụng cấu hình
+vgetty_return=danh sách cổng nối tiếp
+vgetty_create=Thêm cổng nối tiếp
+vgetty_edit=Chỉnh sửa cổng nối tiếp
+vgetty_header=Tùy chọn cấu hình cổng nối tiếp
+vgetty_ts=Cổng nối tiếp $1 
+vgetty_other=Thiết bị khác ..
+vgetty_rings=Nhẫn trước khi trả lời
+vgetty_default=Toàn cầu mặc định
+vgetty_ans=Chế độ trả lời
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=Tiếng nói
+vgetty_ans_fax=Số fax
+vgetty_ans_data=Dữ liệu
+vgetty_err=Không thể lưu cổng nối tiếp
+vgetty_etty=Thiết bị nối tiếp bị thiếu hoặc không tồn tại
+vgetty_erings=Số nhẫn bị thiếu hoặc không hợp lệ
+vgetty_erings2=Số vòng phải có ít nhất 2
+vgetty_eans=Không có chế độ trả lời nào được chọn
+vgetty_eclash=Cổng nối tiếp $1 đã được sử dụng
+
+options_title=Tùy chọn máy chủ thư thoại
+options_header=Tùy chọn cho tất cả các cổng nối tiếp
+options_maxlen=Độ dài tin nhắn tối đa
+options_secs=giây
+options_minlen=Độ dài tin nhắn tối thiểu
+options_silence=Xóa sự im lặng từ cuối tin nhắn?
+options_thresh=Mức ngưỡng im lặng
+options_rgain=Mức âm lượng ghi
+options_tgain=Mức âm lượng phát lại
+options_rings=Nhẫn trước khi trả lời
+options_perport=Có thể được đặt cho mỗi cổng nối tiếp
+options_ans=Chế độ trả lời
+options_keep=Giữ tin nhắn có chứa dữ liệu hoặc mã DTMF?
+options_light=Bật đèn tự động trả lời sau khi nhận?
+options_owner=Chủ sở hữu Unix cho các tệp tin
+options_group=Nhóm Unix cho các tệp tin
+options_mode=Quyền cho tập tin tin nhắn
+options_prog=Sau khi ghi tin nhắn.
+options_prog0=Không làm gì cả
+options_prog1=Email ở định dạng WAV để
+options_prog2=Chạy lệnh trên tập tin tin nhắn
+options_err=Không thể lưu tùy chọn thư thoại
+options_erings=Số nhẫn bị thiếu hoặc không hợp lệ
+options_erings2=Số vòng phải có ít nhất 2
+options_emaxlen=Độ dài tin nhắn tối đa hoặc không hợp lệ
+options_eminlen=Độ dài tin nhắn tối thiểu hoặc không hợp lệ
+options_ethresh=Ngưỡng im lặng hoặc không hợp lệ
+options_ergain=Mức âm lượng ghi bị thiếu hoặc không hợp lệ
+options_ergain2=Mức âm lượng ghi phải nằm trong khoảng từ 0 đến 100
+options_etgain=Mức âm lượng phát lại bị thiếu hoặc không hợp lệ
+options_etgain2=Mức âm lượng phát lại phải nằm trong khoảng từ 0 đến 100
+options_eemail=Địa chỉ email bị thiếu hoặc không hợp lệ
+options_eprog=Chương trình bị thiếu hoặc không tồn tại để chạy
+options_eowner=Người dùng Unix bị thiếu hoặc không hợp lệ cho các tệp tin
+options_egroup=Nhóm Unix bị thiếu hoặc không hợp lệ cho các tệp tin
+options_emode=Quyền bát phân bị thiếu hoặc không hợp lệ cho các tệp tin
+
+received_title=Tin nhắn đã nhận
+recieved_desc=Tin nhắn thư thoại đã được nhận bởi máy chủ của bạn được liệt kê bên dưới. Để nghe một tin nhắn, bấm vào ngày/giờ trong cột đầu tiên.
+received_none=Không có tin nhắn thư thoại nhận được đã được tìm thấy.
+received_date=Nhận được tại
+received_size=Kích thước tập tin
+received_speed=Tỷ lệ mẫu
+received_type=Định dạng âm thanh
+received_delete=Xóa tin nhắn đã chọn
+received_move=Chuyển đổi được chọn thành lời chào
+received_all=Chọn tất cả
+received_invert=Lựa chọn đối nghịch
+
+listen_efile=Tên tin nhắn không hợp lệ!
+listen_epath=Tin nhắn thư thoại không còn tồn tại
+
+delete_efile=Tên tin nhắn không hợp lệ!
+
+messages_title=Tin nhắn chúc mừng
+messages_desc=Trang này liệt kê các tin nhắn chào mừng sẽ được phát khi người gọi kết nối với máy chủ thư thoại của bạn. Nếu bạn có nhiều hơn thế, một tin nhắn được chọn ngẫu nhiên sẽ được sử dụng.
+messages_file=Tên tệp
+messages_none=Không có tin nhắn chúc mừng có sẵn.
+messages_updesc=Biểu mẫu này cho phép bạn tải lên tệp WAV tin nhắn chào mừng bổ sung, tệp này sẽ được chuyển đổi sang định dạng đã chọn để sử dụng bởi modem của bạn. Tốc độ mẫu của WAV được tải lên phải giống với tốc độ mẫu của các tin nhắn nhận được, cũng như định dạng đã chọn.
+messages_upload=Tải lên tin nhắn
+messages_fmt=chuyển đổi sang
+
+pvfdesc=$1, $2 bit
+
+upload_err=Không thể thêm tin nhắn
+upload_emessage=Không có tệp WAV nào được chọn
+upload_ewav=Không thể chuyển đổi tệp WAV : $1 
+upload_epvf=Không thể tạo tệp RMD : $1 
+upload_esame=Tệp tin nhắn $1 đã tồn tại
+
+log_apply=Cấu hình ứng dụng
+log_upload=Tin nhắn chúc mừng đã tải lên $1 
+log_move=Đã chuyển đổi $1 tin nhắn nhận được
+log_delete0=Đã xóa $1 tin nhắn nhận được
+log_delete1=Đã xóa $1 tin nhắn chúc mừng
+log_options=Tùy chọn thư thoại đã thay đổi
+log_vgetty_create=Đã thêm cổng nối tiếp $1 
+log_vgetty_modify=Cổng nối tiếp được sửa đổi $1 
+log_vgetty_delete=Đã xóa cổng nối tiếp $1 
+
+email_subject=Tin nhắn thoại
+email_body=Tin nhắn thư thoại nhận được ở $1 theo $2.

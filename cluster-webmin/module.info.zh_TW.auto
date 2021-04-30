@@ -1,0 +1,3 @@
+name_zh_TW=集群Webmin
+desc_zh_TW=群集Webmin服務器
+longdesc_zh_TW=在多個Webmin服務器上安裝和管理模塊，主題，用戶，組和訪問控制設置。

@@ -1,0 +1,71 @@
+<header> Tgeżwir TCP </header>
+<h3> Disinji </h3> Il-lingwa ta &#39;kontroll ta&#39; l-aċċess timplimenta dawn il-mudelli: <ul>
+    <li> Sekwenza li tibda b&#39;&#39;&#39;. &#39; karattru. Isem ospitanti huwa mqabbel jekk l-aħħar komponenti tal-isem tiegħu jaqblu mal-mudell speċifikat. Pereżempju, ix-xejra &#39;.tue.nl&#39; taqbel mal-isem tal-host &#39;wzv.win.tue.nl&#39;. </li>
+    <li> Sekwenza li tispiċċa b &#39;&#39;. &#39; karattru. Indirizz ospitanti huwa mqabbel jekk l-ewwel oqsma numeriċi tiegħu jaqblu mal-ispaga mogħtija. Pereżempju, ix-xejra &#39;131.155.&#39; jaqbel mal-indirizz ta &#39;(kważi) kull ospitanti fuq in-netwerk tal-Università Eindhoven (131.155.xx). </li>
+    <li> Sekwenza li tibda b&#39;karattru &#39;@&#39; hija trattata bħala isem ta &#39;netgroup NIS (li qabel kien YP). Isem ospitanti huwa mqabbel jekk huwa membru ospitanti tan-netgroup speċifikat. Il-logħbiet Netgroup mhumiex appoġġjati għal ismijiet ta &#39;proċess tad-daemon jew għal ismijiet ta&#39; utenti ta &#39;klijenti. </li>
+    <li> Espressjoni tal-forma &#39;nnnn / mmmm&#39; hija interpretata bħala par &#39;net/maskra&#39;. Indirizz ospitanti IPv4 huwa mqabbel jekk &#39;net&#39; huwa daqs il-bit bit AND ta &#39;l-indirizz u&#39; maskra &#39;. Pereżempju, ix-xibka netta / maskra &#39;131.155.72.0/255.255.254.0&#39; taqbel ma &#39;kull indirizz fil-medda&#39; 131.155.72.0 &#39;sa&#39; 131.155.73.255 &#39;. </li>
+    <li> Espressjoni tal-forma &quot;[n: n: n: n: n: n: n: n] / m&quot; hija interpretata bħala par &quot;[net]/prefixlen&quot;. Indirizz ospitanti IPv6 huwa mqabbel jekk il-bits &#39;prefisslen&#39; ta &#39;&#39; net &#39;huma daqs il-bits&#39; prefisslen &#39;ta&#39; l-indirizz. Pereżempju, il- &quot;xibka] / prefixlen&quot; [3ffe: 505: 2: 1 ::]/64 &#39;taqbel ma&#39; kull indirizz fil-medda &#39;3ffe: 505: 2: 1:&#39;? permezz ta &#39;&#39; 3ffe: 505: 2: 1: ffff: ffff: ffff: ffff &#39;. </li>
+    <li> Sekwenza li tibda b&#39;karattru &#39;/&#39; hija trattata bħala isem tal-fajl. L-isem jew l-indirizz ospitanti huma mqabbla jekk jaqblu ma &#39;xi isem jew mudell ta&#39; indirizz elenkat fil-fajl imsemmi. Il-format tal-fajl huwa żero jew aktar linji b&#39;żero jew aktar isem tal-host jew mudelli ta &#39;indirizz separati mill-ispazju ta&#39; l-ispazju. Mudell ta &#39;isem ta&#39; fajl jista &#39;jintuża kullimkien jista&#39; jintuża isem jew disinn ta &#39;indirizz. </li>
+    <li> Wildcards &quot;*&quot; u &quot;?&quot; jistgħu jintużaw biex jaqblu ma &#39;hostnames jew indirizzi IP. Dan il-metodu ta &#39;tqabbil ma jistax jintuża flimkien ma&#39; tqabbil &#39;net/maskra&#39;, tqabbil ma &#39;hostname li jibda bi&#39;. &#39; jew l-indirizz IP li jaqbel ma &#39;&#39;. &#39;. </li>
+</ul>
+<h3> Wildcards </h3> Il-lingwa ta &#39;kontroll ta&#39; aċċess tappoġġja wildcards espliċiti: <table border>
+    <tr>
+        <td> <b>KOLLHA</b> </td>
+        <td> Il-wildcard universali, dejjem jaqbel. </td>
+    </tr>
+    <tr>
+        <td> <b>LOKALI</b> </td>
+        <td> Jaqbel ma &#39;kwalunkwe host li ismu ma fihx karattru dot. </td>
+    </tr>
+    <tr>
+        <td> <b>MHUX MAGĦRUF</b> </td>
+        <td> Jaqbel ma &#39;kwalunkwe utent li ismu mhux magħruf, u jaqbel ma&#39; kwalunkwe host li ismu jew l-indirizz mhumiex magħrufa. Dan ix-xejra għandha tintuża b’attenzjoni: l-ismijiet ospitanti jistgħu ma jkunux disponibbli minħabba problemi temporanji fis-server tal-isem. Indirizz tan-netwerk ma jkunx disponibbli meta s-softwer ma jkunx jista &#39;jindika b&#39;liema tip ta&#39; netwerk qed jitkellem. </td>
+    </tr>
+    <tr>
+        <td> <b>MAGĦRUF</b> </td>
+        <td> Jaqbel ma &#39;kull utent li ismu huwa magħruf, u jaqbel ma&#39; kwalunkwe host li l-isem u l-indirizz tiegħu huma magħrufa. Dan ix-xejra għandha tintuża b’attenzjoni: l-ismijiet ospitanti jistgħu ma jkunux disponibbli minħabba problemi temporanji fis-server tal-isem. Indirizz tan-netwerk ma jkunx disponibbli meta s-softwer ma jkunx jista &#39;jindika b&#39;liema tip ta&#39; netwerk qed jitkellem. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOID</b> </td>
+        <td> Jaqbel ma &#39;kwalunkwe host li ismu ma jaqbilx mal-indirizz tiegħu. Meta tcpd huwa mibni bi -DPARANOID (modalità default), huwa jwaqqaf it-talbiet minn tali klijenti anki qabel ma jħares lejn it-tabelli tal-kontroll tal-aċċess. Ibni mingħajr -DPARANOID meta trid aktar kontroll fuq dawn it-talbiet. </td>
+    </tr>
+</table>
+<h3> Operaturi </h3> <b>ĦAQRA</b> L-użu intenzjonat huwa tal-forma: &#39;lista_1 EŻEĊĊJU lista_2&#39;; dan il-kostruzzjoni jaqbel ma &#39;kull ħaġa li taqbel ma&#39; list_1 sakemm ma taqbilx ma &#39;list_2. L-operatur EXCEPT jista &#39;jintuża fi daemon_lists u fi client_lists. L-operatur EĊĊETT jista &#39;jitbeżża: jekk il-lingwa ta&#39; kontroll tippermetti l-użu ta &#39;parentesi, &quot;AĦBEJJA BĦALA ĊEĊETTA&quot; tkun tista&#39; tittrażża bħala &quot;(ĦLIEF (b ĦLIEX ċ))&quot;. <h3> Kmand tal-Qoxra </h3> Jekk ir-regola tal-kontroll ta &#39;l-aċċess mqabbla l-ewwel fiha kmand tal-qoxra, dak il-kmand huwa soġġett għal% <letter> sostituzzjonijiet (ara sezzjoni li jmiss). Ir-riżultat huwa eżegwit minn proċess ta &#39;tifel /bin/sh b&#39;input standard, output u żball konness ma&#39; /dev/null. Speċifika &#39;&amp;&#39; fi tmiem il-kmand jekk ma tridx tistenna sakemm tkun tlestiet. <p> Il-kmandi Shell m&#39;għandhomx jiddependu fuq l-issettjar tal-PATH ta &#39;l-inetd. Minflok, għandhom jużaw ismijiet ta &#39;passaġġi assoluti, jew għandhom jibdew bi stqarrija espliċita = dak kollu. <h3> % Espansjonijiet </h3> L-espansjonijiet li ġejjin huma disponibbli fi ħdan il-kmandi tal-qoxra: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> L-indirizz tal-klijent (server) ospitanti. </td>
+            </tr>
+            <tr>
+                <td> %ċ </td>
+                <td> Informazzjoni dwar il-klijent: utent @ ospitanti, indirizz @ utent, isem tal-host, jew indirizz biss, skont kemm tkun disponibbli informazzjoni. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> L-isem tal-proċess tad-daemon (valur argv[0]). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> L-isem jew l-indirizz tal-klijent (server) host, jekk l-isem tal-host mhux disponibbli. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> L-isem tal-klijent (server) ospitanti (jew &quot;mhux magħruf&quot; jew &quot;paranojku&quot;). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> Id-daemon tal-proċess id. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Informazzjoni tas-server: daemon @ ospitanti, daemon @ indirizz, jew sempliċement isem daemon, jiddependi fuq kemm tkun disponibbli informazzjoni. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> L-isem tal-utent tal-klijent (jew &quot;mhux magħruf&quot;). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Tkabbar għal waħda biss &#39;%? karattru. </td>
+            </tr>
+        </table> Il-karattri f &#39;%espansjonijiet li jistgħu jħawdu l-qoxra huma sostitwiti b&#39;kowċ.
+        <hr />

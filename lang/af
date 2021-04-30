@@ -1,4 +1,3 @@
-main_return=Terug na $1
 main_homepage=Tuisblad
 main_feedback=Terugvoering..
 main_switch=Skakel na gebruiker..
@@ -8,6 +7,7 @@ main_title=Webmin $1 op $2 ($3)
 main_title2=Webmin
 main_none=U het nie toegang tot enige Webmin modules nie.
 main_skill=Ervarenheid
+main_return=Terug na $1
 
 category_servers=Bedieners
 category_hardware=Hardeware
@@ -17,7 +17,6 @@ category_net=Netwerk
 category_syslet=Syslets
 category_cluster=Groepe
 category_info=Inligting
-category_=Ander
 
 header_webmin=Webmin Indeks
 header_module=Module Indeks
@@ -43,7 +42,7 @@ helpsearch=Soek dokumente..
 switch_remote_euser=Die Unixgebruiker $1 bestaan nie.
 programname=Webmin
 
-chooser_title1=Kies l&ecirc;er..
+chooser_title1=Kies lêer..
 chooser_title2=Kies gids (directory)..
 chooser_dir=Gids vir $1
 chooser_ok=Reg
@@ -74,7 +73,7 @@ config_err=Stoor van verstellings het gefaal
 
 help_err=Kan nie hulp vertoon nie
 help_epath=Ontbrekende of ongeldige hulpgids
-help_efile=Kon hulpl&ecirc;er $1 nie lees nie
+help_efile=Kon hulplêer $1 nie lees nie
 help_eheader=Ontbrekende &lt;header&gt; gedeelte
 help_einclude=Kon $1 nie insluit nie
 help_eif=$1 het gefaal : $2
@@ -83,8 +82,6 @@ help_eexec=$1 het gefaal : $2
 referer_title=Sekuriteitswaarskuwing
 referer_warn=<b>Warning!</b> Webmin het bevind dat die program $2 vanaf die URL $1 geroep is, wat buite die Webminbediener is. Dit kan 'n aanduiding wees dat 'n poging aangewend is om u bediener te flous om 'n skadelike opdrag uit te voer.
 referer_warn_unknown=<b>Waarskuwing!</b> Webmin het bevind Webmin dat die program $1 vanaf 'n onbekende URL geroep is, wat buite die Webminbediener is. Dit kan 'n aanduiding wees dat 'n poging aangewend word om u bediener te flous om 'n skadelike opdrag uit te voer.
-referer_ok=Gaan voort om die Webminprogram uit te voer.
-referer_again=Moet nie weer die waarskuwing vertoon nie.
 
 session_header=Webmin aanteken
 session_mesg=U moet a gebruikersnaam en wagwoord invul om aan te teken by die Webminbediener op $1.
@@ -98,7 +95,7 @@ session_logout=Aftekening suksesvol. Gebruik asb die onderstaande vorm om weer a
 session_timed_out=Die sessie word outomaties afgeteken na $1 minute van geen aktiwiteit.
 session_save=Stoor aantekeninligting permanent?
 
-acl_root=Root-gids vir l&ecirc;erselekteerder
+acl_root=Root-gids vir lêerselekteerder
 acl_home=Gebruiker se tuisgids (home directory)
 acl_uedit=Gebruikers sigbaar in gebruikerslys
 acl_uedit_all=Alle gebruikers
@@ -115,7 +112,7 @@ acl_gedit_except=Alle groepe behalwe
 acl_gedit_gid=Groepe met GIDs in die reeks
 acl_feedback=Kan terugvoeringepos stuur?
 acl_feedback2=Ja
-acl_feedback1=Ja, maar nie met konfigurasiel&ecirc;ers nie
+acl_feedback1=Ja, maar nie met konfigurasielêers nie
 acl_feedback0=Nee
 acl_rpc=Kan RPC-oproepe aanvaar?
 acl_rpc2=Slegs vir <tt>root</tt> of <tt>admin</tt>
@@ -165,10 +162,9 @@ sday_5=Vr
 sday_6=Sa
 
 emodule=Toegang geweier: Gebruiker $1 het nie toestemming om module $2 te gebruik nie.
-elock_tries=Kon l&ecirc;er $1 nie sluit na $2 minute nie.
 
 skill_high=Ekspert
-skill_medium=Intermedi&ecirc;r
+skill_medium=Intermediêr
 skill_low=Beginner
 
 feedback_title=Webmin Terugvoering
@@ -183,8 +179,8 @@ feedback_text=Beskrywing, probleem of voorstel
 feedback_os=Sluit beheerstelselbesonderhede in by epos?
 feedback_osdesc=As die opsie gekies is, sal die outomatiese terugvoering u beheerstelsel se naam en weergawe insluit.
 feedback_config=Sluit modulekonfigurasie in?
-feedback_configdesc=As hierdie opsie gekies is, sal die epos die konfigurasie van die verwante module en die inhoud van die konfigurasiel&ecirc;ers van die module insluit. Bv, as die terugvoering ivm die <i>Gebruiker en Groepe</i> module was, sal u <tt>/etc/passwd</tt> en <tt>/etc/shadow</tt> l&ecirc;ers gestuur word.
-feedback_attach=Addisionele l&ecirc;ers om by te voeg
+feedback_configdesc=As hierdie opsie gekies is, sal die epos die konfigurasie van die verwante module en die inhoud van die konfigurasielêers van die module insluit. Bv, as die terugvoering ivm die <i>Gebruiker en Groepe</i> module was, sal u <tt>/etc/passwd</tt> en <tt>/etc/shadow</tt> lêers gestuur word.
+feedback_attach=Addisionele lêers om by te voeg
 feedback_send=Stuur Terugvoering
 feedback_mailserver=Stuur via SMTP bediener
 feedback_mailserver_def=Plaaslike sendmail program
@@ -198,10 +194,7 @@ feedback_esend=Die terugvoering via die sendmail program of plaaslike SMTP bedie
 feedback_to=Stuur terugvoering aan adres
 feedback_enoto=Geen adresse was aangedui die terugvoering aan te stuur nie
 feedback_ecannot=U is nie toegelaat om terugvoering te stuur nie
-feedback_ecannot2=U is nie toegelaat om terugvoering te stuur wat konfigurasiel&ecirc;ers bevat nie
-progress_size=Laai $1 ($2 bytes) af..
-progress_nosize=Laai $1 af..
-progress_data=Ontvang $1 grepe ($2 %)
-progress_data2=Ontvang $1 grepe
-progress_done=.. Aflaai voltooi.
+feedback_ecannot2=U is nie toegelaat om terugvoering te stuur wat konfigurasielêers bevat nie
 
+progress_nosize=Laai $1 af..
+progress_done=.. Aflaai voltooi.

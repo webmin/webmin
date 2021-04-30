@@ -1,0 +1,3 @@
+name_hr=Upravitelj particija
+desc_hr=Particije na lokalnim diskovima
+longdesc_hr=Stvorite i uredite particije na lokalnim SCSI, IDE i SATA diskovima na Linuxu.

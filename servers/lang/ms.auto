@@ -1,0 +1,24 @@
+index_nosearch=Tiada pelayan sepadan dengan carian anda.
+index_delete=Padam Servers yang Dipilih
+index_search=Tunjukkan pelayan yang sepadan:
+index_ok=Carian
+
+edit_checkssl=Periksa sijil SSL jauh?
+
+save_ehost2=Tuan rumah tidak wujud
+save_eport2=Pelabuhan mesti diberikan jika jenis pautan dengan log masuk dipilih
+save_egroup2=Nama kumpulan baru tidak sah
+
+find_but=Menemui pelayan baru di $1, tetapi pengesahan gagal : $2 
+find_already2=Hos pelayan yang diketahui pada $1 
+find_skip=Mengabaikan pelayan di $1 
+find_eiface=Tidak dapat mencari antara muka untuk mengimbas
+find_eport=Nombor port hilang atau tidak sah
+
+log_deletes=$1 pelayan dipadam
+
+login_esame=Pilihan untuk menggunakan log masuk yang sama seperti pelayan ini hanya boleh digunakan apabila tidak dalam mod pengesahan sesi, dan apabila kata laluan disediakan untuk program Webmin.
+
+delete_title=Padam Servers
+delete_rusure=Adakah anda pasti mahu mengalih keluar pelayan yang dipilih $1 ?
+delete_confirm=Padamkan Sekarang

@@ -150,7 +150,7 @@ return &get_postgresql_version() >= 7.3;
 sub list_databases
 {
 local $force_nodbi = 1;
-local $t = &execute_sql_safe($config{'basedb'}, 'select * from pg_database order by datname');
+local $t = &execute_sql_safe($config{'basedb'}, 'select datname from pg_database order by datname');
 return sort { lc($a) cmp lc($b) } map { $_->[0] } @{$t->{'data'}};
 }
 
@@ -545,7 +545,7 @@ else {
 sub get_hba_config
 {
 local $lnum = 0;
-open(HBA, $hba_conf_file);
+open(HBA, "<".$hba_conf_file);
 while(<HBA>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//g;
@@ -1129,7 +1129,7 @@ return $config{'host'} eq '' || $config{'host'} eq 'localhost' ||
 sub backup_database
 {
 local ($db, $path, $format, $tables, $user) = @_;
-local $tablesarg = join(" ", map { " -t ".quotemeta($_) } @$tables);
+local $tablesarg = join(" ", map { " -t ".quotemeta('"'.$_.'"') } @$tables);
 local $cmd = &quote_path($config{'dump_cmd'}).
 	     (!$postgres_login ? "" :
 	      &supports_pgpass() ? " -U $postgres_login" : " -u").
@@ -1160,7 +1160,7 @@ return undef;
 sub restore_database
 {
 local ($db, $path, $only, $clean, $tables) = @_;
-local $tablesarg = join(" ", map { " -t ".quotemeta($_) } @$tables);
+local $tablesarg = join(" ", map { " -t ".quotemeta('"'.$_.'"') } @$tables);
 local $cmd = &quote_path($config{'rstr_cmd'}).
 	     (!$postgres_login ? "" :
 	      &supports_pgpass() ? " -U $postgres_login" : " -u").
@@ -1218,7 +1218,7 @@ if (&supports_pgpass()) {
 		&make_dir($temphome, 0755);
 		$pgpass = "$temphome/.pgpass";
 		push(@main::temporary_files, $pgpass);
-		$ENV{'HOME'} = $temphome;
+		$cmd = "HOME=$temphome $cmd";
 		}
 	$ENV{'PGPASSFILE'} = $pgpass;
 	open(PGPASS, ">$pgpass");

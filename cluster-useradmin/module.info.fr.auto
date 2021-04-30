@@ -1,0 +1,2 @@
+name_fr=Utilisateurs du cluster
+longdesc_fr=Créez, mettez à jour et supprimez des utilisateurs et des groupes sur plusieurs serveurs. Contrairement à NIS, chaque serveur a ses propres fichiers passwd et group qui sont mis à jour à distance par ce module.

@@ -1,0 +1,46 @@
+index_title=Programas tipo MIME
+index_none=Aún no se han definido programas de controlador de tipo MIME.
+index_add=Agregue un nuevo programa de tipo MIME.
+index_type=Tipo de Mimica
+index_program=Programa de manejo
+index_cmt=Descripción
+index_delete=Eliminar seleccionado
+index_disable=Desactivar seleccionado
+index_enable=Habilitar seleccionado
+index_enabled=Habilitado?
+index_return=lista de programas
+
+edit_title1=Crear programa tipo MIME
+edit_title2=Editar programa tipo MIME
+edit_header=Detalles del programa controlador de tipo MIME
+edit_type=Tipo de Mimica
+edit_enabled=Habilitado?
+edit_program=Programa de manejo
+edit_cmt=Descripción
+edit_egone=¡El programa ya no existe!
+edit_test=Comando de prueba
+edit_none=Ninguno (siempre use el programa)
+edit_term=¿Salida de pantalla en terminal?
+edit_copious=Produce mucha producción?
+edit_desc=Descripción del tipo MIME
+
+save_err=Error al guardar el programa tipo MIME
+save_etype=Tipo MIME faltante o no válido
+save_eprogram=Programa de controlador faltante
+save_eclash=Ya existe un programa habilitado para el tipo MIME ingresado
+save_etest=Comando de prueba faltante o inválido
+save_edesc=Descripción de tipo MIME no válida
+
+delete_err=Error al eliminar programas de tipo MIME
+disable_err=Error al deshabilitar programas de tipo MIME
+disable_eclash=Ya existe un programa de tipo MIME deshabilitado para $1 
+enable_err=Error al habilitar programas de tipo MIME
+enable_eclash=Ya existe un programa de tipo MIME habilitado para $1 
+delete_enone=Ninguna seleccionada
+
+log_delete_mailcap=Eliminar el programa de tipo MIME para $1 
+log_create_mailcap=Se creó el programa de tipo MIME para $1 
+log_modify_mailcap=Programa de tipo MIME modificado para $1 
+log_delete_mailcaps=Programas de tipo MIME $1 eliminados
+log_disable_mailcaps=Programas de tipo MIME $1 deshabilitados
+log_enable_mailcaps=Programas de tipo MIME $1 habilitados

@@ -30,7 +30,7 @@ print "Refresh: $config{'refresh'}\r\n"
 	if ($config{'refresh'});
 &ui_print_header("<tt>".($file || $cmd)."</tt>", $text{'view_title'}, "");
 
-$lines = $in{'lines'} ? int($in{'lines'}) : $config{'lines'};
+$lines = $in{'lines'} ? int($in{'lines'}) : int($config{'lines'});
 $filter = $in{'filter'} ? quotemeta($in{'filter'}) : "";
 
 &filter_form();

@@ -1,0 +1,8 @@
+index_title=کلسٹر چینج پاس ورڈز
+index_noservers=No servers to manage users on have been defined in the <a href=$1>Cluster Users and Groups</a> module.
+index_hosts=اس ماڈیول کا استعمال کرتے ہوئے پاس ورڈ کی تمام تبدیلیاں کلسٹر صارفین اور گروپس ماڈیول کے ذریعہ انتظام کردہ$1 میزبانوں پر کی جائیں گی۔
+
+passwd_err=پاس ورڈ تبدیل کرنے میں ناکام
+passwd_title=پاس ورڈ تبدیل کرنا
+passwd_on=$1 پر پاس ورڈ تبدیل کرنا ..
+passwd_euser=صارف موجود نہیں!

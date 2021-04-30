@@ -1,0 +1,58 @@
+index_title=SMART Drive-ren egoera
+index_ecmd=$1 SMART kontrol komandoa ez da zure sisteman aurkitu edo ez da behar bezala <a href='$2'>moduluaren konfigurazioan</a> ezarrita. Modulu hau erabili aurretik instalatu behar da.
+index_ecmd2=$1 komandoa ez dirudi SMART kontrol-agindua denik. Modulu hau erabili aurretik <a href='$2'>moduluaren konfigurazioan</a> behar bezala ezarrita dago.
+index_version=$1 bertsio SMARTsuite
+index_show=Erakutsi unitatearen egoera:
+index_ok=Show
+index_eidescsi=Ez da IDE, SCSI edo SATA unitaterik aurkitu zure sisteman.
+index_drive=$1 unitatearen egoera
+index_drivesub=$1 diskoko egoera, $2 diskoa
+index_desc=Kokalekua
+index_size=Unitatearen tamaina
+index_model=Egin eta modelatu
+index_support=SMART onartzen al duzu?
+index_enabled=SMART gaituta?
+index_check=Unitatearen egiaztapena gainditu duzu?
+index_short=Auto-proba laburra
+index_ext=Auto-proba luzatua
+index_data=Datuak biltzeko proba
+index_errors=Erregistratutako akatsak
+index_ecount=$1 akatsak atzeman dira
+index_attrs=SMART atributu osagarriak
+index_raw=SMART egoeraren txosten osoa
+index_return=moduluaren aurkibidea
+index_family=Familia eredua
+index_serial=Serie zenbakia
+index_capacity=aforoa
+index_norm=normalizatu:
+
+monitor_type=SMART Drive egiaztapena
+monitor_type2=SSD higadura
+monitor_drive=Unitatea egiaztatzeko
+monitor_errors=Egiaztatu akatsen erregistroa ere?
+monitor_errorsinc=Bai, baina alerta bakarrik akatsen kopurua handitzen bada
+monitor_other=Beste ..
+monitor_edrive=Unitate falta edo baliogabea da egiaztatzeko
+monitor_nosuch=Ez dago horrelako diskorik
+monitor_nosmart=Ez du SMART laguntza
+monitor_errorsfound=$1 akats salatu dira
+monitor_errorsinced=Akatsak $2 tik $1 era igo ziren
+monitor_wearlevel=Huts egin, higadura maila azpitik jaisten bada
+monitor_ewearlevel=Higaduraren ehuneko baliogabea
+monitor_nowearout=Drive-k ez du SSD higaduraren adierazleren berri ematen
+monitor_wornout=Higadura maila $1 era jaitsi da
+
+short_title=Auto-proba laburra
+short_doing=$1. auto proba laburra hastea.
+short_failed=.. huts egin du!
+short_ok=.. proba hasi da ondo. Ikus unitatearen egoera moduluaren orrialde nagusian, emaitzak lortzeko.
+
+ext_title=Auto-proba luzatua
+ext_doing=$1 eko proba luzatua abiaraztean.
+ext_failed=.. huts egin du!
+ext_ok=.. proba hasi da ondo. Ikus unitatearen egoera moduluaren orrialde nagusian, emaitzak lortzeko.
+
+data_title=Datuak biltzeko proba
+data_doing=Lineaz kanpoko datu bilketa $1 abiaraztean.
+data_failed=.. huts egin du!
+data_ok=.. bilduma ondo hasi zen. Ikus unitatearen egoera moduluaren orrialde nagusian, emaitzak lortzeko.

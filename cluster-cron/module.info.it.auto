@@ -1,0 +1,3 @@
+desc_it=Cluster Cron Jobs
+desc_de_it=Cluster Cron-Jobs
+longdesc_it=Crea processi Cron pianificati che vengono eseguiti contemporaneamente su più server.

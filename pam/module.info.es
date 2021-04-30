@@ -1,1 +1,1 @@
-desc_es=Autenticación PAM
+desc_es=AutenticaciÃ³n PAM

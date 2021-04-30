@@ -1,0 +1,33 @@
+index_title=TCP-kääre
+index_return=indeksi
+index_allowtitle=Sallitut isännät
+index_denytitle=Kielletty isännät
+index_norule=Kohdassa <tt>$1</tt> ei ole vielä määritetty sääntöjä.
+index_nofile=Tiedostoa '$1' ei ole - tarkista <a href="/config.cgi?tcpwrappers">moduulin kokoonpano</a>
+index_add=Lisää uusi sääntö.
+index_service=demoni
+index_hosts=isännät
+index_cmd=Komento
+index_delete=Poista valitut
+index_none=ei mitään
+
+edit_title1allow=Luo sallintasääntö
+edit_title2allow=Muokkaa Salli sääntö
+edit_title1deny=Luo kieltosääntö
+edit_title2deny=Muokkaa kieltosääntöä
+edit_eid=Tätä sääntöä ei löytynyt
+edit_header=Sääntövaihtoehdot
+edit_service=Palvelut
+edit_except=Paitsi palvelut
+edit_hosts=Etäisäntä
+edit_hostsexcept=Paitsi isännät
+edit_cmd=Kuorikomennot
+edit_efound=Daemonia '$1' ei löydy xinetd-kokoonpanosta.
+
+save_errtitle=Virhe tallennussääntössä
+save_ehost=Isäntäsyöttö sisältää huonoja merkkejä
+save_ecmd=Komentosyöttö sisältää huonoja merkkejä
+save_eservice=Daemon-nimissä on huonoja merkkejä
+
+del_errtitle=Virhe sääntöjen poistamisessa
+del_enone=Ei poistettavia sääntöjä

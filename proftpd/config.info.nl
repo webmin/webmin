@@ -9,4 +9,4 @@ proftpd_path=Pad naar het ProFTPD programma,0
 pid_file=Pad naar de ProFTPD PID file,3,Geen
 ftpusers=Pad naar de ftpusers file,0
 start_cmd=Opdracht om ProFTPD te starten,3,Automatisch
-stop_cmd=Opdracht om ProFTPD te stoppen,3, Kill proces
+stop_cmd=Opdracht om ProFTPD te stoppen,3,Kill proces

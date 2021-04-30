@@ -1,0 +1,8 @@
+index_title=Kopu maiņas paroles
+index_noservers=Modulī <a href=$1>Klasteru lietotāji un grupas</a> nav definēti serveri lietotāju pārvaldīšanai.
+index_hosts=Visas paroles izmaiņas, kas veiktas, izmantojot šo moduli, tiks veiktas visās $1 saimniekdatorās, kuras pārvalda klastera lietotāji un grupas.
+
+passwd_err=Neizdevās mainīt paroli
+passwd_title=Paroles maiņa
+passwd_on=Paroles maiņa $1.
+passwd_euser=Lietotājs neeksistē!

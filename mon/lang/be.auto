@@ -1,0 +1,200 @@
+index_title=Манітор службы MON
+index_return=Індэкс MON
+index_edir=Каталог MON $1 не існуе. Магчыма, MON не ўсталяваны, альбо ваша канфігурацыя модуля <a href='$2'></a> няправільная.
+mon_global_title=Канфігурацыя глабальных зменных
+mon_conf_title=Асноўная канфігурацыя
+mon_status_title=Аперацыйны стан
+hostgroups_title=Канфігурацыя MON-хаставыя групы
+services_title=Азначэнні службы назірання
+
+head_hostgroups=Група хастоў і паслугі
+head_groups=Імя хаст-групы
+head_members=Члены хост-групы
+head_services=Паслугі хастовай групы для назірання
+head_service=Служба для назірання
+head_param=Параметры абслугоўвання
+head_watch=Глядзіце гурт?
+head_monauth=Падайце праверку сапраўднасці для MONCMD
+head_usr=Імя карыстальніка
+head_pass=Пароль
+head_mand=(Параметры ў "Чырвоным колеры" з'яўляюцца абавязковымі)
+
+err_nomon=пакет 'mon' не ўсталяваны ў сістэме
+err_nomonconf=Файл канфігурацыі MON $1 у вашай сістэме не знойдзены. Магчыма, MON не ўсталяваны, альбо ваша канфігурацыя модуля <a href='$2'></a> няправільная.
+err_nowatch=Няма абраных груп назірання Абярыце па меншай меры адну групу назірання для працягу
+err_noserv=Для групы назіранняў не абрана служба
+err_nomemb=У аглядавую групу не выбраны хосты/члены
+err_monrun=MON не працуе на галоўнай машыне. Калі ласка, пачніце MON.
+stop_err=Не атрымалася спыніць MON
+stop_epid=Больш не працуе
+start_err=Не атрымалася запусціць MON
+restart_err=Не атрымалася перазапусціць MON
+restart_epid=Не атрымалася атрымаць PID
+
+other=Іншае (прастора аддзелена)
+next=Далей
+mon_stat=Статус MON
+mon_off=Паслугі MON не пачаліся
+mon_start=Запусціце паслугі MON
+mon_stop=Спыніць паслугі MON
+mon_restart=Перазапусціць паслугі MON
+mon_startdesc=Націсніце гэтую кнопку, каб запусціць MON-сервер. Пакуль ён не запушчаны, наладжаны маніторынг ажыццяўляцца не будзе.
+mon_stopdesc=Націсніце гэтую кнопку, каб спыніць сервер MON. Пры спыненні наладжаны маніторынг спыніцца.
+mon_restartdesc=Націсніце гэтую кнопку, каб прымяніць бягучую канфігурацыю MON, перазапусціўшы серверны працэс.
+line=(па адным у кожным радку)
+save_apply=Захаваць і прымяніць
+watch=Група назірання
+members=Удзельнікі
+def_perargs=wd {Сб-Нд}
+
+def_desc=апісанне
+def_inter=інтэрвал
+def_mon=манітор
+def_dep=залежыць
+def_per=перыяд
+def_alert=напагатове
+def_alertevr=абвесткі
+def_alertaft=апавяшчэнне
+def_alertstr=startupalert
+def_allow=enable_empty_group
+def_traptime=пагаршэнне часу
+def_trapdur=пастка
+def_rand=рандсэк
+def_exclhost=исключить_хосты
+def_exclper=выключыць_перыяд
+
+groups_title=Гаспадар групы
+groups_group=Назва групы
+groups_members=Удзельнік гаспадароў
+
+watches_title=Глядзіце спісы
+watches_group=Назіральная група
+watches_services=Службы назіраюць
+watches_sadd=Дадайце паслугу ..
+watches_add=Дадаць спіс прагляду для групы :
+watches_return=спісы прагляду
+watches_none=Пакуль не вызначаны спісы назірання.
+
+global_title=Глабальныя параметры
+global_header=Варыянты глабальнай канфігурацыі MON
+global_maxprocs=Максімальны працэс MON
+global_histlength=Працягласць гісторыі падзей
+global_alertdir=Каталог праграм абвесткі
+global_mondir=Кантраляваць каталог праграм
+global_authtype=Тып аўтэнтыфікацыі
+global_authtype_=Па змаўчанні
+global_authtype_getpwnam=Сістэмныя званкі
+global_authtype_userfile=Файл карыстальнікаў MON
+global_authtype_shadow=Файл ценяў
+global_userfile=Файл карыстальніка MON
+global_emaxprocs=Адсутнічае альбо недапушчальная колькасць працэсаў MON
+global_ehistlength=Адсутнічае альбо недапушчальная даўжыня гісторыі падзей
+global_ealertdir=Адсутнічае альбо несапраўдны каталог праграм абвесткі
+global_emondir=Адсутнічае альбо несапраўдны каталог праграм маніторынгу
+global_euserfile=Файл карыстальнікаў MON адсутнічае
+
+watch_title=Рэдагаваць спіс назірання
+watch_header=Падрабязнасці глядзяць гаспадары групы
+watch_group=Гаспадар група для прагляду
+watch_services=Службы назіраюць
+watch_service=Назва службы
+watch_monitor=Манітор для выкарыстання
+watch_interval=Праверце кожнага
+watch_periods=Перыяды маніторынгу
+
+service_title=Дадайце сэрвіс
+service_title2=Служба рэдагавання
+service_header=Падрабязнасці службы прагляду
+service_name=Назва службы
+service_interval=Праверце кожнага
+service_desc=Апісанне
+service_units_s=секунд
+service_units_m=хвілін
+service_units_h=гадзін
+service_units_d=дзён
+service_units_w=тыдняў
+service_monitor=Выкарыстанне манітора
+service_mon1=Стандартны манітор
+service_mon0=Іншы манітор ..
+service_args=Параметры манітора
+service_period=Перыяд маніторынгу, $1 
+service_days=Дні для праверкі
+service_hours=Гадзіны для праверкі
+service_all=Усе
+service_pstr=Спецыфікацыя перыяду
+service_new=Новы перыяд маніторынгу
+service_alerts=Абвесткі за перыяд
+service_alert=Папярэджанне
+service_atype=Выканаць, калі
+service_atype_alert=Сэрвіс зніжаецца
+service_atype_upalert=Паслугі прыходзіць
+service_atype_startupalert=MON запускаецца
+service_aargs=Дадатковыя параметры
+service_every=Адправіць папярэджанне
+service_every_def=Кожны раз, калі манітор запускаецца
+service_every_time=Кожны
+service_num=Максімальны абвесткі для адпраўкі
+service_unlimited=Неабмежаваны
+service_after=Адмовы перад абвесткай
+service_immediate=Адразу
+service_after_num=Пасля адмоваў $1 
+service_aftertime=У прамежку часу
+service_newperiod=Дадайце новы перыяд
+service_delperiod=Выдаліць гэты перыяд
+service_err=Не атрымалася захаваць службу
+service_ename=Адсутнічае альбо недапушчальнае імя службы
+service_einterval=Адсутнічае альбо недапушчальны прамежак праверкі
+service_eother=Адсутнічае альбо недапушчальны манітор
+service_ehour=Прапушчаная ці несапраўдная гадзіна за перыяд $1 (павінна быць як 9 раніцы ці 17 вечара)
+service_eperiod=Няма дзён і гадзін, указаных за перыяд $1 
+service_eevery=Адсутнічае альбо недапушчальны інтэрвал абслугоўвання
+service_eafter=Адсутнічае альбо недапушчальная колькасць адмоваў перад абвесткай
+service_enum=Адсутныя альбо недапушчальныя максімальныя абвесткі да адпраўкі
+service_epstr=Спецыфікацыя адсутнічае перыяду
+service_known0=<tt>Час :: Перыяд</tt> радок
+service_known1=Пазначаныя дні і гадзіны
+service_known2=Вызначаны перыяд
+
+status_title=Статус MON
+status_ecgi=Праграма CGI статусу MON $1 не існуе. Магчыма, ён не ўсталяваны, альбо ваша канфігурацыя модуля <a href='$2'></a> няправільная.
+status_eperl=Праграма CGI статусу MON патрабуе модуля $1 perl. <a href='$2'>Націсніце тут</a>, каб усталяваць яго непасрэдна з CPAN.
+status_esame=У гэтым модулі Webmin праграма CGI статусу MON $1 была ўсталявана ў сцэнары <tt>mon.cgi</tt>, а не ў праграме CGI, якая пастаўляецца з MON. Адрэгулюйце канфігурацыю модуля <a href='$2'></a>, каб выкарыстоўваць правільны шлях.
+
+users_title=Карыстальнікі MON
+users_etype=Спіс карыстальнікаў MON не можа быць адрэдагаваны, паколькі MON у цяперашні час не настроены для яго аўтэнтыфікацыі на старонцы <a href='$1'>Глабальныя параметры</a>.
+users_header=Дазволена карыстальнікам MON у $1 
+users_nousers=Ні адзін карыстальнік MON не вызначаны ў $1.
+users_add=Стварыце новага карыстальніка.
+users_return=Спіс карыстальнікаў MON
+
+user_create=Стварыць MON карыстальніка
+user_edit=Рэдагаваць карыстача MON
+user_header=Падрабязнасці карыстальніка MON
+user_user=Імя карыстальніка
+user_pass=Пароль
+user_leave=Пакіньце без зменаў
+user_err=Не атрымалася захаваць карыстальніка
+user_euser=Адсутнічае альбо недапушчальнае імя карыстальніка
+user_esame=Карыстальнік з такім імем ужо існуе
+
+auth_title=Каманды кліента
+auth_desc=Гэтая старонка дазваляе кантраляваць, якія каманды MON могуць быць запушчаны карыстальнікамі пры выкарыстанні кліентскіх праграм.
+auth_cmd=Каманда MON
+auth_users=Дазволена карыстальнікам
+auth_none=Ніхто
+auth_all=Усе
+auth_sel=Толькі карыстальнікі
+auth_err=Не атрымалася захаваць кліентскія каманды
+auth_eusers=Карыстальнікі $1 не ўводзяць
+
+periods_title=Вызначаныя перыяды
+periods_period=Назва перыяду
+periods_times=Дні і часы
+periods_alldays=Усе дні
+periods_allhours=Усе гадзіны
+periods_err=Не ўдалося захаваць пэўныя перыяды
+periods_ename='$1' - няправільнае імя перыяду
+periods_ehour=Прапушчаная ці несапраўдная гадзіна за перыяд $1 (павінна быць як 9 раніцы ці 17 вечара)
+
+show_title=Аперацыйны стан
+show_ecgi=Праграма статусу MON $1 не існуе. Магчыма, ён не ўсталяваны, альбо ваша <a href='$2'>канфігурацыя модуля</a> няправільная.

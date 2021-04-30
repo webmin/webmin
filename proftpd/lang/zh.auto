@@ -1,0 +1,52 @@
+index_applymsg2=单击此按钮可通过停止并重新启动ProFTPD来应用当前配置。
+index_stop=停止服务器
+index_stopmsg=单击此按钮停止FTP服务器，这将阻止任何新的FTP客户端连接。
+index_proftpd=ProFTPd
+
+dir_header5=对于全局目录 $1
+
+manual_configs=编辑配置文件
+manual_ecannot=不允许您手动编辑指令
+manual_file=在文件中编辑指令：
+manual_efile=无效的ProFTPd配置文件
+manual_etest=检测到配置文件错误： $1
+
+limit_header7=对于全局命令 $1
+
+dserv_eanondir=目录必须位于匿名FTP目录下
+
+mod_core_octal=八面膜
+mod_core_umask_d=新目录掩码
+mod_core_nowhere=记录已禁用
+mod_core_firstcdt=总是显示
+mod_core_filelimit=打开文件限制
+
+mod_ls_fakeasuser=是的，作为用户 ..
+mod_ls_fakesameuser=连接的用户
+mod_ls_fakeasgroup=是的，作为一个小组 ..
+mod_ls_fakesamegroup=连接组
+mod_ls_efakeuser=丢失或无效的假用户
+mod_ls_efakegroup=假组缺失或无效
+mod_ls_options=目录列表选项
+mod_ls_strict=覆盖用户选项？
+
+mod_auth_home=主目录
+mod_auth_none=没有
+
+stop_err=停止FTP服务器失败
+stop_einetd=在inetd模式下，无法停止服务器守护程序。
+stop_erun=没有运行
+
+apply_err=无法应用FTP配置
+apply_egone=不再运行
+
+log_anonc=为服务器 $1设置匿名FTP
+log_anons=为服务器 $1重新配置了匿名FTP
+log_anond=删除服务器 $1的匿名FTP
+log_anonm=手动编辑服务器 $1的匿名FTP
+log_anon=服务器 $2的匿名FTP中的 $1已更改
+
+eafter=配置验证失败： $1尚未保存更改。
+proftpd_apply=应用更改
+proftpd_stop=停止ProFTPd
+proftpd_start=启动ProFTPd

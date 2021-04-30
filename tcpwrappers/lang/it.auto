@@ -1,0 +1,33 @@
+index_title=Wrapper TCP
+index_return=indice
+index_allowtitle=Host consentiti
+index_denytitle=Host negati
+index_norule=Non sono state ancora definite regole in <tt>$1</tt>.
+index_nofile=Il file "$1" non esiste - controlla la <a href="/config.cgi?tcpwrappers">configurazione del modulo</a>
+index_add=Aggiungi una nuova regola.
+index_service=Demone
+index_hosts=host
+index_cmd=Comando
+index_delete=Elimina selezionato
+index_none=nessuna
+
+edit_title1allow=Crea Regola Consenti
+edit_title2allow=Modifica consenti regola
+edit_title1deny=Crea regola di rifiuto
+edit_title2deny=Modifica regola nega
+edit_eid=Questa regola non è stata trovata
+edit_header=Opzioni per le regole
+edit_service=Servizi
+edit_except=Tranne i servizi
+edit_hosts=Host remoti
+edit_hostsexcept=Tranne gli host
+edit_cmd=Comandi Shell
+edit_efound=Il demone '$1' non è stato trovato nella configurazione di xinetd.
+
+save_errtitle=Errore nella regola di salvataggio
+save_ehost=L'input dell'host contiene caratteri non validi
+save_ecmd=L'input del comando contiene caratteri errati
+save_eservice=I nomi dei demoni contengono caratteri errati
+
+del_errtitle=Errore durante l'eliminazione delle regole
+del_enone=Nessuna regola contrassegnata per l'eliminazione

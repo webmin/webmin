@@ -1,5 +1,5 @@
 
-do 'adsl-client-lib.pl';
+require 'adsl-client-lib.pl';
 
 # backup_config_files()
 # Returns files and directories that can be backed up

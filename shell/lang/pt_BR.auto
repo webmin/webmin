@@ -1,0 +1,18 @@
+index_title=Shell de Comando
+index_ok=Executar comando:
+index_history=Histórico de comandos
+index_clear=Limpar histórico
+index_clearcmds=Limpar comandos
+index_desc=Digite um comando shell para executar no campo de texto abaixo. O comando <tt>cd</tt> pode ser usado para alterar o diretório dos comandos subseqüentes.
+index_pok=Executar comando anterior
+index_edit=Editar anterior
+index_trunced=A produção total de $2 foi truncada em $1.
+index_timedout=O comando foi encerrado após a execução por $1 segundos.
+
+acl_user=Executar comandos como usuário
+acl_user_def=Usuário atual do Webmin
+acl_shellenv=Usar o ambiente do usuário selecionado?
+acl_chroot=Chroot para o diretório
+
+log_run=Comando Ran $1 
+log_clear=Histórico de comando limpo

@@ -1,0 +1,37 @@
+index_title=Cluster Cron Jobs
+index_add=Ustvari novo opravilo cluster cron.
+index_none=Ni definirano nobeno delo v grozdu.
+index_servers=Zaženi na strežnikih
+index_return=seznam delovnih mest cluster cron
+index_more=$1 več ..
+index_run=Zaženi zdaj ..
+index_actions=Dejanja
+
+edit_title=Uredi delo Cluster Cron
+create_title=Ustvari delo Cluster Cron
+edit_servers=Zaženi na strežnikih
+edit_group=Člani $1 
+edit_this=ta strežnik
+edit_all=&lt;Vsi gostitelji&gt;
+edit_emissing=Cron služba ne obstaja več!
+
+save_err=Ni bilo mogoče shraniti opravila cluster cron
+
+exec_title=Izvedite delo Cluster Cron
+exec_cmd=Teče $1 na izbranih strežnikih ..
+exec_failed= $1 : $2 ni bilo mogoče zagnati
+exec_success=Izhod iz $1.
+exec_nohosts=Noben gostitelj ni izbran, če želite izvajati, ali izbrane skupine ne vsebujejo uporabnih gostiteljev.
+
+log_run=Ran $1 na $2 strežnikih
+log_run_l=Razmerje $1 na $2 
+log_create=Ustvarjeno opravilo cluster cron za $1 
+log_create_l=Ustvarjeno delo v grozdu cron $2 za $1 
+log_modify=Spremenjeno opravilo cluster cron za $1 
+log_modify_l=Spremenjeno opravilo cluster cron $2 za $1 
+log_delete=Izbrisano opravilo cluster cron za $1 
+log_delete_l=Izbrisana naloga grozda cron $2 za $1 
+log_deletes=Izbrisana so opravila $1 cluster cron
+
+delete_err=Brisanja opravil v grozdu ni mogoče izbrisati
+delete_enone=Izbrana ni nobena

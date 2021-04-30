@@ -1,0 +1,205 @@
+index_title=Bėgimo procesai
+index_display=Ekranas
+index_tree=PID
+index_user=Vartotojas
+index_size=Atmintis
+index_cpu=Centrinis procesorius
+index_search=Paieška
+index_zone=Zona
+index_run=Bėk ..
+index_return=proceso sąrašas
+index_mem2=<b>Tikra atmintis:</b> $1 iš viso / $2 nemokama
+index_mem3=<b>Tikroji atmintis:</b> $1 iš viso / $2 nemokama / $3 talpykloje
+index_swap2=<b>Keitimo vieta:</b> $1 iš viso / $2 nemokama
+index_burst=<b>Kaupiama atmintis:</b> iš viso $1 
+index_loadname=CPU apkrovos vidurkiai:
+index_loadnums=$1 (1 min.), $2 (5 min.), $3 (15 min.)
+index_cpuname=CPU tipas:
+index_inzone=$1 zonoje
+
+pid=ID
+owner=Savininkas
+command=Komanda
+cpu=Centrinis procesorius
+size=Dydis
+parent=Tėvų procesas
+runtime=Bėgimo laikas
+nice=Gražus lygis
+stime=Pradėjo
+sclass=IO planavimo klasė
+sprio=IO prioritetas
+
+search_user=Priklauso
+search_match=Sutampa
+search_cpupc=Naudojant daugiau nei $1% CPU
+search_cpupc2=Naudojant daugiau procesoriaus nei
+search_fs=Naudojimasis failų sistema
+search_files=Naudojant failą
+search_submit=Paieška
+search_none=Nerasta jokių atitikimo procesų.
+search_kill=Siųsti signalą
+search_ignore=Nepaisykite paieškos procesų
+search_return=paieškos forma
+search_sigterm=Nutraukti procesus
+search_sigkill=Žudymo procesai
+search_port=Naudojant uostą
+search_protocol=protokolas
+search_ip=Naudojant IP adresą
+
+run_command=Komanda bėgti
+run_submit=Bėk
+run_mode=Vykdymo režimas
+run_bg=Vykdyti fone
+run_fg=Palaukite, kol baigsite
+run_input=Įėjimas į komandą
+run_title=Komandos išėjimas
+run_output=Išvestis iš $1 ..
+run_none=Negaunama išvestis
+run_ecannot=Jums neleidžiama vykdyti komandų
+run_as=Vykdyti kaip vartotoją
+run_euser=Trūksta arba netinkamas vartotojo vardas
+run_euser2=Jums neleidžiama vykdyti komandų kaip pasirinktam vartotojui
+
+edit_title=Informacija apie procesą
+edit_gone=Šis procesas nebeveikia
+edit_sub=Subprocesai
+edit_subid=ID
+edit_subcmd=Papildomo proceso komanda
+edit_kill=Siųsti signalą
+edit_change=Keisti
+edit_prilow=Žemas prioritetas
+edit_prihigh=Aukštas prioritetas
+edit_pridef=Numatytas
+edit_none=Nė vienas
+edit_ecannot=Jums neleidžiama redaguoti procesų
+edit_sigterm=Nutraukti
+edit_sigkill=Nužudyk
+edit_sigstop=Sustabdyti
+edit_sigcont=Aprašymas
+edit_open=Failai ir jungtys
+edit_trace=Pėdsakų procesas
+edit_return=apdoroti detales
+
+kill_err=Nepavyko nusiųsti signalo $1 apdoroti $2 
+kill_title=Siųsti signalą
+kill_sent=išsiųstas
+kill_ecannot=Jums neleidžiama žudyti procesų
+
+renice_err=Nepavyko pernuomoti $1 proceso
+renice_ecannot=Jums neleidžiama nuomotis procesų
+
+linux_pri=Prioritetas
+linux_tty=TTY
+linux_status=Statusas
+linux_wchan=Laukia
+linux_mem=Atmintis
+linux_group=Grupė
+linux_ruser=Tikras vartotojas
+linux_rgroup=Tikra grupė
+linux_pgid=Proceso grupės ID
+linux_stime=Pradėjo
+
+linuxstat_R=Bėgimas
+linuxstat_S=Miega
+linuxstat_D=Gilus miegas
+linuxstat_T=Sustojo
+linuxstat_Z=Zombie
+
+linux_real=Realus laikas
+linux_be=Geriausios pastangos
+linux_idle=Tuščiosios eigos
+
+freebsd_ruser=Tikras vartotojas
+freebsd_rgroup=Tikra grupė
+freebsd_tty=TTY
+freebsd_pgid=Proceso grupė
+freebsd_stime=Pradėjo
+freebsd_lim=Atminties riba
+
+hpux_pri=Prioritetas
+hpux_tty=TTY
+hpux_status=Statusas
+hpux_wchan=Laukiu
+hpux_stime=Pradėjo
+
+hpuxstat_0=Neegzistuoja
+hpuxstat_S=Miega
+hpuxstat_W=Laukia
+hpuxstat_R=Bėgimas
+hpuxstat_I=Tarpinis
+hpuxstat_Z=Zombie
+hpuxstat_T=Sustojo
+hpuxstat_G=Auga
+
+macos_tty=TTY
+
+sysv_group=Grupė
+sysv_ruser=Tikras vartotojas
+sysv_rgroup=Tikra grupė
+sysv_pgid=Proceso grupės ID
+sysv_tty=TTY
+sysv_stime=Pradėjo
+sysv_task=Užduoties ID
+sysv_zone=Zonos pavadinimas
+
+log_run=Išleido komandą „$1“
+log_kill=Išsiųstas signalas $1 apdoroti $2 
+log_kills=Siųskite $1 signalą į $2 procesus
+log_kill_l=Išsiųstas signalas $1 apdoroti $2 
+log_kills_l=Išsiųstas signalas $1 procesams <br> $2 
+log_renice=Pakeistas proceso $2 prioritetas į $1 
+
+acl_manage=Valdykite procesus kaip vartotojas
+acl_manage_def=Dabartinis „Webmin“ vartotojas
+acl_edit=Ar gali užmušti ir atgaivinti procesus?
+acl_run=Ar gali vykdyti komandas?
+acl_only=Ar gali pamatyti tik savo procesus?
+acl_who=Gali valdyti procesus vartotojams
+acl_who0=Visi vartotojai
+acl_who1=Dabartinis „Webmin“ vartotojas
+acl_who2=Išvardyti vartotojai ..
+
+kill_kill=Nužudymo procesas
+kill_term=Nutraukti
+kill_hup=Perkrauti
+kill_stop=Sustabdyti
+kill_cont=Tęsti
+
+open_title=Atidarykite Failai ir jungtys
+open_proc=$1 procesui (PID $2)
+open_header1=Atidaryti failus
+open_header2=Atidarykite tinklo jungtis
+open_type=Tipas
+open_proto=Protokolas
+open_desc=Išsami informacija
+open_fd=Bylų aprašymas
+open_listen1=Klausymas uoste $1 
+open_listen2=Klausoma adresu $1 prievadas $2 
+open_recv=Gavimas $1:$2 
+open_conn=Prijungta nuo $1 iki $2 būsenoje $3 
+open_cwd=Dabartinis rež
+open_rtd=Šaknies rež
+open_txt=Programos kodas
+open_mem=Bendra biblioteka
+open_dir=Katalogas
+open_reg=Įprasta byla
+open_chr=Charakteris ypatingas
+open_blk=Blokuoti specialiai
+open_size=Failo dydis
+open_inode=Inode
+open_file=Kelias
+
+trace_title=Pėdsakų procesas
+trace_start=Pradinė sistemos skambučio sekimo priemonė $1.
+trace_doing=Sistemos skambučio sekimas $1  :
+trace_done=.. procesas baigtas.
+trace_failed=.. atsekti nepavyko!
+trace_sorry=Šis puslapis reikalauja „Java“ palaikymo jūsų naršyklėje. Norėdami naudoti tik teksto proceso pėdsaką, sureguliuokite modulio konfigūraciją.
+trace_syscalls=Atsekimo sistemos skambučiai:
+trace_all=Visi
+trace_sel=Išvardytos ..
+trace_change=Keisti
+
+windows_threads=Proceso gijos
+
+syslog_dmesg=Branduolio žinutės

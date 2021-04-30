@@ -1,0 +1,126 @@
+<header> Korvaako varmuuskohteet strftime-aika? </header> Jos tämän asetuksen arvo on <b>Kyllä</b> , varmuuskopion kohdetiedoston nimessä voidaan käyttää koodeja, kuten%d,%m,%Y ja%u. Ne korvataan päivällä, kuukaudella ja viikonpäivällä, kun varmuuskopiointi suoritetaan. Tämä on hyödyllistä, jos haluat tallentaa erilaisen varmuuskopion joka päivä, jotta voit palauttaa järjestelmän takaisin edelliseen päivämäärään. <p> Joitakin muita koodeja, joita voidaan käyttää, ovat: <br><pre> <font size=-1>
+ %a Lyhennetty viikonpäivänimi käyrän mukaan
+        vuokrata paikkakunta.
+
+ %A Koko viikonpäivänimi nykyisen mukaan
+        maa.
+
+ %b Lyhennetty kuukauden nimi nykyisen mukaan
+        maa.
+
+ %B Koko kuukauden nimi nykyisen mukaan
+        maa.
+
+ %c Suositeltu päivämäärä ja aika esitys
+        nykyinen sijainti.
+
+ %C luvun numero (vuosi / 100) 2-numeroisena kokonaislukuna.
+
+ %d Kuukauden päivä desimaalilukuna (alue 01
+        31).
+
+ %e Kuten%d, kuukauden päivä desimaalilukuna,
+        mutta johtava nolla korvataan välilyönnillä.
+
+ %E-muokkain: käytä vaihtoehtoista muotoa, katso alla.
+
+ %G ISO 8601 -vuosi vuosisadan desimaalilukuna.
+        Nelinumeroinen vuosi, joka vastaa ISO-viikon numeroa
+        ber (katso%V). Tällä on sama muoto ja arvo
+        %y, paitsi jos ISO-viikon numero kuuluu
+        edelliseen tai seuraavaan vuoteen käytetään kyseistä vuotta
+        sen sijaan.
+
+ %g Kuten%G, mutta ilman vuosisataa, ts. kaksinumeroisella
+        vuosi (00-99).
+
+ %h Vastaa%b: tä.
+
+ %H Tunti desimaalilukuna käyttämällä 24 tunnin kelloa
+        (alue 00 - 23).
+
+ %I Tunnin desimaalilukuna 12-tunnin kelloa käyttämällä
+        (alue 01 - 12).
+
+ %j Vuoden päivä desimaalilukuna (alue 001
+        366).
+
+ %k Tunti (24 tunnin kello) desimaalilukuna (alue
+        0 - 23); yksittäisiä numeroita edeltää tyhjä.
+        (Katso myös%H.)
+
+ %l Tunti (12 tunnin kello) desimaalilukuna (alue
+        1 - 12); yksittäisiä numeroita edeltää tyhjä.
+        (Katso myös%I.)
+
+ %m Kuukausi desimaalilukuna (alue 01–12).
+
+ %M minuutti desimaalilukuna (alue 00-59).
+
+ %n Uusi rivin merkki.
+
+ %O -muunnin: käytä vaihtoehtoista muotoa, katso alla.
+
+ %p Joko `AM’ tai `PM’ annetun ajan mukaan
+        arvo tai vastaavat virtajonot
+        maa. Keskipäivää pidetään &quot;pm&quot; ja keskiyötä kuin
+        `am&#39;.
+
+ %P Kuten%p, mutta pienillä kirjaimilla: &#39;am&#39; tai `pm &#39;tai korjaus
+        sponding merkkijono nykyiselle alueelle.
+
+ %r Aika am tai pm -merkinnässä. POSIXissa
+        locale tämä vastaa &#39;%I:%M:%S%p&#39;.
+
+ %R Aika 24 tunnin merkinnässä (%H:%M). Varten a
+        versio sekunnit mukaan lukien, katso%T alla.
+
+ %s Sekuntien lukumäärä aikakaudesta, ts. vuodesta
+        1970-01-01 00:00:00 UTC.
+
+ %S Toinen desimaalilukuna (alue 00 - 61).
+
+ %t Välilehden merkki.
+
+ %T Aika 24 tunnin merkinnässä (%H:%M:%S).
+
+ %u Viikonpäivä desimaalina, alue 1-7,
+        Maanantai 1. on. Katso myös%w.
+
+ %U Kuluvan vuoden viikon numero desimaalina
+        numero, alue 00 - 53, alkaen ensimmäisestä
+        Sunnuntai viikon 01 ensimmäisenä päivänä. Katso myös%V ja
+        %W.
+
+ %V Kuluvan vuoden ISO 8601: 1988 -viikkonumero
+        desimaalilukuna, alue 01 - 53, missä viikko 1
+        on ensimmäinen viikko, jolla on vähintään 4 päivää
+        kuluvana vuonna ja maanantaina ensimmäisenä päivänä
+        viikko. Katso myös%U ja%W.
+
+ %w Viikonpäivä desimaalina, alue 0–6,
+        Sunnuntai on 0. Katso myös%u.
+
+ %W Kuluvan vuoden viikon numero desimaalina
+        numero, alue 00 - 53, alkaen ensimmäisestä
+        Maanantai viikon 01 ensimmäisenä päivänä.
+
+ %x Nykyisen ensisijainen esityspäivämäärä
+        locale ilman aikaa.
+
+ %X Virran ensisijainen aikaesitys
+        locale ilman päivämäärää.
+
+ %y vuosi desimaalilukuna ilman vuosisataa
+        (alue 00 - 99).
+
+ %Y vuosi desimaalilukuna, mukaan lukien vuosisata.
+
+ %z Aikavyöhyke tunnissa poikkeamana GMT: sta. Vaaditaan
+        emittoi RFC822-yhteensopivia päivämääriä (käyttäen &quot;%a,%d%b%Y
+        %H:%M:%S%z &quot;).
+
+ %Z Aikavyöhyke tai nimi tai lyhenne.
+
+ %%Kirjaimellinen `% &#39;merkki.
+</font> </pre><footer>

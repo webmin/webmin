@@ -76,7 +76,8 @@ print &ui_table_row($text{'users_root'},
 	&ui_select("root", lc($root), \@opts));
 
 # SSH 1 RSA authentication
-if ($version{'type'} ne 'ssh' || $version{'number'} < 3) {
+if (($version{'type'} eq 'ssh' && $version{'number'} < 3) ||
+    ($version{'type'} eq 'openssh' && $version{'number'} < 7.3)) {
 	$rsa = &find_value("RSAAuthentication", $conf);
 	print &ui_table_row($text{'users_rsa'},
 		&ui_yesno_radio('rsa', lc($rsa) ne 'no'));

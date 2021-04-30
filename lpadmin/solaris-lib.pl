@@ -20,7 +20,7 @@ sub list_printers
 {
 return () if (!&sched_running());
 local(@rv, $_);
-if (open(CONF, "/etc/printers.conf")) {
+if (open(CONF, "</etc/printers.conf")) {
 	# Printers can be read from a file
 	while(<CONF>) {
 		s/\r|\n//g;

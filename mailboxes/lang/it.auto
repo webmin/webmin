@@ -1,0 +1,18 @@
+index_return=lista degli utenti
+
+mail_specialsync=Sincronizza speciale
+
+view_nobody=Questo messaggio non ha contenuti del corpo.
+
+search_msg6=Risultati della ricerca per $1 nel campo $2
+
+left_mail=posta
+left_search=Ricerca:
+left_folders=Gestisci cartelle
+left_addresses=Rubrica
+left_prefs=Preferenze di posta
+left_forward=Inoltra email
+left_autoreply=Risposta automatica
+left_filter=Filtri email
+left_pass=Cambia la password
+left_sig=Modifica firma

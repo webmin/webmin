@@ -1,0 +1,316 @@
+index_title=Administrare imprimantă
+index_header=Imprimante disponibile
+index_name=Imprimanta
+index_desc=Descriere
+index_to=Tipăriți la
+index_driver=Conducător auto
+index_enabled=Activat?
+index_accepting=Acceptarea?
+index_jobs=Locuri de munca
+index_none=Nu există imprimante instalate pe acest sistem.
+index_list=Listă ..
+index_jlist=Locuri de munca ..
+index_jcount=$1 locuri de muncă ..
+index_add=Adăugați o imprimantă nouă.
+index_stop=Opriți programul
+index_stopmsg=Faceți clic pe acest buton pentru a opri procesul de rulare a programului de imprimare. Acest lucru va împiedica orice utilizator local sau de la distanță să imprime pe sistemul dvs.
+index_start=Porniți Scheduler
+index_startmsg=Faceți clic pe acest buton pentru a începe procesul de planificare a tipăririi. Acest lucru va permite utilizatorilor locali și de la distanță să imprime pe sistemul dvs.
+index_restart=Reporniți Scheduler
+index_restartmsg=Faceți clic pe acest buton pentru a reporni procesul de planificare a tipăririi. Acest lucru va forța să fie aplicată configurația curentă de imprimare.
+index_return=lista de imprimante
+index_esystem=Fie instalați software-ul pentru sistemul de imprimare ales, fie utilizați <a href='$1'>configurația modulului</a> pentru ao schimba.
+index_style=Sistem de imprimare: $1 
+index_cluster=Servere Cluster
+index_clusterdesc=Faceți clic pe acest buton pentru a configura servere Webmin suplimentare pe care vor fi create, actualizate și șterse imprimante.
+index_delete=Ștergeți imprimante selectate
+
+style_solaris=Solaris
+style_linux=LPR Linux
+style_freebsd=LPR FreeBSD
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=CUPS
+style_irix=IRIX
+style_aix=AIX
+
+edit_eedit=Nu aveți voie să editați această imprimantă
+edit_eadd=Nu aveți voie să adăugați imprimante
+edit_add=Creați imprimantă
+edit_edit=Editează imprimanta
+edit_conf=Configurare imprimantă
+edit_name=Nume
+edit_acc=Acceptarea cererilor?
+edit_why=Nu - De ce nu
+edit_desc=Descriere
+edit_ena=Imprimarea este activată?
+edit_acl=Controlul accesului
+edit_allow=Permiteți tuturor
+edit_deny=Neagă toată lumea
+edit_allowu=Permiteți utilizatorii enumerați ..
+edit_denyu=Refuză utilizatorii enumerați ..
+edit_banner=Imprima banner?
+edit_opt=facultativ
+edit_default=Imprimantă implicită?
+edit_already=Deja imprimanta implicită
+edit_max=Dimensiunea maximă a lucrării de tipărire
+edit_unlimited=Nelimitat
+edit_dacc=Șoferul acceptă
+edit_dtext=Text
+edit_dpost=post-scriptum
+edit_dother=Alte
+edit_alt=Alte nume de imprimantă
+edit_dest=Tipărire destinație
+edit_dev=Dispozitiv local
+edit_file=Fișier local
+edit_remote=Server Unix la distanță
+edit_rqueue=Imprimanta
+edit_type=Tip
+edit_smb=Server Windows la distanță
+edit_share=Imprimanta
+edit_user=Utilizator
+edit_pass=Parola
+edit_wgroup=Workgroup
+edit_hpnp=Serverul HPNP de la distanță
+edit_port=Port
+edit_direct=Conexiune directă TCP
+edit_dport=Port
+edit_driver=Driver de imprimantă
+edit_check=Verificați dacă serverul de la distanță este activ?
+
+blocks=blocuri
+
+save_err=Salvarea imprimantei nu a reușit
+save_eadd=Nu aveți voie să adăugați imprimante
+save_eedit=Nu aveți voie să editați această imprimantă
+save_ename=„$1” nu este un nume de imprimantă valid
+save_edup=O imprimantă numită „$1” există deja
+save_eallow=Niciun utilizator nu permite accesarea
+save_edeny=Nu a fost introdus niciun utilizator care să refuze
+save_euser=Utilizatorul „$1” nu există
+save_etype=Trebuie să selectați cel puțin un tip pentru a accepta acest driver
+save_emax=Dimensiunea maximă a lucrării de imprimare trebuie să fie un număr întreg
+save_efile=„$1” nu există
+save_erhost=Gazda de la distanță „$1” nu există
+save_erport=Portul de la distanță „$1” nu este valid
+save_erqueue=„$1” nu este un nume de coadă de la distanță valid
+save_eremote=Driverele nu pot fi utilizate cu imprimante Unix la distanță
+save_edhost=Gazda directă „$1” nu există
+save_edport=Portul direct lipsă sau nevalid
+save_evalid=Sistemul de imprimare nu a permis această imprimantă
+save_errslave=Imprimanta a creat OK pe acest sistem, dar au apărut următoarele erori la sistemele de cluster : $1 
+save_egone=Nu a fost găsită nicio imprimantă numită „$1”
+save_errdelslave=Imprimanta a șters OK pe acest sistem, dar au apărut următoarele erori pe sistemele de cluster : $1 
+
+jobs_title=Tipărire lucrări
+jobs_header=Tipăriți lucrările pe $1 
+jobs_id=ID post
+jobs_size=mărimea
+jobs_by=Trimis de
+jobs_when=Înscris la At
+jobs_file=Nume de fișier
+jobs_cancel=Faceți clic pe un ID de job din lista de mai sus pentru a anula.
+jobs_cancelview=Faceți clic pe un ID de job din lista de mai sus pentru a anula, sau faceți clic pe dimensiunea jobului pentru ao vizualiza.
+jobs_none=Imprimanta $1 nu are nicio lucrare pendinte.
+jobs_all=Anulați toate lucrările de tipărire
+jobs_bytes=bytes
+jobs_test=Tipăriți pagina de testare
+jobs_cancelsel=Anulați lucrările selectate
+jobs_on=Pe imprimantă $1 
+jobs_return=lista lucrărilor tipărite
+
+cancel_ecannot=Nu aveți voie să anulați lucrările de imprimare
+cancel_err=Eroare la anularea lucrării de imprimare
+cancel_egone=Lucrarea de imprimare $1 nu mai există
+
+view_ecannot=Nu puteți vedea această lucrare de tipărire
+view_egone=Această lucrare de tipărire nu mai există
+
+start_ecannot=Nu aveți voie să porniți programatorul
+start_err=Eșecul la pornirea programului
+
+stop_ecannot=Nu aveți voie să opriți programatorul
+stop_err=Nu a reușit oprirea programului
+
+restart_ecannot=Nu aveți voie să reporniți programatorul
+restart_err=Nu a putut reporni programatorul
+
+webmin_none=Nici unul
+webmin_nonemsg=Postscript sau imprimantă text
+webmin_remotemsg=Imprimantă la distanță
+webmin_model=Model
+webmin_prog=Program
+webmin_driver=Driver Webmin
+webmin_uniprint=Driver uniprint
+webmin_edrivers=Nu a reușit să obțineți șoferi de la $1. Driverele de imprimantă Webmin care folosesc ghostscript nu sunt disponibile
+webmin_egs=Comanda $1 nu a fost găsită. Driverele de imprimantă Webmin care folosesc ghostscript nu sunt disponibile
+webmin_edriver=„$1” nu există
+
+caldera_none=Nici unul
+caldera_nonemsg=Imprimantă la distanță sau brută
+caldera_prog=Program
+caldera_coas=Șofer COAS
+caldera_printer=Imprimantă și rezoluție
+caldera_eof=Trimite EOF?
+caldera_paper=Dimensiunea hartiei
+caldera_double=Imprimați față-verso?
+caldera_gsopts=Opțiuni suplimentare GS
+caldera_uniprint=Driver uniprint
+caldera_eprog=„$1” nu există
+caldera_edriver=Nu a fost selectat un driver de imprimantă
+caldera_eres=Nici o rezoluție selectată
+
+redhat_none=Nici unul
+redhat_nonemsg=Postscript sau imprimantă text
+redhat_prog=Program
+redhat_driver=Șoferul Redhat
+redhat_printer=Imprimantă și rezoluție
+redhat_eof=Trimite EOF?
+redhat_paper=Dimensiunea hartiei
+redhat_pages=Pagini pe pagină de ieșire
+redhat_gsopts=Opțiuni suplimentare GS
+redhat_hmargin=Marja dreapta/stanga
+redhat_vmargin=Marja de sus/de jos
+redhat_crlf=Remediați textul în trepte?
+redhat_eprog=„$1” nu există
+redhat_edriver=Nu a fost selectat un driver de imprimantă
+redhat_ehmargin=Lipsește sau este nevalidă marginea din dreapta/stânga
+redhat_evmargin=Lipsește sau nu este valabilă marja de sus/jos
+redhat_eres=Nici o rezoluție selectată
+redhat_printer2=Modelul și driverul imprimantei
+
+suse_none=Nici unul
+suse_nonemsg=Postscript sau imprimantă text
+suse_prog=Program
+suse_driver=Driver APSfilter
+suse_printer=Tip imprimantă
+suse_res=Rezolutie in DPI
+suse_colour=Imprimantă color?
+suse_paper=Dimensiunea hartiei
+suse_method=Metoda de filtrare
+suse_auto=Automat
+suse_ascii=ASCII
+suse_raw=Brut
+suse_extra=Opțiuni extra-scripturi
+suse_yast2=Șofer YAST2
+suse_edriver=Nu a fost selectat tipul de imprimantă
+suse_eres=Rezoluție lipsă sau nevalidă
+
+estop=Nu a reușit oprirea lpd : $1 
+
+acl_printers=Imprimantele pe care le poate configura acest utilizator
+acl_add=Poți adăuga noi imprimante?
+acl_cancel=Pot anula lucrările de tipărire?
+acl_stop=Poate opri sau porni programatorul?
+acl_restart=Reporniți numai
+acl_listed=Numai pentru imprimante selectate ..
+acl_pall=Toate imprimantele
+acl_psel=Selectat ..
+acl_view=Afișează imprimante neconfigurabile?
+acl_test=Se pot tipări pagini de testare?
+acl_user=Gestionați lucrările de tipărire deținute de
+acl_user_all=Toți utilizatorii
+acl_user_this=Utilizator curent Webmin
+acl_delete=Se pot șterge imprimantele?
+acl_cluster=Poate gestiona clusterul de imprimantă?
+
+log_stop=Planificatorul de imprimare oprit
+log_start=A început programatorul de imprimare
+log_restart=S-a repornit programatorul de imprimare
+log_cancel_job=Lucrare de imprimare anulată $2 pe $1 
+log_cancel_all=A anulat toate lucrările de tipărire pe $1 
+log_cancel_sel=Anulează $2 lucrări de imprimare pe $1 
+log_create=Imprimantă creată $1 pe $2 
+log_modify=Imprimantă modificată $1 pe $2 
+log_delete=S-a șters imprimanta $1 pe $2 
+log_create_l=Imprimantă creată $3 $1 pe $2 
+log_modify_l=Imprimantă modificată $3 $1 pe $2 
+log_delete_l=S-a șters imprimanta $3 $1 pe $2 
+
+linux_paralel=Port paralel $1 
+linux_serial=Port serial $1 (COM $1)
+linux_null=Dispozitiv nul
+linux_usb=Imprimantă USB $1 
+linux_ecmd=Comanda $1 nu a fost găsită pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare Linux nu este instalat.
+linux_espool=Directorul spool $1 nu există pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare Linux nu este instalat.
+
+freebsd_paralel=Port paralel
+freebsd_serial=Port serial $1 (COM $1)
+freebsd_ecmd=Comanda $1 nu a fost găsită pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare FreeBSD nu este instalat.
+freebsd_espool=Directorul spool $1 nu există pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare FreeBSD nu este instalat.
+
+openbsd_paralel=Port paralel
+openbsd_serial=Port serial $1 (COM $1)
+
+unixware_paralel=Port paralel $1 
+unixware_serial=Port serial $1 
+unixware_null=Dispozitiv nul
+unixware_ecmd=Comanda $1 nu a fost găsită pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare UnixWare nu este instalat.
+
+hpux_paralel=Paralel $1 
+hpux_serial=Serial $1 
+hpux_null=Dispozitiv nul
+hpux_ecmd=Comanda $1 nu a fost găsită în sistemul dvs., ceea ce indică faptul că sistemul de imprimare HPUX nu este instalat.
+hpux_eiface=Directorul scripturilor de interfață $1 nu există pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare HPUX nu este instalat.
+
+lprng_paralel=Port paralel $1 
+lprng_serial=Port serial $1 (COM $1)
+lprng_null=Dispozitiv nul
+lprng_ecmd=Comanda $1 nu a fost găsită pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare LPRng nu este instalat.
+lprng_espool=Directorul spool $1 nu există pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare LPRng nu este instalat.
+
+solaris_paralel=Port paralel
+solaris_uparalel=Port paralel Ultra 5/10
+solaris_serial=Port serial $1 
+solaris_null=Dispozitiv nul
+solaris_ecmd=Comanda $1 nu a fost găsită pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare Solaris nu este instalat.
+
+test_title=Tipăriți pagina de testare
+test_ecannot=Nu aveți voie să imprimați pagini de testare
+test_desc=Acest formular vă permite să imprimați o pagină de testare pentru imprimanta $1. Selectați tipul de pagină pe care doriți să o imprimați :
+test_0=Pagina postscript alb-negru
+test_1=Pagina Postscript color
+test_2=Text simplu ASCII
+test_3=Orice fișier încărcat
+test_print=Imprima pagina
+test_exec=Tipărirea paginii de testare cu comanda $1 ..
+test_failed=.. comanda nu a reușit!
+test_ok=.. comanda finalizată.
+
+cups_none=Nici unul
+cups_nonemsg=Imprimantă la distanță sau brută
+cups_prog=Program
+cups_driver=Sofer CUPS
+cups_eprog=„$1” nu este un program valid
+cups_opts=Opțiuni pentru $1 
+cups_ecmd=Comanda $1 nu a fost găsită pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare CUPS nu este instalat.
+
+irix_ecmd=Comanda $1 nu a fost găsită în sistemul dvs., ceea ce indică faptul că sistemul de imprimare IRIX nu este instalat.
+irix_eiface=Directorul scripturilor de interfață $1 nu există pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare IRIX nu este instalat.
+
+aix_port=Portul de imprimantă $1 
+aix_edesc=Descriere nevalidă - sunt permise doar litere și numere și fără spații
+aix_ecmd=Serverul de imprimantă AIX $1 nu a fost găsit. Poate că nu este instalat sau este folosit un alt sistem de imprimare.
+
+cluster_title=Cluster Servere de imprimantă
+cluster_none=Încă nu au fost adăugate servere la clusterul de imprimantă.
+cluster_host=Numele gazdei
+cluster_desc=Descriere
+cluster_os=Sistem de operare
+cluster_add=Adauga server
+cluster_gadd=Adăugați servere în grup
+cluster_need=Pentru a putea fi gestionate aici, trebuie să adăugați servere cu o autentificare și parolă în modulul Index Web Servers.
+cluster_return=serverele de cluster
+cluster_delete=Sterge selectia
+cluster_ecannot=Nu aveți voie să gestionați serverele de imprimantă cluster
+
+add_title=Adăugați servere
+add_msg=Se adaugă $1 ..
+add_gmsg=Adăugarea serverelor în grupul $1 ..
+add_err=Eroare la adăugarea serverului
+add_gerr=Eroare la adăugarea grupului
+add_echeck=Serverul $1 nu are modulul Administrare imprimantă
+add_ediff=Serverul $1 utilizează un sistem de imprimare diferit ($2) pe acest server
+add_ediff2=Serverul $1 utilizează un server de imprimare diferit ($2) pe acest server
+add_ok=S-a adăugat $1, cu imprimante $2.

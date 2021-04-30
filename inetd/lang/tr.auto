@@ -1,0 +1,18 @@
+index_edit=Düzenleme hizmeti:
+index_search=Eşleşen görüntüleme hizmetleri:
+index_sok=Arama
+index_toomany=Bu sayfada görüntülenemeyecek kadar çok internet hizmeti var.
+index_none=Aramanızla eşleşen internet hizmeti yok.
+
+error_user=Şu şekilde yürütülecek eksik veya geçersiz kullanıcı:
+error_group=Olarak yürütülecek eksik veya geçersiz grup
+error_smfservice=Smf hizmeti cmd '$1' ile güncellenemedi, $2 hata kodu
+error_smf_cmdfield=Smf için, '$1' programının dosya adı komut alanının ilk bağımsız değişkeniyle eşleşmelidir, yani '$2' olmalıdır
+
+editrpc_act=Program durumu
+editrpc_stream=Akış
+editrpc_dgram=Veri Birimi
+editrpc_tli=TLI
+
+editserv_qm=Komut olmayabilir mi?
+editserv_ename=Bu ad ve protokole sahip hiçbir hizmet yok

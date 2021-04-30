@@ -1,0 +1,120 @@
+index_title=Jabber IM-bediener
+index_econfig=Die Jabber-opstellinglêer $1 bestaan nie. Óf Jabber is nie geïnstalleer nie, óf u <a href='$2'>module-opstelling</a> is verkeerd.
+index_edir=Die Jabber-basisgids $1 bestaan nie. Óf Jabber is nie geïnstalleer nie, óf u <a href='$2'>module-opstelling</a> is verkeerd.
+index_emodules=Die Perl-modules $1 en $2 wat deur Webmin benodig word vir die hantering van Jabber se XML-opstelling, is nie geïnstalleer nie. <a href='$3'>Klik hier</a> om dit direk vanaf CPAN te installeer.
+index_emodule=Die Perl-module $1 wat deur Webmin benodig word om die XML-konfigurasie van Jabber te hanteer, is nie geïnstalleer nie. <a href='$2'>Klik hier</a> om dit direk vanaf CPAN te installeer.
+index_expat=Maak seker dat u die Expat C-biblioteek en kopkaarte het voordat u die Perl-modules probeer installeer, aangesien dit daarvan afhanklik is en sal misluk as dit nie beskikbaar is nie.
+index_eparse=Die $1 perl-module kon nie u Jabber-konfigurasielêer ontleed nie : $2 
+index_ejabberd=Die Jabber-bedienerprogram $1 is nie op u stelsel gevind nie. Óf Jabber is nie geïnstalleer nie, óf u <a href='$2'>module-opstelling</a> is verkeerd.
+index_eversion=Webmin ondersteun slegs Jabber-weergawe $2, maar die opdrag $3 het die volgende weergawe-inligting gerapporteer : $1 
+index_eversion2=Webmin ondersteun slegs Jabber-weergawes onder $2, maar die opdrag $3 het die volgende weergawe-inligting gerapporteer : $1 
+index_start=Begin Jabber Server
+index_startmsg=Klik op hierdie knoppie om die Jabber-bediener op u stelsel te begin. Totdat dit begin word, sal geen kitsboodskapkliënte dit kan gebruik nie.
+index_stop=Stop Jabber Server
+index_stopmsg=Klik op hierdie knoppie om die loop van die Jabber-bediener op u stelsel te stop. Geen kitsboodskapkliënte sal dit kan gebruik as dit gestop word nie.
+index_restart=Pas veranderinge toe
+index_restartmsg=Klik op hierdie knoppie om die huidige konfigurasie toe te pas deur die Jabber-bediener te stop en dan weer te begin.
+index_comments=Waarskuwing - u Jabber config-lêer $1 bevat opmerkings, wat verwyder sal word indien enige konfigurasieveranderings met hierdie module aangebring word.
+index_return=Jabber-spyskaart
+index_version=Jabber-weergawe $1 
+
+general_title=Algemene opsies
+general_header=Globale Jabber-bedieneropsies
+general_host=U bediener se gasheernaam
+general_elog=Fout loglêer
+general_elogfmt=Fout log-formaat
+general_rlog=Toegang loglêer
+general_rlogfmt=Toegang log-formaat
+general_pidfile=Verwerk ID-lêer
+general_err=Kon nie algemene opsies stoor nie
+general_ehost=Ontbrekende of ongeldige bediener se gasheernaam
+general_eelog=Ontbrekende of ongeldige foutloglêer
+general_eelogfmt=Ontbrekende foutmeldingsformaat
+general_erlog=Ontbrekende of ongeldige verkeersloglêer
+general_erlogfmt=Ontbreek verkeerslogformaat
+general_epidfile=Ontbrekende of ongeldige proses-ID-lêer
+
+messages_title=boodskappe
+messages_header=Jabber-bedienerboodskap vir kliënte
+messages_wsubject=Welkomboodskap onderwerp
+messages_wbody=Welkom boodskap liggaam
+messages_vcard=Bediener vCard
+messages_rinstr=Registrasie-instruksies
+messages_rnotify=Stel admin by registrasie in kennis?
+messages_rfields=Vereiste registrasievelde
+messages_vcard2jud=Stuur vCard na die gebruikersgids van Jabber?
+messages_err=Kon nie boodskappe stoor nie
+messages_evcard=Ongeldige vCard XML : $1 
+messages_etag=Bediener vCard XML begin nie met &lt;vCard&gt; nie
+
+modules_title=Jabber-modules
+modules_desc=Die onderstaande modules word gebruik om boodskappe wat deur die Jabber-sessiebestuurder ontvang is, te verwerk. U moet hierdie lys slegs verander as u weet wat u doen.
+modules_header=Jabber-bedienersessiebestuurder-modules
+modules_mod=Module naam
+modules_so=Gedeelde biblioteek
+modules_err=Kon nie Jabber-modules stoor nie
+modules_emod='$1' is nie 'n geldige modulenaam nie
+modules_eso=Die gedeelde biblioteek '$1' bestaan nie
+
+karma_title=Karma Traffic Control
+karma_header=Opsies vir verkeer tariefbeheer
+karma_rate=Oormatige hantering van verbindings
+karma_rate_def=gestremde
+karma_rate_sel=Blokkeer kliënt vir $2 sekondes na $1 -konneksies
+karma_mode=Karma-modus
+karma_none=Geen beperkings nie
+karma_low=Lae verkeersgrense
+karma_medium=Medium verkeersgrense
+karma_high=Hoë verkeersbeperkings
+karma_sel=Gebruik die instellings wat hieronder gekies is.
+karma_heartbeat=Tydsduur in sekondes (<tt>hartklop</tt>)
+karma_init=Inisialisasietydperke (<tt>init</tt>)
+karma_max=Karma maksimum (<tt>maksimum</tt>)
+karma_inc=Karma-inkrement (<tt>inc</tt>)
+karma_dec=Karma-verlaging (<tt>dec</tt>)
+karma_penalty=Strafperiodes (<tt>straf</tt>)
+karma_restore=Periode vir herstel van herstel (<tt>herstel</tt>)
+karma_err=Kon nie karma-opsies stoor nie
+karma_eheartbeat=Ontbrekende of ongeldige periode
+karma_einit=Inisiasietydperke ontbreek of ongeldig
+karma_emax=Maksimum of ongeldige karma-maksimum
+karma_einc=Karma-toename ontbreek of ongeldig
+karma_edec=Karma-verklaring ontbreek of ongeldig
+karma_epenalty=Strafperiodes ontbreek of ongeldig
+karma_erestore=Ontbrekende of ongeldige herstelperiodes
+karma_epoints=Ontbrekende of ongeldige aantal verbindings
+karma_etime=Ontbrekende of ongeldige tyd om voor te sluit
+
+ips_title=IP-toegangsbeheer
+ips_header=Jabber-bediener se IP-toegangsbeheer
+ips_allow=Toegestane kliënt-IP's
+ips_all=Alle adresse
+ips_deny=Kliënt-IP's geweier
+ips_none=Geen
+ips_sel=Geadresseerde adresse/netmasks ..
+ips_err=Kon nie IP-toegangsbeheer stoor nie
+ips_eaddr='$1' is nie 'n geldige IP-adres of IP-adres/netmasker nie
+
+file_title=Wysig konfiglêer
+file_desc=Gebruik die vorm hieronder om die Jabber-opstellêer direk te wysig. Dit moet slegs gedoen word as u die XML-konfigurasieformaat verstaan.
+file_header=Wysig Jabber-konfigurasielêer
+file_err=Kon nie die konfigurasielêer stoor nie
+
+admin_title=Administratiewe gebruikers
+admin_header=Gebruikers van bedieneradministrasie
+admin_read=Lees toegangsadministrateurs
+admin_write=Skryf toegang administrateurs
+admin_reply=Antwoord outomaties op adminboodskappe?
+admin_rsubject=Onderwerp outomaties beantwoord
+admin_rbody=Beantwoord outomaties
+
+filter_title=Gebruikersfilters
+filter_header=Toestemmings vir gebruikersfilter
+filter_max=Maksimum filterreëls
+filter_conds=Toelaatbare filtertoestande
+filter_acts=Toegestane filterhandelinge
+
+restart_err=Kon nie veranderinge toepas nie
+stop_err=Kon nie Jabber stop nie
+stop_epid=Kon nie die Jabber-proses vind nie
+start_err=Kon nie Jabber begin nie

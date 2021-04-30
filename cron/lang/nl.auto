@@ -1,0 +1,22 @@
+index_manual=Cron-taken handmatig bewerken.
+index_next=Volgende run
+index_nunknown=Onbekend
+index_ecrondir_create=Wilt u een takenmap $1 maken?
+
+edit_next=Volgende runtime
+edit_saverun=Opslaan en nu uitvoeren
+
+save_eidx=Cron-taak is succesvol opgeslagen, maar kan niet worden uitgevoerd omdat deze niet is gevonden!
+
+when_interval=elke $1 seconden
+when_boot=bij het opstarten
+
+ucwhen_interval=Elke $1 seconden
+ucwhen_boot=Bij het opstarten
+
+manual_title=Cron-taken handmatig bewerken
+manual_edit=Cron-bestand om te bewerken:
+manual_ok=Bewerk
+manual_editing=Gebruik het onderstaande tekstvak om Cron-taken in $1 te bewerken. Wees voorzichtig, want Webmin zal geen validatie uitvoeren!
+manual_efile=Geselecteerd bestand is niet geldig!
+manual_ecannot=U mag cron-taken niet handmatig bewerken

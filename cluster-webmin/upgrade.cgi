@@ -200,7 +200,7 @@ else {
 	}
 
 # gunzip the file if needed
-open(FILE, $file);
+open(FILE, "<$file");
 read(FILE, $two, 2);
 close(FILE);
 if ($two eq "\037\213") {

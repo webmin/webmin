@@ -1,0 +1,17 @@
+index_title=Kerberos5-määritykset
+index_econf=Kerberos5-määritystiedostoa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin kokoonpano</a> on väärä.
+
+logging=Lokitiedostot
+default_log=Oletuslokitiedosto
+kdc_log=KDC-lokitiedosto
+admin_log=Järjestelmänvalvojan lokitiedosto
+
+libdefaults=Oletusasetukset
+dns_kdc=Käytä DNS-hakua KDC-hakuun
+default_realm=Valtakunta
+domain=Verkkotunnus
+default_kdc=KDC
+default_admin=Järjestelmänvalvojapalvelin
+default_domain=Oletusverkkotunnus
+
+save=Päivitä kokoonpano

@@ -1,0 +1,58 @@
+index_title=اسمارٹ ڈرائیو کی حیثیت
+index_ecmd=The SMART control command $1 was not found on your system, or is not set correctly in the <a href='$2'>module configuration</a>. It must be installed before this module can be used.
+index_ecmd2=The command $1 does not appear to be the SMART control command. It must be set correctly in the <a href='$2'>module configuration</a> before this module can be used.
+index_version=اسمارٹ سوئیٹ ورژن$1
+index_show=ڈرائیو کی حیثیت دکھائیں:
+index_ok=دکھائیں
+index_eidescsi=آپ کے سسٹم میں کوئی IDE ، SCSI یا SATA ڈرائیوز نہیں ملی ہیں۔
+index_drive=$1 ڈرائیو کی حیثیت
+index_drivesub=ڈرائیو$1 کی صورتحال ، ڈسک$2
+index_desc=مقام
+index_size=ڈرائیو کا سائز
+index_model=بنائیں اور ماڈل بنائیں
+index_support=اسمارٹ کی حمایت کرتا ہے؟
+index_enabled=اسمارٹ فعال ہے؟
+index_check=پاس کردہ ڈرائیو چیک؟
+index_short=مختصر سیلف ٹیسٹ
+index_ext=توسیعی خود ٹیسٹ
+index_data=ڈیٹا اکٹھا کرنے کا ٹیسٹ
+index_errors=خرابیاں لاگ ان
+index_ecount=$1 غلطیاں پائی گئیں
+index_attrs=اضافی اسمارٹ اوصاف
+index_raw=اسمارٹ کی مکمل رپورٹ
+index_return=ماڈیول انڈیکس
+index_family=ماڈل کنبہ
+index_serial=سیریل نمبر
+index_capacity=اہلیت
+index_norm=عام:
+
+monitor_type=اسمارٹ ڈرائیو چیک
+monitor_type2=SSD Wearout
+monitor_drive=چیک کرنے کے لئے چلاو
+monitor_errors=غلطی لاگ بھی چیک کریں؟
+monitor_errorsinc=ہاں ، لیکن صرف غلطی کی گنتی میں اضافہ ہونے پر الرٹ کریں
+monitor_other=دیگر ..
+monitor_edrive=چیک کرنے کیلئے لاپتہ یا غلط ڈرائیو
+monitor_nosuch=ایسی کوئی ڈرائیو نہیں
+monitor_nosmart=اسمارٹ کی کوئی سہولت نہیں
+monitor_errorsfound=$1 غلطیوں کی اطلاع دی
+monitor_errorsinced=خرابیاں $2 سے$1 میں بڑھ گئیں
+monitor_wearlevel=اگر پہننے کی سطح نیچے آجائے تو ناکام
+monitor_ewearlevel=لباس کی غلط فیصد
+monitor_nowearout=ڈرائیو SSD پہننے کے اشارے کی اطلاع نہیں دیتی ہے
+monitor_wornout=پہننے کی سطح$1 پر آ گئی ہے
+
+short_title=مختصر سیلف ٹیسٹ
+short_doing=$1 کا مختصر خود ٹیسٹ شروع کرنا۔
+short_failed=.. ناکام!
+short_ok=.. ٹیسٹ ٹھیک ہوا۔ نتائج کے ل the ماڈیول کے مرکزی صفحہ پر ڈرائیو کی حیثیت دیکھیں۔
+
+ext_title=توسیعی خود ٹیسٹ
+ext_doing=$1 کا توسیعی خود ٹیسٹ شروع کرنا۔
+ext_failed=.. ناکام!
+ext_ok=.. ٹیسٹ ٹھیک ہوا۔ نتائج کے ل the ماڈیول کے مرکزی صفحہ پر ڈرائیو کی حیثیت دیکھیں۔
+
+data_title=ڈیٹا اکٹھا کرنے کا ٹیسٹ
+data_doing=$1 سے آف لائن ڈیٹا اکٹھا کرنا شروع کیا جارہا ہے۔
+data_failed=.. ناکام!
+data_ok=.. جمع کرنا ٹھیک ہے۔ نتائج کے ل the ماڈیول کے مرکزی صفحہ پر ڈرائیو کی حیثیت دیکھیں۔

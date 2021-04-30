@@ -1,0 +1,8 @@
+index_title=Password per la modifica del cluster
+index_noservers=Nessun server su cui gestire gli utenti è stato definito nel modulo <a href=$1>Utenti e gruppi del cluster</a>.
+index_hosts=Tutte le modifiche apportate alla password utilizzando questo modulo verranno eseguite su tutti gli host $1 gestiti dal modulo Utenti e gruppi del cluster.
+
+passwd_err=Impossibile cambiare la password
+passwd_title=Modifica password
+passwd_on=Modifica password su $1 ..
+passwd_euser=L'utente non esiste!

@@ -105,7 +105,7 @@ if ($createsig) {
 # Fill an associative array with name=value pairs from a file
 sub read_file
 {
-open(ARFILE, $_[0]) || return 0;
+open(ARFILE, "<".$_[0]) || return 0;
 while(<ARFILE>) {
 	s/\r|\n//g;
         if (!/^#/ && /^([^=]*)=(.*)$/) {
@@ -123,7 +123,7 @@ sub write_file
 {
 local(%old, @order);
 &read_file($_[0], \%old, \@order);
-open(ARFILE, ">$_[0]");
+open(ARFILE, ">".$_[0]);
 foreach $k (@order) {
         print ARFILE $k,"=",$_[1]->{$k},"\n" if (exists($_[1]->{$k}));
 	}

@@ -1,35 +1,35 @@
 <header>Logowanie</header>
 
-<b>Log dostêpu</b>: Domy¶lny zale¿y od systemu, zazwyczaj gdzie¶
-w&nbsp;<tt>/var</tt>. Loguje aktywno¶æ zapytañ klientów. Zawiera zapisy
-o&nbsp;ka¿dym otrzymanym zapytaniu HTTP i&nbsp;ICP. <p>
+<b>Log dostÄ™pu</b>: DomyÅ›lny zaleÅ¼y od systemu, zazwyczaj gdzieÅ›
+w&nbsp;<tt>/var</tt>. Loguje aktywnoÅ›Ä‡ zapytaÅ„ klientÃ³w. Zawiera zapisy
+o&nbsp;kaÅ¼dym otrzymanym zapytaniu HTTP i&nbsp;ICP. <p>
 
-<b>Log pracy proxy</b>: Domy¶lny zale¿y od systemu. Plik logowania proxy.
-Jest to miejsce, do którego trafiaj± informacje o&nbsp;zachowaniu Twojego
-proxy. Mo¿esz zwiêkszyæ ilo¶æ logowanej w&nbsp;tym pliku informacji za
-pomoc± <b>Opcji ¶ledzenia</b>. <p>
+<b>Log pracy proxy</b>: DomyÅ›lny zaleÅ¼y od systemu. Plik logowania proxy.
+Jest to miejsce, do ktÃ³rego trafiajÄ… informacje o&nbsp;zachowaniu Twojego
+proxy. MoÅ¼esz zwiÄ™kszyÄ‡ iloÅ›Ä‡ logowanej w&nbsp;tym pliku informacji za
+pomocÄ… <b>Opcji Å›ledzenia</b>. <p>
 
-<b>Log buforów</b>: Domy¶lny zale¿y od systemu. Loguje aktywno¶æ zarz±dcy
-buforów cache. Pokazuje, które obiekty s± wyrzucane z&buforów, a&nbsp;które
-s± zachowywane i&nbsp;jak d³ugo. Aby wy³±czyæ to logowanie, wisz "none".
-Naprawdê nie ma narzêdzi do analizy tych danych, wiêc mo¿esz to spokojnie
-wy³±czyæ. <p>
+<b>Log buforÃ³w</b>: DomyÅ›lny zaleÅ¼y od systemu. Loguje aktywnoÅ›Ä‡ zarzÄ…dcy
+buforÃ³w cache. Pokazuje, ktÃ³re obiekty sÄ… wyrzucane z&buforÃ³w, a&nbsp;ktÃ³re
+sÄ… zachowywane i&nbsp;jak dÅ‚ugo. Aby wyÅ‚Ä…czyÄ‡ to logowanie, wisz "none".
+NaprawdÄ™ nie ma narzÄ™dzi do analizy tych danych, wiÄ™c moÅ¼esz to spokojnie
+wyÅ‚Ä…czyÄ‡. <p>
 
-<b>Plik metadanych dla buforów</b>: Domy¶lnie <tt>swap.log</tt>
-w&nbsp;ka¿dym katalogu buforów. Ten log zawiera metadane obiektów zapisanych
-na dysku. Jest u¿ywany do przybudowywania buforów podczas startu. Plik ten
-znajduje siê normalnie w&nbsp;ka¿dym katalogu buforów, ale mo¿esz podaæ tu
-inn± ¶cie¿kê. Zauwa¿, ¿e musisz podaæ pe³n± nazwê pliku, a&nbsp;nie jedynie
-katalag. Jako ¿e jest to plik indeksowy dla ca³ej listy obiektów, NIE WOLNO
-Ci go okresowo czy¶ciæ! <p>
+<b>Plik metadanych dla buforÃ³w</b>: DomyÅ›lnie <tt>swap.log</tt>
+w&nbsp;kaÅ¼dym katalogu buforÃ³w. Ten log zawiera metadane obiektÃ³w zapisanych
+na dysku. Jest uÅ¼ywany do przybudowywania buforÃ³w podczas startu. Plik ten
+znajduje siÄ™ normalnie w&nbsp;kaÅ¼dym katalogu buforÃ³w, ale moÅ¼esz podaÄ‡ tu
+innÄ… Å›cieÅ¼kÄ™. ZauwaÅ¼, Å¼e musisz podaÄ‡ peÅ‚nÄ… nazwÄ™ pliku, a&nbsp;nie jedynie
+katalag. Jako Å¼e jest to plik indeksowy dla caÅ‚ej listy obiektÃ³w, NIE WOLNO
+Ci go okresowo czyÅ›ciÄ‡! <p>
 
-Je¶li '%s' zostanie u¿yte w&nbsp;nazwie pliku, zostanie zast±pione przez
-nazwê pliku logu, w&nbsp;której ka¿dy znak '/' zast±piono przez '.'. Jest to
-potrzebne, aby umo¿liwiæ dodawanie/usuwanie linii z&nbsp;nazwami katalogów
-gdy kolejny log buforów cache jest w&nbsp;u¿yciu. <p>
+JeÅ›li '%s' zostanie uÅ¼yte w&nbsp;nazwie pliku, zostanie zastÄ…pione przez
+nazwÄ™ pliku logu, w&nbsp;ktÃ³rej kaÅ¼dy znak '/' zastÄ…piono przez '.'. Jest to
+potrzebne, aby umoÅ¼liwiÄ‡ dodawanie/usuwanie linii z&nbsp;nazwami katalogÃ³w
+gdy kolejny log buforÃ³w cache jest w&nbsp;uÅ¼yciu. <p>
 
-Je¶li masz wiêcej ni¿ jeden katalog buforów a&nbsp;nie u¿ywasz '%s'
-w&nbsp;nazwie, wówczas poszczególne logi bêd± mia³y nazwy takie, jak: <p>
+JeÅ›li masz wiÄ™cej niÅ¼ jeden katalog buforÃ³w a&nbsp;nie uÅ¼ywasz '%s'
+w&nbsp;nazwie, wÃ³wczas poszczegÃ³lne logi bÄ™dÄ… miaÅ‚y nazwy takie, jak: <p>
 
 <ul>
 <li>cache_swap_log.00
@@ -38,62 +38,62 @@ w&nbsp;nazwie, wówczas poszczególne logi bêd± mia³y nazwy takie, jak: <p>
 </ul>
 <p>
 
-Numery w&nbsp;koñcówkach nazw (dodawane automatycznie) odpowiadaj±
-kolejno¶ci linii katalogów buforów cache w&nbsp;konfiguracji.  Je¶li
-zmienisz podan± kolejno¶æ katalogów, wówczas te logi NIE bêd± odpowiada³y
-prawid³owym wpisom z&nbsp;nazwami katalogów buforów (chyba, ¿e zmienisz ich
-nazwy rêcznie). Zaleca siê NIE u¿ywanie tej opcji. Lepiej trzymaæ pliki
-logów w&nbsp;odpowiednich katalogach buforów cache. <p>
+Numery w&nbsp;koÅ„cÃ³wkach nazw (dodawane automatycznie) odpowiadajÄ…
+kolejnoÅ›ci linii katalogÃ³w buforÃ³w cache w&nbsp;konfiguracji.  JeÅ›li
+zmienisz podanÄ… kolejnoÅ›Ä‡ katalogÃ³w, wÃ³wczas te logi NIE bÄ™dÄ… odpowiadaÅ‚y
+prawidÅ‚owym wpisom z&nbsp;nazwami katalogÃ³w buforÃ³w (chyba, Å¼e zmienisz ich
+nazwy rÄ™cznie). Zaleca siÄ™ NIE uÅ¼ywanie tej opcji. Lepiej trzymaÄ‡ pliki
+logÃ³w w&nbsp;odpowiednich katalogach buforÃ³w cache. <p>
 
-<b>U¿ywaæ formatu logów HTTPD</b>: Domy¶lnie nie. Proxy mo¿e emulowaæ format
-logów u¿ywany przez wiele programów 'httpd'. Aby emulacjê wy³±czyæ/w³±czyæ
-ustaw tê warto¶æ odpowiednio na Nie lub Tak. Domy¶lne jest u¿ywanie
-wewnêtrznego formatu logów, poniewa¿ zawiera on u¿yteczne informacje
-wykorzystywane przez zorientowane na Squida analizatory logów. <p>
+<b>UÅ¼ywaÄ‡ formatu logÃ³w HTTPD</b>: DomyÅ›lnie nie. Proxy moÅ¼e emulowaÄ‡ format
+logÃ³w uÅ¼ywany przez wiele programÃ³w 'httpd'. Aby emulacjÄ™ wyÅ‚Ä…czyÄ‡/wÅ‚Ä…czyÄ‡
+ustaw tÄ™ wartoÅ›Ä‡ odpowiednio na Nie lub Tak. DomyÅ›lne jest uÅ¼ywanie
+wewnÄ™trznego formatu logÃ³w, poniewaÅ¼ zawiera on uÅ¼yteczne informacje
+wykorzystywane przez zorientowane na Squida analizatory logÃ³w. <p>
 
-<b>Logowaæ nag³ówki MIME</b>: Domy¶lnie nie. Proxy mo¿e zapisywaæ nag³ówki
-MIME zarówno dla zapytañ, jak i&nbsp;dla odpowiedzi dla ka¿dej operacji
-HTTP. Nag³ówki s± bezpiecznie zakodowane i&nbsp;pojawiaj± siê jako dwa ujête
-w&nbsp;nawiasy pola na koñcu wpisu do logu dostêpu (zarówno dla wewnêtrznego
-formatu Squida, jak i&nbsp;dla emulacji httpd). Aby w³±czyæ to logowanie
-ust±w opcjê na Tak. <p>
+<b>LogowaÄ‡ nagÅ‚Ã³wki MIME</b>: DomyÅ›lnie nie. Proxy moÅ¼e zapisywaÄ‡ nagÅ‚Ã³wki
+MIME zarÃ³wno dla zapytaÅ„, jak i&nbsp;dla odpowiedzi dla kaÅ¼dej operacji
+HTTP. NagÅ‚Ã³wki sÄ… bezpiecznie zakodowane i&nbsp;pojawiajÄ… siÄ™ jako dwa ujÄ™te
+w&nbsp;nawiasy pola na koÅ„cu wpisu do logu dostÄ™pu (zarÃ³wno dla wewnÄ™trznego
+formatu Squida, jak i&nbsp;dla emulacji httpd). Aby wÅ‚Ä…czyÄ‡ to logowanie
+ustÄ…w opcjÄ™ na Tak. <p>
 
-<b>Log programów u¿ytkownika</b>: Domy¶lnie brak. Je¶li podczas konfiguracji
-przed kompilacj± w³±czono opcjê "--enable-useragent-log", Squid bêdzie
-zapisywa³ pole "User-Agent" zapytañ HTTP (zawieraj±ce zazwyczaj dane
-okre¶laj±ce uzywan± przegl±darkê) do okre¶lonego tu pliku. <p>
+<b>Log programÃ³w uÅ¼ytkownika</b>: DomyÅ›lnie brak. JeÅ›li podczas konfiguracji
+przed kompilacjÄ… wÅ‚Ä…czono opcjÄ™ "--enable-useragent-log", Squid bÄ™dzie
+zapisywaÅ‚ pole "User-Agent" zapytaÅ„ HTTP (zawierajÄ…ce zazwyczaj dane
+okreÅ›lajÄ…ce uzywanÄ… przeglÄ…darkÄ™) do okreÅ›lonego tu pliku. <p>
 
-<b>Plik z&nbsp;numerem PID</b>: Domy¶lny zale¿y od systemu. Nazwa pliku, do
-którego jest zapisywany numer procesu (PID). Aby go nie u¿ywaæ wpisz "none".
+<b>Plik z&nbsp;numerem PID</b>: DomyÅ›lny zaleÅ¼y od systemu. Nazwa pliku, do
+ktÃ³rego jest zapisywany numer procesu (PID). Aby go nie uÅ¼ywaÄ‡ wpisz "none".
 <p>
 
-<b>Wykonywaæ identyfikacjê RFC931 dla ACL</b>: Domy¶lnie dla ¿adnych.
-Wykonywanie zapytañ identyfikacyjnych, aby okre¶liæ nazwy u¿ytkowników
-uzyskuj±cych dostêp do czegokolwiek podpadaj±cego pod te ACL. <p>
+<b>WykonywaÄ‡ identyfikacjÄ™ RFC931 dla ACL</b>: DomyÅ›lnie dla Å¼adnych.
+Wykonywanie zapytaÅ„ identyfikacyjnych, aby okreÅ›liÄ‡ nazwy uÅ¼ytkownikÃ³w
+uzyskujÄ…cych dostÄ™p do czegokolwiek podpadajÄ…cego pod te ACL. <p>
 
-<b>Czas przeterminowania identyfikacji wg RFC931</b>: Domy¶lnie 30 sekund.
-Maksymalny czas oczekiwania na wyniki zapytañ IDENT. Je¶li jest zbyt du¿y
-i&nbsp;w³±czy³e¶ zapytania identa, mo¿esz doprowadziæ do zablokowania us³ugi
-(DoS) poprzez zbyt wiele jednocze¶nie wykonywanych zapytañ ident. <p>
+<b>Czas przeterminowania identyfikacji wg RFC931</b>: DomyÅ›lnie 30 sekund.
+Maksymalny czas oczekiwania na wyniki zapytaÅ„ IDENT. JeÅ›li jest zbyt duÅ¼y
+i&nbsp;wÅ‚Ä…czyÅ‚eÅ› zapytania identa, moÅ¼esz doprowadziÄ‡ do zablokowania usÅ‚ugi
+(DoS) poprzez zbyt wiele jednoczeÅ›nie wykonywanych zapytaÅ„ ident. <p>
 
-<b>Logowaæ pe³ne nazwy hostów</b>: Domy¶lnie nie. Logowanie pe³nej (FQDN)
-nazwy hostów klientów. <p>
+<b>LogowaÄ‡ peÅ‚ne nazwy hostÃ³w</b>: DomyÅ›lnie nie. Logowanie peÅ‚nej (FQDN)
+nazwy hostÃ³w klientÃ³w. <p>
 
-<b>Maska logowania</b>: Domy¶ln± jest 255.255.255.255. Maska dla adresów
-klientów w&nbsp;logach oraz wyniku cachemgr. Zmieñ j±, je¶li chcesz choniæ
-prywatno¶æ swoich klientów. Przy masce 255.255.255.0 wszystkie IP bêd±
-logowane z&nbsp;ostatni± cyfr± ustawion± na '0'. <p>
+<b>Maska logowania</b>: DomyÅ›lnÄ… jest 255.255.255.255. Maska dla adresÃ³w
+klientÃ³w w&nbsp;logach oraz wyniku cachemgr. ZmieÅ„ jÄ…, jeÅ›li chcesz choniÄ‡
+prywatnoÅ›Ä‡ swoich klientÃ³w. Przy masce 255.255.255.0 wszystkie IP bÄ™dÄ…
+logowane z&nbsp;ostatniÄ… cyfrÄ… ustawionÄ… na '0'. <p>
 
-<b>Opcje ¶ledzenia</b>: Domy¶lnie "ALL,1".  S± to opcje logowania ustawiana
-jako "sekcja,poziom", gdzie ka¿dy plik kodu ¼ród³owego jest przypisany do
-unikalnej sekcji. Ustawienie ni¿szego poziomu powoduje logowanie mniejszej
-ilo¶ci informacji, ni¿ pe³ne ¶ledzenie (poziom 9), przy którym mo¿e powstaæ
-bardzo du¿y log, wiêc b±d¼ ostro¿ny. Magiczne s³owo "ALL" ustawia poziomy
-¶ledzenia dla wszystkich sekcji. Zazwyczaj zaleca siê uruchamianie
+<b>Opcje Å›ledzenia</b>: DomyÅ›lnie "ALL,1".  SÄ… to opcje logowania ustawiana
+jako "sekcja,poziom", gdzie kaÅ¼dy plik kodu ÅºrÃ³dÅ‚owego jest przypisany do
+unikalnej sekcji. Ustawienie niÅ¼szego poziomu powoduje logowanie mniejszej
+iloÅ›ci informacji, niÅ¼ peÅ‚ne Å›ledzenie (poziom 9), przy ktÃ³rym moÅ¼e powstaÄ‡
+bardzo duÅ¼y log, wiÄ™c bÄ…dÅº ostroÅ¼ny. Magiczne sÅ‚owo "ALL" ustawia poziomy
+Å›ledzenia dla wszystkich sekcji. Zazwyczaj zaleca siÄ™ uruchamianie
 z&nbsp;"ALL,1". <p>
 
-<b>Tablica nag³ówków MIME</b>: ¦cie¿ka do tablicy MIME Squida. Nie powinno
-byæ potrzeby zmiany tej opcji, ale standardowy plik zawiera przyk³ady
-i&nbsp;opis sk³adni, gdyby takowa wyst±pi³a.
+<b>Tablica nagÅ‚Ã³wkÃ³w MIME</b>: ÅšcieÅ¼ka do tablicy MIME Squida. Nie powinno
+byÄ‡ potrzeby zmiany tej opcji, ale standardowy plik zawiera przykÅ‚ady
+i&nbsp;opis skÅ‚adni, gdyby takowa wystÄ…piÅ‚a.
 
 <hr>

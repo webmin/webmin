@@ -1,0 +1,58 @@
+index_title=SMART meghajtó állapota
+index_ecmd=A (z) $1 SMART vezérlőparancs nem található a rendszerén, vagy nincs megfelelően beállítva a <a href='$2'>modul konfigurációjában</a>. A modul használata előtt telepíteni kell.
+index_ecmd2=A $1 parancs nem tűnik SMART control parancsnak. A <a href='$2'>modul konfigurációjában</a> helyesen kell beállítani, mielőtt ezt a modult használni lehetne.
+index_version=$1 SMARTsuite verzió
+index_show=A meghajtó állapotának megjelenítése:
+index_ok=Előadás
+index_eidescsi=Nem található IDE, SCSI vagy SATA meghajtó a rendszeren.
+index_drive=A $1 meghajtó állapota
+index_drivesub=A $1 meghajtó, a $2 lemez állapota
+index_desc=Elhelyezkedés
+index_size=Meghajtó mérete
+index_model=Gyártmány és modell
+index_support=Támogatja a SMART-t?
+index_enabled=A SMART engedélyezve van?
+index_check=Átadta a járművezetés ellenőrzését
+index_short=Rövid önteszt
+index_ext=Bővített önteszt
+index_data=Adatgyűjtési teszt
+index_errors=Hiba naplózva
+index_ecount=$1 hiba észlelve
+index_attrs=További SMART attribútumok
+index_raw=Teljes SMART állapotjelentés
+index_return=modul index
+index_family=Modell család
+index_serial=Sorozatszám
+index_capacity=Kapacitás
+index_norm=normalizálódott:
+
+monitor_type=SMART meghajtó ellenőrzése
+monitor_type2=SSD kopás
+monitor_drive=Menjen ellenőrizni
+monitor_errors=Ellenőrizze a hibanaplót is?
+monitor_errorsinc=Igen, de csak akkor figyelmeztessen, ha a hibaszám növekszik
+monitor_other=Egyéb ..
+monitor_edrive=Hiányzik vagy érvénytelen meghajtó az ellenőrzéshez
+monitor_nosuch=Nincs ilyen meghajtó
+monitor_nosmart=Nincs SMART támogatás
+monitor_errorsfound=Jelentett $1 hibák
+monitor_errorsinced=A hibák $2 -ről $1 -re növekedtek
+monitor_wearlevel=Nem sikerül, ha a kopási szint alá esik
+monitor_ewearlevel=Érvénytelen kopási szint
+monitor_nowearout=A meghajtó nem jelent SSD kopásjelzőt
+monitor_wornout=A kopás szintje $1 -re csökkent
+
+short_title=Rövid önteszt
+short_doing=$1 önellenőrzés indítása ..
+short_failed=.. nem sikerült!
+short_ok=.. A teszt rendben indult. Az eredményeket lásd a meghajtó állapotát a modul főoldalán.
+
+ext_title=Bővített önteszt
+ext_doing=$1 kibővített önteszt indítása ..
+ext_failed=.. nem sikerült!
+ext_ok=.. A teszt rendben indult. Az eredményeket lásd a meghajtó állapotát a modul főoldalán.
+
+data_title=Adatgyűjtési teszt
+data_doing=Az offline adatgyűjtés megkezdése a $1 -en.
+data_failed=.. nem sikerült!
+data_ok=.. a gyűjtemény rendben kezdődött. Az eredményeket lásd a meghajtó állapotát a modul főoldalán.

@@ -1,0 +1,33 @@
+index_title=TCP Bilgarriak
+index_return=indizea
+index_allowtitle=Onartutako ostalariak
+index_denytitle=Ukatutako ostalariak
+index_norule=Oraindik ez da arau <tt>$1</tt> zehaztu.
+index_nofile='$1' fitxategia ez da existitzen. Egiaztatu <a href="/config.cgi?tcpwrappers">moduluaren konfigurazioa</a>
+index_add=Gehitu arau berria.
+index_service=deabrua
+index_hosts=ostalariak
+index_cmd=Komando
+index_delete=Ezabatu Hautatuta
+index_none=bat ere ez
+
+edit_title1allow=Sortu Onartu araua
+edit_title2allow=Editatu baimendu araua
+edit_title1deny=Sortu ukatu araua
+edit_title2deny=Editatu ukatu araua
+edit_eid=Arau hau ez da aurkitu
+edit_header=Arauen aukerak
+edit_service=Zerbitzuak
+edit_except=Zerbitzuak izan ezik
+edit_hosts=Urruneko ostalariak
+edit_hostsexcept=Ostalariak izan ezik
+edit_cmd=Shell komandoak
+edit_efound=Daemon '$1' ez da xinetd konfigurazioan aurkitu.
+
+save_errtitle=Errorea gorde arauan
+save_ehost=Ostalariaren sarrerak karaktere txarrak ditu
+save_ecmd=Komandoaren sarrerak karaktere txarrak ditu
+save_eservice=Daemon izenek karaktere txarrak dituzte
+
+del_errtitle=Ezabatu arauak ezabatzea
+del_enone=Ez dago ezabatzeko araurik

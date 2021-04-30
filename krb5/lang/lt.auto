@@ -1,0 +1,17 @@
+index_title=„Kerberos5“ konfigūracija
+index_econf=„Kerberos5“ konfigūracijos failas $1 jūsų sistemoje nerastas. Galbūt jis neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+
+logging=Žurnalo failai
+default_log=Numatytasis žurnalo failas
+kdc_log=KDC žurnalo failas
+admin_log=Administratoriaus serverio žurnalo failas
+
+libdefaults=Numatytoji konfigūracija
+dns_kdc=KDC paieškai naudokite DNS
+default_realm=Karalystė
+domain=Domeno vardas
+default_kdc=KDC
+default_admin=Administratoriaus serveris
+default_domain=Numatytasis domeno vardas
+
+save=Atnaujinkite konfigūraciją

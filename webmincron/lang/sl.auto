@@ -1,0 +1,20 @@
+edit_mins=Minute
+edit_hours=Ure
+edit_days=Dnevi
+edit_months=Mesece
+edit_weekdays=Delovni dan
+edit_all=Vse
+edit_selected=Izbrano ..
+edit_run=Zaženi zdaj
+edit_clone=Klon Job
+edit_return=delo na cron
+edit_special1=Preprost urnik ..
+edit_special0=Spodaj izbrani časi in datumi ..
+edit_special_hourly=Vsako uro
+edit_special_daily=Dnevno (ob polnoči)
+edit_special_weekly=Tedensko (v nedeljo)
+edit_special_monthly=Mesečno (na 1.)
+edit_special_yearly=Letno (1. januarja)
+
+log_success=<tt>$2</tt> v <tt>$1</tt> uspešno
+log_failure=Zagon <tt>$2</tt> v <tt>$1</tt> ni uspel : $3 

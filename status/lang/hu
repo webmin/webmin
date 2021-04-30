@@ -513,4 +513,3 @@ du_edir=Missing or non-absolute directory path
 du_emax=Missing or non-numeric maximum size
 du_over=Size is $1
 du_under=Size is only $1
-__norefs=1

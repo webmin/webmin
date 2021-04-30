@@ -1,0 +1,316 @@
+index_title=Tulostimen hallinto
+index_header=Saatavana olevat tulostimet
+index_name=kirjoitin
+index_desc=Kuvaus
+index_to=Tulosta
+index_driver=kuljettaja
+index_enabled=Käytössä?
+index_accepting=Hyväksyminen?
+index_jobs=Työpaikat
+index_none=Tähän järjestelmään ei ole asennettu tulostimia.
+index_list=Lista ..
+index_jlist=Työpaikat ..
+index_jcount=$1 työpaikkaa ..
+index_add=Lisää uusi tulostin.
+index_stop=Lopeta aikataulu
+index_stopmsg=Napsauta tätä painiketta, kun haluat pysäyttää käynnissä olevan tulostusaikataulun. Tämä estää paikallisia tai etäkäyttäjiä tulostamasta järjestelmääsi.
+index_start=Käynnistä ajoittaja
+index_startmsg=Napsauta tätä painiketta, kun haluat aloittaa tulostusaikataulun. Tämän avulla paikalliset ja etäkäyttäjät voivat tulostaa järjestelmässäsi.
+index_restart=Käynnistä ajoitus
+index_restartmsg=Napsauta tätä painiketta, kun haluat käynnistää tulostusaikataulun uudelleen. Tämä pakottaa nykyisen tulostusmäärityksen käyttämään.
+index_return=tulostinluettelo
+index_esystem=Asenna joko valitsemasi tulostusjärjestelmän ohjelmisto tai muuta <a href='$1'>moduulin määritystä</a>.
+index_style=Tulostusjärjestelmä: $1 
+index_cluster=Klusteripalvelimet
+index_clusterdesc=Napsauta tätä painiketta, jos haluat asettaa uusia Webmin-palvelimia, joille tulostimet luodaan, päivitetään ja poistetaan.
+index_delete=Poista valitut tulostimet
+
+style_solaris=Solaris
+style_linux=Linux LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=CUPS
+style_irix=IRIX
+style_aix=AIX
+
+edit_eedit=Tätä tulostinta ei saa muokata
+edit_eadd=Et voi lisätä tulostimia
+edit_add=Luo tulostin
+edit_edit=Muokkaa tulostinta
+edit_conf=Tulostimen asetukset
+edit_name=Nimi
+edit_acc=Hyväksytkö pyyntöjä?
+edit_why=Ei - Miksi ei
+edit_desc=Kuvaus
+edit_ena=Tulostaminen käytössä?
+edit_acl=Kulunvalvonta
+edit_allow=Salli kaikkien
+edit_deny=Kieltää kaikki
+edit_allowu=Salli luettelossa olevat käyttäjät ..
+edit_denyu=Estä luetellut käyttäjät ..
+edit_banner=Tulosta banneri?
+edit_opt=Valinnainen
+edit_default=Oletustulostin?
+edit_already=Jo oletustulostin
+edit_max=Tulostustöiden enimmäiskoko
+edit_unlimited=Rajoittamaton
+edit_dacc=Kuljettaja hyväksyy
+edit_dtext=Teksti
+edit_dpost=jälkikirjoitus
+edit_dother=muut
+edit_alt=Vaihtoehtoiset tulostimen nimet
+edit_dest=Tulosta kohde
+edit_dev=Paikallinen laite
+edit_file=Paikallinen tiedosto
+edit_remote=Etä Unix-palvelin
+edit_rqueue=kirjoitin
+edit_type=Tyyppi
+edit_smb=Windows-etäpalvelin
+edit_share=kirjoitin
+edit_user=käyttäjä
+edit_pass=Salasana
+edit_wgroup=Workgroup
+edit_hpnp=Etä HPNP-palvelin
+edit_port=portti
+edit_direct=Suora TCP-yhteys
+edit_dport=portti
+edit_driver=Tulostinohjain
+edit_check=Tarkista onko etäpalvelin käytössä?
+
+blocks=lohkot
+
+save_err=Tulostimen tallennus epäonnistui
+save_eadd=Et voi lisätä tulostimia
+save_eedit=Tätä tulostinta ei saa muokata
+save_ename='$1' ei ole kelvollinen tulostimen nimi
+save_edup='$1' -niminen tulostin on jo olemassa
+save_eallow=Ei käyttäjiä sallia pääsyä
+save_edeny=Ei kieltäviä käyttäjiä
+save_euser=Käyttäjää '$1' ei ole
+save_etype=Sinun on valittava vähintään yksi tyyppi, jonka tämä ohjain hyväksyy
+save_emax=Tulostustöiden enimmäiskoko on oltava kokonaisluku
+save_efile='$1' ei ole olemassa
+save_erhost=Etäisäntää '$1' ei ole olemassa
+save_erport=Etäportti '$1' ei kelpaa
+save_erqueue='$1' ei ole kelvollinen etäjonon nimi
+save_eremote=Ohjaimia ei voi käyttää etä Unix-tulostimien kanssa
+save_edhost=Suoraa isäntää '$1' ei ole olemassa
+save_edport=Puuttuva tai virheellinen suoraportti
+save_evalid=Tulostusjärjestelmä ei salli tätä tulostinta
+save_errslave=Tulostin loi OK tähän järjestelmään, mutta klusterijärjestelmissä tapahtui seuraavia virheitä : $1 
+save_egone=Tulostinta nimeltä '$1' ei löytynyt
+save_errdelslave=Tulostin poisti OK tässä järjestelmässä, mutta klusterijärjestelmissä tapahtui seuraavat virheet : $1 
+
+jobs_title=Tulostustyöt
+jobs_header=Tulostustyöt $1 : llä
+jobs_id=Työtunnus
+jobs_size=Koko
+jobs_by=Lähettäjä
+jobs_when=Lähetetty klo
+jobs_file=Tiedoston nimi
+jobs_cancel=Napsauta työpaikan tunnusta yllä olevasta luettelosta peruuttaaksesi.
+jobs_cancelview=Napsauta työpaikan tunnusta yllä olevasta luettelosta peruuttaaksesi tai napsauta työn kokoa nähdäksesi sen.
+jobs_none=Tulostimella $1 ei ole vireillä olevia töitä.
+jobs_all=Peruuta kaikki tulostustyöt
+jobs_bytes=tavua
+jobs_test=Tulosta testisivu
+jobs_cancelsel=Peruuta valitut työt
+jobs_on=Tulostimessa $1 
+jobs_return=luettelo tulostustöistä
+
+cancel_ecannot=Et voi peruuttaa tulostustöitä
+cancel_err=Tulostustyön peruuttaminen epäonnistui
+cancel_egone=Tulostustyötä $1 ei enää ole
+
+view_ecannot=Et voi tarkastella tätä tulostustyötä
+view_egone=Tätä tulostustyötä ei enää ole
+
+start_ecannot=Sinulla ei ole oikeutta käynnistää ajoitusta
+start_err=Aikataulun käynnistäminen epäonnistui
+
+stop_ecannot=Et voi lopettaa aikataulua
+stop_err=Aikataulun lopettaminen epäonnistui
+
+restart_ecannot=Aikataulua ei saa käynnistää uudelleen
+restart_err=Aikataulun käynnistäminen epäonnistui
+
+webmin_none=Ei mitään
+webmin_nonemsg=Postscript tai tekstitulostin
+webmin_remotemsg=Etätulostin
+webmin_model=Malli
+webmin_prog=Ohjelmoida
+webmin_driver=Webmin-ohjain
+webmin_uniprint=Uniprint-ohjain
+webmin_edrivers=$1 : n ohjainten hakeminen epäonnistui. Ghostscriptiä käyttävät Webmin-tulostinohjaimet eivät ole käytettävissä
+webmin_egs=Komentoa $1 ei löytynyt. Ghostscriptiä käyttävät Webmin-tulostinohjaimet eivät ole käytettävissä
+webmin_edriver='$1' ei ole olemassa
+
+caldera_none=Ei mitään
+caldera_nonemsg=Etä- tai raakatulostin
+caldera_prog=Ohjelmoida
+caldera_coas=COAS-kuljettaja
+caldera_printer=Tulostin ja resoluutio
+caldera_eof=Lähetä EOF?
+caldera_paper=Paperikoko
+caldera_double=Tulostetaanko kaksipuolinen?
+caldera_gsopts=Muut GS-vaihtoehdot
+caldera_uniprint=Uniprint-ohjain
+caldera_eprog='$1' ei ole olemassa
+caldera_edriver=Tulostinohjainta ei ole valittu
+caldera_eres=Resoluutiota ei ole valittu
+
+redhat_none=Ei mitään
+redhat_nonemsg=Postscript tai tekstitulostin
+redhat_prog=Ohjelmoida
+redhat_driver=Redhat kuljettaja
+redhat_printer=Tulostin ja resoluutio
+redhat_eof=Lähetä EOF?
+redhat_paper=Paperikoko
+redhat_pages=Sivuja tulostettua sivua kohti
+redhat_gsopts=Muut GS-vaihtoehdot
+redhat_hmargin=Oikea/vasen marginaali
+redhat_vmargin=Ylä/alamarginaali
+redhat_crlf=Korjaa portaiden askelmainen teksti?
+redhat_eprog='$1' ei ole olemassa
+redhat_edriver=Tulostinohjainta ei ole valittu
+redhat_ehmargin=Puuttuva tai virheellinen oikea/vasen reuna
+redhat_evmargin=Puuttuva tai virheellinen ylä-/alamarginaali
+redhat_eres=Resoluutiota ei ole valittu
+redhat_printer2=Tulostimen malli ja ohjain
+
+suse_none=Ei mitään
+suse_nonemsg=Postscript tai tekstitulostin
+suse_prog=Ohjelmoida
+suse_driver=APS-suodattimen ohjain
+suse_printer=Tulostimen tyyppi
+suse_res=Tarkkuus DPI: ssä
+suse_colour=Väritulostin?
+suse_paper=Paperikoko
+suse_method=Suodatusmenetelmä
+suse_auto=Automaattinen
+suse_ascii=ASCII
+suse_raw=Raaka
+suse_extra=Extra ghostscript -asetukset
+suse_yast2=YAST2-ohjain
+suse_edriver=Tulostintyyppiä ei ole valittu
+suse_eres=Puuttuva tai virheellinen ratkaisu
+
+estop=Lpd: $1  : n lopettaminen epäonnistui
+
+acl_printers=Tämän käyttäjän määrittämät tulostimet
+acl_add=Voiko uusia tulostimia lisätä?
+acl_cancel=Voiko peruuttaa tulostustyöt?
+acl_stop=Voiko pysäyttää tai käynnistää aikataulun?
+acl_restart=Käynnistä vain uudelleen
+acl_listed=Vain valituilla tulostimilla ..
+acl_pall=Kaikki tulostimet
+acl_psel=Valitut ..
+acl_view=Näytetäänkö konfiguroimattomat tulostimet?
+acl_test=Voiko testisivuja tulostaa?
+acl_user=Hallinnoi
+acl_user_all=Kaikki käyttäjät
+acl_user_this=Nykyinen Webmin-käyttäjä
+acl_delete=Voiko tulostimia poistaa?
+acl_cluster=Voiko tulostusklasteria hallita?
+
+log_stop=Pysäytetty tulostusaikataulu
+log_start=Aloitettu tulostusaikataulu
+log_restart=Käynnistettiin tulostusaikataulu
+log_cancel_job=Peruutettu tulostustyö $2 $1 : llä
+log_cancel_all=Peruutti kaikki $1 -tulostustyöt
+log_cancel_sel=Peruutettiin $2 : n tulostustyöt kohdalla $1 
+log_create=Luotu tulostin $1 $2 : een
+log_modify=Muokattu tulostin $1 $2 : ssa
+log_delete=Poistettu tulostin $1 $2 : sta
+log_create_l=Luotu $3 tulostin $1 $2 : een
+log_modify_l=Muokattu $3 -tulostin $1 $2 : ssa
+log_delete_l=Poistettu $3 tulostin $1 $2 : sta
+
+linux_paralel=Rinnakkaisportti $1 
+linux_serial=Sarjaportti $1 (COM $1)
+linux_null=Nolla laite
+linux_usb=USB-tulostin $1 
+linux_ecmd=Komentoa $1 ei löydy järjestelmästäsi, mikä osoittaa, että Linux-tulostusjärjestelmää ei ole asennettu.
+linux_espool=Ryhmähakemistoa $1 ei ole järjestelmässäsi, mikä osoittaa, että Linux-tulostusjärjestelmää ei ole asennettu.
+
+freebsd_paralel=Rinnakkaisportti
+freebsd_serial=Sarjaportti $1 (COM $1)
+freebsd_ecmd=Komentoa $1 ei löydy järjestelmästäsi, mikä osoittaa, että FreeBSD-tulostusjärjestelmää ei ole asennettu.
+freebsd_espool=Kelahakemistoa $1 ei ole järjestelmässäsi, mikä osoittaa, että FreeBSD-tulostusjärjestelmää ei ole asennettu.
+
+openbsd_paralel=Rinnakkaisportti
+openbsd_serial=Sarjaportti $1 (COM $1)
+
+unixware_paralel=Rinnakkaisportti $1 
+unixware_serial=Sarjaportti $1 
+unixware_null=Nolla laite
+unixware_ecmd=Komentoa $1 ei löydy järjestelmästäsi, mikä osoittaa, että UnixWare-tulostusjärjestelmää ei ole asennettu.
+
+hpux_paralel=Rinnakkais $1 
+hpux_serial=Sarja $1 
+hpux_null=Nolla laite
+hpux_ecmd=Komentoa $1 ei löydy järjestelmästäsi, mikä osoittaa, että HPUX-tulostusjärjestelmää ei ole asennettu.
+hpux_eiface=Käyttöliittymäkomentoshakemistoa $1 ei ole järjestelmässäsi, mikä osoittaa, että HPUX-tulostusjärjestelmää ei ole asennettu.
+
+lprng_paralel=Rinnakkaisportti $1 
+lprng_serial=Sarjaportti $1 (COM $1)
+lprng_null=Nolla laite
+lprng_ecmd=Komentoa $1 ei löydy järjestelmästäsi, mikä osoittaa, että LPRng-tulostusjärjestelmää ei ole asennettu.
+lprng_espool=Kelahakemistoa $1 ei ole järjestelmässäsi, mikä osoittaa, että LPRng-tulostusjärjestelmää ei ole asennettu.
+
+solaris_paralel=Rinnakkaisportti
+solaris_uparalel=Ultra 5/10 rinnakkaisportti
+solaris_serial=Sarjaportti $1 
+solaris_null=Nolla laite
+solaris_ecmd=Komentoa $1 ei löydy järjestelmästäsi, mikä osoittaa, että Solaris-tulostusjärjestelmää ei ole asennettu.
+
+test_title=Tulosta testisivu
+test_ecannot=Et saa tulostaa testisivuja
+test_desc=Tämän lomakkeen avulla voit tulostaa testisivun tulostimelle $1. Valitse tulostettavan sivutyyppi :
+test_0=Mustavalkoinen PostScript-sivu
+test_1=Väri Postscript-sivu
+test_2=Pelkkä ASCII-teksti
+test_3=Kaikki ladatut tiedostot
+test_print=Tulosta sivu
+test_exec=Testisivun tulostaminen komennolla $1 ..
+test_failed=.. komento epäonnistui!
+test_ok=.. komento valmis.
+
+cups_none=Ei mitään
+cups_nonemsg=Etä- tai raakatulostin
+cups_prog=Ohjelmoida
+cups_driver=CUPS-ohjain
+cups_eprog='$1' ei ole kelvollinen ohjelma
+cups_opts=$1 : n vaihtoehdot
+cups_ecmd=Komentoa $1 ei löydy järjestelmästäsi, mikä osoittaa, että CUPS-tulostusjärjestelmää ei ole asennettu.
+
+irix_ecmd=Komentoa $1 ei löydy järjestelmästäsi, mikä osoittaa, että IRIX-tulostusjärjestelmää ei ole asennettu.
+irix_eiface=Käyttöliittymäkomentoshakemistoa $1 ei ole järjestelmässäsi, mikä osoittaa, että IRIX-tulostusjärjestelmää ei ole asennettu.
+
+aix_port=Tulostinportti $1 
+aix_edesc=Virheellinen kuvaus - vain kirjaimet ja numerot ovat sallittuja, eikä välilyöntejä
+aix_ecmd=AIX-tulostinpalvelinta $1 ei löytynyt. Ehkä sitä ei ole asennettu tai toinen tulostusjärjestelmä on käytössä.
+
+cluster_title=Klusteritulostinpalvelimet
+cluster_none=Tulostimen klusteriin ei ole vielä lisätty palvelimia.
+cluster_host=hostname
+cluster_desc=Kuvaus
+cluster_os=Käyttöjärjestelmä
+cluster_add=Lisää palvelin
+cluster_gadd=Lisää palvelimia ryhmään
+cluster_need=Sinun on lisättävä palvelimet, joilla on kirjautuminen ja salasana, Webmin Servers Index -moduuliin, ennen kuin niitä voidaan hallita täällä.
+cluster_return=klusteripalvelimet
+cluster_delete=Poista valitut
+cluster_ecannot=Et voi hallita klusteritulostinpalvelimia
+
+add_title=Lisää palvelimia
+add_msg=Lisätään $1 ..
+add_gmsg=Palvelimien lisääminen ryhmään $1 ..
+add_err=Palvelimen lisääminen epäonnistui
+add_gerr=Ryhmän lisääminen epäonnistui
+add_echeck=Palvelimella $1 ei ole Printer Administration -moduulia
+add_ediff=Palvelin $1 käyttää eri tulostusjärjestelmää ($2) tähän palvelimeen
+add_ediff2=Palvelin $1 käyttää eri tulostinajuria ($2) tähän palvelimeen
+add_ok=Lisätty $1, $2 -tulostimella.

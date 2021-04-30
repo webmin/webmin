@@ -1,0 +1,138 @@
+index_title_v=IPv4ファイアウォール
+index_title_v6=IPv6ファイアウォール
+index_editing=ルールファイル $1
+index_evalid=警告！現在のIPtables構成は無効です： $1
+index_no_comment=
+index_jump_log=ログパケット
+index_crename=チェーンの名前を変更
+index_cdeletesel=選択を削除します
+index_cmovesel=選択を移動
+index_applydesc2=このボタンをクリックして、クラスター内のすべてのサーバーで上記のファイアウォール構成をアクティブにします。現在有効なファイアウォールルールはすべてフラッシュされ、置き換えられます
+index_unapply2=設定を保存
+index_unapply2desc=このボタンをクリックして、上記の構成を永続的なファイアウォール構成ファイルに保存します。
+index_rsetup=システムのIPtablesファイアウォール設定がリセットされようとしています。 Webminは、保存ファイル $1に保存される新しいデフォルトルールを設定し、以下のファイアウォールタイプの選択に基づいた初期設定を行います。
+index_auto5=インターフェイスで、仮想ホスティングに使用されるポートを除くすべてをブロックします。
+index_firewalld=FirewallDは、システムのファイアウォールを生成するために使用されているようです。代わりに<a href='$1'>FirewallDモジュール</a>を使用する必要があります。
+index_fail2ban=Fail2Banが一部のファイアウォールルールの管理に使用されているようです。 <a href='$1'>Fail2Banモジュール</a>でそれらを変更し、<a href=$2>f2b-。*</a>または<a href=$2>fail2ban-。*</a>をフィルターする必要があります。 。
+index_filter_chain=ファイアウォールによって管理されていません。
+index_filter_nodirect=外部管理ルールが検出されました。 「<a href=$1>ファイアウォールルールを直接編集」</a>を有効にしないと、ファイアウォールルールが破られる可能性があります。
+index_reset=ファイアウォールをリセット
+index_resetdesc=このボタンをクリックして、既存のすべてのファイアウォールルールをクリアし、基本的な初期構成の新しいルールを設定します。
+index_cluster=クラスターサーバー
+index_clusterdesc=このボタンをクリックして、ファイアウォール構成が自動的にコピーされる追加のWebminサーバーをセットアップします。
+index_ipset=IPセット
+index_ipset_title=ファイアウォールルールで使用できるアクティブなIPセット
+index_ipset_name=IPセットの名前
+index_ipset_type=タイプ
+index_ipset_elem=＃要素
+index_ipset_maxe=＃マックス
+index_ipset_size=サイズ
+index_ipvxmode=IPプロトコルバージョンの変更：
+index_ipvx4=IPv4
+index_ipvx6=IPv6
+
+desc_icmpv6-type=ICMPタイプは $1です
+desc_icmpv6-type!=ICMPタイプは $1ではありません
+desc_ctstate=接続の状態は $1です
+desc_ctstate!=接続の状態は $1ではありません
+desc_physdev-in=入力物理インターフェイスは $1です
+desc_physdev-in!=入力物理インターフェイスは $1ではありません
+desc_physdev-out=出力物理インターフェースは $1です
+desc_physdev-out!=出力物理インターフェースは $1ではありません
+desc_args--match-set=$2はIPセット $1に含まれています
+desc_src=ソース
+desc_dest=先
+
+redhat_einstalled=IPテーブルパッケージがシステムにインストールされていないことを示す<tt>iptables（6）</tt>ブートアップアクションが見つかりませんでした
+
+edit_state_untracked=追跡されない
+edit_state_snat=ソースNATd
+edit_state_dnat=宛先NATd
+edit_mods=追加のIPtablesモジュール
+edit_physdevin=着信物理インターフェイス
+edit_physdevout=発信物理インターフェース
+edit_physdevisin=ブリッジインターフェイスで着信するパケット
+edit_physdevisout=ブリッジインターフェイスで発信するパケット
+edit_physdevisbridged=パケットがブリッジされています
+
+save_ecanjump=このアクションの使用は許可されていません
+save_ephysdevin=着信物理インターフェースが欠落しているか無効です
+save_ephysdevout=発信物理インターフェイスが欠落しているか無効です
+
+delete_ecannot=チェーンを削除することはできません
+
+clear_ecannot=チェーンをクリアすることはできません
+
+new_ecannot=チェーンを作成することはできません
+
+apply_ecannot=構成を適用することはできません
+apply_remote=$1からのエラー： $2
+unapply_ecannot=設定を元に戻すことはできません
+bootup_ecannot=起動時にファイアウォールを有効または無効にすることはできません
+
+log_rename_chain=テーブル $2のチェーン $1の名前を変更しました
+log_delsel_chain=テーブル $2のチェーン $1から $3ルールを削除しました
+log_movesel_chain=テーブル $2のチェーン $1から $3ルールを移動しました
+log_add_host=クラスタサーバー $1を追加しました
+log_add_group=グループ $1からクラスターサーバーを追加しました
+log_delete_host=クラスターサーバー $1を削除しました
+log_delete_group=$1クラスターサーバーを削除しました
+log_openports=開いたファイアウォールポート $1
+
+setup_ecannot=ファイアウォールのセットアップは許可されていません
+
+acl_tables=許可されたIPtables
+acl_apply=構成を適用できますか？
+acl_unapply=設定を適用解除できますか？
+acl_bootup=起動時にファイアウォールを有効にできますか？
+acl_setup=ファイアウォールの初期設定を実行できますか？
+acl_cluster=ファイアウォールクラスターを管理できますか？
+acl_jumps=許可されたアクション
+acl_jall=すべて
+acl_newchain=新しいチェーンを作成できますか？
+acl_delchain=チェーンを削除またはクリアできますか？
+acl_policy=デフォルトポリシーを変更できますか？
+
+etable=このIPtableを編集することはできません
+ejump=このルールを編集することはできません
+ecluster=ファイアウォールクラスタを管理することは許可されていません
+
+cluster_title=クラスターファイアウォールサーバー
+cluster_none=ファイアウォールクラスターにサーバーがまだ追加されていません。
+cluster_host=ホスト名
+cluster_desc=説明
+cluster_os=オペレーティング・システム
+cluster_add=サーバーを追加
+cluster_gadd=グループにサーバーを追加
+cluster_need=ここで管理するには、Webmin Servers Indexモジュールでログインとパスワードを使用してサーバーを追加する必要があります。
+cluster_return=クラスタサーバー
+cluster_delete=削除選択
+
+add_title=サーバーを追加する
+add_msg=$1を追加します ..
+add_gmsg=グループ $1にサーバーを追加します ..
+add_err=サーバーを追加できませんでした
+add_gerr=グループを追加できませんでした
+add_echeck=サーバー $1にはLinuxファイアウォールモジュールがありません
+add_emissing=サーバー $1にはファイアウォールコマンド $2がありません
+add_ok=$1を追加し、 $2のアクティブなファイアウォールルールを追加しました。
+add_enone=追加するサーバーは選択されていません！
+
+policy_ecannot=このチェーンのデフォルトポリシーを変更することはできません
+
+move_title=移動ルール
+move_count=選択されたルール
+move_chain=現在の変化
+move_dest=宛先チェーン
+move_ok=今すぐ移動
+move_header=ルール移動オプション
+
+rename_title=チェーンの名前を変更
+rename_count=チェーンのルール
+rename_chain=現在の名前
+rename_name=新しい名前
+rename_ok=今すぐ名前を変更
+rename_header=チェーンの名前変更オプション
+rename_adjust=このチェーンにジャンプする他のルールを変更しますか？
+rename_none=なし
+rename_ecannot=チェーンの名前を変更することはできません

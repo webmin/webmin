@@ -1,0 +1,8 @@
+index_title=Heslá pre zmenu klastra
+index_noservers=V module <a href=$1>Cluster Users and Groups</a> neboli definované žiadne servery na správu používateľov.
+index_hosts=Všetky zmeny hesla vykonané pomocou tohto modulu sa vykonajú na všetkých hostiteľoch $1 spravovaných modulom Používatelia klastra a skupiny.
+
+passwd_err=Heslo sa nepodarilo zmeniť
+passwd_title=Zmena hesla
+passwd_on=Zmena hesla na $1 ..
+passwd_euser=Používateľ neexistuje!

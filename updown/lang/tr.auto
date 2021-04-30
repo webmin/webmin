@@ -1,0 +1,52 @@
+index_header3=Dosyayı sunucudan PC'ye indir
+index_fetch=İndirilecek dosya
+index_ok2=İndir
+index_show=Mümkünse tarayıcıda gösterilsin mi?
+index_tabdownload=Web'den indir
+index_tabupload=Sunucuya yükle
+index_tabfetch=Sunucudan indir
+index_descdownload=Bu form, HTTP veya FTP URL'lerinden Webmin çalıştıran sisteme dosya veya web sayfası indirmenize izin verir. İndirme hemen yapılabilir veya gelecekte bir süre için programlanabilir.
+index_descupload=Bu sayfa, web tarayıcınızın çalıştığı PC'den Webmin çalıştıran sisteme bir veya daha fazla dosya yüklemenizi sağlar.
+index_descfetch=Bu sayfa, tarayıcınızda görüntülemek veya aynı sisteme kaydetmek için Webmin'i çalıştıran sistemden bir dosya indirmek içindir.
+index_email=İndirme işlemi tamamlandığında e-posta gönderilsin mi?
+index_emailto=Evet, adreslemek
+index_email2=Yüklemeler tamamlandığında e-posta gönderilsin mi?
+
+upload_eemail=Bildirilecek e-posta adresi eksik
+upload_saving=$1 dosyası kaydediliyor ..
+upload_saved=.. $1 yazdı
+upload_unzipping=$1 dosyası ayıklanıyor ..
+upload_unzipdone=.. $1 
+
+download_enone=İndirilecek URL girilmedi
+
+acl_fetch=Dosyaları PC'ye indirebilir mi?
+
+fetch_err=Dosya indirilemedi
+fetch_ecannot=PC'ye dosya indirmenize izin verilmiyor
+fetch_efile=Dosya adı girilmedi
+fetch_eexists2=Dosya veya dizin mevcut değil
+fetch_eopen=Dosya açılamadı : $1 
+fetch_eaccess=$1 sitesinden dosya indirmenize izin verilmiyor
+fetch_ezip=<tt>zip</tt> komutu yüklü değilse bir dizin indirilemez
+fetch_eroot=Kök dizin indirilemiyor!
+
+email_downmsg=Aşağıdaki indirme işlemi tamamlandı :
+email_downurl=URL: $1 
+email_downerr=Hata mesajı: $1 
+email_downpath=Hedef dosya adı: $1 
+email_downsize=İndirilen boyut: $1 
+email_subjectd=İndirme tamamlandı
+email_eextract=Başarısız : $1 
+email_extfailed=ayıklama başarısız oldu : $1 
+email_extdone_zip=ZIP dosyası çıkarıldı
+email_extdone_tar=TAR dosyası çıkarıldı
+email_extdone_tgz=Gzip edilmiş TAR dosyası çıkarıldı
+email_extdone_tbz2=Bzip edilmiş TAR dosyası çıkarıldı
+email_extdone_lha=LHArc dosyası çıkarıldı
+email_upfile=Orijinal dosya adı: $1 
+email_uppath=Hedef dosya adı: $1 
+email_upsize=Yüklenen boyut: $1 
+email_upextract=Çıkarma durumu: $1 
+email_subjectu=Yükleme tamamlandı
+email_upmsg=Aşağıdaki yüklemeler tamamlandı :

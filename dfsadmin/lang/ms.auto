@@ -1,0 +1,57 @@
+index_title=Saham NFS
+index_add=Mula berkongsi direktori baru.
+index_dir=Direktori
+index_clients=Pelanggan
+index_everyone=Semua orang
+index_delete=Padamkan Saham Terpilih
+index_none=Tiada direktori yang sedang dieksport pada sistem ini.
+index_apply=Terapkan Perubahan
+index_applydesc=Klik butang ini untuk menerapkan konfigurasi perkongsian fail semasa. Ini akan menjadikan semua direktori yang disenaraikan di atas tersedia dengan pilihan yang ditentukan.
+index_return=senarai saham
+
+edit_title1=Edit Kongsi
+edit_title2=Buat Saham
+edit_header1=Butiran penghantaran
+edit_dir=Direktori
+edit_desc=Penerangan
+edit_ro=Akses baca sahaja
+edit_rw=Akses baca-tulis
+edit_root=Akses akar
+edit_none=Tiada
+edit_all=Semua tuan rumah
+edit_listed=Tuan rumah yang disenaraikan ..
+edit_header2=Pilihan saham
+edit_nosub=Benarkan pemasangan subdir?
+edit_nosuid=Benarkan fail setuid?
+edit_des=Pelanggan mesti menggunakan DES?
+edit_kerberos=Pelanggan mesti menggunakan kerberos?
+edit_anon=Pengguna tanpa nama
+edit_anon0=Tidak ditetapkan
+edit_anon1=Tiada akses
+edit_aclok=Benarkan ACL?
+edit_public=Perkongsian WebNFS?
+edit_index=Fail indeks WebNFS
+
+save_err=Gagal menyimpan bahagian
+save_edirectory='$1' bukan nama direktori yang sah
+save_edirectory2=Direktori '$1' tidak wujud
+save_erw=Anda tidak menyenaraikan mana-mana tuan rumah untuk berkongsi baca tulis
+save_ero=Anda tidak menyenaraikan mana-mana tuan rumah untuk berkongsi baca sahaja
+save_eroot=Anda tidak menyenaraikan mana-mana tuan rumah untuk berkongsi dengan root
+save_ealready=Direktori '$1' sudah dikongsi
+save_ehost=Hos '$1' tidak wujud
+
+log_modify=Modified NFS share $1 
+log_rename=Saham NFS berubah $1 hingga $2 
+log_create=Dibuat NFS saham $1 
+log_delete=Diperolehi bahagian NFS $1 
+log_apply=Perubahan yang digunakan
+
+acl_view=Bolehkah mengedit saham NFS?
+
+ecannot=Anda tidak dibenarkan menguruskan saham NFS
+
+delete_err=Gagal memadamkan saham
+delete_enone=Tiada yang dipilih
+
+restart_err=Gagal menggunakan perubahan

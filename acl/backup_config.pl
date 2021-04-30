@@ -1,7 +1,7 @@
 
 use strict;
 use warnings;
-do 'acl-lib.pl';
+require 'acl-lib.pl';
 our ($config_directory, %gconfig);
 
 # backup_config_files()

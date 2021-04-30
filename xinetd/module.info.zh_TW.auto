@@ -1,0 +1,3 @@
+desc_zh_TW=網絡服務
+name_zh_TW=Xinetd
+longdesc_zh_TW=編輯Xinetd處理的服務器，它是inetd的替代品。

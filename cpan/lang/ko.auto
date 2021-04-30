@@ -1,0 +1,7 @@
+index_user=$1 ($2 에서 사용)
+index_ezone=Perl은 전역 영역과 공유 된 것으로 보이므로 여기에 모듈을 설치할 수 없습니다. 대신 전역 영역에 설치해야합니다.
+index_allmods2=Webmin에서 사용하는 누락 된 모듈
+index_wantmods=설치할 모듈
+
+download_missingok=CPAN에서 누락 된 모듈
+download_fallback=일부 모듈이 패키지에서 설치하지 못했습니다. 대신 소스에서 설치를 시도하십시오.

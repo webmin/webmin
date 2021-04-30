@@ -1,0 +1,4 @@
+index_none=No tiene acceso a ningún usuario para cambiar sus contraseñas.
+
+acl_self=¿Permitir siempre que se cambie la contraseña propia?
+acl_notusers=A excepción de los usuarios

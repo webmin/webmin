@@ -1,0 +1,120 @@
+index_title=Jabber IM -palvelin
+index_econfig=Jabber-asetustiedostoa $1 ei ole. Joko Jabberia ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
+index_edir=Jabber-kantahakemistoa $1 ei ole. Joko Jabberia ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
+index_emodules=Perlin moduuleja $1 ja $2, joita Webmin vaatii Jabberin XML-kokoonpanon käsittelemiseksi, ei ole asennettu. <a href='$3'>Asenna ne suoraan CPANista napsauttamalla tätä</a>.
+index_emodule=Perlin moduulia $1, jota Webmin vaatii Jabberin XML-määritysten käsittelemiseksi, ei ole asennettu. <a href='$2'>Asenna se suoraan CPANista napsauttamalla tätä</a>.
+index_expat=Varmista, että Expat C -kirjasto ja otsikot on asennettu ennen kuin yrität asentaa Perl-moduuleja, koska ne ovat riippuvaisia siitä ja epäonnistuvat, jos sitä ei ole saatavana.
+index_eparse=$1 perl -moduuli ei voinut jäsentää Jabber-asetustiedostoasi : $2 
+index_ejabberd=Jabber-palvelinohjelmaa $1 ei löydy järjestelmästäsi. Joko Jabberia ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
+index_eversion=Webmin tukee vain Jabber-versiota $2, mutta komento $3 ilmoitti seuraavat versiotiedot : $1 
+index_eversion2=Webmin tukee vain alle 2: n alla olevia Jabber-versioita, mutta komento $3 ilmoitti seuraavat versiotiedot : $1 
+index_start=Käynnistä Jabber Server
+index_startmsg=Napsauta tätä painiketta, jos haluat käynnistää Jabber-palvelimen järjestelmässä. Ennen kuin se käynnistetään, yksikään pikaviestiohjelma ei voi käyttää sitä.
+index_stop=Pysäytä Jabber Server
+index_stopmsg=Napsauta tätä painiketta, kun haluat pysäyttää käynnissä olevan Jabber-palvelimen järjestelmässä. Mikään pikaviestiohjelma ei voi käyttää sitä, kun se on pysäytetty.
+index_restart=Ota muutokset käyttöön
+index_restartmsg=Napsauta tätä painiketta, kun haluat käyttää nykyistä kokoonpanoa pysäyttämällä ja käynnistämällä sitten Jabber-palvelimen uudelleen.
+index_comments=Varoitus - Jabber-konfigurointitiedosto $1 sisältää kommentteja, jotka poistetaan, jos mitään muutoksia tehdään tällä moduulilla.
+index_return=Jabber-valikko
+index_version=Jabber-versio $1 
+
+general_title=Yleiset vaihtoehdot
+general_header=Global Jabber -palvelimen vaihtoehdot
+general_host=Palvelimesi isäntänimi
+general_elog=Virhe lokitiedosto
+general_elogfmt=Virhelokin muoto
+general_rlog=Lokitiedoston käyttö
+general_rlogfmt=Lokimuoto
+general_pidfile=Prosessitunnus-tiedosto
+general_err=Yleisten asetusten tallentaminen epäonnistui
+general_ehost=Puuttuva tai virheellinen palvelimen isäntänimi
+general_eelog=Puuttuva tai virheellinen virhelokitiedosto
+general_eelogfmt=Puuttuu virheloki-muoto
+general_erlog=Puuttuva tai virheellinen liikennelokitiedosto
+general_erlogfmt=Puuttuva liikennelokin muoto
+general_epidfile=Puuttuva tai virheellinen prosessitunniste
+
+messages_title=viestien
+messages_header=Jabber-palvelimen viesti asiakkaille
+messages_wsubject=Tervetuloviestin aihe
+messages_wbody=Tervetuloa viestin runko
+messages_vcard=Palvelimen vCard
+messages_rinstr=Rekisteröintiohjeet
+messages_rnotify=Ilmoita järjestelmänvalvojalle rekisteröinnissä?
+messages_rfields=Vaadittavat rekisteröintikentät
+messages_vcard2jud=Lähetetäänkö vCard Jabber-käyttäjän hakemistoon?
+messages_err=Viestien tallentaminen epäonnistui
+messages_evcard=Virheellinen vCard XML : $1 
+messages_etag=Palvelimen vCard XML ei ala &lt;vCard&gt;
+
+modules_title=Jabber-moduulit
+modules_desc=Jäljempänä lueteltuja moduuleja käytetään käsittelemään Jabber-istunnonhallinnan vastaanottamia viestejä. Sinun tulisi muuttaa tätä luetteloa vain, jos tiedät mitä teet.
+modules_header=Jabber-palvelimen istunnonhallintamoduulit
+modules_mod=Moduulin nimi
+modules_so=Jaettu kirjasto
+modules_err=Jabber-moduulien tallentaminen epäonnistui
+modules_emod='$1' ei ole kelvollinen moduulin nimi
+modules_eso=Jaettua kirjastoa '$1' ei ole
+
+karma_title=Karman liikenteenohjaus
+karma_header=Liikenteenopeuden hallintavaihtoehdot
+karma_rate=Liiallinen yhteyden käsittely
+karma_rate_def=Liikuntarajoitteinen
+karma_rate_sel=Estä asiakas $2 sekunniksi $1 -yhteyksien jälkeen
+karma_mode=Karma-tila
+karma_none=Ei rajoja
+karma_low=Alhaiset liikennerajoitukset
+karma_medium=Keskimääräiset liikennerajoitukset
+karma_high=Korkeat liikennerajoitukset
+karma_sel=Käytä alla valittuja asetuksia.
+karma_heartbeat=Jakson pituus sekunteina (<tt>syke</tt>)
+karma_init=Alustusjaksot (<tt>init</tt>)
+karma_max=Karma maksimi (<tt>max</tt>)
+karma_inc=Karman lisäys (<tt>inc</tt>)
+karma_dec=Karma-asetus (<tt>dec</tt>)
+karma_penalty=Rangaistusajat (<tt>rangaistus</tt>)
+karma_restore=Burst-palautusjaksot (<tt>palauttaa</tt>)
+karma_err=Karma-asetusten tallentaminen epäonnistui
+karma_eheartbeat=Puuttuva tai virheellinen ajanjakso
+karma_einit=Puuttuvat tai virheelliset alustamisjaksot
+karma_emax=Puuttuva tai virheellinen karma
+karma_einc=Puuttuva tai virheellinen karman lisäys
+karma_edec=Puuttuva tai virheellinen karma-asetus
+karma_epenalty=Puuttuvat tai virheelliset rangaistusajat
+karma_erestore=Puuttuvat tai virheelliset palautusjaksot
+karma_epoints=Puuttuva tai virheellinen yhteyksien määrä
+karma_etime=Puuttuva tai virheellinen estoaika
+
+ips_title=IP-pääsyn hallinta
+ips_header=Jabber-palvelimen IP-pääsyn hallinta
+ips_allow=Sallitut asiakas-IP: t
+ips_all=Kaikki osoitteet
+ips_deny=Estetyt asiakas-IP: t
+ips_none=Ei mitään
+ips_sel=Listatut osoitteet/netmaskit ..
+ips_err=IP-käyttöoikeuksien tallennus epäonnistui
+ips_eaddr='$1' ei ole kelvollinen IP-osoite tai IP-osoite/verkkomaski
+
+file_title=Muokkaa asetustiedostoa
+file_desc=Muokkaa Jabber-asetustiedostoa suoraan alla olevan lomakkeen avulla. Tämä tulisi tehdä vain, jos ymmärrät XML-kokoonpanomuodon.
+file_header=Muokkaa Jabber-asetustiedostoa
+file_err=Konfigurointitiedoston tallentaminen epäonnistui
+
+admin_title=Hallinnolliset käyttäjät
+admin_header=Palvelimen hallinnan käyttäjät
+admin_read=Lue käyttöoikeuden ylläpitäjät
+admin_write=Kirjoita käyttöoikeuden ylläpitäjät
+admin_reply=Automaattivastaus järjestelmänvalvojan viesteille?
+admin_rsubject=Automaattisen vastauksen aihe
+admin_rbody=Automaattivastausviesti
+
+filter_title=Käyttäjäsuodattimet
+filter_header=Käyttäjäsuodattimen käyttöoikeudet
+filter_max=Suurimmat suodatussäännöt
+filter_conds=Sallitut suodatusolosuhteet
+filter_acts=Sallitut suodatustoimet
+
+restart_err=Muutosten asettaminen epäonnistui
+stop_err=Jabberin pysäyttäminen epäonnistui
+stop_epid=Jabber-prosessia ei löytynyt
+start_err=Jabberin käynnistäminen epäonnistui

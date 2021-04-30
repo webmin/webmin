@@ -1,0 +1,104 @@
+index_active=アクティブですか？
+index_global=デフォルト設定を編集します。
+index_start=Fetchmail Daemonを起動します
+index_stop=Fetchmailデーモンを停止する
+index_startmsg=このサーバーでfetchmailデーモンを起動するにはこのボタンをクリックし、 $1秒ごとにメールをチェックします。デーモンはユーザー $2として実行され、上記の構成を使用します。
+index_stopmsg=このボタンをクリックして、現在ユーザー $1として実行されているfetchmailデーモンを停止します。メールは $2秒ごとに自動的にダウンロードされなくなります。
+index_efetchmail=fetchmailプログラム $1が見つかりませんでした。 fetchmailがシステムにインストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
+index_none=Unixユーザーには<tt>.fetchmailrc</tt>ファイルがありません。
+index_cron=定期点検
+index_crondesc=このボタンをクリックすると、Cronジョブを作成、変更、または削除して、上記の構成を使用して電子メールを確認およびダウンロードするために、Fetchmailをスケジュールに従って自動的に実行します。
+index_crondesc2=このボタンをクリックすると、Cronジョブを作成、変更、または削除して、スケジュールされたFetchmailを自動的に実行し、リストされているすべてのユーザーのメールを確認してダウンロードします。
+index_version=Fetchmailバージョン $1
+index_header=Fetchmail構成のユーザー
+index_search=次のFetchmail構成を表示します。
+index_show=公演
+index_toomany=システム上に表示するユーザーが多すぎます。
+
+poll_auth=認証方法
+poll_usually=通常はありません
+poll_ssl=SSLモードで接続しますか？
+poll_eboth=サーバーにメッセージを残し、常にすべてのメッセージを取得するオプションには互換性がありません
+poll_adduser=別のユーザーを追加
+poll_check=このサーバーを確認してください
+poll_interface=状態を確認する
+poll_interface_def=常に確認する
+poll_interface_ifc=インターフェイスが起動している場合のみ
+poll_interface_ip=アドレス/ネットマスク付き
+poll_einterface=ネットワークインターフェイスが見つからないか無効です
+poll_enet=住所が欠落しているか無効です
+poll_emask=無効なアドレスネットマスク
+poll_preconnect=接続する前に実行するコマンド
+poll_postconnect=切断後に実行するコマンド
+poll_ecannot=このユーザーのfetchmail設定を編集することは許可されていません
+poll_efile=ユーザーのfetchmail構成ファイルのみを編集できます
+poll_eusername=ユーザーは存在しません！
+poll_foruser=ユーザー $1の場合
+
+stop_err=fetchmailを停止できませんでした
+stop_ecannot=fetchmailを停止することはできません
+start_err=fetchmailを開始できませんでした
+start_einterval=チェック間隔が欠落しているか無効です
+start_ecannot=fetchmailを開始することはできません
+
+check_title=サーバーの確認
+check_exec=コマンド $1でサーバー上のメールを確認しています ..
+check_ok=..チェック完了。
+check_failed=..チェックに失敗しました！
+
+global_title=デフォルトの設定
+global_header=すべてのサーバーのデフォルト設定
+global_err=デフォルト設定を保存できませんでした
+
+log_create_poll_file=ファイル $2にサーバー $1を追加しました
+log_modify_poll_file=ファイル $2のサーバー $1を変更しました
+log_delete_poll_file=ファイル $2のサーバー $1を削除しました
+log_create_poll_user=ユーザー $2にサーバー $1を追加しました
+log_modify_poll_user=ユーザー $2のサーバー $1を変更しました
+log_delete_poll_user=ユーザー $2のサーバー $1を削除しました
+log_check_file_file=ファイル $1のすべてのサーバーをチェックしました
+log_check_file_server=ファイル $1のサーバー $2を確認しました
+log_check_user_file=ユーザー $1のすべてのサーバーをチェックしました
+log_check_user_server=ユーザー $1のサーバー $2を確認しました
+log_check_server_l=ファイル $1のサーバー $2を確認しました
+log_global_user=ユーザー $1のグローバル設定を変更しました
+log_global_file=ファイル $1のグローバル設定を変更しました
+log_start=fetchmailデーモンを開始しました
+log_stop=fetchmailデーモンを停止しました
+log_create_cron=スケジュールされたチェックを有効にしました
+log_update_cron=変更されたスケジュール済みチェック
+log_delete_cron=スケジュールされたチェックを無効にしました
+
+acl_users=fetchmailの設定を編集できます
+acl_all=すべてのユーザー
+acl_this=現在のwebminユーザー
+acl_only=ユーザーのみ
+acl_except=ユーザーを除くすべて
+acl_cron=スケジュールされたチェックを構成できますか？
+acl_daemon=Fetchmailデーモンを構成できますか？
+
+cron_title=定期点検
+cron_desc=このページを使用して、Cronジョブを有効または無効にして、Fetchmail構成内のメールサーバーを定期的に確認できます。ブート時に再起動する必要がないため、Fetchmailデーモンの実行よりも優れたCronジョブを使用します。
+cron_header=スケジュールされたFetchmail設定
+cron_enabled=スケジュールされたチェックは有効ですか？
+cron_yes=はい、以下で構成されている場合があります ..
+cron_output=Fetchmail出力の宛先
+cron_file=ファイル $1に書き込みます
+cron_mail=アドレス $1へのメール
+cron_throw=捨てる
+cron_cron=cronへの出力
+cron_owner=設定が確認されているユーザーへのメール
+cron_user=ユーザーとしてFetchmailを実行する
+cron_err=スケジュールされたチェックを保存できませんでした
+cron_efile=出力ファイル名が欠落しているか無効です
+cron_email=メールアドレスが見つからないか無効です
+cron_euser=Unixユーザーが見つからないか無効です
+cron_errors=エラーが発生した場合にのみ出力しますか？
+cron_ecannot2=スケジュールされたチェックを構成することはできません
+
+user_title=Fetchmailの構成
+user_header=ユーザー $1の場合
+user_return=ユーザーの構成
+
+email_ok=Fetchmailの出力
+email_failed=Fetchmailエラー

@@ -1,0 +1,3 @@
+desc_it=Utenti e gruppi del cluster
+longdesc_it=Crea, aggiorna ed elimina utenti e gruppi su più server. A differenza di NIS, ogni server ha i propri file passwd e di gruppo che vengono aggiornati in remoto da questo modulo.
+name_it=Utenti del cluster

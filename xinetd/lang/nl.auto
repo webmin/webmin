@@ -1,0 +1,2 @@
+index_none=Er zijn nog geen netwerkdiensten gedefinieerd.
+index_estart=De opdracht om Xinetd $1 te starten, bestaat niet. Misschien is het niet geïnstalleerd of is uw <a href='$2'>moduleconfiguratie</a> onjuist.

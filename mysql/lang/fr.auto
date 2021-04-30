@@ -1,0 +1,9 @@
+syslog_desc2=Message d'erreur MySQL
+
+mysqlpass_err=Mode sans échec MySQL
+mysqlpass_esafecmd=La commande $1 nécessaire pour démarrer MySQL avec l'authentification désactivée est introuvable
+mysqlpass_eshutdown=Échec de l'arrêt : $1 
+mysqlpass_esafe=Échec du démarrage en mode sans échec : $1 
+mysqlpass_estartup=Échec du démarrage : $1 
+mysqlpass_echange=La modification du mot de passe a échoué : $1 
+mysqlpass_echange_forcepass=Forcer le remplacement du mot de passe donné, s'il est perdu ou oublié

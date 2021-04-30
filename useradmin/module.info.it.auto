@@ -1,0 +1,3 @@
+desc_it=Utenti e gruppi
+longdesc_it=Crea e modifica utenti e gruppi Unix dai file /etc/passwd e /etc/group.
+name_it=User Manager

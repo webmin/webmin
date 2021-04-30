@@ -46,6 +46,9 @@ if (&supports_users()) {
 		# ACL determines
 		$fileunix = $access{'fileunix'} || $remote_user;
 		@uinfo = getpwnam($fileunix);
+		if (!@uinfo && !$access{'fileunix'}) {
+			@uinfo = getpwnam("nobody");
+			}
 		if (@uinfo) {
 			&switch_to_unix_user(\@uinfo);
 			}

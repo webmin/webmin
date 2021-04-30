@@ -53,7 +53,8 @@ elsif ($action eq 'text') {
 elsif ($action eq 'soa') {
 	return &text("log_soa", "<tt>$object</tt>");
 	}
-elsif ($action eq 'zonekeyon' || $action eq 'zonekeyoff' || $action eq 'sign') {
+elsif ($action eq 'zonekeyon' || $action eq 'zonekeyoff' || $action eq 'sign' ||
+       $action eq 'resign') {
 	return &text("log_".$action, "<tt>$object</tt>");
 	}
 elsif ($action eq 'opts') {

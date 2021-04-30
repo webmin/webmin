@@ -1,0 +1,51 @@
+index_title=NFS Paylaşımları
+index_add=Yeni bir dizin paylaşmaya başlayın.
+index_dir=rehber
+index_clients=Müşteriler
+index_everyone=Herkes
+index_delete=Seçilen Paylaşımları Sil
+index_none=Şu anda bu sistemde herhangi bir dizin dışa aktarılmıyor.
+index_apply=Değişiklikleri uygula
+index_applydesc=Geçerli dosya paylaşım yapılandırmasını uygulamak için bu düğmeyi tıklatın. Bu, yukarıda listelenen tüm dizinleri belirtilen seçeneklerle kullanılabilir hale getirecektir.
+index_return=hisse listesi
+
+edit_title1=Paylaşımı Düzenle
+edit_title2=Paylaş
+edit_header1=Ayrıntıları paylaşın
+edit_dir=rehber
+edit_desc=Açıklama
+edit_ro=Salt okunur erişim
+edit_rw=Okuma-yazma erişimi
+edit_root=Kök erişimi
+edit_none=Yok
+edit_all=Tüm ev sahipleri
+edit_listed=Listelenen ana bilgisayarlar ..
+edit_header2=Paylaşım seçenekleri
+edit_nosub=Alt dizinlerin montajına izin verilsin mi?
+edit_nosuid=Setuid dosyalarına izin verilsin mi?
+edit_des=Müşteriler DES?
+edit_kerberos=Müşteriler kerberos kullanmalı mı?
+edit_anon=Anonim kullanıcı
+edit_anon0=Belirlenmedi
+edit_anon1=Erişim yok
+edit_aclok=EKL'lere izin verilsin mi?
+edit_public=WebNFS paylaşımı?
+edit_index=WebNFS dizin dosyası
+
+save_err=Paylaşım kaydedilemedi
+save_edirectory='$1' geçerli bir dizin adı değil
+save_edirectory2='$1' dizini mevcut değil
+save_erw=Okuma yazma işlemini paylaşmak için hiçbir ana bilgisayarı listelemediniz
+save_ero=İle salt okunur paylaşmak için hiçbir ana bilgisayarı listelemediniz
+save_eroot=Kökünü paylaşmak için hiçbir ana bilgisayarı listelemediniz
+save_ealready='$1' dizini zaten paylaşılıyor
+save_ehost='$1' ana bilgisayarı mevcut değil
+
+acl_view=NFS paylaşımlarını düzenleyebilir mi?
+
+ecannot=NFS paylaşımlarını yönetmenize izin verilmiyor
+
+delete_err=Paylaşımlar silinemedi
+delete_enone=Hiçbiri seçilmedi
+
+restart_err=Değişiklikler uygulanamadı

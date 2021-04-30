@@ -1,0 +1,28 @@
+index_enis2=Будет использоваться только функция клиентских сервисов этого модуля.
+
+client_enis=На вашем компьютере не установлена поддержка клиента NIS.
+
+switch_srcs=Источники данных
+switch_return=клиентские услуги
+
+security_domain=Домен NIS
+
+eswitch_title=Редактировать Сервис
+eswitch_egone=Сервис не существует!
+eswitch_header=Детали сервиса
+eswitch_name=Наименование услуги
+eswitch_0=Первый источник данных
+eswitch_1=Второй источник данных
+eswitch_2=Третий источник данных
+eswitch_3=Четвертый источник данных
+eswitch_4=Пятый источник данных
+eswitch_nth=Источник данных $1 
+eswitch_success=На успех
+eswitch_notfound=Если не найден
+eswitch_unavail=Если нет в наличии
+eswitch_tryagain=Временно недоступен
+eswitch_return=Вернуть результат
+eswitch_continue=Продолжить поиск
+eswitch_none=Никто
+eswitch_err=Не удалось сохранить сервис
+eswitch_enone=Источники не выбраны!

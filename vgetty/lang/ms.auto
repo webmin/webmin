@@ -1,0 +1,118 @@
+index_title=Pelayan mel suara
+index_ecmd=Perintah Vgetty $1 tidak dijumpai pada sistem anda. Mungkin ia tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
+index_econfig=Fail konfigurasi Vgetty $1 tidak dijumpai pada sistem anda. Mungkin ia tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
+index_return=indeks mel suara
+
+vgetty_title=Konfigurasi Port Serial
+vgetty_desc=Untuk pelayan anda menjawab panggilan suara dengan modem yang disambungkan ke port siri, ia mesti disenaraikan di bawah. Apabila anda menambah pelabuhan ke senarai ini, program $1 akan dikonfigurasi untuk menjawab panggilan dan memainkan mesej.
+vgetty_add=Tambah port siri baru
+vgetty_tty=Peranti bersiri
+vgetty_type=Taipkan
+vgetty_vgetty=Suara
+vgetty_mgetty=Data/faks
+vgetty_none=Tiada port bersiri telah dikonfigurasi untuk mel suara.
+vgetty_apply=Terapkan Konfigurasi
+vgetty_applydesc=Klik butang ini untuk menggunakan konfigurasi pelayan mel suara saat ini dengan menjalankan perintah $1 dan membunuh semua proses Vgetty.
+vgetty_applyerr=Gagal menggunakan konfigurasi
+vgetty_return=senarai port siri
+vgetty_create=Tambah Port Serial
+vgetty_edit=Edit Port Serial
+vgetty_header=Pilihan konfigurasi port serial
+vgetty_ts=Port siri $1 
+vgetty_other=Peranti lain ..
+vgetty_rings=Cincin sebelum menjawab
+vgetty_default=Lalai global
+vgetty_ans=Mod Jawapan
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=Suara
+vgetty_ans_fax=Faks
+vgetty_ans_data=Data
+vgetty_err=Gagal menyimpan port bersiri
+vgetty_etty=Peranti siri yang hilang atau tidak wujud
+vgetty_erings=Bilangan cincin yang hilang atau tidak sah
+vgetty_erings2=Bilangan cincin mestilah sekurang-kurangnya 2
+vgetty_eans=Tiada mod jawapan yang dipilih
+vgetty_eclash=Port siri $1 sudah digunakan
+
+options_title=Pilihan Pelayan Voicemail
+options_header=Pilihan untuk semua port siri
+options_maxlen=Panjang mesej maksimum
+options_secs=detik
+options_minlen=Panjang mesej minimum
+options_silence=Keluarkan senyap dari akhir mesej?
+options_thresh=Tahap ambang berdiam diri
+options_rgain=Merakam tahap kelantangan
+options_tgain=Tahap volum main balik
+options_rings=Cincin sebelum menjawab
+options_perport=Boleh ditetapkan untuk setiap port bersiri
+options_ans=Mod Jawapan
+options_keep=Simpan mesej yang mengandungi data atau kod DTMF?
+options_light=Dayakan cahaya jawapan auto selepas menerima?
+options_owner=Pemilik Unix untuk fail mesej
+options_group=Kumpulan Unix untuk fail mesej
+options_mode=Kebenaran untuk fail mesej
+options_prog=Selepas rakaman mesej
+options_prog0=Tidak buat apa-apa
+options_prog1=E-mel dalam format WAV ke
+options_prog2=Jalankan arahan pada fail mesej
+options_err=Gagal menyimpan pilihan mel suara
+options_erings=Bilangan cincin yang hilang atau tidak sah
+options_erings2=Bilangan cincin mestilah sekurang-kurangnya 2
+options_emaxlen=Panjang mesej maksimum yang tiada atau tidak sah
+options_eminlen=Panjang mesej minimum yang hilang atau tidak sah
+options_ethresh=Ambas ambing atau tidak sah ambang
+options_ergain=Tahap aras rakaman yang hilang atau tidak sah
+options_ergain2=Tahap volum rakaman mestilah antara 0 dan 100
+options_etgain=Tahap volum main balik yang hilang atau tidak sah
+options_etgain2=Tahap volum main balik mestilah antara 0 dan 100
+options_eemail=Alamat e-mel yang hilang atau tidak sah
+options_eprog=Program hilang atau tidak wujud untuk dijalankan
+options_eowner=Pengguna Unix yang hilang atau tidak sah untuk fail mesej
+options_egroup=Kumpulan Unix yang hilang atau tidak sah untuk fail mesej
+options_emode=Kehilangan atau kebenaran tidak sah untuk fail mesej
+
+received_title=Mesej Menerima
+recieved_desc=Mesej mel suara yang telah diterima oleh pelayan anda disenaraikan di bawah. Untuk mendengar mesej, klik tarikh/masa dalam lajur pertama.
+received_none=Tiada mesej voicemail yang diterima telah dijumpai.
+received_date=Diterima pada
+received_size=Saiz fail
+received_speed=Kadar sampel
+received_type=Format audio
+received_delete=Padam mesej yang dipilih
+received_move=Tukar dipilih untuk salam
+received_all=Pilih semua
+received_invert=Invert selection
+
+listen_efile=Nama fail mesej tidak sah!
+listen_epath=Mesej mel suara tidak lagi wujud
+
+delete_efile=Nama fail mesej tidak sah!
+
+messages_title=Mesej ucapan
+messages_desc=Halaman ini menyenaraikan mesej ucapan yang akan dimainkan apabila pemanggil menyambung ke pelayan voicemail anda. Jika anda mempunyai lebih daripada itu, satu mesej yang dipilih secara rawak akan digunakan.
+messages_file=Nama fail
+messages_none=Tiada mesej ucapan tersedia.
+messages_updesc=Borang ini membolehkan anda memuat naik fail ucapan tambahan WAV, yang akan ditukar kepada format yang dipilih untuk digunakan oleh modem anda. Kadar sampel WAV yang dimuat naik mestilah sama dengan kadar sampel mesej yang diterima, sepertimana format yang dipilih.
+messages_upload=Muat naik mesej
+messages_fmt=Tukar kepada
+
+pvfdesc=$1, $2 bit
+
+upload_err=Gagal menambah mesej
+upload_emessage=Fail WAV tidak dipilih
+upload_ewav=Gagal menukar fail WAV : $1 
+upload_epvf=Gagal membuat fail RMD : $1 
+upload_esame=Fail mesej $1 sudah wujud
+
+log_apply=Konfigurasi terapan
+log_upload=Mesej ucapan yang dimuat naik $1 
+log_move=Dikonversi $1 menerima mesej
+log_delete0=Dihapus $1 menerima mesej
+log_delete1=Dihapus $1 mesej ucapan
+log_options=Pilihan mel suara yang diubah
+log_vgetty_create=Menambah port bersiri $1 
+log_vgetty_modify=Port siri yang diubahsuai $1 
+log_vgetty_delete=Port siri terpadam $1 
+
+email_subject=Mesej mel suara
+email_body=Mesej mel suara diterima pada $1 oleh $2.

@@ -1,0 +1,23 @@
+index_mem2=<b>Valódi memória:</b> $1 összesen / $2 ingyen
+index_mem3=<b>Valódi memória:</b> $1 összesen / $2 ingyenes / $3 gyorsítótárban
+index_swap2=<b>Cserélhető hely:</b> $1 összesen / $2 ingyenes
+index_burst=<b>Tölthető memória:</b> összesen $1 
+index_loadname=CPU terhelés átlagai:
+index_loadnums=$1 (1 perc), $2 (5 perc), $3 (15 perc)
+index_cpuname=CPU típus:
+
+sclass=IO ütemezési osztály
+sprio=IO prioritás
+
+search_cpupc2=Több processzor használata, mint
+
+edit_subid=ID
+edit_subcmd=Alfolyamat-parancs
+
+linux_real=Valós idő
+linux_be=Legjobb erőfszítés
+linux_idle=Tétlen
+
+log_renice=A $2 folyamat prioritása megváltozott és $1 lett
+
+syslog_dmesg=Kernel üzenetek

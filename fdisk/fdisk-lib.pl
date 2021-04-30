@@ -51,7 +51,7 @@ if (scalar(@list_disks_partitions_cache)) {
 local (@pscsi, @dscsi, $dscsi_mode);
 if (-r "/proc/scsi/sg/devices" && -r "/proc/scsi/sg/device_strs") {
 	# Get device info from various /proc/scsi files
-	open(DEVICES, "/proc/scsi/sg/devices");
+	open(DEVICES, "</proc/scsi/sg/devices");
 	while(<DEVICES>) {
 		s/\r|\n//g;
 		local @l = split(/\t+/, $_);
@@ -63,7 +63,7 @@ if (-r "/proc/scsi/sg/devices" && -r "/proc/scsi/sg/device_strs") {
 		}
 	close(DEVICES);
 	local $i = 0;
-	open(DEVNAMES, "/proc/scsi/sg/device_strs");
+	open(DEVNAMES, "</proc/scsi/sg/device_strs");
 	while(<DEVNAMES>) {
 		s/\r|\n//g;
 		local @l = split(/\t+/, $_);
@@ -77,7 +77,7 @@ if (-r "/proc/scsi/sg/devices" && -r "/proc/scsi/sg/device_strs") {
 	}
 else {
 	# Check /proc/scsi/scsi for SCSI disk models
-	open(SCSI, "/proc/scsi/scsi");
+	open(SCSI, "</proc/scsi/scsi");
 	local @lines = <SCSI>;
 	close(SCSI);
 	if ($lines[0] =~ /^Attached\s+domains/i) {
@@ -122,7 +122,7 @@ else {
 	}
 
 local (@disks, @devs, $d);
-if (open(PARTS, "/proc/partitions")) {
+if (open(PARTS, "</proc/partitions")) {
 	# The list of all disks can come from the kernel
 	local $sc = 0;
 	while(<PARTS>) {
@@ -154,7 +154,7 @@ if (open(PARTS, "/proc/partitions")) {
 		elsif (/\d+\s+\d+\s+\d+\s+hd([a-z]+)\s/) {
 			# IDE disk (but skip CDs)
 			local $n = $1;
-			if (open(MEDIA, "/proc/ide/hd$n/media")) {
+			if (open(MEDIA, "</proc/ide/hd$n/media")) {
 				local $media = <MEDIA>;
 				close(MEDIA);
 				if ($media =~ /^disk/ && !$_[0]) {
@@ -249,7 +249,7 @@ else {
 	open(FDISK, "fdisk -l -u=cylinders $devs 2>/dev/null || fdisk -l $devs 2>/dev/null |");
 	}
 while(<FDISK>) {
-	if (($m4 = ($_ =~ /Disk\s+([^ :]+):\s+(\d+)\s+(\S+),\s+(\d+)\s+bytes,\s+(\d+)\s+sectors/)) ||
+	if (($m4 = ($_ =~ /Disk\s+([^ :]+):\s+([\d\.]+)\s+(\S+),\s+(\d+)\s+bytes,\s+(\d+)\s+sectors/)) ||
 	    ($m1 = ($_ =~ /Disk\s+([^ :]+):\s+(\d+)\s+\S+\s+(\d+)\s+\S+\s+(\d+)/)) ||
 	    ($m2 = ($_ =~ /Disk\s+([^ :]+):\s+(.*)\s+bytes/)) ||
 	    ($m3 = ($_ =~ /Disk\s+([^ :]+):\s+([0-9\.]+)cyl/))) {
@@ -368,7 +368,7 @@ while(<FDISK>) {
 			# Mylex raid device
 			local ($mc, $md) = ($2, $3);
 			$disk->{'desc'} = &text('select_mylex', $mc, $md);
-			open(RD, "/proc/rd/c$mc/current_status");
+			open(RD, "</proc/rd/c$mc/current_status");
 			while(<RD>) {
 				if (/^Configuring\s+(.*)/i) {
 					$disk->{'model'} = $1;
@@ -386,7 +386,7 @@ while(<FDISK>) {
 			# Compaq RAID device
 			local ($ic, $id) = ($2, $3);
 			$disk->{'desc'} = &text('select_cpq', $ic, $id);
-			open(IDA, -d "/proc/driver/array" ? "/proc/driver/array/ida$ic" : "/proc/driver/cpqarray/ida$ic");
+			open(IDA, -d "/proc/driver/array" ? "</proc/driver/array/ida$ic" : "</proc/driver/cpqarray/ida$ic");
 			while(<IDA>) {
 				if (/^(\S+):\s+(.*)/ && $1 eq "ida$ic") {
 					$disk->{'model'} = $2;
@@ -400,7 +400,7 @@ while(<FDISK>) {
 			# Compaq Smart Array RAID
 			local ($ic, $id) = ($2, $3);
 			$disk->{'desc'} = &text('select_smart', $ic, $id);
-			open(CCI, "/proc/driver/cciss/cciss$ic");
+			open(CCI, "</proc/driver/cciss/cciss$ic");
 			while(<CCI>) {
 				if (/^\s*(\S+):\s*(.*)/ && $1 eq "cciss$ic") {
 					$disk->{'model'} = $2;
@@ -518,7 +518,7 @@ while(<FDISK>) {
 	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl\s+(primary|logical|extended)\s*(\S*)\s*(\S*)/) {
 		# Partition within the current disk from parted (msdos format)
 		local $part = { 'number' => $1,
-				'device' => $disk->{'device'}.$1,
+				'device' => $disk->{'prefix'}.$1,
 				'type' => $6 || 'ext2',
 				'start' => $2+1,
 				'end' => $3+1,
@@ -538,7 +538,7 @@ while(<FDISK>) {
 	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl\s(.*)/) {
 		# Partition within the current disk from parted (gpt format)
 		local $part = { 'number' => $1,
-				'device' => $disk->{'device'}.$1,
+				'device' => $disk->{'prefix'}.$1,
 				'start' => $2+1,
 				'end' => $3+1,
 				'blocks' => $4 * $disk->{'cylsize'},

@@ -1,0 +1,33 @@
+index_title=TCP Wrappers
+index_return=indeks
+index_allowtitle=Toelaatbare gashere
+index_denytitle=Leërskare geweier
+index_norule=Geen reëls is in <tt>$1</tt> gedefinieer nie.
+index_nofile=Lêer '$1' bestaan nie - kontroleer u <a href="/config.cgi?tcpwrappers">module-opstelling</a>
+index_add=Voeg 'n nuwe reël by.
+index_service=daemon
+index_hosts=gashere
+index_cmd=Bevel
+index_delete=Verwyder geselekteerde
+index_none=niemand
+
+edit_title1allow=Skep 'n reël toe
+edit_title2allow=Wysig Laat reël toe
+edit_title1deny=Skep ontkenningsreël
+edit_title2deny=Wysig ontken-reël
+edit_eid=Hierdie reël is nie gevind nie
+edit_header=Reëlopsies
+edit_service=dienste
+edit_except=Behalwe dienste
+edit_hosts=Afgeleë gashere
+edit_hostsexcept=Behalwe gashere
+edit_cmd=Shell-opdragte
+edit_efound=Daemon '$1' is nie in xinetd-konfigurasie gevind nie.
+
+save_errtitle=Fout tydens stoorreël
+save_ehost=Gasheerinvoer bevat slegte karakters
+save_ecmd=Opdraginvoer bevat slegte karakters
+save_eservice=Daemon-name bevat slegte karakters
+
+del_errtitle=Fout met reëls verwyder
+del_enone=Geen reëls gemerk om uit te vee nie

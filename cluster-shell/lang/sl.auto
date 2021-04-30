@@ -1,0 +1,22 @@
+index_title=Ukazi lupine grozda
+index_cmd=Ukaz za zagon
+index_old=ali
+index_server=Zaženi na strežnikih
+index_run=Zaženite ukaz zdaj
+index_return=kazalo modula
+index_this=ta strežnik
+index_all=&lt;Vsi gostitelji&gt;
+index_group=Člani $1 
+index_clear=Izbriši zgodovino
+index_edit=Uredi prejšnji
+
+run_title=Zaženite ukaz
+run_err=Ukaza ni bilo mogoče zagnati
+run_ecmd=Noben ukaz ni bil vnesen
+run_failed= $1 : $2 ni bilo mogoče zagnati
+run_success=Izhod iz $1.
+run_enone=Izbranih strežnikov ni
+
+log_clear=Izbrisana zgodovina ukazov
+log_run=Ran $1 na $2 strežnikih
+log_run_l=Razmerje $1 na $2 

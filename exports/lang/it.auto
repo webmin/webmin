@@ -1,0 +1,15 @@
+index_add4=Aggiungi una nuova esportazione NFSv4.
+
+edit_network4=Rete IPv4
+edit_network6=Rete IPv6
+edit_secs=Livelli di sicurezza
+edit_sec_sys=Nessuna sicurezza
+edit_sec_krb5=Autenticazione Kerberos
+edit_sec_krb5i=Integrità di Kerberos
+edit_sec_krb5p=Privacy di Kerberos
+edit_sec_lipkey=LIPKEY
+edit_sec_spkm=SPKM
+
+save_epfs=Il percorso pseudo-filesystem '$1' non sembra un percorso assoluto
+save_eanonuid=Nome utente di accesso anonimo non valido
+save_eanongid=Nome del gruppo di accesso anonimo non valido

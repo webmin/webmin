@@ -1,0 +1,22 @@
+index_title=Cluster Shell-opdragte
+index_cmd=Opdrag om te hardloop
+index_old=of
+index_server=Begin op bedieners
+index_run=Begin opdrag nou
+index_return=module-indeks
+index_this=hierdie bediener
+index_all=&lt;Alle gashere&gt;
+index_group=Lede van $1 
+index_clear=Verwyder geskiedenis
+index_edit=Wysig Vorige
+
+run_title=Begin opdrag
+run_err=Kon nie opdrag uitvoer nie
+run_ecmd=Geen opdrag is ingevoer nie
+run_failed=Kon nie op $1 : $2 loop nie
+run_success=Uitset vanaf $1.
+run_enone=Geen bedieners kan gekies word nie
+
+log_clear=Opdraggeskiedenis verwyder
+log_run=Het $1 op $2 bedieners afgelê
+log_run_l=Het $1 op $2 geloop

@@ -1,0 +1,81 @@
+index_title=Načrtovani ukazi
+index_header=Nov razporejeni ukaz
+index_user=Zaženi kot uporabnik
+index_date=Teči na datum
+index_time=Teči v času
+index_cmd=Ukazi za izvedbo
+index_mail=Pošljite e-pošto po zaključku?
+index_id=ID delovnega mesta
+index_exec=Teči ob
+index_created=Ustvarjeno dne
+index_dir=Zaženi v imeniku
+index_return=seznam ukazov
+index_cdate=Trenutni datum
+index_ctime=Trenutni čas
+index_allow=Dovoljeni načrtovani uporabniki ukazov
+index_amode=Uporabniki dovoliti
+index_amode0=Vsi uporabniki Unixa
+index_amode1=Samo našteti uporabniki ..
+index_amode2=Vsi razen naštetih uporabnikov ..
+index_delete=Prekliči izbrane ukaze
+index_noat=Ukaza $1 v vašem sistemu ni bilo mogoče - morda ni nameščen ali pa ni na voljo za vaš operacijski sistem.
+index_nostyle=Webmin ne ve, kako upravljati ukaze razporeda v tem operacijskem sistemu.
+index_stop=Ustavite strežnik načrtovanih ukazov
+index_stopdesc=Zaustavite postopek strežnika v ozadju <tt>atd</tt>, ki izvaja načrtovane ukaze. To bo preprečilo izvajanje ukazov ob določenem času.
+index_start=Zaženite strežnik Scheduled Commands
+index_startdesc=Zaženite postopek strežnika <tt>atd</tt> v ozadju, ki izvaja načrtovane ukaze. To je potrebno za izvajanje ukazov ob določenem času.
+index_boot=Želite zagnati strežnik ob zagonu?
+index_bootdesc=Spremenite to nastavitev, da omogočite ali onemogočite zagon strežnika z načrtovanimi ukazi ob zagonu sistema.
+
+edit_title=Načrtovani ukaz
+edit_cmd=Celoten scenarij za izvedbo
+edit_shortcmd=Ukaz za izvedbo
+edit_header=Načrtovane podrobnosti ukaza
+edit_delete=Prekliči ta ukaz
+edit_run=Zaženi zdaj
+edit_ejob=Časovni ukaz ne obstaja več!
+edit_ecannot=Tega načrtovanega ukaza ne smete urejati
+edit_showfull=Pokaži celoten scenarij.
+
+create_err=Ukaza ni bilo mogoče ustvariti
+create_euser=Manjkajoče ali neveljavno uporabniško ime
+create_edate=Manjkajoč ali neveljaven datum ali ura
+create_ecmd=Nobenih ukazov ni bilo
+create_efuture=Datum in čas sta v preteklosti
+create_edir=Manjkajoči ali neveljaven imenik
+create_ecannot=Za tega uporabnika ne smete ustvarjati načrtovanih ukazov
+create_eallow=Navedeni uporabnik ne sme izvajati ukazanih ukazov
+
+delete_err=Ukaza preklica ni bilo mogoče
+delete_egone=Ukaz je že izveden ali izbrisan
+
+acl_users=Lahko uredite ukazane ukaze za
+acl_all=Vsi uporabniki
+acl_this=Trenutni uporabnik Webmin-a
+acl_only=Samo uporabniki
+acl_except=Vsi razen uporabnikov
+acl_allow=Ali je dovoljeno urejanje pri uporabnikih?
+
+run_title=Teče ukaz
+run_output=Izhod iz načrtovanega ukaza ..
+run_none=Izhod ne ustvarja
+
+allow_err=Dovoljenih uporabnikov ni bilo mogoče shraniti
+allow_ecannot=Nimate dovoljenja za upravljanje dovoljenih uporabnikov
+allow_eusers=Uporabnik ni vnesen
+
+deletes_err=Ukazov ni bilo mogoče preklicati
+deletes_enone=Izbrana ni nobena
+
+log_allow=Spremenjeni dovoljeni uporabniki
+log_create_job=Ustvarjen načrtovan ukaz za $1 
+log_delete_job=Preklic načrtovanega ukaza za $1 
+log_exec_job=Izveden načrtovani ukaz za $1 
+log_delete_jobs=Preklicani $1 razporejeni ukazi
+log_stop=Ustavljen strežnik za načrtovane ukaze
+log_start=Začel strežnik načrtovanih ukazov
+log_bootup=Omogočen strežnik za načrtovane ukaze ob zagonu
+log_bootdown=Onemogočen strežnik načrtovanih ukazov ob zagonu
+
+stop_err=Strežnika ni bilo mogoče ustaviti
+start_err=Strežnika ni bilo mogoče zagnati

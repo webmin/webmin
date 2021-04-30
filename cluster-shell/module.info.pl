@@ -1,2 +1,2 @@
-desc_pl=Klaster - Polecenia pow≥oki (Shell)
-longdesc_pl=Uruchamiaj polecenia na wielu serwerach rÛwnocze∂nie.
+desc_pl=Klaster - Polecenia pow≈Çoki (Shell)
+longdesc_pl=Uruchamiaj polecenia na wielu serwerach r√≥wnocze≈õnie.

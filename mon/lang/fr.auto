@@ -1,0 +1,200 @@
+index_title=Moniteur de service MON
+index_return=Indice MON
+index_edir=Le répertoire MON $1 n'existe pas. Peut-être que MON n'est pas installé ou que la <a href='$2'>configuration du module</a> est incorrecte.
+mon_global_title=Configuration globale des variables
+mon_conf_title=Configuration de base
+mon_status_title=Statut opérationnel
+hostgroups_title=Configuration des groupes d'hôtes MON
+services_title=Groupes de surveillance - Définitions des services
+
+head_hostgroups=Groupes d'hôtes et services
+head_groups=Nom du groupe d'hôtes
+head_members=Membres du groupe d'hôtes
+head_services=Services de groupes d'hôtes à surveiller
+head_service=Service à surveiller
+head_param=Paramètres de service
+head_watch=Regarder le groupe?
+head_monauth=Fournir l'authentification pour MONCMD
+head_usr=Nom d'utilisateur
+head_pass=Mot de passe
+head_mand=(Les paramètres dans "RED COLOR" sont obligatoires)
+
+err_nomon=le package 'mon' n'est pas installé sur le système
+err_nomonconf=Le fichier de configuration MON $1 est introuvable sur votre système. Peut-être que MON n'est pas installé ou que la <a href='$2'>configuration du module</a> est incorrecte.
+err_nowatch=Aucun groupe de surveillance sélectionné. Sélectionnez au moins un groupe de surveillance pour continuer.
+err_noserv=Aucun service sélectionné pour le groupe de surveillance
+err_nomemb=Aucun hôte/membre sélectionné pour le groupe de surveillance
+err_monrun=MON ne fonctionne pas sur la machine hôte. Veuillez démarrer MON.
+stop_err=Impossible d'arrêter MON
+stop_epid=Ne fonctionne plus
+start_err=Impossible de démarrer MON
+restart_err=Impossible de redémarrer MON
+restart_epid=Impossible d'obtenir le PID
+
+other=Autre (espace séparé)
+next=Prochain
+mon_stat=Statut MON
+mon_off=Services MON non démarrés
+mon_start=Démarrer les services MON
+mon_stop=Arrêter les services MON
+mon_restart=Redémarrez les services MON
+mon_startdesc=Cliquez sur ce bouton pour démarrer le serveur MON. Jusqu'à ce qu'il soit démarré, aucune surveillance configurée ne sera effectuée.
+mon_stopdesc=Cliquez sur ce bouton pour arrêter le serveur MON. À l'arrêt, la surveillance configurée cesse.
+mon_restartdesc=Cliquez sur ce bouton pour appliquer la configuration MON actuelle en redémarrant le processus serveur.
+line=(un sur chaque ligne)
+save_apply=Enregistrer et appliquer
+watch=Groupe de surveillance
+members=Membres
+def_perargs=wd {sam-dim}
+
+def_desc=la description
+def_inter=intervalle
+def_mon=moniteur
+def_dep=dépendre
+def_per=période
+def_alert=alerte
+def_alertevr=alertevery
+def_alertaft=alertafter
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=trapduration
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=Groupes hôtes
+groups_group=Nom de groupe
+groups_members=Hôtes membres
+
+watches_title=Listes de surveillance
+watches_group=Groupe de visionnage
+watches_services=Services surveillés
+watches_sadd=Ajouter un service ..
+watches_add=Ajouter une liste de surveillance pour le groupe :
+watches_return=listes de surveillance
+watches_none=Aucune liste de surveillance n'a encore été définie.
+
+global_title=Options globales
+global_header=Options de configuration globale de MON
+global_maxprocs=Processus MON maximum
+global_histlength=Durée de l'historique des événements
+global_alertdir=Répertoire des programmes d'alerte
+global_mondir=Répertoire des programmes de surveillance
+global_authtype=Type d'identification
+global_authtype_=Défaut
+global_authtype_getpwnam=Appels système
+global_authtype_userfile=Fichier utilisateurs MON
+global_authtype_shadow=Fichier fantôme
+global_userfile=Fichier utilisateur MON
+global_emaxprocs=Nombre de processus MON manquant ou non valide
+global_ehistlength=Longueur de l'historique des événements manquante ou non valide
+global_ealertdir=Répertoire des programmes d'alerte manquant ou invalide
+global_emondir=Répertoire des programmes du moniteur manquant ou invalide
+global_euserfile=Fichier d'utilisateurs MON manquant
+
+watch_title=Modifier la liste de surveillance
+watch_header=Détails de la surveillance du groupe hôte
+watch_group=Groupe hôte à surveiller
+watch_services=Services surveillés
+watch_service=Nom du service
+watch_monitor=Moniteur à utiliser
+watch_interval=Vérifiez chaque
+watch_periods=Périodes de surveillance
+
+service_title=Ajouter un service
+service_title2=Modifier le service
+service_header=Détails du service surveillé
+service_name=Nom du service
+service_interval=Vérifiez chaque
+service_desc=La description
+service_units_s=secondes
+service_units_m=minutes
+service_units_h=heures
+service_units_d=journées
+service_units_w=semaines
+service_monitor=Utilisation du moniteur
+service_mon1=Moniteur standard
+service_mon0=Autre moniteur ..
+service_args=Surveiller les paramètres
+service_period=Période de surveillance $1 
+service_days=Jours pour vérifier
+service_hours=Heures de vérification
+service_all=Tout
+service_pstr=Spécification de période
+service_new=Nouvelle période de suivi
+service_alerts=Alertes pour la période
+service_alert=Alerte
+service_atype=Exécuter quand
+service_atype_alert=Le service tombe en panne
+service_atype_upalert=Les services arrivent
+service_atype_startupalert=MON démarre
+service_aargs=Paramètres supplémentaires
+service_every=Envoyer une alerte
+service_every_def=Chaque fois que le moniteur est exécuté
+service_every_time=Chaque
+service_num=Nombre maximum d'alertes à envoyer
+service_unlimited=Illimité
+service_after=Échecs avant l'alerte
+service_immediate=Immédiatement
+service_after_num=Après $1 échecs
+service_aftertime=Dans l'intervalle de temps
+service_newperiod=Ajouter une nouvelle période
+service_delperiod=Supprimer cette période
+service_err=Impossible d'enregistrer le service
+service_ename=Nom de service manquant ou invalide
+service_einterval=Intervalle de vérification manquant ou invalide
+service_eother=Moniteur manquant ou invalide
+service_ehour=Heure manquante ou invalide pour la période $1 (doit être comme 9h ou 17h)
+service_eperiod=Aucun jour ou heure spécifié pour la période $1 
+service_eevery=Intervalle d'alerte de service manquant ou non valide
+service_eafter=Nombre d'échecs manquant ou non valide avant l'alerte
+service_enum=Alertes maximales manquantes ou non valides à envoyer
+service_epstr=Spécification de période manquante
+service_known0=<tt>Time::Period</tt> chaîne
+service_known1=Jours et heures spécifiés
+service_known2=Période définie
+
+status_title=Statut MON
+status_ecgi=Le programme CGI d'état MON $1 n'existe pas. Il n'est peut-être pas installé ou la configuration de votre <a href='$2'>module</a> est incorrecte.
+status_eperl=Le programme CGI d'état MON requiert le module $1 perl. <a href='$2'>Cliquez ici</a> pour l'installer directement à partir du CPAN.
+status_esame=Le programme CGI d'état MON $1 a été défini sur le script <tt>mon.cgi</tt> dans ce module Webmin, et non sur le programme CGI fourni avec MON. Ajustez la <a href='$2'>configuration du module</a> pour utiliser le chemin correct.
+
+users_title=Utilisateurs MON
+users_etype=La liste des utilisateurs MON ne peut pas être modifiée, car MON n'est pas actuellement configuré pour l'utiliser pour l'authentification sur la page <a href='$1'>Options globales</a>.
+users_header=Utilisateurs MON autorisés dans $1 
+users_nousers=Aucun utilisateur MON n'a été défini dans $1.
+users_add=Créez un nouvel utilisateur.
+users_return=Liste des utilisateurs MON
+
+user_create=Créer un utilisateur MON
+user_edit=Modifier l'utilisateur MON
+user_header=Détails de l'utilisateur MON
+user_user=Nom d'utilisateur
+user_pass=Mot de passe
+user_leave=Laisser inchangé
+user_err=Échec de l'enregistrement de l'utilisateur
+user_euser=Nom d'utilisateur manquant ou invalide
+user_esame=Un utilisateur du même nom existe déjà
+
+auth_title=Commandes client
+auth_desc=Cette page vous permet de contrôler quelles commandes MON peuvent être exécutées par quels utilisateurs lors de l'utilisation des programmes clients.
+auth_cmd=Commande MON
+auth_users=Utilisateurs autorisés
+auth_none=Personne
+auth_all=Tout le monde
+auth_sel=Seuls les utilisateurs
+auth_err=Impossible d'enregistrer les commandes client
+auth_eusers=Aucun utilisateur n'entre pour la commande $1 
+
+periods_title=Périodes définies
+periods_period=Nom de la période
+periods_times=Jours et heures
+periods_alldays=Tous les jours
+periods_allhours=Toutes les heures
+periods_err=Échec de l'enregistrement des périodes définies
+periods_ename='$1' n'est pas un nom de période valide
+periods_ehour=Heure manquante ou invalide pour la période $1 (doit être comme 9h ou 17h)
+
+show_title=Statut opérationnel
+show_ecgi=Le programme d'état MON $1 n'existe pas. Il n'est peut-être pas installé ou la configuration de votre <a href='$2'>module</a> est incorrecte.

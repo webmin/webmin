@@ -1,0 +1,3 @@
+desc_vi=Theo dõi nhịp tim
+name_vi=Nhịp tim
+longdesc_vi=Định cấu hình gói Heartbeat cho chuyển đổi dự phòng máy chủ tự động trong một cụm.

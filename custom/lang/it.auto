@@ -1,0 +1,19 @@
+edit_desc2=Descrizione HTML
+edit_type13=Ampio multi menu.
+edit_type14=Menu sinistra-destra ..
+edit_type15=Data
+edit_type16=Pulsante Invia. ..
+edit_format2=Reindirizza all'indice
+edit_format3=Reindirizza al modulo
+edit_format4=Scarica quando possibile
+
+save_eopts=File di opzioni mancante per il parametro $1 
+save_eopts2=Il file delle opzioni o il valore predefinito per il parametro $1 non può contenere :
+
+run_failed=Comando non riuscito con stato di uscita $1 
+
+file_beforeedit=Comando da eseguire prima della modifica
+
+view_ebeforeedit=Comando prima della modifica non riuscito : $1 
+view_ebefore=Comando prima del salvataggio non riuscito : $1 
+view_eafter=Comando dopo il salvataggio non riuscito : $1 

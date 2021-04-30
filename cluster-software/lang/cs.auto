@@ -1,0 +1,3 @@
+install_ealready=Verze $1 je již nainstalována
+
+do_success2=Nainstalován $1 na $2.

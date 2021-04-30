@@ -26,3 +26,4 @@ postfix_config_file=/var/packages/MailServer/target/etc/main.cf
 postfix_config_command=/var/packages/MailServer/target/sbin/postconf
 mailq_dir=/var/spool/postfix
 ldap_doms=0
+max_maps=400

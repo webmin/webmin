@@ -268,7 +268,7 @@ while($i < @tok) {
 					push(@values, $tok[$i]);
 					if ($i >= @tok) {
 						&error("No ending ) found for ".
-						       "( starting at $olnum");
+						       "( at $olnum in $file");
 						}
 					}
 				$i++; # skip )
@@ -323,14 +323,49 @@ while($i < @tok) {
 return @rv;
 }
 
+# files_in_zone_file(file)
+# Quickly finds all includes in a zone file
+sub files_in_zone_file
+{
+my ($file) = @_;
+my @rv = ( $file );
+my $fh;
+open($fh, "<", $file);
+while(<$fh>) {
+	if (/^\$include\s+(\S+)/) {
+		my $inc = $1;
+		push(@rv, &files_in_zone_file($inc));
+		}
+	}
+close($fh);
+return @rv;
+}
+
 # create_record(file, name, ttl, class, type, values, comment)
 # Add a new record of some type to some zone file
 sub create_record
 {
-my $fn = &make_chroot(&absolute_path($_[0]));
+my ($file, @rec) = @_;
+my $fn = &make_chroot(&absolute_path($file));
 &is_raw_format_records($fn) && &error("Raw format zone files cannot be edited");
 my $lref = &read_file_lines($fn);
-push(@$lref, &make_record(@_[1..$#_]));
+push(@$lref, &make_record(@rec));
+&flush_file_lines($fn);
+}
+
+# create_multiple_records(file, &records)
+# Create records from structures 
+sub create_multiple_records
+{
+my ($file, $recs) = @_;
+my $fn = &make_chroot(&absolute_path($file));
+&is_raw_format_records($fn) && &error("Raw format zone files cannot be edited");
+my $lref = &read_file_lines($fn);
+foreach my $r (@$recs) {
+	push(@$lref, &make_record($r->{'name'}, $r->{'ttl'}, $r->{'class'},
+			          $r->{'type'}, join(" ", @{$r->{'values'}}),
+			          $r->{'comment'}));
+	}
 &flush_file_lines($fn);
 }
 
@@ -350,11 +385,27 @@ splice(@$lref, $_[1]->{'line'}, $lines, &make_record(@_[2..$#_]));
 # Deletes a record in some zone file
 sub delete_record
 {
-my $fn = &make_chroot(&absolute_path($_[0]));
+my ($file, $r) = @_;
+my $fn = &make_chroot(&absolute_path($file));
 &is_raw_format_records($fn) && &error("Raw format zone files cannot be edited");
 my $lref = &read_file_lines($fn);
-my $lines = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
-splice(@$lref, $_[1]->{'line'}, $lines);
+my $lines = $r->{'eline'} - $r->{'line'} + 1;
+splice(@$lref, $r->{'line'}, $lines);
+&flush_file_lines($fn);
+}
+
+# delete_multiple_records(file, &records)
+# Delete many records from the same file at once
+sub delete_multiple_records
+{
+my ($file, $recs) = @_;
+my $fn = &make_chroot(&absolute_path($file));
+&is_raw_format_records($fn) && &error("Raw format zone files cannot be edited");
+my $lref = &read_file_lines($fn);
+foreach my $r (sort { $b->{'line'} <=> $a->{'line'} } @$recs) {
+	my $lines = $r->{'eline'} - $r->{'line'} + 1;
+	splice(@$lref, $r->{'line'}, $lines);
+	}
 &flush_file_lines($fn);
 }
 
@@ -467,17 +518,22 @@ return sprintf "%4.4d%2.2d%2.2d", $tm[5]+1900, $tm[4]+1, $tm[3];
 # get_zone_defaults(&hash)
 sub get_zone_defaults
 {
-if (!&read_file("$module_config_directory/zonedef", $_[0])) {
-	$_[0]->{'refresh'} = 10800; $_[0]->{'retry'} = 3600;
-	$_[0]->{'expiry'} = 604800; $_[0]->{'minimum'} = 38400;
-	$_[0]->{'refunit'} = ""; $_[0]->{'retunit'} = "";
-	$_[0]->{'expunit'} = ""; $_[0]->{'minunit'} = "";
+my ($zd) = @_;
+if (!&read_file("$module_config_directory/zonedef", $zd)) {
+	$zd->{'refresh'} = 3600;
+	$zd->{'retry'} = 600;
+	$zd->{'expiry'} = 1209600;
+	$zd->{'minimum'} = 3600;
+	$zd->{'refunit'} = "";
+	$zd->{'retunit'} = "";
+	$zd->{'expunit'} = "";
+	$zd->{'minunit'} = "";
 	}
 else {
-	$_[0]->{'refunit'} = $1 if ($_[0]->{'refresh'} =~ s/([^0-9])$//);
-	$_[0]->{'retunit'} = $1 if ($_[0]->{'retry'} =~ s/([^0-9])$//);
-	$_[0]->{'expunit'} = $1 if ($_[0]->{'expiry'} =~ s/([^0-9])$//);
-	$_[0]->{'minunit'} = $1 if ($_[0]->{'minimum'} =~ s/([^0-9])$//);
+	$zd->{'refunit'} = $1 if ($zd->{'refresh'} =~ s/([^0-9])$//);
+	$zd->{'retunit'} = $1 if ($zd->{'retry'} =~ s/([^0-9])$//);
+	$zd->{'expunit'} = $1 if ($zd->{'expiry'} =~ s/([^0-9])$//);
+	$zd->{'minunit'} = $1 if ($zd->{'minimum'} =~ s/([^0-9])$//);
 	}
 }
 
@@ -700,8 +756,11 @@ return $_[0] eq "." ||
 # If a path does not start with a /, prepend the base directory
 sub absolute_path
 {
-if ($_[0] =~ /^([a-zA-Z]:)?\//) { return $_[0]; }
-return &base_directory()."/".$_[0];
+my ($path) = @_;
+if ($path =~ /^([a-zA-Z]:)?\//) {
+	return $path;
+	}
+return &base_directory()."/".$path;
 }
 
 # parse_spf(text, ...)
@@ -824,7 +883,7 @@ sub join_dmarc
 {
 my ($dmarc) = @_;
 my @rv = ( "v=DMARC1" );
-foreach my $s ("pct", "ruf", "rua", "p", "sp", "adkim", "aspf") {
+foreach my $s ("p", "pct", "ruf", "rua", "sp", "adkim", "aspf") {
 	if ($dmarc->{$s} && $dmarc->{$s} ne '') {
 		push(@rv, $s."=".$dmarc->{$s});
 		}

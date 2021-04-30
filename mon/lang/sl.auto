@@ -1,0 +1,200 @@
+index_title=MON Service Monitor
+index_return=MON indeks
+index_edir=Imenik MON $1 ne obstaja. Morda MON ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
+mon_global_title=Konfiguracija globalnih spremenljivk
+mon_conf_title=Osnovna konfiguracija
+mon_status_title=Operativni status
+hostgroups_title=Konfiguracija MON-skupine gostiteljev
+services_title=Skupine gledalcev - definicije storitev
+
+head_hostgroups=Gostiteljske skupine in storitve
+head_groups=Ime gostiteljske skupine
+head_members=Člani gostiteljske skupine
+head_services=Storitve gostiteljske skupine za ogled
+head_service=Služba za gledanje
+head_param=Storitveni parametri
+head_watch=Pazi na skupino?
+head_monauth=Navedite pristnost za MONCMD
+head_usr=Uporabniško ime
+head_pass=Geslo
+head_mand=(Parametri v "RDEČI BARVI" so obvezni)
+
+err_nomon=paket 'mon' ni nameščen v sistemu
+err_nomonconf=Konfiguracijske datoteke MON $1 v vašem sistemu ni bilo mogoče najti. Morda MON ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
+err_nowatch=Nobena skupina za gledanje ni izbrana. Za nadaljevanje izberite vsaj eno skupino gledalcev.
+err_noserv=Za skupino gledalcev ni izbranih nobenih storitev
+err_nomemb=Za opazovalno skupino ni izbranih gostiteljev/članov
+err_monrun=MON ne deluje na domači stroji. Začnite MON.
+stop_err=MON ni bilo mogoče ustaviti
+stop_epid=Ne teče več
+start_err=MON ni bilo mogoče zagnati
+restart_err=Znova ni bilo mogoče zagnati MON
+restart_epid=PID ni bilo mogoče dobiti
+
+other=Drugo (prostor ločen)
+next=Naslednji
+mon_stat=Status MON
+mon_off=Storitve MON se niso začele
+mon_start=Zaženite storitve MON
+mon_stop=Ustavite storitve MON
+mon_restart=Znova zaženite storitve MON
+mon_startdesc=Kliknite ta gumb za zagon strežnika MON. Dokler se ne zažene, konfigurirano spremljanje ne bo izvedeno.
+mon_stopdesc=Kliknite ta gumb, da zaustavite strežnik MON. Ko se ustavi, konfigurirano spremljanje preneha.
+mon_restartdesc=Kliknite ta gumb, če želite uporabiti trenutno konfiguracijo MON s ponovnim zagonom strežniškega postopka.
+line=(po eno v vsaki vrstici)
+save_apply=Shrani in uveljavi
+watch=Skupina za opazovanje
+members=Člani
+def_perargs=wd {Sat-Ned}
+
+def_desc=opis
+def_inter=interval
+def_mon=monitor
+def_dep=odvisna
+def_per=obdobje
+def_alert=opozorilo
+def_alertevr=opozorilo
+def_alertaft=opozorilo
+def_alertstr=startupalert
+def_allow=dovoli_emprazno_skupino
+def_traptime=traptimeout
+def_trapdur=trapduracija
+def_rand=randskew
+def_exclhost=izključi_hostove
+def_exclper=izključi_period
+
+groups_title=Skupine gostiteljev
+groups_group=Ime skupine
+groups_members=Člani gostitelji
+
+watches_title=Glejte sezname
+watches_group=Gledalna skupina
+watches_services=Storitve, ki jih gledajo
+watches_sadd=Dodaj storitev ..
+watches_add=Dodaj skupino ogledov za skupino :
+watches_return=seznami ogledov
+watches_none=Še ni določen seznam ogledov.
+
+global_title=Globalne možnosti
+global_header=Možnosti globalne konfiguracije MON
+global_maxprocs=Največje procese MON
+global_histlength=Dolžina zgodovine dogodkov
+global_alertdir=Imenik programov opozoril
+global_mondir=Spremljajte imenik programov
+global_authtype=Vrsta preverjanja pristnosti
+global_authtype_=Privzeto
+global_authtype_getpwnam=Sistemski klici
+global_authtype_userfile=Datoteka MON uporabniki
+global_authtype_shadow=Datoteka s sencami
+global_userfile=Datoteka uporabnika MON
+global_emaxprocs=Manjkajoče ali neveljavno število postopkov MON
+global_ehistlength=Dolžina zgodovine dogodkov manjka ali ni veljavna
+global_ealertdir=Imenik manjkajočih ali neveljavnih programov opozoril
+global_emondir=Imenik manjkajočih ali neveljavnih nadzornih programov
+global_euserfile=Manjkajoča datoteka uporabnikov MON
+
+watch_title=Uredi seznam ogledov
+watch_header=Podrobnosti o ure gostiteljske skupine
+watch_group=Gostiteljska skupina za ogled
+watch_services=Storitve, ki jih gledajo
+watch_service=Ime storitve
+watch_monitor=Monitor uporabljati
+watch_interval=Preverite vsakega
+watch_periods=Obdobje spremljanja
+
+service_title=Dodaj storitev
+service_title2=Storitev urejanja
+service_header=Podrobnosti o gledanih storitvah
+service_name=Ime storitve
+service_interval=Preverite vsakega
+service_desc=Opis
+service_units_s=sekund
+service_units_m=minut
+service_units_h=ure
+service_units_d=dnevi
+service_units_w=tednov
+service_monitor=Uporaba monitorja
+service_mon1=Standardni monitor
+service_mon0=Drugi monitor ..
+service_args=Parametri monitorja
+service_period=Obdobje spremljanja $1 
+service_days=Dnevi za preverjanje
+service_hours=Ure za preverjanje
+service_all=Vse
+service_pstr=Specifikacija obdobja
+service_new=Novo obdobje spremljanja
+service_alerts=Opozorila za obdobje
+service_alert=Opozorilo
+service_atype=Teči, ko
+service_atype_alert=Storitev upada
+service_atype_upalert=Storitve se pojavijo
+service_atype_startupalert=MON se zažene
+service_aargs=Dodatni parametri
+service_every=Pošlji opozorilo
+service_every_def=Vsakič, ko se monitor zažene
+service_every_time=Vsak
+service_num=Največje opozorilo za pošiljanje
+service_unlimited=Neomejeno
+service_after=Napake pred opozorilom
+service_immediate=Takoj
+service_after_num=Po $1 odpovedi
+service_aftertime=V časovnem intervalu
+service_newperiod=Dodajte novo obdobje
+service_delperiod=Izbrišite to obdobje
+service_err=Storitve ni bilo mogoče shraniti
+service_ename=Manjkajoče ali neveljavno ime storitve
+service_einterval=Manjkajoč ali neveljaven interval preverjanja
+service_eother=Manjkajoči ali neveljaven monitor
+service_ehour=Manjkajoča ali neveljavna ura za obdobje $1 (mora biti ob 9.00 ali 17.00)
+service_eperiod=Za obdobje $1 ni določenih dni ali ur
+service_eevery=Manjkajoči ali neveljaven interval opozorila za storitve
+service_eafter=Manjkajoče ali neveljavno število napak pred opozorilom
+service_enum=Manjkajoča ali neveljavna največja opozorila, poslana
+service_epstr=Specifikacija manjkajočega obdobja
+service_known0=<tt>Čas::Obdobje</tt>
+service_known1=Določeni dnevi in ure
+service_known2=Določeno obdobje
+
+status_title=Status MON
+status_ecgi=Program CGI statusa MON $1 ne obstaja. Mogoče ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
+status_eperl=Program CGI statusa MON zahteva modul $1 perl. <a href='$2'>Kliknite tukaj</a>, da ga namestite neposredno iz CPAN-a.
+status_esame=Program CGI statusa MON $1 je v tem modulu Webmin nastavljen na skript <tt>mon.cgi</tt> in ne program CGI, ki je priložen MON. Prilagodite konfiguracijo modula <a href='$2'></a> za uporabo pravilne poti.
+
+users_title=Uporabniki MON
+users_etype=Seznam uporabnikov MON ni mogoče urediti, ker MON trenutno ni konfiguriran, da bi ga uporabljal za preverjanje pristnosti na strani <a href='$1'>Globalne možnosti</a>.
+users_header=Dovoljeni uporabniki MON v $1 
+users_nousers=V $1 ni bilo opredeljenih nobenih MON uporabnikov.
+users_add=Ustvari novega uporabnika.
+users_return=Seznam uporabnikov MON
+
+user_create=Ustvari MON uporabnika
+user_edit=Uredi MON uporabnika
+user_header=Podatki o uporabniku MON
+user_user=Uporabniško ime
+user_pass=Geslo
+user_leave=Pustite nespremenjene
+user_err=Uporabnika ni bilo mogoče shraniti
+user_euser=Manjkajoče ali neveljavno uporabniško ime
+user_esame=Uporabnik z istim imenom že obstaja
+
+auth_title=Ukazi odjemalca
+auth_desc=Na tej strani lahko nadzorujete, katere ukaze MON lahko izvajajo uporabniki, ki uporabljajo uporabniške programe.
+auth_cmd=Ukaz MON
+auth_users=Dovoljeni uporabniki
+auth_none=Nihče
+auth_all=Vsi
+auth_sel=Samo uporabniki
+auth_err=Ni bilo mogoče shraniti ukazov odjemalca
+auth_eusers=Za ukaz $1 ni nobenega uporabnika
+
+periods_title=Določena obdobja
+periods_period=Ime obdobja
+periods_times=Dnevi in časi
+periods_alldays=Vse dni
+periods_allhours=Vse ure
+periods_err=V določenih obdobjih ni bilo mogoče shraniti
+periods_ename='$1' ni veljavno ime obdobja
+periods_ehour=Manjkajoča ali neveljavna ura za obdobje $1 (mora biti ob 9.00 ali 17.00)
+
+show_title=Operativni status
+show_ecgi=Program statusa MON $1 ne obstaja. Mogoče ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.

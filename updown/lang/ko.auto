@@ -1,0 +1,29 @@
+index_email=다운로드가 완료되면 이메일을 보내시겠습니까?
+index_emailto=그렇습니다
+index_email2=업로드가 완료되면 이메일을 보내시겠습니까?
+
+upload_eemail=통지 할 이메일 주소가 없습니다.
+upload_saving=파일 $1 저장 중 ..
+upload_saved=.. 쓴 $1 
+upload_unzipping=파일 $1 추출 중 ..
+upload_unzipdone=.. $1
+
+email_downmsg=다음 다운로드가 완료되었습니다  :
+email_downurl=URL : $1 
+email_downerr=오류 메시지 : $1 
+email_downpath=대상 파일 이름 : $1 
+email_downsize=다운로드 크기 : $1 
+email_subjectd=다운로드를 완료하였습니다
+email_eextract=실패  : $1 
+email_extfailed=추출 실패  : $1 
+email_extdone_zip=ZIP 파일 추출
+email_extdone_tar=TAR 파일 추출
+email_extdone_tgz=압축 된 TAR 파일 추출
+email_extdone_tbz2=압축 된 TAR 파일 추출
+email_extdone_lha=LHArc 파일 추출
+email_upfile=원본 파일 이름 : $1 
+email_uppath=대상 파일 이름 : $1 
+email_upsize=업로드 된 크기 : $1 
+email_upextract=추출 상태 : $1 
+email_subjectu=업로드 완료
+email_upmsg=다음과 같은 업로드가 완료되었습니다.

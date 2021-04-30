@@ -28,7 +28,7 @@ return "$iconfig{'init_dir'}/$_[0]";
 sub get_nsswitch_conf
 {
 local @rv;
-open(SWITCH, $config{'nsswitch_conf'});
+open(SWITCH, "<".$config{'nsswitch_conf'});
 while(<SWITCH>) {
 	s/\r|\n//g;
 	s/#.*$//g;
@@ -141,7 +141,7 @@ sub parse_ypserv_conf
 {
 local (%opts, @hosts);
 local $lnum = 0;
-open(CONF, $ypserv_conf);
+open(CONF, "<".$ypserv_conf);
 while(<CONF>) {
 	s/\r|\n//g;
 	s/#.*$//;
@@ -183,7 +183,7 @@ sub parse_yp_makefile
 # First parse joined lines
 local $lnum = 0;
 local (@lines, $llast);
-open(MAKE, $yp_makefile);
+open(MAKE, "<".$yp_makefile);
 while(<MAKE>) {
 	s/\r|\n//g;
 	local $slash = (s/\\$//);

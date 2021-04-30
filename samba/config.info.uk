@@ -1,0 +1,13 @@
+line1=Параметри&#44; що настроюються,11
+dont_convert=Список користувачів Unix&#44; паролів&#44; що включаються не в список&#44; samba,0
+sort_mode=Упорядкувати користувачів і групи по імені,1,1-да,0-немає
+line2=Системні параметри,11
+smb_conf=Розташування файлу настроювань Samba,0
+smb_passwd=Розташування файлу паролів Samba,3
+samba_status_program=Повний шлях до smbstatus,0
+samba_password_program=Повний шлях до smbpasswd,0
+samba_server=Повний шлях до smbd,0
+name_server=Повний шлях до nmbd,0
+swat_path=Повний шлях до swat,3,None
+start_cmd=Команда для запуску серверів Samba,3,None
+stop_cmd=Команда для зупинки серверів Samba,3,None

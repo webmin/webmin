@@ -1,0 +1,2 @@
+desc_zh=群集复制文件
+longdesc_zh=计划将文件从此服务器传输到Webmin群集中的多台服务器。

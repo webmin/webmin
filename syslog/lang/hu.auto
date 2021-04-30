@@ -1,0 +1,46 @@
+index_econf=A (z) $1 syslog konfigurációs fájl nem található a rendszerén. Lehet, hogy a syslog nincs telepítve, vagy egy újabb verzió van használatban, például a syslog-ng, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+index_socket=$1 Unix socket fájl
+index_cmd=Teljesítmény $1 -től
+index_view=Kilátás ..
+index_viewfile=Naplófájl megtekintése:
+index_viewok=Kilátás
+
+restart_ecannot=Nem engedélyezi a syslog újraindítását
+
+start_ecannot=Nem indíthatja el a syslog-ot
+edit_socket=Unix domain socket fájl
+edit_return=napló részletei
+edit_ecannot=A naplóbeállításokat nem szerkesztheti
+edit_ecannot2=Ezt a naplót nem szerkesztheti
+
+view_filter=Csak a (z) $1 szövegű sorokat jelenítse meg
+
+save_esocket=Hiányzó vagy érvénytelen unix domain aljzat
+save_ecannot1=Ezt a naplót nem szabad törölni
+save_ecannot2=Ezt a naplót nem szabad megtekinteni
+save_ecannot3=Nem hozhat létre naplót ezzel a célállomással
+save_ecannot4=Naplót nem menthet ezzel a rendeltetési helyvel
+save_ecannot5=Ez a napló nem módosítható
+save_ecannot6=Nem szabad tetszőleges naplókat megtekinteni
+save_ecannot7=Ezt az extra naplót nem szabad megtekinteni
+save_emissing=Hiányzik a megtekinteni kívánt naplófájl
+
+log_start=Elindította a naplózó szervert
+
+desc_sysmesg=Rendszerüzenetek
+desc_mail=Mail Log
+desc_auth=Hitelesítési napló
+desc_boot=Indító üzenetek
+desc_news=NNTP hírnapló
+desc_uucp=UUCP napló
+desc_debug=Üzenetek hibakeresése
+desc_cron=Cron Job Log
+
+acl_noedit=Csak naplókat tekinthet meg?
+acl_any=Megtekintheti a fájlokat naplóként?
+acl_logs=Megtekintheti és konfigurálhatja a naplófájlokat
+acl_all=Minden napló
+acl_sel=Csak a felsorolt fájlok és a felsorolt könyvtárak alatt lévő fájlok.
+acl_extra=Extra naplófájlok ehhez a felhasználóhoz
+acl_syslog=Megtekintheti a naplókat a syslogból?
+acl_others=Megtekintheti más modulok naplóit?

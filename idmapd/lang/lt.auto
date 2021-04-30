@@ -1,0 +1,11 @@
+index_title=idmapd konfigūracija
+index_eidmapd=Nepavyko rasti „Idmapd“ demono $1. Galbūt jis neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+general=Bendroji konfigūracija
+mapping=Žemėlapio konfigūracija
+pipefs_dir=„Pipefs“ katalogas
+domain=Domeno vardas
+nobody_user=Niekas vartotojo
+nobody_group=Niekas grupės
+save=Įrašykite konfigūraciją ir paleiskite demoną iš naujo
+save_err=Nepavyko išsaugoti konfigūracijos failo $1 
+error_dir=Katalogas $1 neegzistuoja

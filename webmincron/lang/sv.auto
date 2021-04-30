@@ -1,0 +1,20 @@
+edit_mins=Minuter
+edit_hours=timmar
+edit_days=dagar
+edit_months=månader
+edit_weekdays=vardagar
+edit_all=Allt
+edit_selected=Valt ..
+edit_run=Spring nu
+edit_clone=Klonjobb
+edit_return=Cron jobb
+edit_special1=Enkelt schema ..
+edit_special0=Tider och datum valda nedan ..
+edit_special_hourly=Varje timme
+edit_special_daily=Dagligen (vid midnatt)
+edit_special_weekly=Veckovis (på söndag)
+edit_special_monthly=Månadsvis (den 1: a)
+edit_special_yearly=Årligen (den 1 januari)
+
+log_success=<Text>$2</tt> lyckades i <tt>$1</tt>
+log_failure=Det gick inte att köra <tt>$2</tt> i <tt>$1</tt> : $3 

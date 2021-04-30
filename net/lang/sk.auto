@@ -1,0 +1,51 @@
+ifcs_ip6=IPv6 adresa
+ifcs_badd=Pridajte nový most.
+ifcs_auto6=Od objavu IPv6
+ifcs_static3=IPv6 je povolený
+ifcs_noaddress=Nie je nakonfigurovaná žiadna adresa
+ifcs_nonetmask=nikto
+ifcs_mode6=IPv6 adresy
+ifcs_address6=IPv6 adresa
+ifcs_netmask6=maska siete
+ifcs_mode6a=IPv6 adresy
+ifcs_none6=IPv6 je zakázaný
+ifcs_link=Stav sieťového prepojenia
+ifcs_linkyes=spojený
+ifcs_linkno=Dis-pripojený
+ifcs_speed=Rozhranie rýchlosť
+ifcs_duplex=, $1 duplex
+
+aifc_eaddress6=Adresa IPv6 v riadku $1 nie je platná
+aifc_enetmask6=Sieťová maska IPv6 v riadku $1 musí byť celé číslo medzi 1 a 128
+aifc_eclash6=Adresa IPv6 v riadku $1 sa už používa v rozhraní $2 
+aifc_eaddresses6=Neboli zadané žiadne adresy IPv6
+
+bifc_act=Aktivovať pri štarte?
+bifc_bridgeto=Pripojte most k rozhraniu
+bifc_nobridge=&lt;Žiadne&gt;
+bifc_ebridgeto=Na použitie tohto mosta musí byť vybraté existujúce rozhranie Ethernet
+bifc_ebridgeto2=Vybratému rozhraniu pre most nesmie byť priradená žiadna adresa
+bifc_ebridge=Rozhranie mosta musí byť číslo
+bifc_bridgestp=Protokol Spanning Tree
+bifc_bridgefd=Dopredu oneskorenie
+bifc_bridgewait=Oneskorené sprístupnenie
+bifc_ebond=Rozhranie dlhopisov musí byť číslo
+
+bonding_teampartsdesc=Oddelení partneri s medzerami, napr. "eth2 eth4"
+bonding_primary=Primárne rozhranie
+bonding_primarydesc=Platí iba pre režimy teamback s aktívnym záložným režimom, vyvážením-tlb alebo vyvážením-alb
+bonding_miimondesc=(Ak chcete zakázať sledovanie prepojení, nechajte pole prázdne.)
+
+bridge_create=Vytvorenie mostového rozhrania
+
+routes_default6=Predvolený smerovač IPv6
+routes_gateway6=Brána IPv6
+routes_edefault6=$1 nie je platný predvolený smerovač IPv6
+routes_egateway6=$1 nie je platná brána IPv6
+routes_defaults6=Predvolené smerovače IPv6
+routes_eclash6=Pre každé rozhranie IPv6 je možné definovať iba jednu predvolenú trasu
+routes_def6=Predvolená trasa IPv6
+
+hosts_active=Povolené?
+
+acl_sysinfo=Zobraziť dostupné sieťové rozhrania na informačnom paneli

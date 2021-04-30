@@ -4,7 +4,7 @@ index_none=No scheduled file copies have been defined.
 index_servers=Copy to servers
 index_return=cluster copies list
 index_more=$1 more ..
-index_run=Run&nbsp;now..
+index_run=Run now..
 index_files=Files to copy
 index_sched=Scheduled?
 index_when=Yes, $1
@@ -65,5 +65,3 @@ email_subject_failed=Cluster copy of $1 failed
 
 delete_err=Failed to delete copies
 delete_enone=None selected
-
-__norefs=1

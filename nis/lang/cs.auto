@@ -1,0 +1,29 @@
+index_enis2=Použitelné budou pouze funkce klientských služeb tohoto modulu.
+
+client_boot=Povolit klienta NIS?
+client_enis=Zdá se, že váš počítač nemá nainstalovanou podporu klientů NIS.
+
+switch_srcs=Zdroje dat
+switch_return=klientské služby
+
+security_domain=Doména NIS
+
+eswitch_title=Upravit službu
+eswitch_egone=Služba neexistuje!
+eswitch_header=Detaily služby
+eswitch_name=Název služby
+eswitch_0=První zdroj dat
+eswitch_1=Druhý zdroj dat
+eswitch_2=Třetí zdroj dat
+eswitch_3=Čtvrtý zdroj dat
+eswitch_4=Pátý zdroj dat
+eswitch_nth=Zdroj dat $1 
+eswitch_success=Na úspěch
+eswitch_notfound=Pokud není nalezen
+eswitch_unavail=Pokud není k dispozici
+eswitch_tryagain=dočasně nedostupné
+eswitch_return=Vraťte výsledek
+eswitch_continue=Pokračujte ve vyhledávání
+eswitch_none=Žádný
+eswitch_err=Uložení služby se nezdařilo
+eswitch_enone=Nebyly vybrány žádné zdroje!

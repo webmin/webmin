@@ -1,0 +1,4 @@
+monitor_sub_isup=$1 sur $2 
+monitor_pager_isup=$1 : "$2" est en hausse $3 
+monitor_snmp_isup=$1:$2 
+monitor_email_isup=Le moniteur sur $1 pour «$2» a détecté que le service est actif à $3 

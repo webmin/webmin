@@ -1,0 +1,81 @@
+index_title=Comenzi programate
+index_header=Nouă comandă programată
+index_user=Rulați ca utilizator
+index_date=Alege data
+index_time=Alerga la timp
+index_cmd=Comenzi de executat
+index_mail=Trimiteți un e-mail la finalizare?
+index_id=ID post
+index_exec=Fugi la
+index_created=Creat in
+index_dir=Rulați în director
+index_return=lista de comenzi
+index_cdate=Data curenta
+index_ctime=Ora curentă
+index_allow=Utilizatorii comenzii programate sunt permise
+index_amode=Utilizatorii să permită
+index_amode0=Toți utilizatorii Unix
+index_amode1=Numai utilizatorii enumerați ..
+index_amode2=Toți, cu excepția utilizatorilor enumerați ..
+index_delete=Anulați comenzile selectate
+index_noat=Comanda $1 nu a fost găsită pe sistemul dvs. - poate că nu este instalată sau nu este disponibilă pentru sistemul dvs. de operare.
+index_nostyle=Webmin nu știe cum să gestioneze comenzile de programare pe acest sistem de operare.
+index_stop=Opriți serverul de comenzi programate
+index_stopdesc=Opriți procesul serverului de fundal <tt>atd</tt> care execută comenzi programate. Acest lucru va împiedica executarea comenzilor la orele specificate.
+index_start=Porniți serverul de comenzi programate
+index_startdesc=Porniți procesul de server de fundal <tt>atd</tt> care rulează comenzi programate. Acest lucru este necesar pentru executarea comenzilor la orele specificate.
+index_boot=Porniți serverul la pornire?
+index_bootdesc=Modificați această setare pentru a activa sau a dezactiva pornirea serverului de comenzi programate la momentul pornirii sistemului.
+
+edit_title=Comandare programată
+edit_cmd=Script complet pentru a executa
+edit_shortcmd=Comanda de executare
+edit_header=Detalii de comandă programate
+edit_delete=Anulați această comandă
+edit_run=Fugi acum
+edit_ejob=Comanda programată nu mai există!
+edit_ecannot=Nu aveți voie să editați această comandă programată
+edit_showfull=Afișează scriptul complet.
+
+create_err=Eroare la crearea comenzii de planificare
+create_euser=Nume de utilizator lipsă sau nevalid
+create_edate=Data sau ora lipsă sau nevalidă
+create_ecmd=Nu au fost introduse comenzi
+create_efuture=Data și ora sunt în trecut
+create_edir=Director lipsă sau nevalid
+create_ecannot=Nu aveți voie să creați comenzi programate pentru acest utilizator
+create_eallow=Utilizatorul specificat nu are voie să ruleze comenzi programate
+
+delete_err=Nu a reușit anularea comenzii
+delete_egone=Comanda deja rulată sau ștersă
+
+acl_users=Poate edita comenzile programate pentru
+acl_all=Toți utilizatorii
+acl_this=Utilizator curent Webmin
+acl_only=Numai utilizatorii
+acl_except=Toate cu excepția utilizatorilor
+acl_allow=Se poate edita permisul la utilizatori?
+
+run_title=Executarea comenzii
+run_output=Ieșire din comanda programată ..
+run_none=Nici o ieșire generată
+
+allow_err=Nu a reușit să salveze utilizatorii autorizați
+allow_ecannot=Nu aveți voie să gestionați utilizatorii autorizați
+allow_eusers=Nu a fost introdus niciun utilizator
+
+deletes_err=Nu a reușit anularea comenzilor
+deletes_enone=Nimic selectat
+
+log_allow=Utilizatorii au fost schimbați
+log_create_job=Crearea comenzii programate pentru $1 
+log_delete_job=A fost anulată comanda programată pentru $1 
+log_exec_job=Execută comanda programată pentru $1 
+log_delete_jobs=Anulează $1 comenzi programate
+log_stop=Server de comenzi programate oprit
+log_start=A pornit serverul de comenzi programate
+log_bootup=Activat serverul de comenzi programate la pornire
+log_bootdown=Server de comenzi programate dezactivate la pornire
+
+stop_err=Nu s-a putut opri serverul
+start_err=Nu a putut porni serverul

@@ -5,7 +5,7 @@ use POSIX;
 sub list_atjobs
 {
 local @rv;
-opendir(DIR, $config{'at_dir'});
+opendir(DIR, $config{'at_dir'}) || return ();
 while($f = readdir(DIR)) {
 	local $p = "$config{'at_dir'}/$f";
 	if ($f =~ /^(\d+)\.a(\S+)$/) {
@@ -14,7 +14,7 @@ while($f = readdir(DIR)) {
 			       'date' => $1,
 			       'user' => scalar(getpwuid($st[4])),
 			       'created' => $st[9] };
-		open(FILE, $p);
+		open(FILE, "<".$p);
 		while(<FILE>) {
 			$job->{'cmd'} .= $_;
 			}

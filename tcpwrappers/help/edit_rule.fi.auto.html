@@ -1,0 +1,71 @@
+<header> TCP-kääre </header>
+<h3> Kuviot </h3> Kulunvalvontakieli toteuttaa seuraavat mallit: <ul>
+    <li> Merkkijono, joka alkaa merkillä &#39;.&#39; merkki. Isäntänimeä haetaan, jos sen nimen viimeiset komponentit vastaavat määritettyä mallia. Esimerkiksi malli &#39;.tue.nl&#39; vastaa isäntänimeä &#39;wzv.win.tue.nl&#39;. </li>
+    <li> Merkkijono, joka päättyy &#39;.&#39; merkki. Isäntäosoite vastaa, jos sen ensimmäiset numeeriset kentät vastaavat annettua merkkijonoa. Esimerkiksi malli &#39;131.155. vastaa (melkein) jokaisen isäntäosoitetta Eindhoven University -verkossa (131.155.xx). </li>
+    <li> Merkkijonoa, joka alkaa &#39;@&#39; -merkillä, käsitellään NIS (entinen YP) -verkkoryhmän nimellä. Isäntänimeä haetaan, jos se on määritetyn verkkoryhmän isäntäjäsen. Netgroup-vastaavuuksia ei tueta daemoniprosessien nimissä tai asiakaskäyttäjän nimissä. </li>
+    <li> Muodon &#39;nnnn / mmmm&#39; lauseke tulkitaan &#39;verkko / naamio&#39; -pariksi. IPv4-isäntäosoite yhdistetään, jos &#39;net&#39; on yhtä suuri kuin osoitteen ja &#39;naamion&#39; bitti- JA AND. Esimerkiksi verkko- / naamiokuvio &#39;131.155.72.0/255.255.254.0&#39; vastaa kaikkia osoitteita alueella &#39;131.155.72.0&#39; - &#39;131.155.73.255&#39;. </li>
+    <li> Lausekkeen muodossa &#39;[n: n: n: n: n: n: n: n] / m&#39; tulkitaan &#39;[net]/etuliite &quot;-pariksi. IPv6-isäntäosoitetta sovitetaan, jos &#39;net&#39; prefixlen-bitit ovat yhtä suuria kuin osoitteen prefixlen-bitit. Esimerkiksi [net]/etuliitemalli &#39;[3ffe: 505: 2: 1 ::]/64&#39; vastaa jokaista osoitetta alueella &#39;3ffe: 505: 2: 1:&#39;? kautta &#39;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&#39;. </li>
+    <li> Merkkijonoa, joka alkaa merkillä &#39;/&#39;, käsitellään tiedoston nimellä. Isäntänimi tai osoite vastaa, jos se vastaa mitä tahansa nimetyssä tiedostossa mainittua isäntänimeä tai osoitekuviota. Tiedostomuoto on nolla tai enemmän rivejä, joissa nolla tai enemmän isäntänimeä tai osoitekuvioita on erotettu välilyönnillä. Tiedostonimimalliä voidaan käyttää missä tahansa isäntänimeä tai osoitekuviota voidaan käyttää. </li>
+    <li> Jokerimerkit &#39;*&#39; ja &#39;?&#39; voidaan käyttää isäntänimien tai IP-osoitteiden täsmäämiseen. Tätä sovittamismenetelmää ei voida käyttää yhdessä &#39;net/mask&#39; -sovituksen kanssa, isäntänimen vastaavuus alkaa &#39;.&#39; tai IP-osoite, joka loppuu &#39;.&#39;. </li>
+</ul>
+<h3> Jokerimerkit </h3> Kulunvalvontakieli tukee nimenomaisia jokerimerkkejä: <table border>
+    <tr>
+        <td> <b>KAIKKI</b> </td>
+        <td> Universaali jokerimerkki vastaa aina. </td>
+    </tr>
+    <tr>
+        <td> <b>LOCAL</b> </td>
+        <td> Vastaa kaikkia isäntiä, joiden nimissä ei ole pistemerkkiä. </td>
+    </tr>
+    <tr>
+        <td> <b>TUNTEMATON</b> </td>
+        <td> Vastaa kaikkia käyttäjiä, joiden nimi on tuntematon, ja vastaa kaikkia isäntiä, joiden nimi tai osoite ovat tuntemattomia. Tätä mallia tulee käyttää varoen: isäntänimet eivät välttämättä ole käytettävissä väliaikaisten nimipalvelinongelmien takia. Verkko-osoitetta ei voi käyttää, kun ohjelmisto ei pysty selvittämään, millaiseen verkkoon se puhuu. </td>
+    </tr>
+    <tr>
+        <td> <b>TUNNETTUJA</b> </td>
+        <td> Vastaa mitä tahansa käyttäjää, jonka nimi tunnetaan, ja vastaa mitä tahansa isäntää, jonka nimi ja osoite ovat tiedossa. Tätä mallia tulee käyttää varoen: isäntänimet eivät välttämättä ole käytettävissä väliaikaisten nimipalvelinongelmien takia. Verkko-osoitetta ei voi käyttää, kun ohjelmisto ei pysty selvittämään, millaiseen verkkoon se puhuu. </td>
+    </tr>
+    <tr>
+        <td> <b>VAINOHARHAINEN</b> </td>
+        <td> Vastaa jokaista isäntää, jonka nimi ei vastaa osoitetta. Kun tcpd rakennetaan -DPARANOID (oletustila) -sovelluksella, se pudottaa tällaisten asiakkaiden pyynnöt jo ennen käyttöoikeuksien hallintataulukoiden tarkastelua. Rakenna ilman -DPARANOIDia, kun haluat paremmin hallita tällaisia pyyntöjä. </td>
+    </tr>
+</table>
+<h3> operaattorit </h3> <b>EXCEPT</b> Suunniteltu käyttö on muodossa: &#39;list_1 EXCEPT list_2&#39;; tämä rakenne vastaa mitä tahansa, joka vastaa luetteloa_1, ellei se vastaa luetteloa_2. EXCEPT-operaattoria voidaan käyttää daemon_lists ja client_lists. EXCEPT-operaattori voidaan asettaa sisäkkäin: jos ohjauskieli sallii sulujen käytön, &#39;EXCEPT b EXCEPT c&#39; jäsentää sanalla &#39;(EXCEPT (b EXCEPT c))&#39;. <h3> Kuorikomennot </h3> Jos ensimmäisen sovitun pääsynhallintasääntö sisältää kuorikomennon, komento alistetaan% <letter> korvaukset (katso seuraava osa). Tulos saavutetaan /bin/sh lapsiprosessilla vakioisillä tuloilla, lähdöillä ja virheillä kytkettynä hakemistoon /dev/null. Määritä &#39;&amp;&#39; komennon loppuun, jos et halua odottaa, kunnes se on suoritettu. <p> Kuorikomentojen ei pitäisi luottaa inetdin PATH-asetukseen. Sen sijaan heidän tulisi käyttää absoluuttisia polunimiä tai niiden pitäisi alkaa tarkalla PATH = riippumatta lauseesta. <h3> % Laajennuksia </h3> Seuraavat laajennukset ovat käytettävissä kuorikomennoissa: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> Asiakkaan (palvelimen) isäntäosoite. </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Asiakastiedot: käyttäjä @ isäntä, käyttäjän @ osoite, isäntänimi tai vain osoite sen mukaan, kuinka paljon tietoa on käytettävissä. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> Daemon-prosessin nimi (argv[0] arvo). </td>
+            </tr>
+            <tr>
+                <td>%h (%H)</td>
+                <td> Asiakkaan (palvelimen) isäntänimi tai osoite, jos isäntänimeä ei ole saatavana. </td>
+            </tr>
+            <tr>
+                <td>%n (%N)</td>
+                <td> Asiakkaan (palvelimen) isäntänimi (tai &quot;tuntematon&quot; tai &quot;vainoharhainen&quot;). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> Daemon-prosessin tunnus. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Palvelintiedot: daemon@host, daemon @ osoite tai vain daemon nimi käytettävissä olevien tietojen mukaan. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Asiakkaan käyttäjänimi (tai &quot;tuntematon&quot;). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Laajentuu yhdeksi &#39;%? merkki. </td>
+            </tr>
+        </table> % -Laajennuksen merkit, jotka voivat sekoittaa kuoren, korvataan alaviivoilla.
+        <hr />

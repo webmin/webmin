@@ -1,0 +1,223 @@
+index_epackagecmd=Для системы пакетов $1 требуется команда $2 
+index_eupdatecmd=Для системы обновления $1 требуется команда $2 
+index_epackagecheck=Недопустимая выбранная система управления пакетами: $1. <br>Возможно, вам потребуется выбрать другую систему на странице<a href='$2'> конфигурации модуля </a>.
+index_eupdatecheck=Выбранная система обновлений недействительна: $1. <br>Возможно, вам потребуется выбрать другой метод обновления на странице<a href='$2'> конфигурации модуля </a>.
+index_echeckpackage=Система пакетов не обнаружена!
+index_echeckupdate=Система обновлений не обнаружена!
+index_filter=Пакеты фильтров
+index_filterclear=Очистить фильтр
+index_filtered=Отображение пакетов <tt>$1</tt> из <tt>$2</tt>
+
+search_delete=Удалить выбранные пакеты
+search_selall=Выбрать все
+search_invert=Наоборот
+
+edit_listdesc=Показать все файлы в этом пакете и их текущее состояние проверки.
+edit_uninstdesc=Удалите этот пакет из вашей системы.
+
+delete_rusure2=Вы уверены, что хотите удалить пакет $1 ?
+delete_noscripts=Пропустить сценарии удаления?
+delete_purge=Очистить файлы конфигурации?
+delete_depstoo=Убраны неиспользуемые зависимости?
+
+install_eupdate=Пакет для установки не введен
+
+rpm_findrpm=Имя файла пакета
+rpm_finddistro=распределение
+rpm_finddesc=Описание
+
+slack_edir=Каталог отсутствующих пакетов Slackware $1 
+
+log_install_yum_l=Установленные пакеты: $1 от YUM
+log_install_yum=Установлено $2 пакетов из YUM
+log_install_rhn_l=Установленные пакеты: $1 из Redhat Network
+log_install_rhn=Установлено $2 пакетов из сети Redhat
+log_deletes_l=Деинсталлированные пакеты $1 
+log_deletes=Деинсталлированные $1 пакеты
+log_urpmi_update=Обновлены доступные пакеты URPMI
+log_urpmi_upgrade=Обновлены установленные пакеты URPMI
+log_upgrade_yum_l=Модернизированные пакеты $1 от YUM
+log_upgrade_yum=Модернизированные пакеты $2 от YUM
+log_check_rhn_l=Обновленные пакеты $1 от Redhat Network
+log_check_rhn=Обновленные пакеты $2 из Redhat Network
+
+rhn_header=Параметры автоматического обновления пакета
+rhn_name=Redhat Network
+
+apt_header=Варианты обновления пакета APT
+apt_mode=Режим обновления
+apt_mode2=Обновление распространения (<tt>upgrade-dist</tt>)
+apt_mode1=Нормальное обновление
+apt_mode0=Не обновлять
+apt_title=Поиск APT
+apt_name=APT
+apt_repo_url=Базовый URL репозитория
+apt_repo_path=Компоненты пути распространения
+apt_repo_eurl=Отсутствующий или неверно выглядящий базовый URL
+apt_repo_epath=Отсутствует путь распространения
+
+yum_input=Пакет от YUM
+yum_install=Установка пакетов с помощью команды $1 ..
+yum_ok=.. установка завершена.
+yum_failed=.. установка не удалась!
+yum_find=Просмотр YUM ..
+yum_package=пакет
+yum_version=Версия
+yum_arch=Архитектура
+yum_source=Источник
+yum_form=Обновить все пакеты
+yum_apply=Обновите все установочные пакеты от YUM
+yum_upgrade=Обновить все пакеты
+yum_upgradedesc=Обновление всех пакетов с помощью команды $1 ..
+yum_upgradefailed=.. обновление не удалось!
+yum_upgradeok=.. обновление завершено.
+yum_title=Просмотр YUM
+yum_name=YUM
+yum_enable=Включить репозиторий:
+yum_none=&lt;Ни&gt;
+yum_repo_id=ID хранилища
+yum_repo_name=Описание репозитория
+yum_repo_url=Базовый URL пакета
+yum_repo_gpg=Файл сертификата GPG
+yum_repo_none=Не подписано
+yum_repo_eid=Отсутствует или неверный идентификатор хранилища - разрешены только буквы и цифры
+yum_repo_eidclash=Идентификатор хранилища уже используется
+yum_repo_ename=Отсутствует имя хранилища
+yum_repo_eurl=Отсутствует или неверный URL хранилища
+yum_repo_egpg=Сертификат GPG отсутствует или не существует
+yum_repo_efile=Файл репозитория уже существует!
+
+urpmi_name=URPMI
+urpmi_input=Пакет от УРПМИ
+urpmi_find=Просмотр URPMI ..
+urpmi_form=Обновить все пакеты
+urpmi_update=Обновление доступных пакетов URPMI
+urpmi_upgrade=Обновите установленные пакеты URPMI до последних версий
+urpmi_title_update=Обновление доступных пакетов
+urpmi_title_upgrade=Обновление установленных пакетов
+urpmi_updatedesc=Выполнение команды $1 ..
+uprmi_upgradefailed=.. не удалось!
+urpmi_upgradeok=.. завершено
+urpmi_install=Установка пакетов с помощью команды $1 ..
+urpmi_ok=.. установка завершена.
+urpmi_failed=.. установка не удалась!
+
+emerge_title=Поиск Portage
+emerge_name=волок
+
+cygwin_fmissing=Файл отсутствует
+cygwin_lmissing=Файл, на который отсутствует ссылка
+cygwin_estat=Не удалось загрузить файл статистики: $1 
+cygwin_elread=Не удалось прочитать символическую ссылку: $1 
+cygwin_elstat=Не удалось зарегистрировать символическую ссылку: $1 
+cygwin_badpostscript=Предупреждение: этот скрипт, похоже, не был запущен
+cygwin_pkgexists=Пакет $1 уже существует.
+cygwin_warnuse=Предупреждение: это не официальный интерфейс для управления программным обеспечением Cygwin. Используйте на свой риск.
+cygwin_edb=База данных пропавших пакетов Cygwin $1 
+
+deletes_err=Не удалось удалить пакеты
+deletes_enone=Пакеты не выбраны
+deletes_title=Удалить пакеты
+deletes_desc=Удаление пакетов $1 ..
+deletes_failed1=Не удалось удалить $1 : $2 
+deletes_success1=Успешно удалено $1 
+deletes_failed2=Ошибка удаления : $1 
+deletes_success2=.. удаление завершено.
+deletes_rusure=Вы уверены, что хотите удалить пакеты $1 ?
+deletes_ok=Удалить их все
+
+csw_input=Пакет от CSW
+csw_install=Установка пакетов с помощью команды $1 ..
+csw_ok=.. установка завершена.
+csw_failed=.. установка не удалась!
+csw_already=.. уже установлено.
+csw_retry=.. пытаясь снова с новыми зависимостями.
+csw_find=Просмотр CSW ..
+csw_package=пакет
+csw_version=Версия
+csw_title=Просмотр CSW
+csw_name=CSW
+csw_form=Пакеты обновления
+csw_upgrade=Обновить все установленные пакеты
+csw_updatedesc=Обновление всех установленных пакетов с помощью команды $1 ..
+
+missing_msg=Пакет $1 может быть автоматически установлен Webmin с помощью $2.
+missing_now=Установите сейчас
+
+find_title=Поиск пакета
+find_search=Найти пакеты, соответствующие:
+find_name=имя
+find_version=Версия
+find_desc=Описание
+find_none=Пакеты, соответствующие вашему запросу, не найдены.
+
+msi_users=Сделать новое приложение доступным для
+msi_users0=Никто
+msi_users1=Текущий пользователь
+msi_users2=Все пользователи
+msi_missing=Не существует
+msi_size=Не тот размер
+
+hpux_create_target_path=Создать целевой путь?
+hpux_mount_all_filesystems=Смонтировать все файловые системы?
+hpux_reinstall=Переустановка?
+hpux_reinstall_files=Переустановить файлы?
+hpux_reinstall_files_use_cksum=Переустановите файлы, используя контрольную сумму?
+hpux_allow_multiple_versions=Разрешить несколько версий?
+hpux_defer_configure=Отложить настройку?
+hpux_autorecover_product=Автовосстановление продукта?
+hpux_allow_downdate=Разрешить понизить?
+hpux_allow_incompatible=Разрешить несовместимо?
+hpux_autoselect_dependencies=Автовыбор зависимостей?
+hpux_enforce_dependencies=Обеспечить зависимость?
+hpux_enforce_scripts=Применять скрипты?
+hpux_enforce_dsa=Принудительно провести анализ дискового пространства?
+hpux_root=Корневая директория
+
+ports_install=Установка портов FreeBSD $1 ..
+ports_failed=.. некоторые порты не удалось
+ports_ok=.. установка завершена
+ports_input=Пакет из портов
+ports_find=Порты поиска
+ports_name=Порты FreeBSD
+ports_form=Обновление базы данных портов
+ports_apply=Скачать последний снимок
+ports_upgrade=Загрузка снимков портов
+ports_running=Выполнение команды $1 ..
+
+pkg_install=Установка пакетов FreeBSD $1 ..
+pkg_failed=.. некоторые пакеты не удалось
+pkg_ok=.. установка завершена
+pkg_find=Поиск pkgng
+pkg_input=Пакет от pkgng
+
+pkgsrc_install=Установка пакетов pkgsrc $1 ..
+pkgsrc_failed=.. некоторые пакеты не удалось
+pkgsrc_ok=.. установка завершена
+pkgsrc_find=Поиск pkgng
+pkgsrc_input=Пакет от pkgsrc
+
+log_IPKG_update=Обновленная база данных IPKG
+log_IPKG_upgrade=Обновлены установленные пакеты IPKG
+
+IPKG_name=IPKG
+IPKG_input=Пакет из ИПКГ
+IPKG_find=Просмотр IPKG ..
+IPKG_form=Управление пакетами IPKG
+IPKG_update=Обновить базу данных пакетов IPKG
+IPKG_upgrade=Обновление установленных пакетов IPKG
+IPKG_title_update=Обновление IPKG Databse
+IPKG_title_upgrade=Обновление установленных пакетов
+IPKG_updatedesc=Выполнение команды $1 ..
+IPKG_upgradefailed=.. не удалось!
+IPKG_upgradeok=.. завершено
+IPKG_install=Установка пакетов с помощью команды $1 ..
+IPKG_ok=.. установка завершена.
+IPKG_failed=.. установка не удалась!
+IPKG_index_tree=Управление пакетами IPKG
+IPKG_install_package=устанавливать
+IPKG_install_packagedesc=Установите этот пакет в вашей системе
+IPKG_noupgrade=Нечего обновлять
+IPKG-edit_title=Управление пакетом IPKG
+IPKG_update_avail=Доступно обновление:
+IPKG_not_installed=Пакет не установлен

@@ -1,0 +1,8 @@
+index_title=Kliem li Ibdel il-Passwords
+index_noservers=L-ebda server li jimmaniġġja l-utenti fuq ma ġie definit fil-modulu <a href=$1>Utenti u Gruppi ta 'Grupp</a>.
+index_hosts=Il-bidliet kollha tal-password li jsiru bl-użu ta 'dan il-modulu se jsiru fuq l-ospiti $1 kollha ġestiti mill-modulu ta' l-Utenti u l-Gruppi ta 'Kluster.
+
+passwd_err=Ma rnexxielux ibiddel il-password
+passwd_title=Nibdlu Password
+passwd_on=Nibdlu password fuq $1 ..
+passwd_euser=Utent ma jeżistix!

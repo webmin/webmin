@@ -1,0 +1,9 @@
+syslog_desc2=MySQL feilmelding
+
+mysqlpass_err=MySQL sikker modus
+mysqlpass_esafecmd=Kommandoen $1 som trengs for å starte MySQL med autentisering deaktivert, ble ikke funnet
+mysqlpass_eshutdown=Nedleggelse mislyktes : $1 
+mysqlpass_esafe=Oppstart i sikker modus mislyktes : $1 
+mysqlpass_estartup=Oppstart mislyktes : $1 
+mysqlpass_echange=Endring av passord mislyktes : $1 
+mysqlpass_echange_forcepass=Tving overstyr det gitte passordet, hvis det går tapt eller glemt

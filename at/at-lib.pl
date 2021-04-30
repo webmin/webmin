@@ -1,7 +1,8 @@
 # at-lib.pl
 # Functions for listing and creating at jobs
+
 use strict;
-use warnings;
+use warnings "once";
 our (%text, %config); 
 our $remote_user;
 

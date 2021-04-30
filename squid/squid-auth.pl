@@ -6,7 +6,7 @@ use strict;
 use warnings;
 
 my %auth;
-open(my $fh, $ARGV[0]);
+open(my $fh, "<".$ARGV[0]);
 while(<$fh>) {
 	s/\r|\n//g;
 	s/#.*$//;

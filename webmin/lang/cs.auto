@@ -1,0 +1,421 @@
+index_refresh=Aktualizujte moduly
+index_refreshmsg=Znovu zkontrolujte všechny nainstalované servery všech modulů Webmin a aktualizujte ty, které se zobrazují v kategorii „Nepoužité moduly“.
+
+access_local=Zahrnout místní síť do seznamu
+access_elibwrap=Řízení přístupu IP pomocí modulů TCP není k dispozici, protože není nainstalován modul Perl $1.
+access_libwrapcpan=<a href='$1'>Klikněte sem</a>, chcete-li, aby Webmin automaticky nainstaloval chybějící modul Perl.
+
+access_eip6='$1' není kompletní IPv6 nebo síťová adresa
+access_ecidr6='$1' není platná velikost sítě IPv6
+access_ecidr8=Velikost sítě IPv6 '$1' musí být dělitelná 8
+access_trust=Důvěřujete vzdálené IP adrese poskytované proxy servery?
+
+bind_firewall=Otevřít nové porty na firewallu?
+bind_ipv6=Přijímáte připojení IPv6?
+bind_eipv6=IPv6 nelze povolit, pokud není nainstalován modul $1 Perl
+bind_redirecting=Přesměrování na novou adresu URL.
+bind_elsof=Nový port $1 je již používán jiným procesem
+bind_eonsystem=IP adresa $1 není v tomto systému aktivní, a proto ji nelze použít
+bind_maxconns=Maximální celkový počet souběžných připojení
+bind_maxconns_per_ip=Maximální počet souběžných připojení na IP
+bind_maxconns_per_net=Maximální počet souběžných připojení na síť
+bind_emaxconns=Maximální počet souběžných připojení musí být číslo větší než 1
+bind_emaxconns_per_ip=Maximální počet souběžných připojení na IP musí být číslo větší než 1
+bind_emaxconns_per_net=Maximální počet souběžných připojení v síti musí být číslo větší než 1
+
+log_global=&lt;Globální akce&gt;
+log_sched=Protokolovat naplánované funkce?
+log_login=Zahrnout přihlašovací údaje Webmin a odhlášení do protokolu akcí?
+log_email=Odeslat zaznamenané akce e-mailem na adresu
+log_emailnone=Neposílej
+log_inmodsemail=Odeslat e-mail pro akce v
+
+ui_nice_size_type=Používejte binární měrné jednotky (KiB, MiB, GiB spíše než KB, MB, GB)
+ui_showhost=Chcete na název stránky přidat název hostitele?
+ui_ehostnamedisplay=Chybí nebo je neplatný zobrazovaný název hostitele
+
+mods_checksig=Zkontrolovat podpisový soubor pro stažené moduly?
+
+os_perllib=Další cesty knihovny Perl
+os_usermin=Aktualizujte také Usermin OS
+
+ssl_deny=Verze protokolu SSL k odmítnutí
+ssl_compression=Povolit komprimované připojení SSL?
+ssl_honorcipherorder=Vynutit použití serveru definované šifrové objednávky?
+ssl_extracasdef=Stejné jako globální nastavení SSL
+ssl_extracasnone=Žádné pro tuto IP adresu
+ssl_extracasbelow=Zadáno níže ..
+ssl_ekey2=Soubor soukromého klíče SSL $1 neobsahuje klíč formátu PEM
+ssl_ecert2=Soubor certifikátu SSL $1 neobsahuje certifikát formátu PEM
+ssl_newcsr=Tento formulář lze použít k vytvoření nového SSL klíče a žádosti o podpis certifikátu (CSR) pro váš server Webmin. Před použitím CSR musí být podepsána certifikační autoritou (CA).
+ssl_header2=Vytvořit SSL CSR
+ssl_csrfile=Zapište CSR do souboru
+ssl_cipher_list=Povolené šifry SSL
+ssl_strong=Pouze silné šifry kompatibilní s PCI
+ssl_pfs=Pouze silné šifry s dokonalým utajením vpřed
+ssl_clist=Uvedené šifry
+ssl_ecipher_list=Chybějící nebo neplatný seznam šifry - musí být jako <tt>HIGH: -SSLv2: -aNULL</tt>
+ssl_edhparams=Nepodařilo se vygenerovat soubor PFS DH params : $1
+ssl_epfsversion=PFS vyžaduje Net::SSLeay verzi $2, ale tento systém má pouze verzi $1
+ssl_fromcsr=Tento soukromý klíč byl vygenerován pomocí karty <b>Žádost o podpis certifikátu</b>. Níže byste měli zadat certifikát, který vám dodal váš CA jako odpověď na CSR.
+ssl_privchain=Zřetězený text certifikátu
+ssl_nochain=Žádný zřetězený certifikát
+ssl_leavechain=Použijte existující zřetězený certifikát
+ssl_tabcsr=Žádost o podpis certifikátu
+ssl_tablets=Pojďme se zašifrovat
+ssl_csralready=Zobrazit poslední klíč a CSR ..
+ssl_already1=Dříve generovaný soukromý klíč :
+ssl_already2=Dříve vygenerovaná žádost o podpis certifikátu :
+ssl_letsdesc=Pojďme šifrovat je bezplatná, automatizovaná a otevřená certifikační autorita, kterou lze použít k vygenerování certifikátu SSL pro použití serverem Webmin.
+ssl_letserr=Bohužel, Pojďme se zašifrovat ve vašem systému nelze použít: $1.
+ssl_letserr2=Alternativně zkontrolujte stránku <a href='$1'>konfigurace modulu</a> a ujistěte se, že používáte správnou cestu k příkazu <tt>letsencrypt</tt>.
+ssl_letsdesc2=Tuto stránku lze použít k vyžádání nového certifikátu, který přepíše všechny ostatní aktuálně nakonfigurované v systému Webmin. Služba Let's Encrypt však vyžaduje, aby bylo vaše vlastnictví domény certifikátů ověřeno kontrolou, zda tento systém hostuje web pro danou doménu. To se provádí umístěním malého dočasného souboru do adresáře dokumentů na webu.
+ssl_letsheader=Možnosti nového certifikátu SSL
+ssl_letsdoms=Názvy hostitelů pro certifikát
+ssl_webroot=Kořenový adresář webových stránek pro ověřovací soubor
+ssl_webroot0=Virtuální hostitel Apache odpovídající hostname
+ssl_webroot1=Jiný virtuální hostitel Apache
+ssl_webroot2=Další adresář
+ssl_webroot3=Pro ověření použijte domény DNS
+ssl_letsok=Vyžádejte si certifikát
+ssl_letsonly=Jen aktualizujte obnovení
+ssl_usewebmin=Kopírovat nový klíč a certifikát do Webmin?
+ssl_letsrenew=Měsíce mezi automatickou obnovou
+ssl_letsnotrenew=Obnovujte pouze ručně
+ssl_staging=Pojďme šifrovat server
+ssl_staging0=Nemovitý
+ssl_staging1=Staging (pouze test)
+
+newkey_ecns=Nebyly zadány žádné názvy serverů
+
+newcsr_err=Vytvoření protokolu SSL CSR se nezdařilo
+newcsr_efile=Chybí název souboru CSR
+newcsr_title=Vygenerujte CSR
+newcsr_ok=Následující žádost o certifikát SSL byla úspěšně vygenerována :
+newcsr_ok2=Tento CSR musí být zaslán podpisující autoritě, která vrátí podepsaný certifikát. To lze nainstalovat pomocí výše uvedeného klíče pomocí karty <b>Odeslat certifikát</b>.
+
+startpage_webminup=Zobrazit aktualizace Webmin na stránce Systémové informace?
+startpage_moduleup=Zobrazit aktualizace modulu na stránce Systémové informace?
+
+upgrade_eportage=Funkce aktualizace Webminu v současné době nefunguje, pokud jste nainstalovali z balíčku Portage. Místo toho upgradujte pomocí nástrojů Portage.
+upgrade_src=Upgradujte webmin z
+upgrade_opts=Možnosti upgradu
+
+update_checksig=Zkontrolujte podpisy na úložištích jiných než Webmin
+update_enosig=Nelze stáhnout podpisový soubor pro aktualizace : $1
+update_ebadsig=Aktualizace kontroly podpisu se nezdařila : $1
+update_enomodsig=Nelze stáhnout podpisový soubor pro modul : $1
+update_ebadmodsig=Kontrola podpisu modulu se nezdařila : $1
+update_src=Upgradujte moduly z
+update_opts=Možnosti aktualizace modulu
+
+ca_alt=Další domény
+
+session_ptimeout=Vypršení časového limitu hesla
+session_pblock=Selhalo přihlašovací bloky
+session_syslog3=Selhání protokolu do <tt>syslog</tt>?
+session_stype=Typ ověření
+session_sopts=Možnosti ověřování
+session_local=Lokální autentizace
+session_logouttime=Automatické odhlášení po $1 minutách nečinnosti
+session_ip=Omezit relace na stejnou IP adresu klienta?
+session_pam=Zdroj hesla
+session_popts=Možnosti hesla
+session_pamend=Předat stav PAM dalším modulům?
+session_cmddef=Změna hesla vypršela
+session_cmddef1=Změňte platnost hesel pomocí PAM
+session_cmddef0=Změna hesel pomocí příkazu:
+session_ecmd=Chybějící nebo neplatný příkaz ke změně hesla
+session_banner=Pre-login banner
+session_md5=Formát hashování hesla webmin
+session_sha512=Použijte šifrování SHA512
+session_emd5mod=Nelze použít šifrování MD5, protože není nainstalován modul Perl $1.
+session_esha512mod=Šifrování SHA512 nelze použít, protože není nainstalován modul Perl $1.
+session_blocklock=Zamkněte také uživatele pomocí neúspěšných přihlášení
+
+categories_custom=Zvyk
+
+log_twofactor=Změněné možnosti dvoufaktorové autentizace
+log_newcsr=Vytvořeno nové SSL CSR
+log_web=Změněné možnosti webového serveru
+log_sendmail=Změněné možnosti odesílání pošty
+log_debug=Změněné možnosti ladicího souboru protokolu
+log_delete_webmincron=Smazáno $1 naplánované funkce
+log_run_webmincron=Spustil naplánované funkce $1
+log_save_webmincron=Aktualizovaná naplánovaná funkce v modulu $1
+log_onedelete_webmincron=Odstraněná naplánovaná funkce v modulu $1
+log_letsencrypt=Požadovaný nový certifikát SSL od Let's Encrypt
+log_letsencryptdns=Vytvořeno Pojďme šifrovat záznam DNS pro $1
+log_letsencryptcleanup=Odstraněn Pojďme šifrovat záznam DNS pro $1
+
+themes_none=Žádné - nechat se rozhodnout téma
+themes_overdesc=Překryvy upravují vzhled motivu změnou barev, pozadí a ikon. Nemění rozvržení.
+themes_overlay=Aktuální překrytí :
+themes_tabchange=Změnit motiv
+themes_taboverlay=Změnit překrytí
+themes_tabinstall=Nainstalovat motiv
+themes_tabdelete=Mazat témata
+themes_tabexport=Exportovat témata
+
+themes_ok2=Překryvný motiv se úspěšně změnil.. přesměrování na indexovou stránku Webmin.
+themes_err4=Téma překrytí se nepodařilo změnit
+themes_eoverlay=Vybrané překrytí není kompatibilní s aktuálním globálním tématem
+
+referers_none2=VAROVÁNÍ: Tím se váš systém otevře až do útoků XSS!
+
+third_title=Vyberte modul třetí strany
+
+ipkey_ips2=Pro adresy IP a názvy hostitelů
+ipkey_eip2='$1' není platná IP adresa nebo název hostitele
+ipkey_eextracas=Nebyly zadány žádné další soubory certifikátů
+ipkey_eextraca=Další soubor certifikátů $1 neexistuje
+
+descs_cmod=Původní modul
+descs_cdesc=Název klonování
+descs_etitle=Chybí název pro klon '$1'
+
+advanced_precache=Textové soubory do mezipaměti?
+advanced_precache0=Žádný
+advanced_precache1=Textové soubory v anglickém jazyce
+advanced_precache2=Soubory odpovídající vzorům prostředí $1
+advanced_eprecache=Chybějící seznam vzorů prostředí pro předběžnou vyrovnávací paměť
+advanced_chattr=Povolit úpravu neměnných souborů?
+advanced_sclass=Třída IO pro naplánované úlohy
+advanced_sprio=IO priorita pro naplánované úlohy
+advanced_gzip=Gzip komprimovat statické soubory?
+advanced_gzipauto=Pouze pokud existuje předkomprimovaný soubor.gz
+advanced_gzip0=Nikdy
+advanced_gzip1=Použijte předkomprimovaný soubor a dynamicky komprimujte
+advanced_egzip=Kompresi gzip nelze povolit, pokud není nainstalován modul $1 perl
+advanced_redir=Formát URL pro přesměrování
+advanced_redir1=Pouze cesta
+advanced_redir0=Protokol, hostitel, port a cesta
+advanced_listdir=Seznam adresářů bez indexového souboru?
+advanced_headers=Extra záhlaví HTTP
+advanced_eheader=Záhlaví musí být formátována jako <tt>Záhlaví: Hodnota</tt>
+advanced_sortconfigs=Uložit konfigurační soubory seřazené podle jeho klíčů?
+advanced_bufsize=Velikost vyrovnávací paměti sítě v bajtech
+advanced_ebufsize=Velikost vyrovnávací paměti sítě musí být číslo větší než nula
+
+savekey_echain=Chybějící nebo neplatný zřetězený certifikát formátu PEM
+savekey_done3=Dodaný zřetězený SSL certifikát byl uložen do souboru $1.
+
+refreshmods_title=Aktualizujte moduly
+refreshmods_installed=Kontrola použitelných modulů Webmin ..
+refeshmods_counts=.. nalezeno $2 s nainstalovanými aplikacemi, $1 není nainstalováno.
+
+debug_title=Ladění souboru protokolu
+debug_header=Možnosti souboru protokolu ladění webminu
+debug_enabled=Ladicí protokol povolen?
+debug_what=Události k přihlášení
+debug_what_start=Spouštění a zastavování skriptů
+debug_what_write=Soubory otevřeny pro zápis
+debug_what_read=Soubory se otevřely ke čtení
+debug_what_ops=Další operace se soubory
+debug_what_procs=Operace na procesech
+debug_what_diff=Konfigurační soubor se liší
+debug_what_cmd=Příkazy provedeny
+debug_what_net=Vytvořeno síťové připojení
+debug_what_sql=SQL provedeno
+debug_file=Ladění souboru protokolu
+debug_size=Maximální velikost souboru protokolu
+debug_err=Možnosti ladění se nepodařilo uložit
+debug_ewhat=Nebyly vybrány žádné události k přihlášení
+debug_efile=Soubor protokolu ladění musí být absolutní cestou
+debug_edir=Adresář '$1' pro soubor protokolu ladění neexistuje
+debug_esize=Maximální velikost musí být číslo
+debug_procs=Typy skriptů pro ladění
+debug_modules=Omezte ladění na moduly
+debug_web=CGI webového rozhraní
+debug_cmd=Příkazový řádek
+debug_cron=Práce na pozadí
+debug_inmods=Moduly pro psaní protokolů ladění
+debug_emodules=Pro vybrané nejsou k dispozici žádné moduly pro ladění
+
+notif_passexpired=Platnost vašeho webmin hesla vypršela! Při příštím přihlášení budete nuceni jej změnit.
+notif_passchange=Vaše heslo správce webu bylo naposledy změněno $1 a musí být změněno za $2 dny.
+notif_passlock=Vaše heslo správce webu bylo naposledy změněno $1 a váš účet bude uzamčen do $2 dní, pokud se nezmění.
+notif_changenow=V modulu Změnit jazyk a téma můžete <a href='$1'>nyní změnit své heslo</a>.
+notif_unixwarn=Vaše heslo Unixu bylo naposledy změněno $1 a musí být změněno za $2 dny.
+notif_unixexpired=Platnost vašeho Unix hesla vypršela! Při příštím přihlášení budete nuceni jej změnit.
+notif_upgrade=Verze Webmin $1 je nyní k dispozici, ale používáte verzi $2.
+notif_upgradeok=Upgradujte webmin hned
+notif_updatemsg=Nyní jsou k dispozici $1 následující aktualizace modulu Webmin.
+notify_updatemod=Modul
+notify_updatever=Verze
+notify_updatedesc=Opravuje problém
+notif_updateok=Nainstalujte aktualizace nyní
+notif_reboot=Poslední aktualizace balíků (jako je nová verze jádra) vyžadují úplné restartování systému.
+notif_rebootok=Restartujte nyní
+
+status_title=Sběr stavu na pozadí
+status_header=Nastavení úlohy kolekce stavu
+status_interval=Shromažďovat stav systému na pozadí?
+status_interval1=Nikdy
+status_interval0=Každý
+status_mins=minut
+status_pkgs=Shromažďovat dostupné aktualizace balíků?
+status_temp=Sbírejte jízdní teploty?
+status_units=Jednotky pro teploty
+status_celsius=Celsia
+status_fahrenheit=Fahrenheita
+
+sendmail_title=Odesílání e-mailů
+sendmail_desc=Tato stránka určuje, jak Webmin odesílá e-maily, například z plánovaných záloh nebo monitorování na pozadí. Ovlivňuje také e-maily odesílané pomocí modulu Read User Mail.
+sendmail_header=Možnosti odesílání pošty
+sendmail_system=Místní poštovní server
+sendmail_smtp=Odeslat e-mail pomocí
+sendmail_port=Port SMTP
+sendmail_portdef=Použít výchozí port
+sendmail_portsel=Použijte číslo portu
+sendmail_ssl=Použít šifrování SSL?
+sendmail_ssl0=Nikdy nešifrovat
+sendmail_ssl1=Vždy používejte TLS
+sendmail_ssl2=Přepněte pomocí STARTTLS
+sendmail_smtp0=Příkaz lokálního poštovního serveru
+sendmail_smtp1=Přes SMTP na lokální poštovní server
+sendmail_smtp2=Přes SMTP na vzdálený poštovní server
+sendmail_login=Ověření serveru SMTP
+sendmail_login1=Neověřujte se
+sendmail_login0=Přihlaste se jako
+sendmail_pass=s heslem
+sendmail_auth=Metoda ověřování SMTP
+sendmail_authdef=Výchozí (aktuálně Cram-MD5)
+sendmail_from=Z adresy pro e-mail od Webmin
+sendmail_fromdef=Výchozí ($1)
+sendmail_fromaddr=Adresa
+sendmail_err=Možnosti odeslání pošty se nepodařilo uložit
+sendmail_esmtp=Chybějící nebo nerozlišitelný název hostitele serveru SMTP
+sendmail_eport=Chybějící nebo nečíselný port SMTP
+sendmail_elogin=Chybí přihlašovací server SMTP
+sendmail_esasl=Ověřování SMTP nelze povolit, pokud není nainstalován modul <a href=$1>$2</a> Perl.
+sendmail_efrom=Chybí nebo je nesprávně naformátováno z adresy
+sendmail_header2=Odeslat testovací zprávu
+sendmail_to=Odeslat zprávu uživateli
+sendmail_subject=Předmět zprávy
+sendmail_body=Obsah zprávy
+sendmail_desc2=Tento formulář lze použít k odeslání zkušebního e-mailu s výše uvedeným nastavením, aby se zajistilo správné doručování pošty.
+sendmail_send=Poslat e-mailem
+sendmail_url=Webmin URL pro použití v e-mailu
+sendmail_url_def=Výchozí ($1)
+sendmail_url_custom=Vlastní URL
+sendmail_eurl=Chybějící nebo neplatná vlastní adresa URL
+
+testmail_title=Odeslat zkušební e-mail
+testmail_err=Odeslání zkušební zprávy se nezdařilo
+testmail_eto=Nebyla zadána žádná cílová adresa
+testmail_sending=Odesílání zprávy z $1 do $2 ..
+testmail_done=.. zpráva odeslána. Zkontrolujte poštovní schránku cílové adresy a ujistěte se, že byla skutečně doručena.
+testmail_failed=.. odeslání selhalo : $1
+
+web_title=Možnosti webového serveru
+web_header=Možnosti vestavěného webového serveru Webmin
+web_expires=Čas mezipaměti na straně klienta pro statické soubory
+web_expiresdef=Výchozí webmin (7 dní)
+web_expiressecs=Čas v sekundách
+web_err=Možnosti webového serveru se nepodařilo uložit
+web_eexpires=Chybějící nebo nečíselný čas mezipaměti na straně klienta
+web_expirespaths=Časy mezipaměti na straně klienta založené na cestě URL
+web_expirespath=Cesta regulární výraz
+web_expirestime=Čas mezipaměti v sekundách
+web_eexpires2=Chybějící nebo nečíselný čas mezipaměti na straně klienta v řádku $1
+
+webmincron_title=Webmin naplánované funkce
+webmincron_emodule=Modul Webmin Cron Jobs není nainstalován!
+webmincron_module=Webmin modul
+webmincron_func=Název funkce
+webmincron_args=Parametry
+webmincron_when=Běh na
+webmincron_none=Zatím nebyly vytvořeny žádné naplánované funkce Webmin. Obvykle jsou vytvářeny jinými moduly, nikoli uživateli.
+webmincron_delete=Smazat vybrané funkce
+webmincron_run=Spusťte vybrané funkce nyní
+webmincron_derr=Odstranění naplánovaných funkcí se nezdařilo
+webmincron_enone=Nebyl vybrán žádný
+webmincron_rerr=Nepodařilo se spustit odstranění plánovaných funkcí
+webmincron_running=Spouštěcí funkce $2 v $1 ..
+webmincron_failed=.. selhalo : $1
+webmincron_done=.. Hotovo
+webmincron_return=seznam naplánovaných funkcí
+webmincron_header=Podrobnosti naplánované funkce
+webmincron_egone=Naplánovaná funkce neexistuje!
+webmincron_when0=Pravidelný interval
+webmincron_when1=Konkrétní časy
+webmincron_secs=sekundy
+webmincron_err=Uložení naplánované funkce se nezdařilo
+webmincron_einterval=Interval musí být o několik sekund větší než nula
+
+twofactor_title=Dvoufaktorové ověření
+twofactor_header=Možnosti dvoufaktorové autentizace
+twofactor_provider=Poskytovatel ověřování
+twofactor_none=Žádný
+twofactor_apikey=Authy API API
+twofactor_test=Používáte testovací režim poskytovatele?
+twofactor_desc=Dvojfaktorová autentizace umožňuje uživatelům Webminu povolit při přihlášení používat další autentizační zařízení, například jednorázový generátor přístupového kódu. Po aktivaci této stránky se uživatelé musí u vybraného poskytovatele ověřování samostatně zaregistrovat.
+twofactor_err=Uložení dvoufaktorové autentizace se nezdařilo
+twofactor_eprovider=Neplatný poskytovatel!
+twofactor_eusers=Nelze zakázat dvoufaktorové ověřování, protože v současné době jsou registrováni následující uživatelé : $1
+twofactor_eapikey=Chybějící nebo neplatně vypadající klíč API
+twofactor_authy=Authy
+twofactor_totp=Google Authenticator
+twofactor_email=Vaše emailová adresa
+twofactor_country=Kód země mobilního telefonu
+twofactor_phone=Číslo mobilního telefonu
+twofactor_eemail=Chybějící nebo neplatná e-mailová adresa - musí být naformátována jako user@domain.com
+twofactor_ecountry=Chybějící nebo neplatný kód země - musí být číslo, například 65
+twofactor_ephone=Chybějící nebo neplatné telefonní číslo - jsou povoleny pouze číslice, pomlčky a mezery
+twofactor_eauthykey=Klíč Authy API není platný nebo je nesprávný režim
+twofactor_eauthy=Chyba při ověřování klíče API s Authy : $1
+twofactor_eauthyenroll=Registrace se nezdařila : $1
+twofactor_eauthyid=Authy ID uživatele musí být číslo
+twofactor_eauthytoken=Authy token musí být číslo
+twofactor_eauthyotp=Authy token je neplatný
+twofactor_enrolllink=Nyní se můžete přihlásit k dvoufaktorové autentizaci v modulu <a href='$1'>Webmin Users</a>.
+twofactor_url=Další informace o $1 naleznete na webových stránkách <a href='$2' target=_blank>$2</a>.
+twofactor_etotpmodule=Modul Perl <tt>$1</tt> potřebný pro dvoufaktorovou autentizaci není nainstalován. Chcete-li ji nainstalovat, použijte <a href='$2'>Perl moduly</a> ve Webminu.
+twofactor_qrcode=Do aplikace Google Authenticator zadejte tajný kód $1 nebo naskenujte níže uvedený QR kód.
+twofactor_etotpid=Neplatné tajné kódování TOPT base32
+twofactor_etotptoken=Token Google Authenticator musí být číslo
+twofactor_etotpmodule2=Chybí modul Perl $1
+twofactor_etotpmatch=Nesprávný kód OTP
+twofactor_secret=Osobní tajný klíč
+twofactor_secret1=Generováno náhodně
+twofactor_secret0=Použijte 16místný klíč
+twofactor_esecret=Tajný klíč musí mít přesně 16 znaků a musí obsahovat pouze písmena a čísla
+twofactor_esession=Dvoufaktorové ověřování nelze použít, pokud není aktivní ověřování založené na relacích
+
+letsencrypt_title=Pojďme zašifrovat žádost o certifikát
+letsencrypt_err=Nepodařilo se požádat o certifikát
+letsencrypt_ecmds=Ve vašem systému nebyl nalezen příkaz Pojďme šifrovat klienta <tt>certbot</tt> ani příkaz <tt>python</tt>
+letsencrypt_epythonmod=Modul Python $1, který potřebuje vestavěný klient Let's Encrypt, není nainstalován
+letsencrypt_epythonver=Nepodařilo se získat verzi Pythonu : $1
+letsencrypt_epythonver2=Vyžaduje se verze Python $1 nebo vyšší, ale máte pouze verzi $2.
+letsencrypt_certbot=Certbot
+letsencrypt_edroot=Virtuální hostitel Apache $1 nemá adresář dokumentů!
+letsencrypt_edom=Chybí nebo je neplatný název domény
+letsencrypt_erenew=Chybějící nebo nečíselný interval obnovy
+letsencrypt_ewebroot=Adresář dokumentů webových stránek neexistuje
+letsencrypt_evhost=Nebyl nalezen žádný virtuální hostitel odpovídající $1
+letsencrypt_efull=Očekávaný úplný soubor certifikátů $1 nebyl nalezen
+letsencrypt_ecert=Očekávaný soubor certifikátů $1 nebyl nalezen
+letsencrypt_ekey=Očekávaný soubor soukromého klíče $1 nebyl nalezen
+letsencrypt_doing=Žádost o nový certifikát pro $1 pomocí adresáře webových stránek $2 ..
+letsencrypt_doingdns=Vyžádání nového certifikátu pro $1 pomocí ověření DNS.
+letsencrypt_failed=.. požadavek se nezdařil : $1
+letsencrypt_done=.. žádost byla úspěšná!
+letsencrypt_show=Nový certifikát a soukromý klíč byly zapsány do následujících souborů :
+letsencrypt_cert=SSL certifikát
+letsencrypt_key=Soukromý klíč SSL
+letsencrypt_chain=Zřetězený certifikát CA.
+letsencrypt_webmin=Konfigurace serveru Webmin pro použití nového certifikátu a klíče.
+letsencrypt_wdone=.. Hotovo!
+letsencrypt_eaccountkey=Generování klíče účtu se nezdařilo : $1
+letsencrypt_etiny=Nepodařilo se požádat o certifikát : $1
+letsencrypt_echain=Nepodařilo se stáhnout zřetězený certifikát : $1
+letsencrypt_echain2=Zřetězený certifikát stažený z $1 je prázdný
+letsencrypt_ecsr=Nepodařilo se vygenerovat CSR : $1
+letsencrypt_ekeygen=Generování soukromého klíče se nezdařilo : $1
+letsencrypt_enative=V tomto systému byl dříve použit nativní klient Encrypt (certbot) a musí být použit pro všechny budoucí žádosti o certifikát
+letsencrypt_eacmedns=Pouze oficiální klient Let's Encrypt podporuje ověření založené na DNS
+
+announce_hide=Skrýt toto oznámení
+alert_hide=Skrýt upozornění

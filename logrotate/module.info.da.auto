@@ -1,0 +1,3 @@
+longdesc_da=Konfigurer den automatiske rotation af Apache, Squid, Syslog og andre logfiler.
+name_da=logrotate
+desc_da=Logfilrotation

@@ -23,6 +23,7 @@ $val || die "Missing CERTBOT_VALIDATION environment variable";
 # Find the DNS domain and records
 my ($zone, $zname) = &get_bind_zone_for_domain($dname);
 $zone || die "No zone named $dname found";
+$zone->{'file'} || die "Zone $dname does not have a records file";
 &lock_file(&bind8::make_chroot(&bind8::absolute_path($zone->{'file'})));
 my @recs = &bind8::read_zone_file($zone->{'file'}, $zname);
 
@@ -44,7 +45,7 @@ if ($r) {
 &unlock_file(&bind8::make_chroot(&bind8::absolute_path($zone->{'file'})));
 
 # Apply the change
-&restart_zone($zone->{'name'}, $zone->{'view'});
+&bind8::restart_zone($zone->{'name'}, $zone->{'view'});
 sleep($config{'letsencrypt_dns_wait'} || 10);	# Wait for DNS propagation
 &webmin_log("letsencryptdns", undef, $dname);
 exit(0);

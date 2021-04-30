@@ -1,0 +1,66 @@
+index_title=Klien ADSL
+index_eadsl=Arahan RP-PPPoE $1 tidak dijumpai pada sistem anda atau tidak sah. Mungkin ia tidak dipasang, atau <a anda href='$2'> modul konfigurasi </a> adalah tidak betul.
+index_econfig=Fail konfigurasi RP-PPPoE ADSL $1 tidak dijumpai pada sistem anda. Mungkin ia tidak dipasang, atau <a anda href='$2'> modul konfigurasi </a> adalah tidak betul.
+index_emodem=Fail konfigurasi terkini adalah untuk modem pada Redhat Linux, bukan untuk sambungan ADSL. Gunakan <a href='$2'>modul konfigurasi </a> untuk menentukan salah satu fail <tt>ifcfg-PPP*</tt> dalam $1, atau salah satu yang tidak digunakan lagi supaya modul boleh menciptakannya untuk anda.
+index_stop=Menutup ADSL
+index_stopdesc=Sambungan ADSL anda yang sedang aktif dengan alamat IP $1. Klik butang ini untuk menutupnya dengan perintah $2.
+index_start=Mulakan ADSL
+index_startdesc=Sambungan ADSL anda kini tidak aktif. Klik butang ini untuk memulakan ia dengan arahan $1.
+index_boot=Mulakan pada masa boot
+index_bootdesc=Ubah pilihan ini untuk mengawal sama ada sambungan ADSL anda dilakukan pada masa boot atau tidak.
+index_return=indeks modul
+index_version=RP-PPPoE versi $1
+index_esetup=Fail konfigurasi redhat ADSL $1 tidak wujud pada sistem anda. Walau bagaimanapun, modul ini boleh membinanya untuk anda secara lalai  dengan mengklik butang di bawah.
+index_setup=Persediaan fail konfigurasi
+index_cancel=Batal Sambungan
+index_canceldesc=Klien ADSL sedang cuba untuk mewujudkan sambungan. Klik butang ini untuk membatalkan percubaan dengan perintah $1.
+index_cdemand=Batal Atas-Permintaan
+index_cdemanddesc=Klien ADSL sedang menunggu sambungan atas permintaan. Klik butang ini untuk berhenti dengan arahan $1.
+
+index_header=Pilihan konfigurasi klien ADSL
+index_desc=Tetapan di bawah terpakai bagi semua sambungan ADSL baharu yang dimulakan oleh sistem anda. Jika anda menukar, sambungan perlu ditutup dan dimula semula untuk pengubahsuaian terpakai serta merta.
+index_eth=Antaramuka Ethernet
+index_other=Lain ..
+index_demand=Sambung atas permintaan?
+index_timeout=Ya, dengan masa tamat
+index_secs=saat
+index_user=Log masuk sebagai pengguna
+index_sec=Log masuk dengan kata laluan
+index_dns=Dapatkan konfigurasi DNS dari ISP?
+index_save=Simpan konfigurasi
+index_mss=Had saiz paket?
+index_psize=Ya, untuk
+index_bytes=bait
+index_fw=Firewall untuk mengaktifkan pada sambungan
+index_fw_none=Tiada
+index_fw_standalone=Untuk hos tunggal
+index_fw_masquerade=Untuk NAT gateway
+index_connect=Masa untuk cuba sambungan bagi
+index_forever=selama-lamanya
+
+start_err=Gagal untuk memulakan sambungan ADSL
+start_title=Mulakan ADSL
+start_ip=Sambungan ADSL telah berjaya dengan alamat IP $1.
+start_demand=Kerana menyambung mod atas permintaan diaktifkan, sambungan ADSL anda hanya akan bermula apabila diperlukan.
+start_bg=Sambungan ADSL tidak dimulakan dalam masa 20 saat. Klien ADSL akan terus cuba untuk menyambung di latar belakang sehingga berjaya.
+
+save_err=Gagal untuk menyimpan konfigurasi ADSL
+save_eeth=Hilang atau tidak sah carian antaramuka ethernet
+save_etimeout=Tiada atau tidak sah masa tamat atas permintaan
+save_euser=Nama pengguna hilang atau tidak sah
+save_econnect=Hilang atau tidak sah masa tamat sambungan
+save_emss=Tiada atau tidak sah maksimum saiz paket
+save_title=Simpan Konfigurasi
+save_desc=Konfigurasi klien ADSL anda telah berjaya disimpan, tetapi tidak akan digunakan sehingga anda menyambung semula.
+
+stop_err=Gagal untuk menutup sambungan ADSL
+stop_title=Menutup ADSL
+stop_ok=Sambungan ADSL anda telah berjaya ditutup.
+stop_failed=Sambungan ADSL anda masih aktif atas sebab-sebab tertentu!
+
+log_save=Konfigurasi klien disimpan
+log_stop=Menutup ADSL
+log_start=Memulakan ADSL
+log_bootup=ADSL diaktifkan pada masa boot
+log_bootdown=ADSL nyah-aktif pada masa boot
+log_setup=Sediakan Konfigurasi lalai

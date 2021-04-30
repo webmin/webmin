@@ -1,0 +1,37 @@
+index_title=Cluster Cron Jobs
+index_add=Skep 'n nuwe cluster-baan.
+index_none=Geen cluster cron-poste is gedefinieer nie.
+index_servers=Begin op bedieners
+index_return=cluster cron poste lys
+index_more=$1 meer ..
+index_run=nou loop ..
+index_actions=aksies
+
+edit_title=Wysig Cluster Cron Job
+create_title=Skep Cluster Cron Job
+edit_servers=Begin op bedieners
+edit_group=Lede van $1 
+edit_this=hierdie bediener
+edit_all=&lt;Alle gashere&gt;
+edit_emissing=Cron-baan bestaan nie meer nie!
+
+save_err=Kon nie cluster-cron-werk stoor nie
+
+exec_title=Voer Cluster Cron Job uit
+exec_cmd=Laai $1 op geselekteerde bedieners ..
+exec_failed=Kon nie op $1 : $2 loop nie
+exec_success=Uitset vanaf $1.
+exec_nohosts=Geen leërskare is gekies om mee te hardloop nie, of geselekteerde groepe bevat geen bruikbare leërskare nie.
+
+log_run=Het $1 op $2 bedieners afgelê
+log_run_l=Het $1 op $2 geloop
+log_create=Het cluster cron-werk vir $1 geskep
+log_create_l=Kluster cron-werk $2 vir $1 geskep
+log_modify=Gewysigde cluster cron-baan vir $1 
+log_modify_l=Gewysigde cluster cron-werk $2 vir $1 
+log_delete=Cluster cron-baan vir $1 is verwyder
+log_delete_l=Cluster cron job $2 vir $1 is verwyder
+log_deletes=$1 cluster cron-take verwyder
+
+delete_err=Kon nie cluster-cron-take uitvee nie
+delete_enone=Geen gekies nie

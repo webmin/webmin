@@ -1,0 +1,142 @@
+index_parted=使用<tt>parted</tt>
+index_fdisk=使用<tt>fdisk</tt>
+index_ecmd=您已選擇使用 $1命令進行分區管理，但係統上尚未安裝該命令。
+index_size=尺寸
+index_hdparmdesc=更改IDE驅動器的設置，例如DMA模式，待機超時和讀取的扇區數。
+index_smart=顯示SMART狀態
+index_smartdesc=顯示此驅動器報告的狀態，包括溫度和錯誤率。
+index_blink=識別驅動器
+index_relabel=擦分區
+index_relabeldesc=刪除所有現有分區，並創建具有不同格式的新分區表。
+index_relabel2=創建分區表
+index_relabeldesc2=在該磁盤上創建一個新的空分區表，以便可以添加分區。
+index_use=採用
+index_free=自由
+index_dname=磁盤名稱
+index_dsize=總尺寸
+index_dmodel=製作和建模
+index_dctrl=控制者
+index_dacts=動作
+index_dhdparm=IDE參數
+index_dsmart=SMART狀態
+index_dscsi=SCSI設備 $1控制器 $2
+index_draid=RAID級別 $1
+index_dparts=隔斷
+index_none2=在該系統上找不到磁盤。
+
+bytes=個字節
+megabytes=兆字節
+open_error=找不到 $1命令
+select_cpq=Compaq RAID $1驅動器 $2
+select_cpart=Compaq RAID $1驅動器 $2分區 $3
+select_scsi=SCSI控制器 $1總線 $2目標 $3 LUN $4
+select_spart=SCSI控制器 $1總線 $2目標 $3 LUN $4分區 $5
+select_newide=IDE控制器 $1總線 $2磁盤 $3
+select_snewide=IDE控制器 $1總線 $2磁盤 $3分區 $5
+select_smart=Compaq智能陣列 $1驅動器 $2
+select_smartpart=Compaq智能陣列 $1驅動器 $2分區 $3
+select_promise=承諾RAID驅動器 $1
+select_ppart=承諾RAID驅動器 $1分區 $2
+select_nvme=NVME SSD $1驅動器 $2
+select_nvmepart=NVME SSD $1驅動器 $2分區 $3
+
+edit_ehdparm=在您的系統中找不到<tt>hdparm</tt>可執行文件
+edit_of=的
+edit_cont1=包含1個分區
+edit_cont234=包含 $1個分區
+edit_cont5=包含 $1個分區
+edit_mountlvm=LVM卷組 $1的一部分
+edit_mountiscsi=iSCSI共享設備 $1
+edit_label=文件系統標籤
+edit_name=分區名稱
+edit_volid=卷號
+edit_mkfs2=創建文件系統：
+edit_mkfsmsg2=在此分區上構建選定類型的新文件系統，從而永久擦除任何現有文件。創建新分區或更改現有分區後，必須執行此操作。
+edit_none=沒有
+edit_newmount=掛載分區：
+edit_newmount2=掛載分區
+edit_mountas=如
+edit_mountmsg=將該分區掛載到系統上的新目錄中，以便可以用於存儲文件。必須已經在分區上創建了文件系統。
+edit_mountmsg2=將此分區掛載為系統上的虛擬內存，以增加可用內存量。
+
+ext3_j=日誌文件大小
+
+msdos_ff=FAT數
+msdos_F_other=其他 ..
+
+reiserfs_force=強制創建文件系統
+reiserfs_hash=哈希函數
+
+xfs_force=強制創建文件系統
+xfs_b=塊大小
+
+jfs_s=日誌大小
+jfs_c=檢查壞塊？
+
+btrfs_l=葉大小
+btrfs_n=節點大小
+btrfs_s=部門規模
+
+fatx_none=沒有選項可用於FATX文件系統。
+
+acl_dall=所有磁盤
+acl_dsel=已選擇 ..
+acl_view=可以查看不可編輯的磁盤嗎？
+
+blink_title=識別驅動器
+blink_desc=驅動器的活動指示燈現在將點亮六十次
+blink_back=回去
+
+log_modify=修改後的 $1
+log_create=已建立 $1
+log_delete=已刪除 $1
+log_mkfs=在 $2上創建了 $1文件系統
+log_tunefs=在 $2上調整了 $1文件系統
+log_fsck=已修復 $2上的 $1文件系統
+log_hdparm=已為 $1修改了IDE參數
+
+fs_ext2=舊Linux本機
+fs_minix=極小
+fs_msdos=微軟DOS
+fs_vfat=視窗
+fs_reiserfs=ReiserFS
+fs_ext3=Linux本機
+fs_ext4=新的Linux本機
+fs_xfs=SGI
+fs_jfs=IBM Journalling
+fs_btrfs=BTR
+
+delete_title=刪除分區
+delete_rusure=您確定要刪除 $1（$2）嗎？此分區上的數據可能會永遠丟失。
+delete_ok=立即刪除
+
+disk_title=編輯磁盤分區
+disk_egone=磁盤不再存在！
+disk_no=數
+disk_type=類型
+disk_extent=程度
+disk_start=開始
+disk_end=結束
+disk_use=使用者
+disk_free=可用空間
+disk_vm=虛擬內存
+disk_iscsi=iSCSI共享設備 $1
+disk_none=該磁盤尚無分區。
+disk_size=尺寸
+disk_dsize=<b>磁盤大小：</b> $1
+disk_model=<b>製作和建模：</b> $1
+disk_cylinders=<b>氣缸：</b> $1
+disk_table=<b>分區表格式：</b> $1
+disk_notable=<b>分區表格式：</b>未創建
+disk_needtable=沒有分區表就無法創建任何分區。
+disk_return=分區列表
+
+relabel_title=擦分區
+relabel_warn=您確定要通過重寫磁盤標籤擦除 $1（$2）上的所有分區嗎？所有現有的數據和文件系統都將丟失！
+relabel_parts=現有分區
+relabel_noparts=尚未創建
+relabel_table=分區表格式
+relabel_ok=擦拭和重新貼標籤
+
+table_msdos=MS-DOS（標準分區格式）
+table_gpt=GPT（用於2T或更大的磁盤）

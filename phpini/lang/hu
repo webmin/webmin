@@ -1,32 +1,43 @@
-__norefs=1
-acl_anyfile=Módosíthatja az összes PHP konfigurációs fájlt?
-acl_global=Módosíthatja a globális PHP konfigurációt?
+index_title=PHP konfigurÃ¡ciÃ³
+index_file=KonfigurÃ¡ciÃ³s fÃ¡jl
+index_desc=CÃ©l
+index_actions=MÅ±velet
+index_edit=BeÃ¡llÃ­tÃ¡s
+index_manual=KÃ©zi szerkesztÃ©s
+index_return=KonfigurÃ¡ciÃ³s fÃ¡jlok
+
+file_global=GlobÃ¡lis PHP konfigurÃ¡ciÃ³
+
+manual_title=KonfigurÃ¡ciÃ³ kÃ©zi szerkesztÃ©se
+
+list_title=PHP konfigurÃ¡ciÃ³ szerkesztÃ©se
+list_return=PHP konfigurÃ¡ciÃ³
+
+vars_title=PHP vÃ¡ltozÃ³k
+
+dirs_title=KÃ¶nyvtÃ¡r beÃ¡llÃ­tÃ¡sok
+dirs_below=AlÃ¡bbiakban:
+dirs_ext=KÃ¶nyvtÃ¡r kiterjesztÃ©sek
+
+db_title=AdatbÃ¡zis beÃ¡llÃ­tÃ¡sok
+db_unlimited=KorlÃ¡tlan
 db_s=s
-db_title=Adatbázis beállítások
-db_unlimited=Korlátlan
-dirs_below=Alábbiakban:
-dirs_ext=Könyvtár kiterjesztések
-dirs_title=Könyvtár beállítások
+
+session_title=Session beÃ¡llÃ­tÃ¡sok
+session_files=FÃ¡jlok
+session_forever=Ã–rÃ¶kkÃ©
+
+safe_title=CsÃ¶kkentett mÃ³d beÃ¡llÃ­tÃ¡sai
+
+limits_title=ErÅ‘forrÃ¡sok korlÃ¡tozÃ¡sa
+
+errors_title=HibanaplÃ³zÃ¡s
 errors_none=Nincs
-errors_other=Egyéb fájl $1
-errors_title=Hibanaplózás
-errors_unlimited=Korlátlan
-file_global=Globális PHP konfiguráció
-index_actions=Mûvelet
-index_desc=Cél
-index_edit=Beállítás
-index_file=Konfigurációs fájl
-index_manual=Kézi szerkesztés
-index_return=Konfigurációs fájlok
-index_title=PHP konfiguráció
-limits_title=Erõforrások korlátozása
-list_return=PHP konfiguráció
-list_title=PHP konfiguráció szerkesztése
-manual_title=Konfiguráció kézi szerkesztése
+errors_other=EgyÃ©b fÃ¡jl $1
+errors_unlimited=KorlÃ¡tlan
+
+misc_title=EgyÃ©b beÃ¡llÃ­tÃ¡sok
 misc_none=Nincs
-misc_title=Egyéb beállítások
-safe_title=Csökkentett mód beállításai
-session_files=Fájlok
-session_forever=Örökké
-session_title=Session beállítások
-vars_title=PHP változók
+
+acl_global=MÃ³dosÃ­thatja a globÃ¡lis PHP konfigurÃ¡ciÃ³t?
+acl_anyfile=MÃ³dosÃ­thatja az Ã¶sszes PHP konfigurÃ¡ciÃ³s fÃ¡jlt?

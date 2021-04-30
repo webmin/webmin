@@ -1,0 +1,71 @@
+<header> TCP ovoji </header>
+<h3> Vzorci </h3> Jezik za nadzor dostopa izvaja naslednje vzorce: <ul>
+    <li> Niz, ki se začne z &#39;.&#39; lik. Ime gostitelja se ujema, če se zadnje komponente njegovega imena ujemajo z določenim vzorcem. Na primer, vzorec &#39;.tue.nl&#39; se ujema z gostiteljskim imenom &#39;wzv.win.tue.nl&#39;. </li>
+    <li> Niz, ki se konča z ».« lik. Naslov gostitelja je izbran, če se njegova prva številčna polja ujemajo z dano vrstico. Na primer vzorec &#39;131.155.&#39; ustreza naslovu (skoraj) vsakega gostitelja v mreži univerze Eindhoven (131.155.xx). </li>
+    <li> Niz, ki se začne z znakom &#39;@&#39;, se obravnava kot ime NIS (prej YP). Ime gostitelja se ujema, če je član gostitelja določene mreže. Ujemanja Netgroup niso podprta za imena procesov demona ali za uporabniška imena strank. </li>
+    <li> Izraz oblike &#39;nnnn / mmmm&#39; se razlaga kot par &quot;mreža / maska&quot;. Gostiteljski naslov IPv4 se ujema, če je &#39;neto&#39; enako naslovu B in naslovu in &#39;maski&#39;. Na primer, vzorec mreže / maske &#39;131.155.72.0/255.255.254.0&#39; se ujema z vsakim naslovom v območju &#39;131.155.72.0&#39; do &#39;131.155.73.255&#39;. </li>
+    <li> Izraz oblike &#39;[n: n: n: n: n: n: n: n] / m&#39; se razlaga kot par &#39;[net]/prefixlen&#39;. Gostiteljski naslov IPv6 je izbran, če je bitov prefiksa „neto“ enak bitov naslova s predpono. Na primer, vzorec [net]/prefixlen &#39;[3ffe: 505: 2: 1 ::]/64&#39; se ujema z vsakim naslovom v območju &#39;3ffe: 505: 2: 1:&#39;? prek &#39;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&#39;. </li>
+    <li> Niz, ki se začne z znakom &#39;/&#39;, se obravnava kot ime datoteke. Ime ali naslov gostitelja se ujemata, če se ujemata s katerim koli gostiteljskim imenom ali vzorcem naslova, navedenim v poimenovani datoteki. Oblika datoteke je nič ali več vrstic z nič ali več vzorci gostiteljskega imena ali naslova, ločenih z belim prostorom. Vzorec imena datoteke je mogoče uporabiti kjer koli je mogoče uporabiti ime gostitelja ali vzorec naslova. </li>
+    <li> Oznaka &quot;*&quot; in &quot;?&quot; se lahko uporabljajo za ujemanje imen gostiteljev ali IP naslovov. Te metode ujemanja ni mogoče uporabiti skupaj z &#39;net/mask&#39; ujemanjem, ujemanje imena gostitelja se začne z &#39;.&#39; ali IP naslov, ki se ujema z &#39;.&#39;. </li>
+</ul>
+<h3> Wildcards </h3> Jezik nadzora dostopa podpira izrecne nadomestne znake: <table border>
+    <tr>
+        <td> <b>VSE</b> </td>
+        <td> Univerzalni nadomestni znak se vedno ujema. </td>
+    </tr>
+    <tr>
+        <td> <b>LOKALNO</b> </td>
+        <td> Ujema se s katerim koli gostiteljem, katerega ime ne vsebuje pike. </td>
+    </tr>
+    <tr>
+        <td> <b>NEZNANO</b> </td>
+        <td> Ujema se s katerim koli uporabnikom, katerega ime je neznano, in se ujema s katerim koli gostiteljem, katerega ime ali naslov sta neznana. Ta vzorec je treba uporabljati previdno: imena gostiteljev morda niso na voljo zaradi začasnih težav s strežnikom imen. Omrežni naslov ne bo na voljo, če programska oprema ne bo mogla ugotoviti, s kakšnim omrežjem govori. </td>
+    </tr>
+    <tr>
+        <td> <b>ZNALA</b> </td>
+        <td> Ujema se s katerim koli uporabnikom, katerega ime je znano, in se ujema s katerim koli gostiteljem, katerega ime in naslov sta znana. Ta vzorec je treba uporabljati previdno: imena gostiteljev morda niso na voljo zaradi začasnih težav s strežnikom imen. Omrežni naslov ne bo na voljo, če programska oprema ne bo mogla ugotoviti, s kakšnim omrežjem govori. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOID</b> </td>
+        <td> Ujema se s katerim koli gostiteljem, katerega ime se ne ujema z njegovim naslovom. Ko je tcpd zgrajen z -DPARANOID (privzeti način), od takih odjemalcev izpusti zahteve, še preden pogleda tabele nadzora dostopa. Zgradite brez -DPARANOID, kadar želite več nadzora nad takšnimi zahtevami. </td>
+    </tr>
+</table>
+<h3> Operaterji </h3> <b>EXCEPT</b> Predvidena uporaba je v obliki: &#39;list_1 EXCEPT list_2&#39;; ta konstrukt se ujema z vsem, kar se ujema s seznamom_1, razen če se ujema s seznamom_2. Operator EXCEPT se lahko uporablja v daemon_lists in v client_lists. Operator EXCEPT se lahko ugnezdi: če bi nadzorni jezik dovolil uporabo oklepajev, bi &quot;EXCEPT b EXCEPT c&quot; razčlenil kot &quot;(EXCEPT (b EXCEPT c))&quot;. <h3> Ukazi lupine </h3> Če pravilo uravnavanja dostopa s prvo ujema vsebuje ukaz lupine, je ta ukaz podvržen% <letter> zamenjave (glej naslednje poglavje). Rezultat je izveden s /bin/sh nadrejenim postopkom s standardnim vhodom, izhodom in napako, povezanimi s /dev/null. Na koncu ukažite &quot;&amp;&quot; na koncu ukaza, če ne želite čakati, da se ta zaključi. <p> Ukazi lupine se ne bi smeli zanašati na nastavitev PATH inetda. Namesto tega bi morali uporabljati absolutna imena poti ali pa bi morali začeti z izrecnim stavkom PATH = karkoli. <h3> % Razširitve </h3> V ukazih lupine so na voljo naslednje razširitve: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> Naslov gostitelja (strežnika) </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Podatki o stranki: uporabnik @ gostitelj, uporabniški @ naslov, ime gostitelja ali samo naslov, odvisno od tega, koliko informacij je na voljo. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> Ime procesa demona (vrednost argv[0]). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Ime ali naslov gostitelja (strežnika) gostitelja, če ime gostitelja ni na voljo. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> Ime gostitelja (strežnika) (ali &quot;neznano&quot; ali &quot;paranoično&quot;). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> ID procesa demona. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Podatki o strežniku: daemon @ gostitelj, daemon @ naslov ali samo ime demona, odvisno od tega, koliko informacij je na voljo. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Uporabniško ime stranke (ali &quot;neznano&quot;). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Razširi na en sam &#39;%? lik. </td>
+            </tr>
+        </table> Znaki v%razširitev, ki lahko zmedejo lupino, se nadomestijo s podčrtaji.
+        <hr />

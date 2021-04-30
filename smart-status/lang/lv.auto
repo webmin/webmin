@@ -1,0 +1,58 @@
+index_title=SMART diska statuss
+index_ecmd=SMART vadības komanda $1 jūsu sistēmā netika atrasta vai <a href='$2'>moduļa konfigurācijā</a> nav pareizi iestatīta. Pirms šī moduļa var izmantot, tas ir jāinstalē.
+index_ecmd2=Komanda $1, šķiet, nav SMART vadības komanda. Pirms šo moduli var izmantot, tas <a href='$2'>moduļa konfigurācijā</a> ir jāiestata pareizi.
+index_version=SMARTsuite versija $1
+index_show=Rādīt piedziņas statusu:
+index_ok=Izrāde
+index_eidescsi=Jūsu sistēmā netika atrasti IDE, SCSI vai SATA diskdziņi.
+index_drive=Diska $1 statuss
+index_drivesub=Diska $1, diska $2 statuss
+index_desc=Atrašanās vieta
+index_size=Piedziņas izmērs
+index_model=Marka un modelis
+index_support=Atbalsta SMART?
+index_enabled=Vai SMART ir iespējots?
+index_check=Nokārtota brauciena pārbaude?
+index_short=Īss pašpārbaude
+index_ext=Paplašināta pašpārbaude
+index_data=Datu vākšanas pārbaude
+index_errors=Reģistrētas kļūdas
+index_ecount=Tika atklātas $1 kļūdas
+index_attrs=Papildu SMART atribūti
+index_raw=Pilns SMART statusa pārskats
+index_return=moduļa indekss
+index_family=Modeļu saime
+index_serial=Sērijas numurs
+index_capacity=Jauda
+index_norm=Normalizēts:
+
+monitor_type=SMART diska pārbaude
+monitor_type2=SSD nolietojums
+monitor_drive=Brauciet pārbaudīt
+monitor_errors=Pārbaudīt arī kļūdu žurnālu?
+monitor_errorsinc=Jā, bet brīdiniet tikai tad, ja kļūdu skaits palielinās
+monitor_other=Cits ..
+monitor_edrive=Trūkst vai nav derīgs disks, lai pārbaudītu
+monitor_nosuch=Tādas piedziņas nav
+monitor_nosmart=Nav SMART atbalsta
+monitor_errorsfound=Ziņots par $1 kļūdām
+monitor_errorsinced=Kļūdu skaits palielinājās no $2 līdz $1 
+monitor_wearlevel=Neveiksmīgi, ja nodiluma līmenis nokrītas zemāk
+monitor_ewearlevel=Nederīgs nodiluma līmeņa procents
+monitor_nowearout=Disks neziņo par SSD nolietojuma indikatoru
+monitor_wornout=Nodiluma līmenis ir samazinājies līdz $1 
+
+short_title=Īss pašpārbaude
+short_doing=Sākas īsa $1 pašpārbaude.
+short_failed=.. neizdevās!
+short_ok=.. pārbaude sākās labi. Rezultātus skatiet piedziņas statusā moduļa galvenajā lapā.
+
+ext_title=Paplašināta pašpārbaude
+ext_doing=Sākot paplašinātu pašpārbaudi $1.
+ext_failed=.. neizdevās!
+ext_ok=.. pārbaude sākās labi. Rezultātus skatiet piedziņas statusā moduļa galvenajā lapā.
+
+data_title=Datu vākšanas pārbaude
+data_doing=Sākas datu bezsaistes vākšana $1.
+data_failed=.. neizdevās!
+data_ok=.. kolekcija sākās labi. Rezultātus skatiet piedziņas statusā moduļa galvenajā lapā.

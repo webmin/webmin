@@ -1,0 +1,3 @@
+desc_pt=Firewall do Linux
+name_pt=Firewall
+longdesc_pt=Configure um firewall Linux usando o iptables. Permite a edição de todas as tabelas, cadeias, regras e opções.

@@ -1,0 +1,63 @@
+aliases_delete=Smazat vybrané aliasy
+
+adelete_err=Nepodařilo se odstranit aliasy
+adelete_enone=Nebyl vybrán žádný
+
+routes_delete=Odstranit vybrané trasy domény
+
+rdelete_err=Smazání tras domény se nezdařilo
+
+virts_delete=Odstranění vybraných virtuálních mapování
+
+vdelete_err=Smazání virtuálních mapování se nezdařilo
+
+log_delete_aliases=Smazané $1 aliasy
+log_delete_virts=Smazáno $1 virtuálních mapování
+log_delete_routes=Smazané trasy: $1 
+log_delete_assigns=Smazaní uživatelé pošty $1 
+log_delmail=Smazáno $1 zpráv z $2 
+log_movemail=Přesunuto $1 zpráv z $2 do $3 
+log_send=Odeslaná pošta na $1 
+
+rfile_desc2=Můžete také nastavit záhlaví pošty, která přidávají nebo nahrazují výchozí nastavení použitá v autoreply tak, že zadáte řádky jako: <br><tt> Od: foo@bar.com </tt><br> <tt>Předmět: Na dovolené</tt> <br> v horní části zprávy, oddělené od těla jediným prázdným řádkem.
+rfile_replies=Chcete sledovat odpovědi, abyste zabránili opakování pošty?
+rfile_none=Ne
+rfile_file=Ano, pomocí souboru protokolu
+rfile_period=Minimální interval mezi odpověďmi
+rfile_default=Výchozí (1 hodina)
+rfile_secs=sekundy
+rfile_ereplies=Chybí soubor protokolu sledování sledování
+rfile_eperiod=Chybí nebo je neplatný počet sekund mezi odpověďmi
+rfile_no_autoreply=Neposílejte automatické odpovědi
+rfile_from=Od: adresa pro odpověď
+rfile_auto=Automaticky (na základě adresy příjemce)
+rfile_efrom=Chybí od: adresa
+rfile_fromdesc=Od: adresa by měla být vždy uvedena, pokud je to možné, protože automatická metoda nemusí být spolehlivá.
+
+queue_refresh=Aktualizovat frontu pošty
+queue_refreshdesc=Znovu načtěte tuto stránku, aby se zobrazil aktuální stav fronty pošty.
+
+assigns_delete=Odstranit vybrané uživatele pošty
+
+sdelete_err=Smazání uživatelů pošty se nezdařilo
+
+delete_ebogus=Neplatný název souboru ve frontě
+
+mail_move=Přesunout do:
+mail_eexists=Zpráva již neexistuje!
+
+delete_title=Smazat poštu
+delete_rusure=Opravdu chcete odstranit $1 vybrané zprávy z $2 ? U velkého poštovního souboru to může chvíli trvat. Dokud nebude odstranění dokončeno, neměla by být prováděna žádná jiná akce.
+delete_rusure2=Opravdu chcete smazat tuto zprávu z $1 ? U velkého poštovního souboru to může chvíli trvat. Dokud nebude odstranění dokončeno, neměla by být prováděna žádná jiná akce.
+delete_ok=Smazat
+delete_nobutton=Nebylo kliknuto na žádné tlačítko
+
+search_efield=Musíte vybrat typ vyhledávání.
+
+match_headers=Záhlaví zápas
+match_=-----------------
+match_!headers=Záhlaví se neshodují
+
+delq_titles=Mazání zpráv
+delq_rusure=Opravdu chcete odstranit $1 vybrané zprávy ve frontě?
+delq_confirm=Smazat zprávy

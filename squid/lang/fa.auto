@@ -1,0 +1,137 @@
+index_cachemgr=کلمات عبور مدیر کش
+index_squidver=The command <tt>$1</tt> returned :
+index_squid=سرور پروکسی ماهی مرکب
+index_manual=ویرایش پرونده ها
+
+manual_title=ویرایش پرونده ها
+manual_file=یک پرونده پیکربندی را برای ویرایش انتخاب کنید:
+manual_change=تغییر دادن
+manual_editing=Use the text box below to manually edit the configs in $1. Be careful, as no syntax or validity checking will be done.
+manual_err=ذخیره پرونده پیکربندی انجام نشد
+manual_efile=نام پیکربندی نامعتبر است!
+manual_ecannot=شما مجاز به ویرایش دستی پرونده های پیکربندی نیستید
+
+acl_nodns=غیرفعال کردن جستجوها؟
+acl_infile=پرونده جداگانه
+
+cach_esame=The <b>Squid cachemgr.cgi executable</b> is set to Webmin's cachemgr.cgi program, not the one supplied by Squid.
+
+clear_url=یک URL را از حافظه نهان پاک کنید:
+clear_ok=برداشتن
+
+eacl_noprr=هیچ محدودیتی برای پاسخگویی پروکسی تعریف نشده است
+eacl_addprr=محدودیت پاسخ پروکسی را اضافه کنید.
+
+eacl_replypr=محدودیت های پروکسی را پاسخ دهید
+eacl_replynopr=محدودیتی در رابطه با پروکسی پاسخی تعریف نشده است
+
+eacl_hdelete=محدودیت های انتخاب شده را حذف کنید
+
+ec_coss=COSS
+
+ech_siq2=درخواستهای ICP را رد کردید؟
+
+eicp_thost=نام میزبان
+eicp_ttype=تایپ کنید
+eicp_tpport=پورت پروکسی
+eicp_tiport=درگاه ICP
+eicp_delete=حافظه پنهان انتخاب شده را حذف کنید
+
+elogs_logformat=دسترسی به قالب های ورود به سیستم
+elogs_fname=نام قالب
+elogs_ffmt=تعریف قالب
+elogs_logformat1=Default (named <tt>squid</tt>, using standard format)
+elogs_logformat0=قالبهای سفارشی تعریف شده در زیر ..
+elogs_access=دسترسی به پرونده های ورود به سیستم
+elogs_afile=ورود به سیستم فایل
+elogs_afmt=نام قالب
+elogs_aacls=فقط برای ACL وارد شوید
+elogs_notset=تنظیم نشده
+elogs_dont=وارد سیستم نشوید
+elogs_file=File $1
+elogs_squid=استاندارد ماهی مرکب
+
+eports_checkhost=نام های میزبان را در URL تأیید کنید؟
+eports_underscore=در نام های میزبان اجازه نمر und زیر را می دهید؟
+eports_all=همه
+
+eprogs_sppe=برنامه پینگ فعال شده است؟
+eprogs_startup=برنامه هایی که در ابتدا شروع می شوند
+eprogs_idle=حداقل برنامه برای اجرا
+eprogs_concurrency=تعداد درخواست های همزمان در هر برنامه
+
+ahttp_replyheader=محدودیت پاسخ پروکسی ایجاد کنید
+ahttp_replyheader1=محدود کردن پاسخ پروکسی را ویرایش کنید
+ahttp_replypr=محدود کردن پاسخ پروکسی
+
+icache_euser=کاربر برای اجرای ماهی مرکب به عنوان وجود ندارد
+
+slogs_efname=Invalid format name in row $1
+slogs_effmt=Missing log format in row $1
+slogs_eafile=Missing or invalid log file in row $1
+
+sprog_emsg10='$1' is not a valid TTL
+sprog_echildren=تعداد برنامه ها باید عددی بیشتر از صفر باشد
+
+log_https_delete=Deleted $1 proxy restrictions
+log_icps_delete=Deleted $1 ICP restrictions
+log_hosts_delete=Deleted $1 cache hosts
+log_pools_delete=Deleted $1 delay pools
+log_refreshes_delete=Deleted $1 refresh rules
+log_purge=Removed URL $1 from cache
+log_cachemgr=کلمات عبور مدیر حافظه نهان تغییر یافته است
+
+delay_delete=استخرهای تأخیر انتخاب شده را حذف کنید
+
+dpool_err=استخرهای تأخیر حذف نشدند
+
+dpool_enone=هیچ یک انتخاب نشده است
+
+ext_children=تعداد برنامه هایی که اجرا می شوند
+ext_children_u=برنامه ها
+ext_echildren=تعداد برنامه های موجود یا نامعتبر است
+
+header_create_request_header_access=یک قانون دسترسی درخواست سربرگ ایجاد کنید
+header_create_reply_header_access=قانون دسترسی به هدر پاسخ را ایجاد کنید
+header_edit_request_header_access=قانون دسترسی به درخواست سربرگ را ویرایش کنید
+header_edit_reply_header_access=ویرایش پاسخ قانون دسترسی به هدر
+header_request_header_access=درخواست هدرها
+header_reply_header_access=پاسخ هدرها
+
+refresh_delete=قوانین انتخاب تازه شده را حذف کنید
+
+drefresh_err=قوانین تازه کردن حذف نشد
+drefesh_enone=هیچ یک انتخاب نشده است
+
+iptables_enabled3=تغییر مسیر بندر برای مشتریان در شبکه فعال است
+iptables_enabled4=تغییر مسیر بندر برای مشتریانی که در رابط کاربری هستند فعال می شوند
+
+syslog_access=ورود به سیستم ماهی مرکب
+syslog_cache=ورود به سیستم ذخیره سازی ماهی مرکب
+syslog_store=ورود به سیستم فروشگاه ماهی مرکب
+
+purge_err=پاک کردن URL از حافظه نهان انجام نشد
+purge_title=پاک کردن آدرس اینترنتی ذخیره شده
+purge_doing=Clearing URL $1 ..
+purge_done=.. انجام شده.
+purge_failed=.. ناموفق! دلیل خطا در بالا را ببینید.
+
+dhttp_err=محدودیت های پروکسی حذف نشد
+dhttp_enone=هیچ یک انتخاب نشده است
+
+dicp_err=محدودیت های ICP حذف نشد
+dicp_enone=هیچ یک انتخاب نشده است
+
+cachemgr_title=کلمات عبور مدیر کش
+cachemgr_ecannot=شما مجاز به ویرایش رمزهای عبور مدیر حافظه نهان هستید
+cachemgr_def1=هیچ رمز عبوری لازم نیست
+cachemgr_def0=Ú¯Ø°Ø±ÙØ§ÚÙ‌ÙØ§ Ù Ø§ÙØ¯Ø§ÙØ§Øª ÙØ´Ø®Øµ Ø´Ø¯Ù Ø¯Ø± Ø²ÛØ± ..
+cachemgr_pass=کلمه عبور
+cachemgr_none=هیچ مورد نیاز نیست
+cachemgr_set=تنظیم کنید
+cachemgr_disable=اقدامات غیرفعال شد
+cachemsg_actions=اعمال کنید
+cachemgr_all=برای همه اقدامات از این رمز عبور استفاده کنید
+cachemgr_others=سایر اقدامات:
+cachemgr_enone=None entered - you should select <i>No passwords required</i> instead
+cachemgr_err=ذخیره رمزهای عبور مدیر حافظه انجام نشد

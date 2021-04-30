@@ -1,0 +1,8 @@
+index_title=Cluster Change Passwords
+index_noservers=Der er ikke defineret nogen servere til at administrere brugere på i modulet <a href=$1>Cluster Users and Groups</a>.
+index_hosts=Alle adgangskodændringer foretaget ved hjælp af dette modul udføres på alle $1 -værter, der administreres af modulet Cluster Users and Groups.
+
+passwd_err=Kunne ikke ændre adgangskode
+passwd_title=Ændring af adgangskode
+passwd_on=Ændring af adgangskode på $1 ..
+passwd_euser=Bruger eksisterer ikke!

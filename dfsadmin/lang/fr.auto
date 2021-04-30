@@ -1,0 +1,51 @@
+index_title=Partages NFS
+index_add=Commencez à partager un nouveau répertoire.
+index_dir=Annuaire
+index_clients=Clients
+index_everyone=Toutes les personnes
+index_delete=Supprimer les partages sélectionnés
+index_none=Aucun répertoire n'est actuellement exporté sur ce système.
+index_apply=Appliquer les modifications
+index_applydesc=Cliquez sur ce bouton pour appliquer la configuration actuelle de partage de fichiers. Cela rendra tous les répertoires répertoriés ci-dessus disponibles avec les options spécifiées.
+index_return=liste d'actions
+
+edit_title1=Modifier le partage
+edit_title2=Créer Partager
+edit_header1=Partager les détails
+edit_dir=Annuaire
+edit_desc=La description
+edit_ro=Accès en lecture seule
+edit_rw=Accès en lecture-écriture
+edit_root=Accès root
+edit_none=Aucun
+edit_all=Tous les hôtes
+edit_listed=Hôtes répertoriés ..
+edit_header2=Options de partage
+edit_nosub=Autoriser le montage de sous-répertoires?
+edit_nosuid=Autoriser les fichiers setuid?
+edit_des=Les clients doivent utiliser DES?
+edit_kerberos=Les clients doivent utiliser des kerberos?
+edit_anon=Utilisateur anonyme
+edit_anon0=Pas encore défini
+edit_anon1=Pas d'accès
+edit_aclok=Autoriser les ACL?
+edit_public=Partage WebNFS?
+edit_index=Fichier d'index WebNFS
+
+save_err=Échec de l'enregistrement du partage
+save_edirectory='$1' n'est pas un nom de répertoire valide
+save_edirectory2=Le répertoire '$1' n'existe pas
+save_erw=Vous n'avez répertorié aucun hôte avec lequel partager la lecture-écriture
+save_ero=Vous n'avez répertorié aucun hôte avec lequel partager en lecture seule
+save_eroot=Vous n'avez répertorié aucun hôte avec lequel partager la racine
+save_ealready=Le répertoire '$1' est déjà partagé
+save_ehost=L'hôte '$1' n'existe pas
+
+acl_view=Peut modifier les partages NFS?
+
+ecannot=Vous n'êtes pas autorisé à gérer les partages NFS
+
+delete_err=Impossible de supprimer les partages
+delete_enone=Aucune sélection
+
+restart_err=Échec de l'application des modifications

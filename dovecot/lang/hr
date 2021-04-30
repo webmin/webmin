@@ -1,20 +1,24 @@
-apply_err=Neuspjelo dodavanje konfiguracije
-imap_title=IMAP Opcije
+index_dovecot=Dovecot
+index_stop=Zaustavi Dovecot Server
+index_start=Pokreni Dovecot Server
 index_apply=Dodaj KOnfiguraciju
 index_boot=Pokrenuti kod bootanja?
-index_dovecot=Dovecot
 index_return=index modula
-index_start=Pokreni Dovecot Server
-index_stop=Zaustavi Dovecot Server
 index_version=Verzija $1
-log_apply=Dodana Konfiguracija
-log_bootdown=Onemogućen Dovecot kod bootanja
-log_bootup=Omogućen Dovecot kod bootanja
-log_login=Promijenjene Korisničke i Opcije Logiranja
-log_mail=Promijenjeni Mail Dokumenti
+
+apply_err=Neuspjelo dodavanje konfiguracije
+
+imap_title=IMAP Opcije
+
+login_none=Ništa
 login_anonymous=Anonimni
+login_digest-md5=Digest-MD5
+login_cram-md5=Cram-MD5
 login_apop=APOP
 login_checkpassword=Vanjski program $1
-login_cram-md5=Cram-MD5
-login_digest-md5=Digest-MD5
-login_none=Ni�ta
+
+log_login=Promijenjene Korisničke i Opcije Logiranja
+log_mail=Promijenjeni Mail Dokumenti
+log_apply=Dodana Konfiguracija
+log_bootup=Omogućen Dovecot kod bootanja
+log_bootdown=Onemogućen Dovecot kod bootanja

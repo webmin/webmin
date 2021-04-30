@@ -1,0 +1,112 @@
+index_ver=Versi $1 
+index_header=Modul Fail2Ban
+
+filters_einuse=Penapis $1 tidak dapat dipadamkan, kerana ia digunakan oleh penjara : $2 
+
+filter_desc=Gunakan <i>&lt;HOST&gt;</i> dalam ungkapan biasa di mana nama hos atau alamat IP sepatutnya muncul.
+filter_einuse=Penapis ini tidak dapat dipadamkan, kerana ia digunakan oleh penjara : $1 
+
+actions_einuse=Tindakan $1 tidak dapat dipadamkan, kerana ia digunakan oleh penjara : $2 
+
+action_desc=<i>&lt;ip&gt;</i> akan digantikan dengan alamat IP yang dilarang.
+action_einuse=Tindakan ini tidak dapat dipadamkan, kerana ia digunakan oleh penjara : $1 
+
+jails_add=Tambah penjara baru.
+jails_name=Nama penjara
+jails_filter=Penapis log
+jails_enabled=Dihidupkan?
+jails_action=Tindakan yang dilakukan
+jails_delete=Padamkan Penjara yang Dipilih
+jails_def=Edit Default Jail
+jails_defdesc=Edit tetapan dan batas lalai yang berlaku untuk semua penjara yang disenaraikan di atas, seperti bilangan padanan yang diperlukan dan waktu untuk melarang IP untuk.
+jails_return=senarai penjara
+jails_derr=Gagal memadamkan penjara
+jails_enone=Tiada yang dipilih
+
+jail_title1=Buat Penjara
+jail_title2=Edit Penjara
+jail_header=Butir penjelasan tindakan penapis
+jail_name=Nama penjara
+jail_egone=Penjara tidak lagi wujud!
+jail_enabled=Pada masa ini didayakan?
+jail_filter=Tapis untuk mencari log
+jail_logpath=Laluan fail log
+jail_actions=Tindakan untuk memohon
+jail_action=Tindakan
+jail_aname=Nama
+jail_port=Pelabuhan
+jail_protocol=Protokol
+jail_others=Parameter lain
+jail_maxretry=Perlawanan sebelum memohon tindakan
+jail_findtime=Kelewatan maksimum antara perlawanan
+jail_bantime=Masa untuk mengharamkan IP untuk
+jail_ignoreip=Alamat IP untuk tidak pernah dilarang
+jail_err=Gagal menyimpan penjara
+jail_eclash=Penjara dengan nama yang sama sudah wujud
+jail_ename=Nama penjara yang hilang atau tidak sah
+jail_eaname=Parameter nama tidak sah untuk tindakan $1 
+jail_eport=Nombor port tidak sah untuk tindakan $1 
+jail_eactions=Tiada tindakan yang dipilih!
+jail_elogpaths=Tiada laluan fail log yang dimasukkan
+jail_elogpath=Semua fail log mestilah jalan atau corak mutlak
+jail_emaxretry=Perlawanan sebelum memohon tindakan mestilah nombor yang lebih besar daripada sifar
+jail_efindtime=Kelewatan antara perlawanan mestilah nombor yang lebih besar daripada sifar
+jail_ebantime=Masa untuk melarang IP mestilah nombor yang lebih besar daripada sifar
+jail_backend=Semak kemas kini fail log menggunakan
+jail_auto=Tentukan secara automatik
+jail_gamin=Pemantauan perubahan fail Gamin
+jail_polling=Pengundian latar belakang
+jail_destemail=E-mel pemberitahuan lalai
+jail_none=Tiada set
+jail_banaction=Tindakan lalai untuk memohon
+jail_defprotocol=Protokol lalai untuk tindakan
+jail_edestemail=Alamat e-mel pemberitahuan lalai atau tidak sah
+jail_eignoreip=Alamat IP tidak sah untuk diabaikan
+
+jaildef_title=Pilihan Penjara Lalai
+jaildef_header=Lalai untuk semua penjara
+jaildef_err=Gagal menyimpan pilihan penjara lalai
+jaildef_egone=Tiada penjara DEFAULT ditemui!
+
+start_err=Gagal memulakan pelayan
+stop_err=Gagal menghentikan pelayan
+restart_err=Gagal memulakan semula pelayan
+
+log_create_filter=Penapis yang dibuat $1 
+log_update_filter=Penapis diubahsuai $1 
+log_delete_filter=Penapis dipadamkan $1 
+log_create_action=Tindakan yang dibuat $1 
+log_update_action=Tindakan diubahsuai $1 
+log_delete_action=Tindakan yang dipadamkan $1 
+log_create_jail=Penjara yang dibuat $1 
+log_update_jail=Penjenayah yang diubah suai $1 
+log_delete_jail=Penjadu bersih $1 
+log_config=Konfigurasi global berubah
+log_stop=Berhenti pelayan Fail2Ban
+log_start=Server Fail2Ban dimulakan
+log_restart=Mulakan semula pelayan Fail2Ban
+log_atboot=Diaktifkan Fail2Ban pada masa boot
+log_delboot=Fail2Ban dilumpuhkan pada masa boot
+log_manual=Fail konfigurasi yang diedit $1 
+log_jaildef=Pilihan penjara lalai diubah suai
+
+config_edef=Tiada bahagian Definisi yang terdapat dalam fail konfigurasi!
+config_header=Tetapan konfigurasi untuk Fail2Ban
+config_loglevel=Tahap pembalakan minimum
+config_logtarget=Tulis log untuk
+config_syslog=Perkhidmatan syslog
+config_file=Fail log
+config_default=Destinasi lalai
+config_socket=Socket untuk komunikasi dengan pelayan
+config_err=Gagal menyimpan konfigurasi global
+config_elogtarget=Fail untuk menulis log mesti menjadi laluan mutlak
+config_esocket=Fail soket mestilah jalan mutlak
+
+manual_title=Edit Fail Config
+manual_desc=Fail untuk diedit:
+manual_ok=okey
+manual_efile=Fail terpilih bukan sebahagian daripada konfigurasi Fail2Ban!
+manual_err=Gagal mengedit fail konfigurasi
+manual_edata=Tiada kandungan fail konfigurasi yang dimasukkan
+
+syslog_logtarget=Log tindakan Fail2Ban

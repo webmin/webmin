@@ -1,0 +1,70 @@
+index_title=Systemtid
+index_timeserver=Tidsserver
+index_addresses=Timeserver hostnavne eller adresser
+index_zone=Tidszone
+index_eformat=Ukendt <tt>hwclock</tt> outputformat
+index_sched=Synkroniseres efter planen?
+index_schedyes=Ja, til tider nedenfor ..
+index_sync=Synkroniser og anvend
+index_hardware2=Indstil også hardware-tid
+index_boot=Synkroniser, når Webmin starter?
+index_tzheader=Tidszone
+index_tz=Skift tidszone til
+index_ehwclock=$1 mislykkedes : $2 
+index_tabtime=Fastsat tidspunkt
+index_tabzone=Skift tidszone
+index_tabsync=Tidsserver-synkronisering
+index_desctime=Denne formular er til ændring af systemets aktuelle tid, der bruges af alle kørende processer. På operativsystemer, der har et separat hardwareur, kan det også bruges til at indstille det.
+index_desczone=Denne formular giver dig mulighed for at indstille systemets standardtidszone, der bruges til at konvertere systemtiden til et menneskeligt læsbart format og offset.
+index_descsync=Denne formular er til konfigurering af systemet til automatisk at synkronisere tiden med en ekstern server. Synkronisering udføres ved hjælp af Unix <tt>tid</tt> -protokollen eller NTP, afhængigt af hvilke kommandoer, der er installeret, og hvad fjernsystemet understøtter.
+
+action_save=Gemme
+action_apply=ansøge
+action_sync=Indstil systemtid i henhold til hardwaretid
+action_sync_s=Indstil hardwaretid i henhold til systemtid
+action_timeserver_sys=Synkroniser systemtid
+action_timeserver_hw=Synkroniser hardwaretid
+action_savezone=Skift tidszone
+
+acl_sys=Bruger kan redigere systemtid?
+acl_hw=Bruger kan redigere hardwaretid?
+acl_timezone=Bruger kan indstille tidszone?
+acl_ntp=Kan synkroniseres med tidsserveren?
+acl_yes=Ja
+acl_no=Ingen
+acl_error=Du har adgang til systemtidsmodulet, men du kan ikke redigere hverken systemtid eller hardwaretid
+acl_nosys=Du har ikke tilladelse til at redigere systemtid
+acl_nohw=Du har ikke tilladelse til at redigere hardwaretid
+acl_nontp=Du har ikke tilladelse til at synkronisere med en tidsserver
+
+sys_title=Systemtid
+hw_title=Hardwaretid
+
+day=Dag
+month=Måned
+date=Dato
+hour=Time
+year=År
+minute=Minut
+second=Anden
+
+error_cnf=Fejl: $1 kommando ikke fundet
+error_hw=Kan ikke indstille hardwaretiden : $1 
+error_sync=Kan ikke synkronisere med systemtid : $1 
+error_ediff=Tidsserveren forskellig med lokal tid er for stor: $1 dage
+error_entp=NTP-tidssynkronisering mislykkedes : $1 
+error_etimeserver=Ingen tidsservere til synkronisering med indtastede
+
+log_set_date=Indstil systemtid til $1 
+log_set_hwclock=Indstil hardwareur til $1 
+log_remote_date=Hentet systemtid fra $2 
+log_remote_hwclock=Hentet hardware-tid fra $2 
+log_remote_date_l=Hentet systemtid $1 fra $2 
+log_remote_hwclock_l=Hent hardwaretid $1 fra $2 
+log_sync=Synkroniseret systemtid med hardwaretid
+log_sync_s=Synkroniseret hardwaretid med systemtid
+log_timezone=Ændret tidszone til $1 
+
+timezone_err=Kunne ikke gemme tidszone
+timezone_ecannot=Du må ikke ændre tidszonen
+timezone_enone=Ingen zone valgt

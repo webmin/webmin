@@ -1,1 +1,1 @@
-desc_fr=Commandes programmées
+desc_fr=Commandes programmÃ©es

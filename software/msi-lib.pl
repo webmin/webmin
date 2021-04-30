@@ -231,7 +231,7 @@ local %msi = ( 'name' => $pkg,
 	       'arch' => 'x86',			# Wrong!
 	       'installed' => time() );
 local $fc = 0;
-open(OUT, $temp);
+open(OUT, "<".$temp);
 while(<OUT>) {
 	s/\r|\n//g;
 	s/\0//g;		# Strip unicode, primitively
@@ -336,7 +336,7 @@ system("msiexec /x \"$code\" /quiet /norestart ".
 
 # Check log for success
 local $ok = 0;
-open(LOG, $temp);
+open(LOG, "<".$temp);
 while(<LOG>) {
 	s/\r|\n//g;
 	s/\0//g;		# Strip unicode, primitively

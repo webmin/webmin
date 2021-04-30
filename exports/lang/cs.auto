@@ -1,0 +1,15 @@
+index_add4=Přidejte nový export NFSv4.
+
+edit_network4=Síť IPv4
+edit_network6=Síť IPv6
+edit_secs=Úrovně zabezpečení
+edit_sec_sys=Žádné zabezpečení
+edit_sec_krb5=Ověřování Kerberos
+edit_sec_krb5i=Integrita Kerberos
+edit_sec_krb5p=Ochrana soukromí Kerberos
+edit_sec_lipkey=LIPKEY
+edit_sec_spkm=SPKM
+
+save_epfs=Pseudosystémová cesta '$1' nevypadá jako absolutní cesta
+save_eanonuid=Neplatné uživatelské jméno pro anonymní přístup
+save_eanongid=Neplatný název anonymní přístupové skupiny

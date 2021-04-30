@@ -1,0 +1,153 @@
+index_screate=Stvorite novog sigurnog korisnika.
+index_twofactor=Dvofaktorska provjera autentičnosti
+index_joingroup=Dodaj u grupu:
+index_eulist=Nije uspjelo popis korisnika: $1 
+index_eglist=Nije uspjelo popis grupa: $1 
+
+edit_title3=Stvorite sigurnog korisnika Webmin-a
+edit_cloneof=Kloniranje korisnika Webmin-a
+edit_twofactor=Dvofaktorska vrsta autentifikacije
+edit_twofactorprov=Korištenje davatelja $1 s ID-om $2 
+edit_twofactorcancel=Uklonite dvofaktorni zahtjev za provjeru autentičnosti
+edit_twofactornone=Još nema postavljanja
+edit_twofactoradd=Omogući korisniku dva faktora
+edit_nochange=Da li provodite dane za promjenu zaporke?
+edit_egone=Odabrani korisnik više ne postoji!
+edit_overlay=Prekrivanje osobne teme
+edit_overlayglobal=Nema - koristite zadane postavke teme
+edit_global=Dozvole za sve module
+edit_temppass=Prisilite promjenu pri sljedećoj prijavi
+edit_proto=Vrsta skladištenja
+edit_proto_mysql=MySQL baza podataka
+edit_proto_postgresql=PostgreSQL baza podataka
+edit_proto_ldap=LDAP poslužitelj
+edit_proto_=Lokalne datoteke
+edit_safe=Razina privilegija
+edit_safe0=Neograničen
+edit_safe1=Samo sigurni moduli
+edit_unsafe=Ponovno postavite na neograničeno
+
+save_eunixname=Korisničko ime '$1' nije Unix korisnik i zato ga nije moguće koristiti u sigurnom načinu rada
+save_eoverlay=Prekrivanje teme ne može se odabrati ako nije tema
+save_etemp=Opcija prisiljavanja promjene lozinke pri sljedećoj prijavi ne može se koristiti ako nije omogućen <a href='$1'>pozivanje korisnika da unose nove lozinke</a>
+
+delete_eanonuser=Ovaj korisnik se koristi za anonimni pristup modulu
+
+cert_etempdir=Nevažeća datoteka certifikata
+
+acl_pass=Mogu li promijeniti ograničenja zaporke?
+acl_sql=Mogu li konfigurirati korisničku i grupnu bazu podataka?
+
+log_joingroup=Dodana $1 korisnici webminova u grupu $2 
+log_sql=Izmijenjena korisnička i grupna baza podataka
+log_twofactor=Registrirani korisnik $1 s davateljem s dva faktora $2 
+log_onefactor=Zabranjen korisnik $1 za dvofaktorsku provjeru autentičnosti
+
+gedit_desc=Opis grupe
+gedit_egone=Odabrana skupina više ne postoji!
+
+gsave_edesc=Nevažeći opis - znak: nije dopušten
+
+convert_sync2=Sinkronizirati lozinku s Unix korisnikom u budućnosti?
+convert_user=Unix korisnik
+convert_action=Poduzeta akcija
+convert_done= $1 korisnici su pretvorili, $2 nevaljani, $3 već postoje, $4 isključeno.
+convert_users=Korisnici koji žele pretvoriti
+
+sync_when=Kada se sinkronizirati
+
+unix_restrict2=Dodatna ograničenja
+unix_header=Unix postavke provjere autentičnosti korisnika
+unix_utable=Dopušteni Unix korisnici
+
+sessions_actions=Akcije..
+sessions_logouts=Prikaži i odjavljene sesije..
+sessions_state=država
+sessions_this=Ova prijava
+sessions_in=Prijavljeni
+sessions_out=Odjavljen
+sessions_kill=Prekid veze..
+
+logins_title=Najnovije Webmin prijave
+
+udeletes_jerr=Dodavanje korisnika u grupu nije uspjelo
+
+pass_ecannot=Nije vam dopušteno uređivanje ograničenja zaporke
+pass_regdesc=Čitav opis za redovit izraz
+
+sql_title=Korisnička i grupna baza podataka
+sql_ecannot=Nije vam dopušteno konfiguriranje korisničke i grupne baze podataka
+sql_header=Opcije za povratnu bazu podataka za korisnike i grupe
+sql_host=Ime računala
+sql_user=Korisničko ime
+sql_pass=Zaporka
+sql_db=Naziv baze podataka
+sql_ssl=Šifriranje veze
+sql_ssl0=nijedan
+sql_ssl1=SSL
+sql_ssl2=TLS
+sql_userclass=Predmetna klasa za korisnike
+sql_groupclass=Predmetna klasa za grupe
+sql_euserclass=Nedostaje ili nevažeća klasa objekta za korisnike
+sql_egroupclass=Nedostaje ili nevažeća klasa objekta za grupe
+sql_none=Za pohranu korisnika i grupa koristite samo lokalne datoteke
+sql_mysql=Koristite MySQL bazu podataka
+sql_postgresql=Koristite PostgreSQL bazu podataka
+sql_ldap=Koristite LDAP poslužitelj
+sql_prefix=Stvorite pod DN
+sql_addto0=Dodajte nove korisnike u gore odabranu bazu podataka
+sql_addto1=Dodajte nove korisnike u lokalne datoteke
+sql_emod=Nedostaje potreban Perl modul <tt>$1</tt>
+sql_etable=Nije uspio upit tražene tablice $1:$2 
+sql_eldapdn=Osnovni LDAP DN $1 nije pronađen
+sql_eclass=LDAP objekt klasa $1 ne postoji u shemi poslužitelja.
+sql_err=Postavke baze podataka korisnika i grupa nisu uspjeli spremiti
+sql_ehost=Nedostaje ili ne može se riješiti ime računala
+sql_euser=Nedostaje ili nevažeće korisničko ime (nisu dopušteni razmaci)
+sql_epass=Nevažeća lozinka (nisu dopušteni razmaci)
+sql_edb=Nevažeće ime baze podataka (nisu dopušteni razmaci)
+sql_eprefix=Nedostaje ili nije važeći osnovni DN (nisu dopušteni razmaci)
+sql_eprefix2=Baza neispravnog izgleda - trebala bi biti <tt>dc = mydomain, dc = com</tt>
+sql_title2=Stvorite nestale tablice
+sql_tableerr=Postavke baze podataka korisnika i grupa vrijede, ali nedostaju neke tablice potrebne za Webmin: $1 
+sql_tableerr2=Kliknite gumb <b>Stvori tablice</b> u nastavku da biste ih automatski napravili ili ručno pokrenite SQL u nastavku.
+sql_make=Stvorite tablice
+sql_title3=Stvorite nestalu DN
+sql_dnerr=Postavke baze podataka korisnika i grupa su važeće, ali nedostaje LDAP DN potreban Webmin: $1 
+sql_dnerr2=Kliknite gumb <b>Kreiraj DN</b> dolje da biste ga automatski napravili ili ga dodajte na svoj LDAP poslužitelj ručno.
+sql_makedn=Stvorite DN
+sql_schema=Preuzmite LDAP shemu
+
+make_title=Stvaranje tablica korisnika i grupa
+make_err=Nije uspjelo stvaranje tablica korisnika i grupa
+make_exec=Izvođenje SQL $1..
+make_failed=.. stvaranje nije uspjelo: $1 
+make_done=.. gotovo
+make_still=Neki problemi pronađeni su i nakon stvaranja tablice: $1 
+
+makedn_title=Stvorite LDAP DN
+makedn_eoc=Nisu pronađene klase strukturnih objekata!
+makedn_exec=Izrada nadređenog DN $1..
+makedn_failed=.. stvaranje nije uspjelo: $1 
+makedn_done=.. gotovo
+makedn_still=Neki problemi pronađeni su i nakon stvaranja DN-a: $1 
+
+schema_title=Preuzmite LDAP shemu
+schema_desc=Prije nego što Webmin može koristiti LDAP poslužitelj za pohranu korisnika i grupa, mora biti konfiguriran za upotrebu dolje navedene sheme. To se obično može učiniti spremanjem definicije sheme u <tt>/etc/ldap/schema</tt> ili <tt>/etc/openldap/schema</tt> kao <tt>webmin.schema</tt>, zatim konfiguriranje poslužitelja za učitavanje datoteke sheme.
+schema_download=Preuzmite datoteku sheme: <a href=$1>$1</a>
+
+twofactor_err=Nije uspjelo postavljanje dvofaktorske provjere identiteta
+twofactor_euser=Vaš Webmin korisnik nije pronađen!
+twofactor_title=Dvofaktorska provjera autentičnosti
+twofactor_disable=Onemogući dvofaktorsku provjeru autentičnosti
+twofactor_already=Vaša Webmin prijava već ima dvofaktorsku provjeru autentičnosti s davateljem $1 i ID računa $2.
+twofactor_already2=Webmin prijava $3 već ima omogućeno dvofaktorsko provjeravanje autentičnosti s davateljem $1 i ID računa $2.
+twofactor_desc=Ova vam stranica omogućuje omogućavanje dvofaktorske provjere autentičnosti za prijavu na Webmin pomoću <a href='$2' target=_blank>$1</a>. Nakon aktivnog aktiviranja bit će potreban dodatni žeton provjere autentičnosti prilikom prijave u Webmin.
+twofactor_desc2=Ova vam stranica omogućuje omogućavanje dvofaktorske provjere autentičnosti za prijavu na Webmin $3 pomoću <a href='$2' target=_blank>$1</a>. Nakon aktivnog aktiviranja bit će potreban dodatni žeton provjere autentičnosti prilikom prijave u Webmin.
+twofactor_enable=Registrirajte se za dvofaktornu provjeru autentičnosti
+twofactor_header=Pojedinosti o upisu s dva faktora za autentifikaciju
+twofactor_enrolling=Registracija za dvofaktorsku provjeru autentičnosti s davateljem $1..
+twofactor_failed=.. registracija nije uspjela: $1 
+twofactor_done=.. kompletna. Vaš ID kod ovog davatelja usluga je <tt>$1</tt>.
+twofactor_setup=Dvofaktorna provjera identiteta još nije omogućena na ovom sustavu, ali se može uključiti pomoću modula <a href='$1'>Konfiguracija Webmin</a>.
+twofactor_ebutton=Nijedan gumb nije kliknut!

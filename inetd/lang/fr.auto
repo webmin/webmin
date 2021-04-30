@@ -1,0 +1,18 @@
+index_edit=Modifier le service:
+index_search=Afficher les services correspondant:
+index_sok=Chercher
+index_toomany=Il y a trop de services Internet à afficher sur cette page.
+index_none=Aucun service Internet ne correspond à votre recherche.
+
+error_user=Utilisateur manquant ou invalide à exécuter en tant que
+error_group=Groupe manquant ou invalide à exécuter en tant que
+error_smfservice=Échec de la mise à jour du service smf avec la cmd '$1', code d'erreur $2 
+error_smf_cmdfield=Pour smf, le nom de fichier du programme '$1' doit correspondre au premier argument du champ de commande, c'est-à-dire être '$2'
+
+editrpc_act=État du programme
+editrpc_stream=Courant
+editrpc_dgram=Datagramme
+editrpc_tli=TLI
+
+editserv_qm=La commande n'existe peut-être pas?
+editserv_ename=Aucun service avec ce nom et ce protocole n'existe

@@ -1,0 +1,8 @@
+index_title=Mật khẩu thay đổi cụm
+index_noservers=Không có máy chủ nào để quản lý người dùng trên đã được xác định trong mô-đun <a href=$1>Nhóm người dùng và nhóm</a>.
+index_hosts=Tất cả các thay đổi mật khẩu được thực hiện bằng mô-đun này sẽ được thực hiện trên tất cả các máy chủ $1 được quản lý bởi mô-đun Nhóm và nhóm người dùng.
+
+passwd_err=Không thể thay đổi mật khẩu
+passwd_title=Thay đổi mật khẩu
+passwd_on=Thay đổi mật khẩu trên $1 ..
+passwd_euser=Người dùng không tồn tại!

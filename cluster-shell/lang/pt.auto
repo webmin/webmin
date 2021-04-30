@@ -1,0 +1,22 @@
+index_title=Comandos do shell de cluster
+index_cmd=Comando para executar
+index_old=ou
+index_server=Executar em servidores
+index_run=Executar comando agora
+index_return=índice do módulo
+index_this=este servidor
+index_all=&lt;Todos os hosts&gt;
+index_group=Membros de $1 
+index_clear=Limpar histórico
+index_edit=Editar Anterior
+
+run_title=Comando de execução
+run_err=Falha ao executar o comando
+run_ecmd=Nenhum comando digitado
+run_failed=Falha ao executar no $1 : $2 
+run_success=Saída de $1 ..
+run_enone=Nenhum servidor para executar no selecionado
+
+log_clear=Histórico de comando limpo
+log_run=Ran $1 em $2 servidores
+log_run_l=Ran $1 em $2 

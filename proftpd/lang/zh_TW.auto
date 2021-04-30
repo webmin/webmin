@@ -1,0 +1,13 @@
+index_applymsg2=單擊此按鈕可通過停止並重新啟動ProFTPD來應用當前配置。
+index_stop=停止服務器
+index_stopmsg=單擊此按鈕停止FTP服務器，這將阻止任何新的FTP客戶端連接。
+index_proftpd=ProFTPd
+
+mod_core_firstcdt=總是顯示
+
+stop_err=停止FTP服務器失敗
+stop_einetd=在inetd模式下，無法停止服務器守護程序。
+stop_erun=沒有運行
+
+apply_err=無法應用FTP配置
+apply_egone=不再運行

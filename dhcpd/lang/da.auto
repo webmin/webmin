@@ -1,0 +1,241 @@
+index_title=DHCP-server
+index_subtitle=Undernet og delte netværk
+index_parent=Forældre
+index_start=Klik på denne knap for at starte DHCP-serveren på dit system ved hjælp af den aktuelle konfiguration.
+index_stop=Stop server
+index_stopdesc=Klik på denne knap for at stoppe den kørende DHCP-server på dit system. Når stoppet, kan DHCP-klienter ikke anmode om IP-adresser.
+index_togroup=Gruppe:
+index_tosubnet=Subnet:
+index_toshared=Netværk:
+index_version=ISC DHCPd version $1 
+index_subtoomany=Der er for mange undernet til at vises.
+index_sublook2=Rediger undernettet med adresse:
+index_match0=lige med
+index_delete=Slet valgt
+
+esub_fopeer=Failover Peer
+
+secs=sek
+none=Ingen
+
+listl_header=DHCP-leasingkontrakter
+listl_network=I netværk $1 / $2 
+listl_lfnotexist=DHCPd-lease-filen <tt>$1</tt> findes ikke.
+listl_lfnotcont=DHCPd-lejefilen <tt>$1</tt> indeholder ingen leasingkontrakter.
+listl_lfnotcont2=DHCPd-lejefilen <tt>$1</tt> indeholder ikke leasingkontrakter, der er aktive på det aktuelle tidspunkt.
+listl_active=aktiv
+listl_ipaddr=IP-adresse
+listl_ether=Ethernet
+listl_host=Værtsnavn
+listl_start=Start dato
+listl_end=Slutdato
+listl_return=netværk og værtsliste
+listl_all=Liste over alle aktive og udløbne leasingkontrakter
+listl_delete=Slet valgte leasingkontrakter
+listl_unknown=Ukendt
+listl_allocs=$1 IP-adresser tilgængelige, $2 tildelt ($3 %)
+listl_mode=Visningstilstand  :
+listl_mode_0=DHCP-lejekontrakter
+listl_mode_1=Undernet og brug
+listl_size=I alt IP
+listl_used=allokeret
+listl_pc=Procent
+listl_err=Kunne ikke slette lejekontrakter
+listl_enone=Ingen valgt
+listl_refresh=Opdater liste
+
+restart_errmsg1=Kunne ikke genstarte dhcpd
+restart_errmsg2=Kunne ikke signalere processen
+start_failstart=Kunne ikke starte dhcpd
+restart_conftext=Linjer omkring $1 i $2  :
+
+sgroup_faildel=Kunne ikke slette gruppen
+sgroup_failsave=Gruppen blev ikke gemt
+sgroup_invassign=gruppe, der er tildelt et forkert afsnit
+sgroup_echanged=Konfigurationsfilens indhold er ændret. Prøv igen.
+
+shost_faildel=Kunne ikke slette værten
+shost_failsave=Kunne ikke gemme værten
+shost_invalidhn=er ikke et gyldigt værtsnavn
+shost_invalidhwa='$1' er ikke en gyldig $2 -adresse
+shost_invalidaddr='$1' indeholder et ugyldigt værtsnavn eller IP-adresse
+shost_invassign=vært, der er tildelt et forkert afsnit
+
+sopt_failsave=Kunne ikke gemme klientindstillinger
+sopt_invalidip=er ikke en gyldig IP-adresse
+sopt_invalidint=er ikke et heltal
+sopt_invalidipp=er ikke et gyldigt IP-adressepar (som 1.2.3.4,5.6.7.8)
+sopt_edname='$1' er ikke et gyldigt indstillingsnavn
+sopt_ednum='$1' er ikke et gyldigt indstillingsnummer
+sopt_edtype='$1' er ikke en gyldig optionstype
+sopt_ecval=Manglende værdi for brugerdefineret indstilling '$1'
+sopt_ecip=Værdi for brugerdefineret mulighed '$1' skal være en IP-adresse
+
+sshared_faildel=Kunne ikke slette det delte netværk
+sshared_failsave=Kunne ikke gemme det delte netværk
+sshared_invalidsname=Manglet eller ugyldigt delt netværksnavn.
+sshared_nosubnet=Det delte netværk '$1' indeholder ikke noget subnet.
+
+ssub_faildel=Kunne ikke slette undernet
+ssub_failsave=Kunne ikke gemme undernettet
+ssub_invalidsubaddr=er ikke en gyldig subnet-adresse
+ssub_invalidnmask=er ikke en gyldig netmaske
+ssub_invalidipr=er ikke en gyldig IP-adresse for interval
+ssub_nosubnet=Det delte netværk '$1' indeholder ikke noget subnet.
+ssub_invalidfopeer=er ikke en gyldig failover-peer
+
+plib_deflt=Standard lejetid
+plib_bfname=Start filnavn
+plib_maxlt=Maksimal lejetid
+plib_bfserv=Start filserver
+plib_thisserv=Denne server
+plib_servname=Server navn
+plib_llbc=Lejelængde til BOOTP-klienter
+plib_forever=For evigt
+plib_lebc=Lejeaftale for BOOTP-klienter
+plib_never=Aldrig
+plib_invalidlt=er ikke en gyldig lejetid
+plib_invalidsn=er ikke et gyldigt servernavn
+plib_invaliddom=$1 er ikke et gyldigt domænenavn
+plib_leformat=Lejedato skal være i formatet W ÅÅÅÅ/MM/DD HH: MM: SS
+plib_copt=Klientindstillinger
+plib_chname=Klientens værtsnavn
+plib_defrouters=Standard routere
+plib_snmask=Undernetmaske
+plib_babbr=Broadcast-adresse
+plib_domname=Domænenavn
+plib_dnsserv=DNS-servere
+plib_timeserv=Tidsservere
+plib_logserv=Log-servere
+plib_swapserv=Skift server
+plib_rdpath=Root disksti
+plib_nisdom=NIS domæne
+plib_nisserv=NIS-servere
+plib_fontserv=Font-servere
+plib_xdmserv=XDM-servere
+plib_statrouters=Statiske ruter
+plib_ntpserv=NTP-servere
+plib_nbns=NetBIOS navneservere
+plib_nbscope=NetBIOS-omfang
+plib_nbntype=NetBIOS nodetype
+plib_toffset=Tidsforskydning
+plib_serverid=DHCP-serveridentifikator
+plib_ddnsdom=Dynamisk DNS-domænenavn
+plib_ddnsrevdom=Dynamisk DNS-omvendt domæne
+plib_ddnsup=Dynamisk DNS aktiveret?
+plib_ddnshost=Dynamisk DNS-værtsnavn
+plib_ddnshost_def=Fra klient
+plib_ddnsupstyle=Dynamisk DNS-opdateringsstil
+plib_adhoc=Ad hoc
+plib_interim=Interim
+plib_none=Ingen
+plib_unclients=Tillad ukendte klienter?
+plib_allow=Tillade
+plib_deny=Nægte
+plib_ignore=Ignorere
+plib_eexpr=Dette afsnit af DHCP-konfigurationen indeholder udtryksdirektivet $1, som ikke kan redigeres sikkert af Webmin.
+plib_auth_subnet=Server er autoritativ til dette undernet?
+plib_auth_shared-network=Server er autoritativ til dette delte netværk?
+plib_auth_global=Server er autoritativ for alle undernet?
+
+eopt_domsearch=DNS-domæner til søgning
+eopt_cname=Navn
+eopt_slpa=SLP-katalogagent-IP'er
+
+log_apply=Anvendte ændringer
+log_start=Startet DHCP-server
+log_stop=Stopet DHCP-server
+log_create_subnet=Oprettet undernet $1 
+log_delete_subnet=Slettet undernet $1 
+log_modify_subnet=Ændret undernet $1 
+log_options_subnet=Ændrede indstillinger for undernet $1 
+log_create_shared=Oprettet delt netværk $1 
+log_delete_shared=Slettet delt netværk $1 
+log_modify_shared=Ændret delt netværk $1 
+log_options_shared=Ændrede indstillinger for delt netværk $1 
+log_create_host=Oprettet vært $1 
+log_delete_host=Slettet vært $1 
+log_modify_host=Ændret vært $1 
+log_options_host=Ændrede indstillinger for vært $1 
+log_create_group=Oprettet gruppe af $1 værter
+log_delete_group=Slettet gruppe på $1 værter
+log_modify_group=Ændret gruppe på $1 værter
+log_options_group=Ændrede indstillinger for gruppen af $1 -værter
+log_delete_lease=Lejet lejekontrakt for $1 
+log_delete_subnets=Slet $1 undernet og delte netværk
+log_delete_hosts=Slet $1 værter og værtsgrupper
+
+keys_edit=Rediger TSIG-nøgle
+keys_create=Oprettet TSIG nøgler
+keys_title=DNS-nøgler
+keys_id=Nøgle-ID
+keys_alg=Algoritme
+keys_secret=Hemmelig streng
+keys_ecannot=Du har ikke tilladelse til at redigere DNS-nøgler
+keys_err=Kunne ikke gemme DNS-nøgler
+keys_ekey='$1' er ikke et gyldigt nøgle-id
+keys_esecret=Manglende eller ugyldig base-64 kodet hemmelighed for nøgle $1 
+
+pool_edit=Rediger adressepool
+pool_create=Oprettet adresse pool
+pool_header=Indstillinger for adressepool
+pool_allow=Kunder, der tillader
+pool_deny=Kunder, der skal nægtes
+pool_return=undernet
+
+eacl_uniqh=oprette værter med duplikathardwareadresser
+eacl_uniqi=oprette værter med dublerede IP-adresser
+
+acl_zones=Kan redigere dynamiske DNS-zoner?
+
+lookup_ehost=Der findes ingen vært med navn, IP-adresse eller MAC-adresse $1 
+lookup_ehostname=Intet værtsnavn, IP-adresse eller MAC-adresse indtastet
+lookup_egroup=Der findes ingen gruppe med navn eller domænenavn $1 
+lookup_egroupname=Intet gruppe navn eller domænenavn indtastet
+lookup_esubnet=Der findes intet undernet med adresse eller adresse/netmaske $1 
+lookup_esubnetname=Ingen subnet-adresse eller adresse/netmaske er indtastet
+lookup_eshared=Der findes intet delt netværk med navnet $1 
+lookup_esharedname=Intet delt netværksnavn indtastet
+
+zone_key=DNS-zoner
+index_zone=Zone
+zone_crheader=Opret zone
+zone_eheader=Rediger zone
+zone_tabhdr=Detaljer om zone
+zone_desc=Zone beskrivelse (valgfrit)
+zone_name=Zonens navn
+zone_primary=IP for primær NS
+zone_return=hovedmenu
+zone_faildel=Zonet kunne ikke slettes
+zone_failsave=Kunne ikke gemme zone
+zone_tsigkey=TSIG-nøgle
+zone_ecannot=Du har ikke tilladelse til at redigere DNS-zoner
+
+plib_clientupdates=Kan klienter opdatere deres egne poster?
+
+text_title=dhcpd.conf
+text_editor=Teksteditor
+text_return=hovedmenu
+text_undo=undo
+text_ecannot=Du har ikke tilladelse til at redigere konfigurationsfilen
+
+index_text=Rediger konfigurationsfil manuelt tekst
+
+stop_err=Kunne ikke stoppe DHCP-serveren
+stop_ekill=Kører ikke!
+
+sdelete_err=Kunne ikke slette undernet og delte netværk
+sdelete_enone=Ingen valgt
+sdelete_title=Slet undernet og delte netværk
+sdelete_rusure1=Er du sikker på, at du vil slette de $1 valgte undernet og $2 delte netværk? Eventuelle andre undernet eller andre objekter i netværkene vil også gå tabt.
+sdelete_rusure2=Er du sikker på, at du vil slette de $1 valgte undernet? Eventuelle andre objekter inden for undernet vil også gå tabt.
+sdelete_rusure3=Er du sikker på, at du vil slette de $2 valgte delte netværk? Eventuelle undernet eller andre objekter i netværkene vil også gå tabt.
+sdelete_ok=Slet nu
+
+hdelete_err=Kunne ikke slette værter og grupper
+hdelete_enone=Ingen valgt
+hdelete_title=Slet værter og grupper
+hdelete_rusure1=Er du sikker på, at du vil slette de $1 valgte værter og $2 -grupper? Eventuelle andre værter inden for grupperne vil også gå tabt.
+hdelete_rusure2=Er du sikker på, at du vil slette de $1 valgte værter?
+hdelete_rusure3=Er du sikker på, at du vil slette de $2 valgte grupper? Eventuelle værter inden for grupperne vil også gå tabt.
+hdelete_ok=Slet nu

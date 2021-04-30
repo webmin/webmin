@@ -1,0 +1,20 @@
+edit_mins=Phút
+edit_hours=Giờ
+edit_days=Ngày
+edit_months=Tháng
+edit_weekdays=Các ngày trong tuần
+edit_all=Tất cả
+edit_selected=Đã chọn ..
+edit_run=Chạy ngay đi
+edit_clone=Công việc nhân bản
+edit_return=công việc lương thấp
+edit_special1=Lịch trình đơn giản ..
+edit_special0=Thời gian và ngày được chọn bên dưới ..
+edit_special_hourly=Hàng giờ
+edit_special_daily=Hàng ngày (lúc nửa đêm)
+edit_special_weekly=Hàng tuần (vào Chủ nhật)
+edit_special_monthly=Hàng tháng (vào ngày 1)
+edit_special_yearly=Hàng năm (vào ngày 1 tháng 1)
+
+log_success=Đã chạy thành công <tt>$2</tt> trong <tt>$1</tt>
+log_failure=Không thể chạy <tt>$2</tt> trong <tt>$1</tt> : $3 

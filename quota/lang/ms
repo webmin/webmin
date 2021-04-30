@@ -1,0 +1,79 @@
+acl_fss=Sistem fail yang pengguna ini boleh sunting
+acl_fall=Semua sistem fail
+acl_fsel=Dipilih..
+acl_vtotal=Boleh lihat jumlah ruang disk?
+acl_ggrace=Boleh sunting grup grace times?
+acl_gquota=Grup yang pengguna ini boleh menyunting kuota untuk
+acl_uall=Semua pengguna
+acl_uonly=Hanya pengguna
+acl_uexcept=Semua kecuali pengguna
+acl_ugroup=Pengguna dengan grup utama
+acl_gall=Semua grup
+acl_gnone=Tiada grup
+acl_gonly=Hanya grup
+acl_gexcept=Semua kecuali grup
+acl_uuid=Pengguna dengan UID dalam julat
+acl_ggid=Grup dengan GID dalam julat
+acl_unlimited=Tanpa had
+acl_email=Boleh konfigurasi emel pemberitahuan?
+
+activate_eallow=Anda tidak dibenarkan untuk mengaktif atau menyah-aktif kuota pada sistem fail ini
+activate_eon=Gagal untuk menghidupkan kuota
+activate_eoff=Gagal untuk mematikan kuota
+
+check_title=Periksa Kuota
+check_return=Senarai $1
+check_ecannot=Anda tidak boleh memeriksa kuota pada sistem fail ini
+check_done=... Selesai.
+check_rgroup=grup
+check_ruser=pengguna
+
+cgroup_efail=Gagal untuk salin kuota
+cgroup_ecannot=Anda tidak boleh salin kuota
+cgroup_egallow=Anda tidak dibenarkan untuk salin kuota grup ini
+cgroup_enogroup=Tiada grup untuk disalin ke
+cgroup_eallowto=Anda tidak dibenarkan untuk salin kuota ke '$1'
+
+cgform_title=Salin Kuota
+cgform_return=kuota grup
+cgform_ecannot=Anda tidak boleh salin kuota
+cgform_egroup=Anda tidak dibenarkan untuk menyalin kuota grup ini
+cgform_copyto=Salin kuota untuk <tt>$1</tt> pada SEMUA sistem fail untuk ...
+cgform_all=Semua grup dalam sistem anda
+cgform_select=Grup terpilih
+cgform_contain=Grup mengandungi pengguna
+cgform_doit=Salin
+
+cuser_efail=Gagal untuk menyalin kuota
+cuser_ecannot=Anda tidak boleh salin kuota
+cuser_euallow=Anda tidak dibenarkan untuk menyalin kuota pengguna ini
+cuser_enouser=Tiada pengguna untuk disalin ke
+cuser_eallowto=Anda tidak dibenarkan untuk salin kuota '$1'
+
+cuform_title=Salin kuota
+cuform_return=kuota pengguna
+cuform_ecannot=Anda tidak boleh salin kuota
+cuform_euallow=Anda tidak dibenarkan untuk salin kuota pengguna ini
+cuform_copyto=Salin kuota untuk <tt>$1</tt> pada SEMUA sistem fail untuk ...
+cuform_all=Semua pengguna dalam sistem anda
+cuform_select=Pengguna terpilih
+cuform_members=Ahli kepada grup terpilih
+cuform_doit=Salin
+
+egroup_bused=Blok yang digunakan
+
+umass_title=Kemaskini Kuota Pengguna
+umass_header=Perubahan kuota untuk diterapkan kepada pengguna terpilih
+umass_sblocks=Limit blok soft
+umass_hblocks=Limit blok Hard
+umass_sfiles=Limit fail soft
+umass_hfiles=Limit fail Hard
+umass_leave=Biarkan tanpa ubah
+umass_unlimited=Tetapkan pada tanpa had
+umass_set=Tetapkan pada
+umass_ok=Kemaskini Pengguna
+umass_esblocks=Hilang atau limit blok soft tidak sah
+umass_ehblocks=Hilang atau limit blok hard tidak sah
+umass_esfiles=Hilang atau limit fail soft tidak sah
+umass_ehfiles=Hilang atau limit fail hard tidak sah
+umass_err=Gagal untuk mengemaskini kuota pengguna

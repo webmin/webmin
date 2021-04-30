@@ -1,0 +1,66 @@
+index_title=ADSL-klient
+index_eadsl=RP-PPPoE-kommandoen $1 blev ikke fundet på dit system eller er ikke gyldig. Måske er det ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+index_econfig=RP-PPPoE ADSL-konfigurationsfilen $1 blev ikke fundet på dit system. Måske er det ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+index_emodem=Den aktuelle konfigurationsfil er til et modem på Redhat Linux, ikke til en ADSL-forbindelse. Brug siden <a href='$2'>modulkonfiguration</a> til at specificere en af de andre <tt>ifcfg-ppp *</tt> filer i $1, eller en der ikke findes endnu, så modulet kan oprette det til dig.
+index_stop=Luk ADSL
+index_stopdesc=Din ADSL-forbindelse er i øjeblikket aktiv med IP-adresse $1. Klik på denne knap for at lukke den ned med kommandoen $2.
+index_start=Start ADSL
+index_startdesc=Din ADSL-forbindelse er i øjeblikket inaktiv. Klik på denne knap for at starte den med kommandoen $1.
+index_boot=Start ved starttidspunktet
+index_bootdesc=Skift denne mulighed for at kontrollere, om din ADSL-forbindelse opføres på starttidspunktet eller ej.
+index_return=modul indeks
+index_version=RP-PPPoE version $1 
+index_esetup=Redhat ADSL-konfigurationsfilen $1 findes ikke på dit system. Imidlertid kan dette modul indstille det til dig med grundlæggende standardindstillinger ved at klikke på knappen nedenfor.
+index_setup=Opsæt konfigurationsfil
+index_cancel=Annuller forbindelse
+index_canceldesc=ADSL-klienten prøver i øjeblikket at oprette en forbindelse. Klik på denne knap for at annullere forsøget med kommandoen $1.
+index_cdemand=Annuller on-demand
+index_cdemanddesc=ADSL-klienten venter i øjeblikket på en anmodning om anmodning om forbindelse. Klik på denne knap for at stoppe den med kommandoen $1.
+
+index_header=ADSL-klientkonfigurationsindstillinger
+index_desc=Indstillingerne nedenfor gælder for enhver ny ADSL-forbindelse, der er startet af dit system. Hvis du ændrer dem, skal forbindelsen lukkes og genstartes for at ændringerne kan træde i kraft.
+index_eth=Ethernet-interface
+index_other=Andet ..
+index_demand=Opret forbindelse efter behov?
+index_timeout=Ja, med timeout
+index_secs=sekunder
+index_user=Login som bruger
+index_sec=Login med adgangskode
+index_dns=Hent DNS-konfiguration fra ISP?
+index_save=Gem konfiguration
+index_mss=Begræns pakkestørrelse?
+index_psize=Ja, til
+index_bytes=bytes
+index_fw=Firewall til aktivering ved forbindelse
+index_fw_none=Ingen
+index_fw_standalone=Til enkelt vært
+index_fw_masquerade=Til NAT gateway
+index_connect=Tid til at prøve forbindelse
+index_forever=For evigt
+
+start_err=Kunne ikke starte ADSL-forbindelse
+start_title=Start ADSL
+start_ip=Der er oprettet en ADSL-forbindelse med IP-adresse $1.
+start_demand=Da connect on demand-tilstand er aktiveret, startes din ADSL-forbindelse kun, når det er nødvendigt.
+start_bg=ADSL-forbindelsen blev ikke startet inden for 20 sekunder. ADSL-klienten fortsætter med at forsøge at oprette forbindelse i baggrunden, indtil det lykkes.
+
+save_err=Kunne ikke gemme ADSL-konfiguration
+save_eeth=Manglende eller ugyldig Ethernet-interface
+save_etimeout=Manglende eller ugyldig timeout efter anmodning
+save_euser=Manglende eller ugyldigt brugernavn
+save_econnect=Manglende eller ugyldig timeout for forbindelse
+save_emss=Manglende eller ugyldig maksimal pakkestørrelse
+save_title=Gem konfiguration
+save_desc=Din ADSL-klientkonfiguration er blevet gemt, men bliver ikke brugt, før du opretter forbindelse igen.
+
+stop_err=Kunne ikke lukke ADSL-forbindelsen
+stop_title=Luk ADSL
+stop_ok=Din ADSL-forbindelse blev lukket.
+stop_failed=Din ADSL-forbindelse er stadig aktiv af en eller anden grund!
+
+log_save=Gemt klientkonfiguration
+log_stop=Luk ADSL
+log_start=Startede ADSL
+log_bootup=Aktiveret ADSL ved starttidspunkt
+log_bootdown=Deaktiveret ADSL ved starttidspunkt
+log_setup=Indstil standardkonfiguration

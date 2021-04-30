@@ -1,0 +1,22 @@
+index_title=Cluster Shell -komennot
+index_cmd=Komento suorittaa
+index_old=tai
+index_server=Suorita palvelimilla
+index_run=Suorita komento nyt
+index_return=moduulihakemisto
+index_this=tämä palvelin
+index_all=&lt;Kaikki isännät&gt;
+index_group=$1 : n jäsenet
+index_clear=Tyhjennä historia
+index_edit=Muokkaa edellinen
+
+run_title=Suorita komento
+run_err=Komenton suorittaminen epäonnistui
+run_ecmd=Komentoa ei annettu
+run_failed= $1:$2  : n suorittaminen epäonnistui
+run_success=Lähtö $1 : stä ..
+run_enone=Ei palvelimia käytettäväksi valituissa
+
+log_clear=Puhdistettu komentohistoria
+log_run=Näytti $1 $2 -palvelimilla
+log_run_l=Todettiin $1 $2 : lla

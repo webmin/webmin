@@ -1,0 +1,103 @@
+index_title=LDAP felhasználók és csoportok
+index_ebase=Nem található LDAP kliens konfigurációs fájl a rendszerén, ezért a felhasználói és a csoport alapjait a <a href='$1'>modul konfigurációs oldalán</a> kell beállítani.
+index_eperl=A $1 Perl modul, amelyre a modulnak szüksége van, nincs telepítve vagy nem működik megfelelően. <a href='$2'>Kattintson ide</a>, hogy letöltse és telepítse most.
+index_eperl2=A Perl által jelentett hiba a modul betöltésekor :
+index_eldap=$1. Kattintson ide a <a href='$2'>modul konfigurációjának beállításához</a>.
+index_eschema=A Webmin csatlakozott az LDAP szerverhez, de a séma beolvasása nem sikerült. Győződjön meg arról, hogy a hozzáférést nem tagadták meg az <a href='$1'>LDAP szerver</a> modulban.
+index_eimap=$1. Lehet, hogy a <a href='$2'>modul konfigurációja</a> helytelen.
+index_emd5=Ezt a modult <a href='$1'>úgy konfigurálták, hogy MD5 titkosítást használhassanak a jelszavakhoz, de a $2 Perl modul nincs telepítve.</a> Kattintson ide </a> a $2 modul letöltéséhez és telepítéséhez.
+index_eslappasswd=Ezt a modult <a href='$1'>úgy konfigurálták, hogy LDAP MD5 titkosítást használhassanak a jelszavakhoz, de a</a> $2 </tt> program a jelszó titkosításához nem telepítve van.
+index_eusearch=A (z) $1 alatti felhasználók keresése nem sikerült : $2 
+index_uadd=Új LDAP-felhasználó hozzáadása.
+index_gadd=Új LDAP-csoport hozzáadása.
+index_unone=Nem található LDAP felhasználó a $1 alatt.
+index_gnone=Nem található LDAP csoport a $1 alatt.
+index_return=felhasználói lista
+index_greturn=csoportlista
+index_egsearch=A (z) $1 alatti csoportokat nem sikerült keresni : $2 
+index_samba=Samba?
+index_cyrus=IMAP?
+index_users=LDAP felhasználók
+index_groups=LDAP csoportok
+
+imap_econn=Nem sikerült csatlakozni a (z) $1 IMAP szerverhez
+imap_elogin=Nem sikerült bejelentkezni a (z) $1 IMAP szerverre mint $2 : $3 
+conn_eldap_host=Nem található az LDAP kliens konfigurációs fájlja a rendszeren, ezért az LDAP szervert be kell állítani a Module Config oldalon
+conn_elogin=Nem található az LDAP kliens konfigurációs fájlja a rendszeren, ezért az LDAP bejelentkezést be kell állítani a Module Config oldalon
+conn_efile_open=Nem sikerült megnyitni az LDAP-összerendelési hitelesítő adatok fájlt:
+
+uedit_cap=Felhasználói képességek
+uedit_samba=Samba bejelentkezés?
+uedit_cyrus=IMAP szerver bejelentkezés?
+uedit_dn=Felhasználó LDAP DN
+uedit_classes=LDAP objektum osztályok
+uedit_alias=E-mail álnevek
+uedit_fields=További LDAP mezők
+uedit_firstname=Keresztnév
+uedit_lastname=Vezetéknév
+uedit_raw=LDAP attribútumok
+uedit_return=felhasználói adatok
+uedit_quota=IMAP kvóta
+uedit_unquota=Ne változtasson
+uedit_sambapassopts=Samba jelszóbeállítások
+uedit_sambapwdlastset=Utolsó jelszó frissítés
+uedit_sambapwdcanchange=A jelszó megváltozhat
+uedit_sambabadpasswordcount=Rossz a jelszó
+uedit_sambaacctflags=Fiók zászlók
+
+usave_eadd=Nem sikerült felvenni a felhasználót az LDAP adatbázisba : $1 
+usave_emod=Nem sikerült a felhasználót módosítani az LDAP adatbázisban : $1 
+usave_emoddn=Nem sikerült átnevezni a felhasználót az LDAP adatbázisban : $1 
+usave_egroupmod=Nem sikerült módosítani a (z) $1 csoportot az LDAP adatbázisban : $2 
+usave_edelete=Nem sikerült a felhasználó törlése az LDAP adatbázisból : $1 
+usave_eicreate=Nem sikerült létrehozni a felhasználót
+usave_eiacl=Nem sikerült jogokat adni az adminisztrátornak
+usave_eimap=A felhasználót sikeresen mentettük az LDAP adatbázisba, de IMAP hiba történt: $1 : $2 
+usave_eisub=Nem sikerült feliratkozni a felhasználóra a (z) $1 mappára
+usave_eiquota=Nem sikerült beállítani az IMAP kvótát
+usave_eifolder=A (z) $1 mappa létrehozása nem sikerült
+usave_eilogin=Nem sikerült bejelentkezni új felhasználóként
+usave_ecyruspass=Az IMAP engedélyezésekor be kell írnia a felhasználó normál jelszavát, vagy ki kell választania a Nincs jelszó szükséges lehetőséget.
+usave_ebook=A címjegyzék bejegyzésének létrehozása nem sikerült : $1 
+usave_emodbook=A címjegyzék bejegyzésének módosítása nem sikerült : $1 
+usave_emodbookdn=Nem sikerült átnevezni a címjegyzék bejegyzését : $1 
+usave_egone=A felhasználó már nem létezik!
+usave_ex86=Ez a modul nem használható a Samba felhasználó jelszavának beállításához nem Intel rendszereken, mivel ez egy összeállított x86 programtól függ.
+usave_esamba=Ez a modul nem használható a jelszó beállításához a Samba felhasználó számára, mivel a Samba Windows fájlmegosztó modul nincs telepítve.
+usave_ealiasdup=A (z) $1 álnevet a $2 már használja
+usave_eattrdup=A (z) $1 objektum már használja a $2 $3 felhasználót
+usave_eattrdupu=A $1 felhasználó már használja a $2 $3 felhasználót
+usave_eattrdupg=A $1 csoport már használja a $2 $3 felhasználót
+usave_ereal=Hiányzik a valódi név
+usave_equota=Hiányzó vagy érvénytelen IMAP kvóta
+
+search_err=$1 keresése a $2 alatt sikertelen : $3 
+
+gedit_dn=A csoport LDAP DN
+gedit_return=csoport részletei
+gedit_cap=Csoport képességek
+gedit_samba=Samba csoport?
+
+gsave_egone=A csoport már nem létezik!
+gsave_edelete=A csoport törlése az LDAP adatbázisból nem sikerült : $1 
+gsave_eadd=Nem sikerült hozzáadni a csoportot az LDAP adatbázishoz : $1 
+gsave_emod=A csoport módosítása az LDAP adatbázisban nem sikerült : $1 
+gsave_emoddn=Nem sikerült átnevezni a csoportot az LDAP adatbázisban : $1 
+
+gdel_group=Az LDAP csoport bejegyzésének törlése ..
+
+udel_pass=Az LDAP felhasználói bejegyzés törlése ..
+udel_book=Törlés a címjegyzékből ..
+udel_imap=IMAP mappa törlése ..
+udel_warnimap=A meglévő postafiók törlődik, ha törli az otthoni könyvtárat!
+udel_failed=.. nem sikerült!  : $1 
+
+raw_title=LDAP attribútumok
+raw_name=Attribútum neve
+raw_value=értékek
+raw_for=$1 esetében
+
+batch_samba=Hozzon létre Samba-fiókot az új felhasználók számára?
+batch_imap=Hozzon létre IMAP-fiókot az új felhasználók számára?
+batch_descafter3=A <b>létrehozás</b> és a <b>módosítás</b> sorokban opcionálisan az LDAP attribútumokat tartalmazó további mezőket csatolhat <i>név</i> = <i>érték</i> formátumban a következőhöz: hozzá kell rendelni az új vagy módosított felhasználókhoz.
+batch_eattr=Érvénytelen LDAP attribútum a (z) $1 sorban : $2 

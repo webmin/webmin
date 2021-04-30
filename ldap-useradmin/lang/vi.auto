@@ -1,0 +1,103 @@
+index_title=Nhóm và người dùng LDAP
+index_ebase=Không tìm thấy tệp cấu hình máy khách LDAP nào trên hệ thống của bạn, do đó, cơ sở người dùng và nhóm phải được đặt trên trang <a href='$1'>mô hình cấu hình mô đun</a>.
+index_eperl=Mô-đun $1 Perl mà mô-đun này yêu cầu không được cài đặt hoặc không hoạt động đúng. <a href='$2'>Nhấp vào đây</a> để tải xuống và cài đặt ngay bây giờ.
+index_eperl2=Lỗi được báo cáo bởi Perl khi thử tải mô-đun là :
+index_eldap=$1. Nhấp vào đây để điều chỉnh cấu hình mô-đun <a href='$2'></a>.
+index_eschema=Webmin đã kết nối với máy chủ LDAP, nhưng không thể tìm nạp lược đồ. Đảm bảo rằng quyền truy cập không bị từ chối trong mô-đun <a href='$1'>LDAP Server</a>.
+index_eimap=$1. Có thể <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+index_emd5=Mô-đun này đã được <a href='$1'>được định cấu hình</a> để sử dụng mã hóa MD5 cho mật khẩu, nhưng mô-đun $2 Perl chưa được cài đặt. <a href='$3'>Nhấp vào đây</a> để tải xuống và cài đặt mô-đun $2.
+index_eslappasswd=Mô-đun này đã được <a href='$1'>được định cấu hình</a> để sử dụng mã hóa LDAP MD5 cho mật khẩu, nhưng chương trình <tt>$2</tt> được sử dụng để mã hóa mật khẩu chưa được cài đặt.
+index_eusearch=Không thể tìm kiếm người dùng theo $1 : $2 
+index_uadd=Thêm người dùng LDAP mới.
+index_gadd=Thêm một nhóm LDAP mới.
+index_unone=Không tìm thấy người dùng LDAP nào dưới $1.
+index_gnone=Không tìm thấy nhóm LDAP nào dưới $1.
+index_return=Danh sách người dùng
+index_greturn=danh sách nhóm
+index_egsearch=Không thể tìm kiếm các nhóm theo $1 : $2 
+index_samba=Samba?
+index_cyrus=IMAP?
+index_users=Người dùng LDAP
+index_groups=Nhóm LDAP
+
+imap_econn=Không thể kết nối với máy chủ IMAP $1 
+imap_elogin=Không thể đăng nhập vào máy chủ IMAP $1 dưới dạng $2 : $3 
+conn_eldap_host=Không tìm thấy tệp cấu hình máy khách LDAP trên hệ thống của bạn, vì vậy máy chủ LDAP phải được đặt trên trang Cấu hình mô-đun
+conn_elogin=Không tìm thấy tệp cấu hình máy khách LDAP trên hệ thống của bạn, vì vậy phải đăng nhập LDAP trên trang Cấu hình mô-đun
+conn_efile_open=Không thể mở tệp thông tin xác thực ràng buộc LDAP:
+
+uedit_cap=Khả năng của người dùng
+uedit_samba=Samba đăng nhập?
+uedit_cyrus=Đăng nhập máy chủ IMAP?
+uedit_dn=LDAP DN của người dùng
+uedit_classes=Các lớp đối tượng LDAP
+uedit_alias=Bí danh thư
+uedit_fields=Các trường LDAP bổ sung
+uedit_firstname=Tên đầu tiên
+uedit_lastname=Họ
+uedit_raw=Thuộc tính LDAP
+uedit_return=Chi tiết người dùng
+uedit_quota=Hạn ngạch IMAP
+uedit_unquota=Đừng thay đổi
+uedit_sambapassopts=Tùy chọn mật khẩu Samba
+uedit_sambapwdlastset=Cập nhật mật khẩu lần cuối
+uedit_sambapwdcanchange=Mật khẩu có thể thay đổi
+uedit_sambabadpasswordcount=Số mật khẩu xấu
+uedit_sambaacctflags=Cờ tài khoản
+
+usave_eadd=Không thể thêm người dùng vào cơ sở dữ liệu LDAP : $1 
+usave_emod=Không thể sửa đổi người dùng trong cơ sở dữ liệu LDAP : $1 
+usave_emoddn=Không thể đổi tên người dùng trong cơ sở dữ liệu LDAP : $1 
+usave_egroupmod=Không thể sửa đổi nhóm $1 trong cơ sở dữ liệu LDAP : $2 
+usave_edelete=Không thể xóa người dùng khỏi cơ sở dữ liệu LDAP : $1 
+usave_eicreate=Không thể tạo người dùng
+usave_eiacl=Không thể cấp quyền cho quản trị viên
+usave_eimap=Người dùng đã được lưu thành công trong cơ sở dữ liệu LDAP, nhưng đã xảy ra lỗi IMAP: $1 : $2 
+usave_eisub=Không thể đăng ký người dùng vào thư mục $1 
+usave_eiquota=Không thể đặt hạn ngạch IMAP
+usave_eifolder=Không thể tạo thư mục $1 
+usave_eilogin=Không thể đăng nhập với tư cách người dùng mới
+usave_ecyruspass=Mật khẩu thông thường của người dùng phải được nhập hoặc tùy chọn Không cần mật khẩu được chọn khi bật IMAP.
+usave_ebook=Không thể tạo mục nhập sổ địa chỉ : $1 
+usave_emodbook=Không thể sửa đổi mục nhập địa chỉ : $1 
+usave_emodbookdn=Không thể đổi tên mục nhập sổ địa chỉ : $1 
+usave_egone=Người dùng không còn tồn tại!
+usave_ex86=Mô-đun này không thể được sử dụng để đặt mật khẩu cho người dùng Samba trên các hệ thống không phải của Intel, vì nó phụ thuộc vào chương trình x86 được biên dịch.
+usave_esamba=Mô-đun này không thể được sử dụng để đặt mật khẩu cho người dùng Samba, vì mô-đun chia sẻ tệp Samba Windows không được cài đặt.
+usave_ealiasdup=Bí danh $1 đã được sử dụng bởi $2 
+usave_eattrdup=Đối tượng $1 đã sử dụng $2 $3 
+usave_eattrdupu=Người dùng $1 đã sử dụng $2 $3 
+usave_eattrdupg=Nhóm $1 đã sử dụng $2 $3 
+usave_ereal=Thiếu tên thật
+usave_equota=Hạn ngạch IMAP bị thiếu hoặc không hợp lệ
+
+search_err=Tìm kiếm $1 dưới $2 không thành công : $3 
+
+gedit_dn=LDAP của nhóm
+gedit_return=chi tiết nhóm
+gedit_cap=Khả năng nhóm
+gedit_samba=Nhóm Samba?
+
+gsave_egone=Nhóm không còn tồn tại!
+gsave_edelete=Không thể xóa nhóm khỏi cơ sở dữ liệu LDAP : $1 
+gsave_eadd=Không thể thêm nhóm vào cơ sở dữ liệu LDAP : $1 
+gsave_emod=Không thể sửa đổi nhóm trong cơ sở dữ liệu LDAP : $1 
+gsave_emoddn=Không thể đổi tên nhóm trong cơ sở dữ liệu LDAP : $1 
+
+gdel_group=Xóa mục nhập nhóm LDAP ..
+
+udel_pass=Xóa mục nhập người dùng LDAP ..
+udel_book=Xóa khỏi sổ địa chỉ ..
+udel_imap=Xóa thư mục IMAP ..
+udel_warnimap=Hộp thư thư hiện có sẽ bị xóa khi xóa thư mục chính!
+udel_failed=.. thất bại!  : $1 
+
+raw_title=Thuộc tính LDAP
+raw_name=Tên thuộc tính
+raw_value=Giá trị
+raw_for=Cho 1
+
+batch_samba=Tạo tài khoản Samba cho người dùng mới?
+batch_imap=Tạo tài khoản IMAP cho người dùng mới?
+batch_descafter3=Trong các dòng <b>tạo</b> và <b>sửa đổi</b>, bạn có thể tùy ý nối thêm các trường bổ sung có chứa các thuộc tính LDAP ở định dạng <i>name</i> = <i>value</i>, để được chỉ định cho người dùng mới hoặc sửa đổi.
+batch_eattr=Thuộc tính LDAP không hợp lệ tại dòng $1 : $2 

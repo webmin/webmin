@@ -1,0 +1,11 @@
+category_=Herramientas
+
+longcategory_=Módulos que realizan otras tareas diversas
+
+session_twofailed=La autenticación de dos factores falló : $1
+
+langauto_include=Incluir traducciones automáticas
+
+file_truncated_message=obtenido $1 de datos, $2 truncado de $3 
+file_truncated_message_head=obtenido $1 de inicio de datos, $2 truncado de $3 
+file_truncated_message_tail=obtenido el final $1 de los datos, truncado $2 de $3 

@@ -1,0 +1,58 @@
+index_title=Status do SMART Drive
+index_ecmd=O comando de controle SMART $1 não foi encontrado no seu sistema ou não está definido corretamente na <a href='$2'>configuração do módulo</a>. Ele deve ser instalado antes que este módulo possa ser usado.
+index_ecmd2=O comando $1 não parece ser o comando de controle SMART. Ele deve ser definido corretamente na <a href='$2'>configuração do módulo</a> antes que este módulo possa ser usado.
+index_version=Versão SMARTsuite $1 
+index_show=Mostrar status da unidade:
+index_ok=exposição
+index_eidescsi=Não foram encontradas unidades IDE, SCSI ou SATA no seu sistema.
+index_drive=Status da unidade $1 
+index_drivesub=Status da unidade $1, disco $2 
+index_desc=Localização
+index_size=Tamanho da unidade
+index_model=Marca e modelo
+index_support=Suporta SMART?
+index_enabled=SMART ativado?
+index_check=Passou na verificação da unidade?
+index_short=Autoteste curto
+index_ext=Autoteste estendido
+index_data=Teste de Coleta de Dados
+index_errors=Erros registrados
+index_ecount=$1 erros detectados
+index_attrs=Atributos SMART adicionais
+index_raw=Relatório de status completo do SMART
+index_return=índice do módulo
+index_family=Família modelo
+index_serial=Número de série
+index_capacity=Capacidade
+index_norm=Normalizado:
+
+monitor_type=Verificação de unidade SMART
+monitor_type2=Desgaste do SSD
+monitor_drive=Dirija para verificar
+monitor_errors=Verifique o log de erros também?
+monitor_errorsinc=Sim, mas alerta apenas se a contagem de erros aumentar
+monitor_other=De outros ..
+monitor_edrive=Unidade ausente ou inválida para verificar
+monitor_nosuch=Nenhuma unidade desse tipo
+monitor_nosmart=Não há suporte SMART
+monitor_errorsfound=$1 erros relatados
+monitor_errorsinced=Erros aumentados de $2 para $1 
+monitor_wearlevel=Falha se o nível de desgaste cair abaixo
+monitor_ewearlevel=Porcentagem inválida do nível de desgaste
+monitor_nowearout=O drive não relata um indicador de desgaste do SSD
+monitor_wornout=O nível de desgaste caiu para $1 
+
+short_title=Autoteste curto
+short_doing=Iniciando um autoteste curto de $1 ..
+short_failed=.. falhou!
+short_ok=.. teste iniciado OK. Veja o status do inversor na página principal do módulo para obter os resultados.
+
+ext_title=Autoteste estendido
+ext_doing=Iniciando o autoteste estendido de $1 ..
+ext_failed=.. falhou!
+ext_ok=.. teste iniciado OK. Veja o status do inversor na página principal do módulo para obter os resultados.
+
+data_title=Teste de Coleta de Dados
+data_doing=Iniciando a coleta de dados offline em $1 ..
+data_failed=.. falhou!
+data_ok=.. coleção iniciada OK. Veja o status do inversor na página principal do módulo para obter os resultados.

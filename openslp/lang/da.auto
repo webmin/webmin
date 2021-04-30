@@ -1,0 +1,50 @@
+index_title=OpenSLP-konfiguration
+index_return=OpenSLP-konfiguration
+index_eslpd=OpenSLP-dæmonen $1 blev ikke fundet på dit system. Måske er det ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+index_econf=OpenSLP-konfigurationsfilen $1 blev ikke fundet på dit system. Måske er det ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+index_version=OpenSLP version $1 
+
+slp_apply=Anvend ændringer
+slp_stop=Stop OpenSLP
+
+snda_title=Statisk rækkevidde og DA
+snda_useScopes=Statisk liste over anvendelsesområder
+snda_DAAddresses=Statisk liste over katalogagenter (DA)
+
+netcfg_title=Netværkskonfiguration
+netcfg_isBroadcastOnly=Tving tv-sendinger i stedet for multicast
+netcfg_passiveDADetection=Brug passiv DA-detektion
+netcfg_activeDADetection=Brug aktiv DA-detektion (begræns kun til DHCP- eller DA-adresser)
+netcfg_DAActiveDiscoveryInterval=Aktiv opdagelse i sekunder (0 deaktiverer Aktiv opdagelse)
+netcfg_multicastTTL=Multicast TTL (0-255)
+netcfg_DADiscoveryMaximumWait=Maksimal ventetid for DA-opdagelsesanmodninger (i millisekunder)
+netcfg_DADiscoveryTimeouts=På hinanden følgende ventetider på DA-opdagelse (i millisekunder)
+netcfg_HintsFile=Sti til OpenSLP-tipfil
+netcfg_multicastMaximumWait=Maksimal ventetid på multicast-anmodninger (i millisekunder)
+netcfg_multicastTimeouts=På hinanden følgende ventetider på multicast (i millisekunder)
+netcfg_unicastMaximumWait=Maksimal tid mellem unicast-anmodninger (i millisekunder)
+netcfg_randomWaitBound=Maksimal værdi for alle tilfældige venteparametre (i millisekunder)
+netcfg_MTU=MTU-pakkestørrelse (i bytes)
+netcfg_interfaces=IP-adresser på grænseflader, som DA/SA skal lytte til
+
+dacfg_title=DA-konfiguration
+dacfg_isDA=Funktion som kun DA (læs brugervejledningen, før du ændrer dette)
+
+log_title=Sporing og logning
+log_traceDATraffic=Udskriv DA-trafikmeddelelser
+log_traceMsg=Udskriv SLP-detailbeskeder
+log_traceDrop=Print SLP faldt meddelelsesoplysninger
+log_traceReg=Udskriv DA og SA registrerings- og afregistreringsoplysninger
+
+error_open=Fejl ved åbning af fil
+error_flock_on=Fejl ved oprettelse af fillås
+error_flock_off=Fejl ved ødelæggelse af fillås
+error_hup=Fejl ved genstart af OpenSLP med PID
+
+index_start=Start OpenSLP
+index_startmsg=Klik på denne knap for at starte OpenSLP-dæmonen på dit system.
+index_stop=Stop OpenSLP
+index_stopmsg=Klik på denne knap for at stoppe OpenSLP-dæmonen på dit system.
+
+stop_err=Kunne ikke stoppe OpenSLP
+start_err=Kunne ikke starte OpenSLP

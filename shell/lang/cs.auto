@@ -1,0 +1,5 @@
+index_trunced=Celkový výstup $2 byl zkrácen na $1.
+index_timedout=Příkaz byl ukončen po spuštění po dobu 1 sekundy.
+
+acl_shellenv=Používat vybrané uživatelské prostředí?
+acl_chroot=Chroot do adresáře

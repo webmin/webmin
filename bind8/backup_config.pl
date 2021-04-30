@@ -28,8 +28,12 @@ foreach my $z (@zones) {
 	next if ($tv ne "master" && $tv ne "hint");
 	my $file = &find_value("file", $z->{'members'});
 	next if (!$file);
-	my @recs = &read_zone_file($file, $z->{'value'});
-	push(@rv, map { $_->{'file'} } @recs);
+	if (&is_raw_format_records(&make_chroot($file))) {
+		push(@rv, $file);
+		}
+	else {
+		push(@rv, &files_in_zone_file($file));
+		}
 	}
 
 return map { &make_chroot($_) } &unique(@rv);

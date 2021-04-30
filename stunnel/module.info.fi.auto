@@ -1,0 +1,3 @@
+longdesc_fi=Asenna SSL-tunnelit salaamaan palvelut, kuten POP3 ja IMAP, käyttämällä inetd: stä suoritettua stunnel-ajetta.
+name_fi=stunnel
+desc_fi=SSL-tunnelit

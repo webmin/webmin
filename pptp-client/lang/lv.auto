@@ -1,0 +1,112 @@
+index_title=PPTP VPN klients
+index_epptp=PPTP klienta programma $1 jūsu sistēmā netika atrasta. Varbūt tas nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_eppp=Jūsu sistēmā nav instalēta PPP servera programma $1. PPTP ir atkarīgs no tā darbības.
+index_eoptions=Globālais PPTP PPP opciju fails $1 neeksistē. Vai nu izveidojiet to, vai arī pielāgojiet <a href='$2'>moduļa konfigurāciju</a>, lai izmantotu citu failu, vai arī to vispār nav.
+index_header=Noteikti tuneļi
+index_none=PPTP tuneļi vēl nav definēti.
+index_tunnel=Tunelis $1 
+index_add=Pievienojiet jaunu PPTP VPN tuneli.
+index_conn=Pievienot:
+index_pass=ar izvēles paroli:
+index_conndesc=Noklikšķiniet uz šīs pogas, lai pievienotu izvēlēto PPTP VPN tuneli, izmantojot tā pašreizējo konfigurāciju.
+index_disc=Atvienoties no:
+index_discdesc=Noklikšķiniet uz šīs pogas, lai atvienotu izvēlēto pašlaik aktīvo PPTP VPN tuneli un noņemtu visus maršrutus caur to.
+index_return=PPTP tuneļu saraksts
+index_opts=Rediģēt globālās PPP opcijas
+index_optsdesc=Noklikšķiniet uz šīs pogas, lai rediģētu PPP opcijas, kas attiecas uz visiem PPTP VPN tuneļiem.
+index_version=PPPd versija $1 
+index_boot=Pievienojiet sāknēšanas laikā:
+index_noboot=&lt;Nepievienot&gt;
+index_bootdesc=Mainiet šo opciju, lai kontrolētu, vai atlasītais PPTP VPN savienojums tiek sākts sāknēšanas laikā vai nē.
+
+disc_err=Neizdevās atvienot tuneli
+disc_egone=Vairs nav aktīvs
+disc_ekill=Neizdevās nogalināt pppd procesu
+disc_done=Tunelis $1 tika veiksmīgi atvienots.
+
+conn_err=Neizdevās savienot tuneli
+conn_egone=Tunelis vairs nepastāv
+cone_ealready=Jau savienots
+conn_einvalid=Trūkst servera IP adreses konfigurācijas failā
+conn_title=Savienojošais tunelis
+conn_cmd=PPTP savienojuma izveidošana ar komandu $1.
+conn_ok=.. savienojums veiksmīgi aktivizēts, izmantojot interfeisu $1. Jūsu vietējā adrese ir $2 un attālā adrese ir $3.
+conn_timeout=.. savienojums neizdevās! Pārbaudiet zemāk esošos žurnāla ziņojumus, lai uzzinātu, kāpēc.
+conn_routes=Maršrutu pievienošana ar komandām ..
+conn_mppe=MPPE protokols VPN šifrēšanai prasa PPP dēmonu un kodola atbalstu. Tomēr iepriekšminētās kļūdas liecina, ka viens vai abi jūsu sistēmā nav pieejami. Ja PPTP serverim nav nepieciešama MPPE, mēģiniet izslēgt visas ar to saistītās iespējas <a href='$1'>globālo PPP opciju lapā</a>.
+
+edit_title1=Pievienojiet PPTP tuneli
+edit_title2=Rediģēt PPTP tuneli
+edit_header=PPTP VPN tuneļa iespējas
+edit_name=Tuneļa nosaukums
+edit_server=Izveidojiet savienojumu ar serveri
+edit_login=Piesakieties kā lietotājs
+edit_same=Sistēmas resursdators
+edit_pass=Pieteikšanās ar paroli
+edit_remote=Servera nosaukums
+edit_auto=Automātiska
+edit_adddef=Vai pievienot noklusējuma maršrutu?
+edit_def1=Pa otru galu
+edit_def2=Pa vārtiem ..
+edit_deldef=Vai izdzēst veco noklusējuma maršrutu?
+edit_routes=Maršruti, kas jāpievieno pēc savienojuma izveidošanas
+edit_type=Veids
+edit_type0=&nbsp;
+edit_type1=Tīkls
+edit_type2=Vienvietīgs saimnieks
+edit_net=Tīkls vai resursdators
+edit_mask=Netmasks
+edit_gw=Pa vārtiem
+edit_gw_def=Otrais gals
+edit_unknown=Citas <tt>maršruta</tt> komandas
+edit_file=PPP opciju fails
+edit_none=Nav
+edit_global=Standarta globālais fails
+edit_ofile=Cits fails ..
+
+save_err=Neizdevās saglabāt tuneli
+save_ename=Trūkst tuneļa nosaukuma
+save_eserver=Trūkst vai nav derīgs serveris, ar kuru izveidot savienojumu
+save_elogin=Trūkst vai nav derīgs pieteikšanās vārds
+save_eremote=Trūkst vai nav derīgs attālā servera nosaukums
+save_edef=Trūkst vai nav derīga noklusējuma maršruta vārteja
+save_enet=Nederīga tīkla adrese maršrutā $1 
+save_emask=Nederīga tīkla maska maršrutā $1 
+save_egw=Nederīga tīkla 1 vārteja maršrutā $1 
+save_ehost=Nederīga resursdatora IP adrese maršrutā $1 
+save_emask2=Resursu ceļam $1 nav nepieciešama tīkla maska
+save_egw2=Nederīga resursdatora vārteja maršrutā $1 
+save_erename=Neizdevās pārdēvēt tuneļa failu
+save_eclash=Tunelis vai PPP līdzinieks ar tādu pašu nosaukumu jau pastāv
+save_efile=Trūkst vai nav derīgs PPP opciju fails
+
+opts_title=Globālās PPP iespējas
+opts_desc=Tālāk norādītie iestatījumi ir ņemti no $1, un tie attieksies uz visiem tuneļiem, kas iestatīti, lai izmantotu standarta globālo PPP opciju failu.
+opts_header=PPP iespējas visiem tuneļiem
+opts_mtu=Maksimālais sūtīšanas paketes lielums
+opts_mru=Maksimālais saņemošās paketes lielums
+opts_err=Neizdevās saglabāt globālās PPP iespējas
+opts_emtu=Trūkst vai nav derīgs maksimālais sūtīšanas paketes lielums
+opts_emru=Trūkst vai nav derīgs maksimālais saņemošās paketes lielums
+opts_msdesc=Tālāk esošās iespējas ļauj MPPE šifrēšanu, ko izmanto Windows VPN serveri. Tomēr MPPE ir nepieciešams atbalsts gan PPP dēmonā, gan operētājsistēmas kodolā.
+
+mppe_mppe-40=Vai izmantot 40 bitu MPPE šifrēšanu?
+mppe_mppe-128=Vai izmantot 128 bitu MPPE šifrēšanu?
+mppe_mppe-stateless=Vai iespējot bezvalstnieku MPPE režīmu?
+mppe_mppe=Vai iespējot MPPE šifrēšanu?
+mppe_m2=Jāizmanto
+mppe_m0=Nevar izmantot
+mppe_d0=Invalīds
+mppe_d1=Atļauts
+mppe_mppe-stateful=Vai iespējot valstisko MPPE režīmu?
+mppe_old=Brīdinājums - vecā stila MPPE direktīvas $1 tika atrastas jūsu konfigurācijas failā, kaut arī jūsu PPP dēmons atbalsta jaunā stila direktīvas.
+mppe_new=Brīdinājums - jaunā stila MPPE direktīvas $1 tika atrastas jūsu konfigurācijas failā, kaut arī jūsu PPP dēmons atbalsta tikai vecā stila direktīvas.
+
+log_create=Izveidots PPTP tunelis $1 
+log_update=Modificēts PPTP tunelis $1 
+log_delete=Izdzēsts PPTP tunelis $1 
+log_conn=Savienots tunelis $1 
+log_conn_l=Savienots tunelis $1 ar vietējo adresi $2 
+log_failed=Neizdevās savienot tuneli $1 
+log_disc=Atvienots tunelis $1 
+log_opts=Rediģētās globālās PPP iespējas

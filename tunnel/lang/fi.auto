@@ -1,0 +1,21 @@
+index_elink=Tunnelin URL-osoitetta ei ole vielä määritetty.
+index_url=Kirjoita avattava URL-osoite:
+index_open=Avata
+
+link_eurl=Virheellinen tunnelin URL : $1 
+link_elogin=Sisäänkirjautuminen $1 : een epäonnistui $2 : na.
+link_eautologin=Virheellinen käyttäjänimi tai salasana $1 : lle. <a href='$2'>Kirjaudu sisään napsauttamalla tätä</a>.
+link_enouser=Sisäänkirjautumiseen $1 tarvitaan käyttäjänimi ja salasana, mutta ketään ei ole määritetty.
+link_ebadurl=Et voi käyttää URL-osoitetta $1 
+link_mconfig=Muuta kirjautumistietoja <a href='$1'>moduulin määritys</a> -sivulla.
+
+login_title=Kirjaudu verkkosivustoon
+login_desc=Sinun on annettava käyttäjänimi ja salasana kirjautuaksesi $1 : ään.
+login_header=Verkkosivun todennus
+login_user=Käyttäjätunnus
+login_pass=Salasana
+login_login=Kirjaudu sisään
+login_clear=Asia selvä
+
+seturl_err=URL-osoitteen avaaminen epäonnistui
+seturl_eurl=Annettu virheellinen URL-osoite

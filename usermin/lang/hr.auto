@@ -1,0 +1,500 @@
+index_title=Konfiguracija korisnika
+index_econfig=Direktorija $1 ili ne postoji u vašem sustavu ili nije korisnička konfiguracijska mapa. Možda Usermin nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
+index_return=Konfiguracija korisnika
+index_stop=Zaustavite Usermin
+index_stopmsg=Kliknite ovaj gumb kako biste zaustavili pokretanje Usermin poslužitelja na vašem sustavu. Nakon zaustavljanja, korisnici se neće moći prijaviti na njega.
+index_start=Pokrenite Usermin
+index_startmsg=Kliknite ovaj gumb za pokretanje Usermin poslužitelja u vašem sustavu. Dok se sve ne pokrene, korisnici se neće moći prijaviti.
+index_version=Usermin $1 
+index_boot=Počnite u vrijeme dizanja
+index_bootmsg=Promijenite ovu opciju da biste kontrolirali je li Usermin pokrenut u vrijeme pokretanja ili ne. Ako se trenutno ne pokreće pri pokretanju i odabran je Da, stvorit će se nova init skripta.
+index_install=Webmin može automatski preuzeti i instalirati najnoviju verziju Usermin-a za vas. Međutim, to se ne smije učiniti ako je program već instaliran i koristi drugu konfiguracijsku mapu.
+index_rpm=Instalirajte Usermin RPM paket
+index_tgz=Instalirajte Usermin tar.gz paket
+index_deb=Instalirajte Usermin Debian paket
+index_esame=Korisnički konfiguracijski direktorij $1 postavljen na stranici <a href='$2'>konfiguracija modula</a> isti je kao Webmin-ova direktorija, a to nije ispravno.
+index_eroot=Korisnički konfiguracijski direktorij $1 postoji, ali korijenski imenik programa $2 na koji se odnosi ne! Ručno biste trebali preuzeti i ponovno instalirati Usermin.
+index_restart=Ponovo pokrenite Usermin
+index_restartmsg=Kliknite ovaj gumb da biste ponovno pokrenuli postupak poslužitelja Usermin. Ovo će možda biti potrebno ako ste nedavno nadogradili Perl.
+
+access_title=IP kontrola pristupa
+access_desc=Usermin poslužitelj može se konfigurirati da uskraćuje ili dopušta pristup samo s određene IP adrese pomoću ovog obrasca. Također se mogu unijeti nazivi hosta (poput foo.bar.com) i IP mreže (poput 10.254.3.0 ili 10.254.1.0/255.255.255.128 ili 10.254.1.0/25 ili 10.254.1.5-10.254.97.127). Trebali biste ograničiti pristup vašem poslužitelju na pouzdane adrese, posebno ako je on dostupan s Interneta. Inače će svatko tko pogodi vašu lozinku imati potpunu kontrolu nad vašim sustavom.
+
+bind_title=Portovi i adrese
+bind_desc2=Ovaj se obrazac može koristiti za promjenu broja porta koji Usermin sluša ili ga slušati na samo jednoj IP adresi u vašem sustavu. Možete ga konfigurirati i za prihvaćanje veza na više portova ili za slušanje na više IP adresa. Napomena - vaš web preglednik može zatražiti da se ponovo prijavite nakon promjene vrata ili adrese vezanja.
+bind_erestart=Došlo je do pogreške prilikom pokretanja Usermin-a s novim postavkama adrese i priključaka : $1 
+
+mods_title=Usermin Moduli
+umods_title=Usermin Moduli
+mods_desc1=Usermin moduli se mogu dodati nakon instalacije pomoću obrasca desno. Moduli se obično distribuiraju u <tt>.wbm</tt> datotekama, od kojih svaki može sadržavati jedan ili više modula. Moduli se mogu instalirati i iz RPM datoteka ako ih podržava vaš operativni sustav.
+mods_install=Instalirajte modul
+mods_local=Iz lokalne datoteke
+mods_uploaded=Iz prenesene datoteke
+mods_ftp=S ftp ili http URL
+mods_nodeps=Zanemarite ovisnosti modula prilikom instalacije
+mods_installok=Instalirajte modul iz datoteke
+mods_desc2=Ako želite imati više kopija istog modula s različitim konfiguracijama, obrazac na desnoj strani omogućuje vam kloniranje bilo kojeg postojećeg modula. Klon će imati novo ime, novu konfiguraciju modula i možda će biti dostupan različitim korisnicima.
+mods_clone=Klon modul
+mods_cname=Modul za kloniranje
+mods_cnew=Naziv kloniranog modula
+mods_ccat=Dodijelite kategoriji
+mods_csame=Isto kao i original
+mods_cloneok=Klon modul
+mods_desc3=Postojeći moduli se mogu izbrisati pomoću donjeg obrasca. Kad je modul izbrisan, morate ga ponovo instalirati prije nego što ga ponovo možete koristiti. Modul se ne može izbrisati ako drugi moduli ovise o njemu.
+mods_delete=Brisanje modula
+mods_deleteok=Brisanje odabranih modula
+mods_desc4=Instalirani moduli se mogu izvesti u obliku wbm.gz datoteke pomoću donjeg obrasca. Datoteka modula može se zatim instalirati na drugi sustav koji pokreće Usermin.
+
+os_title=Operativni sustav i okruženje
+os_desc3=Ova stranica prikazuje operativni sustav koji je Usermin otkrio u vrijeme instalacije i sustav koji je trenutno otkriven. Ako se razlikuju, možete odabrati ažuriranje OS-ovih podataka o Userminu, što će možda biti potrebno ako ste ga nedavno nadogradili.
+os_desc2=Također možete promijeniti put pretraživanja koji koristi Usermin za pokretanje programa, a zajednički put knjižnice prošao je bilo kojim programima.
+os_usermin=Operativni sustav prema Userminu
+os_iusermin=Interni OS kod koji koristi Usermin
+os_update=Ažurirajte Usermin za upotrebu otkrivenog OS-a
+
+lang_title=Jezik
+lang_title2=Korisnički jezik
+lang_intro=Ova vam stranica omogućuje odabir jezika koji će Usermin koristiti za prikazivanje naslova, upita i poruka
+
+session_title=Ovjera
+session_desc1=Kad je omogućeno, istek vremena zaporke štiti vaš Usermin poslužitelj od brzih napada razbijanja zaporki dodavanjem neprekidno rastućeg odgode između svakog neuspjelog pokušaja prijave za istog korisnika.
+session_desc2=Kada je omogućena provjera autentičnosti sesije, Usermin će pratiti svaku prijavljenu sesiju korisnika, čime je omogućeno da se automatski korisnici odjavljuju. Imajte na umu da omogućavanje ili onemogućavanje provjere provjere može prisiliti sve korisnike da se ponovo prijave.
+session_remember=Ponudite za stalno pamćenje prijave?
+session_hostname=Prikaži ime računala na zaslonu za prijavu?
+session_realname=Pokazati stvarno ime hosta umjesto imena iz URL-a?
+session_authmode=Način provjere autentičnosti
+session_authmode0=Koristite PAM za provjeru autentičnosti, ako je dostupan
+session_authmode1=Autentifikacija pomoću datoteke lozinke $1 stupci $2 i $3 
+session_authmode2=Koristite vanjski program provjere autentičnosti u lignji
+session_eauthmode1=Morate unijeti datoteku s lozinkom ako ste odabrali tu opciju
+session_eauthmode2=Morate unijeti vanjski program provjere autentičnosti ako ste odabrali tu opciju
+session_domain=Automatski pokušajte dodati ime domene korisničkim imenima?
+session_strip=Automatski pokušajte ukloniti domenu iz korisničkih imena?
+session_usermap=Koristite datoteku za mapiranje korisničkog imena
+session_userfmt=Format datoteke
+session_userfmt0=Generički prilagodljiv (naziv za adresu)
+session_userfmt1=Virtuertable (adresa do imena)
+session_eusermap=Nedostaje ili nepostojeće datoteke za mapiranje korisničkog imena
+session_blank=Korisnike s praznom zaporkom zatražiti da odaberu prvu pri prijavi?
+session_homedir=Kreirajte nedostajuće kućne direktorije nakon prijave?
+session_homedir_perms=Dozvole za novi direktorij
+session_ehomedir_perms=Nedostaju ili su nevaljana dopuštenja oktalnog kućnog imenika
+
+themes_title=Korisničke teme
+themes_desc=Teme kontroliraju izgled korisničkog sučelja Usermin, uključujući ikone, boje, pozadine i eventualno izgled stranica. Okvir za odabir u nastavku može se koristiti za odabir jedne od tema instaliranih na vašem sustavu koja će biti zadana za Usermin korisnike.
+themes_sel=Trenutna tema :
+themes_default=Stara tema korisnika
+themes_change=Promijeniti
+themes_installdesc=Upotrijebite donji obrazac za instaliranje nove Usermin teme na vaš sustav. Teme se obično distribuiraju u <tt>.wbt</tt> datotekama, ali mogu se instalirati i iz RPM datoteka ako ih podržava vaš operativni sustav.
+themes_installok=Instalirajte temu
+themes_err1=Instalacija teme iz $1 nije uspjela
+themes_efile=Mapa ne postoji
+themes_err2=Prijenos teme nije uspio
+themes_ebrowser=Vaš preglednik ne podržava prijenos datoteka
+themes_err3=Instalacija teme iz $1 nije uspjela
+themes_eurl=Neispravna poveznica
+themes_etar=Nije valjana datoteka teme : $1 
+themes_einfo=Temi $1 nedostaje datoteka topic.info
+themes_enone=Čini se da datoteka ne sadrži teme
+themes_eextract=Ekstrakt nije uspio : $1 
+themes_done=Sljedeće su teme uspješno instalirane na vašem sustavu :
+themes_line=$1 u $2 ($3 kB)
+themes_ecomp=Datoteka je komprimirana, ali naredba $1 nije pronađena u vašem sustavu
+themes_ecomp2=Nekomprimiranje datoteke nije uspjelo : $1 
+themes_egzip=Datoteka je gipkirana, ali naredba $1 nije pronađena u vašem sustavu
+themes_egzip2=Nije uspjelo kopiranje datoteke : $1 
+themes_erpm=Nije RPM tema RPM-a
+themes_eirpm=RPM instaliranje nije uspjelo : $1 
+themes_ok=Tema se uspješno promijenila.. preusmjeravanje na web stranicu indeksa Webmin.
+themes_delete=Ovaj se obrazac može koristiti za brisanje jedne od tema instaliranih na vašem sustavu koja se trenutno ne koristi.
+themes_delok=Tema za brisanje :
+
+themes_desc4=Instalirane teme mogu se izvesti u obliku wbt.gz datoteke pomoću donjeg obrasca. Datoteka teme može se zatim instalirati na drugi sustav koji pokreće Usermin.
+
+configs_ecannot=Nije vam dopušteno konfigurirati ovaj modul
+configs_title=Konfiguracija korisničkog modula
+configs_header=Podesivi moduli
+configs_title2=Konfigurirajte modul
+configs_desc=Na donjem popisu odaberite modul koji želite konfigurirati.
+configs_uheader=Zadane korisničke postavke za $1 
+configs_return=Konfiguracija korisničkog modula
+configs_prefs=Korisnici mogu uređivati postavke?
+configs_sels=Samo odabrano ..
+configs_global=Globalna konfiguracija modula
+configs_globaldesc=Postavke u ovom obliku odnose se na sve korisnike modula i općenito postavljaju opcije povezane s programima i datotekama koje on koristi.
+configs_user=Zadane korisničke postavke
+configs_userdesc=Postavke u ovom obliku definiraju zadane postavke za postavke koje modul može uređivati. Ako ne odredite drugačije, pojedinačni korisnici mogu ih preuveličati.
+
+acl_title=Dostupni moduli
+acl_desc=Pomoću ove stranice odaberite koji će instalirani Usermin moduli biti vidljivi korisnicima.
+
+ssl_title=SSL šifriranje
+ssl_desc1=Čini se da je domaćin na kojem se pokreće Usermin instaliran SSLeay Perl modul. Pomoću toga Usermin podržava SSL šifriranu komunikaciju između preglednika i poslužitelja. Ako korisnici pristupaju vašem Usermin poslužitelju putem Interneta, tada biste definitivno trebali razmisliti o korištenju SSL-a kako biste spriječili da napadač uhvati svoje lozinke.
+ssl_desc2=Upozorenje - uključite SSL podršku samo ako imate preglednik koji podržava SSL, a između preglednika i domaćina Usermin nema vatrozida koji blokira <tt>https</tt> zahtjeve.
+ssl_newkey=Ovaj se obrazac može koristiti za stvaranje novog SSL ključa za vaš Usermin poslužitelj.
+ssl_hole=Budući da trenutno koristite zadani Usermin SSL ključ kojem svi imaju pristup, odmah biste trebali generirati novi ključ. Inače vaša SSL veza nije sigurna!
+ssl_savekey=Ovaj obrazac omogućuje vam učitavanje postojećeg privatnog ključa SSL formata PEM i certifikat za korištenje od strane vašeg Usermin poslužitelja.
+ssl_copycert=Kopirajte potvrdu s Webmin-a
+ssl_copycertdesc=Kopirajte SSL certifikat, privatni ključ, CA cert i ostale postavke koje Webmin koristi.
+
+ca_email=Email adresa
+ca_ou=odjel
+ca_o=Organizacija
+ca_sp=država
+ca_c=Kod države
+
+newkey_ok=Sljedeći SSL ključ uspješno je generiran za Usermin.
+
+stop_err=Zaustavljanje korisničkog servisa nije uspjelo
+stop_ekill=Ubijanje nije uspjelo : $1 
+stop_efile=Već zaustavljeno
+stop_ecannot=Zabranjeno vam je zaustavljanje Usermin-a
+
+start_err=Nije uspjelo pokretanje Usermin-a
+start_ecannot=Nije vam dopušteno pokretanje Usermin-a
+
+users_title=Dopušteni korisnici i grupe
+users_desc=Usermin se može konfigurirati tako da ograniči koje unix korisnike i grupe mogu prijavljivati pomoću ovog obrasca. Da biste odredili sve primarne članove unix grupe, unesite <tt>@groupname</tt> na popis.
+users_desc2=Da biste odgovarali rasponu UID-ova, na popis unesite <tt>start-end</tt>, <tt>start-</tt> ili <tt>-end</tt>.
+users_header=Kontrola pristupa korisničkim podacima za prijavu
+users_all=Dopusti svim korisnicima
+users_allow=Dopusti samo popisne korisnike ..
+users_deny=Zabrani na popisu korisnika ..
+users_err=Ažuriranje popisa korisnika nije uspjelo
+users_none=Nema korisnika
+users_euser='$1' nije valjano korisničko ime
+users_egroup='$1' nije važeći naziv grupe
+users_shells=Zabrani korisnicima čije školjke nisu u datoteci
+users_eshells=Datoteka o školjkama koja nedostaje ili ne postoji
+
+defacl_title=Opcije kontrole pristupa
+defacl_desc=Ova stranica omogućuje vam konfiguriranje različitih opcija kontrole pristupa koje se primjenjuju na Usermin module i korisnike. Ove su opcije slične onima u Globalnom ACL-u za svakog korisnika u modulu Webmin korisnici.
+defacl_header=Opcije kontrole pristupa za Usermin korisnike
+defacl_err=Spremanje opcija kontrole pristupa nije uspjelo
+
+install_err1=Instalacija modula od $1 nije uspjela
+install_efile=Mapa ne postoji
+install_err2=Instalacija prenesenog modula nije uspjela
+install_ebrowser=Vaš preglednik ne podržava prijenos datoteka
+install_err3=Instalacija modula od $1 nije uspjela
+install_eurl=Neispravna poveznica
+install_etar=Nije valjana datoteka modula : $1 
+install_einfo=U modulu $1 nedostaje datoteka module.info
+install_enone=Čini se da datoteka ne sadrži module
+install_eos=Modul $1 ne podržava ovaj operativni sustav ($2 $3)
+install_eusermin=Modul $1 je za Webmin, a ne za Usermin
+install_ever=Modul $1 zahtijeva Usermin verziju $2 ili noviju
+install_edep=Za modul $1 potreban je modul $2 
+install_eperldep=Modul $1 zahtijeva Perl modul $2. <br>Međutim, Webmin<a href='$3'> možete preuzeti i instalirati </a> Perl modul umjesto vas.
+install_eextract=Ekstrakt nije uspio : $1 
+install_title=Instalirajte modul
+install_desc=Sljedeći su moduli uspješno instalirani i dodani na popis korisnika za kontrolu pristupa :
+install_line2=$1 u $2 ($3 kB) pod kategorijom $4 
+install_ecomp=Datoteka je komprimirana, ali naredba $1 nije pronađena u vašem sustavu
+install_ecomp2=Nekomprimiranje datoteke nije uspjelo : $1 
+install_egzip=Datoteka je gipkirana, ali naredba $1 nije pronađena u vašem sustavu
+install_egzip2=Nije uspjelo kopiranje datoteke : $1 
+install_erpm=Nije Usermin modul ili RPM teme
+install_eirpm=RPM instaliranje nije uspjelo : $1 
+install_cat=Pod kategorijom $1.
+install_eneither=RPM ne sadrži korisnički modul ili temu
+
+delete_err=Brisanje modula nije uspjelo
+delete_edep=Modul $1 nije moguće izbrisati jer modul $2 ovisi o njemu
+delete_desc1=$1 (klon od $2)
+delete_desc2=$1 u $2 ($3 kB)
+delete_title=Brisanje modula
+delete_msg=Sljedeći su moduli uspješno izbrisani iz vaše Usermin instalacije :
+delete_rusure=Jeste li sigurni da želite izbrisati module (e) $2 ? $1 kB datoteka bit će zauvijek izbrisano.
+delete_rusure2=Jeste li sigurni da želite izbrisati temu $2 ? $1 kB datoteka bit će zauvijek izbrisano.
+delete_enone=Nije odabran nijedan modul
+
+ui_title=Korisničko sučelje
+ui_desc=Ovaj obrazac omogućuje uređivanje opcija korisničkog sučelja koje koriste svi Usermin moduli.
+ui_header=Opcije korisničkog sučelja
+ui_default=Zadano
+cs_page=Pozadina stranice
+cs_text=Normalni tekst
+cs_table=Pozadina stola
+cs_header=Zaglavlje tablice
+cs_link=Tekst veze
+ui_texttitles=Prikazati naslove kao tekst?
+ui_sysinfo=Prikaži prijavu i ime računala
+ui_sysinfo0=Pri dnu preglednika
+ui_sysinfo1=U naslovu preglednika
+ui_sysinfo2=Iznad naslova stranice
+ui_sysinfo3=Nigdje
+ui_sysinfo4=Umjesto naslova preglednika
+ui_err=Spremanje korisničkog sučelja nije uspjelo
+ui_ered=Nevažeća crvena vrijednost za '$1'
+ui_egreen=Nevažeća zelena vrijednost za '$1'
+ui_eblue=Nevaljana plava vrijednost za '$1'
+ui_feedback=Pošalji povratne informacije korisniku
+ui_feedbackmode=Želite li poslati slanje povratnih informacija?
+ui_feednocc=Samo za gornju adresu
+ui_gotoone=Idite izravno na modul <br> ako korisnik ima samo jedan?
+ui_gotonone=&lt;Nijedan&gt;
+ui_gotomodule=Nakon prijave, uvijek prijeđite na modul
+ui_nohost=Pokaži verziju, ime računala i OS u glavnom izborniku?
+ui_feedbackyes=Da, na adresu
+ui_feedbackmail=Pošalji povratne informacije putem
+ui_feedbackmail1=Lokalni sendmail program
+ui_feedbackmail0=SMTP poslužitelj
+ui_efeedback=Nedostaje povratna adresa e-pošte
+ui_efeedbackmail=Nedostaje ili nije važeći SMTP poslužitelj
+ui_feedbackhost=Ime domaćina u povratnim informacijama Od: adresa
+ui_feedbackthis=Ime domaćina sustava
+ui_hostnamemode=Naziv hosta koji će se prikazati u korisničkom imenu
+ui_hnm0=Pravo ime domaćina
+ui_hnm1=Naziv hosta s URL-a
+ui_hnm2=Naziv domene s URL-a
+ui_hnm3=Drugo ime ..
+ui_tabs=Kategorizirati module?
+
+upgrade_title=Nadogradite Usermin
+upgrade_title2=Instalirajte Usermin
+upgrade_desc=Ovaj obrazac omogućuje nadogradnju cjelokupne Usermin instalacije na novu verziju. Možete instalirati iz lokalne datoteke, prenesene datoteke ili iz najnovije verzije na <a href=http://www.usermin.com/>www.usermin.com</a>. Kao i kod ručne nadogradnje, zadržat će se sve vaše postavke konfiguracije i treći moduli.
+upgrade_descrpm=Ovaj obrazac omogućuje nadogradnju cjelokupne Usermin instalacije na novu verziju pomoću RPM opcije nadogradnje. Možete instalirati iz lokalne RPM datoteke, prenesene datoteke ili iz najnovije verzije na <a href=http://www.usermin.com/>www.usermin.com</a>. Kao i kod ručne nadogradnje, zadržat će se sve vaše postavke konfiguracije i treći moduli.
+upgrade_descdeb=Ovaj obrazac omogućava nadogradnju cjelokupne Usermin instalacije na novu verziju nadogradnjom Debian paketa. Možete se instalirati iz lokalne.deb datoteke, prenesene datoteke ili iz najnovije verzije na <a href=http://www.usermin.com/>www.usermin.com</a>. Kao i kod ručne nadogradnje, zadržat će se sve vaše postavke konfiguracije i treći moduli.
+upgrade_local=Iz lokalne datoteke
+upgrade_uploaded=Iz prenesene datoteke
+upgrade_url=S ftp ili http URL
+upgrade_ftp=Najnovija verzija s www.usermin.com
+upgrade_delete=Izbrisati imenik stare verzije nakon nadogradnje?
+upgrade_ok=Nadogradite Usermin
+upgrade_err1=Nadogradnja sa $1 nije uspjela
+upgrade_err2=Nadogradnja s prenesene datoteke nije uspjela
+upgrade_err3=Nadogradnja s web stranice www.usermin.com nije uspjela
+upgrade_err5=Nadogradnja s URL-a $1 nije uspjela
+upgrade_eurl=Nedostaje ili nevažeći URL
+upgrade_efile=Mapa ne postoji
+upgrade_ebrowser=Vaš preglednik ne podržava prijenos datoteka
+upgrade_eversion=Ne mogu se nadograditi na verziju $1 
+upgrade_elatest=Već imate najnoviju verziju Usermin-a
+upgrade_erpm=Nije valjana RPM datoteka Usermin
+upgrade_egunzip=Vaš sustav nema naredbu <tt>gunzip</tt>
+upgrade_egzip=Nije uspjelo kopiranje datoteke : $1 
+upgrade_etar=Nije valjana Usermin tar datoteka
+upgrade_euntar=Ukloniti datoteku nije uspjelo : $1 
+upgrade_emod=Datoteka je Usermin modul, a ne cjelovita Usermin nadogradnja. Možda biste htjeli koristiti stranicu <a href='$1'>Usermin Modules</a> da biste je instalirali.
+upgrade_ewebmin=Datoteka je Webmin verzija $1, a ne korisničko ažuriranje.
+upgrade_setup=Nadogradnja Usermin sa naredbom $1 ..
+upgrade_setup2=Instaliranje Usermin sa naredbom $1 ..
+upgrade_done=.. nadogradnja dovršena.
+upgrade_failed=.. nadogradnja nije uspjela!
+upgrade_updates=Postoje $1 ažuriranja za ovu novu verziju Usermin-a. <a href='$2'>Kliknite ovdje</a> da biste ih odmah preuzeli i instalirali.
+upgrade_eupdates=Preuzimanje datoteka ažuriranja nije uspjelo : $1 
+
+update_desc1=Ovaj obrazac omogućuje nadogradnju Usermin modula za koje je otkriveno da sadrže greške ili sigurnosne rupe sa stranice <a href=http://www.usermin.com/uupdates.html>Korisnička ažuriranja</a> ili iz drugog izvora. Ovo će usporediti trenutno instalirane module s onima dostupnim za ažuriranje i po potrebi automatski preuzeti i instalirati sve zastarjele module.
+update_header1=Ažurirajte module odmah
+update_header2=Ažurirajte module po rasporedu
+update_webmin=Ažuriranje s www.usermin.com
+update_other=Ažuriranje iz drugog izvora
+update_show=Pokaži samo koji će se moduli ažurirati
+update_missing=Instalirajte module koji trenutno nisu instalirani
+update_quiet=Prijavi samo ažuriranja
+update_ok=Ažurirajte module
+update_email=Izvješće o ažuriranju e-poštom na
+update_enabled=Trenutno je omogućeno planirano ažuriranje
+update_apply=Spremite i primijenite
+update_sched=Ažurirajte module na $1 : 00 svakih $2 dana
+update_none=Nema ažuriranja korisnika za ovu verziju.
+update_failed=Instalacija modula nije uspjela : $1 
+update_desc2=Ovaj je obrazac namijenjen zakazivanju automatskog ažuriranja Usermin modula koji sadrže greške ili sigurnosne rupe sa stranice <a href=http://www.usermin.com/uupdates.html>Korisnička ažuriranja</a> ili iz drugog izvora. Iako je ova usluga korisna, trebali biste biti oprezni s njenim korištenjem jer može omogućiti napadačima da preuzmu vaš sustav ako poslužitelj ažuriranja ikad bude ugrožen.
+
+assignment_title=Ponovno dodijelite module
+assignment_header=Zadaci kategorije modula
+assignment_ok=Promijeni kategorije
+assignment_desc=Ovaj obrazac omogućuje vam konfiguriranje kategorije pod kojom se svaki modul prikazuje na stranici indeksa Usermin.
+
+categories_title=Uredi kategorije
+categories_header=ID kategorije i opisi
+categories_desc=Ovaj obrazac omogućuje vam preimenovanje postojećih Usermin kategorija i stvaranje novih kojima ćete dodijeliti module. Gornji dio tablice namijenjen je izmjeni opisa ugrađenih kategorija, dok je donji dio za dodavanje novih ID-ova kategorija i opisa.
+categories_ok=Spremi kategorije
+categories_err=Spremanje kategorija nije uspjelo
+categories_edesc=Nedostaje opis za $1 
+categories_ecat=ID kategorije $1 je već zauzet
+categories_code=iskaznica
+categories_name=Prikazani opis
+
+log_access=Izmijenjena IP kontrola pristupa
+log_bind=Promijenjeni port i adresa
+log_log=Izmijenjene su mogućnosti prijava
+log_proxy=Promijenjeni proxy poslužitelji
+log_ui=Izmijenjene su mogućnosti korisničkog sučelja
+log_install=Instalirani modul $1 
+log_tinstall=Instalirana tema $1 
+log_clone=Klonirani modul $1 do $2 
+log_delete=Izbrisan modul $1 
+log_os=Promijenjen operativni sustav
+log_lang=Izmijenjen globalni jezik
+log_startpage=Izmijenjene su opcije indeksnih stranica
+log_upgrade=Nadograđen Usermin na verziju $1 
+log_uinstall=Instalirana inačica Usermin $1 
+log_session=Izmijenjene su opcije provjere autentičnosti
+log_ssl=Promijenjen način SSL šifriranja
+log_copycert=Kopirale su SSL postavke s Webmin-a
+log_newkey=Izrađen je novi SSL ključ
+log_setupca=Postavljanje ovlaštenja za certifikate
+log_changeca=Izmijenjeno ovlaštenje certifikata
+log_stopca=Isključite ovlaštenje za certifikate
+log_assignment=Promijenjene kategorije modula
+log_categories=Izmijenjena su imena kategorija
+log_theme=Promijenite temu u $1 
+log_theme_def=Tema je promijenjena u zadani Usermin
+log_referers=Promijenili pouzdane preporuke
+log_config=Promjena konfiguracije za $1 
+log_uconfig=Promjena korisničke konfiguracije za $1 
+log_defacl=Izmijenjene mogućnosti kontrole pristupa
+log_users=Promijenjeni dopušteni korisnici i grupe
+log_acl=Promijenili dostupne korisnike
+log_restrict_create=Stvoreno ograničenje za $1 
+log_restrict_modify=Izmijenjeno ograničenje za $1 
+log_restrict_delete=Izbrisano ograničenje za $1 
+log_restrict_move=Premješteno ograničenje za $1 
+
+log_all=svi korisnici
+log_group=grupa $1 
+log_switch=Prebačeno na Usermin korisnika $1 
+log_logout=Izmijenjena su vremena automatske odjave
+log_dav=Promijenjene postavke DAV poslužitelja
+log_advanced=Promijenjene napredne opcije
+log_mobile=Izmijenjene su mogućnosti mobilnih uređaja
+
+update_err=Ažuriranje modula nije uspjelo
+update_eurl=Nedostaje ili nije važeći ažurirani URL
+update_title=Ažurirajte module
+update_info=Ažuriranje Usermin modula ..
+update_mmissing=Modul $1 nije instaliran na ovom sustavu.
+update_malready=Modul $1 je već ažuriran.
+update_mshow=Ažuriranje potrebno za modul $1 do verzije $2.
+update_mok=Ažuriranje modula $1 na verziju $2.
+update_fixes=Popravlja problem
+update_mdesc=Instalirani modul $1 ($2 Kb)
+update_mos=Ažuriranje na modul $1 nije povezano s ovim OS-om.
+update_efile=Nevažeći modul ažurira izvornu datoteku
+update_ehour=Nedostaje ili nevažeći sat za ažuriranje
+update_edays=Nedostaje ili nevažeći broj dana
+update_rv=Provjera ažuriranih Usermin modula od $1 
+update_eemail=Morate unijeti adresu e-pošte samo ako prikazuje samo ono što bi se ažuriralo.
+update_subject=Izvješće o ažuriranju korisničkih modula
+update_version=Novo izdanje Usermin-a (verzija $1) je sada dostupno za preuzimanje. Buduća ažuriranja bit će objavljena samo za najnoviju verziju.
+
+restrict_title=Ograničenja modula
+restrict_desc=Ova vam stranica omogućuje kontrolu koji su Usermin moduli dostupni različitim korisnicima i skupinama. Primjenjuju se svi dodaci i podstranice modula na popisu, a ne samo prva koja odgovara svakom korisniku. <br>Moduli koji nisu odabrani na stranici<a href='$1'> dostupni moduli </a> nikada neće biti dostupni korisnika, čak i ako su ovdje odabrani.
+restrict_who=Korisnik Usermin
+restrict_what=Dostupni moduli
+restrict_all=Svi korisnici
+restrict_group=Grupa $1 
+restrict_file=Korisnici u datoteci $1 
+restrict_plus=<b>Sve plus</b> $1 
+restrict_minus=<b>Sve osim</b> $1 
+restrict_set=<b>Samo</b> $1 
+restrict_nomods=<b>Nema modula</b>
+restrict_add=Dodajte novo ograničenje korisnika ili grupe
+restrict_edit=Uređivanje ograničenja
+restrict_create=Stvorite ograničenje
+restrict_header=Pojedinosti o ograničenju korisničkog modula
+restrict_who2=Odnosi se na
+restrict_umode0=Unix korisnik
+restrict_umode1=Članovi grupe
+restrict_umode2=Svi korisnici
+restrict_umode3=Korisnici i grupe u datoteci
+restrict_mods=moduli
+restrict_modsdesc=(One u crvenoj boji onemogućene su na stranici <a href='$1'>dostupni moduli</a>)
+restrict_mmode0=Samo odabrano ..
+restrict_mmode1=Dodaj odabrano ..
+restrict_mmode2=Ukloni odabrano ..
+restrict_return=popis ograničenja
+restrict_err=Spremanje ograničenja nije uspjelo
+restrict_euser=Nedostaje ili nije valjano korisničko ime
+restrict_egroup=Nedostaje ili nevažeće ime grupe
+restrict_efile=Datoteka za nestale, nepostojeće ili ne-apsolutne korisnike i grupe
+restrict_move=Pomicati
+bootup_ecannot=Ne smijete konfigurirati bootup
+
+acl_icons=Dopuštene stranice za konfiguraciju
+acl_mods=Može konfigurirati module
+acl_all=Svi moduli
+acl_sel=Odabrano u nastavku ..
+acl_stop=Može li se zaustaviti i pokrenuti Usermin?
+acl_bootup=Može li se konfigurirati pokretanje u vrijeme pokretanja?
+acl_ecannot=Nije vam dopušteno koristiti ovu stranicu
+
+clone_err=Kloniranje modula nije uspjelo
+clone_elink=simbol veze nije uspio : $1 
+clone_ecopy=kopiranje konfiguracije nije uspjelo : $1 
+clone_desc=Klon od $1 
+
+sessions_title=Trenutačne sesije za prijavu
+sessions_desc=Trenutačne korisničke prijave na sesiju navedene su u nastavku. Da biste otkazali postojeću sesiju i natjerali korisnika da se ponovo prijavi, kliknite njegov ID sesije.
+sessions_id=ID sesije
+sessions_user=Unix korisnik
+sessions_host=IP adresa
+sessions_login=Prijavljeni ste u
+sessions_none=Trenutno nema korisnika koji su prijavljeni u Usermin.
+sessions_switch=Prebaci se na Usermin korisnika:
+sessions_ok=Sklopka
+
+referers_title=Pouzdani referent
+referers_desc=Ova stranica vam omogućuje konfiguriranje korisničke podrške za provjeru preporuka koja se koristi za sprečavanje zlonamjernih veza s drugih web mjesta koje varaju preglednike vaših korisnika da rade opasne stvari sa Userminom. Međutim, ako imate poveznice na Usermin s vaših vlastitih web stranica na koje ne želite biti upozoreni, dodajte te web stranice na donji popis.
+
+anon_title=Anonimni modulski pristup
+anon_desc=Ova stranica omogućuje vam da odobrite pristup odabranim Usermin modulima i stazama bez da se klijenti trebaju prijaviti. Za svaki put modula koji unesete u nastavku (kao što su / naredbe ili / passpass) morate unijeti i naziv Unix korisnika čija će se dopuštenja koristiti za pristup modulu.
+anon_user=Unix korisnik
+anon_euser=Nedostaje ili nevažeći Unix korisnik za URL putanju "$1"
+
+logout_title=Vremena automatske odjave
+logout_desc=Ova se stranica može koristiti za konfiguriranje različitih vremena odjave neaktivnosti za različite Usermin korisnike. Istek vremena mora se unijeti u nekoliko minuta, a vremensko ograničenje od nule znači da sesije za podudaranje korisnika nikada neće biti automatski odjavljene.
+logout_type=Tip
+logout_who=Korisnik, grupa ili datoteka
+logout_time=Pauza
+logout_user=Korisnik ..
+logout_group=Članovi grupe ..
+logout_file=Korisnici u datoteci ..
+logout_err=Spremanje vremena odjave nije uspjelo
+logout_euser=Nedostaje ili nije važeći korisnik u retku $1 
+logout_egroup=Nedostaje ili nije važeća skupina u retku $1 
+logout_efile=Nedostaje ili ne postoji datoteka u retku $1 
+logout_etime=Nedostaje ili nevažeće vremensko ograničenje u retku $1 
+logout_ecannot=Nije vam dopušteno konfigurirati vrijeme odjave
+
+dav_title=DAV poslužitelj
+dav_header=Opcije DAV poslužitelja
+dav_path=Omogućen DAV?
+dav_disabled=Onemogućeno
+dav_enabled=Omogućeno, pod URL-om puta $1 
+dav_root=Dopusti pristup direktoriju
+dav_root0=Cijeli datotečni sustav
+dav_root1=Korisnikov kućni imenik
+dav_root2=Imenik $1 
+dav_ecannot=Nije vam dopušteno konfigurirati DAV poslužitelj
+dav_emodule=Perl modul $1 potreban za omogućavanje DAV-a nije instaliran.
+dav_cpan=<a href='$1'>Kliknite ovdje</a> da biste preuzeli Webmin i automatski ga instalirali za vas.
+dav_desc=Userminova DAV podrška omogućuje klijentima koji podržavaju DAV protokol za povezivanje s ovim Usermin poslužiteljem i čitanje i pisanje datoteka. Sav pristup datotekama vrši se s Unix povlasticama prijavljenog korisnika i bit će ograničen na specificirani direktorij.
+dav_err=Spremanje opcija DAV poslužitelja nije uspjelo
+dav_epath=Nedostaje ili nevažeća staza URL-a
+dav_eroot=Nedostaje ili nije važeći korijenski direktorij
+dav_users=Korisnici koji mogu koristiti DAV
+dav_users1=Svi korisnici
+dav_users0=Dolje navedeni korisnici i grupe ..
+dav_eusers=Nema korisnika
+
+syslog_errorlog=Zapisnik pogreške korisnika
+
+descs_title=Naslovi modula
+descs_info=Ova vam stranica omogućuje da odredite alternativne naslove za Usermin module kako biste nadjačali njihove standardne opise.
+
+advanced_title=Napredne opcije
+advanced_pass=Omogućiti lozinku korisničkim programima? <br><font size=-1> (Ne radi ako je omogućena provjera autentičnosti sesije) </font>
+
+blocked_title=Blokirani domaćini i korisnici
+blocked_none=Trenutno nije blokiran korisnik niti korisnik.
+blocked_user=Korisnik Usermin
+blocked_cleardesc=Kliknite ovaj gumb da biste očistili sve trenutne blokove domaćina i korisnika ponovnim pokretanjem postupka Usermin poslužitelja.
+
+mobile_title=Opcije mobilnog uređaja
+
+copycert_err=Kopiranje SSL postavki iz Webmin nije uspjelo
+copycert_essl=SSL nije omogućen
+copycert_ekeyfile=Nije postavljena datoteka privatnog ključa u Webminu

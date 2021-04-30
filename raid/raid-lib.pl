@@ -6,7 +6,7 @@ use WebminCore;
 &init_config();
 &foreign_require("fdisk");
 
-open(MODE, "$module_config_directory/mode");
+open(MODE, "<$module_config_directory/mode");
 chop($raid_mode = <MODE>);
 close(MODE);
 $raid_mode ||= "mdadm";
@@ -35,7 +35,7 @@ sub get_mdstat
 # Read the mdstat file
 local %mdstat;
 local $lastdev;
-open(MDSTAT, $config{'mdstat'});
+open(MDSTAT, "<".$config{'mdstat'});
 while(<MDSTAT>) {
 	if (/^(md\d+)\s*:\s+(\S+)\s+(\S+)\s+(.*)\s+(\d+)\s+blocks\s*(.*)resync=([0-9\.]+|delayed)/) {
 		$mdstat{$lastdev = "/dev/$1"} = [ $2, $3, $4, $5, $7, $6 ];
@@ -78,7 +78,7 @@ return \@get_raidtab_cache if (scalar(@get_raidtab_cache));
 if ($raid_mode eq "raidtools") {
 	# Read the raidtab file
 	local $lnum = 0;
-	open(RAID, $config{'raidtab'});
+	open(RAID, "<".$config{'raidtab'});
 	while(<RAID>) {
 		s/\r|\n//g;
 		s/#.*$//;
@@ -186,7 +186,7 @@ else {
 			}
 		close(MDSTAT);
 		local $lastdev;
-		open(MDSTAT, $config{'mdstat'});
+		open(MDSTAT, "<".$config{'mdstat'});
 		while(<MDSTAT>){
 			if (/^(md\d+)/) {
 		                $lastdev = "/dev/$1";
@@ -227,12 +227,12 @@ return \@get_raidtab_cache;
 sub get_uuid
 {
 	open(MDSTAT, "mdadm --detail $_[0]->{'value'} |");
-                while(<MDSTAT>) {
-                        if (/^\s+UUID\s+:\s*(.*)/) {
-				return $1;
-                                }
-                        }
-                close(MDSTAT);
+	while(<MDSTAT>) {
+		if (/^\s+UUID\s+:\s*(.*)/) {
+			return $1;
+			}
+		}
+	close(MDSTAT);
 }
 
 # disk_errors(string)

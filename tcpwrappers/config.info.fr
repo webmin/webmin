@@ -1,2 +1,3 @@
-hosts_allow=Fichier des permissions TCP Wrappers,0
-hosts_deny=Fichier des interdictions TCP Wrappers,0
+hosts_allow=Les wrappers TCP autorisent le fichier,0
+hosts_deny=Fichier de refus des wrappers TCP,0
+inetd_services=Récupérer les services possibles de inetd?,1,1-Oui,0-Non

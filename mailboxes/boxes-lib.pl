@@ -508,7 +508,7 @@ if ($ct =~ /multipart\/(\S+)/i && ($ct =~ /boundary="([^"]+)"/i ||
 			print HEXBIN $attach->{'data'};
 			close(HEXBIN);
 			if (!$?) {
-				open(HEXBIN, "$temp/attach.data");
+				open(HEXBIN, "<$temp/attach.data");
 				local $/ = undef;
 				$attach->{'data'} = <HEXBIN>;
 				close(HEXBIN);
@@ -562,7 +562,7 @@ if ($ct =~ /multipart\/(\S+)/i && ($ct =~ /boundary="([^"]+)"/i ||
 				while($f = readdir(DIR)) {
 					next if ($f eq '.' || $f eq '..');
 					local $data;
-					open(FILE, "$tempdir/$f");
+					open(FILE, "<$tempdir/$f");
 					while(<FILE>) {
 						$data .= $_;
 						}
@@ -871,7 +871,7 @@ local $lnum = 0;
 $sm ||= $config{'send_mode'};
 local $eol = $nocr || !$sm ? "\n" : "\r\n";
 $ssl = $config{'smtp_ssl'} if ($ssl eq '');
-local $defport = $ssl ? 465 : 25;
+local $defport = $ssl == 1 ? 465 : 25;
 $port ||= $config{'smtp_port'} || $defport;
 my %header;
 foreach my $head (@{$mail->{'headers'}}) {
@@ -920,19 +920,9 @@ if ($file) {
 elsif ($sm) {
 	# Connect to SMTP server
 	&open_socket($sm, $port, $h->{'fh'});
-	if ($ssl) {
-		# Switch to SSL mode
-		eval "use Net::SSLeay";
-		$@ && &error($text{'link_essl'});
-		eval "Net::SSLeay::SSLeay_add_ssl_algorithms()";
-		eval "Net::SSLeay::load_error_strings()";
-		$h->{'ssl_ctx'} = Net::SSLeay::CTX_new() ||
-			&error("Failed to create SSL context");
-		$h->{'ssl_con'} = Net::SSLeay::new($h->{'ssl_ctx'}) ||
-			&error("Failed to create SSL connection");
-		Net::SSLeay::set_fd($h->{'ssl_con'}, fileno($h->{'fh'}));
-		Net::SSLeay::connect($h->{'ssl_con'}) ||
-			&error("SSL connect() failed");
+	if ($ssl == 1) {
+		# Start using SSL mode right away
+		&switch_smtp_to_ssl($h);
 		}
 
 	&smtp_command($h, undef, 0);
@@ -942,6 +932,17 @@ elsif ($sm) {
 		}
 	else {
 		&smtp_command($h, "helo $helo\r\n", 0);
+		}
+
+	if ($ssl == 2) {
+		# Switch to SSL with STARTTLS, if possible
+                my $rv = &smtp_command($h, "starttls\r\n", 1);
+                if ($rv =~ /^2\d+/) {
+                        &switch_smtp_to_ssl($h);
+                        }
+                else {
+                        $ssl = 0;
+                        }
 		}
 
 	# Get username and password from parameters, or from module config
@@ -963,16 +964,16 @@ elsif ($sm) {
 		&error("Failed to create Authen::SASL object") if (!$sasl);
 		local $conn = $sasl->client_new("smtp", &get_system_hostname());
 		local $arv = &smtp_command($h, "auth $auth\r\n", 1);
-		if ($arv =~ /^(334)\s+(.*)/) {
+		if ($arv =~ /^(334)(\-\S+)?\s+(.*)/) {
 			# Server says to go ahead
-			$extra = $2;
+			$extra = $3;
 			local $initial = $conn->client_start();
 			local $auth_ok;
 			if ($initial) {
 				local $enc = &encode_base64($initial);
 				$enc =~ s/\r|\n//g;
 				$arv = &smtp_command($h, "$enc\r\n", 1);
-				if ($arv =~ /^(\d+)\s+(.*)/) {
+				if ($arv =~ /^(\d+)(\-\S+)?\s+(.*)/) {
 					if ($1 == 235) {
 						$auth_ok = 1;
 						}
@@ -980,7 +981,7 @@ elsif ($sm) {
 						&error("Unknown SMTP authentication response : $arv");
 						}
 					}
-				$extra = $2;
+				$extra = $3;
 				}
 			while(!$auth_ok) {
 				local $message = &decode_base64($extra);
@@ -988,14 +989,14 @@ elsif ($sm) {
 				local $enc = &encode_base64($return);
 				$enc =~ s/\r|\n//g;
 				$arv = &smtp_command($h, "$enc\r\n", 1);
-				if ($arv =~ /^(\d+)\s+(.*)/) {
+				if ($arv =~ /^(\d+)(\-\S+)?\s+(.*)/) {
 					if ($1 == 235) {
 						$auth_ok = 1;
 						}
 					elsif ($1 == 535) {
 						&error("SMTP authentication failed : $arv");
 						}
-					$extra = $2;
+					$extra = $3;
 					}
 				else {
 					&error("Unknown SMTP authentication response : $arv");
@@ -1173,6 +1174,24 @@ if (!&close_http_connection($h)) {
 		}
 	}
 return $lnum;
+}
+
+# switch_smtp_to_ssl(&handle)
+# Switch an SMTP connection handle to SSL mode
+sub switch_smtp_to_ssl
+{
+my ($h) = @_;
+eval "use Net::SSLeay";
+$@ && &error($text{'link_essl'});
+eval "Net::SSLeay::SSLeay_add_ssl_algorithms()";
+eval "Net::SSLeay::load_error_strings()";
+$h->{'ssl_ctx'} = Net::SSLeay::CTX_new() ||
+	&error("Failed to create SSL context");
+$h->{'ssl_con'} = Net::SSLeay::new($h->{'ssl_ctx'}) ||
+	&error("Failed to create SSL connection");
+Net::SSLeay::set_fd($h->{'ssl_con'}, fileno($h->{'fh'}));
+Net::SSLeay::connect($h->{'ssl_con'}) ||
+	&error("SSL connect() failed");
 }
 
 # unparse_mail(&attachments, eol, boundary)
@@ -1363,6 +1382,7 @@ if ($c) {
 	}
 my $r = &read_http_connection($h);
 if ($r !~ /^[23]\d+/ && !$noerr) {
+	$c =~ s/\r|\n//g;
 	&error(&text('send_esmtp', "<tt>".&html_escape($c)."</tt>",
 				   "<tt>".&html_escape($r)."</tt>"));
 	}
@@ -1621,8 +1641,8 @@ sub _decode_B {
 sub encode_mimewords
 {
 my ($rawstr, %params) = @_;
-my $charset  = $params{Charset} || 'ISO-8859-1';
-my $defenc = uc($charset) eq 'ISO-2022-JP' ? 'b' : 'q';
+my $charset  = 'UTF-8';
+my $defenc = 'q';
 my $encoding = lc($params{Encoding} || $defenc);
 my $NONPRINT = "\\x00-\\x1F\\x7F-\\xFF";
 
@@ -1672,14 +1692,56 @@ eval {
 return $str;
 }
 
+# decode_utf7(string)
+# If possible, convert a string like `Gel&APY-schte` to `Gelöschte`
+# It will also convert complex strings like `Gel&APY-schte & Spam`
+sub decode_utf7
+{
+my ($a) = @_;
+eval "use Encode";
+return $a if ($@);
+my $u = find_encoding("UTF-16BE");
+return $a if (!$u);
+my $s = ' ';
+my @a = split($s, $a);
+my @b;
+foreach my $c (@a) {
+    my $b;
+    # Based on Encode::Unicode::UTF7 by Dan Kogai
+    while (pos($c) < length($c)) {
+        if ($c =~ /\G([^&]+)/ogc) {
+            $b .= "$1";
+            } 
+        elsif ($c =~ /\G\&-/ogc) {
+            $b .= "&";
+            } 
+        elsif ($c =~ /\G\&([A-Za-z0-9+,]+)-?/ogsc) {
+            my $d = $1;
+            $d =~ s/,/\//g;
+            my $p = length($d) % 4;
+            $d .= "=" x (4 - $p) if ($p);
+            $b .= $u->decode(decode_base64($d));
+            }
+        elsif ($c =~ /\G\&/ogc) {
+            $b = $c;
+            }
+        else {
+            return $a;
+            }
+        }
+    push(@b, $b);
+    }
+return join($s, @b);
+}
+
 # encode_mimewords_address(string, %params)
 # Given a string containing addresses into one with real names mime-words
 # escaped
 sub encode_mimewords_address
 {
 my ($rawstr, %params) = @_;
-my $charset  = $params{Charset} || 'ISO-8859-1';
-my $defenc = uc($charset) eq 'ISO-2022-JP' ? 'b' : 'q';
+my $charset  = 'UTF-8';
+my $defenc = 'q';
 my $encoding = lc($params{Encoding} || $defenc);
 if ($rawstr =~ /^[\x20-\x7E]*$/) {
 	# No encoding needed
@@ -1707,7 +1769,7 @@ sub encode_mimeword
 {
 my $word = shift;
 my $encoding = uc(shift || 'Q');
-my $charset  = uc(shift || 'ISO-8859-1');
+my $charset  = 'UTF-8';
 my $encfunc  = (($encoding eq 'Q') ? \&_encode_Q : \&_encode_B);
 return "=?$charset?$encoding?" . &$encfunc($word) . "?=";
 }
@@ -2572,7 +2634,8 @@ if (!$headersonly) {
 	# Read the mail body
 	if ($endmode == 0) {
 		# Till EOF
-		while(read($fh, $buf, 1024) > 0) {
+		my $bs = &get_buffer_size();
+		while(read($fh, $buf, $bs) > 0) {
 			$mail->{'size'} += length($buf);
 			$mail->{'body'} .= $buf;
 			$lc = ($buf =~ tr/\n/\n/);
@@ -2835,17 +2898,15 @@ sub send_text_mail
 {
 local ($from, $to, $cc, $subject, $body, $smtp) = @_;
 local $cs = &get_charset();
-local $attach = $body =~ /[\177-\377]/ ?
+local $attach = 
 	{ 'headers' => [ [ 'Content-Type', 'text/plain; charset='.$cs ],
 		         [ 'Content-Transfer-Encoding', 'quoted-printable' ] ],
-          'data' => &quoted_encode($body) } :
-	{ 'headers' => [ [ 'Content-type', 'text/plain' ] ],
-	  'data' => &entities_to_ascii($body) };
+          'data' => &quoted_encode($body) };
 local $mail = { 'headers' =>
 		[ [ 'From', $from ],
 		  [ 'To', $to ],
 		  [ 'Cc', $cc ],
-		  [ 'Subject', $subject ] ],
+		  [ 'Subject', &encode_mimewords($subject) ] ],
 		'attach' => [ $attach ] };
 return &send_mail($mail, undef, 1, 0, $smtp);
 }
@@ -3014,7 +3075,8 @@ if (&should_switch_to_mail_user()) {
 	&open_as_mail_user(SRC, $src) || return 0;
 	&open_as_mail_user(DST, ">$dst") || return 0;
 	my $buf;
-	while(read(SRC, $buf, 32768) > 0) {
+	my $bs = &get_buffer_size();
+	while(read(SRC, $buf, $bs) > 0) {
 		print DST $buf;
 		}
 	close(SRC);
@@ -3073,6 +3135,20 @@ if ($main::mail_open_user =~ /^\d+$/) {
 	return @rv if (@rv > 0);
 	}
 return getpwnam($main::mail_open_user);
+}
+
+# is_ascii()
+# Checks if string is ASCII
+sub is_ascii {
+my ($str) = @_;
+my $str_ = $str;
+utf8::encode($str_);
+if ($str eq $str_) {
+	return 1;
+	} 
+else {
+	return 0;
+	}
 }
 
 1;

@@ -319,7 +319,7 @@ if (&has_command("zpool")) {
 # Add up all local filesystems
 foreach my $m (@mounted) {
 	if ($m->[2] =~ /^ext/ ||
-	    $m->[2] eq "reiserfs" || $m->[2] eq "ufs" ||
+	    $m->[2] eq "reiserfs" || $m->[2] eq "ufs" || $m->[2] eq "f2fs" ||
 	    $m->[2] eq "zfs" || $m->[2] eq "simfs" || $m->[2] eq "vzfs" ||
 	    $m->[2] eq "xfs" || $m->[2] eq "jfs" || $m->[2] eq "btrfs" ||
 	    $m->[1] =~ /^\/dev\// ||

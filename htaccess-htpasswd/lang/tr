@@ -12,7 +12,6 @@ index_eaccess=You do not have access to any directories!
 index_search=Find existing protected directories under:
 index_md5=MD5 encryption is enabled in the module configuration, but the $1 Perl module needed for it is not installed.
 index_sha1=SHA1 encryption is enabled in the module configuration, but the $1 Perl module needed for it is not installed.
-index_digest=Digest encryption is enabled in the module configuration, but the $1 command needed for it is not installed.
 index_cpan=<a href='$1'>Click here</a> to download and install it now.
 
 dir_title1=Add Protected Directory
@@ -110,4 +109,3 @@ search_already=Skipping known Apache options file $1.
 search_noprot=Skipping Apache options file $1, as it does not protect the directory.
 search_open=Could not open Apache options file $1 : $2
 search_done=.. done
-

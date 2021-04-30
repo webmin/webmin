@@ -1,0 +1,27 @@
+edit_desc2=HTML 설명
+edit_must=필수?
+edit_type12=멀티 메뉴 ..
+edit_type13=대형 멀티 메뉴 ..
+edit_type14=좌우 메뉴 ..
+edit_type15=데이트
+edit_type16=제출 버튼 ..
+edit_format=출력 스타일
+edit_format0=Webmin UI에 표시
+edit_format1=MIME 유형의 출력
+edit_format2=색인으로 리디렉션
+edit_format3=양식으로 리디렉션
+edit_format4=가능하면 다운로드
+edit_clone=클론
+
+save_eformat=잘못된 출력 MIME 유형
+save_eopts=매개 변수 $1 에 대한 옵션 파일이 없습니다.
+save_eopts2=매개 변수 $1 의 옵션 파일 또는 기본값은 다음을 포함 할 수 없습니다.
+
+run_emust='$1'매개 변수 값이 누락되었습니다.
+run_failed=종료 상태 $1 로 명령이 실패했습니다.
+
+file_beforeedit=편집하기 전에 실행할 명령
+
+view_ebeforeedit=편집 전 명령 실패  : $1 
+view_ebefore=저장 전 명령 실패  : $1 
+view_eafter=저장 후 명령 실패  : $1 

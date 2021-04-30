@@ -1,0 +1,24 @@
+index_errors=hibák
+index_status=Állapot
+
+create_n2_layout=2 Copies közelében
+create_f2_layout=2 távoli másolat
+create_o2_layout=2 Ofszet másolatok
+create_n3_layout=3 Copies közelében
+create_f3_layout=3 távoli másolat
+create_o3_layout=3 Ofszet másolatok
+
+view_uuid=UUID
+view_iscsi=Az iSCSI $1 megosztott eszköz használja
+view_delayed=Várakozás egy másik eszközre
+view_replace=Cserélje ki a partíciót:
+view_replacedesc=Válassza ki a cserélni kívánt partíciót. (Forró csere)
+
+emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
+
+log_replace=A (z) $2 forró cseréje a (z) $1 RAID eszközön a $3 tartalék partícióval
+
+remove_title=Távolítsa el a partíciót a RAID tömbből
+remove_rusure=Biztosan eltávolítani akarja a (z) $1 RAID tömb $2 partícióját?
+remove_ok=Igen, távolítsa el
+remove_eidx=Nincs kiválasztva RAID tömb!

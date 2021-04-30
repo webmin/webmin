@@ -1,0 +1,39 @@
+index_title=NFS Dışa Aktarma
+index_add=Yeni bir NFS dışa aktarma ekle
+index_dir=rehber
+index_hosts=İzin verilen ana makineler
+index_all=Tüm ev sahipleri
+index_none=Henüz hiçbir NFS dışa aktarımı tanımlanmadı.
+index_apply=Yapılandırmayı Uygula
+index_applydesc=Yukarıda listelenen tüm dışa aktarmaları yapılandırılmış seçenekleriyle etkinleştirmek için bu düğmeyi tıklayın.
+index_return=ihracat listesi
+
+edit_title1=Dışa Aktarma Oluştur
+edit_title2=Dışa Aktarmayı Düzenle
+edit_header=Ayrıntıları dışa aktar
+edit_dir=Dışa aktarılacak dizin
+edit_hosts=Ana bilgisayarlara/ağ gruplarına aktarma
+edit_ro=Sadece oku?
+edit_wsync=Yazdıktan sonra senkronize edilsin mi?
+edit_anon=Kök kullanıcı izinleri
+edit_anon1=Varsayılan (<tt>kimse</tt> gibi davran)
+edit_anon2=Giriş reddedildi
+edit_anon0=Kullanıcı olarak değerlendir
+edit_rw=Okuma/yazma erişimi
+edit_root=Kök dosya erişimi
+edit_access=Montaj erişimi
+edit_all=Tüm ev sahipleri
+edit_sel=Listelenen ana bilgisayarlar ..
+edit_none=Ana bilgisayar yok
+
+save_err=Dışa aktarma kaydedilemedi
+save_edir=Dışa aktarılacak eksik veya var olmayan dizin
+save_eanon=Eksik veya geçersiz kök kullanıcı
+save_erw=Hiçbir okuma-yazma ana bilgisayarı girilmedi
+save_eroot=Kök dosya erişim ana bilgisayarı girilmedi
+save_eaccess=Bağlanan erişim ana bilgisayarı girilmedi
+
+log_create_export=$1 ihracat oluşturuldu
+log_delete_export=$1 silme işlemi silindi
+log_modify_export=$1 değiştirilmiş dışa aktarımı
+log_apply=Uygulamalı yapılandırma

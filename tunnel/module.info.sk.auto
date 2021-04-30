@@ -1,0 +1,3 @@
+name_sk=Tunel
+desc_sk=HTTP Tunnel
+longdesc_sk=Pripojte sa k inému serveru HTTP pomocou tunela cez server Webmin.

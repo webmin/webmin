@@ -1,0 +1,103 @@
+index_title=Sirdsdarbības monitors
+index_return=sirdsdarbības monitors
+index_edir=Sirdsdarbības konfigurācijas direktorija $1 neeksistē. Varbūt Heartbeat nav instalēta vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_start=Startējiet sirdsdarbības monitoru
+index_startmsg=Noklikšķiniet uz šīs pogas, lai sāktu Heartbeat monitora procesu. Tas jūsu sistēmā ļaus automātiski atjaunināt pakalpojumu ar pašreizējo konfigurāciju.
+index_apply=Lietot izmaiņas
+index_applymsg=Noklikšķiniet uz šīs pogas, lai piespiestu notiekošo Heartbeat monitora procesu atkārtoti ielādēt pašreizējo konfigurāciju.
+index_eha_cf=Jūsu sistēmā netika atrasts sirdsdarbības konfigurācijas fails $1. Varbūt tas vēl nav nokopēts vietā, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_eharesources=Resursu fails $1 jūsu sistēmā netika atrasts. Varbūt tas vēl nav nokopēts vietā, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_eauthkeys=Autentifikācijas atslēgu fails $1 jūsu sistēmā netika atrasts. Varbūt tas vēl nav nokopēts vietā, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_ereq_resource_cmd=Jūsu sistēmā netika atrasts skripts resursu pieprasīšanai no otra mezgla ($1). Varbūt tas vēl nav nokopēts vietā, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_version=Sirdsdarbības versija $1 
+index_noversion=Brīdinājums: jūsu sistēmā instalēto Heartbeat versiju nevarēja automātiski noteikt. Jums tas jāiestata <a href='$1'>moduļa konfigurācijas lapā</a>.
+index_status=Sirdsdarbības statuss
+
+conf_title=Konfigurācijas opcijas
+conf_header=Sirdsdarbības konfigurācijas iespējas
+conf_serials=Seriālas sirdsdarbības ostas
+conf_baud=Sērijas porta nomaiņas ātrums
+conf_bcasts=Ethernet sirdsdarbības saskarnes
+conf_none=Nav
+conf_udpport=UDP sirdsdarbības osta
+conf_mcast=Multicast sirdsdarbības ierīce
+conf_mcastv=Ierīce $1, grupa $2, ports $3, TTL $4, atgriezeniskā saite $5 
+conf_enabled=Iespējots
+conf_disabled=Invalīds
+conf_keepalive=Laiks starp sirdspukstiem
+conf_nice_failback=Jauka neveiksmju izturēšanās
+conf_secs=sekundes
+conf_deadtime=Laiks pirms mezgla tiek uzskatīts par mirušu
+conf_watchdog=Sargsuņa ierīces fails
+conf_node=Saimnieki klasterī
+conf_logfile=Sirdsdarbības žurnāla fails
+conf_logfacility=Syslog žurnālu iekārta
+conf_initdead=Sākotnējais mirušais laiks
+conf_ok=Saglabāt opcijas
+conf_err=Neizdevās saglabāt opcijas
+conf_ebaud=Trūkst vai nav derīgs datu pārraides ātrums
+conf_ebcast=Nav ievadīta neviena sirdsdarbības apraides saskarne
+conf_ebcastif='$1' nav derīgs apraides interfeiss
+conf_eudpport=Trūkst vai nav derīga sirdsdarbības osta
+conf_ekeepalive=Trūkst vai nav derīgs laiks starp sirdspukstiem
+conf_edeadtime=Trūkst vai nav derīgs miršanas laiks
+conf_ewatchdog=Trūkst vai neeksistē sargsuņa ierīces fails
+conf_enonode=Nav ievadīti klasteru saimnieki
+conf_ethisnode=Šis resursdators $1 nav klasteru saimnieku sarakstā
+conf_elogfile=Trūkst vai nav derīgs žurnāla faila nosaukums
+conf_einitdead=Trūkst vai nav derīgs sākotnējais miršanas laiks
+conf_einitdead2=Sākotnējam mirušajam laikam jābūt vismaz divreiz lielākam, pirms mezglu uzskata par mirušu
+conf_emcast_dev=Trūkst vai nav derīga multiraides ierīce
+conf_emcast_ip=Trūkst vai nav derīga multiraides grupas adrese
+conf_emcast_port=Trūkst vai nav derīgs multiraides porta numurs
+conf_emcast_ttl=Trūkst vai nav derīga tiešraide
+conf_auto_on={conf_enabled}
+conf_auto_off=$ {conf_disabled}
+conf_auto_legacy=Mantotais režīms
+conf_auto_={noklusējuma} dolārs
+
+res_title=Klasteru resursi
+res_node=Primārais mezgls
+res_ips=IP adreses
+res_servs=Mezglu pakalpojumi
+res_none=Nav
+res_nores=Jūsu sistēmā nav definēti klasteru resursi.
+res_add=Pievienojiet klastera resursu
+res_return=resursu saraksts
+res_active=Resursa statuss
+res_getserv=Iegūstiet resursu
+res_hbdown=Sirdspuksts uz leju
+res_up=UZ AUGŠU
+res_down=DOWN
+
+node_create=Pievienojiet klastera resursu
+node_edit=Rediģēt klastera resursu
+node_header=Sīkāka informācija par klastera resursiem
+node_node=Primārais resursa mezgls
+node_ips=Resursa IP adreses
+node_ip=IP adrese
+node_cidr=Tīkla maskas CIDR
+node_broad=Apraides adrese
+node_servs=Pakalpojumi resursam
+node_serv=apkalpošana
+node_args=Papildu argumenti
+node_err=Neizdevās saglabāt klastera resursu
+node_enone=Trūkst vai nav derīgs primārais mezgls
+node_eip=“$1” nav derīga IP adrese
+node_ecidr=“$1” nav derīgs CIDR
+node_ebroad=“$1” nav derīga apraides adrese
+
+auth_title=Autentifikācijas atslēgas
+auth_header=Klastera mezgla autentifikācija
+auth_mode=Autentifikācijas režīms
+auth_crc=CRC (nav drošības)
+auth_sha1=SHA1 ar paroli
+auth_md5=MD5 ar paroli
+auth_err=Neizdevās saglabāt autentifikācijas atslēgas
+auth_emd5=Trūkst vai nav derīga MD5 parole
+auth_esha1=Trūkst vai nav derīga SHA1 parole
+
+start_err=Neizdevās sākt sirdsdarbību
+
+apply_err=Neizdevās piemērot izmaiņas
+apply_epid=Process vairs nedarbojas

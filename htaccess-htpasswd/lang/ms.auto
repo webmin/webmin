@@ -1,0 +1,54 @@
+index_usersgroups=Pengguna dan kumpulan berkaitan
+index_gadd=Tambah kumpulan baru.
+index_nogroups=Tiada kumpulan yang ditakrifkan lagi.
+index_md5=Penyulitan MD5 didayakan dalam konfigurasi modul, tetapi modul $1 Perl diperlukan untuknya tidak dipasang.
+index_sha1=Penyulitan SHA1 diaktifkan dalam konfigurasi modul, tetapi modul $1 Perl diperlukan untuknya tidak dipasang.
+index_digest2=Penyulitan Digest didayakan dalam konfigurasi modul, tetapi modul $1 atau Perl Perl $2 diperlukan kerana ia tidak dipasang.
+index_cpan=<a href='$1'>Klik di sini</a> untuk memuat turun dan pasangnya sekarang.
+index_delete=Tidak Lindungi Direktori Terpilih
+index_remove=Tidak Melindungi dan Keluarkan Fail
+
+dir_header2=Pilihan penyegerakan pengguna
+dir_gfile=Fail yang mengandungi kumpulan
+dir_none=Tiada
+dir_crypt2=SHA1
+dir_crypt3=Digest
+dir_ecannotcreate=Anda tidak membenarkan untuk mengkonfigurasi direktori mana yang dilindungi
+dir_ehtgroup=Gagal membuat fail kumpulan $1 : $2 
+dir_remove2=Secara keseluruhan memadam $1, $2 dan $3 fail?
+dir_sync_create=Tambah pengguna apabila pengguna Unix dibuat?
+dir_sync_update=Kemas kini pengguna apabila pengguna Unix?
+dir_sync_delete=Padam pengguna apabila pengguna Unix?
+dir_egfile=Tiada fail kumpulan yang dimasukkan
+dir_require=Pengguna untuk membenarkan
+dir_requirev=Semua pengguna dalam fail
+dir_requireu=Hanya pengguna ..
+dir_requireg=Hanya ahli kumpulan ..
+dir_erequire_user=Tiada pengguna yang dibenarkan masuk
+dir_erequire_group=Tiada kumpulan yang dibenarkan masuk
+dir_delete=Tidak Melindungi
+dir_delete2=Tidak Melindungi Dan Hapuskan Fail
+dir_delete3=Tidak Melindungi Dan Hapuskan Fail
+dir_apache=Edit Pilihan Apache
+dir_efiledir='$1' adalah direktori, dan oleh itu tidak boleh digunakan sebagai fail pengguna
+dir_egfiledir='$1' adalah direktori, dan oleh itu tidak boleh digunakan sebagai fail kumpulan
+
+edit_dom=Alam digest
+
+gedit_title1=Buat Kumpulan
+gedit_title2=Edit Kumpulan
+gedit_header=Butiran kumpulan pengesahan web
+gedit_group=Nama kumpulan
+gedit_members=Ahli kumpulan
+
+save_edom=Kehilangan atau ketidakhadiran yang tercela
+
+gsave_err=Gagal menyimpan kumpulan
+gsave_egroup1=Nama kumpulan yang hilang
+gsave_egroup2=Nama kumpulan tidak boleh mengandungi aksara atau ruang
+gsave_eclash=Satu kumpulan dengan nama yang sama sudah wujud
+
+log_create_group=Kumpulan yang dibuat $1 
+log_modify_group=Kumpulan diubah suai $1 
+log_delete_group=Kumpulan dipadamkan $1 
+log_delete_dirs=Dipadam $1 direktori

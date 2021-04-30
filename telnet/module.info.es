@@ -1,1 +1,1 @@
-desc_es=Conexi&#243;n SSH
+desc_es=Conexión SSH

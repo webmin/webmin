@@ -1,0 +1,57 @@
+index_restore2=ファイルシステムのバックアップを復元する
+index_restoremsg2=このボタンをクリックして、復元するファイルシステムのバックアップを選択するプロセスを開始します。
+index_delete=選択したバックアップを削除
+index_nostrftime=警告-一部のバックアップジョブはファイル名に％を使用しますが、モジュール構成ページでstrftime置換が有効になっていません。
+
+dump_exclude=スキップするファイルとディレクトリ
+dump_ehuser2=ユーザー名に@文字を含めることはできません
+dump_fok=コマンドが失敗したら停止
+dump_fok2=コマンドが失敗した場合に失敗を報告
+dump_aok=バックアップが失敗してもコマンドをスキップ
+dump_rsh3=FTP
+dump_pass2=SSH/FTPログインのパスワード
+dump_gzip1=はい、gzipを使用
+dump_gzip2=はい、bzip2を使用
+dump_gzip3=はい、XZを使用
+dump_update2=新しいファイルをアーカイブに追加するだけですか？
+dump_ignoreread=ファイルの読み取りエラーを無視しますか？
+dump_notape=必要に応じて新しいテープを要求しますか？
+dump_rmt=リモートシステム上の<tt>rmt</tt>へのパス
+dump_egzip3=gzip圧縮オプションは、新しいファイルをアーカイブに追加するだけのオプションと互換性がありません
+dump_ermt=<tt>rmt</tt>プログラムへのパスが見つからないか無効です
+dump_reverify=バックアップ後にテスト復元を試行して検証しますか？
+dump_remount=バックアップ中に<tt>noatime</tt>オプションで再マウントしますか？
+dump_eftpupdate=FTPを使用している場合、既存のアーカイブにファイルを追加することはできません。
+dump_eleveldir=ファイルシステムのマウントポイントではないディレクトリには、レベル0のバックアップのみが許可されます
+dump_eupdatedir=<tt>/etc/dumpdates</tt>ファイルは、ファイルシステムのマウントポイントであるディレクトリに対してのみ更新できます。
+
+edit_title3=クローンバックアップ
+edit_to=$1から $2
+edit_tolevel=$1から $2（レベル $3）
+edit_special=バックアップスケジュール
+edit_when=バックアップするタイミング
+edit_clone=クローン
+
+backup_reverify=..完了。バックアップの検証中 ..
+backup_beforefailed=..バックアップコマンドが失敗する前に！
+backup_afterfailed=..バックアップコマンドが失敗した後！
+backup_noverify=..検証に失敗しました！
+
+log_kill=$1の終了したバックアップ
+
+acl_cmds=コマンドの前後に編集できますか？
+acl_extra=追加のコマンドラインパラメーターを編集できますか？
+
+delete_err=バックアップを削除できませんでした
+delete_enone=何も選択されていません
+
+email_already=バックアップはすでにPID $1で実行されています。
+email_ebefore=バックアップ前のコマンドが失敗しました！
+email_verify=バックアップの検証 ..
+email_eafter=バックアップ後コマンドが失敗しました！
+email_subject=$2の $1のバックアップ
+email_ok=バックアップが成功しました
+email_failed=バックアップに失敗しました！
+
+newtape_subject=$3の $2のバックアップのテープ変更 $1
+newtape_body=$3の $2のバックアップは、テープ $1で許可されているデータの最大量に達しました。バックアップを続行するには、新しいテープをロードし、WebminのFilesystem Backupモジュールの[Tape Loaded]リンクを押す必要があります。

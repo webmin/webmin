@@ -1,0 +1,2 @@
+index_esocket2=Det finns ingen SSH-server på $1 port $2.
+index_elookup=Det gick inte att leta upp IP-adressen för $1 för att testa telnet- eller SSH-servern.

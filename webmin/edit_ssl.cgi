@@ -17,6 +17,7 @@ our $pfs_ssl_ciphers;
 our $info;
 our $root_directory;
 our %config;
+our $letsencrypt_cmd;
 
 ui_print_header(undef, $text{'ssl_title'}, "");
 ReadParse();
@@ -85,9 +86,10 @@ print ui_table_row($text{'ssl_honorcipherorder'},
 			$miniserv{'ssl_honorcipherorder'}));
 
 my $clist = $miniserv{'ssl_cipher_list'};
+my $clist_def = $miniserv{'cipher_list_def'};
 my $cmode = !$clist ? 1 :
-	 $clist eq $strong_ssl_ciphers ? 2 :
-	 $clist eq $pfs_ssl_ciphers ? 3 :
+	 ($clist_def && $clist eq $strong_ssl_ciphers) ? 2 :
+	 ($clist_def && $clist eq $pfs_ssl_ciphers) ? 3 :
 	 0;
 print ui_table_row($text{'ssl_cipher_list'},
 	ui_radio("cipher_list_def", $cmode,
@@ -113,12 +115,13 @@ print ui_tabs_end_tab();
 print ui_tabs_start_tab("mode", "current");
 print "$text{'ssl_current'}<p>\n";
 print ui_table_start($text{'ssl_cheader'}, undef, 4);
-$info = cert_info($miniserv{'certfile'} || $miniserv{'keyfile'});
-foreach my $i ('cn', 'alt', 'o', 'email', 'issuer_cn', 'issuer_o', 'issuer_email',
-	       'notafter', 'type') {
+$info = &cert_info($miniserv{'certfile'} || $miniserv{'keyfile'});
+foreach my $i ('cn', 'alt', 'o', 'email', 'issuer_cn', 'issuer_o',
+	       'issuer_email', 'notafter', 'type') {
 	if ($info->{$i}) {
 		print ui_table_row($text{'ca_'.$i},
-			ref($info->{$i}) ? join(", ", @{$info->{$i}}) : $info->{$i});
+			ref($info->{$i}) ? join(", ", @{$info->{$i}})
+					 : $info->{$i});
 		}
 	}
 my @clinks = (
@@ -257,6 +260,9 @@ print "$text{'ssl_letsdesc'}<p>\n";
 my $err = &check_letsencrypt();
 if ($err) {
 	print "<b>",&text('ssl_letserr', $err),"</b><p>\n";
+	print &get_letsencrypt_install_message(
+		"/$module_name/edit_ssl.cgi?mode=lets", $text{'ssl_title'});
+	print "<p>\n";
 	print &text('ssl_letserr2', "../config.cgi?$module_name"),"<p>\n";
 	}
 else {
@@ -301,7 +307,9 @@ else {
 		}
 	push(@opts, [ 2, $text{'ssl_webroot2'},
 		      &ui_textbox("webroot", $webroot, 40) ]);
-	push(@opts, [ 3, $text{'ssl_webroot3'} ]);
+	if ($letsencrypt_cmd) {
+		push(@opts, [ 3, $text{'ssl_webroot3'} ]);
+		}
 	print &ui_table_row($text{'ssl_webroot'},
 		&ui_radio_table("webroot_mode", $mode, \@opts));
 

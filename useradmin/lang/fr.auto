@@ -1,0 +1,104 @@
+index_pft=Type de base de données: $1
+index_pft0=Ancien /etc/passwd
+index_pft1=BSD master.passwd
+index_pft2=Regular /etc/passwd & /etc/shadow
+index_pft3=Commandes utilisateur
+index_pft4=AIX
+index_pft5=SCO /etc/passwd & /etc/shadow
+index_pft6=MacOS NetINFO
+index_pft7=MacOS DSCL
+index_userreal=Nom d'utilisateur ou vrai nom
+index_usheader=Recherche d'utilisateurs
+index_gsheader=Recherche de groupe
+index_fmode=Mode match
+index_ftext=Texte de recherche
+index_loginsall=Tous les utilisateurs
+index_loginsuser=Seul utilisateur
+index_loginsdesc=Afficher les connexions récentes à un ou à tous les utilisateurs Unix qui se sont connectés via SSH ou Usermin.
+index_whodesc=Afficher les utilisateurs actuellement connectés via SSH ou Usermin.
+
+uedit_manual=Annuaire
+uedit_allg=Tous les groupes
+uedit_ing=En groupes
+uedit_egone=L'utilisateur sélectionné n'existe plus!
+uedit_grename=Renommer le groupe si le nom d'utilisateur change?
+uedit_sys=Défaut du système
+uedit_clone=Utilisateur clone
+
+usave_edigestblowfish=Votre système a activé les mots de passe Blowfish, mais le module Perl <tt>$3</tt> n'est pas installé. <p>Pour forcer l'utilisation de mots de passe chiffrés normaux, ajustez votre<a href='$1'> configuration du module </a>.<p> Ou demandez à Webmin <a href='$2'>de télécharger et d'installer</a> la <tt>$3</tt> module pour vous.
+usave_edigestsha512=Votre système a activé les mots de passe Blowfish, mais la fonction <tt>crypt</tt> ne prend pas en charge ce format.
+usave_epasswd_mindays=Le mot de passe a été modifié il y a moins de $1 jours
+usave_epasswd_cmd=La commande de validation du mot de passe a échoué
+
+gedit_desc=La description
+gedit_oneperline=(Un par ligne)
+gedit_egone=Le groupe sélectionné n'existe plus!
+gedit_allu=Tous les utilisateurs
+gedit_selu=Utilisateurs en groupe
+gedit_pri=Membres du groupe principal
+gedit_prinone=Aucun utilisateur n'a ce groupe comme principal
+gedit_clone=Groupe de clones
+
+gsave_egidused2=GID est déjà utilisé
+
+udel_ugroupother=Suppression du groupe de cet utilisateur dans d'autres modules.
+
+log_gbatch=Fichier de commandes de groupe exécuté $1
+log_gbatch_l=Fichier batch du groupe exécuté $1 ($2 créé, $3 modifié, $4 supprimé)
+log_ugbatch=Fichier de lot de groupe téléchargé exécuté
+log_ugbatch_l=Fichier de lot de groupe téléchargé exécuté ($1 créé, $2 modifié, $3 supprimé)
+log_delete_users=Utilisateurs $1 supprimés
+log_delete_groups=Groupes $1 supprimés
+
+batch_emin=Jours minimum non valides en ligne $1 : $2 
+batch_emax=Nombre maximum de jours non valide en ligne $1 : $2 
+batch_ewarn=Jours d'avertissement non valides en ligne $1 : $2 
+batch_einactive=Jours inactifs non valides en ligne $1 : $2 
+batch_eexpire=Jour d'expiration non valide sur la ligne $1 : $2 
+batch_echange=Jour de changement de mot de passe non valide en ligne $1 : $2 
+batch_instr=Instructions et format de lot
+batch_header=Options de création, de mise à jour et de suppression d'utilisateurs par lots
+
+export_header=Options d'exportation d'utilisateurs par lots
+export_egroup=Le groupe $1 n'existe pas
+export_euid=Premier UID non valide dans la plage
+export_euid2=Deuxième UID non valide dans la plage
+export_egid=Premier GID non valide dans la plage
+export_egid2=Deuxième GID non valide dans la plage
+export_ecannot=Vous n'êtes pas autorisé à exporter des utilisateurs
+
+gexport_title=Exporter un fichier batch de groupes
+gexport_desc=Ce formulaire vous permet de créer un fichier de commandes contenant tout ou partie des groupes disponibles sur le système. Le fichier peut être utilisé sur la page Execute Group Batch File sur un autre système pour recréer les groupes exportés.
+gexport_header=Options d'exportation de groupe de lots
+gexport_who=Groupes à exporter
+gexport_ecannot=Vous n'êtes pas autorisé à exporter des groupes
+gexport_err=Échec de l'exportation du fichier de commandes de groupe
+gexport_egid=Premier GID non valide dans la plage
+gexport_egid2=Deuxième GID non valide dans la plage
+
+umass_others=AVERTISSEMENT! Certains répertoires personnels contiennent des fichiers $1 appartenant à d'autres utilisateurs.
+umass_sure2=Voulez-vous vraiment supprimer les $1 utilisateurs sélectionnés?
+
+emass_already=.. déjà activé!
+
+gbatch_title=Exécuter le fichier batch de groupe
+gbatch_ecannot=Vous ne pouvez pas utiliser le formulaire de fichier batch de groupe
+gbatch_desc=Ce formulaire vous permet de créer, modifier ou supprimer plusieurs groupes à la fois à partir d'un fichier texte téléchargé ou local. Chaque ligne du fichier spécifie une action à entreprendre, selon son premier champ. Les formats de ligne sont :
+gbatch_desc2=<b>create</b>:groupname:passwd:gid:member,member,...<p><b>modify</b>:oldgroupname:groupname:passwd:gid:member,member,...<p><b>delete</b>:groupname
+gbatch_descafter=Dans les lignes <b>créer</b>, si le champ <tt>gid</tt> est laissé vide, Webmin attribuera automatiquement un GID.
+gbatch_descafter2=Dans les lignes <b>modifier</b>, un champ vide sera considéré comme signifiant que l'attribut de groupe correspondant ne doit pas être modifié.
+gbatch_header=Options de création, de mise à jour et de suppression de groupes de lots
+gbatch_others=Créer, modifier ou supprimer des groupes dans d'autres modules?
+gbatch_batch=Mettre à jour le fichier des groupes uniquement lorsque le lot est terminé?
+gbatch_chgid=Changer le GID sur les fichiers des groupes modifiés?
+gbatch_ecaccess=Vous n'êtes pas autorisé à créer le groupe à la ligne $1 : $2 
+gbatch_emaccess=Vous n'êtes pas autorisé à modifier le groupe à la ligne $1 : $2 
+gbatch_edaccess=Vous n'êtes pas autorisé à supprimer le groupe à la ligne $1 : $2 
+gbatch_created=Groupe créé $1
+gbatch_deleted=Groupe supprimé $1
+gbatch_modified=Groupe modifié $1
+gbatch_enogroup=Le groupe n'existe pas à la ligne $1 : $2 
+gbatch_eprimary=Le groupe à la ligne $1 ne peut pas être supprimé, car il s'agit du groupe principal d'utilisateurs $2.
+gbatch_egroup=Nom de groupe en double à la ligne $1 : $2 
+gbatch_egroupname=Nom de groupe non valide à la ligne $1
+gbatch_erename=Vous n'êtes pas autorisé à renommer des groupes à la ligne $1 : $2 

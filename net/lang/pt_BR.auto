@@ -1,0 +1,51 @@
+ifcs_ip6=Endereço IPv6
+ifcs_badd=Adicione uma nova ponte.
+ifcs_auto6=Da descoberta do IPv6
+ifcs_static3=IPv6 ativado
+ifcs_noaddress=Nenhum endereço configurado
+ifcs_nonetmask=Nenhum
+ifcs_mode6=Endereços IPv6
+ifcs_address6=Endereço IPv6
+ifcs_netmask6=Máscara de rede
+ifcs_mode6a=Endereços IPv6
+ifcs_none6=IPv6 desativado
+ifcs_link=Status do link de rede
+ifcs_linkyes=Conectado
+ifcs_linkno=Desconectado
+ifcs_speed=Velocidade da interface
+ifcs_duplex=, $1 dúplex
+
+aifc_eaddress6=O endereço IPv6 na linha $1 não é válido
+aifc_enetmask6=A máscara de rede IPv6 na linha $1 deve ser um número inteiro entre 1 e 128
+aifc_eclash6=O endereço IPv6 na linha $1 já está em uso pela interface $2 
+aifc_eaddresses6=Nenhum endereço IPv6 inserido
+
+bifc_act=Ativar na inicialização?
+bifc_bridgeto=Conecte a ponte à interface
+bifc_nobridge=&lt;Nenhum&gt;
+bifc_ebridgeto=Uma interface Ethernet existente deve ser selecionada para esta ponte usar
+bifc_ebridgeto2=A interface selecionada para a ponte não deve ter nenhum endereço atribuído
+bifc_ebridge=A interface de ponte deve ser um número
+bifc_bridgestp=Protocolo Spanning Tree
+bifc_bridgefd=Atraso de encaminhamento
+bifc_bridgewait=Atraso para tornar-se disponível
+bifc_ebond=A interface de ligação deve ser um número
+
+bonding_teampartsdesc=Parceiros separados com espaços em branco, por exemplo "eth2 eth4"
+bonding_primary=Interface Primária
+bonding_primarydesc=Aplicável apenas nos modos de formação de equipes de backup ativo, balance-tlb ou balance-alb
+bonding_miimondesc=(Deixe em branco para desativar o monitoramento de links)
+
+bridge_create=Criar interface de ponte
+
+routes_default6=Roteador IPv6 padrão
+routes_gateway6=Gateway IPv6
+routes_edefault6='$1' não é um roteador padrão IPv6 válido
+routes_egateway6='$1' não é um gateway IPv6 válido
+routes_defaults6=Roteadores IPv6 padrão
+routes_eclash6=Somente uma rota padrão para qualquer interface IPv6 pode ser definida
+routes_def6=Rota IPv6 padrão
+
+hosts_active=Ativado?
+
+acl_sysinfo=Mostrar interfaces de rede disponíveis no painel

@@ -1,0 +1,2 @@
+name_pl=PAM
+longdesc_pl=Skonfiguruj kroki uwierzytelniania PAM używane przez usługi, takie jak telnet, POP i FTP.

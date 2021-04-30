@@ -1,0 +1,46 @@
+index_title=Programe de tip MIME
+index_none=Nu au fost definite încă niciun program de gestionare de tip MIME.
+index_add=Adăugați un nou program de tip MIME.
+index_type=Tip MIME
+index_program=Programul Handler
+index_cmt=Descriere
+index_delete=Sterge selectia
+index_disable=Dezactivare selectat
+index_enable=Activați selectat
+index_enabled=Activat?
+index_return=lista programelor
+
+edit_title1=Creați program de tip MIME
+edit_title2=Editează programul tip MIME
+edit_header=Detalii despre programul de gestionare de tip MIME
+edit_type=Tip MIME
+edit_enabled=Activat?
+edit_program=Programul Handler
+edit_cmt=Descriere
+edit_egone=Programul nu mai există!
+edit_test=Comanda test
+edit_none=Niciuna (folosiți întotdeauna programul)
+edit_term=Afișare afișare în terminal?
+edit_copious=Produce o mulțime de producții?
+edit_desc=Descrierea tipului MIME
+
+save_err=Nu a reușit să salveze programul de tip MIME
+save_etype=Tip MIME care lipsește sau este nevalid
+save_eprogram=Programul de gestionare lipsește
+save_eclash=Există deja un program activat pentru tipul MIME introdus
+save_etest=Comanda de testare lipsă sau nevalidă
+save_edesc=Descrierea de tip MIME nevalidă
+
+delete_err=Nu a reușit să ștergeți programele de tip MIME
+disable_err=Nu a reușit să dezactiveze programele de tip MIME
+disable_eclash=Există deja un program de tip MIME dezactivat pentru $1 
+enable_err=Eroare la activarea programelor de tip MIME
+enable_eclash=Există deja un program de tip MIME activat pentru $1 
+delete_enone=Nimic selectat
+
+log_delete_mailcap=Ștergeți programul de tip MIME pentru $1 
+log_create_mailcap=A fost creat un program de tip MIME pentru $1 
+log_modify_mailcap=Program modificat de tip MIME pentru $1 
+log_delete_mailcaps=Programe șterse de tip MIME $1 
+log_disable_mailcaps=Dezactivate programe de tip MIME $1 
+log_enable_mailcaps=Activate programe de tip $1 MIME

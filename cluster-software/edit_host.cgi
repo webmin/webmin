@@ -20,7 +20,7 @@ print "<tr $cb> <td><table width=100%>\n";
 print "<tr> <td><b>$text{'host_name'}</b></td>\n";
 if ($server->{'id'}) {
 	$h = $server->{'realhost'} || $server->{'host'};
-	printf &ui_link("/servers/link.cgi/%s/","%s")."</td>\n",
+	printf "<td>". &ui_link("/servers/link.cgi/%s/","%s")."</td>\n",
 		$server->{'id'}, $server->{'desc'} ? "$server->{'desc'} ($h:$server->{'port'})" : "$h:$server->{'port'}";
 	}
 else {
@@ -44,14 +44,14 @@ print "<td>$host->{'real_os_type'} $host->{'real_os_version'}</td> </tr>\n";
 
 print "<tr> <td><b>$text{'host_system'}</b></td>\n";
 $system = $host->{'package_system'} || $software::config{'package_system'};
-print "<td>",uc($system),"</td>\n";
+print "<td colspan=3>",uc($system),"</td>\n";
 
 print "</tr>\n";
 
 print "</table></td></tr></table>\n";
 
 # Show delete and refresh buttons
-print "<table width=100%><tr>\n";
+print "<p></p><table width=100%><tr>\n";
 
 print "<td><form action=delete_host.cgi>\n";
 print "<input type=hidden name=id value=$in{'id'}>\n";
@@ -91,6 +91,7 @@ print "<table width=100%>\n";
 &traverse("", 0);
 print "</table>\n";
 if ($hasclasses) {
+	print "<p></p>";
 	print &ui_link("closeall.cgi?id=$in{'id'}",$text{'host_close'}),"\n";
 	print &ui_link("openall.cgi?id=$in{'id'}",$text{'host_open'}),"<p>\n";
 	}
@@ -100,7 +101,7 @@ if ($hasclasses) {
 sub traverse
 {
 local($s, $act, $i);
-print "<tr> <td>", $spacer x $_[1];
+print "<tr style='border-top: 1px solid #aaaaaa28'> <td>", $spacer x $_[1];
 if ($_[0]) {
 	print "<a name=\"$_[0]\"></a>\n";
 	$act = $heiropen{$_[0]} ? "close" : "open";
@@ -114,7 +115,7 @@ if ($heiropen{$_[0]}) {
 	# print sub-folders followed by packages
 	foreach $i (@packages) {
 		if ($i->{'class'} eq $_[0]) {
-			print "<tr> <td>", $spacer x ($_[1]+1);
+			print "<tr style='border-top: 1px solid #aaaaaa28'> <td>", $spacer x ($_[1]+1);
 			print "<img border=0 src=images/pack.gif></a>&nbsp;\n";
 			print "<a href=\"edit_pack.cgi?package=",
 			     &urlize($i->{'name'}),"\">$i->{'name'}</a></td>\n";

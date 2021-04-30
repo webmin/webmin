@@ -1,0 +1,8 @@
+inittab_kbrequest=Combinaison de touches spéciale
+index_delete=Supprimer les processus sélectionnés
+inittab_none2=Aucun processus de démarrage n'a été trouvé sur votre système. Cela indique probablement qu'il n'utilise pas le fichier de configuration SysV init.
+
+log_deletes=$1 processus d'initialisation supprimés
+
+delete_err=Impossible de supprimer les processus
+delete_enone=Aucune sélection

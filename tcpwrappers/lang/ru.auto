@@ -1,0 +1,33 @@
+index_title=TCP Wrappers
+index_return=показатель
+index_allowtitle=Разрешенные хозяева
+index_denytitle=Запрещенные хозяева
+index_norule=В <tt>$1</tt> еще не определены правила.
+index_nofile=Файл '$1' не существует - проверьте <a href="/config.cgi?tcpwrappers">конфигурацию модуля</a>
+index_add=Добавьте новое правило.
+index_service=демон
+index_hosts=Хосты
+index_cmd=команда
+index_delete=Удалить выбранные
+index_none=никто
+
+edit_title1allow=Создать разрешить правило
+edit_title2allow=Изменить разрешить правило
+edit_title1deny=Создать запрещающее правило
+edit_title2deny=Изменить правило запрета
+edit_eid=Это правило не было найдено
+edit_header=Варианты правил
+edit_service=Сервисы
+edit_except=Кроме услуг
+edit_hosts=Удаленные хосты
+edit_hostsexcept=Кроме хозяев
+edit_cmd=Команды оболочки
+edit_efound=Демон '$1' не найден в конфигурации xinetd.
+
+save_errtitle=Ошибка при сохранении правила
+save_ehost=Вход хоста содержит плохие символы
+save_ecmd=Ввод команды содержит плохие символы
+save_eservice=Имена демонов содержат плохие символы
+
+del_errtitle=Ошибка при удалении правил
+del_enone=Нет помеченных для удаления правил

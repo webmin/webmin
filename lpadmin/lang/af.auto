@@ -1,0 +1,316 @@
+index_title=Drukkeradministrasie
+index_header=Beskikbare drukkers
+index_name=drukker
+index_desc=beskrywing
+index_to=Druk na
+index_driver=bestuurder
+index_enabled=In staat gestel?
+index_accepting=Aanvaar?
+index_jobs=Jobs
+index_none=Geen drukkers is op hierdie stelsel geïnstalleer nie.
+index_list=Lys ..
+index_jlist=Jobs ..
+index_jcount=$1 poste ..
+index_add=Voeg 'n nuwe drukker by.
+index_stop=Stop skeduleer
+index_stopmsg=Klik op hierdie knoppie om die lopende drukskeduleringsproses te stop. Dit sal voorkom dat plaaslike of afgeleë gebruikers op u stelsel druk.
+index_start=Begin skeduleerder
+index_startmsg=Klik op hierdie knoppie om die drukskeduleringsproses te begin. Dit sal plaaslike en afgeleë gebruikers op hul stelsel laat druk.
+index_restart=Herbeplanner weer
+index_restartmsg=Klik op hierdie knoppie om die drukskeduleringsproses weer te begin. Dit sal dwing om die huidige drukkonfigurasie toe te pas.
+index_return=drukker lys
+index_esystem=Installeer die sagteware vir u gekose drukstelsel, of gebruik die <a href='$1'>module-opstelling</a> om dit te verander.
+index_style=Drukstelsel: $1 
+index_cluster=Cluster Servers
+index_clusterdesc=Klik op hierdie knoppie om addisionele Webmin-bedieners op te stel waarop drukkers geskep, opgedateer en geskrap sal word.
+index_delete=Vee geselekteerde drukkers uit
+
+style_solaris=Solaris
+style_linux=Linux LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=Unix Ware
+style_cups=CUPS
+style_irix=IRIX
+style_aix=AIX
+
+edit_eedit=U mag nie hierdie drukker redigeer nie
+edit_eadd=U mag nie drukkers byvoeg nie
+edit_add=Skep drukker
+edit_edit=Redigeer drukker
+edit_conf=Drukker konfigurasie
+edit_name=naam
+edit_acc=Aanvaar u versoeke?
+edit_why=Nee - waarom nie
+edit_desc=beskrywing
+edit_ena=Druk geaktiveer?
+edit_acl=Toegangsbeheer
+edit_allow=Laat almal toe
+edit_deny=Weier almal
+edit_allowu=Laat genoteerde gebruikers toe ..
+edit_denyu=Weier gelys gebruikers ..
+edit_banner=Druk banier?
+edit_opt=opsioneel
+edit_default=Verstek drukker?
+edit_already=Die standaarddrukker is reeds
+edit_max=Maksimum afdruktaakgrootte
+edit_unlimited=Unlimited
+edit_dacc=Bestuurder aanvaar
+edit_dtext=teks
+edit_dpost=Naskrif
+edit_dother=ander
+edit_alt=Alternatiewe drukkername
+edit_dest=Drukbestemming
+edit_dev=Plaaslike toestel
+edit_file=Plaaslike lêer
+edit_remote=Remote Unix-bediener
+edit_rqueue=drukker
+edit_type=tipe
+edit_smb=Windows-bediener op afstand
+edit_share=drukker
+edit_user=gebruiker
+edit_pass=wagwoord
+edit_wgroup=werkgroep
+edit_hpnp=HPNP-bediener op afstand
+edit_port=Port
+edit_direct=Direkte TCP-verbinding
+edit_dport=Port
+edit_driver=Drukker drywer
+edit_check=Kontroleer of die afstandbediener op is?
+
+blocks=blokke
+
+save_err=Kon nie drukker stoor nie
+save_eadd=U mag nie drukkers byvoeg nie
+save_eedit=U mag nie hierdie drukker redigeer nie
+save_ename='$1' is nie 'n geldige drukkernaam nie
+save_edup=Daar bestaan reeds 'n drukker met die naam '$1'
+save_eallow=Geen gebruikers om toegang toe te laat nie
+save_edeny=Geen gebruikers om in te voer nie
+save_euser=Gebruiker '$1' bestaan nie
+save_etype=U moet ten minste een tipe kies vir hierdie drywer om te aanvaar
+save_emax=Die maksimum afdruktaakgrootte moet 'n heelgetal wees
+save_efile='$1' bestaan nie
+save_erhost=Die eksterne gasheer '$1' bestaan nie
+save_erport=Afstandpoort '$1' is nie geldig nie
+save_erqueue='$1' is nie 'n geldige naam vir afgeleë toue nie
+save_eremote=Bestuurders kan nie met eksterne Unix-drukkers gebruik word nie
+save_edhost=Direkte gasheer '$1' bestaan nie
+save_edport=Direkte poort ontbreek of ongeldig
+save_evalid=Die drukker het hierdie drukker nie toegelaat nie
+save_errslave=Drukker het OK op hierdie stelsel geskep, maar die volgende foute het op groepstelsels voorgekom : $1 
+save_egone=Geen drukker met die naam '$1' is gevind nie
+save_errdelslave=Drukker het OK op hierdie stelsel uitgevee, maar die volgende foute het op groepstelsels voorgekom : $1 
+
+jobs_title=Drukwerk
+jobs_header=Drukwerk op $1 
+jobs_id=Pos-ID
+jobs_size=grootte
+jobs_by=Voorgelê deur
+jobs_when=Ingedien om
+jobs_file=Lêernaam
+jobs_cancel=Klik op 'n pos-ID uit die lys hierbo om te kanselleer.
+jobs_cancelview=Klik op 'n pos-ID uit die lys hierbo om te kanselleer, of klik op die taakgrootte om dit te sien.
+jobs_none=Die drukker $1 het geen hangende take nie.
+jobs_all=Kanselleer alle drukwerk
+jobs_bytes=grepe
+jobs_test=Druk toets bladsy
+jobs_cancelsel=Kanselleer geselekteerde poste
+jobs_on=Op drukker $1 
+jobs_return=lys van afdruktaak
+
+cancel_ecannot=U mag nie afdruktaak kanselleer nie
+cancel_err=Kon nie die afdruktaak kanselleer nie
+cancel_egone=Druktaak $1 bestaan nie meer nie
+
+view_ecannot=U kan nie hierdie afdruktaak bekyk nie
+view_egone=Hierdie afdruktaak bestaan nie meer nie
+
+start_ecannot=U mag nie die skeduleerder begin nie
+start_err=Kon nie die skeduleerder begin nie
+
+stop_ecannot=U mag nie die skeduleerder stop nie
+stop_err=Kon nie die skeduleerder stop nie
+
+restart_ecannot=U mag nie die skeduleerder herbegin nie
+restart_err=Kon nie die skeduleerder herbegin nie
+
+webmin_none=Geen
+webmin_nonemsg=Afskrif of teksdrukker
+webmin_remotemsg=Afstandsdrukker
+webmin_model=model
+webmin_prog=program
+webmin_driver=Webmin-bestuurder
+webmin_uniprint=Uniprint drywer
+webmin_edrivers=Kon nie bestuurders van $1 kry nie. Webmin-drukkerbestuurders wat ghostscript gebruik, is nie beskikbaar nie
+webmin_egs=Die opdrag $1 is nie gevind nie. Webmin-drukkerbestuurders wat ghostscript gebruik, is nie beskikbaar nie
+webmin_edriver='$1' bestaan nie
+
+caldera_none=Geen
+caldera_nonemsg=Afstandsbediening of rou drukker
+caldera_prog=program
+caldera_coas=COAS bestuurder
+caldera_printer=Drukker en resolusie
+caldera_eof=Stuur EOF?
+caldera_paper=Papiergrootte
+caldera_double=Druk dubbelzijdig?
+caldera_gsopts=Bykomende GS-opsies
+caldera_uniprint=Uniprint drywer
+caldera_eprog='$1' bestaan nie
+caldera_edriver=Geen drukker drywer gekies nie
+caldera_eres=Geen resolusie gekies nie
+
+redhat_none=Geen
+redhat_nonemsg=Afskrif of teksdrukker
+redhat_prog=program
+redhat_driver=Redhat bestuurder
+redhat_printer=Drukker en resolusie
+redhat_eof=Stuur EOF?
+redhat_paper=Papiergrootte
+redhat_pages=Bladsye per uitsetbladsy
+redhat_gsopts=Bykomende GS-opsies
+redhat_hmargin=Regter/linker kantlyn
+redhat_vmargin=Boonste/onderste kantlyn
+redhat_crlf=Los traptrap-teks op?
+redhat_eprog='$1' bestaan nie
+redhat_edriver=Geen drukker drywer gekies nie
+redhat_ehmargin=Ontbrekende of ongeldige regter-/linkermarge
+redhat_evmargin=Boonste/onderste kantlyn ontbreek of ongeldig
+redhat_eres=Geen resolusie gekies nie
+redhat_printer2=Drukmodel en drywer
+
+suse_none=Geen
+suse_nonemsg=Afskrif of teksdrukker
+suse_prog=program
+suse_driver=APSfilter drywer
+suse_printer=Drukker tipe
+suse_res=Besluit in DPI
+suse_colour=Kleur drukker?
+suse_paper=Papiergrootte
+suse_method=Filtermetode
+suse_auto=outomatiese
+suse_ascii=ASCII
+suse_raw=rou
+suse_extra=Ekstra ghostscript-opsies
+suse_yast2=YAST2 bestuurder
+suse_edriver=Geen druktipe is gekies nie
+suse_eres=Ontbrekende of ongeldige resolusie
+
+estop=Kon nie lpd stop : $1 
+
+acl_printers=Drukkers wat hierdie gebruiker kan instel
+acl_add=Kan nuwe drukkers bygevoeg word?
+acl_cancel=Kan afdruktaak gekanselleer word?
+acl_stop=Kan die beplanner stop of begin?
+acl_restart=Herbegin slegs
+acl_listed=Slegs op geselekteerde drukkers ..
+acl_pall=Alle drukkers
+acl_psel=Gekies ..
+acl_view=Wys nie-instelbare drukkers?
+acl_test=Kan toetsbladsye gedruk word?
+acl_user=Bestuur druktake wat deur
+acl_user_all=Alle gebruikers
+acl_user_this=Huidige Webmin-gebruiker
+acl_delete=Kan drukkers uitgevee word?
+acl_cluster=Kan u drukklus bestuur?
+
+log_stop=Gestopte drukkerbeplanner
+log_start=Drukbeplanner begin
+log_restart=Herbegin afdrukbeplanner
+log_cancel_job=Gekanselleerde afdruktaak $2 op $1 
+log_cancel_all=Alle drukwerk op $1 gekanselleer
+log_cancel_sel=Kanselleer $2 drukwerk op $1 
+log_create=Skep drukker $1 op $2 
+log_modify=Gewysigde drukker $1 op $2 
+log_delete=Drukker $1 op $2 is uitgevee
+log_create_l=Skep $3 drukker $1 op $2 
+log_modify_l=Gewysig $3 drukker $1 op $2 
+log_delete_l=$3 drukker $1 op $2 is uitgevee
+
+linux_paralel=Parallelle hawe $1 
+linux_serial=Seriële poort $1 (COM $1)
+linux_null=Nul toestel
+linux_usb=USB drukker $1 
+linux_ecmd=Die opdrag $1 is nie op u stelsel gevind nie, wat daarop dui dat die Linux-afdrukstelsel nie geïnstalleer is nie.
+linux_espool=Die spoelgids $1 bestaan nie op u stelsel nie, wat daarop dui dat die Linux-druksisteem nie geïnstalleer is nie.
+
+freebsd_paralel=Parallelle hawe
+freebsd_serial=Seriële poort $1 (COM $1)
+freebsd_ecmd=Die opdrag $1 is nie op u stelsel gevind nie, wat aandui dat die FreeBSD-afdrukstelsel nie geïnstalleer is nie.
+freebsd_espool=Die spoelgids $1 bestaan nie op u stelsel nie, wat aandui dat die FreeBSD-drukstelsel nie geïnstalleer is nie.
+
+openbsd_paralel=Parallelle hawe
+openbsd_serial=Seriële poort $1 (COM $1)
+
+unixware_paralel=Parallelle hawe $1 
+unixware_serial=Reekspoort $1 
+unixware_null=Nul toestel
+unixware_ecmd=Die opdrag $1 is nie op u stelsel gevind nie, wat daarop dui dat die UnixWare-afdrukstelsel nie geïnstalleer is nie.
+
+hpux_paralel=Parallel $1 
+hpux_serial=Reeks $1 
+hpux_null=Nul toestel
+hpux_ecmd=Die opdrag $1 is nie op u stelsel gevind nie, wat aandui dat die HPUX-afdrukstelsel nie geïnstalleer is nie.
+hpux_eiface=Die koppelvlak-skriptsgids $1 bestaan nie op u stelsel nie, wat daarop dui dat die HPUX-afdrukstelsel nie geïnstalleer is nie.
+
+lprng_paralel=Parallelle hawe $1 
+lprng_serial=Seriële poort $1 (COM $1)
+lprng_null=Nul toestel
+lprng_ecmd=Die opdrag $1 is nie op u stelsel gevind nie, wat daarop dui dat die LPRng-afdrukstelsel nie geïnstalleer is nie.
+lprng_espool=Die spoelgids $1 bestaan nie op u stelsel nie, wat aandui dat die LPRng-afdrukstelsel nie geïnstalleer is nie.
+
+solaris_paralel=Parallelle hawe
+solaris_uparalel=Ultra 5/10 parallelle hawe
+solaris_serial=Reekspoort $1 
+solaris_null=Nul toestel
+solaris_ecmd=Die opdrag $1 is nie op u stelsel gevind nie, wat aandui dat die Solaris-afdrukstelsel nie geïnstalleer is nie.
+
+test_title=Druk toets bladsy
+test_ecannot=U mag nie toetsbladsye druk nie
+test_desc=Met hierdie vorm kan u 'n toetsblad vir drukker $1 druk. Kies die tipe bladsy wat u wil afdruk :
+test_0=Swart-en-witskrif-bladsy
+test_1=Kleur Postscript bladsy
+test_2=Gewone ASCII-teks
+test_3=Enige opgelaaide lêer
+test_print=Druk bladsy
+test_exec=Druk die toetsbladsy met opdrag $1 af.
+test_failed=.. opdrag misluk!
+test_ok=.. opdrag voltooi.
+
+cups_none=Geen
+cups_nonemsg=Afstandsbediening of rou drukker
+cups_prog=program
+cups_driver=CUPS bestuurder
+cups_eprog='$1' is nie 'n geldige program nie
+cups_opts=Opsies vir $1 
+cups_ecmd=Die opdrag $1 is nie op u stelsel gevind nie, wat aandui dat die CUPS-afdrukstelsel nie geïnstalleer is nie.
+
+irix_ecmd=Die opdrag $1 is nie op u stelsel gevind nie, wat daarop dui dat die IRIX-afdrukstelsel nie geïnstalleer is nie.
+irix_eiface=Die koppelvlak-skripgids $1 bestaan nie op u stelsel nie, wat daarop dui dat die IRIX-afdrukstelsel nie geïnstalleer is nie.
+
+aix_port=Drukkerpoort $1 
+aix_edesc=Ongeldige beskrywing - slegs letters en syfers word toegelaat, en geen spasies nie
+aix_ecmd=Die AIX-drukkerbediener $1 is nie gevind nie. Miskien is dit nie geïnstalleer nie, of is daar 'n ander afdrukstelsel in gebruik.
+
+cluster_title=Klusterdrukkerbedieners
+cluster_none=Nog geen bedieners is bygevoeg tot die drukklus nie.
+cluster_host=gasheernaam
+cluster_desc=beskrywing
+cluster_os=Bedryfstelsel
+cluster_add=Voeg bediener by
+cluster_gadd=Voeg bedieners in groep by
+cluster_need=U moet bedieners met 'n aanmelding en wagwoord in die Webmin Servers Index-module voeg voordat dit hier bestuur kan word.
+cluster_return=groep bedieners
+cluster_delete=Verwyder geselekteerde
+cluster_ecannot=U mag nie groepdrukkerbedieners bedien nie
+
+add_title=Voeg bedieners by
+add_msg=Voeg $1 by.
+add_gmsg=Voeg bedieners in groep $1 by.
+add_err=Kon nie bediener byvoeg nie
+add_gerr=Kon nie groep byvoeg nie
+add_echeck=Bediener $1 het nie die drukkeradministrasie-module nie
+add_ediff=Bediener $1 gebruik 'n ander drukstelsel ($2) as hierdie bediener
+add_ediff2=Bediener $1 gebruik 'n ander drukbestuurder ($2) as hierdie bediener
+add_ok=$1 en $2 drukkers bygevoeg.

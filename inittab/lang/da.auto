@@ -1,0 +1,53 @@
+inittab_new=Opret en ny init-proces.
+inittab_id=ID
+inittab_active=Aktiv?
+inittab_runlevels=Opstartsløb
+inittab_action=Handling
+inittab_process=Behandle
+inittab_none=Ingen
+inittab_respawn=Genoptaget proces
+inittab_wait=Vente
+inittab_once=En gang gang på niveau
+inittab_boot=Boot tid
+inittab_bootwait=Starttid, vent indtil afslutningen
+inittab_off=Gøre ingenting
+inittab_ondemand=Hver gang i A, B, C
+inittab_initdefault=Efter systemstart
+inittab_sysinit=Under systemstart
+inittab_powerwait=Strømmen går ned
+inittab_powerfail=Strømmen går ned uden at vente
+inittab_powerokwait=Strømmen gendannes
+inittab_powerfailnow=Strømafbrydelse
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Speciel tastkombination
+inittab_kbrequest=Speciel tastkombination
+inittab_return=proces liste
+inittab_apply=Anvend Init-konfiguration
+inittab_applymsg=Klik på denne knap for at anvende den aktuelle SysV Init-konfiguration ved at køre kommandoen <tt>telinit q</tt>. Vær opmærksom på, at eventuelle fejl i din konfiguration kan gøre systemet ubrugeligt, når denne kommando køres.
+index_delete=Slet valgte processer
+inittab_none2=Der blev ikke fundet nogen opstartsprocesser på dit system. Dette indikerer sandsynligvis, at det ikke bruger SysV init-konfigurationsfilen.
+
+edit_inittab_err=Du har ikke tilladelse til at redigere en proces
+edit_inittab_title=Rediger proces $1 
+edit_inittab_details=Process detaljer
+edit_inittab_del=Slet
+edit_inittab_save=Gemme
+
+new_inittab_err=Det er ikke tilladt at oprette en ny proces
+new_inittab_title=Ny proces
+
+save_inittab_err=Det er ikke tilladt at gemme en proces
+save_inittab_noid=Fejl, ingen navneprocesser indtastet
+save_inittab_already=Fejl, navneprocessen findes allerede
+
+log_modify=Ændret init-proces $1 
+log_rename=Omdøbt init-proces $1 til $2 
+log_create=Oprettet init-proces $1 
+log_delete=Slettet init-proces $1 
+log_apply=Anvendt konfiguration
+log_deletes=Slet $1 init processer
+
+apply_err=Kunne ikke anvende konfiguration
+
+delete_err=Kunne ikke slette processer
+delete_enone=Ingen valgt

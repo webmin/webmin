@@ -1,7 +1,7 @@
-risk=low medium high
 longdesc=Edit NFS v4 file shares defined in /etc/exports.
 name=Export Manager
 category=net
 os_support=slackware-linux redhat-linux mandrake-linux debian-linux suse-linux united-linux open-linux turbo-linux corel-linux cobalt-linux aix msc-linux generic-linux gentoo-linux trustix-linux sol-linux coherent-linux
 desc=NFS v4 Exports
 depends=mount
+desc_no=NFS Eksporter v4

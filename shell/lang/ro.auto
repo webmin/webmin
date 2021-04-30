@@ -1,0 +1,18 @@
+index_title=Shell de comandă
+index_ok=Execută comanda:
+index_history=Istoricul comenzilor
+index_clear=Sterge istoricul
+index_clearcmds=Sterge comenzile
+index_desc=Introduceți o comandă shell pentru a executa în câmpul de text de mai jos. Comanda <tt>cd</tt> poate fi utilizată pentru a schimba directorul pentru comenzile ulterioare.
+index_pok=Executați comanda anterioară
+index_edit=Editează anterior
+index_trunced=Producția totală de $2 a fost trunchiată la $1.
+index_timedout=Comanda a fost încheiată după rularea timp de $1 secunde.
+
+acl_user=Execută comenzi ca utilizator
+acl_user_def=Utilizator curent Webmin
+acl_shellenv=Utilizați mediul utilizator selectat?
+acl_chroot=Selecționează în director
+
+log_run=Comanda Ran $1
+log_clear=Istoric de comandă șters

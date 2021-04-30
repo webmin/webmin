@@ -1,0 +1,3 @@
+name_zh_TW=集群軟件
+longdesc_zh_TW=從一個來源跨多台服務器安裝RPM，debian和solaris軟件包。
+desc_zh_TW=群集軟件包

@@ -1,0 +1,56 @@
+index_eha_cf=A $1 szívverés-konfigurációs fájl nem található a rendszerén. Lehet, hogy még nem másolta a helyére, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+index_eharesources=A (z) $1 erőforrásfájl nem található a rendszerén. Lehet, hogy még nem másolta a helyére, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+index_eauthkeys=A (z) $1 hitelesítési kulcsfájl nem található a rendszerén. Lehet, hogy még nem másolta a helyére, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+index_ereq_resource_cmd=A rendszerben nem található a forrás igénylésére szolgáló szkript ($1). Lehet, hogy még nem másolta a helyére, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+index_version=$1 szívverés
+index_noversion=Figyelem! A rendszerre telepített Heartbeat verzióját nem lehetett automatikusan felismerni. A <a href='$1'>modul konfigurációja</a> oldalon kell beállítania.
+index_status=Szívverés állapota
+
+conf_serials=Soros szívverés portok
+conf_bcasts=Ethernet pulzus interfészek
+conf_mcast=Multicast szívveréses eszköz
+conf_mcastv=$1 eszköz, $2 csoport, $3 port, TTL $4, loopback $5 
+conf_enabled=Bekapcsolt
+conf_disabled=Tiltva
+conf_nice_failback=Szép visszatérő viselkedés
+conf_logfile=Szívverés naplófájl
+conf_logfacility=Syslog naplókészlet
+conf_initdead=Kezdeti halott idő
+conf_ok=Mentési beállítások
+conf_err=Nem sikerült menteni az opciókat
+conf_ebaud=Hiányzó vagy érvénytelen adatátviteli sebesség
+conf_ebcast=Nem lépett be szívveréses közvetítő interfész
+conf_ebcastif=A '$1' nem érvényes sugárzási felület
+conf_eudpport=Hiányzó vagy érvénytelen pulzusport
+conf_ekeepalive=Hiányzó vagy érvénytelen idő a szívverések között
+conf_edeadtime=Hiányzó vagy érvénytelen halott idő
+conf_ewatchdog=Hiányzó vagy nem létező őrző eszközfájl
+conf_enonode=Nem lépett be klasztergazdagépen
+conf_ethisnode=Ez a (z) $1 gazdagép nem található a fürtgazdagépek listájában
+conf_elogfile=Hiányzó vagy érvénytelen naplófájlnév
+conf_einitdead=Hiányzó vagy érvénytelen kezdeti halálidő
+conf_einitdead2=A kezdeti halott időnek legalább kétszer kell lennie ahhoz, hogy egy csomópont halottnak minősüljön
+conf_emcast_dev=Hiányzó vagy érvénytelen multicast eszköz
+conf_emcast_ip=Hiányzó vagy érvénytelen multicast csoportcím
+conf_emcast_port=Hiányzó vagy érvénytelen multicast portszám
+conf_emcast_ttl=Hiányzó vagy érvénytelen csoportos küldés az életciklushoz
+conf_auto_on=$ {Conf_enabled}
+conf_auto_off=$ {Conf_disabled}
+conf_auto_legacy=Régi mód
+conf_auto_=$ {} Alapértelmezett
+
+res_title=Klaszter erőforrások
+res_node=Elsődleges csomópont
+res_ips=IP címek
+res_servs=Csomópont-szolgáltatások
+res_none=Egyik sem
+res_nores=Nem definiáltak fürt erőforrásokat a rendszeren.
+res_add=Adjon hozzá egy fürt erőforrást
+res_return=erőforrások listája
+res_active=Erőforrás állapota
+res_getserv=Get Resource
+res_hbdown=Szívverés
+res_up=FEL
+res_down=LE
+
+node_create=Adjon hozzá fürt erőforrást

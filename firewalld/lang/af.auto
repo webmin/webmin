@@ -1,0 +1,116 @@
+index_title=FirewallD
+index_atboot=Aktiveer die firewall tydens opstart?
+index_bootup=Aktiveer tydens opstart
+index_bootupdesc=Verander hierdie opsie om te bepaal of u firewall teen laaityd geaktiveer is of nie.
+index_apply=Pas konfigurasie toe
+index_applydesc=Klik op hierdie knoppie om die firewall-konfigurasie hierbo gelys aktief te maak. Enige huidige firewall-reëls word gespoel en vervang
+index_restart=Pas konfigurasie toe
+index_restartdesc=Aktiveer al die toegelate dienste en hawens hierbo gelys, in alle sones. Enige aktiewe reëls wat nie permanent geskep is nie, sal vervang word.
+index_start=Begin FirewallD
+index_startdesc=Begin die FirewallD-bediener en pas die bogenoemde reëls toe.
+index_stop=Stop FirewallD
+index_stopdesc=Sluit die FirewallD-bediener uit en verwyder al die bogenoemde reëls.
+index_cerr=Die FirewallD-module kan nie gebruik word nie : $1 
+index_zone=Wys reëls in sone:
+index_zoneok=verandering
+index_zoneadd=Voeg sone by ..
+index_zonedel=Vee sone uit
+index_zonedef=Maak dit die terugval-opsie
+index_type=Reël tipe
+index_port=Hawe of diens
+index_proto=Protokol
+index_tservice=diens
+index_tport=Port
+index_tforward=vorentoe
+index_padd=Voeg toegelate hawe by.
+index_sadd=Voeg toegelate diens by.
+index_fadd=Voeg hawe vorentoe.
+index_delete=Vee geselekteerde reëls uit
+index_return=lys van sones
+index_ezones=Geen FirewallD-sones gevind nie!
+index_none=Hierdie sone het nog geen toegelate hawens of dienste nie.
+index_ifaces=Pas reëls toe op koppelvlakke:
+
+port_edit=Wysig hawe
+port_create=Voeg hawe by
+port_header=Toegestane hawe-opsies
+port_zone=In sone toegelaat
+port_port=Hawe om toe te laat
+port_mode0=Enkel hawe
+port_mode1=Port reeks
+port_mode2=Dieselfde as oorspronklike poort
+port_proto=Netwerkprotokol
+port_ezone=Sone bestaan nie!
+port_err=Kon nie poort stoor nie
+port_eport=Poortnummer of naam ontbreek of ongeldig
+port_eportlow=Lae poort moet 'n getal wees
+port_eporthigh=Die hoë poort moet 'n nommer wees
+port_eportrange=Lae hawe moet onder die hoë hawe wees
+
+serv_edit=Redigeer diens
+serv_create=Voeg diens by
+serv_header=Toegestane diensopsies
+serv_name=Diens om toe te laat
+serv_err=Kon nie die diens stoor nie
+
+forward_edit=Wysig vorentoe
+forward_create=Skep vorentoe
+forward_header=Oordragopsies vir hawe
+forward_zone=Stuur vir sone
+forward_err=Kon nie vorentoe stoor nie
+forward_port=Bronpoort
+forward_dstport=Desintation hawe
+forward_dstaddr=Bestemmingsadres
+forward_dstlocal=Hierdie stelsel
+forward_edstaddr=Ongeldige IPv4-bestemmingsadres
+forward_eneither=Óf 'n bestemmingsadres of poort of albei moet ingevoer word
+
+check_ecmd=Die FirewallD-beheeropdrag $1 is nie op u stelsel gevind nie
+
+delete_err=Kon nie reëls uitvee nie
+delete_enone=Geen gekies nie!
+delete_edel=Die verwydering van $1 het misluk : $2 
+
+zone_title=Skep sone
+zone_header=Nuwe sone-opsies
+zone_name=Sone naam
+zone_mode=Toegestane hawens en dienste
+zone_mode0=Geen (alle verkeer sal geblokkeer word)
+zone_mode1=Kopieër vanaf sone
+zone_mode2=Slegs SSH, IDENT en Webmin
+zone_mode3=SSH, IDENT, Webmin en hoë hawens
+zone_mode4=Poorte wat vir virtuele hosting gebruik word
+zone_err=Kon nie sone skep nie
+zone_ename=Sone-naam ontbreek of ongeldig
+zone_eclash=Daar bestaan reeds 'n sone met dieselfde naam
+
+delzone_title=Vee sone uit
+delzone_err=Kon nie sone uitvee nie
+delzone_edefault=Die versteksone kan nie verwyder word nie
+delzone_rusure=Is u seker dat u die zone $1, wat $2 -poorte en $3 -dienste bevat, wil uitvee?
+
+defzone_err=Kon nie zone die verstek maak nie
+
+restart_err=Kon nie konfigurasie toepas nie
+
+stop_err=Kon nie FirewallD stop nie
+start_err=Kon nie FirewallD begin nie
+log_stop=Gestop FirewallD
+log_start=Firewall begin
+log_restart=Toegepaste FirewallD-konfigurasie
+log_bootup=Firewall D by opstart ingeskakel
+log_bootdown=Afgeskakel FirewallD by opstart
+log_create_port=Toegelaat poort $1 bygevoeg
+log_delete_port=Toelaatbare poort $1 is verwyder
+log_update_port=Toegestane poort $1 is opgedateer
+log_create_serv=Toegestane diens $1 bygevoeg
+log_delete_serv=Toegestane diens $1 verwyder
+log_update_serv=Opgedateerde diens $1 opgedateer
+log_create_forward=Voorwaartse $1 bygevoeg
+log_delete_forward=Vorentoe $1 verwyder
+log_update_forward=Opgedateer vorentoe $1 
+log_delete_rules=$1 toegelate hawens is verwyder
+log_ifaces_zone=Opgedateerde koppelvlakke vir sone $1 
+log_create_zone=Sone $1 geskep
+log_delete_zone=Sone $1 is verwyder
+log_default_zone=Sone $1 is standaard gemaak

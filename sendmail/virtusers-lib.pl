@@ -27,7 +27,7 @@ if (!scalar(@list_virtusers_cache)) {
 	@list_virtusers_cache = ( );
 	local $lnum = 0;
 	local $cmt;
-	open(VIRT, $_[0]);
+	open(VIRT, "<".$_[0]);
 	while(<VIRT>) {
 		s/\r|\n//g;     # remove newlines
 		if (/^\s*#+\s*(.*)/) {

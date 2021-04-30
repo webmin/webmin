@@ -1,0 +1,205 @@
+index_title=Prosessien suorittaminen
+index_display=Näyttö
+index_tree=PID
+index_user=käyttäjä
+index_size=Muisti
+index_cpu=prosessori
+index_search=Hae
+index_zone=vyöhyke
+index_run=Juosta ..
+index_return=prosessiluettelo
+index_mem2=<b>Oikea muisti:</b> $1 yhteensä / $2 ilmaiseksi
+index_mem3=<b>Oikea muisti:</b> $1 yhteensä / $2 vapaa / $3 välimuistissa
+index_swap2=<b>Vaihda tila:</b> $1 yhteensä / $2 ilmaiseksi
+index_burst=<b>Burstable memory:</b> $1 yhteensä
+index_loadname=Prosessorin kuorman keskiarvot:
+index_loadnums=$1 (1 minuutti), $2 (5 minuuttia), $3 (15 minuuttia)
+index_cpuname=Prosessorin tyyppi:
+index_inzone=Alueella $1 
+
+pid=ID
+owner=Omistaja
+command=Komento
+cpu=prosessori
+size=Koko
+parent=Vanhempi prosessi
+runtime=Ajoaika
+nice=Mukava taso
+stime=aloitti
+sclass=IO-aikataulukurssi
+sprio=IO-prioriteetti
+
+search_user=Omistuksessa
+search_match=Vastaavat
+search_cpupc=Käytä yli $1% prosessoria
+search_cpupc2=Käytä enemmän prosessoria kuin
+search_fs=Tiedostojärjestelmän käyttäminen
+search_files=Tiedoston käyttäminen
+search_submit=Hae
+search_none=Vastaavia prosesseja ei löytynyt.
+search_kill=Lähetä signaali
+search_ignore=Ohita tulosprosessit
+search_return=hakulomake
+search_sigterm=Lopeta prosessit
+search_sigkill=Tapa prosessit
+search_port=Portin käyttö
+search_protocol=protokolla
+search_ip=IP-osoitteen käyttäminen
+
+run_command=Komento suorittaa
+run_submit=Juosta
+run_mode=Suoritustila
+run_bg=Pyöriä taustalla
+run_fg=Odota, kunnes olet valmis
+run_input=Tulo komentoon
+run_title=Komennon lähtö
+run_output=Lähtö $1 : stä ..
+run_none=Tulostusta ei generoitu
+run_ecannot=Sinulla ei ole oikeutta suorittaa komentoja
+run_as=Suorita käyttäjänä
+run_euser=Puuttuva tai virheellinen käyttäjänimi
+run_euser2=Et voi suorittaa komentoja valituna käyttäjänä
+
+edit_title=Prosessitiedot
+edit_gone=Tämä prosessi ei ole enää käynnissä
+edit_sub=osaprosessit
+edit_subid=ID
+edit_subcmd=Aliprosessin komento
+edit_kill=Lähetä signaali
+edit_change=Muuttaa
+edit_prilow=Matala tärkeys
+edit_prihigh=Korkea prioriteetti
+edit_pridef=oletusarvo
+edit_none=Ei mitään
+edit_ecannot=Et voi muokata prosesseja
+edit_sigterm=lopettaa
+edit_sigkill=Tappaa
+edit_sigstop=Keskeyttää
+edit_sigcont=Jatkaa
+edit_open=Tiedostot ja yhteydet
+edit_trace=Jäljitysprosessi
+edit_return=prosessin yksityiskohdat
+
+kill_err=Signaalin $1 lähettäminen epäonnistui prosessoimaan $2 
+kill_title=Lähetä signaali
+kill_sent=lähetetty
+kill_ecannot=Sinulla ei ole oikeutta tappaa prosesseja
+
+renice_err=$1 uudelleenprosessi epäonnistui
+renice_ecannot=Sinulla ei ole lupaa vuokrata prosesseja
+
+linux_pri=prioriteetti
+linux_tty=TTY
+linux_status=Tila
+linux_wchan=Odotan sisään
+linux_mem=Muisti
+linux_group=Ryhmä
+linux_ruser=Oikea käyttäjä
+linux_rgroup=Oikea ryhmä
+linux_pgid=Prosessiryhmän tunnus
+linux_stime=aloitti
+
+linuxstat_R=Running
+linuxstat_S=Nukkumassa
+linuxstat_D=Syvä uni
+linuxstat_T=pysäytetty
+linuxstat_Z=Zombie
+
+linux_real=Reaaliaika
+linux_be=Paras yritys
+linux_idle=tyhjäkäynti
+
+freebsd_ruser=Oikea käyttäjä
+freebsd_rgroup=Oikea ryhmä
+freebsd_tty=TTY
+freebsd_pgid=Prosessiryhmä
+freebsd_stime=aloitti
+freebsd_lim=Muistin raja
+
+hpux_pri=prioriteetti
+hpux_tty=TTY
+hpux_status=Tila
+hpux_wchan=Odottaa
+hpux_stime=aloitti
+
+hpuxstat_0=Olematon
+hpuxstat_S=Nukkumassa
+hpuxstat_W=Waiting
+hpuxstat_R=Running
+hpuxstat_I=väli-
+hpuxstat_Z=Zombie
+hpuxstat_T=pysäytetty
+hpuxstat_G=kasvava
+
+macos_tty=TTY
+
+sysv_group=Ryhmä
+sysv_ruser=Oikea käyttäjä
+sysv_rgroup=Oikea ryhmä
+sysv_pgid=Prosessiryhmän tunnus
+sysv_tty=TTY
+sysv_stime=aloitti
+sysv_task=Tehtävän tunnus
+sysv_zone=Vyöhykkeen nimi
+
+log_run=Ran komento "$1"
+log_kill=Lähetetty signaali $1 prosessoimaan $2 
+log_kills=Lähetä signaali $1 - $2 -prosesseille
+log_kill_l=Lähetetty signaali $1 prosessoimaan $2 
+log_kills_l=Lähetetty signaali $1 prosesseihin <br> $2 
+log_renice=Prosessin $2 prioriteetti muutettiin - $1 
+
+acl_manage=Hallinnoi prosesseja käyttäjänä
+acl_manage_def=Nykyinen Webmin-käyttäjä
+acl_edit=Voiko prosesseja tappaa ja renisoida?
+acl_run=Voiko komentoja suorittaa?
+acl_only=Näetkö vain omat prosessit?
+acl_who=Osaa hallita käyttäjien prosesseja
+acl_who0=Kaikki käyttäjät
+acl_who1=Nykyinen Webmin-käyttäjä
+acl_who2=Listatut käyttäjät ..
+
+kill_kill=Tapa prosessi
+kill_term=lopettaa
+kill_hup=Uudelleenkäynnistää
+kill_stop=Lopettaa
+kill_cont=Jatkaa
+
+open_title=Avaa Tiedostot ja yhteydet
+open_proc=Prosessille $1 (PID $2)
+open_header1=Avaa tiedostoja
+open_header2=Avaa verkkoyhteydet
+open_type=Tyyppi
+open_proto=protokolla
+open_desc=Yksityiskohdat
+open_fd=Tiedostonkuvaus
+open_listen1=Kuunteleminen portissa $1 
+open_listen2=Kuuntelu osoitteessa $1 portti $2 
+open_recv=Vastaanottaminen $1:$2 
+open_conn=Yhdistetty tilasta $3 $1 - $2 
+open_cwd=Nykyinen ohj
+open_rtd=Juuh
+open_txt=Ohjelman koodi
+open_mem=Jaettu kirjasto
+open_dir=hakemisto
+open_reg=Tavallinen tiedosto
+open_chr=Hahmo erityinen
+open_blk=Estä erityinen
+open_size=Tiedoston koko
+open_inode=inode
+open_file=polku
+
+trace_title=Jäljitysprosessi
+trace_start=Käynnistetään järjestelmän puhelun jäljitys kohteelle $1.
+trace_doing=Järjestelmäpuhelun jäljitys $1 : lle :
+trace_done=.. prosessi on päättynyt.
+trace_failed=.. jäljitys epäonnistui!
+trace_sorry=Tämä sivu vaatii Java-tuen selaimessasi. Säädä moduulin kokoonpanoa, jotta voit käyttää vain teksti-prosessin jäljitystä.
+trace_syscalls=Jäljitysjärjestelmän puhelut:
+trace_all=Kaikki
+trace_sel=Listattu ..
+trace_change=Muuttaa
+
+windows_threads=Langat prosessissa
+
+syslog_dmesg=Ydinviestit

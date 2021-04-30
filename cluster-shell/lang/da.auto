@@ -1,0 +1,22 @@
+index_title=Cluster Shell-kommandoer
+index_cmd=Kommando til at køre
+index_old=eller
+index_server=Kør på servere
+index_run=Kør kommandoen nu
+index_return=modul indeks
+index_this=denne server
+index_all=&lt;Alle værter&gt;
+index_group=Medlemmer af $1 
+index_clear=Ryd historie
+index_edit=Rediger Forrige
+
+run_title=Kør kommando
+run_err=Kunne ikke køre kommandoen
+run_ecmd=Ingen kommando indtastet
+run_failed=Kunne ikke køre på $1 : $2 
+run_success=Output fra $1 ..
+run_enone=Ingen servere til at køre på valgt
+
+log_clear=Ryddet kommandohistorie
+log_run=Kørte $1 på $2 -servere
+log_run_l=Løb $1 på $2 

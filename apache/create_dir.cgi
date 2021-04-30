@@ -37,6 +37,7 @@ else {
 # Add to file
 &save_directive_struct(undef, $dir, $vconf, $conf);
 &flush_file_lines();
+&update_last_config_change();
 &unlock_file($vconf->[0]->{'file'});
 
 &after_changing();

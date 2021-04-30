@@ -1,0 +1,2 @@
+linux_nofail=Boot fortsetzen, auch wenn die Bereitstellung fehlschlägt?
+linux_noserverino=Inode-Nummern auf Client-Seite generieren?

@@ -1,0 +1,11 @@
+log_create_attr_l=Das Attribut $1 mit dem Wert $3 wurde zum Objekt $2 hinzugefügt
+log_modify_attr_l=Attribut $1 mit Wert $3 in Objekt $2 aktualisiert
+log_delete_attr_l=Attribut $1 aus Objekt $2 gelöscht
+log_delete_attrs=$1 -Attribute aus Objekt $2 gelöscht
+log_schema=Geänderte aktivierte LDAP-Schemas wurden geändert
+log_sfile=Geänderte Schemadatei $1 
+log_sup=Schemadatei $1 nach oben verschoben
+log_sdown=Schemadatei $1 nach unten verschoben
+log_modify_access=Aktualisierte Zugriffssteuerungsregel für $1 
+log_up_access=Zugriffssteuerungsregel für $1 nach oben verschoben
+log_down_access=Zugriffssteuerungsregel für $1 nach unten verschoben

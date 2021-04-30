@@ -1,0 +1,8 @@
+edit_minsize=A forgatás minimális mérete
+edit_nominsize=Mindig
+edit_dateext=Használja a dátumhosszabbítást az elforgatott fájlokhoz
+
+save_eminsize=Hiányzik vagy érvénytelen a minimális méret
+save_enofiles=Nincs megadva elforgatható fájl
+
+sched_when=Futtasson időket

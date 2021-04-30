@@ -1,0 +1,66 @@
+index_title=Klijent ADSL
+index_eadsl=Il-kmand RP-PPPoE $1 ma nstabx fis-sistema tiegħek jew mhuwiex validu. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
+index_econfig=Il-fajl ta 'konfigurazzjoni RP-PPPoE ADSL $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
+index_emodem=Il-fajl tal-konfigurazzjoni attwali huwa għal modem fuq Redhat Linux, mhux għal konnessjoni ADSL. Uża l-<a href='$2'>konfigurazzjoni tal-modulu</a> paġna biex tispeċifika wieħed mill-oħrajn <tt>ifcfg-ppp *</tt> fajls f' $1, jew wieħed li għadu ma jeżistix sabiex il-modulu tista 'toħloqha għalik.
+index_stop=Għalaq ADSL
+index_stopdesc=Il-konnessjoni ADSL tiegħek hija attwalment attiva bl-indirizz IP $1. Ikklikkja din il-buttuna biex tintefa bil-kmand $2.
+index_start=Ibda ADSL
+index_startdesc=Il-konnessjoni ADSL tiegħek bħalissa mhix attiva. Ikklikkja din il-buttuna biex tibda bil-kmand $1.
+index_boot=Ibda fil-ħin tal-ibbutjar
+index_bootdesc=Ibdel din l-għażla biex tikkontrolla jekk il-konnessjoni ADSL tiegħek hijiex aġġornata fil-ħin tal-bidu jew le.
+index_return=indiċi tal-modulu
+index_version=Il-verżjoni RP-PPPoE $1 
+index_esetup=Il-fajl tal-konfigurazzjoni Redhat ADSL $1 ma jeżistix fis-sistema tiegħek. Madankollu, dan il-modulu jista 'jistabbilixxiha b'default bażiċi billi tikklikkja l-buttuna hawn taħt.
+index_setup=Fajl konfigurazzjoni Setup
+index_cancel=Ikkanċella Konnessjoni
+index_canceldesc=Il-klijent ADSL bħalissa qed jipprova jistabbilixxi konnessjoni. Ikklikkja din il-buttuna biex tikkanċella l-attentat bil-kmand $1.
+index_cdemand=Ikkanċella fuq talba
+index_cdemanddesc=Il-klijent ADSL bħalissa qed jistenna talba għal konnessjoni fuq talba. Ikklikkja din il-buttuna biex twaqqafha bil-buttuna $1.
+
+index_header=Għażliet ta 'konfigurazzjoni tal-klijent ADSL
+index_desc=Is-settings hawn taħt japplikaw għal kwalunkwe konnessjoni ADSL ġdida mibdija mis-sistema tiegħek. Jekk tbiddilhom, il-konnessjoni għandha tintefa u terġa 'tibda biex il-modifiki jidħlu fis-seħħ.
+index_eth=Interfaċċja Ethernet
+index_other=Oħrajn ..
+index_demand=Ikkonnettja fuq talba?
+index_timeout=Iva, bi skadenza
+index_secs=sekondi
+index_user=Idħol bħala utent
+index_sec=Idħol bil-password
+index_dns=Ikollok konfigurazzjoni DNS minn ISP?
+index_save=Issejvja l-konfigurazzjoni
+index_mss=Limitu tad-daqs tal-pakkett?
+index_psize=Iva, biex
+index_bytes=bytes
+index_fw=Firewall li jattiva fuq konnessjoni
+index_fw_none=Xejn
+index_fw_standalone=Għal ospitanti wieħed
+index_fw_masquerade=Għall-portal NAT
+index_connect=Ħin biex tipprova konnessjoni għal
+index_forever=Għal dejjem
+
+start_err=Naqset milli tibda konnessjoni ADSL
+start_title=Ibda ADSL
+start_ip=Konnessjoni ADSL ġiet stabbilita b'indirizz IP $1.
+start_demand=Minħabba li l-modalità tal-konnessjoni fuq talba hija ppermettiet, il-konnessjoni ADSL tiegħek tibda biss meta jkun hemm bżonn.
+start_bg=Il-konnessjoni ADSL ma nbdietx fi żmien 20 sekonda. Il-klijent ADSL se jkompli jipprova jgħaqqad fl-isfond sakemm jirnexxi.
+
+save_err=Ma rnexxielux isalva l-konfigurazzjoni ADSL
+save_eeth=Interfaċċja ta 'ethernet nieqsa jew invalida li tħares
+save_etimeout=Nieqes jew invalidu li jiskadi fuq talba
+save_euser=Username nieqes jew invalidu
+save_econnect=It-terminu tal-konnessjoni nieqes jew invalidu
+save_emss=Daqs massimu tal-pakkett nieqes jew invalidu
+save_title=Iffranka l-Konfigurazzjoni
+save_desc=Il-konfigurazzjoni tal-klijent ADSL tiegħek ġiet salvata b'suċċess, iżda mhux se tintuża sakemm terġa 'tikkonnettja.
+
+stop_err=Ma rnexxielhiex tintefa 'konnessjoni ADSL
+stop_title=Għalaq ADSL
+stop_ok=Il-konnessjoni ADSL tiegħek ġiet mitfija b'suċċess.
+stop_failed=Il-konnessjoni ADSL tiegħek għadha attiva għal xi raġuni!
+
+log_save=Konfigurazzjoni tal-klijent salvata
+log_stop=Għalaq ADSL
+log_start=Bdiet ADSL
+log_bootup=Attiva ADSL fil-ħin tal-bidu
+log_bootdown=B'diżabilità ADSL fil-ħin tal-bidu
+log_setup=Twaqqaf il-konfigurazzjoni default

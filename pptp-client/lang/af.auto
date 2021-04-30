@@ -1,0 +1,112 @@
+index_title=PPTP VPN-kliënt
+index_epptp=Die PPTP-klientprogram $1 is nie op u stelsel gevind nie. Miskien is dit nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
+index_eppp=Die PPP-bedienerprogram $1 is nie op u stelsel geïnstalleer nie. Die PPTP hang daarvan af om te werk.
+index_eoptions=Die globale PPTP PPP-opsielêer $1 bestaan nie. Maak dit óf, of pas die <a href='$2'>modulekonfigurasie</a> aan om 'n ander lêer te gebruik, of glad nie.
+index_header=Gedefinieerde tonnels
+index_none=Geen PPTP-tonnels is nog gedefinieër nie.
+index_tunnel=Tunnel $1 
+index_add=Voeg 'n nuwe PPTP VPN-tonnel by.
+index_conn=Koppel aan:
+index_pass=met opsionele wagwoord:
+index_conndesc=Klik op hierdie knoppie om die geselekteerde PPTP VPN-tonnel met die huidige konfigurasie te verbind.
+index_disc=Ontkoppel van:
+index_discdesc=Klik op hierdie knoppie om die geselekteerde PPTP VPN-tonnel wat tans aktief is, te ontkoppel en alle roetes daardeur te verwyder.
+index_return=PPTP-tonnellys
+index_opts=Redigeer globale PPP-opsies
+index_optsdesc=Klik op hierdie knoppie om die PPP-opsies te wysig wat van toepassing is op alle PPTP VPN-tonnels.
+index_version=PPPd weergawe $1 
+index_boot=Verbind by opstart:
+index_noboot=&lt;Moenie kontak maak nie
+index_bootdesc=Verander hierdie opsie om te bepaal of die geselekteerde PPTP VPN-verbinding met die opstartyd begin word of nie.
+
+disc_err=Kon nie die tonnel ontkoppel nie
+disc_egone=Nie meer aktief nie
+disc_ekill=Kon nie die pppd-proses doodmaak nie
+disc_done=Tunnel $1 is suksesvol ontkoppel.
+
+conn_err=Kon nie die tonnel koppel nie
+conn_egone=Tunnel bestaan nie meer nie
+cone_ealready=Reeds gekoppel
+conn_einvalid=Ontbrekende IP-adres van die bediener in die konfigurasielêer
+conn_title=Verbind Tunnel
+conn_cmd=Die opstel van 'n PPTP-verbinding met die opdrag $1.
+conn_ok=.. verbinding suksesvol geaktiveer met behulp van koppelvlak $1. U plaaslike adres is $2, en die afstandadres is $3.
+conn_timeout=.. verbinding misluk! Gaan die onderstaande logboodskappe na vir inligting.
+conn_routes=Roetes met opdragte bygevoeg ..
+conn_mppe=Die MPPE-protokol vir VPN-kodering benodig PPP-dememon en kern-ondersteuning. Die bogenoemde foute dui egter daarop dat een of albei nie op u stelsel beskikbaar is nie. As die PPTP-bediener nie MPPE benodig nie, probeer dan om alle opsies wat daarmee verband hou, uit te skakel op die <a href='$1'>globale PPP-opsies</a> -bladsy.
+
+edit_title1=Voeg PPTP-tonnel by
+edit_title2=Wysig PPTP-tonnel
+edit_header=PPTP VPN-tonnelopsies
+edit_name=Tunnelnaam
+edit_server=Koppel aan bediener
+edit_login=Teken in as gebruiker
+edit_same=Stelsel gasheernaam
+edit_pass=Teken in met wagwoord
+edit_remote=Bediener se naam
+edit_auto=outomatiese
+edit_adddef=Voeg standaardroete by?
+edit_def1=Via die ander einde
+edit_def2=Via poort ..
+edit_deldef=Vee ou standaardroete uit?
+edit_routes=Roetes om by te voeg na verbinding
+edit_type=tipe
+edit_type0=&nbsp;
+edit_type1=Network
+edit_type2=Enkel gasheer
+edit_net=Netwerk of gasheer
+edit_mask=netmask
+edit_gw=Via poort
+edit_gw_def=Ander einde
+edit_unknown=Ander <tt>roete</tt> opdragte
+edit_file=PPP-opsielêer
+edit_none=Geen
+edit_global=Standaard globale lêer
+edit_ofile=Ander lêer ..
+
+save_err=Kon nie die tonnel stoor nie
+save_ename=Tonnelnaam ontbreek
+save_eserver=Bediener ontbreek of ongeldig om aan te sluit
+save_elogin=Ontbrekende of ongeldige aanmeldnaam
+save_eremote=Die naam van die eksterne bediener ontbreek of ongeldig
+save_edef=Ontbrekende of ongeldige standaardroetepoort
+save_enet=Ongeldige netwerkadres op roete $1 
+save_emask=Ongeldige netmasker op roete $1 
+save_egw=Ongeldige poort vir netwerk in roete $1 
+save_ehost=Ongeldige gasheer-IP-adres op roete $1 
+save_emask2=Geen netmasker is nodig vir gasheerroete $1 nie
+save_egw2=Ongeldige poort vir gasheer op roete $1 
+save_erename=Kon nie die tonnellêer hernoem nie
+save_eclash=Daar bestaan reeds 'n tonnel of PPP-eweknie met dieselfde naam
+save_efile=Ontbrekende of ongeldige PPP-opsielêer
+
+opts_title=Wêreldwye PPP-opsies
+opts_desc=Die instellings hieronder is geneem uit $1 en sal van toepassing wees op alle tonnels wat ingestel is om standaard globale PPP-opsielêer te gebruik.
+opts_header=PPP-opsies vir alle tonnels
+opts_mtu=Maksimum pakkie grootte stuur
+opts_mru=Maksimum pakkiegrootte ontvang
+opts_err=Kon nie globale PPP-opsies stoor nie
+opts_emtu=Ontbrekende of ongeldige maksimum stuurpakketgrootte
+opts_emru=Maksimum of maksimum pakkiegrootte ontbreek of ongeldig
+opts_msdesc=Die onderstaande opsies stel MPPE-kodering in, wat deur Windows VPN-bedieners gebruik word. MPPE benodig egter ondersteuning in sowel die PPP-daemon as die bedryfstelselkern.
+
+mppe_mppe-40=Gebruik u 40-bis MPPE-kodering?
+mppe_mppe-128=Gebruik 128-bit MPPE-kodering?
+mppe_mppe-stateless=Aktiveer MPeless-modus staatloos?
+mppe_mppe=Aktiveer MPPE-kodering?
+mppe_m2=Moet gebruik word
+mppe_m0=Kan nie gebruik word nie
+mppe_d0=gestremde
+mppe_d1=toegelaat
+mppe_mppe-stateful=Aktiveer die MPPE-modus statief?
+mppe_old=Waarskuwing - die ou styl MPPE-riglyne $1 is in u konfigurasielêer gevind, selfs al ondersteun u PPP-dememon die nuwe-styl-riglyne.
+mppe_new=Waarskuwing - die nuwe styl MPPE-riglyne $1 is in u konfigurasielêer gevind, al ondersteun u PPP-demoon slegs die outydse riglyne.
+
+log_create=PPTP-tonnel $1 geskep
+log_update=Gewysigde PPTP-tonnel $1 
+log_delete=PPTP-tonnel $1 is uitgevee
+log_conn=Gekoppelde tonnel $1 
+log_conn_l=Verbind tonnel $1 met plaaslike adres $2 
+log_failed=Kon nie tonnel $1 koppel nie
+log_disc=Ontkoppelde tonnel $1 
+log_opts=Gewysigde globale PPP-opsies

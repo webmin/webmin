@@ -1,0 +1,16 @@
+index_drivesub=Stav jednotky $1, disk $2 
+index_attrs=Další atributy SMART
+index_raw=Úplná zpráva o stavu SMART
+index_family=Modelová rodina
+index_serial=Sériové číslo
+index_capacity=Kapacita
+index_norm=Normalizováno:
+
+monitor_type2=SSD Wearout
+monitor_errorsinc=Ano, ale pouze v případě zvýšení počtu chyb
+monitor_errorsfound=Hlášeny chyby $1 
+monitor_errorsinced=Chyby se zvýšily z $2 na $1 
+monitor_wearlevel=Selhání, pokud úroveň opotřebení klesne pod
+monitor_ewearlevel=Neplatné procento úrovně opotřebení
+monitor_nowearout=Jednotka nehlásí indikátor vazby SSD
+monitor_wornout=Úroveň opotřebení klesla na $1 

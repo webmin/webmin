@@ -1,0 +1,58 @@
+index_title=Status Pemacu SMART
+index_ecmd=Perintah kawalan SMART $1 tidak dijumpai pada sistem anda, atau tidak ditetapkan dengan betul dalam konfigurasi modul <a href='$2'></a>. Ia mesti dipasang sebelum modul ini boleh digunakan.
+index_ecmd2=Perintah $1 tidak kelihatan sebagai arahan kawalan SMART. Ia mesti ditetapkan dengan betul dalam <a href='$2'>konfigurasi modul</a> sebelum modul ini boleh digunakan.
+index_version=Versi SMARTsuite $1 
+index_show=Tunjukkan status pemacu:
+index_ok=Tunjukkan
+index_eidescsi=Tiada pemacu IDE, SCSI atau SATA yang terdapat pada sistem anda.
+index_drive=Status pemacu $1 
+index_drivesub=Status pemacu $1, cakera $2 
+index_desc=Lokasi
+index_size=Saiz pemacu
+index_model=Buat dan model
+index_support=Menyokong SMART?
+index_enabled=SMART didayakan?
+index_check=Periksa cakera lulus?
+index_short=Ujian Diri Ringkas
+index_ext=Ujian Sendiri Lanjutan
+index_data=Ujian Pengumpulan Data
+index_errors=Kesilapan log masuk
+index_ecount=$1 ralat dikesan
+index_attrs=Atribut SMART tambahan
+index_raw=Laporan status SMART Penuh
+index_return=indeks modul
+index_family=Keluarga model
+index_serial=Nombor siri
+index_capacity=Kapasiti
+index_norm=Dirangka:
+
+monitor_type=Cek SMART Drive
+monitor_type2=SSD Wearout
+monitor_drive=Pandu untuk memeriksa
+monitor_errors=Semak ralat ralat juga?
+monitor_errorsinc=Ya, tetapi hanya amaran jika kiraan ralat meningkat
+monitor_other=Lain ..
+monitor_edrive=Pemandu hilang atau tidak sah untuk memeriksa
+monitor_nosuch=Tiada pemacu sedemikian
+monitor_nosmart=Tiada sokongan SMART
+monitor_errorsfound=Dilaporkan $1 ralat
+monitor_errorsinced=Kesilapan meningkat dari $2 hingga $1 
+monitor_wearlevel=Gagal jika tahap memakai jatuh di bawah
+monitor_ewearlevel=Peratusan paras haus tidak sah
+monitor_nowearout=Drive tidak melaporkan penunjuk pemakaian SSD
+monitor_wornout=Tahap pakai telah jatuh ke $1 
+
+short_title=Ujian Diri Ringkas
+short_doing=Memulakan ujian diri pendek $1 ..
+short_failed=.. gagal!
+short_ok=.. ujian bermula OK. Lihat status pemacu pada halaman utama modul untuk keputusan.
+
+ext_title=Ujian Sendiri Lanjutan
+ext_doing=Memulakan ujian diri diperpanjang $1 ..
+ext_failed=.. gagal!
+ext_ok=.. ujian bermula OK. Lihat status pemacu pada halaman utama modul untuk keputusan.
+
+data_title=Ujian Pengumpulan Data
+data_doing=Memulakan pengambilan data luar talian pada $1 ..
+data_failed=.. gagal!
+data_ok=.. koleksi bermula OK. Lihat status pemacu pada halaman utama modul untuk keputusan.

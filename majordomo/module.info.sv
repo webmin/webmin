@@ -1,1 +1,1 @@
-desc_sv=Listhanterare för Majordomo
+desc_sv=Listhanterare fÃ¶r Majordomo

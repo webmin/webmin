@@ -1,0 +1,112 @@
+index_title=Klient PPTP VPN
+index_epptp=Ve vašem systému nebyl nalezen klientský program PPTP $1. Možná není nainstalována nebo je vaše <a href='$2'>konfigurace modulu</a> nesprávná.
+index_eppp=Ve vašem systému není nainstalován program serveru PPP $1. PPTP závisí na tom, jak funguje.
+index_eoptions=Globální soubor voleb PPP PPP $1 neexistuje. Vytvořte jej nebo upravte <a href='$2'>konfiguraci modulu</a> tak, aby používal jiný soubor, nebo žádný.
+index_header=Definované tunely
+index_none=Dosud nebyly definovány žádné tunely PPTP.
+index_tunnel=Tunel $1 
+index_add=Přidejte nový tunel PPTP VPN.
+index_conn=Připojit k:
+index_pass=s volitelným heslem:
+index_conndesc=Klepnutím na toto tlačítko připojíte vybraný tunel PPTP VPN pomocí jeho aktuální konfigurace.
+index_disc=Odpojit od:
+index_discdesc=Klepnutím na toto tlačítko odpojíte vybraný aktuálně aktivní tunel PPTP VPN a odstraníte z něj všechny trasy.
+index_return=Seznam tunelů PPTP
+index_opts=Upravit globální možnosti PPP
+index_optsdesc=Klepnutím na toto tlačítko upravíte možnosti PPP, které se vztahují na všechny tunely PPTP VPN.
+index_version=Verze PPPd $1 
+index_boot=Připojit při spuštění:
+index_noboot=&lt;Nepřipojovat&gt;
+index_bootdesc=Změňte tuto možnost, abyste určili, zda se vybrané připojení PPTP VPN spustí v době spuštění nebo ne.
+
+disc_err=Nepodařilo se odpojit tunel
+disc_egone=Již není aktivní
+disc_ekill=Nepodařilo se zabít proces pppd
+disc_done=Tunel $1 byl úspěšně odpojen.
+
+conn_err=Nepodařilo se připojit tunel
+conn_egone=Tunel již neexistuje
+cone_ealready=Již připojeno
+conn_einvalid=Chybí IP adresa serveru v konfiguračním souboru
+conn_title=Spojovací tunel
+conn_cmd=Navázání připojení PPTP pomocí příkazu $1 ..
+conn_ok=.. připojení úspěšně aktivováno pomocí rozhraní $1. Vaše místní adresa je $2 a vzdálená adresa je $3.
+conn_timeout=.. připojení se nezdařilo! Informace o důvodech najdete v níže uvedených zprávách protokolu.
+conn_routes=Přidávání tras pomocí příkazů ..
+conn_mppe=Protokol MPPE pro šifrování VPN vyžaduje podporu démona a jádra PPP. Výše uvedené chyby však naznačují, že jeden nebo oba nejsou ve vašem systému k dispozici. Pokud server PPTP nevyžaduje MPPE, zkuste vypnout všechny související možnosti na stránce <a href='$1'>globální možnosti PPP</a>.
+
+edit_title1=Přidat PPTP tunel
+edit_title2=Upravit PPTP tunel
+edit_header=Možnosti tunelu PPTP VPN
+edit_name=Název tunelu
+edit_server=Připojte se k serveru
+edit_login=Přihlaste se jako uživatel
+edit_same=Název hostitele systému
+edit_pass=Přihlaste se pomocí hesla
+edit_remote=Název serveru
+edit_auto=Automatický
+edit_adddef=Přidat výchozí trasu?
+edit_def1=Přes druhý konec
+edit_def2=Přes bránu ..
+edit_deldef=Smazat starou výchozí trasu?
+edit_routes=Trasy přidat po připojení
+edit_type=Typ
+edit_type0=&nbsp;
+edit_type1=Síť
+edit_type2=Jeden hostitel
+edit_net=Síť nebo hostitel
+edit_mask=Maska sítě
+edit_gw=Přes bránu
+edit_gw_def=Druhý konec
+edit_unknown=Další příkazy <tt>route</tt>
+edit_file=Soubor voleb PPP
+edit_none=Žádný
+edit_global=Standardní globální soubor
+edit_ofile=Jiný soubor ..
+
+save_err=Uložení tunelu se nezdařilo
+save_ename=Chybí název tunelu
+save_eserver=Chybějící nebo neplatný server, ke kterému se lze připojit
+save_elogin=Chybějící nebo neplatné přihlašovací jméno
+save_eremote=Chybějící nebo neplatný název vzdáleného serveru
+save_edef=Chybějící nebo neplatná výchozí brána
+save_enet=Neplatná síťová adresa na trase $1 
+save_emask=Neplatná maska sítě na trase $1 
+save_egw=Neplatná brána pro síť na trase $1 
+save_ehost=Neplatná adresa IP hostitele na trase $1 
+save_emask2=Pro cestu hostitele $1 není nutná žádná maska sítě
+save_egw2=Neplatná brána pro hostitele na trase $1 
+save_erename=Nepodařilo se přejmenovat soubor tunelu
+save_eclash=Tunel nebo partner PPP se stejným názvem již existuje
+save_efile=Chybějící nebo neplatný soubor voleb PPP
+
+opts_title=Globální možnosti PPP
+opts_desc=Níže uvedená nastavení jsou převzata z $1 a vztahují se na všechny tunely, které jsou nastaveny na použití standardního globálního souboru voleb PPP.
+opts_header=Možnosti PPP pro všechny tunely
+opts_mtu=Maximální velikost odesílaného paketu
+opts_mru=Maximální velikost přijímaného paketu
+opts_err=Nepodařilo se uložit globální možnosti PPP
+opts_emtu=Chybí nebo je neplatná maximální velikost odesílacího paketu
+opts_emru=Chybí nebo je neplatná maximální velikost přijímajícího paketu
+opts_msdesc=Níže uvedené možnosti povolují šifrování MPPE používané servery VPN systému Windows. MPPE však vyžaduje podporu jak v démonu PPP, tak v jádře operačního systému.
+
+mppe_mppe-40=Použít 40bitové šifrování MPPE?
+mppe_mppe-128=Používáte 128bitové šifrování MPPE?
+mppe_mppe-stateless=Povolit režim MPPE bez státní příslušnosti?
+mppe_mppe=Povolit šifrování MPPE?
+mppe_m2=Musí být použito
+mppe_m0=Nelze použít
+mppe_d0=Zakázáno
+mppe_d1=Povoleno
+mppe_mppe-stateful=Povolit stavový režim MPPE?
+mppe_old=Upozornění - Ve vašem konfiguračním souboru byly nalezeny směrnice MPPE ve starém stylu $1, přestože démon PPP podporuje direktivy nového stylu.
+mppe_new=Upozornění - V konfiguračním souboru byly nalezeny nové směrnice MPPE $1, přestože démon PPP podporuje pouze direktivy starého stylu.
+
+log_create=Vytvořen tunel PPTP $1 
+log_update=Upravený tunel PPTP $1 
+log_delete=Smazaný tunel PPTP $1 
+log_conn=Připojený tunel $1 
+log_conn_l=Připojený tunel $1 s místní adresou $2 
+log_failed=Nepodařilo se připojit tunel $1 
+log_disc=Odpojený tunel $1 
+log_opts=Upravené globální možnosti PPP

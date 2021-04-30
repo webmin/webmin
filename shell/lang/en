@@ -11,6 +11,8 @@ index_timedout=Command was terminated after running for $1 seconds.
 
 acl_user=Execute commands as user
 acl_user_def=Current Webmin user
+acl_shellenv=Use selected user's environment?
+acl_chroot=Chroot to directory
 
 log_run=Ran command $1
 log_clear=Cleared command history

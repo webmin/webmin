@@ -1,0 +1,49 @@
+index_applymsg2=Haga clic en este botón para aplicar la configuración actual deteniendo y reiniciando ProFTPD.
+index_stop=Detener servidor
+index_stopmsg=Haga clic en este botón para detener el servidor FTP, lo que evitará que se conecten nuevos clientes FTP.
+index_proftpd=ProFTPd
+
+dir_header5=Para el directorio $1 globalmente
+
+manual_etest=Error de archivo de configuración detectado : $1 
+
+limit_header7=Para los comandos $1 globalmente
+
+dserv_eanondir=El directorio debe estar bajo el directorio FTP anónimo
+
+mod_core_octal=Máscara octal
+mod_core_umask_d=Nueva máscara de directorio
+mod_core_nowhere=Registro deshabilitado
+mod_core_firstcdt=Siempre muestra
+mod_core_identmsg=Mensaje de conexión del cliente
+mod_core_identmsg_def=Mostrar mensaje predeterminado
+
+mod_ls_fakeasuser=Sí, como usuario.
+mod_ls_fakesameuser=Usuario conectado
+mod_ls_fakeasgroup=Sí, como grupo. ..
+mod_ls_fakesamegroup=Grupo conectado
+mod_ls_efakeuser=Usuario falso faltante o inválido
+mod_ls_efakegroup=Grupo falso faltante o inválido
+mod_ls_options=Opciones de lista de directorio
+mod_ls_strict=¿Anular opciones de usuario?
+
+mod_auth_home=Directorio de inicio
+mod_auth_none=Ninguna
+
+stop_err=Error al detener el servidor FTP
+stop_einetd=No puede detener el demonio del servidor cuando está en modo inetd.
+stop_erun=No corras
+
+apply_err=Error al aplicar la configuración FTP
+apply_egone=Ya no se ejecuta
+
+log_anonc=Configurar FTP anónimo para el servidor $1 
+log_anons=FTP anónimo reconfigurado para el servidor $1 
+log_anond=FTP anónimo eliminado para el servidor $1 
+log_anonm=FTP anónimo editado manualmente para el servidor $1 
+log_anon=Se modificó $1 en FTP anónimo para el servidor $2 
+
+eafter=Error de verificación de configuración: $1 Los cambios no se han guardado.
+proftpd_apply=Aplicar los cambios
+proftpd_stop=Detener ProFTPd
+proftpd_start=Inicie ProFTPd

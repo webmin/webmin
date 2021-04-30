@@ -1,0 +1,6 @@
+acl_order=Bestellen
+
+gencert_epath=Certificaat- en sleutelbestanden in de LDAP-serverconfiguratie moeten absolute paden zijn
+
+eacl_order=Regel volgorde
+eacl_noorder=Geen ingesteld

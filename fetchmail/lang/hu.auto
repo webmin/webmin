@@ -1,0 +1,47 @@
+index_active=Aktív?
+index_cron=Ütemezett ellenőrzés
+index_crondesc=Kattintson erre a gombra egy Cron feladat létrehozásához, módosításához vagy eltávolításához, hogy a Fetchmail automatikusan ütemezett módon működjön, és ellenőrizze, és töltsön le e-maileket a fenti konfiguráció segítségével.
+index_crondesc2=Kattintson erre a gombra egy Cron feladat létrehozásához, megváltoztatásához vagy eltávolításához, hogy a Fetchmail automatikusan ütemezett módon futtassa az összes felsorolt felhasználó e-mailjeinek letöltését és letöltését.
+index_version=Fetchmail $1 verzió
+index_header=Fetchmail konfigurációval rendelkező felhasználók
+index_search=A Fetchmail konfigurációjának megjelenítése:
+index_show=Előadás
+index_toomany=A rendszeren túl sok felhasználó jelenik meg.
+
+poll_auth=Hitelesítési módszer
+poll_eboth=Az a lehetőség, hogy az üzeneteket a kiszolgálón hagyja, és az összes üzenetet mindig lehívja, nem kompatibilisek
+poll_eusername=A felhasználó nem létezik!
+poll_foruser=$1 felhasználó számára
+
+log_create_cron=Engedélyezte az ütemezett ellenőrzést
+log_update_cron=Módosított ütemezett ellenőrzés
+log_delete_cron=Letiltva az ütemezett ellenőrzést
+
+acl_cron=Konfigurálható az ütemezett ellenőrzés?
+acl_daemon=Konfigurálható a Fetchmail démon?
+
+cron_title=Ütemezett ellenőrzés
+cron_desc=Ezen az oldalon lehet engedélyezni vagy letiltani a Cron feladatot, hogy rendszeresen ellenőrizze a Fetchmail konfigurációjában szereplő levelezőkiszolgálókat. Cron job használata a Fetchmail démon futtatásához, mivel azt nem kell újraindítani a rendszerindítási időben.
+cron_header=Ütemezett Fetchmail beállítások
+cron_enabled=Az ütemezett ellenőrzés engedélyezve van?
+cron_yes=Igen, az alábbiak szerint konfigurálva.
+cron_output=A Fetchmail kimenet rendeltetési helye
+cron_file=Írjon a (z) $1 fájlba
+cron_mail=E-mail cím a (z) $1 címre
+cron_throw=elvetése
+cron_cron=Kimenet a cron-ra
+cron_owner=E-mail annak a felhasználónak, akinek a konfigurációját ellenőrzi
+cron_user=Futtassa a Fetchmail-t felhasználóként
+cron_err=Nem sikerült menteni az ütemezett ellenőrzést
+cron_efile=Hiányzó vagy érvénytelen kimeneti fájlnév
+cron_email=Hiányzó vagy érvénytelen e-mail cím
+cron_euser=Hiányzó vagy érvénytelen Unix felhasználó
+cron_errors=Csak akkor ad ki, ha hiba történik?
+cron_ecannot2=Nem szabad konfigurálni az ütemezett ellenőrzést
+
+user_title=Fetchmail konfiguráció
+user_header=$1 felhasználó számára
+user_return=felhasználói konfiguráció
+
+email_ok=Fetchmail kimenet
+email_failed=Fetchmail hiba

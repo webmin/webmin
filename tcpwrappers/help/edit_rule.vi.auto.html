@@ -1,0 +1,71 @@
+<header> Gói TCP </header>
+<h3> Mẫu </h3> Ngôn ngữ kiểm soát truy cập thực hiện các mẫu sau: <ul>
+    <li> Một chuỗi bắt đầu bằng một &#39;.&#39; tính cách. Tên máy chủ được khớp nếu các thành phần cuối cùng của tên khớp với mẫu đã chỉ định. Ví dụ: mẫu &#39;.tue.nl&#39; khớp với tên máy chủ &#39;wzv.win.tue.nl&#39;. </li>
+    <li> Một chuỗi kết thúc bằng một &#39;.&#39; tính cách. Một địa chỉ máy chủ được khớp nếu các trường số đầu tiên của nó khớp với chuỗi đã cho. Ví dụ: mẫu &#39;131.155.&#39; khớp với địa chỉ của (gần như) mọi máy chủ lưu trữ trên mạng của Đại học Eindhoven (131.155.xx). </li>
+    <li> Một chuỗi bắt đầu bằng ký tự &#39;@&#39; được coi là tên nhóm mạng NIS (trước đây là YP). Tên máy chủ được khớp nếu nó là thành viên máy chủ của nhóm mạng được chỉ định. Các kết quả trùng khớp Netgroup không được hỗ trợ cho tên quy trình daemon hoặc cho tên người dùng của khách hàng. </li>
+    <li> Một biểu thức có dạng &#39;nnnn / mmmm&#39; được hiểu là một cặp &#39;net/mask&#39;. Địa chỉ máy chủ IPv4 được khớp nếu &#39;net&#39; bằng bit VÀ của địa chỉ và &#39;mặt nạ&#39;. Ví dụ: mẫu mạng / mặt nạ &#39;131.155.72.0/255.255.254.0&#39; khớp với mọi địa chỉ trong phạm vi &#39;131.155.72.0&#39; đến &#39;131.155.73.255&#39;. </li>
+    <li> Một biểu thức có dạng &#39;[n: n: n: n: n: n: n: n] / m&#39; được hiểu là một cặp &#39;[net]/prefixlen&#39;. Địa chỉ máy chủ IPv6 được khớp nếu các bit &#39;tiền tố&#39; của &#39;net&#39; bằng với các bit &#39;tiền tố&#39; của địa chỉ. Ví dụ: mẫu [net]/tiền tố &#39;[3ffe: 505: 2: 1 ::]/64&#39; khớp với mọi địa chỉ trong phạm vi &#39;3ffe: 505: 2: 1:&#39;? thông qua &#39;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&#39;. </li>
+    <li> Một chuỗi bắt đầu bằng ký tự &#39;/&#39; được coi là tên tệp. Tên máy chủ hoặc địa chỉ được khớp nếu nó khớp với bất kỳ tên máy chủ hoặc mẫu địa chỉ nào được liệt kê trong tệp được đặt tên. Định dạng tệp là 0 hoặc nhiều dòng với 0 hoặc nhiều tên máy chủ hoặc mẫu địa chỉ được phân tách bằng khoảng trắng. Một mẫu tên tệp có thể được sử dụng ở bất cứ nơi nào có thể sử dụng tên máy chủ hoặc mẫu địa chỉ. </li>
+    <li> Ký tự đại diện &#39;*&#39; và &#39;?&#39; có thể được sử dụng để khớp với tên máy chủ hoặc địa chỉ IP. Phương thức đối sánh này không thể được sử dụng cùng với kết hợp &#39;mạng / mặt nạ&#39;, đối sánh tên máy chủ bắt đầu bằng &#39;.&#39; hoặc khớp địa chỉ IP kết thúc bằng &#39;.&#39;. </li>
+</ul>
+<h3> Ký tự đại diện </h3> Ngôn ngữ kiểm soát truy cập hỗ trợ các ký tự đại diện rõ ràng: <table border>
+    <tr>
+        <td> <b>TẤT CẢ</b> </td>
+        <td> Các ký tự đại diện, luôn luôn phù hợp. </td>
+    </tr>
+    <tr>
+        <td> <b>ĐỊA PHƯƠNG</b> </td>
+        <td> Khớp với bất kỳ máy chủ nào có tên không chứa ký tự dấu chấm. </td>
+    </tr>
+    <tr>
+        <td> <b>KHÔNG XÁC ĐỊNH</b> </td>
+        <td> Khớp với bất kỳ người dùng nào không biết tên và phù hợp với bất kỳ máy chủ nào có tên hoặc địa chỉ không xác định. Mẫu này nên được sử dụng cẩn thận: tên máy chủ có thể không khả dụng do sự cố máy chủ tên tạm thời. Một địa chỉ mạng sẽ không khả dụng khi phần mềm không thể tìm ra loại mạng mà nó đang nói đến. </td>
+    </tr>
+    <tr>
+        <td> <b>BIẾT</b> </td>
+        <td> Khớp với bất kỳ người dùng nào có tên được biết và phù hợp với bất kỳ máy chủ nào có tên và địa chỉ được biết đến. Mẫu này nên được sử dụng cẩn thận: tên máy chủ có thể không khả dụng do sự cố máy chủ tên tạm thời. Một địa chỉ mạng sẽ không khả dụng khi phần mềm không thể tìm ra loại mạng mà nó đang nói đến. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOID</b> </td>
+        <td> Khớp với bất kỳ máy chủ nào có tên không khớp với địa chỉ của nó. Khi tcpd được xây dựng với -DPARANOID (chế độ mặc định), nó sẽ loại bỏ các yêu cầu từ các máy khách đó ngay cả trước khi nhìn vào các bảng điều khiển truy cập. Xây dựng mà không có -DPARANOID khi bạn muốn kiểm soát nhiều hơn các yêu cầu đó. </td>
+    </tr>
+</table>
+<h3> Người vận hành </h3> <b>NGOẠI TRỪ</b> Mục đích sử dụng có dạng: &#39;list_1 EXCEPT list_2&#39;; cấu trúc này khớp với mọi thứ khớp với list_1 trừ khi nó khớp với list_2. Toán tử EXCEPT có thể được sử dụng trong daemon_lists và trong client_lists. Toán tử EXCEPT có thể được lồng nhau: nếu ngôn ngữ điều khiển sẽ cho phép sử dụng dấu ngoặc đơn, &#39;EXCEPT b EXCEPT c&#39; sẽ phân tích thành &#39;(một EXCEPT (b EXCEPT c))&#39;. <h3> Lệnh Shell </h3> Nếu quy tắc kiểm soát truy cập được so khớp đầu tiên chứa lệnh shell, lệnh đó phải tuân theo% <letter> thay thế (xem phần tiếp theo). Kết quả bị cắt bởi quá trình con /bin/sh với đầu vào, đầu ra và lỗi tiêu chuẩn được kết nối với /dev/null. Chỉ định &#39;&amp;&#39; ở cuối lệnh nếu bạn không muốn đợi cho đến khi hoàn thành. <p> Các lệnh Shell không nên dựa vào cài đặt PATH của inetd. Thay vào đó, họ nên sử dụng tên đường dẫn tuyệt đối, hoặc họ nên bắt đầu bằng một câu lệnh PATH = what- ever rõ ràng. <h3> % Mở rộng </h3> Các bản mở rộng sau đây có sẵn trong các lệnh shell: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> Địa chỉ máy chủ (máy chủ). </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Thông tin khách hàng: user@host, user@address, tên máy chủ hoặc chỉ một địa chỉ, tùy thuộc vào lượng thông tin có sẵn. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> Tên tiến trình daemon (giá trị argv[0]). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Tên máy chủ hoặc máy chủ (máy chủ), nếu tên máy chủ không khả dụng. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> Tên máy chủ của máy khách (máy chủ) (hoặc &quot;không xác định&quot; hoặc &quot;hoang tưởng&quot;). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> Quá trình id daemon. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Thông tin máy chủ: daemon@host, daemon@address hoặc chỉ một tên daemon, tùy thuộc vào lượng thông tin có sẵn. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Tên người dùng của khách hàng (hoặc &quot;không xác định&quot;). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Mở rộng đến một &#39;%? tính cách. </td>
+            </tr>
+        </table> Các ký tự trong%mở rộng có thể gây nhầm lẫn vỏ được thay thế bằng dấu gạch dưới.
+        <hr />

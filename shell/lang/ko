@@ -1,0 +1,14 @@
+index_title=명령 쉘
+index_ok=명령 실행:
+index_history=명령 내역
+index_clear=내역 지우기
+index_clearcmds=명령 지우기
+index_desc=아래의 텍스트 필드에 실행할 유닉스 쉘 명령을 입력하십시오. <tt>cd</tt> 명령은 후속 명령의 디렉토리를 변경하는 데 사용할 수 있습니다.
+index_pok=이전 명령 실행
+index_edit=이전 명령 편집
+
+acl_user=사용자로서 명령 실행
+acl_user_def=현재 Webmin 사용자
+
+log_run=$1 명령 실행
+log_clear=명령 히스토리 지우기

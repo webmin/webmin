@@ -1,1 +1,1 @@
-desc_no=Kj&#248;rende prosesser
+desc_no=Kjørende prosesser

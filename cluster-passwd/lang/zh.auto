@@ -1,0 +1,8 @@
+index_title=集群更改密码
+index_noservers=<a href=$1>集群用户和组</a>模块中没有定义用于管理用户的服务器。
+index_hosts=使用此模块进行的所有密码更改都将在“群集用户和组”模块管理的所有 $1主机上完成。
+
+passwd_err=修改密码失败
+passwd_title=修改密码
+passwd_on=更改 $1..上的密码
+passwd_euser=用户不存在！

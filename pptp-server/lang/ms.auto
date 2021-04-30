@@ -1,0 +1,152 @@
+index_title=PPTP VPN Server
+index_version=Versi PoPToP $1 
+index_epptpd=Pelayan PPTP PoPToP $1 tidak dijumpai pada sistem anda, atau bukan program yang betul. Mungkin ia tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
+index_econfig=Fail konfigurasi pelayan PPTP $1 tidak ditemukan pada sistem anda. Mungkin konfigurasi modul <a href='$2'>anda</a> tidak betul.
+index_stop=Hentikan pelayan PPTP
+index_stopdesc=Klik butang ini untuk menutup proses pelayan PPTP yang sedang berjalan, supaya tiada sambungan baru akan diterima. Sambungan VPN sedia ada akan tetap aktif walaupun.
+index_start=Mula pelayan PPTP
+index_startdesc=Klik butang ini untuk memulakan proses pelayan PPTP supaya ia dapat menerima sambungan VPN dari pelanggan.
+index_apply=Terapkan Konfigurasi
+index_applydesc=Klik butang ini untuk menggunakan opsyen pelayan PPTP semasa dengan menghentikan dan memulakan semula proses pelayan PPTP. Perubahan kepada pilihan PPP dan akaun PPP akan sentiasa terpakai pada mana-mana sambungan baru
+index_return=indeks modul
+index_epppd=Program pelayan PPP $1 tidak dipasang pada sistem anda. PPTP bergantung kepadanya untuk beroperasi.
+
+conf_title=Pilihan Pelayan PPTP
+conf_ecannot=Anda tidak dibenarkan mengedit pilihan pelayan PPTP
+conf_header=Konfigurasi pelayan PPTP
+conf_speed=Kadar bait PPP
+conf_baud=bps
+conf_listen=Dengar di alamat
+conf_all=Semua alamat
+conf_localip=Alamat IP untuk sambungan pelayan akhir
+conf_remoteip=Alamat IP untuk diperuntukkan kepada pelanggan
+conf_ipxnets=Rangkaian IPX diperuntukkan
+conf_from=Dari
+conf_to=kepada
+conf_option=Fail pilihan PPP
+conf_mode0=Tetapan global
+conf_mode1=Tetapan khusus PPTP
+conf_mode2=Fail tersuai
+conf_ipdesc=Alamat IP dalam kedua-dua julat boleh dimasukkan sama ada secara tunggal (seperti 192.168.1.1) atau sebagai julat (seperti 192.168.2.32-64)
+conf_err=Gagal menyimpan pilihan pelayan
+conf_espeed=Kadar baud yang hilang atau tidak sah
+conf_elisten=Alamat yang hilang atau tidak sah untuk didengar
+conf_eoption=Fail pilihan PPP adat yang hilang atau tidak sah
+conf_elocalip='$1' bukan alamat atau rangkaian IP tempatan yang sah
+conf_eremoteip='$1' bukan alamat atau rangkaian IP jarak jauh yang sah
+conf_efrom=Rangkaian IPX yang hilang atau tidak sah dari alamat
+conf_eto=Rangkaian IPX yang hilang atau tidak sah untuk alamat
+
+options_title=Pilihan PPP
+options_ecannot=Anda tidak dibenarkan mengedit pilihan PPP
+options_desc0=Pilihan PPP di bawah dari $1 dikenakan kepada SEMUA sambungan masuk yang diterima oleh sistem anda, termasuk modem dialup.
+options_desc1=Opsyen PPP di bawah daripada $1 hanya digunakan untuk semua sambungan PPTP.
+options_desc2=Mereka akan digunakan oleh mana-mana sambungan baru yang ditubuhkan selepas borang ini disimpan.
+options_header=Pilihan sambungan PPP
+options_proxyarp=Buat entri ARP proksi?
+options_lock=Kunci fail peranti PTY?
+options_auth=Memerlukan pengesahan?
+options_auth0=Tidak, tetapi menghalang IP yang dihalakan
+options_auth1=Tidak pernah
+options_auth2=Sentiasa
+options_login=Juga melakukan pengesahan unix?
+options_pap=Pengesahan PAP
+options_chap=Pengesahan CHAP
+options_req=Mesti digunakan
+options_all=Mungkin digunakan
+options_ref=Tidak boleh digunakan
+options_name=Nama pelayan untuk pengesahan
+options_hn=Nama hos sebenar
+options_mtu=Saiz paket penghantaran maksimum
+options_mru=Saiz maksimum penerimaan paket
+options_err=Gagal menyimpan pilihan PPP
+options_emtu=Saiz paket penghantaran maksimum atau tidak sah
+options_emru=Saiz maksimum paket yang diterima atau tidak sah
+options_ename=Nama pelayan yang hilang atau tidak sah untuk pengesahan
+options_version=Versi PPPd $1 
+options_msdesc=Pilihan di bawah membolehkan kaedah pengesahan MS-CHAP dan penyulitan MPPE, digunakan secara lalai oleh klien VPN Windows. Bagaimanapun, MPPE memerlukan sokongan dalam daemon PPP dan kernel sistem operasi.
+options_mschap=Pengesahan MS-CHAP
+options_mschap-v2=Pengesahan MS-CHAP versi 2
+options_chapms=Pengesahan MS-CHAP
+options_chapms-v2=Pengesahan MS-CHAP versi 2
+
+secrets_title=Akaun PPP
+secrets_ecannot=Anda tidak dibenarkan mengedit akaun PPP
+secrets_return=indeks
+secrets_none=Tiada akaun PPP telah dibuat lagi.
+secrets_enopfile=Fail kata laluan PPP $1 tidak wujud pada sistem anda. Mungkin PPP tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
+secrets_table=Akaun PPP untuk $1 
+secrets_user=Nama pengguna
+secrets_ips=Alamat IP
+secrets_uany=APAPUN
+secrets_sany=APAPUN
+secrets_create=Buat akaun PPP baharu.
+secrets_desc=Akaun PPP yang disenaraikan di halaman ini diambil dari fail $1, yang digunakan untuk pengesahan $3. Hanya mereka untuk pelayan anda $2 ditunjukkan, bukan akaun untuk membuat sambungan keluar.
+secrets_delete=Padam Akaun PPP Yang Dipilih
+
+edit_secret_etitle=Edit Akaun PPP
+edit_secret_ctitle=Buat Akaun PPP
+edit_secret_acc=Akaun PPP
+edit_secret_user=Nama pengguna
+edit_secret_serv=Pelayan
+edit_secret_sany=Mana-mana
+edit_secret_uany=Mana-mana
+edit_secret_pass=Kata laluan
+edit_secret_none=Tiada
+edit_secret_ffile=Dari fail
+edit_secret_leave=Biarkan tidak berubah
+edit_secret_setto=Ditetapkan untuk
+edit_secret_vaddr=Alamat Sah
+edit_secret_aany=Benarkan mana-mana
+edit_secret_anone=Benarkan tiada
+edit_secret_alist=Izinkan disenaraikan ..
+edit_secret_save=Simpan
+edit_secret_del=Padam
+edit_secret_return=senarai akaun
+
+save_secret_esave=Gagal menyimpan akaun
+save_secret_enoip='$1' bukan alamat yang sah
+
+stop_err=Gagal menghentikan pelayan PPTP
+stop_egone=Tidak lagi berjalan
+stop_ecannot=Anda tidak dibenarkan untuk menghentikan pelayan PPTP
+
+start_err=Gagal memulakan pelayan PPTP
+start_ecannot=Anda tidak dibenarkan untuk memulakan pelayan PPTP
+
+apply_err=Gagal memulakan semula pelayan PPTP
+apply_ecannot=Anda tidak dibenarkan untuk mulakan semula pelayan PPTP
+
+conns_title=Sambungan Aktif
+conns_ecannot=Anda tidak dibenarkan mengurus sambungan aktif
+conns_desc=Halaman ini menyenaraikan sambungan PPTP yang sedang aktif ke pelayan anda. Untuk secara paksa mencabut satu, klik pada nama antara muka.
+conns_iface=Antara muka PPP
+conns_client=Alamat klien
+conns_stime=Disambung sejak
+conns_local=Alamat VPN pelayan
+conns_remote=Alamat VPN klien
+conns_none=Tiada sambungan PPTP kelihatan aktif pada masa ini.
+conns_unknown=Tidak diketahui
+conns_user=Nama pengguna
+
+disc_err=Gagal melepaskan sambungan
+disc_egone=Sambungan tidak lagi aktif
+disc_ekill=Proses tidak lagi berjalan
+
+log_secret_create=Dicipta akaun PPP $1 
+log_secret_modify=Akaun PPP yang diubahsuai $1 
+log_secret_delete=Akaun PPP yang dipadam $1 
+log_deletes=Dihapus $1 akaun PPP
+log_conf=Pilihan server PPTP yang dimodifikasi
+log_options=Pilihan PPP yang diubah suai
+log_disc=Pelanggan terputus $1 
+log_start=Memulakan pelayan PPTP
+log_stop=Berhenti pelayan PPTP
+log_apply=Konfigurasi pelayan PPTP yang digunakan
+
+acl_conf=Boleh mengedit konfigurasi?
+acl_options=Boleh edit pilihan?
+acl_secrets=Boleh mengurus akaun PPTP?
+acl_conns=Boleh melihat sambungan?
+acl_stop=Boleh berhenti dan mulakan pelayan PPTP?
+acl_apply=Boleh memohon konfigurasi?

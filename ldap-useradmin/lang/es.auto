@@ -1,0 +1,30 @@
+index_ebase=No se encontró ningún archivo de configuración de cliente LDAP en su sistema, por lo que las bases de usuarios y grupos deben establecerse en la página <a href='$1'>config de módulo</a>.
+index_eschema=Webmin se ha conectado al servidor LDAP, pero no pudo recuperar el esquema. Asegúrese de que no se haya denegado el acceso en el módulo <a href='$1'>LDAP Server</a>.
+index_greturn=lista de grupo
+index_users=Usuarios LDAP
+index_groups=Grupos LDAP
+
+conn_eldap_host=No se encontró ningún archivo de configuración del cliente LDAP en su sistema, por lo que el servidor LDAP debe configurarse en la página de configuración del módulo
+conn_efile_open=No se pudo abrir el archivo de credenciales de enlace LDAP:
+
+uedit_quota=Cuota IMAP
+uedit_unquota=No cambies
+uedit_sambapassopts=Opciones de contraseña de Samba
+uedit_sambapwdlastset=Última actualización de contraseña
+uedit_sambapwdcanchange=La contraseña puede cambiar
+uedit_sambabadpasswordcount=Cuenta de contraseña incorrecta
+uedit_sambaacctflags=Banderas de cuenta
+
+usave_eilogin=Error al iniciar sesión como nuevo usuario
+usave_ealiasdup=El alias $1 ya lo utiliza $2 
+usave_eattrdup=El objeto $1 ya está utilizando $2 $3 
+usave_eattrdupu=El usuario $1 ya está utilizando $2 $3 
+usave_eattrdupg=El grupo $1 ya está utilizando $2 $3 
+usave_ereal=Nombre real perdido
+usave_equota=Cuota IMAP faltante o no válida
+
+udel_failed=.. ¡ha fallado!  : $1 
+
+batch_imap=¿Crear una cuenta IMAP para nuevos usuarios?
+batch_descafter3=En las líneas <b>crear</b> y <b>modificar</b>, puede agregar opcionalmente campos adicionales que contengan atributos LDAP en formato <i>nombre</i> = <i>valor</i>, para ser asignado a los usuarios nuevos o modificados.
+batch_eattr=Atributo LDAP no válido en la línea $1 : $2 

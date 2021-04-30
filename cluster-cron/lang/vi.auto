@@ -1,0 +1,37 @@
+index_title=Việc làm theo cụm
+index_add=Tạo một công việc cron cụm mới.
+index_none=Không có công việc cron cụm đã được xác định.
+index_servers=Chạy trên máy chủ
+index_return=danh sách công việc cụm
+index_more=Thêm $1 nữa ..
+index_run=Chạy ngay đi ..
+index_actions=Hành động
+
+edit_title=Chỉnh sửa công việc Cron Cluster
+create_title=Tạo cụm công việc Cron
+edit_servers=Chạy trên máy chủ
+edit_group=Thành viên của $1 
+edit_this=máy chủ này
+edit_all=&lt;Tất cả máy chủ&gt;
+edit_emissing=Cron job không còn tồn tại!
+
+save_err=Không thể lưu công việc cron cluster
+
+exec_title=Thực thi công việc Cron Cluster
+exec_cmd=Chạy $1 trên các máy chủ được chọn ..
+exec_failed=Không thể chạy trên $1 : $2 
+exec_success=Đầu ra từ $1 ..
+exec_nohosts=Không có máy chủ nào được chọn để chạy trên hoặc các nhóm được chọn không chứa bất kỳ máy chủ nào có thể sử dụng được.
+
+log_run=Chạy $1 trên $2 máy chủ
+log_run_l=Chạy $1 trên $2 
+log_create=Đã tạo công việc cron cluster cho $1 
+log_create_l=Đã tạo cụm cron job $2 cho $1 
+log_modify=Công việc cron cụm đã sửa đổi cho $1 
+log_modify_l=Công việc cron cụm đã sửa đổi $2 cho $1 
+log_delete=Đã xóa công việc định kỳ cụm cho $1 
+log_delete_l=Đã xóa công việc cron cụm $2 cho $1 
+log_deletes=Đã xóa $1 cụm cron công việc
+
+delete_err=Không thể xóa các công việc định kỳ cụm
+delete_enone=Không được chọn

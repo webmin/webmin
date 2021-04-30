@@ -1,0 +1,1 @@
+<header>將ETRN命令限制為... </header><center> <tt>smtpd_etrn_restrictions</tt> </center> <hr>此參數限制允許哪些客戶端發出<tt>ETRN</tt>命令。當前的Postfix <tt>ETRN</tt>與其他<tt>ETRN</tt>實現的不同之處在於，它會刷新所有目的地的郵件。將來會改變。 <p>默認設置是允許來自任何主機的<tt>ETRN</tt> 。可以使用以下限制： <include smtpd_restrictions><hr>

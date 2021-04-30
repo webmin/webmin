@@ -1,0 +1,70 @@
+index_title=Ħin tas-Sistema
+index_timeserver=Server tal-Ħin
+index_addresses=Ismijiet jew indirizzi tat-Timeserver
+index_zone=Żona tal-ħin
+index_eformat=<tt>hwclock</tt> format mhux rikonoxxut tal-ħruġ
+index_sched=Issinkronizza fl-iskeda?
+index_schedyes=Iva, f'ħinijiet hawn taħt ..
+index_sync=Issinkronizza u Applika
+index_hardware2=Issettja wkoll il-ħin tal-ħardwer
+index_boot=Issinkronizza meta tibda Webmin?
+index_tzheader=Żona tal-ħin
+index_tz=Ibdel il-fus tal-ħin għal
+index_ehwclock=$1 falla : $2 
+index_tabtime=Issettja l-ħin
+index_tabzone=Ibdel il-fus taż-żmien
+index_tabsync=Sinkronizzazzjoni tas-server tal-ħin
+index_desctime=Din il-formola hija għall-bidla tal-ħin kurrenti tas-sistema, li tintuża mill-proċessi kollha li jmexxu. Fuq sistemi operattivi li għandhom arloġġ tal-ħardwer separat, jista 'jintuża wkoll biex tissettja dan.
+index_desczone=Din il-formola jippermettilek tissettja ż-żona tal-ħin awtomatika tas-sistema, li tintuża biex tikkonverti l-ħin tas-sistema f'format li jinqara mill-bniedem u tikkumpensa.
+index_descsync=Din il-formola hija għall-konfigurazzjoni tas-sistema biex tissinkronizza awtomatikament il-ħin ma 'server remot. Is-sinkronizzazzjoni se ssir bl-użu tal-protokoll Unix <tt>time</tt> jew NTP, skond liema kmandi huma installati u dak li jappoġġja s-sistema remota.
+
+action_save=Issejvja
+action_apply=Applika
+action_sync=Issettja l-ħin tas-sistema skond il-ħin tal-ħardwer
+action_sync_s=Issettja l-ħin tal-ħardwer skond il-ħin tas-sistema
+action_timeserver_sys=Sinkronizza l-ħin tas-sistema
+action_timeserver_hw=Sinkronizza l-ħin tal-ħardwer
+action_savezone=Ibdel il-fus taż-żmien
+
+acl_sys=L-utent jista 'jeditja l-ħin tas-sistema?
+acl_hw=Utent jista 'jeditja l-ħin tal-ħardwer?
+acl_timezone=L-utent jista 'jistabbilixxi fus tal-ħin?
+acl_ntp=Tista 'tissinkronizza mas-server tal-ħin?
+acl_yes=Iva
+acl_no=Le
+acl_error=Għandek aċċess għall-modulu tal-ħin tas-sistema, imma la tista 'teditja la l-ħin tas-sistema u lanqas il-ħardwer
+acl_nosys=M'għandekx permess teditja l-ħin tas-sistema
+acl_nohw=M'għandekx permess teditja l-ħin tal-hardware
+acl_nontp=M'għandekx permess issinkronizzat ma 'server tal-ħin
+
+sys_title=Ħin tas-Sistema
+hw_title=Ħin tal-Ħardwer
+
+day=Jum
+month=Xahar
+date=Data
+hour=Siegħa
+year=Sena
+minute=Minuta
+second=It-tieni
+
+error_cnf=Żball: $1 kmand ma nstabx
+error_hw=Ma tistax tissettja l-ħin tal-ħardwer : $1 
+error_sync=Ma tistax tissinkronizza mal-ħin tas-sistema : $1 
+error_ediff=Server tal-ħin differenti bil-ħin lokali huwa kbir wisq: $1 ijiem
+error_entp=Sinkronizzazzjoni tal-ħin tal-NTP : $1 
+error_etimeserver=L-ebda ħin tas-servers ma jissinkronizza ma 'daħal
+
+log_set_date=Issettja l-ħin tas-sistema għal $1 
+log_set_hwclock=Issettja l-arloġġ tal-ħardwer fuq $1 
+log_remote_date=Ħin tas-sistema mtella 'minn $2 
+log_remote_hwclock=Ħaġa tal-ħardwer miġbura minn $2 
+log_remote_date_l=Sistema ta 'ħin miġbura $1 minn $2 
+log_remote_hwclock_l=Ħaġa tal-ħardwer miġbura $1 minn $2 
+log_sync=Ħin tas-sistema sinkronizzata mal-ħin tal-ħardwer
+log_sync_s=Ħin tal-ħardwer sinkronizzat mal-ħin tas-sistema
+log_timezone=Inbidel f'żona tal-ħin għal $1 
+
+timezone_err=Ma rnexxielux jiffranka zona tal-ħin
+timezone_ecannot=M'għandekx permess tbiddel il-fus tal-ħin
+timezone_enone=L-ebda żona magħżula

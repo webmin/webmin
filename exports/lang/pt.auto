@@ -1,0 +1,57 @@
+index_inactive=Inativo
+index_add4=Adicione uma nova exportação NFSv4.
+index_eprog=O executável do servidor NFS não foi encontrado no seu sistema. O pacote NFS não parece estar instalado.
+index_delete=Excluir exportações selecionadas
+index_disable=Desativar selecionado
+index_enable=Ativar selecionado
+
+edit_vers=Versão NFS
+edit_nfs_vers=Versão NFS
+edit_pfs=NFSv4 Pseudofilesystem para exportar
+edit_active=Ativo?
+edit_network4=Rede IPv4
+edit_network6=Rede IPv6
+edit_address=Endereço
+edit_prefix=/
+edit_security=Segurança de exportação
+edit_subtree_check=Desativar verificação de subárvore?
+edit_hide=Ocultar o sistema de arquivos?
+edit_auth=(com ou sem autenticação)
+edit_secs=Níveis de segurança
+edit_integrity=Integridade
+edit_privacy=Privacidade (incluindo integridade)
+edit_v2opts=Opções específicas do NFSv2
+edit_sync=Sincronizar imediatamente todas as gravações?
+edit_sync1=sim
+edit_sync2=Não
+edit_sync0=Padrão
+edit_in=dentro
+edit_sec_sys=Sem segurança
+edit_sec_krb5=Autenticação Kerberos
+edit_sec_krb5i=Integridade Kerberos
+edit_sec_krb5p=Privacidade do Kerberos
+edit_sec_lipkey=LIPKEY
+edit_sec_spkm=SPKM
+
+save_epfs=O caminho do pseudo-sistema de arquivos '$1' não parece um caminho absoluto
+save_pfs='$1' já foi exportado como um diretório
+save_create_dir=Não é possível criar o diretório '$1'
+save_eanonuid=Nome de usuário de acesso anônimo inválido
+save_eanongid=Nome de grupo de acesso anônimo inválido
+
+exports_webnfs=Clientes WebNFS
+exports_ngroup=Grupo Net $1 
+exports_net=Rede $1 
+exports_all=Todos
+exports_hosts=Hosts $1 
+exports_host=Host $1 
+exports_gss=Rede autenticada: $1 
+
+log_modify=Exportação NFS modificada $1 
+log_modify_l=Exportação NFS modificada $1 para $2 
+log_delete=Exportação NFS excluída $1 
+log_delete_l=Exportação NFS excluída $1 para $2 
+log_create=Exportação de NFS criada $1 
+log_create_l=Exportação de NFS criada $1 para $2 
+log_apply=Configuração aplicada
+log_delete_exports=$1 exportação de NFS excluída

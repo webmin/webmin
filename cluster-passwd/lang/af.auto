@@ -1,0 +1,8 @@
+index_title=Cluster Change Wagwoorde
+index_noservers=Geen bedieners om gebruikers te bestuur is gedefinieer in die <a href=$1>Cluster Users and Groups</a> module nie.
+index_hosts=Alle wagwoordveranderings wat met hierdie module aangebring word, word gedoen op alle $1 -gashere wat deur die Cluster Users and Groups-module bestuur word.
+
+passwd_err=Kon nie wagwoord verander nie
+passwd_title=Wagwoord verander
+passwd_on=Verander wagwoord op $1.
+passwd_euser=Gebruiker bestaan nie!

@@ -1,0 +1,18 @@
+index_edit=Redigera tjänst:
+index_search=Matchning av visningstjänster:
+index_sok=Sök
+index_toomany=Det finns för många internettjänster att visa på den här sidan.
+index_none=Inga internettjänster matchade din sökning.
+
+error_user=Saknad eller ogiltig användare att köra som
+error_group=Gruppen saknas eller ogiltig att köra som
+error_smfservice=Det gick inte att uppdatera smf-tjänsten med cmd '$1', felkod $2 
+error_smf_cmdfield=För smf måste filnamnet för programmet '$1' matcha det första argumentet i kommandofältet, dvs vara '$2'
+
+editrpc_act=Programtillstånd
+editrpc_stream=Ström
+editrpc_dgram=Datagram
+editrpc_tli=TLI
+
+editserv_qm=Kommando kanske inte finns?
+editserv_ename=Ingen tjänst med det namnet och protokollet finns

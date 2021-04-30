@@ -1,0 +1,25 @@
+smb_eworkgroup=Geen werkgroep ingesteld op de pagina Moduleconfiguratie
+smb_emaster=Er is geen bladermaster gevonden voor werkgroep $1
+
+linux_quotaj=Quota opslagtype
+linux_quotaj1=journaling
+linux_quotaj0=regelmatig
+linux_etimeo=Time-out moet een getal zijn
+linux_netdev=Wacht tot de netwerkinterfaces omhoog zijn?
+linux_nofail=Doorgaan met opstarten, zelfs als de koppeling mislukt?
+linux_nfsvers=Forceer NFS-versie
+linux_nfsdefault=Gebruik standaardversie
+linux_nounix=CIFS Unix-extensies uitschakelen?
+linux_noserverino=Inode-nummers genereren aan clientzijde?
+linux_cvers=CIFS-versie
+linux_ecvers=CIFS-versie moet een nummer zijn
+
+freebsd_select=Schijfpartitie
+freebsd_idedev=IDE-apparaat $1, segment $2, partitie $3
+freebsd_scsidev=SCSI-apparaat $1, segment $2, partitie $3
+freebsd_edevpath=Een ander apparaat moet een absoluut pad zijn, zoals <tt>/dev/cdrom</tt>
+freebsd_edevfile=Het apparaatbestand '$1' bestaat niet
+
+acl_sysinfo=Beschikbare schijfgegevens weergeven op Dashboard?
+sysinfo_total=Totaal
+sysinfo_dev=Apparaat ID

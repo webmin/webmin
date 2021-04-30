@@ -1,0 +1,136 @@
+index_edit=編輯
+index_noservers=沒有註冊服務器。
+index_nosearch=沒有服務器符合您的搜索條件。
+index_broad=服務器廣播
+index_scan=掃描服務器
+index_scanmsg=單擊此按鈕以檢查Webmin服務器的網絡 $1上的每個地址。
+index_host=主機名和端口
+index_desc=描述
+index_os=服務器類型
+index_group=組
+index_logout=登出
+index_defuser=服務器的默認登錄
+index_defpass=默認密碼
+index_defport=Webmin端口
+index_delete=刪除選定的服務器
+index_auto=自動查找服務器
+index_automsg=單擊此按鈕可以設置自動定期發現網絡上的新Webmin服務器。
+index_search=顯示匹配的服務器：
+index_ok=搜索
+
+edit_realhost=真實主機名
+edit_portnone=沒有設置
+edit_checkssl=檢查遠程SSL證書？
+edit_mode2=單擊圖標時登錄
+edit_mode3=使用此服務器的用戶名和密碼登錄
+edit_luser=遠程服務器的用戶名
+edit_lpass=遠程服務器的密碼
+edit_ecannot=您不允許編輯服務器
+edit_desc=描述
+edit_desc_def=來自主機名和端口
+edit_group=服務器組成員
+edit_none=沒有
+edit_exists=現有組
+edit_new=新組
+edit_fast=進行快速RPC調用？
+edit_auto=自動決定
+edit_status=服務器狀態
+edit_timeout=超時連接
+edit_failed=連接失敗
+edit_baduser=登錄被拒絕
+edit_invalid=用戶無法執行RPC
+edit_version=運行Webmin $1
+edit_same=僅在會話身份驗證模式下以及密碼對Webmin程序可用時可用。
+
+save_ehost2=主機不存在
+save_eport2=如果選擇帶有登錄名的鏈接類型，則必須提供端口
+save_egroup=群組名稱缺失
+save_elogin=無效的主機登錄名或密碼
+save_egroup2=無效的新群組名稱
+
+find_but=在 $1找到新服務器，但是認證失敗： $2
+find_already2=在 $1找到了已知的服務器主機
+find_skip=忽略 $1處的服務器
+find_escan=要掃描的網絡必須是C類網絡地址。
+find_eiface=找不到要掃描的界面
+find_none=沒有服務器響應掃描。
+find_ecannot=不允許您找到服務器
+find_scanning=掃描網絡 $1..中的服務器
+find_broading=在地址 $1..上廣播服務器
+find_eport=端口號缺失或無效
+
+log_modify=修改後的服務器 $1
+log_create=註冊的服務器 $1
+log_delete=伺服器 $1已刪除
+log_find=找到服務器 $1
+log_deletes=已刪除 $1台服務器
+
+link_elogin=無法以 $2身份登錄 $1
+link_ecannot=您無權使用此服務器
+link_essl=您沒有安裝perl Net::SSLeay庫
+link_eautologin=$1的無效登錄名或密碼。 <a href='$2'>單擊此處</a>重試。
+
+lib_other=其他
+
+acl_edit=可以編輯服務器嗎？
+acl_find=可以找到服務器嗎？
+acl_servers=可以使用服務器
+acl_sall=所有服務器
+acl_ssel=已選 ..
+acl_auto=可以設置服務器自動檢測功能嗎？
+acl_add=可以註冊新服務器嗎？
+acl_forcefast=強制將快速RPC模式設置為默認值？
+acl_forcetype=強制將操作系統類型設置為默認值？
+acl_forcelink=強制登錄類型為默認值？
+acl_links=可以連接到服務器嗎？
+
+login_title=登錄服務器
+login_desc=您必須提供用戶名和密碼才能登錄Webmin服務器 $1。
+login_header=Webmin認證
+login_user=用戶名
+login_pass=密碼
+login_login=登錄
+login_esame=與該服務器使用相同登錄名的選項只能在未處於會話身份驗證模式下以及Webmin程序可以使用密碼時使用。
+
+this_server=這個服務器
+
+delete_err=刪除服務器失敗
+delete_enone=未選擇
+delete_ecannot=您不允許刪除服務器
+delete_title=刪除服務器
+delete_rusure=您確定要刪除 $1個所選服務器嗎？
+delete_confirm=立即刪除
+
+auto_title=自動查找服務器
+auto_header=服務器自動註冊選項
+auto_sched=檢查新服務器？
+auto_sched1=是的，每 $1分鐘
+auto_net=IP網絡掃描
+auto_auto=本地網絡
+auto_ip=IP網絡 $1
+auto_iface=接口 $1上的網絡
+auto_user=新服務器的用戶名
+auto_pass=新服務器的密碼
+auto_type=默認系統類型
+auto_err=保存自動查找設置失敗
+auto_emins=分鐘丟失或無效的分鐘數
+auto_enet=缺少或無效的網絡地址
+auto_eiface=網絡接口丟失或無效
+auto_euser=用戶名丟失
+auto_cluster-software=添加到群集軟件包嗎？
+auto_remove=刪除找不到的註冊服務器？
+auto_email=發送電子郵件通知給
+auto_none=不要發送
+auto_eemail=缺少通知的電子郵件地址
+auto_smtp=通過SMTP服務器發送
+auto_self=這個系統
+auto_esmtp=缺少或無效的SMTP服務器
+auto_findself=也註冊這個系統嗎？
+
+config_deftype=默認系統類型
+config_typeauto=自動
+
+email_regsubject=系統 $1已註冊
+email_reg=系統 $1已自動註冊。
+email_unregsubject=系統 $1未註冊
+email_unreg=系統 $1已自動取消註冊。

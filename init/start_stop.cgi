@@ -20,7 +20,7 @@ $action ||= 'stop';
 $cmd = $in{'file'}." ".$action;
 
 # In case the action was Webmin
-$SIG{'TERM'} = sub { };
+$SIG{'TERM'} = 'ignore';
 
 # Run the command
 print &text('ss_exec', "<tt>$cmd</tt>"),"<p>\n";

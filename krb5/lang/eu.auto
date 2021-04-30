@@ -1,0 +1,17 @@
+index_title=Kerberos5 Konfigurazioa
+index_econf=Kerberos5 $1 konfigurazio fitxategia ez da zure sisteman aurkitu. Agian ez dago instalatuta edo <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+
+logging=Fitxategiak erregistratu
+default_log=Lehenetsitako erregistro fitxategia
+kdc_log=KDC log fitxategia
+admin_log=Admin zerbitzariaren erregistro fitxategia
+
+libdefaults=Lehenetsitako konfigurazioa
+dns_kdc=Erabili DNS KDC kontsultatzeko
+default_realm=Erreinua
+domain=Domeinu izena
+default_kdc=KDC
+default_admin=Admin zerbitzaria
+default_domain=Lehenetsitako domeinu izena
+
+save=Eguneratu konfigurazioa

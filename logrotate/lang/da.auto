@@ -1,0 +1,115 @@
+index_title=Logfilrotation
+index_econf=Logrotations-konfigurationsfilen $1 blev ikke fundet på dit system. Måske er logrotate ikke installeret, eller <a href='$2'>modulkonfiguration</a> er forkert.
+index_ecmd=Logrotationsprogrammet $1 blev ikke fundet på dit system. Måske er det ikke installeret, eller <a href='$2'>modulkonfiguration</a> er forkert.
+index_eversion=Kunne ikke hente versionen af logrotate med kommandoen $1 : $2 
+index_version=Logrotate version $1 
+index_add=Tilføj en ny logfil, der skal roteres.
+index_file=Logfil
+index_period=Rotationsperiode
+index_post=Kommando efter rotation
+index_none=Der er endnu ikke defineret nogen logfiler.
+index_global=Rediger globale indstillinger
+index_globaldesc=Klik på denne knap for at redigere indstillinger, der gælder for alle logfiler, og definere standarderne for logfiler.
+index_sched=Rediger tidsplan
+index_scheddesc=Klik på denne knap for at redigere den tidsplan, hvorpå logrotate køres af Cron, eller aktivere eller deaktivere den.
+index_nocmd=Ingen
+index_notset=Ikke indstillet
+index_return=logfiler liste
+index_force=Tving log-rotation
+index_forcedesc=Tving den øjeblikkelige rotation af alle logfiler, selvom det endnu ikke er tid.
+index_logrotate=logrotate
+index_delete=Slet valgte logrotationer
+
+period_daily=Daglige
+period_weekly=Ugentlig
+period_monthly=Månedlige
+period_never=Aldrig
+period_bytes=bytes
+
+edit_title1=Rediger logfil
+edit_title2=Opret logfil
+edit_header=Roterede logfilfiloplysninger
+edit_file=Log filstier
+edit_sched=Rotationsplan
+edit_rotate=Antal gamle logfiler, der skal opbevares
+edit_compress=Komprimere gamle logfiler?
+edit_delaycompress=Forsinke komprimering indtil næste cyklus?
+edit_copytruncate=Trunker du logfilen på plads?
+edit_ifempty=Roter, selvom logfilen er tom?
+edit_missingok=Ignorer logfilen, hvis den mangler?
+edit_size=Maksimal størrelse inden rotation
+edit_always=Ignoreret
+edit_minsize=Minimum størrelse, der skal roteres
+edit_nominsize=Altid
+edit_ext=Udvidelse til roterede filnavne
+edit_dateext=Brug datoudvidelse til roterede filer
+edit_mail=E-mail-logfil før sletning?
+edit_mailto=Ja, til adresse
+edit_mailno=Nej, ikke mail
+edit_mailfl=Log fil til e-mail
+edit_mailfirst=Det nyeste, der lige blev roteret
+edit_maillast=Ældste, der er ved at blive slettet
+edit_create=Genoprette logfil efter rotation?
+edit_createas=Ja, med tilstand $1 og ejes af bruger $2 og gruppe $3 
+edit_createno=Nej, opret ikke igen
+edit_createsame=Ja, med gamle tilladelser
+edit_olddir=Opbevar gamle roterede logfiler
+edit_olddirto=Vejviser
+edit_olddirsame=Samme bibliotek som logfil
+edit_errors=E-mail fejlmeddelelser til
+edit_errorsno=Ingen
+edit_errorsto=Adresse eller bruger
+edit_post=Kommandoer, der skal køres efter rotation
+edit_pre=Kommandoer, der skal køres inden rotation
+edit_default=Standard ($1)
+edit_sharedscripts=Kun køre scripts én gang for alle filer?
+edit_now=Drej nu
+
+global_title=Globale indstillinger
+global_header=Standardindstillinger for alle logfiler
+
+save_err=Kunne ikke gemme loggen
+save_efile=Manglende eller ugyldig logfilnavn
+save_esize=Manglende eller ugyldig maksimal størrelse
+save_eminsize=Manglende eller ugyldig minimumsstørrelse
+save_erotate=Manglende eller ugyldigt maksimum antal gamle logfiler, der skal opbevares
+save_ecreatemode=Manglende eller ugyldig 3 eller 4-cifret octal oprettelsestilstand
+save_ecreateuser=Manglende eller ugyldig oprettelsesbruger
+save_ecreategroup=Manglende eller ugyldig oprettelsesgruppe
+save_emust1=Du skal gå ind i en oprettelsestilstand, når du indtaster en oprettelsesbruger
+save_emust2=Du skal indtaste en oprettelsesbruger, når du går ind i en oprettelsesgruppe
+save_eolddirto=Manglende eller ugyldig mappe til gamle roterede logfiler
+save_eext=Manglende udvidelse til roterede logfilnavne
+save_emailto=Manglende e-mail-adresse til roterede logfiler
+save_eerrors=Manglende e-mail-adresse til fejlmeddelelser
+save_epre=Pre-rotations script kan ikke indeholde en <tt>endingskript</tt> eller <tt>endrotate</tt> linje
+save_epost=Post-rotations script kan ikke indeholde en <tt>endingskript</tt> eller <tt>endrotate</tt> linje
+save_enofiles=Der er ikke indtastet nogen filer, der skal roteres
+
+log_modify_sched=Ændret logrotation Cron-job
+log_create_sched=Oprettet logrotation Cron-job
+log_delete_sched=Slet logrotation Cron-job
+log_global=Ændrede globale indstillinger
+log_create=Tilføjet rotation for logfil $1 
+log_modify=Ændret rotation for logfil $1 
+log_delete=Slettet rotation for logfil $1 
+log_delete_logs=Slettet rotation for $1 logfiler
+
+sched_title=Logrotationsplan
+sched_desc=For log-rotation, der er konfigureret ved hjælp af dette modul, der skal udføres, skal kommandoen $1 køres på en regelmæssig plan (normalt dagligt) af Cron.
+sched_runparts=I øjeblikket køres logrotationskommandoen fra scriptet $1 $2 og kan ikke justeres.
+sched_sched=Log rotation cron job
+sched_disabled=handicappet
+sched_enabled=Aktiveret, til tider nedenfor ..
+sched_save=Opdater Cron Job
+sched_err=Kunne ikke gemme rotationsplanen
+sched_when=Tider at køre
+
+force_title=Tving log-rotation
+force_doing=Tvinge den øjeblikkelige rotation af alle logfiler ..
+force_doingone=Tvinge den øjeblikkelige rotation af en logfil ..
+force_done=.. Færdig.
+force_failed=.. mislykkedes! Se output ovenfor for grunden til.
+
+delete_err=Kunne ikke slette logfiler
+delete_enone=Ingen valgt

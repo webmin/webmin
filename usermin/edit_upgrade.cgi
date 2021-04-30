@@ -11,7 +11,7 @@ my $mode = get_install_type();
 
 # was the install to a target directory?
 my $dir;
-if (open(DIR, "$config{'usermin_dir'}/install-dir")) {
+if (open(DIR, "<$config{'usermin_dir'}/install-dir")) {
 	chop($dir = <DIR>);
 	close(DIR);
 	}

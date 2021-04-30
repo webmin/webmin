@@ -1,7 +1,7 @@
 ftpd_path=wuftpd'nin tam yolu,0
-ftpaccess=ftpaccess dosyasının tam yolu,0
-ftpconversions=ftpconversions dosyasının tam yolu,0
-ftpgroups=ftpgroups dosyasının tam yolu,0
-ftphosts=ftphosts dosyasının tam yolu,0
-ftpusers=ftpusers dosyasının tam yolu,0
-pid_file=FTP sunucusu PID dosyası,0
+ftpaccess=ftpaccess dosyasÄ±nÄ±n tam yolu,0
+ftpconversions=ftpconversions dosyasÄ±nÄ±n tam yolu,0
+ftpgroups=ftpgroups dosyasÄ±nÄ±n tam yolu,0
+ftphosts=ftphosts dosyasÄ±nÄ±n tam yolu,0
+ftpusers=ftpusers dosyasÄ±nÄ±n tam yolu,0
+pid_file=FTP sunucusu PID dosyasÄ±,0

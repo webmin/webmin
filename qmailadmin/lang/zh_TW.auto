@@ -1,0 +1,405 @@
+index_title=QMail郵件服務器
+index_edir=QMail基本目錄 $1不存在。也許沒有安裝QMail，或者您的<a href='$2'>模塊配置</a>不正確。
+index_edir2=目錄 $1似乎不是QMail基本目錄。也許沒有安裝QMail，或者您的<a href='$2'>模塊配置</a>不正確。
+index_return=QMail配置
+index_stop=停止QMail進程
+index_stopmsg=單擊此按鈕停止負責傳遞排隊的郵件的後台QMail進程。沒有這些過程，郵件將無法正確地從系統發送或傳遞到系統。
+index_start=啟動QMail進程
+index_startmsg=單擊此按鈕以啟動負責傳遞排隊的郵件的後台QMail進程。沒有這些過程，郵件將無法正確地從系統發送或傳遞到系統。
+
+opts_title=QMail選項
+opts_me=本地主機名
+opts_helo=SMTP HELO的主機名
+opts_toconnect=SMTP連接超時
+opts_secs=秒
+opts_toremote=SMTP外發響應超時
+opts_bytes=郵件大小上限
+opts_unlimited=無限
+opts_timeout=SMTP傳入數據超時
+opts_localip=電子郵件到本地IP地址的主機名
+opts_greet=SMTP問候消息
+opts_err=無法保存QMail選項
+opts_eme=無效的本地主機名
+opts_etoconnect=無效的SMTP連接超時
+opts_etoremote=無效的SMTP外發響應超時
+opts_ebytes=無效的最大郵件大小
+opts_etimeout=無效的SMTP傳入數據超時
+opts_elocalip=無效的本地IP地址主機名
+
+aliases_title=郵件別名
+aliases_addr=地址
+aliases_to=別名到 ..
+aliases_type1=地址1
+aliases_type2=郵件目錄 $1
+aliases_type3=郵件文件 $1
+aliases_type4=程式 $1
+aliases_type5=自動回复文件 $1
+aliases_type6=應用過濾文件 $1
+aliases_none=沒有
+aliases_return=別名列表
+aliases_toomany=您的系統上的郵件別名太多，無法在此頁面上顯示。
+aliases_go=查找匹配的別名：
+aliases_delete=刪除所選別名
+
+aform_type0=沒有
+aform_type1=電子郵件地址
+aform_type2=郵件目錄
+aform_type3=郵件檔案
+aform_type4=提要節目
+aform_type5=從文件自動回复
+aform_type6=套用篩選器檔案
+aform_edit=編輯別名
+aform_create=創建別名
+aform_name=地址
+aform_val=別名
+aform_afile=編輯 ..
+aform_novirt=&lt;所有域&gt;
+aform_return=別名
+
+asave_err=無法保存別名
+asave_eaddr=“$1”不是有效地址
+asave_ealready=“$1”的別名已存在
+asave_etype1=“$1”不是有效的電子郵件地址
+asave_etype2='$1'不是有效的郵件目錄
+asave_etype3='$1'不是有效的郵件文件名
+asave_etype4='$1'不是有效程序或不存在
+asave_etype5=自動回复文件'$1'無效
+asave_etype4none=沒有提供程序
+asave_etype6=篩選器文件“$1”無效
+
+adelete_err=刪除別名失敗
+adelete_enone=未選擇
+
+locals_title=本地網域
+locals_domains=該服務器的本地域
+locals_desc=Qmail將接受發送到本地用戶的電子郵件，這些電子郵件將發送到左側文本框中列出的域和主機名。如果您希望您的郵件服務器處理多個電子郵件域，則這些域都應在此表單上列出。
+locals_only=僅本地主機名 $1
+locals_sel=下面列出的域 ..
+
+rcpts_title=接受域
+rcpts_domains=接受的本地域和中繼域
+rcpts_all=任何域
+rcpts_sel=下面列出的域 ..
+rcpts_desc=Qmail只接受郵件中繼或本地傳遞到左側文本框中列出的域和主機名。您還可以輸入與<tt>.foo.com</tt>之類的域中的所有主機匹配的通配符。如果您希望郵件服務器為客戶端中繼電子郵件，則必須接受來自任何域的郵件。
+rcpts_domains2=其他本地和中繼域
+rcpts_desc2=如果您接受的域很多，則應在此文本框中輸入不常用的域。通常，應該將前50個允許的域輸入到上方的文本框中，其餘的輸入到該域中。
+
+bads_title=拒絕的地址
+bads_addresses=拒絕的電子郵件地址
+bads_desc=QMail將拒絕從左側文本框中列出的任何地址進行傳遞或中繼的郵件，這些地址必須輸入為<tt>username@domainname</tt>。如果要拒絕來自整個域的郵件，則應將其輸入為<tt>@domainname</tt>。
+
+routes_title=域路由
+routes_toomany=系統上的域路由太多，無法在此頁面上顯示。
+routes_go=查找匹配的域路由：
+routes_from=域郵件
+routes_to=通過服務器發送
+routes_direct=直接交付
+routes_defroute=通過以下方式傳遞所有其他外發郵件：
+routes_return=域路由
+routes_delete=刪除選定的域路由
+
+rform_edit=編輯域路由
+rform_create=創建域路由
+rform_from=寄送給主機或網域的郵件
+rform_to=通過SMTP服務器發送
+rform_port=SMTP端口
+
+rsave_err=保存域路由失敗
+rsave_efrom=“$1”不是有效的域名
+rsave_eto='$1'不是有效的SMTP服務器
+rsave_eport='$1'不是有效的端口號
+
+rdelete_err=刪除域路由失敗
+
+percents_title=地址域百分比
+percents_domains=支持％地址的域
+percents_desc=如果左側文本框中列出了<tt>seconddomain</tt>，則QMail將接受地址為<tt>user％firstdomain@seconddomain</tt>格式的電子郵件。然後，此郵件服務器會將這種格式的郵件轉發到<tt>user@firstdomain</tt>上。
+
+virts_title=虛擬映射
+virts_toomany=您的系統上有太多虛擬映射，無法在此頁面上顯示。
+virts_go=查找匹配的虛擬映射：
+virts_from=寄給
+virts_prepend=前置前綴
+virts_all=所有地址
+virts_none=不是虛擬的
+virts_desc=QMail使用虛擬映射來處理髮送到您服務器上不同域的電子郵件，方法是在進一步處理之前，先在電子郵件地址的用戶部分添加文本。您可以使用它們來設置虛擬郵件域，方法是為域創建新的虛擬映射，然後使用<a href='$1'>郵件別名</a>頁在該域中創建別名。
+virts_return=虛擬映射
+virts_delete=刪除選定的虛擬映射
+
+vform_edit=編輯虛擬映射
+vform_create=創建虛擬映射
+vform_from=郵寄地址
+vform_all=任何不匹配其他虛擬映射的地址
+vform_domain=地址與域
+vform_user=地址
+vform_to=前置用戶名
+vform_none=沒有
+vform_prepend=指定的前綴
+vform_auto=自動選擇前綴
+
+vsave_err=保存虛擬映射失敗
+vsave_edomain=“$1”不是有效的電子郵件域
+vsave_euser=“$1”不是有效的電子郵件用戶名
+vsave_eprepend='$1'不是有效的映射前綴
+vsave_eboth=您不能同時選擇“任何與另一個虛擬映射都不匹配的地址”和“無”
+
+vdelete_err=刪除虛擬映射失敗
+
+stop_err=qmail-send進程不再運行
+
+log_stop=停止的QMail進程
+log_start=已啟動QMail流程
+log_opts=更改了QMail選項
+log_alias_create=已創建別名 $1
+log_alias_delete=刪除別名 $1
+log_alias_modify=修改的別名 $1
+log_delete_aliases=已刪除 $1別名
+log_virt_create=已創建虛擬映射 $1
+log_virt_delete=刪除的虛擬映射 $1
+log_virt_modify=修改後的虛擬映射 $1
+log_delete_virts=已刪除 $1虛擬映射
+log_virtall_create=創建全面的虛擬映射
+log_virtall_delete=刪除了全部虛擬映射
+log_virtall_modify=修改的綜合虛擬映射
+log_locals=更改的本地域
+log_rcpts=更改了接受域
+log_bads=更改了拒絕的地址
+log_percents=更改的％地址域
+log_route_create=已為 $1創建路線
+log_route_delete=已刪除 $1的路線
+log_route_modifed=$1的修改路線
+log_delete_routes=已刪除 $1條路線
+log_defroute=修改後的默認路由
+log_assign_create=已創建郵件用戶 $1
+log_assign_delete=已刪除郵件用戶 $1
+log_assign_modifed=修改的郵件用戶 $1
+log_delete_assigns=已刪除 $1個郵件用戶
+log_delmail=已從 $2刪除 $1消息
+log_movemail=已將 $1郵件從 $2移至 $3
+log_send=已將郵件發送到 $1
+
+rfile_title=編輯自動回复文件
+rfile_desc=使用下面的文本區域編輯 $1中的自動回复消息。該消息可能包含宏$ SUBJECT，$ FROM，$ TO，$ DATE和$ BODY，這些宏將在激活自動回復後擴展。
+rfile_desc2=您還可以通過添加以下行來設置添加或替換自動回復中使用的默認郵件標題的郵件標題：<br><tt>發件人：foo@bar.com </tt><br> <tt>主題：節假日<消息頂部的/tt>，<br>與正文之間用一個空白行隔開。
+rfile_efile=您無權編輯 $1。
+rfile_undo=取消更改
+rfile_replies=跟踪答復以防止郵件循環？
+rfile_none=沒有
+rfile_file=是的，使用日誌文件
+rfile_period=最小回复間隔
+rfile_default=默認值（1小時）
+rfile_secs=秒
+rfile_ereplies=缺少回复跟踪日誌文件
+rfile_eperiod=兩次回復之間缺少或無效的秒數
+rfile_no_autoreply=不要將自動回復發送給
+rfile_from=發件人：答复地址
+rfile_auto=自動（根據收件人的地址）
+rfile_efrom=缺少發件人：地址
+rfile_fromdesc=盡可能始終指定發件人：地址，因為自動方法可能不可靠。
+
+ffile_title=編輯過濾文件
+ffile_desc=使用下面的表格在文件 $1中設置過濾規則。
+ffile_efile=您無權編輯 $1。
+ffile_line=如果 $1字段為 $2 $3，則轉發到 $4
+ffile_from=從
+ffile_to=至
+ffile_subject=學科
+ffile_cc=抄送
+ffile_body=身體
+ffile_what0=不匹配
+ffile_what1=火柴
+ffile_other=否則轉發到 $1
+ffile_err=無法保存過濾器文件
+ffile_ematch=缺少比賽
+ffile_eaction=缺少轉寄地址
+
+queue_title=郵件隊列
+queue_count=$1條消息
+queue_none=當前沒有任何郵件要排隊傳遞
+queue_id=郵件ID
+queue_date=已發送
+queue_from=從
+queue_to=至
+queue_cc=抄送
+queue_subject=學科
+queue_return=郵件隊列
+queue_delete=刪除選定的消息
+queue_all=全選
+queue_invert=反轉選擇
+queue_refresh=刷新郵件隊列
+queue_refreshdesc=重新加載此頁面以顯示郵件隊列的當前狀態。
+
+qview_title=排隊的消息
+qview_desc=來自文件 $1
+qview_headers=郵件標題
+qview_attach=附件
+
+assigns_title=郵件用戶分配
+assigns_return=郵件用戶分配
+assigns_toomany=您的系統上有太多郵件用戶無法顯示在此頁面上。
+assigns_go=查找匹配的郵件用戶：
+assigns_address=郵寄到地址
+assigns_user=Unix用戶
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=主目錄
+assigns_desc=郵件用戶分配使您可以為Unix用戶列表中未定義的用戶創建郵箱。每個分配都將為選定的用戶名或用戶名模式傳遞郵件，就像將其傳遞給真實的Unix用戶的郵箱一樣。
+assigns_delete=刪除選定的郵件用戶
+
+sform_edit=編輯郵件用戶
+sform_create=創建郵件用戶
+sform_address=地址用戶名
+sform_mode0=確切的用戶名
+sform_mode1=用戶名以
+sform_user=Unix用戶
+sform_uid=UID
+sform_gid=GID
+sform_home=主目錄
+
+ssave_err=保存郵件用戶失敗
+ssave_eaddress=地址用戶名缺失或無效
+ssave_euser=缺少或無效的Unix用戶
+ssave_euid=UID缺失或無效
+ssave_egid=GID缺失或無效
+ssave_ehome=主目錄丟失或無效
+
+sdelete_err=刪除郵件用戶失敗
+
+delete_egone=排隊的消息不再存在
+delete_ebogus=無效的隊列文件名
+
+boxes_title=用戶郵箱
+boxes_user=用戶
+boxes_size=郵箱大小
+boxes_none=沒有郵件
+boxes_return=信箱
+boxes_sent=發送郵件
+boxes_ecannot=您不可以閱讀電子郵件
+boxes_toomany=您的系統上有太多用戶無法列出所有郵箱。
+boxes_go=查看用戶的郵件：
+
+mail_title=用戶電子郵件
+mail_from=從
+mail_date=日期
+mail_subject=學科
+mail_to=至
+mail_cc=抄送
+mail_bcc=密件抄送
+mail_pri=優先
+mail_highest=最高
+mail_high=高
+mail_normal=正常
+mail_low=低
+mail_lowest=最低
+mail_for=在 $1中
+mail_for2=對於用戶 $1
+mail_sent=在已發送郵件列表中
+mail_size=尺寸
+mail_delete=刪除
+mail_compose=撰寫
+mail_return=用戶郵箱
+mail_pos=$3的消息 $1至 $2
+mail_none=該郵箱沒有消息
+mail_ecannot=您無權閱讀此用戶的電子郵件
+mail_all=全選
+mail_invert=反轉選擇
+mail_search=在哪裡找到消息
+mail_body=身體
+mail_match=火柴
+mail_ok=搜索
+mail_nonefrom=沒有
+mail_mark=標記為：
+mail_mark0=未讀
+mail_mark1=讀
+mail_mark2=特別
+mail_forward=向前
+mail_rfc=從線
+mail_move=搬去：
+mail_eexists=訊息已不存在！
+
+view_title=閱讀電子郵件
+view_desc=$2中的消息 $1
+view_desc2=用戶 $2的消息 $1
+view_desc3=訊息 $1
+view_sent=已發送郵件列表中的消息 $1
+view_qdesc=排隊的消息 $1
+view_headers=郵件標題
+view_allheaders=查看所有標題
+view_noheaders=查看基本標題
+view_attach=附件
+view_reply=回复
+view_reply2=回復全部
+view_enew=編輯為新
+view_forward=向前
+view_delete=刪除
+view_strip=刪除附件
+view_ecannot=您無權閱讀此用戶的電子郵件
+view_mark=將消息標記為：
+view_mark0=未讀
+view_mark1=讀
+view_mark2=特別
+view_return=原始電子郵件
+view_sub=附件電子郵件
+
+compose_title=編寫郵件
+reply_title=回覆電郵
+forward_title=轉發郵件
+enew_title=編輯電郵
+reply_headers=郵件標題
+reply_attach=轉發的附件
+reply_mailforward=轉發郵件
+reply_attach2=客戶端和服務器端附件
+reply_send=發郵件
+reply_ecannot=您不允許以該用戶身份發送郵件
+
+send_err=發送郵件失敗
+send_eto=缺少地址
+send_efrom=缺少寄件人地址
+send_title=郵件已發送
+send_ok=郵件已成功發送到 $1
+send_ecannot=您不允許以該用戶身份發送郵件
+send_esmtp=SMTP命令 $1失敗： $2
+send_efile=附件 $1不存在
+send_eattach=附件的總大小不能超過 $1 kB。
+send_eperms=用戶 $1無法讀取 $2
+send_eperms2=您不可以發送文件 $1
+send_epath=Sendmail可執行文件 $1不存在。
+
+delete_title=刪除郵件
+delete_rusure=您確定要從 $2中刪除所選的 $1郵件嗎？對於大型郵件文件，這可能需要一些時間。在刪除完成之前，不應執行其他任何操作。
+delete_rusure2=您確定要從 $1刪除此消息嗎？對於大型郵件文件，這可能需要一些時間。在刪除完成之前，不應執行其他任何操作。
+delete_ok=立即刪除
+delete_ecannot=現在，您可以從該用戶刪除郵件
+delete_enone=未選擇要刪除的郵件
+delete_emnone=未選擇要標記的郵件
+delete_nobutton=沒有點擊按鈕
+
+search_title=搜索結果
+search_ecannot=您無權搜索此用戶的電子郵件
+search_ematch=您必須輸入要匹配的文本。
+search_efield=您必須選擇搜索類型。
+search_none=找不到消息。
+search_results2=$1郵件匹配 $2 ..
+search_results3=$1郵件不匹配 $2 ..
+
+match_from=來自：比賽
+match_subject=主題：比賽
+match_to=到：比賽
+match_cc=抄送：比賽
+match_date=日期：比賽
+match_body=身體比賽
+match_size=大小大於
+match_headers=標頭匹配
+match_=-----------------
+match_!from=發件人：不匹配
+match_!subject=主旨：不符
+match_!to=收件人：不匹配
+match_!cc=抄送：不匹配
+match_!date=日期：不符
+match_!body=身體不匹配
+match_!size=尺寸小於
+match_!headers=標頭不匹配
+
+delq_titles=刪除訊息
+delq_rusure=您確定要刪除 $1個選定的排隊消息嗎？
+delq_confirm=刪除訊息

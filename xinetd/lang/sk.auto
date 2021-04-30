@@ -1,0 +1,2 @@
+index_none=Zatiaľ neboli definované žiadne sieťové služby.
+index_estart=Príkaz na spustenie Xinetd $1 neexistuje. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.

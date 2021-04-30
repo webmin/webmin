@@ -1,6 +1,5 @@
 index_title=BIND DNS Server
 index_enamed=The BIND DNS server $1 could not be found on your system. Maybe it is not installed, or your <a href='$2'>BIND module configuration</a> is incorrect.
-index_eversion=The server executable $1 does not appear to be BIND 8 or 9. Maybe your should use the <a href='$2'>BIND 4 module</a> instead. Output from the command $3 was : $4
 index_eempty=The primary configuration file for BIND $1 does not exist, or is not valid. Create it?
 index_local=Setup nameserver for internal non-internet use only
 index_download=Setup as an internet name server, and download root server information
@@ -68,6 +67,7 @@ index_eexpired_conf=Automatic signing should be re-enabled on the $1 page.
 index_eexpired_mod=Use the $1 module to either disable DNSSEC for these domains, or check why signing is failing.
 
 master_title=Edit Master Zone
+master_inview=$1 in view $2
 master_ecannot=You are not allowed to edit this zone
 master_egone=Zone $1 does not exist in any view
 master_egone2=Zone $1 does not exist!
@@ -157,6 +157,8 @@ delete_fwd=Delete forward records in other zones?
 delete_onslave=Also delete from slave servers?
 delete_errslave=Master zone deleted OK, but the following errors occurred on slaves : $1
 delete_ezone=Zone was not found on slave server
+delete_vwarn=This zone is associated with the Virtualmin domain $1, and so should not be deleted here!
+delete_vwarn2=This zone is associated with the Virtualmin domain $1 and $2 others, and so should not be deleted here!
 
 mcreate_title=Create Master Zone
 mcreate_ecannot=You cannot create master zones
@@ -310,6 +312,7 @@ edit_ensec3value3=Missing or non-base64 salt
 edit_edmarcpct=Percentage of messages must be an integer between 0 and 100
 edit_edmarcrua=Missing aggregate feedback address
 edit_edmarcruf=Missing forensic information address
+edit_ecaavalue2=Missing or invalid-looking domain name
 
 text_title=Edit Records File
 text_title2=View Records File
@@ -399,6 +402,7 @@ type_LOC=Location
 type_SRV=Service Address
 type_ALL=All Record Types
 type_KEY=Public Key
+type_CAA=Certificate Authority
 
 edit_A=Address
 edit_AAAA=IPv6 Address
@@ -418,6 +422,7 @@ edit_KEY=Public Key
 edit_NSEC3PARAM=DNSSEC Parameters
 edit_TLSA=SSL Certificate
 edit_SSHFP=SSH Public Key
+edit_CAA=Certificate Authority
 
 recs_defttl=Default TTL
 recs_A=Address
@@ -439,6 +444,7 @@ recs_KEY=Public Key
 recs_NSEC3PARAM=DNSSEC Parameters
 recs_TLSA=SSL Certificate
 recs_SSHFP=SSH Public Key
+recs_CAA=Certificate Authority
 recs_delete=Delete Selected
 
 value_A1=Address
@@ -511,6 +517,12 @@ value_dmarcnop=Same as this domain
 value_dmarcaspf=Require strict SPF alignment
 value_dmarcadkim=Require strict DKIM alignment
 value_dmarcnor=Don't send
+value_CAA1=Require enforcement? 
+value_CAA2=Authorization type
+value_CAA3=CA domain name
+value_caa_issue=Single domain cert
+value_caa_issuewild=Wildcard cert
+value_caa_iodef=Policy violation URL
 
 tlsa_usage0=Certificate authority
 tlsa_usage1=End entity
@@ -804,7 +816,7 @@ findfree_header=In $1
 findfree_sopt=Search options
 findfree_fromip=From IP address
 findfree_toip=To IP address
-findfree_cf=Consider <em>`freeXXX'</em> hostnames as free IPs?
+findfree_cf=Consider <em>freeXXX</em> hostnames as free IPs?
 findfree_search=Search
 findfree_msg=Found $1 free IP addresses
 findfree_msg2=(of which $1 are like <i>freeXXX</i>, $2 like <i>freemac</i>)
@@ -999,7 +1011,7 @@ add_egname=An NS record name cannot be specified when adding a group
 add_emyip=Could not work out this system's IP address. You should set the <b>Default master server IP for remote slave zones</b> on the Module Config page.
 
 mass_title=Create Zones From Batch File
-mass_desc=This page allows you to create multiple zones at once from an uploaded or server-side text file. Each line in the file must have the following format:<p><tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt><p>The <i>type</i> must be one of <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> or <tt>forward</tt>. The <i>filename</i> is optional, and will be computed automatically if missing. The <i>master IPs</i> only need to be given for slave zones.
+mass_desc=This page allows you to create multiple zones at once from an uploaded or server-side text file. Each line in the file must have the following format:<p></p><tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt><p></p>The <i>type</i> must be one of <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> or <tt>forward</tt>. The <i>filename</i> is optional, and will be computed automatically if missing. The <i>master IPs</i> only need to be given for slave zones.
 mass_local=Local batch file
 mass_upload=Uploaded batch file
 mass_text=Batch file text
@@ -1037,6 +1049,8 @@ massdelete_zone=Deleting zone $1 ..
 massdelete_done=.. done.
 massdelete_slaves=Deleting zone $1 from slave servers ..
 massdelete_failed=.. some slaves failed :
+massdelete_vwarn=Some zones are associated with the Virtualmin domain $1, and so should not be deleted here!
+massdelete_vwarn2=Some zones are associated with the Virtualmin domain $1 and $2 others, and so should not be deleted here!
 
 rndc_title=Setup RNDC
 rndc_desc=This page can be used to setup BIND for control by the RNDC program, so that individual zones can be refreshed without needing to do a full BIND restart.
@@ -1223,7 +1237,6 @@ zonekey_other=Other size (in bits)
 zonekey_enable=Create and Add Key
 zonekey_err=Failed to create DNSSEC key
 zonekey_esize=Key size must be a number of bits between $1 and $2
-zonekey_efactor=Key size must be a multiple of $1
 zonekey_creating=Creating DNSSEC key for $1 ..
 zonekey_ecreate=.. creation failed : $1
 zonekey_done=.. done

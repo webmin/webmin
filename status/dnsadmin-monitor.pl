@@ -8,7 +8,7 @@ return { 'up' => -1 } if (!&foreign_check($_[1]));
 &foreign_require($_[1], "dns-lib.pl");
 local %dconfig = &foreign_config($_[1]);
 return { 'up' => -1 } if (!-r $dconfig{'named_boot_file'});
-if (open(PID, $dconfig{'named_pid_file'}) && <PID> =~ /(\d+)/ && kill(0, $1)) {
+if (open(PID, "<".$dconfig{'named_pid_file'}) && <PID> =~ /(\d+)/ && kill(0, $1)) {
 	close(PID);
 	local @st = stat($dconfig{'named_pid_file'});
 	return { 'up' => 1,

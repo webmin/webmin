@@ -1,0 +1,46 @@
+index_title=MIME tipa programmas
+index_none=Pagaidām nav definētas MIME tipa apstrādes programmas.
+index_add=Pievienojiet jaunu MIME tipa programmu.
+index_type=MIME tips
+index_program=Apstrādātāju programma
+index_cmt=Apraksts
+index_delete=Dzēst atlasīto
+index_disable=Atspējot atlasīto
+index_enable=Iespējot atlasīto
+index_enabled=Iespējots?
+index_return=programmu saraksts
+
+edit_title1=Izveidojiet programmu MIME Type
+edit_title2=Rediģēt programmu MIME Type
+edit_header=MIME tipa apstrādātāja programmas informācija
+edit_type=MIME tips
+edit_enabled=Iespējots?
+edit_program=Apstrādātāju programma
+edit_cmt=Apraksts
+edit_egone=Programma vairs nepastāv!
+edit_test=Pārbaudes komanda
+edit_none=Nav (vienmēr izmantojiet programmu)
+edit_term=Displeja izeja terminālī?
+edit_copious=Ražo daudz produkcijas?
+edit_desc=MIME tipa apraksts
+
+save_err=Neizdevās saglabāt MIME tipa programmu
+save_etype=Trūkst vai nav derīgs MIME tips
+save_eprogram=Trūkst apstrādātāja programmas
+save_eclash=Iespējotā programma ievadītajam MIME tipam jau pastāv
+save_etest=Trūkst vai nav derīga testa komanda
+save_edesc=Nederīgs MIME veida apraksts
+
+delete_err=Neizdevās izdzēst MIME tipa programmas
+disable_err=Neizdevās atspējot MIME tipa programmas
+disable_eclash=Atspējota MIME tipa programma $1 jau pastāv
+enable_err=Neizdevās iespējot MIME tipa programmas
+enable_eclash=Iespējota MIME tipa programma $1 jau pastāv
+delete_enone=Nav atlasīts
+
+log_delete_mailcap=Dzēsiet MIME tipa programmu $1 
+log_create_mailcap=Izveidota MIME tipa programma $1 
+log_modify_mailcap=Modificēta MIME tipa programma $1 
+log_delete_mailcaps=Izdzēstas $1 MIME tipa programmas
+log_disable_mailcaps=Atspējotas $1 MIME tipa programmas
+log_enable_mailcaps=Iespējotas $1 MIME tipa programmas

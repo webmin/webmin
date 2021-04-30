@@ -1,0 +1,6 @@
+info_apply4=Soubory v tomto adresáři a podadresářích
+info_apply5=Tento adresář a všechny podadresáře
+view_epathinfo=Cesta obsahuje neplatné znaky
+extract_show=Zobrazit obsah
+extract_err2=Nepodařilo se získat obsah souboru : $1 
+extract_shown=Obsah komprimovaného souboru

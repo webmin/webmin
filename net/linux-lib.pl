@@ -24,32 +24,39 @@ if (&has_command("ip")) {
 	&reset_environment();
 	foreach my $l (@lines) {
 		my %ifc;
-		if ($l =~ /^\d:\s+([^ \t\r\n\@]+\d+\.(\d+))@([^ \t\r\n\@]+\d+):/) {
+		if ($l =~ /^\d+:\s+([^ \t\r\n\@]+\d+\.(\d+))@([^ \t\r\n\@]+\d+):/) {
 			# Line like :
-			#3: eth0.99@eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+			# 3: eth0.99@eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
 			$ifc{'fullname'} = $1;
 			$ifc{'name'} = $ifc{'fullname'};
 			$ifc{'vlanid'} = $2;
 			$ifc{'virtual'} = $3;
-		}
+			}
 		elsif ($l =~ /^\d+:\s+([^ \t\r\n\@]+):/) {
 			# Line like :
-			#2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
-			#$cfg->{'name'} = $cfg->{'fullname'};
+			# 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
 			$ifc{'fullname'} = $1;
 			$ifc{'name'} = $ifc{'fullname'}
-		}
+			}
+		elsif ($l =~ /^\d:\s+([^ \t\r\n\@]+\d+)@([^ \t\r\n\@]+\d+):/) {
+			# Line like :
+			# 3: eth0@if0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+			$ifc{'fullname'} = $1;
+			$ifc{'name'} = $ifc{'fullname'};
+			$ifc{'ifname'} = $2;
+			}
 		else {
+			# Unknown line!
 			next;
-		}
+			}
 		
-		if ($l =~ /\sinet\s+([0-9\.]+)\s+peer\s+([0-9\.]+)\/(\d+)(\s+brd\s+([0-9\.]+))?\s+scope\s+global(\s+noprefixroute)?(\s+dynamic)?\s+(\S+)/ && $8 eq $ifc{'name'}) {
+		if ($l =~ /\sinet\s+([0-9\.]+)\s+peer\s+([0-9\.]+)\/(\d+)(\s+brd\s+([0-9\.]+))?\s+scope\s+global(\s+(noprefixroute|dynamic))*\s+(\S+)/ && $8 eq $ifc{'name'}) {
 			# Line like :
 			# inet 193.9.101.120 peer 193.9.101.104/32 brd 193.9.101.120 scope global eth0
 			$ifc{'address'} = $1;
 			$ifc{'netmask'} = &prefix_to_mask("$3");
 			}
-		elsif ($l =~ /\sinet\s+([0-9\.]+)\/(\d+)(\s+brd\s+(\S+))?\s+scope\s+global(\s+noprefixroute)?(\s+dynamic)?\s+(\S+)/ && $7 eq $ifc{'name'}) {
+		elsif ($l =~ /\sinet\s+([0-9\.]+)\/(\d+)(\s+brd\s+(\S+))?\s+scope\s+global(\s+(noprefixroute|dynamic))*\s+(\S+)/ && $7 eq $ifc{'name'}) {
 			# Line like :
 			# inet 193.9.101.120/24 brd 193.9.101.255 scope global br0
 			$ifc{'address'} = $1;
@@ -101,20 +108,22 @@ if (&has_command("ip")) {
 				$l =~ s/\sinet\s+([0-9\.]+)\/(\d+)//;
 			}
 
-		# Add extra IPs as fake virtual interfaces
+		# Add extra IPs as fake virtual interfaces, from lines like
 		my $i = 0;
 		my $bn = $ifc{'name'};
-		while($l =~ s/\sinet\s+([0-9\.]+)\/(\d+).*?\Q$bn\E:(\d+)//) {
+		while($l =~ s/\sinet\s+([0-9\.]+)\/(\d+).*?\s\Q$bn\E:(\d+)// ||
+		      $l =~ s/\sinet\s+([0-9\.]+)\/(\d+).*?secondary.*?\s\Q$bn\E//) {
 			my %vifc;
+			my $vn = defined($3) ? $3 : $i;
 			$vifc{'name'} = $ifc{'name'};
-			$vifc{'fullname'} = $ifc{'name'}.":".$3;
+			$vifc{'fullname'} = $ifc{'name'}.":".$vn;
 			$vifc{'address'} = $1;
 			$vifc{'netmask'} = &prefix_to_mask("$2");
 			$vifc{'broadcast'} = &compute_broadcast(
 				$vifc{'address'}, $vifc{'netmask'});
 			$vifc{'mtu'} = $ifc{'mtu'};
 			$vifc{'up'} = $ifc{'up'};
-			$vifc{'virtual'} = $3;
+			$vifc{'virtual'} = $vn;
 			$vifc{'edit'} = ($vifc{'name'} !~ /^ppp/);
 			$vifc{'index'} = scalar(@rv);
 			push(@rv, \%vifc);
@@ -488,7 +497,7 @@ if ($name =~ /^(.*)\.(\d+)$/) {
 return "PPP" if ($name =~ /^ppp/);
 return "SLIP" if ($name =~ /^sl/);
 return "PLIP" if ($name =~ /^plip/);
-return "Ethernet" if ($name =~ /^eth|em|eno|ens|enp|enx|p\d+p\d+/);
+return "Ethernet" if ($name =~ /^eth|em|eno|ens|enp|enx|p\d+p\d+|vtnet/);
 return "Wireless Ethernet" if ($name =~ /^(wlan|ath)/);
 return "Arcnet" if ($name =~ /^arc/);
 return "Token Ring" if ($name =~ /^tr/);

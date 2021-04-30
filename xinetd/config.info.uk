@@ -1,0 +1,5 @@
+line2=Системні параметри,11
+xinetd_conf=Файл настроювання xinetd,0
+protocols_file=Файл зі списком мережних протоколів,0
+pid_file=Шлях до файлу PID Xinetd,3,Немає
+start_cmd=Команда для запуску xinetd,0

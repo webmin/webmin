@@ -1,0 +1,11 @@
+index_title=idmapd yapılandırması
+index_eidmapd=$1 Idmapd arka plan programı bulunamadı. Belki yüklü değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
+general=Genel Yapılandırma
+mapping=Eşleme yapılandırması
+pipefs_dir=Pipefs dizini
+domain=Alan adı
+nobody_user=Hiç kimse kullanıcı değil
+nobody_group=Kimse grubu
+save=Yapılandırmayı kaydet ve arka plan programını yeniden başlat
+save_err=$1 yapılandırma dosyası kaydedilemedi
+error_dir=$1 dizini mevcut değil

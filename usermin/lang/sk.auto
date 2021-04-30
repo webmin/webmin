@@ -1,0 +1,500 @@
+index_title=Usermin Configuration
+index_econfig=Adresár $1 buď vo vašom systéme neexistuje, alebo nie je konfiguračným adresárom Usermin. Možno nie je nainštalovaný Usermin alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_return=Usermin konfigurácia
+index_stop=Zastavte Usermin
+index_stopmsg=Kliknutím na toto tlačidlo zastavíte fungovanie servera Usermin vo vašom systéme. Po zastavení sa k nemu nebudú môcť prihlásiť žiadni používatelia.
+index_start=Začnite Usermin
+index_startmsg=Kliknutím na toto tlačidlo spustíte server Usermin vo vašom systéme. Pokiaľ sa nespustí, používatelia sa nebudú môcť prihlásiť.
+index_version=Usermin $1 
+index_boot=Začať pri štarte systému
+index_bootmsg=Zmeňte túto voľbu, aby ste určili, či sa Usermin spúšťa v čase zavádzania alebo nie. Ak nie je momentálne spustený pri štarte a je zvolené Áno, vytvorí sa nový iniciačný skript.
+index_install=Webmin môže automaticky stiahnuť a nainštalovať najnovšiu verziu Usermin pre vás. Nemalo by sa to však robiť, ak je program už nainštalovaný a používa iný konfiguračný adresár.
+index_rpm=Nainštalujte balík Usermin RPM
+index_tgz=Nainštalujte balík Usermin tar.gz
+index_deb=Nainštalujte balík Usermin Debian
+index_esame=Konfiguračný adresár Usermin $1 nastavený na stránke <a href='$2'>Konfigurácia modulu</a> je rovnaký ako adresár Webmin, čo nie je správne.
+index_eroot=Konfiguračný adresár Usermin $1 existuje, ale koreňový adresár programu $2, na ktorý odkazuje, nie je! Mali by ste manuálne stiahnuť a znova nainštalovať Usermin.
+index_restart=Reštartujte Usermin
+index_restartmsg=Kliknutím na toto tlačidlo znova spustíte proces servera Usermin. To môže byť potrebné, ak ste nedávno inovovali Perl.
+
+access_title=Kontrola prístupu IP
+access_desc=Server Usermin môže byť nakonfigurovaný tak, aby zakázal alebo povolil prístup iba z určitých adries IP pomocou tohto formulára. Je možné zadať aj názvy mien (ako foo.bar.com) a siete IP (napríklad 10.254.3.0 alebo 10.254.1.0/255.255.255.128 alebo 10.254.1.0/25 alebo 10.254.1.5-10.254.97.127). Prístup na svoj server by ste mali obmedziť na dôveryhodné adresy, najmä ak je prístupný z internetu. Inak každý, kto uhádne vaše heslo, bude mať úplnú kontrolu nad vaším systémom.
+
+bind_title=Porty a adresy
+bind_desc2=Tento formulár sa dá použiť na zmenu čísla portu, na ktorom Usermin počúva, alebo na počúvanie iba jednej adresy IP vo vašom systéme. Môžete ho tiež nakonfigurovať tak, aby akceptoval pripojenia na viacerých portoch alebo počúval na niekoľkých IP adresách. Poznámka - váš webový prehliadač vás môže vyzvať na opätovné prihlásenie po zmene portu alebo záväznej adresy.
+bind_erestart=Pri spúšťaní Usermin s novou adresou a nastaveniami portov sa vyskytla chyba : $1 
+
+mods_title=Userminové moduly
+umods_title=Userminové moduly
+mods_desc1=Usermin moduly môžu byť pridané po inštalácii pomocou formulára vpravo. Moduly sú zvyčajne distribuované v súboroch <tt>.wbm</tt>, z ktorých každý môže obsahovať jeden alebo viac modulov. Moduly sa dajú nainštalovať aj zo súborov RPM, ak to váš operačný systém podporuje.
+mods_install=Inštalovať modul
+mods_local=Z miestneho súboru
+mods_uploaded=Z nahraného súboru
+mods_ftp=Z adresy ftp alebo http
+mods_nodeps=Pri inštalácii ignorujte závislosti modulu
+mods_installok=Nainštalujte modul zo súboru
+mods_desc2=Ak si želáte mať viac ako jednu kópiu toho istého modulu s rôznymi konfiguráciami, formulár napravo vám umožňuje naklonovať akýkoľvek existujúci modul. Klon bude mať nový názov, novú konfiguráciu modulu a môže byť sprístupnený rôznym používateľom.
+mods_clone=Klonovací modul
+mods_cname=Modul klonovania
+mods_cnew=Názov klonovaného modulu
+mods_ccat=Priradiť do kategórie
+mods_csame=Rovnaké ako pôvodné
+mods_cloneok=Klonovací modul
+mods_desc3=Existujúce moduly je možné odstrániť pomocou formulára nižšie. Po odstránení modulu je potrebné ho pred ďalším použitím znova nainštalovať. Modul nie je možné odstrániť, ak na ňom závisia iné moduly.
+mods_delete=Odstrániť moduly
+mods_deleteok=Odstrániť vybrané moduly
+mods_desc4=Nainštalované moduly je možné exportovať ako súbor wbm.gz pomocou nasledujúceho formulára. Súbor modulu je možné potom nainštalovať do iného systému, na ktorom je spustený Usermin.
+
+os_title=Operačný systém a životné prostredie
+os_desc3=Táto stránka zobrazuje operačný systém zistený Userminom v čase inštalácie a systém, ktorý je aktuálne detekovaný. Ak sa líšia, môžete si zvoliť aktualizáciu informácií o OS Usermin, čo môže byť potrebné, ak ste nedávno inovovali.
+os_desc2=Môžete tiež zmeniť cestu vyhľadávania používanú Userminom pri spúšťaní programov a cestu zdieľanej knižnice odovzdanú akýmkoľvek programom.
+os_usermin=Operačný systém podľa Usermin
+os_iusermin=Kód interného OS, ktorý používa Usermin
+os_update=Aktualizujte Usermin, aby používal detekovaný OS
+
+lang_title=Jazyk
+lang_title2=Usermin jazyk
+lang_intro=Táto stránka vám umožňuje zvoliť si jazyk, ktorý bude Usermin používať na zobrazovanie titulov, výziev a správ
+
+session_title=Overenie
+session_desc1=Ak je povolená, časové limity hesiel chránia váš server Usermin pred útokmi praskania hesla hrubou silou pridaním neustále sa zvyšujúceho oneskorenia medzi každým neúspešným pokusom o prihlásenie pre toho istého používateľa.
+session_desc2=Ak je aktivovaná autentifikácia relácie, Usermin sleduje každú prihlásenú reláciu používateľov, čo umožní automatickým odhlásením nečinných používateľov. Uvedomte si, že povolenie alebo zakázanie autentifikácie relácie môže prinútiť všetkých používateľov, aby sa znova prihlásili.
+session_remember=Ponuka na trvalé zapamätanie prihlásenia?
+session_hostname=Zobraziť meno hostiteľa na prihlasovacej obrazovke?
+session_realname=Zobraziť skutočné meno hostiteľa namiesto názvu z adresy URL?
+session_authmode=Metóda overovania
+session_authmode0=Na overenie použite PAM, ak je k dispozícii
+session_authmode1=Autentifikácia pomocou súboru hesiel $1 stĺpcov $2 a $3 
+session_authmode2=Použite externý autentifikačný program v štýle squid
+session_eauthmode1=Ak ste si vybrali túto možnosť, musíte zadať súbor s heslom
+session_eauthmode2=Ak ste si vybrali túto možnosť, musíte zadať externý autentifikačný program
+session_domain=Automaticky vyskúšať pripojenie názvu domény k používateľským menám?
+session_strip=Automaticky vyskúšať odstraňovanie domén z používateľských mien?
+session_usermap=Použite súbor mapovania používateľského mena
+session_userfmt=Formát súboru
+session_userfmt0=Genericstable (meno na adresu)
+session_userfmt1=Virtusertable (adresa na meno)
+session_eusermap=Chýba alebo neexistuje súbor mapovania používateľského mena
+session_blank=Chcete vyzvať používateľov, aby si pri prvom prihlásení vybrali jedno heslo?
+session_homedir=Po prihlásení vytvoriť chýbajúce adresáre domov?
+session_homedir_perms=Povolenia pre nový adresár
+session_ehomedir_perms=Chýbajúce alebo neplatné povolenia na osmičkový domovský adresár
+
+themes_title=Usermin Témy
+themes_desc=Témy ovládajú vzhľad používateľského rozhrania Usermin vrátane ikon, farieb, pozadia a prípadne rozloženia stránok. Výberové pole nižšie môžete použiť na výber jednej z tém nainštalovaných vo vašom systéme, ktorá bude predvolená pre používateľov Usermin.
+themes_sel=Aktuálna téma :
+themes_default=Stará téma Usermin
+themes_change=zmena
+themes_installdesc=Pomocou nasledujúceho formulára nainštalujte do svojho systému novú tému Usermin. Témy sa zvyčajne distribuujú v súboroch <tt>.wbt</tt>, ale je možné ich nainštalovať aj zo súborov RPM, ak to váš operačný systém podporuje.
+themes_installok=Inštalácia motívu
+themes_err1=Nepodarilo sa nainštalovať tému z $1 
+themes_efile=Súbor neexistuje
+themes_err2=Inštalácia odovzdaného motívu zlyhala
+themes_ebrowser=Váš prehliadač nepodporuje nahrávanie súborov
+themes_err3=Nepodarilo sa nainštalovať tému z $1 
+themes_eurl=neplatná URL adresa
+themes_etar=Neplatný súbor s témou : $1 
+themes_einfo=V téme $1 chýba súbor theme.info
+themes_enone=Zdá sa, že súbor neobsahuje žiadne témy
+themes_eextract=Extrakcia zlyhala : $1 
+themes_done=Vo vašom systéme boli úspešne nainštalované nasledujúce témy :
+themes_line=$1 v $2 ($3 kB)
+themes_ecomp=Súbor je komprimovaný, ale príkaz $1 nebol vo vašom systéme nájdený
+themes_ecomp2=Rozbalenie súboru zlyhalo : $1 
+themes_egzip=Súbor je gzipovaný, ale príkaz $1 nebol vo vašom systéme nájdený
+themes_egzip2=Nepodarilo sa skomprimovať súbor : $1 
+themes_erpm=Nie je to téma témy Usermin RPM
+themes_eirpm=Inštalácia RPM zlyhala : $1 
+themes_ok=Téma sa úspešne zmenila.. presmerovanie na indexovú stránku Webmin.
+themes_delete=Tento formulár sa dá použiť na odstránenie jednej z tém nainštalovaných vo vašom systéme, ktorá sa momentálne nepoužíva.
+themes_delok=Téma na odstránenie :
+
+themes_desc4=Nainštalované motívy je možné exportovať ako súbor wbt.gz pomocou nasledujúceho formulára. Súbor témy potom možno nainštalovať do iného systému, na ktorom je spustený Usermin.
+
+configs_ecannot=Nemáte povolenie konfigurovať tento modul
+configs_title=Konfigurácia modulu Usermin
+configs_header=Konfigurovateľné moduly
+configs_title2=Konfigurovať modul
+configs_desc=V nasledujúcom zozname vyberte modul, ktorý chcete nakonfigurovať.
+configs_uheader=Predvolené preferencie používateľa pre $1 
+configs_return=Usermin konfigurácia modulu
+configs_prefs=Používatelia môžu upravovať predvoľby?
+configs_sels=Iba vybrané ..
+configs_global=Globálna konfigurácia modulu
+configs_globaldesc=Nastavenia v tomto formulári sa vzťahujú na všetkých používateľov modulu a spravidla nastavujú možnosti týkajúce sa programov a súborov, ktoré používa.
+configs_user=Predvolené preferencie používateľa
+configs_userdesc=Nastavenia v tejto podobe definujú predvolené hodnoty pre užívateľsky upraviteľné preferencie pre tento modul. Pokiaľ neurčíte inak, jednotliví používatelia ich môžu prepísať.
+
+acl_title=Dostupné moduly
+acl_desc=Táto stránka sa používa na výber, ktoré nainštalované moduly Usermin sú viditeľné pre používateľov.
+
+ssl_title=SSL šifrovanie
+ssl_desc1=Zdá sa, že hostiteľ, na ktorom je spustený Usermin, je nainštalovaný modul SSLeay Perl. Usermin pomocou tohto podporuje SSL šifrovanú komunikáciu medzi prehliadačom a serverom. Ak používatelia pristupujú na váš server Usermin cez internet, určite by ste mali zvážiť použitie protokolu SSL, aby zabránili útočníkovi získať jeho heslá.
+ssl_desc2=Varovanie - podporu SSL zapnite iba v prípade, že máte prehliadač, ktorý podporuje protokol SSL, a medzi prehliadačom a hostiteľom Usermin nie sú blokované požiadavky brány firewall <tt>https</tt>.
+ssl_newkey=Tento formulár sa dá použiť na vytvorenie nového kľúča SSL pre váš server Usermin.
+ssl_hole=Pretože momentálne používate predvolený kľúč Usermin SSL, ku ktorému má prístup každý, mali by ste okamžite vygenerovať nový kľúč. V opačnom prípade nebude vaše pripojenie SSL bezpečné.
+ssl_savekey=Tento formulár umožňuje nahrať existujúci súkromný kľúč SSL vo formáte PEM a certifikát, ktorý môže váš server Usermin použiť.
+ssl_copycert=Kopírovať certifikát z Webmin
+ssl_copycertdesc=Skopírujte certifikát SSL, súkromný kľúč, certifikát CA a ďalšie nastavenia, ktoré používa Webmin.
+
+ca_email=Emailová adresa
+ca_ou=oddelenie
+ca_o=Organizácia
+ca_sp=Štát
+ca_c=Kód krajiny
+
+newkey_ok=Nasledujúci kľúč SSL bol úspešne vygenerovaný pre používateľa Usermin.
+
+stop_err=Nepodarilo sa zastaviť Usermin
+stop_ekill=Proces sa nepodarilo zabiť : $1 
+stop_efile=Už bolo zastavené
+stop_ecannot=Nie je dovolené zastaviť Usermin
+
+start_err=Usermin sa nepodarilo spustiť
+start_ecannot=Nie je dovolené štartovať Usermin
+
+users_title=Povolení používatelia a skupiny
+users_desc=Pomocou tohto formulára môže byť Usermin nakonfigurovaný tak, aby obmedzoval, ktorí unixoví používatelia a skupiny sa môžu prihlásiť. Ak chcete určiť všetkých primárnych členov unixovej skupiny, do zoznamu zadajte <tt>@groupname</tt>.
+users_desc2=Ak chcete priradiť rozsah identifikátorov UID, do zoznamu zadajte <tt>začiatok-koniec</tt>, <tt>začiatok-</tt> alebo <tt>-end</tt>.
+users_header=Usermin riadenie prístupu
+users_all=Povoliť všetkých používateľov
+users_allow=Povoliť iba registrovaných používateľov.
+users_deny=Odmietnuť používateľov uvedených na zozname ..
+users_err=Aktualizácia zoznamu používateľov zlyhala
+users_none=Neboli zadaní žiadni používatelia
+users_euser=$1 nie je platné používateľské meno
+users_egroup=$1 nie je platný názov skupiny
+users_shells=Odmietnuť používateľov, ktorých schránky nie sú v súbore
+users_eshells=Chýbajúci alebo neexistujúci súbor mušlí
+
+defacl_title=Možnosti riadenia prístupu
+defacl_desc=Táto stránka umožňuje konfigurovať rôzne možnosti riadenia prístupu, ktoré sa vzťahujú na moduly Usermin a používateľov. Tieto možnosti sú podobné voľbám v globálnom zozname prístupových práv pre každého používateľa v module Webmin Users.
+defacl_header=Možnosti riadenia prístupu pre používateľov Usermin
+defacl_err=Možnosti riadenia prístupu sa nepodarilo uložiť
+
+install_err1=Inštalácia modulu z $1 zlyhala
+install_efile=Súbor neexistuje
+install_err2=Inštalácia nahraného modulu zlyhala
+install_ebrowser=Váš prehliadač nepodporuje nahrávanie súborov
+install_err3=Inštalácia modulu z $1 zlyhala
+install_eurl=neplatná URL adresa
+install_etar=Neplatný súbor modulu : $1 
+install_einfo=V module $1 chýba súbor modulu.info
+install_enone=Zdá sa, že súbor neobsahuje žiadne moduly
+install_eos=Modul $1 nepodporuje tento operačný systém ($2 $3)
+install_eusermin=Modul $1 je určený pre Webmin, nie Usermin
+install_ever=Modul $1 vyžaduje Usermin verziu $2 alebo vyššiu
+install_edep=Modul $1 vyžaduje modul $2 
+install_eperldep=Modul $1 vyžaduje modul Perl $2. <br>Webmin si však môžete<a href='$3'> stiahnuť a nainštalovať </a> modul Perl.
+install_eextract=Extrakcia zlyhala : $1 
+install_title=Inštalovať modul
+install_desc=Nasledujúce moduly boli úspešne nainštalované a pridané do zoznamu riadenia prístupu všetkých používateľov :
+install_line2=$1 v $2 ($3 kB) v kategórii $4 
+install_ecomp=Súbor je komprimovaný, ale príkaz $1 nebol vo vašom systéme nájdený
+install_ecomp2=Rozbalenie súboru zlyhalo : $1 
+install_egzip=Súbor je gzipovaný, ale príkaz $1 nebol vo vašom systéme nájdený
+install_egzip2=Nepodarilo sa skomprimovať súbor : $1 
+install_erpm=Nejde o modul Usermin ani tému RPM
+install_eirpm=Inštalácia RPM zlyhala : $1 
+install_cat=V kategórii $1.
+install_eneither=RPM neobsahuje modul alebo tému hostiteľa
+
+delete_err=Nepodarilo sa odstrániť moduly
+delete_edep=Modul $1 nie je možné odstrániť, pretože modul $2 od neho závisí
+delete_desc1=$1 (klon $2)
+delete_desc2=$1 v $2 ($3 kB)
+delete_title=Odstrániť moduly
+delete_msg=Nasledujúce moduly boli úspešne odstránené z vašej inštalácie Usermin :
+delete_rusure=Naozaj chcete odstrániť moduly $2 ? $1 kB súborov bude navždy odstránených.
+delete_rusure2=Naozaj chcete odstrániť tému $2 ? $1 kB súborov bude navždy odstránených.
+delete_enone=Nie sú vybrané žiadne moduly
+
+ui_title=Užívateľské rozhranie
+ui_desc=Tento formulár umožňuje upravovať možnosti používateľského rozhrania, ktoré používajú všetky moduly Usermin.
+ui_header=Možnosti používateľského rozhrania
+ui_default=štandardné
+cs_page=Pozadie stránky
+cs_text=Normálny text
+cs_table=Pozadie tabuľky
+cs_header=Záhlavie tabuľky
+cs_link=Text odkazu
+ui_texttitles=Zobraziť názvy ako text?
+ui_sysinfo=Zobraziť prihlasovacie meno a názov hostiteľa
+ui_sysinfo0=V spodnej časti prehliadača
+ui_sysinfo1=V názve prehliadača
+ui_sysinfo2=Nad nadpisom stránky
+ui_sysinfo3=nikde
+ui_sysinfo4=Namiesto názvu prehliadača
+ui_err=Uloženie používateľského rozhrania zlyhalo
+ui_ered=Neplatná červená hodnota pre $1
+ui_egreen=Neplatná zelená hodnota pre „$1“
+ui_eblue=Neplatná modrá hodnota pre „$1“
+ui_feedback=Odošlite spätnú väzbu používateľovi
+ui_feedbackmode=Povoliť odosielanie spätnej väzby?
+ui_feednocc=Iba na adresu uvedenú vyššie
+ui_gotoone=Prejsť priamo na modul - ak má používateľ iba jeden?
+ui_gotonone=&lt;Žiadne&gt;
+ui_gotomodule=Po prihlásení vždy choďte do modulu
+ui_nohost=Zobraziť verziu, názov hostiteľa a OS v hlavnej ponuke?
+ui_feedbackyes=Áno, na adresu
+ui_feedbackmail=Odošlite spätnú väzbu prostredníctvom
+ui_feedbackmail1=Miestny program pre odosielanie pošty
+ui_feedbackmail0=SMTP server
+ui_efeedback=Chýba e-mailová adresa so spätnou väzbou
+ui_efeedbackmail=Chýba alebo je neplatný server SMTP
+ui_feedbackhost=Názov hostiteľa v spätnej väzbe Od: adresa
+ui_feedbackthis=Názov hostiteľa systému
+ui_hostnamemode=Názov hostiteľa, ktorý sa má zobraziť v Usermine
+ui_hnm0=Skutočné meno hostiteľa
+ui_hnm1=Názov hostiteľa z adresy URL
+ui_hnm2=Názov domény z adresy URL
+ui_hnm3=Iné meno ..
+ui_tabs=Kategorizovať moduly?
+
+upgrade_title=Aktualizujte Usermin
+upgrade_title2=Nainštalujte Usermin
+upgrade_desc=Tento formulár vám umožňuje inovovať celú inštaláciu Usermin na novú verziu. Môžete nainštalovať z miestneho súboru, nahraného súboru alebo z najnovšej verzie na stránke <a href=http://www.usermin.com/>www.usermin.com</a>. Rovnako ako pri manuálnej inovácii sa zachovajú všetky vaše konfiguračné nastavenia a moduly tretích strán.
+upgrade_descrpm=Tento formulár vám umožňuje upgradovať celú inštaláciu Usermin na novú verziu pomocou možnosti rozšírenia RPM. Môžete nainštalovať z miestneho súboru RPM, nahraného súboru alebo z najnovšej verzie na stránke <a href=http://www.usermin.com/>www.usermin.com</a>. Rovnako ako pri manuálnej inovácii sa zachovajú všetky vaše konfiguračné nastavenia a moduly tretích strán.
+upgrade_descdeb=Tento formulár vám umožňuje inovovať celú vašu inštaláciu Usermin na novú verziu aktualizáciou jeho balíka Debian. Môžete nainštalovať z miestneho súboru.deb, nahraného súboru alebo z najnovšej verzie na stránke <a href=http://www.usermin.com/>www.usermin.com</a>. Rovnako ako pri manuálnej inovácii sa zachovajú všetky vaše konfiguračné nastavenia a moduly tretích strán.
+upgrade_local=Z miestneho súboru
+upgrade_uploaded=Z nahraného súboru
+upgrade_url=Z adresy ftp alebo http
+upgrade_ftp=Posledná verzia z www.usermin.com
+upgrade_delete=Chcete po inovácii odstrániť adresár starej verzie?
+upgrade_ok=Aktualizujte Usermin
+upgrade_err1=Nepodarilo sa inovovať z $1 
+upgrade_err2=Aktualizácia z nahraného súboru zlyhala
+upgrade_err3=Inovácia zlyhala z adresy www.usermin.com
+upgrade_err5=Nepodarilo sa inovovať z adresy URL $1 
+upgrade_eurl=Chýbajúca alebo neplatná adresa URL
+upgrade_efile=Súbor neexistuje
+upgrade_ebrowser=Váš prehliadač nepodporuje nahrávanie súborov
+upgrade_eversion=Nie je možné prejsť na nižšiu verziu na verziu $1 
+upgrade_elatest=Používate už najnovšiu verziu aplikácie Usermin
+upgrade_erpm=Nie je platný súbor RPM Usermin
+upgrade_egunzip=Váš systém nemá príkaz <tt>gunzip</tt>
+upgrade_egzip=Nepodarilo sa skomprimovať súbor : $1 
+upgrade_etar=Nie je platný súbor dechtu Usermin
+upgrade_euntar=Nepodarilo sa odomknúť súbor : $1 
+upgrade_emod=Súbor je modul Usermin, nie úplná aktualizácia Usermin. Možno ho budete chcieť nainštalovať pomocou stránky <a href='$1'>Usermin Moduules</a>.
+upgrade_ewebmin=Súbor je verziou Webmin $1, nie aktualizáciou Usermin.
+upgrade_setup=Aktualizácia Usermin príkazom $1 ..
+upgrade_setup2=Inštalácia Usermin s príkazom $1 ..
+upgrade_done=.. aktualizácia dokončená.
+upgrade_failed=.. aktualizácia zlyhala!
+upgrade_updates=K dispozícii je $1 aktualizácií pre túto novú verziu Usermin. <a href='$2'>Kliknite sem</a> a automaticky si ich stiahnite a nainštalujte teraz.
+upgrade_eupdates=Nepodarilo sa stiahnuť zoznam aktualizácií : $1 
+
+update_desc1=Tento formulár vám umožňuje inovovať moduly Usermin, o ktorých sa zistilo, že obsahujú chyby alebo bezpečnostné medzery, na stránke <a href=http://www.usermin.com/uupdates.html>Aktualizácie Usermin</a> alebo z iného zdroja. Tým sa porovnajú aktuálne nainštalované moduly s modulmi, ktoré sú k dispozícii na aktualizáciu, a voliteľne sa automaticky stiahnu a nainštalujú všetky zastarané moduly.
+update_header1=Aktualizujte moduly teraz
+update_header2=Aktualizujte moduly podľa plánu
+update_webmin=Aktualizácia z www.usermin.com
+update_other=Aktualizácia z iného zdroja
+update_show=Ukáž iba, ktoré moduly by sa aktualizovali
+update_missing=Nainštalujte moduly, ktoré ešte nie sú nainštalované
+update_quiet=Aktualizujte iba správy
+update_ok=Aktualizujte moduly
+update_email=E-mailovú aktualizačnú správu na adresu
+update_enabled=Plánovaná aktualizácia je momentálne povolená
+update_apply=Uložiť a použiť
+update_sched=Aktualizujte moduly o $1 : 00 každé $2 dni
+update_none=Pre túto verziu nie sú k dispozícii žiadne aktualizácie Usermin.
+update_failed=Nepodarilo sa nainštalovať modul : $1 
+update_desc2=Tento formulár slúži na naplánovanie automatickej aktualizácie modulov Usermin obsahujúcich chyby alebo bezpečnostné diery zo stránky <a href=http://www.usermin.com/uupdates.html>Aktualizácie Usermin</a> alebo z iného zdroja. Aj keď je táto služba užitočná, mali by ste ju používať opatrne, pretože útočníkom môže umožniť prevziať systém, ak bol aktualizačný server niekedy napadnutý.
+
+assignment_title=Preradiť moduly
+assignment_header=Priradenia kategórie modulu
+assignment_ok=Zmeniť kategórie
+assignment_desc=Tento formulár vám umožňuje nakonfigurovať, v ktorej kategórii sa každý modul zobrazuje na indexovej stránke Usermin.
+
+categories_title=Upraviť kategórie
+categories_header=ID kategórie a popisy
+categories_desc=Tento formulár vám umožňuje premenovať existujúce kategórie Usermin a vytvoriť nové, do ktorých môžete priradiť moduly. Horná časť tabuľky slúži na zmenu popisov vstavaných kategórií, zatiaľ čo spodná časť slúži na pridávanie nových ID a popisov nových kategórií.
+categories_ok=Uložiť kategórie
+categories_err=Nepodarilo sa uložiť kategórie
+categories_edesc=Chýba popis pre $1 
+categories_ecat=ID kategórie $1 je už obsadené
+categories_code=ID
+categories_name=Zobrazený popis
+
+log_access=Zmenené riadenie prístupu IP
+log_bind=Zmenený port a adresa
+log_log=Zmenené možnosti protokolovania
+log_proxy=Zmenené proxy servery
+log_ui=Zmenené možnosti používateľského rozhrania
+log_install=Nainštalovaný modul $1 
+log_tinstall=Nainštalovaný motív $1 
+log_clone=Klonovaný modul $1 až $2 
+log_delete=Odstránený modul $1 
+log_os=Zmenený operačný systém
+log_lang=Zmenený globálny jazyk
+log_startpage=Zmenené možnosti indexovej stránky
+log_upgrade=Aktualizácia Usermin na verziu $1 
+log_uinstall=Nainštalovaná verzia Usermin $1 
+log_session=Zmenené možnosti overenia
+log_ssl=Zmenený režim šifrovania SSL
+log_copycert=Skopírované nastavenia SSL z Webmin
+log_newkey=Bol vytvorený nový kľúč SSL
+log_setupca=Nastaviť certifikačnú autoritu
+log_changeca=Zmenená certifikačná autorita
+log_stopca=Vypnite certifikačnú autoritu
+log_assignment=Zmenené kategórie modulov
+log_categories=Zmenené názvy kategórií
+log_theme=Zmeňte motív na $1 
+log_theme_def=Téma bola zmenená na predvolené Usermin
+log_referers=Zmenili dôveryhodní sprostredkovatelia
+log_config=Zmeniť konfiguráciu pre $1 
+log_uconfig=Zmeňte konfiguráciu používateľa pre $1 
+log_defacl=Zmenené možnosti riadenia prístupu
+log_users=Zmenení povolení používatelia a skupiny
+log_acl=Zmenili sa dostupní používatelia
+log_restrict_create=Vytvorené obmedzenie pre $1 
+log_restrict_modify=Upravené obmedzenie pre $1 
+log_restrict_delete=Odstránené obmedzenie pre $1 
+log_restrict_move=Presunuté obmedzenie pre $1 
+
+log_all=všetci používatelia
+log_group=skupina $1 
+log_switch=Prepnuté na používateľa Usermin $1 
+log_logout=Zmenené časy automatického odhlásenia
+log_dav=Zmenené nastavenia servera DAV
+log_advanced=Zmenené rozšírené možnosti
+log_mobile=Zmenené možnosti mobilného zariadenia
+
+update_err=Aktualizácia modulov zlyhala
+update_eurl=Chýba alebo je neplatná adresa URL aktualizácie
+update_title=Aktualizujte moduly
+update_info=Aktualizácia modulov Usermin ..
+update_mmissing=V tomto systéme nie je nainštalovaný modul $1.
+update_malready=Modul $1 je už aktuálny.
+update_mshow=Aktualizácia potrebná pre modul $1 na verziu $2.
+update_mok=Aktualizácia modulu $1 na verziu $2.
+update_fixes=Opravuje problém
+update_mdesc=Nainštalovaný modul $1 ($2 Kb)
+update_mos=Aktualizácia modulu $1 nesúvisí s týmto OS.
+update_efile=Zdrojový súbor aktualizuje neplatný modul
+update_ehour=Chýba alebo je neplatná hodina na aktualizáciu
+update_edays=Chýbajúci alebo neplatný počet dní
+update_rv=Kontrola aktualizovaných modulov Usermin od $1 
+update_eemail=E-mailovú adresu musíte zadať, ak sa zobrazuje iba to, čo by sa aktualizovalo.
+update_subject=Správa o aktualizácii modulov Usermin
+update_version=Nové vydanie Usermin (verzia $1) je teraz k dispozícii na stiahnutie. Budúce aktualizácie budú vydané iba pre najnovšiu verziu.
+
+restrict_title=Obmedzenia modulu
+restrict_desc=Táto stránka umožňuje určiť, ktoré moduly Usermin sú dostupné rôznym používateľom a skupinám. Platia všetky pridania a odčítania modulov v zozname, nielen prvé, ktoré sa zhoduje s každým používateľom. <br>Moduly, ktoré nie sú vybrané na stránke<a href='$1'> dostupných modulov </a>, nikdy nebudú k dispozícii pre používatelia, aj keď sú vybratí tu.
+restrict_who=Usermin užívateľ
+restrict_what=Dostupné moduly
+restrict_all=Všetci používatelia
+restrict_group=Skupina $1 
+restrict_file=Používatelia v súbore $1 
+restrict_plus=<b>Všetko plus</b> $1 
+restrict_minus=<b>Všetky okrem</b> $1 
+restrict_set=<b>Iba</b> $1 
+restrict_nomods=<b>Žiadne moduly</b>
+restrict_add=Pridajte nové používateľské alebo skupinové obmedzenie
+restrict_edit=Upraviť obmedzenie
+restrict_create=Vytvorenie obmedzenia
+restrict_header=Podrobnosti o obmedzení modulu Usermin
+restrict_who2=Týka sa
+restrict_umode0=Unixový užívateľ
+restrict_umode1=Členovia skupiny
+restrict_umode2=Všetci používatelia
+restrict_umode3=Používatelia a skupiny v súbore
+restrict_mods=moduly
+restrict_modsdesc=(Červené osoby boli zakázané na stránke <a href='$1'>Dostupné moduly</a>)
+restrict_mmode0=Iba vybrané ..
+restrict_mmode1=Pridať vybrané ..
+restrict_mmode2=Vymazať označené ..
+restrict_return=zoznam obmedzení
+restrict_err=Obmedzenie sa nepodarilo uložiť
+restrict_euser=Chýbajúce alebo neplatné používateľské meno
+restrict_egroup=Chýba alebo je neplatný názov skupiny
+restrict_efile=Chýbajúci, neexistujúci alebo nie absolútny súbor používateľov a skupín
+restrict_move=sťahovať
+bootup_ecannot=Nemáte povolenie konfigurovať zavádzanie systému
+
+acl_icons=Povolené konfiguračné stránky
+acl_mods=Môže konfigurovať moduly
+acl_all=Všetky moduly
+acl_sel=Vybraté nižšie ..
+acl_stop=Môže zastaviť a začať Usermin?
+acl_bootup=Môžete nakonfigurovať spustenie v čase spustenia?
+acl_ecannot=Túto stránku nemôžete používať
+
+clone_err=Nepodarilo sa klonovať modul
+clone_elink=Symlink zlyhal : $1 
+clone_ecopy=Nepodarilo sa kopírovať konfiguráciu : $1 
+clone_desc=Klon $1 
+
+sessions_title=Aktuálne relácie prihlásenia
+sessions_desc=Aktuálne prihlasovacie údaje relácie Usermin sú uvedené nižšie. Ak chcete zrušiť existujúcu reláciu a prinútiť používateľa, aby sa znova prihlásil, kliknite na jej ID relácie.
+sessions_id=ID relácie
+sessions_user=Unixový užívateľ
+sessions_host=IP adresa
+sessions_login=Prihlásený na
+sessions_none=Momentálne nie sú prihlásení žiadni používatelia.
+sessions_switch=Prepnúť na používateľa Usermin:
+sessions_ok=prepínač
+
+referers_title=Dôveryhodní sprostredkovatelia
+referers_desc=Táto stránka vám umožňuje nakonfigurovať podporu kontroly sprostredkovateľa Usermin, ktorá sa používa na zabránenie škodlivých odkazov z iných webových stránok, ktoré podvádzajú prehliadače vašich používateľov, aby s Userminom robili nebezpečné veci. Ak však máte odkazy na Usermin z vlastných webových stránok, na ktoré nechcete byť upozornený, mali by ste tieto stránky pridať do zoznamu nižšie.
+
+anon_title=Anonymný prístup k modulu
+anon_desc=Táto stránka vám umožňuje udeliť prístup k vybraným modulom a cestám Usermin bez toho, aby sa klienti museli prihlasovať. Pre každú cestu modulu, ktorú zadáte nižšie (napríklad / príkazy alebo / changepass), musíte tiež zadať meno užívateľa Unixu, ktorého oprávnenie sa použije na prístup k modulu.
+anon_user=Unixový užívateľ
+anon_euser=Chýbajúci alebo neplatný používateľ Unix pre cestu URL $1
+
+logout_title=Časy automatického odhlásenia
+logout_desc=Táto stránka sa dá použiť na konfiguráciu rôznych časov odhlásenia pre rôznych používateľov Usermin. Časový limit musí byť zadaný v minútach a časový limit nula znamená, že relácie pre zodpovedajúcich používateľov sa nikdy neodhlásia automaticky.
+logout_type=typ
+logout_who=Používateľ, skupina alebo súbor
+logout_time=Čas vypršal
+logout_user=Užívateľ ..
+logout_group=Členovia skupiny ..
+logout_file=Používatelia v súbore ..
+logout_err=Nepodarilo sa uložiť časy odhlásenia
+logout_euser=Chýbajúci alebo neplatný používateľ v riadku $1 
+logout_egroup=Chýba alebo je neplatná skupina v riadku $1 
+logout_efile=Chýbajúci alebo neexistujúci súbor v riadku $1 
+logout_etime=Chýbajúci alebo neplatný časový limit v riadku $1 
+logout_ecannot=Nie je povolené konfigurovať časy odhlásenia
+
+dav_title=Server DAV
+dav_header=Možnosti servera DAV
+dav_path=Povolené DAV?
+dav_disabled=invalidný
+dav_enabled=Povolené pod cestou URL $1 
+dav_root=Povoliť prístup k adresáru
+dav_root0=Celý súborový systém
+dav_root1=Domovský adresár používateľa
+dav_root2=Adresár $1 
+dav_ecannot=Nemáte povolenie konfigurovať server DAV
+dav_emodule=Nie je nainštalovaný modul Perl $1 potrebný na povolenie DAV.
+dav_cpan=<a href='$1'>Kliknite sem</a>, aby ste si Webmin stiahli a automaticky nainštalovali.
+dav_desc=Podpora protokolu DAV od spoločnosti Usermin umožňuje klientom, ktorí podporujú protokol DAV, pripojiť sa k tomuto serveru Usermin a čítať a zapisovať súbory. Všetok prístup k súborom s pomocou oprávnení Unix prihláseného používateľa bude obmedzený na určený adresár.
+dav_err=Možnosti servera DAV sa nepodarilo uložiť
+dav_epath=Chýbajúca alebo neplatná cesta k adrese URL
+dav_eroot=Chýbajúci alebo neplatný koreňový adresár
+dav_users=Používatelia, ktorí môžu používať DAV
+dav_users1=Všetci používatelia
+dav_users0=Používatelia a skupiny uvedené nižšie.
+dav_eusers=Neboli zadaní žiadni používatelia
+
+syslog_errorlog=Denník chýb Usermin
+
+descs_title=Názvy modulov
+descs_info=Táto stránka vám umožňuje zadať alternatívne názvy pre moduly Usermin a prepísať ich štandardný popis.
+
+advanced_title=Pokročilé nastavenia
+advanced_pass=Sprístupniť heslo pre programy Usermin? <br><font size=-1> (nefunguje, ak je povolené overenie relácie) </font>
+
+blocked_title=Blokovaní hostitelia a používatelia
+blocked_none=Usermin v súčasnosti blokuje žiadnych hostiteľov alebo používateľov.
+blocked_user=Usermin užívateľ
+blocked_cleardesc=Kliknutím na toto tlačidlo vymažete všetky súčasné bloky hostiteľa a používateľa reštartovaním procesu servera Usermin.
+
+mobile_title=Možnosti mobilného zariadenia
+
+copycert_err=Nepodarilo sa skopírovať nastavenia SSL z Webmin
+copycert_essl=SSL nie je povolený
+copycert_ekeyfile=V aplikácii Webmin nie je nastavený žiadny súbor súkromného kľúča

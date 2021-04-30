@@ -1,0 +1,37 @@
+index_title=클러스터 크론 작업
+index_add=새 클러스터 크론 작업을 작성하십시오.
+index_none=클러스터 크론 작업이 정의되지 않았습니다.
+index_servers=서버에서 실행
+index_return=클러스터 크론 작업 목록
+index_more=$1 개 더 ..
+index_run=지금 ..
+index_actions=행위
+
+edit_title=클러스터 크론 작업 편집
+create_title=클러스터 크론 작업 생성
+edit_servers=서버에서 실행
+edit_group=$1 의 회원
+edit_this=이 서버
+edit_all=&lt;모든 호스트&gt;
+edit_emissing=크론 직업이 더 이상 존재하지 않습니다!
+
+save_err=클러스터 크론 작업을 저장하지 못했습니다.
+
+exec_title=클러스터 크론 작업 실행
+exec_cmd=선택한 서버에서 $1 을 (를) 실행 중입니다.
+exec_failed=$1 에서 실행하지 못했습니다  : $2 
+exec_success=$1 에서 출력
+exec_nohosts=실행하도록 선택된 호스트가 없거나 선택된 그룹에 사용 가능한 호스트가 없습니다.
+
+log_run=$2 서버에서 $1 을 (를) 실행했습니다.
+log_run_l=$2 에서 $1 을 (를) 실행했습니다.
+log_create=$1 에 대한 클러스터 크론 작업을 생성했습니다
+log_create_l=$1 에 대한 클러스터 크론 작업 $2 을 (를) 생성했습니다.
+log_modify=$1 에 대한 수정 된 클러스터 크론 작업
+log_modify_l=$1 에 대해 수정 된 클러스터 크론 작업 $2 
+log_delete=$1 에 대한 삭제 된 클러스터 크론 작업
+log_delete_l=$1 에 대해 삭제 된 클러스터 크론 작업 $2 
+log_deletes=$1 개의 클러스터 크론 작업이 삭제되었습니다.
+
+delete_err=클러스터 크론 작업을 삭제하지 못했습니다.
+delete_enone=선택된 사항 없음

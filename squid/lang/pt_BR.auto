@@ -1,0 +1,36 @@
+index_manual=Editar arquivos de configuração
+
+manual_title=Editar arquivos de configuração
+manual_file=Selecione um arquivo de configuração para editar:
+manual_change=mudança
+manual_editing=Use a caixa de texto abaixo para editar manualmente as configurações em $1. Tenha cuidado, pois nenhuma verificação de sintaxe ou validade será feita.
+manual_err=Falha ao salvar o arquivo de configuração
+manual_efile=Nome de arquivo de configuração inválido!
+manual_ecannot=Você não tem permissão para editar manualmente os arquivos de configuração
+
+acl_nodns=Desativar pesquisas?
+
+ec_coss=COSS
+
+ech_siq2=Rejeitar consultas ICP?
+
+elogs_squid=Lula padrão
+
+eports_all=Todos
+
+eprogs_sppe=Programa de ping ativado?
+eprogs_startup=Programas para iniciar inicialmente
+eprogs_idle=Programas mínimos a serem executados
+eprogs_concurrency=Número de solicitações simultâneas por programa
+
+sprog_emsg10='$1' não é um TTL válido
+sprog_echildren=O número de programas deve ser um número maior que zero
+
+ext_children=Número de programas a serem executados
+ext_children_u=programas
+ext_echildren=Número de programas ausente ou inválido
+
+iptables_enabled3=O redirecionamento de porta está ativado, para clientes na rede
+iptables_enabled4=O redirecionamento de porta está ativado, para clientes na interface
+
+syslog_access=Log de acesso ao Squid

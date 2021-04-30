@@ -1,0 +1,289 @@
+index_install=Webmin可以自動為您下載並安裝最新版本的Usermin。但是，如果程序已經安裝並且正在使用其他配置目錄，則不應執行此操作。
+index_rpm=安裝Usermin RPM軟件包
+index_tgz=安裝Usermin tar.gz軟件包
+index_deb=安裝Usermin Debian軟件包
+index_esame=在<a href='$2'>模塊配置</a>頁面上設置的Usermin配置目錄 $1與Webmin的目錄相同，這是不正確的。
+index_eroot=Usermin配置目錄 $1存在，但它引用的程序根目錄 $2不存在！您應該手動下載並重新安裝Usermin。
+index_restart=重新啟動Usermin
+index_restartmsg=單擊此按鈕以重新啟動Usermin服務器進程。如果您最近升級了Perl，則可能有必要。
+
+bind_desc2=該表格可用於更改Usermin偵聽的端口號，或僅在系統上的單個IP地址上偵聽此端口號。您還可以將其配置為接受多個端口上的連接，或偵聽多個IP地址。注意-更改端口或綁定地址後，您的Web瀏覽器可能會提示您重新登錄。
+bind_erestart=使用新的地址和端口設置啟動Usermin時發生錯誤： $1
+
+umods_title=Usermin模塊
+mods_desc2=如果您希望具有不同配置的同一模塊有多個副本，則可以使用右側的表格來克隆任何現有模塊。該克隆將具有一個新名稱，一個新的模塊配置，並且可以提供給不同的用戶。
+mods_clone=克隆模塊
+mods_cname=克隆模塊
+mods_cnew=克隆的模塊名稱
+mods_ccat=分配給類別
+mods_csame=與原版相同
+mods_cloneok=克隆模塊
+mods_desc4=可以使用以下表格將已安裝的模塊導出為wbm.gz文件。然後可以將模塊文件安裝到運行Usermin的另一個系統上。
+
+os_desc3=此頁面顯示Usermin在安裝時檢測到的操作系統以及當前檢測到的系統。如果它們不同，則可以選擇更新Usermin的OS信息，如果您最近進行了升級，則可能有必要。
+os_usermin=根據Usermin的操作系統
+os_iusermin=Usermin使用的內部操作系統代碼
+os_update=更新Usermin以使用檢測到的操作系統
+
+session_realname=顯示真實的主機名而不是URL的名稱？
+session_authmode=身份驗證方法
+session_authmode0=使用PAM進行身份驗證（如果可用）
+session_authmode1=使用密碼文件 $1列 $2和 $3進行身份驗證
+session_authmode2=使用外部魷魚式身份驗證程序
+session_eauthmode1=如果選擇了該選項，則必須輸入密碼文件
+session_eauthmode2=如果選擇了外部身份驗證程序，則必須輸入該程序
+session_domain=自動嘗試將域名添加到用戶名嗎？
+session_strip=自動嘗試從用戶名中剝離域？
+session_usermap=使用用戶名映射文件
+session_userfmt=文件格式
+session_userfmt0=泛型（名稱至地址）
+session_userfmt1=Virtusertable（地址到名稱）
+session_eusermap=用戶名映射文件缺失或不存在
+session_blank=提示用戶使用空密碼首次登錄時選擇一個？
+session_homedir=登錄後創建丟失的主目錄？
+session_homedir_perms=新目錄的權限
+session_ehomedir_perms=八進制主目錄權限丟失或無效
+
+themes_desc4=可以使用以下表單將已安裝的主題導出為wbt.gz文件。然後可以將主題文件安裝到另一個運行Usermin的系統上。
+
+configs_ecannot=您無權配置此模塊
+configs_header=可配置模塊
+configs_title2=配置模塊
+configs_desc=從下面的列表中選擇要配置的模塊。
+configs_return=Usermin模塊配置
+configs_prefs=用戶可以編輯首選項嗎？
+configs_sels=僅選擇 ..
+configs_global=全局模塊配置
+configs_globaldesc=此表格中的設置適用於模塊的所有用戶，通常設置與模塊使用的程序和文件相關的選項。
+configs_user=默認用戶首選項
+configs_userdesc=此表單中的設置定義了該模塊的用戶可編輯首選項的默認值。除非您另外指定，否則它們可以被單個用戶覆蓋。
+
+ssl_desc2=警告-僅在具有支持SSL的瀏覽器且沒有防火牆阻止瀏覽器與Usermin主機之間的<tt>https</tt>請求時，才打開SSL支持。
+ssl_newkey=此表單可用於為Usermin服務器創建新的SSL密鑰。
+ssl_hole=因為您當前正在使用每個人都可以訪問的默認Usermin SSL密鑰，所以您應該立即生成一個新密鑰。否則您的SSL連接不安全！
+ssl_savekey=該表格允許您上載現有的PEM格式SSL私鑰和證書，以供Usermin服務器使用。
+ssl_copycert=從Webmin複製證書
+ssl_copycertdesc=複製Webmin正在使用的SSL證書，私鑰，CA證書和其他設置。
+
+ca_email=電子郵件地址
+ca_ou=部門
+ca_o=組織
+ca_sp=州
+ca_c=國家代碼
+
+newkey_ok=已為Usermin成功生成以下SSL密鑰。
+
+stop_ecannot=您不允許停止Usermin
+
+start_ecannot=您不允許啟動Usermin
+
+users_desc2=要匹配一系列UID，請在列表中輸入<tt>start-end</tt>，<tt>start-</tt>或<tt>-end</tt>。
+users_shells=拒絕其外殼不在文件中的用戶
+users_eshells=缺少或不存在的shell文件
+
+delete_enone=未選擇模塊
+
+ui_sysinfo4=代替瀏覽器標題
+ui_feedbackmode=允許發送反饋？
+ui_feednocc=僅針對以上地址
+ui_gotoone=如果用戶只有一個，直接進入模塊<br>？
+ui_gotonone=&lt;無&gt;
+ui_gotomodule=登錄後，始終進入模塊
+ui_nohost=在主菜單上顯示版本，主機名和操作系統？
+ui_feedbackyes=是的，解決
+ui_feedbackmail=通過發送反饋
+ui_feedbackmail1=本地sendmail程序
+ui_feedbackmail0=SMTP服務器
+ui_efeedback=缺少反饋電子郵件地址
+ui_efeedbackmail=缺少或無效的SMTP服務器
+ui_feedbackhost=反饋中的主機名來自：地址
+ui_feedbackthis=系統的主機名
+ui_hostnamemode=在Usermin中顯示的主機名
+ui_hnm0=真實主機名
+ui_hnm1=網址中的主機名
+ui_hnm2=網址中的域名
+ui_hnm3=其他名字 ..
+ui_tabs=分類模塊？
+
+upgrade_title2=安裝Usermin
+upgrade_descdeb=通過此表，您可以通過升級其Debian軟件包將整個Usermin安裝升級到新版本。您可以從本地.deb文件，上載的文件或最新版本的<a href=http://www.usermin.com/>www.usermin.com</a>安裝。與手動升級一樣，所有配置設置和第三方模塊都將保留。
+upgrade_url=從ftp或http URL
+upgrade_err5=無法從URL $1升級
+upgrade_eurl=網址缺失或無效
+upgrade_setup2=使用命令 $1..安裝Usermin
+upgrade_updates=此新版本的Usermin有 $1更新。 <a href='$2'>單擊此處</a>立即自動下載並安裝它們。
+upgrade_eupdates=無法下載更新列表： $1
+
+update_desc1=通過此表單，您可以從<a href=http://www.usermin.com/uupdates.html>Usermin Updates</a>頁面或其他來源升級已發現包含錯誤或安全漏洞的Usermin模塊。這會將當前安裝的模塊與可更新的模塊進行比較，並有選擇地自動下載和安裝所有過時的模塊。
+update_header1=立即更新模塊
+update_header2=按計劃更新模塊
+update_webmin=從www.usermin.com更新
+update_other=從其他來源更新
+update_show=只顯示要更新的模塊
+update_missing=安裝當前未安裝的模塊
+update_quiet=僅報告更新
+update_ok=更新模塊
+update_email=通過電子郵件將更新報告發送到
+update_enabled=當前啟用計劃更新
+update_apply=保存併申請
+update_sched=每 $2天在 $1：00更新一次模塊
+update_none=此版本沒有Usermin更新。
+update_failed=無法安裝模塊： $1
+update_desc2=該表格用於安排<a href=http://www.usermin.com/uupdates.html>Usermin Updates</a>頁面或其他來源中包含錯誤或安全漏洞的Usermin模塊的自動更新。儘管此服務很有用，但您應謹慎使用它，因為如果更新服務器遭到破壞，它可能會讓攻擊者接管您的系統。
+
+categories_code=ID
+categories_name=顯示的描述
+
+log_uinstall=已安裝Usermin版本 $1
+log_copycert=從Webmin複製的SSL設置
+log_newkey=創建了新的SSL密鑰
+log_restrict_create=已為 $1創建限制
+log_restrict_modify=修改了 $1的限制
+log_restrict_delete=已刪除 $1的限制
+log_restrict_move=$1的限制已移動
+
+log_all=所有用戶
+log_group=組 $1
+log_switch=切換到Usermin用戶 $1
+log_logout=更改自動註銷時間
+log_dav=更改了DAV服務器設置
+log_advanced=更改了高級選項
+log_mobile=更改了移動設備選項
+
+update_err=無法更新模塊
+update_eurl=缺少或無效的更新URL
+update_title=更新模塊
+update_info=更新Usermin模塊 ..
+update_mmissing=該系統上未安裝模塊 $1。
+update_malready=模塊 $1已更新。
+update_mshow=模塊 $1需要更新到版本 $2。
+update_mok=將模塊 $1升級到版本 $2。
+update_fixes=解決問題
+update_mdesc=已安裝的模塊 $1（$2 Kb）
+update_mos=模塊 $1的更新與此操作系統無關。
+update_efile=無效的模塊更新源文件
+update_ehour=缺少或無效的時間來更新
+update_edays=缺少天數或無效天數
+update_rv=從 $1檢查更新的Usermin模塊
+update_eemail=如果僅顯示要更新的內容，則必須輸入電子郵件地址。
+update_subject=Usermin模塊更新報告
+update_version=現在可以下載新版本的Usermin（版本 $1）。將來的更新將僅針對最新版本發布。
+
+restrict_title=模塊限制
+restrict_desc=該頁面允許您控制哪些Usermin模塊可用於不同的用戶和組。列表中所有模塊的增減均適用，而不僅僅是與每個用戶匹配的第一個模塊。<br>在<a href='$1'>可用模塊</a>頁面上未選擇的模塊將永遠不可用。用戶，即使在此處選擇了他們。
+restrict_who=Usermin用戶
+restrict_what=可用模塊
+restrict_all=所有用戶
+restrict_group=組 $1
+restrict_file=文件 $1中的用戶
+restrict_plus=<b>全加</b> $1
+restrict_minus=<b>所有除外</b> $1
+restrict_set=<b>僅</b> $1
+restrict_nomods=<b>沒有模塊</b>
+restrict_add=添加新的用戶或組限制
+restrict_edit=編輯限制
+restrict_create=創建限制
+restrict_header=Usermin模塊限制詳細信息
+restrict_who2=適用於
+restrict_umode0=Unix用戶
+restrict_umode1=組成員
+restrict_umode2=所有用戶
+restrict_umode3=文件中的用戶和組
+restrict_mods=模組
+restrict_modsdesc=（紅色的顏色在<a href='$1'>可用的模塊</a>頁面上已被禁用）
+restrict_mmode0=僅選擇 ..
+restrict_mmode1=添加選擇的 ..
+restrict_mmode2=刪除選定 ..
+restrict_return=限制清單
+restrict_err=無法保存限制
+restrict_euser=用戶名缺失或無效
+restrict_egroup=群組名稱缺失或無效
+restrict_efile=缺少，不存在或非絕對的用戶和組文件
+restrict_move=移動
+bootup_ecannot=您無權配置啟動
+
+acl_icons=允許的配置頁面
+acl_mods=可以配置模塊
+acl_all=所有模塊
+acl_sel=在下面選擇 ..
+acl_stop=可以停止並啟動Usermin嗎？
+acl_bootup=可以在啟動時配置啟動嗎？
+acl_ecannot=您無權使用此頁面
+
+clone_err=克隆模塊失敗
+clone_elink=符號鏈接失敗： $1
+clone_ecopy=無法複製配置： $1
+clone_desc=$1的克隆
+
+sessions_title=當前登錄會話
+sessions_desc=下面列出了當前的Usermin會話登錄。要取消現有會話並強制用戶再次登錄，請單擊其會話ID。
+sessions_id=會話ID
+sessions_user=Unix用戶
+sessions_host=IP地址
+sessions_login=登錄於
+sessions_none=當前沒有用戶登錄到Usermin。
+sessions_switch=切換到Usermin用戶：
+sessions_ok=開關
+
+referers_title=值得信賴的推薦人
+referers_desc=該頁面允許您配置Usermin的引薦來源網址檢查支持，該支持用於防止來自其他網站的惡意鏈接欺騙您的用戶的瀏覽器使用Usermin做危險的事情。但是，如果您不想從自己的網站鏈接到Usermin，則應將這些網站添加到下面的列表中。
+
+anon_title=匿名模塊訪問
+anon_desc=該頁面允許您授予對選定的Usermin模塊和路徑的訪問權限，而無需客戶端登錄。對於在下面輸入的每個模塊路徑（例如/ commands或/ changepass），還必須輸入Unix用戶的名稱，該用戶的權限將用於訪問該模塊。
+anon_user=Unix用戶
+anon_euser=URL路徑“$1”的Unix用戶丟失或無效
+
+logout_title=自動登出時間
+logout_desc=此頁面可用於為不同的Usermin用戶配置不同的不活動註銷時間。必須以分鐘為單位輸入超時，並且超時為零意味著匹配用戶的會話將永遠不會自動註銷。
+logout_type=類型
+logout_who=用戶，組或文件
+logout_time=暫停
+logout_user=用戶 ..
+logout_group=小組成員 ..
+logout_file=文件中的用戶 ..
+logout_err=無法保存註銷時間
+logout_euser=第 $1行中缺少用戶或用戶無效
+logout_egroup=第 $1行中的組缺失或無效
+logout_efile=第 $1行中缺少文件或文件不存在
+logout_etime=第 $1行中缺少超時或無效超時
+logout_ecannot=您無權配置註銷時間
+
+dav_title=DAV服務器
+dav_header=DAV服務器選項
+dav_path=是否啟用DAV？
+dav_disabled=殘障人士
+dav_enabled=已啟用，在URL路徑 $1下
+dav_root=允許訪問目錄
+dav_root0=整個文件系統
+dav_root1=用戶的主目錄
+dav_root2=目錄 $1
+dav_ecannot=您無權配置DAV服務器
+dav_emodule=未安裝啟用DAV所需的Perl模塊 $1。
+dav_cpan=<a href='$1'>單擊此處</a>讓Webmin下載並自動為您安裝。
+dav_desc=Usermin的DAV支持允許支持DAV協議的客戶端連接到此Usermin服務器並讀寫文件。所有文件訪問均以登錄用戶的Unix特權完成，並且將被限制在指定的目錄中。
+dav_err=無法保存DAV服務器選項
+dav_epath=URL路徑缺失或無效
+dav_eroot=根目錄丟失或無效
+dav_users=可以使用DAV的用戶
+dav_users1=所有用戶
+dav_users0=下面列出的用戶和組。
+dav_eusers=沒有用戶輸入
+
+syslog_errorlog=Usermin錯誤日誌
+
+descs_title=模塊標題
+descs_info=該頁面允許您為Usermin模塊指定備用標題，以覆蓋其標准說明。
+
+advanced_title=高級選項
+advanced_pass=使密碼可用於Usermin程序嗎？<br><font size=-1>（啟用會話身份驗證後不起作用）</font>
+
+blocked_title=被阻止的主機和用戶
+blocked_none=當前沒有主機或用戶被Usermin阻止。
+blocked_user=Usermin用戶
+blocked_cleardesc=單擊此按鈕，通過重新啟動Usermin服務器進程來清除所有當前主機和用戶塊。
+
+mobile_title=移動設備選項
+
+copycert_err=無法從Webmin複製SSL設置
+copycert_essl=未啟用SSL
+copycert_ekeyfile=Webmin中未設置私鑰文件

@@ -1,0 +1,22 @@
+index_title=Cluster Shell-kommandon
+index_cmd=Kommando att köra
+index_old=eller
+index_server=Kör på servrar
+index_run=Kör kommandot nu
+index_return=modulindex
+index_this=den här servern
+index_all=&lt;Alla värdar&gt;
+index_group=Medlemmar av $1 
+index_clear=Rensa historik
+index_edit=Redigera tidigare
+
+run_title=Kör kommando
+run_err=Det gick inte att köra kommandot
+run_ecmd=Inget kommando angetts
+run_failed=Det gick inte att köra på $1 : $2 
+run_success=Utgång från $1 ..
+run_enone=Inga servrar att köra på valda
+
+log_clear=Rensat kommandohistorik
+log_run=Kör $1 på $2 -servrar
+log_run_l=Ran $1 på $2 

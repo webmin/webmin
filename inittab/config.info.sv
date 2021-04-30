@@ -1,1 +1,1 @@
-inittab_file=Sökväg till inittab-fil,0
+inittab_file=SÃ¶kvÃ¤g till inittab-fil,0

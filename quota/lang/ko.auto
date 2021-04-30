@@ -1,0 +1,30 @@
+acl_ggid=범위에 GID가있는 그룹
+
+egroup_listalldesc=이 버튼을 클릭하면이 그룹에 디스크 할당량이있는 모든 파일 시스템 목록과 해당 파일을 편집 할 수있는 링크가 표시됩니다.
+
+euser_listalldesc=이 버튼을 클릭하면이 사용자에게 디스크 할당량이있는 모든 파일 시스템의 목록과 해당 파일을 편집 할 수있는 링크가 표시됩니다.
+
+gfilesys_editdesc=현재 할당량이없는 다른 파일 시스템에서이 그룹의 할당량을보고 편집합니다.
+gfilesys_copydesc=모든 파일 시스템에서이 그룹의 할당량 제한을 일부 또는 모든 다른 그룹으로 복사하십시오.
+gfilesys_enone=그룹 이름이 입력되지 않았습니다
+
+index_supported=아직 지원되지 않는 할당량
+index_enable2=지원 활성화
+index_euserdesc=사용자를 입력하거나 선택하고이 버튼을 클릭하면 모든 파일 시스템에서 할당량을 볼 수 있습니다.
+index_egroupdesc=그룹을 입력하거나 선택하고이 버튼을 클릭하면 모든 파일 시스템의 할당량을 볼 수 있습니다.
+
+lgroups_tablist=그룹리스트
+
+ufilesys_editdesc=현재 할당량이없는 다른 파일 시스템에서이 사용자의 할당량을보고 편집합니다.
+ufilesys_copydesc=모든 파일 시스템에서이 사용자에 대한 할당량 제한을 일부 또는 모든 다른 사용자에게 복사하십시오.
+ufilesys_enone=입력 한 사용자 이름이 없습니다
+
+lusers_tablist=사용자 목록
+lusers_tabdefault=기본 할당량
+lusers_tabemail=이메일 알림
+lusers_cc=또한 이메일을 보내
+lusers_nocc=아무도
+
+log_support=$1 에 대한 할당량 지원 활성화
+
+email_ecc=Cc : 주소가 없거나 잘못되었습니다

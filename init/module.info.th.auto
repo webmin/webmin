@@ -1,0 +1,3 @@
+desc_th=Bootup และ Shutdown
+name_th=ตัวจัดการการเริ่มระบบ
+longdesc_th=สคริปต์การตั้งค่าที่จะรันในเวลาบูตจาก /etc/init.d หรือ /etc/rc.local.

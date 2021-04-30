@@ -1,0 +1,20 @@
+edit_mins=minutter
+edit_hours=timer
+edit_days=Dage
+edit_months=måneder
+edit_weekdays=Hverdage
+edit_all=Alle
+edit_selected=Valgte ..
+edit_run=Kør nu
+edit_clone=Klon Job
+edit_return=cron job
+edit_special1=Enkel tidsplan ..
+edit_special0=Tider og datoer valgt nedenfor ..
+edit_special_hourly=Hver time
+edit_special_daily=Dagligt (ved midnat)
+edit_special_weekly=Ugentlig (søndag)
+edit_special_monthly=Månedligt (den 1.)
+edit_special_yearly=Årligt (den 1. januar)
+
+log_success=Kørte <tt>$2</tt> i <tt>$1</tt>
+log_failure=Kunne ikke køre <tt>$2</tt> i <tt>$1</tt> : $3 

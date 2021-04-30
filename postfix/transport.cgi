@@ -9,6 +9,7 @@
 
 
 require './postfix-lib.pl';
+&ReadParse();
 
 $access{'transport'} || &error($text{'transport_ecannot'});
 &ui_print_header(undef, $text{'transport_title'}, "", "transport");

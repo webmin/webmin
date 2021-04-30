@@ -1,4 +1,3 @@
-risk=low medium high
 name=Apache
 category=servers
 os_support=solaris *-linux aix hpux freebsd osf1 irix unixware openserver macos openbsd netbsd windows 

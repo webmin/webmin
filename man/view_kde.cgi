@@ -23,7 +23,7 @@ else {
 	&ui_print_header(undef, $text{'kde_title'}, "");
 
 	($dir = $in{'file'}) =~ s/\/[^\/]+$//;
-	open(FILE, $in{'file'});
+	open(FILE, "<$in{'file'}");
 	while($line = <FILE>) {
 		$line =~ s/href="([^"]+)"/href="view_kde.cgi?file=$dir\/$1"/ig;
 		$line =~ s/href='([^']+)'/href='view_kde.cgi?file=$dir\/$1'/ig;

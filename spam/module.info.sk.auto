@@ -1,0 +1,3 @@
+desc_sk=Filter spamu SpassAssassin
+longdesc_sk=Nastavte a nakonfigurujte program SpamAssassin tak, aby filtroval e-maily prijaté vaším systémom.
+name_sk=SpamAssassin

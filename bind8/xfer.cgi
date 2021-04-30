@@ -24,7 +24,7 @@ my $src = &find("transfer-source", $options->{'members'});
 my $masters = &find("masters", $zconf);
 my @ips;
 foreach my $av (@{$masters->{'members'}}) {
-	push(@ips, join(" ", @{$av->{'values'}}));
+	push(@ips, join(" ", $av->{'name'}, @{$av->{'values'}}));
 	}
 print &text('xfer_doing', join(" ", @ips)),"<br>\n";
 my $temp = &transname();

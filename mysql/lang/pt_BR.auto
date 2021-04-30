@@ -1,0 +1,123 @@
+index_eshow=O programa de status do MySQL $1 não foi encontrado no seu sistema. Talvez o MySQL não esteja instalado ou a sua <a href='$2'>configuração do módulo</a> esteja incorreta.
+index_estart=O script de inicialização do MySQL $1 não foi encontrado no seu sistema. Talvez o MySQL não esteja instalado ou a sua <a href='$2'>configuração do módulo</a> esteja incorreta.
+index_version2=$3 versão $1 em $2 
+index_ecnf=O arquivo de configuração do MySQL $1 não foi encontrado no seu sistema. Use a página de configuração do módulo <a href='$2'></a> para definir o caminho correto.
+index_nodbs3=Nenhum banco de dados MySQL corresponde à sua pesquisa.
+index_mysqlstatus=Script de inicialização do MySQL
+
+dbase_empty=Banco de dados vazio
+dbase_name=Nome
+dbase_type=Tipo
+dbase_typetable=Tabela 1)
+dbase_typeindex=Índice
+dbase_typeview=Visão
+
+ddrop_rusure2=Tem certeza de que deseja esvaziar o banco de dados $1 ? $2 tabelas contendo $3 linhas de dados serão excluídas.
+ddrop_empty2=Excluir todas as tabelas
+
+view_refresh=Atualizar
+view_searchheadnot=Resultados da pesquisa para não $1 no campo $2 ..
+view_go=Ir
+view_sqlrun=Resultados gerados pela consulta SQL : $1 
+
+user_vwarning=AVISO: Esse usuário do MySQL é o logon de administração do domínio $1 do Virtualmin. Alterar as configurações aqui pode causar erros no Virtualmin.
+user_locked=Bloqueado
+user_priv_select=Selecionar dados da tabela
+user_priv_insert=Inserir dados da tabela
+user_priv_update=Atualizar dados da tabela
+user_priv_delete=Excluir dados da tabela
+user_priv_create=Criar tabelas
+user_priv_drop=Largar tabelas
+user_priv_reload=Recarregar doações
+user_priv_shutdown=Banco de dados de desligamento
+user_priv_process=Gerenciar processos
+user_priv_file=Operações de arquivo
+user_priv_grant=Conceder privilégios
+user_priv_references=Operações de referência
+user_priv_index=Gerenciar índices
+user_priv_alter=Alterar tabelas
+user_priv_show_db=Mostrar bancos de dados
+user_priv_super=Superusuário
+user_priv_create_tmp_table=Criar tabelas temporárias
+user_priv_lock=Bloquear tabelas
+user_priv_lock_tables=Bloquear tabelas
+user_priv_execute=Executar
+user_priv_repl_slave=Replicação escrava
+user_priv_repl_client=Replicação do cliente
+user_priv_create_view=Criar vista
+user_priv_show_view=Mostrar visualização
+user_priv_create_routine=Criar Rotina
+user_priv_alter_routine=Alterar rotina
+user_priv_create_user=Criar usuário
+user_priv_event=Criar Evento
+user_priv_trigger=Criar gatilho
+user_priv_create_tablespace=Criar espaço de tabela
+user_eslash=O MySQL não suporta uma senha contendo uma barra invertida
+user_cipher=Cifra SSL
+user_max_user_connections=Número máximo de logins simultâneos
+user_max_connections=Número máximo de conexões por hora
+user_max_updates=Máximo de atualizações por hora
+user_max_questions=Número máximo de consultas por hora
+user_maxunlimited=Ilimitado
+user_maxatmost=No máximo
+user_emax_user_connections=O número máximo de logins simultâneos deve ser um número
+user_emax_connections=O número máximo de conexões por hora deve ser um número
+user_emax_updates=O número máximo de atualizações por hora deve ser um número
+user_emax_questions=O número máximo de consultas por hora deve ser um número
+
+hosts_return=permissões de host
+
+exec_cs=Conjunto de caracteres para dados
+
+log_manual=Arquivo de configuração editado manualmente
+
+backup_prefix=Prefixo do nome do arquivo
+backup_eprefix=O prefixo do nome do arquivo não pode conter /
+backup_noprefix=Nenhum
+backup_download=Download no navegador
+backup_path=Caminho no servidor
+backup_quick=Despejar linhas uma de cada vez?
+backup_eisdir=O destino de backup $1 é um diretório
+backup_email=Enviar email de status de backup para
+backup_notify=Enviar email para
+backup_notify0=Todos os backups
+backup_notify1=Somente em caso de falha
+backup_notify2=Somente com sucesso
+backup_allsubject_failed=O backup de $2 bancos de dados MySQL teve alguns erros em $3 
+backup_allsubject_ok=O backup de $2 bancos de dados MySQL foi bem-sucedido em $3 
+backup_subject_failed=O backup do banco de dados MySQL $1 teve alguns erros em $3 
+backup_subject_ok=O backup do banco de dados MySQL $1 foi bem-sucedido em $3 
+backup_body=Fazendo backup de $2 bancos de dados MySQL em $1 ..
+backup_bodydoing=Fazendo backup de $1 a $2 ..
+backup_bodyfailed=.. falha no backup : $1 
+backup_bodyok=.. backup de $1 criado OK
+backup_bodytotal=Tamanho total do backup : $1 
+backup_bodyspace=Tamanho do sistema de arquivos: $1 Espaço livre : $2 
+backup_bodyall=todos
+backup_edownloadall=Somente um backup de banco de dados único pode ser baixado
+backup_edownloadsave=O modo de download não pode ser usado para backups agendados
+
+cnf_key_buffer_size=Tamanho do buffer da chave
+cnf_equery_cache_size=Tamanho de cache de consulta inválido
+cnf_table_open_cache=Tabelas para armazenar em cache
+cnf_sort_buffer_size=Classificar tamanho do buffer
+cnf_ekey_buffer_size=Tamanho do buffer da chave ausente ou inválido
+cnf_esort_buffer_size=Tamanho do buffer de classificação ausente ou inválido
+cnf_ilt=Tempo limite de bloqueio do InnoDB (em segundos)
+cnf_eilt=O tempo limite do bloqueio do InnoDB deve ser um número inteiro
+
+manual_title=Editar arquivos de configuração
+manual_file=Edite o arquivo de configuração:
+manual_ok=Está bem
+manual_efile=Arquivo de configuração inválido!
+manual_err=Falha ao salvar o arquivo de configuração
+
+syslog_desc2=Mensagem de erro do MySQL
+
+mysqlpass_err=Modo de segurança MySQL
+mysqlpass_esafecmd=O comando $1 necessário para iniciar o MySQL com autenticação desactivada não foi encontrado
+mysqlpass_eshutdown=O encerramento falhou : $1 
+mysqlpass_esafe=A inicialização em modo de segurança falhou : $1 
+mysqlpass_estartup=A inicialização falhou : $1 
+mysqlpass_echange=A alteração da senha falhou : $1 
+mysqlpass_echange_forcepass=Forçar a substituição da senha fornecida, se perdida ou esquecida

@@ -1,0 +1,3 @@
+desc_eu=SSL tunelak
+longdesc_eu=Konfiguratu SSL tunelak POP3 eta IMAP bezalako zerbitzuak enkriptatzeko, inetdetik exekutatutako stunnel erabiliz.
+name_eu=stunnel

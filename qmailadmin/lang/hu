@@ -403,4 +403,3 @@ match_!headers=Headers don't match
 delq_titles=Deleting Messages
 delq_rusure=Are you sure you want to delete the $1 selected queued messages?
 delq_confirm=Delete Messages
-__norefs=1

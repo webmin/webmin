@@ -1,0 +1,13 @@
+index_boot=¿Sincronizar cuando se inicia Webmin?
+index_ehwclock=$1 falló : $2 
+index_tabtime=Fijar tiempo
+index_tabzone=Cambiar zona horaria
+index_tabsync=Hora del servidor de sincronización
+index_desctime=Este formulario es para cambiar la hora actual del sistema, que es utilizada por todos los procesos en ejecución. En los sistemas operativos que tienen un reloj de hardware separado, también se puede usar para configurarlo.
+index_desczone=Este formulario le permite establecer la zona horaria predeterminada del sistema, que se utiliza para convertir la hora del sistema a un formato y desplazamiento legibles por el ser humano.
+index_descsync=Este formulario es para configurar el sistema para sincronizar automáticamente la hora con un servidor remoto. La sincronización se realizará mediante el protocolo Unix <tt>time</tt> o NTP, según los comandos que estén instalados y el soporte del sistema remoto.
+
+minute=Minuto
+second=Segundo
+
+error_etimeserver=No hay servidores de tiempo para sincronizar con los ingresados

@@ -1,0 +1,46 @@
+index_title=Program Jenis MIME
+index_none=Tiada program pengendali jenis MIME yang telah ditetapkan.
+index_add=Tambah program jenis MIME baharu.
+index_type=Jenis MIME
+index_program=Program pengendali
+index_cmt=Penerangan
+index_delete=Padam Dipilih
+index_disable=Lumpuhkan Terpilih
+index_enable=Dayakan Terpilih
+index_enabled=Dihidupkan?
+index_return=senarai program
+
+edit_title1=Buat Program Jenis MIME
+edit_title2=Edit Program Jenis MIME
+edit_header=Butiran program pengendali jenis MIME
+edit_type=Jenis MIME
+edit_enabled=Dihidupkan?
+edit_program=Program pengendali
+edit_cmt=Penerangan
+edit_egone=Program tidak lagi wujud!
+edit_test=Arahan ujian
+edit_none=Tiada (sentiasa menggunakan program)
+edit_term=Paparkan output dalam terminal?
+edit_copious=Menghasilkan banyak output?
+edit_desc=Penerangan jenis MIME
+
+save_err=Gagal menyimpan program jenis MIME
+save_etype=Jenis MIME yang hilang atau tidak sah
+save_eprogram=Program pengendali yang tiada
+save_eclash=Program diaktifkan untuk jenis MIME yang dimasukkan sudah wujud
+save_etest=Perintah ujian hilang atau tidak sah
+save_edesc=Penerangan jenis MIME tidak sah
+
+delete_err=Gagal memadamkan program jenis MIME
+disable_err=Gagal untuk melumpuhkan program jenis MIME
+disable_eclash=Program jenis MIME yang dilumpuhkan untuk $1 sudah wujud
+enable_err=Gagal membolehkan program jenis MIME
+enable_eclash=Program jenis MIME yang dibolehkan untuk $1 sudah wujud
+delete_enone=Tiada yang dipilih
+
+log_delete_mailcap=Padam program jenis MIME untuk $1 
+log_create_mailcap=Program jenis MIME yang dibuat untuk $1 
+log_modify_mailcap=Program jenis MIME diubah suai untuk $1 
+log_delete_mailcaps=Dipadam $1 jenis program MIME
+log_disable_mailcaps=Disabled $1 jenis program MIME
+log_enable_mailcaps=Diaktifkan $1 jenis program MIME

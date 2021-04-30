@@ -1,0 +1,120 @@
+index_title=Máy chủ IM Jabber
+index_econfig=Tệp cấu hình Jabber $1 không tồn tại. Jabber chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+index_edir=Thư mục cơ sở Jabber $1 không tồn tại. Jabber chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+index_emodules=Các mô-đun Perl $1 và $2 được Webmin yêu cầu để xử lý cấu hình XML của Jabber không được cài đặt. <a href='$3'>Nhấp vào đây</a> để cài đặt chúng trực tiếp từ CPAN.
+index_emodule=Mô-đun Perl $1 được Webmin yêu cầu để xử lý cấu hình XML của Jabber chưa được cài đặt. <a href='$2'>Nhấp vào đây</a> để cài đặt trực tiếp từ CPAN.
+index_expat=Đảm bảo rằng bạn đã cài đặt thư viện Expat C và các tiêu đề trước khi thử cài đặt các mô-đun Perl, vì chúng phụ thuộc vào nó và sẽ thất bại nếu không có sẵn.
+index_eparse=Mô-đun $1 perl không thể phân tích tệp cấu hình Jabber của bạn : $2 
+index_ejabberd=Không tìm thấy chương trình máy chủ Jabber $1 trên hệ thống của bạn. Jabber chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+index_eversion=Webmin chỉ hỗ trợ phiên bản Jabber $2, nhưng lệnh $3 đã báo cáo thông tin phiên bản sau : $1 
+index_eversion2=Webmin chỉ hỗ trợ các phiên bản Jabber dưới $2, nhưng lệnh $3 đã báo cáo thông tin phiên bản sau : $1 
+index_start=Khởi động máy chủ Jabber
+index_startmsg=Nhấp vào nút này để khởi động máy chủ Jabber trên hệ thống của bạn. Cho đến khi nó được bắt đầu, không có ứng dụng nhắn tin tức thời nào có thể sử dụng nó.
+index_stop=Dừng máy chủ Jabber
+index_stopmsg=Nhấp vào nút này để dừng máy chủ Jabber đang chạy trên hệ thống của bạn. Không có khách hàng nhắn tin tức thì sẽ có thể sử dụng nó khi nó bị dừng.
+index_restart=Áp dụng các thay đổi
+index_restartmsg=Nhấp vào nút này để áp dụng cấu hình hiện tại bằng cách dừng và sau đó khởi động lại máy chủ Jabber.
+index_comments=Cảnh báo - tệp cấu hình Jabber của bạn $1 chứa các nhận xét, sẽ bị xóa nếu có bất kỳ thay đổi cấu hình nào được thực hiện bằng mô-đun này.
+index_return=Thực đơn Jabber
+index_version=Phiên bản Jabber $1 
+
+general_title=Tùy chọn chung
+general_header=Tùy chọn máy chủ Jabber toàn cầu
+general_host=Tên máy chủ của máy chủ của bạn
+general_elog=Tệp nhật ký lỗi
+general_elogfmt=Định dạng nhật ký lỗi
+general_rlog=Truy cập tệp nhật ký
+general_rlogfmt=Định dạng nhật ký truy cập
+general_pidfile=Quy trình tập tin ID
+general_err=Không thể lưu các tùy chọn chung
+general_ehost=Tên máy chủ bị thiếu hoặc không hợp lệ
+general_eelog=Tệp nhật ký lỗi bị thiếu hoặc không hợp lệ
+general_eelogfmt=Thiếu định dạng nhật ký lỗi
+general_erlog=Tệp nhật ký giao thông bị thiếu hoặc không hợp lệ
+general_erlogfmt=Thiếu định dạng nhật ký giao thông
+general_epidfile=Tập tin ID quá trình bị thiếu hoặc không hợp lệ
+
+messages_title=Tin nhắn
+messages_header=Tin nhắn máy chủ Jabber cho khách hàng
+messages_wsubject=Chủ đề tin nhắn chào mừng
+messages_wbody=Chào tin nhắn
+messages_vcard=Máy chủ vCard
+messages_rinstr=Hướng dẫn đăng ký
+messages_rnotify=Thông báo cho quản trị viên khi đăng ký?
+messages_rfields=Các trường đăng ký bắt buộc
+messages_vcard2jud=Gửi vCard đến thư mục người dùng Jabber?
+messages_err=Không thể lưu tin nhắn
+messages_evcard=VCard XML không hợp lệ : $1 
+messages_etag=Máy chủ vCard XML không bắt đầu bằng &lt;vCard&gt;
+
+modules_title=Mô-đun Jabber
+modules_desc=Các mô-đun được liệt kê dưới đây được sử dụng để xử lý các tin nhắn mà trình quản lý phiên Jabber nhận được. Bạn chỉ nên thay đổi danh sách này nếu bạn biết bạn đang làm gì.
+modules_header=Mô-đun quản lý phiên máy chủ Jabber
+modules_mod=Tên mô-đun
+modules_so=Thư viện dùng chung
+modules_err=Không thể lưu mô-đun Jabber
+modules_emod='$1' không phải là tên mô-đun hợp lệ
+modules_eso=Thư viện chia sẻ '$1' không tồn tại
+
+karma_title=Kiểm soát giao thông Karma
+karma_header=Tùy chọn kiểm soát lưu lượng
+karma_rate=Xử lý kết nối quá mức
+karma_rate_def=Tàn tật
+karma_rate_sel=Chặn khách hàng trong $2 giây sau khi kết nối $1 
+karma_mode=Chế độ nghiệp chướng
+karma_none=Không giới hạn
+karma_low=Giới hạn giao thông thấp
+karma_medium=Giới hạn lưu lượng trung bình
+karma_high=Giới hạn giao thông cao
+karma_sel=Sử dụng các cài đặt được chọn bên dưới ..
+karma_heartbeat=Khoảng thời gian tính bằng giây (<tt>nhịp tim</tt>)
+karma_init=Thời gian khởi tạo (<tt>init</tt>)
+karma_max=Nghiệp tối đa (<tt>tối đa</tt>)
+karma_inc=Tăng nghiệp (<tt>inc</tt>)
+karma_dec=Giảm nghiệp (<tt>dec</tt>)
+karma_penalty=Thời hạn phạt (<tt>phạt</tt>)
+karma_restore=Thời gian khôi phục bùng nổ (<tt>khôi phục</tt>)
+karma_err=Không thể lưu các tùy chọn nghiệp chướng
+karma_eheartbeat=Thiếu thời gian thiếu hoặc không hợp lệ
+karma_einit=Thời gian khởi tạo bị thiếu hoặc không hợp lệ
+karma_emax=Thiếu nghiệp tối đa hoặc không hợp lệ
+karma_einc=Thiếu nghiệp hoặc không hợp lệ
+karma_edec=Thiếu nghiệp hoặc không hợp lệ
+karma_epenalty=Thiếu thời gian phạt hoặc không hợp lệ
+karma_erestore=Thời gian khôi phục bị thiếu hoặc không hợp lệ
+karma_epoints=Số kết nối bị thiếu hoặc không hợp lệ
+karma_etime=Thiếu hoặc không hợp lệ thời gian để chặn cho
+
+ips_title=Kiểm soát truy cập IP
+ips_header=Kiểm soát truy cập IP của máy chủ Jabber
+ips_allow=IP khách hàng được phép
+ips_all=Tất cả địa chỉ
+ips_deny=IP khách hàng bị từ chối
+ips_none=không ai
+ips_sel=Địa chỉ được liệt kê/netmasks ..
+ips_err=Không thể lưu điều khiển truy cập IP
+ips_eaddr='$1' không phải là địa chỉ IP hợp lệ hoặc địa chỉ IP/netmask
+
+file_title=Chỉnh sửa tập tin cấu hình
+file_desc=Sử dụng mẫu dưới đây để chỉnh sửa trực tiếp tệp cấu hình Jabber. Điều này chỉ nên được thực hiện nếu bạn hiểu định dạng cấu hình XML.
+file_header=Chỉnh sửa tập tin cấu hình Jabber
+file_err=Không thể lưu tập tin cấu hình
+
+admin_title=Người dùng quản trị
+admin_header=Người dùng quản trị máy chủ
+admin_read=Đọc quản trị viên truy cập
+admin_write=Viết quản trị viên truy cập
+admin_reply=Tự động gửi tin nhắn quản trị?
+admin_rsubject=Chủ đề tự động
+admin_rbody=Tin nhắn tự động
+
+filter_title=Bộ lọc người dùng
+filter_header=Quyền bộ lọc người dùng
+filter_max=Quy tắc lọc tối đa
+filter_conds=Điều kiện lọc được phép
+filter_acts=Hành động lọc được phép
+
+restart_err=Không thể áp dụng thay đổi
+stop_err=Không thể ngăn chặn Jabber
+stop_epid=Không thể tìm thấy quy trình Jabber
+start_err=Không thể khởi động Jabber

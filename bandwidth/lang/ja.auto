@@ -1,0 +1,83 @@
+index_title=帯域幅監視
+index_efiresys=サポートされているファイアウォール（IPtables、IPFW、IPFilter、Shorewall）のいずれもシステムで検出されませんでした。適切なモジュールをチェックして、構成されていることを確認します。
+index_efiresys2=構成された $1ファイアウォールシステムがシステムで見つかりませんでした。 <a href='$2'>モジュール構成</a>を調整して、正しいファイアウォールを使用します。
+index_elog=帯域幅のログに使用されるファイル $1は、実際にはシステム上のディレクトリです。別のパスを使用するには、<a href='$2'>モジュール構成</a>を調整します。
+index_edir=帯域幅データ $1を格納するディレクトリが存在しないか、ディレクトリではありません。別のパスを使用するには、<a href='$2'>モジュール構成</a>を調整します。
+index_emod=Webminモジュール $1はこのシステムにインストールされていないか、OSでサポートされていません。帯域幅監視モジュールは、それなしでは動作できません。
+index_esyslog=どちらのシステムログモジュールもこのシステムにインストールされておらず、OSによってサポートされています。帯域幅監視モジュールは、いずれかがなければ動作できません。
+index_firesys=$1ファイアウォールと $2を使用する
+index_setupcannot=ただし、設定する権限がありません！
+index_setupdesc=このモジュールでシステムのネットワーク使用状況をレポートするには、選択した外部ネットワークインターフェイスのトラフィックを監視するように設定する必要があります。
+index_setupdesc2=<b>警告-このモジュールは、選択したインターフェースで送受信されたすべてのネットワークトラフィックを記録します。これにより、高速ネットワーク接続で大量のディスク容量とCPU時間を消費します。</b>
+index_missing3=いくつかのファイアウォールルールを追加し、syslog構成エントリを作成する必要があります。
+index_missing2=いくつかのファイアウォールルールを追加する必要があります。
+index_missing1=syslog構成エントリを作成する必要があります。
+index_iface=外部ネットワークインターフェース
+index_other=その他 ..
+index_setup=今すぐセットアップ
+index_by=トラフィックを表示
+index_hour=時
+index_host=ホスト
+index_proto=プロトコル
+index_iport=内部ポート
+index_oport=外部ポート
+index_port=港
+index_for=にとって
+index_all=&lt;すべて&gt;
+index_forhour=時間 ..
+index_forhost=ホスト ..
+index_forproto=プロトコル ..
+index_foriport=内部ポート ..
+index_foroport=外部ポート
+index_search=レポートを生成する
+index_none=このモジュールによってトラフィックがまだ要約されていません。設定したばかりの場合、トラフィックが処理されるまで少なくとも1時間かかることがあります。
+index_ehour=無効な時間-yyyy-mm-dd hh：mmの形式である必要があります
+index_eport=不明なポート名
+index_eproto=プロトコルがありません
+index_ehost=ホストが見つからないか無効です
+index_from=後のトラフィック
+index_to=以前の交通について
+index_efrom=無効な開始日時
+index_eto=無効な終了日時
+index_err=レポートを生成できませんでした
+index_usage=ネットワークトラフィック<font color=＃ff0000>ダウンロード済み</font>および<font color=＃0000ff>アップロード済み</font>
+index_hhour=時
+index_hhost=ホスト
+index_hday=日
+index_hproto=プロトコル
+index_hiport=港
+index_hoport=港
+index_hport=港
+index_low=サーバーポートのみ？
+index_resolv=ホスト名を解決しますか？
+index_nomatch=選択した条件に一致するトラフィックはありません。
+index_turnoff=監視をオフにする
+index_turnoffdesc=このボタンをクリックして、ファイアウォールルール、syslog設定、および帯域幅監視に使用されるCronジョブを削除します。既存の収集データはすべてそのまま残ります。
+index_rotate=統計を更新する
+index_rotatedesc=このボタンをクリックすると、ログに記録されたすべてのネットワークトラフィックが現在の時刻まで処理され、すぐにレポートに使用できるようになります。
+index_eiptables=警告-IPtables構成にエラーがあります： $1。帯域幅監視を設定すると、すべてのファイアウォールルールがクリアされます。
+index_return=報告書
+
+log_setup=インターフェイス $1で帯域幅監視を設定します
+log_turnoff=無効な帯域幅監視
+log_rotate=更新された統計
+
+acl_setup=監視を設定および無効化できますか？
+
+turnoff_ecannot=監視を無効にすることはできません
+
+setup_ecannot=監視を有効にすることはできません
+setup_eiface=インターフェース名が欠落しているか無効です
+setup_ezone=選択したインターフェイスのショアウォールゾーンが見つかりませんでした
+
+system_firewall=IPtables
+system_ipfw=IPFW
+system_ipfilter=IPFilter
+system_shorewall=ショアウォール
+
+syslog_syslog=syslog
+syslog_syslog-ng=Syslog-NG
+
+rotate_title=統計の更新
+rotate_doing=記録されたネットワークトラフィックの処理 ..
+rotate_done=..完了。

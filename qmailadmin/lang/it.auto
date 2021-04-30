@@ -1,0 +1,184 @@
+aliases_delete=Elimina alias selezionati
+
+adelete_err=Impossibile eliminare gli alias
+adelete_enone=Nessuno selezionato
+
+routes_delete=Elimina percorsi di dominio selezionati
+
+rdelete_err=Impossibile eliminare le route di dominio
+
+virts_delete=Elimina mappature virtuali selezionate
+
+vdelete_err=Impossibile eliminare i mapping virtuali
+
+log_delete_aliases=Alias $1 eliminati
+log_delete_virts=Mapping virtuali $1 eliminati
+log_delete_routes=$1 percorsi eliminati
+log_delete_assigns=$1 utenti di posta eliminati
+log_delmail=Eliminati $1 messaggi da $2 
+log_movemail=Spostato $1 messaggi da $2 a $3 
+log_send=Posta inviata a $1 
+
+rfile_desc2=Puoi anche impostare intestazioni di posta che aggiungono o sostituiscono i valori predefiniti utilizzati nell'autoreply inserendo righe come: <br><tt> Da: foo@bar.com </tt><br> <tt>Oggetto: In vacanza</tt> <br> nella parte superiore del messaggio, separato dal corpo da un'unica riga vuota.
+rfile_replies=Tieni traccia delle risposte per evitare loop di posta?
+rfile_none=No
+rfile_file=Sì, utilizzando il file di registro
+rfile_period=Intervallo minimo tra le risposte
+rfile_default=Predefinito (1 ora)
+rfile_secs=secondi
+rfile_ereplies=File di registro di tracciamento delle risposte mancante
+rfile_eperiod=Numero di secondi mancante o non valido tra le risposte
+rfile_no_autoreply=Non inviare autoreplies a
+rfile_from=Da: indirizzo per la risposta
+rfile_auto=Automatico (basato sull'indirizzo del destinatario)
+rfile_efrom=Mancante da: indirizzo
+rfile_fromdesc=Un indirizzo Da: deve essere sempre specificato ove possibile, poiché il metodo automatico potrebbe non essere affidabile.
+
+queue_count=$1 messaggi
+queue_delete=Elimina i messaggi selezionati
+queue_all=Seleziona tutto
+queue_invert=Inverti selezione
+queue_refresh=Aggiorna coda di posta
+queue_refreshdesc=Ricarica questa pagina per mostrare lo stato corrente della coda di posta.
+
+qview_title=Messaggio in coda
+qview_desc=Dal file $1 
+qview_headers=Intestazioni di posta
+qview_attach=allegati
+
+assigns_delete=Elimina gli utenti di posta selezionati
+
+sdelete_err=Impossibile eliminare gli utenti di posta
+
+delete_ebogus=Nome file coda non valido
+
+boxes_user=Utente
+boxes_size=Dimensione della cassetta postale
+boxes_none=Nessuna posta
+boxes_return=caselle di posta
+boxes_sent=Posta inviata
+boxes_ecannot=Non ti è permesso leggere l'email
+boxes_toomany=Esistono troppi utenti sul sistema per elencare tutte le loro cassette postali.
+boxes_go=Visualizza la posta per l'utente:
+
+mail_title=Email dell'utente
+mail_from=A partire dal
+mail_date=Data
+mail_subject=Soggetto
+mail_to=Per
+mail_cc=cc
+mail_bcc=bcc
+mail_pri=Priorità
+mail_highest=Più alta
+mail_high=alto
+mail_normal=Normale
+mail_low=Basso
+mail_lowest=minore
+mail_for=In 1
+mail_for2=Per l'utente $1 
+mail_sent=Nella lista di posta inviata
+mail_size=Taglia
+mail_delete=Elimina
+mail_compose=Comporre
+mail_return=cassetta postale dell'utente
+mail_pos=Messaggi da $1 a $2 di $3 
+mail_none=Questa cassetta postale non ha messaggi
+mail_ecannot=Non ti è consentito leggere l'email di questo utente
+mail_all=Seleziona tutto
+mail_invert=Inverti selezione
+mail_search=Trova messaggi dove
+mail_body=Corpo
+mail_match=fiammiferi
+mail_ok=Ricerca
+mail_nonefrom=Nessuna
+mail_mark=Segna come:
+mail_mark0=Non letto
+mail_mark1=Leggere
+mail_mark2=Speciale
+mail_forward=Inoltrare
+mail_rfc=Dalla linea
+mail_move=Sposta in:
+mail_eexists=Il messaggio non esiste più!
+
+view_desc2=Messaggio $1 per l'utente $2 
+view_desc3=Messaggio $1 
+view_sent=Messaggio $1 nella lista di posta inviata
+view_qdesc=Messaggio in coda $1 
+view_allheaders=Visualizza tutte le intestazioni
+view_noheaders=Visualizza le intestazioni di base
+view_reply=rispondere
+view_reply2=Rispondi a tutti
+view_enew=Modifica come nuovo
+view_forward=Inoltrare
+view_delete=Elimina
+view_strip=Rimuovi allegati
+view_ecannot=Non ti è consentito leggere l'email di questo utente
+view_mark=Segna il messaggio come:
+view_mark0=Non letto
+view_mark1=Leggere
+view_mark2=Speciale
+view_return=email originale
+view_sub=Email allegata
+
+compose_title=Componi email
+reply_title=Rispondi a e-mail
+forward_title=Inoltra email
+enew_title=Modifica email
+reply_headers=Intestazioni di posta
+reply_attach=Allegati inoltrati
+reply_mailforward=Messaggi inoltrati
+reply_attach2=Allegati lato client e server
+reply_send=Inviare una mail
+reply_ecannot=Non sei autorizzato a inviare posta come questo utente
+
+send_err=Impossibile inviare la posta
+send_eto=Indirizzo mancante
+send_efrom=Indirizzo mancante
+send_title=Posta inviata
+send_ok=Posta inviata correttamente a $1 
+send_ecannot=Non sei autorizzato a inviare posta come questo utente
+send_esmtp=Comando SMTP $1 non riuscito : $2 
+send_efile=Il file allegato $1 non esiste
+send_eattach=Gli allegati non possono avere dimensioni superiori a $1 kB.
+send_eperms=L'utente $1 non può leggere $2 
+send_eperms2=Non puoi inviare il file $1 
+send_epath=L'eseguibile di Sendmail $1 non esiste.
+
+delete_title=Elimina posta
+delete_rusure=Sei sicuro di voler eliminare i messaggi $1 selezionati da $2 ? Questo potrebbe richiedere del tempo per un file di posta di grandi dimensioni. Fino al termine dell'eliminazione, non è necessario eseguire altre azioni.
+delete_rusure2=Sei sicuro di voler eliminare questo messaggio da $1 ? Questo potrebbe richiedere del tempo per un file di posta di grandi dimensioni. Fino al termine dell'eliminazione, non è necessario eseguire altre azioni.
+delete_ok=Cancella ora
+delete_ecannot=Ora sei autorizzato a eliminare la posta da questo utente
+delete_enone=Nessuna posta selezionata per l'eliminazione
+delete_emnone=Nessuna posta selezionata per contrassegnare
+delete_nobutton=Nessun pulsante selezionato
+
+search_title=risultati di ricerca
+search_ecannot=Non è consentito eseguire ricerche nell'email di questo utente
+search_ematch=Devi inserire il testo da abbinare.
+search_efield=Devi selezionare un tipo di ricerca.
+search_none=Nessun messaggio trovato.
+search_results2=$1 messaggi di posta corrispondenti a $2 ..
+search_results3=$1 messaggi di posta non corrispondenti a $2 ..
+
+match_from=Da: partite
+match_subject=Oggetto: partite
+match_to=A: partite
+match_cc=Cc: partite
+match_date=Data: partite
+match_body=Corrispondenze del corpo
+match_size=La dimensione è maggiore di
+match_headers=Le intestazioni corrispondono
+match_=-----------------
+match_!from=Da: non corrisponde
+match_!subject=Oggetto: non corrisponde
+match_!to=A: non corrisponde
+match_!cc=Cc: non corrisponde
+match_!date=Data: non corrisponde
+match_!body=Il corpo non corrisponde
+match_!size=La dimensione è inferiore a
+match_!headers=Le intestazioni non corrispondono
+
+delq_titles=Eliminazione di messaggi
+delq_rusure=Sei sicuro di voler eliminare i $1 messaggi in coda selezionati?
+delq_confirm=Elimina messaggi

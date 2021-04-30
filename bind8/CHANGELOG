@@ -152,3 +152,5 @@ Added support for editing TLSA (SSL Certificate) records.
 Added support for editing SSHFP (SSH Public Key) records.
 ---- Changes since 1.880 ----
 Before a zone is updated, BIND will be told to freeze it and thaw afterwards. This ensures that dynamic updates are preserved.
+---- Changes since 1.930 ----
+Added support for CAA records.

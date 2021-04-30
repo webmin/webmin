@@ -1,0 +1,57 @@
+index_title=Akcie NFS
+index_add=Začněte sdílet nový adresář.
+index_dir=Adresář
+index_clients=Klienti
+index_everyone=Každý
+index_delete=Smazat vybrané sdílené položky
+index_none=V tomto systému nejsou v současné době exportovány žádné adresáře.
+index_apply=Aplikuj změny
+index_applydesc=Klepnutím na toto tlačítko použijete aktuální konfiguraci sdílení souborů. Tím se zpřístupní všechny výše uvedené adresáře se zadanými možnostmi.
+index_return=seznam akcií
+
+edit_title1=Upravit podíl
+edit_title2=Vytvořit sdílení
+edit_header1=Sdílejte podrobnosti
+edit_dir=Adresář
+edit_desc=Popis
+edit_ro=Přístup pouze pro čtení
+edit_rw=Přístup pro čtení a zápis
+edit_root=Kořenový přístup
+edit_none=Žádný
+edit_all=Všichni hostitelé
+edit_listed=Uvedení hostitelé ..
+edit_header2=Možnosti sdílení
+edit_nosub=Povolit montáž subdirů?
+edit_nosuid=Povolit soubory setuid?
+edit_des=Klienti musí používat DES?
+edit_kerberos=Klienti musí používat kerbera?
+edit_anon=Anonymní uživatel
+edit_anon0=Nenastaveno
+edit_anon1=Žádný přístup
+edit_aclok=Povolit ACL?
+edit_public=Sdílet WebNFS?
+edit_index=Indexový soubor WebNFS
+
+save_err=Uložení sdílené položky se nezdařilo
+save_edirectory='$1' není platný název adresáře
+save_edirectory2=Adresář '$1' neexistuje
+save_erw=Neuvedli jste žádné hostitele, se kterými byste mohli sdílet čtení a zápis
+save_ero=Neuvedli jste žádné hostitele, se kterými chcete sdílet pouze čtení
+save_eroot=Neuvedli jste žádné hostitele, se kterými chcete sdílet root
+save_ealready=Adresář '$1' je již sdílen
+save_ehost=Hostitel '$1' neexistuje
+
+log_modify=Upravený podíl NFS $1 
+log_rename=Změněný podíl NFS $1 na $2 
+log_create=Vytvořený podíl NFS $1 
+log_delete=Smazaný podíl NFS $1 
+log_apply=Aplikované změny
+
+acl_view=Lze upravovat sdílené složky NFS?
+
+ecannot=Není dovoleno spravovat sdílené složky NFS
+
+delete_err=Sdílení se nezdařilo
+delete_enone=Nebyl vybrán žádný
+
+restart_err=Nepodařilo se použít změny

@@ -1,0 +1,22 @@
+index_title=Команди оболонки кластера
+index_cmd=Команда для запуску
+index_old=або
+index_server=Запуск на серверах
+index_run=Запустіть команду зараз
+index_return=індекс модуля
+index_this=цей сервер
+index_all=&lt;Усі хости&gt;
+index_group=Члени $1 
+index_clear=Чиста історія
+index_edit=Редагувати попередній
+
+run_title=Виконати команду
+run_err=Не вдалося запустити команду
+run_ecmd=Не введено жодної команди
+run_failed=Не вдалося запустити $1 : $2 
+run_success=Вихід від $1.
+run_enone=На вибраних серверах немає
+
+log_clear=Очищена історія команд
+log_run=Дістав $1 на серверах $2 
+log_run_l=Ділявся $1 на $2 

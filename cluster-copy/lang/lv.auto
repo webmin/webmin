@@ -1,0 +1,67 @@
+index_title=Kopu kopēšanas faili
+index_add=Izveidojiet jaunu plānoto faila kopiju.
+index_none=Nav definētas plānotās faila kopijas.
+index_servers=Kopēt serveros
+index_return=klasteru kopiju saraksts
+index_more=Vēl $1 ..
+index_run=Palaist tagad ..
+index_files=Kopējamie faili
+index_sched=Ieplāno?
+index_when=Jā, $1 
+index_act=Darbība
+index_exec=Izpildīt
+index_delete=Dzēst atlasītos eksemplārus
+
+edit_title=Rediģēt kopu kopiju
+create_title=Izveidot kopu kopiju
+edit_header=Informācija par kopas kopiju
+edit_files=Kopējamie faili
+edit_dest=Galamērķa katalogs
+edit_cmd=Komanda palaist pēc kopēšanas
+edit_before=Komandu palaist pirms kopēšanas
+edit_remote=Attālos serveros
+edit_dmode0=Kopējiet visus ceļus mapē
+edit_dmode1=Kopēt šajā direktorijā
+edit_servers=Kopēt serveros
+edit_group=$1 dalībnieki
+edit_this=šis serveris
+edit_all=&lt;Visi saimnieki&gt;
+edit_sched=Kopēt pēc grafika?
+edit_schedyes=Jā, reizēm, kas atlasītas zemāk.
+edit_run=Kopēt tūlīt
+edit_return=kopas kopija
+edit_email=E-pasta izvade uz
+edit_none=Neviens
+
+save_err=Neizdevās saglabāt kopas cron darbu
+save_efiles=Nav ievadīts neviens kopējamais fails
+save_edest=Trūkst mērķa direktorija
+save_eservers=Nav serveru, no kuriem iekopēt
+save_efile=Fails kopēšanai “$1” nav absolūts ceļš
+save_eemail=Trūkst vai nav derīga e-pasta adrese
+
+exec_title=Failu kopēšana
+exec_files1=$1 failu kopēšana uz atlasītajiem serveriem $2.
+exec_files2=Notiek $1 kopēšana atlasītajos serveros $2.
+exec_under=(direktorijā $1)
+exec_failed=Neizdevās nokopēt uz $1 : $2 
+exec_success=Kopēja šādus failus uz $1  :
+exec_made=Tika izveidoti šādi direktoriji $1  :
+exec_nohosts=Nav neviena saimnieka, kurš ir izvēlēts darboties, vai atlasītajās grupās nav neviena izmantojama resursdatora.
+exec_nothing=Neviens fails netika veiksmīgi nokopēts uz $1.
+exec_not=Neizdevās nokopēt šādus failus uz $1  :
+exec_cmd=Komandas pēckopija izvade $1  :
+exec_before=Komandas pirms kopēšanas izvade $1  :
+exec_on=Neizdevās palaist $1 : $2 
+
+log_create=Izveidota kopija $1 līdz $2 serveriem
+log_modify=Modificēta kopija $1 līdz $2 serveriem
+log_delete=Izdzēsta kopija $1 līdz $2 serveriem
+log_exec=Kopēti serveri $1 uz $2 
+log_deletes=Izdzēsti $1 eksemplāri
+
+email_subject_succeeded=$1 kopijas kopija izdevās
+email_subject_failed=$1 kopas kopija neizdevās
+
+delete_err=Neizdevās izdzēst kopijas
+delete_enone=Nav atlasīts

@@ -1,0 +1,54 @@
+index_return=사용자 목록
+index_system6=메일 서버 : Exim
+index_system5=메일 서버 : Qmail+VPopMail
+index_system4=메일 서버 : Qmail+LDAP
+index_equals=같다
+
+mail_rfc=라인에서
+mail_whitemove=발신자와받은 편지함 허용
+mail_fromfilter=발신자별로 필터 만들기
+mail_tofilter=수신자별로 필터 만들기
+mail_subfilter=주제별로 필터 만들기
+
+mail_samecrypt=&lt;대상 주소의 키&gt;
+mail_of=의
+mail_specialsync=특별 동기화
+
+view_nobody=이 메시지에는 본문 내용이 없습니다.
+view_aactions=행위
+view_sub2=$1에서 첨부 한 이메일
+
+view_whitemove=발신자와받은 편지함 허용
+view_hammove=햄 및받은 편지함보고
+
+reply_dsn=읽기 상태 알림을 요청 하시겠습니까?
+reply_del=배송 상태 알림을 요청 하시겠습니까?
+reply_aboot=주소록에 수신자를 추가 하시겠습니까?
+reply_tabfrom=에서
+reply_tabto=에
+reply_tabreplyto=답장하다
+reply_tabcc=참조
+reply_tabbcc=숨은 참조
+reply_tabsigning=서명
+reply_taboptions=옵션
+reply_addattach=첨부 파일 입력란을 추가합니다.
+reply_addssattach=서버 측 첨부 파일 필드를 추가하십시오.
+reply_html0=텍스트 작성
+reply_html1=HTML 작성
+
+search_ewhat=입력 된 행과 일치하는 텍스트가 없습니다 $1
+search_msg6=$2 필드에서 $1에 대한 검색 결과
+search_attach=첨부 파일이 있어야합니까?
+
+sform_andmode=기준 모드
+
+left_mail=우편
+left_search=검색:
+left_folders=폴더 관리
+left_addresses=주소록
+left_prefs=메일 환경 설정
+left_forward=이메일 전달
+left_autoreply=자동 회신
+left_filter=이메일 필터
+left_pass=비밀번호 변경
+left_sig=서명 편집

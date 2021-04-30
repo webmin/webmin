@@ -1,0 +1,46 @@
+index_title=MIME-tyyppiset ohjelmat
+index_none=MIME-tyyppisiä käsittelyohjelmia ei ole vielä määritelty.
+index_add=Lisää uusi MIME-tyyppinen ohjelma.
+index_type=MIME-tyyppi
+index_program=Ohjaajaohjelma
+index_cmt=Kuvaus
+index_delete=Poista valitut
+index_disable=Poista valitut käytöstä
+index_enable=Ota valitut käyttöön
+index_enabled=Käytössä?
+index_return=luettelo ohjelmista
+
+edit_title1=Luo MIME-tyyppiohjelma
+edit_title2=Muokkaa MIME-tyyppiohjelmaa
+edit_header=MIME-tyyppinen käsittelyohjelman yksityiskohdat
+edit_type=MIME-tyyppi
+edit_enabled=Käytössä?
+edit_program=Ohjaajaohjelma
+edit_cmt=Kuvaus
+edit_egone=Ohjelmaa ei enää ole!
+edit_test=Testikomento
+edit_none=Ei mitään (käytä aina ohjelmaa)
+edit_term=Näytön lähtö terminaalissa?
+edit_copious=Tuottaako paljon tulosta?
+edit_desc=MIME-tyyppikuvaus
+
+save_err=MIME-tyyppisen ohjelman tallentaminen epäonnistui
+save_etype=Puuttuva tai virheellinen MIME-tyyppi
+save_eprogram=Puuttuva ohjaajaohjelma
+save_eclash=Annetulle MIME-tyypille käytössä oleva ohjelma on jo olemassa
+save_etest=Puuttuva tai virheellinen testikomento
+save_edesc=Virheellinen MIME-tyyppikuvaus
+
+delete_err=MIME-tyyppisten ohjelmien poistaminen epäonnistui
+disable_err=MIME-tyyppisten ohjelmien poistaminen epäonnistui
+disable_eclash=Poistettu käytöstä MIME-tyyppinen ohjelma $1 : lle
+enable_err=MIME-tyyppisten ohjelmien käyttöönotto epäonnistui
+enable_eclash=Aktivoitu MIME-tyyppinen ohjelma $1 : lle on jo olemassa
+delete_enone=Mitään ei ole valittu
+
+log_delete_mailcap=Poista MIME-tyyppinen ohjelma $1 : lle
+log_create_mailcap=Luotu MIME-tyyppinen ohjelma $1 : lle
+log_modify_mailcap=MIME-tyyppinen ohjelma $1 : lle
+log_delete_mailcaps=Poistettu $1 MIME-tyyppiset ohjelmat
+log_disable_mailcaps=Pois käytöstä $1 MIME-tyyppiset ohjelmat
+log_enable_mailcaps=Aktivoitu $1 MIME-tyyppiset ohjelmat

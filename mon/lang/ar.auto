@@ -1,0 +1,200 @@
+index_title=مراقب خدمة MON
+index_return=مؤشر MON
+index_edir=دليل MON $1 غير موجود. ربما لم يتم تثبيت MON ، أو أن <a href='$2'>تهيئة الوحدة النمطية</a> غير صحيحة.
+mon_global_title=تكوين المتغيرات العالمية
+mon_conf_title=التكوين الأساسي
+mon_status_title=حالة استنفار
+hostgroups_title=تكوين MON- مجموعات
+services_title=تعريفات خدمة Watchgroups
+
+head_hostgroups=Hostgroups والخدمات
+head_groups=اسم Hostgroup
+head_members=أعضاء Hostgroup
+head_services=خدمات Hostgroup للمشاهدة
+head_service=خدمة لمشاهدة
+head_param=معلمات الخدمة
+head_watch=شاهد المجموعة؟
+head_monauth=توفير مصادقة MONCMD
+head_usr=اسم المستخدم
+head_pass=كلمه السر
+head_mand=(المعلمات في "اللون الأحمر" إلزامية)
+
+err_nomon=لم يتم تثبيت الحزمة "mon" على النظام
+err_nomonconf=لم يتم العثور على ملف تكوين MON $1 على نظامك. ربما لم يتم تثبيت MON ، أو أن <a href='$2'>تهيئة الوحدة النمطية</a> غير صحيحة.
+err_nowatch=لم يتم تحديد مجموعات مراقبة. حدد مجموعة مراقبة واحدة على الأقل للمتابعة.
+err_noserv=لم يتم تحديد خدمات لمجموعة المراقبة
+err_nomemb=لم يتم تحديد مضيفي/أعضاء لمجموعة المراقبة
+err_monrun=MON لا يعمل على الجهاز المضيف. يرجى بدء MON.
+stop_err=فشل إيقاف MON
+stop_epid=لم يعد يعمل
+start_err=فشل بدء MON
+restart_err=فشل إعادة تشغيل MON
+restart_epid=فشل الحصول على PID
+
+other=أخرى (فصل الفضاء)
+next=التالى
+mon_stat=حالة MON
+mon_off=لم تبدأ خدمات MON
+mon_start=بدء تشغيل خدمات MON
+mon_stop=أوقف خدمات MON
+mon_restart=إعادة تشغيل خدمات MON
+mon_startdesc=انقر فوق هذا الزر لبدء خادم MON. حتى يتم بدء تشغيله ، لن يتم إجراء مراقبة مكونة.
+mon_stopdesc=انقر فوق هذا الزر لإيقاف خادم MON. عند التوقف ، ستتوقف المراقبة المكونة.
+mon_restartdesc=انقر فوق هذا الزر لتطبيق تكوين MON الحالي عن طريق إعادة تشغيل عملية الخادم.
+line=(واحد في كل سطر)
+save_apply=حفظ وتطبيق
+watch=مجموعة المراقبة
+members=أفراد
+def_perargs=يوم {Sat-Sun}
+
+def_desc=وصف
+def_inter=فترة
+def_mon=مراقب
+def_dep=dpend
+def_per=فترة
+def_alert=إنذار
+def_alertevr=تنبيه
+def_alertaft=تنبيه
+def_alertstr=بدء التشغيل
+def_allow=allow_empty_group
+def_traptime=مهلة
+def_trapdur=trapduration
+def_rand=راندسكيو
+def_exclhost=استبعاد_المضيفون
+def_exclper=استبعاد_الفترة
+
+groups_title=المجموعات المضيفة
+groups_group=أسم المجموعة
+groups_members=يستضيف الأعضاء
+
+watches_title=قوائم المراقبة
+watches_group=مجموعة مشاهدة
+watches_services=الخدمات التي تتم مراقبتها
+watches_sadd=إضافة خدمة ..
+watches_add=إضافة قائمة مراقبة للمجموعة :
+watches_return=قوائم المراقبة
+watches_none=لم يتم تحديد قوائم مراقبة حتى الان.
+
+global_title=الخيارات العالمية
+global_header=خيارات تكوين MON العالمية
+global_maxprocs=عمليات MON القصوى
+global_histlength=طول سجل الأحداث
+global_alertdir=دليل برامج التنبيه
+global_mondir=دليل برامج المراقبة
+global_authtype=نوع المصادقة
+global_authtype_=إفتراضي
+global_authtype_getpwnam=مكالمات النظام
+global_authtype_userfile=ملف مستخدمي MON
+global_authtype_shadow=ملف الظل
+global_userfile=ملف مستخدم MON
+global_emaxprocs=عدد عمليات MON مفقود أو غير صالح
+global_ehistlength=طول سجل الأحداث مفقود أو غير صالح
+global_ealertdir=دليل برامج التنبيه مفقود أو غير صالح
+global_emondir=دليل برامج المراقبة مفقود أو غير صالح
+global_euserfile=ملف مستخدمي MON مفقود
+
+watch_title=تحرير قائمة المراقبة
+watch_header=تفاصيل مشاهدة المجموعة المضيفة
+watch_group=المجموعة المضيفة للمشاهدة
+watch_services=الخدمات التي تتم مراقبتها
+watch_service=اسم الخدمة
+watch_monitor=مراقب للاستخدام
+watch_interval=تحقق كل
+watch_periods=فترات المراقبة
+
+service_title=أضف خدمة
+service_title2=تحرير الخدمة
+service_header=تفاصيل الخدمة التي تمت مشاهدتها
+service_name=اسم الخدمة
+service_interval=تحقق كل
+service_desc=وصف
+service_units_s=ثواني
+service_units_m=الدقائق
+service_units_h=ساعات
+service_units_d=أيام
+service_units_w=أسابيع
+service_monitor=باستخدام الشاشة
+service_mon1=شاشة قياسية
+service_mon0=شاشة أخرى ..
+service_args=رصد المعلمات
+service_period=فترة المراقبة$1
+service_days=أيام للتحقق
+service_hours=ساعات للتحقق
+service_all=الكل
+service_pstr=مواصفات الفترة
+service_new=فترة مراقبة جديدة
+service_alerts=تنبيهات الفترة
+service_alert=إنذار
+service_atype=تشغيل عند
+service_atype_alert=تنخفض الخدمة
+service_atype_upalert=تأتي الخدمات
+service_atype_startupalert=يبدأ MON في التشغيل
+service_aargs=معلمات إضافية
+service_every=إرسال تنبيه
+service_every_def=في كل مرة يتم تشغيل جهاز العرض
+service_every_time=كل
+service_num=أقصى تنبيهات للإرسال
+service_unlimited=غير محدود
+service_after=الفشل قبل التنبيه
+service_immediate=فورا
+service_after_num=بعد فشل$1
+service_aftertime=ضمن فترة زمنية
+service_newperiod=أضف فترة جديدة
+service_delperiod=حذف هذه الفترة
+service_err=فشل في حفظ الخدمة
+service_ename=اسم خدمة مفقود أو غير صالح
+service_einterval=الفاصل الزمني للتحقق مفقود أو غير صالح
+service_eother=شاشة مفقودة أو غير صالحة
+service_ehour=ساعة مفقودة أو غير صالحة للفترة$1 (يجب أن تكون مثل 9 ص أو 5 م)
+service_eperiod=لم يتم تحديد أيام أو ساعات للفترة$1
+service_eevery=فاصل تنبيه خدمة مفقود أو غير صالح
+service_eafter=عدد الفشل مفقود أو غير صالح قبل التنبيه
+service_enum=تنبيهات قصوى مفقودة أو غير صالحة للإرسال
+service_epstr=مواصفات الفترة المفقودة
+service_known0=سلسلة <tt>Time::Period</tt>
+service_known1=أيام وساعات محددة
+service_known2=الفترة المحددة
+
+status_title=حالة MON
+status_ecgi=برنامج CGI لحالة MON $1 غير موجود. ربما لم يتم تثبيته أو أن <a href='$2'>تهيئة الوحدة النمطية</a> غير صحيحة.
+status_eperl=يتطلب برنامج CGI لحالة MON وحدة$1 perl. <a href='$2'>انقر هنا</a> لتثبيته مباشرة من CPAN.
+status_esame=تم تعيين برنامج CGI لحالة MON $1 على البرنامج النصي <tt>mon.cgi</tt> في وحدة Webmin هذه ، وليس برنامج CGI الذي يأتي مع MON. اضبط <a href='$2'>تكوين الوحدة النمطية</a> لاستخدام المسار الصحيح.
+
+users_title=مستخدمو MON
+users_etype=لا يمكن تعديل قائمة مستخدمي MON لأن MON غير مهيأ حاليًا لاستخدامها للمصادقة في صفحة <a href='$1'>الخيارات العالمية</a>.
+users_header=مستخدمو MON المسموح بهم في$1
+users_nousers=لم يتم تعريف مستخدمي MON في$1.
+users_add=قم بإنشاء مستخدم جديد.
+users_return=قائمة مستخدمي MON
+
+user_create=إنشاء مستخدم MON
+user_edit=تحرير مستخدم MON
+user_header=تفاصيل مستخدم MON
+user_user=اسم المستخدم
+user_pass=كلمه السر
+user_leave=اتركه دون تغيير
+user_err=فشل في حفظ المستخدم
+user_euser=اسم المستخدم مفقود أو غير صالح
+user_esame=يوجد مستخدم بنفس الاسم بالفعل
+
+auth_title=أوامر العميل
+auth_desc=تسمح لك هذه الصفحة بالتحكم في أوامر MON التي يمكن تشغيلها بواسطة المستخدمين عند استخدام برامج العميل.
+auth_cmd=أمر MON
+auth_users=المستخدمون المسموح لهم
+auth_none=لا أحد
+auth_all=الجميع
+auth_sel=فقط للمستخدمين
+auth_err=فشل في حفظ أوامر العميل
+auth_eusers=لم يدخل أي مستخدم للأمر$1
+
+periods_title=فترات محددة
+periods_period=اسم الفترة
+periods_times=الأيام والأوقات
+periods_alldays=كل الأيام
+periods_allhours=كل الساعات
+periods_err=فشل في حفظ الفترات المحددة
+periods_ename=إن '$1' ليس اسم فترة صالح
+periods_ehour=ساعة مفقودة أو غير صالحة للفترة$1 (يجب أن تكون مثل 9 ص أو 5 م)
+
+show_title=حالة استنفار
+show_ecgi=برنامج حالة MON $1 غير موجود. ربما لم يتم تثبيته أو أن <a href='$2'>تهيئة الوحدة النمطية</a> غير صحيحة.

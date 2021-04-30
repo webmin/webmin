@@ -1,0 +1,66 @@
+index_title=ADSL ügyfél
+index_eadsl=A (z) $1 RP-PPPoE parancs nem található a rendszeren, vagy nem érvényes. Lehet, hogy nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+index_econfig=A (z) $1 RP-PPPoE ADSL konfigurációs fájl nem található a rendszerén. Lehet, hogy nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+index_emodem=A jelenlegi konfigurációs fájl a Redhat Linux modemére vonatkozik, nem egy ADSL-kapcsolatra. A <a href='$2'>modulkonfiguráció</a> oldal segítségével adja meg a többi <tt>ifcfg-ppp *</tt> fájl egyikét az $1 fájlban, vagy még nem létező fájlokat, így a modul létrehozhat neked.
+index_stop=Kapcsolja ki az ADSL-t
+index_stopdesc=Az Ön ADSL-kapcsolata jelenleg aktív, $1 IP-címmel. Kattintson erre a gombra, hogy leállítsa a $2 paranccsal.
+index_start=Indítsa el az ADSL-t
+index_startdesc=Az ADSL-kapcsolat jelenleg inaktív. Kattintson erre a gombra, hogy elindítsa a $1 paranccsal.
+index_boot=Indulás indításkor
+index_bootdesc=Változtassa meg ezt a beállítást annak ellenőrzéséhez, hogy az ADSL-kapcsolat indításkor létrejön-e vagy sem.
+index_return=modul index
+index_version=RP-PPPoE $1 verzió
+index_esetup=A (z) $1 Redhat ADSL konfigurációs fájl nem létezik a rendszeren. Ez a modul azonban az alábbi gombra kattintva beállíthatja az alapértelmezett alapértelmezett értékeket.
+index_setup=Beállítási konfigurációs fájl
+index_cancel=Mégsem a kapcsolatot
+index_canceldesc=Az ADSL-ügyfél jelenleg próbál kapcsolatot létesíteni. Kattintson erre a gombra, hogy megszakítsa a kísérletet a $1 paranccsal.
+index_cdemand=Megszünteti az igényt
+index_cdemanddesc=Az ADSL kliens jelenleg igény szerinti csatlakozási kérelmet vár. Kattintson erre a gombra a $1 parancs leállításához.
+
+index_header=ADSL ügyfélkonfigurációs beállítások
+index_desc=Az alábbi beállítások vonatkoznak a rendszer által indított új ADSL-kapcsolatokra. Ha megváltoztatja őket, a módosítások érvénybe lépéséhez a kapcsolatot le kell állítani és újra kell indítani.
+index_eth=Ethernet interfész
+index_other=Egyéb ..
+index_demand=Kapcsolódás szükség esetén?
+index_timeout=Igen, időtúllépéssel
+index_secs=másodperc
+index_user=Bejelentkezés felhasználóként
+index_sec=Bejelentkezés jelszóval
+index_dns=Kérjen DNS-konfigurációt az ISP-től?
+index_save=Konfiguráció mentése
+index_mss=Korlátozza a csomag méretét?
+index_psize=Igen, az
+index_bytes=bájt
+index_fw=Tűzfal a kapcsolat aktiválásához
+index_fw_none=Egyik sem
+index_fw_standalone=Egyedüli házigazda számára
+index_fw_masquerade=NAT átjáróhoz
+index_connect=Ideje megpróbálni a kapcsolatot
+index_forever=Örökké
+
+start_err=Az ADSL kapcsolat elindítása nem sikerült
+start_title=Indítsa el az ADSL-t
+start_ip=Létrehozott egy ADSL kapcsolatot $1 IP-címmel.
+start_demand=Mivel az igény szerinti csatlakozás mód engedélyezve van, az ADSL-kapcsolat csak akkor indul el, ha szükséges.
+start_bg=Az ADSL kapcsolat 20 másodpercen belül nem indult el. Az ADSL-ügyfél sikeres sikerességéig továbbra is megpróbálja csatlakozni a háttérben.
+
+save_err=Az ADSL-konfiguráció mentése nem sikerült
+save_eeth=Hiányzó vagy érvénytelen külső Ethernet interfész
+save_etimeout=Hiányzó vagy érvénytelen igény szerinti időtúllépés
+save_euser=Hiányzik vagy érvénytelen felhasználónév
+save_econnect=Hiányzó vagy érvénytelen csatlakozási időtúllépés
+save_emss=Hiányzik vagy érvénytelen a maximális csomagméret
+save_title=Konfiguráció mentése
+save_desc=Az ADSL-ügyfélkonfiguráció sikeresen mentésre került, de addig nem fogja használni, amíg újra nem csatlakozik.
+
+stop_err=Nem sikerült leállítani az ADSL kapcsolatot
+stop_title=Az ADSL leállítása
+stop_ok=Az ADSL-kapcsolat sikeresen leállt.
+stop_failed=ADSL-kapcsolata valamilyen oknál fogva továbbra is aktív!
+
+log_save=Mentett ügyfélkonfiguráció
+log_stop=Kapcsolja ki az ADSL-t
+log_start=Az ADSL elindítása
+log_bootup=Engedélyezve az ADSL indításkor
+log_bootdown=Letiltva az ADSL a rendszerindításkor
+log_setup=Állítsa be az alapértelmezett konfigurációt

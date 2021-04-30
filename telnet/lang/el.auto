@@ -1,0 +1,8 @@
+index_title=SSH Σύνδεση
+index_warn=Προειδοποίηση! Αυτή η συνεδρία telnet είναι κρυπτογραφημένη <b>όχι</b>.
+index_nojava=Αυτή η ενότητα απαιτεί τη λειτουργία της java, αλλά το πρόγραμμα περιήγησης δεν υποστηρίζει τη Java
+index_credits=Το Applet αναπτύχθηκε με GPL από τον <a href='$1' target=_top>Matthias L. Jugel & Marcus Mei�ner</a>.
+index_sshcredits=Περιλαμβάνει λογισμικό που αναπτύχθηκε από την ομάδα ανάπτυξης Cryptix (<a href=$1 target=_top>$1</a>).
+index_esocket=Δεν υπάρχει διακομιστής telnet σε $1 θύρα $2.
+index_esocket2=Δεν υπάρχει διακομιστής SSH σε $1 θύρα $2.
+index_elookup=Δεν ήταν δυνατή η αναζήτηση της διεύθυνσης IP για το $1 για τη δοκιμή διακομιστή telnet ή SSH.

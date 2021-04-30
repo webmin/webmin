@@ -49,6 +49,7 @@ print &ui_table_row($text{'backup_email'},
 		     $config{'backup_email_err'} ? 1 : 0));
 
 print &ui_table_end();
-print &ui_form_end([ [ undef, $text{'save'} ] ]);
+print &ui_form_end([ [ undef, $text{'save'} ],
+		     [ 'now', $text{'backup_now'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});

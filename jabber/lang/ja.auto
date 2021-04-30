@@ -1,0 +1,120 @@
+index_title=Jabber IMサーバー
+index_econfig=Jabber構成ファイル $1は存在しません。 Jabberがインストールされていないか、<a href='$2'>モジュール設定</a>が間違っています。
+index_edir=Jabberベースディレクトリ $1は存在しません。 Jabberがインストールされていないか、<a href='$2'>モジュール設定</a>が間違っています。
+index_emodules=JabberのXML設定を処理するためにWebminが必要とするPerlモジュール $1および $2はインストールされていません。 <a href='$3'>ここをクリック</a>して、CPANから直接インストールします。
+index_emodule=JabberのXML設定を処理するためにWebminが必要とするPerlモジュール $1はインストールされていません。 <a href='$2'>ここをクリック</a>して、CPANから直接インストールします。
+index_expat=Perlモジュールをインストールしようとする前に、Expat Cライブラリとヘッダーがインストールされていることを確認してください。Perlモジュールは依存しており、利用できない場合は失敗します。
+index_eparse=$1 perlモジュールはJabber設定ファイルを解析できませんでした： $2
+index_ejabberd=Jabberサーバープログラム $1がシステムで見つかりませんでした。 Jabberがインストールされていないか、<a href='$2'>モジュール設定</a>が間違っています。
+index_eversion=WebminはJabberバージョン $2のみをサポートしますが、コマンド $3は次のバージョン情報を報告しました： $1
+index_eversion2=Webminは $2以下のJabberバージョンのみをサポートしますが、コマンド $3は次のバージョン情報を報告しました： $1
+index_start=Jabberサーバーを起動します
+index_startmsg=このボタンをクリックして、システムでJabberサーバーを起動します。開始されるまで、インスタントメッセージングクライアントはそれを使用できません。
+index_stop=Jabberサーバーを停止する
+index_stopmsg=このボタンをクリックして、システムで実行中のJabberサーバーを停止します。インスタントメッセージングクライアントは、停止すると使用できなくなります。
+index_restart=変更を適用
+index_restartmsg=このボタンをクリックして、Jabberサーバーを停止してから再起動することにより、現在の構成を適用します。
+index_comments=警告-Jabber構成ファイル $1にはコメントが含まれています。このモジュールを使用して構成の変更が行われた場合、コメントは削除されます。
+index_return=Jabberメニュー
+index_version=Jabberバージョン $1
+
+general_title=一般的なオプション
+general_header=グローバルJabberサーバーオプション
+general_host=サーバーのホスト名
+general_elog=エラーログファイル
+general_elogfmt=エラーログ形式
+general_rlog=アクセスログファイル
+general_rlogfmt=アクセスログ形式
+general_pidfile=プロセスIDファイル
+general_err=一般オプションを保存できませんでした
+general_ehost=サーバーのホスト名が欠落しているか無効です
+general_eelog=エラーログファイルが見つからないか無効です
+general_eelogfmt=エラーログ形式がありません
+general_erlog=トラフィックログファイルが見つからないか無効です
+general_erlogfmt=トラフィックログ形式がありません
+general_epidfile=プロセスIDファイルが見つからないか無効です
+
+messages_title=メッセージ
+messages_header=クライアント用のJabberサーバーメッセージ
+messages_wsubject=ウェルカムメッセージの件名
+messages_wbody=ようこそメッセージ本文
+messages_vcard=サーバーvCard
+messages_rinstr=登録手順
+messages_rnotify=登録時に管理者に通知しますか？
+messages_rfields=必須の登録フィールド
+messages_vcard2jud=vCardをJabberユーザーディレクトリに送信しますか？
+messages_err=メッセージを保存できませんでした
+messages_evcard=無効なvCard XML： $1
+messages_etag=サーバーvCard XMLが&lt;vCard&gt;で始まっていません
+
+modules_title=Jabberモジュール
+modules_desc=以下にリストされているモジュールは、Jabberセッションマネージャーが受信したメッセージを処理するために使用されます。このリストを変更するのは、何をしているのかわかっている場合のみにしてください。
+modules_header=Jabberサーバーセッションマネージャーモジュール
+modules_mod=モジュール名
+modules_so=共有ライブラリ
+modules_err=Jabberモジュールを保存できませんでした
+modules_emod=「$1」は有効なモジュール名ではありません
+modules_eso=共有ライブラリ「$1」は存在しません
+
+karma_title=カルマ交通管制
+karma_header=トラフィックレート制御オプション
+karma_rate=過剰な接続処理
+karma_rate_def=無効
+karma_rate_sel=$1接続後 $2秒間クライアントをブロック
+karma_mode=カルマモード
+karma_none=無制限
+karma_low=低い交通制限
+karma_medium=中程度のトラフィック制限
+karma_high=高い交通制限
+karma_sel=以下で選択した設定を使用します。
+karma_heartbeat=秒単位の期間の長さ（<tt>heartbeat</tt>）
+karma_init=初期化期間（<tt>init</tt>）
+karma_max=カルマ最大（<tt>max</tt>）
+karma_inc=カルマの増分（<tt>inc</tt>）
+karma_dec=カルマの減少（<tt>dec</tt>）
+karma_penalty=ペナルティ期間（<tt>ペナルティ</tt>）
+karma_restore=バースト復元期間（<tt>restore</tt>）
+karma_err=カルマオプションを保存できませんでした
+karma_eheartbeat=期間の長さが欠落しているか無効です
+karma_einit=初期化期間の欠落または無効
+karma_emax=カルマの最大値がない、または無効です
+karma_einc=カルマインクリメントの欠落または無効
+karma_edec=カルマの減少がないか無効です
+karma_epenalty=不足または無効なペナルティ期間
+karma_erestore=復元期間の欠落または無効
+karma_epoints=接続の欠落または無効な数
+karma_etime=ブロックする時間がないか無効です
+
+ips_title=IPアクセス制御
+ips_header=JabberサーバーのIPアクセス制御
+ips_allow=許可されたクライアントIP
+ips_all=すべての住所
+ips_deny=拒否されたクライアントIP
+ips_none=なし
+ips_sel=リストされたアドレス/ネットマスク ..
+ips_err=IPアクセス制御を保存できませんでした
+ips_eaddr=「$1」は有効なIPアドレスまたはIPアドレス/ネットマスクではありません
+
+file_title=構成ファイルの編集
+file_desc=以下のフォームを使用して、Jabber設定ファイルを直接編集します。これは、XML構成形式を理解している場合にのみ行う必要があります。
+file_header=Jabber設定ファイルを編集する
+file_err=構成ファイルを保存できませんでした
+
+admin_title=管理ユーザー
+admin_header=サーバー管理ユーザー
+admin_read=読み取りアクセス管理者
+admin_write=書き込みアクセス管理者
+admin_reply=管理者メッセージへの自動返信？
+admin_rsubject=自動返信の件名
+admin_rbody=自動返信メッセージ
+
+filter_title=ユーザーフィルター
+filter_header=ユーザーフィルター許可
+filter_max=最大フィルタールール
+filter_conds=許可されるフィルター条件
+filter_acts=許可されたフィルターアクション
+
+restart_err=変更を適用できませんでした
+stop_err=Jabberを停止できませんでした
+stop_epid=Jabberプロセスが見つかりませんでした
+start_err=Jabberを開始できませんでした

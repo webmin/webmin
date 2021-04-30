@@ -1,0 +1,205 @@
+index_title=กระบวนการทำงาน
+index_display=แสดง
+index_tree=PID
+index_user=ผู้ใช้งาน
+index_size=หน่วยความจำ
+index_cpu=ซีพียู
+index_search=ค้นหา
+index_zone=โซน
+index_run=วิ่ง ..
+index_return=รายการกระบวนการ
+index_mem2=<b>หน่วยความจำจริง:</b> $1 ทั้งหมด / $2 ฟรี
+index_mem3=<b>หน่วยความจำจริง:</b> $1 ทั้งหมด / $2 ฟรี / $3 แคช
+index_swap2=<b>พื้นที่สลับ:</b> $1 ทั้งหมด / $2 ฟรี
+index_burst=<b>หน่วยความจำที่สามารถระเบิดได้:</b> $1 ทั้งหมด
+index_loadname=ค่าเฉลี่ยโหลด CPU:
+index_loadnums=$1 (1 นาที), $2 (5 นาที), $3 (15 นาที)
+index_cpuname=ประเภท CPU:
+index_inzone=ในโซน $1 
+
+pid=ID
+owner=เจ้าของ
+command=คำสั่ง
+cpu=ซีพียู
+size=ขนาด
+parent=กระบวนการหลัก
+runtime=ใช้เวลา
+nice=ระดับที่ดี
+stime=เริ่มต้น
+sclass=คลาสการกำหนดตาราง IO
+sprio=ลำดับความสำคัญของ IO
+
+search_user=ที่เป็นเจ้าของโดย
+search_match=การจับคู่
+search_cpupc=ใช้ CPU มากกว่า $1%
+search_cpupc2=ใช้ CPU มากกว่า
+search_fs=การใช้ระบบไฟล์
+search_files=การใช้ไฟล์
+search_submit=ค้นหา
+search_none=ไม่พบกระบวนการที่ตรงกัน
+search_kill=ส่งสัญญาณ
+search_ignore=ละเว้นกระบวนการค้นหาที่เป็นผลลัพธ์
+search_return=แบบฟอร์มการค้นหา
+search_sigterm=ยุติกระบวนการ
+search_sigkill=ฆ่ากระบวนการ
+search_port=ใช้พอร์ต
+search_protocol=มาตรการ
+search_ip=ใช้ที่อยู่ IP
+
+run_command=สั่งให้วิ่ง
+run_submit=วิ่ง
+run_mode=เรียกใช้โหมด
+run_bg=ทำงานในพื้นหลัง
+run_fg=รอจนกว่าจะเสร็จสมบูรณ์
+run_input=อินพุตไปยังคำสั่ง
+run_title=เอาต์พุตคำสั่ง
+run_output=ผลผลิตจาก $1 ..
+run_none=ไม่มีการสร้างผลลัพธ์
+run_ecannot=คุณไม่ได้รับอนุญาตให้เรียกใช้คำสั่ง
+run_as=เรียกใช้ในฐานะผู้ใช้
+run_euser=ชื่อผู้ใช้ที่ขาดหายไปหรือไม่ถูกต้อง
+run_euser2=คุณไม่ได้รับอนุญาตให้เรียกใช้คำสั่งในฐานะผู้ใช้ที่เลือก
+
+edit_title=ข้อมูลกระบวนการ
+edit_gone=กระบวนการนี้ไม่ทำงานอีกต่อไป
+edit_sub=กระบวนการย่อย
+edit_subid=ID
+edit_subcmd=คำสั่งกระบวนการย่อย
+edit_kill=ส่งสัญญาณ
+edit_change=เปลี่ยนแปลง
+edit_prilow=ลำดับความสำคัญต่ำ
+edit_prihigh=ลำดับความสำคัญสูง
+edit_pridef=ค่าเริ่มต้น
+edit_none=ไม่มี
+edit_ecannot=คุณไม่ได้รับอนุญาตให้แก้ไขกระบวนการ
+edit_sigterm=ยุติ
+edit_sigkill=ฆ่า
+edit_sigstop=แขวน
+edit_sigcont=ประวัติย่อ
+edit_open=ไฟล์และการเชื่อมต่อ
+edit_trace=กระบวนการติดตาม
+edit_return=รายละเอียดกระบวนการ
+
+kill_err=ไม่สามารถส่งสัญญาณ $1 ไปยังประมวลผล $2 
+kill_title=ส่งสัญญาณ
+kill_sent=ที่ส่ง
+kill_ecannot=คุณไม่ได้รับอนุญาตให้ฆ่ากระบวนการ
+
+renice_err=ไม่สามารถเปลี่ยนกระบวนการ $1 ได้
+renice_ecannot=คุณไม่ได้รับอนุญาตให้ยกเลิกกระบวนการ
+
+linux_pri=ลำดับความสำคัญ
+linux_tty=TTY
+linux_status=สถานะ
+linux_wchan=รออยู่
+linux_mem=หน่วยความจำ
+linux_group=กลุ่ม
+linux_ruser=ผู้ใช้จริง
+linux_rgroup=กลุ่มจริง
+linux_pgid=ID กลุ่มกระบวนการ
+linux_stime=เริ่มต้น
+
+linuxstat_R=วิ่ง
+linuxstat_S=นอนหลับ
+linuxstat_D=การนอนหลับลึก
+linuxstat_T=หยุด
+linuxstat_Z=ซอมบี้
+
+linux_real=ตามเวลาจริง
+linux_be=สุดยอดความพยายาม
+linux_idle=ว่าง
+
+freebsd_ruser=ผู้ใช้จริง
+freebsd_rgroup=กลุ่มจริง
+freebsd_tty=TTY
+freebsd_pgid=กลุ่มกระบวนการ
+freebsd_stime=เริ่มต้น
+freebsd_lim=ขีด จำกัด หน่วยความจำ
+
+hpux_pri=ลำดับความสำคัญ
+hpux_tty=TTY
+hpux_status=สถานะ
+hpux_wchan=กำลังรอ
+hpux_stime=เริ่มต้น
+
+hpuxstat_0=ไม่มีอยู่
+hpuxstat_S=นอนหลับ
+hpuxstat_W=ที่รอ
+hpuxstat_R=วิ่ง
+hpuxstat_I=สื่อกลาง
+hpuxstat_Z=ซอมบี้
+hpuxstat_T=หยุด
+hpuxstat_G=การเจริญเติบโต
+
+macos_tty=TTY
+
+sysv_group=กลุ่ม
+sysv_ruser=ผู้ใช้จริง
+sysv_rgroup=กลุ่มจริง
+sysv_pgid=ID กลุ่มกระบวนการ
+sysv_tty=TTY
+sysv_stime=เริ่มต้น
+sysv_task=รหัสงาน
+sysv_zone=ชื่อโซน
+
+log_run=คำสั่ง Ran "$1"
+log_kill=ส่งสัญญาณ $1 ไปยังการประมวลผล $2 
+log_kills=ส่งสัญญาณ $1 ถึง $2 กระบวนการ
+log_kill_l=ส่งสัญญาณ $1 ไปยังการประมวลผล $2 
+log_kills_l=ส่งสัญญาณ $1 ไปยังกระบวนการ <br> $2 
+log_renice=เปลี่ยนลำดับความสำคัญของกระบวนการ $2 เป็น $1 
+
+acl_manage=จัดการกระบวนการในฐานะผู้ใช้
+acl_manage_def=ผู้ใช้ Webmin ปัจจุบัน
+acl_edit=สามารถฆ่าและยกเลิกกระบวนการได้หรือไม่
+acl_run=สามารถรันคำสั่งได้หรือไม่
+acl_only=สามารถเห็นกระบวนการของตัวเองเท่านั้น?
+acl_who=สามารถจัดการกระบวนการสำหรับผู้ใช้
+acl_who0=ผู้ใช้ทั้งหมด
+acl_who1=ผู้ใช้ Webmin ปัจจุบัน
+acl_who2=ผู้ใช้ที่ระบุไว้ ..
+
+kill_kill=ฆ่ากระบวนการ
+kill_term=ยุติ
+kill_hup=เริ่มต้นใหม่
+kill_stop=หยุด
+kill_cont=ต่อ
+
+open_title=เปิดไฟล์และการเชื่อมต่อ
+open_proc=สำหรับกระบวนการ $1 (PID $2)
+open_header1=เปิดไฟล์
+open_header2=เปิดการเชื่อมต่อเครือข่าย
+open_type=ชนิด
+open_proto=มาตรการ
+open_desc=รายละเอียด
+open_fd=ตัวอธิบายไฟล์
+open_listen1=กำลังฟังบนพอร์ต $1 
+open_listen2=ฟังที่อยู่ $1 พอร์ต $2 
+open_recv=รับเมื่อ $1:$2 
+open_conn=เชื่อมต่อจาก $1 ถึง $2 ในสถานะ $3 
+open_cwd=ผบ. ปัจจุบัน
+open_rtd=รูตผบ
+open_txt=รหัสโปรแกรม
+open_mem=ไลบรารีที่แบ่งใช้
+open_dir=ไดเรกทอรี
+open_reg=ไฟล์ปกติ
+open_chr=ตัวละครพิเศษ
+open_blk=บล็อกพิเศษ
+open_size=ขนาดไฟล์
+open_inode=inode
+open_file=เส้นทาง
+
+trace_title=กระบวนการติดตาม
+trace_start=การเริ่มต้นการติดตามการโทรของระบบสำหรับ $1 ..
+trace_doing=การติดตามการโทรของระบบสำหรับ $1  :
+trace_done=.. กระบวนการได้สิ้นสุดลง
+trace_failed=.. การติดตามล้มเหลว!
+trace_sorry=หน้านี้ต้องการการสนับสนุน Java ในเบราว์เซอร์ของคุณ หากต้องการใช้การติดตามกระบวนการแบบข้อความอย่างเดียวให้ปรับการกำหนดค่าโมดูล
+trace_syscalls=ติดตามการโทรของระบบ:
+trace_all=ทั้งหมด
+trace_sel=จดทะเบียน ..
+trace_change=เปลี่ยนแปลง
+
+windows_threads=เธรดในกระบวนการ
+
+syslog_dmesg=ข้อความเคอร์เนล

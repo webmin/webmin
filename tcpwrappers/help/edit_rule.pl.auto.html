@@ -1,0 +1,71 @@
+<header> Opakowania TCP </header>
+<h3> Wzory </h3> Język kontroli dostępu implementuje następujące wzorce: <ul>
+    <li> Ciąg rozpoczynający się od „.” postać. Nazwa hosta jest dopasowywana, jeśli ostatnie składniki jego nazwy pasują do określonego wzorca. Na przykład wzorzec „.tue.nl” odpowiada nazwie hosta „wzv.win.tue.nl”. </li>
+    <li> Ciąg, który kończy się na „.” postać. Adres hosta jest dopasowywany, jeśli jego pierwsze pola numeryczne pasują do podanego ciągu. Na przykład wzorzec „131.155”. pasuje do adresu (prawie) każdego hosta w sieci Uniwersytetu Eindhoven (131.155.xx). </li>
+    <li> Ciąg rozpoczynający się znakiem „@” jest traktowany jako nazwa grupy NIS (poprzednio YP). Nazwa hosta jest dopasowywana, jeśli jest członkiem hosta określonej grupy sieciowej. Dopasowania Netgroup nie są obsługiwane dla nazw procesów demonów ani dla nazw użytkowników klienta. </li>
+    <li> Wyrażenie postaci „nnnn / mmmm” interpretowane jest jako para „sieć / maska”. Adres hosta IPv4 jest dopasowywany, jeśli „net” jest równe bitowemu AND adresu i „maski”. Na przykład wzorzec sieci / maski „131.155.72.0/255.255.254.0” pasuje do każdego adresu z zakresu od „131.155.72.0” do „131.155.73.255”. </li>
+    <li> Wyrażenie postaci „[n: n: n: n: n: n: n: n] / m” jest interpretowane jako para „[netto] / przedrostek”. Adres hosta IPv6 jest dopasowywany, jeśli „przedrostkowe” bity „netto” są równe „przedrostkowym” bitom adresu. Na przykład wzorzec [netto] / prefiks „[3ffe: 505: 2: 1 ::]/64” pasuje do każdego adresu z zakresu „3ffe: 505: 2: 1:”? przez „3ffe: 505: 2: 1: ffff: ffff: ffff: ffff”. </li>
+    <li> Ciąg rozpoczynający się znakiem „/” jest traktowany jako nazwa pliku. Nazwa lub adres hosta jest dopasowywany, jeśli pasuje do dowolnej nazwy hosta lub wzorca adresu wymienionego w nazwanym pliku. Format pliku to zero lub więcej wierszy z zerowymi lub więcej wzorcami nazw hostów lub adresów oddzielonymi białymi spacjami. Wzorzec nazwy pliku można zastosować wszędzie tam, gdzie można zastosować wzorzec nazwy hosta lub adresu. </li>
+    <li> Symbole wieloznaczne „*” i „?” można użyć do dopasowania nazw hostów lub adresów IP. Tej metody dopasowywania nie można używać w połączeniu z dopasowaniem „net/mask”, dopasowaniem nazwy hosta rozpoczynającym się od „.” lub dopasowanie adresu IP kończące się na „.”. </li>
+</ul>
+<h3> Symbole wieloznaczne </h3> Język kontroli dostępu obsługuje jawne symbole wieloznaczne: <table border>
+    <tr>
+        <td> <b>WSZYSTKO</b> </td>
+        <td> Uniwersalny symbol wieloznaczny zawsze pasuje. </td>
+    </tr>
+    <tr>
+        <td> <b>LOKALNY</b> </td>
+        <td> Pasuje do dowolnego hosta, którego nazwa nie zawiera znaku kropki. </td>
+    </tr>
+    <tr>
+        <td> <b>NIEZNANY</b> </td>
+        <td> Odpowiada każdemu użytkownikowi, którego nazwa jest nieznana, i pasuje do każdego hosta, którego nazwa lub adres są nieznane. Z tego wzorca należy korzystać ostrożnie: nazwy hostów mogą być niedostępne z powodu problemów z tymczasowymi serwerami nazw. Adres sieciowy będzie niedostępny, gdy oprogramowanie nie będzie w stanie ustalić, z jakim typem sieci się komunikuje. </td>
+    </tr>
+    <tr>
+        <td> <b>ZNANY</b> </td>
+        <td> Odpowiada każdemu użytkownikowi o znanej nazwie i pasuje do każdego hosta, którego nazwa i adres są znane. Z tego wzorca należy korzystać ostrożnie: nazwy hostów mogą być niedostępne z powodu problemów z tymczasowymi serwerami nazw. Adres sieciowy będzie niedostępny, gdy oprogramowanie nie będzie w stanie ustalić, z jakim typem sieci się komunikuje. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOIDALNY</b> </td>
+        <td> Pasuje do dowolnego hosta, którego nazwa jest niezgodna z jego adresem. Kiedy tcpd jest zbudowany z -DPARANOID (tryb domyślny), odrzuca żądania od takich klientów, nawet przed przeglądaniem tabel kontroli dostępu. Buduj bez opcji -DPARANOID, jeśli chcesz mieć większą kontrolę nad takimi żądaniami. </td>
+    </tr>
+</table>
+<h3> Operatorzy </h3> <b>Z WYJĄTKIEM</b> Przeznaczenie ma postać: „lista_1 Z WYJĄTKIEM lista_2”; ta konstrukcja pasuje do wszystkiego, co pasuje do list_1, chyba że pasuje do list_2. Operatora EXCEPT można używać w listach demonów i listach klientów. Operator EXCEPT może być zagnieżdżony: jeśli język sterowania zezwala na użycie nawiasów, „a WYJĄTEK b WYJĄTEK c” parsuje się jako „(WYJĄTEK (b WYJĄTEK c))”. <h3> Polecenia powłoki </h3> Jeśli pierwsza dopasowana reguła kontroli dostępu zawiera polecenie powłoki, polecenie to podlega% <letter> zamiany (patrz następna sekcja). Wynik jest wykonywany przez proces potomny /bin/sh ze standardowym wejściem, wyjściem i błędem podłączonym do /dev/null. Podaj polecenie „&amp;” na końcu polecenia, jeśli nie chcesz czekać, aż się zakończy. <p> Polecenia powłoki nie powinny opierać się na ustawieniu PATH inetd. Zamiast tego powinni używać bezwzględnych nazw ścieżek lub zacząć od jawnej instrukcji PATH = cokolwiek. <h3> % Rozwinięć </h3> W poleceniach powłoki dostępne są następujące rozszerzenia: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> Adres hosta klienta (serwera). </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Informacje o kliencie: użytkownik @ host, użytkownik @ adres, nazwa hosta lub tylko adres, w zależności od ilości dostępnych informacji. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> Nazwa procesu demona (wartość argv[0]). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Nazwa lub adres hosta klienta (serwera), jeśli nazwa hosta jest niedostępna. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> Nazwa hosta klienta (serwera) (lub „nieznany” lub „paranoiczny”). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> Identyfikator procesu demona. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Informacje o serwerze: daemon@host, daemon @ adres lub po prostu nazwa demona, w zależności od ilości dostępnych informacji. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Nazwa użytkownika klienta (lub „nieznana”). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Rozwija się do pojedynczego „%? postać. </td>
+            </tr>
+        </table> Znaki w%rozwinięciach, które mogą mylić powłokę, są zastępowane podkreśleniami.
+        <hr />

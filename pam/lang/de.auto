@@ -1,0 +1,11 @@
+log_mod_create=PAM-Modul $1 zu Service $2 hinzugefügt
+
+log_mod_modify=Modifiziertes PAM-Modul $1 in Service $2 
+log_mod_delete=PAM-Modul $1 im Dienst $2 gelöscht
+log_mod_move=Ausgetauschte PAM-Module in Service $3 
+log_mod_move_l=Vertauschte PAM-Module $1 und $2 in Service $3 
+log_inc_create=Es wurde $1 für Service $2 hinzugefügt
+
+log_inc_modify=Geändert enthält $1 für Service $2 
+log_inc_delete=Gelöschte enthalten $1 für Service $2 
+log_incs=Aktualisierte Includes für Service $1 

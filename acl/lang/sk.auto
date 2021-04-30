@@ -1,0 +1,238 @@
+index_screate=Vytvorte nového bezpečného používateľa.
+index_twofactor=Dvojfaktorové overenie
+index_joingroup=Pridať do skupiny:
+index_eulist=Nepodarilo sa uviesť používateľov: $1 
+index_eglist=Nepodarilo sa uviesť skupiny: $1 
+
+edit_title3=Vytvorte bezpečného používateľa Webmin
+edit_readonly=Tento užívateľ Webmin by nemal byť upravovaný, pretože je spravovaný modulom $1. <a href='$2'>Kliknite tu</a>, aby ste toto upozornenie obišli a upravili používateľa - buďte si však vedomí, že akékoľvek manuálne zmeny môžu byť prepísané!
+edit_cloneof=Klonovanie užívateľa Webmin
+edit_real=Skutočné meno
+edit_passlocked=Heslo sa nezmenilo už do $1 dní - účet je zablokovaný!
+edit_passmax=Heslo sa nezmenilo do $1 dní - pri nasledujúcom prihlásení sa musí zmeniť
+edit_passold=Heslo bolo naposledy zmenené pred $1 dňami
+edit_passtoday=Heslo bolo zmenené pred menej ako dňom
+edit_twofactor=Typ dvojfaktorovej autentifikácie
+edit_twofactorprov=Použitie poskytovateľa $1 s ID $2 
+edit_twofactorcancel=Odstráňte požiadavku dvojfaktorovej autentifikácie
+edit_twofactornone=Zatiaľ žiadne nastavenie
+edit_twofactoradd=Povoliť používateľom dvojfaktorový režim
+edit_logout=Čas odhlásenia nečinnosti
+edit_chars=literatúra
+edit_minsize=Minimálna dĺžka hesla
+edit_nochange=Vynútiť dni na zmenu hesla?
+edit_egone=Vybraný používateľ už neexistuje!
+edit_overlay=Prekrytie osobnej témy
+edit_overlayglobal=Žiadne - použite predvolené motívy
+edit_rbacdeny0=RBAC riadi iba vybrané ACL modulov
+edit_rbacdeny1=RBAC riadi všetky moduly a ACL
+edit_global=Povolenia pre všetky moduly
+edit_temppass=Vynútiť zmenu pri ďalšom prihlásení
+edit_selhours=Od $1:$2 do $3:$4 
+edit_ui=Možnosti používateľského rozhrania
+edit_security=Možnosti zabezpečenia a obmedzení
+edit_mods=Dostupné moduly Webmin
+edit_modsg=Dostupné moduly Webmin (okrem tých zo skupiny)
+edit_proto=Typ úložiska
+edit_proto_mysql=MySQL databáza
+edit_proto_postgresql=Databáza PostgreSQL
+edit_proto_ldap=LDAP server
+edit_proto_=Lokálne súbory
+edit_safe=Úroveň privilégií
+edit_safe0=neobmedzený
+edit_safe1=Iba bezpečné moduly
+edit_unsafe=Obnoviť na neobmedzené
+
+save_eunixname=Používateľské meno „$1“ nie je používateľom systému Unix, a preto ho nemožno použiť v bezpečnom režime
+save_eoverlay=Prekryvnú tému nie je možné vybrať, pokiaľ nejde o motív
+save_epass=Heslo nie je platné: $1 
+save_elogouttime=Chýbajúci alebo nečíselný čas odhlásenia nečinnosti
+save_eminsize=Chýbajúca alebo nečíselná minimálna dĺžka hesla
+save_edays=Vybraté nie sú žiadne dni na povolenie
+save_ehours=Chýbajúce alebo neplatné časy na povolenie
+save_ehours2=Čas začiatku, ktorý sa má povoliť, musí byť pred koncom
+save_etemp=Možnosť vynútiť zmenu hesla pri ďalšom prihlásení nie je možné použiť, pokiaľ nie je povolená možnosť <a href='$1'>vyzývajúca používateľov na zadanie nových hesiel</a>.
+
+delete_eanonuser=Tento užívateľ sa používa na anonymný prístup k modulu
+
+cert_etempdir=Neplatný súbor certifikátu
+
+acl_rbac=Získať nastavenia riadenia prístupu z RBAC?
+acl_rbacyes=Áno (prepíše nastavenia nižšie)
+
+acl_times=Môžu zmeniť povolené časy prihlásenia?
+acl_pass=Môžete zmeniť obmedzenia hesiel?
+acl_sql=Môžete nakonfigurovať databázu používateľov a skupín?
+
+log_joingroup=Do skupiny $2 boli pridaní $1 
+log_pass=Zmenené obmedzenia hesla
+log_unix=Zmenená autentifikácia používateľov systému Unix
+log_sync=Zmenená synchronizácia unixového používateľa
+log_sql=Zmenená databáza používateľov a skupín
+log_twofactor=Registrovaný používateľ $1 s dvojfaktorovým poskytovateľom $2 
+log_onefactor=Registrovaný používateľ $1 na dvojfaktorové overenie
+
+gedit_members=Používatelia a skupiny členov
+gedit_desc=Popis skupiny
+gedit_egone=Vybraná skupina už neexistuje!
+
+gsave_edesc=Neplatný popis - znak: nie je povolený
+
+convert_sync2=Synchronizovať heslo s používateľom Unix v budúcnosti?
+convert_user=Unixový užívateľ
+convert_action=Prijaté opatrenia
+convert_done= $1 konvertovaní používatelia, $2 neplatné, $3 už existujú, $4 vylúčené.
+convert_users=Používatelia majú prevádzať
+
+sync_when=Kedy synchronizovať
+
+unix_err=Nepodarilo sa uložiť autentifikáciu Unix
+unix_sel=Povoliť používateľom Unixu uvedeným nižšie prihlásiť sa.
+unix_group=Členovia skupiny..
+unix_to=Ako používateľ Webmin
+unix_restrict2=Dodatočné obmedzenia
+unix_ewhogroup=Chýba skupina, ktorá by povolila v riadku $1 
+unix_ewhouser=V riadku $1 chýba používateľ
+unix_enone=Neboli zadaní žiadni používatelia alebo skupiny Unix, ktoré by to mohli povoliť
+unix_same=&lt;Rovnaký používateľ alebo skupina&gt;
+unix_sudo=Povoliť používateľom, ktorí môžu spúšťať všetky príkazy prostredníctvom <tt>sudo</tt>, sa prihlásiť ako <tt>root</tt>
+unix_pamany=Zachádzajte s prihláseniami, ktoré prechádzajú iba overením PAM, ako $1 
+unix_esudo=Príkaz $1 nie je nainštalovaný
+unix_esudomod=Nie je nainštalovaný modul Perl $1 potrebný na autentifikáciu <tt>sudo</tt>
+unix_header=Nastavenia overovania používateľov systému Unix
+unix_utable=Povolení používatelia Unixu
+
+sessions_actions=Akcia..
+sessions_logouts=Zobraziť aj odhlásené relácie.
+sessions_state=Štát
+sessions_this=Toto prihlásenie
+sessions_in=Prihlásený
+sessions_out=Odhlasený
+sessions_kill=Odpojenie..
+
+logins_title=Posledné prihlasovacie údaje pre správcov webu
+
+rbac_desc=Integrácia produktu RBAC servera Webmin poskytuje spôsob, ako určiť užívateľské moduly a oprávnenia ACL z databázy RBAC (Role Based Access Control), a nie z vlastných konfiguračných súborov spoločnosti Webmin. Keď je podpora RBAC povolená, každý používateľ, pre ktorého je vybratá možnosť <b>RBAC riadi všetky moduly a ACL</b>, bude mať svoje schopnosti určené radšej RBAC ako nastavenia vlastného riadenia prístupu Webmin.
+rbac_esolaris=Systém RBAC je momentálne podporovaný iba v systéme Solaris, a preto ho nemožno použiť v tomto systéme $1.
+rbac_eperl=Nie je nainštalovaný modul Perl $1 potrebný na integráciu RBAC. <a href='$2'>Kliknite sem</a> a nainštalujte ho teraz.
+rbac_ecpan=Nemáte prístup na stránku Webmin Perl Moduules, aby ste mohli nainštalovať potrebný modul $1 na integráciu RBAC.
+rbac_ok=Integrácia RBAC je k dispozícii v tomto systéme a dá sa povoliť pre každého užívateľa na stránke Edit Webmin User user.
+
+udeletes_err=Nepodarilo sa odstrániť používateľov
+udeletes_jerr=Nepodarilo sa pridať používateľov do skupiny
+udeletes_enone=Žiadne vybraté
+udeletes_title=Odstrániť používateľov
+udeletes_rusure=Naozaj chcete odstrániť vybratých používateľov $1 ? Všetky ich nastavenia riadenia prístupu a podrobnosti o používateľovi budú stratené.
+udeletes_users=Vybraní používatelia: $1 
+udeletes_ok=Odstrániť používateľov
+udeletes_ereadonly=Jeden z vybraných používateľov je označený ako neupraviteľný
+
+gdeletes_rusure=Naozaj chcete odstrániť vybraté skupiny $1 a $2 používateľov, ktorých obsahujú? Všetky ich nastavenia riadenia prístupu a podrobnosti o používateľovi budú stratené.
+
+pass_title=Obmedzenia hesla
+pass_ecannot=Nemáte oprávnenie upravovať obmedzenia hesiel
+pass_header=Možnosti vymáhania hesla správcu webu
+pass_minsize=Minimálna dĺžka hesla
+pass_nominsize=Žiadne minimum
+pass_regexps=Heslá pre regulárne výrazy sa musia zhodovať
+pass_regdesc=Opis čitateľný pre človeka pre regulárny výraz
+pass_maxdays=Dni pred zadaním hesla je potrebné zmeniť
+pass_lockdays=Dni pred nezmeneným heslom uzamkne účet
+pass_nomaxdays=Zmena sa nikdy nevyžaduje
+pass_nolockdays=Účet nie je nikdy zamknutý
+pass_nouser=Zakázať heslá obsahujúce používateľské meno?
+pass_nodict=Zakázať heslá slovníka v slovníku?
+pass_oldblock=Počet starých hesiel, ktoré sa majú odmietnuť
+pass_nooldblock=Bez obmedzenia na opakované použitie hesla
+pass_days=dni
+pass_pass=heslá
+pass_err=Obmedzenia hesla sa nepodarilo uložiť
+pass_eminsize=Chýbajúca alebo nečíselná minimálna dĺžka hesla
+pass_emaxdays=Chýbajúci alebo nečíselný počet dní pred zmenou
+pass_elockdays=Chýbajúci alebo nečíselný počet dní pred zablokovaním účtu
+pass_eoldblock=Chýbajúce alebo nečíselné množstvo starých hesiel na odmietnutie
+
+cpass_minsize=Musí mať aspoň $1 písmen
+cpass_notre=Zodpovedá zakázanému vzoru
+cpass_re=Nezodpovedá požadovanému vzoru
+cpass_name=Obsahuje používateľské meno
+cpass_dict=Je slovníkom slovníka
+cpass_spellcmd=Nie sú nainštalované príkazy $1 ani $2 potrebné na kontrolu slovníkových slov.
+cpass_old=Staré heslá nie je možné znovu použiť
+
+sql_title=Databáza používateľov a skupín
+sql_ecannot=Nemáte povolenie konfigurovať databázu používateľov a skupín
+sql_header=Možnosti databázového backendu pre používateľov a skupiny
+sql_host=Meno hosťa
+sql_user=užívateľské meno
+sql_pass=heslo
+sql_db=Názov databázy
+sql_ssl=Šifrovanie pripojenia
+sql_ssl0=nikto
+sql_ssl1=SSL
+sql_ssl2=TLS
+sql_userclass=Trieda objektov pre používateľov
+sql_groupclass=Trieda objektov pre skupiny
+sql_euserclass=Chýbajúca alebo neplatná trieda objektu pre používateľov
+sql_egroupclass=Chýbajúca alebo neplatná trieda objektov pre skupiny
+sql_none=Na ukladanie používateľov a skupín používajte iba miestne súbory
+sql_mysql=Použite databázu MySQL
+sql_postgresql=Použite databázu PostgreSQL
+sql_ldap=Použite server LDAP
+sql_prefix=Vytvorte pod DN
+sql_addto0=Pridajte nových používateľov do databázy vybranej vyššie
+sql_addto1=Pridajte nových používateľov do miestnych súborov
+sql_emod=Chýba požadovaný modul Perl <tt>$1</tt>
+sql_etable=Nepodarilo sa vyhľadať požadovanú tabuľku $1:$2 
+sql_eldapdn=Základný LDAP DN $1 nebol nájdený
+sql_eclass=Trieda objektu LDAP $1 v schéme servera neexistuje
+sql_err=Nepodarilo sa uložiť nastavenia databázy používateľov a skupín
+sql_ehost=Chýbajúci alebo nerozpoznateľný názov hostiteľa
+sql_euser=Chýbajúce alebo neplatné používateľské meno (nie sú povolené žiadne medzery)
+sql_epass=Neplatné heslo (bez medzier)
+sql_edb=Neplatný názov databázy (nie sú povolené žiadne medzery)
+sql_eprefix=Chýbajúci alebo neplatný základný DN (nie sú povolené žiadne medzery)
+sql_eprefix2=Neplatne vyzerajúce základné DN - malo by byť ako <tt>dc = mydomain, dc = com</tt>
+sql_title2=Vytvorte chýbajúce tabuľky
+sql_tableerr=Nastavenia databázy používateľov a skupín sú platné, ale niektoré tabuľky, ktoré potrebuje Webmin, chýbajú: $1 
+sql_tableerr2=Kliknutím na tlačidlo <b>Vytvoriť tabuľky</b> nižšie ich vytvoríte automaticky, alebo manuálne spustíte SQL nižšie.
+sql_make=Vytvorte tabuľky
+sql_title3=Vytvorte chýbajúce DN
+sql_dnerr=Nastavenia databázy používateľov a skupín sú platné, ale Webmin LDAP, ktorý potrebuje Webmin, chýba: $1 
+sql_dnerr2=Kliknutím na tlačidlo <b>Vytvoriť DN</b> nižšie ho vytvoríte automaticky, alebo ho pridajte na svoj server LDAP ručne.
+sql_makedn=Vytvorte DN
+sql_schema=Stiahnite si schému LDAP
+
+make_title=Vytvorte tabuľky používateľov a skupín
+make_err=Nepodarilo sa vytvoriť tabuľky používateľov a skupín
+make_exec=Vykonáva sa SQL $1..
+make_failed=.. vytvorenie zlyhalo: $1 
+make_done=.. hotový
+make_still=Niektoré problémy sa našli aj po vytvorení tabuľky: $1 
+
+makedn_title=Vytvorte LDAP DN
+makedn_eoc=Nenašli sa žiadne triedy štruktúrnych objektov!
+makedn_exec=Vytvára sa rodičovský DN $1..
+makedn_failed=.. vytvorenie zlyhalo: $1 
+makedn_done=.. hotový
+makedn_still=Niektoré problémy sa našli aj po vytvorení DN: $1 
+
+schema_title=Stiahnite si schému LDAP
+schema_desc=Aby mohol Webmin použiť server LDAP na ukladanie používateľov a skupín, musí byť nakonfigurovaný na používanie nižšie uvedenej schémy. Spravidla sa to dá dosiahnuť uložením definície schémy do <tt>/etc/ldap/schema</tt> alebo <tt>/etc/openldap/schema</tt> ako <tt>webmin.schema</tt>, potom nakonfigurujte server tak, aby načítal tento súbor schémy.
+schema_download=Stiahnite si súbor schémy: <a href=$1>$1</a>
+
+twofactor_err=Nepodarilo sa nastaviť dvojfaktorové overenie
+twofactor_euser=Váš užívateľ Webmin nebol nájdený!
+twofactor_title=Dvojfaktorové overenie
+twofactor_disable=Zakázať dvojfaktorové overenie
+twofactor_already=Vaše prihlásenie do Webminu už má povolenú dvojfaktorovú autentifikáciu s poskytovateľom $1 a ID účtu $2.
+twofactor_already2=Webmin login $3 už má povolenú dvojfaktorovú autentifikáciu s poskytovateľom $1 a ID účtu $2.
+twofactor_desc=Táto stránka vám umožňuje povoliť dvojfaktorovú autentifikáciu pre vaše prihlásenie do Webminu pomocou <a href='$2' target=_blank>$1</a>. Po aktivácii sa pri prihlásení do servera Webmin bude vyžadovať ďalší token autentifikácie.
+twofactor_desc2=Táto stránka vám umožňuje povoliť dvojfaktorovú autentifikáciu pre prihlásenie Webmin $3 pomocou <a href='$2' target=_blank>$1</a>. Po aktivácii sa pri prihlásení do servera Webmin bude vyžadovať ďalší token autentifikácie.
+twofactor_enable=Prihláste sa na dvojfaktorové overenie
+twofactor_header=Podrobnosti o registrácii dvojfaktorového overenia
+twofactor_enrolling=Prihlasovanie na dvojfaktorové overenie u poskytovateľa $1..
+twofactor_failed=.. zápis zlyhal: $1 
+twofactor_done=.. dokončené. Vaše ID u tohto poskytovateľa je <tt>$1</tt>.
+twofactor_setup=V tomto systéme zatiaľ nie je povolená dvojfaktorová autentifikácia, ale dá sa zapnúť pomocou modulu <a href='$1'>Webmin Configuration</a>.
+twofactor_ebutton=Klikli na žiadne tlačidlo!

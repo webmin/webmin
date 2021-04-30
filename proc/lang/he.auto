@@ -1,0 +1,205 @@
+index_title=הפעלת תהליכים
+index_display=תצוגה
+index_tree=PID
+index_user=משתמש
+index_size=זיכרון
+index_cpu=מעבד
+index_search=לחפש
+index_zone=אזור
+index_run=רוץ ..
+index_return=רשימת תהליכים
+index_mem2=<b>זיכרון אמיתי:</b> $1 בסך הכל / $2 חינם
+index_mem3=<b>זיכרון אמיתי:</b> $1 סך הכל / $2 חופשי / $3 במטמון
+index_swap2=<b>החלפת שטח:</b> $1 בסך הכל / $2 חינם
+index_burst=<b>זיכרון מתפרץ:</b> $1 בסך הכל
+index_loadname=ממוצעי עומס מעבד:
+index_loadnums=$1 (1 דק '), $2 (5 דקות), $3 (15 דקות)
+index_cpuname=סוג מעבד:
+index_inzone=באזור $1 
+
+pid=תעודת זהות
+owner=בעלים
+command=פקודה
+cpu=מעבד
+size=גודל
+parent=תהליך הורה
+runtime=זמן ריצה
+nice=ברמה נחמדה
+stime=התחיל
+sclass=שיעור תזמון IO
+sprio=עדיפות ל- IO
+
+search_user=בבעלות
+search_match=התאמה
+search_cpupc=באמצעות יותר מ- $1% מעבד
+search_cpupc2=באמצעות יותר מעבד מ-
+search_fs=באמצעות מערכת קבצים
+search_files=באמצעות קובץ
+search_submit=לחפש
+search_none=לא נמצאו תהליכים תואמים.
+search_kill=שלח אות
+search_ignore=התעלם מתהליכי חיפוש בתוצאה
+search_return=טופס חיפוש
+search_sigterm=הפסק תהליכים
+search_sigkill=תהליכים להרוג
+search_port=באמצעות יציאה
+search_protocol=נוהל
+search_ip=באמצעות כתובת IP
+
+run_command=פקודה לרוץ
+run_submit=רוץ
+run_mode=מצב ריצה
+run_bg=רץ ברקע
+run_fg=המתן עד לסיום
+run_input=קלט לפקודה
+run_title=פלט פיקוד
+run_output=תפוקה מ- $1 ..
+run_none=לא נוצר פלט
+run_ecannot=אינך רשאי להפעיל פקודות
+run_as=הפעל כמשתמש
+run_euser=שם משתמש חסר או לא חוקי
+run_euser2=אינך רשאי להפעיל פקודות כמשתמש שנבחר
+
+edit_title=עיבוד מידע
+edit_gone=תהליך זה אינו פועל עוד
+edit_sub=מעבדי משנה
+edit_subid=תעודת זהות
+edit_subcmd=פקודה בתהליך משנה
+edit_kill=שלח אות
+edit_change=שינוי
+edit_prilow=עדיפות נמוכה
+edit_prihigh=עדיפות גבוהה
+edit_pridef=ברירת מחדל
+edit_none=אף אחד
+edit_ecannot=אינך מורשה לערוך תהליכים
+edit_sigterm=לבטל, לסיים
+edit_sigkill=להרוג
+edit_sigstop=השעיה
+edit_sigcont=קורות חיים
+edit_open=קבצים וחיבורים
+edit_trace=תהליך עקבות
+edit_return=פרטי תהליך
+
+kill_err=שליחת האות $1 לעיבוד $2 נכשלה
+kill_title=שלח אות
+kill_sent=נשלח
+kill_ecannot=אינך מורשה להרוג תהליכים
+
+renice_err=נכשל שינוי שם של תהליך $1 מחדש
+renice_ecannot=אינך מורשה לשנות מחדש תהליכים
+
+linux_pri=עדיפות
+linux_tty=TTY
+linux_status=סטטוס
+linux_wchan=מחכה פנימה
+linux_mem=זיכרון
+linux_group=קבוצה
+linux_ruser=משתמש אמיתי
+linux_rgroup=קבוצה אמיתית
+linux_pgid=עבד את מזהה הקבוצה
+linux_stime=התחיל
+
+linuxstat_R=רץ
+linuxstat_S=ישן
+linuxstat_D=שינה עמוקה
+linuxstat_T=עצר
+linuxstat_Z=זומבי
+
+linux_real=זמן אמת
+linux_be=המאמץ הטוב ביותר
+linux_idle=סרק
+
+freebsd_ruser=משתמש אמיתי
+freebsd_rgroup=קבוצה אמיתית
+freebsd_tty=TTY
+freebsd_pgid=קבוצת תהליכים
+freebsd_stime=התחיל
+freebsd_lim=מגבלת זיכרון
+
+hpux_pri=עדיפות
+hpux_tty=TTY
+hpux_status=סטטוס
+hpux_wchan=מחכה ל
+hpux_stime=התחיל
+
+hpuxstat_0=לא קיים
+hpuxstat_S=ישן
+hpuxstat_W=מחכה
+hpuxstat_R=רץ
+hpuxstat_I=ביניים
+hpuxstat_Z=זומבי
+hpuxstat_T=עצר
+hpuxstat_G=גדל
+
+macos_tty=TTY
+
+sysv_group=קבוצה
+sysv_ruser=משתמש אמיתי
+sysv_rgroup=קבוצה אמיתית
+sysv_pgid=עבד את מזהה הקבוצה
+sysv_tty=TTY
+sysv_stime=התחיל
+sysv_task=מזהה משימה
+sysv_zone=שם אזור
+
+log_run=רץ פקודה "$1"
+log_kill=נשלח האות $1 לעיבוד $2 
+log_kills=שלח תהליכים של $1 ל- $2 
+log_kill_l=נשלח האות $1 לעיבוד $2 
+log_kills_l=נשלח אות $1 לתהליכים <br> $2 
+log_renice=העדיפות השתנתה של התהליך $2 ל- $1 
+
+acl_manage=ניהול תהליכים כמשתמש
+acl_manage_def=משתמש נוכחי Webmin
+acl_edit=האם יכולים להרוג ולשנות מחדש תהליכים?
+acl_run=האם ניתן להריץ פקודות?
+acl_only=האם ניתן לראות רק תהליכים משלהם?
+acl_who=יכול לנהל תהליכים למשתמשים
+acl_who0=כל המשתמשים
+acl_who1=משתמש נוכחי Webmin
+acl_who2=משתמשים רשומים ..
+
+kill_kill=תהליך הריגה
+kill_term=לבטל, לסיים
+kill_hup=איתחול
+kill_stop=תפסיק
+kill_cont=המשך
+
+open_title=פתח קבצים וחיבורים
+open_proc=לתהליך $1 (PID $2)
+open_header1=קבצים פתוחים
+open_header2=פתח חיבורי רשת
+open_type=סוג
+open_proto=נוהל
+open_desc=פרטים
+open_fd=מתאר קבצים
+open_listen1=האזנה בנמל $1 
+open_listen2=מקשיב בכתובת $1 יציאה $2 
+open_recv=מקבל על $1:$2 
+open_conn=מחובר מ- $1 ל- $2 במצב $3 
+open_cwd=דירקטור נוכחי
+open_rtd=שורש דיר
+open_txt=קוד התוכנית
+open_mem=ספריה משותפת
+open_dir=מדריך
+open_reg=קובץ רגיל
+open_chr=אופי מיוחד
+open_blk=חסום מיוחד
+open_size=גודל הקובץ
+open_inode=אינוד
+open_file=נתיב
+
+trace_title=תהליך עקבות
+trace_start=החל מעקב אחר שיחות מערכת עבור $1 ..
+trace_doing=עקוב שיחות מערכת עבור $1  :
+trace_done=התהליך הסתיים.
+trace_failed=.. העקיבה נכשלה!
+trace_sorry=דף זה דורש תמיכה ב- Java בדפדפן שלך. כדי להשתמש במעקב תהליכי טקסט בלבד, התאם את תצורת המודול.
+trace_syscalls=שיחות מערכת עקבות:
+trace_all=את כל
+trace_sel=רשום ..
+trace_change=שינוי
+
+windows_threads=האשכולות בתהליך
+
+syslog_dmesg=הודעות גרעין

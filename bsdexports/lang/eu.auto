@@ -1,0 +1,14 @@
+index_applydesc=Egin klik botoi honetan uneko fitxategien esportazioen konfigurazioa aplikatzeko. Horrek goian zerrendatutako direktorio guztiak eskuragarri jarriko ditu zehaztutako aukerekin.
+index_echeck=NFS zerbitzaria ezin da sistema honetan erabili : $1 
+
+check_ecmd=NFS zerbitzariaren $1 komandoa ez dago instalatuta
+
+edit_header2=Erabiltzaileen urrutiko mapa
+edit_maproot=Erabili maparen root erabiltzailea
+edit_mapall=Erabiltzaile guztiei egin die mapa
+edit_hosts=Ostalariak / sareko taldeak
+
+save_edir='$1' ez da direktorio bat edo ez da existitzen
+save_esub=Direktorio bakarra eman daiteke <b>esportazio azpidirektorioak</b> aukera aukeratzen bada
+save_ehosts=Gutxienez ostalari bat sartu behar duzu esportatzeko
+save_esame1=<tt>$1</tt> direktorioa dagoeneko <tt>$2</tt> esportatzen ari da. Zure sistema eragileak ez du <i>tokiko</i> fitxategi-sistema beraren direktoriorik ostalari berera esportatu bereizi

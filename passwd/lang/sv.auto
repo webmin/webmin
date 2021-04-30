@@ -1,0 +1,46 @@
+index_title=Ändra lösenord
+index_header=Välj en användare för att ändra sitt lösenord
+index_return=användarlista
+index_user=Ändra lösenord för användare:
+index_euseradmin=Den här modulen kan inte användas eftersom modulen användare och grupper inte är installerad eller inte stöds på ditt system.
+index_toomany=Det finns för många användare att visa på ditt system. Ange namnet på användaren vars lösenord du vill ändra nedan ..
+index_none=Du har inte tillgång till några användare för att ändra sina lösenord.
+
+passwd_title=Ändra lösenord
+passwd_header=Ändra användarlösenord för Unix
+passwd_for=Ändra lösenord för
+passwd_old=Gammalt lösenord
+passwd_new=Nytt lösenord
+passwd_repeat=Nytt Lösenord Igen)
+passwd_expire=Tvinga användaren att ändra lösenord vid nästa inloggning?
+passwd_others=Ändra lösenord i andra moduler?
+passwd_change=Förändra
+passwd_reset=Rensa formulär
+passwd_err=Det gick inte att ändra lösenordet
+passwd_ecannot=Du får inte ändra användarens lösenord
+passwd_euser=Användare finns inte
+passwd_eold=Felaktigt gammalt lösenord
+passwd_erepeat=Nya lösenord är inte desamma
+passwd_ecmd=$1 misslyckades : $2 
+passwd_ok=Lösenordet för användaren $1 har ändrats. Om detta är din nuvarande Webmin-användare kan du tvingas logga in igen.
+passwd_ok2=Lösenordet för användaren $1 har ändrats.
+
+log_passwd=Ändrat lösenord för användare $1 
+
+acl_repeat=Måste du ange nytt lösenord igen?
+acl_self=Låt alltid ditt eget lösenord ändras?
+acl_old=Måste du ange gammalt lösenord?
+acl_old_this=Endast för andra användare
+acl_others=Ändra lösenord i andra moduler?
+acl_opt=Valfri
+acl_users=Användare vars lösenord kan ändras
+acl_mode0=Alla användare
+acl_mode1=Endast användare
+acl_mode2=Alla utom användare
+acl_mode3=Endast den här användaren
+acl_mode4=Användare med UID inom räckvidd
+acl_mode5=Användare med primär grupp
+acl_mode6=Användare som matchar
+acl_expire=Kan tvinga användare att ändra lösenord vid nästa inloggning?
+acl_sec=Inkludera sekundära grupper?
+acl_notusers=Förutom för användare

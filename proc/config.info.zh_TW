@@ -1,0 +1,2 @@
+default_mode=預設的程序列出樣式,4,last-最後選擇的,tree-程序樹,user-依據使用者排序,size-依據記憶體使用量排列,cpu-依據 CPU 使用量排列,search-搜尋表單,run-執行表單
+ps_style=PS 命令輸出樣式,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS

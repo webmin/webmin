@@ -1,0 +1,200 @@
+index_title=MON Service Monitor
+index_return=Indeks MON
+index_edir=Direktori MON $1 tidak wujud. Mungkin MON tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
+mon_global_title=Konfigurasi Variasi Global
+mon_conf_title=Konfigurasi Asas
+mon_status_title=Status Operasi
+hostgroups_title=MON-Configuration-Hostgroups
+services_title=Definisi Watchgroups-Perkhidmatan
+
+head_hostgroups=Tuan rumah dan Perkhidmatan
+head_groups=Nama kumpulan kumpulan tuan rumah
+head_members=Ahli Kumpulan Tuan Rumah
+head_services=Perkhidmatan Hostgroup untuk Menonton
+head_service=Perkhidmatan untuk menonton
+head_param=Parameter Perkhidmatan
+head_watch=Tonton Kumpulan?
+head_monauth=Berikan Pengesahan untuk MONCMD
+head_usr=Nama pengguna
+head_pass=Kata laluan
+head_mand=(Parameter dalam "WARNA RED" adalah Wajib)
+
+err_nomon=pake 'mon' tidak dipasang pada sistem
+err_nomonconf=Fail konfigurasi MON $1 tidak dijumpai pada sistem anda. Mungkin MON tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
+err_nowatch=Tiada kumpulan Pemantau dipilih. Pilih sekurang-kurangnya satu Watchgroup untuk meneruskan.
+err_noserv=Tiada Perkhidmatan yang dipilih untuk kumpulan watchpen
+err_nomemb=Tiada Hos/Ahli dipilih untuk kumpulan watchpen
+err_monrun=MON tidak berjalan di tuan rumah. Sila mulakan MON.
+stop_err=Gagal menghentikan MON
+stop_epid=Tidak lagi berjalan
+start_err=Gagal memulakan MON
+restart_err=Gagal memulakan semula MON
+restart_epid=Gagal mendapatkan PID
+
+other=Lain-lain (ruang dipisahkan)
+next=Seterusnya
+mon_stat=Status MON
+mon_off=Perkhidmatan MON tidak Dimulakan
+mon_start=Mulakan Perkhidmatan MON
+mon_stop=Hentikan Perkhidmatan MON
+mon_restart=Mulakan semula Perkhidmatan MON
+mon_startdesc=Klik butang ini untuk memulakan pelayan MON. Sehingga ia bermula, pemantauan tidak dikonfigurasi akan dilakukan.
+mon_stopdesc=Klik butang ini untuk menghentikan pelayan MON. Apabila berhenti, pemantauan dikonfigurasi akan berhenti.
+mon_restartdesc=Klik butang ini untuk menerapkan konfigurasi MON semasa dengan memulakan semula proses pelayan.
+line=(satu pada setiap baris)
+save_apply=Simpan dan Terapkan
+watch=Watchgroup
+members=Ahli
+def_perargs=wd {Sat-Sun}
+
+def_desc=keterangan
+def_inter=selang
+def_mon=memantau
+def_dep=dpend
+def_per=tempoh
+def_alert=amaran
+def_alertevr=alertevery
+def_alertaft=selepas itu
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=pengawal perangkap
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=Kumpulan Tuan rumah
+groups_group=Nama kumpulan
+groups_members=Tuan rumah ahli
+
+watches_title=Tonton Senarai
+watches_group=Kumpulan menonton
+watches_services=Perkhidmatan ditonton
+watches_sadd=Tambah perkhidmatan ..
+watches_add=Tambah senarai menonton untuk kumpulan :
+watches_return=senarai menonton
+watches_none=Tiada senarai jam tangan yang ditakrifkan lagi.
+
+global_title=Pilihan Global
+global_header=Pilihan konfigurasi Global MON
+global_maxprocs=Proses MON maksimum
+global_histlength=Panjang sejarah acara
+global_alertdir=Direktori program amaran
+global_mondir=Memantau direktori program
+global_authtype=Jenis pengesahan
+global_authtype_=Lalai
+global_authtype_getpwnam=Panggilan sistem
+global_authtype_userfile=Fail pengguna MON
+global_authtype_shadow=Fail bayangan
+global_userfile=Fail pengguna MON
+global_emaxprocs=Nombor MON yang hilang atau tidak sah
+global_ehistlength=Panjang sejarah acara yang hilang atau tidak sah
+global_ealertdir=Direktori program peringatan hilang atau tidak sah
+global_emondir=Direktori program monitor hilang atau tidak sah
+global_euserfile=Fail pengguna yang hilang MON
+
+watch_title=Edit Senarai Watch
+watch_header=Butiran menonton kumpulan tuan rumah
+watch_group=Kumpulan tuan rumah untuk menonton
+watch_services=Perkhidmatan ditonton
+watch_service=Nama perkhidmatan
+watch_monitor=Pantau untuk digunakan
+watch_interval=Semak setiap
+watch_periods=Tempoh pemantauan
+
+service_title=Tambah Perkhidmatan
+service_title2=Edit Perkhidmatan
+service_header=Butiran perkhidmatan yang diperhatikan
+service_name=Nama perkhidmatan
+service_interval=Semak setiap
+service_desc=Penerangan
+service_units_s=detik
+service_units_m=minit
+service_units_h=Jam
+service_units_d=hari
+service_units_w=minggu
+service_monitor=Menggunakan monitor
+service_mon1=Pemantau standard
+service_mon0=Monitor lain ..
+service_args=Memantau parameter
+service_period=Tempoh pemantauan $1 
+service_days=Hari untuk semak
+service_hours=Waktu untuk semak
+service_all=Semua
+service_pstr=Spesifikasi tempoh
+service_new=Tempoh pemantauan baru
+service_alerts=Isyarat untuk tempoh
+service_alert=Amaran
+service_atype=Jalankan bila
+service_atype_alert=Perkhidmatan turun
+service_atype_upalert=Perkhidmatan muncul
+service_atype_startupalert=MON bermula
+service_aargs=Parameter tambahan
+service_every=Hantar amaran
+service_every_def=Setiap monitor masa berjalan
+service_every_time=Setiap
+service_num=Pemberitahuan maksimum untuk dihantar
+service_unlimited=Tidak terhad
+service_after=Kegagalan sebelum berjaga-jaga
+service_immediate=Segera
+service_after_num=Selepas kegagalan $1 
+service_aftertime=Dalam selang masa
+service_newperiod=Tambah tempoh baru
+service_delperiod=Padamkan tempoh ini
+service_err=Gagal menyimpan perkhidmatan
+service_ename=Nama perkhidmatan hilang atau tidak sah
+service_einterval=Selang semakan yang hilang atau tidak sah
+service_eother=Pemantau hilang atau tidak sah
+service_ehour=Waktu hilang atau tidak sah untuk tempoh $1 (mesti seperti 9 pagi atau 5 petang)
+service_eperiod=Tiada hari atau jam yang ditentukan untuk tempoh $1 
+service_eevery=Ralat amaran perkhidmatan yang hilang atau tidak sah
+service_eafter=Nombor kegagalan yang hilang atau tidak sah sebelum berjaga-jaga
+service_enum=Isyarat maksimum yang hilang atau tidak sah untuk dihantar
+service_epstr=Spesifikasi tempoh yang hilang
+service_known0=<tt>Masa::Tempoh</tt> rentetan
+service_known1=Hari dan jam tertentu
+service_known2=Tempoh yang ditetapkan
+
+status_title=Status MON
+status_ecgi=Program status CGI $1 tidak wujud. Mungkin ia tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
+status_eperl=Program status CGI MON memerlukan modul $1 perl. <a href='$2'>Klik di sini</a> untuk memasangnya secara langsung dari CPAN.
+status_esame=Program CGI MON status $1 telah ditetapkan ke skrip <tt>mon.cgi</tt> dalam modul Webmin ini, bukan program CGI yang datang dengan MON. Laraskan konfigurasi modul <a href='$2'></a> untuk menggunakan laluan yang betul.
+
+users_title=Pengguna MON
+users_etype=Senarai pengguna MON tidak boleh diedit kerana MON tidak dikonfigurasikan untuk menggunakannya untuk pengesahan pada halaman <a href='$1'>Pilihan Global</a>.
+users_header=Pengguna MON yang dibenarkan dalam $1 
+users_nousers=Pengguna MON tidak didefinisikan dalam $1.
+users_add=Buat pengguna baru.
+users_return=Senarai pengguna MON
+
+user_create=Buat Pengguna MON
+user_edit=Edit MON Pengguna
+user_header=MON butiran pengguna
+user_user=Nama pengguna
+user_pass=Kata laluan
+user_leave=Biarkan tidak berubah
+user_err=Gagal menyimpan pengguna
+user_euser=Nama pengguna yang hilang atau tidak sah
+user_esame=Seorang pengguna dengan nama yang sama sudah wujud
+
+auth_title=Perintah Pelanggan
+auth_desc=Halaman ini membolehkan anda mengawal arahan MON yang boleh dijalankan oleh pengguna mana-mana apabila menggunakan program klien.
+auth_cmd=Perintah MON
+auth_users=Pengguna yang dibenarkan
+auth_none=Tiada siapa
+auth_all=Semua orang
+auth_sel=Hanya pengguna
+auth_err=Gagal menyimpan arahan klien
+auth_eusers=Tiada pengguna masuk untuk arahan $1 
+
+periods_title=Tempoh yang ditetapkan
+periods_period=Nama tempoh
+periods_times=Hari dan masa
+periods_alldays=Sepanjang hari
+periods_allhours=Semua jam
+periods_err=Gagal menyimpan tempoh yang ditetapkan
+periods_ename='$1' bukan nama tempoh sah
+periods_ehour=Waktu hilang atau tidak sah untuk tempoh $1 (mesti seperti 9 pagi atau 5 petang)
+
+show_title=Status Operasi
+show_ecgi=Program status MON $1 tidak wujud. Mungkin ia tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.

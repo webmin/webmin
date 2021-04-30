@@ -1,0 +1,33 @@
+index_title=بسته بندی TCP
+index_return=فهرست مطالب
+index_allowtitle=میزبان مجاز است
+index_denytitle=میزبان را انکار کرد
+index_norule=هنوز هیچ قانونی در <tt>$1</tt> تعریف نشده است.
+index_nofile=پرونده "$1" وجود ندارد - <a href="/config.cgi؟tcpwrappers ">پیکربندی ماژول خود را بررسی کنید</a>
+index_add=یک قانون جدید اضافه کنید.
+index_service=اهریمن، دیو
+index_hosts=میزبان
+index_cmd=فرمان
+index_delete=انتخاب شده را پاک کن
+index_none=هیچ یک
+
+edit_title1allow=Allow Rule را ایجاد کنید
+edit_title2allow=اجازه قانون را ویرایش کنید
+edit_title1deny=قانون را انکار کنید
+edit_title2deny=انکار قانون را ویرایش کنید
+edit_eid=این قانون یافت نشد
+edit_header=گزینه های قانون
+edit_service=خدمات
+edit_except=به جز خدمات
+edit_hosts=میزبان از راه دور
+edit_hostsexcept=به جز میزبان
+edit_cmd=دستورات شل
+edit_efound=Daemon '$1' در پیکربندی xinetd یافت نشد.
+
+save_errtitle=خطا در صرفه جویی در قانون
+save_ehost=ورودی میزبان حاوی کاراکترهای بد است
+save_ecmd=ورودی فرمان حاوی نویسه های بد است
+save_eservice=نامهای Daemon حاوی شخصیت های بد هستند
+
+del_errtitle=خطا در حذف قوانین
+del_enone=هیچ قانونی برای حذف مشخص نشده است

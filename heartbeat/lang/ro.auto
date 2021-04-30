@@ -1,0 +1,103 @@
+index_title=Monitorul bătăilor inimii
+index_return=monitorul bătăilor inimii
+index_edir=Directorul de configurare a bătăilor inimii $1 nu există. Poate că Heartbeat nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
+index_start=Porniți monitorul bătăilor inimii
+index_startmsg=Faceți clic pe acest buton pentru a începe procesul de monitorizare a bătăilor inimii. Acest lucru va permite reîncărcare automată a serviciului pe sistemul dvs. cu configurația curentă.
+index_apply=Aplica schimbarile
+index_applymsg=Faceți clic pe acest buton pentru a forța procesul de monitorizare a bătăilor de inimă în curs de încărcare pentru a reîncărca configurația curentă.
+index_eha_cf=Fișierul de configurare a bătăilor inimii $1 nu a fost găsit în sistemul dvs. Poate că nu a fost încă copiat în loc sau configurația <a href='$2'>a modulului</a> este incorectă.
+index_eharesources=Fișierul de resurse $1 nu a fost găsit în sistemul dvs. Poate că nu a fost încă copiat în loc sau configurația <a href='$2'>a modulului</a> este incorectă.
+index_eauthkeys=Fișierul cheilor de autentificare $1 nu a fost găsit în sistemul dvs. Poate că nu a fost încă copiat în loc sau configurația <a href='$2'>a modulului</a> este incorectă.
+index_ereq_resource_cmd=Scriptul pentru a solicita resurse de la celălalt nod ($1) nu a fost găsit în sistemul tău. Poate că nu a fost încă copiat în loc sau configurația <a href='$2'>a modulului</a> este incorectă.
+index_version=Versiunea bătăilor inimii $1 
+index_noversion=Avertisment - versiunea de Heartbeat instalată pe sistemul dvs. nu a putut fi detectată automat. Ar trebui să îl setați pe pagina <a href='$1'>de configurare a modulului</a>.
+index_status=Starea bătăilor inimii
+
+conf_title=Opțiuni de configurare
+conf_header=Opțiuni de configurare a bătăilor inimii
+conf_serials=Porturi de bătăi cardiace seriale
+conf_baud=Rata de transfer pentru portul serial
+conf_bcasts=Interfețe de bătăi inimii Ethernet
+conf_none=Nici unul
+conf_udpport=Portul batailor inimii UDP
+conf_mcast=Dispozitiv de bătăi cardiace multicast
+conf_mcastv=Dispozitiv $1, grup $2, port $3, TTL $4, loopback $5 
+conf_enabled=Activat
+conf_disabled=Dezactivat
+conf_keepalive=Timpul dintre bătăile inimii
+conf_nice_failback=Comportament frumos failback
+conf_secs=secunde
+conf_deadtime=Cu un timp înainte ca nodul să fie considerat mort
+conf_watchdog=Fișier dispozitiv de veghe
+conf_node=Gazde în cluster
+conf_logfile=Fișier jurnal de bătăi inimii
+conf_logfacility=Syslog log
+conf_initdead=Timp inițial mort
+conf_ok=Opțiuni de salvare
+conf_err=Nu a reușit să salvați opțiunile
+conf_ebaud=Rata de transfer lipsă sau nevalidă
+conf_ebcast=Nu au fost introduse interfețe de difuzare a bătăilor inimii
+conf_ebcastif=„$1” nu este o interfață de difuzare validă
+conf_eudpport=Portul cu bătăile inimii lipsă sau invalid
+conf_ekeepalive=Timp lipsit sau invalid între bătăile inimii
+conf_edeadtime=Timp lipsit sau nevalid
+conf_ewatchdog=Fișier dispozitiv dispozitiv de veghe lipsă sau inexistent
+conf_enonode=Nu a intrat nicio gazdă de cluster
+conf_ethisnode=Această gazdă $1 nu se află pe lista gazdelor clusterului
+conf_elogfile=Numele de fișier de jurnal lipsă sau nevalide
+conf_einitdead=Timpul inițial mort lipsit sau nevalid
+conf_einitdead2=Timpul inițial mort trebuie să fie cel puțin de două ori mai mare decât înainte ca un nod să fie considerat mort
+conf_emcast_dev=Dispozitiv multicast lipsă sau nevalid
+conf_emcast_ip=Adresa grupului multicast lipsă sau nevalidă
+conf_emcast_port=Număr de port multicast lipsă sau nevalid
+conf_emcast_ttl=Timpul de viață multicast lipsește sau este nevalid
+conf_auto_on=$ {Conf_enabled}
+conf_auto_off=$ {Conf_disabled}
+conf_auto_legacy=Mod legal
+conf_auto_=$ {Implicit}
+
+res_title=Resurse de cluster
+res_node=Nodul primar
+res_ips=Adrese IP
+res_servs=Servicii nod
+res_none=Nici unul
+res_nores=Nu au fost definite resurse de cluster pe sistemul tău.
+res_add=Adăugați o resursă de cluster
+res_return=lista resurselor
+res_active=Starea resurselor
+res_getserv=Obțineți resurse
+res_hbdown=Bătăile inimii în jos
+res_up=SUS
+res_down=JOS
+
+node_create=Adăugați Resursă Cluster
+node_edit=Editează resursa clusterului
+node_header=Detalii despre resurse cluster
+node_node=Nod principal pentru resursă
+node_ips=Adrese IP pentru resurse
+node_ip=adresa IP
+node_cidr=Netmask CIDR
+node_broad=Adresa de difuzare
+node_servs=Servicii pentru resurse
+node_serv=Serviciu
+node_args=Argumente suplimentare
+node_err=Nu a reușit salvarea resursei clusterului
+node_enone=Nodul primar lipsă sau nevalid
+node_eip=„$1” nu este o adresă IP validă
+node_ecidr=„$1” nu este un CIDR valid
+node_ebroad=„$1” nu este o adresă de difuzare validă
+
+auth_title=Taste de autentificare
+auth_header=Autentificarea nodului cluster
+auth_mode=Mod de autentificare
+auth_crc=CRC (Fără securitate)
+auth_sha1=SHA1 cu parolă
+auth_md5=MD5 cu parolă
+auth_err=Nu a reușit să salvați cheile de autentificare
+auth_emd5=Parolă MD5 lipsă sau nevalidă
+auth_esha1=Parola SHA1 lipsă sau nevalidă
+
+start_err=Nu a reușit să înceapă bătăile inimii
+
+apply_err=Eroare la aplicarea modificărilor
+apply_epid=Procesul nu mai rulează

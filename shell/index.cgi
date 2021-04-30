@@ -20,12 +20,13 @@ if ($in{'clearcmds'}) {
 	&webmin_log("clear");
 	}
 else {
-	open(PREVFILE, $prevfile);
+	open(PREVFILE, "<$prevfile");
 	chop(@allprevious = <PREVFILE>);
 	close(PREVFILE);
 	@previous = &unique(@allprevious);
 	}
 $cmd = $in{'doprev'} ? $in{'pcmd'} : $in{'cmd'};
+$chroot = &get_chroot();
 
 if ($in{'pwd'}) {
 	$pwd = $in{'pwd'};
@@ -39,6 +40,7 @@ else {
 		# Initial directory is user's home
 		local @uinfo = getpwnam($access{'user'} || $remote_user);
 		$pwd = scalar(@uinfo) && -d $uinfo[7] ? $uinfo[7] : "/";
+		$pwd =~ s/^\Q$chroot\E//g;
 		}
 	}
 if (!$in{'clear'}) {
@@ -51,9 +53,8 @@ if (!$in{'clear'}) {
 
 	if ($cmd) {
 		# Execute the latest command
-		$chroot = $access{'chroot'} eq '/' ? '' : $access{'chroot'};
 		$fullcmd = $cmd;
-		$ok = chdir($chroot.$pwd);
+		chdir($chroot.$pwd);
 		$cmdmsg = "<b>&gt; ".&html_escape($cmd, 1)."</b>\n";
 		$history .= $cmdmsg;
 		print $cmdmsg;
@@ -61,8 +62,14 @@ if (!$in{'clear'}) {
 		    $cmd =~ /^cd\s+'([^']+)'\s*(;?\s*(.*))$/ ||
 		    $cmd =~ /^cd\s+([^; ]*)\s*(;?\s*(.*))$/) {
 			$cmd = undef;
-			if (!chdir($chroot.$1)) {
-				$history .= &html_escape("$1: $!\n", 1);
+			$path = $1;
+			if ($path !~ /^\//) {
+				$path = $pwd."/".$path;
+				}
+			if (!chdir($chroot.$path)) {
+				$err = &html_escape("$path: $!")."\n";
+				print $err;
+				$history .= $err;
 				}
 			else {
 				$cmd = $3 if ($2);
@@ -78,7 +85,9 @@ if (!$in{'clear'}) {
 							# programs get the right
 							# module, not this one!
 			if (&supports_users() && $user ne "root") {
-				$cmd = &command_as_user($user, 2, $cmd);
+				$cmd = &command_as_user(
+					$user, $access{'shellenv'} ? 2 : 0,
+					"cd $pwd && $cmd");
 				@uinfo = getpwnam($user);
 				}
 			else {
@@ -86,7 +95,7 @@ if (!$in{'clear'}) {
 				}
 			if ($chroot && $uinfo[8] !~ /\/jk_chrootsh$/) {
 				$cmd = "chroot ".quotemeta($access{'chroot'}).
-				       " sh -c ".quotemeta($cmd);
+				       " sh -c ".quotemeta("cd $pwd ; $cmd");
 				}
 			$pid = &open_execute_command(OUTPUT, $cmd, 2, 0);
 			$out = "";

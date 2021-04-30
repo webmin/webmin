@@ -1,0 +1,4 @@
+index_langglobal2=Globális nyelv.. $1 ($2)
+
+change_eoverlay=Témafedvényt csak akkor lehet kiválasztani, ha felhasználói felület témát is kiválasztott
+change_eoverlay2=A kiválasztott témafedvény nem kompatibilis a kiválasztott felhasználói felület témájával

@@ -1,0 +1,11 @@
+index_langglobal2=Hizkuntza globala.. $1 ($2)
+index_passset=Ezarri ..
+index_passagain=Pasahitza berriro sartu
+index_desc2=Modulu hau $1 aldatzeko erabil daiteke, zure Webmin konturako soilik.
+index_dlang=moduluak erakusten diren hizkuntza
+index_dtheme=Webmin-en itxura kontrolatzen duen gaia
+index_dpass=pasahitza sartzeko erabiltzen den pasahitza
+
+change_epass2=Pasahitz berriak ez datoz bat
+change_eoverlay=Ezin duzu gaiaren gaineko gainjartzerik aukeratu UI gaia ere aukeratu ezean
+change_eoverlay2=Hautatutako gaiaren gainjartzea ez da bateragarria aukeratutako UI gaiarekin

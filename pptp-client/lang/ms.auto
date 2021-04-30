@@ -1,0 +1,112 @@
+index_title=Klien VPTP PPTP
+index_epptp=Program klien PPTP $1 tidak dijumpai pada sistem anda. Mungkin ia tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
+index_eppp=Program pelayan PPP $1 tidak dipasang pada sistem anda. PPTP bergantung kepadanya untuk beroperasi.
+index_eoptions=Fail ops PPTP PPTP global tidak ada. Sama ada mencipta atau menyesuaikan konfigurasi modul <a href='$2'></a> untuk menggunakan fail yang berbeza, atau tidak ada sama sekali.
+index_header=Tunnel yang ditakrifkan
+index_none=Tiada terowong PPTP telah ditakrifkan lagi.
+index_tunnel=Terowong $1 
+index_add=Tambah terowong PPTP VPN yang baru.
+index_conn=Sambung kepada:
+index_pass=dengan kata laluan pilihan:
+index_conndesc=Klik butang ini untuk menyambung terowong PPTP VPN terpilih menggunakan konfigurasi semasa.
+index_disc=Putuskan sambungan dari:
+index_discdesc=Klik butang ini untuk memutuskan sambungan terowong PPTP VPN yang sedang aktif dan keluarkan semua laluan melaluinya.
+index_return=Senarai terowong PPTP
+index_opts=Edit Pilihan PPP Global
+index_optsdesc=Klik butang ini untuk mengedit pilihan PPP yang digunakan untuk semua terowong PPTP VPN.
+index_version=Versi PPPd $1 
+index_boot=Sambungkan pada boot:
+index_noboot=&lt;Jangan sambung&gt;
+index_bootdesc=Ubah pilihan ini untuk mengawal sama ada sambungan VPTP PPTP yang dipilih dimulakan pada waktu boot atau tidak.
+
+disc_err=Gagal melepaskan terowong
+disc_egone=Tidak lagi aktif
+disc_ekill=Gagal membunuh proses pppd
+disc_done=Terowong $1 berjaya diputuskan.
+
+conn_err=Gagal menyambung terowong
+conn_egone=Terowong tidak lagi wujud
+cone_ealready=Telah disambungkan
+conn_einvalid=Alamat IP pelayan yang hilang dalam fail konfigurasi
+conn_title=Terowong Menyambung
+conn_cmd=Menubuhkan sambungan PPTP dengan arahan $1 ..
+conn_ok=.. sambungan berjaya diaktifkan menggunakan antara muka $1. Alamat tempatan anda adalah $2, dan alamat jauh adalah $3.
+conn_timeout=.. sambungan telah gagal! Semak mesej log di bawah untuk mendapatkan maklumat mengapa.
+conn_routes=Menambah laluan dengan arahan ..
+conn_mppe=Protokol MPPE untuk penyulitan VPN memerlukan daemon PPP dan sokongan kernel. Walau bagaimanapun, kesilapan di atas menunjukkan bahawa salah satu atau kedua-duanya tidak terdapat pada sistem anda. Jika pelayan PPTP tidak memerlukan MPPE, cuba matikan semua pilihan yang berkaitan dengannya pada halaman <a href='$1'>pilihan PPP global</a>.
+
+edit_title1=Tambah Tunai PPTP
+edit_title2=Edit Terowong PPTP
+edit_header=Opsyen terowong PPTP VPN
+edit_name=Nama terowong
+edit_server=Sambung ke pelayan
+edit_login=Masuk sebagai pengguna
+edit_same=Nama hos sistem
+edit_pass=Masuk dengan kata laluan
+edit_remote=Nama pelayan
+edit_auto=Automatik
+edit_adddef=Tambah laluan lalai?
+edit_def1=Melalui hujung yang lain
+edit_def2=Melalui pintu masuk ..
+edit_deldef=Padamkan laluan lalai lama?
+edit_routes=Laluan untuk ditambah selepas menyambungkan
+edit_type=Taipkan
+edit_type0=&nbsp;
+edit_type1=Rangkaian
+edit_type2=Tuan rumah tunggal
+edit_net=Rangkaian atau tuan rumah
+edit_mask=Netmask
+edit_gw=Melalui pintu masuk
+edit_gw_def=Akhir lain
+edit_unknown=Lain <tt>laluan</tt> arahan
+edit_file=Fail pilihan PPP
+edit_none=Tiada
+edit_global=Fail global standard
+edit_ofile=Fail lain ..
+
+save_err=Gagal menyimpan terowong
+save_ename=Nama terowong yang hilang
+save_eserver=Pelayan hilang atau tidak sah untuk disambungkan
+save_elogin=Nama log masuk yang hilang atau tidak sah
+save_eremote=Nama pelayan jauh hilang atau tidak sah
+save_edef=Gerbang laluan lalai atau tidak sah
+save_enet=Alamat rangkaian tidak sah dalam laluan $1 
+save_emask=Netmask tidak sah dalam laluan $1 
+save_egw=Gerbang tidak sah untuk rangkaian dalam laluan $1 
+save_ehost=Alamat IP hos tidak sah dalam laluan $1 
+save_emask2=Tiada netmask diperlukan untuk laluan tuan rumah $1 
+save_egw2=Gerbang tidak sah untuk tuan rumah dalam laluan $1 
+save_erename=Gagal menamakan semula fail terowong
+save_eclash=Terowong atau PPP dengan nama yang sama sudah wujud
+save_efile=Fail opsyen PPP yang hilang atau tidak sah
+
+opts_title=Opsyen PPP Global
+opts_desc=Tetapan di bawah diambil dari $1, dan akan digunakan untuk semua terowong yang ditetapkan menggunakan fail pilihan PPP global standard.
+opts_header=Pilihan PPP untuk semua terowong
+opts_mtu=Saiz paket penghantaran maksimum
+opts_mru=Saiz maksimum penerimaan paket
+opts_err=Gagal menyimpan pilihan PPP global
+opts_emtu=Saiz paket penghantaran maksimum atau tidak sah
+opts_emru=Saiz maksimum paket yang diterima atau tidak sah
+opts_msdesc=Pilihan di bawah membolehkan penyulitan MPPE digunakan oleh pelayan VPN Windows. Bagaimanapun, MPPE memerlukan sokongan dalam daemon PPP dan kernel sistem operasi.
+
+mppe_mppe-40=Gunakan penyulitan MPPE 40-bit?
+mppe_mppe-128=Gunakan penyulitan MPPE 128-bit?
+mppe_mppe-stateless=Dayakan mod MPPE tanpa statik?
+mppe_mppe=Dayakan enkripsi MPPE?
+mppe_m2=Mesti digunakan
+mppe_m0=Tidak boleh digunakan
+mppe_d0=Dinyahdayakan
+mppe_d1=Dibenarkan
+mppe_mppe-stateful=Dayakan mod MPPE yang bernas?
+mppe_old=Amaran - Perintah MPPE gaya lama $1 didapati dalam fail konfigurasi anda, walaupun daemon PPP anda menyokong arahan gaya baru.
+mppe_new=Amaran - Arahan MPPE gaya baru $1 dijumpai dalam fail konfigurasi anda, walaupun daemon PPP anda hanya menyokong arahan gaya lama.
+
+log_create=Terowong PPTP dibuat $1 
+log_update=Terowong PPTP diubah suai $1 
+log_delete=Terowong PPTP yang dihapus $1 
+log_conn=Terowong yang disambungkan $1 
+log_conn_l=Terowong yang disambungkan $1 dengan alamat setempat $2 
+log_failed=Gagal menyambung terowong $1 
+log_disc=Terowong terputus $1 
+log_opts=Disunting opsyen PPP global

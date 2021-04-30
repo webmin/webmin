@@ -1,0 +1,22 @@
+index_title=Comandi Shell Cluster
+index_cmd=Comando da eseguire
+index_old=o
+index_server=Esegui su server
+index_run=Esegui comando ora
+index_return=indice del modulo
+index_this=questo server
+index_all=&lt;Tutti gli host&gt;
+index_group=Membri di $1 
+index_clear=Cancellare la cronologia
+index_edit=Modifica precedente
+
+run_title=Esegui comando
+run_err=Impossibile eseguire il comando
+run_ecmd=Nessun comando inserito
+run_failed=Impossibile eseguire $1 : $2 
+run_success=Uscita da $1 ..
+run_enone=Nessun server da eseguire su selezionato
+
+log_clear=Cronologia dei comandi cancellata
+log_run=Ha funzionato $1 su $2 server
+log_run_l=Ha funzionato $1 su $2 

@@ -85,6 +85,7 @@ while(my $l = <$fh>) {
 		$user{'twofactor_apikey'} = $user[13];
 		$user{'modules'} = $acl{$user[0]};
 		$user{'lang'} = $gconfig{"lang_$user[0]"};
+		$user{'langauto'} = $gconfig{"langauto_$user[0]"};
 		$user{'notabs'} = $gconfig{"notabs_$user[0]"};
 		$user{'rbacdeny'} = $gconfig{"rbacdeny_$user[0]"};
 		if ($gconfig{"theme_$user[0]"}) {
@@ -613,7 +614,7 @@ if ($user->{'proto'}) {
 			}
 		}
 	&disconnect_userdb($miniserv{'userdb'}, $dbh);
-	}
+	} 
 else {
 	# In local files
 	&lock_file($ENV{'MINISERV_CONFIG'});
@@ -625,7 +626,7 @@ else {
 	elsif (defined($user->{'theme'})) {
 		$miniserv{"preroot_".$user->{'name'}} = "";
 		}
-	my @logout = split(/\s+/, $miniserv{'logouttimes'});
+	my @logout = split(/\s+/, $miniserv{'logouttimes'} || "");
 	@logout = grep { !/^$username=/ } @logout;
 	if (defined($user->{'logouttime'})) {
 		push(@logout, "$user->{'name'}=$user->{'logouttime'}");
@@ -697,6 +698,8 @@ else {
 
 	delete($gconfig{"lang_".$username});
 	$gconfig{"lang_".$user->{'name'}} = $user->{'lang'} if ($user->{'lang'});
+	delete($gconfig{"langauto_".$username});
+	$gconfig{"langauto_".$user->{'name'}} = $user->{'langauto'} if (defined($user->{'langauto'}));
 	delete($gconfig{"notabs_".$username});
 	$gconfig{"notabs_".$user->{'name'}} = $user->{'notabs'}
 		if ($user->{'notabs'});
@@ -755,9 +758,9 @@ my ($user, $oldpass, $miniserv) = @_;
 if ($oldpass ne $user->{'pass'} &&
     "!".$oldpass ne $user->{'pass'} &&
     $oldpass ne "!".$user->{'pass'} &&
-    $user->{'pass'} ne 'x' &&
-    $user->{'pass'} ne 'e' &&
-    $user->{'pass'} ne '*LK*') {
+    $oldpass ne 'x' &&
+    $oldpass ne 'e' &&
+    $oldpass ne '*LK*') {
 	# Password change detected .. update change time
 	# and save the old one
 	my $nolock = $oldpass;
@@ -1656,11 +1659,14 @@ is not given, a salt will be selected randomly.
 sub encrypt_password
 {
 my ($pass, $salt) = @_;
-if ($gconfig{'md5pass'} == 1) {
+my $mode = $salt =~ /^\$1\$/ ? 1 :
+	   $salt =~ /^\$6\$/ ? 2 :
+	   length($salt) == 13 ? 0 : $gconfig{'md5pass'};
+if ($mode == 1) {
 	# Use MD5 encryption
 	return &encrypt_md5($pass, $salt);
 	}
-elsif ($gconfig{'md5pass'} == 2) {
+elsif ($mode == 2) {
 	# Use SHA512 encryption
 	return &encrypt_sha512($pass, $salt);
 	}
@@ -2165,6 +2171,17 @@ foreach $a (split(/\s+/, $miniserv{'anonymous'})) {
 		}
 	}
 return @rv;
+}
+
+# get_safe_acl(module)
+# Returns the safe ACL hash ref for a module, if there is one, or undef
+sub get_safe_acl
+{
+my ($m) = @_;
+my $mdir = &module_root_directory($m);
+my %rv;
+&read_file_cached("$mdir/safeacl", \%rv) || return undef;
+return \%rv;
 }
 
 1;

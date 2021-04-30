@@ -1,0 +1,8 @@
+index_title=集群更改密碼
+index_noservers=<a href=$1>集群用戶和組</a>模塊中沒有定義用於管理用戶的服務器。
+index_hosts=使用此模塊進行的所有密碼更改都將在“群集用戶和組”模塊管理的所有 $1主機上完成。
+
+passwd_err=修改密碼失敗
+passwd_title=修改密碼
+passwd_on=更改 $1..上的密碼
+passwd_euser=用戶不存在！

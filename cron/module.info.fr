@@ -1,1 +1,1 @@
-desc_fr=Tâches Cron
+desc_fr=TÃ¢ches Cron

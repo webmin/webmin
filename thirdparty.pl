@@ -58,7 +58,7 @@ sub read_file
 {
 local($arr);
 $arr = $_[1];
-open(ARFILE, $_[0]) || return 0;
+open(ARFILE, "<".$_[0]) || return 0;
 while(<ARFILE>) {
         chop;
         if (!/^#/ && /^([^=]+)=(.*)$/) { $$arr{$1} = $2; }

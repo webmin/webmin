@@ -73,10 +73,9 @@ my $protocol = &find_value("protocol", $jail);
 print &ui_table_row($text{'jail_defprotocol'},
 	&ui_select("protocol", $protocol,
 		   [ [ '', "&lt;$text{'jail_none'}&gt;" ],
-		     [ 'all', $text{'jail_allprotocol'} ],
 		     [ 'tcp', 'TCP' ],
 		     [ 'udp', 'UDP' ],
-		     [ 'icmp', 'ICMP' ] ]));
+		     [ 'icmp', 'ICMP' ] ], 0, 0, 1));
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);

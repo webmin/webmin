@@ -1,8 +1,8 @@
-line1=OPÁıes configur·veis,11
-lease=Tempo aceit·vel de atraso entre hora de sistema e hora do hardware, em segundos,3,Nenhum
-timeserver=Servidor de hor·rio padr„o,3,Nenhum
-ntp_only=Usar sÛ NTP para sincronizaÁ„o da hora?,1,1-Sim,0-N„o
-line2=ConfiguraÁ„o do sistema,11
-seconds=Formato da configuraÁ„o de hora do sistema,1,1-MMDDHHMMYYYY.SS,0-MMDDHHMMYY,2-YYYYMMDDHHMM.SS
-zone_style=MÈtodo de configuraÁ„o de fuso-hor·rio,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;N„o suportado neste sistema operacional&gt;
+line1=OP√ß√µes configur√°veis,11
+lease=Tempo aceit√°vel de atraso entre hora de sistema e hora do hardware&#44; em segundos,3,Nenhum
+timeserver=Servidor de hor√°rio padr√£o,3,Nenhum
+ntp_only=Usar s√≥ NTP para sincroniza√ß√£o da hora?,1,1-Sim,0-N√£o
+line2=Configura√ß√£o do sistema,11
+seconds=Formato da configura√ß√£o de hora do sistema,1,1-MMDDHHMMYYYY.SS,0-MMDDHHMMYY,2-YYYYMMDDHHMM.SS
+zone_style=M√©todo de configura√ß√£o de fuso-hor√°rio,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;N√£o suportado neste sistema operacional&gt;
 hwclock_flags=Flags de linhas de comando para hwclock,10,-Nenhuma,sysconfig-Importar de /etc/sysconfig/clock

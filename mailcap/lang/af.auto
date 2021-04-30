@@ -1,0 +1,46 @@
+index_title=MIME-tipe programme
+index_none=Geen MIME-tipe hanteerderprogramme is nog gedefinieër nie.
+index_add=Voeg 'n nuwe MIME-tipe program by.
+index_type=MIME-tipe
+index_program=Hanteerderprogram
+index_cmt=beskrywing
+index_delete=Verwyder geselekteerde
+index_disable=Deaktiveer gekies
+index_enable=Aktiveer geselekteerde
+index_enabled=In staat gestel?
+index_return=lys van programme
+
+edit_title1=Skep MIME-tipe program
+edit_title2=Wysig MIME-tipe program
+edit_header=Besonderhede van die MIME-tipe hanteerderprogram
+edit_type=MIME-tipe
+edit_enabled=In staat gestel?
+edit_program=Hanteerderprogram
+edit_cmt=beskrywing
+edit_egone=Program bestaan nie meer nie!
+edit_test=Toetsopdrag
+edit_none=Geen (gebruik altyd program)
+edit_term=Vertoon uitset in terminale?
+edit_copious=Produseer baie opbrengste?
+edit_desc=MIME-tipe beskrywing
+
+save_err=Die MIME-program kon nie gestoor word nie
+save_etype=MIME-tipe ontbreek of ongeldig
+save_eprogram=Ontbrekende hanteerderprogram
+save_eclash='N Geaktiveerde program vir die ingevoerde MIME-tipe bestaan reeds
+save_etest=Ontbrekende of ongeldige toetsopdrag
+save_edesc=Ongeldige MIME-tipe beskrywing
+
+delete_err=Kon nie MIME-tipe programme uitvee nie
+disable_err=Kon nie MIME-tipe programme deaktiveer nie
+disable_eclash=Daar is reeds 'n MIME-tipe program vir $1 gedeaktiveer
+enable_err=Kon nie MIME-tipe programme inskakel nie
+enable_eclash='N Geaktiveerde MIME-program vir $1 bestaan reeds
+delete_enone=Geen gekies nie
+
+log_delete_mailcap=Skrap die MIME-program vir $1 
+log_create_mailcap=MIME-program geskep vir $1 
+log_modify_mailcap=Gewysigde MIME-program vir $1 
+log_delete_mailcaps=$1 MIME-tipe programme is uitgevee
+log_disable_mailcaps=Uitgeskakel $1 MIME-tipe programme
+log_enable_mailcaps=Aktiveer $1 MIME-tipe programme

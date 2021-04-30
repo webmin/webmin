@@ -1,12 +1,12 @@
-<header>Fes la substitució strftime de les destinacions de còpia</header>
+<header>Fes la substituciÃ³ strftime de les destinacions de cÃ²pia</header>
 
-Si es posa aquesta opció a <b>Sí</b>, es poden utilitzar els codis com ara
-%d, %m, %Y i %u en el nom de fitxer de destinació de la còpia. Aquests se
+Si es posa aquesta opciÃ³ a <b>SÃ­</b>, es poden utilitzar els codis com ara
+%d, %m, %Y i %u en el nom de fitxer de destinaciÃ³ de la cÃ²pia. Aquests se
 substituiran pel dia, mes, any i dia de la setmana respectivament, quan es 
-faci la còpia. Això és útil si vols desar una còpia diferent cada dia, de
+faci la cÃ²pia. AixÃ² Ã©s Ãºtil si vols desar una cÃ²pia diferent cada dia, de
 manera que puguis retrocedir el sistema fins a una data anterior. <p>
 
-Alguns altres codis que es poden utilitzar són:<br>
+Alguns altres codis que es poden utilitzar sÃ³n:<br>
 
 <pre><font size=-1>
  %a     El nom del dia de la setmana abreujat, segons  amb  el
@@ -21,116 +21,116 @@ Alguns altres codis que es poden utilitzar són:<br>
  %B     El nom del dia del mes complet, segons amb  el  locale
         actual.
 
- %c     La representació preferida de la data i l'hora  segons
+ %c     La representaciÃ³ preferida de la data i l'hora  segons
         el locale actual.
 
- %C     El número de segle (any/100) com un enter de 2 dígits.
+ %C     El nÃºmero de segle (any/100) com un enter de 2 dÃ­gits.
 
- %d     El dia del mes com un número decimal (del 01 al 31).
+ %d     El dia del mes com un nÃºmero decimal (del 01 al 31).
 
- %e     Com  %d, el dia del mes com un número decimal, però el
+ %e     Com  %d, el dia del mes com un nÃºmero decimal, perÃ² el
         zero inicial se substitueix per un espai.
 
- %E     Modificador: utilitza un format alternatiu, vegeu  més
+ %E     Modificador: utilitza un format alternatiu, vegeu  mÃ©s
         avall.
 
- %G     L'any ISO 8601 amb el segle  com  un  número  decimal. 
-        L'any de 4 dígits corresponent al número de setmana ISO
-        (vegeu %V). Això té el mateix format i valor  que  %y,
-        excepte que si el número  de  setmana  ISO  pertany  a
-        l'any següent o l'anterior, s'utilitza aquest any.
+ %G     L'any ISO 8601 amb el segle  com  un  nÃºmero  decimal. 
+        L'any de 4 dÃ­gits corresponent al nÃºmero de setmana ISO
+        (vegeu %V). AixÃ² tÃ© el mateix format i valor  que  %y,
+        excepte que si el nÃºmero  de  setmana  ISO  pertany  a
+        l'any segÃ¼ent o l'anterior, s'utilitza aquest any.
 
- %g     Com %G, però sense el segle, això és, amb un any de  2
-        dígits (00-99).
+ %g     Com %G, perÃ² sense el segle, aixÃ² Ã©s, amb un any de  2
+        dÃ­gits (00-99).
 
  %h     Equivalent a %b.
 
- %H     L'hora com un número decimal utilitzant un rellotge de
+ %H     L'hora com un nÃºmero decimal utilitzant un rellotge de
         24 hores (de 00 to 23).
 
- %I     L'hora com un número decimal utilitzant un rellotge de
+ %I     L'hora com un nÃºmero decimal utilitzant un rellotge de
         12 hores (de 01 to 12).
 
- %j     El dia de l'any com un número decimal (de 001 a 366).
+ %j     El dia de l'any com un nÃºmero decimal (de 001 a 366).
 
- %k     L'hora (rellotge de 24 hores)  com un  número  decimal
-        (de 0 a 23); els dígits sols es precedeixen amb espai.
-        (vegeu també %H.)
+ %k     L'hora (rellotge de 24 hores)  com un  nÃºmero  decimal
+        (de 0 a 23); els dÃ­gits sols es precedeixen amb espai.
+        (vegeu tambÃ© %H.)
 
- %l     L'hora (rellotge de 12 hores)  com un  número  decimal
-        (d'1 a 12); els dígits sols es precedeixen amb  espai.
-        (vegeu també %I.)
+ %l     L'hora (rellotge de 12 hores)  com un  nÃºmero  decimal
+        (d'1 a 12); els dÃ­gits sols es precedeixen amb  espai.
+        (vegeu tambÃ© %I.)
 
- %m     El mes com un número decimal (de 01 a 12).
+ %m     El mes com un nÃºmero decimal (de 01 a 12).
 
- %M     Els minuts com un número decimal (de 00 a 59).
+ %M     Els minuts com un nÃºmero decimal (de 00 a 59).
 
- %n     Un caràcter de salt de línia.
+ %n     Un carÃ cter de salt de lÃ­nia.
 
- %O     Modificador: utilitza un format alternatiu, vegeu  més
+ %O     Modificador: utilitza un format alternatiu, vegeu  mÃ©s
         avall.
 
  %p     'AM' o 'PM', segons el valor de l'hora  donat,  o  els
         valors corresponents al locale actual.  El  migdia  es
         tracta com a 'pm' i la mitjanit com a 'am'.
 
- %P     Com %p, però en minúscules: 'am' or 'pm' o  la  cadena
+ %P     Com %p, perÃ² en minÃºscules: 'am' or 'pm' o  la  cadena
         corresponent al locale actual.
 
- %r     L'hora en notació a.m. o p.m.  Amb  el  locale  POSIX,
-        això és equivalent a '%I:%M:%S %p'.
+ %r     L'hora en notaciÃ³ a.m. o p.m.  Amb  el  locale  POSIX,
+        aixÃ² Ã©s equivalent a '%I:%M:%S %p'.
 
- %R     L'hora en notació de 24 hores (%H:%M). Per una  versió
-        que inclogui els segons, vegeu %T més avall.
+ %R     L'hora en notaciÃ³ de 24 hores (%H:%M). Per una  versiÃ³
+        que inclogui els segons, vegeu %T mÃ©s avall.
 
- %s     El nombre de segons a partir  de  l'Era,  això  és,  a
+ %s     El nombre de segons a partir  de  l'Era,  aixÃ²  Ã©s,  a
         partir de 1970-01-01 00:00:00 UTC.
 
- %S     Els segons com un número decimal (de 00 to 61).
+ %S     Els segons com un nÃºmero decimal (de 00 to 61).
 
- %t     Un caràcter de tabulació.
+ %t     Un carÃ cter de tabulaciÃ³.
 
- %T     L'hora en notació de 24 hores (%H:%M:%S).
+ %T     L'hora en notaciÃ³ de 24 hores (%H:%M:%S).
 
  %u     El dia de la setmana com  a  decimal,  de  l'1  al  7,
-        essent l'1 el dilluns. Vegeu també %w.
+        essent l'1 el dilluns. Vegeu tambÃ© %w.
 
- %U     El número de setmana de l'any  actual  com  un  número
-        decimal del 0 al 53, començant amb el primer  diumenge
-        com el primer dia de la setmana 01. Vegeu també  %V  i
+ %U     El nÃºmero de setmana de l'any  actual  com  un  nÃºmero
+        decimal del 0 al 53, comenÃ§ant amb el primer  diumenge
+        com el primer dia de la setmana 01. Vegeu tambÃ©  %V  i
         %W.
 
- %V     El número de setmana ISO 8601:1988 de l'any actual com
-        un  número decimal del 0 al 53, on la setmana 1 és  la
-        primera setmana que té almenys 4 dies  dins  de  l'any 
+ %V     El nÃºmero de setmana ISO 8601:1988 de l'any actual com
+        un  nÃºmero decimal del 0 al 53, on la setmana 1 Ã©s  la
+        primera setmana que tÃ© almenys 4 dies  dins  de  l'any 
         actual, i amb el  dilluns  com  a  primer  dia  de  la
-        setmana. Vegeu també  %V i %W.
+        setmana. Vegeu tambÃ©  %V i %W.
 
  %w     El dia de la setmana com un decimal, de 0 a 6,  essent
-        el 0 el diumenge. Vegeu també %u.
+        el 0 el diumenge. Vegeu tambÃ© %u.
 
- %W     El número de setmana de l'any  actual  com  un  número
-        decimal, de 00 a 53, començant amb el  primer  dilluns
+ %W     El nÃºmero de setmana de l'any  actual  com  un  nÃºmero
+        decimal, de 00 a 53, comenÃ§ant amb el  primer  dilluns
         com a primer dia de la setmana 01.
 
- %x     La representació preferida de la data segons el locale
+ %x     La representaciÃ³ preferida de la data segons el locale
         actual sense l'hora.
 
- %X     La representació preferida de l'hora segons el  locale
+ %X     La representaciÃ³ preferida de l'hora segons el  locale
         actual sense la data.
 
- %y     L'any com un número decimal sense el segle  (de  00  a
+ %y     L'any com un nÃºmero decimal sense el segle  (de  00  a
         99).
 
- %Y     L'any com un número decimal incloent-hi el segle.
+ %Y     L'any com un nÃºmero decimal incloent-hi el segle.
 
- %z     La zona horària com a diferència horària amb  GMT.  És
+ %z     La zona horÃ ria com a diferÃ¨ncia horÃ ria amb  GMT.  Ã‰s
         necessari per  a  crear  dates  conformes  amb  RFC822
         (utilitzant "%a, %d  %b  %Y %H:%M:%S %z").
 
- %Z     La zona horària, nom, o abreujament.
+ %Z     La zona horÃ ria, nom, o abreujament.
 
- %%     Un caràcter '%' literal.
+ %%     Un carÃ cter '%' literal.
 </font></pre>
 
 <footer>

@@ -1,0 +1,41 @@
+zones_ipv6=IPv6
+zones_ipsec6=IPsec 6
+zones_bport=bport
+zones_bport6=bport6
+
+proxyndp_title=Proxy NDP
+proxyndp_desc=Op deze pagina kunt u uw systeem configureren om NDP-verzoeken voor andere dan zijn eigen IP-adressen te beantwoorden, zodat het pakketten naar die adressen kan doorsturen naar hun echte bestemmingen.
+proxyndp_add=Voeg een nieuw proxy NDP-adres toe.
+proxyndp_none=Er zijn nog geen proxy-NDP-adressen gedefinieerd.
+proxyndp_0=Adres aan NDP
+proxyndp_1=Verbonden met interface
+proxyndp_2=Externe interface
+proxyndp_3=Aanhoudend?
+proxyndp_return=proxy NDP-adreslijst
+proxyndp_edit=Noxy-adres van proxy bewerken
+proxyndp_create=Maak een Proxy NDP-adres
+proxyndp_header=Proxy NDP-details
+proxyndp_err=Kan proxy-NDP niet opslaan
+proxyndp_have=Route naar host bestaat?
+proxyndp_eaddr=Ontbrekend of ongeldig adres voor NDP
+proxyndp_pers=Route verlaten, zelfs als de firewall is gestopt?
+
+tunnels_ipsec:ah=IPsec (met AH)
+tunnels_l2tp=Laag 2-tunneling (UDP 1701)
+tunnels_openvpnclient=OpenVPN-client op firewall
+tunnels_openvpnclient_1=OpenVPN-client op firewall, op poort ..
+tunnels_openvpnserver=OpenVPN-server op firewall
+tunnels_openvpnserver_1=OpenVPN-server op firewall, op poort ..
+
+providers_fallback=Provider toevoegen aan routeringstabel
+providers_notrack=Turn of track
+providers_tproxy=Ondersteuning van TProxy op lo-interface
+
+opts_proxyndp=Schakel proxy NDP in
+opts_ndp_filter=Reageer alleen op NDP-verzoeken voor interface-IP
+
+opts_forward=Doorsturen instellen
+opts_ignore=Negeer op/neer-gebeurtenissen
+opts_optional=Interface is optioneel
+opts_required=Interface is vereist
+opts_bridge=Interface is een brug

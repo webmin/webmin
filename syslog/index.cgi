@@ -111,7 +111,7 @@ if (@others) {
 			push(@cols, &text('index_file',$o->{'file'}));
 			}
 		else {
-			push(@cols, &text('index_cmd',$o->{'cmd'}));
+			push(@cols, &text('index_cmd', "<tt>".$o->{'cmd'}."</tt>"));
 			}
 		if ($config{'tags'}) {
 			push(@cols, "");

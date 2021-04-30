@@ -1,0 +1,200 @@
+index_title=MON Servisný monitor
+index_return=Index MON
+index_edir=Adresár MON $1 neexistuje. Možno nie je MON nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+mon_global_title=Globálna konfigurácia premenných
+mon_conf_title=Základná konfigurácia
+mon_status_title=Prevádzkový stav
+hostgroups_title=MON Configuration-Hostgroups
+services_title=Definície služieb sledovacích skupín
+
+head_hostgroups=Hostiteľské skupiny a služby
+head_groups=Názov hostiteľskej skupiny
+head_members=Členovia hostiteľskej skupiny
+head_services=Služby hostiteľskej skupiny na pozeranie
+head_service=Služba na sledovanie
+head_param=Parametre služby
+head_watch=Pozerať sa na skupinu?
+head_monauth=Uveďte overenie MONCMD
+head_usr=užívateľské meno
+head_pass=heslo
+head_mand=(Parametre v časti ČERVENÁ FARBA sú povinné)
+
+err_nomon=v systéme nie je nainštalovaný balík 'mon'
+err_nomonconf=Vo vašom systéme sa nenašiel konfiguračný súbor MON $1. Možno nie je MON nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+err_nowatch=Nie sú vybraté žiadne sledovacie skupiny. Ak chcete pokračovať, vyberte aspoň jednu sledovanú skupinu.
+err_noserv=Pre sledovanú skupinu neboli vybrané žiadne služby
+err_nomemb=Pre sledovanú skupinu neboli vybraní žiadni hostitelia/členovia
+err_monrun=MON nebeží na hostiteľskom stroji. Začnite MON.
+stop_err=Nepodarilo sa zastaviť MON
+stop_epid=Už nebeží
+start_err=Nepodarilo sa spustiť MON
+restart_err=Nepodarilo sa reštartovať MON
+restart_epid=Nepodarilo sa získať PID
+
+other=Iné (oddelené miesto)
+next=Ďalšie
+mon_stat=MON Stav
+mon_off=Služby MON neboli spustené
+mon_start=Spustite služby MON
+mon_stop=Zastavte služby MON
+mon_restart=Reštartujte službu MON
+mon_startdesc=Kliknutím na toto tlačidlo spustíte server MON. Pokiaľ sa nespustí, nebude sa vykonávať žiadne nakonfigurované monitorovanie.
+mon_stopdesc=Kliknutím na toto tlačidlo zastavíte server MON. Po zastavení prestane nakonfigurované monitorovanie.
+mon_restartdesc=Kliknutím na toto tlačidlo sa aktuálna konfigurácia MON použije reštartovaním procesu servera.
+line=(jeden na každom riadku)
+save_apply=Uložiť a použiť
+watch=Watchgroup
+members=členovia
+def_perargs=wd {So-Ne}
+
+def_desc=popis
+def_inter=interval
+def_mon=monitor
+def_dep=dpend
+def_per=perióda
+def_alert=bdelý
+def_alertevr=alertevery
+def_alertaft=alertafter
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=trapduration
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=Hostiteľské skupiny
+groups_group=Názov skupiny
+groups_members=Členskí hostitelia
+
+watches_title=Zoznamy sledovania
+watches_group=Sledujúca skupina
+watches_services=Sledované služby
+watches_sadd=Pridajte službu ..
+watches_add=Pridať zoznam sledovaných pre skupinu :
+watches_return=zoznamy sledovania
+watches_none=Zatiaľ neboli definované žiadne zoznamy sledovania.
+
+global_title=Globálne možnosti
+global_header=Možnosti globálnej MON konfigurácie
+global_maxprocs=Maximálne procesy MON
+global_histlength=Dĺžka histórie udalostí
+global_alertdir=Adresár výstražných programov
+global_mondir=Monitorujte adresár programov
+global_authtype=Autentický typ
+global_authtype_=štandardné
+global_authtype_getpwnam=Systémové hovory
+global_authtype_userfile=Súbor používateľov MON
+global_authtype_shadow=Tieňový súbor
+global_userfile=Súbor používateľa MON
+global_emaxprocs=Chýbajúci alebo neplatný počet procesov MON
+global_ehistlength=Chýba alebo je neplatná dĺžka histórie udalostí
+global_ealertdir=Chýbajúci alebo neplatný adresár výstražných programov
+global_emondir=Chýbajúci alebo neplatný adresár programov monitorovania
+global_euserfile=Chýba súbor používateľov MON
+
+watch_title=Upraviť zoznam sledovania
+watch_header=Podrobnosti o sledovaní hostiteľskej skupiny
+watch_group=Hostiteľská skupina na pozeranie
+watch_services=Sledované služby
+watch_service=Názov služby
+watch_monitor=Monitor na použitie
+watch_interval=Skontrolujte každú
+watch_periods=Monitorovacie obdobia
+
+service_title=Pridajte službu
+service_title2=Upraviť službu
+service_header=Sledované podrobnosti služby
+service_name=Názov služby
+service_interval=Skontrolujte každú
+service_desc=popis
+service_units_s=sekundy
+service_units_m=minúty
+service_units_h=hodiny
+service_units_d=dni
+service_units_w=týždne
+service_monitor=Pomocou monitora
+service_mon1=Štandardný monitor
+service_mon0=Ďalší monitor ..
+service_args=Monitorujte parametre
+service_period=Monitorovacie obdobie $1 
+service_days=Dni na kontrolu
+service_hours=Hodiny na kontrolu
+service_all=všetko
+service_pstr=Špecifikácia obdobia
+service_new=Nové monitorovacie obdobie
+service_alerts=Upozornenia za obdobie
+service_alert=bdelý
+service_atype=Spustiť, keď
+service_atype_alert=Služba klesá
+service_atype_upalert=Služby prichádzajú
+service_atype_startupalert=MON sa spustí
+service_aargs=Dodatočné parametre
+service_every=Poslať upozornenie
+service_every_def=Zakaždým, keď je spustený monitor
+service_every_time=každý
+service_num=Maximálny počet upozornení na odoslanie
+service_unlimited=neobmedzený
+service_after=Poruchy pred výstrahou
+service_immediate=bezodkladne
+service_after_num=Po $1 zlyhaniach
+service_aftertime=V časovom intervale
+service_newperiod=Pridajte nové obdobie
+service_delperiod=Odstrániť toto obdobie
+service_err=Nepodarilo sa uložiť službu
+service_ename=Chýba alebo je neplatný názov služby
+service_einterval=Chýbajúci alebo neplatný interval kontroly
+service_eother=Chýba alebo je neplatný monitor
+service_ehour=Chýbajúca alebo neplatná hodina pre obdobie $1 (musí byť ako 9:00 alebo 17:00)
+service_eperiod=Pre obdobie $1 nie sú určené žiadne dni ani hodiny
+service_eevery=Chýbajúci alebo neplatný interval výstrahy služby
+service_eafter=Chýbajúci alebo neplatný počet porúch pred varovaním
+service_enum=Chýbajúce alebo neplatné maximálne upozornenia na odoslanie
+service_epstr=Špecifikácia chýbajúceho obdobia
+service_known0=<tt>Čas::Obdobie</tt>
+service_known1=Zadané dni a hodiny
+service_known2=Definované obdobie
+
+status_title=MON Stav
+status_ecgi=Program MON stavu CGI $1 neexistuje. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+status_eperl=Program MON status CGI vyžaduje modul $1 perl. <a href='$2'>Kliknite sem</a> a nainštalujte ho priamo z CPAN.
+status_esame=Program MON stav CGI $1 bol v tomto module Webmin nastavený na skript <tt>mon.cgi</tt>, nie na program CGI dodávaný s programom MON. Upravte <a href='$2'>konfiguráciu modulu</a> a použite správnu cestu.
+
+users_title=Používatelia MON
+users_etype=Zoznam používateľov MON nie je možné upravovať, pretože MON nie je momentálne nakonfigurovaný na používanie na overenie na stránke <a href='$1'>Globálne možnosti</a>.
+users_header=Povolené používatelia MON v $1 
+users_nousers=V $1 neboli definovaní žiadni používatelia MON.
+users_add=Vytvorte nového používateľa.
+users_return=Zoznam používateľov MON
+
+user_create=Vytvorte používateľa MON
+user_edit=Upraviť používateľa MON
+user_header=Detaily používateľa MON
+user_user=užívateľské meno
+user_pass=heslo
+user_leave=Nechajte bezo zmeny
+user_err=Nepodarilo sa uložiť používateľa
+user_euser=Chýbajúce alebo neplatné používateľské meno
+user_esame=Používateľ s rovnakým menom už existuje
+
+auth_title=Príkazy klienta
+auth_desc=Táto stránka vám umožňuje riadiť, ktoré príkazy MON môžu spúšťať používatelia pri používaní klientskych programov.
+auth_cmd=Príkaz MON
+auth_users=Povolení používatelia
+auth_none=nikto
+auth_all=všetci
+auth_sel=Iba používatelia
+auth_err=Uloženie príkazov klienta zlyhalo
+auth_eusers=Do príkazu $1 nezadali žiadni používatelia
+
+periods_title=Definované obdobia
+periods_period=Názov obdobia
+periods_times=Dni a časy
+periods_alldays=Všetky dni
+periods_allhours=Všetky hodiny
+periods_err=Uloženie definovaných období zlyhalo
+periods_ename='$1' nie je platný názov obdobia
+periods_ehour=Chýbajúca alebo neplatná hodina pre obdobie $1 (musí byť ako 9:00 alebo 17:00)
+
+show_title=Prevádzkový stav
+show_ecgi=Program stavu MON $1 neexistuje. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.

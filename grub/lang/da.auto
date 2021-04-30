@@ -1,0 +1,75 @@
+index_title=GRUB Boot Loader
+index_add=Tilføj en ny startindstilling.
+index_global=Rediger globale indstillinger
+index_globalmsg=Rediger globale opstartsindstillinger, der gælder for alle valg af startmenu, og vælg den enhed, som GRUB er installeret på.
+index_install=Installer GRUB
+index_installmsg=Installer GRUB boot loader på $1 for at få vist ovenstående indstillinger på opstarttidspunktet. Dette vil tilsidesætte enhver eksisterende boot loader, såsom LILO, og kan gøre dit system unbootable!
+index_none=Der er ikke defineret nogen startindstillinger. Sørg for at tilføje mindst en, før du installerer grub.
+index_efile=GRUB-menufilen $1 blev ikke fundet på dit system. GRUB er måske ikke installeret, eller <a href='$2'>modulkonfiguration</a> er forkert.
+index_epath=GRUB-eksekverbar $1 blev ikke fundet på dit system. GRUB er måske ikke installeret, eller <a href='$2'>modulkonfiguration</a> er forkert.
+index_return=indstillingsliste
+
+title_add=Tilføj boot-option
+title_edit=Rediger Boot Option
+title_header=Detaljer om valg af startmenu
+title_title=Optionstitel
+title_root=Startbillede-partition
+title_noverify=Montér og verificer ikke partitionen
+title_other=Anden enhedsfil
+title_sel=Valgte
+title_boot=Operativsystem til at starte
+title_kernel=kernel
+title_kfile=Sti til kerne
+title_args=Kernel-indstillinger
+title_initrd=Første ramdisk-fil
+title_modules=Ekstra moduler
+title_chain=Andet operativsystem
+title_chain_def=Fra den første sektor af partitionen
+title_chain_file=Fra chainloader-fil
+title_makeactive=Gør rodpartition aktiv?
+title_none1=Ingen
+title_none2=(ikke-startmenuindgang)
+title_err=Kunne ikke gemme startindstillingen
+title_etitle=Manglende optionstitel
+title_eroot=Manglende rodpartition
+title_ekernel=Manglende eller ugyldig kernesti
+title_echain=Manglende eller ugyldig chainloader-fil
+title_edev=Ikke-understøttet rodpartitionsenhed $1 
+title_einitrd=Manglende oprindeligt ramdisk-filnavn
+title_lock=Adgangskode låst?
+
+global_title=Globale indstillinger
+global_header=Globale startmenuindstillinger
+global_default=Standard boot option
+global_fallback=Fallback boot option
+global_first=Først på listen
+global_timeout=Timeout inden indlæsning af standard
+global_forever=Vent evigt
+global_secs=sekunder
+global_install=Installer GRUB på disk/partition
+global_sel=Valgte
+global_other=Andet
+global_password=Start adgangskode
+global_none=Ingen
+global_password_file=Brug menufilen, hvis der indtastes adgangskode:
+global_err=Kunne ikke gemme globale indstillinger
+global_etimeout=Manglende eller ugyldig timeout
+global_edev=Ikke-understøttet installationsdisk/partition $1 
+global_eother=Manglende eller ugyldig disk/partition
+global_epassword=Manglende eller ugyldig startadgangskode
+global_epasswordfile=Manglende alternativ menu-filnavn mangler
+
+install_title=Installer GRUB
+install_err=GRUB kunne ikke installeres
+install_efind=Kunne ikke finde menufilen
+install_desc=Installation af GRUB på $1 med kommandoer $2 og $3.
+install_ok=.. installation komplet.
+install_failed=.. installation mislykkedes!
+
+log_create_title=Oprettet startindstilling $1 
+log_delete_title=Slet startindstilling $1 
+log_modify_title=Ændret startindstilling $1 
+log_up_title=Opstartsindstilling $1 flyttet
+log_down_title=Valgfri nedstartsindstilling $1 
+log_global=Ændrede globale indstillinger
+log_install=Installeret GRUB

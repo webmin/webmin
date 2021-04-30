@@ -1,0 +1,50 @@
+index_title=Konfigurácia OpenSLP
+index_return=Konfigurácia OpenSLP
+index_eslpd=Vo vašom systéme sa nenašiel démon OpenSLP $1. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_econf=Vo vašom systéme sa nenašiel konfiguračný súbor OpenSLP $1. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_version=Verzia OpenSLP $1 
+
+slp_apply=Aplikovať zmeny
+slp_stop=Zastavte OpenSLP
+
+snda_title=Statický rozsah a DA
+snda_useScopes=Statický zoznam rozsahov
+snda_DAAddresses=Statický zoznam adresárových agentov (DA)
+
+netcfg_title=Konfigurácia siete
+netcfg_isBroadcastOnly=Vynúti vysielanie, ktoré sa použije namiesto vysielania
+netcfg_passiveDADetection=Použite pasívnu detekciu DA
+netcfg_activeDADetection=Použiť aktívnu detekciu DA (obmedziť sa len na adresy DHCP alebo DA)
+netcfg_DAActiveDiscoveryInterval=Aktívny objav v sekundách (0 deaktivuje aktívny objav)
+netcfg_multicastTTL=Multicast TTL (0-255)
+netcfg_DADiscoveryMaximumWait=Maximálna doba čakania na žiadosti o zistenie DA (v milisekundách)
+netcfg_DADiscoveryTimeouts=Čakajúce časy objavenia DA (v milisekundách)
+netcfg_HintsFile=Cesta k súboru pokynov OpenSLP
+netcfg_multicastMaximumWait=Maximálne čakanie na žiadosti o výberové vysielanie (v milisekundách)
+netcfg_multicastTimeouts=Čakajúce časy viacerých vysielaní (v milisekundách)
+netcfg_unicastMaximumWait=Maximálny čas medzi žiadosťami o unicast (v milisekundách)
+netcfg_randomWaitBound=Maximálna hodnota pre všetky parametre náhodného čakania (v milisekundách)
+netcfg_MTU=Veľkosť paketu MTU (v bajtoch)
+netcfg_interfaces=IP adresy rozhraní, ktoré by mal DA/SA počúvať
+
+dacfg_title=DA Configuration
+dacfg_isDA=Fungovať iba ako DA (pred zmenou tohto textu si prečítajte používateľskú príručku)
+
+log_title=Sledovanie a zaznamenávanie
+log_traceDATraffic=Vytlačte dopravné správy DA
+log_traceMsg=Tlač podrobných správ SLP
+log_traceDrop=Informácie o správe s vynechanou SLP
+log_traceReg=Vytlačte si registračné a registračné informácie spoločnosti DA a SA
+
+error_open=Chyba pri otváraní súboru
+error_flock_on=Pri vytváraní zámku súboru sa vyskytla chyba
+error_flock_off=Pri likvidácii zámku súboru došlo k chybe
+error_hup=Pri reštartovaní OpenSLP s PID sa vyskytla chyba
+
+index_start=Spustite OpenSLP
+index_startmsg=Kliknutím na toto tlačidlo spustíte vo vašom systéme démona OpenSLP.
+index_stop=Zastavte OpenSLP
+index_stopmsg=Kliknutím na toto tlačidlo zastavíte démona OpenSLP vo vašom systéme.
+
+stop_err=OpenSLP sa nepodarilo zastaviť
+start_err=OpenSLP sa nepodarilo spustiť

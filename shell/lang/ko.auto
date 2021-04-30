@@ -1,0 +1,5 @@
+index_trunced=$2 의 총 출력이 $1 에서 잘 렸습니다.
+index_timedout=$1 초 동안 실행 한 후 명령이 종료되었습니다.
+
+acl_shellenv=선택한 사용자 환경을 사용하십니까?
+acl_chroot=Chroot를 디렉토리로

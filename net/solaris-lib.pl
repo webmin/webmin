@@ -63,7 +63,7 @@ if (!$already) {
 	if ($a->{'virtual'} eq "") {
 		local $out = &backquote_logged(
 		 "ifconfig $a->{'name'} plumb 2>&1");
-		if ($out) { &error(&text('aifc_eexist', $a->{'name'})); }
+		if ($out) { &error(&text('aifc_eexist', &html_escape($a->{'name'}))); }
 		}
 	elsif ($gconfig{'os_version'} >= 8) {
 		&system_logged(
@@ -173,7 +173,7 @@ while($f = readdir(ETC)) {
 		$ifc{'index'} = scalar(@rv);
 		$ifc{'edit'}++;
 		$ifc{'file'} = "$etc/$f";
-		open(FILE, "$etc/$f");
+		open(FILE, "<$etc/$f");
 		chop($ifc{'address'} = <FILE>);
 		close(FILE);
 		if ($ifc{'address'}) {
@@ -305,6 +305,11 @@ return $_[0] !~ /^(lo|ipdptp|ppp)/;
 sub can_edit
 {
 return $_[0] eq "dhcp";
+}
+
+sub can_broadcast_def
+{
+return 0;
 }
 
 # valid_boot_address(address)
@@ -532,7 +537,7 @@ sub parse_routing
 # Save IPv4 default routers
 local @defrt = split(/\s+/, $in{'defrt'});
 foreach my $d (@defrt) {
-	&to_ipaddress($d) || &error(&text('routes_edefault', $d));
+	&to_ipaddress($d) || &error(&text('routes_edefault', &html_escape($d)));
 	}
 &lock_file("/etc/defaultrouter");
 if (@defrt) {
@@ -548,7 +553,7 @@ else {
 # Save IPv6 default routers
 local @defrt6 = split(/\s+/, $in{'defrt6'});
 foreach my $d (@defrt6) {
-	&to_ip6address($d) || &error(&text('routes_edefault6', $d));
+	&to_ip6address($d) || &error(&text('routes_edefault6', &html_escape($d)));
 	}
 &lock_file("/etc/defaultrouter6");
 if (@defrt6) {

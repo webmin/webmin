@@ -63,7 +63,7 @@ elsif ($in{source} == 2) {
 $grant = $in{'grant'} ? undef : [ split(/\s+/, $in{'grantto'}) ];
 
 # Check validity
-open(MFILE, $pfile);
+open(MFILE, "<$pfile");
 read(MFILE, $two, 2);
 close(MFILE);
 if ($two eq "\037\235") {

@@ -1,38 +1,38 @@
 <header>Dimonis d'Emmagatzematge</header>
 
-Cada entrada d'aquesta p‡gina defineix una connexiÛ a un dispositiu particular
-d'un dimoni d'emmagatzematge de Bacula. TÌpicament, el dimoni s'executa en el
-mateix sistema, perÚ Ès possible definir mÈs d'un dimoni, algun dels quals
-en hosts remots amb diverses unitats de cinta o bÈ mÈs espai de disc. <p>
+Cada entrada d'aquesta p√†gina defineix una connexi√≥ a un dispositiu particular
+d'un dimoni d'emmagatzematge de Bacula. T√≠picament, el dimoni s'executa en el
+mateix sistema, per√≤ √©s possible definir m√©s d'un dimoni, algun dels quals
+en hosts remots amb diverses unitats de cinta o b√© m√©s espai de disc. <p>
 
-Els atributs mÈs importants de cada dimoni sÛn:<br>
+Els atributs m√©s importants de cada dimoni s√≥n:<br>
 <dl>
 <dt>Nom de l'emmagatzematge
-<dd>Un nom ˙nic utilitzat en aquest sistema per identificar el dimoni.
+<dd>Un nom √∫nic utilitzat en aquest sistema per identificar el dimoni.
 <dt>Contrasenya SD de Bacula
 <dd>Aquest camp ha de contenir la contrasenya utilitzada pel dimoni
     d'emmagatzematge al sistema remot, que es pot trobar al fitxer
     <tt>/etc/bacula/bacula-sd.conf</tt>.
-<dt>Nom de host o adreÁa IP
+<dt>Nom de host o adre√ßa IP
 <dd>El nom de host completament qualificat o la IP del sistema que executa
     el dimoni d'emmagatzematge.
 <dt>Nom del dispositiu d'emmagatzematge
-<dd>Cada dimoni d'emmagatzematge pot definir un o mÈs dispositius, cadascun
+<dd>Cada dimoni d'emmagatzematge pot definir un o m√©s dispositius, cadascun
     dels quals correspon a un directori o unitat de cinta diferent. Aquest
     camp determina quin dispositiu utilitza aquest dimoni en particular.
-<dt>Nom del tipus de mitj‡
-<dd>Aquest camp ha de contenir un nom curt per al tipus de mitj‡ utilitzat,
+<dt>Nom del tipus de mitj√†
+<dd>Aquest camp ha de contenir un nom curt per al tipus de mitj√† utilitzat,
     com ara <i>Fitxer</> o <i>DDS-2</i>. Ha de ser el mateix que el tipus de
-    mitj‡ que hi ha a la secciÛ <b>Dispositius d'Emmagatzematge</b> del
+    mitj√† que hi ha a la secci√≥ <b>Dispositius d'Emmagatzematge</b> del
     servidor d'emmagatzematge.
 </dl>
 
-Sovint Ès ˙til de tenir mÈs d'una entrada per al mateix host en aquesta p‡gina,
-cadascuna de les quals tÈ un dispositiu d'emmagatzematge diferent. AixÚ permet
-crear cÚpies que es graven a directoris o unitats de cinta diferents. <p>
+Sovint √©s √∫til de tenir m√©s d'una entrada per al mateix host en aquesta p√†gina,
+cadascuna de les quals t√© un dispositiu d'emmagatzematge diferent. Aix√≤ permet
+crear c√≤pies que es graven a directoris o unitats de cinta diferents. <p>
 
 Si al formulari del dimoni d'emmagatzematge es mostren les opcions de TLS,
-aquestes es poden utilitzar per activar la comunicaciÛ segura entre el director
+aquestes es poden utilitzar per activar la comunicaci√≥ segura entre el director
 i el servidor d'emmagatzematge remot. Com que aquests s'executen normalment en
 el mateix sistema, no cal activar TLS. <p>
 

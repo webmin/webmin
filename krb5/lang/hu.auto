@@ -1,0 +1,17 @@
+index_title=Kerberos5 konfiguráció
+index_econf=A (z) $1 Kerberos5 konfigurációs fájl nem található a rendszerén. Lehet, hogy nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+
+logging=Naplófájlok
+default_log=Alapértelmezett naplófájl
+kdc_log=KDC naplófájl
+admin_log=Rendszergazda szerver naplófájl
+
+libdefaults=Alapértelmezett konfiguráció
+dns_kdc=A DNS segítségével keresse meg a KDC-t
+default_realm=Birodalom
+domain=Domain név
+default_kdc=KDC
+default_admin=Rendszergazda szerver
+default_domain=Alapértelmezett domain név
+
+save=Frissítse a konfigurációt

@@ -165,17 +165,15 @@ opts_masquerade_domains=Address masquerading
 opts_masquerade_exceptions=Masquerading exceptions
 index_return=Postfix configuration
 
-
 opts_alias_maps=Alias databases used by the local delivery agent
-opts_alias_database=Alias databases built by &quot;newaliases&quot; command
-aliases_warning=Warning: <ul><li>when the first field is not empty, the default Postfix aliases-generation command is used to build up the corresponding databases ; <li>else the Sendmail compatibility command &quot;newaliases&quot; is used, this will use the second field's databases.</ul>
+opts_alias_database=Alias databases built by "newaliases" command
+aliases_warning=Warning: <ul><li>when the first field is not empty, the default Postfix aliases-generation command is used to build up the corresponding databases ; <li>else the Sendmail compatibility command "newaliases" is used, this will use the second field's databases.</ul>
 
 aliases_name=Name
 aliases_value=Alias to...
 
 new_alias=Create a new alias
 new_aliasmsg=Click this button to create a new alias
-
 
 local_delivery_ecannot=You are not allowed to edit local delivery options
 local_delivery_title=Local Delivery
@@ -203,7 +201,6 @@ opts_local_destination_recipient_limit_default=Default
 opts_prepend_delivered_header=Prepend a <tt>Delivered-To:</tt> when...
 opts_prepend_delivered_header_default=Default
 
-
 resource_title=General Resource Control
 resource_ecannot=You are not allowed to edit resource control parameters
 opts_bounce_size_limit=Max size of bounced message
@@ -223,7 +220,6 @@ opts_qmgr_message_recipient_limit=Max number of in-memory recipients
 opts_queue_minfree=Min free space in the queue file system
 opts_stale_lock_time=Max time after which stale lock is released
 opts_transport_retry_time=Time in seconds between attempts to contact a broken MDT
-
 
 opts_always_bcc=Address that receives bcc of each message
 opts_always_bcc_none=None
@@ -309,9 +305,8 @@ opts_smtp_mail_timeout=Timeout on waiting for answer to MAIL FROM
 opts_smtp_rcpt_timeout=Timeout on waiting for answer to RCPT TO
 opts_smtp_data_init_timeout=Timeout on waiting for answer to DATA
 opts_smtp_data_xfer_timeout=Timeout on waiting for answer to transmit of message content
-opts_smtp_data_done_timeout=Timeout on waiting for answer to ending &quot;.&quot;
+opts_smtp_data_done_timeout=Timeout on waiting for answer to ending "."
 opts_smtp_quit_timeout=Timeout on waiting for answer to QUIT
-
 
 rate_title=Delivery rates
 rate_ecannot=You are not allowed to edit the delivery rates options
@@ -323,7 +318,6 @@ opts_maximal_queue_lifetime=Max time (days) in queue before message is undeliver
 opts_minimal_backoff_time=Min time (secs) between attempts to deliver a deferred message
 opts_queue_run_delay=Time (secs) between scanning the deferred queue
 opts_defer_transports=Transports that should not be delivered
-
 
 debug_title=Debugging features
 debug_ecannot=You are not allowed to edit the debugging features
@@ -406,10 +400,11 @@ stop_ecannot=You are not allowed to stop Postfix
 start_efailed=Failed to start Postfix
 start_ecannot=You are not allowed to start Postfix
 
+reload_efailed=Failed to reload Postfix.
+reload_ecannot=You are not allowed to reload Postfix
+
 query_get_efailed=Failed to query Postfix config command to get the current value of parameter $1: <tt>$2</tt>
 query_set_efailed=Failed to query Postfix config command to set the current value of parameter $1 to $2: <tt>$3</tt>
-reload_ecannot=You are not allowed to reload Postfix
-reload_efailed=Failed to reload Postfix.
 regenerate_ecannot=You are not allowed to regenerate the Aliases
 regenerate_alias_efailed=Failed to regenerate aliases: <tt>$1</tt>
 regenerate_table_efailed=Failed to regenerate table $1: <tt>$2</tt>
@@ -887,7 +882,6 @@ chooser_elbind_dn=Missing login for LDAP server for map $1
 chooser_elbind_pw=Missing password for LDAP server for map $1
 
 mysql_ecfile=MySQL configuration file $1 was not found
-mysql_emysql=Failed to load the database driver $1
 mysql_elogin=Failed to login to the database $1 : $2.
 mysql_equery=Failed to query table $1 : $2
 mysql_eadd=SQL insert failed : $1
@@ -916,5 +910,3 @@ bcc_sender=Sender mappings
 bcc_recipient=Recipient mappings
 bcc_senderdesc=The sender BCC mappings define an additional email address that mail <b>from</b> the addresses or domains listed will be BCCd to.
 bcc_recipientdesc=The recipient BCC mappings define an additional email address that mail <b>to</b> the addresses or domains listed will be BCCd to.
-
-__norefs=1

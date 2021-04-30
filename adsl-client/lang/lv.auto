@@ -1,0 +1,66 @@
+index_title=ADSL klients
+index_eadsl=RP-PPPoE komanda $1 jūsu sistēmā netika atrasta vai nav derīga. Varbūt tas nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_econfig=RP-PPPoE ADSL konfigurācijas fails $1 jūsu sistēmā netika atrasts. Varbūt tas nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_emodem=Pašreizējais konfigurācijas fails ir paredzēts modemam Redhat Linux, nevis ADSL savienojumam. Izmantojiet lapu <a href='$2'>moduļa konfigurācija</a>, lai norādītu vienu no citiem <tt>ifcfg-ppp *</tt> failiem $1 vai tādu, kas vēl neeksistē, lai modulis var jums to izveidot.
+index_stop=Izslēdziet ADSL
+index_stopdesc=Jūsu ADSL savienojums pašlaik ir aktīvs ar IP adresi $1. Noklikšķiniet uz šīs pogas, lai to izslēgtu ar komandu $2.
+index_start=Startēt ADSL
+index_startdesc=Jūsu ADSL savienojums pašlaik ir neaktīvs. Noklikšķiniet uz šīs pogas, lai sāktu to ar komandu $1.
+index_boot=Sāciet sāknēšanas laikā
+index_bootdesc=Mainiet šo opciju, lai kontrolētu, vai jūsu ADSL savienojums tiek atvērts sāknēšanas laikā.
+index_return=moduļa indekss
+index_version=RP-PPPoE versija $1 
+index_esetup=Redhat ADSL konfigurācijas fails $1 jūsu sistēmā neeksistē. Tomēr šis modulis var iestatīt to jums ar pamata noklusējumiem, noklikšķinot uz zemāk esošās pogas.
+index_setup=Iestatīšanas konfigurācijas fails
+index_cancel=Atcelt savienojumu
+index_canceldesc=ADSL klients pašlaik mēģina izveidot savienojumu. Noklikšķiniet uz šīs pogas, lai atceltu mēģinājumu ar komandu $1.
+index_cdemand=Atcelt pieprasījumu
+index_cdemanddesc=ADSL klients šobrīd gaida savienojuma pieprasījumu pēc pieprasījuma. Noklikšķiniet uz šīs pogas, lai apturētu to ar komandu $1.
+
+index_header=ADSL klienta konfigurācijas opcijas
+index_desc=Tālāk norādītie iestatījumi attiecas uz visiem jauniem ADSL savienojumiem, ko sākusi jūsu sistēma. Ja tos maināt, savienojums ir jāslēdz un jāatsāk no jauna, lai modifikācijas stātos spēkā.
+index_eth=Ethernet interfeiss
+index_other=Cits ..
+index_demand=Pievienoties pēc pieprasījuma?
+index_timeout=Jā, ar noildzi
+index_secs=sekundes
+index_user=Piesakieties kā lietotājs
+index_sec=Pieteikšanās ar paroli
+index_dns=Vai no ISP iegūstat DNS konfigurāciju?
+index_save=Saglabājiet konfigurāciju
+index_mss=Vai ierobežot paketes lielumu?
+index_psize=Jā, uz
+index_bytes=baiti
+index_fw=Ugunsmūris, lai aktivizētu savienojuma laikā
+index_fw_none=Nav
+index_fw_standalone=Vienam saimniekam
+index_fw_masquerade=NAT vārtiem
+index_connect=Laiks mēģināt izveidot savienojumu
+index_forever=Mūžīgi
+
+start_err=Neizdevās sākt ADSL savienojumu
+start_title=Startēt ADSL
+start_ip=Ir izveidots ADSL savienojums ar IP adresi $1.
+start_demand=Tā kā ir iespējots savienojuma izveides režīms, jūsu ADSL savienojums tiks izveidots tikai pēc nepieciešamības.
+start_bg=ADSL savienojums netika izveidots 20 sekunžu laikā. ADSL klients turpinās mēģināt izveidot savienojumu fonā, līdz tas būs veiksmīgs.
+
+save_err=Neizdevās saglabāt ADSL konfigurāciju
+save_eeth=Trūkst vai nederīga izskata ethernet interfeiss
+save_etimeout=Trūkst vai nav derīga noildze pēc pieprasījuma
+save_euser=Trūkst vai nav derīgs lietotājvārds
+save_econnect=Trūkst vai nav derīga savienojuma noildze
+save_emss=Trūkst vai nav derīgs maksimālais paketes lielums
+save_title=Saglabāt konfigurāciju
+save_desc=Jūsu ADSL klienta konfigurācija ir veiksmīgi saglabāta, taču tā netiks izmantota, līdz jūs atkal izveidosit savienojumu.
+
+stop_err=Neizdevās izslēgt ADSL savienojumu
+stop_title=Izslēdziet ADSL
+stop_ok=Jūsu ADSL savienojums tika veiksmīgi pārtraukts.
+stop_failed=Jūsu ADSL savienojums kādu iemeslu dēļ joprojām ir aktīvs!
+
+log_save=Saglabātā klienta konfigurācija
+log_stop=Izslēdziet ADSL
+log_start=Darbības sākšana ADSL
+log_bootup=Iespējot ADSL sāknēšanas laikā
+log_bootdown=Atspējota ADSL sāknēšanas laikā
+log_setup=Iestatiet noklusējuma konfigurāciju

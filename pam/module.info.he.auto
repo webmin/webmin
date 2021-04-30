@@ -1,0 +1,3 @@
+name_he=PAM
+longdesc_he=קבע את התצורה של שלבי אימות PAM המשמשים שירותים כגון telnet, POP ו- FTP.
+desc_he=אימות PAM

@@ -1,0 +1,18 @@
+index_title=מעטפת פיקוד
+index_ok=בצע פקודה:
+index_history=היסטוריית פיקוד
+index_clear=נקה היסטוריה
+index_clearcmds=נקה פקודות
+index_desc=הזן פקודת מעטפת לביצוע בשדה הטקסט שלמטה. ניתן להשתמש בפקודה <tt>cd</tt> כדי לשנות ספרייה לפקודות הבאות.
+index_pok=בצע את הפקודה הקודמת
+index_edit=ערוך קודם
+index_trunced=התפוקה הכוללת של $2 נקטעה ב- $1.
+index_timedout=הפקודה הופסקה לאחר ריצה של $1 שניות.
+
+acl_user=בצע פקודות כמשתמש
+acl_user_def=משתמש נוכחי Webmin
+acl_shellenv=משתמשים בסביבת המשתמש הנבחרת?
+acl_chroot=גרוט לספריה
+
+log_run=רץ פקודה $1 
+log_clear=ניקוי היסטוריית הפקודה

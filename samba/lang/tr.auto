@@ -1,0 +1,46 @@
+index_start_wb=Winbind Sunucularını Başlat
+index_startmsg_wb=Winbind sunucuları sisteminizde çalışmıyor gibi görünüyor.
+index_restart_wb=Winbind Sunucularını Yeniden Başlat
+index_restartmsg_wb=Sisteminizde çalışan Winbind sunucularını yeniden başlatmak için bu düğmeyi tıklatın.
+index_stop_wb=Winbind Sunucularını Durdur
+index_stopmsg_wb=Sisteminizde çalışan Winbind sunucularını kapatmak için bu düğmeyi tıklatın.
+
+convert_who=Dönüştürmek için Unix kullanıcıları
+convert_who0=Yalnızca listelenen kullanıcılar veya UID aralıkları
+convert_who1=Listelenen kullanıcılar ve UID aralıkları hariç tümü
+
+net_ip=IP adresi
+
+smb_descriptionnone=Yok
+smb_master_auto=Otomatik
+smb_server=Şifre sunucusu
+
+euser_noexpire=Parolanın süresi asla dolmaz
+euser_locked=Hesap kilitlendi
+
+share_createperms=İzinlerle oluştur
+share_group=Grupla oluştur
+
+mkpass_added=Katma
+mkpass_user=Kullanıcı adı
+mkpass_action=Eylem alındı
+mkpass_skipcount=$1 kullanıcı dönüşüm için atlandı.
+
+savefshare_group=Yeni dizin için eksik veya geçersiz grup
+savefshare_perms=Yeni dizin için eksik veya geçersiz izinler
+savefshare_emkdir=Dizin oluşturulamadı : $1 
+
+start_err_wb=Winbind sunucuları başlatılamadı
+
+restart_err=Samba sunucuları yeniden başlatılamadı
+restart_err_wb=Winbind sunucuları yeniden başlatılamadı
+
+viewu_refresh=Sayfayı yenile.
+
+log_apply_wb=Yeniden başlatılan Winbind sunucuları
+log_stop_wb=Winbind sunucuları durduruldu
+log_start_wb=Winbind sunucularını başlattı
+
+acl_bind=Winbind seçeneklerine erişebilir mi?
+
+bind_defaultdomain=Her zaman varsayılan alan kullanılsın mı?

@@ -54,7 +54,7 @@ else {
 	}
 
 if ($config{'init_script'}) {
-	&foreign_require("init", "init-lib.pl");
+	&foreign_require("init");
 	$atboot = &init::action_status($config{'init_script'});
 	print &ui_buttons_row("bootup.cgi", $text{'index_boot'},
 			      $text{'index_bootdesc'}, undef,

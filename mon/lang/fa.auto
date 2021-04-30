@@ -1,0 +1,200 @@
+index_title=MON سرویس مانیتور
+index_return=شاخص MON
+index_edir=فهرست$1 وجود ندارد. شاید MON نصب نشده باشد یا <a href='$2'>تنظیمات ماژول</a> شما نادرست باشد.
+mon_global_title=پیکربندی جهانی Varibles
+mon_conf_title=پیکربندی اولیه
+mon_status_title=وضعیت عملیاتی
+hostgroups_title=گروه تنظیمات MON
+services_title=گروه های دیده بان-تعریف خدمات
+
+head_hostgroups=گروه ها و خدمات میزبان
+head_groups=نام گروه میزبان
+head_members=اعضای گروه میزبان
+head_services=خدمات میزبان خدمات برای تماشای
+head_service=سرویس برای تماشای
+head_param=پارامترهای خدمات
+head_watch=گروه را تماشا می کنید؟
+head_monauth=تأیید اعتبار برای MONCMD
+head_usr=نام کاربری
+head_pass=کلمه عبور
+head_mand=(پارامترهای موجود در "RED COLOR" اجباری است)
+
+err_nomon=بسته 'mon' روی سیستم نصب نشده است
+err_nomonconf=پرونده پیکربندی MON $1 در سیستم شما یافت نشد. شاید MON نصب نشده باشد یا <a href='$2'>تنظیمات ماژول</a> شما نادرست باشد.
+err_nowatch=هیچ گروه تماشا انتخاب نشده است. برای ادامه حداقل یک گروه دیده بان را انتخاب کنید.
+err_noserv=هیچ خدمتی برای گروه تماشا انتخاب نشده است
+err_nomemb=هیچ میزبان/عضو انتخاب شده برای گروه تماشا وجود ندارد
+err_monrun=MON روی میزبان اجرا نمی شود. لطفاً MON را شروع کنید.
+stop_err=MON متوقف نشد
+stop_epid=دیگر در حال اجرا نیست
+start_err=MON شروع نشد
+restart_err=MON دوباره راه اندازی نشد
+restart_epid=PID دریافت نشد
+
+other=دیگر (فضا جدا)
+next=بعد
+mon_stat=وضعیت MON
+mon_off=خدمات MON آغاز نشده است
+mon_start=خدمات MON را شروع کنید
+mon_stop=خدمات MON را متوقف کنید
+mon_restart=خدمات MON را مجدداً راه اندازی کنید
+mon_startdesc=برای شروع سرور MON روی این دکمه کلیک کنید. تا زمان شروع ، هیچ نظارت پیکربندی انجام نخواهد شد.
+mon_stopdesc=برای متوقف کردن سرور MON روی این دکمه کلیک کنید. هنگام توقف ، نظارت پیکربندی شده متوقف می شود.
+mon_restartdesc=برای شروع تنظیمات MON فعلی با راه اندازی مجدد فرایند سرور ، روی این دکمه کلیک کنید.
+line=(یکی در هر خط)
+save_apply=ذخیره و اعمال شود
+watch=گروه تماشا
+members=اعضا
+def_perargs=wd {Sat-Sun
+
+def_desc=شرح
+def_inter=فاصله
+def_mon=مانیتور
+def_dep=روزانه
+def_per=عادت زنانه
+def_alert=هشدار
+def_alertevr=هوشیاری
+def_alertaft=هشدار دهنده
+def_alertstr=استارتاپارت
+def_allow=اجازه_مپتی_گروپ
+def_traptime=traptimeout
+def_trapdur=دام افتادن
+def_rand=کنار دریا
+def_exclhost=exclud_hosts
+def_exclper=exclud_period
+
+groups_title=گروه های میزبان
+groups_group=اسم گروه
+groups_members=میزبان اعضا
+
+watches_title=لیست های تماشایی
+watches_group=گروه تماشا
+watches_services=خدماتی که مشاهده می شوند
+watches_sadd=اضافه کردن خدمات ..
+watches_add=اضافه کردن لیست سازمان دیده بان برای گروه :
+watches_return=لیست های تماشایی
+watches_none=هنوز هیچ لیست تماشایی تعریف نشده است.
+
+global_title=گزینه های جهانی
+global_header=گزینه های پیکربندی جهانی MON
+global_maxprocs=حداکثر فرآیندهای MON
+global_histlength=طول تاریخ رویداد
+global_alertdir=دایرکتوری برنامه های هشدار
+global_mondir=دایرکتوری برنامه ها را کنترل کنید
+global_authtype=نوع احراز هویت
+global_authtype_=پیش فرض
+global_authtype_getpwnam=تماس با سیستم
+global_authtype_userfile=پرونده کاربران MON
+global_authtype_shadow=پرونده سایه
+global_userfile=پرونده کاربر MON
+global_emaxprocs=تعداد پردازشهای MON وجود ندارد یا نامعتبر است
+global_ehistlength=طول تاریخ رویداد نامشخص یا نامعتبر است
+global_ealertdir=فهرست برنامه های هشدار از بین رفته یا نامعتبر است
+global_emondir=فهرست برنامه های مانیتور موجود نیست یا نامعتبر است
+global_euserfile=پرونده کاربران MON وجود ندارد
+
+watch_title=لیست تماشای را ویرایش کنید
+watch_header=جزئیات تماشای گروه میزبان
+watch_group=گروه میزبان برای تماشای
+watch_services=خدماتی که مشاهده می شوند
+watch_service=نام سرویس
+watch_monitor=نظارت بر استفاده
+watch_interval=همه را بررسی کنید
+watch_periods=دوره های نظارت
+
+service_title=افزودن سرویس
+service_title2=خدمات ویرایش
+service_header=جزئیات سرویس را مشاهده کردید
+service_name=نام خدمات
+service_interval=همه را بررسی کنید
+service_desc=شرح
+service_units_s=ثانیه
+service_units_m=دقایق
+service_units_h=ساعت ها
+service_units_d=روزها
+service_units_w=هفته ها
+service_monitor=با استفاده از مانیتور
+service_mon1=مانیتور استاندارد
+service_mon0=مانیتور دیگر ..
+service_args=پارامترهای مانیتور
+service_period=دوره نظارت$1
+service_days=روزها برای بررسی
+service_hours=ساعت برای بررسی
+service_all=همه
+service_pstr=مشخصات دوره
+service_new=دوره نظارت جدید
+service_alerts=هشدار برای دوره
+service_alert=هشدار
+service_atype=زمان اجرا
+service_atype_alert=خدمات پایین می آید
+service_atype_upalert=خدمات ارائه می شود
+service_atype_startupalert=MON شروع می شود
+service_aargs=پارامترهای اضافی
+service_every=ارسال هشدار
+service_every_def=هر بار مانیتور اجرا می شود
+service_every_time=همه
+service_num=حداکثر هشدار برای ارسال
+service_unlimited=نامحدود
+service_after=خرابی قبل از هشدار
+service_immediate=بلافاصله. مستقیما
+service_after_num=بعد از$1 شکست
+service_aftertime=در بازه زمانی
+service_newperiod=یک دوره جدید اضافه کنید
+service_delperiod=این دوره را حذف کنید
+service_err=ذخیره خدمات انجام نشد
+service_ename=نام سرویس موجود نیست یا نامعتبر است
+service_einterval=فاصله بررسی نامعتبر یا نامعتبر است
+service_eother=مانیتور موجود نیست یا نامعتبر است
+service_ehour=ساعت عدم اعتبار یا نامعتبر برای دوره$1 (باید مانند 9 صبح یا 5 بعد از ظهر باشد)
+service_eperiod=هیچ روز یا ساعت مشخص برای دوره$1 مشخص نشده است
+service_eevery=فاصله هشدار خدمات از دست رفته یا نامعتبر است
+service_eafter=تعداد خرابی یا نامعتبر بودن خطاها قبل از هشدار
+service_enum=حداکثر هشدار برای ارسال یا نامعتبر نیست
+service_epstr=مشخصات دوره از دست رفته است
+service_known0=<tt>زمان :: رشته</strong> رشته
+service_known1=روزها و ساعات مشخص شده
+service_known2=دوره مشخص شده
+
+status_title=وضعیت MON
+status_ecgi=برنامه MON وضعیت CGI $1 وجود ندارد. شاید نصب نشده باشد یا <a href='$2'>تنظیمات ماژول</a> نادرست باشد.
+status_eperl=برنامه MON وضعیت CGI به ماژول$1 perl نیاز دارد. <a href='$2'>برای نصب مستقیم آن از CPAN اینجا را کلیک کنید</a>.
+status_esame=برنامه MON status CGI $1 در این ماژول Webmin روی اسکریپت <tt>mon.cgi</tt> تنظیم شده است ، نه برنامه CGI که دارای MON است. برای استفاده از مسیر صحیح ، <a href='$2'>تنظیمات ماژول</a> را تنظیم کنید.
+
+users_title=MON کاربران
+users_etype=لیست کاربران MON قابل ویرایش نیست زیرا MON در حال حاضر پیکربندی نشده است تا از آن برای تأیید اعتبار در صفحه <a href='$1'>گزینه های جهانی</a> استفاده کند.
+users_header=مجاز به کاربران MON در$1 است
+users_nousers=هیچ کاربر MON در$1 تعریف نشده است.
+users_add=یک کاربر جدید ایجاد کنید.
+users_return=لیست کاربران MON
+
+user_create=ایجاد کاربر MON
+user_edit=ویرایش کاربر MON
+user_header=جزئیات کاربر MON
+user_user=نام کاربری
+user_pass=کلمه عبور
+user_leave=بدون تغییر بگذارید
+user_err=ذخیره کاربر انجام نشد
+user_euser=نام کاربری موجود نیست یا نامعتبر است
+user_esame=کاربر با همین نام در حال حاضر وجود دارد
+
+auth_title=دستورات مشتری
+auth_desc=این صفحه به شما امکان می دهد کنترل کنید که کدام دستورات MON توسط کاربران در هنگام استفاده از برنامه های مشتری اجرا شود.
+auth_cmd=فرمان MON
+auth_users=کاربران مجاز
+auth_none=هیچ کس
+auth_all=همه
+auth_sel=فقط کاربران
+auth_err=ذخیره دستورات مشتری انجام نشد
+auth_eusers=هیچ کاربر برای دستور$1 وارد نمی شود
+
+periods_title=دوره های تعریف شده
+periods_period=نام دوره
+periods_times=روزها و روزها
+periods_alldays=تمام روزها
+periods_allhours=تمام ساعات
+periods_err=دوره های مشخص شده ذخیره نشد
+periods_ename='$1' نام دوره معتبر نیست
+periods_ehour=ساعت عدم اعتبار یا نامعتبر برای دوره$1 (باید مانند 9 صبح یا 5 بعد از ظهر باشد)
+
+show_title=وضعیت عملیاتی
+show_ecgi=برنامه وضعیت MON $1 وجود ندارد. شاید نصب نشده باشد یا <a href='$2'>تنظیمات ماژول</a> نادرست باشد.

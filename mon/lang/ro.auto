@@ -1,0 +1,200 @@
+index_title=Monitor de serviciu MON
+index_return=Indicele MON
+index_edir=Directorul MON $1 nu există. Poate că MON-ul nu este instalat sau <a href='$2'>configurația modulului</a> este incorectă.
+mon_global_title=Configurare variabilă globală
+mon_conf_title=Configurare de bază
+mon_status_title=Starea operațională
+hostgroups_title=Configurare-MON Grupuri de gazdă
+services_title=Grupuri de veghe-Definiții de serviciu
+
+head_hostgroups=Grupuri de gazde și servicii
+head_groups=Nume grup de gazdă
+head_members=Membrii Grupului de gazde
+head_services=Servicii de grup de gazdă pentru a urmări
+head_service=Serviciu de veghe
+head_param=Parametri de serviciu
+head_watch=Urmăriți grupul?
+head_monauth=Oferiți autentificarea pentru MONCMD
+head_usr=Nume de utilizator
+head_pass=Parola
+head_mand=(Parametrii din „CULOARE ROSIE” sunt obligatorii)
+
+err_nomon=pachetul „mon” nu este instalat pe sistem
+err_nomonconf=Fișierul de configurare MON $1 nu a fost găsit în sistemul dvs. Poate că MON-ul nu este instalat sau <a href='$2'>configurația modulului</a> este incorectă.
+err_nowatch=Nu au fost selectate grupuri de supraveghere. Selectați cel puțin un grup de supraveghere pentru a continua.
+err_noserv=Nu există servicii selectate pentru grupul de veghe
+err_nomemb=Nu sunt selectate gazde/membri pentru grupul de supraveghere
+err_monrun=MON nu rulează pe hostmachine. Vă rugăm să începeți MON.
+stop_err=Nu a reușit să oprească MON
+stop_epid=Nu mai alerga
+start_err=Nu a reușit să pornească MON
+restart_err=Nu a reușit să reporniți MON
+restart_epid=Nu a reușit să primiți PID
+
+other=Altele (spațiu separat)
+next=Următor →
+mon_stat=Starea MON
+mon_off=Serviciile MON nu au început
+mon_start=Porniți serviciile MON
+mon_stop=Opriți serviciile MON
+mon_restart=Reporniți serviciile MON
+mon_startdesc=Faceți clic pe acest buton pentru a porni serverul MON. Până la începerea acesteia, nu se va face monitorizarea configurată.
+mon_stopdesc=Faceți clic pe acest buton pentru a opri serverul MON. La oprire, monitorizarea configurată va înceta.
+mon_restartdesc=Faceți clic pe acest buton pentru a aplica configurația MON actuală, repornind procesul serverului.
+line=(unul pe fiecare linie)
+save_apply=Salvați și aplicați
+watch=Watchgroup
+members=Membrii
+def_perargs=wd {Sat-Sun}
+
+def_desc=Descriere
+def_inter=interval
+def_mon=Monitor
+def_dep=dpend
+def_per=perioadă
+def_alert=alerta
+def_alertevr=alertevery
+def_alertaft=alertafter
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=trapduration
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=Grupuri gazdă
+groups_group=Numele Grupului
+groups_members=Gazdele membrilor
+
+watches_title=Urmăriți liste
+watches_group=Grup de vizionare
+watches_services=Serviciile urmărite
+watches_sadd=Adaugă serviciu ..
+watches_add=Adăugați lista de vizionări pentru grup :
+watches_return=listele de vizionare
+watches_none=Nu au fost definite încă liste de vizionări.
+
+global_title=Opțiuni globale
+global_header=Opțiuni de configurare globală MON
+global_maxprocs=Procesele MON maxim
+global_histlength=Lungimea istoricului evenimentelor
+global_alertdir=Director de programe de alertă
+global_mondir=Monitorizarea directorului de programe
+global_authtype=Tip de autentificare
+global_authtype_=Mod implicit
+global_authtype_getpwnam=Apeluri de sistem
+global_authtype_userfile=Fișierul utilizatorilor MON
+global_authtype_shadow=Fișier Shadow
+global_userfile=Fișierul utilizatorului MON
+global_emaxprocs=Număr lipsă sau nevalid de procese MON
+global_ehistlength=Lungimea istoricului evenimentelor lipsă sau nevalidă
+global_ealertdir=Directorul programelor de alertă lipsă sau nevalid
+global_emondir=Directorul programelor de monitorizare lipsă sau nevalid
+global_euserfile=Fișierul utilizatorilor MON lipsă
+
+watch_title=Modificați lista de vizionări
+watch_header=Detaliile vizionării grupului gazdă
+watch_group=Grup de gazdă de urmărit
+watch_services=Serviciile urmărite
+watch_service=Numele serviciului
+watch_monitor=Monitor de utilizat
+watch_interval=Verificați fiecare
+watch_periods=Perioade de monitorizare
+
+service_title=Adaugă Serviciu
+service_title2=Editare Serviciu
+service_header=Detaliile serviciului urmărit
+service_name=Numele serviciului
+service_interval=Verificați fiecare
+service_desc=Descriere
+service_units_s=secunde
+service_units_m=minute
+service_units_h=ore
+service_units_d=zi
+service_units_w=săptămâni
+service_monitor=Utilizarea monitorului
+service_mon1=Monitor standard
+service_mon0=Alt monitor ..
+service_args=Monitorizarea parametrilor
+service_period=Perioada de monitorizare $1 
+service_days=Zile de verificat
+service_hours=Ore de verificare
+service_all=Toate
+service_pstr=Specificarea perioadei
+service_new=O nouă perioadă de monitorizare
+service_alerts=Alerte pentru perioadă
+service_alert=Alerta
+service_atype=Fugi când
+service_atype_alert=Serviciul scade
+service_atype_upalert=Serviciile apar
+service_atype_startupalert=MON pornește
+service_aargs=Parametri suplimentari
+service_every=Trimite alertă
+service_every_def=De fiecare dată când este executat monitorul
+service_every_time=Fiecare
+service_num=Alerte maxime de trimis
+service_unlimited=Nelimitat
+service_after=Eșecuri înainte de alertă
+service_immediate=Imediat
+service_after_num=După eșecurile $1 
+service_aftertime=În intervalul de timp
+service_newperiod=Adăugați o nouă perioadă
+service_delperiod=Ștergeți această perioadă
+service_err=Salvarea serviciului nu a reușit
+service_ename=Numele serviciului lipsit sau nevalid
+service_einterval=Interval de verificare lipsă sau nevalid
+service_eother=Monitorul lipsă sau invalid
+service_ehour=O oră lipsă sau nevalidă pentru perioada $1 (trebuie să fie ca ora 9:00 sau 17:00)
+service_eperiod=Nu sunt specificate zile sau ore pentru perioada $1 
+service_eevery=Interval de alertă de service lipsă sau nevalid
+service_eafter=Număr de eșecuri lipsă sau nevalide înainte de alertă
+service_enum=Alertă maximă care lipsește sau este nevalidă
+service_epstr=Specificația perioadei lipsește
+service_known0=<tt>Stilul::Perioada</tt>
+service_known1=Zile și ore specificate
+service_known2=Perioada definită
+
+status_title=Starea MON
+status_ecgi=Programul CGI de statut MON $1 nu există. Poate că nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
+status_eperl=Programul CGI de statut MON necesită modulul $1 perl. <a href='$2'>Faceți clic aici</a> pentru a o instala direct din CPAN.
+status_esame=Programul CGI de statut MON $1 a fost setat la scriptul <tt>mon.cgi</tt> din acest modul Webmin, nu în programul CGI care este livrat cu MON. Reglați configurația modulului <a href='$2'></a> pentru a utiliza calea corectă.
+
+users_title=Utilizatori MON
+users_etype=Lista utilizatorilor MON nu poate fi editată, deoarece MON nu este configurat în prezent pentru a o utiliza pentru autentificare în pagina <a href='$1'>Opțiuni globale</a>.
+users_header=Permis utilizatori MON în $1 
+users_nousers=Nici un utilizator MON nu a fost definit în $1.
+users_add=Creați un utilizator nou.
+users_return=Lista utilizatorilor MON
+
+user_create=Creare utilizator MON
+user_edit=Editați utilizatorul MON
+user_header=Detalii utilizator MON
+user_user=Nume de utilizator
+user_pass=Parola
+user_leave=Lăsați neschimbate
+user_err=Nu a reușit salvarea utilizatorului
+user_euser=Nume de utilizator lipsă sau nevalid
+user_esame=Un utilizator cu același nume există deja
+
+auth_title=Comenzile clientului
+auth_desc=Această pagină vă permite să controlați ce comenzi MON pot fi rulate de către utilizatori atunci când utilizează programele client.
+auth_cmd=Comanda MON
+auth_users=Utilizatori permisiți
+auth_none=Nimeni
+auth_all=Toata lumea
+auth_sel=Numai utilizatorii
+auth_err=Nu a reușit să salveze comenzile clientului
+auth_eusers=Niciun utilizator nu introduce pentru comanda $1 
+
+periods_title=Perioade definite
+periods_period=Denumirea perioadei
+periods_times=Zile și ore
+periods_alldays=Toate zilele
+periods_allhours=Toate orele
+periods_err=Nu a reușit să salveze perioadele definite
+periods_ename=„$1” nu este un nume de perioadă valabil
+periods_ehour=O oră lipsă sau nevalidă pentru perioada $1 (trebuie să fie ca ora 9:00 sau 17:00)
+
+show_title=Starea operațională
+show_ecgi=Programul de statut MON $1 nu există. Poate că nu este instalat sau <a href='$2'>configurația modulului</a> este incorectă.

@@ -1,0 +1,3 @@
+desc_it=Esportazioni NFS
+name_it=SGIExports
+longdesc_it=Modifica le condivisioni di file come definito nel file /etc/exports Irix

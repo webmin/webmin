@@ -1,0 +1,3 @@
+name_ro=logrotate
+longdesc_ro=Configurați rotirea automată a fișierelor jurnal Apache, Squid, Syslog și alte fișiere de jurnal.
+desc_ro=Rotire fișier jurnal

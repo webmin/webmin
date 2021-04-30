@@ -14,7 +14,7 @@ if ($in{'mode'} == 0) {
 	}
 else {
 	$in{'file'} || &error($text{'import_efile'});
-	open(FILE, $in{'file'}) || &error($text{'import_eopen'});
+	open(FILE, "<$in{'file'}") || &error($text{'import_eopen'});
 	while(<FILE>) {
 		s/\r|\n//g;
 		push(@data, $_);

@@ -1,0 +1,118 @@
+index_title=שרת דואר קולי
+index_ecmd=הפקודה Vgetty $1 לא נמצאה במערכת שלך. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+index_econfig=קובץ ה- config של Vgetty $1 לא נמצא במערכת שלך. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+index_return=אינדקס תא קולי
+
+vgetty_title=תצורת יציאה טורית
+vgetty_desc=כדי שהשרת שלך יענה לשיחות קוליות עם מודם המחובר ליציאה טורית, עליו להיות רשום למטה. כשמוסיפים יציאה לרשימה זו, התוכנית $1 תוגדר לענות לשיחות ולהשמעת הודעה.
+vgetty_add=הוסף יציאה טורית חדשה
+vgetty_tty=מכשיר סידורי
+vgetty_type=סוג
+vgetty_vgetty=קול
+vgetty_mgetty=נתונים/פקס
+vgetty_none=טרם הוגדרו יציאות סדרתיות לתא קולי.
+vgetty_apply=החל תצורה
+vgetty_applydesc=לחץ על כפתור זה כדי להחיל את התצורה הנוכחית של שרת הדואר הקולי על ידי הפעלת הפקודה $1 והרג את כל תהליכי Vgetty.
+vgetty_applyerr=החלת התצורה נכשלה
+vgetty_return=רשימת יציאה טורית
+vgetty_create=הוסף יציאה טורית
+vgetty_edit=ערוך יציאה טורית
+vgetty_header=אפשרויות תצורה של יציאה טורית
+vgetty_ts=יציאה טורית $1 
+vgetty_other=מכשיר אחר ..
+vgetty_rings=צלצולים לפני התשובה
+vgetty_default=ברירת מחדל עולמית
+vgetty_ans=מצב תשובה
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=קול
+vgetty_ans_fax=פקס
+vgetty_ans_data=נתונים
+vgetty_err=שמירת היציאה הסדרתית נכשלה
+vgetty_etty=התקן טורי חסר או שאינו קיים
+vgetty_erings=מספר הטבעות חסר או לא חוקי
+vgetty_erings2=מספר הטבעות חייב להיות לפחות 2
+vgetty_eans=לא נבחרו מצבי תשובה
+vgetty_eclash=היציאה הסדרתית $1 כבר נמצאת בשימוש
+
+options_title=אפשרויות שרת דואר קולי
+options_header=אפשרויות לכל היציאות הסדרתיות
+options_maxlen=אורך הודעה מקסימלי
+options_secs=שניות
+options_minlen=אורך הודעה מינימלי
+options_silence=להסיר שתיקה מסוף ההודעות?
+options_thresh=רמת סף שתיקה
+options_rgain=הקלטת רמת עוצמת הקול
+options_tgain=רמת עוצמת הקול של ההפעלה
+options_rings=צלצולים לפני התשובה
+options_perport=ניתן להגדיר עבור כל יציאה טורית
+options_ans=מצב תשובה
+options_keep=לשמור הודעות המכילות נתונים או קודי DTMF?
+options_light=אפשר תאורת תשובה אוטומטית לאחר הקבלה?
+options_owner=בעל יוניקס לקבצי הודעות
+options_group=קבוצת יוניקס לקבצי הודעות
+options_mode=הרשאות לקבצי הודעות
+options_prog=לאחר הקלטת הודעה
+options_prog0=לעשות כלום
+options_prog1=שלח דוא"ל בפורמט WAV אל
+options_prog2=הפעל את הפקודה על קובץ ההודעות
+options_err=שמירת אפשרויות הדואר הקולי נכשלה
+options_erings=מספר הטבעות חסר או לא חוקי
+options_erings2=מספר הטבעות חייב להיות לפחות 2
+options_emaxlen=אורך ההודעה המרבי חסר או לא חוקי
+options_eminlen=אורך ההודעה המינימלי חסר או לא חוקי
+options_ethresh=סף שתיקה חסר או לא תקף
+options_ergain=רמת עוצמת הקלטה חסרה או לא תקפה
+options_ergain2=רמת עוצמת הקלטה חייבת להיות בין 0 ל 100
+options_etgain=רמת עוצמת קול להפעלה חסרה או לא חוקית
+options_etgain2=רמת עוצמת הקול להפעלה חייבת להיות בין 0 ל 100
+options_eemail=כתובת דוא"ל חסרה או לא חוקית
+options_eprog=תוכנית חסרה או לא קיימת להפעלה
+options_eowner=משתמש Unix חסר או לא חוקי עבור קבצי הודעות
+options_egroup=קבוצת Unix חסרה או לא חוקית עבור קבצי הודעות
+options_emode=הרשאות אוקטליות חסרות או לא חוקיות לקבצי הודעות
+
+received_title=הודעות שהתקבלו
+recieved_desc=להלן הודעות קוליות שהתקבלו על ידי השרת שלך. להאזנה להודעה, לחץ על התאריך/השעה בעמודה הראשונה.
+received_none=לא נמצאו הודעות דואר קולי שהתקבלו.
+received_date=התקבל בשעה
+received_size=גודל הקובץ
+received_speed=קצב דגימה
+received_type=פורמט שמע
+received_delete=מחק הודעות שנבחרו
+received_move=המר שנבחר לברכות
+received_all=בחר הכל
+received_invert=בחירה הפוך
+
+listen_efile=שם קובץ הודעה לא חוקי!
+listen_epath=הודעת הדואר הקולי כבר לא קיימת
+
+delete_efile=שם קובץ הודעה לא חוקי!
+
+messages_title=הודעות ברכה
+messages_desc=בדף זה מופיעות הודעות ברכה שישוחקו כאשר מתקשר מתחבר לשרת הדואר הקולי שלך. אם יש לך יותר מזה, תשמש הודעה אחת שנבחרה באופן אקראי.
+messages_file=שם קובץ
+messages_none=אין הודעות ברכה זמינות.
+messages_updesc=טופס זה מאפשר לך להעלות קובץ WAV נוסף של הודעת ברכה, אשר יומר לתבנית שנבחרה לשימוש על ידי המודם שלך. קצב הדגימה של ה- WAV שהועלה צריך להיות זהה לקצב הדגימה של ההודעות שהתקבלו, כמו גם הפורמט שנבחר.
+messages_upload=העלה הודעה
+messages_fmt=להמיר ל
+
+pvfdesc=$1, $2 ביטים
+
+upload_err=הוספת הודעה נכשלה
+upload_emessage=לא נבחר קובץ WAV
+upload_ewav=המרת קובץ WAV נכשלה : $1 
+upload_epvf=יצירת קובץ RMD נכשלה : $1 
+upload_esame=קובץ ההודעה $1 כבר קיים
+
+log_apply=תצורה מיושמת
+log_upload=הודעת ברכה שהועלתה $1 
+log_move=המרה של $1 הודעות שהתקבלו
+log_delete0=$1 הודעות שהתקבלו נמחקו
+log_delete1=$1 הודעות ברכה נמחקו
+log_options=אפשרויות הדואר הקולי השתנו
+log_vgetty_create=נוסף יציאה טורית $1 
+log_vgetty_modify=יציאה טורית שונה 1
+log_vgetty_delete=יציאה טורית $1 נמחקה
+
+email_subject=הודעת דואר קולי
+email_body=הודעת הדואר הקולי התקבלה ב- $1 על $2.

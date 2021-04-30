@@ -1,0 +1,70 @@
+index_sub=almodulok
+index_ver=Változat
+index_forcecpan=A legújabb verziót mindig a forrásból telepítse
+index_pversion=$1 Perl verzió
+index_delete=Távolítsa el a modulokat
+index_upgrade=Frissítési modulok
+index_recs=A következő Perl-modulokat javasolja a Webmin telepítése :
+index_user=$1 (felhasználta $2)
+index_recsok=Telepítse a kiválasztott modulokat
+index_recsgot=A Webmin által javasolt alábbi Perl-modulok mind telepítve vannak : $1 
+index_ezone=Úgy tűnik, hogy a Perl meg van osztva a globális zónával, így a modulok nem telepíthetők ide. Ezeket inkább a globális zónába kell telepíteni.
+index_none=A rendszerben nem található telepített Perl-modul.
+index_tabmods=Meglévő modulok
+index_tabinstall=Telepítse a modult
+index_tabsuggest=Javasolt modulok
+index_allmods2=Hiányzó modulok, amelyeket a Webmin használ
+index_wantmods=Telepítendő modulok
+
+download_mods=Modulnevek
+download_pres=Előfeltétele
+download_eisperl=A $1 modul a szokásos Perl-eloszlás része
+download_ecpangz=A (z) $1 URL nem a CPAN modulok listája. Ellenőrizze a modul konfigurációját.
+download_envs=<tt>Makefile.PL</tt> környezeti változók
+download_name=Név
+download_value=Érték
+download_emodname=Nem lett megadva a telepítendő modul
+download_need=Hiányzó előfeltételek letöltése
+download_missing=Hiányzik a (z) $1 modulok
+download_nomissing=Minden telepítve
+download_ebuild=Egy vagy több Perl-modulnak $1 szükséges a beépítéshez, de ez a Perl-modul nincs telepítve.
+download_yum=A (z) $1 Perl modul telepítése a $2 csomagból.
+download_missingok=A CPAN-ből hiányzó modulok
+download_fallback=Néhány modult nem sikerült a csomagokból telepíteni, hanem a forrásból próbálták meg a telepítést.
+
+install_doing_0=A $1 készítése
+install_doing_1=$1 készítése és tesztelése
+install_doing_2=$1 készítése és telepítése ..
+install_doing_3=$1 készítése, tesztelése és telepítése ..
+install_err2=A modult a CPAN-ból a $1 paranccsal is telepítheti.
+install_needunlink=Megpróbálhatja újra telepíteni, ha visszatér az előző oldalra, és kiválasztja a különböző lehetőségeket. Ellenkező esetben <a href='$1'>kattintson ide az ideiglenes csomagfájlok törléséhez</a> a lemezterület megtakarítása érdekében.
+
+cpan_search=Keresse meg a nevű modulokat
+cpan_match=$1 -nek megfelelő modulok.
+cpan_none=Nincs találat.
+
+edit_subs=almodulok
+edit_none=Nincs elérhető
+edit_return=modul részletei
+edit_uninstall=Távolítsa el a modult és az almodulokat
+edit_upgrade=Frissítési modul a CPAN-ból
+edit_method=Telepítve
+edit_rpm=$1 RPM csomag
+edit_debian=$1 Debian csomag
+edit_manual=A Perl modul kézi telepítése
+
+uninstall_title=Távolítsa el a modult
+uninstall_rusure=Biztosan eltávolítja a $1 Perl modult? A következő fájlok törlődnek :
+uninstall_rusure2=Biztosan eltávolítja a $1 Perl modult és a $2 almodult? <br> A következő fájlok törlődnek :
+uninstall_ok=Távolítsa el most
+uninstall_rpm=A modult eltávolítják a $1 RPM csomag eltávolításával.
+uninstall_debian=A modult eltávolítják a $1 Debian csomag eltávolításával.
+uninstall_err=Nem sikerült eltávolítani a modult
+
+delete_efile=Érvénytelen csomagfájl!
+
+uninstalls_title=Távolítsa el a modulokat
+uninstalls_err=Nem sikerült eltávolítani a modulokat
+uninstalls_enone=Egy sincs kiválasztva
+uninstalls_emod=$1 sikertelen : $2 
+uninstalls_rusure=Biztosan eltávolítja a kiválasztott $1 modulokat? A $2 almodul és a $3 fájl eltávolításra kerül.

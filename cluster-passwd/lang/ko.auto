@@ -1,0 +1,8 @@
+index_title=클러스터 변경 비밀번호
+index_noservers=<a href=$1>Cluster Users and Groups</a> 모듈에서 사용자를 관리 할 서버가 정의되지 않았습니다.
+index_hosts=이 모듈을 사용하여 수행 한 모든 비밀번호 변경은 클러스터 사용자 및 그룹 모듈이 관리하는 모든 $1 호스트에서 수행됩니다.
+
+passwd_err=비밀번호를 변경하지 못했습니다
+passwd_title=비밀번호 변경
+passwd_on=$1 에서 비밀번호 변경 중 ..
+passwd_euser=사용자가 존재하지 않습니다!

@@ -1,0 +1,116 @@
+index_title=Tường lửa
+index_atboot=Kích hoạt tường lửa khi khởi động?
+index_bootup=Kích hoạt khi khởi động
+index_bootupdesc=Thay đổi tùy chọn này để kiểm soát xem tường lửa của bạn có được kích hoạt khi khởi động hay không.
+index_apply=Áp dụng cấu hình
+index_applydesc=Nhấp vào nút này để làm cho cấu hình tường lửa được liệt kê ở trên hoạt động. Bất kỳ quy tắc tường lửa nào hiện đang có hiệu lực sẽ được xóa và thay thế
+index_restart=Áp dụng cấu hình
+index_restartdesc=Kích hoạt tất cả các dịch vụ và cổng được phép được liệt kê ở trên, trong tất cả các vùng. Bất kỳ quy tắc hoạt động nào không được tạo vĩnh viễn sẽ được thay thế.
+index_start=Bắt đầu Tường lửa
+index_startdesc=Khởi động máy chủ FirewallD và áp dụng các quy tắc được liệt kê ở trên.
+index_stop=Dừng tường lửa
+index_stopdesc=Tắt máy chủ FirewallD và xóa tất cả các quy tắc được liệt kê ở trên.
+index_cerr=Không thể sử dụng mô-đun FirewallD : $1 
+index_zone=Hiển thị quy tắc trong khu vực:
+index_zoneok=Thay đổi
+index_zoneadd=Thêm vùng ..
+index_zonedel=Xóa vùng
+index_zonedef=Làm mặc định
+index_type=Loại quy tắc
+index_port=Cảng hoặc dịch vụ
+index_proto=Giao thức
+index_tservice=Dịch vụ
+index_tport=Hải cảng
+index_tforward=Ở đằng trước
+index_padd=Thêm cổng cho phép.
+index_sadd=Thêm dịch vụ được phép.
+index_fadd=Thêm cổng chuyển tiếp.
+index_delete=Xóa các quy tắc được chọn
+index_return=danh sách các khu
+index_ezones=Không tìm thấy vùng FirewallD!
+index_none=Khu vực này chưa có bất kỳ cổng hoặc dịch vụ được phép nào.
+index_ifaces=Áp dụng quy tắc cho giao diện:
+
+port_edit=Chỉnh sửa cổng
+port_create=Thêm cổng
+port_header=Tùy chọn cổng được phép
+port_zone=Được phép trong khu vực
+port_port=Cổng cho phép
+port_mode0=Cổng đơn
+port_mode1=Phạm vi cổng
+port_mode2=Tương tự như cổng ban đầu
+port_proto=Giao thức mạng
+port_ezone=Khu vực không tồn tại!
+port_err=Không thể lưu cổng
+port_eport=Số hoặc tên cổng bị thiếu hoặc không hợp lệ
+port_eportlow=Cổng thấp phải là một số
+port_eporthigh=Cổng cao phải là một số
+port_eportrange=Cổng thấp phải ở dưới cổng cao
+
+serv_edit=Chỉnh sửa dịch vụ
+serv_create=Thêm dịch vụ
+serv_header=Tùy chọn dịch vụ được phép
+serv_name=Dịch vụ cho phép
+serv_err=Không thể lưu dịch vụ
+
+forward_edit=Chỉnh sửa chuyển tiếp
+forward_create=Tạo chuyển tiếp
+forward_header=Tùy chọn chuyển tiếp cổng
+forward_zone=Chuyển tiếp cho khu vực
+forward_err=Không thể lưu về phía trước
+forward_port=Cổng nguồn
+forward_dstport=Cổng mong muốn
+forward_dstaddr=Địa chỉ đích
+forward_dstlocal=Hệ thống này
+forward_edstaddr=Địa chỉ đích IPv4 không hợp lệ
+forward_eneither=Địa chỉ đích hoặc cổng hoặc cả hai phải được nhập
+
+check_ecmd=Không tìm thấy lệnh điều khiển FirewallD $1 trên hệ thống của bạn
+
+delete_err=Không thể xóa quy tắc
+delete_enone=Không có lựa chọn!
+delete_edel=Xóa $1 không thành công : $2 
+
+zone_title=Tạo vùng
+zone_header=Tùy chọn vùng mới
+zone_name=Tên khu vực
+zone_mode=Các cổng và dịch vụ được phép
+zone_mode0=Không có (tất cả lưu lượng sẽ bị chặn)
+zone_mode1=Sao chép từ vùng
+zone_mode2=Chỉ SSH, IDENT và Webmin
+zone_mode3=SSH, IDENT, Webmin và các cổng cao
+zone_mode4=Các cổng được sử dụng cho lưu trữ ảo
+zone_err=Không thể tạo vùng
+zone_ename=Tên khu vực bị thiếu hoặc không hợp lệ
+zone_eclash=Một khu vực có cùng tên đã tồn tại
+
+delzone_title=Xóa vùng
+delzone_err=Không thể xóa vùng
+delzone_edefault=Vùng mặc định không thể xóa
+delzone_rusure=Bạn có chắc chắn muốn xóa vùng $1, chứa $2 cổng và $3 dịch vụ không?
+
+defzone_err=Không thể tạo vùng mặc định
+
+restart_err=Không thể áp dụng cấu hình
+
+stop_err=Không thể dừng Tường lửa
+start_err=Không thể khởi động FirewallD
+log_stop=Tường lửa đã dừng
+log_start=Bắt đầu Tường lửa
+log_restart=Cấu hình tường lửa ứng dụng
+log_bootup=Đã bật FirewallD khi khởi động
+log_bootdown=Tường lửa bị vô hiệu hóa khi khởi động
+log_create_port=Đã thêm cổng cho phép $1 
+log_delete_port=Đã xóa cổng cho phép $1 
+log_update_port=Cập nhật cổng cho phép $1 
+log_create_serv=Đã thêm dịch vụ được phép $1 
+log_delete_serv=Đã xóa dịch vụ được phép $1 
+log_update_serv=Cập nhật dịch vụ được phép $1 
+log_create_forward=Đã thêm chuyển tiếp $1 
+log_delete_forward=Đã xóa chuyển tiếp $1 
+log_update_forward=Cập nhật chuyển tiếp $1 
+log_delete_rules=Đã xóa $1 cổng được phép
+log_ifaces_zone=Giao diện được cập nhật cho vùng $1 
+log_create_zone=Đã tạo vùng $1 
+log_delete_zone=Đã xóa vùng $1 
+log_default_zone=Tạo vùng $1 làm mặc định

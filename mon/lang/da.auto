@@ -1,0 +1,200 @@
+index_title=MON Service Monitor
+index_return=MON-indeks
+index_edir=MON-biblioteket $1 findes ikke. Måske er MON ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+mon_global_title=Global varibles konfiguration
+mon_conf_title=Grundlæggende konfiguration
+mon_status_title=Driftsstatus
+hostgroups_title=MON-konfiguration-værtsgrupper
+services_title=Watchgroups-servicedefinitioner
+
+head_hostgroups=Værtsgrupper og tjenester
+head_groups=Værtsgruppens navn
+head_members=Værtsgruppemedlemmer
+head_services=Hostgroup-tjenester, der skal overvåges
+head_service=Tjeneste at se på
+head_param=Serviceparametre
+head_watch=Se gruppen?
+head_monauth=Angiv godkendelse til MONCMD
+head_usr=Brugernavn
+head_pass=Adgangskode
+head_mand=(Parametre i "RØD FARVE" er obligatoriske)
+
+err_nomon=pakken 'mon' er ikke installeret på systemet
+err_nomonconf=MON-konfigurationsfilen $1 blev ikke fundet på dit system. Måske er MON ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+err_nowatch=Ingen uregrupper valgt. Vælg mindst en Watchgroup for at fortsætte.
+err_noserv=Ingen tjenester valgt til uregruppen
+err_nomemb=Ingen værter/medlemmer er valgt til uregruppen
+err_monrun=MON kører ikke på værtsmaskinen. Start MON.
+stop_err=Kunne ikke stoppe MON
+stop_epid=Kører ikke længere
+start_err=Kunne ikke starte MON
+restart_err=Kunne ikke genstarte MON
+restart_epid=Kunne ikke få PID
+
+other=Andet (plads adskilt)
+next=Næste
+mon_stat=MON-status
+mon_off=MON-tjenester ikke startet
+mon_start=Start MON-tjenester
+mon_stop=Stop MON-tjenester
+mon_restart=Genstart MON Services
+mon_startdesc=Klik på denne knap for at starte MON-serveren. Indtil det startes, udføres ingen konfigureret overvågning.
+mon_stopdesc=Klik på denne knap for at stoppe MON-serveren. Ved stop stopper den konfigurerede overvågning.
+mon_restartdesc=Klik på denne knap for at anvende den aktuelle MON-konfiguration ved at genstarte serverprocessen.
+line=(en på hver linje)
+save_apply=Gem og anvend
+watch=Watchgroup
+members=Medlemmer
+def_perargs=wd {lør-søn}
+
+def_desc=beskrivelse
+def_inter=interval
+def_mon=overvåge
+def_dep=dpend
+def_per=periode
+def_alert=alert
+def_alertevr=alertevery
+def_alertaft=alertafter
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=trapduration
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=Værtsgrupper
+groups_group=Gruppe navn
+groups_members=Medlem vært
+
+watches_title=Se lister
+watches_group=Se gruppe
+watches_services=Tjenester, der overvåges
+watches_sadd=Tilføj service ..
+watches_add=Tilføj overvågningsliste for gruppe :
+watches_return=overvågningslister
+watches_none=Der er endnu ikke defineret nogen overvågningslister.
+
+global_title=Globale indstillinger
+global_header=Globale MON-konfigurationsindstillinger
+global_maxprocs=Maksimum MON-processer
+global_histlength=Begivenhedens historielængde
+global_alertdir=Vejviser til programoversigter
+global_mondir=Overvåg programmer bibliotek
+global_authtype=Godkendelsestype
+global_authtype_=Standard
+global_authtype_getpwnam=Systemopkald
+global_authtype_userfile=MON brugere fil
+global_authtype_shadow=Skygge fil
+global_userfile=MON-brugerens fil
+global_emaxprocs=Manglende eller ugyldigt antal MON-processer
+global_ehistlength=Manglende eller ugyldig længde af begivenhedshistorik
+global_ealertdir=Manglende eller ugyldig telefonbog med alarmprogrammer
+global_emondir=Manglende eller ugyldig skærmprogrammappe
+global_euserfile=Manglende fil fra MON-brugere
+
+watch_title=Rediger overvågningsliste
+watch_header=Detaljer om værtsgruppeur
+watch_group=Værtsgruppe at se på
+watch_services=Tjenester, der overvåges
+watch_service=Servicenavn
+watch_monitor=Monitor til brug
+watch_interval=Kontroller alle
+watch_periods=Overvågningsperioder
+
+service_title=Tilføj service
+service_title2=Rediger service
+service_header=Se serviceoplysninger
+service_name=Tjenestens navn
+service_interval=Kontroller alle
+service_desc=Beskrivelse
+service_units_s=sekunder
+service_units_m=minutter
+service_units_h=timer
+service_units_d=dage
+service_units_w=uger
+service_monitor=Brug af skærm
+service_mon1=Standard skærm
+service_mon0=Anden skærm ..
+service_args=Overvåg parametre
+service_period=Overvågningsperiode $1 
+service_days=Dage til kontrol
+service_hours=Åbningstider
+service_all=Alle
+service_pstr=Periodespecifikation
+service_new=Ny overvågningsperiode
+service_alerts=Underretninger for periode
+service_alert=Alert
+service_atype=Kør når
+service_atype_alert=Tjenesten går ned
+service_atype_upalert=Tjenester kommer op
+service_atype_startupalert=MON starter
+service_aargs=Yderligere parametre
+service_every=Send alarm
+service_every_def=Hver gang monitor køres
+service_every_time=Hver
+service_num=Maksimum alarmer, der skal sendes
+service_unlimited=Ubegrænset
+service_after=Fejl inden alarm
+service_immediate=Øjeblikkeligt
+service_after_num=Efter $1 -fejl
+service_aftertime=Inden for tidsintervallet
+service_newperiod=Tilføj en ny periode
+service_delperiod=Slet denne periode
+service_err=Kunne ikke gemme tjenesten
+service_ename=Manglende eller ugyldigt servicenavn
+service_einterval=Manglende eller ugyldigt kontrolinterval
+service_eother=Manglende eller ugyldig skærm
+service_ehour=Manglende eller ugyldig time for periode $1 (skal være kl. 9 eller 17)
+service_eperiod=Ingen angivne dage eller timer for periode $1 
+service_eevery=Manglende eller ugyldig servicealarminterval
+service_eafter=Manglende eller ugyldigt antal fejl inden alarm
+service_enum=Manglende eller ugyldige maksimale advarsler, der skal sendes
+service_epstr=Manglende periodespecifikation
+service_known0=<tt>Tid::Periode</tt> streng
+service_known1=Specificerede dage og timer
+service_known2=Defineret periode
+
+status_title=MON-status
+status_ecgi=MON-status CGI-programmet $1 findes ikke. Måske er det ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+status_eperl=MON-status CGI-programmet kræver $1 perl-modulet. <a href='$2'>Klik her</a> for at installere det direkte fra CPAN.
+status_esame=MON-status CGI-programmet $1 er indstillet til <tt>mon.cgi</tt> scriptet i dette Webmin-modul, ikke CGI-programmet, der følger med MON. Juster <a href='$2'>modulkonfiguration</a> for at bruge den rigtige sti.
+
+users_title=MON brugere
+users_etype=MON-brugernes liste kan ikke redigeres, fordi MON ikke i øjeblikket er konfigureret til at bruge den til godkendelse på siden <a href='$1'>Globale indstillinger</a>.
+users_header=Tilladte MON-brugere i $1 
+users_nousers=Ingen MON-brugere er defineret i $1.
+users_add=Opret en ny bruger.
+users_return=MON brugere liste
+
+user_create=Opret MON-bruger
+user_edit=Rediger MON-bruger
+user_header=MON brugeroplysninger
+user_user=Brugernavn
+user_pass=Adgangskode
+user_leave=Lad være uændret
+user_err=Kunne ikke gemme brugeren
+user_euser=Manglende eller ugyldigt brugernavn
+user_esame=En bruger med samme navn findes allerede
+
+auth_title=Klientkommandoer
+auth_desc=Denne side giver dig mulighed for at kontrollere, hvilke MON-kommandoer, der kan køres af hvilke brugere, når du bruger klientprogrammerne.
+auth_cmd=MON-kommando
+auth_users=Tilladte brugere
+auth_none=Ingen
+auth_all=Alle
+auth_sel=Kun brugere
+auth_err=Kunne ikke gemme klientkommandoer
+auth_eusers=Ingen brugere indtaster til kommando $1 
+
+periods_title=Definerede perioder
+periods_period=Periodens navn
+periods_times=Dage og tider
+periods_alldays=Alle dage
+periods_allhours=Alle timer
+periods_err=Kunne ikke gemme definerede perioder
+periods_ename='$1' er ikke et gyldigt periodenavn
+periods_ehour=Manglende eller ugyldig time for periode $1 (skal være kl. 9 eller 17)
+
+show_title=Driftsstatus
+show_ecgi=MON-statusprogrammet $1 findes ikke. Måske er det ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.

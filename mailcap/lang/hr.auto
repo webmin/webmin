@@ -1,0 +1,46 @@
+index_title=MIME tipa programa
+index_none=Još nisu definirani programi za obradu MIME tipa.
+index_add=Dodajte novi program tipa MIME.
+index_type=MIME tip
+index_program=Program za rukovanje
+index_cmt=Opis
+index_delete=Obriši odabrano
+index_disable=Onemogući odabrano
+index_enable=Omogući odabrano
+index_enabled=Omogućeno?
+index_return=popis programa
+
+edit_title1=Napravite program tipa MIME
+edit_title2=Uredi program MIME Type
+edit_header=Pojedinosti o programu rukovatelja tipa MIME
+edit_type=MIME tip
+edit_enabled=Omogućeno?
+edit_program=Program za rukovanje
+edit_cmt=Opis
+edit_egone=Program više ne postoji!
+edit_test=Naredba ispitivanja
+edit_none=Ništa (uvijek koristite program)
+edit_term=Prikaz izlaznog terminala?
+edit_copious=Daje puno proizvodnje?
+edit_desc=Opis tipa MIME
+
+save_err=Nije uspjelo spremanje programa tipa MIME
+save_etype=Nedostaje ili nije važeći MIME tip
+save_eprogram=Nedostaje program za upravljanje
+save_eclash=Omogućeni program za uneseni MIME tip već postoji
+save_etest=Nedostaje ili nije važeća naredba ispitivanja
+save_edesc=Nevažeći opis vrste MIME
+
+delete_err=Brisanje programa tipa MIME nije uspjelo
+disable_err=Deaktiviranje programa tipa MIME nije uspjelo
+disable_eclash=Već postoji invalidski program tipa MIME za $1 
+enable_err=Omogućivanje programa MIME nije uspjelo
+enable_eclash=Omogućeni program tipa MIME za $1 već postoji
+delete_enone=Nijedna nije odabrana
+
+log_delete_mailcap=Izbriši program tipa MIME za $1 
+log_create_mailcap=Napravljen je program tipa MIME za $1 
+log_modify_mailcap=Izmijenjeni program tipa MIME za $1 
+log_delete_mailcaps=Izbrisani su $1 programi MIME
+log_disable_mailcaps=Onemogućeni $1 MIME programi
+log_enable_mailcaps=Omogućeni $1 MIME programi

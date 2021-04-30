@@ -1,0 +1,120 @@
+index_title=Jabber IM Server
+index_econfig=A (z) $1 Jabber konfigurációs fájl nem létezik. Vagy a Jabber nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+index_edir=A (z) $1 Jabber alapkönyvtár nem létezik. Vagy a Jabber nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+index_emodules=A Perl $1 és $2 modulok, amelyeket a Webmin igényel a Jabber XML konfigurációjának kezeléséhez, nincs telepítve. <a href='$3'>Kattintson ide</a>, hogy közvetlenül a CPAN-ból telepítse.
+index_emodule=A (z) $1 Perl-modul, amelyet a Webmin igényel a Jabber XML-konfigurációjának kezeléséhez, nincs telepítve. <a href='$2'>Kattintson ide</a>, hogy közvetlenül a CPAN-ből telepítse.
+index_expat=A Perl-modulok telepítése előtt győződjön meg arról, hogy az Expat C könyvtár és a fejlécek vannak-e telepítve, mivel ezek attól függnek, és nem lesznek elérhetők, ha nem állnak rendelkezésre.
+index_eparse=A $1 perl modul nem tudta elemezni a Jabber konfigurációs fájlt : $2 
+index_ejabberd=A (z) $1 Jabber szerverprogram nem található a rendszerén. Vagy a Jabber nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+index_eversion=A Webmin csak a Jabber $2 verziót támogatja, de a $3 parancs a következő verzióinformációkat jelentette : $1 
+index_eversion2=A Webmin csak a Jabber verziókat támogatja a $2 alatt, de a $3 parancs a következő verzióinformációkat jelentette : $1 
+index_start=Indítsa el a Jabber Server alkalmazást
+index_startmsg=Kattintson erre a gombra a Jabber szerver elindításához a rendszeren. Az indulásig egyetlen azonnali üzenetküldő ügyfél sem fogja tudni használni.
+index_stop=Állítsa le a Jabber Server alkalmazást
+index_stopmsg=Kattintson erre a gombra, hogy leállítsa a rendszeren futó Jabber szervert. Nincs azonnali üzenetküldő kliens, aki leállítja.
+index_restart=Módosítások elfogadása
+index_restartmsg=Kattintson erre a gombra az aktuális konfiguráció alkalmazásához, a Jabber szerver leállításával és újraindításával.
+index_comments=Figyelem - a (z) $1 Jabber konfigurációs fájl megjegyzéseket tartalmaz, amelyek eltávolításra kerülnek, ha bármilyen konfigurációs módosítást hajtanak végre ezzel a modullal.
+index_return=Jabber menü
+index_version=Jabber $1 verzió
+
+general_title=Általános opciók
+general_header=Globális Jabber szerver lehetőségek
+general_host=A szerver gazdaneve
+general_elog=Hiba naplófájl
+general_elogfmt=Hiba napló formátum
+general_rlog=Hozzáférés a naplófájlhoz
+general_rlogfmt=Hozzáférési napló formátuma
+general_pidfile=Process ID fájl
+general_err=Az általános beállítások mentése nem sikerült
+general_ehost=Hiányzó vagy érvénytelen szerver gazdagépnév
+general_eelog=Hiányzó vagy érvénytelen hibanapló-fájl
+general_eelogfmt=Hiányzik a hibanapló formátuma
+general_erlog=Hiányzó vagy érvénytelen forgalmi naplófájl
+general_erlogfmt=Hiányzik a forgalomnapló-formátum
+general_epidfile=Hiányzó vagy érvénytelen folyamat-azonosító fájl
+
+messages_title=üzenetek
+messages_header=Jabber szerver üzenet az ügyfelek számára
+messages_wsubject=Üdvözlő üzenet tárgya
+messages_wbody=Üdvözlő üzenet törzse
+messages_vcard=Szerver vCard
+messages_rinstr=Regisztrációs utasítások
+messages_rnotify=Értesíti az adminot a regisztráció során?
+messages_rfields=Kötelező regisztrációs mezők
+messages_vcard2jud=Küldjön vCard kártyát a Jabber felhasználói könyvtárba?
+messages_err=Az üzenetek mentése nem sikerült
+messages_evcard=Érvénytelen vCard XML : $1 
+messages_etag=A vCard kiszolgáló XML-je nem &lt;vCard&gt; -nel kezdődik
+
+modules_title=Jabber modulok
+modules_desc=Az alább felsorolt modulokat használjuk a Jabber session manager által kapott üzenetek feldolgozására. Csak akkor változtassa meg ezt a listát, ha tudja, mit csinál.
+modules_header=Jabber szerver munkamenetkezelő modulok
+modules_mod=A modul neve
+modules_so=Közös könyvtár
+modules_err=Nem sikerült menteni a Jabber modulokat
+modules_emod=A '$1' nem érvényes modulnév
+modules_eso=A (z) '$1' megosztott könyvtár nem létezik
+
+karma_title=Karma Forgalomirányító
+karma_header=Forgalomsebesség-szabályozási lehetőségek
+karma_rate=Túlzott kapcsolatkezelés
+karma_rate_def=Tiltva
+karma_rate_sel=Blokkolja az ügyfelet $2 másodpercre a $1 kapcsolatok után
+karma_mode=Karma mód
+karma_none=Határok nélkül
+karma_low=Alacsony forgalmi korlátok
+karma_medium=Közepes forgalmi korlátok
+karma_high=Magas forgalmi korlátok
+karma_sel=Használja az alábbiakban kiválasztott beállításokat.
+karma_heartbeat=Periódus másodpercben (<tt>szívverés</tt>)
+karma_init=Inicializálási periódusok (<tt>init</tt>)
+karma_max=Karma maximum (<tt>max</tt>)
+karma_inc=Karma-növekedés (<tt>inc</tt>)
+karma_dec=Karma-csökkentés (<tt>dec</tt>)
+karma_penalty=Büntetési időszakok (<tt>büntetés</tt>)
+karma_restore=Rövid visszaállítási periódusok (<tt>visszaállítás</tt>)
+karma_err=Nem sikerült menteni a karma opciókat
+karma_eheartbeat=Hiányzó vagy érvénytelen időszak
+karma_einit=Hiányzó vagy érvénytelen inicializálási periódusok
+karma_emax=Hiányzó vagy érvénytelen karma
+karma_einc=Hiányzó vagy érvénytelen karma-növekedés
+karma_edec=Hiányzó vagy érvénytelen karmarendelet
+karma_epenalty=Hiányzó vagy érvénytelen büntetési időszakok
+karma_erestore=Hiányzó vagy érvénytelen visszaállítási periódusok
+karma_epoints=Hiányzó vagy érvénytelen kapcsolatok száma
+karma_etime=Hiányzó vagy érvénytelen idő a blokkoláshoz
+
+ips_title=IP hozzáférés-vezérlés
+ips_header=Jabber szerver IP hozzáférés-vezérlés
+ips_allow=Megengedett kliens IP-k
+ips_all=Minden cím
+ips_deny=Megtagadták az ügyfelek IP-jeit
+ips_none=Egyik sem
+ips_sel=Felsorolt címek/hálómaszkok ..
+ips_err=Nem sikerült menteni az IP-hozzáférés-vezérlést
+ips_eaddr=A '$1' nem érvényes IP-cím vagy IP-cím/hálómaszk
+
+file_title=A Config File szerkesztése
+file_desc=Az alábbi űrlap segítségével közvetlenül szerkesztheti a Jabber konfigurációs fájlt. Ezt csak akkor szabad megtenni, ha megérti az XML konfigurációs formátumot.
+file_header=A Jabber konfigurációs fájl szerkesztése
+file_err=A konfigurációs fájl mentése nem sikerült
+
+admin_title=Felügyeleti felhasználók
+admin_header=Szerver adminisztráció felhasználói
+admin_read=Olvassa el az adminisztrátorokat
+admin_write=Írjon hozzáférési adminokat
+admin_reply=Automatikus válasz az admin üzenetekhez?
+admin_rsubject=Téma automatikusan
+admin_rbody=Automatikus válasz üzenet
+
+filter_title=Felhasználói szűrők
+filter_header=Felhasználói szűrő engedélyek
+filter_max=Maximális szűrési szabályok
+filter_conds=Megengedett szűrési feltételek
+filter_acts=Engedélyezett szűrési műveletek
+
+restart_err=Nem sikerült alkalmazni a módosításokat
+stop_err=A Jabber megállítása nem sikerült
+stop_epid=Nem sikerült megtalálni a Jabber folyamatot
+start_err=A Jabber elindítása nem sikerült

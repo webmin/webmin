@@ -1,0 +1,53 @@
+inittab_new=إنشاء عملية init جديدة.
+inittab_id=هوية شخصية
+inittab_active=نشيط؟
+inittab_runlevels=مستوى تشغيل التمهيد
+inittab_action=عمل
+inittab_process=معالجة
+inittab_none=لا شيء
+inittab_respawn=عملية التجديد
+inittab_wait=انتظر
+inittab_once=مرة واحدة في المستوى
+inittab_boot=زمن الإقلاع
+inittab_bootwait=وقت التمهيد ، انتظر حتى الإنهاء
+inittab_off=لا تفعل شيئا
+inittab_ondemand=كلما في أ ، ب ، ج
+inittab_initdefault=بعد تمهيد النظام
+inittab_sysinit=أثناء تمهيد النظام
+inittab_powerwait=تنقطع الطاقة
+inittab_powerfail=تنقطع الطاقة دون انتظار
+inittab_powerokwait=استعادة السلطة
+inittab_powerfailnow=فشل طاقه
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=تركيبة مفاتيح خاصة
+inittab_kbrequest=تركيبة مفاتيح خاصة
+inittab_return=قائمة العمليات
+inittab_apply=تطبيق التكوين الأولي
+inittab_applymsg=انقر فوق هذا الزر لتطبيق تكوين SysV Init الحالي عن طريق تشغيل الأمر <tt>telinit q</tt>. كن على علم بأن أي أخطاء في التكوين الخاص بك قد تجعل النظام غير قابل للاستخدام عند تشغيل هذا الأمر.
+index_delete=حذف العمليات المختارة
+inittab_none2=لم يتم العثور على عمليات تمهيد على نظامك. ربما يشير هذا إلى أنه لا يستخدم ملف تكوين SysV init.
+
+edit_inittab_err=غير مسموح لك بتحرير العملية
+edit_inittab_title=تحرير العملية$1
+edit_inittab_details=تفاصيل العملية
+edit_inittab_del=حذف
+edit_inittab_save=حفظ
+
+new_inittab_err=غير مسموح لك بإنشاء عملية جديدة
+new_inittab_title=عملية جديدة
+
+save_inittab_err=غير مسموح لك بحفظ العملية
+save_inittab_noid=خطأ ، لم يتم إدخال عملية اسم
+save_inittab_already=خطأ ، عملية الاسم موجودة بالفعل
+
+log_modify=عملية التهيئة المعدلة$1
+log_rename=تمت إعادة تسمية عملية التهيئة$1 إلى$2
+log_create=تم إنشاء عملية التهيئة$1
+log_delete=عملية التهيئة المحذوفة$1
+log_apply=التكوين التطبيقي
+log_deletes=تم حذف عمليات التهيئة$1
+
+apply_err=فشل في تطبيق التكوين
+
+delete_err=فشل في حذف العمليات
+delete_enone=لا شيء محدد

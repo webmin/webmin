@@ -1,20 +1,20 @@
-<header>Odrzucaæ nieznanych u¿ytkowników lokalnych</header>
+<header>OdrzucaÄ‡ nieznanych uÅ¼ytkownikÃ³w lokalnych</header>
 
 <center><tt>local_recipient_maps</tt></center>
 <hr>
 
-Ten parametr definiuje fakultatywne tabele do poszukiwania u¿ytkowników
-lokalnych wzglêdem <tt>$mydestination</tt> (&quot;dla jakich domen odbieraæ
-pocztê&quot;) oraz <tt>$inet_interfaces</tt> (&quot; interfejsy sieciowe dla
-poczty przychodz±cej&quot;). Je¶li ten parametr bêdzie zdefiniowany, serwer
-SMTP bêdzie odrzuca³ pocztê do nieznanych u¿ytkowników lokalnych. <p>
+Ten parametr definiuje fakultatywne tabele do poszukiwania uÅ¼ytkownikÃ³w
+lokalnych wzglÄ™dem <tt>$mydestination</tt> (&quot;dla jakich domen odbieraÄ‡
+pocztÄ™&quot;) oraz <tt>$inet_interfaces</tt> (&quot; interfejsy sieciowe dla
+poczty przychodzÄ…cej&quot;). JeÅ›li ten parametr bÄ™dzie zdefiniowany, serwer
+SMTP bÄ™dzie odrzucaÅ‚ pocztÄ™ do nieznanych uÅ¼ytkownikÃ³w lokalnych. <p>
 
-Podaj tabele z&nbsp;go³ymi nazwami u¿ytkowników takie jak
-<tt>unix:passwd.byname</tt> i&nbsp;odwzorowania aliasów. Przyk³ad:
+Podaj tabele z&nbsp;goÅ‚ymi nazwami uÅ¼ytkownikÃ³w takie jak
+<tt>unix:passwd.byname</tt> i&nbsp;odwzorowania aliasÃ³w. PrzykÅ‚ad:
 <tt>$alias_maps unix:passwd.byname</tt>. <p>
 
-Uwaga: je¶li serwer SMTP Postfiksa dzia³a w&nbsp;¶rodowisku chroot, mo¿e
-istnieæ konieczno¶æ skopiowania bazy passwd do miejsca jego uwiêzienia.
-Zale¿y to od systemu.
+Uwaga: jeÅ›li serwer SMTP Postfiksa dziaÅ‚a w&nbsp;Å›rodowisku chroot, moÅ¼e
+istnieÄ‡ koniecznoÅ›Ä‡ skopiowania bazy passwd do miejsca jego uwiÄ™zienia.
+ZaleÅ¼y to od systemu.
 
 <hr>

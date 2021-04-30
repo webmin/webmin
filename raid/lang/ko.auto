@@ -1,0 +1,107 @@
+index_eprogs=시스템에 RAID 도구 또는 MDADM 패키지가 설치되어 있지 않습니다.
+index_mdadm=MDADM 버전 $1 사용
+index_raidtools=RaidTools 사용
+index_name=장치 이름
+index_active=유효한?
+index_errors=오류
+index_status=상태
+index_level=RAID 레벨
+index_size=사용 가능한 크기
+index_members=멤버 디스크 장치
+index_header=RAID 문제 알림 옵션
+index_mailaddr=에 알림 보내기
+index_mailaddrnone=보내 지마
+index_mailfrom=알림 주소에서
+index_mailfromnone=기본 (<tt>root</tt>)
+index_program=문제가 감지 될 때 실행할 명령
+index_programnone=어떤 것도 실행하지 마십시오
+index_monitor=모니터링이 가능합니까?
+
+raid6=RAID6 (이중 분산 패리티)
+raid10=RAID10 (스트라이프 및 미러)
+blocks=블록
+
+create_missing=현재 누락 된 디스크를 포함 하시겠습니까?
+create_assume=장치 초기화를 건너 뛰시겠습니까?
+create_lvm=LVM VG $1, LV $2 
+create_group=스페어 그룹의 회원
+create_nogroup=없음 (자체 스페어 만 사용)
+create_oldgroup=기존 그룹
+create_newgroup=새로운 그룹
+create_enewgroup=비 알파벳 스페어 그룹 이름
+create_n2_layout=2 사본 근처
+create_f2_layout=원거리 사본 2 개
+create_o2_layout=2 오프셋 사본
+create_n3_layout=3 사본 근처
+create_f3_layout=원거리 사본 3 개
+create_o3_layout=3 오프셋 사본
+
+view_uuid=UUID
+view_errors=RAID 오류
+view_bad=$1 디스크 고장
+view_mount=$1 에 장착
+view_lvm=LVM VG $1 에서 사용
+view_iscsi=iSCSI 공유 장치 $1 에서 사용
+view_stopdesc=더 이상 액세스 할 수 없도록 RAID 장치를 종료하려면이 단추를 클릭하십시오.
+view_startdesc=이 버튼을 클릭하여이 RAID 장치를 다시 활성화하십시오.
+view_delayed=다른 장치에서 대기
+view_cannot2=이 RAID 장치는 현재 활성 상태이므로 마운트, 비활성화, 삭제 또는 재 포맷 할 수 없습니다.
+view_mkfs2=다음 유형의 파일 시스템을 작성하십시오.
+view_mkfsdesc=파일 시스템 유형을 선택하고이 버튼을 클릭하여이 논리 볼륨에 새 파일 시스템을 만듭니다. 현재 볼륨에있는 모든 데이터가 지워집니다.
+view_add=파티션 추가 :
+view_adddesc=사용하지 않는 파티션을 선택하고이 버튼을 클릭하여 RAID 장치에 추가하십시오.
+view_delete=RAID 배열 삭제
+view_deletedesc=이 버튼을 클릭하여이 RAID 장치를 완전히 제거하십시오. 포함 된 모든 데이터는 거의 확실하게 손실됩니다!
+view_remove=파티션을 제거하십시오.
+view_removedesc=RAID 장치의 일부인 파티션을 선택하고이 단추를 클릭하여 제거하십시오. 데이터가 유실 될 수 있습니다!
+view_remove_det=분리 제거
+view_remove_detdesc=시스템에서 이미 물리적으로 분리 된 파티션을 제거하십시오.
+view_replace=파티션 교체 :
+view_replacedesc=교체 할 파티션을 선택하십시오. (핫 교체)
+view_grow=RAID 성장 :
+view_growdesc=배열 확장 (핫 스페어를 활성 구성원으로 변환)
+view_convert_to_raid6=RAID6으로 변환
+view_convert_to_raid6desc=하나 이상의 드라이브를 추가하여 RAID 레벨을 RAID6으로 변환하십시오.
+view_convert_to_raid5=RAID5로 변환
+view_convert_to_raid5desc=드라이브를 제거하여 RAID 레벨을 RAID5로 변환하십시오.
+view_state=RAID 상태
+view_rebuild=재건 진행
+view_newmount=다음에 RAID를 마운트하십시오.
+view_newmount2=가상 메모리로 RAID 마운트
+view_mountmsg=디렉토리를 입력하고이 버튼을 클릭하면 파일 시스템이 이미 포함되어있는 RAID 장치 마운트 양식으로 이동합니다.
+view_mountmsg2=이 버튼을 클릭하여 시스템의 가상 메모리에이 RAID 장치를 사용하십시오.
+view_blocks=$1 블록
+view_sparegroup=스페어 그룹
+
+mkfs_header2=이 형식을 사용하면 $1 에 새로운 $2 파일 시스템을 구축 할 수 있습니다. 기존 데이터가 <b>전체</b> 삭제됩니다!
+
+emdadmstop=<tt>mdadm</tt> in <tt>--stop</tt> mode failed : $1
+emdadmcreate=<tt>mdadm</tt> in <tt>--create</tt> mode failed : $1
+emdadmadd=<tt>mdadm</tt> in <tt>--manage --add</tt> mode failed : $1
+emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
+emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
+emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
+emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
+log_add=RAID 장치 $1 에 파티션 $2 을 (를) 추가했습니다.
+log_remove=RAID 장치 $1 에서 파티션 $2 을 (를) 제거했습니다.
+log_replace=예비 파티션 $3 으로 RAID 장치 $1 의 핫 교체 파티션 $2 
+log_grow=RAID 장치 $1 을 (를) 총 $2 개의 디스크로 재배
+log_convert_to_raid6=RAID5 장치 $1 을 RAID6 장치로 변환
+log_convert_to_raid5=RAID6 장치 $1 을 RAID5 장치로 변환
+log_notif=업데이트 된 RAID 문제 알림 옵션
+
+notif_err=RAID 문제 알림 옵션을 저장하지 못했습니다
+notif_emailaddr=알림 주소가 없거나 잘못되었습니다
+notif_emailfrom=보낸 사람 주소가 없거나 잘못되었습니다
+notif_eprogram=실행할 프로그램이 없거나 존재하지 않습니다
+
+delete_title=RAID 배열 삭제
+delete_rusure=디스크 공간의 $2 을 (를) 사용하는 RAID 어레이 $1 을 (를) 삭제 하시겠습니까?
+delete_ok=예, 삭제
+delete_eidx=선택된 RAID 어레이가 없습니다!
+
+remove_title=RAID 배열에서 파티션 제거
+remove_rusure=RAID 어레이 $1 의 파티션 $2 을 (를) 제거 하시겠습니까?
+remove_ok=예, 제거
+remove_eidx=선택된 RAID 어레이가 없습니다!

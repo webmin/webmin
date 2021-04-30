@@ -1,0 +1,6 @@
+list_format_ini=Формат INI
+list_format_fpm=Формат FPM
+
+session_eredis=Отсутствует или отключено расширение Redis
+
+misc_charset=Набор символов по умолчанию

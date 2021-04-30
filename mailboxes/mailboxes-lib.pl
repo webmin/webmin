@@ -1048,7 +1048,7 @@ sub get_signature
 local $sf = &get_signature_file($_[0]);
 $sf || return undef;
 local $sig;
-open(SIG, $sf) || return undef;
+open(SIG, "<".$sf) || return undef;
 while(<SIG>) {
 	$sig .= $_;
 	}

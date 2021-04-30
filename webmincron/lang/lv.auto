@@ -1,0 +1,20 @@
+edit_mins=Minūtes
+edit_hours=Stundas
+edit_days=Dienas
+edit_months=Mēneši
+edit_weekdays=Nedēļas dienas
+edit_all=Visi
+edit_selected=Atlasīts ..
+edit_run=Palaist tagad
+edit_clone=Klons Darbs
+edit_return=cron darbs
+edit_special1=Vienkāršs grafiks ..
+edit_special0=Laiki un datumi, kas atlasīti zemāk
+edit_special_hourly=Stundu
+edit_special_daily=Katru dienu (pusnaktī)
+edit_special_weekly=Katru nedēļu (svētdien)
+edit_special_monthly=Mēnesī (1. datumā)
+edit_special_yearly=Katru gadu (1. janvārī)
+
+log_success=Veiksmīgi palaida <tt>$2</tt> <tt>$1</tt>
+log_failure=Neizdevās palaist <tt>$2</tt> <tt>$1</tt> : $3 

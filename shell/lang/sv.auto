@@ -1,0 +1,18 @@
+index_title=Kommandoskal
+index_ok=Kör kommando:
+index_history=Kommandohistoria
+index_clear=Rensa historik
+index_clearcmds=Rensa kommandon
+index_desc=Ange ett skalkommando som ska köras i textfältet nedan. Kommandot <tt>cd</tt> kan användas för att ändra katalog för kommande kommandon.
+index_pok=Kör föregående kommando
+index_edit=Redigera föregående
+index_trunced=Den totala produktionen av $2 trunkerades till $1.
+index_timedout=Kommandot avslutades efter körning i $1 sekunder.
+
+acl_user=Kör kommandon som användare
+acl_user_def=Nuvarande Webmin-användare
+acl_shellenv=Använd vald användarmiljö?
+acl_chroot=Chroot till katalogen
+
+log_run=Kör kommando $1 
+log_clear=Rensat kommandohistorik

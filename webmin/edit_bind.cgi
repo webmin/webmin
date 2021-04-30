@@ -46,24 +46,35 @@ print &ui_table_row($text{'bind_sockets'}, $stable);
 
 # IPv6 enabled?
 print &ui_table_row($text{'bind_ipv6'},
-	&ui_yesno_radio("ipv6", $miniserv{'ipv6'}), undef, [ "valign=middle","valign=middle" ]);
+	&ui_yesno_radio("ipv6", $miniserv{'ipv6'}));
 
 # Show UDP listen address
 print &ui_table_row($text{'bind_listen'},
     &ui_radio("listen_def", $miniserv{"listen"} ? 0 : 1,
 	[ [ 1, $text{'bind_none'} ],
-	  [ 0, &ui_textbox("listen", $miniserv{"listen"}, 6) ] ]), undef, [ "valign=middle","valign=middle" ]);
+	  [ 0, &ui_textbox("listen", $miniserv{"listen"}, 6) ] ]));
 
 # Show web server hostname
 print &ui_table_row($text{'bind_hostname'},
     &ui_radio("hostname_def", $miniserv{"host"} ? 0 : 1,
 	[ [ 1, $text{'bind_auto'} ],
-	  [ 0, &ui_textbox("hostname", $miniserv{"host"}, 25) ] ]), undef, [ "valign=middle","valign=middle" ]);
+	  [ 0, &ui_textbox("hostname", $miniserv{"host"}, 25) ] ]));
 
 # Reverse-lookup hostname
 print &ui_table_row($text{'bind_resolv_myname'},
     &ui_radio("no_resolv_myname", int($miniserv{'no_resolv_myname'}),
-	[ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]), undef, [ "valign=middle","valign=middle" ]);
+	[ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
+
+# Max concurrent connections
+print &ui_table_row($text{'bind_maxconns'},
+    &ui_opt_textbox("maxconns", $miniserv{'maxconns'}, 5,
+		    $text{'default'}." (50)"));
+print &ui_table_row($text{'bind_maxconns_per_ip'},
+    &ui_opt_textbox("maxconns_per_ip", $miniserv{'maxconns_per_ip'}, 5,
+		    $text{'default'}." (25)"));
+print &ui_table_row($text{'bind_maxconns_per_net'},
+    &ui_opt_textbox("maxconns_per_net", $miniserv{'maxconns_per_net'}, 5,
+		    $text{'default'}." (35)"));
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);

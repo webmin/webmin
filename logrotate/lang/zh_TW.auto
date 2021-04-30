@@ -1,0 +1,115 @@
+index_title=日誌文件輪換
+index_econf=在系統上找不到日誌輪轉配置文件 $1。也許未安裝logrotate，或者<a href='$2'>模塊配置</a>不正確。
+index_ecmd=在系統上找不到日誌輪換程序 $1。可能未安裝，或者<a href='$2'>模塊配置</a>不正確。
+index_eversion=使用命令 $1 : $2無法獲得logrotate的版本
+index_version=Logrotate版本 $1
+index_add=添加新的日誌文件以進行輪換。
+index_file=日誌文件
+index_period=輪換期
+index_post=旋轉後命令
+index_none=尚未定義日誌文件。
+index_global=編輯全局選項
+index_globaldesc=單擊此按鈕以編輯適用於所有日誌文件的設置，並定義日誌的默認值。
+index_sched=編輯時間表
+index_scheddesc=單擊此按鈕可編輯Cron在其上運行logrotate的計劃，或啟用或禁用它。
+index_nocmd=沒有
+index_notset=沒有設置
+index_return=日誌文件列表
+index_force=強制日誌旋轉
+index_forcedesc=強制立即輪換所有日誌文件，即使還沒有時間。
+index_logrotate=對數旋轉
+index_delete=刪除選定的日誌輪換
+
+period_daily=日常
+period_weekly=每週
+period_monthly=每月一次
+period_never=決不
+period_bytes=個字節
+
+edit_title1=編輯日誌文件
+edit_title2=創建日誌文件
+edit_header=輪換的日誌文件詳細信息
+edit_file=日誌文件路徑
+edit_sched=輪換時間表
+edit_rotate=要保留的舊日誌數
+edit_compress=壓縮舊的日誌文件？
+edit_delaycompress=將壓縮延遲到下一個週期？
+edit_copytruncate=截斷日誌文件到位？
+edit_ifempty=即使日誌文件為空也要旋轉嗎？
+edit_missingok=缺少日誌文件是否丟失？
+edit_size=旋轉前的最大尺寸
+edit_always=被忽略
+edit_minsize=最小旋轉尺寸
+edit_nominsize=總是
+edit_ext=旋轉文件名的擴展名
+edit_dateext=對旋轉文件使用日期擴展名
+edit_mail=刪除之前的電子郵件日誌文件？
+edit_mailto=是的，解決
+edit_mailno=不，不要發電子郵件
+edit_mailfl=將文件記錄到電子郵件
+edit_mailfirst=剛旋轉的最新
+edit_maillast=最舊的將被刪除
+edit_create=輪換後重新創建日誌文件？
+edit_createas=是，模式為 $1，並由用戶 $2和組 $3擁有
+edit_createno=不，不要重新創建
+edit_createsame=是，具有舊權限
+edit_olddir=存儲舊的旋轉日誌
+edit_olddirto=目錄
+edit_olddirsame=與日誌文件位於同一目錄
+edit_errors=通過電子郵件將錯誤消息發送到
+edit_errorsno=沒有人
+edit_errorsto=地址或用戶
+edit_post=旋轉後運行的命令
+edit_pre=旋轉前要運行的命令
+edit_default=默認值（$1）
+edit_sharedscripts=所有文件只運行一次腳本？
+edit_now=現在旋轉
+
+global_title=全局選項
+global_header=所有日誌文件的默認選項
+
+save_err=保存日誌失敗
+save_efile=缺少或無效的日誌文件名
+save_esize=最大大小缺失或無效
+save_eminsize=最小尺寸缺失或無效
+save_erotate=保留的舊日誌的最大數量缺失或無效
+save_ecreatemode=缺少或無效的3位或4位八進制創建模式
+save_ecreateuser=創建用戶丟失或無效
+save_ecreategroup=創作組缺失或無效
+save_emust1=輸入創建用戶時必須輸入創建模式
+save_emust2=輸入創建組時必須輸入創建用戶
+save_eolddirto=舊的輪換日誌缺少目錄或目錄無效
+save_eext=旋轉的日誌文件名缺少擴展名
+save_emailto=輪換日誌缺少電子郵件地址
+save_eerrors=缺少錯誤消息的電子郵件地址
+save_epre=旋轉前腳本不能包含<tt>endscript</tt>或<tt>endrotate</tt>行
+save_epost=旋轉後腳本不能包含<tt>endscript</tt>或<tt>endrotate</tt>行
+save_enofiles=沒有輸入要旋轉的文件
+
+log_modify_sched=更改了日誌輪換Cron作業
+log_create_sched=創建日誌輪換Cron作業
+log_delete_sched=刪除日誌輪換Cron作業
+log_global=修改後的全局選項
+log_create=為日誌文件 $1添加了輪換
+log_modify=日誌文件 $1的修改後的輪換
+log_delete=日誌文件 $1的已刪除輪換
+log_delete_logs=已刪除 $1日誌文件的輪換
+
+sched_title=日誌輪換時間表
+sched_desc=為了執行使用此模塊配置的日誌輪換，命令 $1必須由Cron定期執行（通常每天）。
+sched_runparts=當前，正在從腳本 $1 $2運行日誌輪換命令，並且無法對其進行調整。
+sched_sched=日誌旋轉Cron作業
+sched_disabled=殘障人士
+sched_enabled=已啟用，有時低於 ..
+sched_save=更新Cron作業
+sched_err=保存輪換時間表失敗
+sched_when=運行時間
+
+force_title=強制日誌旋轉
+force_doing=強制立即循環所有日誌文件 ..
+force_doingone=強制立即輪換一個日誌文件 ..
+force_done=..完成。
+force_failed=..失敗了！請參閱上面的輸出以了解原因。
+
+delete_err=刪除日誌失敗
+delete_enone=未選擇

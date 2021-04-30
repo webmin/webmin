@@ -51,9 +51,10 @@ if ($ENV{'PATH_INFO'}) {
 		@st = stat($temp);
 		print "Content-length: $st[7]\n";
 		print "Content-type: application/zip\n\n";
-		open(FILE, $temp);
+		open(FILE, "<$temp");
 		unlink($temp);
-		while(read(FILE, $buffer, 1000000)) {
+		my $bs = &get_buffer_size();
+		while(read(FILE, $buffer, $bs)) {
 			print("$buffer");
 			}
 		close(FILE);

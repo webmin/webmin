@@ -1,0 +1,52 @@
+index_title=Export NFS
+index_add=Přidejte nový export.
+index_dirs=Adresáře
+index_clients=Klienti
+index_everyone=Každý
+index_none=Zatím nebyl definován žádný vývoz.
+index_delete=Smazat vybrané exporty
+index_apply=Aplikuj změny
+index_applydesc=Klepnutím na toto tlačítko použijete aktuální konfiguraci exportu souboru. Tím se zpřístupní všechny výše uvedené adresáře se zadanými možnostmi.
+index_return=seznam exportů
+index_echeck=Server NFS nelze v tomto systému použít : $1 
+
+check_ecmd=Příkaz serveru NFS $1 není nainstalován
+
+delete_err=Export se nepodařilo smazat
+delete_enone=Nebyl vybrán žádný
+
+edit_title1=Upravit export
+edit_title2=Vytvořit export
+edit_header1=Možnosti exportu
+edit_dirs=Adresáře k exportu
+edit_alldirs=Exportovat podadresáře?
+edit_ro=Pouze ke čtení?
+edit_kerb=Používáte Kerberos?
+edit_header2=Vzdálené mapování uživatelů
+edit_maproot=Mapujte uživatele root na
+edit_mapusers=Mapujte všechny uživatele na
+edit_unpriv=Uživatel bez oprávnění
+edit_uid=Uživatel / UID
+edit_gids=A skupiny / GID
+edit_mapall=Mapujte všechny uživatele na
+edit_header3=Klienti pro tento export
+edit_clients=Klienti
+edit_hosts=Hostitelé / netgroup
+edit_network=Síť
+edit_mask=Maska
+
+save_err=Export se nepodařilo uložit
+save_edir='$1' není adresář nebo neexistuje
+save_enone=Chcete-li exportovat, musíte zadat alespoň jeden adresář
+save_esub=Pokud je vybrána možnost <b>exportovat podadresáře</b>, lze zadat pouze jeden adresář
+save_eroot=Při použití možnosti <b>exportovat podadresáře</b> musí být exportovaný adresář kořenem <i>lokálního</i> souborového systému
+save_euser='$1' není platný uživatel nebo UID
+save_egroup='$1' není platná skupina nebo GID
+save_ekerb=Uživatelé root root, mapovat všechny uživatele a možnosti kerberos se vzájemně vylučují
+save_ehosts=Chcete-li exportovat, musíte zadat alespoň jednoho hostitele
+save_enetwork='$1' není platná síť
+save_enetmask='$1' není platná maska sítě
+save_esame1=Adresář <tt>$1</tt> se již exportuje do <tt>$2</tt>. Váš operační systém neumožňuje export adresářů na stejném <i>místním</i> souborovém systému samostatně na stejného hostitele
+save_esame2=Adresář <tt>$1</tt> se již exportuje do <tt>$2</tt>. Váš operační systém neumožňuje export adresářů ve stejném <i>místním</i> souborovém systému samostatně do stejné sítě
+
+restart_err=Nepodařilo se použít změny

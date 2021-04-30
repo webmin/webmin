@@ -29,6 +29,7 @@ $control_file = "$debian_dir/control";
 $doc_dir = "$tmp_dir/usr/share/doc/$baseproduct";
 $copyright_file = "$doc_dir/copyright";
 $usr_dir = "$tmp_dir/usr/share/$baseproduct";
+$bin_dir = "$tmp_dir/usr/bin";
 $pam_dir = "$tmp_dir/etc/pam.d";
 $init_dir = "$tmp_dir/etc/init.d";
 $pam_file = "$pam_dir/$baseproduct";
@@ -63,6 +64,7 @@ system("mkdir -p $pam_dir");
 system("mkdir -p $init_dir");
 system("mkdir -p $usr_dir");
 system("mkdir -p $doc_dir");
+system("mkdir -p $bin_dir");
 
 # Un-tar the package to the correct locations
 system("gunzip -c tarballs/$product-$ver.tar.gz | (cd $tmp_dir ; tar xf -)") &&
@@ -89,13 +91,20 @@ system("cd $usr_dir && chmod -R og-w .");
 if ($< == 0) {
 	system("cd $usr_dir && chown -R root:bin .");
 	}
-$size = int(`du -sk $tmp_dir`);
 
 # Create the control file
 @deps = ( "perl", "libnet-ssleay-perl", "openssl", "libauthen-pam-perl", "libpam-runtime", "libio-pty-perl", "apt-show-versions", "unzip", "shared-mime-info", "liblwp-protocol-https-perl", "libjson-perl" );
 if ($baseproduct eq "webmin") {
 	push(@deps, "python");
+  }
+# Create the link to webmin command
+if ($product eq "webmin") {
+	system("ln -s /usr/share/$baseproduct/bin/webmin $bin_dir/webmin");
 	}
+
+# Create the control file
+$size = int(`du -sk $tmp_dir`);
+@deps = ( "perl", "libnet-ssleay-perl", "openssl", "libauthen-pam-perl", "libpam-runtime", "libio-pty-perl", "unzip", "shared-mime-info", "tar" );
 $deps = join(", ", @deps);
 open(CONTROL, ">$control_file");
 print CONTROL <<EOF;
@@ -155,7 +164,8 @@ system("cp $copyright_file $debian_copyright_file");
 # Create the config files file, for those we don't want to replace
 open(CONF, ">$conffiles_file");
 print CONF "/etc/pam.d/$baseproduct\n";
-print CONF "/etc/init.d/$baseproduct\n";
+#print CONF "/etc/init.d/$baseproduct\n";	# Put this back sometime after
+						# 1.973 has been out for a while
 close(CONF);
 chmod(0644, $conffiles_file);
 
@@ -259,6 +269,27 @@ system("chmod 755 $preinstall_file");
 open(SCRIPT, ">$postinstall_file");
 print SCRIPT <<EOF;
 #!/bin/sh
+
+# Fix old versions of Webmin that might kill the UI process on upgrade
+if [ -d /etc/webmin ]; then
+	cat >/etc/webmin/stop 2>/dev/null <<'EOD'
+#!/bin/sh
+echo Stopping Webmin server in /usr/libexec/webmin
+pidfile=`grep "^pidfile=" /etc/webmin/miniserv.conf | sed -e 's/pidfile=//g'`
+pid=`cat \$pidfile`
+if [ "\$pid" != "" ]; then
+  kill \$pid || exit 1
+  if [ "\$1" = "--kill" ]; then
+    sleep 1
+    (kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null
+  fi
+  exit 0
+else
+  exit 1
+fi
+EOD
+fi
+
 inetd=`grep "^inetd=" /etc/$baseproduct/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
 if [ "\$1" = "upgrade" -a "\$1" != "abort-upgrade" ]; then
 	# Upgrading the package, so stop the old webmin properly

@@ -1,0 +1,13 @@
+index_thost=Nombre de host
+index_tdesc=Descripción
+index_tcount=Paquetes
+index_ttype=Tipo de sistema operativo
+
+install_ealready=La versión $1 ya está instalada
+
+host_system=Sistema de paquetes
+
+delete_rusurenone=¿Está seguro de que desea eliminar el paquete $1 de todos los servidores?
+delete_rusure2none=¿Está seguro de que desea eliminar el paquete $1 de $4 ?
+
+do_success2=Instalado $1 en $2.

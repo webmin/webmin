@@ -1,0 +1,9 @@
+line1=Možnosti konfigurace,11
+refresh_days=Dny před obnovou seznamu CPAN modulu,0,5
+save_partial=Podržet stahovaný modul&#44; jestliže instalace vykázala chyby?,1,1-Ano,0-Ne
+def_args=Výchozí argumenty pro Makefile.PL,0
+incpackages=Zahrnout Perl moduly ze softwarových balíčků?,1,1-Ano,0-Ne
+incyum=Instalovat Perl moduly pomocí YUM nebo APT&#44; je-li to možné?,1,1-Ano,0-Ne
+line2=Konfigurace systému,11
+packages=Seznam CPAN modulů perlu,0
+cpan=Základní adresa CPAN modulů,0

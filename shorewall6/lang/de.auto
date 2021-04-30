@@ -1,0 +1,3 @@
+log_modify_table=Geänderter Eintrag in der $1 -Tabelle
+log_up_table=Eintrag in der $1 -Tabelle nach oben verschoben
+log_down_table=Eintrag in der $1 -Tabelle nach unten verschoben

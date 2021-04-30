@@ -1,0 +1,39 @@
+index_title=Izvoz NFS
+index_add=Dodajte nov izvoz NFS
+index_dir=Imenik
+index_hosts=Dovoljeni gostitelji
+index_all=Vsi gostitelji
+index_none=Izvoz NFS še ni opredeljen.
+index_apply=Uporabi konfiguracijo
+index_applydesc=Kliknite ta gumb, če želite aktivirati vse zgoraj naštete izvozne izdelke z njihovimi konfiguriranimi možnostmi.
+index_return=izvozni seznam
+
+edit_title1=Ustvari izvoz
+edit_title2=Uredi izvoz
+edit_header=Izvozi podrobnosti
+edit_dir=Imenik za izvoz
+edit_hosts=Izvozi v gostitelje/netgroups
+edit_ro=Le za branje?
+edit_wsync=Sinhronizacija po pisanju?
+edit_anon=Root uporabniška dovoljenja
+edit_anon1=Privzeto (obravnavajte kot <tt>nihče</tt>)
+edit_anon2=Prepreči dostop
+edit_anon0=Obravnavajte kot uporabnika
+edit_rw=Dostop za branje/pisanje
+edit_root=Dostop do korenske datoteke
+edit_access=Nadgradite dostop
+edit_all=Vsi gostitelji
+edit_sel=Gostitelji s seznama ..
+edit_none=Brez gostiteljev
+
+save_err=Izvoza ni bilo mogoče shraniti
+save_edir=Manjkajoči ali neobstoječi imenik za izvoz
+save_eanon=Manjkajoči ali neveljavni uporabnik root
+save_erw=Gostitelji branja in pisanja niso vneseni
+save_eroot=Gostitelji dostopa do korenske datoteke niso vneseni
+save_eaccess=Gostitelji dostopa do montaže niso vneseni
+
+log_create_export=Ustvaril izvoz $1 
+log_delete_export=Izbrisan izvoz $1 
+log_modify_export=Spremenjen izvoz $1 
+log_apply=Uporabljena konfiguracija

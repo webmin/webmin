@@ -1,1 +1,1 @@
-desc_es=Hist&#243;rico de Acciones de Webmin
+desc_es=Histórico de Acciones de Webmin

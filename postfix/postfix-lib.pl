@@ -16,11 +16,13 @@ $config{'perpage'} ||= 20;      # a value of 0 can cause problems
 
 # Get the saved version number
 $version_file = "$module_config_directory/version";
+$postfix_config_command = $config{'postfix_config_command'};
+$has_postfix_config_command = &has_command($postfix_config_command);
 if (&open_readfile(VERSION, $version_file)) {
 	chop($postfix_version = <VERSION>);
 	close(VERSION);
 	my @vst = stat($version_file);
-	my @cst = stat(&has_command($config{'postfix_config_command'}));
+	my @cst = stat($postfix_config_command);
 	if (@cst && $cst[9] > $vst[9]) {
 		# Postfix was probably upgraded
 		$postfix_version = undef;
@@ -29,8 +31,8 @@ if (&open_readfile(VERSION, $version_file)) {
 
 if (!$postfix_version) {
 	# Not there .. work it out
-	if (&has_command($config{'postfix_config_command'}) &&
-	    &backquote_command("$config{'postfix_config_command'} -d mail_version 2>&1", 1) =~ /mail_version\s*=\s*(.*)/) {
+	if ($has_postfix_config_command &&
+	    &backquote_command("$postfix_config_command -d mail_version 2>&1", 1) =~ /mail_version\s*=\s*(.*)/) {
 		# Got the version
 		$postfix_version = $1;
 		}
@@ -125,15 +127,17 @@ foreach my $l (@$lref) {
 		last;
 		}
 	}
-if (!defined($out)) {
+if (!defined($out) && !$_[1]) {
 	# Fall back to asking Postfix
 	# -h tells postconf not to output the name of the parameter
-	$out = &backquote_command("$config{'postfix_config_command'} -c $config_dir -h ".
-				  quotemeta($name)." 2>/dev/null", 1);
+	my $err;
+	&execute_command("$config{'postfix_config_command'} -c $config_dir -h ".
+			 quotemeta($name), undef, \$out, \$err, 0, 1);
 	if ($?) {
 		&error(&text('query_get_efailed', $name, $out));
 		}
-	elsif ($out =~ /warning:.*unknown\s+parameter/) {
+	elsif ($out =~ /warning:.*unknown\s+parameter/ ||
+	       $err =~ /warning:.*unknown\s+parameter/) {
 		return undef;
 		}
 	chop($out);
@@ -161,7 +165,10 @@ return $out;
 # returns if the value is the default value
 sub if_default_value
 {
-    my $out = &backquote_command("$config{'postfix_config_command'} -c $config_dir -n $_[0] 2>&1", 1);
+    my ($name) = @_;
+    my $out = &backquote_command(
+	"$config{'postfix_config_command'} -c $config_dir -n ".
+	quotemeta($name)." 2>&1", 1);
     if ($?) { &error(&text('query_get_efailed', $_[0], $out)); }
     return ($out eq "");
 }
@@ -264,32 +271,61 @@ sub reload_postfix
     return undef;
 }
 
+# get_bootup_action()
+# Returns the name of the init script to start and stop Postfix, if found.
+sub get_bootup_action
+{
+return undef if (!&foreign_check("init"));
+&foreign_require("init");
+my $name = $config{'init_name'} || 'postfix';
+my $st = &init::action_status($name);
+return $st == 0 ? undef : $name;
+}
+
 # stop_postfix()
 # Attempts to stop postfix, returning undef on success or an error message
 sub stop_postfix
 {
-local $out;
+my ($ok, $out, $init);
 if ($config{'stop_cmd'}) {
+	# Use the user-configured stop command
 	$out = &backquote_logged("$config{'stop_cmd'} 2>&1");
+	$ok = !$?;
 	}
 else {
-	$out = &backquote_logged("$config{'postfix_control_command'} -c $config_dir stop 2>&1");
+	# Run the init script if there is one, and also the control command in
+	# case this is a systemd server and it assumes Postfix isn't running
+	if ($init = &get_bootup_action()) {
+		($ok, $out) = &init::stop_action($init);
+		}
+	if (&is_postfix_running()) {
+		$out = &backquote_logged("$config{'postfix_control_command'} -c $config_dir stop 2>&1");
+		$ok = !$?;
+		}
 	}
-return $? ? "<tt>$out</tt>" : undef;
+return $ok ? undef : "<tt>".&html_escape($out)."</tt>";
 }
 
 # start_postfix()
 # Attempts to start postfix, returning undef on success or an error message
 sub start_postfix
 {
-local $out;
+my ($ok, $out, $init);
 if ($config{'start_cmd'}) {
+	# Use the user-configured start command
 	$out = &backquote_logged("$config{'start_cmd'} 2>&1");
+	$ok = !$?;
+	}
+elsif ($init = &get_bootup_action()) {
+	# Run the init script if there is one
+	($ok, $out) = &init::start_action($init);
+	$ok = !$?;
 	}
 else {
+	# Fall back to the Postfix control command
 	$out = &backquote_logged("$config{'postfix_control_command'} -c $config_dir start 2>&1");
 	}
-return $? ? "<tt>$out</tt>" : undef;
+return $ok ? undef : "<tt>".&html_escape($out)."</tt>";
 }
 
 # option_radios_freefield(name_of_option, length_of_free_field, [name_of_radiobutton, text_of_radiobutton]+)
@@ -681,6 +717,13 @@ sub regenerate_transport_table
     &regenerate_any_table("transport_maps");
 }
 
+# regenerate_sni_table
+#
+sub regenerate_sni_table
+{
+    &regenerate_any_table("tls_server_sni_maps", undef, undef, 1);
+}
+
 # regenerate_dependent_table
 #
 sub regenerate_dependent_table
@@ -690,11 +733,11 @@ sub regenerate_dependent_table
 
 
 # regenerate_any_table($parameter_where_to_find_the_table_names,
-#		       [ &force-files ], [ after-tag ])
+#		       [ &force-files ], [ after-tag ], [ base-64 ])
 #
 sub regenerate_any_table
 {
-    my ($name, $force, $after) = @_;
+    my ($name, $force, $after, $base64) = @_;
     my @files;
     if ($force) {
 	@files = map { [ "hash", $_ ] } @$force;
@@ -710,7 +753,11 @@ sub regenerate_any_table
         next unless $map;
 	if (&file_map_type($map->[0]) &&
 	    $map->[0] ne 'regexp' && $map->[0] ne 'pcre') {
-		local $out = &backquote_logged("$config{'postfix_lookup_table_command'} -c $config_dir $map->[0]:$map->[1] 2>&1");
+		local $out = &backquote_logged(
+			$config{'postfix_lookup_table_command'}.
+			" -c $config_dir".
+			($base64 ? " -F" : "").
+			" $map->[0]:$map->[1] 2>&1");
 		if ($?) { &error(&text('regenerate_table_efailed', $map->[1], $out)); }
 	}
     }
@@ -766,8 +813,8 @@ sub get_maps
 			    # A comment line
 			    $cmt = &is_table_comment($_);
 			    }
-			elsif (/^\s*(\/[^\/]*\/[a-z]*)\s+([^#]*)/ ||
-			       /^\s*([^\s]+)\s+([^#]*)/) {
+			elsif (/^\s*(\/[^\/]*\/[a-z]*)\s+(.*)/ ||
+			       /^\s*([^\s]+)\s+(.*)/) {
 			    # An actual map
 			    $number++;
 			    my %map;
@@ -893,8 +940,36 @@ sub generate_map_edit
 			      $text{'new_manual'}));
 	}
 
-    if ($#{$mappings} ne -1)
-    {
+    if ($in{'search'}) {
+        # Filter down to matching entries
+        $mappings = [ grep { $_->{'name'} =~ /\Q$in{'search'}\E/i ||
+			   $_->{'value'} =~ /\Q$in{'search'}\E/i } @$mappings ];
+        print "<b>",&text('mapping_match', &html_escape($in{'search'})),
+	      "</b><p>\n";
+        }
+
+    if ($#{$mappings} == -1) {
+        # None, so just show edit link
+        print "<b>$text{'mapping_none'}</b><p>\n";
+        print &ui_links_row(\@links);
+	}
+    elsif ($config{'max_maps'} && @{$mappings} > $config{'max_maps'} &&
+           !$in{'search'}) {
+	# If there are too many, show a search form
+	print &ui_form_start($gconfig{'webprefix'}.$ENV{'SCRIPT_NAME'});
+	foreach my $i (keys %in) {
+		next if ($i eq 'search');
+		print &ui_hidden($i, $in{$i});
+		}
+	print &text('mapping_toomany', scalar(@{$mappings}),
+		    $config{'max_maps'}),"<p>\n";
+	print $text{'mapping_find'}," ",
+	      &ui_textbox("search", $in{'search'}, 20)," ",
+	      &ui_submit($text{'mapping_search'}),"\n";
+	print &ui_form_end();
+	print &ui_links_row(\@links);
+	}
+    else {
         # Map description
 	print $_[1],"<p>\n";
 
@@ -963,11 +1038,6 @@ sub generate_map_edit
  	# Main form end
 	print &ui_links_row(\@links);
 	print &ui_form_end([ [ "delete", $text{'mapping_delete'} ] ]);
-    }
-    else {
-        # None, so just show edit link
-        print "<b>$text{'mapping_none'}</b><p>\n";
-        print &ui_links_row(\@links);
     }
 }
 
@@ -1589,7 +1659,7 @@ if (!scalar(@master_config_cache)) {
 	@master_config_cache = ( );
 	local $lnum = 0;
 	local $prog;
-	open(MASTER, $config{'postfix_master'});
+	open(MASTER, "<".$config{'postfix_master'});
 	while(<MASTER>) {
 		s/\r|\n//g;
 		if (/^(#?)\s*(\S+)\s+(inet|unix|fifo)\s+(y|n|\-)\s+(y|n|\-)\s+(y|n|\-)\s+(\S+)\s+(\S+)\s+(.*)$/) {
@@ -1700,6 +1770,7 @@ elsif ($map_name =~ /sender_bcc/) { &redirect("bcc.cgi?mode=sender"); }
 elsif ($map_name =~ /recipient_bcc/) { &redirect("bcc.cgi?mode=recipient"); }
 elsif ($map_name =~ /^smtpd_client_restrictions:/) { &redirect("client.cgi"); }
 elsif ($map_name =~ /relay_recipient_maps|smtpd_sender_restrictions/) { &redirect("smtpd.cgi"); }
+elsif ($map_name =~ /tls_server_sni_maps/) { &redirect("sni.cgi"); }
 else { &redirect(""); }
 }
 
@@ -1713,6 +1784,7 @@ if ($map_name =~ /transport/) { &regenerate_transport_table(); }
 if ($map_name =~ /sender_access/) { &regenerate_any_table($map_name); }
 if ($map_name =~ /sender_bcc/) { &regenerate_bcc_table(); }
 if ($map_name =~ /recipient_bcc/) { &regenerate_recipient_bcc_table(); }
+if ($map_name =~ /tls_server_sni_maps/) { &regenerate_sni_table(); }
 if ($map_name =~ /smtpd_client_restrictions:(\S+)/) {
 	&regenerate_any_table("smtpd_client_restrictions",
 			      undef, $1);

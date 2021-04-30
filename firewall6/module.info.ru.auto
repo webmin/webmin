@@ -1,0 +1,3 @@
+name_ru=Firewall6
+longdesc_ru=Настройте брандмауэр Linux, используя ip6tables. Позволяет редактировать все таблицы, цепочки, правила и опции.
+desc_ru=Linux IPv6 Firewall

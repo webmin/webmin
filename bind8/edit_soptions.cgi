@@ -17,8 +17,7 @@ my $dom = $zone->{'name'};
 	&error($text{'master_ecannot'});
 
 $access{'opts'} || &error($text{'slave_ecannot'});
-my $desc = &ip6int_to_net(&arpa_to_ip($dom));
-&ui_print_header($desc, $text{'master_opts'}, "",
+&ui_print_header(&zone_subhead($zone), $text{'master_opts'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
 # Start of the form

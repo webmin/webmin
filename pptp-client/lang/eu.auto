@@ -1,0 +1,112 @@
+index_title=PPTP VPN bezeroa
+index_epptp=$1 PPTP bezeroaren programa ez da zure sisteman aurkitu. Agian ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_eppp=$1 PPP zerbitzariaren programa ez dago zure sisteman instalatuta. PPTP funtzionamenduaren araberakoa da.
+index_eoptions=Ez dago $1 fitxategi PPP PPP aukerak. Edo sortu, edo egokitu <a href='$2'>moduluaren konfigurazioa</a> beste fitxategi bat erabiltzeko, edo batere ez.
+index_header=Definitutako tunelak
+index_none=Oraindik ez da PPTP tunelik zehaztu.
+index_tunnel=$1 tunela
+index_add=Gehitu PPTP VPN tunel berria.
+index_conn=Konektatu:
+index_pass=aukerako pasahitzarekin:
+index_conndesc=Egin klik botoi honetan hautatutako PPTP VPN tunela konektatzeko uneko konfigurazioa erabiliz.
+index_disc=Deskonektatu
+index_discdesc=Egin klik botoi honetan hautatutako une honetan PPTP VPN tunela deskonektatzeko eta bertatik igarotzen diren ibilbide guztiak kentzeko.
+index_return=PPTP tunelen zerrenda
+index_opts=Editatu PPP Aukera Globala
+index_optsdesc=Egin klik botoi honetan PPTP VPN tunel guztietan aplikatzen diren PPP aukerak editatzeko.
+index_version=PPPd $1 bertsioa
+index_boot=Konektatu abioian:
+index_noboot=&lt;Ez konektatu&gt;
+index_bootdesc=Aldatu aukera hau hautatutako PPTP VPN konexioa abiarazi den ala ez kontrolatzeko.
+
+disc_err=Ezin izan da tunela deskonektatu
+disc_egone=Ez dago aktibo
+disc_ekill=Huts egin du pppd prozesua hiltzean
+disc_done=$1 tunela behar bezala deskonektatu da.
+
+conn_err=Huts egin du tunela konektatzean
+conn_egone=Tunela ez da jada existitzen
+cone_ealready=Dagoeneko konektatuta
+conn_einvalid=Zerbitzariaren IP helbidea falta da konfigurazio fitxategian
+conn_title=Tunela konektatzea
+conn_cmd=PPTP konexio bat ezartzen $1 komandoarekin.
+conn_ok=.. konexioa $1 interfazea erabiliz aktibatu da. Zure tokiko helbidea $2 da eta urruneko helbidea $3.
+conn_timeout=.. konexioa huts egin du! Kontsultatu beheko egunkarien mezuak zergatik dauden jakiteko.
+conn_routes=Ibilbideak komandoekin gehitzea ..
+conn_mppe=VPN enkriptatzeko MPPE protokoloak PPP daemon eta nukleoaren laguntza behar du. Goiko akatsek, ordea, bat edo biak zure sisteman ez daudela iradokitzen dute. PPTP zerbitzariak MPPE behar ez badu, saiatu horri lotutako aukera guztiak desaktibatzen <a href='$1'>PPP aukera globala</a> orrian.
+
+edit_title1=Gehitu PPTP tunela
+edit_title2=Editatu PPTP tunela
+edit_header=PPTP VPN tunelaren aukerak
+edit_name=Tunelaren izena
+edit_server=Konektatu zerbitzarira
+edit_login=Sartu erabiltzaile gisa
+edit_same=Sistemaren ostalariaren izena
+edit_pass=Sartu pasahitzarekin
+edit_remote=Zerbitzariaren izena
+edit_auto=automatikoa
+edit_adddef=Gehitu ibilbide lehenetsia?
+edit_def1=Beste amaiera batzuen bidez
+edit_def2=Atebide bidez ..
+edit_deldef=Bide lehenetsi zaharra ezabatu nahi duzu?
+edit_routes=Konektatu ondoren gehitu beharreko ibilbideak
+edit_type=Mota
+edit_type0=&nbsp;
+edit_type1=Sarea
+edit_type2=Ostalari bakarra
+edit_net=Sarea edo ostalaria
+edit_mask=Sare-maskara
+edit_gw=Atebide bidez
+edit_gw_def=Beste amaiera
+edit_unknown=<tt>ibilbidea</tt> beste komandoak
+edit_file=PPP aukeren fitxategia
+edit_none=Bat ere ez
+edit_global=Fitxategi global estandarra
+edit_ofile=Beste fitxategi bat ..
+
+save_err=Huts egin du tunela gordetzean
+save_ename=Tunelaren izena falta da
+save_eserver=Lotzeko zerbitzari falta edo baliogabea
+save_elogin=Saioa edo izen baliogabea falta da
+save_eremote=Urruneko zerbitzariaren izena falta edo baliogabea da
+save_edef=Falta ateratako edo lehenetsitako ibilbidearen atebide baliogabea
+save_enet=Sareko helbidea baliogabea $1 ibilbidean
+save_emask=$1 sareko sareko baliogabea
+save_egw=$1 ibilbidearen sarearen pasarela baliogabea
+save_ehost=Ostalariaren IP helbide baliogabea $1 ibilbidean
+save_emask2=Ez da sareko maskararik behar ostalariaren $1 erako
+save_egw2=$1 ibilbideko ostalariaren ate-joka baliogabea
+save_erename=Ezin izan da tuneleko fitxategia berriz izendatu
+save_eclash=Izen bera duen tunela edo PPP parekoa dagoeneko
+save_efile=Falta diren edo baliogabeak diren PPP aukeren fitxategia
+
+opts_title=PPP Aukera Globala
+opts_desc=Beheko ezarpenak $1 etik hartuak dira eta PPP aukera estandar globalen fitxategia erabiltzeko ezarritako tunel guztiei aplikatuko zaizkie.
+opts_header=Tunel guztietarako PPP aukerak
+opts_mtu=Gehienezko paketearen tamaina bidaltzea
+opts_mru=Gehienezko paketearen tamaina jasotzeko
+opts_err=Ezin izan da PPP aukera globala gorde
+opts_emtu=Pakete-tamaina bidaltzeko gehienezko falta edo baliogabea
+opts_emru=Gehienezko paketeen tamaina jasotzeko edo falta da
+opts_msdesc=Beheko aukerek MPPE enkriptatzea gaitzen dute, Windows VPN zerbitzariek erabilita. Hala ere, MPPEk laguntza behar du bai PPP demonian bai sistema eragilearen nukleoan.
+
+mppe_mppe-40=Erabili 40 bit MPPE enkriptatzea?
+mppe_mppe-128=Erabili 128 bit MPPE enkriptatzea?
+mppe_mppe-stateless=Gaitu estatu gabeko MPPE modua?
+mppe_mppe=Gaitu MPPE enkriptatzea?
+mppe_m2=Erabili behar da
+mppe_m0=Ezin da erabili
+mppe_d0=Desgaituta
+mppe_d1=Baimendutako
+mppe_mppe-stateful=Gaitu MPPE modu estatuzkoa?
+mppe_old=Abisua - $1 estilo zaharreko MPPE arauak zure konfigurazio fitxategian aurkitu dira, nahiz eta zure PPP demoniak estilo berriaren zuzentarauak onartzen dituen.
+mppe_new=Abisua - $1 estilo berriko MPPE arauak zure konfigurazio fitxategian aurkitu dira, nahiz eta zure PPP demoniak estilo zaharreko zuzentzaileak bakarrik onartzen dituen.
+
+log_create=$1 PPTP tunela sortu da
+log_update=$1 PPTP tunela aldatu da
+log_delete=$1 PPTP tunela ezabatu da
+log_conn=$1 konektatutako tunela
+log_conn_l=Lotutako tunela $1 tokiko helbidearekin $2 da
+log_failed=Huts egin du $1 tunela konektatzean
+log_disc=Deskonektatutako tunela $1 
+log_opts=PPP aukerak editatu ditu

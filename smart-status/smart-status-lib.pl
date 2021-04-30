@@ -141,7 +141,8 @@ Returns a list, each element of which is a unit, controller and list of subdisks
 sub list_megaraid_subdisks
 {
 local ($adap) = @_;
-local $out = &backquote_command("megacli -pdlist -a$adap");
+return () if (!&has_command("megacli"));
+local $out = &backquote_command("megacli -pdlist -a$adap 2>/dev/null");
 return () if ($?);
 my @rv;
 foreach my $l (split(/\r?\n/, $out)) {
@@ -400,6 +401,11 @@ if ($config{'attribs'}) {
 			$doneknown = 1;
 			push(@attribs, [ $2, $10, undef, $4 ]);
 			$attribs[$#attribs]->[0] =~ s/_/ /g;
+			}
+		elsif (/^((\w+.*):\s+([0-9]+(,[0-9]+)+)|(\w+.*):\s+(\d+x\d+)|(\w+.*):\s+(\d+%)|^(\w+.*):\s+(\d+))/) {
+			# NVME style
+			$doneknown = 1;
+			push(@attribs, [ $5 || $7 || $9 || $2, $6 || $8 || $10 || $3, undef, undef ]);
 			}
 		elsif (/^(\S.*\S):\s+\(\s*(\S+)\)\s*(.*)/ && !$doneknown) {
 			# A known attribute

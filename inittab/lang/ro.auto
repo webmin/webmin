@@ -1,0 +1,53 @@
+inittab_new=Creați un nou proces de inițiere.
+inittab_id=ID-ul
+inittab_active=Activ?
+inittab_runlevels=Runlevel de bootare
+inittab_action=Acțiune
+inittab_process=Proces
+inittab_none=Nici unul
+inittab_respawn=Procesul de respawn
+inittab_wait=Aștepta
+inittab_once=Odată o dată la nivel
+inittab_boot=Timpul pentru resetare
+inittab_bootwait=Timp de pornire, așteptați până la încheiere
+inittab_off=Nu face nimic
+inittab_ondemand=Ori de câte ori în A, B, C
+inittab_initdefault=După pornirea sistemului
+inittab_sysinit=În timpul pornirii sistemului
+inittab_powerwait=Puterea scade
+inittab_powerfail=Puterea coboară fără a aștepta
+inittab_powerokwait=Puterea este restabilită
+inittab_powerfailnow=Puterea eșuează
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Combinație specială de taste
+inittab_kbrequest=Combinație specială de taste
+inittab_return=lista de procese
+inittab_apply=Aplicați configurația inițială
+inittab_applymsg=Faceți clic pe acest buton pentru a aplica configurația inițială SysV Init, executând comanda <tt>telinit q</tt>. Rețineți că orice greșeală în configurația dvs. poate face sistemul să nu poată fi folosit atunci când este executată această comandă.
+index_delete=Ștergeți procesele selectate
+inittab_none2=Nu s-au găsit procese de pornire în sistemul dvs. Aceasta indică probabil că nu folosește fișierul de configurare init SysV.
+
+edit_inittab_err=Nu aveți voie să editați un proces
+edit_inittab_title=Procesul de editare $1 
+edit_inittab_details=Detalii despre proces
+edit_inittab_del=Șterge
+edit_inittab_save=salva
+
+new_inittab_err=Nu aveți voie să creați un nou proces
+new_inittab_title=Proces nou
+
+save_inittab_err=Nu este permis să salvați un proces
+save_inittab_noid=Eroare, nu a fost introdus niciun proces de nume
+save_inittab_already=Eroare, procesul de nume există deja
+
+log_modify=Proces inițial modificat $1 
+log_rename=Redenumit procesul init $1 la $2 
+log_create=Procesul inițial creat $1 
+log_delete=Procesul inițial șters $1 
+log_apply=Configurație aplicată
+log_deletes=Procesele de inițiere $1 șterse
+
+apply_err=Eroare la aplicarea configurației
+
+delete_err=Nu a reușit ștergerea proceselor
+delete_enone=Nimic selectat

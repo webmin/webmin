@@ -1,0 +1,176 @@
+index_dump=Mostrar volcado
+index_dumpdesc=Haga clic en este botón para ver la información de rastreo de Shorewall desde el comando <tt>shorewall dump</tt>.
+
+list_delete=Eliminar seleccionado
+
+dump_title=Descarga de cortafuegos
+
+zones_1new=Zona principal
+zones_2new=Tipo de zona
+zones_3new=Opciones de zona
+zones_4new=Opciones entrantes
+zones_5new=Opciones salientes
+zones_6new=Comentario
+zones_ipv4=IPv4
+zones_ipsec=IPsec
+zones_firewall=Sistema de cortafuegos
+zones_eopts=Opciones de zona inválidas
+zones_eopts_in=Opciones entrantes de zona no válidas
+zones_eopts_out=Opciones salientes de zona no válidas
+
+rules_macro=Parámetro de acción macro
+rules_none2=Ninguna
+rules_emacro=Parámetro macro faltante o no válido
+
+tos_6=Prueba
+
+masq_3=Restringir al protocolo
+masq_4=Restringir a los puertos
+masq_5=Opciones de IPsec
+masq_any=Cualquier protocolo
+masq_all=Todos los puertos
+masq_eports=Lista de puertos separados por comas faltantes o no válidos
+masq_eipsec=Faltan opciones de IPsec
+
+routestopped_2=Opciones de ruta
+
+hosts_enet=Dirección de host faltante o inválida
+hosts_ip=Dirección o red $1 
+hosts_mac=Dirección MAC $1 
+hosts_ipset=IP set $1 
+hosts_any=Cualquier anfitrión
+
+blacklist_emac=Dirección MAC faltante o inválida
+blacklist_eipset=Falta el nombre del conjunto de IP
+
+providers_title=Proveedores de enrutamiento adicionales
+providers_desc=Esta página define tablas de enrutamiento adicionales. Estos son necesarios si tiene conexiones a más de un ISP o conexiones múltiples al mismo ISP, o ejecuta Squid como un proxy transparente en un host que no sea el firewall.
+providers_add=Agregar un nuevo proveedor de enrutamiento.
+providers_none=Aún no se han definido proveedores de enrutamiento.
+providers_0=Nombre
+providers_1=Número
+providers_2=marca
+providers_3=Interfaz
+providers_4=Puerta
+providers_name=Nombre del proveedor
+providers_number=Número de proveedor
+providers_mark=Marca número
+providers_dup=Proveedor duplicado
+providers_main=Mesa principal
+providers_iface=Interfaz de red
+providers_gateway=Enrutador de puerta de enlace
+providers_auto=Detectar automáticamente
+providers_opts=Opciones adicionales
+providers_track=Seguir conexiones
+providers_balance=Tráfico de equilibrio de carga
+providers_loose=Permitir tráfico desde el firewall
+providers_edit=Editar proveedor de enrutamiento
+providers_create=Crear proveedor de enrutamiento
+providers_header=Detalles adicionales del proveedor de enrutamiento
+providers_copy=Copiar rutas a través de interfaces
+providers_err=Error al guardar el proveedor de enrutamiento
+providers_ename=Nombre de proveedor faltante o no válido
+providers_enumber=Número de proveedor faltante o no válido
+providers_emark=Número de marca del proveedor faltante o no válido
+providers_edup=Falta el proveedor para duplicar
+providers_egateway=Puerta de enlace faltante o inválida
+providers_return=lista de proveedores de enrutamiento
+
+route_rules_title=Reglas de enrutamiento
+route_rules_desc=La página controla qué tráfico se enruta a los proveedores definidos en la página Proveedores de enrutamiento adicionales.
+route_rules_ip=Dirección IP, red o interfaz
+route_rules_add=Agregar una nueva regla de enrutamiento.
+route_rules_none=Aún no se han definido reglas de enrutamiento.
+route_rules_0=Fuente de trafico
+route_rules_1=Destino del tráfico
+route_rules_2=Proveedor
+route_rules_3=Prioridad
+route_rules_4=marca
+route_rules_header=Opciones de reglas de enrutamiento
+route_rules_src=Fuente de trafico
+route_rules_dst=Destino del tráfico
+route_rules_prov=Ruta a través del proveedor
+route_rules_main=Tabla de enrutamiento predeterminada
+route_rules_pri=Prioridad de regla
+route_rules_mark=Marcar paquete con
+route_rules_nomark=Nada
+route_rules_esrc=Falta fuente de tráfico
+route_rules_edst=Falta el destino del tráfico
+route_rules_epri=La prioridad de la regla debe ser un número
+route_rules_emark=La marca del paquete debe estar en formato de número o número/máscara
+route_rules_return=lista de reglas de enrutamiento
+route_rules_edit=Editar regla de enrutamiento
+route_rules_create=Crear regla de enrutamiento
+
+delete_err=Error al eliminar filas
+delete_enone=No hay filas seleccionadas
+
+opts_routeback=Aceptar el tráfico de regreso al host
+opts_source=Permitir desde el host a cualquier destino
+opts_dest=Permitir alojar desde cualquier fuente
+opts_critical=Permitir siempre el tráfico entre firewall
+opts_maclist=Comparar con la lista MAC?
+opts_norfc1918=Rechazar paquetes IP privados
+opts_blacklist=Rechazar paquetes en la lista negra
+opts_tcpflags=Compruebe si hay banderas TCP ilegales
+opts_nosmurfs=Verifique los paquetes fuente de difusión
+opts_ipsec=Zona IPsec
+opts_dhcp=La interfaz usa DHCP
+opts_routefilter=Habilitar el filtro de ruta anti-spoofing
+opts_logmartians=Paquetes de registro con fuentes imposibles
+opts_proxyarp=Habilitar ARP proxy
+opts_arp_filter=Solo responda a las solicitudes ARP para la interfaz IP
+opts_detectnets=Zona de Taylor para incluir solo hosts enrutados
+opts_upnp=Reasignación de paquetes a través de UPNP
+
+comment_add=Agrega un nuevo comentario.
+comment_edit=Editar comentario
+comment_create=Crear comentario
+comment_header=Detalles del comentario de la tabla
+comment_msg=Mensaje
+comment_err=Error al guardar comentario
+comment_enone=Ningún mensaje ingresado
+
+log_create_table=Entrada agregada a la tabla $1 
+log_modify_table=Entrada modificada en la tabla $1 
+log_delete_table=Entrada eliminada de la tabla $1 
+log_deletes_table=Entradas eliminadas de la tabla $1 
+log_up_table=Se movió la entrada en la tabla $1 
+log_down_table=Se movió hacia abajo la entrada en la tabla $1 
+log_manual_table=Editado manualmente el archivo de tabla $1 
+log_create_comment=Comentario agregado a la tabla $1 
+log_modify_comment=Comentario modificado en la tabla $1 
+log_delete_comment=Comentario eliminado de la tabla $1 
+log_stop=Firewall detenido
+log_start=Firewall iniciado
+log_refresh=Cortafuegos actualizado
+log_restart=Firewall reiniciado
+log_clear=Cortafuegos despejado
+
+shorewall_conf_title=Archivo de configuración maestra
+shorewall_conf_desc=Esta página le permite configurar las variables de configuración global. NOTA: No se recomienda cambiar el orden de las variables aquí si desea conservar la posición relativa de los comentarios en el archivo de configuración.
+shorewall_conf_add=Agregar una nueva variable de configuración.
+shorewall_conf_none=No se encontró la configuración de muro de contención.
+shorewall_conf_0=Variable
+shorewall_conf_1=Valor
+shorewall_conf_2=Comentario
+shorewall_conf_return=lista de variables de configuración
+shorewall_conf_edit=Editar variable de configuración
+shorewall_conf_create=Crear variable de configuración
+shorewall_conf_header=Detalles de la variable de configuración
+shorewall_conf_err=Error al guardar la variable de configuración
+shorewall_conf_varname=Nombre de variable no válido (debe ser un nombre de variable de shell válido)
+
+params_title=Parámetros personalizados
+params_desc=Esta página le permite configurar los parámetros personalizados de Shorewall. NOTA: No se recomienda cambiar el orden de los parámetros aquí si desea conservar la posición relativa de los comentarios en el archivo de configuración.
+params_add=Agregue un nuevo parámetro personalizado.
+params_none=No se encontraron parámetros personalizados.
+params_0=Parámetro
+params_1=Valor
+params_2=Comentario
+params_return=lista de parámetros personalizados
+params_edit=Editar parámetro personalizado
+params_create=Crear parámetro personalizado
+params_header=Detalles de parámetros personalizados
+params_err=Error al guardar el parámetro personalizado
+params_varname=Nombre de parámetro no válido (debe ser un nombre de variable de shell válido)

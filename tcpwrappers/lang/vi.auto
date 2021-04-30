@@ -1,0 +1,33 @@
+index_title=Gói TCP
+index_return=mục lục
+index_allowtitle=Máy chủ được phép
+index_denytitle=Máy chủ bị từ chối
+index_norule=Không có quy tắc nào được xác định trong <tt>$1</tt>.
+index_nofile=Tệp '$1' không tồn tại - kiểm tra <a href="/config.cgi?tcpwrappers">cấu hình mô-đun</a> của bạn
+index_add=Thêm một quy tắc mới.
+index_service=Daemon
+index_hosts=Chủ nhà
+index_cmd=Chỉ huy
+index_delete=Xóa đã chọn
+index_none=không ai
+
+edit_title1allow=Tạo quy tắc cho phép
+edit_title2allow=Chỉnh sửa quy tắc cho phép
+edit_title1deny=Tạo quy tắc từ chối
+edit_title2deny=Chỉnh sửa quy tắc từ chối
+edit_eid=Quy tắc này đã không được tìm thấy
+edit_header=Tùy chọn quy tắc
+edit_service=Dịch vụ
+edit_except=Trừ dịch vụ
+edit_hosts=Máy chủ từ xa
+edit_hostsexcept=Ngoại trừ máy chủ
+edit_cmd=Lệnh Shell
+edit_efound=Daemon '$1' không được tìm thấy trong cấu hình xinetd.
+
+save_errtitle=Lỗi về quy tắc lưu
+save_ehost=Đầu vào máy chủ chứa các ký tự xấu
+save_ecmd=Nhập lệnh chứa các ký tự xấu
+save_eservice=Tên Daemon chứa các ký tự xấu
+
+del_errtitle=Lỗi về quy tắc xóa
+del_enone=Không có quy tắc được đánh dấu để xóa

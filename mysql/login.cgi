@@ -9,6 +9,7 @@ $access{'user'} || !$access{'noconfig'} || &error($text{'login_ecannot'});
 $in{'login'} || &error($text{'login_elogin'});
 $mysql_login = $config{'login'} = $in{'login'};
 $mysql_pass = $config{'pass'} = $in{'pass'};
+$in{'force'} && force_set_mysql_admin_pass($mysql_login, $mysql_pass);
 $authstr = &make_authstr();
 if (&is_mysql_running() == -1) {
 	&error($text{'login_epass'});

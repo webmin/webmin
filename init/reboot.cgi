@@ -5,11 +5,18 @@
 require './init-lib.pl';
 &ReadParse();
 $access{'reboot'} || &error($text{'reboot_ecannot'});
+if ($in{'removenotify'}) {
+	foreign_require("webmin");
+	write_file_contents($webmin::postpone_reboot_required);
+	&redirect(get_referer_relative());
+	exit;
+}
+
 &ui_print_header(undef, $text{'reboot_title'}, "");
 
 $ttcmd = "<tt>".&html_escape($config{'reboot_command'})."</tt>";
 if ($in{'confirm'}) {
-	print &ui_subheading(&text('reboot_exec', $ttcmd));
+	print &text('reboot_exec', $ttcmd);
 	&reboot_system();
 	&webmin_log("reboot");
 	}

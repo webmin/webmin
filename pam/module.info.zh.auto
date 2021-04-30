@@ -1,0 +1,3 @@
+desc_zh=PAM验证
+longdesc_zh=配置telnet，POP和FTP等服务使用的PAM身份验证步骤。
+name_zh=PAM

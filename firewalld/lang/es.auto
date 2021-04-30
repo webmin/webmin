@@ -1,0 +1,116 @@
+index_title=CortafuegosD
+index_atboot=¿Habilitar firewall en el momento del arranque?
+index_bootup=Activar en el arranque
+index_bootupdesc=Cambie esta opción para controlar si su firewall está activado en el momento del arranque o no.
+index_apply=Aplicar configuración
+index_applydesc=Haga clic en este botón para activar la configuración del firewall enumerada anteriormente. Cualquier regla de firewall actualmente en vigor será eliminada y reemplazada
+index_restart=Aplicar configuración
+index_restartdesc=Active todos los servicios y puertos permitidos enumerados anteriormente, en todas las zonas. Cualquier regla activa que no se haya creado permanentemente será reemplazada.
+index_start=Iniciar FirewallD
+index_startdesc=Inicie el servidor FirewallD y aplique las reglas enumeradas anteriormente.
+index_stop=Stop FirewallD
+index_stopdesc=Cierre el servidor FirewallD y elimine todas las reglas enumeradas anteriormente.
+index_cerr=El módulo FirewallD no se puede usar : $1 
+index_zone=Mostrar reglas en zona:
+index_zoneok=Cambio
+index_zoneadd=Añadir zona ..
+index_zonedel=Eliminar zona
+index_zonedef=Hacer por defecto
+index_type=Tipo de regla
+index_port=Puerto o servicio
+index_proto=Protocolo
+index_tservice=Servicio
+index_tport=Puerto
+index_tforward=Adelante
+index_padd=Agregar puerto permitido.
+index_sadd=Agregar servicio permitido.
+index_fadd=Agregar puerto hacia adelante.
+index_delete=Eliminar reglas seleccionadas
+index_return=lista de zonas
+index_ezones=¡No se encontraron zonas de FirewallD!
+index_none=Esta zona aún no tiene puertos o servicios permitidos.
+index_ifaces=Aplicar reglas a las interfaces:
+
+port_edit=Editar puerto
+port_create=Agregar puerto
+port_header=Opciones de puerto permitidas
+port_zone=Permitido en zona
+port_port=Puerto para permitir
+port_mode0=Puerto único
+port_mode1=Rango de puertos
+port_mode2=Igual que el puerto original
+port_proto=Protocolo de red
+port_ezone=¡La zona no existe!
+port_err=Error al guardar el puerto
+port_eport=Número o nombre de puerto faltante o no válido
+port_eportlow=El puerto bajo debe ser un número
+port_eporthigh=El puerto alto debe ser un número
+port_eportrange=El puerto bajo debe estar debajo del puerto alto
+
+serv_edit=Servicio de edición
+serv_create=Agregar servicio
+serv_header=Opciones de servicio permitidas
+serv_name=Servicio para permitir
+serv_err=Error al guardar el servicio
+
+forward_edit=Editar hacia adelante
+forward_create=Crear hacia adelante
+forward_header=Opciones de reenvío de puertos
+forward_zone=Adelante por zona
+forward_err=Error al guardar adelante
+forward_port=Puerto de origen
+forward_dstport=Puerto de desintation
+forward_dstaddr=Dirección de destino
+forward_dstlocal=Este sistema
+forward_edstaddr=Dirección de destino IPv4 no válida
+forward_eneither=Se debe ingresar una dirección o puerto de destino o ambos.
+
+check_ecmd=El comando de control FirewallD $1 no se encontró en su sistema
+
+delete_err=Error al eliminar reglas
+delete_enone=¡Ninguna seleccionada!
+delete_edel=Error al eliminar $1 : $2 
+
+zone_title=Crear zona
+zone_header=Nuevas opciones de zona
+zone_name=Nombre de zona
+zone_mode=Puertos y servicios permitidos
+zone_mode0=Ninguno (todo el tráfico será bloqueado)
+zone_mode1=Copiar de zona
+zone_mode2=SSH, IDENT y solo Webmin
+zone_mode3=SSH, IDENT, Webmin y puertos altos
+zone_mode4=Puertos utilizados para alojamiento virtual
+zone_err=Error al crear zona
+zone_ename=Nombre de zona faltante o inválido
+zone_eclash=Ya existe una zona con el mismo nombre
+
+delzone_title=Eliminar zona
+delzone_err=Error al eliminar la zona
+delzone_edefault=La zona predeterminada no se puede eliminar.
+delzone_rusure=¿Está seguro de que desea eliminar la zona $1, que contiene $2 puertos y $3 servicios?
+
+defzone_err=Error al establecer la zona como predeterminada
+
+restart_err=Error al aplicar la configuración
+
+stop_err=Error al detener FirewallD
+start_err=Error al iniciar FirewallD
+log_stop=Firewall detenidoD
+log_start=Firewall iniciado D
+log_restart=Configuración de FirewallD aplicada
+log_bootup=FirewallD habilitado en el arranque
+log_bootdown=FirewallD desactivado en el arranque
+log_create_port=Se agregó el puerto permitido $1 
+log_delete_port=Se eliminó el puerto permitido $1 
+log_update_port=Puerto permitido actualizado $1 
+log_create_serv=Servicio permitido agregado $1 
+log_delete_serv=Servicio permitido eliminado $1 
+log_update_serv=Servicio permitido actualizado $1 
+log_create_forward=Agregado hacia adelante $1 
+log_delete_forward=Eliminado adelante $1 
+log_update_forward=Actualización adelantada $1 
+log_delete_rules=Se eliminaron $1 puertos permitidos
+log_ifaces_zone=Interfaces actualizadas para la zona $1 
+log_create_zone=Zona creada $1 
+log_delete_zone=Zona eliminada $1 
+log_default_zone=Zona $1 predeterminada

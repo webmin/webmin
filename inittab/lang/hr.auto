@@ -1,0 +1,53 @@
+inittab_new=Napravite novi init postupak.
+inittab_id=iskaznica
+inittab_active=Aktivan?
+inittab_runlevels=Bootup runlevel
+inittab_action=Radnja
+inittab_process=Postupak
+inittab_none=nijedan
+inittab_respawn=Postupak ponovne izrade
+inittab_wait=Čekati
+inittab_once=Jednom vrijeme na razini
+inittab_boot=Vrijeme podizanja
+inittab_bootwait=Vrijeme za dizanje, pričekajte dok prestane
+inittab_off=Ne radi ništa
+inittab_ondemand=Kad god su u A, B, C
+inittab_initdefault=Nakon pokretanja sustava
+inittab_sysinit=Tijekom dizanja sustava
+inittab_powerwait=Snaga pada
+inittab_powerfail=Snaga nestaje bez čekanja
+inittab_powerokwait=Snaga se obnavlja
+inittab_powerfailnow=Neuspjeh napajanja
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Posebna kombinacija tipki
+inittab_kbrequest=Posebna kombinacija tipki
+inittab_return=popis procesa
+inittab_apply=Primijeni Init konfiguraciju
+inittab_applymsg=Kliknite ovaj gumb kako biste primijenili trenutnu SysV Init Konfiguraciju izvođenjem naredbe <tt>telinit q</tt>. Imajte na umu da bilo kakve pogreške u vašoj konfiguraciji mogu učiniti sustav neupotrebljivim kada se izvrši ova naredba.
+index_delete=Izbriši odabrane procese
+inittab_none2=U vašem sustavu nisu pronađeni postupci pokretanja. To vjerojatno ukazuje da ne koristi SysV init konfiguracijsku datoteku.
+
+edit_inittab_err=Nije vam dopušteno uređivanje postupka
+edit_inittab_title=Uređivanje postupka $1 
+edit_inittab_details=Pojedinosti o procesu
+edit_inittab_del=Izbrisati
+edit_inittab_save=Uštedjeti
+
+new_inittab_err=Nije vam dopušteno stvaranje novog postupka
+new_inittab_title=Novi postupak
+
+save_inittab_err=Nije vam dopušteno spremanje procesa
+save_inittab_noid=Pogreška, nije upisan proces imena
+save_inittab_already=Pogreška, postupak naziva već postoji
+
+log_modify=Izmijenjen init postupak $1 
+log_rename=Preimenovan u početnom procesu $1 do $2 
+log_create=Izrađen u početnom procesu $1 
+log_delete=Izbrisan je init postupak $1 
+log_apply=Primijenjena konfiguracija
+log_deletes=Izbrisani $1 init procesi
+
+apply_err=Konfiguracija nije primijenjena
+
+delete_err=Brisanje procesa nije uspjelo
+delete_enone=Nijedna nije odabrana

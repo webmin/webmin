@@ -1,0 +1,51 @@
+index_title=Acciones NFS
+index_add=Comience a compartir un nuevo directorio.
+index_dir=Directorio
+index_clients=Clientela
+index_everyone=Todo el mundo
+index_delete=Eliminar acciones seleccionadas
+index_none=Actualmente no se exportan directorios en este sistema.
+index_apply=Aplicar los cambios
+index_applydesc=Haga clic en este botón para aplicar la configuración actual de uso compartido de archivos. Esto hará que todos los directorios enumerados anteriormente estén disponibles con las opciones especificadas.
+index_return=lista de acciones
+
+edit_title1=Editar Compartir
+edit_title2=Crear compartir
+edit_header1=Compartir detalles
+edit_dir=Directorio
+edit_desc=Descripción
+edit_ro=Acceso de solo lectura
+edit_rw=Acceso de lectura y escritura
+edit_root=Acceso raíz
+edit_none=Ninguna
+edit_all=Todos los anfitriones
+edit_listed=Anfitriones listados ..
+edit_header2=Compartir opciones
+edit_nosub=Permitir el montaje de subdirs?
+edit_nosuid=¿Permitir archivos setuid?
+edit_des=Los clientes deben usar DES?
+edit_kerberos=Los clientes deben usar kerberos?
+edit_anon=Usuario anónimo
+edit_anon0=No establecido
+edit_anon1=Sin acceso
+edit_aclok=¿Permitir ACL?
+edit_public=WebNFS compartir?
+edit_index=Archivo de índice de WebNFS
+
+save_err=Error al guardar compartir
+save_edirectory='$1' no es un nombre de directorio válido
+save_edirectory2=El directorio '$1' no existe
+save_erw=No enumeraste ningún host para compartir lectura-escritura
+save_ero=No enumeraste ningún host para compartir solo lectura
+save_eroot=No enumeraste ningún host con el que compartir root
+save_ealready=El directorio '$1' ya está siendo compartido
+save_ehost=El host '$1' no existe
+
+acl_view=¿Se pueden editar recursos compartidos de NFS?
+
+ecannot=No tiene permiso para administrar recursos compartidos de NFS
+
+delete_err=Error al eliminar recursos compartidos
+delete_enone=Ninguna seleccionada
+
+restart_err=Error al aplicar los cambios

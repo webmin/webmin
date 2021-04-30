@@ -1,0 +1,67 @@
+index_title=Cluster Copy-filer
+index_add=Skapa en ny schemalagd filkopia.
+index_none=Inga schemalagda filkopior har definierats.
+index_servers=Kopiera till servrar
+index_return=lista över klusterkopior
+index_more=$1 till ..
+index_run=Spring nu ..
+index_files=Filer att kopiera
+index_sched=Planerad?
+index_when=Ja, $1 
+index_act=Verkan
+index_exec=Kör
+index_delete=Radera valda kopior
+
+edit_title=Redigera Cluster Copy
+create_title=Skapa klusterkopia
+edit_header=Detaljer om klusterkopia
+edit_files=Filer att kopiera
+edit_dest=Destinationskatalog
+edit_cmd=Kommando att köras efter kopiering
+edit_before=Kommando att köras före kopiering
+edit_remote=På fjärrservrar
+edit_dmode0=Kopiera hela sökvägar under katalogen
+edit_dmode1=Kopiera till den här katalogen
+edit_servers=Kopiera till servrar
+edit_group=Medlemmar av $1 
+edit_this=den här servern
+edit_all=&lt;Alla värdar&gt;
+edit_sched=Kopiera enligt schema?
+edit_schedyes=Ja, ibland valda nedan ..
+edit_run=Kopiera nu
+edit_return=klusterkopia
+edit_email=E-postutmatning till
+edit_none=Ingen
+
+save_err=Det gick inte att spara kluster cron-jobb
+save_efiles=Inga filer att kopiera angav
+save_edest=Saknas destinationskatalog
+save_eservers=Inga servrar att kopiera till angivna
+save_efile=Fil för att kopiera '$1' är inte en absolut väg
+save_eemail=Saknad eller ogiltig e-postadress
+
+exec_title=Kopiera filer
+exec_files1=Kopierar $1 filer till utvalda servrar $2 ..
+exec_files2=Kopierar $1 till utvalda servrar $2 ..
+exec_under=(under katalog $1)
+exec_failed=Det gick inte att kopiera till $1 : $2 
+exec_success=Följande filer kopierades till $1  :
+exec_made=Skapade följande kataloger på $1  :
+exec_nohosts=Inga värdar valda att köra på, eller utvalda grupper innehåller inga användbara värdar.
+exec_nothing=Inga filer kopierades framgångsrikt till $1.
+exec_not=Det gick inte att kopiera följande filer till $1  :
+exec_cmd=Kommandoutmatning efter kopia på $1  :
+exec_before=Före kopiering kommandoutput på $1  :
+exec_on=Det gick inte att köra på $1 : $2 
+
+log_create=Skapat kopia för $1 till $2 -servrar
+log_modify=Modifierad kopia för $1 till $2 -servrar
+log_delete=Raderad kopia för $1 till $2 -servrar
+log_exec=Kopierade $1 till $2 -servrar
+log_deletes=$1 exemplar raderade
+
+email_subject_succeeded=Klusterkopia av $1 lyckades
+email_subject_failed=Klusterkopia av $1 misslyckades
+
+delete_err=Det gick inte att ta bort kopior
+delete_enone=Ingen vald

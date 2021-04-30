@@ -48,9 +48,6 @@ global_misc=Miscellaneous Options
 global_filedefault=File Share Defaults
 global_prndefault=Printer Share Defaults
 global_password=Encrypted Passwords
-global_edit=Edit Samba users and passwords
-global_convert=Convert Unix users to Samba users
-global_sync=Configure automatic Unix and Samba user synchronisation
 
 error_nosamba=The Samba server executable <tt>$1</tt> was not found. Either Samba is not installed on your system or your <a href="$2">module configuration</a> is incorrect.
 error_version=Webmin failed to get the version of your Samba server executable <tt>$1</tt>. Check your <a href="$2">module configuration</a> to make sure this is the correct path.

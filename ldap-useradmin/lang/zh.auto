@@ -1,0 +1,103 @@
+index_title=LDAP用户和组
+index_ebase=在系统上找不到LDAP客户端配置文件，因此必须在<a href='$1'>模块配置</a>页面上设置用户和组基础。
+index_eperl=该模块所需的 $1 Perl模块未安装或无法正常工作。 <a href='$2'>单击此处</a>立即下载并安装。
+index_eperl2=Perl尝试加载模块时报告的错误为：
+index_eldap=$1。单击此处调整<a href='$2'>模块配置</a>。
+index_eschema=Webmin已连接到LDAP服务器，但无法获取架构。确保在<a href='$1'>LDAP服务器</a>模块中没有拒绝访问。
+index_eimap=$1。也许您的<a href='$2'>模块配置</a>不正确。
+index_emd5=此模块已<a href='$1'>配置</a>以使用MD5加密进行密码，但是未安装 $2 Perl模块。 <a href='$3'>单击此处</a>以下载并安装 $2模块。
+index_eslappasswd=<a href='$1'>已配置此模块</a>以使用LDAP MD5加密进行密码，但是未安装用于加密密码的程序<tt>$2</tt>。
+index_eusearch=无法搜索 $1下的用户： $2
+index_uadd=添加一个新的LDAP用户。
+index_gadd=添加一个新的LDAP组。
+index_unone=在 $1下找不到LDAP用户。
+index_gnone=在 $1下找不到LDAP组。
+index_return=用户清单
+index_greturn=小组名单
+index_egsearch=无法搜索 $1下的组： $2
+index_samba=桑巴舞
+index_cyrus=IMAP？
+index_users=LDAP用户
+index_groups=LDAP组
+
+imap_econn=无法连接到IMAP服务器 $1
+imap_elogin=无法以 $2的身份登录到IMAP服务器 $1 : $3
+conn_eldap_host=在您的系统上找不到LDAP客户端配置文件，因此必须在“模块配置”页面上设置LDAP服务器。
+conn_elogin=在系统上找不到LDAP客户端配置文件，因此必须在“模块配置”页面上设置LDAP登录名
+conn_efile_open=无法打开LDAP绑定凭证文件：
+
+uedit_cap=用户能力
+uedit_samba=Samba登录？
+uedit_cyrus=IMAP服务器登录？
+uedit_dn=用户的LDAP DN
+uedit_classes=LDAP对象类
+uedit_alias=邮件别名
+uedit_fields=其他LDAP字段
+uedit_firstname=名字
+uedit_lastname=姓
+uedit_raw=LDAP属性
+uedit_return=用户资料
+uedit_quota=IMAP配额
+uedit_unquota=不要改变
+uedit_sambapassopts=Samba密码选项
+uedit_sambapwdlastset=上次密码更新
+uedit_sambapwdcanchange=密码可以更改
+uedit_sambabadpasswordcount=错误的密码计数
+uedit_sambaacctflags=帐户标志
+
+usave_eadd=无法将用户添加到LDAP数据库： $1
+usave_emod=无法修改LDAP数据库中的用户： $1
+usave_emoddn=无法重命名LDAP数据库中的用户： $1
+usave_egroupmod=无法修改LDAP数据库中的组 $1 : $2
+usave_edelete=无法从LDAP数据库中删除用户： $1
+usave_eicreate=创建用户失败
+usave_eiacl=无法授予管理员权限
+usave_eimap=用户已成功保存在LDAP数据库中，但是发生了IMAP错误： $1 : $2
+usave_eisub=无法订阅用户到文件夹 $1
+usave_eiquota=设置IMAP配额失败
+usave_eifolder=无法创建文件夹 $1
+usave_eilogin=无法以新用户身份登录
+usave_ecyruspass=启用IMAP时，必须输入用户的普通密码或选择“不需要密码”选项。
+usave_ebook=无法创建地址簿条目： $1
+usave_emodbook=修改地址簿条目失败： $1
+usave_emodbookdn=重命名地址簿条目失败： $1
+usave_egone=用户不再存在！
+usave_ex86=此模块不能用于为非Intel系统上的Samba用户设置密码，因为它取决于已编译的x86程序。
+usave_esamba=由于未安装Samba Windows文件共享模块，因此无法使用该模块为Samba用户设置密码。
+usave_ealiasdup=$2已使用别名 $1
+usave_eattrdup=对象 $1已在使用 $2 $3
+usave_eattrdupu=用户 $1已在使用 $2 $3
+usave_eattrdupg=组 $1已在使用 $2 $3
+usave_ereal=缺少真实姓名
+usave_equota=IMAP配额不足或无效
+
+search_err=在 $2下搜索 $1失败： $3
+
+gedit_dn=组的LDAP DN
+gedit_return=组详细信息
+gedit_cap=小组能力
+gedit_samba=桑巴组？
+
+gsave_egone=组不再存在！
+gsave_edelete=无法从LDAP数据库中删除组： $1
+gsave_eadd=无法将组添加到LDAP数据库： $1
+gsave_emod=修改LDAP数据库中的组失败： $1
+gsave_emoddn=重命名LDAP数据库中的组失败： $1
+
+gdel_group=删除LDAP组条目 ..
+
+udel_pass=删除LDAP用户条目 ..
+udel_book=从通讯录中删除 ..
+udel_imap=删除IMAP文件夹 ..
+udel_warnimap=删除主目录时，现有的邮箱将被删除！
+udel_failed=..失败了！ ： $1
+
+raw_title=LDAP属性
+raw_name=属性名称
+raw_value=价值观
+raw_for=对于 $1
+
+batch_samba=为新用户创建Samba帐户？
+batch_imap=为新用户创建IMAP帐户？
+batch_descafter3=在<b>create</b>和<b>modify</b>行中，可以选择将包含<i>name</i> = <i>value</i>格式的LDAP属性的其他字段附加到分配给新用户或修改过的用户。
+batch_eattr=第 $1行的LDAP属性无效： $2

@@ -1,0 +1,152 @@
+index_title=PPTP VPN serveris
+index_version=PoPToP versija $1 
+index_epptpd=PoPToP PPTP serveris $1 jūsu sistēmā netika atrasts, vai arī tā nav pareizā programma. Varbūt tas nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_econfig=Jūsu sistēmā netika atrasts PPTP servera konfigurācijas fails $1. Varbūt jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_stop=Apturēt PPTP serveri
+index_stopdesc=Noklikšķiniet uz šīs pogas, lai apturētu notiekošo PPTP servera procesu, lai netiktu pieņemti jauni savienojumi. Esošie VPN savienojumi tomēr paliks aktīvi.
+index_start=Sāciet PPTP serveri
+index_startdesc=Noklikšķiniet uz šīs pogas, lai sāktu PPTP servera procesu, lai tas varētu saņemt VPN savienojumus no klientiem.
+index_apply=Lietot konfigurāciju
+index_applydesc=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējās PPTP servera opcijas, pārtraucot un atsākot PPTP servera procesu. Izmaiņas PPP opcijās un PPP kontos vienmēr tiks piemērotas visiem jauniem savienojumiem
+index_return=moduļa indekss
+index_epppd=Jūsu sistēmā nav instalēta PPP servera programma $1. PPTP ir atkarīgs no tā darbības.
+
+conf_title=PPTP servera opcijas
+conf_ecannot=Jums nav atļauts rediģēt PPTP servera opcijas
+conf_header=PPTP servera konfigurācija
+conf_speed=PPP pārsūtīšanas ātrums
+conf_baud=bps
+conf_listen=Klausieties uz adresi
+conf_all=Visas adreses
+conf_localip=IP adreses servera savienojuma beigām
+conf_remoteip=IP adreses, ko piešķirt klientiem
+conf_ipxnets=Piešķirtie IPX tīkli
+conf_from=No plkst
+conf_to=uz
+conf_option=PPP opciju fails
+conf_mode0=Globālie iestatījumi
+conf_mode1=PPTP specifiski iestatījumi
+conf_mode2=Pielāgots fails
+conf_ipdesc=IP adresi abos diapazonos var ievadīt vai nu atsevišķi (piemēram, 192.168.1.1), vai arī kā diapazonus (piemēram, 192.168.2.32-64).
+conf_err=Neizdevās saglabāt servera opcijas
+conf_espeed=Trūkst vai nav derīgs datu pārraides ātrums
+conf_elisten=Trūkst vai nav derīga adrese, kuru klausīties
+conf_eoption=Trūkst vai nederīga izskata pielāgoto PPP opciju fails
+conf_elocalip=“$1” nav derīga vietējā IP adrese vai diapazons
+conf_eremoteip='$1' nav derīga attālā IP adrese vai diapazons
+conf_efrom=Trūkst vai nav derīgs IPX tīkls no adreses
+conf_eto=Trūkst vai nav derīgs adresēts IPX tīkls
+
+options_title=PPP iespējas
+options_ecannot=Jums nav atļauts rediģēt PPP opcijas
+options_desc0=Tālāk esošās PPP iespējas no $1 attiecas uz visiem ienākošajiem savienojumiem, ko saņem jūsu sistēma, ieskaitot tos, uz kuriem ir iezvanpieejas modemi.
+options_desc1=Tālāk esošās PPP iespējas no $1 attiecas tikai uz visiem PPTP savienojumiem.
+options_desc2=Tos izmantos visi jaunie savienojumi, kas izveidoti pēc šīs veidlapas saglabāšanas.
+options_header=PPP savienojuma iespējas
+options_proxyarp=Izveidot starpniekservera ARP ierakstu?
+options_lock=Vai bloķēt PTY ierīces failu?
+options_auth=Vai nepieciešama autentifikācija?
+options_auth0=Nē, bet neļaujiet maršrutētajiem IP
+options_auth1=Nekad
+options_auth2=Vienmēr
+options_login=Vai veikt arī unix autentifikāciju?
+options_pap=PAP autentifikācija
+options_chap=CHAP autentifikācija
+options_req=Jāizmanto
+options_all=Var izmantot
+options_ref=Nevar izmantot
+options_name=Servera nosaukums autentifikācijai
+options_hn=Īsts resursdators
+options_mtu=Maksimālais sūtīšanas paketes lielums
+options_mru=Maksimālais saņemošās paketes lielums
+options_err=Neizdevās saglabāt PPP iespējas
+options_emtu=Trūkst vai nav derīgs maksimālais sūtīšanas paketes lielums
+options_emru=Trūkst vai nav derīgs maksimālais saņemošās paketes lielums
+options_ename=Trūkst vai nav derīgs servera nosaukums autentifikācijai
+options_version=PPPd versija $1 
+options_msdesc=Tālāk esošās iespējas iespējot MS-CHAP autentifikācijas metodi un MPPE šifrēšanu, ko pēc noklusējuma izmanto Windows VPN klienti. Tomēr MPPE ir nepieciešams atbalsts gan PPP dēmonā, gan operētājsistēmas kodolā.
+options_mschap=MS-CHAP autentifikācija
+options_mschap-v2=MS-CHAP 2. versijas autentifikācija
+options_chapms=MS-CHAP autentifikācija
+options_chapms-v2=MS-CHAP 2. versijas autentifikācija
+
+secrets_title=PPP konti
+secrets_ecannot=Jums nav atļauts rediģēt PPP kontus
+secrets_return=indekss
+secrets_none=PPP konti vēl nav izveidoti.
+secrets_enopfile=PPP paroļu fails $1 jūsu sistēmā neeksistē. Varbūt PPP nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+secrets_table=PPP veido $1 
+secrets_user=Lietotājvārds
+secrets_ips=IP adreses
+secrets_uany=JEBKĀDA
+secrets_sany=JEBKĀDA
+secrets_create=Izveidojiet jaunu PPP kontu.
+secrets_desc=Šajā lapā uzskaitītie PPP konti ir ņemti no faila $1, kas tiek izmantots $3 autentifikācijai. Tiek parādīti tikai tie, kas paredzēti jūsu serverim $2, nevis konti izejošo savienojumu veidošanai.
+secrets_delete=Dzēst atlasītos PPP kontus
+
+edit_secret_etitle=Rediģēt PPP kontu
+edit_secret_ctitle=Izveidojiet PPP kontu
+edit_secret_acc=PPP konts
+edit_secret_user=Lietotājvārds
+edit_secret_serv=Serveris
+edit_secret_sany=Jebkurš
+edit_secret_uany=Jebkurš
+edit_secret_pass=Parole
+edit_secret_none=Nav
+edit_secret_ffile=No faila
+edit_secret_leave=Atstājiet nemainītu
+edit_secret_setto=Iestatīts uz
+edit_secret_vaddr=Derīgas adreses
+edit_secret_aany=Atļaut jebkuru
+edit_secret_anone=Neatļaut nevienu
+edit_secret_alist=Atļaut sarakstā ..
+edit_secret_save=Saglabāt
+edit_secret_del=Dzēst
+edit_secret_return=kontu saraksts
+
+save_secret_esave=Neizdevās saglabāt kontu
+save_secret_enoip=“$1” nav derīga adrese
+
+stop_err=Neizdevās apturēt PPTP serveri
+stop_egone=Vairs neskrienu
+stop_ecannot=Jums nav atļauts apturēt PPTP serveri
+
+start_err=Neizdevās palaist PPTP serveri
+start_ecannot=Jums nav atļauts iedarbināt PPTP serveri
+
+apply_err=Neizdevās atsākt PPTP serveri
+apply_ecannot=Jums nav atļauts atkārtoti iedarbināt PPTP serveri
+
+conns_title=Aktīvie savienojumi
+conns_ecannot=Jums nav atļauts pārvaldīt aktīvos savienojumus
+conns_desc=Šajā lapā ir uzskaitīti pašlaik aktīvie PPTP savienojumi ar jūsu serveri. Lai piespiedu kārtā atvienotu, noklikšķiniet uz tā interfeisa nosaukuma.
+conns_iface=PPP saskarne
+conns_client=Klienta adrese
+conns_stime=Saistīts kopš
+conns_local=Servera VPN adrese
+conns_remote=Klienta VPN adrese
+conns_none=Šķiet, ka šobrīd nav aktīvi PPTP savienojumi.
+conns_unknown=Nezināms
+conns_user=Lietotājvārds
+
+disc_err=Neizdevās atvienot
+disc_egone=Savienojumi vairs nav aktīvi
+disc_ekill=Process vairs nedarbojas
+
+log_secret_create=Izveidots PPP konts $1 
+log_secret_modify=Modificēts PPP konts $1 
+log_secret_delete=Dzēsts PPP konts $1 
+log_deletes=Izdzēsti $1 PPP konti
+log_conf=Pārveidotas PPTP servera opcijas
+log_options=Pārveidotas PPP iespējas
+log_disc=Atvienots klients $1 
+log_start=Sācis PPTP serveri
+log_stop=Apturēts PPTP serveris
+log_apply=Lietotā PPTP servera konfigurācija
+
+acl_conf=Vai var rediģēt konfigurāciju?
+acl_options=Vai var rediģēt opcijas?
+acl_secrets=Vai var pārvaldīt PPTP kontus?
+acl_conns=Vai var apskatīt savienojumus?
+acl_stop=Vai var apstāties un palaist PPTP serveri?
+acl_apply=Vai var lietot konfigurāciju?

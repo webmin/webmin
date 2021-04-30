@@ -1,1 +1,1 @@
-desc_es=Configuración de VPN IPsec
+desc_es=ConfiguraciÃ³n de VPN IPsec

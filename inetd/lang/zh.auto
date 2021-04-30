@@ -1,0 +1,18 @@
+index_edit=编辑服务：
+index_search=显示服务匹配：
+index_sok=搜索
+index_toomany=此页面上显示太多互联网服务。
+index_none=没有与您的搜索匹配的互联网服务。
+
+error_user=用户身份缺失或无效
+error_group=缺少或无效的组以执行
+error_smfservice=无法使用cmd'$1'更新smf服务，错误代码 $2
+error_smf_cmdfield=对于smf，程序'$1'的文件名必须与命令字段的第一个参数匹配，即为'$2'
+
+editrpc_act=程序状态
+editrpc_stream=流
+editrpc_dgram=数据报
+editrpc_tli=TLI
+
+editserv_qm=命令可能不存在？
+editserv_ename=没有具有该名称和协议的服务

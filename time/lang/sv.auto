@@ -1,0 +1,32 @@
+index_addresses=Timeserver-värdnamn eller adresser
+index_eformat=Okänt <tt>hwklocka</tt> utgångsformat
+index_sched=Synkronisera enligt schema?
+index_schedyes=Ja, ibland under ..
+index_sync=Synkronisera och applicera
+index_hardware2=Ställ in hårdvara också
+index_boot=Synkronisera när Webmin startar?
+index_tzheader=Tidszon
+index_ehwclock=$1 misslyckades : $2 
+index_tabtime=Ställ klockan
+index_tabzone=Ändra tidszon
+index_tabsync=Tidsserversynkronisering
+index_desctime=Detta formulär är för att ändra systemets nuvarande tid, som används av alla processer som körs. På operativsystem som har en separat hårdvaruklocka kan den också användas för att ställa in det.
+index_desczone=Detta formulär låter dig ställa in systemets standardtidszon, som används för att konvertera systemtiden till ett mänskligt läsbart format och offset.
+index_descsync=Detta formulär är för att konfigurera systemet för att automatiskt synkronisera tiden med en fjärrserver. Synkroniseringen görs med Unix <tt>time</tt> -protokollet eller NTP, beroende på vilka kommandon som är installerade och vad fjärrsystemet stöder.
+
+acl_timezone=Användaren kan ställa in tidszon?
+acl_ntp=Kan synkroniseras med tidsserver?
+acl_nontp=Du får inte synkronisera med en tidsserver
+
+minute=Minut
+second=Andra
+
+error_ediff=Tidsservern annorlunda med lokal tid är för stor: $1 dagar
+error_entp=NTP-tidssynkronisering misslyckades : $1 
+error_etimeserver=Inga tidsservrar att synkronisera med angivna
+
+log_timezone=Ändrade tidszon till $1 
+
+timezone_err=Det gick inte att spara tidszon
+timezone_ecannot=Du får inte ändra tidszonen
+timezone_enone=Ingen zon vald

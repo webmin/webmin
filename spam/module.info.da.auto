@@ -1,0 +1,3 @@
+desc_da=SpamAssassin-postfilter
+name_da=SpamAssassin
+longdesc_da=Opsæt og konfigurer SpamAssassin til at filtrere e-mail, der er modtaget af dit system.

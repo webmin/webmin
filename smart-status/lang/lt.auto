@@ -1,0 +1,58 @@
+index_title=„SMART Drive“ būsena
+index_ecmd=Jūsų sistemoje nerasta SMART valdymo komandos $1 arba neteisingai nustatyta <a href='$2'>modulio konfigūracijoje</a>. Prieš pradedant naudoti šį modulį, jis turi būti įdiegtas.
+index_ecmd2=Neatrodo, kad komanda $1 yra SMART valdymo komanda. Kad būtų galima naudoti šį modulį, <a href='$2'>modulio konfigūracijoje</a> jis turi būti teisingai nustatytas.
+index_version=$1 „SMARTsuite“ versija
+index_show=Rodyti disko būseną:
+index_ok=Rodyti
+index_eidescsi=Jūsų sistemoje nerasta IDE, SCSI ar SATA diskų.
+index_drive=Pavaros būsena $1 
+index_drivesub=$1 disko būsena, $2 disko būsena
+index_desc=Vieta
+index_size=Disko dydis
+index_model=Markė ir modelis
+index_support=Palaiko SMART?
+index_enabled=Įjungta „SMART“?
+index_check=Išlaikytas važiavimo patikrinimas?
+index_short=Trumpas savęs testas
+index_ext=Išplėstinis savęs testas
+index_data=Duomenų rinkimo testas
+index_errors=Klaidos užregistruotos
+index_ecount=Aptikta $1 klaidų
+index_attrs=Papildomi SMART atributai
+index_raw=Visa SMART būklės ataskaita
+index_return=modulio rodyklė
+index_family=Modelių šeima
+index_serial=Serijos numeris
+index_capacity=Talpa
+index_norm=Normalizuota:
+
+monitor_type=„SMART Drive“ patikra
+monitor_type2=SSD susidėvėjimas
+monitor_drive=Važiuokite patikrinti
+monitor_errors=Tikrinti ir klaidų žurnalą?
+monitor_errorsinc=Taip, bet perspėkite tik tada, kai padaugėja klaidų
+monitor_other=Kiti ..
+monitor_edrive=Trūksta arba netinkamas vairuoti norint patikrinti
+monitor_nosuch=Tokio važiavimo nėra
+monitor_nosmart=Nėra SMART palaikymo
+monitor_errorsfound=Pranešta apie $1 klaidas
+monitor_errorsinced=Klaidų padaugėjo nuo $2 iki $1 
+monitor_wearlevel=Nepavyks, jei nusidėvėjimo lygis nukris žemiau
+monitor_ewearlevel=Netinkamas nusidėvėjimo lygio procentas
+monitor_nowearout=Diskas nepraneš apie SSD nusidėvėjimo indikatorių
+monitor_wornout=Susidėvėjimo lygis sumažėjo iki $1 
+
+short_title=Trumpas savęs testas
+short_doing=Pradedamas trumpas $1 savęs patikrinimas.
+short_failed=.. nepavyko!
+short_ok=.. testas pradėtas gerai. Norėdami sužinoti rezultatus, pagrindiniame modulio puslapyje skaitykite disko būseną.
+
+ext_title=Išplėstinis savęs testas
+ext_doing=Pradedamas pratęstas $1 savęs patikrinimas.
+ext_failed=.. nepavyko!
+ext_ok=.. testas pradėtas gerai. Norėdami sužinoti rezultatus, pagrindiniame modulio puslapyje skaitykite disko būseną.
+
+data_title=Duomenų rinkimo testas
+data_doing=Pradėti duomenų rinkimą neprisijungus prie $1.
+data_failed=.. nepavyko!
+data_ok=.. kolekcija prasidėjo gerai. Norėdami sužinoti rezultatus, pagrindiniame modulio puslapyje skaitykite disko būseną.

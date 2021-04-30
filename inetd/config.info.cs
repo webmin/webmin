@@ -1,0 +1,17 @@
+line1=Možnosti konfigurace,11
+sort_mode=Setřídit služby a programy podle,1,0-pořadí v souboru,1-jména,2-příznaků
+line2=Konfigurace systému,11
+inetd_conf_file=Konfigurační soubor inetd,0
+inetd_dir=Konfigurační adresář inetd,3,None
+extended_inetd=Rozšířená podpora inetd,1,0-původní,1-základní,2-rozšířená
+rpc_inetd=Inetd podporuje RPC programy,1,1-ano,0-ne
+qm_mode=Podporuje neexistující programy serveru,1,1-ano,0-ne
+ipv6=Podporuje IPv6 služby,1,1-ano,0-ne
+services_file=Soubor síťových služeb,0
+rpc_file=Soubor RPC služeb,0
+protocols_file=Soubor síťových protokolů,0
+rpc_protocols=RPC podprotokoly,0
+restart_command=Příkaz&#44; který restartuje inetd,0
+tcpd_path=Úplná cesta k tcpd,3
+allow_file=Úplná cesta k souboru&#44; povolující přístup k tcpd,3
+deny_file=Úplná cesta k souboru&#44; zamezující přístup k tcpd,3

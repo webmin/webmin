@@ -1,0 +1,2 @@
+name_nl=stunnel
+longdesc_nl=Stel SSL-tunnels in om services zoals POP3 en IMAP te coderen, met gebruik van stunnel run van inetd.

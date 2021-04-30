@@ -1,0 +1,8 @@
+edit_minsize=Minimale grootte om te draaien
+edit_nominsize=Altijd
+edit_dateext=Gebruik datum-extensie voor geroteerde bestanden
+
+save_eminsize=Ontbrekende of ongeldige minimumgrootte
+save_enofiles=Geen bestanden om te roteren ingevoerd
+
+sched_when=Te rennen tijden

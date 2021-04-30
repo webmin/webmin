@@ -1,0 +1,152 @@
+index_title=PPTP VPN serveris
+index_version=„PoPToP“ $1 versija
+index_epptpd=„PoPToP“ PPTP serveris $1 nerastas jūsų sistemoje arba yra netinkama programa. Galbūt jis neįdiegtas, arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_econfig=Jūsų sistemoje nerastas PPTP serverio konfigūracijos failas $1. Galbūt jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_stop=Sustabdykite PPTP serverį
+index_stopdesc=Spustelėkite šį mygtuką, norėdami išjungti vykdomą PPTP serverio procesą, kad nebūtų priimami nauji ryšiai. Esami VPN ryšiai vis tiek liks aktyvūs.
+index_start=Paleiskite PPTP serverį
+index_startdesc=Spustelėkite šį mygtuką, kad paleistumėte PPTP serverio procesą, kad jis galėtų priimti VPN ryšius iš klientų.
+index_apply=Taikyti konfigūraciją
+index_applydesc=Spustelėkite šį mygtuką, kad pritaikytumėte dabartines PPTP serverio parinktis, sustabdydami ir iš naujo paleisdami PPTP serverio procesą. PPP parinkčių ir PPP paskyrų pakeitimai visada bus taikomi visoms naujoms jungtims
+index_return=modulio rodyklė
+index_epppd=Jūsų sistemoje nėra įdiegta PPP serverio programa $1. PPTP priklauso nuo jo veikimo.
+
+conf_title=PPTP serverio parinktys
+conf_ecannot=Jums neleidžiama redaguoti PPTP serverio parinkčių
+conf_header=PPTP serverio konfigūracija
+conf_speed=PPP perdavimo sparta
+conf_baud=bps
+conf_listen=Klausykite pagal adresą
+conf_all=Visi adresai
+conf_localip=IP adresai serverio ryšio pabaigai
+conf_remoteip=IP adresai, kuriuos reikia skirti klientams
+conf_ipxnets=IPX tinklai skirti
+conf_from=Iš
+conf_to=į
+conf_option=PPP parinkčių failas
+conf_mode0=Visuotiniai nustatymai
+conf_mode1=PPTP specifiniai nustatymai
+conf_mode2=Pasirinktinis failas
+conf_ipdesc=Abiejų diapazonų IP adresą galima įvesti atskirai (pvz., 192.168.1.1) arba kaip diapazonus (pvz., 192.168.2.32-64).
+conf_err=Nepavyko išsaugoti serverio parinkčių
+conf_espeed=Trūksta arba netinkama perdavimo sparta
+conf_elisten=Trūksta arba netinkamas adresas, kurio klausytis
+conf_eoption=Trūksta arba netinkamo atrodo pasirinktinio PPP parinkčių failas
+conf_elocalip=„$1“ nėra galiojantis vietinis IP adresas ar diapazonas
+conf_eremoteip=„$1“ nėra tinkamas nuotolinio IP adresas ar diapazonas
+conf_efrom=Trūksta arba netinkamas IPX tinklas iš adreso
+conf_eto=Trūksta arba netinkamas adresas IPX tinkle
+
+options_title=PPP parinktys
+options_ecannot=Jums neleidžiama redaguoti PPP parinkčių
+options_desc0=Žemiau pateiktos PPP parinktys nuo $1 taikomos visoms įeinančioms jungtims, kurias gauna jūsų sistema, įskaitant jungiamiesiems modemams.
+options_desc1=Žemiau esančios $1 PPP parinktys taikomos tik visoms PPTP jungtims.
+options_desc2=Juos naudos visi nauji ryšiai, užmegzti išsaugojus šią formą.
+options_header=PPP ryšio galimybės
+options_proxyarp=Sukurti tarpinio serverio ARP įrašą?
+options_lock=Užrakinti PTY įrenginio failą?
+options_auth=Reikalauti autentifikacijos?
+options_auth0=Ne, bet apsaugokite nukreiptus IP
+options_auth1=Niekada
+options_auth2=Visada
+options_login=Taip pat atlikti unix autentifikavimą?
+options_pap=PAP autentifikavimas
+options_chap=CHAP autentifikavimas
+options_req=Turi būti naudojamas
+options_all=Gali būti naudojamas
+options_ref=Negalima naudoti
+options_name=Autentifikavimo serverio pavadinimas
+options_hn=Tikrasis pagrindinio kompiuterio vardas
+options_mtu=Maksimalus siunčiančio paketo dydis
+options_mru=Maksimalus gaunamo paketo dydis
+options_err=Nepavyko išsaugoti PPP parinkčių
+options_emtu=Trūksta arba netinkamas didžiausias siunčiančio paketo dydis
+options_emru=Trūksta arba netinkamas didžiausias gaunamo paketo dydis
+options_ename=Nėra autentifikavimo serverio pavadinimo arba jis netinkamas
+options_version=$1 PPPd versija
+options_msdesc=Žemiau pateiktos parinktys įgalina MS-CHAP autentifikavimo metodą ir MPPE šifravimą, kuriuos pagal numatytuosius nustatymus naudoja „Windows VPN“ klientai. Tačiau MPPE reikia palaikyti tiek PPP demoną, tiek operacinės sistemos branduolį.
+options_mschap=MS-CHAP autentifikavimas
+options_mschap-v2=MS-CHAP 2 versijos autentifikavimas
+options_chapms=MS-CHAP autentifikavimas
+options_chapms-v2=MS-CHAP 2 versijos autentifikavimas
+
+secrets_title=VPSP sąskaitos
+secrets_ecannot=Jums neleidžiama redaguoti PPP paskyrų
+secrets_return=indeksas
+secrets_none=Dar nesukurtos PPP sąskaitos.
+secrets_enopfile=Jūsų sistemoje nėra PPP slaptažodžių failo $1. Galbūt PPP neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+secrets_table=AAP sudaro $1 
+secrets_user=Vartotojo vardas
+secrets_ips=IP adresai
+secrets_uany=JOKIŲ
+secrets_sany=JOKIŲ
+secrets_create=Sukurkite naują PPP sąskaitą.
+secrets_desc=Šiame puslapyje išvardytos PPP sąskaitos yra paimtos iš failo $1, kuris naudojamas $3 autentifikavimui. Rodomos tik jūsų serverio $2 sąskaitos, o ne sąskaitos, skirtos užmegzti ryšius.
+secrets_delete=Ištrinti pasirinktas PPP paskyras
+
+edit_secret_etitle=Redaguoti PPP sąskaitą
+edit_secret_ctitle=Sukurkite PPP sąskaitą
+edit_secret_acc=PPP sąskaita
+edit_secret_user=Vartotojo vardas
+edit_secret_serv=Serveris
+edit_secret_sany=Bet kokia
+edit_secret_uany=Bet kokia
+edit_secret_pass=Slaptažodis
+edit_secret_none=Nė vienas
+edit_secret_ffile=Iš bylos
+edit_secret_leave=Palikite nepakeistą
+edit_secret_setto=Nustatytas į
+edit_secret_vaddr=Galiojantys adresai
+edit_secret_aany=Leisk bet
+edit_secret_anone=Neleisk nė vieno
+edit_secret_alist=Leisti išvardyti ..
+edit_secret_save=Sutaupyti
+edit_secret_del=Ištrinti
+edit_secret_return=sąskaitų sąrašas
+
+save_secret_esave=Nepavyko išsaugoti paskyros
+save_secret_enoip=„$1“ nėra teisingas adresas
+
+stop_err=Nepavyko sustabdyti PPTP serverio
+stop_egone=Daugiau nebėga
+stop_ecannot=Jums neleidžiama sustabdyti PPTP serverio
+
+start_err=Nepavyko paleisti PPTP serverio
+start_ecannot=Jums neleidžiama paleisti PPTP serverio
+
+apply_err=Nepavyko iš naujo paleisti PPTP serverio
+apply_ecannot=Jums neleidžiama iš naujo paleisti PPTP serverio
+
+conns_title=Aktyvūs ryšiai
+conns_ecannot=Jums neleidžiama valdyti aktyvių ryšių
+conns_desc=Šiame puslapyje pateikiami šiuo metu aktyvūs PPTP ryšiai su jūsų serveriu. Norėdami prievarta atjungti vieną, spustelėkite jo sąsajos pavadinimą.
+conns_iface=PPP sąsaja
+conns_client=Kliento adresas
+conns_stime=Prisijungta nuo
+conns_local=Serverio VPN adresas
+conns_remote=Kliento VPN adresas
+conns_none=Šiuo metu neatrodo, kad PPTP ryšiai būtų aktyvūs.
+conns_unknown=Nežinoma
+conns_user=Vartotojo vardas
+
+disc_err=Nepavyko atsijungti
+disc_egone=Ryšiai nebeveikia
+disc_ekill=Procesas nebeveikia
+
+log_secret_create=Sukurta VPSP sąskaita $1 
+log_secret_modify=Modifikuota PPP sąskaita $1 
+log_secret_delete=Ištrinta VPSP sąskaita $1 
+log_deletes=Ištrintos $1 PPP sąskaitos
+log_conf=Modifikuotos PPTP serverio parinktys
+log_options=Modifikuotos PPP parinktys
+log_disc=Atsijungęs klientas $1 
+log_start=Paleistas PPTP serveris
+log_stop=Sustabdytas PPTP serveris
+log_apply=Taikoma PPTP serverio konfigūracija
+
+acl_conf=Ar galima redaguoti konfigūraciją?
+acl_options=Ar galite redaguoti parinktis?
+acl_secrets=Ar galite tvarkyti PPTP paskyras?
+acl_conns=Ar galite peržiūrėti ryšius?
+acl_stop=Ar galima sustabdyti ir paleisti PPTP serverį?
+acl_apply=Ar galima pritaikyti konfigūraciją?

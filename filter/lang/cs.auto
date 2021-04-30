@@ -1,0 +1,38 @@
+index_clevel=Skóre spamu je alespoň $1 
+index_cheader0=Záhlaví $1 musí začínat $2 
+index_cheader1=Záhlaví $1 musí obsahovat $2 
+index_cheader2=Záhlaví $1 musí končit $2 
+edit_modestart=začíná s
+edit_modecont=obsahuje
+edit_modeend=končí s
+edit_regexp=Regulární výraz?
+index_forever=Navždy
+index_ondate=datum
+index_charset=Znaková sada autoreply zprávy
+index_subject=Autoreply předmět zprávy
+
+edit_cheader2=Záhlaví $1 $2 $3 $4 
+edit_cmode6=Spam skóre je alespoň
+edit_nobounce=Potlačte přeposílání zpráv o odskokech
+edit_apply=Zobrazit odpovídající e-mail ve složce:
+edit_move=Použít na e-mail ve složce:
+
+save_egone=Filtr již neexistuje!
+save_econdlevel=Minimální skóre spamu musí být celé číslo větší než nula
+save_echarset=Chybějící nebo neplatná autoreply znaková sada
+
+auto_subject=Předmět emailu
+auto_charset=Znaková sada zpráv
+auto_charsetdef=Z aktuálního jazyka
+auto_charsetother=Další znaková sada
+
+move_err=Nepodařilo se použít filtr
+move_esrc=Zdrojová složka $1 neexistuje!
+move_edest=Cílová složka $1 neexistuje!
+move_esame=Zdrojová a cílová složka jsou stejné
+move_title=Použít filtr
+move_finding=Hledání zpráv odpovídajících filtru v $1 ..
+move_none=.. nikdo nebyl nalezen!
+move_found=.. nalezeno $1 zpráv
+move_moving=Přesouvání zpráv $1 do $2 ..
+move_done=.. Hotovo

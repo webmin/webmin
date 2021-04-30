@@ -1,1 +1,1 @@
-desc_fr=Journaux syst&#232;me
+desc_fr=Journaux système

@@ -1,0 +1,292 @@
+index_none=A rendszer felhasználói számára nem engedélyezett az e-mailek olvasása.
+index_return=felhasználói lista
+index_esystem=A rendszerben a támogatott levelezőkiszolgálók (Exim, Qmail, Postfix és Sendmail) egyikét sem észlelték. A levelezőkiszolgáló és esetleg a levelezési útvonalak manuális beállításához módosítania kell a <a href='$1'>modulkonfigurációt</a>.
+index_esystem2=A <a href='$1'>modul konfigurációjában</a> beállított e-mail szerver nem található a rendszerén. A helyes kiszolgáló használatához módosítania kell a konfigurációt.
+index_esystem3=Hiba történt a <a href='$1'>modul konfigurációjában</a> beállított levelezőrendszerrel való kapcsolatfelvétel során: $2.
+index_toomany=Túl sok felhasználó van a rendszeren ahhoz, hogy egy oldalon megjelenjen.
+index_find=Keressen felhasználókat felhasználónévhez
+index_equals=egyenlők
+index_eperl=A kiválasztott SMTP hitelesítési módhoz szükséges Perl-modul $1 nincs telepítve, vagy hiányzik egy függő modul. <a href='$2'>Kattintson ide</a> a telepítéshez.
+index_nousers=Nem található felhasználó!
+index_nousersmail=Nem található e-mail felhasználó.
+
+mail_for=$1 -ban
+mail_for2=$1 felhasználó számára
+mail_sent=Küldött levelek listájában
+mail_level=Pontszám
+mail_ecannot=Nem szabad elolvasni a felhasználó e-mailjét
+mail_nosort=A válogatás visszaállítása
+mail_search=Keressen üzeneteket hol
+mail_match=gyufa
+mail_rfc=A vonaltól
+mail_eexists=Az üzenet már nem létezik!
+mail_black=Tagadja a feladókat
+mail_white=Engedélyezze a feladókat
+mail_whitemove=A feladók és a beérkező levelek engedélyezése
+mail_efile=A levélfájl nem létezik
+mail_fromsrch=Keressen e-mailt ugyanazzal a feladóval
+mail_subsrch=Keressen azonos témájú e-mailt
+mail_tosrch=Keressen e-mailt a címzetttel
+mail_fromfilter=Hozzon létre szűrőt feladó szerint
+mail_tofilter=Hozzon létre szűrőt címzett szerint
+mail_subfilter=Hozzon létre szűrőt tárgy szerint
+
+mail_sign=Jelentkezzen be a kulcsmal
+mail_nosign=&lt;Ne írj alá
+mail_crypt=Titkosítás
+mail_nocrypt=&lt;Ne titkosítson&gt;
+mail_samecrypt=&lt;Kulcsok a célcímekből&gt;
+mail_addresses=Címjegyzék kezelése
+mail_err=Hiba történt a levél felsorolásakor ebben a mappában : $1
+mail_logindesc=A levél eléréséhez be kell írnia felhasználónevet és jelszót. <br> a $1 levelezőszerver postaládájába.
+mail_logout=A POP3 bejelentkezés módosítása
+mail_logout2=Az IMAP bejelentkezés módosítása
+mail_sig=Aláírás szerkesztése
+mail_jump=Ugrás az oldalra :
+mail_of=nak,-nek
+mail_search3=Keressen a fenti ponttal:
+mail_esystem=Hiba történt az e-mail rendszerrel való kapcsolatfelvétel során: $1. Ezt a rendszergazdának kell javítania.
+mail_specialsync=Speciális szinkronizálás
+
+view_sent=$1 üzenet az elküldött levelek listájában
+view_qdesc=Sorban lévő üzenet $1
+view_nobody=Ennek az üzenetnek nincs testtartalma.
+view_noheaders=Alapvető fejlécek megtekintése
+view_aactions=Hozzászólások
+view_enew=Szerkesztés újként
+view_ecannot=Nem szabad elolvasni a felhasználó e-mailjét
+view_sub2=Csatolt e-mail a $1 -től
+view_egone=Ez az üzenet már nem létezik
+view_eugone=Ez a felhasználó nem létezik
+
+view_gnupg=GnuPG aláírás-ellenőrzés
+view_gnupg_0=$1 aláírása érvényes.
+view_gnupg_1=A $1 általi aláírás érvényes, de a bizalmi láncot nem sikerült létrehozni.
+view_gnupg_2=A $1 aláírás <b> NEM</b> érvényes.
+view_gnupg_3=A $1 kulcs azonosítója nem szerepel a listán, így az aláírás nem ellenőrizhető.
+view_gnupg_4=Az aláírás ellenőrzése nem sikerült : $1
+view_crypt=A GnuPG levelezés visszafejtése
+view_crypt_1=Az üzenet titkosítva, de a GnuPG támogatás nincs telepítve.
+view_crypt_2=Az üzenet visszafejtése nem sikerült : $1
+view_crypt_3=A levél sikeresen visszafejtett.
+view_crypt_4=Az üzenet titkosított részének dekódolása sikeres volt.
+view_recv=<a href='$2'>A $1 kulcs azonosítójának beolvasása a kulcskiszolgálótól</a>.
+view_dheader=Vegye le a csatolást a szerverről
+view_dir=a szerver fájlba vagy könyvtárba:
+view_whitemove=Engedélyezze a Feladó és a Beérkező levelek elemet
+view_ham=Jelentés Ham
+view_hammove=Jelentés a sonkáról és a beérkező levelekről
+view_dstatus=Sikertelen kézbesítési állapot
+view_final-recipient=A végső kedvezményezett
+view_diagnostic-code=A kudarc oka
+view_remote-mta=Távoli levelező szerver
+view_reporting-mta=Jelentési levélkiszolgáló
+view_aall=Az összes mellékletet ZIP-fájlként mentse.
+
+reply_attach2=Ügyfél és szerver oldali mellékletek
+reply_ecannot=Ez a felhasználó nem küldhet leveleket
+reply_errc=Nem sikerült a levél másolása
+reply_errm=Nem sikerült áthelyezni a leveleket
+reply_efwdnone=A továbbított üzenetek egyike sem létezik
+reply_dsn=Olvasási állapot értesítést kér?
+reply_del=Igényel a kézbesítési állapot értesítését?
+reply_aboot=Hozzáadja a címzetteket a címjegyzékhez?
+reply_tabreplyto=Válaszolni
+reply_addssattach=Adja hozzá a szerver oldali melléklet mezőt.
+reply_html0=Szöveg írása
+
+reply_spell=Ellenőrizte a helyesírási hibákat?
+
+send_err=Nem sikerült az e-mail küldés
+send_eto=Hiányzik a cím
+send_efrom=Hiányzik a cím
+send_esubject=Hiányzik az e-mail tárgy
+send_title=Levél elküldve
+send_title2=Levél mentve
+send_ok=A levél sikeresen elküldve a $1 -nek
+send_sending=E-mail küldés a $1 -ra.
+send_ecannot=Ez a felhasználó nem küldhet leveleket
+send_esmtp=Az SMTP $1 parancs sikertelen : $2
+send_eattach=A mellékletek összesen nem haladhatják meg a $1 kB-ot.
+send_eperms=$2
+send_eperms2=Nem küldhet $1 fájlt
+send_epath=A Sendmail végrehajtható $1 nem létezik.
+send_efile=A melléklet olvasása nem sikerült $1 : $2 
+send_done=.. Kész.
+
+send_epass=Nem írhat alá üzenetet, mert a jelmondat még nincs beállítva a GnuPG modulban.
+send_esign=Az üzenet aláírása nem sikerült : $1
+send_ekey=Nem található az e-mail cím kulcsa $1
+send_ecrypt=Az üzenet titkosítása nem sikerült : $1
+send_eword=Helytelenül írt szó $1
+send_eword2=Hibás szó $1 - lehetséges javítások $2
+send_eline=A $1 sorban :
+send_espell=A következő helyesírási hibákat találták az üzenetben.
+send_draft=A $1 -ra küldött levelek a piszkozatok mappába vannak mentve.
+send_drafting=E-mail mentése a vázlat mappába $1.
+send_eattachsize=A levél melléklete meghaladta a $1 bájt maximális megengedett méretét
+
+delete_rusure=Biztosan törli a $1 kiválasztott üzeneteket a $2 -ból? Ez eltarthat egy ideig egy nagy e-mail fájl létrehozásához. Amíg a törlés be nem fejeződik, nem szabad más műveletet végrehajtani.
+delete_rusure2=Biztosan törli ezt az üzenetet a $1 helyről? Ez eltarthat egy ideig egy nagy e-mail fájl létrehozásához. Amíg a törlés be nem fejeződik, nem szabad más műveletet végrehajtani.
+delete_ecannot=Mostantól engedélyezheti a levelek törlését ettől a felhasználótól
+delete_enone=Nincs törölve levél
+delete_emnone=Nincs jelölve levél
+delete_efnone=Nincs kiválasztva levél továbbításra
+delete_ebnone=Nincs levél kiválasztva a megtagadáshoz
+delete_ewnone=Nincs engedélyezett levél
+delete_ernone=Nem választott olyan levél, amely spamként jelenne meg
+delete_ehnone=Nincs kiválasztva olyan levél, amely sonkaként jelenik meg
+delete_emoveuser=Az a felhasználó, akinek a levél áthelyezése nem létezik
+delete_ecopyuser=A levél másolására szolgáló felhasználó nem létezik
+delete_emovecannot=A levelek nem mozgathatók a megadott felhasználóhoz
+delete_ecopycannot=A levelek nem másolhatók a megadott felhasználóra
+delete_emovenone=Nincs kiválasztva levél
+delete_ecopynone=Nincs kiválasztva levél másolni
+delete_nobutton=Nincs gomb kattintva
+delete_ereport=Nem sikerült bejelenteni spamként : $1
+delete_errc=Nem sikerült a levél másolása
+delete_errm=Nem sikerült áthelyezni a leveleket
+
+confirm_warn=Biztosan törli a $1 kijelölt üzeneteket ebből a mappából?
+confirm_warnf=Biztosan törli a $1 kiválasztott üzeneteket a <b>$2</b> mappából?
+confirm_warn2=A postafiók mérete és formátuma miatt ez némi időt vehet igénybe. Amíg a törlés be nem fejeződik, nem szabad más műveletet végrehajtani.
+confirm_warn3=Biztosan törli ezt az üzenetet?
+confirm_warn4=Amíg a törlés be nem fejeződik, nem szabad más műveletet végrehajtani.
+confirm_warnall=Biztosan törli a mappában szereplő összes üzenetet?
+confirm_warnallf=Biztosan törli az összes üzenetet a <b>$1</b> mappában?
+
+search_title=Keresési eredmények
+search_ecannot=A felhasználó e-mailjében nem szabad keresni
+search_ematch=Meg kell adnia a szöveget, hogy megfeleljen.
+search_escore=Hiányzó vagy érvénytelen spam pontszám
+search_efield=Ki kell választania a keresési típust.
+search_ewhat=A $1 sorban nincs megadva megegyező szöveg
+search_enone=Nincs megadva keresési feltétel
+search_none=Nem található üzenet.
+search_results2=$1 $2 -nak megfelelő e-mail üzenetek
+search_results3=$1 e-mail üzenetek nem egyeznek meg $2
+search_results4=$1 e-mail üzenetek, amelyek megegyeznek a kereséssel
+search_results5=$1 e-mail üzenetek, ahol a $2 megfelel a $3 -nak
+search_msg2=$1 keresési eredményei
+search_msg4=Keresési eredmények
+search_msg5=Spam keresési eredményei $1 pontszámmal
+search_msg6=$2 mezőben
+search_local=Helyi mappákban
+search_limit=(az utolsó $1 üzenetről)
+search_status=Státusszal
+search_onestatus=Csak az állapot
+search_latest=Keresendő üzenetek
+search_nolatest=Mindent a mappában
+search_latestnum=Csak a legújabb
+search_elatest=Hiányzik vagy érvénytelen a keresett üzenetek száma
+search_withstatus=, állapotával $1
+
+detach_err=A fájl leválasztása nem sikerült
+detach_edir=Nincs fájl vagy könyvtár, amelyet menteni kellene a megadott fájlba
+detach_eopen=A $1 megnyitása nem sikerült : $2
+detach_ewrite=Nem sikerült írni a $1 -be : $2
+detach_title=Fájl eltávolítása
+detach_ok=Írta a csatolást a szerveroldali $1 ($2) fájlhoz.
+
+sform_title=Részletes keresés
+sform_header=Speciális e-mail keresési lehetőségek
+sform_andmode=Kritérium mód
+sform_and=Az alábbi kritériumoknak megfelelő üzenetek keresése ..
+sform_or=Az üzenetek keresése megfelel az alábbi kritériumoknak.
+sform_neg0=tartalmaz
+sform_neg1=nem tartalmaz
+sform_ok=Keress most
+sform_folder2=Keresés mappákban
+sform_all=&lt;Összes mappa&gt;
+sform_local=&lt;Helyi mappák&gt;
+sform_where=Hol
+sform_text=a szöveg
+sform_from=Feladó: fejléc
+sform_subject=Tárgy: fejléc
+sform_to=Címzett: fejléc
+sform_cc=Másolat: fejléc
+sform_bcc=Bcc: fejléc
+sform_date=Dátum: fejléc
+sform_body=üzenet törzse
+sform_headers=bármilyen fejléc
+sform_allmsg=teljes üzenet
+sform_size=üzenet mérete
+sform_return=részletes keresési űrlap
+
+find_enone=Nem található a keresésnek megfelelő felhasználó
+find_title=Keresési eredmények
+find_results=A $1 kereséshez megfelelő felhasználók
+find_in=$1 in $2
+
+acl_same=Felhasználó azonos névvel
+acl_read=Felhasználók, akiknek levele olvasható
+acl_users=Csak a felhasználók
+acl_userse=Minden, kivéve a felhasználókat
+acl_usersg=Csoportok tagjai
+acl_from=Megengedett címekből
+acl_any=Bármely cím
+acl_fdoms=Postafiók @ domainek
+acl_faddrs=Felsorolt címek
+acl_fdom=Bármely cím @ domain
+acl_fromname=A kezdőcím valódi neve
+acl_apath=Korlátozza a fájlokat és a programot a könyvtárba
+acl_attach=A mellékletek maximális mérete
+acl_sent=A küldött e-maileket tárolja a postafiókban
+acl_canattach=Csatolhat szerver oldali fájlokat?
+acl_candetach=Lehetséges fájlokat leválasztani a szerverre?
+acl_usersm=Egyező felhasználók
+acl_asame=Ugyanaz, mint a felhasználónév
+acl_usersu=UID tartományban
+acl_sec=Belefoglalni a másodlagos csoportokat?
+acl_dir=Be tudja olvasni a könyvtárban lévő levelező fájlokat
+acl_dirauto=Automatikusan döntsön (bárhol, ha minden felhasználó látható, sehol máshol)
+
+log_delmail=Törölt $1 üzenetek innen: $2
+log_movemail=$1 üzenetek áthelyezve $3 -ba
+log_copymail=$3 -ba
+log_send=Küldött e-mailt a $1 -nak
+
+emodified=Ezt a mappát utoljára megtekintettük! Térjen vissza a <a href='$1'>levelezési listához</a>, és próbálja újra.
+
+razor_title=Jelentés spamként
+razor_title2=Jelentés, mint Ham
+razor_report=Az üzenet jelentése a Razornak és más SpamAssassin spam-blokkoló adatbázisoknak.
+razor_report2=A kiválasztott üzenetek jelentése a Razor és más SpamAssassin spam-blokkoló adatbázisok felé.
+razor_report3=A kiválasztott üzenetek jelentésének visszavonása a Razor és más SpamAssassin spam-blokkoló adatbázisok felé.
+razor_err=.. nem sikerült! Ennek okát lásd a fenti hibaüzenetben.
+razor_moved=.. kész, és áthelyezett a $1 mappába.
+razor_deleted=.. kész, és törölt üzenet is.
+
+ham_title=Jelentés, mint Ham
+ham_report=Nem spamként jeleníti meg ezt az üzenetet a Razor és más SpamAssassin adatbázisok számára.
+
+black_title=A feladó megtagadása
+black_done=Hozzátette a $1 e-mail címet a SpamAssassin megtagadott címeinek listájához.
+black_already=Az $1 e-mail cím már szerepel a SpamAssassin megtagadott címeinek listáján.
+
+white_title=A feladó engedélyezése
+white_done=Hozzátette a $1 e-mail címet a SpamAssassin megengedett címlistájához.
+white_already=Az $1 e-mail cím már szerepel a SpamAssassin megengedett címlistájában.
+
+ldap_emod=Hiányzó Perl-modul $1 szükséges az LDAP-hoz való csatlakozáshoz
+ldap_econn=Nem sikerült csatlakozni az LDAP szerverhez $1 port $2
+ldap_elogin=Nem sikerült kapcsolódni az LDAP szerverhez $1 mint $2 : $3 
+ldap_ehost=Nincs beállítva LDAP szerver a modul konfigurációjában
+ldap_eport=Nincs beállítva érvényes LDAP szerver port a modul konfigurációjában
+ldap_euser=Nincs beállítva LDAP bejelentkezés a modul konfigurációjában
+ldap_ebase=Nincs beállítva LDAP alap DN a modul konfigurációjában
+
+delall_rusure=Biztos benne, hogy törölni szeretne minden e-mailt a $1 webhelyről? $2 összesen $3 üzenet örökre törlődik.
+
+slide_title=Csatolt képek
+
+left_mail=Levél
+left_search=Keresés:
+left_folders=Mappakezelés
+left_addresses=Címjegyzék
+left_prefs=Levelezési beállítások
+left_forward=Továbbító e-mail
+left_autoreply=Automatikus válasz
+left_filter=E-mail szűrők
+left_pass=Jelszó módosítása
+left_sig=Aláírás szerkesztése

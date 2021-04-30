@@ -1,0 +1,4 @@
+index_startmsg2=FTP sunucusunu geçerli yapılandırmayla başlatmak için bu düğmeyi tıklatın. Sunucuyu, inetd veya eşdeğer bir program kullanarak gerektiğinde otomatik olarak başlatılacak şekilde de yapılandırabilirsiniz.
+index_version=WU-FTPd sürümü $1 
+
+log_sysxfer=Her iki varış noktası

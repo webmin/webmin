@@ -1,0 +1,112 @@
+index_title=PPTP VPN客戶端
+index_epptp=在系統上找不到PPTP客戶端程序 $1。可能未安裝，或者您的<a href='$2'>模塊配置</a>不正確。
+index_eppp=系統上未安裝PPP服務器程序 $1。 PPTP依靠它來運行。
+index_eoptions=全局PPTP PPP選項文件 $1不存在。要么創建它，要么調整<a href='$2'>模塊配置</a>以使用其他文件，或者根本不使用它。
+index_header=定義的隧道
+index_none=尚未定義PPTP隧道。
+index_tunnel=隧道 $1
+index_add=添加一個新的PPTP VPN隧道。
+index_conn=連接至：
+index_pass=帶有可選密碼：
+index_conndesc=單擊此按鈕以使用其當前配置連接所選的PPTP VPN隧道。
+index_disc=斷開連接：
+index_discdesc=單擊此按鈕以斷開所選的當前活動的PPTP VPN隧道並刪除通過它的所有路由。
+index_return=PPTP隧道列表
+index_opts=編輯全局PPP選項
+index_optsdesc=單擊此按鈕以編輯適用於所有PPTP VPN隧道的PPP選項。
+index_version=PPPd版本 $1
+index_boot=在啟動時連接：
+index_noboot=&lt;不連接&gt;
+index_bootdesc=更改此選項以控制是否在引導時啟動所選的PPTP VPN連接。
+
+disc_err=無法斷開隧道
+disc_egone=不再活躍
+disc_ekill=無法殺死pppd進程
+disc_done=隧道 $1已成功斷開連接。
+
+conn_err=連接隧道失敗
+conn_egone=隧道不再存在
+cone_ealready=已經連接
+conn_einvalid=配置文件中缺少服務器IP地址
+conn_title=連接隧道
+conn_cmd=使用命令 $1..建立PPTP連接。
+conn_ok=..使用接口 $1成功激活連接。您的本地地址為 $2，遠程地址為 $3。
+conn_timeout=.. 連接失敗！檢查下面的日誌消息以獲取原因。
+conn_routes=用命令添加路由 ..
+conn_mppe=用於VPN加密的MPPE協議需要PPP守護程序和內核支持。但是，以上錯誤表明您的系統上沒有一個或兩個都不可用。如果PPTP服務器不需要MPPE，請嘗試在<a href='$1'>全局PPP選項</a>頁上關閉與之相關的所有選項。
+
+edit_title1=添加PPTP隧道
+edit_title2=編輯PPTP隧道
+edit_header=PPTP VPN隧道選項
+edit_name=隧道名稱
+edit_server=連接到服務器
+edit_login=以用戶身份登錄
+edit_same=系統主機名
+edit_pass=用密碼登錄
+edit_remote=服務器名稱
+edit_auto=自動
+edit_adddef=添加默認路線？
+edit_def1=通過另一端
+edit_def2=通過網關 ..
+edit_deldef=刪除舊的默認路由？
+edit_routes=連接後要添加的路由
+edit_type=類型
+edit_type0=&nbsp;
+edit_type1=網絡
+edit_type2=單主機
+edit_net=網絡或主機
+edit_mask=網路遮罩
+edit_gw=通過網關
+edit_gw_def=另一端
+edit_unknown=其他<tt>route</tt>命令
+edit_file=PPP選項文件
+edit_none=沒有
+edit_global=標準全局文件
+edit_ofile=其他文件 ..
+
+save_err=保存隧道失敗
+save_ename=缺少隧道名稱
+save_eserver=連接到的服務器丟失或無效
+save_elogin=登錄名缺失或無效
+save_eremote=遠程服務器名稱丟失或無效
+save_edef=默認路由網關缺失或無效
+save_enet=路由 $1中的無效網絡地址
+save_emask=路由 $1中的無效網絡掩碼
+save_egw=路由 $1中的網絡網關無效
+save_ehost=路由 $1中的主機IP地址無效
+save_emask2=主機路由 $1不需要網絡掩碼
+save_egw2=路由 $1中主機的無效網關
+save_erename=重命名隧道文件失敗
+save_eclash=具有相同名稱的隧道或PPP對等體已經存在
+save_efile=缺少或無效的PPP選項文件
+
+opts_title=全球PPP選項
+opts_desc=下面的設置取自 $1，將應用於設置為使用標準全局PPP選項文件的所有隧道。
+opts_header=所有隧道的PPP選項
+opts_mtu=最大發送數據包大小
+opts_mru=最大接收包大小
+opts_err=保存全局PPP選項失敗
+opts_emtu=最大發送數據包大小丟失或無效
+opts_emru=最大接收數據包大小丟失或無效
+opts_msdesc=下面的選項啟用Windows VPN服務器使用的MPPE加密。但是，MPPE在PPP守護程序和操作系統內核中都需要支持。
+
+mppe_mppe-40=使用40位MPPE加密？
+mppe_mppe-128=使用128位MPPE加密？
+mppe_mppe-stateless=啟用無狀態MPPE模式？
+mppe_mppe=啟用MPPE加密？
+mppe_m2=必須使用
+mppe_m0=不能使用
+mppe_d0=殘障人士
+mppe_d1=允許的
+mppe_mppe-stateful=啟用有狀態MPPE模式？
+mppe_old=警告-在您的配置文件中找到了舊式MPPE指令 $1，即使您的PPP守護程序支持新式指令。
+mppe_new=警告-即使您的PPP守護程序僅支持舊式指令，也可以在配置文件中找到新式MPPE指令 $1。
+
+log_create=已創建PPTP隧道 $1
+log_update=修改後的PPTP隧道 $1
+log_delete=已刪除PPTP隧道 $1
+log_conn=連接的隧道 $1
+log_conn_l=連接的隧道 $1與本地地址 $2
+log_failed=無法連接隧道 $1
+log_disc=斷開的隧道 $1
+log_opts=編輯的全球PPP選項

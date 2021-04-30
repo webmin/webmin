@@ -1,0 +1,14 @@
+line1=Nastavení konfigurace,11
+sort_mode=Třídit tabulky podle,1,0-Pořadí v souboru,1-Názvu
+max_records=Maximální počet zobrazených záznamů v tabulkách,0,6
+perpage=Mail zprávy zobrazitelné na jednu stránku,0,6
+send_mode=Poslat mail přes připojení k,3,qmail-inject spouštěč
+line2=Konfigurace systému,11
+qmail_dir=QMail základní adresář,0
+mail_system=Formát mailboxu,1,0-Jeden soubor,1-Adresář
+mail_dir=Umístění mail souboru Sendmailu,3,Soubor pod domovským adresářem
+mail_file=Mail soubor Sendmailu v domovském adresáři,0
+mail_dir_qmail=Qmail mail adresář v domovském adresáři,0
+mail_style=Styl adresáře s mail soubory,4,0-mail/username,1-mail/u/username,2-mail/u/us/username,3-mail/u/s/username
+start_cmd=Příkaz spouštějící QMail,3,Právě běžet jako skript
+stop_cmd=Příkaz ukončující QMail,3,Právě zabít qmail-send

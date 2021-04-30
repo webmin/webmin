@@ -4,67 +4,67 @@
 <h2><i>Ta strona jest niekompletna</i></h2>
 <hr>
 <h3>Wprowadzenie</h3>
-Ten modu³ mo¿e byæ u¿yty w celu automatycznego wykonywania
-poleceñ w okre¶lonym czasie. U¿ywa on standardowego deamona
-Unix <tt>cron</tt>, które umo¿liwia uruchamianie poleceñ jako
-ró¿ni u¿ytkownicy w wybranych minutach, godzinach, dniach, miesi±cach,
-dni tygodnia i miesi±ca oraz lat. Ka¿de zadanie jest w³asno¶ci±
-u¿ytkownika, wykonywane polecenie otrzymuje takie same
-uprawnienia jak ten u¿ytkownik. <p>
+Ten moduÅ‚ moÅ¼e byÄ‡ uÅ¼yty w celu automatycznego wykonywania
+poleceÅ„ w okreÅ›lonym czasie. UÅ¼ywa on standardowego deamona
+Unix <tt>cron</tt>, ktÃ³re umoÅ¼liwia uruchamianie poleceÅ„ jako
+rÃ³Å¼ni uÅ¼ytkownicy w wybranych minutach, godzinach, dniach, miesiÄ…cach,
+dni tygodnia i miesiÄ…ca oraz lat. KaÅ¼de zadanie jest wÅ‚asnoÅ›ciÄ…
+uÅ¼ytkownika, wykonywane polecenie otrzymuje takie same
+uprawnienia jak ten uÅ¼ytkownik. <p>
 
-G³ówna strona modu³u to lista wszystkich znanych zaplanowanych zadañ,
-pogrupowanych wed³ug u¿ytkownika. Niektóre systemy maj± zadania,
-które s± czê¶ci± systemu operacyjnego, ich w³a¶cicielem s± najczê¶ciej
-tacy u¿ytkownicy jak np. <tt>root</tt> lub <tt>sys</tt>. Mog± byæ tak¿e
-zadania utworzone przez u¿ytkowników u¿yw±c polecenia <tt>crontab</tt>
-nale¿±ce do u¿ytkownika, który je stworzy³. <p>
+GÅ‚Ã³wna strona moduÅ‚u to lista wszystkich znanych zaplanowanych zadaÅ„,
+pogrupowanych wedÅ‚ug uÅ¼ytkownika. NiektÃ³re systemy majÄ… zadania,
+ktÃ³re sÄ… czÄ™Å›ciÄ… systemu operacyjnego, ich wÅ‚aÅ›cicielem sÄ… najczÄ™Å›ciej
+tacy uÅ¼ytkownicy jak np. <tt>root</tt> lub <tt>sys</tt>. MogÄ… byÄ‡ takÅ¼e
+zadania utworzone przez uÅ¼ytkownikÃ³w uÅ¼ywÄ…c polecenia <tt>crontab</tt>
+naleÅ¼Ä…ce do uÅ¼ytkownika, ktÃ³ry je stworzyÅ‚. <p>
 
 <hr>
 <h3>Tworzenie nowego zaplanowanego zadania</h3>
-Aby utworzyæ nowe zadanie, naci¶nij na  <tt>Utwórz nowe zadanie dla crona</tt>
-poni¿ej listy istniej±cych zadañ. Wy¶wietli siê formularz, w który mo¿esz wpisaæ
-nastêpuj±ce parametry:
+Aby utworzyÄ‡ nowe zadanie, naciÅ›nij na  <tt>UtwÃ³rz nowe zadanie dla crona</tt>
+poniÅ¼ej listy istniejÄ…cych zadaÅ„. WyÅ›wietli siÄ™ formularz, w ktÃ³ry moÅ¼esz wpisaÄ‡
+nastÄ™pujÄ…ce parametry:
 	<ul>
 	<li><b>Uruchom zadanie crona jako</b><br>
-	    Nazwa u¿ytkownika Unix, z którego uprawnieniami zostanie uruchomione zadanie. <p>
+	    Nazwa uÅ¼ytkownika Unix, z ktÃ³rego uprawnieniami zostanie uruchomione zadanie. <p>
 	<li><b>Aktywne?</b><br>
-	    Nawet je¿eli zadanie nie jest aktywne dalej bêdzie wy¶wietlane 
-	    na li¶cie znanych zadañ, jednak nie bêdzie ono uruchamiane. <p>
+	    Nawet jeÅ¼eli zadanie nie jest aktywne dalej bÄ™dzie wyÅ›wietlane 
+	    na liÅ›cie znanych zadaÅ„, jednak nie bÄ™dzie ono uruchamiane. <p>
 	<li><b>Polecenie</b><br>
-	    Polecenie Unix, które zostanie uruchomione w zaplanowanym czasie.
-	    Mo¿e to byæ dowolne polecenie, które mo¿esz wpisaæ w terminalu. <p>
-	<li><b>Wej¶cie dla polecenia</b><br>
-	    Je¿eli to pole nie jest puste to cokolwiek wpiszesz bêdzie traktowane
-	    jako dane wej¶ciowe do polecenia przy uruchomieniu. Np. je¿eli poleceniem
-	    jest <tt>mail foo@bar.com</tt> i dane wej¶ciowe to <tt>hello world</tt>,
-	    to wpisany tekst bêdzie wys³any jako e-mail do <tt>foo@bar.com</tt>. <p>
-	<li><b>Kiedy uruchomiæ</b><br>
-	    Polecenie zostanie uruchomione w wybranym czasie wed³ug okre¶lenia minut,
-	    godzin, dni miesi±ca, miesiêcy, roku i dni tygodnia. Mo¿esz wybraæ
-	    <tt>Wszystkie</tt> lub czas kiedy zadanie ma zostaæ uruchomione<p>
+	    Polecenie Unix, ktÃ³re zostanie uruchomione w zaplanowanym czasie.
+	    MoÅ¼e to byÄ‡ dowolne polecenie, ktÃ³re moÅ¼esz wpisaÄ‡ w terminalu. <p>
+	<li><b>WejÅ›cie dla polecenia</b><br>
+	    JeÅ¼eli to pole nie jest puste to cokolwiek wpiszesz bÄ™dzie traktowane
+	    jako dane wejÅ›ciowe do polecenia przy uruchomieniu. Np. jeÅ¼eli poleceniem
+	    jest <tt>mail foo@bar.com</tt> i dane wejÅ›ciowe to <tt>hello world</tt>,
+	    to wpisany tekst bÄ™dzie wysÅ‚any jako e-mail do <tt>foo@bar.com</tt>. <p>
+	<li><b>Kiedy uruchomiÄ‡</b><br>
+	    Polecenie zostanie uruchomione w wybranym czasie wedÅ‚ug okreÅ›lenia minut,
+	    godzin, dni miesiÄ…ca, miesiÄ™cy, roku i dni tygodnia. MoÅ¼esz wybraÄ‡
+	    <tt>Wszystkie</tt> lub czas kiedy zadanie ma zostaÄ‡ uruchomione<p>
 
-	    Na przyk³ad, je¿eli wybierzesz 5 jako godzinê i wtorek jako dzieñ tygodnia,
-	    to zadanie uruchomi siê w ka¿dej minucie od godziny 5 do godziny 5:59
-	    w ka¿dy wtorek. <br>
-	    Je¿eli wybierzesz 30 jako minuty i 14 jako godziny, to zadanie
-	    uruchomi siê ka¿dego dnia o 14:30 <p>
+	    Na przykÅ‚ad, jeÅ¼eli wybierzesz 5 jako godzinÄ™ i wtorek jako dzieÅ„ tygodnia,
+	    to zadanie uruchomi siÄ™ w kaÅ¼dej minucie od godziny 5 do godziny 5:59
+	    w kaÅ¼dy wtorek. <br>
+	    JeÅ¼eli wybierzesz 30 jako minuty i 14 jako godziny, to zadanie
+	    uruchomi siÄ™ kaÅ¼dego dnia o 14:30 <p>
 	</ul><p>
-Po wype³nieniu wszystkich pól w formularzu naci¶nij na przycisk <tt>Utwórz</tt>
+Po wypeÅ‚nieniu wszystkich pÃ³l w formularzu naciÅ›nij na przycisk <tt>UtwÃ³rz</tt>
 na dole strony. Nowe zadanie zostanie natychmiast zastosowane. <p>
 
 <hr>
-<h3>Edycja istniej±cych zaplanowanych zadañ</h3>
-Aby edytowaæ istniej±ce zadanie, kliknij na polecenie, które chcesz
-edytowaæ na li¶cie zadañ na g³ównej stronie modu³u. Formularz
-edycji jest taki sam jak formularz tworzenia nowego zadania, który
-zosta³ opisany powy¿ej. Po dokonaniu po¿±danych zmian naci¶nij
+<h3>Edycja istniejÄ…cych zaplanowanych zadaÅ„</h3>
+Aby edytowaÄ‡ istniejÄ…ce zadanie, kliknij na polecenie, ktÃ³re chcesz
+edytowaÄ‡ na liÅ›cie zadaÅ„ na gÅ‚Ã³wnej stronie moduÅ‚u. Formularz
+edycji jest taki sam jak formularz tworzenia nowego zadania, ktÃ³ry
+zostaÅ‚ opisany powyÅ¼ej. Po dokonaniu poÅ¼Ä…danych zmian naciÅ›nij
 na przycisk <tt>Zapisz</tt> na dole strony. <p>
 
-Aby usun±æ zadanie, naci¶nij na przycisk <tt>Usuñ</tt> na
-dole formularza edycji. Zadanie zostanie natychmiast usuniête
+Aby usunÄ…Ä‡ zadanie, naciÅ›nij na przycisk <tt>UsuÅ„</tt> na
+dole formularza edycji. Zadanie zostanie natychmiast usuniÄ™te
 bez potwierdzenia. <p>
 
 <hr>
 <a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
-&nbsp;&nbsp;<a href="">Wróæ do modu³u</a><p>
+&nbsp;&nbsp;<a href="">WrÃ³Ä‡ do moduÅ‚u</a><p>
 

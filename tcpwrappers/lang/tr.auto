@@ -1,0 +1,33 @@
+index_title=TCP Sarmalayıcıları
+index_return=indeks
+index_allowtitle=İzin verilen ana makineler
+index_denytitle=Reddedilen ana makineler
+index_norule=<tt>$1</tt> 'de henüz bir kural tanımlanmadı.
+index_nofile='$1' dosyası mevcut değil - <a href="/config.cgi?tcpwrappers">modül yapılandırmanızı</a> kontrol edin
+index_add=Yeni bir kural ekleyin.
+index_service=şeytan
+index_hosts=Sunucular
+index_cmd=komuta
+index_delete=Silme seçildi
+index_none=Yok
+
+edit_title1allow=İzin Verme Kuralı Oluştur
+edit_title2allow=İzin Ver Kuralını Düzenle
+edit_title1deny=Reddetme Kuralı Oluştur
+edit_title2deny=Reddetme Kuralını Düzenle
+edit_eid=Bu kural bulunamadı
+edit_header=Kural seçenekleri
+edit_service=Hizmetler
+edit_except=Hizmetler hariç
+edit_hosts=Uzak ana bilgisayarlar
+edit_hostsexcept=Ana makineler hariç
+edit_cmd=Kabuk komutları
+edit_efound=Daemon '$1' xinetd yapılandırmasında bulunamadı.
+
+save_errtitle=Kayıt kuralı hatası
+save_ehost=Ana bilgisayar girdisi bozuk karakterler içeriyor
+save_ecmd=Komut girişi bozuk karakterler içeriyor
+save_eservice=Daemon isimleri kötü karakterler içeriyor
+
+del_errtitle=Kural silme hatası
+del_enone=Silmek için işaretlenmiş kural yok

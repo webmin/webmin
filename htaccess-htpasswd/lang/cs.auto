@@ -1,0 +1,4 @@
+index_remove=Zrušte ochranu a odebrání souborů
+
+dir_efiledir='$1' je adresář, a proto jej nelze použít jako soubor uživatelů
+dir_egfiledir='$1' je adresář, a proto jej nelze použít jako soubor skupin

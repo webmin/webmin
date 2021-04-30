@@ -1,0 +1,205 @@
+index_title=Chạy quy trình
+index_display=Trưng bày
+index_tree=PID
+index_user=Người sử dụng
+index_size=Ký ức
+index_cpu=CPU
+index_search=Tìm kiếm
+index_zone=Khu
+index_run=Chạy ..
+index_return=danh sách quy trình
+index_mem2=<b>Bộ nhớ thực:</b> $1 tổng / $2 miễn phí
+index_mem3=<b>Bộ nhớ thực:</b> $1 tổng / $2 miễn phí / $3 được lưu trong bộ nhớ cache
+index_swap2=<b>Hoán đổi không gian:</b> $1 tổng / $2 miễn phí
+index_burst=<b>Bộ nhớ ổn định:</b> $1 tổng số
+index_loadname=Trung bình tải CPU:
+index_loadnums=$1 (1 phút), $2 (5 phút), $3 (15 phút)
+index_cpuname=Loại CPU:
+index_inzone=Trong khu vực $1 
+
+pid=TÔI
+owner=Chủ nhân
+command=Chỉ huy
+cpu=CPU
+size=Kích thước
+parent=Quá trình phụ huynh
+runtime=Thời gian chạy
+nice=Cấp độ đẹp
+stime=Đã bắt đầu
+sclass=Lớp học lập kế hoạch IO
+sprio=Ưu tiên IO
+
+search_user=Được sở hữu bởi
+search_match=Phù hợp
+search_cpupc=Sử dụng CPU nhiều hơn $1%
+search_cpupc2=Sử dụng nhiều CPU hơn
+search_fs=Sử dụng hệ thống tập tin
+search_files=Sử dụng tập tin
+search_submit=Tìm kiếm
+search_none=Không tìm thấy quy trình phù hợp.
+search_kill=Gửi tín hiệu
+search_ignore=Bỏ qua các quá trình tìm kiếm trong kết quả
+search_return=Form tìm kiếm
+search_sigterm=Chấm dứt quá trình
+search_sigkill=Quá trình tiêu diệt
+search_port=Sử dụng cổng
+search_protocol=giao thức
+search_ip=Sử dụng địa chỉ IP
+
+run_command=Lệnh chạy
+run_submit=Chạy
+run_mode=Chế độ chạy
+run_bg=Chạy trong nền
+run_fg=Đợi đến khi hoàn thành
+run_input=Nhập lệnh
+run_title=Đầu ra lệnh
+run_output=Đầu ra từ $1 ..
+run_none=Không có đầu ra được tạo ra
+run_ecannot=Bạn không được phép chạy lệnh
+run_as=Chạy với tư cách người dùng
+run_euser=Tên người dùng bị thiếu hoặc không hợp lệ
+run_euser2=Bạn không được phép chạy các lệnh như người dùng đã chọn
+
+edit_title=Thông tin quy trình
+edit_gone=Quá trình này không còn chạy
+edit_sub=Các quy trình con
+edit_subid=TÔI
+edit_subcmd=Lệnh xử lý phụ
+edit_kill=Gửi tín hiệu
+edit_change=Thay đổi
+edit_prilow=Ưu tiên thấp
+edit_prihigh=Ưu tiên cao
+edit_pridef=Mặc định
+edit_none=không ai
+edit_ecannot=Bạn không được phép chỉnh sửa các quy trình
+edit_sigterm=Chấm dứt
+edit_sigkill=Giết chết
+edit_sigstop=Đình chỉ
+edit_sigcont=Sơ yếu lý lịch
+edit_open=Tập tin và kết nối
+edit_trace=Quá trình theo dõi
+edit_return=chi tiết quá trình
+
+kill_err=Không thể gửi tín hiệu $1 để xử lý $2 
+kill_title=Gửi tín hiệu
+kill_sent=gởi
+kill_ecannot=Bạn không được phép giết các tiến trình
+
+renice_err=Không thể gia hạn quy trình $1 
+renice_ecannot=Bạn không được phép gia hạn các quy trình
+
+linux_pri=Sự ưu tiên
+linux_tty=TTY
+linux_status=Trạng thái
+linux_wchan=Chờ đợi trong
+linux_mem=Ký ức
+linux_group=Nhóm
+linux_ruser=Người dùng thực sự
+linux_rgroup=Nhóm thật
+linux_pgid=ID nhóm quy trình
+linux_stime=Đã bắt đầu
+
+linuxstat_R=Đang chạy
+linuxstat_S=Ngủ
+linuxstat_D=Giấc ngủ sâu
+linuxstat_T=Ngừng
+linuxstat_Z=Thây ma
+
+linux_real=Thời gian thực
+linux_be=Nỗ lực tốt nhất
+linux_idle=Nhàn rỗi
+
+freebsd_ruser=Người dùng thực sự
+freebsd_rgroup=Nhóm thật
+freebsd_tty=TTY
+freebsd_pgid=Nhóm quy trình
+freebsd_stime=Đã bắt đầu
+freebsd_lim=Giới hạn bộ nhớ
+
+hpux_pri=Sự ưu tiên
+hpux_tty=TTY
+hpux_status=Trạng thái
+hpux_wchan=Đang chờ
+hpux_stime=Đã bắt đầu
+
+hpuxstat_0=Không tồn tại
+hpuxstat_S=Ngủ
+hpuxstat_W=Đang chờ đợi
+hpuxstat_R=Đang chạy
+hpuxstat_I=Trung gian
+hpuxstat_Z=Thây ma
+hpuxstat_T=Ngừng
+hpuxstat_G=Phát triển
+
+macos_tty=TTY
+
+sysv_group=Nhóm
+sysv_ruser=Người dùng thực sự
+sysv_rgroup=Nhóm thật
+sysv_pgid=ID nhóm quy trình
+sysv_tty=TTY
+sysv_stime=Đã bắt đầu
+sysv_task=ID nhiệm vụ
+sysv_zone=Tên khu vực
+
+log_run=Lệnh Ran "$1"
+log_kill=Đã gửi tín hiệu $1 để xử lý $2 
+log_kills=Gửi tín hiệu $1 đến $2 quá trình
+log_kill_l=Đã gửi tín hiệu $1 để xử lý $2 
+log_kills_l=Đã gửi tín hiệu $1 đến các quy trình <br> $2 
+log_renice=Thay đổi mức độ ưu tiên của quy trình $2 thành $1 
+
+acl_manage=Quản lý các quy trình như người dùng
+acl_manage_def=Người dùng Webmin hiện tại
+acl_edit=Có thể giết và gia hạn các quá trình?
+acl_run=Có thể chạy lệnh?
+acl_only=Chỉ có thể thấy các quy trình riêng?
+acl_who=Có thể quản lý các quy trình cho người dùng
+acl_who0=Tất cả người dùng
+acl_who1=Người dùng Webmin hiện tại
+acl_who2=Danh sách người dùng ..
+
+kill_kill=Quá trình tiêu diệt
+kill_term=Chấm dứt
+kill_hup=Khởi động lại
+kill_stop=Dừng lại
+kill_cont=Tiếp tục
+
+open_title=Mở tệp và kết nối
+open_proc=Đối với quy trình $1 (PID $2)
+open_header1=Mở tập tin
+open_header2=Mở kết nối mạng
+open_type=Kiểu
+open_proto=Giao thức
+open_desc=Chi tiết
+open_fd=Mô tả tập tin
+open_listen1=Nghe trên cổng $1 
+open_listen2=Nghe địa chỉ $1 cổng $2 
+open_recv=Nhận trên $1:$2 
+open_conn=Đã kết nối từ $1 đến $2 ở trạng thái $3 
+open_cwd=Thư mục hiện tại
+open_rtd=Root thư mục
+open_txt=Mã chương trình
+open_mem=Thư viện dùng chung
+open_dir=Danh mục
+open_reg=Tập tin thường xuyên
+open_chr=Nhân vật đặc biệt
+open_blk=Khối đặc biệt
+open_size=Kích thước tập tin
+open_inode=Inode
+open_file=Con đường
+
+trace_title=Quá trình theo dõi
+trace_start=Bắt đầu theo dõi cuộc gọi hệ thống cho $1 ..
+trace_doing=Theo dõi cuộc gọi hệ thống cho $1  :
+trace_done=.. quá trình đã chấm dứt.
+trace_failed=.. truy tìm thất bại!
+trace_sorry=Trang này yêu cầu hỗ trợ Java trong trình duyệt của bạn. Để sử dụng theo dõi quá trình chỉ văn bản, điều chỉnh cấu hình mô-đun.
+trace_syscalls=Hệ thống theo dõi cuộc gọi:
+trace_all=Tất cả
+trace_sel=Liệt kê ..
+trace_change=Thay đổi
+
+windows_threads=Chủ đề trong quá trình
+
+syslog_dmesg=Tin nhắn hạt nhân

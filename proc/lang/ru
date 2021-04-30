@@ -1,0 +1,203 @@
+index_title=Активные процессы
+index_display=Вид
+index_tree=PID
+index_user=Пользователи
+index_size=Память
+index_cpu=CPU
+index_search=Поиск
+index_zone=Зона
+index_run=Выполнить..
+index_return=списку процессов
+index_mem2=<b>Физической памяти:</b> всего $1 / свободно $2
+index_swap2=<b>Виртуальной памяти:</b> всего $1 / свободно $2
+index_loadname=Средняя загрузка CPU:
+index_loadnums=$1 (1 мин.) , $2 (5 мин.) , $3 (15 мин.)
+index_cpuname=Тип CPU:
+index_inzone=В зоне $1
+
+pid=PID
+owner=Владелец
+command=Команда
+cpu=Использование CPU
+size=Размер
+parent=Родительский процесс
+runtime=Использование времени CPU
+nice=Приоритет nice
+stime=Запущен
+sclass=Класс планировщика IO
+sprio=IO приоритет
+
+search_user=Владелец
+search_match=Команда содержит
+search_cpupc=Загружающий CPU более чем на $1%
+search_cpupc2=Загружает CPU больше чем на
+search_fs=Использует файловую систему
+search_files=Использует файл
+search_submit=Найти
+search_none=Процессов, соответствующих критерию поиска, не найдено.
+search_kill=Послать сигнал
+search_ignore=Игнорировать процесс выполняющий этот поиск
+search_return=к поиску
+search_sigterm=Завершить процесс
+search_sigkill=Снять процесс
+search_port=Использует порт
+search_protocol=протокол
+search_ip=Использует IP адрес
+
+run_command=Команда для выполнения
+run_submit=Выполнить
+run_mode=Режим выполнения
+run_bg=В фоновом режиме
+run_fg=Ожидать завершения
+run_input=Стандартный поток ввода для команды
+run_title=Вывод команды
+run_output=Вывод от $1 ..
+run_none=Команда ничего не вывела
+run_ecannot=У вас недостаточно прав для выполнения команд
+run_as=Запустить от имени пользователя
+run_euser=Неуказанное или неправильное имя пользователя
+run_euser2=У вас недостаточно прав для запуска команд от имени выбранного пользователя
+
+edit_title=Информация о процессе
+edit_gone=Процесс более не выполняется
+edit_sub=Дочерние процессы
+edit_subid=ID
+edit_subcmd=Команды дочерних процессов
+edit_kill=Послать сигнал
+edit_change=Изменить
+edit_prilow=Низкий приоритет
+edit_prihigh=Высокий приоритет
+edit_pridef=По умолчанию
+edit_none=Нет
+edit_ecannot=У вас недостаточно прав для изменения процессов
+edit_sigterm=Завершить процесс
+edit_sigkill=Снять процесс
+edit_sigstop=Приостановить
+edit_sigcont=Продолжить
+edit_open=Файлы и соединения
+edit_trace=Трассировка процесса
+edit_return=информации о процессе
+
+kill_err=Не удалось послать сигнал $1 процессу $2
+kill_title=Посылка сигнал
+kill_sent=послан
+kill_ecannot=У вас недостаточно прав для снятия процесса
+
+renice_err=Не удалось изменить приоритет процесса $1
+renice_ecannot=У вас недостаточно прав для изменения приоритета процессов
+
+linux_pri=Приоритет
+linux_tty=TTY (терминал)
+linux_status=Состояние
+linux_wchan=Ожидание
+linux_mem=Память
+linux_group=Группа
+linux_ruser=Реальный пользователь
+linux_rgroup=Реальная группа
+linux_pgid=ID группы процессов
+linux_stime=$stime
+
+linuxstat_R=Выполняется
+linuxstat_S=Спит (ожидает)
+linuxstat_D=Глубоко спит
+linuxstat_T=Приостановлен
+linuxstat_Z=Зомби
+
+linux_real=Real time
+linux_be=Best effort
+linux_idle=Idle
+
+freebsd_ruser=Настоящий пользователь
+freebsd_rgroup=Настоящая группа
+freebsd_tty=TTY (терминал)
+freebsd_pgid=Группа процессов
+freebsd_stime=$stime
+freebsd_lim=Ограничение памяти
+
+hpux_pri=Приоритет
+hpux_tty=TTY (терминал)
+hpux_status=Состояние
+hpux_wchan=Ожидание
+hpux_stime=$stime
+
+hpuxstat_0=Не существует
+hpuxstat_S=Спит
+hpuxstat_W=Ожидает
+hpuxstat_R=Выполняется
+hpuxstat_I=Промежуточное
+hpuxstat_Z=Зомби
+hpuxstat_T=Приостановлен
+hpuxstat_G=Растет
+
+macos_tty=TTY (терминал)
+
+sysv_group=Группа
+sysv_ruser=Реальный пользователь
+sysv_rgroup=Реальная группа
+sysv_pgid=ID группы процессов
+sysv_tty=TTY (терминал)
+sysv_stime=$stime
+sysv_task=ID задачи
+sysv_zone=Имя зоны
+
+log_run=Выполнена команда "$1"
+log_kill=Процессу $2 послан сигнал $1
+log_kills=Посылка сигнала $1 процессам $2
+log_kill_l=Процессам $2 послан сигнал $1
+log_kills_l=Сигнал $1 послан процессам<br>$2
+log_renice=Изменен приоритет процесса $2 на $1
+
+acl_manage=Управлять процессами от имени
+acl_manage_def=Текущего пользователя Webmin
+acl_edit=Может снимать процессы и менять их приоритет?
+acl_run=Может выполнять команды?
+acl_only=Может просматривать только свои процессы?
+acl_who=Может управлять процессами пользователей
+acl_who0=Всех пользователей
+acl_who1=Текущего пользователя Webmin
+acl_who2=Перечисленных пользователей ..
+
+kill_kill=Снять процесс
+kill_term= Завершить  
+kill_hup=  Перезапустить   
+kill_stop=    Приостановить    
+kill_cont=  Возобновить  
+
+open_title=Открытые файлы и соединения
+open_proc=Для процесса $1 (PID $2)
+open_header1=Открытые файлы
+open_header2=Открытые сетевые соединения
+open_type=Тип
+open_proto=Протокол
+open_desc=Подробности
+open_fd=Файловый дескриптор
+open_listen1=Слушает порт $1
+open_listen2=Слушает порт $2 по адресу $1
+open_recv=Принимает $1:$2
+open_conn=Установлено соединение от $1 к $2, состояние $3
+open_cwd=Текущий каталог
+open_rtd=Корневой каталог
+open_txt=Код программы
+open_mem=Разделяемая библиотека
+open_dir=Каталог
+open_reg=Обычный файл
+open_chr=Символьное устройство
+open_blk=Блочное устройство
+open_size=Размер файла
+open_inode=Inode
+open_file=Путь
+
+trace_title=Трассировка процесса
+trace_start=Запуск трассировки системных вызовов для $1 ..
+trace_doing=Трассировка системных вызовов $1
+trace_done=.. процесс был завершен.
+trace_failed=.. трассировка не удалась!
+trace_sorry=Для этой страницы требуется поддержка Java в вашем браузере. Для использования текстового режима, измените режим работы в настройках модуля.
+trace_syscalls=Трассировка системных вызовов:
+trace_all=Все
+trace_sel=Перечисленных..
+trace_change=Изменить
+
+windows_threads=Потоков в процессе
+
+syslog_dmesg=Сообщения ядра

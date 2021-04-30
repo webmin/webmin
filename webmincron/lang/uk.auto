@@ -1,0 +1,20 @@
+edit_mins=Хвилини
+edit_hours=Години
+edit_days=Днів
+edit_months=Місяці
+edit_weekdays=Будні дні
+edit_all=Усі
+edit_selected=Вибрано ..
+edit_run=Виконати зараз
+edit_clone=Клонова робота
+edit_return=робота з крон
+edit_special1=Простий графік ..
+edit_special0=Часи та дати, вибрані нижче ..
+edit_special_hourly=Щогодини
+edit_special_daily=Щодня (опівночі)
+edit_special_weekly=Щотижня (у неділю)
+edit_special_monthly=Щомісяця (1-го)
+edit_special_yearly=Щорічно (1 січня)
+
+log_success=<tt>$2</tt> в <tt>$1</tt>
+log_failure=Не вдалося запустити <tt>$2</tt> у <tt>$1</tt> : $3 

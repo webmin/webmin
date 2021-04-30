@@ -1,0 +1,200 @@
+index_title=MON szerviz monitor
+index_return=MON index
+index_edir=A (z) $1 MON könyvtár nem létezik. Lehet, hogy a MON nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+mon_global_title=Globális változók konfigurálása
+mon_conf_title=Alapvető konfiguráció
+mon_status_title=Működési állapot
+hostgroups_title=MON konfiguráció-gazdacsoportok
+services_title=Figyelőcsoportok - szolgáltatásmeghatározások
+
+head_hostgroups=Gazdacsoportok és szolgáltatások
+head_groups=Gazdacsoport neve
+head_members=A fogadó csoport tagjai
+head_services=Nézendő Hostgroup szolgáltatások
+head_service=Szolgálat nézni
+head_param=Szolgáltatási paraméterek
+head_watch=Figyeli a csoportot?
+head_monauth=Hitelesítés biztosítása a MONCMD számára
+head_usr=Felhasználónév
+head_pass=Jelszó
+head_mand=(A "Vörös SZÍN" paraméterek kötelezőek)
+
+err_nomon=A 'mon' csomag nincs telepítve a rendszerre
+err_nomonconf=A (z) $1 MON konfigurációs fájl nem található a rendszerén. Lehet, hogy a MON nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+err_nowatch=Nincs kiválasztva figyelőcsoport. Válassza ki a folytatáshoz legalább egy figyelőcsoportot.
+err_noserv=Nincs kiválasztva szolgáltatás az figyelőcsoporthoz
+err_nomemb=Nincs kiválasztva házigazdák/tagok az ellenőrző csoporthoz
+err_monrun=A MON nem fut a host gépen. Kérjük, indítsa el a MON-t.
+stop_err=Nem sikerült megállítani a MON-t
+stop_epid=Már nem fut
+start_err=A MON indítása nem sikerült
+restart_err=Nem sikerült a MON újraindítása
+restart_epid=Nem sikerült beolvasni a PID-t
+
+other=Egyéb (külön hely)
+next=Következő
+mon_stat=MON állapot
+mon_off=A MON szolgáltatások nem indultak el
+mon_start=Indítsa el a MON Services szolgáltatást
+mon_stop=Állítsa le a MON Services szolgáltatást
+mon_restart=Indítsa újra a MON szolgáltatásokat
+mon_startdesc=Kattintson erre a gombra a MON szerver indításához. Amíg el nem indul, konfigurált figyelést nem végez.
+mon_stopdesc=Kattintson erre a gombra a MON szerver leállításához. Megálláskor a konfigurált figyelés megszűnik.
+mon_restartdesc=Kattintson erre a gombra a jelenlegi MON-konfiguráció alkalmazásához a szerverfolyamat újraindításával.
+line=(mindegyik soronként egy)
+save_apply=Mentés és alkalmazás
+watch=Watchgroup
+members=Belépés
+def_perargs=wd {Sat-Sun}
+
+def_desc=leírás
+def_inter=intervallum
+def_mon=monitor
+def_dep=dpend
+def_per=időszak
+def_alert=éber
+def_alertevr=alertevery
+def_alertaft=alertafter
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=trapduration
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=Gazdacsoportok
+groups_group=Csoport név
+groups_members=Tag házigazdák
+
+watches_title=Figyelési listák
+watches_group=Figyelő csoport
+watches_services=Figyelembe vett szolgáltatások
+watches_sadd=Szolgáltatás hozzáadása ..
+watches_add=A csoport figyelőlista hozzáadása :
+watches_return=figyelési listák
+watches_none=Még nem határoztak meg figyelési listákat.
+
+global_title=Globális opciók
+global_header=Globális MON konfigurációs lehetőségek
+global_maxprocs=Maximális MON folyamatok
+global_histlength=Esemény előzmények hossza
+global_alertdir=Riasztási programok könyvtára
+global_mondir=Monitor programok könyvtára
+global_authtype=Hitelesítés típusa
+global_authtype_=Alapértelmezett
+global_authtype_getpwnam=Rendszerhívások
+global_authtype_userfile=MON felhasználói fájl
+global_authtype_shadow=Árnyék fájl
+global_userfile=MON felhasználói fájl
+global_emaxprocs=Hiányzó vagy érvénytelen számú MON folyamat
+global_ehistlength=Hiányzó vagy érvénytelen eseményelőzmények
+global_ealertdir=Hiányzó vagy érvénytelen figyelmeztető programok könyvtár
+global_emondir=Hiányzó vagy érvénytelen monitor-programkönyvtár
+global_euserfile=Hiányzó MON felhasználói fájl
+
+watch_title=Figyelőlista szerkesztése
+watch_header=A fogadó csoport figyelésének részletei
+watch_group=Nézendő fogadó csoport
+watch_services=Figyelembe vett szolgáltatások
+watch_service=Szolgáltatás neve
+watch_monitor=Monitor használata
+watch_interval=Ellenőrizze az összeset
+watch_periods=Felügyeleti időszakok
+
+service_title=Szolgáltatás hozzáadása
+service_title2=Szerkesztési szolgáltatás
+service_header=Figyelt szolgáltatás részletei
+service_name=A szolgáltatás neve
+service_interval=Ellenőrizze az összeset
+service_desc=Leírás
+service_units_s=másodperc
+service_units_m=percek
+service_units_h=órák
+service_units_d=napok
+service_units_w=hetes
+service_monitor=Monitor használata
+service_mon1=Normál monitor
+service_mon0=Egyéb monitor ..
+service_args=Monitorparaméterek
+service_period=Monitoring időszak $1 
+service_days=Napok az ellenőrzéshez
+service_hours=Órák ellenőrizni
+service_all=Összes
+service_pstr=Időszak meghatározása
+service_new=Új monitoring időszak
+service_alerts=Riasztások az időszakra
+service_alert=Éber
+service_atype=Fuss mikor
+service_atype_alert=A szolgáltatás csökken
+service_atype_upalert=Szolgáltatások jönnek fel
+service_atype_startupalert=A MON elindul
+service_aargs=További paraméterek
+service_every=Figyelmeztetés küldése
+service_every_def=A monitor minden egyes futtatásakor
+service_every_time=Minden
+service_num=Legfeljebb küldhető riasztások
+service_unlimited=Korlátlan
+service_after=Hiba riasztás előtt
+service_immediate=Azonnal
+service_after_num=$1 kudarcok után
+service_aftertime=Az időintervallumon belül
+service_newperiod=Adjon hozzá egy új időszakot
+service_delperiod=Törölje ezt az időszakot
+service_err=Nem sikerült menteni a szolgáltatást
+service_ename=Hiányzó vagy érvénytelen szolgáltatási név
+service_einterval=Hiányzó vagy érvénytelen ellenőrzési intervallum
+service_eother=Hiányzó vagy érvénytelen monitor
+service_ehour=Hiányzó vagy érvénytelen óra a (z) $1 időszakban (9:00 vagy 17:00 lehet)
+service_eperiod=A (z) $1 időszakra nincs megadva nap vagy óra
+service_eevery=Hiányzó vagy érvénytelen szerviz riasztási időköz
+service_eafter=Hiányzó vagy érvénytelen hibaszám a riasztás előtt
+service_enum=Hiányzó vagy érvénytelen küldött riasztások
+service_epstr=Hiányzik az időszak meghatározása
+service_known0=<tt>Idő :: Időszak</tt> karakterlánc
+service_known1=Meghatározott napok és órák
+service_known2=Meghatározott időszak
+
+status_title=MON állapot
+status_ecgi=A (z) $1 MON státusú CGI program nem létezik. Lehet, hogy nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+status_eperl=A MON status CGI programhoz szükséges a $1 perl modul. <a href='$2'>Kattintson ide</a>, hogy közvetlenül a CPAN-ből telepítse.
+status_esame=A $1 MON státusú CGI programot a Webmin modul <tt>mon.cgi</tt> parancsfájljára állította, nem pedig a MON-hez tartozó CGI programra. Állítsa be a <a href='$2'>modul konfigurációját</a> a helyes útvonal használatához.
+
+users_title=MON felhasználók
+users_etype=A MON felhasználók listáját nem lehet szerkeszteni, mert a MON jelenleg nincs konfigurálva arra, hogy hitelesítésre használja a <a href='$1'>Globális beállítások</a> oldalon.
+users_header=Megengedett MON felhasználók a $1 -ben
+users_nousers=Nincs meghatározva MON felhasználó a $1 -ben.
+users_add=Hozzon létre új felhasználót.
+users_return=MON felhasználók listája
+
+user_create=Hozzon létre MON felhasználót
+user_edit=A MON felhasználó szerkesztése
+user_header=MON felhasználói adatok
+user_user=Felhasználónév
+user_pass=Jelszó
+user_leave=Hagyja változatlanul
+user_err=Nem sikerült menteni a felhasználót
+user_euser=Hiányzik vagy érvénytelen felhasználónév
+user_esame=Az azonos nevű felhasználó már létezik
+
+auth_title=Ügyfélparancsok
+auth_desc=Ezen az oldalon ellenőrizheti, hogy mely MON parancsokat futtathatja a felhasználók az ügyfélprogramok használatakor.
+auth_cmd=MON parancs
+auth_users=Engedélyezett felhasználók
+auth_none=Senki
+auth_all=Mindenki
+auth_sel=Csak a felhasználók
+auth_err=Az ügyfélparancsok mentése nem sikerült
+auth_eusers=A (z) $1 parancshoz egyetlen felhasználó sem lép be
+
+periods_title=Meghatározott időszakok
+periods_period=Időszak neve
+periods_times=Napok és idők
+periods_alldays=Minden nap
+periods_allhours=Minden óra
+periods_err=Nem sikerült menteni a meghatározott periódusokat
+periods_ename=A '$1' nem érvényes időszaknév
+periods_ehour=Hiányzó vagy érvénytelen óra a (z) $1 időszakban (9:00 vagy 17:00 lehet)
+
+show_title=Működési állapot
+show_ecgi=A $1 MON státus program nem létezik. Lehet, hogy nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.

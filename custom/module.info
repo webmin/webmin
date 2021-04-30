@@ -1,4 +1,3 @@
-risk=medium high
 name=Custom
 desc=Custom Commands
 depends=proc

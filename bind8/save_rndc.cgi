@@ -86,6 +86,8 @@ else {
 
 &flush_file_lines();
 
+&set_ownership($config{'rndc_conf'});
+
 # MacOS specific fix - remove include for /etc/rndc.key , which we don't need
 my $lref = &read_file_lines($cfile);
 for(my $i=0; $i<@$lref; $i++) {

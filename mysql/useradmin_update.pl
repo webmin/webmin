@@ -1,6 +1,5 @@
-
-$use_global_login = 1;		# Always login as master user, not the mysql
-				# login of the current Webmin user
+$use_global_login = 1;      # Always login as master user, not the mysql
+                            # login of the current Webmin user
 do 'mysql-lib.pl';
 
 # useradmin_create_user(&details)
@@ -10,41 +9,33 @@ sub useradmin_create_user
 my ($user) = @_;
 if ($config{'sync_create'}) {
 	my %privs = map { $_, 1 } split(/\s+/, $config{'sync_privs'});
-        my @pfields = map { $_->[0] } &priv_fields('user');
+	my @pfields = map { $_->[0] } &priv_fields('user');
 	my @ssl_field_names = &ssl_fields();
 	my @ssl_field_values = map { '' } @ssl_field_names;
 	my @other_field_names = &other_user_fields();
 	my @other_field_values = map { '' } @other_field_names;
-	my $sql = "insert into user (host, user, ".
-		  join(", ", @pfields, @ssl_field_names,
-			     @other_field_names).
-		  ") values (?, ?, ".
-		  join(", ", map { "?" } (@pfields, @ssl_field_names,
-					  @other_field_names)).")";
-	&execute_sql_logged($master_db, $sql,
-		$config{'sync_host'},
-		$user->{'user'},
-		(map { $privs{$_} ? 'Y' : 'N' } @pfields),
-		@ssl_field_values,
-		@other_field_values);
-	&execute_sql_logged($master_db, 'flush privileges');
-	if ($user->{'passmode'} == 3) {
-		$esc = &escapestr($user->{'plainpass'});
-		($ver, $variant) = &get_remote_mysql_variant();
-		if ($variant eq "mysql" &&
-		      &compare_version_numbers($ver, "8") >= 0 ||
-		    $variant eq "mariadb" &&
-		      &compare_version_numbers($ver, "10.2") >= 0) {
-			&execute_sql_logged($master_db,
-				"set password for '".$user->{'user'}."'\@'".
-				$config{'sync_host'}."' = '$esc'");
-			}
-		else {
-			&execute_sql_logged($master_db,
-				"set password for '".$user->{'user'}."'\@'".
-				$config{'sync_host'}."' = ".
-				"$password_func('$esc')");
-			}
+
+	&create_user({
+		'new', 1,
+		'user', $user->{'user'},
+		'olduser', $user->{'olduser'},
+		'pass', $user->{'plainpass'},
+		'host', $config{'sync_host'} || '%',
+		'perms', \%privs,
+		'pfields', \@pfields,
+		'ssl_field_names', \@ssl_field_names,
+		'ssl_field_values', \@ssl_field_values,
+		'other_field_names', \@other_field_names,
+		'other_field_values', \@other_field_values,
+		});
+
+	# Update user password
+	if ($in{'passmode'} == 3 || $in{'passmode'} eq '0') {
+		&change_user_password($user->{'plainpass'} || '', $user->{'user'}, $config{'sync_host'});
+		}
+	# Locked account
+	elsif ($in{'passmode'} == 1) {
+		&change_user_password(undef, $user->{'user'}, $config{'sync_host'});
 		}
 	}
 }
@@ -73,33 +64,26 @@ sub useradmin_modify_user
 {
 my ($user) = @_;
 if ($config{'sync_modify'}) {
-	$user->{'olduser'} ||= $user->{'user'};	# In case not changed
+	my $actual_user = $user->{'olduser'};
 
 	# Rename user if needed
-	if ($user->{'user'} ne $user->{'olduser'}) {
-		&execute_sql_logged($master_db,
-			"update db set user = '$user->{'user'}' ".
-			"where user = '$user->{'olduser'}'");
-		&execute_sql_logged($master_db,
-			"update tables_priv set user = '$user->{'user'}' ".
-			"where user = '$user->{'olduser'}'");
-		&execute_sql_logged($master_db,
-			"update columns_priv set user = '$user->{'user'}' ".
-			"where user = '$user->{'olduser'}'");
+	if ($user->{'user'} && $user->{'olduser'} && $user->{'user'} ne $user->{'olduser'}) {
+		&rename_user({
+			'user', $user->{'user'},
+			'olduser', $user->{'olduser'},
+			'host', $config{'sync_host'} || '%',
+			'oldhost', $config{'sync_host'} || '%'
+			});
+		$actual_user = $user->{'user'};
 		}
-	&execute_sql_logged($master_db, 'flush privileges');
 
-	# Update password if changed
-	if ($user->{'passmode'} == 3) {
-		my $d = &execute_sql_safe($master_db,
-		    "select host from user where user = ?", $user->{'user'});
-		my @hosts = map { $_->[0] } @{$d->{'data'}};
-		my $esc = &escapestr($user->{'plainpass'});
-		foreach my $host (@hosts) {
-			$sql = "set password for '".$user->{'user'}.
-			       "'\@'".$host."' = $password_func('$esc')";
-			&execute_sql_logged($master_db, $sql);
-			}
+	# Update user password
+	if ($in{'passmode'} == 3 || $in{'passmode'} eq '0') {
+		&change_user_password($user->{'plainpass'} || '', $actual_user, $config{'sync_host'});
+		}
+	# Locked account
+	elsif ($in{'passmode'} == 1) {
+		&change_user_password(undef, $actual_user, $config{'sync_host'});
 		}
 	}
 }

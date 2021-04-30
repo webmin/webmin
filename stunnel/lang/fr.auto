@@ -1,0 +1,4 @@
+index_einetd=Ni <tt>inetd</tt> ni <tt>xinetd</tt> ne sont installés sur votre système. Un est nécessaire pour écouter accepter les connexions réseau pour passer à <tt>stunnel</tt>.
+index_delete=Supprimer les tunnels sélectionnés
+
+log_delete_stunnels=$1 tunnels SSL supprimés

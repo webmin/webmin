@@ -1,0 +1,52 @@
+index_active=活性？
+index_cron=預定檢查
+index_crondesc=單擊此按鈕可以創建，更改或刪除Cron作業，以使Fetchmail按計劃自動運行，以使用上述配置檢查和下載電子郵件。
+index_crondesc2=單擊此按鈕可以創建，更改或刪除Cron作業，以使Fetchmail按計劃自動運行，以檢查和下載所有列出的用戶的電子郵件。
+index_version=Fetchmail版本 $1
+index_header=具有Fetchmail配置的用戶
+index_search=顯示Fetchmail配置：
+index_show=節目
+index_toomany=您的系統上有太多用戶無法顯示。
+
+poll_auth=身份驗證方法
+poll_usually=通常沒有
+poll_ssl=以SSL模式連接？
+poll_eboth=將消息保留在服務器上並始終提取所有消息的選項不兼容
+poll_eusername=用戶不存在！
+poll_foruser=對於用戶 $1
+
+stop_ecannot=您無權停止fetchmail
+start_ecannot=您無權啟動fetchmail
+
+log_create_cron=啟用計劃的檢查
+log_update_cron=修改的計劃檢查
+log_delete_cron=禁用預定檢查
+
+acl_cron=可以配置預定檢查嗎？
+acl_daemon=可以配置Fetchmail守護程序嗎？
+
+cron_title=預定檢查
+cron_desc=此頁面可用於啟用或禁用Cron作業，以定期檢查Fetchmail配置中的郵件服務器。使用優於運行Fetchmail守護程序的Cron作業，因為不需要在啟動時重新啟動它。
+cron_header=預定的Fetchmail設置
+cron_enabled=啟用計劃檢查？
+cron_yes=是的，有時在下面配置 ..
+cron_output=Fetchmail輸出的目標
+cron_file=寫入文件 $1
+cron_mail=電郵至地址 $1
+cron_throw=丟棄
+cron_cron=輸出到cron
+cron_owner=電子郵件給正在檢查其配置的用戶
+cron_user=以用戶身份運行Fetchmail
+cron_err=保存預定檢查失敗
+cron_efile=缺少或無效的輸出文件名
+cron_email=電子郵件地址丟失或無效
+cron_euser=缺少或無效的Unix用戶
+cron_errors=僅在發生錯誤時輸出嗎？
+cron_ecannot2=您不允許配置計劃的檢查
+
+user_title=Fetchmail配置
+user_header=對於用戶 $1
+user_return=用戶配置
+
+email_ok=Fetchmail輸出
+email_failed=Fetchmail錯誤

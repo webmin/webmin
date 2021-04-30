@@ -1,0 +1,14 @@
+index_title=コマンド シェル
+index_ok=コマンドの実行:
+index_history=コマンドのヒストリー
+index_clear=ヒストリーをクリア
+index_clearcmds=コマンドをクリア
+index_desc=実行する Unix シェル コマンドを下のテキスト フィールドに入力してください。後続のコマンドのディレクトリを変更するには<tt>cd</tt> コマンドを使用できます。
+index_pok=以前のコマンドを実行
+index_edit=以前のコマンドを編集
+
+acl_user=次のユーザとしてコマンドを実行
+acl_user_def=現在の Webmin ユーザ
+
+log_run=コマンド $1 が実行されました
+log_clear=コマンド履歴をクリア

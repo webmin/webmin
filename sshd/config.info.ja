@@ -1,0 +1,10 @@
+line2=システム設定,11
+sshd_path=sshdプログラムへのフルパス,0
+sshd_config=sshd 設定ファイルへのフルパス,0
+client_config=sshクライアント設定ファイルへのフルパス,0
+pid_file=sshdのPIDファイルへのフルパス,3,なし
+start_cmd=sshdの起動コマンド,3,通常実行
+restart_cmd=sshd設定の適用コマンド,3,HUP シグナルの送信
+stop_cmd=sshdの停止コマンド,3,通常停止
+keygen_path=ssh-keygenプログラムへのフルパス,0
+sshd_version=SSH サーバのバージョン,3,自動判別

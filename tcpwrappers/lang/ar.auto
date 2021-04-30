@@ -1,0 +1,33 @@
+index_title=أغلفة TCP
+index_return=فهرس
+index_allowtitle=المضيفون المسموح لهم
+index_denytitle=المضيفون المرفوضون
+index_norule=لم يتم تحديد قواعد في <tt>$1</tt> حتى الآن.
+index_nofile=الملف "$1" غير موجود - تحقق من <a href="/config.cgi؟tcpwrappers">تهيئة الوحدة النمطية</a>
+index_add=أضف قاعدة جديدة.
+index_service=الشيطان
+index_hosts=تستضيف
+index_cmd=أمر
+index_delete=احذف المختار
+index_none=لا شيء
+
+edit_title1allow=إنشاء قاعدة السماح
+edit_title2allow=تحرير قاعدة السماح
+edit_title1deny=إنشاء قاعدة الرفض
+edit_title2deny=تحرير قاعدة الرفض
+edit_eid=لم يتم العثور على هذه القاعدة
+edit_header=خيارات القاعدة
+edit_service=خدمات
+edit_except=باستثناء الخدمات
+edit_hosts=المضيفون البعيدون
+edit_hostsexcept=باستثناء المضيفين
+edit_cmd=أوامر Shell
+edit_efound=لم يتم العثور على Daemon '$1' في تكوين xinetd.
+
+save_errtitle=خطأ في حفظ القاعدة
+save_ehost=يحتوي إدخال المضيف على أحرف سيئة
+save_ecmd=يحتوي إدخال الأمر على أحرف سيئة
+save_eservice=تحتوي أسماء البرنامج الخفي على أحرف سيئة
+
+del_errtitle=خطأ في حذف القواعد
+del_enone=لا توجد قواعد ملحوظة للحذف

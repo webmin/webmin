@@ -39,6 +39,11 @@ else {
 	$uconfig{'umask'} = $in{'umask'};
 	}
 
+# Sort config file's keys alphabetically
+if (defined($in{'sortconfigs'})) {
+	$uconfig{'sortconfigs'} = $in{'sortconfigs'};
+	}
+	
 &lock_file($usermin_config);
 &write_file($usermin_config, \%uconfig);
 &unlock_file($usermin_config);

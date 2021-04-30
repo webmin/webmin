@@ -10,12 +10,12 @@ for($i=1; $i<@ARGV; $i++) {
 
 if (@new) {
 	# Read in the existing file
-	open(ACL, "$ARGV[0]/webmin.acl");
+	open(ACL, "<$ARGV[0]/webmin.acl");
 	@acl = <ACL>;
 	close(ACL);
 
 	# Get the list of users to grant new modules to
-	if (open(NEWMODS, "$ARGV[0]/newmodules")) {
+	if (open(NEWMODS, "<$ARGV[0]/newmodules")) {
 		while(<NEWMODS>) {
 			s/\r|\n//g;
 			$users{$_}++ if (/\S/);

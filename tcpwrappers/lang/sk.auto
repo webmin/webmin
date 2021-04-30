@@ -1,0 +1,33 @@
+index_title=Obaly TCP
+index_return=index
+index_allowtitle=Povolení hostitelia
+index_denytitle=Odmietli hostitelia
+index_norule=V <tt>$1</tt> zatiaľ neboli definované žiadne pravidlá.
+index_nofile=Súbor „$1“ neexistuje - skontrolujte <a href="/config.cgi?tcpwrappers">konfiguráciu modulu</a>
+index_add=Pridajte nové pravidlo.
+index_service=démon
+index_hosts=hostitelia
+index_cmd=príkaz
+index_delete=Zmaž označené
+index_none=nikto
+
+edit_title1allow=Vytvorte pravidlo povolenia
+edit_title2allow=Upraviť pravidlo Povoliť
+edit_title1deny=Vytvorte pravidlo odmietnutia
+edit_title2deny=Upraviť pravidlo odmietnutia
+edit_eid=Toto pravidlo sa nenašlo
+edit_header=Možnosti pravidla
+edit_service=služby
+edit_except=Okrem služieb
+edit_hosts=Vzdialení hostitelia
+edit_hostsexcept=Okrem hostiteľov
+edit_cmd=Príkazy shellu
+edit_efound=Daemon '$1' nebol nájdený v konfigurácii xinetd.
+
+save_errtitle=Chyba pravidla uloženia
+save_ehost=Vstup hostiteľa obsahuje zlé znaky
+save_ecmd=Zadanie príkazu obsahuje zlé znaky
+save_eservice=Názvy démonov obsahujú zlé znaky
+
+del_errtitle=Chyba pri odstraňovaní pravidiel
+del_enone=Nie sú označené žiadne pravidlá na odstránenie

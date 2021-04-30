@@ -1,0 +1,17 @@
+index_boot=Webmin başladığında senkronize edilsin mi?
+index_ehwclock=$1 başarısız oldu : $2 
+index_tabtime=Ayarlanan zaman
+index_tabzone=Saat dilimini değiştir
+index_tabsync=Zaman sunucusu senkronizasyonu
+index_desctime=Bu form, sistemin çalışan tüm işlemler tarafından kullanılan geçerli saatini değiştirmek içindir. Ayrı bir donanım saatine sahip işletim sistemlerinde, bunu ayarlamak için de kullanılabilir.
+index_desczone=Bu form, sistemin saatini insan tarafından okunabilen bir biçime ve ofsete dönüştürmek için kullanılan varsayılan saat dilimini ayarlamanızı sağlar.
+index_descsync=Bu form, sistemi zamanı uzak bir sunucuyla otomatik olarak senkronize edecek şekilde yapılandırmak içindir. Senkronizasyon, hangi komutların kurulu olduğuna ve uzak sistemin neleri desteklediğine bağlı olarak Unix <tt>zaman</tt> protokolü veya NTP kullanılarak yapılacaktır.
+
+acl_ntp=Zaman sunucusuyla senkronize edilebilir mi?
+acl_nontp=Zaman sunucusuyla senkronizasyon yapmanıza izin verilmiyor
+
+minute=Dakika
+second=İkinci
+
+error_entp=NTP zaman senkronizasyonu başarısız oldu : $1 
+error_etimeserver=Girilenlerle senkronize edilecek zaman sunucusu yok

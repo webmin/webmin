@@ -1,0 +1,86 @@
+index_addauto=Nopea automaattisen vastauksen asetus.
+index_addfwd=Nopea edelleenlähetys.
+index_clevel=Roskapostitulos on vähintään $1 
+index_cheader0=Otsikon $1 on aloitettava luvulla $2 
+index_cheader1=Otsikon $1 täytyy sisältää $2 
+index_cheader2=Otsikon $1 on päästävä $2 : lle
+edit_modestart=alkaa
+edit_modecont=sisältää
+edit_modeend=loppuu
+edit_regexp=Tavallinen ilme?
+index_force=Varoitus - Järjestelmä on määritetty käsittelemään käyttäjän määrittämiä sähköpostisuodattimia. Tässä määritettyjä suodattimia ei käytetä.
+index_astart=Älä lähetä vastauksia aiemmin
+index_aend=Älä lähetä vastauksia jälkeen
+index_forever=Ikuisesti
+index_ondate=Päivämäärä
+index_charset=Vastaa viestin merkistöä
+index_subject=Automaattivastauksen viestin aihe
+index_nowebmin=Tämä moduuli on tarkoitettu käytettäväksi vain Usermin-sovelluksessa. Jos se näkyy Webminissä, käyttämäsi teema on epätäydellinen.
+
+edit_cheader2=Otsikko $1 $2 $3 $4 
+edit_cmode6=Roskapostitulos on ainakin
+edit_nobounce=Estää palautusviestien edelleenlähettäminen
+edit_apply=Näytä vastaava sähköposti kansiossa:
+edit_move=Käytä kansioon lähettämää sähköpostia:
+
+save_err=Suodattimen tallennus epäonnistui
+save_egone=Suodatinta ei enää ole!
+save_econdheader=Puuttuva tai virheellinen sähköpostiotsikko
+save_econdlevel=Roskapostin vähimmäispistemäärän on oltava nollaa suurempi kokonaisluku
+save_esmall=Puuttuva tai virheellinen sähköpostin enimmäiskoko
+save_elarge=Puuttuva tai virheellinen postin vähimmäiskoko
+save_econd=Puuttuva säännöllinen lauseke
+save_eforward=Puuttuva edelleenlähetysosoite
+save_efile=Puuttuu postitiedosto toimitusta varten
+save_ereply=Automaattivastausta ei syötetty
+save_eperiod=Puuttuva tai virheellinen automaattinen vastausaika
+save_eperiodmin=Automaattisen vastausajan on oltava vähintään $1 minuuttia
+save_enewfolder=Puuttuu uusi kansio
+save_enewfolder2=Virheellinen uuden kansion nimi
+save_enewfolder3=Saman nimen kansio on jo olemassa
+save_estart=Virheellinen automaattisen vastauksen alkamispäivä
+save_eend=Virheellinen automaattisen vastauksen lopetuspäivä
+save_echarset=Puuttuva tai virheellinen automaattisen vastauksen merkistö
+
+delete_err=Suodattimien poistaminen epäonnistui
+delete_enone=Mitään ei ole valittu
+
+aliases_type1=Osoite 1
+aliases_type2=Tiedoston $1 osoitteet
+aliases_type3=Tiedosto $1 
+aliases_type4=Ohjelma $1 
+aliases_type5=Vastaa tiedosto $1 
+aliases_type6=Käytä suodatustiedostoa $1 
+aliases_your=Postilaatikko
+aliases_delete=Poista viesti
+aliases_other=Käyttäjän $1 postilaatikko
+aliases_auto=Automaattivastaaja viestillä $1 
+
+auto_title=Sähköpostin automaattinen vastaus
+auto_header=Automaattiset sähköpostivastausasetukset
+auto_enabled=Automaattinen vastaus käytössä?
+auto_reply=Vastausviesti
+auto_subject=Sähköpostin aihe
+auto_charset=Viestin merkistö
+auto_charsetdef=Nykyisestä kielestä
+auto_charsetother=Muu merkistö
+auto_period=Minimiväli vastausten välillä
+auto_err=Automaattisen vastauksen tallentaminen epäonnistui
+
+forward_title=Lähetä edelleen
+forward_header=Sähköpostin edelleenlähetysvaihtoehdot
+forward_enabled=Sähköpostin edelleenlähetys käytössä?
+forward_to=Lähetä edelleen osoitteisiin
+forward_cont=Toimita myös normaalisti?
+forward_err=Sähköpostin edelleenlähetyksen tallentaminen epäonnistui
+
+move_err=Suodattimen käyttöönotto epäonnistui
+move_esrc=Lähdekansioita $1 ei ole!
+move_edest=Kohdekansioita $1 ei ole!
+move_esame=Lähde- ja kohdekansiot ovat samat
+move_title=Käytä suodatinta
+move_finding=Etsitään $1 -suodatinta vastaavia viestejä.
+move_none=.. ei löydy!
+move_found=.. löysi $1 viestiä
+move_moving=Siirretään $1 viestiä $2 : een.
+move_done=.. valmis

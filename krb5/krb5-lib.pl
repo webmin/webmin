@@ -10,7 +10,7 @@ use WebminCore;
 sub get_config {
     local (%conf, $section, $realm);
     $section = $realm = "";
-    open(FILE, $config{'krb5_conf'});
+    open(FILE, "<".$config{'krb5_conf'});
     while(<FILE>) {
 	chomp;
 	s/#.*//;

@@ -90,7 +90,7 @@ printf "<tr> <td valign=top><input type=radio name=mode value=1 %s> %s</td>\n",
 	$_[1]->{'mode'} == 1 ? 'checked' : '', $text{'cups_driver'};
 print "<td><select name=ppd size=10>\n";
 local (@ppds, $d, $f, $ppd, %cache, $outofdate, @files, %donefile);
-open(FIND, "find '$config{'model_path'}' -type f -print |");
+open(FIND, "find ".quotemeta($config{'model_path'})." -type f -print |");
 while(<FIND>) {
 	chop;
 	/([^\/]+)$/;

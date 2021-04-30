@@ -1,0 +1,5 @@
+index_trunced=$2の合計出力は $1で切り捨てられました。
+index_timedout=$1秒間実行した後、コマンドは終了しました。
+
+acl_shellenv=選択したユーザーの環境を使用しますか？
+acl_chroot=ディレクトリにchroot

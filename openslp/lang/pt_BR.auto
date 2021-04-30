@@ -1,0 +1,50 @@
+index_title=Configuração OpenSLP
+index_return=Configuração OpenSLP
+index_eslpd=O daemon OpenSLP $1 não foi encontrado no seu sistema. Talvez não esteja instalado ou sua <a href='$2'>configuração do módulo</a> está incorreta.
+index_econf=O arquivo de configuração do OpenSLP $1 não foi encontrado no seu sistema. Talvez não esteja instalado ou sua <a href='$2'>configuração do módulo</a> está incorreta.
+index_version=Versão OpenSLP $1 
+
+slp_apply=Aplicar mudanças
+slp_stop=Stop OpenSLP
+
+snda_title=Escopo estático e DA
+snda_useScopes=Lista estática de escopos
+snda_DAAddresses=Lista estática de agentes do diretório (DA)
+
+netcfg_title=configuração de rede
+netcfg_isBroadcastOnly=Forçar transmissões a serem usadas em vez de multicast
+netcfg_passiveDADetection=Use detecção passiva de DA
+netcfg_activeDADetection=Use a detecção de DA ativa (restrinja apenas aos endereços DHCP ou DA)
+netcfg_DAActiveDiscoveryInterval=Descoberta ativa em segundos (0 desativa a descoberta ativa)
+netcfg_multicastTTL=TTL multicast (0-255)
+netcfg_DADiscoveryMaximumWait=Tempo máximo de espera para solicitações de descoberta de DA (em milissegundos)
+netcfg_DADiscoveryTimeouts=Tempos de espera sucessivos para descoberta de DA (em milissegundos)
+netcfg_HintsFile=Caminho para o arquivo de dicas do OpenSLP
+netcfg_multicastMaximumWait=Espera máxima em solicitações de multicast (em milissegundos)
+netcfg_multicastTimeouts=Tempos de espera multicast sucessivos (em milissegundos)
+netcfg_unicastMaximumWait=Tempo máximo entre solicitações de unicast (em milissegundos)
+netcfg_randomWaitBound=Valor máximo para todos os parâmetros de espera aleatória (em milissegundos)
+netcfg_MTU=Tamanho do pacote MTU (em bytes)
+netcfg_interfaces=Endereços IP de interfaces que o DA/SA deve ouvir
+
+dacfg_title=Configuração DA
+dacfg_isDA=Funciona apenas como DA (leia o guia do usuário antes de alterar isso)
+
+log_title=Rastreamento e registro
+log_traceDATraffic=Imprimir mensagens de tráfego DA
+log_traceMsg=Imprimir mensagens detalhadas de SLP
+log_traceDrop=Imprimir SLP deixou cair as informações da mensagem
+log_traceReg=Imprimir informações de registro e cancelamento de registro DA e SA
+
+error_open=Erro ao abrir o arquivo
+error_flock_on=Erro ao criar bloqueio de arquivo
+error_flock_off=Erro ao destruir o bloqueio de arquivo
+error_hup=Erro ao reiniciar o OpenSLP com PID
+
+index_start=Iniciar o OpenSLP
+index_startmsg=Clique neste botão para iniciar o daemon OpenSLP no seu sistema.
+index_stop=Stop OpenSLP
+index_stopmsg=Clique neste botão para parar o daemon OpenSLP no seu sistema.
+
+stop_err=Falha ao parar o OpenSLP
+start_err=Falha ao iniciar o OpenSLP

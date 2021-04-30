@@ -1,0 +1,3 @@
+allowed_paths=$HOME
+work_as_root=0
+work_as_user=0

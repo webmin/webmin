@@ -1,0 +1,118 @@
+index_title=Voicemailserver
+index_ecmd=Vgetty-kommandoen $1 blev ikke fundet på dit system. Måske er det ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+index_econfig=Vgetty-konfigurationsfilen $1 blev ikke fundet på dit system. Måske er det ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+index_return=voicemail indeks
+
+vgetty_title=Seriel portkonfiguration
+vgetty_desc=For at din server kan besvare stemmekald med et modem, der er tilsluttet en seriel port, skal det være vist nedenfor. Når du tilføjer en port til denne liste, konfigureres $1 -programmet til at besvare opkald og afspille en meddelelse.
+vgetty_add=Tilføj en ny seriel port
+vgetty_tty=Serienhed
+vgetty_type=Type
+vgetty_vgetty=Stemme
+vgetty_mgetty=Data/fax
+vgetty_none=Der er endnu ikke konfigureret nogen serielle porte til voicemail.
+vgetty_apply=Anvend konfiguration
+vgetty_applydesc=Klik på denne knap for at anvende den aktuelle konfigurering af voicemail-server ved at køre kommandoen $1 og dræbe alle Vgetty-processer.
+vgetty_applyerr=Kunne ikke anvende konfiguration
+vgetty_return=seriel portliste
+vgetty_create=Tilføj seriel port
+vgetty_edit=Rediger serieport
+vgetty_header=Indstillinger for seriel portkonfiguration
+vgetty_ts=Seriel port $1 
+vgetty_other=Andet udstyr ..
+vgetty_rings=Ringer inden svar
+vgetty_default=Global standard
+vgetty_ans=Svartilstand
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=Stemme
+vgetty_ans_fax=Fax
+vgetty_ans_data=Data
+vgetty_err=Kunne ikke gemme seriel port
+vgetty_etty=Manglende eller ikke-eksisterende serienhed
+vgetty_erings=Manglende eller ugyldigt antal ringe
+vgetty_erings2=Antal ringe skal være mindst 2
+vgetty_eans=Der er ikke valgt nogen svartilstande
+vgetty_eclash=Seriel port $1 er allerede i brug
+
+options_title=Valg af voicemail-server
+options_header=Valgmuligheder for alle serielle porte
+options_maxlen=Maksimal beskedlængde
+options_secs=sekunder
+options_minlen=Minimum beskedlængde
+options_silence=Vil du fjerne stilhed fra slutningen af meddelelser?
+options_thresh=Tærskelværdi
+options_rgain=Optager lydstyrkeniveau
+options_tgain=Afspilningsstyrkeniveau
+options_rings=Ringer inden svar
+options_perport=Kan indstilles til hver seriel port
+options_ans=Svartilstand
+options_keep=Har du beskeder, der indeholder data eller DTMF-koder?
+options_light=Aktivér automatisk svarlys efter modtagelse?
+options_owner=Unix ejer til meddelelsesfiler
+options_group=Unix-gruppe til meddelelsesfiler
+options_mode=Tilladelser til meddelelsesfiler
+options_prog=Efter optagelse af besked
+options_prog0=Gøre ingenting
+options_prog1=E-mail i WAV-format til
+options_prog2=Kør kommando på meddelelsesfil
+options_err=Kunne ikke gemme indstillinger for voicemail
+options_erings=Manglende eller ugyldigt antal ringe
+options_erings2=Antal ringe skal være mindst 2
+options_emaxlen=Manglende eller ugyldig maksimal beskedlængde
+options_eminlen=Manglende eller ugyldig minimumsmeddelelseslængde
+options_ethresh=Manglende eller ugyldig tavshedsgrænse
+options_ergain=Manglende eller ugyldig lydstyrkeniveau for optagelse
+options_ergain2=Optagelsesvolumen skal være mellem 0 og 100
+options_etgain=Manglende eller ugyldig lydstyrken for afspilning
+options_etgain2=Afspilningsvolumen skal være mellem 0 og 100
+options_eemail=Manglende eller ugyldig e-mail-adresse
+options_eprog=Manglende eller ikke-eksisterende program at køre
+options_eowner=Manglende eller ugyldig Unix-bruger til meddelelsesfiler
+options_egroup=Manglende eller ugyldig Unix-gruppe til meddelelsesfiler
+options_emode=Manglende eller ugyldige oktale tilladelser til meddelelsesfiler
+
+received_title=Modtagne meddelelser
+recieved_desc=Voicemails, der er modtaget af din server, er vist nedenfor. Klik på dato/tid i den første kolonne for at lytte til en meddelelse.
+received_none=Ingen modtagne telefonsvarer blev fundet.
+received_date=Modtaget kl
+received_size=Filstørrelse
+received_speed=Prøvehastighed
+received_type=Lydformat
+received_delete=Slet valgte meddelelser
+received_move=Konverter valgt til hilsener
+received_all=Vælg alle
+received_invert=Invertere valg
+
+listen_efile=Ugyldigt meddelelsesfilnavn!
+listen_epath=Voicemail-besked findes ikke længere
+
+delete_efile=Ugyldigt meddelelsesfilnavn!
+
+messages_title=Hilsen beskeder
+messages_desc=Denne side viser hilsningsmeddelelser, der afspilles, når en opkaldsforbindelse til din voicemailserver. Hvis du har mere end den, bruges en enkelt tilfældigt valgt besked.
+messages_file=Filnavn
+messages_none=Ingen hilsen beskeder er tilgængelige.
+messages_updesc=Denne formular giver dig mulighed for at uploade en yderligere hilsenmeddelelse WAV-fil, der konverteres til det valgte format til brug af dit modem. Eksempelfrekvensen for det uploadede WAV skal være den samme som eksempelfrekvensen for modtagne meddelelser, ligesom det valgte format.
+messages_upload=Upload besked
+messages_fmt=konvertere til
+
+pvfdesc=$1, $2 bit
+
+upload_err=Kunne ikke tilføje besked
+upload_emessage=Ingen WAV-fil valgt
+upload_ewav=Kunne ikke konvertere WAV-fil : $1 
+upload_epvf=Kunne ikke oprette RMD-fil : $1 
+upload_esame=Meddelelsesfilen $1 findes allerede
+
+log_apply=Anvendt konfiguration
+log_upload=Uploadet hilsen $1 
+log_move=Konverterede $1 modtagne meddelelser
+log_delete0=Slet $1 modtagne meddelelser
+log_delete1=Slet $1 hilsen meddelelser
+log_options=Ændrede valgmuligheder for voicemail
+log_vgetty_create=Tilføjet seriel port $1 
+log_vgetty_modify=Ændret seriel port $1 
+log_vgetty_delete=Slettet seriel port $1 
+
+email_subject=Talebesked
+email_body=Talemeddelelsesmeddelelse modtaget $1 af $2.

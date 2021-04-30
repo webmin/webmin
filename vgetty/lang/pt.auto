@@ -1,0 +1,118 @@
+index_title=Servidor de correio de voz
+index_ecmd=O comando Vgetty $1 não foi encontrado no seu sistema. Talvez não esteja instalado ou sua <a href='$2'>configuração do módulo</a> está incorreta.
+index_econfig=O arquivo de configuração Vgetty $1 não foi encontrado no seu sistema. Talvez não esteja instalado ou sua <a href='$2'>configuração do módulo</a> está incorreta.
+index_return=índice de correio de voz
+
+vgetty_title=Configuração de porta serial
+vgetty_desc=Para que seu servidor atenda chamadas de voz com um modem conectado a uma porta serial, ele deve estar listado abaixo. Quando você adiciona uma porta a esta lista, o programa $1 será configurado para atender chamadas e reproduzir uma mensagem.
+vgetty_add=Adicionar uma nova porta serial
+vgetty_tty=Dispositivo serial
+vgetty_type=Tipo
+vgetty_vgetty=Voz
+vgetty_mgetty=Dados/fax
+vgetty_none=Nenhuma porta serial foi configurada para o correio de voz ainda.
+vgetty_apply=Aplicar configuração
+vgetty_applydesc=Clique neste botão para aplicar a configuração atual do servidor de correio de voz executando o comando $1 e matando todos os processos Vgetty.
+vgetty_applyerr=Falha ao aplicar a configuração
+vgetty_return=lista de portas seriais
+vgetty_create=Adicionar porta serial
+vgetty_edit=Editar porta serial
+vgetty_header=Opções de configuração da porta serial
+vgetty_ts=Porta serial $1 
+vgetty_other=Outro dispositivo ..
+vgetty_rings=Toca antes de atender
+vgetty_default=Padrão global
+vgetty_ans=Modo de resposta
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=Voz
+vgetty_ans_fax=Fax
+vgetty_ans_data=Dados
+vgetty_err=Falha ao salvar a porta serial
+vgetty_etty=Dispositivo serial ausente ou inexistente
+vgetty_erings=Número de toques ausente ou inválido
+vgetty_erings2=O número de toques deve ser pelo menos 2
+vgetty_eans=Nenhum modo de resposta selecionado
+vgetty_eclash=A porta serial $1 já está em uso
+
+options_title=Opções do servidor de correio de voz
+options_header=Opções para todas as portas seriais
+options_maxlen=Comprimento máximo da mensagem
+options_secs=segundos
+options_minlen=Comprimento mínimo da mensagem
+options_silence=Remover o silêncio do final das mensagens?
+options_thresh=Nível de limiar de silêncio
+options_rgain=Nível de volume de gravação
+options_tgain=Nível de volume de reprodução
+options_rings=Toca antes de atender
+options_perport=Pode ser definido para cada porta serial
+options_ans=Modo de resposta
+options_keep=Manter mensagens contendo dados ou códigos DTMF?
+options_light=Ativar luz de resposta automática após receber?
+options_owner=Proprietário Unix para arquivos de mensagens
+options_group=Grupo Unix para arquivos de mensagens
+options_mode=Permissões para arquivos de mensagens
+options_prog=Após gravar a mensagem
+options_prog0=Fazer nada
+options_prog1=E-mail no formato WAV para
+options_prog2=Executar comando no arquivo de mensagens
+options_err=Falha ao salvar as opções de correio de voz
+options_erings=Número de toques ausente ou inválido
+options_erings2=O número de toques deve ser pelo menos 2
+options_emaxlen=Comprimento máximo de mensagem ausente ou inválido
+options_eminlen=Comprimento mínimo de mensagem ausente ou inválido
+options_ethresh=Limite de silêncio ausente ou inválido
+options_ergain=Nível de volume de gravação ausente ou inválido
+options_ergain2=O nível do volume de gravação deve estar entre 0 e 100
+options_etgain=Nível de volume de reprodução ausente ou inválido
+options_etgain2=O nível do volume de reprodução deve estar entre 0 e 100
+options_eemail=Endereço de e-mail ausente ou inválido
+options_eprog=Programa ausente ou inexistente para executar
+options_eowner=Usuário Unix ausente ou inválido para arquivos de mensagens
+options_egroup=Grupo Unix ausente ou inválido para arquivos de mensagens
+options_emode=Permissões octais ausentes ou inválidas para arquivos de mensagens
+
+received_title=Mensagens recebidas
+recieved_desc=As mensagens de correio de voz que foram recebidas pelo seu servidor estão listadas abaixo. Para ouvir uma mensagem, clique na data/hora na primeira coluna.
+received_none=Nenhuma mensagem de correio de voz recebida foi encontrada.
+received_date=Recebido Em
+received_size=Tamanho do arquivo
+received_speed=Taxa de amostragem
+received_type=Formato de áudio
+received_delete=Excluir mensagens selecionadas
+received_move=Converter selecionado em saudações
+received_all=Selecionar tudo
+received_invert=Seleção invertida
+
+listen_efile=Nome de arquivo da mensagem inválido!
+listen_epath=A mensagem do correio de voz não existe mais
+
+delete_efile=Nome de arquivo da mensagem inválido!
+
+messages_title=Mensagens de Saudação
+messages_desc=Esta página lista as mensagens de saudação que serão reproduzidas quando um chamador se conectar ao servidor de correio de voz. Se você tiver mais de uma, uma única mensagem escolhida aleatoriamente será usada.
+messages_file=Nome do arquivo
+messages_none=Nenhuma mensagem de saudação está disponível.
+messages_updesc=Este formulário permite que você envie um arquivo WAV de mensagem de saudação adicional, que será convertido no formato escolhido para uso pelo seu modem. A taxa de amostragem do WAV carregado deve ser a mesma que a taxa de amostragem das mensagens recebidas, assim como o formato selecionado.
+messages_upload=Carregar mensagem
+messages_fmt=converter para
+
+pvfdesc=$1, $2 bits
+
+upload_err=Falha ao adicionar mensagem
+upload_emessage=Nenhum arquivo WAV selecionado
+upload_ewav=Falha ao converter o arquivo WAV : $1 
+upload_epvf=Falha ao criar o arquivo RMD : $1 
+upload_esame=O arquivo de mensagem $1 já existe
+
+log_apply=Configuração aplicada
+log_upload=Mensagem de saudação carregada $1 
+log_move=$1 mensagens recebidas convertidas
+log_delete0=$1 mensagens recebidas excluídas
+log_delete1=$1 mensagens de saudação excluídas
+log_options=Opções de correio de voz alteradas
+log_vgetty_create=Porta serial $1 adicionada
+log_vgetty_modify=Porta serial modificada $1 
+log_vgetty_delete=Porta serial excluída $1 
+
+email_subject=Mensagem de correio de voz
+email_body=Mensagem de correio de voz recebida em $1 por $2.

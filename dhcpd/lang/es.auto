@@ -1,0 +1,164 @@
+index_key=Editar claves TSIG (utilizadas para autenticar actualizaciones en servidores DNS)
+index_dhcpdver2=El servidor DHCP <tt>$1</tt> no parece ser la versión correcta. Webmin solo admite las versiones ISC DHCPD $2 a $3.
+index_desc=Descripción
+index_buttekey=Editar teclas TSIG
+index_stop=Detener servidor
+index_stopdesc=Haga clic en este botón para detener el servidor DHCP en ejecución en su sistema. Cuando se detiene, los clientes DHCP no podrán solicitar direcciones IP.
+index_buttiface=Editar interfaz de red
+index_iface=Establezca las interfaces de red que escucha el servidor DHCP cuando se inicia.
+index_subtoomany=Hay demasiadas subredes para mostrar.
+index_shatoomany=Hay demasiadas redes compartidas para mostrar.
+index_sublook2=Edite la subred con la dirección:
+index_shalook2=Edite la red compartida:
+index_hsttoomany=Hay demasiados hosts para mostrar.
+index_grptoomany=Hay demasiados grupos para mostrar.
+index_hstlook2=Edite el host llamado:
+index_grplook2=Edite el grupo llamado:
+index_gdom=Grupo para $1 
+index_match0=es igual
+index_match1=contiene
+index_match2=partidos
+index_dhcpd=ISC DHCPd
+index_delete=Eliminar seleccionado
+
+butt_leases=Listado de arrendamientos
+
+esub_desc=Descripción de subred
+esub_fopeer=Peer de conmutación por error
+
+esh_pools=Grupos de direcciones para red compartida
+esh_desc=Descripción de red compartida
+
+ehost_nojavascr=Su navegador no parece ser compatible con javascript. Ahora debe elegir la posición adecuada de la lista a continuación.
+ehost_desc=Descripción del anfitrión
+
+egroup_desc=Descripción del Grupo
+
+listl_network=En la red $1 / $2 
+listl_lfnotcont2=El archivo de concesión DHCPd <tt>$1</tt> no contiene ninguna concesión que esté activa en este momento.
+listl_unknown=Desconocido
+listl_allocs=$1 direcciones IP disponibles, $2 asignado ($3 %)
+listl_mode=Modo de visualización  :
+listl_mode_0=Arrendamientos DHCP
+listl_mode_1=Subredes y uso
+listl_size=IP totales
+listl_used=Asignado
+listl_pc=Porcentaje
+listl_err=Error al eliminar arrendamientos
+listl_enone=Ninguna seleccionada
+
+listl_refresh=Actualizar lista
+
+restart_conftext=Líneas alrededor de $1 en $2  :
+
+sopt_edname='$1' no es un nombre de opción válido
+sopt_ednum='$1' no es un número de opción válido
+sopt_edtype='$1' no es un tipo de opción válido
+sopt_ecval=Valor perdido para la opción personalizada '$1'
+sopt_ecip=El valor para la opción personalizada '$1' debe ser una dirección IP
+
+ssub_invalidfopeer=no es un par de conmutación por error válido
+
+plib_toffset=Desplazamiento de tiempo
+plib_serverid=Identificador del servidor DHCP
+plib_unclients=¿Permitir clientes desconocidos?
+plib_allow=Permitir
+plib_deny=Negar
+plib_ignore=Ignorar
+plib_eexpr=Esta sección de la configuración de DHCP contiene la directiva de expresión $1, que Webmin no puede editar de forma segura.
+plib_auth_subnet=¿El servidor tiene autoridad para esta subred?
+plib_auth_shared-network=¿El servidor tiene autoridad para esta red compartida?
+plib_auth_global=El servidor tiene autoridad para todas las subredes?
+
+eopt_domsearch=Dominios DNS para buscar
+eopt_toffset=Desplazamiento de tiempo
+eopt_cname=Nombre
+eopt_def=Definición de la opción
+eopt_dname=Nombre de la opción
+eopt_dnum=Número
+eopt_dtype=Tipo
+eopt_slpa=IP del agente de directorio SLP
+eopt_slpaips=¿Solo estas IP?
+eopt_slps=Alcance del servicio SLP
+eopt_slpsonly=Este alcance solamente?
+
+log_stop=Servidor DHCP detenido
+log_delete_subnets=Se eliminaron $1 subredes y redes compartidas
+log_delete_hosts=$1 hosts y grupos de hosts eliminados
+
+keys_edit=Editar clave TSIG
+keys_create=Claves TSIG creadas
+keys_title=DNS Keys
+keys_id=ID clave
+keys_alg=Algoritmo
+keys_secret=Cadena secreta
+keys_ecannot=No tiene permiso para editar claves DNS
+keys_err=Error al guardar las claves DNS
+keys_ekey='$1' no es una ID de clave válida
+keys_esecret=Secreto codificado en base 64 faltante o no válido para la clave $1 
+
+eacl_uniqh=crear hosts con direcciones de hardware duplicadas
+eacl_uniqi=crear hosts con direcciones IP duplicadas
+
+acl_zones=¿Se pueden editar zonas DNS dinámicas?
+acl_per_grp_acls=¿Habilitar ACL por grupo?
+acl_per_sha_acls=¿Habilitar ACL por red compartida?
+
+iface_title=Interfaz de red
+iface_desc=El servidor DHCP solo puede asignar direcciones IP en redes conectadas a una de las interfaces seleccionadas a continuación. Se debe incluir la interfaz de red para todas las subredes definidas. Si no se selecciona ninguno, el servidor DHCP intentará encontrar uno automáticamente.
+iface_listen=Escuchar en interfaces
+
+lookup_ehost=No existe un host con el nombre, la dirección IP o la dirección MAC $1 
+lookup_ehostname=No se ingresó ningún nombre de host, dirección IP o dirección MAC
+lookup_egroup=No existe ningún grupo con el nombre o el nombre de dominio $1 
+lookup_egroupname=No se ingresó ningún nombre de grupo o nombre de dominio
+lookup_esubnet=No existe una subred con la dirección o la dirección/máscara de red $1 
+lookup_esubnetname=No se ingresó ninguna dirección de subred o dirección/máscara de red
+lookup_eshared=No existe una red compartida con el nombre $1 
+lookup_esharedname=No se ingresó ningún nombre de red compartido
+
+zone_key=Zonas DNS
+index_addzone=Agregar una nueva zona DNS.
+index_zone=Zona
+index_nozones=Aún no se han definido zonas DNS.
+zone_crheader=Crear zona
+zone_eheader=Editar zona
+zone_tabhdr=Detalles de zona
+zone_desc=Descripción de la zona (opcional)
+zone_name=Nombre de zona
+zone_primary=IP del NS primario
+zone_return=menú principal
+zone_faildel=Error al eliminar la zona
+zone_failsave=Error al guardar la zona
+zone_tsigkey=Clave TSIG
+zone_ecannot=No tiene permiso para editar zonas DNS
+
+plib_clientupdates=¿Pueden los clientes actualizar sus propios registros?
+
+text_title=dhcpd.conf
+text_editor=Editor de texto
+text_return=menú principal
+text_undo=deshacer
+text_ecannot=No tiene permiso para editar el archivo de configuración
+
+index_buttetext=Editar manualmente la configuración
+index_text=Editar el archivo de configuración manualmente
+
+stop_err=Error al detener el servidor DHCP
+stop_ekill=¡No corras!
+
+sdelete_err=Error al eliminar subredes y redes compartidas
+sdelete_enone=Ninguna seleccionada
+sdelete_title=Eliminar subredes y redes compartidas
+sdelete_rusure1=¿Está seguro de que desea eliminar las subredes seleccionadas $1 y las redes compartidas $2 ? Cualquier otra subred u otro objeto dentro de las redes también se perderá.
+sdelete_rusure2=¿Está seguro de que desea eliminar las subredes seleccionadas $1 ? Cualquier otro objeto dentro de las subredes también se perderá.
+sdelete_rusure3=¿Está seguro de que desea eliminar las redes compartidas seleccionadas $2 ? Las subredes u otros objetos dentro de las redes también se perderán.
+sdelete_ok=Elimina ahora
+
+hdelete_err=Error al eliminar hosts y grupos
+hdelete_enone=Ninguna seleccionada
+hdelete_title=Eliminar hosts y grupos
+hdelete_rusure1=¿Está seguro de que desea eliminar los $1 hosts seleccionados y $2 grupos? Cualquier otro host dentro de los grupos también se perderá.
+hdelete_rusure2=¿Está seguro de que desea eliminar los $1 hosts seleccionados?
+hdelete_rusure3=¿Estás seguro de que deseas eliminar los $2 grupos seleccionados? Cualquier host dentro de los grupos también se perderá.
+hdelete_ok=Elimina ahora

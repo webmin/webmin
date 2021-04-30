@@ -1,0 +1,46 @@
+index_title=Thay đổi mật khẩu
+index_header=Chọn người dùng để thay đổi mật khẩu của người đó
+index_return=Danh sách người dùng
+index_user=Thay đổi mật khẩu cho người dùng:
+index_euseradmin=Mô-đun này không thể được sử dụng vì mô-đun Người dùng và Nhóm không được cài đặt hoặc không được hỗ trợ trên hệ thống của bạn.
+index_toomany=Có quá nhiều người dùng để hiển thị trên hệ thống của bạn. Nhập tên người dùng có mật khẩu bạn muốn thay đổi bên dưới ..
+index_none=Bạn không có quyền truy cập vào bất kỳ người dùng để thay đổi mật khẩu của họ.
+
+passwd_title=Đổi mật khẩu
+passwd_header=Thay đổi mật khẩu người dùng Unix
+passwd_for=Thay đổi mật khẩu cho
+passwd_old=Mật khẩu cũ
+passwd_new=Mật khẩu mới
+passwd_repeat=Mật khẩu mới (một lần nữa)
+passwd_expire=Buộc người dùng thay đổi mật khẩu ở lần đăng nhập tiếp theo?
+passwd_others=Thay đổi mật khẩu trong các mô-đun khác?
+passwd_change=Thay đổi
+passwd_reset=Hình thức rõ ràng
+passwd_err=Không thể thay đổi mật khẩu
+passwd_ecannot=Bạn không được phép thay đổi mật khẩu người dùng này
+passwd_euser=người dùng không tồn tại
+passwd_eold=Mật mã cũ không chính xác
+passwd_erepeat=Mật khẩu mới không giống nhau
+passwd_ecmd=$1 thất bại : $2 
+passwd_ok=Mật khẩu cho người dùng $1 đã được thay đổi thành công. Nếu đây là người dùng Webmin hiện tại của bạn, bạn có thể buộc phải đăng nhập lại.
+passwd_ok2=Mật khẩu cho người dùng $1 đã được thay đổi thành công.
+
+log_passwd=Mật khẩu đã thay đổi cho người dùng $1 
+
+acl_repeat=Phải nhập lại mật khẩu mới?
+acl_self=Luôn cho phép mật khẩu riêng được thay đổi?
+acl_old=Phải nhập mật khẩu cũ?
+acl_old_this=Chỉ dành cho người dùng khác
+acl_others=Thay đổi mật khẩu trong các mô-đun khác?
+acl_opt=Không bắt buộc
+acl_users=Người dùng có mật khẩu có thể được thay đổi
+acl_mode0=Tất cả người dùng
+acl_mode1=Chỉ người dùng
+acl_mode2=Tất cả ngoại trừ người dùng
+acl_mode3=Chỉ người dùng này
+acl_mode4=Người dùng có UID trong phạm vi
+acl_mode5=Người dùng với nhóm chính
+acl_mode6=Người dùng phù hợp
+acl_expire=Có thể buộc người dùng thay đổi mật khẩu ở lần đăng nhập tiếp theo?
+acl_sec=Bao gồm các nhóm thứ cấp?
+acl_notusers=Ngoại trừ người dùng

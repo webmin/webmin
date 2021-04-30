@@ -1,15 +1,18 @@
 index_title=Commande shell
-index_ok=Exécuter la commande:
+index_ok=ExÃ©cuter la commande:
 index_history=Historique des commandes
 index_clear=Effacer
 index_clearcmds=Effacer historique
-index_desc=Entrer une commande shell Unix à exécuter dans le champ de texte ci-dessous. La commande <tt>cd</tt> peut être utilisée pour changer le répertoire pour les commandes suivantes.
-index_pok=Éxécuter la commande précédente
-index_edit=Modifier commande précédente
+index_desc=Entrer une commande shell Unix Ã  exÃ©cuter dans le champ de texte ci-dessous. La commande <tt>cd</tt> peut Ãªtre utilisÃ©e pour changer le rÃ©pertoire pour les commandes suivantes.
+index_pok=ExÃ©cuter la commande prÃ©cÃ©dente
+index_edit=Modifier commande prÃ©cÃ©dente
+index_trunced=La sortie totale de $2 a Ã©tÃ© tronquÃ©e Ã  $1.
+index_timedout=La commande a Ã©tÃ© arrÃªtÃ©e aprÃ¨s avoir Ã©tÃ© exÃ©cutÃ©e pendant $1 secondes.
 
-acl_user=Exécuter les commandes en tant qu'utilisateur
+acl_user=ExÃ©cuter les commandes en tant qu'utilisateur
 acl_user_def=Utilisateur Webmin actuel
+acl_shellenv=Utiliser l'environnement de l'utilisateur sÃ©lectionnÃ©?
+acl_chroot=Chroot dans le rÃ©pertoire
 
-log_run=Commande éxécutée $1
-log_clear=historique effacé
-
+log_run=Commande exÃ©cutÃ©e $1
+log_clear=historique effacÃ©

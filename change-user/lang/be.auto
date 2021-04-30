@@ -1,0 +1,37 @@
+index_title=Змена мовы і тэмы
+index_lang=Мова карыстацкага інтэрфейсу Webmin
+index_langglobal2=Глабальная мова.. $1 ($2)
+index_langset=Асабісты выбар ..
+index_theme=Тэма карыстацкага інтэрфейсу Webmin
+index_overlay=Накладка тэмы
+index_overlaydef=Няма - выкарыстоўваць стандартныя тэмы
+index_themeglobal=Глабальная тэма ($1)
+index_themeset=Асабісты выбар ..
+index_pass=Пароль для ўваходу ў Webmin
+index_passleave=Пакіньце без зменаў
+index_passset=Усталяваны ў ..
+index_passagain=Увядзіце пароль паўторна
+index_ok=Зрабіце змены
+index_themedef=Старая тэма Webmin
+index_desc2=Гэты модуль можа выкарыстоўвацца для змены $1 толькі для вашага ўліковага запісу Webmin.
+index_d3=$1, $2 і 3
+index_d2=$1 і $2 
+index_d1=$1 
+index_dlang=мова, на якой адлюстроўваюцца модулі
+index_dtheme=тэма, якая кантралюе знешні выгляд Webmin
+index_dpass=пароль, які выкарыстоўваецца для ўваходу ў сістэму
+
+change_title=Змена налад
+change_user=Змена ўваходу ў Webmin ..
+change_done=.. малайчына
+change_restart=Перазагрузка Webmin ..
+change_redirect=Перанакіраванне ў галоўнае меню ..
+change_ecolon=Ваш пароль не можа ўтрымліваць: сімвал
+change_epass2=Новыя паролі не супадаюць
+change_epass=Новы пароль не дзейнічае : $1 
+change_eoverlay=Вы не можаце выбраць накладку тэмы, калі таксама не абрана тэма карыстацкага інтэрфейсу
+change_eoverlay2=Абраная тэма накладання не сумяшчальная з абранай тэмай карыстацкага інтэрфейсу
+
+acl_lang=Ці можна змяніць мову?
+acl_theme=Ці можна змяніць тэму?
+acl_pass=Ці можна змяніць пароль (калі ўсталяваны ў Webmin)?

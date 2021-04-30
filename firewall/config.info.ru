@@ -1,0 +1,12 @@
+line0=Опции конфигурации,11
+view_condition=Отображать условие в списке правил?,1,1-Да,0-Нет
+view_comment=Отображать комментарий в списке правил?,1,1-Да,0-Нет
+comment_mod=Хранить комментарии как,1,0-# отдельные строки с комментариями,1- используя &#45;&#45;comment option
+cluster_mode=Обновлять серверы кластера,1,0-При каждом изменении,1-При применении конфигурации
+before_cmd=Команда для запуска до изменения правил,3,None
+after_cmd=Команда для запуска после изменения правил,3,None
+before_apply_cmd=Команда для запуска до применения конфигурации,3,None
+after_apply_cmd=Команда для запуска после применения конфигурации,3,None
+save_file=File to save/edit <tt>IPv4</tt> rules,3,Use operating system or Webmin default
+direct=Изменять непосредственно правила брандмауэра&#44; вместо сохранения в файл?,1,1-Да,0-Нет
+save_file6=File to save/edit <tt>IPv6</tt> rules,3,Use operating system or Webmin default

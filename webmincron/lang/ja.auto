@@ -1,0 +1,20 @@
+edit_mins=議事録
+edit_hours=時間
+edit_days=日々
+edit_months=月
+edit_weekdays=平日
+edit_all=すべて
+edit_selected=選択した ..
+edit_run=今すぐ実行
+edit_clone=ジョブの複製
+edit_return=cronジョブ
+edit_special1=シンプルなスケジュール ..
+edit_special0=以下で選択された時間と日付
+edit_special_hourly=毎時
+edit_special_daily=毎日（深夜）
+edit_special_weekly=毎週（日曜日）
+edit_special_monthly=毎月（1日）
+edit_special_yearly=毎年（1月1日）
+
+log_success=<tt>$1</tt>で<tt>$2</tt>を正常に実行しました
+log_failure=<tt>$1</tt>で<tt>$2</tt>を実行できませんでした： $3

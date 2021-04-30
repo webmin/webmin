@@ -10,6 +10,7 @@ if ($module_info{'usermin'}) {
 $google_host = "www.google.com";
 $google_port = 80;
 $google_page = "/search";
+%access = &get_module_acl();
 
 # Get the paths to perl and perldoc
 $perl_path = &get_perl_path();

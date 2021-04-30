@@ -1,55 +1,53 @@
-inittab_new=Crea un nou procés init.
+inittab_new=Crea un nou procÃ©s init.
 inittab_id=ID
 inittab_active=Actiu
-inittab_runlevels=Nivell d'Execució en engegar
-inittab_action=Acció
-inittab_process=Procés
+inittab_runlevels=Nivell d'ExecuciÃ³ en engegar
+inittab_action=AcciÃ³
+inittab_process=ProcÃ©s
 inittab_none=Cap
-inittab_respawn=Activa el procés
+inittab_respawn=Activa el procÃ©s
 inittab_wait=Espera
 inittab_once=Un cop pel nivell
 inittab_boot=En engegar
 inittab_bootwait=En engegar, espera que acabi
 inittab_off=No facis res
 inittab_ondemand=Quan sigui a A, B, C
-inittab_initdefault=Després d'engegar el sistema
+inittab_initdefault=DesprÃ©s d'engegar el sistema
 inittab_sysinit=Durant l'engegada del sistema
-inittab_powerwait=La màquina s'apaga
-inittab_powerfail=La màquina s'apaga sense esperar
-inittab_powerokwait=La màquina es torna a encendre
+inittab_powerwait=La mÃ quina s'apaga
+inittab_powerfail=La mÃ quina s'apaga sense esperar
+inittab_powerokwait=La mÃ quina es torna a encendre
 inittab_powerfailnow=Se'n va la llum
 inittab_ctrlaltdel=Ctrl-Alt-Supr
-inittab_kbdrequest=Combinació especial de tecles
-inittab_kbrequest=Combinació especial de tecles
+inittab_kbdrequest=CombinaciÃ³ especial de tecles
+inittab_kbrequest=CombinaciÃ³ especial de tecles
 inittab_return=a la llista de processos
-inittab_apply=Aplica la Configuració d'Init
-inittab_applymsg=Fes clic sobre aquest botó per aplicar la configuració Init de SysV actual executant l'ordre <tt>telinit q</tt>. Tingues en compte que, en executar aquesta ordre, qualsevol error en la configuració pot fer que el sistema no funcioni.
+inittab_apply=Aplica la ConfiguraciÃ³ d'Init
+inittab_applymsg=Fes clic sobre aquest botÃ³ per aplicar la configuraciÃ³ Init de SysV actual executant l'ordre <tt>telinit q</tt>. Tingues en compte que, en executar aquesta ordre, qualsevol error en la configuraciÃ³ pot fer que el sistema no funcioni.
 index_delete=Suprimeix els Processos Seleccionats
-inittab_none2=No s'ha trobat cap procés d'engegada al sistema. Això probablement vol dir que no utilitza el fitxer de configuració inicial de SysV.
+inittab_none2=No s'ha trobat cap procÃ©s d'engegada al sistema. AixÃ² probablement vol dir que no utilitza el fitxer de configuraciÃ³ inicial de SysV.
 
-edit_inittab_err=No tens permís per editar processos
-edit_inittab_title=Edició del Procés $1
-edit_inittab_details=Detalls del Procés
+edit_inittab_err=No tens permÃ­s per editar processos
+edit_inittab_title=EdiciÃ³ del ProcÃ©s $1
+edit_inittab_details=Detalls del ProcÃ©s
 edit_inittab_del=Suprimeix
 edit_inittab_save=Desa
 
-new_inittab_err=No tens permís per crear nous processos
-new_inittab_title=Nou procés
+new_inittab_err=No tens permÃ­s per crear nous processos
+new_inittab_title=Nou procÃ©s
 
-save_inittab_err=No tens permís per desar processos
-save_inittab_noid=Error, no has introduït cap nom de procés
-save_inittab_already=Error, aquest nom de procés ja existeix
+save_inittab_err=No tens permÃ­s per desar processos
+save_inittab_noid=Error, no has introduÃ¯t cap nom de procÃ©s
+save_inittab_already=Error, aquest nom de procÃ©s ja existeix
 
-log_modify=S'ha modificat el procés init $1
-log_rename=S'ha renomenat el procés init $1 a $2
-log_create=S'ha creat el procés init $1
-log_delete=S'ha suprimit el procés init $1
-log_apply=S'ha aplicat la configuració
+log_modify=S'ha modificat el procÃ©s init $1
+log_rename=S'ha renomenat el procÃ©s init $1 a $2
+log_create=S'ha creat el procÃ©s init $1
+log_delete=S'ha suprimit el procÃ©s init $1
+log_apply=S'ha aplicat la configuraciÃ³
 log_deletes=S'han suprimit $1 processos init
 
-apply_err=No s'ha pogut aplicar la configuració
+apply_err=No s'ha pogut aplicar la configuraciÃ³
 
 delete_err=No s'han pogut suprimir els processos
-delete_enone=No has seleccionat cap procés
-
-__norefs=1
+delete_enone=No has seleccionat cap procÃ©s

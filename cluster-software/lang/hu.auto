@@ -1,0 +1,67 @@
+index_count=($1 csomag)
+index_compare=Hasonlítsa össze a kiszolgálókat
+index_thost=hostname
+index_tdesc=Leírás
+index_tcount=csomagok
+index_ttype=Operációs rendszer típusa
+
+install_servers=Telepítendő kiszolgáló (k)
+install_erus=Ez a kiszolgáló a friss kiszolgálótól eltérő frissítési rendszert használ ($1 és $2)
+install_eupdate=Hiba történt a megadott frissítések telepítésekor
+install_ealready=A $1 verzió már telepítve van
+
+add_title=Szerverek hozzáadása
+add_msg=$1 hozzáadása ..
+add_gmsg=Szerverek hozzáadása a (z) $1 csoporthoz.
+add_ok=$1 hozzáadva $2 csomaggal.
+
+search_delete=Távolítsa el a kiválasztott csomagokat:
+search_selall=Mindet kiválaszt
+search_invert=Fordított kijelölés
+
+host_refresh=Csomagok frissítése
+host_return=szerver adatai
+host_system=Csomagrendszer
+
+edit_donthave=&lt;házigazdák, amelyek nem rendelkeznek&gt;
+edit_have=&lt;házigazdák, akik rendelkeznek&gt;
+edit_group=$1 tagjai
+
+refresh_header4=Csomaglista újrakérelme a $2 tagjaitól.
+refresh_header5=A (z) $2 csomaglista újbóli igénylése
+refresh_failed=A (z) $1 frissítése nem sikerült : $2 
+
+delete_rusurenone=Biztosan törli a (z) $1 csomagot az összes szerverről?
+delete_rusure2none=Biztosan törli a (z) $1 csomagot a $4 -ből?
+
+do_header3=$1 telepítése olyan gazdagépeken, amelyek még nem rendelkeznek ..
+do_header4=$1 telepítése a (z) $2 csoport tagjaira.
+do_header5=$1 telepítése a $2 -re.
+do_header6=$1 telepítése olyan gazdagépeken, amelyek már rendelkeznek ..
+do_success2=$1 telepítve a $2 -re.
+
+compare_title=Hasonlítsa össze a csomagokat
+compare_desc=Ez az űrlap használható a két vagy több szerverre telepített csomagok összehasonlítására, és az esetleges eltérések megtalálására a rendelkezésre álló verziók vagy csomagok között.
+compare_hosts=Összehasonlítandó szerverek
+compare_all=Minden szerver
+compare_sel=Kiválasztott ..
+compare_ok=Hasonlítsa össze most
+compare_pack=Csomag
+compare_miss=Hiányzó
+compare_err=Nem sikerült összehasonlítani a csomagokat
+compare_etwo=Legalább két szervert ki kell választani
+compare_showall=Megmutatható csomagok
+compare_showall1=Összes
+compare_showall0=Csak eltérések
+compare_got=rendben
+
+deletes_err=Nem sikerült a csomagok törlése
+deletes_enone=Nincs kiválasztva csomag
+deletes_title=Törölje a csomagokat
+deletes_desc=$1 csomagok eltávolítása ..
+deletes_failed1=A (z) $1 eltávolítása nem sikerült : $2 
+deletes_success1=$1 sikeres eltávolítása
+deletes_failed2=Az eltávolítás sikertelen : $1 
+deletes_success2=.. az eltávolítás befejeződött.
+deletes_rusure=Biztosan eltávolítani akarja a (z) $1 csomagokat a kiválasztott állomásokról?
+deletes_ok=Törölje őket

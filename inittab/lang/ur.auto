@@ -1,0 +1,53 @@
+inittab_new=ایک نیا init عمل بنائیں۔
+inittab_id=ID
+inittab_active=فعال؟
+inittab_runlevels=بوٹ اپ رنلیول
+inittab_action=عمل
+inittab_process=عمل
+inittab_none=کوئی نہیں
+inittab_respawn=ریسپون عمل
+inittab_wait=رکو
+inittab_once=ایک بار سطح پر
+inittab_boot=بوٹ ٹائم
+inittab_bootwait=بوٹ وقت ، ختم ہونے تک انتظار کریں
+inittab_off=کچھ نہ کرو
+inittab_ondemand=جب بھی اے ، بی ، سی میں ہوتا ہے
+inittab_initdefault=سسٹم بوٹ کے بعد
+inittab_sysinit=سسٹم بوٹ کے دوران
+inittab_powerwait=بجلی نیچے جاتی ہے
+inittab_powerfail=بجلی انتظار کیے بغیر نیچے چلی جاتی ہے
+inittab_powerokwait=بجلی بحال ہوئی
+inittab_powerfailnow=بجلی ناکام
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=خصوصی کلیدی امتزاج
+inittab_kbrequest=خصوصی کلیدی امتزاج
+inittab_return=عمل کی فہرست
+inittab_apply=ابتدائی ترتیب کا اطلاق کریں
+inittab_applymsg=Click this button to apply the current SysV Init Configuration by running the command <tt>telinit q</tt>. Be aware that any mistakes in your configuration may make the system unusable when this command is run.
+index_delete=منتخب کردہ عمل کو حذف کریں
+inittab_none2=آپ کے سسٹم پر کوئی بوٹ اپ عمل نہیں پایا گیا۔ یہ شاید اس بات کی نشاندہی کرتا ہے کہ وہ SysV init تشکیل فائل استعمال نہیں کرتا ہے۔
+
+edit_inittab_err=آپ کو کسی عمل میں ترمیم کرنے کی اجازت نہیں ہے
+edit_inittab_title=عمل میں ترمیم کریں$1
+edit_inittab_details=عمل کی تفصیلات
+edit_inittab_del=حذف کریں
+edit_inittab_save=محفوظ کریں
+
+new_inittab_err=آپ کو نیا عمل پیدا کرنے کی اجازت نہیں ہے
+new_inittab_title=نیا عمل
+
+save_inittab_err=آپ کو عمل کو بچانے کی اجازت نہیں ہے
+save_inittab_noid=خرابی ، نام کی کوئی کارروائی داخل نہیں ہوئی
+save_inittab_already=غلطی ، نام عمل پہلے ہی موجود ہے
+
+log_modify=ترمیم شدہ عمل$1
+log_rename=انسداد برائے عمل $1 سے $2
+log_create=ابتدائی عمل$1 تشکیل دیا گیا
+log_delete=شروع کردہ عمل$1
+log_apply=اطلاق شدہ ترتیب
+log_deletes=حذف شدہ$1 init عمل
+
+apply_err=تشکیل دینے میں ناکام
+
+delete_err=عمل کو حذف کرنے میں ناکام
+delete_enone=کوئی بھی منتخب نہیں ہوا

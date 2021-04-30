@@ -1,0 +1,31 @@
+index_eha_cf=El archivo de configuración de latido $1 no se encontró en su sistema. Quizás todavía no se haya copiado en su lugar o la <a href='$2'>configuración del módulo</a> sea incorrecta.
+index_eharesources=El archivo de recursos $1 no se encontró en su sistema. Quizás todavía no se haya copiado en su lugar o la <a href='$2'>configuración del módulo</a> sea incorrecta.
+index_eauthkeys=El archivo de claves de autenticación $1 no se encontró en su sistema. Quizás todavía no se haya copiado en su lugar o la <a href='$2'>configuración del módulo</a> sea incorrecta.
+index_ereq_resource_cmd=El script para solicitar recursos del otro nodo ($1) no se encontró en su sistema. Quizás todavía no se haya copiado en su lugar o la <a href='$2'>configuración del módulo</a> sea incorrecta.
+index_version=Versión de latido $1 
+index_noversion=Advertencia: no se pudo detectar automáticamente la versión de Heartbeat instalada en su sistema. Debe configurarlo en la página <a href='$1'>configuración del módulo</a>.
+index_status=Estado de los latidos del corazón
+
+conf_serials=Puertos serie de latidos
+conf_bcasts=Interfaces de latido de Ethernet
+conf_mcast=Dispositivo de latido multicast
+conf_mcastv=Dispositivo $1, grupo $2, puerto $3, TTL $4, loopback $5 
+conf_enabled=Habilitado
+conf_disabled=Discapacitado
+conf_nice_failback=Comportamiento Failback agradable
+conf_ebcast=No se ingresaron interfaces de transmisión de latidos
+conf_ebcastif='$1' no es una interfaz de transmisión válida
+conf_emcast_dev=Dispositivo de multidifusión faltante o no válido
+conf_emcast_ip=Dirección de grupo de multidifusión faltante o no válida
+conf_emcast_port=Número de puerto de multidifusión faltante o no válido
+conf_emcast_ttl=Tiempo de vida de multidifusión faltante o no válido
+conf_auto_on=$ {conf_enabled}
+conf_auto_off=$ {conf_disabled}
+conf_auto_legacy=Modo heredado
+conf_auto_=$ {default}
+
+res_active=Estado del recurso
+res_getserv=Obtener recursos
+res_hbdown=Latido del corazón
+res_up=ARRIBA
+res_down=ABAJO

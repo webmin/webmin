@@ -1,0 +1,39 @@
+index_title=Xuất khẩu NFS
+index_add=Thêm bản xuất NFS mới
+index_dir=Danh mục
+index_hosts=Máy chủ được phép
+index_all=Tất cả máy chủ
+index_none=Không có xuất khẩu NFS đã được xác định.
+index_apply=Áp dụng cấu hình
+index_applydesc=Nhấp vào nút này để làm cho tất cả các bản xuất được liệt kê ở trên hoạt động, với các tùy chọn được định cấu hình của chúng.
+index_return=danh sách xuất khẩu
+
+edit_title1=Tạo xuất
+edit_title2=Chỉnh sửa xuất
+edit_header=Xuất chi tiết
+edit_dir=Thư mục cần xuất
+edit_hosts=Xuất sang máy chủ/nhóm mạng
+edit_ro=Chỉ đọc?
+edit_wsync=Đồng bộ hóa sau khi viết?
+edit_anon=Quyền người dùng root
+edit_anon1=Mặc định (coi là <tt>không ai</tt>)
+edit_anon2=Từ chối truy cập
+edit_anon0=Đối xử như người dùng
+edit_rw=Truy cập đọc/ghi
+edit_root=Truy cập tập tin gốc
+edit_access=Truy cập núi
+edit_all=Tất cả máy chủ
+edit_sel=Máy chủ được liệt kê ..
+edit_none=Không có máy chủ
+
+save_err=Không thể lưu xuất
+save_edir=Thư mục bị thiếu hoặc không tồn tại để xuất
+save_eanon=Người dùng root bị thiếu hoặc không hợp lệ
+save_erw=Không có máy chủ đọc ghi
+save_eroot=Không có máy chủ truy cập tập tin gốc được nhập
+save_eaccess=Không có máy chủ truy cập gắn kết được nhập
+
+log_create_export=Đã tạo xuất $1 
+log_delete_export=Đã xóa xuất $1
+log_modify_export=Xuất khẩu đã sửa đổi của $1 
+log_apply=Cấu hình ứng dụng

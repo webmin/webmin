@@ -1,0 +1,37 @@
+index_title=Alterar idioma e tema
+index_lang=Idioma da interface do usuário Webmin
+index_langglobal2=Idioma global. $1 ($2)
+index_langset=Escolha pessoal ..
+index_theme=Tema da interface do usuário Webmin
+index_overlay=Sobreposição de tema
+index_overlaydef=Nenhum - use os padrões do tema
+index_themeglobal=Tema global ($1)
+index_themeset=Escolha pessoal ..
+index_pass=Senha de login do Webmin
+index_passleave=Deixar inalterado
+index_passset=Definido como ..
+index_passagain=Digite novamente a senha
+index_ok=Faça mudanças
+index_themedef=Tema antigo do Webmin
+index_desc2=Este módulo pode ser usado para alterar $1, apenas para sua conta Webmin.
+index_d3=$1, $2 e $3 
+index_d2=$1 e $2 
+index_d1=$1 
+index_dlang=o idioma em que os módulos são exibidos
+index_dtheme=o tema que controla a aparência do Webmin
+index_dpass=a senha usada para fazer login com
+
+change_title=Alterar configurações
+change_user=Modificando o login do Webmin.
+change_done=.. feito
+change_restart=Recarregando o Webmin ..
+change_redirect=Redirecionando para o menu principal.
+change_ecolon=Sua senha não pode conter o caractere:
+change_epass2=Novas senhas não combinam
+change_epass=A nova senha não é válida : $1 
+change_eoverlay=Você não pode selecionar uma sobreposição de tema, a menos que um tema da interface do usuário também seja escolhido
+change_eoverlay2=A sobreposição de tema selecionada não é compatível com o tema da interface do usuário escolhido
+
+acl_lang=Pode mudar o idioma?
+acl_theme=Pode mudar de tema?
+acl_pass=Pode alterar a senha (quando definida no Webmin)?

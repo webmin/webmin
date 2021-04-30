@@ -1,0 +1,120 @@
+index_title=Jabber IM Server
+index_econfig=Jabber-konfigurationsfilen $1 findes ikke. Enten er Jabber ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+index_edir=Jabber-basismapperen $1 findes ikke. Enten er Jabber ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+index_emodules=Perl-modulerne $1 og $2, som kræves af Webmin til håndtering af Jabbers XML-konfiguration, er ikke installeret. <a href='$3'>Klik her</a> for at installere dem direkte fra CPAN.
+index_emodule=Perl-modulet $1, som kræves af Webmin til håndtering af Jabbers XML-konfiguration, er ikke installeret. <a href='$2'>Klik her</a> for at installere det direkte fra CPAN.
+index_expat=Sørg for, at du har Expat C-biblioteket og overskrifter installeret, før du prøver at installere Perl-modulerne, da de er afhængige af det og vil mislykkes, hvis det ikke er tilgængeligt.
+index_eparse=Modulet $1 perl kunne ikke analysere din Jabber-konfigurationsfil : $2 
+index_ejabberd=Jabber-serverprogrammet $1 blev ikke fundet på dit system. Enten er Jabber ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+index_eversion=Webmin understøtter kun Jabber version $2, men kommandoen $3 rapporterede følgende versioninformation : $1 
+index_eversion2=Webmin understøtter kun Jabber-versioner under $2, men kommandoen $3 rapporterede følgende versioninformation : $1 
+index_start=Start Jabber Server
+index_startmsg=Klik på denne knap for at starte Jabber-serveren på dit system. Indtil det er startet, vil ingen onlinemeddelelsesklienter være i stand til at bruge det.
+index_stop=Stop Jabber Server
+index_stopmsg=Klik på denne knap for at stoppe den kørende Jabber-server på dit system. Ingen instant messaging-klienter kan bruge det, når det stoppes.
+index_restart=Anvend ændringer
+index_restartmsg=Klik på denne knap for at anvende den aktuelle konfiguration ved at stoppe og derefter genstarte Jabber-serveren.
+index_comments=Advarsel - din Jabber-konfigurationsfil $1 indeholder kommentarer, som fjernes, hvis der foretages konfigurationsændringer ved hjælp af dette modul.
+index_return=Jabber-menu
+index_version=Jabber version $1 
+
+general_title=Generelle indstillinger
+general_header=Globale Jabber-serverindstillinger
+general_host=Din server's værtsnavn
+general_elog=Fejllogfil
+general_elogfmt=Fejllogformat
+general_rlog=Adgang til logfil
+general_rlogfmt=Adgang til logformat
+general_pidfile=Process ID-fil
+general_err=Gemte generelle indstillinger mislykkedes
+general_ehost=Manglende eller ugyldig serverværtsnavn
+general_eelog=Manglende eller ugyldig fejlloggfil
+general_eelogfmt=Manglende fejlloggformat
+general_erlog=Manglende eller ugyldig trafiklogfil
+general_erlogfmt=Manglende trafiklogformat
+general_epidfile=Manglende eller ugyldig proces-id-fil
+
+messages_title=Beskeder
+messages_header=Jabber-serverbesked til klienter
+messages_wsubject=Velkomstmeddelelsesemne
+messages_wbody=Velkomstbeskedkrop
+messages_vcard=Server vCard
+messages_rinstr=Registreringsinstruktioner
+messages_rnotify=Meddeles administrator ved registrering?
+messages_rfields=Påkrævede registreringsfelter
+messages_vcard2jud=Send vCard til Jabber brugerkatalog?
+messages_err=Kunne ikke gemme beskeder
+messages_evcard=Ugyldig vCard XML : $1 
+messages_etag=Server vCard XML starter ikke med &lt;vCard&gt;
+
+modules_title=Jabber-moduler
+modules_desc=Modulerne nedenfor er brugt til at behandle meddelelser modtaget af Jabber session manager. Du bør kun ændre denne liste, hvis du ved, hvad du laver.
+modules_header=Jabber server session manager moduler
+modules_mod=Modulnavn
+modules_so=Delt bibliotek
+modules_err=Kunne ikke gemme Jabber-moduler
+modules_emod='$1' er ikke et gyldigt modulnavn
+modules_eso=Delt bibliotek '$1' findes ikke
+
+karma_title=Karma Traffic Control
+karma_header=Valgmuligheder for kontrol af trafikfrekvens
+karma_rate=Overdreven forbindelseshåndtering
+karma_rate_def=handicappet
+karma_rate_sel=Bloker klient i $2 sekunder efter $1 -forbindelser
+karma_mode=Karma-tilstand
+karma_none=Ingen grænser
+karma_low=Lav trafikgrænse
+karma_medium=Medium trafikgrænser
+karma_high=Høje trafikgrænser
+karma_sel=Brug indstillinger valgt nedenfor ..
+karma_heartbeat=Periodelængde i sekunder (<tt>hjerteslag</tt>)
+karma_init=Initialiseringsperioder (<tt>init</tt>)
+karma_max=Karma maximum (<tt>max</tt>)
+karma_inc=Karma-inkrement (<tt>inc</tt>)
+karma_dec=Karma-dekrement (<tt>dec</tt>)
+karma_penalty=Straffeperioder (<tt>straf</tt>)
+karma_restore=Perfekt gendannelsesperioder (<tt>gendannelse</tt>)
+karma_err=Kunne ikke gemme karmaindstillinger
+karma_eheartbeat=Manglende eller ugyldig periode
+karma_einit=Manglende eller ugyldige initialiseringsperioder
+karma_emax=Manglende eller ugyldig karma-maksimum
+karma_einc=Manglende eller ugyldig karma-forøgelse
+karma_edec=Manglende eller ugyldig karma-dekrement
+karma_epenalty=Manglende eller ugyldige strafperioder
+karma_erestore=Manglende eller ugyldige gendannelsesperioder
+karma_epoints=Manglende eller ugyldigt antal forbindelser
+karma_etime=Manglende eller ugyldig tid at blokere for
+
+ips_title=IP-adgangskontrol
+ips_header=Jabber-server IP-adgangskontrol
+ips_allow=Tilladte klient-IP'er
+ips_all=Alle adresser
+ips_deny=Nægtede klient-IP'er
+ips_none=Ingen
+ips_sel=Noterede adresser/netmasks ..
+ips_err=Kunne ikke gemme IP-adgangskontrol
+ips_eaddr='$1' er ikke en gyldig IP-adresse eller IP-adresse/netmaske
+
+file_title=Rediger konfigurationsfil
+file_desc=Brug formularen nedenfor til at redigere Jabber-konfigurationsfilen direkte. Dette skal kun gøres, hvis du forstår XML-konfigurationsformatet.
+file_header=Rediger Jabber-konfigurationsfil
+file_err=Kunne ikke gemme konfigurationsfilen
+
+admin_title=Administrative brugere
+admin_header=Brugere af serveradministration
+admin_read=Læs adgangsadministratorer
+admin_write=Skriveadgangsadministratorer
+admin_reply=Svar automatisk på admin-meddelelser?
+admin_rsubject=Motiver automatisk
+admin_rbody=Besked automatisk
+
+filter_title=Brugerfiltre
+filter_header=Brugerfilter tilladelser
+filter_max=Maksimale filterregler
+filter_conds=Tilladte filterbetingelser
+filter_acts=Tilladte filterhandlinger
+
+restart_err=Kunne ikke anvende ændringer
+stop_err=Kunne ikke stoppe Jabber
+stop_epid=Kunne ikke finde Jabber-processen
+start_err=Kunne ikke starte Jabber

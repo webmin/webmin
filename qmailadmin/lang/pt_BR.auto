@@ -1,0 +1,405 @@
+index_title=Servidor de correio QMail
+index_edir=O diretório base do QMail $1 não existe. Talvez o QMail não esteja instalado ou sua <a href='$2'>configuração do módulo</a> esteja incorreta.
+index_edir2=O diretório $1 não parece ser o diretório base do QMail. Talvez o QMail não esteja instalado ou sua <a href='$2'>configuração do módulo</a> esteja incorreta.
+index_return=Configuração do QMail
+index_stop=Parar processos do QMail
+index_stopmsg=Clique neste botão para interromper os processos do QMail em segundo plano responsáveis pela entrega de mensagens em fila. Sem esses processos, as mensagens não serão enviadas ou entregues corretamente ao seu sistema.
+index_start=Iniciar processos do QMail
+index_startmsg=Clique neste botão para iniciar os processos do QMail em segundo plano responsáveis pela entrega de mensagens em fila. Sem esses processos, as mensagens não serão enviadas ou entregues corretamente ao seu sistema.
+
+opts_title=Opções do QMail
+opts_me=Nome do host local
+opts_helo=Nome do host para SMTP HELO
+opts_toconnect=Tempo limite da conexão SMTP
+opts_secs=segundos
+opts_toremote=Tempo limite de resposta de saída SMTP
+opts_bytes=Tamanho máximo da mensagem
+opts_unlimited=Ilimitado
+opts_timeout=Tempo limite de entrada de dados SMTP
+opts_localip=Nome do host do email para o endereço IP local
+opts_greet=Mensagem de saudação SMTP
+opts_err=Falha ao salvar as opções do QMail
+opts_eme=Nome de host local inválido
+opts_etoconnect=Tempo limite de conexão SMTP inválido
+opts_etoremote=Tempo limite de resposta de saída SMTP inválido
+opts_ebytes=Tamanho máximo de mensagem inválido
+opts_etimeout=Tempo limite de entrada de dados SMTP inválido
+opts_elocalip=Nome do host do endereço IP local inválido
+
+aliases_title=Aliases de Correio
+aliases_addr=Endereço
+aliases_to=Alias para ..
+aliases_type1=Endereço 1
+aliases_type2=Diretório de email $1 
+aliases_type3=Arquivo de mensagens $1 
+aliases_type4=Programa $1 
+aliases_type5=Arquivo de resposta automática $1 
+aliases_type6=Aplicar arquivo de filtro $1 
+aliases_none=Nenhum
+aliases_return=lista de alias
+aliases_toomany=Existem muitos apelidos de correio no seu sistema para serem exibidos nesta página.
+aliases_go=Encontre aliases correspondentes:
+aliases_delete=Excluir aliases selecionados
+
+aform_type0=Nenhum
+aform_type1=Endereço de e-mail
+aform_type2=Diretório de correio
+aform_type3=Arquivo de correio
+aform_type4=Feed para o programa
+aform_type5=Resposta automática do arquivo
+aform_type6=Aplicar arquivo de filtro
+aform_edit=Editar alias
+aform_create=Criar alias
+aform_name=Endereço
+aform_val=Alias para
+aform_afile=Editar ..
+aform_novirt=&lt;Todos os domínios&gt;
+aform_return=pseudônimo
+
+asave_err=Falha ao salvar o alias
+asave_eaddr='$1' não é um endereço válido
+asave_ealready=Já existe um alias para '$1'
+asave_etype1='$1' não é um endereço de email válido
+asave_etype2='$1' não é um diretório de email válido
+asave_etype3='$1' não é um nome de arquivo de email válido
+asave_etype4='$1' não é um programa válido ou não existe
+asave_etype5=O arquivo de resposta automática '$1' não é válido
+asave_etype4none=Nenhum programa fornecido
+asave_etype6=O arquivo de filtro '$1' não é válido
+
+adelete_err=Falha ao excluir aliases
+adelete_enone=Nenhum selecionado
+
+locals_title=Domínios Locais
+locals_domains=Domínios locais para este servidor
+locals_desc=O Qmail aceitará a entrega aos emails de usuários locais nos domínios e nomes de host listados na caixa de texto à esquerda. Se você deseja que o servidor de email lide com vários domínios de email, todos eles devem estar listados neste formulário.
+locals_only=Apenas o nome do host local $1 
+locals_sel=Domínios listados abaixo ..
+
+rcpts_title=Domínios aceitos
+rcpts_domains=Domínios locais e de retransmissão aceitos
+rcpts_all=Qualquer domínio
+rcpts_sel=Domínios listados abaixo ..
+rcpts_desc=O Qmail aceitará para retransmitir ou entregar apenas correio local para domínios e nomes de host listados na caixa de texto à esquerda. Você também pode inserir caracteres curinga que correspondam a todos os hosts em um domínio como <tt>.foo.com</tt>. Se você deseja que o servidor de email retransmitir emails para clientes, você deve aceitar emails de qualquer domínio.
+rcpts_domains2=Domínios locais e de retransmissão adicionais
+rcpts_desc2=Se você possui um grande número de domínios aceitos, os menos usados devem ser inseridos nessa caixa de texto. Em geral, seus 50 primeiros domínios permitidos devem ser inseridos na caixa de texto superior e o restante nesta.
+
+bads_title=Endereços rejeitados
+bads_addresses=Endereços de email rejeitados
+bads_desc=O QMail rejeitará emails para entrega ou retransmissão de qualquer um dos endereços listados na caixa de texto à esquerda, que deve ser digitada como <tt>nome de usuário @ nome de domínio</tt>. Se você deseja rejeitar emails de um domínio inteiro, ele deve ser digitado como <tt>@domainname</tt>.
+
+routes_title=Roteamento de Domínio
+routes_toomany=Existem muitas rotas de domínio no seu sistema para serem exibidas nesta página.
+routes_go=Encontre rotas de domínio correspondentes:
+routes_from=Correio para o domínio
+routes_to=Enviar via servidor
+routes_direct=Entregue diretamente
+routes_defroute=Entregue todos os outros emails de saída via:
+routes_return=rotas de domínio
+routes_delete=Excluir rotas de domínio selecionadas
+
+rform_edit=Editar rota de domínio
+rform_create=Criar rota de domínio
+rform_from=Correio para host ou domínio
+rform_to=Enviar via servidor SMTP
+rform_port=Porta SMTP
+
+rsave_err=Falha ao salvar a rota do domínio
+rsave_efrom='$1' não é um nome de domínio válido
+rsave_eto='$1' não é um servidor SMTP válido
+rsave_eport='$1' não é um número de porta válido
+
+rdelete_err=Falha ao excluir rotas do domínio
+
+percents_title=% De domínios de endereço
+percents_domains=Domínios que suportam % de endereços
+percents_desc=O QMail aceitará emails com endereços no formato <tt>user%firstdomain@seconddomain</tt> se o <tt>seconddomain</tt> estiver listado na caixa de texto à esquerda. As mensagens neste formato serão encaminhadas para <tt>user@firstdomain</tt> por este servidor de email.
+
+virts_title=Mapeamentos Virtuais
+virts_toomany=Existem muitos mapeamentos virtuais em seu sistema para serem exibidos nesta página.
+virts_go=Encontre mapeamentos virtuais correspondentes:
+virts_from=Mail for
+virts_prepend=Prefixar prefixo
+virts_all=Todos os endereços
+virts_none=Não é virtual
+virts_desc=Os mapeamentos virtuais são usados pelo QMail para manipular email para domínios diferentes no servidor, acrescentando texto à parte do usuário do endereço de email antes do processamento. Você pode usá-los para configurar domínios de correio virtual criando um novo mapeamento virtual para um domínio e, em seguida, usando a página <a href='$1'>Aliases de email</a> para criar aliases nesse domínio.
+virts_return=mapeamentos virtuais
+virts_delete=Excluir mapeamentos virtuais selecionados
+
+vform_edit=Editar mapeamento virtual
+vform_create=Criar mapeamento virtual
+vform_from=Correio para endereço
+vform_all=Qualquer endereço que não corresponda a outro mapeamento virtual
+vform_domain=Endereços com domínio
+vform_user=Endereço
+vform_to=Anexar ao nome de usuário
+vform_none=Nada
+vform_prepend=Prefixo especificado
+vform_auto=Prefixo escolhido automaticamente
+
+vsave_err=Falha ao salvar o mapeamento virtual
+vsave_edomain='$1' não é um domínio de email válido
+vsave_euser='$1' não é um nome de usuário de email válido
+vsave_eprepend='$1' não é um prefixo de mapeamento válido
+vsave_eboth=Você não pode selecionar 'Qualquer endereço que não corresponda a outro mapeamento virtual' e 'Nada'
+
+vdelete_err=Falha ao excluir mapeamentos virtuais
+
+stop_err=O processo qmail-send não está mais em execução
+
+log_stop=Processos interrompidos do QMail
+log_start=Processos QMail iniciados
+log_opts=Opções alteradas do QMail
+log_alias_create=Alias criado $1 
+log_alias_delete=Excluir alias $1 
+log_alias_modify=Alias modificado $1 
+log_delete_aliases=$1 aliases excluídos
+log_virt_create=Mapeamento virtual criado $1 
+log_virt_delete=Mapeamento virtual excluído $1 
+log_virt_modify=Mapeamento virtual modificado $1 
+log_delete_virts=$1 mapeamentos virtuais excluídos
+log_virtall_create=Mapeamento virtual criado
+log_virtall_delete=Mapeamento virtual catchall excluído
+log_virtall_modify=Mapeamento virtual catchall modificado
+log_locals=Domínios locais alterados
+log_rcpts=Domínios aceitos alterados
+log_bads=Endereço rejeitado alterado
+log_percents=% De domínios de endereço alterados
+log_route_create=Rota criada para $1 
+log_route_delete=Rota excluída para $1 
+log_route_modifed=Rota modificada para $1 
+log_delete_routes=$1 rotas excluídas
+log_defroute=Rota padrão modificada
+log_assign_create=Usuário de email criado $1 
+log_assign_delete=Usuário de email excluído $1 
+log_assign_modifed=Usuário de email modificado $1 
+log_delete_assigns=$1 usuários de email excluídos
+log_delmail=$1 mensagens excluídas de $2 
+log_movemail=$1 mensagens movidas de $2 para $3 
+log_send=Correio enviado para $1 
+
+rfile_title=Editar arquivo de resposta automática
+rfile_desc=Use a área de texto abaixo para editar a mensagem de resposta automática em $1. A mensagem pode conter as macros $SUBJECT, $FROM, $TO, $DATE e $BODY que serão expandidas quando a resposta automática for ativada.
+rfile_desc2=Você também pode definir cabeçalhos de email que adicionem ou substituam os padrões usados na resposta automática, colocando linhas como: <br><tt> De: foo@bar.com </tt><br> <tt>Assunto: Em férias</tt> <br> na parte superior da mensagem, separado do corpo por uma única linha em branco.
+rfile_efile=Você não tem permissão para editar $1.
+rfile_undo=Desfazer mudanças
+rfile_replies=Controlar respostas para evitar loops de correio?
+rfile_none=Não
+rfile_file=Sim, usando o arquivo de log
+rfile_period=Intervalo mínimo entre respostas
+rfile_default=Padrão (1 hora)
+rfile_secs=segundos
+rfile_ereplies=Arquivo de log de rastreamento de resposta ausente
+rfile_eperiod=Número de segundos ausente ou inválido entre as respostas
+rfile_no_autoreply=Não envie respostas automáticas para
+rfile_from=De: endereço para resposta
+rfile_auto=Automático (com base no endereço do destinatário)
+rfile_efrom=Endereço ausente de:
+rfile_fromdesc=Um endereço De: sempre deve ser especificado sempre que possível, pois o método automático pode não ser confiável.
+
+ffile_title=Editar arquivo de filtro
+ffile_desc=Use o formulário abaixo para configurar as regras de filtro no arquivo $1.
+ffile_efile=Você não tem permissão para editar $1.
+ffile_line=Se o campo $1 $2 $3, encaminhar para $4 
+ffile_from=a partir de
+ffile_to=para
+ffile_subject=sujeito
+ffile_cc=CC
+ffile_body=corpo
+ffile_what0=não corresponde
+ffile_what1=partidas
+ffile_other=Caso contrário, encaminhar para $1 
+ffile_err=Falha ao salvar o arquivo de filtro
+ffile_ematch=Falta partida
+ffile_eaction=Endereço de encaminhamento ausente
+
+queue_title=Fila de Correio
+queue_count=$1 mensagens
+queue_none=No momento, nenhuma mensagem de email está na fila para entrega
+queue_id=ID do correio
+queue_date=Enviei
+queue_from=A partir de
+queue_to=Para
+queue_cc=Cc
+queue_subject=Sujeito
+queue_return=fila de correio
+queue_delete=Excluir mensagens selecionadas
+queue_all=Selecionar tudo
+queue_invert=Seleção invertida
+queue_refresh=Atualizar fila de correio
+queue_refreshdesc=Recarregue esta página para mostrar o estado atual da fila de mensagens.
+
+qview_title=Mensagem na fila
+qview_desc=Do arquivo $1 
+qview_headers=Cabeçalhos de correio
+qview_attach=Anexos
+
+assigns_title=Atribuições de usuário de email
+assigns_return=atribuições de usuário de correio
+assigns_toomany=Existem muitos usuários de email no seu sistema para exibir nesta página.
+assigns_go=Encontre usuários de e-mail correspondentes:
+assigns_address=Mail to address
+assigns_user=Usuário Unix
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=Diretório inicial
+assigns_desc=As atribuições de usuário de correio permitem criar caixas de correio para usuários que não estão definidos na lista de usuários do Unix. Cada atribuição entregará correio para um nome de usuário ou padrão de nome de usuário escolhido, como se estivesse sendo entregue na caixa de correio de um usuário Unix real.
+assigns_delete=Excluir usuários de email selecionados
+
+sform_edit=Editar usuário de email
+sform_create=Criar usuário de email
+sform_address=Nome de usuário do endereço
+sform_mode0=Nome de usuário exato
+sform_mode1=Nomes de usuários começando com
+sform_user=Usuário Unix
+sform_uid=UID
+sform_gid=GID
+sform_home=Diretório inicial
+
+ssave_err=Falha ao salvar o usuário do email
+ssave_eaddress=Nome de usuário do endereço ausente ou inválido
+ssave_euser=Usuário Unix ausente ou inválido
+ssave_euid=UID ausente ou inválido
+ssave_egid=GID ausente ou inválido
+ssave_ehome=Diretório inicial ausente ou inválido
+
+sdelete_err=Falha ao excluir usuários de email
+
+delete_egone=A mensagem na fila não existe mais
+delete_ebogus=Nome de arquivo da fila inválido
+
+boxes_title=Caixas de correio do usuário
+boxes_user=Do utilizador
+boxes_size=Tamanho da caixa de correio
+boxes_none=Sem correio
+boxes_return=caixas de correio
+boxes_sent=Correspondência enviada
+boxes_ecannot=Você não tem permissão para ler e-mails
+boxes_toomany=Existem muitos usuários no seu sistema para listar todas as caixas de correio.
+boxes_go=Exibir correio para o usuário:
+
+mail_title=Email do Usuário
+mail_from=A partir de
+mail_date=Encontro
+mail_subject=Sujeito
+mail_to=Para
+mail_cc=Cc
+mail_bcc=Cco
+mail_pri=Prioridade
+mail_highest=Altíssima
+mail_high=Alto
+mail_normal=Normal
+mail_low=Baixo
+mail_lowest=Mais baixo
+mail_for=Em 1
+mail_for2=Para o usuário $1 
+mail_sent=Na lista de emails enviados
+mail_size=Tamanho
+mail_delete=Excluir
+mail_compose=Compor
+mail_return=caixa de correio do usuário
+mail_pos=Mensagens $1 a $2 de $3 
+mail_none=Esta caixa de correio não possui mensagens
+mail_ecannot=Você não tem permissão para ler o email deste usuário
+mail_all=Selecionar tudo
+mail_invert=Seleção invertida
+mail_search=Encontre mensagens onde
+mail_body=Corpo
+mail_match=partidas
+mail_ok=Procurar
+mail_nonefrom=Nenhum
+mail_mark=Marca como:
+mail_mark0=Não lida
+mail_mark1=Ler
+mail_mark2=Especial
+mail_forward=frente
+mail_rfc=Da linha
+mail_move=Mover para:
+mail_eexists=A mensagem não existe mais!
+
+view_title=Ler email
+view_desc=Mensagem $1 em $2 
+view_desc2=Mensagem $1 para o usuário $2 
+view_desc3=Mensagem $1 
+view_sent=Mensagem $1 na lista de emails enviados
+view_qdesc=Mensagem em fila $1 
+view_headers=Cabeçalhos de correio
+view_allheaders=Ver todos os cabeçalhos
+view_noheaders=Exibir cabeçalhos básicos
+view_attach=Anexos
+view_reply=Resposta
+view_reply2=Responder a todos
+view_enew=Editar como novo
+view_forward=frente
+view_delete=Excluir
+view_strip=Remover anexos
+view_ecannot=Você não tem permissão para ler o email deste usuário
+view_mark=Marcar a mensagem como:
+view_mark0=Não lida
+view_mark1=Ler
+view_mark2=Especial
+view_return=email original
+view_sub=E-mail anexo
+
+compose_title=Escrever um email
+reply_title=Responder ao email
+forward_title=Encaminhar email
+enew_title=Editar email
+reply_headers=Cabeçalhos de correio
+reply_attach=Anexos encaminhados
+reply_mailforward=Mensagens encaminhadas
+reply_attach2=Anexos do cliente e do servidor
+reply_send=Enviar correio
+reply_ecannot=Você não tem permissão para enviar e-mail como este usuário
+
+send_err=Falha ao enviar e-mail
+send_eto=Endereço ausente
+send_efrom=Endereço ausente de
+send_title=Mail enviado
+send_ok=Correio enviado com sucesso para $1 
+send_ecannot=Você não tem permissão para enviar e-mail como este usuário
+send_esmtp=O comando SMTP $1 falhou : $2 
+send_efile=O arquivo anexado $1 não existe
+send_eattach=Os anexos não podem totalizar mais que $1 kB de tamanho.
+send_eperms=O usuário $1 não pode ler $2 
+send_eperms2=Você não tem permissão para enviar o arquivo $1 
+send_epath=O executável Sendmail $1 não existe.
+
+delete_title=Excluir email
+delete_rusure=Tem certeza de que deseja excluir as $1 mensagens selecionadas de $2 ? Isso pode levar algum tempo para um arquivo de mensagens grande. Até a exclusão terminar, nenhuma outra ação deve ser executada.
+delete_rusure2=Tem certeza de que deseja excluir esta mensagem de $1 ? Isso pode levar algum tempo para um arquivo de mensagens grande. Até a exclusão terminar, nenhuma outra ação deve ser executada.
+delete_ok=Excluir agora
+delete_ecannot=Agora você tem permissão para excluir e-mails deste usuário
+delete_enone=Nenhum email selecionado para excluir
+delete_emnone=Nenhum email selecionado para marcar
+delete_nobutton=Nenhum botão clicado
+
+search_title=Procurar Resultados
+search_ecannot=Você não tem permissão para pesquisar o email deste usuário
+search_ematch=Você deve digitar o texto para comparar.
+search_efield=Você deve selecionar um tipo de pesquisa.
+search_none=Nenhuma mensagem encontrada.
+search_results2=$1 mensagens de email correspondentes a $2 ..
+search_results3=$1 mensagens de email que não correspondem a $2 ..
+
+match_from=De: correspondências
+match_subject=Assunto: correspondências
+match_to=Para: corresponde
+match_cc=Cc: correspondências
+match_date=Data: correspondências
+match_body=Correspondências de corpo
+match_size=O tamanho é maior que
+match_headers=Correspondência de cabeçalhos
+match_=-----------------
+match_!from=De: não corresponde
+match_!subject=Assunto: não corresponde
+match_!to=Para: não corresponde
+match_!cc=Cc: não corresponde
+match_!date=Data: não corresponde
+match_!body=O corpo não corresponde
+match_!size=O tamanho é menor que
+match_!headers=Cabeçalhos não correspondem
+
+delq_titles=Exclusão de mensagens
+delq_rusure=Tem certeza de que deseja excluir as $1 mensagens em fila selecionadas?
+delq_confirm=Apagar mensagens

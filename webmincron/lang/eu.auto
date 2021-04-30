@@ -1,0 +1,20 @@
+edit_mins=Minutu
+edit_hours=Orduak
+edit_days=egunak
+edit_months=hilabeteak
+edit_weekdays=Lanegunetan
+edit_all=guztiak
+edit_selected=Hautatuta dago
+edit_run=Exekutatu orain
+edit_clone=Klonazio lana
+edit_return=cron lana
+edit_special1=Ordutegi erraza ..
+edit_special0=Jarraian aukeratutako orduak eta datak
+edit_special_hourly=Orduro
+edit_special_daily=Eguneko (gauerdian)
+edit_special_weekly=Astean behin (igandean)
+edit_special_monthly=Hilero (hilaren 1ean)
+edit_special_yearly=Urtero (urtarrilaren 1ean)
+
+log_success=Behar bezala <tt>$2</tt> exekutatu da <tt>$1</tt>
+log_failure=Ezin izan da <tt>$2</tt> exekutatu <tt>$1</tt> : $3 

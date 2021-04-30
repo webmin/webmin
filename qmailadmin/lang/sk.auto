@@ -1,0 +1,405 @@
+index_title=Poštový server QMail
+index_edir=Základný adresár QMail $1 neexistuje. Možno nie je nainštalovaný program QMail alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_edir2=Zdá sa, že adresár $1 nie je základným adresárom QMail. Možno nie je nainštalovaný program QMail alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_return=Konfigurácia QMailu
+index_stop=Zastavenie procesov QMail
+index_stopmsg=Kliknutím na toto tlačidlo zastavíte procesy QMail na pozadí, ktoré sú zodpovedné za doručovanie pošty vo fronte. Bez týchto procesov nebude pošta odosielaná z vášho systému alebo do systému doručená správne.
+index_start=Spustite procesy QMail
+index_startmsg=Kliknutím na toto tlačidlo spustíte procesy QMail na pozadí, ktoré sú zodpovedné za doručovanie pošty vo fronte. Bez týchto procesov nebude pošta odosielaná z vášho systému alebo do systému doručená správne.
+
+opts_title=Možnosti QMail
+opts_me=Názov miestneho hostiteľa
+opts_helo=Názov hostiteľa pre SMTP HELO
+opts_toconnect=Časový limit pripojenia SMTP
+opts_secs=sekundy
+opts_toremote=Časový limit odchádzajúcej odpovede SMTP
+opts_bytes=Maximálna veľkosť správy
+opts_unlimited=neobmedzený
+opts_timeout=Časový limit prichádzajúcich údajov SMTP
+opts_localip=Názov hostiteľa pre e-mail na miestnu adresu IP
+opts_greet=Uvítacia správa SMTP
+opts_err=Možnosti QMail sa nepodarilo uložiť
+opts_eme=Neplatný názov miestneho hostiteľa
+opts_etoconnect=Časový limit pripojenia SMTP je neplatný
+opts_etoremote=Neplatný časový limit odchádzajúcej SMTP
+opts_ebytes=Neplatná maximálna veľkosť správy
+opts_etimeout=Neplatný časový limit prichádzajúcich údajov SMTP
+opts_elocalip=Neplatný názov hostiteľa miestnej adresy IP
+
+aliases_title=Aliasy pošty
+aliases_addr=adresa
+aliases_to=Alias ..
+aliases_type1=Adresa 1
+aliases_type2=Adresár pošty $1 
+aliases_type3=Súbor pošty $1 
+aliases_type4=Program $1 
+aliases_type5=Autoreply file $1 
+aliases_type6=Použiť súbor filtra $1 
+aliases_none=nikto
+aliases_return=zoznam aliasov
+aliases_toomany=Vo vašom systéme je príliš veľa aliasov na zobrazenie na tejto stránke.
+aliases_go=Nájsť zodpovedajúce aliasy:
+aliases_delete=Odstrániť vybraté aliasy
+
+aform_type0=nikto
+aform_type1=Emailová adresa
+aform_type2=Adresár pošty
+aform_type3=Súbor pošty
+aform_type4=Krmivo do programu
+aform_type5=Autoreply zo súboru
+aform_type6=Použiť súbor filtra
+aform_edit=Upraviť alias
+aform_create=Vytvorenie aliasu
+aform_name=adresa
+aform_val=Alias to
+aform_afile=Edit ..
+aform_novirt=&lt;Všetky domény&gt;
+aform_return=prezývka
+
+asave_err=Nepodarilo sa uložiť alias
+asave_eaddr='$1' nie je platná adresa
+asave_ealready=Alias pre $1 už existuje
+asave_etype1=$1 nie je platná e-mailová adresa
+asave_etype2=$1 nie je platný poštový adresár
+asave_etype3='$1' nie je platný názov súboru pošty
+asave_etype4='$1' nie je platný program alebo neexistuje
+asave_etype5=Autoreply súbor '$1' nie je platný
+asave_etype4none=Nie je uvedený žiadny program
+asave_etype6=Súbor filtra '$1' nie je platný
+
+adelete_err=Nepodarilo sa odstrániť aliasy
+adelete_enone=Žiadne vybraté
+
+locals_title=Lokálne domény
+locals_domains=Lokálne domény pre tento server
+locals_desc=Qmail bude akceptovať doručenie e-mailom miestnym používateľom do domén a názvov hostiteľov uvedených v textovom poli naľavo. Ak chcete, aby váš poštový server spracovával viac e-mailových domén, mali by byť všetky uvedené v tomto formulári.
+locals_only=Iba miestny názov hostiteľa $1 
+locals_sel=Domény uvedené nižšie.
+
+rcpts_title=Akceptované domény
+rcpts_domains=Akceptované miestne a prenosové domény
+rcpts_all=Akákoľvek doména
+rcpts_sel=Domény uvedené nižšie.
+rcpts_desc=Qmail bude akceptovať pre zasielanie alebo lokálne doručovanie pošty iba do domén a hostiteľov uvedených v textovom poli naľavo. Môžete tiež zadať zástupné znaky, ktoré zodpovedajú všetkým hostiteľom v doméne, napríklad <tt>.foo.com</tt>. Ak chcete, aby váš poštový server prenášal e-maily pre klientov, musíte prijať poštu z ľubovoľnej domény.
+rcpts_domains2=Ďalšie miestne a prenosové domény
+rcpts_desc2=Ak máte veľké množstvo akceptovaných domén, mali by ste do tohto textového poľa zadať menej bežne používané domény. Vo všeobecnosti by sa prvých 50 povolených domén malo zadať do horného textového poľa a zvyšok do tohto.
+
+bads_title=Odmietnuté adresy
+bads_addresses=Odmietnuté e-mailové adresy
+bads_desc=Služba QMail odmietne doručovanie alebo odovzdávanie pošty z ktorejkoľvek z adries uvedených v textovom poli naľavo, ktoré musia byť zadané ako <tt>username @ domainname</tt>. Ak chcete odmietnuť poštu z celej domény, mali by ste ju zadať ako <tt>@domainname</tt>.
+
+routes_title=Smerovanie domén
+routes_toomany=Na vašom systéme je príliš veľa doménových trás, ktoré sa môžu zobraziť na tejto stránke.
+routes_go=Nájdenie vhodných doménových trás:
+routes_from=Pošta pre doménu
+routes_to=Poslať cez server
+routes_direct=Doručte priamo
+routes_defroute=Doručiť všetku ostatnú odchádzajúcu poštu prostredníctvom:
+routes_return=trasy domény
+routes_delete=Odstránenie vybratých doménových trás
+
+rform_edit=Upraviť trasu domény
+rform_create=Vytvorenie trasy domény
+rform_from=Pošta pre hostiteľa alebo doménu
+rform_to=Odoslať prostredníctvom servera SMTP
+rform_port=Port SMTP
+
+rsave_err=Trasa domény sa nepodarilo uložiť
+rsave_efrom=$1 nie je platný názov domény
+rsave_eto=$1 nie je platný server SMTP
+rsave_eport='$1' nie je platné číslo portu
+
+rdelete_err=Nepodarilo sa odstrániť trasy domény
+
+percents_title=% Adries domén
+percents_domains=Domény, ktoré podporujú % adries
+percents_desc=QMail akceptuje e-mail s adresami vo formáte <tt>user%firstdomain@seconddomain</tt>, ak je <tt>seconddomain</tt> uvedený v textovom poli naľavo. Správy v tomto formáte sa potom budú týmto poštovým serverom posielať ďalej používateľovi <tt>user@firstdomain</tt>.
+
+virts_title=Virtuálne mapovania
+virts_toomany=Vo vašom systéme je príliš veľa virtuálnych mapovaní, ktoré sa môžu zobraziť na tejto stránke.
+virts_go=Nájdite virtuálne mapovania zodpovedajúce:
+virts_from=Mail pre
+virts_prepend=Pripravte predponu
+virts_all=Všetky adresy
+virts_none=Nie je virtuálny
+virts_desc=Virtuálne mapovania používa QMail na spracúvanie e-mailov do rôznych domén na vašom serveri tým, že pred ďalším spracovaním vložia do užívateľskej časti e-mailovej adresy text. Môžete ich použiť na nastavenie virtuálnych poštových domén vytvorením nového virtuálneho mapovania domény a potom pomocou stránky <a href='$1'>Mail Aliases</a> vytvoriť aliasy v rámci tejto domény.
+virts_return=virtuálne mapovania
+virts_delete=Odstránenie vybratých virtuálnych mapovaní
+
+vform_edit=Upraviť virtuálne mapovanie
+vform_create=Vytvorte virtuálne mapovanie
+vform_from=Mail na adresu
+vform_all=Akákoľvek adresa, ktorá sa nezhoduje s iným virtuálnym mapovaním
+vform_domain=Adresy s doménou
+vform_user=adresa
+vform_to=Pripravte sa na používateľské meno
+vform_none=nič
+vform_prepend=Zadaná predpona
+vform_auto=Automaticky zvolená predpona
+
+vsave_err=Nepodarilo sa uložiť virtuálne mapovanie
+vsave_edomain=$1 nie je platná e-mailová doména
+vsave_euser=$1 nie je platné e-mailové používateľské meno
+vsave_eprepend='$1' nie je platná predpona mapovania
+vsave_eboth=Nemôžete vybrať „ľubovoľnú adresu, ktorá sa nezhoduje s iným virtuálnym mapovaním“, ani „nič“.
+
+vdelete_err=Vymazanie virtuálnych mapovaní zlyhalo
+
+stop_err=Proces qmail-send už nie je spustený
+
+log_stop=Zastavené procesy QMail
+log_start=Spustené procesy QMail
+log_opts=Zmenené možnosti QMail
+log_alias_create=Vytvorený alias $1 
+log_alias_delete=Odstrániť alias $1 
+log_alias_modify=Upravený alias $1 
+log_delete_aliases=Odstránené $1 aliasy
+log_virt_create=Vytvorené virtuálne mapovanie $1 
+log_virt_delete=Vymazané virtuálne mapovanie $1 
+log_virt_modify=Upravené virtuálne mapovanie $1 
+log_delete_virts=Odstránené $1 virtuálne mapovania
+log_virtall_create=Vytvorené virtuálne mapovanie
+log_virtall_delete=Vymazané virtuálne mapovanie
+log_virtall_modify=Upravené virtuálne mapovanie catchall
+log_locals=Zmenené miestne domény
+log_rcpts=Zmenené akceptované domény
+log_bads=Zmenené zamietnuté adresy
+log_percents=Zmenené % domén adries
+log_route_create=Trasa bola vytvorená pre $1 
+log_route_delete=Vymazaná trasa pre $1 
+log_route_modifed=Upravená trasa pre $1 
+log_delete_routes=Odstránené $1 trasy
+log_defroute=Upravená predvolená trasa
+log_assign_create=Vytvorený používateľ pošty $1 
+log_assign_delete=Používateľ s odstránenou poštou $1 
+log_assign_modifed=Používateľ upravenej pošty $1 
+log_delete_assigns=Odstránené $1 používateľov pošty
+log_delmail=Počet odstránených správ: $1 z $2 
+log_movemail=Správy boli presunuté z $2 do $3 
+log_send=Odoslaná pošta na adresu $1 
+
+rfile_title=Upraviť autoreply súbor
+rfile_desc=Pomocou textovej oblasti nižšie upravte autoreply správu v $1. Správa môže obsahovať makrá $SUBJECT, $FROM, $TO, $DATE a $BODY, ktoré sa po aktivácii autoreply budú rozširovať.
+rfile_desc2=Môžete tiež nastaviť hlavičky pošty, ktoré pridávajú alebo nahrádzajú predvolené hodnoty použité v autoreply tak, že zadáte riadky ako: <br><tt> Od: foo@bar.com </tt><br> <tt>Predmet: Na dovolenke</tt> <br> v hornej časti správy, oddelené od tela jediným prázdnym riadkom.
+rfile_efile=Nemáte oprávnenie upravovať $1.
+rfile_undo=Vrátiť zmeny
+rfile_replies=Sledujete odpovede, aby ste zabránili opakovaniu pošty?
+rfile_none=žiadny
+rfile_file=Áno, pomocou protokolového súboru
+rfile_period=Minimálny interval medzi odpoveďami
+rfile_default=Predvolené (1 hodina)
+rfile_secs=sekundy
+rfile_ereplies=Chýba súbor denníka sledovania odpovedí
+rfile_eperiod=Medzi odpoveďami chýba alebo je neplatný počet sekúnd
+rfile_no_autoreply=Neposielajte automatické odpovede
+rfile_from=Od: adresa pre odpoveď
+rfile_auto=Automaticky (na základe adresy príjemcu)
+rfile_efrom=Chýba od: adresa
+rfile_fromdesc=Od: Adresa by sa mala uvádzať vždy, keď je to možné, pretože automatická metóda nemusí byť spoľahlivá.
+
+ffile_title=Upraviť súbor filtra
+ffile_desc=Použite nasledujúci formulár na nastavenie pravidiel filtrovania v súbore $1.
+ffile_efile=Nemáte oprávnenie upravovať $1.
+ffile_line=Ak je pole $1 $2 $3 potom postúpené na $4 
+ffile_from=z
+ffile_to=na
+ffile_subject=predmet
+ffile_cc=CC
+ffile_body=telo
+ffile_what0=nezodpovedá
+ffile_what1=zápasy
+ffile_other=Inak vpred na $1 
+ffile_err=Súbor filtra sa nepodarilo uložiť
+ffile_ematch=Chýba zápas
+ffile_eaction=Chýba presmerovacia adresa
+
+queue_title=Poštový front
+queue_count=Počet správ: $1 
+queue_none=Momentálne nie sú k dispozícii žiadne poštové správy na odoslanie
+queue_id=ID pošty
+queue_date=odoslané
+queue_from=z
+queue_to=na
+queue_cc=cc
+queue_subject=predmet
+queue_return=frontu pošty
+queue_delete=Odstrániť vybrané správy
+queue_all=Vybrať všetko
+queue_invert=Obrátiť výber
+queue_refresh=Obnoviť frontu pošty
+queue_refreshdesc=Načítaním tejto stránky zobrazíte aktuálny stav frontu pošty.
+
+qview_title=Správa vo fronte
+qview_desc=Zo súboru $1 
+qview_headers=Hlavičky pošty
+qview_attach=prílohy
+
+assigns_title=Priradenia poštových používateľov
+assigns_return=priradenia používateľov pošty
+assigns_toomany=Vo vašom systéme je príliš veľa používateľov na zobrazenie na tejto stránke.
+assigns_go=Nájdenie zodpovedajúcich používateľov pošty:
+assigns_address=Mail na adresu
+assigns_user=Unixový užívateľ
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=Domovský adresár
+assigns_desc=Priradenia poštových používateľov vám umožňujú vytvárať poštové schránky pre používateľov, ktorí nie sú definovaní v zozname používateľov systému Unix. Každé priradenie doručí poštu podľa zvoleného užívateľského mena alebo vzoru užívateľského mena, akoby bolo doručené do skutočnej poštovej schránky používateľa Unixu.
+assigns_delete=Odstrániť vybratých používateľov pošty
+
+sform_edit=Upraviť používateľa pošty
+sform_create=Vytvorenie poštového používateľa
+sform_address=Adresa používateľského mena
+sform_mode0=Presné meno používateľa
+sform_mode1=Používateľské mená začínajúce na
+sform_user=Unixový užívateľ
+sform_uid=UID
+sform_gid=GID
+sform_home=Domovský adresár
+
+ssave_err=Uloženie používateľa pošty zlyhalo
+ssave_eaddress=Chýba alebo je neplatné meno používateľa
+ssave_euser=Chýbajúci alebo neplatný používateľ systému Unix
+ssave_euid=Chýbajúci alebo neplatný identifikátor UID
+ssave_egid=Chýba alebo je neplatná identifikácia GID
+ssave_ehome=Chýbajúci alebo neplatný domovský adresár
+
+sdelete_err=Nepodarilo sa odstrániť používateľov pošty
+
+delete_egone=Správa vo fronte už neexistuje
+delete_ebogus=Neplatný názov súboru vo fronte
+
+boxes_title=Používateľské schránky
+boxes_user=užívateľ
+boxes_size=Veľkosť poštovej schránky
+boxes_none=Žiadna pošta
+boxes_return=poštových schránok
+boxes_sent=Odoslaná pošta
+boxes_ecannot=Nemáte oprávnenie čítať e-maily
+boxes_toomany=Vo vašom systéme je príliš veľa používateľov na to, aby uviedli všetky svoje poštové schránky.
+boxes_go=Zobraziť poštu pre používateľa:
+
+mail_title=E-mail používateľa
+mail_from=z
+mail_date=Dátum
+mail_subject=predmet
+mail_to=na
+mail_cc=cc
+mail_bcc=skrytá
+mail_pri=priorita
+mail_highest=najvyššiu
+mail_high=vysoký
+mail_normal=normálne
+mail_low=nízky
+mail_lowest=najnižšia
+mail_for=V $1 
+mail_for2=Pre používateľa $1 
+mail_sent=V zozname odoslaných správ
+mail_size=veľkosť
+mail_delete=delete
+mail_compose=Compose
+mail_return=schránka používateľa
+mail_pos=Správy $1 až $2 z $3 
+mail_none=Táto poštová schránka neobsahuje žiadne správy
+mail_ecannot=Nemáte oprávnenie čítať e-maily tohto používateľa
+mail_all=Vybrať všetko
+mail_invert=Obrátiť výber
+mail_search=Nájsť správy, kde
+mail_body=telo
+mail_match=zápasy
+mail_ok=Vyhľadávanie
+mail_nonefrom=nikto
+mail_mark=Označiť ako:
+mail_mark0=neprečítaný
+mail_mark1=Čítať
+mail_mark2=špeciálna
+mail_forward=vpred
+mail_rfc=Z riadku
+mail_move=Presunúť do:
+mail_eexists=Správa už neexistuje!
+
+view_title=Prečítajte si e-mail
+view_desc=Správa $1 v $2 
+view_desc2=Správa $1 pre používateľa $2 
+view_desc3=Správa $1 
+view_sent=Správa $1 v zozname odoslaných správ
+view_qdesc=Správa vo fronte $1 
+view_headers=Hlavičky pošty
+view_allheaders=Zobraziť všetky hlavičky
+view_noheaders=Zobraziť základné hlavičky
+view_attach=prílohy
+view_reply=odpoveď
+view_reply2=Odpovedať všetkým
+view_enew=Upraviť ako nové
+view_forward=vpred
+view_delete=delete
+view_strip=Odstráňte prílohy
+view_ecannot=Nemáte oprávnenie čítať e-maily tohto používateľa
+view_mark=Označiť správu ako:
+view_mark0=neprečítaný
+view_mark1=Čítať
+view_mark2=špeciálna
+view_return=pôvodný e-mail
+view_sub=Priložený e-mail
+
+compose_title=Napíšte e-mail
+reply_title=Odpoveď na e-mail
+forward_title=Poslať ďalej e-mailom
+enew_title=Upraviť e-mail
+reply_headers=Hlavičky pošty
+reply_attach=Preposlané prílohy
+reply_mailforward=Preposlané správy
+reply_attach2=Prílohy na strane klienta a servera
+reply_send=Poslať mail
+reply_ecannot=Ako tento používateľ nemáte povolenie odosielať poštu
+
+send_err=Nepodarilo sa odoslať poštu
+send_eto=Chýba adresa
+send_efrom=Chýba adresa
+send_title=Pošta odoslaná
+send_ok=Pošta bola úspešne odoslaná na $1 
+send_ecannot=Ako tento používateľ nemáte povolenie odosielať poštu
+send_esmtp=Príkaz SMTP $1 zlyhal : $2 
+send_efile=Pripojený súbor $1 neexistuje
+send_eattach=Prílohy nemôžu presahovať celkovú veľkosť $1 kB.
+send_eperms=Používateľ $1 nemôže čítať $2 
+send_eperms2=Nemáte oprávnenie odosielať súbor $1 
+send_epath=Spustiteľný súbor Sendmail $1 neexistuje.
+
+delete_title=Odstrániť poštu
+delete_rusure=Naozaj chcete odstrániť $1 vybrané správy z $2 ? V prípade veľkého poštového súboru to môže chvíľu trvať. Kým nebude vymazanie ukončené, nemala by sa vykonávať žiadna iná akcia.
+delete_rusure2=Naozaj chcete odstrániť túto správu z $1 ? V prípade veľkého poštového súboru to môže chvíľu trvať. Kým nebude vymazanie ukončené, nemala by sa vykonávať žiadna iná akcia.
+delete_ok=Odstrániť teraz
+delete_ecannot=Teraz máte povolenie odstrániť poštu od tohto používateľa
+delete_enone=Nebol vybratý žiadny e-mail na odstránenie
+delete_emnone=Na označenie nebol vybratý žiadny e-mail
+delete_nobutton=Klikli na žiadne tlačidlo
+
+search_title=Výsledky vyhľadávania
+search_ecannot=Nemáte povolené prehľadávať e-maily tohto používateľa
+search_ematch=Musíte zadať text, aby sa zhodoval s.
+search_efield=Musíte vybrať typ vyhľadávania.
+search_none=Nenašli sa žiadne správy.
+search_results2=E-mailové správy: $1 zodpovedajúce $2 ..
+search_results3=E-mailové správy $1 nezodpovedajú $2 ..
+
+match_from=Z: zápasy
+match_subject=Predmet: zápasy
+match_to=Komu: zápasy
+match_cc=Kópia: zápasy
+match_date=Dátum: zápasy
+match_body=Zápasy tela
+match_size=Veľkosť je väčšia ako
+match_headers=Záhlavia zápas
+match_=-----------------
+match_!from=Od: nezodpovedá
+match_!subject=Predmet: nezodpovedá
+match_!to=Komu: nezodpovedá
+match_!cc=Kópia: nezhoduje sa
+match_!date=Dátum: nezhoduje sa
+match_!body=Telo sa nezhoduje
+match_!size=Veľkosť je menšia ako
+match_!headers=Záhlavia sa nezhodujú
+
+delq_titles=Odstraňovanie správ
+delq_rusure=Naozaj chcete odstrániť správy vo fronte $1 vybrané?
+delq_confirm=Odstrániť správy

@@ -49,7 +49,7 @@ if (opendir(DIR, $fn)) {
 else {
 	# Just a normal config file
 	local $lnum = 0;
-	if (open(CONF, $fn)) {
+	if (open(CONF, "<".$fn)) {
 		@rv = &parse_config_file(CONF, $lnum, $fn);
 		close(CONF);
 		foreach $inc (&find_directive("Include", \@rv)) {
@@ -616,7 +616,7 @@ return wantarray ? ($c, $v) : $c;
 sub get_ftpaccess_config
 {
 local($lnum, @conf);
-open(FTPACCESS, $_[0]);
+open(FTPACCESS, "<".$_[0]);
 @conf = &parse_config_file(FTPACCESS, $lnum, $_[0]);
 close(FTPACCESS);
 return \@conf;
@@ -679,7 +679,7 @@ if ($config{'test_always'}) {
 	local @files = &unique(map { $_->{'file'} } @$conf);
 	local $/ = undef;
 	foreach $f (@files) {
-		if (open(BEFORE, $f)) {
+		if (open(BEFORE, "<".$f)) {
 			$before_changing{$f} = <BEFORE>;
 			close(BEFORE);
 			}
@@ -799,9 +799,10 @@ else {
 	}
 }
 
+# get_proftpd_version([&output])
 sub get_proftpd_version
 {
-local $out = `$config{'proftpd_path'} -v 2>&1`;
+local $out = &backquote_command("$config{'proftpd_path'} -v 2>&1");
 ${$_[0]} = $out if ($_[0]);
 if ($out =~ /ProFTPD\s+Version\s+(\d+)\.([0-9\.]+)/i ||
     $out =~ /ProFTPD\s+(\d+)\.([0-9\.]+)/i) {

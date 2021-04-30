@@ -26,7 +26,8 @@ else {
 
 my %minfo = $in{'mod'} ? &get_module_info($in{'mod'})
 		       : ( 'desc' => $text{'index_global'} );
-my $below = &text($in{'group'} ? 'acl_title3' : 'acl_title2', "<tt>$who</tt>",
+my $below = &text($in{'group'} ? 'acl_title3' : 'acl_title2', 
+	          "<tt>".&html_escape($who)."</tt>",
 	          "<tt>$minfo{'desc'}</tt>");
 &ui_print_header($below, $text{'acl_title'}, "",
 		 -r &help_file($in{'mod'}, "acl_info") ?
@@ -54,17 +55,26 @@ if ($in{'mod'} && $in{'user'} && &supports_rbac($in{'mod'}) &&
 			  [ 0, $text{'no'} ] ]), 3);
 	}
 
-if ($in{'mod'}) {
+# Load custom ACL library
+my $mdir = &module_root_directory($in{'mod'});
+if (-r "$mdir/acl_security.pl") {
+	&foreign_require($in{'mod'}, "acl_security.pl");
+	}
+
+my $shown_config = 0;
+if ($in{'mod'} && -r "$mdir/config.info" &&
+    (!&foreign_defined($in{'mod'}, "acl_security_noconfig") ||
+     !&foreign_call($in{'mod'}, "acl_security_noconfig"))) {
 	# Show module config editing option
 	print &ui_table_row($text{'acl_config'},
 		&ui_radio("noconfig", $maccess{'noconfig'} ? 1 : 0,
 			[ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]), 3);
+	$shown_config = 1;
 	}
 
-my $mdir = &module_root_directory($in{'mod'});
+# Show custom ACL form
 if (-r "$mdir/acl_security.pl") {
-	print &ui_table_hr() if ($in{'mod'});
-	&foreign_require($in{'mod'}, "acl_security.pl");
+	print &ui_table_hr() if ($shown_config);
 	&foreign_call($in{'mod'}, "load_theme_library");
 	&foreign_call($in{'mod'}, "acl_security_form", \%maccess);
 	}

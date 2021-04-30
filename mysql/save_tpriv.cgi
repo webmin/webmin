@@ -38,7 +38,7 @@ else {
 			$in{'db'},
 			$in{'user_def'} ? '' : $in{'user'},
 			$in{'table'}, $config{'login'} || "root",
-			$in{'perms1'}, $in{'perms2'});
+			$in{'perms1'} || '', $in{'perms2'} || '');
 		}
 	else {
 		# Update existing table permissions
@@ -51,7 +51,7 @@ else {
 		&execute_sql_logged($master_db, $sql,
 			$in{'host_def'} ? '%' : $in{'host'},
 			$in{'user_def'} ? '' : $in{'user'},
-			$in{'table'}, $in{'perms1'}, $in{'perms2'},
+			$in{'table'}, $in{'perms1'} || '', $in{'perms2'} || '',
 			$in{'oldhost'}, $in{'olddb'},
 			$in{'olduser'}, $in{'oldtable'});
 		}

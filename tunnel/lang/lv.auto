@@ -1,0 +1,21 @@
+index_elink=Pagaidām nav iestatīts vietrādis URL.
+index_url=Ievadiet URL, lai atvērtu:
+index_open=Atvērt
+
+link_eurl=Nederīgs tuneļa URL : $1 
+link_elogin=Neizdevās pieteikties $1 kā $2.
+link_eautologin=Nederīga pieteikšanās vai parole $1. <a href='$2'>Noklikšķiniet šeit</a>, lai pieteiktos.
+link_enouser=Lai pieteiktos $1, ir nepieciešams lietotājvārds un parole, taču neviens no tiem nav konfigurēts.
+link_ebadurl=Jums nav atļauts piekļūt vietrādim URL $1 
+link_mconfig=Izmantojiet lapu <a href='$1'>moduļa konfigurācija</a>, lai mainītu pieteikuminformāciju.
+
+login_title=Ieiet vietnē
+login_desc=Lai pieteiktos $1, jums ir jānorāda lietotājvārds un parole.
+login_header=Vietnes autentifikācija
+login_user=Lietotājvārds
+login_pass=Parole
+login_login=Pieslēgties
+login_clear=Skaidrs
+
+seturl_err=Neizdevās atvērt URL
+seturl_eurl=Ievadīts nederīgs URL

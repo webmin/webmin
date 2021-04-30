@@ -1,0 +1,37 @@
+index_title=Ibdel il-Lingwa u t-Tema
+index_lang=Lingwa UI Webmin
+index_langglobal2=Lingwa globali.. $1 ($2)
+index_langset=Għażla personali ..
+index_theme=Webmin UI tema
+index_overlay=L-overlay tat-tema
+index_overlaydef=Xejn - uża n-nuqqasijiet tat-tema
+index_themeglobal=Tema globali ($1)
+index_themeset=Għażla personali ..
+index_pass=Password tal-login tal-Webmin
+index_passleave=Ħalli l-istess
+index_passset=Issettja għal ..
+index_passagain=Erga 'ikteb il-password
+index_ok=Agħmel Bidliet
+index_themedef=Old Webmin Tema
+index_desc2=Dan il-modulu jista 'jintuża biex tbiddel $1, għall-kont Webmin tiegħek biss.
+index_d3=$1, $2 u $3 
+index_d2=$1 u $2 
+index_d1=$1 
+index_dlang=il-lingwa li l-moduli huma murija
+index_dtheme=it-tema li tikkontrolla d-dehra ta ’Webmin
+index_dpass=il-password użata biex tidħol magħha
+
+change_title=Nibdlu l-issettjar
+change_user=Timmodifika login Webmin ..
+change_done=.. sar
+change_restart=Reloading Webmin ..
+change_redirect=Trid direzzjoni mill-ġdid għall-menu prinċipali ..
+change_ecolon=Il-password tiegħek ma jistax ikun fiha l-karattru:
+change_epass2=Passwords ġodda ma jaqblux
+change_epass=Password ġdida mhix valida : $1 
+change_eoverlay=Ma tistax tagħżel overlay tat-tema sakemm ma tintgħażelx ukoll tema UI
+change_eoverlay2=L-overlay tat-tema magħżul mhux kompatibbli mat-tema tal-UI magħżula
+
+acl_lang=Tista 'tbiddel il-lingwa?
+acl_theme=Tista 'tbiddel it-tema?
+acl_pass=Tista 'tibdel il-password (meta ssettjat fil-Webmin)?

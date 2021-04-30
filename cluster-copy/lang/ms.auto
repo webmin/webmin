@@ -1,0 +1,67 @@
+index_title=Fail Salinan Kluster
+index_add=Buat salinan fail berjadual baru.
+index_none=Tiada salinan fail yang dijadualkan telah ditakrifkan.
+index_servers=Salin ke pelayan
+index_return=senarai salinan cluster
+index_more=$1 lagi ..
+index_run=Jalankan sekarang ..
+index_files=Fail untuk disalin
+index_sched=Dijadualkan?
+index_when=Ya, $1 
+index_act=Tindakan
+index_exec=Jalankan
+index_delete=Padam Salinan yang Dipilih
+
+edit_title=Edit Salinan Kluster
+create_title=Buat Salinan Kluster
+edit_header=Butiran salinan kumpulan
+edit_files=Fail untuk disalin
+edit_dest=Direktori destinasi
+edit_cmd=Perintah untuk disiarkan selepas menyalin
+edit_before=Perintah untuk dijalankan sebelum menyalin
+edit_remote=Pada pelayan jauh
+edit_dmode0=Salin laluan penuh di bawah direktori
+edit_dmode1=Salin ke direktori ini
+edit_servers=Salin ke pelayan
+edit_group=Ahli $1 
+edit_this=pelayan ini
+edit_all=&lt;Semua tuan rumah&gt;
+edit_sched=Salin mengikut jadual?
+edit_schedyes=Ya, kadang-kadang dipilih di bawah ..
+edit_run=Salin Sekarang
+edit_return=salinan kluster
+edit_email=Output e-mel kepada
+edit_none=Tiada siapa
+
+save_err=Gagal menyimpan kerja cron cluster
+save_efiles=Tiada fail untuk disalin
+save_edest=Direktori destinasi yang hilang
+save_eservers=Tiada pelayan untuk menyalin untuk dimasukkan
+save_efile=Fail untuk menyalin '$1' bukan jalan mutlak
+save_eemail=Alamat e-mel yang hilang atau tidak sah
+
+exec_title=Menyalin Fail
+exec_files1=Menyalin $1 fail ke pelayan terpilih $2 ..
+exec_files2=Menyalin $1 ke pelayan terpilih $2 ..
+exec_under=(di bawah direktori $1)
+exec_failed=Gagal menyalin kepada $1 : $2 
+exec_success=Salin fail berikut ke $1  :
+exec_made=Membuat direktori berikut pada $1  :
+exec_nohosts=Tiada tuan rumah yang dipilih untuk disiarkan, atau kumpulan yang dipilih tidak mengandungi sebarang tuan rumah yang boleh digunakan.
+exec_nothing=Tiada fail berjaya disalin ke $1.
+exec_not=Gagal menyalin fail berikut ke $1  :
+exec_cmd=Keluaran arahan salin pasca pada $1  :
+exec_before=Keluaran arahan sebelum-salinan pada $1  :
+exec_on=Gagal berjalan pada $1 : $2 
+
+log_create=Salinan dibuat untuk pelayan $1 hingga $2 
+log_modify=Salinan diubah suai untuk pelayan $1 hingga $2 
+log_delete=Salinan dipadamkan untuk pelayan $1 hingga $2 
+log_exec=Disalin pelayan $1 hingga $2 
+log_deletes=Dihapus $1 salinan
+
+email_subject_succeeded=Salinan kumpulan $1 berjaya
+email_subject_failed=Salinan kumpulan $1 gagal
+
+delete_err=Gagal memadam salinan
+delete_enone=Tiada yang dipilih

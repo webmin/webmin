@@ -57,7 +57,7 @@ elsif ($in{'mode'} eq 'access') {
 else { &error($text{'file_emode'}); }
 
 &ui_print_header(undef, $text{'file_title'}, "");
-open(FILE, $file);
+open(FILE, "<$file");
 @lines = <FILE>;
 close(FILE);
 

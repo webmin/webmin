@@ -1,0 +1,118 @@
+index_title=Server hlasovej schránky
+index_ecmd=Príkaz Vgetty $1 nebol vo vašom systéme nájdený. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_econfig=Vo vašom systéme sa nenašiel konfiguračný súbor Vgetty $1. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_return=index hlasovej schránky
+
+vgetty_title=Konfigurácia sériového portu
+vgetty_desc=Aby váš server odpovedal na hlasové hovory pomocou modemu pripojeného k sériovému portu, musí byť uvedený nižšie. Keď do tohto zoznamu pridáte port, program $1 bude nakonfigurovaný na prijímanie hovorov a prehrávanie správy.
+vgetty_add=Pridajte nový sériový port
+vgetty_tty=Sériové zariadenie
+vgetty_type=typ
+vgetty_vgetty=hlas
+vgetty_mgetty=Dáta/fax
+vgetty_none=Pre hlasovú schránku ešte neboli nakonfigurované žiadne sériové porty.
+vgetty_apply=Použiť konfiguráciu
+vgetty_applydesc=Kliknutím na toto tlačidlo použijete aktuálnu konfiguráciu servera hlasovej pošty spustením príkazu $1 a zabitím všetkých procesov Vgetty.
+vgetty_applyerr=Nepodarilo sa použiť konfiguráciu
+vgetty_return=zoznam sériových portov
+vgetty_create=Pridajte sériový port
+vgetty_edit=Upraviť sériový port
+vgetty_header=Možnosti konfigurácie sériového portu
+vgetty_ts=Sériový port $1 
+vgetty_other=Iné zariadenie ..
+vgetty_rings=Krúžky pred odpoveďou
+vgetty_default=Globálne predvolené
+vgetty_ans=Režim odpovedania
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=hlas
+vgetty_ans_fax=fax
+vgetty_ans_data=údaje
+vgetty_err=Uloženie sériového portu zlyhalo
+vgetty_etty=Chýbajúce alebo neexistujúce sériové zariadenie
+vgetty_erings=Chýba alebo je neplatný počet zvonení
+vgetty_erings2=Počet krúžkov musí byť najmenej 2
+vgetty_eans=Nie sú vybrané žiadne režimy odpovedania
+vgetty_eclash=Sériový port $1 sa už používa
+
+options_title=Možnosti servera hlasovej pošty
+options_header=Možnosti pre všetky sériové porty
+options_maxlen=Maximálna dĺžka správy
+options_secs=sekundy
+options_minlen=Minimálna dĺžka správy
+options_silence=Odstrániť ticho z konca správ?
+options_thresh=Hladina prahu ticha
+options_rgain=Úroveň hlasitosti záznamu
+options_tgain=Úroveň hlasitosti prehrávania
+options_rings=Krúžky pred odpoveďou
+options_perport=Môže byť nastavený pre každý sériový port
+options_ans=Režim odpovedania
+options_keep=Uchovávajú správy obsahujúce údaje alebo kódy DTMF?
+options_light=Zapnúť svetlo automatickej odpovede po prijatí?
+options_owner=Vlastník systému Unix pre súbory správ
+options_group=Skupina Unix pre súbory správ
+options_mode=Povolenia pre súbory správ
+options_prog=Po zaznamenaní správy
+options_prog0=Nerob nič
+options_prog1=E-mail vo formáte WAV na adresu
+options_prog2=Spustiť príkaz v súbore správ
+options_err=Možnosti hlasovej schránky sa nepodarilo uložiť
+options_erings=Chýba alebo je neplatný počet zvonení
+options_erings2=Počet krúžkov musí byť najmenej 2
+options_emaxlen=Chýbajúca alebo neplatná maximálna dĺžka správy
+options_eminlen=Chýbajúca alebo neplatná minimálna dĺžka správy
+options_ethresh=Chýba alebo je neplatná hranica stíšenia
+options_ergain=Chýbajúca alebo neplatná úroveň hlasitosti záznamu
+options_ergain2=Úroveň hlasitosti záznamu musí byť medzi 0 a 100
+options_etgain=Chýbajúca alebo neplatná úroveň hlasitosti prehrávania
+options_etgain2=Úroveň hlasitosti prehrávania musí byť medzi 0 a 100
+options_eemail=Chýbajúca alebo neplatná e-mailová adresa
+options_eprog=Chýbajúci alebo neexistujúci program na spustenie
+options_eowner=Chýbajúci alebo neplatný používateľ Unixu pre súbory správ
+options_egroup=Chýba alebo je neplatná skupina Unix pre súbory správ
+options_emode=Chýbajúce alebo neplatné osmičkové povolenia pre súbory správ
+
+received_title=Prijaté správy
+recieved_desc=Správy z hlasovej schránky prijaté serverom sú uvedené nižšie. Ak si chcete správu vypočuť, kliknite na dátum/čas v prvom stĺpci.
+received_none=Neboli nájdené žiadne prijaté hlasové správy.
+received_date=Prijaté o
+received_size=Veľkosť súboru
+received_speed=Vzorkovacia frekvencia
+received_type=Zvukový formát
+received_delete=Odstrániť vybrané správy
+received_move=Konvertovať vybrané na pozdravy
+received_all=Vybrať všetko
+received_invert=Obrátiť výber
+
+listen_efile=Neplatný názov súboru správy!
+listen_epath=Správa hlasovej schránky už neexistuje
+
+delete_efile=Neplatný názov súboru správy!
+
+messages_title=Pozdravné správy
+messages_desc=Na tejto stránke sú uvedené pozdravy, ktoré sa prehrajú po pripojení volajúceho k vášmu serveru hlasovej schránky. Ak máte viac ako jednu, použije sa jedna náhodne vybraná správa.
+messages_file=Názov súboru
+messages_none=K dispozícii nie sú žiadne pozdravy.
+messages_updesc=Tento formulár vám umožňuje nahrať dodatočný súbor WAV s pozdravom, ktorý sa skonvertuje do zvoleného formátu na použitie modemom. Vzorkovacia frekvencia odovzdaných WAV by mala byť rovnaká ako vzorkovacia frekvencia prijatých správ, ako aj vybratý formát.
+messages_upload=Odovzdajte správu
+messages_fmt=premeniť na
+
+pvfdesc=$1, $2 bitov
+
+upload_err=Nepodarilo sa pridať správu
+upload_emessage=Nie je vybratý žiadny súbor WAV
+upload_ewav=Nepodarilo sa skonvertovať súbor WAV : $1 
+upload_epvf=Nepodarilo sa vytvoriť súbor RMD : $1 
+upload_esame=Súbor správ $1 už existuje
+
+log_apply=Aplikovaná konfigurácia
+log_upload=Odovzdaná uvítacia správa $1 
+log_move=Konvertované $1 prijaté správy
+log_delete0=Odstránené $1 prijaté správy
+log_delete1=Odstránené $1 uvítacie správy
+log_options=Zmenené možnosti hlasovej schránky
+log_vgetty_create=Pridaný sériový port $1 
+log_vgetty_modify=Upravený sériový port $1 
+log_vgetty_delete=Vymazaný sériový port $1 
+
+email_subject=Správa hlasovej schránky
+email_body=Správa hlasovej schránky bola prijatá na $1 po $2.

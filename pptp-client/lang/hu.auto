@@ -1,0 +1,112 @@
+index_title=PPTP VPN kliens
+index_epptp=A (z) $1 PPTP kliensprogram nem található meg a rendszerén. Lehet, hogy nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+index_eppp=A (z) $1 PPP szerver program nincs telepítve a rendszerére. A PPTP működésétől függ.
+index_eoptions=A (z) $1 globális PPTP PPP beállítási fájl nem létezik. Vagy készítse el, vagy módosítsa a <a href='$2'>modul konfigurációját</a> egy másik fájl használatához, vagy egyáltalán nem.
+index_header=Meghatározott alagutak
+index_none=Még nincs meghatározva PPTP alagutak.
+index_tunnel=$1 alagút
+index_add=Adjon hozzá egy új PPTP VPN alagutat.
+index_conn=Kapcsolodni:
+index_pass=választható jelszóval:
+index_conndesc=Kattintson erre a gombra a kiválasztott PPTP VPN alagút aktuális konfigurációhoz történő csatlakoztatásához.
+index_disc=Leválasztás:
+index_discdesc=Kattintson erre a gombra a kiválasztott, jelenleg aktív PPTP VPN alagút leválasztásához és az összes útvonal eltávolításához.
+index_return=PPTP alagút lista
+index_opts=A globális PPP beállítások szerkesztése
+index_optsdesc=Kattintson erre a gombra az összes PPTP VPN alagútra érvényes PPP beállítások szerkesztéséhez.
+index_version=$1 PPPd verzió
+index_boot=Csatlakozás indításkor:
+index_noboot=&lt;Ne csatlakozzon&gt;
+index_bootdesc=Ezt a beállítást módosíthatja annak ellenőrzéséhez, hogy a kiválasztott PPTP VPN kapcsolat elinduljon-e a rendszerindításkor.
+
+disc_err=Az alagút leválasztása nem sikerült
+disc_egone=Már nem aktív
+disc_ekill=Nem sikerült megölni a pppd folyamatot
+disc_done=A (z) $1 alagút sikeresen leválasztották.
+
+conn_err=Az alagút csatlakoztatása nem sikerült
+conn_egone=Az alagút már nem létezik
+cone_ealready=Már csatlakoztatva
+conn_einvalid=Hiányzik a kiszolgáló IP-címe a konfigurációs fájlban
+conn_title=Csatlakozó alagút
+conn_cmd=PPTP kapcsolat létrehozása a $1 paranccsal.
+conn_ok=.. A kapcsolat sikeresen aktiválva lett a (z) $1 interfész segítségével. Helyi címe $2, a távoli címe $3.
+conn_timeout=.. kapcsolat nem sikerült! Az alábbi naplóüzenetekben tájékozódhat arról, miért.
+conn_routes=Útvonalak hozzáadása parancsokkal ..
+conn_mppe=Az MPPE protokoll a VPN titkosításhoz PPP démont és kernel támogatást igényel. A fenti hibák azonban arra utalnak, hogy az egyik vagy mindkettő nem érhető el a rendszerén. Ha a PPTP-szerver nem igényel MPPE-t, akkor próbáljon kikapcsolni az ehhez kapcsolódó összes opciót a <a href='$1'>globális PPP-beállítások</a> oldalon.
+
+edit_title1=Adja hozzá a PPTP alagútot
+edit_title2=A PPTP alagút szerkesztése
+edit_header=PPTP VPN alagút lehetőségek
+edit_name=Az alagút neve
+edit_server=Csatlakozás a szerverhez
+edit_login=Bejelentkezés felhasználóként
+edit_same=Rendszer gazdagép neve
+edit_pass=Bejelentkezés jelszóval
+edit_remote=Szerver neve
+edit_auto=Automatikus
+edit_adddef=Hozzáad alapértelmezett útvonalat?
+edit_def1=Másik végén
+edit_def2=Átjárón keresztül ..
+edit_deldef=Törli a régi alapértelmezett útvonalat?
+edit_routes=Útvonalak, amelyeket fel kell venni a csatlakozás után
+edit_type=típus
+edit_type0=&nbsp;
+edit_type1=Hálózat
+edit_type2=Egyedülálló házigazda
+edit_net=Hálózat vagy host
+edit_mask=Netmask
+edit_gw=Átjárón keresztül
+edit_gw_def=Másik vége
+edit_unknown=Egyéb <tt>útvonal</tt> parancsok
+edit_file=PPP beállítások fájl
+edit_none=Egyik sem
+edit_global=Normál globális fájl
+edit_ofile=Egyéb fájl ..
+
+save_err=Az alagút mentése nem sikerült
+save_ename=Hiányzik az alagút neve
+save_eserver=Hiányzó vagy érvénytelen szerver, amelyhez csatlakozni szeretne
+save_elogin=Hiányzó vagy érvénytelen bejelentkezési név
+save_eremote=Hiányzó vagy érvénytelen távoli szerver neve
+save_edef=Hiányzik vagy érvénytelen az alapértelmezett útvonal-átjáró
+save_enet=Érvénytelen hálózati cím a (z) $1 útvonalon
+save_emask=Érvénytelen hálómaszk a (z) $1 útvonalon
+save_egw=Érvénytelen hálózati átjáró a (z) $1 útvonalon
+save_ehost=Érvénytelen gazda IP-cím a (z) $1 útvonalon
+save_emask2=Nincs szükség hálózati maszkra a $1 host útvonalhoz
+save_egw2=Érvénytelen átjáró a host számára a (z) $1 útvonalon
+save_erename=Az alagút fájl átnevezése nem sikerült
+save_eclash=Az azonos nevű alagút vagy PPP társ már létezik
+save_efile=Hiányzó vagy érvénytelen PPP beállítások fájl
+
+opts_title=Globális PPP opciók
+opts_desc=Az alábbi beállítások $1 -ből származnak, és azokra az alagutakra vonatkoznak, amelyeket a szokásos globális PPP-beállítási fájl használatára állítottak be.
+opts_header=PPP lehetőségek minden alagúthoz
+opts_mtu=A küldő csomag maximális mérete
+opts_mru=A fogadó csomag maximális mérete
+opts_err=Nem sikerült menteni a globális PPP-beállításokat
+opts_emtu=Hiányzik vagy érvénytelen a küldő csomag maximális mérete
+opts_emru=Hiányzó vagy érvénytelen maximális fogadási csomagméret
+opts_msdesc=Az alábbi lehetőségek lehetővé teszik az MPPE-titkosítást, amelyet a Windows VPN-kiszolgálók használnak. Az MPPE azonban támogatást igényel mind a PPP démonban, mind az operációs rendszer kernelében.
+
+mppe_mppe-40=Használ 40 bites MPPE titkosítást?
+mppe_mppe-128=Használ 128 bites MPPE titkosítást?
+mppe_mppe-stateless=Engedélyezi az állapot nélküli MPPE módot?
+mppe_mppe=Engedélyezi az MPPE titkosítást?
+mppe_m2=Fel kell használni
+mppe_m0=Nem használható
+mppe_d0=Tiltva
+mppe_d1=Engedélyezett
+mppe_mppe-stateful=Engedélyezi az MPPE módot?
+mppe_old=Figyelem! A $1 régi stílusú MPPE-irányelveket megtaláltuk a konfigurációs fájlban, annak ellenére, hogy a PPP-démon támogatja az új stílusú irányelveket.
+mppe_new=Figyelem! Az új stílusú $1 MPPE irányelvek megtalálhatók a konfigurációs fájlban, bár a PPP démona csak a régi stílusú irányelveket támogatja.
+
+log_create=Létrehozta a (z) $1 PPTP alagutat
+log_update=Módosított $1 PPTP alagút
+log_delete=Törölt $1 PPTP alagút
+log_conn=Összekapcsolt alagút $1 
+log_conn_l=Csatlakoztatva a (z) $1 alagút a (z) $2 helyi címmel
+log_failed=A (z) $1 alagút csatlakoztatása nem sikerült
+log_disc=Összekapcsolt alagút $1 
+log_opts=Szerkesztett globális PPP-beállítások

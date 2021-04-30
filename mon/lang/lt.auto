@@ -1,0 +1,200 @@
+index_title=MON aptarnavimo monitorius
+index_return=MON indeksas
+index_edir=MON katalogo $1 nėra. Galbūt MON neįdiegtas arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+mon_global_title=Visuotinė kintamųjų konfigūracija
+mon_conf_title=Pagrindinė konfigūracija
+mon_status_title=Operatyvinė būsena
+hostgroups_title=MON konfigūracija-pagrindinės grupės
+services_title=Stebėjimo grupės - paslaugų apibrėžimai
+
+head_hostgroups=Priimančiosios grupės ir paslaugos
+head_groups=Pagrindinės grupės pavadinimas
+head_members=Priimančiosios grupės nariai
+head_services=Stebimos pagrindinės grupės paslaugos
+head_service=Tarnyba žiūrėti
+head_param=Aptarnavimo parametrai
+head_watch=Stebėti grupę?
+head_monauth=Pateikite MONCMD autentifikaciją
+head_usr=Vartotojo vardas
+head_pass=Slaptažodis
+head_mand=(„RAUDONOS SPALVOS“ parametrai yra privalomi)
+
+err_nomon=paketas „mon“ sistemoje neįdiegtas
+err_nomonconf=Jūsų sistemos nerastas MON konfigūracijos failas $1. Galbūt MON neįdiegtas arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+err_nowatch=Nepasirinkta jokių stebėjimo grupių. Norėdami tęsti, pasirinkite bent vieną stebėjimo grupę.
+err_noserv=Stebėjimo grupei nepasirinkta jokių paslaugų
+err_nomemb=Stebėjimo grupei nebuvo atrinkta jokių šeimininkų/narių
+err_monrun=MON neveikia pagrindiniame mašinoje. Prašau pradėti MON.
+stop_err=Nepavyko sustabdyti MON
+stop_epid=Daugiau nebėga
+start_err=Nepavyko paleisti MON
+restart_err=Nepavyko iš naujo paleisti MON
+restart_epid=Nepavyko gauti PID
+
+other=Kita (atskirta vieta)
+next=Kitas
+mon_stat=MON būsena
+mon_off=MON paslaugos nepradėtos
+mon_start=Pradėkite MON paslaugas
+mon_stop=Sustabdykite MON paslaugas
+mon_restart=Iš naujo paleiskite „MON Services“
+mon_startdesc=Spustelėkite šį mygtuką, kad paleistumėte MON serverį. Kol jis nebus pradėtas, sukonfigūruotas stebėjimas nebus atliekamas.
+mon_stopdesc=Spustelėkite šį mygtuką, kad sustabdytumėte MON serverį. Sustabdžius, sukonfigūruotas stebėjimas bus nutrauktas.
+mon_restartdesc=Spustelėkite šį mygtuką, norėdami pritaikyti dabartinę MON konfigūraciją iš naujo paleisdami serverio procesą.
+line=(po vieną kiekvienoje eilutėje)
+save_apply=Išsaugoti ir pritaikyti
+watch=Stebėjimo grupė
+members=Nariai
+def_perargs=wd {Sat-Sun}
+
+def_desc=apibūdinimas
+def_inter=intervalas
+def_mon=monitorius
+def_dep=dpend
+def_per=laikotarpis
+def_alert=budrus
+def_alertevr=alertevery
+def_alertaft=alertafter
+def_alertstr=startupalert
+def_allow=leisti_empty_group
+def_traptime=traptimeout
+def_trapdur=trapduration
+def_rand=randskew
+def_exclhost=neįtraukti vaiduokliai
+def_exclper=neįtraukti laikotarpio
+
+groups_title=Priimančiosios grupės
+groups_group=Grupės pavadinimas
+groups_members=Narių šeimininkai
+
+watches_title=Žiūrėti sąrašus
+watches_group=Stebima grupė
+watches_services=Stebimos paslaugos
+watches_sadd=Pridėti paslaugą ..
+watches_add=Pridėti grupės stebėjimo sąrašą :
+watches_return=stebėjimo sąrašai
+watches_none=Stebėjimo sąrašai dar nėra apibrėžti.
+
+global_title=Visuotinės parinktys
+global_header=Visuotinės MON konfigūracijos parinktys
+global_maxprocs=Maksimalūs MON procesai
+global_histlength=Renginių istorijos trukmė
+global_alertdir=Įspėjimo programų katalogas
+global_mondir=Stebėti programų katalogą
+global_authtype=Autentifikavimo tipas
+global_authtype_=Numatytas
+global_authtype_getpwnam=Sistemos skambučiai
+global_authtype_userfile=MON vartotojų failas
+global_authtype_shadow=Šešėlinis failas
+global_userfile=MON vartotojo byla
+global_emaxprocs=Trūksta arba netinkamas MON procesų skaičius
+global_ehistlength=Trūksta arba netinkama įvykių istorijos trukmė
+global_ealertdir=Trūksta arba netinkamas įspėjimo programų katalogas
+global_emondir=Trūksta arba netinkamas monitoriaus programų katalogas
+global_euserfile=Trūksta MON vartotojų failo
+
+watch_title=Redaguoti stebėjimo sąrašą
+watch_header=Priimančiosios grupės stebėjimo informacija
+watch_group=Priimančioji grupė, kurią reikia žiūrėti
+watch_services=Stebimos paslaugos
+watch_service=Paslaugos pavadinimas
+watch_monitor=Monitorius naudoti
+watch_interval=Patikrinkite kiekvieną
+watch_periods=Stebėjimo laikotarpiai
+
+service_title=Pridėti paslaugą
+service_title2=Redaguoti paslaugą
+service_header=Stebima paslaugos informacija
+service_name=Tarnybos pavadinimas
+service_interval=Patikrinkite kiekvieną
+service_desc=apibūdinimas
+service_units_s=sekundžių
+service_units_m=minučių
+service_units_h=valandos
+service_units_d=dienų
+service_units_w=savaites
+service_monitor=Monitoriaus naudojimas
+service_mon1=Standartinis monitorius
+service_mon0=Kitas monitorius ..
+service_args=Monitoriaus parametrai
+service_period=Stebėjimo laikotarpis $1 
+service_days=Dienos, kurias reikia patikrinti
+service_hours=Valandos tikrinti
+service_all=Visi
+service_pstr=Laikotarpio specifikacija
+service_new=Naujas stebėjimo laikotarpis
+service_alerts=Perspėjimai už laikotarpį
+service_alert=Budrus
+service_atype=Bėk, kai
+service_atype_alert=Aptarnavimas smunka
+service_atype_upalert=Atsiranda paslaugos
+service_atype_startupalert=MON pradeda veikti
+service_aargs=Papildomi parametrai
+service_every=Siųsti perspėjimą
+service_every_def=Kiekvieną kartą paleidžiamas monitorius
+service_every_time=Kiekvienas
+service_num=Maksimalus siunčiamų perspėjimų skaičius
+service_unlimited=Neribota
+service_after=Gedimai prieš perspėjimą
+service_immediate=Tuoj pat
+service_after_num=Po $1 nesėkmių
+service_aftertime=Laiko intervale
+service_newperiod=Įtraukite naują periodą
+service_delperiod=Ištrinti šį laikotarpį
+service_err=Nepavyko išsaugoti paslaugos
+service_ename=Trūksta arba netinkamas paslaugos pavadinimas
+service_einterval=Trūksta arba netinkamas tikrinimo intervalas
+service_eother=Trūksta arba netinkamas monitorius
+service_ehour=Trūksta arba netinkama valanda $1 laikotarpiui (turi būti kaip 9:00 ar 17:00)
+service_eperiod=$1 laikotarpiui nenurodyta dienų ar valandų
+service_eevery=Trūksta arba netinkamas paslaugų perspėjimo intervalas
+service_eafter=Trūksta arba netinkamas gedimų skaičius prieš perspėjimą
+service_enum=Trūksta arba netinkami siunčiami įspėjimai
+service_epstr=Trūksta laikotarpio specifikacijos
+service_known0=<tt>Laikas::Laikotarpis</tt> eilutė
+service_known1=Nurodytos dienos ir valandos
+service_known2=Apibrėžtas laikotarpis
+
+status_title=MON būsena
+status_ecgi=MON statuso CGI programa $1 neegzistuoja. Galbūt jis neįdiegtas, arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+status_eperl=MON status CGI programai reikalingas modulis $1 perl. <a href='$2'>Norėdami įdiegti tiesiogiai iš CPAN, spustelėkite čia</a>.
+status_esame=MON statuso CGI programa $1 buvo nustatyta <tt>mon.cgi</tt> scenarijui šiame „Webmin“ modulyje, o ne CGI programai, kuri pateikiama kartu su MON. Norėdami naudoti teisingą kelią, sureguliuokite <a href='$2'>modulio konfigūraciją</a>.
+
+users_title=MON vartotojai
+users_etype=MON vartotojų sąrašas negali būti redaguojamas, nes MON šiuo metu nėra sukonfigūruotas naudoti jį autentifikavimui puslapyje <a href='$1'>Visuotinės parinktys</a>.
+users_header=Leisti MON vartotojams $1 
+users_nousers=$1 nebuvo apibrėžta jokių MON vartotojų.
+users_add=Sukurkite naują vartotoją.
+users_return=MON vartotojų sąrašas
+
+user_create=Sukurti MON vartotoją
+user_edit=Redaguoti MON vartotoją
+user_header=MON vartotojo informacija
+user_user=Vartotojo vardas
+user_pass=Slaptažodis
+user_leave=Palikite nepakeistą
+user_err=Nepavyko išsaugoti vartotojo
+user_euser=Trūksta arba netinkamas vartotojo vardas
+user_esame=Vartotojas tuo pačiu vardu jau yra
+
+auth_title=Kliento komandos
+auth_desc=Šis puslapis leidžia jums valdyti, kurias MON komandas gali vykdyti tie vartotojai, naudodamiesi kliento programomis.
+auth_cmd=MON komanda
+auth_users=Leidžiami vartotojai
+auth_none=Niekas
+auth_all=Visi
+auth_sel=Tik vartotojai
+auth_err=Nepavyko išsaugoti kliento komandų
+auth_eusers=Joks vartotojas neįveskite komandos $1 
+
+periods_title=Apibrėžti laikotarpiai
+periods_period=Laikotarpio pavadinimas
+periods_times=Dienos ir laikai
+periods_alldays=Visos dienos
+periods_allhours=Visos valandos
+periods_err=Nepavyko išsaugoti apibrėžtų laikotarpių
+periods_ename=„$1“ nėra tinkamas laikotarpio pavadinimas
+periods_ehour=Trūksta arba netinkama valanda $1 laikotarpiui (turi būti kaip 9:00 ar 17:00)
+
+show_title=Operatyvinė būsena
+show_ecgi=MON būsenos programos $1 nėra. Galbūt jis neįdiegtas, arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.

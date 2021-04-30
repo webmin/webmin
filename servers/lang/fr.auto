@@ -1,0 +1,79 @@
+index_nosearch=Aucun serveur ne correspond à votre recherche.
+index_defuser=Connexion par défaut pour les serveurs
+index_defpass=Mot de passe par défaut
+index_defport=Port Webmin
+index_delete=Supprimer les serveurs sélectionnés
+index_auto=Rechercher automatiquement des serveurs
+index_automsg=Cliquez sur ce bouton pour configurer la découverte périodique automatique de nouveaux serveurs Webmin sur votre réseau.
+index_search=Afficher les serveurs correspondant:
+index_ok=Chercher
+
+edit_realhost=Nom d'hôte réel
+edit_portnone=Aucun ensemble
+edit_checkssl=Vérifier le certificat SSL distant?
+edit_mode3=Connectez-vous avec le nom d'utilisateur et le mot de passe de ce serveur
+edit_luser=Nom d'utilisateur pour le serveur distant
+edit_lpass=Mot de passe pour le serveur distant
+edit_same=Disponible uniquement hors mode d'authentification de session et lorsque le mot de passe est mis à la disposition des programmes Webmin.
+
+save_ehost2=L'hôte n'existe pas
+save_eport2=Un port doit être attribué si un type de lien avec une connexion est sélectionné
+save_egroup2=Nouveau nom de groupe non valide
+
+find_but=Nouveau serveur trouvé à $1, mais l'authentification a échoué : $2 
+find_already2=Hôte de serveur connu trouvé à $1 
+find_skip=Ignorer le serveur à $1 
+find_eiface=Impossible de trouver l'interface à analyser
+find_eport=Numéro de port manquant ou invalide
+
+log_deletes=$1 serveurs supprimés
+
+acl_auto=Peut configurer la détection automatique des serveurs?
+acl_add=Peut enregistrer de nouveaux serveurs?
+acl_forcefast=Forcer le mode RPC rapide par défaut?
+acl_forcetype=Forcer le type de système d'exploitation par défaut?
+acl_forcelink=Forcer le type de connexion par défaut?
+acl_links=Peut se connecter via des serveurs?
+
+login_esame=L'option d'utiliser la même connexion que ce serveur ne peut être utilisée qu'en dehors du mode d'authentification de session et lorsque le mot de passe est mis à la disposition des programmes Webmin.
+
+delete_err=Impossible de supprimer les serveurs
+delete_enone=Aucune sélection
+delete_ecannot=Vous n'êtes pas autorisé à supprimer des serveurs
+delete_title=Supprimer des serveurs
+delete_rusure=Voulez-vous vraiment supprimer les serveurs sélectionnés $1 ?
+delete_confirm=Effacer maintenant
+
+auto_title=Rechercher automatiquement des serveurs
+auto_header=Options d'enregistrement automatique du serveur
+auto_sched=Recherchez de nouveaux serveurs?
+auto_sched1=Oui, toutes les $1 minutes
+auto_net=Réseau IP à analyser
+auto_auto=Réseau local
+auto_ip=Réseaux IP $1 
+auto_iface=Réseau sur l'interface $1 
+auto_user=Nom d'utilisateur pour les nouveaux serveurs
+auto_pass=Mot de passe pour les nouveaux serveurs
+auto_type=Type de système par défaut
+auto_err=Échec de l'enregistrement des paramètres de recherche automatique
+auto_emins=Nombre de minutes manquant ou invalide
+auto_enet=Adresse réseau manquante ou invalide
+auto_eiface=Interface réseau manquante ou invalide
+auto_euser=Nom d'utilisateur manquant
+auto_cluster-software=Ajouter aux packages logiciels du cluster?
+auto_remove=Supprimer les serveurs enregistrés introuvables?
+auto_email=Envoyer une notification par e-mail à
+auto_none=N'envoyez pas
+auto_eemail=Adresse e-mail manquante pour les notifications
+auto_smtp=Envoyer via un serveur SMTP
+auto_self=Ce système
+auto_esmtp=Serveur SMTP manquant ou invalide
+auto_findself=Enregistrer également ce système?
+
+config_deftype=Type de système par défaut
+config_typeauto=Automatique
+
+email_regsubject=Système $1 enregistré
+email_reg=Le système $1 a été automatiquement enregistré.
+email_unregsubject=Système $1 non enregistré
+email_unreg=Le système $1 a été automatiquement désinscrit.

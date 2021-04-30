@@ -1,0 +1,36 @@
+aliases_delete=删除所选别名
+
+adelete_err=删除别名失败
+adelete_enone=未选择
+
+routes_delete=删除选定的域路由
+
+rdelete_err=删除域路由失败
+
+virts_delete=删除选定的虚拟映射
+
+vdelete_err=删除虚拟映射失败
+
+log_delete_aliases=已删除 $1别名
+log_delete_virts=已删除 $1虚拟映射
+log_delete_routes=已删除 $1条路线
+log_delete_assigns=已删除 $1个邮件用户
+
+rfile_no_autoreply=不要将自动回复发送给
+rfile_from=发件人：答复地址
+rfile_auto=自动（根据收件人的地址）
+rfile_efrom=缺少发件人：地址
+rfile_fromdesc=尽可能始终指定发件人：地址，因为自动方法可能不可靠。
+
+queue_refresh=刷新邮件队列
+queue_refreshdesc=重新加载此页面以显示邮件队列的当前状态。
+
+assigns_delete=删除选定的邮件用户
+
+sdelete_err=删除邮件用户失败
+
+delete_ebogus=无效的队列文件名
+
+delq_titles=删除讯息
+delq_rusure=您确定要删除 $1个选定的排队消息吗？
+delq_confirm=删除讯息

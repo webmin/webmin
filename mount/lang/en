@@ -368,6 +368,7 @@ linux_noenforce=Yes, but don't enforce
 linux_df=Include reserved blocks in filesystem size?
 linux_noatime=Avoid updating last access times?
 linux_netdev=Wait until network interfaces are up?
+linux_nofail=Continue boot even if mount fails?
 linux_ecname=Missing or invalid client netbios name
 linux_emname=Missing or invalid server hostname or IP address
 linux_bind=Original Directory
@@ -390,6 +391,7 @@ linux_iocharset=IO character set
 linux_ecodepage=Missing or invalid code page
 linux_eiocharset=Missing or invalid IO character set
 linux_nounix=Disable CIFS Unix extensions?
+linux_noserverino=Generate inode numbers on client side?
 linux_cvers=CIFS version
 linux_ecvers=CIFS version must be a number
 
@@ -489,7 +491,7 @@ freebsd_other=Other device
 freebsd_select=Disk partition
 freebsd_idedev=IDE device $1, slice $2, partition $3
 freebsd_scsidev=SCSI device $1, slice $2, partition $3
-freebsd_edevpath=Other device must be an absolute path, like /dev/cdrom
+freebsd_edevpath=Other device must be an absolute path, like <tt>/dev/cdrom</tt>
 freebsd_edevfile=The device file '$1' does not exist
 
 cswap_file=The swap file $1 does not exist.

@@ -1,0 +1,103 @@
+index_title=Používatelia a skupiny LDAP
+index_ebase=Vo vašom systéme sa nenašiel žiadny konfiguračný súbor klienta LDAP, takže základne používateľov a skupín musia byť nastavené na stránke <a href='$1'>Konfigurácia modulu</a>.
+index_eperl=Modul $1 Perl, ktorý tento modul vyžaduje, nie je nainštalovaný alebo nefunguje správne. <a href='$2'>Kliknite sem</a> a stiahnite si ho a nainštalujte teraz.
+index_eperl2=Chyba, ktorú Perl nahlásil pri pokuse o načítanie modulu, bola :
+index_eldap=$1. Kliknite sem a upravte konfiguráciu <a href='$2'>modulu</a>.
+index_eschema=Webmin sa pripojil k serveru LDAP, ale nepodarilo sa načítať schému. Uistite sa, že prístup nebol zamietnutý v module <a href='$1'>LDAP</a>.
+index_eimap=$1. Možno je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_emd5=Tento modul bol <a href='$1'>nakonfigurovaný</a> na používanie šifrovania MD5 pre heslá, ale modul Perl $2 nie je nainštalovaný. <a href='$3'>Kliknite sem</a>, aby ste si stiahli a nainštalovali modul $2.
+index_eslappasswd=Tento modul bol <a href='$1'>nakonfigurovaný</a> na používanie šifrovania LDAP MD5 pre heslá, ale program <tt>$2</tt> používaný na šifrovanie hesla nie je nainštalovaný.
+index_eusearch=Nepodarilo sa vyhľadať používateľov pod $1 : $2 
+index_uadd=Pridajte nového používateľa LDAP.
+index_gadd=Pridajte novú skupinu LDAP.
+index_unone=Pod $1 sa nenašli žiadni používatelia LDAP.
+index_gnone=V skupine $1 sa nenašli žiadne skupiny LDAP.
+index_return=zoznam používateľov
+index_greturn=zoznam skupín
+index_egsearch=Nepodarilo sa vyhľadať skupiny pod $1 : $2 
+index_samba=Samba?
+index_cyrus=IMAP?
+index_users=Používatelia LDAP
+index_groups=Skupiny LDAP
+
+imap_econn=Nepodarilo sa pripojiť k serveru IMAP $1 
+imap_elogin=Nepodarilo sa prihlásiť na server IMAP $1 ako $2 : $3 
+conn_eldap_host=Vo vašom systéme nebol nájdený žiadny konfiguračný súbor klienta LDAP, takže server LDAP musí byť nastavený na stránke Konfigurácia modulu
+conn_elogin=Vo vašom systéme sa nenašiel žiadny konfiguračný súbor klienta LDAP, takže prihlasovacie meno LDAP musí byť nastavené na stránke Konfigurácia modulu
+conn_efile_open=Súbor poverení LDAP väzby sa nepodarilo otvoriť:
+
+uedit_cap=Možnosti používateľa
+uedit_samba=Prihlasovacie meno Samby?
+uedit_cyrus=Prihlasovacie meno na server IMAP?
+uedit_dn=DN LDAP používateľa
+uedit_classes=Triedy objektov LDAP
+uedit_alias=Poštové aliasy
+uedit_fields=Ďalšie polia LDAP
+uedit_firstname=Krstné meno
+uedit_lastname=Priezvisko
+uedit_raw=Atribúty LDAP
+uedit_return=podrobnosti o používateľovi
+uedit_quota=Kvóta IMAP
+uedit_unquota=Nemeňte sa
+uedit_sambapassopts=Možnosti hesla Samba
+uedit_sambapwdlastset=Posledná aktualizácia hesla
+uedit_sambapwdcanchange=Heslo sa môže zmeniť
+uedit_sambabadpasswordcount=Nesprávny počet hesiel
+uedit_sambaacctflags=Príznaky účtu
+
+usave_eadd=Nepodarilo sa pridať používateľa do databázy LDAP : $1 
+usave_emod=Nepodarilo sa zmeniť používateľa v databáze LDAP : $1 
+usave_emoddn=Nepodarilo sa premenovať používateľa v databáze LDAP : $1 
+usave_egroupmod=Nepodarilo sa zmeniť skupinu $1 v databáze LDAP : $2 
+usave_edelete=Nepodarilo sa odstrániť používateľa z databázy LDAP : $1 
+usave_eicreate=Nepodarilo sa vytvoriť používateľa
+usave_eiacl=Nepodarilo sa udeliť práva správcovi
+usave_eimap=Používateľ bol úspešne uložený do databázy LDAP, ale vyskytla sa chyba IMAP: $1 : $2 
+usave_eisub=Nepodarilo sa prihlásiť používateľa na priečinok $1 
+usave_eiquota=Nepodarilo sa nastaviť kvótu IMAP
+usave_eifolder=Nepodarilo sa vytvoriť priečinok $1 
+usave_eilogin=Nepodarilo sa prihlásiť ako nový používateľ
+usave_ecyruspass=Pri povolení protokolu IMAP sa musí zadať bežné heslo používateľa alebo musí byť vybraná možnosť Žiadne heslo vyžadované.
+usave_ebook=Nepodarilo sa vytvoriť položku adresára : $1 
+usave_emodbook=Nepodarilo sa zmeniť položku adresára : $1 
+usave_emodbookdn=Nepodarilo sa premenovať položku adresára : $1 
+usave_egone=Používateľ už neexistuje!
+usave_ex86=Tento modul nie je možné použiť na nastavenie hesla pre používateľa Samba v systémoch iných ako Intel, pretože to závisí od kompilovaného programu x86.
+usave_esamba=Tento modul nie je možné použiť na nastavenie hesla pre používateľa Samba, pretože nie je nainštalovaný modul na zdieľanie súborov Samba Windows.
+usave_ealiasdup=Alias $1 už používa $2 
+usave_eattrdup=Objekt $1 už používa $2 $3 
+usave_eattrdupu=Používateľ $1 už používa $2 $3 
+usave_eattrdupg=Skupina $1 už používa $2 $3 
+usave_ereal=Chýba skutočné meno
+usave_equota=Chýbajúca alebo neplatná kvóta IMAP
+
+search_err=Vyhľadávanie $1 pod $2 zlyhalo : $3 
+
+gedit_dn=Skupina LDAP DN
+gedit_return=podrobnosti o skupine
+gedit_cap=Skupinové schopnosti
+gedit_samba=Samba skupina?
+
+gsave_egone=Skupina už neexistuje!
+gsave_edelete=Nepodarilo sa odstrániť skupinu z databázy LDAP : $1 
+gsave_eadd=Nepodarilo sa pridať skupinu do databázy LDAP : $1 
+gsave_emod=Nepodarilo sa zmeniť skupinu v databáze LDAP : $1 
+gsave_emoddn=Nepodarilo sa premenovať skupinu v databáze LDAP : $1 
+
+gdel_group=Odstraňuje sa položka skupiny LDAP.
+
+udel_pass=Odstraňuje sa položka používateľa LDAP.
+udel_book=Odstraňuje sa z adresára.
+udel_imap=Odstraňuje sa priečinok IMAP.
+udel_warnimap=Pri odstraňovaní domovského adresára sa odstráni existujúca poštová schránka!
+udel_failed=.. zlyhalo!  : $1 
+
+raw_title=Atribúty LDAP
+raw_name=Názov atribútu
+raw_value=hodnoty
+raw_for=Pre $1 
+
+batch_samba=Vytvoriť účet Samba pre nových používateľov?
+batch_imap=Vytvoriť účet IMAP pre nových používateľov?
+batch_descafter3=V riadkoch <b>vytvoriť</b> a <b>upravovať</b> môžete voliteľne pripojiť ďalšie polia obsahujúce atribúty LDAP vo formáte <i>name</i> = <i>value</i>, aby byť priradený novým alebo zmeneným používateľom.
+batch_eattr=Na riadku $1 : $2 je neplatný atribút LDAP

@@ -1,0 +1,112 @@
+index_title=پی پی ٹی پی وی پی این کلائنٹ
+index_epptp=The PPTP client program $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_eppp=آپ کے سسٹم پر پی پی پی سرور پروگرام$1 انسٹال نہیں ہے۔ پی پی ٹی پی کام کرنے کے لئے اس پر منحصر ہے۔
+index_eoptions=The global PPTP PPP options file $1 does not exist. Either create it, or adjust the <a href='$2'>module configuration</a> to use a different file, or none at all.
+index_header=طے شدہ سرنگیں
+index_none=ابھی تک کسی پی پی ٹی پی سرنگوں کی تعریف نہیں کی گئی ہے۔
+index_tunnel=سرنگ$1
+index_add=ایک نیا پی پی ٹی پی وی پی این ٹنل شامل کریں۔
+index_conn=سے رابطہ کریں:
+index_pass=اختیاری پاس ورڈ کے ساتھ:
+index_conndesc=منتخب شدہ پی پی ٹی پی وی پی این سرنگ کو موجودہ کنفیگریشن کا استعمال کرکے منسلک کرنے کے لئے اس بٹن پر کلک کریں۔
+index_disc=سے منقطع:
+index_discdesc=منتخب شدہ فی الحال فعال پی پی ٹی پی وی پی این سرنگ منقطع کرنے اور اس کے ذریعے تمام راستوں کو ہٹانے کیلئے اس بٹن پر کلک کریں۔
+index_return=پی پی ٹی پی سرنگ کی فہرست
+index_opts=گلوبل پی پی پی آپشنز میں ترمیم کریں
+index_optsdesc=پی پی پی کے ان اختیارات میں ترمیم کرنے کے لئے اس بٹن پر کلک کریں جو تمام پی پی ٹی پی وی پی این سرنگوں پر لاگو ہوتا ہے۔
+index_version=پی پی ڈی ورژن$1
+index_boot=بوٹ میں جڑیں:
+index_noboot=&lt;مت جڑیں&gt;
+index_bootdesc=اس اختیار کو تبدیل کرنے کے ل Change تبدیل کریں کہ آیا منتخب شدہ پی پی ٹی پی وی پی این کنکشن بوٹ وقت پر شروع ہوا ہے یا نہیں۔
+
+disc_err=سرنگ منقطع کرنے میں ناکام
+disc_egone=اب فعال نہیں ہے
+disc_ekill=پی پی ڈی پی کے عمل کو ختم کرنے میں ناکام
+disc_done=ٹنل$1 کامیابی کے ساتھ منقطع ہوگئی تھی۔
+
+conn_err=سرنگ سے رابطہ قائم کرنے میں ناکام
+conn_egone=اب سرنگ موجود نہیں ہے
+cone_ealready=پہلے سے منسلک ہے
+conn_einvalid=کنفگریشن فائل میں سرور کا IP پتہ غائب ہے
+conn_title=منسلک سرنگ
+conn_cmd=کمانڈ$1 کے ساتھ پی پی ٹی پی کنکشن قائم کرنا۔
+conn_ok=.. انٹرفیس$1 کا استعمال کرتے ہوئے کنکشن کامیابی کے ساتھ فعال ہوگیا۔ آپ کا مقامی پتہ$2 ہے ، اور ریموٹ ایڈریس$3 ہے۔
+conn_timeout=.. رابطہ ناکام! کیوں معلومات کے لئے نیچے لاگ پیغامات چیک کریں.
+conn_routes=احکامات کے ساتھ راستے شامل کرنا ..
+conn_mppe=The MPPE protocol for VPN encryption requires PPP daemon and kernel support. However, the errors above suggest that one or both are not available on your system. If the PPTP server does not require MPPE, try turning off all options related to it on the <a href='$1'>global PPP options</a> page.
+
+edit_title1=پی پی ٹی پی ٹنل شامل کریں
+edit_title2=پی پی ٹی پی ٹنل میں ترمیم کریں
+edit_header=پی پی ٹی پی وی پی این سرنگ کے اختیارات
+edit_name=سرنگ کا نام
+edit_server=سرور سے جڑیں
+edit_login=بطور صارف لاگ ان ہوں
+edit_same=سسٹم کا میزبان نام
+edit_pass=پاس ورڈ کے ساتھ لاگ ان کریں
+edit_remote=سرور کا نام
+edit_auto=خودکار
+edit_adddef=پہلے سے طے شدہ راستہ شامل کریں؟
+edit_def1=دوسرے سرے کے ذریعے
+edit_def2=گیٹ وے کے ذریعے ..
+edit_deldef=پرانا طے شدہ راستہ حذف کریں؟
+edit_routes=مربوط ہونے کے بعد شامل ہونے والے راستے
+edit_type=ٹائپ کریں
+edit_type0=&nbsp;
+edit_type1=نیٹ ورک
+edit_type2=سنگل میزبان
+edit_net=نیٹ ورک یا میزبان
+edit_mask=نیٹ ماسک
+edit_gw=گیٹ وے کے ذریعے
+edit_gw_def=دوسرے سرے
+edit_unknown=Other <tt>route</tt> commands
+edit_file=پی پی پی کے اختیارات کی فائل
+edit_none=کوئی نہیں
+edit_global=معیاری عالمی فائل
+edit_ofile=دوسری فائل ..
+
+save_err=سرنگ کو بچانے میں ناکام
+save_ename=سرنگ کا نام غائب ہے
+save_eserver=رابطہ قائم کرنے کیلئے لاپتہ یا غلط سرور
+save_elogin=گمشدہ یا غلط لاگ ان نام
+save_eremote=لاپتہ یا غلط ریموٹ سرور کا نام
+save_edef=لاپتہ یا غلط ڈیفالٹ روٹ گیٹ وے
+save_enet=راستہ$1 میں نیٹ ورک کا غلط پتہ
+save_emask=$1 میں غلط نیٹ ماسک
+save_egw=روٹ$1 میں نیٹ ورک کے لئے غلط گیٹ وے
+save_ehost=راستہ$1 میں میزبان کا غلط IP پتہ
+save_emask2=میزبان روٹ$1 کیلئے نیٹ ماسک کی ضرورت نہیں ہے
+save_egw2=روٹ$1 میں میزبان کے ل Invalid غلط گیٹ وے
+save_erename=سرنگ فائل کا نام تبدیل کرنے میں ناکام
+save_eclash=اسی نام والی ایک سرنگ یا پی پی پی پیر پہلے سے موجود ہے
+save_efile=گمشدہ یا غلط پی پی پی اختیارات فائل
+
+opts_title=گلوبل پی پی پی آپشنز
+opts_desc=ذیل میں ترتیبات $1 سے لی گئیں ہیں ، اور ان تمام سرنگوں پر لاگو ہوں گی جو معیاری عالمی پی پی پی کے اختیارات فائل کو استعمال کرنے کے لئے طے کی گئی ہیں۔
+opts_header=تمام سرنگوں کیلئے پی پی پی کے اختیارات
+opts_mtu=زیادہ سے زیادہ پیکٹ بھیجنے کا سائز
+opts_mru=زیادہ سے زیادہ وصول شدہ پیکٹ کا سائز
+opts_err=پی پی پی کے عالمی اختیارات کو بچانے میں ناکام
+opts_emtu=زیادہ سے زیادہ بھیجنے والے پیکٹ سائز غائب یا غلط
+opts_emru=زیادہ سے زیادہ وصول کرنے والے پیکٹ سائز غائب یا غلط
+opts_msdesc=نیچے دیئے گئے اختیارات ایم پی پی ای انکرپشن کو اہل بناتے ہیں ، جو ونڈوز وی پی این سرورز کے ذریعہ استعمال ہوتا ہے۔ تاہم ، ایم پی ای پی پی پی ڈیمون اور آپریٹنگ سسٹم دانا دونوں میں مدد کی ضرورت ہے۔
+
+mppe_mppe-40=40 بٹ ایم پی پی ای خفیہ کاری کا استعمال کریں؟
+mppe_mppe-128=128 بٹ MPPE انکرپشن استعمال کریں؟
+mppe_mppe-stateless=اسٹیٹ لیس MPPE وضع کو فعال کریں؟
+mppe_mppe=MPPE انکرپشن کو فعال کریں؟
+mppe_m2=ضرور استعمال کیا جانا چاہئے
+mppe_m0=استعمال نہیں کیا جاسکتا
+mppe_d0=غیر فعال
+mppe_d1=اجازت ہے
+mppe_mppe-stateful=ریاستی MPMP وضع کو فعال کریں؟
+mppe_old=انتباہ - پرانی طرز کی ایم پی پی ای ہدایت نامہ$1 آپ کی کنفیگریشن فائل میں مل گئی ، حالانکہ آپ کے پی پی ڈیمن نئے طرز کی ہدایتوں کی حمایت کرتے ہیں۔
+mppe_new=انتباہ - آپ کی تشکیل فائل میں ایم پی پی ای کی نئی طرز کی ہدایات $1 مل گئیں ، حالانکہ آپ کے پی پی ڈیمین صرف پرانے طرز کی ہدایتوں کی حمایت کرتے ہیں۔
+
+log_create=پی پی ٹی پی سرنگ$1 بنائی گئی
+log_update=ترمیم شدہ پی پی ٹی پی سرنگ$1
+log_delete=حذف شدہ پی پی ٹی پی سرنگ$1
+log_conn=منسلک سرنگ$1
+log_conn_l=مقامی ایڈریس$2 کے ساتھ منسلک سرنگ$1
+log_failed=سرنگ$1 سے رابطہ قائم کرنے میں ناکام
+log_disc=منقطع سرنگ$1
+log_opts=ترمیم شدہ عالمی پی پی پی آپشنز

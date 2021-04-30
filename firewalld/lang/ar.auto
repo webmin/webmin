@@ -1,0 +1,116 @@
+index_title=جدار الحماية
+index_atboot=هل تريد تفعيل جدار الحماية في وقت التمهيد؟
+index_bootup=التفعيل عند الإقلاع
+index_bootupdesc=قم بتغيير هذا الخيار للتحكم في ما إذا كان جدار الحماية الخاص بك نشطًا في وقت التمهيد أم لا.
+index_apply=تطبيق التكوين
+index_applydesc=انقر فوق هذا الزر لتنشيط تكوين جدار الحماية المذكور أعلاه. سيتم مسح أي قواعد جدار حماية سارية حاليًا واستبدالها
+index_restart=تطبيق التكوين
+index_restartdesc=تنشيط جميع الخدمات والمنافذ المسموح بها المذكورة أعلاه في جميع المناطق. سيتم استبدال أي قواعد نشطة لم يتم إنشاؤها بشكل دائم.
+index_start=قم بتشغيل FirewallD
+index_startdesc=قم بتشغيل خادم FirewallD وتطبيق القواعد المذكورة أعلاه.
+index_stop=أوقف جدار الحماية
+index_stopdesc=أوقف تشغيل خادم FirewallD وأزل جميع القواعد المذكورة أعلاه.
+index_cerr=لا يمكن استخدام الوحدة النمطية لجدار الحماية :$1
+index_zone=إظهار القواعد في المنطقة:
+index_zoneok=يتغيرون
+index_zoneadd=إضافة منطقة ..
+index_zonedel=حذف المنطقة
+index_zonedef=جعل الافتراضي
+index_type=نوع القاعدة
+index_port=منفذ أو خدمة
+index_proto=بروتوكول
+index_tservice=الخدمات
+index_tport=ميناء
+index_tforward=إلى الأمام
+index_padd=إضافة منفذ مسموح به.
+index_sadd=إضافة خدمة مسموح بها.
+index_fadd=إضافة منفذ إلى الأمام.
+index_delete=حذف القواعد المحددة
+index_return=قائمة المناطق
+index_ezones=لم يتم العثور على مناطق جدار حماية!
+index_none=لا تحتوي هذه المنطقة على أي منافذ أو خدمات مسموح بها حتى الآن.
+index_ifaces=تطبيق القواعد على الواجهات:
+
+port_edit=تحرير المنفذ
+port_create=إضافة منفذ
+port_header=خيارات المنفذ المسموح بها
+port_zone=مسموح به في المنطقة
+port_port=منفذ للسماح
+port_mode0=منفذ واحد
+port_mode1=نطاق المنفذ
+port_mode2=نفس المنفذ الأصلي
+port_proto=بروتوكول الشبكة
+port_ezone=المنطقة غير موجودة!
+port_err=فشل في حفظ المنفذ
+port_eport=رقم أو اسم منفذ مفقود أو غير صالح
+port_eportlow=يجب أن يكون المنفذ المنخفض رقمًا
+port_eporthigh=يجب أن يكون المنفذ العالي رقمًا
+port_eportrange=يجب أن يكون المنفذ المنخفض أقل من المنفذ العالي
+
+serv_edit=تحرير الخدمة
+serv_create=أضف خدمة
+serv_header=خيارات الخدمة المسموح بها
+serv_name=خدمة للسماح
+serv_err=فشل في حفظ الخدمة
+
+forward_edit=تحرير إلى الأمام
+forward_create=إنشاء إلى الأمام
+forward_header=خيارات إعادة توجيه المنفذ
+forward_zone=إلى الأمام للمنطقة
+forward_err=فشل الحفظ للأمام
+forward_port=منفذ المصدر
+forward_dstport=منفذ desintation
+forward_dstaddr=عنوان الوجهة
+forward_dstlocal=هذا النظام
+forward_edstaddr=عنوان وجهة IPv4 غير صالح
+forward_eneither=يجب إدخال عنوان الوجهة أو المنفذ أو كليهما
+
+check_ecmd=لم يتم العثور على أمر التحكم في جدار الحماية$1 على النظام الخاص بك
+
+delete_err=فشل حذف القواعد
+delete_enone=لم يتم التحديد!
+delete_edel=فشل إزالة $1 : $2 
+
+zone_title=إنشاء منطقة
+zone_header=خيارات المنطقة الجديدة
+zone_name=اسم المنطقة
+zone_mode=الموانئ والخدمات المسموح بها
+zone_mode0=لا شيء (سيتم حظر كل حركة المرور)
+zone_mode1=نسخ من المنطقة
+zone_mode2=SSH و IDENT و Webmin فقط
+zone_mode3=SSH و IDENT و Webmin والمنافذ العالية
+zone_mode4=المنافذ المستخدمة للاستضافة الافتراضية
+zone_err=فشل في إنشاء منطقة
+zone_ename=اسم المنطقة مفقود أو غير صالح
+zone_eclash=توجد بالفعل منطقة بنفس الاسم
+
+delzone_title=حذف المنطقة
+delzone_err=فشل في حذف المنطقة
+delzone_edefault=لا يمكن إزالة المنطقة الافتراضية
+delzone_rusure=هل تريد بالتأكيد حذف المنطقة$1 التي تحتوي على$2 منافذ وخدمات$3؟
+
+defzone_err=فشل في جعل المنطقة الافتراضية
+
+restart_err=فشل في تطبيق التكوين
+
+stop_err=فشل إيقاف جدار الحماية
+start_err=فشل بدء تشغيل جدار الحماية
+log_stop=توقف جدار الحماية
+log_start=بدأ جدار الحماية
+log_restart=تم تطبيق تكوين جدار الحماية
+log_bootup=تمكين جدار الحماية عند التمهيد
+log_bootdown=تم تعطيل جدار الحماية عند التمهيد
+log_create_port=تمت إضافة المنفذ المسموح به$1
+log_delete_port=تمت إزالة المنفذ المسموح به$1
+log_update_port=تم تحديث المنفذ المسموح به$1
+log_create_serv=تمت إضافة الخدمة المسموح بها$1
+log_delete_serv=إزالة الخدمة المسموح بها$1
+log_update_serv=تم تحديث الخدمة المسموح بها$1
+log_create_forward=تمت إضافة$1 للأمام
+log_delete_forward=تمت إعادة التوجيه$1
+log_update_forward=تم التحديث للأمام$1
+log_delete_rules=تمت إزالة$1 من المنافذ المسموح بها
+log_ifaces_zone=واجهات محدثة للمنطقة$1
+log_create_zone=المنطقة التي تم إنشاؤها$1
+log_delete_zone=المنطقة المحذوفة$1
+log_default_zone=جعل المنطقة$1 هي الافتراضية

@@ -1,0 +1,66 @@
+index_title=ADSL کلائنٹ
+index_eadsl=The RP-PPPoE command $1 was not found on your system or is not valid. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_econfig=The RP-PPPoE ADSL configuration file $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_emodem=The current configuration file is for a modem on Redhat Linux, not an ADSL connection. Use the <a href='$2'>module configuration</a> page to specify one of the other <tt>ifcfg-ppp*</tt> files in $1, or one that does not exist yet so that the module can create it for you.
+index_stop=ADSL بند کرو
+index_stopdesc=آپ کا ADSL کنکشن فی الحال آئی پی ایڈریس$1 کے ساتھ فعال ہے۔ کمانڈ$2 کے ساتھ اسے بند کرنے کے لئے اس بٹن پر کلک کریں۔
+index_start=ADSL شروع کریں
+index_startdesc=آپ کا ADSL کنکشن فی الحال غیر فعال ہے۔ کمانڈ$1 کے ساتھ شروع کرنے کے لئے اس بٹن پر کلک کریں۔
+index_boot=بوٹ وقت پر شروع کریں
+index_bootdesc=یہ اختیار تبدیل کریں کہ آیا آپ کا ADSL کنکشن بوٹ وقت پر لایا گیا ہو یا نہیں۔
+index_return=ماڈیول انڈیکس
+index_version=RP-PPPoE ورژن$1
+index_esetup=ریڈھاٹ ADSL کنفگریشن فائل$1 آپ کے سسٹم پر موجود نہیں ہے۔ تاہم ، یہ ماڈیول نیچے دیئے گئے بٹن پر کلک کرکے آپ کو بنیادی ڈیفالٹس کے ساتھ ترتیب دے سکتا ہے۔
+index_setup=ترتیب فائل ترتیب دیں
+index_cancel=کنکشن منسوخ کریں
+index_canceldesc=ADSL کلائنٹ فی الحال ایک تعلق قائم کرنے کی کوشش کر رہا ہے۔ کمانڈ$1 کے ساتھ کوشش کو منسوخ کرنے کے لئے اس بٹن پر کلک کریں۔
+index_cdemand=آن ڈیمانڈ منسوخ کریں
+index_cdemanddesc=ADSL کلائنٹ فی الحال آن مانگ کنکشن درخواست کی منتظر ہے۔ کامنمنڈ$1 کے ساتھ اسے روکنے کے لئے اس بٹن پر کلک کریں۔
+
+index_header=ADSL کلائنٹ کی تشکیل کے اختیارات
+index_desc=ذیل میں ترتیبات آپ کے سسٹم کے ذریعہ شروع کردہ کسی بھی نئے ADSL کنکشن پر لاگو ہوتی ہیں۔ اگر آپ ان کو تبدیل کرتے ہیں تو ، ترمیم کے اثر و رسوخ کے ل the ضروری ہے کہ کنکشن بند اور دوبارہ شروع کردینا چاہئے۔
+index_eth=ایتھرنیٹ انٹرفیس
+index_other=دیگر ..
+index_demand=مانگ پر رابطہ کریں؟
+index_timeout=ہاں ، وقت ختم ہونے کے ساتھ
+index_secs=سیکنڈ
+index_user=بطور صارف لاگ ان ہوں
+index_sec=پاس ورڈ کے ساتھ لاگ ان کریں
+index_dns=ISP سے DNS تشکیل حاصل کریں؟
+index_save=ترتیب محفوظ کریں
+index_mss=حد پیکٹ کا سائز؟
+index_psize=ہاں ، کرنا
+index_bytes=بائٹس
+index_fw=کنکشن پر چالو کرنے کے لئے فائر وال
+index_fw_none=کوئی نہیں
+index_fw_standalone=سنگل میزبان کے لئے
+index_fw_masquerade=NAT گیٹ وے کے لئے
+index_connect=کے لئے رابطے کی کوشش کرنے کا وقت
+index_forever=ہمیشہ کے لئے
+
+start_err=ADSL کنکشن شروع کرنے میں ناکام
+start_title=ADSL شروع کریں
+start_ip=IP ایڈریس$1 کے ساتھ ADSL کنکشن قائم کیا گیا ہے۔
+start_demand=چونکہ کنیکٹ آن ڈیمانڈ موڈ اہل ہے ، لہذا آپ کا ADSL کنکشن صرف اس وقت شروع ہوگا جب ضرورت ہو۔
+start_bg=ADSL کنکشن 20 سیکنڈ میں شروع نہیں کیا گیا تھا۔ ADSL مؤکل کامیاب ہونے تک پس منظر میں رابطہ قائم کرنے کی کوشش کرتا رہے گا۔
+
+save_err=ADSL تشکیل محفوظ کرنے میں ناکام
+save_eeth=لاپتہ یا غلط نظر آنے والا ایتھرنیٹ انٹرفیس
+save_etimeout=طلب یا وقت پر ختم ہونے کا اندراج
+save_euser=غائب یا غلط صارف نام
+save_econnect=گمشدہ یا غلط کنکشن کا وقت ختم ہوگیا
+save_emss=زیادہ سے زیادہ پیکٹ سائز غائب یا غلط
+save_title=ترتیب محفوظ کریں
+save_desc=آپ کی ADSL کلائنٹ کی تشکیل کامیابی کے ساتھ محفوظ ہوگئی ہے ، لیکن جب تک آپ دوبارہ رابطہ قائم نہیں کریں گے تب تک استعمال نہیں کیا جائے گا۔
+
+stop_err=ADSL کنکشن بند کرنے میں ناکام
+stop_title=اے ڈی ایس ایل کو بند کریں
+stop_ok=آپ کا ADSL کنکشن کامیابی کے ساتھ بند ہوگیا تھا۔
+stop_failed=آپ کا ADSL کنکشن اب بھی کسی وجہ سے فعال ہے!
+
+log_save=محفوظ کردہ کلائنٹ کی تشکیل
+log_stop=ADSL بند کرو
+log_start=ADSL شروع کیا
+log_bootup=بوٹ ٹائم پر ADSL کو فعال کیا گیا
+log_bootdown=بوٹ ٹائم پر ADSL کو غیر فعال کردیا گیا
+log_setup=پہلے سے طے شدہ ترتیب مرتب کریں

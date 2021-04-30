@@ -1,0 +1,39 @@
+index_title=Export NFS
+index_add=Přidejte nový export NFS
+index_dir=Adresář
+index_hosts=Povolení hostitelé
+index_all=Všichni hostitelé
+index_none=Zatím nebyly definovány žádné vývozy NFS.
+index_apply=Použít konfiguraci
+index_applydesc=Klepnutím na toto tlačítko aktivujete všechny výše uvedené vývozy s nakonfigurovanými možnostmi.
+index_return=seznam exportů
+
+edit_title1=Vytvořit export
+edit_title2=Upravit export
+edit_header=Exportovat podrobnosti
+edit_dir=Adresář pro export
+edit_hosts=Export do hostitelů/netgroup
+edit_ro=Pouze ke čtení?
+edit_wsync=Synchronizovat po zápisu?
+edit_anon=Kořenová uživatelská oprávnění
+edit_anon1=Výchozí (považujte za <tt>nikdo</tt>)
+edit_anon2=Zamítnout přístup
+edit_anon0=Zacházejte jako s uživatelem
+edit_rw=Přístup ke čtení a zápisu
+edit_root=Přístup ke kořenovým souborům
+edit_access=Připojit přístup
+edit_all=Všichni hostitelé
+edit_sel=Uvedení hostitelé ..
+edit_none=Žádní hostitelé
+
+save_err=Export se nepodařilo uložit
+save_edir=Chybějící nebo neexistující adresář pro export
+save_eanon=Chybí nebo neplatný uživatel root
+save_erw=Nebyli zadáni žádní hostitelé pro čtení a zápis
+save_eroot=Nebyli zadáni žádní hostitelé pro přístup k kořenovým souborům
+save_eaccess=Nebyli zadáni žádní hostitelé pro připojení
+
+log_create_export=Byl vytvořen export $1 
+log_delete_export=Vymazaný export $1 
+log_modify_export=Upravený export $1 
+log_apply=Použitá konfigurace

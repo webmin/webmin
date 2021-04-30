@@ -1,0 +1,33 @@
+index_tabpkgs=تحديثات الحزمة
+index_tabscheds=ترقيات مجدولة
+index_tabsrepos=مستودعات الحزمة
+index_scheddesc=يمكن استخدام هذا النموذج لتثبيت تحديثات الحزمة تلقائيًا وفقًا لجدول زمني منتظم.
+index_reposdesc=تتيح لك هذه الصفحة تكوين المستودعات التي سيتم استخدامها للحزم الجديدة أو المحدثة.
+index_reposname=اسم المستودع
+index_reposenabled=ممكن؟
+index_reposurl=عنوان URL الخاص بالحزمة
+index_reposdisable=تعطيل المستودعات
+index_reposenable=تمكين المستودعات
+index_reposdelete=حذف مستودعات
+index_repoheader=خيارات مستودع الحزمة الجديدة
+
+update_title2=تثبيت الحزم
+update_enone=لم يتم تحديد حزم
+
+log_enable_repos=تم تمكين مستودعات حزمة$1
+log_disable_repos=تم تعطيل مستودعات حزمة$1
+log_delete_repos=تم حذف مستودعات حزمة$1
+log_enable_repo=مستودع حزمة ممكّن$1
+log_disable_repo=مستودع الحزمة المعطل$1
+log_delete_repo=مستودع الحزمة المحذوفة$1
+log_create_repo=مستودع الحزم الذي تم إنشاؤه$1
+
+repos_err_disable=فشل في تعطيل المستودعات
+repos_err_enable=فشل في تمكين المستودعات
+repos_err_delete=فشل في حذف المستودعات
+repos_err_create=فشل في تكوين مستودع التخزين
+repos_ebutton=لم ينقر زر!
+repos_enone=لا شيء محدد
+repos_title=حذف مستودعات
+repos_rusure=هل تريد بالتأكيد حذف مستودعات الحزمة المحددة$1؟ ستظل الحزم المثبتة منها متاحة ، ولكن قد لا تكون قابلة للتحديث.
+repos_ok=احذف الان

@@ -1,0 +1,5 @@
+index_title=เข้าสู่ระบบข้อความ
+index_epython=Ajaxterm ต้องการ Python เพื่อให้ทำงานได้ แต่ไม่พบคำสั่ง $1 ในระบบของคุณ
+index_estart=Ajaxterm ไม่ได้เริ่มยอมรับการเชื่อมต่อบนพอร์ต $2 หลังจาก $1 วินาที
+index_popup=เปิดในหน้าต่างแยกต่างหาก ..
+index_credits=ใช้รหัสจาก <a href='$1' target=_new>Ajaxterm</a> โดย Antony Lesuisse

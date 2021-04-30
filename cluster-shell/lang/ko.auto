@@ -1,0 +1,22 @@
+index_title=클러스터 셸 명령
+index_cmd=실행할 명령
+index_old=또는
+index_server=서버에서 실행
+index_run=지금 명령 실행
+index_return=모듈 색인
+index_this=이 서버
+index_all=&lt;모든 호스트&gt;
+index_group=$1 의 회원
+index_clear=명확한 역사
+index_edit=이전 편집
+
+run_title=명령 실행
+run_err=명령을 실행하지 못했습니다
+run_ecmd=명령이 입력되지 않았습니다
+run_failed=$1 에서 실행하지 못했습니다  : $2 
+run_success=$1 에서 출력
+run_enone=선택된 서버를 실행할 필요가 없습니다
+
+log_clear=지워진 명령 내역
+log_run=$2 서버에서 $1 을 (를) 실행했습니다.
+log_run_l=$2 에서 $1 을 (를) 실행했습니다.

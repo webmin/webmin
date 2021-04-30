@@ -39,10 +39,12 @@ elsif ($in{'source'} == 2) {
 	$file = &transname();
 	&http_download('www.webmin.com', 80, '/index6.html', $file, \$error);
 	$error && &inst_error($error);
-	open(FILE, $file);
+	open(FILE, "<$file");
 	while(<FILE>) {
-		if (/usermin-([0-9\.]+)\.tar\.gz/) {
+		if (/usermin-([0-9\.]+)-(\d+)\.tar\.gz/ ||
+		    /usermin-([0-9\.]+)\.tar\.gz/) {
 			$version = $1;
+			$release = $2;
 			last;
 			}
 		}
@@ -69,16 +71,19 @@ elsif ($in{'source'} == 2) {
 		}
 
 	if ($in{'mode'} eq 'rpm') {
+		$release ||= 1;
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$webmin::osdn_host/webadmin/${product}-${version}-1.noarch.rpm");
+		    "http://$webmin::osdn_host/webadmin/${product}-${version}-${release}.noarch.rpm");
 		}
 	elsif ($in{'mode'} eq 'deb') {
+		$release = $release ? "-".$release : "";
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$webmin::osdn_host/webadmin/${product}_${version}_all.deb");
+		    "http://$webmin::osdn_host/webadmin/${product}_${version}${release}_all.deb");
 		}
 	else {
+		$release = $release ? "-".$release : "";
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$webmin::osdn_host/webadmin/${product}-${version}.tar.gz");
+		    "http://$webmin::osdn_host/webadmin/${product}-${version}${release}.tar.gz");
 		}
 	($host, $port, $page, $ssl) = &parse_http_url($progress_callback_url);
 	&http_download($host, $port, $page, $file, \$error,
@@ -110,7 +115,7 @@ elsif ($in{'source'} == 5) {
 $qfile = quotemeta($file);
 
 # gunzip the file if needed
-open(FILE, $file);
+open(FILE, "<$file");
 read(FILE, $two, 2);
 close(FILE);
 if ($two eq "\037\213") {
@@ -294,7 +299,7 @@ if ($updates_error) {
         print "<br>",&text('upgrade_eupdates', $updates_error),"<p>\n";
         }
 else {
-        open(UPDATES, $updatestemp);
+        open(UPDATES, "<$updatestemp");
         while(<UPDATES>) {
                 if (/^([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+(.*)/) {
                         push(@updates, [ $1, $2, $3, $4, $5 ]);

@@ -1,0 +1,152 @@
+index_title=Máy chủ VPN PPTP
+index_version=Phiên bản PoPToP $1 
+index_epptpd=Không tìm thấy máy chủ PoPToP PPTP $1 trên hệ thống của bạn hoặc không phải là chương trình phù hợp. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+index_econfig=Không tìm thấy tệp cấu hình máy chủ PPTP $1 trên hệ thống của bạn. Có thể <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+index_stop=Dừng máy chủ PPTP
+index_stopdesc=Nhấp vào nút này để tắt quy trình máy chủ PPTP đang chạy, do đó không có kết nối mới nào được chấp nhận. Các kết nối VPN hiện tại sẽ vẫn hoạt động.
+index_start=Khởi động máy chủ PPTP
+index_startdesc=Nhấp vào nút này để khởi động quy trình máy chủ PPTP để có thể nhận kết nối VPN từ máy khách.
+index_apply=Áp dụng cấu hình
+index_applydesc=Nhấp vào nút này để áp dụng các tùy chọn máy chủ PPTP hiện tại bằng cách dừng và bắt đầu lại quy trình máy chủ PPTP. Thay đổi đối với các tùy chọn PPP và tài khoản PPP sẽ luôn được áp dụng cho mọi kết nối mới
+index_return=chỉ số mô-đun
+index_epppd=Chương trình máy chủ PPP $1 không được cài đặt trên hệ thống của bạn. PPTP phụ thuộc vào nó để hoạt động.
+
+conf_title=Tùy chọn máy chủ PPTP
+conf_ecannot=Bạn không được phép chỉnh sửa tùy chọn máy chủ PPTP
+conf_header=Cấu hình máy chủ PPTP
+conf_speed=Tốc độ truyền của PPP
+conf_baud=bps
+conf_listen=Nghe theo địa chỉ
+conf_all=Tất cả địa chỉ
+conf_localip=Địa chỉ IP cho máy chủ kết nối
+conf_remoteip=Địa chỉ IP để phân bổ cho khách hàng
+conf_ipxnets=Mạng IPX để phân bổ
+conf_from=Từ
+conf_to=đến
+conf_option=Tệp tùy chọn PPP
+conf_mode0=Thiết lập toàn cầu
+conf_mode1=Cài đặt dành riêng cho PPTP
+conf_mode2=Tập tin tùy chỉnh
+conf_ipdesc=Địa chỉ IP trong cả hai phạm vi có thể được nhập đơn lẻ (như 192.168.1.1) hoặc dưới dạng phạm vi (như 192.168.2.32-64)
+conf_err=Không thể lưu tùy chọn máy chủ
+conf_espeed=Tốc độ baud bị thiếu hoặc không hợp lệ
+conf_elisten=Thiếu hoặc không hợp lệ địa chỉ để nghe
+conf_eoption=Tệp tùy chọn PPP tùy chỉnh bị thiếu hoặc không hợp lệ
+conf_elocalip='$1' không phải là địa chỉ hoặc phạm vi IP cục bộ hợp lệ
+conf_eremoteip='$1' không phải là địa chỉ hoặc phạm vi IP từ xa hợp lệ
+conf_efrom=Mạng IPX bị thiếu hoặc không hợp lệ từ địa chỉ
+conf_eto=Mạng IPX bị thiếu hoặc không hợp lệ để giải quyết
+
+options_title=Tùy chọn PPP
+options_ecannot=Bạn không được phép chỉnh sửa tùy chọn PPP
+options_desc0=Các tùy chọn PPP bên dưới từ $1 áp dụng cho TẤT CẢ các kết nối đến mà hệ thống của bạn nhận được, bao gồm cả các kết nối với modem quay số.
+options_desc1=Các tùy chọn PPP bên dưới từ $1 chỉ áp dụng cho tất cả các kết nối PPTP.
+options_desc2=Chúng sẽ được sử dụng bởi bất kỳ kết nối mới nào được thiết lập sau khi biểu mẫu này được lưu.
+options_header=Tùy chọn kết nối PPP
+options_proxyarp=Tạo mục ARP proxy?
+options_lock=Khóa tập tin thiết bị PTY?
+options_auth=Yêu cầu xác thực?
+options_auth0=Không, nhưng ngăn chặn IP định tuyến
+options_auth1=Không bao giờ
+options_auth2=Luôn luôn
+options_login=Cũng làm xác thực unix?
+options_pap=Xác thực PAP
+options_chap=Xác thực CHAP
+options_req=Phải được sử dụng
+options_all=Có thể được sử dụng
+options_ref=Không thể được sử dụng
+options_name=Tên máy chủ để xác thực
+options_hn=Tên máy chủ thực sự
+options_mtu=Kích thước gói gửi tối đa
+options_mru=Kích thước gói nhận tối đa
+options_err=Không thể lưu tùy chọn PPP
+options_emtu=Thiếu kích thước gói gửi tối đa hoặc không hợp lệ
+options_emru=Thiếu kích thước gói nhận tối đa hoặc không hợp lệ
+options_ename=Tên máy chủ bị thiếu hoặc không hợp lệ để xác thực
+options_version=Phiên bản PPPd $1 
+options_msdesc=Các tùy chọn bên dưới cho phép phương thức xác thực MS-CHAP và mã hóa MPPE, được sử dụng theo mặc định bởi các máy khách Windows VPN. Tuy nhiên, MPPE yêu cầu hỗ trợ trong cả daemon PPP và nhân hệ điều hành.
+options_mschap=Xác thực MS-CHAP
+options_mschap-v2=Xác thực MS-CHAP phiên bản 2
+options_chapms=Xác thực MS-CHAP
+options_chapms-v2=Xác thực MS-CHAP phiên bản 2
+
+secrets_title=Tài khoản PPP
+secrets_ecannot=Bạn không được phép chỉnh sửa tài khoản PPP
+secrets_return=mục lục
+secrets_none=Chưa có tài khoản PPP nào được tạo.
+secrets_enopfile=Tệp mật khẩu PPP $1 không tồn tại trên hệ thống của bạn. Có thể PPP chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> của bạn không chính xác.
+secrets_table=PPP chiếm $1 
+secrets_user=tên tài khoản
+secrets_ips=Các địa chỉ IP
+secrets_uany=BẤT KÌ
+secrets_sany=BẤT KÌ
+secrets_create=Tạo tài khoản PPP mới.
+secrets_desc=Các tài khoản PPP được liệt kê trên trang này được lấy từ tệp $1, được sử dụng để xác thực $3. Chỉ những người cho máy chủ của bạn $2 mới được hiển thị, không phải tài khoản để thực hiện kết nối đi.
+secrets_delete=Xóa các tài khoản PPP đã chọn
+
+edit_secret_etitle=Chỉnh sửa tài khoản PPP
+edit_secret_ctitle=Tạo tài khoản PPP
+edit_secret_acc=Tài khoản PPP
+edit_secret_user=tên tài khoản
+edit_secret_serv=Người phục vụ
+edit_secret_sany=Bất kì
+edit_secret_uany=Bất kì
+edit_secret_pass=Mật khẩu
+edit_secret_none=không ai
+edit_secret_ffile=Từ tập tin
+edit_secret_leave=Không thay đổi
+edit_secret_setto=Đặt thành
+edit_secret_vaddr=Địa chỉ hợp lệ
+edit_secret_aany=Cho phép bất kỳ
+edit_secret_anone=Không cho phép
+edit_secret_alist=Cho phép liệt kê ..
+edit_secret_save=Tiết kiệm
+edit_secret_del=Xóa bỏ
+edit_secret_return=danh sách tài khoản
+
+save_secret_esave=Không thể lưu tài khoản
+save_secret_enoip='$1' không phải là địa chỉ hợp lệ
+
+stop_err=Không thể dừng máy chủ PPTP
+stop_egone=Không còn chạy
+stop_ecannot=Bạn không được phép dừng máy chủ PPTP
+
+start_err=Không thể khởi động máy chủ PPTP
+start_ecannot=Bạn không được phép khởi động máy chủ PPTP
+
+apply_err=Không thể khởi động lại máy chủ PPTP
+apply_ecannot=Bạn không được phép khởi động lại máy chủ PPTP
+
+conns_title=Kết nối hoạt động
+conns_ecannot=Bạn không được phép quản lý các kết nối hoạt động
+conns_desc=Trang này liệt kê các kết nối PPTP hiện đang hoạt động đến máy chủ của bạn. Để ngắt kết nối một cách cưỡng bức, nhấp vào tên giao diện của nó.
+conns_iface=Giao diện PPP
+conns_client=Địa chỉ khách hàng
+conns_stime=Đã kết nối từ
+conns_local=Địa chỉ VPN máy chủ
+conns_remote=Địa chỉ VPN của máy khách
+conns_none=Không có kết nối PPTP nào hoạt động vào thời điểm này.
+conns_unknown=không xác định
+conns_user=tên tài khoản
+
+disc_err=Không thể ngắt kết nối
+disc_egone=Kết nối không còn hoạt động
+disc_ekill=Quá trình không còn chạy
+
+log_secret_create=Đã tạo tài khoản PPP $1 
+log_secret_modify=Tài khoản PPP được sửa đổi $1 
+log_secret_delete=Đã xóa tài khoản PPP $1 
+log_deletes=Đã xóa $1 tài khoản PPP
+log_conf=Tùy chọn máy chủ PPTP được sửa đổi
+log_options=Tùy chọn PPP được sửa đổi
+log_disc=Khách hàng bị ngắt kết nối $1 
+log_start=Bắt đầu máy chủ PPTP
+log_stop=Máy chủ PPTP đã dừng
+log_apply=Cấu hình máy chủ PPTP được áp dụng
+
+acl_conf=Có thể chỉnh sửa cấu hình?
+acl_options=Có thể chỉnh sửa tùy chọn?
+acl_secrets=Có thể quản lý tài khoản PPTP?
+acl_conns=Có thể xem kết nối?
+acl_stop=Có thể dừng và khởi động máy chủ PPTP?
+acl_apply=Có thể áp dụng cấu hình?

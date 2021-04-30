@@ -1,0 +1,205 @@
+index_title=Работещи процеси
+index_display=показ
+index_tree=PID
+index_user=потребител
+index_size=памет
+index_cpu=процесор
+index_search=Търсене
+index_zone=зона
+index_run=Изпълнете ..
+index_return=процес списък
+index_mem2=<b>Истинска памет:</b> $1 общо / $2 безплатно
+index_mem3=<b>Реална памет:</b> $1 общо / $2 безплатно / $3 кеширано
+index_swap2=<b>Размяна на място:</b> $1 общо / $2 безплатно
+index_burst=<b>Памет за памет:</b> $1 общо
+index_loadname=Средно за зареждане на процесора:
+index_loadnums=$1 (1 минути), $2 (5 минути), $3 (15 минути)
+index_cpuname=Тип на процесора:
+index_inzone=В зона $1 
+
+pid=документ за самоличност
+owner=собственик
+command=команда
+cpu=процесор
+size=размер
+parent=Родителски процес
+runtime=Време за изпълнение
+nice=Приятно ниво
+stime=Започната
+sclass=IO планиране клас
+sprio=Приоритет на IO
+
+search_user=Собственост на
+search_match=Съчетаване
+search_cpupc=Използване на повече от $1% процесор
+search_cpupc2=Използване на повече процесор от
+search_fs=Използване на файлова система
+search_files=Използване на файл
+search_submit=Търсене
+search_none=Не са намерени съвпадения процеси
+search_kill=Изпрати сигнал
+search_ignore=Игнорирайте резултатите от търсенето в резултат
+search_return=форма за търсене
+search_sigterm=Прекратяване на процесите
+search_sigkill=Убийте процеси
+search_port=Използване на порт
+search_protocol=протокол
+search_ip=Използване на IP адрес
+
+run_command=Команда за изпълнение
+run_submit=тичам
+run_mode=Режим на изпълнение
+run_bg=Изпълнете на заден план
+run_fg=Изчакайте, докато завърши
+run_input=Въвеждане на команда
+run_title=Команден изход
+run_output=Резултат от $1 ..
+run_none=Няма генериран изход
+run_ecannot=Нямате право да изпълнявате команди
+run_as=Изпълнете като потребител
+run_euser=Липсващо или невалидно потребителско име
+run_euser2=Нямате право да изпълнявате команди като избрания потребител
+
+edit_title=Информация за процеса
+edit_gone=Този процес вече не протича
+edit_sub=подпроцеси
+edit_subid=документ за самоличност
+edit_subcmd=Команда подпроцес
+edit_kill=Изпрати сигнал
+edit_change=промяна
+edit_prilow=Нисък приоритет
+edit_prihigh=Висок приоритет
+edit_pridef=По подразбиране
+edit_none=Нито един
+edit_ecannot=Нямате право да редактирате процеси
+edit_sigterm=Прекратяване
+edit_sigkill=Kill
+edit_sigstop=Задържане
+edit_sigcont=Продължи
+edit_open=Файлове и връзки
+edit_trace=Процес на проследяване
+edit_return=подробности за процеса
+
+kill_err=Неуспешно изпращане на сигнал $1 за обработка на $2 
+kill_title=Изпрати сигнал
+kill_sent=изпратени
+kill_ecannot=Не ви е позволено да убивате процеси
+
+renice_err=Не можа да се възстанови процеса $1 
+renice_ecannot=Не ви е позволено да реновирате процеси
+
+linux_pri=приоритет
+linux_tty=TTY
+linux_status=Статус
+linux_wchan=Изчакване в
+linux_mem=памет
+linux_group=група
+linux_ruser=Истински потребител
+linux_rgroup=Реална група
+linux_pgid=Идентификационен номер на групата на процеса
+linux_stime=Започната
+
+linuxstat_R=Работещи
+linuxstat_S=спален
+linuxstat_D=Дълбок сън
+linuxstat_T=Спряна
+linuxstat_Z=зомби
+
+linux_real=Реално време
+linux_be=Най-доброто усилие
+linux_idle=Празен
+
+freebsd_ruser=Истински потребител
+freebsd_rgroup=Реална група
+freebsd_tty=TTY
+freebsd_pgid=Процесна група
+freebsd_stime=Започната
+freebsd_lim=Ограничение на паметта
+
+hpux_pri=приоритет
+hpux_tty=TTY
+hpux_status=Статус
+hpux_wchan=Чакам за
+hpux_stime=Започната
+
+hpuxstat_0=несъществуваща
+hpuxstat_S=спален
+hpuxstat_W=Очакване
+hpuxstat_R=Работещи
+hpuxstat_I=Междинен
+hpuxstat_Z=зомби
+hpuxstat_T=Спряна
+hpuxstat_G=Нарастващ
+
+macos_tty=TTY
+
+sysv_group=група
+sysv_ruser=Истински потребител
+sysv_rgroup=Реална група
+sysv_pgid=Идентификационен номер на групата на процеса
+sysv_tty=TTY
+sysv_stime=Започната
+sysv_task=Идент. № на задачата
+sysv_zone=Име на зона
+
+log_run=Команда Ran "$ $1"
+log_kill=Изпратен сигнал $1 да обработи $2 
+log_kills=Изпратете сигнал $1 до $2 процеси
+log_kill_l=Изпратен сигнал $1 да обработи $2 
+log_kills_l=Изпратен сигнал $1 към процеси <br> $2 
+log_renice=Променен приоритет на процеса $2 на $1 
+
+acl_manage=Управление на процесите като потребител
+acl_manage_def=Настоящ потребител на Webmin
+acl_edit=Могат ли да убиват и да възстановяват процесите?
+acl_run=Може ли да изпълнява команди?
+acl_only=Може ли да виждате само собствени процеси?
+acl_who=Може да управлява процеси за потребителите
+acl_who0=Всички потребители
+acl_who1=Настоящ потребител на Webmin
+acl_who2=Потребители, включени в списъка ..
+
+kill_kill=Убийствен процес
+kill_term=Прекратяване
+kill_hup=Рестартирам
+kill_stop=Спри се
+kill_cont=продължи
+
+open_title=Отворете файлове и връзки
+open_proc=За процес $1 (PID $2)
+open_header1=Отваряне на файлове
+open_header2=Отворете мрежовите връзки
+open_type=Тип
+open_proto=протокол
+open_desc=детайли
+open_fd=Дескриптор на файлове
+open_listen1=Слушане на порт $1 
+open_listen2=Слушане на адрес $1 порт $2 
+open_recv=Получаване на $1:$2 
+open_conn=Свързан от $1 до $2 в състояние $3 
+open_cwd=Настоящ реж
+open_rtd=Корен реж
+open_txt=Програмен код
+open_mem=Споделена библиотека
+open_dir=указател
+open_reg=Редовен файл
+open_chr=Характер специален
+open_blk=Блок специален
+open_size=Размер на файла
+open_inode=на възела
+open_file=път
+
+trace_title=Процес на проследяване
+trace_start=Стартиране на проследяване на системно обаждане за $1 ..
+trace_doing=Проследяване на системно обаждане за $1  :
+trace_done=.. процесът е прекратен.
+trace_failed=.. проследяването не бе успешно!
+trace_sorry=Тази страница изисква поддръжка на Java във вашия браузър. За да използвате текстова технологична следа, коригирайте конфигурацията на модула.
+trace_syscalls=Система за следи за обаждания:
+trace_all=всичко
+trace_sel=Изброени ..
+trace_change=промяна
+
+windows_threads=Теми в процес
+
+syslog_dmesg=Съобщения на ядрото

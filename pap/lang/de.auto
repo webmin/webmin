@@ -1,0 +1,4 @@
+log_dialin_create=Anrufer-ID-Nummer $1 erstellt
+log_dialin_modify=Geänderte Anrufer-ID-Nummer $1 
+log_dialin_delete=Anrufer-ID-Nummer $1 löschen
+log_dialin_move=Anrufer-ID-Nummer $1 verschoben

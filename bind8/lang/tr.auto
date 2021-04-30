@@ -1,0 +1,470 @@
+master_freeze=Donma Bölgesi
+master_freezemsg2=Dinamik bir bölgeyi güncellemeden önce dondurmak için bu düğmeyi tıklayın.
+master_unfreeze=Bölgeyi Serbest Bırak
+master_unfreezemsg2=Dinamik bir bölgeyi güncelledikten sonra dondurmak için bu düğmeyi tıklayın.
+master_checkzone=Kayıtları Kontrol Et
+master_checkzonemsg=BIND'in bu bölgedeki kayıtları kontrol etmesini ve sorunları bildirmesini sağlamak için bu düğmeyi tıklatın.
+index_status=durum
+index_viewwarn=Uyarı - aşağıdaki bölgeler hiçbir görünümde değil : $1
+index_viewwarn2=BIND bir görünüme taşınana kadar başlatılamayabilir.
+index_massupdate=Seçili Kayıtları Güncelle
+index_masscreate=Seçilene Kayıt Ekle
+index_massrdelete=Seçili Kayıtları Sil
+index_ewrongchroot=Uyarı: Webmin'in BIND'ın kullandığını düşündüğü chroot dizini $2 yanlış olabilir. $1 alan adları için bölge dosyaları bulunamadı.
+index_emissingchroot=Uyarı: Webmin, BIND'ın bir chroot dizini kullanmadığını, ancak bunun yanlış olabileceğini düşünüyor. $1 alan adları için bölge dosyaları bulunamadı.
+index_checkconfig=Chroot dizininin <a href='$1'>modül yapılandırması</a> sayfasında doğru ayarlandığından emin olun.
+index_eexpired=Uyarı: Aşağıdaki bölgelerin süresi doldu DNSSEC imzaları : $1
+index_eexpired_conf=Otomatik imzalama, $1 sayfasında yeniden etkinleştirilmelidir.
+index_eexpired_mod=Bu etki alanları için DNSSEC'yi devre dışı bırakmak için $1 modülünü kullanın veya imzalamanın neden başarısız olduğunu kontrol edin.
+
+master_inview=$1 görünümünde $2 
+master_egone=$1 bölgesi hiçbir görünümde yok
+master_egone2=$1 bölgesi mevcut değil!
+master_egone3=Görünümünde $1 bölgesi $2 mevcut değil!
+master_addrev=Şablon adresleri için geri dönüşüm eklensin mi?
+master_notify3=Adlı kişiden gelen bildirimlere izin ver ..
+master_noinclude=Yukarıdaki kayıtları kullanmanız yeterlidir
+master_convertdesc=Bu ana bölgeyi bir slave'e dönüştürür, böylece yerel olarak sunmak yerine başka bir ana sunucudan kayıtlar alır.
+master_movedesc=Tüm kayıtları ve diğer seçenekleri korurken bu bölgeyi başka bir görünüme taşır.
+master_applymsg2=Yalnızca bu bölge için değişiklik uygulamak üzere bu düğmeyi tıklayın. Bu, yalnızca bölge oluşturulduğundan bu yana en az bir kez tüm sunucu için değişiklikler uygulandığında çalışır.
+master_esoagone=SOA kaydı bulunamadı!
+master_einclude=Ek şablon dosyası yok
+
+delete_mesg3=$1 bölgesini silmek istediğinizden emin misiniz?
+delete_vwarn=Bu bölge $1 Virtualmin etki alanı ile ilişkilidir ve buradan silinmemelidir!
+delete_vwarn2=Bu bölge $1 ve $2 diğer Virtualmin etki alanı ile ilişkilidir ve bu nedenle burada silinmemelidir!
+
+mcreate_dnssec_tools_enable=DNSSEC Araçları'nı kullanarak DNSSEC'yi etkinleştirme
+mcreate_ednssecsize=Anahtar boyutu hesaplanamadı : $1
+mcreate_ednssec=Kayıt oluşturma başarılı oldu, ancak DNSSEC başarısız oldu : $1
+
+slave_convertdesc=Bu ikincil bölgeyi, son ana sistemden en son aktarılan tüm kayıtlarla bir ana kopyaya dönüştürmek için bu düğmeyi tıklatın.
+slave_applymsg2=Bölgenin ana sunucudan yeniden aktarılmasını zorlamak için bu düğmeyi tıklatın, böylece en son kayıtların tümünü alır.
+slave_xfer=Test Bölgesi Transferi
+
+recs_none=Alan adında henüz $1 kaydı yok.
+recs_nosearch=Aramanızla eşleşen kayıt yok.
+recs_needsearch=Eşleşen kayıtları bulmak için bir arama girin.
+
+edit_canon=Tam kanonik ad
+edit_egone=Seçilen kayıt artık mevcut değil!
+edit_eusage='$1' geçerli bir TLSA kullanım numarası değil
+edit_eselector='$1' geçerli bir TLSA seçici numarası değil
+edit_ematch='$1' geçerli bir TLSA maç numarası değil
+edit_etlsa=Geçersiz TLSA kodlu sertifika - yalnızca 2 basamaklı onaltılık bayt içermelidir
+edit_ealg2='$1' geçerli bir sertifika algoritması numarası değil
+edit_efp='$1' geçerli bir sertifika parmak izi türü değil
+edit_esshfp=Temel-64 kodlanmış ortak anahtar verileri eksik veya geçersiz
+edit_espfa2='$1' bir IP adresi değil bir ana bilgisayar adı olmalıdır
+edit_espfmxmax=Adresinden MX gönderilmesine izin vermek için 10'dan fazla alanınız olmasına izin verilmiyor
+edit_espfip6='$1', gönderime izin vermek için geçerli bir IPv6 adresi veya IPv6 / öneki değil
+edit_espfredirect='$1' geçerli bir alternatif alan adı değil
+edit_espfexp='$1' ret mesajı için geçerli bir kayıt adıdır
+edit_ensec3value2=Eksik veya sayısal olmayan yineleme sayısı
+edit_ensec3value3=Eksik veya baz olmayan 64 tuz
+edit_edmarcpct=İletilerin yüzdesi 0 ile 100 arasında bir tam sayı olmalıdır
+edit_edmarcrua=Toplam geri bildirim adresi eksik
+edit_edmarcruf=Adli bilgi adresi eksik
+edit_ecaavalue2=Eksik veya geçersiz görünen alan adı
+
+text_desc3=Bu form, $1 DNS kayıt dosyasını elle düzenlemenize olanak tanır. Webmin tarafından sözdizimi denetimi yapılmaz.
+text_soa=Seri numarasını otomatik olarak artır
+text_rawformat=Bu bölge ham ikili biçimdedir ve bu nedenle metin olarak görüntülenemez.
+
+fwd_delmsg=Bu bölgeyi DNS sunucunuzdan silmek için bu düğmeyi tıklayın. İçindeki kayıtlar daha sonra normal çözünürlük işlemi kullanılarak aranacaktır.
+
+delegation_delmsg=Bu bölgeyi DNS sunucunuzdan silmek için bu düğmeyi tıklayın. NS dışındaki kayıt türleri daha sonra BIND tarafından tanınır.
+
+boot_egzip=Kök bölge dosyası sıkıştırılmıştır, ancak <tt>gzip</tt> komutu sisteminizde yüklü değildir!
+boot_egzip2=Kök bölge dosyasının sıkıştırılması başarısız oldu : $1
+
+type_NSEC3PARAM=DNSSEC Parametreleri
+type_TLSA=SSL Sertifikası
+type_SSHFP=SSH Ortak Anahtarı
+type_DMARC=DMARC
+type_CAA=Sertifika yetkilisi
+
+edit_DMARC=DMARC
+edit_NSEC3PARAM=DNSSEC Parametreleri
+edit_TLSA=SSL Sertifikası
+edit_SSHFP=SSH Ortak Anahtarı
+edit_CAA=Sertifika yetkilisi
+
+recs_defttl=Varsayılan TTL
+recs_DMARC=DMARC
+recs_NSEC3PARAM=DNSSEC Parametreleri
+recs_TLSA=SSL Sertifikası
+recs_SSHFP=SSH Ortak Anahtarı
+recs_CAA=Sertifika yetkilisi
+
+value_AAAA1=IPv6 Adresi
+value_TLSA1=Sertifika kullanımı
+value_TLSA2=Sertifika seçici
+value_TLSA3=Sertifika eşleşmesi
+value_TLSA4=Sertifika verileri
+value_SSHFP1=Ortak anahtar algoritması
+value_SSHFP2=Ortak anahtar parmak izi
+value_SSHFP3=Ortak anahtar verileri
+value_DMARC1=DMARC özellikleri
+value_NSEC3PARAM1=Karma algoritması
+value_NSEC3PARAM2=NSEC3 bayrakları
+value_NSEC3PARAM3=Karma yineleme sayısı
+value_NSEC3PARAM4=Tuz ipi
+value_delegated=Yetki verilen bölge
+value_notdelegated=Diğer bölge
+value_spfip6s=İzin verilen ek gönderen IPv6 adresleri / ağları
+value_spfredirect=Alternatif alan adından SPF kaydını kullanma
+value_spfnoredirect=Bu alan adının kaydını kullan
+value_spfexp=Reddedilme nedeniyle TXT kaydı
+value_spfnoexp=Yok
+value_dmarcnone=Hareket etme
+value_dmarcquar=Karantina e-postası
+value_dmarcreject=E-postayı reddet
+value_dmarcp=SPF veya DKIM'de başarısız olan e-postalar için politika
+value_dmarcpct=Politika uygulanacak mesajların yüzdesi
+value_dmarcrua=Adresine toplu geri bildirim gönderin
+value_dmarcruf=Adli bilgileri şuraya gönder:
+value_dmarcsp=Alt alanlar için politika
+value_dmarcnop=Bu alan adıyla aynı
+value_dmarcaspf=Sıkı SPF hizalaması gerektir
+value_dmarcadkim=Kesin DKIM hizalaması gerektir
+value_dmarcnor=Gönderme
+value_CAA1=Uygulama mı gerekiyor?
+value_CAA2=Yetkilendirme türü
+value_CAA3=CA alan adı
+value_caa_issue=Tek alan adı sertifikası
+value_caa_issuewild=Joker karakter sertifikası
+value_caa_iodef=Politika ihlali URL'si
+
+tlsa_usage0=Sertifika yetkilisi
+tlsa_usage1=Son varlık
+tlsa_usage2=Güven bağlantısı
+tlsa_usage3=Alan adı yayınlandı
+tlsa_selector0=Tam sertifika
+tlsa_selector1=Ortak anahtar bilgisi
+tlsa_match0=Unhashed içerikleri
+tlsa_match1=SHA-256 karma
+tlsa_match2=SHA-512 karma
+
+sshfp_alg1=RSA
+sshfp_alg2=DSA
+sshfp_alg3=ECDSA
+sshfp_alg4=Ed25519
+sshfp_fp1=SHA-1
+sshfp_fp2=SHA-256
+
+eipacl='$1' geçerli bir IP adresi veya ACL adı değil
+
+acl_inviews=Bu kullanıcının içindeki alanları düzenleyebileceği görüntülemeler
+acl_toplevel=Herhangi bir görünümün dışında
+acl_dnssec=DNSSEC'yi bölgeler için yapılandırabilir mi?
+acl_vnone=Görünüm yok
+
+logging_catsdesc=Bu tablo, diğer sekmede tanımlandığı şekilde hangi ileti kategorilerinin hangi günlük kanallarına yazılacağını denetler.
+logging_chansdesc=Bu tablo, dosyalar veya mesajların kaydedilebileceği diğer hedefler olan günlük kanallarını listeler. İlk dördü varsayılan olarak BIND içine yerleştirilmiştir ve değiştirilemez.
+logging_stderr=Standart hata çıkışı
+logging_pcat2=Günlük kategorisi?
+logging_psev2=Günlük şiddeti?
+logging_ptime2=Kayıt süresi?
+logging_efile2=Günlük dosya adı mutlak bir yol olmalıdır
+
+acls_eline=ACL '$1' için her IP adresi ayrı bir satıra girilmelidir
+
+forwarding_out=Maksimum eşzamanlı giden bölge aktarımı
+forwarding_per_ns=Sunucu başına maksimum eşzamanlı gelen aktarım
+
+net_ip=IP adresi
+net_eusedport=$1 bağlantı noktası için yalnızca bir adres satırına izin verilir
+net_taddr=Transferler için kaynak IPv4 adresi
+net_tport=Aktarımlar için kaynak IPv4 bağlantı noktası
+net_taddr6=Transferler için kaynak IPv6 adresi
+net_tport6=Aktarımlar için kaynak IPv6 bağlantı noktası
+net_taddrdef=En yakın IP
+net_etport=Aktarım kaynağı bağlantı noktası adres olmadan belirtilemez
+net_eaddr='$1' geçerli bir IPv4 adresi değil
+net_eaddr6='$1' geçerli bir IPv6 adresi değil
+
+zonedef_dnssec=DNSSEC anahtarı oluştur ve yeni bölgeler imzalansın mı?
+zonedef_dnssec_dt=Tüm DNSSEC işlemlerini otomatikleştirin (aşağıdaki diğer ayarları göz ardı edin)?
+zonedef_dne=Kimliği Doğrulanmış Varlık Reddi Kullanarak
+zonedef_alg=İlk anahtar algoritması
+zonedef_size=İlk anahtar boyutu
+zonedef_single=Oluşturulacak anahtar sayısı
+zonedef_two=Bölge tuşu ve anahtar imzalama anahtarı
+zonedef_one=Yalnızca bölge tuşu
+
+findfree_fromip=IP adresinden
+findfree_toip=IP adresine
+findfree_msg=$1 ücretsiz IP adresi bulundu
+findfree_msg2=(bunların $1 <i>freeXXX</i>, $2 <i>freemac</i> gibi)
+
+free_ip=IP adresi
+
+log_update_zones=$1 bölgelerinde güncellenmiş kayıtlar
+log_rdelete_zones=$1 bölgelerinde silinen kayıtlar
+log_freeze=Donma bölgesi $1
+log_thaw=Donmuş bölge $1
+log_zonekeyon=$1 bölgesi için etkin DNSSEC
+log_zonekeyoff=$1 bölgesi için devre dışı bırakılmış DNSSEC
+log_sign=$1 bölgesi için güncellenmiş DNSSEC imzaları
+log_resign=$1 bölgesi için yeniden imzalanan DNSSEC anahtarı
+log_trusted=DNSSEC doğrulaması değişti
+log_dnssec=DNSSEC anahtarını yeniden imzalamayı değiştirme
+
+convert_efilesize=$1 kayıt dosyası mevcut değil veya boş
+convert_ebinary=İkili ikincil bölgeden bir metin biçimi yöneticisine dönüştürmek için gereken komut yüklü değil
+convert_ecompile=İkiliden metin biçimine dönüştürme başarısız oldu : $1
+
+view_opts2=Görünümdeki bölgeler için seçenekler
+view_delete=Görünümü Sil
+view_deletemsg=Görünümü silmek için bu düğmeyi tıklayın. İçerdiği bölgeleri başka bir görünüme taşıma veya silme seçenekleriniz olacaktır.
+
+hint_refetchdesc=Webmin'in kök bölge dosyasını Internic FTP sunucusundaki kaynağından yeniden indirmesi için bu düğmeyi tıklatın.
+hint_delete=Kök Bölgeyi Sil
+hint_deletedesc=Bu kök bölgesini kaldırmak için bu düğmeyi tıklayın. Bu olmadan, ad sunucunuz ikincil olduğu alan adlarından başka İnternet'teki alan adlarını çözemez.
+
+hcreate_header=Kök bölgesi ayrıntıları
+
+slaves_ok=Şimdi ekle
+slaves_group=&lt;$1&gt; grubunda
+slaves_sameview=Aynı adla görüntüle
+slaves_header=Küme slave sunucusu seçenekleri
+
+add_eversion2=Sunucu $1, birden fazla görünüme bölge eklemek için gerekli olan Webmin $2 veya daha üstünü çalıştırmıyor
+add_eipaddr=$1 sunucusunun ana bilgisayar adı yerine bir IP adresi var
+add_emyip=Bu sistemin IP adresi çalıştırılamadı. Modül Yapılandırma sayfasında <b>Uzak bağımlı bölgeler için varsayılan ana sunucu IP'sini</b> ayarlamanız gerekir.
+
+mass_elocal=Eksik veya var olmayan toplu iş dosyası
+mass_elocalcannot=Seçilen toplu iş dosyasını kullanmanıza izin verilmiyor
+mass_eviewcannot=Bu görünüme bölge ekleme izniniz yok
+
+massdelete_vwarn=Bazı bölgeler $1 Virtualmin etki alanı ile ilişkilidir ve bu nedenle burada silinmemelidir!
+massdelete_vwarn2=Bazı bölgeler $1 ve $2 Virtualmin etki alanıyla ilişkilidir ve bu nedenle burada silinmemelidir!
+
+umass_err=Bölgeler güncellenemedi
+umass_enone=Hiçbiri seçilmedi
+umass_title=Bölgelerdeki Kayıtları Güncelle
+umass_header=Toplu kayıt değişikliği ayrıntıları
+umass_sel=Seçilen bölgeler
+umass_old=Değiştirilecek mevcut değer
+umass_any=<b>tümü</b> kayıtlarını güncelleme
+umass_new=Yeni değer
+umass_type=Güncellenecek kayıt türü
+umass_ok=Kayıtları Değiştir
+umass_eold=Geçerli değer girilmedi
+umass_enew=Yeni değer girilmedi
+umass_doing=$1 alanındaki kayıtları güncelleme.
+umass_notmaster=.. bir ana bölge değil.
+umass_done=.. $2 dışında eşleşen $1 kayıtları güncellendi.
+umass_none=.. güncellenecek $1 dışında eşleşen kayıt bulunamadı.
+umass_egone=Bölge mevcut değil
+emass_emx='$1', bir posta sunucusu öncelik numarası ve ardından geçerli bir ana bilgisayar adı değil
+
+rdmass_err=Bölgelerdeki kayıtlar silinemedi
+rdmass_enone=Hiçbiri seçilmedi
+rdmass_title=Bölgelerdeki Kayıtları Silme
+rdmass_header=Toplu kayıt silme ayrıntıları
+rdmass_type=Silinecek kayıt türü
+rdmass_name=Silinecek kaydın adı
+rdmass_all=Bu türdeki tüm kayıtlar
+rdmass_value=Silinecek kayıtların değeri
+rdmass_vall=Tüm eşleşen ad ve tür
+rdmass_vsel=Değerli kayıtlar
+rdmass_doing=$1 alanındaki kayıtları silme.
+rdmass_ename=Silinecek kayıt adı girilmedi
+rdmass_done=.. $2 dışında eşleşen $1 kayıtlarını sildi.
+rdmass_none=.. silmek için $1 dışında eşleşen kayıt bulunamadı.
+rdmass_ok=Kayıtları Sil
+rdmass_sel=Adlandırılmış kayıtlar
+
+rmass_err=Kayıt eklenemedi
+rmass_enone=Hiçbiri seçilmedi
+rmass_title=Bölgelere Kayıt Ekle
+rmass_header=Toplu kayıt ekleme ayrıntıları
+rmass_type=Eklenecek kayıt türü
+rmass_name=Yeni kayıt adı
+rmass_name2=(Alan adı için <tt>@</tt> girin)
+rmass_value=Yeni kayıt değeri
+rmass_ok=Kayıt Ekle
+rmass_ttl=Yeni rekor yaşam süresi
+rmass_ename=Kayıp veya geçersiz kayıt adı
+rmass_ename2=Kayıt adı a ile bitemez.
+rmass_ettl=Eksik veya geçersiz yaşam süresi
+rmass_doing=$1 bölgesine kayıt ekleniyor.
+rmass_done=.. bitti
+rmass_esign=.. tamamlandı, ancak imzalama başarısız oldu : $1
+rmass_eclash=.. $1 ile aynı ada ve değere sahip bir kayıt zaten var.
+rmass_eclash2=.. aynı ada ve aynı değere sahip bir kayıt $1 zaten var.
+rmass_clash=Kayıt zaten mevcut olsa bile oluşturulsun mu?
+
+check_title=Kayıtları Kontrol Et
+check_ecannot=Kayıtları kontrol etme izniniz yok
+check_errs=$1 kayıt dosyasında aşağıdaki hatalar bulundu.
+check_allok=$1 kayıt dosyasında hata bulunamadı.
+
+ncheck_title=BIND Config'i kontrol edin
+ncheck_ecannot=BIND yapılandırmasını kontrol etmenize izin verilmiyor
+ncheck_errs=BIND yapılandırma dosyasında $1 veya başvurulan bölge dosyalarında aşağıdaki hatalar bulundu.
+ncheck_allok=BIND yapılandırma dosyasında $1 veya başvurulan bölge dosyalarında hata bulunamadı.
+
+links_restart=Yapılandırmayı Uygula
+links_stop=BIND'ı Durdur
+links_start=BIND uygulamasını başlat
+links_apply=Bölge Uygula
+
+dnssec_title=DNSSEC Anahtar Yeniden İmzalama
+dnssec_ecannot=DNSSEC'yi yapılandırma izniniz yok
+dnssec_header=Anahtar yeniden imzalama seçenekleri
+dnssec_enabled=Otomatik anahtar yeniden imzalama etkin mi?
+dnssec_period=Yeniden işaretler arasındaki süre?
+dnssec_days=günler
+dnssec_secs=saniye
+dnssec_desc=DNSSEC ile imzalanan bölgelerin tipik olarak iki anahtarı vardır - düzenli olarak yeniden oluşturulması ve imzalanması gereken bir bölge anahtarı ve sabit kalan bir anahtar imzalama anahtarı. Bu sayfa Webmin'i bu yeniden imzalamayı otomatik olarak gerçekleştirecek şekilde yapılandırmanıza olanak tanır.
+dnssec_err=DNSSEC anahtarının yeniden imzalanması kaydedilemedi
+dnssec_eperiod=Yeniden imzalar arasında eksik veya geçersiz gün sayısı
+
+dnssectools_title=DNSSEC-Araçlar Otomasyonu
+dt_conf_title=DNSSEC-Araçlar Otomasyonu
+dt_enable_title=DNSSEC-Araçlar Otomasyonu
+dt_zone_title=Bölge için DNSSEC işlemlerini yönetme
+dt_zone_already=Bölge imzalanmış gibi görünüyor, ancak DNSSEC Araçları kullanmıyor.
+dt_zone_desc=Bu bölgede henüz DNSSEC etkin değil. Webmin DNSSEC Araçları'nı kullanarak DNSSEC işlemeyi otomatikleştirmesini sağlamak için bu formu kullanabilirsiniz, böylece bu bölgeyi çözen istemciler DNS kimlik sahtekarlığı saldırılarına karşı korunur.
+dt_zone_header=Bölge DNSSEC-Araçlar Seçenekleri
+dt_zone_dne=Kimliği Doğrulanmış Varlık Reddi
+dt_zone_enable=DNSSEC Otomasyonu
+dt_zone_disable=DNSSEC'yi devre dışı bırak
+dt_zone_disabledesc=Bu bölgeyi, bölge imzalama ve anahtar rollover için DNSSEC Araçları tarafından yönetilen bölgeler listesinden kaldırır.
+dt_zone_err=DNSSEC İşlemi başarısız oldu
+dt_zone_edne=Hatalı kimlik doğrulama reddi mekanizması
+dt_zone_signing=İmza alanı $1. ..
+dt_zone_errfopen=Yazmak için sistem rollrec dosyası açılamadı
+dt_zone_enocmd=dnssec-tools kurulu değil veya komut bulunamadı
+dt_zone_erollctl=Rollover etkinliğinin rollover yöneticisine bildirilemedi
+dt_zone_done=... bitti
+dt_zone_deleting_state=$1 bölgesi ile ilişkili tüm durum siliniyor. ..
+dt_zone_zoneupdate=$1 bölgesindeki kayıtlar güncelleniyor. ..
+dt_zone_expandsep=Geçerli KSK ve DS set ayrıntılarını göster ..
+dt_zone_ksksep=KSK kaydı :
+dt_zone_dssep=DS kaydı :
+dt_zone_resign=Bölgeyi Yeniden İmzala
+dt_zone_resigndesc=Bölge verilerini hemen istifa etmek için mevcut anahtarları kullanın
+dt_zone_zskroll=Rulo ZSK
+dt_zone_zskrolldesc=Bölgenin bölge imzalama anahtarının devrilmesini zorla
+dt_zone_kskroll=Rulo KSK
+dt_zone_kskrolldesc=Bölgenin anahtar imzalama anahtarının devrilmesini zorla
+dt_zone_ksknotify=KSK Rulosunu Sürdür
+dt_zone_ksknotifydesc=KSK rollover'a devam edin. Operatör, bölgenin KSK'ları için yeni DS kümesinin üst bölgede yayınlandığını onaylamalıdır
+dt_zone_keyrollon=Anahtar Rollover şu anda devam ediyor
+dt_zone_rollerdrst=Silindiri Başlat
+dt_zone_rollerdrstdesc=Rollerd arka plan programını başlatın
+dt_zone_migrate=DNSSEC Araçlarına Geç
+dt_zone_migratedesc=Mevcut anahtar kümesini DNSSEC-Tools'a aktarın ve DNSSEC-Tools'un gelecekteki DNSSEC anahtar rollover işlemlerini otomatikleştirmesini sağlayın.
+dt_zone_createkrf=$1 bölgesi için keyrec dosyası oluşturuluyor ve bölge için anahtarlar DNSSEC-Tools yönetilen konumuna taşınıyor. ..
+dt_zone_rrf_updating=$1 bölgesi için rollrec girişi güncelleniyor. ..
+dt_zone_enokey=$1 bölgesi için gerekli tüm anahtarlar bulunamadı
+dt_conf_ecannot=DNSSEC'yi yapılandırma izniniz yok
+dt_conf_header=DNSSEC Parametreleri
+dt_conf_desc=Bu sayfa, DNSSEC'nin etkin olduğu bölgeler için DNSSEC parametrelerini yapılandırmanıza olanak tanır.
+dt_conf_err=DNSSEC Parametreleri kaydedilemedi
+dt_conf_email=Yönetici E-posta Adresi
+dt_conf_eemail=Eksik veya geçersiz e-posta adresi
+dt_conf_algorithm=Anahtar Algoritması
+dt_conf_ealg=Eksik veya geçersiz Anahtar Algoritması
+dt_conf_ksklength=Anahtar İmzalama Anahtar Uzunluğu
+dt_conf_eksklen=Eksik veya geçersiz KSK Uzunluğu
+dt_conf_zsklength=Bölge İmzalama Anahtar Uzunluğu
+dt_conf_ezsklen=Eksik veya geçersiz ZSK Uzunluğu
+dt_conf_nsec3=NSEC3 kullanılsın mı (evet / hayır)?
+dt_conf_ensec3=Eksik veya geçersiz NSEC3 seçimi
+dt_conf_endtime=İmza Geçerlilik Süresi
+dt_conf_eendtime=Eksik veya geçersiz imza geçerlilik süresi
+dt_conf_ksklife=KSK Devrilme Aralığı
+dt_conf_eksklife=Eksik veya geçersiz KSK devreden çıkarma aralığı
+dt_conf_zsklife=ZSK Devrilme Aralığı
+dt_conf_ezsklife=Eksik veya geçersiz ZSK devreden çıkarma aralığı
+dt_status_waitfords=DS bekleniyor
+dt_status_inKSKroll=KSK Rulosunda
+dt_status_inZSKroll=ZSK Rulosunda
+dt_status_signed=İmzalanmış
+dt_status_unsigned=imzasız
+
+zonekey_title=DNSSEC Anahtarını Ayarla
+zonekey_desc=Bu bölgede henüz bir DNSSEC imza anahtarı yok. Webmin bir tane oluşturmasını sağlamak için bu formu kullanabilirsiniz, böylece bu bölgeyi çözen istemciler DNS kimlik sahtekarlığı saldırılarına karşı korunur.
+zonekey_header=Yeni DNSSEC anahtar seçenekleri
+zonekey_alg=Anahtar algoritması
+zonekey_size=Anahtar boyutu
+zonekey_ave=Ortalama boyut
+zonekey_strong=En güçlü izin
+zonekey_other=Diğer boyut (bit cinsinden)
+zonekey_enable=Anahtar Oluşturma ve Ekleme
+zonekey_err=DNSSEC anahtarı oluşturulamadı
+zonekey_esize=Anahtar boyutu, $1 ile $2 arasındaki bit sayısı olmalıdır
+zonekey_creating=$1 için DNSSEC anahtarı oluşturuluyor.
+zonekey_ecreate=.. oluşturma başarısız oldu : $1
+zonekey_done=.. bitti
+zonekey_signing=Yeni anahtarla $1 imza bölgesi.
+zonekey_esign=.. imzalama başarısız oldu : $1
+zonekey_already=Bölgenin zaten bir DNSSEC anahtarı var ve zaten imzalanmış.
+zonekey_webmin=Webmin, herhangi bir değişiklik yapıldığında bölgeyi otomatik olarak yeniden imzalayacaktır.
+zonekey_public=Ortak anahtar kaydı :
+zonekey_publicfile=Ortak anahtar dosyası : $1
+zonekey_private=Özel anahtar ayrıntıları :
+zonekey_privatefile=Özel anahtar dosyası : $1
+zonekey_ds=Üst bölge için DS kaydı :
+zonekey_expandksk=Herkese açık ve gizli anahtar imzalama anahtarı ayrıntılarını göster ..
+zonekey_expandzone=Genel ve özel bölge anahtarı ayrıntılarını göster ..
+zonekey_noprivate=Ancak, Webmin bölgeyle ilişkili özel anahtarı bulamadı ve bu nedenle yeniden imzalayamayacak.
+zonekey_eprivate=Bu bölgeyle ilişkili özel anahtar okunamadı : $1
+zonekey_disable=Anahtarı Kaldır
+zonekey_disabledesc=DNSSEC anahtarını bu bölgeden ve tüm imza kayıtlarından kaldırır. Bu yapıldıktan sonra yeni bir anahtar üretebileceksiniz.
+zonekey_sign=İşaret Bölgesi
+zonekey_signdesc=Manuel olarak yapılan kayıtlarda yapılan değişikliklerin imza kayıtlarına dahil edilmesi için bu bölgeyi hemen yeniden imzalayın.
+zonekey_resign=Bölgeyi Yeniden İmzala
+zonekey_resigndesc=Yeni bir bölge imzalama anahtarı oluşturun, bölgenin ana anahtarıyla imzalayın ve tüm kayıtları yeniden imzalayın.
+
+sign_err=Bölge imzalanamadı
+sign_emsg=Kayıtlar değiştikten sonra DNSSEC imzalama : $1
+
+resign_err=Bölge yeniden imzalanamadı
+
+trusted_title=DNSSEC Doğrulaması
+trusted_ecannot=DNSSEC doğrulamasını yapılandırmanıza izin verilmiyor
+trusted_esupport=BIND sürümünüz DNSSEC doğrulamasını desteklemiyor
+trusted_header=Diğer bölgelerin DNSSEC doğrulaması için seçenekler
+trusted_dnssec=DNSSEC etkin mi?
+trusted_validation=DNSSEC yanıt doğrulaması etkin mi?
+trusted_auto=Evet (otomatik mod)
+trusted_dlvs=Ek güven bağlantıları
+trusted_dlvs1=Otomatik olarak belirle
+trusted_dlvs0=Aşağıda listelenmiş. ..
+trusted_dlvs2=Yok
+trusted_anchor=Çapa bölgesi
+trusted_dlv=Gerçek bölge
+trusted_keys=Ek güvenilir anahtarlar
+trusted_zone=Bölge adı
+trusted_flags=Bayraklar
+trusted_proto=Protokol
+trusted_alg=Algoritma
+trusted_key=Anahtar metin
+trusted_none=Yok
+trusted_zn=bölge
+trusted_root=Kök bölgesi
+trusted_err=DNSSEC doğrulaması kaydedilemedi
+trusted_eanchor=$1 satırında eksik veya geçersiz bağlantı bölgesi
+trusted_edlv=$1 satırında eksik veya geçersiz gerçek bölge
+trusted_ezone=$1 satırında eksik veya geçersiz güvenilir bölge adı
+trusted_eflags=$1 satırındaki eksik veya geçersiz anahtar bayrakları - 257 gibi bir sayı olmalıdır
+trusted_eproto=$1 satırında eksik veya geçersiz protokol numarası
+trusted_ealg=$1 satırında eksik veya geçersiz algoritma numarası
+trusted_ekey=$1 satırında base-64 kodlanmış güvenilir bölge anahtarı eksik
+trusted_setup=DNSSEC'nin İnternet'te imzalı bölgelerin çoğunu doğrulamak için BIND'in bir DLV sunucusu kullanacak şekilde yapılandırılması gerekir. Webmin bunu $1 adresindeki ICS DLV sunucusunu kullanarak sizin için ayarlayabilir.
+trusted_ok=DLV Kurulumu ve DNSSEC Doğrulamasını Etkinleştir
+trusted_warning=Uyarı! BIND DNSSEC istemci yapılandırmanız Ekim 2017'de çalışmayı durduracak güncel olmayan anahtarlar içeriyor. Ya yapılandırmayı ayarlamak için <a href='$1'>BIND DNSSEC Doğrulama sayfasını</a> kullanın veya aşağıdaki düğmeyi tıklayın.
+trusted_fix=DNSSEC Yapılandırmasını Düzeltme
+
+xfer_title=Test Bölgesi Transferi
+xfer_doing=Bağımlı bölgenin $1 'den aktarımının test edilmesi.
+xfer_failed=.. $1 adresinden: Başarısız : $2
+xfer_done=.. $1 adresinden: Tamamlandı
+xfer_count=Test aktarımı, en az bir ad sunucusundan $1 kayıtlarını başarıyla getirdi. BIND tarafından yapılan gerçek transferler de başarılı olmalıdır.
+xfer_none=Test aktarımı başarılı görünüyordu, ancak gerçekte herhangi bir kayıt getirmedi!

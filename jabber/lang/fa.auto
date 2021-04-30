@@ -1,0 +1,120 @@
+index_title=Jabber IM Server
+index_econfig=پرونده پیکربندی Jabber $1 وجود ندارد. در هر صورت جابر نصب نشده است ، یا پیکربندی <a href='$2'>ماژول شما</a> نادرست است.
+index_edir=فهرست پایه Jabber $1 وجود ندارد. در هر صورت جابر نصب نشده است ، یا پیکربندی <a href='$2'>ماژول شما</a> نادرست است.
+index_emodules=ماژول های Perl $1 و$2 که توسط Webmin برای دستیابی به پیکربندی XML Jabber مورد نیاز هستند نصب نشده اند. <a href='$3'>برای نصب مستقیم آنها از CPAN اینجا را کلیک کنید</a>.
+index_emodule=ماژول Perl $1 که توسط Webmin برای دستیابی به پیکربندی XML Jabber مورد نیاز است نصب نشده است. <a href='$2'>برای نصب مستقیم آن از CPAN اینجا را کلیک کنید</a>.
+index_expat=قبل از نصب ماژول های پرل اطمینان حاصل کنید که کتابخانه و هدر های Expat C را نصب کرده اید ، زیرا آنها به آن بستگی دارند و در صورت عدم دسترسی به آن خراب می شوند.
+index_eparse=ماژول$1 perl نتواند پرونده پیکربندی Jabber شما را تجزیه کند :$2
+index_ejabberd=برنامه سرور Jabber $1 در سیستم شما یافت نشد. در هر صورت جابر نصب نشده است ، یا پیکربندی <a href='$2'>ماژول شما</a> نادرست است.
+index_eversion=Webmin فقط از نسخه Jabber $2 پشتیبانی می کند ، اما دستور$3 اطلاعات نسخه زیر را گزارش می دهد :$1
+index_eversion2=Webmin فقط از نسخه های Jabber زیر$2 پشتیبانی می کند ، اما دستور$3 اطلاعات نسخه زیر را گزارش می دهد :$1
+index_start=شروع سرور Jabber
+index_startmsg=برای شروع سرور Jabber روی سیستم خود ، روی این دکمه کلیک کنید. تا زمان شروع کار ، هیچ مشتری پیام رسانی فوری قادر به استفاده از آن نخواهد بود.
+index_stop=سرور Jabber را متوقف کنید
+index_stopmsg=روی این دکمه کلیک کنید تا سرور Jabber در حال اجرا روی سیستم شما متوقف شود. هیچ مشتری پیام رسانی فوری نمی تواند در هنگام متوقف کردن از آن استفاده کند.
+index_restart=تغغیرات را اعمال کن
+index_restartmsg=برای اعمال تنظیمات فعلی با توقف و سپس دوباره راه اندازی مجدد سرور Jabber ، روی این دکمه کلیک کنید.
+index_comments=هشدار - پرونده پیکربندی Jabber $1 شما حاوی نظرات است که در صورت ایجاد هرگونه تغییر تنظیمات با استفاده از این ماژول حذف می شود.
+index_return=منوی جابر
+index_version=نسخه Jabber$1
+
+general_title=گزینه های عمومی
+general_header=گزینه های سرور جهانی Jabber
+general_host=نام میزبان سرور شما
+general_elog=پرونده ثبت خطا
+general_elogfmt=قالب ورود به خطا
+general_rlog=دسترسی به پرونده ورود به سیستم
+general_rlogfmt=قالب ورود به سیستم
+general_pidfile=پرونده شناسه پردازش
+general_err=گزینه های کلی ذخیره نشد
+general_ehost=نام میزبان سرور وجود ندارد یا نامعتبر است
+general_eelog=پرونده ورود به سیستم خطا وجود ندارد یا نامعتبر است
+general_eelogfmt=قالب ثبت خطا وجود ندارد
+general_erlog=پرونده ورود به سیستم ترافیک وجود ندارد یا نامعتبر است
+general_erlogfmt=قالب ورود به سیستم ترافیک وجود ندارد
+general_epidfile=پرونده شناسه فرآیند موجود یا نامعتبر است
+
+messages_title=پیام ها
+messages_header=پیام سرور Jabber برای مشتریان
+messages_wsubject=موضوع پیام خوش آمدید
+messages_wbody=پیام پیام خوش آمدید
+messages_vcard=کارت ویزیت سرور
+messages_rinstr=دستورالعمل ثبت نام
+messages_rnotify=در مورد ثبت نام به مدیر اطلاع دهید؟
+messages_rfields=زمینه های ثبت نام لازم
+messages_vcard2jud=کارت ویزیت را به دایرکتوری کاربر Jabber بفرستید؟
+messages_err=ذخیره پیام ها انجام نشد
+messages_evcard=کارت ویزیت نامعتبر XML :$1
+messages_etag=سرور vCard XML با &lt;vCard&gt; شروع نمی شود
+
+modules_title=ماژول های Jabber
+modules_desc=ماژول های ذکر شده در زیر برای پردازش پیام های دریافت شده توسط مدیر جلسه جابر استفاده می شود. شما فقط باید بدانید که اگر می دانید چه کاری انجام می دهید.
+modules_header=ماژول های مدیر جلسه سرور Jabber
+modules_mod=نام ماژول
+modules_so=کتابخانه مشترک
+modules_err=ذخیره ماژول های Jabber انجام نشد
+modules_emod="$1" نام ماژول معتبری نیست
+modules_eso=کتابخانه مشترک "$1" وجود ندارد
+
+karma_title=کنترل ترافیک کارما
+karma_header=گزینه های کنترل نرخ ترافیک
+karma_rate=دست زدن به اتصال بیش از حد
+karma_rate_def=معلول
+karma_rate_sel=مشتری را به مدت $2 ثانیه پس از$1 اتصالات مسدود کنید
+karma_mode=حالت کارما
+karma_none=بدون محدودیت
+karma_low=محدودیت کم ترافیک
+karma_medium=محدودیت ترافیک متوسط
+karma_high=محدودیت بالای ترافیک
+karma_sel=از تنظیمات انتخاب شده در زیر استفاده کنید ..
+karma_heartbeat=طول دوره در ثانیه (<tt>ضربان قلب</tt>)
+karma_init=دوره های شروع (<tt>init</tt>)
+karma_max=حداکثر کارما (<tt>حداکثر</tt>)
+karma_inc=افزایش کارما (<tt>inc</tt>)
+karma_dec=کاهش کارما (<tt>Dec</tt>)
+karma_penalty=دوره مجازات (<tt>مجازات</tt>)
+karma_restore=دوره های بازیابی پشت سر هم (<tt>بازیابی</ بازگشت>)
+karma_err=گزینه های کارما ذخیره نشدند
+karma_eheartbeat=طول دوره وجود ندارد یا نامعتبر است
+karma_einit=دوره شروع اولیه نامعتبر یا نامعتبر است
+karma_emax=حداکثر کارما موجود نیست یا نامعتبر است
+karma_einc=افزایش کارما نامعتبر یا نامعتبر است
+karma_edec=کاهش کارما نامعتبر یا نامعتبر است
+karma_epenalty=دوره مجازات نامشخص یا نامعتبر است
+karma_erestore=دوره های بازگردانی نامعتبر یا نامعتبر است
+karma_epoints=تعداد اتصالات موجود یا نامعتبر است
+karma_etime=زمان مسدود یا نامعتبر است برای مسدود کردن
+
+ips_title=کنترل دسترسی IP
+ips_header=کنترل دسترسی IP سرور Jabber
+ips_allow=IP مجاز مشتری
+ips_all=همه آدرسها
+ips_deny=IP های مشتری رد شد
+ips_none=هیچ یک
+ips_sel=آدرس های لیست شده/netmasks ..
+ips_err=کنترل دسترسی IP ذخیره نشد
+ips_eaddr='$1' یک آدرس IP معتبر یا آدرس IP/netmask نیست
+
+file_title=پیکربندی پرونده را ویرایش کنید
+file_desc=برای ویرایش مستقیم فایل پیکربندی Jabber از فرم زیر استفاده کنید. این کار فقط در صورت انجام فرمت پیکربندی XML انجام می شود.
+file_header=پرونده پیکربندی Jabber را ویرایش کنید
+file_err=ذخیره پرونده پیکربندی انجام نشد
+
+admin_title=کاربران اداری
+admin_header=کاربران سرور مدیریت
+admin_read=مدیریت دسترسی را بخوانید
+admin_write=مدیریت دسترسی را بنویسید
+admin_reply=به طور خودکار برای پیام های سرپرست؟
+admin_rsubject=موضوع به صورت خودکار
+admin_rbody=پیام به صورت خودکار
+
+filter_title=فیلترهای کاربر
+filter_header=مجوزهای فیلتر کاربر
+filter_max=حداکثر قوانین فیلتر
+filter_conds=شرایط فیلتر مجاز
+filter_acts=اقدامات فیلتر مجاز
+
+restart_err=اعمال تغییرات انجام نشد
+stop_err=نتوانست جلوی جابر را بگیرد
+stop_epid=فرایند Jabber یافت نشد
+start_err=Jabber شروع نشد

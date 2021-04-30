@@ -1,0 +1,8 @@
+index_version_awffull=AWFFull
+index_disable=Retrait du calendrier sélectionné
+
+global_fold=Gérer les entrées de journal en panne?
+global_AllAgents=Agents utilisateurs
+
+log_enable_logs=Rapports planifiés sur $1 journaux
+log_disable_logs=Rapports reportés sur $1 journaux

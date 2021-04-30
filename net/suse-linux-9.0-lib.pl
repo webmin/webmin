@@ -141,6 +141,11 @@ sub can_edit
 return $_[0] ne "bootp";
 }
 
+sub can_broadcast_def
+{
+return 0;
+}
+
 # valid_boot_address(address)
 # Is some address valid for a bootup interface
 sub valid_boot_address
@@ -156,7 +161,7 @@ $hn =~ s/\r|\n//g;
 if ($hn) {
 	return $hn;
 	}
-return &get_system_hostname(1);
+return &get_system_hostname();
 }
 
 # save_hostname(name)
@@ -246,11 +251,11 @@ sub parse_routing
 local (@routes, $r, $i);
 if (!$in{'gateway_def'}) {
 	&to_ipaddress($in{'gateway'}) ||
-		&error(&text('routes_edefault', $in{'gateway'}));
+		&error(&text('routes_edefault', &html_escape($in{'gateway'})));
 	local @def = ( "default", $in{'gateway'}, undef, undef );
 	if (!$in{'gatewaydev_def'}) {
 		$in{'gatewaydev'} =~ /^\S+$/ ||
-			&error(&text('routes_edevice', $in{'gatewaydev'}));
+			&error(&text('routes_edevice', &html_escape($in{'gatewaydev'})));
 		$def[3] = $in{'gatewaydev'};
 		}
 	push(@routes, \@def);
@@ -259,14 +264,14 @@ for($i=0; defined($in{"dev_$i"}); $i++) {
 	next if (!$in{"net_$i"});
 	&check_ipaddress($in{"net_$i"}) ||
 		$in{"net_$i"} =~ /^(\S+)\/(\d+)$/ && &check_ipaddress($1) ||
-		&error(&text('routes_enet', $in{"net_$i"}));
-	$in{"dev_$i"} =~ /^\S*$/ || &error(&text('routes_edevice', $dev));
+		&error(&text('routes_enet', &html_escape($in{"net_$i"})));
+	$in{"dev_$i"} =~ /^\S*$/ || &error(&text('routes_edevice', &html_escape($dev)));
 	!$in{"netmask_$i"} || &check_ipaddress($in{"netmask_$i"}) ||
-		&error(&text('routes_emask', $in{"netmask_$i"}));
+		&error(&text('routes_emask', &html_escape($in{"netmask_$i"})));
 	!$in{"gw_$i"} || &check_ipaddress($in{"gw_$i"}) ||
-		&error(&text('routes_egateway', $in{"gw_$i"}));
+		&error(&text('routes_egateway', &html_escape($in{"gw_$i"})));
 	$in{"type_$i"} =~ /^\S*$/ ||
-		&error(&text('routes_etype', $in{"type_$i"}));
+		&error(&text('routes_etype', &html_escape($in{"type_$i"})));
 	push(@routes, [ $in{"net_$i"}, $in{"gw_$i"}, $in{"netmask_$i"},
 			$in{"dev_$i"}, $in{"type_$i"} ] );
 	}

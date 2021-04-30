@@ -1,0 +1,8 @@
+edit_minsize=回転する最小サイズ
+edit_nominsize=常に
+edit_dateext=回転したファイルに日付の拡張子を使用する
+
+save_eminsize=最小サイズがないか無効です
+save_enofiles=回転するファイルが入力されていません
+
+sched_when=実行時間

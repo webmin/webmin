@@ -1,0 +1,10 @@
+period_bytes=bajtů
+
+edit_minsize=Minimální velikost pro otáčení
+edit_nominsize=Vždy
+edit_dateext=Pro rotované soubory použijte příponu data
+
+save_eminsize=Chybějící nebo neplatná minimální velikost
+save_enofiles=Nebyly zadány žádné soubory pro otáčení
+
+sched_when=Časy běžet

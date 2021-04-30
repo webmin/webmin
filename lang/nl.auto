@@ -1,0 +1,44 @@
+category_=Gereedschap
+
+longcategory_=Modules die andere diverse taken uitvoeren
+
+fail=mislukt
+
+config_emodule=Module bestaat niet
+
+referer_fix3u=Zorg ervoor dat uw browser is geconfigureerd om verwijzende informatie te verzenden, zodat deze door Webmin kan worden geverifieerd.
+
+session_twofactor=Two-factor token
+session_twofailed=Tweefactorauthenticatie is mislukt : $1
+
+ui_filterbox=Typ om te filteren ..
+
+log_email_subject=Webmin-actie in $1
+log_email_global=Webmin wereldwijde actie
+log_email_desc=Deze e-mail is verzonden door Webmin in reactie op een gebruikersactie.
+log_email_mod=Webmin-module: $1
+log_email_moddesc=Module titel: $1
+log_email_time=Actie uitgevoerd op: $1
+log_email_system=Uitgevoerd op systeem: $1
+log_email_user=Uitgevoerd door gebruiker: $1
+log_email_script=Webmin-script: $1
+log_email_session=Sessie-ID: $1
+log_email_remote=Klantadres: $1
+
+nice_size_PB=PB
+nice_size_PiB=PiB
+nice_size_TB=TB
+nice_size_TiB=TiB
+nice_size_GB=GB
+nice_size_GiB=GiB
+nice_size_MB=MB
+nice_size_MiB=MiB
+nice_size_kB=kB
+nice_size_kiB=KIB
+nice_size_b=bytes
+
+langauto_include=Voeg machinevertalingen toe
+
+file_truncated_message=$1 van de gegevens opgehaald, $2 van $3 afgekapt
+file_truncated_message_head=heeft het begin van $1 van de gegevens opgehaald, $2 van $3 afgekapt
+file_truncated_message_tail=beëindigde $1 van de gegevens opgehaald, $2 van $3 afgekapt

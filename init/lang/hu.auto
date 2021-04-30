@@ -1,0 +1,56 @@
+index_sadd=Hozzon létre egy új rendszeres szolgáltatást.
+index_always=Mindig
+index_ladd=Hozzon létre egy új indított ügynököt.
+index_lname=Ügynök neve
+
+edit_reloadnow2=Olvassa újra a konfigurációs fájlt
+
+mode_systemd=systemd
+mode_launchd=LaunchD
+
+systemd_title1=Hozzon létre Systemd szolgáltatást
+systemd_title2=Rendszeres szolgáltatás szerkesztése
+systemd_egone=A szolgáltatás már nem létezik!
+systemd_elegacy=Nem rendszeres szolgáltatás!
+systemd_header=Rendszeres szolgáltatás részletei
+systemd_name=Szolgáltatás neve
+systemd_desc=Szolgáltatás leírása
+systemd_start=Parancsok az induláskor történő futtatáshoz
+systemd_stop=Leállítási parancsok
+systemd_conf=Rendszeres konfiguráció
+systemd_boot=Induláskor indul?
+systemd_status=Jelenlegi állapot
+systemd_status0=Nem fut
+systemd_status1=Futás PID $1 -rel
+systemd_status2=Futó
+systemd_status3=Ismeretlen!
+systemd_err=Nem sikerült menteni a rendszeres szolgáltatást
+systemd_ename=Hiányzik vagy érvénytelen a keresési rendszer szolgáltatás neve
+systemd_eclash=Az azonos nevű szolgáltatás már létezik
+systemd_edesc=Hiányzik a szolgáltatásleírás
+systemd_return=rendszeres szolgáltatás
+systemd_econf=Nincs megadva rendszerszintű konfiguráció
+systemd_estart=Hiányzó parancsok az indításkor
+
+launchd_title1=Hozzon létre egy indított ügynököt
+launchd_title2=Indított ügynök szerkesztése
+launchd_egone=Az ügynök már nem létezik!
+launchd_header=Indított szolgáltatás részletei
+launchd_name=Ügynök neve
+launchd_file=Konfigurációs fájl
+launchd_nofile=Nem található!
+launchd_start=Szerver parancs
+launchd_conf=Indított konfiguráció
+launchd_boot=Induláskor indul?
+launchd_status=Jelenlegi állapot
+launchd_status0=Nem fut
+launchd_status1=Futás PID $1 -rel
+launchd_status2=Futó
+launchd_err=Nem sikerült menteni az indított ügynököt
+launchd_ename=Hiányzó vagy érvénytelen keresési indított ügynöknév
+launchd_eclash=Az azonos nevű ügynök már létezik
+launchd_return=indított ügynök
+launchd_econf=Nincs megadva indított konfiguráció
+launchd_estart=Hiányzik a szerver parancs
+
+syslog_journalctl=SystemD naplók

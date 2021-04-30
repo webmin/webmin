@@ -1,0 +1,53 @@
+inittab_new=Δημιουργήστε μια νέα διαδικασία init.
+inittab_id=ταυτότητα
+inittab_active=Ενεργός?
+inittab_runlevels=Bootup runlevel
+inittab_action=Δράση
+inittab_process=Επεξεργάζομαι, διαδικασία
+inittab_none=Κανένας
+inittab_respawn=Επαναληπτική διαδικασία
+inittab_wait=Περίμενε
+inittab_once=Μια φορά στο επίπεδο
+inittab_boot=Χρόνο εκκίνησης
+inittab_bootwait=Ώρα εκκίνησης, περιμένετε μέχρι τον τερματισμό
+inittab_off=Μην κάνεις τίποτα
+inittab_ondemand=Κάθε φορά που βρίσκεστε στο A, B, C
+inittab_initdefault=Μετά την εκκίνηση του συστήματος
+inittab_sysinit=Κατά την εκκίνηση του συστήματος
+inittab_powerwait=Η ισχύς πέφτει
+inittab_powerfail=Η ισχύς πέφτει χωρίς να περιμένει
+inittab_powerokwait=Η ισχύς έχει αποκατασταθεί
+inittab_powerfailnow=Σφάλμα ρεύματος
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Ειδικός συνδυασμός πλήκτρων
+inittab_kbrequest=Ειδικός συνδυασμός πλήκτρων
+inittab_return=λίστα επεξεργασιών
+inittab_apply=Εφαρμογή διαμόρφωσης Init
+inittab_applymsg=Κάντε κλικ σε αυτό το κουμπί για να εφαρμόσετε την τρέχουσα διαμόρφωση SysV Init, εκτελώντας την εντολή <tt>telinit q</tt>. Λάβετε υπόψη ότι τυχόν λάθη στη διαμόρφωσή σας ενδέχεται να καταστήσουν το σύστημα αχρησιμοποίητο όταν εκτελείται αυτή η εντολή.
+index_delete=Διαγραφή επιλεγμένων διαδικασιών
+inittab_none2=Δεν βρέθηκαν διαδικασίες εκκίνησης στο σύστημά σας. Αυτό πιθανώς δείχνει ότι δεν χρησιμοποιεί το αρχείο ρυθμίσεων SysV init.
+
+edit_inittab_err=Δεν σας επιτρέπεται να επεξεργαστείτε μια διαδικασία
+edit_inittab_title=Επεξεργασία διαδικασίας $1 
+edit_inittab_details=Στοιχεία διεργασίας
+edit_inittab_del=Διαγράφω
+edit_inittab_save=Αποθηκεύσετε
+
+new_inittab_err=Δεν σας επιτρέπεται να δημιουργήσετε μια νέα διαδικασία
+new_inittab_title=Νέα διαδικασία
+
+save_inittab_err=Δεν επιτρέπεται να αποθηκεύσετε μια διαδικασία
+save_inittab_noid=Σφάλμα, δεν καταχωρίστηκε καμία διαδικασία ονόματος
+save_inittab_already=Σφάλμα, η διαδικασία ονόματος υπάρχει ήδη
+
+log_modify=Τροποποιημένη διαδικασία init $1 
+log_rename=Μετονομάθηκε διαδικασία init $1 σε $2 
+log_create=Δημιουργήθηκε διαδικασία init $1 
+log_delete=Διαγράφηκε αρχική διαδικασία $1 
+log_apply=Εφαρμοσμένη διαμόρφωση
+log_deletes=Διαγράφηκαν διαδικασίες $1 init
+
+apply_err=Αποτυχία εφαρμογής διαμόρφωσης
+
+delete_err=Αποτυχία κατάργησης διεργασιών
+delete_enone=Δεν έχει επιλεγεί

@@ -37,7 +37,7 @@ local $lnum = 0;
 local ($line, @rv, @toks);
 
 # Tokenize the file
-open(FILE, $_[0]);
+open(FILE, "<".$_[0]);
 while($line = <FILE>) {
 	$line =~ s/\r|\n//g;
 	$line =~ s/^\s*#.*$//;

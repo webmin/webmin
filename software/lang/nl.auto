@@ -1,0 +1,84 @@
+index_echeckpackage=Er is geen pakketsysteem gedetecteerd!
+index_echeckupdate=Geen updatesysteem gedetecteerd!
+index_filter=Filter pakketten
+index_filterclear=Wis filter
+index_filtered=<tt>$1</tt> pakketten weergeven uit <tt>$2</tt>
+
+edit_listdesc=Toon alle bestanden in dit pakket en hun huidige verificatiestatus.
+edit_uninstdesc=Verwijder dit pakket van uw systeem.
+
+delete_purge=Configuratiebestanden opschonen?
+delete_depstoo=Ook ongebruikte afhankelijkheden verwijderd?
+
+log_install_yum_l=Geïnstalleerde pakket (ten) $1 van YUM
+log_install_yum=$2 pakket (ten) van YUM geïnstalleerd
+log_install_rhn_l=Geïnstalleerde pakket (ten) $1 van Redhat Network
+log_install_rhn=$2 pakket (ten) van Redhat Network geïnstalleerd
+
+apt_repo_url=Repository base URL
+apt_repo_path=Onderdelen van distributiepaden
+apt_repo_eurl=Ontbrekende of ongeldig ogende basis-URL
+apt_repo_epath=Ontbrekend distributiepad
+
+yum_repo_id=Repository-ID
+yum_repo_name=Repositorybeschrijving
+yum_repo_url=Pakket basis-URL
+yum_repo_gpg=GPG-certificaatbestand
+yum_repo_none=Niet ondertekend
+yum_repo_eid=Ontbrekende of ongeldige repository-ID - alleen letters en cijfers toegestaan
+yum_repo_eidclash=Repository-ID is al in gebruik
+yum_repo_ename=Naam ontbrekende opslagplaats
+yum_repo_eurl=Ontbrekende of ongeldige repository-URL
+yum_repo_egpg=GPG cert-bestand ontbreekt of bestaat niet
+yum_repo_efile=Repository-bestand bestaat al!
+
+missing_msg=Het $1 -pakket kan automatisch worden geïnstalleerd door Webmin met behulp van $2.
+missing_now=Installeer nu
+
+ports_install=FreeBSD-poorten $1 installeren ..
+ports_failed=... sommige poorten zijn mislukt
+ports_ok=.. installatie voltooid
+ports_input=Pakket van poorten
+ports_find=Zoek poorten
+ports_name=FreeBSD-poorten
+ports_form=Update Ports Database
+ports_apply=Download nieuwste snapshot
+ports_upgrade=Snapshot van poorten downloaden
+ports_running=Opdracht $1 wordt uitgevoerd ..
+
+pkg_install=FreeBSD-pakketten $1 installeren ..
+pkg_failed=.. sommige pakketten zijn mislukt
+pkg_ok=.. installatie voltooid
+pkg_find=Zoeken pkgng
+pkg_input=Pakket van pkgng
+
+pkgsrc_install=Pkgsrc-pakketten $1 installeren ..
+pkgsrc_failed=.. sommige pakketten zijn mislukt
+pkgsrc_ok=.. installatie voltooid
+pkgsrc_find=Zoeken pkgng
+pkgsrc_input=Pakket van pkgsrc
+
+log_IPKG_update=Bijgewerkte IPKG-database
+log_IPKG_upgrade=Geïnstalleerde IPKG-pakketten geüpgraded
+
+IPKG_name=IPKG
+IPKG_input=Pakket van IPKG
+IPKG_find=Blader door IPKG ..
+IPKG_form=Beheer IPKG-pakketten
+IPKG_update=Update IPKG-pakketdatabase
+IPKG_upgrade=Geïnstalleerde IPKG-pakketten upgraden
+IPKG_title_update=Bijwerken van IPKG-database
+IPKG_title_upgrade=Geïnstalleerde pakketten upgraden
+IPKG_updatedesc=Opdracht $1 wordt uitgevoerd ..
+IPKG_upgradefailed=.. is mislukt!
+IPKG_upgradeok=.. compleet.
+IPKG_install=Pakket (ten) installeren met opdracht $1 ..
+IPKG_ok=.. installatie voltooid.
+IPKG_failed=.. installatie mislukt!
+IPKG_index_tree=Beheer IPKG-pakketten
+IPKG_install_package=Installeren
+IPKG_install_packagedesc=Installeer dit pakket op uw systeem
+IPKG_noupgrade=Niets om te upgraden
+IPKG-edit_title=Beheer IPKG-pakket
+IPKG_update_avail=Update beschikbaar:
+IPKG_not_installed=Pakket is niet geïnstalleerd

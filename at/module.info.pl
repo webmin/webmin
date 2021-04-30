@@ -1,2 +1,2 @@
 desc_pl=Zaplanowane polecenia
-longdesc_pl=Harmonogram wykonywania poleceñ lub skryptów.
+longdesc_pl=Harmonogram wykonywania poleceÅ„ lub skryptÃ³w.

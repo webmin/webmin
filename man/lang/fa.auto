@@ -1,0 +1,79 @@
+index_title=مستندات سیستم
+index_header=جستجوی اسناد سیستم
+index_for=جستجو کنید
+index_where=جستجو در
+index_alldoc=کلیه مستندات
+index_man=صفحات دستی
+index_doc=مستندات بسته بندی
+index_kernel=مستندات هسته
+index_info=صفحات اطلاعات
+index_howto=اسناد HOWTO
+index_kde=اسناد KDE
+index_perl=مستندات ماژول پرل
+index_custom=اسناد سفارشی
+index_help=راهنما وبمین
+index_reset=تنظیم مجدد
+index_search=جستجو کردن
+index_return=فرم جستجو
+index_type=همخوانی داشتن
+index_name=فقط نام
+index_data=نام و محتویات
+index_google=جستجوی گوگل
+index_others=هنگام جستجوی اسناد از ماژول دیگر ، اجازه جستجو در ..
+index_other_man=صفحات دستی
+index_other_help=راهنما وبمین
+index_other_doc=مستندات بسته بندی
+index_other_kernel=مستندات هسته
+index_other_howto=اسناد HOWTO
+index_other_perl=مستندات ماژول پرل
+index_other_google=موتور جستجوی گوگل
+index_other_kde=اسناد KDE
+index_and=همه را مطابقت دهید
+index_or=مطابقت با هر
+
+search_efor=هیچ صفحه دستی برای جستجوی وارد شده وجود ندارد
+search_title=نتایج جستجو
+search_desc=شرح
+search_type=تایپ کنید
+search_file=صفحه یا پرونده
+search_man=صفحه دستی
+search_howto=سند HOWTO
+search_doc=مستندات بسته بندی
+search_kernel=مستندات هسته
+search_kde=اسناد KDE
+search_perl=ماژول پرل
+search_help=راهنما وبمین
+search_custom=اسناد سفارشی
+search_none=هیچ اسناد مطابق$1 یافت نشد.
+search_for=برای$1
+search_google=نتیجه جستجوی Google
+search_doxfer=اسناد آنلاین وبمین
+
+howto_title=HOWTO سند
+howto_header=پرونده سند HOWTO$1
+howto_epath=مسیر سند نامعتبر HOWTO
+
+doc_title=مستندات بسته بندی
+doc_header=پرونده سند بسته$1
+doc_epath=مسیر اسناد بسته نامعتبر است
+
+man_title=صفحه دستی
+man_header=صفحه دستی برای$1 ($2)
+man_noentry=صفحه دستی برای$1 وجود ندارد!
+man_epath=صفحه دستی نمی تواند مسیر باشد!
+
+kernel_title=سند هسته
+kernel_header=پرونده سند هسته$1
+kernel_epath=مسیر سند نامعتبر است
+
+kde_title=مستندات KDE
+kde_header=پرونده سند KDE$1
+kde_epath=مسیر اسناد KDE نامعتبر است
+
+perl_title=ماژول پرل
+perl_header=مستندات برای ماژول Perl$1
+perl_emod=نام ماژول Perl نامعتبر است
+
+acl_allow=آیا می توانید انواع جستجوی مجاز را ویرایش کنید؟
+
+check_ecannot=شما مجاز به ویرایش انواع جستجوی مجاز نیستید

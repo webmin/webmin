@@ -1,13 +1,12 @@
 index_title=Alterar Senhas
-index_header=Selecione o usu·rio para alterar a senha
-index_return=Lista de Usu·rios
-index_user=Alterar senha para usu·rio:
-index_euseradmin=Este mÛdulo n„o pode ser usado porque os mÛdulos Usu·rio
-e Grupos n„o est„o installado ou n„o s„o suportados neste sistema.
+index_header=Selecione o usu√°rio para alterar a senha
+index_return=Lista de Usu√°rios
+index_user=Alterar senha para usu√°rio:
+index_euseradmin=Este m√≥dulo n√£o pode ser usado porque os m√≥dulos Usu√°rio
 index_toomany=There are too many users to display on your system. Enter the name of the user whose password you want to change below..
 
 passwd_title=Alterar Senha
-passwd_header=Alterando senha do usu·rio unix
+passwd_header=Alterando senha do usu√°rio unix
 passwd_for=Alterando senha para
 passwd_old=Senha antiga
 passwd_new=Nova senha
@@ -15,24 +14,24 @@ passwd_repeat=Nova Senha (novamente)
 passwd_change=Alterar
 passwd_reset=Limpar o form
 passwd_err=Falhou para trocar a senha
-passwd_ecannot=VocÍ n„o tem permiss„o para alterar a senha deste usu·rio
-passwd_euser=Usu·rio n„o existe
+passwd_ecannot=Voc√™ n√£o tem permiss√£o para alterar a senha deste usu√°rio
+passwd_euser=Usu√°rio n√£o existe
 passwd_eold=Senha antiga incorreta
-passwd_erepeat=As senhas novas n„o s„o iguais
+passwd_erepeat=As senhas novas n√£o s√£o iguais
 passwd_ecmd=$1 falhou : $2
-passwd_ok=Senha do usu·rio $1 alterada com sucesso. Se este È o usu·rio Webmin corrente, vocÍ deve logar novamente.
+passwd_ok=Senha do usu√°rio $1 alterada com sucesso. Se este √© o usu√°rio Webmin corrente, voc√™ deve logar novamente.
 
-log_passwd=Senha para o usu·rio $1 alterada.
+log_passwd=Senha para o usu√°rio $1 alterada.
 
-acl_repeat=Deve entrar com a confirmaÁ„o de senha?
+acl_repeat=Deve entrar com a confirma√ß√£o de senha?
 acl_old=Deve informar a senha antiga?
-acl_old_this=Somente para outros usu·rios
-acl_others=Altera senha em outros mÛdulos?
+acl_old_this=Somente para outros usu√°rios
+acl_others=Altera senha em outros m√≥dulos?
 acl_users=Users whose passwords can be changed
-acl_mode0=Todos usu·rios
-acl_mode1=Somente usu·rios
-acl_mode2=Todos usu·rios exceto
-acl_mode3=Somente este usu·rio
-acl_mode4=Somente usu·rio com UID entre
-acl_mode5=Usu·rios com grupo prim·rio
+acl_mode0=Todos usu√°rios
+acl_mode1=Somente usu√°rios
+acl_mode2=Todos usu√°rios exceto
+acl_mode3=Somente este usu√°rio
+acl_mode4=Somente usu√°rio com UID entre
+acl_mode5=Usu√°rios com grupo prim√°rio
 acl_mode6=Users matching

@@ -1,0 +1,3 @@
+desc_es=Cortafuegos IPv6 de Linux
+name_es=Cortafuegos6
+longdesc_es=Configure un firewall de Linux usando ip6tables. Permite la edición de todas las tablas, cadenas, reglas y opciones.

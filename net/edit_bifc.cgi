@@ -37,10 +37,11 @@ elsif ($in{'new'}) {
 	&ui_print_header(undef, $text{'bifc_create'}, "");
 	if ($in{'virtual'}) {
 		# Pick a virtual number
-		$vmax = int($net::min_virtual_number);
+		$vmax = int($min_virtual_number) - 1;
 		foreach my $e (@boot) {
 			$vmax = $e->{'virtual'}
-				if ($e->{'name'} eq $in{'virtual'} &&
+				if ($e->{'virtual'} ne '' &&
+				    $e->{'name'} eq $in{'virtual'} &&
 				    $e->{'virtual'} > $vmax);
 			}
 		}
@@ -50,8 +51,10 @@ else {
 	$b = $boot[$in{'idx'}];
 	&can_iface($b) || &error($text{'ifcs_ecannot_this'});
 	&ui_print_header(undef, $text{'bifc_edit'}, "");
-	if (!$b->{'dhcp'} && !$b->{'bootp'} && !$b->{'broadcast'}) {
-		# Fill in broadcast if missing
+	if (!$b->{'dhcp'} && !$b->{'bootp'} && !$b->{'broadcast'} &&
+	    !&can_broadcast_def()) {
+		# Fill in broadcast if missing, unless system can compute
+		# it automatically
 		$b->{'broadcast'} = &compute_broadcast(
 			$b->{'address'}, $b->{'netmask'});
 		}

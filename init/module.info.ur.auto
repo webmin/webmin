@@ -1,0 +1,3 @@
+name_ur=بوٹ منیجر
+desc_ur=بوٹ اپ اور شٹ ڈاؤن
+longdesc_ur=/etc/init.d یا /etc/rc.local. /etc/init.d سے بوٹ کے وقت سیٹ اپ اسکرپٹ چلائیں /etc/rc.local.

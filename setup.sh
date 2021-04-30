@@ -28,8 +28,12 @@ if [ $? != "0" ]; then
 	exit 1;
 fi
 
+spaces_count_def=10
+verleneach=$(expr ${#ver} / 2)
+space_count=$(expr $spaces_count_def - $verleneach)
+space_count_cond="$(printf "%*s%s" $space_count)"
 echo "***********************************************************************"
-echo "*            Welcome to the Webmin setup script, version $ver        *"
+echo "* $space_count_cond Welcome to the Webmin setup script, version $ver $space_count_cond *"
 echo "***********************************************************************"
 echo "Webmin is a web-based interface that allows Unix-like operating"
 echo "systems and common Unix services to be easily administered."
@@ -158,11 +162,6 @@ if [ "$upgrading" = 1 ]; then
 	ssl=`grep "^ssl=" $config_dir/miniserv.conf | sed -e 's/ssl=//g'`
 	atboot=`grep "^atboot=" $config_dir/miniserv.conf | sed -e 's/atboot=//g'`
 	inetd=`grep "^inetd=" $config_dir/miniserv.conf | sed -e 's/inetd=//g'`
-
-	if [ "$inetd" != "1" ]; then
-		# Stop old version
-		$config_dir/stop >/dev/null 2>&1
-	fi
 
 	# Copy files to target directory
 	if [ "$wadir" != "$srcdir" ]; then
@@ -446,7 +445,12 @@ else
 
 	# Ask whether to run at boot time
 	if [ "$atboot" = "" ]; then
-		initsupp=`grep "^os_support=" "$srcdir/init/module.info" | sed -e 's/os_support=//g' | grep $os_type`
+		if echo "$os_type" | grep  -q "\-linux$"; then
+		    grep_os_type="linux"
+		else
+		    grep_os_type="$os_type"
+		fi
+		initsupp=`grep "^os_support=" "$srcdir/init/module.info" | sed -e 's/os_support=//g' | grep $grep_os_type`
 		atboot=0
 		if [ "$initsupp" != "" ]; then
 			printf "Start Webmin at boot time (y/n): "
@@ -619,10 +623,21 @@ fi
 echo "#!/bin/sh" >>$config_dir/stop
 echo "echo Stopping Webmin server in $wadir" >>$config_dir/stop
 echo "pidfile=\`grep \"^pidfile=\" $config_dir/miniserv.conf | sed -e 's/pidfile=//g'\`" >>$config_dir/stop
-echo "kill \`cat \$pidfile\`" >>$config_dir/stop
+echo "pid=\`cat \$pidfile\`" >>$config_dir/stop
+echo "if [ \"\$pid\" != \"\" ]; then" >>$config_dir/stop
+echo "  kill \$pid || exit 1" >>$config_dir/stop
+echo "  touch $var_dir/stop-flag" >>$config_dir/stop
+echo "  if [ \"\$1\" = \"--kill\" ]; then" >>$config_dir/stop
+echo "    sleep 2" >>$config_dir/stop
+echo "    (kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null" >>$config_dir/stop
+echo "  fi" >>$config_dir/stop
+echo "  exit 0" >>$config_dir/stop
+echo "else" >>$config_dir/stop
+echo "  exit 1" >>$config_dir/stop
+echo "fi" >>$config_dir/stop
 
 echo "#!/bin/sh" >>$config_dir/restart
-echo "$config_dir/stop && $config_dir/start" >>$config_dir/restart
+echo "$config_dir/stop --kill && $config_dir/start" >>$config_dir/restart
 
 echo "#!/bin/sh" >>$config_dir/reload
 echo "echo Reloading Webmin server in $wadir" >>$config_dir/reload
@@ -632,6 +647,11 @@ echo "kill -USR1 \`cat \$pidfile\`" >>$config_dir/reload
 chmod 755 $config_dir/start $config_dir/stop $config_dir/restart $config_dir/reload
 echo "..done"
 echo ""
+
+if [ "$upgrading" = 1 -a "$inetd" != "1" ]; then
+	# Stop old version, with updated stop script
+	$config_dir/stop >/dev/null 2>&1
+fi
 
 if [ "$upgrading" = 1 ]; then
 	echo "Updating config files.."
@@ -645,7 +665,7 @@ if [ "$upgrading" != 1 ]; then
 	echo "os_version=$os_version" >> $config_dir/config
 	echo "real_os_type=$real_os_type" >> $config_dir/config
 	echo "real_os_version=$real_os_version" >> $config_dir/config
-	echo "lang=en.UTF-8" >> $config_dir/config
+	echo "lang=en" >> $config_dir/config
 
 	# Turn on logging by default
 	echo "log=1" >> $config_dir/config

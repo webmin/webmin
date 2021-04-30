@@ -1,0 +1,11 @@
+index_title=idmapd کنفیگریشن
+index_eidmapd=Idmapd daemon $1 could not be found. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+general=عمومی ترتیب
+mapping=نقشہ سازی کی تشکیل
+pipefs_dir=پائپفس ڈائریکٹری
+domain=ڈومین نام
+nobody_user=کوئی صارف نہیں
+nobody_group=کوئی گروپ نہیں
+save=تشکیل محفوظ کریں اور ڈیمون کو دوبارہ شروع کریں
+save_err=کنفگ فائل$1 کو محفوظ کرنے میں ناکام
+error_dir=ڈائرکٹری$1 موجود نہیں ہے

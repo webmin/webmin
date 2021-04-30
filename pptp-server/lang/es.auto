@@ -1,0 +1,26 @@
+conf_ecannot=No tiene permiso para editar las opciones del servidor PPTP
+
+options_ecannot=No tiene permiso para editar las opciones de PPP
+
+secrets_ecannot=No tiene permiso para editar cuentas PPP
+secrets_delete=Eliminar cuentas PPP seleccionadas
+
+edit_secret_save=Salvar
+
+stop_ecannot=No tiene permiso para detener el servidor PPTP
+
+start_ecannot=No tiene permiso para iniciar el servidor PPTP
+
+apply_ecannot=No tiene permiso para reiniciar el servidor PPTP
+
+conns_ecannot=No tiene permiso para administrar conexiones activas
+conns_user=Nombre de usuario
+
+log_deletes=Cuentas $1 PPP eliminadas
+
+acl_conf=¿Se puede editar la configuración?
+acl_options=¿Se pueden editar opciones?
+acl_secrets=¿Puede administrar cuentas PPTP?
+acl_conns=Puede ver las conexiones?
+acl_stop=¿Puede detener e iniciar el servidor PPTP?
+acl_apply=¿Se puede aplicar la configuración?

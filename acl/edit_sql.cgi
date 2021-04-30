@@ -96,6 +96,16 @@ print &ui_table_row(undef,
 		  [ [ 0, $text{'sql_addto0'} ],
 		    [ 1, $text{'sql_addto1'} ] ]), 2);
 
+print &ui_table_row(undef,
+	&ui_radio("nocache", int($miniserv{'userdb_nocache'} || 0),
+		  [ [ 0, $text{'sql_nocache0'} ],
+		    [ 1, $text{'sql_nocache1'} ] ]), 2);
+
+print &ui_table_row(undef,
+	&ui_opt_textbox("timeout", $miniserv{'userdb_cache_timeout'},
+			5, $text{'sql_timeout_def'}, $text{'sql_timeout_for'}).
+			" ".$text{'sql_timeout_secs'});
+
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);
 

@@ -1,0 +1,53 @@
+desc_su-l=Переключити користувача (з логіном)
+desc_usermin=Веб-сервер Usermin
+desc_cupsys=Друк CUPS
+desc_libcupsys2=Друк CUPS
+desc_ssh=SSH Вхід
+desc_proftpd=Сервер передачі файлів ProFTPd
+desc_qpopper=Поштовий сервер POP
+desc_dovecot=Поштовий сервер POP / IMAP
+desc_cron=Заплановані команди демон
+desc_runuser=Запустити команду як користувач
+desc_runuser-l=Запустити команду як користувач (з логіном)
+desc_postgresql=База даних PostgreSQL
+desc_crond=Кронський демон
+desc_smtp=Аутентифікація SMTP
+desc_smtp.postfix=Postfix SMTP аутентифікація
+desc_smtp.sendmail=Ідентифікація SMTP Sendmail
+desc_config-util=Конфігураційні утиліти
+desc_newrole=Нова роль SELinux
+desc_radius=RADIUS набір даних
+desc_pptpconfig=Протокол тунелювання "точка-точка"
+desc_atd=Заплановані команди демон
+desc_kcheckpass=Перевірка паролів KDE
+desc_common-account=Загальна перевірка облікового запису
+desc_common-auth=Загальна аутентифікація
+desc_common-password=Загальна зміна пароля
+desc_common-session=Загальні налаштування сеансу
+
+edit_file=Файл конфігурації
+edit_addinc=Додати додану послугу
+edit_inc=Включити сервіс $1 
+edit_iheader=Включені послуги PAM
+
+pam_foreground.so=Налаштування консолі
+
+unix_nullok_secure=Прийняти нульові паролі на захищених TTY?
+unix_min=Мінімальна довжина пароля
+unix_nomin=Жоден
+unix_max=Максимальна довжина пароля
+unix_nomax=Немає межі
+unix_obscure=Попередити використання простих паролів?
+unix_emin=Мінімальна довжина пароля відсутня або недійсна
+unix_emax=Максимальна довжина пароля відсутня або недійсна
+
+log_inc_create=Додано включити $1 для послуги $2 
+log_inc_modify=Змінено включають $1 для послуги $2 
+log_inc_delete=Видалено включає $1 для послуги $2 
+log_incs=Оновлено включає послугу $1 
+
+inc_edit=Редагувати включену послугу
+inc_create=Створіть включену послугу
+inc_header=Включені дані служби PAM
+inc_inc=Включено послугу PAM
+inc_err=Не вдалося зберегти включену послугу

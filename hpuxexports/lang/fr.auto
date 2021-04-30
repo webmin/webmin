@@ -1,0 +1,31 @@
+index_sel_ro=accès en lecture aux hôtes sélectionnés
+index_all_ro=accès en lecture à tous les hôtes
+index_ro_rw=accès en lecture à tous les hôtes, accès en écriture aux hôtes sélectionnés
+index_sel_rw=hôtes sélectionnés accès en écriture
+index_all_rw=accès en écriture à tous les hôtes
+index_sel_root=accès root aux hôtes sélectionnés
+
+edit_security=Sécurité des exportations
+edit_sel_ro=Accès en lecture aux hôtes répertoriés
+edit_all_ro=Accès en lecture à tous les hôtes
+edit_ro_rw=Accès en lecture à tous les hôtes, accès en écriture aux hôtes répertoriés
+edit_sel_rw=Accès en écriture des hôtes répertoriés
+edit_all_rw=Tous les hôtes ont accès en écriture
+edit_sel_hosts=Hôtes inscrits
+edit_all_hosts=Tous les hôtes
+edit_user_access=Accès utilisateur
+edit_root_access=Accès root
+edit_anon_access=Utilisateur anonyme
+edit_anon_notset=Pas encore défini
+edit_anon_noaccess=Pas d'accès
+edit_async=Écritures asynchrones
+
+save_enohost='$1' - Vous n'avez répertorié aucun hôte
+
+log_modify=Exportation NFS modifiée $1 
+log_modify_l=Exportation NFS modifiée $1 vers $2 
+log_delete=Exportation NFS supprimée $1 
+log_delete_l=Exportation NFS supprimée $1 vers $2 
+log_create=Exportation NFS créée $1 
+log_create_l=Exportation NFS créée $1 vers $2 
+log_apply=Configuration appliquée

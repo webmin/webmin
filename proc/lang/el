@@ -1,0 +1,205 @@
+index_title=Τρέχουσες Διεργασίες
+index_display=Προβολή
+index_tree=PID
+index_user=Χρήστης
+index_size=Μνήμη
+index_cpu=Επεξεργαστής
+index_search=Αναζήτηση
+index_zone=Ζώνη
+index_run=Εκτέλεση..
+index_return=λίστα διεργασιών
+index_mem2=<b>Πραγματική μνήμη:</b> $1 σύνολο / $2 ελεύθερα
+index_mem3=<b>Πραγματική μνήμη:</b> $1 σύνολο / $2 ελεύθερα / $3 στην cache
+index_swap2=<b>Χώρος swap:</b> $1 σύνολο / $2 ελεύθερα
+index_burst=<b>Burstable μνήμη:</b> $1 σύνολο
+index_loadname=Μέσοι όροι φόρτου επεξεργαστή:
+index_loadnums=$1 (1 λεπτό) , $2 (5 λεπτά) , $3 (15 λεπτά)
+index_cpuname=Τύπος Επεξεργαστή:
+index_inzone=Στη ζώνη $1
+
+pid=ID
+owner=Ιδιοκτήτης
+command=Εντολή
+cpu=Επεξεργαστής
+size=Μέγεθος
+parent=Διεργασία γονέας
+runtime=Χρόνος εκτέλεσης
+nice=Επίπεδο προτεραιότητας
+stime=Ξεκίνησε
+sclass=Κλάση προγραμματισμού IO
+sprio=Προτεραιότητα IO
+
+search_user=Ανήκει σε
+search_match=Ταιριάζει
+search_cpupc=χρησιμοποιεί πάνω από $1% του επεξεργαστή
+search_cpupc2=Χρησιμοποιεί περισσότερο επεξεργαστή από
+search_fs=Χρησιμοποιεί το σύστημα αρχείων
+search_files=Χρησιμοποιεί το αρχείο
+search_submit=Αναζήτηση
+search_none=Δεν βρέθηκαν ταιριαστές διεργασίες
+search_kill=Αποστολή Σινιάλου
+search_ignore=Αγνόηση διεργασιών αναζήτησης στο αποτέλεσμα
+search_return=φόρμα αναζήτησης
+search_sigterm=Διακοπή Διεργασιών
+search_sigkill=Σκότωμα Διεργασιών
+search_port=χρησιμοποιεί τη θύρα
+search_protocol=πρωτόκολλο
+search_ip=Χρησιμοποιεί τη διέυθυνση IP
+
+run_command=Εντολή για εκτέλεση
+run_submit=Εκτέλεση
+run_mode=Λειτουργία εκτέλεσης
+run_bg=Εκτέλεση στο παρασκήνιο
+run_fg=Αναμονή μέχρι να ολοκληρωθεί
+run_input=Εισαγωγή στην εντολή
+run_title=Έξοδος Εντολής
+run_output=Έξοδος από $1 ..
+run_none=δεν δημιουργήθηκε έξοδος
+run_ecannot=Δεν σας επιτρέπεται να εκτελέσετε εντολές
+run_as=Εκτέσεση ως χρήστης
+run_euser=Μη ορισμένο ή μη έγκυρο όνομα χρήστη
+run_euser2=Δεν σας επιτρέπεται να εκτελέσετε εντολές ως ο χρήστης που επιλέξατε
+
+edit_title=Πληροφορίες Διεργασιών
+edit_gone=Αυτή η διεργασία δεν εκτελείται πλέον
+edit_sub=Υποδιεργασίες
+edit_subid=ID
+edit_subcmd=Εντολή Υπο-διεργασίας
+edit_kill=Αποστολή Σινιάλου
+edit_change=Αλλαγή
+edit_prilow=Χαμηλή προτεραιότητα
+edit_prihigh=Υψηλή προτεραιότητα
+edit_pridef=Προεπιλογή
+edit_none=Κανένα
+edit_ecannot=Δεν σας επιτρέπεται να επεξεργαστείτε διεργασίες
+edit_sigterm=Τερματισμός
+edit_sigkill=Σκότωμα
+edit_sigstop=Αναστολή
+edit_sigcont=Συνέχιση
+edit_open=Αρχεία και Συνδέσεις
+edit_trace=Ανίχνευση Διεργασίας
+edit_return=λεπτομέρειες διεργασίας
+
+kill_err=Αποτυχία αποστολής σινιάλου $1 στην διεργασία $2
+kill_title=Αποστολή Σινιάλου
+kill_sent=απεστάλη
+kill_ecannot=Δεν σας επιτρέπεται να σκοτώσετε διεργασίες
+
+renice_err=Αποτυχία αλλαγής προτεραιότητας της διεργασίας $1
+renice_ecannot=Δεν σας επιτρέπεται να αλλάξετε τις προτεραιότητες των διεργασιών
+
+linux_pri=Προτεραιότητα
+linux_tty=TTY
+linux_status=Κατάσταση
+linux_wchan=Περιμένει σε
+linux_mem=Μνήμη
+linux_group=Ομάδα
+linux_ruser=Πραγματικός χρήστης
+linux_rgroup=Πραγματική ομάδα
+linux_pgid=ID ομάδας διεργασίας
+linux_stime=Ξεκίνησε
+
+linuxstat_R=Εκτελείται
+linuxstat_S=Σε αναστολή
+linuxstat_D=Σε βαθιά αναστολή
+linuxstat_T=Σταμάτησε
+linuxstat_Z=Ζόμπι
+
+linux_real=Σε πραγματικό χρόνο
+linux_be=Καλύτερη προσπάθεια
+linux_idle=Σε αδράνεια
+
+freebsd_ruser=Πραγματικός χρήστης
+freebsd_rgroup=Πραγματική ομάδα
+freebsd_tty=TTY
+freebsd_pgid=Ομάδα διεργασιών
+freebsd_stime=Ξεκίνησε
+freebsd_lim=¨οριο μνήμης
+
+hpux_pri=Προτεραιότητα
+hpux_tty=TTY
+hpux_status=Κατάσταση
+hpux_wchan=Αναμονή για 
+hpux_stime=Ξεκίνησε
+
+hpuxstat_0=Μη υπαρκτές
+hpuxstat_S=Σε αναστολή
+hpuxstat_W=Σε αναμονή
+hpuxstat_R=Εκτελούνται
+hpuxstat_I=Ενδιάμεσες
+hpuxstat_Z=Ζόμπι
+hpuxstat_T=Σταματημένες
+hpuxstat_G=Αυξάνονται
+
+macos_tty=TTY
+
+sysv_group=Ομάδα
+sysv_ruser=Αληθινός χρήστης
+sysv_rgroup=Αληθινή ομάδα
+sysv_pgid=ID ομάδας διεργασιών
+sysv_tty=TTY
+sysv_stime=Ξεκίνησε
+sysv_task=ID εργασίας
+sysv_zone=Όνομα ζώνης
+
+log_run=Εκτέλεσε την εντολή "$1"
+log_kill=Έστειλε σινιάλο $1 στη διεργασία $2
+log_kills=Αποστολή σινιάλου $1 σε $2 διεργασίες
+log_kill_l=Έστειλε σινιάλο $1 στη διεργασία $2
+log_kills_l=Έστειλε σινιάλο $1 στις διεργασίες<br>$2
+log_renice=Άλλαξε την προτεραιότητα της διεργασίας $2 σε $1
+
+acl_manage=Διαχείριση διεργασιών ως χρήστης
+acl_manage_def=Τρέχων χρήστης Webmin
+acl_edit=Μπορεί να σκοτώσει και να αλλάξει προτεραιότητα στις διεργασίες;
+acl_run=Μπορεί να εκτελέσει εντολές;
+acl_only=Μπορεί να δει μόνο τις δικές του διεργασίες;
+acl_who=Μπορεί να διαχειριστεί διεργασίες για τους χρήστες
+acl_who0=Όλους τους χρήστες
+acl_who1=Τον τρέχων χρήστη Webmin
+acl_who2=Την παρακάτω λίστα ..
+
+kill_kill=Σκότωμα Διεργασίας
+kill_term= Τερματισμός  
+kill_hup=  Επανεκκίνηση   
+kill_stop=    Σταμάτημα    
+kill_cont=  Συνέχεια  
+
+open_title=Ανοικτά Αρχεία και Συνδέσεις
+open_proc=Για τη διεργασία $1 (PID $2)
+open_header1=Ανοικτά αρχεία
+open_header2=Ανοικτές συνδέσεις δικτύου
+open_type=Τύπος
+open_proto=Πρωτόκολλο
+open_desc=Λεπτομέρειες
+open_fd=Περιγραφέας Αρχείου
+open_listen1=Ακούει στη θύρα $1
+open_listen2=Ακούει στη διεύθυνση $1 θύρα $2
+open_recv=Λαμβάνει στη $1:$2
+open_conn=Συνδεδεμένο από το $1 στο $2 σε κατάσταση $3
+open_cwd=Τρέχων φάκελος
+open_rtd=Ριζικός φάκελος
+open_txt=Κώδικας προγράμματος
+open_mem=Κοινόχρηστη Βιβλιοθήκη
+open_dir=Φάκελος
+open_reg=Κανονικό αρχείο
+open_chr=Ειδικός χαρακτήρας
+open_blk=Ειδικό μπλοκ
+open_size=Μέγεθος αρχείου
+open_inode=Inode
+open_file=Διαδρομή
+
+trace_title=Διαδικασία Ανίχνευσης
+trace_start=Εκκίνηση ανίχνευσης κλήσης συστήματος για $1 ..
+trace_doing=Ανίχνευση κλήσης συστήματος για $1 :
+trace_done=.. διεργασία έχει τερματιστεί.
+trace_failed=.. ανίχνευση απέτυχε!
+trace_sorry=Αυτή η σελίδα απαιτεί υποστήριξη Java στο πρόγραμμα περιήγησης. Για να χρησιμοποιήσετε ανίχνευση διεργασίας σε μορφή μόνο κειμένου, ρυθμίστε τις ρυθμίσεις της ενότητας.
+trace_syscalls=Ανίχνευση κλήσεων συστήματς:
+trace_all=Όλες
+trace_sel=Από τη λίστα..
+trace_change=Αλλαγή
+
+windows_threads=Νήματα σε εξέλιξη
+
+syslog_dmesg=Μηνύματα πυρήνα

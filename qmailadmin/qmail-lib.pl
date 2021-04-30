@@ -41,7 +41,7 @@ sub get_alias
 local $alias = { 'name' => $_[0],
 		 'file' => "$qmail_alias_dir/.qmail-$_[0]",
 		 'values' => [ ] };
-open(ALIAS, $alias->{'file'});
+open(ALIAS, "<".$alias->{'file'});
 while(<ALIAS>) {
 	s/\r|\n//g;
 	s/#.*$//g;
@@ -200,7 +200,7 @@ unlink("$_[0]->{'file'}");
 # Returns the value from a qmail single-line control file
 sub get_control_file
 {
-open(FILE, "$qmail_control_dir/$_[0]") || return undef;
+open(FILE, "<$qmail_control_dir/$_[0]") || return undef;
 local $line = <FILE>;
 close(FILE);
 $line =~ s/\r|\n//g;
@@ -228,7 +228,7 @@ else {
 sub list_control_file
 {
 local @lines;
-open(FILE, "$qmail_control_dir/$_[0]") || return undef;
+open(FILE, "<$qmail_control_dir/$_[0]") || return undef;
 while(<FILE>) {
 	s/\r|\n//g;
 	s/#.*$//g;
@@ -264,7 +264,7 @@ sub list_routes
 if (!scalar(@list_routes_cache)) {
 	local $lnum = 0;
 	local @rv;
-	open(ROUTES, $qmail_routes_file);
+	open(ROUTES, "<".$qmail_routes_file);
 	while(<ROUTES>) {
 		s/\r|\n//g;
 		s/#.*$//;
@@ -390,7 +390,7 @@ sub list_virts
 if (!scalar(@list_virts_cache)) {
 	local $lnum = 0;
 	local @rv;
-	open(VIRTS, $qmail_virts_file);
+	open(VIRTS, "<".$qmail_virts_file);
 	while(<VIRTS>) {
 		s/\r|\n//g;
 		s/#.*$//;
@@ -595,7 +595,7 @@ sub list_assigns
 if (!scalar(@list_assigns_cache)) {
 	local @rv;
 	local $lnum = 0;
-	open(ASSIGNS, $qmail_assigns_file);
+	open(ASSIGNS, "<".$qmail_assigns_file);
 	while(<ASSIGNS>) {
 		s/\r|\n//g;
 		last if ($_ eq '.');

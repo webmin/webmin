@@ -1,0 +1,29 @@
+master_inview=$1 a la vista $2 
+
+delete_onslave=També voleu suprimir-lo dels servidors esclaus?
+delete_errslave=La zona mestra ha suprimit bé, però s'han produït els errors següents en esclaus : $1
+delete_vwarn=Aquesta zona està associada amb el domini Virtualmin $1, per tant, no s'ha d'esborrar aquí.
+
+delete_vwarn2=Aquesta zona està associada amb el domini Virtualmin $1 i $2 més, per la qual cosa no s'ha d'esborrar aquí.
+
+edit_ecaavalue2=Nom de domini que falta o no té aspecte vàlid
+
+text_desc3=Aquest formulari us permet editar manualment el fitxer de registres DNS $1. Webmin no farà cap comprovació de sintaxi.
+
+type_CAA=Autoritat de Certificació
+
+edit_CAA=Autoritat de Certificació
+
+recs_CAA=Autoritat de Certificació
+
+value_CAA1=Necessiteu fer complir el compliment?
+value_CAA2=Tipus d'autorització
+value_CAA3=Nom de domini CA
+value_caa_issue=Cert domini únic
+value_caa_issuewild=Certificat de comodins
+value_caa_iodef=URL de violació de la política
+
+massdelete_vwarn=Algunes zones estan associades al domini Virtualmin $1, per tant, no hauríem de suprimir-les aquí.
+massdelete_vwarn2=Algunes zones estan associades al domini Virtualmin $1 i $2, per tant, no hauríem de suprimir-les.
+
+trusted_warning=Avís! La configuració del client de BIND DNSSEC conté claus obsoletes que deixaran de funcionar a l'octubre de 2017. O bé, utilitzeu la <a href='$1'>pàgina de verificació BIND DNSSEC</a> per ajustar la configuració o feu clic al botó següent.

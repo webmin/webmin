@@ -1,0 +1,52 @@
+inittab_new=새 init 프로세스 작성
+inittab_id=이름
+inittab_active=주석을 제거하겠습니까?
+inittab_runlevels=실행 수준
+inittab_action=동작
+inittab_process=프로세스
+inittab_none=없음
+inittab_respawn=Respawn
+inittab_wait=대기
+inittab_once=수준마다 한 번
+inittab_boot=부팅 시간
+inittab_bootwait=부팅 시간, 종료할 때까지 대기
+inittab_off=조치 없음
+inittab_ondemand=A, B, C에 있을 때마다
+inittab_initdefault=시스템 부팅 후
+inittab_sysinit=시스템 부팅 도중
+inittab_powerwait=전원 꺼짐
+inittab_powerfail=대기하지 않고 전원 꺼짐
+inittab_powerokwait=전원 복원됨
+inittab_powerfailnow=정전
+inittab_ctrlaltdel=Ctrl+Alt+Del
+inittab_kbdrequest=특정 키 조합
+inittab_kbrequest=$inittab_kbdrequest
+inittab_return=inittab 인덱스
+inittab_apply=Init 설정 적용
+inittab_applymsg=<tt>telinit q</tt>명령 실행으로 현재 SysV Init 설정을 적용하려면 이 버튼을 클릭 하십시오. 이 명령이 실행될 때 잘못된 설정으로 인하여 시스템을 사용할 수 없도록 할 수 있음을 주의 하십시오.
+index_delete=선택된 프로세스 삭제
+
+edit_inittab_err=프로세스를 편집할 수 없습니다
+edit_inittab_title=프로세스 $1 편집
+edit_inittab_details=프로세스 상세 정보
+edit_inittab_del=삭제
+edit_inittab_save=저장
+
+new_inittab_err=새 프로세스를 작성할 수 없습니다
+new_inittab_title=새 프로세스
+
+save_inittab_err=프로세스를 저장할 수 없습니다
+save_inittab_noid=오류. 이름 프로세스를 입력하지 않았습니다
+save_inittab_already=오류, 이름 프로세스가 이미 있습니다
+
+log_modify=init 프로세스 $1 수정됨
+log_rename=init 프로세스 이름이 $1에서 $2(으)로 바뀜
+log_create=init 프로세스 $1 작성됨
+log_delete=init 프로세스 $1 삭제됨
+log_apply=설정 적용
+log_deletes=$1 init 프로세스 제거
+
+apply_err=설정 적용 실패
+
+delete_err=프로세스 삭제 실패
+delete_enone=선택된 것이 없음

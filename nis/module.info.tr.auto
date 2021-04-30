@@ -1,0 +1,3 @@
+desc_tr=NIS İstemcisi ve Sunucusu
+longdesc_tr=Bir sistemi NIS istemcisi, ana veya bağımlı sunucu olarak kurun. NIS + 'ın desteklenmediğini unutmayın.
+name_tr=NIS

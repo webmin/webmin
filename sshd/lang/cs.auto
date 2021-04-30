@@ -1,0 +1,19 @@
+users_dsa=Povolit ověřování DSA (SSH 2)?
+users_authkeys_set=Soubor doma
+users_eauthkeys=Chybějící nebo neplatně vypadající soubor autorizovaných klíčů
+users_maxauthtries=Maximální počet pokusů o přihlášení na připojení
+users_emaxauthtries=Chybějící nebo nečíselný počet pokusů o přihlášení na připojení
+users_chal=Používáte autentizaci pomocí výzvy a odpovědi?
+
+net_all4=Všechny adresy IPv4
+net_all6=Všechny adresy IPv6
+net_sel=Adresa ..
+
+host_prots1=1 pouze
+host_prots2=2 pouze
+host_prots12=1 a poté 2
+host_prots21=2 a poté 1
+
+keys_title=Hostujte klíče SSH
+keys_desc=Tato stránka umožňuje zobrazit klíče SSH pro tohoto hostitele.
+keys_none=Ve vaší konfiguraci SSHD se nepodařilo najít žádné položky HostKey.

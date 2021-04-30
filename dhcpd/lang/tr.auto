@@ -1,0 +1,313 @@
+index_key=TSIG anahtarlarını düzenleme (DNS sunucularına yapılan güncelleştirmelerin kimliğini doğrulamak için kullanılır)
+index_dhcpdver2=DHCP sunucusu <tt>$1</tt> doğru sürüm olarak görünmüyor. Webmin yalnızca ISC DHCPD $2 - $3 sürümlerini destekler.
+index_hostgroup=Host/Grup
+index_parent=ebeveyn
+index_hardware=Donanım Adresi
+index_group=Grup:
+index_nameip=Ana bilgisayar adı veya IP
+index_net=Ağ
+index_netmask=Ağ Maskesi
+index_desc=Açıklama
+index_buttekey=TSIG anahtarlarını düzenleme
+index_stop=Sunucuyu Durdur
+index_stopdesc=Sisteminizde çalışan DHCP sunucusunu durdurmak için bu düğmeyi tıklatın. Durdurulduğunda, DHCP istemcileri IP adresleri isteyemez.
+index_hdisplay=Ana bilgisayarları ve grupları şu şekilde göster:
+index_horder0=Görev
+index_horder1=Dosya yapısı
+index_horder2=ad
+index_horder3=Donanım adresi
+index_horder4=IP adresi
+index_togroup=Grup:
+index_tosubnet=alt ağ:
+index_toshared=Ağ:
+index_ndisplay=Ağları ve alt ağları şu şekilde göster:
+index_norder0=Görev
+index_norder1=Dosya yapısı
+index_norder2=İsim/IP adresi
+index_version=ISC DHCPd sürümü $1 
+index_buttiface=Ağ Arayüzünü Düzenle
+index_iface=DHCP sunucusunun başlatıldığında dinleyeceği ağ arabirimlerini ayarlayın.
+index_subtoomany=Görüntülenecek çok fazla alt ağ var.
+index_shatoomany=Görüntülenecek çok fazla paylaşılan ağ var.
+index_sublook2=Alt ağı adresle düzenleyin:
+index_shalook2=Paylaşılan ağı düzenleyin:
+index_hsttoomany=Görüntülenecek çok fazla ana bilgisayar var.
+index_grptoomany=Görüntülenecek çok fazla grup var.
+index_hstlook2=Adlı ana bilgisayarı düzenleyin:
+index_grplook2=Adlı grubu düzenleyin:
+index_gdom=$1 grubu
+index_match0=eşittir
+index_match1=içeren
+index_match2=maçlar
+index_dhcpd=ISC DHCPd
+index_delete=Silme seçildi
+
+butt_vco=İstemci Seçeneklerini Görüntüle
+butt_leases=Kira Listesi
+
+esub_hosts=Doğrudan bu alt ağda barındırılıyor
+esub_groups=Doğrudan bu alt ağdaki gruplar
+esub_pools=Alt Ağ için Adres Havuzları
+esub_pool=Havuz $1 
+esub_poolnone=Tanımlanmış adres havuzu yok
+
+esub_pooladd=Bir adres havuzu ekleyin.
+esub_none=Yok
+esub_retshar=paylaşılan ağ
+esub_desc=Alt ağ açıklaması
+esub_fopeer=Yük Devretme Eşi
+
+esh_hosts=Doğrudan bu paylaşılan ağda barındırılıyor
+esh_groups=Doğrudan bu paylaşılan ağdaki gruplar
+esh_subn=Bu paylaşılan ağdaki alt ağlar
+esh_pools=Paylaşılan Ağ için Adres Havuzları
+esh_desc=Paylaşılan ağ açıklaması
+
+ehost_nojavascr=Tarayıcınız javascript'i desteklemiyor gibi görünüyor. Şimdi aşağıdaki listeden doğru konumu seçmelisiniz.
+ehost_assign=Ana bilgisayara atandı
+ehost_toplevel=Üst düzey
+ehost_inshared=Paylaşılan Ağ
+ehost_insubnet=alt Ağ
+ehost_ingroup=grup
+ehost_hwaddr=Donanım Adresi
+ehost_subnet=$1 / $2 alt ağında
+ehost_shared=$1 paylaşılan ağında
+ehost_in=içinde
+ehost_retgroup=grup
+ehost_retsubn=alt ağ
+ehost_retshar=paylaşılan ağ
+ehost_desc=Ana bilgisayar açıklaması
+
+egroup_assign=Grubuna atandı
+egroup_retsubn=alt ağ
+egroup_retshar=paylaşılan ağ
+egroup_desc=Grup açıklaması
+
+listl_network=$1 / $2 ağında
+listl_lfnotcont2=DHCPd kiralama dosyası <tt>$1</tt> şu anda etkin olan herhangi bir kiralama içermiyor.
+listl_all=Tüm aktif ve süresi dolmuş kiraları listele
+listl_delete=Seçilen Kiraları Sil
+listl_unknown=Bilinmeyen
+listl_allocs=$1 IP adresi mevcut, $2 ayrılmış ($3 %)
+listl_mode=Ekran modu  :
+listl_mode_0=DHCP kiralamaları
+listl_mode_1=Alt ağlar ve kullanım
+listl_size=Toplam IP'ler
+listl_used=ayrılan
+listl_pc=Yüzde
+listl_err=Kiralamalar silinemedi
+listl_enone=Hiçbiri seçilmedi
+listl_refresh=Listeyi yenile
+
+restart_conftext=$2 içinde $1 çevresindeki satırlar :
+
+sgroup_invassign=yanlış bir bölüme atanmış grup
+sgroup_echanged=Yapılandırma dosyası içeriği değiştirildi. Tekrar deneyin.
+
+shost_invalidaddr='$1' geçersiz bir ana bilgisayar adı veya IP adresi içeriyor
+shost_invassign=yanlış bir bölüme atanmış ana bilgisayar
+
+sopt_edname='$1' geçerli bir seçenek adı değil
+sopt_ednum='$1' geçerli bir seçenek numarası değil
+sopt_edtype='$1' geçerli bir seçenek türü değil
+sopt_ecval='$1' özel seçeneği için eksik değer
+sopt_ecip='$1' özel seçeneği için değer bir IP adresi olmalıdır
+
+sshared_nosubnet=Paylaşılan '$1' ağı alt ağ içermiyor.
+
+ssub_nosubnet=Paylaşılan '$1' ağı alt ağ içermiyor.
+ssub_invalidfopeer=geçerli bir yük devretme eşi değil
+
+plib_invaliddom=$1 geçerli bir alan adı değil
+plib_toffset=Zaman ofseti
+plib_serverid=DHCP sunucusu tanımlayıcısı
+plib_ddnsdom=Dinamik DNS alan adı
+plib_ddnsrevdom=Dinamik DNS ters alanı
+plib_ddnsup=Dinamik DNS etkin mi?
+plib_ddnshost=Dinamik DNS ana bilgisayar adı
+plib_ddnshost_def=Müşteriden
+plib_ddnsupstyle=Dinamik DNS güncelleme stili
+plib_adhoc=Özel
+plib_interim=geçici
+plib_none=Yok
+plib_unclients=Bilinmeyen istemcilere izin verilsin mi?
+plib_allow=İzin vermek
+plib_deny=Reddetmek
+plib_ignore=Aldırmamak
+plib_eexpr=DHCP yapılandırmasının bu bölümü, Webmin tarafından güvenli bir şekilde düzenlenemeyen $1 ifade yönergesini içerir.
+plib_auth_subnet=Sunucu bu alt ağ için yetkili mi?
+plib_auth_shared-network=Sunucu bu paylaşılan ağ için yetkili mi?
+plib_auth_global=Sunucu tüm alt ağlar için yetkili mi?
+
+eopt_returnshsub=paylaşılan ağ
+eopt_returngroup=ev sahibi grup
+eopt_domsearch=Aranacak DNS alanları
+eopt_toffset=Zaman ofseti
+eopt_custom=Özel seçenek
+eopt_cnum=Numara
+eopt_cname=ad
+eopt_cval=değer
+eopt_def=Seçenek tanımı
+eopt_dname=Seçenek adı
+eopt_dnum=Numara
+eopt_dtype=tip
+eopt_slpa=SLP dizin aracısı IP'leri
+eopt_slpaips=Sadece bu IP'ler mi?
+eopt_slps=SLP hizmet kapsamı
+eopt_slpsonly=Sadece bu kapsam?
+
+log_stop=DHCP sunucusu durduruldu
+log_delete_lease=$1 için kira silindi
+log_delete_subnets=$1 alt ağ ve paylaşılan ağ silindi
+log_delete_hosts=$1 ana bilgisayar ve ana bilgisayar grubu silindi
+
+keys_edit=TSIG anahtarını düzenle
+keys_create=Oluşturulan TSIG anahtarları
+keys_title=DNS Anahtarları
+keys_id=Anahtar Kimliği
+keys_alg=Algoritma
+keys_secret=Gizli dize
+keys_ecannot=DNS anahtarlarını düzenlemenize izin verilmiyor
+keys_err=DNS anahtarları kaydedilemedi
+keys_ekey='$1' geçerli bir anahtar kimliği değil
+keys_esecret=$1 anahtarı için eksik veya geçersiz base-64 kodlu sır
+
+pool_edit=Adres Havuzunu Düzenle
+pool_create=Oluşturulan Adres Havuzu
+pool_header=Adres havuzu seçenekleri
+pool_allow=İzin verilecek müşteriler
+pool_deny=Reddedilecek müşteriler
+pool_return=alt ağ
+
+cdel_header=Uyarı
+cdel_shared1=paylaşılan ağ
+cdel_shared2=paylaşılan ağ
+cdel_subnet1=alt ağ
+cdel_subnet2=alt ağ
+cdel_subnet=alt ağ
+cdel_subnets=altağlar
+cdel_group1=grup
+cdel_group2=grup
+cdel_group=grup
+cdel_groups=gruplar
+cdel_host=evsahibi
+cdel_hosts=ana bilgisayarlar
+cdel_txt=$1 '$2' silindiğinde içeriği de silinecek:
+cdel_confirm=Bu $1 'i gerçekten silmek istiyor musunuz?
+cdel_eunknown=Bilinmeyen hata
+cdel_return=ana bilgisayar ve ağ listesi
+
+eacl_aviol=Erişim kontrolü ihlali
+eacl_np=İçin izniniz yok
+eacl_pdh=ana bilgisayarı sil
+eacl_pih=yeni ana makineler ekle
+eacl_puh=ana bilgisayarı düzenle
+eacl_psh=ana bilgisayar seç
+eacl_pdg=grubu sil
+eacl_pig=yeni gruplar ekle
+eacl_pug=grubu düzenle
+eacl_psg=grup Seç
+eacl_pds=alt ağı sil
+eacl_pis=yeni alt ağlar ekle
+eacl_pus=alt ağı düzenle
+eacl_pss=alt ağ seç
+eacl_pdn=paylaşılan ağı sil
+eacl_pin=yeni paylaşılan ağlar ekle
+eacl_pun=paylaşılan ağı düzenle
+eacl_psn=paylaşılan ağı seç
+eacl_uniq=kopya oluştur
+eacl_uniqh=yinelenen donanım adreslerine sahip ana bilgisayarlar oluşturma
+eacl_uniqi=yinelenen IP adreslerine sahip ana bilgisayarlar oluşturma
+eacl_pdl=kiraları sil
+eacl_psl=kiraları görüntüle
+eacl_pglob=global seçenekleri düzenle
+eacl_papply=bu hizmeti yeniden başlat
+
+acl_apply=Değişiklikler uygulayabilir mi?
+acl_r_leases=Kiraları görüntüleyebilir mi?
+acl_w_leases=Kiralamalar kaldırılabilir mi?
+acl_zones=Dinamik DNS bölgelerini düzenleyebilir mi?
+acl_global=Global seçenekleri düzenleyebilir mi?
+acl_uniq_hst=Uniq ana bilgisayar adları?
+acl_uniq_sub=Uniq alt ağ IP adresleri?
+acl_uniq_sha=Uniq paylaşılan net isimleri?
+acl_seclevel=Güvenlik seviyesini kullan:
+acl_hide=Erişilemeyen nesneler gizlensin mi?
+acl_ahst=Ana bilgisayarlara erişin:
+acl_agrp=Erişim grupları:
+acl_asub=Erişim alt ağları:
+acl_asha=Paylaşılan ağlara erişin:
+acl_per_hst_acls=Ana makine başına EKL'ler etkinleştirilsin mi?
+acl_per_grp_acls=Grup başına EKL etkinleştirilsin mi?
+acl_per_sub_acls=Alt ağ başına EKL'ler etkinleştirilsin mi?
+acl_per_sha_acls=Paylaşılan ağ başına EDL'ler etkinleştirilsin mi?
+acl_per_obj_acls=Nesne başına EKL'ler. ..
+acl_na=izin verilmedi
+acl_r1=Sadece oku
+acl_rw=okuma yazma
+acl_c=oluşturmak
+acl_r=okumak
+acl_w=yazmak
+acl_err=EKL listesi kaydedilirken hata oluştu
+acl_ernow=Bazı nesne türleri için genel ACL'lerde yazma erişimini etkinleştirmek istiyorsanız, bu nesne türü için okuma erişimini de etkinleştirmeniz gerekir.
+acl_normal=normal
+acl_paranoic=paranoya
+
+iface_title=Ağ Arayüzü
+iface_desc=DHCP sunucusu yalnızca aşağıda seçilen arabirimlerden birine bağlı ağlara IP adresleri atayabilir. Tanımlanan tüm alt ağlar için ağ arabirimi dahil edilmelidir. Hiçbiri seçilmezse, DHCP sunucusu otomatik olarak bir tane bulmaya çalışır.
+iface_listen=Arayüzlerde dinleyin
+
+lookup_ehost=$1 adında, IP adresinde veya MAC adresinde ana bilgisayar yok
+lookup_ehostname=Ana bilgisayar adı, IP adresi veya MAC adresi girilmedi
+lookup_egroup=$1 adında veya alan adında grup yok
+lookup_egroupname=Grup adı veya alan adı girilmedi
+lookup_esubnet=$1 adresine/adresine/ağ maskesine sahip bir alt ağ yok
+lookup_esubnetname=Alt ağ adresi veya adres/ağ maskesi girilmedi
+lookup_eshared=$1 adında paylaşılan bir ağ yok
+lookup_esharedname=Paylaşılan ağ adı girilmedi
+
+zone_key=DNS Bölgeleri
+index_addzone=Yeni bir DNS bölgesi ekleyin.
+index_zone=bölge
+index_nozones=Henüz hiçbir DNS bölgesi tanımlanmadı.
+zone_crheader=Bölge oluştur
+zone_eheader=Bölgeyi düzenle
+zone_tabhdr=Bölge detayları
+zone_desc=Bölge açıklaması (isteğe bağlı)
+zone_name=Bölgenin adı
+zone_primary=Birincil NS'nin IP'si
+zone_return=ana menü
+zone_faildel=Bölge silinemedi
+zone_failsave=Bölge kaydedilemedi
+zone_tsigkey=TSIG anahtarı
+zone_ecannot=DNS bölgelerini düzenleme izniniz yok
+
+plib_clientupdates=İstemciler kendi kayıtlarını güncelleyebilir mi?
+
+text_title=dhcpd.conf
+text_editor=Metin düzeltici
+text_return=ana menü
+text_undo=geri alma
+text_ecannot=Yapılandırma dosyasını düzenlemenize izin verilmiyor
+
+index_buttetext=Yapılandırmayı Manuel Olarak Düzenleme
+index_text=Yapılandırma dosyasını el ile metin düzenleme
+
+stop_err=DHCP sunucusu durdurulamadı
+stop_ekill=Koşmak yok!
+
+sdelete_err=Alt ağlar ve paylaşılan ağlar silinemedi
+sdelete_enone=Hiçbiri seçilmedi
+sdelete_title=Alt Ağları ve Paylaşılan Ağları Sil
+sdelete_rusure1=Seçilen $1 alt ağı ve $2 paylaşılan ağı silmek istediğinizden emin misiniz? Ağlardaki diğer alt ağlar veya diğer nesneler de kaybolacaktır.
+sdelete_rusure2=Seçilen $1 alt ağı silmek istediğinizden emin misiniz? Alt ağlardaki diğer nesneler de kaybolacaktır.
+sdelete_rusure3=Seçilen $2 paylaşılan ağı silmek istediğinizden emin misiniz? Ağlardaki alt ağlar veya diğer nesneler de kaybolacaktır.
+sdelete_ok=Şimdi sil
+
+hdelete_err=Ana bilgisayarlar ve gruplar silinemedi
+hdelete_enone=Hiçbiri seçilmedi
+hdelete_title=Ana Bilgisayarları ve Grupları Silme
+hdelete_rusure1=Seçilen $1 ana bilgisayarı ve $2 grubunu silmek istediğinizden emin misiniz? Gruplardaki diğer tüm bilgisayarlar da kaybolacak.
+hdelete_rusure2=Seçilen $1 ana bilgisayarı silmek istediğinizden emin misiniz?
+hdelete_rusure3=Seçilen $2 grubu silmek istediğinizden emin misiniz? Gruplardaki tüm ana bilgisayarlar da kaybolur.
+hdelete_ok=Şimdi sil

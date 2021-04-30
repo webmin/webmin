@@ -1,0 +1,70 @@
+index_title=Sistemsko vrijeme
+index_timeserver=Vremenski poslužitelj
+index_addresses=Nazivi ili adrese hostova poslužitelja vremena
+index_zone=Vremenska zona
+index_eformat=Prepoznati <tt>satni oblik</tt> izlazni format
+index_sched=Sinkronizirati prema rasporedu?
+index_schedyes=Da, ponekad dolje ..
+index_sync=Sinkroniziraj i primijeni
+index_hardware2=Odredite i vrijeme hardvera
+index_boot=Sinkronizirati kada se pokrene Webmin?
+index_tzheader=Vremenska zona
+index_tz=Promijenite vremensku zonu u
+index_ehwclock=$1 nije uspio : $2 
+index_tabtime=Postavi vrijeme
+index_tabzone=Promjena vremenske zone
+index_tabsync=Sinkronizacija poslužitelja vremena
+index_desctime=Ovaj je obrazac za promjenu trenutnog vremena sustava, koji se koristi u svim pokrenutim procesima. Na operativnim sustavima koji imaju zaseban hardverski sat, može se koristiti i za postavljanje.
+index_desczone=Ovaj obrazac omogućuje vam postavljanje zadane vremenske zone sustava koja se koristi za pretvaranje vremena sustava u ljudski čitljiv format i offset.
+index_descsync=Ovaj je obrazac namijenjen konfiguriranju sustava za automatsku sinkronizaciju vremena s udaljenim poslužiteljem. Sinkronizacija će se izvoditi pomoću Unix <tt>vremena</tt> protokola ili NTP-a, ovisno o tome koje su naredbe instalirane i što udaljeni sustav podržava.
+
+action_save=Uštedjeti
+action_apply=primijeniti
+action_sync=Podesite vrijeme sustava prema hardverskom vremenu
+action_sync_s=Podesite vrijeme hardvera u skladu s vremenom sustava
+action_timeserver_sys=Sinkroniziraj vrijeme sustava
+action_timeserver_hw=Sinkroniziranje hardverskog vremena
+action_savezone=Promjena vremenske zone
+
+acl_sys=Korisnik može uređivati vrijeme sustava?
+acl_hw=Korisnik može uređivati vrijeme hardvera?
+acl_timezone=Korisnik može postaviti vremensku zonu?
+acl_ntp=Mogu li se sinkronizirati s vremenskim poslužiteljem?
+acl_yes=Da
+acl_no=Ne
+acl_error=Imate pristup modulu vremena sustava, ali ne možete uređivati ni sistemsko ni hardversko vrijeme
+acl_nosys=Nije vam dopušteno uređivanje vremena sustava
+acl_nohw=Nije vam dopušteno uređivanje hardverskog vremena
+acl_nontp=Nije vam dopuštena sinkronizacija s vremenskim poslužiteljem
+
+sys_title=Sistemsko vrijeme
+hw_title=Vrijeme hardvera
+
+day=Dan
+month=Mjesec
+date=Datum
+hour=Sat
+year=Godina
+minute=Minuta
+second=Drugi
+
+error_cnf=Pogreška: $1 naredba nije pronađena
+error_hw=Hardversko vrijeme nije moguće postaviti : $1 
+error_sync=Ne može se sinkronizirati sa sustavskim vremenom : $1 
+error_ediff=Vremenski poslužitelj različit od lokalnog vremena prevelik je: $1 dan
+error_entp=Vremenska sinkronizacija putem NTP-a nije uspjela : $1 
+error_etimeserver=Nema vremena poslužitelja za sinkronizaciju s upisanim
+
+log_set_date=Postavite vrijeme sustava na $1 
+log_set_hwclock=Postavite hardverski sat na $1 
+log_remote_date=Dohvaćeno vrijeme sustava od $2 
+log_remote_hwclock=Dohvaćeno vrijeme hardvera od $2 
+log_remote_date_l=Dobavljeno vrijeme sustava $1 od $2 
+log_remote_hwclock_l=Dohvaćeno vrijeme hardvera $1 od $2 
+log_sync=Sinkronizirano vrijeme sustava s hardverskim vremenom
+log_sync_s=Sinkronizirano hardversko vrijeme sa sustavskim vremenom
+log_timezone=Vremenska zona promijenjena je u $1 
+
+timezone_err=Spremanje vremenske zone nije uspjelo
+timezone_ecannot=Nije vam dopuštena promjena vremenske zone
+timezone_enone=Nije odabrana nijedna zona

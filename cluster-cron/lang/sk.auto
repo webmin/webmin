@@ -1,0 +1,37 @@
+index_title=Pracovné miesta klastra Cron
+index_add=Vytvorte novú úlohu cron klastra.
+index_none=Nie sú definované žiadne úlohy klastra.
+index_servers=Beží na serveroch
+index_return=zoznam úloh klastra cron
+index_more=ešte $1 ..
+index_run=Spustiť teraz ..
+index_actions=Akcia
+
+edit_title=Upraviť úlohu klastra Cron
+create_title=Vytvorte úlohu klastra Cron
+edit_servers=Beží na serveroch
+edit_group=Členovia $1 
+edit_this=tento server
+edit_all=&lt;Všetci hostitelia&gt;
+edit_emissing=Cron práca už neexistuje!
+
+save_err=Uloženie úlohy cron klastra zlyhalo
+
+exec_title=Vykonajte úlohu klastra Cron
+exec_cmd=Spúšťa sa $1 na vybraných serveroch ..
+exec_failed=Spustenie zlyhalo na $1 : $2 
+exec_success=Výstup z $1 ..
+exec_nohosts=Nie sú vybraní hostitelia, na ktorých sa má spustiť, alebo vybrané skupiny neobsahujú použiteľných hostiteľov.
+
+log_run=Spustil $1 na serveroch $2 
+log_run_l=Spustil $1 na $2 
+log_create=Bola vytvorená klastrová úloha cron pre $1 
+log_create_l=Vytvorená úloha klastra cron $2 pre $1 
+log_modify=Upravená úloha cron klastra pre $1 
+log_modify_l=Upravená úloha klastra cron $2 pre $1 
+log_delete=Odstránená úloha klastra pre produkt $1 
+log_delete_l=Vymazaná úloha klastra cron $2 pre $1 
+log_deletes=Odstránené úlohy $1 klastra cron
+
+delete_err=Nepodarilo sa odstrániť úlohy klastra
+delete_enone=Žiadne vybraté

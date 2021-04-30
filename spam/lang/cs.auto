@@ -1,0 +1,97 @@
+index_unknown=neznámý
+index_ecannot=Nemáte oprávnění spravovat konfigurační soubor SpamAssassin $1 
+
+white_addr2=Adresa příjemce
+white_rcvd2=Odesílatel nikdy klasifikovat jako spam
+white_tabham=Povolené adresy
+white_tabspam=Odepřené adresy
+white_tabsome=Cílové adresy
+white_tabimport=Import adres
+
+score_trusted=Sítě a hostitelé, kterým důvěřujete
+
+log_manual=Ručně upravený konfigurační soubor
+
+acl_awl=Povoleno uživatelům pro automatické úpravy bílé listiny
+acl_awl0=Všichni uživatelé
+acl_awl1=Pouze uvedení uživatelé $1 
+acl_awl2=Pouze členové skupin $1 
+
+amavisd_title=Amavisd Spam Delivery
+amavisd_desc=Formulář lze použít ke změně konfigurace Amavisd, která určuje, co se stane se zprávami klasifikovanými jako spam.
+amavis_ok=Změnit dodávku Amavisd
+amavis_tab_config=Konfigurace Amavisd
+amavis_tab_quarantine=Karanténa spamu
+amavis_warn=Pokud pro filtrování spamu používáte Amavisd, budou některé možnosti ignorovány.
+amavis_econfig=Ve vašem systému nebyl nalezen konfigurační soubor Amavisd $1. Možná není nainstalován Amavisd nebo je vaše <a href='$2'>konfigurace modulu</a> nesprávná.
+amavis_hits=Hity, nad nimiž je zpráva považována za spam.
+amavis_ehit=Hity, nad nimiž je zpráva považována za spam, nejsou hodnotou!
+amavis_ekill=Hity, nad nimiž je spamová zpráva v karanténě, nejsou hodnotou!
+amavis_edsn=Hity, nad nimiž není odesílateli zasláno žádné oznámení, nejsou hodnotou!
+amavis_ecut=Hity, nad nimiž je smazaná zpráva odstraněna, nejsou hodnotou!
+amavis_eheader=Hodnota pro položku Upravit: záhlaví není hodnota!
+amavis_esize=Hodnota pro velikost nad čarou, u které není zaškrtnuta zpráva pro spam není hodnota!
+amavis_echar=Pro záhlaví X-Spam-Level: musí být zadán jeden znak
+amavis_esubject=Hodnota pro Prepend text to Subject: header není hodnota!
+amavis_elocal=Hodnota pro zakázání internetových zdrojů není hodnota!
+amavis_quarantine_level=Hity, nad nimiž je spamová zpráva v karanténě.
+amavis_dsn_level=Hity, nad nimiž se odesílateli neposílá žádné oznámení.
+amavis_delete_level=Hity, nad nimiž je smazaná zpráva.
+amavis_report_header=Vložit záhlaví X-Spam do spamové zprávy?
+
+amavis_level_char=Znak používaný k zobrazení úrovně spamu v záhlaví X-Spam-Level:.
+amavis_rewrite=Upravit téma: záhlaví spamu?
+amavis_rsubject=Připojte text k záhlaví Předmět: záhlaví
+amavis_size_limit=Velikost zprávy v bajtech nad čarou, u které není zpráva zkontrolována na spam.
+amavis_local_only=Zakázat internetové zdroje pro kontrolu spamu?
+amavis_quarantine_desc=Ukažte, kde je spam v karanténě Amavisd, pokud je povolena místní karanténa, zobrazte také statistiky spamu. Pokud je karanténa zakázána nebo přeposlána na e-mailovou adresu, nelze zobrazit statistiky spamu.
+amavis_quarantine_off=Karanténa spamu je ve vašem systému deaktivována. Chcete-li povolit karanténu, změňte <tt>spam_Quarantine_to</tt> na <tt>spam-karanténu</tt> v souboru <tt>$1</tt>.
+amavis_nostat=Není možné zobrazit statistiky spamu.
+amavis_spam_admin=E-mailová adresa, ze které jsou zasílána oznámení (správce spamu)
+amavis_quarantine_mail=Spam v karanténě je přeposílán na poštovní adresu
+amavis_quarantine_bsmtp=Spam je uložen do karantény ve formátu BSMTP v místním systému souborů jako
+amavis_quarantine_local=Spam je uložen do karantény ve formátu MBOX v místním systému souborů jako
+amavis_quarantine_today=Nevyžádaná pošta v karanténě dnes (24 hodin)
+amavis_quarantine_week=Nevyžádaná pošta v karanténě tento týden (7 dní)
+amavis_quarantine_month=Nevyžádaná pošta v karanténě tento měsíc (30 dní)
+amavis_quarantine_total=Celkový počet nevyžádaných e-mailů v karanténě
+
+awl_title=Spravujte automatické seznamy povolených
+awl_search=Vyhledat whitelist pro:
+awl_ok=Vyhledávání
+awl_searching=Zobrazují se položky auto-whitelist odpovídající $1 ..
+awl_email=Emailová adresa
+awl_ip=IP nebo síť odesílatele
+awl_count=Přijaté zprávy
+awl_score=Skóre použít
+awl_none=Žádný
+awl_unknown=Neznámý
+awl_delete=Odebrat vybrané položky
+awl_white=Trvale povolit
+awl_black=Trvale popírejte
+awl_cannot=Usermin nemohl otevřít váš automatický seznam povolených položek <tt>$1</tt>, pravděpodobně proto, že je v nepodporovaném formátu.
+awl_empty=Váš automatický seznam povolených položek <tt>$1</tt> neobsahuje žádné položky. Bude vyplněna programem SpamAssassin, protože systém je zpracováván poštou.
+awl_user=Zobrazit automatický seznam povolených uživatelů:
+awl_uok=Ukázat
+awl_nofile=Uživatel $1 nemá soubor automatického seznamu povolených.
+awl_nouser=Uživatel $1 neexistuje.
+awl_cannotuser=Není povoleno upravovat automatický seznam povolených uživatelů pro uživatele $1.
+awl_toomany=V automatickém seznamu povolených položek je $1 záznamů, ale lze zobrazit maximálně $2. Použijte výše uvedený vyhledávací formulář k omezení zobrazených.
+awl_deleteone=Vymazat automatický seznam povolených
+awl_deleteonedesc=Odebrat všechny položky automatického seznamu povolených pro uživatele $1.
+awl_deleteall=Vymazat všechny automatické seznamy povolených
+awl_deletealldesc=Odeberte všechny položky automatického seznamu povolených položek pro všechny uživatele v systému.
+
+dawl_err=Odstranění z automatického seznamu povolených položek se nezdařilo
+dawl_eopen=Nelze otevřít bílou listinu
+dawl_enone=Nebyly vybrány žádné adresy k odstranění
+dawl_ecannot=Pro tohoto uživatele nemáte povoleno spravovat automatický seznam povolených
+dawl_doing=Mazání automatických whitelistů pro všechny uživatele ..
+dawl_done=.. smazáno $2 záznamů od $1 uživatelů.
+dawl_title=Odstranit všechny automatické seznamy povolených
+
+manual_title=Upravit konfigurační soubory
+manual_file=Upravit konfigurační soubor:
+manual_ok=OK
+manual_efile=Neplatný konfigurační soubor!
+manual_err=Uložení konfiguračního souboru se nezdařilo

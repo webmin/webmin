@@ -1,0 +1,116 @@
+index_title=FirewallD
+index_atboot=Želite li zaštitni zid zaštititi tijekom pokretanja sustava?
+index_bootup=Aktivirajte se pri pokretanju
+index_bootupdesc=Promijenite ovu opciju da biste kontrolirali je li vatrozid aktiviran u vrijeme pokretanja ili ne.
+index_apply=Primijeni konfiguraciju
+index_applydesc=Kliknite ovaj gumb da biste aktivirali gore navedenu konfiguraciju vatrozida. Sva pravila vatrozida koji su trenutno na snazi bit će ispražnjeni i zamijenjeni
+index_restart=Primijeni konfiguraciju
+index_restartdesc=Aktivirajte sve dozvoljene usluge i priključke naprijed navedene u svim zonama. Sva aktivna pravila koja nisu trajno stvorena bit će zamijenjena.
+index_start=Pokrenite FirewallD
+index_startdesc=Pokrenite FirewallD poslužitelj i primijenite gore navedena pravila.
+index_stop=Zaustavi firewallD
+index_stopdesc=Isključite FirewallD poslužitelj i uklonite sva pravila navedena gore.
+index_cerr=Modul FirewallD ne može se koristiti : $1 
+index_zone=Prikaži pravila u zoni:
+index_zoneok=Promijeniti
+index_zoneadd=Dodajte zonu ..
+index_zonedel=Izbriši zonu
+index_zonedef=Napraviti zadani
+index_type=Vrsta pravila
+index_port=Luka ili usluga
+index_proto=Protokol
+index_tservice=Servis
+index_tport=Luka
+index_tforward=Naprijed
+index_padd=Dodajte dopušteni priključak.
+index_sadd=Dodajte dopuštenu uslugu.
+index_fadd=Dodajte naprijed.
+index_delete=Izbriši odabrana pravila
+index_return=popis zona
+index_ezones=Nisu pronađene FirewallD zone!
+index_none=U ovoj zoni još nema dozvoljenih ulaza ili usluga.
+index_ifaces=Primjena pravila na sučelja:
+
+port_edit=Uredi port
+port_create=Dodajte port
+port_header=Dopuštene mogućnosti priključaka
+port_zone=Dopušteno u zoni
+port_port=Luka dopustiti
+port_mode0=Jedan port
+port_mode1=Raspon priključaka
+port_mode2=Isto je kao originalni port
+port_proto=Mrežni protokol
+port_ezone=Zona ne postoji!
+port_err=Spremanje porta nije uspjelo
+port_eport=Nedostaje ili nevažeći broj ili naziv porta
+port_eportlow=Niski port mora biti broj
+port_eporthigh=Visoki port mora biti broj
+port_eportrange=Niski port mora biti ispod visokog
+
+serv_edit=Usluga uređivanja
+serv_create=Dodavanje usluge
+serv_header=Dopuštene opcije usluge
+serv_name=Usluga koja dopušta
+serv_err=Spremanje usluge nije uspjelo
+
+forward_edit=Uredi naprijed
+forward_create=Stvori naprijed
+forward_header=Opcije prosljeđivanja luka
+forward_zone=Naprijed za zonu
+forward_err=Spremanje naprijed nije uspjelo
+forward_port=Izvor porta
+forward_dstport=Luka za desintaciju
+forward_dstaddr=Adresa odredišta
+forward_dstlocal=Ovaj sustav
+forward_edstaddr=Nevažeća odredišna adresa IPv4
+forward_eneither=Odredišna adresa ili port ili oba moraju biti unesena
+
+check_ecmd=Naredba FirewallD kontrole $1 nije pronađena u vašem sustavu
+
+delete_err=Brisanje pravila nije uspjelo
+delete_enone=Nijedan nije odabran!
+delete_edel=Uklanjanje $1 nije uspjelo : $2 
+
+zone_title=Stvori zonu
+zone_header=Nove opcije zona
+zone_name=Naziv zone
+zone_mode=Dopuštene luke i usluge
+zone_mode0=Nema (sav promet će biti blokiran)
+zone_mode1=Kopiraj iz zone
+zone_mode2=SSH, IDENT i samo Webmin
+zone_mode3=SSH, IDENT, Webmin i visoki portovi
+zone_mode4=Portovi koji se koriste za virtualni hosting
+zone_err=Nije uspjelo stvaranje zone
+zone_ename=Nedostaje ili nevažeće ime zone
+zone_eclash=Zona s istim nazivom već postoji
+
+delzone_title=Izbriši zonu
+delzone_err=Brisanje zone nije uspjelo
+delzone_edefault=Zadana zona ne može se ukloniti
+delzone_rusure=Jeste li sigurni da želite izbrisati zonu $1 koja sadrži $2 priključka i $3 usluge?
+
+defzone_err=Nije uspjelo napraviti zonu zadanu
+
+restart_err=Konfiguracija nije primijenjena
+
+stop_err=Zaustavljanje FirewallD-a nije uspjelo
+start_err=Pokretanje FirewallD-a nije uspjelo
+log_stop=Zaustavljen firewallD
+log_start=Pokrenut FirewallD
+log_restart=Primijenjena konfiguracija FirewallD
+log_bootup=Omogućen firewallD pri pokretanju
+log_bootdown=Onemogućen FirewallD pri pokretanju
+log_create_port=Dodan je dopušteni port $1 
+log_delete_port=Uklonjeni dopušteni port $1 
+log_update_port=Ažurirano dopušteno priključak $1 
+log_create_serv=Dodana je dopuštena usluga $1 
+log_delete_serv=Uklonjena dopuštena usluga $1 
+log_update_serv=Ažurirana dopuštena usluga $1 
+log_create_forward=Dodano naprijed $1 
+log_delete_forward=Uklonjeno naprijed $1 
+log_update_forward=Ažurirano naprijed $1 
+log_delete_rules=Uklonjeni su $1 dopušteni portovi
+log_ifaces_zone=Ažurirano sučelje za zonu $1 
+log_create_zone=Stvorena zona $1 
+log_delete_zone=Izbrisana zona $1 
+log_default_zone=Zadana je zona $1 

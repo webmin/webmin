@@ -1,0 +1,40 @@
+index_add4=Agregue una nueva exportación NFSv4.
+index_delete=Eliminar exportaciones seleccionadas
+index_disable=Desactivar seleccionado
+index_enable=Habilitar seleccionado
+
+edit_vers=Versión NFS
+edit_nfs_vers=Versión NFS
+edit_pfs=NFSv4 Pseudofilesystem para exportar
+edit_network4=Red IPv4
+edit_network6=Red IPv6
+edit_address=Habla a
+edit_prefix=/ /
+edit_subtree_check=¿Deshabilitar la comprobación de subárbol?
+edit_hide=¿Ocultar el sistema de archivos?
+edit_auth=(con o sin autenticación)
+edit_secs=Niveles de seguridad
+edit_integrity=Integridad
+edit_privacy=Privacidad (incluida la integridad)
+edit_v2opts=Opciones específicas de NFSv2
+edit_sync=Sincronizar inmediatamente todas las escrituras?
+edit_sync1=si
+edit_sync2=No
+edit_sync0=Defecto
+edit_in=en
+edit_sec_sys=Sin seguridad
+edit_sec_krb5=Autenticación Kerberos
+edit_sec_krb5i=Integridad Kerberos
+edit_sec_krb5p=Privacidad Kerberos
+edit_sec_lipkey=LIPKEY
+edit_sec_spkm=SPKM
+
+save_epfs=La ruta del pseudo-sistema de archivos '$1' no parece una ruta absoluta
+save_pfs='$1' ya se exportó como un directorio
+save_create_dir=No se puede crear el directorio '$1'
+save_eanonuid=Nombre de usuario de acceso anónimo no válido
+save_eanongid=Nombre de grupo de acceso anónimo no válido
+
+exports_gss=Red autenticada: $1 
+
+log_delete_exports=Exportaciones $1 NFS eliminadas

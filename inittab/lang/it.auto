@@ -1,0 +1,53 @@
+inittab_new=Crea un nuovo processo di inizializzazione.
+inittab_id=ID
+inittab_active=Attivo?
+inittab_runlevels=Runlevel di avvio
+inittab_action=Azione
+inittab_process=Processi
+inittab_none=Nessuna
+inittab_respawn=Processo di rigenerazione
+inittab_wait=Aspettare
+inittab_once=Una volta a livello
+inittab_boot=Tempo di avvio
+inittab_bootwait=Tempo di avvio, attendere fino al termine
+inittab_off=Fare niente
+inittab_ondemand=Ogni volta in A, B, C
+inittab_initdefault=Dopo l'avvio del sistema
+inittab_sysinit=Durante l'avvio del sistema
+inittab_powerwait=Il potere si abbassa
+inittab_powerfail=L'alimentazione si abbassa senza aspettare
+inittab_powerokwait=L'alimentazione è ripristinata
+inittab_powerfailnow=Interruzione di corrente
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Combinazione di tasti speciali
+inittab_kbrequest=Combinazione di tasti speciali
+inittab_return=elenco dei processi
+inittab_apply=Applica la configurazione di Init
+inittab_applymsg=Fare clic su questo pulsante per applicare l'attuale configurazione SysV Init eseguendo il comando <tt>telinit q</tt>. Tenere presente che eventuali errori nella configurazione potrebbero rendere il sistema inutilizzabile quando si esegue questo comando.
+index_delete=Elimina i processi selezionati
+inittab_none2=Nessun processo di avvio trovato sul tuo sistema. Ciò probabilmente indica che non utilizza il file di configurazione init SysV.
+
+edit_inittab_err=Non è consentito modificare un processo
+edit_inittab_title=Modifica processo $1 
+edit_inittab_details=Dettagli del processo
+edit_inittab_del=Elimina
+edit_inittab_save=Salva
+
+new_inittab_err=Non è consentito creare un nuovo processo
+new_inittab_title=Nuovo processo
+
+save_inittab_err=Non è consentito salvare un processo
+save_inittab_noid=Errore, nessun processo di denominazione inserito
+save_inittab_already=Errore, il processo del nome esiste già
+
+log_modify=Processo di inizializzazione modificato $1 
+log_rename=Rinominato processo di inizializzazione da $1 a $2 
+log_create=Processo di inizializzazione creato $1 
+log_delete=Processo di inizializzazione eliminato $1 
+log_apply=Configurazione applicata
+log_deletes=Processi $1 init eliminati
+
+apply_err=Impossibile applicare la configurazione
+
+delete_err=Impossibile eliminare i processi
+delete_enone=Nessuno selezionato

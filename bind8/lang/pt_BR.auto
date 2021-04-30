@@ -1,0 +1,249 @@
+index_status=Status
+index_massrdelete=Excluir registros no selecionado
+index_ewrongchroot=Aviso: O diretório chroot $2 que o Webmin pensa que o BIND está usando pode estar incorreto. Os arquivos de zona para os domínios $1 não foram encontrados.
+index_emissingchroot=Aviso: O Webmin pensa que o BIND não está usando um diretório chroot, mas isso pode estar incorreto. Os arquivos de zona para os domínios $1 não foram encontrados.
+index_checkconfig=Verifique se o diretório chroot está definido corretamente na página de configuração do módulo <a href='$1'></a>.
+index_eexpired=Aviso: As seguintes zonas expiraram assinaturas DNSSEC : $1
+index_eexpired_conf=A assinatura automática deve ser reativada na página $1.
+index_eexpired_mod=Use o módulo $1 para desativar o DNSSEC para esses domínios ou verifique por que a assinatura está falhando.
+
+master_inview=$1 na visualização $2 
+master_egone=A zona $1 não existe em nenhuma visualização
+master_egone2=A zona $1 não existe!
+master_egone3=A zona $1 na exibição $2 não existe!
+
+delete_vwarn=Esta zona está associada ao domínio Virtualmin $1 e, portanto, não deve ser excluída aqui!
+
+delete_vwarn2=Esta zona está associada aos domínios $1 e $2 do Virtualmin e, portanto, não deve ser excluída aqui!
+
+mcreate_dnssec_tools_enable=Ativar DNSSEC usando ferramentas DNSSEC
+
+slave_xfer=Transferência da zona de teste
+
+recs_nosearch=Nenhum registro corresponde à sua pesquisa.
+recs_needsearch=Digite uma pesquisa para encontrar registros correspondentes.
+
+edit_egone=O registro selecionado não existe mais!
+edit_eusage='$1' não é um número de uso TLSA válido
+edit_eselector='$1' não é um número seletor de TLSA válido
+edit_ematch='$1' não é um número de correspondência TLSA válido
+edit_etlsa=Certificado codificado por TLSA inválido - deve conter apenas bytes hexadecimais de 2 dígitos
+edit_ealg2='$1' não é um número válido de algoritmo de certificado
+edit_efp='$1' não é um tipo de impressão digital de certificado válido
+edit_esshfp=Dados de chave pública codificados em base 64 ausentes ou inválidos
+edit_espfa2='$1' deve ser um nome de host, não um endereço IP
+edit_espfmxmax=Você não tem permissão para ter mais de 10 domínios para permitir o envio de MX de
+edit_espfip6='$1' não é um endereço IPv6 ou prefixo IPv6 / válido para permitir o envio de
+edit_ensec3value2=Número de iterações ausente ou não numérico
+edit_ensec3value3=Sal ausente ou não base64
+edit_edmarcpct=A porcentagem de mensagens deve ser um número inteiro entre 0 e 100
+edit_edmarcrua=Endereço de feedback agregado ausente
+edit_edmarcruf=Endereço de informações forenses ausente
+edit_ecaavalue2=Nome de domínio ausente ou com aparência inválida
+
+text_desc3=Este formulário permite editar manualmente o arquivo de registros DNS $1. Nenhuma verificação de sintaxe será feita pelo Webmin.
+text_rawformat=Esta zona está no formato binário bruto e, portanto, não pode ser exibida como texto.
+
+type_NSEC3PARAM=Parâmetros DNSSEC
+type_TLSA=Certificado SSL
+type_SSHFP=Chave pública SSH
+type_DMARC=DMARC
+type_CAA=Autoridade de Certificação
+
+edit_DMARC=DMARC
+edit_NSEC3PARAM=Parâmetros DNSSEC
+edit_TLSA=Certificado SSL
+edit_SSHFP=Chave pública SSH
+edit_CAA=Autoridade de Certificação
+
+recs_DMARC=DMARC
+recs_NSEC3PARAM=Parâmetros DNSSEC
+recs_TLSA=Certificado SSL
+recs_SSHFP=Chave pública SSH
+recs_CAA=Autoridade de Certificação
+
+value_TLSA1=Uso de certificado
+value_TLSA2=Seletor de certificado
+value_TLSA3=Correspondência de certificado
+value_TLSA4=Dados do certificado
+value_SSHFP1=Algoritmo de chave pública
+value_SSHFP2=Impressão digital de chave pública
+value_SSHFP3=Dados da chave pública
+value_DMARC1=Especificação DMARC
+value_NSEC3PARAM1=Algoritmo de hash
+value_NSEC3PARAM2=Sinalizadores NSEC3
+value_NSEC3PARAM3=Número de iterações de hash
+value_NSEC3PARAM4=Corda de sal
+value_delegated=Zona delegada
+value_notdelegated=Outra zona
+value_spfip6s=Endereços IPv6 / redes adicionais do remetente permitido
+value_dmarcnone=Não tome nenhuma ação
+value_dmarcquar=E-mail em quarentena
+value_dmarcreject=Rejeitar email
+value_dmarcp=Política para e-mails que falham em SPF ou DKIM
+value_dmarcpct=Porcentagem de mensagens para aplicar a política
+value_dmarcrua=Envie feedback agregado para
+value_dmarcruf=Envie informações forenses para
+value_dmarcsp=Política para subdomínios
+value_dmarcnop=Igual a este domínio
+value_dmarcaspf=Exigir alinhamento estrito do SPF
+value_dmarcadkim=Exigir alinhamento estrito de DKIM
+value_dmarcnor=Não envie
+value_CAA1=Exigir execução?
+value_CAA2=Tipo de autorização
+value_CAA3=Nome de domínio da CA
+value_caa_issue=Certificação de domínio único
+value_caa_issuewild=Certificado curinga
+value_caa_iodef=URL de violação da política
+
+tlsa_usage0=Autoridade de certificação
+tlsa_usage1=Entidade final
+tlsa_usage2=Âncora de confiança
+tlsa_usage3=Domínio emitido
+tlsa_selector0=Certificado completo
+tlsa_selector1=Informações da chave pública
+tlsa_match0=Conteúdo de unhashed
+tlsa_match1=Hash SHA-256
+tlsa_match2=Hash SHA-512
+
+sshfp_alg1=RSA
+sshfp_alg2=DSA
+sshfp_alg3=ECDSA
+sshfp_alg4=Ed25519
+sshfp_fp1=SHA-1
+sshfp_fp2=SHA-256
+
+acl_inviews=Visualizações em que este usuário pode editar domínios
+acl_toplevel=Fora de qualquer vista
+acl_dnssec=Pode configurar o DNSSEC para zonas?
+
+logging_efile2=O nome do arquivo de log deve ser um caminho absoluto
+
+net_taddr=Endereço IPv4 de origem para transferências
+net_tport=Porta IPv4 de origem para transferências
+net_taddr6=Endereço IPv6 de origem para transferências
+net_tport6=Porta IPv6 de origem para transferências
+net_taddrdef=IP mais próximo
+net_etport=Uma porta de origem de transferência não pode ser especificada sem um endereço
+net_eaddr='$1' não é um endereço IPv4 válido
+net_eaddr6='$1' não é um endereço IPv6 válido
+
+zonedef_dnssec_dt=Automatizar todas as operações DNSSEC (ignorar outras configurações abaixo)?
+zonedef_dne=Negação de existência autenticada usando
+
+log_rdelete_zones=Registros excluídos nas zonas $1
+
+convert_efilesize=O arquivo de registros $1 não existe ou está vazio
+convert_ebinary=O comando necessário para converter de uma zona escrava binária em um mestre de formato de texto não está instalado
+convert_ecompile=Falha na conversão de formato binário em texto : $1
+
+massdelete_vwarn=Algumas zonas estão associadas ao domínio Virtualmin $1 e, portanto, não devem ser excluídas aqui!
+massdelete_vwarn2=Algumas zonas estão associadas ao domínio Virtualmin $1 e $2 outras e, portanto, não devem ser excluídas aqui!
+
+rdmass_err=Falha ao excluir registros nas zonas
+rdmass_enone=Nenhum selecionado
+rdmass_title=Excluir registros em zonas
+rdmass_header=Detalhes de exclusão do registro em massa
+rdmass_type=Tipo de registro a ser excluído
+rdmass_name=Nome do registro a ser excluído
+rdmass_all=Todos os registros deste tipo
+rdmass_value=Valor dos registros a serem excluídos
+rdmass_vall=Todo o nome e tipo correspondente
+rdmass_vsel=Registros com valor
+rdmass_doing=Excluindo registros na zona $1 ..
+rdmass_ename=Nenhum nome de registro para excluir inserido
+rdmass_done=.. excluídos $1 registros correspondentes de $2.
+
+rdmass_none=.. nenhum registro correspondente de $1 para excluir encontrado.
+rdmass_ok=Excluir registros
+rdmass_sel=Registros nomeados
+
+rmass_name2=(Digite <tt>@</tt> para o nome do domínio)
+rmass_esign=.. feito, mas a assinatura falhou : $1
+rmass_eclash2=.. um registro com o mesmo nome e o mesmo valor $1 já existe.
+
+dnssec_secs=segundos
+
+dnssectools_title=Automação de Ferramentas DNSSEC
+dt_conf_title=Automação de Ferramentas DNSSEC
+dt_enable_title=Automação de Ferramentas DNSSEC
+dt_zone_title=Gerenciar operações DNSSEC para Zone
+dt_zone_already=A zona parece estar assinada, mas não está usando o DNSSEC-Tools.
+dt_zone_desc=Esta zona ainda não tem o DNSSEC ativado. Você pode usar este formulário para que o Webmin automatize o processamento DNSSEC usando o DNSSEC-Tools, para que os clientes que resolvem essa zona sejam protegidos contra ataques de falsificação de DNS.
+dt_zone_header=Opções de ferramentas DNSSEC da zona
+dt_zone_dne=Negação de existência autenticada
+dt_zone_enable=Automação DNSSEC
+dt_zone_disable=Desativar DNSSEC
+dt_zone_disabledesc=Remove essa zona da lista de zonas gerenciadas pelo DNSSEC-Tools para assinatura de zona e substituição de chaves.
+dt_zone_err=Falha na operação DNSSEC
+dt_zone_edne=Mecanismo de negação autenticado incorreto
+dt_zone_signing=Zona de assinatura $1. ..
+dt_zone_errfopen=Não foi possível abrir o arquivo rollrec do sistema para gravação
+dt_zone_enocmd=dnssec-tools não instalado ou comando não encontrado
+dt_zone_erollctl=Não foi possível notificar o gerente de sobreposição do evento de sobreposição
+dt_zone_done=... feito
+dt_zone_deleting_state=Excluindo todo o estado associado à zona $1. ..
+dt_zone_zoneupdate=Atualizando registros na zona $1. ..
+dt_zone_expandsep=Mostrar os detalhes atuais do conjunto KSK e DS.
+dt_zone_ksksep=Registro KSK :
+dt_zone_dssep=Registro DS :
+dt_zone_resign=Zona de Assinatura
+dt_zone_resigndesc=Use chaves existentes para renunciar imediatamente aos dados da zona
+dt_zone_zskroll=Roll ZSK
+dt_zone_zskrolldesc=Forçar sobreposição da chave de assinatura de zona da zona
+dt_zone_kskroll=Roll KSK
+dt_zone_kskrolldesc=Forçar a substituição da chave de assinatura da zona
+dt_zone_ksknotify=Retomar o rolo KSK
+dt_zone_ksknotifydesc=Retomar a sobreposição KSK. O operador deve confirmar que o novo DS definido para os KSKs da região foi publicado na zona pai
+dt_zone_keyrollon=O Rollover de chaves está em andamento
+dt_zone_rollerdrst=Iniciar o Rollerd
+dt_zone_rollerdrstdesc=Inicie o daemon Rollerd
+dt_zone_migrate=Migrar para DNSSEC-Tools
+dt_zone_migratedesc=Importe o conjunto de chaves existente para o DNSSEC-Tools e faça com que o DNSSEC-Tools automatize futuras operações de substituição de chaves do DNSSEC.
+dt_zone_createkrf=Criando arquivo keyrec para a zona $1 e movendo chaves da zona para o local gerenciado do DNSSEC-Tools. ..
+dt_zone_rrf_updating=Atualizando a entrada rollrec para a zona $1. ..
+dt_zone_enokey=Não foi possível encontrar todas as chaves necessárias para a zona $1
+dt_conf_ecannot=Você não tem permissão para configurar o DNSSEC
+dt_conf_header=Parâmetros DNSSEC
+dt_conf_desc=Esta página permite configurar os parâmetros DNSSEC para zonas com DNSSEC ativado.
+dt_conf_err=Falha ao salvar os parâmetros DNSSEC
+dt_conf_email=Endereço de e-mail do administrador
+dt_conf_eemail=Endereço de e-mail ausente ou inválido
+dt_conf_algorithm=Algoritmo-chave
+dt_conf_ealg=Algoritmo de chave ausente ou inválido
+dt_conf_ksklength=Comprimento da chave da assinatura da chave
+dt_conf_eksklen=Comprimento KSK ausente ou inválido
+dt_conf_zsklength=Comprimento da chave de assinatura da zona
+dt_conf_ezsklen=Comprimento de ZSK ausente ou inválido
+dt_conf_nsec3=Usar NSEC3 (sim / não)?
+dt_conf_ensec3=Escolha NSEC3 ausente ou inválida
+dt_conf_endtime=Período de validade da assinatura
+dt_conf_eendtime=Período de validade da assinatura ausente ou inválido
+dt_conf_ksklife=Intervalo de rolagem KSK
+dt_conf_eksklife=Intervalo de substituição de KSK ausente ou inválido
+dt_conf_zsklife=Intervalo de rollover do ZSK
+dt_conf_ezsklife=Intervalo de substituição de ZSK ausente ou inválido
+dt_status_waitfords=Aguardando DS
+dt_status_inKSKroll=No rolo KSK
+dt_status_inZSKroll=Em rolo ZSK
+dt_status_signed=Assinado
+dt_status_unsigned=Não assinado
+
+zonekey_publicfile=Arquivo de chave pública : $1
+zonekey_privatefile=Arquivo de chave privada : $1
+zonekey_ds=Registro do DS para a zona pai :
+zonekey_eprivate=A chave privada associada a esta zona não pôde ser lida : $1
+
+trusted_auto=Sim (modo automático)
+trusted_dlvs1=Determinar automaticamente
+trusted_dlvs0=Listado abaixo. ..
+trusted_dlvs2=Nenhum
+trusted_warning=Atenção! Sua configuração do cliente BIND DNSSEC contém chaves desatualizadas que deixarão de funcionar em outubro de 2017. Use a <a href='$1'>página de verificação BIND DNSSEC</a> para ajustar a configuração ou clique no botão abaixo.
+trusted_fix=Corrigir configuração DNSSEC
+
+xfer_title=Transferência da zona de teste
+xfer_doing=Testando a transferência da zona escrava de $1 ..
+xfer_failed=.. from $1: Falha : $2
+xfer_done=.. from $1: Concluído OK
+xfer_count=A transferência de teste buscou com êxito $1 registros de pelo menos um servidor de nomes. As transferências reais do BIND também devem ter êxito.
+xfer_none=A transferência de teste pareceu ter sucesso, mas na verdade não obteve nenhum registro!

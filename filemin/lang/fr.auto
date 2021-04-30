@@ -1,0 +1,5 @@
+acl_allowed_paths_explain=Pour un utilisateur compatible root, si le répertoire autorisé est uniquement défini sur $HOME, il sera équivalent à / (accès complet au disque)
+
+acls=Liste de contrôle d'accès
+file_detect_encoding=Détecter automatiquement le codage des fichiers
+index_return=liste de fichiers

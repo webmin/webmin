@@ -11,11 +11,13 @@ require './cron-lib.pl';
 if ($in{'delete'}) {
 	# Delete selected jobs
 	foreach $d (sort { $b <=> $a } @d) {
-		$job = $jobs[$d];
+		($job) = grep { $_->{'index'} eq $d } @jobs;
+		$job || next;
 		&lock_file($job->{'file'});
 		$access{'delete'} && &can_edit_user(\%access, $job->{'user'}) ||
 			&error($text{'edit_ecannot'});
 		&delete_cron_job($job);
+		@jobs = grep { $_ ne $job } @jobs;
 		}
 	&unlock_all_files();
 	&webmin_log("delete", "crons", scalar(@d));
@@ -23,12 +25,14 @@ if ($in{'delete'}) {
 elsif ($in{'disable'} || $in{'enable'}) {
 	# Disable selected
 	foreach $d (@d) {
-		$job = $jobs[$d];
+		($job) = grep { $_->{'index'} eq $d } @jobs;
+		$job || next;
 		&lock_file($job->{'file'});
 		&can_edit_user(\%access, $job->{'user'}) ||
                         &error($text{'edit_ecannot'});
 		$job->{'active'} = $in{'disable'} ? 0 : 1;
 		&change_cron_job($job);
+		@jobs = grep { $_ ne $job } @jobs;
 		}
 	&unlock_all_files();
 	&webmin_log($in{'disable'} ? "disable" : "enable", "crons", scalar(@d));

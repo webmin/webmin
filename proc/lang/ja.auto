@@ -1,0 +1,9 @@
+index_mem3=<b>実メモリー：</b>合計 $1 /空き $2 /キャッシュ $3
+index_burst=<b>バースタブルメモリ：</b>合計 $1
+
+sclass=IOスケジューリングクラス
+sprio=IO優先度
+
+linux_real=リアルタイム
+linux_be=最大限の努力
+linux_idle=アイドル状態

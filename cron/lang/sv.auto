@@ -1,0 +1,142 @@
+index_when=Kör ibland
+index_comment=Beskrivning
+index_none2=Det finns inga cron-jobb som du har tillgång till.
+index_none3=Du har inga cron-jobb än.
+index_ecreate=Skapa en ny miljövariabel.
+index_manual=Redigera cron-jobb manuellt.
+index_env=Miljöfaktor
+index_move=Flytta
+index_next=Nästa körning
+index_nunknown=Okänd
+index_run=Löpning?
+index_ecmd=Kommandot $1 för hantering av Cron-konfigurationer av användare hittades inte. Kanske är Cron inte installerat på det här systemet?
+index_esingle=Filen $1 som visar Cron-jobb finns inte. Kanske är Cron inte installerat på det här systemet?
+index_ecrondir=Cron-jobbkatalogen $1 finns inte. Kanske är modulens konfiguration fel, eller är Cron inte installerad?
+index_ecrondir_create=Försöker du skapa jobbkatalog $1 ?
+index_delete=Radera valda jobb
+index_disable=Inaktivera valda jobb
+index_enable=Aktivera utvalda jobb
+index_esearch=Inga jobb matchade din sökning efter $1.
+index_toomany2=Det finns för många jobb att visa. Använd sökformuläret ovan för att begränsa listan.
+index_search=Hitta Cron jobb matchning
+index_ok=Sök
+index_searchres=Cron jobb matchar $1 ..
+index_reset=Återställ sökningen.
+index_econfigcheck=Cron-jobb kan inte hanteras på ditt system, eftersom modulkonfigurationen inte är giltig : $1 
+
+edit_next=Nästa körtid
+edit_comment=Beskrivning
+edit_range=Datumintervall att utföra
+edit_saverun=Spara och kör nu
+edit_clone=Klonjobb
+edit_return=Cron jobb
+edit_ctrl=Obs: Ctrl-klicka (eller kommando-klicka på Mac) för att välja och avmarkera minuter, timmar, dagar och månader.
+edit_special1=Enkelt schema ..
+edit_special0=Tider och datum valda nedan ..
+edit_special_hourly=Varje timme
+edit_special_daily=Dagligen (vid midnatt)
+edit_special_weekly=Veckovis (på söndag)
+edit_special_monthly=Månadsvis (den 1: a)
+edit_special_yearly=Årligen (den 1 januari)
+edit_special_reboot=När systemet startar
+lcedit_special_hourly=varje timme
+lcedit_special_daily=dagligen (vid midnatt)
+lcedit_special_weekly=varje vecka (på söndag)
+lcedit_special_monthly=varje månad (den 1: a)
+lcedit_special_yearly=årligen (1 januari)
+lcedit_special_reboot=när systemet startar
+
+save_ecannot2=Du får inte skapa cron-jobb
+save_eidx=Cron-jobbet sparades framgångsrikt, men kan inte köras eftersom det inte hittades!
+
+env_title1=Redigera miljövariabel
+env_title2=Skapa miljövariabel
+env_user=För användare
+env_active=Aktiva?
+env_details=Detaljer för miljövariabel
+env_err=Det gick inte att spara miljövariabel
+env_order=Obs - Denna miljövariabelinställning gäller endast Cron-jobb efter den i listan över jobb på modulens startsida.
+env_where=Lägg till miljövariabel
+env_where2=Flytta miljövariabel
+env_top=Innan alla Cron-jobb för användare
+env_bot=När allt Cron jobb
+env_leave=Nuvarande position
+
+exec_cmdbg=Kör kommando $1 som bakgrundsprocess.
+
+acl_this=Nuvarande webminanvändare
+acl_command=Kan visa och redigera Cron-kommandon?
+acl_uid=Användare med UID inom räckvidd
+acl_gid=Användare med primär grupp
+acl_create=Kan skapa Cron-jobb?
+acl_delete=Kan ta bort Cron-jobb?
+acl_move=Kan flytta Cron jobb?
+acl_kill=Kan säga upp Cron-jobb?
+acl_hourly=Begränsa jobb till högst varje timme?
+acl_hourlydef=Som anges i modulkonfig
+
+log_modify=Modifierat Cron-jobb för $1 
+log_modify_l=Modifierat Cron-jobb "$2" för $1 
+log_create=Skapade Cron-jobb för $1 
+log_create_l=Skapade Cron-jobbet "$2" för $1 
+log_delete=Raderat Cron-jobb för $1 
+log_exec=Utfört Cron-jobb som $1 
+log_exec_l=Kör Cron-jobbet "$2" som $1 
+log_kill=Avslutat Cron-jobb för $1 
+log_kill_l=Avslutat Cron-jobb "$2" för $1 
+log_allow=Ändrad användaråtkomst till Cron
+log_env_create=Skapad miljövariabel för $1 
+log_env_modify=Modifierad miljövariabel för $1 
+log_env_delete=Raderad miljövariabel för $1 
+log_move=Flyttade Cron-jobb för $1 
+log_crons_delete=Raderade $1 Cron-jobb
+log_crons_disable=Disabled $1 Cron jobb
+log_crons_enable=Aktiverat $1 Cron-jobb
+
+ecopy=Ett fel upptäcktes i den nya Cron-konfigurationen: $1 $2 
+
+when_min=varje minut
+when_hour=varje timme vid $1 efter timmen
+when_day=varje dag vid $2:$1 
+when_month=på dag $3 varje månad vid $2:$1 
+when_weekday=varje $3 vid $2:$1 
+when_cron=vid cron-tid $1 
+when_interval=varje $1 sekund
+when_boot=vid starttid
+
+ucwhen_min=Varje minut
+ucwhen_hour=Varje timme vid $1 efter timmen
+ucwhen_day=Varje dag vid $2:$1 
+ucwhen_month=På dag $3 varje månad vid $2:$1 
+ucwhen_weekday=Varje $3 vid $2:$1 
+ucwhen_cron=Vid cron-tid $1 
+ucwhen_interval=Varje $1 sekund
+ucwhen_boot=Vid starttid
+
+move_err=Det gick inte att flytta Cron-jobb
+move_etype=Det här jobbet kan inte flyttas
+
+kill_err=Det gick inte att säga upp Cron-jobbet
+kill_ecannot=Du får inte säga upp detta jobb
+kill_egone=Kör inte längre
+kill_ekill=Död misslyckades : $1 
+kill_title=Avsluta Cron Job
+kill_rusure=Är du säker på att du vill avsluta processen $1 med PID $2 ?
+kill_rusure2=Är du säker på att du vill avsluta processen $1 med PID $2 och alla dess delprocesser?
+kill_ok=Ja, avsluta det
+
+range_all=Kör på valfritt datum
+range_start=Kör endast från $1 
+range_end=till $1 
+range_estart=Det saknas eller ogiltigt startdatum inom intervallet som ska köras
+range_eend=Saknat eller ogiltigt slutdatum inom intervallet som ska köras
+
+delete_err=Det gick inte att ta bort Cron-jobb
+delete_enone=Ingen vald
+
+manual_title=Redigera Cron-jobb manuellt
+manual_edit=Cron-fil för att redigera:
+manual_ok=Redigera
+manual_editing=Använd textrutan nedan för att redigera Cron-jobb i $1. Var försiktig, eftersom ingen validering görs av Webmin!
+manual_efile=Den valda filen är inte giltig!
+manual_ecannot=Du får inte redigera cron-jobb manuellt

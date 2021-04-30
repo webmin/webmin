@@ -60,7 +60,7 @@ local $lnum = 0;
 local $direct = "ip${ipvx}tables-save 2>/dev/null |";
 if (!$file) {
 	# Use default file
-	$file = $config{"direct${ipvx}"} ? $direct : $ipvx_save;
+	$file = $config{"direct${ipvx}"} ? $direct : "<".$ipvx_save;
 	}
 elsif ($file eq "direct") {
 	# Read active rules
@@ -308,6 +308,12 @@ sub create_webmin_init
 {
 local $res = &has_command("ip${ipvx}tables-restore");
 local $ipt = &has_command("ip${ipvx}tables");
+local $out = &backquote_command("$res -h 2>&1 </dev/null");
+if ($out =~ /\s+-w\s+/) {
+	# Supports the wait flag, in case two instances are run at once
+	$res .= " -w";
+	$ipt .= " -w";
+	}
 local $start = "$res <$ipvx_save";
 local $stop = "$ipt -t filter -F\n".
 	      "$ipt -t nat -F\n".
@@ -321,7 +327,8 @@ local $stop = "$ipt -t filter -F\n".
 	      "$ipt -t mangle -P PREROUTING ACCEPT\n".
 	      "$ipt -t mangle -P OUTPUT ACCEPT";
 &foreign_require("init", "init-lib.pl");
-&init::enable_at_boot("webmin-ip${ipvx}tables", "Load ip${ipvx}tables save file",
+&init::enable_at_boot("webmin-ip${ipvx}tables",
+		      "Load ip${ipvx}tables save file",
 		      $start, $stop, undef, { 'exit' => 1 });
 }
 
@@ -459,6 +466,7 @@ sub apply_configuration
 {
 local $err = &run_before_apply_command();
 return $err if ($err);
+local @oldlive = &get_iptables_save("direct");
 if (defined(&apply_iptables)) {
 	# Call distro's apply command
 	$err = &apply_iptables();
@@ -468,8 +476,27 @@ else {
 	$err = &iptables_restore();
 	}
 return $err if ($err);
+if (!$config{"direct${ipvx}"}) {
+	# Put back fail2ban rules
+	local @newlive = &get_iptables_save("direct");
+	&merge_fail2ban_rules(\@oldlive, \@newlive);
+	}
 &run_after_apply_command();
 return undef;
+}
+
+# merge_fail2ban_rules(&old-live, &new-live)
+# If there were fail2ban rules before applying but not after, re-create them
+sub merge_fail2ban_rules
+{
+local ($oldlive, $newlive) = @_;
+local ($oldchain) = grep { $_->{'name'} eq 'f2b-default' } @$oldlive;
+local ($newchain) = grep { $_->{'name'} eq 'f2b-default' } @$newlive;
+return if (!$oldchain);		# fail2ban was never used
+local ($oldinput) = grep { $_->{'name'} eq 'INPUT' } @$oldlive;
+return if (!$oldinput);
+local $oldrule;
+# XXX not complete yet
 }
 
 # list_cluster_servers()

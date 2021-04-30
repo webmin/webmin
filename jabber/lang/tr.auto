@@ -1,0 +1,120 @@
+index_title=Jabber IM Sunucusu
+index_econfig=$1 Jabber yapılandırma dosyası mevcut değil. Jabber kurulu değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
+index_edir=Jabber temel dizini $1 mevcut değil. Jabber kurulu değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
+index_emodules=Webmin tarafından Jabber'in XML yapılandırmasını işlemek için gereken $1 ve $2 Perl modülleri kurulu değildir. Doğrudan CPAN'dan yüklemek için <a href='$3'>burayı tıklayın</a>.
+index_emodule=Webmin tarafından Jabber'in XML yapılandırmasını işlemek için gereken $1 Perl modülü kurulu değil. Doğrudan CPAN'dan yüklemek için <a href='$2'>burayı tıklayın</a>.
+index_expat=Perl modüllerini kurmaya çalışmadan önce Expat C kütüphanesinin ve başlıklarının kurulu olduğundan emin olun, çünkü bunlar modüllere bağlıdır ve mevcut değilse başarısız olacaktır.
+index_eparse=$1 perl modülü Jabber yapılandırma dosyanızı ayrıştıramadı : $2 
+index_ejabberd=$1 Jabber sunucu programı sisteminizde bulunamadı. Jabber kurulu değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
+index_eversion=Webmin yalnızca $2 Jabber sürümünü destekler, ancak $3 komutu aşağıdaki sürüm bilgilerini bildirdi : $1 
+index_eversion2=Webmin yalnızca $2 'nin altındaki Jabber sürümlerini destekler, ancak $3 komutu aşağıdaki sürüm bilgilerini bildirdi : $1 
+index_start=Jabber Server'ı başlatın
+index_startmsg=Sisteminizde Jabber sunucusunu başlatmak için bu düğmeyi tıklatın. Başlatılana kadar hiçbir anlık ileti istemcisi bunu kullanamaz.
+index_stop=Jabber Server'ı durdurun
+index_stopmsg=Sisteminizde çalışan Jabber sunucusunu durdurmak için bu düğmeyi tıklatın. Hiçbir anlık mesajlaşma istemcisi durdurulduğunda onu kullanamaz.
+index_restart=Değişiklikleri uygula
+index_restartmsg=Jabber sunucusunu durdurup yeniden başlatarak geçerli yapılandırmayı uygulamak için bu düğmeyi tıklatın.
+index_comments=Uyarı - $1 Jabber yapılandırma dosyanız, bu modül kullanılarak herhangi bir yapılandırma değişikliği yapılırsa kaldırılacak yorumlar içeriyor.
+index_return=Jabber menüsü
+index_version=Jabber sürümü $1 
+
+general_title=Genel seçenekler
+general_header=Global Jabber sunucu seçenekleri
+general_host=Sunucunuzun ana bilgisayar adı
+general_elog=Hata günlük dosyası
+general_elogfmt=Hata günlüğü biçimi
+general_rlog=Erişim günlük dosyası
+general_rlogfmt=Erişim günlüğü biçimi
+general_pidfile=İşlem kimlik dosyası
+general_err=Genel seçenekler kaydedilemedi
+general_ehost=Eksik veya geçersiz sunucu ana bilgisayar adı
+general_eelog=Eksik veya geçersiz hata günlüğü dosyası
+general_eelogfmt=Hata günlüğü biçimi eksik
+general_erlog=Eksik veya geçersiz trafik günlüğü dosyası
+general_erlogfmt=Trafik günlüğü biçimi eksik
+general_epidfile=Eksik veya geçersiz işlem kimliği dosyası
+
+messages_title=Mesajlar
+messages_header=İstemciler için Jabber sunucu mesajı
+messages_wsubject=Karşılama mesajı konusu
+messages_wbody=Karşılama mesajı gövdesi
+messages_vcard=Sunucu vCard
+messages_rinstr=Kayıt talimatları
+messages_rnotify=Kayıt sırasında yöneticiye bildirilsin mi?
+messages_rfields=Zorunlu kayıt alanları
+messages_vcard2jud=VCard Jabber kullanıcı dizinine gönderilsin mi?
+messages_err=Mesajlar kaydedilemedi
+messages_evcard=Geçersiz vCard XML : $1 
+messages_etag=Sunucu vCard XML'si &lt;vCard&gt; ile başlamıyor
+
+modules_title=Jabber Modülleri
+modules_desc=Aşağıda listelenen modüller, Jabber oturum yöneticisi tarafından alınan mesajları işlemek için kullanılır. Bu listeyi yalnızca ne yaptığınızı biliyorsanız değiştirmelisiniz.
+modules_header=Jabber sunucusu oturum yöneticisi modülleri
+modules_mod=Modül Adı
+modules_so=Paylaşılan kitaplık
+modules_err=Jabber modülleri kaydedilemedi
+modules_emod='$1' geçerli bir modül adı değil
+modules_eso=Paylaşılan '$1' kitaplığı mevcut değil
+
+karma_title=Karma Trafik Kontrolü
+karma_header=Trafik hızı kontrol seçenekleri
+karma_rate=Aşırı bağlantı kullanımı
+karma_rate_def=engelli
+karma_rate_sel=$1 bağlantıdan sonra istemciyi $2 saniye engelle
+karma_mode=Karma modu
+karma_none=Limit yok
+karma_low=Düşük trafik sınırları
+karma_medium=Orta trafik sınırları
+karma_high=Yüksek trafik sınırları
+karma_sel=Aşağıda seçilen ayarları kullanın ..
+karma_heartbeat=Saniye cinsinden dönem uzunluğu (<tt>kalp atışı</tt>)
+karma_init=Başlatma süreleri (<tt>init</tt>)
+karma_max=Karma maksimum (<tt>maks</tt>)
+karma_inc=Karma artışı (<tt>inc</tt>)
+karma_dec=Karma azalması (<tt>Aralık</tt>)
+karma_penalty=Ceza süreleri (<tt>ceza</tt>)
+karma_restore=Seri çekim geri yükleme süreleri (<tt>geri yükleme</tt>)
+karma_err=Karma seçenekleri kaydedilemedi
+karma_eheartbeat=Eksik veya geçersiz süre uzunluğu
+karma_einit=Eksik veya geçersiz başlatma süreleri
+karma_emax=Eksik veya geçersiz karma maksimum
+karma_einc=Eksik veya geçersiz karma artışı
+karma_edec=Eksik veya geçersiz karma azalması
+karma_epenalty=Eksik veya geçersiz ceza süreleri
+karma_erestore=Eksik veya geçersiz geri yükleme süreleri
+karma_epoints=Eksik veya geçersiz bağlantı sayısı
+karma_etime=İçin engellenecek eksik veya geçersiz zaman
+
+ips_title=IP Erişim Kontrolü
+ips_header=Jabber sunucusu IP erişim kontrolü
+ips_allow=İzin verilen istemci IP'leri
+ips_all=Tüm adresler
+ips_deny=Reddedilen istemci IP'leri
+ips_none=Yok
+ips_sel=Listelenen adresler/ağ maskeleri ..
+ips_err=IP erişim kontrolü kaydedilemedi
+ips_eaddr='$1' geçerli bir IP adresi veya IP adresi/ağ maskesi değil
+
+file_title=Yapılandırma Dosyasını Düzenle
+file_desc=Jabber yapılandırma dosyasını doğrudan düzenlemek için aşağıdaki formu kullanın. Bu yalnızca XML yapılandırma biçimini anlarsanız yapılmalıdır.
+file_header=Jabber yapılandırma dosyasını düzenle
+file_err=Yapılandırma dosyası kaydedilemedi
+
+admin_title=Yönetici Kullanıcılar
+admin_header=Sunucu yönetim kullanıcıları
+admin_read=Okuma erişim yöneticileri
+admin_write=Yazma erişim yöneticileri
+admin_reply=Yönetici iletilerine otomatik yanıt verilsin mi?
+admin_rsubject=Konuyu otomatik yanıtla
+admin_rbody=Mesajı otomatik yanıtla
+
+filter_title=Kullanıcı Filtreleri
+filter_header=Kullanıcı filtresi izinleri
+filter_max=Maksimum filtre kuralları
+filter_conds=İzin verilen filtre koşulları
+filter_acts=İzin verilen filtre işlemleri
+
+restart_err=Değişiklikler uygulanamadı
+stop_err=Jabber durdurulamadı
+stop_epid=Jabber işlemi bulunamadı
+start_err=Jabber başlatılamadı

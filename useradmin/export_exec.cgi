@@ -64,6 +64,8 @@ foreach $u (@ulist) {
 		  $u->{'real'}, $u->{'home'}, $u->{'shell'} );
 	if ($pft == 1 || $pft == 6) {
 		push(@line, $u->{'class'});
+		push(@line, $u->{'change'});
+		push(@line, $u->{'expire'});
 		}
 	elsif ($pft == 2) {
 		push(@line, $u->{'min'}, $u->{'max'}, $u->{'warn'},

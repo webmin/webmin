@@ -1,0 +1,79 @@
+index_title=Dokumentazzjoni tas-Sistema
+index_header=Tiftix fid-dokumentazzjoni tas-sistema
+index_for=Fittex
+index_where=Fittex ġewwa
+index_alldoc=Id-dokumentazzjoni kollha
+index_man=Paġni manwali
+index_doc=Dokumentazzjoni tal-pakkett
+index_kernel=Dokumentazzjoni tal-qalba
+index_info=Paġni ta ’tagħrif
+index_howto=Dokumenti HOWTO
+index_kde=Dokumentazzjoni KDE
+index_perl=Dokumentazzjoni tal-modulu Perl
+index_custom=Dokumentazzjoni apposta
+index_help=Webmin jgħin
+index_reset=Irrisettja
+index_search=Fittex
+index_return=formola ta ’tfittxija
+index_type=Loghba
+index_name=Isem biss
+index_data=Isem u kontenut
+index_google=Fittex fil-Google
+index_others=Meta tfittex dokumentazzjoni minn modulu ieħor, ħalliha tfittex fi ..
+index_other_man=Paġni manwali
+index_other_help=Għajnuna Webmin
+index_other_doc=Dokumentazzjoni tal-pakkett
+index_other_kernel=Dokumentazzjoni tal-qalba
+index_other_howto=Dokumenti HOWTO
+index_other_perl=Dokumentazzjoni tal-modulu Perl
+index_other_google=Magna ta 'riċerka Google
+index_other_kde=Dokumentazzjoni KDE
+index_and=Loghba kollha
+index_or=Qabbel kwalunkwe
+
+search_efor=L-ebda paġna manwali biex tfittex id-daħla
+search_title=Riżultati tat-Tiftix
+search_desc=Deskrizzjoni
+search_type=Tip
+search_file=Paġna jew fajl
+search_man=Manwal tal-paġna
+search_howto=Dokument HOWTO
+search_doc=Dokumentazzjoni tal-pakkett
+search_kernel=Dokumentazzjoni tal-qalba
+search_kde=Dokumentazzjoni KDE
+search_perl=Modulu Perl
+search_help=Webmin jgħin
+search_custom=Dokumentazzjoni apposta
+search_none=Ma nstabet l-ebda dokumentazzjoni li taqbel $1.
+search_for=Għal $1 
+search_google=Riżultat tat-tfittxija tal-Google
+search_doxfer=Dokumentazzjoni online Webmin
+
+howto_title=Dokument HOWTO
+howto_header=HOWTO file file $1 
+howto_epath=Mhux validu dokument HOWTO
+
+doc_title=Dokumentazzjoni tal-Pakkett
+doc_header=Pakkett tad-dokument tal-fajl $1 
+doc_epath=Rotta ta 'dokumentazzjoni tal-pakkett mhux valida
+
+man_title=Paġna Manwali
+man_header=Paġna manwali għal $1 ($2)
+man_noentry=Il-paġna manwali għal $1 ma teżistix!
+man_epath=Il-paġna manwali ma tistax tkun triq!
+
+kernel_title=Dokument tal-Qlub
+kernel_header=Fajl tad-dokument tal-Kernel $1 
+kernel_epath=Rotta tad-dokument tal-għadma mhix valida
+
+kde_title=Dokumentazzjoni KDE
+kde_header=Fajl tad-dokument KDE $1 
+kde_epath=Triq tad-dokumentazzjoni KDE mhix valida
+
+perl_title=Modulu Perl
+perl_header=Dokumentazzjoni għall-modulu Perl $1 
+perl_emod=Isem tal-modulu Perl invalidu
+
+acl_allow=Tista 'teditja t-tipi ta' tfittxija permessi?
+
+check_ecannot=M'għandekx permess tibdel tipi ta 'tfittxija permessi

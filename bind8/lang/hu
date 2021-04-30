@@ -1,6 +1,5 @@
 index_title=BIND DNS Server
 index_enamed=The BIND DNS server $1 could not be found on your system. Maybe it is not installed, or your <a href='$2'>BIND module configuration</a> is incorrect.
-index_eversion=The server executable $1 does not appear to be BIND 8 or 9. Maybe your should use the <a href='$2'>BIND 4 module</a> instead. Output from the command $3 was : $4
 index_eempty=The primary configuration file for BIND $1 does not exist, or is not valid. Create it?
 index_local=Setup nameserver for internal non-internet use only
 index_download=Setup as an internet name server, and download root server information
@@ -709,7 +708,7 @@ findfree_header=In $1
 findfree_sopt=Search options
 findfree_fromip=From IP address
 findfree_toip=To IP address
-findfree_cf=Consider <em>`freeXXX'</em> hostnames as free IPs?
+findfree_cf=Consider <em>freeXXX</em> hostnames as free IPs?
 findfree_search=Search
 findfree_msg=Found $1 free IP addresses
 findfree_msg2=(of which $1 are like <i>freeXXX</i>, $2 like <i>freemac</i>)
@@ -1058,7 +1057,6 @@ zonekey_other=Other size (in bits)
 zonekey_enable=Create and Add Key
 zonekey_err=Failed to create DNSSEC key
 zonekey_esize=Key size must be a number of bits between $1 and $2
-zonekey_efactor=Key size must be a multiple of $1
 zonekey_creating=Creating DNSSEC key for $1 ..
 zonekey_ecreate=.. creation failed : $1
 zonekey_done=.. done
@@ -1117,5 +1115,3 @@ xfer_doing=Testing transfer of slave zone from $1 ..
 xfer_failed=.. from $1 : Failed : $2
 xfer_done=.. from $1 : Completed OK
 xfer_count=Test transfer successfully fetched $1 records from at least one nameserver. Actual transfers by BIND should also succeed.
-
-__norefs=1

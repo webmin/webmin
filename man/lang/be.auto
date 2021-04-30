@@ -1,0 +1,79 @@
+index_title=Сістэмная дакументацыя
+index_header=Пошук сістэмнай дакументацыі
+index_for=Шукаць
+index_where=Пошук у
+index_alldoc=Уся дакументацыя
+index_man=Старонкі ўручную
+index_doc=Пакетная дакументацыя
+index_kernel=Дакументацыя на ядро
+index_info=Інфармацыйныя старонкі
+index_howto=HOWTO дакументы
+index_kde=Дакументацыя KDE
+index_perl=Дакументацыя на модуль Perl
+index_custom=Нестандартная дакументацыя
+index_help=Даведка Webmin
+index_reset=Скінуць
+index_search=Пошук
+index_return=форма пошуку
+index_type=Матч
+index_name=Толькі імя
+index_data=Назва і змест
+index_google=Пошук Google
+index_others=Пры пошуку дакументацыі з іншага модуля дазвольце пошук у ..
+index_other_man=Старонкі ўручную
+index_other_help=Даведка Webmin
+index_other_doc=Пакетная дакументацыя
+index_other_kernel=Дакументацыя на ядро
+index_other_howto=HOWTO дакументы
+index_other_perl=Дакументацыя на модуль Perl
+index_other_google=Пошукавая сістэма Google
+index_other_kde=Дакументацыя KDE
+index_and=Матчы ўсіх
+index_or=Матч любы
+
+search_efor=Няма старонкі ўручную для пошуку ўведзенага
+search_title=Вынікі пошуку
+search_desc=Апісанне
+search_type=Тып
+search_file=Старонка альбо файл
+search_man=Старонка кіраўніцтва
+search_howto=Дакумент
+search_doc=Пакетная дакументацыя
+search_kernel=Дакументацыя на ядро
+search_kde=Дакументацыя KDE
+search_perl=Модуль Perl
+search_help=Даведка Webmin
+search_custom=Нестандартная дакументацыя
+search_none=Не знойдзена ніякай дакументацыі, якая адпавядае $1.
+search_for=Для $1 
+search_google=Вынік пошуку Google
+search_doxfer=Інтэрнэт-дакументацыя Webmin
+
+howto_title=Дакумент HOWTO
+howto_header=HOWTO файл дакумента $1 
+howto_epath=Няправільны шлях дакумента HOWTO
+
+doc_title=Дакументацыя на пакет
+doc_header=Файл дакумента пакета $1 
+doc_epath=Няправільны шлях дакументацыі пакета
+
+man_title=Старонка кіраўніцтва
+man_header=Старонка кіраўніцтва для $1 ($2)
+man_noentry=Старонка кіраўніцтва для $1 не існуе!
+man_epath=Старонка ўручную не можа быць шляху!
+
+kernel_title=Дакумент ядра
+kernel_header=Файл дакумента ў ядры $1 
+kernel_epath=Няправільны шлях дакумента да ядра
+
+kde_title=Дакументацыя KDE
+kde_header=Файл дакумента KDE $1 
+kde_epath=Няправільны шлях дакументацыі KDE
+
+perl_title=Модуль Perl
+perl_header=Дакументацыя для модуля Perl $1 
+perl_emod=Несапраўднае імя модуля Perl
+
+acl_allow=Ці можна рэдагаваць дазволеныя тыпы пошуку?
+
+check_ecannot=Вам забаронена рэдагаваць дазволеныя тыпы пошуку

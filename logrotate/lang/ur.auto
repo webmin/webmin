@@ -1,0 +1,115 @@
+index_title=لاگ ان فائل گھماؤ
+index_econf=The log rotation configuration file $1 was not found on your system. Maybe logrotate is not installed, or the <a href='$2'>module configuration</a> is incorrect.
+index_ecmd=The log rotation program $1 was not found on your system. Maybe it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
+index_eversion= $1 : $2 کمانڈ کے ساتھ لوگوٹریٹ کا ورژن حاصل کرنے میں ناکام
+index_version=لوگوٹریٹ ورژن$1
+index_add=گھومنے کے لئے ایک نئی لاگ فائل شامل کریں۔
+index_file=لاگ فائل
+index_period=گردش کی مدت
+index_post=گھومنے پھرنے کا حکم
+index_none=ابھی تک کوئی لاگ فائلوں کی وضاحت نہیں کی گئی ہے۔
+index_global=عالمی اختیارات میں ترمیم کریں
+index_globaldesc=ترتیب میں ترمیم کرنے کے لئے اس بٹن پر کلک کریں جو تمام لاگ فائلوں پر لاگو ہوتا ہے ، اور نوشتہ جات کے لئے ڈیفالٹس کی وضاحت کرتا ہے۔
+index_sched=نظام الاوقات میں ترمیم کریں
+index_scheddesc=اس شیڈول میں ترمیم کرنے کے لئے اس بٹن پر کلک کریں جس پر کروٹن کے ذریعہ لاگرویٹیٹ چلایا جاتا ہے ، یا اسے اہل یا غیر فعال کریں۔
+index_nocmd=کوئی نہیں
+index_notset=سیٹ نہیں ہے
+index_return=لاگ فائلوں کی فہرست
+index_force=زبردستی لاگ گھماؤ
+index_forcedesc=تمام لاگ فائلوں کو فوری طور پر گھماؤ پر مجبور کریں ، چاہے ابھی وقت نہ آیا ہو۔
+index_logrotate=لوگوٹریٹ
+index_delete=منتخب کردہ لاگ گردشیں حذف کریں
+
+period_daily=روزانہ
+period_weekly=ہفتہ وار
+period_monthly=ماہانہ
+period_never=کبھی نہیں
+period_bytes=بائٹس
+
+edit_title1=لاگ فائل میں ترمیم کریں
+edit_title2=لاگ فائل بنائیں
+edit_header=گھماؤ لاگ فائل کی تفصیلات
+edit_file=فائل کے راستے لاگ ان کریں
+edit_sched=گھماؤ شیڈول
+edit_rotate=رکھنے کیلئے پرانے لاگز کی تعداد
+edit_compress=پرانی لاگ فائلوں کو سکیڑیں؟
+edit_delaycompress=اگلے چکر تک کمپریشن میں تاخیر؟
+edit_copytruncate=جگہ جگہ لاگ فائل کاٹ دیں؟
+edit_ifempty=چاہے لاگ فائل خالی ہو؟
+edit_missingok=لاپتہ ہو تو لاگ فائل کو نظرانداز کریں؟
+edit_size=گھومنے سے پہلے زیادہ سے زیادہ سائز
+edit_always=نظرانداز کیا
+edit_minsize=گھومنے کیلئے کم سے کم سائز
+edit_nominsize=ہمیشہ
+edit_ext=گھمائے گئے فائل ناموں کے لئے توسیع
+edit_dateext=گھمائی ہوئی فائلوں کے لئے تاریخ کی توسیع کا استعمال کریں
+edit_mail=حذف کرنے سے پہلے ای میل لاگ فائل؟
+edit_mailto=ہاں ، مخاطب کرنا
+edit_mailno=نہیں ، ای میل مت کریں
+edit_mailfl=ای میل کرنے کے لئے فائل لاگ ان کریں
+edit_mailfirst=تازہ ترین جو ابھی گھمایا گیا تھا
+edit_maillast=سب سے قدیم جو حذف ہونے والا ہے
+edit_create=گردش کے بعد لاگ فائل کو دوبارہ تخلیق کریں؟
+edit_createas=ہاں ، وضع$1 کے ساتھ اور صارف$2 اور گروپ$3 کی ملکیت ہے
+edit_createno=نہیں ، دوبارہ تخلیق نہ کریں
+edit_createsame=ہاں ، پرانی اجازت کے ساتھ
+edit_olddir=پرانے باری باری لاگ ان کو اسٹور کریں
+edit_olddirto=ڈائرکٹری
+edit_olddirsame=لاگ فائل کے طور پر ایک ہی ڈائریکٹری
+edit_errors=پر ای میل کی خرابی کے پیغامات
+edit_errorsno=کوئی نہیں
+edit_errorsto=پتہ یا صارف
+edit_post=گردش کے بعد چلانے کے احکامات
+edit_pre=گردش سے پہلے چلانے کے احکامات
+edit_default=پہلے سے طے شدہ ($1)
+edit_sharedscripts=صرف تمام فائلوں کے لئے ایک بار اسکرپٹ چلائیں؟
+edit_now=اب گھمائیں
+
+global_title=عالمی اختیارات
+global_header=تمام لاگ فائلوں کیلئے پہلے سے طے شدہ اختیارات
+
+save_err=لاگ محفوظ کرنے میں ناکام
+save_efile=گم شدہ یا غلط لاگ فائل نام
+save_esize=لاپتہ یا غلط زیادہ سے زیادہ سائز
+save_eminsize=کم سے کم سائز غائب یا غلط
+save_erotate=رکھنے کیلئے پرانے لاگز کی زیادہ سے زیادہ تعداد لاپتہ یا غلط
+save_ecreatemode=3 یا 4 ہندسوں کے اوکٹل تخلیق کا موڈ غائب یا غلط
+save_ecreateuser=لاپتہ یا غلط تخلیق صارف
+save_ecreategroup=لاپتہ یا غلط تخلیق گروپ
+save_emust1=تخلیق صارف میں داخل ہوتے وقت آپ کو تخلیق کا انداز درج کرنا ہوگا
+save_emust2=تخلیق گروپ میں داخل ہوتے وقت آپ کو تخلیق صارف درج کرنا ہوگا
+save_eolddirto=پرانے گھمائے ہوئے نوشتہ جات کیلئے گم شدہ یا غلط ڈائریکٹری
+save_eext=گھمائے گئے لاگ فائل ناموں کے ل extension توسیع غائب ہے
+save_emailto=گھمائے ہوئے نوشتہ جات کیلئے ای میل پتہ غائب ہے
+save_eerrors=گمشدہ پیغامات کیلئے ای میل پتہ غائب ہے
+save_epre=Pre-rotation script cannot contain an <tt>endscript</tt> or <tt>endrotate</tt> line
+save_epost=Post-rotation script cannot contain an <tt>endscript</tt> or <tt>endrotate</tt> line
+save_enofiles=گھومنے کے لئے کوئی فائلیں داخل نہیں کی گئیں
+
+log_modify_sched=کروٹ کا نوکری تبدیل کر دیا گیا
+log_create_sched=لاگ گردش کرون جاب بنائی گئی
+log_delete_sched=حذف شدہ لاگ گردانی کرون کی نوکری
+log_global=ترمیم شدہ عالمی اختیارات
+log_create=لاگ فائل$1 کے لئے گھماؤ شامل کیا گیا
+log_modify=لاگ فائل$1 کیلئے تبدیل شدہ گھماؤ
+log_delete=لاگ فائل$1 کیلئے حذف شدہ گردش
+log_delete_logs=$1 لاگ فائلوں کی گردش حذف ہوگئی
+
+sched_title=لاگ گردش کا نظام الاوقات
+sched_desc=انجام دینے کیلئے اس ماڈیول کا استعمال کرتے ہوئے تشکیل شدہ لاگ گردانی کے لئے ،$1 کمانڈ کو باقاعدگی سے شیڈول (عام طور پر روزانہ) پر چلنا چاہئے۔
+sched_runparts=فی الحال ، لاگ ان روٹیشن کمانڈ اسکرپٹ$1 $2 سے چلایا جارہا ہے ، اور اسے ایڈجسٹ نہیں کیا جاسکتا ہے۔
+sched_sched=لاگ ان روٹیشن کرون جاب
+sched_disabled=غیر فعال
+sched_enabled=فعال ، نیچے اوقات میں ..
+sched_save=کرون جاب کو اپ ڈیٹ کریں
+sched_err=گردش کا نظام الاوقات بچانے میں ناکام
+sched_when=چلانے کے اوقات
+
+force_title=زبردستی لاگ گھماؤ
+force_doing=تمام لاگ فائلوں کو فوری گھومنے پر مجبور کرنا ..
+force_doingone=ایک لاگ فائل کی فوری گھومنے پر مجبور کرنا ..
+force_done=.. ہو گیا۔
+force_failed=.. ناکام! اس کی وجہ کے لئے اوپر کی پیداوار دیکھیں۔
+
+delete_err=لاگ کو حذف کرنے میں ناکام
+delete_enone=کوئی بھی منتخب نہیں ہوا

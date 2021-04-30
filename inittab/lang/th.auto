@@ -1,0 +1,53 @@
+inittab_new=สร้างกระบวนการเริ่มต้นใหม่
+inittab_id=ID
+inittab_active=คล่องแคล่ว?
+inittab_runlevels=Bootup runlevel
+inittab_action=หนังบู๊
+inittab_process=กระบวนการ
+inittab_none=ไม่มี
+inittab_respawn=กระบวนการเกิดใหม่
+inittab_wait=รอ
+inittab_once=ครั้งหนึ่งเคยอยู่ที่ระดับ
+inittab_boot=เวลาเปิดเครื่อง
+inittab_bootwait=เวลาบูตรอจนกระทั่งสิ้นสุด
+inittab_off=ไม่ทำอะไร
+inittab_ondemand=เมื่อใดก็ตามที่อยู่ใน A, B, C
+inittab_initdefault=หลังจากบูตระบบ
+inittab_sysinit=ระหว่างการบูทระบบ
+inittab_powerwait=พลังงานลดลง
+inittab_powerfail=พลังงานดับลงโดยไม่ต้องรอ
+inittab_powerokwait=พลังงานถูกกู้คืน
+inittab_powerfailnow=พลังงานล้มเหลว
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=การผสมผสานคีย์พิเศษ
+inittab_kbrequest=การผสมผสานคีย์พิเศษ
+inittab_return=รายการกระบวนการ
+inittab_apply=ใช้การกำหนดค่าเริ่มต้น
+inittab_applymsg=คลิกที่ปุ่มนี้เพื่อใช้ SysV Init Configuration ปัจจุบันโดยการรันคำสั่ง <tt>telinit q</tt> โปรดทราบว่าข้อผิดพลาดใด ๆ ในการกำหนดค่าของคุณอาจทำให้ระบบใช้ไม่ได้เมื่อรันคำสั่งนี้
+index_delete=ลบกระบวนการที่เลือก
+inittab_none2=ไม่พบกระบวนการบูทเครื่องบนระบบของคุณ นี่อาจบ่งบอกว่ามันไม่ได้ใช้ไฟล์กำหนดค่าเริ่มต้น SysV
+
+edit_inittab_err=คุณไม่ได้รับอนุญาตให้แก้ไขกระบวนการ
+edit_inittab_title=แก้ไขกระบวนการ $1 
+edit_inittab_details=รายละเอียดกระบวนการ
+edit_inittab_del=ลบ
+edit_inittab_save=บันทึก
+
+new_inittab_err=คุณไม่ได้รับอนุญาตให้สร้างกระบวนการใหม่
+new_inittab_title=กระบวนการใหม่
+
+save_inittab_err=คุณไม่ได้รับอนุญาตให้บันทึกกระบวนการ
+save_inittab_noid=ข้อผิดพลาดไม่มีการตั้งชื่อกระบวนการ
+save_inittab_already=ข้อผิดพลาดกระบวนการชื่อมีอยู่แล้ว
+
+log_modify=กระบวนการ init ที่แก้ไขแล้ว $1 
+log_rename=เปลี่ยนชื่อกระบวนการเริ่มต้น $1 เป็น $2 
+log_create=สร้างกระบวนการเริ่มต้น $1 
+log_delete=ลบกระบวนการเริ่มต้น $1 
+log_apply=ใช้การกำหนดค่า
+log_deletes=ลบกระบวนการเริ่มต้น $1 แล้ว
+
+apply_err=ไม่สามารถใช้การกำหนดค่า
+
+delete_err=การลบกระบวนการล้มเหลว
+delete_enone=ไม่ได้เลือก

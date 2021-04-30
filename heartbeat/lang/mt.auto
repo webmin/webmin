@@ -1,0 +1,103 @@
+index_title=Monitor ta 'taħbit tal-qalb
+index_return=tissorvelja taħbit tal-qalb
+index_edir=Id-direttorju tal-konfigurazzjoni ta 'taħbit tal-qalb $1 ma jeżistix. Forsi Heartbeat mhuwiex installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> tiegħek mhix korretta.
+index_start=Ibda tissorvelja t-Taħbit tal-Qalb
+index_startmsg=Ikklikkja din il-buttuna biex tibda l-proċess tal-monitoraġġ tal-Heartbeat. Dan se jgħin is-servizz awtomatiku ta 'failover fis-sistema tiegħek bil-konfigurazzjoni attwali.
+index_apply=Applika l-Bidliet
+index_applymsg=Ikklikkja din il-buttuna biex iġġiegħel il-proċess ta 'monitoraġġ tal-Heartbeat li jkun qed jaħdem biex jerġa' jitgħabba l-konfigurazzjoni attwali.
+index_eha_cf=Il-fajl tal-konfigurazzjoni ta 'taħbit tal-qalb $1 ma nstabx fis-sistema tiegħek. Forsi għadu ma ġiex ikkupjat fil-post, jew il-<a href='$2'>konfigurazzjoni tal-modulu</a> mhix korretta.
+index_eharesources=Il-fajl tar-riżorsi $1 ma nstabx fis-sistema tiegħek. Forsi għadu ma ġiex ikkupjat fil-post, jew il-<a href='$2'>konfigurazzjoni tal-modulu</a> mhix korretta.
+index_eauthkeys=Iċ-ċwievet tal-awtentikazzjoni tal-fajl $1 ma nstabux fis-sistema tiegħek. Forsi għadu ma ġiex ikkupjat fil-post, jew il-<a href='$2'>konfigurazzjoni tal-modulu</a> mhix korretta.
+index_ereq_resource_cmd=L-iskript biex titlob riżorsi mill-għoqda l-oħra ($1) ma nstabx fis-sistema tiegħek. Forsi għadu ma ġiex ikkupjat fil-post, jew il-<a href='$2'>konfigurazzjoni tal-modulu</a> mhix korretta.
+index_version=Verżjoni ta 'taħbit tal-qalb $1 
+index_noversion=Twissija - Il-verżjoni tal-Heartbeat installata fis-sistema tiegħek ma setgħetx tiġi skoperta awtomatikament. Għandek tissettjaha fuq il-paġna <a href='$1'>konfigurazzjoni tal-modulu</a>.
+index_status=Status ta 'taħbit tal-qalb
+
+conf_title=Għażliet ta 'Konfigurazzjoni
+conf_header=Għażliet tal-konfigurazzjoni tat-taħbit tal-qalb
+conf_serials=Portijiet ta 'taħbit tal-qalb serjali
+conf_baud=Rata ta 'Baud għall-port tas-serje
+conf_bcasts=Interfaċċi ta 'taħbit tal-qalb Ethernet
+conf_none=Xejn
+conf_udpport=Port ta 'taħbit tal-qalb UDP
+conf_mcast=Tagħmir ta 'taħbit tal-qalb multicast
+conf_mcastv=Apparat $1, grupp $2, port $3, TTL $4, loopback $5 
+conf_enabled=Attivat
+conf_disabled=B'diżabilità
+conf_keepalive=Ħin bejn it-taħbit tal-qalb
+conf_nice_failback=Mġiba Failback Nizza
+conf_secs=sekondi
+conf_deadtime=Żmien qabel l-għoqda huwa meqjus bħala mejjet
+conf_watchdog=Fajl tal-apparat Watchdog
+conf_node=Hosts fi cluster
+conf_logfile=Fajl tal-log tal-qalb
+conf_logfacility=Syslog log faċilità
+conf_initdead=Żmien inizjali mejjet
+conf_ok=Għażliet ta 'Salv
+conf_err=Ma rnexxielux isalva l-għażliet
+conf_ebaud=Rata ta 'baud nieqsa jew invalida
+conf_ebcast=L-ebda interfaċċji ta 'xandir tal-qalb ma tħabbru
+conf_ebcastif="$1" mhix interface tax-xandir valida
+conf_eudpport=Port ta 'taħbit tal-qalb invalidu jew nieqes
+conf_ekeepalive=Żmien nieqes jew invalidu bejn it-taħbit tal-qalb
+conf_edeadtime=Żmien mejjet nieqes jew invalidu
+conf_ewatchdog=Fajl tal-apparat watchdog nieqes jew li ma jeżistix
+conf_enonode=L-ebda host tal-cluster ma daħal
+conf_ethisnode=Dan il-host $1 mhux fil-lista tal-ospiti tal-cluster
+conf_elogfile=Isem tal-fajl tal-ġurnal nieqes jew invalidu
+conf_einitdead=Żmien mejjet inizjali nieqes jew invalidu
+conf_einitdead2=Il-ħin mejjet inizjali għandu jkun mill-inqas darbtejn il-ħin qabel ma node jitqies bħala mejjet
+conf_emcast_dev=Mezz multikast mhux nieqes jew invalidu
+conf_emcast_ip=Indirizz tal-grupp multicast nieqes jew invalidu
+conf_emcast_port=Numru tal-port multikast nieqes jew invalidu
+conf_emcast_ttl=Nieqes iż-żmien għall-għajxien tal-multicast jew nieqes
+conf_auto_on=$ {konf_enabled}
+conf_auto_off=$ {konf_disabled}
+conf_auto_legacy=Mod Wirt
+conf_auto_=$ {default}
+
+res_title=Riżorsi tal-Kluster
+res_node=Nodu Primarju
+res_ips=Indirizzi IP
+res_servs=Servizzi tan-Nodi
+res_none=Xejn
+res_nores=L-ebda riżorsi ta 'raggruppament ma ġew definiti fis-sistema tiegħek.
+res_add=Żid riżorsa ta 'raggruppament
+res_return=lista tar-riżorsi
+res_active=Status tar-Riżorsi
+res_getserv=Ikseb ir-Riżorsi
+res_hbdown=Taħbit tal-qalb isfel
+res_up=UP
+res_down=DOWN
+
+node_create=Żid ir-Riżorsi tal-Kluster
+node_edit=Editja r-Riżorsi tal-Kluster
+node_header=Dettalji dwar ir-riżorsi tar-raggruppament
+node_node=Nodu primarju għar-riżorsi
+node_ips=Indirizzi IP għar-riżorsi
+node_ip=Indirizz IP
+node_cidr=Netmask CIDR
+node_broad=Indirizz tax-xandir
+node_servs=Servizzi għar-riżorsi
+node_serv=Servizz
+node_args=Argumenti addizzjonali
+node_err=Ma rnexxielux isalva riżorsa tal-cluster
+node_enone=Nodu primarju nieqes jew invalidu
+node_eip="$1" mhuwiex indirizz IP validu
+node_ecidr="$1" mhuwiex CIDR validu
+node_ebroad="$1" mhuwiex indirizz ta 'xandir validu
+
+auth_title=Ċwievet ta 'Awtentikazzjoni
+auth_header=Awtentikazzjoni ta 'għoqiedi ta' kluster
+auth_mode=Mod ta 'Awtentikazzjoni
+auth_crc=CRC (L-ebda sigurtà)
+auth_sha1=SHA1 bil-password
+auth_md5=MD5 bil-password
+auth_err=Ma rnexxielux isalva ċ-ċwievet ta 'awtentikazzjoni
+auth_emd5=Password MD5 nieqsa jew invalida
+auth_esha1=Password SHA1 nieqsa jew invalida
+
+start_err=Naqset milli tibda taħbit tal-qalb
+
+apply_err=Ma rnexxielux japplika tibdil
+apply_epid=Il-proċess ma għadux għaddej

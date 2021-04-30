@@ -6,6 +6,6 @@ width=Larghezza per le immagini riscalate,3,Predefinita (300 pixel)
 fixed=Dimensione testo,3,Predefinita (12 punti)
 small_fixed=Dimensione testo per i pulsanti,3,Predefinita (10 punti)
 force_text=Editor per i file HTML,1,1-Editor di testo,0-Editor HTML
-defzip=Modalit&#224; predefinita per gli upload degli archivi,1,2-Estrai e cancella,1-Estrai,0-Non fare nulla
+defzip=Modalità predefinita per gli upload degli archivi,1,2-Estrai e cancella,1-Estrai,0-Non fare nulla
 defuser=Utente predefinito per gli upload,10,root-root,*-Lo stesso della directory,Altro utente
 htmlexts=Estensioni dei file da editare come HTML,3,Predefinita (.htm e .html)

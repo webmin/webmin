@@ -1,1 +1,2 @@
-sort_mode=Trier les h魌es par,1,1-Nom d'h魌e,0-Ordre d'ajout,2-Description
+sort_mode=Trier les h么tes par,1,1-Nom d'h么te,0-Ordre ajout茅,2-Description
+table_mode=Afficher les h么tes comme,1,1-Table,0-Ic么nes

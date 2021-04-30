@@ -3,7 +3,7 @@ use strict;
 use warnings;
 our (%text);
 
-do 'bind8-lib.pl';
+require 'bind8-lib.pl';
 
 # syslog_getlogs()
 # Returns a list of structures containing extra log files known to this module

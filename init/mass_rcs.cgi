@@ -16,6 +16,7 @@ $disable = 1 if ($in{'delboot'} || $in{'delboot_stop'});
 
 if ($start || $stop) {
 	# Starting or stopping a bunch of services
+	$SIG{'TERM'} = 'ignore';	# Restarting webmin may kill this script
 	$access{'bootup'} || &error($text{'ss_ecannot'});
 	foreach $s (@sel) {
 		if ($start) {

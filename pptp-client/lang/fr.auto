@@ -1,0 +1,105 @@
+index_epptp=Le programme client PPTP $1 est introuvable sur votre système. Il n'est peut-être pas installé ou la configuration de votre <a href='$2'>module</a> est incorrecte.
+index_eppp=Le programme de serveur PPP $1 n'est pas installé sur votre système. Le PPTP en dépend pour fonctionner.
+index_eoptions=Le fichier d'options PPP PPP global $1 n'existe pas. Créez-le ou ajustez la <a href='$2'>configuration du module</a> pour utiliser un fichier différent, ou aucun.
+index_header=Tunnels définis
+index_none=Aucun tunnel PPTP n'a encore été défini.
+index_add=Ajoutez un nouveau tunnel VPN PPTP.
+index_conn=Se connecter à:
+index_pass=avec mot de passe optionnel:
+index_conndesc=Cliquez sur ce bouton pour connecter le tunnel VPN PPTP sélectionné en utilisant sa configuration actuelle.
+index_disc=Se déconnecter de:
+index_discdesc=Cliquez sur ce bouton pour déconnecter le tunnel VPN PPTP actuellement actif sélectionné et supprimer toutes les routes qui le traversent.
+index_return=Liste des tunnels PPTP
+index_opts=Modifier les options PPP globales
+index_optsdesc=Cliquez sur ce bouton pour modifier les options PPP qui s'appliquent à tous les tunnels VPN PPTP.
+index_boot=Connectez-vous au démarrage:
+index_noboot=&lt;Ne vous connectez pas&gt;
+index_bootdesc=Modifiez cette option pour contrôler si la connexion VPN PPTP sélectionnée est démarrée au démarrage ou non.
+
+disc_err=Impossible de déconnecter le tunnel
+disc_egone=N'est plus actif
+disc_ekill=Impossible de tuer le processus pppd
+disc_done=Le tunnel $1 a été déconnecté avec succès.
+
+conn_err=Impossible de connecter le tunnel
+conn_egone=Le tunnel n'existe plus
+cone_ealready=Déjà connecté
+conn_einvalid=Adresse IP du serveur manquante dans le fichier de configuration
+conn_title=Tunnel de liaison
+conn_cmd=Etablissement d'une connexion PPTP avec la commande $1 ..
+conn_ok=.. connexion correctement activée à l'aide de l'interface $1. Votre adresse locale est $2 et l'adresse distante est $3.
+conn_timeout=.. la connexion a échoué! Consultez les messages du journal ci-dessous pour savoir pourquoi.
+conn_routes=Ajout de routes avec des commandes ..
+conn_mppe=Le protocole MPPE pour le chiffrement VPN nécessite la prise en charge du démon PPP et du noyau. Cependant, les erreurs ci-dessus suggèrent que l'un ou les deux ne sont pas disponibles sur votre système. Si le serveur PPTP ne nécessite pas de MPPE, essayez de désactiver toutes les options qui s'y rapportent sur la page <a href='$1'>options PPP globales</a>.
+
+edit_title1=Ajouter un tunnel PPTP
+edit_header=Options de tunnel VPN PPTP
+edit_name=Nom du tunnel
+edit_server=Connecter au serveur
+edit_login=Connectez-vous en tant qu'utilisateur
+edit_same=Nom d'hôte du système
+edit_pass=Connectez-vous avec mot de passe
+edit_adddef=Ajouter un itinéraire par défaut?
+edit_def1=Par une autre extrémité
+edit_def2=Via la passerelle ..
+edit_deldef=Supprimer l'ancienne route par défaut?
+edit_routes=Itinéraires à ajouter après la connexion
+edit_type0=&nbsp;
+edit_type1=Réseau
+edit_type2=Hôte unique
+edit_net=Réseau ou hôte
+edit_mask=Masque de réseau
+edit_gw=Via la passerelle
+edit_gw_def=Autre fin
+edit_unknown=Autres commandes <tt>route</tt>
+edit_file=Fichier d'options PPP
+edit_none=Aucun
+edit_global=Fichier global standard
+edit_ofile=Autre fichier ..
+
+save_err=Impossible d'enregistrer le tunnel
+save_ename=Nom de tunnel manquant
+save_eserver=Serveur manquant ou invalide auquel se connecter
+save_elogin=Nom de connexion manquant ou invalide
+save_eremote=Nom du serveur distant manquant ou invalide
+save_edef=Passerelle de route par défaut manquante ou non valide
+save_enet=Adresse réseau non valide dans la route $1 
+save_emask=Masque de réseau non valide dans la route $1 
+save_egw=Passerelle non valide pour le réseau dans la route $1 
+save_ehost=Adresse IP hôte non valide dans la route $1 
+save_emask2=Aucun masque de réseau requis pour la route hôte $1 
+save_egw2=Passerelle non valide pour l'hôte sur la route $1 
+save_erename=Impossible de renommer le fichier tunnel
+save_eclash=Un tunnel ou un homologue PPP du même nom existe déjà
+save_efile=Fichier d'options PPP manquant ou invalide
+
+opts_title=Options PPP globales
+opts_desc=Les paramètres ci-dessous sont extraits de $1 et s'appliqueront à tous les tunnels configurés pour utiliser le fichier d'options PPP global standard.
+opts_header=Options PPP pour tous les tunnels
+opts_mtu=Taille maximale des paquets d'envoi
+opts_mru=Taille maximale des paquets de réception
+opts_err=Échec de l'enregistrement des options PPP globales
+opts_emtu=Taille maximale du paquet d'envoi manquante ou non valide
+opts_emru=Taille maximale du paquet de réception manquante ou non valide
+opts_msdesc=Les options ci-dessous activent le cryptage MPPE, utilisé par les serveurs VPN Windows. Cependant, MPPE nécessite la prise en charge à la fois du démon PPP et du noyau du système d'exploitation.
+
+mppe_mppe-40=Utiliser le cryptage MPPE 40 bits?
+mppe_mppe-128=Utiliser le cryptage MPPE 128 bits?
+mppe_mppe-stateless=Activer le mode MPPE sans état?
+mppe_mppe=Activer le cryptage MPPE?
+mppe_m2=Doit être utilisé
+mppe_m0=Ne peut pas être utilisé
+mppe_d0=désactivé
+mppe_d1=Permis
+mppe_mppe-stateful=Activer le mode MPPE avec état?
+mppe_old=Avertissement - Les anciennes directives MPPE $1 ont été trouvées dans votre fichier de configuration, même si votre démon PPP prend en charge les directives de nouveau style.
+mppe_new=Avertissement - Les directives MPPE de nouveau style $1 ont été trouvées dans votre fichier de configuration, même si votre démon PPP ne prend en charge que les directives de style ancien.
+
+log_create=Tunnel PPTP créé $1 
+log_update=Tunnel PPTP modifié $1 
+log_delete=Tunnel PPTP supprimé $1 
+log_conn=Tunnel connecté $1 
+log_conn_l=Tunnel connecté $1 avec l'adresse locale $2 
+log_failed=Impossible de connecter le tunnel $1 
+log_disc=Tunnel déconnecté $1 
+log_opts=Options PPP globales modifiées

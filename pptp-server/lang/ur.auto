@@ -1,0 +1,152 @@
+index_title=پی پی ٹی پی وی پی این سرور
+index_version=پی او ٹی او پی ورژن$1
+index_epptpd=The PoPToP PPTP server $1 was not found on your system, or is not the right program. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_econfig=The PPTP server configuration file $1 was not found on your system. Maybe your <a href='$2'>module configuration</a> is incorrect.
+index_stop=پی پی ٹی پی سرور بند کرو
+index_stopdesc=چل رہے پی پی ٹی پی سرور عمل کو بند کرنے کے لئے اس بٹن پر کلک کریں ، تاکہ کوئی نیا کنکشن قبول نہ ہو۔ موجودہ وی پی این کنکشن اگرچہ فعال رہیں گے۔
+index_start=پی پی ٹی پی سرور شروع کریں
+index_startdesc=پی پی ٹی پی سرور کے عمل کو شروع کرنے کے لئے اس بٹن پر کلک کریں تاکہ یہ مؤکلوں سے وی پی این کنکشن وصول کرسکے۔
+index_apply=ترتیب کا اطلاق کریں
+index_applydesc=پی پی ٹی پی سرور کے عمل کو روکنے اور دوبارہ شروع کرکے موجودہ پی پی ٹی پی سرور کے اختیارات کا اطلاق کرنے کے لئے اس بٹن پر کلک کریں۔ کسی بھی نئے کنکشن پر ہمیشہ پی پی پی کے اختیارات اور پی پی پی اکاؤنٹس میں تبدیلی لاگو ہوگی
+index_return=ماڈیول انڈیکس
+index_epppd=آپ کے سسٹم پر پی پی پی سرور پروگرام$1 انسٹال نہیں ہے۔ پی پی ٹی پی کام کرنے کے لئے اس پر منحصر ہے۔
+
+conf_title=پی پی ٹی پی سرور کے اختیارات
+conf_ecannot=آپ کو پی پی ٹی پی سرور کے اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
+conf_header=پی پی ٹی پی سرور کی تشکیل
+conf_speed=پی پی پی بوڈ ریٹ
+conf_baud=بی پی ایس
+conf_listen=ایڈریس پر سنو
+conf_all=تمام پتے
+conf_localip=سرور کے آخر کنکشن کے لئے IP پتے
+conf_remoteip=IP پتے کلائنٹ کو مختص کرنے کے ل.
+conf_ipxnets=IPX نیٹ ورک مختص کرنے کے لئے
+conf_from=سے
+conf_to=کرنے کے لئے
+conf_option=پی پی پی کے اختیارات کی فائل
+conf_mode0=عالمی ترتیبات
+conf_mode1=پی پی ٹی پی کے ساتھ مخصوص ترتیبات
+conf_mode2=کسٹم فائل
+conf_ipdesc=دونوں حدود میں آئی پی ایڈریس یا تو اکیلا داخل ہوسکتا ہے (جیسے 192.168.1.1) یا حدود (جیسے 192.168.2.32-64)
+conf_err=سرور کے اختیارات کو بچانے میں ناکام
+conf_espeed=غائب یا باؤڈ کی غلط شرح
+conf_elisten=سننے کے لئے گمشدہ یا غلط پتہ
+conf_eoption=گمشدہ یا غلط نظر آنے والی اپنی مرضی کے مطابق پی پی پی کے اختیارات کی فائل
+conf_elocalip='$1' درست مقامی IP ایڈریس یا رینج نہیں ہے
+conf_eremoteip='$1' درست ریموٹ IP ایڈریس یا رینج نہیں ہے
+conf_efrom=پتہ سے IPX نیٹ ورک لاپتہ یا غلط
+conf_eto=پتہ کرنے کے لئے گم شدہ یا غلط IPX نیٹ ورک
+
+options_title=پی پی پی کے اختیارات
+options_ecannot=آپ کو پی پی پی کے اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
+options_desc0=$1 سے نیچے دیئے گئے پیپلز پارٹی کے اختیارات آپ کے سسٹم کے ذریعہ موصول ہونے والے تمام آنے والے کنیکشنز پر لاگو ہوتے ہیں ، بشمول وہ ڈائل اپ موڈیم۔
+options_desc1=$1 سے نیچے دیے گئے پیپلز پارٹی کے اختیارات صرف تمام پی پی ٹی پی کنیکشنز پر لاگو ہوتے ہیں۔
+options_desc2=وہ اس فارم کو محفوظ کرنے کے بعد قائم کردہ کسی بھی نئے کنیکشن کے ذریعہ استعمال ہوں گے۔
+options_header=پی پی پی کنکشن کے اختیارات
+options_proxyarp=پراکسی اے آر پی اندراج بنائیں؟
+options_lock=PTY ڈیوائس فائل لاک کریں؟
+options_auth=تصدیق کی ضرورت ہے؟
+options_auth0=نہیں ، لیکن روکے ہوئے آئی پی کو روکیں
+options_auth1=کبھی نہیں
+options_auth2=ہمیشہ
+options_login=یونکس تصدیق بھی کرتے ہیں؟
+options_pap=پی اے پی کی توثیق
+options_chap=CHAP کی توثیق
+options_req=ضرور استعمال کیا جانا چاہئے
+options_all=استعمال کیا جا سکتا ہے
+options_ref=استعمال نہیں کیا جاسکتا
+options_name=توثیق کے لئے سرور نام
+options_hn=اصلی میزبان نام
+options_mtu=زیادہ سے زیادہ پیکٹ بھیجنے کا سائز
+options_mru=زیادہ سے زیادہ وصول شدہ پیکٹ کا سائز
+options_err=پیپلز پارٹی کے اختیارات کو بچانے میں ناکام
+options_emtu=زیادہ سے زیادہ بھیجنے والے پیکٹ سائز غائب یا غلط
+options_emru=زیادہ سے زیادہ وصول کرنے والے پیکٹ سائز غائب یا غلط
+options_ename=توثیق کے ل Miss سرور کا نام غائب ہے
+options_version=پی پی ڈی ورژن$1
+options_msdesc=مندرجہ ذیل اختیارات MS-CHAP توثیق کا طریقہ کار اور MPPE انکرپشن کو اہل بناتے ہیں ، جو ونڈوز VPN کلائنٹ کے ذریعہ بطور ڈیفالٹ استعمال ہوتا ہے۔ تاہم ، ایم پی ای پی پی پی ڈیمون اور آپریٹنگ سسٹم دانا دونوں میں مدد کی ضرورت ہے۔
+options_mschap=MS-CHAP کی توثیق
+options_mschap-v2=MS-CHAP ورژن 2 کی توثیق
+options_chapms=MS-CHAP کی توثیق
+options_chapms-v2=MS-CHAP ورژن 2 کی توثیق
+
+secrets_title=پی پی پی اکاؤنٹس
+secrets_ecannot=آپ کو پی پی پی اکاؤنٹس میں ترمیم کرنے کی اجازت نہیں ہے
+secrets_return=انڈیکس
+secrets_none=ابھی تک پی پی پی کے کسی بھی اکاؤنٹ کو تشکیل نہیں دیا گیا ہے۔
+secrets_enopfile=The PPP passwords file $1 does not exist on your system. Maybe PPP is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+secrets_table=پی پی پی کا$1 ہے
+secrets_user=صارف نام
+secrets_ips=IP پتے
+secrets_uany=کوئی
+secrets_sany=کوئی
+secrets_create=پی پی پی کا نیا اکاؤنٹ بنائیں۔
+secrets_desc=اس صفحے پر درج پی پی پی اکاؤنٹس فائل 1 1 سے لیا گیا ہے ، جو$3 توثیق کے لئے استعمال ہوتا ہے۔ صرف وہی جو آپ کے سرور$2 کیلئے دکھائے گئے ہیں ، نہ کہ سبکدوش ہونے والے رابطے کرنے کے اکاؤنٹس۔
+secrets_delete=منتخب شدہ پی پی پی اکاؤنٹس کو حذف کریں
+
+edit_secret_etitle=پی پی پی اکاؤنٹ میں ترمیم کریں
+edit_secret_ctitle=پی پی پی اکاؤنٹ بنائیں
+edit_secret_acc=پی پی پی اکاؤنٹ
+edit_secret_user=صارف نام
+edit_secret_serv=سرور
+edit_secret_sany=کوئی
+edit_secret_uany=کوئی
+edit_secret_pass=پاس ورڈ
+edit_secret_none=کوئی نہیں
+edit_secret_ffile=فائل سے
+edit_secret_leave=کوئی تبدیلی نہیں چھوڑ دیں
+edit_secret_setto=تیار
+edit_secret_vaddr=درست پتے
+edit_secret_aany=کسی کو بھی اجازت دیں
+edit_secret_anone=کسی کو بھی اجازت نہیں
+edit_secret_alist=اجازت دی گئی ..
+edit_secret_save=محفوظ کریں
+edit_secret_del=حذف کریں
+edit_secret_return=اکاؤنٹ کی فہرست
+
+save_secret_esave=اکاؤنٹ محفوظ کرنے میں ناکام
+save_secret_enoip='$1' درست پتہ نہیں ہے
+
+stop_err=پی پی ٹی پی سرور کو روکنے میں ناکام
+stop_egone=اب نہیں چل رہا ہے
+stop_ecannot=آپ کو پی پی ٹی پی سرور کو روکنے کی اجازت نہیں ہے
+
+start_err=پی پی ٹی پی سرور شروع کرنے میں ناکام
+start_ecannot=آپ کو پی پی ٹی پی سرور شروع کرنے کی اجازت نہیں ہے
+
+apply_err=پی پی ٹی پی سرور کو دوبارہ شروع کرنے میں ناکام
+apply_ecannot=آپ کو پی پی ٹی پی سرور کو دوبارہ شروع کرنے کی اجازت نہیں ہے
+
+conns_title=فعال رابطے
+conns_ecannot=آپ کو فعال رابطوں کا انتظام کرنے کی اجازت نہیں ہے
+conns_desc=اس صفحے میں آپ کے سرور سے موجودہ پی پی ٹی پی رابطوں کی فہرست ہے۔ کسی کو زبردستی منقطع کرنے کے لئے ، اس کے انٹرفیس نام پر کلک کریں۔
+conns_iface=پی پی پی انٹرفیس
+conns_client=مؤکل کا پتہ
+conns_stime=تب سے جڑا ہوا ہے
+conns_local=سرور وی پی این ایڈریس
+conns_remote=کلائنٹ وی پی این ایڈریس
+conns_none=اس وقت کوئی پی پی ٹی پی کنکشن فعال دکھائی نہیں دے رہا ہے۔
+conns_unknown=نامعلوم
+conns_user=صارف نام
+
+disc_err=رابطہ منقطع کرنے میں ناکام
+disc_egone=رابطے اب فعال نہیں ہیں
+disc_ekill=عمل اب نہیں چل رہا ہے
+
+log_secret_create=پی پی پی اکاؤنٹ$1 بنایا گیا
+log_secret_modify=ترمیم شدہ پی پی پی اکاؤنٹ$1
+log_secret_delete=حذف شدہ پی پی پی اکاؤنٹ$1
+log_deletes=حذف شدہ$1 پی پی پی اکاؤنٹ
+log_conf=ترمیم شدہ پی پی ٹی پی سرور کے اختیارات
+log_options=ترمیم شدہ پیپلز پارٹی کے اختیارات
+log_disc=منقطع کلائنٹ$1
+log_start=پی پی ٹی پی سرور شروع کیا
+log_stop=پی پی ٹی پی سرور بند ہوگیا
+log_apply=اطلاق شدہ پی پی ٹی پی سرور کی تشکیل
+
+acl_conf=کیا ترتیب میں ترمیم کر سکتے ہیں؟
+acl_options=اختیارات میں ترمیم کر سکتے ہیں؟
+acl_secrets=کیا پی پی ٹی پی اکاؤنٹس کا انتظام کرسکتے ہیں؟
+acl_conns=رابطے دیکھ سکتے ہیں؟
+acl_stop=کیا پی پی ٹی پی سرور کو روک کر شروع کر سکتا ہے؟
+acl_apply=تشکیل دے سکتے ہیں؟

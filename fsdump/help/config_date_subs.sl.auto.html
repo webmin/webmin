@@ -1,0 +1,126 @@
+<header> Ali storite nadomestno rezervno destinacijo? </header> Če je ta možnost nastavljena na <b>Da</b> , se lahko v ime datoteke rezervnega cilja uporabijo kode, kot so%d,%m,%Y in%u. Ti bodo nadomeščeni z dnevom, mesecem in dnevom v tednu, ko se izvede varnostno kopiranje. To je koristno, če želite vsak dan shraniti drugačno varnostno kopijo, da lahko sistem vrnete na prejšnji datum. <p> Nekatere druge kode, ki jih je mogoče uporabiti, so: <br><pre> <font size=-1>
+ %a Skrajšano ime med tednom v skladu s cur
+        najem lokala.
+
+ %A Ime polnega delovnega dne v skladu s trenutnim
+        lokalno.
+
+ %b Skrajšano ime meseca glede na trenutni
+        lokalno.
+
+ %B Ime celotnega meseca glede na trenutni
+        lokalno.
+
+ %c Prednostni datum in čas predstavitve za
+        trenutni lokal.
+
+ %C Število stoletja (leto / 100) kot dvomestno celo število.
+
+ %d Dan v mesecu kot decimalna številka (območje 01
+        do 31).
+
+ %e Kot%d, dan v mesecu kot decimalna številka,
+        toda vodilno ničlo nadomesti presledek.
+
+ Modifikator%E: uporabite alternativno obliko, glejte spodaj.
+
+ %G ISO 8601 leto s stoletjem kot decimalnim številom.
+        Štirimestno leto, ki ustreza številki tedna ISO
+        ber (glej%V). Ta ima enako obliko in vrednost
+        kot%y, razen če pripada številka tedna ISO
+        do prejšnjega ali prihodnjega leta, se uporabi to leto
+        namesto tega.
+
+ %g Kot%G, vendar brez stoletja, torej z dvomestno številko
+        leto (00-99).
+
+ %h Enakovredno%b.
+
+ %H Ura kot decimalna številka z uporabo 24-urne ure
+        (območje od 00 do 23).
+
+ %I Ura kot decimalna številka z uporabo 12-urne ure
+        (območje od 01 do 12).
+
+ %j Dan leta kot decimalna številka (območje 001)
+        do 366).
+
+ %k Ura (24-urna ura) kot decimalna številka (obseg
+        0 do 23); pred enimi števkami je prazno.
+        (Glej tudi%H.)
+
+ %l Ura (12-urna ura) kot decimalna številka (obseg)
+        1 do 12); pred enimi števkami je prazno.
+        (Glej tudi%I.)
+
+ %m Mesec kot decimalno število (razpon 01 do 12).
+
+ %M minuta kot decimalna številka (območje od 00 do 59).
+
+ %n Znak nove vrstice.
+
+ Modifikator%O: uporabite alternativno obliko, glejte spodaj.
+
+ %p bodisi &quot;AM&quot; bodisi &quot;PM&quot; glede na dani čas
+        vrednost ali ustrezne strune za tok
+        lokalno. Poldne se obravnava kot &quot;pm&quot; in polnoč kot
+        &#39;sem&#39;.
+
+ %P Kot%p, vendar v malih črkah: &#39;am&#39; ali &#39;pm&#39; ali kore
+        sponding string za trenutno lokacijo.
+
+ %r Čas v zapisu am ali pm. V POSIX-u
+        lokalno to je enako &#39;%I:%M:%S%p&#39;.
+
+ %R Čas v 24-urnem zapisu (%H:%M). Za
+        različico, vključno s sekundami, glejte%T spodaj.
+
+ %s Število sekund od epohe, tj. od
+        1970-01-01 00:00:00 UTC.
+
+ %S Drugi kot decimalna številka (območje od 00 do 61).
+
+ %t Znak zavihka.
+
+ %T Čas v 24-urnem zapisu (%H:%M:%S).
+
+ %u Dan v tednu kot decimalna točka, območje od 1 do 7,
+        Ponedeljek je 1. Glej tudi%w.
+
+ %U Številka tedna v tekočem letu kot decimalna
+        številka, območje od 00 do 53, začenši s prvim
+        Nedelja kot prvi dan 1. tedna. Glej tudi%V in
+        %W.
+
+ %V Število tednov v ISO 8601: 1988 za tekoče leto
+        kot decimalno število, območje od 01 do 53, kjer 1. teden
+        je prvi teden, ki ima vsaj 4 dni v
+        tekočega leta in s ponedeljkom kot prvi dan leta 2007
+        teden. Glej tudi%U in%W.
+
+ %w Dan v tednu kot decimalna točka, območje od 0 do 6,
+        Nedelja je 0. Glej tudi%u.
+
+ %W Številka tedna v tekočem letu kot decimalna
+        številka, območje od 00 do 53, začenši s prvim
+        Ponedeljek kot prvi dan 1. tedna.
+
+ %x Prednostna predstavitev datuma za tok
+        lokalno brez časa.
+
+ %X Zaželena predstavitev časa za tok
+        lokalno brez datuma.
+
+ %y Leto kot decimalno število brez stoletja
+        (območje od 00 do 99).
+
+ %Y Leto kot decimalno število, vključno s stoletjem.
+
+ %z Časovni pas kot odmik ure od GMT. Obvezno
+        oddajo datume, skladne z RFC822 (z uporabo &quot;%a,%d%b%Y
+        %H:%M:%S%z &quot;).
+
+ %Z Časovni pas ali ime ali kratica.
+
+ %%Dobesedni znak%.
+</font> </pre><footer>

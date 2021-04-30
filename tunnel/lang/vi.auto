@@ -1,0 +1,21 @@
+index_elink=Không có URL đến đường hầm đã được đặt.
+index_url=Nhập URL để mở:
+index_open=Mở
+
+link_eurl=URL đường hầm không hợp lệ : $1 
+link_elogin=Không thể đăng nhập vào $1 dưới dạng $2.
+link_eautologin=Đăng nhập hoặc mật khẩu không hợp lệ cho $1. <a href='$2'>Nhấp vào đây</a> để đăng nhập.
+link_enouser=Cần có tên người dùng và mật khẩu để đăng nhập vào $1, nhưng không ai được cấu hình.
+link_ebadurl=Bạn không được phép truy cập URL $1 
+link_mconfig=Sử dụng trang <a href='$1'>cấu hình mô-đun</a> để thay đổi thông tin đăng nhập.
+
+login_title=Đăng nhập vào trang web
+login_desc=Bạn phải cung cấp tên người dùng và mật khẩu để đăng nhập vào $1.
+login_header=Xác thực trang web
+login_user=tên tài khoản
+login_pass=Mật khẩu
+login_login=Đăng nhập
+login_clear=Thông thoáng
+
+seturl_err=Không thể mở URL
+seturl_eurl=Đã nhập URL không hợp lệ

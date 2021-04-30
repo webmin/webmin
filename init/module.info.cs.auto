@@ -1,0 +1,3 @@
+name_cs=Boot Manager
+longdesc_cs=Instalační skripty, které se mají spustit v době spuštění z /etc/init.d nebo /etc/rc.local.
+desc_cs=Spouštění a vypínání

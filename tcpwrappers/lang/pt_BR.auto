@@ -1,0 +1,33 @@
+index_title=Wrappers TCP
+index_return=índice
+index_allowtitle=Hosts permitidos
+index_denytitle=Anfitriões negados
+index_norule=Nenhuma regra foi definida em <tt>$1</tt> ainda.
+index_nofile=O arquivo '$1' não existe - verifique sua <a href="/config.cgi?tcpwrappers">configuração do módulo</a>
+index_add=Adicione uma nova regra.
+index_service=Daemon
+index_hosts=Anfitriões
+index_cmd=Comando
+index_delete=Excluir selecionado
+index_none=Nenhum
+
+edit_title1allow=Criar regra de permissão
+edit_title2allow=Editar regra de permissão
+edit_title1deny=Criar regra de negação
+edit_title2deny=Editar regra de negação
+edit_eid=Esta regra não foi encontrada
+edit_header=Opções de regra
+edit_service=Serviços
+edit_except=Exceto serviços
+edit_hosts=Hosts remotos
+edit_hostsexcept=Exceto hosts
+edit_cmd=Comandos do shell
+edit_efound=O daemon '$1' não foi encontrado na configuração do xinetd.
+
+save_errtitle=Erro ao salvar regra
+save_ehost=A entrada do host contém caracteres incorretos
+save_ecmd=A entrada do comando contém caracteres incorretos
+save_eservice=Nomes de daemon contêm caracteres incorretos
+
+del_errtitle=Erro ao excluir regras
+del_enone=Nenhuma regra marcada para excluir

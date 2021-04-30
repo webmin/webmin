@@ -1,0 +1,16 @@
+line1=Možnosti konfigurace,11
+cal_max=Maximální počet řádků v logu přecházející do calamaris,3,neomezeno
+crypt_conf=Metoda kryptování proxy hesel,1,0-kryptování,1-md5base64
+sort_conf=Třídit proxy uživatele?,1,1-ano,0-ne
+sync_create=Vytvořit proxy uživatele v momentě vytváření systémových uživatelů?,1,1-ano,0-ne
+sync_delete=Smazat proxy uživatele v momentě mazání systémových uživatelů?,1,1-ano,0-ne
+line2=Konfigurace systému,11
+squid_conf=Úplná cesta ke konfiguračnímu souboru squidu,0
+squid_start=Příkaz spouštějící squid,3,Automaticky
+squid_stop=Příkaz ukončující squid,3,Automaticky
+squid_path=Spouštěč squidu,0
+pid_file=Úlná cesta k PID souboru,0
+cache_dir=Úplná cesta ke squid cache adresáři,0
+cachemgr_path=Spuštěč squid cachemgr.cgi,0
+log_dir=Úplná cesta ke squid log adresáři,0
+calamaris=Cesta ke calamaris log analyzátoru,3,Není nainstalován

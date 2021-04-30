@@ -1,0 +1,34 @@
+index_inactive=Inativo
+index_eprog=O executável do servidor NFS não foi encontrado no seu sistema. O pacote NFS não parece estar instalado.
+index_sel_ro=hosts selecionados acesso de leitura
+index_all_ro=todos os hosts têm acesso de leitura
+index_ro_rw=todos os hosts têm acesso de leitura, hosts selecionados têm acesso de gravação
+index_sel_rw=hosts selecionados acesso de gravação
+index_all_rw=todos os hosts têm acesso de gravação
+index_sel_root=hosts selecionados acesso root
+
+edit_security=Segurança de exportação
+edit_active=Ativo?
+edit_sel_ro=Hosts listados acesso de leitura
+edit_all_ro=Todos os hosts têm acesso de leitura
+edit_ro_rw=Todos os hosts têm acesso de leitura, os hosts listados têm acesso de gravação
+edit_sel_rw=Hosts listados acesso de gravação
+edit_all_rw=Todos os hosts têm acesso de gravação
+edit_sel_hosts=Anfitriões listados
+edit_all_hosts=Todos os hosts
+edit_user_access=Acesso do usuário
+edit_root_access=Acesso root
+edit_anon_access=Usuário anônimo
+edit_anon_notset=Não configurado
+edit_anon_noaccess=Sem acesso
+edit_async=Gravações assíncronas
+
+save_enohost='$1' - você não listou nenhum host
+
+log_modify=Exportação NFS modificada $1 
+log_modify_l=Exportação NFS modificada $1 para $2 
+log_delete=Exportação NFS excluída $1 
+log_delete_l=Exportação NFS excluída $1 para $2 
+log_create=Exportação de NFS criada $1 
+log_create_l=Exportação de NFS criada $1 para $2 
+log_apply=Configuração aplicada

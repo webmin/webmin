@@ -1,0 +1,39 @@
+index_title=NFS Export
+index_add=Adjon hozzá egy új NFS-exportot
+index_dir=Könyvtár
+index_hosts=Engedélyezett házigazdák
+index_all=Minden házigazda
+index_none=NFS-export még nem került meghatározásra.
+index_apply=Alkalmazza a konfigurációt
+index_applydesc=Kattintson erre a gombra az összes fenti exportálás aktívvá tételéhez, a konfigurált opciókkal együtt.
+index_return=export lista
+
+edit_title1=Exportálás létrehozása
+edit_title2=Exportálás szerkesztése
+edit_header=Adatok exportálása
+edit_dir=Exportálni kívánt könyvtár
+edit_hosts=Exportálás gazdagépekre/hálózati csoportokra
+edit_ro=Csak olvasható?
+edit_wsync=Szinkronizálás írása után?
+edit_anon=Alapvető felhasználói engedélyek
+edit_anon1=Alapértelmezés (úgy kezeljük, mint <tt>senki</tt>)
+edit_anon2=Magtagadni a hozzáférést
+edit_anon0=Bánj felhasználóként
+edit_rw=Olvasási/írási hozzáférés
+edit_root=Alapfájl elérés
+edit_access=Mount hozzáférés
+edit_all=Minden házigazda
+edit_sel=Felsorolt házigazdák ..
+edit_none=Nincs házigazda
+
+save_err=Az exportálás mentése nem sikerült
+save_edir=Hiányzik vagy nem létezik az exportálni kívánt könyvtár
+save_eanon=Hiányzó vagy érvénytelen gyökér felhasználó
+save_erw=Nem lépett be írási-írási host
+save_eroot=Nincs megadva gyökérfájl-hozzáférési hoszt
+save_eaccess=Nincs megadva mount hozzáférési házigazda
+
+log_create_export=Létrehozta a (z) $1 exportját
+log_delete_export=Törölve a (z) $1 exportját
+log_modify_export=$1 módosított exportja
+log_apply=Alkalmazott konfiguráció

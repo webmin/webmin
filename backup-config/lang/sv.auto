@@ -1,0 +1,15 @@
+index_test=Visa bara vad som kommer att återställas?
+
+edit_header2=Före och publicera reservkommandon
+edit_header3=Backup schema
+edit_other2=Andra filer att återställa
+edit_pre=Kommando för säkerhetskopiering
+edit_post=Kommando efter säkerhetskopiering
+
+restore_emods=Inga moduler eller andra filer valda
+restore_testing=Extrahera innehållet i säkerhetskopian från $1.
+restore_done2=.. filer i säkerhetskopian är :
+
+email_pre=Kör pre-backup kommando $1 ..
+email_post=Kör post-backup-kommando $1 ..
+email_prefailed=Kommandot före säkerhetskopiering misslyckades!

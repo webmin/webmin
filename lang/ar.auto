@@ -1,0 +1,23 @@
+category_=أدوات
+
+longcategory_=الوحدات التي تؤدي مهام متنوعة أخرى
+
+config_emodule=وحدة غير موجودة
+
+nice_size_PB=PB
+nice_size_PiB=PIB
+nice_size_TB=مرض السل
+nice_size_TiB=الطيب
+nice_size_GB=GB
+nice_size_GiB=بنك الخليج الدولي
+nice_size_MB=MB
+nice_size_MiB=ميب
+nice_size_kB=كيلو بايت
+nice_size_kiB=بنك الكويت الدولي
+nice_size_b=بايت
+
+langauto_include=تضمين الترجمات الآلية
+
+file_truncated_message=تم جلب$1 من البيانات ، تم اقتطاع$2 من$3
+file_truncated_message_head=تم جلب بداية$1 من البيانات ، تم اقتطاع$2 من$3
+file_truncated_message_tail=تم جلب إنهاء$1 من البيانات ، اقتطاع$2 من$3

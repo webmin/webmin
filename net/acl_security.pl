@@ -70,6 +70,10 @@ print &ui_table_row($text{'acl_hosts'},
 print &ui_table_row($text{'acl_apply'},
 	&ui_radio("apply", $_[0]->{'apply'},
 		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
+
+print &ui_table_row($text{'acl_sysinfo'},
+	&ui_radio("sysinfo", $_[0]->{'sysinfo'},
+		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 }
 
 # acl_security_save(&options)
@@ -91,5 +95,6 @@ $_[0]->{'up'} = $in{'up'};
 $_[0]->{'virt'} = $in{'virt'};
 $_[0]->{'delete'} = $in{'delete'};
 $_[0]->{'hide'} = $in{'hide'};
+$_[0]->{'sysinfo'} = $in{'sysinfo'};
 }
 

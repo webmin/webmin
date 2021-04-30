@@ -1,6 +1,6 @@
 # Contains a function to supply the syslog module with extra logs
 
-do 'usermin-lib.pl';
+require 'usermin-lib.pl';
 
 # syslog_getlogs()
 # Returns the Usermin error log

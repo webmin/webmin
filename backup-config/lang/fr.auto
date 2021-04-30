@@ -1,0 +1,48 @@
+index_test=Montrez simplement ce qui sera restauré?
+index_nostrftime=Avertissement - certains travaux de sauvegarde utilisent % dans leurs noms de fichiers, mais la substitution strftime n'est pas activée sur la page Configuration du module.
+index_tabbackup=Sauvegarder maintenant
+index_tabrestore=Restaurer maintenant
+
+edit_header2=Commandes de pré et post sauvegarde
+edit_header3=Calendrier de sauvegarde
+edit_other2=Autres fichiers à restaurer
+edit_what=Inclure dans la sauvegarde
+edit_webmin=Fichiers de configuration du module Webmin
+edit_nofiles=Fichiers de configuration du serveur
+edit_run=Enregistrer et sauvegarder maintenant
+edit_return=formulaire de sauvegarde
+edit_other=Autres fichiers répertoriés ..
+edit_pre=Commande de pré-sauvegarde
+edit_post=Commande post-sauvegarde
+
+save_ewebmin=Ni webmin ni fichiers de configuration de serveur n'ont été sélectionnés
+
+backup_port=Port de serveur
+
+backup_epath2=Chemin absolu manquant ou non valide sur le serveur SSH
+backup_eport=Port de serveur FTP manquant ou non valide
+backup_esport=Port de serveur SSH manquant ou non valide
+
+restore_emods=Aucun module ou autre fichier sélectionné
+restore_testing=Extraction du contenu de la sauvegarde de $1 ..
+restore_done2=.. les fichiers de la sauvegarde sont :
+
+nice_ftpp=$2 sur le port $1 $3 via FTP
+nice_sshp=$2 sur le port $1 $3 via SSH
+
+log_run_backup=Sauvegarde exécutée de $1 modules sur $2 
+
+run_title=Configurations de sauvegarde
+run_doing=Démarrage de la sauvegarde de $1 modules sur $2 ..
+run_ok=.. sauvegarde terminée avec succès.
+run_failed=.. la sauvegarde a échoué! Voir le message d'erreur ci-dessus pour la raison.
+
+email_mods=Sauvegarde des modules :
+email_failed=à $1 a échoué :
+email_ok=à $1 a réussi.
+email_sfailed=Échec de la sauvegarde de la configuration sur $1 
+email_sok=La sauvegarde de la configuration sur $1 a réussi
+email_final=La taille finale du fichier de sauvegarde était $1 
+email_pre=Exécution de la commande de pré-sauvegarde $1 ..
+email_post=Exécution de la commande de post-sauvegarde $1 ..
+email_prefailed=La commande de pré-sauvegarde a échoué!

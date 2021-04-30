@@ -1,0 +1,3 @@
+name_hr=DFSadmin
+longdesc_hr=Uređivanje dijeljenja datoteka kako je definirano u datoteci /etc/dfs/dfstab.
+desc_hr=Dionice NFS-a

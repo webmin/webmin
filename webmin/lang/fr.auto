@@ -1,0 +1,14 @@
+bind_maxconns=Nombre maximal de connexions simultanées
+bind_maxconns_per_ip=Nombre maximal de connexions simultanées par IP
+bind_maxconns_per_net=Nombre maximal de connexions simultanées par réseau
+bind_emaxconns=Le nombre maximal de connexions simultanées doit être supérieur à 1
+bind_emaxconns_per_ip=Le nombre maximal de connexions simultanées par IP doit être supérieur à 1
+bind_emaxconns_per_net=Le nombre maximal de connexions simultanées par réseau doit être supérieur à 1
+
+advanced_bufsize=Taille de la mémoire tampon du réseau en octets
+advanced_ebufsize=La taille de la mémoire tampon du réseau doit être un nombre supérieur à zéro
+
+sendmail_url=URL Webmin à utiliser dans les e-mails
+sendmail_url_def=Par défaut ($1)
+sendmail_url_custom=URL personnalisée
+sendmail_eurl=URL personnalisée manquante ou non valide

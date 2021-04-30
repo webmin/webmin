@@ -1,6 +1,7 @@
 #!/usr/local/bin/perl
 # delete_zone.cgi
 # Delete an existing master, slave or secondary zone, and it's records file
+
 use strict;
 use warnings;
 # Globals from bind8-lib.pl
@@ -36,6 +37,15 @@ if (!$in{'confirm'} && $config{'confirm_zone'}) {
 		@servers = ( );
 		}
 
+	# Check if controlled by Virtualmin
+	my @doms = &get_virtualmin_domains($zconf->{'value'});
+	my $vwarn;
+	if (@doms) {
+		my $f = "<tt>$doms[0]->{'dom'}</tt>";
+		$vwarn = @doms == 1 ? &text('delete_vwarn', $f)
+				    : &text('delete_vwarn2', $f, @doms-1);
+		}
+
 	my $zdesc = "<tt>".&ip6int_to_net(&arpa_to_ip($zconf->{'value'}))."</tt>";
 	print &ui_confirmation_form("delete_zone.cgi",
 		$type eq 'hint' ? $text{'delete_mesg2'} :
@@ -49,7 +59,8 @@ if (!$in{'confirm'} && $config{'confirm_zone'}) {
 			&ui_yesno_radio("rev", 1)."<br>" : "").
 		(@servers && $access{'remote'} ?
 			$text{'delete_onslave'}." ".
-			&ui_yesno_radio("onslave", 1)."<br>" : "")
+			&ui_yesno_radio("onslave", 1)."<br>" : ""),
+		$vwarn,
 		);
 
 	&ui_print_footer("", $text{'index_return'});

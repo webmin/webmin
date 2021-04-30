@@ -1,0 +1,64 @@
+index_zone=Zona
+index_mem2=<b>Memoria real:</b> $1 total / $2 gratis
+index_mem3=<b>Memoria real:</b> $1 total / $2 gratis / $3 en caché
+index_swap2=<b>Espacio de intercambio:</b> $1 total / $2 gratis
+index_burst=<b>Memoria Burstable:</b> $1 total
+index_loadname=Promedios de carga de la CPU:
+index_loadnums=$1 (1 minutos), $2 (5 minutos), $3 (15 minutos)
+index_cpuname=Tipo de CPU:
+index_inzone=En la zona $1 
+
+stime=Empezado
+sclass=Clase de programación IO
+sprio=IO prioridad
+
+search_cpupc2=Usando más CPU que
+search_ip=Usando la dirección IP
+
+run_as=Ejecutar como usuario
+run_euser=Nombre de usuario faltante o inválido
+run_euser2=No tiene permiso para ejecutar comandos como el usuario seleccionado
+
+edit_subid=CARNÉ DE IDENTIDAD
+edit_subcmd=Comando de subproceso
+edit_sigstop=Suspender
+edit_sigcont=Currículum
+edit_trace=Proceso de rastreo
+edit_return=detalles del proceso
+
+linux_stime=Empezado
+
+linux_real=Tiempo real
+linux_be=Mejor esfuerzo
+linux_idle=Ocioso
+
+freebsd_stime=Empezado
+
+hpux_stime=Empezado
+
+sysv_stime=Empezado
+sysv_task=ID de tarea
+sysv_zone=Nombre de zona
+
+log_renice=Prioridad cambiada del proceso $2 a $1 
+
+acl_only=¿Solo puede ver procesos propios?
+acl_who=Puede gestionar procesos para usuarios
+acl_who0=Todos los usuarios
+acl_who1=Usuario actual de Webmin
+acl_who2=Usuarios listados. ..
+
+trace_title=Proceso de rastreo
+trace_start=Iniciando el rastreo de llamadas del sistema para $1 ..
+trace_doing=Seguimiento de llamadas del sistema para $1  :
+trace_done=.. proceso ha terminado.
+trace_failed=.. el seguimiento falló!
+trace_sorry=Esta página requiere soporte de Java en su navegador. Para usar una traza de proceso de solo texto, ajuste la configuración del módulo.
+trace_syscalls=Sistema de rastreo de llamadas:
+trace_all=Todos
+trace_sel=Listado ..
+trace_change=Cambio
+
+windows_threads=Hilos en proceso
+
+syslog_dmesg=Mensajes del núcleo

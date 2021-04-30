@@ -1,0 +1,205 @@
+index_title=عمل جاری ہے
+index_display=ڈسپلے کریں
+index_tree=پی آئی ڈی
+index_user=صارف
+index_size=یاداشت
+index_cpu=سی پی یو
+index_search=تلاش کریں
+index_zone=زون
+index_run=رن ..
+index_return=عمل کی فہرست
+index_mem2=<b>Real memory:</b> $1 total / $2 free
+index_mem3=<b>Real memory:</b> $1 total / $2 free / $3 cached
+index_swap2=<b>Swap space:</b> $1 total / $2 free
+index_burst=<b>Burstable memory:</b> $1 total
+index_loadname=اوسطا CPU:
+index_loadnums=$1 (1 منٹ) ،$2 (5 منٹ) ،$3 (15 منٹ)
+index_cpuname=سی پی یو کی قسم:
+index_inzone=زون$1 میں
+
+pid=ID
+owner=مالک
+command=کمانڈ
+cpu=سی پی یو
+size=سائز
+parent=والدین کا عمل
+runtime=چلانے کا وقت
+nice=اچھی سطح
+stime=شروع
+sclass=IO شیڈولنگ کلاس
+sprio=IO ترجیح
+
+search_user=کی ملکیت
+search_match=ملاپ
+search_cpupc=$1٪ CPU سے زیادہ استعمال کرنا
+search_cpupc2=سے زیادہ سی پی یو کا استعمال کرنا
+search_fs=فائل سسٹم کا استعمال
+search_files=فائل کا استعمال کرتے ہوئے
+search_submit=تلاش کریں
+search_none=کوئی مماثل عمل نہیں ملا۔
+search_kill=سگنل بھیجیں
+search_ignore=نتیجہ میں تلاش کے عمل کو نظرانداز کریں
+search_return=تلاش فارم
+search_sigterm=عمل کو ختم کریں
+search_sigkill=عمل کو مار ڈالو
+search_port=پورٹ کا استعمال کرتے ہوئے
+search_protocol=پروٹوکول
+search_ip=IP ایڈریس استعمال کرنا
+
+run_command=چلانے کا حکم
+run_submit=رن
+run_mode=رن موڈ
+run_bg=پس منظر میں چلائیں
+run_fg=مکمل ہونے تک انتظار کریں
+run_input=کمانڈ کرنے کے لئے ان پٹ
+run_title=کمانڈ آؤٹ پٹ
+run_output=$1 سے آؤٹ پٹ ..
+run_none=کوئی پیداوار پیدا نہیں ہوئی
+run_ecannot=آپ کو کمانڈ چلانے کی اجازت نہیں ہے
+run_as=بطور صارف چلائیں
+run_euser=غائب یا غلط صارف نام
+run_euser2=آپ کو بطور منتخب صارف کمانڈ چلانے کی اجازت نہیں ہے
+
+edit_title=عمل کی معلومات
+edit_gone=اب یہ عمل نہیں چل رہا ہے
+edit_sub=ذیلی عمل
+edit_subid=ID
+edit_subcmd=سب پروسیس کمانڈ
+edit_kill=سگنل بھیجیں
+edit_change=بدلیں
+edit_prilow=کم ترجیح
+edit_prihigh=اعلی ترجیح
+edit_pridef=پہلے سے طے شدہ
+edit_none=کوئی نہیں
+edit_ecannot=آپ کو عمل میں ترمیم کرنے کی اجازت نہیں ہے
+edit_sigterm=ختم کریں
+edit_sigkill=مار ڈالو
+edit_sigstop=معطل کرنا
+edit_sigcont=دوبارہ شروع کریں
+edit_open=فائلیں اور رابطے
+edit_trace=عمل ٹریس
+edit_return=عمل کی تفصیلات
+
+kill_err=$2 پر کارروائی کرنے کیلئے سگنل$1 بھیجنے میں ناکام
+kill_title=سگنل بھیجیں
+kill_sent=بھیجا
+kill_ecannot=آپ کو عمل ختم کرنے کی اجازت نہیں ہے
+
+renice_err=$1 پر دوبارہ عمل کرنے میں ناکام
+renice_ecannot=آپ کو کرایہ پر لینے کے عمل کی اجازت نہیں ہے
+
+linux_pri=ترجیح
+linux_tty=ٹی ٹی وائی
+linux_status=حالت
+linux_wchan=میں انتظار کر رہا ہوں
+linux_mem=یاداشت
+linux_group=گروپ
+linux_ruser=حقیقی صارف
+linux_rgroup=اصلی گروپ
+linux_pgid=عمل گروپ کی شناخت
+linux_stime=شروع
+
+linuxstat_R=چل رہا ہے
+linuxstat_S=سو رہا ہے
+linuxstat_D=گہری نیند
+linuxstat_T=رک گیا
+linuxstat_Z=زومبی
+
+linux_real=حقیقی وقت
+linux_be=بہترین کوشش
+linux_idle=بیکار
+
+freebsd_ruser=حقیقی صارف
+freebsd_rgroup=اصلی گروپ
+freebsd_tty=ٹی ٹی وائی
+freebsd_pgid=عمل گروپ
+freebsd_stime=شروع
+freebsd_lim=یاد کی حد
+
+hpux_pri=ترجیح
+hpux_tty=ٹی ٹی وائی
+hpux_status=حالت
+hpux_wchan=کا انتظار کر رہا ہوں
+hpux_stime=شروع
+
+hpuxstat_0=کوئی وجود نہیں
+hpuxstat_S=سو رہا ہے
+hpuxstat_W=انتظار کر رہا ہے
+hpuxstat_R=چل رہا ہے
+hpuxstat_I=انٹرمیڈیٹ
+hpuxstat_Z=زومبی
+hpuxstat_T=رک گیا
+hpuxstat_G=بڑھتی ہوئی
+
+macos_tty=ٹی ٹی وائی
+
+sysv_group=گروپ
+sysv_ruser=حقیقی صارف
+sysv_rgroup=اصلی گروپ
+sysv_pgid=عمل گروپ کی شناخت
+sysv_tty=ٹی ٹی وائی
+sysv_stime=شروع
+sysv_task=ٹاسک ID
+sysv_zone=زون کا نام
+
+log_run=کمان "$1"
+log_kill=$2 پر کارروائی کرنے کیلئے$1 سگنل بھیجا
+log_kills=سگنل$1 سے$2 عمل بھیجیں
+log_kill_l=$2 پر کارروائی کرنے کیلئے$1 سگنل بھیجا
+log_kills_l=Sent signal $1 to processes<br>$2
+log_renice=عمل$2 سے$1 کی ترجیح کو تبدیل کیا گیا
+
+acl_manage=بطور صارف عمل کو منظم کریں
+acl_manage_def=موجودہ ویب مین صارف
+acl_edit=کر سکتے ہیں اور کرایہ پر لینا عمل؟
+acl_run=کیا کمانڈ چلا سکتے ہیں؟
+acl_only=صرف اپنے عمل دیکھ سکتے ہیں؟
+acl_who=صارفین کے لئے عمل کا انتظام کرسکتے ہیں
+acl_who0=تمام صارفین
+acl_who1=موجودہ ویب مین صارف
+acl_who2=صارفین کی فہرست ..
+
+kill_kill=عمل کو مار ڈالو
+kill_term=ختم کریں
+kill_hup=دوبارہ شروع کریں
+kill_stop=رکو
+kill_cont=جاری رہے
+
+open_title=فائلیں اور رابطے کھولیں
+open_proc=عمل$1 کے لئے (PID$2)
+open_header1=فائلیں کھولیں
+open_header2=نیٹ ورک کنکشن کھولیں
+open_type=ٹائپ کریں
+open_proto=پروٹوکول
+open_desc=تفصیلات
+open_fd=فائل ڈسکرپٹر
+open_listen1=پورٹ$1 پر سن رہا ہے
+open_listen2=ایڈریس$1 پورٹ$2 پر سن رہا ہے
+open_recv= $1:$2 پر وصول کرنا
+open_conn=ریاست $3 میں $1 سے$2 سے جڑا ہوا
+open_cwd=موجودہ سر
+open_rtd=جڑ ڈیر
+open_txt=پروگرام کا کوڈ
+open_mem=مشترکہ لائبریری
+open_dir=ڈائرکٹری
+open_reg=باقاعدہ فائل
+open_chr=خاص کریکٹر
+open_blk=خصوصی بلاک
+open_size=فائل کا ناپ
+open_inode=انوڈ
+open_file=راہ
+
+trace_title=عمل ٹریس
+trace_start=$1 کے لئے سسٹم کال ٹریس شروع کررہا ہے ..
+trace_doing=$1 کے لئے سسٹم کال ٹریس :
+trace_done=.. عمل ختم ہوگیا ہے۔
+trace_failed=.. ٹریسنگ ناکام!
+trace_sorry=اس صفحے کو آپ کے براؤزر میں جاوا کی مدد کی ضرورت ہے۔ صرف عبارت پروسیسنگ ٹریس استعمال کرنے کے لئے ، ماڈیول کی ترتیب کو ایڈجسٹ کریں۔
+trace_syscalls=سسٹم کالز ٹریس کریں:
+trace_all=سب
+trace_sel=درج ..
+trace_change=بدلیں
+
+windows_threads=دھاگے جاری ہیں
+
+syslog_dmesg=دانا پیغامات

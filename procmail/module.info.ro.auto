@@ -1,0 +1,3 @@
+desc_ro=Procmail Mail Filter
+name_ro=procmail
+longdesc_ro=Editați rețete în fișierul global /etc/procmailrc , care se aplică tuturor e-mailurilor primite.

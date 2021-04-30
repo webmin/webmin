@@ -1,10 +1,9 @@
-__norefs=1
-left_feedback=Wy∂lij informacje zwrotne
-left_home=Informacje o systemie
 left_login=Login: $1
-left_logs=Wy∂wietl logi modu≥u
+left_home=Informacje o systemie
 left_oc=Sponsorowana przez OpenCountry
-left_others=Inne
-left_search=Wyszukaj:
-left_search_usermin=Wyszukaj w Usermin:
+left_feedback=Wy≈õlij informacje zwrotne
 left_search_webmin=Wyszukaj w Webmin:
+left_search_usermin=Wyszukaj w Usermin:
+left_search=Wyszukaj:
+left_logs=Wy≈õwietl logi modu≈Çu
+left_others=Inne

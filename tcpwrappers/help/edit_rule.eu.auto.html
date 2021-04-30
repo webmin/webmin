@@ -1,0 +1,71 @@
+<header> TCP Bilgarriak </header>
+<h3> ereduak </h3> Sarbide-kontrol hizkuntzak patroi hauek ezartzen ditu: <ul>
+    <li> &#39;&#39; &#39;Batekin hasten den katea. izaera. Ostalari izena datorren izenaren azken osagaiak zehaztutako patroiarekin bat datorrenean. Adibidez, &quot;.tue.nl&quot; eredua &quot;wzv.win.tue.nl&quot; ostalariaren izenarekin bat dator. </li>
+    <li> &#39;&#39; &#39;Batekin amaitzen den katea. izaera. Ostalari helbide bat datorren bere zenbakizko eremuak emandako katearekin bat datoz. Adibidez, &#39;131.155 eredua&#39;. Eindhoven Unibertsitateko sareko (ia 131.155.xx) helbide bakoitzarekin bat egiten du. </li>
+    <li> &#39;@&#39; Karaktere batekin hasten den katea NIS (lehen YP) sareko talde izenarekin tratatzen da. Ostalariaren izena datorren zehaztutako netgroup ostalaria bada. Netgroup partiduak ez dira onartzen demonio prozesuaren izenetarako edo bezeroen erabiltzaile izenetarako. </li>
+    <li> &#39;Nnnn / mmmm&#39; formaren adierazpena &#39;net/maskara&#39; bikote gisa interpretatzen da. IPv4 ostalariaren helbidea bat dator &quot;net&quot; bit eta AND helbidearen eta &quot;maskararen&quot; berdina bada. Adibidez, &#39;131.155.72.0/255.255.254.0&#39; sare / maskara eredua &#39;131.155.72.0&#39; barrutiko helbide guztiekin bat dator &#39;131.155.73.255&#39;. </li>
+    <li> &#39;[N: n: n: n: n: n: n: n] / m&#39; formaren adierazpena &#39;[net]/prefixlen&#39; bikote gisa interpretatzen da. IPv6 ostalariaren helbidea &#39;aurrizki&#39; &#39;net&#39; zatiak helbidearen &#39;aurrizki&#39; zatien parekoa bada. Adibidez, [net]/prefixlen eredua &#39;[3ffe: 505: 2: 1 ::]/64&#39; helbide guztiekin bat dator &#39;3ffe: 505: 2: 1:&#39; barrutian. bidez &#39;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&#39;. </li>
+    <li> &#39;/&#39; Karaktere batekin hasten den katea fitxategi izen gisa tratatzen da. Ostalariaren izena edo helbidea datorren fitxategian zerrendatutako ostalari-izen edo helbide-eredu batekin bat datorrenarekin bat dator. Fitxategiaren formatua zeroen lerro bat edo gehiago da, zuri-espazioak bereizten dituzten ostalari izen edo helbide patroiak dituzten zero edo gehiago. Fitxategi izenaren patroia ostalari izen bat edo helbide eredua erabil daiteke. </li>
+    <li> Komodinak &#39;*&#39; eta &#39;?&#39; ostalari edo IP helbideekin bat etor daiteke. Bat egiteko metodo hau ezin da &#39;net/maskara&#39; bat datorrenarekin bat egin, ostalariaren izenarekin bat datorrenarekin &#39;.&#39; edo IP helbidearekin bat dator &#39;.&#39; rekin amaituz. </li>
+</ul>
+<h3> komodinak </h3> Sarbide kontrol hizkuntzak komodina esplizituak onartzen ditu: <table border>
+    <tr>
+        <td> <b>ALL</b> </td>
+        <td> Wildcard unibertsala, beti dator. </td>
+    </tr>
+    <tr>
+        <td> <b>LOCAL</b> </td>
+        <td> Puntu baten karaktereik ez duen ostalari bat dator. </td>
+    </tr>
+    <tr>
+        <td> <b>EZEZAGUNA</b> </td>
+        <td> Bere izena ezezaguna den edozein erabiltzailek bat egiten du eta izen edo helbide ezezaguna duen edozein ostalari bat dator. Eredu hau kontu handiz erabili behar da: baliteke ostalariaren izenak ez izatea erabilgarri aldi baterako izenen zerbitzariaren arazoengatik. Sareko helbide bat ez da erabilgarri egongo softwarea zertaz hitz egin nahi duen. </td>
+    </tr>
+    <tr>
+        <td> <b>ezagutzen</b> </td>
+        <td> Izena ezagutzen duen edozein erabiltzailek bat egiten du eta izen eta helbide ezagunak dituen edozein ostalari bat dator. Eredu hau kontu handiz erabili behar da: baliteke ostalariaren izenak ez izatea erabilgarri aldi baterako izenen zerbitzariaren arazoengatik. Sareko helbide bat ez da erabilgarri egongo softwarea zertaz hitz egin nahi duen. </td>
+    </tr>
+    <tr>
+        <td> <b>Paranoid</b> </td>
+        <td> Izenak ez badu bere helbidearekin bat egiten duen edozein ostalari bat dator. -DPARANOID (modu lehenetsia) tcpd eraikitakoan, horrelako bezeroen eskaerak baztertzen ditu sarbide kontrol taulak begiratu aurretik. Eraiki -DPARANOID gabe horrelako eskaeren gaineko kontrol handiagoa nahi duzunean. </td>
+    </tr>
+</table>
+<h3> operadoreak </h3> <b>EXCEPT</b> Erabileraren asmoa forma hau da: &#39;zerrenda_1 EXCEPT zerrenda_2&#39;; eraikuntza honek zerrenda_1arekin bat datorrenarekin bat egiten du, zerrenda_2rekin bat egin ezean. EXCEPT operadorea daemon_lists eta bezero_listeetan erabil daiteke. Salbuespen operadorea habia egin daiteke: kontrol hizkuntzak parentesi artean erabiltzea ahalbidetuko balu, &quot;A SALBATU B salbuespen c&quot; bezala analizatuko litzateke (salbuespen bat (B salbu k). &quot; <h3> Maskorraren komandoak </h3> Lehendabizikoarekin bat datorren sarbide kontrolaren arauak shell komandoa badu, komando hau% <letter> ordezkapenak (ikus hurrengo atala). Emaitza /bin/sh haurren prozesu baten bidez lortzen da sarrera, irteera eta /dev/null konektatutako errore estandarrak. Zehaztu &#39;&amp;&#39; komandoaren amaieran itxaron nahi ez baduzu. <p> Shell komandoek ez dute inetd-aren PATH ezarpenean oinarritzen. Horren ordez, bide izen absolutuak erabili beharko lituzkete, edo PATH = what- ever adierazpenarekin hasi beharko lukete. <h3> % Hedapenak </h3> Honako hedapen hauek shell komandoen barruan daude erabilgarri: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> Bezeroa (zerbitzaria) ostalariaren helbidea. </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Bezeroari buruzko informazioa: erabiltzailea @ ostalaria, erabiltzailea @ helbidea, ostalariaren izena edo helbide soila, eskuragarri dagoen informazioaren arabera. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> Daemon prozesuaren izena (argv[0] balioa). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Bezeroa (zerbitzaria) ostalariaren izena edo helbidea, ostalariaren izena ez badago. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> Bezeroa (zerbitzaria) ostalariaren izena (edo &quot;ezezaguna&quot; edo &quot;paranoia&quot;). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> Daemon prozesuaren id. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Zerbitzariaren informazioa: daemon @ ostalaria, daemon @ helbidea edo daemon izena besterik ez dago, informazioa eskuragarri dagoen arabera. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Bezeroaren erabiltzaile izena (edo &quot;ezezaguna&quot;) </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> % &#39;Bakar batera zabaltzen da? izaera. </td>
+            </tr>
+        </table> Maskorra nahastu dezaketen%hedapenetako karaktereak azpimarragarriak dira.
+        <hr />

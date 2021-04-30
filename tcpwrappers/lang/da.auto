@@ -1,0 +1,33 @@
+index_title=TCP-indpakning
+index_return=indeks
+index_allowtitle=Tilladte værter
+index_denytitle=Nægtede værter
+index_norule=Der er endnu ikke defineret nogen regler i <tt>$1</tt>.
+index_nofile=Fil '$1' findes ikke - kontroller din <a href="/config.cgi?tcpwrappers">modulkonfiguration</a>
+index_add=Tilføj en ny regel.
+index_service=daemon
+index_hosts=værter
+index_cmd=Kommando
+index_delete=Slet valgt
+index_none=ingen
+
+edit_title1allow=Opret tilladt regel
+edit_title2allow=Rediger Tillad regel
+edit_title1deny=Opret afvisningsregel
+edit_title2deny=Rediger Afvis regel
+edit_eid=Denne regel blev ikke fundet
+edit_header=Regelindstillinger
+edit_service=Services
+edit_except=Undtagen tjenester
+edit_hosts=Fjernværter
+edit_hostsexcept=Undtagen værter
+edit_cmd=Shell-kommandoer
+edit_efound=Daemon '$1' blev ikke fundet i xinetd-konfiguration.
+
+save_errtitle=Fejl ved Gem-regel
+save_ehost=Værtsinput indeholder dårlige tegn
+save_ecmd=Kommandoinput indeholder dårlige tegn
+save_eservice=Daemon-navne indeholder dårlige tegn
+
+del_errtitle=Fejl ved sletning af regler
+del_enone=Ingen regler markeret for at slette

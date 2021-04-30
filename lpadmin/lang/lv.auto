@@ -1,0 +1,316 @@
+index_title=Printera administrēšana
+index_header=Pieejamie printeri
+index_name=Printeris
+index_desc=Apraksts
+index_to=Drukāt uz
+index_driver=Šoferis
+index_enabled=Iespējots?
+index_accepting=Piekrītat?
+index_jobs=Darbs
+index_none=Šajā sistēmā nav instalēts neviens printeris.
+index_list=Sarakstu ..
+index_jlist=Darbs ..
+index_jcount=$1 darbs ..
+index_add=Pievienojiet jaunu printeri.
+index_stop=Pietura plānotājs
+index_stopmsg=Noklikšķiniet uz šīs pogas, lai apturētu drukas plānotāja procesu. Tas neļaus vietējiem vai attāliem lietotājiem drukāt jūsu sistēmā.
+index_start=Sākt plānotāju
+index_startmsg=Noklikšķiniet uz šīs pogas, lai sāktu drukas plānotāja procesu. Tas vietējiem un attāliem lietotājiem ļaus drukāt jūsu sistēmā.
+index_restart=Restartējiet plānotāju
+index_restartmsg=Noklikšķiniet uz šīs pogas, lai restartētu drukas plānotāja procesu. Tas piespiedīs piemērot pašreizējo drukas konfigurāciju.
+index_return=printeru saraksts
+index_esystem=Vai nu instalējiet programmatūru izvēlētajai drukas sistēmai, vai arī izmantojiet <a href='$1'>moduļa konfigurāciju</a>, lai to mainītu.
+index_style=Drukas sistēma: $1 
+index_cluster=Klasteru serveri
+index_clusterdesc=Noklikšķiniet uz šīs pogas, lai iestatītu papildu Webmin serverus, kuros tiks izveidoti, atjaunināti un izdzēsti printeri.
+index_delete=Dzēst atlasītos printerus
+
+style_solaris=Solaris
+style_linux=Linux LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=CUPS
+style_irix=IRIX
+style_aix=AIX
+
+edit_eedit=Jums nav atļauts rediģēt šo printeri
+edit_eadd=Jums nav atļauts pievienot printerus
+edit_add=Izveidot printeri
+edit_edit=Rediģēt printeri
+edit_conf=Printera konfigurācija
+edit_name=Vārds
+edit_acc=Vai pieņemat pieprasījumus?
+edit_why=Nē - kāpēc gan nē
+edit_desc=Apraksts
+edit_ena=Drukāšana ir iespējota?
+edit_acl=Piekļuves kontrole
+edit_allow=Ļauj visiem
+edit_deny=Visu noliegt
+edit_allowu=Atļaut uzskaitītajiem lietotājiem ..
+edit_denyu=Noraidīt uzskaitītos lietotājus ..
+edit_banner=Drukāt reklāmkarogu?
+edit_opt=Neobligāti
+edit_default=Noklusējuma printeris?
+edit_already=Jau noklusējuma printeris
+edit_max=Maksimālais drukas darba izmērs
+edit_unlimited=Neierobežots
+edit_dacc=Šoferis pieņem
+edit_dtext=Teksts
+edit_dpost=Postscript
+edit_dother=Cits
+edit_alt=Alternatīvi printeru nosaukumi
+edit_dest=Drukāt galamērķi
+edit_dev=Vietējā ierīce
+edit_file=Vietējais fails
+edit_remote=Attālais Unix serveris
+edit_rqueue=Printeris
+edit_type=Veids
+edit_smb=Attālais Windows serveris
+edit_share=Printeris
+edit_user=Lietotājs
+edit_pass=Parole
+edit_wgroup=Darba grupa
+edit_hpnp=Attālais HPNP serveris
+edit_port=Osta
+edit_direct=Tiešais TCP savienojums
+edit_dport=Osta
+edit_driver=Printera draiveris
+edit_check=Pārbaudiet, vai attālais serveris nav izveidots?
+
+blocks=bloki
+
+save_err=Neizdevās saglabāt printeri
+save_eadd=Jums nav atļauts pievienot printerus
+save_eedit=Jums nav atļauts rediģēt šo printeri
+save_ename='$1' nav derīgs printera nosaukums
+save_edup=Printeris ar nosaukumu '$1' jau pastāv
+save_eallow=Neviens lietotājs nedrīkst atļaut ievadīt
+save_edeny=Neviens lietotājs, kuru liedzat, nav ienācis
+save_euser=Lietotājs '$1' neeksistē
+save_etype=Jums ir jāizvēlas vismaz viens tips, kuru šis draiveris pieņem
+save_emax=Maksimālajam drukas darba lielumam jābūt skaitlim
+save_efile='$1' nepastāv
+save_erhost=Attālā resursdatora '$1' nav
+save_erport=Attālais ports '$1' nav derīgs
+save_erqueue='$1' nav derīgs attālās rindas nosaukums
+save_eremote=Draiverus nevar izmantot ar attāliem Unix printeriem
+save_edhost=Tiešā resursdatora “$1” nav
+save_edport=Trūkst vai nav derīga tiešā osta
+save_evalid=Drukas sistēma neatļāva šo printeri
+save_errslave=Printeris šajā sistēmā izveidoja labu, bet klasteru sistēmās radās šādas kļūdas : $1 
+save_egone=Neviens printeris ar nosaukumu '$1' netika atrasts
+save_errdelslave=Printeris šajā sistēmā ir izdzēsis labi, bet klasteru sistēmās radās šādas kļūdas : $1 
+
+jobs_title=Drukas darbi
+jobs_header=Drukas darbi uz $1 
+jobs_id=Darba ID
+jobs_size=Izmērs
+jobs_by=Iesniedzis
+jobs_when=Iesniegts plkst
+jobs_file=Faila nosaukums
+jobs_cancel=Lai atceltu, augšējā sarakstā noklikšķiniet uz darba ID.
+jobs_cancelview=Augšējā sarakstā noklikšķiniet uz darba ID, lai atceltu, vai noklikšķiniet uz darba lieluma, lai to apskatītu.
+jobs_none=Printerim $1 nav neapstiprinātu darbu.
+jobs_all=Atcelt visus drukas darbus
+jobs_bytes=baiti
+jobs_test=Drukāt testa lapu
+jobs_cancelsel=Atcelt atlasītos darbus
+jobs_on=Uz printera $1 
+jobs_return=drukas darbu saraksts
+
+cancel_ecannot=Jums nav atļauts atcelt drukas darbus
+cancel_err=Neizdevās atcelt drukas darbu
+cancel_egone=Drukas darbs $1 vairs nepastāv
+
+view_ecannot=Šo drukas darbu nevar apskatīt
+view_egone=Šis drukas darbs vairs nepastāv
+
+start_ecannot=Jums nav atļauts sākt plānotāju
+start_err=Neizdevās sākt plānotāju
+
+stop_ecannot=Jums nav atļauts apturēt plānotāju
+stop_err=Neizdevās apturēt plānotāju
+
+restart_ecannot=Jums nav atļauts restartēt plānotāju
+restart_err=Neizdevās restartēt plānotāju
+
+webmin_none=Nav
+webmin_nonemsg=Postscript vai teksta printeris
+webmin_remotemsg=Attālais printeris
+webmin_model=Modelis
+webmin_prog=Programma
+webmin_driver=Webmin draiveris
+webmin_uniprint=Uniprint draiveris
+webmin_edrivers=Neizdevās iegūt draiverus no $1. Webmin printera draiveri, kas izmanto ghostscript, nav pieejami
+webmin_egs=Komanda $1 netika atrasta. Webmin printera draiveri, kas izmanto ghostscript, nav pieejami
+webmin_edriver='$1' nepastāv
+
+caldera_none=Nav
+caldera_nonemsg=Attāls vai neapstrādāts printeris
+caldera_prog=Programma
+caldera_coas=COAS vadītājs
+caldera_printer=Printeris un izšķirtspēja
+caldera_eof=Sūtīt EOF?
+caldera_paper=Papīra izmērs
+caldera_double=Drukāt divpusēji?
+caldera_gsopts=Papildu GS iespējas
+caldera_uniprint=Uniprint draiveris
+caldera_eprog='$1' nepastāv
+caldera_edriver=Nav atlasīts printera draiveris
+caldera_eres=Nav atlasīta izšķirtspēja
+
+redhat_none=Nav
+redhat_nonemsg=Postscript vai teksta printeris
+redhat_prog=Programma
+redhat_driver=Redhat vadītājs
+redhat_printer=Printeris un izšķirtspēja
+redhat_eof=Sūtīt EOF?
+redhat_paper=Papīra izmērs
+redhat_pages=Lapas vienā izvades lapā
+redhat_gsopts=Papildu GS iespējas
+redhat_hmargin=Labās/kreisās malas
+redhat_vmargin=Augšējā/apakšējā mala
+redhat_crlf=Vai noteikt kāpņu pakāpienu tekstu?
+redhat_eprog='$1' nepastāv
+redhat_edriver=Nav atlasīts printera draiveris
+redhat_ehmargin=Trūkst vai nav derīga labā/kreisā mala
+redhat_evmargin=Trūkst vai nav derīga augšējā/apakšējā mala
+redhat_eres=Nav atlasīta izšķirtspēja
+redhat_printer2=Printera modelis un draiveris
+
+suse_none=Nav
+suse_nonemsg=Postscript vai teksta printeris
+suse_prog=Programma
+suse_driver=APSfiltra draiveris
+suse_printer=Printera tips
+suse_res=Izšķirtspēja DPI
+suse_colour=Krāsu printeris?
+suse_paper=Papīra izmērs
+suse_method=Filtrēšanas metode
+suse_auto=Automātiska
+suse_ascii=ASCII
+suse_raw=Neapstrādāts
+suse_extra=Papildus iespējas ghostscript
+suse_yast2=YAST2 draiveris
+suse_edriver=Nav izvēlēts printera tips
+suse_eres=Trūkst vai nav derīga izšķirtspēja
+
+estop=Neizdevās apturēt lpd : $1 
+
+acl_printers=Printeri, kurus šis lietotājs var konfigurēt
+acl_add=Vai var pievienot jaunus printerus?
+acl_cancel=Vai var atcelt drukas darbus?
+acl_stop=Vai var apstāties vai sākt plānotāju?
+acl_restart=Restartēt tikai
+acl_listed=Tikai uz izvēlētajiem printeriem ..
+acl_pall=Visi printeri
+acl_psel=Atlasīts ..
+acl_view=Rādīt nekonfigurējamus printerus?
+acl_test=Vai var izdrukāt testa lapas?
+acl_user=Pārvaldiet drukas darbus, kas pieder
+acl_user_all=Visi lietotāji
+acl_user_this=Pašreizējais Webmin lietotājs
+acl_delete=Vai var izdzēst printerus?
+acl_cluster=Vai var pārvaldīt printera kopu?
+
+log_stop=Apstādināts drukas plānotājs
+log_start=Sācis drukas plānotāju
+log_restart=Restartēts drukas plānotājs
+log_cancel_job=Atcelts drukas darbs $2 uz $1 
+log_cancel_all=Atcelti visi drukas darbi $1 
+log_cancel_sel=Atcelti $2 drukas darbi uz $1 
+log_create=Izveidots printeris $1 $2 
+log_modify=Modificēts printeris $1 uz $2 
+log_delete=Izdzēsts printeris $1 $2 
+log_create_l=Izveidots $3 printeris $1 $2 
+log_modify_l=Modificēts $3 printeris $1 uz $2 
+log_delete_l=Izdzēsts $3 printeris $1 no $2 
+
+linux_paralel=Paralēlais ports $1 
+linux_serial=Sērijas ports $1 (COM $1)
+linux_null=Nulle ierīce
+linux_usb=USB printeris $1 
+linux_ecmd=Komanda $1 jūsu sistēmā netika atrasta, un tas norāda, ka Linux drukas sistēma nav instalēta.
+linux_espool=Spoles direktorijs $1 jūsu sistēmā neeksistē, un tas norāda, ka Linux drukas sistēma nav instalēta.
+
+freebsd_paralel=Paralēlā osta
+freebsd_serial=Sērijas ports $1 (COM $1)
+freebsd_ecmd=Komanda $1 jūsu sistēmā netika atrasta, un tas norāda, ka FreeBSD drukas sistēma nav instalēta.
+freebsd_espool=Spoles direktorijs $1 jūsu sistēmā neeksistē, kas norāda, ka FreeBSD drukas sistēma nav instalēta.
+
+openbsd_paralel=Paralēlā osta
+openbsd_serial=Sērijas ports $1 (COM $1)
+
+unixware_paralel=Paralēlais ports $1 
+unixware_serial=Sērijas osta $1 
+unixware_null=Nulle ierīce
+unixware_ecmd=Komanda $1 jūsu sistēmā netika atrasta, un tas norāda, ka UnixWare drukas sistēma nav instalēta.
+
+hpux_paralel=Paralēli $1 
+hpux_serial=Sērija $1 
+hpux_null=Nulle ierīce
+hpux_ecmd=Komanda $1 jūsu sistēmā netika atrasta, un tas norāda, ka HPUX drukas sistēma nav instalēta.
+hpux_eiface=Saskarnes skriptu direktorijs $1 jūsu sistēmā neeksistē, kas norāda, ka HPUX drukas sistēma nav instalēta.
+
+lprng_paralel=Paralēlais ports $1 
+lprng_serial=Sērijas ports $1 (COM $1)
+lprng_null=Nulle ierīce
+lprng_ecmd=Komanda $1 jūsu sistēmā netika atrasta, un tas norāda, ka LPRng drukas sistēma nav instalēta.
+lprng_espool=Spoles direktorija $1 jūsu sistēmā neeksistē, un tas norāda, ka LPRng drukas sistēma nav instalēta.
+
+solaris_paralel=Paralēlā osta
+solaris_uparalel=Ultra 5/10 paralēlais ports
+solaris_serial=Sērijas osta $1 
+solaris_null=Nulle ierīce
+solaris_ecmd=Komanda $1 jūsu sistēmā netika atrasta, un tas norāda, ka Solaris drukas sistēma nav instalēta.
+
+test_title=Drukāt testa lapu
+test_ecannot=Jums nav atļauts drukāt testa lapas
+test_desc=Šī forma ļauj izdrukāt printera $1 testa lapu. Atlasiet drukājamās lapas veidu :
+test_0=Melnbalta Postscript lapa
+test_1=Krāsainā Postscript lapa
+test_2=Vienkāršs ASCII teksts
+test_3=Jebkurš augšupielādēts fails
+test_print=Izdrukāt lapu
+test_exec=Testa lapas drukāšana ar komandu $1.
+test_failed=.. komanda neizdevās!
+test_ok=.. komanda pabeigta.
+
+cups_none=Nav
+cups_nonemsg=Attāls vai neapstrādāts printeris
+cups_prog=Programma
+cups_driver=CUPS draiveris
+cups_eprog='$1' nav derīga programma
+cups_opts=$1 opcijas
+cups_ecmd=Komanda $1 jūsu sistēmā netika atrasta, un tas norāda, ka CUPS drukas sistēma nav instalēta.
+
+irix_ecmd=Komanda $1 jūsu sistēmā netika atrasta, un tas norāda, ka IRIX drukas sistēma nav instalēta.
+irix_eiface=Saskarnes skriptu direktorijs $1 jūsu sistēmā nepastāv. Tas norāda, ka IRIX drukas sistēma nav instalēta.
+
+aix_port=Printera ports $1 
+aix_edesc=Nederīgs apraksts - atļauti tikai burti un cipari, bez atstarpēm
+aix_ecmd=AIX printera serveris $1 netika atrasts. Varbūt tas nav instalēts, vai tiek izmantota cita drukas sistēma.
+
+cluster_title=Kopu printera serveri
+cluster_none=Printeru klasterim vēl nav pievienoti serveri.
+cluster_host=Resursdatora nosaukums
+cluster_desc=Apraksts
+cluster_os=Operētājsistēma
+cluster_add=Pievienot serveri
+cluster_gadd=Pievienojiet serverus grupai
+cluster_need=Webmin serveru indeksa modulī jāpievieno serveri ar pieteikumvārdu un paroli, pirms tos šeit var pārvaldīt.
+cluster_return=klasteru serveri
+cluster_delete=Noņemt atlasīto
+cluster_ecannot=Jums nav atļauts pārvaldīt kopu printera serverus
+
+add_title=Pievienot serverus
+add_msg=Notiek $1 pievienošana.
+add_gmsg=Serveru pievienošana grupā $1.
+add_err=Neizdevās pievienot serveri
+add_gerr=Neizdevās pievienot grupu
+add_echeck=Serverim $1 nav printera administrēšanas moduļa
+add_ediff=Serveris $1 šim serverim izmanto citu drukas sistēmu ($2)
+add_ediff2=Serveris $1 šim serverim izmanto citu drukas draiveri ($2)
+add_ok=Pievienots $1 ar $2 printeriem.

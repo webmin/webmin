@@ -9,7 +9,7 @@ $mdir = &messages_dir(\@conf);
 @del = split(/\0/, $in{'del'});
 $index = &messages_index(\@conf);
 &lock_file($index);
-open(INDEX, $index);
+open(INDEX, "<$index");
 @index = map { chomp; $_ } <INDEX>;
 close(INDEX);
 if (!@index) {

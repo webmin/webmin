@@ -1,0 +1,39 @@
+index_title=NFS-export
+index_add=Lägg till en ny NFS-export
+index_dir=Directory
+index_hosts=Tillåtna värdar
+index_all=Alla värdar
+index_none=Ingen NFS-export har definierats än.
+index_apply=Använd konfigurering
+index_applydesc=Klicka på den här knappen för att aktivera all export som anges ovan med deras konfigurerade alternativ.
+index_return=exportlista
+
+edit_title1=Skapa export
+edit_title2=Redigera Export
+edit_header=Exportera detaljer
+edit_dir=Katalog som ska exporteras
+edit_hosts=Exportera till värdar/netgrupper
+edit_ro=Skrivskyddad?
+edit_wsync=Synkronisera efter skrivningar?
+edit_anon=Rotanvändarbehörigheter
+edit_anon1=Standard (behandla som <tt>ingen</tt>)
+edit_anon2=Neka åtkomst
+edit_anon0=Behandla som användare
+edit_rw=Läs/skrivåtkomst
+edit_root=Rotfilåtkomst
+edit_access=Montera åtkomst
+edit_all=Alla värdar
+edit_sel=Listade värdar ..
+edit_none=Inga värdar
+
+save_err=Det gick inte att spara export
+save_edir=Katalog saknas eller inte finns att exportera
+save_eanon=Saknad eller ogiltig rotanvändare
+save_erw=Inga läs- och skrivvärdar har angetts
+save_eroot=Inga värd för rootfilåtkomst har angivits
+save_eaccess=Inga monteringsvärdar angivna
+
+log_create_export=Skapat export av $1 
+log_delete_export=Raderad export av $1 
+log_modify_export=Ändrad export av $1 
+log_apply=Tillämpad konfiguration

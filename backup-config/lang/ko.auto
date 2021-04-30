@@ -1,0 +1,15 @@
+index_test=무엇이 복원 될지 보여주세요.
+
+edit_header2=사전 및 사후 백업 명령
+edit_header3=백업 일정
+edit_other2=복원 할 다른 파일
+edit_pre=사전 백업 명령
+edit_post=백업 후 명령
+
+restore_emods=선택된 모듈 또는 다른 파일이 없습니다
+restore_testing=$1 에서 백업 내용 추출 중 ..
+restore_done2=.. 백업 파일은 다음과 같습니다.
+
+email_pre=사전 백업 명령 $1 실행 중 ..
+email_post=백업 후 명령 $1 실행 중 ..
+email_prefailed=사전 백업 명령이 실패했습니다!

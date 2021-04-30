@@ -1,0 +1,103 @@
+index_title=LDAP-gebruikers en groepe
+index_ebase=Geen LDAP-kliënt se konfigurasielêer is op u stelsel gevind nie, dus die gebruiker- en groepbasis moet op die <a href='$1'>modulekonfig</a> -bladsy gestel word.
+index_eperl=Die $1 Perl-module wat hierdie module benodig, is nie geïnstalleer nie of werk nie behoorlik nie. <a href='$2'>Klik hier</a> om dit nou af te laai en te installeer.
+index_eperl2=Die fout wat Perl gerapporteer het toe hy die module probeer laai, was :
+index_eldap=$1. Klik hier om die <a href='$2'>module-opstelling</a> aan te pas.
+index_eschema=Webmin het aan die LDAP-bediener gekoppel, maar kon nie die skema gaan haal nie. Maak seker dat toegang nie geweier is in die <a href='$1'>LDAP Server</a> module nie.
+index_eimap=$1. Miskien is u <a href='$2'>module-opstelling</a> verkeerd.
+index_emd5=Hierdie module is <a href='$1'>opgestel</a> om MD5-kodering vir wagwoorde te gebruik, maar die $2 Perl-module is nie geïnstalleer nie. <a href='$3'>Klik hier</a> om die $2 -module af te laai en te laat installeer.
+index_eslappasswd=Hierdie module is <a href='$1'>opgestel</a> om LDAP MD5-kodering vir wagwoorde te gebruik, maar die program <tt>$2</tt> wat gebruik word om die wagwoord te versleutel, is nie geïnstalleer nie.
+index_eusearch=Kon nie gebruikers onder $1 : $2 soek nie
+index_uadd=Voeg 'n nuwe LDAP-gebruiker by.
+index_gadd=Voeg 'n nuwe LDAP-groep by.
+index_unone=Geen LDAP-gebruikers is onder $1 gevind nie.
+index_gnone=Geen LDAP-groepe is onder $1 gevind nie.
+index_return=gebruikerslys
+index_greturn=groeplys
+index_egsearch=Kon nie groepe onder $1 : $2 soek nie
+index_samba=Samba?
+index_cyrus=IMAP?
+index_users=LDAP-gebruikers
+index_groups=LDAP-groepe
+
+imap_econn=Kon nie aan die IMAP-bediener $1 koppel nie
+imap_elogin=Kon nie by IMAP-bediener $1 aanmeld as $2 : $3 nie
+conn_eldap_host=Geen LDAP-kliënt se konfigurasielêer is op u stelsel gevind nie, dus moet die LDAP-bediener op die Module-konfigurasie-bladsy ingestel word
+conn_elogin=Geen LDAP-kliënt se konfigurasielêer is op u stelsel gevind nie, dus moet die LDAP-aanmelding op die Module Config-bladsy ingestel word
+conn_efile_open=Kon nie die LDAP-bindbewyslêer oopmaak nie:
+
+uedit_cap=Gebruiker vermoëns
+uedit_samba=Samba-aanmelding?
+uedit_cyrus=IMAP-bedieneraanmelding?
+uedit_dn=Gebruiker se LDAP DN
+uedit_classes=LDAP-objekklasse
+uedit_alias=Pos aliasse
+uedit_fields=Bykomende LDAP-velde
+uedit_firstname=Eerste naam
+uedit_lastname=Van
+uedit_raw=LDAP-eienskappe
+uedit_return=gebruikersbesonderhede
+uedit_quota=IMAP-kwota
+uedit_unquota=Moenie verander nie
+uedit_sambapassopts=Samba wagwoordopsies
+uedit_sambapwdlastset=Laaste wagwoordopdatering
+uedit_sambapwdcanchange=Wagwoord kan verander
+uedit_sambabadpasswordcount=Slegte wagwoordtelling
+uedit_sambaacctflags=Rekeningvlae
+
+usave_eadd=Kon nie gebruiker by die LDAP-databasis voeg nie : $1 
+usave_emod=Kon nie gebruiker in LDAP-databasis verander nie : $1 
+usave_emoddn=Kon nie die gebruiker in LDAP-databasis hernoem nie : $1 
+usave_egroupmod=Kon nie groep $1 in LDAP-databasis verander nie : $2 
+usave_edelete=Kon nie gebruiker uit die LDAP-databasis verwyder nie : $1 
+usave_eicreate=Kon nie gebruiker skep nie
+usave_eiacl=Kon nie regte aan admin gee nie
+usave_eimap=Die gebruiker is suksesvol in die LDAP-databasis gestoor, maar 'n IMAP-fout het voorgekom: $1 : $2 
+usave_eisub=Kon nie die gebruiker op die gids $1 inteken nie
+usave_eiquota=Kon nie IMAP-kwota instel nie
+usave_eifolder=Kon nie map $1 skep nie
+usave_eilogin=Kon nie as nuwe gebruiker aanmeld nie
+usave_ecyruspass=Die normale wagwoord van die gebruiker moet ingevoer word of die opsie Geen wagwoord benodig word gekies wanneer IMAP geaktiveer word nie.
+usave_ebook=Kon nie adresboekinskrywing skep nie : $1 
+usave_emodbook=Kon nie adresboekinskrywing verander nie : $1 
+usave_emodbookdn=Kon nie die adresboekinskrywing hernoem nie : $1 
+usave_egone=Gebruiker bestaan nie meer nie!
+usave_ex86=Hierdie module kan nie gebruik word om die wagwoord vir 'n Samba-gebruiker op nie-Intel-stelsels in te stel nie, want dit hang af van 'n saamgestelde x86-program.
+usave_esamba=Hierdie module kan nie gebruik word om die wagwoord vir 'n Samba-gebruiker in te stel nie, aangesien die Samba Windows File Sharing-module nie geïnstalleer is nie.
+usave_ealiasdup=Die alias $1 word reeds deur $2 gebruik
+usave_eattrdup=Die voorwerp $1 gebruik reeds die $2 $3 
+usave_eattrdupu=Die gebruiker $1 gebruik reeds die $2 $3 
+usave_eattrdupg=Die groep $1 gebruik reeds die $2 $3 
+usave_ereal=Regte naam ontbreek
+usave_equota=IMAP-kwota ontbreek of ongeldig
+
+search_err=Soek vir $1 onder $2 het misluk : $3 
+
+gedit_dn=Groep se LDAP DN
+gedit_return=groepbesonderhede
+gedit_cap=Groep vermoëns
+gedit_samba=Samba groep?
+
+gsave_egone=Groep bestaan nie meer nie!
+gsave_edelete=Kon nie groep uit LDAP-databasis uitvee nie : $1 
+gsave_eadd=Kon nie groep by die LDAP-databasis voeg nie : $1 
+gsave_emod=Kon nie die groep in LDAP-databasis verander nie : $1 
+gsave_emoddn=Kon nie groep hernoem in LDAP-databasis nie : $1 
+
+gdel_group=Vee LDAP-groepinskrywing uit.
+
+udel_pass=Vee LDAP-gebruikersinskrywing uit.
+udel_book=Vee uit adresboek uit ..
+udel_imap=Vee IMAP-lêergids uit ..
+udel_warnimap=Die bestaande posbus sal uitgevee word as u die tuisgids uitvee!
+udel_failed=.. misluk!  : $1 
+
+raw_title=LDAP-eienskappe
+raw_name=Kenmerknaam
+raw_value=waardes
+raw_for=Vir $1 
+
+batch_samba=Skep Samba-rekening vir nuwe gebruikers?
+batch_imap=Skep IMAP-rekening vir nuwe gebruikers?
+batch_descafter3=In <b>skep</b> en <b>reëls</b> verander, kan u opsioneel ekstra velde byvoeg wat LDAP-attribute bevat in <i>naam</i> = <i>waarde</i> -formaat, om word aan die nuwe of gewysigde gebruikers opgedra.
+batch_eattr=Ongeldige LDAP-attribuut op lyn $1 : $2 

@@ -1,0 +1,3 @@
+name_ca=Inittab
+desc_ca=Arrencada inicial del sistema
+longdesc_ca=Configureu els serveis de baix nivell perquè s’executin al moment d’arrencada i seleccioneu el nivell d’execució inicial.

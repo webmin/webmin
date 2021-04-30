@@ -1,0 +1,28 @@
+index_enis2=Використовуватимуть лише функцію обслуговування клієнтів цього модуля.
+
+client_enis=Схоже, на вашому пристрої не встановлена клієнтська підтримка NIS.
+
+switch_srcs=Джерела даних
+switch_return=послуги клієнтів
+
+security_domain=Домен NIS
+
+eswitch_title=Служба редагування
+eswitch_egone=Сервіс не існує!
+eswitch_header=Інформація про службу
+eswitch_name=Назва послуги
+eswitch_0=Перше джерело даних
+eswitch_1=Друге джерело даних
+eswitch_2=Третє джерело даних
+eswitch_3=Четверте джерело даних
+eswitch_4=П'яте джерело даних
+eswitch_nth=Джерело даних $1 
+eswitch_success=На успіх
+eswitch_notfound=Якщо не знайдено
+eswitch_unavail=Якщо немає
+eswitch_tryagain=тимчасово недоступний
+eswitch_return=Повернення результату
+eswitch_continue=Продовжуйте пошук
+eswitch_none=Жоден
+eswitch_err=Не вдалося зберегти послугу
+eswitch_enone=Не вибрано джерел!

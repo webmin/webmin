@@ -1,0 +1,8 @@
+inittab_kbrequest=Combinación de teclas especial
+index_delete=Eliminar procesos seleccionados
+inittab_none2=No se encontraron procesos de arranque en su sistema. Esto probablemente indica que no utiliza el archivo de configuración de inicio de SysV.
+
+log_deletes=$1 procesos de inicio eliminados
+
+delete_err=Error al eliminar procesos
+delete_enone=Ninguna seleccionada

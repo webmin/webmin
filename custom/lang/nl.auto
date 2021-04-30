@@ -1,0 +1,6 @@
+edit_format4=Download indien mogelijk
+
+save_eopts=Ontbrekend optiebestand voor parameter $1 
+save_eopts2=Het optiebestand of de standaardwaarde voor parameter $1 mag niet bevatten :
+
+run_failed=Opdracht mislukt met afsluitstatus $1 

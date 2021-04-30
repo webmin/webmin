@@ -1,0 +1,116 @@
+index_title=FirewallD
+index_atboot=Membolehkan firewall pada masa boot?
+index_bootup=Aktifkan pada boot
+index_bootupdesc=Ubah pilihan ini untuk mengawal sama ada firewall anda diaktifkan pada waktu boot atau tidak.
+index_apply=Terapkan Konfigurasi
+index_applydesc=Klik butang ini untuk membuat konfigurasi firewall disenaraikan di atas aktif. Peraturan firewall mana-mana yang berkuat kuasa pada masa ini akan dibuang dan diganti
+index_restart=Terapkan Konfigurasi
+index_restartdesc=Aktifkan semua perkhidmatan dan pelabuhan yang dibenarkan di atas, dalam semua zon. Sebarang peraturan aktif yang tidak dibuat secara kekal akan diganti.
+index_start=Mula FirewallD
+index_startdesc=Mulakan pelayan FirewallD dan gunakan peraturan yang disenaraikan di atas.
+index_stop=Hentikan FirewallD
+index_stopdesc=Matikan pelayan FirewallD dan keluarkan semua peraturan yang disenaraikan di atas.
+index_cerr=Modul FirewallD tidak boleh digunakan : $1 
+index_zone=Tunjukkan peraturan dalam zon:
+index_zoneok=Ubah
+index_zoneadd=Tambah zon ..
+index_zonedel=Padamkan Zon
+index_zonedef=Buat yang asal
+index_type=Jenis peraturan
+index_port=Pelabuhan atau perkhidmatan
+index_proto=Protokol
+index_tservice=Perkhidmatan
+index_tport=Pelabuhan
+index_tforward=Teruskan
+index_padd=Tambah pelabuhan yang dibenarkan.
+index_sadd=Tambah perkhidmatan yang dibenarkan.
+index_fadd=Tambah pelabuhan ke hadapan.
+index_delete=Padam Peraturan Terpilih
+index_return=senarai zon
+index_ezones=Tiada Zon FirewallD dijumpai!
+index_none=Zon ini tidak mempunyai sebarang pelabuhan atau perkhidmatan yang dibenarkan.
+index_ifaces=Memohon peraturan untuk antara muka:
+
+port_edit=Edit Port
+port_create=Tambah Pelabuhan
+port_header=Pilihan pelabuhan yang dibenarkan
+port_zone=Dibenarkan dalam zon
+port_port=Pelabuhan untuk membenarkan
+port_mode0=Pelabuhan tunggal
+port_mode1=Julat pelabuhan
+port_mode2=Sama seperti pelabuhan asal
+port_proto=Protokol rangkaian
+port_ezone=Zon tidak wujud!
+port_err=Gagal menyimpan port
+port_eport=Nombor atau nama port yang hilang atau tidak sah
+port_eportlow=Port rendah mestilah nombor
+port_eporthigh=Pelabuhan tinggi mestilah nombor
+port_eportrange=Pelabuhan rendah mestilah di bawah pelabuhan yang tinggi
+
+serv_edit=Edit Perkhidmatan
+serv_create=Tambah Perkhidmatan
+serv_header=Pilihan perkhidmatan yang dibenarkan
+serv_name=Perkhidmatan untuk membenarkan
+serv_err=Gagal menyimpan perkhidmatan
+
+forward_edit=Edit Forward
+forward_create=Buat Hadapan
+forward_header=Pilihan pemajuan pelabuhan
+forward_zone=Teruskan untuk zon
+forward_err=Gagal menyimpan ke hadapan
+forward_port=Pelabuhan sumber
+forward_dstport=Pelabuhan desintasi
+forward_dstaddr=Alamat destinasi
+forward_dstlocal=Sistem ini
+forward_edstaddr=Alamat destinasi IPv4 tidak sah
+forward_eneither=Sama ada alamat atau port destinasi atau kedua-duanya mesti dimasukkan
+
+check_ecmd=Perintah kawalan FirewallD $1 tidak dijumpai pada sistem anda
+
+delete_err=Gagal memadamkan peraturan
+delete_enone=Tiada pilihan!
+delete_edel=Pembuangan fail $1 : $2 
+
+zone_title=Buat Zon
+zone_header=Pilihan zon baru
+zone_name=Nama zon
+zone_mode=Pelabuhan dan perkhidmatan yang dibenarkan
+zone_mode0=Tidak ada (semua lalu lintas akan disekat)
+zone_mode1=Salin dari zon
+zone_mode2=SSH, IDENT dan Webmin sahaja
+zone_mode3=SSH, IDENT, Webmin dan pelabuhan tinggi
+zone_mode4=Pelabuhan yang digunakan untuk hosting maya
+zone_err=Gagal mencipta zon
+zone_ename=Nama zon kosong atau tidak sah
+zone_eclash=Zon dengan nama yang sama sudah wujud
+
+delzone_title=Padamkan Zon
+delzone_err=Gagal memadam zon
+delzone_edefault=Zon lalai tidak boleh dialih keluar
+delzone_rusure=Adakah anda pasti mahu memadamkan zon $1, yang mengandungi $2 port dan perkhidmatan $3 ?
+
+defzone_err=Gagal menjadikan zon lalai
+
+restart_err=Gagal menggunakan konfigurasi
+
+stop_err=Gagal menghentikan FirewallD
+start_err=Gagal memulakan FirewallD
+log_stop=Berhenti FirewallD
+log_start=Memulakan FirewallD
+log_restart=Terpakai FirewallD konfigurasi
+log_bootup=Dihidupkan FirewallD pada boot
+log_bootdown=Disable FirewallD pada boot
+log_create_port=Menambah pelabuhan yang dibenarkan $1 
+log_delete_port=Dikeluarkan pelabuhan yang dibenarkan $1 
+log_update_port=Port dibenarkan yang dikemas kini $1 
+log_create_serv=Ditambah perkhidmatan yang dibenarkan $1 
+log_delete_serv=Perkhidmatan yang dibenarkan dikeluarkan $1 
+log_update_serv=Perkhidmatan yang dibenarkan dikemas kini $1 
+log_create_forward=Menambah ke hadapan $1 
+log_delete_forward=Dikeluarkan ke hadapan $1 
+log_update_forward=Dikemaskini ke hadapan $1 
+log_delete_rules=Dikeluarkan $1 dibenarkan pelabuhan
+log_ifaces_zone=Antara muka yang dikemas kini untuk zon $1 
+log_create_zone=Zon yang dibuat $1 
+log_delete_zone=Zon dipadamkan $1 
+log_default_zone=Zon dibuat $1 default

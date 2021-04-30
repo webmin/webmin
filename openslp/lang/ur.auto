@@ -1,0 +1,50 @@
+index_title=اوپن ایس ایل پی کنفیگریشن
+index_return=اوپن ایس ایل پی کی تشکیل
+index_eslpd=The OpenSLP daemon $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_econf=The OpenSLP configuration file $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_version=اوپن ایس ایل پی ورژن$1
+
+slp_apply=تبدیلیوں کا اطلاق کریں
+slp_stop=اوپن ایس ایل پی بند کرو
+
+snda_title=جامد دائرہ کار اور ڈی اے
+snda_useScopes=دائرہ کار کی مستحکم فہرست
+snda_DAAddresses=ڈائرکٹری ایجنٹوں کی مستحکم فہرست (DA)
+
+netcfg_title=نیٹ ورک کی تشکیل
+netcfg_isBroadcastOnly=ملٹی کاسٹ کے بجائے براڈکاسٹنگ کو استعمال کرنے پر مجبور کریں
+netcfg_passiveDADetection=غیر فعال ڈی اے کی شناخت کا استعمال کریں
+netcfg_activeDADetection=فعال DA پتہ لگانے کا استعمال کریں (صرف DHCP یا DA پتوں تک محدود)
+netcfg_DAActiveDiscoveryInterval=سیکنڈ میں فعال دریافت (0 فعال ڈسکوری کو غیر فعال)
+netcfg_multicastTTL=ملٹی کاسٹ ٹی ٹی ایل (0-255)
+netcfg_DADiscoveryMaximumWait=ڈی اے کی دریافت درخواستوں کے لئے زیادہ سے زیادہ انتظار کا وقت (ملی سیکنڈ میں)
+netcfg_DADiscoveryTimeouts=DA کی دریافت کے انتظار کے اوقات (ملی سیکنڈ میں)
+netcfg_HintsFile=اوپن ایس ایل پی اشارے فائل کا راستہ
+netcfg_multicastMaximumWait=ملٹی کاسٹ درخواستوں پر زیادہ سے زیادہ انتظار کریں (ملی سیکنڈ میں)
+netcfg_multicastTimeouts=لگاتار ملٹی کاسٹ انتظار کے اوقات (ملی سیکنڈ میں)
+netcfg_unicastMaximumWait=یونیکسٹ درخواستوں کے مابین زیادہ سے زیادہ وقت (ملی سیکنڈ میں)
+netcfg_randomWaitBound=تمام بے ترتیب انتظار پیرامیٹرز کی زیادہ سے زیادہ قیمت (ملی سیکنڈ میں)
+netcfg_MTU=ایم ٹی یو پیکٹ کا سائز (بائٹس میں)
+netcfg_interfaces=انٹرفیس کے IP ایڈریس جس پر DA/SA کو سننا چاہئے
+
+dacfg_title=ڈی اے کنفیگریشن
+dacfg_isDA=صرف ڈی اے کی حیثیت سے کام کرنا (پڑھنے کے لئے صارف اس کی رہنمائی کریں)
+
+log_title=ٹریسنگ اور لاگنگ
+log_traceDATraffic=ڈی اے ٹریفک پیغامات پرنٹ کریں
+log_traceMsg=ایس ایل پی کے تفصیل والے پیغامات پرنٹ کریں
+log_traceDrop=پرنٹ ایس ایل پی نے پیغام کی معلومات گرا دی
+log_traceReg=ڈی اے اور ایس اے رجسٹریشن اور ڈی ایگریگریشن کی معلومات پرنٹ کریں
+
+error_open=فائل کھولنے میں خامی
+error_flock_on=فائل لاک بنانے میں خرابی
+error_flock_off=فائل لاک کو تباہ کرنے میں خرابی
+error_hup=اوپن ایس ایل پی کو PID کے ساتھ دوبارہ شروع کرنے میں خرابی
+
+index_start=اوپن ایس ایل پی شروع کریں
+index_startmsg=اپنے سسٹم پر اوپن ایس ایل پی ڈیمان شروع کرنے کے لئے اس بٹن پر کلک کریں۔
+index_stop=اوپن ایس ایل پی بند کرو
+index_stopmsg=اپنے سسٹم پر اوپن ایس ایل پی ڈیمون کو روکنے کے لئے اس بٹن پر کلک کریں۔
+
+stop_err=اوپن ایس ایل پی کو روکنے میں ناکام
+start_err=اوپن ایس ایل پی شروع کرنے میں ناکام

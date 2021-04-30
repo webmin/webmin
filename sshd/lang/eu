@@ -76,8 +76,6 @@ net_grace_def=Beti
 net_grace_s=segunduak
 net_tcp=Baimendu TCP birbidalketak?
 net_gateway=Baimendu birbidalitako portuetarako konexioak?
-net_reverse=
-Reverse-validate client IP addresses?
 net_err=Akatsa sareratzea gordetzean
 net_elisten=Entzuteko IP helbidea falta da edo ez da baliozkoa
 net_eport=Portu zenbakia ez da zuzena edo falta da
@@ -209,8 +207,6 @@ log_delete_all=Makina guztientzat aukerak ezabatuak
 log_stop=SSH zerbitzaria gelditu da
 log_start=SSH zerbitzaria martxan jarri da
 log_apply=Konfigurazioa aplikatu da
-
-
 log_manual=$1 konfigurazio fitxategia eskuz editatzen
 
 sync_title=SSH Gakoaren Konfigurazioa
@@ -236,4 +232,3 @@ manual_err=Akatsa konfigurazio fitxategia gordetzean
 
 dknown_err=Akatsa makina ezagunak ezabatzean
 dknown_enone=Ez da ezer aukeratu
-

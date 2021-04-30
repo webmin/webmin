@@ -1,0 +1,79 @@
+index_nosearch=Vášmu vyhľadávaniu nezodpovedajú žiadne servery.
+index_defuser=Predvolené prihlásenie pre servery
+index_defpass=Predvolené heslo
+index_defport=Webmin port
+index_delete=Odstrániť vybrané servery
+index_auto=Automaticky nájsť servery
+index_automsg=Kliknutím na toto tlačidlo nastavíte automatické periodické zisťovanie nových serverov Webmin vo vašej sieti.
+index_search=Zobraziť zodpovedajúce servery:
+index_ok=Vyhľadávanie
+
+edit_realhost=Skutočné meno hostiteľa
+edit_portnone=Žiadne
+edit_checkssl=Skontrolovať vzdialený certifikát SSL?
+edit_mode3=Prihláste sa s užívateľským menom a heslom z tohto servera
+edit_luser=Používateľské meno pre vzdialený server
+edit_lpass=Heslo pre vzdialený server
+edit_same=Dostupné iba v režime overenia relácie a keď je heslo dostupné pre programy Webmin.
+
+save_ehost2=Hostiteľ neexistuje
+save_eport2=Ak je vybratý typ prepojenia s prihlásením, musí sa zadať port
+save_egroup2=Neplatný nový názov skupiny
+
+find_but=Našiel sa nový server na $1, ale autentifikácia zlyhala : $2 
+find_already2=Našiel sa známy serverový server na $1 
+find_skip=Ignoruje sa server na $1 
+find_eiface=Nepodarilo sa nájsť rozhranie na skenovanie
+find_eport=Chýbajúce alebo neplatné číslo portu
+
+log_deletes=Odstránené servery $1 
+
+acl_auto=Je možné nastaviť automatickú detekciu serverov?
+acl_add=Dokážete zaregistrovať nové servery?
+acl_forcefast=Vynútiť rýchly režim RPC na predvolené hodnoty?
+acl_forcetype=Vynútiť predvolený typ OS?
+acl_forcelink=Vynútiť predvolený typ prihlásenia?
+acl_links=Môžete sa pripojiť k serverom?
+
+login_esame=Možnosť použiť rovnaké prihlasovacie meno ako tento server sa dá použiť iba vtedy, keď nie je v režime autentifikácie relácie a keď je heslo sprístupnené programom Webmin.
+
+delete_err=Nepodarilo sa odstrániť servery
+delete_enone=Žiadne vybraté
+delete_ecannot=Nie je povolené mazať servery
+delete_title=Odstrániť servery
+delete_rusure=Naozaj chcete odstrániť vybraté servery $1 ?
+delete_confirm=Odstrániť teraz
+
+auto_title=Automaticky nájsť servery
+auto_header=Možnosti automatickej registrácie servera
+auto_sched=Vyhľadať nové servery?
+auto_sched1=Áno, každé $1 minúty
+auto_net=Sieť IP na skenovanie
+auto_auto=Lokálna sieť
+auto_ip=Siete IP $1 
+auto_iface=Sieť na rozhraní $1 
+auto_user=Používateľské meno pre nové servery
+auto_pass=Heslo pre nové servery
+auto_type=Predvolený typ systému
+auto_err=Uloženie nastavení automatického vyhľadávania zlyhalo
+auto_emins=Chýba alebo je neplatný počet minút
+auto_enet=Chýbajúca alebo neplatná sieťová adresa
+auto_eiface=Chýbajúce alebo neplatné sieťové rozhranie
+auto_euser=Chýba používateľské meno
+auto_cluster-software=Pridať do balíkových softvérových balíkov?
+auto_remove=Odstrániť registrované servery, ktoré sa nenašli?
+auto_email=Poslať e-mailom upozornenie
+auto_none=Neposielajte
+auto_eemail=Chýba e-mailová adresa pre upozornenia
+auto_smtp=Odoslať prostredníctvom servera SMTP
+auto_self=Tento systém
+auto_esmtp=Chýba alebo je neplatný server SMTP
+auto_findself=Zaregistrujte sa aj tento systém?
+
+config_deftype=Predvolený typ systému
+config_typeauto=automatický
+
+email_regsubject=Systém $1 bol zaregistrovaný
+email_reg=Systém $1 bol automaticky zaregistrovaný.
+email_unregsubject=Systém $1 neregistrovaný
+email_unreg=Systém $1 bol automaticky neregistrovaný.

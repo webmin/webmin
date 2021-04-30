@@ -1,0 +1,11 @@
+index_title=idmapd設定
+index_eidmapd=Idmapdデーモン $1が見つかりませんでした。インストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
+general=一般的な構成
+mapping=マッピング構成
+pipefs_dir=Pipefsディレクトリ
+domain=ドメイン名
+nobody_user=誰もユーザーなし
+nobody_group=誰もグループ
+save=設定を保存してデーモンを再起動します
+save_err=構成ファイル $1を保存できませんでした
+error_dir=ディレクトリ $1は存在しません

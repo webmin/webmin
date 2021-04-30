@@ -1,4 +1,3 @@
-risk=low medium high
 name=Boot Manager
 category=system
 os_support=solaris *-linux hpux freebsd unixware openserver openbsd osf1 irix aix macos netbsd windows 
@@ -6,3 +5,4 @@ desc=Bootup and Shutdown
 depends=proc inittab
 longdesc=Setup scripts to be run at boot time from /etc/init.d or /etc/rc.local.
 readonly=1
+syslog=1

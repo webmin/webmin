@@ -1,0 +1,205 @@
+index_title=Prozesuak exekutatzen
+index_display=Display
+index_tree=PID
+index_user=Erabiltzaileak
+index_size=Memoria
+index_cpu=CPU
+index_search=Search
+index_zone=Zone
+index_run=Korrika egin ..
+index_return=prozesuen zerrenda
+index_mem2=<b>Memoria erreala:</b> $1 guztira / $2 doan
+index_mem3=<b>Memoria erreala:</b> $1 guztira / $2 doan / $3 cachean
+index_swap2=<b>Trukatzeko espazioa:</b> $1 guztira / $2 doan
+index_burst=<b>Memoria gogorra:</b> $1 guztira
+index_loadname=PUZaren kargaren batez bestekoak:
+index_loadnums=$1 (1 min), $2 (5 min), $3 (15 min)
+index_cpuname=CPU mota:
+index_inzone=$1 zonaldean
+
+pid=NAN
+owner=Jabea
+command=Komando
+cpu=CPU
+size=Tamaina
+parent=Guraso prozesua
+runtime=Iraupena
+nice=Maila polita
+stime=Hasita
+sclass=IO programazio klasea
+sprio=IO lehentasuna
+
+search_user=Jabeak
+search_match=lotu
+search_cpupc=$1% CPU baino gehiago erabiliz
+search_cpupc2=CPU baino gehiago erabiliz
+search_fs=Fitxategi sistema erabiliz
+search_files=Fitxategia erabiliz
+search_submit=Search
+search_none=Ez da bat datorren prozesurik aurkitu.
+search_kill=Bidali seinalea
+search_ignore=Ezikusi bilaketa prozesuak emaitza
+search_return=bilaketa orria
+search_sigterm=Prozesuak amaitu
+search_sigkill=Hiltzeko prozesuak
+search_port=Portua erabiliz
+search_protocol=protokoloa
+search_ip=IP helbidea erabiliz
+
+run_command=Exekutatzeko agindua
+run_submit=Korrika egin
+run_mode=Exekutatzeko modua
+run_bg=Exekutatu atzeko planoan
+run_fg=Itxaron amaitu arte
+run_input=Sarrerako agindua
+run_title=Komandoaren irteera
+run_output=$1 -eko irteera.
+run_none=Ez da irteerarik sortu
+run_ecannot=Ezin duzu komandoak exekutatu
+run_as=Erabiltzaile gisa exekutatu
+run_euser=Erabiltzaile-izena falta edo baliogabea
+run_euser2=Ezin duzu hautatutako erabiltzaile gisa komandoak exekutatu
+
+edit_title=Prozesuen informazioa
+edit_gone=Prozesu hau ez da exekutatzen
+edit_sub=Subprocesses
+edit_subid=NAN
+edit_subcmd=Azpiprozesuaren agindua
+edit_kill=Bidali seinalea
+edit_change=Aldaketa
+edit_prilow=Lehentasun txikia
+edit_prihigh=Lehentasun handia
+edit_pridef=Default
+edit_none=Bat ere ez
+edit_ecannot=Ezin duzu prozesuak editatu
+edit_sigterm=Amaitu
+edit_sigkill=Kill
+edit_sigstop=Eten
+edit_sigcont=Jarraitu
+edit_open=Fitxategiak eta Konexioak
+edit_trace=Arrasto prozesua
+edit_return=prozesuaren xehetasunak
+
+kill_err=Huts egin du $1 seinalea bidaltzean $2 prozesatzeko
+kill_title=Bidali seinalea
+kill_sent=bidalitako
+kill_ecannot=Ez duzu prozesuak hiltzen uzten
+
+renice_err=Ezin izan da $1 prozesua berriz aldatu
+renice_ecannot=Ezin duzu prozesuak uko egin
+
+linux_pri=Lehentasuna
+linux_tty=TTY
+linux_status=Egoera
+linux_wchan=Itxaron barruan
+linux_mem=Memoria
+linux_group=Group
+linux_ruser=Benetako erabiltzailea
+linux_rgroup=Benetako taldea
+linux_pgid=Prozesuaren taldearen IDa
+linux_stime=Hasita
+
+linuxstat_R=carrera
+linuxstat_S=Lotan
+linuxstat_D=Lo sakona
+linuxstat_T=gelditu
+linuxstat_Z=Zombie
+
+linux_real=Denbora erreala
+linux_be=Ahalegin onena
+linux_idle=idle
+
+freebsd_ruser=Benetako erabiltzailea
+freebsd_rgroup=Benetako taldea
+freebsd_tty=TTY
+freebsd_pgid=Prozesu taldea
+freebsd_stime=Hasita
+freebsd_lim=Memoriaren muga
+
+hpux_pri=Lehentasuna
+hpux_tty=TTY
+hpux_status=Egoera
+hpux_wchan=Zain
+hpux_stime=Hasita
+
+hpuxstat_0=existitzen ez
+hpuxstat_S=Lotan
+hpuxstat_W=itxarote
+hpuxstat_R=carrera
+hpuxstat_I=Bitarteko
+hpuxstat_Z=Zombie
+hpuxstat_T=gelditu
+hpuxstat_G=Hazten ari
+
+macos_tty=TTY
+
+sysv_group=Group
+sysv_ruser=Benetako erabiltzailea
+sysv_rgroup=Benetako taldea
+sysv_pgid=Prozesuaren taldearen IDa
+sysv_tty=TTY
+sysv_stime=Hasita
+sysv_task=Zereginen IDa
+sysv_zone=Zonaren izena
+
+log_run=Ran agindua "$1"
+log_kill=$1 seinalea bidali da $2 prozesatzeko
+log_kills=Bidali $1 eta $2 prozesuen seinalea
+log_kill_l=$1 seinalea bidali da $2 prozesatzeko
+log_kills_l=$1 seinalea bidali da prozesura $2 ra
+log_renice=Prozesuaren $2 tik $1 era lehentasuna aldatu da
+
+acl_manage=Erabiltzaile gisa prozesuak kudeatu
+acl_manage_def=Uneko Webmin erabiltzailea
+acl_edit=Prozesuak hil eta uka ditzakezu?
+acl_run=Komandoak exekutatu daitezke?
+acl_only=Prozesu propioak bakarrik ikusi al ditzake?
+acl_who=Erabiltzaileentzako prozesuak kudeatu ditzake
+acl_who0=Erabiltzaile guztiak
+acl_who1=Uneko Webmin erabiltzailea
+acl_who2=Zerrendatutako erabiltzaileak ..
+
+kill_kill=Hiltzeko prozesua
+kill_term=Amaitu
+kill_hup=Berriro hasi
+kill_stop=Gelditu
+kill_cont=Jarraitu
+
+open_title=Ireki fitxategiak eta konexioak
+open_proc=$1 prozesurako (PID $2)
+open_header1=Ireki fitxategiak
+open_header2=Sareko konexioak irekitzea
+open_type=Mota
+open_proto=protokoloa
+open_desc=Xehetasunak
+open_fd=Fitxategiaren deskribatzailea
+open_listen1=$1 portuan entzutea
+open_listen2=$1 atarian $2 helbidean entzutea
+open_recv=$1 -en jasotzea: $2 
+open_conn=Lotuta $1 etik $2 ra $3 estatuan
+open_cwd=Oraingo dir
+open_rtd=Erro erraldoia
+open_txt=Programaren kodea
+open_mem=Liburutegi partekatua
+open_dir=Directory
+open_reg=Fitxategi arrunta
+open_chr=Pertsonaia berezia
+open_blk=Bloke berezia
+open_size=Fitxategiaren tamaina
+open_inode=inode
+open_file=Path
+
+trace_title=Arrasto prozesua
+trace_start=Sistemaren deiaren arrastoa abiarazteko $1 ..
+trace_doing=$1 erako deien sistemaren arrastoa :
+trace_done=.. prozesua amaitu da.
+trace_failed=.. trazadura huts egin du!
+trace_sorry=Orrialde honek Java laguntza behar du zure arakatzailean. Testu bakarra den prozesuaren arrastoa erabiltzeko, doitu moduluaren konfigurazioa.
+trace_syscalls=Arrastatze sistemaren deiak:
+trace_all=guztiak
+trace_sel=Zerrendatutako ..
+trace_change=Aldaketa
+
+windows_threads=Hariak prozesuan
+
+syslog_dmesg=Kernel mezuak

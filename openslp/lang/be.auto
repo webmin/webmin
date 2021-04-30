@@ -1,0 +1,50 @@
+index_title=Канфігурацыя OpenSLP
+index_return=Канфігурацыя OpenSLP
+index_eslpd=Дэман OpenSLP $1 не быў знойдзены ў вашай сістэме. Магчыма, ён не ўсталяваны, альбо ваша канфігурацыя модуля <a href='$2'></a> няправільная.
+index_econf=Файл канфігурацыі OpenSLP $1 у вашай сістэме не знойдзены. Магчыма, ён не ўсталяваны, альбо ваша канфігурацыя модуля <a href='$2'></a> няправільная.
+index_version=Версія OpenSLP $1 
+
+slp_apply=Прымяніць змены
+slp_stop=Спыніць OpenSLP
+
+snda_title=Статычны аб'ём і DA
+snda_useScopes=Статычны спіс абласцей
+snda_DAAddresses=Статычны спіс агентаў каталогаў (DA)
+
+netcfg_title=Канфігурацыя сеткі
+netcfg_isBroadcastOnly=Прымусовыя перадачы будуць выкарыстоўвацца замест шматкарыстальных перадач
+netcfg_passiveDADetection=Выкарыстоўвайце пасіўнае выяўленне DA
+netcfg_activeDADetection=Выкарыстоўвайце актыўнае выяўленне DA (абмяжуйцеся толькі адрасамі DHCP або DA)
+netcfg_DAActiveDiscoveryInterval=Актыўнае адкрыццё за лічаныя секунды (0 адключае Active Discovery)
+netcfg_multicastTTL=Шматкарыстальны TTL (0-255)
+netcfg_DADiscoveryMaximumWait=Максімальны час чакання запытаў на выяўленне DA (у мілісекундах)
+netcfg_DADiscoveryTimeouts=Час чакання паслядоўнага адкрыцця DA (у мілісекундах)
+netcfg_HintsFile=Шлях да файла падказкі OpenSLP
+netcfg_multicastMaximumWait=Максімальнае чаканне на запыты шматразовага паведамлення (у мілісекундах)
+netcfg_multicastTimeouts=Паслядоўныя перыяды чакання шматразовага паведамлення (у мілісекундах)
+netcfg_unicastMaximumWait=Максімальная колькасць часу паміж аднаадкрытымі запытамі (у мілісекундах)
+netcfg_randomWaitBound=Максімальнае значэнне для ўсіх выпадковых параметраў чакання (у мілісекундах)
+netcfg_MTU=Памер пакета MTU (у байтах)
+netcfg_interfaces=IP-адрасы інтэрфейсаў, якія павінны слухаць DA/SA
+
+dacfg_title=Канфігурацыя DA
+dacfg_isDA=Функцыянуе як DA (прачытайце кіраўніцтва карыстальніка перад змяненнем гэтага)
+
+log_title=Адсочванне і вядзенне лесу
+log_traceDATraffic=Надрукаваць паведамленні пра трафік DA
+log_traceMsg=Надрукаваць падрабязныя паведамленні SLP
+log_traceDrop=Надрукаваць інфармацыю пра SLP, скінуўшы паведамленне
+log_traceReg=Раздрукаваць інфармацыю аб рэгістрацыі і зняцці з рэгістрацыі DA і SA
+
+error_open=Памылка пры адкрыцці файла
+error_flock_on=Памылка стварэння блакавання файла
+error_flock_off=Памылка знішчэння блакавання файла
+error_hup=Памылка пры перазапуску OpenSLP з PID
+
+index_start=Запусціце OpenSLP
+index_startmsg=Націсніце гэтую кнопку, каб запусціць демон вашай сістэмы.
+index_stop=Спыніць OpenSLP
+index_stopmsg=Націсніце гэтую кнопку, каб спыніць дэман OpenSLP у вашай сістэме.
+
+stop_err=Не атрымалася спыніць OpenSLP
+start_err=Не атрымалася запусціць OpenSLP

@@ -1,0 +1,3 @@
+desc_el=VPTP διακομιστή PPTP
+name_el=PPTPd
+longdesc_el=Ρυθμίστε το σύστημά σας ως διακομιστή PPTP, ώστε να μπορούν να συνδεθούν οι υπολογιστές-πελάτες Linux ή Windows VPN.

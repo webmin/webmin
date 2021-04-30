@@ -1,0 +1,39 @@
+index_title=Exportações NFS
+index_add=Adicionar uma nova exportação NFS
+index_dir=Diretório
+index_hosts=Hosts permitidos
+index_all=Todos os hosts
+index_none=Nenhuma exportação NFS foi definida ainda.
+index_apply=Aplicar configuração
+index_applydesc=Clique neste botão para ativar todas as exportações listadas acima, com as opções configuradas.
+index_return=lista de exportações
+
+edit_title1=Criar exportação
+edit_title2=Editar exportação
+edit_header=Detalhes da exportação
+edit_dir=Diretório a exportar
+edit_hosts=Exportar para hosts/netgroups
+edit_ro=Somente leitura?
+edit_wsync=Sincronizar após gravações?
+edit_anon=Permissões de usuário raiz
+edit_anon1=Padrão (tratar como <tt>ninguém</tt>)
+edit_anon2=Negar acesso
+edit_anon0=Tratar como usuário
+edit_rw=Acesso de leitura/gravação
+edit_root=Acesso ao arquivo raiz
+edit_access=Acesso de montagem
+edit_all=Todos os hosts
+edit_sel=Anfitriões listados ..
+edit_none=Nenhum host
+
+save_err=Falha ao salvar a exportação
+save_edir=Diretório ausente ou inexistente para exportar
+save_eanon=Usuário raiz ausente ou inválido
+save_erw=Nenhum host de leitura e gravação inserido
+save_eroot=Nenhum host de acesso ao arquivo raiz inserido
+save_eaccess=Nenhum host de acesso de montagem inserido
+
+log_create_export=Exportação criada de $1 
+log_delete_export=Exportação excluída de $1 
+log_modify_export=Exportação modificada de $1 
+log_apply=Configuração aplicada

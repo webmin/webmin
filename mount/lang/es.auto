@@ -1,0 +1,101 @@
+index_used=Usado
+index_none=No tiene acceso a ningún sistema de archivos montado.
+index_mount2=Montar con contraseña:
+index_root=Sistema de archivos raíz
+
+edit_usage=Uso del disco
+edit_comm_opt=Opciones de montaje comunes
+edit_ext_opt=Opciones específicas de ext2 / ext3
+edit_nfs_opt=Opciones específicas de NFS
+edit_nfs_opt4=Opciones específicas de NFSv4
+edit_dos_opt=Opciones de sistemas de archivos basados en DOS
+edit_hpfs_opt=opciones específicas de hpfs
+edit_iso9660_opt=Opciones específicas de ISO9660
+edit_autofs_opt=opciones específicas de autofs
+edit_smbfs_opt=Opciones de sistemas de archivos CIFS
+edit_reiserfs_opt=Opciones específicas de Reiserfs
+edit_tmpfs_opt=opciones específicas de tmpfs
+edit_xfs_opt=Opciones específicas de xfs
+edit_ntfs_opt=opciones específicas de ntfs
+edit_3_or_lower=3 (o inferior)
+edit_advanced=Modo avanzado
+
+save_force=El montaje en $1 no se pudo eliminar, ya que el montaje está actualmente en uso. Para intentar un desmontaje forzado, haga clic en el botón de abajo
+save_fapply=Desmontaje forzado
+
+nfs_seldirv4=Para un montaje NFSv4, debe seleccionar '/'
+
+smb_eworkgroup=No hay grupo de trabajo establecido en la página de configuración del módulo
+smb_emaster=No se encontró un maestro de exploración para el grupo de trabajo $1
+
+solaris_idedev=Controlador IDE $1 unidad $2 partición $3
+solaris_lvm=Dispositivo LVM
+solaris_vg=Grupo de volumen
+solaris_lv=Volumen lógico
+solaris_vxfs=Dispositivo VXFS
+solaris_hfs=Dispositivo HFS
+
+linux_burnerdev=Unidad de grabadora de CD
+linux_uuid=Partición con ID $1
+linux_usel=Partición con ID
+linux_nodev=¿No permitir archivos de dispositivo?
+linux_noexec=¿No permitir la ejecución de binarios?
+linux_ifuser=Si los usuarios pueden montarlo
+linux_quotaj=Tipo de almacenamiento de cuota
+linux_quotaj1=Diario
+linux_quotaj0=Regular
+linux_etimeo=El tiempo de espera debe ser un número
+linux_credentials=Archivo de credenciales
+linux_noatime=¿Evitar actualizar los últimos tiempos de acceso?
+linux_netdev=¿Esperar hasta que las interfaces de red estén activas?
+linux_nofail=¿Continuar arrancando incluso si el montaje falla?
+linux_rsize=Leer el tamaño del búfer
+linux_wsize=Tamaño del búfer de escritura
+linux_auth=Modo de autenticación
+linux_sec=Nivel de seguridad
+linux_integrity=Integridad
+linux_privacy=Privacidad (incluida la integridad)
+linux_nfsvers=Forzar versión NFS
+linux_nfsdefault=Usar versión predeterminada
+linux_transfert=RPC / Protocolo de transferencia
+linux_swappri=Prioridad de memoria virtual
+linux_eswappri=Falta de prioridad de memoria virtual numérica o no válida
+linux_codepage=Página de código
+linux_iocharset=Conjunto de caracteres IO
+linux_ecodepage=Página de código faltante o no válida
+linux_eiocharset=Juego de caracteres IO faltante o no válido
+linux_nounix=¿Deshabilitar las extensiones CIFS Unix?
+linux_noserverino=¿Generar números de inodo en el lado del cliente?
+linux_cvers=Versión CIFS
+linux_ecvers=La versión CIFS debe ser un número
+
+log_swap=Archivo de intercambio creado $1
+
+acl_types=Tipos de sistema de archivos que se pueden usar
+acl_fslist=Nombres de tipos listados
+acl_user=¿Solo puede editar sistemas de archivos propios?
+acl_hide=¿Ocultar sistemas de archivos no editables?
+acl_simple=Mostrar forma de montaje simple?
+acl_simopts=¿Mostrar opciones de sistema de archivos simplificadas?
+acl_browse=¿Mostrar archivos y compartir botones de navegación?
+
+freebsd_eaddr=Dirección del servidor faltante o no válida
+freebsd_eworkgroup=Grupo de trabajo faltante o inválido
+freebsd_ide=Disco duro IDE
+freebsd_device=Dispositivo
+freebsd_slice=Rebanada
+freebsd_part=Dividir
+freebsd_scsi=Disco SCSI
+freebsd_other=Otro dispositivo
+freebsd_select=Partición de disco
+freebsd_idedev=Dispositivo IDE $1, slice $2, partición $3
+freebsd_scsidev=Dispositivo SCSI $1, slice $2, partición $3
+freebsd_edevpath=Otro dispositivo debe ser una ruta absoluta, como <tt>/dev/cdrom</tt>
+freebsd_edevfile=El archivo del dispositivo '$1' no existe
+
+cswap_file=El archivo de intercambio $1 no existe.
+cswap_size=Crear y montar un archivo de intercambio con tamaño
+
+acl_sysinfo=¿Mostrar datos de disco disponibles en el Panel?
+sysinfo_total=Total
+sysinfo_dev=Identificación del dispositivo

@@ -1,31 +1,31 @@
 <header>Registres del Sistema NG</header>
 
-Aquest mòdul permet configurar el programa Syslog-NG, que és un substitut
-del clàssic dimoni Syslog de Unix. Aquest és responsable de prendre els
-missatges de registre d'orígens diversos (com ara programes o altres sistemes)
+Aquest mÃ²dul permet configurar el programa Syslog-NG, que Ã©s un substitut
+del clÃ ssic dimoni Syslog de Unix. Aquest Ã©s responsable de prendre els
+missatges de registre d'orÃ­gens diversos (com ara programes o altres sistemes)
 i escriure'ls llavors als fitxers de registre correctes. <p>
 
-La configuració de Syslog-NG està feta amb quatre tipus diferents d'objectes,
-que combinats entre ells determinen quins registres s'escriuen on. Aquests són:
+La configuraciÃ³ de Syslog-NG estÃ  feta amb quatre tipus diferents d'objectes,
+que combinats entre ells determinen quins registres s'escriuen on. Aquests sÃ³n:
 <dl>
-<dt>Orígens de registre
-<dd>Cada origen especifica una o més formes en què els missatges de registre
+<dt>OrÃ­gens de registre
+<dd>Cada origen especifica una o mÃ©s formes en quÃ¨ els missatges de registre
 poden ser rebuts pel servidor, com ara des de la xarxa, des del nucli de Linux
 i des d'altres programes del sistema.
 <dt>Destinacions de registre
-<dd>Una destinació és un fitxer, servidor remot, usuari registrat o programa
-que pot rebre missatges de registre. Només definint una destinació ni provoca
-que s'hi escrigui res -primer l'has d'enllaçar a u Objectiu de Registre.
+<dd>Una destinaciÃ³ Ã©s un fitxer, servidor remot, usuari registrat o programa
+que pot rebre missatges de registre. NomÃ©s definint una destinaciÃ³ ni provoca
+que s'hi escrigui res -primer l'has d'enllaÃ§ar a u Objectiu de Registre.
 <dt>Filtres de registre
 <dd>Un filtre tria els missatges basant-se en diverses condicions, com ara
 la utilitat (tipus de programa origen), prioritat (nivell de severitat),
-programa, host i adreça de xarxa del remitent. Els filtres s'utilitzen en 
+programa, host i adreÃ§a de xarxa del remitent. Els filtres s'utilitzen en 
 els objectius de registre per a controlar quins missatges arriben a quines
 destinacions.
 <dt>Objectius de registre
-<dd>Els objectius són on tot es lliga. Cada objectiu defineix zero o més
-orígens, filtres i destinacions, que especifiquen que els missatges provinents
-dels orígens donats que coincideixen amb els filtres donats han de ser escrits
+<dd>Els objectius sÃ³n on tot es lliga. Cada objectiu defineix zero o mÃ©s
+orÃ­gens, filtres i destinacions, que especifiquen que els missatges provinents
+dels orÃ­gens donats que coincideixen amb els filtres donats han de ser escrits
 a les destinacions donades.
 
 </dl>

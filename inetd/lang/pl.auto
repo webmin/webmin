@@ -1,0 +1,18 @@
+index_edit=Edytuj usługę:
+index_search=Dopasuj usługi wyświetlania:
+index_sok=Szukaj
+index_toomany=Na tej stronie jest zbyt wiele usług internetowych, aby wyświetlić.
+index_none=Żadne usługi internetowe nie spełniają kryteriów wyszukiwania.
+
+error_user=Brakującego lub nieprawidłowego użytkownika do wykonania jako
+error_group=Brakująca lub niepoprawna grupa do wykonania jako
+error_smfservice=Nie udało się zaktualizować usługi smf z cmd '$1', kod błędu $2 
+error_smf_cmdfield=W przypadku smf nazwa pliku programu „$1” musi być zgodna z pierwszym argumentem pola polecenia, tzn. Być „$2”
+
+editrpc_act=Stan programu
+editrpc_stream=Strumień
+editrpc_dgram=Datagram
+editrpc_tli=TLI
+
+editserv_qm=Polecenie może nie istnieć?
+editserv_ename=Nie ma usługi o tej nazwie i protokole

@@ -1,0 +1,118 @@
+index_title=Balss pasta serveris
+index_ecmd=Vgetty komanda $1 jūsu sistēmā netika atrasta. Varbūt tas nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_econfig=Vgetty konfigurācijas fails $1 jūsu sistēmā netika atrasts. Varbūt tas nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_return=balss pasta indekss
+
+vgetty_title=Sērijas porta konfigurācija
+vgetty_desc=Lai jūsu serveris atbildētu uz balss zvaniem ar modemu, kas savienots ar seriālo portu, tam jābūt uzskaitītam zemāk. Pievienojot portu šim sarakstam, programma $1 tiks konfigurēta, lai atbildētu uz zvaniem un atskaņotu ziņojumu.
+vgetty_add=Pievienojiet jaunu seriālo portu
+vgetty_tty=Sērijas ierīce
+vgetty_type=Veids
+vgetty_vgetty=Balss
+vgetty_mgetty=Dati/fakss
+vgetty_none=Balss pastam vēl nav konfigurēti seriālie porti.
+vgetty_apply=Lietot konfigurāciju
+vgetty_applydesc=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējo balss pasta servera konfigurāciju, palaižot komandu $1 un nogalinot visus Vgetty procesus.
+vgetty_applyerr=Neizdevās piemērot konfigurāciju
+vgetty_return=seriālo portu saraksts
+vgetty_create=Pievienot seriālo portu
+vgetty_edit=Rediģēt seriālo portu
+vgetty_header=Seriālā porta konfigurācijas iespējas
+vgetty_ts=Sērijas osta $1 
+vgetty_other=Cita ierīce ..
+vgetty_rings=Zvana pirms atbildes
+vgetty_default=Globālais noklusējums
+vgetty_ans=Atbildes režīms
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=Balss
+vgetty_ans_fax=Fakss
+vgetty_ans_data=Dati
+vgetty_err=Neizdevās saglabāt seriālo portu
+vgetty_etty=Trūkst vai neeksistē sērijveida ierīce
+vgetty_erings=Trūkst vai nav derīgs gredzenu skaits
+vgetty_erings2=Gredzenu skaitam jābūt vismaz 2
+vgetty_eans=Nav izvēlēts neviens atbildēšanas režīms
+vgetty_eclash=Sērijas ports $1 jau tiek izmantots
+
+options_title=Balss pasta servera opcijas
+options_header=Visu seriālo portu opcijas
+options_maxlen=Maksimālais ziņojuma garums
+options_secs=sekundes
+options_minlen=Minimālais ziņojuma garums
+options_silence=Vai noņemt klusumu no ziņojumu beigām?
+options_thresh=Klusuma sliekšņa līmenis
+options_rgain=Ieraksta skaļuma līmenis
+options_tgain=Atskaņošanas skaļuma līmenis
+options_rings=Zvana pirms atbildes
+options_perport=Var iestatīt katram seriālajam portam
+options_ans=Atbildes režīms
+options_keep=Vai saglabāt ziņojumus, kas satur datus vai DTMF kodus?
+options_light=Vai iespējot automātiskās atbildes indikatoru pēc saņemšanas?
+options_owner=Unix īpašnieks ziņojumu failiem
+options_group=Unix grupa ziņojumu failiem
+options_mode=Atļaujas ziņojumu failiem
+options_prog=Pēc ziņas ierakstīšanas
+options_prog0=Neko nedarīt
+options_prog1=E-pasts WAV formātā uz
+options_prog2=Palaist komandu ziņojuma failā
+options_err=Neizdevās saglabāt balss pasta iespējas
+options_erings=Trūkst vai nav derīgs gredzenu skaits
+options_erings2=Gredzenu skaitam jābūt vismaz 2
+options_emaxlen=Trūkst vai nav derīgs maksimālais ziņojuma garums
+options_eminlen=Trūkst vai nav derīgs minimālais ziņojuma garums
+options_ethresh=Trūkst vai nav derīgs klusuma slieksnis
+options_ergain=Trūkst vai nav derīgs ierakstīšanas skaļuma līmenis
+options_ergain2=Ierakstīšanas skaļuma līmenim jābūt no 0 līdz 100
+options_etgain=Trūkst vai nav derīgs atskaņošanas skaļuma līmenis
+options_etgain2=Atskaņošanas skaļuma līmenim jābūt no 0 līdz 100
+options_eemail=Trūkst vai nav derīga e-pasta adrese
+options_eprog=Trūkst vai nav programmas, kas darbotos
+options_eowner=Trūkst vai nav derīgs Unix lietotājs ziņojumu failiem
+options_egroup=Trūkst vai nav derīga Unix grupa ziņojumu failiem
+options_emode=Trūkst vai nav derīgas ziņojumu failu astoņkāju atļaujas
+
+received_title=Saņemtie ziņojumi
+recieved_desc=Tālāk ir norādīti balss pasta ziņojumi, kurus ir saņēmis jūsu serveris. Lai noklausītos ziņojumu, pirmajā kolonnā noklikšķiniet uz datuma/laika.
+received_none=Neviens saņemts balss pasta ziņojums netika atrasts.
+received_date=Saņemts plkst
+received_size=Faila lielums
+received_speed=Izlases likme
+received_type=Audio formāts
+received_delete=Dzēsiet atlasītos ziņojumus
+received_move=Pārvērst atlasītos sveicienos
+received_all=Izvēlēties visus
+received_invert=Apgrieztā atlase
+
+listen_efile=Nederīgs ziņojuma faila nosaukums!
+listen_epath=Balss pasta ziņojums vairs nepastāv
+
+delete_efile=Nederīgs ziņojuma faila nosaukums!
+
+messages_title=Apsveikuma ziņojumi
+messages_desc=Šajā lapā ir uzskaitīti apsveikuma ziņojumi, kas tiks atskaņoti, kad zvanītājs izveidos savienojumu ar jūsu balss pasta serveri. Ja jums ir vairāk nekā viens, tiks izmantots viens nejauši izvēlēts ziņojums.
+messages_file=Faila nosaukums
+messages_none=Apsveikuma ziņojumi nav pieejami.
+messages_updesc=Šī forma ļauj augšupielādēt papildu apsveikuma ziņojuma WAV failu, kas tiks pārveidots izvēlētajā formātā, lai to izmantotu jūsu modems. Augšupielādētā WAV izlases likmei jābūt tādai pašai kā saņemto ziņojumu izlases likmei, tāpat kā izvēlētajam formātam.
+messages_upload=Augšupielādēt ziņojumu
+messages_fmt=konvertēt uz
+
+pvfdesc=$1, $2 biti
+
+upload_err=Neizdevās pievienot ziņojumu
+upload_emessage=Nav atlasīts WAV fails
+upload_ewav=Neizdevās konvertēt WAV failu : $1 
+upload_epvf=Neizdevās izveidot RMD failu : $1 
+upload_esame=Ziņojuma fails $1 jau pastāv
+
+log_apply=Lietotā konfigurācija
+log_upload=Augšupielādēts sveiciena ziņojums $1 
+log_move=Pārveidoti $1 saņemtie ziņojumi
+log_delete0=Izdzēsa $1 saņemtos ziņojumus
+log_delete1=Izdzēsti $1 apsveikuma ziņojumi
+log_options=Mainītas balss pasta iespējas
+log_vgetty_create=Pievienots sērijas ports $1 
+log_vgetty_modify=Pārveidots seriālais ports $1 
+log_vgetty_delete=Dzēsts sērijas ports $1 
+
+email_subject=Balss pasta ziņojums
+email_body=Balss pasta ziņojums saņemts no $1 līdz $2.

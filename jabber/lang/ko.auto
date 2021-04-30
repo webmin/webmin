@@ -1,0 +1,120 @@
+index_title=재버 메신저 서버
+index_econfig=Jabber 구성 파일 $1 이 (가) 없습니다. Jabber가 설치되어 있지 않거나 <a href='$2'>모듈 구성</a>이 잘못되었습니다.
+index_edir=Jabber 기본 디렉토리 $1 이 (가) 없습니다. Jabber가 설치되어 있지 않거나 <a href='$2'>모듈 구성</a>이 잘못되었습니다.
+index_emodules=Jabber의 XML 구성을 처리하기 위해 Webmin에 필요한 Perl 모듈 $1 및 $2 가 설치되지 않았습니다. CPAN에서 직접 설치하려면 <a href='$3'>여기를 클릭</a>하십시오.
+index_emodule=Jabber의 XML 구성을 처리하기 위해 Webmin에 필요한 Perl 모듈 $1 이 (가) 설치되어 있지 않습니다. CPAN에서 직접 설치하려면 <a href='$2'>여기를 클릭</a>하십시오.
+index_expat=Perl 모듈을 설치하려고 시도하기 전에 Expat C 라이브러리 및 헤더가 설치되어 있는지 확인하십시오. 사용 가능한 경우 실패합니다.
+index_eparse=$1 perl 모듈이 Jabber 구성 파일을 구문 분석 할 수 없습니다  : $2 
+index_ejabberd=시스템에서 Jabber 서버 프로그램 $1 을 (를) 찾을 수 없습니다. Jabber가 설치되어 있지 않거나 <a href='$2'>모듈 구성</a>이 잘못되었습니다.
+index_eversion=Webmin은 Jabber 버전 $2 만 지원하지만 $3 명령은 다음 버전 정보를보고했습니다. $1 
+index_eversion2=Webmin은 $2 미만의 Jabber 버전 만 지원하지만 $3 명령은 다음 버전 정보를보고했습니다. $1 
+index_start=Jabber 서버 시작
+index_startmsg=시스템에서 Jabber 서버를 시작하려면이 버튼을 클릭하십시오. 시작될 때까지는 인스턴트 메시징 클라이언트가이를 사용할 수 없습니다.
+index_stop=재버 서버 중지
+index_stopmsg=시스템에서 Jabber 서버 실행을 중지하려면이 버튼을 클릭하십시오. 인스턴트 메시징 클라이언트는 중지 될 때이를 사용할 수 없습니다.
+index_restart=변경 승인
+index_restartmsg=Jabber 서버를 중지했다가 다시 시작하여 현재 구성을 적용하려면이 단추를 클릭하십시오.
+index_comments=경고-Jabber 구성 파일 $1 에 주석이 포함되어 있으며이 모듈을 사용하여 구성을 변경하면 주석이 제거됩니다.
+index_return=재버 메뉴
+index_version=재버 버전 $1 
+
+general_title=일반 옵션
+general_header=글로벌 Jabber 서버 옵션
+general_host=서버의 호스트 이름
+general_elog=오류 로그 파일
+general_elogfmt=오류 로그 형식
+general_rlog=액세스 로그 파일
+general_rlogfmt=액세스 로그 형식
+general_pidfile=프로세스 ID 파일
+general_err=일반 옵션을 저장하지 못했습니다
+general_ehost=서버 호스트 이름이 없거나 잘못되었습니다
+general_eelog=없거나 잘못된 오류 로그 파일
+general_eelogfmt=누락 된 오류 로그 형식
+general_erlog=누락되거나 잘못된 트래픽 로그 파일
+general_erlogfmt=누락 된 트래픽 로그 형식
+general_epidfile=프로세스 ID 파일이 없거나 잘못되었습니다
+
+messages_title=메시지
+messages_header=클라이언트를위한 Jabber 서버 메시지
+messages_wsubject=환영 메시지 제목
+messages_wbody=환영 메시지 본문
+messages_vcard=서버 vCard
+messages_rinstr=등록 지침
+messages_rnotify=등록시 관리자에게 알림?
+messages_rfields=필수 등록 필드
+messages_vcard2jud=Jabber 사용자 디렉토리로 vCard를 보내시겠습니까?
+messages_err=메시지를 저장하지 못했습니다
+messages_evcard=잘못된 vCard XML  : $1 
+messages_etag=서버 vCard XML이 &lt;vCard&gt;로 시작하지 않습니다
+
+modules_title=재버 모듈
+modules_desc=아래 나열된 모듈은 Jabber 세션 관리자가 수신 한 메시지를 처리하는 데 사용됩니다. 수행중인 작업을 알고있는 경우에만이 목록을 변경해야합니다.
+modules_header=재버 서버 세션 관리자 모듈
+modules_mod=모듈 이름
+modules_so=공유 라이브러리
+modules_err=Jabber 모듈을 저장하지 못했습니다
+modules_emod='$1'은 (는) 유효한 모듈 이름이 아닙니다
+modules_eso=공유 라이브러리 '$1'이 (가) 없습니다
+
+karma_title=카르마 교통 통제
+karma_header=교통량 제어 옵션
+karma_rate=과도한 연결 처리
+karma_rate_def=비활성화
+karma_rate_sel=$1 연결 후 $2 초 동안 클라이언트 차단
+karma_mode=카르마 모드
+karma_none=제한 없음
+karma_low=낮은 트래픽 제한
+karma_medium=중간 트래픽 제한
+karma_high=높은 트래픽 제한
+karma_sel=아래에서 선택한 설정을 사용하십시오.
+karma_heartbeat=초 단위의 기간 (<tt>하트 비트</tt>)
+karma_init=초기화 기간 (<tt>init</tt>)
+karma_max=카르마 최대 값 (<tt>max</tt>)
+karma_inc=업보 증분 (<tt>inc</tt>)
+karma_dec=업보 감소 (<tt>dec</tt>)
+karma_penalty=페널티 기간 (<tt>페널티</tt>)
+karma_restore=버스트 복원 기간 (<tt>복원</tt>)
+karma_err=카르마 옵션을 저장하지 못했습니다
+karma_eheartbeat=누락되거나 유효하지 않은 기간
+karma_einit=초기화 기간이 없거나 유효하지 않습니다
+karma_emax=카르마 최대 값이 없거나 유효하지 않음
+karma_einc=업보 증가가 없거나 유효하지 않습니다
+karma_edec=카르마 감소가 없거나 잘못되었습니다
+karma_epenalty=페널티 기간이 없거나 유효하지 않음
+karma_erestore=복원 기간이 없거나 유효하지 않습니다
+karma_epoints=연결 수가 없거나 잘못되었습니다
+karma_etime=차단할 시간이 없거나 잘못되었습니다.
+
+ips_title=IP 액세스 제어
+ips_header=재버 서버 IP 액세스 제어
+ips_allow=허용 된 클라이언트 IP
+ips_all=모든 주소
+ips_deny=거부 된 클라이언트 IP
+ips_none=없음
+ips_sel=나열된 주소/네트 마스크 ..
+ips_err=IP 액세스 제어를 저장하지 못했습니다
+ips_eaddr='$1'은 (는) 유효한 IP 주소 또는 IP 주소/넷 마스크가 아닙니다.
+
+file_title=구성 파일 편집
+file_desc=Jabber 구성 파일을 직접 편집하려면 아래 양식을 사용하십시오. XML 구성 형식을 이해 한 경우에만 수행해야합니다.
+file_header=Jabber 구성 파일 편집
+file_err=구성 파일을 저장하지 못했습니다
+
+admin_title=관리 사용자
+admin_header=서버 관리자
+admin_read=읽기 권한 관리자
+admin_write=쓰기 권한 관리자
+admin_reply=관리자 메시지에 자동 회신 하시겠습니까?
+admin_rsubject=자동 회신 주제
+admin_rbody=자동 회신 메시지
+
+filter_title=사용자 필터
+filter_header=사용자 필터 권한
+filter_max=최대 필터 규칙
+filter_conds=허용되는 필터 조건
+filter_acts=허용되는 필터 동작
+
+restart_err=변경 사항을 적용하지 못했습니다
+stop_err=재버를 중지하지 못했습니다
+stop_epid=재버 프로세스를 찾지 못했습니다
+start_err=재버를 시작하지 못했습니다

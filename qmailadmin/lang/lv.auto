@@ -1,0 +1,405 @@
+index_title=QMail pasta serveris
+index_edir=QMail bāzes direktorija $1 neeksistē. Varbūt QMail nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_edir2=Šķiet, ka direktorijs $1 nav QMail bāzes direktorija. Varbūt QMail nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_return=QMail konfigurācija
+index_stop=Apturiet QMail procesus
+index_stopmsg=Noklikšķiniet uz šīs pogas, lai apturētu QMail fona procesus, kas ir atbildīgi par rindas pasta piegādi. Bez šiem procesiem pasts netiks pareizi nosūtīts vai piegādāts jūsu sistēmā.
+index_start=Sāciet QMail procesus
+index_startmsg=Noklikšķiniet uz šīs pogas, lai sāktu QMail fona procesus, kas ir atbildīgi par rindas pasta piegādi. Bez šiem procesiem pasts netiks pareizi nosūtīts vai piegādāts jūsu sistēmā.
+
+opts_title=QMail opcijas
+opts_me=Vietējais resursdatora nosaukums
+opts_helo=SMTP HELO resursdatora nosaukums
+opts_toconnect=SMTP savienojuma noildze
+opts_secs=sekundes
+opts_toremote=SMTP izejošās atbildes noildze
+opts_bytes=Maksimālais ziņojuma lielums
+opts_unlimited=Neierobežots
+opts_timeout=SMTP ienākošo datu noildze
+opts_localip=E-pasta resursdatora nosaukums uz vietējo IP adresi
+opts_greet=SMTP apsveikuma ziņojums
+opts_err=Neizdevās saglabāt QMail opcijas
+opts_eme=Vietējais resursdatora nosaukums nav derīgs
+opts_etoconnect=Nederīgs SMTP savienojuma noildze
+opts_etoremote=Nederīgs SMTP izejošās atbildes noildze
+opts_ebytes=Nederīgs maksimālais ziņojuma lielums
+opts_etimeout=Nederīgs ienākošo SMTP datu noildze
+opts_elocalip=Nederīgs vietējās IP adreses resursdators
+
+aliases_title=Pasta pseidonīmi
+aliases_addr=Adrese
+aliases_to=Alias uz ..
+aliases_type1=Adrese 1
+aliases_type2=Pasta katalogs $1 
+aliases_type3=Pasta fails $1 
+aliases_type4=Programma $1 
+aliases_type5=Automātiskas atbildes fails $1 
+aliases_type6=Lietot filtra failu $1 
+aliases_none=Nav
+aliases_return=pseidonīmu saraksts
+aliases_toomany=Jūsu sistēmā ir pārāk daudz pasta aizstājvārdu, lai tos parādītu šajā lapā.
+aliases_go=Atrodiet aizstājvārdus:
+aliases_delete=Dzēst atlasītos pseidonīmus
+
+aform_type0=Nav
+aform_type1=Epasta adrese
+aform_type2=Pasta katalogs
+aform_type3=Pasta fails
+aform_type4=Plūsma programmai
+aform_type5=Automātiska atbilde no faila
+aform_type6=Lietot filtra failu
+aform_edit=Rediģēt aizstājvārdu
+aform_create=Izveidot aizstājvārdu
+aform_name=Adrese
+aform_val=Pseidonīms
+aform_afile=Rediģēt ..
+aform_novirt=&lt;Visi domēni&gt;
+aform_return=pseidonīms
+
+asave_err=Neizdevās saglabāt aizstājvārdu
+asave_eaddr=“$1” nav derīga adrese
+asave_ealready=“$1” aizstājvārds jau pastāv
+asave_etype1='$1' nav derīga e-pasta adrese
+asave_etype2='$1' nav derīgs pasta katalogs
+asave_etype3='$1' nav derīgs pasta faila nosaukums
+asave_etype4='$1' nav derīga programma vai neeksistē
+asave_etype5=Automātiskās atbildes fails “$1” nav derīgs
+asave_etype4none=Programma nav dota
+asave_etype6=Filtra fails “$1” nav derīgs
+
+adelete_err=Neizdevās izdzēst aizstājvārdus
+adelete_enone=Nav atlasīts
+
+locals_title=Vietējie domēni
+locals_domains=Vietējie šī servera domēni
+locals_desc=Qmail pieņems piegādi vietējiem lietotājiem pa e-pastu uz domēniem un resursdatoru nosaukumiem, kas norādīti teksta lodziņā pa kreisi. Ja vēlaties, lai jūsu pasta serveris apstrādātu vairākus e-pasta domēnus, tie visi būtu jāuzrāda šajā veidlapā.
+locals_only=Tikai vietējais resursdators $1 
+locals_sel=Domēni, kas uzskaitīti zemāk ..
+
+rcpts_title=Pieņemtie domēni
+rcpts_domains=Pieņemtie vietējie un releju domēni
+rcpts_all=Jebkurš domēns
+rcpts_sel=Domēni, kas uzskaitīti zemāk ..
+rcpts_desc=Qmail pieņem nosūtīšanai vai sūtīšanai pa pastu tikai domēnus un resursdatoru nosaukumus, kas norādīti tekstlodziņā pa kreisi. Varat arī ievadīt aizstājējzīmes, kas atbilst visiem saimniekiem domēnā, piemēram, <tt>.foo.com</tt>. Ja vēlaties, lai jūsu pasta serveris pārsūtītu e-pastu klientiem, jums ir jāpieņem pasts no jebkura domēna.
+rcpts_domains2=Papildu vietējie un releju domēni
+rcpts_desc2=Ja jums ir liels skaits pieņemto domēnu, šajā tekstlodziņā jāievada retāk izmantotie domēni. Parasti jūsu pirmie 50 atļautie domēni jāievada augšējā teksta lodziņā, bet pārējie - šajā.
+
+bads_title=Noraidītās adreses
+bads_addresses=Noraidītās e-pasta adreses
+bads_desc=QMail noraidīs pasta piegādi vai nosūtīšanu no jebkuras adreses, kas norādīta tekstlodziņā pa kreisi, un tas jāievada kā <tt>lietotājvārds @ domēna nosaukums</tt>. Ja vēlaties noraidīt pasta sūtījumus no visa domēna, tas jāievada kā <tt>@domainname</tt>.
+
+routes_title=Domēna maršrutēšana
+routes_toomany=Jūsu sistēmā ir pārāk daudz domēnu maršrutu, lai tos parādītu šajā lapā.
+routes_go=Atrodiet domēnu maršrutus, kas atbilst:
+routes_from=Pasts domēnam
+routes_to=Sūtīt caur serveri
+routes_direct=Piegādā tieši
+routes_defroute=Piegādāt visu pārējo izejošo pastu, izmantojot:
+routes_return=domēna maršruti
+routes_delete=Dzēst atlasītos domēna maršrutus
+
+rform_edit=Rediģēt domēna maršrutu
+rform_create=Izveidot domēna maršrutu
+rform_from=Pasts resursdatoram vai domēnam
+rform_to=Sūtīt caur SMTP serveri
+rform_port=SMTP ports
+
+rsave_err=Neizdevās saglabāt domēna maršrutu
+rsave_efrom='$1' nav derīgs domēna vārds
+rsave_eto='$1' nav derīgs SMTP serveris
+rsave_eport='$1' nav derīgs porta numurs
+
+rdelete_err=Neizdevās izdzēst domēna maršrutus
+
+percents_title=% Adreses domēni
+percents_domains=Domēni, kas atbalsta % adreses
+percents_desc=QMail pieņems e-pastu ar adresēm formātā <tt>user%firstdomain@seconddomain</tt>, ja <tt>seconddomain</tt> ir norādīts kreisajā lodziņā. Pēc tam šis pasta serveris ziņojumus šādā formātā pārsūtīs <tt>user@firstdomain</tt>.
+
+virts_title=Virtuālās kartēšanas
+virts_toomany=Jūsu sistēmā ir pārāk daudz virtuālo kartējumu, lai tos parādītu šajā lapā.
+virts_go=Atrodiet atbilstošus virtuālos attēlojumus:
+virts_from=Nosūtīt
+virts_prepend=Pievienojiet prefiksu
+virts_all=Visas adreses
+virts_none=Nav virtuāls
+virts_desc=Virtuālās kartēšanas QMail izmanto, lai apstrādātu e-pastu uz dažādiem jūsu servera domēniem, pirms turpmākās apstrādes ievietojot tekstu e-pasta adreses lietotāja daļā. Varat tos izmantot virtuālo pasta domēnu iestatīšanai, izveidojot jaunu domēna virtuālo kartēšanu, pēc tam izmantojot lapu <a href='$1'>Pasta aizstājvārdi</a>, lai šajā domēnā izveidotu aizstājvārdus.
+virts_return=virtuālas kartēšanas
+virts_delete=Dzēst atlasītās virtuālās kartēšanas
+
+vform_edit=Rediģēt virtuālo kartēšanu
+vform_create=Izveidot virtuālo kartēšanu
+vform_from=Pasta adrese
+vform_all=Jebkura adrese neatbilst citai virtuālajai kartēšanai
+vform_domain=Adreses ar domēnu
+vform_user=Adrese
+vform_to=Pievienot lietotājvārdam
+vform_none=Nekas
+vform_prepend=Norādītais prefikss
+vform_auto=Automātiski izvēlēts prefikss
+
+vsave_err=Neizdevās saglabāt virtuālo kartēšanu
+vsave_edomain='$1' nav derīgs e-pasta domēns
+vsave_euser='$1' nav derīgs e-pasta lietotājvārds
+vsave_eprepend='$1' nav derīgs kartēšanas prefikss
+vsave_eboth=Nevar atlasīt gan “Jebkura adrese, kas neatbilst citai virtuālajai kartēšanai”, gan “Nekas”.
+
+vdelete_err=Neizdevās izdzēst virtuālās kartēšanas
+
+stop_err=qmail-sūtīšanas process vairs nedarbojas
+
+log_stop=Apturēti QMail procesi
+log_start=Sācis QMail procesus
+log_opts=Mainītas QMail opcijas
+log_alias_create=Izveidots aizstājvārds $1 
+log_alias_delete=Dzēst aizstājvārdu $1 
+log_alias_modify=Pārveidots aizstājvārds $1 
+log_delete_aliases=Izdzēsti $1 aizstājvārdi
+log_virt_create=Izveidota virtuālā kartēšana $1 
+log_virt_delete=Dzēsts virtuālais kartējums $1 
+log_virt_modify=Modificēta virtuālā kartēšana $1 
+log_delete_virts=Izdzēsta $1 virtuālā kartēšana
+log_virtall_create=Izveidota virtuālā kartēšanas kartēšana
+log_virtall_delete=Izdzēsta virtuālā kartēšanas kartīte
+log_virtall_modify=Modificēta cachall virtuālā kartēšana
+log_locals=Mainīti vietējie domēni
+log_rcpts=Mainīti pieņemtie domēni
+log_bads=Mainītas noraidītās adreses
+log_percents=Mainīti % adreses domēni
+log_route_create=Izveidots maršruts $1 
+log_route_delete=Dzēsts maršruts $1 
+log_route_modifed=Pārveidots maršruts $1 
+log_delete_routes=Izdzēsti $1 maršruti
+log_defroute=Pārveidots noklusējuma maršruts
+log_assign_create=Izveidots pasta lietotājs $1 
+log_assign_delete=Izdzēsts pasta lietotājs $1 
+log_assign_modifed=Pārveidots pasta lietotājs $1 
+log_delete_assigns=Izdzēsti $1 pasta lietotāji
+log_delmail=Izdzēsti $1 ziņojumi no $2 
+log_movemail=$1 ziņojumi ir pārvietoti no $2 uz $3 
+log_send=Nosūtīts pasts uz $1 
+
+rfile_title=Rediģēt automātiskās atbildes failu
+rfile_desc=Izmantojiet zemāk esošo teksta laukumu, lai rediģētu automātiskās atbildes ziņojumu $1. Ziņojumā var būt makro $SUBJECT, $FROM, $TO, $DATE un $BODY, kas tiks izvērsti, kad tiks aktivizēta automātiskā atbilde.
+rfile_desc2=Varat arī iestatīt pasta galvenes, kas papildina vai aizvieto automātiskajā atbildē izmantotos noklusējumus, ievietojot šādas rindiņas: <br><tt> No: foo@bar.com </tt><br> <tt>Temats: Brīvdienās</tt> <br> ziņojuma augšdaļā, atdalīta no pamatteksta ar vienu tukšu līniju.
+rfile_efile=Jums nav atļauts rediģēt $1.
+rfile_undo=Atsaukt izmaiņas
+rfile_replies=Izsekot atbildes, lai novērstu pasta cilpas?
+rfile_none=Nē
+rfile_file=Jā, izmantojot žurnālfailu
+rfile_period=Minimālais intervāls starp atbildēm
+rfile_default=Noklusējums (1 stunda)
+rfile_secs=sekundes
+rfile_ereplies=Trūkst atbildes izsekošanas žurnāla faila
+rfile_eperiod=Trūkst vai nav derīgs sekunžu skaits starp atbildēm
+rfile_no_autoreply=Nesūtiet automātiskas atbildes uz
+rfile_from=No: adrese atbildei
+rfile_auto=Automātiska (pamatojoties uz adresāta adresi)
+rfile_efrom=Trūkst No: adrese
+rfile_fromdesc=A No: adrese vienmēr ir jānorāda, kur iespējams, jo automātiskā metode var nebūt uzticama.
+
+ffile_title=Rediģēt filtra failu
+ffile_desc=Izmantojiet zemāk esošo formu, lai iestatītu filtra kārtulas failā $1.
+ffile_efile=Jums nav atļauts rediģēt $1.
+ffile_line=Ja $1 lauks $2 $3, tad uz priekšu uz $4 
+ffile_from=no plkst
+ffile_to=uz
+ffile_subject=subjekts
+ffile_cc=CC
+ffile_body=ķermenis
+ffile_what0=neatbilst
+ffile_what1=sērkociņi
+ffile_other=Pretējā gadījumā pārsūtīt uz $1 
+ffile_err=Neizdevās saglabāt filtra failu
+ffile_ematch=Trūkst spēles
+ffile_eaction=Trūkst pārsūtīšanas adreses
+
+queue_title=Pasta rinda
+queue_count=$1 ziņojumi
+queue_none=Pašlaik neviena pasta ziņa netiek piegādāta rindā
+queue_id=Pasta ID
+queue_date=Nosūtīts
+queue_from=No plkst
+queue_to=Uz
+queue_cc=Kopija
+queue_subject=Priekšmets
+queue_return=pasta rinda
+queue_delete=Dzēsiet atlasītos ziņojumus
+queue_all=Izvēlēties visus
+queue_invert=Apgrieztā atlase
+queue_refresh=Atsvaidzināt pasta rindu
+queue_refreshdesc=Pārlādējiet šo lapu, lai parādītu pasta rindas pašreizējo stāvokli.
+
+qview_title=Sagaidīts ziņojums
+qview_desc=No faila $1 
+qview_headers=Pasta galvenes
+qview_attach=Pielikumi
+
+assigns_title=Pasta lietotāju uzdevumi
+assigns_return=pasta lietotāju uzdevumi
+assigns_toomany=Jūsu sistēmā ir pārāk daudz pasta lietotāju, lai tos parādītu šajā lapā.
+assigns_go=Atrodiet atbilstošus e-pasta lietotājus:
+assigns_address=Pasts uz adresi
+assigns_user=Unix lietotājs
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=Sākuma katalogs
+assigns_desc=Pasta lietotāju piešķīrumi ļauj jums izveidot pastkastes lietotājiem, kas nav definēti Unix lietotāju sarakstā. Katrs piešķīrums piegādās pastu ar izvēlētu lietotājvārdu vai lietotājvārdu, it kā tas tiktu piegādāts uz reālu Unix lietotāja pastkasti.
+assigns_delete=Dzēst atlasītos e-pasta lietotājus
+
+sform_edit=Rediģēt pasta lietotāju
+sform_create=Izveidojiet pasta lietotāju
+sform_address=Adreses lietotājvārds
+sform_mode0=Precīzs lietotājvārds
+sform_mode1=Lietotājvārdi, kas sākas ar
+sform_user=Unix lietotājs
+sform_uid=UID
+sform_gid=GID
+sform_home=Sākuma katalogs
+
+ssave_err=Neizdevās saglabāt pasta lietotāju
+ssave_eaddress=Trūkst vai nav derīgs adreses lietotājvārds
+ssave_euser=Trūkst vai nav derīgs Unix lietotājs
+ssave_euid=Trūkst vai nav derīgs UID
+ssave_egid=Trūkst vai nav derīgs GID
+ssave_ehome=Trūkst vai nav derīgs mājas direktorijs
+
+sdelete_err=Neizdevās izdzēst pasta lietotājus
+
+delete_egone=Rindas ziņojums vairs nepastāv
+delete_ebogus=Nederīgs rindas faila nosaukums
+
+boxes_title=Lietotāju pastkastes
+boxes_user=Lietotājs
+boxes_size=Pastkastes lielums
+boxes_none=Nav pasta
+boxes_return=pastkastītes
+boxes_sent=Nosūtītais pasts
+boxes_ecannot=Jums nav atļauts lasīt e-pastu
+boxes_toomany=Jūsu sistēmā ir pārāk daudz lietotāju, lai uzskaitītu visas viņu pastkastes.
+boxes_go=Skatīt lietotāja pastu:
+
+mail_title=Lietotāja e-pasts
+mail_from=No plkst
+mail_date=Datums
+mail_subject=Priekšmets
+mail_to=Uz
+mail_cc=Kopija
+mail_bcc=Diskrētā kopija
+mail_pri=Prioritāte
+mail_highest=Augstākais
+mail_high=Augsts
+mail_normal=Normāli
+mail_low=Zems
+mail_lowest=Zemākais
+mail_for=$1 
+mail_for2=Lietotājam $1 
+mail_sent=Nosūtīto e-pastu sarakstā
+mail_size=Izmērs
+mail_delete=Dzēst
+mail_compose=Sastādīt
+mail_return=lietotāja pastkaste
+mail_pos=Ziņojumi no $1 līdz $2 no $3 
+mail_none=Šajā pastkastē nav ziņojumu
+mail_ecannot=Jums nav atļauts lasīt šī lietotāja e-pastu
+mail_all=Izvēlēties visus
+mail_invert=Apgrieztā atlase
+mail_search=Atrodiet ziņojumus kur
+mail_body=Korpuss
+mail_match=sērkociņi
+mail_ok=Meklēt
+mail_nonefrom=Nav
+mail_mark=Atzīmēt kā:
+mail_mark0=Nelasīts
+mail_mark1=Lasīt
+mail_mark2=Īpašais
+mail_forward=Uz priekšu
+mail_rfc=No līnijas
+mail_move=Pārvietot uz:
+mail_eexists=Ziņojums vairs nepastāv!
+
+view_title=Lasīt e-pastu
+view_desc=Ziņojums $1 $2 
+view_desc2=Ziņojums $1 lietotājam $2 
+view_desc3=Ziņojums $1 
+view_sent=Ziņojums $1 nosūtīto e-pastu sarakstā
+view_qdesc=Sagaidīts ziņojums $1 
+view_headers=Pasta galvenes
+view_allheaders=Skatīt visas galvenes
+view_noheaders=Skatīt galvenes galvenes
+view_attach=Pielikumi
+view_reply=Atbildi
+view_reply2=Atbildēt uz visiem
+view_enew=Rediģēt kā jaunu
+view_forward=Uz priekšu
+view_delete=Dzēst
+view_strip=Noņemiet pielikumus
+view_ecannot=Jums nav atļauts lasīt šī lietotāja e-pastu
+view_mark=Atzīmēt ziņojumu kā:
+view_mark0=Nelasīts
+view_mark1=Lasīt
+view_mark2=Īpašais
+view_return=oriģināls e-pasts
+view_sub=Pievienots e-pasts
+
+compose_title=Sastādīt e-pastu
+reply_title=Atbildēt uz e-pastu
+forward_title=Pārsūtīt e-pastu
+enew_title=Rediģēt e-pastu
+reply_headers=Pasta galvenes
+reply_attach=Pārsūtītie pielikumi
+reply_mailforward=Pārsūtītie ziņojumi
+reply_attach2=Klienta un servera puses pielikumi
+reply_send=Nosūtīt pastu
+reply_ecannot=Jums nav atļauts sūtīt vēstules kā šim lietotājam
+
+send_err=Neizdevās nosūtīt pastu
+send_eto=Trūkst adreses
+send_efrom=Trūkst adreses
+send_title=Pasts nosūtīts
+send_ok=Pasts veiksmīgi nosūtīts uz $1 
+send_ecannot=Jums nav atļauts sūtīt vēstules kā šim lietotājam
+send_esmtp=SMTP komanda $1 neizdevās : $2 
+send_efile=Pievienotais fails $1 neeksistē
+send_eattach=Pielikumu kopsumma nedrīkst pārsniegt $1 kB.
+send_eperms=Lietotājs $1 nevar nolasīt $2 
+send_eperms2=Jums nav atļauts sūtīt failu $1 
+send_epath=Nosūtīšanas izpildāmais $1 neeksistē.
+
+delete_title=Dzēst pastu
+delete_rusure=Vai tiešām vēlaties dzēst $1 atlasītos ziņojumus no $2 ? Tas var aizņemt kādu laiku, kamēr tiek izveidots liels pasta fails. Kamēr dzēšana nav pabeigta, citas darbības nevajadzētu veikt.
+delete_rusure2=Vai tiešām vēlaties dzēst šo ziņojumu no $1 ? Tas var aizņemt kādu laiku, kamēr tiek izveidots liels pasta fails. Kamēr dzēšana nav pabeigta, citas darbības nevajadzētu veikt.
+delete_ok=Dzēst tūlīt
+delete_ecannot=Tagad jums ir atļauts izdzēst šī lietotāja vēstules
+delete_enone=Dzēšanai nav atlasīts neviens pasts
+delete_emnone=Nav atzīmēts neviens e-pasts
+delete_nobutton=Neviena poga nav noklikšķinājusi
+
+search_title=Meklēšanas rezultāti
+search_ecannot=Jums nav atļauts meklēt šī lietotāja e-pastā
+search_ematch=Jums ir jāievada teksts, kuram jāsakrīt.
+search_efield=Jums jāizvēlas meklēšanas tips.
+search_none=Nav atrasts neviens ziņojums.
+search_results2=$1 pasta ziņas, kas atbilst $2.
+search_results3=$1 pasta ziņojumi neatbilst $2.
+
+match_from=No: sakritības
+match_subject=Temats: spēles
+match_to=Kam: atbilst
+match_cc=Kopija: atbilst
+match_date=Datums: atbilst
+match_body=Ķermeņa sērkociņi
+match_size=Izmērs ir lielāks par
+match_headers=Galvenes sakrīt
+match_=-----------------
+match_!from=No: neatbilst
+match_!subject=Temats: neatbilst
+match_!to=Kam: neatbilst
+match_!cc=Kopija: neatbilst
+match_!date=Datums: neatbilst
+match_!body=Ķermenis neatbilst
+match_!size=Izmērs ir mazāks par
+match_!headers=Galvenes nesakrīt
+
+delq_titles=Ziņu dzēšana
+delq_rusure=Vai tiešām vēlaties dzēst $1 atlasītos rindas ziņojumus?
+delq_confirm=Dzēst ziņas

@@ -1,0 +1,94 @@
+index_econf=Vo vašom systéme nebol nájdený konfiguračný súbor striedania protokolov $1. Možno nie je logrotate nainštalovaný alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_ecmd=Program striedania protokolov $1 nebol vo vašom systéme nájdený. Možno nie je nainštalovaný alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_eversion=Nepodarilo sa získať verziu logrotate s príkazom $1 : $2 
+index_add=Ak chcete rotovať, pridajte nový súbor denníka.
+index_file=Súbor denníka
+index_none=Zatiaľ neboli definované žiadne protokolové súbory.
+index_global=Upraviť globálne možnosti
+index_globaldesc=Kliknite na toto tlačidlo, ak chcete upraviť nastavenia, ktoré sa vzťahujú na všetky protokolové súbory, a definovať predvolené hodnoty protokolov.
+index_scheddesc=Kliknutím na toto tlačidlo môžete upraviť plán spustenia logrotátu spoločnosťou Cron alebo ho povoliť alebo zakázať.
+index_nocmd=nikto
+index_force=Vynútiť rotáciu protokolu
+index_forcedesc=Vynútite okamžitú rotáciu všetkých protokolových súborov, aj keď ešte nie je čas.
+index_logrotate=logrotate
+index_delete=Odstránenie vybratých otočení denníka
+
+period_bytes=bajtov
+
+edit_title1=Upravte súbor denníka
+edit_title2=Vytvorte súbor denníka
+edit_header=Podrobnosti o otočenom protokolovom súbore
+edit_file=Cesty protokolového súboru
+edit_sched=Plán striedania
+edit_rotate=Počet starých denníkov, ktoré sa majú uchovávať
+edit_copytruncate=Skrátiť súbor denníka na mieste?
+edit_ifempty=Otočiť, aj keď je súbor denníka prázdny?
+edit_missingok=Ignorovať súbor denníka, ak chýba?
+edit_size=Maximálna veľkosť pred rotáciou
+edit_always=ignorované
+edit_minsize=Minimálna veľkosť rotácie
+edit_nominsize=vždy
+edit_ext=Rozšírenie pre rotované názvy súborov
+edit_dateext=Pre rotované súbory použite rozšírenie dátumu
+edit_mail=Poslať e-mailom súbor protokolu pred odstránením?
+edit_mailto=Áno, na adresu
+edit_mailno=Nie, neposielajte e-mailom
+edit_mailfl=Prihláste sa do e-mailu
+edit_mailfirst=Najnovšie, ktoré sa práve striedalo
+edit_maillast=Najstarší, ktorý sa má odstrániť
+edit_createas=Áno, v režime $1 a vo vlastníctve používateľa $2 a skupiny $3 
+edit_olddir=Uložte staré otočené záznamy
+edit_olddirto=adresár
+edit_olddirsame=Rovnaký adresár ako súbor denníka
+edit_errors=Zasielajte chybové správy e-mailom na adresu
+edit_errorsno=nikto
+edit_errorsto=Adresa alebo užívateľ
+edit_post=Príkazy na spustenie po otočení
+edit_pre=Príkazy na spustenie pred rotáciou
+edit_default=Predvolené ($1)
+edit_sharedscripts=Skripty spúšťajte iba raz pre všetky súbory?
+edit_now=Otočiť teraz
+
+global_title=Globálne možnosti
+global_header=Predvolené možnosti pre všetky protokolové súbory
+
+save_efile=Chýba alebo je neplatný názov súboru denníka
+save_esize=Chýbajúca alebo neplatná maximálna veľkosť
+save_eminsize=Chýbajúca alebo neplatná minimálna veľkosť
+save_erotate=Chýba alebo neplatný maximálny počet starých denníkov, ktoré sa majú uchovávať
+save_ecreatemode=Chýba alebo je neplatný 3 alebo 4-ciferný osmičkový režim vytvárania
+save_ecreateuser=Chýbajúci alebo neplatný používateľ vytvorenia
+save_ecreategroup=Chýba alebo je neplatná skupina na vytvorenie
+save_emust1=Pri vstupe do vytvoreného používateľa musíte vstúpiť do režimu tvorby
+save_emust2=Pri vstupe do skupiny vytvorení musíte zadať užívateľa vytvorenia
+save_eolddirto=Chýbajúci alebo neplatný adresár pre staré otočené protokoly
+save_eext=Chýbajúce rozšírenie názvov rotovaných protokolov
+save_emailto=Chýba e-mailová adresa pre striedavé denníky
+save_eerrors=Chýba e-mailová adresa pre chybové správy
+save_epre=Skript predbežnej rotácie nemôže obsahovať riadok <tt>endcript</tt> alebo <tt>endrotate</tt>
+save_epost=Skript po rotácii nemôže obsahovať riadok <tt>endcript</tt> alebo <tt>endrotate</tt>
+save_enofiles=Neboli zadané žiadne súbory na rotáciu
+
+log_modify_sched=Zmenená úloha Cron rotácie protokolu
+log_delete_sched=Odstránená úloha Cron rotácie protokolu
+log_modify=Upravené striedanie pre súbor denníka $1 
+log_delete=Odstránená rotácia pre súbor denníka $1 
+log_delete_logs=Odstránená rotácia pre súbory denníka $1 
+
+sched_title=Plán striedania protokolov
+sched_desc=Aby bolo možné vykonávať rotáciu protokolov pomocou tohto modulu, príkaz $1 musí byť spustený v pravidelnom rozvrhu (zvyčajne denne) pomocou Cron.
+sched_runparts=Momentálne sa príkaz rotácie denníka spúšťa zo skriptu $1 $2 a nedá sa upraviť.
+sched_sched=Protokol úlohy striedania protokolov
+sched_disabled=invalidný
+sched_enabled=Povolené, niekedy nižšie.
+sched_err=Uloženie plánu striedania zlyhalo
+sched_when=Časy plynúť
+
+force_title=Vynútiť rotáciu protokolu
+force_doing=Vynútenie okamžitej rotácie všetkých protokolových súborov.
+force_doingone=Vynútenie okamžitej rotácie jedného súboru denníka.
+force_done=.. hotový.
+force_failed=.. zlyhalo! Dôvod prečo je uvedený vyššie.
+
+delete_err=Protokoly sa nepodarilo odstrániť
+delete_enone=Žiadne vybraté

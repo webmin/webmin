@@ -1,0 +1,29 @@
+index_mail=E-mailt küld a befejezéskor?
+index_delete=A kiválasztott parancsok törlése
+index_noat=A (z) $1 parancs nem található a rendszeren - talán nincs telepítve, vagy nem érhető el az operációs rendszer számára.
+index_nostyle=A Webmin nem ismeri az ütemezési parancsok kezelését ezen az operációs rendszeren.
+index_stop=Az ütemezett parancsok kiszolgálójának leállítása
+index_stopdesc=Állítsa le az ütemezett parancsokat futtató <tt>atd</tt> háttérszerver folyamatot. Ez megakadályozza a parancsok végrehajtását a megadott időpontban.
+index_start=Indítsa el az Ütemezett parancsok kiszolgálót
+index_startdesc=Indítsa el az ütemezett parancsokat futtató <tt>atd</tt> háttérszerver folyamatot. Erre a parancsok megadott időpontban történő végrehajtásához van szükség.
+index_boot=Indítsa el a szervert indításkor?
+index_bootdesc=Módosítsa ezt a beállítást, hogy engedélyezze vagy letiltsa az ütemezett parancskiszolgáló indítását a rendszer indításakor.
+
+edit_shortcmd=Végrehajtási parancs
+edit_showfull=A teljes szkript megjelenítése.
+
+deletes_err=A parancsok megszakítása nem sikerült
+deletes_enone=Egy sincs kiválasztva
+
+log_allow=Megváltozott az engedélyezett felhasználók
+log_create_job=Létrehozott ütemezett parancsot a (z) $1 számára
+log_delete_job=A (z) $1 ütemezett parancsát törölték
+log_exec_job=Végrehajtott ütemezett parancs a (z) $1 számára
+log_delete_jobs=$1 ütemezett parancsok törölve
+log_stop=Az ütemezett parancskiszolgáló leállt
+log_start=Elindította az ütemezett parancskiszolgálót
+log_bootup=Engedélyezte az ütemezett parancsok szerverét indításkor
+log_bootdown=Az ütemezett parancskiszolgáló letiltva indításkor
+
+stop_err=Nem sikerült leállítani a szervert
+start_err=Nem sikerült elindítani a szervert

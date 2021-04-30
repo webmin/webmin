@@ -1,0 +1,10 @@
+index_custom=定制文件
+
+search_custom=定制文件
+search_doxfer=Webmin在线文档
+
+man_epath=手册页不能是路径！
+
+acl_allow=可以编辑允许的搜索类型吗？
+
+check_ecannot=您不允许编辑允许的搜索类型

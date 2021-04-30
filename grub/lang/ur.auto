@@ -1,0 +1,75 @@
+index_title=GRUB بوٹ لوڈر
+index_add=بوٹ کا نیا آپشن شامل کریں۔
+index_global=عالمی اختیارات میں ترمیم کریں
+index_globalmsg=عالمی بوٹ اپ آپشنز میں ترمیم کریں جو بوٹ کے تمام مینو انتخاب پر لاگو ہوتے ہیں ، اور اس آلے کا انتخاب کریں جس پر GRUB انسٹال ہوا ہے۔
+index_install=GRUB انسٹال کریں
+index_installmsg=بوٹ اپ کے وقت اوپر والے اختیارات کو ظاہر کرنے کے لئے GRUB بوٹ لوڈر کو$1 پر انسٹال کریں۔ یہ LILO جیسے کسی بھی موجودہ بوٹ لوڈر کو اوور رائڈ کرے گا ، اور آپ کے سسٹم کو بوٹ ایبل کرسکتا ہے۔
+index_none=کسی بوٹ کے اختیارات کی وضاحت نہیں کی گئی ہے۔ یقینی بنائیں کہ آپ گرب لگانے سے پہلے کم از کم ایک شامل کریں۔
+index_efile=The GRUB menu file $1 was not found on your system. Maybe GRUB is not installed, or the <a href='$2'>module configuration</a> is incorrect.
+index_epath=The GRUB executable $1 was not found on your system. Maybe GRUB is not installed, or the <a href='$2'>module configuration</a> is incorrect.
+index_return=اختیارات کی فہرست
+
+title_add=بوٹ آپشن شامل کریں
+title_edit=بوٹ آپشن میں ترمیم کریں
+title_header=بوٹ مینو آپشن کی تفصیلات
+title_title=اختیار کا عنوان
+title_root=بوٹ کی تصویر تقسیم
+title_noverify=تقسیم کو ماؤنٹ اور تصدیق نہ کریں
+title_other=آلہ کی دوسری فائل
+title_sel=منتخب شدہ
+title_boot=آپریٹنگ سسٹم بوٹ کرنے کے لئے
+title_kernel=دانا
+title_kfile=دانا کا راستہ
+title_args=دانا کے اختیارات
+title_initrd=ابتدائی رامڈسک فائل
+title_modules=اضافی ماڈیولز
+title_chain=دوسرے OS
+title_chain_def=تقسیم کے پہلے شعبے سے
+title_chain_file=چینلوڈر فائل سے
+title_makeactive=جڑ تقسیم کو فعال بنائیں؟
+title_none1=کوئی نہیں
+title_none2=(نان بوٹنگ مینو اندراج)
+title_err=بوٹ آپشن کو بچانے میں ناکام
+title_etitle=غائب آپشن ٹائٹل
+title_eroot=گمشدہ جڑ کی تقسیم
+title_ekernel=گمشدہ یا غلط دانا راہ
+title_echain=لاپتہ یا غلط چینلوڈر فائل
+title_edev=غیر تعاون یافتہ جڑ کی تقسیم کا آلہ$1
+title_einitrd=ابتدائی ramdisk فائل کا نام غائب ہے
+title_lock=پاس ورڈ مقفل ہے؟
+
+global_title=عالمی اختیارات
+global_header=گلوبل بوٹ مینو کے اختیارات
+global_default=پہلے سے طے شدہ بوٹ کا اختیار
+global_fallback=فیل بیک بوٹ آپشن
+global_first=پہلے فہرست میں
+global_timeout=پہلے سے طے شدہ لوڈ سے پہلے کا وقت ختم
+global_forever=ہمیشہ انتظار کریں
+global_secs=سیکنڈ
+global_install=GRUB کو ڈسک/پارٹیشن پر انسٹال کریں
+global_sel=منتخب شدہ
+global_other=دیگر
+global_password=بوٹ پاس ورڈ
+global_none=کوئی نہیں
+global_password_file=اگر پاس ورڈ درج کیا گیا ہو تو مینو فائل کا استعمال کریں:
+global_err=عالمی اختیارات کو بچانے میں ناکام
+global_etimeout=غائب یا غلط ٹائم آؤٹ
+global_edev=غیر تعاون یافتہ انسٹال ڈسک/پارٹیشن$1
+global_eother=غائب یا غلط ڈسک/پارٹیشن
+global_epassword=غائب یا غلط بوٹ پاس ورڈ
+global_epasswordfile=متبادل مینو فائل کا نام غائب ہے
+
+install_title=GRUB انسٹال کریں
+install_err=GRUB انسٹال کرنے میں ناکام
+install_efind=مینو فائل نہیں مل سکی
+install_desc=کمانڈ$2 اور$3 کے ساتھ$1 پر GRUB انسٹال کرنا۔
+install_ok=.. انسٹال مکمل
+install_failed=.. انسٹال ناکام!
+
+log_create_title=بوٹ آپشن$1 تشکیل دیا گیا
+log_delete_title=حذف شدہ بوٹ آپشن$1
+log_modify_title=ترمیم شدہ بوٹ آپشن$1
+log_up_title=بوٹ آپشن$1 منتقل کردیا گیا
+log_down_title=بوٹ آپشن$1 کو نیچے منتقل کردیا گیا
+log_global=بدل گئے عالمی اختیارات
+log_install=GRUB انسٹال کیا گیا

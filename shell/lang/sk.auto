@@ -1,0 +1,5 @@
+index_trunced=Celková produkcia $2 bola skrátená na $1.
+index_timedout=Príkaz bol ukončený po spustení $1 s.
+
+acl_shellenv=Používate vybrané používateľské prostredie?
+acl_chroot=Chroot to directory

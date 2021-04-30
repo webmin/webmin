@@ -1,0 +1,57 @@
+index_title=Dionice NFS-a
+index_add=Započnite dijeljenje novog direktorija.
+index_dir=Imenik
+index_clients=klijenti
+index_everyone=Svatko
+index_delete=Brisanje odabranih dionica
+index_none=Na ovom se sustavu trenutno ne izvoze direktoriji.
+index_apply=Primijeni promjene
+index_applydesc=Kliknite ovaj gumb da biste primijenili trenutnu konfiguraciju dijeljenja datoteka. Ovo će učiniti dostupnim sve opcije s navedenim opcijama.
+index_return=popis dionica
+
+edit_title1=Uredi Podijeli
+edit_title2=Stvorite dijeljenje
+edit_header1=Podijelite detalje
+edit_dir=Imenik
+edit_desc=Opis
+edit_ro=Pristup samo za čitanje
+edit_rw=Pristup čitanja i pisanja
+edit_root=Korijenski pristup
+edit_none=nijedan
+edit_all=Svi domaćini
+edit_listed=Domaćini s popisa ..
+edit_header2=Opcije dijeljenja
+edit_nosub=Dopuštate ugradnju poddirektora?
+edit_nosuid=Dopuštate setuid datoteke?
+edit_des=Klijenti moraju koristiti DES?
+edit_kerberos=Klijenti moraju koristiti kerberos?
+edit_anon=Anonimni korisnik
+edit_anon0=Nespreman
+edit_anon1=Nema pristupa
+edit_aclok=Dopuštate ACL-ove?
+edit_public=Udjel WebNFS?
+edit_index=Datoteka indeksa WebNFS
+
+save_err=Dijeljenje nije uspjelo
+save_edirectory='$1' nije valjano ime direktorija
+save_edirectory2=Imenik "$1" ne postoji
+save_erw=Niste naveli nijednog domaćina s kojim biste dijelili čitanje i pisanje
+save_ero=Niste naveli nijednog domaćina s kojim biste dijelili samo čitanje
+save_eroot=Niste naveli nijednog domaćina s kojim biste dijelili root
+save_ealready=Direktorijum "$1" već se dijeli
+save_ehost=Domaćin '$1' ne postoji
+
+log_modify=Izmijenjeni udio NFS $1 
+log_rename=Izmijenjeni udio NFS $1 u $2 
+log_create=Izrađen udio NFS $1 
+log_delete=Izbrisani udio NFS $1 
+log_apply=Primijenjene promjene
+
+acl_view=Može li se uređivati NFS dionice?
+
+ecannot=Nije vam dopušteno upravljanje dionicama NFS-a
+
+delete_err=Dijeljenje nije uspjelo
+delete_enone=Nijedna nije odabrana
+
+restart_err=Primjena promjena nije uspjela

@@ -19,111 +19,126 @@ else {
 		&error($text{'user_euser'});
 	$in{'host_def'} || $in{'host'} =~ /^\S+$/ ||
 		&error($text{'user_ehost'});
-	if ($in{'mysqlpass_mode'} == 0 && $in{'mysqlpas'} =~ /\\/) {
+	if ($in{'mysqlpass_mode'} eq '0' && $in{'mysqlpas'} =~ /\\/) {
 		&error($text{'user_eslash'});
 		}
 
 	%perms = map { $_, 1 } split(/\0/, $in{'perms'});
 	@desc = &table_structure($master_db, 'user');
-	%fieldmap = map { $_->{'field'}, $_->{'index'} } @desc;
+	%fieldmap = map { lc($_->{'field'}), $_->{'index'} } @desc;
 	$host = $in{'host_def'} ? '%' : $in{'host'};
+	$oldhost = $in{'oldhost'};
 	$user = $in{'mysqluser_def'} ? '' : $in{'mysqluser'};
+	$olduser = defined($in{'olduser'}) ? $in{'olduser'} : $user;
 	@pfields = map { $_->[0] } &priv_fields('user');
 	my @ssl_field_names = &ssl_fields();
 	my @ssl_field_values = map { '' } @ssl_field_names;
 	my @other_field_names = &other_user_fields();
 	my @other_field_values = map { '' } @other_field_names;
+	my ($ver, $variant) = &get_remote_mysql_variant();
+	my $plugin = &get_mysql_plugin(1);
+
+	# Create a new user
 	if ($in{'new'}) {
-		# Create a new user
-		$sql = "insert into user (host, user, ".
-		       join(", ", @pfields, @ssl_field_names,
-				  @other_field_names).
-		       ") values (?, ?, ".
-		       join(", ", map { "?" } (@pfields, @ssl_field_names,
-					       @other_field_names)).")";
-		&execute_sql_logged($master_db, $sql,
-			$host, $user,
-			(map { $perms{$_} ? 'Y' : 'N' } @pfields),
-			@ssl_field_values, @other_field_values);
+		&create_user({
+			'user', $olduser,
+			'pass', $in{'mysqlpass'},
+			'host', $host,
+			'perms', \%perms,
+			'pfields', \@pfields,
+			'ssl_field_names', \@ssl_field_names,
+			'ssl_field_values', \@ssl_field_values,
+			'other_field_names', \@other_field_names,
+			'other_field_values', \@other_field_values,
+			});
 		}
+	# Update an existing user
 	else {
-		# Update existing user
-		$sql = "update user set host = ?, user = ?, ".
-		       join(", ",map { "$_ = ?" } @pfields).
-		       " where host = ? and user = ?";
-		&execute_sql_logged($master_db, $sql,
-			$host, $user,
-			(map { $perms{$_} ? 'Y' : 'N' } @pfields),
-			$in{'oldhost'}, $in{'olduser'});
-		}
-	&execute_sql_logged($master_db, 'flush privileges');
 
-	# Update the password using the correct syntax for the mysql version
-	($ver, $variant) = &get_remote_mysql_variant();
-	if ($in{'mysqlpass_mode'} == 0) {
-		$esc = &escapestr($in{'mysqlpass'});
-		if ($variant eq "mysql" &&
-		    &compare_version_numbers($ver, "8") >= 0) {
-			&execute_sql_logged($master_db,
-				"set password for '".$user."'\@'".$host."' = ".
-				"'$esc'");
+		# Rename user and/or host, if requested
+		my $changing_user = ($user ne $olduser);
+		my $changing_host = ($host ne $oldhost);
+		if ($changing_user ||
+			$changing_host) {
+			&rename_user({
+				'user', $user,
+				'olduser', $olduser,
+				'host', $host,
+				'oldhost', $oldhost,
+				});
+			$olduser = $user if ($changing_user);
+			$oldhost = $host if ($changing_host);
 			}
-		else {
-			&execute_sql_logged($master_db,
-				"set password for '".$user."'\@'".$host."' = ".
-				"$password_func('$esc')");
+		
+		# Update user password, if requested
+		if ($in{'mysqlpass_mode'} == 4) {
+			# Never used for admin accounts
+			&change_user_password(undef, $olduser, $oldhost);
 			}
-		}
-	elsif ($in{'mysqlpass_mode'} == 2) {
-		&execute_sql_logged($master_db,
-			"update user set password = NULL ".
-			"where user = ? and host = ?",
-			$user, $host);
-		}
+		elsif ($in{'mysqlpass_mode'} != 1) {
+			($in{'mysqlpass_mode'} eq '0' && !$in{'mysqlpass'}) && &error($text{'root_epass1'});
+			my $pass = $in{'mysqlpass'} || '';
+			&change_user_password($pass, $olduser, $oldhost);
+			}
 
+		&update_privileges({
+			'user', $olduser,
+			'host', $oldhost,
+			'perms', \%perms,
+			'pfields', \@pfields
+			});
+		}
+	
 	# Save various limits
+	my %mdb104_diff = ('max_connections', 'max_connections_per_hour',
+                       'max_questions', 'max_queries_per_hour',
+                       'max_updates', 'max_updates_per_hour');
 	foreach $f ('max_user_connections', 'max_connections',
 		    'max_questions', 'max_updates') {
 		next if (&compare_version_numbers($ver, 5) < 0 ||
 			 !defined($in{$f.'_def'}));
 		$in{$f.'_def'} || $in{$f} =~ /^\d+$/ ||
 		       &error($text{'user_e'.$f});
-		&execute_sql_logged($master_db,
-			"update user set $f = ? ".
-			"where user = ? and host = ?",
-			$in{$f.'_def'} ? 0 : $in{$f}, $user, $host);
+		if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
+			my $f_tbl_diff = $mdb104_diff{$f} || $f;
+			&execute_sql_logged($mysql::master_db,
+					"alter user '$olduser'\@'$oldhost' with $f_tbl_diff "
+					.($in{$f.'_def'} ? 0 : $in{$f})."");
+			}
+		else {
+			&execute_sql_logged($master_db,
+				"update user set $f = ? ".
+				"where user = ? and host = ?",
+				$in{$f.'_def'} ? 0 : $in{$f}, $olduser, $oldhost);
+			}
+
 		}
 
 	# Set SSL fields
-	if (&compare_version_numbers($ver, 5) >= 0 &&
-	    defined($in{'ssl_type'}) &&
-	    (!$in{'new'} || $in{'ssl_type'} || $in{'ssl_cipher'})) {
-		&execute_sql_logged($master_db,
-			"update user set ssl_type = ? ".
-			"where user = ? and host = ?",
-			$in{'ssl_type'}, $user, $host);
-		&execute_sql_logged($master_db,
-			"update user set ssl_cipher = ? ".
-			"where user = ? and host = ?",
-			$in{'ssl_cipher'}, $user, $host);
+	if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
+		if ($in{'ssl_type'} =~ /^(NONE|SSL|X509)$/) {
+			&execute_sql_logged($mysql::master_db,
+				"alter user '$olduser'\@'$oldhost' require $in{'ssl_type'}");
+			}
+		}
+	else {
+		if (&compare_version_numbers($ver, 5) >= 0 &&
+		    defined($in{'ssl_type'}) &&
+		    (!$in{'new'} || $in{'ssl_type'} || $in{'ssl_cipher'})) {
+			&execute_sql_logged($master_db,
+				"update user set ssl_type = ? ".
+				"where user = ? and host = ?",
+				$in{'ssl_type'}, $olduser, $oldhost);
+			&execute_sql_logged($master_db,
+				"update user set ssl_cipher = ? ".
+				"where user = ? and host = ?",
+				$in{'ssl_cipher'}, $olduser, $oldhost);
+			}
 		}
 	}
 &execute_sql_logged($master_db, 'flush privileges');
-if (!$in{'delete'} && !$in{'new'} &&
-    $in{'olduser'} eq $config{'login'} && !$access{'user'}) {
-	# Renamed or changed the password for the Webmin login .. update
-	# it too!
-	$config{'login'} = $in{'mysqluser'};
-	if ($in{'mysqlpass_mode'} == 0) {
-		$config{'pass'} = $in{'mysqlpass'};
-		}
-	elsif ($in{'mysqlpass_mode'} == 2) {
-		$config{'pass'} = undef;
-		}
-	&lock_file($module_config_file);
-	&save_module_config();
-	&unlock_file($module_config_file);
-	}
+
+# Log actions
 if ($in{'delete'}) {
 	&webmin_log("delete", "user", $in{'olduser'},
 		    { 'user' => $in{'olduser'},

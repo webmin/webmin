@@ -1,0 +1,58 @@
+index_title=Trạng thái ổ đĩa thông minh
+index_ecmd=Không tìm thấy lệnh điều khiển SMART $1 trên hệ thống của bạn hoặc không được đặt chính xác trong cấu hình mô-đun <a href='$2'></a>. Nó phải được cài đặt trước khi mô-đun này có thể được sử dụng.
+index_ecmd2=Lệnh $1 dường như không phải là lệnh điều khiển SMART. Nó phải được đặt chính xác trong <a href='$2'>cấu hình mô-đun</a> trước khi mô-đun này có thể được sử dụng.
+index_version=Phiên bản SMARTsuite $1 
+index_show=Hiển thị trạng thái của ổ đĩa:
+index_ok=Chỉ
+index_eidescsi=Không tìm thấy ổ đĩa IDE, SCSI hoặc SATA trên hệ thống của bạn.
+index_drive=Trạng thái của ổ $1 
+index_drivesub=Trạng thái của ổ $1, đĩa $2 
+index_desc=Vị trí
+index_size=Kích thước ổ đĩa
+index_model=Làm và làm mẫu
+index_support=Hỗ trợ SMART?
+index_enabled=Kích hoạt SMART?
+index_check=Đã qua kiểm tra lái xe?
+index_short=Tự kiểm tra ngắn
+index_ext=Tự kiểm tra mở rộng
+index_data=Kiểm tra thu thập dữ liệu
+index_errors=Lỗi đăng nhập
+index_ecount=Đã phát hiện $1 lỗi
+index_attrs=Thuộc tính SMART bổ sung
+index_raw=Báo cáo trạng thái SMART đầy đủ
+index_return=chỉ số mô-đun
+index_family=Gia đình kiểu mẫu
+index_serial=Số sê-ri
+index_capacity=Sức chứa
+index_norm=Chuẩn hóa:
+
+monitor_type=Kiểm tra ổ đĩa thông minh
+monitor_type2=SSD hao mòn
+monitor_drive=Lái xe để kiểm tra
+monitor_errors=Kiểm tra nhật ký lỗi quá?
+monitor_errorsinc=Có, nhưng chỉ cảnh báo nếu số lỗi tăng
+monitor_other=Khác ..
+monitor_edrive=Ổ đĩa bị thiếu hoặc không hợp lệ để kiểm tra
+monitor_nosuch=Không có ổ đĩa như vậy
+monitor_nosmart=Không hỗ trợ SMART
+monitor_errorsfound=Đã báo cáo $1 lỗi
+monitor_errorsinced=Lỗi tăng từ $2 lên $1 
+monitor_wearlevel=Thất bại nếu mức độ mòn xuống dưới
+monitor_ewearlevel=Tỷ lệ hao mòn không hợp lệ
+monitor_nowearout=Ổ đĩa không báo cáo chỉ số hao mòn SSD
+monitor_wornout=Mức độ hao mòn đã giảm xuống $1 
+
+short_title=Tự kiểm tra ngắn
+short_doing=Bắt đầu tự kiểm tra ngắn $1 ..
+short_failed=.. thất bại!
+short_ok=.. kiểm tra bắt đầu OK. Xem trạng thái ổ đĩa trên trang chính của mô-đun để biết kết quả.
+
+ext_title=Tự kiểm tra mở rộng
+ext_doing=Bắt đầu tự kiểm tra mở rộng $1 ..
+ext_failed=.. thất bại!
+ext_ok=.. kiểm tra bắt đầu OK. Xem trạng thái ổ đĩa trên trang chính của mô-đun để biết kết quả.
+
+data_title=Kiểm tra thu thập dữ liệu
+data_doing=Bắt đầu thu thập dữ liệu ngoại tuyến trên $1 ..
+data_failed=.. thất bại!
+data_ok=.. bộ sưu tập bắt đầu OK. Xem trạng thái ổ đĩa trên trang chính của mô-đun để biết kết quả.

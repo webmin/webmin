@@ -1,0 +1,2 @@
+desc_fr=Utilisateurs et groupes LDAP
+longdesc_fr=Gérez les utilisateurs et les groupes stockés dans une base de données LDAP, utilisés pour l'authentification Unix, Samba et Cyrus IMAP.

@@ -1,0 +1,50 @@
+index_title=OpenSLP 구성
+index_return=OpenSLP 구성
+index_eslpd=시스템에서 OpenSLP 데몬 $1 을 (를) 찾을 수 없습니다. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+index_econf=시스템에서 OpenSLP 구성 파일 $1 을 (를) 찾을 수 없습니다. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+index_version=OpenSLP 버전 $1 
+
+slp_apply=변경 승인
+slp_stop=OpenSLP 중지
+
+snda_title=정적 범위 및 DA
+snda_useScopes=범위의 정적 목록
+snda_DAAddresses=디렉토리 에이전트 (DA)의 정적 목록
+
+netcfg_title=네트워크 구성
+netcfg_isBroadcastOnly=멀티 캐스트 대신 브로드 캐스트를 사용하도록 설정
+netcfg_passiveDADetection=수동 DA 감지 사용
+netcfg_activeDADetection=활성 DA 감지 사용 (DHCP 또는 DA 주소로만 제한)
+netcfg_DAActiveDiscoveryInterval=초 단위의 활성 검색 (0은 활성 검색을 사용하지 않도록 설정)
+netcfg_multicastTTL=멀티 캐스트 TTL (0-255)
+netcfg_DADiscoveryMaximumWait=DA 발견 요청의 최대 대기 시간 (밀리 초)
+netcfg_DADiscoveryTimeouts=연속 DA 검색 대기 시간 (밀리 초)
+netcfg_HintsFile=OpenSLP 힌트 파일의 경로
+netcfg_multicastMaximumWait=멀티 캐스트 요청에 대한 최대 대기 시간 (밀리 초)
+netcfg_multicastTimeouts=연속 멀티 캐스트 대기 시간 (밀리 초)
+netcfg_unicastMaximumWait=유니 캐스트 요청 사이의 최대 시간 (밀리 초)
+netcfg_randomWaitBound=모든 임의 대기 매개 변수의 최대 값 (밀리 초)
+netcfg_MTU=MTU 패킷 크기 (바이트)
+netcfg_interfaces=DA/SA가 청취해야하는 인터페이스의 IP 주소
+
+dacfg_title=DA 구성
+dacfg_isDA=DA로만 기능 (이 내용을 변경하기 전에 사용 설명서를 읽으십시오)
+
+log_title=추적 및 로깅
+log_traceDATraffic=DA 교통 메시지 인쇄
+log_traceMsg=SLP 상세 메시지 인쇄
+log_traceDrop=삭제 된 SLP 메시지 정보 인쇄
+log_traceReg=DA 및 SA 등록 및 등록 취소 정보 인쇄
+
+error_open=파일을 여는 중 오류
+error_flock_on=파일 잠금 생성 오류
+error_flock_off=파일 잠금 파괴 중 오류
+error_hup=PID로 OpenSLP 재시작 오류
+
+index_start=OpenSLP 시작
+index_startmsg=시스템에서 OpenSLP 데몬을 시작하려면이 버튼을 클릭하십시오.
+index_stop=OpenSLP 중지
+index_stopmsg=시스템에서 OpenSLP 데몬을 중지하려면이 버튼을 클릭하십시오.
+
+stop_err=OpenSLP를 중지하지 못했습니다
+start_err=OpenSLP를 시작하지 못했습니다

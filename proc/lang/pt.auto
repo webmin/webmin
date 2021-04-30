@@ -1,0 +1,122 @@
+index_zone=Zona
+index_mem2=<b>Memória real:</b> $1 total / $2 livre
+index_mem3=<b>Memória real:</b> $1 total / $2 livre / $3 em cache
+index_swap2=<b>Troque espaço:</b> $1 total / $2 livre
+index_burst=<b>Memória estourável:</b> $1 total
+index_loadname=Médias de carga da CPU:
+index_loadnums=$1 (1 minutos), $2 (5 minutos), $3 (15 minutos)
+index_cpuname=Tipo de CPU:
+index_inzone=Na zona $1 
+
+stime=Começado
+sclass=Classe de agendamento de E / S
+sprio=Prioridade de IO
+
+search_cpupc=Usando mais de $1% da CPU
+search_cpupc2=Usando mais CPU que
+search_ignore=Ignorar processos de pesquisa no resultado
+search_sigterm=Terminar processos
+search_sigkill=Processos de abate
+search_port=Usando porta
+search_protocol=protocolo
+search_ip=Usando endereço IP
+
+run_ecannot=Você não tem permissão para executar comandos
+run_as=Executar como usuário
+run_euser=Nome de usuário ausente ou inválido
+run_euser2=Você não tem permissão para executar comandos como o usuário selecionado
+
+edit_subid=EU IRIA
+edit_subcmd=Comando de subprocesso
+edit_prilow=Baixa prioridade
+edit_prihigh=Prioridade máxima
+edit_pridef=Padrão
+edit_none=Nenhum
+edit_ecannot=Você não tem permissão para editar processos
+edit_sigterm=Terminar
+edit_sigkill=Mate
+edit_sigstop=Suspender
+edit_sigcont=Currículo
+edit_open=Arquivos e conexões
+edit_trace=Processo de rastreamento
+edit_return=detalhes do processo
+
+kill_ecannot=Você não tem permissão para matar processos
+
+renice_ecannot=Você não tem permissão para renovar processos
+
+linux_stime=Começado
+
+linux_real=Tempo real
+linux_be=Melhor esforço
+linux_idle=Ocioso
+
+freebsd_stime=Começado
+
+hpux_stime=Começado
+
+sysv_stime=Começado
+sysv_task=ID da tarefa
+sysv_zone=Nome da zona
+
+log_run=Ran comando "$1"
+log_kill=Sinal enviado $1 para processar $2 
+log_kills=Enviar sinal $1 a $2 processos
+log_kill_l=Sinal enviado $1 para processar $2 
+log_kills_l=Enviou o sinal $1 para os processos <br> $2 
+log_renice=Prioridade alterada do processo $2 para $1 
+
+acl_manage=Gerenciar processos como usuário
+acl_manage_def=Usuário atual do Webmin
+acl_edit=Pode matar e renice processos?
+acl_run=Pode executar comandos?
+acl_only=Só pode ver os próprios processos?
+acl_who=Pode gerenciar processos para usuários
+acl_who0=Todos os usuários
+acl_who1=Usuário atual do Webmin
+acl_who2=Usuários listados ..
+
+kill_kill=Processo de abate
+kill_term=Terminar
+kill_hup=Reiniciar
+kill_stop=Pare
+kill_cont=Continuar
+
+open_title=Abrir arquivos e conexões
+open_proc=Para o processo $1 (PID $2)
+open_header1=Abrir arquivos
+open_header2=Conexões de rede abertas
+open_type=Tipo
+open_proto=Protocolo
+open_desc=Detalhes
+open_fd=Descritor de arquivo
+open_listen1=Escutando na porta $1 
+open_listen2=Ouvindo no endereço $1 porta $2 
+open_recv=Recebendo em $1:$2 
+open_conn=Conectado de $1 a $2 no estado $3 
+open_cwd=Dir atual
+open_rtd=Dir de raiz
+open_txt=Código do programa
+open_mem=Biblioteca compartilhada
+open_dir=Diretório
+open_reg=Arquivo regular
+open_chr=Personagem especial
+open_blk=Bloco especial
+open_size=Tamanho do arquivo
+open_inode=Inode
+open_file=Caminho
+
+trace_title=Processo de rastreamento
+trace_start=Iniciando o rastreamento de chamada do sistema para $1 ..
+trace_doing=Rastreio de chamada do sistema para $1  :
+trace_done=.. processo foi encerrado.
+trace_failed=.. rastreamento falhou!
+trace_sorry=Esta página requer suporte Java no seu navegador. Para usar um rastreamento de processo somente de texto, ajuste a configuração do módulo.
+trace_syscalls=Rastrear chamadas do sistema:
+trace_all=Todos
+trace_sel=Listado ..
+trace_change=mudança
+
+windows_threads=Threads em processo
+
+syslog_dmesg=Mensagens do kernel

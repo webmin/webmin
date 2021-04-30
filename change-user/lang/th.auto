@@ -1,0 +1,37 @@
+index_title=เปลี่ยนภาษาและธีม
+index_lang=ภาษา UI ของ Webmin
+index_langglobal2=ภาษาสากล.. $1 ($2)
+index_langset=ทางเลือกส่วนตัว ..
+index_theme=ธีม UI ของ Webmin
+index_overlay=การซ้อนทับธีม
+index_overlaydef=ไม่มี - ใช้ค่าเริ่มต้นของธีม
+index_themeglobal=ชุดรูปแบบทั่วโลก ($1)
+index_themeset=ทางเลือกส่วนตัว ..
+index_pass=รหัสผ่านเข้าสู่ระบบ Webmin
+index_passleave=ปล่อยให้ไม่เปลี่ยนแปลง
+index_passset=ตั้งค่าให้ ..
+index_passagain=ป้อนรหัสผ่านอีกครั้ง
+index_ok=ทำการเปลี่ยนแปลง
+index_themedef=ธีม Webmin เก่า
+index_desc2=โมดูลนี้สามารถใช้เปลี่ยน $1 สำหรับบัญชี Webmin ของคุณเท่านั้น
+index_d3=$1, $2 และ $3 
+index_d2=$1 และ $2 
+index_d1=$1 
+index_dlang=ภาษาที่โมดูลแสดงขึ้น
+index_dtheme=ธีมที่ควบคุมลักษณะที่ปรากฏของ Webmin
+index_dpass=รหัสผ่านที่ใช้เพื่อเข้าสู่ระบบด้วย
+
+change_title=เปลี่ยนการตั้งค่า
+change_user=การแก้ไขการเข้าสู่ระบบ Webmin ..
+change_done=.. เสร็จแล้ว
+change_restart=กำลังโหลด Webmin อีกครั้ง ..
+change_redirect=กำลังนำไปยังเมนูหลักอีกครั้ง
+change_ecolon=รหัสผ่านของคุณต้องไม่มีอักขระ:
+change_epass2=รหัสผ่านใหม่ไม่ตรงกัน
+change_epass=รหัสผ่านใหม่ไม่ถูกต้อง : $1 
+change_eoverlay=คุณไม่สามารถเลือกการซ้อนทับชุดรูปแบบยกเว้นว่าจะเลือกชุดรูปแบบ UI
+change_eoverlay2=การซ้อนทับชุดรูปแบบที่เลือกเข้ากันไม่ได้กับชุดรูปแบบ UI ที่เลือก
+
+acl_lang=เปลี่ยนภาษาได้ไหม
+acl_theme=เปลี่ยนธีมได้ไหม?
+acl_pass=สามารถเปลี่ยนรหัสผ่าน (เมื่อตั้งค่าใน Webmin)?

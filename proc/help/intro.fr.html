@@ -1,11 +1,11 @@
 <header>Processus sous Unix</header>
 
-Un processus est simplement un programme exécuté sur votre système. Votre navigateur web, un gestionnaire de fenêtre, un terminal et le serveur X sont tous des processus avec lesquels vous interagissez directement. Plusieurs autres processus sont exécutés en arrière plan, comme un serveur web et d'autre tâches systèmes. Un nouveau processus est créé chaque fois que vous entrez une commande comme <tt>ls</tt> ou <tt>pwd</tt> ce qui implique qu'un processus a souvent une courte durée de vie.<p>
+Un processus est simplement un programme exÃ©cutÃ© sur votre systÃ¨me. Votre navigateur web, un gestionnaire de fenÃªtre, un terminal et le serveur X sont tous des processus avec lesquels vous interagissez directement. Plusieurs autres processus sont exÃ©cutÃ©s en arriÃ¨re plan, comme un serveur web et d'autre tÃ¢ches systÃ¨mes. Un nouveau processus est crÃ©Ã© chaque fois que vous entrez une commande comme <tt>ls</tt> ou <tt>pwd</tt> ce qui implique qu'un processus a souvent une courte durÃ©e de vie.<p>
 
-Chaque processus a un numéro unique. A chaque exécution de programme, le numéro est incrémenté et recommencera à 1 une fois arrivé à 32768 en sautant les numéros encore utilisés. Le même numéro  ne pourra jamais être utilisé par deux processus en même temps.<p>
+Chaque processus a un numÃ©ro unique. A chaque exÃ©cution de programme, le numÃ©ro est incrÃ©mentÃ© et recommencera Ã  1 une fois arrivÃ© Ã  32768 en sautant les numÃ©ros encore utilisÃ©s. Le mÃªme numÃ©ro  ne pourra jamais Ãªtre utilisÃ© par deux processus en mÃªme temps.<p>
 
-A part le processus initial (généralement appelé <tt>init</tt>), chaque processus a un parent à partir duquel il a été créé. Par exemple, si vous exécutez <tt>vi</tt> à partir de votre interpréteur de commandes, <tt>vi</tt> aura l'intepréteur de commandes comme parent.  Un processus peut avoir plusieurs enfants mais un seul et unique parent.<p>
+A part le processus initial (gÃ©nÃ©ralement appelÃ© <tt>init</tt>), chaque processus a un parent Ã  partir duquel il a Ã©tÃ© crÃ©Ã©. Par exemple, si vous exÃ©cutez <tt>vi</tt> Ã  partir de votre interprÃ©teur de commandes, <tt>vi</tt> aura l'inteprÃ©teur de commandes comme parent.  Un processus peut avoir plusieurs enfants mais un seul et unique parent.<p>
 
-Chaque processus s'exécute avec les permissions de l'usager et du groupe, qui s'applique quand il accède fichier et répertoire.  Les usagers et processus peuvent seulement tuer d'autre processus dont ils sont propriétaire, à l'exception de <tt>root</tt> qui peut tout faire.<p>
+Chaque processus s'exÃ©cute avec les permissions de l'usager et du groupe, qui s'applique quand il accÃ¨de fichier et rÃ©pertoire.  Les usagers et processus peuvent seulement tuer d'autre processus dont ils sont propriÃ©taire, Ã  l'exception de <tt>root</tt> qui peut tout faire.<p>
 
 <hr>

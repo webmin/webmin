@@ -1,0 +1,152 @@
+index_title=PPTP VPN-bediener
+index_version=PoPToP-weergawe $1 
+index_epptpd=Die PoPToP PPTP-bediener $1 is nie op u stelsel gevind nie, of is nie die regte program nie. Miskien is dit nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
+index_econfig=Die PPTP-bediener se konfigurasielêer $1 is nie op u stelsel gevind nie. Miskien is u <a href='$2'>module-opstelling</a> verkeerd.
+index_stop=Stop PPTP-bediener
+index_stopdesc=Klik op hierdie knoppie om die lopende PPTP-bedienerproses af te sluit, sodat geen nuwe verbindings aanvaar word nie. Bestaande VPN-verbindings sal egter steeds aktief bly.
+index_start=Begin PPTP-bediener
+index_startdesc=Klik op hierdie knoppie om die PPTP-bedienerproses te begin sodat dit VPN-verbindings van kliënte kan ontvang.
+index_apply=Pas konfigurasie toe
+index_applydesc=Klik op hierdie knoppie om die huidige PPTP-bedieneropsies toe te pas deur die PPTP-bedienerproses te stop en weer te begin. Wysigings aan die PPP-opsies en PPP-rekeninge sal altyd van toepassing wees op enige nuwe verbindings
+index_return=module-indeks
+index_epppd=Die PPP-bedienerprogram $1 is nie op u stelsel geïnstalleer nie. Die PPTP hang daarvan af om te werk.
+
+conf_title=PPTP-bedieneropsies
+conf_ecannot=U mag nie die PPTP-bedieneropsies wysig nie
+conf_header=PPTP-bediener konfigurasie
+conf_speed=PPP baud tarief
+conf_baud=bps
+conf_listen=Luister op adres
+conf_all=Alle adresse
+conf_localip=IP-adresse vir die bediener se einde van die verbinding
+conf_remoteip=IP-adresse om aan kliënte toe te ken
+conf_ipxnets=IPX-netwerke om toe te ken
+conf_from=Van
+conf_to=om
+conf_option=PPP-opsielêer
+conf_mode0=Globale instellings
+conf_mode1=PPTP-spesifieke instellings
+conf_mode2=Pasgemaakte lêer
+conf_ipdesc=IP-adres in beide reekse kan óf enkelvoudig ingevoer word (soos 192.168.1.1) óf as reekse (soos 192.168.2.32-64)
+conf_err=Stooropsies kon nie gestoor word nie
+conf_espeed=Ontbrekende of ongeldige baudkoers
+conf_elisten=Adres ontbreek of ongeldig om na te luister
+conf_eoption=Persoonlike PPP-opsielêer ontbreek of ongeldig
+conf_elocalip='$1' is nie 'n geldige plaaslike IP-adres of reeks nie
+conf_eremoteip='$1' is nie 'n geldige IP-adres of reeks nie
+conf_efrom=IPX-netwerk ontbreek of ongeldig vanaf adres
+conf_eto=IPX-netwerk ontbreek of ongeldig om aan te spreek
+
+options_title=PPP Opsies
+options_ecannot=U mag nie PPP-opsies wysig nie
+options_desc0=Die PPP-opsies hieronder van $1 is van toepassing op ALLE inkomende verbindings wat deur u stelsel ontvang word, insluitend dié vir inbelmodems.
+options_desc1=Die PPP-opsies hieronder van $1 is slegs van toepassing op alle PPTP-verbindings.
+options_desc2=Dit sal gebruik word deur enige nuwe verbindings wat tot stand kom nadat hierdie vorm gestoor is.
+options_header=PPP-verbindingsopsies
+options_proxyarp=Skep 'n instaan-ARP-inskrywing?
+options_lock=Sluit PTY-toestellêer?
+options_auth=Vereis verifikasie?
+options_auth0=Nee, maar voorkom geruilde IP's
+options_auth1=nooit
+options_auth2=altyd
+options_login=Doen u ook unix-verifikasie?
+options_pap=PAP-verifikasie
+options_chap=CHAP-verifikasie
+options_req=Moet gebruik word
+options_all=Mag gebruik word
+options_ref=Kan nie gebruik word nie
+options_name=Bedienernaam vir verifikasie
+options_hn=Regte gasheernaam
+options_mtu=Maksimum pakkie grootte stuur
+options_mru=Maksimum pakkiegrootte ontvang
+options_err=Kon nie PPP-opsies stoor nie
+options_emtu=Ontbrekende of ongeldige maksimum stuurpakketgrootte
+options_emru=Maksimum of maksimum pakkiegrootte ontbreek of ongeldig
+options_ename=Ontbrekende of ongeldige bedienernaam vir verifikasie
+options_version=PPPd weergawe $1 
+options_msdesc=Die onderstaande opsies stel die MS-CHAP-verifikasiemetode en MPPE-kodering in staat, wat standaard deur Windows VPN-kliënte gebruik word. MPPE benodig egter ondersteuning in sowel die PPP-daemon as die bedryfstelselkern.
+options_mschap=MS-CHAP-verifikasie
+options_mschap-v2=MS-CHAP weergawe 2-verifikasie
+options_chapms=MS-CHAP-verifikasie
+options_chapms-v2=MS-CHAP weergawe 2-verifikasie
+
+secrets_title=PPP-rekeninge
+secrets_ecannot=U mag nie PPP-rekeninge wysig nie
+secrets_return=indeks
+secrets_none=Geen PPP-rekeninge is nog geskep nie.
+secrets_enopfile=Die PPP-wagwoordlêer $1 bestaan nie op u stelsel nie. Miskien is PPP nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
+secrets_table=PPP is verantwoordelik vir $1 
+secrets_user=Gebruikersnaam
+secrets_ips=IP-adresse
+secrets_uany=ENIGE
+secrets_sany=ENIGE
+secrets_create=Skep 'n nuwe PPP-rekening.
+secrets_desc=Die PPP-rekeninge wat op hierdie bladsy gelys word, is geneem uit die lêer $1 wat gebruik word vir verifikasie van $3. Net die vir u bediener $2 word getoon, nie rekeninge vir die maak van uitgaande verbindings nie.
+secrets_delete=Vee geselekteerde PPP-rekeninge uit
+
+edit_secret_etitle=Wysig PPP-rekening
+edit_secret_ctitle=Skep PPP-rekening
+edit_secret_acc=PPP-rekening
+edit_secret_user=Gebruikersnaam
+edit_secret_serv=bediener
+edit_secret_sany=Enige
+edit_secret_uany=Enige
+edit_secret_pass=wagwoord
+edit_secret_none=Geen
+edit_secret_ffile=Van lêer af
+edit_secret_leave=Laat onveranderd
+edit_secret_setto=Stel na
+edit_secret_vaddr=Geldige adresse
+edit_secret_aany=Laat enige toe
+edit_secret_anone=Laat niemand toe nie
+edit_secret_alist=Laat gelys ..
+edit_secret_save=Save
+edit_secret_del=Delete
+edit_secret_return=rekeninglys
+
+save_secret_esave=Kon nie rekening stoor nie
+save_secret_enoip='$1' is nie 'n geldige adres nie
+
+stop_err=Kon nie die PPTP-bediener stop nie
+stop_egone=Nie meer hardloop nie
+stop_ecannot=U mag nie die PPTP-bediener stop nie
+
+start_err=Kon nie die PPTP-bediener begin nie
+start_ecannot=U mag nie die PPTP-bediener begin nie
+
+apply_err=Kon nie die PPTP-bediener weer begin nie
+apply_ecannot=U mag nie die PPTP-bediener weer begin nie
+
+conns_title=Aktiewe verbindings
+conns_ecannot=U mag nie aktiewe verbindings bestuur nie
+conns_desc=Hierdie bladsy bevat 'n lys van die aktiewe PPTP-verbindings met u bediener. Om een met geweld te ontkoppel, klik op die naam van die koppelvlak.
+conns_iface=PPP-koppelvlak
+conns_client=Kliëntadres
+conns_stime=Sedertdien gekoppel
+conns_local=Bediener-VPN-adres
+conns_remote=Kliënt-VPN-adres
+conns_none=Geen PPTP-verbindings blyk tans aktief te wees nie.
+conns_unknown=onbekend
+conns_user=Gebruikersnaam
+
+disc_err=Kon nie ontkoppel nie
+disc_egone=Verbindings is nie meer aktief nie
+disc_ekill=Proses loop nie meer nie
+
+log_secret_create=Skep PPP-rekening $1 
+log_secret_modify=Gewysigde PPP-rekening $1 
+log_secret_delete=PPP-rekening $1 is uitgevee
+log_deletes=$1 PPP-rekeninge is uitgevee
+log_conf=Gewysigde PPTP-bedieneropsies
+log_options=Gewysigde PPP-opsies
+log_disc=Ontkoppelde kliënt $1 
+log_start=PPTP-bediener is begin
+log_stop=Gestopte PPTP-bediener
+log_apply=Toegepaste PPTP-bedieneropstelling
+
+acl_conf=Kan die opstelling verander?
+acl_options=Kan opsies gewysig word?
+acl_secrets=Kan PPTP-rekeninge bestuur?
+acl_conns=Kan u verbindings sien?
+acl_stop=Kan u PPTP-bediener stop en begin?
+acl_apply=Kan konfigurasie toepas?

@@ -284,7 +284,7 @@ else {
 	# Add to the LDAP database
 	$base = &get_group_base();
 	$newdn = "cn=$group,$base";
-	@classes = ( "posixGroup" );
+	@classes = ( &def_group_obj_class() );
 	push(@classes, split(/\s+/, $config{'gother_class'}));
 	if ($in{'samba'}) {
 		push(@classes, $samba_group_class);

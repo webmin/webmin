@@ -46,6 +46,21 @@ my ($href, $text, $class, $tags) = @_;
 return ("<a class='ui_link".($class ? " ".$class : "")."' href='$href'".($tags ? " ".$tags : "").">$text</a>");
 }
 
+=head2 ui_help(title)
+
+Returns HTML for help tooltip bubble
+
+=item title - help tooltip title
+
+=cut
+
+sub ui_help
+{
+return &theme_ui_help(@_) if (defined(&theme_ui_help));
+my ($title) = @_;
+return ("<sup class=\"ui_help\" aria-label=\"$title\" data-tooltip><samp>?</samp></sup>");
+}
+
 =head2 ui_img(src, alt, title, [class], [tags])
 
 Returns HTML for an <img src>.
@@ -1278,9 +1293,24 @@ same as ui_textbox.
 =cut
 sub ui_user_textbox
 {
+my ($name, $value, $form, $dis, $tags) = @_;
 return &theme_ui_user_textbox(@_) if (defined(&theme_ui_user_textbox));
-return &ui_textbox($_[0], $_[1], 13, $_[3], undef, $_[4])." ".
-       &user_chooser_button($_[0], 0, $_[2]);
+return &ui_textbox($name, $value, 13, $dis, undef, $tags)." ".
+       &user_chooser_button($name, 0, $form);
+}
+
+=head2 ui_users_textbox(name, value, [form], [disabled?], [tags])
+
+Returns HTML for an input for selecting multiple Unix users. Parameters are the
+same as ui_textbox.
+
+=cut
+sub ui_users_textbox
+{
+my ($name, $value, $form, $dis, $tags) = @_;
+return &theme_ui_users_textbox(@_) if (defined(&theme_ui_users_textbox));
+return &ui_textbox($name, $value, 60, $dis, undef, $tags)." ".
+       &user_chooser_button($name, 1, $form);
 }
 
 =head2 ui_group_textbox(name, value, [form], [disabled?], [tags])
@@ -1291,9 +1321,24 @@ same as ui_textbox.
 =cut
 sub ui_group_textbox
 {
+my ($name, $value, $form, $dis, $tags) = @_;
 return &theme_ui_group_textbox(@_) if (defined(&theme_ui_group_textbox));
-return &ui_textbox($_[0], $_[1], 13, $_[3], undef, $_[4])." ".
-       &group_chooser_button($_[0], 0, $_[2]);
+return &ui_textbox($name, $value, 13, $dis, undef, $tags)." ".
+       &group_chooser_button($name, 0, $form);
+}
+
+=head2 ui_groups_textbox(name, value, [form], [disabled?], [tags])
+
+Returns HTML for an input for selecting Unix groups. Parameters are the
+same as ui_textbox.
+
+=cut
+sub ui_groups_textbox
+{
+my ($name, $value, $form, $dis, $tags) = @_;
+return &theme_ui_groups_textbox(@_) if (defined(&theme_ui_groups_textbox));
+return &ui_textbox($name, $value, 60, $dis, undef, $tags)." ".
+       &group_chooser_button($name, 1, $form);
 }
 
 =head2 ui_opt_textbox(name, value, size, option1, [option2], [disabled?], [&extra-fields], [max])
@@ -2418,7 +2463,7 @@ $rv .= "</center>\n";
 return $rv;
 }
 
-=head2 ui_text_type(text, type)
+=head2 ui_text_color(text, type)
 
 Returns HTML for a text string, with its color determined by $type.
 
@@ -2428,23 +2473,19 @@ Returns HTML for a text string, with its color determined by $type.
 
 =cut
 
-sub ui_text_type
+sub ui_text_color
 {
 my ($text, $type) = @_;
-my ($rv, $color);
+my ($color);
 
-if (defined (&theme_ui_text_type)) {
-    return &theme_ui_text_type(@_);
+if (defined (&theme_ui_text_color)) {
+    return &theme_ui_text_color(@_);
     }
-
-if ($type eq "success") { $color = "3c763d"; }
-elsif ($type eq "info") { $color = "31708f"; }
-elsif ($type eq "warn") { $color = "8a6d3b"; }
-elsif ($type eq "danger") { $color = "a94442"; }
-
-$rv .= "<span class='ui_text_type text_type_$type' style='color: #$color'>$text</span>\n";
-
-return $rv;
+if ($type eq "success") { $color = "#3c763d"; }
+elsif ($type eq "info") { $color = "#31708f"; }
+elsif ($type eq "warn") { $color = "#8a6d3b"; }
+elsif ($type eq "danger") { $color = "#a94442"; }
+return "<span class=\"ui_text_color text_type_$type\" style=\"color: $color\">$text</span>\n";
 }
 
 =head2 ui_alert_box(msg, type)
@@ -2671,6 +2712,105 @@ if ($page) {
 	$rv .= "/$page";
 	}
 return $rv;
+}
+
+=head2 ui_line_break_double()
+
+Create double line break, with accessible second break
+
+=cut
+sub ui_line_break_double
+{
+if (defined(&theme_ui_line_break_double)) {
+	return &theme_ui_line_break_double(@_);
+	}
+return "<br><br data-x-br>\n";
+}
+
+=head2 ui_details(Config, Opened)
+
+Creates a disclosure widget in which information is visible only when
+the widget is toggled into an "open" state.
+
+=cut
+sub ui_details
+{
+my ($c, $o) = @_;
+if (defined(&theme_ui_details)) {
+	return &theme_ui_details(@_);
+	}
+
+my $rv;
+if (!$c->{'html'}) {
+	$c->{'title'} = &html_escape($c->{'title'});
+	$c->{'content'} = &html_escape($c->{'content'});
+	}
+$c->{'class'} = " class=\"@{[&quote_escape($c->{'class'})]}\"" if($c->{'class'});
+$o = ' open' if ($o);
+$rv = "<details$c->{'class'}$o>";
+$rv .= "<summary>$c->{'title'}</summary>";
+$rv .= "<span>$c->{'content'}</span>";
+$rv .= "</details>";
+return $rv;
+}
+
+=head2 ui_read_file_contents_limit(\%data)
+
+Reads file content with options and
+returns head and/or tail separated with
+chomped message
+
+=cut
+sub ui_read_file_contents_limit
+{
+if (defined(&theme_ui_read_file_contents_limit)) {
+	return &theme_ui_read_file_contents_limit(@_);
+	}
+my ($opts)  = @_;
+my $binary  = -s $opts->{'file'} >= 128 && -B $opts->{'file'};
+my $data = &read_file_contents_limit($opts->{'file'}, $opts->{'limit'}, $opts);
+my $error = $data->{'error'};
+if ($error) {
+    return $error;
+	}
+my $nonulls = sub {
+    $_[0] =~ s/[^[:print:]\n\r\t]/\ /g;
+    return $_[0];
+	};
+my $head     = $data->{'head'};
+my $tail     = $data->{'tail'};
+my $chomped  = $data->{'chomped'};
+my $fsize    = $data->{'size'};
+my $flimit   = $data->{'limit'};
+my $msg_type = !$head &&  $tail ? '_tail' :
+                $head && !$tail ? '_head' : undef;
+my $nlines   = $nslines = $nelines = "\n" x 10;
+$nslines     = undef if (!$head);
+$nelines     = undef if (!$tail);
+my $chomped_msg;
+$chomped_msg =
+"${nslines}[--- @{[&text(\"file_truncated_message$msg_type\", 
+                         &nice_size($flimit), 
+                         &nice_size($chomped),
+                         &nice_size($fsize))]} ---]$nelines"
+  if ($chomped);
+
+# Trim nulls
+$head = &$nonulls($head)
+  if ($binary && $head);
+$tail = &$nonulls($tail)
+  if ($binary && $tail);
+
+# Return data
+if ($head && $tail) {
+    return $head . $chomped_msg . $tail;
+	}
+if ($tail) {
+    return $chomped_msg . $tail;
+	}
+if ($head) {
+    return $head . $chomped_msg;
+	}
 }
 
 1;

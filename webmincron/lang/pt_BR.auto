@@ -1,0 +1,20 @@
+edit_mins=Minutos
+edit_hours=Horas
+edit_days=Dias
+edit_months=Meses
+edit_weekdays=Dias da semana
+edit_all=Todos
+edit_selected=Selecionado ..
+edit_run=Corra agora
+edit_clone=Clonar trabalho
+edit_return=trabalho cron
+edit_special1=Cronograma simples ..
+edit_special0=Horários e datas selecionados abaixo.
+edit_special_hourly=Por hora
+edit_special_daily=Diariamente (à meia-noite)
+edit_special_weekly=Semanal (no domingo)
+edit_special_monthly=Mensal (no dia 1)
+edit_special_yearly=Anualmente (em 1º de janeiro)
+
+log_success=Executou com êxito <tt>$2</tt> em <tt>$1</tt>
+log_failure=Falha ao executar <tt>$2</tt> em <tt>$1</tt> : $3 

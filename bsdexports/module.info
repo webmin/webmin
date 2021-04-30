@@ -1,4 +1,3 @@
-risk=low medium high
 name=BSDexports
 category=net
 os_support=freebsd openbsd macos netbsd openserver

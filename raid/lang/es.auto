@@ -1,0 +1,72 @@
+index_name=Nombre del dispositivo
+index_active=¿Activo?
+index_errors=Errores
+index_status=Estado
+index_level=Nivel RAID
+index_size=Tamaño utilizable
+index_members=Dispositivos de disco miembro
+index_header=Opciones de notificación de problemas RAID
+index_mailaddr=Enviar notificaciones a
+index_mailaddrnone=No enviar
+index_mailfrom=De la dirección para notificaciones
+index_mailfromnone=Predeterminado (<tt>root</tt>)
+index_program=Comando para ejecutar cuando se detectan problemas
+index_programnone=No corras ninguno
+index_monitor=Monitoreo habilitado?
+
+raid6=RAID6 (paridad distribuida dual)
+raid10=RAID10 (Rayado y Espejado)
+create_missing=¿Incluye el disco que falta actualmente?
+create_assume=¿Omitir inicialización de dispositivos?
+create_group=Miembro del grupo de reserva
+create_nogroup=Ninguno (use solo repuestos propios)
+create_oldgroup=Grupo existente
+create_newgroup=Nuevo grupo
+create_enewgroup=Nombre de grupo de repuesto faltante o no alfanumérico
+create_n2_layout=2 copias cercanas
+create_f2_layout=2 copias lejanas
+create_o2_layout=2 copias compensadas
+create_n3_layout=3 copias cercanas
+create_f3_layout=3 copias lejanas
+create_o3_layout=3 copias compensadas
+
+view_uuid=UUID
+view_iscsi=Utilizado por el dispositivo compartido iSCSI $1 
+view_delayed=Esperando en otro dispositivo
+view_remove_det=Eliminar separado
+view_remove_detdesc=Elimine las particiones que ya están físicamente separadas del sistema.
+view_replace=Reemplazar partición:
+view_replacedesc=Seleccione una partición que deba reemplazarse. (Reemplazo en caliente)
+view_grow=Crecer RAID:
+view_growdesc=Grow array (convertir repuestos dinámicos a miembros activos)
+view_convert_to_raid6=Convertir a RAID6
+view_convert_to_raid6desc=Convierta el nivel RAID a RAID6 agregando una o más unidades.
+view_convert_to_raid5=Convertir a RAID5
+view_convert_to_raid5desc=Convierta el nivel RAID a RAID5 quitando una unidad.
+view_blocks=$1 bloques
+
+view_sparegroup=Grupo de repuesto
+
+emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
+emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
+
+log_replace=Partición reemplazada en caliente $2 en el dispositivo RAID $1 con partición de repuesto $3 
+log_grow=Dispositivo RAID desarrollado $1 a un total de $2 discos
+log_convert_to_raid6=Dispositivo RAID5 convertido $1 en un dispositivo RAID6
+log_convert_to_raid5=Dispositivo RAID6 convertido $1 en un dispositivo RAID5
+log_notif=Opciones actualizadas de notificación de problemas RAID
+
+notif_err=Error al guardar las opciones de notificación de problemas RAID
+notif_emailaddr=Dirección de notificación faltante o no válida
+notif_emailfrom=Dirección de origen faltante o no válida
+notif_eprogram=Programa ausente o inexistente para ejecutar
+
+delete_title=Eliminar matriz RAID
+delete_rusure=¿Está seguro de que desea eliminar la matriz RAID $1, que utiliza $2 de espacio en disco?
+delete_ok=Sí, elimínalo
+delete_eidx=¡No se ha seleccionado una matriz RAID!
+
+remove_title=Eliminar la partición de la matriz RAID
+remove_rusure=¿Está seguro de que desea eliminar la partición $2 de la matriz RAID $1 ?
+remove_ok=Sí, eliminarlo
+remove_eidx=¡No se ha seleccionado una matriz RAID!

@@ -1,0 +1,118 @@
+index_title=Ahots-postako zerbitzaria
+index_ecmd=Vgetty $1 komandoa ez da zure sisteman aurkitu. Agian ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_econfig=Vgetty konfigurazio fitxategia $1 ez da zure sisteman aurkitu. Agian ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_return=ahots-postaren aurkibidea
+
+vgetty_title=Serial Port-en konfigurazioa
+vgetty_desc=Zerbitzariak serieko portu batera konektatutako modem batekin ahots-deiei erantzuteko, jarraian zerrendatu behar da. Zerrenda honi portu bat gehitzen duzunean, $1 programa konfiguratuko da deiei erantzuteko eta mezuak erreproduzitzeko.
+vgetty_add=Gehitu serieko portu berria
+vgetty_tty=Gailu seriala
+vgetty_type=Mota
+vgetty_vgetty=Ahots
+vgetty_mgetty=Data/fax
+vgetty_none=Oraindik ez da konfiguratu ataka serikorik ahots-postarako.
+vgetty_apply=Aplikatu konfigurazioa
+vgetty_applydesc=Egin klik botoi honetan uneko ahots-postaren zerbitzariaren konfigurazioa $1 komandoa exekutatuz eta Vgetty prozesu guztiak hilaz.
+vgetty_applyerr=Ezin izan da konfigurazioa aplikatu
+vgetty_return=serieko portuen zerrenda
+vgetty_create=Gehitu Serial Port
+vgetty_edit=Editatu Serial Port
+vgetty_header=Serial ataka konfiguratzeko aukerak
+vgetty_ts=$1 portuko seriea
+vgetty_other=Beste gailu ..
+vgetty_rings=Erantzun aurretik, eraztunak
+vgetty_default=Lehenetsi orokorra
+vgetty_ans=Erantzun modua
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=Ahots
+vgetty_ans_fax=Fax
+vgetty_ans_data=Datuak
+vgetty_err=Huts egin du serieko portua gordetzean
+vgetty_etty=Serieko gailu falta edo ez dago
+vgetty_erings=Eraztun kopuru falta edo baliogabea
+vgetty_erings2=Eraztun kopurua 2 gutxienez izan behar da
+vgetty_eans=Ez da erantzun moduik hautatzen
+vgetty_eclash=$1 ataka seriea dagoeneko erabiltzen ari da
+
+options_title=Ahots-postako zerbitzariaren aukerak
+options_header=Serieko portu guztientzako aukerak
+options_maxlen=Gehieneko mezuen luzera
+options_secs=segundutan
+options_minlen=Gutxieneko mezuaren luzera
+options_silence=Kendu isiltasuna mezuen amaieratik?
+options_thresh=Isiltasunaren atalasearen maila
+options_rgain=Grabazioaren bolumen maila
+options_tgain=Erreprodukzioaren bolumen maila
+options_rings=Erantzun aurretik, eraztunak
+options_perport=Serieko portu bakoitzerako ezar daiteke
+options_ans=Erantzun modua
+options_keep=Mantendu datuak edo DTMF kodeak dituzten mezuak?
+options_light=Gaitu auto-erantzun argia jaso ondoren?
+options_owner=Unix jabea mezuen fitxategietarako
+options_group=Unix taldea mezuen fitxategietarako
+options_mode=Mezuen fitxategien baimenak
+options_prog=Mezuak grabatu ondoren
+options_prog0=Ez egin ezer
+options_prog1=Posta elektronikoa WAV formatuan bidaltzeko
+options_prog2=Exekutatu komandoa mezu fitxategian
+options_err=Huts egin du ahots-postako aukerak gordetzean
+options_erings=Eraztun kopuru falta edo baliogabea
+options_erings2=Eraztun kopurua 2 gutxienez izan behar da
+options_emaxlen=Falta da edo ez da baliozko gehienezko mezuen luzera
+options_eminlen=Falta edo gutxieneko mezuen luzera baliogabea
+options_ethresh=Isilpeko atalase falta edo baliogabea
+options_ergain=Grabazio bolumen maila falta edo baliogabea
+options_ergain2=Grabazioaren bolumen maila 0 eta 100 artean egon behar da
+options_etgain=Falta edo erreproduzitzeko bolumen maila baliogabea
+options_etgain2=Erreprodukzioaren bolumen maila 0 eta 100 artean egon behar da
+options_eemail=Helbide elektroniko falta edo baliogabea
+options_eprog=Programa falta da edo ez dago exekutatzeko
+options_eowner=Falta da edo baliogabea Unix erabiltzailea mezu fitxategietarako
+options_egroup=Falta da edo baliogabea Unix talde bat mezu fitxategiak
+options_emode=Falta diren edo zortzi baimen baliogabeak mezuen fitxategietarako
+
+received_title=Jasotako mezuak
+recieved_desc=Zerbitzariak jaso dituen ahots-postako mezuak jarraian agertzen dira. Mezu bat entzuteko, klikatu data/ordua lehen zutabean.
+received_none=Ez da erantzun mezurik jaso.
+received_date=Hona hemen:
+received_size=Fitxategiaren tamaina
+received_speed=Laginen tasa
+received_type=Audio formatua
+received_delete=Ezabatu hautatutako mezuak
+received_move=Bihur zaitez hautatuta agurra
+received_all=Hautatu guztiak
+received_invert=Alderantzizko hautapena
+
+listen_efile=Baliogabeko mezuaren fitxategi-izena!
+listen_epath=Ahots-postako mezua ez dago jada
+
+delete_efile=Baliogabeko mezuaren fitxategi-izena!
+
+messages_title=Agur Mezuak
+messages_desc=Orrialde honetan deitzaileak zure ahots-postako zerbitzariarekin konektatzean erreproduzituko diren agur-mezuak agertzen dira. Hori baino gehiago baduzu, ausaz aukeratutako mezu bakarra erabiliko da.
+messages_file=Fitxategi izena
+messages_none=Ez dago agurrik.
+messages_updesc=Inprimaki honek WAV fitxategiko zorion mezu gehigarria kargatzeko aukera izango du, modemak aukeratutako formatura bihurtuko dena. Igotako WAVaren lagin-mailaren tasak jasotako mezuen lagin-tasaren berdina izan behar du, hautatutako formatua bezala.
+messages_upload=Kargatu mezua
+messages_fmt=bihurtu
+
+pvfdesc=$1, $2 bit
+
+upload_err=Ezin izan da mezua gehitzean
+upload_emessage=Ez da WAV fitxategia hautatu
+upload_ewav=Huts egin du WAV fitxategia bihurtzean : $1 
+upload_epvf=Huts egin du RMD fitxategia sortzean : $1 
+upload_esame=$1 mezu fitxategia lehendik dago
+
+log_apply=Aplikatutako konfigurazioa
+log_upload=Kargatutako $1 agur mezua
+log_move=Bihuritako $1 mezuak jaso dira
+log_delete0=$1 mezuak ezabatu dira
+log_delete1=$1 agur mezuak ezabatu dira
+log_options=Ahots-postako aukerak aldatu dira
+log_vgetty_create=$1 serieko portua gehitu da
+log_vgetty_modify=$1 serieko ataka aldatua
+log_vgetty_delete=$1 serieko ataka ezabatu da
+
+email_subject=Ahots-postako mezua
+email_body=Ahots-postako mezua $1 -en jaso du $2 -k.

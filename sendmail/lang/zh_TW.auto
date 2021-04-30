@@ -1,0 +1,466 @@
+index_version2=Sendmail版本 $1，配置 $2
+index_xversion=Sendmail版本 $1
+index_version=Sendmail配置 $1
+index_sendmail=發郵件
+
+opts_blocks=塊
+opts_bytes=個字節
+opts_dmode=投放方式
+opts_background=背景
+opts_queue-only=僅排隊
+opts_interactive=互動
+opts_deferred=遞延
+opts_gecos=接受郵件中用戶的真實姓名？
+opts_hops=最大郵件跳數
+opts_daemon=SMTP端口選項
+opts_maxbad=壞收件人數量上限
+opts_maxrcpt=每封郵件的最大收件人數
+opts_below=在下面輸入
+opts_qso=郵件隊列排序依據
+opts_priority=優先
+opts_host=主機名
+opts_time=收到時間
+
+aliases_enofile=您的Sendmail配置中未定義別名文件
+aliases_type6=應用過濾文件 $1
+aliases_toomany=您的系統上的郵件別名太多，無法在此頁面上顯示。
+aliases_go=查找匹配的別名：
+aliases_delete=刪除所選別名
+
+aform_ecannot=您無權編輯此別名
+aform_type6=套用篩選器檔案
+aform_file=添加到別名文件
+aform_afile=編輯 ..
+aform_return=別名
+aform_cmt=描述
+
+afile_title=編輯地址文件
+afile_desc=使用下面的文本區域編輯文件 $1中的地址。
+afile_efile=您無權編輯 $1。
+afile_undo=取消更改
+afile_ewrite=寫入地址文件失敗： $1
+
+ffile_title=編輯過濾文件
+ffile_desc=使用下面的表格在文件 $1中設置過濾規則。
+ffile_efile=您無權編輯 $1。
+ffile_line=如果 $1字段為 $2 $3，則轉發到 $4
+ffile_from=從
+ffile_to=至
+ffile_subject=學科
+ffile_cc=抄送
+ffile_body=身體
+ffile_what0=不匹配
+ffile_what1=火柴
+ffile_other=否則轉發到 $1
+ffile_err=無法保存過濾器文件
+ffile_ematch=缺少比賽
+ffile_eaction=缺少轉寄地址
+
+rfile_title=編輯自動回复文件
+rfile_desc=使用下面的文本區域編輯 $1中的自動回复消息。該消息可能包含宏$ SUBJECT，$ FROM，$ TO，$ DATE和$ BODY，這些宏將在激活自動回復後擴展。
+rfile_desc2=您還可以通過添加以下行來設置添加或替換自動回復中使用的默認郵件標題的郵件標題：<br><tt>發件人：foo@bar.com </tt><br> <tt>主題：節假日<消息頂部的/tt>，<br>與正文之間用一個空白行隔開。
+rfile_efile=您無權編輯 $1。
+rfile_undo=取消更改
+rfile_replies=跟踪答復以防止郵件循環？
+rfile_none=沒有
+rfile_file=是的，使用日誌文件
+rfile_period=最小回复間隔
+rfile_default=默認值（1小時）
+rfile_secs=秒
+rfile_ereplies=缺少回复跟踪日誌文件
+rfile_eperiod=兩次回復之間缺少或無效的秒數
+rfile_no_autoreply=不要將自動回復發送給
+rfile_no_regexp=不要發送自動回復與正則表達式匹配的郵件
+rfile_from=發件人：答复地址
+rfile_auto=自動（根據收件人的地址）
+rfile_efrom=缺少發件人：地址
+rfile_fromdesc=盡可能始終指定發件人：地址，因為自動方法可能不可靠。
+
+asave_etype6=篩選器文件“$1”無效
+asave_esame=僅允許您使用與您的webmin登錄名相同的名稱創建別名
+
+adelete_err=刪除別名失敗
+adelete_enone=未選擇
+adelete_ecannot=不允許刪除別名 $1
+
+masq_ndomains=不可偽裝的域名
+
+virtusers_efeature=您的sendmail配置未啟用地址映射（<tt>virtuser</tt>）功能。 <a href='$1'>單擊此處</a>以設置sendmail功能。
+virtusers_createfile=或者，如果剛剛啟用了此功能，請<a href='$1'>單擊此處</a>以創建文件。
+virtusers_cmt=描述
+virtusers_toomany=您的系統上的地址映射太多，無法在此頁面上顯示。
+virtusers_go=查找匹配的地址映射：
+virtusers_delete=刪除選定的地址映射
+
+vform_cmt=描述
+vform_err_nouser=沒有這樣的用戶
+vform_err_nohost=沒有這樣的主機
+vform_err_unavailable=不可用
+vform_err_tempfail=暫時故障
+vform_err_protocol=協議錯誤
+
+vsave_esame=僅允許您為用戶名創建地址映射
+
+vdelete_err=刪除地址映射失敗
+vdelete_ecannot=您不允許刪除 $1的映射
+
+mailers_efeature=您的sendmail配置未啟用域路由（<tt>mailertable</tt>）功能。 <a href='$1'>單擊此處</a>以設置sendmail功能。
+mailers_desc3=您還應該在每個域的<a href='$1'>中繼域</a>列表中也有一個條目。
+mailers_delete=刪除選定的域路由
+
+mform_host2=主機或域名
+mform_domain2=域中的所有主機
+mform_domain3=域及其所有主機
+
+mdelete_err=刪除域路由器失敗
+mdelete_ecannot=您無權刪除 $1的路線
+
+generics_efeature=您的sendmail配置未啟用傳出地址映射（<tt>泛型</tt>）功能。 <a href='$1'>單擊此處</a>以設置sendmail功能。
+generics_toomany=您的系統上有太多外發地址，無法在此頁面上顯示。
+generics_go=查找匹配的傳出地址：
+generics_delete=刪除選定的外發地址
+
+gsave_ecannot3=您無權保存此外發地址
+gsave_ealready=“$1”的傳出地址映射已存在
+
+gdelete_err=刪除外發地址映射失敗
+gdelete_ecannot=您不允許刪除 $1的映射
+
+domains_efeature=您的sendmail配置未啟用域映射（<tt>domaintable</tt>）功能。 <a href='$1'>單擊此處</a>以設置sendmail功能。
+domains_delete=刪除選定的域映射
+
+dsave_ealready=“$1”的域映射已存在
+
+ddelete_err=刪除域映射失敗
+ddelete_ecannot=您不允許刪除 $1的映射
+
+access_efeature=您的sendmail配置未啟用垃圾郵件控制（<tt>access_db</tt>）功能。 <a href='$1'>單擊此處</a>以設置sendmail功能。
+access_toomany=您的系統上有太多垃圾郵件控制規則，無法顯示在此頁面上。
+access_go=查找匹配的垃圾郵件控制規則：
+access_delete=刪除選定的垃圾郵件控制規則
+
+sform_tag=對戰
+sform_tag_=一切
+sform_tag_from=發件人：地址
+sform_tag_to=講話
+sform_tag_connect=連接信息
+sform_tag_spam=垃圾信息
+
+ssave_ealready=“$1”的垃圾郵件控制規則已經存在
+ssave_ecannot2=您無權保存此垃圾郵件控制規則
+
+sdelete_err=刪除垃圾郵件控制規則失敗
+sdelete_ecannot=您無權刪除 $1的規則
+
+mailq_count=$1條消息
+mailq_size=尺寸
+mailq_cc=抄送
+mailq_subject=學科
+mailq_dir=目錄
+mailq_delete=刪除選定的消息
+mailq_locked=即使鎖定
+mailq_flush=刷新郵件隊列
+mailq_flushsel=刷新所選消息
+mailq_flushdesc=單擊此按鈕可強制立即發送隊列中的所有郵件，並顯示結果。
+mailq_flushquar=刷新隔離隊列
+mailq_flushquardesc=單擊此按鈕可強制僅發送隊列中的隔離郵件。
+mailq_search=查找排隊的消息在哪裡
+mailq_quar=隔離區
+mailq_refresh=刷新郵件隊列
+mailq_refreshdesc=重新加載此頁面以顯示郵件隊列的當前狀態。
+
+flushq_desc2=強制嘗試發送 $1個選定的消息 ..
+flushq_ecannot=您不可以刷新郵件隊列
+
+searchq_title=隊列搜索結果
+searchq_none=找不到排隊的消息。
+
+delq_enone=沒有選擇要刪除的消息
+delq_titles=刪除訊息
+delq_file=刪除郵件文件 $1 ..
+delq_efile=無效的文件名！
+delq_egone=已經刪除或傳送
+delq_elocked=鎖定發送
+delq_ok=確定刪除
+delq_title=刪除留言
+delq_force=仍然強制刪除
+delq_ecannot2=您無法刪除此消息
+delq_rusure=您確定要刪除 $1個選定的排隊消息嗎？
+delq_confirm=刪除訊息
+
+boxes_sent=發送郵件
+boxes_toomany=您的系統上有太多用戶無法列出所有郵箱。
+boxes_go=查看用戶的郵件：
+
+mail_for2=對於用戶 $1
+mail_sent=在已發送郵件列表中
+mail_euserexists=該Unix用戶不存在
+mail_nonefrom=沒有
+mail_mark=標記為：
+mail_mark0=未讀
+mail_mark1=讀
+mail_mark2=特別
+mail_forward=向前
+mail_move=搬去：
+mail_copy=複製到：
+mail_rfc=從線
+mail_eexists=訊息已不存在！
+
+view_desc2=用戶 $2的消息 $1
+view_desc3=訊息 $1
+view_sent=已發送郵件列表中的消息 $1
+view_body=訊息文字
+view_allheaders=查看所有標題
+view_noheaders=查看基本標題
+view_enew=編輯為新
+view_flush=沖洗
+view_print=打印
+view_strip=刪除附件
+view_mark=將消息標記為：
+view_mark0=未讀
+view_mark1=讀
+view_mark2=特別
+view_return=原始電子郵件
+view_sub=附件電子郵件
+view_egone=該消息不再存在
+view_afile=附件名稱
+view_atype=附件類型
+view_asize=文件大小
+
+enew_title=編輯電郵
+reply_mailforward=轉發郵件
+reply_body=訊息文字
+
+send_efile=附件 $1不存在
+send_eattach=附件的總大小不能超過 $1 kB。
+send_eperms=用戶 $1無法讀取 $2
+send_eperms2=您不可以發送文件 $1
+send_epath=Sendmail可執行文件 $1不存在。
+
+delete_title=刪除郵件
+delete_rusure=您確定要從 $2中刪除所選的 $1郵件嗎？對於大型郵件文件，這可能需要一些時間。在刪除完成之前，不應執行其他任何操作。
+delete_rusure2=您確定要從 $1刪除此消息嗎？對於大型郵件文件，這可能需要一些時間。在刪除完成之前，不應執行其他任何操作。
+delete_ok=立即刪除
+delete_emnone=未選擇要標記的郵件
+delete_efnone=未選擇要轉發的郵件
+delete_emoveuser=將郵件移至的用戶不存在
+delete_emovecannot=您不允許將郵件移至指定的用戶
+delete_emovenone=未選擇要移動的郵件
+delete_nobutton=沒有點擊按鈕
+
+search_efield=您必須選擇搜索類型。
+search_ewhat=沒有與第 $1行輸入的文字相符
+search_enone=未輸入搜索條件
+search_results2=$1郵件匹配 $2 ..
+search_results3=$1郵件不匹配 $2 ..
+search_results4=符合您搜索條件的 $1郵件 ..
+search_local=在本地文件夾中
+search_all=在所有文件夾中
+search_eboolean=不支持同時使用“和”和“或”進行布爾搜索
+
+file_title=編輯Sendmail文件
+file_desc=使用下面的文本框手動編輯Sendmail文件 $1。
+file_undo=取消更改
+file_edit=手動編輯 $1
+file_ealiases=如果您有權訪問所有別名，則只能編輯別名文件。
+file_evirtusers=如果您有權訪問所有地址映射，則只能編輯地址映射文件。
+file_emailers=您不允許編輯域路由文件。
+file_egenerics=如果您有權訪問所有外發地址，則只能編輯外發地址文件。
+file_edomains=您不允許編輯域映射文件。
+file_eaccess=您無權編輯垃圾郵件控製文件。
+file_ecannot=您無權編輯此文件
+file_emode=未知模式！
+file_err=無法編輯文件
+file_ealias=別名文件行的格式無效： $1
+file_etab=地圖文件行的格式無效： $1
+
+acl_ports=可以編輯網絡端口嗎？
+acl_manual=可以手動編輯文件嗎？
+acl_flushq=可以刷新郵件隊列嗎？
+acl_vcatchall=可以創建全部映射嗎？
+acl_qdoms=隊列中可見的地址
+acl_qdomsmode=隊列地址匹配
+acl_qdomsmode0=發件人：地址
+acl_qdomsmode1=講話
+acl_qdomsmode2=任何一個地址
+acl_same=具有相同名稱的用戶
+acl_vsame=以username @開頭
+acl_atype6=篩選檔案
+acl_usersg=組成員
+acl_fromname=發件人地址的真實姓名
+acl_apath=將文件和程序限製到目錄
+acl_attach=最大附件總數
+acl_sent=將已發送的郵件存儲在郵箱中
+acl_canattach=可以附加服務器端文件嗎？
+acl_boxname=將郵箱名稱顯示為
+acl_boxname0=文件名
+acl_boxname1=用戶的真實姓名
+acl_boxname2=沒有
+acl_usersm=用戶匹配
+acl_asame=與用戶名相同
+acl_usersu=UID在範圍內
+acl_spam=該用戶可以編輯的垃圾郵件控制地址
+
+log_opts=更改了sendmail選項
+log_ports=更改網絡端口
+log_alias_create=已創建別名 $1
+log_alias_modify=修改的別名 $1
+log_alias_delete=別名 $1已刪除
+log_alias_manual=手動編輯的別名文件 $1
+log_cws=更改的本地域
+log_masq=域名偽裝更改
+log_trusts=更改了受信任的用戶
+log_virtuser_create=創建的地址映射 $1
+log_virtuser_modify=修改的地址映射 $1
+log_virtuser_delete=刪除的地址映射 $1
+log_virtuser_manual=手動編輯的地址映射文件 $1
+log_mailer_create=已創建域路由 $1
+log_mailer_modify=修改的域路由 $1
+log_mailer_delete=刪除域路由 $1
+log_mailer_manual=手動編輯的域路由文件 $1
+log_generic_create=創建的傳出地址 $1
+log_generic_modify=修改的傳出地址 $1
+log_generic_delete=刪除的寄出地址 $1
+log_generic_manual=手動編輯的外發地址文件 $1
+log_cgs=更改傳出域
+log_domain_create=已創建域映射 $1
+log_domain_modify=修改的域映射 $1
+log_domain_delete=刪除域映射 $1
+log_domain_manual=手動編輯的域映射文件 $1
+log_access_create=為 $1創建了垃圾郵件控件
+log_access_modify=修改了 $1的垃圾郵件控制
+log_access_delete=已刪除 $1的垃圾郵件控件
+log_access_manual=手動編輯的垃圾郵件控製文件 $1
+log_relay=更改的中繼域
+log_flushq=郵件隊列混亂
+log_delmailq=已從隊列中 $1刪除郵件
+log_delmailqs=已從隊列中刪除 $1郵件
+log_stop=停止了sendmail守護程序
+log_start=啟動sendmail守護程序
+log_delmail=已從 $2刪除 $1消息
+log_movemail=已將 $1郵件從 $2移至 $3
+log_send=已將郵件發送到 $1
+log_feature_create=添加了M4條目 $1
+log_feature_modify=修改的M4條目 $1
+log_feature_delete=刪除的M4條目 $1
+log_feature_move=M4條目 $1已移動
+log_build=重建sendmail配置
+log_delete_aliases=已刪除 $1別名
+log_delete_virtusers=已刪除 $1地址映射
+log_delete_domains=已刪除 $1域映射
+log_delete_accesses=已刪除 $1垃圾郵件控制條目
+log_delete_generics=已刪除 $1外發地址
+log_delete_mailers=已刪除 $1域路由
+
+match_from=來自：比賽
+match_subject=主題：比賽
+match_to=到：比賽
+match_cc=抄送：比賽
+match_date=日期：比賽
+match_status=狀態匹配
+match_body=身體比賽
+match_size=大小大於
+match_headers=標頭匹配
+match_=-----------------
+match_!from=發件人：不匹配
+match_!subject=主旨：不符
+match_!to=收件人：不匹配
+match_!cc=抄送：不匹配
+match_!date=日期：不符
+match_!status=狀態不符
+match_!body=身體不匹配
+match_!size=尺寸小於
+match_!headers=標頭不匹配
+
+features_title=Sendmail M4配置
+features_desc=此頁面列出了Sendmail M4配置文件 $1中的相關條目，從中將構建實際的配置文件 $2。
+features_type=輸入類型
+features_value=在配置文件中一行
+features_type0=其他
+features_type1=特徵
+features_type2=限定
+features_type3=未定義
+features_type4=郵遞員
+features_type5=操作系統類型
+features_add=添加新類型的條目：
+features_build=重建Sendmail配置
+features_buildmsg=單擊此按鈕，從上面列出的M4配置條目中重建您的Sendmail配置文件 $1。
+features_return=M4配置
+features_emc=在系統上找不到Sendmail M4配置文件 $2。可能它尚未安裝（Sendmail的打包安裝常見），或者<a href='$1'>模塊配置</a>不正確。
+features_efeatures=在系統上找不到Sendmail M4配置基本目錄 $2，或者它不是正確的目錄。可能它尚未安裝（Sendmail的打包安裝常見），或者<a href='$1'>模塊配置</a>不正確。
+features_econfig=<a href='$1'>模塊配置</a>中尚未設置Sendmail M4基本目錄和M4配置文件的位置。如果從源安裝了Sendmail，則這些應位於原始源目錄下。
+features_move=移動
+features_manual=手動編輯文件
+
+feature_add=添加配置條目
+feature_edit=編輯配置條目
+feature_header=M4配置條目詳細信息
+feature_text=配置線
+feature_feat=特徵
+feature_values=參量
+feature_def=定義名稱
+feature_defval=值
+feature_defmode1=調成 ..
+feature_defmode0=未定義
+feature_mailer=郵件投遞方式
+feature_ostype=作業系統類型
+feature_old=當前配置行
+feature_err=保存配置條目失敗
+feature_efeat=功能 $1已存在
+feature_edef=定義 $1已經存在
+feature_emailer=郵件 $1已存在
+feature_eostype=操作系統類型已定義為 $1
+feature_manual=編輯M4文件
+feature_mdesc=該頁面允許您手動編輯Sendmail M4配置文件 $1。請注意，因為您所做的編輯不會進行語法檢查。
+
+feat_access_db=垃圾郵件控製文件
+feat_virtusertable=地址映射
+feat_mailertable=域路由
+feat_genericstable=外發地址
+feat_domaintable=域映射
+
+mailer_local=本地Unix交付
+
+build_title=重建Sendmail配置
+build_em4=在系統上找不到重建Sendmail配置文件所需的命令 $1。
+build_ebuild=無法建立配置： $1
+build_rusure=您確定要用 $2構建的新版本替換Sendmail配置文件 $1嗎？
+build_rusure2=請注意，如果您在“ Sendmail選項”頁面中對Sendmail進行了更改，則即使未在M4文件中進行更改，重建配置文件也可能會覆蓋這些更改。
+build_ok=是的，現在就更換
+build_diff=將對您的Sendmail配置文件進行以下更改。
+build_nodiff=您的sendmail配置文件已經是最新的。
+
+stop_err=無法停止sendmail
+stop_ecannot=您無權停止sendmail
+stop_epid=Sendmail似乎沒有運行
+restart_epids=找不到sendmail進程
+restart_ekill=無法發送信號給sendmail進程： $1
+
+start_err=無法啟動sendmail
+start_ecannot=您無權啟動sendmail
+
+ports_title=網絡端口
+ports_name=端口名稱
+ports_addr=聽地址
+ports_all=所有
+ports_ip=知識產權
+ports_family=協議
+ports_inet=IPv4
+ports_inet6=IPv6
+ports_port=在港口聽
+ports_opts=端口選項
+ports_mod_a=需要SMTP身份驗證
+ports_mod_b=對傳出電子郵件使用相同的界面
+ports_mod_c=執行主機名規範化
+ports_mod_f=需要完全限定的主機名
+ports_mod_h=將接口名稱用於HELO
+ports_mod_C=不執行主機名規範
+ports_mod_E=禁止ETRN
+ports_def1=接受端口25和所有地址上的電子郵件
+ports_def0=僅在以下端口上接受電子郵件。
+ports_err=保存網絡端口失敗
+ports_ecannot=您無權管理網絡端口
+ports_ename=第 $1行中的端口名稱無效
+ports_eclash=第 $1行中的端口名稱重複
+ports_eaddress=第 $1行中的IP地址丟失或無效
+ports_eport=$1行缺少端口號或端口號無效

@@ -1,0 +1,8 @@
+index_versionbacula=Bacula $1 
+index_versionbareos=Bareos $1 
+
+proc_bareos-sd=Opslagdaemon
+proc_bareos-fd=Bestands daemon
+proc_bareos-dir=Bacula Director daemon
+
+fileset_lzo=LZO-compressie

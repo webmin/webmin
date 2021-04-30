@@ -1,0 +1,21 @@
+index_elink=Še ni nastavljen noben URL za predor.
+index_url=Vnesite URL za odpiranje:
+index_open=Odprto
+
+link_eurl=Neveljaven URL tunela : $1 
+link_elogin=Za $1 kot $2 ni bilo mogoče prijaviti.
+link_eautologin=Neveljavna prijava ali geslo za $1. <a href='$2'>Za prijavo kliknite tukaj</a>.
+link_enouser=Uporabniško ime in geslo sta potrebna za prijavo v $1, vendar nobena ni bila konfigurirana.
+link_ebadurl=Do URL $1 ni dovoljen dostop
+link_mconfig=Za spremembo prijavite stran <a href='$1'>konfiguracija modula</a>.
+
+login_title=Prijava na spletno mesto
+login_desc=Za prijavo v $1 morate navesti uporabniško ime in geslo.
+login_header=Preverjanje pristnosti spletnega mesta
+login_user=Uporabniško ime
+login_pass=Geslo
+login_login=Vpiši se
+login_clear=Jasno
+
+seturl_err=Odpiranje URL-ja ni uspelo
+seturl_eurl=Vnesen je neveljaven URL

@@ -1,0 +1,52 @@
+index_title=NFS Uitvoere
+index_add=Voeg 'n nuwe uitvoer by.
+index_dirs=dopgehou
+index_clients=kliënte
+index_everyone=almal
+index_none=Geen uitvoer is nog gedefinieër nie.
+index_delete=Vee geselekteerde uitvoere uit
+index_apply=Pas veranderinge toe
+index_applydesc=Klik op hierdie knoppie om die huidige lêeruitvoerkonfigurasie toe te pas. Dit sal al die bogenoemde kaarte beskikbaar stel met die gespesifiseerde opsies.
+index_return=uitvoere lys
+index_echeck=Die NFS-bediener kan nie op hierdie stelsel gebruik word nie : $1 
+
+check_ecmd=NFS-bedieneropdrag $1 is nie geïnstalleer nie
+
+delete_err=Kon nie uitvoere uitvee nie
+delete_enone=Geen gekies nie
+
+edit_title1=Wysig Uitvoer
+edit_title2=Skep uitvoer
+edit_header1=Uitvoeropsies
+edit_dirs=Gidse om uit te voer
+edit_alldirs=Voer subgidse uit?
+edit_ro=Lees net?
+edit_kerb=Gebruik Kerberos?
+edit_header2=Kaart van eksterne gebruikers
+edit_maproot=Gebruik die wortelgebruiker na
+edit_mapusers=Kaart alle gebruikers na
+edit_unpriv=Onbevoorregte gebruiker
+edit_uid=Gebruiker / UID
+edit_gids=En groepe / GID's
+edit_mapall=Kaart alle gebruikers na
+edit_header3=Kliënte vir hierdie uitvoer
+edit_clients=kliënte
+edit_hosts=Gashere / netgroepe
+edit_network=Network
+edit_mask=masker
+
+save_err=Kon nie uitvoer stoor nie
+save_edir='$1' is nie 'n gids of bestaan nie
+save_enone=U moet ten minste een gids invoer om uit te voer
+save_esub=Slegs een gids kan gegee word as die opsie <b>uitvoer-subgidse</b> gekies word
+save_eroot=As u die opsie <b>uitvoer-subgidse</b> gebruik, moet die uitgevoerde gids die wortel van 'n <i>plaaslike</i> lêerstelsel wees.
+save_euser='$1' is nie 'n geldige gebruiker of UID nie
+save_egroup='$1' is nie 'n geldige groep of GID nie
+save_ekerb=Die kaartwortelgebruikers, kaart alle gebruikers en kerberos-opsies is onderling uitsluitend
+save_ehosts=U moet ten minste een gasheer binnekom om na te voer
+save_enetwork='$1' is nie 'n geldige netwerk nie
+save_enetmask='$1' is nie 'n geldige netmasker nie
+save_esame1=Die gids <tt>$1</tt> word reeds uitgevoer na <tt>$2</tt>. U bestuurstelsel laat nie toe dat kaarte op dieselfde <i>plaaslike</i> lêerstelsel afsonderlik na dieselfde gasheer uitgevoer word nie
+save_esame2=Die gids <tt>$1</tt> word reeds uitgevoer na <tt>$2</tt>. U bestuurstelsel laat nie toe dat kaarte op dieselfde <i>plaaslike</i> lêerstelsel afsonderlik na dieselfde netwerk uitgevoer word nie
+
+restart_err=Kon nie veranderinge toepas nie

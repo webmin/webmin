@@ -1,0 +1,53 @@
+inittab_new=Oħloq proċess ta 'init ġdid.
+inittab_id=ID
+inittab_active=Attiv?
+inittab_runlevels=Bootup runlevel
+inittab_action=Azzjoni
+inittab_process=Proċess
+inittab_none=Xejn
+inittab_respawn=Proċess mill-ġdid
+inittab_wait=Stenna
+inittab_once=Darba żmien fil-livell
+inittab_boot=Ibbutja l-ħin
+inittab_bootwait=Ħin tal-bidu, stenna sat-tmiem
+inittab_off=Taghmel xejn
+inittab_ondemand=Kull meta f'A, B, C
+inittab_initdefault=Wara sistema ta 'l-ibbutjar
+inittab_sysinit=Waqt l-ibbutjar tas-sistema
+inittab_powerwait=Qawwa tinżel
+inittab_powerfail=L-enerġija tinżel mingħajr ma tistenna
+inittab_powerokwait=L-enerġija hija rrestawrata
+inittab_powerfailnow=L-enerġija tfalli
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Kombinazzjoni ta 'ċavetta speċjali
+inittab_kbrequest=Kombinazzjoni ta 'ċavetta speċjali
+inittab_return=lista tal-proċess
+inittab_apply=Applika Konfigurazzjoni tal-Inizjattiva
+inittab_applymsg=Ikklikkja din il-buttuna biex tapplika l-konfigurazzjoni inizjali attwali ta 'SysV billi tħaddem il-kmand <tt>telinit q</tt>. Kun konxju li xi żbalji fil-konfigurazzjoni tiegħek jistgħu jagħmlu s-sistema ma tistax tintuża meta dan il-kmand jitmexxa.
+index_delete=Ħassar il-Proċessi magħżula
+inittab_none2=L-ebda proċess ta 'boot ma nstab fis-sistema tiegħek. Probabbilment dan jindika li ma jużax il-fajl tal-konfigurazzjoni init SysV.
+
+edit_inittab_err=Mhux permess li teditja proċess tiegħek
+edit_inittab_title=Proċess ta 'Editja $1 
+edit_inittab_details=Dettalji tal-Proċess
+edit_inittab_del=Ħassar
+edit_inittab_save=Issejvja
+
+new_inittab_err=Mhux permess li inti toħloq proċess ġdid
+new_inittab_title=Proċess Ġdid
+
+save_inittab_err=Tiegħek mhux permess isalva proċess
+save_inittab_noid=Żball, ma daħal l-ebda proċess ta 'isem
+save_inittab_already=Żball, il-proċess tal-isem diġà jeżisti
+
+log_modify=Proċess tal-bidu modifikat $1 
+log_rename=Proċedura tal-bidu tal-bidu $1 sa $2 
+log_create=Proċess ta 'bidu maħluq $1 
+log_delete=Proċess tal-bidu imħassar $1 
+log_apply=Konfigurazzjoni applikata
+log_deletes=Proċessi ta 'init $1 imħassra
+
+apply_err=Ma rnexxielux japplika l-konfigurazzjoni
+
+delete_err=Ma rnexxielhomx iħassru l-proċessi
+delete_enone=L-ebda magħżul

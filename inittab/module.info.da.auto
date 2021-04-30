@@ -1,0 +1,3 @@
+name_da=inittab
+desc_da=Start af systemopstart
+longdesc_da=Konfigurer tjenester på lavt niveau, der skal køres ved starttidspunktet, og vælg det oprindelige løbegang.

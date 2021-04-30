@@ -1,0 +1,152 @@
+index_title=PPTP VPN -palvelin
+index_version=PoPToP-versio $1 
+index_epptpd=PoPToP PPTP-palvelinta $1 ei löydy järjestelmästäsi, tai se ei ole oikea ohjelma. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
+index_econfig=PPTP-palvelimen määritystiedostoa $1 ei löydy järjestelmästäsi. Ehkä <a href='$2'>moduulin kokoonpano</a> on väärä.
+index_stop=Pysäytä PPTP-palvelin
+index_stopdesc=Napsauta tätä painiketta, kun haluat sulkea käynnissä olevan PPTP-palvelinprosessin, jotta uusia yhteyksiä ei hyväksytä. Nykyiset VPN-yhteydet pysyvät kuitenkin aktiivisina.
+index_start=Käynnistä PPTP-palvelin
+index_startdesc=Napsauta tätä painiketta, kun haluat käynnistää PPTP-palvelinprosessin, jotta se voi vastaanottaa VPN-yhteyksiä asiakkailta.
+index_apply=Käytä määritystä
+index_applydesc=Napsauta tätä painiketta, jos haluat käyttää nykyisiä PPTP-palvelinvaihtoehtoja pysäyttämällä ja käynnistämällä PPTP-palvelinprosessin uudelleen. PPP-asetusten ja PPP-tilien muutokset koskevat aina uusia yhteyksiä
+index_return=moduulihakemisto
+index_epppd=PPP-palvelinohjelmaa $1 ei ole asennettu järjestelmään. PPTP riippuu sen toiminnasta.
+
+conf_title=PPTP-palvelimen asetukset
+conf_ecannot=Et voi muokata PPTP-palvelimen asetuksia
+conf_header=PPTP-palvelimen määritykset
+conf_speed=PPP-tiedonsiirtonopeus
+conf_baud=bps
+conf_listen=Kuuntele osoitteessa
+conf_all=Kaikki osoitteet
+conf_localip=IP-osoitteet palvelimen yhteyden loppua varten
+conf_remoteip=IP-osoitteet, jotka voidaan jakaa asiakkaille
+conf_ipxnets=IPX-verkot varattaviksi
+conf_from=alkaen
+conf_to=että
+conf_option=PPP-asetusten tiedosto
+conf_mode0=Yleiset asetukset
+conf_mode1=PPTP-kohtaiset asetukset
+conf_mode2=Muokattu tiedosto
+conf_ipdesc=IP-osoite molemmilla alueilla voidaan syöttää joko yksittäin (kuten 192.168.1.1) tai alueina (kuten 192.168.2.32-64).
+conf_err=Palvelimen asetusten tallentaminen epäonnistui
+conf_espeed=Puuttuva tai virheellinen siirtonopeus
+conf_elisten=Puuttuva tai virheellinen osoite, jota kuunnella
+conf_eoption=Puuttuva tai virheellisen näköinen mukautettu PPP-asetusten tiedosto
+conf_elocalip='$1' ei ole kelvollinen paikallinen IP-osoite tai alue
+conf_eremoteip='$1' ei ole kelvollinen etä-IP-osoite tai alue
+conf_efrom=Puuttuva tai virheellinen IPX-verkko osoitteesta
+conf_eto=Puuttuva tai virheellinen IPX-verkko osoitteeseen
+
+options_title=PPP-asetukset
+options_ecannot=Et voi muokata PPP-asetuksia
+options_desc0=Alla olevat PPP-asetukset kohdasta $1 koskevat kaikkia järjestelmän vastaanottamia saapuvia yhteyksiä, mukaan lukien yhteys modeemiin.
+options_desc1=$1 : n alla olevat PPP-asetukset koskevat vain kaikkia PPTP-yhteyksiä.
+options_desc2=Niitä käytetään kaikissa uusissa yhteyksissä, jotka luodaan tämän lomakkeen tallentamisen jälkeen.
+options_header=PPP-yhteysvaihtoehdot
+options_proxyarp=Luodaan välityspalvelimen ARP-merkintä?
+options_lock=Lukitaanko PTY-laitetiedosto?
+options_auth=Vaativatko todennus?
+options_auth0=Ei, mutta estä reititetyt IP: t
+options_auth1=Ei koskaan
+options_auth2=Aina
+options_login=Onko myös UNIX-todennus?
+options_pap=PAP-todennus
+options_chap=CHAP-todennus
+options_req=On käytettävä
+options_all=Voidaan käyttää
+options_ref=Ei voida käyttää
+options_name=Palvelimen nimi todennusta varten
+options_hn=Todellinen isäntänimi
+options_mtu=Lähettävän paketin enimmäiskoko
+options_mru=Suurin vastaanottopaketin koko
+options_err=PPP-asetusten tallentaminen epäonnistui
+options_emtu=Puuttuva tai virheellinen lähetyspaketin koko
+options_emru=Puuttuva tai virheellinen vastaanottopaketin enimmäiskoko
+options_ename=Puuttuva tai virheellinen palvelimen nimi todennusta varten
+options_version=PPPd-versio $1 
+options_msdesc=Alla olevat vaihtoehdot mahdollistavat MS-CHAP-todennusmenetelmän ja MPPE-salauksen, joita Windows VPN -asiakkaat käyttävät oletuksena. MPPE vaatii kuitenkin tukea sekä PPP-daemonissa että käyttöjärjestelmän ytimessä.
+options_mschap=MS-CHAP-todennus
+options_mschap-v2=MS-CHAP-version 2 todennus
+options_chapms=MS-CHAP-todennus
+options_chapms-v2=MS-CHAP-version 2 todennus
+
+secrets_title=PPP-tilit
+secrets_ecannot=Et voi muokata PPP-tilejä
+secrets_return=indeksi
+secrets_none=PPP-tilejä ei ole vielä luotu.
+secrets_enopfile=PPP-salasanatiedostoa $1 ei ole järjestelmässäsi. Ehkä PPP: tä ei ole asennettu tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
+secrets_table=PPP on $1 
+secrets_user=Käyttäjätunnus
+secrets_ips=IP-osoitteet
+secrets_uany=MINKÄ TAHANSA
+secrets_sany=MINKÄ TAHANSA
+secrets_create=Luo uusi PPP-tili.
+secrets_desc=Tällä sivulla luetellut PPP-tilit on otettu tiedostosta $1, jota käytetään todennukseen $3. Vain palvelimesi $2 ne näkyvät, ei tilejä lähtevien yhteyksien luomiseksi.
+secrets_delete=Poista valitut PPP-tilit
+
+edit_secret_etitle=Muokkaa PPP-tiliä
+edit_secret_ctitle=Luo PPP-tili
+edit_secret_acc=PPP-tili
+edit_secret_user=Käyttäjätunnus
+edit_secret_serv=server
+edit_secret_sany=Minkä tahansa
+edit_secret_uany=Minkä tahansa
+edit_secret_pass=Salasana
+edit_secret_none=Ei mitään
+edit_secret_ffile=Tiedostosta
+edit_secret_leave=Jätä muuttumattomaksi
+edit_secret_setto=Asetettu
+edit_secret_vaddr=Voimassa olevat osoitteet
+edit_secret_aany=Salli mikä tahansa
+edit_secret_anone=Älä salli mitään
+edit_secret_alist=Salli listattu ..
+edit_secret_save=Tallentaa
+edit_secret_del=Poistaa
+edit_secret_return=tililuettelo
+
+save_secret_esave=Tilin tallentaminen epäonnistui
+save_secret_enoip='$1' ei ole kelvollinen osoite
+
+stop_err=PPTP-palvelimen pysäyttäminen epäonnistui
+stop_egone=Ei enää juokse
+stop_ecannot=Et voi pysäyttää PPTP-palvelinta
+
+start_err=PPTP-palvelimen käynnistäminen epäonnistui
+start_ecannot=Sinulla ei ole oikeutta käynnistää PPTP-palvelinta
+
+apply_err=PPTP-palvelimen uudelleen käynnistäminen epäonnistui
+apply_ecannot=Et voi käynnistää PPTP-palvelinta uudelleen
+
+conns_title=Aktiiviset yhteydet
+conns_ecannot=Et voi hallita aktiivisia yhteyksiä
+conns_desc=Tällä sivulla luetellaan palvelimellesi tällä hetkellä aktiiviset PPTP-yhteydet. Irrota yhteys pakkauksesta napsauttamalla sen käyttöliittymän nimeä.
+conns_iface=PPP-liittymä
+conns_client=Asiakkaan osoite
+conns_stime=Yhdistetty vuodesta
+conns_local=Palvelimen VPN-osoite
+conns_remote=Asiakkaan VPN-osoite
+conns_none=Mikään PPTP-yhteys ei näytä olevan aktiivinen tällä hetkellä.
+conns_unknown=Tuntematon
+conns_user=Käyttäjätunnus
+
+disc_err=Yhteyden katkaiseminen epäonnistui
+disc_egone=Yhteydet eivät ole enää aktiivisia
+disc_ekill=Prosessi ei ole enää käynnissä
+
+log_secret_create=Luotu PPP-tili $1 
+log_secret_modify=Muokattu PPP-tili $1 
+log_secret_delete=Poistettu PPP-tili $1 
+log_deletes=Poistettu $1 PPP-tili
+log_conf=Muokatut PPTP-palvelimen asetukset
+log_options=Muokatut PPP-asetukset
+log_disc=Yhteys katkaistu $1 
+log_start=Käynnistettiin PPTP-palvelin
+log_stop=Pysäytetty PPTP-palvelin
+log_apply=Käytetty PPTP-palvelimen määritys
+
+acl_conf=Voiko muokata kokoonpanoa?
+acl_options=Voiko asetuksia muokata?
+acl_secrets=Pystyykö hallitsemaan PPTP-tilejä?
+acl_conns=Voiko katsella yhteyksiä?
+acl_stop=Voiko pysäyttää ja käynnistää PPTP-palvelimen?
+acl_apply=Voiko asetusta käyttää?

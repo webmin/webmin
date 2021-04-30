@@ -1,0 +1,71 @@
+<header> TCP-Wrapper </header>
+<h3> Muster </h3> Die Zugriffssteuerungssprache implementiert die folgenden Muster: <ul>
+    <li> Eine Zeichenfolge, die mit einem &#39;.&#39; Beginnt. Charakter. Ein Hostname wird abgeglichen, wenn die letzten Komponenten seines Namens mit dem angegebenen Muster übereinstimmen. Beispielsweise entspricht das Muster &#39;.tue.nl&#39; dem Hostnamen &#39;wzv.win.tue.nl&#39;. </li>
+    <li> Eine Zeichenfolge, die mit einem &#39;.&#39; Endet. Charakter. Eine Hostadresse wird abgeglichen, wenn ihre ersten numerischen Felder mit der angegebenen Zeichenfolge übereinstimmen. Zum Beispiel das Muster &#39;131.155.&#39; entspricht der Adresse (fast) jedes Hosts im Netzwerk der Universität Eindhoven (131.155.xx). </li>
+    <li> Eine Zeichenfolge, die mit einem @ -Zeichen beginnt, wird als NIS-Netzgruppenname (ehemals YP) behandelt. Ein Hostname wird abgeglichen, wenn er ein Hostmitglied der angegebenen Netzgruppe ist. Netzgruppenübereinstimmungen werden für Dämonprozessnamen oder für Clientbenutzernamen nicht unterstützt. </li>
+    <li> Ein Ausdruck der Form &#39;nnnn / mmmm&#39; wird als &#39;Netz / Maske&#39;-Paar interpretiert. Eine IPv4-Hostadresse wird abgeglichen, wenn &#39;net&#39; gleich dem bitweisen UND der Adresse und der &#39;Maske&#39; ist. Beispielsweise stimmt das Netz- / Maskenmuster &#39;131.155.72.0/255.255.254.0&#39; mit jeder Adresse im Bereich &#39;131.155.72.0&#39; bis &#39;131.155.73.255&#39; überein. </li>
+    <li> Ein Ausdruck der Form &#39;[n: n: n: n: n: n: n: n] / m&#39; wird als Paar &#39;[net]/prefixlen&#39; interpretiert. Eine IPv6-Hostadresse wird abgeglichen, wenn die &#39;Präfix&#39;-Bits von&#39; net &#39;den&#39; Präfixlen&#39;-Bits der Adresse entsprechen. Zum Beispiel stimmt das Muster [net]/prefixlen &#39;[3ffe: 505: 2: 1 ::]/64&#39; mit jeder Adresse im Bereich &#39;3ffe: 505: 2: 1:&#39; überein? bis &#39;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&#39;. </li>
+    <li> Eine Zeichenfolge, die mit einem &#39;/&#39; beginnt, wird als Dateiname behandelt. Ein Hostname oder eine Hostadresse stimmt überein, wenn sie mit einem in der genannten Datei aufgeführten Hostnamen oder Adressmuster übereinstimmt. Das Dateiformat besteht aus null oder mehr Zeilen mit null oder mehr Hostnamen oder Adressmustern, die durch Leerzeichen getrennt sind. Ein Dateinamenmuster kann überall dort verwendet werden, wo ein Hostname oder ein Adressmuster verwendet werden kann. </li>
+    <li> Platzhalter &#39;*&#39; und &#39;?&#39; kann verwendet werden, um Hostnamen oder IP-Adressen abzugleichen. Diese Methode des Abgleichs kann nicht in Verbindung mit dem Abgleich &quot;Netz / Maske&quot; verwendet werden. Der Abgleich des Hostnamens beginnt mit &quot;.&quot; oder IP-Adressübereinstimmung mit der Endung &#39;.&#39;. </li>
+</ul>
+<h3> Platzhalter </h3> Die Zugriffskontrollsprache unterstützt explizite Platzhalter: <table border>
+    <tr>
+        <td> <b>ALLE</b> </td>
+        <td> Der universelle Platzhalter stimmt immer überein. </td>
+    </tr>
+    <tr>
+        <td> <b>LOKAL</b> </td>
+        <td> Entspricht jedem Host, dessen Name kein Punktzeichen enthält. </td>
+    </tr>
+    <tr>
+        <td> <b>UNBEKANNT</b> </td>
+        <td> Entspricht jedem Benutzer, dessen Name unbekannt ist, und jedem Host, dessen Name oder Adresse unbekannt ist. Dieses Muster sollte mit Vorsicht verwendet werden: Hostnamen sind möglicherweise aufgrund vorübergehender Nameserverprobleme nicht verfügbar. Eine Netzwerkadresse ist nicht verfügbar, wenn die Software nicht herausfinden kann, mit welchem Netzwerktyp sie spricht. </td>
+    </tr>
+    <tr>
+        <td> <b>BEKANNT</b> </td>
+        <td> Entspricht jedem Benutzer, dessen Name bekannt ist, und jedem Host, dessen Name und Adresse bekannt sind. Dieses Muster sollte mit Vorsicht verwendet werden: Hostnamen sind möglicherweise aufgrund vorübergehender Nameserverprobleme nicht verfügbar. Eine Netzwerkadresse ist nicht verfügbar, wenn die Software nicht herausfinden kann, mit welchem Netzwerktyp sie spricht. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOID</b> </td>
+        <td> Entspricht jedem Host, dessen Name nicht mit seiner Adresse übereinstimmt. Wenn tcpd mit -DPARANOID (Standardmodus) erstellt wird, werden Anforderungen von solchen Clients gelöscht, noch bevor die Zugriffssteuerungstabellen angezeigt werden. Erstellen Sie ohne -DPARANOID, wenn Sie mehr Kontrolle über solche Anforderungen haben möchten. </td>
+    </tr>
+</table>
+<h3> Betreiber </h3> <b>EXCEPT Die</b> beabsichtigte Verwendung hat die Form: &#39;list_1 EXCEPT list_2&#39;; Dieses Konstrukt stimmt mit allem überein, was mit list_1 übereinstimmt, es sei denn, es stimmt mit list_2 überein. Der EXCEPT-Operator kann in daemon_lists und in client_lists verwendet werden. Der EXCEPT-Operator kann verschachtelt sein: Wenn die Steuerungssprache die Verwendung von Klammern zulassen würde, würde &#39;a EXCEPT b EXCEPT c&#39; als &#39;(a EXCEPT (b EXCEPT c))&#39; analysiert. <h3> Shell-Befehle </h3> Wenn die zuerst übereinstimmende Zugriffssteuerungsregel einen Shell-Befehl enthält, wird dieser Befehl%unterworfen <letter> Substitutionen (siehe nächster Abschnitt). Das Ergebnis wird von einem untergeordneten Prozess /bin/sh ausgeführt, dessen Standardeingabe, -ausgabe und -fehler mit /dev/null verbunden sind. Geben Sie am Ende des Befehls ein &#39;&amp;&#39; an, wenn Sie nicht warten möchten, bis der Befehl abgeschlossen ist. <p> Shell-Befehle sollten nicht von der PATH-Einstellung des inetd abhängen. Stattdessen sollten sie absolute Pfadnamen verwenden oder mit einer expliziten PATH = what-Anweisung beginnen. <h3> % Erweiterungen </h3> Die folgenden Erweiterungen sind in Shell-Befehlen verfügbar: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> Die Hostadresse des Clients (Servers). </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Client-Informationen: Benutzer @ Host, Benutzer @ Adresse, ein Hostname oder nur eine Adresse, je nachdem, wie viele Informationen verfügbar sind. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> Der Name des Dämonprozesses (argv[0] -Wert). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Der Hostname oder die Adresse des Clients (Servers), wenn der Hostname nicht verfügbar ist. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> Der Hostname des Clients (Servers) (oder &quot;unbekannt&quot; oder &quot;paranoid&quot;). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> Die Daemon-Prozess-ID. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Serverinformationen: Daemon @ Host, Daemon @ Adresse oder nur ein Daemon-Name, je nachdem, wie viele Informationen verfügbar sind. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Der Client-Benutzername (oder &quot;unbekannt&quot;). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Erweitert sich auf ein einziges &#39;%? Charakter. </td>
+            </tr>
+        </table> Zeichen in% -Erweiterungen, die die Shell verwirren können, werden durch Unterstriche ersetzt.
+        <hr />

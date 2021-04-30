@@ -1,0 +1,3 @@
+index_echeck=De NFS-server kan niet worden gebruikt op dit systeem : $1 
+
+check_ecmd=NFS-serveropdracht $1 is niet geïnstalleerd

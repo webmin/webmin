@@ -1,0 +1,405 @@
+index_title=QMail Mail Server
+index_edir=Osnovni imenik QMail $1 ne obstaja. Mogoče QMail ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
+index_edir2=Zdi se, da imenik $1 ni osnovni imenik QMail. Mogoče QMail ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
+index_return=Konfiguracija e-pošte
+index_stop=Ustavite procese QMail
+index_stopmsg=Kliknite ta gumb, da zaustavite procese QMail v ozadju, ki so odgovorni za dostavo pošte iz pošte. Brez teh postopkov pošta ne bo poslana iz vašega sistema ali dostavljena v vaš sistem pravilno.
+index_start=Zaženite procese QMail
+index_startmsg=Kliknite ta gumb, če želite začeti procese QMail v ozadju, odgovorne za dostavo pošte iz pošte. Brez teh postopkov pošta ne bo poslana iz vašega sistema ali dostavljena v vaš sistem pravilno.
+
+opts_title=Možnosti QMail
+opts_me=Ime lokalnega gostitelja
+opts_helo=Ime gostitelja za SMTP HELO
+opts_toconnect=Prekinitev povezave SMTP
+opts_secs=sekund
+opts_toremote=Prekinitev odziva SMTP
+opts_bytes=Največja velikost sporočila
+opts_unlimited=Neomejeno
+opts_timeout=Začasna omejitev dohodnih podatkov SMTP
+opts_localip=Ime gostitelja za e-pošto na lokalni IP naslov
+opts_greet=SMTP voščilo
+opts_err=Možnosti QMail ni bilo mogoče shraniti
+opts_eme=Neveljavno ime lokalnega gostitelja
+opts_etoconnect=Neveljavna časovna omejitev povezave SMTP
+opts_etoremote=Neveljavna časovna omejitev odziva za SMTP
+opts_ebytes=Neveljavna največja velikost sporočila
+opts_etimeout=Neveljavna časovna omejitev dohodnih podatkov SMTP
+opts_elocalip=Neveljavno ime gostitelja lokalnega naslova IP
+
+aliases_title=Aliasi za pošto
+aliases_addr=Naslov
+aliases_to=Vzdevek za ..
+aliases_type1=Naslov 1
+aliases_type2=E-poštni imenik $1 
+aliases_type3=Poštna datoteka $1 
+aliases_type4=Program $1 
+aliases_type5=Samodejno vloži datoteko $1 
+aliases_type6=Uporabi datoteko filtra $1 
+aliases_none=Noben
+aliases_return=seznam vzdevkov
+aliases_toomany=V vašem sistemu je preveč vzdevkov pošte, ki bi se lahko prikazali na tej strani.
+aliases_go=Poiščite vzdevke, ki se ujemajo:
+aliases_delete=Izbriši izbrana vzdevka
+
+aform_type0=Noben
+aform_type1=Email naslov
+aform_type2=Poštni imenik
+aform_type3=Datoteka za pošto
+aform_type4=Feed v program
+aform_type5=Samodejno odgovori iz datoteke
+aform_type6=Uporabi datoteko filtra
+aform_edit=Urejanje vzdevka
+aform_create=Ustvari vzdevek
+aform_name=Naslov
+aform_val=Vzdevek k
+aform_afile=Uredi ..
+aform_novirt=&lt;Vse domene&gt;
+aform_return=vzdevek
+
+asave_err=Vzdevka ni bilo mogoče shraniti
+asave_eaddr='$1' ni veljaven naslov
+asave_ealready=Vzdevek za $1 že obstaja
+asave_etype1='$1' ni veljaven e-poštni naslov
+asave_etype2='$1' ni veljaven poštni imenik
+asave_etype3='$1' ni veljavno ime datoteke e-pošte
+asave_etype4='$1' ni veljaven program ali ne obstaja
+asave_etype5=Datoteka samodejnega odgovora '$1' ni veljavna
+asave_etype4none=Program ni naveden
+asave_etype6=Filmska datoteka '$1' ni veljavna
+
+adelete_err=Brisanje vzdevkov ni bilo mogoče
+adelete_enone=Izbrana ni nobena
+
+locals_title=Lokalne domene
+locals_domains=Lokalne domene tega strežnika
+locals_desc=Qmail bo sprejel za dostavo lokalnim uporabnikom elektronske pošte na domene in imena gostiteljev, navedena v besedilnem polju na levi strani. Če želite, da vaš poštni strežnik obravnava več e-poštnih domen, bi morali biti vsi navedeni na tem obrazcu.
+locals_only=Samo lokalno ime gostitelja $1 
+locals_sel=Spodaj navedene domene ..
+
+rcpts_title=Sprejete domene
+rcpts_domains=Sprejeta lokalna in relejna domena
+rcpts_all=Katera koli domena
+rcpts_sel=Spodaj navedene domene ..
+rcpts_desc=Qmail bo sprejel za prenašanje ali lokalno dostavo samo pošte na domene in imena gostiteljev, navedena v besedilnem polju na levi strani. V domeno, kot je <tt>.foo.com</tt>, lahko vnesete tudi nadomestne znake, ki ustrezajo vsem gostiteljem. Če želite, da vaš poštni strežnik za stranke prenaša e-pošto, morate sprejeti pošto s katere koli domene.
+rcpts_domains2=Dodatne lokalne in relejne domene
+rcpts_desc2=Če imate veliko število sprejetih domen, je treba v to besedilno polje vnesti manj pogosto uporabljene. Na splošno je treba prvih 50 dovoljenih domen vnesti v zgornje besedilno polje, preostale pa v to.
+
+bads_title=Zavrnjeni naslovi
+bads_addresses=Zavrnjeni e-poštni naslovi
+bads_desc=QMail bo zavrnil pošto za dostavo ali preusmeritev s katerega koli od naslovov, navedenih v besedilnem polju na levi strani, ki mora biti vpisan kot <tt>uporabniško ime @ ime domene</tt>. Če želite zavrniti pošto iz celotne domene, jo morate vnesti kot <tt>@ ime domene</tt>.
+
+routes_title=Usmerjanje domen
+routes_toomany=V vašem sistemu je preveč domenskih poti za prikaz na tej strani.
+routes_go=Poiščite ujemanje poti domen:
+routes_from=Pošta za domeno
+routes_to=Pošlji preko strežnika
+routes_direct=Dostavite neposredno
+routes_defroute=Vso ostalo odhodno pošto preko:
+routes_return=domenske poti
+routes_delete=Izbrišite izbrane poti domene
+
+rform_edit=Uredi pot domene
+rform_create=Ustvari pot do domene
+rform_from=Pošta za gostitelja ali domeno
+rform_to=Pošlji preko SMTP strežnika
+rform_port=SMTP vrata
+
+rsave_err=Ni bilo mogoče shraniti poti domene
+rsave_efrom='$1' ni veljavno ime domene
+rsave_eto='$1' ni veljaven strežnik SMTP
+rsave_eport='$1' ni veljavna številka vrat
+
+rdelete_err=Izbrisanih poti domene ni uspelo
+
+percents_title=% Naslovov domene
+percents_domains=Domene, ki podpirajo % naslove
+percents_desc=QMail bo sprejel e-pošto z naslovi v obliki <tt>user%firstdomain@seconddomain</tt>, če je v besedilnem polju na levi strani <tt>seconddomain</tt>. Ta sporočila bodo sporočila v tej obliki posredovala <tt>uporabniku@firstdomain</tt>.
+
+virts_title=Navidezne preslikave
+virts_toomany=V vašem sistemu je preveč virtualnih preslikav, ki bi se lahko prikazale na tej strani.
+virts_go=Poiščite ujemajoče se virtualne preslikave:
+virts_from=Pošta za
+virts_prepend=Dodajte predpono
+virts_all=Vsi naslovi
+virts_none=Ni virtualno
+virts_desc=Navidezne preslikave QMail uporablja za obdelavo e-pošte na različne domene na vašem strežniku, tako da pred nadaljnjo obdelavo vnese uporabniški del e-poštnega naslova. Z njimi lahko nastavite navidezne e-poštne domene tako, da ustvarite novo navidezno preslikavo za domeno, nato pa s stranjo <a href='$1'>Aliases Mail</a> ustvarite vzdevke znotraj te domene.
+virts_return=navidezne preslikave
+virts_delete=Izbrišite izbrane navidezne preslikave
+
+vform_edit=Uredi virtualno preslikavo
+vform_create=Ustvari navidezno preslikavo
+vform_from=Pošta za naslov
+vform_all=Vsak naslov, ki se ne ujema z drugim virtualnim preslikavanjem
+vform_domain=Naslovi z domeno
+vform_user=Naslov
+vform_to=Dodajte uporabniško ime
+vform_none=Nič
+vform_prepend=Določena predpona
+vform_auto=Samodejno izbrana predpona
+
+vsave_err=Navideznega preslikave ni bilo mogoče shraniti
+vsave_edomain='$1' ni veljavna e-poštna domena
+vsave_euser='$1' ni veljavno uporabniško ime za e-pošto
+vsave_eprepend='$1' ni veljavna predpona preslikave
+vsave_eboth=Ne morete izbrati obeh „kateri koli naslov, ki se ne ujema z drugim virtualnim preslikavanjem“ in „Nič“
+
+vdelete_err=Izbris virtualnih preslikav ni uspel
+
+stop_err=qmail-send postopek se ne izvaja več
+
+log_stop=Ustavljeni procesi QMail
+log_start=Začeli procese QMail
+log_opts=Spremenjene možnosti QMail
+log_alias_create=Ustvaril vzdevek $1 
+log_alias_delete=Izbriši vzdevek $1 
+log_alias_modify=Spremenjen vzdevek $1 
+log_delete_aliases=Izbrisani so $1 vzdevki
+log_virt_create=Ustvarjeno virtualno preslikavo $1 
+log_virt_delete=Izbrisano je virtualno preslikavo $1 
+log_virt_modify=Spremenjeno virtualno preslikavo $1 
+log_delete_virts=Izbrisani so $1 virtualni preslikavi
+log_virtall_create=Ustvarjeno virtualno preslikavo catchall
+log_virtall_delete=Izbrisano je virtualno preslikavo v katalogu
+log_virtall_modify=Spremenjeno virtualno preslikavo catchall
+log_locals=Spremenjene lokalne domene
+log_rcpts=Spremenjene sprejete domene
+log_bads=Spremenjeni zavrnjeni naslovi
+log_percents=Spremenjeno % naslovnih domen
+log_route_create=Ustvarjena pot za $1 
+log_route_delete=Izbrisana pot za $1 
+log_route_modifed=Spremenjena pot za $1 
+log_delete_routes=Izbrisanih $1 poti
+log_defroute=Spremenjena privzeta pot
+log_assign_create=Ustvarjen uporabnik pošte $1 
+log_assign_delete=Izbrisan uporabnik e-pošte $1 
+log_assign_modifed=Spremenjen uporabnik pošte $1 
+log_delete_assigns=Izbrisanih $1 uporabnikov e-pošte
+log_delmail=Izbrisana so sporočila $1 od $2 
+log_movemail=Premaknjena $1 sporočila iz $2 v $3 
+log_send=Poslano pošto na $1 
+
+rfile_title=Uredi datoteko samodejnega odgovora
+rfile_desc=S spodnjim besedilom uredite samodejno sporočilo v $1. Sporočilo lahko vsebuje makra $SUBJECT, $FROM, $TO, $DATE in $BODY, ki se bodo razširili, ko je aktivirana samodejna ponovitev.
+rfile_desc2=Nastavite lahko tudi naslove pošt, ki dodajo ali zamenjajo privzete nastavitve, uporabljene v samodejnem odgovarjanju, tako da vnesete vrstice, kot so: <br><tt> Od: foo@bar.com </tt><br> <tt>Zadeva: Počitnice</tt> <br> na vrhu sporočila, ločeno od telesa z eno samo prazno vrstico.
+rfile_efile=Ni vam dovoljeno urejati $1.
+rfile_undo=Razveljavi spremembe
+rfile_replies=Sledite odgovorom, da preprečite zank po pošti?
+rfile_none=Ne
+rfile_file=Da, z uporabo datoteke dnevnika
+rfile_period=Najmanjši interval med odgovori
+rfile_default=Privzeto (1 ura)
+rfile_secs=sekund
+rfile_ereplies=Datoteka dnevnika za sledenje odgovorov manjka
+rfile_eperiod=Manjkajoče ali neveljavno število sekund med odgovori
+rfile_no_autoreply=Ne pošiljajte samodejnih odgovorov na
+rfile_from=Od: naslov za odgovor
+rfile_auto=Samodejno (glede na naslov prejemnika)
+rfile_efrom=Manjka: naslov
+rfile_fromdesc=Kadar je mogoče, je treba vedno navesti naslov From: Če samodejna metoda morda ni zanesljiva.
+
+ffile_title=Uredi datoteko filtra
+ffile_desc=Uporabite spodnji obrazec za nastavitev pravil filtriranja v datoteki $1.
+ffile_efile=Ni vam dovoljeno urejati $1.
+ffile_line=Če polje $1 $2 $3 preusmeri na $4 
+ffile_from=iz
+ffile_to=do
+ffile_subject=predmet
+ffile_cc=CC
+ffile_body=telo
+ffile_what0=se ne ujema
+ffile_what1=vžigalice
+ffile_other=V nasprotnem primeru posredujte $1 
+ffile_err=Filmske datoteke ni bilo mogoče shraniti
+ffile_ematch=Manjka tekma
+ffile_eaction=Manjka naslov za posredovanje
+
+queue_title=Čakalna vrsta
+queue_count=$1 sporočila
+queue_none=Trenutno nobeno poštno sporočilo ni na čakalni vrsti za dostavo
+queue_id=ID pošte
+queue_date=Poslano
+queue_from=Od
+queue_to=Do
+queue_cc=Cc
+queue_subject=Predmet
+queue_return=čakalna vrsta
+queue_delete=Izbrišite izbrana sporočila
+queue_all=Izberi vse
+queue_invert=Obrni izbor
+queue_refresh=Osveži čakalno vrsto
+queue_refreshdesc=Ponovno naloži to stran, da se pokaže trenutno stanje čakalne vrste.
+
+qview_title=Sporočilo v čakalni vrsti
+qview_desc=Iz datoteke $1 
+qview_headers=Glave pošte
+qview_attach=Priloge
+
+assigns_title=Uporabniške naloge po pošti
+assigns_return=naloge uporabnikov pošte
+assigns_toomany=V vašem sistemu je preveč uporabnikov pošte, ki bi jih lahko prikazali na tej strani.
+assigns_go=Poiščite uporabnike pošte, ki se ujemajo:
+assigns_address=E-pošta na naslov
+assigns_user=Uporabnik Unixa
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=Domači imenik
+assigns_desc=Naloge uporabnikov pošte omogočajo ustvarjanje nabiralnikov za uporabnike, ki niso opredeljeni na seznamu uporabnikov Unix. Vsaka naloga bo dostavila pošto za izbrani vzorec uporabniškega imena ali uporabniškega vzorca, kot da je bila dostavljena v resnični Unixov nabiralnik.
+assigns_delete=Izbriši izbrane uporabnike pošte
+
+sform_edit=Urejanje uporabnika e-pošte
+sform_create=Ustvari uporabnika pošte
+sform_address=Uporabniško ime naslova
+sform_mode0=Natančno uporabniško ime
+sform_mode1=Uporabniška imena, začenši z
+sform_user=Uporabnik Unixa
+sform_uid=UID
+sform_gid=GID
+sform_home=Domači imenik
+
+ssave_err=Uporabnika pošte ni bilo mogoče shraniti
+ssave_eaddress=Uporabniško ime manjka ali ni veljavno
+ssave_euser=Manjkajoči ali neveljavni uporabnik Unixa
+ssave_euid=Manjkajoč ali neveljaven UID
+ssave_egid=Manjkajoči ali neveljaven GID
+ssave_ehome=Manjkajoči ali neveljaven domači imenik
+
+sdelete_err=Uporabnikom pošte ni bilo mogoče izbrisati
+
+delete_egone=Sporočilo iz čakalne vrste ne obstaja več
+delete_ebogus=Neveljavno ime datoteke čakalne vrste
+
+boxes_title=Uporabniški nabiralniki
+boxes_user=Uporabnik
+boxes_size=Velikost nabiralnika
+boxes_none=Brez pošte
+boxes_return=nabiralnike
+boxes_sent=Poslana pošta
+boxes_ecannot=Ne smete brati e-pošte
+boxes_toomany=V vašem sistemu je preveč uporabnikov, da bi lahko videli vse svoje nabiralnike.
+boxes_go=Ogled pošte za uporabnika:
+
+mail_title=Uporabniški e-poštni naslov
+mail_from=Od
+mail_date=Datum
+mail_subject=Predmet
+mail_to=Do
+mail_cc=Cc
+mail_bcc=Skp
+mail_pri=Prednost
+mail_highest=Najvišja
+mail_high=Visoka
+mail_normal=Običajno
+mail_low=Nizka
+mail_lowest=Najnižje
+mail_for=V $1 
+mail_for2=Za uporabnika $1 
+mail_sent=V seznamu poslanih sporočil
+mail_size=Velikost
+mail_delete=Izbriši
+mail_compose=Sestavi
+mail_return=uporabniški nabiralnik
+mail_pos=Sporočila $1 do $2 od $3 
+mail_none=Ta nabiralnik nima sporočil
+mail_ecannot=Ne smete brati e-poštnega sporočila tega uporabnika
+mail_all=Izberi vse
+mail_invert=Obrni izbor
+mail_search=Poiščite sporočila, kje
+mail_body=Telo
+mail_match=vžigalice
+mail_ok=Iskanje
+mail_nonefrom=Noben
+mail_mark=Označi kot:
+mail_mark0=Neprebrano
+mail_mark1=Preberi
+mail_mark2=Poseben
+mail_forward=Naprej
+mail_rfc=Iz vrstice
+mail_move=Premakni v:
+mail_eexists=Sporočilo ne obstaja več!
+
+view_title=Preberite e-pošto
+view_desc=Sporočilo $1 v $2 
+view_desc2=Sporočilo $1 za uporabnika $2 
+view_desc3=Sporočilo $1 
+view_sent=Sporočilo $1 na seznamu poslanih e-poštnih sporočil
+view_qdesc=Sporočilo iz čakalne vrste $1 
+view_headers=Glave pošte
+view_allheaders=Oglejte si vse glave
+view_noheaders=Oglejte si osnovne glave
+view_attach=Priloge
+view_reply=Odgovori
+view_reply2=Odgovori vsem
+view_enew=Uredi kot novo
+view_forward=Naprej
+view_delete=Izbriši
+view_strip=Odstranite priloge
+view_ecannot=Ne smete brati e-poštnega sporočila tega uporabnika
+view_mark=Označi sporočilo kot:
+view_mark0=Neprebrano
+view_mark1=Preberi
+view_mark2=Poseben
+view_return=izvirno e-poštno sporočilo
+view_sub=Priložena e-pošta
+
+compose_title=Sestavi e-pošto
+reply_title=Odgovori na e-pošto
+forward_title=Posreduj e-pošto
+enew_title=Urejanje e-pošte
+reply_headers=Glave pošte
+reply_attach=Posredovani priključki
+reply_mailforward=Posredovana sporočila
+reply_attach2=Priloge za stranke in strežnike
+reply_send=Pošlji pošto
+reply_ecannot=Tega uporabnika ne smete pošiljati
+
+send_err=Pošiljanje pošte ni bilo mogoče
+send_eto=Manjka naslov
+send_efrom=Manjka naslov
+send_title=Poslano po pošti
+send_ok=E-pošta je bila uspešno poslana $1 
+send_ecannot=Tega uporabnika ne smete pošiljati
+send_esmtp=SMTP ukaz $1 ni uspel : $2 
+send_efile=Priložena datoteka $1 ne obstaja
+send_eattach=Priloge ne smejo biti večje od $1 kB.
+send_eperms=Uporabnik $1 ne more brati $2 
+send_eperms2=Ni vam dovoljeno pošiljati datoteke $1 
+send_epath=Izvršni dokument Sendmail $1 ne obstaja.
+
+delete_title=Izbriši pošto
+delete_rusure=Ali ste prepričani, da želite izbrisati $1 izbrana sporočila iz $2 ? Za veliko poštno datoteko lahko traja nekaj časa. Dokler se izbris ne konča, nobenega drugega dejanja ne bi smeli izvajati.
+delete_rusure2=Ali ste prepričani, da želite izbrisati to sporočilo iz $1 ? Za veliko poštno datoteko lahko traja nekaj časa. Dokler se izbris ne konča, nobenega drugega dejanja ne bi smeli izvajati.
+delete_ok=Izbriši zdaj
+delete_ecannot=Zdaj lahko tem uporabnikom izbrišete pošto
+delete_enone=Za brisanje ni izbrana nobena pošta
+delete_emnone=Za označevanje ni izbrana nobena pošta
+delete_nobutton=Noben kliknjen gumb
+
+search_title=Rezultati iskanja
+search_ecannot=Ne morete iskati po e-pošti tega uporabnika
+search_ematch=Vnesti morate besedilo, da se boste ujemali z.
+search_efield=Izbrati morate vrsto iskanja.
+search_none=Sporočila ni mogoče najti.
+search_results2=$1 e-poštna sporočila se ujemajo z $2 ..
+search_results3=$1 e-poštna sporočila se ne ujemajo z $2 ..
+
+match_from=Od: tekme
+match_subject=Zadeva: tekme
+match_to=Za: tekme
+match_cc=Cc: tekme
+match_date=Datum: tekme
+match_body=Telesne tekme
+match_size=Velikost je večja od
+match_headers=Glave se ujemajo
+match_=-----------------
+match_!from=Od: se ne ujema
+match_!subject=Zadeva: se ne ujema
+match_!to=Za: se ne ujema
+match_!cc=Cc: se ne ujema
+match_!date=Datum: se ne ujema
+match_!body=Telo se ne ujema
+match_!size=Velikost je manjša od
+match_!headers=Glave se ne ujemajo
+
+delq_titles=Brisanje sporočil
+delq_rusure=Ali ste prepričani, da želite izbrisati $1 izbrana sporočila iz čakalne vrste?
+delq_confirm=Izbriši sporočila

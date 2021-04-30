@@ -1,0 +1,37 @@
+index_title=Работа в кластере Cron
+index_add=Создайте новое кластерное задание cron.
+index_none=Задания кластера cron не определены.
+index_servers=Запустить на серверах
+index_return=список заданий кластера cron
+index_more=$1 больше ..
+index_run=Запустить сейчас ..
+index_actions=действия
+
+edit_title=Редактировать кластер Cron Job
+create_title=Создать кластер Cron Job
+edit_servers=Запустить на серверах
+edit_group=Члены $1 
+edit_this=этот сервер
+edit_all=&lt;Все хосты&gt;
+edit_emissing=Работа Cron больше не существует!
+
+save_err=Не удалось сохранить задание кластера cron
+
+exec_title=Выполнить Cronter Cron Job
+exec_cmd=Запуск $1 на выбранных серверах.
+exec_failed=Не удалось запустить на $1 : $2 
+exec_success=Выход из $1 ..
+exec_nohosts=Хосты, выбранные для работы, не выбраны, или выбранные группы не содержат используемых хостов.
+
+log_run=Выполнено $1 на серверах $2 
+log_run_l=Ран $1 на $2 
+log_create=Создано задание кластера cron для $1 
+log_create_l=Создано задание cron кластера $2 для $1 
+log_modify=Изменено задание cron кластера для $1 
+log_modify_l=Изменено задание cron кластера $2 для $1 
+log_delete=Удалено задание кластера cron для $1 
+log_delete_l=Удалено задание cron кластера $2 для $1 
+log_deletes=Удалены задания кластера $1 cron
+
+delete_err=Не удалось удалить задания кластера cron
+delete_enone=Не выбрано, ничего не выбрано

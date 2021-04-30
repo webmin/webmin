@@ -1,0 +1,4 @@
+index_eauthkeys=El fitxer de claus d'autenticació $1 no s'ha trobat al sistema. Potser encara no s'ha copiat al lloc o la configuració del mòdul <a href='$2'></a> és incorrecta.
+
+conf_serials=Ports de batec cardíac en sèrie
+conf_bcasts=Interfícies de batecs del cor Ethernet

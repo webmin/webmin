@@ -1,0 +1,120 @@
+index_title=Jabber IM Server
+index_econfig=Il file di configurazione Jabber $1 non esiste. Jabber non è installato oppure la <a href='$2'>configurazione del modulo</a> non è corretta.
+index_edir=La directory di base Jabber $1 non esiste. Jabber non è installato oppure la <a href='$2'>configurazione del modulo</a> non è corretta.
+index_emodules=I moduli Perl $1 e $2 richiesti da Webmin per la gestione della configurazione XML di Jabber non sono installati. <a href='$3'>Fai clic qui</a> per installarli direttamente da CPAN.
+index_emodule=Il modulo Perl $1 richiesto da Webmin per la gestione della configurazione XML di Jabber non è installato. <a href='$2'>Fai clic qui</a> per installarlo direttamente da CPAN.
+index_expat=Assicurati di avere la libreria Expat C e le intestazioni installate prima di provare a installare i moduli Perl, poiché dipendono da esso e falliranno se non sono disponibili.
+index_eparse=Il modulo $1 perl non ha potuto analizzare il file di configurazione di Jabber : $2 
+index_ejabberd=Il programma server Jabber $1 non è stato trovato sul tuo sistema. Jabber non è installato oppure la <a href='$2'>configurazione del modulo</a> non è corretta.
+index_eversion=Webmin supporta solo la versione Jabber $2, ma il comando $3 ha riportato le seguenti informazioni sulla versione : $1 
+index_eversion2=Webmin supporta solo versioni di Jabber inferiori a $2, ma il comando $3 ha riportato le seguenti informazioni sulla versione : $1 
+index_start=Avviare Jabber Server
+index_startmsg=Fare clic su questo pulsante per avviare il server Jabber sul proprio sistema. Fino all'avvio, nessun client di messaggistica istantanea sarà in grado di utilizzarlo.
+index_stop=Arresta Jabber Server
+index_stopmsg=Fare clic su questo pulsante per interrompere il server Jabber in esecuzione sul sistema. Nessun client di messaggistica istantanea sarà in grado di utilizzarlo quando viene arrestato.
+index_restart=Applica i cambiamenti
+index_restartmsg=Fare clic su questo pulsante per applicare la configurazione corrente arrestando e quindi riavviando il server Jabber.
+index_comments=Avvertenza: il file di configurazione Jabber $1 contiene commenti, che verranno rimossi se vengono apportate modifiche alla configurazione utilizzando questo modulo.
+index_return=Menu Jabber
+index_version=Versione Jabber $1 
+
+general_title=Opzioni generali
+general_header=Opzioni del server Jabber globale
+general_host=Nome host del tuo server
+general_elog=File di registro errori
+general_elogfmt=Formato registro errori
+general_rlog=Accedi al file di registro
+general_rlogfmt=Accedi al formato del registro
+general_pidfile=File ID processo
+general_err=Impossibile salvare le opzioni generali
+general_ehost=Nome host del server mancante o non valido
+general_eelog=File di registro errori mancante o non valido
+general_eelogfmt=Formato del registro errori mancante
+general_erlog=File di registro del traffico mancante o non valido
+general_erlogfmt=Formato del registro del traffico mancante
+general_epidfile=File ID processo mancante o non valido
+
+messages_title=messaggi
+messages_header=Messaggio del server Jabber per i client
+messages_wsubject=Oggetto del messaggio di benvenuto
+messages_wbody=Corpo del messaggio di benvenuto
+messages_vcard=Server vCard
+messages_rinstr=Istruzioni per la registrazione
+messages_rnotify=Avvisare l'amministratore al momento della registrazione?
+messages_rfields=Campi di registrazione obbligatori
+messages_vcard2jud=Invia vCard alla directory utente di Jabber?
+messages_err=Impossibile salvare i messaggi
+messages_evcard=XML vCard non valido : $1 
+messages_etag=Server vCard XML non inizia con &lt;vCard&gt;
+
+modules_title=Moduli Jabber
+modules_desc=I moduli elencati di seguito vengono utilizzati per elaborare i messaggi ricevuti dal gestore sessioni Jabber. Dovresti cambiare questo elenco solo se sai cosa stai facendo.
+modules_header=Moduli gestore sessioni server Jabber
+modules_mod=Nome del modulo
+modules_so=Libreria condivisa
+modules_err=Impossibile salvare i moduli Jabber
+modules_emod='$1' non è un nome di modulo valido
+modules_eso=La libreria condivisa '$1' non esiste
+
+karma_title=Karma Traffic Control
+karma_header=Opzioni di controllo della velocità del traffico
+karma_rate=Gestione della connessione eccessiva
+karma_rate_def=Disabilitato
+karma_rate_sel=Blocca client per $2 secondi dopo $1 connessioni
+karma_mode=Modalità Karma
+karma_none=Senza limiti
+karma_low=Limiti di traffico bassi
+karma_medium=Limiti di traffico medi
+karma_high=Limiti di traffico elevati
+karma_sel=Utilizza le impostazioni selezionate di seguito.
+karma_heartbeat=Durata del periodo in secondi (<tt>battito cardiaco</tt>)
+karma_init=Periodi di inizializzazione (<tt>init</tt>)
+karma_max=Karma massimo (<tt>max</tt>)
+karma_inc=Incremento del karma (<tt>inc</tt>)
+karma_dec=Decremento del karma (<tt>dec</tt>)
+karma_penalty=Periodi di penalità (<tt>sanzione</tt>)
+karma_restore=Periodi di ripristino a raffica (<tt>ripristino</tt>)
+karma_err=Impossibile salvare le opzioni del karma
+karma_eheartbeat=Durata del periodo mancante o non valida
+karma_einit=Periodi di inizializzazione mancanti o non validi
+karma_emax=Massimo karma mancante o non valido
+karma_einc=Incremento del karma mancante o non valido
+karma_edec=Decremento del karma mancante o non valido
+karma_epenalty=Periodi di penalità mancanti o non validi
+karma_erestore=Periodi di ripristino mancanti o non validi
+karma_epoints=Numero di connessioni mancante o non valido
+karma_etime=Tempo mancante o non valido per il blocco
+
+ips_title=Controllo dell'accesso IP
+ips_header=Controllo dell'accesso IP del server Jabber
+ips_allow=IP client consentiti
+ips_all=Tutti gli indirizzi
+ips_deny=IP client negati
+ips_none=Nessuna
+ips_sel=Indirizzi/maschere di rete elencati.
+ips_err=Impossibile salvare il controllo di accesso IP
+ips_eaddr='$1' non è un indirizzo IP valido o un indirizzo IP/maschera di rete
+
+file_title=Modifica file di configurazione
+file_desc=Utilizzare il modulo seguente per modificare direttamente il file di configurazione di Jabber. Questo dovrebbe essere fatto solo se si comprende il formato di configurazione XML.
+file_header=Modifica il file di configurazione di Jabber
+file_err=Impossibile salvare il file di configurazione
+
+admin_title=Utenti amministrativi
+admin_header=Utenti di amministrazione del server
+admin_read=Amministratori con accesso in lettura
+admin_write=Amministratori con accesso in scrittura
+admin_reply=Risposta automatica ai messaggi di amministrazione?
+admin_rsubject=Soggetto autoreply
+admin_rbody=Messaggio di risposta automatica
+
+filter_title=Filtri utente
+filter_header=Autorizzazioni filtro utente
+filter_max=Regole di filtro massime
+filter_conds=Condizioni del filtro consentite
+filter_acts=Azioni di filtro consentite
+
+restart_err=Impossibile applicare le modifiche
+stop_err=Impossibile arrestare Jabber
+stop_epid=Impossibile trovare il processo Jabber
+start_err=Impossibile avviare Jabber

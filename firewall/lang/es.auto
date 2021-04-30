@@ -1,0 +1,150 @@
+index_title_v=Cortafuegos IPv4
+index_title_v6=Cortafuegos IPv6
+index_editing=Archivo de reglas $1 
+index_evalid=¡ADVERTENCIA! Su configuración actual de IPtables no es válida : $1 
+index_comm=Comentario
+index_no_comment=
+index_jump_reject=<font color=#ff4400>Rechazar</font>
+index_jump_log=Paquete de registro
+index_crename=Cambiar nombre de cadena
+index_cdeletesel=Eliminar seleccionado
+index_cmovesel=Mover seleccionado
+index_applydesc2=Haga clic en este botón para activar la configuración del firewall enumerada anteriormente en todos los servidores del clúster. Cualquier regla de firewall actualmente en vigor será eliminada y reemplazada
+index_unapply2=Guardar configuración
+index_unapply2desc=Haga clic en este botón para guardar la configuración anterior en el archivo de configuración de firewall permanente.
+index_rsetup=La configuración del firewall de IPtables en su sistema está a punto de restablecerse. Webmin establecerá nuevas reglas predeterminadas, que se almacenarán en el archivo de guardado $1, con la configuración inicial basada en su selección del tipo de firewall a continuación.
+index_auto3=Bloquear todo excepto SSH e IDENT en la interfaz externa:
+index_auto4=Bloquee todos excepto SSH, IDENT, ping y puertos altos en la interfaz:
+index_auto5=Bloquee todos excepto los puertos utilizados para el alojamiento virtual, en la interfaz:
+index_shorewall=Parece que Shorewall se está utilizando para generar el firewall de su sistema. Tal vez debería usar el <a href='$1'>módulo Shoreline Firewall</a> en su lugar.
+index_firewalld=Parece que FirewallD se está utilizando para generar el firewall de su sistema. Tal vez debería usar el <a href='$1'>módulo FirewallD</a> en su lugar.
+index_fail2ban=Parece que Fail2Ban se está utilizando para administrar algunas reglas de firewall. Debe modificarlos con <a href='$1'>módulo Fail2Ban</a> y filtrar <a href=$2>f2b -. *</a> o <a href=$2>fail2ban -. *</a>.
+index_filter_chain=no es administrado por firewall.
+index_filter_nodirect=Reglas gestionadas externas detectadas. Active "<a href=$1>Editar directamente las reglas del firewall"</a> o las reglas de su firewall pueden romperse.
+index_reset=Restablecer firewall
+index_resetdesc=Haga clic en este botón para borrar todas las reglas de firewall existentes y configurar nuevas reglas para una configuración inicial básica.
+index_cluster=Servidores en clúster
+index_clusterdesc=Haga clic en este botón para configurar servidores Webmin adicionales en los que la configuración del firewall se copiará automáticamente.
+index_ipset=Conjunto de IP
+index_ipset_title=Conjuntos de IP activos que pueden ser utilizados por las reglas de firewall
+index_ipset_name=Nombre del conjunto de IP
+index_ipset_type=Tipo
+index_ipset_elem=# Elementos
+index_ipset_maxe=# Max
+index_ipset_size=Talla
+index_ipvxmode=Cambiar la versión del protocolo IP:
+index_ipvx4=IPv4
+index_ipvx6=IPv6
+
+desc_icmpv6-type=El tipo de ICMP es $1 
+desc_icmpv6-type!=El tipo de ICMP no es $1 
+desc_mac-source=la dirección de ethernet es $1 
+desc_mac-source!=la dirección de ethernet no es $1 
+desc_ctstate=el estado de conexión es $1 
+desc_ctstate!=el estado de conexión no es $1 
+desc_physdev-in=la interfaz física de entrada es $1 
+desc_physdev-in!=la interfaz física de entrada no es $1 
+desc_physdev-out=la interfaz física de salida es $1 
+desc_physdev-out!=la interfaz física de salida no es $1 
+desc_args--match-set=$2 está contenido en el conjunto de IP $1 
+desc_src=fuente
+desc_dest=destino
+
+redhat_einstalled=No se encontró ninguna acción de arranque <tt>iptables (6)</tt>, lo que indica que el paquete IPtables no está instalado en su sistema
+
+edit_cmt=Comentario de regla
+edit_state_untracked=Sin seguimiento
+edit_state_snat=Fuente NATd
+edit_state_dnat=Destino NATd
+edit_args=Parámetros adicionales
+edit_mods=Módulos adicionales de IPtables
+edit_rwith=Rechazar con tipo ICMP
+edit_rwithtype=Tipo 1
+edit_physdevin=Interfaz física entrante
+edit_physdevout=Interfaz física saliente
+edit_physdevisin=Paquete entrante en la interfaz del puente
+edit_physdevisout=Paquete saliente en la interfaz del puente
+edit_physdevisbridged=Se está puenteando el paquete
+
+save_etcpflags2=Debe seleccionar al menos un indicador TCP de la segunda fila
+save_ecanjump=No tienes permiso para usar esta acción
+save_ephysdevin=Interfaz física entrante faltante o inválida
+save_ephysdevout=Interfaz física saliente faltante o inválida
+
+delete_ecannot=No tienes permiso para eliminar cadenas
+
+clear_ecannot=No está permitido limpiar cadenas
+
+new_ecannot=No tienes permitido crear cadenas
+
+apply_ecannot=No tiene permitido aplicar la configuración
+apply_remote=Error de $1 : $2 
+unapply_ecannot=No está permitido revertir la configuración
+bootup_ecannot=No está permitido habilitar o deshabilitar el firewall en el arranque
+
+log_rename_chain=Cadena renombrada $1 en la tabla $2 
+log_delsel_chain=Se eliminaron $3 reglas de la cadena $1 en la tabla $2 
+log_movesel_chain=Se movieron $3 reglas de la cadena $1 en la tabla $2 
+log_add_host=Servidor de clúster agregado $1 
+log_add_group=Se agregaron servidores de clúster del grupo $1 
+log_delete_host=Se eliminó el servidor de clúster $1 
+log_delete_group=Se eliminaron $1 servidores de clúster
+log_openports=Puertos de firewall abiertos $1 
+
+setup_ecannot=No tienes permiso para configurar el firewall
+
+acl_tables=IPtables permitidas
+acl_apply=¿Se puede aplicar la configuración?
+acl_unapply=¿Se puede cancelar la aplicación de la configuración?
+acl_bootup=¿Se puede habilitar el firewall en el arranque?
+acl_setup=¿Se puede realizar la configuración inicial del firewall?
+acl_cluster=¿Se puede administrar el clúster de firewall?
+acl_jumps=Acciones permitidas
+acl_jall=Todos
+acl_newchain=¿Se pueden crear nuevas cadenas?
+acl_delchain=¿Se pueden eliminar o borrar cadenas?
+acl_policy=¿Se puede cambiar la política predeterminada?
+
+etable=No tienes permiso para editar esta IPtable
+ejump=No tienes permiso para editar esta regla
+ecluster=No tiene permiso para administrar el clúster de firewall
+
+cluster_title=Servidores de firewall de clúster
+cluster_none=Aún no se han agregado servidores al clúster de firewall.
+cluster_host=Nombre de host
+cluster_desc=Descripción
+cluster_os=Sistema operativo
+cluster_add=Agregar servidor
+cluster_gadd=Agregar servidores en grupo
+cluster_need=Debe agregar servidores con un nombre de usuario y contraseña en el módulo Índice de servidores Webmin antes de que puedan administrarse aquí.
+cluster_return=servidores de clúster
+cluster_delete=Eliminar selección
+
+add_title=Agregar servidores
+add_msg=Añadiendo $1 ..
+add_gmsg=Agregando servidores en el grupo $1 ..
+add_err=Error al agregar servidor
+add_gerr=Error al agregar grupo
+add_echeck=El servidor $1 no tiene el módulo de firewall de Linux
+add_emissing=Al servidor $1 le falta el comando de firewall $2 
+add_ok=Se agregó $1, con $2 reglas de firewall activas.
+add_enone=No hay servidores para agregar seleccionados!
+
+policy_ecannot=No tiene permiso para cambiar la política predeterminada para esta cadena
+
+move_title=Mover Reglas
+move_count=Reglas seleccionadas
+move_chain=Cambio actual
+move_dest=Cadena de destino
+move_ok=Muévete ahora
+move_header=Opciones de movimiento de regla
+
+rename_title=Cambiar nombre de cadena
+rename_count=Reglas en cadena
+rename_chain=Nombre actual
+rename_name=Nuevo nombre
+rename_ok=Renombrar ahora
+rename_header=Opciones de cambio de nombre de cadena
+rename_adjust=¿Modificar otras reglas que saltan a esta cadena?
+rename_none=Ninguna
+rename_ecannot=No está permitido cambiar el nombre de las cadenas.

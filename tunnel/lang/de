@@ -1,19 +1,21 @@
-__norefs=1
 index_elink=Es wurde bisher noch keine URL zum tunneln angelegt.
-index_open=&#214;ffnen
-index_url=Gib URL zum &#214;ffnen ein:
-link_eautologin=Ung&#252;ltiges Login oder Passwort f&#252;r $1. <a href='$2'>Hier klicken</a> f&#252;r die Anmeldung.
-link_ebadurl=Es ist Ihnen nicht erlaubt auf die URL $1 zuzugreifen
+index_url=Gib URL zum Öffnen ein:
+index_open=Öffnen
+
+link_eurl=Ungültige Tunnel-URL : $1
 link_elogin=Konnte nicht nach $1 als $2 einloggen.
-link_enouser=Ein Benutzername und Passwort ist f&#252;r das Einloggen auf $1 erforderlich. Bisher wurde noch keines konfiguriert.
-link_eurl=Ung&#252;ltige Tunnel-URL : $1
-link_mconfig=Verwende die <a href='$1'>Modulkonfiguration</a> Seite, um die Anmeldung zu &#228;ndern.
-login_clear=L&#246;schen
-login_desc=Sie m&#252;ssen einen Benutzernamen und ein Passwort zum Einloggen auf $1 angeben.
-login_header=Webseiten-Authentifizierung
-login_login=Login
-login_pass=Passwort
+link_eautologin=Ungültiges Login oder Passwort für $1. <a href='$2'>Hier klicken</a> für die Anmeldung.
+link_enouser=Ein Benutzername und Passwort ist für das Einloggen auf $1 erforderlich. Bisher wurde noch keines konfiguriert.
+link_ebadurl=Es ist Ihnen nicht erlaubt auf die URL $1 zuzugreifen
+link_mconfig=Verwende die <a href='$1'>Modulkonfiguration</a> Seite, um die Anmeldung zu ändern.
+
 login_title=Einloggen auf Webseite
+login_desc=Sie müssen einen Benutzernamen und ein Passwort zum Einloggen auf $1 angeben.
+login_header=Webseiten-Authentifizierung
 login_user=Benutzername
-seturl_err=Fehlgeschlagen URL zu &#246;ffnen
-seturl_eurl=Ung&#252;ltige URL eingegeben
+login_pass=Passwort
+login_login=Login
+login_clear=Löschen
+
+seturl_err=Fehlgeschlagen URL zu öffnen
+seturl_eurl=Ungültige URL eingegeben

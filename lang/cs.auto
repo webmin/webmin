@@ -1,0 +1,37 @@
+category_=Nástroje
+
+longcategory_=Moduly, které plní další různé úkoly
+
+fail=Selhalo
+
+config_emodule=Modul neexistuje
+
+log_email_subject=Akce Webmin v $1
+log_email_global=Webmin globální akce
+log_email_desc=Tento e-mail byl zaslán Webminem v reakci na akci uživatele.
+log_email_mod=Webmin modul: $1
+log_email_moddesc=Název modulu: $1
+log_email_time=Akce provedená na: $1
+log_email_system=Provedeno v systému: $1
+log_email_user=Provedeno uživatelem: $1
+log_email_script=Webmin skript: $1
+log_email_session=ID relace: $1
+log_email_remote=Adresa klienta: $1
+
+nice_size_PB=PB
+nice_size_PiB=PiB
+nice_size_TB=TB
+nice_size_TiB=TiB
+nice_size_GB=GB
+nice_size_GiB=GiB
+nice_size_MB=MB
+nice_size_MiB=MiB
+nice_size_kB=kB
+nice_size_kiB=KiB
+nice_size_b=bajtů
+
+langauto_include=Zahrňte strojové překlady
+
+file_truncated_message=načteno $1 dat, zkráceno $2 z $3 
+file_truncated_message_head=načteno začátek $1 dat, zkráceno $2 z $3 
+file_truncated_message_tail=načtený konec $1 dat, zkrácen $2 z $3 

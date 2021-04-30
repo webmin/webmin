@@ -1,0 +1,39 @@
+category_=Alat
+
+longcategory_=Modul yang menjalankan tugas lain-lain
+
+fail=Gagal
+
+config_emodule=Modul tidak wujud
+
+referer_fix3u=Pastikan pelayar anda dikonfigurasikan untuk menghantar maklumat rujukan supaya ia dapat disahkan oleh Webmin.
+
+log_email_subject=Tindakan Webmin di $1
+log_email_global=Tindakan global Webmin
+log_email_desc=E-mel ini dihantar oleh Webmin sebagai tindak balas kepada tindakan pengguna.
+log_email_mod=Modul Webmin: $1
+log_email_moddesc=Judul modul: $1
+log_email_time=Tindakan dilakukan di: $1
+log_email_system=Dilaksanakan pada sistem: $1
+log_email_user=Dilaksanakan oleh pengguna: $1
+log_email_script=Webmin skrip: $1
+log_email_session=ID Sesi: $1
+log_email_remote=Alamat klien: $1
+
+nice_size_PB=PB
+nice_size_PiB=PiB
+nice_size_TB=TB
+nice_size_TiB=TiB
+nice_size_GB=GB
+nice_size_GiB=GiB
+nice_size_MB=MB
+nice_size_MiB=MiB
+nice_size_kB=kB
+nice_size_kiB=KiB
+nice_size_b=bait
+
+langauto_include=Sertakan terjemahan mesin
+
+file_truncated_message=mengambil $1 data, terpotong $2 daripada $3 
+file_truncated_message_head=mengambil $1 data, dipotong $2 daripada $3 
+file_truncated_message_tail=mengambil akhir $1 data, terpotong $2 daripada $3 

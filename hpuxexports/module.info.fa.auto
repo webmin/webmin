@@ -1,0 +1,3 @@
+name_fa=مدیر صادرات
+longdesc_fa=اشتراک فایل را مطابق با پرونده /etc/exports eksport /etc/exports HPUX تعریف کنید.
+desc_fa=صادرات NFS

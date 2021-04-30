@@ -1,0 +1,5 @@
+index_none=Aucun service réseau n'a encore été défini.
+index_estart=La commande pour démarrer Xinetd $1 n'existe pas. Il n'est peut-être pas installé ou la configuration de votre <a href='$2'>module</a> est incorrecte.
+
+log_enable_l=Services activés $1 
+log_disable_l=Services désactivés $1 

@@ -1,0 +1,49 @@
+index_used=익숙한
+
+edit_usage=디스크 사용량
+edit_nfs_opt4=NFSv4 특정 옵션
+
+smb_eworkgroup=모듈 구성 페이지에 설정된 작업 그룹이 없습니다
+smb_emaster=작업 그룹 $1에 대한 찾아보기 마스터가 없습니다.
+
+solaris_lvm=LVM 장치
+solaris_vg=볼륨 그룹
+solaris_lv=논리 볼륨
+solaris_vxfs=VXFS 장치
+solaris_hfs=HFS 장치
+
+linux_nodev=장치 파일을 허용하지 않습니까?
+linux_noexec=바이너리 실행을 허용하지 않습니까?
+linux_ifuser=사용자가 마운트 할 수있는 경우
+linux_quotaj=할당량 저장 유형
+linux_quotaj1=저널링
+linux_quotaj0=정규병
+linux_etimeo=시간 초과는 숫자 여야합니다
+linux_credentials=자격 증명 파일
+linux_netdev=네트워크 인터페이스가 작동 할 때까지 기다리시겠습니까?
+linux_nofail=마운트에 실패해도 부팅을 계속 하시겠습니까?
+linux_nfsvers=강제 NFS 버전
+linux_nfsdefault=기본 버전 사용
+linux_nounix=CIFS Unix 확장 기능을 비활성화 하시겠습니까?
+linux_noserverino=클라이언트 쪽에서 inode 번호를 생성 하시겠습니까?
+linux_cvers=CIFS 버전
+linux_ecvers=CIFS 버전은 숫자 여야합니다
+
+freebsd_ide=IDE 하드 디스크
+freebsd_device=장치
+freebsd_slice=일부분
+freebsd_part=분할
+freebsd_scsi=SCSI 디스크
+freebsd_other=다른 장치
+freebsd_select=디스크 파티션
+freebsd_idedev=IDE 장치 $1, 슬라이스 $2, 파티션 $3
+freebsd_scsidev=SCSI 장치 $1, 슬라이스 $2, 파티션 $3
+freebsd_edevpath=다른 장치는 <tt>/dev/cdrom</tt>과 같은 절대 경로 여야합니다.
+freebsd_edevfile=장치 파일 '$1'이 (가) 없습니다
+
+cswap_file=스왑 파일 $1이 없습니다.
+cswap_size=크기가있는 스왑 파일 작성 및 마운트
+
+acl_sysinfo=사용 가능한 디스크 데이터를 대시 보드에 표시 하시겠습니까?
+sysinfo_total=합계
+sysinfo_dev=장치 아이디

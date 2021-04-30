@@ -1,7 +1,6 @@
 index_header=Squid Proxy Server
 index_msgnoconfig=The Squid config file <tt>$1</tt> does not exist. If you have Squid installed, adjust your <a href=/config.cgi?$2 >module configuration</a> to use the correct paths.
 index_msgnoexe=The Squid executable <tt>$1</tt> does not exist. If you have Squid installed, adjust your <a href=/config.cgi?$2 >module configuration</a> to use the correct path.
-index_msgnosupported=Your version of Squid is not supported by Webmin. Only versions <tt>1.1</tt>, <tt>2.0</tt>, <tt>2.1</tt>, <tt>2.2</tt>, <tt>2.3</tt> and <tt>2.4</tt> are supported by this module.
 index_msgnodir1=Your Squid cache directories <tt>$1</tt> have not been initialized.
 index_msgnodir2=Your Squid cache directory <tt>$1</tt> has not been initialized.
 index_msgnodir3=This must be done before Squid can be run.
@@ -133,6 +132,7 @@ eacl_acls1=ACLs
 eacl_move=Move
 eacl_nopr=No proxy restrictions defined
 eacl_addpr=Add proxy restriction
+
 eacl_icpr=ICP restrictions
 eacl_noicpr=No ICP restrictions defined
 eacl_addicpr=Add ICP restriction
@@ -244,7 +244,6 @@ ech_ip=ICP port
 ech_po=Proxy only?
 ech_y=Yes
 ech_n=No
-ech_siq=Send ICP queries?
 ech_dc=Default cache?
 ech_rrc=Round-robin cache?
 ech_ittl=ICP time-to-live
@@ -641,4 +640,3 @@ always_header=Directly fetch requests matching ACLs
 never_create=Create Indirect Fetch
 never_edit=Edit Indirect Fetch
 never_header=Never directly fetch requests matching ACLs
-

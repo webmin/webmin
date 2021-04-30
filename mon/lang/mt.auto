@@ -1,0 +1,200 @@
+index_title=Monitoraġġ tas-Servizz MON
+index_return=Indiċi MON
+index_edir=Id-direttorju MON $1 ma jeżistix. Forsi MON mhuwiex installat, jew <a href='$2'>il-konfigurazzjoni tal-modulu</a> tiegħek mhix korretta.
+mon_global_title=Konfigurazzjoni Varjabbli Globali
+mon_conf_title=Konfigurazzjoni Bażika
+mon_status_title=Status Operattiv
+hostgroups_title=Konfigurazzjoni-Grupp ta 'Ospitanti
+services_title=Watchgroups-Definizzjonijiet tas-Servizz
+
+head_hostgroups=Grupp ta 'Ospitanti u Servizzi
+head_groups=Isem il-Grupp Ospitanti
+head_members=Membri tal-Grupp Ospitanti
+head_services=Servizzi ta 'Hostgroup għall-Għassa
+head_service=Servizz għall-għassa
+head_param=Parametri tas-Servizz
+head_watch=Ara l-Grupp?
+head_monauth=Ipprovdi Awtentikazzjoni għal MONCMD
+head_usr=Username
+head_pass=Password
+head_mand=(Il-parametri f '"KULUR RED" huma Obbligatorji)
+
+err_nomon=il-pakkett 'mon' mhux installat fis-sistema
+err_nomonconf=Il-fajl tal-konfigurazzjoni MON $1 ma nstabx fis-sistema tiegħek. Forsi MON mhuwiex installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> tiegħek mhix korretta.
+err_nowatch=L-ebda grupp ta ’ħarsien magħżul. Agħżel mill-inqas Watchgroup wieħed biex tkompli.
+err_noserv=L-ebda Servizzi magħżula għall-grupp ta 'sorveljanza
+err_nomemb=Ebda Ospitanti/Membri magħżula għall-grupp ta 'sorveljanza
+err_monrun=MON mhix taħdem fuq il-hostmachine. Jekk jogħġbok ibda MON.
+stop_err=Naqas milli jwaqqaf MON
+stop_epid=Ma għadux għaddej
+start_err=Naqas milli jibda MON
+restart_err=Naqset milli terġa 'tibda MON
+restart_epid=Naqset milli tikseb PID
+
+other=Oħrajn (spazji separati)
+next=Sussegwentement
+mon_stat=Status MON
+mon_off=Is-Servizzi MON ma Bdewx
+mon_start=Ibda s-Servizzi MON
+mon_stop=Iwaqqaf is-Servizzi MON
+mon_restart=Irristartja s-Servizzi MON
+mon_startdesc=Ikklikkja din il-buttuna biex tibda s-server MON. Sakemm ma jinbeda, l-ebda monitoraġġ konfigurat ma jsir.
+mon_stopdesc=Ikklikkja din il-buttuna biex twaqqaf is-server MON. Meta tieqaf, il-monitoraġġ konfigurat se jieqaf.
+mon_restartdesc=Ikklikkja din il-buttuna biex tapplika l-konfigurazzjoni attwali MON billi terġa 'tibda l-proċess tas-server.
+line=(waħda fuq kull linja)
+save_apply=Issejvja u Applika
+watch=Watchgroup
+members=Membri
+def_perargs=wd {Sib-Ħad}
+
+def_desc=deskrizzjoni
+def_inter=intervall
+def_mon=tissorvelja
+def_dep=dpend
+def_per=perjodu
+def_alert=twissija
+def_alertevr=alertevery
+def_alertaft=alertafter
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=trapdurazzjoni
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=Gruppi Ospitanti
+groups_group=Isem tal-grupp
+groups_members=Membri ospitanti
+
+watches_title=Listi tal-Għassa
+watches_group=Grupp tal-ħars
+watches_services=Servizzi qed jaraw
+watches_sadd=Żid is-servizz ..
+watches_add=Żid lista tal-għassa għall-grupp :
+watches_return=listi tal-għassa
+watches_none=L-ebda listi tal-għassa ma ġew definiti s'issa.
+
+global_title=Għażliet Globali
+global_header=Għażliet ta 'konfigurazzjoni MON globali
+global_maxprocs=Proċessi MON massimi
+global_histlength=It-tul tal-istorja tal-avvenimenti
+global_alertdir=Direttorju tal-programmi ta 'twissija
+global_mondir=Tissorvelja d-direttorju tal-programmi
+global_authtype=Tip ta 'awtentikazzjoni
+global_authtype_=Default
+global_authtype_getpwnam=Sejħiet tas-Sistema
+global_authtype_userfile=L-utenti tal-fajl MON
+global_authtype_shadow=File Shadow
+global_userfile=Fajl ta 'l-utent ta' MON
+global_emaxprocs=Numru nieqsa jew invalidi ta 'proċessi MON
+global_ehistlength=It-tul tal-istorja tal-avvenimenti nieqes jew invalidu
+global_ealertdir=Direttorju ta 'programmi ta' twissija nieqes jew invalidi
+global_emondir=Direttorju tal-programmi ta 'monitoraġġ nieqes jew invalidu
+global_euserfile=Fajl ta 'l-utenti ta' MON nieqes
+
+watch_title=Editja l-Lista tal-Watch
+watch_header=Dettalji tal-grupp li jospitaw
+watch_group=Grupp ospitanti biex jaraw
+watch_services=Servizzi qed jaraw
+watch_service=Isem tas-servizz
+watch_monitor=Tissorvelja biex tuża
+watch_interval=Iċċekkja kull
+watch_periods=Perjodi ta 'monitoraġġ
+
+service_title=Żid Servizz
+service_title2=Servizz Editja
+service_header=Dettalji ta ’servizz jaraw
+service_name=Isem tas-servizz
+service_interval=Iċċekkja kull
+service_desc=Deskrizzjoni
+service_units_s=sekondi
+service_units_m=minuti
+service_units_h=sigħat
+service_units_d=jiem
+service_units_w=ġimgħat
+service_monitor=Meta tuża monitor
+service_mon1=Tissorvelja standard
+service_mon0=Monitor ieħor ..
+service_args=Tissorvelja l-parametri
+service_period=Perjodu ta 'monitoraġġ $1 
+service_days=Jiem biex tiċċekkja
+service_hours=Sigħat għall-verifika
+service_all=Kollha
+service_pstr=Speċifikazzjoni tal-perjodu
+service_new=Perjodu ġdid ta 'monitoraġġ
+service_alerts=Twissijiet għall-perjodu
+service_alert=Twissija
+service_atype=Mexxi meta
+service_atype_alert=Is-servizz jonqos
+service_atype_upalert=Is-servizzi joħorġu
+service_atype_startupalert=Jibda MON
+service_aargs=Parametri addizzjonali
+service_every=Ibgħat twissija
+service_every_def=Kull darba li titħaddem il-monitor
+service_every_time=Kull
+service_num=Twissijiet massimi li jintbagħtu
+service_unlimited=Illimitat
+service_after=Ħsarat qabel it-twissija
+service_immediate=Minnufih
+service_after_num=Wara fallimenti $1 
+service_aftertime=Fl-intervall ta 'żmien
+service_newperiod=Żid perjodu ġdid
+service_delperiod=Ħassar dan il-perjodu
+service_err=Ma rnexxielux isalva s-servizz
+service_ename=Isem tas-servizz nieqes jew invalidu
+service_einterval=Intervall ta ’verifika nieqes jew invalidu
+service_eother=Monitor nieqes jew invalidu
+service_ehour=Siegħa nieqsa jew invalida għall-perjodu $1 (trid tkun bħal 9am jew 5pm)
+service_eperiod=Ebda jiem jew sigħat speċifikati għall-perjodu $1 
+service_eevery=Intervall ta 'twissija ta' servizz nieqes jew invalidu
+service_eafter=Numru ta 'fallimenti nieqsa jew invalidi qabel it-twissija
+service_enum=Twissijiet massimi nieqsa jew invalidi mibgħuta
+service_epstr=Speċifikazzjoni tal-perjodu nieqes
+service_known0=<tt>Time::Perjodu</tt> string
+service_known1=Jiem u sigħat speċifikati
+service_known2=Perjodu definit
+
+status_title=Status MON
+status_ecgi=Il-programm MONI CGI status $1 ma jeżistix. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
+status_eperl=Il-programm CGI tal-istatus MON jeħtieġ il-modulu perl $1. <a href='$2'>Ikklikkja hawn</a> biex tinstallaha direttament minn CPAN.
+status_esame=Il-programm MONI CGI status $1 ġie ssettjat għall-iskritt <tt>mon.cgi</tt> f'dan il-modulu Webmin, mhux il-programm CGI li jiġi ma 'MON. Aġġusta l- <a href='$2'>konfigurazzjoni tal-modulu</a> biex tuża t-triq it-tajba.
+
+users_title=Utenti MON
+users_etype=Il-lista ta 'utenti ta' MON ma tistax tiġi editjata minħabba li MON bħalissa mhuwiex ikkonfigurat biex jużaha għall-awtentikazzjoni fuq il-paġna <a href='$1'>Għażliet Globali</a>.
+users_header=L-utenti MON permessi f ' $1 
+users_nousers=L-ebda utenti ta 'MON ma ġew definiti f' $1.
+users_add=Oħloq utent ġdid.
+users_return=Lista ta 'l-utenti ta' MON
+
+user_create=Oħloq Utent MON
+user_edit=Editja l-Utent MON
+user_header=Dettalji ta 'l-utent ta' MON
+user_user=Username
+user_pass=Password
+user_leave=Ħalli l-istess
+user_err=Ma rnexxielux isalva l-utent
+user_euser=Username nieqes jew invalidu
+user_esame=Utent bl-istess isem diġà jeżisti
+
+auth_title=Kmandi tal-Klijent
+auth_desc=Din il-paġna jippermettilek tikkontrolla liema kmandi MON jistgħu jiġu mmexxija minn liema utenti meta jużaw il-programmi tal-klijent.
+auth_cmd=Kmand MON
+auth_users=Utenti permessi
+auth_none=Ħadd
+auth_all=Kulħadd
+auth_sel=Utenti biss
+auth_err=Ma rnexxielux isalva l-kmandi tal-klijent
+auth_eusers=L-ebda utent ma jidħol għall-kmand $1 
+
+periods_title=Perjodi Definiti
+periods_period=Isem tal-perjodu
+periods_times=Jiem u ħinijiet
+periods_alldays=Il-jiem kollha
+periods_allhours=Il-ħinijiet kollha
+periods_err=Ma rnexxielux isalva perjodi definiti
+periods_ename="$1" mhux isem ta 'perjodu validu
+periods_ehour=Siegħa nieqsa jew invalida għall-perjodu $1 (trid tkun bħal 9am jew 5pm)
+
+show_title=Status Operattiv
+show_ecgi=Il-programm ta 'l-istatus MON ma jeżistix. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.

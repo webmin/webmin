@@ -1,0 +1,22 @@
+index_title=کلسٹر شیل کمانڈز
+index_cmd=چلانے کا حکم
+index_old=یا
+index_server=سرورز پر چلائیں
+index_run=ابھی کمانڈ چلائیں
+index_return=ماڈیول انڈیکس
+index_this=یہ سرور
+index_all=&lt;تمام میزبان&gt;
+index_group=$1 کے ممبران
+index_clear=ماضی مٹا دو
+index_edit=پچھلا ترمیم کریں
+
+run_title=کمانڈ چلائیں
+run_err=کمانڈ چلانے میں ناکام
+run_ecmd=کوئی حکم داخل نہیں ہوا
+run_failed= $1 : $2 پر چلانے میں ناکام
+run_success=$1 سے آؤٹ پٹ ..
+run_enone=منتخب ہونے پر کوئی سرور چلانے کے لئے نہیں ہے
+
+log_clear=کمانڈ کی تاریخ صاف ہوگئی
+log_run=$2 سرورز پر$1 بھاگ گیا
+log_run_l=$2 پر$1 بھاگ گیا

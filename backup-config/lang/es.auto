@@ -1,0 +1,34 @@
+index_test=¿Solo muestra lo que se restaurará?
+index_nostrftime=Advertencia: algunos trabajos de copia de seguridad usan % en sus nombres de archivo, pero la sustitución de strftime no está habilitada en la página de configuración del módulo.
+index_tabsched=Copias de seguridad programadas
+index_tabbackup=Copia ahora
+index_tabrestore=Restaurar ahora
+
+edit_header2=Comandos pre y post backup
+edit_header3=Programa de respaldo
+edit_other2=Otros archivos para restaurar
+edit_pre=Comando previo a la copia de seguridad
+edit_post=Comando posterior a la copia de seguridad
+
+backup_port=Puerto de servicio
+
+backup_epath2=Ruta absoluta faltante o inválida en el servidor SSH
+backup_eport=Puerto de servidor FTP faltante o no válido
+backup_esport=Falta el puerto del servidor SSH o no es válido
+
+restore_emods=No hay módulos u otros archivos seleccionados
+restore_testing=Extrayendo contenido de la copia de seguridad de $1 ..
+restore_done2=.. los archivos en la copia de seguridad son :
+
+nice_ftpp=$2 en $1 puerto $3 a través de FTP
+nice_sshp=$2 en $1 puerto $3 a través de SSH
+
+email_mods=Copia de seguridad de módulos :
+email_failed=a $1 falló :
+email_ok=a $1 tuvo éxito.
+email_sfailed=La copia de seguridad de configuración en $1 falló
+email_sok=La copia de seguridad de la configuración en $1 se realizó correctamente
+email_final=El tamaño final del archivo de respaldo fue $1 
+email_pre=Ejecutando el comando previo a la copia de seguridad $1 ..
+email_post=Ejecutando el comando posterior a la copia de seguridad $1 ..
+email_prefailed=¡El comando previo a la copia de seguridad falló!

@@ -1,0 +1,83 @@
+index_title=대역폭 모니터링
+index_efiresys=지원되는 방화벽 (IPtables, IPFW, IPFilter 또는 Shorewall) 중 시스템이 감지되지 않았습니다. 적절한 모듈이 구성되어 있는지 확인하십시오.
+index_efiresys2=시스템에서 구성된 $1 방화벽 시스템을 찾을 수 없습니다. 올바른 방화벽을 사용하려면 <a href='$2'>모듈 구성</a>을 조정하십시오.
+index_elog=대역폭 로깅에 사용 된 $1 파일은 실제로 시스템의 디렉토리입니다. 다른 경로를 사용하도록 <a href='$2'>모듈 구성</a>을 조정하십시오.
+index_edir=대역폭 데이터 $1 을 (를) 저장하기위한 디렉토리가 존재하지 않거나 디렉토리가 아닙니다. 다른 경로를 사용하도록 <a href='$2'>모듈 구성</a>을 조정하십시오.
+index_emod=Webmin 모듈 $1 이 (가)이 시스템에 설치되어 있지 않거나 OS에서 지원하지 않습니다. 대역폭 모니터링 모듈이 없으면 작동 할 수 없습니다.
+index_esyslog=이 시스템에는 시스템 로그 모듈이 설치되어 있지 않으며 OS에서 지원하지 않습니다. 대역폭 모니터링 모듈 중 하나가 없으면 작동 할 수 없습니다.
+index_firesys=$1 방화벽 및 $2 사용
+index_setupcannot=그러나 설정 권한이 없습니다!
+index_setupdesc=이 모듈이 시스템의 네트워크 사용량을보고하려면 선택한 외부 네트워크 인터페이스의 트래픽을 모니터링하도록 설정해야합니다.
+index_setupdesc2=<b>경고-이 모듈은 선택한 인터페이스에서 보내거나받은 모든 네트워크 트래픽을 기록합니다. 빠른 네트워크 연결에서 많은 디스크 공간과 CPU 시간이 소비됩니다.</b>
+index_missing3=몇 가지 방화벽 규칙을 추가하고 syslog 구성 항목을 작성해야합니다.
+index_missing2=몇 가지 방화벽 규칙을 추가해야합니다.
+index_missing1=syslog 구성 항목을 작성해야합니다.
+index_iface=외부 네트워크 인터페이스
+index_other=다른 ..
+index_setup=지금 설정
+index_by=기준으로 트래픽 표시
+index_hour=시
+index_host=주최자
+index_proto=실험 계획안
+index_iport=내부 포트
+index_oport=외부 포트
+index_port=포트
+index_for=...에 대한
+index_all=&lt;모든 것&gt;
+index_forhour=시 ..
+index_forhost=주최자 ..
+index_forproto=실험 계획안 ..
+index_foriport=내부 포트 ..
+index_foroport=외부 포트
+index_search=보고서 생성
+index_none=이 모듈에 의해 아직 트래픽이 요약되지 않았습니다. 방금 설정 한 경우 트래픽을 처리하는 데 최소 1 시간이 걸릴 수 있습니다.
+index_ehour=유효하지 않은 시간-yyyy-mm-dd hh : mm 형식이어야합니다.
+index_eport=알 수없는 포트 이름
+index_eproto=누락 된 프로토콜
+index_ehost=호스트가 없거나 유효하지 않습니다
+index_from=이후의 트래픽
+index_to=전에 교통
+index_efrom=유효하지 않은 시작 날짜 및 시간
+index_eto=유효하지 않은 종료 날짜 및 시간
+index_err=보고서를 생성하지 못했습니다
+index_usage=네트워크 트래픽 <font color=#ff0000>다운로드</font> 및 <font color=#0000ff>업로드</font>
+index_hhour=시
+index_hhost=주최자
+index_hday=일
+index_hproto=실험 계획안
+index_hiport=포트
+index_hoport=포트
+index_hport=포트
+index_low=서버 포트만?
+index_resolv=호스트 이름을 확인 하시겠습니까?
+index_nomatch=선택한 기준과 일치하는 트래픽이 없습니다.
+index_turnoff=모니터링 끄기
+index_turnoffdesc=대역폭 모니터링에 사용되는 방화벽 규칙, syslog 구성 및 Cron 작업을 제거하려면이 단추를 클릭하십시오. 기존의 수집 된 모든 데이터는 그대로 유지됩니다.
+index_rotate=통계 업데이트
+index_rotatedesc=이 버튼을 클릭하면 기록 된 모든 네트워크 트래픽을 현재 시간까지 처리하여 즉시보고 할 수 있습니다.
+index_eiptables=경고-IPtables 구성에 오류가 있습니다 : $1. 대역폭 모니터링을 설정하면 모든 방화벽 규칙이 지워집니다.
+index_return=보고서 양식
+
+log_setup=인터페이스 $1 에서 대역폭 모니터링 설정
+log_turnoff=비활성화 된 대역폭 모니터링
+log_rotate=업데이트 된 통계
+
+acl_setup=모니터링을 설정 및 비활성화 할 수 있습니까?
+
+turnoff_ecannot=모니터링을 비활성화 할 수 없습니다
+
+setup_ecannot=모니터링을 사용할 수 없습니다
+setup_eiface=인터페이스 이름이 없거나 유효하지 않습니다
+setup_ezone=선택한 인터페이스의 Shorewall 영역을 찾지 못했습니다.
+
+system_firewall=IPtables
+system_ipfw=IPFW
+system_ipfilter=IPFilter
+system_shorewall=쇼어 월
+
+syslog_syslog=Syslog
+syslog_syslog-ng=Syslog-NG
+
+rotate_title=통계 업데이트
+rotate_doing=기록 된 네트워크 트래픽 처리 ..
+rotate_done=.. 완료.

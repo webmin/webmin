@@ -1,0 +1,11 @@
+index_title=konfiguracija idmapd
+index_eidmapd=Idemapda demona $1 ni bilo mogoče najti. Mogoče ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
+general=Splošna konfiguracija
+mapping=Konfiguracija preslikave
+pipefs_dir=Imenik cevi
+domain=Domena
+nobody_user=Nihče uporabnik
+nobody_group=Nihče ne združuje
+save=Shranite config in znova zaženite demon
+save_err=Konfiguracijske datoteke $1 ni bilo mogoče shraniti
+error_dir=Imenik $1 ne obstaja

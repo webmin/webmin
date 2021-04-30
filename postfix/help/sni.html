@@ -1,0 +1,13 @@
+<header>Certificate mapping</header>
+
+The SNI certificate mapping file associates domain names with certificate
+files, for use when Postfix receives an SMTP connection in SSL mode. The
+format of the table is :
+
+<ul>
+<li><b>Hostname</b> - A hostname or wildcard like <tt>*.example.com</tt> to match the hostname in the SSL SNI connection against.
+
+<li><b>Certificate files</b> - Path to a PEM format file containing the private key and certificate to use.
+</ul>
+
+<footer>

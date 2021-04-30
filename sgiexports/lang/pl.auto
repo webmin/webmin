@@ -1,0 +1,39 @@
+index_title=Wywóz NFS
+index_add=Dodaj nowy eksport NFS
+index_dir=Informator
+index_hosts=Dozwoleni gospodarze
+index_all=Wszyscy gospodarze
+index_none=Nie zdefiniowano jeszcze eksportu NFS.
+index_apply=Zastosuj konfigurację
+index_applydesc=Kliknij ten przycisk, aby uaktywnić wszystkie wymienione powyżej eksporty z ich skonfigurowanymi opcjami.
+index_return=lista eksportu
+
+edit_title1=Utwórz eksport
+edit_title2=Edytuj eksport
+edit_header=Eksportuj szczegóły
+edit_dir=Katalog do wyeksportowania
+edit_hosts=Eksportuj do hostów/grup sieciowych
+edit_ro=Tylko czytać?
+edit_wsync=Synchronizować po zapisie?
+edit_anon=Uprawnienia użytkownika root
+edit_anon1=Domyślnie (traktuj jak <tt>nikt</tt>)
+edit_anon2=Odmówić dostępu
+edit_anon0=Traktuj jak użytkownik
+edit_rw=Dostęp do odczytu/zapisu
+edit_root=Dostęp do plików root
+edit_access=Zamontuj dostęp
+edit_all=Wszyscy gospodarze
+edit_sel=Właściciele na liście ..
+edit_none=Brak hostów
+
+save_err=Nie udało się zapisać eksportu
+save_edir=Brakujący lub nieistniejący katalog do wyeksportowania
+save_eanon=Brakujący lub nieprawidłowy użytkownik root
+save_erw=Nie wprowadzono hostów do odczytu i zapisu
+save_eroot=Nie wprowadzono hostów dostępu do plików root
+save_eaccess=Nie wprowadzono hostów dostępu do montowania
+
+log_create_export=Utworzono eksport $1 
+log_delete_export=Usunięto eksport $1 
+log_modify_export=Zmodyfikowano eksport $1 
+log_apply=Zastosowana konfiguracja

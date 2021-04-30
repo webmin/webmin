@@ -1,0 +1,129 @@
+index_title=Procmail Mail Filter
+index_procmail=Procmail filtru tal-posta
+index_desc_other=L-azzjonijiet procmail hawn taħt minn $1 japplikaw għal <b>il-posta elettronika kollha</b> kkonsenjata lill-utenti fis-sistema tiegħek. Madankollu, dawn jintużaw biss jekk Procmail ikun installat u s-server tal-posta tiegħek ikun ikkonfigurat biex jużah.
+index_mserr=Twissija - kwalunkwe regola definita hawn taħt ma tintużax : $1 
+index_action=Azzjoni li trid tieħu
+index_conds=Kundizzjonijiet
+index_move=Tmexxi
+index_ba=Żid
+index_act6=Issettja l-varjabbli $1 
+index_act5=Eżegwixxi blokk kondizzjonali
+index_act4=Għalf għall-programm $1 
+index_act3=Quddiem sa $1 
+index_act2=Ikteb lill-maildir $1 
+index_act1=Ikteb fil-fowlder MH $1 
+index_act0=Appendiċi għall-fajl $1 
+index_noconds=Dejjem eżegwixxi azzjoni
+index_re=Logħba regexp $1 
+index_nre=Ma taqbilx ma 'regexp $1 
+index_shell=Evalwa kmand $1 
+index_exit=Status tal-ħruġ tal-kmand $1 
+index_lt=Id-daqs huwa < $1 
+index_gt=Id-daqs huwa> $1 
+index_add=Żid azzjoni tal-filtru ġdida.
+index_eadd=Żid issettjar varjabbli ġdid.
+index_badd=Żid blokk kondizzjonali ġdid.
+index_iadd=Żid fajl ġdid jinkludi.
+index_none=L-ebda azzjonijiet ta 'Procmail ma ġew ikkonfigurati s'issa.
+index_return=lista ta 'azzjonijiet
+index_env=Issettja l-varjabbli $1 għal $2 
+index_include=Proċess jinkludi fajl $1 
+index_man=Editja Manwal il-Konfigurazzjoni
+index_mandesc=Editja direttament il-fajl tal-konfigurazzjoni Procmail primarju, biex toħloq ir-regoli, il-varjabbli u l-blokki tiegħek stess.
+index_ecmd=Il-programm Procmail $1 ma nstabx fis-sistema tiegħek. Jew mhix installata, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
+index_delete=Ħassar l-Azzjonijiet Magħżula
+
+edit_title2=Azzjoni Editja
+edit_title1=Oħloq Azzjoni
+edit_header1=Dettalji ta 'azzjoni ta' kunsinna
+edit_header2=Kundizzjonijiet ta 'l - azzjoni
+edit_action=Mod ta 'Konsenja
+edit_block=Kodiċi Procmail biex tesegwixxi
+edit_amode_0=Appendiċi għall-fajl
+edit_amode_1=Ikteb fil-folder MH
+edit_amode_2=Ikteb maildir
+edit_amode_3=Quddiem l-indirizz
+edit_amode_4=Għalf għall-programm
+edit_amode_6=Issettja varjabbli
+edit_flag_H=Applika l-kundizzjonijiet fuq l-intestaturi
+edit_flag_B=Applika l-kundizzjonijiet fuq il-ġisem
+edit_flag_D=Tqabbil skont il-każ
+edit_flag_h=Għalf intestaturi lejn id-destinazzjoni
+edit_flag_b=Korp tal-għalf għad-destinazzjoni
+edit_flag_c=Kompli l-ipproċessar anki jekk il-kundizzjonijiet jaqblu
+edit_flag_w=Stenna li l-programm ta 'azzjoni jintemm, u iċċekkja r-riżultat
+edit_flag_W=Stenna li l-programm ta 'azzjoni jintemm, imma jinjora r-riżultat
+edit_flag_i=Injora l-iżbalji tal-kitba mal-kunsinna
+edit_flag_r=Ikteb il-posta bil-modalità prima
+edit_flag_f=Il-programm ta 'azzjoni huwa filtru
+edit_lockfile=Twassil tal-fajl tal-illokkjar
+edit_cmode_re=Jaqbel mal-espressjoni regolari
+edit_cmode_nre=Ma taqbilx ma 'espressjoni regolari
+edit_cmode_shell=Evalwa l-output tal-kmand
+edit_cmode_exit=Iċċekkja l-istat tal-ħruġ tal-kmand
+edit_cmode_lt=Il-posta hija iżgħar minn
+edit_cmode_gt=Il-posta hija akbar minn
+edit_conddesc=Biex titwettaq l-azzjoni t'hawn fuq, il-kondizzjonijiet kollha hawn taħt għandhom jaqblu. Jekk ma jkun hemm l-ebda kundizzjoni, l-azzjoni dejjem tkun eżegwita.
+edit_none=Xejn
+edit_lock=Fajl speċifiku
+edit_ctype=Tip ta 'kondizzjoni
+edit_cvalue=Espressjoni jew kmand regolari
+
+save_err=Ma rnexxielux isalva azzjoni
+save_eaction_0=Fajl nieqes biex jehmeż miegħu
+save_eaction_1=Nieqes il-fowlder MH biex tikteb
+save_eaction_2=Maildir nieqes biex tikteb lil
+save_eaction_3=Indirizz nieqes biex tibgħatha lil
+save_eaction_4=Nieqes il-programm għall-għalf
+save_eaction_6=Varjabbli nieqsa biex tissettja
+save_eactionvar=Varjabbli biex tissettja għandha tiddaħħal bħal ISEM = valur
+save_elockfile=Nieqes l-isem tal-fajl tal-illokkjar
+save_esize=Daqs tal-posta nieqes jew invalidu għall-kundizzjoni $1 
+save_ere=Nieqes espressjoni regolari għall-kundizzjoni $1 
+save_eshell=Kmand nieqes għall-kundizzjoni $1 
+
+env_title1=Oħloq Varjabbli
+env_title2=Editja Varjabbli
+env_header=Procmail ambjent varjabbli
+env_name=Isem varjabbli
+env_value=Valur
+env_err=Ma rnexxielux isalva varjabbli
+env_ename=Isem varjabbli nieqes jew invalidu
+
+inc_title1=Żid Inkludi Fajl
+inc_title2=Edit Inkludi Fajl
+inc_header=Inkluż fajl tar-regoli tal-prokmail
+inc_inc=Inkluż fajl
+inc_einc=L-ebda fajl jinkludi mdaħħal
+
+config_eline=Linja mhux magħrufa $1 f' $2 : $3 
+
+manual_title=Konfigurazzjoni Editja
+manual_desc=Din il-paġna tista 'tintuża biex tibdel manwalment il-fajl tal-konfigurazzjoni ta' Procmail $1. Oqgħod attent, għax ma ssir l-ebda verifika tas-sintassi.
+manual_edata=L-ebda data ma ġiet ipprovduta mill-browser tiegħek!
+
+log_create_rec=Riċetta maħluqa għal $1 
+log_delete_rec=Riċetta mħassra għal $1 
+log_modify_rec=Riċetta modifikata għal $1 
+log_delete_recs=Riċetti mħassra $1 
+log_act5=eżegwixxi blokka kondizzjonali
+log_act4=għalf għall-progam $1 
+log_act3='il quddiem lejn $1 
+log_act2=ikteb maildir $1 
+log_act1=ikteb fil-folder MH $1 
+log_act0=appendja l-fajl $1 
+log_create_env=Varjabbli f'ambjent maħluqa $1 
+log_modify_env=Varjabbli tal-ambjent modifikat $1 
+log_delete_env=Varjabbli tal-ambjent imħassar $1 
+log_create_inc=Maħluq jinkludi fajl $1 
+log_modify_inc=Modifikat jinkludi fajl $1 
+log_delete_inc=Imħassar jinkludi fajl $1 
+log_manual=Konfigurazzjoni editjata manwalment
+log_up=Tmexxa dħul 'il fuq
+log_down=Tmexxa dħul 'l isfel
+
+delete_err=Ma rnexxielhomx iħassru l-azzjonijiet
+delete_enone=L-ebda magħżul
+
+check_epostfix=Procmail mhux attivat fil-konfigurazzjoni Postfix tiegħek. Il-fajl tal-konfigurazzjoni <tt>$2</tt> għandu jkollu l-għażla <tt>$1</tt> issettjata fuq <tt>$3</tt>.
+check_esendmail=Sendmail mhux stabbilit biex juża Procmail għal kunsinna lokali. Dan jista 'jiġi kkonfigurat fil-modulu <a href='$1'>Sendmail Mail Server ta' Webmin</a>.

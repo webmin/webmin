@@ -1,0 +1,3 @@
+name_pt=Firewall6
+desc_pt=Firewall Linux IPv6
+longdesc_pt=Configure um firewall Linux usando ip6tables. Permite a edição de todas as tabelas, cadeias, regras e opções.

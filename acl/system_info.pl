@@ -46,6 +46,7 @@ if (@logins) {
 				$state = "<font color=orange>$state</font>";
 				}
 			}
+		$main::theme_allow_make_date = 1;
 		$html .= &ui_columns_row([ $l->[2],
 					   &make_date($l->[1]),
 					   $state ]);

@@ -1,0 +1,21 @@
+index_elink=尚未设置要传送到的URL。
+index_url=输入网址以打开：
+index_open=打开
+
+link_eurl=无效的隧道URL： $1
+link_elogin=无法以 $2身份登录 $1。
+link_eautologin=$1的无效登录名或密码。 <a href='$2'>单击此处</a>登录。
+link_enouser=登录到 $1需要用户名和密码，但是尚未配置。
+link_ebadurl=您无权访问URL $1
+link_mconfig=使用<a href='$1'>模块配置</a>页面更改登录名。
+
+login_title=登录网站
+login_desc=您必须提供用户名和密码才能登录 $1。
+login_header=网站认证
+login_user=用户名
+login_pass=密码
+login_login=登录
+login_clear=明确
+
+seturl_err=无法打开URL
+seturl_eurl=输入的网址无效

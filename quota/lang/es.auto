@@ -1,0 +1,67 @@
+acl_ggid=Grupos con GID en rango
+
+egroup_listalldesc=Haga clic en este botón para mostrar una lista de todos los sistemas de archivos en los que este grupo tiene cuotas de disco, con enlaces para editarlos.
+
+euser_listalldesc=Haga clic en este botón para mostrar una lista de todos los sistemas de archivos en los que este usuario tiene cuotas de disco, con enlaces para editarlos.
+
+gfilesys_editdesc=Vea y edite las cuotas para este grupo en algún otro sistema de archivos en el que actualmente no tiene cuotas.
+gfilesys_copydesc=Copie los límites de cuota para este grupo en todos los sistemas de archivos en algunos o en todos los demás grupos.
+gfilesys_enone=No se ingresó el nombre del grupo
+
+index_supported=Cuotas aún no admitidas
+index_enable2=Habilitar soporte
+index_euserdesc=Ingrese o seleccione un usuario y haga clic en este botón para ver sus cuotas en todos los sistemas de archivos.
+index_egroupdesc=Ingrese o seleccione un grupo y haga clic en este botón para ver sus cuotas en todos los sistemas de archivos.
+
+lgroups_tablist=Lista de grupo
+lgroups_mass=Actualizar grupos seleccionados
+lgroups_to=Destino de correo electrónico
+lgroups_tosame=Buzón con el mismo nombre que el grupo
+lgroups_tofixed=Dirección 1
+lgroups_emailheader=Correo electrónico a grupos que se acercan a la cuota
+lgroups_email=¿Enviar correo electrónico a grupos?
+lgroups_tovirt=Propietario del dominio Virtualmin
+
+ufilesys_editdesc=Vea y edite las cuotas para este usuario en algún otro sistema de archivos para el que actualmente no tiene cuotas.
+ufilesys_copydesc=Copie los límites de cuota para este usuario en todos los sistemas de archivos para algunos o todos los demás usuarios.
+ufilesys_enone=Ningún nombre de usuario ingresado
+
+lusers_tablist=Lista de usuarios
+lusers_tabdefault=Cuotas predeterminadas
+lusers_tabemail=Notificaciónes de Correo Electrónico
+lusers_pc_sblocks=Suave %
+lusers_mass=Actualizar usuarios seleccionados
+lusers_cc=También envíe un correo electrónico a
+lusers_nocc=Nadie
+
+log_email_user=Cambiar las opciones de correo electrónico del usuario en $1 
+log_email_group=Cambiar las opciones de correo electrónico grupal en $1 
+log_support=Soporte de cuota habilitado para $1 
+
+email_ecc=Falta o no válido CC: dirección
+gemail_msg=El uso del disco para el grupo $1 en el sistema de archivos $2 ha alcanzado $3% de la cuota permitida. Se está utilizando $4 del espacio en disco, de un máximo de $5.
+gemail_subject=Ha excedido la cuota de disco
+email_eto=Falta la dirección de correo electrónico de destino
+
+umass_title=Actualizar cuotas de usuario
+umass_header=Cambios de cuota para aplicar a usuarios seleccionados
+umass_sblocks=Límite de bloqueo suave
+umass_hblocks=Límite de bloqueo duro
+umass_sfiles=Límite de archivos blandos
+umass_hfiles=Límite de archivos duros
+umass_leave=Dejar sin cambios
+umass_unlimited=Establecer en ilimitado
+umass_set=Ajustado a
+umass_ok=Actualizar usuarios
+umass_esblocks=Límite de bloqueo suave faltante o no válido
+umass_ehblocks=Límite de bloque duro faltante o no válido
+umass_esfiles=Límite de archivo blando faltante o no válido
+umass_ehfiles=Límite de archivo duro faltante o no válido
+umass_count=Los cambios a continuación se aplicarán a $1 usuarios seleccionados.
+umass_err=Error al actualizar las cuotas de usuario
+
+gmass_title=Actualizar cuotas de grupo
+gmass_header=Cambios de cuota para aplicar a grupos seleccionados
+gmass_count=Los cambios a continuación se aplicarán a $1 grupos seleccionados.
+gmass_ok=Actualizar grupos
+gmass_err=Error al actualizar las cuotas de grupo

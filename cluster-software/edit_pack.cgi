@@ -36,9 +36,9 @@ print "<tr $cb> <td><table width=100%>\n";
 # Description, if we have one
 if ($pinfo[2]) {
 	print "<tr> <td valign=top width=20%><b>$text{'edit_desc'}</b></td>\n";
-	print "<td colspan=3><pre>",
+	print "<td colspan=3>",
 	      &html_escape(&entities_to_ascii($pinfo[2])),
-	      "</pre></td> </tr>\n";
+	      "</td> </tr>\n";
 	}
 
 print "<tr> <td width=20%><b>$text{'edit_pack'}</b></td> <td>$pinfo[0]</td>\n";
@@ -91,6 +91,7 @@ print &ui_subheading($text{'edit_hosts'});
 			      "$_->{'host'}:$_->{'port'}").
 		($version{$_} ? "<br>$text{'edit_ver'} $version{$_}" : "") } @got;
 &icons_table(\@links, \@titles, \@icons);
+print "<br>";
 
 &remote_finished();
 if ($in{'search'}) {

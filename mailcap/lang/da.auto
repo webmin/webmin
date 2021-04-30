@@ -1,0 +1,46 @@
+index_title=MIME-type programmer
+index_none=Der er endnu ikke defineret nogen MIME-type programmer.
+index_add=Tilføj et nyt MIME-program.
+index_type=MIME-type
+index_program=Håndteringsprogram
+index_cmt=Beskrivelse
+index_delete=Slet valgt
+index_disable=Deaktiver valgt
+index_enable=Aktivér valgt
+index_enabled=Aktiveret?
+index_return=liste over programmer
+
+edit_title1=Opret MIME Type-program
+edit_title2=Rediger MIME Type-program
+edit_header=MIME-type handler programmets detaljer
+edit_type=MIME-type
+edit_enabled=Aktiveret?
+edit_program=Håndteringsprogram
+edit_cmt=Beskrivelse
+edit_egone=Programmet findes ikke længere!
+edit_test=Testkommando
+edit_none=Ingen (brug altid program)
+edit_term=Vis output i terminal?
+edit_copious=Producerer masser af output?
+edit_desc=MIME-type beskrivelse
+
+save_err=Kunne ikke gemme programmet MIME-type
+save_etype=MIME-type mangler eller er ugyldig
+save_eprogram=Manglende behandlingsprogram
+save_eclash=Et aktiveret program for den indtastede MIME-type findes allerede
+save_etest=Manglende eller ugyldig testkommando
+save_edesc=Ugyldig MIME-type beskrivelse
+
+delete_err=Kunne ikke slette programmer af MIME-typen
+disable_err=Kunne ikke deaktivere programmer af MIME-typen
+disable_eclash=Et deaktiveret MIME-program for $1 findes allerede
+enable_err=Kunne ikke aktivere MIME-type programmer
+enable_eclash=Et aktiveret MIME-program for $1 findes allerede
+delete_enone=Ingen valgt
+
+log_delete_mailcap=Slet MIME-program for $1 
+log_create_mailcap=Oprettet MIME-program for $1 
+log_modify_mailcap=Ændret MIME-program for $1 
+log_delete_mailcaps=Slet $1 MIME-programmer
+log_disable_mailcaps=Deaktiverede $1 MIME-programmer
+log_enable_mailcaps=Aktiverede $1 MIME-programmer

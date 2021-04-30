@@ -1,0 +1,29 @@
+index_mail=¿Enviar correo electrónico al finalizar?
+index_delete=Cancelar comandos seleccionados
+index_noat=El comando $1 no se encontró en su sistema; tal vez no esté instalado o no esté disponible para su sistema operativo.
+index_nostyle=Webmin no sabe cómo administrar los comandos de programación en este sistema operativo.
+index_stop=Detener el servidor de comandos programados
+index_stopdesc=Cierre el proceso del servidor en segundo plano <tt>atd</tt> que ejecuta comandos programados. Esto evitará que los comandos se ejecuten en los momentos especificados.
+index_start=Iniciar el servidor de comandos programados
+index_startdesc=Inicie el proceso del servidor en segundo plano <tt>atd</tt> que ejecuta comandos programados. Esto es necesario para que los comandos se ejecuten en los momentos especificados.
+index_boot=¿Iniciar servidor en el arranque?
+index_bootdesc=Cambie esta configuración para habilitar o deshabilitar el inicio del servidor de comandos programados en el momento del inicio del sistema.
+
+edit_shortcmd=Comando para ejecutar
+edit_showfull=Mostrar guión completo.
+
+deletes_err=Error al cancelar comandos
+deletes_enone=Ninguna seleccionada
+
+log_allow=Usuarios permitidos modificados
+log_create_job=Comando programado creado para $1 
+log_delete_job=Comando programado cancelado para $1 
+log_exec_job=Comando programado ejecutado para $1 
+log_delete_jobs=Se cancelaron $1 comandos programados
+log_stop=Servidor de comandos programados detenido
+log_start=Servidor de comandos programados iniciado
+log_bootup=Servidor de comandos programados habilitado en el arranque
+log_bootdown=Servidor de comandos programados deshabilitado en el arranque
+
+stop_err=No se pudo detener el servidor
+start_err=No se pudo iniciar el servidor

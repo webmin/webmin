@@ -1,0 +1,129 @@
+index_title=Bộ lọc thư Procmail
+index_procmail=Bộ lọc thư Procmail
+index_desc_other=Các hành động procmail bên dưới từ $1 sẽ áp dụng cho <b>tất cả</b> email được gửi cho người dùng trên hệ thống của bạn. Tuy nhiên, chúng sẽ chỉ được sử dụng nếu Procmail được cài đặt và máy chủ thư của bạn được cấu hình để sử dụng nó.
+index_mserr=Cảnh báo - mọi quy tắc được xác định bên dưới sẽ không được sử dụng : $1 
+index_action=Hành động để lấy
+index_conds=Điều kiện
+index_move=Di chuyển
+index_ba=Thêm vào
+index_act6=Đặt biến $1 
+index_act5=Thực thi khối có điều kiện
+index_act4=Nạp vào chương trình $1 
+index_act3=Chuyển tiếp tới $1 
+index_act2=Viết thư cho maildir $1 
+index_act1=Ghi vào thư mục MH $1 
+index_act0=Nối vào tệp $1 
+index_noconds=Luôn thực hiện hành động
+index_re=Kết hợp regrec $1 
+index_nre=Không khớp regrec $1 
+index_shell=Đánh giá lệnh $1 
+index_exit=Trạng thái thoát lệnh $1 
+index_lt=Kích thước là < $1 
+index_gt=Kích thước> $1 
+index_add=Thêm một hành động lọc mới.
+index_eadd=Thêm một thiết lập biến mới.
+index_badd=Thêm một khối điều kiện mới.
+index_iadd=Thêm một tập tin bao gồm mới.
+index_none=Không có hành động Procmail nào được cấu hình.
+index_return=danh sách hành động
+index_env=Đặt biến $1 thành $2 
+index_include=Quy trình bao gồm tệp $1 
+index_man=Chỉnh sửa cấu hình thủ công
+index_mandesc=Chỉnh sửa trực tiếp tệp cấu hình Procmail chính, để tạo quy tắc, biến và khối của riêng bạn.
+index_ecmd=Chương trình Procmail $1 không tìm thấy trên hệ thống của bạn. Cấu hình mô-đun chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> không chính xác.
+index_delete=Xóa các hành động đã chọn
+
+edit_title2=Chỉnh sửa hành động
+edit_title1=Tạo hành động
+edit_header1=Chi tiết hành động giao hàng
+edit_header2=Điều kiện hành động
+edit_action=Chế độ chuyển phát
+edit_block=Mã Procmail để thực thi
+edit_amode_0=Nối vào tập tin
+edit_amode_1=Ghi vào thư mục MH
+edit_amode_2=Viết thư cho maildir
+edit_amode_3=Chuyển tiếp đến địa chỉ
+edit_amode_4=Thức ăn cho chương trình
+edit_amode_6=Đặt biến
+edit_flag_H=Áp dụng điều kiện cho các tiêu đề
+edit_flag_B=Áp dụng điều kiện cho cơ thể
+edit_flag_D=Kết hợp phân biệt chữ hoa chữ thường
+edit_flag_h=Tiêu đề thức ăn đến đích
+edit_flag_b=Cho cơ thể đến đích
+edit_flag_c=Tiếp tục xử lý ngay cả khi điều kiện phù hợp
+edit_flag_w=Đợi chương trình hành động kết thúc và kiểm tra kết quả
+edit_flag_W=Đợi chương trình hành động kết thúc, nhưng bỏ qua kết quả
+edit_flag_i=Bỏ qua lỗi viết khi giao hàng
+edit_flag_r=Viết thư ở chế độ thô
+edit_flag_f=Chương trình hành động là một bộ lọc
+edit_lockfile=Tệp khóa giao hàng
+edit_cmode_re=Khớp biểu thức chính quy
+edit_cmode_nre=Không khớp với biểu thức chính quy
+edit_cmode_shell=Đánh giá đầu ra của lệnh
+edit_cmode_exit=Kiểm tra trạng thái thoát lệnh
+edit_cmode_lt=Thư nhỏ hơn
+edit_cmode_gt=Thư lớn hơn
+edit_conddesc=Để thực hiện hành động trên, tất cả các điều kiện dưới đây phải phù hợp. Nếu không có điều kiện, hành động sẽ luôn được thực thi.
+edit_none=không ai
+edit_lock=Tập tin cụ thể
+edit_ctype=Loại điều kiện
+edit_cvalue=Biểu thức hoặc lệnh thông thường
+
+save_err=Không thể lưu hành động
+save_eaction_0=Thiếu tập tin để nối vào
+save_eaction_1=Thiếu thư mục MH để ghi vào
+save_eaction_2=Thiếu maildir để viết thư cho
+save_eaction_3=Thiếu địa chỉ để chuyển tiếp đến
+save_eaction_4=Thiếu chương trình để nuôi
+save_eaction_6=Thiếu biến để đặt
+save_eactionvar=Biến phải đặt phải được nhập như NAME = value
+save_elockfile=Thiếu tên tập tin khóa
+save_esize=Kích thước thư bị thiếu hoặc không hợp lệ cho điều kiện $1 
+save_ere=Thiếu biểu thức chính quy cho điều kiện $1 
+save_eshell=Thiếu lệnh cho điều kiện $1 
+
+env_title1=Tạo biến
+env_title2=Chỉnh sửa biến
+env_header=Biến môi trường Procmail
+env_name=Tên biến
+env_value=Giá trị
+env_err=Không thể lưu biến
+env_ename=Tên biến thiếu hoặc không hợp lệ
+
+inc_title1=Thêm tệp bao gồm
+inc_title2=Chỉnh sửa Bao gồm tệp
+inc_header=Bao gồm tập tin quy tắc procmail
+inc_inc=Bao gồm tập tin
+inc_einc=Không bao gồm tập tin đã nhập
+
+config_eline=Dòng không xác định $1 trong $2 : $3 
+
+manual_title=Chỉnh sửa cấu hình
+manual_desc=Trang này có thể được sử dụng để chỉnh sửa thủ công tệp cấu hình Procmail $1. Hãy cẩn thận, vì không có kiểm tra cú pháp sẽ được thực hiện.
+manual_edata=Không có dữ liệu được cung cấp bởi trình duyệt của bạn!
+
+log_create_rec=Đã tạo công thức cho $1 
+log_delete_rec=Đã xóa công thức thành $1 
+log_modify_rec=Công thức đã sửa đổi thành $1 
+log_delete_recs=Đã xóa $1 công thức nấu ăn
+log_act5=thực hiện khối có điều kiện
+log_act4=cho ăn progam $1 
+log_act3=chuyển tiếp tới $1 
+log_act2=viết thư cho maildir $1 
+log_act1=ghi vào thư mục MH $1 
+log_act0=chắp thêm vào tập tin $1 
+log_create_env=Tạo biến môi trường $1 
+log_modify_env=Biến môi trường đã sửa đổi $1 
+log_delete_env=Đã xóa biến môi trường $1 
+log_create_inc=Đã tạo bao gồm tệp $1 
+log_modify_inc=Đã sửa đổi bao gồm tệp $1 
+log_delete_inc=Đã xóa bao gồm tệp $1 
+log_manual=Cấu hình chỉnh sửa thủ công
+log_up=Đã chuyển một mục lên
+log_down=Đã chuyển một mục xuống
+
+delete_err=Không thể xóa hành động
+delete_enone=Không được chọn
+
+check_epostfix=Procmail không được bật trong cấu hình Postfix của bạn. Tệp cấu hình <tt>$2</tt> phải có tùy chọn <tt>$1</tt> được đặt thành <tt>$3</tt>.
+check_esendmail=Sendmail không được thiết lập để sử dụng Procmail để giao hàng cục bộ. Điều này có thể được định cấu hình trong mô-đun <a href='$1'>Sendmail Mail Server</a> của Webmin.

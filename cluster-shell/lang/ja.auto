@@ -1,0 +1,22 @@
+index_title=クラスターシェルコマンド
+index_cmd=実行するコマンド
+index_old=または
+index_server=サーバーで実行する
+index_run=今すぐコマンドを実行
+index_return=モジュールインデックス
+index_this=このサーバー
+index_all=&lt;すべてのホスト&gt;
+index_group=$1のメンバー
+index_clear=履歴をクリア
+index_edit=前を編集
+
+run_title=コマンドを実行
+run_err=コマンドの実行に失敗しました
+run_ecmd=コマンドが入力されていません
+run_failed=$1での実行に失敗しました： $2
+run_success=$1からの出力 ..
+run_enone=選択したサーバーで実行するサーバーはありません
+
+log_clear=クリアされたコマンド履歴
+log_run=$2サーバーで $1を実行しました
+log_run_l=$2で $1を実行しました

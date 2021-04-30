@@ -1,0 +1,103 @@
+index_title=Monitor otkucaja srca
+index_return=monitor otkucaja srca
+index_edir=Konfiguriranje otkucaja srca $1 ne postoji. Možda Heartbeat nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
+index_start=Pokrenite Monitor rada srca
+index_startmsg=Kliknite ovaj gumb za pokretanje postupka praćenja rada srca. To će omogućiti automatsko zaustavljanje usluge na vašem sustavu s trenutnom konfiguracijom.
+index_apply=Primijeni promjene
+index_applymsg=Kliknite ovaj gumb da biste prisilili pokrenuti postupak praćenja rada srca (Heartbeat monitor) da ponovno učita trenutnu konfiguraciju.
+index_eha_cf=Konfiguracijska datoteka otkucaja srca $1 nije pronađena u vašem sustavu. Možda još nije kopiran na svoje mjesto ili je <a href='$2'>konfiguracija modula</a> netočna.
+index_eharesources=Datoteka resursa $1 nije pronađena u vašem sustavu. Možda još nije kopiran na svoje mjesto ili je <a href='$2'>konfiguracija modula</a> netočna.
+index_eauthkeys=Datoteka ključeva za provjeru autentičnosti $1 nije pronađena u vašem sustavu. Možda još nije kopiran na svoje mjesto ili je <a href='$2'>konfiguracija modula</a> netočna.
+index_ereq_resource_cmd=Skripta za traženje resursa iz drugog čvora ($1) nije pronađena u vašem sustavu. Možda još nije kopiran na svoje mjesto ili je <a href='$2'>konfiguracija modula</a> netočna.
+index_version=Verzija otkucaja srca $1 
+index_noversion=Upozorenje - Verziju otkucaja srca instaliranu na vašem sustavu nije moguće automatski prepoznati. Trebali biste ga postaviti na stranici <a href='$1'>konfiguracija modula</a>.
+index_status=Status otkucaja srca
+
+conf_title=Opcije konfiguracije
+conf_header=Opcije konfiguracije otkucaja srca
+conf_serials=Serijski otvori za otkucaje srca
+conf_baud=Brzina prijenosa za serijski port
+conf_bcasts=Ethernet sučelja za otkucaje srca
+conf_none=nijedan
+conf_udpport=UDP otkucaja srca
+conf_mcast=Uređaj za otkucaje srca s višestrukim otkucajima
+conf_mcastv=Uređaj $1, grupa $2, priključak $3, TTL $4, povratna veza $5 
+conf_enabled=Omogućeno
+conf_disabled=Onemogućeno
+conf_keepalive=Vrijeme između otkucaja srca
+conf_nice_failback=Lijepo neuspješno ponašanje
+conf_secs=sekundi
+conf_deadtime=Vrijeme prije čvora smatra se mrtvim
+conf_watchdog=Datoteka uređaja nadzornog pasa
+conf_node=Domaćini u klasteru
+conf_logfile=Datoteka dnevnika rada srca
+conf_logfacility=Objekt zapisnika syslog-a
+conf_initdead=Početno mrtvo vrijeme
+conf_ok=Spremi opcije
+conf_err=Spremanje opcija nije uspjelo
+conf_ebaud=Nedostaje ili nije valjana brzina prijenosa
+conf_ebcast=Nije uneseno sučelje emitiranja otkucaja srca
+conf_ebcastif="$1" nije valjano sučelje za emitiranje
+conf_eudpport=Nedostaje ili nevažeći priključak otkucaja srca
+conf_ekeepalive=Nedostaje ili neispravno vrijeme između otkucaja srca
+conf_edeadtime=Nedostaje ili nije valjano mrtvo vrijeme
+conf_ewatchdog=Nedostaje ili nepostojeća datoteka uređaja čuvara
+conf_enonode=Nisu uneseni domaćini klastera
+conf_ethisnode=Ovaj domaćin $1 nije na popisu domaćina klastera
+conf_elogfile=Nedostaje ili nevažeće ime datoteke dnevnika
+conf_einitdead=Nedostaje ili nije valjano početno mrtvo vrijeme
+conf_einitdead2=Početno mrtvo vrijeme mora biti najmanje dvostruko duže od vremena prije nego što se čvor smatra mrtvim
+conf_emcast_dev=Nedostaje ili nije važeći uređaj za višestruko slanje
+conf_emcast_ip=Nedostaje ili je nevaljana adresa grupe višestruke pošte
+conf_emcast_port=Nedostaje ili nevažeći broj priključka za višestruku poštu
+conf_emcast_ttl=Nedostaje ili nije valjano vrijeme prijenosa za višestruko slanje
+conf_auto_on=$ {Conf_enabled}
+conf_auto_off=$ {Conf_disabled}
+conf_auto_legacy=Naslijeđeni način
+conf_auto_=$ {Zadano}
+
+res_title=Resursi klastera
+res_node=Primarni čvor
+res_ips=IP adrese
+res_servs=Usluge čvorova
+res_none=nijedan
+res_nores=U vašem sustavu nisu definirani resursi klastera.
+res_add=Dodajte izvor klastera
+res_return=popis resursa
+res_active=Status resursa
+res_getserv=Dohvati resurse
+res_hbdown=Otkucaji srca
+res_up=UP
+res_down=DOLJE
+
+node_create=Dodavanje resursa klastera
+node_edit=Uređivanje resursa klastera
+node_header=Pojedinosti o klasteru
+node_node=Primarni čvor za resurs
+node_ips=IP adrese za resurs
+node_ip=IP adresa
+node_cidr=Netmaska CIDR
+node_broad=Adresa emitiranja
+node_servs=Usluge za resurse
+node_serv=Servis
+node_args=Dodatni argumenti
+node_err=Spremanje resursa klastera nije uspjelo
+node_enone=Nedostaje ili nije važeći primarni čvor
+node_eip='$1' nije valjana IP adresa
+node_ecidr='$1' nije važeći CIDR
+node_ebroad='$1' nije valjana adresa emitiranja
+
+auth_title=Ključevi provjere autentičnosti
+auth_header=Autentifikacija čvora klastera
+auth_mode=Način provjere autentičnosti
+auth_crc=CRC (bez sigurnosti)
+auth_sha1=SHA1 s lozinkom
+auth_md5=MD5 sa lozinkom
+auth_err=Spremanje ključeva za provjeru autentičnosti nije uspjelo
+auth_emd5=Nedostaje ili nije važeća MD5 lozinka
+auth_esha1=Nedostaje ili nije važeća SHA1 lozinka
+
+start_err=Nije uspjelo pokretanje srca
+
+apply_err=Primjena promjena nije uspjela
+apply_epid=Proces se više ne pokreće

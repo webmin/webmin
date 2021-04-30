@@ -1,0 +1,205 @@
+index_title=ادارة العمليات
+index_display=عرض
+index_tree=PID
+index_user=المستعمل
+index_size=ذاكرة
+index_cpu=وحدة المعالجة المركزية
+index_search=بحث
+index_zone=منطقة
+index_run=يركض ..
+index_return=قائمة العمليات
+index_mem2=<b>الذاكرة الحقيقية:</b> إجمالي$1 /$2 مجانًا
+index_mem3=<b>الذاكرة الحقيقية:</b> إجمالي$1 /$2 مجانًا /$3 مخزنة مؤقتًا
+index_swap2=<b>مساحة التبديل:</b> إجمالي$1 /$2 مجانًا
+index_burst=<b>ذاكرة قابلة للانفجار:</b>$1 إجمالاً
+index_loadname=متوسطات حمل وحدة المعالجة المركزية:
+index_loadnums=$1 (1 دقيقة) ،$2 (5 دقائق) ،$3 (15 دقيقة)
+index_cpuname=نوع وحدة المعالجة المركزية:
+index_inzone=في المنطقة$1
+
+pid=هوية شخصية
+owner=صاحب
+command=أمر
+cpu=وحدة المعالجة المركزية
+size=بحجم
+parent=العملية الأم
+runtime=مدة العرض
+nice=مستوى جميل
+stime=بدأت
+sclass=جدولة الفصل IO
+sprio=أولوية IO
+
+search_user=يملكها
+search_match=المطابقة
+search_cpupc=استخدام أكثر من$1٪ من المعالج
+search_cpupc2=باستخدام وحدة المعالجة المركزية أكثر من
+search_fs=باستخدام نظام الملفات
+search_files=باستخدام الملف
+search_submit=بحث
+search_none=لم يتم العثور على عمليات مطابقة.
+search_kill=أرسل إشارة
+search_ignore=تجاهل عمليات البحث في النتيجة
+search_return=نموذج بحث
+search_sigterm=إنهاء العمليات
+search_sigkill=عمليات القتل
+search_port=باستخدام المنفذ
+search_protocol=بروتوكول
+search_ip=باستخدام عنوان IP
+
+run_command=الأمر للتشغيل
+run_submit=يركض
+run_mode=وضع التشغيل
+run_bg=تشغيل في الخلفية
+run_fg=انتظر حتى الانتهاء
+run_input=إدخال الأمر
+run_title=إخراج الأمر
+run_output=الإخراج من$1 ..
+run_none=لم يتم إنشاء إخراج
+run_ecannot=غير مسموح لك بتشغيل الأوامر
+run_as=تشغيل كمستخدم
+run_euser=اسم المستخدم مفقود أو غير صالح
+run_euser2=غير مسموح لك بتشغيل الأوامر كمستخدم محدد
+
+edit_title=قبول المعلومات
+edit_gone=لم تعد هذه العملية قيد التشغيل
+edit_sub=العمليات الفرعية
+edit_subid=هوية شخصية
+edit_subcmd=أمر العملية الفرعية
+edit_kill=أرسل إشارة
+edit_change=يتغيرون
+edit_prilow=أولوية منخفضة
+edit_prihigh=ذا أهيمة عليا
+edit_pridef=إفتراضي
+edit_none=لا يوجد
+edit_ecannot=لا يسمح لك بتحرير العمليات
+edit_sigterm=إنهاء
+edit_sigkill=قتل
+edit_sigstop=تعليق
+edit_sigcont=استئنف
+edit_open=الملفات والوصلات
+edit_trace=عملية التتبع
+edit_return=تفاصيل العملية
+
+kill_err=فشل إرسال الإشارة$1 لمعالجة$2
+kill_title=أرسل إشارة
+kill_sent=أرسلت
+kill_ecannot=لا يسمح لك بقتل العمليات
+
+renice_err=فشل في إعادة عملية$1
+renice_ecannot=لا يسمح لك بإعادة العمليات
+
+linux_pri=أفضلية
+linux_tty=TTY
+linux_status=الحالة
+linux_wchan=الانتظار
+linux_mem=ذاكرة
+linux_group=مجموعة
+linux_ruser=مستخدم حقيقي
+linux_rgroup=مجموعة حقيقية
+linux_pgid=معرف مجموعة العملية
+linux_stime=بدأت
+
+linuxstat_R=ادارة
+linuxstat_S=نائم
+linuxstat_D=نوم عميق
+linuxstat_T=توقفت
+linuxstat_Z=الاموات الاحياء
+
+linux_real=في الوقت الحالى
+linux_be=أفضل مجهود
+linux_idle=خامل
+
+freebsd_ruser=مستخدم حقيقي
+freebsd_rgroup=مجموعة حقيقية
+freebsd_tty=TTY
+freebsd_pgid=مجموعة المعالجة
+freebsd_stime=بدأت
+freebsd_lim=حد الذاكرة
+
+hpux_pri=أفضلية
+hpux_tty=TTY
+hpux_status=الحالة
+hpux_wchan=انتظر ل
+hpux_stime=بدأت
+
+hpuxstat_0=غير موجود
+hpuxstat_S=نائم
+hpuxstat_W=انتظار
+hpuxstat_R=ادارة
+hpuxstat_I=متوسط
+hpuxstat_Z=الاموات الاحياء
+hpuxstat_T=توقفت
+hpuxstat_G=ينمو
+
+macos_tty=TTY
+
+sysv_group=مجموعة
+sysv_ruser=مستخدم حقيقي
+sysv_rgroup=مجموعة حقيقية
+sysv_pgid=معرف مجموعة العملية
+sysv_tty=TTY
+sysv_stime=بدأت
+sysv_task=معرف المهمة
+sysv_zone=اسم المنطقة
+
+log_run=أمر ران "$1"
+log_kill=إرسال إشارة$1 لمعالجة$2
+log_kills=إرسال إشارة$1 إلى عمليات$2
+log_kill_l=إرسال إشارة$1 لمعالجة$2
+log_kills_l=إرسال إشارة$1 إلى العمليات <br>$2
+log_renice=تم تغيير أولوية العملية$2 إلى$1
+
+acl_manage=إدارة العمليات كمستخدم
+acl_manage_def=مستخدم Webmin الحالي
+acl_edit=يمكن أن تقتل وتعيد العمليات؟
+acl_run=يمكن تشغيل الأوامر؟
+acl_only=يمكن فقط رؤية العمليات الخاصة؟
+acl_who=يمكن إدارة العمليات للمستخدمين
+acl_who0=جميع المستخدمين
+acl_who1=مستخدم Webmin الحالي
+acl_who2=المستخدمون المدرجون ..
+
+kill_kill=عملية قتل
+kill_term=إنهاء
+kill_hup=اعادة البدء
+kill_stop=قف
+kill_cont=استمر
+
+open_title=افتح الملفات والوصلات
+open_proc=للعملية$1 (PID$2)
+open_header1=الملفات المفتوحة
+open_header2=افتح اتصالات الشبكة
+open_type=اكتب
+open_proto=بروتوكول
+open_desc=تفاصيل
+open_fd=واصف الملف
+open_listen1=الاستماع على المنفذ$1
+open_listen2=الاستماع على العنوان$1 المنفذ$2
+open_recv=الاستلام على $1:$2 
+open_conn=متصل من$1 إلى$2 في الحالة$3
+open_cwd=الدر الحالي
+open_rtd=دير الجذر
+open_txt=كود البرنامج
+open_mem=مكتبة مشتركة
+open_dir=الدليل
+open_reg=ملف عادي
+open_chr=حرف خاص
+open_blk=كتلة خاصة
+open_size=حجم الملف
+open_inode=Inode
+open_file=مسار
+
+trace_title=عملية التتبع
+trace_start=جاري بدء تتبع استدعاء النظام لـ$1 ..
+trace_doing=تتبع استدعاء النظام لـ$1 :
+trace_done=.. انتهت العملية.
+trace_failed=.. فشل تتبع!
+trace_sorry=تتطلب هذه الصفحة دعم جافا في متصفحك. لاستخدام تتبع عملية نصية فقط ، قم بضبط تكوين الوحدة النمطية.
+trace_syscalls=استدعاءات نظام التتبع:
+trace_all=الكل
+trace_sel=مدرج ..
+trace_change=يتغيرون
+
+windows_threads=خيوط قيد المعالجة
+
+syslog_dmesg=رسائل نواة

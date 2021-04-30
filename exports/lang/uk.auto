@@ -1,0 +1,40 @@
+index_add4=Додайте новий експорт NFSv4.
+index_delete=Видалити вибраний експорт
+index_disable=Вимкнути вибране
+index_enable=Увімкнути вибране
+
+edit_vers=Версія NFS
+edit_nfs_vers=Версія NFS
+edit_pfs=NFSv4 Псевдофайлова система для експорту
+edit_network4=Мережа IPv4
+edit_network6=Мережа IPv6
+edit_address=Адреса
+edit_prefix=/
+edit_subtree_check=Вимкнути перевірку піддерева?
+edit_hide=Сховати файлову систему?
+edit_auth=(з автентифікацією або без)
+edit_secs=Рівень безпеки
+edit_integrity=Цілісність
+edit_privacy=Конфіденційність (включаючи доброчесність)
+edit_v2opts=Специфічні для NFSv2 варіанти
+edit_sync=Негайно синхронізувати всі записи?
+edit_sync1=Так
+edit_sync2=Ні
+edit_sync0=За замовчуванням
+edit_in=в
+edit_sec_sys=Відсутня безпека
+edit_sec_krb5=Керберос аутентифікація
+edit_sec_krb5i=Цілісність Кербероса
+edit_sec_krb5p=Конфіденційність Kerberos
+edit_sec_lipkey=ЛІПКЕЙ
+edit_sec_spkm=SPKM
+
+save_epfs=Шлях псевдофайлової системи '$1' не схожий на абсолютний шлях
+save_pfs='$1' вже експортується як каталог
+save_create_dir=Не вдається створити каталог "$1"
+save_eanonuid=Недійсне ім'я анонімного доступу
+save_eanongid=Недійсне ім’я анонімної групи доступу
+
+exports_gss=Автентифікована мережа: $1 
+
+log_delete_exports=Видалено експорт $1 NFS

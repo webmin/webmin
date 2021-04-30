@@ -1,0 +1,57 @@
+index_title=NFS-andeler
+index_add=Begynn å dele en ny katalog.
+index_dir=Directory
+index_clients=klienter
+index_everyone=alle
+index_delete=Slett valgte aksjer
+index_none=Ingen kataloger blir nå eksportert for dette systemet.
+index_apply=Bruk endringer
+index_applydesc=Klikk på denne knappen for å bruke gjeldende konfigurasjon av fildeling. Dette vil gjøre alle katalogene oppført ovenfor med de spesifiserte alternativene.
+index_return=liste over aksjer
+
+edit_title1=Rediger deling
+edit_title2=Lag deling
+edit_header1=Del detaljer
+edit_dir=Directory
+edit_desc=Beskrivelse
+edit_ro=Skrivebeskyttet tilgang
+edit_rw=Lese-skrivetilgang
+edit_root=Rot tilgang
+edit_none=Ingen
+edit_all=Alle verter
+edit_listed=Oppførte verter ..
+edit_header2=Aksjeopsjoner
+edit_nosub=Tillater montering av undermapper?
+edit_nosuid=Vil du tillate faste filer?
+edit_des=Klienter må bruke DES?
+edit_kerberos=Klienter må bruke kerberoer?
+edit_anon=Anonym bruker
+edit_anon0=Ikke satt
+edit_anon1=Ingen adgang
+edit_aclok=Tillat ACL-er?
+edit_public=WebNFS-andel?
+edit_index=WebNFS indeksfil
+
+save_err=Kunne ikke lagre delingen
+save_edirectory='$1' er ikke et gyldig katalognavn
+save_edirectory2=Katalogen '$1' eksisterer ikke
+save_erw=Du har ikke vist noen verter å dele lese-skrive med
+save_ero=Du har ikke vist noen verter å dele skrivebeskyttet med
+save_eroot=Du har ikke vist noen verter å dele rot med
+save_ealready=Katalogen '$1' er allerede delt
+save_ehost=Verten '$1' eksisterer ikke
+
+log_modify=Endret NFS-andel $1 
+log_rename=Endret NFS-andel $1 til $2 
+log_create=Opprettet NFS-andel $1 
+log_delete=Slettet NFS-andel $1 
+log_apply=Brukte endringer
+
+acl_view=Kan du redigere NFS-aksjer?
+
+ecannot=Du har ikke lov til å administrere NFS-aksjer
+
+delete_err=Kunne ikke slette delinger
+delete_enone=Ingen valgt
+
+restart_err=Kunne ikke bruke endringene

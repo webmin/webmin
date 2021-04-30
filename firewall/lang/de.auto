@@ -1,0 +1,14 @@
+index_no_comment=
+
+log_create_rule=Regel zu Kette $1 in Tabelle $2 hinzugefügt
+log_modify_rule=Geänderte Regel in Kette $1 in Tabelle $2 
+log_delete_rule=Gelöschte Regel in Kette $1 in Tabelle $2 
+log_move_rule=Verschobene Regel in Kette $1 in Tabelle $2 
+log_delete_chain=Kette $1 aus Tabelle $2 gelöscht
+log_clear_chain=Freigegebene Kette $1 in Tabelle $2 
+log_create_chain=Erstellt Kette $1 in Tabelle $2 
+log_modify_chain=Legen Sie die Standardaktion für Kette $1 in Tabelle $2 fest
+log_delsel_chain=$3 -Regeln aus Kette $1 in Tabelle $2 gelöscht
+log_movesel_chain=$3 -Regeln wurden aus Kette $1 in Tabelle $2 verschoben
+log_delete_host=Cluster-Server $1 entfernt
+log_delete_group=$1 Clusterserver entfernt

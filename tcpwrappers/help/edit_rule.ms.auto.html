@@ -1,0 +1,71 @@
+<header> Pembungkus TCP </header>
+<h3> Corak </h3> Bahasa kawalan akses menerapkan corak berikut: <ul>
+    <li> Rentetan yang bermula dengan huruf &#39;.&#39; watak. Nama hos dipadankan jika komponen terakhir dari namanya sesuai dengan corak yang ditentukan. Contohnya, corak &#39;.tue.nl&#39; sepadan dengan nama hos &#39;wzv.win.tue.nl&#39;. </li>
+    <li> Rentetan yang diakhiri dengan &#39;.&#39; watak. Alamat hos dipadankan jika medan angka pertama sesuai dengan rentetan yang diberikan. Contohnya, corak &#39;131.155.&#39; sepadan dengan alamat (hampir) setiap hos di rangkaian Universiti Eindhoven (131.155.xx). </li>
+    <li> Rentetan yang bermula dengan watak &#39;@&#39; dianggap sebagai nama kumpulan NIS (dahulunya YP). Nama hos dipadankan jika ia adalah ahli hos kumpulan net yang ditentukan. Padanan Netgroup tidak disokong untuk nama proses daemon atau untuk nama pengguna pelanggan. </li>
+    <li> Ungkapan bentuk &#39;nnnn / mmmm&#39; ditafsirkan sebagai pasangan &#39;net/mask&#39;. Alamat host IPv4 dipadankan jika &#39;net&#39; sama dengan bit bit AND dan alamat dan &#39;mask&#39;. Sebagai contoh, corak jaring / topeng &#39;131.155.72.0/255.255.254.0&#39; sepadan dengan setiap alamat dalam julat &#39;131.155.72.0&#39; hingga &#39;131.155.73.255&#39;. </li>
+    <li> Ungkapan bentuk &#39;[n: n: n: n: n: n: n: n] / m&#39; ditafsirkan sebagai pasangan &#39;[net]/prefixlen&#39;. Alamat host IPv6 dipadankan jika bit &#39;prefixlen&#39; dari &#39;net&#39; sama dengan bit &#39;prefixlen&#39; dari alamat. Sebagai contoh, corak [net]/prefixlen &#39;[3ffe: 505: 2: 1 ::]/64&#39; sepadan dengan setiap alamat dalam julat &#39;3ffe: 505: 2: 1:&#39;? melalui &#39;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&#39;. </li>
+    <li> Rentetan yang bermula dengan watak &#39;/&#39; dianggap sebagai nama fail. Nama atau alamat host sesuai dengan mana-mana nama host atau corak alamat yang disenaraikan dalam fail bernama. Format fail adalah sifar atau lebih baris dengan sifar atau lebih banyak nama host atau corak alamat yang dipisahkan oleh ruang kosong. Corak nama fail boleh digunakan di mana sahaja nama host atau corak alamat dapat digunakan. </li>
+    <li> Kad liar &#39;*&#39; dan &#39;?&#39; boleh digunakan untuk memadankan nama host atau alamat IP. Kaedah pencocokan ini tidak dapat digunakan bersamaan dengan pencocokan &#39;net/mask&#39;, pencocokan nama host yang dimulai dengan &#39;.&#39; atau padanan alamat IP yang diakhiri dengan &#39;.&#39;. </li>
+</ul>
+<h3> Kad Liar </h3> Bahasa kawalan akses menyokong wildcard eksplisit: <table border>
+    <tr>
+        <td> <b>SEMUA</b> </td>
+        <td> Kad liar sejagat, sentiasa sesuai. </td>
+    </tr>
+    <tr>
+        <td> <b>TEMPATAN</b> </td>
+        <td> Sesuai dengan mana-mana hos yang namanya tidak mengandungi watak titik. </td>
+    </tr>
+    <tr>
+        <td> <b>TAK TAHU</b> </td>
+        <td> Sesuai dengan mana-mana pengguna yang namanya tidak diketahui, dan sepadan dengan mana-mana host yang nama atau alamatnya tidak diketahui. Corak ini harus digunakan dengan berhati-hati: nama host mungkin tidak tersedia kerana masalah pelayan nama sementara. Alamat rangkaian tidak akan tersedia apabila perisian tidak dapat mengetahui jenis rangkaian yang sedang diajak berbicara. </td>
+    </tr>
+    <tr>
+        <td> <b>TAHU</b> </td>
+        <td> Sesuai dengan mana-mana pengguna yang namanya dikenali, dan sesuai dengan mana-mana host yang namanya dan alamatnya diketahui. Corak ini harus digunakan dengan berhati-hati: nama host mungkin tidak tersedia kerana masalah pelayan nama sementara. Alamat rangkaian tidak akan tersedia apabila perisian tidak dapat mengetahui jenis rangkaian yang sedang diajak berbicara. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOID</b> </td>
+        <td> Sesuai dengan mana-mana hos yang namanya tidak sepadan dengan alamatnya. Apabila tcpd dibina dengan -DPARANOID (mod lalai), ia akan menolak permintaan dari klien tersebut bahkan sebelum melihat jadual kawalan akses. Bangun tanpa -DPARANOID apabila anda mahukan lebih banyak kawalan terhadap permintaan tersebut. </td>
+    </tr>
+</table>
+<h3> Pengendali </h3> <b>KECUALI</b> Penggunaan yang dimaksudkan adalah dalam bentuk: &#39;list_1 EXCEPT list_2&#39;; konstruk ini sepadan dengan apa sahaja yang sepadan dengan list_1 melainkan jika ia sesuai dengan senarai_2 Pengendali KECUALI boleh digunakan dalam senarai daemon_lists dan dalam senarai_pelanggan. Pengendali KECUALI dapat bersarang: jika bahasa kontrol mengizinkan penggunaan tanda kurung, &#39;KECUALI b KECUALI c&#39; akan dihuraikan sebagai &#39;(KECUALI (b KECUALI c))&#39;. <h3> Perintah Shell </h3> Sekiranya peraturan kawalan akses yang dipadankan pertama mengandungi perintah shell, perintah itu dikenakan% <letter> penggantian (lihat bahagian seterusnya). Hasilnya diatasi oleh proses anak /bin/sh dengan input, output dan ralat standard yang disambungkan ke /dev/null. Tentukan &#39;&amp;&#39; di akhir arahan jika anda tidak mahu menunggu sehingga selesai. <p> Perintah Shell tidak boleh bergantung pada pengaturan PATH dari inetd. Sebaliknya, mereka harus menggunakan nama jalan mutlak, atau mereka harus bermula dengan PATH eksplisit = pernyataan apa pun. <h3> % Pengembangan </h3> Pengembangan berikut tersedia dalam perintah shell: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> Alamat hos pelanggan (pelayan). </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Maklumat pelanggan: pengguna @ tuan rumah, pengguna @ alamat, nama host, atau hanya alamat, bergantung pada seberapa banyak maklumat yang ada. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> Nama proses daemon (nilai argv[0]). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Nama atau alamat hos klien (pelayan), jika nama hos tidak tersedia. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> Nama hos klien (pelayan) (atau &quot;tidak diketahui&quot; atau &quot;paranoid&quot;). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> Id proses daemon. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Maklumat pelayan: daemon@host, daemon @ alamat, atau hanya nama daemon, bergantung pada seberapa banyak maklumat yang ada. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Nama pengguna pelanggan (atau &quot;tidak diketahui&quot;). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Memperluas ke single &#39;%? watak. </td>
+            </tr>
+        </table> Karakter dalam%ekspansi yang mungkin mengelirukan shell digantikan oleh garis bawah.
+        <hr />

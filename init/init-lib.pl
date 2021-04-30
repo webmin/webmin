@@ -373,7 +373,7 @@ sub get_inittab_runlevel
 local %iconfig = &foreign_config("inittab");
 local @rv;
 local $id = $config{'inittab_id'};
-if (open(TAB, $iconfig{'inittab_file'})) {
+if (open(TAB, "<".$iconfig{'inittab_file'})) {
 	# Read the inittab file
 	while(<TAB>) {
 		if (/^$id:(\d+):/ && $1) { @rv = ( $1 ); }
@@ -419,7 +419,7 @@ in with supported parameters to the action, like 'start' and 'stop'.
 sub init_description
 {
 # Read contents of script, extract start/stop commands
-open(FILE, $_[0]);
+open(FILE, "<".$_[0]);
 local @lines = <FILE>;
 close(FILE);
 local $data = join("", @lines);
@@ -495,7 +495,7 @@ sub chkconfig_info
 {
 local @rv;
 local $desc;
-open(FILE, $_[0]);
+open(FILE, "<".$_[0]);
 while(<FILE>) {
 	if (/^#\s*chkconfig:\s+(\S+)\s+(\d+)\s+(\d+)/) {
 		@rv = ( $1 eq '-' ? [ ] : [ split(//, $1) ], $2, $3 );
@@ -525,7 +525,7 @@ if ($init_mode eq "upstart") {
 					quotemeta($name)." 2>&1");
 	if (!$?) {
 		my $cfile = "/etc/init/$name.conf";
-		open(CONF, $cfile);
+		open(CONF, "<".$cfile);
 		while(<CONF>) {
 			if (/^(#*)\s*start/) {
 				return $1 ? 1 : 2;
@@ -545,6 +545,13 @@ elsif ($init_mode eq "systemd") {
 	    $out !~ /Description=LSB:\s/) {
 		# Exists .. but is it started at boot?
 		return lc($1) eq 'enabled' || lc($1) eq 'static' ? 2 : 1;
+		}
+	else {
+		my $out = &backquote_command("systemctl is-enabled ".
+					quotemeta($unit)." 2>&1");
+		$out = &trim($out);
+		return 2 if ($out eq "enabled");
+		return 1 if ($out eq "disabled");
 		}
 	}
 if ($init_mode eq "init" || $init_mode eq "upstart" ||
@@ -572,7 +579,7 @@ elsif ($init_mode eq "local") {
 	# Look for entry in rc.local
 	local $fn = "$module_config_directory/$name.sh";
 	local $cmd = "$fn start";
-	open(LOCAL, $config{'local_script'});
+	open(LOCAL, "<".$config{'local_script'});
 	while(<LOCAL>) {
 		s/\r|\n//g;
 		$found++ if ($_ eq $cmd);
@@ -692,7 +699,7 @@ if ($init_mode eq "systemd" && (!-r "$config{'init_dir'}/$_[0]" ||
 				"unless a command is given");
 		&create_systemd_service($unit, $_[1], $_[2], $_[3], undef,
 					$_[5]->{'fork'}, $_[5]->{'pidfile'},
-					$_[5]->{'exit'});
+					$_[5]->{'exit'}, $_[5]->{'opts'});
 		}
 	&system_logged("systemctl unmask ".
 		       quotemeta($unit)." >/dev/null 2>&1");
@@ -1207,7 +1214,7 @@ elsif ($mode eq "rc") {
 	}
 elsif ($mode eq "osx") {
 	# Delete OSX hostconfig entry
-	open(LOCAL, $config{'hostconfig'});
+	open(LOCAL, "<".$config{'hostconfig'});
 	my @local = <LOCAL>;
 	close(LOCAL);
 	my $start = $name."=-";
@@ -1342,6 +1349,33 @@ else {
 	&stop_action($name);
 	return &start_action($name);
 	}
+}
+
+=head2 reload_action(action)
+
+Does a config reload for some action.
+
+=cut
+sub reload_action
+{
+local ($name) = @_;
+local $action_mode = &get_action_mode($name);
+if ($action_mode eq "upstart") {
+	return &reload_upstart_service($name);
+	}
+elsif ($action_mode eq "systemd") {
+	return &reload_systemd_service($name);
+	}
+elsif ($action_mode eq "init") {
+	local $file = &action_filename($name);
+	local $hasarg = &get_action_args($file);
+	if ($hasarg->{'reload'}) {
+		local $cmd = $file." reload";
+		local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+		return $? ? (0, $out) : (1, undef);
+		}
+	}
+return (0, "Not implemented");
 }
 
 =head2 status_action(name)
@@ -1885,7 +1919,7 @@ foreach my $l (split(/\r?\n/, $out)) {
 		if ($l =~ /process\s+(\d+)/) {
 			$s->{'pid'} = $1;
 			}
-		open(CONF, "/etc/init/$s->{'name'}.conf");
+		open(CONF, "</etc/init/$s->{'name'}.conf");
 		while(<CONF>) {
 			if (/^description\s+"([^"]+)"/ && !$s->{'desc'}) {
 				$s->{'desc'} = $1;
@@ -1969,6 +2003,19 @@ my $out = &backquote_logged(
 return (!$?, $out);
 }
 
+=head2 reload_upstart_service(name)
+
+Reload the upstart service with some name, and return an OK flag and output
+
+=cut
+sub reload_upstart_service
+{
+my ($name) = @_;
+my $out = &backquote_logged(
+	"service ".quotemeta($name)." reload 2>&1 </dev/null");
+return (!$?, $out);
+}
+
 =head2 create_upstart_service(name, description, command, [pre-script], [fork])
 
 Create a new upstart service with the given details.
@@ -2037,7 +2084,7 @@ sub list_systemd_services
 {
 # Get all systemd unit names
 my $out = &backquote_command("systemctl list-units --full --all -t service --no-legend");
-&error("Failed to list systemd units : $out") if ($?);
+my $ex = $?;
 foreach my $l (split(/\r?\n/, $out)) {
 	$l =~ s/^[^a-z0-9\-\_\.]+//i;
 	my ($unit, $loaded, $active, $sub, $desc) = split(/\s+/, $l, 5);
@@ -2048,6 +2095,7 @@ foreach my $l (split(/\r?\n/, $out)) {
 		push(@units, $unit);
 		}
 	}
+&error("Failed to list systemd units : $out") if ($ex && @units < 10);
 
 # Also find unit files for units that may be disabled at boot and not running,
 # and so don't show up in systemctl list-units
@@ -2192,6 +2240,19 @@ my $out = &backquote_logged(
 return (!$?, $out);
 }
 
+=head2 reload_systemd_service(name)
+
+Reload the systemd service with some name, and return an OK flag and output
+
+=cut
+sub reload_systemd_service
+{
+my ($name) = @_;
+my $out = &backquote_logged(
+	"systemctl reload ".quotemeta($name)." 2>&1 </dev/null");
+return (!$?, $out);
+}
+
 =head2 create_systemd_service(name, description, start-script, stop-script,
 			      restart-script, [forks], [pidfile])
 
@@ -2200,11 +2261,12 @@ Create a new systemd service with the given details.
 =cut
 sub create_systemd_service
 {
-my ($name, $desc, $start, $stop, $restart, $forks, $pidfile, $exits) = @_;
+my ($name, $desc, $start, $stop, $restart, $forks, $pidfile, $exits, $opts) = @_;
 $start =~ s/\r?\n/ ; /g;
 $stop =~ s/\r?\n/ ; /g;
 $restart =~ s/\r?\n/ ; /g;
 my $sh = &has_command("sh") || "sh";
+my $kill = &has_command("kill") || "kill";
 if ($start =~ /<|>/) {
 	$start = "$sh -c '$start'";
 	}
@@ -2227,9 +2289,32 @@ my $cfile = &get_systemd_root($name)."/".$name;
 &print_tempfile(CFILE, "Type=oneshot\n",
 		       "RemainAfterExit=yes\n") if ($exits);
 &print_tempfile(CFILE, "PIDFile=$pidfile\n") if ($pidfile);
+
+# Opts
+if (ref($opts)) {
+	&print_tempfile(CFILE, "ExecStop=$kill -HUP \$MAINPID\n") if ($opts->{'stop'} eq '0');
+	&print_tempfile(CFILE, "ExecReload=$kill -HUP \$MAINPID\n") if ($opts->{'reload'} eq '0');
+	&print_tempfile(CFILE, "ExecStop=$opts->{'stop'}\n") if ($opts->{'stop'});
+	&print_tempfile(CFILE, "ExecReload=$opts->{'reload'}\n") if ($opts->{'reload'});
+	&print_tempfile(CFILE, "Type=$opts->{'type'}\n") if ($opts->{'type'});
+	&print_tempfile(CFILE, "Environment=\"$opts->{'env'}\"\n") if ($opts->{'env'});
+	&print_tempfile(CFILE, "User=$opts->{'user'}\n") if ($opts->{'user'});
+	&print_tempfile(CFILE, "Group=$opts->{'group'}\n") if ($opts->{'group'});
+	&print_tempfile(CFILE, "KillMode=$opts->{'killmode'}\n") if ($opts->{'killmode'});
+	&print_tempfile(CFILE, "WorkingDirectory=$opts->{'workdir'}\n") if ($opts->{'workdir'});
+	&print_tempfile(CFILE, "TimeoutSec=$opts->{'timeout'}\n") if ($opts->{'timeout'});
+	&print_tempfile(CFILE, "StandardOutput=file:$opts->{'logstd'}\n") if ($opts->{'logstd'});
+	&print_tempfile(CFILE, "StandardError=file:$opts->{'logerr'}\n") if ($opts->{'logerr'});
+	}
+
 &print_tempfile(CFILE, "\n");
 &print_tempfile(CFILE, "[Install]\n");
-&print_tempfile(CFILE, "WantedBy=multi-user.target\n");
+if (ref($opts) && $opts->{'wantedby'}) {
+	&print_tempfile(CFILE, "WantedBy=$opts->{'wantedby'}\n");
+	}
+else {
+	&print_tempfile(CFILE, "WantedBy=multi-user.target\n");
+	}
 &close_tempfile(CFILE);
 &restart_systemd();
 }
@@ -2271,9 +2356,13 @@ Returns the base directory for systemd unit config files
 sub get_systemd_root
 {
 my ($name) = @_;
-if ($name && (-r "/etc/systemd/system/$name.service" ||
-	      -r "/etc/systemd/system/$name")) {
-	return "/etc/systemd/system";
+if ($name) {
+	foreach my $p ("/etc/systemd/system", "/usr/lib/systemd/system",
+		       "/lib/systemd/system") {
+		if (-r "$p/$name.service" || -r "$p/$name") {
+			return $p;
+			}
+		}
 	}
 if (-d "/usr/lib/systemd/system") {
 	return "/usr/lib/systemd/system";
@@ -2325,7 +2414,7 @@ sub get_action_args
 {
 my ($file) = @_;
 my %hasarg;
-open(FILE, $file);
+open(FILE, "<".$file);
 while(<FILE>) {
 	if (/^\s*(['"]?)([a-z]+)\1\)/i) {
 		$hasarg{$2}++;

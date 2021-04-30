@@ -1,0 +1,80 @@
+index_header=Impresoras disponibles
+index_jlist=Trabajos ..
+index_jcount=$1 empleos ..
+index_esystem=Instale el software para el sistema de impresión elegido o use la <a href='$1'>configuración del módulo</a> para cambiarlo.
+index_style=Sistema de impresión: $1 
+index_cluster=Servidores en clúster
+index_clusterdesc=Haga clic en este botón para configurar servidores Webmin adicionales en los que se crearán, actualizarán y eliminarán impresoras.
+index_delete=Eliminar impresoras seleccionadas
+
+style_solaris=Solaris
+style_linux=Linux LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=TAZAS
+style_irix=IRIX
+style_aix=AIX
+
+save_erport=El puerto remoto '$1' no es válido
+save_evalid=El sistema de impresión no permitía esta impresora
+save_errslave=La impresora creó OK en este sistema, pero se produjeron los siguientes errores en los sistemas de clúster : $1 
+save_egone=No se encontró ninguna impresora llamada '$1'
+save_errdelslave=La impresora eliminó OK en este sistema, pero se produjeron los siguientes errores en los sistemas de clúster : $1 
+
+jobs_cancelsel=Cancelar trabajos seleccionados
+jobs_on=En la impresora $1 
+jobs_return=lista de trabajos de impresión
+
+acl_delete=¿Se pueden eliminar impresoras?
+acl_cluster=¿Se puede administrar el clúster de impresoras?
+
+log_cancel_sel=Se cancelaron $2 trabajos de impresión en $1 
+
+linux_ecmd=El comando $1 no se encontró en su sistema, lo que indica que el sistema de impresión Linux no está instalado.
+linux_espool=El directorio de spool $1 no existe en su sistema, lo que indica que el sistema de impresión Linux no está instalado.
+
+freebsd_ecmd=El comando $1 no se encontró en su sistema, lo que indica que el sistema de impresión FreeBSD no está instalado.
+freebsd_espool=El directorio de spool $1 no existe en su sistema, lo que indica que el sistema de impresión FreeBSD no está instalado.
+
+unixware_ecmd=No se encontró el comando $1 en su sistema, lo que indica que el sistema de impresión UnixWare no está instalado.
+
+hpux_ecmd=El comando $1 no se encontró en su sistema, lo que indica que el sistema de impresión HPUX no está instalado.
+hpux_eiface=El directorio de scripts de interfaz $1 no existe en su sistema, lo que indica que el sistema de impresión HPUX no está instalado.
+
+lprng_ecmd=No se encontró el comando $1 en su sistema, lo que indica que el sistema de impresión LPRng no está instalado.
+lprng_espool=El directorio de cola $1 no existe en su sistema, lo que indica que el sistema de impresión LPRng no está instalado.
+
+solaris_ecmd=No se encontró el comando $1 en su sistema, lo que indica que el sistema de impresión Solaris no está instalado.
+
+cups_ecmd=El comando $1 no se encontró en su sistema, lo que indica que el sistema de impresión CUPS no está instalado.
+
+irix_ecmd=No se encontró el comando $1 en su sistema, lo que indica que el sistema de impresión IRIX no está instalado.
+irix_eiface=El directorio de scripts de interfaz $1 no existe en su sistema, lo que indica que el sistema de impresión IRIX no está instalado.
+
+aix_port=Puerto de impresora $1 
+aix_edesc=Descripción no válida: solo se permiten letras y números, y no espacios
+aix_ecmd=No se encontró el servidor de impresora AIX $1. Tal vez no está instalado u otro sistema de impresión está en uso.
+
+cluster_title=Servidores de impresoras en clúster
+cluster_none=Aún no se han agregado servidores al clúster de impresoras.
+cluster_host=Nombre de host
+cluster_desc=Descripción
+cluster_os=Sistema operativo
+cluster_add=Agregar servidor
+cluster_gadd=Agregar servidores en grupo
+cluster_need=Debe agregar servidores con un nombre de usuario y contraseña en el módulo Índice de servidores Webmin antes de que puedan administrarse aquí.
+cluster_return=servidores de clúster
+cluster_delete=Eliminar selección
+cluster_ecannot=No tiene permiso para administrar servidores de impresoras de clúster
+
+add_title=Agregar servidores
+add_msg=Añadiendo $1 ..
+add_gmsg=Agregando servidores en el grupo $1 ..
+add_err=Error al agregar servidor
+add_gerr=Error al agregar grupo
+add_echeck=El servidor $1 no tiene el módulo de administración de la impresora
+add_ediff=El servidor $1 está utilizando un sistema de impresión diferente ($2) para este servidor
+add_ediff2=El servidor $1 está utilizando un controlador de impresión diferente ($2) para este servidor
+add_ok=Se agregó $1, con $2 impresoras.

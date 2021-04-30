@@ -1,0 +1,71 @@
+<header> TCP Sarmalayıcıları </header>
+<h3> desenler </h3> Erişim kontrol dili aşağıdaki kalıpları uygular: <ul>
+    <li> &#39;.&#39; İle başlayan bir dize. karakter. Ana bilgisayar adı, adının son bileşenleri belirtilen kalıpla eşleşirse eşleşir. Örneğin, &#39;.tue.nl&#39; kalıbı &#39;wzv.win.tue.nl&#39; ana bilgisayar adıyla eşleşir. </li>
+    <li> &#39;.&#39; İle biten bir dize. karakter. Bir ana bilgisayar adresi, ilk sayısal alanları belirtilen dizeyle eşleşirse eşleşir. Örneğin, &#39;131.155&#39; deseni. Eindhoven Üniversitesi ağındaki (131.155.xx) her konağın adresiyle (neredeyse) eşleşir. </li>
+    <li> &#39;@&#39; Karakteriyle başlayan dize, NIS (eski adıyla YP) netgroup adı olarak kabul edilir. Ana bilgisayar adı, belirtilen net grubun ana bilgisayar üyesiyse eşleştirilir. Ağ grubu eşleşmeleri daemon işlem adları veya istemci kullanıcı adları için desteklenmez. </li>
+    <li> &#39;Nnnn / mmmm&#39; biçimindeki bir ifade, &#39;net/mask&#39; çifti olarak yorumlanır. &#39;Net&#39; adresin ve &#39;maskenin&#39; bit yönüne VE eşitse bir IPv4 ana bilgisayar adresi eşleştirilir. Örneğin, net/maske deseni &#39;131.155.72.0/255.255.254.0&#39;, &#39;131.155.72.0&#39; ila &#39;131.155.73.255&#39; aralığındaki her adresle eşleşir. </li>
+    <li> &#39;[N: n: n: n: n: n: n: n] / m&#39; formunun bir ifadesi, &#39;[net]/önek&#39; çifti olarak yorumlanır. &#39;Net&#39;in&#39; önek &#39;bitleri adresin&#39; önek &#39;bitlerine eşitse bir IPv6 ana bilgisayar adresi eşleştirilir. Örneğin, [net]/önek örüntüsü &#39;[3ffe: 505: 2: 1 ::]/64&#39; &#39;3ffe: 505: 2: 1:&#39; aralığındaki her adresle eşleşiyor mu? &#39;3 kahve: 505: 2: 1: ffff: ffff: ffff: ffff&#39; ile. </li>
+    <li> &#39;/&#39; Karakteriyle başlayan dize dosya adı olarak kabul edilir. Ana bilgisayar adı veya adresi, belirtilen dosyada listelenen herhangi bir ana bilgisayar adıyla veya adres deseniyle eşleşirse eşleşir. Dosya biçimi sıfır veya daha fazla satırdır ve sıfır veya daha fazla ana bilgisayar adı veya boşluk örüntüsü ile ayrılmış adres kalıpları vardır. Bir dosya adı kalıbı, ana bilgisayar adının veya adres kalıbının kullanılabileceği her yerde kullanılabilir. </li>
+    <li> &#39;*&#39; Ve &#39;?&#39; Joker karakterleri ana bilgisayar adlarını veya IP adreslerini eşleştirmek için kullanılabilir. Bu eşleme yöntemi, &#39;net/mask&#39; eşleşmesi, &#39;ile başlayan ana makine adı eşleşmesi&#39; ile birlikte kullanılamaz. veya &quot;.&quot; ile biten IP adresi. </li>
+</ul>
+<h3> Joker karakterler </h3> Erişim denetimi dili açık joker karakterleri destekler: <table border>
+    <tr>
+        <td> <b>HERŞEY</b> </td>
+        <td> Evrensel joker karakter, her zaman eşleşir. </td>
+    </tr>
+    <tr>
+        <td> <b>YEREL</b> </td>
+        <td> Adı nokta karakteri içermeyen tüm ana bilgisayarlarla eşleşir. </td>
+    </tr>
+    <tr>
+        <td> <b>BİLİNMEYEN</b> </td>
+        <td> Adı bilinmeyen herhangi bir kullanıcıyla eşleşir ve adı veya adresi bilinmeyen tüm ana bilgisayarlarla eşleşir. Bu kalıp dikkatli kullanılmalıdır: geçici ad sunucusu sorunları nedeniyle ana bilgisayar adları kullanılamayabilir. Yazılım ne tür bir ağ ile konuştuğunu anlayamadığında bir ağ adresi kullanılamaz. </td>
+    </tr>
+    <tr>
+        <td> <b>BİLİNEN</b> </td>
+        <td> Adı bilinen herhangi bir kullanıcıyla eşleşir ve adı ve adresi bilinen herhangi bir ana bilgisayarla eşleşir. Bu kalıp dikkatli kullanılmalıdır: geçici ad sunucusu sorunları nedeniyle ana bilgisayar adları kullanılamayabilir. Yazılım ne tür bir ağ ile konuştuğunu anlayamadığında bir ağ adresi kullanılamaz. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOID</b> </td>
+        <td> Adı adresiyle eşleşmeyen tüm ana bilgisayarlarla eşleşir. Tcpd -DPARANOID (varsayılan mod) ile oluşturulduğunda, erişim denetim tablolarına bakmadan önce bile bu tür istemcilerden gelen istekleri bırakır. Bu tür istekler üzerinde daha fazla kontrol sahibi olmak istediğinizde -DPARANOID olmadan oluşturun. </td>
+    </tr>
+</table>
+<h3> Operatörler </h3> <b>EXCEPT</b> Amaçlanan kullanım şu şekildedir: &#39;list_1 EXCEPT list_2&#39;; bu yapı list_2 ile eşleşmedikçe list_1 ile eşleşen herhangi bir şeyle eşleşir. EXCEPT operatörü daemon_lists ve client_lists içinde kullanılabilir. EXCEPT operatörü iç içe yerleştirilebilir: kontrol dili parantez kullanımına izin verirse, &#39;EXCEPT b EXCEPT c&#39;, &#39;(bir EXCEPT (b EXCEPT c))&#39; olarak ayrıştırılır. <h3> Kabuk Komutları </h3> İlk eşleşen erişim denetim kuralı bir kabuk komutu içeriyorsa, bu komut% <letter> ikameler (bir sonraki bölüme bakınız). Sonuç, /dev/null değerine bağlı standart giriş, çıkış ve hata ile bir /bin/sh alt işlemi tarafından gerçekleştirilir. Tamamlanana kadar beklemek istemiyorsanız komutun sonunda bir &#39;&amp;&#39; belirtin. <p> Kabuk komutları inetd&#39;nin PATH ayarına güvenmemelidir. Bunun yerine, mutlak yol adlarını kullanmalılar veya açık bir PATH = her neyse ifade ile başlamalıdırlar. <h3> % Açılımların</h3> Kabuk komutlarında aşağıdaki genişletmeler yapılabilir: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> İstemci (sunucu) ana bilgisayar adresi. </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> İstemci bilgileri: ne kadar bilgi bulunduğuna bağlı olarak kullanıcı @ ana bilgisayar, kullanıcı @ adresi, bir ana bilgisayar adı veya yalnızca bir adres. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> Daemon süreç adı (argv[0] değeri). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Ana bilgisayar adı yoksa istemci (sunucu) ana bilgisayar adı veya adresi. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> İstemci (sunucu) ana bilgisayar adı (veya &quot;bilinmeyen&quot; veya &quot;paranoyak&quot;). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> Daemon süreç kimliği. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Sunucu bilgileri: ne kadar bilgi bulunduğuna bağlı olarak daemon@host, daemon @ adresi veya sadece bir daemon adı. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> İstemci kullanıcı adı (veya &quot;bilinmiyor&quot;). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Tek bir &#39;%? karakter. </td>
+            </tr>
+        </table> Kabuğu karıştırabilecek%genişletme içindeki karakterlerin yerine alt çizgiler konur.
+        <hr />

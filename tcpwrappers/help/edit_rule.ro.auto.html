@@ -1,0 +1,71 @@
+<header> Învelitori TCP </header>
+<h3> Modele de </h3> Limbajul controlului de acces implementează următoarele tipare: <ul>
+    <li> Un șir care începe cu un „.” caracter. Un nume de gazdă se potrivește dacă ultimele componente ale numelui său se potrivesc cu tiparul specificat. De exemplu, modelul &quot;.tue.nl&quot; se potrivește cu numele gazdei &quot;wzv.win.tue.nl&quot;. </li>
+    <li> Un șir care se termină cu un &#39;&#39;. caracter. O adresă gazdă este potrivită dacă primele sale câmpuri numerice corespund șirului dat. De exemplu, modelul „131.155”. se potrivește cu adresa (aproape) fiecărei gazde din rețeaua Universității Eindhoven (131.155.xx). </li>
+    <li> Un șir care începe cu un caracter „@” este tratat ca un nume de grup NIS (anterior YP). Un nume de gazdă se potrivește dacă este membru gazdă al grupului net specificat. Potrivirile Netgroup nu sunt acceptate pentru numele de proces daemon sau pentru numele de utilizator ale clientului. </li>
+    <li> O expresie a formei „nnnn / mmmm” este interpretată ca o pereche „net/mască”. O adresă gazdă IPv4 este potrivită dacă „net” este egal cu AND-ul de biți al adresei și „mască”. De exemplu, modelul net/mască „131.155.72.0/255.255.254.0” se potrivește cu toate adresele din intervalul „131.155.72.0” până la „131.155.73.255”. </li>
+    <li> O expresie a formei &#39;[n: n: n: n: n: n: n: n] / m&#39; este interpretată ca o pereche &#39;[net]/prefixlen&#39;. O adresă de gazdă IPv6 este potrivită dacă biții „prefixlen” de „net” sunt egali cu biții „prefixlen” ai adresei. De exemplu, modelul [net]/prefixlen &#39;[3ffe: 505: 2: 1 ::]/64&#39; se potrivește cu fiecare adresă din intervalul &#39;3ffe: 505: 2: 1:&#39;? prin „3ffe: 505: 2: 1: ffff: ffff: ffff: ffff”. </li>
+    <li> Un șir care începe cu un caracter &#39;/&#39; este tratat ca un nume de fișier. Un nume sau adresă de gazdă se potrivește dacă se potrivește cu orice nume de gazdă sau model de adresă enumerate în fișierul numit. Formatul fișierului este de zero sau mai multe linii cu zero sau mai multe nume de gazdă sau modele de adrese separate de spațiul alb. Un model de nume de fișier poate fi utilizat oriunde se poate folosi un nume de gazdă sau un model de adresă. </li>
+    <li> Wildcards &#39;*&#39; și &#39;?&#39; poate fi utilizat pentru a potrivi nume de gazdă sau adrese IP. Această metodă de potrivire nu poate fi utilizată în combinație cu potrivirea &#39;net/mască&#39;, potrivirea numelui de gazdă începând cu &#39;.&#39; sau potrivirea adresei IP care se termină cu &#39;.&#39; </li>
+</ul>
+<h3> metacaractere </h3> Limbajul controlului de acces acceptă wildcarduri explicite: <table border>
+    <tr>
+        <td> <b>TOATE</b> </td>
+        <td> Wildcardul universal, se potrivește întotdeauna. </td>
+    </tr>
+    <tr>
+        <td> <b>LOCAL</b> </td>
+        <td> Se potrivește cu orice gazdă al cărei nume nu conține un caracter punct. </td>
+    </tr>
+    <tr>
+        <td> <b>NECUNOSCUT</b> </td>
+        <td> Se potrivește cu orice utilizator al cărui nume este necunoscut și se potrivește cu orice gazdă al cărui nume sau adresă este necunoscută. Acest model trebuie utilizat cu grijă: numele gazdelor pot fi indisponibile din cauza problemelor temporare ale serverului de nume. O adresă de rețea nu va fi disponibilă atunci când software-ul nu își poate da seama cu ce tip de rețea vorbește. </td>
+    </tr>
+    <tr>
+        <td> <b>CUNOSCUT</b> </td>
+        <td> Se potrivește cu orice utilizator al cărui nume este cunoscut și se potrivește cu orice gazdă al cărui nume și adresă sunt cunoscute. Acest model trebuie utilizat cu grijă: numele gazdelor pot fi indisponibile din cauza problemelor temporare ale serverului de nume. O adresă de rețea nu va fi disponibilă atunci când software-ul nu își poate da seama cu ce tip de rețea vorbește. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOID</b> </td>
+        <td> Se potrivește cu orice gazdă al cărei nume nu se potrivește cu adresa sa. Când tcpd este construit cu -DPARANOID (modul implicit), renunță la cererile de la acești clienți chiar înainte de a privi tabelele de control de acces. Construiți fără -DPARANOID atunci când doriți mai mult control asupra unor astfel de solicitări. </td>
+    </tr>
+</table>
+<h3> operatorii </h3> <b>EXCEPT</b> Utilizarea intenționată are forma: „list_1 listă EXCEPT_2”; această construcție se potrivește cu orice care se potrivește cu list_1, cu excepția cazului în care se potrivește cu list_2. Operatorul EXCEPT poate fi utilizat în daemon_lists și în client_lists. Operatorul EXCEPT poate fi cuibărit: dacă limbajul de control ar permite utilizarea parantezelor, „a EXCEPT b EXCEPT c” ar analiza ca „(a EXCEPT (b EXCEPT c))”. <h3> Porunci Shell </h3> Dacă prima regulă de control de acces egal conține o comandă shell, acea comandă este supusă la% <letter> substituții (vezi secțiunea următoare). Rezultatul este executat de un proces copil /bin/sh cu intrare, ieșire și eroare standard conectate la /dev/null. Specificați un &#39;&amp;&#39; la sfârșitul comenzii dacă nu doriți să așteptați până la finalizarea acesteia. <p> Comenzile Shell nu ar trebui să se bazeze pe setarea PATH a inetd. În schimb, ar trebui să folosească nume de cale absolute sau ar trebui să înceapă cu o instrucțiune PATH = what- ever. <h3> % Extinderi </h3> Următoarele extensii sunt disponibile în cadrul comenzilor shell: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> Adresa gazdă a clientului (serverului). </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Informații despre client: utilizator @ gazdă, adresă utilizator @, nume de gazdă sau doar o adresă, în funcție de cât de multe informații sunt disponibile. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> Numele procesului daemon (valoarea argv[0]). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Numele sau adresa gazdă client (server), dacă numele gazdă nu este disponibil. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> Numele gazdă al clientului (serverului) (sau „necunoscut” sau „paranoic”). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> ID-ul procesului daemon. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Informații despre server: daemon @ gazdă, adresa daemon @ sau doar un nume daemon, în funcție de cât de multe informații sunt disponibile. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Numele de utilizator al clientului (sau „necunoscut”). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Se extinde la un singur „%? caracter. </td>
+            </tr>
+        </table> Caracterele în%de extinderi care pot confunda coaja sunt înlocuite cu caractere scăzute.
+        <hr />

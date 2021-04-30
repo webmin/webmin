@@ -1,0 +1,120 @@
+index_title=Serverul IM Jabber
+index_econfig=Fișierul de configurare Jabber $1 nu există. Fie Jabber nu este instalat, fie <a href='$2'>configurația modulului</a> este incorectă.
+index_edir=Directorul de bază Jabber $1 nu există. Fie Jabber nu este instalat, fie <a href='$2'>configurația modulului</a> este incorectă.
+index_emodules=Modulele Perl $1 și $2 care sunt necesare de Webmin pentru gestionarea configurației XML a Jabber nu sunt instalate. <a href='$3'>Faceți clic aici</a> pentru a le instala direct din CPAN.
+index_emodule=Modulul Perl $1 care este necesar de Webmin pentru gestionarea configurației XML a Jabber nu este instalat. <a href='$2'>Faceți clic aici</a> pentru a o instala direct din CPAN.
+index_expat=Asigurați-vă că aveți biblioteca și antetele Expat C instalate înainte de a încerca să instalați modulele Perl, deoarece acestea depind de aceasta și nu vor reuși dacă nu sunt disponibile.
+index_eparse=Modulul $1 perl nu a putut analiza fișierul dvs. de configurare Jabber : $2 
+index_ejabberd=Programul Jabber server $1 nu a fost găsit în sistemul dvs. Fie Jabber nu este instalat, fie <a href='$2'>configurația modulului</a> este incorectă.
+index_eversion=Webmin acceptă doar versiunea Jabber $2, dar comanda $3 a raportat următoarele informații despre versiune : $1 
+index_eversion2=Webmin acceptă doar versiunile Jabber sub $2, dar comanda $3 a raportat următoarele informații despre versiune : $1 
+index_start=Porniți Jabber Server
+index_startmsg=Faceți clic pe acest buton pentru a porni serverul Jabber de pe sistemul dvs. Până la începerea acesteia, niciun client de mesagerie instantanee nu îl va putea folosi.
+index_stop=Opriți Jabber Server
+index_stopmsg=Faceți clic pe acest buton pentru a opri executarea serverului Jabber pe sistemul dvs. Nici un client de mesagerie instantaneu nu îl va putea folosi atunci când este oprit.
+index_restart=Aplica schimbarile
+index_restartmsg=Faceți clic pe acest buton pentru a aplica configurația curentă prin oprire și apoi relansarea serverului Jabber.
+index_comments=Avertisment - fișierul dvs. de configurare Jabber $1 conține comentarii, care vor fi eliminate dacă se efectuează modificări de configurare cu acest modul.
+index_return=Meniu Jabber
+index_version=Versiunea Jabber $1 
+
+general_title=Optiuni generale
+general_header=Opțiunile serverului Global Jabber
+general_host=Numele gazdă al serverului
+general_elog=Fișier jurnal de eroare
+general_elogfmt=Format de jurnal de eroare
+general_rlog=Accesați fișierul jurnal
+general_rlogfmt=Accesați formatul jurnalului
+general_pidfile=Fișier ID proces
+general_err=Nu a reușit să salvați opțiunile generale
+general_ehost=Nume de gazdă server lipsă sau nevalid
+general_eelog=Fișierul jurnal de eroare lipsă sau nevalid
+general_eelogfmt=Lipsește formatul jurnalului de erori
+general_erlog=Fișierul jurnal de trafic lipsă sau nevalid
+general_erlogfmt=Lipsește formatul jurnalului de trafic
+general_epidfile=Fișierul de identificare a procesului lipsește sau este nevalid
+
+messages_title=Mesaje
+messages_header=Mesaj server Jabber pentru clienți
+messages_wsubject=Bine ati venit subiectul mesajului
+messages_wbody=Bun venit corpul mesajului
+messages_vcard=Server vCard
+messages_rinstr=Instrucțiuni de înregistrare
+messages_rnotify=Notificați administratorul la înregistrare?
+messages_rfields=Câmpurile de înregistrare obligatorii
+messages_vcard2jud=Trimiteți vCard către directorul utilizatorului Jabber?
+messages_err=Nu a putut salva mesajele
+messages_evcard=XML vCard nevalid : $1 
+messages_etag=Serverul vCard XML nu începe cu &lt;vCard&gt;
+
+modules_title=Module Jabber
+modules_desc=Modulele enumerate mai jos sunt utilizate pentru a procesa mesajele primite de managerul de sesiuni Jabber. Ar trebui să schimbați această listă numai dacă știți ce faceți.
+modules_header=Module de manager de sesiuni server Jabber
+modules_mod=Numele modulului
+modules_so=Biblioteca comună
+modules_err=Nu a reușit să salveze modulele Jabber
+modules_emod=„$1” nu este un nume de modul valid
+modules_eso=Biblioteca comună „$1” nu există
+
+karma_title=Controlul traficului Karma
+karma_header=Opțiuni de control al ratei de trafic
+karma_rate=Manipulare excesivă a conexiunilor
+karma_rate_def=Dezactivat
+karma_rate_sel=Blocați clientul pentru $2 secunde după conexiunile $1 
+karma_mode=Modul Karma
+karma_none=Fără limite
+karma_low=Limite mici de trafic
+karma_medium=Limitele de trafic mediu
+karma_high=Limite mari de trafic
+karma_sel=Folosiți setările selectate mai jos ..
+karma_heartbeat=Lungimea perioadei în secunde (<tt>bătăi inimii</tt>)
+karma_init=Perioade de inițializare (<tt>init</tt>)
+karma_max=Karma maximă (<tt>max</tt>)
+karma_inc=Increment de karma (<tt>inc</tt>)
+karma_dec=Decret Karma (<tt>dec</tt>)
+karma_penalty=Perioade de penalizare (<tt>pedeapsă</tt>)
+karma_restore=Perioade de restaurare (<tt>restaurare</tt>)
+karma_err=Nu a reușit să salvați opțiunile pentru karma
+karma_eheartbeat=Lungimea perioadei lipsă sau nevalidă
+karma_einit=Perioade de inițializare lipsă sau nevalide
+karma_emax=Maxim lipsă sau valabil pentru karma
+karma_einc=Lipsă sau incorectă creșterea karmei
+karma_edec=Declinul karmei lipsește sau nu este valabil
+karma_epenalty=Perioade de penalizare lipsă sau nevalide
+karma_erestore=Perioadele de restaurare lipsă sau nevalide
+karma_epoints=Număr de conexiuni lipsă sau nevalid
+karma_etime=Timp lipsit sau nevalid pentru care se blochează
+
+ips_title=Control acces IP
+ips_header=Control acces IP server Jabber
+ips_allow=IP-uri permise pentru clienți
+ips_all=Toate adresele
+ips_deny=IP-urile clientului refuzate
+ips_none=Nici unul
+ips_sel=Adrese/mesaje net listate ..
+ips_err=Nu a reușit să salvați controlul de acces IP
+ips_eaddr=„$1” nu este o adresă IP validă sau o adresă IP/netmask
+
+file_title=Editează fișierul de configurare
+file_desc=Utilizați formularul de mai jos pentru a edita fișierul de configurare Jabber direct. Acest lucru trebuie făcut numai dacă înțelegeți formatul de configurare XML.
+file_header=Editați fișierul de configurare Jabber
+file_err=Nu a reușit să salvați fișierul de configurare
+
+admin_title=Utilizatori administrativi
+admin_header=Utilizatori de administrare server
+admin_read=Citeste administratorii de acces
+admin_write=Scrie admin-uri de acces
+admin_reply=Autoreply pentru admin mesaje?
+admin_rsubject=Subiect automat
+admin_rbody=Mesaj automat
+
+filter_title=Filtre utilizator
+filter_header=Permisiunile de filtrare a utilizatorului
+filter_max=Reguli de filtrare maxime
+filter_conds=Condițiile admise ale filtrului
+filter_acts=Acțiuni de filtrare permise
+
+restart_err=Eroare la aplicarea modificărilor
+stop_err=Nu a reușit să oprească Jabber
+stop_epid=Nu a reușit să găsească procesul Jabber
+start_err=Nu a reușit să pornească Jabber

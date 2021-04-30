@@ -6,7 +6,6 @@ body
   clear: both;
 }
 #listing {
-  //border: solid 1px;
   border-collapse: collapse;
   width: 100%;
 }
@@ -17,9 +16,7 @@ body
   font-weight: bold;
   background: #ddd;
 }
-#list_form tr:hover {
-//  background: #bbb;
-}
+
 #list_form tr.checked {
   background: #bfb;
 }
@@ -137,8 +134,8 @@ a:hover {
  cursor:pointer;
 }
 /* by https://github.com/rostovtsev */
-#list_form tbody tr.checked:hover,
-#list_form tbody tr:hover {
+#list_form tbody tr.checked:not(.m-active-o):not(.m-not-active):hover,
+#list_form tbody tr:hover:not(.m-active-o):not(.m-not-active) {
     background: #d3e4f4 !important;
 }
 
@@ -155,8 +152,9 @@ a.pages {
     margin-bottom: 10px;
 }
 
-span[data-attributes="s"],
-span[data-attributes="x"] {
+span[data-acls],
+span[data-attributes],
+span[data-secontext] {
   font-family: monospace;
-  font-size: 10px;
+  font-size: 11px;
 }

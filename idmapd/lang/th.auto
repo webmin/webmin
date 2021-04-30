@@ -1,0 +1,11 @@
+index_title=การกำหนดค่า idmapd
+index_eidmapd=ไม่พบ Idmapd daemon $1 อาจไม่ได้ติดตั้งไว้หรือ <a href='$2'>การกำหนดค่าโมดูล</a> ของคุณไม่ถูกต้อง
+general=การกำหนดค่าทั่วไป
+mapping=การกำหนดค่าการทำแผนที่
+pipefs_dir=ไดเรกทอรี Pipefs
+domain=ชื่อโดเมน
+nobody_user=ไม่มีผู้ใช้
+nobody_group=ไม่มีใครในกลุ่ม
+save=บันทึก config และ restart daemon
+save_err=ไม่สามารถบันทึกไฟล์กำหนดค่า $1 
+error_dir=ไดเรกทอรี $1 ไม่มีอยู่

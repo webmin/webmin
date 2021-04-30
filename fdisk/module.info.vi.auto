@@ -1,0 +1,3 @@
+name_vi=Quản lý phân vùng
+desc_vi=Phân vùng trên đĩa địa phương
+longdesc_vi=Tạo và chỉnh sửa phân vùng trên các đĩa SCSI, IDE và SATA cục bộ trên Linux.

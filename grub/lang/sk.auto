@@ -1,0 +1,75 @@
+index_title=Zavádzač GRUB
+index_add=Pridajte novú možnosť zavedenia.
+index_global=Upraviť globálne možnosti
+index_globalmsg=Upravte globálne možnosti zavádzania, ktoré sa vzťahujú na všetky voľby ponuky zavádzania, a vyberte zariadenie, do ktorého je nainštalovaný GRUB.
+index_install=Nainštalujte GRUB
+index_installmsg=Nainštalujte zavádzač GRUB na $1, aby sa v čase spustenia zobrazili vyššie uvedené možnosti. Toto prepíše všetky existujúce zavádzače zavádzača, ako napríklad LILO, a môže spôsobiť, že váš systém nebude možné zaviesť!
+index_none=Neboli definované žiadne možnosti zavádzania. Uistite sa, že ste pred inštaláciou grub pridali aspoň jednu.
+index_efile=Súbor ponuky GRUB $1 nebol vo vašom systéme nájdený. Možno GRUB nie je nainštalovaný alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_epath=Spustiteľný súbor GRUB $1 nebol vo vašom systéme nájdený. Možno GRUB nie je nainštalovaný alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_return=zoznam možností
+
+title_add=Pridať možnosť zavádzania
+title_edit=Možnosť Upraviť zavádzanie
+title_header=Podrobnosti o ponuke zavádzacej ponuky
+title_title=Názov možnosti
+title_root=Boot obraz oddielu
+title_noverify=Nepripájajte a neoverujte oddiel
+title_other=Iný súbor zariadenia
+title_sel=Vybraný
+title_boot=Spustenie operačného systému
+title_kernel=jadro
+title_kfile=Cesta kernelu
+title_args=Možnosti jadra
+title_initrd=Počiatočný súbor ramdisk
+title_modules=Extra moduly
+title_chain=Iné OS
+title_chain_def=Z prvého sektora oddielu
+title_chain_file=Zo súboru reťazového nakladača
+title_makeactive=Nastaviť koreňový oddiel ako aktívny?
+title_none1=nikto
+title_none2=(položka ponuky bez zavádzania systému)
+title_err=Nepodarilo sa uložiť možnosť zavedenia
+title_etitle=Chýba názov možnosti
+title_eroot=Chýba koreňový oddiel
+title_ekernel=Chýbajúca alebo neplatná cesta jadra
+title_echain=Chýba alebo je neplatný súbor reťazového nakladača
+title_edev=Nepodporované zariadenie root oddielu $1 
+title_einitrd=Chýba počiatočný názov súboru ramdisk
+title_lock=Heslo je zamknuté?
+
+global_title=Globálne možnosti
+global_header=Možnosti globálnej ponuky spustenia
+global_default=Predvolená možnosť zavedenia
+global_fallback=Možnosť záložného zavedenia
+global_first=Prvý na zozname
+global_timeout=Časový limit pred načítaním predvolený
+global_forever=Počkaj navždy
+global_secs=sekundy
+global_install=Nainštalujte GRUB na disk/oddiel
+global_sel=Vybraný
+global_other=ostatné
+global_password=Zavádzacie heslo
+global_none=nikto
+global_password_file=Ak ste zadali heslo, použite súbor ponuky:
+global_err=Globálne možnosti sa nepodarilo uložiť
+global_etimeout=Chýbajúci alebo neplatný časový limit
+global_edev=Nepodporovaný inštalačný disk/oddiel $1 
+global_eother=Chýbajúci alebo neplatný disk/diskový oddiel
+global_epassword=Chýbajúce alebo neplatné bootovacie heslo
+global_epasswordfile=Chýba názov alternatívneho menu
+
+install_title=Nainštalujte GRUB
+install_err=Inštalácia GRUB zlyhala
+install_efind=Súbor ponuky sa nepodarilo nájsť
+install_desc=Inštalácia GRUB na $1 s príkazmi $2 a $3 ..
+install_ok=.. inštalácia je dokončená.
+install_failed=.. inštalácia zlyhala!
+
+log_create_title=Bola vytvorená možnosť zavedenia $1 
+log_delete_title=Bola odstránená možnosť zavádzania $1 
+log_modify_title=Upravená možnosť zavedenia $1 
+log_up_title=Bola presunutá možnosť spustenia $1 
+log_down_title=Bola presunutá nadol možnosť spustenia $1 
+log_global=Zmenené globálne možnosti
+log_install=Nainštalovaný GRUB

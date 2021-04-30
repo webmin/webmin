@@ -1,0 +1,17 @@
+index_manual=Sukar kerja cron secara manual.
+index_next=Jalankan seterusnya
+index_nunknown=Tidak diketahui
+index_ecrondir_create=Cuba buat direktori pekerjaan $1 ?
+
+edit_next=Masa lari seterusnya
+
+when_boot=pada masa permulaan
+
+ucwhen_boot=Pada masa permulaan
+
+manual_title=Secara manual Edit Cron Jobs
+manual_edit=Fail cron untuk diedit:
+manual_ok=Edit
+manual_editing=Gunakan kotak teks di bawah untuk mengedit pekerjaan Cron dalam $1. Berhati-hati, kerana tiada pengesahan akan dilakukan oleh Webmin!
+manual_efile=Fail terpilih tidak sah!
+manual_ecannot=Anda tidak dibenarkan mengedit cron secara manual

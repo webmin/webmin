@@ -1,0 +1,46 @@
+edit_usage=Využití disku
+edit_nfs_opt4=Možnosti specifické pro NFSv4
+
+smb_eworkgroup=Na stránce Konfigurace modulu není nastavena žádná pracovní skupina
+smb_emaster=Pro pracovní skupinu $1 nebyl nalezen žádný master procházení
+
+solaris_lvm=Zařízení LVM
+solaris_vg=Skupina svazků
+solaris_lv=Logický svazek
+solaris_vxfs=Zařízení VXFS
+solaris_hfs=Zařízení HFS
+
+linux_nodev=Zakázat soubory zařízení?
+linux_noexec=Zakázat provádění binárních souborů?
+linux_ifuser=Je-li připojitelný uživateli
+linux_quotaj=Typ úložiště kvóty
+linux_quotaj1=Journalling
+linux_quotaj0=Pravidelný
+linux_etimeo=Časový limit musí být číslo
+linux_netdev=Počkejte, až budou síťová rozhraní funkční?
+linux_nofail=Pokračovat v bootování, i když se připojení nezdaří?
+linux_nfsvers=Vynutit verzi NFS
+linux_nfsdefault=Použít výchozí verzi
+linux_nounix=Zakázat rozšíření CIFS Unix?
+linux_noserverino=Generovat čísla inodů na straně klienta?
+linux_cvers=Verze CIFS
+linux_ecvers=Verze CIFS musí být číslo
+
+freebsd_ide=Pevný disk IDE
+freebsd_device=přístroj
+freebsd_slice=Plátek
+freebsd_part=Rozdělit
+freebsd_scsi=Disk SCSI
+freebsd_other=Jiné zařízení
+freebsd_select=Diskový oddíl
+freebsd_idedev=IDE zařízení $1, slice $2, partition $3
+freebsd_scsidev=Zařízení SCSI $1, slice $2, partition $3
+freebsd_edevpath=Jiné zařízení musí být absolutní cestou, například <tt>/dev/cdrom</tt>
+freebsd_edevfile=Soubor zařízení '$1' neexistuje
+
+cswap_file=Odkládací soubor $1 neexistuje.
+cswap_size=Vytvořte a připojte odkládací soubor s velikostí
+
+acl_sysinfo=Zobrazit dostupná disková data na hlavním panelu?
+sysinfo_total=Celkový
+sysinfo_dev=ID zařízení

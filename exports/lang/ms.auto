@@ -1,0 +1,40 @@
+index_add4=Tambah eksport NFSv4 baharu.
+index_delete=Padamkan Eksport Terpilih
+index_disable=Lumpuhkan Terpilih
+index_enable=Dayakan Terpilih
+
+edit_vers=Versi NFS
+edit_nfs_vers=Versi NFS
+edit_pfs=NFSv4 Pseudofilesystem untuk dieksport
+edit_network4=Rangkaian IPv4
+edit_network6=Rangkaian IPv6
+edit_address=Alamat
+edit_prefix=/
+edit_subtree_check=Lumpuhkan subtree checking?
+edit_hide=Sembunyikan sistem fail?
+edit_auth=(dengan atau tanpa pengesahan)
+edit_secs=Tahap keselamatan
+edit_integrity=Integriti
+edit_privacy=Privasi (termasuk Integriti)
+edit_v2opts=Pilihan khusus NFSv2
+edit_sync=Segerakkan semua yang menulis?
+edit_sync1=Ya
+edit_sync2=Tidak
+edit_sync0=Lalai
+edit_in=dalam
+edit_sec_sys=Tiada keselamatan
+edit_sec_krb5=Pengesahan Kerberos
+edit_sec_krb5i=Integriti Kerberos
+edit_sec_krb5p=Privasi Kerberos
+edit_sec_lipkey=LIPKEY
+edit_sec_spkm=SPKM
+
+save_epfs=Laluan pseudo-filesystem '$1' tidak kelihatan seperti laluan mutlak
+save_pfs='$1' sudah dieksport sebagai direktori
+save_create_dir=Tidak dapat membuat direktori '$1'
+save_eanonuid=Nama pengguna akses tanpa nama tidak sah
+save_eanongid=Nama kumpulan akses tanpa nama yang tidak sah
+
+exports_gss=Rangkaian dikesahkan: $1 
+
+log_delete_exports=Dihapus $1 eksport NFS

@@ -1,0 +1,20 @@
+edit_mins=Хвіліны
+edit_hours=Гадзіны
+edit_days=Дні
+edit_months=Месяцы
+edit_weekdays=Будныя дні
+edit_all=Усе
+edit_selected=Абраны ..
+edit_run=Бяжы зараз
+edit_clone=Клон Іоў
+edit_return=заданне хрон
+edit_special1=Просты графік ..
+edit_special0=Часы і даты выбраны ніжэй ..
+edit_special_hourly=Пагадзінная
+edit_special_daily=Штодня (у поўнач)
+edit_special_weekly=Штотыдзень (у нядзелю)
+edit_special_monthly=Штомесяц (з 1-га)
+edit_special_yearly=Штогод (1 студзеня)
+
+log_success=<tt>$2</tt> у <tt>$1</tt>
+log_failure=Не атрымалася запусціць <tt>$2</tt> у <tt>$1</tt> : $3 

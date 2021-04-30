@@ -1,0 +1,79 @@
+index_title=سسٹم دستاویزات
+index_header=سسٹم دستاویزات کی تلاش
+index_for=تلاش کریں
+index_where=میں تلاش کریں
+index_alldoc=تمام دستاویزات
+index_man=دستی صفحات
+index_doc=پیکیج دستاویزات
+index_kernel=دانا دستاویزات
+index_info=معلومات کے صفحات
+index_howto=HOWTO دستاویزات
+index_kde=کے ڈی کے دستاویزات
+index_perl=پرل ماڈیول دستاویزات
+index_custom=کسٹم دستاویزات
+index_help=ویبمین مدد
+index_reset=ری سیٹ کریں
+index_search=تلاش کریں
+index_return=تلاش فارم
+index_type=میچ
+index_name=صرف نام
+index_data=نام اور مندرجات
+index_google=گوگل سرچ
+index_others=کسی دوسرے ماڈیول سے دستاویزات کی تلاش کرتے وقت ، میں تلاش کی اجازت دیں ..
+index_other_man=دستی صفحات
+index_other_help=ویبمین مدد
+index_other_doc=پیکیج دستاویزات
+index_other_kernel=دانا دستاویزات
+index_other_howto=HOWTO دستاویزات
+index_other_perl=پرل ماڈیول دستاویزات
+index_other_google=گوگل سرچ انجن
+index_other_kde=کے ڈی کے دستاویزات
+index_and=تمام میچ
+index_or=کوئی بھی میچ
+
+search_efor=تلاش کرنے کے لئے کوئی دستی صفحہ درج نہیں کیا گیا
+search_title=تلاش کے نتائج
+search_desc=تفصیل
+search_type=ٹائپ کریں
+search_file=صفحہ یا فائل
+search_man=دستی صفحہ
+search_howto=HOWTO دستاویز
+search_doc=پیکیج دستاویزات
+search_kernel=دانا دستاویزات
+search_kde=کے ڈی کے دستاویزات
+search_perl=پرل ماڈیول
+search_help=ویبمین مدد
+search_custom=کسٹم دستاویزات
+search_none=$1 سے مماثل دستاویزات نہیں ملیں۔
+search_for=$1 کے لئے
+search_google=گوگل سرچ نتیجہ
+search_doxfer=ویبمین آن لائن دستاویزات
+
+howto_title=HOWTO دستاویز
+howto_header=HOWTO دستاویز فائل$1
+howto_epath=دستاویز کا غلط راستہ
+
+doc_title=پیکیج دستاویزات
+doc_header=پیکیج دستاویز فائل$1
+doc_epath=غلط پیکیج دستاویزات کا راستہ
+
+man_title=دستی صفحہ
+man_header=دستی صفحہ$1 ($2) کے لئے
+man_noentry=$1 کے لئے دستی صفحہ موجود نہیں ہے!
+man_epath=دستی صفحہ راستہ نہیں بن سکتا!
+
+kernel_title=دانا دستاویز
+kernel_header=دانا دستاویز فائل$1
+kernel_epath=غلط دانا دستاویز کا راستہ
+
+kde_title=کے ڈی کے دستاویزات
+kde_header=KDE دستاویز فائل$1
+kde_epath=غلط دستاویزات کا راستہ
+
+perl_title=پرل ماڈیول
+perl_header=پرل ماڈیول$1 کے لئے دستاویزات
+perl_emod=غلط پرل ماڈیول نام
+
+acl_allow=کیا اجازت شدہ تلاش کی قسموں میں ترمیم کی جاسکتی ہے؟
+
+check_ecannot=آپ کو اجازت شدہ قسم کی تلاش میں ترمیم کرنے کی اجازت نہیں ہے

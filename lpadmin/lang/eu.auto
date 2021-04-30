@@ -1,0 +1,316 @@
+index_title=Inprimagailuaren Administrazioa
+index_header=Eskuragarri dauden inprimagailuak
+index_name=Printer
+index_desc=deskribapena
+index_to=Inprimatu
+index_driver=Gidaria
+index_enabled=Gaituta?
+index_accepting=Onartzeak?
+index_jobs=Enplegua
+index_none=Ez dago inprimagailurik instalatuta sistema honetan.
+index_list=Zerrenda ..
+index_jlist=Enplegua ..
+index_jcount=$1 lanpostu ..
+index_add=Gehitu inprimagailu berria.
+index_stop=Gelditu antolatzailea
+index_stopmsg=Egin klik botoi honetan inprimatutako planifikatzaileen prozesua gelditzeko. Horrek tokiko edo urruneko erabiltzaileek zure sisteman inprimatzea eragotziko du.
+index_start=Hasi Scheduler
+index_startmsg=Egin klik botoi honetan inprimatzeko planifikatzaile prozesua hasteko. Horrek tokiko eta urruneko erabiltzaileek zure sisteman inprimatzeko aukera emango die.
+index_restart=Berrabiarazi antolatzailea
+index_restartmsg=Egin klik botoi honetan inprimatzeko antolatzaileen prozesua berrabiatzeko. Horrek uneko inprimatze konfigurazioa aplikatzera behartuko du.
+index_return=inprimagailu zerrenda
+index_esystem=Aukeratu softwarea aukeratu duzun inprimatze sistemarako, edo erabili <a href='$1'>moduluaren konfigurazioa</a> aldatzeko.
+index_style=Inprimatzeko sistema: $1 
+index_cluster=Kluster zerbitzariak
+index_clusterdesc=Egin klik botoi honetan inprimagailuak sortu, eguneratu eta ezabatuko diren Webmin zerbitzari osagarriak konfiguratzeko.
+index_delete=Ezabatu hautatutako inprimagailuak
+
+style_solaris=Solaris
+style_linux=Linux LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=CUPS
+style_irix=IRIX
+style_aix=AIX
+
+edit_eedit=Ezin duzu inprimagailu hau editatu
+edit_eadd=Ezin duzu inprimagailurik gehitu
+edit_add=Sortu inprimagailua
+edit_edit=Editatu inprimagailua
+edit_conf=Inprimagailuaren konfigurazioa
+edit_name=izena
+edit_acc=Eskaerak onartzen?
+edit_why=Ez - Zergatik ez
+edit_desc=deskribapena
+edit_ena=Inprimaketa gaituta dago?
+edit_acl=Sarbide kontrola
+edit_allow=Onartu guztiei
+edit_deny=Denek ukatu
+edit_allowu=Baimendu zerrendatutako erabiltzaileak ..
+edit_denyu=Zerrendatu erabiltzaileei ..
+edit_banner=Inprimatu banner?
+edit_opt=Aukerako
+edit_default=Inprimagailu lehenetsia?
+edit_already=Inprimagailu lehenetsia
+edit_max=Inprimatze lanaren tamaina maximoa
+edit_unlimited=Mugarik gabe
+edit_dacc=Gidariak onartzen du
+edit_dtext=Testua
+edit_dpost=Postscript
+edit_dother=Beste
+edit_alt=Inprimagailu izenak txandakatzea
+edit_dest=Inprimatu Helmuga
+edit_dev=Tokiko gailua
+edit_file=Tokiko fitxategia
+edit_remote=Urruneko Unix zerbitzaria
+edit_rqueue=Printer
+edit_type=Mota
+edit_smb=Urruneko Windows zerbitzaria
+edit_share=Printer
+edit_user=Erabiltzaileak
+edit_pass=Pasahitza
+edit_wgroup=lantalde
+edit_hpnp=Urruneko HPNP zerbitzaria
+edit_port=Port
+edit_direct=TCP konexio zuzena
+edit_dport=Port
+edit_driver=Inprimagailu gidaria
+edit_check=Egiaztatu urruneko zerbitzaria martxan dagoen ala ez?
+
+blocks=bloke
+
+save_err=Ezin izan da inprimagailua gorde
+save_eadd=Ezin duzu inprimagailurik gehitu
+save_eedit=Ezin duzu inprimagailu hau editatu
+save_ename='$1' ez da baliozko inprimagailuaren izena
+save_edup='$1' izeneko inprimagailua dagoeneko
+save_eallow=Ez da erabiltzaileak sartzea baimentzen
+save_edeny=Ez da erabiltzaileak sartu ukatzeko
+save_euser=Erabiltzailea '$1' ez da existitzen
+save_etype=Gutxienez mota bat aukeratu behar duzu kontrolatzaile hau onartzeko
+save_emax=Inprimatzeko lanaren tamaina oso bat zenbaki oso bat izan behar du
+save_efile='$1' ez da existitzen
+save_erhost=Urruneko ostalariaren "$1" ez da existitzen
+save_erport=Urruneko '$1' atariak ez du balio
+save_erqueue='$1' ez da baliozko urruneko ilara izen bat
+save_eremote=Ezin dira kontrolatzaileak erabili Unix urruneko inprimagailuekin
+save_edhost=Ez dago '$1' ostalari zuzena
+save_edport=Zuzeneko ataka falta edo baliogabea
+save_evalid=Inprimatzeko sistemak ez zuen inprimagailu hau onartzen
+save_errslave=Inprimagailuak OK sortu zuen sistema honetan, baina akats hauek gertatu dira kluster sistemetan : $1 
+save_egone=Ez da '$1' izeneko inprimagailurik aurkitu
+save_errdelslave=Inprimagailuak OK ezabatu zuen sistema honetan, baina akats hauek gertatu dira kluster sistemetan : $1 
+
+jobs_title=Inprimatu lanak
+jobs_header=Inprimatu lanak $1 ean
+jobs_id=Lanpostuaren IDa
+jobs_size=Tamaina
+jobs_by=Aurkeztuta
+jobs_when=Bidalitako At
+jobs_file=Fitxategi izena
+jobs_cancel=Egin klik goiko zerrendako lanaren IDan bertan behera uzteko.
+jobs_cancelview=Egin klik lana zerrendatzeko goiko zerrendatik bertan behera uzteko, edo egin klik lanaren tamaina ikusteko.
+jobs_none=$1 inprimagailuak ez dauka lanik zain.
+jobs_all=Inprimatu lan guztiak bertan behera utzi
+jobs_bytes=byte
+jobs_test=Inprimatu test orria
+jobs_cancelsel=Utzi hautatutako lanak
+jobs_on=$1 inprimagailuan
+jobs_return=inprimatutako lanen zerrenda
+
+cancel_ecannot=Ezin duzu inprimatze lanak bertan behera utzi
+cancel_err=Ezin izan da inprimatze lana bertan behera utzi
+cancel_egone=Inprimatze lana $1 ez da gehiago
+
+view_ecannot=Ezin duzu inprimatze lana ikusi
+view_egone=Inprimatze lan hau ez dago jada
+
+start_ecannot=Ezin duzu programatzaileari hasiera ematen
+start_err=Huts egin du programatzailea abiaraztean
+
+stop_ecannot=Ezin duzu programatzailea gelditu
+stop_err=Ezin izan da programatzailea gelditu
+
+restart_ecannot=Ezin duzu programatzailea berrabiarazi
+restart_err=Ezin izan da planifikatzailea berrabiarazi
+
+webmin_none=Bat ere ez
+webmin_nonemsg=Postscript edo testu inprimagailua
+webmin_remotemsg=Urruneko inprimagailua
+webmin_model=Model
+webmin_prog=Programa
+webmin_driver=Webmin kontrolatzailea
+webmin_uniprint=Uniprint kontrolatzailea
+webmin_edrivers=Ezin izan da $1 etik gidariak eskuratu. Ez dago eskuragarri Webmin inprimagailuaren kontrolatzailea
+webmin_egs=$1 komandoa ez da aurkitu. Ez dago eskuragarri Webmin inprimagailuaren kontrolatzailea
+webmin_edriver='$1' ez da existitzen
+
+caldera_none=Bat ere ez
+caldera_nonemsg=Urruneko edo inprimagailu gordina
+caldera_prog=Programa
+caldera_coas=COAS gidaria
+caldera_printer=Inprimagailua eta bereizmena
+caldera_eof=EOF bidali?
+caldera_paper=Paper tamaina
+caldera_double=Inprimatu albo bikoitza?
+caldera_gsopts=GS aukera gehigarriak
+caldera_uniprint=Uniprint kontrolatzailea
+caldera_eprog='$1' ez da existitzen
+caldera_edriver=Ez da inprimagailu driverrik hautatu
+caldera_eres=Ez da bereizmenik aukeratu
+
+redhat_none=Bat ere ez
+redhat_nonemsg=Postscript edo testu inprimagailua
+redhat_prog=Programa
+redhat_driver=Redhat gidaria
+redhat_printer=Inprimagailua eta bereizmena
+redhat_eof=EOF bidali?
+redhat_paper=Paper tamaina
+redhat_pages=Irteera bakoitzeko orriak
+redhat_gsopts=GS aukera gehigarriak
+redhat_hmargin=Eskuineko/ezkerreko marjina
+redhat_vmargin=Goiko/beheko marjina
+redhat_crlf=Eskailera urratseko testua konpondu?
+redhat_eprog='$1' ez da existitzen
+redhat_edriver=Ez da inprimagailu driverrik hautatu
+redhat_ehmargin=Eskuineko/ezkerreko marjina falta edo baliogabea
+redhat_evmargin=Top/beheko marjina falta edo baliogabea
+redhat_eres=Ez da bereizmenik aukeratu
+redhat_printer2=Inprimagailuaren modeloa eta gidaria
+
+suse_none=Bat ere ez
+suse_nonemsg=Postscript edo testu inprimagailua
+suse_prog=Programa
+suse_driver=APSfilter kontrolatzailea
+suse_printer=Inprimagailu mota
+suse_res=Ebazpena DPIn
+suse_colour=Kolore inprimagailua?
+suse_paper=Paper tamaina
+suse_method=Iragazteko metodoa
+suse_auto=automatikoa
+suse_ascii=ASCII
+suse_raw=Raw
+suse_extra=Ghiroskripten aukera gehigarriak
+suse_yast2=YAST2 gidaria
+suse_edriver=Ez da inprimagailu mota bat aukeratu
+suse_eres=Ebazpen falta edo baliogabea
+
+estop=Ezin izan da lpd gelditu : $1 
+
+acl_printers=Erabiltzaile honek konfigura dezake inprimagailuak
+acl_add=Inprimagailu berriak gehitu daitezke?
+acl_cancel=Inprimatu lanak bertan behera utzi al ditzake?
+acl_stop=Planifikatzaileari utzi edo hasi?
+acl_restart=Berrabiarazi bakarrik
+acl_listed=Hautatutako inprimagailuetan bakarrik ..
+acl_pall=Inprimagailu guztiak
+acl_psel=Hautatutako ..
+acl_view=Erakutsi ez diren inprimagailuak?
+acl_test=Proba orriak inprimatu al daitezke?
+acl_user=Kudeatu jabearen lan inprimatuak
+acl_user_all=Erabiltzaile guztiak
+acl_user_this=Uneko Webmin erabiltzailea
+acl_delete=Inprimagailuak ezaba ditzakezu?
+acl_cluster=Inprimagailu klusterra kudeatu al dezakezu?
+
+log_stop=Inprimatutako programatzailea gelditu da
+log_start=Inprimatze programatzailea hasi da
+log_restart=Inprimatutako programatzailea berrabiarazi da
+log_cancel_job=$2 ko inprimatze lana bertan behera utzi du $1 ean
+log_cancel_all=$1 ean inprimatutako lan guztiak bertan behera utzi dira
+log_cancel_sel=$2 inprimatutako lanak $1 bertan behera utzi dira
+log_create=$1 inprimagailua sortu da $2 an
+log_modify=$1 inprimagailu aldatua $2 an
+log_delete=$1 inprimagailua ezabatu da $2 an
+log_create_l=$3 inprimagailua sortu du $2 an $2 an
+log_modify_l=$3 inprimagailu $1 aldatu da $2 an
+log_delete_l=$3 inprimagailua $1 ezabatu da $2 an
+
+linux_paralel=$1 ataka paraleloan
+linux_serial=$1 ataka seriea (COM $1)
+linux_null=Gailu nulua
+linux_usb=USB inprimagailua $1 
+linux_ecmd=$1 komandoa ez da zure sisteman aurkitu, eta horrek adierazten du Linux inprimatzeko sistema ez dagoela instalatuta.
+linux_espool=$1 direktorio karpeta ez da zure sisteman existitzen, eta horrek adierazten du Linux inprimatzeko sistema ez dagoela instalatuta.
+
+freebsd_paralel=Paralelo portua
+freebsd_serial=$1 ataka seriea (COM $1)
+freebsd_ecmd=$1 komandoa ez da zure sisteman aurkitu, eta horrek adierazten du FreeBSD inprimatzeko sistema ez dagoela instalatuta.
+freebsd_espool=$1 direktorio karpeta ez dago zure sisteman, eta horrek adierazten du FreeBSD inprimatzeko sistema ez dagoela instalatuta.
+
+openbsd_paralel=Paralelo portua
+openbsd_serial=$1 ataka seriea (COM $1)
+
+unixware_paralel=$1 ataka paraleloan
+unixware_serial=$1 serieko ataka
+unixware_null=Gailu nulua
+unixware_ecmd=$1 komandoa ez da zure sisteman aurkitu, eta horrek adierazten du UnixWare inprimatzeko sistema ez dagoela instalatuta.
+
+hpux_paralel=$1 paraleloan
+hpux_serial=$1 serioa
+hpux_null=Gailu nulua
+hpux_ecmd=$1 komandoa ez da zure sisteman aurkitu, eta horrek adierazten du HPUX inprimatzeko sistema ez dagoela instalatuta.
+hpux_eiface=Interfazen script-ak $1 direktorioan ez dago zure sisteman, eta horrek adierazten du HPUX inprimatzeko sistema ez dagoela instalatuta.
+
+lprng_paralel=$1 ataka paraleloan
+lprng_serial=$1 ataka seriea (COM $1)
+lprng_null=Gailu nulua
+lprng_ecmd=$1 komandoa ez da zure sisteman aurkitu, eta horrek adierazten du LPRng inprimatzeko sistema ez dagoela instalatuta.
+lprng_espool=$1 direktorio karpeta ez da zure sisteman existitzen, eta horrek LPRng inprimatzeko sistema ez dagoela instalatuta adierazten du.
+
+solaris_paralel=Paralelo portua
+solaris_uparalel=Ultra 5/10 Portu Paraleloan
+solaris_serial=$1 serieko ataka
+solaris_null=Gailu nulua
+solaris_ecmd=$1 komandoa ez da zure sisteman aurkitu, eta horrek adierazten du Solaris inprimatzeko sistema ez dagoela instalatuta.
+
+test_title=Inprimatu test orria
+test_ecannot=Ezin duzu proba orriak inprimatu
+test_desc=Inprimaki honek $1 inprimagailuarentzako proba orria inprimatzeko aukera ematen du. Aukeratu inprimatu nahi duzun orri mota :
+test_0=Zuri-beltza Postscript orria
+test_1=Kolore Postscript orria
+test_2=ASCII testu arrunta
+test_3=Kargatutako edozein fitxategi
+test_print=Inprimatu orria
+test_exec=Proba orria inprimatzea $1 komandoarekin.
+test_failed=.. Komandoak huts egin du!
+test_ok=.. agindua bukatuta.
+
+cups_none=Bat ere ez
+cups_nonemsg=Urruneko edo inprimagailu gordina
+cups_prog=Programa
+cups_driver=CUPS gidaria
+cups_eprog='$1' ez da baliozko programa
+cups_opts=Aukerak $1 
+cups_ecmd=$1 komandoa ez da zure sisteman aurkitu, eta horrek adierazten du CUPS inprimatzeko sistema ez dagoela instalatuta.
+
+irix_ecmd=$1 komandoa ez da zure sisteman aurkitu, eta horrek adierazten du IRIX inprimatzeko sistema ez dagoela instalatuta.
+irix_eiface=Interfazen script-ak $1 direktorioan ez dago zure sisteman, eta horrek adierazten du IRIX inprimatze-sistema ez dagoela instalatuta.
+
+aix_port=$1 inprimagailuaren portua
+aix_edesc=Deskribapen baliogabea: letrak eta zenbakiak bakarrik onartzen dira, eta ez dago lekurik
+aix_ecmd=Ez da AIX inprimagailu zerbitzaria $1 aurkitu. Agian ez dago instalatuta edo beste inprimatze sistema bat erabiltzen ari da.
+
+cluster_title=Cluster Inprimagailu Zerbitzariak
+cluster_none=Ez da zerbitzaririk gehitu inprimagailu klusterra oraindik.
+cluster_host=hostname
+cluster_desc=deskribapena
+cluster_os=Sistema eragilea
+cluster_add=Gehitu zerbitzaria
+cluster_gadd=Gehitu zerbitzariak taldean
+cluster_need=Saioa hasi eta pasahitza duten zerbitzariak gehitu behar dituzu Webmin Servers Index moduluan hemen kudeatu aurretik.
+cluster_return=kluster zerbitzariak
+cluster_delete=Kendu Hautatuta
+cluster_ecannot=Ezin duzu kluster inprimagailu zerbitzariak kudeatu
+
+add_title=Gehitu zerbitzariak
+add_msg=$1 gehitzen ..
+add_gmsg=Zerbitzariak gehitzen $1 taldean.
+add_err=Huts egin du zerbitzaria gehitzean
+add_gerr=Ezin izan da taldea gehitzean
+add_echeck=$1 zerbitzariak ez du Inprimagailuaren modulua
+add_ediff=$1 zerbitzaria beste inprimatze sistema bat ($2) erabiltzen ari da zerbitzari honetarako
+add_ediff2=$1 zerbitzaria beste inprimagailu kontrolatzaile bat ($2) erabiltzen ari da zerbitzari honetarako
+add_ok=$1 gehitu da, $2 inprimagailuekin.

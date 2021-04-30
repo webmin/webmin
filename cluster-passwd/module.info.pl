@@ -1,2 +1,2 @@
-desc_pl=Klaster - Zmiana hase³
-longdesc_pl=Zmieñ has³a na wielu serwerach w klastrze Webmina równocze¶nie.
+desc_pl=Klaster - Zmiana haseÅ‚
+longdesc_pl=ZmieÅ„ hasÅ‚a na wielu serwerach w klastrze Webmina rÃ³wnoczeÅ›nie.

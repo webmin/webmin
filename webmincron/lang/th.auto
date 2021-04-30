@@ -1,0 +1,20 @@
+edit_mins=รายงานการประชุม
+edit_hours=ชั่วโมง
+edit_days=วัน
+edit_months=เดือน
+edit_weekdays=วันธรรมดา
+edit_all=ทั้งหมด
+edit_selected=เลือก ..
+edit_run=วิ่งตอนนี้
+edit_clone=โคลนงาน
+edit_return=งาน cron
+edit_special1=กำหนดการง่าย ..
+edit_special0=เวลาและวันที่ที่เลือกด้านล่าง ..
+edit_special_hourly=ทุกๆชั่วโมง
+edit_special_daily=ทุกวัน (เวลาเที่ยงคืน)
+edit_special_weekly=รายสัปดาห์ (วันอาทิตย์)
+edit_special_monthly=รายเดือน (วันที่ 1)
+edit_special_yearly=รายปี (วันที่ 1 มกราคม)
+
+log_success=ประสบความสำเร็จในการรัน <tt>$2</tt> ใน <tt>$1</tt>
+log_failure=ไม่สามารถเรียกใช้ <tt>$2</tt> ใน <tt>$1</tt> : $3 

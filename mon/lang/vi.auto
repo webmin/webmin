@@ -1,0 +1,200 @@
+index_title=Giám sát dịch vụ MON
+index_return=Chỉ số MON
+index_edir=Thư mục MON $1 không tồn tại. Có thể MON chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+mon_global_title=Cấu hình Varibles toàn cầu
+mon_conf_title=Cấu hình cơ bản
+mon_status_title=Tình trạng hoạt động
+hostgroups_title=Cấu hình MON-Hostgroups
+services_title=Định nghĩa dịch vụ theo nhóm
+
+head_hostgroups=Nhóm chủ và dịch vụ
+head_groups=Tên nhóm chủ
+head_members=Thành viên nhóm chủ nhà
+head_services=Dịch vụ nhóm chủ để xem
+head_service=Dịch vụ để xem
+head_param=Thông số dịch vụ
+head_watch=Theo dõi nhóm?
+head_monauth=Cung cấp xác thực cho MONCMD
+head_usr=tên tài khoản
+head_pass=Mật khẩu
+head_mand=(Thông số trong "MÀU ĐỎ" là bắt buộc)
+
+err_nomon=gói 'mon' không được cài đặt trên hệ thống
+err_nomonconf=Không tìm thấy tệp cấu hình MON $1 trên hệ thống của bạn. Có thể MON chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+err_nowatch=Không có nhóm xem nào được chọn. Chọn ít nhất một Watchgroup để tiến hành.
+err_noserv=Không có dịch vụ nào được chọn cho nhóm xem
+err_nomemb=Không có chủ nhà/thành viên nào được chọn cho nhóm theo dõi
+err_monrun=MON không chạy trên máy chủ. Hãy bắt đầu MON.
+stop_err=Không thể dừng MON
+stop_epid=Không còn chạy
+start_err=Không thể bắt đầu MON
+restart_err=Không thể khởi động lại MON
+restart_epid=Không thể nhận được PID
+
+other=Khác (không gian tách biệt)
+next=Kế tiếp
+mon_stat=Tình trạng MON
+mon_off=Dịch vụ MON chưa bắt đầu
+mon_start=Bắt đầu dịch vụ MON
+mon_stop=Dừng dịch vụ MON
+mon_restart=Khởi động lại dịch vụ MON
+mon_startdesc=Nhấn vào nút này để khởi động máy chủ MON. Cho đến khi nó được bắt đầu, không có giám sát cấu hình sẽ được thực hiện.
+mon_stopdesc=Nhấn vào nút này để dừng máy chủ MON. Khi dừng, giám sát cấu hình sẽ chấm dứt.
+mon_restartdesc=Nhấp vào nút này để áp dụng cấu hình MON hiện tại bằng cách khởi động lại quy trình máy chủ.
+line=(một trên mỗi dòng)
+save_apply=Lưu và áp dụng
+watch=Nhóm xem
+members=Các thành viên
+def_perargs=wd {Sat-Sun}
+
+def_desc=sự miêu tả
+def_inter=khoảng
+def_mon=màn hình
+def_dep=cho vay
+def_per=giai đoạn = Stage
+def_alert=cảnh báo
+def_alertevr=cảnh giác
+def_alertaft=cảnh báo sau
+def_alertstr=khởi nghiệp
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=bẫy
+def_rand=randskew
+def_exclhost=loại trừ_hosts
+def_exclper=loại trừ
+
+groups_title=Nhóm máy chủ
+groups_group=Tên nhóm
+groups_members=Chủ nhà thành viên
+
+watches_title=Danh sách theo dõi
+watches_group=Nhóm xem
+watches_services=Dịch vụ đang được theo dõi
+watches_sadd=Thêm dịch vụ ..
+watches_add=Thêm danh sách theo dõi cho nhóm :
+watches_return=xem danh sách
+watches_none=Không có danh sách theo dõi đã được xác định.
+
+global_title=Tùy chọn toàn cầu
+global_header=Tùy chọn cấu hình MON toàn cầu
+global_maxprocs=Quá trình MON tối đa
+global_histlength=Độ dài lịch sử sự kiện
+global_alertdir=Thư mục chương trình cảnh báo
+global_mondir=Giám sát chương trình thư mục
+global_authtype=Loại xác thực
+global_authtype_=Mặc định
+global_authtype_getpwnam=Các cuộc gọi hệ thống
+global_authtype_userfile=Tập tin người dùng MON
+global_authtype_shadow=Tập tin bóng
+global_userfile=Tập tin người dùng MON
+global_emaxprocs=Số lượng quá trình MON bị thiếu hoặc không hợp lệ
+global_ehistlength=Độ dài lịch sử sự kiện bị thiếu hoặc không hợp lệ
+global_ealertdir=Thư mục chương trình cảnh báo bị thiếu hoặc không hợp lệ
+global_emondir=Thư mục chương trình màn hình bị thiếu hoặc không hợp lệ
+global_euserfile=Thiếu tập tin người dùng MON
+
+watch_title=Chỉnh sửa danh sách theo dõi
+watch_header=Chi tiết đồng hồ nhóm chủ
+watch_group=Nhóm chủ nhà để xem
+watch_services=Dịch vụ đang được theo dõi
+watch_service=Tên dịch vụ
+watch_monitor=Giám sát sử dụng
+watch_interval=Kiểm tra mọi
+watch_periods=Thời gian giám sát
+
+service_title=Thêm dịch vụ
+service_title2=Chỉnh sửa dịch vụ
+service_header=Chi tiết dịch vụ đã xem
+service_name=Tên dịch vụ
+service_interval=Kiểm tra mọi
+service_desc=Sự miêu tả
+service_units_s=giây
+service_units_m=phút
+service_units_h=giờ
+service_units_d=ngày
+service_units_w=tuần
+service_monitor=Sử dụng màn hình
+service_mon1=Màn hình chuẩn
+service_mon0=Màn hình khác ..
+service_args=Giám sát thông số
+service_period=Thời gian giám sát $1 
+service_days=Ngày kiểm tra
+service_hours=Giờ kiểm tra
+service_all=Tất cả
+service_pstr=Đặc điểm kỹ thuật
+service_new=Thời gian giám sát mới
+service_alerts=Cảnh báo cho giai đoạn
+service_alert=Thông báo
+service_atype=Chạy khi
+service_atype_alert=Dịch vụ đi xuống
+service_atype_upalert=Dịch vụ đi lên
+service_atype_startupalert=MON khởi động
+service_aargs=Thông số bổ sung
+service_every=Gửi thông báo
+service_every_def=Mỗi khi màn hình được chạy
+service_every_time=Mỗi
+service_num=Thông báo tối đa để gửi
+service_unlimited=Vô hạn
+service_after=Thất bại trước khi báo động
+service_immediate=Ngay
+service_after_num=Sau $1 thất bại
+service_aftertime=Trong khoảng thời gian
+service_newperiod=Thêm một giai đoạn mới
+service_delperiod=Xóa giai đoạn này
+service_err=Không thể lưu dịch vụ
+service_ename=Tên dịch vụ bị thiếu hoặc không hợp lệ
+service_einterval=Khoảng thời gian kiểm tra thiếu hoặc không hợp lệ
+service_eother=Màn hình bị thiếu hoặc không hợp lệ
+service_ehour=Giờ thiếu hoặc không hợp lệ cho giai đoạn $1 (phải như 9 giờ sáng hoặc 5 giờ chiều)
+service_eperiod=Không có ngày hoặc giờ được chỉ định cho giai đoạn $1 
+service_eevery=Khoảng thời gian cảnh báo dịch vụ bị thiếu hoặc không hợp lệ
+service_eafter=Thiếu hoặc không hợp lệ số lần thất bại trước khi cảnh báo
+service_enum=Thiếu thông báo tối đa hoặc không hợp lệ để gửi
+service_epstr=Thiếu thông số kỹ thuật
+service_known0=Chuỗi <tt>Thời gian::Thời gian</tt>
+service_known1=Ngày và giờ được chỉ định
+service_known2=Thời gian xác định
+
+status_title=Tình trạng MON
+status_ecgi=Chương trình CG trạng thái MON $1 không tồn tại. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+status_eperl=Chương trình CGI trạng thái MON yêu cầu mô-đun $1 perl. <a href='$2'>Nhấp vào đây</a> để cài đặt trực tiếp từ CPAN.
+status_esame=Chương trình CGI trạng thái MON $1 đã được đặt thành tập lệnh <tt>mon.cgi</tt> trong mô-đun Webmin này, không phải chương trình CGI đi kèm với MON. Điều chỉnh <a href='$2'>cấu hình mô-đun</a> để sử dụng đúng đường dẫn.
+
+users_title=Người dùng MON
+users_etype=Danh sách người dùng MON không thể được chỉnh sửa vì MON hiện chưa được định cấu hình để sử dụng nó để xác thực trên trang <a href='$1'>Tùy chọn toàn cầu</a>.
+users_header=Người dùng MON được phép trong $1 
+users_nousers=Không có người dùng MON nào được xác định trong $1.
+users_add=Tạo một người dùng mới.
+users_return=Danh sách người dùng MON
+
+user_create=Tạo người dùng MON
+user_edit=Chỉnh sửa người dùng MON
+user_header=Chi tiết người dùng MON
+user_user=tên tài khoản
+user_pass=Mật khẩu
+user_leave=Không thay đổi
+user_err=Không thể lưu người dùng
+user_euser=Tên người dùng bị thiếu hoặc không hợp lệ
+user_esame=Một người dùng có cùng tên đã tồn tại
+
+auth_title=Lệnh khách hàng
+auth_desc=Trang này cho phép bạn kiểm soát những lệnh MON nào có thể được chạy bởi người dùng nào khi sử dụng các chương trình máy khách.
+auth_cmd=Lệnh MON
+auth_users=Người dùng được phép
+auth_none=Không ai
+auth_all=Mọi người
+auth_sel=Chỉ người dùng
+auth_err=Không thể lưu lệnh máy khách
+auth_eusers=Không có người dùng nhập lệnh $1 
+
+periods_title=Thời gian xác định
+periods_period=Tên thời gian
+periods_times=Ngày và thời gian
+periods_alldays=Tất cả các ngày
+periods_allhours=Tất cả các giờ
+periods_err=Không thể lưu các khoảng thời gian xác định
+periods_ename='$1' không phải là tên thời hạn hợp lệ
+periods_ehour=Giờ thiếu hoặc không hợp lệ cho giai đoạn $1 (phải như 9 giờ sáng hoặc 5 giờ chiều)
+
+show_title=Tình trạng hoạt động
+show_ecgi=Chương trình trạng thái MON $1 không tồn tại. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.

@@ -1,0 +1,33 @@
+index_title=TCP-omslag
+index_return=index
+index_allowtitle=Tillåtna värdar
+index_denytitle=Nekade värdar
+index_norule=Inga regler har definierats i <tt>$1</tt> än.
+index_nofile=Filen "$1" finns inte - kolla din <a href="/config.cgi?tcpwrappers">modulkonfiguration</a>
+index_add=Lägg till en ny regel.
+index_service=Demon
+index_hosts=värdar
+index_cmd=Kommando
+index_delete=Radera valda
+index_none=ingen
+
+edit_title1allow=Skapa tillåt regel
+edit_title2allow=Redigera Tillåt regel
+edit_title1deny=Skapa förneka regel
+edit_title2deny=Redigera Deny Rule
+edit_eid=Denna regel hittades inte
+edit_header=Regelalternativ
+edit_service=tjänster
+edit_except=Förutom tjänster
+edit_hosts=Fjärrvärdar
+edit_hostsexcept=Förutom värdar
+edit_cmd=Shell-kommandon
+edit_efound=Daemon '$1' hittades inte i xinetd-konfiguration.
+
+save_errtitle=Fel vid spara regeln
+save_ehost=Värdinmatningen innehåller dåliga tecken
+save_ecmd=Kommandoinmatning innehåller dåliga tecken
+save_eservice=Daemonnamn innehåller dåliga tecken
+
+del_errtitle=Fel vid radering av regler
+del_enone=Inga regler markerade för att radera

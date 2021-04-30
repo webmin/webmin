@@ -35,7 +35,7 @@ if (&show_section('host')) {
 	# Hostname
 	my $ip = $info && $info->{'ips'} ? $info->{'ips'}->[0]->[0]
 					 : &to_ipaddress(get_system_hostname());
-	$ip = " ($ip)" if ($ip);
+	$ip = $ip ? " ($ip)" : "";
 	push(@table, { 'desc' => $text{'right_host'},
 		       'value' => &get_system_hostname().$ip });
 
@@ -49,7 +49,7 @@ if (&show_section('host')) {
 		     });
 
 	# Webmin version
-	my $webmin_version = &get_webmin_version();
+	my $webmin_version = &get_webmin_version(1);
 	push(@table, { 'desc' => $text{'right_webmin'},
 		       'value' => $webmin_version });
 	push(@raw, { 'webmin_version' => $webmin_version });

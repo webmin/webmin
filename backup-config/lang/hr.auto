@@ -1,0 +1,23 @@
+index_test=Samo pokažite što će se obnoviti?
+
+edit_header2=Pre i poslije naredbe sigurnosnog kopiranja
+edit_header3=Rezervni raspored
+edit_other2=Ostale datoteke za vraćanje
+edit_pre=Naredba unaprijed sigurnosne kopije
+edit_post=Naredba nakon sigurnosne kopije
+
+backup_port=Port poslužitelja
+
+backup_eport=Nedostaje ili nije važeći ulaz FTP poslužitelja
+backup_esport=Nedostaje ili nije valjan port SSH poslužitelja
+
+restore_emods=Nisu odabrani moduli ili druge datoteke
+restore_testing=Izdvajanje sadržaja sigurnosne kopije od $1 ..
+restore_done2=.. datoteke u sigurnosnoj kopiji su :
+
+nice_ftpp=$2 na $1 port $3 putem FTP-a
+nice_sshp=$2 na $1 port $3 putem SSH-a
+
+email_pre=Izvođenje naredbe za prethodno sigurnosno kopiranje $1 ..
+email_post=Izvođenje naredbe naknadnog sigurnosnog kopiranja $1 ..
+email_prefailed=Naredba unaprijed sigurnosnog kopiranja nije uspjela!

@@ -1,0 +1,120 @@
+index_title=جابر آئی ایم سرور
+index_econfig=The Jabber config file $1 does not exist. Either Jabber is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_edir=The Jabber base directory $1 does not exist. Either Jabber is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_emodules=The Perl modules $1 and $2 which are required by Webmin for handling Jabber's XML configuration are not installed. <a href='$3'>Click here</a> to install them directly from CPAN.
+index_emodule=The Perl module $1 which is required by Webmin for handling Jabber's XML configuration is not installed. <a href='$2'>Click here</a> to install it directly from CPAN.
+index_expat=اس بات کو یقینی بنائیں کہ پرل ماڈیولز کو انسٹال کرنے کی کوشش کرنے سے پہلے آپ کے پاس ایکسپیٹ سی لائبریری اور ہیڈر نصب ہیں ، کیوں کہ وہ اس پر انحصار کرتے ہیں اور اگر یہ دستیاب نہیں ہے تو ناکام ہوجائیں گے۔
+index_eparse=$1 پرل ماڈیول آپ کی جابر تشکیل فائل کی تجزیہ نہیں کرسکا :$2
+index_ejabberd=The Jabber server program $1 was not found on your system. Either Jabber is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_eversion=ویبمین صرف جابر ورژن$2 کی تائید کرتا ہے ، لیکن کمانڈ$3 نے درج ذیل ورژن کی اطلاع دی :$1
+index_eversion2=ویبمین صرف$2 کے نیچے جابر ورژن کی تائید کرتی ہے ، لیکن کمانڈ$3 نے درج ذیل ورژن کی اطلاع دی :$1
+index_start=جابر سرور شروع کریں
+index_startmsg=اپنے سسٹم میں جابر سرور کو شروع کرنے کے لئے اس بٹن پر کلک کریں۔ جب تک یہ شروع نہیں ہوجاتا ، کوئی بھی فوری میسجنگ کلائنٹ اسے استعمال نہیں کرسکے گا۔
+index_stop=جابر سرور کو روکیں
+index_stopmsg=اپنے سسٹم میں جابر سرور کو چلانے سے روکنے کے لئے اس بٹن پر کلک کریں۔ جب کوئی فوری پیغام رسانی موکل بند ہوجائے تو وہ اسے استعمال نہیں کرسکیں گے۔
+index_restart=تبدیلیوں کا اطلاق کریں
+index_restartmsg=موجودہ کنفیگریشن کو روکنے اور پھر جابر سرور کو دوبارہ شروع کرکے لاگو کرنے کے لئے اس بٹن پر کلک کریں۔
+index_comments=انتباہ - آپ کی جابر تشکیل فائل$1 میں تبصرے شامل ہیں ، جو اگر اس ماڈیول کا استعمال کرتے ہوئے ترتیب میں کوئی تبدیلیاں کی گئیں تو اسے ہٹا دیا جائے گا۔
+index_return=جابر مینو
+index_version=جابر ورژن$1
+
+general_title=عام اختیارات
+general_header=عالمی جابر سرور کے اختیارات
+general_host=آپ کے سرور کا میزبان نام
+general_elog=غلطی لاگ فائل
+general_elogfmt=غلطی لاگ فارمیٹ
+general_rlog=لاگ فائل تک رسائی حاصل کریں
+general_rlogfmt=لاگ فارمیٹ تک رسائی حاصل کریں
+general_pidfile=عمل ID فائل
+general_err=عام اختیارات کو بچانے میں ناکام
+general_ehost=گم شدہ یا غلط سرور میزبان نام
+general_eelog=گمشدہ یا غلط غلط لاگ فائل
+general_eelogfmt=گمشدہ لاگ فارمیٹ
+general_erlog=لاپتہ یا غلط ٹریفک لاگ فائل
+general_erlogfmt=لاپتہ ٹریفک لاگ فارمیٹ
+general_epidfile=غائب یا غلط عمل ID فائل
+
+messages_title=پیغامات
+messages_header=گاہکوں کے لئے جابر سرور پیغام
+messages_wsubject=خیرمقدم پیغام کا مضمون
+messages_wbody=خوش آمدید پیغام باڈی
+messages_vcard=سرور وی کارڈ
+messages_rinstr=اندراج ہدایات
+messages_rnotify=رجسٹریشن پر ایڈمن کو مطلع کریں؟
+messages_rfields=مطلوبہ رجسٹریشن فیلڈز
+messages_vcard2jud=جابر صارف کی ڈائرکٹری کو وی کارڈ بھیجیں؟
+messages_err=پیغامات کو محفوظ کرنے میں ناکام
+messages_evcard=غلط وی کارڈ XML :$1
+messages_etag=سرور vCard XML &lt;vCard&gt; سے شروع نہیں ہوتا ہے
+
+modules_title=جابر ماڈیولز
+modules_desc=جابر سیشن منیجر کے ذریعے موصولہ پیغامات پر کارروائی کرنے کے لئے ذیل میں درج ماڈیولز کا استعمال کیا گیا ہے۔ آپ کو صرف اس فہرست کو تبدیل کرنا چاہئے اگر آپ جانتے ہو کہ آپ کیا کر رہے ہیں۔
+modules_header=جابر سرور سیشن منیجر ماڈیولز
+modules_mod=ماڈیول کا نام
+modules_so=مشترکہ لائبریری
+modules_err=جابر ماڈیولز کو بچانے میں ناکام
+modules_emod='$1' درست ماڈیول نام نہیں ہے
+modules_eso=مشترکہ لائبریری '$1' موجود نہیں ہے
+
+karma_title=کرما ٹریفک کنٹرول
+karma_header=ٹریفک کی شرح کو کنٹرول کرنے کے اختیارات
+karma_rate=ضرورت سے زیادہ رابطہ ہینڈلنگ
+karma_rate_def=غیر فعال
+karma_rate_sel=$1 رابطوں کے بعد کلائنٹ کو$2 سیکنڈ کیلئے مسدود کریں
+karma_mode=کرما وضع
+karma_none=کوئی حد نہیں
+karma_low=ٹریفک کی کم حد
+karma_medium=درمیانی ٹریفک کی حدود
+karma_high=ٹریفک کی اعلی حدود
+karma_sel=ذیل میں منتخب کردہ ترتیبات کا استعمال کریں ..
+karma_heartbeat=Period length in seconds (<tt>heartbeat</tt>)
+karma_init=Initialization periods (<tt>init</tt>)
+karma_max=Karma maximum (<tt>max</tt>)
+karma_inc=Karma increment (<tt>inc</tt>)
+karma_dec=Karma decrement (<tt>dec</tt>)
+karma_penalty=Penalty periods (<tt>penalty</tt>)
+karma_restore=Burst restore periods (<tt>restore</tt>)
+karma_err=کرما کے اختیارات کو بچانے میں ناکام
+karma_eheartbeat=لاپتہ یا غلط مدت کی لمبائی
+karma_einit=لاپتہ یا غلط آغاز کی مدت
+karma_emax=زیادہ سے زیادہ گمشدہ یا غلط
+karma_einc=غائب یا غلط کارما اضافہ
+karma_edec=گمشدہ یا غلط کارما کمی
+karma_epenalty=غائب یا غلط جرمانے کی مدت
+karma_erestore=غائب یا ناجائز بحالی کی مدت
+karma_epoints=کنکشنز کی گمشدہ یا غلط تعداد
+karma_etime=کے لئے مسدود یا غلط وقت
+
+ips_title=IP رسائی کنٹرول
+ips_header=جابر سرور IP رسائی کنٹرول
+ips_allow=اجازت شدہ کلائنٹ کے آئی پی
+ips_all=تمام پتے
+ips_deny=انکار کردہ کلائنٹ کے آئی پی
+ips_none=کوئی نہیں
+ips_sel=درج پتے/نیٹ ماسک ..
+ips_err=IP تک رسائی کنٹرول کو بچانے میں ناکام
+ips_eaddr='$1' درست IP ایڈریس یا IP ایڈریس/نیٹ ماسک نہیں ہے
+
+file_title=کنفگ فائل میں ترمیم کریں
+file_desc=جابر تشکیل فائل میں براہ راست ترمیم کرنے کے لئے نیچے دیئے گئے فارم کا استعمال کریں۔ یہ تب ہی کرنا چاہئے جب آپ XML کنفگریشن فارمیٹ کو سمجھتے ہیں۔
+file_header=جابر ترتیب فائل میں ترمیم کریں
+file_err=کنفگ فائل کو محفوظ کرنے میں ناکام
+
+admin_title=انتظامی صارفین
+admin_header=سرور ایڈمنسٹریشن صارفین
+admin_read=ایڈمنسٹریٹر پڑھیں
+admin_write=رسائی ایڈمن لکھیں
+admin_reply=خود کار طریقے سے ایڈمن پیغامات پر؟
+admin_rsubject=خود کار طریقے سے مضمون
+admin_rbody=خود کار طریقے سے پیغام
+
+filter_title=صارف کے فلٹرز
+filter_header=صارف کے فلٹر کی اجازت
+filter_max=فلٹر کے زیادہ سے زیادہ قواعد
+filter_conds=اجازت دی گئی فلٹر شرائط
+filter_acts=اجازت دی گئی فلٹر اعمال
+
+restart_err=تبدیلیاں لاگو کرنے میں ناکام
+stop_err=جابر کو روکنے میں ناکام
+stop_epid=جابر عمل کو تلاش کرنے میں ناکام
+start_err=جابر شروع کرنے میں ناکام

@@ -1,0 +1,66 @@
+index_title=Cliente ADSL
+index_eadsl=O comando RP-PPPoE $1 não foi encontrado no seu sistema ou não é válido. Talvez não esteja instalado ou sua <a href='$2'>configuração do módulo</a> está incorreta.
+index_econfig=O arquivo de configuração RP-PPPoE ADSL $1 não foi encontrado no seu sistema. Talvez não esteja instalado ou sua <a href='$2'>configuração do módulo</a> está incorreta.
+index_emodem=O arquivo de configuração atual é para um modem no Redhat Linux, não para uma conexão ADSL. Use a página de configuração do módulo <a href='$2'></a> para especificar um dos outros arquivos <tt>ifcfg-ppp *</tt> em $1, ou um que ainda não exista, para que o módulo pode criar para você.
+index_stop=Desligue o ADSL
+index_stopdesc=Sua conexão ADSL está ativa no momento com o endereço IP $1. Clique neste botão para desligá-lo com o comando $2.
+index_start=Iniciar ADSL
+index_startdesc=Sua conexão ADSL está atualmente inativa. Clique neste botão para iniciá-lo com o comando $1.
+index_boot=Iniciar no momento da inicialização
+index_bootdesc=Altere esta opção para controlar se sua conexão ADSL é ativada no momento da inicialização ou não.
+index_return=índice do módulo
+index_version=Versão RP-PPPoE $1 
+index_esetup=O arquivo de configuração ADSL Redhat $1 não existe no seu sistema. No entanto, este módulo pode configurá-lo para você com os padrões básicos clicando no botão abaixo.
+index_setup=Arquivo de configuração da instalação
+index_cancel=Cancelar conexão
+index_canceldesc=O cliente ADSL está atualmente tentando estabelecer uma conexão. Clique neste botão para cancelar a tentativa com o comando $1.
+index_cdemand=Cancelar sob demanda
+index_cdemanddesc=O cliente ADSL está aguardando uma solicitação de conexão sob demanda. Clique neste botão para pará-lo com o comando $1.
+
+index_header=Opções de configuração do cliente ADSL
+index_desc=As configurações abaixo se aplicam a qualquer nova conexão ADSL iniciada pelo seu sistema. Se você os alterar, a conexão deverá ser desligada e reiniciada para que as modificações entrem em vigor.
+index_eth=Interface Ethernet
+index_other=De outros ..
+index_demand=Conectar sob demanda?
+index_timeout=Sim, com tempo limite
+index_secs=segundos
+index_user=Entrar como usuário
+index_sec=Entrar com senha
+index_dns=Obter configuração de DNS do ISP?
+index_save=Salvar configuração
+index_mss=Limitar tamanho do pacote?
+index_psize=Sim a
+index_bytes=bytes
+index_fw=Firewall para ativar na conexão
+index_fw_none=Nenhum
+index_fw_standalone=Para host único
+index_fw_masquerade=Para gateway NAT
+index_connect=Hora de tentar a conexão por
+index_forever=Para sempre
+
+start_err=Falha ao iniciar a conexão ADSL
+start_title=Iniciar ADSL
+start_ip=Uma conexão ADSL foi estabelecida com o endereço IP $1.
+start_demand=Como o modo de conexão on demand está ativado, sua conexão ADSL será iniciada apenas quando necessário.
+start_bg=A conexão ADSL não foi iniciada em 20 segundos. O cliente ADSL continuará tentando se conectar em segundo plano até obter êxito.
+
+save_err=Falha ao salvar a configuração ADSL
+save_eeth=Interface Ethernet ausente ou com aparência inválida
+save_etimeout=Tempo limite sob demanda ausente ou inválido
+save_euser=Nome de usuário ausente ou inválido
+save_econnect=Tempo limite de conexão ausente ou inválido
+save_emss=Tamanho máximo de pacote ausente ou inválido
+save_title=Salvar configuração
+save_desc=Sua configuração do cliente ADSL foi salva com sucesso, mas não será usada até você se reconectar.
+
+stop_err=Falha ao desligar a conexão ADSL
+stop_title=Desligar ADSL
+stop_ok=Sua conexão ADSL foi encerrada com sucesso.
+stop_failed=Sua conexão ADSL ainda está ativa por algum motivo!
+
+log_save=Configuração do cliente salva
+log_stop=Desligue o ADSL
+log_start=ADSL iniciado
+log_bootup=ADSL ativado no momento da inicialização
+log_bootdown=ADSL desativado no momento da inicialização
+log_setup=Definir configuração padrão

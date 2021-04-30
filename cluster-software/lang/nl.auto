@@ -1,0 +1,3 @@
+install_ealready=Versie $1 is al geïnstalleerd
+
+do_success2=$1 geïnstalleerd op $2.

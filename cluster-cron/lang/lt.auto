@@ -1,0 +1,37 @@
+index_title=Klasterio Crono darbai
+index_add=Sukurkite naują klasterio kūrimo užduotį.
+index_none=Nėra apibrėžta klasterio funkcijų.
+index_servers=Paleiskite serveriuose
+index_return=klasterio darbo vietų sąrašas
+index_more=Dar $1 ..
+index_run=Vykdyk dabar ..
+index_actions=Veiksmai
+
+edit_title=Redaguoti klasterį Cron Job
+create_title=Sukurkite klasterį „Cron Job“
+edit_servers=Paleiskite serveriuose
+edit_group=$1 nariai
+edit_this=šį serverį
+edit_all=&lt;Visi šeimininkai&gt;
+edit_emissing=„Cron“ darbo nebeegzistuoja!
+
+save_err=Nepavyko išsaugoti klasterio crono darbo
+
+exec_title=Vykdykite klasterio Crono darbą
+exec_cmd=Paleisti $1 pasirinktuose serveriuose ..
+exec_failed=Nepavyko paleisti $1 : $2 
+exec_success=Išvestis iš $1 ..
+exec_nohosts=Nepasirinkta jokie pagrindiniai kompiuteriai, arba pasirinktose grupėse nėra jokių tinkamų kompiuterių.
+
+log_run=Paleido $1 $2 serveriuose
+log_run_l=$2 paleido $1 
+log_create=Sukurtas $1 klasterio darbas
+log_create_l=Sukurtas $1 klasterio kūrinys „ $1 “
+log_modify=Modifikuotas $1 klasterio cron darbas
+log_modify_l=Modifikuotas klasterio kūrimas $2 $1 
+log_delete=Ištrinta $1 grupių sankaupos užduotis
+log_delete_l=Ištrinta $1 grupių „cron“ užduotis
+log_deletes=Ištrintos $1 klasterio funkcijos
+
+delete_err=Nepavyko ištrinti klasterio cron užduočių
+delete_enone=Nepasirinkta

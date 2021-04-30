@@ -1,0 +1,28 @@
+edit_desc2=HTML popis
+edit_must=Požadované?
+edit_type12=Více nabídek ..
+edit_type13=Velké multi menu ..
+edit_type14=Levé a pravé menu ..
+edit_type15=datum
+edit_type16=Tlačítko Odeslat ..
+edit_format=Styl výstupu
+edit_format0=Zobrazit v uživatelském rozhraní Webmin
+edit_format1=Výstup s typem MIME
+edit_format2=Přesměrování na index
+edit_format3=Přesměrování do formuláře
+edit_format4=Stáhněte si, pokud je to možné
+edit_clone=Klonovat
+
+save_eformat=Neplatný typ MIME výstupu
+save_eopts=Chybí soubor voleb pro parametr $1 
+save_eopts2=Soubor voleb nebo výchozí hodnota parametru $1 nemůže obsahovat :
+
+run_eupload=Nebyl vybrán žádný soubor k nahrání
+run_emust=Chybí hodnota parametru $1
+run_failed=Příkaz se nezdařil se stavem ukončení $1 
+
+file_beforeedit=Příkaz ke spuštění před úpravami
+
+view_ebeforeedit=Příkaz před úpravou se nezdařil : $1 
+view_ebefore=Příkaz před uložením selhal : $1 
+view_eafter=Příkaz po uložení se nezdařil : $1 

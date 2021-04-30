@@ -1,4 +1,3 @@
-risk=low medium high
 name=Syslog
 category=system
 os_support=solaris *-linux freebsd openbsd macos hpux irix unixware aix netbsd openserver

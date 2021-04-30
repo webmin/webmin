@@ -1,0 +1,54 @@
+index_applymsg2=Fare clic su questo pulsante per applicare la configurazione corrente arrestando e riavviando ProFTPD.
+index_stop=Arresta il server
+index_stopmsg=Fare clic su questo pulsante per arrestare il server FTP, che impedirà a tutti i nuovi client FTP di connettersi.
+index_version=Versione ProFTPd $1 
+index_proftpd=ProFTPd
+
+dir_header5=Per la directory $1 a livello globale
+
+manual_configs=Modifica file di configurazione
+manual_ecannot=Non è consentito modificare manualmente le direttive
+manual_file=Modifica direttive nel file:
+manual_efile=File di configurazione ProFTPd non valido
+manual_etest=Rilevato errore del file di configurazione : $1 
+
+limit_header7=Per i comandi $1 a livello globale
+
+dserv_eanondir=La directory deve trovarsi nella directory FTP anonima
+
+mod_core_octal=Maschera ottale
+mod_core_umask_d=Nuova maschera di directory
+mod_core_nowhere=Registrazione disabilitata
+mod_core_firstcdt=Mostra sempre
+
+mod_ls_nofake=Autorizzazioni reali
+mod_ls_efakemode=I permessi falsi devono essere in ottale
+mod_ls_fakeasuser=Sì, come utente ..
+mod_ls_fakesameuser=Utente connesso
+mod_ls_fakeasgroup=Sì, come gruppo ..
+mod_ls_fakesamegroup=Gruppo collegato
+mod_ls_efakeuser=Utente falso mancante o non valido
+mod_ls_efakegroup=Gruppo falso mancante o non valido
+mod_ls_options=Opzioni dell'elenco di directory
+mod_ls_strict=Sostituire le opzioni utente?
+
+mod_auth_home=Home directory
+mod_auth_none=Nessuna
+
+stop_err=Impossibile arrestare il server FTP
+stop_einetd=Non è possibile arrestare il daemon del server in modalità inetd.
+stop_erun=Non correndo
+
+apply_err=Impossibile applicare la configurazione FTP
+apply_egone=Non più in esecuzione
+
+log_anonc=Configura FTP anonimo per il server $1 
+log_anons=FTP anonimo riconfigurato per il server $1 
+log_anond=FTP anonimo eliminato per il server $1 
+log_anonm=FTP anonimo modificato manualmente per il server $1 
+log_anon=Modificato $1 in FTP anonimo per il server $2 
+
+eafter=Verifica della configurazione non riuscita: $1 Le modifiche non sono state salvate.
+proftpd_apply=Applica i cambiamenti
+proftpd_stop=Arresta ProFTPd
+proftpd_start=Avviare ProFTPd

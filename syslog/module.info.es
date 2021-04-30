@@ -1,1 +1,1 @@
-desc_es=Hist&#243;ricos (Logs) del Sistema
+desc_es=Históricos (Logs) del Sistema

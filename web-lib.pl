@@ -8,7 +8,7 @@ $main::default_debug_log_size = 10*1024*1024;
 
 $webmin_feedback_address = "feedback\@webmin.com";
 $default_lang = "en";
-$default_charset = "iso-8859-1";
+$default_charset = "UTF-8";
 
 =head2 unique(string, ...)
 

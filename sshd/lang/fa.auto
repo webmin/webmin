@@ -1,0 +1,46 @@
+index_econfig=The SSH server config file $1 was not found on your system. Maybe SSHD is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_stop=توقف سرور
+index_stopmsg=برای متوقف کردن سرور در حال اجرا SSH روی این دکمه کلیک کنید. پس از متوقف شدن ، هیچ کاربر قادر نخواهد بود از طریق SSH وارد سیستم شوید ، اما اتصالات موجود همچنان فعال خواهند بود.
+index_type=نوع کلید SSH:
+index_rsa1=RSA (برای SSH v1)
+index_rsa=RSA (برای SSH v2)
+index_dsa=DSA (برای SSH v2)
+
+users_dsa=اجازه تأیید هویت DSA (SSH 2) را دارید؟
+users_authkeys_set=پرونده در خانه
+users_eauthkeys=پرونده کلیدهای مجاز به ظاهر نامعتبر یا نامعتبر است
+users_maxauthtries=حداکثر تلاش برای ورود به هر اتصال
+users_emaxauthtries=تعداد تلاش های ورود به سیستم یا تعداد غیر عددی در هر اتصال وجود ندارد
+users_chal=از احراز هویت چالش-پاسخ استفاده می کنید؟
+
+net_all4=تمام آدرس های IPv4
+net_all6=تمام آدرس های IPv6
+net_sel=نشانی ..
+
+host_prots1=فقط 1
+host_prots2=2 فقط
+host_prots12=1 و سپس 2
+host_prots21=2 و سپس 1
+
+log_stop=سرور SSH متوقف شده است
+log_start=سرور SSH را راه اندازی کرد
+log_apply=پیکربندی کاربردی
+log_manual=Manually editing config file $1
+
+sync_type=نوع کلید
+sync_auto=&lt;خودکار&gt;
+
+keys_title=کلیدهای SSH میزبان
+keys_desc=در این صفحه امکان مشاهده کلیدهای SSH برای این هاست فراهم می شود.
+keys_none=در پیکربندی SSHD هیچ ورودی HostKey یافت نشد.
+
+manual_title=پیکربندی پرونده ها را ویرایش کنید
+manual_ecannot=شما مجاز به ویرایش فایل پیکربندی سرور SSH نیستید
+manual_ok=ویرایش کنید
+manual_efile=پرونده انتخاب شده بخشی از پیکربندی سرور SSH نیست
+manual_file=ویرایش پرونده پیکربندی:
+manual_edata=هیچ چیز وارد نشده است!
+manual_err=ذخیره پرونده پیکربندی انجام نشد
+
+dknown_err=میزبانهای شناخته شده حذف نشدند
+dknown_enone=هیچ یک انتخاب نشده است

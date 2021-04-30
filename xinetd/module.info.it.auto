@@ -1,0 +1,3 @@
+name_it=xinetd
+longdesc_it=Modifica server gestiti da Xinetd, un sostituto di inetd.
+desc_it=Servizi di rete

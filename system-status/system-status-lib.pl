@@ -6,8 +6,8 @@ no warnings 'redefine';
 BEGIN { push(@INC, ".."); };
 eval "use WebminCore;";
 &init_config();
-our ($module_config_directory, %config, %gconfig, $module_name,
-     $no_log_file_changes, $module_var_directory);
+our ($module_config_directory, $module_var_directory, $var_directory, 
+     %config, %gconfig, $module_name, $no_log_file_changes);
 our $systeminfo_cron_cmd = "$module_config_directory/systeminfo.pl";
 our $collected_info_file = "$module_config_directory/info";
 if (!-e $collected_info_file) {
@@ -19,10 +19,11 @@ if (!-e $historic_info_dir) {
 	}
 our $get_collected_info_cache;
 
-# collect_system_info()
+# collect_system_info([manual-refesh-no-cache-even-for-heavy])
 # Returns a hash reference containing system information
 sub collect_system_info
 {
+my ($manual) = @_;
 my $info = { };
 
 if (&foreign_check("proc")) {
@@ -87,29 +88,41 @@ if (defined(&proc::get_cpu_io_usage)) {
 		}
 	}
 
+# Regenerate OS cache
+if (defined($manual) && $manual eq 'manual') {
+	if (&foreign_available('webmin')) {
+		&foreign_require("webmin");
+		&webmin::detect_operating_system();
+		}
+	}
+
 return $info;
 }
 
-# get_collected_info()
+# get_collected_info([manual-refesh-no-cache])
 # Returns the most recently collected system information, or the current info
 sub get_collected_info
 {
-if ($get_collected_info_cache) {
-	# Already in RAM
-	return $get_collected_info_cache;
-	}
-my @st = stat($collected_info_file);
-my $i = $config{'collect_interval'} || 'none';
-if ($i ne 'none' && @st && $st[9] > time() - $i * 60 * 2) {
-	my $infostr = &read_file_contents($collected_info_file);
-	if ($infostr) {
-		my $info = &unserialise_variable($infostr);
-		if (ref($info) eq 'HASH' && keys(%$info) > 0) {
-			$get_collected_info_cache = $info;
+my ($manual) = @_;
+if (!defined($manual) ||
+     defined($manual) && $manual ne 'manual') {
+	if ($get_collected_info_cache) {
+		# Already in RAM
+		return $get_collected_info_cache;
+		}
+	my @st = stat($collected_info_file);
+	my $i = $config{'collect_interval'} || 'none';
+	if ($i ne 'none' && @st && $st[9] > time() - $i * 60 * 2) {
+		my $infostr = &read_file_contents($collected_info_file);
+		if ($infostr) {
+			my $info = &unserialise_variable($infostr);
+			if (ref($info) eq 'HASH' && keys(%$info) > 0) {
+				$get_collected_info_cache = $info;
+				}
 			}
 		}
 	}
-$get_collected_info_cache ||= &collect_system_info();
+$get_collected_info_cache ||= &collect_system_info($manual);
 return $get_collected_info_cache;
 }
 
@@ -203,8 +216,8 @@ if (&foreign_check("net") && $gconfig{'os_type'} =~ /-linux$/) {
 		my $out = &backquote_command(
 			"ifconfig ".quotemeta($iname)." 2>/dev/null");
 		&reset_environment();
-		my $rx = $out =~ /RX\s+bytes:\s*(\d+)/i ? $1 : undef;
-		my $tx = $out =~ /TX\s+bytes:\s*(\d+)/i ? $1 : undef;
+		my $rx = $out =~ /RX\s+bytes:\s*(\d+)/i ? $1 : 0;
+		my $tx = $out =~ /TX\s+bytes:\s*(\d+)/i ? $1 : 0;
 		$rxtotal += $rx;
 		$txtotal += $tx;
 		}
@@ -284,7 +297,9 @@ foreach my $stat (@stats) {
 my %maxpossible;
 &read_file("$historic_info_dir/maxes", \%maxpossible);
 foreach my $stat (@stats) {
-	if ($stat->[2] && $stat->[2] > $maxpossible{$stat->[0]}) {
+	if ($stat->[2] &&
+	    (!$maxpossible{$stat->[0]} ||
+	     $stat->[2] > $maxpossible{$stat->[0]})) {
 		$maxpossible{$stat->[0]} = $stat->[2];
 		}
 	}
@@ -300,7 +315,7 @@ my ($stat, $start, $end) = @_;
 my @rv;
 my $last_time;
 my $now = time();
-open(HISTORY, "$historic_info_dir/$stat");
+open(HISTORY, "<$historic_info_dir/$stat");
 while(<HISTORY>) {
 	chop;
 	my ($time, $value) = split(" ", $_);
@@ -347,7 +362,7 @@ return \%maxpossible;
 sub get_historic_first_last
 {
 my ($stat) = @_;
-open(HISTORY, "$historic_info_dir/$stat") || return (undef, undef);
+open(HISTORY, "<$historic_info_dir/$stat") || return (undef, undef);
 my $first = <HISTORY>;
 $first || return (undef, undef);
 chop($first);
@@ -428,6 +443,7 @@ if (!$config{'collect_notemp'} &&
 		my $st = &smart_status::get_drive_status($d->{'device'}, $d);
 		foreach my $a (@{$st->{'attribs'}}) {
 			if (($a->[0] =~ /^Temperature\s+Celsius$/i ||
+			     $a->[0] =~ /^Temperature$/i ||
 			     $a->[0] =~ /^Airflow\s+Temperature\s+Cel/i) &&
 			    $a->[1] > 0) {
 				push(@rv, { 'device' => $d->{'device'},
@@ -442,10 +458,11 @@ if (!$config{'collect_notemp'} &&
 return @rv;
 }
 
-# scheduled_collect_system_info()
+# scheduled_collect_system_info([manual])
 # Called by Webmin Cron to collect system info
 sub scheduled_collect_system_info
 {
+my ($manual) = @_;
 my $start = time();
 
 # Make sure we are not already running
@@ -462,7 +479,7 @@ $WebminCore::gconfig{'logfullfiles'} = 0;
 $no_log_file_changes = 1;
 &lock_file($collected_info_file);
 
-my $info = &collect_system_info();
+my $info = &collect_system_info($manual);
 if ($info) {
 	&save_collected_info($info);
 	&add_historic_collected_info($info, $start);

@@ -1,0 +1,2 @@
+desc_pt_BR=Detector de intrusão Fail2Ban
+longdesc_pt_BR=O Fail2ban protege seu sistema contra ataques de força bruta, detectando-os e bloqueando seus IPs de origem.

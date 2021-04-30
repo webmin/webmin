@@ -33,7 +33,7 @@ if ($in{'type'} == 6) {
 	print &ui_links_row(\@links);
 	print &ui_columns_start([ $text{'global_type'},
 				  $text{'global_ext'} ]);
-	open(MIME, $mfile);
+	open(MIME, "<$mfile");
 	$line = 0;
 	while(<MIME>) {
 		chop;

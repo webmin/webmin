@@ -1,0 +1,112 @@
+index_title=PPTP VPN klientas
+index_epptp=Jūsų sistemoje nerasta PPTP kliento programos $1. Galbūt jis neįdiegtas, arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_eppp=Jūsų sistemoje nėra įdiegta PPP serverio programa $1. PPTP priklauso nuo jo veikimo.
+index_eoptions=Visuotinis PPTP PPP parinkčių failas $1 neegzistuoja. Sukurkite jį arba sureguliuokite <a href='$2'>modulio konfigūraciją</a>, kad būtų naudojamas kitas failas arba jo išvis nėra.
+index_header=Apibrėžti tuneliai
+index_none=Dar nėra apibrėžti PPTP tuneliai.
+index_tunnel=Tunelis $1 
+index_add=Pridėkite naują PPTP VPN tunelį.
+index_conn=Prisijungti prie:
+index_pass=su pasirenkamu slaptažodžiu:
+index_conndesc=Spustelėkite šį mygtuką, norėdami prijungti pasirinktą PPTP VPN tunelį naudodami dabartinę jo konfigūraciją.
+index_disc=Atsijungti nuo:
+index_discdesc=Spustelėkite šį mygtuką, norėdami atjungti pasirinktą šiuo metu aktyvų PPTP VPN tunelį ir pašalinti visus maršrutus per jį.
+index_return=PPTP tunelių sąrašas
+index_opts=Redaguoti visuotines PPP parinktis
+index_optsdesc=Spustelėkite šį mygtuką, norėdami redaguoti PPP parinktis, kurios taikomos visiems PPTP VPN tuneliams.
+index_version=$1 PPPd versija
+index_boot=Prijunkite įkrovos metu:
+index_noboot=&lt;Nesijungti&gt;
+index_bootdesc=Pakeiskite šią parinktį, jei norite kontroliuoti, ar pasirinktas PPTP VPN ryšys pradedamas įkrovos metu, ar ne.
+
+disc_err=Nepavyko atjungti tunelio
+disc_egone=Nebeveikia
+disc_ekill=Nepavyko nužudyti pppd proceso
+disc_done=$1 tunelis buvo sėkmingai atjungtas.
+
+conn_err=Nepavyko sujungti tunelio
+conn_egone=Tunelis nebeegzistuoja
+cone_ealready=Jau prijungtas
+conn_einvalid=Trūksta serverio IP adreso konfigūracijos faile
+conn_title=Jungiamasis tunelis
+conn_cmd=PPTP ryšio užmezgimas su komanda $1.
+conn_ok=.. ryšys sėkmingai aktyvuotas naudojant $1 sąsają. Vietinis adresas yra $2, o nuotolinis - $3.
+conn_timeout=.. Nepavyko prisijungti! Norėdami sužinoti, kodėl, žiūrėkite toliau pateiktuose žurnalų pranešimuose.
+conn_routes=Maršrutų pridėjimas komandomis ..
+conn_mppe=MPPE protokolui VPN šifruoti reikia PPP demono ir branduolio palaikymo. Tačiau aukščiau pateiktos klaidos rodo, kad jūsų sistemoje nėra vieno ar abiejų. Jei PPTP serveriui nereikia MPPE, pabandykite išjungti visas su juo susijusias parinktis <a href='$1'>visuotinės PPP parinktys</a> puslapyje.
+
+edit_title1=Pridėti PPTP tunelį
+edit_title2=Redaguoti PPTP tunelį
+edit_header=PPTP VPN tunelio parinktys
+edit_name=Tunelio pavadinimas
+edit_server=Prisijunkite prie serverio
+edit_login=Prisijungimas kaip vartotojas
+edit_same=Sistemos pagrindinio kompiuterio vardas
+edit_pass=Prisijungimas su slaptažodžiu
+edit_remote=Serverio vardas
+edit_auto=Automatinis
+edit_adddef=Pridėti numatytąjį maršrutą?
+edit_def1=Per kitą galą
+edit_def2=Per vartus ..
+edit_deldef=Ištrinti seną numatytąjį maršrutą?
+edit_routes=Maršrutai, kuriuos reikia pridėti prisijungus
+edit_type=Tipas
+edit_type0=&nbsp;
+edit_type1=Tinklas
+edit_type2=Vienas šeimininkas
+edit_net=Tinklas arba pagrindinis kompiuteris
+edit_mask=„Netmask“
+edit_gw=Per vartus
+edit_gw_def=Kita pabaiga
+edit_unknown=Kitos komandos <tt>maršrutas</tt>
+edit_file=PPP parinkčių failas
+edit_none=Nė vienas
+edit_global=Standartinis globalus failas
+edit_ofile=Kita byla ..
+
+save_err=Nepavyko išsaugoti tunelio
+save_ename=Nėra tunelio pavadinimo
+save_eserver=Trūksta arba netinkamas serveris, prie kurio galima prisijungti
+save_elogin=Trūksta arba netinkamas prisijungimo vardas
+save_eremote=Trūksta arba netinkamas nuotolinio serverio vardas
+save_edef=Trūksta arba netinkamas numatytasis maršruto šliuzas
+save_enet=Netinkamas tinklo adresas maršrute $1 
+save_emask=Netinkamas tinklo maskavimas maršrute $1 
+save_egw=Netinkami tinklo šliuzai maršrute $1 
+save_ehost=Netinkamas pagrindinio kompiuterio IP adresas maršrute $1 
+save_emask2=Priimančiajam maršrutui $1 tinklo tinklo nereikia
+save_egw2=Netinkami pagrindinio kompiuterio šliuzai $1 
+save_erename=Nepavyko pervardyti tunelio failo
+save_eclash=Tunelis arba PPP bendraamžis tuo pačiu pavadinimu jau yra
+save_efile=Trūksta arba netinkamas PPP parinkčių failas
+
+opts_title=Visuotinės PPP parinktys
+opts_desc=Žemiau pateikti parametrai paimti iš $1 ir bus taikomi visiems tuneliams, kurie yra nustatyti naudoti standartinį visuotinį PPP parinkčių failą.
+opts_header=Visų tunelių PPP parinktys
+opts_mtu=Maksimalus siunčiančio paketo dydis
+opts_mru=Maksimalus gaunamo paketo dydis
+opts_err=Nepavyko išsaugoti PPP parinkčių
+opts_emtu=Trūksta arba netinkamas didžiausias siunčiančio paketo dydis
+opts_emru=Trūksta arba netinkamas didžiausias gaunamo paketo dydis
+opts_msdesc=Žemiau pateiktos parinktys įgalina MPPE šifravimą, naudojamą „Windows VPN“ serveriuose. Tačiau MPPE reikia palaikyti tiek PPP demoną, tiek operacinės sistemos branduolį.
+
+mppe_mppe-40=Naudoti 40 bitų MPPE šifravimą?
+mppe_mppe-128=Naudoti 128 bitų MPPE šifravimą?
+mppe_mppe-stateless=Įgalinti MPPE režimą be pilietybės?
+mppe_mppe=Įgalinti MPPE šifravimą?
+mppe_m2=Turi būti naudojamas
+mppe_m0=Negalima naudoti
+mppe_d0=Neįgalus
+mppe_d1=Leidžiama
+mppe_mppe-stateful=Įgalinti valstybinį MPPE režimą?
+mppe_old=Įspėjimas - senojo tipo MPPE direktyvos $1 buvo rastos jūsų konfigūracijos faile, net jei jūsų PPP demonas palaiko naujojo stiliaus direktyvas.
+mppe_new=Įspėjimas - naujo tipo MPPE direktyvos $1 buvo rastos jūsų konfigūracijos faile, net jei jūsų PPP demonas palaiko tik senojo stiliaus direktyvas.
+
+log_create=Sukurtas PPTP tunelis $1 
+log_update=Modifikuotas PPTP tunelis $1 
+log_delete=Ištrintas PPTP tunelis $1 
+log_conn=Prijungtas tunelis $1 
+log_conn_l=Prijungtas tunelis $1 su vietiniu adresu $2 
+log_failed=Nepavyko sujungti tunelio $1 
+log_disc=Tunelis $1 atjungtas
+log_opts=Redaguoti globalūs viešojo ir privačiojo sektorių partnerystės variantai

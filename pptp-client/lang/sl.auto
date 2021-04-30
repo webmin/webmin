@@ -1,0 +1,112 @@
+index_title=PPTP VPN odjemalec
+index_epptp=Program odjemalca PPTP $1 v vašem sistemu ni bil najden. Mogoče ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
+index_eppp=Program strežnika PPP $1 ni nameščen v vašem sistemu. PPTP je odvisen od njenega delovanja.
+index_eoptions=Globalna datoteka možnosti PPP PPP $1 ne obstaja. Ustvarite ga ali prilagodite konfiguracijo modula <a href='$2'></a> tako, da uporabite drugo datoteko ali pa sploh nobene.
+index_header=Določeni predori
+index_none=Še ni definiran predor PPTP.
+index_tunnel=Predor $1 
+index_add=Dodajte nov tunel PPTP VPN.
+index_conn=Poveži z:
+index_pass=z izbirnim geslom:
+index_conndesc=Kliknite ta gumb, če želite izbrati tunel PPTP VPN s svojo trenutno konfiguracijo.
+index_disc=Prekini povezavo z:
+index_discdesc=Kliknite ta gumb, da prekinete izbrani trenutno aktivni tunel PPTP VPN in odstranite vse poti skozi njega.
+index_return=Seznam tunelov PPTP
+index_opts=Urejanje globalnih možnosti PPP
+index_optsdesc=Kliknite ta gumb, če želite urediti možnosti PPP, ki veljajo za vse tunele PPTP VPN.
+index_version=Različica PPPd $1 
+index_boot=Povežite se ob zagonu:
+index_noboot=&lt;Ne poveži&gt;
+index_bootdesc=Spremenite to možnost, če želite nadzirati, ali se izbrana povezava PPTP VPN zažene ob zagonu ali ne.
+
+disc_err=Tunela ni bilo mogoče izklopiti
+disc_egone=Ni več aktivna
+disc_ekill=Programa pppd ni bilo mogoče ubiti
+disc_done=Tunel $1 je bil uspešno prekinjen.
+
+conn_err=Ni bilo mogoče povezati predora
+conn_egone=Tunel ne obstaja več
+cone_ealready=Že povezano
+conn_einvalid=V konfiguracijski datoteki manjka IP naslov strežnika
+conn_title=Povezovanje predora
+conn_cmd=Vzpostavitev povezave PPTP z ukazom $1 ..
+conn_ok=.. povezava uspešno aktivirana z vmesnikom $1. Vaš lokalni naslov je $2, oddaljeni naslov pa $3.
+conn_timeout=.. Povezava ni uspela! Preverite spodnja sporočila dnevnika za informacije, zakaj.
+conn_routes=Dodajanje poti z ukazi ..
+conn_mppe=Protokol MPPE za šifriranje VPN zahteva podporo demona PPP in jedra. Vendar zgornje napake kažejo, da ena ali oboje ni na voljo v vašem sistemu. Če strežnik PPTP ne potrebuje MPPE, poskusite na strani <a href='$1'>globalne možnosti PPP</a> izklopiti vse možnosti, povezane z njim.
+
+edit_title1=Dodajte predor PPTP
+edit_title2=Urejanje predora PPTP
+edit_header=Možnosti tunela PPTP
+edit_name=Ime tunela
+edit_server=Povežite se s strežnikom
+edit_login=Prijavite se kot uporabnik
+edit_same=Ime gostitelja sistema
+edit_pass=Prijavite se z geslom
+edit_remote=Ime strežnika
+edit_auto=Samodejno
+edit_adddef=Dodaj privzeto pot?
+edit_def1=Preko drugega konca
+edit_def2=Preko prehoda ..
+edit_deldef=Ali želite izbrisati staro privzeto pot?
+edit_routes=Poti, ki jih je treba dodati po povezavi
+edit_type=Vtipkajte
+edit_type0=&nbsp;
+edit_type1=Omrežje
+edit_type2=En sam gostitelj
+edit_net=Omrežje ali gostitelj
+edit_mask=Mrežna maska
+edit_gw=Preko prehoda
+edit_gw_def=Drugi konec
+edit_unknown=Drugi ukazi <tt>route</tt>
+edit_file=Datoteka z možnostmi PPP
+edit_none=Noben
+edit_global=Standardna globalna datoteka
+edit_ofile=Druga datoteka ..
+
+save_err=Predora ni bilo mogoče shraniti
+save_ename=Manjka ime tunela
+save_eserver=Manjkajoči ali neveljaven strežnik za povezavo
+save_elogin=Manjkajoče ali neveljavno ime za prijavo
+save_eremote=Manjkajoče ali neveljavno ime oddaljenega strežnika
+save_edef=Manjkajoči ali neveljavni privzeti prehod poti
+save_enet=Neveljaven omrežni naslov v poti $1 
+save_emask=Neveljavna omrežna maska v poti $1 
+save_egw=Neveljaven prehod za omrežje v poti $1 
+save_ehost=Neveljaven IP naslov gostitelja v poti $1 
+save_emask2=Za gostiteljsko pot $1 ni potrebna nobena maska
+save_egw2=Neveljaven prehod za gostitelja v poti $1 
+save_erename=Preimenovanja datoteke predora ni uspelo
+save_eclash=Tunel ali PPP vrstnik z istim imenom že obstaja
+save_efile=Manjkajoča ali neveljavna datoteka z možnostmi PPP
+
+opts_title=Možnosti globalnega javno-zasebnega partnerstva
+opts_desc=Spodnje nastavitve so vzete iz $1 in bodo veljale za vse predore, ki so nastavljeni na uporabo standardne datoteke z možnostmi PPP.
+opts_header=Možnosti PPP za vse predore
+opts_mtu=Največja velikost pošiljanja paketov
+opts_mru=Največja velikost sprejemnega paketa
+opts_err=Ni bilo mogoče shraniti globalnih možnosti PPP
+opts_emtu=Manjkajoča ali neveljavna največja velikost paketnega pošiljanja
+opts_emru=Manjkajoča ali neveljavna največja velikost prejemajočega paketa
+opts_msdesc=Spodnje možnosti omogočajo šifriranje MPPE, ki ga uporabljajo strežniki Windows VPN. MPPE pa potrebuje podporo tako v demonu PPP kot v jedru operacijskega sistema.
+
+mppe_mppe-40=Uporabljate 40-bitno MPPE šifriranje?
+mppe_mppe-128=Uporabljate 128-bitno MPPE šifriranje?
+mppe_mppe-stateless=Ali omogočite način MPPE brez državljanstva?
+mppe_mppe=Ali želite omogočiti šifriranje MPPE?
+mppe_m2=Uporabiti ga je treba
+mppe_m0=Ni mogoče uporabiti
+mppe_d0=Onemogočeno
+mppe_d1=Dovoljeno
+mppe_mppe-stateful=Ali želite omogočiti stanje v stanju MPPE?
+mppe_old=Opozorilo - V konfiguracijski datoteki so bile najdene stare MPPE direktive $1, čeprav vaš demon PPP podpira nove smernice.
+mppe_new=Opozorilo - Nove konfiguracijske MPPE direktive $1 so bile najdene v vaši konfiguracijski datoteki, čeprav vaš demon PPP podpira samo direktive starega sloga.
+
+log_create=Ustvarjen tunel PPTP $1 
+log_update=Spremenjen tunel PPTP $1 
+log_delete=Izbrisan predor PPTP $1 
+log_conn=Povezani predor $1 
+log_conn_l=Povezani predor $1 z lokalnim naslovom $2 
+log_failed=Povezave predora $1 ni bilo mogoče
+log_disc=Odklopljen tunel $1 
+log_opts=Urejene globalne možnosti PPP

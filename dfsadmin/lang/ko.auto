@@ -1,0 +1,51 @@
+index_title=NFS 공유
+index_add=새 디렉토리 공유를 시작하십시오.
+index_dir=예배 규칙서
+index_clients=고객
+index_everyone=여러분
+index_delete=선택된 공유 삭제
+index_none=현재이 시스템에서 디렉토리를 내 보내지 않습니다.
+index_apply=변경 승인
+index_applydesc=현재 파일 공유 구성을 적용하려면이 버튼을 클릭하십시오. 이렇게하면 위에 나열된 모든 디렉토리를 지정된 옵션으로 사용할 수 있습니다.
+index_return=주식리스트
+
+edit_title1=공유 편집
+edit_title2=공유 만들기
+edit_header1=세부 정보 공유
+edit_dir=예배 규칙서
+edit_desc=기술
+edit_ro=읽기 전용 액세스
+edit_rw=읽기-쓰기 액세스
+edit_root=루트 액세스
+edit_none=없음
+edit_all=모든 호스트
+edit_listed=나열된 호스트 ..
+edit_header2=공유 옵션
+edit_nosub=하위 디렉토리를 마운트 할 수 있습니까?
+edit_nosuid=setuid 파일을 허용 하시겠습니까?
+edit_des=클라이언트는 DES를 사용해야합니까?
+edit_kerberos=고객은 kerberos를 사용해야합니까?
+edit_anon=익명의 사용자
+edit_anon0=미 설정
+edit_anon1=접근 금지
+edit_aclok=ACL을 허용 하시겠습니까?
+edit_public=WebNFS 공유?
+edit_index=WebNFS 색인 파일
+
+save_err=공유를 저장하지 못했습니다
+save_edirectory='$1'은 (는) 유효한 디렉토리 이름이 아닙니다.
+save_edirectory2='$1'디렉토리가 존재하지 않습니다
+save_erw=읽기 / 쓰기를 공유 할 호스트를 나열하지 않았습니다
+save_ero=읽기 전용으로 공유 할 호스트를 나열하지 않았습니다
+save_eroot=루트를 공유 할 호스트를 나열하지 않았습니다
+save_ealready='$1'디렉토리가 이미 공유되고 있습니다
+save_ehost='$1'호스트가 존재하지 않습니다
+
+acl_view=NFS 공유를 편집 할 수 있습니까?
+
+ecannot=NFS 공유를 관리 할 수 없습니다
+
+delete_err=공유를 삭제하지 못했습니다.
+delete_enone=선택된 사항 없음
+
+restart_err=변경 사항을 적용하지 못했습니다

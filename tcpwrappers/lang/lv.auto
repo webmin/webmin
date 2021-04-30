@@ -1,0 +1,33 @@
+index_title=TCP iesaiņojumi
+index_return=indekss
+index_allowtitle=Atļautie saimnieki
+index_denytitle=Liegti saimnieki
+index_norule=<tt>$1</tt> vēl nav definēti nekādi noteikumi.
+index_nofile=Fails '$1' neeksistē - pārbaudiet <a href="/config.cgi?tcpwrappers">moduļa konfigurāciju</a>.
+index_add=Pievienojiet jaunu kārtulu.
+index_service=Dēmons
+index_hosts=Saimnieki
+index_cmd=Pavēle
+index_delete=Dzēst atlasīto
+index_none=neviena
+
+edit_title1allow=Izveidot atļauju kārtulu
+edit_title2allow=Rediģēt Atļaut kārtulu
+edit_title1deny=Izveidot nolieguma noteikumu
+edit_title2deny=Rediģēt nolieguma noteikumu
+edit_eid=Šis noteikums netika atrasts
+edit_header=Kārtulu iespējas
+edit_service=Pakalpojumi
+edit_except=Izņemot pakalpojumus
+edit_hosts=Attālie saimnieki
+edit_hostsexcept=Izņemot saimniekus
+edit_cmd=Čaulas komandas
+edit_efound=Demons '$1' netika atrasts xinetd konfigurācijā.
+
+save_errtitle=Kļūda saglabāšanas noteikumā
+save_ehost=Resursdatora ieejā ir sliktas rakstzīmes
+save_ecmd=Komandu ievadē ir sliktas rakstzīmes
+save_eservice=Dēmonu nosaukumos ir sliktas rakstzīmes
+
+del_errtitle=Kļūda noteikumu dzēšanā
+del_enone=Nav noteikumu, kas būtu dzēsts

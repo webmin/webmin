@@ -44,7 +44,7 @@ foreach $d (&expand_usr64($Config{'privlib'}),
 	    &expand_usr64($Config{'vendorlib_stem'} ? $Config{'vendorlib_stem'} :
 				        	      $Config{'vendorlib'}),
 	    &expand_usr64($Config{'installprivlib'})) {
-	next if (!$d);
+	next if (!$d || !-d $d);
 	next if ($donedir{$d});
 	local $f;
 	open(FIND, "find ".quotemeta($d)." -name .packlist -print |");
@@ -65,7 +65,7 @@ foreach $d (&expand_usr64($Config{'privlib'}),
 
 		# Add the files in the .packlist
 		local (%donefile, $l);
-		open(FILE, $f);
+		open(FILE, "<".$f);
 		while($l = <FILE>) {
 			chop($l);
 			$l =~ s/^\/tmp\/[^\/]+//;
@@ -239,7 +239,7 @@ local $pf = $f;
 local $ver = $_[0]->{'version'};
 $pf =~ s/\.pm$/\.pod/;
 local ($got_version, $got_name);
-open(MOD, $pf) || open(MOD, $f);
+open(MOD, "<".$pf) || open(MOD, "<".$f);
 while(<MOD>) {
 	if (/^=head1\s+name/i && !$got_name) {
 		$in_name = 1;

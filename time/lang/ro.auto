@@ -1,0 +1,70 @@
+index_title=Timpul sistemului
+index_timeserver=Serverul timpului
+index_addresses=Nume sau adrese de server de tip Timeserver
+index_zone=Fus orar
+index_eformat=Formatul de ieșire <tt>hwclock</tt> nerecunoscut
+index_sched=Sincronizați la program?
+index_schedyes=Da, uneori mai jos ..
+index_sync=Sincronizați și aplicați
+index_hardware2=Setați și timpul hardware
+index_boot=Sincronizați când începe Webmin?
+index_tzheader=Fus orar
+index_tz=Schimbați fusul orar la
+index_ehwclock=$1 a eșuat : $2 
+index_tabtime=Potriveste ora
+index_tabzone=Schimbați fusul orar
+index_tabsync=Sincronizarea serverului de timp
+index_desctime=Acest formular este pentru a schimba ora curentă a sistemului, care este utilizat de toate procesele de rulare. La sistemele de operare care au un ceas hardware separat, poate fi folosit și pentru a seta acest lucru.
+index_desczone=Acest formular vă permite să setați fusul orar implicit al sistemului, care este utilizat pentru a converti ora sistemului într-un format cititor și compensat.
+index_descsync=Acest formular este pentru configurarea sistemului pentru a sincroniza automat ora cu un server de la distanță. Sincronizarea se va face folosind protocolul Unix <tt>time</tt> sau NTP, în funcție de comenzile instalate și de ce suportă sistemul de la distanță.
+
+action_save=salva
+action_apply=aplica
+action_sync=Setați ora sistemului în funcție de timpul hardware
+action_sync_s=Setați timpul hardware în funcție de timpul sistemului
+action_timeserver_sys=Sincronizați timpul sistemului
+action_timeserver_hw=Sincronizați timpul hardware
+action_savezone=Schimbați fusul orar
+
+acl_sys=Utilizatorul poate edita timpul de sistem?
+acl_hw=Utilizatorul poate edita timpul hardware?
+acl_timezone=Utilizatorul poate seta fusul orar?
+acl_ntp=Se poate sincroniza cu serverul de timp?
+acl_yes=da
+acl_no=Nu
+acl_error=Aveți acces la modulul de timp al sistemului, dar nu puteți edita nici timpul sistemului, nici timpul hardware
+acl_nosys=Nu aveți voie să editați timpul sistemului
+acl_nohw=Nu aveți voie să editați timpul hardware
+acl_nontp=Nu vi se permite sincronizarea cu un server de timp
+
+sys_title=Timpul sistemului
+hw_title=Timpul hardware
+
+day=Zi
+month=Lună
+date=Data
+hour=Ora
+year=An
+minute=Minut
+second=Al doilea
+
+error_cnf=Eroare: nu a fost găsită comanda $1 
+error_hw=Nu se poate seta ora hardware : $1 
+error_sync=Nu se poate sincroniza cu timpul sistemului : $1 
+error_ediff=Serverul de timp diferit de ora locală este prea mare: $1 zile
+error_entp=Sincronizarea timpului NTP a eșuat : $1 
+error_etimeserver=Nu există servere de timp pentru a sincroniza cu cele introduse
+
+log_set_date=Setați ora sistemului la $1 
+log_set_hwclock=Setați ceasul hardware la $1 
+log_remote_date=Timp de sistem preluat de la $2 
+log_remote_hwclock=Timp de hardware preluat de la $2 
+log_remote_date_l=Timp de sistem preluat $1 de la $2 
+log_remote_hwclock_l=Timpul hardware preluat $1 de la $2 
+log_sync=Sincronizarea timpului sistemului cu timpul hardware
+log_sync_s=Timpul hardware sincronizat cu timpul sistemului
+log_timezone=Fus orar modificat la $1 
+
+timezone_err=Nu a reușit să salveze fusul orar
+timezone_ecannot=Nu aveți voie să schimbați fusul orar
+timezone_enone=Nicio zonă selectată

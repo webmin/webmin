@@ -1,25 +1,25 @@
 index_title=Client ADSL
-index_eadsl=La commande $1 RP-PPPoE n'a pas &#233;t&#233; trouv&#233;e sur votre syst&#232;me ou n'est pas valide. Peut-&#234;tre n'est-elle pas install&#233;e ou votre <a href='$2'>configuration du module</a> est-elle incorrecte.
-index_econfig=Le fichier de configuration $1 ADSL RP-PPPoE n'a pas &#233;t&#233; trouv&#233; sur votre syst&#232;me. Peut-&#234;tre n'est-il pas install&#233; ou votre <a href='$2'>configuration du module</a> est-elle incorrecte.
-index_emodem=Le fichier de configuration actuel concerne un modem sous Redhat Linux, non une connexion ADSL. Utilisez la page <a href='$2'>configuration du module</a> pour sp&#233;cifier un des autres fichiers <tt>ifcfg-ppp*</tt> dans $1 ou un qui n'existe pas encore, de fa&#231;on &#224; ce que le module le cr&#233;e pour vous.
-index_stop=Arr&#234;ter ADSL
-index_stopdesc=Votre connexion ADSL est actuellement active avec l'adresse IP $1. Cliquez sur ce bouton pour l'arr&#234;ter avec la commande $2.
-index_start=D&#233;marrer ADSL
-index_startdesc=Votre connexion ADSL est actuellement inactive. Cliquez sur ce bouton pour la d&#233;marrer avec la commande $1.
-index_boot=D&#233;marrer lors de l&#39;amor&#231;age
-index_bootdesc=Changez cette option pour contr&#244;ler si votre connexion ADSL est invoqu&#233;e lors de l'amor&#231;age ou non.
-index_return=&#224; l'index du module 
+index_eadsl=La commande $1 RP-PPPoE n'a pas été trouvée sur votre système ou n'est pas valide. Peut-être n'est-elle pas installée ou votre <a href='$2'>configuration du module</a> est-elle incorrecte.
+index_econfig=Le fichier de configuration $1 ADSL RP-PPPoE n'a pas été trouvé sur votre système. Peut-être n'est-il pas installé ou votre <a href='$2'>configuration du module</a> est-elle incorrecte.
+index_emodem=Le fichier de configuration actuel concerne un modem sous Redhat Linux, non une connexion ADSL. Utilisez la page <a href='$2'>configuration du module</a> pour spécifier un des autres fichiers <tt>ifcfg-ppp*</tt> dans $1 ou un qui n'existe pas encore, de façon à ce que le module le crée pour vous.
+index_stop=Arrêter ADSL
+index_stopdesc=Votre connexion ADSL est actuellement active avec l'adresse IP $1. Cliquez sur ce bouton pour l'arrêter avec la commande $2.
+index_start=Démarrer ADSL
+index_startdesc=Votre connexion ADSL est actuellement inactive. Cliquez sur ce bouton pour la démarrer avec la commande $1.
+index_boot=Démarrer lors de l'amorçage
+index_bootdesc=Changez cette option pour contrôler si votre connexion ADSL est invoquée lors de l'amorçage ou non.
+index_return=à l'index du module 
 index_version=RP-PPPoE version $1
-index_esetup=Le fichier de configuration $1 Redhat ADSL n'existe pas sur votre syst&#232;me. N&#233;anmoins, ce module peut le configurer pour vous avec les r&#233;glages de base par d&#233;faut en cliquant sur le bouton ci-dessous.
+index_esetup=Le fichier de configuration $1 Redhat ADSL n'existe pas sur votre système. Néanmoins, ce module peut le configurer pour vous avec les réglages de base par défaut en cliquant sur le bouton ci-dessous.
 index_setup=Mettre en place le fichier de configuration
 index_cancel=Annuler la connexion
-index_canceldesc=Le client ADSL essaie actuellement d'&#233;tablir une connexion. Cliquez sur ce bouton pour annuler la tentative avec la commande $1.
+index_canceldesc=Le client ADSL essaie actuellement d'établir une connexion. Cliquez sur ce bouton pour annuler la tentative avec la commande $1.
 
 index_header=Options de configuration du client ADSL
-index_desc=Les r&#233;glages ci-dessous s'appliquent &#224; n'importe quelle connexion ADSL nouvelle que d&#233;marre votre syst&#232;me. Si vous les changez, vous devez arr&#234;ter la connexion et la red&#233;marrer pour que les modifications entrent en vigueur.
+index_desc=Les réglages ci-dessous s'appliquent à n'importe quelle connexion ADSL nouvelle que démarre votre système. Si vous les changez, vous devez arrêter la connexion et la redémarrer pour que les modifications entrent en vigueur.
 index_eth=Interface Ethernet
 index_other=Autre...
-index_demand=Se connecter &#224; la demande ?
+index_demand=Se connecter à la demande ?
 index_timeout=Oui, avec un temps imparti
 index_secs=secondes
 index_user=Se connecter en tant qu'utilisateur
@@ -27,39 +27,38 @@ index_sec=Se connecter avec un mot de passe
 index_dns=Obtenir la configuration DNS du FAI ?
 index_save=Enregistrer la configuration
 index_mss=Limiter la taille des paquets ?
-index_psize=Oui, &#224;
+index_psize=Oui, à
 index_bytes=octets
-index_fw=Pare-feu &#224; activer lors de la connexion
+index_fw=Pare-feu à activer lors de la connexion
 index_fw_none=Aucun
-index_fw_standalone=Pour un seul h&#244;te
+index_fw_standalone=Pour un seul hôte
 index_fw_masquerade=Pour une passerelle NAT 
 index_connect=Temps imparti pendant lequel tenter une connexion
 index_forever=Toujours
 
-start_err=Impossible de d&#233;marrer la connexion ADSL 
-start_title=D&#233;marrage de l'ADSL
-start_ip=Une connexion ADSL a &#233;t&#233; &#233;tablie avec l'adresse IP $1.
-start_demand=Du fait que le mode connexion &#224; la demande est activ&#233;, votre connexion ADSL ne sera d&#233;marr&#233;e que quand c'est n&#233;cessaire.
-start_bg=La connexion ADSL n'a pas &#233;t&#233; d&#233;marr&#233;e dans l'intervalle de 20 secondes. Le client ADSL continuera &#224; tenter de se connecter en arri&#232;re-plan jusqu'&#224; ce qu'il y r&#233;ussisse.
+start_err=Impossible de démarrer la connexion ADSL 
+start_title=Démarrage de l'ADSL
+start_ip=Une connexion ADSL a été établie avec l'adresse IP $1.
+start_demand=Du fait que le mode connexion à la demande est activé, votre connexion ADSL ne sera démarrée que quand c'est nécessaire.
+start_bg=La connexion ADSL n'a pas été démarrée dans l'intervalle de 20 secondes. Le client ADSL continuera à tenter de se connecter en arrière-plan jusqu'à ce qu'il y réussisse.
 
 save_err=Impossible d'enregistrer la configuration ADSL
 save_eeth=Il semble que l'interface ethernet est manquante ou invalide
-save_etimeout=Temps imparti &#224; la demande manquant ou invalide
+save_etimeout=Temps imparti à la demande manquant ou invalide
 save_euser=Nom d'utilisateur manquant ou invalide
-save_econnect=Temps imparti &#224; la connexion manquant ou invalide
+save_econnect=Temps imparti à la connexion manquant ou invalide
 save_emss=Taille de paquets maximale manquante ou invalide
 save_title=Enregistrer la configuration
-save_desc=Votre configuration client ADSL a &#233;t&#233; enregistr&#233;e avec succ&#232;s, mais ne sera pas utilis&#233;e jusqu'&#224; ce que vous vous reconnectiez.
+save_desc=Votre configuration client ADSL a été enregistrée avec succès, mais ne sera pas utilisée jusqu'à ce que vous vous reconnectiez.
 
-stop_err=Impossible d'arr&#234;ter la connexion ADSL 
-stop_title=Arr&#234;ter ADSL
-stop_ok=Votre connexion ADSL a &#233;t&#233; arr&#234;t&#233;e avec succ&#232;s.
+stop_err=Impossible d'arrêter la connexion ADSL 
+stop_title=Arrêter ADSL
+stop_ok=Votre connexion ADSL a été arrêtée avec succès.
 stop_failed=Votre connexion ADSL est encore active pour une raison quelconque !
 
-log_save=Enregistr&#233; la configuration client
-log_stop=Arr&#234;t&#233; ADSL
-log_start=D&#233;marr&#233; ADSL
-log_bootup=Activ&#233; ADSL lors de l'amor&#231;age
-log_bootdown=D&#233;sactiv&#233; ADSL lors de l'amor&#231;age
-log_setup=Mis en place la configuration par d&#233;faut
-
+log_save=Enregistré la configuration client
+log_stop=Arrêté ADSL
+log_start=Démarré ADSL
+log_bootup=Activé ADSL lors de l'amorçage
+log_bootdown=Désactivé ADSL lors de l'amorçage
+log_setup=Mis en place la configuration par défaut

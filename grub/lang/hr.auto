@@ -1,0 +1,75 @@
+index_title=GRUB Utovarivač za dizanje
+index_add=Dodajte novu mogućnost pokretanja.
+index_global=Uredi globalne mogućnosti
+index_globalmsg=Uredite globalne mogućnosti pokretanja koje se primjenjuju na sve izbore izbornika za pokretanje i odaberite uređaj na koji je GRUB instaliran.
+index_install=Instalirajte GRUB
+index_installmsg=Instalirajte GRUB boot loader na $1 za prikaz gore navedenih opcija pri pokretanju. To će nadjačati bilo koji postojeći uređaj za pokretanje sustava, kao što je LILO, i može učiniti da vaš sustav ne može pokrenuti sustav!
+index_none=Nisu definirane mogućnosti pokretanja. Obavezno dodajte barem jednu prije instaliranja gruba.
+index_efile=Datoteka izbornika GRUB $1 u vašem sustavu nije pronađena. Možda GRUB nije instaliran ili je <a href='$2'>konfiguracija modula</a> netočna.
+index_epath=Izvršni GRUB $1 nije pronađen u vašem sustavu. Možda GRUB nije instaliran ili je <a href='$2'>konfiguracija modula</a> netočna.
+index_return=popis opcija
+
+title_add=Dodajte mogućnost pokretanja
+title_edit=Uredi mogućnost pokretanja
+title_header=Pojedinosti o izborniku za pokretanje
+title_title=Opcija naslova
+title_root=Dijeljenje slike slike
+title_noverify=Ne montirajte i ne ovjeravajte particiju
+title_other=Druga datoteka datoteke
+title_sel=Odabran
+title_boot=Operativni sustav za pokretanje
+title_kernel=Zrno
+title_kfile=Put do kernela
+title_args=Opcije kernela
+title_initrd=Početna datoteka ramdiska
+title_modules=Dodatni moduli
+title_chain=Ostali OS
+title_chain_def=Od prvog sektora particije
+title_chain_file=Iz datoteke lančanog utovarivača
+title_makeactive=Da li je particija korijena aktivna?
+title_none1=nijedan
+title_none2=(unos izbornika bez pokretanja)
+title_err=Spremanje mogućnosti pokretanja nije uspjelo
+title_etitle=Nedostaje naslov opcije
+title_eroot=Nedostaje particija korijena
+title_ekernel=Nedostaje ili nije važeći kernel staza
+title_echain=Nedostaje ili nije važeća datoteka za pokretanje lanca
+title_edev=Nepodržani uređaj particije korijena $1 
+title_einitrd=Nedostaje početno ime datoteke ramdisk
+title_lock=Lozinka je zaključana?
+
+global_title=Opcije
+global_header=Opcije izbornika za globalno pokretanje
+global_default=Zadana opcija pokretanja
+global_fallback=Opcija rezervnog pokretanja
+global_first=Prvo na popisu
+global_timeout=Istek vremena prije učitavanja zadanih postavki
+global_forever=Čekaj zauvijek
+global_secs=sekundi
+global_install=Instalirajte GRUB na disk/particiju
+global_sel=Odabran
+global_other=drugo
+global_password=Lozinka za dizanje
+global_none=nijedan
+global_password_file=Koristite datoteku izbornika ako je unesena lozinka:
+global_err=Spremanje globalnih opcija nije uspjelo
+global_etimeout=Nedostaje ili nevažeće vremensko ograničenje
+global_edev=Nepodržani instalacijski disk/particija $1 
+global_eother=Nedostaje ili nije važeći disk/particija
+global_epassword=Nedostaje ili nije važeća lozinka za pokretanje
+global_epasswordfile=Nedostaje zamjensko ime datoteke izbornika
+
+install_title=Instalirajte GRUB
+install_err=Instalacija GRUB nije uspjela
+install_efind=Nije moguće pronaći datoteku izbornika
+install_desc=Instaliranje GRUB-a na $1 pomoću naredbi $2 i $3 ..
+install_ok=.. instalirati dovršeno.
+install_failed=.. instalacija nije uspjela!
+
+log_create_title=Stvorena opcija pokretanja $1 
+log_delete_title=Izbrisana opcija pokretanja $1 
+log_modify_title=Izmijenjena opcija pokretanja $1 
+log_up_title=Premještena opcija za dizanje $1 
+log_down_title=Pomaknuta opcija za pokretanje prema dolje $1 
+log_global=Izmijenjene su globalne opcije
+log_install=Instaliran GRUB

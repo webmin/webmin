@@ -1,0 +1,58 @@
+index_title=Статус SMART Drive
+index_ecmd=Команда управління SMART $1 не знайдена у вашій системі або неправильно встановлена в конфігурації модуля <a href='$2'></a>. Він повинен бути встановлений до використання цього модуля.
+index_ecmd2=Здається, що команда $1 не є командою управління SMART. Він повинен бути правильно встановлений у конфігурації модуля <a href='$2'></a>, перш ніж цей модуль може бути використаний.
+index_version=Версія SMARTsuite $1 
+index_show=Показати стан накопичувача:
+index_ok=Показати
+index_eidescsi=У вашій системі не знайдено накопичувачів IDE, SCSI або SATA.
+index_drive=Стан накопичувача $1 
+index_drivesub=Стан накопичувача $1, диск $2 
+index_desc=Місцезнаходження
+index_size=Розмір диска
+index_model=Зробіть і моделюйте
+index_support=Підтримує SMART?
+index_enabled=SMART увімкнено?
+index_check=Пройшов перевірку приводу?
+index_short=Короткий самотест
+index_ext=Розширений самотест
+index_data=Тест збору даних
+index_errors=Помилки зафіксовано
+index_ecount=Виявлено $1 помилки
+index_attrs=Додаткові атрибути SMART
+index_raw=Повний звіт про стан SMART
+index_return=індекс модуля
+index_family=Модель сімейства
+index_serial=Серійний номер
+index_capacity=Ємність
+index_norm=Нормалізовано:
+
+monitor_type=SMART Drive Check
+monitor_type2=SSD Wearout
+monitor_drive=Заїхати, щоб перевірити
+monitor_errors=Перевірити журнал помилок також?
+monitor_errorsinc=Так, але попереджуйте лише у разі збільшення кількості помилок
+monitor_other=Інший ..
+monitor_edrive=Відсутній або недійсний привід для перевірки
+monitor_nosuch=Такого приводу немає
+monitor_nosmart=Немає підтримки SMART
+monitor_errorsfound=Повідомлено $1 помилки
+monitor_errorsinced=Помилки зросли з $2 до $1 
+monitor_wearlevel=Збій, якщо рівень зносу опуститься нижче
+monitor_ewearlevel=Недійсний відсоток зносу
+monitor_nowearout=Привід не повідомляє про показник SSD
+monitor_wornout=Рівень зносу впав до $1 
+
+short_title=Короткий самотест
+short_doing=Початок короткого самотестування $1.
+short_failed=.. не вдалося!
+short_ok=.. тест розпочато нормально. Про результати дивіться стан диска на головній сторінці модуля.
+
+ext_title=Розширений самотест
+ext_doing=Початок розширеного самотестування $1.
+ext_failed=.. не вдалося!
+ext_ok=.. тест розпочато нормально. Про результати дивіться стан диска на головній сторінці модуля.
+
+data_title=Тест збору даних
+data_doing=Початок автономного збору даних на $1.
+data_failed=.. не вдалося!
+data_ok=.. збір розпочався ОК. Про результати дивіться стан диска на головній сторінці модуля.

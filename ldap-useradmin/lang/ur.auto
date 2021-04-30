@@ -1,0 +1,103 @@
+index_title=ایل ڈی اے پی صارفین اور گروپس
+index_ebase=No LDAP client configuration file was found on your system, so the user and group bases must be set on the <a href='$1'>module config</a> page.
+index_eperl=The $1 Perl module that this module requires is not installed or is not working properly. <a href='$2'>Click here</a> to have it downloaded and installed now.
+index_eperl2=پرل کے ذریعہ ماڈیول کو لوڈ کرنے کی کوشش کرنے میں غلطی کی اطلاع دی گئی تھی۔
+index_eldap=$1. Click here to adjust the <a href='$2'>module configuration</a>.
+index_eschema=Webmin has connected to the LDAP server, but failed to fetch the schema. Make sure that access has not been denied in the <a href='$1'>LDAP Server</a> module.
+index_eimap=$1. Maybe your <a href='$2'>module configuration</a> is incorrect.
+index_emd5=This module has been <a href='$1'>configured</a> to use MD5 encryption for passwords, but the $2 Perl module is not installed. <a href='$3'>Click here</a> to have the $2 module downloaded and installed.
+index_eslappasswd=This module has been <a href='$1'>configured</a> to use LDAP MD5 encryption for passwords, but the program <tt>$2</tt> used for encrypting a password is not installed.
+index_eusearch= $1 : $2 کے تحت صارفین کو تلاش کرنے میں ناکام
+index_uadd=نیا ایل ڈی اے پی صارف شامل کریں۔
+index_gadd=ایک نیا ایل ڈی اے پی گروپ شامل کریں۔
+index_unone=$1 کے تحت کوئی ایل ڈی اے پی صارف نہیں ملا۔
+index_gnone=$1 کے تحت کوئی LDAP گروپ نہیں ملا۔
+index_return=صارف کی فہرست
+index_greturn=گروپ کی فہرست
+index_egsearch= $1 : $2 سے کم گروپوں کی تلاش میں ناکام
+index_samba=سمبا۔
+index_cyrus=IMAP۔
+index_users=ایل ڈی اے پی صارفین
+index_groups=ایل ڈی اے پی گروپس
+
+imap_econn=IMAP سرور$1 سے رابطہ قائم کرنے میں ناکام
+imap_elogin=IMAP سرور$1 میں بطور $2 : $3 لاگ ان کرنے میں ناکام
+conn_eldap_host=آپ کے سسٹم پر کوئی ایل ڈی اے پی کلائنٹ کنفگریشن فائل نہیں ملا ، لہذا ایل ڈی اے پی سرور ماڈیول کنفیج صفحے پر سیٹ ہونا ضروری ہے
+conn_elogin=آپ کے سسٹم پر کوئی ایل ڈی اے پی کلائنٹ کنفگریشن فائل نہیں ملا ، لہذا ایل ڈی اے پی لاگ ان کو ماڈیول کنفیج صفحے پر سیٹ کرنا ضروری ہے
+conn_efile_open=LDAP بائنڈ اسناد کی فائل کو نہیں کھول سکا:
+
+uedit_cap=صارف کی صلاحیتیں
+uedit_samba=سمبا لاگ ان؟
+uedit_cyrus=IMAP سرور لاگ ان؟
+uedit_dn=صارف کا LDAP DN
+uedit_classes=ایل ڈی اے پی آبجیکٹ کلاسز
+uedit_alias=میل عرفی نام
+uedit_fields=اضافی ایل ڈی اے پی فیلڈز
+uedit_firstname=پہلا نام
+uedit_lastname=آخری نام
+uedit_raw=ایل ڈی اے پی اوصاف
+uedit_return=صارف کی تفصیلات
+uedit_quota=IMAP کوٹہ
+uedit_unquota=مت بدلاؤ
+uedit_sambapassopts=سانبہ پاس ورڈ کے اختیارات
+uedit_sambapwdlastset=آخری پاس ورڈ کی تازہ کاری
+uedit_sambapwdcanchange=پاس ورڈ تبدیل ہوسکتا ہے
+uedit_sambabadpasswordcount=غلط پاس ورڈ کی گنتی
+uedit_sambaacctflags=اکاؤنٹ کے جھنڈے
+
+usave_eadd=صارف LDAP ڈیٹا بیس میں شامل کرنے میں ناکام :$1
+usave_emod=ایل ڈی اے پی ڈیٹا بیس میں صارف کو تبدیل کرنے میں ناکام :$1
+usave_emoddn=LDAP ڈیٹا بیس میں صارف کا نام تبدیل کرنے میں ناکام :$1
+usave_egroupmod=LDAP ڈیٹا بیس میں $1 گروپ میں ترمیم کرنے میں ناکام :$2
+usave_edelete=ایل ڈی اے پی ڈیٹا بیس سے صارف کو حذف کرنے میں ناکام :$1
+usave_eicreate=صارف بنانے میں ناکام
+usave_eiacl=ایڈمن کو حقوق دینے میں ناکام
+usave_eimap=صارف LDAP ڈیٹا بیس میں کامیابی کے ساتھ محفوظ ہوا تھا ، لیکن IMAP میں ایک خرابی پیش آگئی: $1 : $2 
+usave_eisub=$1 فولڈر میں صارف کو سبسکرائب کرنے میں ناکام
+usave_eiquota=IMAP کوٹہ مقرر کرنے میں ناکام
+usave_eifolder=$1 فولڈر بنانے میں ناکام
+usave_eilogin=نئے صارف کی حیثیت سے لاگ ان کرنے میں ناکام
+usave_ecyruspass=صارف کا عام پاس ورڈ درج کرنا ضروری ہے یا IMAP کو فعال کرتے وقت پاس ورڈ کی ضرورت نہیں ہے۔
+usave_ebook=ایڈریس بک انٹری بنانے میں ناکام :$1
+usave_emodbook=ایڈریس بک انٹری میں ترمیم کرنے میں ناکام :$1
+usave_emodbookdn=ایڈریس بک انٹری کا نام تبدیل کرنے میں ناکام :$1
+usave_egone=صارف اب موجود نہیں ہے!
+usave_ex86=یہ ماڈیول غیر انٹیل سسٹم میں سامبا صارف کے پاس ورڈ کو سیٹ کرنے کے لئے استعمال نہیں کیا جاسکتا ، کیوں کہ یہ مرتب شدہ x86 پروگرام پر منحصر ہے۔
+usave_esamba=یہ ماڈیول سامبا صارف کے لئے پاس ورڈ ترتیب دینے کے لئے استعمال نہیں کیا جاسکتا ، کیونکہ سامبا ونڈوز فائل شیئرنگ ماڈیول انسٹال نہیں ہے۔
+usave_ealiasdup=عرف$1 پہلے ہی$2 استعمال کرچکا ہے
+usave_eattrdup=آبجیکٹ$1 پہلے ہی$2 $3 استعمال کر رہا ہے
+usave_eattrdupu=صارف$1 پہلے ہی$2 $3 استعمال کر رہا ہے
+usave_eattrdupg=گروپ$1 پہلے ہی$2 $3 استعمال کر رہا ہے
+usave_ereal=اصلی نام چھوٹا ہوا ہے
+usave_equota=گم شدہ یا غلط IMAP کوٹہ
+
+search_err=$1 کے تحت $1 کی تلاش ناکام ہوگئی :$3
+
+gedit_dn=گروپ کا ایل ڈی اے پی ڈی این
+gedit_return=گروپ کی تفصیلات
+gedit_cap=گروپ کی صلاحیتیں
+gedit_samba=سمبا گروپ؟
+
+gsave_egone=گروپ اب موجود نہیں!
+gsave_edelete=LDAP ڈیٹا بیس سے گروپ کو حذف کرنے میں ناکام :$1
+gsave_eadd=LDAP ڈیٹا بیس میں گروپ شامل کرنے میں ناکام :$1
+gsave_emod=LDAP ڈیٹا بیس میں گروپ کو تبدیل کرنے میں ناکام :$1
+gsave_emoddn=LDAP ڈیٹا بیس میں گروپ کا نام تبدیل کرنے میں ناکام :$1
+
+gdel_group=ایل ڈی اے پی گروپ کے اندراج کو حذف کیا جارہا ہے ..
+
+udel_pass=ایل ڈی اے پی صارف کے اندراج کو حذف کیا جارہا ہے ..
+udel_book=ایڈریس بک سے حذف ہو رہا ہے ..
+udel_imap=IMAP فولڈر کو حذف کیا جارہا ہے ..
+udel_warnimap=ہوم ڈائرکٹری کو خارج کرتے وقت موجودہ میل پوسٹ باکس حذف ہوجائیں گے!
+udel_failed=.. ناکام!  :$1
+
+raw_title=ایل ڈی اے پی اوصاف
+raw_name=صفت نام
+raw_value=قدریں
+raw_for=$1 کے لئے
+
+batch_samba=نئے صارفین کے لئے سامبا اکاؤنٹ بنائیں؟
+batch_imap=نئے صارفین کے لئے IMAP اکاؤنٹ بنائیں؟
+batch_descafter3=In <b>create</b> and <b>modify</b> lines, you can optionally append extra fields containing LDAP attributes in <i>name</i>=<i>value</i> format, to be assigned to the new or modified users.
+batch_eattr=لائن $1 : $2 پر غلط LDAP وصف

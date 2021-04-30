@@ -1,0 +1,46 @@
+edit_usage=Uso de disco
+edit_nfs_opt4=Opções específicas do NFSv4
+
+smb_eworkgroup=Nenhum grupo de trabalho definido na página Configuração do módulo
+smb_emaster=Nenhum mestre de navegação foi encontrado para o grupo de trabalho $1
+
+solaris_lvm=Dispositivo LVM
+solaris_vg=Grupo de volume
+solaris_lv=Volume lógico
+solaris_vxfs=Dispositivo VXFS
+solaris_hfs=Dispositivo HFS
+
+linux_nodev=Proibir arquivos de dispositivo?
+linux_noexec=Proibir a execução de binários?
+linux_ifuser=Se montável pelos usuários
+linux_quotaj=Tipo de armazenamento de cota
+linux_quotaj1=Journalling
+linux_quotaj0=Regular
+linux_etimeo=O tempo limite deve ser um número
+linux_netdev=Aguarde até que as interfaces de rede estejam ativadas?
+linux_nofail=Continuar a inicialização mesmo se a montagem falhar?
+linux_nfsvers=Forçar versão NFS
+linux_nfsdefault=Usar versão padrão
+linux_nounix=Desativar extensões CIFS Unix?
+linux_noserverino=Gerar números de inode no lado do cliente?
+linux_cvers=Versão CIFS
+linux_ecvers=A versão CIFS deve ser um número
+
+freebsd_ide=Disco rígido IDE
+freebsd_device=Dispositivo
+freebsd_slice=Fatia
+freebsd_part=Partição
+freebsd_scsi=Disco SCSI
+freebsd_other=Outro dispositivo
+freebsd_select=Partição de disco
+freebsd_idedev=Dispositivo IDE $1, fatia $2, partição $3
+freebsd_scsidev=Dispositivo SCSI $1, fatia $2, partição $3
+freebsd_edevpath=Outro dispositivo deve ser um caminho absoluto, como <tt>/dev/cdrom</tt>
+freebsd_edevfile=O arquivo do dispositivo '$1' não existe
+
+cswap_file=O arquivo de troca $1 não existe.
+cswap_size=Crie e monte um arquivo de troca com tamanho
+
+acl_sysinfo=Mostrar dados de disco disponíveis no Painel?
+sysinfo_total=Total
+sysinfo_dev=ID de dispositivo

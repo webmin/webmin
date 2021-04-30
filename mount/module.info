@@ -1,4 +1,3 @@
-risk=low medium high
 name=Disk Manager
 category=system
 os_support=*-linux solaris freebsd hpux openbsd netbsd 

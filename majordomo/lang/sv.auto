@@ -1,0 +1,45 @@
+index_eversion2=Majordomo-versionen $1 hittades inte under programkatalogen $2. Kanske är din <a href='$3'>modulkonfiguration</a> fel, eller så är majordomo inte installerat.
+index_esendmail2=Sendmail är antingen inte installerat eller inte korrekt konfigurerat på ditt system. Kontrollera <a href=$2>Sendmail-modulen</a> -konfigurationen.
+index_epostfix=Postfix är antingen inte installerat eller inte korrekt konfigurerat på ditt system. Kontrollera <a href='$1'>Postfix-modulen</a> -konfigurationen.
+index_esendmail3=Sendmail Webmin-modulen som behövs för att hantera alias är inte installerad.
+index_version=Majordomo-version $1 
+index_name=Namnlista
+index_info=Listinfo
+index_mail=E-postadress
+index_moderated=Modererad
+index_count=antal användare
+global_saved=(Sparade)
+create_archive=Arkivera postlista?
+create_archiveyear=I årlig fil
+create_archivemonth=I månadsfil
+create_archiveday=I daglig fil
+create_minimum=Minsta obligatorisk information
+cdigest_ecannot=Du har inte tillåtelse att skapa nya digest-listor
+cdigest_title=Skapa digestlista
+cdigest_header=Nya detaljer för detaljerad lista
+cdigest_name=Namnlista
+cdigest_list=Gör störning av listan
+cdigest_owner=Lista underhållarens adress
+cdigest_password=Underhållslösenord
+cdigest_desc=Beskrivning
+cdigest_info=Inledande meddelande
+cdigest_footer=Bästa sidfoten för digest
+cdigest_when=Skicka digga när
+cdigest_old=Äldsta meddelande är $1 dagar gammalt
+cdigest_lines=Meddelanden totalt $1 rader
+cdigest_err=Det gick inte att skapa listan över upptagning
+cdigest_edays=Ogiltigt eller saknat antal dagar
+cdigest_elines=Ogiltigt eller saknat antal rader
+acl_lall=Alla listor
+acl_lsel=Vald ..
+alias_err=Det gick inte att konfigurera alias
+alias_eowner=E-postadress saknas
+check_title=Kolla Majordomo Config
+check_test=Test för. ..
+check_result=Resultat / ytterligare kontroll
+check_status=Status
+check_perm=Behörigheter
+check_exec=världen körbar!
+check_write=världen skrivbar!
+check_read=världsläsbar!
+check_possible=Möjligt problem

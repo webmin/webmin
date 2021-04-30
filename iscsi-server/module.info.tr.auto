@@ -1,0 +1,2 @@
+desc_tr=iSCSI Sunucusu
+longdesc_tr=Netbsd-iscsi paketiyle iSCSI protokolünü kullanarak disk aygıtlarını ağ üzerinde paylaşın.

@@ -9,10 +9,8 @@ index_list=lista..
 index_add=Aggiungi una nuova stampante
 index_stop=Ferma lo Scheduling
 index_stopmsg=Seleziona il pulsante per fermare il processo di stampa. 
-Questo blocca la stampa a utenti locali e remoti.
 index_start=Inizia lo Scheduling
 index_startmsg=Seleziona il pulsante per iniziare il processo di stampa. 
-Questo permette a utenti locali e remoti di stampare sul tuo sistema
 index_return=lista stampante
 
 edit_eedit=Non sei autorizzato a modificare la stampante
@@ -67,7 +65,6 @@ save_edeny=Nessun utente non autorizzato inserito
 save_euser=L'utente '$1' non esiste
 save_etype=Devi selezionare almeno un tipo di driver per accettare
 save_emax=La dimensione massima per un processo di stampa deve essere un 
-numero intero
 save_efile='$1' non esiste
 save_erhost=L'host remoto '$1' non esiste
 save_erqueue='$1' non e' un nome valido di coda remota di stampa
@@ -82,7 +79,6 @@ jobs_when=Inviato alle
 jobs_file=Nome del file
 jobs_cancel=Seleziona l'ID del processo per eliminarlo
 jobs_cancelview=Seleziona l'ID del processo per eliminarlo, o seleziona la 
-dimensione del processo per vederlo.
 jobs_none=Nessun processo di stampa in $1
 
 cancel_ecannot=Non sei autorizzato ad eliminare i processi di stampa
@@ -106,9 +102,7 @@ webmin_prog=Programma
 webmin_driver=Driver Webmin
 webmin_uniprint=Driver Uniprint
 webmin_edrivers=Errore nell'utilizzare il driver da $1. I driver Webmin 
-della stampante che usano il ghostscript non sono disponibili
 webmin_egs=Il comando $1 non e' stato trovato. I driver Webmin della 
-stampante che usano il ghostscript non sono disponibili
 webmin_edriver='$1' non esiste
 
 caldera_none=Nessuno
@@ -147,8 +141,4 @@ acl_printers=Stampanti che questo utente puo' configurare
 acl_add=Puo' aggiungere nuove stampanti?
 acl_cancel=Puo' vedere o annullare i processi della stampante ?
 acl_stop=Puo' bloccare o far partire lo scheduler ?
-acl_all=Su tutte le stampanti
 acl_listed=Solo sulle stampanti selezionate..
-
-
-

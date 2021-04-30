@@ -1,0 +1,2 @@
+desc_zh=Fail2Ban入侵检测器
+longdesc_zh=Fail2ban通过检测并阻止其源IP来保护系统免受暴力攻击。

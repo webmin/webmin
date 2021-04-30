@@ -1,0 +1,20 @@
+edit_mins=Pöytäkirja
+edit_hours=tuntia
+edit_days=päivää
+edit_months=Kuukaudet
+edit_weekdays=Arkisin
+edit_all=Kaikki
+edit_selected=Valittu ..
+edit_run=Juokse nyt
+edit_clone=Klooni Job
+edit_return=cron työ
+edit_special1=Yksinkertainen aikataulu ..
+edit_special0=Alla valitut ajat ja päivämäärät ..
+edit_special_hourly=tunti-
+edit_special_daily=Päivittäin (keskiyöllä)
+edit_special_weekly=Viikoittain (sunnuntaina)
+edit_special_monthly=Kuukausittain (1. päivä)
+edit_special_yearly=Vuosittain (1. tammikuuta)
+
+log_success=Suoritettiin onnistuneesti <tt>$2</tt> hakemistossa <tt>$1</tt>
+log_failure=<tt>$2</tt> suorittaminen <tt>$1</tt> : $3 epäonnistui

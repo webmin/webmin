@@ -1,0 +1,112 @@
+index_title=לקוח VPN VPN
+index_epptp=תוכנית לקוח PPTP $1 לא נמצאה במערכת שלך. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+index_eppp=תוכנית שרת PPP $1 אינה מותקנת במערכת שלך. ה- PPTP תלוי בה כדי לפעול.
+index_eoptions=קובץ האפשרויות PPP PPP הגלובלי $1 אינו קיים. אנא צור אותו, או התאם את <a href='$2'>תצורת המודול</a> לשימוש בקובץ אחר, או בכלל לא.
+index_header=מנהרות מוגדרות
+index_none=טרם הוגדרו מנהרות PPTP.
+index_tunnel=מנהרה $1 
+index_add=הוסף מנהרת PPTP VPN חדשה.
+index_conn=להתחבר ל:
+index_pass=עם סיסמא אופציונלית:
+index_conndesc=לחץ על כפתור זה כדי לחבר את מנהרת ה- PPTP VPN שנבחרה באמצעות התצורה הנוכחית שלה.
+index_disc=התנתק מ:
+index_discdesc=לחץ על כפתור זה כדי לנתק את מנהרת ה- PPTP VPN הפעילה שנבחרה כעת ולהסיר את כל המסלולים דרכה.
+index_return=רשימת מנהרות PPTP
+index_opts=ערוך אפשרויות PPP גלובליות
+index_optsdesc=לחץ על כפתור זה כדי לערוך את אפשרויות PPP החלות על כל מנהרות ה- PPTP VPN.
+index_version=גרסת PPPd $1 
+index_boot=התחבר באתחול:
+index_noboot=&lt;אל תתחבר&gt;
+index_bootdesc=שנה אפשרות זו כדי לשלוט אם חיבור ה- PPTP VPN שנבחר מופעל בזמן האתחול או לא.
+
+disc_err=ניתוק המנהרה נכשל
+disc_egone=כבר לא פעיל
+disc_ekill=נכשל להרוג את תהליך ה- pppd
+disc_done=המנהרה $1 נותקה בהצלחה.
+
+conn_err=חיבור המנהרה נכשל
+conn_egone=המנהרה כבר לא קיימת
+cone_ealready=כבר מחובר
+conn_einvalid=כתובת ה- IP של השרת חסרה בקובץ התצורה
+conn_title=מנהרת חיבור
+conn_cmd=הקמת חיבור PPTP עם הפקודה $1.
+conn_ok=.. חיבור הופעל בהצלחה באמצעות הממשק $1. הכתובת המקומית שלך היא $2, והכתובת המרוחקת היא $3.
+conn_timeout=.. חיבור נכשל! עיין בהודעות היומן שלהלן למידע מדוע.
+conn_routes=הוספת מסלולים עם פקודות ..
+conn_mppe=פרוטוקול MPPE להצפנת VPN דורש תמיכה ב- PPP וגרעין. עם זאת, השגיאות שלמעלה מראות שאחת או שתיהן אינן זמינות במערכת שלך. אם שרת ה- PPTP אינו דורש MPPE, נסה לכבות את כל האפשרויות הקשורות אליו בדף <a href='$1'>אפשרויות PPP גלובליות</a>.
+
+edit_title1=הוסף מנהרת PPTP
+edit_title2=ערוך מנהרת PPTP
+edit_header=אפשרויות מנהרת VPN VPN
+edit_name=שם המנהרה
+edit_server=התחבר לשרת
+edit_login=התחבר כמשתמש
+edit_same=שם מארח מערכת
+edit_pass=כניסה עם סיסמא
+edit_remote=שם השרת
+edit_auto=אוטומטי
+edit_adddef=להוסיף מסלול ברירת מחדל?
+edit_def1=דרך קצה אחר
+edit_def2=דרך שער ..
+edit_deldef=למחוק מסלול ברירת מחדל ישן?
+edit_routes=נתיבים להוסיף לאחר חיבור
+edit_type=סוג
+edit_type0=&nbsp;
+edit_type1=רשת
+edit_type2=מארח יחיד
+edit_net=רשת או מארח
+edit_mask=Netmask
+edit_gw=דרך שער
+edit_gw_def=צד שני
+edit_unknown=פקודות <tt>מסלול</strong> אחרות
+edit_file=קובץ אפשרויות PPP
+edit_none=אף אחד
+edit_global=קובץ גלובלי סטנדרטי
+edit_ofile=קובץ אחר ..
+
+save_err=שמירת המנהרה נכשלה
+save_ename=שם המנהרה חסר
+save_eserver=שרת חסר או לא חוקי להתחברות אליו
+save_elogin=שם כניסה חסר או לא חוקי
+save_eremote=שם השרת המרוחק חסר או לא תקף
+save_edef=שער ברירת מחדל חסר או לא חוקי
+save_enet=כתובת רשת לא חוקית במסלול $1 
+save_emask=מסכת רשת לא חוקית במסלול $1 
+save_egw=שער לא חוקי לרשת במסלול $1 
+save_ehost=כתובת IP לא חוקית של מארח במסלול $1 
+save_emask2=אין מסיכת רשת דרושה עבור מסלול מארח $1 
+save_egw2=שער לא חוקי למארח במסלול $1 
+save_erename=נכשל שם השם של קובץ המנהרה מחדש
+save_eclash=קיים כבר מנהרה או מנהרת PPP עם אותו שם
+save_efile=קובץ אפשרויות PPP חסר או לא חוקי
+
+opts_title=אפשרויות PPP גלובליות
+opts_desc=ההגדרות שלהלן נלקחות מ- $1 ויחולו על כל המנהרות המוגדרות להשתמש בקובץ אפשרויות PPP גלובאלי סטנדרטי.
+opts_header=אפשרויות PPP לכל המנהרות
+opts_mtu=גודל מנות מקסימלי לשלוח
+opts_mru=גודל מנה מקסימלי לקבל
+opts_err=שמירת אפשרויות PPP גלובליות נכשלה
+opts_emtu=גודל מנות משלוח מקסימלי חסר או לא חוקי
+opts_emru=גודל מנות קבלה מקסימלי חסר או לא חוקי
+opts_msdesc=האפשרויות שלהלן מאפשרות קידוד MPPE, המשמש את שרתי VPN של Windows. עם זאת, MPPE דורש תמיכה הן בדמון ה- PPP והן בגרעין מערכת ההפעלה.
+
+mppe_mppe-40=האם להשתמש בהצפנת MPPE 40 סיביות?
+mppe_mppe-128=משתמשים בהצפנת MPPE 128 סיביות?
+mppe_mppe-stateless=האם לאפשר מצב MPPE ללא מצב?
+mppe_mppe=אפשר הצפנת MPPE?
+mppe_m2=חייב להשתמש
+mppe_m0=לא ניתן לשימוש
+mppe_d0=נכים
+mppe_d1=מותר
+mppe_mppe-stateful=האם לאפשר מצב MPPE מצבי?
+mppe_old=אזהרה - הוראות MPPE בסגנון הישן $1 נמצאו בקובץ התצורה שלך, למרות שדמון ה- PPP שלך תומך בהנחיות בסגנון החדש.
+mppe_new=אזהרה - הוראות MPPE בסגנון החדש $1 נמצאו בקובץ התצורה שלך, למרות שדמון ה- PPP שלך תומך רק בהנחיות בסגנון הישן.
+
+log_create=יצר מנהרת PPTP $1 
+log_update=מנהרת PPTP שונה 1
+log_delete=מנהרת PPTP $1 נמחקה
+log_conn=מנהרה מחוברת $1 
+log_conn_l=מנהרה מחוברת $1 עם כתובת מקומית $2 
+log_failed=חיבור המנהרה $1 נכשל
+log_disc=מנהרה מנותקת $1 
+log_opts=אפשרויות PPP גלובליות ערוכות

@@ -62,9 +62,11 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 					push(@addrs, $v);
 					}
 				}
-			my $a = shift(@addrs);
-			($cfg->{'address'}, $cfg->{'netmask'}) =
-				&split_addr_netmask($a);
+			if (!$cfg->{'dhcp'}) {
+				my $a = shift(@addrs);
+				($cfg->{'address'}, $cfg->{'netmask'}) =
+					&split_addr_netmask($a);
+				}
 			}
 		foreach my $a6 (@addrs6) {
 			if ($a6 =~ /^(\S+)\/(\d+)$/) {
@@ -276,9 +278,32 @@ else {
 	splice(@$lref, $iface->{'line'},
 	       $iface->{'eline'} - $iface->{'line'} + 1);
 	&flush_file_lines($iface->{'file'});
+	if (&is_yaml_empty($iface->{'file'})) {
+		&unlink_file($iface->{'file'});
+		}
 	&unlock_file($iface->{'file'});
-	# XXX also delete file if empty?
 	}
+}
+
+# is_yaml_empty(file)
+# Return 1 if a YAML file contains only network and ethernets line, with no
+# other interfaces
+sub is_yaml_empty
+{
+my ($file) = @_;
+my $yaml = &read_yaml_file($file);
+return 1 if (!$yaml);
+my @rest = grep { $_->{'name'} ne 'network' } @$yaml;
+return 0 if (@rest);
+foreach my $n (@$yaml) {
+	my @rest = grep { $_->{'name'} ne 'ethernets' }
+			@{$network->{'members'}};
+	return 0 if (@rest);
+	foreach my $ens (@{$network->{'members'}}) {
+		return 0 if (@{$ens->{'members'}});
+		}
+	}
+return 1;
 }
 
 sub supports_bonding
@@ -325,6 +350,11 @@ my ($f) = @_;
 return $f ne "mtu";
 }
 
+sub can_broadcast_def
+{
+return 0;
+}
+
 # valid_boot_address(address)
 # Is some address valid for a bootup interface
 sub valid_boot_address
@@ -340,7 +370,7 @@ $hn =~ s/\r|\n//g;
 if ($hn) {
 	return $hn;
 	}
-return &get_system_hostname(1);
+return &get_system_hostname();
 }
 
 # save_hostname(name)
@@ -421,7 +451,7 @@ sub parse_routing
 my ($dev, $gw);
 if (!$in{'gateway_def'}) {
 	&check_ipaddress($in{'gateway'}) ||
-		&error(&text('routes_egateway', $in{'gateway'}));
+		&error(&text('routes_egateway', &html_escape($in{'gateway'})));
 	$gw = $in{'gateway'};
 	$dev = $in{'gatewaydev'};
 	}
@@ -431,7 +461,7 @@ if (!$in{'gateway_def'}) {
 my ($dev6, $gw6);
 if (!$in{'gateway6_def'}) {
 	&check_ip6address($in{'gateway6'}) ||
-		&error(&text('routes_egateway6', $in{'gateway6'}));
+		&error(&text('routes_egateway6', &html_escape($in{'gateway6'})));
 	$gw6 = $in{'gateway6'};
 	$dev6 = $in{'gatewaydev6'};
 	}
@@ -556,42 +586,71 @@ foreach my $origl (@$lref) {
 	if ($l =~ /^(\s*)(\S+):\s*(.*)/) {
 		# Name and possibly value
 		my $i = length($1);
-		my $dir = { 'indent' => length($1),
-			    'name' => $2,
-			    'value' => $3,
-			    'line' => $lnum,
-			    'eline' => $lnum,
-			    'parent' => $parent,
-			    'members' => [],
-			  };
-		if ($dir->{'value'} =~ /^\[(.*)\]$/) {
-			$dir->{'value'} = [ &split_addr_list("$1") ];
+		if ($i > $lastdir->{'indent'} + 2 &&
+		    ref($lastdir->{'value'}) eq 'ARRAY' &&
+		    @{$lastdir->{'value'}} &&
+		    ref($lastdir->{'value'}->[0]) eq 'HASH') {
+			# Another key in the current value hash
+			my $v = $lastdir->{'value'};
+			$v->[@$v-1]->{$2} = $3;
+			&set_parent_elines($lastdir, $lnum);
 			}
-		if (!$lastdir || $i == $lastdir->{'indent'}) {
-			# At same level as previous directive, which puts it
-			# underneath current parent
-			push(@{$parent->{'members'}}, $dir);
-			}
-		elsif ($i > $lastdir->{'indent'}) {
-			# A further ident by one level, meaning that it is under
-			# the previous directive
-			$parent = $lastdir;
-			push(@{$parent->{'members'}}, $dir);
-			}
-		elsif ($i < $lastdir->{'indent'}) {
-			# Indent has decreased, so this must be under a previous
-			# parent directive
-			$parent = $parent->{'parent'};
-			while($i <= $parent->{'indent'}) {
-				$parent = $parent->{'parent'};
+		else {
+			# A regular directive
+			my $dir = { 'indent' => length($1),
+				    'name' => $2,
+				    'value' => $3,
+				    'line' => $lnum,
+				    'eline' => $lnum,
+				    'parent' => $parent,
+				    'members' => [],
+				  };
+			if ($dir->{'value'} =~ /^\[(.*)\]$/) {
+				$dir->{'value'} = [ &split_addr_list("$1") ];
 				}
-			push(@{$parent->{'members'}}, $dir);
+			if (!$lastdir || $i == $lastdir->{'indent'}) {
+				# At same level as previous directive, which
+				# puts it underneath current parent
+				push(@{$parent->{'members'}}, $dir);
+				}
+			elsif ($i > $lastdir->{'indent'}) {
+				# A further ident by one level, meaning that it
+				# is under the previous directive
+				$parent = $lastdir;
+				$dir->{'parent'} = $parent;
+				push(@{$parent->{'members'}}, $dir);
+				}
+			elsif ($i < $lastdir->{'indent'}) {
+				# Indent has decreased, so this must be under a
+				# previous parent directive
+				$parent = $parent->{'parent'};
+				while($i <= $parent->{'indent'}) {
+					$parent = $parent->{'parent'};
+					}
+				push(@{$parent->{'members'}}, $dir);
+				$dir->{'parent'} = $parent;
+				}
+			$lastdir = $dir;
+			&set_parent_elines($parent, $lnum);
 			}
-		$lastdir = $dir;
+		}
+	elsif ($l =~ /^(\s*)\-\s*(\S+):\s+(\S.*)$/) {
+		# Value that is itself a key-value pair
+		# routes:
+		#   - to: 1.2.3.4/24
+		#     via: 1.2.3.1
+		#     metric: 100
+		$lastdir->{'value'} ||= [ ];
+		my $v = { $2 => $3 };
+		push(@{$lastdir->{'value'}}, $v);
+		$lastdir->{'eline'} = $lnum;
 		&set_parent_elines($parent, $lnum);
 		}
 	elsif ($l =~ /^(\s*)\-\s*(\S+)\s*$/) {
 		# Value-only line that is an extra value for the previous dir
+		# addresses:
+		#   - 1.2.3.4/24
+		#   - 5.6.7.8/24
 		$lastdir->{'value'} ||= [ ];
 		$lastdir->{'value'} = [ $lastdir->{'value'} ] if (!ref($lastdir->{'value'}));
 		push(@{$lastdir->{'value'}}, $2);
@@ -600,18 +659,55 @@ foreach my $origl (@$lref) {
 		}
 	$lnum++;
 	}
+&cleanup_yaml_parents($rv);
 return $rv;
 }
 
+# cleanup_yaml_parents(&config)
+# Remove all 'parent' fields once parsing is done, as they can't be serialized
+sub cleanup_yaml_parents
+{
+my ($conf) = @_;
+foreach my $c (@$conf) {
+	delete($c->{'parent'});
+	if ($c->{'members'}) {
+		&cleanup_yaml_parents($c->{'members'});
+		}
+	}
+}
+
 # yaml_lines(&directive, indent-string)
+# Converts a YAML directive into text lines
 sub yaml_lines
 {
 my ($yaml, $id) = @_;
 my @rv;
-push(@rv, $id.$yaml->{'name'}.":".
-	  (ref($yaml->{'value'}) eq 'ARRAY' ?
-		" [".&join_addr_list(@{$yaml->{'value'}})."]" :
-	   defined($yaml->{'value'}) ? " ".$yaml->{'value'} : ""));
+my $v = $id.$yaml->{'name'}.":";
+if (ref($yaml->{'value'}) eq 'ARRAY') {
+	my @a = @{$yaml->{'value'}};
+	if (@a && ref($a[0]) eq 'HASH') {
+		# Array of hashes, like for routes
+		push(@rv, $v);
+		foreach my $a (@a) {
+			my @k = sort(keys %$a);
+			my $f = shift(@k);
+			push(@rv, $id."  - ".$f.": ".$a->{$f});
+			foreach my $f (@k) {
+				push(@rv, $id."    ".$f.": ".$a->{$f});
+				}
+			}
+		}
+	else {
+		# Array of strings
+		push(@rv, $v." [".&join_addr_list(@a)."]");
+		}
+	}
+elsif (defined($yaml->{'value'})) {
+	push(@rv, $v." ".$yaml->{'value'});
+	}
+else {
+	push(@rv, $v);
+	}
 if ($yaml->{'members'}) {
 	foreach my $m (@{$yaml->{'members'}}) {
 		push(@rv, &yaml_lines($m, $id."    "));
@@ -659,7 +755,7 @@ foreach my $a (@_) {
 		push(@rv, $a);
 		}
 	}
-return join(",", @rv);
+return join(", ", @rv);
 }
 
 # split_addr_list(string)
@@ -668,7 +764,7 @@ sub split_addr_list
 {
 my ($str) = @_;
 my @rv;
-foreach my $a (split(/,/, $str)) {
+foreach my $a (split(/\s*,\s*/, $str)) {
 	if ($a =~ /^'(.*)'$/ || $a =~ /^"(.*)"$/) {
 		push(@rv, $1);
 		}

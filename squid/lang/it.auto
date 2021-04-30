@@ -1,0 +1,375 @@
+index_msgnosupported2=La tua versione di Squid non è supportata da Webmin. Solo le versioni da $1 a $2 sono supportate da questo modulo.
+index_delay=Ritardare le piscine
+index_authparam=Programmi di autenticazione
+index_headeracc=Controllo dell'accesso alle intestazioni
+index_refresh=Aggiorna regole
+index_cachemgr=Password del gestore della cache
+index_version=Versione squid $1
+
+index_stop=Stop Squid
+index_stopdesc=Fare clic su questo pulsante per arrestare il server proxy Squid in esecuzione. Una volta interrotto, i client che lo utilizzano non saranno in grado di effettuare richieste Web o FTP.
+index_start=Inizia Squid
+index_startdesc=Fare clic su questo pulsante per avviare il server proxy Squid, utilizzando la configurazione corrente.
+index_restart=Applica configurazione
+index_restartdesc=Fare clic su questo pulsante per attivare la configurazione Squid corrente.
+index_iptables=Impostazione del reindirizzamento delle porte
+index_squid=Squid Proxy Server
+index_manual=Modifica file di configurazione
+
+manual_title=Modifica file di configurazione
+manual_file=Seleziona un file di configurazione da modificare:
+manual_change=Modificare
+manual_editing=Usa la casella di testo qui sotto per modificare manualmente le configurazioni in $1. Fare attenzione, poiché non verrà eseguita alcuna sintassi o controllo di validità.
+manual_err=Impossibile salvare il file di configurazione
+manual_efile=Nome file di configurazione non valido!
+manual_ecannot=Non è consentito modificare manualmente i file di configurazione
+
+acl_eusersall=Tutti gli utenti
+acl_euserssel=Solo quelli elencati ..
+acl_nodns=Disabilitare le ricerche?
+acl_rfcusersr=RFC931 Regexps utenti
+acl_mai=IP di accesso massimo per utente
+acl_maistrict=<b>Applicato rigorosamente</b>
+acl_mairemind=ricordati di impostare Authenticate IP Cache su> 0 in "Modulo programmi di autenticazione"
+acl_rpmt=Rispondi Tipo MIME
+acl_extclass=Classe del programma
+acl_extargs=Argomenti aggiuntivi
+acl_file=Memorizza i valori ACL nel file
+acl_nofile=Configurazione di calamari
+acl_infile=File separato
+acl_keep=Basta usare il contenuto esistente del file?
+
+aclsave_enofile=Nessun nome file ACL inserito
+aclsave_ealready=Il file ACL esiste già
+
+cach_esame=L'eseguibile <b>Squid cachemgr.cgi</b> è impostato sul programma cachemgr.cgi di Webmin, non su quello fornito da Squid.
+
+clear_url=Rimuovi un URL dalla cache:
+clear_ok=Rimuovere
+
+eacl_noprr=Nessuna limitazione di risposta proxy definita
+eacl_addprr=Aggiungi restrizione di risposta proxy.
+
+eacl_replypr=Rispondi alle restrizioni del proxy
+eacl_replynopr=Nessuna limitazione del proxy di risposta definita
+
+eacl_ext=Programmi ACL esterni
+eacl_ename=Nome della classe
+eacl_format=Formato di input
+eacl_program=Programma di gestione
+eacl_noext=Nessun programma ACL esterno definito.
+eacl_addext=Aggiungi programma ACL esterno.
+eacl_eclass=Nessuna classe di programma selezionata
+eacl_cname=Digita il nome
+eacl_file=Dal file $1
+eacl_hdelete=Elimina le restrizioni selezionate
+
+ec_coss=COSS
+ec_gap=Divario massimo read-ahead del client
+ec_maxreplies=Dimensioni massime del corpo di risposta
+ec_maxrn=Dimensione (kB)
+ec_maxracls=Per richieste corrispondenti ACL (lasciare vuoto per tutti)
+
+ech_siq2=Rifiutare le query ICP?
+ech_pass=Passare l'autenticazione client a questa cache
+ech_upass=Passare l'accesso client con password:
+ech_timeo=Timeout della connessione per l'host
+ech_digest=URL digest cache dell'host
+ech_maxconn=Numero massimo di connessioni simultanee
+ech_miss=Consenti richieste perse?
+ech_htcp=Utilizzare HTCP anziché ICP?
+ech_origin=Trattare l'host come server di origine?
+ech_force=Forza host: intestazione a
+ech_same=immutato
+ech_ssl=Connettiti usando SSL?
+
+eicp_thost=Nome host
+eicp_ttype=genere
+eicp_tpport=Porta proxy
+eicp_tiport=Porta ICP
+eicp_delete=Elimina cache selezionate
+
+elogs_none=Nessuna
+elogs_logformat=Accedi ai formati del registro
+elogs_fname=Nome del formato
+elogs_ffmt=Definizione del formato
+elogs_logformat1=Predefinito (chiamato <tt>calamaro</tt>, usando il formato standard)
+elogs_logformat0=Formati personalizzati definiti di seguito.
+elogs_access=Accedi ai file di registro
+elogs_afile=File di registro
+elogs_afmt=Nome del formato
+elogs_aacls=Accedi solo per ACL
+elogs_notset=Non impostato
+elogs_dont=Non accedere
+elogs_file=File $1
+elogs_squid=Calamaro standard
+
+emisc_hash=Hai un solo server HTTP Accel?
+emisc_wccprtr=Indirizzo router WCCP
+emisc_wccpin=Indirizzo in entrata WCCP
+emisc_wccpout=Indirizzo in uscita WCCP
+emisc_none=Nessuna
+emisc_virtual=Virtuale
+
+eports_ssl=Indirizzi e porte SSL
+eports_opts=Opzioni per la porta
+eports_def=Predefinito (di solito 3128)
+eports_sel=Elencati di seguito ..
+eports_unc=Fare arresti SSL impuri?
+eports_checkhost=Convalidare i nomi host negli URL?
+eports_underscore=Consenti la sottolineatura nei nomi host?
+eports_all=Tutti
+
+eprogs_sppe=Programma ping abilitato?
+eprogs_startup=Programmi da avviare inizialmente
+eprogs_idle=Programmi minimi da eseguire
+eprogs_concurrency=Numero di richieste simultanee per programma
+eprogs_capweb=Webmin predefinito
+eprogs_ttl=Tempo cache di autenticazione
+eprogs_aittl=Autentica tempo cache IP
+eprogs_realm=Regno di autenticazione
+
+euser_e=Abilitato?
+
+ahttp_replyheader=Crea restrizione di risposta proxy
+ahttp_replyheader1=Modifica restrizione di risposta proxy
+ahttp_replypr=Limitazione risposta proxy
+
+icache_euser=Utente per eseguire Squid in quanto non esiste
+
+scache_emaxrs=Dimensione massima del corpo non valida nella riga $1
+
+slogs_efname=Nome formato non valido nella riga $1
+slogs_effmt=Formato di registro mancante nella riga $1
+slogs_eafile=File di registro mancante o non valido nella riga $1
+
+sprog_emsg9='$1' non è un tempo di cache valido
+sprog_emsg10='$1' non è un TTL valido
+sprog_echildren=Il numero di programmi deve essere un numero maggiore di zero
+
+lib_aclrpmt=Rispondi Tipo MIME
+lib_aclrur=RFC931 Registrazione utente
+lib_aclext=Programma esterno
+lib_aclmuip=IP utente max
+
+log_authparam=Opzioni del programma di autenticazione modificate
+log_https_delete=Eliminate le restrizioni proxy $1
+log_headeracc_create=Regola di accesso all'intestazione creata
+log_headeracc_modify=Regola di accesso all'intestazione modificata
+log_headeracc_delete=Regola di accesso all'intestazione eliminata
+log_headeracc_move=Regola di accesso all'intestazione spostata
+log_icps_delete=Eliminate le restrizioni ICP $1
+log_hosts_delete=Host di cache $1 eliminati
+log_delay=Opzioni del pool di ritardi globali modificate
+log_pool_create=Aggiunto pool di ritardo $1
+log_pool_modify=Pool di ritardo modificato $1
+log_pool_delete=Pool di ritardo eliminato $1
+log_pools_delete=Ritardati $1
+log_delay_create=Aggiunto ACL per il pool di ritardo $1
+log_delay_modify=ACL modificato per il pool di ritardo $1
+log_delay_delete=ACL eliminato per il pool di ritardo $1
+
+log_delay_move=ACL spostato per il pool di ritardo $1
+log_refresh_create=Regola di aggiornamento creata per $1
+log_refresh_modify=Regola di aggiornamento modificata per $1
+log_refresh_delete=Regola di aggiornamento eliminata per $1
+
+log_refresh_move=Regola di aggiornamento spostata per $1
+log_refreshes_delete=Eliminate $1 regole di aggiornamento
+log_iptables=Configurazione aggiornata del reindirizzamento delle porte
+log_purge=URL rimosso $1 dalla cache
+log_cachemgr=Password del gestore cache modificate
+
+acl_restart=È possibile applicare la configurazione di Squid?
+
+delay_title=Ritardare le piscine
+delay_add=Aggiungi un nuovo pool di ritardo.
+delay_num=Numero
+delay_class=Classe
+delay_class_1=Aggregato
+delay_class_2=Aggregato e individuale
+delay_class_3=Aggregato, individuale e di rete
+delay_class_4=Aggregato, individuo, rete e utente
+delay_class_5=Raggruppamento di tag
+delay_agg=Limite aggregato
+delay_ind=Limite individuale
+delay_net=Limite di rete
+delay_user=Limite dell'utente
+delay_tag=Limite tag
+delay_none=Non sono stati ancora definiti pool di ritardo.
+delay_unlimited=Illimitato
+delay_param=$1/sec, $2 max
+delay_header=Opzioni del pool di ritardo globale
+delay_initial=Livello iniziale iniziale
+delay_err=Impossibile salvare le opzioni del pool di ritardi
+delay_ecannot=Non è consentito modificare i pool di ritardo
+delay_epercent='$1' non è una percentuale di livello iniziale iniziale valida
+delay_return=Elenco dei pool di ritardo
+delay_delete=Elimina i pool di ritardi selezionati
+pool_title1=Aggiungi pool di ritardi
+pool_title2=Modifica pool di ritardi
+pool_header=Ritardare le opzioni del pool
+pool_num=Numero del pool
+pool_class=Classe di piscina
+pool_agg=Limite aggregato (per le classi 1, 2 e 3)
+pool_ind=Limite individuale (per le classi 2 e 3)
+pool_net=Limite di rete (per classe 3)
+pool_user=Limite utente (per classe 4)
+pool_tag=Limite tag (per classe 5)
+pool_limit1=/ secondo,
+pool_limit2=max
+pool_err=Impossibile salvare il pool di ritardi
+pool_elimit1='$1' non è un numero valido di byte/secondo
+pool_elimit2='$1' non è un numero massimo valido di byte
+pool_aclheader=ACL da abbinare per pool
+pool_noacl=Nessun ACL da abbinare per questo pool è stato ancora definito.
+pool_add=Aggiungi un nuovo ACL per questo pool
+pool_return=ritardo piscina
+pool_unit0=bit
+pool_unit1=byte
+pool_unit2=kb
+pool_unit3=kB
+pool_unit4=mb
+pool_unit5=MB
+
+dpool_err=Impossibile eliminare i pool di ritardo
+dpool_enone=Nessuno selezionato
+
+apool_header=Aggiungi ritardo ACL pool
+apool_header1=Modifica ACL pool di ritardi
+apool_pr=Ritardo pool ACL
+
+authparam_title=Programmi di autenticazione
+authparam_header=Opzioni del programma di autenticazione esterna
+authparam_ttl=È tempo di memorizzare nella cache le password per
+authparam_ipttl=È ora di associare l'utente a un indirizzo IP per
+authparam_never=Mai
+authparam_ecannot=Non è consentito modificare i programmi di autenticazione
+authparam_err=Impossibile salvare i programmi di autenticazione
+authparam_bprogram=Programma di autenticazione di base
+authparam_dprogram=Programma di autenticazione digest
+authparam_nprogram=Programma di autenticazione NTLM
+authparam_reuses=Numero di volte in cui una sfida NTLM può essere riutilizzata
+authparam_lifetime=Durata delle sfide di NTLM
+authparam_ereuses='$1' non è un numero valido di riutilizzi
+authparam_elifetime='$1' non è una durata di prova valida
+authparam_mui_msg=L'autenticazione TTL IP deve essere maggiore di 0 se si utilizza un ACL <b>"max_user_ip"</b>. Inserisci l'ora in cui desideri che Squid ricordi la relazione Utente/IP. L'utente può accedere solo dall'IP memorizzato fino a quando non è trascorso questo intervallo di tempo, anche se ha chiuso il browser.
+ext_title1=Crea programma esterno
+ext_title2=Modifica programma esterno
+ext_header=Dettagli del programma ACL esterno
+ext_name=Nome del tipo di programma
+ext_format=Stringa del formato di input
+ext_ttl=TTL per risultati memorizzati nella cache
+ext_negative_ttl=TTL per risultati negativi memorizzati nella cache
+ext_concurrency=Numero di programmi da eseguire
+ext_children=Numero di programmi da eseguire
+ext_cache=Dimensione della cache
+ext_ttl_u=secondi
+ext_negative_ttl_u=secondi
+ext_concurrency_u=programmi
+ext_children_u=programmi
+ext_cache_u=byte
+ext_program=Percorso del programma e argomenti
+ext_err=Impossibile salvare il programma ACL esterno
+ext_ename=Nome del tipo mancante o non valido
+ext_eformat=Stringa di formato mancante o non valida
+ext_ettl=TTL mancante o non valido
+ext_enegative_ttl=TTL negativo mancante o non valido
+ext_econcurrency=Numero di programmi mancante o non valido
+ext_echildren=Numero di programmi mancante o non valido
+ext_ecache=Dimensione cache mancante o non valida
+ext_eprogram=È stato inserito un percorso del programma non valido
+ext_eclash=Esiste già un tipo di programma esterno con lo stesso nome
+ext_eused=Questo programma esterno è utilizzato da un ACL
+
+header_title=Controllo dell'accesso alle intestazioni
+header_none=Non sono state ancora definite regole di controllo di accesso all'intestazione.
+header_name=Intestazione HTTP
+header_act=Azione
+header_acls=Per ACL
+header_add=Aggiungi una nuova regola di controllo di accesso all'intestazione.
+header_create=Crea regola di accesso all'intestazione
+header_create_request_header_access=Crea regola di accesso all'intestazione della richiesta
+header_create_reply_header_access=Crea regola di accesso all'intestazione della risposta
+header_edit=Modifica regola di accesso all'intestazione
+header_edit_request_header_access=Modifica regola di accesso all'intestazione della richiesta
+header_edit_reply_header_access=Modifica regola accesso intestazione risposta
+header_header=Dettagli della regola di controllo dell'accesso all'intestazione HTTP
+header_return=elenco delle regole di controllo di accesso all'intestazione
+header_ecannot=Non è consentito modificare le regole di controllo dell'accesso alle intestazioni
+header_err=Impossibile salvare la regola di controllo dell'accesso all'intestazione
+header_ename=Nome dell'intestazione mancante o non valido
+header_request_header_access=Richiedi intestazioni
+header_reply_header_access=Rispondi alle intestazioni
+
+refresh_title=Aggiorna regole
+refresh_none=Non sono state ancora definite regole di aggiornamento.
+refresh_re=Espressione regolare
+refresh_min=Tempo minimo
+refresh_pc=Percentuale di età
+refresh_max=Tempo massimo
+refresh_add=Aggiungi una nuova regola di aggiornamento.
+refresh_ecannot=Non puoi modificare le regole di aggiornamento
+refresh_create=Crea regola di aggiornamento
+refresh_edit=Modifica regola di aggiornamento
+refresh_return=aggiorna l'elenco delle regole
+refresh_header=Aggiorna i dettagli della regola
+refresh_caseless=Ignora il caso?
+refresh_err=Impossibile salvare la regola di aggiornamento
+refresh_options=Aggiorna le opzioni delle regole
+refresh_override-expire=Applica l'età minima sopra l'età impostata dal server
+refresh_override-lastmod=Applica l'età minima anche su oggetti modificati di recente
+refresh_reload-into-ims=Converti le intestazioni client senza cache in If-Modified-Since
+refresh_ignore-reload=Ignora i client senza cache o ricarica le intestazioni
+refresh_ere=Espressione regolare mancante o non valida
+refresh_emin=Tempo minimo mancante o non valido
+refresh_emax=Tempo massimo mancante o non valido
+refresh_epc=Percentuale di età mancante o non valida
+refresh_delete=Elimina le regole di aggiornamento selezionate
+drefresh_err=Impossibile eliminare le regole di aggiornamento
+drefesh_enone=Nessuno selezionato
+
+iptables_title=Impostazione del reindirizzamento delle porte
+iptables_inst0=I comandi del firewall IPtables necessari per impostare il reindirizzamento delle porte non sembrano essere installati sul sistema. Vedi il modulo <a href='$1'>Linux Firewall</a> per maggiori dettagli.
+iptables_inst1=Il modulo <a href='$1'>Linux Firewall</a> non sembra essere stato completamente configurato sul tuo sistema. Questo modulo si avvale di quello per impostare il reindirizzamento della porta Frox.
+iptables_desc=Squid può eseguire il proxy HTTP trasparente per richieste sulla porta $1, impostando le regole del firewall per inoltrarle automaticamente alla porta $2 su cui Squid ascolta. Funzionerà solo se il sistema che esegue Squid è anche il router per la tua rete. Questo può essere fatto aggiungendo una regola IPtables al firewall, supponendo che sia gestita dal modulo <a href='$3'>Linux Firewall</a>.
+iptables_disabled=Il reindirizzamento delle porte è disabilitato
+iptables_enabled3=Il reindirizzamento delle porte è abilitato per i client in rete
+iptables_enabled4=Il reindirizzamento delle porte è abilitato per i client nell'interfaccia
+iptables_apply=Applicare la configurazione di firewall e Squid?
+iptables_save=Salva e applica
+iptables_err=Impossibile salvare il port forwarding
+iptables_enet=Indirizzo di rete mancante o non valido (dovrebbe essere come 192.168.1.0/24)
+iptables_eiface=Interfaccia di rete mancante o non valida
+iptables_eapply=Applicazione del firewall non riuscita : $1
+iptables_eapply2=Applica Squid non riuscita : $1
+
+syslog_access=Registro di accesso ai calamari
+syslog_cache=Registro della cache dei calamari
+syslog_store=Registro archivio oggetti Squid
+
+purge_err=Impossibile cancellare l'URL dalla cache
+purge_title=Cancella URL nella cache
+purge_doing=Cancellazione dell'URL $1 ..
+purge_done=.. fatto.
+purge_failed=.. fallito! Vedere il messaggio di errore sopra per il motivo.
+
+dhttp_err=Impossibile eliminare le restrizioni proxy
+dhttp_enone=Nessuno selezionato
+
+dicp_err=Impossibile eliminare le restrizioni ICP
+dicp_enone=Nessuno selezionato
+
+cachemgr_title=Password del gestore della cache
+cachemgr_ecannot=Non è consentito modificare le password del gestore cache
+cachemgr_def1=Nessuna password richiesta
+cachemgr_def0=Password e azioni specificate di seguito.
+cachemgr_pass=Parola d'ordine
+cachemgr_none=Nessuno necessario
+cachemgr_set=Impostato
+cachemgr_disable=Azioni disabilitate
+cachemsg_actions=Applica alle azioni
+cachemgr_all=Usa questa password per tutte le azioni
+cachemgr_others=Altre azioni:
+cachemgr_enone=Nessuna immessa: selezionare invece <i>Nessuna password richiesta</i>
+cachemgr_err=Impossibile salvare le password del gestore cache

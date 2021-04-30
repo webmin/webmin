@@ -1,0 +1,67 @@
+index_title=Sao chép tập tin
+index_add=Tạo một bản sao tập tin theo lịch trình mới.
+index_none=Không có bản sao tập tin theo lịch trình đã được xác định.
+index_servers=Sao chép vào máy chủ
+index_return=danh sách bản sao cụm
+index_more=Thêm $1 nữa ..
+index_run=Chạy ngay đi ..
+index_files=Tập tin để sao chép
+index_sched=Lên kế hoạch?
+index_when=Có, $1 
+index_act=Hoạt động
+index_exec=Hành hình
+index_delete=Xóa các bản sao được chọn
+
+edit_title=Chỉnh sửa sao chép cụm
+create_title=Tạo bản sao cụm
+edit_header=Chi tiết sao chép cụm
+edit_files=Tập tin để sao chép
+edit_dest=Danh mục nơi nhận
+edit_cmd=Lệnh chạy sau khi sao chép
+edit_before=Lệnh chạy trước khi sao chép
+edit_remote=Trên các máy chủ từ xa
+edit_dmode0=Sao chép đường dẫn đầy đủ trong thư mục
+edit_dmode1=Sao chép vào thư mục này
+edit_servers=Sao chép vào máy chủ
+edit_group=Thành viên của $1 
+edit_this=máy chủ này
+edit_all=&lt;Tất cả máy chủ&gt;
+edit_sched=Sao chép đúng tiến độ?
+edit_schedyes=Có, vào những thời điểm được chọn dưới đây ..
+edit_run=Sao chép ngay
+edit_return=sao chép cụm
+edit_email=Email xuất ra
+edit_none=Không ai
+
+save_err=Không thể lưu công việc cron cluster
+save_efiles=Không có tập tin để sao chép đã nhập
+save_edest=Thiếu thư mục đích
+save_eservers=Không có máy chủ để sao chép để nhập
+save_efile=Tệp để sao chép '$1' không phải là đường dẫn tuyệt đối
+save_eemail=Địa chỉ email bị thiếu hoặc không hợp lệ
+
+exec_title=Sao chép các tập tin
+exec_files1=Sao chép tệp $1 vào các máy chủ được chọn $2 ..
+exec_files2=Sao chép $1 vào các máy chủ được chọn $2 ..
+exec_under=(trong thư mục $1)
+exec_failed=Không thể sao chép sang $1 : $2 
+exec_success=Đã sao chép các tệp sau vào $1  :
+exec_made=Tạo các thư mục sau trên $1  :
+exec_nohosts=Không có máy chủ nào được chọn để chạy trên hoặc các nhóm được chọn không chứa bất kỳ máy chủ nào có thể sử dụng được.
+exec_nothing=Không có tệp nào được sao chép thành công vào $1.
+exec_not=Không thể sao chép các tệp sau vào $1  :
+exec_cmd=Đầu ra lệnh sau sao chép trên $1  :
+exec_before=Đầu ra lệnh trước khi sao chép trên $1  :
+exec_on=Không thể chạy trên $1 : $2 
+
+log_create=Tạo bản sao cho máy chủ $1 đến $2 
+log_modify=Bản sao đã sửa đổi cho các máy chủ $1 đến $2 
+log_delete=Đã xóa bản sao cho máy chủ $1 đến $2 
+log_exec=Đã sao chép $1 đến $2 máy chủ
+log_deletes=Đã xóa $1 bản
+
+email_subject_succeeded=Bản sao cụm $1 đã thành công
+email_subject_failed=Sao chép cụm $1 không thành công
+
+delete_err=Không thể xóa bản sao
+delete_enone=Không được chọn

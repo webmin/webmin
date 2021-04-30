@@ -1,0 +1,18 @@
+index_title=Qoxra tal-Kmand
+index_ok=Eżegwixxi kmand:
+index_history=Istorja tal-Kmand
+index_clear=Storja ċara
+index_clearcmds=Kmandi ċari
+index_desc=Daħħal il-kmand tal-qoxra biex tesegwixxi fil-kamp tat-test hawn taħt. Il-kmand <tt>cd</tt> jista 'jintuża biex jibdel id-direttorju għal kmandi sussegwenti.
+index_pok=Eżegwixxi kmand preċedenti
+index_edit=Editja qabel
+index_trunced=Il-produzzjoni totali ta ' $2 tnaqqset f' $1.
+index_timedout=Il-kmand twaqqaf wara li kien għaddej għal $1 sekonda.
+
+acl_user=Eżegwixxi kmandi bħala utent
+acl_user_def=Utent Webmin attwali
+acl_shellenv=Uża l-ambjent tal-utent magħżul?
+acl_chroot=Chroot għad-direttorju
+
+log_run=Ibda kmand $1 
+log_clear=Maħlub l-istorja tal-kmand

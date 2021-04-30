@@ -16,7 +16,7 @@ our $module_name;
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
 # Check for python
-my $python = &has_command("python");
+my $python = &has_command("python2") || &has_command("python");
 if (!$python) {
 	&ui_print_endpage(&text('index_epython', "<tt>python</tt>"));
 	}
@@ -40,9 +40,9 @@ my $pid = fork();
 if (!$pid) {
 	chdir("$module_root_directory/ajaxterm");
 	my $logfile = $ENV{'WEBMIN_VAR'}.'/ajaxterm.log';
-	untie(*STDIN); open(STDIN, "<", "/dev/null");
-	untie(*STDOUT); open(STDOUT, ">", $logfile);
-	untie(*STDERR); open(STDERR, ">", $logfile);
+	undef(*STDIN); untie(*STDIN); open(STDIN, "<", "/dev/null");
+	undef(*STDOUT); untie(*STDOUT); open(STDOUT, ">", $logfile);
+	undef(*STDERR); untie(*STDERR); open(STDERR, ">", $logfile);
 	my $shell = &has_command("bash") ||
 		 &has_command("sh") || "/bin/sh";
 	my @uinfo = getpwnam("root");

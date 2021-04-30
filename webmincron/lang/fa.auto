@@ -1,0 +1,20 @@
+edit_mins=دقایق
+edit_hours=ساعت ها
+edit_days=روزها
+edit_months=ماه ها
+edit_weekdays=روزهای هفته
+edit_all=همه
+edit_selected=انتخاب شد ..
+edit_run=الان اجرا کن
+edit_clone=کلون کار
+edit_return=کار cron
+edit_special1=برنامه ساده ..
+edit_special0=زمان و تاریخ انتخاب شده در زیر ..
+edit_special_hourly=ساعتی
+edit_special_daily=روزانه (نیمه شب)
+edit_special_weekly=هفتگی (یکشنبه)
+edit_special_monthly=ماهانه (در تاریخ اول)
+edit_special_yearly=سالانه (اول ژانویه)
+
+log_success=با موفقیت <tt>$2</tt> در <tt>$1</tt> اجرا شد
+log_failure=اجرای <tt>$2</tt> در <tt>$1</tt> :$3 انجام نشد

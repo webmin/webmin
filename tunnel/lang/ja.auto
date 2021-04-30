@@ -1,0 +1,21 @@
+index_elink=トンネルするURLはまだ設定されていません。
+index_url=開くURLを入力してください：
+index_open=開いた
+
+link_eurl=無効なトンネルURL： $1
+link_elogin=$1に $2としてログインできませんでした。
+link_eautologin=$1のログインまたはパスワードが無効です。ログインするには、<a href='$2'>ここをクリック</a>してください。
+link_enouser=$1にログインするにはユーザー名とパスワードが必要ですが、構成されていません。
+link_ebadurl=URL $1へのアクセスは許可されていません
+link_mconfig=ログインを変更するには、<a href='$1'>モジュール設定</a>ページを使用します。
+
+login_title=ウェブサイトにログイン
+login_desc=$1にログインするには、ユーザー名とパスワードを入力する必要があります。
+login_header=ウェブサイト認証
+login_user=ユーザー名
+login_pass=パスワード
+login_login=ログインする
+login_clear=晴れ
+
+seturl_err=URLを開けませんでした
+seturl_eurl=無効なURLが入力されました

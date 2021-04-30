@@ -1,0 +1,9 @@
+index_mem3=<b>Skutečná paměť:</b> $1 celkem / $2 zdarma / $3 v mezipaměti
+index_burst=<b>Burstable memory: celkem</b> $1 
+
+sclass=Třída plánování IO
+sprio=IO priorita
+
+linux_real=Reálný čas
+linux_be=Nejlepší úsilí
+linux_idle=Líný

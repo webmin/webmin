@@ -6,6 +6,7 @@ require './webmin-lib.pl';
 &error_setup($text{'sendmail_err'});
 &foreign_require("mailboxes");
 &lock_file($mailboxes::module_config_file);
+&lock_file("$config_directory/config");
 %mconfig = &foreign_config("mailboxes");
 
 # Save smtp server
@@ -63,8 +64,20 @@ else {
 	$mconfig{'webmin_from'} = $in{'from'};
 	}
 
+# Save URL for use in email
+if ($in{'url_def'}) {
+	delete($gconfig{'webmin_email_url'});
+	}
+else {
+	my @p = &parse_http_url($in{'url'});
+	$p[0] || &error($text{'sendmail_eurl'});
+	$gconfig{'webmin_email_url'} = $in{'url'};
+	}
+
 &save_module_config(\%mconfig, "mailboxes");
+&write_file("$config_directory/config", \%gconfig);
+&unlock_file("$config_directory/config");
 &unlock_file($mailboxes::module_config_file);
 &webmin_log("sendmail");
-&redirect("edit_sendmail.cgi");
+&redirect("");
 

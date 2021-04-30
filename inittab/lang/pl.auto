@@ -1,0 +1,14 @@
+inittab_active=Aktywny?
+inittab_kbrequest=Specjalna kombinacja klawiszy
+inittab_apply=Zastosuj konfigurację początkową
+inittab_applymsg=Kliknij ten przycisk, aby zastosować bieżącą konfigurację początkową SysV, uruchamiając polecenie <tt>telinit q</tt>. Należy pamiętać, że wszelkie błędy w konfiguracji mogą spowodować, że system nie będzie nadawał się do użytku po uruchomieniu tego polecenia.
+index_delete=Usuń wybrane procesy
+inittab_none2=W systemie nie znaleziono procesów rozruchowych. Prawdopodobnie oznacza to, że nie używa on pliku konfiguracyjnego inicjalizacji SysV.
+
+log_apply=Zastosowana konfiguracja
+log_deletes=Usunięte procesy inicjowania $1 
+
+apply_err=Nie można zastosować konfiguracji
+
+delete_err=Nie udało się usunąć procesów
+delete_enone=Nie wybrano

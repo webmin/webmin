@@ -75,7 +75,7 @@ local(@rv, @p, @o, $_, $i, $j);
 $i = 0;
 
 # Get /etc/fstab mounts
-open(FSTAB, $config{fstab_file});
+open(FSTAB, "<".$config{fstab_file});
 while(<FSTAB>) {
 	local(@o, $at_boot);
 	chop; s/#.*$//g;
@@ -87,6 +87,8 @@ while(<FSTAB>) {
 	else {
 		@p = split(/\s+/, $_);
 		}
+	$p[0] =~ s/\\040/ /g;
+	$p[1] =~ s/\\040/ /g;
 	if ($p[2] eq "proc") { $p[0] = "proc"; }
 	elsif ($p[2] eq "auto") { $p[2] = "*"; }
 	elsif ($p[2] eq "swap") { $p[1] = "swap"; }
@@ -149,7 +151,7 @@ elsif ($amd_support == 2) {
 
 # Get kernel automounter configuration
 if ($autofs_support) {
-	open(AUTO, $config{'autofs_file'});
+	open(AUTO, "<".$config{'autofs_file'});
 	while(<AUTO>) {
 		chop;
 		s/#.*$//g;
@@ -171,7 +173,7 @@ return @rv;
 # Add a new entry to the fstab file, old or new automounter file
 sub create_mount
 {
-local(@mlist, @amd, $_); local($opts);
+local(@mlist, @amd, $_, $opts);
 
 if ($_[2] eq "auto") {
 	if ($amd_support == 1) {
@@ -211,10 +213,12 @@ else {
 	local $dev = $_[1];
 	if ($_[2] eq $smbfs_fs || $_[2] eq "cifs") {
 		$dev =~ s/\\/\//g;
-		$dev =~ s/ /\\040/g;
 		}
+	$dev =~ s/ /\\040/g;
+	local $mp = $_[0];
+	$mp =~ s/ /\\040/g;
 	&open_tempfile(FSTAB, ">> $config{fstab_file}");
-	&print_tempfile(FSTAB, $dev."\t".$_[0]."\t".$_[2]);
+	&print_tempfile(FSTAB, $dev."\t".$mp."\t".$_[2]);
 	local @opts = $_[3] eq "-" ? ( ) : split(/,/, $_[3]);
 	if ($_[5] eq "no") {
 		push(@opts, "noauto");
@@ -243,7 +247,7 @@ local($i, @fstab, $line, $opts, $j, @amd);
 $i = 0;
 
 # Update fstab file
-open(FSTAB, $config{fstab_file});
+open(FSTAB, "<".$config{fstab_file});
 @fstab = <FSTAB>;
 close(FSTAB);
 &open_tempfile(FSTAB, "> $config{fstab_file}");
@@ -254,9 +258,11 @@ foreach (@fstab) {
 		local $dev = $_[2];
 		if ($_[3] eq $smbfs_fs || $_[3] eq "cifs") {
 			$dev =~ s/\\/\//g;
-			$dev =~ s/ /\\040/g;
 			}
-		&print_tempfile(FSTAB, $dev."\t".$_[1]."\t".$_[3]);
+		$dev =~ s/ /\\040/g;
+		local $mp = $_[1];
+		$mp =~ s/ /\\040/g;
+		&print_tempfile(FSTAB, $dev."\t".$mp."\t".$_[3]);
 		local @opts = $_[4] eq "-" ? ( ) : split(/,/, $_[4]);
 		if ($_[6] eq "no") {
 			push(@opts, "noauto");
@@ -315,7 +321,7 @@ elsif ($amd_support == 2) {
 
 # Update autofs configuration
 if ($autofs_support) {
-	open(AUTO, $config{'autofs_file'});
+	open(AUTO, "<".$config{'autofs_file'});
 	@auto = <AUTO>;
 	close(AUTO);
 	&open_tempfile(AUTO, "> $config{'autofs_file'}");
@@ -346,7 +352,7 @@ local($i, @fstab, $line, $opts, $j, @amd);
 $i = 0;
 
 # Update fstab file
-open(FSTAB, $config{fstab_file});
+open(FSTAB, "<".$config{fstab_file});
 @fstab = <FSTAB>;
 close(FSTAB);
 &open_tempfile(FSTAB, ">$config{fstab_file}");
@@ -393,7 +399,7 @@ elsif ($amd_support == 2) {
 
 # Update AMD file
 if ($amd_support) {
-	open(AMD, $config{auto_file});
+	open(AMD, "<".$config{auto_file});
 	@amd = <AMD>;
 	close(AMD);
 	&open_tempfile(AMD, ">$config{auto_file}");
@@ -416,7 +422,7 @@ if ($amd_support) {
 
 # Update autofs file
 if ($autofs_support) {
-	open(AUTO, $config{'autofs_file'});
+	open(AUTO, "<".$config{'autofs_file'});
 	@auto = <AUTO>;
 	close(AUTO);
 	&open_tempfile(AUTO, ">$config{'autofs_file'}");
@@ -445,7 +451,7 @@ local(@rv, @p, @o, $mo, $_, %smbopts);
 local @mounts = &list_mounts();
 
 &read_smbopts();
-open(MTAB, "/etc/mtab");
+open(MTAB, "</etc/mtab");
 while(<MTAB>) {
 	chop;
 	s/#.*$//g;
@@ -478,29 +484,12 @@ while(<MTAB>) {
 		# The source for proc mounts is always proc
 		$p[0] = "proc";
 		}
-	if (!$_[0] && ($p[2] =~ /^ext\d+$/ && $has_e2label ||
-	    	       $p[2] eq "xfs" && $has_xfs_db ||
-		       $p[2] eq "reiserfs" && $has_reiserfstune)) {
+	if (!$_[0]) {
 		# Check for a label on this partition, and there is one
 		# and this filesystem is in fstab with the label, change
 		# the device.
-		local $label;
-		if ($p[2] eq "xfs") {
-			local $out = &backquote_command("xfs_db -x -p xfs_admin -c label -r $p[0] 2>&1", 1);
-			$label = $1 if ($out =~ /label\s*=\s*"(.*)"/ &&
-					$1 ne '(null)');
-			}
-		elsif ($p[2] eq "reiserfs") {
-			local $out = &backquote_command("reiserfstune $p[0] 2>&1");
-			if ($out =~ /LABEL:\s*(\S+)/) {
-				$label = $1;
-				}
-			}
-		else {
-			$label = &backquote_command("e2label $p[0] 2>&1", 1);
-			chop($label);
-			}
-		if (!$?) {
+		local $label = &get_filesystem_label(@p);
+		if (defined($label)) {
 			foreach $m (@mounts) {
 				if ($m->[0] eq $p[1] &&
 				    $m->[1] eq "LABEL=$label") {
@@ -544,7 +533,7 @@ while(<MTAB>) {
 	push(@rv, [ $p[1], $p[0], $p[2], $p[3] ]);
 	}
 close(MTAB);
-open(SWAPS, "/proc/swaps");
+open(SWAPS, "</proc/swaps");
 while(<SWAPS>) {
 	chop;
 	if (/^(\/\S+)\s+/) {
@@ -1216,6 +1205,9 @@ if ($type ne "swap" && $type ne "auto" &&
 
 	print &ui_table_row(&hlink($text{'linux_netdev'}, "linux_netdev"),
 		&ui_yesno_radio("lnx_netdev", defined($options{"_netdev"})));
+
+	print &ui_table_row(&hlink($text{'linux_nofail'}, "linux_nofail"),
+		&ui_yesno_radio("lnx_nofail", defined($options{"nofail"})));
 	}
 	
 if ($type =~ /^ext\d+$/) {
@@ -1567,6 +1559,10 @@ elsif ($type eq $smbfs_fs || $type eq "cifs") {
 		print &ui_table_row($text{'linux_cvers'},
 			&ui_opt_textbox("smbfs_vers", $options{"vers"},
 					5, $text{'linux_auto'}));
+
+		print &ui_table_row($text{'linux_noserverino'},
+			&ui_yesno_radio("smbfs_noserverino",
+					defined($options{"noserverino"})));
 		}
 	}
 elsif ($type eq "reiserfs") {
@@ -1817,6 +1813,9 @@ if ($_[0] ne "swap" && $_[0] ne "auto" &&
 
 	delete($options{"_netdev"});
 	$options{"_netdev"} = "" if ($in{'lnx_netdev'});
+
+	delete($options{"nofail"});
+	$options{"nofail"} = "" if ($in{'lnx_nofail'});
 	}
 
 if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
@@ -2135,6 +2134,9 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 		delete($options{'nounix'});
 		if ($in{'smbfs_nounix'}) { $options{'nounix'} = ''; }
 
+		delete($options{'noserverino'});
+		if ($in{'smbfs_noserverino'}) { $options{'noserverino'} = ''; }
+
 		delete($options{'vers'});
 		if (!$in{'smbfs_vers_def'}) {
 			$in{'smbfs_vers'} =~ /^[0-9\.]+$/ ||
@@ -2254,7 +2256,7 @@ return @rv ? join(',' , @rv) : "-";
 sub read_smbopts
 {
 local($_);
-open(SMBOPTS, "$module_config_directory/smbfs");
+open(SMBOPTS, "<$module_config_directory/smbfs");
 while(<SMBOPTS>) {
 	/^(\S+)\s+(\S+)$/;
 	$smbopts{$1} = $2;
@@ -2373,7 +2375,7 @@ local $sl = $/;
 $/ = undef;
 local $rv;
 foreach $f (split(/\s+/, $config{'auto_file'})) {
-	open(AMD, $f);
+	open(AMD, "<".$f);
 	$rv .= <AMD>;
 	close(AMD);
 	}
@@ -2397,7 +2399,7 @@ sub parse_amd_conf
 local (@rv, $str);
 foreach $f (split(/\s+/, $config{'auto_file'})) {
 	local $lnum = 0;
-	open(AMD, $f);
+	open(AMD, "<".$f);
 	while(<AMD>) {
 		s/\r|\n//g;
 		s/#.*$//g;
@@ -2509,6 +2511,44 @@ if ($path =~ /^\\\\([^\\]+)\\([^\\]+)(\\.*)?/) {
 	$path = "\\\\".lc($1)."\\".lc($2).$3;
 	}
 return $path;
+}
+
+# get_filesystem_label(device, mount, type)
+# Returns the label if there is one for this filesystem, or undef
+sub get_filesystem_label
+{
+local @p = @_;
+if (defined($get_filesystem_label_cache{$p[0]})) {
+	return $get_filesystem_label_cache{$p[0]};
+	}
+local $rv = "";
+if ($p[2] =~ /^ext\d+$/ && $has_e2label ||
+    $p[2] eq "xfs" && $has_xfs_db ||
+    $p[2] eq "reiserfs" && $has_reiserfstune) {
+	local $label;
+	if ($p[2] eq "xfs") {
+		local $out = &backquote_command(
+			"xfs_db -x -p xfs_admin -c label -r ".
+			quotemeta($p[0])." 2>&1", 1);
+		$label = $1 if ($out =~ /label\s*=\s*"(.*)"/ &&
+				$1 ne '(null)');
+		}
+	elsif ($p[2] eq "reiserfs") {
+		local $out = &backquote_command(
+			"reiserfstune ".quotemeta($p[0])." 2>&1");
+		if ($out =~ /LABEL:\s*(\S+)/) {
+			$label = $1;
+			}
+		}
+	else {
+		$label = &backquote_command(
+			"e2label ".quotemeta($p[0])." 2>&1", 1);
+		chop($label);
+		}
+	$rv = $label if (!$?);
+	}
+$get_filesystem_label_cache{$p[0]} = $rv;
+return $rv;
 }
 
 1;

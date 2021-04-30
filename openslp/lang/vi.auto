@@ -1,0 +1,50 @@
+index_title=Cấu hình OpenSLP
+index_return=Cấu hình OpenSLP
+index_eslpd=Trình nền OpenSLP $1 không tìm thấy trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+index_econf=Không tìm thấy tệp cấu hình OpenSLP $1 trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+index_version=Phiên bản OpenSLP $1 
+
+slp_apply=Áp dụng các thay đổi
+slp_stop=Dừng OpenSLP
+
+snda_title=Phạm vi tĩnh và DA
+snda_useScopes=Danh sách tĩnh của phạm vi
+snda_DAAddresses=Danh sách tĩnh của Đại lý thư mục (DA)
+
+netcfg_title=cấu hình mạng
+netcfg_isBroadcastOnly=Buộc phát sóng được sử dụng thay vì phát đa hướng
+netcfg_passiveDADetection=Sử dụng phát hiện DA thụ động
+netcfg_activeDADetection=Sử dụng phát hiện DA hoạt động (chỉ giới hạn ở Địa chỉ DHCP hoặc DA)
+netcfg_DAActiveDiscoveryInterval=Active Discovery trong vài giây (0 vô hiệu hóa Active Discovery)
+netcfg_multicastTTL=Đa tuyến (0-255)
+netcfg_DADiscoveryMaximumWait=Thời gian chờ tối đa cho các yêu cầu khám phá DA (tính bằng mili giây)
+netcfg_DADiscoveryTimeouts=Thời gian chờ khám phá DA liên tiếp (tính bằng mili giây)
+netcfg_HintsFile=Đường dẫn đến tệp gợi ý OpenSLP
+netcfg_multicastMaximumWait=Chờ tối đa cho các yêu cầu phát đa hướng (tính bằng mili giây)
+netcfg_multicastTimeouts=Thời gian chờ phát đa hướng liên tiếp (tính bằng mili giây)
+netcfg_unicastMaximumWait=Lượng thời gian tối đa giữa các yêu cầu unicast (tính bằng mili giây)
+netcfg_randomWaitBound=Giá trị tối đa cho tất cả các tham số chờ ngẫu nhiên (tính bằng mili giây)
+netcfg_MTU=Kích thước gói MTU (tính bằng byte)
+netcfg_interfaces=Địa chỉ IP của các giao diện mà DA/SA nên nghe
+
+dacfg_title=Cấu hình DA
+dacfg_isDA=Chỉ hoạt động như một DA (đọc hướng dẫn sử dụng trước khi thay đổi điều này)
+
+log_title=Truy tìm và ghi nhật ký
+log_traceDATraffic=In tin nhắn giao thông DA
+log_traceMsg=In thông báo chi tiết SLP
+log_traceDrop=In thông tin SLP bị rơi
+log_traceReg=In thông tin đăng ký DA và SA và hủy đăng ký
+
+error_open=Lỗi mở tập tin
+error_flock_on=Lỗi tạo khóa tập tin
+error_flock_off=Lỗi phá hủy khóa tập tin
+error_hup=Lỗi khởi động lại OpenSLP với PID
+
+index_start=Bắt đầu OpenSLP
+index_startmsg=Nhấn vào nút này để bắt đầu daemon OpenSLP trên hệ thống của bạn.
+index_stop=Dừng OpenSLP
+index_stopmsg=Nhấn vào nút này để dừng daemon OpenSLP trên hệ thống của bạn.
+
+stop_err=Không thể dừng OpenSLP
+start_err=Không thể khởi động OpenSLP

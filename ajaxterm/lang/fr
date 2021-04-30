@@ -1,0 +1,5 @@
+index_title=Connexion texte
+index_epython=Ajaxterm nécessite Python pour s'exécuter, mais la commande $1 est introuvable sur votre système.
+index_estart=Ajaxterm n'a pas commencé à accepter les connexions sur le port $2 après $1 secondes.
+index_popup=Ouvrir dans une fenêtre séparée ..
+index_credits=Utilise le code de <a href='$1' target=_new>Ajaxterm</a> par Antony Lesuisse.

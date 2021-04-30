@@ -1,0 +1,58 @@
+index_title=Stato dell'unità SMART
+index_ecmd=Il comando di controllo SMART $1 non è stato trovato sul sistema o non è impostato correttamente nella <a href='$2'>configurazione del modulo</a>. Deve essere installato prima di poter utilizzare questo modulo.
+index_ecmd2=Il comando $1 non sembra essere il comando di controllo SMART. Deve essere impostato correttamente nella <a href='$2'>configurazione del modulo</a> prima di poter utilizzare questo modulo.
+index_version=SMARTsuite versione $1 
+index_show=Mostra stato dell'unità:
+index_ok=Mostrare
+index_eidescsi=Nessuna unità IDE, SCSI o SATA trovata sul sistema.
+index_drive=Stato dell'unità $1 
+index_drivesub=Stato dell'unità $1, disco $2 
+index_desc=Posizione
+index_size=Dimensioni dell'unità
+index_model=Marca e modello
+index_support=Supporta SMART?
+index_enabled=SMART abilitato?
+index_check=Controllo unità superato?
+index_short=Autotest breve
+index_ext=Autotest esteso
+index_data=Test di raccolta dati
+index_errors=Errori registrati
+index_ecount=$1 errori rilevati
+index_attrs=Attributi SMART aggiuntivi
+index_raw=Rapporto completo sullo stato SMART
+index_return=indice del modulo
+index_family=Famiglia modello
+index_serial=Numero di serie
+index_capacity=Capacità
+index_norm=normalizzato:
+
+monitor_type=SMART Drive Check
+monitor_type2=Wearout SSD
+monitor_drive=Guidare per controllare
+monitor_errors=Controllare anche il registro degli errori?
+monitor_errorsinc=Sì, ma avvisa solo se aumenta il conteggio degli errori
+monitor_other=Altro ..
+monitor_edrive=Unità mancante o non valida da verificare
+monitor_nosuch=Nessuna tale unità
+monitor_nosmart=Nessun supporto SMART
+monitor_errorsfound=$1 errori segnalati
+monitor_errorsinced=Gli errori sono aumentati da $2 a $1 
+monitor_wearlevel=Fallire se il livello di usura scende al di sotto
+monitor_ewearlevel=Percentuale del livello di usura non valida
+monitor_nowearout=L'unità non segnala un indicatore di usura SSD
+monitor_wornout=Il livello di usura è sceso a $1 
+
+short_title=Autotest breve
+short_doing=Avvio di un breve autotest di $1 ..
+short_failed=.. fallito!
+short_ok=.. test iniziato OK. Vedere lo stato dell'unità sulla pagina principale del modulo per i risultati.
+
+ext_title=Autotest esteso
+ext_doing=Avvio dell'autotest esteso di $1 ..
+ext_failed=.. fallito!
+ext_ok=.. test iniziato OK. Vedere lo stato dell'unità sulla pagina principale del modulo per i risultati.
+
+data_title=Test di raccolta dati
+data_doing=Avvio della raccolta dati offline su $1 ..
+data_failed=.. fallito!
+data_ok=.. la raccolta è iniziata OK. Vedere lo stato dell'unità sulla pagina principale del modulo per i risultati.

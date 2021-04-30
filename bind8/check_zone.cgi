@@ -16,7 +16,7 @@ my $desc = &ip6int_to_net(&arpa_to_ip($zone->{'name'}));
 &ui_print_header($desc, $text{'check_title'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
-my $file = &make_chroot($zone->{'file'});
+my $file = &make_chroot(&absolute_path($zone->{'file'}));
 my @errs = &check_zone_records($zone);
 if (@errs) {
 	# Show list of errors

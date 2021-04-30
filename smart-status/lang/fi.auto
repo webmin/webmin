@@ -1,0 +1,58 @@
+index_title=SMART-aseman tila
+index_ecmd=SMART-ohjauskomentoa $1 ei löydy järjestelmästäsi, tai sitä ei ole asetettu oikein <a href='$2'>moduulin kokoonpanossa</a>. Se on asennettava ennen kuin tätä moduulia voidaan käyttää.
+index_ecmd2=Komento $1 ei näytä olevan SMART-ohjauskomento. Se on asetettava oikein <a href='$2'>moduulin kokoonpanossa</a>, ennen kuin tätä moduulia voidaan käyttää.
+index_version=SMARTsuite-versio $1 
+index_show=Näytä aseman tila:
+index_ok=Näytä
+index_eidescsi=Järjestelmästäsi ei löytynyt IDE-, SCSI- tai SATA-asemia.
+index_drive=Taajuusmuuttajan $1 tila
+index_drivesub=Aseman $1, levyn $2 tila
+index_desc=Sijainti
+index_size=Taajuusmuuttajan koko
+index_model=Merkki ja malli
+index_support=Tukee SMART?
+index_enabled=SMART käytössä?
+index_check=Läpäissyt ajotarkistuksen?
+index_short=Lyhyt itsetesti
+index_ext=Laajennettu itsetesti
+index_data=Tiedonkeruutesti
+index_errors=Virheet kirjautunut
+index_ecount=$1 virhe havaittu
+index_attrs=Muita SMART-määritteitä
+index_raw=Täysi SMART-tilaraportti
+index_return=moduulihakemisto
+index_family=Malliperhe
+index_serial=Sarjanumero
+index_capacity=kapasiteetti
+index_norm=normalisoituneet:
+
+monitor_type=SMART-aseman tarkistus
+monitor_type2=SSD kuluminen
+monitor_drive=Aja tarkistamaan
+monitor_errors=Tarkista myös virheloki?
+monitor_errorsinc=Kyllä, mutta varoita vain, jos virheiden lukumäärä kasvaa
+monitor_other=Muut ..
+monitor_edrive=Puuttuva tai virheellinen asema tarkistettavaksi
+monitor_nosuch=Ei sellaista asemaa
+monitor_nosmart=Ei SMART-tukea
+monitor_errorsfound=Raportoitu $1 virheistä
+monitor_errorsinced=Virheet kasvoivat $2 : sta $1 : een
+monitor_wearlevel=Epäonnistuu, jos kulutustaso laskee alle
+monitor_ewearlevel=Virheellinen kulutusprosentti
+monitor_nowearout=Asema ei ilmoita SSD-kulumisen osoitinta
+monitor_wornout=Kulutustaso on laskenut $1 : een
+
+short_title=Lyhyt itsetesti
+short_doing=Aloitetaan lyhyt itsetesti, $1.
+short_failed=.. epäonnistui!
+short_ok=..testi alkoi OK. Katso tulokset moduulin pääsivulta moduulin pääsivulta.
+
+ext_title=Laajennettu itsetesti
+ext_doing=Aloitetaan laajennettu itsetesti $1 : llä.
+ext_failed=.. epäonnistui!
+ext_ok=..testi alkoi OK. Katso tulokset moduulin pääsivulta moduulin pääsivulta.
+
+data_title=Tiedonkeruutesti
+data_doing=Aloitetaan offline-tiedonkeruu $1 : llä.
+data_failed=.. epäonnistui!
+data_ok=.. kokoelma alkoi OK. Katso tulokset moduulin pääsivulta moduulin pääsivulta.

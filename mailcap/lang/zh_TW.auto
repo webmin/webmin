@@ -1,0 +1,46 @@
+index_title=MIME類型程序
+index_none=尚未定義MIME類型處理程序。
+index_add=添加一個新的MIME類型程序。
+index_type=MIME類型
+index_program=處理程序
+index_cmt=描述
+index_delete=刪除所選
+index_disable=禁用選擇
+index_enable=啟用選定
+index_enabled=已啟用？
+index_return=程序清單
+
+edit_title1=創建MIME類型程序
+edit_title2=編輯MIME類型程序
+edit_header=MIME類型處理程序的詳細信息
+edit_type=MIME類型
+edit_enabled=已啟用？
+edit_program=處理程序
+edit_cmt=描述
+edit_egone=程序不再存在！
+edit_test=測試指令
+edit_none=無（始終使用程序）
+edit_term=在終端顯示輸出？
+edit_copious=產生大量輸出？
+edit_desc=MIME類型說明
+
+save_err=無法保存MIME類型程序
+save_etype=MIME類型缺失或無效
+save_eprogram=缺少處理程序
+save_eclash=輸入的MIME類型已啟用的程序已存在
+save_etest=缺少或無效的測試命令
+save_edesc=無效的MIME類型描述
+
+delete_err=刪除MIME類型程序失敗
+disable_err=無法禁用MIME類型程序
+disable_eclash=已存在 $1的已禁用MIME類型程序
+enable_err=無法啟用MIME類型程序
+enable_eclash=為 $1啟用的MIME類型程序已存在
+delete_enone=未選擇
+
+log_delete_mailcap=刪除 $1的MIME類型程序
+log_create_mailcap=為 $1創建了MIME類型程序
+log_modify_mailcap=為 $1修改的MIME類型程序
+log_delete_mailcaps=已刪除 $1 MIME類型程序
+log_disable_mailcaps=禁用的 $1 MIME類型程序
+log_enable_mailcaps=已啟用 $1 MIME類型程序

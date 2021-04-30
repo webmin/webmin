@@ -31,6 +31,7 @@ else {
 # Add to file
 &save_directive_struct(undef, $dir, $hconf, $hconf);
 &flush_file_lines();
+&update_last_config_change();
 &unlock_file($in{'file'});
 
 &after_changing();

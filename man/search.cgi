@@ -114,7 +114,8 @@ if ($section{'perl'}) {
 				if ($doc->{'package'} && $modfile) {
 					push(@rv, [ $text{'search_perl'},
 					  "view_perl.cgi?mod=$doc->{'package'}",
-					  $doc->{'package'}, $doc->{'name'},
+					  $doc->{'package'},
+					  &html_escape($doc->{'name'}),
 					  1 ]);
 					}
 				}
@@ -141,10 +142,7 @@ if ($section{'help'}) {
 		closedir(DIR2);
 		HELP: foreach $p (&unique(@pfx)) {
 			local $file = &help_file($m, $p);
-			open(HELP, $file);
-			local @st = stat($file);
-			read(HELP, $help, $st[7]);
-			close(HELP);
+			local $help = &read_file_contents($file);
 			if ($help =~ /<header>([^<]+)<\/header>/) {
 				$header = $1;
 				}
@@ -168,7 +166,8 @@ if ($section{'help'}) {
 			    (!$in{'and'} && $matches)) {
 				push(@rv, [ $text{'search_help'},
 					    "/help.cgi/$m/$p?x=1",
-					    "$m/$p", $header,
+					    "$m/$p",
+					    &html_escape($header),
 					    2 ]);
 				}
 			}
@@ -215,7 +214,8 @@ if ($section{'man'}) {
 
 			push(@rv, [ $text{'search_man'},
 				    "view_man.cgi?page=$pp[0]&sec=$3&opts=".
-				    $opts{'man'}, "$pp[0] ($sect)", $desc,
+				    $opts{'man'}, "$pp[0] ($sect)",
+				    &html_escape($desc),
 				    $exact ? 4 : 3 ]);
 			}
 		}
@@ -245,6 +245,7 @@ if ($section{'google'}) {
 					$matches++ if ($desc =~ /\Q$f\E/i);
 					}
 				next if ($url =~ /^\/search/);	# More results
+				next if ($url =~ /^\/imgres/);	# Image
 				if ($url =~ /^\/url\?(.*)/) {
 					# Extract real URL
 					local $qs = $1;
@@ -291,7 +292,7 @@ if (@rv) {
 			push(@cols, &ui_link($r->[1]."&for=".&urlize($in{'for'}), &html_escape($r->[2]) ) );
 			}
 		push(@cols, $r->[0]);
-		push(@cols, &html_escape($r->[3]));
+		push(@cols, $r->[3]);
 		print &ui_columns_row(\@cols, [ undef, "nowrap", undef ]);
 		}
 	print &ui_columns_end();
@@ -337,7 +338,8 @@ foreach $f (@f) {
 			    !$in{'and'} && $matches) {
 				local ($desc, $data) = &read_doc_file($p);
 				if ($desc !~ /^#!/ && $desc !~ /^#\%/) {
-					push(@rv, [ $p, $desc, $f, $matches ]);
+					push(@rv, [ $p, $desc, $f,
+						&html_escape($matches) ]);
 					}
 				}
 			}
@@ -351,7 +353,8 @@ foreach $f (@f) {
 			if (($in{'and'} && $dmatches == @{$_[1]} ||
 			     !$in{'and'} && $dmatches) &&
 			    $desc !~ /^#!/ && $desc !~ /^#\%/) {
-				push(@rv, [ $p, $desc, $f, $matches ]);
+				push(@rv, [ $p, $desc, $f,
+					    &html_escape($matches) ]);
 				}
 			}
 		}
@@ -364,7 +367,7 @@ return @rv;
 sub read_doc_file
 {
 local ($two, $first, $title, $data);
-open(FILE, $_[0]);
+open(FILE, "<$_[0]");
 read(FILE, $two, 2);
 local $qm = quotemeta($_[0]);
 if ($two eq "\037\213") {
@@ -394,7 +397,7 @@ return ($title ? $title : $first =~ /<.*>/ ? undef : $first, $data);
 sub parse_perl_module
 {
 local (%doc, $inside);
-open(MOD, $_[0]);
+open(MOD, "<$_[0]");
 while(<MOD>) {
 	if (/^\s*package\s+(\S+)\s*;/ && !$doc{'package'}) {
 		$doc{'package'} = $1;
@@ -418,7 +421,7 @@ sub inchelp
 {
 local $inc;
 local $ipath = &help_file($_[1], $_[0]);
-open(INC, $ipath) || return "<i>".&text('search_einclude', $_[0])."</i><br>\n";
+open(INC, "<$ipath") || return "<i>".&text('search_einclude', $_[0])."</i><br>\n";
 local @st = stat(INC);
 read(INC, $inc, $st[7]);
 close(INC);

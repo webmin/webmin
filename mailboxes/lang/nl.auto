@@ -1,0 +1,16 @@
+index_return=gebruikers lijst
+
+mail_specialsync=Synchronisatie speciaal
+
+search_msg6=Zoekresultaten voor $1 in het veld $2
+
+left_mail=Mail
+left_search=Zoeken:
+left_folders=Beheer mappen
+left_addresses=Adresboek
+left_prefs=Mail voorkeuren
+left_forward=E-mail doorsturen
+left_autoreply=Automatisch antwoord
+left_filter=E-mailfilters
+left_pass=Verander wachtwoord
+left_sig=Handtekening bewerken

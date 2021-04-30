@@ -1,0 +1,168 @@
+index_key=Redigera TSIG-nycklar (används för att verifiera uppdateringar till DNS-servrar)
+index_dhcpdver2=DHCP-servern <tt>$1</tt> verkar inte vara rätt version. Webmin stöder endast ISC DHCPD-versioner $2 till $3.
+index_desc=Beskrivning
+index_buttekey=Redigera TSIG-nycklar
+index_stop=Stoppa servern
+index_stopdesc=Klicka på den här knappen för att stoppa den körande DHCP-servern på ditt system. När de stoppas kan DHCP-klienter inte begära IP-adresser.
+index_version=ISC DHCPd-version $1 
+index_buttiface=Redigera nätverksgränssnitt
+index_iface=Ställ in nätverksgränssnitten som DHCP-servern lyssnar på när den startas.
+index_subtoomany=Det finns för många undernät att visa.
+index_shatoomany=Det finns för många delade nätverk att visa.
+index_sublook2=Redigera subnätet med adress:
+index_shalook2=Redigera det delade nätverket:
+index_hsttoomany=Det finns för många värdar att visa.
+index_grptoomany=Det finns för många grupper att visa.
+index_hstlook2=Redigera värdens namn:
+index_grplook2=Redigera gruppen som heter:
+index_gdom=Gruppera för $1 
+index_match0=jämlikar
+index_match1=innehåller
+index_match2=tändstickor
+index_dhcpd=ISC DHCPd
+index_delete=Radera valda
+
+butt_leases=Listhyror
+
+esub_desc=Subnetbeskrivning
+esub_fopeer=Failover Peer
+
+esh_pools=Adresspooler för delat nätverk
+esh_desc=Delad nätverksbeskrivning
+
+ehost_desc=Värdbeskrivning
+
+egroup_desc=Gruppbeskrivning
+
+listl_network=I nätverk $1 / $2 
+listl_lfnotcont2=DHCPd-hyresfilen <tt>$1</tt> innehåller inga hyresavtal som är aktiva för närvarande.
+listl_unknown=Okänd
+listl_allocs=$1 IP-adresser tillgängliga, $2 tilldelade ($3 %)
+listl_mode=Visningsläge  :
+listl_mode_0=DHCP-leasingavtal
+listl_mode_1=Undernät och användning
+listl_size=Totala IP: er
+listl_used=Avsatt
+listl_pc=Procentsats
+listl_err=Det gick inte att ta bort hyresavtal
+listl_enone=Ingen vald
+
+listl_refresh=Uppdatera listan
+
+restart_conftext=Linjer runt $1 i $2  :
+
+sopt_edname='$1' är inte ett giltigt alternativnamn
+sopt_ednum='$1' är inte ett giltigt alternativnummer
+sopt_edtype='$1' är inte en giltig alternativstyp
+sopt_ecval=Saknas värde för anpassat alternativ '$1'
+sopt_ecip=Värdet för anpassat alternativ "$1" måste vara en IP-adress
+
+ssub_invalidfopeer=är inte en giltig failover-peer
+
+plib_toffset=Tidsförskjutning
+plib_serverid=DHCP-serveridentifierare
+plib_ddnsupstyle=Dynamisk DNS-uppdateringsstil
+plib_adhoc=Ad-hoc
+plib_interim=Tillfällig
+plib_none=Ingen
+plib_unclients=Tillåta okända kunder?
+plib_allow=Tillåta
+plib_deny=Förneka
+plib_ignore=Ignorera
+plib_eexpr=Detta avsnitt av DHCP-konfigurationen innehåller uttryckningsdirektivet $1, som inte kan redigeras säkert av Webmin.
+plib_auth_subnet=Servern är auktoritativ för detta undernät?
+plib_auth_shared-network=Servern är auktoritativ för detta delade nätverk?
+plib_auth_global=Servern är auktoritativ för alla subnät?
+
+eopt_domsearch=DNS-domäner att söka
+eopt_toffset=Tidsförskjutning
+eopt_cname=namn
+eopt_def=Alternativdefinition
+eopt_dname=Alternativnamn
+eopt_dnum=siffra
+eopt_dtype=Typ
+eopt_slpa=SLP-katalogagentens IP: er
+eopt_slpaips=Endast dessa IP-adresser?
+eopt_slps=SLP-tjänstens omfattning
+eopt_slpsonly=Endast denna räckvidd?
+
+log_stop=Stoppad DHCP-server
+log_delete_subnets=$1 undernät och delade nätverk har raderats
+log_delete_hosts=$1 värdar och värdgrupper raderade
+
+keys_edit=Redigera TSIG-nyckel
+keys_create=Skapade TSIG-nycklar
+keys_title=DNS-nycklar
+keys_id=Nyckel-ID
+keys_alg=Algoritm
+keys_secret=Hemlig sträng
+keys_ecannot=Du får inte redigera DNS-nycklar
+keys_err=Det gick inte att spara DNS-nycklar
+keys_ekey='$1' är inte ett giltigt nyckel-ID
+keys_esecret=Saknad eller ogiltig base-64-kodad hemlighet för nyckel $1 
+
+eacl_uniqh=skapa värdar med duplicerade hårdvaruadresser
+eacl_uniqi=skapa värdar med duplicerade IP-adresser
+
+acl_zones=Kan redigera dynamiska DNS-zoner?
+acl_per_grp_acls=Aktivera ACL: er per grupp?
+acl_per_sha_acls=Aktivera ACL: er per delat nät?
+
+iface_title=Nätverksgränssnitt
+iface_desc=DHCP-servern kan endast tilldela IP-adresser i nätverk som är anslutna till ett av gränssnitten som valts nedan. Nätverksgränssnittet för alla definierade undernät måste inkluderas. Om ingen är vald försöker DHCP-servern hitta en automatiskt.
+iface_listen=Lyssna på gränssnitt
+
+lookup_ehost=Det finns ingen värd med namn, IP-adress eller MAC-adress $1 
+lookup_ehostname=Ingen värdnamn, IP-adress eller MAC-adress har angetts
+lookup_egroup=Ingen grupp med namnet eller domännamnet $1 finns
+lookup_egroupname=Inget gruppnamn eller domännamn har angetts
+lookup_esubnet=Det finns inget undernät med adress eller adress/nätmask $1 
+lookup_esubnetname=Ingen subnätadress eller adress/nätmask har angetts
+lookup_eshared=Det finns inget delat nätverk med namnet $1 
+lookup_esharedname=Inget delat nätverksnamn har matats in
+
+zone_key=DNS-zoner
+index_addzone=Lägg till en ny DNS-zon.
+index_zone=Zon
+index_nozones=Inga DNS-zoner har definierats än.
+zone_crheader=Skapa zon
+zone_eheader=Redigera zon
+zone_tabhdr=Detaljer om zonen
+zone_desc=Zonbeskrivning (valfritt)
+zone_name=Zonets namn
+zone_primary=IP för primär NS
+zone_return=huvudmeny
+zone_faildel=Det gick inte att ta bort zonen
+zone_failsave=Det gick inte att spara zon
+zone_tsigkey=TSIG-nyckel
+zone_ecannot=Du får inte redigera DNS-zoner
+
+plib_clientupdates=Kan kunder uppdatera sina egna poster?
+
+text_title=dhcpd.conf
+text_editor=Textredigerare
+text_return=huvudmeny
+text_undo=ångra
+text_ecannot=Du får inte redigera konfigurationsfilen
+
+index_buttetext=Redigera konfiguration manuellt
+index_text=Redigera konfigurationsfilen manuellt text
+
+stop_err=Det gick inte att stoppa DHCP-servern
+stop_ekill=Springer inte!
+
+sdelete_err=Det gick inte att ta bort undernät och delade nätverk
+sdelete_enone=Ingen vald
+sdelete_title=Radera subnät och delade nätverk
+sdelete_rusure1=Är du säker på att du vill ta bort de $1 valda undernätterna och $2 delade nätverken? Alla andra subnät eller andra objekt i nätverket kommer också att gå förlorade.
+sdelete_rusure2=Är du säker på att du vill ta bort de $1 valda undernätterna? Alla andra objekt inom subnät kommer också att gå förlorade.
+sdelete_rusure3=Är du säker på att du vill ta bort de $2 valda delade nätverken? Eventuella subnät eller andra objekt i nätverket kommer också att gå förlorade.
+sdelete_ok=Radera nu
+
+hdelete_err=Det gick inte att ta bort värdar och grupper
+hdelete_enone=Ingen vald
+hdelete_title=Radera värdar och grupper
+hdelete_rusure1=Är du säker på att du vill ta bort de $1 valda värdarna och $2 -grupperna? Alla andra värdar inom grupperna kommer också att gå förlorade.
+hdelete_rusure2=Är du säker på att du vill ta bort de $1 valda värdarna?
+hdelete_rusure3=Är du säker på att du vill ta bort de $2 valda grupperna? Eventuella värdar inom grupperna kommer också att gå förlorade.
+hdelete_ok=Radera nu

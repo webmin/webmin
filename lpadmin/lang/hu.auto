@@ -1,0 +1,124 @@
+index_header=Rendelkezésre álló nyomtatók
+index_jlist=Állás ..
+index_jcount=$1 munkahely ..
+index_restart=Indítsa újra az Ütemezőt
+index_restartmsg=Kattintson erre a gombra a nyomtatási ütemező folyamat újraindításához. Ez kényszeríti a jelenlegi nyomtatási konfiguráció alkalmazását.
+index_esystem=Telepítse a szoftvert a választott nyomtatási rendszerre, vagy használja a <a href='$1'>modulkonfigurációt</a> annak megváltoztatásához.
+index_style=Nyomtatási rendszer: $1 
+index_cluster=Klaszter szerverek
+index_clusterdesc=Kattintson erre a gombra további Webmin kiszolgálók beállításához, amelyeken nyomtatókat hoz létre, frissít és töröl.
+index_delete=Törölje a kijelölt nyomtatókat
+
+style_solaris=Solaris
+style_linux=Linux LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=CUPS
+style_irix=IRIX
+style_aix=AIX
+
+edit_unlimited=Korlátlan
+edit_check=Ellenőrizze, hogy működik-e a távoli szerver?
+
+blocks=blokkok
+
+save_erport=A '$1' távoli port nem érvényes
+save_evalid=A nyomtatórendszer nem tette lehetővé ezt a nyomtatót
+save_errslave=A nyomtató rendben lett ezen a rendszeren, de a következő hibák fordultak elő fürtrendszereken : $1 
+save_egone=Nem található a (z) '$1' nevű nyomtató
+save_errdelslave=A nyomtató rendben törölte a rendszert, de a következő hibák fordultak elő a fürtrendszereken : $1 
+
+jobs_test=Tesztoldal nyomtatása
+jobs_cancelsel=A kiválasztott munkák törlése
+jobs_on=A (z) $1 nyomtatón
+jobs_return=a nyomtatási feladatok listája
+
+restart_ecannot=Az ütemező nem indítható újra
+restart_err=Az ütemező újraindítása nem sikerült
+
+redhat_printer2=A nyomtató modellje és illesztőprogramja
+
+suse_raw=Nyers
+suse_extra=Extra ghostscript lehetőségek
+suse_yast2=YAST2 illesztőprogram
+suse_edriver=Nincs kiválasztva nyomtató típus
+suse_eres=Hiányzó vagy érvénytelen felbontás
+
+acl_restart=Csak újraindítás
+acl_view=Megjelenítik a nem konfigurálható nyomtatókat?
+acl_test=Ki lehet nyomtatni a tesztoldalakat?
+acl_user=Kezelje a tulajdonában lévő nyomtatási feladatokat
+acl_user_all=Minden felhasználó
+acl_user_this=A jelenlegi Webmin felhasználó
+acl_delete=Törölheti a nyomtatókat?
+acl_cluster=Kezelni tudja a nyomtatófürtöt?
+
+log_restart=Újraindította a nyomtatási ütemezőt
+log_cancel_sel=A (z) $2 nyomtatási feladat megszakítva
+
+linux_ecmd=A (z) $1 parancs nem található a rendszeren, ami azt jelzi, hogy a Linux nyomtatórendszer nincs telepítve.
+linux_espool=A (z) $1 spool könyvtár nem létezik a rendszeren, ami azt jelzi, hogy a Linux nyomtatórendszer nincs telepítve.
+
+freebsd_ecmd=A (z) $1 parancs nem található a rendszeren, ami azt jelzi, hogy a FreeBSD nyomtatási rendszer nincs telepítve.
+freebsd_espool=A (z) $1 spool könyvtár nem létezik a rendszeren, ami azt jelzi, hogy a FreeBSD nyomtatási rendszer nincs telepítve.
+
+unixware_ecmd=A (z) $1 parancs nem található a rendszeren, ami azt jelzi, hogy a UnixWare nyomtatási rendszer nincs telepítve.
+
+hpux_ecmd=A rendszerben nem található a $1 parancs, amely azt jelzi, hogy a HPUX nyomtatórendszer nincs telepítve.
+hpux_eiface=A (z) $1 interfész parancsfájlok nem léteznek a rendszeren, ami azt jelzi, hogy a HPUX nyomtatórendszer nincs telepítve.
+
+lprng_ecmd=A rendszerben nem található a $1 parancs, amely azt jelzi, hogy az LPRng nyomtatórendszer nincs telepítve.
+lprng_espool=A (z) $1 spool könyvtár nem létezik a rendszeren, ami azt jelzi, hogy az LPRng nyomtatási rendszer nincs telepítve.
+
+solaris_ecmd=A (z) $1 parancs nem található a rendszeren, ami azt jelzi, hogy a Solaris nyomtatórendszer nincs telepítve.
+
+test_title=Tesztoldal nyomtatása
+test_ecannot=Tilos a tesztoldalakat kinyomtatni
+test_desc=Ez az űrlap lehetővé teszi a tesztoldal kinyomtatását a (z) $1 nyomtatóhoz. Válassza ki a nyomtatni kívánt oldal típusát :
+test_0=Fekete-fehér Postscript oldal
+test_1=Színes Postscript oldal
+test_2=Sima ASCII szöveg
+test_3=Bármelyik feltöltött fájl
+test_print=Oldal nyomtatása
+test_exec=Tesztoldal kinyomtatása a $1 paranccsal.
+test_failed=.. parancs sikertelen!
+test_ok=.. parancs teljes.
+
+cups_none=Egyik sem
+cups_nonemsg=Távoli vagy nyers nyomtató
+cups_prog=Program
+cups_driver=CUPS illesztőprogram
+cups_eprog=A '$1' nem érvényes program
+cups_opts=$1 opciói
+cups_ecmd=A rendszerben nem található a $1 parancs, amely azt jelzi, hogy a CUPS nyomtatási rendszer nincs telepítve.
+
+irix_ecmd=A rendszerben nem található a $1 parancs, amely azt jelzi, hogy az IRIX nyomtatórendszer nincs telepítve.
+irix_eiface=A (z) $1 interfész parancsfájlok nem léteznek a rendszeren, ami azt jelzi, hogy az IRIX nyomtatórendszer nincs telepítve.
+
+aix_port=$1 nyomtatóport
+aix_edesc=Érvénytelen leírás - csak betűk és számok megengedettek, szóközök nélkül
+aix_ecmd=A (z) $1 AIX nyomtatószerver nem található. Lehet, hogy nincs telepítve, vagy egy másik nyomtatási rendszer van használatban.
+
+cluster_title=Klaszter nyomtatószerverek
+cluster_none=A nyomtatófürtbe még nem adtak hozzá szervereket.
+cluster_host=hostname
+cluster_desc=Leírás
+cluster_os=Operációs rendszer
+cluster_add=Szerver hozzáadása
+cluster_gadd=Add kiszolgálók csoportba
+cluster_need=A webminiszolgálók indexmoduljába be kell állítania a kiszolgálókat bejelentkezési névvel és jelszóval, mielőtt itt kezelni tudják őket.
+cluster_return=fürtszerverek
+cluster_delete=A kiválasztott eltávolítása
+cluster_ecannot=A fürtnyomtató-kiszolgálók nem kezelhetők
+
+add_title=Szerverek hozzáadása
+add_msg=$1 hozzáadása ..
+add_gmsg=Szerverek hozzáadása a (z) $1 csoporthoz.
+add_err=Nem sikerült hozzáadni a szervert
+add_gerr=Nem sikerült hozzáadni a csoportot
+add_echeck=A $1 kiszolgálón nincs a Printer Administration modul
+add_ediff=A $1 kiszolgáló eltérő nyomtatási rendszert ($2) használ ehhez a kiszolgálóhoz
+add_ediff2=A $1 kiszolgáló eltérő nyomtató-illesztőprogramot ($2) használ ehhez a kiszolgálóhoz
+add_ok=$1 hozzáadva, $2 nyomtatóval.

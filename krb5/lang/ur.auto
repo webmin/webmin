@@ -1,0 +1,17 @@
+index_title=کربروس 5 کنفیگریشن
+index_econf=The Kerberos5 configuration file $1 was not found on your system. Maybe it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
+
+logging=لاگ فائلیں
+default_log=ڈیفالٹ لاگ فائل
+kdc_log=کے ڈی سی لاگ فائل
+admin_log=ایڈمن سرور لاگ فائل
+
+libdefaults=طے شدہ ترتیب
+dns_kdc=کے ڈی سی کی تلاش کے ل D DNS کا استعمال کریں
+default_realm=دائرے
+domain=ڈومین نام
+default_kdc=کے ڈی سی
+default_admin=ایڈمن سرور
+default_domain=پہلے سے طے شدہ ڈومین کا نام
+
+save=تازہ کاری ترتیب

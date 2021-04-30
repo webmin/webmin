@@ -1,0 +1,23 @@
+index_version_webalizer=Версия Webalizer $1 
+index_version_awffull=AWFFull
+index_when=Да, $1 
+index_webalizer=Webalizer
+index_enable=Расписание выбрано
+index_disable=Выбрано расписание
+
+edit_clear=Очистить лог-файл (ы) после запланированного отчета?
+
+gen_nothing=.. Webalizer завершен, но отчет не был создан. Смотрите вывод выше для деталей.
+
+global_hidereferrer=Рефереры спрятаться от таблиц
+global_hideagent=Браузеры, чтобы спрятаться от таблиц
+global_ignorereferrer=Направляющие полностью игнорировать
+global_ignoreagent=Браузеры, чтобы полностью игнорировать
+global_includeurl=URL не игнорировать
+global_includesite=Клиенты не игнорировать
+global_includereferrer=Рефереры не игнорировать
+global_includeuser=Пользователи не игнорировать
+global_includeagent=Браузеры не игнорировать
+
+log_enable_logs=Запланированная отчетность по журналам $1 
+log_disable_logs=Запланированные отчеты по журналам $1 

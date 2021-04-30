@@ -1,0 +1,33 @@
+index_title=TCP ovoji
+index_return=kazalo
+index_allowtitle=Dovoljeni gostitelji
+index_denytitle=Zavrnjeni gostitelji
+index_norule=V <tt>$1</tt> pravila še niso definirana.
+index_nofile=Datoteka „$1“ ne obstaja - preverite svojo <a href="/config.cgi?tcpwrappers">konfiguracijo modula</a>
+index_add=Dodajte novo pravilo.
+index_service=Daemon
+index_hosts=Gostitelji
+index_cmd=Ukaz
+index_delete=Izbriši izbrano
+index_none=noben
+
+edit_title1allow=Ustvari dovoljenje pravila
+edit_title2allow=Uredi dovoli pravilo
+edit_title1deny=Ustvari pravilo za zavrnitev
+edit_title2deny=Uredite pravilo za zavrnitev
+edit_eid=Tega pravila ni bilo mogoče najti
+edit_header=Možnosti pravil
+edit_service=Storitve
+edit_except=Razen storitev
+edit_hosts=Oddaljeni gostitelji
+edit_hostsexcept=Razen gostiteljev
+edit_cmd=Ukazi lupine
+edit_efound=Daemona "$1" ni bilo mogoče najti v konfiguraciji xinetd.
+
+save_errtitle=Napaka pri shranjevanju
+save_ehost=Vhod gostitelja vsebuje slabe znake
+save_ecmd=Vnos ukaza vsebuje slabe znake
+save_eservice=Imena demonov vsebujejo slabe znake
+
+del_errtitle=Napaka pri brisanju pravil
+del_enone=Za brisanje ni nobenih pravil

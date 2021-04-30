@@ -1,0 +1,33 @@
+index_title=TCP vyniojimo įrenginiai
+index_return=indeksas
+index_allowtitle=Leidžiami šeimininkai
+index_denytitle=Atsisakė šeimininkų
+index_norule=<tt>$1</tt> dar neapibrėžta jokių taisyklių.
+index_nofile=Failo „$1“ nėra - patikrinkite <a href="/config.cgi?tcpwrappers">modulio konfigūraciją</a>
+index_add=Pridėkite naują taisyklę.
+index_service=Deimonas
+index_hosts=Šeimininkai
+index_cmd=Komanda
+index_delete=Išštrinti pasirinktus
+index_none=nė vienas
+
+edit_title1allow=Sukurti leidimo taisyklę
+edit_title2allow=Redaguoti Leisti taisyklę
+edit_title1deny=Sukurti paneigimo taisyklę
+edit_title2deny=Redaguoti paneigimo taisyklę
+edit_eid=Ši taisyklė nerasta
+edit_header=Taisyklių variantai
+edit_service=Paslaugos
+edit_except=Išskyrus paslaugas
+edit_hosts=Nuotoliniai šeimininkai
+edit_hostsexcept=Išskyrus šeimininkus
+edit_cmd=„Shell“ komandos
+edit_efound=„$1“ demonas nerastas xinetd konfigūracijoje.
+
+save_errtitle=Įrašymo taisyklės klaida
+save_ehost=Pagrindiniame kompiuterio įvestyje yra blogų simbolių
+save_ecmd=Komandos įvestyje yra blogų simbolių
+save_eservice=Demonų vardai turi blogus simbolius
+
+del_errtitle=Klaida ištrinant taisykles
+del_enone=Nėra taisyklių, kurias būtų galima ištrinti

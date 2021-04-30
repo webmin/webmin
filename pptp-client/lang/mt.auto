@@ -1,0 +1,112 @@
+index_title=Klijent VPN PPTP
+index_epptp=Il-programm tal-klijent PPTP $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
+index_eppp=Il-programm tas-server PPP $1 mhuwiex installat fis-sistema tiegħek. Il-PPTP jiddependi minnha biex topera.
+index_eoptions=Il-fajl tal-għażliet PPP globali PPP $1 ma jeżistix. Jew toħloqha, jew aġġusta l-konfigurazzjoni tal-modulu <a href='$2'></a> biex tuża fajl differenti, jew xejn affattu.
+index_header=Mina definita
+index_none=L-ebda mini PPTP ma ġew definiti s'issa.
+index_tunnel=Mina $1 
+index_add=Żid mina VPN PPTP ġdida.
+index_conn=Qabbad lil:
+index_pass=bil-password mhux obbligatorju:
+index_conndesc=Ikklikkja din il-buttuna biex tikkonnettja l-mina VPN magħżula billi tuża l-konfigurazzjoni attwali tagħha.
+index_disc=Skonnettja minn:
+index_discdesc=Ikklikkja din il-buttuna biex skonnettja l-mina VPN attiva magħżula attwalment attiva u neħħi r-rotot kollha li jgħaddu minnha.
+index_return=Lista tal-mina PPTP
+index_opts=Editja l-Għażliet PPP Globali
+index_optsdesc=Ikklikkja din il-buttuna biex teditja l-għażliet tal-PPP li japplikaw għall-mini VPN PPTP kollha.
+index_version=Verżjoni PPPd $1 
+index_boot=Qabbad fil-but:
+index_noboot=&lt;M'għandekx tikkonnettja&gt;
+index_bootdesc=Ibdel din l-għażla biex tikkontrolla jekk il-konnessjoni VPN PPTP magħżula tkunx bdiet fil-ħin tal-bidu jew le.
+
+disc_err=Ma rnexxielux jiskonnettja l-mina
+disc_egone=Ma għadux attiv
+disc_ekill=Ma rnexxielux joqtol il-proċess pppd
+disc_done=Mina $1 ġiet skonnettjata b'suċċess.
+
+conn_err=Naqset milli tikkonnettja mina
+conn_egone=Mina m'għadhiex teżisti
+cone_ealready=Diġà konness
+conn_einvalid=Indirizz IP tas-server nieqes fil-fajl tal-konfigurazzjoni
+conn_title=Mina ta 'konnessjoni
+conn_cmd=Twaqqif ta 'konnessjoni PPTP bil-kmand $1 ..
+conn_ok=.. konnessjoni attivata b'suċċess bl-użu ta 'interface $1. L-indirizz lokali tiegħek huwa $2, u l-indirizz remot huwa $3.
+conn_timeout=.. konnessjoni fallew! Iċċekkja l-messaġġi tal-log hawn taħt għal informazzjoni għaliex.
+conn_routes=Żieda ta 'rotot ma' kmandi ..
+conn_mppe=Il-protokoll MPPE għall-kodifikazzjoni VPN jeħtieġ appoġġ tad-daemon u tal-qalba PPP. Madankollu, l-iżbalji ta 'hawn fuq jissuġġerixxu li wieħed jew it-tnejn mhumiex disponibbli fis-sistema tiegħek. Jekk is-server PPTP ma jeħtieġx MPPE, ipprova itfi l-għażliet kollha relatati miegħu fuq il-paġna <a href='$1'>għażliet globali tal-PPP</a>.
+
+edit_title1=Żid Munnel PPTP
+edit_title2=Editja Mina PPTP
+edit_header=Għażliet tal-mina VPN PPTP
+edit_name=Isem il-mina
+edit_server=Qabbad mas-server
+edit_login=Idħol bħala utent
+edit_same=Isem tas-sistema
+edit_pass=Idħol bil-password
+edit_remote=L-isem tas-server
+edit_auto=Awtomatiku
+edit_adddef=Żid ir-rotta default?
+edit_def1=Via tarf ieħor
+edit_def2=Via gateway ..
+edit_deldef=Tħassar rotta awtomatika antika?
+edit_routes=Ir-rotot li żżid wara l-konnessjoni
+edit_type=Tip
+edit_type0=&nbsp;
+edit_type1=Netwerk
+edit_type2=Ospitanti uniku
+edit_net=Netwerk jew ospitanti
+edit_mask=Netmask
+edit_gw=Via portal
+edit_gw_def=Tmiem ieħor
+edit_unknown=<tt>kmandi oħra tar-rotta</tt>
+edit_file=Fajl għażliet PPP
+edit_none=Xejn
+edit_global=Fajl globali standard
+edit_ofile=Fajl ieħor ..
+
+save_err=Ma rnexxielux isalva mina
+save_ename=Nieqes l-isem tal-mina
+save_eserver=Server nieqes jew invalidu mal-konnessjoni magħhom
+save_elogin=Isem tal-login nieqes jew invalidu
+save_eremote=Is-server remot nieqes jew invalidu
+save_edef=Passaġġ tar-rotta default nieqes jew invalidu
+save_enet=Indirizz tan-netwerk invalidu fir-rotta $1 
+save_emask=Netmask mhux validu fir-rotta $1 
+save_egw=Passaport mhux validu għan-netwerk fir-rotta $1 
+save_ehost=Indirizz IP tal-host mhux validu fir-rotta $1 
+save_emask2=Ebda netmask meħtieġ għar-rotta ospitanti $1 
+save_egw2=Portal tal-host mhux validu fir-rotta $1 
+save_erename=Ma rnexxielux jerġa 'isem il-fajl tal-mina
+save_eclash=Mina jew pari PPP bl-istess isem diġà teżisti
+save_efile=Fajl tal-għażliet PPP nieqes jew invalidu
+
+opts_title=Għażliet PPP Globali
+opts_desc=Is-settings hawn taħt huma meħuda minn $1, u se japplikaw għall-mini kollha li huma ssettjati biex jużaw il-fajl standard tal-għażliet PPP globali.
+opts_header=Għażliet PPP għall-mini kollha
+opts_mtu=Daqs massimu tal-pakkett li jibgħat
+opts_mru=Daqs massimu tal-pakkett li jirċievi
+opts_err=Ma rnexxielux isalva l-għażliet globali tal-PPP
+opts_emtu=Id-daqs massimu tal-pakkett li jibgħat jew invalidu huwa nieqes
+opts_emru=Id-daqs massimu tal-pakkett li jirċievi huwa nieqes jew invalidu
+opts_msdesc=L-għażliet ta 'hawn taħt jippermettu encryption MPPE, użat mis-servers VPN tal-Windows. Madankollu, MPPE teħtieġ appoġġ kemm fid-daemon PPP kif ukoll fil-qalba tas-sistema operattiva.
+
+mppe_mppe-40=Uża kriptaġġ MPPE ta '40 bit?
+mppe_mppe-128=Uża encryption MPPE ta '128-bit?
+mppe_mppe-stateless=Tippermetti modalità MPPE mingħajr stat?
+mppe_mppe=Tippermetti kriptaġġ MPPE?
+mppe_m2=Għandha tintuża
+mppe_m0=Ma jistax jintuża
+mppe_d0=B'diżabilità
+mppe_d1=Mogħtija
+mppe_mppe-stateful=Tista 'tippermetti modalità MPPE statali?
+mppe_old=Twissija - Id-direttivi MPPE ta 'stil antik $1 instabu fil-fajl tal-konfigurazzjoni tiegħek, minkejja li d-daemon PPP tiegħek jappoġġja d-direttivi ta' stil ġdid.
+mppe_new=Twissija - Id-direttivi MPPE ta 'stil ġdid $1 instabu fil-fajl tal-konfigurazzjoni tiegħek, minkejja li d-daemon PPP tiegħek jappoġġja biss id-direttivi tal-istil antik.
+
+log_create=Il-mina maħluqa ta 'PPTP $1 
+log_update=Mina modifikata tal-PPTP $1 
+log_delete=Mina imħassra PPTP $1 
+log_conn=Mina konnessa $1 
+log_conn_l=Mina konnessa $1 bl-indirizz lokali $2 
+log_failed=Naqset milli tikkonnettja mina $1 
+log_disc=Mina skonnettjata $1 
+log_opts=Għażliet editjati ta 'PPP globali

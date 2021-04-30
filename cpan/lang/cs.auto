@@ -1,0 +1,12 @@
+index_forcecpan=Vždy nainstalujte nejnovější verzi ze zdroje
+index_user=$1 (použito $2)
+index_ezone=Zdá se, že Perl je sdílen s globální zónou, takže zde moduly nelze nainstalovat. Místo toho musí být nainstalovány v globální zóně.
+index_none=Ve vašem systému nebyly nalezeny žádné nainstalované moduly Perl.
+index_tabmods=Existující moduly
+index_tabinstall=Nainstalujte modul
+index_tabsuggest=Navrhované moduly
+index_allmods2=Chybějící moduly používané Webminem
+index_wantmods=Moduly k instalaci
+
+download_missingok=Chybí moduly z CPAN
+download_fallback=Některé moduly se nepodařilo nainstalovat z balíčků, místo toho se pokusily o instalaci ze zdroje ..

@@ -1,0 +1,36 @@
+bind_maxconns=Connexions simultànies totals màximes
+bind_maxconns_per_ip=Connexions simultànies màximes per IP
+bind_maxconns_per_net=Connexions simultànies màximes per xarxa
+bind_emaxconns=Les connexions simultànies màximes han de ser un nombre superior a 1
+bind_emaxconns_per_ip=Les connexions simultànies màximes per IP han de ser un nombre superior a 1
+bind_emaxconns_per_net=Les connexions simultànies màximes per xarxa han de ser un nombre superior a 1
+
+ui_nice_size_type=Utilitzeu unitats de mesura binàries (KiB, MiB, GiB en lloc de KB, MB, GB)
+
+delete_rusure=Esteu segur que voleu suprimir el mòdul (s) $2? $1 kB de fitxers s'esborraran per sempre.
+
+ssl_letsdoms=Noms d'amfitrió del certificat
+
+update_webmin=Actualització de www.webmin.com
+
+session_pmodedesc3=Política de caducitat de contrasenya
+
+ipkey_eip2="$1" no és una adreça IP o un nom d'amfitrió vàlids
+
+advanced_sortconfigs=Voleu desar els fitxers de configuració ordenats per les seves claus?
+advanced_bufsize=Mida de la memòria intermèdia de xarxa en bytes
+advanced_ebufsize=La mida del buffer de xarxa ha de ser un nombre superior a zero
+
+sendmail_port=Port SMTP
+sendmail_ssl0=Mai xifreu
+sendmail_ssl1=Utilitzeu sempre TLS
+sendmail_ssl2=Canvieu amb STARTTLS
+sendmail_url=URL Webmin per utilitzar-lo al correu electrònic
+sendmail_url_def=Predeterminat ($1)
+sendmail_url_custom=URL personalitzat
+sendmail_eurl=Falta un URL personalitzat o no és vàlid
+
+letsencrypt_certbot=Certbot
+letsencrypt_eacmedns=Només el client Let's Encrypt oficial és compatible amb la validació basada en DNS
+
+alert_hide=Amaga l'alerta

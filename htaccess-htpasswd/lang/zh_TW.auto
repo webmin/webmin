@@ -1,0 +1,57 @@
+index_usersgroups=關聯的用戶和組
+index_gadd=添加一個新組。
+index_nogroups=尚未定義任何組。
+index_md5=在模塊配置中啟用了MD5加密，但尚未安裝所需的 $1 Perl模塊。
+index_sha1=在模塊配置中啟用了SHA1加密，但是尚未安裝所需的 $1 Perl模塊。
+index_digest2=在模塊配置中啟用了摘要加密，但是未安裝所需的 $1命令或 $2 Perl模塊。
+index_cpan=<a href='$1'>單擊此處</a>立即下載並安裝。
+index_delete=取消保護所選目錄
+index_remove=取消保護和刪除文件
+
+dir_header2=用戶同步選項
+dir_gfile=文件包含組
+dir_none=沒有
+dir_crypt2=SHA1
+dir_crypt3=消化
+dir_ecannotcreate=您不允許配置受保護的目錄
+dir_ehtgroup=無法創建組文件 $1 : $2
+dir_remove2=完全刪除 $1， $2和 $3文件？
+dir_sync_create=創建Unix用戶時添加用戶？
+dir_sync_update=Unix用戶是什麼時候更新用戶？
+dir_sync_delete=Unix用戶是什麼時候刪除用戶？
+dir_egfile=沒有輸入群組文件
+dir_require=用戶允許
+dir_requirev=文件中的所有用戶
+dir_requireu=只有用戶 ..
+dir_requireg=只有組成員 ..
+dir_erequire_user=沒有用戶允許輸入
+dir_erequire_group=沒有允許進入的團體
+dir_delete=不保護
+dir_delete2=取消保護並刪除文件
+dir_delete3=取消保護並刪除文件
+dir_apache=編輯Apache選項
+dir_efiledir='$1'是目錄，因此不能用作用戶文件
+dir_egfiledir='$1'是目錄，因此不能用作組文件
+
+edit_dom=摘要領域
+
+gedit_title1=創建組
+gedit_title2=編輯組
+gedit_header=Web驗證組詳細信息
+gedit_group=組的名字
+gedit_members=組成員
+
+save_edom=摘要域缺失或無效
+
+gsave_err=無法保存組
+gsave_egroup1=群組名稱缺失
+gsave_egroup2=組名不能包含：字符或空格
+gsave_eclash=具有相同名稱的組已存在
+
+acl_sync=可以設置Unix用戶同步嗎？
+acl_uonly=可以添加和更改受保護的目錄嗎？
+
+log_create_group=已創建組 $1
+log_modify_group=修改後的組 $1
+log_delete_group=已刪除組 $1
+log_delete_dirs=已刪除 $1目錄

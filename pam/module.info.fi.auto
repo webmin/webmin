@@ -1,0 +1,3 @@
+name_fi=PAM
+longdesc_fi=Määritä palveluiden, kuten telnet, POP ja FTP, käyttämät PAM-todennusvaiheet.
+desc_fi=PAM-todennus

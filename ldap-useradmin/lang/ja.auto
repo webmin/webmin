@@ -1,0 +1,103 @@
+index_title=LDAPユーザーとグループ
+index_ebase=システムにLDAPクライアント構成ファイルが見つからなかったため、ユーザーとグループのベースを<a href='$1'>module config</a>ページで設定する必要があります。
+index_eperl=このモジュールに必要な $1 Perlモジュールがインストールされていないか、正しく機能していません。 <a href='$2'>ここをクリック</a>して、今すぐダウンロードしてインストールしてください。
+index_eperl2=モジュールをロードしようとしたときにPerlによって報告されたエラーは次のとおりです。
+index_eldap=$1。ここをクリックして、<a href='$2'>モジュール構成</a>を調整します。
+index_eschema=WebminはLDAPサーバーに接続しましたが、スキーマを取得できませんでした。 <a href='$1'>LDAPサーバー</a>モジュールでアクセスが拒否されていないことを確認してください。
+index_eimap=$1。 <a href='$2'>モジュール設定</a>が間違っている可能性があります。
+index_emd5=このモジュールはパスワードにMD5暗号化を使用するように<a href='$1'>構成</a>されていますが、 $2 Perlモジュールはインストールされていません。 <a href='$3'>ここをクリック</a>して、 $2モジュールをダウンロードしてインストールします。
+index_eslappasswd=このモジュールは、パスワードにLDAP MD5暗号化を使用するように<a href='$1'>構成</a>されていますが、パスワードの暗号化に使用されるプログラム<tt>$2</tt>はインストールされていません。
+index_eusearch=$1の下のユーザーの検索に失敗しました： $2
+index_uadd=新しいLDAPユーザーを追加します。
+index_gadd=新しいLDAPグループを追加します。
+index_unone=$1の下にLDAPユーザーが見つかりませんでした。
+index_gnone=$1の下にLDAPグループが見つかりませんでした。
+index_return=ユーザーリスト
+index_greturn=グループリスト
+index_egsearch=$1の下のグループを検索できませんでした： $2
+index_samba=サンバ？
+index_cyrus=IMAP？
+index_users=LDAPユーザー
+index_groups=LDAPグループ
+
+imap_econn=IMAPサーバー $1への接続に失敗しました
+imap_elogin=IMAPサーバー $1に $2としてログインできませんでした： $3
+conn_eldap_host=システムにLDAPクライアント構成ファイルが見つからなかったため、LDAPサーバーは「モジュール構成」ページで設定する必要があります
+conn_elogin=システムにLDAPクライアント構成ファイルが見つからなかったため、LDAPログインを[モジュール構成]ページで設定する必要があります
+conn_efile_open=LDAPバインド資格情報ファイルを開くことができませんでした：
+
+uedit_cap=ユーザー機能
+uedit_samba=Sambaログイン？
+uedit_cyrus=IMAPサーバーのログイン？
+uedit_dn=ユーザーのLDAP DN
+uedit_classes=LDAPオブジェクトクラス
+uedit_alias=メールエイリアス
+uedit_fields=追加のLDAPフィールド
+uedit_firstname=ファーストネーム
+uedit_lastname=苗字
+uedit_raw=LDAP属性
+uedit_return=ユーザーの詳細
+uedit_quota=IMAPクォータ
+uedit_unquota=変更しないでください
+uedit_sambapassopts=Sambaパスワードオプション
+uedit_sambapwdlastset=最終パスワード更新
+uedit_sambapwdcanchange=パスワードは変更できます
+uedit_sambabadpasswordcount=悪いパスワード数
+uedit_sambaacctflags=アカウントフラグ
+
+usave_eadd=ユーザーをLDAPデータベースに追加できませんでした： $1
+usave_emod=LDAPデータベースのユーザーを変更できませんでした： $1
+usave_emoddn=LDAPデータベースのユーザー名の変更に失敗しました： $1
+usave_egroupmod=LDAPデータベースのグループ $1を変更できませんでした： $2
+usave_edelete=LDAPデータベースからユーザーを削除できませんでした： $1
+usave_eicreate=ユーザーを作成できませんでした
+usave_eiacl=管理者に権限を付与できませんでした
+usave_eimap=ユーザーはLDAPデータベースに正常に保存されましたが、IMAPエラーが発生しました： $1 : $2
+usave_eisub=ユーザーをフォルダー $1にサブスクライブできませんでした
+usave_eiquota=IMAPクォータを設定できませんでした
+usave_eifolder=フォルダー $1を作成できませんでした
+usave_eilogin=新しいユーザーとしてログインできませんでした
+usave_ecyruspass=IMAPを有効にするときは、ユーザーの通常のパスワードを入力するか、[パスワードは必要ありません]オプションを選択する必要があります。
+usave_ebook=アドレス帳エントリを作成できませんでした： $1
+usave_emodbook=アドレス帳のエントリを変更できませんでした： $1
+usave_emodbookdn=アドレス帳エントリの名前を変更できませんでした： $1
+usave_egone=ユーザーはもういません！
+usave_ex86=このモジュールは、コンパイルされたx86プログラムに依存するため、Intel以外のシステムでSambaユーザーのパスワードを設定するために使用することはできません。
+usave_esamba=Samba Windowsファイル共有モジュールがインストールされていないため、このモジュールを使用してSambaユーザーのパスワードを設定することはできません。
+usave_ealiasdup=エイリアス $1は既に $2によって使用されています
+usave_eattrdup=オブジェクト $1はすでに $2 $3を使用しています
+usave_eattrdupu=ユーザー $1はすでに $2 $3を使用しています
+usave_eattrdupg=グループ $1はすでに $2 $3を使用しています
+usave_ereal=本名がありません
+usave_equota=IMAPクォータがないか、無効です
+
+search_err=$2の下の $1の検索に失敗しました： $3
+
+gedit_dn=グループのLDAP DN
+gedit_return=グループの詳細
+gedit_cap=グループ能力
+gedit_samba=サンバグループ？
+
+gsave_egone=グループはもう存在しません！
+gsave_edelete=LDAPデータベースからグループを削除できませんでした： $1
+gsave_eadd=グループをLDAPデータベースに追加できませんでした： $1
+gsave_emod=LDAPデータベースのグループを変更できませんでした： $1
+gsave_emoddn=LDAPデータベースのグループの名前変更に失敗しました： $1
+
+gdel_group=LDAPグループエントリの削除 ..
+
+udel_pass=LDAPユーザーエントリの削除 ..
+udel_book=アドレス帳から削除 ..
+udel_imap=IMAPフォルダーの削除 ..
+udel_warnimap=ホームディレクトリを削除すると、既存のメールポストボックスが削除されます！
+udel_failed=..失敗しました！ ： $1
+
+raw_title=LDAP属性
+raw_name=属性名
+raw_value=値
+raw_for=$1の場合
+
+batch_samba=新しいユーザーのSambaアカウントを作成しますか？
+batch_imap=新しいユーザーのIMAPアカウントを作成しますか？
+batch_descafter3=<b>create</b>および<b>modify</b>行では、オプションで<i>name</i> = <i>value</i>形式のLDAP属性を含む追加フィールドを追加できます。新規または変更されたユーザーに割り当てられます。
+batch_eattr=行 $1のLDAP属性が無効です： $2

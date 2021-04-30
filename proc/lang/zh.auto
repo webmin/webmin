@@ -1,0 +1,89 @@
+index_zone=区
+index_mem2=<b>实际内存：</b>总计 $1 /空闲 $2
+index_mem3=<b>实际内存：</b>总计 $1 /空闲 $2 /已缓存 $3
+index_swap2=<b>交换空间：</b>总计 $1 /空闲 $2
+index_burst=<b>可突发内存：</b>总计 $1
+index_loadname=平均CPU负载：
+index_loadnums=$1（1分钟）， $2（5分钟）， $3（15分钟）
+index_cpuname=CPU类型：
+index_inzone=在 $1区域中
+
+stime=已开始
+sclass=IO调度类
+sprio=IO优先级
+
+search_cpupc2=使用更多的CPU
+search_ip=使用IP地址
+
+run_as=以用户身份运行
+run_euser=用户名缺失或无效
+run_euser2=不允许以所选用户身份运行命令
+
+edit_subid=ID
+edit_subcmd=子流程命令
+edit_sigstop=暂停
+edit_sigcont=恢复
+edit_open=文件和连接
+edit_trace=追踪过程
+edit_return=工艺细节
+
+linux_stime=已开始
+
+linux_real=即时的
+linux_be=最大努力
+linux_idle=闲
+
+freebsd_stime=已开始
+
+hpux_stime=已开始
+
+sysv_stime=已开始
+sysv_task=任务ID
+sysv_zone=区域名称
+
+log_renice=将进程 $2的优先级更改为 $1
+
+acl_only=只能看到自己的流程吗？
+acl_who=可以为用户管理流程
+acl_who0=所有用户
+acl_who1=Webmin当前用户
+acl_who2=列出的用户 ..
+
+open_title=打开文件和连接
+open_proc=对于进程 $1（PID $2）
+open_header1=打开文件
+open_header2=开放式网络连接
+open_type=类型
+open_proto=协议
+open_desc=细节
+open_fd=文件描述符
+open_listen1=在端口 $1上监听
+open_listen2=正在监听地址 $1端口 $2
+open_recv=在 $1上接收： $2
+open_conn=在 $3状态下从 $1连接到 $2
+open_cwd=当前目录
+open_rtd=根目录
+open_txt=程式码
+open_mem=共享库
+open_dir=目录
+open_reg=常规文件
+open_chr=特殊字符
+open_blk=块特
+open_size=文件大小
+open_inode=索引节点
+open_file=路径
+
+trace_title=追踪过程
+trace_start=正在启动 $1的系统调用跟踪。
+trace_doing=$1的系统调用跟踪：
+trace_done=..流程已终止。
+trace_failed=..追踪失败！
+trace_sorry=此页面需要浏览器中的Java支持。要使用纯文本过程跟踪，请调整模块配置。
+trace_syscalls=跟踪系统调用：
+trace_all=所有
+trace_sel=上市 ..
+trace_change=更改
+
+windows_threads=处理中的线程
+
+syslog_dmesg=内核消息

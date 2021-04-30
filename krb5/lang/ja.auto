@@ -1,0 +1,17 @@
+index_title=Kerberos5の構成
+index_econf=Kerberos5構成ファイル $1がシステムで見つかりませんでした。インストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
+
+logging=ログファイル
+default_log=デフォルトのログファイル
+kdc_log=KDCログファイル
+admin_log=管理サーバーのログファイル
+
+libdefaults=デフォルト設定
+dns_kdc=DNSを使用してKDCを検索する
+default_realm=レルム
+domain=ドメイン名
+default_kdc=KDC
+default_admin=管理サーバー
+default_domain=デフォルトのドメイン名
+
+save=構成の更新

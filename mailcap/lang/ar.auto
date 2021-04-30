@@ -1,0 +1,46 @@
+index_title=برامج نوع MIME
+index_none=لم يتم تحديد برامج معالج نوع MIME حتى الآن.
+index_add=إضافة برنامج نوع MIME جديد.
+index_type=نوع التمثيل الصامت
+index_program=برنامج معالج
+index_cmt=وصف
+index_delete=احذف المختار
+index_disable=تعطيل المحدد
+index_enable=تمكين المحدد
+index_enabled=ممكن؟
+index_return=قائمة البرامج
+
+edit_title1=إنشاء برنامج نوع MIME
+edit_title2=تحرير برنامج نوع MIME
+edit_header=تفاصيل برنامج معالج نوع MIME
+edit_type=نوع التمثيل الصامت
+edit_enabled=ممكن؟
+edit_program=برنامج معالج
+edit_cmt=وصف
+edit_egone=البرنامج لم يعد موجودا!
+edit_test=أمر اختبار
+edit_none=لا شيء (استخدم البرنامج دائمًا)
+edit_term=عرض الإخراج في المحطة؟
+edit_copious=ينتج الكثير من المخرجات؟
+edit_desc=وصف نوع MIME
+
+save_err=فشل في حفظ برنامج نوع MIME
+save_etype=نوع MIME مفقود أو غير صالح
+save_eprogram=برنامج معالج مفقود
+save_eclash=يوجد برنامج ممكّن لنوع MIME الذي تم إدخاله بالفعل
+save_etest=أمر اختبار مفقود أو غير صالح
+save_edesc=وصف نوع MIME غير صالح
+
+delete_err=فشل حذف برامج من نوع MIME
+disable_err=فشل تعطيل برامج نوع MIME
+disable_eclash=يوجد بالفعل برنامج معطل من نوع MIME لـ$1
+enable_err=فشل في تمكين برامج نوع MIME
+enable_eclash=يوجد بالفعل برنامج نوع MIME ممكّن لـ$1
+delete_enone=لم يتم تحديد شيء
+
+log_delete_mailcap=حذف برنامج نوع MIME لـ$1
+log_create_mailcap=تم إنشاء برنامج نوع MIME لـ$1
+log_modify_mailcap=برنامج نوع MIME المعدل لـ$1
+log_delete_mailcaps=تم حذف برامج نوع$1 MIME
+log_disable_mailcaps=تعطيل برامج نوع$1 MIME
+log_enable_mailcaps=تم تمكين برامج نوع$1 MIME

@@ -1,17 +1,17 @@
 index_title=Cuentas PPP
-index_enopfile=El archivo de claves de acceso PPP '$1' no existe en tu sistema. Quizás PPP no ha sido instalado
+index_enopfile=El archivo de claves de acceso PPP '$1' no existe en tu sistema. QuizÃ¡s PPP no ha sido instalado
 index_table=Cuentas PPP de Entrada y Salida
 index_user=Nombre de usuario
 index_server=Servidor
 index_uany=CUALQUIERA (ANY)
 index_sany=CUALQUIERA (ANY)
 index_create=Crear nueva cuenta PPP
-index_info=Webmin puede ser configurado de tal manera que los cambios de la lista de usuarios de Unix sea automáticamente aplicada a la lista de cuentas PPP. Esto sólo funciona si el módulo Webmin de <tt>Usuarios y Grupos</tt>se utiliza para añadir, borrar o cambiar usuarios.
-index_onadd=Añadir cuenta PPP al añadir un usuario Unix, para el servidor
+index_info=Webmin puede ser configurado de tal manera que los cambios de la lista de usuarios de Unix sea automÃ¡ticamente aplicada a la lista de cuentas PPP. Esto sÃ³lo funciona si el mÃ³dulo Webmin de <tt>Usuarios y Grupos</tt>se utiliza para aÃ±adir, borrar o cambiar usuarios.
+index_onadd=AÃ±adir cuenta PPP al aÃ±adir un usuario Unix, para el servidor
 index_onchange=Cambiar cuenta PPP cuando un usuario Unix cambie
 index_ondelete=Borrar cuenta PPP cuando un usuario Unix sea borrado
 index_apply=Aplicar
-index_return=índice
+index_return=Ã­ndice
 
 edit_secret_etitle=Editar Cuenta PPP
 edit_secret_ctitle=Crear Cuenta PPP
@@ -25,7 +25,7 @@ edit_secret_none=Ninguna
 edit_secret_ffile=Desde archivo
 edit_secret_leave=Dejar sin cambio
 edit_secret_setto=Poner a
-edit_secret_vaddr=Direcciones válidas
+edit_secret_vaddr=Direcciones vÃ¡lidas
 edit_secret_aany=Permitir cualquiera
 edit_secret_anone=No permitir a nadie
 edit_secret_alist=Permitir las listadas...
@@ -34,10 +34,9 @@ edit_secret_del=Borrar
 edit_secret_return=lista de cuentas
 
 save_secret_esave=No pude salvar cuenta 
-save_secret_enoip='$1' no es una dirección válida
+save_secret_enoip='$1' no es una direcciÃ³n vÃ¡lida
 
 log_create=Creado usuario PPP $1
 log_modify=Modificado usuario PPP $1
 log_delete=Borrado usuario PPP $1
-log_sync=Cambiada sincronización de usuario unix
-
+log_sync=Cambiada sincronizaciÃ³n de usuario unix

@@ -1,0 +1,37 @@
+index_title=Cluster Cron Jobs
+index_add=Buat kerja cron cluster baru.
+index_none=Tiada kerja cron cluster yang telah ditentukan.
+index_servers=Jalankan pada pelayan
+index_return=senarai pekerjaan cron cluster
+index_more=$1 lagi ..
+index_run=Jalankan sekarang ..
+index_actions=Tindakan
+
+edit_title=Edit Cluster Job Cron
+create_title=Buat Cluster Cron Job
+edit_servers=Jalankan pada pelayan
+edit_group=Ahli $1 
+edit_this=pelayan ini
+edit_all=&lt;Semua tuan rumah&gt;
+edit_emissing=Kerja cron tidak lagi wujud!
+
+save_err=Gagal menyimpan kerja cron cluster
+
+exec_title=Keluarkan Cron Cluster Job
+exec_cmd=Running $1 pada pelayan terpilih ..
+exec_failed=Gagal berjalan pada $1 : $2 
+exec_success=Output dari $1 ..
+exec_nohosts=Tiada tuan rumah yang dipilih untuk disiarkan, atau kumpulan yang dipilih tidak mengandungi sebarang tuan rumah yang boleh digunakan.
+
+log_run=Ran $1 pada pelayan $2 
+log_run_l=Ran $1 on $2 
+log_create=Kerja cron cluster dibuat untuk $1 
+log_create_l=Kerja cron cluster yang dibuat $2 untuk $1 
+log_modify=Kerja cron cluster yang diubahsuai untuk $1 
+log_modify_l=Kerja kluster yang diubah suai $2 untuk $1 
+log_delete=Kerja cron cluster yang dipadamkan untuk $1 
+log_delete_l=Kerja cron cluster yang dibuang $2 untuk $1 
+log_deletes=Dipadam $1 cluster pekerjaan cron
+
+delete_err=Gagal memadamkan kerja cron cluster
+delete_enone=Tiada yang dipilih

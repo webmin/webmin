@@ -1,1 +1,1 @@
-desc_es=Compartición de Archivos de Windows mediante Samba
+desc_es=ComparticiÃ³n de Archivos de Windows mediante Samba

@@ -1,0 +1,116 @@
+index_title=방화벽
+index_atboot=부팅시 방화벽을 활성화 하시겠습니까?
+index_bootup=부팅시 활성화
+index_bootupdesc=부팅시 방화벽의 활성화 여부를 제어하려면이 옵션을 변경하십시오.
+index_apply=구성 적용
+index_applydesc=위에 나열된 방화벽 구성을 활성화하려면이 버튼을 클릭하십시오. 현재 적용중인 방화벽 규칙은 모두 삭제되고 교체됩니다
+index_restart=구성 적용
+index_restartdesc=모든 영역에서 위에 나열된 모든 허용 된 서비스 및 포트를 활성화하십시오. 영구적으로 생성되지 않은 활성 규칙이 교체됩니다.
+index_start=FirewallD 시작
+index_startdesc=FirewallD 서버를 시작하고 위에 나열된 규칙을 적용하십시오.
+index_stop=방화벽 중지
+index_stopdesc=FirewallD 서버를 종료하고 위에 나열된 모든 규칙을 제거하십시오.
+index_cerr=FirewallD 모듈을 사용할 수 없습니다  : $1 
+index_zone=영역에 규칙 표시 :
+index_zoneok=변화
+index_zoneadd=구역 추가 ..
+index_zonedel=영역 삭제
+index_zonedef=기본값으로 설정
+index_type=규칙 유형
+index_port=포트 또는 서비스
+index_proto=실험 계획안
+index_tservice=서비스
+index_tport=포트
+index_tforward=앞으로
+index_padd=허용 된 포트를 추가하십시오.
+index_sadd=허용 된 서비스를 추가하십시오.
+index_fadd=포트를 앞으로 추가하십시오.
+index_delete=선택된 규칙 삭제
+index_return=구역 목록
+index_ezones=FirewallD 영역이 없습니다!
+index_none=이 영역에는 아직 허용 된 포트 나 서비스가 없습니다.
+index_ifaces=인터페이스에 규칙을 적용하십시오.
+
+port_edit=포트 편집
+port_create=포트 추가
+port_header=허용되는 포트 옵션
+port_zone=영역에서 허용
+port_port=허용하는 포트
+port_mode0=단일 포트
+port_mode1=포트 범위
+port_mode2=원래 포트와 동일
+port_proto=네트워크 프로토콜
+port_ezone=존이 존재하지 않습니다!
+port_err=포트를 저장하지 못했습니다
+port_eport=포트 번호 또는 이름이 없거나 잘못되었습니다
+port_eportlow=낮은 포트는 숫자 여야합니다
+port_eporthigh=높은 포트는 숫자 여야합니다
+port_eportrange=낮은 포트는 높은 포트 아래에 있어야합니다
+
+serv_edit=서비스 편집
+serv_create=서비스 추가
+serv_header=허용되는 서비스 옵션
+serv_name=허용하는 서비스
+serv_err=서비스를 저장하지 못했습니다
+
+forward_edit=앞으로 편집
+forward_create=앞으로 만들기
+forward_header=포트 포워딩 옵션
+forward_zone=영역으로 전달
+forward_err=앞으로 저장하지 못했습니다
+forward_port=소스 포트
+forward_dstport=데시 테이션 포트
+forward_dstaddr=목적지 주소
+forward_dstlocal=이 시스템
+forward_edstaddr=잘못된 IPv4 대상 주소
+forward_eneither=목적지 주소 또는 포트 또는 둘 다 입력해야합니다
+
+check_ecmd=시스템에서 FirewallD 제어 명령 $1 을 (를) 찾을 수 없습니다
+
+delete_err=규칙을 삭제하지 못했습니다.
+delete_enone=선택하지 않았습니다!
+delete_edel=$1 제거 실패  : $2 
+
+zone_title=영역 만들기
+zone_header=새로운 영역 옵션
+zone_name=구역 이름
+zone_mode=허용되는 포트 및 서비스
+zone_mode0=없음 (모든 트래픽이 차단됨)
+zone_mode1=영역에서 복사
+zone_mode2=SSH, IDENT 및 Webmin 만
+zone_mode3=SSH, IDENT, Webmin 및 높은 포트
+zone_mode4=가상 호스팅에 사용되는 포트
+zone_err=영역을 만들지 못했습니다
+zone_ename=존 이름이 없거나 유효하지 않습니다
+zone_eclash=이름이 같은 영역이 이미 존재합니다
+
+delzone_title=영역 삭제
+delzone_err=영역을 삭제하지 못했습니다
+delzone_edefault=기본 영역은 제거 할 수 없습니다
+delzone_rusure=$2 포트와 $3 서비스가 포함 된 $1 영역을 삭제 하시겠습니까?
+
+defzone_err=영역을 기본값으로 설정하지 못했습니다
+
+restart_err=구성을 적용하지 못했습니다
+
+stop_err=FirewallD를 중지하지 못했습니다
+start_err=FirewallD를 시작하지 못했습니다
+log_stop=방화벽 중지
+log_start=FirewallD 시작
+log_restart=적용된 FirewallD 구성
+log_bootup=부팅시 FirewallD 활성화
+log_bootdown=부팅시 FirewallD 비활성화
+log_create_port=허용 된 포트 $1 추가
+log_delete_port=허용 된 포트 $1 을 (를) 제거했습니다.
+log_update_port=허용 된 포트 $1 업데이트
+log_create_serv=허용 된 서비스 $1 추가
+log_delete_serv=허용 된 서비스 $1 제거
+log_update_serv=허용 된 서비스 $1 업데이트
+log_create_forward=앞으로 $1 추가됨
+log_delete_forward=앞으로 $1 제거
+log_update_forward=앞으로 $1 업데이트
+log_delete_rules=허용 된 $1 포트를 제거했습니다.
+log_ifaces_zone=영역 $1 에 대한 업데이트 된 인터페이스
+log_create_zone=생성 된 영역 $1 
+log_delete_zone=삭제 된 영역 $1 
+log_default_zone=영역 $1 을 기본값으로 설정

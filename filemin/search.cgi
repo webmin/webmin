@@ -1,8 +1,6 @@
 #!/usr/local/bin/perl
 
 require './filemin-lib.pl';
-use lib './lib';
-use File::MimeInfo;
 
 &ReadParse();
 
@@ -21,7 +19,7 @@ if($in{'caseins'}) {
 }
 @list = split('\n', &backquote_logged(
                 "find ".quotemeta($cwd)." $criteria ".quotemeta("*$in{'query'}*")));
-@list = map { [ $_, stat($_), mimetype($_), -d $_ ] } @list;
+@list = map { [ $_, stat($_), &clean_mimetype($_), -d $_ ] } @list;
 
 print_interface();
 

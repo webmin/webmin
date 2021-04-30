@@ -1,0 +1,22 @@
+index_title=คำสั่งเชลล์คลัสเตอร์
+index_cmd=สั่งให้วิ่ง
+index_old=หรือ
+index_server=ทำงานบนเซิร์ฟเวอร์
+index_run=เรียกใช้คำสั่งทันที
+index_return=ดัชนีโมดูล
+index_this=เซิร์ฟเวอร์นี้
+index_all=&lt;โฮสต์ทั้งหมด&gt;
+index_group=สมาชิกของ $1 
+index_clear=ล้างประวัติ
+index_edit=แก้ไขก่อนหน้า
+
+run_title=เรียกใช้คำสั่ง
+run_err=ไม่สามารถเรียกใช้คำสั่ง
+run_ecmd=ไม่ได้ป้อนคำสั่ง
+run_failed=ไม่สามารถเรียกใช้บน $1 : $2 
+run_success=ผลผลิตจาก $1 ..
+run_enone=ไม่มีเซิร์ฟเวอร์ให้เลือก
+
+log_clear=ล้างประวัติคำสั่งแล้ว
+log_run=Ran $1 บนเซิร์ฟเวอร์ $2 
+log_run_l=วิ่ง $1 กับ $2 

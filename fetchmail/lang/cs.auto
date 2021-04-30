@@ -1,0 +1,48 @@
+index_active=Aktivní?
+index_cron=Plánovaná kontrola
+index_crondesc=Klepnutím na toto tlačítko vytvoříte, změníte nebo odeberete úlohu Cron, aby se Fetchmail automaticky spouštěl podle plánu a zkontroloval a stáhl e-mail pomocí výše uvedené konfigurace.
+index_crondesc2=Klepnutím na toto tlačítko vytvoříte, změníte nebo odeberete úlohu Cron, aby se Fetchmail automaticky spouštěl podle plánu a zkontroloval a stáhl e-mail pro všechny uvedené uživatele.
+index_version=Verze aplikace Fetchmail $1 
+index_header=Uživatelé s konfigurací Fetchmailu
+index_search=Zobrazit konfiguraci aplikace Fetchmail pro:
+index_show=Ukázat
+index_toomany=Ve vašem systému je příliš mnoho uživatelů k zobrazení.
+
+poll_auth=Metoda ověřování
+poll_ssl=Připojit se v režimu SSL?
+poll_eboth=Možnosti ponechat zprávy na serveru a vždy načíst všechny zprávy jsou nekompatibilní
+poll_eusername=Uživatel neexistuje!
+poll_foruser=Pro uživatele $1 
+
+log_create_cron=Povoleno naplánované kontroly
+log_update_cron=Upravená plánovaná kontrola
+log_delete_cron=Zakázaná plánovaná kontrola
+
+acl_cron=Lze nakonfigurovat naplánovanou kontrolu?
+acl_daemon=Lze nakonfigurovat démona Fetchmailu?
+
+cron_title=Plánovaná kontrola
+cron_desc=Tuto stránku lze použít k povolení nebo zakázání úlohy Cron pro kontrolu poštovních serverů v konfiguraci Fetchmailu v pravidelném plánu. Použití úlohy Cron nadřazené pro spuštění démona Fetchmailu, protože nemusí být znovu spuštěno při spuštění.
+cron_header=Naplánované nastavení Fetchmailu
+cron_enabled=Plánovaná kontrola povolena?
+cron_yes=Ano, někdy nakonfigurováno níže.
+cron_output=Cíl pro výstup Fetchmailu
+cron_file=Zápis do souboru $1 
+cron_mail=E-mail na adresu $1 
+cron_throw=Zahodit
+cron_cron=Výstup na cron
+cron_owner=E-mail uživateli, jehož konfigurace se kontroluje
+cron_user=Spusťte Fetchmail jako uživatel
+cron_err=Uložení naplánované kontroly se nezdařilo
+cron_efile=Chybějící nebo neplatný výstupní název souboru
+cron_email=Chybí nebo neplatná e-mailová adresa
+cron_euser=Chybějící nebo neplatný uživatel Unixu
+cron_errors=Výstup pouze v případě chyby?
+cron_ecannot2=Není dovoleno konfigurovat naplánovanou kontrolu
+
+user_title=Konfigurace Fetchmailu
+user_header=Pro uživatele $1 
+user_return=konfigurace uživatele
+
+email_ok=Výstup Fetchmailu
+email_failed=Chyba Fetchmailu

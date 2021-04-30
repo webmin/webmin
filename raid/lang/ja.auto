@@ -1,0 +1,107 @@
+index_eprogs=RAIDツールもMDADMパッケージもシステムにインストールされていません。
+index_mdadm=MDADMバージョン $1を使用
+index_raidtools=RaidToolsを使用する
+index_name=装置名
+index_active=アクティブですか？
+index_errors=エラー
+index_status=状態
+index_level=RAIDレベル
+index_size=使用可能サイズ
+index_members=メンバーディスクデバイス
+index_header=RAID問題通知オプション
+index_mailaddr=通知を送信する
+index_mailaddrnone=送信しない
+index_mailfrom=通知の送信元アドレス
+index_mailfromnone=デフォルト（<tt>root</tt>）
+index_program=問題が検出されたときに実行するコマンド
+index_programnone=実行しないでください
+index_monitor=監視は有効ですか？
+
+raid6=RAID6（デュアル分散パリティ）
+raid10=RAID10（ストライプおよびミラー）
+blocks=ブロック
+
+create_missing=現在不足しているディスクを含めますか？
+create_assume=デバイスの初期化をスキップしますか？
+create_lvm=LVM VG $1、LV $2
+create_group=予備グループのメンバー
+create_nogroup=なし（独自のスペアのみを使用）
+create_oldgroup=既存のグループ
+create_newgroup=新しい集団
+create_enewgroup=欠落または非英数字のスペアグループ名
+create_n2_layout=2近くのコピー
+create_f2_layout=2枚のコピー
+create_o2_layout=2枚のオフセットコピー
+create_n3_layout=3近くのコピー
+create_f3_layout=3枚のコピー
+create_o3_layout=3オフセットコピー
+
+view_uuid=UUID
+view_errors=RAIDエラー
+view_bad=$1ディスクが故障しました
+view_mount=$1にマウントする場合
+view_lvm=LVM VG $1で使用されます
+view_iscsi=iSCSI共有デバイス $1によって使用されます
+view_stopdesc=このボタンをクリックすると、RAIDデバイスがシャットダウンされ、アクセスできなくなります。
+view_startdesc=このボタンをクリックして、このRAIDデバイスを再度アクティブにします。
+view_delayed=別のデバイスで待機しています
+view_cannot2=このRAIDデバイスは、現在アクティブであるため、マウント、非アクティブ化、削除、または再フォーマットすることはできません。
+view_mkfs2=タイプのファイルシステムを作成します。
+view_mkfsdesc=ファイルシステムのタイプを選択し、このボタンをクリックして、この論理ボリュームに新しいファイルシステムを作成します。これにより、現在ボリューム上にあるデータがすべて消去されます。
+view_add=パーティションを追加：
+view_adddesc=未使用のパーティションを選択し、このボタンをクリックして、RAIDデバイスに追加します。
+view_delete=RAIDアレイを削除する
+view_deletedesc=このボタンをクリックして、このRAIDデバイスを完全に削除します。含まれているデータはほぼ確実に失われます！
+view_remove=パーティションを削除します。
+view_removedesc=RAIDデバイスの一部であるパーティションを選択し、このボタンをクリックして削除します。これにより、データが失われる可能性があります！
+view_remove_det=取り外した
+view_remove_detdesc=システムからすでに物理的に切り離されているパーティションを削除します。
+view_replace=パーティションを交換：
+view_replacedesc=交換するパーティションを選択します。 （ホットリプレース）
+view_grow=RAIDの成長：
+view_growdesc=アレイの成長（ホットスペアをアクティブメンバに変換）
+view_convert_to_raid6=RAID6に変換
+view_convert_to_raid6desc=1つ以上のドライブを追加して、RAIDレベルをRAID6に変換します。
+view_convert_to_raid5=RAID5に変換
+view_convert_to_raid5desc=ドライブを取り外して、RAIDレベルをRAID5に変換します。
+view_state=RAIDステータス
+view_rebuild=再構築の進捗
+view_newmount=RAIDのマウント：
+view_newmount2=RAIDを仮想メモリとしてマウント
+view_mountmsg=ディレクトリを入力してこのボタンをクリックすると、RAIDデバイスをマウントするためのフォームに移動します。これにはファイルシステムがすでに含まれている必要があります。
+view_mountmsg2=システムの仮想メモリにこのRAIDデバイスを使用するには、このボタンをクリックします。
+view_blocks=$1ブロック
+view_sparegroup=予備グループ
+
+mkfs_header2=このフォームを使用すると、 $1に新しい $2ファイルシステムを構築できます。 <b>すべて</b>の既存のデータは消去されます！
+
+emdadmstop=<tt>mdadm</tt> in <tt>--stop</tt> mode failed : $1
+emdadmcreate=<tt>mdadm</tt> in <tt>--create</tt> mode failed : $1
+emdadmadd=<tt>mdadm</tt> in <tt>--manage --add</tt> mode failed : $1
+emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
+emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
+emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
+emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
+log_add=RAIDデバイス $1にパーティション $2を追加しました
+log_remove=RAIDデバイス $1からパーティション $2を削除しました
+log_replace=RAIDデバイス $1のパーティション $2をスペアパーティション $3でホットリプレースしました
+log_grow=RAIDデバイス $1を合計 $2ディスクに成長させました
+log_convert_to_raid6=RAID5デバイス $1をRAID6デバイスに変換しました
+log_convert_to_raid5=RAID6デバイス $1をRAID5デバイスに変換しました
+log_notif=更新されたRAID問題通知オプション
+
+notif_err=RAID問題通知オプションの保存に失敗しました
+notif_emailaddr=通知アドレスが欠落しているか無効です
+notif_emailfrom=差出人アドレスが見つからないか無効です
+notif_eprogram=実行するプログラムが存在しないか存在しない
+
+delete_title=RAIDアレイを削除
+delete_rusure=$2のディスク容量を使用するRAIDアレイ $1を削除してもよろしいですか？
+delete_ok=はい、削除します
+delete_eidx=RAIDアレイが選択されていません！
+
+remove_title=RAIDアレイからパーティションを削除
+remove_rusure=RAIDアレイ $1のパーティション $2を削除してもよろしいですか？
+remove_ok=はい、削除します
+remove_eidx=RAIDアレイが選択されていません！

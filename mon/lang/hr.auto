@@ -1,0 +1,200 @@
+index_title=MON servisni monitor
+index_return=MON indeks
+index_edir=MON direktorij $1 ne postoji. Možda MON nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
+mon_global_title=Konfiguracija globalnih varijabli
+mon_conf_title=Osnovna konfiguracija
+mon_status_title=Operativni status
+hostgroups_title=Konfiguracija MON-grupa domaćina
+services_title=Grupe gledatelja-Definicije usluga
+
+head_hostgroups=Grupe domaćina i usluge
+head_groups=Naziv grupe domaćina
+head_members=Članovi domaćinske grupe
+head_services=Usluge domaćina za gledanje
+head_service=Služba za gledanje
+head_param=Parametri usluge
+head_watch=Gledajte grupu?
+head_monauth=Unesite autentifikaciju za MONCMD
+head_usr=Korisničko ime
+head_pass=Zaporka
+head_mand=(Parametri u "CRVENOJ BOJI" su obavezni)
+
+err_nomon=paket 'mon' nije instaliran na sustavu
+err_nomonconf=Konfiguracijska datoteka MON $1 nije pronađena u vašem sustavu. Možda MON nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
+err_nowatch=Nije odabrana nijedna grupa za gledanje. Odaberite barem jednu Grupu za gledanje da biste nastavili.
+err_noserv=Za skupinu gledatelja nije odabrana nijedna usluga
+err_nomemb=Za grupu gledanja nisu odabrani domaćini/članovi
+err_monrun=MON se ne izvodi na hostmachinu. Počnite od MON.
+stop_err=Zaustavljanje MON-a nije uspjelo
+stop_epid=Nema više trčanja
+start_err=Nije uspio pokrenuti MON
+restart_err=Ponovno pokretanje MON-a nije uspjelo
+restart_epid=PID nije uspio
+
+other=Ostalo (prostor odvojen)
+next=Sljedeći
+mon_stat=MON Status
+mon_off=MON usluge nisu započete
+mon_start=Pokrenite MON usluge
+mon_stop=Zaustavite MON usluge
+mon_restart=Ponovo pokrenite MON usluge
+mon_startdesc=Kliknite ovaj gumb za pokretanje MON poslužitelja. Dok se ne pokrene, neće se vršiti konfigurirani nadzor.
+mon_stopdesc=Kliknite ovaj gumb za zaustavljanje MON poslužitelja. Kad se zaustavi, konfigurirano nadgledanje će prestati.
+mon_restartdesc=Kliknite ovaj gumb kako biste primijenili trenutnu konfiguraciju MON-a ponovnim pokretanjem poslužiteljskog procesa.
+line=(po jedan u svakom retku)
+save_apply=Spremite i primijenite
+watch=Watchgroup
+members=članovi
+def_perargs=wd {Sat-Sunce}
+
+def_desc=opis
+def_inter=interval
+def_mon=monitor
+def_dep=dpend
+def_per=razdoblje
+def_alert=uzbuna
+def_alertevr=alertevery
+def_alertaft=alertafter
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=trapduration
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=Grupe domaćina
+groups_group=Grupno ime
+groups_members=Član domaćini
+
+watches_title=Gledajte popise
+watches_group=Gledanje grupe
+watches_services=Usluge koje se promatraju
+watches_sadd=Dodavanje usluge ..
+watches_add=Dodajte popis za gledanje za grupu :
+watches_return=popisa za gledanje
+watches_none=Još nisu definirani popisi za nadzor.
+
+global_title=Opcije
+global_header=Opcije MON konfiguracije
+global_maxprocs=Maksimalni MON procesi
+global_histlength=Dužina povijesti događaja
+global_alertdir=Imenik programa upozorenja
+global_mondir=Nadgledajte imenik programa
+global_authtype=Vrsta ovjere
+global_authtype_=Zadano
+global_authtype_getpwnam=Sustavni pozivi
+global_authtype_userfile=Datoteka MON korisnika
+global_authtype_shadow=Datoteka sjena
+global_userfile=MON korisnika datoteka
+global_emaxprocs=Nedostaje ili nevažeći broj postupaka MON
+global_ehistlength=Nedostaje ili nije valjana duljina povijesti događaja
+global_ealertdir=Nema ili nevažeći imenik programa upozorenja
+global_emondir=Nema ili nevažeći imenik programa za nadgledanje
+global_euserfile=Nedostaje datoteka s MON korisnicima
+
+watch_title=Uredi popis za gledanje
+watch_header=Pojedinosti o satu grupe domaćina
+watch_group=Grupa domaćina za gledanje
+watch_services=Usluge koje se promatraju
+watch_service=Naziv usluge
+watch_monitor=Monitor koristiti
+watch_interval=Provjerite svaki
+watch_periods=Periodi monitoringa
+
+service_title=Dodavanje usluge
+service_title2=Usluga uređivanja
+service_header=Pojedinosti o gledanoj usluzi
+service_name=Naziv usluge
+service_interval=Provjerite svaki
+service_desc=Opis
+service_units_s=sekundi
+service_units_m=minuta
+service_units_h=sati
+service_units_d=dana
+service_units_w=tjedni
+service_monitor=Korištenje monitora
+service_mon1=Standardni monitor
+service_mon0=Drugi monitor ..
+service_args=Parametri monitora
+service_period=Razdoblje praćenja $1 
+service_days=Dani za provjeru
+service_hours=Sati za provjeru
+service_all=svi
+service_pstr=Specifikacija razdoblja
+service_new=Novo razdoblje praćenja
+service_alerts=Upozorenja za razdoblje
+service_alert=uzbuna
+service_atype=Pokreni kad
+service_atype_alert=Usluga propada
+service_atype_upalert=Dolaze usluge
+service_atype_startupalert=MON se pokreće
+service_aargs=Dodatni parametri
+service_every=Pošalji upozorenje
+service_every_def=Svaki put kada se monitor pokrene
+service_every_time=Svaki
+service_num=Maksimalna upozorenja koja se trebaju poslati
+service_unlimited=Neograničen
+service_after=Neuspjesi prije upozorenja
+service_immediate=Odmah
+service_after_num=Nakon neuspjeha $1 
+service_aftertime=U roku
+service_newperiod=Dodajte novo razdoblje
+service_delperiod=Izbrišite ovaj period
+service_err=Spremanje usluge nije uspjelo
+service_ename=Nedostaje ili nevažeće ime usluge
+service_einterval=Nedostaje ili nije važeći interval provjere
+service_eother=Nedostaje ili nije važeći monitor
+service_ehour=Nedostaje ili nevažeći sat za razdoblje $1 (mora biti poput 9:00 ili 17:00)
+service_eperiod=Nisu navedeni dani ili sati za razdoblje $1 
+service_eevery=Nedostaje ili nevažeći interval upozorenja za uslugu
+service_eafter=Nedostaje ili nevažeći broj kvarova prije uzbune
+service_enum=Manjkajuća ili nevaljana maksimalna upozorenja poslana
+service_epstr=Specifikacija nedostajućeg razdoblja
+service_known0=<tt>Vrijeme: razdoblje</tt> string
+service_known1=Navedeni dani i sati
+service_known2=Definirano razdoblje
+
+status_title=MON Status
+status_ecgi=MONG status CGI programa $1 ne postoji. Možda nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
+status_eperl=MONG status CGI programa zahtijeva $1 perl modul. <a href='$2'>Kliknite ovdje</a> da biste ga instalirali izravno iz CPAN-a.
+status_esame=MON statusni CGI program $1 postavljen je na <tt>mon.cgi</tt> skriptu u ovom modulu Webmin, a ne CGI program koji dolazi s MON. Podesite <a href='$2'>konfiguraciju modula</a> da biste koristili ispravan put.
+
+users_title=Korisnici MON-a
+users_etype=Popis korisnika MON-a ne može se uređivati jer MON trenutno nije konfiguriran za njegovo korištenje na autentifikaciji na stranici <a href='$1'>Globalne opcije</a>.
+users_header=Dopušteno MON korisnicima u $1 
+users_nousers=Niti jedan MON korisnik nije definiran u $1.
+users_add=Stvorite novog korisnika.
+users_return=MON korisnik popis
+
+user_create=Stvori MON korisnika
+user_edit=Uređivanje MON korisnika
+user_header=Podaci o MON korisniku
+user_user=Korisničko ime
+user_pass=Zaporka
+user_leave=Ostavite nepromijenjeno
+user_err=Spremanje korisnika nije uspjelo
+user_euser=Nedostaje ili nije valjano korisničko ime
+user_esame=Korisnik s istim imenom već postoji
+
+auth_title=Naredbe klijenta
+auth_desc=Ova vam stranica omogućuje kontrolu kojih MON naredbi se mogu pokrenuti koji korisnici prilikom korištenja klijentskih programa.
+auth_cmd=Naredba MON
+auth_users=Dopušteni korisnici
+auth_none=Nitko
+auth_all=Svi
+auth_sel=Samo korisnici
+auth_err=Spremanje naredbi klijenta nije uspjelo
+auth_eusers=Korisnici ne ulaze za naredbu $1 
+
+periods_title=Definirana razdoblja
+periods_period=Naziv razdoblja
+periods_times=Dani i vremena
+periods_alldays=Svi dani
+periods_allhours=Svi sati
+periods_err=Spremanje definiranih razdoblja nije uspjelo
+periods_ename='$1' nije valjano ime razdoblja
+periods_ehour=Nedostaje ili nevažeći sat za razdoblje $1 (mora biti poput 9:00 ili 17:00)
+
+show_title=Operativni status
+show_ecgi=MON statusni program $1 ne postoji. Možda nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.

@@ -1,26 +1,26 @@
 <header>Detector d'Intrusions Fail2Ban</header>
 
-Fail2Ban és un servidor que rastreja els fitxers de registre buscant entrades que
+Fail2Ban Ã©s un servidor que rastreja els fitxers de registre buscant entrades que
 indiquin entrades fallides o altres atacs, i llavors porta a terme accions tals 
-com posar tallafocs o bloquejar els orígens d'aquests atacs. Això es pot utilitzar 
-per evitar intents d'endevinar contrasenyes per força bruta bloquejant l'atacant
+com posar tallafocs o bloquejar els orÃ­gens d'aquests atacs. AixÃ² es pot utilitzar 
+per evitar intents d'endevinar contrasenyes per forÃ§a bruta bloquejant l'atacant
 abans que pugui provar un ampli ventall de contrasenyes.<p>
 
-Els tres tipus principals d'objectes de configuració són:
+Els tres tipus principals d'objectes de configuraciÃ³ sÃ³n:
 
 <dl>
 <dt><b>Filtres de registres</b>
-<dd>Un filtre és bàsicament una expressió regular que es pot aplicar a un fitxer
+<dd>Un filtre Ã©s bÃ sicament una expressiÃ³ regular que es pot aplicar a un fitxer
     de registre per fer-hi coincidir entrades fallides o altres atacs.<p>
 
-<dt><b>Accions de Coincidència</b>
-<dd>Una acció és un conjunt d'ordres que s'executen per bloquejar un atac. Una
-    acció també pot definir ordres per desbloquejar una IP, i ordres que
+<dt><b>Accions de CoincidÃ¨ncia</b>
+<dd>Una acciÃ³ Ã©s un conjunt d'ordres que s'executen per bloquejar un atac. Una
+    acciÃ³ tambÃ© pot definir ordres per desbloquejar una IP, i ordres que
     s'executen quan Fail2Ban s'inicia o s'atura.<p>
 
 <dt><b>Presons d'Accions de Filtre</b>
-<dd>Una presó és una combinació d'un filtre, una o més accions i un o més
-    fitxers de registre. El registre es rastreja contínuament buscant línies que
+<dd>Una presÃ³ Ã©s una combinaciÃ³ d'un filtre, una o mÃ©s accions i un o mÃ©s
+    fitxers de registre. El registre es rastreja contÃ­nuament buscant lÃ­nies que
     coincideixin amb el filtre, i quan se'n troba una, es porten a terme les accions seleccionades.<p>
 </dl>
 

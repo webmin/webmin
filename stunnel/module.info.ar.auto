@@ -1,0 +1,3 @@
+name_ar=STunnel
+longdesc_ar=قم بإعداد أنفاق SSL لتشفير خدمات مثل POP3 و IMAP ، باستخدام تشغيل stunnel من inetd.
+desc_ar=أنفاق SSL

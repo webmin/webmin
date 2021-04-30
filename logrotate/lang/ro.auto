@@ -1,0 +1,115 @@
+index_title=Rotire fișier jurnal
+index_econf=Fișierul de configurare de rotație a jurnalului $1 nu a fost găsit în sistemul dvs. Poate că logrotatul nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
+index_ecmd=Programul de rotație a jurnalului $1 nu a fost găsit în sistemul dvs. Poate că nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
+index_eversion=Nu a reușit să obțineți versiunea de logrotate cu comanda $1 : $2 
+index_version=Versiunea logotatei $1 
+index_add=Adăugați un nou fișier jurnal pentru a roti.
+index_file=Fișier jurnal
+index_period=Perioada de rotație
+index_post=Comandă post-rotație
+index_none=Nu au fost definite încă fișiere jurnal.
+index_global=Editează opțiuni globale
+index_globaldesc=Faceți clic pe acest buton pentru a edita setarea care se aplică tuturor fișierelor de jurnal și pentru a defini valorile implicite pentru jurnalele.
+index_sched=Editează Schedule
+index_scheddesc=Faceți clic pe acest buton pentru a edita programul pentru care logotatul este condus de Cron sau pentru a-l activa sau dezactiva.
+index_nocmd=Nici unul
+index_notset=Nu este setat
+index_return=listă fișiere jurnal
+index_force=Rotire jurnal forță
+index_forcedesc=Forțați rotirea imediată a tuturor fișierelor de jurnal, chiar dacă nu este încă timpul.
+index_logrotate=logrotate
+index_delete=Ștergeți rotațiile de jurnal selectate
+
+period_daily=Zilnic
+period_weekly=Săptămânal
+period_monthly=Lunar
+period_never=Nu
+period_bytes=bytes
+
+edit_title1=Editează fișierul jurnal
+edit_title2=Creați fișier jurnal
+edit_header=Detalii despre fișierul jurnal rotit
+edit_file=Jurnal de căi de fișiere
+edit_sched=Program de rotație
+edit_rotate=Numărul de jurnale vechi de păstrat
+edit_compress=Compresează fișierele jurnal vechi?
+edit_delaycompress=Întârzieți compresia până la următorul ciclu?
+edit_copytruncate=Tronează fișierul de jurnal în loc?
+edit_ifempty=Rotiți chiar dacă fișierul jurnal este gol?
+edit_missingok=Ignoră fișierul jurnal dacă lipsește?
+edit_size=Mărimea maximă înainte de rotire
+edit_always=Ignorat
+edit_minsize=Dimensiune minimă pentru rotire
+edit_nominsize=Mereu
+edit_ext=Extensie pentru nume de fișiere rotite
+edit_dateext=Folosiți extensia de date pentru fișierele rotite
+edit_mail=Fișier de jurnal prin e-mail înainte de ștergere?
+edit_mailto=Da, să mă adresez
+edit_mailno=Nu, nu trimiteți prin e-mail
+edit_mailfl=Fișier de jurnal la e-mail
+edit_mailfirst=Cel mai nou care a fost doar rotit
+edit_maillast=Cea mai veche, care este pe cale să fie ștersă
+edit_create=Re-creați fișierul de jurnal după rotire?
+edit_createas=Da, cu modul $1 și deținut de utilizatorul $2 și grupul $3 
+edit_createno=Nu, nu creați din nou
+edit_createsame=Da, cu permisiuni vechi
+edit_olddir=Stocați jurnalele vechi rotite
+edit_olddirto=Director
+edit_olddirsame=Același director ca și fișierul jurnal
+edit_errors=Mesaje de eroare prin e-mail
+edit_errorsno=Nimeni
+edit_errorsto=Adresa sau utilizatorul
+edit_post=Comenzile de a rula după rotire
+edit_pre=Comenzile de executat înainte de rotație
+edit_default=Implicit ($1)
+edit_sharedscripts=Rulează scripturi doar o dată pentru toate fișierele?
+edit_now=Rotiți acum
+
+global_title=Opțiuni globale
+global_header=Opțiuni implicite pentru toate fișierele jurnal
+
+save_err=Nu a reușit salvarea jurnalului
+save_efile=Numele de fișier de jurnal lipsă sau nevalide
+save_esize=Dimensiunea maximă lipsă sau nevalidă
+save_eminsize=Dimensiunea minimă lipsă sau nevalidă
+save_erotate=Lipsește sau nu este valabil numărul maxim de jurnalele vechi de păstrat
+save_ecreatemode=Lipsește sau nu este valabil modul de creare octal cu 3 sau 4 cifre
+save_ecreateuser=Utilizator de creație lipsă sau nevalid
+save_ecreategroup=Grup de creație lipsă sau nevalid
+save_emust1=Trebuie să intrați într-un mod de creație când introduceți un utilizator de creație
+save_emust2=Trebuie să introduceți un utilizator de creație atunci când intrați într-un grup de creație
+save_eolddirto=Director lipsă sau nevalid pentru jurnalele vechi rotite
+save_eext=Lipsește extensia pentru numele fișierelor de jurnal rotite
+save_emailto=Lipsește adresa de e-mail pentru jurnalele rotite
+save_eerrors=Lipsește adresa de e-mail pentru mesajele de eroare
+save_epre=Scriptul pre-rotire nu poate conține o linie <tt>endscript</tt> sau <tt>endrotate</tt>
+save_epost=Scriptul post-rotație nu poate conține o linie <tt>endscript</tt> sau <tt>endrotate</tt>
+save_enofiles=Nu au fost introduse fișiere de rotație
+
+log_modify_sched=Schimbare de rotație a jurnalului Lucrare Cron
+log_create_sched=Creare rotire jurnal de lucru Cron
+log_delete_sched=Ștergere rotire jurnal jurnal Cron
+log_global=Opțiuni globale modificate
+log_create=Se adaugă rotirea pentru fișierul jurnal $1 
+log_modify=Rotire modificată pentru fișierul jurnal $1 
+log_delete=Rotire ștersă pentru fișierul jurnal $1 
+log_delete_logs=Rotire ștersă pentru fișierele jurnal $1 
+
+sched_title=Program de rotație a jurnalului
+sched_desc=Pentru ca rotirea jurnalului configurată folosind acest modul să fie executată, comanda $1 trebuie executată de Cron într-un program regulat (de obicei zilnic).
+sched_runparts=În prezent, comanda de rotire a jurnalului este rulată din scriptul $1 $2 și nu poate fi ajustată.
+sched_sched=Jurnal cron job de rotație
+sched_disabled=Dezactivat
+sched_enabled=Activat, la orele de mai jos ..
+sched_save=Actualizați jobul Cron
+sched_err=Nu a reușit să salvați programul de rotație
+sched_when=Timpurile de a rula
+
+force_title=Rotire jurnal forță
+force_doing=Forțând rotația imediată a tuturor fișierelor de jurnal ..
+force_doingone=Forțând rotația imediată a unui fișier jurnal.
+force_done=.. Terminat.
+force_failed=.. a eșuat! Vedeți ieșirea de mai sus pentru motivul pentru care.
+
+delete_err=Nu a reușit să ștergeți jurnalele
+delete_enone=Nimic selectat

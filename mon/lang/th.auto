@@ -1,0 +1,200 @@
+index_title=ตรวจสอบบริการจันทร์
+index_return=ดัชนี MON
+index_edir=ไม่มีไดเรกทอรี MON $1 อาจไม่ได้ติดตั้ง MON หรือมิฉะนั้น <a href='$2'>การกำหนดค่าโมดูล</a> ของคุณไม่ถูกต้อง
+mon_global_title=การกำหนดค่า Varibles สากล
+mon_conf_title=การกำหนดค่าพื้นฐาน
+mon_status_title=สถานะการทำงาน
+hostgroups_title=MON Configuration- โฮสต์กรุ๊ป
+services_title=กลุ่มบริการ - คำจำกัดความของบริการ
+
+head_hostgroups=กลุ่มโฮสต์และบริการ
+head_groups=ชื่อกลุ่มโฮสต์
+head_members=สมาชิกกลุ่มโฮสต์
+head_services=บริการกลุ่มโฮสต์ที่น่าจับตามอง
+head_service=บริการรับชม
+head_param=พารามิเตอร์บริการ
+head_watch=ดูกลุ่มหรือไม่
+head_monauth=ให้การรับรองความถูกต้องสำหรับ MONCMD
+head_usr=ชื่อผู้ใช้
+head_pass=รหัสผ่าน
+head_mand=(พารามิเตอร์ใน "RED COLOR" เป็นข้อบังคับ)
+
+err_nomon=ไม่ได้ติดตั้งแพ็คเกจ 'mon' ในระบบ
+err_nomonconf=ไม่พบไฟล์การกำหนดค่า MON $1 ในระบบของคุณ อาจไม่ได้ติดตั้ง MON หรือมิฉะนั้น <a href='$2'>การกำหนดค่าโมดูล</a> ของคุณไม่ถูกต้อง
+err_nowatch=ไม่ได้เลือกกลุ่มการเฝ้าดู เลือก Watchgroup อย่างน้อยหนึ่งกลุ่มเพื่อดำเนินการต่อ
+err_noserv=ไม่ได้เลือกบริการสำหรับกลุ่มเฝ้าดู
+err_nomemb=ไม่ได้เลือกโฮสต์/สมาชิกสำหรับกลุ่มเฝ้าดู
+err_monrun=MON ไม่ทำงานบนเครื่องโฮสต์ กรุณาเริ่ม MON
+stop_err=ไม่สามารถหยุด MON
+stop_epid=ไม่ทำงานอีกต่อไป
+start_err=ไม่สามารถเริ่ม MON
+restart_err=ไม่สามารถเริ่ม MON ใหม่ได้
+restart_epid=ไม่สามารถรับ PID ได้
+
+other=อื่น ๆ (แยกพื้นที่)
+next=ต่อไป
+mon_stat=สถานะ MON
+mon_off=บริการ MON ไม่เริ่มทำงาน
+mon_start=เริ่มบริการจันทร์
+mon_stop=หยุดบริการจันทร์
+mon_restart=เริ่มบริการ MON
+mon_startdesc=คลิกปุ่มนี้เพื่อเริ่มเซิร์ฟเวอร์ MON จนกว่าจะเริ่มขึ้นจะไม่มีการตรวจสอบที่กำหนดค่าไว้
+mon_stopdesc=คลิกที่ปุ่มนี้เพื่อหยุดเซิร์ฟเวอร์ MON เมื่อหยุดการกำหนดค่าการตรวจสอบจะหยุด
+mon_restartdesc=คลิกปุ่มนี้เพื่อใช้การกำหนดค่า MON ปัจจุบันโดยรีสตาร์ทกระบวนการเซิร์ฟเวอร์
+line=(หนึ่งในแต่ละบรรทัด)
+save_apply=บันทึกและนำไปใช้
+watch=Watchgroup
+members=สมาชิก
+def_perargs=wd {วันเสาร์ - อาทิตย์}
+
+def_desc=ลักษณะ
+def_inter=ระยะห่าง
+def_mon=หน้าจอ
+def_dep=dpend
+def_per=ระยะเวลา
+def_alert=เตือนภัย
+def_alertevr=alertevery
+def_alertaft=alertafter
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=trapduration
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=กลุ่มโฮสต์
+groups_group=ชื่อกลุ่ม
+groups_members=โฮสต์สมาชิก
+
+watches_title=รายการเฝ้าดู
+watches_group=ดูกลุ่ม
+watches_services=บริการที่กำลังรับชม
+watches_sadd=เพิ่มบริการ ..
+watches_add=เพิ่มรายการเฝ้าดูสำหรับกลุ่ม :
+watches_return=ดูรายการ
+watches_none=ยังไม่มีการกำหนดรายการเฝ้าดู
+
+global_title=ตัวเลือกสากล
+global_header=ตัวเลือกการกำหนดค่าสากล MON
+global_maxprocs=กระบวนการ MON สูงสุด
+global_histlength=ความยาวประวัติกิจกรรม
+global_alertdir=ไดเรกทอรีโปรแกรมการแจ้งเตือน
+global_mondir=ตรวจสอบไดเรกทอรีโปรแกรม
+global_authtype=ประเภทการรับรองความถูกต้อง
+global_authtype_=ค่าเริ่มต้น
+global_authtype_getpwnam=การเรียกระบบ
+global_authtype_userfile=ไฟล์ผู้ใช้ MON
+global_authtype_shadow=ไฟล์เงา
+global_userfile=ไฟล์ของผู้ใช้ MON
+global_emaxprocs=กระบวนการ MON จำนวนที่ขาดหายไปหรือไม่ถูกต้อง
+global_ehistlength=ความยาวประวัติเหตุการณ์ที่ขาดหายไปหรือไม่ถูกต้อง
+global_ealertdir=ไดเรกทอรีโปรแกรมการแจ้งเตือนที่ขาดหายไปหรือไม่ถูกต้อง
+global_emondir=ไดเรกทอรีโปรแกรมตรวจสอบที่ขาดหายไปหรือไม่ถูกต้อง
+global_euserfile=ไม่มีไฟล์ผู้ใช้ MON
+
+watch_title=แก้ไขรายการเฝ้าดู
+watch_header=รายละเอียดการเฝ้าดูกลุ่มโฮสต์
+watch_group=กลุ่มโฮสต์ที่จะดู
+watch_services=บริการที่กำลังรับชม
+watch_service=ชื่อบริการ
+watch_monitor=ตรวจสอบการใช้งาน
+watch_interval=ตรวจสอบทุก ๆ
+watch_periods=การตรวจสอบช่วงเวลา
+
+service_title=เพิ่มบริการ
+service_title2=แก้ไขบริการ
+service_header=ดูรายละเอียดบริการ
+service_name=ชื่อของบริการ
+service_interval=ตรวจสอบทุก ๆ
+service_desc=ลักษณะ
+service_units_s=วินาที
+service_units_m=นาที
+service_units_h=ชั่วโมง
+service_units_d=วัน
+service_units_w=สัปดาห์ที่ผ่านมา
+service_monitor=การใช้มอนิเตอร์
+service_mon1=จอภาพมาตรฐาน
+service_mon0=จอภาพอื่น ๆ ..
+service_args=ตรวจสอบพารามิเตอร์
+service_period=ช่วงเวลาที่ตรวจสอบ $1 
+service_days=วันที่จะตรวจสอบ
+service_hours=ชั่วโมงทำการตรวจสอบ
+service_all=ทั้งหมด
+service_pstr=ข้อกำหนดระยะเวลา
+service_new=ใหม่ระยะเวลาการตรวจสอบ
+service_alerts=การแจ้งเตือนสำหรับรอบระยะเวลา
+service_alert=เตือนภัย
+service_atype=ทำงานเมื่อ
+service_atype_alert=การบริการตกต่ำ
+service_atype_upalert=บริการขึ้นมา
+service_atype_startupalert=MON เริ่มแล้ว
+service_aargs=พารามิเตอร์เพิ่มเติม
+service_every=ส่งการแจ้งเตือน
+service_every_def=ทุกครั้งที่จอภาพทำงาน
+service_every_time=ทุกๆ
+service_num=การแจ้งเตือนสูงสุดที่จะส่ง
+service_unlimited=ไม่ จำกัด
+service_after=ล้มเหลวก่อนการแจ้งเตือน
+service_immediate=ทันที
+service_after_num=หลังจาก $1 ล้มเหลว
+service_aftertime=ภายในช่วงเวลา
+service_newperiod=เพิ่มช่วงเวลาใหม่
+service_delperiod=ลบช่วงเวลานี้
+service_err=ไม่สามารถบันทึกบริการ
+service_ename=ชื่อบริการขาดหายไปหรือไม่ถูกต้อง
+service_einterval=ช่วงเวลาตรวจสอบที่ขาดหายไปหรือไม่ถูกต้อง
+service_eother=จอภาพที่ขาดหายไปหรือไม่ถูกต้อง
+service_ehour=ชั่วโมงที่ขาดหายไปหรือไม่ถูกต้องในช่วงเวลา $1 (ต้องเป็นเช่น 9.00 น. หรือ 17.00 น.)
+service_eperiod=ไม่ได้ระบุวันหรือชั่วโมงในช่วง $1 
+service_eevery=การแจ้งเตือนบริการหายไปหรือไม่ถูกต้อง
+service_eafter=จำนวนความล้มเหลวที่ขาดหายไปหรือไม่ถูกต้องก่อนการแจ้งเตือน
+service_enum=การแจ้งเตือนสูงสุดที่ขาดหายไปหรือไม่ถูกต้องที่จะส่ง
+service_epstr=ไม่มีข้อกำหนดระยะเวลา
+service_known0=<tt>เวลา :: ช่วงเวลา</tt> สตริง
+service_known1=ระบุวันและเวลาทำการ
+service_known2=กำหนดระยะเวลา
+
+status_title=สถานะ MON
+status_ecgi=โปรแกรม CGI สถานะ MON ไม่พบ $1 อาจไม่ได้ติดตั้งไว้หรือ <a href='$2'>การกำหนดค่าโมดูล</a> ของคุณไม่ถูกต้อง
+status_eperl=โปรแกรม CGI สถานะ MON ต้องการโมดูล $1 perl <a href='$2'>คลิกที่นี่</a> เพื่อติดตั้งโดยตรงจาก CPAN
+status_esame=โปรแกรม CGI สถานะ MON ได้รับการตั้งค่าเป็นสคริปต์ <tt>mon.cgi</tt> ในโมดูล Webmin นี้ไม่ใช่โปรแกรม CGI ที่มาพร้อมกับ MON ปรับ <a href='$2'>การกำหนดค่าโมดูล</a> เพื่อใช้เส้นทางที่ถูกต้อง
+
+users_title=ผู้ใช้ MON
+users_etype=ไม่สามารถแก้ไขรายชื่อผู้ใช้ MON เนื่องจากปัจจุบันยังไม่ได้กำหนดค่าให้ใช้สำหรับการตรวจสอบสิทธิ์ในหน้า <a href='$1'>ตัวเลือกสากล</a>
+users_header=ผู้ใช้ MON ที่ได้รับอนุญาตใน $1 
+users_nousers=ไม่มีการกำหนดผู้ใช้ MON ใน $1 
+users_add=สร้างผู้ใช้ใหม่
+users_return=รายการผู้ใช้ MON
+
+user_create=สร้างผู้ใช้ MON
+user_edit=แก้ไขผู้ใช้ MON
+user_header=รายละเอียดผู้ใช้จันทร์
+user_user=ชื่อผู้ใช้
+user_pass=รหัสผ่าน
+user_leave=ปล่อยให้ไม่เปลี่ยนแปลง
+user_err=ไม่สามารถบันทึกผู้ใช้
+user_euser=ชื่อผู้ใช้ที่ขาดหายไปหรือไม่ถูกต้อง
+user_esame=มีผู้ใช้ชื่อเดียวกันนี้แล้ว
+
+auth_title=คำสั่งลูกค้า
+auth_desc=หน้านี้ช่วยให้คุณสามารถควบคุมคำสั่ง MON ที่สามารถเรียกใช้โดยผู้ใช้เมื่อใช้โปรแกรมไคลเอ็นต์
+auth_cmd=คำสั่ง MON
+auth_users=ผู้ใช้ที่อนุญาต
+auth_none=ไม่มีใคร
+auth_all=ทุกคน
+auth_sel=เฉพาะผู้ใช้
+auth_err=ไม่สามารถบันทึกคำสั่งไคลเอนต์
+auth_eusers=ไม่มีผู้ใช้ป้อนคำสั่ง $1 
+
+periods_title=กำหนดช่วงเวลา
+periods_period=ชื่อระยะเวลา
+periods_times=วันและเวลา
+periods_alldays=ทุกวัน
+periods_allhours=ทุกชั่วโมง
+periods_err=ไม่สามารถบันทึกช่วงเวลาที่กำหนด
+periods_ename='$1' ไม่ใช่ชื่อช่วงเวลาที่ถูกต้อง
+periods_ehour=ชั่วโมงที่ขาดหายไปหรือไม่ถูกต้องในช่วงเวลา $1 (ต้องเป็นเช่น 9.00 น. หรือ 17.00 น.)
+
+show_title=สถานะการทำงาน
+show_ecgi=โปรแกรมสถานะ MON $1 ไม่มีอยู่ อาจไม่ได้ติดตั้งไว้หรือ <a href='$2'>การกำหนดค่าโมดูล</a> ของคุณไม่ถูกต้อง

@@ -1,0 +1,110 @@
+acl_ro=只能查看配额，不能编辑？
+acl_ggid=GID在范围内的组
+acl_email=可以设置电子邮件通知吗？
+
+egroup_kused=使用的千字节
+egroup_sklimit=软千字节限制
+egroup_hklimit=硬千字节限制
+egroup_listalldesc=单击此按钮以显示该组在其上具有磁盘配额的所有文件系统的列表，以及用于编辑它们的链接。
+
+euser_kused=使用的千字节
+euser_kdisk=磁盘上可用千字节
+euser_sdisk=磁盘上的可用空间
+euser_sklimit=软千字节限制
+euser_hklimit=硬千字节限制
+euser_listalldesc=单击此按钮以显示该用户具有磁盘配额的所有文件系统的列表，并带有编辑它们的链接。
+
+gfilesys_kbs=千字节
+gfilesys_space=磁盘空间
+gfilesys_editdesc=在当前没有配额的其他某个文件系统上查看和编辑该组的配额。
+gfilesys_copydesc=将所有文件系统上该组的配额限制复制到某些或所有其他组。
+gfilesys_enone=未输入组名
+
+index_supported=尚不支持配额
+index_enable2=启用支持
+index_euserdesc=输入或选择一个用户，然后单击此按钮以查看其在所有文件系统上的配额。
+index_egroupdesc=输入或选择一个组，然后单击此按钮以查看其在所有文件系统上的配额。
+index_mountmod=您可以在<a href='$1'>磁盘和网络文件系统</a>模块中为文件系统启用配额。
+
+lgroups_tablist=群组清单
+lgroups_kbs=千字节
+lgroups_space=磁盘空间
+lgroups_info=可以将Webmin配置为在创建新的Unix组时自动在此文件系统上设置配额。仅当 $1 Webmin模块用于添加组时，这才起作用。
+lgroups_newgroup=新组配额
+lgroups_mass=更新选定的组
+lgroups_to=电子邮件目的地
+lgroups_tosame=与组同名的邮箱
+lgroups_tofixed=地址1
+lgroups_emailheader=电邮给即将达到配额的群组
+lgroups_email=向群组发送电子邮件？
+lgroups_tovirt=Virtualmin域所有者
+
+ufilesys_kbs=千字节
+ufilesys_space=磁盘空间
+ufilesys_editdesc=在其他当前没有配额的文件系统上查看和编辑该用户的配额。
+ufilesys_copydesc=将此用户在所有文件系统上的配额限制复制到某些或所有其他用户。
+ufilesys_grace=恩典
+ufilesys_enone=没有输入用户名
+
+lusers_tablist=用户清单
+lusers_tabdefault=默认配额
+lusers_tabemail=邮件通知
+lusers_bsize=配额块大小： $1个字节
+lusers_kbs=千字节
+lusers_space=磁盘空间
+lusers_grace=恩典
+lusers_pc_hblocks=硬％
+lusers_pc_sblocks=柔软的 ％
+lusers_emailheader=给即将达到配额的用户发送电子邮件
+lusers_email=向用户发送电子邮件？
+lusers_interval=消息间隔
+lusers_hours=小时
+lusers_ltype=限制类型
+lusers_percent=达到使用量时发出警告
+lusers_domain=用户地址的域
+luser_virtualmin=从Virtualmin获取域名？
+lusers_from=发件人：电子邮件地址
+lusers_mass=更新所选用户
+lusers_cc=同时发送电子邮件至
+lusers_nocc=没有人
+
+log_email_user=更改 $1上的用户电子邮件选项
+log_email_group=更改 $1上的网上论坛电子邮件选项
+log_gsync=更改了 $1上的新组配额
+log_support=为 $1启用了配额支持
+
+email_err=无法保存电子邮件选项
+email_ecannot=您无权修改电子邮件选项
+email_einterval=间隔缺失或无效
+email_epercent=丢失或无效使用百分比
+email_edomain=邮件域缺失或无效
+email_efrom=缺少或无效的发件人：地址
+email_ecc=抄送：地址缺失或无效
+email_msg=用户 $1在文件系统 $2上的磁盘使用率已达到允许配额的 $3％。正在使用 $4的磁盘空间，最大为 $5。
+gemail_msg=文件系统 $2上组 $1的磁盘使用率已达到允许配额的 $3％。正在使用 $4的磁盘空间，最大为 $5。
+email_subject=磁盘配额超标
+gemail_subject=磁盘配额超标
+email_eto=缺少目标电子邮件地址
+
+umass_title=更新用户配额
+umass_header=配额更改将应用于选定的用户
+umass_sblocks=软块限制
+umass_hblocks=硬块限制
+umass_sfiles=软文件限制
+umass_hfiles=硬文件限制
+umass_leave=保持不变
+umass_unlimited=设置为无限
+umass_set=调成
+umass_ok=更新用户
+umass_esblocks=缺少或无效的软块限制
+umass_ehblocks=缺少或无效的硬块限制
+umass_esfiles=缺少或无效的软文件限制
+umass_ehfiles=缺少或无效的硬盘文件限制
+umass_count=以下更改将应用于 $1个选定的用户 ..
+umass_err=无法更新用户配额
+
+gmass_title=更新组配额
+gmass_header=配额更改将应用于选定的组
+gmass_count=以下更改将应用于 $1个选定的组 ..
+gmass_ok=更新群组
+gmass_err=无法更新组配额

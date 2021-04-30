@@ -10,7 +10,7 @@ $access{'noconfig'} && &error($text{'iface_ecannot'});
 if ($config{'interfaces_type'} eq 'mandrake') {
 	if (-r "/etc/conf.linuxconf") {
 		# Older mandrake's init script uses a linuxconf setting
-		open(FILE, "/etc/conf.linuxconf");
+		open(FILE, "</etc/conf.linuxconf");
 		while(<FILE>) {
 			if (/DHCP.interface\s+(.*)/) {
 				$iface = $1;
@@ -97,15 +97,16 @@ if (&foreign_check("net")) {
 	&foreign_require("net", "net-lib.pl");
 	@ifaces = &net::active_interfaces();
 	$sz = scalar(@ifaces);
-    my @iface_sel;
+	my @iface_sel;
 	foreach $i (@ifaces) {
 		$n = $i->{'fullname'};
-        push(@iface_sel,[$n,$n." (".&net::iface_type($n).")", ($got{$n} ? 'selected' : '') ]);
+		push(@iface_sel, [$n, $n." (".&net::iface_type($n).")",
+				  ($got{$n} ? 'selected' : '') ]);
 		}
-    $val = &ui_select("iface",undef,\@iface_sel,$sz,1);
+	$val = &ui_select("iface",undef,\@iface_sel,$sz,1);
 	}
 else {
-    $val = &ui_textbox("iface",$iface,30);
+	$val = &ui_textbox("iface",$iface,30);
 	}
 print &ui_table_row($text{'iface_listen'}, $val);
 print &ui_table_end();

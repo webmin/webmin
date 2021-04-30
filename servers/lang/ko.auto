@@ -1,0 +1,14 @@
+index_nosearch=검색 한 서버가 없습니다.
+index_search=일치하는 서버 표시 :
+index_ok=검색
+
+edit_portnone=설정 안함
+edit_checkssl=원격 SSL 인증서를 확인 하시겠습니까?
+
+save_eport2=로그인이있는 링크 유형을 선택한 경우 포트를 제공해야합니다.
+
+find_already2=$1 에서 알려진 서버 호스트를 찾았습니다.
+
+delete_title=서버 삭제
+delete_rusure=선택한 $1 개의 서버를 제거 하시겠습니까?
+delete_confirm=지금 삭제

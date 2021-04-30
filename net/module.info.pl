@@ -1,2 +1,2 @@
 desc_pl=Konfiguracja sieci
-longdesc_pl=Konfiguracja uruchamianych i aktywnych interfejsów, DNS, trasowania i /etc/hosts.
+longdesc_pl=Konfiguracja uruchamianych i aktywnych interfejsÃ³w, DNS, trasowania i /etc/hosts.

@@ -1,0 +1,53 @@
+desc_su-l=Cambiar usuario (con inicio de sesión)
+desc_usermin=Servidor web Usermin
+desc_cupsys=Impresión de TAZAS
+desc_libcupsys2=Impresión de TAZAS
+desc_ssh=SSH Login
+desc_proftpd=Servidor de transferencia de archivos ProFTPd
+desc_qpopper=Servidor de correo POP
+desc_dovecot=Servidor de correo POP / IMAP
+desc_cron=Demonios de comandos programados
+desc_runuser=Ejecutar comando como usuario
+desc_runuser-l=Ejecutar comando como usuario (con inicio de sesión)
+desc_postgresql=Base de datos PostgreSQL
+desc_crond=Demonio Cron
+desc_smtp=Autenticación SMTP
+desc_smtp.postfix=Postfix autenticación SMTP
+desc_smtp.sendmail=Autenticación SMTP de Sendmail
+desc_config-util=Utilidades de configuración
+desc_newrole=Nuevo rol de SELinux
+desc_radius=Acceso telefónico a RADIUS
+desc_pptpconfig=Protocolo de túnel punto a punto
+desc_atd=Demonios de comandos programados
+desc_kcheckpass=Verificador de contraseña de KDE
+desc_common-account=Verificación de cuenta común
+desc_common-auth=Autenticación común
+desc_common-password=Cambio de contraseña común
+desc_common-session=Configuración de sesión común
+
+edit_file=Archivo de configuración
+edit_addinc=Agregar servicio incluido
+edit_inc=Incluir servicio $1 
+edit_iheader=Servicios PAM incluidos
+
+pam_foreground.so=Configuración de la consola
+
+unix_nullok_secure=¿Aceptar contraseñas nulas en TTY seguros?
+unix_min=Longitud mínima de contraseña
+unix_nomin=Ninguna
+unix_max=Longitud máxima de contraseña
+unix_nomax=Sin límite
+unix_obscure=¿Prevenir el uso de contraseñas fáciles?
+unix_emin=Longitud mínima de contraseña faltante o inválida
+unix_emax=Longitud máxima de contraseña faltante o inválida
+
+log_inc_create=Se incluye incluir $1 para el servicio $2 
+log_inc_modify=Modificado incluye $1 para el servicio $2 
+log_inc_delete=Se eliminó incluir $1 para el servicio $2 
+log_incs=Actualizado incluye para el servicio $1 
+
+inc_edit=Editar servicio incluido
+inc_create=Crear servicio incluido
+inc_header=Detalles del servicio PAM incluidos
+inc_inc=Servicio PAM incluido
+inc_err=Error al guardar el servicio incluido

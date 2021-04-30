@@ -1,0 +1,178 @@
+index_return=käyttäjäluettelo
+index_esystem=Mikään tuetuista postipalvelimista (Exim, Qmail, Postfix ja Sendmail) ei havaittu järjestelmässäsi. Sinun on mukautettava <a href='$1'>moduulin kokoonpanoa</a> asettaaksesi postipalvelimen ja mahdollisesti postipolut manuaalisesti.
+index_esystem2=<a href='$1'>moduulin kokoonpanossa</a> määritettyä postipalvelinta ei löydy järjestelmästäsi. Sinun on mukautettava kokoonpano oikean palvelimen käyttämiseksi.
+index_esystem3=<a href='$1'>-moduulin kokoonpanossa</a> asetettuun postijärjestelmään yhteydessä tapahtui virhe: $2.
+index_system6=Postipalvelin: Exim
+index_system5=Postipalvelin: Qmail+VPopMail
+index_system4=Postipalvelin: Qmail+LDAP
+index_toomany=Järjestelmässäsi on liian monta käyttäjää näkyäksesi yhdellä sivulla.
+index_find=Löydä käyttäjät missä käyttäjänimi
+index_equals=equals
+index_eperl=Valitulle SMTP-todennusmoodille tarvittavaa Perl-moduulia $1 ei ole asennettu tai puuttuu riippuvainen moduuli. <a href='$2'>Asenna se nyt napsauttamalla tätä</a>.
+
+mail_cc=cc
+mail_bcc=bcc
+mail_for=Kohdassa $1
+mail_for2=Käyttäjälle $1
+mail_nosort=Nollaa lajittelu.
+mail_body=ruumis
+mail_match=Ottelut
+mail_whitemove=Salli lähettäjät ja postilaatikko
+mail_fromfilter=Luo suodatin lähettäjän mukaan
+mail_tofilter=Luo suodatin vastaanottajan mukaan
+mail_subfilter=Luo suodatin aiheittain
+
+mail_crypt=Salaa
+mail_nocrypt=&lt;Älä salaa&gt;
+mail_samecrypt=&lt;Näppäimet kohdeosoitteista&gt;
+mail_err=Kohdassa postilaatikon luettelointi tapahtui virhe : $1
+mail_loginheader=POP3-palvelimen sisäänkirjautuminen
+mail_logindesc=Sinun on annettava käyttäjänimi ja salasana, jotta voit käyttää sähköpostia <br> postilaatikon postilaatikossa $1.
+mail_login=Kirjaudu sisään
+mail_of=of
+mail_esystem=Yhteys sähköpostijärjestelmään tapahtui: $1. Järjestelmänvalvojan on korjattava tämä.
+mail_selread=Valitse luettu.
+mail_selunread=Valitse lukematon.
+mail_selspecial=Valitse erityinen.
+mail_specialsync=Synkronoi erityinen
+
+view_sent=Viesti $1 lähetetyn postitusluettelossa
+view_qdesc=Jonossa oleva viesti $1
+view_nobody=Tässä viestissä ei ole kehon sisältöä.
+view_afile=Liitteen nimi
+view_atype=Liitetyyppi
+view_aactions=Toiminnot
+view_aview=näkymä
+view_aopen=Avata
+view_asave=Tallentaa
+view_aplain=Raaka
+view_anofile=Ei tiedostonimeä
+view_asize=Tiedoston koko
+view_markas0=Lukemattomat
+view_markas1=Lukea
+view_markas2=erityinen
+view_sub=Liitetty sähköposti
+view_sub2=Liitetty sähköposti osoitteelta $1
+
+view_gnupg=GnuPG-allekirjoituksen varmennus
+view_gnupg_0=Allekirjoitus $1 on kelvollinen.
+view_gnupg_1=Allekirjoitus $1: lla on kelvollinen, mutta luottamusketjua ei voitu perustaa.
+view_gnupg_2=Allekirjoitus $1 on <b>EI</b> kelvollinen.
+view_gnupg_3=Avaintunnus $1 ei ole luettelossasi, joten allekirjoitusta ei voitu vahvistaa.
+view_recv=<a href='$2'>Hae avaintunnus $1 avainpalvelimelta</a>.
+view_dheader=Irrota liite palvelimeen
+view_dir=palvelintiedostoon tai hakemistoon:
+view_whitemove=Salli lähettäjä ja postilaatikko
+view_hammove=Ilmoita kinkku ja postilaatikko
+view_dstatus=Toimituksen tila epäonnistui
+view_dstatusok=Onnistunut toimitustila
+view_final-recipient=Lopullinen vastaanottaja
+view_remote-mta=Etäpostipalvelin
+view_reporting-mta=Raportointipostipalvelin
+view_images=Näytä kuvat
+view_aall=Tallenna kaikki liitetiedostot ZIP-muodossa.
+view_aslideshow=Näytä kaikki kuvat.
+
+reply_dsn=Pyydätkö luettua tilailmoitusta?
+reply_del=Pyydätkö toimituksen tilan ilmoitusta?
+reply_aboot=Lisää vastaanottajat osoitekirjaan?
+reply_tabfrom=alkaen
+reply_tabto=jotta
+reply_tabreplyto=Vastata
+reply_tabcc=cc
+reply_tabbcc=bcc
+reply_tabsigning=allekirjoittaminen
+reply_taboptions=vaihtoehdot
+reply_addattach=Lisää liitekenttä.
+reply_addssattach=Lisää palvelinpuolen liitekenttä.
+reply_html0=Kirjoita teksti
+reply_html1=Kirjoita HTML
+
+reply_save=Tallenna ja muokkaa
+
+send_efrom=Puuttuu osoitteesta
+send_title2=Posti tallennettu
+send_esmtp=SMTP-komento $1 epäonnistui : $2
+send_eperms=Käyttäjä $1 ei osaa lukea $2
+send_eperms2=Sinulla ei ole oikeutta lähettää tiedostoa $1
+send_epath=Sendmail-suoritettavaa $1 ei ole.
+
+send_epass=Et voi allekirjoittaa viestiä, koska tunnuslauseesi ei ole vielä määritetty GnuPG-moduulissa.
+send_ekey=Sähköpostiosoitteen avainta ei löytynyt $1
+send_eword=Väärin kirjoitettu sana $1
+send_eword2=Väärin kirjoitettu sana $1 - mahdolliset korjaukset $2
+send_eline=Rivillä $1 :
+send_espell=Viestistäsi löydettiin seuraavat kirjoitusvirheet.
+send_draft=Posti numeroon $1 tallennettu luonnoksen kansioon.
+send_drafting=Postin tallentaminen luonnoksen kansioon $1.
+
+delete_rusure2=Haluatko varmasti poistaa tämän viestin kohdasta $1? Tämä voi viedä jonkin aikaa suuren postitiedoston luomiseen. Muita toimia ei pidä suorittaa, ennen kuin poisto on päättynyt.
+
+confirm_warnf=Haluatko varmasti poistaa valitut $1 -viestit kansiosta <b>$2</b>?
+confirm_warnallf=Haluatko varmasti poistaa kaikki kansiossa <b>$1</b> olevat viestit?
+
+search_ematch=Sinun on kirjoitettava teksti, jota haluat verrata.
+search_ewhat=Riville $1 ei ole annettu vastaavaa tekstiä
+search_results2=$1 sähköpostiviestit, jotka vastaavat $2
+search_results3=$1 sähköpostiviestit eivät vastaa $2
+search_results4=$1 sähköpostiviestit, jotka vastaavat hakuasi
+search_results5=$1 sähköpostiviestit, joissa $2 vastaa $3
+search_msg5=Hakutulokset roskapostista pisteellä $1
+search_msg6=Hakutulokset $1 kentästä $2
+search_status=Tila
+search_attach=Onko sinulla liitteet?
+search_onestatus=Vain tila
+search_withstatus=, tila $1
+
+folder_inbox=Saapuneet
+
+detach_err=Tiedoston irrottaminen epäonnistui
+detach_edir=Ei tiedostoa tai hakemistoa tallennettavaksi syötettyyn
+detach_eopen=$1: n avaaminen epäonnistui : $2
+detach_ewrite=$1: seen kirjoittaminen epäonnistui : $2
+detach_ok=Kirjoitti liitetiedoston palvelinpuolen tiedostoon $1 ($2).
+
+sform_header=Sähköpostihaun lisäasetukset
+sform_andmode=Kriteeritila
+sform_and=Etsi viestit, jotka täyttävät kaikki alla olevat kriteerit ..
+sform_or=Etsi viestejä vastaa kaikkia alla olevia ehtoja ..
+sform_folder2=Etsi kansiosta
+sform_all=&lt;Kaikki kansiot&gt;
+sform_allmsg=koko viesti
+sform_return=tarkennetun haun muoto
+
+find_results=Käyttäjät, jotka vastaavat hakua $1 ..
+find_in=$1 in $2
+
+emodified=Tätä kansiota on muokattu viimeksi katsotustaan! Palaa <a href='$1'>postituslistaan</a> ja yritä uudelleen.
+
+razor_moved=.. valmis ja siirretty kansioon $1.
+
+ham_report=Ilmoittaminen tästä viestistä ei-roskapostina Razorille ja muille SpamAssassin-tietokantoille.
+
+white_title=Salli lähettäjän
+white_done=Lisäsi sähköpostiosoitteen $1 SpamAssassinin sallittujen osoitteiden luetteloon.
+white_already=Sähköpostiosoite $1 on jo SpamAssassinin sallittujen osoitteiden luettelossa.
+
+ldap_emod=Puuttuva Perl-moduuli $1 tarvitaan LDAP-yhteyteen
+ldap_econn=Yhteyden muodostaminen epäonnistui LDAP-palvelimeen $1 portti $2
+ldap_elogin=Sidonta LDAP-palvelimeen $1 epäonnistui $2 : $3 
+ldap_ehost=LDAP-palvelinta ei ole asetettu moduulin kokoonpanossa
+ldap_eport=Ei kelvollista LDAP-palvelinporttia asetettu moduulin kokoonpanossa
+ldap_euser=Ei LDAP-sisäänkirjautumista asetettu moduulin kokoonpanossa
+ldap_ebase=LDAP-pohjaista DN: tä ei ole asetettu moduulin kokoonpanossa
+
+slide_title=Liitetyt kuvat
+slide_prev=Edellinen
+slide_next=Seuraava
+
+left_mail=posti
+left_search=Hae:
+left_folders=Hallitse kansioita
+left_addresses=Osoitekirja
+left_prefs=Sähköpostiasetukset
+left_forward=Lähetä edelleen
+left_autoreply=Automaattinen vastaus
+left_filter=Sähköpostisuodattimet
+left_pass=Vaihda salasana
+left_sig=Muokkaa allekirjoitusta

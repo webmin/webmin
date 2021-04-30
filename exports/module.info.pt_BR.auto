@@ -1,0 +1,3 @@
+name_pt_BR=Gerente de exportação
+longdesc_pt_BR=Edite os compartilhamentos de arquivos NFS definidos em /etc/exports.
+desc_pt_BR=Exportações NFS

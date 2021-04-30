@@ -1,0 +1,53 @@
+desc_su-l=Changer d'utilisateur (avec login)
+desc_usermin=Serveur Web Usermin
+desc_cupsys=Impression CUPS
+desc_libcupsys2=Impression CUPS
+desc_ssh=Connexion SSH
+desc_proftpd=Serveur de transfert de fichiers ProFTPd
+desc_qpopper=Serveur de messagerie POP
+desc_dovecot=Serveur de messagerie POP / IMAP
+desc_cron=Démon de commandes planifiées
+desc_runuser=Exécuter la commande en tant qu'utilisateur
+desc_runuser-l=Exécuter la commande en tant qu'utilisateur (avec connexion)
+desc_postgresql=Base de données PostgreSQL
+desc_crond=Démon Cron
+desc_smtp=Authentification SMTP
+desc_smtp.postfix=Authentification SMTP de Postfix
+desc_smtp.sendmail=Authentification SMTP Sendmail
+desc_config-util=Utilitaires de configuration
+desc_newrole=Nouveau rôle pour SELinux
+desc_radius=Connexion d'accès à distance RADIUS
+desc_pptpconfig=Protocole de tunneling point à point
+desc_atd=Démon de commandes planifiées
+desc_kcheckpass=Vérificateur de mot de passe KDE
+desc_common-account=Vérification du compte commun
+desc_common-auth=Authentification commune
+desc_common-password=Changement de mot de passe commun
+desc_common-session=Configuration de session commune
+
+edit_file=Fichier de configuration
+edit_addinc=Ajouter le service inclus
+edit_inc=Inclure le service $1 
+edit_iheader=Services PAM inclus
+
+pam_foreground.so=Configuration de la console
+
+unix_nullok_secure=Accepter les mots de passe nuls sur les ATS sécurisés?
+unix_min=Longueur minimale du mot de passe
+unix_nomin=Aucun
+unix_max=Longueur maximale du mot de passe
+unix_nomax=Sans limites
+unix_obscure=Empêcher l'utilisation de mots de passe faciles?
+unix_emin=Longueur minimale du mot de passe manquante ou invalide
+unix_emax=Longueur maximale du mot de passe manquante ou invalide
+
+log_inc_create=Ajout de $1 pour le service $2 
+log_inc_modify=Modifié inclure $1 pour le service $2 
+log_inc_delete=Supprimé $1 pour le service $2 
+log_incs=La mise à jour inclut le service $1 
+
+inc_edit=Modifier le service inclus
+inc_create=Créer un service inclus
+inc_header=Détails du service PAM inclus
+inc_inc=Service PAM inclus
+inc_err=Impossible d'enregistrer le service inclus

@@ -1,0 +1,316 @@
+index_title=Uprava za tiskalnike
+index_header=Na voljo tiskalniki
+index_name=Tiskalnik
+index_desc=Opis
+index_to=Natisni v
+index_driver=Voznik
+index_enabled=Omogočeno?
+index_accepting=Sprejemam?
+index_jobs=Službe
+index_none=V tem sistemu ni nameščenih tiskalnikov.
+index_list=Seznam ..
+index_jlist=Službe ..
+index_jcount=$1 opravila ..
+index_add=Dodajte nov tiskalnik.
+index_stop=Ustavi urnik
+index_stopmsg=Kliknite ta gumb, če želite ustaviti postopek načrtovanja tiskanja. To bo preprečilo, da bi lokalni ali oddaljeni uporabniki tiskali v vašem sistemu.
+index_start=Zaženite urnik
+index_startmsg=Kliknite ta gumb, da začnete postopek načrtovanja tiskanja. To bo omogočilo lokalnim in oddaljenim uporabnikom tiskanje v vašem sistemu.
+index_restart=Znova zaženite Scheduler
+index_restartmsg=Kliknite ta gumb, če želite znova zagnati postopek načrtovanja tiskanja. S tem bo uporabljena trenutna konfiguracija tiskanja.
+index_return=seznam tiskalnikov
+index_esystem=Namestite programsko opremo za izbrani tiskalni sistem ali uporabite <a href='$1'>konfiguracijo modula</a>, da jo spremenite.
+index_style=Tiskalni sistem: $1 
+index_cluster=Cluster strežniki
+index_clusterdesc=Kliknite ta gumb za nastavitev dodatnih strežnikov Webmin, na katerih bodo tiskalniki ustvarjeni, posodobljeni in izbrisani.
+index_delete=Izbrišite izbrane tiskalnike
+
+style_solaris=Solaris
+style_linux=Linux LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=SKODELICE
+style_irix=IRIX
+style_aix=AIX
+
+edit_eedit=Tega tiskalnika ne smete urejati
+edit_eadd=Tiskalnikov ne smete dodati
+edit_add=Ustvari tiskalnik
+edit_edit=Uredi tiskalnik
+edit_conf=Konfiguracija tiskalnika
+edit_name=Ime
+edit_acc=Sprejemate zahteve?
+edit_why=Ne - zakaj pa ne
+edit_desc=Opis
+edit_ena=Ali je tiskanje omogočeno?
+edit_acl=Nadzor dostopa
+edit_allow=Dovoli vsem
+edit_deny=Zanikajte vse
+edit_allowu=Dovoli navedenim uporabnikom ..
+edit_denyu=Zavrni uporabnike na seznamu ..
+edit_banner=Natisni pasico?
+edit_opt=Neobvezno
+edit_default=Privzeti tiskalnik?
+edit_already=Že privzeti tiskalnik
+edit_max=Največja velikost tiskalnega posla
+edit_unlimited=Neomejeno
+edit_dacc=Voznik sprejema
+edit_dtext=Besedilo
+edit_dpost=Postcript
+edit_dother=Drugo
+edit_alt=Nadomestna imena tiskalnika
+edit_dest=Natisni destinacijo
+edit_dev=Lokalna naprava
+edit_file=Lokalna datoteka
+edit_remote=Oddaljeni strežnik Unix
+edit_rqueue=Tiskalnik
+edit_type=Vtipkajte
+edit_smb=Oddaljeni strežnik Windows
+edit_share=Tiskalnik
+edit_user=Uporabnik
+edit_pass=Geslo
+edit_wgroup=Delovna skupina
+edit_hpnp=Oddaljeni strežnik HPNP
+edit_port=Pristanišče
+edit_direct=Neposredna povezava TCP
+edit_dport=Pristanišče
+edit_driver=Gonilnik tiskalnika
+edit_check=Preverite, ali je oddaljeni strežnik pripravljen?
+
+blocks=blokov
+
+save_err=Tiskalnika ni bilo mogoče shraniti
+save_eadd=Tiskalnikov ne smete dodati
+save_eedit=Tega tiskalnika ne smete urejati
+save_ename='$1' ni veljavno ime tiskalnika
+save_edup=Tiskalnik z imenom '$1' že obstaja
+save_eallow=Uporabniki ne dovolijo vnosa
+save_edeny=Uporabnik ne more zanikati vnesenega
+save_euser=Uporabnik '$1' ne obstaja
+save_etype=Za sprejem tega gonilnika morate izbrati vsaj eno vrsto
+save_emax=Največja velikost tiskalnega opravila mora biti celo število
+save_efile='$1' ne obstaja
+save_erhost=Oddaljeni gostitelj '$1' ne obstaja
+save_erport=Oddaljena vrata '$1' niso veljavna
+save_erqueue='$1' ni veljavno ime oddaljene čakalne vrste
+save_eremote=Gonilnikov ni mogoče uporabljati z oddaljenimi tiskalniki Unix
+save_edhost=Neposredni gostitelj '$1' ne obstaja
+save_edport=Manjkajoča ali neveljavna neposredna vrata
+save_evalid=Tiskalni sistem tega tiskalnika ni omogočil
+save_errslave=Tiskalnik je v tem sistemu ustvaril OK, vendar so se v sistemih grozdov pojavile naslednje napake : $1 
+save_egone=Najden ni bil tiskalnik z imenom "$1"
+save_errdelslave=Tiskalnik je v tem sistemu izbrisan V redu, vendar so se v sistemih grozdov pojavile naslednje napake : $1 
+
+jobs_title=Tiskalna opravila
+jobs_header=Tiskalna opravila na $1 
+jobs_id=ID delovnega mesta
+jobs_size=Velikost
+jobs_by=Oddal
+jobs_when=Oddano ob
+jobs_file=Ime datoteke
+jobs_cancel=Če želite preklicati, kliknite ID opravila na zgornjem seznamu.
+jobs_cancelview=Če želite preklicati, kliknite ID opravila na zgornjem seznamu ali pa ga kliknite na velikost opravila.
+jobs_none=Tiskalnik $1 nima čakajočih opravil.
+jobs_all=Prekličite vsa tiskalna opravila
+jobs_bytes=bajti
+jobs_test=Natisni preskusno stran
+jobs_cancelsel=Prekliči izbrana opravila
+jobs_on=Na tiskalniku $1 
+jobs_return=seznam tiskalnih opravil
+
+cancel_ecannot=Ne smete preklicati tiskalnih opravil
+cancel_err=Tiskalnega opravila ni bilo mogoče preklicati
+cancel_egone=Tiskalno opravilo $1 ne obstaja več
+
+view_ecannot=Tega tiskalnega opravila ne morete videti
+view_egone=Tega tiskalnega opravila ne obstaja več
+
+start_ecannot=Ni vam dovoljeno zagnati načrtovalca
+start_err=Planerja ni bilo mogoče zagnati
+
+stop_ecannot=Planerja ne morete ustaviti
+stop_err=Planerja ni bilo mogoče ustaviti
+
+restart_ecannot=Ni vam dovoljeno znova zagnati planerja
+restart_err=Planerja ni bilo mogoče znova zagnati
+
+webmin_none=Noben
+webmin_nonemsg=PostScript ali tiskalnik besedila
+webmin_remotemsg=Oddaljeni tiskalnik
+webmin_model=Model
+webmin_prog=Program
+webmin_driver=Gonilnik Webmin
+webmin_uniprint=Gonilnik Uniprint
+webmin_edrivers=Voznikov ni bilo mogoče dobiti od $1. Gonilniki spletnih tiskalnikov, ki uporabljajo ghostscript, niso na voljo
+webmin_egs=Ukaza $1 ni bilo mogoče najti. Gonilniki spletnih tiskalnikov, ki uporabljajo ghostscript, niso na voljo
+webmin_edriver='$1' ne obstaja
+
+caldera_none=Noben
+caldera_nonemsg=Oddaljeni ali surovi tiskalnik
+caldera_prog=Program
+caldera_coas=Voznik COAS
+caldera_printer=Tiskalnik in ločljivost
+caldera_eof=Pošlji EOF?
+caldera_paper=Velikost papirja
+caldera_double=Dvostransko tiskanje?
+caldera_gsopts=Dodatne GS možnosti
+caldera_uniprint=Gonilnik Uniprint
+caldera_eprog='$1' ne obstaja
+caldera_edriver=Izbran ni noben gonilnik tiskalnika
+caldera_eres=Ni izbrana ločljivost
+
+redhat_none=Noben
+redhat_nonemsg=PostScript ali tiskalnik besedila
+redhat_prog=Program
+redhat_driver=Voznik Redhat
+redhat_printer=Tiskalnik in ločljivost
+redhat_eof=Pošlji EOF?
+redhat_paper=Velikost papirja
+redhat_pages=Strani na izhodni strani
+redhat_gsopts=Dodatne GS možnosti
+redhat_hmargin=Desni/levi rob
+redhat_vmargin=Zgornji/spodnji rob
+redhat_crlf=Popravi besedilo po stopnicah?
+redhat_eprog='$1' ne obstaja
+redhat_edriver=Izbran ni noben gonilnik tiskalnika
+redhat_ehmargin=Manjkajoči ali neveljavni desni/levi rob
+redhat_evmargin=Manjkajoči ali neveljavni zgornji/spodnji rob
+redhat_eres=Ni izbrana ločljivost
+redhat_printer2=Model tiskalnika in gonilnik
+
+suse_none=Noben
+suse_nonemsg=PostScript ali tiskalnik besedila
+suse_prog=Program
+suse_driver=APSfilter gonilnik
+suse_printer=Vrsta tiskalnika
+suse_res=Ločljivost v DPI
+suse_colour=Barvni tiskalnik?
+suse_paper=Velikost papirja
+suse_method=Metoda filtriranja
+suse_auto=Samodejno
+suse_ascii=ASCII
+suse_raw=Surov
+suse_extra=Dodatne ghostscript možnosti
+suse_yast2=Voznik YAST2
+suse_edriver=Ni izbrana vrsta tiskalnika
+suse_eres=Manjkajoča ali neveljavna ločljivost
+
+estop=Stopnja lpd ni uspela : $1 
+
+acl_printers=Tiskalniki, ki jih ta uporabnik lahko konfigurira
+acl_add=Ali lahko dodate nove tiskalnike?
+acl_cancel=Ali lahko prekličete tiskalna opravila?
+acl_stop=Ali lahko ustavite ali zaženete planer?
+acl_restart=Samo znova zaženite
+acl_listed=Samo na izbranih tiskalnikih.
+acl_pall=Vsi tiskalniki
+acl_psel=Izbrano ..
+acl_view=Prikaži tiskalnike, ki jih ni mogoče konfigurirati?
+acl_test=Ali lahko natisnete testne strani?
+acl_user=Upravljanje tiskalnih opravil v lasti
+acl_user_all=Vsi uporabniki
+acl_user_this=Trenutni uporabnik Webmin-a
+acl_delete=Ali lahko izbrišete tiskalnike?
+acl_cluster=Ali lahko upravljate gručo tiskalnikov?
+
+log_stop=Ustavljen planer tiskanja
+log_start=Začetek planerja tiskanja
+log_restart=Restartirani planer tiskanja
+log_cancel_job=Preklicano tiskalno opravilo $2 na $1 
+log_cancel_all=Preklicali so vsa tiskalna opravila na $1 
+log_cancel_sel=Preklicana opravila tiskanja $2 na $1 
+log_create=Ustvarjen tiskalnik $1 na $2 
+log_modify=Spremenjen tiskalnik $1 na $2 
+log_delete=Izbrisan tiskalnik $1 na $2 
+log_create_l=Ustvarjen $3 tiskalnik $1 na $2 
+log_modify_l=Spremenjen $3 tiskalnik $1 na $2 
+log_delete_l=Izbrisan $3 3 tiskalnik $1 na $2 
+
+linux_paralel=Vzporedni vhod $1 
+linux_serial=Serijska vrata $1 (COM $1)
+linux_null=Ničelna naprava
+linux_usb=Tiskalnik USB $1 
+linux_ecmd=V vašem sistemu ukaza $1 ni bilo, kar pomeni, da tiskalni sistem Linux ni nameščen.
+linux_espool=Imenik spool $1 v vašem sistemu ne obstaja, kar pomeni, da tiskalni sistem Linux ni nameščen.
+
+freebsd_paralel=Vzporednica
+freebsd_serial=Serijska vrata $1 (COM $1)
+freebsd_ecmd=V vašem sistemu ukaza $1 ni bilo, kar pomeni, da tiskalni sistem FreeBSD ni nameščen.
+freebsd_espool=Imenik spool $1 v vašem sistemu ne obstaja, kar pomeni, da tiskalni sistem FreeBSD ni nameščen.
+
+openbsd_paralel=Vzporednica
+openbsd_serial=Serijska vrata $1 (COM $1)
+
+unixware_paralel=Vzporedni vhod $1 
+unixware_serial=Serijska vrata $1 
+unixware_null=Ničelna naprava
+unixware_ecmd=Ukaza $1 v vašem sistemu ni bilo mogoče najti, kar pomeni, da tiskalni sistem UnixWare ni nameščen.
+
+hpux_paralel=Vzporednica $1 
+hpux_serial=Serijski $1 
+hpux_null=Ničelna naprava
+hpux_ecmd=V vašem sistemu ukaza $1 ni bilo, kar pomeni, da tiskalni sistem HPUX ni nameščen.
+hpux_eiface=Imenik skriptov vmesnikov $1 v vašem sistemu ne obstaja, kar pomeni, da tiskalni sistem HPUX ni nameščen.
+
+lprng_paralel=Vzporedni vhod $1 
+lprng_serial=Serijska vrata $1 (COM $1)
+lprng_null=Ničelna naprava
+lprng_ecmd=Ukaza $1 v vašem sistemu ni bilo mogoče najti, kar pomeni, da tiskalni sistem LPRng ni nameščen.
+lprng_espool=Imenik spool $1 v vašem sistemu ne obstaja, kar pomeni, da tiskalni sistem LPRng ni nameščen.
+
+solaris_paralel=Vzporednica
+solaris_uparalel=Ultra 5/10 vzporedna vrata
+solaris_serial=Serijska vrata $1 
+solaris_null=Ničelna naprava
+solaris_ecmd=Ukaza $1 v vašem sistemu ni bilo, kar pomeni, da tiskalni sistem Solaris ni nameščen.
+
+test_title=Natisni preskusno stran
+test_ecannot=Ne smete tiskati testnih strani
+test_desc=Ta obrazec vam omogoča, da natisnete testno stran za tiskalnik $1. Izberite vrsto strani, ki jo želite natisniti :
+test_0=Stran s črno-belo pošto
+test_1=Stran z barvnimi skripti
+test_2=Navadno besedilo ASCII
+test_3=Vsaka naložena datoteka
+test_print=Natisni stran
+test_exec=Tiskanje preskusne strani z ukazom $1 ..
+test_failed=.. ukaz ni uspel!
+test_ok=.. ukaz končan.
+
+cups_none=Noben
+cups_nonemsg=Oddaljeni ali surovi tiskalnik
+cups_prog=Program
+cups_driver=Voznik CUPS
+cups_eprog='$1' ni veljaven program
+cups_opts=Možnosti za $1 
+cups_ecmd=V vašem sistemu ukaza $1 ni bilo, kar pomeni, da tiskalni sistem CUPS ni nameščen.
+
+irix_ecmd=Ukaza $1 v vašem sistemu ni bilo mogoče najti, kar pomeni, da tiskalni sistem IRIX ni nameščen.
+irix_eiface=Imenik skriptov vmesnikov $1 v vašem sistemu ne obstaja, kar pomeni, da tiskalni sistem IRIX ni nameščen.
+
+aix_port=Vrata tiskalnika $1 
+aix_edesc=Neveljaven opis - dovoljene so samo črke in številke in nobenih presledkov
+aix_ecmd=Tiskalniškega strežnika AIX $1 ni bilo mogoče najti. Mogoče ni nameščen ali pa je v uporabi drug tiskalni sistem.
+
+cluster_title=Strežniki tiskalnikov z grozdi
+cluster_none=V tiskalniško gručo še ni bil dodan noben strežnik.
+cluster_host=Ime gostitelja
+cluster_desc=Opis
+cluster_os=Operacijski sistem
+cluster_add=Dodaj strežnik
+cluster_gadd=Dodajte strežnike v skupino
+cluster_need=Preden lahko tukaj upravljate, morate v modul Webmin Servers Index dodati strežnike z prijavo in geslom.
+cluster_return=grozdni strežniki
+cluster_delete=Odstrani izbrano
+cluster_ecannot=Ni vam dovoljeno upravljati strežnikov tiskalnikov v gručah
+
+add_title=Dodaj strežnike
+add_msg=Dodajanje $1.
+add_gmsg=Dodajanje strežnikov v skupino $1.
+add_err=Ni bilo mogoče dodati strežnika
+add_gerr=Skupine ni bilo mogoče dodati
+add_echeck=Server $1 nima modula Printer Administration
+add_ediff=Strežnik $1 uporablja drug tiskalni sistem ($2) za ta strežnik
+add_ediff2=Strežnik $1 za ta strežnik uporablja drug gonilnik tiskalnika ($2)
+add_ok=Dodano $1, s tiskalniki $2.

@@ -1,0 +1,4 @@
+index_none=Şifrelerini değiştirmek için hiçbir kullanıcıya erişiminiz yok.
+
+acl_self=Kendi parolanızın değiştirilmesine her zaman izin verilsin mi?
+acl_notusers=Kullanıcılar hariç

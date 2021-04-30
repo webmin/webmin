@@ -1,0 +1,10 @@
+index_clearcmds=Tiszta parancsok
+index_edit=Előző szerkesztése
+index_trunced=A (z) $2 teljes kibocsátása $1 -en csonka.
+index_timedout=A parancsot $1 másodperc futtatása után fejezték be.
+
+acl_shellenv=Használja a kiválasztott felhasználói környezetet?
+acl_chroot=Chroot a könyvtárba
+
+log_run=Futtatta a (z) $1 parancsot
+log_clear=Törölve a parancs előzményeit

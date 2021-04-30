@@ -1,0 +1,3 @@
+longdesc_hu=A /etc/init.d vagy /etc/rc.local. /etc/init.d indító indításkor futtatandó telepítő szkriptek /etc/rc.local.
+name_hu=Boot Manager
+desc_hu=Indítás és leállítás

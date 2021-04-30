@@ -1,0 +1,5 @@
+right_used3=Użyto $2, $3 w pamięci podręcznej, $1 ogółem
+right_fsfull=Ostrzeżenie! System plików $2 zamontowany w $1 nie ma wolnego miejsca na dysku!
+right_fsnearly=Ostrzeżenie! System plików $2 zamontowany w $1 ma tylko $3 wolnego miejsca na dysku
+right_ifsfull=Ostrzeżenie! System plików zamontowany w $1 nie ma wolnych i-węzłów z $2 !
+right_ifsnearly=Ostrzeżenie! System plików zamontowany w $1 ma tylko $3 wolnych i-węzłów z $2 

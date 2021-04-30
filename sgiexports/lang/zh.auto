@@ -1,0 +1,39 @@
+index_title=NFS出口
+index_add=添加新的NFS导出
+index_dir=目录
+index_hosts=允许的主机
+index_all=所有主机
+index_none=尚未定义NFS导出。
+index_apply=应用配置
+index_applydesc=单击此按钮可激活上面列出的所有导出及其配置的选项。
+index_return=出口清单
+
+edit_title1=创建导出
+edit_title2=编辑导出
+edit_header=汇出详细资料
+edit_dir=导出目录
+edit_hosts=导出到主机/网络组
+edit_ro=只读？
+edit_wsync=写入后同步？
+edit_anon=根用户权限
+edit_anon1=默认值（按<tt>nobody</tt>处理）
+edit_anon2=拒绝访问
+edit_anon0=视为用户
+edit_rw=读/写访问
+edit_root=根文件访问
+edit_access=挂载访问
+edit_all=所有主机
+edit_sel=列出的主机
+edit_none=没有主机
+
+save_err=无法保存导出
+save_edir=缺少或不存在要导出的目录
+save_eanon=根用户丢失或无效
+save_erw=没有输入读写主机
+save_eroot=没有输入根文件访问主机
+save_eaccess=没有输入安装访问主机
+
+log_create_export=已创建 $1的导出
+log_delete_export=已删除导出的 $1
+log_modify_export=已修改 $1的导出
+log_apply=应用的配置

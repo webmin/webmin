@@ -1,0 +1,103 @@
+index_title=Heartbeat Monitor
+index_return=monitor del battito cardiaco
+index_edir=La directory di configurazione heartbeat $1 non esiste. Forse Heartbeat non è installato o la tua <a href='$2'>configurazione del modulo</a> non è corretta.
+index_start=Avviare Heartbeat Monitor
+index_startmsg=Fare clic su questo pulsante per avviare il processo di monitoraggio Heartbeat. Ciò consentirà il failover automatico del servizio sul sistema con la configurazione corrente.
+index_apply=Applica i cambiamenti
+index_applymsg=Fare clic su questo pulsante per forzare il processo di monitoraggio Heartbeat in esecuzione per ricaricare la configurazione corrente.
+index_eha_cf=Il file di configurazione heartbeat $1 non è stato trovato sul tuo sistema. Forse non è stato ancora copiato in posizione o la <a href='$2'>configurazione del modulo</a> non è corretta.
+index_eharesources=Il file di risorse $1 non è stato trovato sul tuo sistema. Forse non è stato ancora copiato in posizione o la <a href='$2'>configurazione del modulo</a> non è corretta.
+index_eauthkeys=Il file delle chiavi di autenticazione $1 non è stato trovato sul tuo sistema. Forse non è stato ancora copiato in posizione o la <a href='$2'>configurazione del modulo</a> non è corretta.
+index_ereq_resource_cmd=Lo script per richiedere risorse dall'altro nodo ($1) non è stato trovato sul tuo sistema. Forse non è stato ancora copiato in posizione o la <a href='$2'>configurazione del modulo</a> non è corretta.
+index_version=Versione Heartbeat $1 
+index_noversion=Avviso: la versione di Heartbeat installata sul sistema non può essere rilevata automaticamente. Dovresti impostarlo nella pagina <a href='$1'>configurazione del modulo</a>.
+index_status=Stato del battito cardiaco
+
+conf_title=Opzioni di configurazione
+conf_header=Opzioni di configurazione del battito cardiaco
+conf_serials=Porte heartbeat seriali
+conf_baud=Baud rate per porta seriale
+conf_bcasts=Interfacce heartbeat Ethernet
+conf_none=Nessuna
+conf_udpport=Porta heartbeat UDP
+conf_mcast=Dispositivo per il battito cardiaco multicast
+conf_mcastv=Dispositivo $1, gruppo $2, porta $3, TTL $4, loopback $5 
+conf_enabled=Abilitato
+conf_disabled=Disabilitato
+conf_keepalive=Tempo tra i battiti del cuore
+conf_nice_failback=Bel comportamento di failback
+conf_secs=secondi
+conf_deadtime=Tempo prima che il nodo sia considerato morto
+conf_watchdog=File del dispositivo di controllo
+conf_node=Host nel cluster
+conf_logfile=File di registro del battito cardiaco
+conf_logfacility=Funzione registro syslog
+conf_initdead=Tempo morto iniziale
+conf_ok=Salva opzioni
+conf_err=Impossibile salvare le opzioni
+conf_ebaud=Baud rate mancante o non valido
+conf_ebcast=Nessuna interfaccia di trasmissione heartbeat inserita
+conf_ebcastif='$1' non è un'interfaccia di trasmissione valida
+conf_eudpport=Porta heartbeat mancante o non valida
+conf_ekeepalive=Tempo mancante o non valido tra i battiti cardiaci
+conf_edeadtime=Tempo morto mancante o non valido
+conf_ewatchdog=File dispositivo watchdog mancante o inesistente
+conf_enonode=Nessun host cluster inserito
+conf_ethisnode=Questo host $1 non si trova nell'elenco degli host del cluster
+conf_elogfile=Nome file registro mancante o non valido
+conf_einitdead=Tempo morto iniziale mancante o non valido
+conf_einitdead2=Il tempo morto iniziale deve essere almeno il doppio del tempo prima che un nodo sia considerato morto
+conf_emcast_dev=Dispositivo multicast mancante o non valido
+conf_emcast_ip=Indirizzo del gruppo multicast mancante o non valido
+conf_emcast_port=Numero porta multicast mancante o non valido
+conf_emcast_ttl=Time-to-live multicast mancante o non valido
+conf_auto_on=$ {} Conf_enabled
+conf_auto_off=$ {} Conf_disabled
+conf_auto_legacy=Modalità legacy
+conf_auto_=$ {Default}
+
+res_title=Risorse del cluster
+res_node=Nodo primario
+res_ips=Indirizzi IP
+res_servs=Servizi nodo
+res_none=Nessuna
+res_nores=Nessuna risorsa del cluster è stata definita sul tuo sistema.
+res_add=Aggiungi una risorsa cluster
+res_return=elenco delle risorse
+res_active=Stato delle risorse
+res_getserv=Ottieni risorse
+res_hbdown=Battito cardiaco
+res_up=SU
+res_down=GIÙ
+
+node_create=Aggiungi risorsa cluster
+node_edit=Modifica risorsa cluster
+node_header=Dettagli delle risorse del cluster
+node_node=Nodo primario per risorsa
+node_ips=Indirizzi IP per risorsa
+node_ip=indirizzo IP
+node_cidr=Netmask CIDR
+node_broad=Indirizzo di trasmissione
+node_servs=Servizi per risorsa
+node_serv=Servizio
+node_args=Argomenti aggiuntivi
+node_err=Impossibile salvare la risorsa del cluster
+node_enone=Nodo primario mancante o non valido
+node_eip='$1' non è un indirizzo IP valido
+node_ecidr='$1' non è un CIDR valido
+node_ebroad='$1' non è un indirizzo di trasmissione valido
+
+auth_title=Chiavi di autenticazione
+auth_header=Autenticazione nodo cluster
+auth_mode=Modalità di autenticazione
+auth_crc=CRC (Nessuna sicurezza)
+auth_sha1=SHA1 con password
+auth_md5=MD5 con password
+auth_err=Impossibile salvare le chiavi di autenticazione
+auth_emd5=Password MD5 mancante o non valida
+auth_esha1=Password SHA1 mancante o non valida
+
+start_err=Impossibile avviare il battito cardiaco
+
+apply_err=Impossibile applicare le modifiche
+apply_epid=Il processo non è più in esecuzione

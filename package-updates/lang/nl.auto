@@ -1,0 +1,34 @@
+index_manynew=Er zijn $1 pakketten beschikbaar voor installatie. Gebruik het zoekvak om degene te vinden die u wilt installeren.
+index_tabpkgs=Pakketupdates
+index_tabscheds=Geplande upgrades
+index_tabsrepos=Pakketrepository's
+index_scheddesc=Dit formulier kan worden gebruikt om automatisch pakketupdates te installeren volgens een regelmatig schema.
+index_reposdesc=Op deze pagina kunt u configureren welke opslagplaatsen worden gebruikt voor nieuwe of bijgewerkte pakketten.
+index_reposname=Naam opslagplaats
+index_reposenabled=Ingeschakeld?
+index_reposurl=Pakket-URL
+index_reposdisable=Schakel opslagplaatsen uit
+index_reposenable=Schakel opslagplaatsen in
+index_reposdelete=Verwijder opslagplaatsen
+index_repoheader=Nieuwe pakketrepository-opties
+
+update_title2=Installeer pakketten
+update_enone=Geen pakketten geselecteerd
+
+log_enable_repos=$1 pakketrepository's ingeschakeld
+log_disable_repos=Pakketrepository's van $1 uitgeschakeld
+log_delete_repos=$1 pakketrepository's verwijderd
+log_enable_repo=Pakketrepository $1 ingeschakeld
+log_disable_repo=Pakketrepository $1 uitgeschakeld
+log_delete_repo=Pakketrepository $1 verwijderd
+log_create_repo=Pakketrepository $1 gemaakt
+
+repos_err_disable=Kan opslagplaatsen niet uitschakelen
+repos_err_enable=Kan opslagplaatsen niet inschakelen
+repos_err_delete=Kan opslagplaatsen niet verwijderen
+repos_err_create=Kan opslagplaats niet maken
+repos_ebutton=Geen knop geklikt!
+repos_enone=Geen geselecteerd
+repos_title=Verwijder opslagplaatsen
+repos_rusure=Weet u zeker dat u de $1 geselecteerde pakketrepository's wilt verwijderen? Pakketten die van hen zijn geïnstalleerd, zijn nog steeds beschikbaar, maar kunnen mogelijk niet worden bijgewerkt.
+repos_ok=Verwijder nu

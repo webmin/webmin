@@ -1,8 +1,6 @@
-﻿index_title=Webmin Erabiltzaileak
 index_user=Erabiltzailea
 index_modules=Moduluak
 index_create=Webmin erabiltzaile berria sortu.
-index_rcreate=Arrisku-mailako erabiltzailea sortu.
 index_convert=Unix erabiltzaileak Webmin erabiltzaile bihurtu
 index_cert=SSL ziurtagiri bat eskatu
 index_certmsg=Egin klik botoi honetan SSL ziurtagiri bat eskatzeko, honen bidez Webminen saioa modu seguruan hasteko aukera duzu, erabiltzaile izen eta pasahitzik sartu gabe.
@@ -71,8 +69,6 @@ edit_ecreate=Ez zaude erabiltzaileak sortzeko baimenduta
 edit_theme=UI gai pertsonala
 edit_themeglobal=Webminen konfiguraziotik
 edit_themedef=Webmineko gai zaharra
-edit_overlay=
-Personal theme overlay
 edit_overlayglobal=Ezer ez - gai lehenetsiak erabili
 edit_log=Ikusi log fitxategiak
 edit_selall=Hautatu dena
@@ -97,6 +93,7 @@ edit_ui=Erabiltzailearen interfaze aukerak
 edit_security=Segurtasuna eta limiteen aukerak
 edit_mods=Eskuragarri dauden Webmin moduluak
 edit_modsg=Eskuragarri dauden Webmin moduluak (taldearenak direnez gain)
+
 save_err=Akatsa erabiltzailearen datuak gordetzean
 save_ename='$1' ez da erabiltzaile izen baliozkoa
 save_enamewebmin='webmin' erabiltzaile izena barne kudeaketarako erreserbatua dago
@@ -154,7 +151,6 @@ acl_title=Modulu atzipen kontrola
 acl_title2= $1 etik $2 ra
 acl_title3=$1 etik $2 rako taldeentzat
 acl_options=$1 atzipen kontrolerako aukerak
-
 acl_config=Edita dezake moduluaren konfigurazioa?
 acl_reset=Baimen guztiak berrezarri
 acl_rbac=RBAC en atzipen kontrolerako ezarpenak lortu?
@@ -208,7 +204,6 @@ log_reset=Berrezarri dira $1 en atzipenak $2 n
 log_cert=Igorri da $1 erabiltzailearentzat ziurtagiria
 log_modify_g=$1 Webmin taldea aldatu da
 log_rename_g=$1 Webmin taldearen izen berria $2
-
 log_create_g=$1 Webmin taldea sortu da
 log_delete_g=$1 Webmin taldea ezabatu da
 log_switch=$1 Webmin erabiltzailera aldatua
@@ -236,7 +231,6 @@ gdelete_ok=Ezabatu taldea
 
 gsave_err=Akatsa taldea gordetzean
 gsave_ename=Talde izena falta da edo okerra da
-
 gsave_enamewebmin='webmin' talde izena barne kudeaketarako erreserbatua dago
 gsave_edup=Talde izen hori dagoeneko badago
 
@@ -250,7 +244,6 @@ convert_2=Erabiltzaile guztiak honakoak ezik
 convert_3=Talde hauetako erabiltzaileak
 convert_4=Erabiltzaile identifikadorea (UID) tarte honetakoa dutenak
 convert_group=Webmin taldera erabiltzaile berriak esleitu
-convert_sync=Unixeko pasahitz bera erabili etorkizunean?
 convert_ok=Bihurtu orain
 convert_err=Akatsa erabiltzaileak bihurtzean
 convert_eusers=Ez da erabiltzailerik sartu bihurketa egiteko
@@ -296,7 +289,6 @@ unix_euser='$1' ez da baliozko erabiltzaile izena
 unix_egroup='$1' ez da baliozko talde izena
 unix_shells=Shell-a honako fitxategian ez duten Unix erabiltzaileak debekatu
 unix_eshells=Shell fitxategiak falta dira edo ez dira existitzen
-unix_restrict=Ondorengo murriztapen gehigarriak goian aukeratutako Unix erabiltzaileei aplikatu zaizkie.
 unix_ewhogroup=Missing group to allow in row $1
 unix_ewhouser=Missing user to allow in row $1
 unix_enone=Ez da sartu baimentzeko Unix erabiltzaile edo talderik
@@ -307,7 +299,6 @@ unix_esudo=$1 komandoa ez dago instalatua
 unix_esudomod=Perl-en $1 modulua beharrezkoa da <tt>sudo</tt> autentikaziorako eta ez dago instalatua
 
 sessions_title=Uneko login saioak
-sessions_desc=Uneko Webmin saio hasiak behean zerrendatuta ageri dira. Existitzen den saioa ezeztatzeko eta erabiltzaile bat berriro saioa hastera behartzeko, egin klik bere saio identifikadorean. 
 sessions_id=Saio identifikadorea
 sessions_user=Webmin erabiltzailea
 sessions_login=Saioa hasi zuen
@@ -366,6 +357,7 @@ pass_eminsize=Pasahitzaren luzeera falta da edo ez da zenbakizko balioa
 pass_emaxdays=Aldatze egunak falta dira edo ez da zenbakizko balioa
 pass_elockdays=Kontua blokeatua izateko egunak falta dira edo ez da zenbakizko balioa
 pass_eoldblock=Ezeztatu beharreko pasahitz zaharren balioa falta da edo ez da zenbakizko balioa
+
 cpass_minsize=$1 karaktere izan behar ditu gutxienez
 cpass_notre=Debekatutako patroi batekin dator bat
 cpass_re=Ez du eskatzen den patroia betetzen

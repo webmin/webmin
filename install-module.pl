@@ -18,7 +18,7 @@ if (@ARGV > 2 || !@ARGV) {
 $file = $ARGV[0];
 $config = $ARGV[1] ? $ARGV[1] : "/etc/webmin";
 -r $file || die "$file does not exist";
-open(CONF, "$config/miniserv.conf") ||
+open(CONF, "<$config/miniserv.conf") ||
 	die "Failed to read $config/miniserv.conf - maybe $config is not a Webmin config directory";
 while(<CONF>) {
 	s/\r|\n//g;

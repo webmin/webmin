@@ -1,0 +1,71 @@
+<header> TCP vyniojimo įrenginiai </header>
+<h3> Raštai </h3> Prieigos kontrolės kalba įgyvendina šiuos modelius: <ul>
+    <li> Styga, prasidedanti raide &#39;.&#39; charakteris. Pagrindinio kompiuterio vardas yra suderinamas, jei paskutiniai jo pavadinimo komponentai atitinka nurodytą modelį. Pvz., Šablonas „.tue.nl“ sutampa su pagrindinio kompiuterio pavadinimu „wzv.win.tue.nl“. </li>
+    <li> Styga, kurios pabaiga yra „.“ charakteris. Pagrindinio kompiuterio adresas yra suderinamas, jei jo pirmieji skaitiniai laukai atitinka nurodytą eilutę. Pavyzdžiui, modelis „131.155“. Sutampa (beveik) kiekvieno Eindhoveno universiteto tinklo kompiuterio adresas (131.155.xx). </li>
+    <li> Eilutė, prasidedanti „@“ simboliu, yra traktuojama kaip NIS (buvęs YP) tinklo grupės pavadinimas. Pagrindinio kompiuterio vardas atitinka, jei jis yra nurodytos tinklo grupės pagrindinis narys. „Netgroup“ atitiktys nepalaikomos demonų proceso pavadinimais ar kliento vartotojo vardais. </li>
+    <li> Formos „nnnn / mmmm“ išraiška suprantama kaip „tinklo / kaukės“ pora. IPv4 pagrindinis adresas yra suderinamas, jei „net“ yra lygus adreso ir „kaukės“ bitų IR. Pavyzdžiui, tinklo / kaukės modelis „131.155.72.0/255.255.254.0“ atitinka kiekvieną adresą nuo „131.155.72.0“ iki „131.155.73.255“. </li>
+    <li> Formos „[n: n: n: n: n: n: n] / m“ išraiška suprantama kaip „[neto] / priešdėlis“ pora. IPv6 pagrindinis adresas yra suderinamas, jei „prefixlen“ bitai „net“ yra lygūs „prefixlen“ adreso bitams. Pvz., [Net] / priešdėlis modelis [3ffe: 505: 2: 1 ::]/64 “atitinka kiekvieną adresą diapazone &#39;3ffe: 505: 2: 1:&#39;? per &#39;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&#39;. </li>
+    <li> Eilutė, prasidedanti simboliu &#39;/&#39;, laikoma failo pavadinimu. Pagrindinio kompiuterio vardas arba adresas yra suderinamas, jei jis atitinka bet kurį pagrindinio kompiuterio vardo ar adreso modelį, nurodytą pavadintame faile. Failo formatas yra lygus nuliui ar daugiau eilučių su nuliu ar daugiau pagrindinio kompiuterio vardo ar adreso modelių, atskirtų tarpais. Failo vardo šabloną galima naudoti visur, kur galima naudoti pagrindinio kompiuterio pavadinimą arba adresą. </li>
+    <li> Pakaitos simboliai &#39;*&#39; ir &#39;?&#39; gali būti naudojamas atitikti pagrindinius vardus arba IP adresus. Šis atitikimo metodas negali būti naudojamas kartu su „net/mask“ atitikimu, pagrindinio kompiuterio vardo atitikimas prasideda raide „.“ arba IP adreso atitikimas, kuris baigiasi „.“. </li>
+</ul>
+<h3> Pakaitos simboliai </h3> Prieigos kontrolės kalba palaiko aiškias pakaitos korteles: <table border>
+    <tr>
+        <td> <b>VISOS</b> </td>
+        <td> Visuotinis pakaitos ženklas visada sutampa. </td>
+    </tr>
+    <tr>
+        <td> <b>VIETOS</b> </td>
+        <td> Atitinka bet kurį pagrindinį kompiuterį, kurio pavadinime nėra taško simbolio. </td>
+    </tr>
+    <tr>
+        <td> <b>Nežinoma</b> </td>
+        <td> Atitinka bet kurį vartotoją, kurio vardas nežinomas, ir bet kokį pagrindinį kompiuterį, kurio vardas ar adresas nežinomas. Šis modelis turėtų būti naudojamas atsargiai: pagrindinio kompiuterio pavadinimai gali būti neprieinami dėl laikinų vardų serverio problemų. Tinklo adresas nebus pasiekiamas, kai programinė įranga negali išsiaiškinti, kokio tipo tinklu ji kalba. </td>
+    </tr>
+    <tr>
+        <td> <b>ŽINOMAS</b> </td>
+        <td> Atitinka bet kurį vartotoją, kurio vardas yra žinomas, ir atitinka bet kurį pagrindinį kompiuterį, kurio vardas ir adresas yra žinomi. Šis modelis turėtų būti naudojamas atsargiai: pagrindinio kompiuterio pavadinimai gali būti neprieinami dėl laikinų vardų serverio problemų. Tinklo adresas nebus pasiekiamas, kai programinė įranga negali išsiaiškinti, kokio tipo tinklu ji kalba. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOIDAS</b> </td>
+        <td> Atitinka bet kurį pagrindinį kompiuterį, kurio vardas nesutampa su jo adresu. Kai „tcpd“ yra sukurtas naudojant -DPARANOID (numatytasis režimas), jis atmeta tokių klientų užklausas dar prieš žiūrėdamas įėjimo kontrolės lenteles. Kurkite be -DPARANOID, kai norite labiau valdyti tokias užklausas. </td>
+    </tr>
+</table>
+<h3> Operatoriai </h3> <b>EXCEPT</b> Numatytas naudojimas yra tokia forma: &#39;list_1 EXCEPT list_2&#39;; šis konstruktas atitinka viską, kas atitinka sąrašą_1, nebent jis atitiktų sąrašą_2. EXCEPT operatorių galima naudoti daemon_lists ir client_lists. „EXCEPT“ operatorių galima įterpti: jei kontrolinė kalba leistų naudoti skliaustus, „a EXCEPT b EXCEPT c“ išnaikinamas kaip „(EXCEPT (b EXCEPT c))“. <h3> „Shell“ komandos </h3> Jei pirmojoje suderintoje prieigos kontrolės taisyklėje yra apvalkalo komanda, tai komandai taikoma% <letter> pakeitimai (žr. kitą skyrių). Rezultatas pasiekiamas naudojant /bin/sh vaiko procesą, kai standartinis įėjimas, išėjimas ir klaida yra prijungti prie /dev/null. Komandos pabaigoje nurodykite „&amp;“, jei nenorite laukti, kol ji bus baigta. <p> „Shell“ komandos neturėtų remtis įvesties PATH nustatymu. Vietoj to, jie turėtų naudoti absoliučius kelių pavadinimus arba jie turėtų prasidėti aiškiu PATH = nepriklausomai nuo teiginio. <h3> % Plėtinių </h3> Apvalkalo komandose yra šie plėtiniai: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> Kliento (serverio) pagrindinio kompiuterio adresas. </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Informacija apie klientą: vartotojas @ pagrindinis kompiuteris, vartotojo @ adresas, pagrindinio kompiuterio vardas arba tiesiog adresas, atsižvelgiant į tai, kiek informacijos yra. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> Demono proceso pavadinimas (argv[0] reikšmė). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Kliento (serverio) pagrindinio kompiuterio vardas arba adresas, jei pagrindinio kompiuterio vardas negalimas. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> Kliento (serverio) pagrindinio kompiuterio vardas (arba „nežinomas“ arba „paranojas“). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> Demono proceso ID. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Informacija apie serverį: daemon@host, daemon @ adresas arba tiesiog demono vardas, atsižvelgiant į tai, kiek informacijos yra. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Kliento vartotojo vardas (arba „nežinomas“). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Išplečiama į vieną &#39;%? charakteris. </td>
+            </tr>
+        </table> Simboliai%plėtinių, kurie gali supainioti apvalkalą, pakeičiami pabraukimais.
+        <hr />

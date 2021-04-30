@@ -1,0 +1,27 @@
+edit_desc2=HTMLの説明
+edit_must=必須？
+edit_type12=マルチメニュー ..
+edit_type13=大規模なマルチメニュー
+edit_type14=左右メニュー ..
+edit_type15=日付
+edit_type16=送信ボタン ..
+edit_format=出力スタイル
+edit_format0=Webmin UIで表示
+edit_format1=MIMEタイプを使用した出力
+edit_format2=インデックスにリダイレクト
+edit_format3=フォームにリダイレクト
+edit_format4=可能であればダウンロード
+edit_clone=クローン
+
+save_eformat=無効な出力MIMEタイプ
+save_eopts=パラメーター $1のオプションファイルがありません
+save_eopts2=パラメーター $1のオプションファイルまたはデフォルト値には、以下を含めることはできません。
+
+run_emust=パラメーター '$1'の値がありません
+run_failed=コマンドは終了ステータス $1で失敗しました
+
+file_beforeedit=編集する前に実行するコマンド
+
+view_ebeforeedit=編集前のコマンドが失敗しました： $1
+view_ebefore=保存前のコマンドが失敗しました： $1
+view_eafter=保存後のコマンドが失敗しました： $1

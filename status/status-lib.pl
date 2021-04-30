@@ -485,6 +485,9 @@ return ( { 'id' => 'tmobile',
          { 'id' => 'cricket',
            'desc' => 'Cricket',
            'domain' => 'sms.mycricket.com' },
+         { 'id' => 'googlefi',
+           'desc' => 'Google Fi',
+           'domain' => 'msg.fi.google.com' },
         );
 }
 
@@ -583,7 +586,7 @@ if ($maxtail) {
 	open(HFILE, "tail -".quotemeta($maxtail)." ".quotemeta($hfile)." |");
 	}
 else {
-	open(HFILE, $hfile);
+	open(HFILE, "<".$hfile);
 	}
 my @rv;
 while(my $line = <HFILE>) {

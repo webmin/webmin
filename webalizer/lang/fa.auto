@@ -1,0 +1,8 @@
+index_version_webalizer=نسخه وب$1
+index_version_awffull=AWFFull
+index_webalizer=وب سازنده
+index_enable=برنامه انتخاب شده است
+index_disable=برنامه زمانبندی انتخاب شده است
+
+log_enable_logs=گزارش برنامه ریزی شده در گزارش $1
+log_disable_logs=گزارش برنامه ریزی شده روی گزارش$1

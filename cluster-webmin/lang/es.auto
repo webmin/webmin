@@ -1,0 +1,8 @@
+index_thost=Nombre de host
+index_tdesc=Descripción
+index_tver=Versión
+index_ttype=Tipo de sistema operativo
+
+user_notabs=Categorizar módulos?
+
+upgrade_mode_deb=Paquete Debian

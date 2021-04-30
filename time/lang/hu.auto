@@ -1,0 +1,13 @@
+index_boot=Szinkronizálni, amikor a Webmin elindul?
+index_ehwclock=$1 sikertelen : $2 
+index_tabtime=Beállítani az időt
+index_tabzone=Időzóna módosítása
+index_tabsync=Időszerver szinkronizálás
+index_desctime=Ez az űrlap a rendszer aktuális idejének megváltoztatására szolgál, amelyet az összes futó folyamat felhasznál. Az operációs rendszereken, amelyek külön hardveres órával rendelkeznek, ez szintén beállítható.
+index_desczone=Ez az űrlap lehetővé teszi a rendszer alapértelmezett időzónájának beállítását, amelyet arra használnak, hogy a rendszeridőt emberi olvasható formátumra és ofszetre konvertálják.
+index_descsync=Ez az űrlap annak konfigurálására szolgál, hogy a rendszer automatikusan szinkronizálja az időt a távoli kiszolgálóval. A szinkronizálás az Unix <tt>time</tt> protokoll vagy NTP használatával történik, attól függően, hogy mely parancsok vannak telepítve és mi a távoli rendszer által támogatott.
+
+minute=Perc
+second=Második
+
+error_etimeserver=Nincs időkiszolgáló a szinkronizáláshoz

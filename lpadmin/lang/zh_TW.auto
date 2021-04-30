@@ -1,0 +1,175 @@
+index_header=可用的打印機
+index_enabled=已啟用？
+index_accepting=接受嗎
+index_jlist=工作 ..
+index_jcount=$1個工作 ..
+index_restart=重新啟動調度程序
+index_restartmsg=單擊此按鈕以重新啟動打印計劃程序進程。這將強制應用當前的打印配置。
+index_esystem=為您選擇的打印系統安裝軟件，或使用<a href='$1'>模塊配置</a>進行更改。
+index_style=打印系統： $1
+index_cluster=集群服務器
+index_clusterdesc=單擊此按鈕可以設置其他Webmin服務器，在這些服務器上將創建，更新和刪除打印機。
+index_delete=刪除選定的打印機
+
+style_solaris=的Solaris
+style_linux=Linux LPR
+style_freebsd=FreeBSD LPR
+style_hpux=惠普
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=CUPS
+style_irix=虹膜
+style_aix=艾克斯
+
+edit_unlimited=無限
+edit_check=檢查遠程服務器是否啟動？
+
+blocks=塊
+
+save_erport=遠程端口'$1'無效
+save_evalid=打印系統不允許該打印機
+save_errslave=打印機在此系統上創建成功，但是在群集系統上發生以下錯誤： $1
+save_egone=找不到名為“$1”的打印機
+save_errdelslave=打印機在此系統上刪除了OK，但是在群集系統上發生以下錯誤： $1
+
+jobs_all=取消所有打印作業
+jobs_bytes=個字節
+jobs_test=打印測試頁
+jobs_cancelsel=取消選定的工作
+jobs_on=在打印機 $1上
+jobs_return=打印作業列表
+
+restart_ecannot=您不允許重新啟動調度程序
+restart_err=無法重新啟動調度程序
+
+redhat_printer2=打印機型號和驅動程序
+
+suse_none=沒有
+suse_nonemsg=附言或文字打印機
+suse_prog=程序
+suse_driver=APSfilter驅動程序
+suse_printer=打印機類型
+suse_res=DPI中的分辨率
+suse_colour=彩色打印機？
+suse_paper=紙張尺寸
+suse_method=過濾方式
+suse_auto=自動
+suse_ascii=ASCII碼
+suse_raw=生的
+suse_extra=額外的Ghostscript選項
+suse_yast2=YAST2驅動程序
+suse_edriver=未選擇打印機類型
+suse_eres=缺少解決方案或解決方案無效
+
+estop=停止lpd失敗： $1
+
+acl_restart=僅重啟
+acl_pall=所有打印機
+acl_psel=已選擇 ..
+acl_view=顯示不可配置的打印機？
+acl_test=可以打印測試頁嗎？
+acl_user=管理歸誰所有的打印作業
+acl_user_all=所有用戶
+acl_user_this=Webmin當前用戶
+acl_delete=可以刪除打印機嗎？
+acl_cluster=可以管理打印機集群嗎？
+
+log_stop=停止打印調度程序
+log_start=啟動打印調度程序
+log_restart=重新啟動打印計劃程序
+log_cancel_job=已取消 $1上的打印作業 $2
+log_cancel_all=取消了 $1上的所有打印作業
+log_cancel_sel=已取消 $1上的 $2打印作業
+log_create=在 $2上創建了打印機 $1
+log_modify=在 $2上修改了打印機 $1
+log_delete=已刪除 $2上的打印機 $1
+log_create_l=在 $2上創建了 $3打印機 $1
+log_modify_l=在 $2上修改了 $3打印機 $1
+log_delete_l=已刪除 $2上的 $3打印機 $1
+
+linux_paralel=並行端口 $1
+linux_serial=串行端口 $1（COM $1）
+linux_null=空設備
+linux_usb=USB打印機 $1
+linux_ecmd=在系統上找不到命令 $1，這表明未安裝Linux打印系統。
+linux_espool=系統上不存在假脫機目錄 $1，這表示未安裝Linux打印系統。
+
+freebsd_paralel=並口
+freebsd_serial=串行端口 $1（COM $1）
+freebsd_ecmd=在系統上找不到命令 $1，這表示未安裝FreeBSD打印系統。
+freebsd_espool=假脫機目錄 $1在您的系統上不存在，表明未安裝FreeBSD打印系統。
+
+openbsd_paralel=並口
+openbsd_serial=串行端口 $1（COM $1）
+
+unixware_paralel=並行端口 $1
+unixware_serial=串口 $1
+unixware_null=空設備
+unixware_ecmd=在系統上找不到命令 $1，這表示未安裝UnixWare打印系統。
+
+hpux_paralel=平行 $1
+hpux_serial=序列 $1
+hpux_null=空設備
+hpux_ecmd=在系統上找不到命令 $1，這表示未安裝HPUX打印系統。
+hpux_eiface=接口腳本目錄 $1在您的系統上不存在，這表明未安裝HPUX打印系統。
+
+lprng_paralel=並行端口 $1
+lprng_serial=串行端口 $1（COM $1）
+lprng_null=空設備
+lprng_ecmd=在系統上找不到命令 $1，表示未安裝LPRng打印系統。
+lprng_espool=您的系統上不存在假脫機目錄 $1，這表明未安裝LPRng打印系統。
+
+solaris_paralel=並口
+solaris_uparalel=超5/10並行端口
+solaris_serial=串口 $1
+solaris_null=空設備
+solaris_ecmd=在系統上找不到命令 $1，這表明未安裝Solaris打印系統。
+
+test_title=打印測試頁
+test_ecannot=您無權打印測試頁
+test_desc=該表格允許您打印打印機 $1的測試頁。選擇您要打印的頁麵類型：
+test_0=黑白Postscript頁面
+test_1=彩色後記頁
+test_2=純ASCII文本
+test_3=任何上傳的文件
+test_print=打印頁面
+test_exec=使用命令 $1..打印測試頁
+test_failed=..命令失敗！
+test_ok=..命令完成。
+
+cups_none=沒有
+cups_nonemsg=遠程或原始打印機
+cups_prog=程序
+cups_driver=CUPS驅動
+cups_eprog='$1'不是有效程序
+cups_opts=$1的選項
+cups_ecmd=在系統上找不到命令 $1，這表明未安裝CUPS打印系統。
+
+irix_ecmd=在系統上找不到命令 $1，這表明未安裝IRIX打印系統。
+irix_eiface=接口腳本目錄 $1在您的系統上不存在，這表明未安裝IRIX打印系統。
+
+aix_port=打印機端口 $1
+aix_edesc=說明無效-僅允許使用字母和數字，並且不能使用空格
+aix_ecmd=找不到AIX打印機服務器 $1。可能未安裝，或者正在使用其他打印系統。
+
+cluster_title=群集打印機服務器
+cluster_none=尚未將服務器添加到打印機群集中。
+cluster_host=主機名
+cluster_desc=描述
+cluster_os=操作系統
+cluster_add=添加服務器
+cluster_gadd=在組中添加服務器
+cluster_need=您必須先在Webmin服務器索引模塊中添加具有登錄名和密碼的服務器，然後才能在此處對其進行管理。
+cluster_return=集群服務器
+cluster_delete=刪除選定
+cluster_ecannot=您無權管理群集打印機服務器
+
+add_title=添加服務器
+add_msg=正在添加 $1 ..
+add_gmsg=將服務器添加到組 $1 ..
+add_err=添加服務器失敗
+add_gerr=添加群組失敗
+add_echeck=服務器 $1沒有打印機管理模塊
+add_ediff=服務器 $1正在使用與此服務器不同的打印系統（$2）
+add_ediff2=服務器 $1正在使用與此服務器不同的打印驅動程序（$2）
+add_ok=已添加 $1和 $2打印機。

@@ -1,2 +1,2 @@
-desc_pl=Klaster - Harmonogram zadañ (Cron)
-longdesc_pl=Twórz zaplanowane zadania Cron, które zosatan± uruchomione na wielu serwerach równocze¶nie.
+desc_pl=Klaster - Harmonogram zadaÅ„ (Cron)
+longdesc_pl=TwÃ³rz zaplanowane zadania Cron, ktÃ³re zosatanÄ… uruchomione na wielu serwerach rÃ³wnoczeÅ›nie.

@@ -1,0 +1,3 @@
+desc_fi=Käynnistys ja sammutus
+name_fi=Käynnistyspäällikkö
+longdesc_fi=Asennuskomentosarjat, jotka suoritetaan käynnistyshetkellä kohdasta /etc/init.d tai /etc/rc.local.

@@ -1,0 +1,52 @@
+index_title=این ایف ایس ایکسپورٹ
+index_add=ایک نئی برآمد شامل کریں۔
+index_dirs=ڈائریکٹریاں
+index_clients=مؤکل
+index_everyone=ہر ایک
+index_none=ابھی تک کسی بھی برآمد کی وضاحت نہیں کی گئی ہے۔
+index_delete=منتخب برآمدات کو حذف کریں
+index_apply=تبدیلیوں کا اطلاق کریں
+index_applydesc=موجودہ فائل برآمدی ترتیب کو لاگو کرنے کے لئے اس بٹن پر کلک کریں۔ یہ مندرجہ بالا تمام ڈائریکٹریوں کو مخصوص اختیارات کے ساتھ دستیاب بنائے گی۔
+index_return=برآمدات کی فہرست
+index_echeck=اس نظام پر NFS سرور استعمال نہیں کیا جاسکتا :$1
+
+check_ecmd=این ایف ایس سرور کمانڈ$1 انسٹال نہیں ہے
+
+delete_err=برآمدات کو حذف کرنے میں ناکام
+delete_enone=کوئی بھی منتخب نہیں ہوا
+
+edit_title1=ایکسپورٹ میں ترمیم کریں
+edit_title2=ایکسپورٹ بنائیں
+edit_header1=برآمد کے اختیارات
+edit_dirs=برآمد کرنے کے لئے ڈائریکٹریاں
+edit_alldirs=سب ڈائرکٹریاں برآمد کریں؟
+edit_ro=صرف پڑھو؟
+edit_kerb=کیربروز استعمال کریں؟
+edit_header2=ریموٹ صارف کی میپنگ
+edit_maproot=جڑ صارف کا نقشہ
+edit_mapusers=تمام صارفین کو نقشہ بنائیں
+edit_unpriv=غیر مددگار صارف
+edit_uid=صارف / یو آئی ڈی
+edit_gids=اور گروپس / GIDs
+edit_mapall=تمام صارفین کو نقشہ بنائیں
+edit_header3=اس برآمد کے لئے موکل
+edit_clients=مؤکل
+edit_hosts=میزبان / نیٹ گروپ
+edit_network=نیٹ ورک
+edit_mask=ماسک
+
+save_err=برآمد کو بچانے میں ناکام
+save_edir='$1' ڈائریکٹری نہیں ہے یا موجود نہیں ہے
+save_enone=برآمد کرنے کے ل You آپ کو کم از کم ایک ڈائریکٹری درج کرنا ہوگی
+save_esub=Only one directory can be given if the <b>export subdirectories</b> option is chosen
+save_eroot=When using the <b>export subdirectories</b> option, the exported directory must be the root of a <i>local</i> filesystem
+save_euser='$1' درست صارف یا UID نہیں ہے
+save_egroup='$1' ایک درست گروپ یا GID نہیں ہے
+save_ekerb=نقشہ کی جڑیں استعمال کرنے والے ، تمام صارفین کا نقشہ اور کریربوس کے اختیارات باہمی خصوصی ہیں
+save_ehosts=برآمد کرنے کے ل You آپ کو کم از کم ایک میزبان داخل کرنا ہوگا
+save_enetwork='$1' ایک درست نیٹ ورک نہیں ہے
+save_enetmask='$1' ایک درست نیٹ ماسک نہیں ہے
+save_esame1=The directory <tt>$1</tt> is already being exported to <tt>$2</tt>. Your operating system does not allow directories on the same <i>local</i> filesystem to be exported to the same host separately
+save_esame2=The directory <tt>$1</tt> is already being exported to <tt>$2</tt>. Your operating system does not allow directories on the same <i>local</i> filesystem to be exported to the same network separately
+
+restart_err=تبدیلیاں لاگو کرنے میں ناکام

@@ -1,0 +1,18 @@
+index_title=Komanda Shell
+index_ok=Izvedi ukaz:
+index_history=Zgodovina ukazov
+index_clear=Izbriši zgodovino
+index_clearcmds=Počistite ukaze
+index_desc=V spodnje besedilno polje vnesite ukaz lupine za izvedbo. Ukaz <tt>cd</tt> se lahko uporabi za spreminjanje imenika za naslednje ukaze.
+index_pok=Izvedi prejšnji ukaz
+index_edit=Uredi prejšnjo
+index_trunced=Skupna proizvodnja $2 je bila okrnjena na $1.
+index_timedout=Ukaz je bil končan po zagonu $1 sekunde.
+
+acl_user=Izvršite ukaze kot uporabnik
+acl_user_def=Trenutni uporabnik Webmin-a
+acl_shellenv=Uporabljate izbrano uporabniško okolje?
+acl_chroot=Chroot v imenik
+
+log_run=Ukaz Ran $1 
+log_clear=Izbrisana zgodovina ukazov

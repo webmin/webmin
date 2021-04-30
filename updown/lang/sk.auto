@@ -1,0 +1,39 @@
+index_tabdownload=Stiahnuť z webu
+index_tabupload=Odovzdať na server
+index_tabfetch=Stiahnuť zo servera
+index_descdownload=Tento formulár vám umožňuje sťahovať súbory alebo webové stránky z HTTP alebo FTP URL do systému, na ktorom je spustený Webmin. Sťahovanie je možné vykonať okamžite alebo v budúcnosti naplánovať.
+index_descupload=Táto stránka vám umožňuje nahrať jeden alebo viac súborov z počítača, na ktorom je spustený webový prehľadávač, do systému, na ktorom je spustený program Webmin.
+index_descfetch=Táto stránka slúži na stiahnutie súboru zo systému, na ktorom je spustený program Webmin, na zobrazenie v prehliadači alebo na uloženie v rovnakom systéme.
+index_email=Poslať e-mail po dokončení sťahovania?
+index_emailto=Áno, na adresu
+index_email2=Poslať e-mail po dokončení nahrávania?
+
+upload_eemail=Chýba e-mailová adresa na upozornenie
+upload_saving=Ukladá sa súbor $1 ..
+upload_saved=.. napísal $1 
+upload_unzipping=Extrahuje sa súbor $1 ..
+upload_unzipdone=.. $1 
+
+fetch_eexists2=Súbor alebo adresár neexistuje
+fetch_ezip=Adresár nie je možné stiahnuť, pokiaľ nie je nainštalovaný príkaz <tt>zip</tt>
+fetch_eroot=Koreňový adresár nie je možné stiahnuť!
+
+email_downmsg=Ukončenie nasledujúceho sťahovania :
+email_downurl=URL: $1 
+email_downerr=Chybové hlásenie: $1 
+email_downpath=Cieľový názov súboru: $1 
+email_downsize=Stiahnutá veľkosť: $1 
+email_subjectd=Sťahovanie dokončené
+email_eextract=Zlyhanie : $1 
+email_extfailed=extrakcia zlyhala : $1 
+email_extdone_zip=Súbor ZIP bol extrahovaný
+email_extdone_tar=Súbor TAR bol extrahovaný
+email_extdone_tgz=Extrahovaný súbor TAR s gzipom
+email_extdone_tbz2=Extrahovaný súbor BAR s Bzip
+email_extdone_lha=Súbor LHArc bol extrahovaný
+email_upfile=Pôvodný názov súboru: $1 
+email_uppath=Cieľový názov súboru: $1 
+email_upsize=Nahraná veľkosť: $1 
+email_upextract=Stav extrakcie: $1 
+email_subjectu=Nahrávanie bolo dokončené
+email_upmsg=Dokončili sa nasledujúce nahrávania :

@@ -1,0 +1,15 @@
+index_add4=Voeg een nieuwe NFSv4-export toe.
+
+edit_network4=IPv4-netwerk
+edit_network6=IPv6-netwerk
+edit_secs=Beveiligingsniveaus
+edit_sec_sys=Geen beveiliging
+edit_sec_krb5=Kerberos-verificatie
+edit_sec_krb5i=Kerberos-integriteit
+edit_sec_krb5p=Privacy van Kerberos
+edit_sec_lipkey=LIPKEY
+edit_sec_spkm=SPKM
+
+save_epfs=Pseudo-bestandssysteempad '$1' ziet er niet uit als een absoluut pad
+save_eanonuid=Ongeldige gebruikersnaam voor anonieme toegang
+save_eanongid=Ongeldige naam van anonieme toegangsgroep

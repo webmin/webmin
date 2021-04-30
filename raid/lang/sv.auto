@@ -1,0 +1,107 @@
+index_eprogs=Varken RAID-verktygen eller MDADM-paketen är installerade på ditt system.
+index_mdadm=Med MDADM-version $1 
+index_raidtools=Använda RaidTools
+index_name=Enhetsnamn
+index_active=Aktiva?
+index_errors=fel
+index_status=Status
+index_level=RAID-nivå
+index_size=Användbar storlek
+index_members=Medlemsdiskenheter
+index_header=RAID-anmälningsalternativ
+index_mailaddr=Skicka aviseringar till
+index_mailaddrnone=Skicka inte
+index_mailfrom=Från adress för aviseringar
+index_mailfromnone=Standard (<tt>root</tt>)
+index_program=Kommando att köras när problem upptäcks
+index_programnone=Kör inte någon
+index_monitor=Övervakning aktiverad?
+
+raid6=RAID6 (Dual Distribuerad paritet)
+raid10=RAID10 (randig och speglad)
+blocks=block
+
+create_missing=Inkluderar disk som för närvarande saknas?
+create_assume=Hoppa över initialisering av enheter?
+create_lvm=LVM VG $1, LV $2 
+create_group=Medlem av reservgrupp
+create_nogroup=Inget (endast använda egna reservdelar)
+create_oldgroup=Befintlig grupp
+create_newgroup=Ny grupp
+create_enewgroup=Saknat eller icke-alfanumeriskt reservgruppsnamn
+create_n2_layout=2 Nära kopior
+create_f2_layout=2 Far Copies
+create_o2_layout=2 Offsetkopior
+create_n3_layout=3 Nära kopior
+create_f3_layout=3 Far Copies
+create_o3_layout=3 Offsetkopior
+
+view_uuid=UUID
+view_errors=RAID-fel
+view_bad=$1 diskar har misslyckats
+view_mount=För montering på $1 
+view_lvm=Används i LVM VG $1 
+view_iscsi=Används av iSCSI delad enhet $1 
+view_stopdesc=Klicka på den här knappen för att stänga av RAID-enheten så att den inte längre kan nås.
+view_startdesc=Klicka på den här knappen för att aktivera den här RAID-enheten igen.
+view_delayed=Väntar på en annan enhet
+view_cannot2=Denna RAID-enhet kan inte monteras, avaktiveras, raderas eller omformateras eftersom den för närvarande är aktiv.
+view_mkfs2=Skapa filsystem av typen:
+view_mkfsdesc=Välj en filsystemtyp och klicka på den här knappen för att skapa ett nytt filsystem på den logiska volymen. Detta raderar all information för närvarande på volymen.
+view_add=Lägg till partition:
+view_adddesc=Välj en partition som inte används och klicka på den här knappen för att lägga till den i RAID-enheten.
+view_delete=Radera RAID-array
+view_deletedesc=Klicka på den här knappen för att ta bort den här RAID-enheten helt. All information som den innehåller kommer nästan säkert att gå förlorad!
+view_remove=Ta bort partition:
+view_removedesc=Välj en partition som ingår i RAID-enheten och klicka på den här knappen för att ta bort den. Det kan leda till att data går förlorade!
+view_remove_det=Ta bort det
+view_remove_detdesc=Ta bort partitioner som redan är fysiskt kopplade från systemet.
+view_replace=Ersätt partition:
+view_replacedesc=Välj en partition som ska ersättas. (Hot Ersätt)
+view_grow=Grow RAID:
+view_growdesc=Grow array (konvertera heta reservdelar till aktiva medlemmar)
+view_convert_to_raid6=Konvertera till RAID6
+view_convert_to_raid6desc=Konvertera RAID-nivå till RAID6 genom att lägga till en eller flera enheter.
+view_convert_to_raid5=Konvertera till RAID5
+view_convert_to_raid5desc=Konvertera RAID-nivå till RAID5 genom att ta bort en enhet.
+view_state=RAID-status
+view_rebuild=Återuppbygga framstegen
+view_newmount=Montera RAID på:
+view_newmount2=Montera RAID som virtuellt minne
+view_mountmsg=Ange en katalog och klicka på den här knappen för att gå till ett formulär för montering av RAID-enheten, som redan måste innehålla ett filsystem.
+view_mountmsg2=Klicka på den här knappen för att använda den här RAID-enheten för virtuellt minne på ditt system.
+view_blocks=$1 block
+view_sparegroup=Reservgrupp
+
+mkfs_header2=Det här formuläret låter dig bygga ett nytt $2 -filsystem på $1. <b>Alla</b> befintliga data raderas!
+
+emdadmstop=<tt>mdadm</tt> in <tt>--stop</tt> mode failed : $1
+emdadmcreate=<tt>mdadm</tt> in <tt>--create</tt> mode failed : $1
+emdadmadd=<tt>mdadm</tt> in <tt>--manage --add</tt> mode failed : $1
+emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
+emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
+emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
+emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
+log_add=Lade till partition $2 till RAID-enhet $1 
+log_remove=Borttagit partition $2 från RAID-enhet $1 
+log_replace=Varm ersatt partition $2 i RAID-enhet $1 med reservpartition $3 
+log_grow=Odlat RAID-enhet $1 till totalt $2 diskar
+log_convert_to_raid6=Konverterade RAID5-enhet $1 till en RAID6-enhet
+log_convert_to_raid5=Konverterade RAID6-enhet $1 till en RAID5-enhet
+log_notif=Uppdaterade RAID-problemalternativ
+
+notif_err=Det gick inte att spara RAID-problemalternativ
+notif_emailaddr=Saknad eller ogiltig meddelandeadress
+notif_emailfrom=Saknas eller ogiltig Från adress
+notif_eprogram=Programmet saknas eller inte finns att köra
+
+delete_title=Radera RAID Array
+delete_rusure=Är du säker på att du vill ta bort RAID-arrayen $1, som använder $2 av diskutrymme?
+delete_ok=Ja, radera det
+delete_eidx=Ingen RAID-grupp vald!
+
+remove_title=Ta bort partitionen från RAID Array
+remove_rusure=Är du säker på att du vill ta bort partition $2 av RAID-array $1 ?
+remove_ok=Ja, ta bort det
+remove_eidx=Ingen RAID-grupp vald!

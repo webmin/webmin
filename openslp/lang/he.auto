@@ -1,0 +1,50 @@
+index_title=תצורת OpenSLP
+index_return=תצורת OpenSLP
+index_eslpd=הדמון OpenSLP $1 לא נמצא במערכת שלך. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+index_econf=קובץ התצורה של OpenSLP $1 לא נמצא במערכת שלך. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+index_version=גרסת OpenSLP $1 
+
+slp_apply=החל שינויים
+slp_stop=עצור את OpenSLP
+
+snda_title=היקף סטטי ו- DA
+snda_useScopes=רשימה סטטית של סקופים
+snda_DAAddresses=רשימה סטטיסטית של סוכני מדריך (DA)
+
+netcfg_title=תצורת רשת
+netcfg_isBroadcastOnly=הכריח להשתמש בשידורים במקום multicast
+netcfg_passiveDADetection=השתמש בזיהוי DA פסיבי
+netcfg_activeDADetection=השתמש בזיהוי DA פעיל (הגבל לכתובות DHCP או DA בלבד)
+netcfg_DAActiveDiscoveryInterval=גילוי פעיל בשניות (0 מבטל את גילוי פעיל)
+netcfg_multicastTTL=TTL Multicast (0-255)
+netcfg_DADiscoveryMaximumWait=זמן המתנה מקסימאלי לבקשות לגילוי DA (בעוד אלפיות השנייה)
+netcfg_DADiscoveryTimeouts=זמני המתנה ברציפות של גילוי DA (באלפיות השנייה)
+netcfg_HintsFile=נתיב לקובץ רמזים של OpenSLP
+netcfg_multicastMaximumWait=המתנה מרבית לבקשות שידור לקבוצה (באלפיות השנייה)
+netcfg_multicastTimeouts=זמני המתנה ברציפות לקבוצה (באלפיות השנייה)
+netcfg_unicastMaximumWait=משך הזמן המרבי בין בקשות unicast (באלפיות השנייה)
+netcfg_randomWaitBound=ערך מקסימאלי לכל פרמטרי ההמתנה האקראיים (באלפיות השנייה)
+netcfg_MTU=גודל מנות MTU (בבתים)
+netcfg_interfaces=כתובות IP של ממשקים שעל ה- DA/SA להאזין להם
+
+dacfg_title=תצורת DA
+dacfg_isDA=תפקד כ DA בלבד (קרא מדריך למשתמש לפני שינוי זה)
+
+log_title=מעקב ורישום
+log_traceDATraffic=הדפס הודעות תנועה של DA
+log_traceMsg=הדפס הודעות פרטי SLP
+log_traceDrop=הדפס SLP השאיר מידע על ההודעות
+log_traceReg=הדפס מידע על רישום ורישום הרשמה של DA ו- SA
+
+error_open=שגיאה בפתיחת הקובץ
+error_flock_on=שגיאה ביצירת נעילת קבצים
+error_flock_off=שגיאה בהשמדת נעילת הקבצים
+error_hup=שגיאה בהפעלה מחדש של OpenSLP עם PID
+
+index_start=התחל את OpenSLP
+index_startmsg=לחץ על כפתור זה כדי להפעיל את הדמון OpenSLP במערכת שלך.
+index_stop=עצור את OpenSLP
+index_stopmsg=לחץ על כפתור זה כדי לעצור את הדמון של OpenSLP במערכת שלך.
+
+stop_err=עצירת OpenSLP נכשלה
+start_err=הפעלת OpenSLP נכשלה

@@ -11,3 +11,4 @@ up=1
 virt=1
 delete=1
 hide=0
+sysinfo=1

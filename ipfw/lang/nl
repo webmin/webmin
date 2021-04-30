@@ -233,6 +233,3 @@ add_gerr=Mislukt om groep toe te voegen
 add_echeck=Server $1 heeft niet de IPFW Firewall module
 add_emissing=Server $1 heeft niet de IPFW firewall instellingen
 add_ok=$1 toegevoegd, met $2 actieve firewall regels.
-
-
-__norefs=1

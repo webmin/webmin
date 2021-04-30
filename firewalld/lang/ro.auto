@@ -1,0 +1,116 @@
+index_title=FirewallD
+index_atboot=Activați firewall-ul la momentul de pornire?
+index_bootup=Activați la pornire
+index_bootupdesc=Modificați această opțiune pentru a controla dacă firewallul dvs. este activat la momentul de pornire sau nu.
+index_apply=Aplicați configurare
+index_applydesc=Faceți clic pe acest buton pentru a face activă configurația de firewall enumerată mai sus. Orice reguli de firewall în vigoare în prezent vor fi spălate și înlocuite
+index_restart=Aplicați configurare
+index_restartdesc=Activați toate serviciile și porturile permise enumerate mai sus, în toate zonele. Orice reguli active care nu au fost create permanent vor fi înlocuite.
+index_start=Porniți FirewallD
+index_startdesc=Porniți serverul FirewallD și aplicați regulile enumerate mai sus.
+index_stop=Stop FirewallD
+index_stopdesc=Opriți serverul FirewallD și eliminați toate regulile enumerate mai sus.
+index_cerr=Modulul FirewallD nu poate fi utilizat : $1 
+index_zone=Afișați reguli în zonă:
+index_zoneok=Schimbare
+index_zoneadd=Adaugă zona ..
+index_zonedel=Ștergeți Zona
+index_zonedef=Face implicit
+index_type=Tip de regulă
+index_port=Port sau serviciu
+index_proto=Protocol
+index_tservice=Serviciu
+index_tport=Port
+index_tforward=Redirecţiona
+index_padd=Adăugați portul permis.
+index_sadd=Adăugați serviciul permis.
+index_fadd=Adăugați port înainte.
+index_delete=Ștergeți regulile selectate
+index_return=lista zonelor
+index_ezones=Nu au fost găsite zone FirewallD!
+index_none=Această zonă nu are încă porturi sau servicii permise.
+index_ifaces=Aplicați reguli interfețelor:
+
+port_edit=Editare port
+port_create=Adăugați port
+port_header=Opțiuni de port permise
+port_zone=Permis în zonă
+port_port=Port pentru a permite
+port_mode0=Port unic
+port_mode1=Gama de porturi
+port_mode2=La fel ca portul inițial
+port_proto=Protocol de rețea
+port_ezone=Zona nu există!
+port_err=Salvarea portului nu a reușit
+port_eport=Număr sau nume de port lipsă sau nevalid
+port_eportlow=Portul scăzut trebuie să fie un număr
+port_eporthigh=Portul înalt trebuie să fie un număr
+port_eportrange=Portul scăzut trebuie să fie sub portul înalt
+
+serv_edit=Editare Serviciu
+serv_create=Adaugă Serviciu
+serv_header=Opțiuni de servicii permise
+serv_name=Serviciul de a permite
+serv_err=Salvarea serviciului nu a reușit
+
+forward_edit=Modificați înainte
+forward_create=Creați înainte
+forward_header=Opțiuni de redirecționare a porturilor
+forward_zone=Transmite pentru zonă
+forward_err=Nu a reușit să salvezi înainte
+forward_port=Port sursă
+forward_dstport=Portul de dezintoxicare
+forward_dstaddr=Adresa de destinație
+forward_dstlocal=Acest sistem
+forward_edstaddr=Adresa de destinație IPv4 nevalidă
+forward_eneither=Trebuie introduse fie o adresă de destinație, fie un port sau ambele
+
+check_ecmd=Comanda de control FirewallD $1 nu a fost găsită în sistemul tău
+
+delete_err=Eroare la ștergerea regulilor
+delete_enone=Nimic selectat!
+delete_edel=Eliminarea $1 a eșuat : $2 
+
+zone_title=Creați zona
+zone_header=Opțiuni de zonă noi
+zone_name=Numele zonei
+zone_mode=Porturi și servicii permise
+zone_mode0=Nici unul (tot traficul va fi blocat)
+zone_mode1=Copiați din zonă
+zone_mode2=Doar SSH, IDENT și Webmin
+zone_mode3=SSH, IDENT, Webmin și porturi înalte
+zone_mode4=Porturi utilizate pentru găzduire virtuală
+zone_err=Crearea zonei nu a reușit
+zone_ename=Numele zonei lipsă sau nevalid
+zone_eclash=Există deja o zonă cu același nume
+
+delzone_title=Ștergeți Zona
+delzone_err=Nu a reușit ștergerea zonei
+delzone_edefault=Zona implicită nu poate fi eliminată
+delzone_rusure=Sigur doriți să ștergeți zona $1, care conține $2 porturi și servicii $3 ?
+
+defzone_err=Nu a reușit să facă zona implicită
+
+restart_err=Eroare la aplicarea configurației
+
+stop_err=Nu a reușit să oprească FirewallD
+start_err=Eroare la pornirea FirewallD
+log_stop=FirewallD oprit
+log_start=A început FirewallD
+log_restart=Configurare aplicată FirewallD
+log_bootup=Activat FirewallD la pornire
+log_bootdown=Dezactivat FirewallD la pornire
+log_create_port=Se adaugă portul permis 1
+log_delete_port=A fost eliminat portul permis $1 
+log_update_port=Actualizat portul permis 1
+log_create_serv=Se adaugă serviciul permis $1 
+log_delete_serv=A fost eliminat serviciul permis $1 
+log_update_serv=Actualizarea serviciului permis $1 
+log_create_forward=Adăugat înainte $1 
+log_delete_forward=A fost eliminat $1 înainte
+log_update_forward=Actualizat înainte $1 
+log_delete_rules=Șters $1 porturi permise
+log_ifaces_zone=Interfețe actualizate pentru zona $1 
+log_create_zone=Zona creată $1 
+log_delete_zone=Zona ștersă $1 
+log_default_zone=Faceți zona $1 implicită

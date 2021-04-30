@@ -1,4 +1,3 @@
-risk=low medium high
 name=Squid
 category=servers
 os_support=solaris hpux redhat-linux mandrake-linux debian-linux suse-linux united-linux slackware-linux freebsd osf1 irix aix open-linux openserver unixware turbo-linux openbsd corel-linux cobalt-linux lfs-linux macos netbsd msc-linux generic-linux gentoo-linux trustix-linux sol-linux coherent-linux openmamba-linux pardus-linux

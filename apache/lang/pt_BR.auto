@@ -1,0 +1,25 @@
+index_return2=configuração global
+
+cvirt_eroot4=Nenhum usuário definido na configuração do Apache
+
+enewline=Caractere inválido no valor
+
+virt_eprotocol=Você deve selecionar pelo menos uma versão utilizável do protocolo SSL/TLS
+
+vserv_virtualmin=Este host virtual Apache pertence ao servidor Virtualmin <tt>$1</tt>; portanto, o endereço, porta, diretório base e nome do host não podem ser alterados aqui.
+
+htaccess_eempty=Nenhum diretório de arquivo de opções inserido
+htaccess_eabsolute=O diretório do arquivo de opções deve ser um caminho absoluto
+htaccess_err=Falha ao criar arquivo de opções
+
+core_portname=Protocolo
+core_protoany=&lt;Qualquer
+core_eduplisten=O endereço de escuta $1 é listado duas vezes
+core_minor=Apenas versão secundária
+
+mod_proxy_seconds=segundos
+
+mod_log_config_ifset=Se definido
+
+mod_ssl_cafile=Arquivo de autoridades de certificação
+mod_ssl_ecafile=Arquivo de chaves das autoridades de certificação ausentes

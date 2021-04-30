@@ -1,0 +1,58 @@
+index_title=État du lecteur SMART
+index_ecmd=La commande de contrôle SMART $1 est introuvable sur votre système ou n'est pas définie correctement dans la <a href='$2'>configuration du module</a>. Il doit être installé avant que ce module puisse être utilisé.
+index_ecmd2=La commande $1 ne semble pas être la commande de contrôle SMART. Il doit être correctement défini dans la <a href='$2'>configuration du module</a> avant de pouvoir utiliser ce module.
+index_version=Version SMARTsuite $1 
+index_show=Afficher l'état du lecteur:
+index_ok=Spectacle
+index_eidescsi=Aucun disque IDE, SCSI ou SATA n'a été trouvé sur votre système.
+index_drive=État du lecteur $1 
+index_drivesub=État du lecteur $1, disque $2 
+index_desc=Emplacement
+index_size=Taille du lecteur
+index_model=Marque et modèle
+index_support=Prend en charge SMART?
+index_enabled=SMART activé?
+index_check=Vérification de lecteur réussie?
+index_short=Autotest court
+index_ext=Autotest étendu
+index_data=Test de collecte de données
+index_errors=Erreurs enregistrées
+index_ecount=$1 erreurs détectées
+index_attrs=Attributs SMART supplémentaires
+index_raw=Rapport d'état SMART complet
+index_return=index du module
+index_family=Famille de modèles
+index_serial=Numéro de série
+index_capacity=Capacité
+index_norm=Normalisé:
+
+monitor_type=Vérification du lecteur SMART
+monitor_type2=Usure SSD
+monitor_drive=Conduisez pour vérifier
+monitor_errors=Vérifiez également le journal des erreurs?
+monitor_errorsinc=Oui, mais alerte uniquement si le nombre d'erreurs augmente
+monitor_other=Autre ..
+monitor_edrive=Disque manquant ou non valide à vérifier
+monitor_nosuch=Pas un tel lecteur
+monitor_nosmart=Pas de support SMART
+monitor_errorsfound=$1 erreurs signalées
+monitor_errorsinced=Les erreurs sont passées de $2 à $1 
+monitor_wearlevel=Échec si le niveau d'usure tombe en dessous
+monitor_ewearlevel=Pourcentage de niveau d'usure non valide
+monitor_nowearout=Le lecteur ne signale pas d'indicateur d'usure SSD
+monitor_wornout=Le niveau d'usure est tombé à $1 
+
+short_title=Autotest court
+short_doing=Démarrage d'un autotest court de $1 ..
+short_failed=.. échoué!
+short_ok=.. le test a commencé OK. Voir l'état du lecteur sur la page principale du module pour les résultats.
+
+ext_title=Autotest étendu
+ext_doing=Démarrage de l'autotest étendu de $1 ..
+ext_failed=.. échoué!
+ext_ok=.. le test a commencé OK. Voir l'état du lecteur sur la page principale du module pour les résultats.
+
+data_title=Test de collecte de données
+data_doing=Démarrage de la collecte de données hors ligne sur $1 ..
+data_failed=.. échoué!
+data_ok=.. la collecte a commencé OK. Voir l'état du lecteur sur la page principale du module pour les résultats.

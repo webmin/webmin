@@ -1,0 +1,14 @@
+title_noverify=Не монтируйте и не проверяйте раздел
+title_modules=Дополнительные модули
+title_none1=Никто
+title_none2=(пункт меню без загрузки)
+
+global_forever=Ждать вечно
+
+log_create_title=Создан параметр загрузки $1 
+log_delete_title=Удалена опция загрузки $1 
+log_modify_title=Модифицированная опция загрузки $1 
+log_up_title=Опция загрузки перемещена вверх $1 
+log_down_title=Опущен вариант загрузки $1 
+log_global=Изменены глобальные настройки
+log_install=Установлен GRUB

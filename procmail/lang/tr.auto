@@ -1,0 +1,129 @@
+index_title=Procmail Posta Filtresi
+index_procmail=Procmail posta filtresi
+index_desc_other=$1 'den sonraki procmail işlemleri, sisteminizdeki kullanıcılara gönderilen <b>tümü</b> e-postalarına uygulanacaktır. Ancak, yalnızca Procmail yüklüyse ve posta sunucunuz bunu kullanmak üzere yapılandırıldıysa kullanılır.
+index_mserr=Uyarı - aşağıda tanımlanan kurallar kullanılmayacaktır : $1 
+index_action=Yapılacak eylem
+index_conds=Koşullar
+index_move=Hareket
+index_ba=Ekle
+index_act6=$1 değişkenini ayarla
+index_act5=Koşullu bloğu yürüt
+index_act4=$1 programına besleme
+index_act3=$1 'e yönlendir
+index_act2=$1 maildir yaz
+index_act1=MH klasörüne yaz $1 
+index_act0=$1 dosyasına ekle
+index_noconds=Her zaman eylemi yürüt
+index_re=Normal ifadeyi eşleştir $1 
+index_nre=$1 normal ifadesiyle eşleşmiyor
+index_shell=$1 komutunu değerlendirin
+index_exit=$1 komutunun çıkış durumu
+index_lt=Boyut < $1 
+index_gt=Boyut> $1 
+index_add=Yeni bir filtre işlemi ekleyin.
+index_eadd=Yeni bir değişken ayarı ekleyin.
+index_badd=Yeni bir koşullu blok ekleyin.
+index_iadd=Yeni bir içerme dosyası ekleyin.
+index_none=Henüz hiçbir Procmail işlemi yapılandırılmadı.
+index_return=eylemler listesi
+index_env=$1 değişkenini $2 olarak ayarla
+index_include=İşlem $1 dosyasını içeriyor
+index_man=Yapılandırmayı Manuel Olarak Düzenleme
+index_mandesc=Kendi kurallarınızı, değişkenlerinizi ve bloklarınızı oluşturmak için birincil Procmail yapılandırma dosyasını doğrudan düzenleyin.
+index_ecmd=$1 Procmail programı sisteminizde bulunamadı. Yüklü değil veya <a href='$2'>modül yapılandırması</a> yanlış.
+index_delete=Seçilen İşlemleri Sil
+
+edit_title2=Eylemi Düzenle
+edit_title1=Eylem Oluştur
+edit_header1=Teslim işlemi ayrıntıları
+edit_header2=Eylem koşulları
+edit_action=Teslimat modu
+edit_block=Yürütülecek procmail kodu
+edit_amode_0=Dosyaya ekle
+edit_amode_1=MH klasörüne yaz
+edit_amode_2=Maildir'e yaz
+edit_amode_3=Adrese yönlendir
+edit_amode_4=Programa besleme
+edit_amode_6=Değişkeni ayarla
+edit_flag_H=Başlıkları koşullara uygulama
+edit_flag_B=Koşulları vücuda uygulama
+edit_flag_D=Büyük / küçük harfe duyarlı eşleme
+edit_flag_h=Hedefe giden besleme başlıkları
+edit_flag_b=Gövdeyi hedefe besleme
+edit_flag_c=Koşullar eşleşse bile işlemeye devam et
+edit_flag_w=Eylem programının bitmesini bekleyin ve sonucu kontrol edin
+edit_flag_W=Eylem programının bitmesini bekleyin, ancak sonucu yok sayın
+edit_flag_i=Teslimatta yazma hatalarını yoksay
+edit_flag_r=Ham modda posta yazma
+edit_flag_f=Eylem programı bir filtredir
+edit_lockfile=Teslimat kilit dosyası
+edit_cmode_re=Normal ifadeyle eşleşir
+edit_cmode_nre=Normal ifadeyle eşleşmiyor
+edit_cmode_shell=Komut çıktısını değerlendirin
+edit_cmode_exit=Komutun çıkış durumunu kontrol etme
+edit_cmode_lt=Posta daha küçük
+edit_cmode_gt=Posta daha büyük
+edit_conddesc=Yukarıdaki işlemin yapılabilmesi için aşağıdaki tüm koşulların karşılanması gerekir. Hiçbir koşul yoksa, eylem her zaman yürütülür.
+edit_none=Yok
+edit_lock=Belirli dosya
+edit_ctype=Koşul türü
+edit_cvalue=Normal ifade veya komut
+
+save_err=İşlem kaydedilemedi
+save_eaction_0=Eklenecek dosya eksik
+save_eaction_1=Yazılacak MH klasörü eksik
+save_eaction_2=Yazmak için eksik maildir
+save_eaction_3=Adresine yönlendirilecek eksik adres
+save_eaction_4=Beslemek için eksik program
+save_eaction_6=Ayarlanacak değişken eksik
+save_eactionvar=Ayarlanacak değişken NAME = değer gibi girilmelidir
+save_elockfile=Kilit dosyası adı eksik
+save_esize=$1 koşulu için eksik veya geçersiz posta boyutu
+save_ere=$1 koşulu için düzenli ifade eksik
+save_eshell=$1 koşulu için eksik komut
+
+env_title1=Değişken Oluştur
+env_title2=Değişkeni Düzenle
+env_header=Procmail ortam değişkeni
+env_name=Değişken ismi
+env_value=değer
+env_err=Değişken kaydedilemedi
+env_ename=Eksik veya geçersiz değişken adı
+
+inc_title1=Dahil Etme Dosyası Ekle
+inc_title2=İçerme Dosyasını Düzenle
+inc_header=Procmail kurallar dosyası dahil
+inc_inc=Dahil edilen dosya
+inc_einc=Dahil edilen dosya yok
+
+config_eline=$2 içinde $1 bilinmeyen satır : $3 
+
+manual_title=Yapılandırmayı Düzenle
+manual_desc=Bu sayfa $1 Procmail yapılandırma dosyasını el ile düzenlemek için kullanılabilir. Sözdizimi kontrolü yapılmayacağından dikkatli olun.
+manual_edata=Tarayıcınız tarafından veri sağlanmadı!
+
+log_create_rec=$1 için reçete oluşturuldu
+log_delete_rec=$1 adresine silindi
+log_modify_rec=$1 olarak değiştirilmiş tarif
+log_delete_recs=$1 tarif silindi
+log_act5=koşullu blok yürüt
+log_act4=$1 programına besleme
+log_act3=$1 'e ilet
+log_act2=$1 maildir yaz
+log_act1=MH klasörüne yaz $1 
+log_act0=$1 dosyasına ekle
+log_create_env=Oluşturulan ortam değişkeni $1 
+log_modify_env=Değiştirilmiş ortam değişkeni $1 
+log_delete_env=$1 silinen ortam değişkeni
+log_create_inc=$1 dosyasını içerir
+log_modify_inc=$1 dosya dahil değiştirildi
+log_delete_inc=$1 dahil etme dosyası silindi
+log_manual=Manuel olarak düzenlenmiş yapılandırma
+log_up=Bir girişi yukarı taşıdı
+log_down=Bir girişi aşağı taşıdı
+
+delete_err=İşlemler silinemedi
+delete_enone=Hiçbiri seçilmedi
+
+check_epostfix=Procmail Postfix yapılandırmanızda etkin değil. <tt>$2</tt> yapılandırma dosyasında <tt>$1</tt> seçeneği <tt>$3</tt> olarak ayarlanmış olmalıdır.
+check_esendmail=Sendmail, yerel teslimat için Procmail'i kullanacak şekilde ayarlanmamıştır. Bu, Webmin'in <a href='$1'>Sendmail Posta Sunucusu</a> modülünde yapılandırılabilir.

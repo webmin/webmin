@@ -1,0 +1,152 @@
+index_title=PPTP VPN-server
+index_version=PoPToP version $1 
+index_epptpd=PoPToP PPTP-server $1 blev ikke fundet på dit system eller er ikke det rigtige program. Måske er det ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+index_econfig=PPTP-serverkonfigurationsfilen $1 blev ikke fundet på dit system. Måske er din <a href='$2'>modulkonfiguration</a> forkert.
+index_stop=Stop PPTP-server
+index_stopdesc=Klik på denne knap for at lukke den kørende PPTP-serverproces, så der ikke accepteres nye forbindelser. Eksisterende VPN-forbindelser forbliver dog aktive.
+index_start=Start PPTP-server
+index_startdesc=Klik på denne knap for at starte PPTP-serverprocessen, så den kan modtage VPN-forbindelser fra klienter.
+index_apply=Anvend konfiguration
+index_applydesc=Klik på denne knap for at anvende de aktuelle PPTP-serverindstillinger ved at stoppe og genstarte PPTP-serverprocessen. Ændringer i PPP-indstillinger og PPP-konti vil altid være gældende for eventuelle nye forbindelser
+index_return=modul indeks
+index_epppd=PPP-serverprogrammet $1 er ikke installeret på dit system. PPTP afhænger af, om den fungerer.
+
+conf_title=PPTP-serverindstillinger
+conf_ecannot=Du har ikke tilladelse til at redigere PPTP-serverindstillinger
+conf_header=PPTP-serverkonfiguration
+conf_speed=PPP-baudrate
+conf_baud=bps
+conf_listen=Lyt på adresse
+conf_all=Alle adresser
+conf_localip=IP-adresser til serverens slutning af forbindelsen
+conf_remoteip=IP-adresser, der skal tildeles til klienter
+conf_ipxnets=IPX-netværk, der skal tildeles
+conf_from=Fra
+conf_to=til
+conf_option=PPP-indstillingsfil
+conf_mode0=Globale indstillinger
+conf_mode1=PPTP-specifikke indstillinger
+conf_mode2=Tilpasset fil
+conf_ipdesc=IP-adresse i begge områder kan indtastes enten enkeltvis (som 192.168.1.1) eller som intervaller (som 192.168.2.32-64)
+conf_err=Kunne ikke gemme serverindstillinger
+conf_espeed=Manglende eller ugyldig baudhastighed
+conf_elisten=Manglende eller ugyldig adresse at lytte til
+conf_eoption=Manglende eller ugyldigt udseende tilpasset PPP-indstillingsfil
+conf_elocalip='$1' er ikke en gyldig lokal IP-adresse eller interval
+conf_eremoteip='$1' er ikke en gyldig ekstern IP-adresse eller interval
+conf_efrom=Manglende eller ugyldigt IPX-netværk fra adresse
+conf_eto=Manglende eller ugyldigt IPX-netværk til adresse
+
+options_title=PPP-indstillinger
+options_ecannot=Du har ikke tilladelse til at redigere PPP-indstillinger
+options_desc0=PPP-indstillingerne nedenfor fra $1 gælder for ALLE indgående forbindelser, der modtages af dit system, inklusive dem til opkaldsmodemer.
+options_desc1=PPP-indstillingerne nedenfor fra $1 gælder kun for alle PPTP-forbindelser.
+options_desc2=De vil blive brugt af alle nye forbindelser, der er oprettet, når denne formular er gemt.
+options_header=PPP-forbindelsesindstillinger
+options_proxyarp=Opret proxy-ARP-post?
+options_lock=Lås PTY-enhedsfil?
+options_auth=Kræver godkendelse?
+options_auth0=Nej, men forhindrede routede IP'er
+options_auth1=Aldrig
+options_auth2=Altid
+options_login=Gør også unix-godkendelse?
+options_pap=PAP-godkendelse
+options_chap=CHAP-godkendelse
+options_req=Skal bruges
+options_all=Kan bruges
+options_ref=Kan ikke bruges
+options_name=Servernavn til godkendelse
+options_hn=Rigtigt værtsnavn
+options_mtu=Maksimal afsendelsespakkestørrelse
+options_mru=Maksimal modtagerpakkestørrelse
+options_err=Kunne ikke gemme PPP-indstillinger
+options_emtu=Manglende eller ugyldig maksimal afsendelse af pakkestørrelse
+options_emru=Manglende eller ugyldig maksimal modtagende pakkestørrelse
+options_ename=Manglende eller ugyldigt servernavn til godkendelse
+options_version=PPPd version $1 
+options_msdesc=Valgmulighederne nedenfor aktiverer MS-CHAP-godkendelsesmetode og MPPE-kryptering, der som standard bruges af Windows VPN-klienter. MPPE kræver dog support i både PPP-dæmonen og operativsystemkernen.
+options_mschap=MS-CHAP-godkendelse
+options_mschap-v2=MS-CHAP version 2-godkendelse
+options_chapms=MS-CHAP-godkendelse
+options_chapms-v2=MS-CHAP version 2-godkendelse
+
+secrets_title=PPP-konti
+secrets_ecannot=Du har ikke tilladelse til at redigere PPP-konti
+secrets_return=indeks
+secrets_none=Der er ikke oprettet nogen PPP-konti endnu.
+secrets_enopfile=PPP-adgangskodefilen $1 findes ikke på dit system. Måske er PPP ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+secrets_table=OPP tegner sig for $1 
+secrets_user=Brugernavn
+secrets_ips=IP-adresser
+secrets_uany=NOGEN
+secrets_sany=NOGEN
+secrets_create=Opret ny PPP-konto.
+secrets_desc=PPP-konti, der er anført på denne side, er taget fra filen $1, der bruges til godkendelse af $3. Kun dem til din server $2 vises, ikke konti for oprettelse af udgående forbindelser.
+secrets_delete=Slet valgte PPP-konti
+
+edit_secret_etitle=Rediger PPP-konto
+edit_secret_ctitle=Opret PPP-konto
+edit_secret_acc=PPP-konto
+edit_secret_user=Brugernavn
+edit_secret_serv=Server
+edit_secret_sany=Nogen
+edit_secret_uany=Nogen
+edit_secret_pass=Adgangskode
+edit_secret_none=Ingen
+edit_secret_ffile=Fra fil
+edit_secret_leave=Lad være uændret
+edit_secret_setto=Indstillet til
+edit_secret_vaddr=Gyldige adresser
+edit_secret_aany=Tillad enhver
+edit_secret_anone=Tillad ingen
+edit_secret_alist=Tillad listet ..
+edit_secret_save=Gemme
+edit_secret_del=Slet
+edit_secret_return=kontoliste
+
+save_secret_esave=Kunne ikke gemme konto
+save_secret_enoip='$1' er ikke en gyldig adresse
+
+stop_err=Kunne ikke stoppe PPTP-server
+stop_egone=Kører ikke længere
+stop_ecannot=Du har ikke tilladelse til at stoppe PPTP-serveren
+
+start_err=Kunne ikke starte PPTP-server
+start_ecannot=Du har ikke tilladelse til at starte PPTP-serveren
+
+apply_err=Kunne ikke genstarte PPTP-serveren
+apply_ecannot=Du har ikke tilladelse til at genstarte PPTP-serveren
+
+conns_title=Aktive forbindelser
+conns_ecannot=Du har ikke tilladelse til at administrere aktive forbindelser
+conns_desc=Denne side viser de aktuelt aktive PPTP-forbindelser til din server. Klik på dets interface interface for at tvinge frakoblet en.
+conns_iface=PPP-interface
+conns_client=Klientadresse
+conns_stime=Tilsluttet siden
+conns_local=Server VPN-adresse
+conns_remote=Klient-VPN-adresse
+conns_none=Ingen PPTP-forbindelser ser ud til at være aktive på dette tidspunkt.
+conns_unknown=Ukendt
+conns_user=Brugernavn
+
+disc_err=Kunne ikke afbryde forbindelsen
+disc_egone=Forbindelser er ikke længere aktive
+disc_ekill=Processen kører ikke længere
+
+log_secret_create=Oprettet PPP-konto $1 
+log_secret_modify=Ændret PPP-konto $1 
+log_secret_delete=Slet PPP-konto $1 
+log_deletes=Slet $1 PPP-konti
+log_conf=Ændrede PPTP-serverindstillinger
+log_options=Ændrede PPP-indstillinger
+log_disc=Frakoblet klient $1 
+log_start=Startet PPTP-server
+log_stop=Stopet PPTP-server
+log_apply=Anvendt PPTP-serverkonfiguration
+
+acl_conf=Kan redigere konfiguration?
+acl_options=Kan redigeringsindstillinger?
+acl_secrets=Kan administrere PPTP-konti?
+acl_conns=Kan du se forbindelser?
+acl_stop=Kan stoppe og starte PPTP-server?
+acl_apply=Kan anvende konfiguration?

@@ -1,0 +1,18 @@
+index_title=Bộ chỉ huy
+index_ok=Thực thi lệnh:
+index_history=Lịch sử chỉ huy
+index_clear=Xóa lịch sử
+index_clearcmds=Xóa lệnh
+index_desc=Nhập lệnh shell để thực thi trong trường văn bản bên dưới. Lệnh <tt>cd</tt> có thể được sử dụng để thay đổi thư mục cho các lệnh tiếp theo.
+index_pok=Thực hiện lệnh trước
+index_edit=Chỉnh sửa trước
+index_trunced=Tổng sản lượng của $2 đã bị cắt ở $1.
+index_timedout=Lệnh đã bị chấm dứt sau khi chạy $1 giây.
+
+acl_user=Thực thi các lệnh như người dùng
+acl_user_def=Người dùng Webmin hiện tại
+acl_shellenv=Sử dụng môi trường người dùng đã chọn?
+acl_chroot=Chroot vào thư mục
+
+log_run=Lệnh Ran $1 
+log_clear=Xóa lịch sử lệnh

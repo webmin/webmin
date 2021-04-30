@@ -1,44 +1,43 @@
-index_enopfile=PPP-lösenordsfilen '$1' finns inte på ditt system. PPP kanske inte har installerats.
-index_table=PPP-konton för in- och utringning
-index_user=Användarnamn
+index_enopfile=PPP-lÃ¶senordsfilen '$1' finns inte pÃ¥ ditt system. PPP kanske inte har installerats.
+index_table=PPP-konton fÃ¶r in- och utringning
+index_user=AnvÃ¤ndarnamn
 index_server=Server
 index_uany=ANY
 index_sany=ANY
 index_create=Skapa nytt PPP-konto
-index_info=Webmin kan ställas in så att ändringar i Unix-användarlistan automatiskt förs in i listan över PPP-konton. Detta fungerar bara om Webmin-modulen <tt>Användare och grupper</tt> används för att lägga till, ändra och ta bort användare.
-index_onadd=Skapa ett PPP-konto när en Unix-användare skapas, för servern
-index_onchange=Ändra PPP-kontot när en Unix-användare ändras
-index_ondelete=Ta bort PPP-kontot när en Unix-användare tas bort
+index_info=Webmin kan stÃ¤llas in sÃ¥ att Ã¤ndringar i Unix-anvÃ¤ndarlistan automatiskt fÃ¶rs in i listan Ã¶ver PPP-konton. Detta fungerar bara om Webmin-modulen <tt>AnvÃ¤ndare och grupper</tt> anvÃ¤nds fÃ¶r att lÃ¤gga till, Ã¤ndra och ta bort anvÃ¤ndare.
+index_onadd=Skapa ett PPP-konto nÃ¤r en Unix-anvÃ¤ndare skapas, fÃ¶r servern
+index_onchange=Ã„ndra PPP-kontot nÃ¤r en Unix-anvÃ¤ndare Ã¤ndras
+index_ondelete=Ta bort PPP-kontot nÃ¤r en Unix-anvÃ¤ndare tas bort
 index_apply=Ta i drift
 
 secrets_title=PPP-konton
 secrets_return=index
 
-edit_secret_etitle=Ändra PPP-konto
+edit_secret_etitle=Ã„ndra PPP-konto
 edit_secret_ctitle=Skapa PPP-konto
 edit_secret_acc=PPP-konto
-edit_secret_user=Användarnamn
+edit_secret_user=AnvÃ¤ndarnamn
 edit_secret_serv=Server
 edit_secret_sany=Vilken som helst
 edit_secret_uany=Vilken som helst
-edit_secret_pass=Lösenord
+edit_secret_pass=LÃ¶senord
 edit_secret_none=Inget
-edit_secret_ffile=Från fil
-edit_secret_leave=Ändra inte
-edit_secret_setto=Sätt till
+edit_secret_ffile=FrÃ¥n fil
+edit_secret_leave=Ã„ndra inte
+edit_secret_setto=SÃ¤tt till
 edit_secret_vaddr=Giltiga adresser
-edit_secret_aany=Tillåt alla
-edit_secret_anone=Tillåt ingen
-edit_secret_alist=Tillåt angivna ...
+edit_secret_aany=TillÃ¥t alla
+edit_secret_anone=TillÃ¥t ingen
+edit_secret_alist=TillÃ¥t angivna ...
 edit_secret_save=Spara
 edit_secret_del=Ta bort
 edit_secret_return=kontolista
 
 save_secret_esave=Det gick inte att spara kontot
-save_secret_enoip='$1' är inte en giltig adress
+save_secret_enoip='$1' Ã¤r inte en giltig adress
 
-log_create=Skapade PPP-användare $1
-log_modify=Modifierade PPP-användare $1
-log_delete=Tog bort PPP-användare $1
-log_sync=Ändrade synkronisering med unix-användare
-
+log_create=Skapade PPP-anvÃ¤ndare $1
+log_modify=Modifierade PPP-anvÃ¤ndare $1
+log_delete=Tog bort PPP-anvÃ¤ndare $1
+log_sync=Ã„ndrade synkronisering med unix-anvÃ¤ndare

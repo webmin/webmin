@@ -1,0 +1,14 @@
+title_noverify=Ne szerelje fel és ellenőrizze a partíciót
+title_modules=Extra modulok
+title_none1=Egyik sem
+title_none2=(nem indító menübejegyzés)
+
+global_forever=Várj örökké
+
+log_create_title=Létrehozta a $1 indítási opciót
+log_delete_title=Törölve a $1 indítási opció
+log_modify_title=Módosított $1 indítási lehetőség
+log_up_title=A $1 rendszerindítási opció feljebb került
+log_down_title=A $1 indító opció lefelé mozgatva
+log_global=Megváltozott globális lehetőségek
+log_install=Telepített GRUB

@@ -1,0 +1,23 @@
+index_version_webalizer=Версія Webalizer $1 
+index_version_awffull=AWFFull
+index_when=Так, $1 
+index_webalizer=Вебалайзер
+index_enable=Графік обраний
+index_disable=Вибрано графік вибору
+
+edit_clear=Очистити файли журналів після запланованого звіту?
+
+gen_nothing=.. Вебалайзер закінчено, але звіт не формувався. Детальніше дивіться у висновку вище.
+
+global_hidereferrer=Посилання, які потрібно приховувати від таблиць
+global_hideagent=Браузери, які можна заховати від таблиць
+global_ignorereferrer=Відносини повністю ігнорувати
+global_ignoreagent=Браузери повністю ігнорувати
+global_includeurl=URL-адреси не ігнорувати
+global_includesite=Клієнти не ігнорують
+global_includereferrer=Референти не ігнорувати
+global_includeuser=Користувачі не ігнорують
+global_includeagent=Браузери не ігнорувати
+
+log_enable_logs=Плановий звіт про журнали $1 
+log_disable_logs=Відкладене звітування про журнали $1 

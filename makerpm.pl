@@ -73,8 +73,7 @@ Name: webmin
 Version: $ver
 Release: $rel
 Provides: %{name}-%{version} perl(WebminCore)
-PreReq: /bin/sh /usr/bin/perl /bin/rm
-Requires: /bin/sh /usr/bin/perl /bin/rm perl(Net::SSLeay) perl(Time::Local) perl(Encode::Detect) perl(Data::Dumper) openssl unzip
+Requires: /bin/sh /usr/bin/perl /bin/rm perl(Net::SSLeay) perl(Time::Local) perl(Encode::Detect) perl(Data::Dumper) openssl unzip tar
 AutoReq: 0
 License: Freeware
 Group: System/Tools
@@ -109,7 +108,10 @@ mkdir -p %{buildroot}/etc/sysconfig/daemons
 mkdir -p %{buildroot}/etc/rc.d/{rc0.d,rc1.d,rc2.d,rc3.d,rc5.d,rc6.d}
 mkdir -p %{buildroot}/etc/init.d
 mkdir -p %{buildroot}/etc/pam.d
+mkdir -p %{buildroot}/usr/bin
 cp -rp * %{buildroot}/usr/libexec/webmin
+rm %{buildroot}/usr/libexec/webmin/blue-theme
+cp -rp %{buildroot}/usr/libexec/webmin/gray-theme %{buildroot}/usr/libexec/webmin/blue-theme
 cp webmin-daemon %{buildroot}/etc/sysconfig/daemons/webmin
 cp webmin-init %{buildroot}/etc/init.d/webmin
 cp webmin-pam %{buildroot}/etc/pam.d/webmin
@@ -119,6 +121,7 @@ ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc5.d/S99webmin
 ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc0.d/K10webmin
 ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc1.d/K10webmin
 ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc6.d/K10webmin
+ln -s /usr/libexec/webmin/bin/webmin %{buildroot}/usr/bin
 echo rpm >%{buildroot}/usr/libexec/webmin/install-type
 
 %clean
@@ -128,6 +131,7 @@ echo rpm >%{buildroot}/usr/libexec/webmin/install-type
 %files
 %defattr(-,root,root)
 /usr/libexec/webmin
+/usr/bin/webmin
 %config /etc/sysconfig/daemons/webmin
 /etc/init.d/webmin
 /etc/rc.d/rc2.d/S99webmin
@@ -186,6 +190,27 @@ fi
 %post
 inetd=`grep "^inetd=" /etc/webmin/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
 startafter=0
+
+# Fix old versions of Webmin that might kill the UI process on upgrade
+if [ -d /etc/webmin ]; then
+	cat >/etc/webmin/stop 2>/dev/null <<'EOD'
+#!/bin/sh
+echo Stopping Webmin server in /usr/libexec/webmin
+pidfile=`grep "^pidfile=" /etc/webmin/miniserv.conf | sed -e 's/pidfile=//g'`
+pid=`cat \$pidfile`
+if [ "\$pid" != "" ]; then
+  kill \$pid || exit 1
+  if [ "\$1" = "--kill" ]; then
+    sleep 1
+    (kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null
+  fi
+  exit 0
+else
+  exit 1
+fi
+EOD
+fi
+
 if [ "\$1" != 1 ]; then
 	# Upgrading the RPM, so stop the old webmin properly
 	if [ "\$inetd" != "1" ]; then

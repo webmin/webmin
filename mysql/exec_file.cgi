@@ -51,7 +51,7 @@ if ($cmd) {
 # Check the file for tables created and rows inserted
 $create_count = 0;
 $insert_count = 0;
-open(SQL, $file);
+open(SQL, "<$file");
 while(<SQL>) {
 	if (/^\s*insert\s+into\s+`(\S+)`/i ||
             /^\s*insert\s+into\s+(\S+)/i) {

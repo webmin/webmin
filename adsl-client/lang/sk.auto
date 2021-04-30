@@ -1,0 +1,66 @@
+index_title=Klient ADSL
+index_eadsl=Príkaz RP-PPPoE $1 nebol vo vašom systéme nájdený alebo nie je platný. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_econfig=Konfiguračný súbor RP-PPPoE ADSL $1 nebol vo vašom systéme nájdený. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_emodem=Aktuálny konfiguračný súbor je určený pre modem v systéme Redhat Linux, nie pre pripojenie ADSL. Na stránke <a href='$2'>Konfigurácia modulu</a> môžete určiť jeden z ďalších súborov <tt>ifcfg-ppp *</tt> v $1 alebo taký, ktorý ešte neexistuje, takže modul môžete ho vytvoriť za vás.
+index_stop=Vypnite službu ADSL
+index_stopdesc=Vaše pripojenie ADSL je momentálne aktívne s adresou IP $1. Kliknutím na toto tlačidlo ho vypnete príkazom $2.
+index_start=Spustite ADSL
+index_startdesc=Vaše pripojenie ADSL je momentálne neaktívne. Kliknutím na toto tlačidlo spustíte príkaz $1.
+index_boot=Začať pri štarte systému
+index_bootdesc=Zmeňte túto možnosť, aby ste určili, či bude vaše pripojenie ADSL vyvolané v čase zavádzania alebo nie.
+index_return=index modulu
+index_version=RP-PPPoE verzia $1 
+index_esetup=Konfiguračný súbor Redhat ADSL $1 vo vašom systéme neexistuje. Tento modul vás však môže nastaviť pomocou základných predvolených nastavení kliknutím na tlačidlo nižšie.
+index_setup=Nastaviť konfiguračný súbor
+index_cancel=Zrušiť pripojenie
+index_canceldesc=Klient ADSL sa momentálne pokúša nadviazať spojenie. Kliknutím na toto tlačidlo zrušíte pokus pomocou príkazu $1.
+index_cdemand=Zrušiť na požiadanie
+index_cdemanddesc=Klient ADSL momentálne čaká na požiadavku na pripojenie. Kliknutím na toto tlačidlo ho zastavíte pomocou ovládacieho prvku $1.
+
+index_header=Možnosti konfigurácie klienta ADSL
+index_desc=Nižšie uvedené nastavenia platia pre každé nové pripojenie ADSL spustené vaším systémom. Ak ich zmeníte, pripojenie sa musí vypnúť a znova spustiť, aby sa zmeny prejavili.
+index_eth=Ethernetové rozhranie
+index_other=Other ..
+index_demand=Pripojiť na požiadavku?
+index_timeout=Áno, s časovým limitom
+index_secs=sekundy
+index_user=Prihláste sa ako užívateľ
+index_sec=Prihláste sa pomocou hesla
+index_dns=Získať konfiguráciu DNS od poskytovateľa internetových služieb?
+index_save=Uložiť konfiguráciu
+index_mss=Obmedziť veľkosť paketu?
+index_psize=Áno, do
+index_bytes=bajtov
+index_fw=Firewall sa aktivuje po pripojení
+index_fw_none=nikto
+index_fw_standalone=Pre jedného hostiteľa
+index_fw_masquerade=Pre bránu NAT
+index_connect=Čas na pokus o pripojenie
+index_forever=navždy
+
+start_err=Nepodarilo sa spustiť pripojenie ADSL
+start_title=Spustite ADSL
+start_ip=Vytvorilo sa pripojenie ADSL s adresou IP $1.
+start_demand=Pretože je povolený režim pripojenia na požiadanie, vaše pripojenie ADSL sa začne iba v prípade potreby.
+start_bg=Pripojenie ADSL sa nezačalo do 20 sekúnd. Klient ADSL sa bude naďalej pokúšať pripojiť na pozadí, až kým nebude úspešný.
+
+save_err=Nepodarilo sa uložiť konfiguráciu ADSL
+save_eeth=Chýbajúce alebo zle vyzerajúce ethernetové rozhranie
+save_etimeout=Chýbajúci alebo neplatný časový limit na požiadanie
+save_euser=Chýbajúce alebo neplatné používateľské meno
+save_econnect=Chýbajúci alebo neplatný časový limit pripojenia
+save_emss=Chýbajúca alebo neplatná maximálna veľkosť paketu
+save_title=Uložiť konfiguráciu
+save_desc=Vaša konfigurácia klienta ADSL bola úspešne uložená, ale nebude sa používať, kým sa znova nepripojíte.
+
+stop_err=Nepodarilo sa ukončiť pripojenie ADSL
+stop_title=Vypnite ADSL
+stop_ok=Vaše pripojenie ADSL bolo úspešne ukončené.
+stop_failed=Vaše pripojenie ADSL je z nejakého dôvodu stále aktívne!
+
+log_save=Uložená konfigurácia klienta
+log_stop=Vypnite službu ADSL
+log_start=Spustené ADSL
+log_bootup=Povolené ADSL v čase spustenia
+log_bootdown=Zakázané ADSL v čase spustenia
+log_setup=Nastavte predvolenú konfiguráciu

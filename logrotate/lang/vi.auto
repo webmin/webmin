@@ -1,0 +1,115 @@
+index_title=Nhật ký xoay tệp
+index_econf=Không tìm thấy tệp cấu hình xoay vòng nhật ký $1 trên hệ thống của bạn. Có thể logrotate chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> không chính xác.
+index_ecmd=Không tìm thấy chương trình xoay vòng nhật ký $1 trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> không chính xác.
+index_eversion=Không thể tải phiên bản logrotate bằng lệnh $1 : $2 
+index_version=Phiên bản logrotate $1 
+index_add=Thêm một tệp nhật ký mới để xoay.
+index_file=Đăng nhập tập tin
+index_period=Thời gian luân chuyển
+index_post=Lệnh quay vòng
+index_none=Không có tệp nhật ký nào được xác định.
+index_global=Chỉnh sửa tùy chọn toàn cầu
+index_globaldesc=Nhấp vào nút này để chỉnh sửa cài đặt áp dụng cho tất cả các tệp nhật ký và xác định mặc định cho nhật ký.
+index_sched=Chỉnh sửa lịch trình
+index_scheddesc=Nhấp vào nút này để chỉnh sửa lịch biểu mà logrotate được chạy bởi Cron hoặc bật hoặc tắt nó.
+index_nocmd=không ai
+index_notset=Không được thiết lập
+index_return=danh sách tập tin
+index_force=Lực lượng quay nhật ký
+index_forcedesc=Buộc quay vòng ngay lập tức tất cả các tệp nhật ký, ngay cả khi chưa đến lúc.
+index_logrotate=Logrotate
+index_delete=Xóa luân chuyển nhật ký đã chọn
+
+period_daily=hằng ngày
+period_weekly=Hàng tuần
+period_monthly=Hàng tháng
+period_never=Không bao giờ
+period_bytes=byte
+
+edit_title1=Chỉnh sửa tệp nhật ký
+edit_title2=Tạo tệp nhật ký
+edit_header=Chi tiết tệp nhật ký xoay
+edit_file=Đăng nhập đường dẫn tệp
+edit_sched=Lịch quay
+edit_rotate=Số lượng nhật ký cũ cần giữ
+edit_compress=Nén tập tin nhật ký cũ?
+edit_delaycompress=Trì hoãn nén cho đến chu kỳ tiếp theo?
+edit_copytruncate=Cắt bớt tệp nhật ký tại chỗ?
+edit_ifempty=Xoay ngay cả khi tệp nhật ký trống?
+edit_missingok=Bỏ qua tập tin nhật ký nếu thiếu?
+edit_size=Kích thước tối đa trước khi quay
+edit_always=Mặc kệ
+edit_minsize=Kích thước tối thiểu để xoay
+edit_nominsize=Luôn luôn
+edit_ext=Gia hạn cho tên tập tin xoay
+edit_dateext=Sử dụng tiện ích mở rộng ngày cho các tệp được xoay
+edit_mail=Email nhật ký tập tin trước khi xóa?
+edit_mailto=Vâng, đến địa chỉ
+edit_mailno=Không, đừng gửi email
+edit_mailfl=Đăng nhập tập tin vào email
+edit_mailfirst=Mới nhất vừa được quay
+edit_maillast=Cũ nhất sắp bị xóa
+edit_create=Tạo lại tệp nhật ký sau khi xoay?
+edit_createas=Có, với chế độ $1 và được sở hữu bởi người dùng $2 và nhóm $3 
+edit_createno=Không, đừng tạo lại
+edit_createsame=Có, với quyền cũ
+edit_olddir=Lưu trữ nhật ký xoay cũ trong
+edit_olddirto=Danh mục
+edit_olddirsame=Cùng thư mục với tệp nhật ký
+edit_errors=Email thông báo lỗi đến
+edit_errorsno=Không ai
+edit_errorsto=Địa chỉ hoặc người dùng
+edit_post=Các lệnh để chạy sau khi xoay
+edit_pre=Các lệnh để chạy trước khi xoay
+edit_default=Mặc định ($1)
+edit_sharedscripts=Chỉ chạy script một lần cho tất cả các tệp?
+edit_now=Xoay ngay bây giờ
+
+global_title=Tùy chọn toàn cầu
+global_header=Tùy chọn mặc định cho tất cả các tệp nhật ký
+
+save_err=Không thể lưu nhật ký
+save_efile=Tên tệp nhật ký bị thiếu hoặc không hợp lệ
+save_esize=Thiếu kích thước tối đa hoặc không hợp lệ
+save_eminsize=Thiếu kích thước tối thiểu hoặc không hợp lệ
+save_erotate=Số lượng nhật ký cũ bị thiếu hoặc không hợp lệ
+save_ecreatemode=Chế độ tạo bát phân 3 hoặc 4 chữ số bị thiếu hoặc không hợp lệ
+save_ecreateuser=Người dùng tạo thiếu hoặc không hợp lệ
+save_ecreategroup=Nhóm tạo thiếu hoặc không hợp lệ
+save_emust1=Bạn phải vào chế độ tạo khi nhập người dùng tạo
+save_emust2=Bạn phải nhập người dùng tạo khi vào nhóm tạo
+save_eolddirto=Thư mục bị thiếu hoặc không hợp lệ cho nhật ký xoay cũ
+save_eext=Thiếu phần mở rộng cho tên tệp nhật ký xoay
+save_emailto=Thiếu địa chỉ email cho nhật ký xoay
+save_eerrors=Thiếu địa chỉ email cho thông báo lỗi
+save_epre=Tập lệnh xoay vòng trước không thể chứa dòng <tt>endcript</tt> hoặc <tt>endrotate</tt>
+save_epost=Tập lệnh xoay vòng không thể chứa dòng <tt>endcript</tt> hoặc <tt>endrotate</tt>
+save_enofiles=Không có tập tin nào để xoay
+
+log_modify_sched=Thay đổi luân chuyển nhật ký Cron job
+log_create_sched=Tạo nhật ký luân chuyển công việc Cron
+log_delete_sched=Đã xóa luân chuyển công việc Cron
+log_global=Tùy chọn toàn cầu sửa đổi
+log_create=Đã thêm xoay vòng cho tệp nhật ký $1 
+log_modify=Xoay vòng đã sửa đổi cho tệp nhật ký $1 
+log_delete=Đã xóa xoay vòng cho tệp nhật ký $1 
+log_delete_logs=Đã xóa xoay vòng cho các tệp nhật ký $1 
+
+sched_title=Nhật ký luân chuyển
+sched_desc=Để xoay vòng nhật ký được cấu hình bằng mô-đun này được thực hiện, lệnh $1 phải được chạy theo lịch trình thông thường (thường là hàng ngày) bởi Cron.
+sched_runparts=Hiện tại, lệnh xoay vòng nhật ký đang được chạy từ tập lệnh $1 $2 và không thể điều chỉnh.
+sched_sched=Nhật ký cron quay công việc
+sched_disabled=Tàn tật
+sched_enabled=Đã bật, vào những thời điểm dưới đây ..
+sched_save=Cập nhật công việc định kỳ
+sched_err=Không thể lưu lịch quay
+sched_when=Thời gian để chạy
+
+force_title=Lực lượng quay nhật ký
+force_doing=Buộc quay vòng ngay lập tức tất cả các tệp nhật ký ..
+force_doingone=Buộc quay ngay lập tức một tệp nhật ký ..
+force_done=.. làm xong.
+force_failed=.. thất bại! Xem đầu ra ở trên cho lý do tại sao.
+
+delete_err=Không thể xóa nhật ký
+delete_enone=Không được chọn

@@ -1,0 +1,33 @@
+index_manual=Ručno uređivanje poslova cron.
+index_next=Sljedeća vožnja
+index_nunknown=Nepoznata
+index_ecrondir=Cron direktorij poslova $1 ne postoji. Možda je konfiguracija modula pogrešna ili Cron nije instaliran?
+index_ecrondir_create=Pokušajte stvoriti direktorij poslova $1 ?
+index_esearch=Nijedan posao ne odgovara vašoj pretrazi za $1.
+index_toomany2=Previše je poslova za pokazati. Upotrijebite gornji obrazac za pretraživanje da biste ograničili popis.
+index_search=Pronađite Cron poslove koji se podudaraju
+index_ok=traži
+index_searchres=Cron poslovi koji odgovaraju $1 ..
+index_reset=Poništi pretraživanje.
+index_econfigcheck=Cron poslovi ne mogu se upravljati u vašem sustavu, jer konfiguracija modula nije valjana : $1 
+
+edit_next=Sljedeće vrijeme izvođenja
+edit_saverun=Spremi i pokreni sada
+
+save_eidx=Cron posao uspješno je spremljen, ali ga nije moguće pokrenuti jer nije pronađen!
+
+acl_hourly=Ograničiti posao na najviše sat vremena?
+acl_hourlydef=Kao što je postavljeno u modulu Config
+
+when_interval=svaki $1 sekunda
+when_boot=u vrijeme pokretanja
+
+ucwhen_interval=Svakih $1 sekundi
+ucwhen_boot=U vrijeme pokretanja
+
+manual_title=Ručno uređivanje poslova Cron
+manual_edit=Cron datoteka za uređivanje:
+manual_ok=Uredi
+manual_editing=Upotrijebite donji tekstni okvir da biste uredili Cron zadatke u $1. Budite oprezni jer Webmin neće izvršiti provjeru valjanosti!
+manual_efile=Odabrana datoteka nije valjana!
+manual_ecannot=Nije vam dopušteno ručno uređivanje poslova cron

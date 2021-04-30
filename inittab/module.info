@@ -1,4 +1,3 @@
-risk=high
 name=Inittab
 category=system
 os_support=solaris *-linux{-r "/etc/inittab"} hpux unixware openserver aix irix

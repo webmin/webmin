@@ -1,0 +1,51 @@
+index_unknown=ismeretlen
+white_addr2=Címzett címét
+
+score_trusted=Hálózatok és házigazdák, amelyekben megbízhat
+
+log_manual=Kézzel szerkesztett konfigurációs fájl
+
+amavisd_title=Amavisd Spam kézbesítés
+amavisd_desc=Az űrlap felhasználható az Amavisd konfigurációjának megváltoztatására, amely meghatározza, hogy mi történik a spamnek minősített üzenetekkel.
+amavis_ok=Változtassa meg az Amavisd kézbesítést
+amavis_tab_config=Amavisd konfiguráció
+amavis_tab_quarantine=Spam Karantén
+amavis_warn=Ha az Amavisd programot használja a spamszűréshez, néhány beállítást figyelmen kívül hagy.
+amavis_econfig=A (z) $1 Amavisd konfigurációs fájl nem található a rendszerén. Lehet, hogy az Amavisd nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+amavis_hits=Találatok, amelyek felett az üzenet spamnek minősül.
+amavis_ehit=Az a találat, amely felett az üzenet spamnek minősül, nem érték!
+amavis_ekill=Az a találat, amely felett a Spam üzenet karanténba kerül, nem érték!
+amavis_edsn=Az a találat, amely felett a feladónak nem kerül értesítés, nem érték!
+amavis_ecut=Az a találat, amely felett spam üzenetet törölnek, nem érték!
+amavis_eheader=Tárgy módosítása értéke: a fejléc nem érték!
+amavis_esize=Ha az üzenet nincs ellenőrizve, akkor a Spam érték nem az érték!
+amavis_echar=Az X-Spam Level: fejléchez egyetlen karaktert kell beírni
+amavis_esubject=A Tárgy felfűtésének értéke: a fejléc nem érték!
+amavis_elocal=Az Internet források letiltásának értéke nem érték!
+amavis_quarantine_level=Találatok, amelyek felett a Spam üzenet karanténba kerül.
+amavis_dsn_level=Találatok, amelyek felett nem küld értesítést a feladónak.
+amavis_delete_level=Találatok, amelyek felett egy spam üzenet törlődik.
+amavis_report_header=Helyezze az X-Spam-fejlécet a Spam üzenetbe?
+
+amavis_level_char=A Spam-szint X-Spam-szint: fejlécben történő megjelenítéséhez használt karakter:
+amavis_rewrite=Tárgy módosítása: a spam fejléce?
+amavis_rsubject=Helyezze a szöveget a Tárgy: fejlécbe
+amavis_size_limit=Az üzenet mérete bájtban, az üzenet felett nincs ellenőrizve a Spam.
+amavis_local_only=Letiltja az internetes forrásokat a spam ellenőrzéséhez?
+amavis_quarantine_desc=Mutassa meg, hol az Amavisd a spam karanténja, és a helyi karantén engedélyezése esetén jelenítse meg a Spam statisztikákat is. Ha a karantén le van tiltva vagy továbbítva egy e-mail címre, a Spam Stats nem jeleníthető meg.
+amavis_quarantine_off=A spamkarantén le van tiltva a rendszeren. A <tt>$1 fájl</tt> fájljában módosítsa a <tt>spam_Quarantine_to</tt> fájlt <tt>spam-quantrant</tt> -re a karantén engedélyezéséhez.
+amavis_nostat=A spam statisztika nem jeleníthető meg.
+amavis_spam_admin=E-mail cím, ahonnan értesítéseket küldenek (Spam admin)
+amavis_quarantine_mail=A karanténban szereplő spam továbbításra kerül az e-mail címre
+amavis_quarantine_bsmtp=A spam karanténban van BSMTP formátumban a helyi fájlrendszerben
+amavis_quarantine_local=A spam karanténba kerül MBOX formátumban a helyi fájlrendszerben
+amavis_quarantine_today=Spam mailek a karanténban ma (24 óra)
+amavis_quarantine_week=Spam levelek a karanténban ezen a héten (7 nap)
+amavis_quarantine_month=Spam levelek a karanténban ebben a hónapban (30 nap)
+amavis_quarantine_total=A spam e-mailek száma a karanténban
+
+manual_title=A Config Files szerkesztése
+manual_file=A konfigurációs fájl szerkesztése:
+manual_ok=rendben
+manual_efile=Érvénytelen konfigurációs fájl!
+manual_err=A konfigurációs fájl mentése nem sikerült

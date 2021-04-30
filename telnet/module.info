@@ -1,4 +1,3 @@
-risk=high
 desc=SSH Login
 longdesc=Login to your system with SSH or telnet.
 readonly=1

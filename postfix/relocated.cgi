@@ -9,6 +9,7 @@
 
 
 require './postfix-lib.pl';
+&ReadParse();
 
 $access{'relocated'} || &error($text{'relocated_ecannot'});
 &ui_print_header(undef, $text{'relocated_title'}, "", "relocated");

@@ -1,0 +1,17 @@
+index_versionbacula=Bacula $1 
+index_versionbareos=Bareos $1 
+
+proc_bareos-sd=Daemon de armazenamento
+proc_bareos-fd=Daemon de arquivo
+proc_bareos-dir=Daemon Bacula Director
+
+fileset_comp=Tipo de compressão
+fileset_gzipdef=&lt;Nível de compactação padrão&gt;
+fileset_lzo=Compressão LZO
+fileset_gzip=Nível de gzip $1 
+fileset_onefs=Limitar o backup a um sistema de arquivos?
+
+job_enabled=Trabalho de backup ativado?
+
+storage_maxjobs=Máximo de trabalhos simultâneos
+storage_emaxjobs=Falta o máximo de trabalhos simultâneos

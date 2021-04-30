@@ -3,21 +3,21 @@
 <center><tt>local_recipient_maps</tt></center>
 <hr>
 
-Aquest par‡metre especifica les taules opcionals de consulta amb tots els
-usuaris que sÛn locals respecte a <tt>$mydestination</tt> (&quot;per quins
-dominis es rep correu&quot;) i <tt>$inet_interfaces</tt> (&quot;interfÌcies
-de xarxa per rebre correu&quot;). Si aquest par‡metre est‡ definit. llavors 
-el servidor SMTP rebutjar‡ el correu per a usuaris locals desconeguts.
+Aquest par√†metre especifica les taules opcionals de consulta amb tots els
+usuaris que s√≥n locals respecte a <tt>$mydestination</tt> (&quot;per quins
+dominis es rep correu&quot;) i <tt>$inet_interfaces</tt> (&quot;interf√≠cies
+de xarxa per rebre correu&quot;). Si aquest par√†metre est√† definit. llavors 
+el servidor SMTP rebutjar√† el correu per a usuaris locals desconeguts.
 
 <p>
 
 Poseu taules amb noms d'usuaris buits com <tt>unix:passwd.pernom</tt>
-i mapes d'‡lies. Exemple: <tt>$alias_maps unix:passwd.pernom</tt>.
+i mapes d'√†lies. Exemple: <tt>$alias_maps unix:passwd.pernom</tt>.
 
 <p>
 
 Compte: Si el servidor SMTP Postfix s'executa amb <tt>chroot</tt>,
-pot ser que hagis de copiar la base de dades passwd a la g‡bia.
-AixÚ Ès dependent del sistema.
+pot ser que hagis de copiar la base de dades passwd a la g√†bia.
+Aix√≤ √©s dependent del sistema.
 
 <hr>

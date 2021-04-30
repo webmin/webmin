@@ -1,1 +1,1 @@
-desc_pl=Lokalne i&nbsp;sieciowe systemy plik�w
+desc_pl=Lokalne i sieciowe systemy plików

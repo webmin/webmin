@@ -1,0 +1,37 @@
+index_title=Cluster Cron Jobs
+index_add=Creare un nuovo processo cron del cluster.
+index_none=Non sono stati definiti processi cron cron.
+index_servers=Esegui su server
+index_return=Elenco lavori cron cluster
+index_more=$1 in più ..
+index_run=Corri adesso ..
+index_actions=Azioni
+
+edit_title=Modifica processo cron del cluster
+create_title=Crea processo Cron Cluster
+edit_servers=Esegui su server
+edit_group=Membri di $1 
+edit_this=questo server
+edit_all=&lt;Tutti gli host&gt;
+edit_emissing=Cron lavoro non esiste più!
+
+save_err=Impossibile salvare il processo cron del cluster
+
+exec_title=Esegui processo cron del cluster
+exec_cmd=Esecuzione $1 su server selezionati.
+exec_failed=Impossibile eseguire $1 : $2 
+exec_success=Uscita da $1 ..
+exec_nohosts=Nessun host selezionato per l'esecuzione o gruppi selezionati non contengono host utilizzabili.
+
+log_run=Ha funzionato $1 su $2 server
+log_run_l=Ha funzionato $1 su $2 
+log_create=Processo cron del cluster creato per $1 
+log_create_l=Processo cron del cluster creato $2 per $1 
+log_modify=Cron job del cluster modificato per $1 
+log_modify_l=Cron job cluster modificato $2 per $1 
+log_delete=Processo cron del cluster eliminato per $1 
+log_delete_l=Processo cron del cluster eliminato $2 per $1 
+log_deletes=Eliminati processi cron $1 cluster
+
+delete_err=Impossibile eliminare i processi cron del cluster
+delete_enone=Nessuno selezionato

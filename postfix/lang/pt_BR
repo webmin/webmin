@@ -1,85 +1,82 @@
-index_title=ConfiguraÁ„o do Postfix
-index_epath=O comando de controle do Postfix $1 n„o est· instalado em seu sistema. Cheque se a <a href='$2'>configuraÁ„o do mÛdulo</a> n„o est· correta, ou se o Postfix n„o est· instalado.
+index_title=Configura√ß√£o do Postfix
+index_epath=O comando de controle do Postfix $1 n√£o est√° instalado em seu sistema. Cheque se a <a href='$2'>configura√ß√£o do m√≥dulo</a> n√£o est√° correta, ou se o Postfix n√£o est√° instalado.
 
 internal_error=Erro Interno
-index_econfig=O comando de configuraÁ„o do Postfix $1 n„o existe. Cheque se a <a href='$2'>configuraÁ„o do mÛdulo</a> est· incorreta.
+index_econfig=O comando de configura√ß√£o do Postfix $1 n√£o existe. Cheque se a <a href='$2'>configura√ß√£o do m√≥dulo</a> est√° incorreta.
 index_stop=Parar o Postfix
 index_start=Iniciar o Postfix
-index_stopmsg=Clique neste bot„o para parar a execuÁ„o do Servidor de Email Postfix. Isto ir· parar a entrega de mensagens vindas de outros sistemas aos usu·rios locais, e impede que usu·rios usando este servidor como Servidor de Email enviem mensagens.
-index_startmsg=Clique neste bot„o para iniciar o Servidor de Email Postfix. AtÈ que isto seja feito os usu·rios locais n„o estar„o recebendo mensagens vindas de outros sistemas, e clientes n„o poder„o usar este Servidor como sistema de Email.
-index_version=Postfix vers„o $1
-opts_err=Falhou salvando as configuraÁıes
+index_stopmsg=Clique neste bot√£o para parar a execu√ß√£o do Servidor de Email Postfix. Isto ir√° parar a entrega de mensagens vindas de outros sistemas aos usu√°rios locais, e impede que usu√°rios usando este servidor como Servidor de Email enviem mensagens.
+index_startmsg=Clique neste bot√£o para iniciar o Servidor de Email Postfix. At√© que isto seja feito os usu√°rios locais n√£o estar√£o recebendo mensagens vindas de outros sistemas, e clientes n√£o poder√£o usar este Servidor como sistema de Email.
+index_version=Postfix vers√£o $1
+opts_err=Falhou salvando as configura√ß√µes
 
-check_error=Erro checando a configuraÁ„o atual do Postfix. Por favor fixe a configuraÁ„o manualmente.
+check_error=Erro checando a configura√ß√£o atual do Postfix. Por favor fixe a configura√ß√£o manualmente.
 
-address_rewriting_title=Reescrevendo e Mascarando endereÁos
-address_rewriting_ecannot=VocÍ n„o tem permiss„o para editar Reescrevendo e Mascarando EndereÁos
+address_rewriting_title=Reescrevendo e Mascarando endere√ßos
+address_rewriting_ecannot=Voc√™ n√£o tem permiss√£o para editar Reescrevendo e Mascarando Endere√ßos
 aliases_title=Aliases de Email
-aliases_ecannot=VocÍ n„o tem permiss„o para editar Aliases
-aliases_no_alias_file=Arquivos de Aliases n„o existe
+aliases_ecannot=Voc√™ n√£o tem permiss√£o para editar Aliases
+aliases_no_alias_file=Arquivos de Aliases n√£o existe
 aliases_failed_delete=Falha para deletar alias: $1
-aliases_cant_write=N„o foi possÌvel escrever no arquivo de alias
-aliases_cant_read=N„o foi possÌvel ler arquivo de alias
-aliasopts_title=OpÁıes de Aliases
+aliases_cant_write=N√£o foi poss√≠vel escrever no arquivo de alias
+aliases_cant_read=N√£o foi poss√≠vel ler arquivo de alias
+aliasopts_title=Op√ß√µes de Aliases
 aliases_internal_error=Aliases: erro interno
 edit_alias_title=Editando Propriedades de Alias
 alias_save=Salvar Alias
 alias_save_err=Falha para salvar alias
-alias_delete_create=VocÍ quer deletar um alias que est· criando atualmente !?
+alias_delete_create=Voc√™ quer deletar um alias que est√° criando atualmente !?
 delete_alias=Deletar Alias
 aliases_click=Clique em qualquer alias para editar suas propriedades:
 
-general_title=OpÁıes Gerais
-general_title_sensible=OpÁıes Gerais mais usadas
-general_title_others=Outras OpÁıes Gerais
-general_ecannot=VocÍ n„o tem permiss„o para editar OpÁıes Gerais
-what_is_it=O que È isto?
+general_title=Op√ß√µes Gerais
+general_title_sensible=Op√ß√µes Gerais mais usadas
+general_title_others=Outras Op√ß√µes Gerais
+general_ecannot=Voc√™ n√£o tem permiss√£o para editar Op√ß√µes Gerais
+what_is_it=O que √© isto?
 
-opts_default=Padr„o
+opts_default=Padr√£o
 opts_none=None
-opts_relayhost=SaÌda de email via host
+opts_relayhost=Sa√≠da de email via host
 opts_direct=Enviar diretamente
-opts_myorigin=Que domÌnio usar na saÌda de email
-opts_myorigin_as_myhostname=Usar o nome da m·quina
-opts_myorigin_as_mydomain=Usar o nome do domÌnio
-opts_mydestination=Receber email de que domÌnios
-opts_mydestination_default=M·quina Local
-opts_mydestination_domainwide=DomÌnio completo
+opts_myorigin=Que dom√≠nio usar na sa√≠da de email
+opts_myorigin_as_myhostname=Usar o nome da m√°quina
+opts_myorigin_as_mydomain=Usar o nome do dom√≠nio
+opts_mydestination=Receber email de que dom√≠nios
+opts_mydestination_default=M√°quina Local
+opts_mydestination_domainwide=Dom√≠nio completo
 opts_notify_classes=Que problemas reportar ao postmaster
-opts_queue_directory=DiretÛrio da Fila de Correio
-opts_mail_owner=Usu·rio do Correio
-opts_default_privs=Direitos padrıes do agente de entrega
+opts_queue_directory=Diret√≥rio da Fila de Correio
+opts_mail_owner=Usu√°rio do Correio
+opts_default_privs=Direitos padr√µes do agente de entrega
 opts_inet_interfaces=Interfaces de rede para receber email
 opts_all_interfaces=Todas
 
-opts_local_recipient_maps=Rejeitar usu·rios locais desconhecidos
-opts_no=N„o
+opts_local_recipient_maps=Rejeitar usu√°rios locais desconhecidos
+opts_no=N√£o
 opts_save=Salvar e aplicar
-
 
 opts_allow_percent_hack=Reescrever "usuario%dominio" para "usuario@dominio"
 opts_append_at_myorigin=Reescrever "usuario" para "usuario@$mydomain"
 opts_append_dot_mydomain=Reescrever "usuario@host" para "usuario@host.$mydomain"
-opts_empty_address_recipient=Enviar email com destinat·rio vazio para...
-opt_empty_recip_default=Padr„o
+opts_empty_address_recipient=Enviar email com destinat√°rio vazio para...
+opt_empty_recip_default=Padr√£o
 opts_swap_bangpath=Reescrever "site!usuario" para "usuario@site"
-opts_masquerade_domains=Mascarando EndereÁo
-opts_masquerade_exceptions=Mascarando exceÁıes
-index_return=ConfiguraÁ„o do Postfix
-
+opts_masquerade_domains=Mascarando Endere√ßo
+opts_masquerade_exceptions=Mascarando exce√ß√µes
+index_return=Configura√ß√£o do Postfix
 
 opts_alias_maps=Database de Alias usado pelo agente de entrega local
-opts_alias_database=Alias databases built by &quot;newaliases&quot; command
-aliases_warning=Warning: <ul><li>when the first field is not empty, the default Postfix aliases-generation command is used to build up the corresponding databases ; <li>else the Sendmail compatibility command &quot;newaliases&quot; is used, this will use the second field's databases.</ul>
+opts_alias_database=Alias databases built by "newaliases" command
+aliases_warning=Warning: <ul><li>when the first field is not empty, the default Postfix aliases-generation command is used to build up the corresponding databases ; <li>else the Sendmail compatibility command "newaliases" is used, this will use the second field's databases.</ul>
 
 aliases_name=Nome
 aliases_value=Alias para...
 
 new_alias=Criar um novo alias
-new_aliasmsg=Clique neste bot„o para criar um novo alias
+new_aliasmsg=Clique neste bot√£o para criar um novo alias
 
-
-local_delivery_ecannot=VocÍ n„o tem permiss„o para editar as opÁıes de entrega local
+local_delivery_ecannot=Voc√™ n√£o tem permiss√£o para editar as op√ß√µes de entrega local
 local_delivery_title=Entrega Local
 opts_local_transport=Nome do transporte para entrega local
 opts_local_transport_local=Local
@@ -105,7 +102,6 @@ opts_local_destination_recipient_limit_default=Default
 opts_prepend_delivered_header=Prepend a <tt>Delivered-To:</tt> when...
 opts_prepend_delivered_header_default=Padrao
 
-
 resource_title=General resource control
 resource_ecannot=You are not allowed to edit resource control parameters
 opts_bounce_size_limit=Max size of bounced message
@@ -124,7 +120,6 @@ opts_qmgr_message_recipient_limit=Max number of in-memory recipients
 opts_queue_minfree=Min free space in the queue file system
 opts_stale_lock_time=Max time after which stale lock is released
 opts_transport_retry_time=Time in seconds between attempts to contact a broken MDT
-
 
 opts_always_bcc=Address that receives bcc of each message
 opts_always_bcc_none=None
@@ -158,8 +153,6 @@ opts_relocated_maps_default=Default (disabled)
 opts_sun_mailtool_compatibility=Disable kernel file lock on mailboxes
 opts_trigger_timeout=Max time to send a trigger to a daemon
 opts_delay_warning_time=Time in hours before sending a warning for no delivery
-opts_delay_warning_time_default=Disabled
-
 
 smtpd_title=SMTP server options
 smtpd_ecannot=You are not allowed to edit the SMTP server options
@@ -188,7 +181,6 @@ opts_unknown_address_reject_code=SMTP server response on unknown domain reject
 opts_unknown_client_reject_code=SMTP server response on unknown client reject
 opts_unknown_hostname_reject_code=SMTP server response on unknown hostname reject
 
-
 smtp_title=SMTP client options
 smtp_ecannot=You are not allowed to edit the SMTP client options
 opts_best_mx_transport=Action when listed as best MX host
@@ -205,9 +197,8 @@ opts_smtp_mail_timeout=Timeout on waiting for answer to MAIL FROM
 opts_smtp_rcpt_timeout=Timeout on waiting for answer to RCPT TO
 opts_smtp_data_init_timeout=Timeout on waiting for answer to DATA
 opts_smtp_data_xfer_timeout=Timeout on waiting for answer to transmit of message content
-opts_smtp_data_done_timeout=Timeout on waiting for answer to ending &quot;.&quot;
+opts_smtp_data_done_timeout=Timeout on waiting for answer to ending "."
 opts_smtp_quit_timeout=Timeout on waiting for answer to QUIT
-
 
 rate_title=Delivery rates
 rate_ecannot=You are not allowed to edit the delivery rates options
@@ -219,7 +210,6 @@ opts_maximal_queue_lifetime=Max time (days) in queue before message is undeliver
 opts_minimal_backoff_time=Min time (secs) between attempts to deliver a deferred message
 opts_queue_run_delay=Time (secs) between scanning the deferred queue
 opts_defer_transports=Transports that should not be delivered
-
 
 debug_title=Debugging features
 debug_ecannot=You are not allowed to edit the debugging features
@@ -260,7 +250,6 @@ maps_internal_error=Map: internal error
 maps_cant_write=Can not write
 help_map_format=What format should I use?
 
-
 virtual_title=Virtual Domains
 virtual_ecannot=You are not allowed to edit the virtual domains mapping configuration
 opts_virtual_maps=Domain mapping lookup tables
@@ -283,10 +272,11 @@ no_map2=No map is currently defined. Define a map first, then you can edit it.
 stop_efailed=Failed to stop Postfix
 stop_ecannot=You are not allowed to stop Postfix
 
+reload_efailed=Failed to reload Postfix.
+reload_ecannot=You are not allowed to reload Postfix
+
 query_get_efailed=Failed to query Postfix config command to get the current value of parameter $1: <tt>$2</tt>
 query_set_efailed=Failed to query Postfix config command to set the current value of parameter $1 to $2: <tt>$3</tt>
-reload_ecannot=You are not allowed to reload Postfix
-reload_efailed=Failed to reload Postfix.
 regenerate_ecannot=You are not allowed to regenerate the Aliases
 regenerate_alias_efailed=Failed to regenerate aliases: <tt>$1</tt>
 regenerate_table_efailed=Failed to regenerate table $1: <tt>$2</tt>
@@ -407,16 +397,6 @@ send_eperms2=You are not allowed to send file $1
 send_epath=Sendmail executable $1 does not exist.
 send_ewrapper=Postfix sendmail interface program does not exist
 
-delete_title=Delete Mail
-delete_rusure=Are you sure you want to delete the $1 selected messages from $2? This may take some time for a large mail file. Until the deletion has finished, no other action should be performed.
-delete_rusure2=Are you sure you want to delete this message from $1? This may take some time for a large mail file. Until the deletion has finished, no other action should be performed.
-delete_ok=Delete Now
-delete_ecannot=You are now allowed to delete mail from this user
-delete_enone=No mail selected to delete
-delete_emnone=No mail selected to mark
-delete_emoveuser=User to move mail to does not exist
-delete_emovenone=No mail selected to move
-
 search_title=Search Results
 search_ecannot=You are not allowed to search this user's email
 search_ematch=You must enter text to match against.
@@ -450,8 +430,6 @@ mailq_cc=Cc
 mailq_subject=Subject
 mailq_return=mail queue
 mailq_delete=Delete selected messages
-mailq_all=Select all
-mailq_invert=Invert selection
 mailq_size=Size
 mailq_ecannot=You are not allowed to view the mail queue
 mailq_egone=The message is no longer in the queue
@@ -462,4 +440,4 @@ qview_desc=From file $1
 qview_headers=Mail headers
 qview_attach=Attachments
 
-
+delete_enone=No mail selected to delete

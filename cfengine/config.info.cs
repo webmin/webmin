@@ -1,0 +1,10 @@
+line2=Systémová konfigurace,11
+cfengine_dir=Cesta k adresáři s konfiguračními soubory,0
+cfengine=Cesta k programu cfengine,0
+cfengine_conf=Cesta k souboru cfengine.conf,3,Automaticky
+cfrun=Cesta k programu cfrun,0
+cfrun_hosts=Cesta k souboru s volbami serveru,3,Automaticky
+cfd=Cesta k programu cfd,0
+cfd_conf=Cesta k souboru cfd.conf,3,Automaticky
+start_cmd=Příkaz pro spuštění cfd,3,Spustit démona
+stop_cmd=Příkaz pro ukončení cfd,3,Zabít proces

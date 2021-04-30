@@ -1,4 +1,3 @@
-risk=low medium high
 name=DNSadmin
 category=servers
 os_support=slackware-linux{-r "/etc/named.boot"} coherent-linux{-r "/etc/named.boot"} redhat-linux{-r "/etc/named.boot"} mandrake-linux{-r "/etc/named.boot"} solaris{-r "/etc/named.boot"} debian-linux{-r "/etc/named.boot" || -r "/etc/bind/named.boot"} suse-linux{-r "/etc/named.boot"} united-linux{-r "/etc/named.boot"} hpux{-r "/etc/named.boot" || -x "/usr/sbin/named"} freebsd{-r "/etc/named.boot" || -r "/etc/namedb/named.boot"} osf1{-r "/etc/named.boot" || -r "/etc/namedb/named.boot"} irix unixware{-r "/etc/named.boot"} openserver{-r "/etc/named.boot"} turbo-linux{-r "/etc/named.boot"} openbsd{-r "/etc/named.boot" || -r "/var/named/named.boot"} aix{-r "/etc/named.boot"} cobalt-linux/2.2{-r "/etc/named.boot"} cobalt-linux/4.0{-r "/etc/named.boot"} aix{-r "/etc/named.boot"} msc-linux{-r "/etc/named.boot"} openmamba-linux{-r "/etc/named.boot"}

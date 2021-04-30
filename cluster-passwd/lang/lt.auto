@@ -1,0 +1,8 @@
+index_title=Klasterio keitimo slaptažodžiai
+index_noservers=Modulyje <a href=$1>Klasterio vartotojai ir grupės</a> nebuvo apibrėžta jokių serverių, skirtų vartotojams valdyti.
+index_hosts=Visi slaptažodžio pakeitimai, atlikti naudojant šį modulį, bus atliekami visose $1 priglobtose, kurias tvarko klasterio vartotojai ir grupės.
+
+passwd_err=Nepavyko pakeisti slaptažodžio
+passwd_title=Keičiamas slaptažodis
+passwd_on=Keičiamas slaptažodis $1.
+passwd_euser=Vartotojas neegzistuoja!

@@ -1,0 +1,3 @@
+name_hu=PPTPd
+longdesc_hu=Állítsa be a rendszert PPTP-kiszolgálóként, hogy a Linux vagy a Windows VPN kliensek csatlakozhassanak.
+desc_hu=PPTP VPN szerver

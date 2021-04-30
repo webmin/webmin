@@ -1,0 +1,50 @@
+index_title=OpenSLP конфигурация
+index_return=OpenSLP конфигурация
+index_eslpd=OpenSLP демон $1 не е намерен във вашата система. Може би не е инсталиран или вашата <a href='$2'>конфигурация на модул</a> е неправилна.
+index_econf=Конфигурационният файл OpenSLP $1 не беше намерен във вашата система. Може би не е инсталиран или вашата <a href='$2'>конфигурация на модул</a> е неправилна.
+index_version=OpenSLP версия $1 
+
+slp_apply=Прилага промени
+slp_stop=Спрете OpenSLP
+
+snda_title=Статичен обхват и DA
+snda_useScopes=Статичен списък на обхвата
+snda_DAAddresses=Статичен списък на агенти в директорията (DA)
+
+netcfg_title=Конфигурация на мрежата
+netcfg_isBroadcastOnly=Принуждавайте излъчванията да се използват вместо мултикаст
+netcfg_passiveDADetection=Използвайте пасивно откриване на DA
+netcfg_activeDADetection=Използвайте активно откриване на DA (ограничете се само до DHCP или DA адреси)
+netcfg_DAActiveDiscoveryInterval=Активно откриване за секунди (0 деактивира Active Discovery)
+netcfg_multicastTTL=Multicast TTL (0-255)
+netcfg_DADiscoveryMaximumWait=Максимално време за изчакване за заявки за откриване на DA (в милисекунди)
+netcfg_DADiscoveryTimeouts=Последователни периоди на изчакване за откриване на DA (в милисекунди)
+netcfg_HintsFile=Пътят към OpenSLP файла със съвети
+netcfg_multicastMaximumWait=Максимално изчакване при заявки за множествено предаване (в милисекунди)
+netcfg_multicastTimeouts=Последователни периоди на изчакване за многоадресни съобщения (в милисекунди)
+netcfg_unicastMaximumWait=Максимален период от време между еднократни заявки (в милисекунди)
+netcfg_randomWaitBound=Максимална стойност за всички произволни параметри на изчакване (в милисекунди)
+netcfg_MTU=MTU размер на пакета (в байтове)
+netcfg_interfaces=IP адреси на интерфейси, които DA/SA трябва да слушат
+
+dacfg_title=Конфигурация на DA
+dacfg_isDA=Функционира само като DA (прочетете ръководството за потребителя, преди да промените това)
+
+log_title=Проследяване и регистриране
+log_traceDATraffic=Печат на съобщения за трафик на DA
+log_traceMsg=Печатайте подробни съобщения за SLP
+log_traceDrop=Отпечатайте информацията за съобщенията, отказана от SLP
+log_traceReg=Разпечатайте информация за регистрация и дерегистрация на DA и SA
+
+error_open=Грешка при отварянето на файла
+error_flock_on=Грешка при създаването на заключване на файл
+error_flock_off=Грешка при унищожаване на заключване на файл
+error_hup=Грешка при рестартиране на OpenSLP с PID
+
+index_start=Стартирайте OpenSLP
+index_startmsg=Кликнете върху този бутон, за да стартирате демона на OpenSLP във вашата система.
+index_stop=Спрете OpenSLP
+index_stopmsg=Щракнете върху този бутон, за да спрете демона на OpenSLP във вашата система.
+
+stop_err=Спирането на OpenSLP не бе успешно
+start_err=Неуспешно стартиране на OpenSLP

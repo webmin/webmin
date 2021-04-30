@@ -1,0 +1,20 @@
+index_tforward=Naprzód
+index_fadd=Dodaj port do przodu.
+
+port_mode2=Taki sam jak oryginalny port
+
+forward_edit=Edytuj dalej
+forward_create=Utwórz do przodu
+forward_header=Opcje przekierowania portów
+forward_zone=Naprzód dla strefy
+forward_err=Nie udało się zapisać do przodu
+forward_port=Port źródłowy
+forward_dstport=Port desintation
+forward_dstaddr=Adres przeznaczenia
+forward_dstlocal=Ten system
+forward_edstaddr=Nieprawidłowy adres docelowy IPv4
+forward_eneither=Należy podać adres docelowy lub port albo oba te adresy
+
+log_create_forward=Dodano do przodu $1 
+log_delete_forward=Usunięto do przodu $1 
+log_update_forward=Zaktualizowano do przodu $1 

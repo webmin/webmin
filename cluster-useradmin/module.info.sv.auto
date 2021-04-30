@@ -1,0 +1,3 @@
+desc_sv=Klusteranvändare och grupper
+longdesc_sv=Skapa, uppdatera och ta bort användare och grupper över flera servrar. Till skillnad från NIS har varje server sina egna passwd- och gruppfiler som fjärruppdateras av den här modulen.
+name_sv=Klusteranvändare

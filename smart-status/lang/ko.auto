@@ -1,0 +1,58 @@
+index_title=스마트 드라이브 상태
+index_ecmd=시스템에서 SMART 제어 명령 $1 을 (를) 찾을 수 없거나 <a href='$2'>모듈 구성</a>에서 올바르게 설정되지 않았습니다. 이 모듈을 사용하려면 먼저 설치해야합니다.
+index_ecmd2=$1 명령이 SMART 제어 명령이 아닙니다. 이 모듈을 사용하려면 <a href='$2'>모듈 구성</a>에서 올바르게 설정해야합니다.
+index_version=스마트 스위트 버전 $1 
+index_show=드라이브 상태 표시 :
+index_ok=보여 주다
+index_eidescsi=시스템에 IDE, SCSI 또는 SATA 드라이브가 없습니다.
+index_drive=드라이브 $1 의 상태
+index_drivesub=드라이브 $1, 디스크 $2 의 상태
+index_desc=위치
+index_size=드라이브 크기
+index_model=제작 및 모델
+index_support=SMART를 지원합니까?
+index_enabled=스마트 가능?
+index_check=드라이브 확인을 통과 했습니까?
+index_short=짧은 자체 테스트
+index_ext=확장 된 자체 테스트
+index_data=데이터 수집 테스트
+index_errors=기록 된 오류
+index_ecount=$1 오류 감지
+index_attrs=추가 SMART 속성
+index_raw=전체 SMART 상태 보고서
+index_return=모듈 색인
+index_family=모델 군
+index_serial=일련 번호
+index_capacity=생산 능력
+index_norm=정규화 :
+
+monitor_type=스마트 드라이브 점검
+monitor_type2=SSD 마모
+monitor_drive=확인할 드라이브
+monitor_errors=오류 로그도 확인 하시겠습니까?
+monitor_errorsinc=예, 그러나 오류 수가 증가하는 경우에만 경고
+monitor_other=다른 ..
+monitor_edrive=확인할 드라이브가 없거나 유효하지 않습니다
+monitor_nosuch=그런 드라이브가 없습니다
+monitor_nosmart=SMART가 지원되지 않습니다
+monitor_errorsfound=보고 된 $1 오류
+monitor_errorsinced=오류가 $2 에서 $1 (으)로 증가했습니다
+monitor_wearlevel=마모 수준이 아래로 떨어지면 실패
+monitor_ewearlevel=유효하지 않은 마모 수준
+monitor_nowearout=드라이브가 SSD 마모 표시기를보고하지 않습니다
+monitor_wornout=마모 수준이 $1 로 떨어졌습니다.
+
+short_title=짧은 자체 테스트
+short_doing=$1 의 간단한 자체 테스트 시작
+short_failed=.. 실패했습니다!
+short_ok=.. 테스트가 시작되었습니다. 결과는 모듈 메인 페이지의 드라이브 상태를 참조하십시오.
+
+ext_title=확장 된 자체 테스트
+ext_doing=$1 의 확장 자체 테스트를 시작합니다.
+ext_failed=.. 실패했습니다!
+ext_ok=.. 테스트가 시작되었습니다. 결과는 모듈 메인 페이지의 드라이브 상태를 참조하십시오.
+
+data_title=데이터 수집 테스트
+data_doing=$1 에서 오프라인 데이터 수집을 시작하는 중입니다.
+data_failed=.. 실패했습니다!
+data_ok=.. 수집이 시작되었습니다. 결과는 모듈 메인 페이지의 드라이브 상태를 참조하십시오.

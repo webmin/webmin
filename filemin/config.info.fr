@@ -1,0 +1,1 @@
+max=Taille maximale des fichiers téléchargés,3,Illimité

@@ -1,0 +1,79 @@
+category_=Инструменты
+
+longcategory_=Модули, выполняющие другие разные задачи
+
+error_stack=Трассировка стека вызовов
+error_stackline=В файле $1 в строке $2 вызывается $3
+fail=Не удалось
+euserdbacl=Не удалось получить ACL пользователя : $1
+euserdbacl2=Не удалось обновить ACL пользователя : $1
+egroupdbacl=Не удалось получить ACL группы : $1
+egroupdbacl2=Не удалось обновить ACL группы : $1
+
+config_emodule=Модуль не существует
+config_ewebmin=Тип параметра 14 работает только в Webmin
+
+referer_fix3u=Убедитесь, что ваш браузер настроен на отправку информации о реферере, чтобы она могла быть проверена Webmin.
+
+session_twofactor=Двухфакторный токен
+session_twofailed=Ошибка двухфакторной аутентификации : $1
+
+acl_nodot=Скрыть точечные файлы в окне выбора файлов?
+acl_fileunix=Просматривайте файлы как пользователь Unix
+acl_webminsearch=Показать поле поиска Webmin?
+
+elock_tries2=Не удалось заблокировать файл $1 через $2 минут. Последняя ошибка : $3
+
+readparse_cdheader=Отсутствует заголовок Content-Disposition
+readparse_enc=Ожидается кодирование данных формы, но получено нормальное кодирование
+
+password_temp=Вы должны выбрать новый пароль, чтобы заменить ваш временный логин.
+password_epam=Ошибка PAM : $1
+
+ui_filterbox=Тип для фильтрации ..
+
+header_statusmsg=$1 вошел в $2 $3 в $4 ($5)
+
+uptracker_eid=Идентификатор загрузки не указан
+uptracker_eid2=Идентификатор загрузки неверен!
+
+wsearch_hcgis=Ссылки
+
+sql_emysqldriver=Не удалось загрузить драйвер MySQL DBI
+sql_emysqlconnect=Не удалось подключиться к базе данных MySQL : $1
+sql_epostgresqldriver=Не удалось загрузить драйвер PostgreSQL DBI
+sql_epostgresqlconnect=Не удалось подключиться к базе данных PostgreSQL : $1
+sql_eldapdriver=Не удалось загрузить Perl-модуль LDAP
+sql_eldapconnect=Не удалось подключиться к серверу LDAP $1
+sql_eldaptls=Не удалось запустить шифрование TLS для LDAP : $1
+sql_eldaplogin=Не удалось войти на сервер LDAP как $1 : $2 
+
+log_email_subject=Действие Webmin в $1
+log_email_global=Webmin глобальное действие
+log_email_desc=Это письмо было отправлено Webmin в ответ на действие пользователя.
+log_email_mod=Модуль Webmin: $1
+log_email_moddesc=Название модуля: $1
+log_email_time=Действие выполнено в: $1
+log_email_system=Выполняется в системе: $1
+log_email_user=Выполняется пользователем: $1
+log_email_script=Сценарий Webmin: $1
+log_email_session=Идентификатор сеанса: $1
+log_email_remote=Адрес клиента: $1
+
+nice_size_PB=ПБ
+nice_size_PiB=ПиБ
+nice_size_TB=ТБ
+nice_size_TiB=ТиБ
+nice_size_GB=ГБ
+nice_size_GiB=ГиБ
+nice_size_MB=МБ
+nice_size_MiB=МиБ
+nice_size_kB=кБ
+nice_size_kiB=киБ
+nice_size_b=байт
+
+langauto_include=Включить машинные переводы
+
+file_truncated_message=получено $1 данных, усечено $2 из $3 
+file_truncated_message_head=извлечено начало $1 данных, усечено $2 из $3 
+file_truncated_message_tail=получено окончание $1 данных, усечено $2 из $3 

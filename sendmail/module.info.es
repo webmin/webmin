@@ -1,1 +1,1 @@
-desc_es=Configuración de Sendmail
+desc_es=ConfiguraciÃ³n de Sendmail

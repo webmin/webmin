@@ -1,0 +1,118 @@
+index_title=Vastaajapalvelin
+index_ecmd=Vgetty-komentoa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
+index_econfig=Vgetty-asetustiedostoa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
+index_return=vastaajaindeksi
+
+vgetty_title=Sarjaportin kokoonpano
+vgetty_desc=Jotta palvelimesi voi vastata äänipuheluihin sarjaporttiin kytketyllä modeemilla, sen on oltava alla. Kun lisäät portin tähän luetteloon, $1 -ohjelma määritetään vastaamaan puheluihin ja toistamaan viesti.
+vgetty_add=Lisää uusi sarjaportti
+vgetty_tty=Sarjalaite
+vgetty_type=Tyyppi
+vgetty_vgetty=Ääni
+vgetty_mgetty=Data/fax
+vgetty_none=Sarjaportteja ei ole vielä määritetty vastaajaan.
+vgetty_apply=Käytä määritystä
+vgetty_applydesc=Napsauta tätä painiketta, jos haluat käyttää nykyisen puhepostipalvelimen määrityksiä suorittamalla komennon $1 ja tappamalla kaikki Vgetty-prosessit.
+vgetty_applyerr=Asetusten määrittäminen epäonnistui
+vgetty_return=sarjaporttiluettelo
+vgetty_create=Lisää sarjaportti
+vgetty_edit=Muokkaa sarjaporttia
+vgetty_header=Sarjaportin määritysasetukset
+vgetty_ts=Sarjaportti $1 
+vgetty_other=Muu laite ..
+vgetty_rings=Soi ennen vastaamista
+vgetty_default=Yleinen oletus
+vgetty_ans=Vastaustila
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=Ääni
+vgetty_ans_fax=Faksi
+vgetty_ans_data=data
+vgetty_err=Sarjaportin tallentaminen epäonnistui
+vgetty_etty=Puuttuva tai olematon sarjalaite
+vgetty_erings=Puuttuva tai kelpaamaton määrä soittoja
+vgetty_erings2=Renkaiden lukumäärän on oltava vähintään 2
+vgetty_eans=Ei vastaustapoja valittu
+vgetty_eclash=Sarjaportti $1 on jo käytössä
+
+options_title=Vastaajapalvelimen asetukset
+options_header=Kaikkien sarjaporttien vaihtoehdot
+options_maxlen=Viestin enimmäispituus
+options_secs=sekuntia
+options_minlen=Viestin vähimmäispituus
+options_silence=Poistetaanko hiljaisuus viestien lopusta?
+options_thresh=Hiljaisuuskynnys
+options_rgain=Äänenvoimakkuuden tallennus
+options_tgain=Toiston äänenvoimakkuustaso
+options_rings=Soi ennen vastaamista
+options_perport=Voidaan asettaa jokaiselle sarjaportille
+options_ans=Vastaustila
+options_keep=Pidätkö tietoja tai DTMF-koodeja sisältäviä viestejä?
+options_light=Ota automaattinen vastausvalo käyttöön vastaanotettuasi?
+options_owner=Viestitiedostojen Unix-omistaja
+options_group=Unix-ryhmä viestitiedostoille
+options_mode=Viestitiedostojen käyttöoikeudet
+options_prog=Tallennuksen jälkeen viesti
+options_prog0=Älä tee mitään
+options_prog1=Sähköposti WAV-muodossa osoitteeseen
+options_prog2=Suorita komento viestitiedostossa
+options_err=Vastaajan asetusten tallentaminen epäonnistui
+options_erings=Puuttuva tai kelpaamaton määrä soittoja
+options_erings2=Renkaiden lukumäärän on oltava vähintään 2
+options_emaxlen=Puuttuva tai virheellinen viestin enimmäispituus
+options_eminlen=Puuttuva tai virheellinen viestin vähimmäispituus
+options_ethresh=Puuttuva tai virheellinen hiljaisuuskynnys
+options_ergain=Puuttuva tai virheellinen nauhoituksen äänenvoimakkuustaso
+options_ergain2=Äänityksen äänenvoimakkuuden on oltava välillä 0–100
+options_etgain=Puuttuva tai virheellinen toiston äänenvoimakkuustaso
+options_etgain2=Toiston äänenvoimakkuuden on oltava välillä 0 - 100
+options_eemail=Puuttuva tai virheellinen sähköpostiosoite
+options_eprog=Puuttuva tai puuttuva ohjelma suoritettavaksi
+options_eowner=Puuttuva tai virheellinen Unix-käyttäjä viestitiedostoille
+options_egroup=Puuttuva tai virheellinen Unix-ryhmä viestitiedostoille
+options_emode=Puuttuvat tai virheelliset oktaalilupat viestitiedostoille
+
+received_title=Vastaanotetut viestit
+recieved_desc=Palvelimen vastaanottamat vastaajaviestit luetellaan alla. Kuuntele viesti napsauttamalla päivämäärää/aikaa ensimmäisessä sarakkeessa.
+received_none=Vastaanotettuja vastaajaviestejä ei löytynyt.
+received_date=Vastaanotettu
+received_size=Tiedoston koko
+received_speed=Näytteenottotaajuus
+received_type=Äänimuoto
+received_delete=Poista valitut viestit
+received_move=Muunna valitut tervehdyksiksi
+received_all=Valitse kaikki
+received_invert=Käänteinen valinta
+
+listen_efile=Virheellinen viestitiedostonimi!
+listen_epath=Vastaajaviestiä ei enää ole
+
+delete_efile=Virheellinen viestitiedostonimi!
+
+messages_title=Tervehdysviestit
+messages_desc=Tällä sivulla on luettelo tervehdysviesteistä, jotka soitetaan, kun soittaja muodostaa yhteyden puhelinvastaajaan. Jos sinulla on enemmän kuin yksi, käytetään yhtä satunnaisesti valittua viestiä.
+messages_file=Tiedoston nimi
+messages_none=Tervehdysviestejä ei ole saatavana.
+messages_updesc=Tämän lomakkeen avulla voit lähettää ylimääräisen tervehdysviestin WAV-tiedoston, joka muunnetaan valittuun muotoon modeemin käyttämistä varten. Ladatun WAV-näytteenottotaajuuden tulisi olla sama kuin vastaanotettujen viestien näytetaajuuden, samoin kuin valitun muodon.
+messages_upload=Lähetä viesti
+messages_fmt=muuntaa
+
+pvfdesc=$1, $2 bittiä
+
+upload_err=Viestin lisäys epäonnistui
+upload_emessage=WAV-tiedostoa ei ole valittu
+upload_ewav=WAV-tiedoston muuntaminen epäonnistui : $1 
+upload_epvf=RMD-tiedoston luominen epäonnistui : $1 
+upload_esame=Viestitiedosto $1 on jo olemassa
+
+log_apply=Sovellettu kokoonpano
+log_upload=Ladattu tervehdysviesti $1 
+log_move=Muunnettu $1 vastaanotetut viestit
+log_delete0=Poistettu $1 vastaanotetut viestit
+log_delete1=Poistettu $1 tervehdysviesti
+log_options=Vaihdetut vastaajaasetukset
+log_vgetty_create=Lisätty sarjaportti $1 
+log_vgetty_modify=Muokattu sarjaportti $1 
+log_vgetty_delete=Sarjaportti $1 poistettu
+
+email_subject=Vastaajaviesti
+email_body=Vastaajaviesti vastaanotettu $1 $2 : lla.

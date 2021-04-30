@@ -1,0 +1,79 @@
+index_title=Τεκμηρίωση συστήματος
+index_header=Αναζήτηση τεκμηρίωσης συστήματος
+index_for=Ψάχνω για
+index_where=Αναζήτηση στο
+index_alldoc=Όλα τα έγγραφα
+index_man=Μη αυτόματες σελίδες
+index_doc=Τεκμηρίωση συσκευασίας
+index_kernel=Τεκμηρίωση του πυρήνα
+index_info=Σελίδες πληροφοριών
+index_howto=HOWTO έγγραφα
+index_kde=Τεκμηρίωση του KDE
+index_perl=Τεκμηρίωση μονάδας Perl
+index_custom=Προσαρμοσμένη τεκμηρίωση
+index_help=Βοήθεια Webmin
+index_reset=Επαναφορά
+index_search=Αναζήτηση
+index_return=φόρμα αναζήτησης
+index_type=Αγώνας
+index_name=Μόνο όνομα
+index_data=Όνομα και περιεχόμενο
+index_google=Αναζήτηση Google
+index_others=Όταν αναζητάτε τεκμηρίωση από άλλη ενότητα, επιτρέψτε την αναζήτηση σε ..
+index_other_man=Μη αυτόματες σελίδες
+index_other_help=Βοήθεια Webmin
+index_other_doc=Τεκμηρίωση συσκευασίας
+index_other_kernel=Τεκμηρίωση του πυρήνα
+index_other_howto=HOWTO έγγραφα
+index_other_perl=Τεκμηρίωση μονάδας Perl
+index_other_google=Μηχανή αναζήτησης Google
+index_other_kde=Τεκμηρίωση του KDE
+index_and=Ταίριασμα όλων
+index_or=Ταιριάξτε με οποιοδήποτε
+
+search_efor=Δεν υπάρχει σελίδα χειρωνακτικής αναζήτησης για εισαγωγή
+search_title=Αποτελέσματα αναζήτησης
+search_desc=Περιγραφή
+search_type=Τύπος
+search_file=Σελίδα ή αρχείο
+search_man=Μη αυτόματη σελίδα
+search_howto=HOWTO έγγραφο
+search_doc=Τεκμηρίωση συσκευασίας
+search_kernel=Τεκμηρίωση του πυρήνα
+search_kde=Τεκμηρίωση του KDE
+search_perl=Μονάδα Perl
+search_help=Βοήθεια Webmin
+search_custom=Προσαρμοσμένη τεκμηρίωση
+search_none=Δεν βρέθηκε καμία τεκμηρίωση που να αντιστοιχεί στο $1 
+search_for=Για το $1 
+search_google=Αποτέλεσμα αναζήτησης Google
+search_doxfer=Ηλεκτρονική τεκμηρίωση Webmin
+
+howto_title=HOWTO Document
+howto_header=HOWTO αρχείο εγγράφου $1 
+howto_epath=Μη έγκυρη διαδρομή εγγράφου HOWTO
+
+doc_title=Τεκμηρίωση συσκευασίας
+doc_header=Αρχείο εγγράφου πακέτου $1 
+doc_epath=Μη έγκυρη διαδρομή τεκμηρίωσης πακέτου
+
+man_title=Εγχειρίδιο σελίδας
+man_header=Χειροκίνητη σελίδα για $1 ($2)
+man_noentry=Η μη αυτόματη σελίδα για το $1 δεν υπάρχει!
+man_epath=Η χειροκίνητη σελίδα δεν μπορεί να είναι διαδρομή!
+
+kernel_title=Αρχείο πυρήνα
+kernel_header=Αρχείο εγγράφου πυρήνα $1 
+kernel_epath=Μη έγκυρη διαδρομή εγγράφου πυρήνα
+
+kde_title=Τεκμηρίωση του KDE
+kde_header=Αρχείο εγγράφου του KDE $1 
+kde_epath=Μη έγκυρη διαδρομή τεκμηρίωσης του KDE
+
+perl_title=Μονάδα Perl
+perl_header=Τεκμηρίωση για τη μονάδα Perl $1 
+perl_emod=Μη έγκυρο όνομα μονάδας Perl
+
+acl_allow=Μπορούν να επεξεργαστούν επιτρεπόμενους τύπους αναζήτησης
+
+check_ecannot=Δεν επιτρέπεται η επεξεργασία επιτρεπόμενων τύπων αναζήτησης

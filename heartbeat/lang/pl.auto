@@ -1,0 +1,103 @@
+index_title=Monitor pulsu
+index_return=monitor bicia serca
+index_edir=Katalog konfiguracji pulsu $1 nie istnieje. Być może Heartbeat nie jest zainstalowany lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+index_start=Uruchom Monitor pulsu
+index_startmsg=Kliknij ten przycisk, aby rozpocząć proces monitorowania pulsu. Umożliwi to automatyczne przełączanie awaryjne usługi w systemie z bieżącą konfiguracją.
+index_apply=Zatwierdź zmiany
+index_applymsg=Kliknij ten przycisk, aby wymusić na działającym procesie monitorowania pulsu przeładowanie bieżącej konfiguracji.
+index_eha_cf=Plik konfiguracyjny pulsu $1 nie został znaleziony w twoim systemie. Może nie został jeszcze skopiowany na miejsce lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+index_eharesources=Plik zasobów $1 nie został znaleziony w twoim systemie. Może nie został jeszcze skopiowany na miejsce lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+index_eauthkeys=Plik kluczy uwierzytelniających $1 nie został znaleziony w twoim systemie. Może nie został jeszcze skopiowany na miejsce lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+index_ereq_resource_cmd=Skrypt żądający zasobów z drugiego węzła ($1) nie został znaleziony w twoim systemie. Może nie został jeszcze skopiowany na miejsce lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+index_version=Wersja pulsu $1 
+index_noversion=Ostrzeżenie - nie można automatycznie wykryć wersji Heartbeat zainstalowanej w systemie. Powinieneś to ustawić na stronie <a href='$1'>konfiguracji modułu</a>.
+index_status=Status bicia serca
+
+conf_title=Opcje konfiguracji
+conf_header=Opcje konfiguracji pulsu
+conf_serials=Szeregowe porty pulsu
+conf_baud=Szybkość transmisji dla portu szeregowego
+conf_bcasts=Interfejsy pulsu Ethernet
+conf_none=Żaden
+conf_udpport=Port pulsu UDP
+conf_mcast=Urządzenie pulsu multiemisji
+conf_mcastv=Urządzenie $1, grupa $2, port $3, TTL $4, sprzężenie zwrotne $5 
+conf_enabled=Włączone
+conf_disabled=Niepełnosprawny
+conf_keepalive=Czas między uderzeniami serca
+conf_nice_failback=Niezłe zachowanie po awarii
+conf_secs=sekundy
+conf_deadtime=Czas przed węzłem jest uważany za martwy
+conf_watchdog=Plik urządzenia nadzorującego
+conf_node=Hosty w klastrze
+conf_logfile=Plik dziennika pulsu
+conf_logfacility=Narzędzie dziennika Syslog
+conf_initdead=Początkowy czas martwy
+conf_ok=Zapisz Opcje
+conf_err=Nie udało się zapisać opcji
+conf_ebaud=Brakująca lub nieprawidłowa szybkość transmisji
+conf_ebcast=Nie wprowadzono interfejsów transmisji pulsu
+conf_ebcastif=„$1” nie jest prawidłowym interfejsem rozgłoszeniowym
+conf_eudpport=Brakujący lub nieprawidłowy port pulsu
+conf_ekeepalive=Brakujący lub nieprawidłowy czas między uderzeniami serca
+conf_edeadtime=Brakujący lub nieprawidłowy czas martwy
+conf_ewatchdog=Brakujący lub nieistniejący plik urządzenia nadzorującego
+conf_enonode=Nie wprowadzono hostów klastra
+conf_ethisnode=Tego hosta $1 nie ma na liście hostów klastra
+conf_elogfile=Brakująca lub nieprawidłowa nazwa pliku dziennika
+conf_einitdead=Brakujący lub nieprawidłowy początkowy czas martwy
+conf_einitdead2=Początkowy czas przestoju musi być co najmniej dwa razy dłuższy niż czas, zanim węzeł zostanie uznany za martwy
+conf_emcast_dev=Brakujące lub nieprawidłowe urządzenie multiemisji
+conf_emcast_ip=Brakujący lub nieprawidłowy adres grupy multiemisji
+conf_emcast_port=Brakujący lub nieprawidłowy numer portu multiemisji
+conf_emcast_ttl=Brakujący lub nieprawidłowy czas życia multiemisji
+conf_auto_on=$ {conf_enabled}
+conf_auto_off=$ {conf_disabled}
+conf_auto_legacy=Tryb starszej wersji
+conf_auto_=$ {default}
+
+res_title=Zasoby klastra
+res_node=Węzeł podstawowy
+res_ips=Adresy IP
+res_servs=Usługi węzłów
+res_none=Żaden
+res_nores=W systemie nie zdefiniowano żadnych zasobów klastra.
+res_add=Dodaj zasób klastra
+res_return=lista zasobów
+res_active=Status zasobu
+res_getserv=Zdobądź zasób
+res_hbdown=Bicie serca w dół
+res_up=W GÓRĘ
+res_down=NA DÓŁ
+
+node_create=Dodaj zasób klastra
+node_edit=Edytuj zasób klastra
+node_header=Szczegóły zasobów klastra
+node_node=Główny węzeł dla zasobu
+node_ips=Adresy IP zasobów
+node_ip=adres IP
+node_cidr=Maska sieci CIDR
+node_broad=Adres transmisji
+node_servs=Usługi w zakresie zasobów
+node_serv=Usługa
+node_args=Dodatkowe argumenty
+node_err=Nie udało się zapisać zasobu klastra
+node_enone=Brakujący lub nieprawidłowy węzeł główny
+node_eip=„$1” nie jest prawidłowym adresem IP
+node_ecidr=„$1” nie jest prawidłowym CIDR
+node_ebroad=„$1” nie jest prawidłowym adresem rozgłoszeniowym
+
+auth_title=Klucze uwierzytelniające
+auth_header=Uwierzytelnianie węzła klastra
+auth_mode=Tryb uwierzytelniania
+auth_crc=CRC (bez zabezpieczeń)
+auth_sha1=SHA1 z hasłem
+auth_md5=MD5 z hasłem
+auth_err=Nie udało się zapisać kluczy uwierzytelniających
+auth_emd5=Brakujące lub nieprawidłowe hasło MD5
+auth_esha1=Brakujące lub nieprawidłowe hasło SHA1
+
+start_err=Nie udało się uruchomić pulsu
+
+apply_err=Nie udało się zastosować zmian
+apply_epid=Proces nie jest już uruchomiony

@@ -20,7 +20,7 @@ our %access_mods = map { $_, 1 } split(/\s+/, $access{'mods'});
 our %access_users = map { $_, 1 } split(/\s+/, $access{'users'});
 our %parser_cache;
 our (%text, $module_config_directory, $root_directory, $webmin_logfile,
-     $module_var_directory);
+     $module_var_directory, $remote_user);
 
 =head2 list_webmin_log([only-user], [only-module], [start-time, end-time])
 
@@ -44,7 +44,7 @@ my ($onlyuser, $onlymodule, $start, $end) = @_;
 my %index;
 &build_log_index(\%index);
 my @rv;
-open(LOG, $webmin_logfile);
+open(LOG, "<".$webmin_logfile);
 my ($id, $idx);
 while(($id, $idx) = each %index) {
 	my ($pos, $time, $user, $module, $sid) = split(/\s+/, $idx);
@@ -158,7 +158,7 @@ my @files = &expand_base_dir(-d $base ? $base : $oldbase);
 # Read the diff files
 foreach my $file (@files) {
         my ($type, $object, $diff, $input);
-	open(DIFF, $file);
+	open(DIFF, "<".$file);
         my $line = <DIFF>;
         while(<DIFF>) { $diff .= $_; }
         close(DIFF);
@@ -169,7 +169,7 @@ foreach my $file (@files) {
                 $type = $1; $object = $2;
                 }
 	if ($type eq "exec") {
-		open(INPUT, $file.".input");
+		open(INPUT, "<".$file.".input");
 		while(<INPUT>) {
 			$input .= $_;
 			}
@@ -209,7 +209,7 @@ my @files = &expand_base_dir(-d $base ? $base : $oldbase);
 
 foreach my $file (@files) {
         my ($type, $object, $data);
-	open(FILE, $file);
+	open(FILE, "<".$file);
         my $line = <FILE>;
 	$line =~ s/\r|\n//g;
         while(<FILE>) { $data .= $_; }
@@ -315,7 +315,10 @@ Returns 1 if the current Webmin user can view log entries for the given user.
 =cut
 sub can_user
 {
-return $access_users{'*'} || $access_users{$_[0]};
+my ($user) = @_;
+return $access_users{'*'} ||
+       $access_users{'x'} && $user eq $remote_user ||
+       $access_users{$user};
 }
 
 =head2 can_mod(module)
@@ -325,7 +328,8 @@ Returns 1 if the current Webmin user can view log entries for the given module.
 =cut
 sub can_mod
 {
-return $access_mods{'*'} || $access_mods{$_[0]};
+my ($mod) = @_;
+return $access_mods{'*'} || $access_mods{$mod};
 }
 
 =head2 get_action(id)
@@ -338,7 +342,7 @@ sub get_action
 {
 my %index;
 &build_log_index(\%index);
-open(LOG, $webmin_logfile);
+open(LOG, "<".$webmin_logfile);
 my @idx = split(/\s+/, $index{$_[0]});
 seek(LOG, $idx[0], 0);
 my $line = <LOG>;
@@ -364,7 +368,7 @@ dbmopen(%$index, $ifile, 0600);
 my @st = stat($webmin_logfile);
 if (@st && (!$index->{'lastchange'} || $st[9] > $index->{'lastchange'})) {
 	# Log has changed .. perhaps need to rebuild
-	open(LOG, $webmin_logfile);
+	open(LOG, "<".$webmin_logfile);
 	if ($index->{'lastsize'} && $st[7] >= $index->{'lastsize'}) {
 		# Gotten bigger .. just add new lines
 		seek(LOG, $index->{'lastpos'}, 0);

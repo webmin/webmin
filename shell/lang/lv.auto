@@ -1,0 +1,18 @@
+index_title=Komandu čaula
+index_ok=Izpildīt komandu:
+index_history=Komandu vēsture
+index_clear=Skaidra vēsture
+index_clearcmds=Skaidras komandas
+index_desc=Zemāk esošajā teksta laukā ievadiet izpildāmu čaulas komandu. Komandu <tt>cd</tt> var izmantot, lai mainītu direktoriju nākamajām komandām.
+index_pok=Izpildiet iepriekšējo komandu
+index_edit=Rediģēt iepriekšējo
+index_trunced=$2 kopējais izlaide tika saīsināta $1.
+index_timedout=Komandas darbība tika pārtraukta pēc skrējiena $1 sekundes.
+
+acl_user=Izpildiet komandas kā lietotājs
+acl_user_def=Pašreizējais Webmin lietotājs
+acl_shellenv=Vai izmantot izvēlētā lietotāja vidi?
+acl_chroot=Chroot direktorijā
+
+log_run=Izpildīja komandu $1 
+log_clear=Notīrīta komandu vēsture

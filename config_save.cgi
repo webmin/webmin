@@ -9,6 +9,8 @@ require './config-lib.pl';
 &ReadParse();
 $m = $in{'module'};
 &error_setup($text{'config_err'});
+%module_info = &get_module_info($m);
+%module_info || &error($text{'config_emodule'});
 &foreign_available($m) || &error($text{'config_eaccess'});
 %access = &get_module_acl(undef, $m);
 $access{'noconfig'} && &error($text{'config_ecannot'});
@@ -30,10 +32,16 @@ if (-r "$mdir/config_info.pl") {
 	}
 if (!$func) {
 	# Use config.info to parse config inputs
-	&parse_config(\%newconfig, "$mdir/config.info", $m);
+	my $cdir;
+	foreach my $d (map { $_."/".$m } @theme_root_directories) {
+		$cdir = $d if (-r $d."/config.info");
+		}
+	$cdir ||= $mdir;
+	&parse_config(\%newconfig, "$cdir/config.info", $m);
 	}
 &write_file("$config_directory/$m/config", \%newconfig);
 &unlock_file("$config_directory/$m/config");
+&save_module_preferences($m, \%newconfig);
 
 # Call any post-config save function
 local $pfn = "${m}::config_post_save";

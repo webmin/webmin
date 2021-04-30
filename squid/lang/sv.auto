@@ -1,0 +1,402 @@
+index_msgnosupported2=Din version av Squid stöds inte av Webmin. Endast versioner från $1 till $2 stöds av denna modul.
+index_delay=Försena pooler
+index_authparam=Autentiseringsprogram
+index_headeracc=Åtkomstkontroll för huvud
+index_refresh=Uppdatera regler
+index_cachemgr=Cache Manager-lösenord
+index_squidver=Kommandot <tt>$1</tt> returnerade :
+index_version=Bläckfiskversion $1
+
+index_stop=Sluta bläckfisken
+index_stopdesc=Klicka på den här knappen för att stoppa den pågående Squid-proxyservern. När klienter som har stoppats kommer inte att kunna göra webb- eller FTP-förfrågningar.
+index_start=Starta bläckfisk
+index_startdesc=Klicka på den här knappen för att starta Squid-proxyservern med den aktuella konfigurationen.
+index_restart=Använd konfigurering
+index_restartdesc=Klicka på den här knappen för att aktivera den nuvarande bläckfiskkonfigurationen.
+index_iptables=Port Redirection Setup
+index_squid=Squid Proxy Server
+index_manual=Redigera konfigurationsfiler
+
+manual_title=Redigera konfigurationsfiler
+manual_file=Välj en konfigurationsfil som ska redigeras:
+manual_change=Förändra
+manual_editing=Använd textrutan nedan för att manuellt redigera konfiggarna i $1. Var försiktig, eftersom ingen syntax eller giltighetskontroll kommer att göras.
+manual_err=Det gick inte att spara konfigurationsfilen
+manual_efile=Ogiltigt konfigurationsfilnamn!
+manual_ecannot=Du får inte redigera konfigurationsfiler manuellt
+
+acl_eusersall=Alla användare
+acl_euserssel=Endast de listade ..
+acl_nodns=Inaktivera sökningar?
+acl_rfcusersr=RFC931-användare Regexps
+acl_mai=Max inloggnings-IP per användare
+acl_maistrict=<b>Strikt tvingad</b>
+acl_mairemind=kom ihåg att ställa in Authenticate IP Cache till> 0 i "Authentication Programs Module"
+acl_rpmt=Svara MIME-typ
+acl_extclass=Programklass
+acl_extargs=Ytterligare argument
+acl_file=Lagra ACL-värden i filen
+acl_nofile=Bläckfiskkonfiguration
+acl_infile=Separat fil
+acl_keep=Vill du bara använda befintligt innehåll i filen?
+
+aclsave_enofile=Inget ACL-filnamn har angetts
+aclsave_ealready=ACL-fil finns redan
+
+cach_ecannot=Du får inte komma åt statistik för cachemanager
+cach_esame=<b>Squid cachemgr.cgi körbar</b> är inställd på Webmins cachemgr.cgi-program, inte det som levereras av Squid.
+
+clear_ecannot=Du får inte rensa och bygga om cachen
+clear_url=Ta bort en URL från cache:
+clear_ok=Ta bort
+
+eacl_ecannot=Du får inte redigera åtkomstkontroll
+eacl_noprr=Inga proxysvarbegränsningar definierade
+eacl_addprr=Lägg till proxysvarbegränsning.
+
+eacl_replypr=Svara på proxybegränsningar
+eacl_replynopr=Inga svarsproxybegränsningar definierade
+
+eacl_ext=Externa ACL-program
+eacl_ename=Klassnamn
+eacl_format=Inmatningsformat
+eacl_program=Hanterarprogram
+eacl_noext=Inga externa ACL-program definierade.
+eacl_addext=Lägg till externt ACL-program.
+eacl_eclass=Ingen programklass vald
+eacl_cname=Skriv namn
+eacl_file=Från fil $1
+eacl_hdelete=Radera valda begränsningar
+
+eadm_ecannot=Du får inte redigera administrativa alternativ
+
+eauth_ecannot=Du får inte redigera proxyverifiering
+
+ec_ecannot=Du får inte redigera cache-alternativ
+ec_opts=alternativ
+ec_coss=COSS
+ec_gap=Maximal klientläsningsklyftan
+ec_maxreplies=Maximala svarstorlekar
+ec_maxrn=Storlek (kB)
+ec_maxracls=För förfrågningar som matchar ACL: er (lämnas tomma för alla)
+
+ech_siq2=Avvisa ICP-frågor?
+ech_pass=Vidarebefordra klientautentisering till den här cachen
+ech_upass=Vidarebefordra kundinloggning med lösenord:
+ech_timeo=Anslutningsgräns för värd
+ech_digest=Värdens cache-smälta URL
+ech_maxconn=Maximal samtidiga anslutningar
+ech_miss=Tillåt missförfrågningar?
+ech_htcp=Använd HTCP istället för ICP?
+ech_origin=Behandla värd som ursprungsserver?
+ech_force=Tvinga värd: rubrik till
+ech_same=Oförändrad
+ech_ssl=Ansluta med SSL?
+
+eicp_ecannot=Du får inte redigera andra cacheminne
+eicp_thost=Värdnamn
+eicp_ttype=Typ
+eicp_tpport=Proxy-port
+eicp_tiport=ICP-port
+eicp_delete=Radera valda cacheminne
+
+elogs_ecannot=Du får inte redigera loggning
+elogs_none=Ingen
+elogs_logformat=Åtkomstloggformat
+elogs_fname=Formatera namn
+elogs_ffmt=Definition av format
+elogs_logformat1=Standard (heter <tt>bläckfisk</tt>, med standardformat)
+elogs_logformat0=Anpassade format definierade nedan ..
+elogs_access=Få åtkomst till loggfiler
+elogs_afile=Loggfil
+elogs_afmt=Formatera namn
+elogs_aacls=Logga bara för ACL: er
+elogs_notset=Inte inställd
+elogs_dont=Logga inte in
+elogs_file=Fil $1
+elogs_squid=Bläckfisk standard
+
+emem_ecannot=Du får inte redigera minnesanvändning
+
+emisc_ecannot=Du får inte redigera diverse alternativ
+emisc_hash=Har du bara en HTTP Accel-server?
+emisc_wccprtr=WCCP-routeradress
+emisc_wccpin=WCCP Inkommande adress
+emisc_wccpout=WCCP utgående adress
+emisc_none=Ingen
+emisc_virtual=Virtuell
+
+eports_ecannot=Du får inte redigera portar och nätverk
+eports_ssl=SSL-adresser och portar
+eports_opts=Alternativ för port
+eports_def=Standard (vanligtvis 3128)
+eports_sel=Anges nedan ..
+eports_unc=Gör orena SSL-avstängningar?
+eports_checkhost=Validera värdnamn i URL: er?
+eports_underscore=Tillåt understruk i värdnamn?
+eports_all=Allt
+
+eprogs_ecannot=Du får inte redigera hjälpprogram
+eprogs_sppe=Ping-program aktiverat?
+eprogs_startup=Program som börjar initialt
+eprogs_idle=Minsta program att köra
+eprogs_concurrency=Antal samtidiga förfrågningar per program
+eprogs_capweb=Webmin standard
+eprogs_ttl=Autentiseringscache-tid
+eprogs_aittl=Autentisera IP-cache-tid
+eprogs_realm=Autentiseringsområde
+
+euser_e=Aktiverad?
+
+ahttp_replyheader=Skapa proxysvarbegränsning
+ahttp_replyheader1=Redigera begränsning för proxysvar
+ahttp_replypr=Proxy Svar Begränsning
+
+icache_ecannot=Du får inte initialisera cachen
+icache_euser=Användare för att köra Squid som inte finns
+
+scache_emaxrs=Ogiltig maximal kroppsstorlek i rad $1
+
+slogs_efname=Ogiltigt formatnamn i rad $1
+slogs_effmt=Saknar loggformat i rad $1
+slogs_eafile=Saknad eller ogiltig loggfil i rad $1
+
+sprog_emsg9='$1' är inte en giltig cachetid
+sprog_emsg10='$1' är inte en giltig TTL
+sprog_echildren=Antalet program måste vara ett nummer större än noll
+
+suser_etaken=Användarnamnet används redan
+
+start_ecannot=Du får inte starta bläckfisk
+stop_ecannot=Du får inte stoppa bläckfisken
+
+calamaris_ecannot=Du får inte komma åt Calamaris-logganalys
+
+lib_aclrpmt=Svara MIME-typ
+lib_aclrur=RFC931 Användarreg
+lib_aclext=Externt program
+lib_aclmuip=Max användar-IP
+
+log_authparam=Ändrade alternativ för autentiseringsprogram
+log_https_delete=Raderade $1 proxybegränsningar
+log_headeracc_create=Skapad rubrikåtkomstregel
+log_headeracc_modify=Ändrad rubrikåtkomstregel
+log_headeracc_delete=Raderad rubrikåtkomstregel
+log_headeracc_move=Flyttad rubrikåtkomstregel
+log_icps_delete=Raderade $1 ICP-begränsningar
+log_hosts_delete=Raderade $1 cache-värdar
+log_delay=Ändrade alternativ för global fördröjningspool
+log_pool_create=Lagt till fördröjningspool $1
+log_pool_modify=Modifierad fördröjningspool $1
+log_pool_delete=Raderad fördröjningspool $1
+log_pools_delete=Raderade $1 förseningspooler
+log_delay_create=Lade till ACL för fördröjningspool $1
+log_delay_modify=Modifierad ACL för fördröjningspool $1
+log_delay_delete=Raderad ACL för fördröjningspool $1
+
+log_delay_move=Flyttade ACL för fördröjningspool $1
+log_refresh_create=Skapad uppdateringsregel för $1
+log_refresh_modify=Modifierad uppdateringsregel för $1
+log_refresh_delete=Raderad uppdateringsregel för $1
+
+log_refresh_move=Flyttad uppdateringsregel för $1
+log_refreshes_delete=Raderade $1 uppdateringsregler
+log_iptables=Uppdaterad inställning av portomdirigering
+log_purge=Borttagen URL $1 från cache
+log_cachemgr=Ändrade cachemanagerlösenord
+
+acl_sections=Tillåtna konfigurationssidor
+acl_start=Kan starta och stoppa bläckfisk?
+acl_restart=Kan applicera Squid-konfiguration?
+
+delay_title=Försena pooler
+delay_add=Lägg till en ny fördröjningspool.
+delay_num=siffra
+delay_class=Klass
+delay_class_1=Aggregate
+delay_class_2=Aggregat och individuell
+delay_class_3=Samlade, individuella och nätverk
+delay_class_4=Samlade, individuella, nätverk och användare
+delay_class_5=Tagga gruppering
+delay_agg=Sammanlagd gräns
+delay_ind=Individuell gräns
+delay_net=Nätverksgräns
+delay_user=Användargräns
+delay_tag=Taggräns
+delay_none=Inga fördröjningspooler har definierats än.
+delay_unlimited=Obegränsat
+delay_param=$1/sek, $2 max
+delay_header=Globala alternativ för fördröjningspool
+delay_initial=Inledande hinknivå
+delay_err=Det gick inte att spara alternativ för fördröjningspool
+delay_ecannot=Du får inte redigera fördröjningspooler
+delay_epercent='$1' är inte en giltig initial procentdel för hinknivå
+delay_return=fördröjning pooler lista
+delay_delete=Radera valda fördröjningspooler
+pool_title1=Lägg till Delay Pool
+pool_title2=Redigera Delay Pool
+pool_header=Försena poolalternativ
+pool_num=Poolnummer
+pool_class=Pool klass
+pool_agg=Samlad gräns (för klasserna 1, 2 och 3)
+pool_ind=Individuell gräns (för klasserna 2 och 3)
+pool_net=Nätverksgräns (för klass 3)
+pool_user=Användargräns (för klass 4)
+pool_tag=Taggräns (för klass 5)
+pool_limit1=/ sekund,
+pool_limit2=max
+pool_err=Det gick inte att spara fördröjningspool
+pool_elimit1='$1' är inte ett giltigt antal byte/sekund
+pool_elimit2='$1' är inte ett giltigt maximalt antal byte
+pool_aclheader=ACL: er som matchar för poolen
+pool_noacl=Inga ACL: er att matcha för denna pool har definierats än.
+pool_add=Lägg till en ny ACL för denna pool
+pool_return=försena poolen
+pool_unit0=bitar
+pool_unit1=bitgrupper
+pool_unit2=kb
+pool_unit3=kB
+pool_unit4=Mb
+pool_unit5=MB
+
+dpool_err=Det gick inte att ta bort fördröjningspooler
+dpool_enone=Ingen vald
+
+apool_header=Lägg till Delay Pool ACL
+apool_header1=Redigera Delay Pool ACL
+apool_pr=Fördröj pool ACL
+
+authparam_title=Autentiseringsprogram
+authparam_header=Alternativ för externt autentiseringsprogram
+authparam_ttl=Dags att cache-lösenord för
+authparam_ipttl=Dags att binda användaren till en IP-adress för
+authparam_never=Aldrig
+authparam_ecannot=Du får inte redigera autentiseringsprogram
+authparam_err=Det gick inte att spara autentiseringsprogram
+authparam_bprogram=Grundläggande autentiseringsprogram
+authparam_dprogram=Program för digest-autentisering
+authparam_nprogram=NTLM-autentiseringsprogram
+authparam_reuses=Antal gånger en NTLM-utmaning kan användas igen
+authparam_lifetime=NTLM-utmaningarnas livstid
+authparam_ereuses='$1' är inte ett giltigt antal återanvändningar
+authparam_elifetime='$1' är inte en giltig utmaningstid
+authparam_mui_msg=Autentiserande IP TTL krävs vara större än 0 om du använder en <b>"max_user_ip"</b> ACL. Ange den tid du vill att Squid ska komma ihåg User/IP-relationen. Användaren får bara logga in från den ihågkommen IP tills denna tid har gått, även om de har stängt sin webbläsare.
+ext_title1=Skapa externt program
+ext_title2=Redigera externt program
+ext_header=Externa ACL-programdetaljer
+ext_name=Programtypens namn
+ext_format=Inmatningsformatsträng
+ext_ttl=TTL för cachade resultat
+ext_negative_ttl=TTL för cachade negativa resultat
+ext_concurrency=Antal program som ska köras
+ext_children=Antal program som ska köras
+ext_cache=Cachestorlek
+ext_ttl_u=sekunder
+ext_negative_ttl_u=sekunder
+ext_concurrency_u=program
+ext_children_u=program
+ext_cache_u=bitgrupper
+ext_program=Programväg och argument
+ext_err=Det gick inte att spara externt ACL-program
+ext_ename=Namnet saknas eller ogiltigt
+ext_eformat=Sträng som saknas eller ogiltigt
+ext_ettl=Saknas eller ogiltig TTL
+ext_enegative_ttl=Saknad eller ogiltig negativ TTL
+ext_econcurrency=Det saknas eller ogiltigt antal program
+ext_echildren=Det saknas eller ogiltigt antal program
+ext_ecache=Saknad eller ogiltig cachestorlek
+ext_eprogram=En ogiltig programväg angavs
+ext_eclash=En extern programtyp med samma namn finns redan
+ext_eused=Detta externa program används av en ACL
+
+header_title=Åtkomstkontroll för huvud
+header_none=Inga regler för kontroll av huvudåtkomst har definierats än.
+header_name=HTTP-rubrik
+header_act=Verkan
+header_acls=För ACL: er
+header_add=Lägg till en ny rubrikåtkomstkontrollregel.
+header_create=Skapa rubrikåtkomstregel
+header_create_request_header_access=Skapa begäran Header Access-regel
+header_create_reply_header_access=Skapa svarhuvudåtkomstregel
+header_edit=Redigera rubrikåtkomstregel
+header_edit_request_header_access=Redigera begär rubrikåtkomstregel
+header_edit_reply_header_access=Redigera svarhuvudåtkomstregel
+header_header=Detaljer om HTTP-åtkomstkontrollregler
+header_return=Lista över huvudregelåtkomstregler
+header_ecannot=Du har inte tillåtelse att redigera regler för åtkomstkontroll för rubriker
+header_err=Det gick inte att spara regeln för åtkomstkontroll för rubriker
+header_ename=Saknat eller ogiltigt rubriknamn
+header_request_header_access=Begär rubriker
+header_reply_header_access=Svara rubriker
+
+refresh_title=Uppdatera regler
+refresh_none=Inga uppdateringsregler har definierats än.
+refresh_re=Vanligt uttryck
+refresh_min=Minsta tid
+refresh_pc=Åldersprocent
+refresh_max=Maximal tid
+refresh_add=Lägg till en ny uppdateringsregel.
+refresh_ecannot=Du får inte redigera uppdateringsregler
+refresh_create=Skapa uppdateringsregel
+refresh_edit=Redigera uppdateringsregel
+refresh_return=uppdatera reglerlistan
+refresh_header=Uppdatera regelinformation
+refresh_caseless=Ignorera fall?
+refresh_err=Det gick inte att spara uppdateringsregeln
+refresh_options=Uppdatera regelalternativ
+refresh_override-expire=Tvinga fram lägsta ålder över ålder som anges av servern
+refresh_override-lastmod=Tvinga minsta ålder även på nyligen modifierade objekt
+refresh_reload-into-ims=Konvertera klientens icke-cache-rubriker till If-Modified-Since
+refresh_ignore-reload=Ignorera klientens icke-cache eller ladda om rubriker
+refresh_ere=Reglerande uttryck saknas eller ogiltigt
+refresh_emin=Saknas eller ogiltig minumtid
+refresh_emax=Saknas eller ogiltig maximal tid
+refresh_epc=Åldersprocent saknas eller ogiltig
+refresh_delete=Radera valda uppdateringsregler
+drefresh_err=Det gick inte att ta bort uppdateringsreglerna
+drefesh_enone=Ingen vald
+
+iptables_title=Port Redirection Setup
+iptables_inst0=IPtables-brandväggskommandon som behövs för att ställa in omdirigering av port verkar inte vara installerade på ditt system. Se modulen <a href='$1'>Linux Firewall</a> för mer information.
+iptables_inst1=Modulen <a href='$1'>Linux Firewall</a> verkar inte ha konfigurerats fullt ut på ditt system. Den här modulen använder den för att ställa in omdirigering av Frox-porten.
+iptables_desc=Squid kan utföra transparent HTTP-proxyer för förfrågningar på port $1, genom att ställa in brandväggsregler för att automatiskt vidarebefordra dem till port $2 som Squid lyssnar på. Detta fungerar bara om systemet som kör Squid också är routern för ditt nätverk. Detta kan göras genom att lägga till en IPtables-regel till din brandvägg, förutsatt att den hanteras av <a href='$3'>Linux Firewall</a> -modulen.
+iptables_disabled=Port omdirigering är inaktiverad
+iptables_enabled3=Portomdirigering är aktiverad för klienter i nätverket
+iptables_enabled4=Portomdirigering är aktiverad för klienter i gränssnittet
+iptables_apply=Tillämpa brandvägg och bläckfiskkonfiguration?
+iptables_save=Spara och applicera
+iptables_err=Det gick inte att spara port vidarebefordran
+iptables_enet=Saknad eller ogiltig nätverksadress (bör vara som 192.168.1.0/24)
+iptables_eiface=Saknat eller ogiltigt nätverksgränssnitt
+iptables_eapply=Använd brandvägg misslyckades : $1
+iptables_eapply2=Apply Squid failed : $1
+
+syslog_access=Bläckfiskåtkomstlogg
+syslog_cache=Bläckfisk cachelogg
+syslog_store=Logg för bläckfiskobjekt
+
+purge_err=Det gick inte att rensa URL från cache
+purge_title=Rensa cache-URL
+purge_doing=Rensar URL $1 ..
+purge_done=.. Gjort.
+purge_failed=.. misslyckades! Se felmeddelandet ovan för anledningen.
+
+dhttp_err=Det gick inte att ta bort proxybegränsningar
+dhttp_enone=Ingen vald
+
+dicp_err=Det gick inte att ta bort ICP-begränsningar
+dicp_enone=Ingen vald
+
+cachemgr_title=Cache Manager-lösenord
+cachemgr_ecannot=Du får inte redigera lösenord för cachemanager
+cachemgr_def1=Inga lösenord krävs
+cachemgr_def0=Lösenord och åtgärder som anges nedan ..
+cachemgr_pass=Lösenord
+cachemgr_none=Ingen behövs
+cachemgr_set=Satt till
+cachemgr_disable=Åtgärder inaktiverade
+cachemsg_actions=Tillämpa åtgärder
+cachemgr_all=Använd det här lösenordet för alla åtgärder
+cachemgr_others=Andra handlingar:
+cachemgr_enone=Inget angett - du bör välja <i>Inga lösenord krävs</i> istället
+cachemgr_err=Det gick inte att spara lösenord för cachemanager

@@ -11,7 +11,7 @@ index_refresh=Refresh Modules
 index_refreshmsg=Re-check all Webmin modules for installed servers, and update those that appear in the 'Un-used modules' category.
 
 access_title=IP Access Control
-access_desc=The Webmin server can be configured to deny or allow access only from certain IP addresses using this form. Hostnames (like foo.bar.com) and IP networks (like 10.254.3.0 or 10.254.1.0/255.255.255.128 or 10.254.1.0/25 or 10.254.1.5-10.254.97.127) can also be entered. You should limit access to your server to trusted addresses, especially if it is accessible from the Internet. Otherwise, anyone who guesses your password will have complete control of your system.
+access_desc=The Webmin server can be configured to deny or allow access only from certain IP addresses using this form. Hostnames (like foo.bar.com) and IP networks (like 10.254.3.0 or 10.254.1.0/255.255.255.128 or 10.254.1.0/25 or 10.254.1.5-10.254.97.127 or 2001:DB8::A0BC:0001 or 2001:DB8::/32) can also be entered. You should limit access to your server to trusted addresses, especially if it is accessible from the Internet. Otherwise, anyone who guesses your password will have complete control of your system.
 access_ip=Allowed IP addresses
 access_local=Include local network in list
 access_header=Access control options
@@ -63,6 +63,12 @@ bind_eipv6=IPv6 cannot be enabled unless the $1 Perl module is installed
 bind_redirecting=Redirecting to new URL ..
 bind_elsof=New port $1 is already in use by another process
 bind_eonsystem=The IP address $1 is not active on this system, and so cannot be used
+bind_maxconns=Maximum total concurrent connections
+bind_maxconns_per_ip=Maximum concurrent connections per IP
+bind_maxconns_per_net=Maximum concurrent connections per network
+bind_emaxconns=Maximum concurrent connections must be a number greater than 1
+bind_emaxconns_per_ip=Maximum concurrent connections per IP must be a number greater than 1
+bind_emaxconns_per_net=Maximum concurrent connections per network must be a number greater than 1
 
 log_title=Logging
 log_desc=Webmin can be configured to write a log of web server hits, in the standard CLF log file format. If logging is enabled, you can also choose whether IP addresses or hostnames are recorded, and how often the log file is cleared. When enabled, logs are written to the file $1.
@@ -160,6 +166,7 @@ ui_err=Failed to save user interface options
 ui_ergb=Invalid hexidecimal color value for '$1'
 ui_feedback=Send feedback to
 ui_feedbackmode=Allow sending of feedback?
+ui_nice_size_type=Use binary units of measurement (KiB, MiB, GiB rather than KB, MB, GB)
 ui_feednocc=Only to address above
 ui_hostnamemode=Hostname to display in Webmin
 ui_hnm0=Real hostname
@@ -406,7 +413,7 @@ ssl_already1=Previously generated private key :
 ssl_already2=Previously generated certificate signing request :
 ssl_letsdesc=Let's Encrypt is a free, automated, and open certificate authority that can be used to generate an SSL certificate for use by Webmin.
 ssl_letserr=Unfortunately, Let's Encrypt cannot be used on your system : $1.
-ssl_letserr2=Check the <a href='$1'>module configuration</a> page to ensure you are using the correct path to the <tt>letsencrypt</tt> or <tt>letsencrypt-auto</tt> command.
+ssl_letserr2=Alternately, check the <a href='$1'>module configuration</a> page to ensure you are using the correct path to the <tt>letsencrypt</tt> command.
 ssl_letsdesc2=This page can be used to request a new certificate, which will overwrite any other currently have configured in Webmin. However, the Let's Encrypt service requires that your ownership of the certificate domain be validated by checking that this system hosts the website for the domain. This is done by placing a small temporary file in the website's document directory.
 ssl_letsheader=Options for new SSL certificate
 ssl_letsdoms=Hostnames for certificate
@@ -717,7 +724,7 @@ log_letsencryptcleanup=Removed Let's Encrypt DNS record for $1
 themes_title=Webmin Themes
 themes_desc=Themes control the appearance of the Webmin user interface, including icons, colours, backgrounds and the layout of pages. The selection box below can be used to choose one of the themes installed on your system.
 themes_sel=Current theme :
-themes_default=Old Webmin theme
+themes_default=Legacy Theme
 themes_none=None - let theme decide
 themes_change=Change
 themes_overdesc=Overlays modify the appearance of a theme, by changing the colors, backgrounds and icons. They do not change the layout.
@@ -890,6 +897,9 @@ advanced_redir0=Protocol, host, port and path
 advanced_listdir=List directories without an index file?
 advanced_headers=Extra HTTP headers
 advanced_eheader=Headers must be formatted like <tt>Header: Value</tt>
+advanced_sortconfigs=Save config files sorted by its keys?
+advanced_bufsize=Network buffer size in bytes
+advanced_ebufsize=Network buffer size must be a number greater than zero
 
 syslog_errorlog=Webmin error log
 
@@ -1009,9 +1019,13 @@ sendmail_desc=This page controls how Webmin sends email, such as from scheduled 
 sendmail_header=Mail sending options
 sendmail_system=Local mail server
 sendmail_smtp=Send email using
+sendmail_port=SMTP port
 sendmail_portdef=Use default port
 sendmail_portsel=Use port number
-sendmail_ssl=Use SSL encryption?
+sendmail_ssl=Use SMTP SSL encryption?
+sendmail_ssl0=Never encrypt
+sendmail_ssl1=Always use TLS
+sendmail_ssl2=Switch with STARTTLS
 sendmail_smtp0=Local mail server command
 sendmail_smtp1=Via SMTP to local mail server
 sendmail_smtp2=Via SMTP to remote mail server
@@ -1036,6 +1050,10 @@ sendmail_subject=Message subject
 sendmail_body=Message contents
 sendmail_desc2=This form can be used to send a test email with the settings above, to ensure that mail is being delivered correctly.
 sendmail_send=Send Email
+sendmail_url=Webmin URL for use in email
+sendmail_url_def=Default ($1)
+sendmail_url_custom=Custom URL
+sendmail_eurl=Missing or invalid custom URL
 
 testmail_title=Send Test Email
 testmail_err=Failed to send test message
@@ -1121,10 +1139,11 @@ twofactor_esession=Two-factor authentication cannot be used unless session-based
 
 letsencrypt_title=Let's Encrypt Certificate Request
 letsencrypt_err=Failed to request certificate
-letsencrypt_ecmds=Neither the Let's Encrypt client command <tt>letsencrypt-auto</tt> or the <tt>python</tt> command were found on your system
+letsencrypt_ecmds=Neither the Let's Encrypt client command <tt>certbot</tt> or the <tt>python</tt> command were found on your system
 letsencrypt_epythonmod=The Python module $1 needed by the built-in Let's Encrypt client is not installed
 letsencrypt_epythonver=Failed to get the Python version : $1
 letsencrypt_epythonver2=Python version $1 or above is required, but you only have version $2.
+letsencrypt_certbot=Certbot
 letsencrypt_edroot=The Apache virtual host $1 has no document directory!
 letsencrypt_edom=Missing or invalid domain name
 letsencrypt_erenew=Missing or non-numeric renewal interval
@@ -1150,7 +1169,9 @@ letsencrypt_echain2=Chained certificate downloaded from $1 is empty
 letsencrypt_ecsr=Failed to generate CSR : $1
 letsencrypt_ekeygen=Failed to generate private key : $1
 letsencrypt_enative=The native Let's Encrypt client (certbot) was used previously on this system, and must be used for all future certificate requests
+letsencrypt_eacmedns=Only the offical Let's Encrypt client supports DNS-based validation
 
 announce_hide=Hide This Announcement
+alert_hide=Hide Alert
 
 __norefs=1

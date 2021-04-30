@@ -1,0 +1,25 @@
+index_mail=Pošalji e-poštu po završetku?
+index_noat=Naredba $1 nije pronađena u vašem sustavu - možda nije instalirana ili nije dostupna za vaš operativni sustav.
+index_nostyle=Webmin ne zna upravljati naredbama rasporeda na ovom operativnom sustavu.
+index_stop=Zaustavite poslužitelj zakazanih naredbi
+index_stopdesc=Isključite postupak pozadinskog poslužitelja <tt>atd</tt> koji pokreće planirane naredbe. To će spriječiti izvršavanje naredbi u određeno vrijeme.
+index_start=Pokrenite poslužitelj zakazanih naredbi
+index_startdesc=Pokrenite postupak pozadinskog poslužitelja <tt>atd</tt> koji pokreće planirane naredbe. To je potrebno za izvršavanje naredbi u određeno vrijeme.
+index_boot=Pokrenuti poslužitelj pri pokretanju?
+index_bootdesc=Promijenite ovu postavku da biste omogućili ili onemogućili pokretanje poslužitelja zakazanih naredbi u vrijeme pokretanja sustava.
+
+edit_shortcmd=Naredba za izvršenje
+edit_showfull=Prikaži cijelu skriptu.
+
+log_allow=Promijenjeni dopušteni korisnici
+log_create_job=Napravljena je zakazana naredba za $1 
+log_delete_job=Otkazana zakazana naredba za $1 
+log_exec_job=Izvršena zakazana naredba za $1 
+log_delete_jobs=Otkazane $1 zakazane naredbe
+log_stop=Zaustavljen poslužitelj zakazanih naredbi
+log_start=Započeo poslužitelj zakazanih naredbi
+log_bootup=Omogućen poslužitelj zakazanih naredbi prilikom pokretanja
+log_bootdown=Onemogućen poslužitelj zakazanih naredbi prilikom pokretanja
+
+stop_err=Zaustavljanje poslužitelja nije uspjelo
+start_err=Pokretanje poslužitelja nije uspjelo

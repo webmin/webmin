@@ -1,12 +1,11 @@
-__norefs=1
-domain=Domein naam
-error_dir=Directory $1 bestaat niet
-general=Algemene Configuratie
-index_eidmapd=Idmapd daemon $1 kon niet worden gevonden. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet correct.
 index_title=IDmapd configuratie
+index_eidmapd=Idmapd daemon $1 kon niet worden gevonden. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet correct.
+general=Algemene Configuratie
 mapping=Mapping configuratie
-nobody_group=Niemand groep
-nobody_user=Niemand gebruiker
 pipefs_dir=Pipefs directory
+domain=Domein naam
+nobody_user=Niemand gebruiker
+nobody_group=Niemand groep
 save=Configuratie opslaan en herstarten de deamon
 save_err=Mislukt om configuratie file $1 op te slaan
+error_dir=Directory $1 bestaat niet

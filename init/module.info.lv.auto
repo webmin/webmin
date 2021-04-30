@@ -1,0 +1,3 @@
+desc_lv=Sāknēšana un izslēgšana
+name_lv=Sāknēšanas menedžeris
+longdesc_lv=Uzstādīšanas skripti, kas jāuzsāk sāknēšanas laikā no /etc/init.d vai /etc/rc.local.

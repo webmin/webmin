@@ -1,0 +1,53 @@
+inittab_new=Vytvorte nový proces inicializácie.
+inittab_id=ID
+inittab_active=Aktívne?
+inittab_runlevels=Spúšťacia úroveň behu
+inittab_action=akčné
+inittab_process=proces
+inittab_none=nikto
+inittab_respawn=Obnovený proces
+inittab_wait=wait
+inittab_once=Raz na úrovni
+inittab_boot=Bootovací čas
+inittab_bootwait=Zavádzací čas, počkajte do ukončenia
+inittab_off=Nerob nič
+inittab_ondemand=Kedykoľvek v A, B, C
+inittab_initdefault=Po zavedení systému
+inittab_sysinit=Počas zavádzania systému
+inittab_powerwait=Napájanie klesá
+inittab_powerfail=Napájanie klesá bez čakania
+inittab_powerokwait=Napájanie je obnovené
+inittab_powerfailnow=Výpadok napájania
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Špeciálna kombinácia klávesov
+inittab_kbrequest=Špeciálna kombinácia klávesov
+inittab_return=zoznam procesov
+inittab_apply=Použiť Init Configuration
+inittab_applymsg=Kliknite na toto tlačidlo, aby ste použili aktuálnu konfiguráciu SysV Init pomocou príkazu <tt>telinit q</tt>. Uvedomte si, že akékoľvek chyby vo vašej konfigurácii môžu spôsobiť nepoužiteľnosť systému pri spustení tohto príkazu.
+index_delete=Odstrániť vybrané procesy
+inittab_none2=Vo vašom systéme sa nenašli žiadne bootovacie procesy. To pravdepodobne naznačuje, že nepoužíva konfiguračný súbor SysV init.
+
+edit_inittab_err=Nemáte povolenie upravovať postup
+edit_inittab_title=Upraviť proces $1 
+edit_inittab_details=Podrobnosti procesu
+edit_inittab_del=delete
+edit_inittab_save=Uložiť
+
+new_inittab_err=Nemáte povolenie na vytvorenie nového procesu
+new_inittab_title=Nový proces
+
+save_inittab_err=Nemáte povolený proces
+save_inittab_noid=Chyba, nezadal sa žiadny proces názvu
+save_inittab_already=Chyba, proces názvu už existuje
+
+log_modify=Upravený proces začatia $1 
+log_rename=Premenovaný iniciačný proces $1 na $2 
+log_create=Bol vytvorený proces začatia $1 
+log_delete=Vymazaný iniciačný proces $1 
+log_apply=Aplikovaná konfigurácia
+log_deletes=Odstránené $1 iniciačné procesy
+
+apply_err=Nepodarilo sa použiť konfiguráciu
+
+delete_err=Nepodarilo sa odstrániť procesy
+delete_enone=Žiadne vybraté

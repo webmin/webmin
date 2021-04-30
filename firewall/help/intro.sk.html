@@ -1,67 +1,67 @@
 <header>Firewall Linuxu</header>
 
-<h3>Úvod k modulu</h3>
+<h3>Ãšvod k modulu</h3>
 
-Tento modul umo¾òuje nakonfigurova» funkcie IP tabuliek firewallu, ktoré 
-sa nachádzajú v Linuxovıch jadrach rady 2.4. Na rozdiel od niektorıch inıch 
-programov na konfiguráciu firewallu namiesto vytvárania scriptu pre shell, 
-ktorı nastaví firewall, tento modul preèíta a edituje pravidlá z ulo¾eného 
-súboru vo formáte, ktorı je naèítavanı a zapisovanı programami
+Tento modul umoÅ¾Åˆuje nakonfigurovaÅ¥ funkcie IP tabuliek firewallu, ktorÃ© 
+sa nachÃ¡dzajÃº v LinuxovÃ½ch jadrach rady 2.4. Na rozdiel od niektorÃ½ch inÃ½ch 
+programov na konfigurÃ¡ciu firewallu namiesto vytvÃ¡rania scriptu pre shell, 
+ktorÃ½ nastavÃ­ firewall, tento modul preÄÃ­ta a edituje pravidlÃ¡ z uloÅ¾enÃ©ho 
+sÃºboru vo formÃ¡te, ktorÃ½ je naÄÃ­tavanÃ½ a zapisovanÃ½ programami
 <tt>ipi(6)tables-restore</tt> a <tt>ipi(6)tables-save</tt>. <p>
 
-Ak u¾ máte vo Va¹om systéme firewall, ktorı bol nastavenı ruène alebo pomocou
-scriptu, modul ponúka aj jeho konverziu na IP tabuµky ulo¾ené v súbore a vytvorí 
-script, ktorı aktivuje pravidlá zo súboru pri zavádzaní systému. Av¹ak ak to urobíte 
-a nebudete chcie» pravidlá firewallu na dlh¹í èas pou¾íva», mô¾ete tie¾ aktiváciu 
-pravidiel pri zavádzaní vypnú». <p>
+Ak uÅ¾ mÃ¡te vo VaÅ¡om systÃ©me firewall, ktorÃ½ bol nastavenÃ½ ruÄne alebo pomocou
+scriptu, modul ponÃºka aj jeho konverziu na IP tabuÄ¾ky uloÅ¾enÃ© v sÃºbore a vytvorÃ­ 
+script, ktorÃ½ aktivuje pravidlÃ¡ zo sÃºboru pri zavÃ¡dzanÃ­ systÃ©mu. AvÅ¡ak ak to urobÃ­te 
+a nebudete chcieÅ¥ pravidlÃ¡ firewallu na dlhÅ¡Ã­ Äas pouÅ¾Ã­vaÅ¥, mÃ´Å¾ete tieÅ¾ aktivÃ¡ciu 
+pravidiel pri zavÃ¡dzanÃ­ vypnÃºÅ¥. <p>
 
-<h3>Prehµad IP tabuliek</h3>
+<h3>PrehÄ¾ad IP tabuliek</h3>
 
-Ka¾dı sie»ovı paket, ktorı prichádza dnu, odchádza von alebo je presmerovanı Va¹ím 
-systémom, je skontrolovanı jednım alebo viacerımi zre»azeniami, ktoré urèia, èo sa 
-s ním má sta». Ka¾dé zre»azenie obsahuje nula alebo viac pravidiel, z ktorıch ka¾dé 
-má podmienku (urèujúcu, pre ktoré pakety bude plati») a akciu (urèujúcu, èo sa má sta» 
-s paketmi splòujúcimi podmienku). Ka¾dé zre»azenie má tie¾ predvolenú akciu, ktorá hovorí 
-èo sa má sta» s paketmi, ktoré nespåòajú ani jednu z uvedenıch podmienok. <p>
+KaÅ¾dÃ½ sieÅ¥ovÃ½ paket, ktorÃ½ prichÃ¡dza dnu, odchÃ¡dza von alebo je presmerovanÃ½ VaÅ¡Ã­m 
+systÃ©mom, je skontrolovanÃ½ jednÃ½m alebo viacerÃ½mi zreÅ¥azeniami, ktorÃ© urÄia, Äo sa 
+s nÃ­m mÃ¡ staÅ¥. KaÅ¾dÃ© zreÅ¥azenie obsahuje nula alebo viac pravidiel, z ktorÃ½ch kaÅ¾dÃ© 
+mÃ¡ podmienku (urÄujÃºcu, pre ktorÃ© pakety bude platiÅ¥) a akciu (urÄujÃºcu, Äo sa mÃ¡ staÅ¥ 
+s paketmi splÅˆujÃºcimi podmienku). KaÅ¾dÃ© zreÅ¥azenie mÃ¡ tieÅ¾ predvolenÃº akciu, ktorÃ¡ hovorÃ­ 
+Äo sa mÃ¡ staÅ¥ s paketmi, ktorÃ© nespÄºÅˆajÃº ani jednu z uvedenÃ½ch podmienok. <p>
 	
-Ka¾dé zre»azenie je súèas»ou jednej z troch tabuliek:
+KaÅ¾dÃ© zreÅ¥azenie je sÃºÄasÅ¥ou jednej z troch tabuliek:
 <ul>
 <li><b>Filtrovanie paketov (<tt>filter</tt>)</b><br>
-    Zre»azenia v tejto tabuµke mô¾u by» pou¾ité na ovládanie dát prichádzajúcich do 
-    systému z inıch staníc siete, dát odoslanıch z Vá¹ho systému pou¾ívateµmi a procesmi
-    a dát presmerovanıch va¹ím systémom, ak funguje ako router. <p>
-<li><b>Preklad sie»ovej adresy (<tt>nat</tt>)</b><br>
-    Táto tabuµka mô¾e by» pou¾itá na nastavenie NAT alebo ma¹karády, èo je u¾itoèné, ak chcete 
-    z celej va¹ej siete pristupova» do internetu iba s jednou skutoènou IP adresou. <p>
+    ZreÅ¥azenia v tejto tabuÄ¾ke mÃ´Å¾u byÅ¥ pouÅ¾itÃ© na ovlÃ¡danie dÃ¡t prichÃ¡dzajÃºcich do 
+    systÃ©mu z inÃ½ch stanÃ­c siete, dÃ¡t odoslanÃ½ch z VÃ¡Å¡ho systÃ©mu pouÅ¾Ã­vateÄ¾mi a procesmi
+    a dÃ¡t presmerovanÃ½ch vaÅ¡Ã­m systÃ©mom, ak funguje ako router. <p>
+<li><b>Preklad sieÅ¥ovej adresy (<tt>nat</tt>)</b><br>
+    TÃ¡to tabuÄ¾ka mÃ´Å¾e byÅ¥ pouÅ¾itÃ¡ na nastavenie NAT alebo maÅ¡karÃ¡dy, Äo je uÅ¾itoÄnÃ©, ak chcete 
+    z celej vaÅ¡ej siete pristupovaÅ¥ do internetu iba s jednou skutoÄnou IP adresou. <p>
 <li><b>Zmena paketov (<tt>mangle</tt>)</b><br>
-    Toto zre»azenie slú¾i na úpravu paketov presmerovanıch alebo odoslanıch Va¹im systémom. <p>
+    Toto zreÅ¥azenie slÃºÅ¾i na Ãºpravu paketov presmerovanÃ½ch alebo odoslanÃ½ch VaÅ¡im systÃ©mom. <p>
 </ul>
 
-Ako dodatok ku ¹tandardnım zre»azeniam, ktoré sú súèas»ou ka¾dej tabuµky, mô¾ete tie¾ vytvori» 
-Va¹e vlastné zre»azenie, ktoré mô¾e by» spustené pravidlami zo zabudovanıch zre»azení. To mô¾e by» 
-u¾itoèné pri skupinovıch a zdielanıch pravidlách, ktoré by bolo inak potrebné pou¾i» na viacerıch 
+Ako dodatok ku Å¡tandardnÃ½m zreÅ¥azeniam, ktorÃ© sÃº sÃºÄasÅ¥ou kaÅ¾dej tabuÄ¾ky, mÃ´Å¾ete tieÅ¾ vytvoriÅ¥ 
+VaÅ¡e vlastnÃ© zreÅ¥azenie, ktorÃ© mÃ´Å¾e byÅ¥ spustenÃ© pravidlami zo zabudovanÃ½ch zreÅ¥azenÃ­. To mÃ´Å¾e byÅ¥ 
+uÅ¾itoÄnÃ© pri skupinovÃ½ch a zdielanÃ½ch pravidlÃ¡ch, ktorÃ© by bolo inak potrebnÃ© pouÅ¾iÅ¥ na viacerÃ½ch 
 miestach. <p>
 
-<h3>Hlavná stránka</h3>
+<h3>HlavnÃ¡ strÃ¡nka</h3>
 
-Hlavná stránka tohto modulu zobrazuje v¹etky zre»azenia a pravidlá jednej 
-z dostupnıch tabuliek, vybranej zo zoznamu vµavo hore. Ni¾¹ie sú èasti pre 
-ka¾dé zre»azenie v aktuálnej tabuµke so v¹etkımi pravidlami a ich podmienkami, 
-ktoré najlep¹ie opisujú schopnosti modulu. Pre ka¾dé zre»azenie, ktoré je 
-zabudované v tabuµke, mô¾ete definova» predvolenú akciu prostredníctvom 
-rozbaµovacieho poµa. Vlastnoruène zadefinované zre»azenia mô¾ete odstráni» 
-pomocou tlaèidla Odstráni» zre»azenie. <p>
+HlavnÃ¡ strÃ¡nka tohto modulu zobrazuje vÅ¡etky zreÅ¥azenia a pravidlÃ¡ jednej 
+z dostupnÃ½ch tabuliek, vybranej zo zoznamu vÄ¾avo hore. NiÅ¾Å¡ie sÃº Äasti pre 
+kaÅ¾dÃ© zreÅ¥azenie v aktuÃ¡lnej tabuÄ¾ke so vÅ¡etkÃ½mi pravidlami a ich podmienkami, 
+ktorÃ© najlepÅ¡ie opisujÃº schopnosti modulu. Pre kaÅ¾dÃ© zreÅ¥azenie, ktorÃ© je 
+zabudovanÃ© v tabuÄ¾ke, mÃ´Å¾ete definovaÅ¥ predvolenÃº akciu prostrednÃ­ctvom 
+rozbaÄ¾ovacieho poÄ¾a. VlastnoruÄne zadefinovanÃ© zreÅ¥azenia mÃ´Å¾ete odstrÃ¡niÅ¥ 
+pomocou tlaÄidla OdstrÃ¡niÅ¥ zreÅ¥azenie. <p>
 
-Mô¾ete kliknú» na µubovoµné pravidlo v zre»azení a upravi» ho, kliknú» na ¹ipku 
-vpravo a presunú» ho vy¹¹ie alebo ni¾¹ie alebo kliknú» na tlaèítko prida» a 
-zadefinova» nové pravidlo. Pridávanie alebo úprava pravidla Vás presunie na stránku, 
-na ktorej mô¾ete vybra» pre pravidlo akciu a podmienku, pri ktorej sa má akcia vykona». <p>
+MÃ´Å¾ete kliknÃºÅ¥ na Ä¾ubovoÄ¾nÃ© pravidlo v zreÅ¥azenÃ­ a upraviÅ¥ ho, kliknÃºÅ¥ na Å¡ipku 
+vpravo a presunÃºÅ¥ ho vyÅ¡Å¡ie alebo niÅ¾Å¡ie alebo kliknÃºÅ¥ na tlaÄÃ­tko pridaÅ¥ a 
+zadefinovaÅ¥ novÃ© pravidlo. PridÃ¡vanie alebo Ãºprava pravidla VÃ¡s presunie na strÃ¡nku, 
+na ktorej mÃ´Å¾ete vybraÅ¥ pre pravidlo akciu a podmienku, pri ktorej sa mÃ¡ akcia vykonaÅ¥. <p>
 
-V spodnej èasti stránky je tlaèidlo na aktivovanie aktuálnej konfigurácie, ktoré ju nahrá 
-do jadra pomocou <tt>ipi(6)tables-restore</tt>. Pod ním je tlaèidlo na vykonanie obnovy -
-vezme konfiguráciu, ktorá je nahraná v jadre a umo¾ní ju upravova». Ak to va¹a distribúcia 
-podporuje, je tu e¹te tlaèidlo, ktoré nastaví, èi sa má firewall aktivova» pri zavádzaní 
-systému alebo nie. <p>
+V spodnej Äasti strÃ¡nky je tlaÄidlo na aktivovanie aktuÃ¡lnej konfigurÃ¡cie, ktorÃ© ju nahrÃ¡ 
+do jadra pomocou <tt>ipi(6)tables-restore</tt>. Pod nÃ­m je tlaÄidlo na vykonanie obnovy -
+vezme konfigurÃ¡ciu, ktorÃ¡ je nahranÃ¡ v jadre a umoÅ¾nÃ­ ju upravovaÅ¥. Ak to vaÅ¡a distribÃºcia 
+podporuje, je tu eÅ¡te tlaÄidlo, ktorÃ© nastavÃ­, Äi sa mÃ¡ firewall aktivovaÅ¥ pri zavÃ¡dzanÃ­ 
+systÃ©mu alebo nie. <p>
 
 
 <h3>Filtering chains</h3>

@@ -1,0 +1,2 @@
+desc_zh=备份配置文件
+longdesc_zh=对Webmin模块管理的配置文件执行手动或计划的备份和还原。

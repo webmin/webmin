@@ -209,5 +209,3 @@ upstart_eserver=No server command entered
 upstart_eserver2=Server command does not exist
 upstart_eserver3=Only one server command can be entered
 upstart_return=upstart service
-
-__norefs=1

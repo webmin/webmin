@@ -1,0 +1,75 @@
+index_title=محمل التمهيد GRUB
+index_add=أضف خيار تمهيد جديد.
+index_global=تحرير الخيارات العالمية
+index_globalmsg=قم بتحرير خيارات التمهيد العامة التي تنطبق على جميع خيارات قائمة التمهيد ، واختر الجهاز الذي تم تثبيت GRUB عليه.
+index_install=قم بتثبيت GRUB
+index_installmsg=قم بتثبيت محمّل التمهيد GRUB على$1 لعرض الخيارات أعلاه في وقت التمهيد. سيؤدي هذا إلى إلغاء أي أداة تحميل حالية موجودة مثل LILO ، وقد يجعل نظامك غير قابل للتمهيد!
+index_none=لم يتم تحديد خيارات التمهيد. تأكد من إضافة واحدة على الأقل قبل تثبيت اليرقة.
+index_efile=لم يتم العثور على ملف قائمة GRUB $1 على نظامك. ربما لم يتم تثبيت GRUB ، أو أن <a href='$2'>تكوين الوحدة النمطية</a> غير صحيح.
+index_epath=لم يتم العثور على GRUB القابل للتنفيذ$1 على نظامك. ربما لم يتم تثبيت GRUB ، أو أن <a href='$2'>تكوين الوحدة النمطية</a> غير صحيح.
+index_return=قائمة الخيارات
+
+title_add=إضافة خيار التمهيد
+title_edit=تحرير خيار التمهيد
+title_header=تفاصيل خيار قائمة التمهيد
+title_title=عنوان الخيار
+title_root=قسم صورة التمهيد
+title_noverify=لا تقم بتثبيت والتحقق من التقسيم
+title_other=ملف الجهاز الآخر
+title_sel=المحدد
+title_boot=نظام التشغيل للإقلاع
+title_kernel=نواة
+title_kfile=طريق النواة
+title_args=خيارات النواة
+title_initrd=ملف ذاكرة الوصول العشوائي الأولي
+title_modules=وحدات اضافية
+title_chain=أنظمة تشغيل أخرى
+title_chain_def=من قطاع التقسيم الأول
+title_chain_file=من ملف chainloader
+title_makeactive=هل تريد تنشيط قسم الجذر؟
+title_none1=لا شيء
+title_none2=(إدخال قائمة غير تمهيدية)
+title_err=فشل في حفظ خيار التمهيد
+title_etitle=عنوان الخيار مفقود
+title_eroot=قسم الجذر مفقود
+title_ekernel=مسار kernel مفقود أو غير صالح
+title_echain=ملف أداة تحميل السلسلة غير موجود أو غير صالح
+title_edev=جهاز قسم الجذر غير معتمد$1
+title_einitrd=اسم ملف ذاكرة الوصول العشوائي الأولي مفقود
+title_lock=هل تم قفل كلمة المرور؟
+
+global_title=الخيارات العالمية
+global_header=خيارات قائمة التمهيد العامة
+global_default=خيار التمهيد الافتراضي
+global_fallback=خيار التمهيد الاحتياطي
+global_first=الأول في القائمة
+global_timeout=المهلة قبل تحميل الافتراضي
+global_forever=ننتظر إلى الأبد
+global_secs=ثواني
+global_install=تثبيت GRUB على القرص/التقسيم
+global_sel=المحدد
+global_other=آخر
+global_password=كلمة مرور التمهيد
+global_none=لا شيء
+global_password_file=استخدم ملف القائمة إذا تم إدخال كلمة المرور:
+global_err=فشل في حفظ الخيارات العامة
+global_etimeout=مهلة مفقودة أو غير صالحة
+global_edev=قرص/قسم تثبيت غير معتمد$1
+global_eother=قرص/قسم مفقود أو غير صالح
+global_epassword=كلمة مرور التمهيد مفقودة أو غير صالحة
+global_epasswordfile=اسم ملف القائمة البديلة مفقود
+
+install_title=قم بتثبيت GRUB
+install_err=فشل تثبيت GRUB
+install_efind=تعذر العثور على ملف القائمة
+install_desc=تثبيت GRUB على$1 بالأوامر$2 و$3 ..
+install_ok=.. تثبيت كامل.
+install_failed=.. فشل تثبيت!
+
+log_create_title=خيار التمهيد الذي تم إنشاؤه$1
+log_delete_title=خيار التمهيد المحذوف$1
+log_modify_title=خيار التمهيد المعدل$1
+log_up_title=تم نقل خيار التمهيد لأعلى$1
+log_down_title=تم نقل خيار التمهيد لأسفل$1
+log_global=تم تغيير الخيارات العالمية
+log_install=تثبيت GRUB

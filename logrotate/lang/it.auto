@@ -1,0 +1,115 @@
+index_title=Rotazione del file di registro
+index_econf=Il file di configurazione di rotazione del registro $1 non è stato trovato sul tuo sistema. Forse logrotate non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
+index_ecmd=Il programma di rotazione del registro $1 non è stato trovato sul tuo sistema. Forse non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
+index_eversion=Impossibile ottenere la versione di logrotate con il comando $1 : $2 
+index_version=Logrotate versione $1 
+index_add=Aggiungi un nuovo file di registro da ruotare.
+index_file=File di registro
+index_period=Periodo di rotazione
+index_post=Comando post-rotazione
+index_none=Nessun file di registro è stato ancora definito.
+index_global=Modifica opzioni globali
+index_globaldesc=Fare clic su questo pulsante per modificare le impostazioni applicabili a tutti i file di registro e definire le impostazioni predefinite per i registri.
+index_sched=Modifica programma
+index_scheddesc=Fare clic su questo pulsante per modificare il programma su cui Logrotate viene eseguito da Cron o abilitarlo o disabilitarlo.
+index_nocmd=Nessuna
+index_notset=Non impostato
+index_return=elenco dei file di registro
+index_force=Forza rotazione del registro
+index_forcedesc=Forza la rotazione immediata di tutti i file di registro, anche se non è ancora il momento.
+index_logrotate=logrotate
+index_delete=Elimina rotazioni di registro selezionate
+
+period_daily=Quotidiano
+period_weekly=settimanalmente
+period_monthly=Mensile
+period_never=Mai
+period_bytes=byte
+
+edit_title1=Modifica file di registro
+edit_title2=Crea file di registro
+edit_header=Dettagli del file di registro ruotati
+edit_file=Percorsi dei file di registro
+edit_sched=Programma di rotazione
+edit_rotate=Numero di vecchi registri da conservare
+edit_compress=Comprimi i vecchi file di registro?
+edit_delaycompress=Ritardare la compressione fino al prossimo ciclo?
+edit_copytruncate=Troncare il file di registro in atto?
+edit_ifempty=Ruota anche se il file di registro è vuoto?
+edit_missingok=Ignora il file di registro se mancante?
+edit_size=Dimensione massima prima della rotazione
+edit_always=ignorato
+edit_minsize=Dimensione minima da ruotare
+edit_nominsize=Sempre
+edit_ext=Estensione per nomi di file ruotati
+edit_dateext=Utilizza l'estensione di data per i file ruotati
+edit_mail=Email file di registro prima di eliminare?
+edit_mailto=Sì, per indirizzo
+edit_mailno=No, non inviare e-mail
+edit_mailfl=File di registro per e-mail
+edit_mailfirst=Il più recente è stato appena ruotato
+edit_maillast=Il più vecchio che sta per essere eliminato
+edit_create=Ricreare il file di registro dopo la rotazione?
+edit_createas=Sì, con la modalità $1 e di proprietà dell'utente $2 e del gruppo $3 
+edit_createno=No, non ricreare
+edit_createsame=Sì, con vecchie autorizzazioni
+edit_olddir=Archivia i vecchi log ruotati
+edit_olddirto=elenco
+edit_olddirsame=Stessa directory del file di registro
+edit_errors=Invia messaggi di errore tramite e-mail a
+edit_errorsno=Nessuno
+edit_errorsto=Indirizzo o utente
+edit_post=Comandi da eseguire dopo la rotazione
+edit_pre=Comandi da eseguire prima della rotazione
+edit_default=Predefinito ($1)
+edit_sharedscripts=Eseguire gli script una sola volta per tutti i file?
+edit_now=Ruota ora
+
+global_title=Opzioni globali
+global_header=Opzioni predefinite per tutti i file di registro
+
+save_err=Impossibile salvare il registro
+save_efile=Nome file registro mancante o non valido
+save_esize=Dimensione massima mancante o non valida
+save_eminsize=Dimensione minima mancante o non valida
+save_erotate=Numero massimo mancante o non valido di vecchi registri da conservare
+save_ecreatemode=Modalità di creazione ottale a 3 o 4 cifre mancante o non valida
+save_ecreateuser=Utente creazione mancante o non valido
+save_ecreategroup=Gruppo di creazione mancante o non valido
+save_emust1=È necessario accedere a una modalità di creazione quando si accede a un utente di creazione
+save_emust2=È necessario inserire un utente della creazione quando si inserisce un gruppo di creazione
+save_eolddirto=Directory mancante o non valida per vecchi registri ruotati
+save_eext=Estensione mancante per i nomi di file di registro ruotati
+save_emailto=Indirizzo e-mail mancante per i registri ruotati
+save_eerrors=Indirizzo email mancante per messaggi di errore
+save_epre=Lo script di pre-rotazione non può contenere una riga <tt>endscript</tt> o <tt>endrotate</tt>
+save_epost=Lo script post-rotazione non può contenere una riga <tt>endscript</tt> o <tt>endrotate</tt>
+save_enofiles=Nessun file da ruotare inserito
+
+log_modify_sched=Rotazione registro modificata Processo cron
+log_create_sched=Processo cron di rotazione registro creato
+log_delete_sched=Rot cron log cancellato
+log_global=Opzioni globali modificate
+log_create=Aggiunta rotazione per il file di registro $1 
+log_modify=Rotazione modificata per il file di registro $1 
+log_delete=Rotazione eliminata per il file di registro $1 
+log_delete_logs=Rotazione eliminata per i file di registro $1 
+
+sched_title=Pianificazione rotazione registro
+sched_desc=Per eseguire la rotazione del registro configurata utilizzando questo modulo, il comando $1 deve essere eseguito su una pianificazione regolare (in genere giornaliera) da Cron.
+sched_runparts=Attualmente, il comando di rotazione del registro viene eseguito dallo script $1 $2 e non può essere modificato.
+sched_sched=Cron job rotazione registro
+sched_disabled=Disabilitato
+sched_enabled=Abilitato, a volte sotto.
+sched_save=Aggiorna Cron Job
+sched_err=Impossibile salvare il programma di rotazione
+sched_when=Tempi per correre
+
+force_title=Forza rotazione del registro
+force_doing=Forzare l'immediata rotazione di tutti i file di registro.
+force_doingone=Forzare la rotazione immediata di un file di registro.
+force_done=.. fatto.
+force_failed=.. fallito! Vedere l'output sopra per il motivo.
+
+delete_err=Impossibile eliminare i registri
+delete_enone=Nessuno selezionato

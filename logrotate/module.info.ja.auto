@@ -1,0 +1,3 @@
+desc_ja=ログファイルのローテーション
+longdesc_ja=Apache、Squid、Syslog、およびその他のログファイルの自動ローテーションを設定します。
+name_ja=ログローテート

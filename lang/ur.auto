@@ -1,0 +1,385 @@
+main_homepage=ہوم پیج
+main_feedback=تاثرات ..
+main_switch=استعمال کنندہ کو تبدیل کریں ..
+main_logout=لاگ آوٹ
+main_version=Version $1 on $2 ($3)
+main_title=Webmin $1 on $2 ($3)
+main_title2=ویبمین
+main_title3=Webmin $1 ($2)
+main_none=آپ کو کسی بھی ویبمین ماڈیول تک رسائی حاصل نہیں ہے۔
+main_skill=مہارت کی سطح
+main_readonly=(صرف پڑھنے کا طریقہ)
+main_return=Return to $1
+main_unused=غیر استعمال شدہ ماڈیولز
+main_refreshmods=ماڈیول ریفریش کریں
+
+link_essl=آپ کے سسٹم پر HTTPS کنکشن بنانے کے لئے درکار نیٹ :: SSLeay Perl ماڈیول انسٹال نہیں ہے۔
+
+category_servers=سرورز
+category_hardware=ہارڈ ویئر
+category_system=سسٹم
+category_webmin=ویبمین
+category_net=نیٹ ورکنگ
+category_syslet=سائلٹس
+category_cluster=جھرمٹ
+category_info=معلومات
+category_=اوزار
+
+longcategory_servers=کنفگریشن ویب ، ای میل ، ایف ٹی پی اور دوسرے سرورز کے ماڈیولز
+longcategory_hardware=پرنٹر ، ڈسک اور دیگر ہارڈویئر ترتیب کے ماڈیولز
+longcategory_system=صارفین ، فائل سسٹمز ، کرون ملازمتوں اور دیگر سسٹم کی ترتیبات کے ل Mod ماڈیول
+longcategory_webmin=خود Webmin کی تشکیل کے ل Mod ماڈیولز
+longcategory_net=نیٹ ورکنگ اور نیٹ ورک کی خدمات کی تشکیل کے ل Mod ماڈیولز
+longcategory_cluster=ماڈیولز جو ایک ہی انٹرفیس سے ایک سے زیادہ سرورز کا نظم کرسکتے ہیں
+longcategory_info=آپ کے سسٹم کے بارے میں معلومات ظاہر کرنے والے ماڈیولز
+longcategory_=وہ ماڈیول جو دوسرے متفرق کام انجام دیتے ہیں
+
+header_webmin=ویبمین انڈیکس
+header_module=ماڈیول انڈیکس
+header_help=مدد ..
+header_config=ماڈیول تشکیل
+header_servers=ویبمین سرورز
+
+index=انڈیکس
+yes=جی ہاں
+no=نہیں
+save=محفوظ کریں
+create=بنانا
+delete=حذف کریں
+find=مل
+error=خرابی
+error_previous=پچھلا صفحہ
+error_stack=اسٹیک ٹریس کال کریں
+error_file=فائل
+error_line=لائن
+error_sub=فنکشن
+error_stackline=In file $1 at line $2 calling $3
+efilewrite=Failed to write to $1 : $2
+efileclose=Failed to write to $1 when closing : $2
+efileopen=Failed to open $1 for writing : $2
+default=پہلے سے طے شدہ
+modify=ترمیم کریں
+reset=ری سیٹ کریں
+ok=ٹھیک ہے
+cancel=منسوخ کریں
+fail=ناکام ہوگیا
+helpsearch=دستاویزات تلاش کریں ..
+switch_remote_euser=The Unix user $1 does not exist.
+programname=ویبمین
+euserdbacl=Failed to fetch user ACL : $1
+euserdbacl2=Failed to update user ACL : $1
+egroupdbacl=Failed to fetch group ACL : $1
+egroupdbacl2=Failed to update group ACL : $1
+
+chooser_title1=فائل منتخب کریں ..
+chooser_title2=ڈائرکٹری کا انتخاب کریں ..
+chooser_dir=Directory of $1
+chooser_ok=ٹھیک ہے
+chooser_date=تاریخ کا انتخاب کریں
+chooser_eopen=Listing failed : $1
+
+users_title1=صارفین کو منتخب کریں ..
+users_title2=صارف منتخب کریں ..
+users_sel=منتخب صارفین
+users_all=تمام صارفین
+users_ok=ٹھیک ہے
+users_cancel=منسوخ کریں
+users_clear=صاف
+
+groups_title1=گروپس کو منتخب کریں ..
+groups_title2=منتخب گروپ ..
+groups_all=تمام گروپس
+groups_sel=منتخب گروپس
+groups_ok=ٹھیک ہے
+groups_cancel=منسوخ کریں
+groups_clear=صاف
+
+modules_title1=ماڈیولز کو منتخب کریں ..
+modules_title2=ماڈیول منتخب کریں ..
+modules_sel=منتخب کردہ ماڈیولز
+modules_all=تمام ماڈیولز
+modules_ok=ٹھیک ہے
+modules_cancel=منسوخ کریں
+modules_clear=صاف
+
+config_ecannot=آپ کو اس ماڈیول کی تشکیل کی اجازت نہیں ہے
+config_title=تشکیل
+config_dir=For module $1
+config_header=Configurable options for $1
+config_none=کوئی نہیں
+config_eaccess=آپ کو اس ماڈیول تک رسائی کی اجازت نہیں ہے
+config_emodule=ماڈیول موجود نہیں ہے
+config_err=کنفگ کو محفوظ کرنے میں ناکام
+config_nochange=مت بدلاؤ
+config_setto=تیار
+config_ewebmin=پیرامیٹر کی قسم 14 صرف ویبمین میں کام کرتی ہے
+
+help_err=مدد ظاہر کرنے میں ناکام
+help_epath=لاپتہ یا غیر معاون راہ
+help_efile=Failed to read help file $1
+help_eheader=&lt;ہیڈر&gt; سیکشن غائب ہے
+help_einclude=Failed to include $1
+help_eif=$1 failed : $2
+help_eexec=$1 failed : $2
+
+referer_title=حفاظتی انتباہ
+referer_warn=<b>Warning!</b> Webmin has detected that the program $2 was linked to from the URL $1, which appears to be outside the Webmin server. This may be an attempt to trick your server into executing a dangerous command.
+referer_warn_unknown=<b>Warning!</b> Webmin has detected that the program $1 was linked to from an unknown URL, which appears to be outside the Webmin server. This may be an attempt to trick your server into executing a dangerous command.
+referer_fix1=If this is a legitimate link, you can allow links from this URL as follows :<ul><li>Login to Webmin normally.</li><li>Go to the <b>Webmin Configuration</b> module.</li><li>Click on the Trusted Referrers icon.</li><li>Enter the hostname $1 into the <b>Trusted websites</b> field, and click <b>Save</b></li>.</ul>
+referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.</li><li>Save the file.</li></ul>
+referer_fix3u=یقینی بنائیں کہ آپ کے براؤزر کو حوالہ دہندہ کی معلومات بھیجنے کے لئے ترتیب دیا گیا ہے تاکہ اس کی تصدیق ویبمین کے ذریعہ کی جاسکے۔
+referer_fix2u=Alternately, you can configure Webmin to allow links from unknown referers by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Find the line <tt>referers_none=1</tt> and change it to <tt>referers_none=0</tt>.</li><li>Save the file.</li></ul><p></p>WARNING - this has the side effect of opening your system up to reflected XSS attacks and so is not recommended!
+
+session_header=ویبمین میں لاگ ان کریں
+session_mesg=You must enter a username and password to login to the Webmin server on $1.
+session_mesg2=لاگ ان کے ل You آپ کو صارف نام اور پاس ورڈ درج کرنا ہوگا۔
+session_user=صارف نام
+session_pass=پاس ورڈ
+session_twofactor=ٹو فیکٹر ٹوکن
+session_login=لاگ ان کریں
+session_clear=صاف
+session_failed=لاگ ان ناکام رہے. دوبارہ کوشش کریں.
+session_twofailed=Two-factor authentication failed : $1
+session_logout=لاگ آؤٹ کامیاب۔ دوبارہ لاگ ان کرنے کے لئے نیچے دیئے گئے فارم کا استعمال کریں۔
+session_timed_out=Session timed out after $1 minutes of inactivity.
+session_save=لاگ ان کو مستقل طور پر یاد رکھیں؟
+
+pam_header=ویبمین میں لاگ ان کریں
+pam_mesg=You must respond to the question below to login to Webmin server on $1.
+pam_mesg2=لاگ ان کرنے کے لئے آپ کو نیچے دیئے گئے سوال کا جواب دینا ہوگا۔
+pam_login=جاری رہے
+pam_restart=دوبارہ شروع کریں
+
+acl_root=فائل انتخاب کرنے والے کے لئے روٹ ڈائرکٹری
+acl_otherdirs=فائل انتخاب کنندہ میں دیگر مرئی ڈائریکٹریاں
+acl_nodot=فائل انتخاب کنندہ میں ڈاٹ فائلیں چھپائیں؟
+acl_home=صارف کی ہوم ڈائرکٹری
+acl_uedit=صارف انتخاب کنندہ میں مرئی صارفین
+acl_uedit_all=تمام صارفین
+acl_uedit_none=کوئی صارف نہیں
+acl_uedit_only=صرف صارف
+acl_uedit_except=سوائے صارفین کے
+acl_uedit_uid=UIDs والے صارفین
+acl_uedit_group=گروپ والے صارفین
+acl_gedit=گروپ انتخاب کنندہ میں دکھائے جانے والے گروپس
+acl_gedit_all=تمام گروہ
+acl_gedit_none=کوئی گروپس نہیں
+acl_gedit_only=صرف گروپس
+acl_gedit_except=گروپوں کے علاوہ سب
+acl_gedit_gid=رینج میں GIDs والے گروپس
+acl_feedback=رائے ای میل بھیج سکتے ہیں؟
+acl_feedback2=جی ہاں
+acl_feedback1=ہاں ، لیکن تشکیل فائلوں کے ساتھ نہیں
+acl_feedback0=نہیں
+acl_feedback3=ہاں ، تشکیل فائلوں کے ساتھ
+acl_rpc=کیا RPC کالز قبول کر سکتے ہیں؟
+acl_rpc2=Only for <tt>root</tt> or <tt>admin</tt>
+acl_rpc1=جی ہاں
+acl_rpc0=نہیں
+acl_readonly2=صارف ڈیمو موڈ میں ہے؟
+acl_readonlyyes=ہاں (کچھ ماڈیول دستیاب نہیں ہوسکتے ہیں)
+acl_negative=صارف کو نئے ماڈیول اجازت دیں؟
+acl_fileunix=یونکس صارف کی حیثیت سے فائلوں کو براؤز کریں
+acl_sameunix=ویب مین لاگ ان کی طرح
+acl_webminsearch=ویب مین سرچ فیلڈ دکھائیں؟
+
+month_1=جنوری
+month_2=فروری
+month_3=مارچ
+month_4=اپریل
+month_5=مئی
+month_6=جون
+month_7=جولائی
+month_8=اگست
+month_9=ستمبر
+month_10=اکتوبر
+month_11=نومبر
+month_12=دسمبر
+
+day_0=اتوار
+day_1=پیر
+day_2=منگل
+day_3=بدھ
+day_4=جمعرات
+day_5=جمعہ
+day_6=ہفتہ
+
+smonth_1=جان
+smonth_2=فروری
+smonth_3=مار
+smonth_4=اپریل
+smonth_5=مئی
+smonth_6=جون
+smonth_7=جولائی
+smonth_8=اگست
+smonth_9=ستمبر
+smonth_10=اکتوبر
+smonth_11=نومبر
+smonth_12=دسمبر
+
+sday_0=ایس یو
+sday_1=مو
+sday_2=ٹو
+sday_3=ہم
+sday_4=ویں
+sday_5=فر
+sday_6=سا
+
+emodule=Access denied : User $1 is not allowed to use the $2 module
+emodulecheck=The $1 module is not available on your system
+elock_tries2=Failed to lock file $1 after $2 minutes. Last error was : $3
+
+skill_high=ماہر
+skill_medium=انٹرمیڈیٹ
+skill_low=نووایس
+
+feedback_title=ویبمین آراء
+feedback_desc=This form allows you to report bugs on make suggestions to the Webmin developers regarding any problems or missing features that you have found. When the Send button is clicked, the details entered into the form will be emailed to $1.
+feedback_desc2=یہ تاثرات آپ کے سسٹم کے منتظم ، آئی ایس پی یا ہوسٹنگ کمپنی کو نہیں ، ویبین کے ڈویلپر کو بھیجی جائیں گی۔ براہ کرم اپنی رائے انگریزی میں لکھیں ، یہاں تک کہ اگر آپ فی الحال کسی دوسری زبان میں ویبمین چلا رہے ہیں۔
+feedback_header=آپ کی رائے کی تفصیلات
+feedback_name=تمھارا نام
+feedback_email=آپ کا ای میل ایڈریس
+feedback_module=ماڈیول کے حوالے سے
+feedback_all=تمام ماڈیولز
+feedback_text=مسئلہ یا تجویز کی تفصیل
+feedback_os=ای میل میں آپریٹنگ سسٹم کی تفصیلات شامل کریں؟
+feedback_osdesc=اگر یہ آپشن منتخب کیا گیا ہے تو ، خودکار آراء ای میل میں آپ کے آپریٹنگ سسٹم کا نام اور ورژن شامل ہوں گے۔
+feedback_config=ای میل میں ماڈیول ترتیب شامل کریں؟
+feedback_configdesc=If this is selected, the email will include the configuration of the related module and the contents of any config files that the module uses. For example, if the feedback was related to the <i>Users and Groups</i> module, your <tt>/etc/passwd</tt> and <tt>/etc/shadow</tt> files would be sent.
+feedback_attach=اضافی فائلیں منسلک کرنے کے لئے
+feedback_send=رائے بھیجیں
+feedback_mailserver=SMTP سرور کے ذریعے بھیجیں
+feedback_mailserver_def=مقامی بھیجنے کا پروگرام
+feedback_err=آراء بھیجنے میں ناکام
+feedback_emodule=آپ نے ای میل میں ماڈیول کنفیگریشن شامل کرنے کا انتخاب کیا ، لیکن ماڈیول کا انتخاب نہیں کیا۔
+feedback_emodule2=منتخب کردہ ماڈیول موجود نہیں ہے
+feedback_econfig=آپ کو منتخب کردہ ماڈیول تک مکمل رسائی نہیں ہے۔
+feedback_via=Sent feedback to $1 via SMTP server $2
+feedback_prog=Sent feedback to $1 using sendmail program $2
+feedback_esend=بھیجنے والے پروگرام یا مقامی SMTP سرور کے ذریعہ تاثرات بھیجنے میں ناکام۔
+feedback_to=پتوں پر آراء بھیجیں
+feedback_enoto=تاثرات بھیجنے کے لئے کوئی پتہ درج نہیں کیا گیا تھا
+feedback_ecannot=آپ کو رائے بھیجنے کی اجازت نہیں ہے
+feedback_ecannot2=آپ کو تشکیل فائلوں پر مشتمل رائے بھیجنے کی اجازت نہیں ہے
+
+progress_size2=Downloading $1 ($2) ..
+progress_nosize=Downloading $1 ..
+progress_datan=Received $1 ($2 %)
+progress_data2n=Received $1
+progress_done=.. ڈاؤن لوڈ مکمل.
+progress_incache=Found $1 in cache ..
+
+readparse_cdheader=غائب مواد-ڈسپوزیشن ہیڈر
+readparse_enc=فارم ڈیٹا کی انکوڈنگ کی توقع ہے ، لیکن عام انکوڈنگ مل گئی
+readparse_max=Data exceeded maximum size of $1 bytes
+
+password_expired=آپ کے پاس ورڈ کی میعاد ختم ہوگئی ہے ، اور ایک نیا انتخاب لازمی ہے۔
+password_temp=اپنے عارضی لاگ ان کو تبدیل کرنے کے ل a آپ کو نیا پاس ورڈ منتخب کرنا ہوگا۔
+password_header=نیا پاس ورڈ منتخب کریں
+password_user=صارف نام
+password_old=موجودہ خفیہ لفظ
+password_new1=نیا پاس ورڈ
+password_new2=نیا پاس ورڈ دوبارہ
+password_ok=بدلیں
+password_clear=صاف
+password_done=Your password has been successfully changed. You may now <a href='$1'>login again</a> with the new password.
+password_err=پاس ورڈ تبدیل کرنے میں ناکام
+password_euser=آپ کا لاگ ان نام پاس ورڈ فائل میں نہیں ملا تھا!
+password_eold=موجودہ پاس ورڈ غلط ہے
+password_enew1=کوئی نیا پاس ورڈ داخل نہیں کیا گیا تھا
+password_enew2=آپ کے نئے پاس ورڈ مماثل نہیں ہیں
+password_epam=PAM error : $1
+password_emodpam=پاس ورڈ میں تبدیلیاں کرنے کے لئے درکار Authen::PAM perl ماڈیول انسٹال نہیں ہوا ہے!
+password_enewpass=New password is not allowed : $1
+
+ui_mandatory=یہ فیلڈ لازمی ہے
+ui_checkmandatory=کچھ بھی منتخب نہیں کیا گیا تھا
+ui_errors=متعدد غلطیاں پائی گئیں :
+ui_nothing=کچھ داخل نہیں ہوا
+ui_searchcol=جہاں قطاریں تلاش کریں
+ui_searchfor=متن پر مشتمل ہے
+ui_searchok=تلاش کریں
+ui_selall=تمام منتخب کریں.
+ui_selinv=الٹا انتخاب
+ui_edate=غلط تاریخ
+ui_etime=غلط وقت
+ui_paging=Showing rows $1 to $2 of $3
+ui_rowlabel=$2 in row $1 :
+ui_filterbox=فلٹر کرنے کے لئے ٹائپ کریں ..
+
+header_statusmsg=$1 logged into $2 $3 on $4 ($5)
+
+uptracker_title=فائل اپ لوڈ ہو رہی ہے
+uptracker_file=فائل کا نام
+uptracker_size=سائز
+uptracker_pc=ترقی
+uptracker_eid=کوئی اپ لوڈ ID متعین نہیں ہوا ہے
+uptracker_eid2=اپ لوڈ کی شناخت غلط ہے!
+uptracker_of=$1 of $2
+
+wsearch_title=Search $1
+wsearch_modt=ماڈیول
+wsearch_mtitle=ماڈیول کا نام
+wsearch_what=ملاپ والا صفحہ
+wsearch_type=میچ کی قسم
+wsearch_mod=$1 module
+wsearch_config_webmin=ویبمین ماڈیول کی تشکیل
+wsearch_config_usermin=صارف کی ترجیحات
+wsearch_help=مدد کا صفحہ
+wsearch_inmod=In $1
+wsearch_text=صارف انٹرفیس متن
+wsearch_esearch=تلاش کرنے کے لئے کچھ بھی داخل نہیں کیا گیا تھا۔
+wsearch_enone=No Webmin modules or pages matching $1 were found.
+wsearch_on=(On $1)
+wsearch_helpfor=Help for <i>$1</i>
+wsearch_htext=ملاپ والا متن
+wsearch_htype=ذریعہ
+wsearch_hcgis=حوالہ جات
+wsearch_type_mod=ماڈیول کا نام
+wsearch_type_config=تشکیل
+wsearch_type_help=مدد کا صفحہ
+wsearch_type_text=یوزر انٹرفیس
+wsearch_type_dir=ماڈیول یو آر ایل
+wsearch_hmod=ماڈیول
+wsearch_moddir=URL path /$1/
+wsearch_searching=Searching for $1 . .
+wsearch_found=found $1 results :
+
+sql_emysqldriver=ایس کیو ایل DBI ڈرائیور لوڈ کرنے میں ناکام
+sql_emysqlconnect=Failed to connect to MySQL database : $1
+sql_epostgresqldriver=PostgreSQL DBI ڈرائیور لوڈ کرنے میں ناکام
+sql_epostgresqlconnect=Failed to connect to PostgreSQL database : $1
+sql_eldapdriver=ایل ڈی اے پی پرل ماڈیول لوڈ کرنے میں ناکام
+sql_eldapconnect=Failed to connect to LDAP server $1
+sql_eldaptls=Failed to start TLS encryption for LDAP : $1
+sql_eldaplogin=Failed to login to LDAP server as $1 : $2
+
+log_email_subject=Webmin action in $1
+log_email_global=ویبمین عالمی کارروائی
+log_email_desc=یہ ای میل صارف کے ایک عمل کے جواب میں ویبمین کے ذریعہ بھیجی گئی ہے۔
+log_email_mod=Webmin module: $1
+log_email_moddesc=Module title: $1
+log_email_time=Action performed at: $1
+log_email_system=Performed on system: $1
+log_email_user=Performed by user: $1
+log_email_script=Webmin script: $1
+log_email_session=Session ID: $1
+log_email_remote=Client address: $1
+
+nice_size_PB=پی بی
+nice_size_PiB=پِی بی
+nice_size_TB=ٹی بی
+nice_size_TiB=ٹی آئی بی
+nice_size_GB=جی بی
+nice_size_GiB=GiB
+nice_size_MB=ایم بی
+nice_size_MiB=ایم بی
+nice_size_kB=kB
+nice_size_kiB=کیی بی
+nice_size_b=بائٹس
+
+langauto_include=مشین ترجمہ شامل کریں
+
+file_truncated_message=ڈیٹا کا$1 حاصل کیا ،$3 میں سے$2 چھوٹا
+file_truncated_message_head=ڈیٹا کا آغاز$1 کیا گیا ،$3 میں سے$2 کو چھوٹا گیا
+file_truncated_message_tail=ڈیٹا کا$1 ختم ہونے والا نتیجہ ،$3 میں سے$2 کو چھوٹا

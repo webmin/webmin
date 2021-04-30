@@ -7,68 +7,55 @@ require './cluster-useradmin-lib.pl';
 &ui_print_header(undef, $text{'sync_title'}, "");
 
 print "$text{'sync_desc'}<p>\n";
-print "<form action=sync.cgi>\n";
-print "<table>\n";
 
-print "<tr> <td valign=top><b>$text{'sync_hosts'}</b></td> <td>\n";
-&create_on_input(undef, 1, 1);
-print "</td> </tr>\n";
+print &ui_form_start("sync.cgi", "post");
+print &ui_table_start($text{'sync_hosts'}, undef, 2);
 
-print "<tr> <td valign=top><b>$text{'sync_users'}</b></td> <td>\n";
-print "<input type=radio name=users_mode value=1> ",
-      "$text{'sync_uall'}&nbsp;&nbsp;\n";
-print "<input type=radio name=users_mode value=0 checked> ",
-      "$text{'sync_unone'}<br>\n";
-print "<input type=radio name=users_mode value=2> ",
-      "$text{'sync_usel'}\n";
-print "<input name=usel size=30> ",&user_chooser_button("usel", 1),"<br>\n";
-print "<input type=radio name=users_mode value=3> ",
-      "$text{'sync_unot'}\n";
-print "<input name=unot size=30> ",&user_chooser_button("unot", 1),"<br>\n";
-print "<input type=radio name=users_mode value=4> ",
-      "$text{'sync_uuid'}\n";
-print "<input name=uuid1 size=6> - <input name=uuid2 size=6><br>\n";
-print "<input type=radio name=users_mode value=5> ",
-      "$text{'sync_ugid'}\n";
-print &unix_group_input("ugid"),"<br>\n";
-print "</td> </tr>\n";
+# Hosts to sync
+print &ui_table_row($text{'sync_hosts'},
+	&create_on_input(1, 1));
 
-print "<tr> <td valign=top><b>$text{'sync_groups'}</b></td> <td>\n";
-print "<input type=radio name=groups_mode value=1> ",
-      "$text{'sync_gall'}&nbsp;&nbsp;\n";
-print "<input type=radio name=groups_mode value=0 checked> ",
-      "$text{'sync_gnone'}<br>\n";
-print "<input type=radio name=groups_mode value=2> ",
-      "$text{'sync_gsel'}\n";
-print "<input name=gsel size=30> ",&group_chooser_button("gsel", 1),"<br>\n";
-print "<input type=radio name=groups_mode value=3> ",
-      "$text{'sync_gnot'}\n";
-print "<input name=gnot size=30> ",&group_chooser_button("gnot", 1),"<br>\n";
-print "<input type=radio name=groups_mode value=4> ",
-      "$text{'sync_ggid'}\n";
-print "<input name=ggid1 size=6> - <input name=ggid2 size=6><br>\n";
-print "</td> </tr>\n";
+# Users to sync
+print &ui_table_row($text{'sync_users'},
+	&ui_radio_table("users_mode", 0,
+		[ [ 1, $text{'sync_uall'} ],
+		  [ 0, $text{'sync_unone'} ],
+		  [ 2, $text{'sync_usel'}, &ui_users_textbox("usel") ],
+		  [ 3, $text{'sync_unot'}, &ui_users_textbox("unot") ],
+		  [ 4, $text{'sync_uuid'}, &ui_textbox("uuid1", "", 6)." - ".
+					   &ui_textbox("uuid2", "", 6) ],
+		  [ 5, $text{'sync_ugid'}, &ui_group_textbox("ugid") ],
+		]));
 
-print "<tr> <td><b>$text{'sync_test'}</b></td>\n";
-print "<td><input type=radio name=test value=1> $text{'yes'}\n";
-print "<input type=radio name=test value=0 checked> $text{'no'}</td> </tr>\n";
+# Groups to sync
+print &ui_table_row($text{'sync_groups'},
+	&ui_radio_table("groups_mode", 0,
+		[ [ 1, $text{'sync_gall'} ],
+		  [ 0, $text{'sync_gnone'} ],
+		  [ 2, $text{'sync_gsel'}, &ui_groups_textbox("gsel") ],
+		  [ 3, $text{'sync_gnot'}, &ui_groups_textbox("gnot") ],
+		  [ 4, $text{'sync_ggid'}, &ui_textbox("ggid1", "", 6)." - ".
+                                           &ui_textbox("ggid2", "", 6) ],
+		]));
 
-print "<tr> <td><b>$text{'sync_makehome'}</b></td>\n";
-print "<td><input type=radio name=makehome value=1 checked> $text{'yes'}\n";
-print "<input type=radio name=makehome value=0> $text{'no'}</td>\n";
-print "</tr>\n";
+# Test mode?
+print &ui_table_row($text{'sync_test'},
+	&ui_yesno_radio("test", 0));
 
-print "<tr> <td><b>$text{'sync_copy'}</b></td>\n";
-print "<td><input type=radio name=copy_files value=1 checked> $text{'yes'}\n";
-print "<input type=radio name=copy_files value=0> $text{'no'}</td>\n";
-print "</tr>\n";
+# Create home dir?
+print &ui_table_row($text{'sync_makehome'},
+	&ui_yesno_radio("makehome", 1));
 
-print "<tr> <td><b>$text{'sync_others'}</b></td>\n";
-print "<td><input type=radio name=others value=1 checked> $text{'yes'}\n";
-print "<input type=radio name=others value=0> $text{'no'}</td> </tr>\n";
+# Copy home dir files?
+print &ui_table_row($text{'sync_copy'},
+	&ui_yesno_radio("copy_files", 1));
 
-print "</table>\n";
-print "<input type=submit value='$text{'sync_ok'}'></form>\n";
+# Create in other modules?
+print &ui_table_row($text{'sync_others'},
+	&ui_yesno_radio("others", 1));
+
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'sync_ok'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

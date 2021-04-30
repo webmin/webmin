@@ -32,7 +32,7 @@ $file = $config{'webalizer_conf'} if (!$file || !-r $file);
 -r $file || &error("Webalizer config file $file does not exist!");
 my @rv;
 my $lnum = 0;
-open(FILE, $file);
+open(FILE, "<".$file);
 while(<FILE>) {
 	s/\r|\n//g;
 	s/#.*$//;
@@ -238,7 +238,7 @@ print "</table>\n";
 # read_custom_logs()
 sub read_custom_logs
 {
-open(LOGS, $custom_logs_file) || return ();
+open(LOGS, "<".$custom_logs_file) || return ();
 my @rv = map { /^(.*\S)\s+(\S+)/; { 'file' => $1, 'type' => $2 } } <LOGS>;
 close(LOGS);
 return @rv;
@@ -304,7 +304,7 @@ if (&foreign_installed("apache") && $auto{'apache'}) {
 		if ($lf !~ /^\//) {
 			$lf = "$root->{'words'}->[0]/$lf";
 			}
-		open(FILE, $lf);
+		open(FILE, "<".$lf);
 		my $line = <FILE>;
 		close(FILE);
 		if (!$line || $line =~ /^([a-zA-Z0-9\.\-\:]+)\s+\S+\s+\S+\s+\[\d+\/[a-zA-z]+\/\d+:\d+:\d+:\d+\s+[0-9\+\-]+\]/) {

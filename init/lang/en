@@ -262,4 +262,6 @@ launchd_return=launchd agent
 launchd_econf=No launchd configuration entered
 launchd_estart=Missing server command
 
+syslog_journalctl=SystemD logs
+
 __norefs=1

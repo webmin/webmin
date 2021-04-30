@@ -1,0 +1,103 @@
+index_title=Heartbeat Monitor
+index_return=hjerteslag monitor
+index_edir=Konfigurationsbiblioteket for hjerteslag $1 findes ikke. Måske er Heartbeat ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+index_start=Start Heartbeat Monitor
+index_startmsg=Klik på denne knap for at starte Heartbeat-monitorprocessen. Dette aktiverer automatisk service failover på dit system med den aktuelle konfiguration.
+index_apply=Anvend ændringer
+index_applymsg=Klik på denne knap for at tvinge den kørende Heartbeat-monitorproces til at indlæse den aktuelle konfiguration igen.
+index_eha_cf=Hjerteslagskonfigurationsfilen $1 blev ikke fundet på dit system. Måske er det ikke blevet kopieret på plads endnu, eller <a href='$2'>modulkonfiguration</a> er forkert.
+index_eharesources=Ressourcefilen $1 blev ikke fundet på dit system. Måske er det ikke blevet kopieret på plads endnu, eller <a href='$2'>modulkonfiguration</a> er forkert.
+index_eauthkeys=Autentificeringstasterfilen $1 blev ikke fundet på dit system. Måske er det ikke blevet kopieret på plads endnu, eller <a href='$2'>modulkonfiguration</a> er forkert.
+index_ereq_resource_cmd=Scriptet til at anmode om ressourcer fra den anden knude ($1) blev ikke fundet på dit system. Måske er det ikke blevet kopieret på plads endnu, eller <a href='$2'>modulkonfiguration</a> er forkert.
+index_version=Heartbeat version $1 
+index_noversion=Advarsel - Den version af Heartbeat, der er installeret på dit system, kunne ikke automatisk opdages. Du skal indstille den på siden <a href='$1'>modulkonfiguration</a>.
+index_status=Pulsslagstatus
+
+conf_title=Konfigurationsindstillinger
+conf_header=Indstillinger for hjerterytme
+conf_serials=Serielle hjerteslagsporte
+conf_baud=Baud rate for seriel port
+conf_bcasts=Ethernet-hjerteslaggrænseflader
+conf_none=Ingen
+conf_udpport=UDP-hjerteslagsport
+conf_mcast=Multicast hjerteslag
+conf_mcastv=Enhed $1, gruppe $2, port $3, TTL $4, loopback $5 
+conf_enabled=Aktiveret
+conf_disabled=handicappet
+conf_keepalive=Tid mellem hjerteslag
+conf_nice_failback=Dejlig Failback-opførsel
+conf_secs=sekunder
+conf_deadtime=Tid før knudepunkt betragtes som død
+conf_watchdog=Watchdog-enhedsfil
+conf_node=Værter i klyngen
+conf_logfile=Hjertslag-logfil
+conf_logfacility=Syslog-logfacilitet
+conf_initdead=Første dødstid
+conf_ok=Gem indstillinger
+conf_err=Kunne ikke gemme indstillinger
+conf_ebaud=Manglende eller ugyldig baudhastighed
+conf_ebcast=Der blev ikke indtastet nogen hjerteslagsudsendelsesgrænseflader
+conf_ebcastif='$1' er ikke en gyldig udsendelsesgrænseflade
+conf_eudpport=Manglende eller ugyldig hjerteslagsport
+conf_ekeepalive=Manglende eller ugyldig tid mellem hjerteslag
+conf_edeadtime=Manglende eller ugyldig dødtid
+conf_ewatchdog=Manglende eller ikke-eksisterende watchdog-enhedsfil
+conf_enonode=Der er ikke indtastet nogen klynghaster
+conf_ethisnode=Denne vært $1 er ikke på listen over grupper af værter
+conf_elogfile=Manglende eller ugyldig logfilnavn
+conf_einitdead=Manglende eller ugyldig startdødtid
+conf_einitdead2=Den oprindelige dødtid skal være mindst to gange tiden, inden en knudepunkt betragtes som død
+conf_emcast_dev=Manglende eller ugyldig multicast-enhed
+conf_emcast_ip=Manglende eller ugyldig multicast-gruppeadresse
+conf_emcast_port=Manglende eller ugyldigt multicast-portnummer
+conf_emcast_ttl=Manglende eller ugyldig multicast-tid til live
+conf_auto_on=$ {Conf_enabled}
+conf_auto_off=$ {Conf_disabled}
+conf_auto_legacy=Ældre tilstand
+conf_auto_=$ {Standard}
+
+res_title=Cluster Resources
+res_node=Primær knude
+res_ips=IP-adresser
+res_servs=Knudetjenester
+res_none=Ingen
+res_nores=Der er ikke defineret nogen klyngeressourcer på dit system.
+res_add=Tilføj en klyngeressource
+res_return=ressourcer liste
+res_active=Ressource status
+res_getserv=Hent ressource
+res_hbdown=Hjerteslag ned
+res_up=OP
+res_down=NED
+
+node_create=Tilføj klyngeressource
+node_edit=Rediger klyngeressource
+node_header=Detaljer om klyngeressource
+node_node=Primær knude til ressource
+node_ips=IP-adresser til ressource
+node_ip=IP-adresse
+node_cidr=Netmaske CIDR
+node_broad=Broadcast-adresse
+node_servs=Tjenester til ressource
+node_serv=Service
+node_args=Yderligere argumenter
+node_err=Kunne ikke gemme klyngeressource
+node_enone=Manglende eller ugyldig primær knude
+node_eip='$1' er ikke en gyldig IP-adresse
+node_ecidr='$1' er ikke en gyldig CIDR
+node_ebroad='$1' er ikke en gyldig udsendelsesadresse
+
+auth_title=Autentificeringstaster
+auth_header=Cluster node-godkendelse
+auth_mode=Godkendelsestilstand
+auth_crc=CRC (Ingen sikkerhed)
+auth_sha1=SHA1 med adgangskode
+auth_md5=MD5 med adgangskode
+auth_err=Kunne ikke gemme godkendelsesnøgler
+auth_emd5=Manglende eller ugyldig MD5-adgangskode
+auth_esha1=Manglende eller ugyldig SHA1-adgangskode
+
+start_err=Kunne ikke starte hjerteslag
+
+apply_err=Kunne ikke anvende ændringer
+apply_epid=Processen kører ikke længere

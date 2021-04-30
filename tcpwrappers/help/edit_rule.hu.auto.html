@@ -1,0 +1,71 @@
+<header> TCP csomagolók </header>
+<h3> minták </h3> A hozzáférés-vezérlő nyelv a következő mintákat hajtja végre: <ul>
+    <li> Egy karakterlánc, amely kezdődik &#39;.&#39; karakter. A gazdagépnevet egyeztetjük, ha a név utolsó összetevői megegyeznek a megadott mintával. Például a &#39;.tue.nl&#39; minta megegyezik a &#39;wzv.win.tue.nl&#39; gazdanevével. </li>
+    <li> Egy karakterlánc, amely végül &#39;.&#39; karakter. A gazdagép címe akkor egyezik meg, ha az első numerikus mezői megegyeznek az adott karakterlánccal. Például a &#39;131.155.&#39; Minta megegyezik az (összesen) az Eindhoveni Egyetemi hálózat minden házigazdájának címével (131.155.xx). </li>
+    <li> A &#39;@&#39; karakterrel kezdődő karakterláncot NIS (korábban YP) hálózati csoportként kezelik. A gazdagépnevet egyeztetjük, ha a megadott hálózati csoport gazdatagja. A démonfolyamatok és az ügyfél felhasználói nevek nem támogatják a Netgroup-egyezéseket. </li>
+    <li> Az „nnnn / mmmm” forma kifejezését „háló / maszk” párként kell értelmezni. Az IPv4 host címet egyeztetjük, ha a „net” megegyezik a cím és a „maszk” bitszintű AND-jával. Például a &#39;131.155.72.0/255.255.254.0&#39; hálózati / maszk mintázat megegyezik a &#39;131.155.72.0&#39; és &#39;131.155.73.255&#39; tartományba eső címekkel. </li>
+    <li> Az „[n: n: n: n: n: n: n] / m” formájú kifejezést „[net]/előtag” párként kell értelmezni. Az IPv6 host címet egyeztetjük, ha a &#39;net&#39; prefixlen bitje megegyezik a cím &#39;prefixlen&#39; bitjével. Például a [net]/prefixlen mintázat &#39;[3ffe: 505: 2: 1 ::]/64&#39; megfelel minden címnek a &#39;3ffe: 505: 2: 1:&#39; tartományban? át: &#39;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&#39;. </li>
+    <li> A &#39;/&#39; karakterrel kezdődő karakterláncot fájlnévként kezelik. A gazdagépnévnek vagy a címnek egyeznie kell, ha egyezik az elnevezett fájlban felsorolt gazdagépnevekkel vagy címekkel. A fájl formátuma nulla vagy több sor, nulla vagy több gazdagépnévvel vagy címmintával, szóközzel elválasztva. A fájlnév mintázat bárhol használható, a gazdagép neve vagy a cím mintája is használható. </li>
+    <li> Helyettesítő karakterek &#39;*&#39; és &#39;?&#39; használható a hostnevek vagy IP-címek egyezéséhez. Ez az illesztési módszer nem használható a &#39;net/mask&#39; illesztéssel, a hostnév egyezéssel &#39;&#39; -val együtt. vagy IP-cím egyezés, amely végül &#39;.&#39; </li>
+</ul>
+<h3> Helyettesítő karakterek </h3> A hozzáférés-vezérlő nyelv támogatja az explicit helyettesítő karaktereket: <table border>
+    <tr>
+        <td> <b>MINDEN</b> </td>
+        <td> Az univerzális helyettesítő karakter mindig megegyezik. </td>
+    </tr>
+    <tr>
+        <td> <b>HELYI</b> </td>
+        <td> Megfelel minden olyan gazdagépnek, amelynek a neve nem tartalmaz pont karaktert. </td>
+    </tr>
+    <tr>
+        <td> <b>ISMERETLEN</b> </td>
+        <td> Megfelel minden olyan felhasználónak, akinek a neve ismeretlen, és megegyezik minden olyan gazdagéppel, amelynek neve vagy címe ismeretlen. Ezt a mintát körültekintően kell használni: a hosztnevek ideiglenes névkiszolgálói problémák miatt nem érhetők el. A hálózati cím nem lesz elérhető, ha a szoftver nem tudja kitalálni, hogy milyen típusú hálózattal beszél. </td>
+    </tr>
+    <tr>
+        <td> <b>ISMERT</b> </td>
+        <td> Megfelel minden olyan felhasználónak, akinek a neve ismert, és megegyezik minden olyan gazdagéppel, amelynek neve és címe ismert. Ezt a mintát körültekintően kell használni: a hosztnevek ideiglenes névkiszolgálói problémák miatt nem érhetők el. A hálózati cím nem lesz elérhető, ha a szoftver nem tudja kitalálni, hogy milyen típusú hálózattal beszél. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOID</b> </td>
+        <td> Megfelel minden olyan gazdagépnek, amelynek neve nem egyezik a címével. Amikor a tcpd -DPARANOID (alapértelmezett mód) segítségével épül fel, akkor az ilyen ügyfelek kéréseit még a hozzáférés-vezérlési táblázatok megtekintése előtt eldobja. Építsen -DPARANOID nélkül, ha nagyobb ellenőrzést szeretne az ilyen kérések felett. </td>
+    </tr>
+</table>
+<h3> Az üzemeltetők </h3> <b>KIVÉVE</b> rendeltetésszerű felhasználás formájában: „list_1 KIVÉVE list_2”; ez a konstrukció megegyezik bármivel, amely megegyezik a list_1-rel, kivéve, ha megegyezik a list_2-rel. Az EXCEPT operátor használható a daemon_lists és az kliens_listákban. Az EXCEPT operátor beágyazható: ha a vezérlőnyelv lehetővé tenné zárójelek használatát, akkor az &#39;EXCEPT b EXCEPT c&#39; kifejezés jelentése &#39;(EXCEPT (b EXCEPT c))&#39;. <h3> Shell parancsok </h3> Ha az első egyezésű hozzáférés-vezérlő szabály héjparancsot tartalmaz, akkor erre a parancsra% <letter> helyettesítések (lásd a következő részt). Az eredményt egy /bin/sh gyermekfolyamat hajtja végre, a szabványos bemenetet, kimenetet és hibát a /dev/nullhoz csatlakoztatva. Adja meg a &#39;&amp;&#39; parancs végén, ha nem akarja megvárni, amíg be nem fejeződik. <p> A parancsok nem támaszkodhatnak az inet PATH beállítására. Ehelyett abszolút útneveket kell használniuk, vagy egy explicit PATH = bármilyen állítással kell kezdniük. <h3> % Bővítések </h3> A következő kiterjesztések érhetők el a parancsok shellben: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> Az ügyfél (kiszolgáló) host címe. </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Ügyfélinformációk: felhasználói @ gazdagép, felhasználói @ cím, gazdagépnév vagy csak egy cím, attól függően, hogy mennyi információ áll rendelkezésre. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> A démon folyamatneve (argv[0] érték). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Az ügyfél (kiszolgáló) gazdagép neve vagy címe, ha a gazdagép neve nem érhető el. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> Az ügyfél (kiszolgáló) gazdagép neve (vagy &quot;ismeretlen&quot; vagy &quot;paranoiás&quot;). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> A démon folyamat azonosítója. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Szerverinformációk: daemon@host, daemon @ cím vagy csak egy démon neve, attól függően, hogy mennyi információ áll rendelkezésre. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Az ügyfél felhasználói neve (vagy &quot;ismeretlen&quot;). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Növekszik egyetlen% -ra? karakter. </td>
+            </tr>
+        </table> A%bővítésekben szereplő karaktereket, amelyek összetéveszthetik a kagylót, aláhúzással helyettesítik.
+        <hr />

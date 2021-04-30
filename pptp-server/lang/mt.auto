@@ -1,0 +1,152 @@
+index_title=Server VPN PPTP
+index_version=Verżjoni PoPToP $1 
+index_epptpd=Is-server PPTP PoPToP $1 ma nstabx fis-sistema tiegħek, jew mhuwiex il-programm it-tajjeb. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
+index_econfig=Il-fajl tal-konfigurazzjoni tas-server PPTP $1 ma nstabx fis-sistema tiegħek. Forsi l-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
+index_stop=Waqqaf is-server PPTP
+index_stopdesc=Ikklikkja din il-buttuna biex tingħalaq il-proċess tas-server PPTP li jkun għaddej, sabiex ma jiġu aċċettati l-ebda konnessjonijiet ġodda. Il-konnessjonijiet VPN eżistenti għadhom jibqgħu attivi.
+index_start=Ibda server PPTP
+index_startdesc=Ikklikkja din il-buttuna biex tibda l-proċess tas-server PPTP sabiex tkun tista 'tirċievi konnessjonijiet VPN mill-klijenti.
+index_apply=Applika Konfigurazzjoni
+index_applydesc=Ikklikkja din il-buttuna biex tapplika l-għażliet attwali tas-server PPTP billi twaqqaf u terġa 'tibda l-proċess tas-server PPTP. Il-bidliet fl-għażliet tal-PPP u l-kontijiet PPP dejjem ikunu applikabbli għal kwalunkwe konnessjoni ġdida
+index_return=indiċi tal-modulu
+index_epppd=Il-programm tas-server PPP $1 mhuwiex installat fis-sistema tiegħek. Il-PPTP jiddependi minnha biex topera.
+
+conf_title=Għażliet ta 'Server PPTP
+conf_ecannot=M'għandekx permess teditja l-għażliet tas-server PPTP
+conf_header=Konfigurazzjoni tas-server PPTP
+conf_speed=Rata ta 'baud PPP
+conf_baud=bps
+conf_listen=Isma 'l-indirizz
+conf_all=L-indirizzi kollha
+conf_localip=Indirizzi IP għat-tmiem tas-server tal-konnessjoni
+conf_remoteip=Indirizzi IP li jiġu allokati lill-klijenti
+conf_ipxnets=Netwerks IPX biex jiġu allokati
+conf_from=Minn
+conf_to=biex
+conf_option=Fajl għażliet PPP
+conf_mode0=Is-settings globali
+conf_mode1=Settings tal-PPTP speċifiċi
+conf_mode2=Fajl apposta
+conf_ipdesc=L-indirizz IP fiż-żewġ meded jista 'jkun miktub jew waħdu (bħal 192.168.1.1) jew bħala meded (bħal 192.168.2.32-64)
+conf_err=Ma rnexxielux isalva l-għażliet tas-server
+conf_espeed=Rata ta 'baud nieqsa jew invalida
+conf_elisten=Indirizz nieqes jew invalidu biex nisma '
+conf_eoption=Fajl tal-għażliet tal-PPP apposta li jkun nieqes jew mhux validu
+conf_elocalip="$1" mhijiex indirizz jew firxa IP lokali valida
+conf_eremoteip="$1" mhijiex indirizz jew firxa IP remota valida
+conf_efrom=Netwerk IPX nieqes jew invalidu mill-indirizz
+conf_eto=Netwerk IPX nieqes jew invalidu biex jiġi indirizzat
+
+options_title=Għażliet PPP
+options_ecannot=M'għandekx permess teditja l-għażliet tal-PPP
+options_desc0=L-għażliet PPP hawn taħt minn $1 japplikaw għall-konnessjonijiet KOLLHA li deħlin mis-sistema tiegħek, inklużi dawk għall-modems dialup.
+options_desc1=L-għażliet PPP hawn taħt minn $1 japplikaw biss għall-konnessjonijiet PPTP kollha.
+options_desc2=Dawn għandhom jintużaw minn kwalunkwe konnessjoni ġdida stabbilita wara li din il-formola tiġi ssejvjata.
+options_header=Għażliet ta 'konnessjoni PPP
+options_proxyarp=Oħloq prokura ta 'dħul ARP?
+options_lock=Issakkar il-fajl tal-apparat PTY?
+options_auth=Teħtieġ awtentikazzjoni?
+options_auth0=Le, imma jipprevjenu IPs bir-rotta
+options_auth1=Qatt
+options_auth2=Dejjem
+options_login=Tagħmel ukoll awtentikazzjoni unix?
+options_pap=Awtentikazzjoni PAP
+options_chap=Awtentikazzjoni ta 'CHAP
+options_req=Għandha tintuża
+options_all=Jista 'jintuża
+options_ref=Ma jistax jintuża
+options_name=Isem tas-server għall-awtentikazzjoni
+options_hn=Hostname reali
+options_mtu=Daqs massimu tal-pakkett li jibgħat
+options_mru=Daqs massimu tal-pakkett li jirċievi
+options_err=Ma rnexxielux isalva l-għażliet PPP
+options_emtu=Id-daqs massimu tal-pakkett li jibgħat jew invalidu huwa nieqes
+options_emru=Id-daqs massimu tal-pakkett li jirċievi huwa nieqes jew invalidu
+options_ename=Isem tas-server nieqes jew invalidu għall-awtentikazzjoni
+options_version=Verżjoni PPPd $1 
+options_msdesc=L-għażliet ta 'hawn taħt jippermettu l-metodu ta' awtentikazzjoni MS-CHAP u l-kriptaġġ MPPE, użati b'mod awtomatiku mill-klijenti VPN tal-Windows. Madankollu, MPPE teħtieġ appoġġ kemm fid-daemon PPP kif ukoll fil-qalba tas-sistema operattiva.
+options_mschap=Awtentikazzjoni MS-CHAP
+options_mschap-v2=Awtentikazzjoni MS-CHAP verżjoni 2
+options_chapms=Awtentikazzjoni MS-CHAP
+options_chapms-v2=Awtentikazzjoni MS-CHAP verżjoni 2
+
+secrets_title=Kontijiet PPP
+secrets_ecannot=M'għandekx permess teditja kontijiet PPP
+secrets_return=indiċi
+secrets_none=L-ebda kont PPP għadu ma nħoloq.
+secrets_enopfile=Il-fajl tal-passwords PPP $1 ma jeżistix fis-sistema tiegħek. Forsi PPP mhux installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> tiegħek mhix korretta.
+secrets_table=Il-PPP jammonta għal $1 
+secrets_user=Username
+secrets_ips=Indirizzi IP
+secrets_uany=KULL
+secrets_sany=KULL
+secrets_create=Oħloq kont PPP ġdid.
+secrets_desc=Il-kontijiet PPP elenkati f'din il-paġna huma meħuda mill-fajl $1, li jintuża għall-awtentikazzjoni $3. Dawk biss għas-server tiegħek $2 huma murija, mhux kontijiet biex jagħmlu konnessjonijiet ħerġin.
+secrets_delete=Ħassar il-Kontijiet PPP magħżula
+
+edit_secret_etitle=Editja l-Kont PPP
+edit_secret_ctitle=Oħloq Kont PPP
+edit_secret_acc=Kont PPP
+edit_secret_user=Username
+edit_secret_serv=Server
+edit_secret_sany=Kull
+edit_secret_uany=Kull
+edit_secret_pass=Password
+edit_secret_none=Xejn
+edit_secret_ffile=Mill-fajl
+edit_secret_leave=Ħalli l-istess
+edit_secret_setto=Issettja għal
+edit_secret_vaddr=Indirizzi validi
+edit_secret_aany=Ħalli kwalunkwe
+edit_secret_anone=Ħalli ħadd
+edit_secret_alist=Ħallih elenkat ..
+edit_secret_save=Issejvja
+edit_secret_del=Ħassar
+edit_secret_return=lista tal-kontijiet
+
+save_secret_esave=Ma rnexxielux isalva l-kont
+save_secret_enoip="$1" mhuwiex indirizz validu
+
+stop_err=Ma rnexxielux iwaqqaf server PPTP
+stop_egone=Ma għadux għaddej
+stop_ecannot=M'għandekx permess twaqqaf is-server PPTP
+
+start_err=Ma rnexxielux jibda s-server PPTP
+start_ecannot=Mhux permess li tibda s-server PPTP
+
+apply_err=Naqset milli terġa tibda s-server PPTP
+apply_ecannot=M'għandekx permess li terġa 'tibda s-server PPTP
+
+conns_title=Konnessjonijiet Attivi
+conns_ecannot=M'għandekx permess timmaniġġja konnessjonijiet attivi
+conns_desc=Din il-paġna telenka l-konnessjonijiet PPTP attwalment attivi mas-server tiegħek. Biex Skonnettja bil-forza, ikklikkja fuq l-isem tal-interface tagħha.
+conns_iface=Interface PPP
+conns_client=Indirizz tal-Klijent
+conns_stime=Konnessi minn dakinhar
+conns_local=Indirizz VPN Server
+conns_remote=Indirizz VPN tal-Klijent
+conns_none=M'hemm l-ebda konnessjoni PPTP attiva f'dan il-ħin.
+conns_unknown=Mhux magħruf
+conns_user=Username
+
+disc_err=Ma rnexxielux jiskonnettja
+disc_egone=Il-konnessjonijiet m'għadhomx attivi
+disc_ekill=Il-proċess ma għadux għaddej
+
+log_secret_create=Kont PPP maħluq $1 
+log_secret_modify=Kont PPP modifikat $1 
+log_secret_delete=Kont PPP imħassar $1 
+log_deletes=Kontijiet PPP $1 imħassra
+log_conf=Opzjonijiet modifikati tas-server PPTP
+log_options=Opzjonijiet modifikati ta 'PPP
+log_disc=Klijent skonnettjat $1 
+log_start=Beda server PPTP
+log_stop=Waqfet server PPTP
+log_apply=Konfigurazzjoni tas-server PPTP applikata
+
+acl_conf=Tista 'teditja l-konfigurazzjoni?
+acl_options=Tista 'teditja l-għażliet?
+acl_secrets=Tista 'tmexxi kontijiet PPTP?
+acl_conns=Tista 'tara konnessjonijiet?
+acl_stop=Tista 'twaqqaf u tibda server PPTP?
+acl_apply=Tista 'tapplika konfigurazzjoni?

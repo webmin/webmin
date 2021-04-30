@@ -1,0 +1,8 @@
+index_title=Klusterra aldatu Pasahitzak
+index_noservers=Ez dira erabiltzaileak kudeatzeko zerbitzaririk zehaztu <a href=$1>Cluster erabiltzaileak eta taldeak</a> moduluan.
+index_hosts=Modulu hau erabiliz pasahitz aldaketa guztiak Klusterreko erabiltzaileak eta taldeak moduluak kudeatutako $1 ostalari guztietan egingo dira.
+
+passwd_err=Ezin izan da pasahitza aldatu
+passwd_title=Pasahitza aldatzea
+passwd_on=Pasahitza aldatzen $1 ..
+passwd_euser=Erabiltzailea ez da existitzen!

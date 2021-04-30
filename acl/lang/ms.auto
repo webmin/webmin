@@ -1,0 +1,25 @@
+index_screate=Buat pengguna selamat yang baru.
+
+edit_title3=Buat Pengguna Webmin Selamat
+edit_safe=Tahap keistimewaan
+edit_safe0=Tidak terkawal
+edit_safe1=Modul selamat sahaja
+edit_unsafe=Tetapkan semula kepada tanpa had
+
+save_eunixname=Nama pengguna '$1' bukan pengguna Unix, dan oleh itu tidak boleh digunakan dalam mod selamat
+
+delete_eanonuser=Pengguna ini sedang digunakan untuk akses modul tanpa nama
+
+sessions_actions=Tindakan..
+sessions_logouts=Juga tunjukkan sesi log keluar..
+sessions_state=Negeri
+sessions_this=Log masuk ini
+sessions_in=Log masuk
+sessions_out=Logged out
+sessions_kill=Putuskan sambungan..
+
+logins_title=Kemasukan Webmin terkini
+
+udeletes_jerr=Gagal menambah pengguna ke kumpulan
+
+twofactor_ebutton=Tiada butang diklik!

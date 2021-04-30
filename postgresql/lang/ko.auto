@@ -1,0 +1,71 @@
+index_startmsg2=시스템에서 PostgreSQL 데이터베이스 서버를 시작하려면이 버튼을 클릭하십시오. 이 Webmin 모듈은 데이터베이스가 시작될 때까지 데이터베이스를 관리 할 수 없습니다.
+index_nodbs3=일치하는 PostgreSQL 데이터베이스가 없습니다.
+index_edithosts=허용 된 호스트 시스템 구성
+
+dbase_header=데이터베이스 테이블, 인덱스, 뷰 및 시퀀스
+dbase_vjump=보기 편집 :
+dbase_ijump=색인 편집 :
+dbase_sjump=순서 편집 :
+
+table_delete=선택된 필드 삭제
+
+exec_old=또는 이전 SQL 명령을 선택하십시오.
+exec_clear=명확한 역사
+exec_importmode=CSV 파일 소스
+exec_edit=이전 편집
+exec_tabexec=SQL 실행
+exec_tabfile=파일에서 SQL 실행
+exec_tabimport=텍스트 파일 가져 오기
+exec_return=SQL 양식을 실행
+
+view_refresh=새롭게 하다
+view_match4=~보다 큰
+view_match5=이하
+view_go=가다
+view_set=파일 내용으로 설정합니다.
+view_warn=경고- $1 및 $2 Perl 모듈을 설치하여 사용하지 않으면 <tt>text</tt> 또는 <tt>bytea</tt> 필드에 파일을 업로드하고 내용을 볼 수 없습니다.
+view_sqlrun=SQL 쿼리에 의해 생성 된 결과  : $1 
+
+newdb_template=템플릿 데이터베이스
+newdb_notemplate=없음
+
+user_vwarning=경고 :이 PostgreSQL 사용자는 Virtualmin 도메인 $1 의 관리 로그인입니다. 여기에서 설정을 변경하면 Virtualmin에서 오류가 발생할 수 있습니다.
+user_syncwhen=동기화시기
+
+host_peer=네트워크 피어
+host_other=다른 ..
+host_identarg0=사용자 맵을 사용하지 마십시오
+host_identarg1=PostgreSQL과 Unix 사용자는 동일합니다
+host_identarg2=사용자 맵 파일 사용
+host_manual=구성 파일 편집
+host_manualdesc=허용 된 호스트 구성 파일을 수동으로 편집하려면이 단추를 클릭하십시오.
+
+manual_title=구성 파일 편집
+manual_err=구성 파일을 저장하지 못했습니다
+
+group_memsopts=모든 사용자들
+group_memsvals=그룹의 사용자
+
+log_fields_delete=데이터베이스 $3 의 $2 에서 $1 개의 필드를 삭제했습니다.
+log_move_all=허용 된 호스트를 이동했습니다
+log_degrant=$1 개체에 대한 권한이 제거되었습니다.
+log_manual=허용 된 호스트 구성 파일을 수동으로 편집
+
+acl_max=예, 최대
+acl_login=다음과 같이 MySQL에 로그인하십시오
+
+fdrop_enone=선택된 사항 없음
+fdrop_eall=테이블에서 모든 필드를 삭제할 수는 없습니다!
+
+restore_tables=복원 할 테이블
+restore_tables1=백업 파일에서 모두
+restore_tables0=나열된 테이블
+
+backup_header1=백업 대상
+backup_header2=다른 백업 옵션
+backup_header3=백업 일정
+backup_mkdir=대상 디렉토리를 만드시겠습니까?
+
+index_spatial=공간
+
+view_query=SQL 선택 쿼리

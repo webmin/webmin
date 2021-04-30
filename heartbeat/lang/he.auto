@@ -1,0 +1,103 @@
+index_title=מוניטור פעימות לב
+index_return=צג פעימות לב
+index_edir=ספריית התצורה של פעימות הלב $1 אינה קיימת. אולי פעימות הלב אינן מותקנות, או ש <a href='$2'>תצורת המודול</a> שלך שגויה.
+index_start=הפעל את צג פעימות הלב
+index_startmsg=לחץ על כפתור זה כדי להתחיל בתהליך צג פעימות הלב. זה יאפשר כשל בשירות אוטומטי במערכת שלך עם התצורה הנוכחית.
+index_apply=החל שינויים
+index_applymsg=לחץ על כפתור זה כדי לאלץ את תהליך הצג של Heartbeat להפעיל מחדש את התצורה הנוכחית.
+index_eha_cf=קובץ התצורה של פעימות הלב $1 לא נמצא במערכת שלך. אולי הוא טרם הועתק למקומו, או <a href='$2'>תצורת המודול</a> שגויה.
+index_eharesources=קובץ המשאבים $1 לא נמצא במערכת שלך. אולי הוא טרם הועתק למקומו, או <a href='$2'>תצורת המודול</a> שגויה.
+index_eauthkeys=קובץ מפתחות האימות $1 לא נמצא במערכת שלך. אולי הוא טרם הועתק למקומו, או <a href='$2'>תצורת המודול</a> שגויה.
+index_ereq_resource_cmd=הסקריפט לבקשת משאבים מהצומת האחר ($1) לא נמצא במערכת שלך. אולי הוא טרם הועתק למקומו, או <a href='$2'>תצורת המודול</a> שגויה.
+index_version=גרסת פעימות הלב $1 
+index_noversion=אזהרה - לא ניתן היה לאתר אוטומטית את גרסת Heartbeat המותקנת במערכת שלך. עליך להגדיר אותו בדף <a href='$1'>תצורת המודול</a>.
+index_status=מצב פעימות לב
+
+conf_title=אפשרויות תצורה
+conf_header=אפשרויות תצורה של פעימות לב
+conf_serials=יציאות דופק סידורי
+conf_baud=קצב Baud עבור יציאה טורית
+conf_bcasts=ממשקי פעימות לב Ethernet
+conf_none=אף אחד
+conf_udpport=יציאת פעימות לב UDP
+conf_mcast=מכשיר דופק לב לקבוצה
+conf_mcastv=התקן $1, קבוצה $2, יציאה $3, TTL $4, loopback $5 
+conf_enabled=מופעל
+conf_disabled=נכים
+conf_keepalive=זמן בין פעימות לב
+conf_nice_failback=התנהגות נחמדה של כישלון
+conf_secs=שניות
+conf_deadtime=זמן לפני הצומת נחשב מת
+conf_watchdog=קובץ מכשיר כלב שמירה
+conf_node=מארחים באשכול
+conf_logfile=קובץ יומן פעימות לב
+conf_logfacility=מתקן יומן Syslog
+conf_initdead=זמן מת ראשוני
+conf_ok=שמור אפשרויות
+conf_err=שמירת אפשרויות נכשלה
+conf_ebaud=שיעור baud חסר או לא תקף
+conf_ebcast=לא נכנסו ממשקי שידור של פעימות לב
+conf_ebcastif='$1' אינו ממשק שידור תקף
+conf_eudpport=יציאת פעימות לב חסרה או לא תקפה
+conf_ekeepalive=זמן חסר או לא תקף בין פעימות לב
+conf_edeadtime=זמן מת או חסר
+conf_ewatchdog=קובץ מכשיר כלב שמירה חסר או שאינו קיים
+conf_enonode=לא נכנסו מארחי אשכול
+conf_ethisnode=מארח זה $1 אינו מופיע ברשימת מארחי האשכול
+conf_elogfile=שם קובץ יומן חסר או לא חוקי
+conf_einitdead=זמן המתה הראשוני חסר או לא תקף
+conf_einitdead2=זמן המת הראשוני חייב להיות לפחות פעמיים מהזמן לפני שהצומת נחשב מת
+conf_emcast_dev=התקן שידור לקבוצה חסר או לא חוקי
+conf_emcast_ip=כתובת לקבוצה מרובת-שידור חסרה או לא חוקית
+conf_emcast_port=מספר יציאת שידור לקבוצה חסרה או לא תקף
+conf_emcast_ttl=זמן חי לקבוצה חסר או לא תקף
+conf_auto_on=$ {conf_enabled}
+conf_auto_off=$ {conf_disabled}
+conf_auto_legacy=מצב מדור קודם
+conf_auto_=$ {default}
+
+res_title=משאבי אשכול
+res_node=צומת ראשוני
+res_ips=כתובות IP
+res_servs=שירותי צומת
+res_none=אף אחד
+res_nores=לא הוגדרו משאבי אשכול במערכת שלך.
+res_add=הוסף משאב אשכול
+res_return=רשימת משאבים
+res_active=סטטוס משאב
+res_getserv=קבל משאבים
+res_hbdown=פעימות לב למטה
+res_up=UP
+res_down=מטה
+
+node_create=הוסף משאב אשכול
+node_edit=ערוך משאב אשכול
+node_header=פרטי משאב אשכול
+node_node=צומת ראשי למשאב
+node_ips=כתובות IP למשאב
+node_ip=כתובת ה - IP
+node_cidr=NetMask CIDR
+node_broad=כתובת שידור
+node_servs=שירותים למשאבים
+node_serv=שירות
+node_args=טיעונים נוספים
+node_err=שמירת משאב האשכול נכשלה
+node_enone=הצומת הראשי חסר או לא חוקי
+node_eip='$1' אינה כתובת IP חוקית
+node_ecidr='$1' אינו CIDR תקף
+node_ebroad='$1' אינה כתובת שידור חוקית
+
+auth_title=מפתחות אימות
+auth_header=אימות צומת אשכול
+auth_mode=מצב אימות
+auth_crc=CRC (ללא אבטחה)
+auth_sha1=SHA1 עם סיסמא
+auth_md5=MD5 עם סיסמא
+auth_err=שמירת מפתחות האימות נכשלה
+auth_emd5=סיסמת MD5 חסרה או לא חוקית
+auth_esha1=סיסמת SHA1 חסרה או לא חוקית
+
+start_err=ההתחלה של פעימות לב נכשלה
+
+apply_err=החלת השינויים נכשלה
+apply_epid=התהליך אינו פועל עוד

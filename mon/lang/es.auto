@@ -1,0 +1,4 @@
+watches_none=Aún no se han definido listas de vigilancia.
+
+show_title=Estado operativo
+show_ecgi=El programa de estado MON $1 no existe. Tal vez no esté instalado o la <a href='$2'>configuración del módulo</a> sea incorrecta.

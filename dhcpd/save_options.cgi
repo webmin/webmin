@@ -148,8 +148,8 @@ if ($config{'dhcpd_version'} >= 3) {
 			  &check_ip6address($cv) ||
 			    &error(&text('sopt_ecip', $in{"cname_$i"}));
 			}
-		if ($o && $o->{'values'}->[4] =~ /^array\s+of\s+(\S+)/) {
-			local $atype = $1;
+		if ($o && $o->{'values'}->[4] =~ /^array/) {
+			# No need to quote arrays
 			}
 		elsif ($o && $o->{'values'}->[4] eq 'string' ||
 		       $o && $o->{'values'}->[4] eq 'text' ||

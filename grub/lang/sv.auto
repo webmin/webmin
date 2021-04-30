@@ -1,0 +1,75 @@
+index_title=GRUB Boot Loader
+index_add=Lägg till ett nytt startalternativ.
+index_global=Redigera globala alternativ
+index_globalmsg=Redigera globala startalternativ som gäller för alla alternativ i startmenyn och välj den enhet som GRUB är installerad på.
+index_install=Installera GRUB
+index_installmsg=Installera GRUB-startladdaren på $1 för att visa alternativen ovan vid uppstarttid. Detta kommer att åsidosätta alla befintliga startladdare som LILO och kan göra ditt system obearbetbart!
+index_none=Inga startalternativ har definierats. Se till att du lägger till minst en innan du installerar grub.
+index_efile=GRUB-menyfilen $1 hittades inte på ditt system. Kanske är GRUB inte installerad, eller <a href='$2'>modulkonfiguration</a> är felaktig.
+index_epath=GRUB-körbara $1 hittades inte på ditt system. Kanske är GRUB inte installerad, eller <a href='$2'>modulkonfiguration</a> är felaktig.
+index_return=alternativlista
+
+title_add=Lägg till startalternativ
+title_edit=Redigera startalternativ
+title_header=Detaljer om Boot-menyalternativet
+title_title=Alternativ titel
+title_root=Starta bildpartition
+title_noverify=Montera inte och verifiera partitionen
+title_other=Annan enhetsfil
+title_sel=Vald
+title_boot=Operativsystem för att starta
+title_kernel=Kärna
+title_kfile=Sökväg till kärna
+title_args=Kärnalternativ
+title_initrd=Inledande ramdisk-fil
+title_modules=Extra moduler
+title_chain=Andra operativsystem
+title_chain_def=Från den första sektionen för partition
+title_chain_file=Från chainloader-fil
+title_makeactive=Gör rotpartitionen aktiv?
+title_none1=Ingen
+title_none2=(menyinmatning utan start)
+title_err=Det gick inte att spara startalternativet
+title_etitle=Saknas alternativtitel
+title_eroot=Rootpartition saknas
+title_ekernel=Saknad eller ogiltig kärnväg
+title_echain=Saknad eller ogiltig chainloader-fil
+title_edev=Ostödd rootpartitionsenhet $1 
+title_einitrd=Det ursprungliga filnamnet för ramdisk saknas
+title_lock=Lösenord låst?
+
+global_title=Globala alternativ
+global_header=Globala startmenyalternativ
+global_default=Standard startalternativ
+global_fallback=Fallback-startalternativ
+global_first=Först på listan
+global_timeout=Timeout innan standard laddas
+global_forever=Vänta för evigt
+global_secs=sekunder
+global_install=Installera GRUB på disk/partition
+global_sel=Vald
+global_other=Övrig
+global_password=Starta lösenord
+global_none=Ingen
+global_password_file=Använd menyfilen om lösenordet anges:
+global_err=Det gick inte att spara globala alternativ
+global_etimeout=Saknas eller ogiltig timeout
+global_edev=Ostödd installationsdisk/partition $1 
+global_eother=Saknas eller ogiltig disk/partition
+global_epassword=Saknar eller ogiltigt startlösenord
+global_epasswordfile=Saknar menyn filnamn
+
+install_title=Installera GRUB
+install_err=Det gick inte att installera GRUB
+install_efind=Det gick inte att hitta menyfilen
+install_desc=Installera GRUB på $1 med kommandon $2 och $3.
+install_ok=.. installera komplett.
+install_failed=.. installation misslyckades!
+
+log_create_title=Skapat startalternativ $1 
+log_delete_title=Raderat startalternativ $1 
+log_modify_title=Modifierat startalternativ $1 
+log_up_title=Flyttad startalternativ $1 
+log_down_title=Flyttad nedstartalternativ $1 
+log_global=Ändrade globala alternativ
+log_install=Installerat GRUB

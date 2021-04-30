@@ -1,0 +1,37 @@
+index_title=Cluster Cron Jobs
+index_add=Sortu kluster cron lan berria.
+index_none=Ez da kluster cron lanik definitu.
+index_servers=Exekutatu zerbitzarietan
+index_return=cluster cron lanpostuen zerrenda
+index_more=$1 gehiago ..
+index_run=Korrika orain ..
+index_actions=Ekintzak
+
+edit_title=Editatu Cluster Cron lana
+create_title=Sortu Cluster Cron lana
+edit_servers=Exekutatu zerbitzarietan
+edit_group=$1 eko kideak
+edit_this=zerbitzari hau
+edit_all=&lt;Ostalari guztiak&gt;
+edit_emissing=Cron lana ez da existitzen!
+
+save_err=Ezin izan da cluster cron lana gordetzean
+
+exec_title=Cluster Cron lana gauzatzea
+exec_cmd=$1 exekutatzen hautatutako zerbitzarietan ..
+exec_failed=Ezin izan da exekutatu $1 : $2 an
+exec_success=$1 -eko irteera.
+exec_nohosts=Ez dago exekutatzeko hautatutako ostalarik, edo hautatutako taldeek ez dute ostalari erabilgarririk.
+
+log_run=Ran $1 $2 zerbitzarietan
+log_run_l=Ran $1 $2 an
+log_create=$1 erako klusterreko kluster lana sortu da
+log_create_l=$2 klusterreko kluster lana sortu da $1 -erako
+log_modify=$1 erako klusterreko kluster lana aldatu da
+log_modify_l=$2 ko klusterreko lana aldatu du $1 erako
+log_delete=$1 eko klusterreko kluster lana ezabatu da
+log_delete_l=$2 ko kluster-en lana ezabatu da $1 -erako
+log_deletes=$1 klusterreko laneko mezuak ezabatu dira
+
+delete_err=Huts egin du klusterren cron lanak
+delete_enone=Ez da hautatu

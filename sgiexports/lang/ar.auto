@@ -1,0 +1,39 @@
+index_title=صادرات NFS
+index_add=إضافة تصدير NFS جديد
+index_dir=الدليل
+index_hosts=المضيفون المسموح لهم
+index_all=جميع المضيفين
+index_none=لم يتم تحديد أي صادرات NFS حتى الآن.
+index_apply=تطبيق التكوين
+index_applydesc=انقر فوق هذا الزر لجعل جميع عمليات التصدير المذكورة أعلاه نشطة ، مع خيارات تكوينها.
+index_return=قائمة الصادرات
+
+edit_title1=إنشاء تصدير
+edit_title2=تحرير التصدير
+edit_header=تفاصيل التصدير
+edit_dir=دليل للتصدير
+edit_hosts=تصدير إلى المضيفين/مجموعات الشبكة
+edit_ro=يقرأ فقط؟
+edit_wsync=تزامن بعد أن يكتب؟
+edit_anon=أذونات المستخدم الجذر
+edit_anon1=افتراضي (معاملة كـ <tt>لا أحد</tt>)
+edit_anon2=يمنع الدخول
+edit_anon0=التعامل كمستخدم
+edit_rw=الوصول للقراءة/الكتابة
+edit_root=الوصول إلى ملف الجذر
+edit_access=وصول جبل
+edit_all=جميع المضيفين
+edit_sel=المضيفون المدرجون ..
+edit_none=لا مضيفين
+
+save_err=فشل في حفظ التصدير
+save_edir=دليل مفقود أو غير موجود للتصدير
+save_eanon=مستخدم جذر مفقود أو غير صالح
+save_erw=لم يتم إدخال مضيفي القراءة والكتابة
+save_eroot=لم يتم إدخال مضيفي وصول إلى ملف الجذر
+save_eaccess=لم يتم إدخال مضيفي وصول التحميل
+
+log_create_export=تم إنشاء تصدير$1
+log_delete_export=تصدير محذوف لـ$1
+log_modify_export=تصدير معدل$1
+log_apply=التكوين التطبيقي

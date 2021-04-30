@@ -1,7 +1,7 @@
-virtualmin_spam=Camí complet del programa de consulta de spam d'usuaris de Virtualmin,3,No està instal·lat,40
-virtualmin_config=Camí complet del directori de configuració de Virtualmin,3,No instal·lat
-warn_procmail=Mostra un avís si Procmail no està instal·lat,1,1-Sí,0-No
-forward_procmail=Crea fitxer .forward per executar procmail,1,1-Sí,0-No
-alias_files=Camí complet dels fitxers d'àlies globals,9,40,3,\t
-reply_min=Temps mínim entre missatges d'autoresposta,3,Sense límit,5,,minuts
-reply_force=Força l'ús de l'interval mínim d'autoresposta,1,1-Sí,0-No
+virtualmin_spam=CamÃ­ complet del programa de consulta de spam d'usuaris de Virtualmin,3,No estÃ  instalÂ·lat,40
+virtualmin_config=CamÃ­ complet del directori de configuraciÃ³ de Virtualmin,3,No instalÂ·lat
+warn_procmail=Mostra un avÃ­s si Procmail no estÃ  instalÂ·lat,1,1-SÃ­,0-No
+forward_procmail=Crea fitxer .forward per executar procmail,1,1-SÃ­,0-No
+alias_files=CamÃ­ complet dels fitxers d'Ã lies globals,9,40,3,\t
+reply_min=Temps mÃ­nim entre missatges d'autoresposta,3,Sense lÃ­mit,5,,minuts
+reply_force=ForÃ§a l'Ãºs de l'interval mÃ­nim d'autoresposta,1,1-SÃ­,0-No

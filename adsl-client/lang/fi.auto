@@ -1,0 +1,66 @@
+index_title=ADSL-asiakas
+index_eadsl=RP-PPPoE-komentoa $1 ei löydy järjestelmästäsi tai se ei ole kelvollinen. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
+index_econfig=RP-PPPoE ADSL -määritystiedostoa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
+index_emodem=Nykyinen määritystiedosto on modeemille Redhat Linuxissa, ei ADSL-yhteydelle. Määritä <a href='$2'>moduulin määritys</a> -sivulla jokin muista <tt>ifcfg-ppp *</tt> -tiedostoista $1 : ssä tai sellainen, jota ei vielä ole, joten moduuli voi luoda sen sinulle.
+index_stop=Sammuta ADSL
+index_stopdesc=ADSL-yhteytesi on tällä hetkellä aktiivinen IP-osoitteella $1. Napsauta tätä painiketta, sammuta se komennolla $2.
+index_start=Käynnistä ADSL
+index_startdesc=ADSL-yhteytesi on tällä hetkellä passiivinen. Napsauta tätä painiketta, käynnistä se komennolla $1.
+index_boot=Aloita käynnistyksen yhteydessä
+index_bootdesc=Muuta tätä asetusta hallitaksesi, tuodaanko ADSL-yhteytesi käynnistyksen aikana vai ei.
+index_return=moduulihakemisto
+index_version=RP-PPPoE-versio $1 
+index_esetup=Redhat ADSL -määritystiedostoa $1 ei ole järjestelmässäsi. Tämä moduuli voi kuitenkin asettaa sen sinulle perusasetuksilla napsauttamalla alla olevaa painiketta.
+index_setup=Asennuskokoonpanotiedosto
+index_cancel=Peruuta yhteys
+index_canceldesc=ADSL-asiakas yrittää parhaillaan muodostaa yhteyttä. Napsauta tätä painiketta, jos haluat peruuttaa yrityksen komennolla $1.
+index_cdemand=Peruuta kysyntä
+index_cdemanddesc=ADSL-asiakas odottaa tällä hetkellä on-demand-yhteyspyyntöä. Napsauta tätä painiketta, kun haluat lopettaa sen komennolla $1.
+
+index_header=ADSL-asiakasmääritysasetukset
+index_desc=Alla olevat asetukset koskevat kaikkia uusia järjestelmän käynnistämiä ADSL-yhteyksiä. Jos muutat niitä, yhteys on sammutettava ja käynnistettävä uudelleen, jotta muutokset tulevat voimaan.
+index_eth=Ethernet-liitäntä
+index_other=Muut ..
+index_demand=Yhdistetäänkö pyydettäessä?
+index_timeout=Kyllä, aikakatkaisulla
+index_secs=sekuntia
+index_user=Kirjaudu sisään käyttäjänä
+index_sec=Kirjaudu salasanalla
+index_dns=Hanki DNS-määritykset ISP: ltä?
+index_save=Tallenna kokoonpano
+index_mss=Rajoita paketin koko?
+index_psize=Kyllä
+index_bytes=tavua
+index_fw=Palomuuri aktivoida yhteyden yhteydessä
+index_fw_none=Ei mitään
+index_fw_standalone=Yhdelle isäntälle
+index_fw_masquerade=NAT-yhdyskäytävälle
+index_connect=Aika yrittää muodostaa yhteys
+index_forever=Ikuisesti
+
+start_err=ADSL-yhteyden muodostaminen epäonnistui
+start_title=Käynnistä ADSL
+start_ip=ADSL-yhteys on muodostettu IP-osoitteella $1.
+start_demand=Koska yhteydenpito-tila on käytössä, ADSL-yhteytesi käynnistetään vain tarvittaessa.
+start_bg=ADSL-yhteyttä ei muodostettu 20 sekunnissa. ADSL-asiakas jatkaa yhteyden muodostamista taustalla, kunnes onnistunut.
+
+save_err=ADSL-määritysten tallentaminen epäonnistui
+save_eeth=Puuttuva tai virheellisen näköinen ethernet-liittymä
+save_etimeout=Puuttuva tai virheellinen tilausaika
+save_euser=Puuttuva tai virheellinen käyttäjänimi
+save_econnect=Puuttuva tai virheellinen yhteyden aikakatkaisu
+save_emss=Puuttuva tai virheellinen paketin koko
+save_title=Tallenna kokoonpano
+save_desc=ADSL-asiakasmäärityksesi on tallennettu onnistuneesti, mutta sitä ei käytetä, ennen kuin muodostat yhteyden uudelleen.
+
+stop_err=ADSL-yhteyden katkaiseminen epäonnistui
+stop_title=Sammuta ADSL
+stop_ok=ADSL-yhteytesi katkaistiin onnistuneesti.
+stop_failed=ADSL-yhteytesi on edelleen aktiivinen jostain syystä!
+
+log_save=Tallennetut asiakasmääritykset
+log_stop=Sammuta ADSL
+log_start=Aloitti ADSL: n
+log_bootup=Käytössä ADSL käynnistyshetkellä
+log_bootdown=Poistettu käytöstä ADSL käynnistyshetkellä
+log_setup=Aseta oletuskokoonpano

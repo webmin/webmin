@@ -1,0 +1,23 @@
+index_procmail=Filtre de messagerie Procmail
+index_desc_other=Les actions procmail ci-dessous à partir de $1 s'appliqueront à <b>tous</b> les e-mails envoyés aux utilisateurs de votre système. Cependant, ils ne seront utilisés que si Procmail est installé et que votre serveur de messagerie est configuré pour l'utiliser.
+index_mserr=Avertissement - les règles définies ci-dessous ne seront pas utilisées : $1 
+index_act6=Définir la variable $1 
+index_man=Modifier manuellement la configuration
+index_mandesc=Modifiez directement le fichier de configuration Procmail principal, pour créer vos propres règles, variables et blocs.
+index_ecmd=Le programme Procmail $1 est introuvable sur votre système. Soit il n'est pas installé, soit la <a href='$2'>configuration du module</a> est incorrecte.
+index_delete=Supprimer les actions sélectionnées
+
+edit_amode_6=Définir la variable
+edit_ctype=Type de condition
+edit_cvalue=Expression régulière ou commande
+
+save_eaction_6=Variable manquante à définir
+save_eactionvar=La variable à définir doit être entrée comme NAME = valeur
+
+log_delete_recs=$1 recettes supprimées
+
+delete_err=Impossible de supprimer les actions
+delete_enone=Aucune sélection
+
+check_epostfix=Procmail n'est pas activé dans votre configuration Postfix. Le fichier de configuration <tt>$2</tt> doit avoir l'option <tt>$1</tt> définie sur <tt>$3</tt>.
+check_esendmail=Sendmail n'est pas configuré pour utiliser Procmail pour la livraison locale. Ceci peut être configuré dans le module <a href='$1'>Sendmail Mail Server</a> de Webmin.

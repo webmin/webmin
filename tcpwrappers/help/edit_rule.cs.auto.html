@@ -1,0 +1,71 @@
+<header> TCP Wrappers </header>
+<h3> Vzory </h3> Jazyk řízení přístupu implementuje následující vzorce: <ul>
+    <li> Řetězec, který začíná znakem &#39;.&#39; charakter. Název hostitele se shoduje, pokud se poslední komponenty jeho názvu shodují se zadaným vzorem. Například vzor &#39;.tue.nl&#39; odpovídá názvu hostitele &#39;wzv.win.tue.nl&#39;. </li>
+    <li> Řetězec, který končí &#39;.&#39; charakter. Adresa hostitele se shoduje, pokud se jeho první numerická pole shodují s daným řetězcem. Například vzor „131.155“. odpovídá adrese (téměř) každého hostitele v síti Eindhoven University (131.155.xx). </li>
+    <li> Řetězec začínající znakem @ je považován za název netgroup NIS (dříve YP). Název hostitele se shoduje, pokud je hostitelem zadané síťové skupiny. Sítě Netgroup nejsou podporovány pro názvy procesů démona ani pro uživatelská jména klientů. </li>
+    <li> Výraz „nnnn / mmmm“ je interpretován jako pár „síť / maska“. Adresa hostitele IPv4 se shoduje, pokud se „net“ rovná bitové A adresy a „masky“. Například vzor „131.155.72.0/255.255.254.0“ sítě / masky odpovídá každé adrese v rozsahu „131.155.72.0“ až „131.155.73.255“. </li>
+    <li> Výraz „[n: n: n: n: n: n: n: n] / m“ se interpretuje jako pár „[net]/prefixlen“. Hostitelská adresa IPv6 se shoduje, pokud se „prefixované“ bity „čisté“ rovnají „prefixovaným“ bitům adresy. Například vzor [net]/prefixlen &#39;[3ffe: 505: 2: 1 ::]/64&#39; odpovídá každé adrese v rozsahu &#39;3ffe: 505: 2: 1:&#39;? prostřednictvím &#39;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&#39;. </li>
+    <li> Řetězec začínající znakem &#39;/&#39; je považován za název souboru. Název hostitele nebo adresa se shoduje, pokud odpovídá libovolnému názvu hostitele nebo vzoru adresy uvedenému v pojmenovaném souboru. Formát souboru je nula nebo více řádků s nulovým nebo více hostitelskými jmény nebo vzory adres oddělenými mezerou. Vzor názvu souboru lze použít kdekoli, kde lze použít název hostitele nebo vzor adresy. </li>
+    <li> Zástupné znaky „*“ a „?“ lze použít k přiřazení názvů hostitelů nebo IP adres. Tuto metodu shody nelze použít ve spojení s &#39;net/mask&#39; matching, hostname matching začínající na &#39;.&#39; nebo přiřazení IP adresy končící na &#39;.&#39;. </li>
+</ul>
+<h3> Zástupné znaky </h3> Jazyk řízení přístupu podporuje explicitní zástupné znaky: <table border>
+    <tr>
+        <td> <b>VŠECHNO</b> </td>
+        <td> Univerzální zástupný znak se vždy shoduje. </td>
+    </tr>
+    <tr>
+        <td> <b>MÍSTNÍ</b> </td>
+        <td> Odpovídá hostiteli, jehož jméno neobsahuje tečkový znak. </td>
+    </tr>
+    <tr>
+        <td> <b>NEZNÁMÝ</b> </td>
+        <td> Odpovídá každému uživateli, jehož jméno není známo, a odpovídá každému hostiteli, jehož jméno nebo adresa není známa. Tento vzorec by měl být používán opatrně: názvy hostitelů nemusí být k dispozici kvůli dočasným problémům se serverem názvů. Síťová adresa nebude k dispozici, pokud software nedokáže zjistit, s jakým typem sítě mluví. </td>
+    </tr>
+    <tr>
+        <td> <b>ZNÁMÝ</b> </td>
+        <td> Odpovídá každému uživateli, jehož jméno je známé, a odpovídá každému hostiteli, jehož jméno a adresa jsou známé. Tento vzorec by měl být používán opatrně: názvy hostitelů nemusí být k dispozici kvůli dočasným problémům se serverem názvů. Síťová adresa nebude k dispozici, pokud software nedokáže zjistit, s jakým typem sítě mluví. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOIDNÍ</b> </td>
+        <td> Odpovídá hostiteli, jehož jméno neodpovídá jeho adrese. Když je tcpd vytvořen s -DPARANOID (výchozí režim), zruší požadavky těchto klientů ještě předtím, než se podíváme na tabulky řízení přístupu. Sestavte bez -DPARANOID, pokud chcete mít větší kontrolu nad těmito požadavky. </td>
+    </tr>
+</table>
+<h3> Operátoři </h3> <b>EXCEPT</b> Zamýšlené použití je ve tvaru: &#39;list_1 EXCEPT list_2&#39;; tento konstrukt odpovídá čemukoli, co odpovídá seznamu_1, pokud neodpovídá seznamu_2. Operátor EXCEPT lze použít v daemon_lists a client_lists. Operátor EXCEPT může být vnořen: pokud by kontrolní jazyk umožňoval použití závorek, „EXCEPT b EXCEPT c“ by se analyzovalo jako „(EXCEPT (b EXCEPT c))“. <h3> Příkazy Shell </h3> Pokud pravidlo řízení přístupu s první shodou obsahuje příkaz shellu, je tento příkaz podroben% <letter> substituce (viz další část). Výsledkem je podřízený proces /bin/sh se standardním vstupem, výstupem a chybou připojenou k /dev/null. Pokud nechcete čekat na dokončení příkazu, zadejte na konec příkazu znak „&amp;“. <p> Příkazy prostředí by se neměly spoléhat na nastavení PATH inetd. Místo toho by měli používat absolutní názvy cest, nebo by měli začínat explicitním příkazem PATH = what- ever. <h3> % Rozšíření </h3> V rámci příkazů shellu jsou k dispozici následující rozšíření: <table>
+            <tr>
+                <td> % a (% A) </td>
+                <td> Adresa hostitele klienta (serveru). </td>
+            </tr>
+            <tr>
+                <td> %C </td>
+                <td> Informace o klientovi: uživatel @ host, uživatel @ adresa, jméno hostitele nebo jen adresa, v závislosti na tom, kolik informací je k dispozici. </td>
+            </tr>
+            <tr>
+                <td> % d </td>
+                <td> Název procesu démona (hodnota argv[0]). </td>
+            </tr>
+            <tr>
+                <td> % h (% H) </td>
+                <td> Název nebo adresa hostitele klienta (serveru), pokud není název hostitele k dispozici. </td>
+            </tr>
+            <tr>
+                <td> % n (% N) </td>
+                <td> Název hostitele klienta (serveru) (nebo „neznámý“ nebo „paranoidní“). </td>
+            </tr>
+            <tr>
+                <td> % s </td>
+                <td> ID procesu démona. </td>
+            </tr>
+            <tr>
+                <td> % s </td>
+                <td> Informace o serveru: daemon@host, daemon@address nebo jen jméno démona, v závislosti na tom, kolik informací je k dispozici. </td>
+            </tr>
+            <tr>
+                <td> % u </td>
+                <td> Uživatelské jméno klienta (nebo „neznámé“). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Rozbalí se na jediné &#39;%? charakter. </td>
+            </tr>
+        </table> Znaky v% expanzích, které by mohly skořápku skočit, jsou nahrazeny podtržítky.
+        <hr />

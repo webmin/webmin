@@ -1,0 +1,17 @@
+index_title=Configurare Kerberos5
+index_econf=Fișierul de configurare Kerberos5 $1 nu a fost găsit în sistemul dvs. Poate că nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
+
+logging=Fișiere jurnal
+default_log=Fișier jurnal implicit
+kdc_log=Fișier jurnal KDC
+admin_log=Fișier jurnal server
+
+libdefaults=Configurare implicită
+dns_kdc=Utilizați DNS pentru a căuta KDC
+default_realm=domeniu
+domain=Numele domeniului
+default_kdc=KDC
+default_admin=Server de administrare
+default_domain=Numele implicit al domeniului
+
+save=Configurare actualizare

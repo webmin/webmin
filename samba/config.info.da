@@ -1,5 +1,5 @@
 line1=Konfigurerbare indstillinger,11
-dont_convert=Liste over Unix-brugere, der ikke skal tilf&#248;jes til samba-adgangskoden,0
+dont_convert=Liste over Unix-brugere&#44; der ikke skal tilføjes til samba-adgangskoden,0
 sort_mode=Sorter brugere og grupper efter navn?,1,1-Ja,0-Nej
 line2=System konfiguration,11
 smb_conf=Placering af Samba konfigurationsfilen,0
@@ -14,7 +14,7 @@ smbgroupedit=Fuld sti til smbgroupedit,3,Ingen
 pdbedit=Fuld sti til pdbedit,3,Ingen
 net=Fuld sti til netkommando,3,Ingen
 start_cmd=Kommando til at starte Samba-servere,3,Automatisk
-stop_cmd=Kommando til at stoppe Samba-servere,3,Bare dr&#230;b processer
+stop_cmd=Kommando til at stoppe Samba-servere,3,Bare dræb processer
 restart_cmd=Kommando til at genstarte Samba servere,3,Bare stop og start
 start_cmd_wb=Kommando til at starte Winbind-servere,0
 stop_cmd_wb=Kommandoen for at stoppe Winbind-servere,0

@@ -1,0 +1,53 @@
+desc_su-l=Přepnout uživatele (s přihlášením)
+desc_usermin=Usermin webový server
+desc_cupsys=CUPS tisk
+desc_libcupsys2=CUPS tisk
+desc_ssh=Přihlášení SSH
+desc_proftpd=Server pro přenos souborů ProFTPd
+desc_qpopper=Poštovní server POP
+desc_dovecot=Poštovní server POP / IMAP
+desc_cron=Démon naplánovaných příkazů
+desc_runuser=Spusťte příkaz jako uživatel
+desc_runuser-l=Spustit příkaz jako uživatel (s přihlášením)
+desc_postgresql=Databáze PostgreSQL
+desc_crond=Cron démona
+desc_smtp=Ověřování SMTP
+desc_smtp.postfix=Postfix SMTP autentizace
+desc_smtp.sendmail=Sendmail SMTP autentizace
+desc_config-util=Konfigurační nástroje
+desc_newrole=SELinux nová role
+desc_radius=RADIUS vytáčené přihlášení
+desc_pptpconfig=Protokol tunelování typu point-to-point
+desc_atd=Démon naplánovaných příkazů
+desc_kcheckpass=Kontrola hesla KDE
+desc_common-account=Ověření společného účtu
+desc_common-auth=Běžné ověřování
+desc_common-password=Společná změna hesla
+desc_common-session=Společné nastavení relace
+
+edit_file=Konfigurační soubor
+edit_addinc=Přidat zahrnutou službu
+edit_inc=Zahrnout službu $1 
+edit_iheader=Zahrnuté služby PAM
+
+pam_foreground.so=Nastavení konzoly
+
+unix_nullok_secure=Přijímáte nulová hesla na zabezpečených TTY?
+unix_min=Minimální délka hesla
+unix_nomin=Žádný
+unix_max=Maximální délka hesla
+unix_nomax=Bez omezení
+unix_obscure=Zabránit použití jednoduchých hesel?
+unix_emin=Chybějící nebo neplatná minimální délka hesla
+unix_emax=Chybí nebo je neplatná maximální délka hesla
+
+log_inc_create=Přidáno zahrnuje $1 pro službu $2 
+log_inc_modify=Upraveno zahrnuje $1 pro službu $2 
+log_inc_delete=Smazáno zahrnuje $1 pro službu $2 
+log_incs=Aktualizováno zahrnuje službu $1 
+
+inc_edit=Upravit zahrnutou službu
+inc_create=Vytvořit zahrnutou službu
+inc_header=Zahrnuty podrobnosti služby PAM
+inc_inc=Zahrnutá služba PAM
+inc_err=Uložení zahrnuté služby se nezdařilo

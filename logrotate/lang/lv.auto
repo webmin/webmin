@@ -1,0 +1,115 @@
+index_title=Žurnāla faila pagriešana
+index_econf=Žurnāla rotācijas konfigurācijas fails $1 jūsu sistēmā netika atrasts. Varbūt logrotāts nav instalēts vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_ecmd=Žurnāla pagriešanas programma $1 jūsu sistēmā netika atrasta. Varbūt tas nav instalēts, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_eversion=Neizdevās iegūt logrotāta versiju ar komandu $1 : $2 
+index_version=Logrotāta versija $1 
+index_add=Pievienojiet jaunu žurnālfailu, lai pagrieztu.
+index_file=Žurnāla fails
+index_period=Rotācijas periods
+index_post=Pēc rotācijas komanda
+index_none=Žurnālu faili vēl nav definēti.
+index_global=Rediģēt globālās iespējas
+index_globaldesc=Noklikšķiniet uz šīs pogas, lai rediģētu iestatījumus, kas attiecas uz visiem žurnālu failiem, un definētu žurnālu noklusējuma iestatījumus.
+index_sched=Rediģēt grafiku
+index_scheddesc=Noklikšķiniet uz šīs pogas, lai rediģētu grafiku, kurā logotātu vada Cron, vai iespējot vai atspējot.
+index_nocmd=Nav
+index_notset=Nav uzstādīts
+index_return=žurnālfailu saraksts
+index_force=Spēka žurnāla pagriešana
+index_forcedesc=Piespiest visu žurnālfailu tūlītēju pagriešanu, pat ja vēl nav laika.
+index_logrotate=Logrotāts
+index_delete=Dzēst atlasītās žurnāla rotācijas
+
+period_daily=Katru dienu
+period_weekly=Iknedēļas
+period_monthly=Mēnesī
+period_never=Nekad
+period_bytes=baiti
+
+edit_title1=Rediģēt žurnālfailu
+edit_title2=Izveidot žurnālfailu
+edit_header=Rotēta žurnāla faila informācija
+edit_file=Žurnāla failu ceļi
+edit_sched=Rotācijas grafiks
+edit_rotate=Veco saglabājamo žurnālu skaits
+edit_compress=Saspiest vecos žurnālfailus?
+edit_delaycompress=Vai aizkavēt saspiešanu līdz nākamajam ciklam?
+edit_copytruncate=Saīsināt žurnālfailu savā vietā?
+edit_ifempty=Pagriezt pat tad, ja žurnāla fails ir tukšs?
+edit_missingok=Ignorēt žurnālfailu, ja tā trūkst?
+edit_size=Maksimālais izmērs pirms pagriešanas
+edit_always=Ignorēts
+edit_minsize=Minimālais izmērs, ko pagriezt
+edit_nominsize=Vienmēr
+edit_ext=Pagarinājums pagriežamiem failu nosaukumiem
+edit_dateext=Izmantojiet datuma pagarinājumu pagrieztajiem failiem
+edit_mail=E-pasta žurnāla fails pirms dzēšanas?
+edit_mailto=Jā, lai uzrunātu
+edit_mailno=Nē, nesūtiet e-pastu
+edit_mailfl=Reģistrējieties uz e-pastu
+edit_mailfirst=Jaunākais, kas tikko tika pagriezts
+edit_maillast=Vecākā, kuru drīz sāks dzēst
+edit_create=Vai pēc rotācijas atkal izveidot žurnāla failu?
+edit_createas=Jā, ar režīmu $1 un pieder lietotājam $2 un grupai $3 
+edit_createno=Nē, neveidojiet no jauna
+edit_createsame=Jā, ar vecām atļaujām
+edit_olddir=Glabājiet vecos pagrieztos baļķus
+edit_olddirto=Katalogs
+edit_olddirsame=Tāda pati direktorija kā žurnālfails
+edit_errors=Sūtīt kļūdas ziņojumus pa e-pastu
+edit_errorsno=Neviens
+edit_errorsto=Adrese vai lietotājs
+edit_post=Komandas palaist pēc rotācijas
+edit_pre=Komandas palaist pirms rotācijas
+edit_default=Noklusējums ($1)
+edit_sharedscripts=Vai visiem failiem palaist skriptus tikai vienu reizi?
+edit_now=Pagriezt tūlīt
+
+global_title=Globālās iespējas
+global_header=Visu žurnālfailu noklusējuma opcijas
+
+save_err=Neizdevās saglabāt žurnālu
+save_efile=Trūkst vai nav derīgs žurnāla faila nosaukums
+save_esize=Trūkst vai nav derīgs maksimālais izmērs
+save_eminsize=Trūkst vai nav derīgs minimālais izmērs
+save_erotate=Trūkst vai nav derīgs saglabājamo veco žurnālu maksimālais skaits
+save_ecreatemode=Trūkst vai nav derīgs trīs vai četru ciparu oktāla veidošanas režīms
+save_ecreateuser=Trūkst vai nav derīgs izveidošanas lietotājs
+save_ecreategroup=Trūkst vai nav derīga izveides grupa
+save_emust1=Ievadot radīšanas lietotāju, jums jāievada izveidošanas režīms
+save_emust2=Ievadot izveidošanas grupu, jums jāievada radīšanas lietotājs
+save_eolddirto=Trūkst vai nav derīgs veco pagriezto žurnālu direktorijs
+save_eext=Trūkst pagrieztu žurnālfailu nosaukumu paplašinājuma
+save_emailto=Trūkst pagrieztu žurnālu e-pasta adreses
+save_eerrors=Trūkst e-pasta adreses kļūdu ziņojumiem
+save_epre=Pirms rotācijas skripts nedrīkst saturēt līniju <tt>endcript</tt> vai <tt>endrotate</tt>
+save_epost=Skripts pēc rotācijas nevar saturēt rindu <tt>endcript</tt> vai <tt>endrotate</tt>
+save_enofiles=Nav ievadīts neviens pagriežams fails
+
+log_modify_sched=Mainīts žurnāla rotācijas Cron darbs
+log_create_sched=Izveidots žurnāla rotācijas Cron darbs
+log_delete_sched=Izdzēsts žurnāla pagriešanas Cron darbs
+log_global=Pārveidotas globālās iespējas
+log_create=Pievienota žurnāla faila $1 rotācija
+log_modify=Modificēta žurnāla faila rotācija $1 
+log_delete=Izdzēsta žurnāla faila $1 rotācija
+log_delete_logs=Izdzēsta pagriešana $1 žurnālfailiem
+
+sched_title=Žurnāla rotācijas grafiks
+sched_desc=Lai varētu veikt žurnāla pagriešanu, kas konfigurēta, izmantojot šo moduli, komandai $1 jāpalaiž Krons ar regulāru grafiku (parasti katru dienu).
+sched_runparts=Pašlaik žurnāla pagriešanas komanda tiek palaista no skripta $1 $2, un to nevar pielāgot.
+sched_sched=Baļķu rotācijas kronu darbs
+sched_disabled=Invalīds
+sched_enabled=Iespējots, reizēm zem ..
+sched_save=Atjaunināt Kronu darbu
+sched_err=Neizdevās saglabāt rotācijas grafiku
+sched_when=Laiki jāskrien
+
+force_title=Spēka žurnāla pagriešana
+force_doing=Visu žurnālfailu tūlītēja pagriešana.
+force_doingone=Viena žurnāla faila tūlītēja pagriešana.
+force_done=.. darīts.
+force_failed=.. neizdevās! Iemeslu, kāpēc tā, skat. Iepriekš minētajā iznākumā.
+
+delete_err=Neizdevās izdzēst žurnālus
+delete_enone=Nav atlasīts

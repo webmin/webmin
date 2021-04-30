@@ -1,0 +1,118 @@
+index_title=语音邮件服务器
+index_ecmd=在您的系统上找不到Vgetty命令 $1。可能未安装，或者您的<a href='$2'>模块配置</a>不正确。
+index_econfig=在您的系统上找不到Vgetty配置文件 $1。可能未安装，或者您的<a href='$2'>模块配置</a>不正确。
+index_return=语音信箱索引
+
+vgetty_title=串口配置
+vgetty_desc=为了使服务器通过连接到串行端口的调制解调器接听语音电话，必须在下面列出。当您将端口添加到此列表时， $1程序将被配置为应答呼叫并播放消息。
+vgetty_add=添加一个新的串口
+vgetty_tty=串口设备
+vgetty_type=类型
+vgetty_vgetty=语音
+vgetty_mgetty=数据/传真
+vgetty_none=尚未为语音邮件配置任何串行端口。
+vgetty_apply=应用配置
+vgetty_applydesc=单击此按钮可通过运行命令 $1并终止所有Vgetty进程来应用当前的语音邮件服务器配置。
+vgetty_applyerr=应用配置失败
+vgetty_return=串口列表
+vgetty_create=添加串口
+vgetty_edit=编辑串口
+vgetty_header=串口配置选项
+vgetty_ts=串口 $1
+vgetty_other=其他设备
+vgetty_rings=接听前先响
+vgetty_default=全局默认
+vgetty_ans=接听模式
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=语音
+vgetty_ans_fax=传真
+vgetty_ans_data=数据
+vgetty_err=保存串口失败
+vgetty_etty=串行设备丢失或不存在
+vgetty_erings=铃声缺失或无效
+vgetty_erings2=环数必须至少为2
+vgetty_eans=未选择答案模式
+vgetty_eclash=串行端口 $1已在使用中
+
+options_title=语音邮件服务器选项
+options_header=所有串行端口的选项
+options_maxlen=最大讯息长度
+options_secs=秒
+options_minlen=最小讯息长度
+options_silence=删除邮件末尾的静音？
+options_thresh=沉默阈值水平
+options_rgain=录音音量
+options_tgain=播放音量
+options_rings=接听前先响
+options_perport=可以为每个串口设置
+options_ans=接听模式
+options_keep=是否保留包含数据或DTMF代码的消息？
+options_light=接收后启用自动应答指示灯吗？
+options_owner=消息文件的Unix所有者
+options_group=消息文件的Unix组
+options_mode=消息文件的权限
+options_prog=留言后
+options_prog0=没做什么
+options_prog1=以WAV格式通过电子邮件发送至
+options_prog2=在消息文件上运行命令
+options_err=无法保存语音信箱选项
+options_erings=铃声缺失或无效
+options_erings2=环数必须至少为2
+options_emaxlen=最大消息长度缺失或无效
+options_eminlen=缺少或无效的最小消息长度
+options_ethresh=静音阈值缺失或无效
+options_ergain=缺少或无效的录音音量
+options_ergain2=录音音量必须在0到100之间
+options_etgain=缺少或无效的播放音量
+options_etgain2=播放音量必须在0到100之间
+options_eemail=电子邮件地址丢失或无效
+options_eprog=缺少或不存在要运行的程序
+options_eowner=消息文件缺少Unix用户或该用户无效
+options_egroup=消息文件的Unix组丢失或无效
+options_emode=邮件文件的八进制权限丢失或无效
+
+received_title=收到的讯息
+recieved_desc=下面列出了服务器已接收到的语音邮件。要收听消息，请单击第一列中的日期/时间。
+received_none=找不到收到的语音邮件。
+received_date=在收到
+received_size=文件大小
+received_speed=采样率
+received_type=音讯格式
+received_delete=删除选定的消息
+received_move=将所选内容转换为问候语
+received_all=全选
+received_invert=反转选择
+
+listen_efile=无效的消息文件名！
+listen_epath=语音邮件不再存在
+
+delete_efile=无效的消息文件名！
+
+messages_title=问候留言
+messages_desc=此页面列出了当呼叫者连接到您的语音邮件服务器时将播放的问候消息。如果您有一个以上的消息，则将使用一条随机选择的消息。
+messages_file=文件名
+messages_none=没有可用的问候语。
+messages_updesc=该表格允许您上载其他问候消息WAV文件，该文件将转换为所选格式，以供调制解调器使用。上载的WAV的采样率应与接收到的消息的采样率相同，所选格式也应相同。
+messages_upload=上载讯息
+messages_fmt=转换成
+
+pvfdesc=$1， $2位
+
+upload_err=添加留言失败
+upload_emessage=未选择WAV文件
+upload_ewav=转换WAV文件失败： $1
+upload_epvf=无法创建RMD文件： $1
+upload_esame=消息文件 $1已经存在
+
+log_apply=应用的配置
+log_upload=上载问候语 $1
+log_move=已转换 $1收到的消息
+log_delete0=已删除 $1收到的消息
+log_delete1=已删除 $1条问候消息
+log_options=更改了语音信箱选项
+log_vgetty_create=添加了串行端口 $1
+log_vgetty_modify=修改后的串口 $1
+log_vgetty_delete=删除的串行端口 $1
+
+email_subject=语音信箱留言
+email_body=$2在 $1收到了语音邮件。

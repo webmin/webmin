@@ -1,0 +1,17 @@
+index_title=پیکربندی Kerberos5
+index_econf=پرونده پیکربندی Kerberos5$1 در سیستم شما یافت نشد. شاید نصب نشده باشد یا پیکربندی ماژول <a href='$2'></a> نادرست باشد.
+
+logging=پرونده ها را وارد کنید
+default_log=پرونده ثبت پیش فرض
+kdc_log=پرونده ورود به سیستم KDC
+admin_log=پرونده ورود به سرور سرور
+
+libdefaults=پیکربندی پیش فرض
+dns_kdc=برای جستجوی KDC از DNS استفاده کنید
+default_realm=قلمرو
+domain=نام دامنه
+default_kdc=KDC
+default_admin=سرور مدیر
+default_domain=نام دامنه پیش فرض
+
+save=پیکربندی را به روز کنید

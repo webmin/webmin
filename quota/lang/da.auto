@@ -1,0 +1,31 @@
+acl_ggid=Grupper med GID inden for rækkevidde
+
+egroup_listalldesc=Klik på denne knap for at få vist en liste over alle filsystemer, som denne gruppe har disk-kvoter på, med links til at redigere dem.
+
+euser_listalldesc=Klik på denne knap for at få vist en liste over alle filsystemer, som denne bruger har disk-kvoter på, med links til at redigere dem.
+
+gfilesys_editdesc=Se og rediger kvoter for denne gruppe på nogle andre filsystemer, som den i øjeblikket ikke har kvoter på.
+gfilesys_copydesc=Kopier kvotegrænser for denne gruppe på alle filsystemer til nogle eller alle andre grupper.
+gfilesys_enone=Intet gruppe navn indtastet
+
+index_supported=Kvoter er endnu ikke understøttet
+index_enable2=Aktivér support
+index_euserdesc=Gå ind eller vælg en bruger, og klik på denne knap for at se hans kvoter på alle filsystemer.
+index_egroupdesc=Gå ind eller vælg en gruppe, og klik på denne knap for at se dens kvoter på alle filsystemer.
+
+lgroups_tablist=Gruppeliste
+
+ufilesys_editdesc=Se og rediger kvoter for denne bruger på et andet filsystem, som han i øjeblikket ikke har kvoter på.
+ufilesys_copydesc=Kopier kvotegrænser for denne bruger på alle filsystemer til nogle eller alle andre brugere.
+ufilesys_enone=Intet brugernavn indtastet
+
+lusers_tablist=Brugerliste
+lusers_tabdefault=Standardkontingenter
+lusers_tabemail=E-mail-meddelelser
+lusers_pc_sblocks=Blød %
+lusers_cc=Send også e-mail til
+lusers_nocc=Ingen
+
+log_support=Aktiv kvotastøtte for $1 
+
+email_ecc=Manglende eller ugyldig Cc: adresse

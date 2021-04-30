@@ -1,0 +1,52 @@
+index_title=Exportaciones NFS
+index_add=Agregar una nueva exportación.
+index_dirs=Directorios
+index_clients=Clientela
+index_everyone=Todo el mundo
+index_none=Aún no se han definido exportaciones.
+index_delete=Eliminar exportaciones seleccionadas
+index_apply=Aplicar los cambios
+index_applydesc=Haga clic en este botón para aplicar la configuración actual de exportación de archivos. Esto hará que todos los directorios enumerados anteriormente estén disponibles con las opciones especificadas.
+index_return=lista de exportaciones
+index_echeck=El servidor NFS no se puede usar en este sistema : $1 
+
+check_ecmd=El comando del servidor NFS $1 no está instalado
+
+delete_err=Error al eliminar exportaciones
+delete_enone=Ninguna seleccionada
+
+edit_title1=Editar exportación
+edit_title2=Crear exportación
+edit_header1=Opciones de exportación
+edit_dirs=Directorios para exportar
+edit_alldirs=Exportar subdirectorios?
+edit_ro=¿Solo lectura?
+edit_kerb=¿Usar Kerberos?
+edit_header2=Mapeo de usuario remoto
+edit_maproot=Asignar usuario root a
+edit_mapusers=Asigna todos los usuarios a
+edit_unpriv=Usuario sin privilegios
+edit_uid=Usuario / UID
+edit_gids=Y grupos / GID
+edit_mapall=Asigna todos los usuarios a
+edit_header3=Clientes para esta exportación
+edit_clients=Clientela
+edit_hosts=Hosts / grupos de red
+edit_network=Red
+edit_mask=Máscara
+
+save_err=Error al guardar la exportación
+save_edir='$1' no es un directorio o no existe
+save_enone=Debe ingresar al menos un directorio para exportar
+save_esub=Solo se puede proporcionar un directorio si se elige la opción <b>exportar subdirectorios</b>
+save_eroot=Al utilizar la opción <b>exportar subdirectorios</b>, el directorio exportado debe ser la raíz de un sistema de archivos <i>local</i>
+save_euser='$1' no es un usuario o UID válido
+save_egroup='$1' no es un grupo o GID válido
+save_ekerb=El mapa de usuarios raíz, el mapa de todos los usuarios y las opciones de Kerberos son mutuamente excluyentes
+save_ehosts=Debe ingresar al menos un host para exportar a
+save_enetwork='$1' no es una red válida
+save_enetmask='$1' no es una máscara de red válida
+save_esame1=El directorio <tt>$1</tt> ya se está exportando a <tt>$2</tt>. Su sistema operativo no permite que los directorios en el mismo sistema de archivos <i>local</i> se exporten al mismo host por separado
+save_esame2=El directorio <tt>$1</tt> ya se está exportando a <tt>$2</tt>. Su sistema operativo no permite que los directorios en el mismo sistema de archivos <i>local</i> se exporten a la misma red por separado
+
+restart_err=Error al aplicar los cambios

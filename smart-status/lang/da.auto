@@ -1,0 +1,58 @@
+index_title=SMART Drevstatus
+index_ecmd=SMART-kontrolkommandoen $1 blev ikke fundet på dit system eller er ikke indstillet korrekt i <a href='$2'>modulkonfiguration</a>. Det skal installeres, før dette modul kan bruges.
+index_ecmd2=Kommandoen $1 ser ikke ud til at være SMART-kontrolkommandoen. Det skal indstilles korrekt i <a href='$2'>modulkonfiguration</a>, før dette modul kan bruges.
+index_version=SMARTsuite version $1 
+index_show=Vis status for drev:
+index_ok=At vise
+index_eidescsi=Der blev ikke fundet IDE-, SCSI- eller SATA-drev på dit system.
+index_drive=Status for drev $1 
+index_drivesub=Status for drev $1, disk $2 
+index_desc=Beliggenhed
+index_size=Drevstørrelse
+index_model=Mærke og model
+index_support=Understøtter SMART?
+index_enabled=SMART aktiveret?
+index_check=Bestået drevkontrol?
+index_short=Kort selvtest
+index_ext=Udvidet selvtest
+index_data=Dataindsamlingstest
+index_errors=Fejl logget
+index_ecount=$1 fejl opdaget
+index_attrs=Yderligere SMART-attributter
+index_raw=Fuld SMART-statusrapport
+index_return=modul indeks
+index_family=Model familie
+index_serial=Serienummer
+index_capacity=Kapacitet
+index_norm=normaliseret:
+
+monitor_type=SMART Drive Check
+monitor_type2=SSD Wearout
+monitor_drive=Kør for at tjekke
+monitor_errors=Kontroller også fejlloggen?
+monitor_errorsinc=Ja, men kun advarsel, hvis fejltallet øges
+monitor_other=Andet ..
+monitor_edrive=Manglende eller ugyldigt drev til kontrol
+monitor_nosuch=Intet sådant drev
+monitor_nosmart=Ingen SMART support
+monitor_errorsfound=Rapporterede $1 fejl
+monitor_errorsinced=Fejl steg fra $2 til $1 
+monitor_wearlevel=Mislykkes, hvis slidniveauet falder under
+monitor_ewearlevel=Ugyldig procentdel af slidniveau
+monitor_nowearout=Drev rapporterer ikke en SSD-væroutindikator
+monitor_wornout=Slidniveauet er faldet til $1 
+
+short_title=Kort selvtest
+short_doing=Start kort selvtest på $1 ..
+short_failed=.. mislykkedes!
+short_ok=.. test startede OK. Se drevstatus på modulets hovedside for resultaterne.
+
+ext_title=Udvidet selvtest
+ext_doing=Start af udvidet selvtest på $1.
+ext_failed=.. mislykkedes!
+ext_ok=.. test startede OK. Se drevstatus på modulets hovedside for resultaterne.
+
+data_title=Dataindsamlingstest
+data_doing=Starter offline dataindsamling på $1 ..
+data_failed=.. mislykkedes!
+data_ok=.. indsamling startet OK. Se drevstatus på modulets hovedside for resultaterne.

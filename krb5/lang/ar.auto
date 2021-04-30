@@ -1,0 +1,17 @@
+index_title=تكوين Kerberos5
+index_econf=لم يتم العثور على ملف تكوين Kerberos5$1 على نظامك. ربما لم يتم تثبيته أو أن <a href='$2'>تكوين الوحدة النمطية</a> غير صحيح.
+
+logging=ملفات السجل
+default_log=ملف السجل الافتراضي
+kdc_log=ملف سجل KDC
+admin_log=ملف سجل خادم المشرف
+
+libdefaults=التكوين الافتراضي
+dns_kdc=استخدم DNS للبحث عن KDC
+default_realm=مملكة
+domain=اسم النطاق
+default_kdc=KDC
+default_admin=خادم المشرف
+default_domain=اسم المجال الافتراضي
+
+save=تحديث التكوين

@@ -1,0 +1,9 @@
+index_screate=Creeu un nou usuari segur.
+
+edit_title3=Creeu un usuari Webmin segur
+edit_safe=Nivell de privilegi
+edit_safe0=Sense restriccions
+edit_safe1=Només mòduls segurs
+edit_unsafe=Restableix-lo a sense restriccions
+
+save_eunixname=El nom d'usuari '$1' no és un usuari Unix, per la qual cosa no es pot utilitzar en mode segur

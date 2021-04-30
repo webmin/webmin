@@ -1,5 +1,5 @@
-line2=Rendszer beállítás,11
-xinetd_conf=Xinetd konfigurációs file,0
-protocols_file=Hálózati protokol file,0
-pid_file=A Xinetd PID file útvonala,0
-start_cmd=A xinetd indítása parancs,0
+line2=Rendszer beÃ¡llÃ­tÃ¡s,11
+xinetd_conf=Xinetd konfigurÃ¡ciÃ³s file,0
+protocols_file=HÃ¡lÃ³zati protokol file,0
+pid_file=A Xinetd PID file Ãºtvonala,0
+start_cmd=A xinetd indÃ­tÃ¡sa parancs,0

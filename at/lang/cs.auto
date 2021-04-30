@@ -1,0 +1,22 @@
+index_mail=Odeslat e-mail po dokončení?
+index_noat=Příkaz $1 nebyl ve vašem systému nalezen - možná není nainstalován nebo není pro váš operační systém k dispozici.
+index_nostyle=Webmin neví, jak spravovat příkazy plánu v tomto operačním systému.
+index_stop=Zastavit server naplánovaných příkazů
+index_stopdesc=Ukončete proces serveru na pozadí <tt>atd</tt>, který spouští naplánované příkazy. Tím se zabrání provádění příkazů v zadaných časech.
+index_start=Spusťte server Naplánované příkazy
+index_startdesc=Spusťte proces serveru na pozadí <tt>atd</tt>, který spouští naplánované příkazy. To je vyžadováno, aby se příkazy spouštěly v zadaných časech.
+index_boot=Spustit server při spuštění?
+index_bootdesc=Toto nastavení změňte, abyste povolili nebo zakázali spouštění serveru naplánovaných příkazů v době spuštění systému.
+
+log_allow=Změnili povolení uživatelé
+log_create_job=Byl vytvořen naplánovaný příkaz pro $1 
+log_delete_job=Zrušený naplánovaný příkaz pro $1 
+log_exec_job=Byl proveden naplánovaný příkaz pro $1 
+log_delete_jobs=Zrušené $1 naplánované příkazy
+log_stop=Server plánovaných příkazů zastaven
+log_start=Spuštěn server naplánovaných příkazů
+log_bootup=Server při spuštění povolil naplánované příkazy
+log_bootdown=Zakázáno server naplánovaných příkazů při spuštění
+
+stop_err=Server se nepodařilo zastavit
+start_err=Server se nepodařilo spustit

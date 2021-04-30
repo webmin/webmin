@@ -1,0 +1,3 @@
+name_mt=PAM
+desc_mt=Awtentikazzjoni PAM
+longdesc_mt=Ikkonfigura l-passi ta 'awtentikazzjoni PAM użati minn servizzi bħal telnet, POP u FTP.

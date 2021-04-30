@@ -109,7 +109,9 @@ if ($config{'system_crontab'}) {
 
 # read package-specific cron files
 opendir(DIR, &translate_filename($config{'cronfiles_dir'}));
-while($f = readdir(DIR)) {
+my @files = sort { $a cmp $b } readdir(DIR);
+closedir(DIR);
+foreach my $f (@files) {
 	next if ($f =~ /^\./);
 	$lnum = 0;
 	&open_readfile(TAB, "$config{'cronfiles_dir'}/$f");
@@ -141,7 +143,6 @@ while($f = readdir(DIR)) {
 		}
 	close(TAB);
 	}
-closedir(DIR);
 
 # Read a single user's crontab file
 if ($config{'single_file'}) {
@@ -700,7 +701,7 @@ sub save_envs
 {
 local($i, @tab, $line);
 @tab = &read_crontab($_[0]);
-open(TAB, ">$cron_temp_file");
+open(TAB, ">".$cron_temp_file);
 for($i=1; $i<@_; $i+=2) {
 	print TAB "$_[$i]=$_[$i+1]\n";
 	}
@@ -942,7 +943,7 @@ return &theme_show_times_input(@_) if (defined(&theme_show_times_input));
 local $job = $_[0];
 if ($config{'vixie_cron'} && (!$_[1] || $_[0]->{'special'})) {
 	# Allow selection of special @ times
-	print "<tr $cb> <td colspan=6>\n";
+	print "<tr data-schedule-tr $cb> <td colspan=6>\n";
 	printf "<input type=radio name=special_def value=1 %s> %s\n",
 		$job->{'special'} ? "checked" : "", $text{'edit_special1'};
 	print "<select name=special onChange='change_special_mode(form, 1)'>\n";
@@ -1230,7 +1231,7 @@ local $perl_path = &get_perl_path();
 &open_tempfile(CMD, ">$_[0]");
 &print_tempfile(CMD, <<EOF
 #!$perl_path
-open(CONF, "$config_directory/miniserv.conf") || die "Failed to open $config_directory/miniserv.conf : \$!";
+open(CONF, "<$config_directory/miniserv.conf") || die "Failed to open $config_directory/miniserv.conf : \$!";
 while(<CONF>) {
         \$root = \$1 if (/^root=(.*)/);
         }
@@ -1393,10 +1394,31 @@ $cmd =~ s/^\s*\[.*\]\s+\|\|\s+//;
 while($cmd =~ s/(\d*)(<|>)((\/\S+)|&\d+)\s*$//) { }
 $cmd =~ s/^\((.*)\)\s*$/$1/;
 $cmd =~ s/\s+$//;
+my $eos;
 if ($config{'match_mode'} == 1) {
 	$cmd =~ s/\s.*$//;
+	$eos = '$';
 	}
-($proc) = grep { $_->{'args'} =~ /\Q$cmd\E/ &&
+else {
+	my $cmd_ = $cmd;
+	$cmd_ =~ s/\s.*$//;
+	if ($cmd_ eq $cmd) {
+		$eos = '$';
+		}
+	}
+
+# If `Input to command` is set, remove it for test case
+# otherwise cmd will always be displayed as not running
+my $cmd_ = $cmd;
+
+# First remove only input to command and preserve
+# potential arguments containing escaped %, like \\%
+$cmd_ =~ s/(?<!\\)%.*//;
+
+# Now replace escaped \\ special chars for testing purposes
+$cmd_ =~ s/\\//g;
+
+($proc) = grep { $_->{'args'} =~ /\Q$cmd_\E$eos/ &&
 		 (!$config{'match_user'} || $_->{'user'} eq $_[0]->{'user'}) }
 		@procs;
 if (!$proc && $cmd =~ /^$config_directory\/(.*\.pl)(.*)$/) {

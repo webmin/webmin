@@ -1,0 +1,112 @@
+index_title=Máy khách VPN PPTP
+index_epptp=Không tìm thấy chương trình khách hàng PPTP $1 trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+index_eppp=Chương trình máy chủ PPP $1 không được cài đặt trên hệ thống của bạn. PPTP phụ thuộc vào nó để hoạt động.
+index_eoptions=Tệp tùy chọn PPTP PPP toàn cầu $1 không tồn tại. Tạo hoặc điều chỉnh cấu hình mô-đun <a href='$2'></a> để sử dụng một tệp khác hoặc không có gì cả.
+index_header=Đường hầm được xác định
+index_none=Không có đường hầm PPTP nào được xác định.
+index_tunnel=Đường hầm $1 
+index_add=Thêm một đường hầm PPTP VPN mới.
+index_conn=Kết nối với:
+index_pass=với mật khẩu tùy chọn:
+index_conndesc=Nhấp vào nút này để kết nối đường hầm PPTP VPN đã chọn bằng cấu hình hiện tại của nó.
+index_disc=Ngắt kết nối từ:
+index_discdesc=Nhấp vào nút này để ngắt kết nối đường hầm PPTP VPN hiện đang được chọn và xóa tất cả các tuyến qua nó.
+index_return=Danh sách đường hầm PPTP
+index_opts=Chỉnh sửa tùy chọn PPP toàn cầu
+index_optsdesc=Nhấp vào nút này để chỉnh sửa các tùy chọn PPP áp dụng cho tất cả các đường hầm PPTP VPN.
+index_version=Phiên bản PPPd $1 
+index_boot=Kết nối khi khởi động:
+index_noboot=&lt;Không kết nối&gt;
+index_bootdesc=Thay đổi tùy chọn này để kiểm soát xem kết nối VPN PPTP được chọn có bắt đầu lúc khởi động hay không.
+
+disc_err=Không thể ngắt kết nối đường hầm
+disc_egone=Không còn hoạt động
+disc_ekill=Không thể giết quá trình pppd
+disc_done=Đường hầm $1 đã được ngắt kết nối thành công.
+
+conn_err=Không thể kết nối đường hầm
+conn_egone=Đường hầm không còn tồn tại
+cone_ealready=Đã kết nối
+conn_einvalid=Thiếu địa chỉ IP máy chủ trong tập tin cấu hình
+conn_title=Kết nối đường hầm
+conn_cmd=Thiết lập kết nối PPTP với lệnh $1 ..
+conn_ok=.. kết nối được kích hoạt thành công bằng giao diện $1. Địa chỉ địa phương của bạn là $2 và địa chỉ từ xa là $3.
+conn_timeout=.. Kết nối thất bại! Kiểm tra các thông điệp tường trình dưới đây để biết thông tin tại sao.
+conn_routes=Thêm tuyến bằng lệnh ..
+conn_mppe=Giao thức MPPE để mã hóa VPN yêu cầu hỗ trợ nhân daemon và kernel. Tuy nhiên, các lỗi trên cho thấy rằng một hoặc cả hai không có sẵn trên hệ thống của bạn. Nếu máy chủ PPTP không yêu cầu MPPE, hãy thử tắt tất cả các tùy chọn liên quan đến nó trên trang <a href='$1'>tùy chọn PPP toàn cầu</a>.
+
+edit_title1=Thêm đường hầm PPTP
+edit_title2=Chỉnh sửa đường hầm PPTP
+edit_header=Tùy chọn đường hầm VPN PPTP
+edit_name=Tên đường hầm
+edit_server=Kết nối với máy chủ
+edit_login=Đăng nhập với tư cách người dùng
+edit_same=Tên máy chủ hệ thống
+edit_pass=Đăng nhập bằng mật khẩu
+edit_remote=Tên máy chủ
+edit_auto=Tự động
+edit_adddef=Thêm tuyến đường mặc định?
+edit_def1=Qua đầu kia
+edit_def2=Qua cổng ..
+edit_deldef=Xóa tuyến đường mặc định cũ?
+edit_routes=Các tuyến đường để thêm sau khi kết nối
+edit_type=Kiểu
+edit_type0=&nbsp;
+edit_type1=Mạng
+edit_type2=Máy chủ duy nhất
+edit_net=Mạng hoặc máy chủ
+edit_mask=Netmask
+edit_gw=Qua cổng
+edit_gw_def=Đầu kia
+edit_unknown=Các lệnh <tt>tuyến</tt> khác
+edit_file=Tệp tùy chọn PPP
+edit_none=không ai
+edit_global=Tập tin toàn cầu tiêu chuẩn
+edit_ofile=Tập tin khác ..
+
+save_err=Không thể lưu đường hầm
+save_ename=Tên đường hầm bị thiếu
+save_eserver=Máy chủ bị thiếu hoặc không hợp lệ để kết nối với
+save_elogin=Tên đăng nhập bị thiếu hoặc không hợp lệ
+save_eremote=Tên máy chủ từ xa bị thiếu hoặc không hợp lệ
+save_edef=Cổng tuyến mặc định bị thiếu hoặc không hợp lệ
+save_enet=Địa chỉ mạng không hợp lệ trong tuyến $1 
+save_emask=Netmask không hợp lệ trong tuyến $1 
+save_egw=Cổng không hợp lệ cho mạng trong tuyến $1 
+save_ehost=Địa chỉ IP máy chủ không hợp lệ trong tuyến $1 
+save_emask2=Không cần netmask cho tuyến máy chủ $1 
+save_egw2=Cổng không hợp lệ cho máy chủ trong tuyến $1 
+save_erename=Không thể đặt lại tên tệp đường hầm
+save_eclash=Một đường hầm hoặc ngang hàng ngang hàng với cùng tên đã tồn tại
+save_efile=Tệp tùy chọn PPP bị thiếu hoặc không hợp lệ
+
+opts_title=Tùy chọn PPP toàn cầu
+opts_desc=Các cài đặt bên dưới được lấy từ $1 và sẽ áp dụng cho tất cả các đường hầm được đặt để sử dụng tệp tùy chọn PPP toàn cầu tiêu chuẩn.
+opts_header=Tùy chọn PPP cho tất cả các đường hầm
+opts_mtu=Kích thước gói gửi tối đa
+opts_mru=Kích thước gói nhận tối đa
+opts_err=Không thể lưu các tùy chọn PPP toàn cầu
+opts_emtu=Thiếu kích thước gói gửi tối đa hoặc không hợp lệ
+opts_emru=Thiếu kích thước gói nhận tối đa hoặc không hợp lệ
+opts_msdesc=Các tùy chọn bên dưới cho phép mã hóa MPPE, được sử dụng bởi các máy chủ Windows VPN. Tuy nhiên, MPPE yêu cầu hỗ trợ trong cả daemon PPP và nhân hệ điều hành.
+
+mppe_mppe-40=Sử dụng mã hóa MPPE 40 bit?
+mppe_mppe-128=Sử dụng mã hóa MPPE 128 bit?
+mppe_mppe-stateless=Cho phép chế độ MPPE không trạng thái?
+mppe_mppe=Kích hoạt mã hóa MPPE?
+mppe_m2=Phải được sử dụng
+mppe_m0=Không thể được sử dụng
+mppe_d0=Tàn tật
+mppe_d1=Được phép
+mppe_mppe-stateful=Kích hoạt chế độ MPPE trạng thái?
+mppe_old=Cảnh báo - Các chỉ thị MPPE kiểu cũ $1 đã được tìm thấy trong tệp cấu hình của bạn, mặc dù trình nền PPP của bạn hỗ trợ các chỉ thị kiểu mới.
+mppe_new=Cảnh báo - Các chỉ thị MPPE kiểu mới $1 đã được tìm thấy trong tệp cấu hình của bạn, mặc dù trình nền PPP của bạn chỉ hỗ trợ các chỉ thị kiểu cũ.
+
+log_create=Đã tạo đường hầm PPTP $1 
+log_update=Đường hầm PPTP được sửa đổi $1 
+log_delete=Đã xóa đường hầm PPTP $1 
+log_conn=Đường hầm được kết nối $1 
+log_conn_l=Đường hầm được kết nối $1 với địa chỉ cục bộ $2 
+log_failed=Không thể kết nối đường hầm $1 
+log_disc=Đường hầm bị ngắt $1 
+log_opts=Đã chỉnh sửa tùy chọn PPP toàn cầu

@@ -1,0 +1,79 @@
+index_title=Документация на системата
+index_header=Търсене на системна документация
+index_for=Търся
+index_where=Търсене в
+index_alldoc=Цялата документация
+index_man=Ръчни страници
+index_doc=Документация за пакета
+index_kernel=Документация на ядрото
+index_info=Инфо страници
+index_howto=КАК документи
+index_kde=KDE документация
+index_perl=Документация на модул Perl
+index_custom=Персонализирана документация
+index_help=Помощ за Webmin
+index_reset=Нулиране
+index_search=Търсене
+index_return=форма за търсене
+index_type=Съвпада
+index_name=Само име
+index_data=Име и съдържание
+index_google=Търсене в Google
+index_others=Когато търсите документация от друг модул, позволете търсене в ..
+index_other_man=Ръчни страници
+index_other_help=Помощ за Webmin
+index_other_doc=Документация за пакета
+index_other_kernel=Документация на ядрото
+index_other_howto=КАК документи
+index_other_perl=Документация на модул Perl
+index_other_google=Google търсачка
+index_other_kde=KDE документация
+index_and=Съвпадение на всички
+index_or=Съпоставете всички
+
+search_efor=Няма ръчна страница за търсене на въведени
+search_title=Резултати от търсенето
+search_desc=описание
+search_type=Тип
+search_file=Страница или файл
+search_man=Страница с ръководство
+search_howto=КАК документ
+search_doc=Документация за пакета
+search_kernel=Документация на ядрото
+search_kde=KDE документация
+search_perl=Perl модул
+search_help=Помощ за Webmin
+search_custom=Персонализирана документация
+search_none=Няма намерена документация $1.
+search_for=За $1 
+search_google=Резултат от търсенето с Google
+search_doxfer=Онлайн документация на Webmin
+
+howto_title=Документ
+howto_header=КАК файл с документ $1 
+howto_epath=Невалиден път на документа HOWTO
+
+doc_title=Документация за пакета
+doc_header=Документ за пакетен документ $1 
+doc_epath=Невалиден път на документацията за пакета
+
+man_title=Страница с ръководство
+man_header=Страница с ръководство за $1 ($2)
+man_noentry=Страница за ръчно за $1 не съществува!
+man_epath=Страницата с ръчно не може да бъде път!
+
+kernel_title=Документ за ядрото
+kernel_header=Документ за файл с ядро $1 
+kernel_epath=Невалиден път на документа на ядрото
+
+kde_title=Документация на KDE
+kde_header=KDE файл с документ $1 
+kde_epath=Невалиден път на документацията на KDE
+
+perl_title=Perl модул
+perl_header=Документация за модул Perl $1 
+perl_emod=Невалидно име на модула Perl
+
+acl_allow=Може ли да редактирате разрешени типове търсене?
+
+check_ecannot=Нямате право да редактирате разрешени типове търсене

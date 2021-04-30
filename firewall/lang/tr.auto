@@ -1,0 +1,73 @@
+index_title_v=IPv4 Güvenlik Duvarı
+index_title_v6=IPv6 Güvenlik Duvarı
+index_editing=Kural dosyası $1 
+index_evalid=UYARI! Mevcut IPtables yapılandırmanız geçersiz : $1 
+index_no_comment=
+index_crename=Zinciri Yeniden Adlandır
+index_cmovesel=Seçileni Taşı
+index_unapply2=Yapılandırmayı Kaydet
+index_unapply2desc=Yukarıdaki yapılandırmayı kalıcı güvenlik duvarı yapılandırma dosyasına kaydetmek için bu düğmeyi tıklatın.
+index_auto5=Arayüzde sanal barındırma için kullanılan portlar hariç tümünü engelle:
+index_firewalld=FirewallD'nin sisteminizin güvenlik duvarını oluşturmak için kullanıldığı anlaşılıyor. Belki bunun yerine <a href='$1'>Güvenlik DuvarıD modülünü</a> kullanmalısınız.
+index_fail2ban=Bazı güvenlik duvarı kurallarını yönetmek için Fail2Ban kullanılıyor gibi görünüyor. Bunları <a href='$1'>Hata2Ban modülü</a> ile değiştirmeli ve <a href=$2>f2b -. *</a> veya <a href=$2>fail2ban -. *</a> filtrelemelisiniz.
+index_filter_chain=güvenlik duvarı tarafından yönetilmiyor.
+index_filter_nodirect=Harici yönetilen kurallar algılandı. "<a href=$1>Güvenlik duvarı kurallarını doğrudan düzenle"</a> seçeneğini etkinleştirin, aksi takdirde güvenlik duvarı kurallarınız bozulabilir.
+index_ipset=IP set
+index_ipset_title=Güvenlik duvarı kuralları tarafından kullanılabilen aktif IP setleri
+index_ipset_name=IP setinin adı
+index_ipset_type=tip
+index_ipset_elem=# Elementler
+index_ipset_maxe=# Maks.
+index_ipset_size=Boyut
+index_ipvxmode=IP protokol sürümünü değiştirin:
+index_ipvx4=IPv4
+index_ipvx6=IPv6
+
+desc_icmpv6-type=ICMP türü $1 
+desc_icmpv6-type!=ICMP türü $1 değil
+desc_ctstate=bağlantı durumu $1 
+desc_ctstate!=bağlantı durumu $1 değil
+desc_physdev-in=giriş fiziksel arayüzü $1 
+desc_physdev-in!=giriş fiziksel arayüzü $1 değil
+desc_physdev-out=çıkış fiziksel arayüzü $1 
+desc_physdev-out!=çıkış fiziksel arayüzü $1 değil
+desc_args--match-set=$2, IP kümesinde $1 içeriyor
+desc_src=kaynak
+desc_dest=hedef
+
+redhat_einstalled=IPtables paketinin sisteminizde yüklü olmadığını belirten <tt>iptables (6)</tt> önyükleme eylemi bulunamadı
+
+edit_state_untracked=İzlenmedi
+edit_state_snat=Kaynak NATd
+edit_state_dnat=Hedef NATd
+edit_physdevin=Gelen fiziksel arayüz
+edit_physdevout=Giden fiziksel arayüz
+edit_physdevisin=Köprü arayüzünden gelen paket
+edit_physdevisout=Köprü arayüzünde giden paket
+edit_physdevisbridged=Paket köprüleniyor
+
+save_ephysdevin=Eksik veya geçersiz gelen fiziksel arayüz
+save_ephysdevout=Eksik veya geçersiz giden fiziksel arayüz
+
+log_rename_chain=$2 tablosunda $1 zinciri yeniden adlandırıldı
+log_movesel_chain=$2 tablosundaki $1 kuralından $1 kuralından taşındı
+log_openports=$1 güvenlik duvarı bağlantı noktaları açıldı
+
+add_enone=Eklenecek sunucu yok!
+
+move_title=Taşıma Kuralları
+move_count=Seçilen kurallar
+move_chain=Mevcut değişiklik
+move_dest=Hedef zinciri
+move_ok=Şimdi hareket et
+move_header=Kural taşıma seçenekleri
+
+rename_title=Zinciri Yeniden Adlandır
+rename_count=Zincir kuralları
+rename_chain=Şu anki ismi
+rename_name=Yeni isim
+rename_ok=Şimdi Yeniden Adlandır
+rename_header=Zincir yeniden adlandırma seçenekleri
+rename_adjust=Bu zincire atlayan diğer kurallar değiştirilsin mi?
+rename_none=Yok
+rename_ecannot=Zincirleri yeniden adlandırma izniniz yok

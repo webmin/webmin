@@ -1,0 +1,46 @@
+index_title=Schimba parolele
+index_header=Selectați un utilizator pentru a-și schimba parola
+index_return=lista de utilizatori
+index_user=Schimbați parola pentru utilizator:
+index_euseradmin=Acest modul nu poate fi utilizat deoarece modulul Utilizatori și grupuri nu este instalat sau nu este acceptat pe sistemul dvs.
+index_toomany=Există prea mulți utilizatori pentru a afișa pe sistemul dvs. Introduceți numele utilizatorului a cărui parolă doriți să o modificați mai jos ..
+index_none=Nu aveți acces la niciun utilizator pentru a le schimba parolele.
+
+passwd_title=Schimbați parola
+passwd_header=Schimbarea parolei utilizatorului Unix
+passwd_for=Schimbarea parolei pentru
+passwd_old=Parola veche
+passwd_new=Parolă Nouă
+passwd_repeat=Parola noua din nou)
+passwd_expire=Forțați utilizatorul să schimbe parola la următoarea autentificare?
+passwd_others=Schimbați parola în alte module?
+passwd_change=Schimbare
+passwd_reset=Formă clară
+passwd_err=Nu a reușit să schimbe parola
+passwd_ecannot=Nu aveți voie să modificați parola acestui utilizator
+passwd_euser=Utilizatorul nu exista
+passwd_eold=Parolă veche incorectă
+passwd_erepeat=Parolele noi nu sunt aceleași
+passwd_ecmd=$1 a eșuat : $2 
+passwd_ok=Parola pentru utilizator $1 a fost schimbată cu succes. Dacă acesta este actualul dvs. utilizator Webmin, este posibil să fiți forțat să vă autentificați din nou.
+passwd_ok2=Parola pentru utilizator $1 a fost schimbată cu succes.
+
+log_passwd=Parolă modificată pentru utilizator $1 
+
+acl_repeat=Trebuie să introduceți din nou parola nouă?
+acl_self=Întotdeauna permiteți modificarea propriei parole?
+acl_old=Trebuie să introduceți parola veche?
+acl_old_this=Numai pentru alți utilizatori
+acl_others=Schimbați parola în alte module?
+acl_opt=facultativ
+acl_users=Utilizatori ale căror parole pot fi modificate
+acl_mode0=Toți utilizatorii
+acl_mode1=Numai utilizatorii
+acl_mode2=Toate cu excepția utilizatorilor
+acl_mode3=Numai acest utilizator
+acl_mode4=Utilizatori cu UID în interval
+acl_mode5=Utilizatori cu grupul principal
+acl_mode6=Se potrivesc utilizatorii
+acl_expire=Pot obliga utilizatorii să schimbe parola la următoarea autentificare?
+acl_sec=Includeți grupuri secundare?
+acl_notusers=Cu excepția utilizatorilor

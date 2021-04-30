@@ -26,7 +26,7 @@ else {
 # Retrieve the updates list (format is  module version url support description )
 $temp = &transname();
 &http_download($host, $port, $page, $temp);
-open(UPDATES, $temp);
+open(UPDATES, "<".$temp);
 while(<UPDATES>) {
 	if (/^([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+(.*)/) {
 		push(@updates, [ $1, $2, $3, $4, $5 ]);
@@ -111,7 +111,7 @@ foreach $u (@updates) {
 # Check if a new version of usermin itself is available
 $file = &transname();
 &http_download('www.webmin.com', 80, '/index6.html', $file);
-open(FILE, $file);
+open(FILE, "<".$file);
 while(<FILE>) {
 	if (/usermin-([0-9\.]+)\.tar\.gz/) {
 		$version = $1;

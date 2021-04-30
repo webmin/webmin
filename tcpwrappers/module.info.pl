@@ -1,2 +1,2 @@
 desc_pl=TCP - Wrappery
-longdesc_pl=Konfiruracja wrapperów TCP - kontrola dostêpu sieciowego
+longdesc_pl=Konfiruracja wrapperÃ³w TCP - kontrola dostÄ™pu sieciowego

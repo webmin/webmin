@@ -1,0 +1,18 @@
+index_title=فرمان شل
+index_ok=اجرای دستور:
+index_history=تاریخچه فرمان
+index_clear=تاریخ پاک کنید
+index_clearcmds=دستورات را پاک کنید
+index_desc=برای اجرای در قسمت متن زیر یک دستور shell وارد کنید. دستور <tt>cd</tt> ممکن است برای تغییر فهرست برای دستورات بعدی استفاده شود.
+index_pok=دستور قبلی را اجرا کنید
+index_edit=ویرایش قبلی
+index_trunced=کل بازده$2 در$1 کوتاه شد.
+index_timedout=فرمان پس از اجرای$1 ثانیه خاتمه یافت.
+
+acl_user=دستورات را به عنوان کاربر اجرا کنید
+acl_user_def=کاربر فعلی وبمین
+acl_shellenv=از محیط کاربر انتخاب شده استفاده می کنید؟
+acl_chroot=Chroot به فهرست
+
+log_run=دستور ran$1
+log_clear=تاریخ فرمان را پاک کنید

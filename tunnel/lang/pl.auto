@@ -1,0 +1,21 @@
+index_elink=Nie ustawiono jeszcze adresu URL do tunelu.
+index_url=Wpisz adres URL, aby otworzyć:
+index_open=otwarty
+
+link_eurl=Nieprawidłowy adres URL tunelu : $1 
+link_elogin=Nie udało się zalogować do $1 jako $2.
+link_eautologin=Nieprawidłowy login lub hasło dla $1. <a href='$2'>Kliknij tutaj</a>, aby się zalogować.
+link_enouser=Nazwa użytkownika i hasło są wymagane do zalogowania się do $1, ale żadne nie zostało skonfigurowane.
+link_ebadurl=Nie masz dostępu do adresu URL $1 
+link_mconfig=Użyj strony <a href='$1'>konfiguracja modułu</a>, aby zmienić login.
+
+login_title=Zaloguj się do strony internetowej
+login_desc=Musisz podać nazwę użytkownika i hasło, aby zalogować się do $1.
+login_header=Uwierzytelnianie strony internetowej
+login_user=Nazwa Użytkownika
+login_pass=Hasło
+login_login=Zaloguj sie
+login_clear=Jasny
+
+seturl_err=Nie można otworzyć adresu URL
+seturl_eurl=Podano nieprawidłowy adres URL

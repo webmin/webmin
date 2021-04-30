@@ -1,0 +1,152 @@
+index_title=שרת VPN VPTP
+index_version=גרסת PoPToP $1 
+index_epptpd=שרת ה- PPPToP PPTP $1 לא נמצא במערכת שלך, או שהוא לא התוכנית הנכונה. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+index_econfig=קובץ תצורת שרת ה- PPTP $1 לא נמצא במערכת שלך. אולי <a href='$2'>תצורת המודול</a> שלך שגויה.
+index_stop=עצור את שרת ה- PPTP
+index_stopdesc=לחץ על כפתור זה כדי לכבות את תהליך שרת ה- PPTP שרץ, כך שלא יתקבלו חיבורים חדשים. חיבורי VPN קיימים יישארו פעילים.
+index_start=הפעל את שרת ה- PPTP
+index_startdesc=לחץ על כפתור זה כדי להפעיל את תהליך שרת ה- PPTP כך שיוכל לקבל חיבורי VPN מלקוחות.
+index_apply=החל תצורה
+index_applydesc=לחץ על כפתור זה כדי להחיל את אפשרויות שרת ה- PPTP הנוכחיות על ידי עצירה והפעלה מחדש של תהליך שרת ה- PPTP. שינויים באפשרויות PPP וחשבונות PPP יחולו תמיד על כל חיבורים חדשים
+index_return=אינדקס מודול
+index_epppd=תוכנית שרת PPP $1 אינה מותקנת במערכת שלך. ה- PPTP תלוי בה כדי לפעול.
+
+conf_title=אפשרויות שרת PPTP
+conf_ecannot=אינך רשאי לערוך אפשרויות שרת PPTP
+conf_header=תצורת שרת PPTP
+conf_speed=שיעור baud PPP
+conf_baud=bps
+conf_listen=האזן בכתובת
+conf_all=כל הכתובות
+conf_localip=כתובות IP לסיום חיבור השרת
+conf_remoteip=כתובות IP להקצאה ללקוחות
+conf_ipxnets=רשתות IPX להקצאה
+conf_from=מ
+conf_to=ל
+conf_option=קובץ אפשרויות PPP
+conf_mode0=הגדרות כלליות
+conf_mode1=הגדרות ספציפיות ל- PPTP
+conf_mode2=קובץ מותאם אישית
+conf_ipdesc=ניתן להזין כתובת IP בשני הטווחים באופן יחיד (כמו 192.168.1.1) או כטווחים (כמו 192.168.2.32-64)
+conf_err=שמירת אפשרויות השרת נכשלה
+conf_espeed=שיעור baud חסר או לא תקף
+conf_elisten=כתובת חסרה או לא חוקית להאזנה לה
+conf_eoption=קובץ אפשרויות PPP מותאם אישית חסר או לא חוקי למראה
+conf_elocalip='$1' אינו כתובת IP או טווח מקומי חוקי
+conf_eremoteip='$1' אינו כתובת IP או טווח מרוחקים תקפים
+conf_efrom=רשת IPX חסרה או לא תקינה מהכתובת
+conf_eto=רשת IPX חסרה או לא תקינה לכתובת
+
+options_title=אפשרויות PPP
+options_ecannot=אינך רשאי לערוך אפשרויות PPP
+options_desc0=אפשרויות PPP שלמטה מ- $1 חלות על כל החיבורים הנכנסים שהתקבלו על ידי המערכת שלך, כולל אלה למודמי חיוג.
+options_desc1=אפשרויות PPP שלמטה מ- $1 חלות רק על כל חיבורי ה- PPTP.
+options_desc2=הם ישמשו את כל החיבורים החדשים שיוקמו לאחר שמירת טופס זה.
+options_header=אפשרויות חיבור PPP
+options_proxyarp=ליצור רשומת ARP של proxy?
+options_lock=נעל נעילת קובץ PTY?
+options_auth=דורשים אימות?
+options_auth0=לא, אבל למנוע כתובות IP מנותבות
+options_auth1=לעולם לא
+options_auth2=תמיד
+options_login=האם גם אימות יוניקס?
+options_pap=אימות PAP
+options_chap=אימות CHAP
+options_req=חייב להשתמש
+options_all=עשוי להיות בשימוש
+options_ref=לא ניתן לשימוש
+options_name=שם שרת לאימות
+options_hn=שם מארח אמיתי
+options_mtu=גודל מנות מקסימלי לשלוח
+options_mru=גודל מנה מקסימלי לקבל
+options_err=שמירת אפשרויות PPP נכשלה
+options_emtu=גודל מנות משלוח מקסימלי חסר או לא חוקי
+options_emru=גודל מנות קבלה מקסימלי חסר או לא חוקי
+options_ename=שם שרת חסר או לא חוקי לאימות
+options_version=גרסת PPPd $1 
+options_msdesc=האפשרויות שלהלן מאפשרות את שיטת האימות MS-CHAP ואת קידוד MPPE, המשמשות כברירת מחדל על ידי לקוחות VPN של Windows. עם זאת, MPPE דורש תמיכה הן בדמון ה- PPP והן בגרעין מערכת ההפעלה.
+options_mschap=אימות MS-CHAP
+options_mschap-v2=אימות MS-CHAP גרסה 2
+options_chapms=אימות MS-CHAP
+options_chapms-v2=אימות MS-CHAP גרסה 2
+
+secrets_title=חשבונות PPP
+secrets_ecannot=אינך רשאי לערוך חשבונות PPP
+secrets_return=אינדקס
+secrets_none=עדיין לא נוצרו חשבונות PPP.
+secrets_enopfile=קובץ סיסמאות PPP $1 אינו קיים במערכת שלך. אולי PPP אינו מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+secrets_table=PPP מהווה $1 
+secrets_user=שם משתמש
+secrets_ips=כתובות IP
+secrets_uany=כל
+secrets_sany=כל
+secrets_create=צור חשבון PPP חדש.
+secrets_desc=חשבונות ה- PPP המופיעים בדף זה נלקחים מהקובץ $1 המשמש לאימות $3. רק אלה עבור השרת שלך $2 מוצגים, לא חשבונות ליצירת חיבורים יוצאים.
+secrets_delete=מחק חשבונות PPP שנבחרו
+
+edit_secret_etitle=ערוך חשבון PPP
+edit_secret_ctitle=צור חשבון PPP
+edit_secret_acc=חשבון PPP
+edit_secret_user=שם משתמש
+edit_secret_serv=שרת
+edit_secret_sany=כל
+edit_secret_uany=כל
+edit_secret_pass=סיסמה
+edit_secret_none=אף אחד
+edit_secret_ffile=מקובץ
+edit_secret_leave=השאר ללא שינוי
+edit_secret_setto=מכוון ל
+edit_secret_vaddr=כתובות תקפות
+edit_secret_aany=אפשר לכל
+edit_secret_anone=הרשה לאף אחד
+edit_secret_alist=אפשר לרשום ..
+edit_secret_save=להציל
+edit_secret_del=מחק
+edit_secret_return=רשימת חשבונות
+
+save_secret_esave=שמירת החשבון נכשלה
+save_secret_enoip='$1' אינה כתובת חוקית
+
+stop_err=עצירת שרת ה- PPTP נכשלה
+stop_egone=כבר לא רץ
+stop_ecannot=אינך מורשה לעצור את שרת ה- PPTP
+
+start_err=הפעלת שרת ה- PPTP נכשלה
+start_ecannot=אינך מורשה להפעיל את שרת ה- PPTP
+
+apply_err=ההפעלה מחדש של שרת ה- PPTP נכשלה
+apply_ecannot=אינך רשאי להפעיל מחדש את שרת ה- PPTP
+
+conns_title=חיבורים פעילים
+conns_ecannot=אינך מורשה לנהל חיבורים פעילים
+conns_desc=דף זה מפרט את חיבורי ה- PPTP הפעילים כרגע לשרת שלך. כדי לנתק בכוח בכוח, לחץ על שם הממשק שלה.
+conns_iface=ממשק PPP
+conns_client=כתובת לקוח
+conns_stime=מחובר מאז
+conns_local=כתובת VPN של שרת
+conns_remote=כתובת VPN לקוח
+conns_none=לא נראה כי חיבורי PPTP פעילים בשלב זה.
+conns_unknown=לא ידוע
+conns_user=שם משתמש
+
+disc_err=ניתוק נכשל
+disc_egone=החיבורים אינם פעילים עוד
+disc_ekill=התהליך אינו פועל עוד
+
+log_secret_create=יצר חשבון PPP $1 
+log_secret_modify=חשבון PPP שונה $1 
+log_secret_delete=חשבון PPP $1 נמחק
+log_deletes=נמחקו $1 חשבונות PPP
+log_conf=אפשרויות שרת PPTP השתנו
+log_options=אפשרויות PPP השתנו
+log_disc=לקוח מנותק $1 
+log_start=שרת PPTP התחיל
+log_stop=שרת PPTP הופסק
+log_apply=תצורת שרת PPTP מיושמת
+
+acl_conf=האם ניתן לערוך תצורה?
+acl_options=האם ניתן לערוך אפשרויות?
+acl_secrets=האם ניתן לנהל חשבונות PPTP?
+acl_conns=האם אתה יכול להציג קשרים?
+acl_stop=האם ניתן לעצור ולהפעיל שרת PPTP?
+acl_apply=האם ניתן להחיל תצורה?

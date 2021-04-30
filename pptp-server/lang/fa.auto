@@ -1,0 +1,152 @@
+index_title=سرور PPTP VPN
+index_version=نسخه PoPToP$1
+index_epptpd=سرور PoPToP PPTP $1 در سیستم شما یافت نشد ، یا برنامه مناسبی نیست. شاید نصب نشده باشد یا تنظیمات ماژول <a href='$2'></a> نادرست باشد.
+index_econfig=پرونده پیکربندی سرور PPTP $1 در سیستم شما یافت نشد. شاید <a href='$2'>پیکربندی ماژول شما</a> نادرست باشد.
+index_stop=سرور PPTP را متوقف کنید
+index_stopdesc=برای خاموش کردن روند کار سرور PPTP روی این دکمه کلیک کنید ، تا هیچ اتصال جدیدی پذیرفته نشود. اتصالات VPN موجود همچنان فعال خواهد بود.
+index_start=سرور PPTP را شروع کنید
+index_startdesc=برای راه اندازی فرآیند سرور PPTP روی این دکمه کلیک کنید تا بتواند اتصالات VPN را از مشتری دریافت کند.
+index_apply=پیکربندی را اعمال کنید
+index_applydesc=برای توقف گزینه های فعلی سرور PPTP با متوقف کردن و شروع مجدد روند سرور PPTP ، روی این دکمه کلیک کنید. تغییر در گزینه های PPP و حساب های PPP همیشه در مورد هر اتصال جدید اعمال می شود
+index_return=فهرست ماژول
+index_epppd=برنامه سرور PPP $1 روی سیستم شما نصب نشده است. PPTP بستگی به عملکرد آن دارد.
+
+conf_title=گزینه های سرور PPTP
+conf_ecannot=شما مجاز به ویرایش گزینه های سرور PPTP نیستید
+conf_header=پیکربندی سرور PPTP
+conf_speed=PPP نرخ باود
+conf_baud=bps
+conf_listen=گوش دادن به آدرس
+conf_all=همه آدرسها
+conf_localip=آدرس های IP برای پایان سرور اتصال
+conf_remoteip=آدرس های IP برای اختصاص به مشتری
+conf_ipxnets=شبکه های IPX برای تخصیص
+conf_from=از جانب
+conf_to=به
+conf_option=پرونده گزینه PPP
+conf_mode0=تنظیمات جهانی
+conf_mode1=تنظیمات خاص PPTP
+conf_mode2=پرونده سفارشی
+conf_ipdesc=آدرس IP در هر دو محدوده می تواند به صورت مجزا (مانند 192.168.1.1) یا به صورت دامنه (مانند 192.168.2.32-64) وارد شود
+conf_err=گزینه های سرور ذخیره نشد
+conf_espeed=نرخ باود وجود ندارد یا نامعتبر است
+conf_elisten=برای گوش دادن به آدرس موجود نیست یا نامعتبر است
+conf_eoption=پرونده گزینه های PPP سفارشی که به نظر نمی رسد یا نامشخص است
+conf_elocalip="$1" یک آدرس IP یا دامنه معتبر محلی نیست
+conf_eremoteip="$1" یک آدرس IP یا دامنه معتبر از راه دور نیست
+conf_efrom=شبکه IPX از آدرس یا نامعتبر است
+conf_eto=شبکه IPX برای آدرس دهی وجود ندارد یا نامعتبر است
+
+options_title=گزینه های PPP
+options_ecannot=شما مجاز به ویرایش گزینه های PPP نیستید
+options_desc0=گزینه های PPP زیر$1 برای کلیه اتصالات ورودی دریافت شده توسط سیستم شما از جمله مودم های شماره گیری اعمال می شود.
+options_desc1=گزینه های PPP زیر از$1 فقط برای کلیه اتصالات PPTP اعمال می شود.
+options_desc2=آنها توسط هر اتصال جدیدی که پس از ذخیره شدن این فرم ایجاد شود ، استفاده می شوند.
+options_header=گزینه های اتصال PPP
+options_proxyarp=ورودی ARP پروکسی ایجاد کنید؟
+options_lock=پرونده دستگاه PTY را قفل کنید؟
+options_auth=احتیاج به احراز هویت دارید؟
+options_auth0=نه ، اما از IP های روت شده جلوگیری کنید
+options_auth1=هرگز
+options_auth2=همیشه
+options_login=همچنین احراز هویت یونیکس را انجام دهید؟
+options_pap=تأیید اعتبار PAP
+options_chap=تأیید اعتبار CHAP
+options_req=باید استفاده شود
+options_all=ممکن است مورد استفاده قرار گیرد
+options_ref=قابل استفاده نیست
+options_name=نام سرور برای تأیید اعتبار
+options_hn=نام میزبان واقعی
+options_mtu=حداکثر اندازه بسته ارسال می شود
+options_mru=حداکثر اندازه بسته دریافت کننده
+options_err=گزینه های PPP ذخیره نشد
+options_emtu=اندازه ارسال حداکثر یا نامعتبر است
+options_emru=حداکثر اندازه دریافت بسته یا نامعتبر است
+options_ename=نام سرور برای تأیید اعتبار نامعتبر است
+options_version=نسخه PPPd$1
+options_msdesc=گزینه های زیر روش احراز هویت MS-CHAP و رمزگذاری MPPE را که به طور پیش فرض توسط کلاینت های Windows VPN استفاده می شود ، فعال می کند. با این حال ، MPPE نیاز به پشتیبانی در هر دو روش PPP و هسته سیستم عامل دارد.
+options_mschap=احراز هویت MS-CHAP
+options_mschap-v2=شناسه MS-CHAP نسخه 2
+options_chapms=احراز هویت MS-CHAP
+options_chapms-v2=شناسه MS-CHAP نسخه 2
+
+secrets_title=حساب های PPP
+secrets_ecannot=شما مجاز به ویرایش حساب های PPP نیستید
+secrets_return=فهرست مطالب
+secrets_none=هنوز حساب PPP ایجاد نشده است.
+secrets_enopfile=پرونده رمزهای عبور PPP $1 در سیستم شما وجود ندارد. ممکن است PPP نصب نشده باشد ، یا <a href='$2'>پیکربندی ماژول شما</a> نادرست باشد.
+secrets_table=PPP $1 را تشکیل می دهد
+secrets_user=نام کاربری
+secrets_ips=آدرس های IP
+secrets_uany=هر چیزی
+secrets_sany=هر چیزی
+secrets_create=ایجاد یک حساب کاربری جدید PPP.
+secrets_desc=حساب های PPP ذکر شده در این صفحه از پرونده$1 گرفته شده است که برای تأیید اعتبار$3 استفاده می شود. فقط موارد مربوط به سرور$2 شما نشان داده می شود ، و نه ایجاد ارتباطهای خروجی.
+secrets_delete=حساب های PPP انتخاب شده را حذف کنید
+
+edit_secret_etitle=حساب PPP را ویرایش کنید
+edit_secret_ctitle=ایجاد یک حساب کاربری PPP
+edit_secret_acc=حساب PPP
+edit_secret_user=نام کاربری
+edit_secret_serv=سرور
+edit_secret_sany=هر
+edit_secret_uany=هر
+edit_secret_pass=کلمه عبور
+edit_secret_none=هیچ یک
+edit_secret_ffile=از پرونده
+edit_secret_leave=بدون تغییر بگذارید
+edit_secret_setto=تنظیم کنید
+edit_secret_vaddr=آدرس های معتبر
+edit_secret_aany=مجاز به هر
+edit_secret_anone=اجازه هیچ کدام
+edit_secret_alist=مجاز ذکر شده ..
+edit_secret_save=صرفه جویی
+edit_secret_del=حذف
+edit_secret_return=لیست حساب
+
+save_secret_esave=ذخیره حساب انجام نشد
+save_secret_enoip='$1' یک آدرس معتبر نیست
+
+stop_err=سرور PPTP متوقف نشد
+stop_egone=دیگر در حال اجرا نیست
+stop_ecannot=شما مجاز به متوقف کردن سرور PPTP نیستید
+
+start_err=راه اندازی سرور PPTP انجام نشد
+start_ecannot=شما مجاز به شروع سرور PPTP نیستید
+
+apply_err=راه اندازی مجدد سرور PPTP انجام نشد
+apply_ecannot=شما مجاز به راه اندازی مجدد سرور PPTP نیستید
+
+conns_title=اتصالات فعال
+conns_ecannot=شما مجاز به مدیریت اتصالات فعال نیستید
+conns_desc=در این صفحه اتصالات PPTP فعال فعلی به سرور شما لیست شده است. برای جدا کردن اجباری یکی ، روی نام رابط آن کلیک کنید.
+conns_iface=رابط PPP
+conns_client=آدرس مشتری
+conns_stime=از آنجا وصل شد
+conns_local=آدرس سرور VPN
+conns_remote=آدرس VPN مشتری
+conns_none=به نظر نمی رسد در حال حاضر هیچ اتصال PPTP فعال باشد.
+conns_unknown=ناشناخته
+conns_user=نام کاربری
+
+disc_err=قطع نشد
+disc_egone=اتصالات دیگر فعال نیست
+disc_ekill=فرآیند دیگر در حال اجرا نیست
+
+log_secret_create=حساب PPP ایجاد شده$1
+log_secret_modify=حساب PPP اصلاح شده$1
+log_secret_delete=حساب PPP $1 حذف شد
+log_deletes=$1 حساب PPP حذف شد
+log_conf=گزینه های سرور PPTP اصلاح شده
+log_options=گزینه های PPP اصلاح شده
+log_disc=مشتری$1 قطع شد
+log_start=سرور PPTP را راه اندازی کرد
+log_stop=سرور PPTP متوقف شد
+log_apply=پیکربندی سرور PPTP کاربردی
+
+acl_conf=آیا می توانید پیکربندی را ویرایش کنید؟
+acl_options=آیا می توانید گزینه ها را ویرایش کنید؟
+acl_secrets=آیا می توانید حساب های PPTP را مدیریت کنید؟
+acl_conns=آیا می توانید اتصالات را مشاهده کنید؟
+acl_stop=آیا می توان سرور PPTP را متوقف و راه اندازی کرد؟
+acl_apply=آیا می توانید پیکربندی را اعمال کنید؟

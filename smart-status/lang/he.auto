@@ -1,0 +1,58 @@
+index_title=מצב כונן SMART
+index_ecmd=פקודת הפקד SMART $1 לא נמצאה במערכת שלך, או שהיא לא מוגדרת כראוי <a href='$2'>בתצורת המודול</a>. עליו להתקין לפני שניתן להשתמש במודול זה.
+index_ecmd2=נראה שהפקודה $1 אינה פקודת הבקרה של SMART. יש להגדיר אותו נכון ב <a href='$2'>תצורת המודול</a> לפני שניתן להשתמש במודול זה.
+index_version=גרסת SMARTsuite $1 
+index_show=הצג את מצב הכונן:
+index_ok=הופעה
+index_eidescsi=לא נמצאו כונני IDE, SCSI או SATA במערכת שלך.
+index_drive=סטטוס הכונן $1 
+index_drivesub=סטטוס הכונן $1, הדיסק $2 
+index_desc=מקום
+index_size=גודל הכונן
+index_model=לעשות ולעצב
+index_support=תומך ב- SMART?
+index_enabled=SMART מופעל?
+index_check=עברת בדיקת כונן?
+index_short=מבחן עצמי קצר
+index_ext=מבחן עצמי מורחב
+index_data=מבחן איסוף נתונים
+index_errors=שגיאות נרשמו
+index_ecount=זוהו שגיאות $1 
+index_attrs=תכונות נוספות של SMART
+index_raw=דוח מצב מלא של SMART
+index_return=אינדקס מודול
+index_family=משפחת דוגמניות
+index_serial=מספר סידורי
+index_capacity=קיבולת
+index_norm=מנורמל:
+
+monitor_type=בדיקת כונן SMART
+monitor_type2=SSD Wearout
+monitor_drive=סע לבדוק
+monitor_errors=בדוק גם את יומן השגיאות?
+monitor_errorsinc=כן, אך התראה רק אם ספירת השגיאות עולה
+monitor_other=אחר ..
+monitor_edrive=כונן חסר או לא חוקי לבדיקה
+monitor_nosuch=אין כונן כזה
+monitor_nosmart=אין תמיכה SMART
+monitor_errorsfound=דווח על שגיאות $1 
+monitor_errorsinced=הטעויות גדלו מ- $2 ל- $1 
+monitor_wearlevel=כשל אם רמת הבלאי נופלת מתחת
+monitor_ewearlevel=אחוז רמת בלאי לא חוקי
+monitor_nowearout=Drive אינו מדווח על מחוון אריגת SSD
+monitor_wornout=רמת הבלאי ירדה ל- $1 
+
+short_title=מבחן עצמי קצר
+short_doing=החל מבדיקה עצמית קצרה של $1 ..
+short_failed=.. נכשל!
+short_ok=.. הבדיקה התחילה בסדר. ראה את מצב הכונן בעמוד הראשי של המודול לקבלת התוצאות.
+
+ext_title=מבחן עצמי מורחב
+ext_doing=החל מבדיקה עצמית מורחבת של $1 ..
+ext_failed=.. נכשל!
+ext_ok=.. הבדיקה התחילה בסדר. ראה את מצב הכונן בעמוד הראשי של המודול לקבלת התוצאות.
+
+data_title=מבחן איסוף נתונים
+data_doing=החל באיסוף נתונים לא מקוון ב- $1.
+data_failed=.. נכשל!
+data_ok=האוסף התחיל בסדר. ראה את מצב הכונן בעמוד הראשי של המודול לקבלת התוצאות.

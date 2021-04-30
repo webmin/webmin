@@ -1,0 +1,5 @@
+index_title=Prijava teksta
+index_epython=Ajaxterm zahtijeva pokretanje Pythona, ali naredba $1 nije pronađena u vašem sustavu.
+index_estart=Ajaxterm nije počeo prihvaćati veze na priključku $2 nakon $1 sekunde.
+index_popup=Otvori u zasebnom prozoru ..
+index_credits=Koristi kôd iz <a href='$1' target=_new>Ajaxterm</a> autora Antonija Lesuissea.

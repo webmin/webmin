@@ -48,7 +48,7 @@ foreach $g ('guestuser', 'guestgroup', 'realuser', 'realgroup') {
 print "<tr> <td colspan=4><hr></td> </tr>\n";
 print "<tr> <td><b>",&text('class_ftpusers', "<tt>$config{'ftpusers'}</tt>"),
       "</b></td> <td colspan=3>\n";
-open(FTPUSERS, $config{'ftpusers'});
+open(FTPUSERS, "<$config{'ftpusers'}");
 while(<FTPUSERS>) {
 	s/\r|\n//g;
 	s/#.*$//;

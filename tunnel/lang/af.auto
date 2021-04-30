@@ -1,0 +1,21 @@
+index_elink=Daar is nog nie 'n URL om na die tonnel in te stel nie.
+index_url=Voer URL in om oop te maak:
+index_open=oop
+
+link_eurl=Ongeldige tonnel-URL : $1 
+link_elogin=Kon nie by $1 as $2 aanmeld nie.
+link_eautologin=Ongeldige aanmelding of wagwoord vir $1. <a href='$2'>Klik hier</a> om aan te meld.
+link_enouser='N Gebruikernaam en wagwoord is nodig om aan te meld by $1, maar niks is opgestel nie.
+link_ebadurl=U mag nie toegang tot die URL $1 verkry nie
+link_mconfig=Gebruik die <a href='$1'>module-opstelling</a> om die aanmelding te verander.
+
+login_title=Teken in op webwerf
+login_desc=U moet 'n gebruikersnaam en wagwoord verskaf om aan te meld by $1.
+login_header=Webwerf-verifikasie
+login_user=Gebruikersnaam
+login_pass=wagwoord
+login_login=Teken aan
+login_clear=duidelik
+
+seturl_err=Kon nie URL oopmaak nie
+seturl_eurl=Ongeldige URL ingevoer

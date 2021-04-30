@@ -1,0 +1,91 @@
+index_tabglobal=Globális konfiguráció
+index_tablist=Meglévő virtuális gépek
+index_tabcreate=Hozzon létre virtuális gazdagépet
+index_descglobal=Az ezen ikonra kattintva elérhető lehetőségek az egész Apache szerverre vonatkoznak, beleértve az összes virtuális gazdagépet.
+index_desclist=Az alábbi lista az összes jelenleg definiált Apache virtuális gazdagépet mutatja, amelyekhez hozzáféréssel rendelkezik. Az <b>Alapértelmezett kiszolgáló</b> bejegyzés meghatározza az összes többi virtuális gazdagépre érvényes beállításokat, kivéve ha felülbírálásra kerülnek.
+index_desccreate=Ez az űrlap felhasználható új Apache virtuális gazdagép hozzáadására, amely egy megadott könyvtár tartalmát szolgálja ki egy adott IP-cím vagy gazdagépnév iránti kérelmekre válaszul.
+index_return2=globális konfiguráció
+
+cvirt_eroot4=Az Apache konfigurációban nincs megadva felhasználó
+
+enewline=Érvénytelen karakter az értékben
+
+virt_eprotocol=Legalább egy használható SSL/TLS protokoll verziót ki kell választania
+virt_opts2=Virtuális szerver beállításai
+virt_DirectoryMatch=Directory regexp
+virt_FilesMatch=Fájlok újratelepítése
+virt_LocationMatch=Helymeghatározás
+virt_ProxyMatch=Proxy regexp
+
+vserv_virtualmin=Ez az Apache virtuális gazdagép a <tt>$1</tt> Virtualmin szerverhez tartozik, így a cím, a port, az alapkönyvtár és a hostnév itt nem változtatható meg.
+
+manual_editfile=A konfigurációs fájl szerkesztése:
+manual_switch=szerkesztése
+
+dir_proxyall=Minden proxy kérés
+
+htaccess_file=Meglévő opciós fájlok
+htaccess_eempty=Nincs megadva opciós fájlkönyvtár
+htaccess_eabsolute=Az Opciók fájl könyvtárának abszolút útvonalnak kell lennie
+htaccess_err=Nem sikerült létrehozni az opciós fájlt
+
+defines_list=Meghatározott paraméterek
+
+acl_aliasdir=Korlátozza az álneveket a könyvtárba
+acl_dirs=Apache-irányelvek elérhetőek <br><font size=-1> (A fenti típuskorlátozástól függően) </font>
+acl_dirs0=Összes
+acl_dirs1=Csak felsorolt ..
+acl_dirs2=Minden, kivéve a felsorolt ..
+
+core_portname=Jegyzőkönyv
+core_protoany=&lt;Any&gt;
+core_eduplisten=A $1 meghallgatási cím kétszer szerepel
+core_ecandoc=Nem használhatja a '$1' gyökér dokumentumot
+core_minor=Kisebb verzió
+core_fileowner=A fájltulajdonos megegyezik
+core_filegroup=Csoportos tulajdonos mérkőzések
+
+mod_alias_edest2=Nem szabad használni a $2 '$1' rendeltetési helyet.
+
+mod_proxy_seconds=másodperc
+
+mod_log_config_ifset=Ha be van állítva
+
+mod_userdir_edir=A megadott felhasználói WWW könyvtár nem használható
+
+mod_auth_dbm_gpass=Átadja a csoporthibákat a következő modulra?
+mod_auth_dbm_gtype=DBM csoport adatbázis típusa
+
+mod_ssl_cafile=A tanúsító hatóságok nyilvántartása
+mod_ssl_ecafile=Hiányzik a tanúsító hatóságok kulcsfájlja
+mod_ssl_passnone=Még nincs beállítva
+mod_ssl_ecerton=Ha az SSL engedélyezve van, ki kell választania egy tanúsítványfájlt
+
+log_mods=Megváltozott a konfigurált Apache modulok
+
+mod_vhost_alias_eroot2=A virtuális gazdagép gyökérkönyvtára nem engedélyezett
+
+cdir_ecannot=Az adott elérési úthoz nem szabad könyvtáronként opciókat létrehozni
+
+syslog_desc=Apache hibanapló
+
+mod_auth_basic_pass=Átadja az alapvető bejelentkezési hibákat a következő modulnak?
+mod_auth_basic_prov=Alapvető bejelentkezési felhasználói fájltípusok
+mod_auth_basic_file=Szöveges fájl
+mod_auth_basic_dbm=DBM adatbázis
+
+mod_auth_digest_pass=Átadja az emésztés bejelentkezési hibáit a következő modulra?
+mod_auth_digest_prov=Az emésztett bejelentkezés felhasználói fájltípusai
+mod_auth_digest_al=Hasháló algoritmus
+mod_auth_digest_domain=Ugyanazon domain URL-jei és elérési útjai
+mod_auth_digest_edomain=Hiányzó URL-ek és elérési utak ugyanabban a domainben
+
+mods_title=Az Apache modulok konfigurálása
+mods_mod=modul
+mods_state=Jelen állapot
+mods_enabled=Bekapcsolt
+mods_disabled=Tiltva
+mods_available=Telepíthető
+mods_ecannot=Az Apache modulokat nem szabad konfigurálni
+mods_save=A kiválasztott modulok engedélyezése
+mods_desc=Ezen az oldalon kiválaszthatja, hogy mely opcionális Apache-modulok legyenek engedélyezve, az egyes modulnevek melletti jelölőnégyzet segítségével. Legyen óvatos, ha letiltja a modult, mivel az arra vonatkozó, létező irányelvek már nem kerülnek felismerésre.

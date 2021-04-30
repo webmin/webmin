@@ -1,0 +1,3 @@
+longdesc_pt_BR=Scripts de instalação para serem executados no momento da inicialização em /etc/init.d ou /etc/rc.local.
+desc_pt_BR=Inicialização e desligamento
+name_pt_BR=Gerenciador de Inicialização

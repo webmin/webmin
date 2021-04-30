@@ -1,0 +1,103 @@
+index_title=Moniteur de rythme cardiaque
+index_return=moniteur de rythme cardiaque
+index_edir=Le répertoire de configuration de pulsation $1 n'existe pas. Peut-être que Heartbeat n'est pas installé ou que la <a href='$2'>configuration du module</a> est incorrecte.
+index_start=Démarrer le moniteur de rythme cardiaque
+index_startmsg=Cliquez sur ce bouton pour démarrer le processus du moniteur Heartbeat. Cela activera le basculement de service automatique sur votre système avec la configuration actuelle.
+index_apply=Appliquer les modifications
+index_applymsg=Cliquez sur ce bouton pour forcer le processus du moniteur Heartbeat en cours d'exécution à recharger la configuration actuelle.
+index_eha_cf=Le fichier de configuration de pulsation $1 est introuvable sur votre système. Peut-être qu'il n'a pas encore été copié en place, ou la <a href='$2'>configuration du module</a> est incorrecte.
+index_eharesources=Le fichier de ressources $1 est introuvable sur votre système. Peut-être qu'il n'a pas encore été copié en place, ou la <a href='$2'>configuration du module</a> est incorrecte.
+index_eauthkeys=Le fichier de clés d'authentification $1 est introuvable sur votre système. Peut-être qu'il n'a pas encore été copié en place, ou la <a href='$2'>configuration du module</a> est incorrecte.
+index_ereq_resource_cmd=Le script pour demander des ressources à l'autre nœud ($1) est introuvable sur votre système. Peut-être qu'il n'a pas encore été copié en place, ou la <a href='$2'>configuration du module</a> est incorrecte.
+index_version=Version de pulsation $1 
+index_noversion=Avertissement - La version de Heartbeat installée sur votre système n'a pas pu être détectée automatiquement. Vous devez le définir sur la page de <a href='$1'>configuration du module</a>.
+index_status=Statut du rythme cardiaque
+
+conf_title=Options de configuration
+conf_header=Options de configuration de Heartbeat
+conf_serials=Ports de pulsation série
+conf_baud=Débit en bauds pour le port série
+conf_bcasts=Interfaces de pulsation Ethernet
+conf_none=Aucun
+conf_udpport=Port de pulsation UDP
+conf_mcast=Dispositif de pulsation cardiaque multidiffusion
+conf_mcastv=Unité $1, groupe $2, port $3, TTL $4, bouclage $5 
+conf_enabled=Activée
+conf_disabled=désactivé
+conf_keepalive=Temps entre les battements cardiaques
+conf_nice_failback=Beau comportement de rétablissement
+conf_secs=secondes
+conf_deadtime=Temps avant que le nœud ne soit considéré comme mort
+conf_watchdog=Fichier de périphérique de surveillance
+conf_node=Hôtes du cluster
+conf_logfile=Fichier journal Heartbeat
+conf_logfacility=Fonction de journal Syslog
+conf_initdead=Temps mort initial
+conf_ok=Options d'enregistrement
+conf_err=Échec de l'enregistrement des options
+conf_ebaud=Débit en bauds manquant ou invalide
+conf_ebcast=Aucune interface de diffusion de pulsation entrée
+conf_ebcastif='$1' n'est pas une interface de diffusion valide
+conf_eudpport=Port de pulsation manquant ou invalide
+conf_ekeepalive=Temps manquant ou invalide entre les battements cardiaques
+conf_edeadtime=Temps mort manquant ou invalide
+conf_ewatchdog=Fichier de périphérique de surveillance manquant ou inexistant
+conf_enonode=Aucun hôte de cluster entré
+conf_ethisnode=Cet hôte $1 ne figure pas sur la liste des hôtes de cluster
+conf_elogfile=Nom de fichier journal manquant ou non valide
+conf_einitdead=Temps mort initial manquant ou invalide
+conf_einitdead2=Le temps mort initial doit être au moins deux fois plus long avant qu'un nœud ne soit considéré comme mort
+conf_emcast_dev=Périphérique de multidiffusion manquant ou non valide
+conf_emcast_ip=Adresse de groupe de multidiffusion manquante ou non valide
+conf_emcast_port=Numéro de port de multidiffusion manquant ou non valide
+conf_emcast_ttl=Durée de vie de multidiffusion manquante ou non valide
+conf_auto_on=$ {conf_enabled}
+conf_auto_off=$ {conf_disabled}
+conf_auto_legacy=Mode hérité
+conf_auto_=$ {default}
+
+res_title=Ressources du cluster
+res_node=Noeud principal
+res_ips=Adresses IP
+res_servs=Services de noeud
+res_none=Aucun
+res_nores=Aucune ressource de cluster n'a été définie sur votre système.
+res_add=Ajouter une ressource de cluster
+res_return=liste des ressources
+res_active=Statut des ressources
+res_getserv=Obtenir des ressources
+res_hbdown=Battement de coeur
+res_up=UP
+res_down=VERS LE BAS
+
+node_create=Ajouter une ressource de cluster
+node_edit=Modifier la ressource de cluster
+node_header=Détails des ressources de cluster
+node_node=Noeud principal pour la ressource
+node_ips=Adresses IP pour la ressource
+node_ip=adresse IP
+node_cidr=Netmask CIDR
+node_broad=Adresse de diffusion
+node_servs=Services pour la ressource
+node_serv=Un service
+node_args=Arguments supplémentaires
+node_err=Impossible d'enregistrer la ressource de cluster
+node_enone=Noeud principal manquant ou non valide
+node_eip='$1' n'est pas une adresse IP valide
+node_ecidr='$1' n'est pas un CIDR valide
+node_ebroad='$1' n'est pas une adresse de diffusion valide
+
+auth_title=Clés d'authentification
+auth_header=Authentification du nœud de cluster
+auth_mode=Mode d'authentification
+auth_crc=CRC (pas de sécurité)
+auth_sha1=SHA1 avec mot de passe
+auth_md5=MD5 avec mot de passe
+auth_err=Échec de l'enregistrement des clés d'authentification
+auth_emd5=Mot de passe MD5 manquant ou invalide
+auth_esha1=Mot de passe SHA1 manquant ou invalide
+
+start_err=Impossible de démarrer le rythme cardiaque
+
+apply_err=Échec de l'application des modifications
+apply_epid=Le processus n'est plus en cours d'exécution

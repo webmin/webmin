@@ -1,0 +1,152 @@
+index_title=PPTP VPN-server
+index_version=PoPToP-version $1 
+index_epptpd=PoPToP PPTP-servern $1 hittades inte på ditt system eller är inte rätt program. Kanske är den inte installerad eller så är din <a href='$2'>modulkonfiguration</a> felaktig.
+index_econfig=PPTP-serverns konfigurationsfil $1 hittades inte på ditt system. Kanske är din <a href='$2'>modulkonfiguration</a> felaktig.
+index_stop=Stoppa PPTP-servern
+index_stopdesc=Klicka på den här knappen för att stänga den pågående PPTP-serverprocessen så att inga nya anslutningar accepteras. Befintliga VPN-anslutningar förblir dock aktiva.
+index_start=Starta PPTP-server
+index_startdesc=Klicka på den här knappen för att starta PPTP-serverprocessen så att den kan ta emot VPN-anslutningar från klienter.
+index_apply=Använd konfigurering
+index_applydesc=Klicka på den här knappen för att tillämpa de aktuella PPTP-serveralternativen genom att stoppa och starta om PPTP-serverprocessen. Ändringar av PPP-alternativ och PPP-konton kommer alltid att gälla för alla nya anslutningar
+index_return=modulindex
+index_epppd=PPP-serverprogrammet $1 är inte installerat på ditt system. PPTP beror på att den fungerar.
+
+conf_title=PPTP-serveralternativ
+conf_ecannot=Du får inte redigera PPTP-serveralternativ
+conf_header=PPTP-serverkonfiguration
+conf_speed=PPP-baudfrekvens
+conf_baud=bps
+conf_listen=Lyssna på adress
+conf_all=Alla adresser
+conf_localip=IP-adresser för serveranslutning
+conf_remoteip=IP-adresser som ska fördelas till klienter
+conf_ipxnets=IPX-nätverk att tilldela
+conf_from=Från
+conf_to=till
+conf_option=PPP-alternativfil
+conf_mode0=Globala inställningar
+conf_mode1=PPTP-specifika inställningar
+conf_mode2=Anpassad fil
+conf_ipdesc=IP-adress i båda områdena kan anges antingen enskilt (som 192.168.1.1) eller som intervall (som 192.168.2.32-64)
+conf_err=Det gick inte att spara serveralternativ
+conf_espeed=Saknad eller ogiltig baudfrekvens
+conf_elisten=Saknad eller ogiltig adress att lyssna på
+conf_eoption=Saknad eller ogiltig snygg anpassad PPP-alternativfil
+conf_elocalip='$1' är inte en giltig lokal IP-adress eller intervall
+conf_eremoteip='$1' är inte en giltig fjärr-IP-adress eller intervall
+conf_efrom=IPX-nätverk från adress saknas eller
+conf_eto=Saknat eller ogiltigt IPX-nätverk för adress
+
+options_title=PPP-alternativ
+options_ecannot=Du får inte redigera PPP-alternativ
+options_desc0=PPP-alternativen nedan från $1 gäller ALLA inkommande anslutningar som mottagits av ditt system, inklusive sådana för uppringningsmodem.
+options_desc1=PPP-alternativen nedan från $1 gäller bara alla PPTP-anslutningar.
+options_desc2=De kommer att användas av alla nya anslutningar som upprättats efter att detta formulär har sparats.
+options_header=PPP-anslutningsalternativ
+options_proxyarp=Skapa proxy-ARP-post?
+options_lock=Lås PTY-enhetsfil?
+options_auth=Kräver autentisering?
+options_auth0=Nej, men förhindra routade IP: er
+options_auth1=Aldrig
+options_auth2=Alltid
+options_login=Gör även unix-autentisering?
+options_pap=PAP-autentisering
+options_chap=CHAP-autentisering
+options_req=Måste användas
+options_all=Kan användas
+options_ref=Kan inte användas
+options_name=Servernamn för autentisering
+options_hn=Riktigt värdnamn
+options_mtu=Maximal skicka paketstorlek
+options_mru=Maximal mottagningspaketstorlek
+options_err=Det gick inte att spara PPP-alternativ
+options_emtu=Saknas eller ogiltig maximalt skickande paketstorlek
+options_emru=Saknas eller ogiltig maximalt mottagande paketstorlek
+options_ename=Servernamn saknas för autentisering
+options_version=PPPd-version $1 
+options_msdesc=Alternativen nedan aktiverar MS-CHAP-autentiseringsmetod och MPPE-kryptering, som används som standard av Windows VPN-klienter. MPPE kräver dock stöd i både PPP-demonen och operativsystemkärnan.
+options_mschap=MS-CHAP-autentisering
+options_mschap-v2=MS-CHAP version 2-autentisering
+options_chapms=MS-CHAP-autentisering
+options_chapms-v2=MS-CHAP version 2-autentisering
+
+secrets_title=PPP-konton
+secrets_ecannot=Du får inte redigera PPP-konton
+secrets_return=index
+secrets_none=Inga PPP-konton har skapats än.
+secrets_enopfile=PPP-lösenordsfilen $1 finns inte i ditt system. Kanske är PPP inte installerat, eller din <a href='$2'>modulkonfiguration</a> är felaktig.
+secrets_table=PPP står för $1 
+secrets_user=Användarnamn
+secrets_ips=IP-adresser
+secrets_uany=NÅGRA
+secrets_sany=NÅGRA
+secrets_create=Skapa nytt PPP-konto.
+secrets_desc=PPP-kontona som listas på denna sida är hämtade från filen $1, som används för $3 -autentisering. Endast de för din server $2 visas, inte konton för utgående anslutningar.
+secrets_delete=Radera valda PPP-konton
+
+edit_secret_etitle=Redigera PPP-konto
+edit_secret_ctitle=Skapa PPP-konto
+edit_secret_acc=PPP-konto
+edit_secret_user=Användarnamn
+edit_secret_serv=server
+edit_secret_sany=Några
+edit_secret_uany=Några
+edit_secret_pass=Lösenord
+edit_secret_none=Ingen
+edit_secret_ffile=Från fil
+edit_secret_leave=Lämna oförändrat
+edit_secret_setto=Satt till
+edit_secret_vaddr=Giltiga adresser
+edit_secret_aany=Tillåt alla
+edit_secret_anone=Tillåt ingen
+edit_secret_alist=Tillåt listade ..
+edit_secret_save=Spara
+edit_secret_del=Radera
+edit_secret_return=kontolista
+
+save_secret_esave=Det gick inte att spara konto
+save_secret_enoip='$1' är inte en giltig adress
+
+stop_err=Det gick inte att stoppa PPTP-servern
+stop_egone=Kör inte längre
+stop_ecannot=Du får inte stoppa PPTP-servern
+
+start_err=Det gick inte att starta PPTP-servern
+start_ecannot=Du får inte starta PPTP-servern
+
+apply_err=Det gick inte att starta om PPTP-servern
+apply_ecannot=Du får inte starta om PPTP-servern
+
+conns_title=Aktiva anslutningar
+conns_ecannot=Du får inte hantera aktiva anslutningar
+conns_desc=Den här sidan visar de för närvarande aktiva PPTP-anslutningarna till din server. Klicka på dess gränssnittsnamn för att med kraft koppla bort en.
+conns_iface=PPP-gränssnitt
+conns_client=Klientadress
+conns_stime=Ansluten sedan
+conns_local=Server-VPN-adress
+conns_remote=Klientens VPN-adress
+conns_none=Inga PPTP-anslutningar verkar vara aktiva just nu.
+conns_unknown=Okänd
+conns_user=Användarnamn
+
+disc_err=Det gick inte att koppla bort
+disc_egone=Anslutningarna är inte längre aktiva
+disc_ekill=Processen körs inte längre
+
+log_secret_create=Skapat PPP-konto $1 
+log_secret_modify=Ändrat PPP-konto $1 
+log_secret_delete=Raderat PPP-konto $1 
+log_deletes=Raderade $1 PPP-konton
+log_conf=Modifierade PPTP-serveralternativ
+log_options=Modifierade PPP-alternativ
+log_disc=Kopplad klient $1 
+log_start=Startad PPTP-server
+log_stop=Stoppad PPTP-server
+log_apply=Tillämpad PPTP-serverkonfiguration
+
+acl_conf=Kan redigera konfiguration?
+acl_options=Kan redigera alternativ?
+acl_secrets=Kan hantera PPTP-konton?
+acl_conns=Kan du se anslutningar?
+acl_stop=Kan stoppa och starta PPTP-server?
+acl_apply=Kan tillämpas konfiguration?

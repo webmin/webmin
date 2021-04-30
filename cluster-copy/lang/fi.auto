@@ -1,0 +1,67 @@
+index_title=Klusterikopiotiedostot
+index_add=Luo uusi ajoitettu tiedostokopio.
+index_none=Aikataulutettuja tiedostokopioita ei ole määritetty.
+index_servers=Kopioi palvelimille
+index_return=klusterikopioiden luettelo
+index_more=$1 Lisää ..
+index_run=Juokse nyt ..
+index_files=Kopioitavat tiedostot
+index_sched=Säännöllisen?
+index_when=Kyllä, $1 
+index_act=Toiminta
+index_exec=Suorittaa
+index_delete=Poista valitut kopiot
+
+edit_title=Muokkaa klusterikopiota
+create_title=Luo klusterikopio
+edit_header=Ryhmän kopion yksityiskohdat
+edit_files=Kopioitavat tiedostot
+edit_dest=Kohdehakemisto
+edit_cmd=Komento suorittaa kopioinnin jälkeen
+edit_before=Komento suorittaa ennen kopiointia
+edit_remote=Etäpalvelimilla
+edit_dmode0=Kopioi täydet polut hakemistoon
+edit_dmode1=Kopioi tähän hakemistoon
+edit_servers=Kopioi palvelimille
+edit_group=$1 : n jäsenet
+edit_this=tämä palvelin
+edit_all=&lt;Kaikki isännät&gt;
+edit_sched=Kopioidaanko aikataulussa?
+edit_schedyes=Kyllä, alla valituina aikoina ..
+edit_run=Kopioi nyt
+edit_return=klusterikopio
+edit_email=Sähköpostin lähetys osoitteeseen
+edit_none=ei kukaan
+
+save_err=Klusterin cron-työn tallentaminen epäonnistui
+save_efiles=Ei kopioitavia tiedostoja
+save_edest=Puuttuu kohdehakemisto
+save_eservers=Ei palvelimia kopioitavaksi syötettyihin
+save_efile=Kopioitava tiedosto '$1' ei ole ehdoton polku
+save_eemail=Puuttuva tai virheellinen sähköpostiosoite
+
+exec_title=Kopioi tiedostoja
+exec_files1=Kopioidaan $1 tiedostoja valittuihin palvelimiin $2 ..
+exec_files2=Kopioidaan $1 valittuihin palvelimiin $2 ..
+exec_under=(hakemistossa $1)
+exec_failed=Kopiointi tiedostoon $1 epäonnistui : $2 
+exec_success=Kopioi seuraavat tiedostot tiedostoon $1  :
+exec_made=Luonut seuraavat hakemistot $1 : lle :
+exec_nohosts=Mikään isäntä, jota ei ole valittu toimimaan, tai valitut ryhmät eivät sisällä käyttökelpoisia isäntiä.
+exec_nothing=Yhtään tiedostoa ei kopioitu onnistuneesti tiedostoon $1.
+exec_not=Seuraavien tiedostojen kopiointi epäonnistui $1 : een :
+exec_cmd=Kopioi komennon lähtö $1 : llä :
+exec_before=Komentolähtö ennen kopiointia $1 : llä :
+exec_on= $1:$2  : n suorittaminen epäonnistui
+
+log_create=Luotu kopio $1 - $2 palvelimille
+log_modify=Muokattu kopio $1 - $2 palvelimille
+log_delete=Poistettu kopio $1 - $2 -palvelimille
+log_exec=Kopioitiin $1 palvelimeen $2 
+log_deletes=Poistettu $1 kopiota
+
+email_subject_succeeded=Ryhmän kopio $1 : sta onnistui
+email_subject_failed=Ryhmän kopio $1 epäonnistui
+
+delete_err=Kopioiden poistaminen epäonnistui
+delete_enone=Mitään ei ole valittu

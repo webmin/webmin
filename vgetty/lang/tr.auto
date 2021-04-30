@@ -1,0 +1,118 @@
+index_title=Sesli Posta Sunucusu
+index_ecmd=$1 Vgetty komutu sisteminizde bulunamadı. Belki yüklü değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
+index_econfig=$1 Vgetty yapılandırma dosyası sisteminizde bulunamadı. Belki yüklü değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
+index_return=sesli mesaj dizini
+
+vgetty_title=Seri Bağlantı Noktası Yapılandırması
+vgetty_desc=Sunucunuzun sesli aramaları seri bağlantı noktasına bağlı bir modemle cevaplaması için aşağıda listelenmesi gerekir. Bu listeye bir bağlantı noktası eklediğinizde, $1 programı çağrıları yanıtlayacak ve bir mesaj çalacak şekilde yapılandırılacaktır.
+vgetty_add=Yeni bir seri bağlantı noktası ekle
+vgetty_tty=Seri cihaz
+vgetty_type=tip
+vgetty_vgetty=ses
+vgetty_mgetty=Veri/faks
+vgetty_none=Sesli mesaj için henüz seri bağlantı noktası yapılandırılmadı.
+vgetty_apply=Yapılandırmayı Uygula
+vgetty_applydesc=$1 komutunu çalıştırarak ve tüm Vgetty işlemlerini öldürerek geçerli sesli posta sunucusu yapılandırmasını uygulamak için bu düğmeyi tıklatın.
+vgetty_applyerr=Yapılandırma uygulanamadı
+vgetty_return=seri port listesi
+vgetty_create=Seri Bağlantı Noktası Ekle
+vgetty_edit=Seri Bağlantı Noktasını Düzenle
+vgetty_header=Seri bağlantı noktası yapılandırma seçenekleri
+vgetty_ts=Seri bağlantı noktası $1 
+vgetty_other=Diğer cihaz ..
+vgetty_rings=Yanıtlamadan önce çalıyor
+vgetty_default=Genel varsayılan
+vgetty_ans=Cevap modu
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=ses
+vgetty_ans_fax=Faks
+vgetty_ans_data=Veri
+vgetty_err=Seri bağlantı noktası kaydedilemedi
+vgetty_etty=Eksik veya var olmayan seri aygıt
+vgetty_erings=Eksik veya geçersiz çalma sayısı
+vgetty_erings2=Çalma sayısı en az 2 olmalıdır
+vgetty_eans=Hiçbir cevap modu seçilmedi
+vgetty_eclash=$1 seri bağlantı noktası zaten kullanılıyor
+
+options_title=Sesli Posta Sunucusu Seçenekleri
+options_header=Tüm seri bağlantı noktaları için seçenekler
+options_maxlen=Maksimum mesaj uzunluğu
+options_secs=saniye
+options_minlen=Minimum mesaj uzunluğu
+options_silence=Mesajların sonundaki sessizlik kaldırılsın mı?
+options_thresh=Sessizlik eşik seviyesi
+options_rgain=Kayıt ses seviyesi
+options_tgain=Çalma ses seviyesi
+options_rings=Yanıtlamadan önce çalıyor
+options_perport=Her seri port için ayarlanabilir
+options_ans=Cevap modu
+options_keep=Veri veya DTMF kodları içeren mesajlar saklansın mı?
+options_light=Aldıktan sonra otomatik cevap ışığı etkinleştirilsin mi?
+options_owner=İleti dosyaları için Unix sahibi
+options_group=İleti dosyaları için Unix grubu
+options_mode=Mesaj dosyaları için izinler
+options_prog=Mesajı kaydettikten sonra
+options_prog0=Hiçbir şey yapma
+options_prog1=WAV biçiminde e-posta gönder
+options_prog2=İleti dosyasında komut çalıştır
+options_err=Sesli mesaj seçenekleri kaydedilemedi
+options_erings=Eksik veya geçersiz çalma sayısı
+options_erings2=Çalma sayısı en az 2 olmalıdır
+options_emaxlen=Eksik veya geçersiz maksimum mesaj uzunluğu
+options_eminlen=Eksik veya geçersiz minimum mesaj uzunluğu
+options_ethresh=Eksik veya geçersiz sessizlik eşiği
+options_ergain=Kayıp veya geçersiz kayıt ses seviyesi
+options_ergain2=Kayıt ses seviyesi 0 ile 100 arasında olmalıdır
+options_etgain=Eksik veya geçersiz oynatma ses seviyesi
+options_etgain2=Çalma ses seviyesi 0 ile 100 arasında olmalıdır
+options_eemail=Eksik veya geçersiz e-posta adresi
+options_eprog=Çalıştırılacak eksik veya var olmayan program
+options_eowner=İleti dosyaları için eksik veya geçersiz Unix kullanıcısı
+options_egroup=İleti dosyaları için eksik veya geçersiz Unix grubu
+options_emode=İleti dosyaları için eksik veya geçersiz sekizli izinler
+
+received_title=Alınan Mesajlar
+recieved_desc=Sunucunuz tarafından alınan sesli mesajlar aşağıda listelenmiştir. Bir mesajı dinlemek için ilk sütundaki tarih/saati tıklayın.
+received_none=Alınan sesli mesaj bulunamadı.
+received_date=Adresinden alındı
+received_size=Dosya boyutu
+received_speed=Aynı oran
+received_type=Ses formatı
+received_delete=Seçilen mesajları sil
+received_move=Seçilenleri selamlamalara dönüştür
+received_all=Hepsini seç
+received_invert=Zıt seçim
+
+listen_efile=Geçersiz mesaj dosya adı!
+listen_epath=Sesli mesaj artık mevcut değil
+
+delete_efile=Geçersiz mesaj dosya adı!
+
+messages_title=Karşılama Mesajları
+messages_desc=Bu sayfa, arayan kişi sesli posta sunucunuza bağlandığında çalınacak olan tebrik mesajlarını listeler. Daha fazlasına sahipseniz, rastgele seçilen tek bir mesaj kullanılır.
+messages_file=Dosya adı
+messages_none=Karşılama mesajı yok.
+messages_updesc=Bu form, modeminiz tarafından kullanılmak üzere seçilen biçime dönüştürülecek ek bir karşılama mesajı WAV dosyası yüklemenizi sağlar. Yüklenen WAV'ın örnekleme hızı, seçilen biçimdeki gibi alınan mesajların örnekleme hızı ile aynı olmalıdır.
+messages_upload=Mesaj yükle
+messages_fmt=e dönüşmek
+
+pvfdesc=$1, $2 bit
+
+upload_err=Mesaj eklenemedi
+upload_emessage=Hiçbir WAV dosyası seçilmedi
+upload_ewav=WAV dosyası dönüştürülemedi : $1 
+upload_epvf=RMD dosyası oluşturulamadı : $1 
+upload_esame=$1 ileti dosyası zaten var
+
+log_apply=Uygulamalı yapılandırma
+log_upload=Yüklenen karşılama mesajı $1 
+log_move=Dönüştürülen $1 alınan mesaj
+log_delete0=$1 alınan mesaj silindi
+log_delete1=$1 tebrik mesajı silindi
+log_options=Sesli mesaj seçeneklerini değiştirme
+log_vgetty_create=$1 seri bağlantı noktası eklendi
+log_vgetty_modify=Değiştirilmiş seri bağlantı noktası $1 
+log_vgetty_delete=Seri bağlantı noktası $1 silindi
+
+email_subject=Sesli mesaj
+email_body=$2 oranında $2 sesli mesaj alındı.

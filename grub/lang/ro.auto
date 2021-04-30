@@ -1,0 +1,75 @@
+index_title=Încărcător GRUB
+index_add=Adăugați o nouă opțiune de pornire.
+index_global=Editează opțiuni globale
+index_globalmsg=Editați opțiunile globale de pornire care se aplică tuturor opțiunilor de meniu de pornire și alegeți dispozitivul pe care este instalat GRUB.
+index_install=Instalați GRUB
+index_installmsg=Instalați încărcătorul de încărcare GRUB pe $1 pentru a afișa opțiunile de mai sus la momentul de pornire. Acest lucru va înlocui orice încărcător de boot existent, cum ar fi LILO, și poate face ca sistemul să nu poată fi pornit!
+index_none=Nu au fost definite opțiuni de pornire. Asigurați-vă că adăugați cel puțin una înainte de a instala grub.
+index_efile=Fișierul de meniu GRUB $1 nu a fost găsit în sistemul dvs. Poate GRUB nu este instalat, sau configurația modulului <a href='$2'></a> este incorectă.
+index_epath=Sistemul executabil GRUB $1 nu a fost găsit în sistemul dvs. Poate GRUB nu este instalat, sau configurația modulului <a href='$2'></a> este incorectă.
+index_return=lista de opțiuni
+
+title_add=Adăugați opțiunea de pornire
+title_edit=Editează opțiunea de pornire
+title_header=Detalii despre opțiunea meniu de pornire
+title_title=Titlul opțiunii
+title_root=Boot boot partition
+title_noverify=Nu montați și nu verificați partiția
+title_other=Alt fișier dispozitiv
+title_sel=Selectat
+title_boot=Sistem de operare pentru a porni
+title_kernel=Nucleu
+title_kfile=Calea către sâmbure
+title_args=Opțiuni ale nucleului
+title_initrd=Fișier inițial ramdisk
+title_modules=Module suplimentare
+title_chain=Alt sistem de operare
+title_chain_def=Din primul sector al partiției
+title_chain_file=Din fișierul chainloader
+title_makeactive=Faceți partiția rădăcină activă?
+title_none1=Nici unul
+title_none2=(intrare în meniu care nu se pornește)
+title_err=Nu a reușit să salveze opțiunea de pornire
+title_etitle=Lipsește titlul opțiunii
+title_eroot=Lipsește partiția rădăcină
+title_ekernel=Calea nucleului lipsă sau nevalidă
+title_echain=Fișierul de încărcare a lanțului lipsă sau nevalid
+title_edev=Dispozitiv de partajare rădăcină neacceptat $1 
+title_einitrd=Lipsesc numele de fișier ramdisk inițial
+title_lock=Parola blocat?
+
+global_title=Opțiuni globale
+global_header=Opțiuni globale de meniu de pornire
+global_default=Opțiune implicită de pornire
+global_fallback=Opțiune de încărcare Fallback
+global_first=Mai întâi pe listă
+global_timeout=Timp înainte de încărcare implicită
+global_forever=Așteptați pentru totdeauna
+global_secs=secunde
+global_install=Instalați GRUB pe disc/partiție
+global_sel=Selectat
+global_other=Alte
+global_password=Parola de pornire
+global_none=Nici unul
+global_password_file=Utilizați fișierul de meniu dacă introduceți parola:
+global_err=Nu a reușit să salvați opțiunile globale
+global_etimeout=Pierderea sau expirarea nevalabilă
+global_edev=Discul de instalare/partiția neacceptată $1 
+global_eother=Discul/partiția lipsă sau nevalidă
+global_epassword=Parola de pornire lipsă sau nevalidă
+global_epasswordfile=Lipsește numele fișierului din meniul alternativ
+
+install_title=Instalați GRUB
+install_err=Instalarea GRUB nu a reușit
+install_efind=Nu s-a putut găsi fișierul de meniu
+install_desc=Instalarea GRUB pe $1 cu comenzile $2 și $3 ..
+install_ok=.. instalare completă.
+install_failed=.. instalarea nu a reușit!
+
+log_create_title=Opțiunea de pornire creată $1 
+log_delete_title=Opțiunea de pornire ștersă $1 
+log_modify_title=Opțiunea de pornire modificată $1 
+log_up_title=S-a mutat opțiunea de pornire $1 
+log_down_title=Opțiunea de bootare $1 a fost redusă
+log_global=Opțiuni globale schimbate
+log_install=Instalat GRUB

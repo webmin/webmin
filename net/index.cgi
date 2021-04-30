@@ -3,9 +3,18 @@
 # Display a menu of various network screens
 
 require './net-lib.pl';
-&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
-	&help_search_link("ifconfig hosts resolve.conf nsswitch.conf", "man"));
 
+# Show friendly name for network config file format
+($mode, $ver) = split(/\//, $net_mode);
+$mdesc = $text{'index_mode_'.$mode};
+if (!$mdesc && $mode =~ /^(.*)-linux$/) {
+	$mdesc = ucfirst($1)." Linux";
+	}
+$mdesc ||= $mode;
+$desc = &text('index_mode', $mdesc);
+
+&ui_print_header($desc, $text{'index_title'}, "", undef, 1, 1, 0,
+	&help_search_link("ifconfig hosts resolve.conf nsswitch.conf", "man"));
 $zone = &running_in_zone() || &running_in_vserver();
 foreach $i ('ifcs', 'routes', 'dns', 'hosts',
 	    ($config{'ipnodes_file'} ? ('ipnodes') : ( ))) {

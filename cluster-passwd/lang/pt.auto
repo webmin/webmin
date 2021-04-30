@@ -1,0 +1,8 @@
+index_title=Senhas de alteração de cluster
+index_noservers=Nenhum servidor para gerenciar usuários foi definido no módulo <a href=$1>Usuários e grupos de cluster</a>.
+index_hosts=Todas as alterações de senha feitas usando este módulo serão feitas em todos os $1 hosts gerenciados pelo módulo Usuários e Grupos de Cluster.
+
+passwd_err=Falha ao alterar a senha
+passwd_title=Alteração da senha
+passwd_on=Alterando a senha em $1 ..
+passwd_euser=Usuário não existe!

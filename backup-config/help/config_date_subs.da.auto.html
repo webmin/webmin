@@ -1,0 +1,126 @@
+<header> Gør substituering af backup-destinationer straks? </header> Hvis denne indstilling er indstillet til <b>Ja</b> , kan koder som%d,%m,%Y og%u bruges i backup-destinationsfilnavnet. Disse erstattes med henholdsvis dag, måned år og ugedag, når sikkerhedskopien udføres. Dette er nyttigt, hvis du vil gemme en anden sikkerhedskopi hver dag, så du kan rulle et system tilbage til en tidligere dato. <p> Nogle af de andre koder, der kan bruges, er: <br><pre> <font size=-1>
+ %a Det forkortede ugedagsnavn i henhold til nuværende
+        leje landestandard.
+
+ %A Det fulde ugedagsnavn i henhold til det aktuelle
+        locale.
+
+ %b Det forkortede månedsnavn i henhold til det aktuelle
+        locale.
+
+ %B Navnet på den fulde måned i henhold til det aktuelle
+        locale.
+
+ %c Den foretrukne dato og klokkeslætrepræsentation for
+        nuværende landestandard.
+
+ %C Århundrede nummer (år / 100) som et 2-cifret heltal.
+
+ %d Månedens dag som decimaltal (område 01
+        til 31).
+
+ %e Ligesom%d, månedsdagen som decimaltal,
+        men en førende nul erstattes af et mellemrum.
+
+ %E Modifier: Brug alternativt format, se nedenfor.
+
+ %G ISO 8601-året med århundrede som decimaltal.
+        Det 4-cifrede år svarende til ISO-ugenumret
+        ber (se%V). Dette har samme format og værdi
+        som%y, bortset fra at hvis ISO ugenummeret hører til
+        til det foregående eller næste år bruges det år
+        i stedet.
+
+ %g Ligesom%G, men uden århundrede, dvs. med et 2-cifret
+        år (00-99).
+
+ %h svarer til%b.
+
+ %H Timen som decimaltal ved hjælp af et 24-timers ur
+        (område 00 til 23).
+
+ %I Timen som et decimaltal ved hjælp af et 12-timers ur
+        (område 01 til 12).
+
+ %j Årets dag som decimaltal (område 001
+        til 366).
+
+ %k Timen (24-timers ur) som decimaltal (rækkevidde
+        0 til 23); Enkeltcifre forud for et tomt.
+        (Se også%H.)
+
+ %l Timen (12-timers ur) som decimaltal (interval
+        1 til 12); Enkeltcifre forud for et tomt.
+        (Se også%I.)
+
+ %m Måneden som decimaltal (område 01 til 12).
+
+ %M minutet som et decimaltal (område 00 til 59).
+
+ %n En newline-karakter.
+
+ %O Modifier: Brug alternativt format, se nedenfor.
+
+ %p Enten `AM &#39;eller` PM&#39; i henhold til det givne tidspunkt
+        værdi eller de tilsvarende strenge for den aktuelle
+        locale. Middag behandles som `pm’ og midnat som
+        `am&#39;.
+
+ %P Ligesom%p men med små bogstaver: `am &#39;eller` pm&#39; eller en korrekt
+        spondende streng for det aktuelle sted.
+
+ %r Tiden i notering am eller pm. I POSIX
+        landestandarden svarer til `%I:%M:%S%p &#39;.
+
+ %R Tiden i 24-timers notation (%H:%M). For en
+        version inklusive sekunderne, se%T nedenfor.
+
+ %s Antallet af sekunder siden epoken, dvs. siden
+        1970-01-01 00:00:00 UTC.
+
+ %S Det andet som et decimaltal (område 00 til 61).
+
+ %t Et fanetegn.
+
+ %T Tiden i 24-timers notation (%H:%M:%S).
+
+ %u Ugedag som decimal, område 1 til 7,
+        Mandag er 1. Se også%w.
+
+ %U Ugens nummer på det aktuelle år som decimal
+        nummer, område 00 til 53, startende med det første
+        Søndag som den første dag i uge 01. Se også%V og
+        %W.
+
+ %V ISO 8601: 1988-ugens nummer på det aktuelle år
+        som et decimaltal, område 01 til 53, hvor uge 1
+        er den første uge, der har mindst 4 dage i
+        indeværende år og med mandag som den første dag i
+        ugen. Se også%U og%W.
+
+ %w Ugedag som decimal, område 0 til 6,
+        Søndag er 0. Se også%u.
+
+ %W Ugens nummer på det aktuelle år som decimal
+        nummer, område 00 til 53, startende med det første
+        Mandag som den første dag i uge 01.
+
+ %x Den foretrukne datorepræsentation for den aktuelle
+        landestand uden tid.
+
+ %X Den foretrukne tidsrepræsentation for den aktuelle
+        landestandard uden datoen.
+
+ %y Året som decimaltal uden århundrede
+        (område 00 til 99).
+
+ %Y Året som decimaltal inklusive århundrede.
+
+ %z Tidszonen som timeforskyvning fra GMT. Påkrævet til
+        udsende RFC822-konforme datoer (ved hjælp af &quot;%a,%d%b%Y
+        %H:%M:%S%z &quot;).
+
+ %Z Tidszonen eller navnet eller forkortelsen.
+
+ %%En bogstavelig &#39;%&#39; karakter.
+</font> </pre><footer>

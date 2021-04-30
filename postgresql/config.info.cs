@@ -1,0 +1,15 @@
+line1=Nastavení konfigurace,11
+login=Přihlašovací jméno administrátora,0
+pass=Heslo administrátora,12
+perpage=Počet řádků zobrazujících se na jedné straně,0
+nodbi=Použít DBI pro připojení je-li k dispozici?,1,0-Yes,1-No
+line2=Konfigurace systému,11
+psql=Cesta k příkazu psql,0
+plib=Cesta ke sdíleným knihovnám PostgreSQL,3,Není potřeba
+basedb=Počáteční PostgreSQL databáze,0
+start_cmd=Přikaz ke spuštění PostgreSQL,0
+stop_cmd=Příkaz k ukončení PostgreSQL,3,Zabít proces
+setup_cmd=Příkaz k inicializaci PostgreSQL,3,Nic
+pid_file=Cesta k PID souboru postmastera,0
+hba_conf=Cesta ke konfiguračnímu souboru s přístupy hostů,0
+host=PostgreSQL host ke kterému se připojuje,3,localhost

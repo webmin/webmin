@@ -116,6 +116,8 @@ desc_tcp-option=packet uses TCP option $1
 desc_tcp-option!=packet does not use TCP option $1
 desc_icmp-type=ICMP type is $1
 desc_icmp-type!=ICMP type is not $1
+desc_icmpv6-type=ICMP type is $1
+desc_icmpv6-type!=ICMP type is not $1
 desc_mac-source=ethernet address is $1
 desc_mac-source!=ethernet address is not $1
 desc_limit=rate is less than $1
@@ -155,6 +157,7 @@ redhat_eoutput=An error occured getting IPtables status from the command $1. Thi
 gentoo_escript=The Gentoo IPtables startup script $1 was not found on your system.
 
 eiptables=Unknown IPtables save file line : $1
+eip6tables=Unknown IP6tables save file line : $1
 
 edit_title1=Add Rule
 edit_title2=Edit Rule
@@ -373,6 +376,3 @@ rename_adjust=Modify other rules that jump to this chain?
 rename_none=None
 rename_ecannot=You are not allowed to rename chains
 __norefs=1
-desc_icmpv6-type=ICMP type is $1
-desc_icmpv6-type!=ICMP type is not $1
-eip6tables=Unknown ip6tables save file line : $1

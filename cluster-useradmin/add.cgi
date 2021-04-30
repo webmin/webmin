@@ -24,6 +24,7 @@ else {
 	}
 
 &ui_print_header(undef, $text{'add_title'}, "");
+
 print "<b>$msg</b><p>\n";
 
 # Setup error handler for down hosts

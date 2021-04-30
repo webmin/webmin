@@ -1,0 +1,17 @@
+index_title=Konfigurace Kerberos5
+index_econf=Ve vašem systému nebyl nalezen konfigurační soubor Kerberos5 $1. Možná není nainstalována nebo je <a href='$2'>konfigurace modulu</a> nesprávná.
+
+logging=Záznam souborů
+default_log=Výchozí soubor protokolu
+kdc_log=Soubor protokolu KDC
+admin_log=Soubor protokolu správce serveru
+
+libdefaults=Výchozí konfigurace
+dns_kdc=K vyhledávání KDC použijte DNS
+default_realm=Oblast
+domain=Doménové jméno
+default_kdc=KDC
+default_admin=Admin server
+default_domain=Výchozí název domény
+
+save=Aktualizujte konfiguraci

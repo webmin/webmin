@@ -1,15 +1,18 @@
-__norefs=1
-acl_user=Utf&#248;r kommandoer som brukeren
-acl_user_def=Gjeldende Webmin bruker
+index_title=Kommandoskall
+index_ok=Utfør kommando:
+index_history=Kommando historikk
 index_clear=Nullstill historikk
 index_clearcmds=Nullstill kommandoer
-index_desc=Skriv inn en skallkommando som skal utf&#248;res i tekstfeltet nedenfor. Du kan bruke <tt>cd</tt> kommandoen til &#229; endre aktiv katalog for etterf&#248;lgende kommandoer.
+index_desc=Skriv inn en skallkommando som skal utføres i tekstfeltet nedenfor. Du kan bruke <tt>cd</tt> kommandoen til å endre aktiv katalog for etterfølgende kommandoer.
+index_pok=Utfør forrige kommando
 index_edit=Rediger forrige
-index_history=Kommando historikk
-index_ok=Utf&#248;r kommando:
-index_pok=Utf&#248;r forrige kommando
-index_timedout=Kommando ble terminert etter at den hadde kj&#248;rt i $1 sekunder.
-index_title=Kommandoskall
-index_trunced=Total output p&#229; $2 ble trunkert p&#229; $1.
+index_trunced=Total output på $2 ble trunkert på $1.
+index_timedout=Kommando ble terminert etter at den hadde kjørt i $1 sekunder.
+
+acl_user=Utfør kommandoer som brukeren
+acl_user_def=Gjeldende Webmin bruker
+acl_shellenv=Brukt valgt brukers miljø?
+acl_chroot=Chroot til katalog
+
+log_run=Kjørte kommando $1
 log_clear=Nullstilte kommandohistorikk
-log_run=Kj&#248;rte kommando $1

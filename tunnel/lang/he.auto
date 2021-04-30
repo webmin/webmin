@@ -1,0 +1,21 @@
+index_elink=טרם הוגדרה כתובת URL למנהרה.
+index_url=הזן כתובת אתר לפתיחה:
+index_open=פתוח
+
+link_eurl=כתובת אתר לא חוקית של מנהרה : $1 
+link_elogin=כניסה ל- $1 כ- $2 נכשלה.
+link_eautologin=כניסה או סיסמה לא חוקיים עבור $1. <a href='$2'>לחץ כאן</a> כדי להתחבר.
+link_enouser=שם משתמש וסיסמא נדרשים בכניסה ל- $1, אך אף אחד מהם לא הוגדר.
+link_ebadurl=אינך רשאי לגשת לכתובת האתר $1 
+link_mconfig=השתמש בדף <a href='$1'>תצורת המודול</a> כדי לשנות את הכניסה.
+
+login_title=כניסה לאתר
+login_desc=עליך לספק שם משתמש וסיסמא כדי להתחבר ל- $1.
+login_header=אימות אתר
+login_user=שם משתמש
+login_pass=סיסמה
+login_login=התחברות
+login_clear=ברור
+
+seturl_err=פתיחת כתובת האתר נכשלה
+seturl_eurl=הוזנה כתובת אתר לא חוקית

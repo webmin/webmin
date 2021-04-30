@@ -75,10 +75,10 @@ foreach $t (&all_themes(\@hosts)) {
 $themesel .= "</select>\n";
 
 # Show button for adding server
-print "<table width=100%><tr>\n";
+print "<table data-post-icon-row-submit width=100%><tr>\n";
 @addservers = grep { !$gothost{$_->{'id'}} } @servers;
 if (@addservers) {
-	print "<td><form action=add.cgi><td>\n";
+	print "<td><form action=add.cgi>\n";
 	print "<input type=submit name=add value='$text{'index_add'}'>\n";
 	print "<select name=server>\n";
 	foreach $s (@addservers) {

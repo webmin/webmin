@@ -1,0 +1,205 @@
+index_title=Loopprosesse
+index_display=vertoning
+index_tree=PID
+index_user=gebruiker
+index_size=Geheue
+index_cpu=CPU
+index_search=Soek
+index_zone=zone
+index_run=Hardloop ..
+index_return=proseslys
+index_mem2=<b>Ware geheue:</b> $1 totaal / $2 gratis
+index_mem3=<b>Ware geheue:</b> $1 totaal / $2 gratis / $3 in die geheue
+index_swap2=<b>Ruilruimte:</b> $1 totaal / $2 gratis
+index_burst=<b>Burstable geheue:</b> $1 totaal
+index_loadname=CPU-las gemiddeldes:
+index_loadnums=$1 (1 min), $2 (5 min), $3 (15 min)
+index_cpuname=SVE-tipe:
+index_inzone=In sone $1 
+
+pid=ID
+owner=Eienaar
+command=Bevel
+cpu=CPU
+size=grootte
+parent=Ouerproses
+runtime=Looptyd
+nice=Lekker vlak
+stime=begin
+sclass=IO-skeduleringsklas
+sprio=IO prioriteit
+
+search_user=Besit deur
+search_match=bypassende
+search_cpupc=Gebruik meer as $1% SVE
+search_cpupc2=Gebruik meer CPU as
+search_fs=Die gebruik van lêerstelsel
+search_files=Gebruik lêer
+search_submit=Soek
+search_none=Geen ooreenstemmende prosesse gevind nie.
+search_kill=Stuur sein
+search_ignore=Ignoreer soekprosesse in die resultaat
+search_return=soekvorm
+search_sigterm=Beëindig prosesse
+search_sigkill=Doodprosesse
+search_port=Met behulp van hawe
+search_protocol=protokol
+search_ip=Gebruik IP-adres
+
+run_command=Opdrag om te hardloop
+run_submit=Run
+run_mode=Begin modus
+run_bg=Hardloop in die agtergrond
+run_fg=Wag totdat dit voltooi is
+run_input=Invoer na opdrag
+run_title=Opdraguitset
+run_output=Uitset vanaf $1.
+run_none=Geen uitset gegenereer nie
+run_ecannot=U mag nie opdragte uitvoer nie
+run_as=Begin as gebruiker
+run_euser=Gebruikernaam ontbreek of ongeldig
+run_euser2=U is nie toegelaat om opdragte uit te voer as die geselekteerde gebruiker nie
+
+edit_title=Verwerk inligting
+edit_gone=Hierdie proses loop nie meer nie
+edit_sub=subprosesse
+edit_subid=ID
+edit_subcmd=Sub-proses opdrag
+edit_kill=Stuur sein
+edit_change=verandering
+edit_prilow=Lae prioriteit
+edit_prihigh=Hoë prioriteit
+edit_pridef=verstek
+edit_none=Geen
+edit_ecannot=U mag nie prosesse redigeer nie
+edit_sigterm=beëindig
+edit_sigkill=dood
+edit_sigstop=op te skort
+edit_sigcont=CV
+edit_open=Lêers en verbindings
+edit_trace=Spoorproses
+edit_return=prosesbesonderhede
+
+kill_err=Kon nie sein $1 stuur om $2 te verwerk nie
+kill_title=Stuur sein
+kill_sent=gestuur word
+kill_ecannot=U mag nie prosesse doodmaak nie
+
+renice_err=Kon nie $1 herhaal nie
+renice_ecannot=U mag nie prosesse herbenut nie
+
+linux_pri=prioriteit
+linux_tty=TTY
+linux_status=status
+linux_wchan=Wag in
+linux_mem=Geheue
+linux_group=groep
+linux_ruser=Regte gebruiker
+linux_rgroup=Regte groep
+linux_pgid=Verwerk groep-ID
+linux_stime=begin
+
+linuxstat_R=loop
+linuxstat_S=slaap
+linuxstat_D=Diep slaap
+linuxstat_T=gestop
+linuxstat_Z=zombie
+
+linux_real=Ware tyd
+linux_be=Beste poging
+linux_idle=idle
+
+freebsd_ruser=Regte gebruiker
+freebsd_rgroup=Regte groep
+freebsd_tty=TTY
+freebsd_pgid=Proses groep
+freebsd_stime=begin
+freebsd_lim=Geheue limiet
+
+hpux_pri=prioriteit
+hpux_tty=TTY
+hpux_status=status
+hpux_wchan=Wag vir
+hpux_stime=begin
+
+hpuxstat_0=bestaande
+hpuxstat_S=slaap
+hpuxstat_W=wag
+hpuxstat_R=loop
+hpuxstat_I=Intermediêre
+hpuxstat_Z=zombie
+hpuxstat_T=gestop
+hpuxstat_G=groeiende
+
+macos_tty=TTY
+
+sysv_group=groep
+sysv_ruser=Regte gebruiker
+sysv_rgroup=Regte groep
+sysv_pgid=Verwerk groep-ID
+sysv_tty=TTY
+sysv_stime=begin
+sysv_task=Taak-ID
+sysv_zone=Sone naam
+
+log_run=Ran-opdrag "$1"
+log_kill=Gestuur sein $1 om $2 te verwerk
+log_kills=Stuur sein $1 na $2 prosesse
+log_kill_l=Gestuur sein $1 om $2 te verwerk
+log_kills_l=Gestuur sein $1 na prosesse <br> $2 
+log_renice=Prioriteit van proses $2 na $1 verander
+
+acl_manage=Bestuur prosesse as gebruiker
+acl_manage_def=Huidige Webmin-gebruiker
+acl_edit=Kan prosesse doodmaak en herbenoem word?
+acl_run=Kan opdragte uitgevoer word?
+acl_only=Kan u slegs eie prosesse sien?
+acl_who=Kan prosesse vir gebruikers bestuur
+acl_who0=Alle gebruikers
+acl_who1=Huidige Webmin-gebruiker
+acl_who2=Genoteerde gebruikers ..
+
+kill_kill=Dood proses
+kill_term=beëindig
+kill_hup=Begin oor
+kill_stop=stop
+kill_cont=Aanhou
+
+open_title=Maak lêers en verbindings oop
+open_proc=Vir proses $1 (PID $2)
+open_header1=Maak lêers oop
+open_header2=Maak netwerkverbindings oop
+open_type=tipe
+open_proto=Protokol
+open_desc=besonderhede
+open_fd=Lêer beskrywer
+open_listen1=Luister na hawe $1 
+open_listen2=Luister na adres $1 hawe $2 
+open_recv=Ontvang op $1:$2 
+open_conn=Verbind van $1 tot $2 in staat $3 
+open_cwd=Huidige dir
+open_rtd=Root dir
+open_txt=Programkode
+open_mem=Gedeelde biblioteek
+open_dir=Gids
+open_reg=Gereelde lêer
+open_chr=Karakter spesiaal
+open_blk=Blok spesiaal
+open_size=Lêergrootte
+open_inode=inode
+open_file=pad
+
+trace_title=Spoorproses
+trace_start=Begin stelseloproepspoor vir $1.
+trace_doing=Stelseloproepspoor vir $1  :
+trace_done=.. proses beëindig is.
+trace_failed=.. opsporing misluk!
+trace_sorry=Hierdie bladsy benodig Java-ondersteuning in u blaaier. Pas die module-opstelling aan om slegs 'n teksopsporingsteks te gebruik.
+trace_syscalls=Spoorstelseloproepe:
+trace_all=Almal
+trace_sel=Gelys ..
+trace_change=verandering
+
+windows_threads=Draad in proses
+
+syslog_dmesg=Kernboodskappe

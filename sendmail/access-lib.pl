@@ -26,7 +26,7 @@ sub list_access
 if (!scalar(@list_access_cache)) {
 	@list_access_cache = ( );
 	local $lnum = 0;
-	open(ACC, $_[0]);
+	open(ACC, "<".$_[0]);
 	while(<ACC>) {
 		s/\r|\n//g;     # remove newlines
 		if (/^\s*#+\s*(.*)/) {

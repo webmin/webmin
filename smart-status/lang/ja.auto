@@ -1,0 +1,58 @@
+index_title=SMARTドライブステータス
+index_ecmd=SMART制御コマンド $1がシステムで見つからなかったか、<a href='$2'>モジュール構成</a>で正しく設定されていません。このモジュールを使用する前にインストールする必要があります。
+index_ecmd2=コマンド $1はSMART制御コマンドではないようです。このモジュールを使用するには、<a href='$2'>モジュール構成</a>で正しく設定する必要があります。
+index_version=SMARTsuiteバージョン $1
+index_show=ドライブのステータスを表示：
+index_ok=公演
+index_eidescsi=システムにIDE、SCSI、またはSATAドライブが見つかりませんでした。
+index_drive=ドライブ $1のステータス
+index_drivesub=ドライブ $1、ディスク $2のステータス
+index_desc=ロケーション
+index_size=ドライブサイズ
+index_model=作成とモデル化
+index_support=SMARTをサポートしていますか？
+index_enabled=SMARTは有効ですか？
+index_check=ドライブチェックに合格しましたか？
+index_short=ショートセルフテスト
+index_ext=拡張セルフテスト
+index_data=データ収集テスト
+index_errors=ログに記録されたエラー
+index_ecount=$1個のエラーが検出されました
+index_attrs=追加のSMART属性
+index_raw=完全なSMARTステータスレポート
+index_return=モジュールインデックス
+index_family=モデルファミリー
+index_serial=シリアルナンバー
+index_capacity=容量
+index_norm=正規化：
+
+monitor_type=SMARTドライブチェック
+monitor_type2=SSDの摩耗
+monitor_drive=チェックするドライブ
+monitor_errors=エラーログも確認しますか？
+monitor_errorsinc=はい。ただし、エラーカウントが増加した場合にのみ警告します
+monitor_other=その他 ..
+monitor_edrive=チェックするドライブがないか無効です
+monitor_nosuch=そのようなドライブはありません
+monitor_nosmart=SMARTサポートなし
+monitor_errorsfound=報告された $1エラー
+monitor_errorsinced=エラーが $2から $1に増加しました
+monitor_wearlevel=摩耗レベルが下がった場合は不合格
+monitor_ewearlevel=摩耗レベルの割合が無効です
+monitor_nowearout=ドライブがSSD摩耗インジケータを報告しない
+monitor_wornout=摩耗レベルが $1に低下しました
+
+short_title=ショートセルフテスト
+short_doing=$1の短いセルフテストを開始しています ..
+short_failed=..失敗しました！
+short_ok=..テストは正常に開始されました。結果については、モジュールのメインページのドライブステータスを参照してください。
+
+ext_title=拡張セルフテスト
+ext_doing=$1の拡張セルフテストを開始しています ..
+ext_failed=..失敗しました！
+ext_ok=..テストは正常に開始されました。結果については、モジュールのメインページのドライブステータスを参照してください。
+
+data_title=データ収集テスト
+data_doing=$1でオフラインデータ収集を開始しています ..
+data_failed=..失敗しました！
+data_ok=..収集は正常に開始されました。結果については、モジュールのメインページのドライブステータスを参照してください。

@@ -6,6 +6,7 @@ $no_acl_check++;
 delete($ENV{'FOREIGN_MODULE_NAME'});
 delete($ENV{'SCRIPT_NAME'});
 delete($ENV{'SERVER_ROOT'});
+delete($ENV{'LANG'});
 require './status-lib.pl';
 
 # Check if the monitor should be run now
@@ -166,6 +167,11 @@ foreach $serv (@services) {
 			# Service is down now
 			$suffix = "isdown";
 			$out = &run_on_command($serv, $serv->{'ondown'}, $r);
+			}
+		elsif ($warn == 3 && $up == 1) {
+			# Service is up now
+			$suffix = "isup";
+			$out = &run_on_command($serv, $serv->{'onup'}, $r);
 			}
 
 		# If something happened, notify people

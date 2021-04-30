@@ -1,0 +1,13 @@
+mailq_refresh=Atualizar fila de correio
+mailq_refreshdesc=Recarregue esta página para mostrar o estado atual da fila de mensagens.
+
+view_afile=Nome do anexo
+view_atype=Tipo de anexo
+view_asize=Tamanho do arquivo
+
+file_ealias=Formato inválido para a linha do arquivo de alias : $1 
+file_etab=Formato inválido para a linha do arquivo de mapa : $1 
+
+ports_family=Protocolo
+ports_inet=IPv4
+ports_inet6=IPv6

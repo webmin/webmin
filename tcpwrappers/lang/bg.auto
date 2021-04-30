@@ -1,0 +1,33 @@
+index_title=TCP обвивки
+index_return=индекс
+index_allowtitle=Разрешени домакини
+index_denytitle=Отказани домакини
+index_norule=Все още не са дефинирани правила в <tt>$1</tt>.
+index_nofile=Файл „$ $1“ не съществува - проверете вашата <a href="/config.cgi?tcpwrappers">конфигурация на модул</a>
+index_add=Добавете ново правило.
+index_service=демон
+index_hosts=Силите
+index_cmd=команда
+index_delete=Изтрий избраното
+index_none=нито един
+
+edit_title1allow=Създайте Позволете правило
+edit_title2allow=Редактиране на разрешение за правило
+edit_title1deny=Създайте правило за отказ
+edit_title2deny=Редактиране на правило за отказ
+edit_eid=Това правило не бе намерено
+edit_header=Опции за правило
+edit_service=Услуги
+edit_except=С изключение на услугите
+edit_hosts=Отдалечени хостове
+edit_hostsexcept=С изключение на домакините
+edit_cmd=Shell команди
+edit_efound=Daemon '$ $1' не беше намерен в конфигурация xinetd.
+
+save_errtitle=Грешка при правило за запазване
+save_ehost=Въвеждането на хост съдържа лоши символи
+save_ecmd=Командното въвеждане съдържа лоши символи
+save_eservice=Имената на демон демон съдържат лоши символи
+
+del_errtitle=Грешка при изтриване на правила
+del_enone=Няма правила, маркирани за изтриване

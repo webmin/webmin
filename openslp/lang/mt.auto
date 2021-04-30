@@ -1,0 +1,50 @@
+index_title=Konfigurazzjoni OpenSLP
+index_return=Konfigurazzjoni OpenSLP
+index_eslpd=Id-daemon OpenSLP $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
+index_econf=Il-fajl tal-konfigurazzjoni OpenSLP $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
+index_version=Verżjoni OpenSLP $1 
+
+slp_apply=Applika l-Bidliet
+slp_stop=Waqqaf OpenSLP
+
+snda_title=Skop statiku u DA
+snda_useScopes=Lista statika tal-Ambiti
+snda_DAAddresses=Lista statika tal-Aġenti tad-Direttorju (DA)
+
+netcfg_title=Konfigurazzjoni tan-Netwerk
+netcfg_isBroadcastOnly=Ix-xandiriet għandhom jintużaw minflok il-multicast
+netcfg_passiveDADetection=Uża sejbien tad-DA passiv
+netcfg_activeDADetection=Uża sejbien attiv tad-DA (restrizzjoni għall-Indirizzi DHCP jew DA biss)
+netcfg_DAActiveDiscoveryInterval=Skoperta Attiva f'sekondi (0 jiskonverti Discovery Attiv)
+netcfg_multicastTTL=Multicast TTL (0-255)
+netcfg_DADiscoveryMaximumWait=Ħin massimu ta 'stennija għal talbiet ta' skoperta ta 'DA (f'millisekondi)
+netcfg_DADiscoveryTimeouts=Ħinijiet ta 'stennija ta' sejba ta 'DA (suċċessi ta' millisekondi)
+netcfg_HintsFile=Path għall-fajl tal-ideat OpenSLP
+netcfg_multicastMaximumWait=Stennija massima fuq talbiet multikast (f'minisekondi)
+netcfg_multicastTimeouts=Ħinijiet ta 'stennija multicast suċċessi (f'milisekondi)
+netcfg_unicastMaximumWait=Ammont massimu ta 'żmien bejn it-talbiet ta' unicast (f'milisekondi)
+netcfg_randomWaitBound=Valur massimu għall-parametri kollha ta 'stennija bl-addoċċ (f'milisekondi)
+netcfg_MTU=Daqs tal-pakkett MTU (f'bytes)
+netcfg_interfaces=Indirizzi IP ta 'interfejs li d-DA/SA għandhom jisimgħu
+
+dacfg_title=Konfigurazzjoni DA
+dacfg_isDA=Jaħdem biss bħala DA (aqra l-gwida tal-utenti qabel ma jbiddel dan)
+
+log_title=Traċċar u qtugħ
+log_traceDATraffic=Stampa messaġġi tat-traffiku DA
+log_traceMsg=Stampa messaġġi dettaljati SLP
+log_traceDrop=Stampa SLP waqgħet informazzjoni dwar messaġġ
+log_traceReg=Stampa informazzjoni dwar ir-reġistrazzjoni u reġistrazzjoni ta 'DA u SA
+
+error_open=Żball fil-ftuħ tal-fajl
+error_flock_on=Żball fil-ħolqien tal-illokkjar tal-fajl
+error_flock_off=Żball li teqred il-illokkjar tal-fajl
+error_hup=Żball meta terġa 'tibda l-OpenSLP ma' PID
+
+index_start=Ibda OpenSLP
+index_startmsg=Ikklikkja din il-buttuna biex tibda d-daemon OpenSLP fis-sistema tiegħek.
+index_stop=Waqqaf OpenSLP
+index_stopmsg=Ikklikkja din il-buttuna biex twaqqaf id-daemon OpenSLP fis-sistema tiegħek.
+
+stop_err=Ma rnexxielux iwaqqaf OpenSLP
+start_err=Ma rnexxielux jibda l-OpenSLP

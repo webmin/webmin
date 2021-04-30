@@ -1,0 +1,3 @@
+desc_zh=网络服务
+longdesc_zh=编辑Xinetd处理的服务器，它是inetd的替代品。
+name_zh=Xinetd

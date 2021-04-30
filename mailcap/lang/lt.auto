@@ -1,0 +1,46 @@
+index_title=MIME tipo programos
+index_none=Dar nebuvo apibrėžtos MIME tipo tvarkyklės programos.
+index_add=Pridėkite naują MIME tipo programą.
+index_type=MIME tipas
+index_program=Prižiūrėtojo programa
+index_cmt=apibūdinimas
+index_delete=Išštrinti pasirinktus
+index_disable=Išjungti pasirinktą
+index_enable=Įgalinti pasirinktą
+index_enabled=Įjungtas?
+index_return=programų sąrašas
+
+edit_title1=Sukurkite MIME tipo programą
+edit_title2=Redaguoti MIME tipo programą
+edit_header=MIME tipo prižiūrėtojo programos informacija
+edit_type=MIME tipas
+edit_enabled=Įjungtas?
+edit_program=Prižiūrėtojo programa
+edit_cmt=apibūdinimas
+edit_egone=Programos nebeegzistuoja!
+edit_test=Testo komanda
+edit_none=Nėra (visada naudokite programą)
+edit_term=Ekrano išvestis terminale?
+edit_copious=Gamina daug produkcijos?
+edit_desc=MIME tipo aprašymas
+
+save_err=Nepavyko išsaugoti MIME tipo programos
+save_etype=Trūksta arba netinkamas MIME tipas
+save_eprogram=Trūksta prižiūrėtojo programos
+save_eclash=Įvesta MIME tipo įgalinta programa jau egzistuoja
+save_etest=Trūksta arba netinkama testo komanda
+save_edesc=Netinkamas MIME tipo aprašymas
+
+delete_err=Nepavyko ištrinti MIME tipo programų
+disable_err=Nepavyko išjungti MIME tipo programų
+disable_eclash=$1 neleidžiama MIME tipo programa jau egzistuoja
+enable_err=Nepavyko įgalinti MIME tipo programų
+enable_eclash=Įgalinta MIME tipo programa $1 jau egzistuoja
+delete_enone=Nepasirinkta
+
+log_delete_mailcap=Ištrinkite $1 MIME tipo programą
+log_create_mailcap=Sukurta MIME tipo programa $1 
+log_modify_mailcap=Modifikuota MIME tipo programa $1 
+log_delete_mailcaps=Ištrintos $1 MIME tipo programos
+log_disable_mailcaps=Išjungtos $1 MIME tipo programos
+log_enable_mailcaps=Įgalintos $1 MIME tipo programos

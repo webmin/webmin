@@ -1,0 +1,20 @@
+edit_mins=Minute
+edit_hours=ore
+edit_days=zi
+edit_months=Luni
+edit_weekdays=Zilele saptamanii
+edit_all=Toate
+edit_selected=Selectat ..
+edit_run=Fugi acum
+edit_clone=Clone Job
+edit_return=cron job
+edit_special1=Program simplu ..
+edit_special0=Orele și datele selectate mai jos ..
+edit_special_hourly=ore
+edit_special_daily=Zilnic (la miezul nopții)
+edit_special_weekly=Săptămânal (duminică)
+edit_special_monthly=Lunar (pe 1)
+edit_special_yearly=Anual (la 1 ianuarie)
+
+log_success=A rulat cu succes <tt>$2</tt> în <tt>$1</tt>
+log_failure=Nu a putut fi executat <tt>$2</tt> în <tt>$1</tt> : $3 

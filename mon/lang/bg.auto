@@ -1,0 +1,200 @@
+index_title=MON Service Monitor
+index_return=MON индекс
+index_edir=MON директория $1 не съществува. Може би MON не е инсталиран или вашата <a href='$2'>конфигурация на модул</a> е неправилна.
+mon_global_title=Конфигурация на глобални променливи
+mon_conf_title=Основна конфигурация
+mon_status_title=Оперативно състояние
+hostgroups_title=Конфигурация на MON-хост групи
+services_title=Групи за наблюдение - Определения за услуги
+
+head_hostgroups=Хост групи и услуги
+head_groups=Име на домакинската група
+head_members=Членове на домакинската група
+head_services=Услуги за хостгрупи за гледане
+head_service=Услуга за гледане
+head_param=Сервизни параметри
+head_watch=Гледате ли групата?
+head_monauth=Предоставяне на удостоверяване за MONCMD
+head_usr=Потребител
+head_pass=парола
+head_mand=(Параметрите в „ЧЕРВЕН ЦВЯТ“ са задължителни)
+
+err_nomon=пакет 'mon' не е инсталиран в системата
+err_nomonconf=Конфигурационният файл MON $1 не беше намерен във вашата система. Може би MON не е инсталиран или вашата <a href='$2'>конфигурация на модул</a> е неправилна.
+err_nowatch=Няма избрани групи за гледане. Изберете поне една група за наблюдение, за да продължите.
+err_noserv=Няма избрани услуги за часовата група
+err_nomemb=Няма избрани домакини/членове за групата за гледане
+err_monrun=MON не работи на хостмашина. Моля, започнете MON.
+stop_err=Спирането на MON не бе успешно
+stop_epid=Вече не тичам
+start_err=Неуспешно стартиране на MON
+restart_err=Рестартирането на MON не бе успешно
+restart_epid=Неуспешно получаване на PID
+
+other=Други (отделено пространство)
+next=Следващия
+mon_stat=MON статус
+mon_off=MON услугите не са започнати
+mon_start=Стартирайте MON Services
+mon_stop=Спрете MON Services
+mon_restart=Рестартирайте MON Services
+mon_startdesc=Кликнете върху този бутон, за да стартирате MON сървъра. Докато не се стартира, няма да се извършва конфигуриран мониторинг.
+mon_stopdesc=Кликнете върху този бутон, за да спрете MON сървъра. При спиране конфигурираният мониторинг ще спре.
+mon_restartdesc=Щракнете върху този бутон, за да приложите текущата конфигурация на MON, като рестартирате процеса на сървъра.
+line=(по един на всеки ред)
+save_apply=Запазете и приложите
+watch=Watchgroup
+members=Потребители
+def_perargs=wd {Sat-Sun}
+
+def_desc=описание
+def_inter=интервал
+def_mon=монитор
+def_dep=dpend
+def_per=месечен цикъл
+def_alert=тревога
+def_alertevr=alertevery
+def_alertaft=alertafter
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=trapduration
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=Хост групи
+groups_group=Име на групата
+groups_members=Член домакини
+
+watches_title=Гледайте списъци
+watches_group=Гледаща група
+watches_services=Услуги, които се наблюдават
+watches_sadd=Добавяне на услуга ..
+watches_add=Добавяне на списък за гледане за група :
+watches_return=списъци за наблюдение
+watches_none=Все още не са дефинирани списъци за гледане.
+
+global_title=Глобални опции
+global_header=Опции за глобална конфигурация на MON
+global_maxprocs=Максимални MON процеси
+global_histlength=Дължина на историята на събитията
+global_alertdir=Директория на програми за предупреждение
+global_mondir=Монитор на директорията на програмите
+global_authtype=Тип удостоверяване
+global_authtype_=По подразбиране
+global_authtype_getpwnam=Системни разговори
+global_authtype_userfile=Файл потребители на MON
+global_authtype_shadow=Файл с сянка
+global_userfile=Файл на потребител на MON
+global_emaxprocs=Липсващ или невалиден брой MON процеси
+global_ehistlength=Липсва или невалидна продължителност на историята на събитията
+global_ealertdir=Липсваща или невалидна директория с програми за предупреждение
+global_emondir=Липсваща или невалидна директория на мониторните програми
+global_euserfile=Липсващ потребителски файл на MON
+
+watch_title=Редактиране на списъка за гледане
+watch_header=Детайли за гледане на групата домакини
+watch_group=Домакин група за гледане
+watch_services=Услуги, които се наблюдават
+watch_service=Име на услугата
+watch_monitor=Монитор за използване
+watch_interval=Проверете всеки
+watch_periods=Периоди на мониторинг
+
+service_title=Добавяне на услуга
+service_title2=Редактиране на услугата
+service_header=Детайли за гледане на услугата
+service_name=Име на услугата
+service_interval=Проверете всеки
+service_desc=описание
+service_units_s=секунди
+service_units_m=минути
+service_units_h=часа
+service_units_d=дни
+service_units_w=седмици
+service_monitor=Използване на монитор
+service_mon1=Стандартен монитор
+service_mon0=Друг монитор ..
+service_args=Параметри на монитора
+service_period=Период на наблюдение $1 
+service_days=Дни за проверка
+service_hours=Часове за проверка
+service_all=всичко
+service_pstr=Спецификация на периода
+service_new=Нов период за наблюдение
+service_alerts=Сигнали за период
+service_alert=Тревога
+service_atype=Пусни когато
+service_atype_alert=Обслужването намалява
+service_atype_upalert=Услугите се появяват
+service_atype_startupalert=MON стартира
+service_aargs=Допълнителни параметри
+service_every=Изпращане на сигнал
+service_every_def=Всеки път, когато се пуска монитор
+service_every_time=всеки
+service_num=Максимални сигнали за изпращане
+service_unlimited=неограничен
+service_after=Неуспешни преди предупреждение
+service_immediate=веднага
+service_after_num=След неуспехи $1 
+service_aftertime=В рамките на времевия интервал
+service_newperiod=Добавете нов период
+service_delperiod=Изтрийте този период
+service_err=Неуспешно запазване на услугата
+service_ename=Липсващо или невалидно име на услугата
+service_einterval=Липсващ или невалиден интервал за проверка
+service_eother=Липсващ или невалиден монитор
+service_ehour=Липсващ или невалиден час за период $1 (трябва да е като 9:00 или 17:00)
+service_eperiod=Не са посочени дни или часове за период $1 
+service_eevery=Липсващ или невалиден интервал за предупреждение за обслужване
+service_eafter=Липсващ или невалиден брой повреди преди предупреждение
+service_enum=Липсващи или невалидни максимално изпратени сигнали
+service_epstr=Липсва спецификация на периода
+service_known0=<tt>Време::Период</tt> низ
+service_known1=Определени дни и часове
+service_known2=Определен период
+
+status_title=MON статус
+status_ecgi=Програма CGI за статуса на MON $1 не съществува. Може би не е инсталиран или вашата <a href='$2'>конфигурация на модул</a> е неправилна.
+status_eperl=Програмата CGI за статуса на MON изисква модул $1 perl. <a href='$2'>Кликнете тук</a>, за да го инсталирате директно от CPAN.
+status_esame=Програмата CGI за статуса на MON $1 е зададена на скрипта <tt>mon.cgi</tt> в този модул Webmin, а не програмата CGI, която се предлага с MON. Настройте <a href='$2'>конфигурацията на модула</a>, за да използвате правилния път.
+
+users_title=MON потребители
+users_etype=Списъкът с потребители на MON не може да бъде редактиран, тъй като MON понастоящем не е конфигуриран да го използва за удостоверяване на страницата <a href='$1'>Global Options</a>.
+users_header=Разрешени потребители на MON в $1 
+users_nousers=В $1 не са дефинирани потребители на MON.
+users_add=Създайте нов потребител.
+users_return=Списък на потребителите на MON
+
+user_create=Създайте MON потребител
+user_edit=Редактиране на MON потребител
+user_header=MON потребителски данни
+user_user=Потребител
+user_pass=парола
+user_leave=Оставете непроменена
+user_err=Неуспешно запазване на потребителя
+user_euser=Липсващо или невалидно потребителско име
+user_esame=Потребител със същото име вече съществува
+
+auth_title=Клиентски команди
+auth_desc=Тази страница ви позволява да контролирате кои MON команди могат да се изпълняват от кои потребители, когато използват клиентските програми.
+auth_cmd=Команда MON
+auth_users=Разрешени потребители
+auth_none=Никой
+auth_all=всички
+auth_sel=Само потребители
+auth_err=Неуспешно запазване на клиентските команди
+auth_eusers=Не влизат потребители за команда $1 
+
+periods_title=Определени периоди
+periods_period=Име на периода
+periods_times=Дни и времена
+periods_alldays=Всички дни
+periods_allhours=Всички часове
+periods_err=Неуспешно запазване на определени периоди
+periods_ename='$ $1' не е валидно име на период
+periods_ehour=Липсващ или невалиден час за период $1 (трябва да е като 9:00 или 17:00)
+
+show_title=Оперативно състояние
+show_ecgi=Програмата за статут на MON $1 не съществува. Може би не е инсталиран или вашата <a href='$2'>конфигурация на модул</a> е неправилна.

@@ -1,0 +1,103 @@
+index_title=心跳监视器
+index_return=心跳监视器
+index_edir=心跳配置目录 $1不存在。也许未安装心跳，或者您的<a href='$2'>模块配置</a>不正确。
+index_start=启动心跳监视器
+index_startmsg=单击此按钮以启动心跳监视程序。这将在使用当前配置的系统上启用自动服务故障转移。
+index_apply=应用更改
+index_applymsg=单击此按钮可强制正在运行的心跳监视器进程重新加载当前配置。
+index_eha_cf=在系统上找不到心跳配置文件 $1。可能它尚未被复制到位，或者<a href='$2'>模块配置</a>不正确。
+index_eharesources=在系统上找不到资源文件 $1。可能它尚未被复制到位，或者<a href='$2'>模块配置</a>不正确。
+index_eauthkeys=在您的系统上找不到认证密钥文件 $1。可能它尚未被复制到位，或者<a href='$2'>模块配置</a>不正确。
+index_ereq_resource_cmd=在系统上找不到用于从其他节点（$1）请求资源的脚本。可能它尚未被复制到位，或者<a href='$2'>模块配置</a>不正确。
+index_version=心跳版本 $1
+index_noversion=警告-无法自动检测系统上安装的Heartbeat版本。您应该在<a href='$1'>模块配置</a>页面上进行设置。
+index_status=心跳状态
+
+conf_title=配置选项
+conf_header=心跳配置选项
+conf_serials=串行心跳端口
+conf_baud=串口波特率
+conf_bcasts=以太网心跳接口
+conf_none=没有
+conf_udpport=UDP心跳端口
+conf_mcast=组播心跳设备
+conf_mcastv=设备 $1，组 $2，端口 $3，TTL $4，环回 $5
+conf_enabled=已启用
+conf_disabled=残障人士
+conf_keepalive=两次心跳之间的时间
+conf_nice_failback=好的故障回复行为
+conf_secs=秒
+conf_deadtime=节点被视为死亡之前的时间
+conf_watchdog=看门狗设备文件
+conf_node=集群中的主机
+conf_logfile=心跳日志文件
+conf_logfacility=Syslog日志工具
+conf_initdead=初始停滞时间
+conf_ok=保存选项
+conf_err=保存选项失败
+conf_ebaud=波特率丢失或无效
+conf_ebcast=没有输入心跳广播接口
+conf_ebcastif='$1'不是有效的广播接口
+conf_eudpport=心跳端口丢失或无效
+conf_ekeepalive=两次心跳之间缺少时间或无效时间
+conf_edeadtime=丢失或无效的死区时间
+conf_ewatchdog=看门狗设备文件缺失或不存在
+conf_enonode=没有输入集群主机
+conf_ethisnode=此主机 $1不在群集主机列表中
+conf_elogfile=缺少或无效的日志文件名
+conf_einitdead=初始停滞时间缺失或无效
+conf_einitdead2=初始死区时间必须至少是节点被视为死区之前的时间的两倍
+conf_emcast_dev=缺少或无效的多播设备
+conf_emcast_ip=缺少或无效的多播组地址
+conf_emcast_port=缺少或无效的多播端口号
+conf_emcast_ttl=多播生存时间丢失或无效
+conf_auto_on=$ {conf_enabled}
+conf_auto_off=$ {conf_disabled}
+conf_auto_legacy=旧版模式
+conf_auto_=$ {默认}
+
+res_title=集群资源
+res_node=主节点
+res_ips=IP地址
+res_servs=节点服务
+res_none=没有
+res_nores=您的系统上尚未定义群集资源。
+res_add=添加集群资源
+res_return=资源清单
+res_active=资源状态
+res_getserv=获取资源
+res_hbdown=心跳加快
+res_up=上
+res_down=下
+
+node_create=添加集群资源
+node_edit=编辑集群资源
+node_header=群集资源详细信息
+node_node=资源的主节点
+node_ips=资源的IP地址
+node_ip=IP地址
+node_cidr=网络掩码CIDR
+node_broad=广播地址
+node_servs=资源服务
+node_serv=服务
+node_args=附加参数
+node_err=保存集群资源失败
+node_enone=主节点缺失或无效
+node_eip=“$1”不是有效的IP地址
+node_ecidr='$1'不是有效的CIDR
+node_ebroad=“$1”不是有效的广播地址
+
+auth_title=验证码
+auth_header=集群节点认证
+auth_mode=认证方式
+auth_crc=CRC（无安全性）
+auth_sha1=带有密码的SHA1
+auth_md5=带密码的MD5
+auth_err=保存认证密钥失败
+auth_emd5=丢失或无效的MD5密码
+auth_esha1=SHA1密码丢失或无效
+
+start_err=无法启动心跳
+
+apply_err=无法应用更改
+apply_epid=进程不再运行

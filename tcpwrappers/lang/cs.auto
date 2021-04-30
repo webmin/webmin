@@ -1,0 +1,8 @@
+edit_title1allow=Vytvořit pravidlo povolit
+edit_title2allow=Upravit pravidlo povolit
+edit_title1deny=Vytvořit pravidlo odepření
+edit_title2deny=Upravit pravidlo odepření
+edit_except=Kromě služeb
+edit_hostsexcept=Kromě hostitelů
+
+save_eservice=Jména démonů obsahují špatné znaky

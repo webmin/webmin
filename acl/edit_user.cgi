@@ -9,7 +9,7 @@ our (%in, %text, %config, %access, $config_directory, $base_remote_user);
 &foreign_require("webmin", "webmin-lib.pl");
 
 &ReadParse();
-my ($u, %user);
+my ($u, %user,  $safe);
 if ($in{'user'}) {
 	# Editing an existing user
 	&can_edit_user($in{'user'}) || &error($text{'edit_euser'});
@@ -17,20 +17,27 @@ if ($in{'user'}) {
 	$u = &get_user($in{'user'});
 	$u || &error($text{'edit_egone'});
 	%user = %$u;
+	my %gacl = &get_module_acl($in{'user'}, '');
+	$safe = $gacl{'_safe'};
 	}
 else {
 	# Creating a new user
 	$access{'create'} || &error($text{'edit_ecreate'});
-	&ui_print_header(undef, $text{'edit_title2'}, "");
 	if ($in{'clone'}) {
 		# Initial settings come from clone
 		$u = &get_user($in{'clone'});
 		%user = %$u;
 		delete($user{'name'});
+		my %gacl = &get_module_acl($in{'clone'}, '');
+		$safe = $gacl{'_safe'};
 		}
 	else {
+		# User starts out empty
 		%user = ( );
+		$safe = $in{'safe'};
 		}
+	&ui_print_header(undef, $safe ? $text{'edit_title3'}
+				      : $text{'edit_title2'}, "");
 	}
 my $me = &get_user($base_remote_user);
 
@@ -51,6 +58,7 @@ if ($in{'user'}) {
 if ($in{'clone'}) {
 	print &ui_hidden("clone", $in{'clone'});
 	}
+print &ui_hidden("safe", $safe);
 print &ui_hidden_table_start($text{'edit_rights'}, "width=100%", 2, "rights",
 			     1, [ "width=30%" ]);
 
@@ -155,6 +163,17 @@ if ($in{'user'}) {
 		$text{'edit_proto_'.($user{'proto'} || '')});
 	}
 
+# Safe or not?
+my $smsg;
+if ($in{'user'} && $safe) {
+	$smsg = &ui_radio("unsafe", 0, [ [ 0, $text{'edit_safe1'} ],
+					 [ 1, $text{'edit_safe0'} ] ]);
+	}
+else {
+	$smsg = $safe ? $text{'edit_safe1'} : $text{'edit_safe0'};
+	}
+print &ui_table_row($text{'edit_safe'}, $smsg);
+
 print &ui_hidden_table_end("rights");
 
 # Start of UI options section
@@ -173,12 +192,12 @@ if ($access{'chcert'}) {
 
 if ($access{'lang'}) {
 	# Current language
+	my $ulang = safe_language($user{'lang'});
 	print &ui_table_row($text{'edit_lang'},
-		&ui_radio("lang_def", $user{'lang'} ? 0 : 1,
+		&ui_radio("lang_def", $ulang ? 0 : 1,
 		  [ [ 1, $text{'default'} ],
-		    [ 0, &ui_select("lang", $user{'lang'},
-			    [ map { [ $_->{'lang'}, $_->{'desc'}." (".
-					uc($_->{'lang'}).")" ] }
+		    [ 0, &ui_select("lang", $ulang,
+			    [ map { [ $_->{'lang'}, $_->{'desc'}."" ] }
 				  &list_languages() ]) ]
 		  ]));
 	}
@@ -192,14 +211,14 @@ if ($access{'cats'}) {
 			    [ 0, $text{'default'} ] ]));
 	}
 
-my @all = &webmin::list_themes();
+my @all = &webmin::list_visible_themes($user{'theme'});
 my @themes = grep { !$_->{'overlay'} } @all;
 my @overlays = grep { $_->{'overlay'} } @all;
 
 if ($access{'theme'}) {
 	# Current theme
 	my @topts = ( );
-	push(@topts, [ "", $text{'edit_themedef'} ]);
+	push(@topts, !$user{'theme'} ? [ '', $text{'edit_themedef'} ] : ());
 	foreach my $t (@themes) {
 		push(@topts, [ $t->{'dir'}, $t->{'desc'} ]);
 		}
@@ -332,9 +351,16 @@ my @groups = &list_groups();
 print &ui_hidden_table_start(@groups ? $text{'edit_modsg'} : $text{'edit_mods'},
 			     "width=100%", 2, "mods");
 
+# Build list of modules, based on safe mode
+my @allmods = &list_module_infos();
+if ($safe) {
+	@allmods = grep { $has{$_->{'dir'}} ||
+			  &get_safe_acl($_->{'dir'}) } @allmods;
+	}
+
 # Show available modules, under categories
 my @mlist = grep { $access{'others'} || $has{$_->{'dir'}} ||
-		   $mcan{$_->{'dir'}} } &list_module_infos();
+		   $mcan{$_->{'dir'}} } @allmods;
 my @links = ( &select_all_link("mod", 0, $text{'edit_selall'}),
 	      &select_invert_link("mod", 0, $text{'edit_invert'}) );
 my @cats = &unique(map { $_->{'category'} || '' } @mlist);
@@ -359,7 +385,7 @@ foreach my $c (sort { $b cmp $a } @cats) {
 			}
 		elsif ($mcan{$md}) {
 			my $label;
-			if ($access{'acl'} && $in{'user'}) {
+			if ($access{'acl'} && $in{'user'} && !$safe) {
 				# Show link for editing ACL
 				$label = ui_link("edit_acl.cgi?" .
 				     "mod=" . urlize($m->{'dir'}) .
@@ -387,7 +413,7 @@ print &ui_hidden_table_end("mods");
 
 # Add global ACL section, but only if not set from the group
 my $groupglobal = $memg && -r "$config_directory/$memg->{'name'}.acl";
-if ($access{'acl'} && !$groupglobal && $in{'user'}) {
+if ($access{'acl'} && !$groupglobal && $in{'user'} && !$safe) {
 	print &ui_hidden_table_start($text{'edit_global'}, "width=100%", 2,
 				     "global", 0, [ "width=30%" ]);
 	my %uaccess;

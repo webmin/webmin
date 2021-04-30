@@ -1,0 +1,5 @@
+index_trunced=L'output totale di $2 è stato troncato a $1.
+index_timedout=Il comando è stato terminato dopo l'esecuzione per $1 secondi.
+
+acl_shellenv=Utilizzare l'ambiente dell'utente selezionato?
+acl_chroot=Chroot nella directory

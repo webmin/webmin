@@ -1,0 +1,72 @@
+index_used=استفاده شده
+index_mount2=سوار با رمز عبور:
+index_root=سیستم فایل ریشه
+
+edit_usage=استفاده از دیسک
+edit_nfs_opt4=گزینه های خاص NFSv4
+
+save_force=The mount on $1 could not be removed, as the mount is currently in use. To attempted a forced un-mount, click the the button below
+save_fapply=Force Un-Mount
+
+smb_eworkgroup=هیچ گروه کاری در صفحه تنظیمات ماژول تنظیم نشده است
+smb_emaster=No browse master was found for workgroup $1
+
+solaris_lvm=دستگاه LVM
+solaris_vg=گروه جلد
+solaris_lv=حجم منطقی
+solaris_vxfs=دستگاه VXFS
+solaris_hfs=دستگاه HFS
+solaris_nosuid=برنامه های تنظیم شده مجاز نیست؟
+solaris_uid=پرونده های کاربر متعلق به
+
+linux_burnerdev=درایو سی دی رایتر
+linux_uuid=Partition with ID $1
+linux_usel=پارتیشن با شناسه
+linux_nodev=فایلهای دستگاه مجاز نیست؟
+linux_noexec=اجرای باینری ها مجاز نیست؟
+linux_nosuid=برنامه های تنظیم شده مجاز نیست؟
+linux_ifuser=اگر توسط کاربران قابل نصب باشد
+linux_quotaj=نوع ذخیره سهمیه
+linux_quotaj1=سفر کردن
+linux_quotaj0=منظم
+linux_resuid=فضای کاربر را رزرو کنید
+linux_etimeo=زمان بندی باید یک عدد باشد
+linux_uid=پرونده های کاربر متعلق به
+linux_credentials=پرونده اعتبارنامه
+linux_noatime=از بروزرسانی آخرین زمان دسترسی خودداری کنید؟
+linux_netdev=صبر کنید تا رابط های شبکه تمام شوند؟
+linux_nofail=بوت را ادامه دهید حتی اگر مانع نصب شود؟
+linux_nfsvers=نسخه Force NFS
+linux_nfsdefault=از نسخه پیش فرض استفاده کنید
+linux_eswappri=اولویت حافظه مجازی عددی موجود یا نامعتبر است
+linux_codepage=صفحه کد
+linux_iocharset=مجموعه کاراکتر IO
+linux_ecodepage=صفحه کد نامعتبر یا نامعتبر است
+linux_eiocharset=مجموعه کاراکتر IO موجود نیست یا نامعتبر است
+linux_nounix=غیرفعال کردن برنامه های افزودنی CIFS Unix؟
+linux_noserverino=شماره های اینود را در سمت مشتری ایجاد می کنید؟
+linux_cvers=نسخه CIFS
+linux_ecvers=نسخه CIFS باید یک عدد باشد
+
+log_swap=Created swap file $1
+
+irix_nosuid=برنامه های تنظیم شده مجاز نیست؟
+
+freebsd_ide=دیسک سخت IDE
+freebsd_device=دستگاه
+freebsd_slice=تکه
+freebsd_part=تقسیم بندی
+freebsd_scsi=دیسک SCSI
+freebsd_other=دستگاه های دیگر
+freebsd_select=پارتیشن دیسک
+freebsd_idedev=IDE device $1, slice $2, partition $3
+freebsd_scsidev=SCSI device $1, slice $2, partition $3
+freebsd_edevpath=Other device must be an absolute path, like <tt>/dev/cdrom</tt>
+freebsd_edevfile=The device file '$1' does not exist
+
+cswap_file=The swap file $1 does not exist.
+cswap_size=یک پرونده مبادله با اندازه ایجاد و سوار کنید
+
+acl_sysinfo=نمایش داده های دیسک موجود در داشبورد؟
+sysinfo_total=جمع
+sysinfo_dev=شناسه دستگاه

@@ -1,0 +1,37 @@
+index_title=Cluster Cron Jobs
+index_add=ایجاد یک کار جدید خوشه ای.
+index_none=هیچ شغل cron خوشه ای تعریف نشده است.
+index_servers=روی سرورها اجرا کنید
+index_return=لیست مشاغل cluster خوشه ای
+index_more=$1 بیشتر ..
+index_run=الان اجرا کن ..
+index_actions=اقدامات
+
+edit_title=ویرایش Cluster Cron Job
+create_title=ایجاد Cluster Cron Job
+edit_servers=روی سرورها اجرا کنید
+edit_group=اعضای$1
+edit_this=این سرور
+edit_all=&lt;همه میزبان ها&gt;
+edit_emissing=کار کرون دیگر وجود ندارد!
+
+save_err=کار صرفه جویی در خوشه ذخیره نشد
+
+exec_title=Cluster Cron Job را اجرا کنید
+exec_cmd=در حال اجرا$1 در سرورهای منتخب ..
+exec_failed=اجرای $1 : $2 انجام نشد
+exec_success=خروجی از$1 ..
+exec_nohosts=هیچ میزبانی که برای اجرای آن انتخاب شده باشد یا گروه های منتخب حاوی میزبان قابل استفاده نیستند.
+
+log_run=از $1 روی سرورهای$2 استفاده کنید
+log_run_l=از$1 به$2 استفاده کنید
+log_create=برای$1 کار ایجاد خوشه ایجاد شده است
+log_create_l=$2 کار $1 ایجاد کرد
+log_modify=اصلاح شده در کار دسته بندی خوشه ای برای$1
+log_modify_l=کار تغییر یافته خوشه ای$2 برای$1
+log_delete=کار صدف کلستر برای$1 حذف شد
+log_delete_l=کار متقاطع خوشه$2 برای$1 حذف شد
+log_deletes=$1 کارهای متقاطع خوشه ای حذف شد
+
+delete_err=کارهای خوشه بندی متناوب حذف نشد
+delete_enone=هیچ یک انتخاب نشده است

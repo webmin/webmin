@@ -69,6 +69,7 @@ reboot_title=Reboot Zone
 reboot_rusure=Weet u zeker dat u de zone $1 wilt rebooten? Alle processen die erin werken worden herstart.
 reboot_err=Rebooten van zone mislukt
 reboot_doing=Nu zone aan het rebooten ..
+
 reboot_failed=.. mislukt :
 reboot_ok=.. compleet.
 
@@ -80,7 +81,6 @@ halt_doing=Nu zone aan het uitschakelen ..
 boot_title=Booten van Zone
 boot_err=Booten van zone mislukte
 boot_doing=Nu zone aan het booten..
-
 delete_title=Verwijder Zone
 delete_rusure=Weet u zeker dat u de zone $1 wilt verwijderen? Alle files die in het prive filesysteem zitten zullen verloren gaan.
 delete_err=Mislukt om zone te verwijderen
@@ -93,7 +93,6 @@ uninstall_doing=Nu systeem software aan het de-installeren van zone ..
 
 install_title=Installeer Systeem
 install_doing=Nu systeem aan het installeren in zone ..
-
 net_title1=Netwerk Interface Aanmaken
 net_title2=Netwerk Interface Bewerken
 net_header=Zone virtuele interface details
@@ -118,7 +117,6 @@ pkg_eclash=De pakket directory bestaat reeds in deze zone
 pkg_inherit=Overgenomen pakket van globale zone
 pkg_inherit_yes=Ja (gedeeltelijke root zone)
 pkg_inherit_no=Nee (gehele root zone)
-
 
 fs_title1=Filesysteem Aanmaken
 fs_title2=Filesysteem Bewerken
@@ -286,5 +284,3 @@ log_delete_attr=Verwijderde algemene attributen $1 in zone $2
 webmin_eperl=Perl is niet geinstalleerd op $1
 webmin_eroot=De directory $1 bestaat niet of heeft geen Webmin.
 webmin_title=Installeer Webmin
-
-__norefs=1

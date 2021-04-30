@@ -1,1 +1,3 @@
-clear_envs=Passer les variables d'environnement de Webmin &#224; la commande shell ?,1,0-Oui,1-Non
+clear_envs=Passer les variables d'environnement Webmin aux commandes shell?,1,0-Oui,1-Non
+max_output=Sortie maximale pour capturer à partir des commandes,0,10,,octets
+max_runtime=Durée d'exécution maximale des commandes,0,10,,secondes

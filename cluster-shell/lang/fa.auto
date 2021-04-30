@@ -1,0 +1,22 @@
+index_title=دستورات پوسته خوشه ای
+index_cmd=فرمان اجرا
+index_old=یا
+index_server=روی سرورها اجرا کنید
+index_run=اکنون فرمان را اجرا کنید
+index_return=فهرست ماژول
+index_this=این سرور
+index_all=&lt;همه میزبان ها&gt;
+index_group=اعضای$1
+index_clear=تاریخ پاک کنید
+index_edit=ویرایش قبلی
+
+run_title=اجرای دستور
+run_err=اجرای فرمان انجام نشد
+run_ecmd=هیچ دستوری وارد نشده است
+run_failed=اجرای $1 : $2 انجام نشد
+run_success=خروجی از$1 ..
+run_enone=هیچ سرور برای اجرا در انتخابی وجود ندارد
+
+log_clear=تاریخ فرمان را پاک کنید
+log_run=از $1 روی سرورهای$2 استفاده کنید
+log_run_l=از$1 به$2 استفاده کنید

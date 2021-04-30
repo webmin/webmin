@@ -1,0 +1,22 @@
+index_title=Príkazy klastra Shell
+index_cmd=Príkaz na spustenie
+index_old=alebo
+index_server=Beží na serveroch
+index_run=Spustiť príkaz teraz
+index_return=index modulu
+index_this=tento server
+index_all=&lt;Všetci hostitelia&gt;
+index_group=Členovia $1 
+index_clear=Vymazať históriu
+index_edit=Upraviť predchádzajúce
+
+run_title=Spustite príkaz
+run_err=Nepodarilo sa spustiť príkaz
+run_ecmd=Nebol zadaný žiadny príkaz
+run_failed=Spustenie zlyhalo na $1 : $2 
+run_success=Výstup z $1 ..
+run_enone=Na vybraných serveroch nie sú spustené žiadne servery
+
+log_clear=Vymazaná história príkazov
+log_run=Spustil $1 na serveroch $2 
+log_run_l=Spustil $1 na $2 

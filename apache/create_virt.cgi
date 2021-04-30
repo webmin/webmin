@@ -235,11 +235,18 @@ if ($in{'adddir'} && $in{'root'}) {
 		}
 	push(@mems, $dirsect);
 	}
+foreach my $m (@mems) {
+	$m->{'indent'} = 4;
+	}
+foreach my $m (@{$dirsect->{'members'}}) {
+	$m->{'indent'} = 8;
+	}
 
 # Save to the file
 &save_directive_struct(undef, $virt, $conf, $conf);
 &flush_file_lines();
 &unlock_file($f);
+&update_last_config_change();
 &unlock_apache_files();
 
 # Create a symlink from another dir, if requested (as in Debian)

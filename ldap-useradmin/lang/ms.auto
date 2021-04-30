@@ -1,0 +1,103 @@
+index_title=Pengguna dan Kumpulan LDAP
+index_ebase=Tiada fail konfigurasi klien LDAP ditemui pada sistem anda, jadi pangkalan pengguna dan kumpulan mesti ditetapkan pada halaman <a href='$1'>modul config</a>.
+index_eperl=Modul $1 Perl yang memerlukan modul ini tidak dipasang atau tidak berfungsi dengan betul. <a href='$2'>Klik di sini</a> untuk memuat turun dan dipasang sekarang.
+index_eperl2=Kesalahan yang dilaporkan oleh Perl apabila cuba memuat modul ialah :
+index_eldap=$1. Klik di sini untuk menyesuaikan <a href='$2'>konfigurasi modul</a>.
+index_eschema=Webmin telah disambungkan ke pelayan LDAP, tetapi gagal untuk mengambil skema. Pastikan akses tidak ditolak dalam modul <a href='$1'>LDAP Server</a>.
+index_eimap=$1. Mungkin konfigurasi modul <a href='$2'>anda</a> tidak betul.
+index_emd5=Modul ini telah <a href='$1'>dikonfigurasi</a> untuk menggunakan penyulitan MD5 untuk kata laluan, tetapi modul $2 Perl tidak dipasang. <a href='$3'>Klik di sini</a> untuk memuat turun dan dipasang modul $2.
+index_eslappasswd=Modul ini telah <a href='$1'>dikonfigurasi</a> untuk menggunakan penyulitan LDAP MD5 untuk kata laluan, tetapi program <tt>$2</tt> yang digunakan untuk menyulitkan kata laluan tidak dipasang.
+index_eusearch=Gagal mencari pengguna di bawah $1 : $2 
+index_uadd=Tambah pengguna LDAP baharu.
+index_gadd=Tambah kumpulan LDAP baharu.
+index_unone=Tiada pengguna LDAP dijumpai di bawah $1.
+index_gnone=Tiada kumpulan LDAP ditemui di bawah $1.
+index_return=senarai pengguna
+index_greturn=senarai kumpulan
+index_egsearch=Gagal mencari kumpulan di bawah $1 : $2 
+index_samba=Samba?
+index_cyrus=IMAP?
+index_users=Pengguna LDAP
+index_groups=Kumpulan LDAP
+
+imap_econn=Gagal menyambung ke pelayan IMAP $1 
+imap_elogin=Gagal masuk ke pelayan IMAP $1 sebagai $2 : $3 
+conn_eldap_host=Tiada fail konfigurasi klien LDAP ditemui pada sistem anda, jadi pelayan LDAP mesti ditetapkan pada halaman Module Config
+conn_elogin=Tiada fail konfigurasi klien LDAP ditemui pada sistem anda, jadi log masuk LDAP mesti ditetapkan pada halaman Module Config
+conn_efile_open=Tidak dapat membuka fail kelayakan ikatan LDAP:
+
+uedit_cap=Keupayaan pengguna
+uedit_samba=Login samba?
+uedit_cyrus=Login pelayan IMAP?
+uedit_dn=LDAP DN pengguna
+uedit_classes=Kelas objek LDAP
+uedit_alias=Alias mel
+uedit_fields=Medan LDAP tambahan
+uedit_firstname=Nama pertama
+uedit_lastname=Nama terakhir
+uedit_raw=Atribut LDAP
+uedit_return=butiran pengguna
+uedit_quota=Kuota IMAP
+uedit_unquota=Jangan ubah
+uedit_sambapassopts=Pilihan Kata Laluan Samba
+uedit_sambapwdlastset=Kemas kini Kata Laluan Terakhir
+uedit_sambapwdcanchange=Kata laluan boleh berubah
+uedit_sambabadpasswordcount=Kira kata laluan yang buruk
+uedit_sambaacctflags=Bendera akaun
+
+usave_eadd=Gagal menambah pengguna ke pangkalan data LDAP : $1 
+usave_emod=Gagal untuk mengubah suai pengguna dalam pangkalan data LDAP : $1 
+usave_emoddn=Gagal menamakan semula pengguna dalam pangkalan data LDAP : $1 
+usave_egroupmod=Gagal mengubah suai kumpulan $1 dalam pangkalan data LDAP : $2 
+usave_edelete=Gagal memadamkan pengguna dari pangkalan data LDAP : $1 
+usave_eicreate=Gagal mencipta pengguna
+usave_eiacl=Gagal memberikan hak kepada pentadbir
+usave_eimap=Pengguna berjaya disimpan dalam pangkalan data LDAP, tetapi ralat IMAP telah berlaku: $1 : $2 
+usave_eisub=Gagal melanggan pengguna ke folder $1 
+usave_eiquota=Gagal menetapkan kuota IMAP
+usave_eifolder=Gagal membuat folder $1 
+usave_eilogin=Gagal masuk sebagai pengguna baru
+usave_ecyruspass=Kata laluan biasa pengguna mesti dimasukkan atau tiada pilihan kata laluan yang diperlukan dipilih apabila membolehkan IMAP.
+usave_ebook=Gagal membuat entri buku alamat : $1 
+usave_emodbook=Gagal mengubah suai buku alamat : $1 
+usave_emodbookdn=Gagal menamakan semula alamat buku alamat : $1 
+usave_egone=Pengguna tidak lagi wujud!
+usave_ex86=Modul ini tidak boleh digunakan untuk menetapkan kata laluan untuk pengguna Samba pada sistem bukan Intel, kerana ia bergantung pada program x86 yang disusun.
+usave_esamba=Modul ini tidak boleh digunakan untuk menetapkan kata laluan untuk pengguna Samba, kerana modul Perkongsian Fail Windows Samba tidak dipasang.
+usave_ealiasdup=Alias $1 sudah digunakan oleh $2 
+usave_eattrdup=Objek $1 sudah menggunakan $2 $3 
+usave_eattrdupu=Pengguna $1 sudah menggunakan $2 $3 
+usave_eattrdupg=Kumpulan $1 sudah menggunakan $2 $3 
+usave_ereal=Nama sebenar hilang
+usave_equota=Kuota IMAP yang hilang atau tidak sah
+
+search_err=Cari $1 di bawah $2 gagal : $3 
+
+gedit_dn=LDAP DN Kumpulan
+gedit_return=butiran kumpulan
+gedit_cap=Keupayaan kumpulan
+gedit_samba=Kumpulan Samba?
+
+gsave_egone=Kumpulan tidak lagi wujud!
+gsave_edelete=Gagal memadam kumpulan dari pangkalan data LDAP : $1 
+gsave_eadd=Gagal menambah kumpulan ke pangkalan data LDAP : $1 
+gsave_emod=Gagal untuk mengubahsuai kumpulan dalam pangkalan data LDAP : $1 
+gsave_emoddn=Gagal menamakan semula kumpulan dalam pangkalan data LDAP : $1 
+
+gdel_group=Memadam kemasukan kumpulan LDAP ..
+
+udel_pass=Memadam kemasukan pengguna LDAP ..
+udel_book=Memadam dari buku alamat ..
+udel_imap=Memadam folder IMAP ..
+udel_warnimap=Kotak pos mel sedia ada akan dipadamkan apabila memadam direktori rumah!
+udel_failed=.. gagal!  : $1 
+
+raw_title=Atribut LDAP
+raw_name=Nama Atribut
+raw_value=Nilai
+raw_for=Untuk $1 
+
+batch_samba=Buat akaun Samba untuk pengguna baru?
+batch_imap=Buat akaun IMAP untuk pengguna baru?
+batch_descafter3=Dalam baris <b>buat</b> dan <b>ubah suai</b>, anda boleh memilih tambahan bidang yang mengandungi atribut LDAP dalam format <i>nama</i> = <i>nilai</i>, ke akan diberikan kepada pengguna baru atau diubah suai.
+batch_eattr=Atribut LDAP tidak sah pada baris $1 : $2 

@@ -1,0 +1,103 @@
+index_title=Širdies plakimo monitorius
+index_return=širdies plakimo monitorius
+index_edir=Širdies plakimo konfigūracijos katalogo $1 nėra. Galbūt „Heartbeat“ neįdiegtas arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_start=Paleiskite „Heartbeat Monitor“
+index_startmsg=Spustelėkite šį mygtuką, kad pradėtumėte „Heartbeat“ monitoriaus procesą. Tai įgalins automatinį paslaugų pakeitimą jūsų sistemoje su dabartine konfigūracija.
+index_apply=Taikyti pakeitimus
+index_applymsg=Spustelėkite šį mygtuką, kad priverstumėte veikiantį „Heartbeat“ monitoriaus procesą perkrauti dabartinę konfigūraciją.
+index_eha_cf=Jūsų sistemoje nerastas širdies plakimo konfigūracijos failas $1. Galbūt ji dar nebuvo nukopijuota į vietą, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_eharesources=Šaltinių failas $1 nerastas jūsų sistemoje. Galbūt ji dar nebuvo nukopijuota į vietą, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_eauthkeys=Autentifikavimo raktų failas $1 jūsų sistemoje nerastas. Galbūt ji dar nebuvo nukopijuota į vietą, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_ereq_resource_cmd=Jūsų sistemoje nerastas scenarijus prašyti išteklių iš kito mazgo ($1). Galbūt ji dar nebuvo nukopijuota į vietą, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_version=$1 širdies plakimo versija
+index_noversion=Įspėjimas - jūsų sistemoje įdiegtos „Heartbeat“ versijos nepavyko aptikti automatiškai. Tai turėtumėte nustatyti puslapyje <a href='$1'>modulio konfigūracija</a>.
+index_status=Širdies plakimo būsena
+
+conf_title=Konfigūracijos parinktys
+conf_header=Širdies plakimo konfigūravimo parinktys
+conf_serials=Serijiniai širdies plakimo prievadai
+conf_baud=Serijinio prievado įėjimo koeficientas
+conf_bcasts=Eterneto širdies ritmo sąsajos
+conf_none=Nė vienas
+conf_udpport=UDP širdies prievadas
+conf_mcast=Multicast širdies plakimo prietaisas
+conf_mcastv=Įrenginys $1, grupė $2, prievadas $3, TTL $4, atgalinis ryšys $5 
+conf_enabled=Įjungtas
+conf_disabled=Neįgalus
+conf_keepalive=Laikas tarp širdies dūžių
+conf_nice_failback=Malonus nesėkmės elgesys
+conf_secs=sekundžių
+conf_deadtime=Laikas iki mazgo laikomas negyvu
+conf_watchdog=Sargybinio įrenginio failas
+conf_node=Šeimininkai klasteryje
+conf_logfile=Širdies plakimo žurnalo failas
+conf_logfacility=„Syslog“ žurnalo galimybė
+conf_initdead=Pradinis negyvas laikas
+conf_ok=Išsaugoti parinktis
+conf_err=Nepavyko išsaugoti parinkčių
+conf_ebaud=Trūksta arba netinkama perdavimo sparta
+conf_ebcast=Neįvestos širdies ritmo transliavimo sąsajos
+conf_ebcastif=„$1“ nėra tinkama transliacijos sąsaja
+conf_eudpport=Trūksta arba netinkamas širdies plakimo prievadas
+conf_ekeepalive=Trūksta arba netinkamas laikas tarp širdies plakimų
+conf_edeadtime=Trūksta arba netinkamas negyvas laikas
+conf_ewatchdog=Trūksta arba neegzistuoja sargybinio įrenginio failas
+conf_enonode=Nebuvo įtraukta jokių grupių grupių
+conf_ethisnode=Šis pagrindinis kompiuteris $1 nėra klasterio prieglobos sąraše
+conf_elogfile=Trūksta arba netinkamas žurnalo failo vardas
+conf_einitdead=Trūksta arba netinkamas pradinis mirimo laikas
+conf_einitdead2=Pradinis neveikimo laikas turi būti bent dvigubai didesnis, nei mazgas laikomas negyvu
+conf_emcast_dev=Trūksta arba netinkamas daugialypės terpės įrenginys
+conf_emcast_ip=Trūksta arba netinkamas daugialypės terpės grupės adresas
+conf_emcast_port=Trūksta arba netinkamas multicast prievado numeris
+conf_emcast_ttl=Trūksta arba netinkama daugialaidė transliacija
+conf_auto_on={conf_enabled}
+conf_auto_off=$ {conf_disabled}
+conf_auto_legacy=Palikimo režimas
+conf_auto_=$ {numatytasis}
+
+res_title=Klasterio ištekliai
+res_node=Pirminis mazgas
+res_ips=IP adresai
+res_servs=Mazgo paslaugos
+res_none=Nė vienas
+res_nores=Jūsų sistemoje nėra apibrėžta klasterio išteklių.
+res_add=Pridėkite klasterio šaltinį
+res_return=išteklių sąrašas
+res_active=Šaltinio būsena
+res_getserv=Gaukite išteklių
+res_hbdown=Širdies plakimas
+res_up=AUKŠTYN
+res_down=Žemyn
+
+node_create=Pridėti klasterio šaltinį
+node_edit=Redaguoti klasterio šaltinį
+node_header=Informacija apie klasterio išteklius
+node_node=Pagrindinis ištekliaus mazgas
+node_ips=Šaltinio IP adresai
+node_ip=IP adresas
+node_cidr=„Netmask CIDR“
+node_broad=Transliacijos adresas
+node_servs=Paslaugos ištekliams
+node_serv=Aptarnavimas
+node_args=Papildomi argumentai
+node_err=Nepavyko išsaugoti klasterio išteklių
+node_enone=Trūksta arba netinkamas pirminis mazgas
+node_eip=„$1“ nėra galiojantis IP adresas
+node_ecidr=„$1“ negalioja CIDR
+node_ebroad=„$1“ nėra teisingas transliacijos adresas
+
+auth_title=Autentifikacijos raktai
+auth_header=Klasterio mazgo autentifikavimas
+auth_mode=Autentifikavimo režimas
+auth_crc=CRC (nėra saugumo)
+auth_sha1=SHA1 su slaptažodžiu
+auth_md5=MD5 su slaptažodžiu
+auth_err=Nepavyko išsaugoti autentifikavimo raktų
+auth_emd5=Trūksta arba netinkamas MD5 slaptažodis
+auth_esha1=Nėra arba netinkamas SHA1 slaptažodis
+
+start_err=Nepavyko pradėti širdies plakimo
+
+apply_err=Nepavyko pritaikyti pakeitimų
+apply_epid=Procesas nebeveikia

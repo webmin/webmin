@@ -1,0 +1,75 @@
+index_title=GRUB Boot Loader
+index_add=Gehitu abioko aukera berria.
+index_global=Editatu Aukera Globala
+index_globalmsg=Editatu abiarazteko menuko aukera guztietarako aplikatzen diren abiarazpen aukerak eta aukeratu GRUB instalatuta dagoen gailua.
+index_install=Instalatu GRUB
+index_installmsg=Instalatu GRUB abio kargatzailea $1 -n, goiko aukerak abiarazteko momentuan bistaratzeko. Honek LILO bezalako lehendik dauden abioko kargatzaileak gainidatziko ditu eta zure sistema ezin izango da abiarazi.
+index_none=Ez da abioko aukerarik zehaztu. Ziurtatu grub instalatu aurretik gutxienez bat gehitzen duzula.
+index_efile=$1 GRUB menuko fitxategia ez da zure sisteman aurkitu. Agian GRUB ez dago instalatuta edo <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_epath=$1 exekutagarria GRUB ez da zure sisteman aurkitu. Agian GRUB ez dago instalatuta edo <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_return=aukeren zerrenda
+
+title_add=Gehitu Boot aukera
+title_edit=Editatu abio aukera
+title_header=Abiarazi menuaren aukeraren xehetasunak
+title_title=Aukeraren izenburua
+title_root=Abiarazi irudiaren partizioa
+title_noverify=Ez muntatu eta egiaztatu partizioa
+title_other=Gailuaren beste fitxategi bat
+title_sel=Hautatuak
+title_boot=Sistema eragilea abiarazteko
+title_kernel=kernel
+title_kfile=Bidea nukleoraino
+title_args=Nukleoaren aukerak
+title_initrd=Hasierako ramdisk fitxategia
+title_modules=Modulu gehigarriak
+title_chain=Beste sistema batzuk
+title_chain_def=Partizioko lehen sektoretik
+title_chain_file=Kate kargatzaile fitxategitik
+title_makeactive=Erro partizioa aktibo bihurtu?
+title_none1=Bat ere ez
+title_none2=(abiarazi gabeko menuko sarrera)
+title_err=Huts egin du abioiaren aukera gordetzean
+title_etitle=Aukera titulua falta da
+title_eroot=Erro partizio falta da
+title_ekernel=Falta edo nukleo bide baliogabea
+title_echain=Kate kargatzailearen fitxategi falta edo baliogabea
+title_edev=$1 onartzen ez den erroko partizio gailua
+title_einitrd=Hasierako ramdisk fitxategi izena falta da
+title_lock=Pasahitza blokeatuta dago?
+
+global_title=Aukera Globala
+global_header=Abiapuntuen menuko aukera globala
+global_default=Lehenespenez abiatzeko aukera
+global_fallback=Fallback abiarazteko aukera
+global_first=Lehenengo zerrendan
+global_timeout=Iraupena lehenetsi aurretik kargatu
+global_forever=Itxaron betiko
+global_secs=segundutan
+global_install=Instalatu GRUB diskoan/partizioan
+global_sel=Hautatuak
+global_other=Beste
+global_password=Pasahitza abiarazi
+global_none=Bat ere ez
+global_password_file=Erabili menuko fitxategia pasahitza sartuz gero:
+global_err=Huts egin du aukera globalak gordetzean
+global_etimeout=Atzerapen falta edo baliogabea da
+global_edev=$1 instalatu gabeko diskoa/partizioa
+global_eother=Disko/partizio falta edo baliogabea
+global_epassword=Abioko pasahitza falta da edo ez da baliozkoa
+global_epasswordfile=Menuko ordezko fitxategiaren izena falta da
+
+install_title=Instalatu GRUB
+install_err=Ezin izan da GRUB instalatu
+install_efind=Ezin izan da menuko fitxategia aurkitu
+install_desc=$1 eta $3 komandoekin GRUB instalatzea.
+install_ok=.. instalatu osoa.
+install_failed=.. instalazioa huts egin du!
+
+log_create_title=$1 abiarazteko aukera sortu da
+log_delete_title=$1 abioko aukera ezabatu da
+log_modify_title=$1 abioko aldaketa
+log_up_title=$1 abiarazteko aukera aldatu zen
+log_down_title=$1 abiarazteko aukera behera kargatu da
+log_global=Aukera globala aldatu da
+log_install=Instalatutako GRUB

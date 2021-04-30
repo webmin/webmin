@@ -1,0 +1,3 @@
+desc_ru=TCP Wrappers
+longdesc_ru=Сконфигурируйте файлы контроля доступа к сети для оболочек TCP
+name_ru=TCPWrappers

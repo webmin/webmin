@@ -1,0 +1,9 @@
+line2=Konfigurace systému,11
+pppd=Cesta k pppd server,0
+pap_file=PAP bezpečnostní soubor,0
+encrypt_pass=Kryptovat hesla v bezpečnostním souboru?,1,1-ano,0-ne
+ppp_options=soubor PPP nastavení,0
+mgetty=Cesta k mgetty programu,0
+login_config=Mgetty soubor konfigurace přihlášení,0
+dialin_config=Mgetty soubor dialin konfigurace,0
+serials=Model seriových portů,0

@@ -1,0 +1,22 @@
+index_title=Küme Kabuğu Komutları
+index_cmd=Çalıştırma komutu
+index_old=veya
+index_server=Sunucularda çalıştır
+index_run=Komutu Şimdi Çalıştır
+index_return=modül dizini
+index_this=bu sunucu
+index_all=&lt;Tüm ana makineler&gt;
+index_group=$1 üyeleri
+index_clear=Geçmişi Temizle
+index_edit=Öncekini Düzenle
+
+run_title=Komutu Çalıştır
+run_err=Komut çalıştırılamadı
+run_ecmd=Komut girilmedi
+run_failed= $1 : $2 üzerinde çalıştırılamadı
+run_success=$1 'den çıktı ..
+run_enone=Seçilen sunucuda çalıştırılacak sunucu yok
+
+log_clear=Komut geçmişi temizlendi
+log_run=$2 sunucusunda $1 koştu
+log_run_l=$2 üzerinde $1 koştu

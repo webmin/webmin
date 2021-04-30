@@ -102,6 +102,14 @@ else {
 	&lock_file($ENV{'MINISERV_CONFIG'});
 	$miniserv{'userdb'} = $str;
 	$miniserv{'userdb_addto'} = $in{'addto'};
+	$miniserv{'userdb_nocache'} = $in{'nocache'};
+	if ($in{'timeout_def'}) {
+		delete($miniserv{'userdb_cache_timeout'});
+		}
+	else {
+		$in{'timeout'} =~ /^(\d+\.)?\d+$/ || &error($text{'sql_etimeout'});
+		$miniserv{'userdb_cache_timeout'} = $in{'timeout'};
+		}
 	&put_miniserv_config(\%miniserv);
 	&unlock_file($ENV{'MINISERV_CONFIG'});
 	&reload_miniserv();

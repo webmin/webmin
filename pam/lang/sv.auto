@@ -1,0 +1,69 @@
+desc_su-l=Byt användare (med inloggning)
+desc_usermin=Usermin webbserver
+desc_linuxconf-auth=LinuxConf-autentisering
+desc_up2date-config=Redhat Linux-uppdateringskonfigur
+desc_bindconf=Redhat BIND konfigurationsverktyg
+desc_apacheconf=Redhat Apache konfigurationsverktyg
+desc_adsl-config=Redhat ADSL-konfigurationsverktyg
+desc_internet-config=Redhat internetkonfigurationsverktyg
+desc_isdn-config=Redhat ISDN-konfigurationsverktyg
+desc_kontrol-panel=Redhat KDE-kontrollpanelen
+desc_kscreensaver=KDE skärmsläckare
+desc_printconf-gui=Redhat skrivarkonfigurationsverktyg
+desc_rhn_register=Redhat Network-registrering
+desc_system-auth=Vanlig autentisering
+desc_cups=CUPS-utskrift
+desc_cupsys=CUPS-utskrift
+desc_libcupsys2=CUPS-utskrift
+desc_ssh=SSH-inloggning
+desc_proftpd=ProFTPd filöverföringsserver
+desc_qpopper=POP-postserver
+desc_dovecot=POP / IMAP-postserver
+desc_cron=Planerade kommandodemon
+desc_runuser=Kör kommandot som användare
+desc_runuser-l=Kör kommandot som användare (med inloggning)
+desc_postgresql=PostgreSQL-databas
+desc_crond=Cron daemon
+desc_smtp=SMTP-autentisering
+desc_smtp.postfix=PostTPix SMTP-autentisering
+desc_smtp.sendmail=Sendmail SMTP-autentisering
+desc_config-util=Konfigurationsverktyg
+desc_newrole=SELinux ny roll
+desc_radius=RADIUS-uppringningsinloggning
+desc_pptpconfig=Punkt-till-punkt-tunnelprotokoll
+desc_atd=Planerade kommandodemon
+desc_kcheckpass=KDE-lösenordscheckare
+desc_common-account=Vanlig kontoverifiering
+desc_common-auth=Vanlig autentisering
+desc_common-password=Vanliga lösenordsändringar
+desc_common-session=Vanlig sessioninställning
+
+edit_file=Konfigurationsfil
+edit_addinc=Lägg till inkluderad service
+edit_inc=Inkludera tjänst $1 
+edit_iheader=Inkluderade PAM-tjänster
+
+pam_stack.so=Ring annan PAM-tjänst
+pam_foreground.so=Konsolinställning
+
+unix_nullok_secure=Accepterar du noll lösenord på säkra TTY: er?
+unix_min=Minsta lösenordslängd
+unix_nomin=Ingen
+unix_max=Max lösenordslängd
+unix_nomax=Ingen gräns
+unix_obscure=Förhindra användning av enkla lösenord?
+unix_emin=Saknas eller ogiltig minsta lösenordslängd
+unix_emax=Saknas eller ogiltig maximal lösenordslängd
+
+stack_service=Gå vidare till PAM-tjänsten
+
+log_inc_create=Tillagd inkluderar $1 för tjänsten $2 
+log_inc_modify=Modifierad inkluderar $1 för service $2 
+log_inc_delete=Raderade inkluderar $1 för service $2 
+log_incs=Uppdaterad inkluderar för service $1 
+
+inc_edit=Redigera inkluderad tjänst
+inc_create=Skapa inkluderad tjänst
+inc_header=Inkluderade PAM-tjänstinformation
+inc_inc=Inkluderad PAM-tjänst
+inc_err=Det gick inte att spara inkluderad tjänst

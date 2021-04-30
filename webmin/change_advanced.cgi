@@ -67,10 +67,15 @@ if (defined($in{'sclass'})) {
 # Save HTTP headers
 @hl = ( );
 foreach my $l (split(/\r?\n/, $in{'headers'})) {
-	$l =~ /^\S+:\s+\S+$/ || &error($text{'advanced_eheader'});
+	$l =~ /^\S+:\s+\S.*$/ || &error($text{'advanced_eheader'});
 	push(@hl, $l);
 	}
 $gconfig{'extra_headers'} = join("\t", @hl);
+
+# Sort config file's keys alphabetically
+if (defined($in{'sortconfigs'})) {
+	$gconfig{'sortconfigs'} = $in{'sortconfigs'};
+	}
 
 &lock_file("$config_directory/config");
 &write_file("$config_directory/config", \%gconfig);
@@ -97,6 +102,16 @@ elsif ($in{'precache_mode'} == 1) {
 else {
 	$in{'precache'} =~ /\S/ || &error($text{'advanced_eprecache'});
 	$miniserv{'precache'} = $in{'precache'};
+	}
+
+# Save buffer size
+if ($in{'bufsize_def'}) {
+	delete($miniserv{'bufsize'});
+	}
+else {
+	$in{'bufsize'} =~ /^\d+$/ && $in{'bufsize'} > 0 ||
+		&error($text{'advanced_ebufsize'});
+	$miniserv{'bufsize'} = $in{'bufsize'};
 	}
 
 &lock_file($ENV{'MINISERV_CONFIG'});

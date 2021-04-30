@@ -1,0 +1,66 @@
+index_title=ADSL klientas
+index_eadsl=RP-PPPoE komanda $1 nerasta jūsų sistemoje arba netinkama. Galbūt jis neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_econfig=Jūsų sistemoje nerastas RP-PPPoE ADSL konfigūracijos failas $1. Galbūt jis neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_emodem=Dabartinis konfigūracijos failas skirtas „Redhat Linux“ modemui, o ne ADSL ryšiui. Norėdami nurodyti vieną iš kitų <tt>ifcfg-ppp *</tt> failų, esančių $1, arba dar neegzistuojančio failo, naudokite puslapį <a href='$2'>modulio konfigūracija</a>. gali sukurti tau.
+index_stop=Išjunkite ADSL
+index_stopdesc=Šiuo metu jūsų ADSL ryšys aktyvus, naudojant IP adresą $1. Spustelėkite šį mygtuką, norėdami išjungti komandą $2.
+index_start=Paleiskite ADSL
+index_startdesc=Šiuo metu jūsų ADSL ryšys neaktyvus. Spustelėkite šį mygtuką, kad paleistumėte komandą $1.
+index_boot=Pradėkite įkrovos metu
+index_bootdesc=Pakeiskite šią parinktį, jei norite kontroliuoti, ar ADSL ryšys buvo paleistas įkrovos metu, ar ne.
+index_return=modulio rodyklė
+index_version=RP-PPPoE $1 versija
+index_esetup=„Redhat ADSL“ konfigūracijos failas $1 neegzistuoja jūsų sistemoje. Tačiau šis modulis gali nustatyti jį pagal pagrindinius numatytuosius nustatymus spustelėjus žemiau esantį mygtuką.
+index_setup=Sąrankos konfigūracijos failas
+index_cancel=Atšaukti ryšį
+index_canceldesc=Šiuo metu ADSL klientas bando užmegzti ryšį. Spustelėkite šį mygtuką, norėdami atšaukti bandymą su komanda $1.
+index_cdemand=Atšaukti pagal pareikalavimą
+index_cdemanddesc=ADSL klientas šiuo metu laukia užklausos dėl prisijungimo. Spustelėkite šį mygtuką, kad sustabdytumėte jį su komanda $1.
+
+index_header=ADSL kliento konfigūravimo parinktys
+index_desc=Žemiau pateikti nustatymai taikomi visiems naujiems ADSL ryšiams, kuriuos užveda jūsų sistema. Jei juos pakeisite, kad pakeitimai įsigaliotų, ryšys turi būti nutrauktas ir vėl paleistas.
+index_eth=Eterneto sąsaja
+index_other=Kiti ..
+index_demand=Prisijunkite pagal pareikalavimą?
+index_timeout=Taip, su pertrauka
+index_secs=sekundžių
+index_user=Prisijungimas kaip vartotojas
+index_sec=Prisijungimas su slaptažodžiu
+index_dns=Gauti DNS konfigūraciją iš IPT?
+index_save=Išsaugoti konfigūraciją
+index_mss=Apriboti paketo dydį?
+index_psize=Taip, į
+index_bytes=baitų
+index_fw=Užkarda aktyvuoti prisijungus
+index_fw_none=Nė vienas
+index_fw_standalone=Vienam šeimininkui
+index_fw_masquerade=NAT vartai
+index_connect=Laikas bandyti prisijungti
+index_forever=Amžinai
+
+start_err=Nepavyko užmegzti ADSL ryšio
+start_title=Paleiskite ADSL
+start_ip=Buvo užmegztas ADSL ryšys su IP adresu $1.
+start_demand=Kadangi įjungtas režimas „prisijungti pagal pareikalavimą“, jūsų ADSL ryšys bus užmegztas tik prireikus.
+start_bg=ADSL ryšys nebuvo užmegztas per 20 sekundžių. ADSL klientas toliau bandys prisijungti fone, kol pavyks.
+
+save_err=Nepavyko išsaugoti ADSL konfigūracijos
+save_eeth=Trūksta arba netinkamo eterneto sąsajos
+save_etimeout=Trūksta arba netinkamas laiko tarpas pareikalavus
+save_euser=Trūksta arba netinkamas vartotojo vardas
+save_econnect=Trūksta arba netinkamas ryšio laikas
+save_emss=Trūksta arba netinkamas didžiausias paketo dydis
+save_title=Išsaugoti konfigūraciją
+save_desc=Jūsų ADSL kliento konfigūracija sėkmingai išsaugota, tačiau ji nebus naudojama tol, kol vėl neprisijungsite.
+
+stop_err=Nepavyko išjungti ADSL ryšio
+stop_title=Išjunkite ADSL
+stop_ok=Jūsų ADSL ryšys buvo sėkmingai išjungtas.
+stop_failed=Dėl tam tikrų priežasčių jūsų ADSL ryšys vis dar aktyvus!
+
+log_save=Išsaugota kliento konfigūracija
+log_stop=Išjunkite ADSL
+log_start=Paleido ADSL
+log_bootup=Įjungta ADSL įkrovos metu
+log_bootdown=Išjungta ADSL įkrovos metu
+log_setup=Nustatykite numatytąją konfigūraciją

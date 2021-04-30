@@ -5,7 +5,7 @@ sub display_module_args
 {
 local $file = "/etc/security/time.conf";
 local @time;
-open(FILE, $file);
+open(FILE, "<".$file);
 while(<FILE>) {
 	s/#.*$//;
 	s/\r|\n//g;

@@ -99,7 +99,7 @@ sub key_fingerprint
 my $fp;
 local $_;
 &clean_language();
-open(GPG, "$gpgpath --fingerprint \"$_[0]->{'name'}->[0]\" 2>/dev/null |");
+open(GPG, "$gpgpath --fingerprint ".quotemeta($_[0]->{'name'}->[0])." 2>/dev/null |");
 while(<GPG>) {
 	if (/fingerprint\s+=\s+(.*)/) {
 		$fp = $1;
@@ -113,8 +113,8 @@ return $fp;
 # get_passphrase(&key)
 sub get_passphrase
 {
-open(PASS, "$user_module_config_directory/pass.$_[0]->{'key'}") ||
-  open(PASS, "$user_module_config_directory/pass") || return undef;
+open(PASS, "<$user_module_config_directory/pass.$_[0]->{'key'}") ||
+  open(PASS, "<$user_module_config_directory/pass") || return undef;
 my $pass = <PASS>;
 close(PASS);
 chop($pass);
@@ -138,8 +138,8 @@ sub encrypt_data
 {
 my $srcfile = &transname();
 my @keys = ref($_[2]) eq 'ARRAY' ? @{$_[2]} : ( $_[2] );
-my $rcpt = join(" ", map { "--recipient \"$_->{'name'}->[0]\"" } @keys);
-&write_entire_file($srcfile, $_[0]);
+my $rcpt = join(" ", map { "--recipient ".quotemeta($_->{'name'}->[0]) } @keys);
+&write_file_contents($srcfile, $_[0]);
 my $dstfile = &transname();
 my $ascii = $_[3] ? "--armor" : "";
 my $comp = $config{'compress'} eq '' ? "" :
@@ -159,7 +159,7 @@ while(1) {
 close($fh);
 &reset_environment();
 unlink($srcfile);
-my $dst = &read_entire_file($dstfile);
+my $dst = &read_file_contents($dstfile);
 unlink($dstfile);
 if ($dst) {
 	${$_[1]} = $dst;
@@ -176,10 +176,11 @@ else {
 sub decrypt_data
 {
 my $srcfile = &transname();
-&write_entire_file($srcfile, $_[0]);
+&write_file_contents($srcfile, $_[0]);
 my $dstfile = &transname();
 &clean_language();
-my $cmd = "$gpgpath --output $dstfile --decrypt $srcfile";
+my $cmd = "$gpgpath --output ".quotemeta($dstfile).
+	  " --decrypt ".quotemeta($srcfile);
 my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
 my ($error, $seen_pass, $pass, $key, $keyid);
 while(1) {
@@ -206,7 +207,7 @@ while(1) {
 close($fh);
 &reset_environment();
 unlink($srcfile);
-my $dst = &read_entire_file($dstfile);
+my $dst = &read_file_contents($dstfile);
 unlink($dstfile);
 if (!$keyid) {
 	return $text{'gnupg_ecryptid'};
@@ -233,17 +234,17 @@ else {
 sub sign_data
 {
 my $srcfile = &transname();
-&write_entire_file($srcfile, $_[0]);
+&write_file_contents($srcfile, $_[0]);
 my $dstfile = &transname();
 my $cmd;
 if ($_[3] == 0) {
-	$cmd = "$gpgpath --output $dstfile --default-key $_[2]->{'key'} --sign $srcfile";
+	$cmd = "$gpgpath --output ".quotemeta($dstfile)." --default-key $_[2]->{'key'} --sign ".quotemeta($srcfile);
 	}
 elsif ($_[3] == 1) {
-	$cmd = "$gpgpath --output $dstfile --default-key $_[2]->{'key'} --clearsign $srcfile";
+	$cmd = "$gpgpath --output ".quotemeta($dstfile)." --default-key $_[2]->{'key'} --clearsign ".quotemeta($srcfile);
 	}
 elsif ($_[3] == 2) {
-	$cmd = "$gpgpath --armor --output $dstfile --default-key $_[2]->{'key'} --detach-sig $srcfile";
+	$cmd = "$gpgpath --armor --output ".quotemeta($dstfile)." --default-key $_[2]->{'key'} --detach-sig ".quotemeta($srcfile);
 	}
 &clean_language();
 my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
@@ -271,7 +272,7 @@ while(1) {
 	}
 close($fh);
 unlink($srcfile);
-my $dst = &read_entire_file($dstfile);
+my $dst = &read_file_contents($dstfile);
 unlink($dstfile);
 if ($error || $seen_pass > 1) {
 	return "<pre>$wait_for_input</pre>";
@@ -292,16 +293,16 @@ else {
 sub verify_data
 {
 my $datafile = &transname();
-&write_entire_file($datafile, $_[0]);
+&write_file_contents($datafile, $_[0]);
 my $cmd;
 my $sigfile;
 if (!$_[1]) {
-	$cmd = "$gpgpath --verify $datafile";
+	$cmd = "$gpgpath --verify ".quotemeta($datafile);
 	}
 else {
 	$sigfile = &transname();
-	&write_entire_file($sigfile, $_[1]);
-	$cmd = "$gpgpath --verify $sigfile $datafile";
+	&write_file_contents($sigfile, $_[1]);
+	$cmd = "$gpgpath --verify ".quotemeta($sigfile)." ".quotemeta($datafile);
 	}
 #local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
 #&wait_for($fh);
@@ -332,33 +333,12 @@ else {
 	}
 }
 
-# read_entire_file(file)
-sub read_entire_file
-{
-my ($rv, $buf);
-open(FILE, $_[0]) || return undef;
-while(read(FILE, $buf, 1024) > 0) {
-	$rv .= $buf;
-	}
-close(FILE);
-return $rv;
-}
-
-# write_entire_file(file, data)
-sub write_entire_file
-{
-my $fh;
-&open_tempfile($fh, ">$_[0]");
-&print_tempfile($fh, $_[1]);
-&close_tempfile($fh);
-}
-
 # get_trust_level(&key)
 # Returns the trust level of a key
 sub get_trust_level
 {
 &clean_language();
-my $cmd = "$gpgpath --edit-key \"$_[0]->{'name'}->[0]\"";
+my $cmd = "$gpgpath --edit-key ".quotemeta($_[0]->{'name'}->[0]);
 my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
 my $rv = &wait_for($fh, "trust:\\s+(.)", "command>");
 my $tr;
@@ -382,7 +362,8 @@ sub delete_key
 my ($key) = @_;
 if ($key->{'secret'}) {
 	&clean_language();
-	my $cmd = "$gpgpath --delete-secret-key \"$key->{'name'}->[0]\"";
+	my $cmd = "$gpgpath --delete-secret-key ".
+		  quotemeta($key->{'name'}->[0]);
 	my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
 	&wait_for($fh, "\\?");
 	syswrite($fh, "y\n");
@@ -393,7 +374,7 @@ if ($key->{'secret'}) {
 	&reset_environment();
 	}
 &clean_language();
-my $cmd = "$gpgpath --delete-key \"$key->{'name'}->[0]\"";
+my $cmd = "$gpgpath --delete-key ".quotemeta($key->{'name'}->[0]);
 my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
 &wait_for($fh, "\\?");
 syswrite($fh, "y\n");

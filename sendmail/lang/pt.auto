@@ -1,0 +1,504 @@
+index_epath=O executável sendmail $1 não está instalado no seu sistema. Talvez sua <a href='$2'>configuração do módulo</a> esteja incorreta ou o sendmail não esteja instalado.
+index_version2=Versão do Sendmail $1, configuração $2 
+index_xversion=Versão do Sendmail $1 
+index_version=Configuração do Sendmail $1 
+index_sendmail=Enviar correio
+
+opts_blame=Opções de segurança de arquivo
+opts_selected=Selecionado ..
+opts_dmode=Modo de entrega
+opts_background=fundo
+opts_queue-only=Apenas fila
+opts_interactive=Interativo
+opts_deferred=Diferido
+opts_gecos=Aceitar correio para os nomes reais dos usuários?
+opts_hops=Contagem máxima de saltos de correio
+opts_daemon=Opções de porta SMTP
+opts_maxbad=Máximo de destinatários inválidos
+opts_maxrcpt=Número máximo de destinatários por mensagem
+opts_below=Inserido abaixo ..
+opts_qso=Classifique a fila de mensagens por
+opts_priority=Prioridade
+opts_host=nome de anfitrião
+opts_time=Hora recebida
+
+aliases_enofile=Nenhum arquivo de alias é definido na sua configuração do Sendmail
+aliases_type5=Arquivo de resposta automática $1 
+aliases_type6=Aplicar arquivo de filtro $1 
+aliases_toomany=Existem muitos apelidos de correio no seu sistema para serem exibidos nesta página.
+aliases_go=Encontre aliases correspondentes:
+aliases_delete=Excluir aliases selecionados
+
+aform_ecannot=Você não tem permissão para editar este alias
+aform_type5=Resposta automática do arquivo
+aform_type6=Aplicar arquivo de filtro
+aform_file=Adicionar ao arquivo de aliases
+aform_afile=Editar ..
+aform_return=pseudônimo
+aform_cmt=Descrição
+
+afile_title=Editar arquivo de endereço
+afile_desc=Use a área de texto abaixo para editar os endereços no arquivo $1.
+afile_efile=Você não tem permissão para editar $1.
+afile_undo=Desfazer mudanças
+afile_ewrite=Falha ao gravar no arquivo de endereços : $1 
+
+ffile_title=Editar arquivo de filtro
+ffile_desc=Use o formulário abaixo para configurar as regras de filtro no arquivo $1.
+ffile_efile=Você não tem permissão para editar $1.
+ffile_line=Se o campo $1 $2 $3, encaminhar para $4 
+ffile_from=a partir de
+ffile_to=para
+ffile_subject=sujeito
+ffile_cc=CC
+ffile_body=corpo
+ffile_what0=não corresponde
+ffile_what1=partidas
+ffile_other=Caso contrário, encaminhar para $1 
+ffile_err=Falha ao salvar o arquivo de filtro
+ffile_ematch=Falta partida
+ffile_eaction=Endereço de encaminhamento ausente
+
+rfile_title=Editar arquivo de resposta automática
+rfile_desc=Use a área de texto abaixo para editar a mensagem de resposta automática em $1. A mensagem pode conter as macros $SUBJECT, $FROM, $TO, $DATE e $BODY que serão expandidas quando a resposta automática for ativada.
+rfile_desc2=Você também pode definir cabeçalhos de email que adicionem ou substituam os padrões usados na resposta automática, colocando linhas como: <br><tt> De: foo@bar.com </tt><br> <tt>Assunto: Em férias</tt> <br> na parte superior da mensagem, separado do corpo por uma única linha em branco.
+rfile_efile=Você não tem permissão para editar $1.
+rfile_undo=Desfazer mudanças
+rfile_replies=Controlar respostas para evitar loops de correio?
+rfile_none=Não
+rfile_file=Sim, usando o arquivo de log
+rfile_period=Intervalo mínimo entre respostas
+rfile_default=Padrão (1 hora)
+rfile_secs=segundos
+rfile_ereplies=Arquivo de log de rastreamento de resposta ausente
+rfile_eperiod=Número de segundos ausente ou inválido entre as respostas
+rfile_no_autoreply=Não envie respostas automáticas para
+rfile_no_regexp=Não envie respostas automáticas para mensagens correspondentes a regexps
+rfile_from=De: endereço para resposta
+rfile_auto=Automático (com base no endereço do destinatário)
+rfile_efrom=Endereço ausente de:
+rfile_fromdesc=Um endereço De: sempre deve ser especificado sempre que possível, pois o método automático pode não ser confiável.
+
+asave_etype5=O arquivo de resposta automática '$1' não é válido
+asave_etype6=O arquivo de filtro '$1' não é válido
+asave_esame=Você só pode criar um alias com o mesmo nome que seu login no webmin
+
+adelete_err=Falha ao excluir aliases
+adelete_enone=Nenhum selecionado
+adelete_ecannot=Você não tem permissão para excluir o alias $1 
+
+masq_ndomains=Domínios a não mascarar
+
+virtusers_efeature=Sua configuração do sendmail não tem o recurso de mapeamento de endereço (<tt>virtuser</tt>) ativado. <a href='$1'>Clique aqui</a> para configurar os recursos do sendmail.
+virtusers_createfile=Ou se esse recurso acabou de ser ativado, <a href='$1'>clique aqui</a> para criar o arquivo.
+virtusers_cmt=Descrição
+virtusers_toomany=Existem muitos mapeamentos de endereço em seu sistema para serem exibidos nesta página.
+virtusers_go=Encontre mapeamentos de endereços correspondentes:
+virtusers_delete=Excluir mapeamentos de endereços selecionados
+
+vform_msg=mensagem
+vform_cmt=Descrição
+vform_err_nouser=O usuário não existe
+vform_err_nohost=Esse host não existe
+vform_err_unavailable=Indisponível
+vform_err_tempfail=Falha temporária
+vform_err_protocol=Erro de protocolo
+vform_end=Mover para o fim
+
+vsave_esame=Você só pode criar mapeamentos de endereço para seu nome de usuário
+
+vdelete_err=Falha ao excluir mapeamentos de endereço
+vdelete_ecannot=Você não tem permissão para excluir o mapeamento para $1 
+
+mailers_efeature=Sua configuração do sendmail não tem o recurso de roteamento de domínio (<tt>mailertable</tt>) ativado. <a href='$1'>Clique aqui</a> para configurar os recursos do sendmail.
+mailers_desc3=Você também deve ter uma entrada na lista de <a href='$1'>domínios de retransmissão</a> para cada domínio também.
+mailers_delete=Excluir rotas de domínio selecionadas
+
+mform_host2=Host ou domínio
+mform_domain2=Todos os hosts no domínio
+mform_domain3=Domínio e todos os seus hosts
+
+mdelete_err=Falha ao excluir o roteador de domínio
+mdelete_ecannot=Você não tem permissão para excluir a rota para $1 
+
+generics_efeature=Sua configuração do sendmail não tem o recurso de mapeamento de endereço de saída (<tt>genéricos</tt>) ativado. <a href='$1'>Clique aqui</a> para configurar os recursos do sendmail.
+generics_toomany=Existem muitos endereços de saída em seu sistema para exibir nesta página.
+generics_go=Encontre endereços de saída correspondentes:
+generics_delete=Excluir endereços de saída selecionados
+
+gsave_ecannot3=Você não tem permissão para salvar este endereço de saída
+gsave_ealready=Já existe um mapeamento de endereço de saída para '$1'
+
+gdelete_err=Falha ao excluir mapeamentos de endereço de saída
+gdelete_ecannot=Você não tem permissão para excluir o mapeamento para $1 
+
+domains_efeature=Sua configuração do sendmail não tem o recurso de mapeamento de domínio (<tt>domaintable</tt>) ativado. <a href='$1'>Clique aqui</a> para configurar os recursos do sendmail.
+domains_delete=Excluir mapeamentos de domínio selecionados
+
+dsave_ealready=Já existe um mapeamento de domínio para '$1'
+
+ddelete_err=Falha ao excluir mapeamentos de domínio
+ddelete_ecannot=Você não tem permissão para excluir o mapeamento para $1 
+
+access_efeature=Sua configuração do sendmail não tem o recurso de controle de spam (<tt>access_db</tt>) ativado. <a href='$1'>Clique aqui</a> para configurar os recursos do sendmail.
+access_toomany=Existem muitas regras de controle de spam em seu sistema para serem exibidas nesta página.
+access_go=Encontre regras de controle de spam correspondentes:
+access_delete=Excluir regras de controle de spam selecionadas
+
+sform_tag=Jogo contra
+sform_tag_=Tudo
+sform_tag_from=A partir do endereço
+sform_tag_to=Endereçar
+sform_tag_connect=Informações de conexão
+sform_tag_spam=Informações sobre spam
+
+ssave_ealready=Já existe uma regra de controle de spam para '$1'
+ssave_ecannot2=Você não tem permissão para salvar esta regra de controle de spam
+
+sdelete_err=Falha ao excluir regras de controle de spam
+sdelete_ecannot=Você não tem permissão para excluir a regra para $1 
+
+mailq_count=$1 mensagens
+mailq_size=Tamanho
+mailq_cc=Cc
+mailq_subject=Sujeito
+mailq_dir=Diretório
+mailq_delete=Excluir mensagens selecionadas
+mailq_locked=Mesmo se bloqueado
+mailq_flush=Fila de Correspondência
+mailq_flushsel=Liberar mensagens selecionadas
+mailq_flushdesc=Clique neste botão para forçar a entrega imediata de todas as mensagens na fila e exibir os resultados.
+mailq_flushquar=Fila em quarentena nivelada
+mailq_flushquardesc=Clique neste botão para forçar a entrega de apenas mensagens em quarentena na fila.
+mailq_search=Encontre mensagens na fila onde
+mailq_quar=Em quarentena
+mailq_refresh=Atualizar fila de correio
+mailq_refreshdesc=Recarregue esta página para mostrar o estado atual da fila de mensagens.
+
+flushq_desc2=Forçando a tentativa de entrega de $1 mensagens selecionadas.
+flushq_ecannot=Você não tem permissão para liberar a fila de email
+
+searchq_title=Resultados da pesquisa na fila
+searchq_none=Nenhuma mensagem na fila encontrada.
+
+delq_enone=Nenhuma mensagem para excluir selecionada
+delq_titles=Exclusão de mensagens
+delq_file=Excluindo o arquivo de mensagens $1 ..
+delq_efile=nome de arquivo inválido!
+delq_egone=já excluído ou entregue
+delq_elocked=bloqueado para envio
+delq_ok=excluído ok
+delq_title=Apagar mensagem
+delq_force=Forçar exclusão de qualquer maneira
+delq_ecannot2=você não pode excluir esta mensagem
+delq_rusure=Tem certeza de que deseja excluir as $1 mensagens em fila selecionadas?
+delq_confirm=Apagar mensagens
+
+boxes_sent=Correspondência enviada
+boxes_toomany=Existem muitos usuários no seu sistema para listar todas as caixas de correio.
+boxes_go=Exibir correio para o usuário:
+
+mail_bcc=Cco
+mail_pri=Prioridade
+mail_highest=Altíssima
+mail_high=Alto
+mail_normal=Normal
+mail_low=Baixo
+mail_lowest=Mais baixo
+mail_for2=Para o usuário $1 
+mail_sent=Na lista de emails enviados
+mail_size=Tamanho
+mail_delete=Excluir
+mail_pos=Mensagens $1 a $2 de $3 
+mail_none=Esta caixa de correio não possui mensagens
+mail_euserexists=Este usuário Unix não existe
+mail_all=Selecionar tudo
+mail_invert=Seleção invertida
+mail_search=Encontre mensagens onde
+mail_body=Corpo
+mail_match=partidas
+mail_ok=Procurar
+mail_nonefrom=Nenhum
+mail_mark=Marca como:
+mail_mark0=Não lida
+mail_mark1=Ler
+mail_mark2=Especial
+mail_forward=frente
+mail_move=Mover para:
+mail_copy=Copiar para:
+mail_rfc=Da linha
+mail_eexists=A mensagem não existe mais!
+
+view_desc2=Mensagem $1 para o usuário $2 
+view_desc3=Mensagem $1 
+view_sent=Mensagem $1 na lista de emails enviados
+view_body=Mensagem de texto
+view_allheaders=Ver todos os cabeçalhos
+view_noheaders=Exibir cabeçalhos básicos
+view_enew=Editar como novo
+view_flush=Rubor
+view_print=Impressão
+view_strip=Remover anexos
+view_mark=Marcar a mensagem como:
+view_mark0=Não lida
+view_mark1=Ler
+view_mark2=Especial
+view_return=email original
+view_sub=E-mail anexo
+view_egone=Esta mensagem não existe mais
+view_afile=Nome do anexo
+view_atype=Tipo de anexo
+view_asize=Tamanho do arquivo
+
+enew_title=Editar email
+reply_mailforward=Mensagens encaminhadas
+reply_body=Mensagem de texto
+
+send_efrom=Endereço ausente de
+send_esmtp=O comando SMTP $1 falhou : $2 
+send_efile=O arquivo anexado $1 não existe
+send_eattach=Os anexos não podem totalizar mais que $1 kB de tamanho.
+send_eperms=O usuário $1 não pode ler $2 
+send_eperms2=Você não tem permissão para enviar o arquivo $1 
+send_epath=O executável Sendmail $1 não existe.
+
+delete_title=Excluir email
+delete_rusure=Tem certeza de que deseja excluir as $1 mensagens selecionadas de $2 ? Isso pode levar algum tempo para um arquivo de mensagens grande. Até a exclusão terminar, nenhuma outra ação deve ser executada.
+delete_rusure2=Tem certeza de que deseja excluir esta mensagem de $1 ? Isso pode levar algum tempo para um arquivo de mensagens grande. Até a exclusão terminar, nenhuma outra ação deve ser executada.
+delete_ok=Excluir agora
+delete_ecannot=Agora você tem permissão para excluir e-mails deste usuário
+delete_enone=Nenhum email selecionado para excluir
+delete_emnone=Nenhum email selecionado para marcar
+delete_efnone=Nenhum email selecionado para encaminhar
+delete_emoveuser=O usuário para o qual mover o correio não existe
+delete_emovecannot=Você não tem permissão para mover e-mails para o usuário especificado
+delete_emovenone=Nenhum email selecionado para mover
+delete_nobutton=Nenhum botão clicado
+
+search_title=Procurar Resultados
+search_ecannot=Você não tem permissão para pesquisar o email deste usuário
+search_ematch=Você deve digitar o texto para comparar.
+search_efield=Você deve selecionar um tipo de pesquisa.
+search_ewhat=Nenhum texto para comparar com inserido na linha $1 
+search_enone=Nenhum critério de pesquisa inserido
+search_none=Nenhuma mensagem encontrada.
+search_results2=$1 mensagens de email correspondentes a $2 ..
+search_results3=$1 mensagens de email que não correspondem a $2 ..
+search_results4=$1 mensagens de e-mail correspondentes à sua pesquisa.
+search_local=Em pastas locais
+search_all=Em todas as pastas
+search_eboolean=Pesquisas booleanas usando 'e' e 'ou' não são suportadas
+
+file_title=Editar arquivo Sendmail
+file_desc=Use a caixa de texto abaixo para editar manualmente o arquivo Sendmail $1.
+file_undo=Desfazer mudanças
+file_edit=Editar manualmente $1 
+file_ealiases=Você só pode editar um arquivo de alias se tiver acesso a todos os alias.
+file_evirtusers=Você só pode editar o arquivo de mapeamentos de endereços se tiver acesso a todos os mapeamentos de endereços.
+file_emailers=Você não tem permissão para editar o arquivo de roteamento de domínio.
+file_egenerics=Você só pode editar o arquivo de endereços de saída se tiver acesso a todos os endereços de saída.
+file_edomains=Você não tem permissão para editar o arquivo de mapeamento de domínio.
+file_eaccess=Você não tem permissão para editar o arquivo de controle de spam.
+file_ecannot=Você não tem permissão para editar este arquivo
+file_emode=Modo desconhecido!
+file_err=Falha ao editar o arquivo
+file_ealias=Formato inválido para a linha do arquivo de alias : $1 
+file_etab=Formato inválido para a linha do arquivo de mapa : $1 
+
+acl_ports=Pode editar portas de rede?
+acl_manual=Pode editar arquivos manualmente?
+acl_flushq=Pode liberar a fila de correio?
+acl_vcatchall=Pode criar mapeamentos catchall?
+acl_qdoms=Endereços visíveis na fila
+acl_qdomsmode=Endereço da fila a combinar
+acl_qdomsmode0=A partir do endereço
+acl_qdomsmode1=Endereçar
+acl_qdomsmode2=Qualquer um dos endereços
+acl_same=Usuário com o mesmo nome
+acl_vsame=Começando com nome de usuário @
+acl_atype5=Resposta automatica
+acl_atype6=Filtrar arquivo
+acl_userse=Todos, exceto usuários
+acl_usersg=Membros do grupo
+acl_from=Endereços permitidos de
+acl_any=Qualquer endereço
+acl_fdoms=Caixa de correio @ domínios
+acl_faddrs=Endereços listados
+acl_fdom=Qualquer endereço @ domínio
+acl_fromname=Nome real para o endereço De
+acl_apath=Limitar arquivos e programa para o diretório
+acl_attach=Tamanho total máximo de anexos
+acl_sent=Armazenar correio enviado na caixa de correio
+acl_canattach=Pode anexar arquivos do lado do servidor?
+acl_boxname=Mostrar nome da caixa de correio como
+acl_boxname0=Nome do arquivo
+acl_boxname1=Nome real do usuário
+acl_boxname2=Nada
+acl_usersm=Usuários correspondentes
+acl_asame=Igual ao nome de usuário
+acl_usersu=Com UID na faixa
+acl_spam=Endereços de controle de spam que este usuário pode editar
+
+log_opts=Opções de sendmail alteradas
+log_ports=Alterar portas de rede
+log_alias_create=Alias criado $1 
+log_alias_modify=Alias modificado $1 
+log_alias_delete=Alias excluído $1 
+log_alias_manual=Arquivo de alias editado manualmente $1 
+log_cws=Domínios locais alterados
+log_masq=Mascaramento de domínio alterado
+log_trusts=Usuários confiáveis alterados
+log_virtuser_create=Mapeamento de endereço criado $1 
+log_virtuser_modify=Mapeamento de endereço modificado $1 
+log_virtuser_delete=Mapeamento de endereço excluído $1 
+log_virtuser_manual=Arquivo de mapeamento de endereço editado manualmente $1 
+log_mailer_create=Roteamento de domínio criado $1 
+log_mailer_modify=Roteamento de domínio modificado $1 
+log_mailer_delete=Roteamento de domínio excluído $1 
+log_mailer_manual=Arquivo de roteamento de domínio editado manualmente $1 
+log_generic_create=Endereço de saída criado $1 
+log_generic_modify=Endereço de saída modificado $1 
+log_generic_delete=Endereço de saída excluído $1 
+log_generic_manual=Arquivo de endereço de saída editado manualmente $1 
+log_cgs=Domínios de saída alterados
+log_domain_create=Mapeamento de domínio criado $1 
+log_domain_modify=Mapeamento de domínio modificado $1 
+log_domain_delete=Mapeamento de domínio excluído $1 
+log_domain_manual=Arquivo de mapeamento de domínio editado manualmente $1 
+log_access_create=Controle de spam criado para $1 
+log_access_modify=Controle de spam modificado para $1 
+log_access_delete=Controle de spam excluído para $1 
+log_access_manual=Arquivo de controle de spam editado manualmente $1 
+log_relay=Domínios de retransmissão alterados
+log_flushq=Fila de email liberada
+log_delmailq=Email excluído de $1 da fila
+log_delmailqs=$1 e-mails excluídos da fila
+log_stop=Daemon sendmail parado
+log_start=Daemon sendmail iniciado
+log_delmail=$1 mensagens excluídas de $2 
+log_movemail=$1 mensagens movidas de $2 para $3 
+log_send=Correio enviado para $1 
+log_feature_create=Entrada M4 adicionada $1 
+log_feature_modify=Entrada M4 modificada $1 
+log_feature_delete=Entrada M4 excluída $1 
+log_feature_move=Entrada M4 movida $1 
+log_build=Configuração de sendmail reconstruída
+log_delete_aliases=$1 aliases excluídos
+log_delete_virtusers=$1 mapeamentos de endereços excluídos
+log_delete_domains=$1 mapeamentos de domínio excluídos
+log_delete_accesses=$1 entradas de controle de spam excluídas
+log_delete_generics=$1 endereços de saída excluídos
+log_delete_mailers=$1 rotas de domínio excluídas
+
+match_from=De: correspondências
+match_subject=Assunto: correspondências
+match_to=Para: corresponde
+match_cc=Cc: correspondências
+match_date=Data: correspondências
+match_status=Correspondências de status
+match_body=Correspondências de corpo
+match_size=O tamanho é maior que
+match_headers=Correspondência de cabeçalhos
+match_=-----------------
+match_!from=De: não corresponde
+match_!subject=Assunto: não corresponde
+match_!to=Para: não corresponde
+match_!cc=Cc: não corresponde
+match_!date=Data: não corresponde
+match_!status=O status não corresponde
+match_!body=O corpo não corresponde
+match_!size=O tamanho é menor que
+match_!headers=Cabeçalhos não correspondem
+
+features_title=Configuração do Sendmail M4
+features_desc=Esta página lista as entradas relevantes do arquivo de configuração $1 do Sendmail M4, a partir do qual o arquivo de configuração real $2 é criado.
+features_type=Tipo de entrada
+features_value=Linha no arquivo de configuração
+features_type0=De outros
+features_type1=Característica
+features_type2=Definir
+features_type3=Indefinir
+features_type4=Mailer
+features_type5=Tipo de SO
+features_add=Adicione nova entrada do tipo:
+features_build=Reconstruir a configuração do Sendmail
+features_buildmsg=Clique neste botão para recriar o arquivo de configuração do Sendmail $1 a partir das entradas de configuração M4 listadas acima.
+features_return=Configuração M4
+features_emc=O arquivo de configuração do Sendmail M4 $2 não foi encontrado no seu sistema. Talvez não tenha sido instalado (comum para instalações em pacotes do Sendmail) ou o <a href='$1'>configuração do módulo</a> está incorreto.
+features_efeatures=O diretório base de configuração do Sendmail M4 $2 não foi encontrado no seu sistema ou não é o diretório correto. Talvez não tenha sido instalado (comum para instalações em pacotes do Sendmail) ou o <a href='$1'>configuração do módulo</a> está incorreto.
+features_econfig=Os locais do diretório base do Sendmail M4 e do arquivo de configuração M4 ainda não foram definidos em sua <a href='$1'>configuração do módulo</a>. Se você instalou o Sendmail a partir da fonte, eles devem estar no diretório de origem original.
+features_move=Mover
+features_manual=Editar arquivo manualmente
+
+feature_add=Adicionar entrada de configuração
+feature_edit=Editar entrada de configuração
+feature_header=Detalhes da entrada de configuração M4
+feature_text=Linha de configuração
+feature_feat=Característica
+feature_values=Parâmetros
+feature_def=Nome da definição
+feature_defval=Valor
+feature_defmode1=Definido como ..
+feature_defmode0=Indefinir
+feature_mailer=Método de entrega de correio
+feature_ostype=Tipo de sistema operacional
+feature_old=Linha de configuração atual
+feature_err=Falha ao salvar a entrada de configuração
+feature_efeat=O recurso $1 já existe
+feature_edef=A definição $1 já existe
+feature_emailer=A mala direta $1 já existe
+feature_eostype=O tipo de SO já está definido como $1 
+feature_manual=Editar arquivo M4
+feature_mdesc=A página permite editar manualmente o arquivo de configuração $1 do Sendmail M4. Tenha cuidado, pois nenhuma verificação de sintaxe será feita em suas edições.
+
+feat_access_db=Arquivo de controle de spam
+feat_virtusertable=Mapeamento de endereços
+feat_mailertable=Roteamento de Domínio
+feat_genericstable=Endereços de saída
+feat_domaintable=Mapeamento de Domínio
+
+mailer_local=Entrega local do Unix
+
+build_title=Reconstruir a configuração do Sendmail
+build_em4=O comando $1 necessário para reconstruir o arquivo de configuração do Sendmail não foi encontrado no seu sistema.
+build_ebuild=Falha ao criar a configuração : $1 
+build_rusure=Tem certeza de que deseja substituir o arquivo de configuração do Sendmail $1 por uma nova versão criada a partir de $2 ?
+build_rusure2=Esteja ciente de que se você tiver feito alterações no Sendmail na página Opções do Sendmail, a reconstrução do arquivo de configuração poderá substituir essas alterações se elas também não tiverem sido feitas no arquivo M4.
+build_ok=Sim, substitua-o agora
+build_diff=As seguintes alterações serão feitas no seu arquivo de configuração do Sendmail.
+build_nodiff=Seu arquivo de configuração do sendmail já está atualizado.
+
+stop_err=Falha ao parar o sendmail
+stop_ecannot=Você não tem permissão para parar o sendmail
+stop_epid=O Sendmail não parece estar em execução
+restart_epids=Não foi possível encontrar os processos do sendmail
+restart_ekill=Falha ao sinalizar processos do sendmail : $1 
+
+start_err=Falha ao iniciar o sendmail
+start_ecannot=Você não tem permissão para iniciar o sendmail
+
+ports_title=Portas de rede
+ports_name=Nome da porta
+ports_addr=Ouvir no endereço
+ports_all=Todos
+ports_ip=IP
+ports_family=Protocolo
+ports_inet=IPv4
+ports_inet6=IPv6
+ports_port=Ouça na porta
+ports_opts=Opções de porta
+ports_mod_a=Exigir autenticação SMTP
+ports_mod_b=Use a mesma interface para email de saída
+ports_mod_c=Executar canonificação de nome de host
+ports_mod_f=Exigir nome completo do host
+ports_mod_h=Use o nome da interface para HELO
+ports_mod_C=Não execute canonificação de nome de host
+ports_mod_E=Não permitir ETRN
+ports_def1=Aceitar email na porta 25 e todos os endereços
+ports_def0=Aceitar email apenas nas portas abaixo ..
+ports_err=Falha ao salvar portas de rede
+ports_ecannot=Você não tem permissão para gerenciar portas de rede
+ports_ename=Nome de porta inválido na linha $1 
+ports_eclash=Nome da porta duplicada na linha $1 
+ports_eaddress=Endereço IP ausente ou inválido na linha $1 
+ports_eport=Número de porta ausente ou inválido na linha $1 

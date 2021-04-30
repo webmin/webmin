@@ -37,5 +37,3 @@ log_create_export=Aangemaakte export van $1
 log_delete_export=Verwijderde export van $1
 log_modify_export=Gemodificeerde export van $1
 log_apply=Toegevoegde configuratie
-
-__norefs=1

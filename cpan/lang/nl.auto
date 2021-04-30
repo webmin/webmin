@@ -1,0 +1,3 @@
+index_allmods2=Ontbrekende modules gebruikt door Webmin
+
+download_fallback=Sommige modules konden niet vanuit pakketten worden geïnstalleerd en probeerden in plaats daarvan de installatie vanaf de bron.

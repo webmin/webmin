@@ -1,0 +1,146 @@
+index_eaccess=Nincs hozzáférése PHP-konfigurációs fájlokhoz.
+index_efiles=A hozzáférhető PHP-fájlok egyike sem létezik.
+index_efiles2=Nem található PHP konfigurációs fájl. Állítsa be a <a href='$1'>modulkonfigurációt</a> a globális PHP konfigurációs fájl helyes elérési útjának beállításához.
+index_anyfile=Más PHP konfigurációs fájl szerkesztése:
+
+file_eread=A (z) $1 olvasása nem sikerült : $2 
+
+manual_desc=Ez az oldal a PHP konfigurációs fájl manuális szerkesztéséhez használható. Ezt óvatosan kell elvégezni, mivel a változtatásokra nem kerül sor szintaxis vagy más érvényesség-ellenőrzés.
+manual_err=A konfigurációs fájl szerkesztése nem sikerült
+manual_edata=Nincs új tartalom megadva
+
+list_ecannot=A PHP konfigurációs fájl kezelése nem engedélyezett
+list_format_ini=INI formátum
+list_format_fpm=FPM formátum
+
+vars_header=PHP változó létrehozási és idézési lehetőségek
+vars_magic=Idézzen minden bemeneti változót?
+vars_runtime=Idézet adatok futtatás közben generált?
+vars_register=Az összes bemenetet globális változókká alakítja?
+vars_args=A parancssori paramétereket globális változókká alakíthatja?
+vars_long=Készítsen olyan régi stílusú tömböket, mint a <tt>HTTP_GET_VARS</tt>?
+vars_err=A PHP változó beállításainak mentése nem sikerült
+
+dirs_header=PHP szkript és kiterjesztés könyvtár beállításai
+dirs_include=Keresési könyvtárak tartalmazzák
+dirs_upload=Engedélyezi a fájlok feltöltését?
+dirs_utmp=Ideiglenes könyvtár a feltöltött fájlokhoz
+dirs_err=A könyvtárbeállítások mentése nem sikerült
+dirs_eincs=Nem tartalmazza a bevitt keresési könyvtárakat
+dirs_eutmp=Hiányzó vagy érvénytelen ideiglenes fájlok könyvtára
+dirs_eext=Hiányzik a bővítmények könyvtára
+
+db_header1=MySQL adatbázis-kapcsolat beállításai
+db_persist=Engedélyezi az állandó adatbázis-kapcsolatokat?
+db_maxpersist=A maximálisan perzisztens kapcsolatok?
+db_maxlinks=Teljes összeköttetés?
+db_timeout=MySQL kapcsolat időtúllépése?
+db_host=Alapértelmezett MySQL szerver gazdagép
+db_port=Alapértelmezett MySQL szerver port
+db_header2=PostgreSQL adatbázis-kapcsolat beállításai
+db_reset=Automatikusan visszaállítja a tartós kapcsolatokat?
+db_err=Nem sikerült menteni az adatbázis beállításait
+db_emaxpersist=Hiányzik vagy érvénytelen a tartós kapcsolatok maximális száma
+db_emaxlinks=Hiányzik vagy érvénytelen a teljes kapcsolatok száma
+db_etimeout=Hiányzó vagy érvénytelen csatlakozási időtúllépés
+db_ehost=Hiányzó vagy érvénytelen alapértelmezett MySQL szerver gazdagép
+db_eport=Hiányzó vagy érvénytelen alapértelmezett MySQL szerver port
+
+session_header=A PHP munkamenet követésének lehetőségei
+session_handler=Munkamenet-tároló mechanizmus
+session_mm=Emlékül
+session_users=Felhasználó által meghatározott
+session_path=Munkamenet fájlok könyvtára
+session_cookies=Engedélyezi a sütik használatát a munkamenet nyomon követésére?
+session_only_cookies=Mindig használ sütiket a munkamenet nyomon követéséhez?
+session_life=A süti élettartama
+session_maxlife=A munkamenet maximális élettartama
+session_epath=Hiányzó vagy érvénytelen könyvtár a munkamenet fájlokhoz
+session_elife=Hiányzó vagy érvénytelen süti élettartama
+session_emaxlife=Hiányzik vagy érvénytelen a munkamenet maximális élettartama
+session_eredis=Hiányzó vagy letiltott újbóli kiterjesztés
+
+safe_header=Biztonságos fájlhozzáférési mód opciók
+safe_on=Engedélyezi a biztonságos módot?
+safe_gid=Csak a csoport azonosítókat kell egyeznie?
+safe_include=Megengedett könyvtár a mellékelt fájlok számára
+safe_exec=A végrehajtott programok engedélyezett könyvtára
+safe_none=Bárhol
+safe_basedir=Korlátozza a fájlműveleteket a könyvtárba
+safe_err=A biztonságos mód opcióinak mentése nem sikerült
+safe_einclude=Hiányzik vagy érvénytelen engedélyezett könyvtár a mellékelt fájlokhoz
+safe_eexec=Hiányzik vagy érvénytelen engedélyezett könyvtár a végrehajtott programokhoz
+safe_ebasedir=Hiányzó vagy érvénytelen könyvtár a fájlműveletekhez
+
+limits_header=Memória és átviteli korlátozási lehetőségek
+limits_mem=A memória maximális elosztása
+limits_post=A HTTP POST maximális mérete
+limits_upload=A fájl feltöltésének maximális mérete
+limits_exec=A maximális végrehajtási idő
+limits_input=A bemeneti elemzés maximális ideje
+limits_err=Nem sikerült menteni az erőforrás-korlátokat
+limits_emem=Hiányzik vagy érvénytelen a maximális memóriafoglalás
+limits_epost=Hiányzó vagy érvénytelen maximális HTTP POST méret
+limits_eupload=Hiányzó vagy érvénytelen maximális fájlfeltöltési méret
+limits_eexec=Hiányzó vagy érvénytelen maximális végrehajtási idő
+limits_einput=Hiányzó vagy érvénytelen maximális bemeneti elemzési idő
+
+errors_header=Hibaüzenet megjelenítési és naplózási beállításai
+errors_display=Megjeleníti a hibaüzeneteket?
+errors_log=Hibaüzeneteket írna a naplózáshoz?
+errors_bits=Megjelenítendő hiba típusok
+errors_reporting=Kifejezés hibatípusokhoz
+errors_E_ALL=Minden hiba és figyelmeztetés
+errors_E_ERROR=Végzetes futási hibák
+errors_E_WARNING=Futási idő figyelmeztetések
+errors_E_PARSE=Idő-elemzési hibák fordítása
+errors_E_NOTICE=Futási idő figyelmeztetések
+errors_E_CORE_ERROR=Végzetes hibák, amelyek az indítás során fordulnak elő
+errors_E_CORE_WARNING=figyelmeztetések, amelyek az indítás során fordulnak elő
+errors_E_COMPILE_ERROR=Végzetes fordítási idő hibák
+errors_E_COMPILE_WARNING=Összeállítási idő figyelmeztetések
+errors_E_USER_ERROR=Felhasználó által generált hibaüzenet
+errors_E_USER_WARNING=Felhasználó által generált figyelmeztető üzenet
+errors_E_USER_NOTICE=Felhasználó által generált értesítés
+errors_ignore=Nem veszi figyelembe az ismétlődő hibákat?
+errors_source=Nem veszi figyelembe a forrást, ha ismétléseket keres?
+errors_maxlen=A naplózott hibák maximális mérete
+errors_file=Naplófájl hibákat
+errors_syslog=syslog
+errors_err=Nem sikerült menteni a hibanaplót
+errors_ereporting=Nincs megadva hiba típus kifejezés
+errors_emaxlen=Hiányzik vagy érvénytelen a bejelentkezett hibák maximális mérete
+errors_efile=Hiányzik a naplófájl
+
+misc_header=Egyéb PHP beállítások
+misc_short=Engedélyezzük a PHP szkripteket, amelyek kezdőbetűje &lt;? ?
+misc_asp=Engedélyezi a &lt;% %&gt; címkéket?
+misc_zlib=Tömöríti a kimenetet a zlib segítségével?
+misc_flush=Flush output minden írás után?
+misc_fopen=Engedélyezi az URL-ek megnyitását fájlként?
+misc_smtp=SMTP szerver az e-mailek küldéséhez
+misc_port=SMTP port a kiszolgálón
+misc_sendmail=E-mail küldési parancs elérési útja
+misc_err=A többi beállítás mentése nem sikerült
+misc_esmtp=Hiányzik vagy nem oldható meg az SMTP-kiszolgáló
+misc_esmtp_port=Hiányzó vagy nem numerikus SMTP-port
+misc_esendmail=Érvénytelen parancs az e-mail küldéséhez
+misc_esendmail2=Hiányzik az e-mail küldésére szolgáló parancs
+misc_include=Engedélyezi a távvezérlő megnyitását Tartalmazza?
+misc_path=CGI Fix Path Info?
+misc_timezone=PHP időzóna
+misc_charset=Alapértelmezett karakterkészlet
+
+log_manual=A (z) $1 fájl kézi szerkesztése
+log_vars=Megváltozott a PHP változók $1 -ben
+log_dirs=Megváltozott a könyvtári beállítások a $1 -ben
+log_db=Megváltozott az adatbázis beállításai a $1 -ben
+log_session=Megváltozott a munkamenet opciói a $1 -ben
+log_safe=Megváltozott a biztonságos mód opciói a $1 -ben
+log_limits=Megváltozott erőforrás-korlátok $1 -ben
+log_errors=Megváltozott a hibás naplózás $1 -ben
+log_misc=Megváltoztatta a $1 egyéb beállításait
+
+acl_manual=Kézzel lehet szerkeszteni a konfigurációs fájlokat?
+acl_inis=További konfigurációs fájlok <br>(<i> fájlnév </i>=<i> leírás </i> formátumban)
+acl_user=Fájlok olvasása és írása felhasználóként

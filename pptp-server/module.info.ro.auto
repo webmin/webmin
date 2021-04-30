@@ -1,0 +1,3 @@
+desc_ro=Server VPN PPTP
+longdesc_ro=Configurați-vă sistemul ca server PPTP, astfel încât clienții VPN Linux sau Windows să se poată conecta.
+name_ro=pptpd

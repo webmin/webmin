@@ -1,0 +1,18 @@
+index_applymsg2=برای توقف تنظیمات فعلی با توقف و شروع مجدد ProFTPD ، روی این دکمه کلیک کنید.
+index_stop=توقف سرور
+index_stopmsg=برای متوقف کردن سرور FTP روی این دکمه کلیک کنید ، که از اتصال هر مشتری جدید FTP جلوگیری می کند.
+index_proftpd=ProFTPd
+
+mod_core_uid=UID
+mod_core_firstcdt=همیشه نشان می دهد
+
+stop_err=سرور FTP متوقف نشد
+stop_einetd=در حالت inetd نمی توانید سیم کارت سرور را متوقف کنید.
+stop_erun=در حال اجرا نیست
+
+apply_err=پیکربندی FTP انجام نشد
+apply_egone=دیگر در حال اجرا نیست
+
+proftpd_apply=تغغیرات را اعمال کن
+proftpd_stop=ProFTPd را متوقف کنید
+proftpd_start=ProFTPd را شروع کنید

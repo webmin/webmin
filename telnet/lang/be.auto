@@ -1,0 +1,8 @@
+index_title=SSH Увайсці
+index_warn=Увага! Гэты сеанс telnet зашыфраваны <b>не</b>.
+index_nojava=Гэты модуль патрабуе функцыі java, але ваш браўзэр не падтрымлівае Java
+index_credits=Аплет распрацаваны ў рамках GPL <a href='$1' target=_top>Matthias L. Jugel & Marcus Mei�ner</a>.
+index_sshcredits=Уключае праграмнае забеспячэнне, распрацаванае камандай распрацоўшчыкаў Cryptix (<a href=$1 target=_top>$1</a>).
+index_esocket=На серверы $1 порт $2 не працуе сервер telnet.
+index_esocket2=На серверы $1 порт $2 не працуе сервер SSH.
+index_elookup=Не атрымалася знайсці IP-адрас для $1 для праверкі telnet або SSH-сервера.

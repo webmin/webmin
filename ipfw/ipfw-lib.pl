@@ -54,7 +54,7 @@ elsif ($has_net_lib) {
 @tcpflags = ( "fin", "syn", "rst", "psh", "ack", "urg" );
 
 # Get the detected ipfw version
-if (open(VERSION, "$module_config_directory/version")) {
+if (open(VERSION, "<$module_config_directory/version")) {
 	chop($ipfw_version = <VERSION>);
 	close(VERSION);
 	}
@@ -65,14 +65,14 @@ sub get_config
 {
 local $file = $_[0] || $ipfw_file;
 local $fmt = &get_ipfw_format();
-if ($_[0] =~ /\|$/) {
+if ($file =~ /\|$/) {
 	# When getting from command, there is never an 'add'
 	$fmt = 0;
 	}
 local @rv;
 local $cmt;
 local $lnum = -1;
-open(LIST, $file);
+open(LIST, $file =~ /\|$/ ? $file : "<".$file);
 while(<LIST>) {
 	${$_[1]} .= $_ if ($_[1]);
 	$lnum++;
@@ -460,7 +460,7 @@ sub list_protocols
 {
 local @stdprotos = ( 'tcp', 'udp', 'icmp' );
 local @otherprotos;
-open(PROTOS, "/etc/protocols");
+open(PROTOS, "</etc/protocols");
 while(<PROTOS>) {
 	s/\r|\n//g;
 	s/#.*$//;
@@ -687,7 +687,7 @@ if (defined($get_ipfw_format_cache)) {
 	return $get_ipfw_format_cache;
 	}
 local $fmt;
-if (open(FILE, $ipfw_file)) {
+if (open(FILE, "<".$ipfw_file)) {
 	# Check existing format
 	while(<FILE>) {
 		if (/^(\d+)\s/) {

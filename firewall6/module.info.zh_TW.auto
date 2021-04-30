@@ -1,0 +1,3 @@
+name_zh_TW=防火牆6
+desc_zh_TW=Linux IPv6防火牆
+longdesc_zh_TW=使用ip6tables配置Linux防火牆。允許編輯所有表，鏈，規則和選項。

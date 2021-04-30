@@ -1,0 +1,375 @@
+index_msgnosupported2=Twoja wersja Squid nie jest obsługiwana przez Webmin. Moduł ten obsługuje tylko wersje od $1 do $2.
+index_delay=Opóźnij baseny
+index_authparam=Programy uwierzytelniania
+index_headeracc=Kontrola dostępu do nagłówka
+index_refresh=Odśwież zasady
+index_cachemgr=Hasła menedżera pamięci podręcznej
+index_version=Wersja Squid $1
+
+index_stop=Stop Squid
+index_stopdesc=Kliknij ten przycisk, aby zatrzymać działający serwer proxy Squid. Po zatrzymaniu klienci korzystający z niego nie będą mogli wysyłać żądań internetowych ani FTP.
+index_start=Uruchom Squid
+index_startdesc=Kliknij ten przycisk, aby uruchomić serwer proxy Squid przy użyciu bieżącej konfiguracji.
+index_restart=Zastosuj konfigurację
+index_restartdesc=Kliknij ten przycisk, aby aktywować bieżącą konfigurację Squid.
+index_iptables=Konfiguracja przekierowania portu
+index_squid=Serwer proxy Squid
+index_manual=Edytuj pliki konfiguracyjne
+
+manual_title=Edytuj pliki konfiguracyjne
+manual_file=Wybierz plik konfiguracyjny do edycji:
+manual_change=Zmiana
+manual_editing=Użyj pola tekstowego poniżej, aby ręcznie edytować konfiguracje w $1. Bądź ostrożny, ponieważ nie zostanie wykonane sprawdzanie składni ani poprawności.
+manual_err=Nie udało się zapisać pliku konfiguracyjnego
+manual_efile=Niepoprawna nazwa pliku konfiguracji!
+manual_ecannot=Nie możesz ręcznie edytować plików konfiguracyjnych
+
+acl_eusersall=Wszyscy użytkownicy
+acl_euserssel=Tylko te wymienione…
+acl_nodns=Wyłączyć wyszukiwania?
+acl_rfcusersr=RFC931 Users Regexps
+acl_mai=Maksymalna liczba adresów IP logowania na użytkownika
+acl_maistrict=<b>Ściśle egzekwowane</b>
+acl_mairemind=pamiętaj, aby ustawić opcję Uwierzytelnij pamięć podręczną IP na> 0 w „module programów uwierzytelniania”
+acl_rpmt=Odpowiedz typ MIME
+acl_extclass=Klasa programu
+acl_extargs=Dodatkowe argumenty
+acl_file=Przechowuj wartości ACL w pliku
+acl_nofile=Konfiguracja kałamarnicy
+acl_infile=Oddzielny plik
+acl_keep=Po prostu użyć istniejącej zawartości pliku?
+
+aclsave_enofile=Nie wpisano nazwy pliku ACL
+aclsave_ealready=Plik ACL już istnieje
+
+cach_esame=<b>Plik wykonywalny Squid cachemgr.cgi</b> jest ustawiony na program cachemgr.cgi Webmina, a nie ten dostarczony przez Squid.
+
+clear_url=Usuń jeden adres URL z pamięci podręcznej:
+clear_ok=Usunąć
+
+eacl_noprr=Nie określono ograniczeń odpowiedzi proxy
+eacl_addprr=Dodaj ograniczenie odpowiedzi proxy.
+
+eacl_replypr=Odpowiedz na ograniczenia proxy
+eacl_replynopr=Nie określono ograniczeń proxy odpowiedzi
+
+eacl_ext=Zewnętrzne programy ACL
+eacl_ename=Nazwa klasy
+eacl_format=Format wejściowy
+eacl_program=Program obsługi
+eacl_noext=Nie zdefiniowano zewnętrznych programów ACL.
+eacl_addext=Dodaj zewnętrzny program ACL.
+eacl_eclass=Nie wybrano żadnej klasy programu
+eacl_cname=Wpisz imię
+eacl_file=Z pliku $1
+eacl_hdelete=Usuń wybrane ograniczenia
+
+ec_coss=COSS
+ec_gap=Maksymalna luka w czytaniu z wyprzedzeniem
+ec_maxreplies=Maksymalne rozmiary ciała odpowiedzi
+ec_maxrn=Rozmiar (kB)
+ec_maxracls=W przypadku żądań pasujących do list ACL (pozostaw puste dla wszystkich)
+
+ech_siq2=Odrzucić zapytania ICP?
+ech_pass=Przekaż uwierzytelnienie klienta do tej pamięci podręcznej
+ech_upass=Przekaż login klienta za pomocą hasła:
+ech_timeo=Limit czasu połączenia dla hosta
+ech_digest=Adres URL skrótu pamięci podręcznej hosta
+ech_maxconn=Maksymalna liczba jednoczesnych połączeń
+ech_miss=Zezwolić na brakujące wnioski?
+ech_htcp=Używać HTCP zamiast ICP?
+ech_origin=Traktować hosta jako serwer pochodzenia?
+ech_force=Force Host: nagłówek do
+ech_same=Bez zmian
+ech_ssl=Połączyć za pomocą SSL?
+
+eicp_thost=Nazwa hosta
+eicp_ttype=Rodzaj
+eicp_tpport=Port proxy
+eicp_tiport=Port ICP
+eicp_delete=Usuń wybrane pamięci podręczne
+
+elogs_none=Żaden
+elogs_logformat=Dostęp do formatów dziennika
+elogs_fname=Sformatuj nazwę
+elogs_ffmt=Definicja formatu
+elogs_logformat1=Domyślnie (o nazwie <tt>squid</tt>, przy użyciu standardowego formatu)
+elogs_logformat0=Formaty niestandardowe zdefiniowane poniżej ..
+elogs_access=Uzyskaj dostęp do plików dziennika
+elogs_afile=Plik dziennika
+elogs_afmt=Sformatuj nazwę
+elogs_aacls=Rejestruj tylko listy ACL
+elogs_notset=Nie ustawiony
+elogs_dont=Nie loguj się
+elogs_file=Plik $1
+elogs_squid=Standard kałamarnicy
+
+emisc_hash=Masz tylko jeden serwer HTTP Accel?
+emisc_wccprtr=Adres routera WCCP
+emisc_wccpin=Adres przychodzący WCCP
+emisc_wccpout=Adres wychodzący WCCP
+emisc_none=Żaden
+emisc_virtual=Wirtualny
+
+eports_ssl=Adresy i porty SSL
+eports_opts=Opcje dla portu
+eports_def=Domyślnie (zwykle 3128)
+eports_sel=Wymienione poniżej ..
+eports_unc=Czy nieczyste zamknięcia SSL?
+eports_checkhost=Zweryfikować nazwy hostów w adresach URL?
+eports_underscore=Zezwolić na podkreślenie w nazwach hostów?
+eports_all=Wszystko
+
+eprogs_sppe=Program ping włączony?
+eprogs_startup=Programy do uruchomienia na początku
+eprogs_idle=Minimalna liczba programów do uruchomienia
+eprogs_concurrency=Liczba równoczesnych żądań na program
+eprogs_capweb=Domyślny Webmin
+eprogs_ttl=Czas buforowania uwierzytelnienia
+eprogs_aittl=Uwierzytelnij czas buforowania IP
+eprogs_realm=Dziedzina uwierzytelniania
+
+euser_e=Włączony?
+
+ahttp_replyheader=Utwórz ograniczenie odpowiedzi serwera proxy
+ahttp_replyheader1=Edytuj ograniczenie odpowiedzi proxy
+ahttp_replypr=Ograniczenie odpowiedzi proxy
+
+icache_euser=Użytkownik uruchamia Squid, ponieważ nie istnieje
+
+scache_emaxrs=Nieprawidłowy maksymalny rozmiar ciała w wierszu $1
+
+slogs_efname=Niepoprawna nazwa formatu w wierszu $1
+slogs_effmt=Brakuje formatu dziennika w wierszu $1
+slogs_eafile=Brakujący lub nieprawidłowy plik dziennika w wierszu $1
+
+sprog_emsg9=„$1” nie jest prawidłowym czasem buforowania
+sprog_emsg10=„$1” nie jest prawidłowym TTL
+sprog_echildren=Liczba programów musi być liczbą większą od zera
+
+lib_aclrpmt=Odpowiedz typ MIME
+lib_aclrur=RFC931 Regexp użytkownika
+lib_aclext=Program zewnętrzny
+lib_aclmuip=Maksymalny adres IP użytkownika
+
+log_authparam=Zmieniono opcje programu uwierzytelniającego
+log_https_delete=Usunięto ograniczenia proxy $1
+log_headeracc_create=Utworzono regułę dostępu do nagłówka
+log_headeracc_modify=Zmodyfikowana reguła dostępu do nagłówka
+log_headeracc_delete=Usunięto regułę dostępu do nagłówka
+log_headeracc_move=Przeniesiono regułę dostępu do nagłówka
+log_icps_delete=Usunięte $1 Ograniczenia ICP
+log_hosts_delete=Usunięto hosty pamięci podręcznej $1
+log_delay=Zmieniono opcje globalnej puli opóźnień
+log_pool_create=Dodano pulę opóźnień $1
+log_pool_modify=Zmodyfikowana pula opóźnień $1
+log_pool_delete=Usunięto pulę opóźnień $1
+log_pools_delete=Usunięte pule opóźnień $1
+log_delay_create=Dodano ACL dla puli opóźnień $1
+log_delay_modify=Zmodyfikowano listę ACL dla puli opóźnień $1
+log_delay_delete=Usunięto listę ACL dla puli opóźnień $1
+
+log_delay_move=Przeniesiono listę ACL dla puli opóźnień $1
+log_refresh_create=Utworzono regułę odświeżania dla $1
+log_refresh_modify=Zmodyfikowana reguła odświeżania dla $1
+log_refresh_delete=Usunięto regułę odświeżania dla $1
+
+log_refresh_move=Przeniesiono regułę odświeżania dla $1
+log_refreshes_delete=Usunięte reguły odświeżania $1
+log_iptables=Zaktualizowana konfiguracja przekierowania portów
+log_purge=Usunięto adres URL $1 z pamięci podręcznej
+log_cachemgr=Zmieniono hasła menedżera pamięci podręcznej
+
+acl_restart=Czy można zastosować konfigurację Squid?
+
+delay_title=Opóźnij baseny
+delay_add=Dodaj nową pulę opóźnień.
+delay_num=Numer
+delay_class=Klasa
+delay_class_1=Agregat
+delay_class_2=Zbiorcze i indywidualne
+delay_class_3=Zbiorcze, indywidualne i sieciowe
+delay_class_4=Zbiorcze, indywidualne, sieciowe i użytkownika
+delay_class_5=Grupowanie znaczników
+delay_agg=Łączny limit
+delay_ind=Indywidualny limit
+delay_net=Limit sieci
+delay_user=Limit użytkowników
+delay_tag=Limit tagów
+delay_none=Nie zdefiniowano jeszcze puli opóźnień.
+delay_unlimited=bez limitu
+delay_param=$1/sec, $2 max
+delay_header=Opcje globalnej puli opóźnień
+delay_initial=Początkowy poziom łyżki
+delay_err=Nie udało się zapisać opcji puli opóźnień
+delay_ecannot=Nie możesz edytować puli opóźnień
+delay_epercent=„$1” nie jest prawidłowym początkowym procentem poziomu segmentu
+delay_return=lista pul opóźnień
+delay_delete=Usuń wybrane pule opóźnień
+pool_title1=Dodaj pulę opóźnień
+pool_title2=Edytuj pulę opóźnień
+pool_header=Opóźnij opcje puli
+pool_num=Numer puli
+pool_class=Klasa basenowa
+pool_agg=Łączny limit (dla klas 1, 2 i 3)
+pool_ind=Indywidualny limit (dla klas 2 i 3)
+pool_net=Limit sieci (dla klasy 3)
+pool_user=Limit użytkowników (dla klasy 4)
+pool_tag=Limit znaczników (dla klasy 5)
+pool_limit1=/ druga,
+pool_limit2=max
+pool_err=Nie udało się zapisać puli opóźnień
+pool_elimit1=„$1” nie jest prawidłową liczbą bajtów/sekundę
+pool_elimit2=„$1” nie jest prawidłową maksymalną liczbą bajtów
+pool_aclheader=Listy ACL pasujące do puli
+pool_noacl=Nie zdefiniowano jeszcze list ACL pasujących do tej puli.
+pool_add=Dodaj nową listę ACL dla tej puli
+pool_return=pula opóźnień
+pool_unit0=bitów
+pool_unit1=bajty
+pool_unit2=kb
+pool_unit3=kB
+pool_unit4=Mb
+pool_unit5=MB
+
+dpool_err=Nie udało się usunąć puli opóźnień
+dpool_enone=Nie wybrano
+
+apool_header=Dodaj listę opóźnień ACL
+apool_header1=Edytuj opóźnioną pulę ACL
+apool_pr=Opóźnij ACL puli
+
+authparam_title=Programy uwierzytelniania
+authparam_header=Opcje zewnętrznego programu uwierzytelniającego
+authparam_ttl=Czas na buforowanie haseł
+authparam_ipttl=Czas powiązać użytkownika z adresem IP dla
+authparam_never=Nigdy
+authparam_ecannot=Nie możesz edytować programów uwierzytelniających
+authparam_err=Nie udało się zapisać programów uwierzytelniających
+authparam_bprogram=Podstawowy program uwierzytelniający
+authparam_dprogram=Program uwierzytelniający Digest
+authparam_nprogram=Program uwierzytelniający NTLM
+authparam_reuses=Ile razy wyzwanie NTLM może być ponownie użyte
+authparam_lifetime=Żywotność wyzwań NTLM
+authparam_ereuses=„$1” nie jest prawidłową liczbą ponownych zastosowań
+authparam_elifetime=„$1” nie jest ważnym czasem życia wyzwania
+authparam_mui_msg=Uwierzytelnianie IP TTL musi być większe niż 0, jeśli używasz listy ACL <b>„max_user_ip”</b>. Wprowadź czas, w którym Squid ma zapamiętać relację Użytkownik/IP. Użytkownik może logować się tylko z zapamiętanego adresu IP, dopóki ten czas nie minie, nawet jeśli zamknął swoją przeglądarkę.
+ext_title1=Utwórz program zewnętrzny
+ext_title2=Edytuj program zewnętrzny
+ext_header=Szczegóły dotyczące zewnętrznego programu ACL
+ext_name=Nazwa typu programu
+ext_format=Ciąg formatu wejściowego
+ext_ttl=TTL dla wyników w pamięci podręcznej
+ext_negative_ttl=TTL dla wyników ujemnych w pamięci podręcznej
+ext_concurrency=Liczba programów do uruchomienia
+ext_children=Liczba programów do uruchomienia
+ext_cache=Rozmiar pamięci podręcznej
+ext_ttl_u=sekundy
+ext_negative_ttl_u=sekundy
+ext_concurrency_u=programy
+ext_children_u=programy
+ext_cache_u=bajty
+ext_program=Ścieżka programu i argumenty
+ext_err=Nie udało się zapisać zewnętrznego programu ACL
+ext_ename=Brak lub niepoprawna nazwa typu
+ext_eformat=Brakujący lub nieprawidłowy ciąg formatu
+ext_ettl=Brakujące lub nieprawidłowe TTL
+ext_enegative_ttl=Brakujące lub nieprawidłowe ujemne TTL
+ext_econcurrency=Brakująca lub nieprawidłowa liczba programów
+ext_echildren=Brakująca lub nieprawidłowa liczba programów
+ext_ecache=Brakujący lub nieprawidłowy rozmiar pamięci podręcznej
+ext_eprogram=Wprowadzono niepoprawną ścieżkę programu
+ext_eclash=Zewnętrzny typ programu o tej samej nazwie już istnieje
+ext_eused=Ten zewnętrzny program jest używany przez ACL
+
+header_title=Kontrola dostępu do nagłówka
+header_none=Nie zdefiniowano jeszcze reguł kontroli dostępu do nagłówków.
+header_name=Nagłówek HTTP
+header_act=Akcja
+header_acls=Dla list ACL
+header_add=Dodaj nową regułę kontroli dostępu do nagłówka.
+header_create=Utwórz regułę dostępu do nagłówka
+header_create_request_header_access=Utwórz regułę dostępu do nagłówka żądania
+header_create_reply_header_access=Utwórz regułę dostępu do nagłówka odpowiedzi
+header_edit=Edytuj regułę dostępu do nagłówka
+header_edit_request_header_access=Edytuj regułę dostępu do nagłówka żądania
+header_edit_reply_header_access=Edytuj regułę dostępu do nagłówka odpowiedzi
+header_header=Szczegóły reguły kontroli dostępu do nagłówka HTTP
+header_return=lista reguł kontroli dostępu do nagłówka
+header_ecannot=Nie możesz edytować reguł kontroli dostępu do nagłówków
+header_err=Nie udało się zapisać reguły kontroli dostępu do nagłówka
+header_ename=Brakująca lub nieprawidłowa nazwa nagłówka
+header_request_header_access=Żądaj nagłówków
+header_reply_header_access=Odpowiedz nagłówki
+
+refresh_title=Odśwież zasady
+refresh_none=Nie zdefiniowano jeszcze reguł odświeżania.
+refresh_re=Wyrażenie regularne
+refresh_min=Minimalny czas
+refresh_pc=Procent wieku
+refresh_max=Maksymalny czas
+refresh_add=Dodaj nową regułę odświeżania.
+refresh_ecannot=Nie możesz edytować reguł odświeżania
+refresh_create=Utwórz regułę odświeżania
+refresh_edit=Edytuj regułę odświeżania
+refresh_return=lista reguł odświeżania
+refresh_header=Odśwież szczegóły reguły
+refresh_caseless=Zignorować przypadek?
+refresh_err=Nie udało się zapisać reguły odświeżania
+refresh_options=Odśwież opcje reguły
+refresh_override-expire=Egzekwuj minimalny wiek powyżej wieku ustawiony przez serwer
+refresh_override-lastmod=Wymuszaj minimalny wiek nawet na niedawno zmodyfikowanych obiektach
+refresh_reload-into-ims=Konwertuj nagłówki no-cache klienta na If-Modified-Since
+refresh_ignore-reload=Zignoruj klienta bez pamięci podręcznej lub przeładuj nagłówki
+refresh_ere=Brakujące lub nieprawidłowe wyrażenie regularne
+refresh_emin=Brakujący lub nieprawidłowy minimalny czas
+refresh_emax=Brakujący lub nieprawidłowy maksymalny czas
+refresh_epc=Brakujący lub nieprawidłowy procent wieku
+refresh_delete=Usuń wybrane reguły odświeżania
+drefresh_err=Nie udało się usunąć reguł odświeżania
+drefesh_enone=Nie wybrano
+
+iptables_title=Konfiguracja przekierowania portu
+iptables_inst0=Wydaje się, że polecenia zapory IPtables wymagane do skonfigurowania przekierowania portów nie są zainstalowane w systemie. Zobacz moduł <a href='$1'>Linux Firewall</a>, aby uzyskać więcej informacji.
+iptables_inst1=Wygląda na to, że moduł <a href='$1'>Linux Firewall</a> nie jest w pełni skonfigurowany w twoim systemie. Ten moduł wykorzystuje ten moduł do konfiguracji przekierowania portu Frox.
+iptables_desc=Squid może wykonywać przezroczyste proxy HTTP dla żądań na porcie $1, ustawiając reguły zapory ogniowej, aby automatycznie przekazywać je do portu $2, na którym nasłuchuje Squid. Działa to tylko wtedy, gdy system z systemem Squid jest również routerem dla Twojej sieci. Można to zrobić, dodając do zapory regułę IPtables, przy założeniu, że zarządza nią moduł <a href='$3'>Linux Firewall</a>.
+iptables_disabled=Przekierowanie portu jest wyłączone
+iptables_enabled3=Przekierowanie portów jest włączone dla klientów w sieci
+iptables_enabled4=Przekierowanie portów jest włączone dla klientów w interfejsie
+iptables_apply=Zastosować zaporę ogniową i konfigurację Squid?
+iptables_save=Zapisz i zastosuj
+iptables_err=Nie udało się zapisać przekierowania portów
+iptables_enet=Brakujący lub nieprawidłowy adres sieciowy (powinien być jak 192.168.1.0/24)
+iptables_eiface=Brakujący lub nieprawidłowy interfejs sieciowy
+iptables_eapply=Zastosowanie zapory ogniowej nie powiodło się : $1
+iptables_eapply2=Zastosowanie Squid nie powiodło się : $1
+
+syslog_access=Dziennik dostępu do kałamarnicy
+syslog_cache=Dziennik buforowania kalmarów
+syslog_store=Dziennik magazynu obiektów Squid
+
+purge_err=Nie udało się usunąć adresu URL z pamięci podręcznej
+purge_title=Wyczyść buforowany adres URL
+purge_doing=Czyszczenie adresu URL $1 ..
+purge_done=.. gotowy.
+purge_failed=.. nie powiodło się! Zobacz powyższy komunikat o błędzie, z jakiego powodu.
+
+dhttp_err=Nie udało się usunąć ograniczeń proxy
+dhttp_enone=Nie wybrano
+
+dicp_err=Nie udało się usunąć ograniczeń ICP
+dicp_enone=Nie wybrano
+
+cachemgr_title=Hasła menedżera pamięci podręcznej
+cachemgr_ecannot=Nie możesz edytować haseł menedżera pamięci podręcznej
+cachemgr_def1=Nie wymaga hasła
+cachemgr_def0=Hasła i działania określone poniżej ..
+cachemgr_pass=Hasło
+cachemgr_none=Nie potrzebne
+cachemgr_set=Ustawić
+cachemgr_disable=Działania wyłączone
+cachemsg_actions=Zastosuj do działań
+cachemgr_all=Użyj tego hasła do wszystkich działań
+cachemgr_others=Inne akcje:
+cachemgr_enone=Nie wprowadzono - zamiast tego należy wybrać <i>Nie wymaga hasła</i>
+cachemgr_err=Nie udało się zapisać haseł menedżera pamięci podręcznej

@@ -1,0 +1,85 @@
+index_eexpired=Ostrzeżenie: następujące strefy wygasły sygnatury DNSSEC : $1
+index_eexpired_conf=Automatyczne podpisywanie powinno zostać ponownie włączone na stronie $1.
+index_eexpired_mod=Użyj modułu $1, aby wyłączyć DNSSEC dla tych domen lub sprawdzić, dlaczego podpisywanie kończy się niepowodzeniem.
+
+master_inview=$1 w widoku $2 
+
+delete_vwarn=Ta strefa jest powiązana z domeną Virtualmin $1, dlatego nie należy jej tutaj usuwać!
+
+delete_vwarn2=Ta strefa jest powiązana z domeną Virtualmin $1 i $2 innymi, dlatego nie należy jej tutaj usuwać!
+
+edit_eusage=„$1” nie jest prawidłowym numerem użytkowania TLSA
+edit_eselector=„$1” nie jest prawidłowym numerem selektora TLSA
+edit_ematch=„$1” nie jest prawidłowym numerem meczu TLSA
+edit_etlsa=Nieprawidłowy kodowany certyfikat TLSA - może zawierać tylko 2-cyfrowe bajty szesnastkowe
+edit_ealg2=„$1” nie jest prawidłowym numerem algorytmu certyfikatu
+edit_efp=„$1” nie jest prawidłowym typem odcisku palca certyfikatu
+edit_esshfp=Brakujące lub nieprawidłowe dane klucza publicznego zakodowane w standardzie 64
+edit_edmarcruf=Brakuje adresu informacji sądowej
+edit_ecaavalue2=Brakująca lub niepoprawnie wyglądająca nazwa domeny
+
+type_TLSA=Certyfikat SSL
+type_SSHFP=Klucz publiczny SSH
+type_CAA=Urząd certyfikacji
+
+edit_TLSA=Certyfikat SSL
+edit_SSHFP=Klucz publiczny SSH
+edit_CAA=Urząd certyfikacji
+
+recs_TLSA=Certyfikat SSL
+recs_SSHFP=Klucz publiczny SSH
+recs_CAA=Urząd certyfikacji
+
+value_TLSA1=Wykorzystanie certyfikatu
+value_TLSA2=Selektor certyfikatów
+value_TLSA3=Dopasowanie certyfikatu
+value_TLSA4=Dane certyfikatu
+value_SSHFP1=Algorytm klucza publicznego
+value_SSHFP2=Odcisk palca klucza publicznego
+value_SSHFP3=Dane klucza publicznego
+value_dmarcruf=Wyślij informacje sądowe do
+value_CAA1=Wymagać wykonania?
+value_CAA2=Rodzaj autoryzacji
+value_CAA3=Nazwa domeny CA
+value_caa_issue=Certyfikat jednej domeny
+value_caa_issuewild=Wildcard cert
+value_caa_iodef=URL naruszenia zasad
+
+tlsa_usage0=Urząd certyfikacji
+tlsa_usage1=Jednostka końcowa
+tlsa_usage2=Zaufaj kotwicy
+tlsa_usage3=Domena wydana
+tlsa_selector0=Pełny certyfikat
+tlsa_selector1=Informacje o kluczu publicznym
+tlsa_match0=Niehasowana zawartość
+tlsa_match1=Mieszanie SHA-256
+tlsa_match2=Mieszanie SHA-512
+
+sshfp_alg1=RSA
+sshfp_alg2=DSA
+sshfp_alg3=ECDSA
+sshfp_alg4=Ed25519
+sshfp_fp1=SHA-1
+sshfp_fp2=SHA-256
+
+net_taddr6=Źródłowy adres IPv6 dla przelewów
+net_tport6=Źródłowy port IPv6 do przesyłania danych
+net_eaddr=„$1” nie jest prawidłowym adresem IPv4
+net_eaddr6=„$1” nie jest prawidłowym adresem IPv6
+
+massdelete_vwarn=Niektóre strefy są powiązane z domeną Virtualmin $1, dlatego nie należy ich tutaj usuwać!
+massdelete_vwarn2=Niektóre strefy są powiązane z domeną Virtualmin $1 i $2 innymi, dlatego nie należy ich tutaj usuwać!
+
+dnssec_secs=sekundy
+
+dt_zone_zskrolldesc=Wymuś najazd klucza podpisującego strefę
+dt_zone_kskrolldesc=Wymuś najazd klucza podpisującego klucz strefy
+
+zonekey_eprivate=Nie można odczytać klucza prywatnego powiązanego z tą strefą : $1
+
+trusted_auto=Tak (tryb automatyczny)
+trusted_dlvs1=Określ automatycznie
+trusted_dlvs0=Wymienione poniżej. ..
+trusted_dlvs2=Żaden
+trusted_warning=Ostrzeżenie! Twoja konfiguracja klienta BIND DNSSEC zawiera nieaktualne klucze, które przestaną działać w październiku 2017 r. Użyj strony <a href='$1'>BIND DNSSEC Weryfikacja</a>, aby dostosować konfigurację, lub kliknij przycisk poniżej.
+trusted_fix=Napraw konfigurację DNSSEC

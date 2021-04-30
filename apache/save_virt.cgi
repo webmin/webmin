@@ -7,6 +7,9 @@ require './apache-lib.pl';
 ($conf, $v) = &get_virtual_config($in{'virt'});
 &can_edit_virt($v) || &error($text{'virt_ecannot'});
 $access_types{$in{'type'}} || &error($text{'etype'});
+if ($in{'type'} == 14) {
+	$in{'SSLProtocol'} || &error($text{'virt_eprotocol'});
+	}
 $in{'type'} == 8 && !$access{'vuser'} &&
 	&error($text{'virt_euser'});
 @edit = &editable_directives($in{'type'}, 'virtual');

@@ -1,0 +1,39 @@
+index_title=NFS-eksport
+index_add=Tilføj en ny NFS-eksport
+index_dir=Vejviser
+index_hosts=Tilladte værter
+index_all=Alle værter
+index_none=Der er endnu ikke defineret nogen NFS-eksport.
+index_apply=Anvend konfiguration
+index_applydesc=Klik på denne knap for at gøre alle de eksport, der er anført ovenfor, aktive med deres konfigurerede indstillinger.
+index_return=eksportliste
+
+edit_title1=Opret eksport
+edit_title2=Rediger eksport
+edit_header=Eksporter detaljer
+edit_dir=Directory til eksport
+edit_hosts=Eksporter til værter/netgrupper
+edit_ro=Læs kun?
+edit_wsync=Synkronisering efter skriver?
+edit_anon=Rootbruger tilladelser
+edit_anon1=Standard (behandl som <tt>ingen</tt>)
+edit_anon2=Nægt adgang
+edit_anon0=Behandl som bruger
+edit_rw=Læse/skriveadgang
+edit_root=Root-filadgang
+edit_access=Monter adgang
+edit_all=Alle værter
+edit_sel=Listede værter ..
+edit_none=Ingen værter
+
+save_err=Eksporten kunne ikke gemmes
+save_edir=Manglende eller ikke-eksisterende mappe til eksport
+save_eanon=Manglende eller ugyldig root-bruger
+save_erw=Ingen læse-skriv værter indtastet
+save_eroot=Der er ikke angivet nogen rootfiladgangsværter
+save_eaccess=Der er ikke angivet nogen monteringsadgangshosts
+
+log_create_export=Oprettet eksport af $1 
+log_delete_export=Slet eksport af $1 
+log_modify_export=Ændret eksport af $1 
+log_apply=Anvendt konfiguration

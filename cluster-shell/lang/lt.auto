@@ -1,0 +1,22 @@
+index_title=„Cluster Shell“ komandos
+index_cmd=Komanda bėgti
+index_old=arba
+index_server=Paleiskite serveriuose
+index_run=Vykdykite komandą dabar
+index_return=modulio rodyklė
+index_this=šį serverį
+index_all=&lt;Visi šeimininkai&gt;
+index_group=$1 nariai
+index_clear=Išvalyti istoriją
+index_edit=Redaguoti ankstesnį
+
+run_title=Vykdyti komandą
+run_err=Nepavyko paleisti komandos
+run_ecmd=Neįvesta komanda
+run_failed=Nepavyko paleisti $1 : $2 
+run_success=Išvestis iš $1 ..
+run_enone=Nėra pasirinktų serverių
+
+log_clear=Išvalyta komandų istorija
+log_run=Paleido $1 $2 serveriuose
+log_run_l=$2 paleido $1 

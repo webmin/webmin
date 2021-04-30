@@ -1,0 +1,42 @@
+index_tabdownload=Descargar desde la web
+index_tabupload=Subir al servidor
+index_tabfetch=Descargar desde el servidor
+index_descdownload=Este formulario le permite descargar archivos o páginas web desde URL HTTP o FTP al sistema que ejecuta Webmin. La descarga puede realizarse de inmediato o programarse para algún momento en el futuro.
+index_descupload=Esta página le permite cargar uno o más archivos desde la PC en la que se ejecuta su navegador web al sistema que ejecuta Webmin.
+index_descfetch=Esta página es para descargar un archivo del sistema que ejecuta Webmin para mostrarlo en su navegador o guardarlo en el mismo sistema.
+index_email=¿Enviar correo electrónico cuando se realizan las descargas?
+index_emailto=Sí, para abordar
+index_email2=¿Enviar correo electrónico cuando se realizan las cargas?
+
+upload_eemail=Falta la dirección de correo electrónico para notificar
+upload_saving=Guardando el archivo $1 ..
+upload_saved=.. escribió $1 
+upload_unzipping=Extrayendo archivo $1 ..
+upload_unzipdone=.. $1 
+
+download_enone=No se ingresó ninguna URL para descargar
+
+fetch_eexists2=El archivo o directorio no existe
+fetch_eaccess=No tiene permiso para descargar archivos de $1 
+fetch_ezip=No se puede descargar un directorio a menos que esté instalado el comando <tt>zip</tt>
+fetch_eroot=¡El directorio raíz no se puede descargar!
+
+email_downmsg=La siguiente descarga se ha completado :
+email_downurl=URL: $1 
+email_downerr=Mensaje de error: $1 
+email_downpath=Nombre de archivo de destino: $1 
+email_downsize=Tamaño descargado: $1 
+email_subjectd=Descarga completa
+email_eextract=Fallido : $1 
+email_extfailed=extracción fallida : $1 
+email_extdone_zip=Archivo ZIP extraído
+email_extdone_tar=Archivo TAR extraído
+email_extdone_tgz=Archivo TAR comprimido extraído
+email_extdone_tbz2=Archivo TAR comprimido extraído
+email_extdone_lha=Archivo LHArc extraído
+email_upfile=Nombre de archivo original: $1 
+email_uppath=Nombre de archivo de destino: $1 
+email_upsize=Tamaño cargado: $1 
+email_upextract=Estado de extracción: $1 
+email_subjectu=Carga completa
+email_upmsg=Se han completado las siguientes cargas :

@@ -1,0 +1,126 @@
+<header> Vai rezerves mērķu aizstāšana notiek strftime laikā? </header> Ja šī opcija ir iestatīta uz <b>Jā</b> , rezerves mērķa faila nosaukumā var izmantot tādus kodus kā%d,%m,%Y un%u. Tie tiks aizstāti ar attiecīgi dienu, mēnesi gadu un nedēļas dienu, kad tiek veikta dublēšana. Tas ir noderīgi, ja katru dienu vēlaties saglabāt atšķirīgu dublējumu, lai sistēmu varētu atjaunot līdz iepriekšējam datumam. <p> Daži no citiem izmantojamiem kodiem ir: <br><pre> <font size=-1>
+ %a Saīsināts nedēļas dienas nosaukums atbilstoši cur
+        nomas locale.
+
+ %A Pilns nedēļas dienas nosaukums atbilstoši pašreizējam
+        lokalizācija.
+
+ %b Saīsināts mēneša nosaukums atbilstoši pašreizējam
+        lokalizācija.
+
+ %B Pilna mēneša nosaukums atbilstoši pašreizējam
+        lokalizācija.
+
+ %c. vēlamais datuma un laika attēlojums
+        pašreizējā lokalizācija.
+
+ %C Gadsimta skaitlis (gads / 100) kā 2 ciparu vesels skaitlis.
+
+ %d Mēneša diena kā komats (diapazons 01
+        līdz 31).
+
+ %e Tāpat kā%d, mēneša diena kā komats,
+        bet vadošo nulli aizstāj ar atstarpi.
+
+ %E modifikators: izmantojiet alternatīvu formātu, skatīt zemāk.
+
+ %G ISO 8601 gads ar gadsimtu kā decimālskaitli.
+        Četrciparu gads, kas atbilst ISO nedēļas num
+        ber (sk.%V). Tam ir vienāds formāts un vērtība
+        %y, izņemot gadījumu, ja ISO nedēļas numurs pieder
+        uz iepriekšējo vai nākamo gadu, tiek izmantots tas gads
+        tā vietā.
+
+ %g Tāpat kā%G, bet bez gadsimta, ti, ar 2 cipariem
+        gads (00-99).
+
+ %h ekvivalents%b.
+
+ %H Stunda kā decimālskaitlis, izmantojot 24 stundu pulksteni
+        (diapazons no 00 līdz 23).
+
+ %I Stunda kā decimāls skaitlis, izmantojot 12 stundu pulksteni
+        (diapazons no 01 līdz 12).
+
+ %j Gada diena kā komats (diapazons 001
+        līdz 366).
+
+ %k Stunda (24 stundu pulkstenis) kā decimālskaitlis (diapazons
+        0 līdz 23); pirms atsevišķiem cipariem ir tukša.
+        (Skatīt arī%H.)
+
+ %l Stunda (12 stundu pulkstenis) kā decimālskaitlis (diapazons
+        No 1 līdz 12); pirms atsevišķiem cipariem ir tukša.
+        (Skatīt arī%I.)
+
+ %m Mēnesis kā komats (diapazons no 01 līdz 12).
+
+ %M Minūte kā decimālskaitlis (diapazons no 00 līdz 59).
+
+ %n Jaunās līnijas raksturs.
+
+ %O pārveidotājs: izmantojiet alternatīvu formātu, skatīt zemāk.
+
+ %p Vai nu `AM’ vai `PM’ atbilstoši norādītajam laikam
+        vērtību vai atbilstošās strāvas virknes
+        lokalizācija. Pusdienlaiks tiek uzskatīts par “pm” un pusnakts kā
+        `esmu’.
+
+ %P Tāpat kā%p, bet ar mazajiem burtiem: `am’ vai `pm’ vai labojums
+        pašreizējās lokalizācijas virknes virkne.
+
+ %r Laiks izteikts am vai pm. Programmā POSIX
+        locale tas ir līdzvērtīgs `%I:%M:%S%p’.
+
+ %R Laiks ar 24 stundu notāciju (%H:%M). Priekš
+        versiju, ieskaitot sekundes, skatīt%T zemāk.
+
+ %s sekunžu skaits kopš laikmeta, ti, kopš
+        1970-01-01 00:00:00 UTC.
+
+ %S Otrais kā komats (cipars no 00 līdz 61).
+
+ %t Tabulas burts.
+
+ %T Laiks 24 stundu notācijā (%H:%M:%S).
+
+ %u Nedēļas diena aiz komata, diapazons no 1 līdz 7,
+        Pirmdiena ir 1. Skatīt arī%w.
+
+ %U - tekošā gada nedēļas skaitlis aiz komata
+        skaitlis, diapazons no 00 līdz 53, sākot ar pirmo
+        Svētdiena kā pirmās nedēļas pirmā diena. Skatīt arī%V un
+        %W.
+
+ %V kārtējā gada ISO 8601: 1988 nedēļas numurs
+        kā decimāls cipars no 01 līdz 53, kur 1. nedēļa
+        ir pirmā nedēļa, kurā ir vismaz 4 dienas
+        kārtējā gadā, un ar pirmdienu kā pirmo dienu
+        nedēļa. Skatīt arī%U un%W.
+
+ %w Nedēļas diena aiz komata, diapazons no 0 līdz 6,
+        Svētdiena ir 0. Skatīt arī%u.
+
+ %W kārtējā gada nedēļas skaitlis aiz komata
+        skaitlis, diapazons no 00 līdz 53, sākot ar pirmo
+        Pirmdiena kā pirmās nedēļas pirmā diena.
+
+ %x vēlamais datuma attēlojums pašreizējam
+        locale bez laika.
+
+ %X Vēlamais strāvas laika attēlojums
+        lokalizācija bez datuma.
+
+ %y Gads kā decimāls skaitlis bez gadsimta
+        (diapazons no 00 līdz 99).
+
+ %Y Gads kā komats, ieskaitot gadsimtu.
+
+ %z Laika josla kā stundas nobīde no GMT. Nepieciešams
+        izstarot RFC822 atbilstošus datumus (izmantojot &quot;%a,%d%b%Y
+        %H:%M:%S%z &quot;).
+
+ %Z Laika josla vai nosaukums vai saīsinājums.
+
+ %%Burtisks `%’ raksturs.
+</font> </pre><footer>

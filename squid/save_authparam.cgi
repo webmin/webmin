@@ -123,7 +123,7 @@ if ($squid_version >= 2.5) {
 				 $in{'n_ttl'}." ".$in{'n_ttl_u'});
 		}
 
-	&save_directive($conf, "auth_param", \@auth);
+	&save_directive($conf, "auth_param", \@auth, undef, "acl");
 	}
 elsif ($squid_version >= 2) {
 	if ($in{'auth_mode'} == 0) {

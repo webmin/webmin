@@ -1,0 +1,50 @@
+index_title=پیکربندی OpenSLP
+index_return=پیکربندی OpenSLP
+index_eslpd=Daemon OpenSLP $1 در سیستم شما یافت نشد. شاید نصب نشده باشد یا تنظیمات ماژول <a href='$2'></a> نادرست باشد.
+index_econf=پرونده پیکربندی OpenSLP $1 در سیستم شما یافت نشد. شاید نصب نشده باشد یا تنظیمات ماژول <a href='$2'></a> نادرست باشد.
+index_version=نسخه OpenSLP$1
+
+slp_apply=تغغیرات را اعمال کن
+slp_stop=OpenSLP را متوقف کنید
+
+snda_title=Scatic Scope و DA
+snda_useScopes=لیست استاتیک اسکوپ ها
+snda_DAAddresses=لیست استاتیک نمایندگان دایرکتوری (DA)
+
+netcfg_title=تنظیمات شبکه
+netcfg_isBroadcastOnly=از مجبور کردن پخش ها به جای مولتی کاست استفاده می شود
+netcfg_passiveDADetection=از تشخیص DA منفعل استفاده کنید
+netcfg_activeDADetection=از تشخیص DA فعال استفاده کنید (فقط به آدرسهای DHCP یا DA محدود شوید)
+netcfg_DAActiveDiscoveryInterval=کشف فعال در ثانیه (0 غیرفعال کردن کشف غیرفعال)
+netcfg_multicastTTL=Multicast TTL (0-255)
+netcfg_DADiscoveryMaximumWait=حداکثر زمان انتظار برای درخواست های کشف DA (در میلی ثانیه)
+netcfg_DADiscoveryTimeouts=زمان انتظار برای کشف DA (در میلی ثانیه)
+netcfg_HintsFile=فایل به نکات مربوط به OpenSLP
+netcfg_multicastMaximumWait=حداکثر انتظار برای درخواست های چند مرحله ای (در چند ثانیه)
+netcfg_multicastTimeouts=زمان انتظار چند مرحله ای (در چند ثانیه)
+netcfg_unicastMaximumWait=حداکثر زمان بین درخواست های unicast (در میلی ثانیه)
+netcfg_randomWaitBound=حداکثر مقدار برای همه پارامترهای انتظار تصادفی (در میلی ثانیه)
+netcfg_MTU=اندازه بسته MTU (بایت)
+netcfg_interfaces=آدرس های IP رابط هایی که DA/SA باید به آنها گوش کند
+
+dacfg_title=پیکربندی DA
+dacfg_isDA=عملکرد فقط به عنوان DA (قبل از تغییر این راهنمای کاربر را بخوانید)
+
+log_title=ردیابی و ورود به سیستم
+log_traceDATraffic=پیام های راهنمایی و رانندگی DA را چاپ کنید
+log_traceMsg=پیام های جزئیات SLP را چاپ کنید
+log_traceDrop=چاپ SLP اطلاعات پیام را رها کرد
+log_traceReg=اطلاعات ثبت نام و ثبت نام DA و SA را چاپ کنید
+
+error_open=خطا در باز کردن پرونده
+error_flock_on=خطا در ایجاد قفل پرونده
+error_flock_off=خطایی در از بین بردن قفل پرونده
+error_hup=خطا در راه اندازی مجدد OpenSLP با PID
+
+index_start=OpenSLP را شروع کنید
+index_startmsg=بر روی این دکمه کلیک کنید تا Daemon OpenSLP روی سیستم شما شروع شود.
+index_stop=OpenSLP را متوقف کنید
+index_stopmsg=روی این دکمه کلیک کنید تا daemon OpenSLP روی سیستم شما متوقف شود.
+
+stop_err=متوقف نشدن OpenSLP
+start_err=شروع OpenSLP انجام نشد

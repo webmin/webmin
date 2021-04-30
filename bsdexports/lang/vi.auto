@@ -1,0 +1,52 @@
+index_title=Xuất khẩu NFS
+index_add=Thêm một xuất mới.
+index_dirs=Thư mục
+index_clients=Khách hàng
+index_everyone=Tất cả mọi người
+index_none=Không có xuất khẩu đã được xác định chưa.
+index_delete=Xóa xuất khẩu đã chọn
+index_apply=Áp dụng các thay đổi
+index_applydesc=Nhấn vào nút này để áp dụng cấu hình xuất tệp hiện tại. Điều này sẽ làm cho tất cả các thư mục được liệt kê ở trên có sẵn với các tùy chọn được chỉ định.
+index_return=danh sách xuất khẩu
+index_echeck=Máy chủ NFS không thể được sử dụng trên hệ thống này : $1 
+
+check_ecmd=Lệnh máy chủ NFS $1 chưa được cài đặt
+
+delete_err=Không thể xóa xuất khẩu
+delete_enone=Không được chọn
+
+edit_title1=Chỉnh sửa xuất
+edit_title2=Tạo xuất
+edit_header1=Tùy chọn xuất
+edit_dirs=Thư mục xuất khẩu
+edit_alldirs=Thư mục con xuất khẩu?
+edit_ro=Chỉ đọc?
+edit_kerb=Sử dụng Kerberos?
+edit_header2=Ánh xạ người dùng từ xa
+edit_maproot=Ánh xạ người dùng root tới
+edit_mapusers=Ánh xạ tất cả người dùng vào
+edit_unpriv=Người dùng không có quyền
+edit_uid=Người dùng / UID
+edit_gids=Và nhóm / GID
+edit_mapall=Ánh xạ tất cả người dùng vào
+edit_header3=Khách hàng cho xuất khẩu này
+edit_clients=Khách hàng
+edit_hosts=Máy chủ / nhóm mạng
+edit_network=Mạng
+edit_mask=Mặt nạ
+
+save_err=Không thể lưu xuất
+save_edir='$1' không phải là thư mục hoặc không tồn tại
+save_enone=Bạn phải nhập ít nhất một thư mục để xuất
+save_esub=Chỉ có thể đưa ra một thư mục nếu tùy chọn <b>xuất thư mục con</b> được chọn
+save_eroot=Khi sử dụng tùy chọn <b>xuất thư mục con</b>, thư mục đã xuất phải là thư mục gốc của hệ thống tệp <i>cục bộ</i>
+save_euser='$1' không phải là người dùng hoặc UID hợp lệ
+save_egroup='$1' không phải là nhóm hợp lệ hoặc GID
+save_ekerb=Người dùng root bản đồ, ánh xạ tất cả người dùng và các tùy chọn kerberos là loại trừ lẫn nhau
+save_ehosts=Bạn phải nhập ít nhất một máy chủ để xuất sang
+save_enetwork='$1' không phải là mạng hợp lệ
+save_enetmask='$1' không phải là một mặt nạ hợp lệ
+save_esame1=Thư mục <tt>$1</tt> đã được xuất sang <tt>$2</tt>. Hệ điều hành của bạn không cho phép các thư mục trên cùng một hệ thống tệp <i>cục bộ</i> được xuất sang cùng một máy chủ
+save_esame2=Thư mục <tt>$1</tt> đã được xuất sang <tt>$2</tt>. Hệ điều hành của bạn không cho phép các thư mục trên cùng một hệ thống tệp <i>cục bộ</i> được xuất sang cùng một mạng riêng
+
+restart_err=Không thể áp dụng thay đổi

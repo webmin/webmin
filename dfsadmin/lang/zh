@@ -1,0 +1,5 @@
+log_modify=已修改NFS 共享 $1
+log_rename=已将NFS 共享 $1改变为$2
+log_create=已创建NFS 共享 $1
+log_delete=已删除NFS 共享 $1
+log_apply=已应用更改

@@ -1,55 +1,54 @@
 index_title=Inicjator systemu GRUB
-index_add=Dodaj now± opcjê startow±
-index_global=Zmieñ opcje ogólne
-index_globalmsg=Zmieñ ogólne opcje startowe, które dotycz± wszystkich wyborów z&nbsp;menu startowego oraz okre¶l urz±dzenie, na którym GRUB ma byæ instalowany.
+index_add=Dodaj nowÄ… opcjÄ™ startowÄ…
+index_global=ZmieÅ„ opcje ogÃ³lne
+index_globalmsg=ZmieÅ„ ogÃ³lne opcje startowe, ktÃ³re dotyczÄ… wszystkich wyborÃ³w zÂ menu startowego oraz okreÅ›l urzÄ…dzenie, na ktÃ³rym GRUB ma byÄ‡ instalowany.
 index_install=Zainstaluj GRUBa
-index_installmsg=Zainstaluj inicjatora systemu GRUB na $1, aby wy¶wietliæ powy¿sze opcje podczas startu systemu. Spowoduje to nadpisanie istniej±cego inicjatora systemu, takiego jak LILO i&nbsp;mo¿e siê okazaæ, ¿e system nie wystartuje!
-index_none=Nie zdefiniowano ¿adnych opcji startowych. Upewnij siê, ¿e doda³e¶ co najmniej jedn± przed zainstalowaniem gruba.
-index_efile=Nie znaleziono w&nbsp;systemie pliku menu GRUBa $1. Prawdopodobnie nie zainstalowano GRUBa lub <a href='$2'>konfiguracja modu³u</a> jest nieprawid³owa.
-index_epath=Nie znaleziono w&nbsp;systemie progrzmu GRUBa $1. Prawdopodobnie nie zainstalowano GRUBa lub <a href='$2'>konfiguracja modu³u</a> jest nieprawid³owa.
+index_installmsg=Zainstaluj inicjatora systemu GRUB na $1, aby wyÅ›wietliÄ‡ powyÅ¼sze opcje podczas startu systemu. Spowoduje to nadpisanie istniejÄ…cego inicjatora systemu, takiego jak LILO iÂ moÅ¼e siÄ™ okazaÄ‡, Å¼e system nie wystartuje!
+index_none=Nie zdefiniowano Å¼adnych opcji startowych. Upewnij siÄ™, Å¼e dodaÅ‚eÅ› co najmniej jednÄ… przed zainstalowaniem gruba.
+index_efile=Nie znaleziono wÂ systemie pliku menu GRUBa $1. Prawdopodobnie nie zainstalowano GRUBa lub <a href='$2'>konfiguracja moduÅ‚u</a> jest nieprawidÅ‚owa.
+index_epath=Nie znaleziono wÂ systemie progrzmu GRUBa $1. Prawdopodobnie nie zainstalowano GRUBa lub <a href='$2'>konfiguracja moduÅ‚u</a> jest nieprawidÅ‚owa.
 index_return=listy opcji
 
-title_add=Dodaj opcjê startow±
-title_edit=Zmieñ opcjê startow±
+title_add=Dodaj opcjÄ™ startowÄ…
+title_edit=ZmieÅ„ opcjÄ™ startowÄ…
 title_header=Dane opcji menu startowego
-title_title=Tytu³ opcji
+title_title=TytuÅ‚ opcji
 title_root=Partycja obrazu systemu
 title_other=Inna
 title_sel=Wybrana
 title_boot=Uruchamiany system operacyjny
 title_kernel=Kernel Linuksa
-title_kfile=¦cie¿ka do pliku kernela
+title_kfile=ÅšcieÅ¼ka do pliku kernela
 title_args=Opcje kernela
 title_chain=Inny OS
-title_chain_def=Z&nbsp;pierwszego sektora partycji
-title_chain_file=Z&nbsp;pliku &quot;chainloader&quot;-a
-title_makeactive=Uczyniæ partycjê aktywn±?
-title_none=Brak (nie uruchamialna pozycja menu)
-title_err=Nie uda³o siê zachowaæ opcji startowej
-title_etitle=Nie podano tytu³u opcji
+title_chain_def=ZÂ pierwszego sektora partycji
+title_chain_file=ZÂ pliku "chainloader"-a
+title_makeactive=UczyniÄ‡ partycjÄ™ aktywnÄ…?
+title_err=Nie udaÅ‚o siÄ™ zachowaÄ‡ opcji startowej
+title_etitle=Nie podano tytuÅ‚u opcji
 title_eroot=Nie podano partycji
-title_ekernel=Nie podana lub niepoprawna ¶cie¿ka do kernela
-title_echain=Nie podany lub niepoprawny plik &quot;chainloader&quot;-a
-title_edev=Urz±dzenie partycji $1 nie jest obs³ugiwane
+title_ekernel=Nie podana lub niepoprawna Å›cieÅ¼ka do kernela
+title_echain=Nie podany lub niepoprawny plik "chainloader"-a
+title_edev=UrzÄ…dzenie partycji $1 nie jest obsÅ‚ugiwane
 
-global_title=Opcje ogólne
-global_header=Opcje ogólne menu startowego
-global_default=Domy¶lna opcja startowa
+global_title=Opcje ogÃ³lne
+global_header=Opcje ogÃ³lne menu startowego
+global_default=DomyÅ›lna opcja startowa
 global_fallback=Awaryjne opcja startowa  
-global_first=Pierwsza na li¶cie
-global_timeout=Czas oczekiwanie przed ³adowaniem domy¶lnego
+global_first=Pierwsza na liÅ›cie
+global_timeout=Czas oczekiwanie przed Å‚adowaniem domyÅ›lnego
 global_secs=sekund
-global_install=Zainstalowaæ GRUBa na dysku/partycji
+global_install=ZainstalowaÄ‡ GRUBa na dysku/partycji
 global_sel=Zaznaczonej
 global_other=Innej
-global_err=Nie uda³o siê zachowaæ opcji ogólnych
+global_err=Nie udaÅ‚o siÄ™ zachowaÄ‡ opcji ogÃ³lnych
 global_etimeout=Nie podany lub nieporawny czas oczekiwania
-global_edev=Nie obs³ugiwany(-a) dysk/partycja instalacyjny(-a) $1
+global_edev=Nie obsÅ‚ugiwany(-a) dysk/partycja instalacyjny(-a) $1
 global_eother=Nie podany(-a) lub niepoprawny(-a) dysk/partycja
 
 install_title=Zainstaluj GRUBa
-install_err=Nie uda³o siê zainstalowaæ GRUBa
+install_err=Nie udaÅ‚o siÄ™ zainstalowaÄ‡ GRUBa
 install_efind=Nie znaleziono pliku menu
-install_desc=Instalacja GRUBa na $1 za pomoc± poleceñ $2 i&nbsp;$3 ..
-install_ok=.. zakoñczona.
-install_failed=.. instalacja siê nie powiod³a!
+install_desc=Instalacja GRUBa na $1 za pomocÄ… poleceÅ„ $2 iÂ $3 ..
+install_ok=.. zakoÅ„czona.
+install_failed=.. instalacja siÄ™ nie powiodÅ‚a!

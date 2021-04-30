@@ -1,36 +1,36 @@
 <header>Altres Caus</header>
 
-<b>Altres servidors de cau proxy</b>: AixÚ llista els caus sibling, pare i
-multicast actualment configurats. Fes clic sobre el nom de host o l'adreÁa
-per editar-ne o veure la configuraciÛ sencera.
+<b>Altres servidors de cau proxy</b>: Aix√≤ llista els caus sibling, pare i
+multicast actualment configurats. Fes clic sobre el nom de host o l'adre√ßa
+per editar-ne o veure la configuraci√≥ sencera.
 <p>
 <b>Ves a buscar directament les URLs que contenen</b>: Per defecte, ".cgi"
-i "?". Et permet forÁar Squid a anar a buscar certs tipus de continguts
-directament al servidor origen. Normalment, aixÚ no necessita cap modificaciÛ,
+i "?". Et permet for√ßar Squid a anar a buscar certs tipus de continguts
+directament al servidor origen. Normalment, aix√≤ no necessita cap modificaci√≥,
 ja que la majoria de coses les gestiona Squid sense ajuda.
 <p>
-<b>Temps lÌmit de peticiÛ ICP</b>: Per defecte, un valor 'Úptim'.
+<b>Temps l√≠mit de petici√≥ ICP</b>: Per defecte, un valor '√≤ptim'.
 Si vols ignorar el valor determinat per Squid, posa-ho a un valor no nul.
 El valor per defecte en versions anteriors de Squid era 2000.
 <p>
-<b>Temps lÌmit d'ICP multicast</b>: Per defecte, 2000mseg o 2 segons.
+<b>Temps l√≠mit d'ICP multicast</b>: Per defecte, 2000mseg o 2 segons.
 Per a <i>peers</i> multicast, Squid envia regularment "sondes" ICP per comptar
-quants altres <i>peers</i> estan escoltant l'adreÁa multicast donada.
+quants altres <i>peers</i> estan escoltant l'adre√ßa multicast donada.
 Aquest valor especifica quant de temps Squid ha d'esperar per comptar totes
 les respostes.
 <p>
-<b>Temps lÌmit de <i>peer</i> mort</b>: Per defecte, 10 segons. AixÚ controla 
+<b>Temps l√≠mit de <i>peer</i> mort</b>: Per defecte, 10 segons. Aix√≤ controla 
 quant de temps espera Squid per declarar un cau <i>peer</i> com a "mort". 
-SI no es reben respostes ICP en aquest interval de temps, Squid declarar‡
-el <i>peer</i> mort i no esperar‡ rebre'n mÈs respostes ICP. De tota manera,
-continua enviant peticions ICP, i marcar‡ el <i>peer</i> com a viuen el moment 
+SI no es reben respostes ICP en aquest interval de temps, Squid declarar√†
+el <i>peer</i> mort i no esperar√† rebre'n m√©s respostes ICP. De tota manera,
+continua enviant peticions ICP, i marcar√† el <i>peer</i> com a viuen el moment 
 que en rebi la primera resposta ICP. <p>
 
-Aquest temps lÌmit tambÈ afecta quan Squid espera rebre respostes ICP dels
-<i>peers</i>. Si han passat mÈs de '<i>peer_mort</i>' segons des que s'ha
-rebut la darrera resposta ICP, Squid no esperar‡ rebre cap resposta ICP
-en la prÚxima peticiÛ. AixÌ, si el temps entre peticions Ès mÈs gran que
-aquest temps lÌmit, veur‡s una pila de peticions enviades directament a
+Aquest temps l√≠mit tamb√© afecta quan Squid espera rebre respostes ICP dels
+<i>peers</i>. Si han passat m√©s de '<i>peer_mort</i>' segons des que s'ha
+rebut la darrera resposta ICP, Squid no esperar√† rebre cap resposta ICP
+en la pr√≤xima petici√≥. Aix√≠, si el temps entre peticions √©s m√©s gran que
+aquest temps l√≠mit, veur√†s una pila de peticions enviades directament a
 l'origen en lloc dels pares. 
 <p>
 

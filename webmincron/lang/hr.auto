@@ -1,0 +1,20 @@
+edit_mins=minuta
+edit_hours=Sati
+edit_days=dana
+edit_months=mjeseci
+edit_weekdays=Radnim danom
+edit_all=svi
+edit_selected=Odabran ..
+edit_run=Pokreni sada
+edit_clone=Klonski posao
+edit_return=posao cron
+edit_special1=Jednostavan raspored ..
+edit_special0=Vrijeme i datumi odabrani dolje ..
+edit_special_hourly=na sat
+edit_special_daily=Svakodnevno (u ponoć)
+edit_special_weekly=Tjedno (nedjelja)
+edit_special_monthly=Mjesečno (1. siječnja)
+edit_special_yearly=Godišnje (1. siječnja)
+
+log_success=Uspješno je pokrenut <tt>$2</tt> u <tt>$1</tt>
+log_failure=Nije pokrenuto <tt>$2</tt> u <tt>$1</tt> : $3 

@@ -1,0 +1,135 @@
+index_cachemgr=Contraseñas del administrador de caché
+index_manual=Editar archivos de configuración
+
+manual_title=Editar archivos de configuración
+manual_file=Seleccione un archivo de configuración para editar:
+manual_change=Cambio
+manual_editing=Use el cuadro de texto a continuación para editar manualmente las configuraciones en $1. Tenga cuidado, ya que no se realizará ninguna verificación de sintaxis o validez.
+manual_err=Error al guardar el archivo de configuración
+manual_efile=Nombre de archivo de configuración no válido
+manual_ecannot=No tiene permiso para editar manualmente los archivos de configuración
+
+acl_nodns=¿Deshabilitar búsquedas?
+acl_infile=Archivo separado
+
+cach_esame=El <b>Squid cachemgr.cgi ejecutable</b> está configurado para el programa cachemgr.cgi de Webmin, no el suministrado por Squid.
+
+clear_url=Eliminar una URL de la caché:
+clear_ok=Eliminar
+
+eacl_noprr=No hay restricciones de respuesta de proxy definidas
+eacl_addprr=Agregar restricción de respuesta de proxy.
+
+eacl_replypr=Responder restricciones de proxy
+eacl_replynopr=No hay restricciones de proxy de respuesta definidas
+
+eacl_hdelete=Eliminar restricciones seleccionadas
+
+ec_coss=COSS
+
+ech_siq2=¿Rechazar consultas ICP?
+
+eicp_thost=Nombre de host
+eicp_ttype=Tipo
+eicp_tpport=Puerto proxy
+eicp_tiport=Puerto ICP
+eicp_delete=Eliminar cachés seleccionados
+
+elogs_logformat=Acceder a formatos de registro
+elogs_fname=Nombre del formato
+elogs_ffmt=Definición de formato
+elogs_logformat1=Predeterminado (llamado <tt>calamar</tt>, usando el formato estándar)
+elogs_logformat0=Formatos personalizados definidos a continuación.
+elogs_access=Acceder a los archivos de registro
+elogs_afile=Archivo de registro
+elogs_afmt=Nombre del formato
+elogs_aacls=Iniciar sesión solo para ACL
+elogs_notset=No establecido
+elogs_dont=No inicie sesión
+elogs_file=Archivo $1
+elogs_squid=Estándar de calamar
+
+eports_checkhost=¿Validar nombres de host en URL?
+eports_underscore=¿Permitir subrayado en los nombres de host?
+eports_all=Todos
+
+eprogs_sppe=Programa de ping habilitado?
+eprogs_startup=Programas para comenzar inicialmente
+eprogs_idle=Programas mínimos para ejecutar
+eprogs_concurrency=Número de solicitudes concurrentes por programa
+
+ahttp_replyheader=Crear restricción de respuesta de proxy
+ahttp_replyheader1=Editar restricción de respuesta de proxy
+ahttp_replypr=Restricción de respuesta de proxy
+
+icache_euser=Usuario para ejecutar Squid ya que no existe
+
+slogs_efname=Nombre de formato no válido en la fila $1
+slogs_effmt=Falta el formato de registro en la fila $1
+slogs_eafile=Archivo de registro faltante o no válido en la fila $1
+
+sprog_emsg10='$1' no es un TTL válido
+sprog_echildren=El número de programas debe ser mayor que cero
+
+log_https_delete=Se eliminaron $1 restricciones de proxy
+log_icps_delete=$1 restricciones ICP eliminadas
+log_hosts_delete=$1 hosts de caché eliminados
+log_pools_delete=Grupos de retardos eliminados de $1
+log_refreshes_delete=Reglas de actualización de $1 eliminadas
+log_purge=Se eliminó la URL $1 del caché
+log_cachemgr=Cambió las contraseñas del administrador de caché
+
+delay_delete=Eliminar agrupaciones de retardo seleccionadas
+
+dpool_err=Error al eliminar grupos de retraso
+
+dpool_enone=Ninguna seleccionada
+
+ext_children=Número de programas para ejecutar
+ext_children_u=programas
+ext_echildren=Número de programas faltantes o no válidos
+
+header_create_request_header_access=Crear regla de acceso de encabezado de solicitud
+header_create_reply_header_access=Crear regla de acceso al encabezado de respuesta
+header_edit_request_header_access=Editar regla de acceso de encabezado de solicitud
+header_edit_reply_header_access=Editar regla de acceso al encabezado de respuesta
+header_request_header_access=Solicitar encabezados
+header_reply_header_access=Encabezados de respuesta
+
+refresh_delete=Eliminar las reglas de actualización seleccionadas
+
+drefresh_err=Error al eliminar las reglas de actualización
+drefesh_enone=Ninguna seleccionada
+
+iptables_enabled3=La redirección de puertos está habilitada para clientes en la red
+iptables_enabled4=La redirección de puertos está habilitada para clientes en la interfaz
+
+syslog_access=Registro de acceso de calamar
+syslog_cache=Registro de caché de calamar
+syslog_store=Registro de almacén de objetos de calamar
+
+purge_err=Error al borrar la URL del caché
+purge_title=Borrar URL en caché
+purge_doing=Borrar URL $1 ..
+purge_done=.. hecho.
+purge_failed=.. ¡ha fallado! Consulte el mensaje de error anterior para conocer el motivo.
+
+dhttp_err=Error al eliminar las restricciones de proxy
+dhttp_enone=Ninguna seleccionada
+
+dicp_err=Error al eliminar las restricciones de ICP
+dicp_enone=Ninguna seleccionada
+
+cachemgr_title=Contraseñas del administrador de caché
+cachemgr_ecannot=No tiene permiso para editar las contraseñas del administrador de caché
+cachemgr_def1=No se requieren contraseñas
+cachemgr_def0=Contraseñas y acciones especificadas a continuación.
+cachemgr_pass=Contraseña
+cachemgr_none=Ninguno necesario
+cachemgr_set=Ajustado a
+cachemgr_disable=Acciones deshabilitadas
+cachemsg_actions=Aplicar a acciones
+cachemgr_all=Use esta contraseña para todas las acciones
+cachemgr_others=Otras acciones:
+cachemgr_enone=No se ingresó ninguno. En su lugar, debe seleccionar <i>No se requieren contraseñas</i>
+cachemgr_err=Error al guardar las contraseñas del administrador de caché

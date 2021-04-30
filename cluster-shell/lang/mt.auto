@@ -1,0 +1,22 @@
+index_title=Kmand tal-Kluster tal-Qoxra
+index_cmd=Kmand biex titmexxa
+index_old=jew
+index_server=Ħaddem fuq servers
+index_run=Ħaddem Kmand Issa
+index_return=indiċi tal-modulu
+index_this=dan is-server
+index_all=&lt;L-ospiti kollha&gt;
+index_group=Membri ta ' $1 
+index_clear=Storja ċara
+index_edit=Editja Preċedenti
+
+run_title=Imexxi Kmand
+run_err=Ma rnexxielux imexxi kmand
+run_ecmd=Ma ddaħħal l-ebda kmand
+run_failed=Ma rnexxielux jaħdem fuq $1 : $2 
+run_success=Ħruġ minn $1 ..
+run_enone=L-ebda servers li taħdem fuq magħżula
+
+log_clear=Maħlub l-istorja tal-kmand
+log_run=Mexxi $1 fuq is-servers $2 
+log_run_l=Firxa $1 fuq $2 

@@ -1,2 +1,2 @@
-host=Hôte à se connecter,3,Automatique
-port=Port à se connecter,3,Défaut
+host=HÃ´te Ã  se connecter,3,Automatique
+port=Port Ã  se connecter,3,DÃ©faut

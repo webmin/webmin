@@ -5,7 +5,7 @@
 require './mysql-lib.pl';
 &ReadParse();
 $access{'perms'} == 1 || &error($text{'perms_ecannot'});
-
+my ($ver, $variant) = &get_remote_mysql_variant();
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'user_title1'}, "", "create_user");
 	}
@@ -32,8 +32,8 @@ if (!$in{'new'} && &foreign_check("virtual-server")) {
 	$d ||= &virtual_server::get_domain_by("user", $u->[1],
                                               "parent", "");
 	if ($d) {
-		print "<b>",&text('user_vwarning',
-			&virtual_server::show_domain_name($d)),"</b><p>\n";
+		print &ui_alert_box(&text('user_vwarning', "<tt>" .
+			&virtual_server::show_domain_name($d) . "</tt>"), "warn");
 		}
 	}
 
@@ -53,14 +53,27 @@ print &ui_table_start($text{'user_header'}, undef, 2);
 
 # Username field
 print &ui_table_row($text{'user_user'},
-	&ui_opt_textbox("mysqluser", $u->[1], $sizes{'user'},
+	&ui_opt_textbox("mysqluser", $u->[1], $in{'new'} ? 30 : $sizes{'user'},
 			$text{'user_all'}));
 
 # Password field
+my $master_login = ($u->[1] eq ($config{'login'} || "root"));
+my $epassfield1 = $fieldmap{'Password'} || 1e10;
+my $epassfield2 = $fieldmap{'authentication_string'} || 1e10;
+my $plugin = $fieldmap{'plugin'};
+my $unixsocket = $plugin && $u->[$plugin] eq 'unix_socket';
+my $nopass = (($epassfield1 && !$u->[$epassfield1]) &&
+		       ($epassfield2 && !$u->[$epassfield2]));
+my $lock_supported = $u->[$fieldmap{'account_locked'}] eq 'Y' || $u->[$fieldmap{'account_locked'}] eq 'N';
+$lock_supported = 0 if ($master_login);
+my $locked = $u->[$fieldmap{'account_locked'}] eq 'Y';
 print &ui_table_row($text{'user_pass'},
-	&ui_radio("mysqlpass_mode", $in{'new'} ? 0 : $u->[2] ? 1 : 2,
-		  [ [ 2, $text{'user_none'} ],
-		    $in{'new'} ? ( ) : ( [ 1, $text{'user_leave'} ] ),
+	&ui_radio("mysqlpass_mode", $in{'new'} ? 0 :
+		       $lock_supported && $locked ? 4 : 
+		       $nopass && !$unixsocket ? 2 : 1,
+		  [ (($lock_supported && $locked) || $master_login) ? () : [ 2, $text{'user_none'} ],
+		    $in{'new'} ? ( ) : ($lock_supported && $locked) || $nopass && !$unixsocket ? () : ( [ 1, $text{'user_leave'} ] ),
+		  	($in{'new'} || !$lock_supported) ? ( ) : ( [ 4, $text{'user_locked'} ] ),
 		    [ 0, $text{'user_set'} ] ])." ".
 	&ui_password("mysqlpass", undef, 20));
 
@@ -91,15 +104,28 @@ foreach $f ('max_user_connections', 'max_connections',
 	}
 
 # SSL needed?
-if ($remote_mysql_version >= 5 && $fieldmap{'ssl_type'}) {
+if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
+	my $ssl_type = !uc($u->[$fieldmap{'ssl_type'}]) ? 'NONE' :
+	                uc($u->[$fieldmap{'ssl_type'}]) eq 'ANY' ? 'SSL' :
+	                uc($u->[$fieldmap{'ssl_type'}]);
 	print &ui_table_row($text{'user_ssl'},
-		&ui_select("ssl_type", uc($u->[$fieldmap{'ssl_type'}]),
-			[ [ '', $text{'user_ssl_'} ],
-			  [ 'ANY', $text{'user_ssl_any'} ],
+		&ui_select("ssl_type", $ssl_type,
+			[ [ 'NONE', $text{'user_ssl_'} ],
+			  [ 'SSL', $text{'user_ssl_any'} ],
 			  [ 'X509', $text{'user_ssl_x509'} ] ],
 			1, 0, 1));
-	print &ui_table_row($text{'user_cipher'},
-		&ui_textbox("ssl_cipher", $u->[$fieldmap{'ssl_cipher'}], 80));
+	} 
+else {
+	if ($remote_mysql_version >= 5 && $fieldmap{'ssl_type'}) {
+		print &ui_table_row($text{'user_ssl'},
+			&ui_select("ssl_type", uc($u->[$fieldmap{'ssl_type'}]),
+				[ [ '', $text{'user_ssl_'} ],
+				  [ 'ANY', $text{'user_ssl_any'} ],
+				  [ 'X509', $text{'user_ssl_x509'} ] ],
+				1, 0, 1));
+		print &ui_table_row($text{'user_cipher'},
+			&ui_textbox("ssl_cipher", $u->[$fieldmap{'ssl_cipher'}], 80));
+		}
 	}
 
 print &ui_table_end();

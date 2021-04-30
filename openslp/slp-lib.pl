@@ -23,7 +23,7 @@ sub get_snda_config
 {
 local $snda;
 flock SLP, 1 || &error("$text->{'error_flock_on'} $config->{'slpd_conf'}: $!\n");
-open(SLP, $config->{'slpd_conf'}) || &error("$text->{'error_open'} $config->{'slpd_conf'}: $!\n");
+open(SLP, "<".$config->{'slpd_conf'}) || &error("$text->{'error_open'} $config->{'slpd_conf'}: $!\n");
 while(<SLP>) {
 	s/\r|\n//g;
 	if (/^(\s|#|;)*net.slp.useScopes\s*=\s*(.*)/) {
@@ -45,7 +45,7 @@ sub get_netcfg_config
 {
 local $netcfg;
 flock SLP, 1 || &error("$text->{'error_flock_on'} $config->{'slpd_conf'}: $!\n");
-open(SLP, $config->{'slpd_conf'}) || &error("$text->{'error_open'} $config->{'slpd_conf'}: $!\n");
+open(SLP, "<".$config->{'slpd_conf'}) || &error("$text->{'error_open'} $config->{'slpd_conf'}: $!\n");
 while(<SLP>) {
         s/\r|\n//g;
         if (/^(\s|#|;)*net.slp.isBroadcastOnly\s*=\s*(\S+)/) {
@@ -115,7 +115,7 @@ sub get_dacfg_config
 {
 local $dacfg;
 flock SLP, 1 || &error("$text->{'error_flock_on'} $config->{'slpd_conf'}: $!\n");
-open(SLP, $config->{'slpd_conf'}) || &error("$text->{'error_open'} $config->{'slpd_conf'}: $!\n");
+open(SLP, "<".$config->{'slpd_conf'}) || &error("$text->{'error_open'} $config->{'slpd_conf'}: $!\n");
 while(<SLP>) {
 	s/\r|\n//g;
 	if (/^(\s|#|;)*net.slp.isDA\s*=\s*(\S+)/) {
@@ -133,7 +133,7 @@ sub get_log_config
 {
 local $log;
 flock SLP, 1 || &error("$text->{'error_flock_on'} $config->{'slpd_conf'}: $!\n");
-open(SLP, $config->{'slpd_conf'}) || &error("$text->{'error_open'} $config->{'slpd_conf'}: $!\n");
+open(SLP, "<".$config->{'slpd_conf'}) || &error("$text->{'error_open'} $config->{'slpd_conf'}: $!\n");
 while(<SLP>) {
 	s/\r|\n//g;
 	if (/^(\s|#|;)*net.slp.traceDATraffic\s*=\s*(\S+)/) {
@@ -163,7 +163,7 @@ return $dacfg;
 sub enable_list_line
 {
 flock SLP, 1 || &error("$text->{'error_flock_on'} $config->{'slpd_conf'}: $!\n");
-open(SLP, $config->{'slpd_conf'}) || &error("$text->{'error_open'} $config->{'slpd_conf'}: $!\n");
+open(SLP, "<".$config->{'slpd_conf'}) || &error("$text->{'error_open'} $config->{'slpd_conf'}: $!\n");
 local @slp = <SLP>;
 close(SLP);
 flock SLP, 8 || &error("$text->{'error_flock_off'} $config->{'slpd_conf'}: $!\n");
@@ -186,7 +186,7 @@ flock SLP, 8 || &error("$text->{'error_flock_off'} $config->{'slpd_conf'}: $!\n"
 # enable_single_val_line(&val, &line)
 sub enable_single_val_line
 {
-open(SLP, $config->{slpd_conf}) || &error("$text->{'error_open'} $config->{'slpd_conf'}: $!\n");
+open(SLP, "<".$config->{slpd_conf}) || &error("$text->{'error_open'} $config->{'slpd_conf'}: $!\n");
 flock SLP, 1 || &error("$text->{'error_flock_on'} $config->{'slpd_conf'}: $!\n");
 local @slp = <SLP>;
 close(SLP);
@@ -210,7 +210,7 @@ flock SLP, 8 || &error("$text->{'error_flock_off'} $config->{'slpd_conf'}: $!\n"
 sub disable_line
 {
 flock SLP, 1 || &error("$text->{'error_flock_on'} $config->{'slpd_conf'}: $!\n");
-open(SLP, $config->{'slpd_conf'}) || &error("$text->{'error_open'} $config->{'slpd_conf'}: $!\n");
+open(SLP, "<".$config->{'slpd_conf'}) || &error("$text->{'error_open'} $config->{'slpd_conf'}: $!\n");
 local @slp = <SLP>;
 close(SLP);
 flock SLP, 8 || &error("$text->{'error_flock_off'} $config->{'slpd_conf'}: $!\n");
@@ -233,7 +233,7 @@ sub parse_config_file
 { 
 local %dummy;
 flock FH, 1 || &error("$text->{'error_flock_on'} $config_file: $!\n");
-open(FH, $config_file) || &error("$text->{'error_open'} $config_file: $!\n");
+open(FH, "<".$config_file) || &error("$text->{'error_open'} $config_file: $!\n");
 while (<FH>) {
   $dummy{$1} = $2 if (/(\S+)=(.+)/)
 }
@@ -247,7 +247,7 @@ sub restart
 {
 local $pid;
 flock PID, 1 || &error("$text->{'error_flock_on'} $config->{'slpd_pid'}: $!\n");
-open(PID, $config->{'slpd_pid'}) || &start_slpd;
+open(PID, "<".$config->{'slpd_pid'}) || &start_slpd;
 while (<PID>) {
   $pid=$1, last if (/(\d+)/)
 }
@@ -265,7 +265,7 @@ sub slpd_is_running
 {
 local $pid;
 flock PID, 1 || &error("$text->{'error_flock_on'} $config->{'slpd_pid'}: $!\n");
-open(PID, $config->{'slpd_pid'}) || return 0;
+open(PID, "<".$config->{'slpd_pid'}) || return 0;
 while (<PID>) {
   $pid=$1, last if (/(\d+)/)
 }

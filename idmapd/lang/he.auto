@@ -1,0 +1,11 @@
+index_title=תצורת idmapd
+index_eidmapd=Idmapd daemon $1 לא נמצא. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+general=תצורה כללית
+mapping=תצורת מיפוי
+pipefs_dir=מדריך Pipefs
+domain=שם דומיין
+nobody_user=אף אחד לא משתמש
+nobody_group=אף אחד בקבוצה
+save=שמור את התצורה והפעל מחדש את הדמון
+save_err=שמירת קובץ config $1 נכשלה
+error_dir=מדריך $1 אינו קיים

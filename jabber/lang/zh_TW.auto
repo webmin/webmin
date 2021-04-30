@@ -1,0 +1,120 @@
+index_title=Jabber IM服務器
+index_econfig=Jabber配置文件 $1不存在。沒有安裝Jabber，或者您的<a href='$2'>模塊配置</a>不正確。
+index_edir=Jabber基本目錄 $1不存在。沒有安裝Jabber，或者您的<a href='$2'>模塊配置</a>不正確。
+index_emodules=Webmin處理Jabber的XML配置所需的Perl模塊 $1和 $2未安裝。 <a href='$3'>單擊此處</a>直接從CPAN安裝它們。
+index_emodule=未安裝Webmin處理Jabber的XML配置所需的Perl模塊 $1。 <a href='$2'>單擊此處</a>直接從CPAN安裝它。
+index_expat=在嘗試安裝Perl模塊之前，請確保已安裝了Expat C庫和標頭，因為它們依賴於它，並且如果不可用則將失敗。
+index_eparse=$1 perl模塊無法解析您的Jabber配置文件： $2
+index_ejabberd=在系統上找不到Jabber服務器程序 $1。沒有安裝Jabber，或者您的<a href='$2'>模塊配置</a>不正確。
+index_eversion=Webmin僅支持Jabber版本 $2，但是命令 $3報告了以下版本信息： $1
+index_eversion2=Webmin僅支持 $2以下的Jabber版本，但是命令 $3報告了以下版本信息： $1
+index_start=啟動Jabber服務器
+index_startmsg=單擊此按鈕以啟動系統上的Jabber服務器。在啟動之前，任何即時消息客戶端都無法使用它。
+index_stop=停止Jabber服務器
+index_stopmsg=單擊此按鈕可停止系統上正在運行的Jabber服務器。即時消息客戶端停止後將無法使用它。
+index_restart=應用更改
+index_restartmsg=單擊此按鈕可通過停止然後重新啟動Jabber服務器來應用當前配置。
+index_comments=警告-您的Jabber配置文件 $1包含註釋，如果使用此模塊進行任何配置更改，這些註釋將被刪除。
+index_return=Jabber菜單
+index_version=Jabber版本 $1
+
+general_title=常規選項
+general_header=全局Jabber服務器選項
+general_host=您服務器的主機名
+general_elog=錯誤日誌文件
+general_elogfmt=錯誤日誌格式
+general_rlog=訪問日誌文件
+general_rlogfmt=訪問日誌格式
+general_pidfile=進程ID文件
+general_err=保存常規選項失敗
+general_ehost=缺少或無效的服務器主機名
+general_eelog=缺少或無效的錯誤日誌文件
+general_eelogfmt=缺少錯誤日誌格式
+general_erlog=流量日誌文件丟失或無效
+general_erlogfmt=缺少流量日誌格式
+general_epidfile=缺少或無效的進程ID文件
+
+messages_title=留言內容
+messages_header=客戶端的Jabber服務器消息
+messages_wsubject=歡迎留言主題
+messages_wbody=歡迎留言正文
+messages_vcard=服務器vCard
+messages_rinstr=報名須知
+messages_rnotify=通知管理員註冊嗎？
+messages_rfields=必填字段
+messages_vcard2jud=將vCard發送到Jabber用戶目錄？
+messages_err=保存消息失敗
+messages_evcard=無效的vCard XML： $1
+messages_etag=服務器vCard XML不能以&lt;vCard&gt;開頭
+
+modules_title=Jabber模塊
+modules_desc=下面列出的模塊用於處理Jabber會話管理器收到的消息。僅當您知道自己在做什麼時，才應更改此列表。
+modules_header=Jabber服務器會話管理器模塊
+modules_mod=模塊名稱
+modules_so=共享庫
+modules_err=保存Jabber模塊失敗
+modules_emod='$1'不是有效的模塊名稱
+modules_eso=共享庫“$1”不存在
+
+karma_title=因果交通管制
+karma_header=流量控制選項
+karma_rate=過多的連接處理
+karma_rate_def=殘障人士
+karma_rate_sel=$1連接後將客戶端阻止 $2秒
+karma_mode=業力模式
+karma_none=無限
+karma_low=低流量限制
+karma_medium=中等流量限制
+karma_high=高流量限制
+karma_sel=使用下面選擇的設置。
+karma_heartbeat=週期長度（秒）（<tt>心跳</tt>）
+karma_init=初始化週期（<tt>init</tt>）
+karma_max=業力最大值（<tt>max</tt>）
+karma_inc=業力增量（<tt>inc</tt>）
+karma_dec=業力遞減（<tt>dec</tt>）
+karma_penalty=懲罰期（<tt>懲罰</tt>）
+karma_restore=突發恢復期（<tt>恢復</tt>）
+karma_err=無法保存業力選項
+karma_eheartbeat=時段長度缺失或無效
+karma_einit=缺少初始化週期或無效初始化週期
+karma_emax=缺少或無效的最大業障
+karma_einc=業力增量缺失或無效
+karma_edec=因果關係減量缺失或無效
+karma_epenalty=罰款期限無效或無效
+karma_erestore=缺少或無效的還原時間
+karma_epoints=連接數丟失或無效
+karma_etime=缺少或無效的封鎖時間
+
+ips_title=IP訪問控制
+ips_header=Jabber服務器IP訪問控制
+ips_allow=允許的客戶端IP
+ips_all=所有地址
+ips_deny=拒絕的客戶端IP
+ips_none=沒有
+ips_sel=列出的地址/網絡掩碼 ..
+ips_err=保存IP訪問控制失敗
+ips_eaddr='$1'不是有效的IP地址或IP地址/網絡掩碼
+
+file_title=編輯配置文件
+file_desc=使用下面的表格直接編輯Jabber配置文件。僅當您了解XML配置格式時，才應該這樣做。
+file_header=編輯Jabber配置文件
+file_err=保存配置文件失敗
+
+admin_title=行政用戶
+admin_header=服務器管理用戶
+admin_read=閱讀權限管理員
+admin_write=寫訪問管理員
+admin_reply=自動回复管理員消息？
+admin_rsubject=自動回覆主題
+admin_rbody=自動回覆訊息
+
+filter_title=用戶過濾器
+filter_header=用戶過濾器權限
+filter_max=最大過濾規則
+filter_conds=允許的過濾條件
+filter_acts=允許的過濾器操作
+
+restart_err=無法應用更改
+stop_err=無法阻止賈伯
+stop_epid=找不到Jabber進程
+start_err=無法啟動Jabber

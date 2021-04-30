@@ -1,0 +1,20 @@
+index_ereq_resource_cmd=Skript pro vyžádání prostředků z druhého uzlu ($1) nebyl ve vašem systému nalezen. Možná to ještě nebylo zkopírováno na místo, nebo je <a href='$2'>konfigurace modulu</a> nesprávná.
+index_version=Verze prezenčního signálu $1 
+index_noversion=Varování - Verze Heartbeat nainstalovaná ve vašem systému nemohla být automaticky detekována. Měli byste ji nastavit na stránce <a href='$1'>konfigurace modulu</a>.
+index_status=Stav prezenčního signálu
+
+conf_serials=Sériové porty tluku
+conf_bcasts=Rozhraní prezenčního signálu Ethernet
+conf_nice_failback=Pěkné chování při selhání
+conf_ebcast=Nebyla zadána žádná srdeční tepová rozhraní
+conf_ebcastif='$1' není platné rozhraní pro vysílání
+conf_auto_on=$ {conf_enabled}
+conf_auto_off=$ {conf_disabled}
+conf_auto_legacy=Starší režim
+conf_auto_=$ {default}
+
+res_active=Stav zdrojů
+res_getserv=Získejte zdroj
+res_hbdown=Úder srdce
+res_up=NAHORU
+res_down=DOLŮ

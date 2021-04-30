@@ -1,0 +1,3 @@
+name_eu=Boot Manager
+longdesc_eu=/etc/init.d edo /etc/rc.local. abiarazteko gidoiak konfiguratzeko /etc/rc.local.
+desc_eu=Abiarazi eta itzali

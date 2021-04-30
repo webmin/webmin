@@ -1,0 +1,10 @@
+users_expire_def=Inoiz ez
+users_eauthkeys=Falta diren gakoen fitxategia falta edo baliogabea da
+users_maxauthtries=Konexio bakoitzeko gehieneko saiakera saiakera
+users_emaxauthtries=Konexio bakoitzeko saiakera saiakera kopurua edo ez zenbakizko bat falta da
+users_chal=Erabili erronka-erantzunaren autentikazioa?
+
+net_all4=IPv4 helbide guztiak
+net_all6=IPv6 helbide guztiak
+net_sel=Helbidea ..
+net_reverse=Bezeroaren IP helbideak berraztertzea?

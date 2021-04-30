@@ -1,32 +1,36 @@
-__norefs=1
-create_title=Utwórz zadanie klastra
-delete_enone=Nic nie wybrano
-delete_err=Usuwanie zadania klastra nie powiod³o siê
-edit_all=&lt;Wszystkie hosty&gt;
-edit_group=U¿ytkownicy z $1
-edit_servers=Uruchom na serwerach
-edit_this=ten serwer
-edit_title=Edycja zadañ klastra
-exec_cmd=Uruchomiono $1 na wybranych serwerach ..
-exec_failed=Na $1 nie powiod³o siê uruchomienie : $2
-exec_nohosts=Brak wybranych hostów do uruchomienia lub wybrane grupy nie zawieraj± ¿adnych u¿ytecznych hostów.
-exec_success=Wyj¶cie z $1 ..
-exec_title=Wykonaj zadanie klastra
-index_actions=Akcje
-index_add=Utwórz nowe zadanie klastra (Cron)
-index_more=$1 wiêcej ..
-index_none=Brak zadañ klastra - cron.
-index_return=Lista zadañ klastra
-index_run=Uruchom&nbsp;teraz..
+index_title=Klaster - planowanie zadaÅ„ (Cron)
+index_add=UtwÃ³rz nowe zadanie klastra (Cron)
+index_none=Brak zadaÅ„ klastra - cron.
 index_servers=Uruchom na serwerach
-index_title=Klaster - planowanie zadañ (Cron)
-log_create=Utworzono zadanie klastra dla $1
-log_create_l=Utworzono zadanie klastra $2 dla $1
-log_delete=Usuniêto zadanie klastra dla $1
-log_delete_l=Usuniêto zadanie klastra $2 dla $1
-log_deletes=Usuniêto $1 zadañ klastra
-log_modify=Zmodyfikowano zadanie klastra dla $1
-log_modify_l=Zmodyfikowano zadanie klastra $2 dla $1
+index_return=Lista zadaÅ„ klastra
+index_more=$1 wiÄ™cej ..
+index_run=UruchomÂ teraz..
+index_actions=Akcje
+
+edit_title=Edycja zadaÅ„ klastra
+create_title=UtwÃ³rz zadanie klastra
+edit_servers=Uruchom na serwerach
+edit_group=UÅ¼ytkownicy z $1
+edit_this=ten serwer
+edit_all=&lt;Wszystkie hosty&gt;
+
+save_err=BÅ‚Ä…d zapisu zadania klastra
+
+exec_title=Wykonaj zadanie klastra
+exec_cmd=Uruchomiono $1 na wybranych serwerach ..
+exec_failed=Na $1 nie powiodÅ‚o siÄ™ uruchomienie : $2
+exec_success=WyjÅ›cie z $1 ..
+exec_nohosts=Brak wybranych hostÃ³w do uruchomienia lub wybrane grupy nie zawierajÄ… Å¼adnych uÅ¼ytecznych hostÃ³w.
+
 log_run=Uruchomiono $1 na serwerach $2
 log_run_l=Uruchomiono $1 na $2
-save_err=B³±d zapisu zadania klastra
+log_create=Utworzono zadanie klastra dla $1
+log_create_l=Utworzono zadanie klastra $2 dla $1
+log_modify=Zmodyfikowano zadanie klastra dla $1
+log_modify_l=Zmodyfikowano zadanie klastra $2 dla $1
+log_delete=UsuniÄ™to zadanie klastra dla $1
+log_delete_l=UsuniÄ™to zadanie klastra $2 dla $1
+log_deletes=UsuniÄ™to $1 zadaÅ„ klastra
+
+delete_err=Usuwanie zadania klastra nie powiodÅ‚o siÄ™
+delete_enone=Nic nie wybrano

@@ -1,0 +1,23 @@
+category_=Værktøjer
+
+longcategory_=Moduler, der udfører andre diverse opgaver
+
+config_emodule=Modulet findes ikke
+
+nice_size_PB=PB
+nice_size_PiB=PIB
+nice_size_TB=TB
+nice_size_TiB=TiB
+nice_size_GB=DK
+nice_size_GiB=GiB
+nice_size_MB=MB
+nice_size_MiB=MiB
+nice_size_kB=kB
+nice_size_kiB=KIB
+nice_size_b=bytes
+
+langauto_include=Inkluder maskinoversættelser
+
+file_truncated_message=hentede $1 af data, afkortet $2 ud af $3 
+file_truncated_message_head=hentet start $1 af data, afkortet $2 ud af $3 
+file_truncated_message_tail=hentet slutning $1 af data, afkortet $2 ud af $3 

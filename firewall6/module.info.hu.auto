@@ -1,0 +1,3 @@
+longdesc_hu=Konfiguráljon egy Linux tűzfalat az ip6table használatával. Lehetővé teszi az összes tábla, lánc, szabály és opció szerkesztését.
+desc_hu=Linux IPv6 tűzfal
+name_hu=Firewall6

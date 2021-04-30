@@ -4,7 +4,7 @@
 # read sendmail module config
 $p = -l $0 ? readlink($0) : $0;
 $p =~ /^(.*)\/[^\/]+$/;
-if (open(CONF, "$1/config")) {
+if (open(CONF, "<$1/config")) {
 	while(<CONF>) {
 		if (/^(\S+)=(.*)/) {
 			$config{$1} = $2;
@@ -48,7 +48,7 @@ while(<STDIN>) {
 	}
 
 # read the filter file
-if (open(FILTER, $ARGV[0])) {
+if (open(FILTER, "<".$ARGV[0])) {
 	while(<FILTER>) {
 		s/\r|\n//g;
 		if (/^(\S+)\s+(\S+)\s+(\S+)\s+(.*)$/) {

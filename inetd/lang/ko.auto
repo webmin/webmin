@@ -1,0 +1,18 @@
+index_edit=서비스 편집 :
+index_search=일치하는 디스플레이 서비스 :
+index_sok=검색
+index_toomany=이 페이지에 표시 할 인터넷 서비스가 너무 많습니다.
+index_none=일치하는 인터넷 서비스가 없습니다.
+
+error_user=다음과 같이 실행할 사용자가 없거나 유효하지 않습니다.
+error_group=실행할 그룹이 없거나 유효하지 않습니다.
+error_smfservice=cmd '$1'(오류 코드 $2)로 smf 서비스를 업데이트하지 못했습니다.
+error_smf_cmdfield=smf의 경우 프로그램 '$1'의 파일 이름은 명령 필드의 첫 번째 인수와 일치해야합니다 (예 : '$2').
+
+editrpc_act=프로그램 상태
+editrpc_stream=흐름
+editrpc_dgram=데이터 그램
+editrpc_tli=TLI
+
+editserv_qm=명령이 존재하지 않을 수 있습니까?
+editserv_ename=해당 이름과 프로토콜을 가진 서비스가 없습니다

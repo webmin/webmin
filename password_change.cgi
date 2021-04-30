@@ -38,8 +38,8 @@ if (!$in{'pam'} && !$wuser) {
 
 if ($wuser) {
 	# Update Webmin user's password
-	$enc = &acl::encrypt_password($in{'old'}, $wuser->{'pass'});
-	$enc eq $wuser->{'pass'} || &pass_error($text{'password_eold'});
+	$ok = &acl::validate_password($in{'old'}, $wuser->{'pass'});
+	$ok || &pass_error($text{'password_eold'});
 	$perr = &acl::check_password_restrictions($in{'user'}, $in{'new1'});
 	$perr && &pass_error(&text('password_enewpass', $perr));
 	$wuser->{'pass'} = &acl::encrypt_password($in{'new1'});
@@ -137,7 +137,7 @@ elsif ($in{'pam'}) {
 		exit(0);
 		}
 	waitpid($pid, 0);
-	open(TEMP, $temp);
+	open(TEMP, "<$temp");
 	chop($rv = <TEMP>);
 	chop($messages = <TEMP>);
 	close(TEMP);
@@ -201,19 +201,13 @@ if (&get_product_name() eq 'usermin' &&
 
 # Show ok page
 &header(undef, undef, undef, undef, 1, 1);
-
-print "<center><h3>",&text('password_done', "/"),"</h3></center>\n";
-
+print &ui_alert_box(&text('password_done', "/"), "success");
 &footer();
 
 sub pass_error
 {
-&header(undef, undef, undef, undef, 1, 1);
-print &ui_hr();
-
-print "<center><h3>",$text{'password_err'}," : ",@_,"</h3></center>\n";
-
-print &ui_hr();
+&header(undef, undef, undef, undef, 1, 1, undef, undef);
+print &ui_alert_box("$text{'password_err'}: @_.", "danger");
 &footer();
 exit;
 }

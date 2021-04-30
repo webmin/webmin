@@ -1,0 +1,32 @@
+index_addresses=时间服务器主机名或地址
+index_eformat=无法识别的<tt>hwclock</tt>输出格式
+index_sched=是否按计划同步？
+index_schedyes=是的，有时在下面 ..
+index_sync=同步并套用
+index_hardware2=也设置硬件时间
+index_boot=Webmin启动时同步？
+index_tzheader=时区
+index_ehwclock=$1失败： $2
+index_tabtime=设置时间
+index_tabzone=更改时区
+index_tabsync=时间服务器同步
+index_desctime=该表格用于更改系统的当前时间，所有正在运行的进程都将使用该时间。在具有独立硬件时钟的操作系统上，也可以使用该时钟进行设置。
+index_desczone=该表格允许您设置系统的默认时区，该默认时区用于将系统时间转换为人类可读的格式和偏移量。
+index_descsync=该表格用于将系统配置为自动与远程服务器同步时间。同步将使用Unix <tt>time</tt>协议或NTP完成，具体取决于安装了哪些命令以及远程系统支持什么。
+
+acl_timezone=用户可以设置时区吗？
+acl_ntp=可以与时间服务器同步吗？
+acl_nontp=您不允许与时间服务器同步
+
+minute=分钟
+second=第二
+
+error_ediff=与当地时间不同的时间服务器太大： $1天
+error_entp=NTP时间同步失败： $1
+error_etimeserver=没有时间服务器与输入的同步
+
+log_timezone=将时区更改为 $1
+
+timezone_err=无法保存时区
+timezone_ecannot=您无权更改时区
+timezone_enone=未选择区域

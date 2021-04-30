@@ -1,0 +1,71 @@
+<header> TCP Wrappers </header>
+<h3> obrasci </h3> Jezik kontrole pristupa implementira sljedeće obrasce: <ul>
+    <li> Niz koji počinje znakom &#39;.&#39; lik. Ime domaćina odgovara ako se posljednje komponente njegova imena podudaraju s navedenim uzorkom. Na primjer, uzorak &#39;.tue.nl&#39; odgovara imenu hosta &#39;wzv.win.tue.nl&#39;. </li>
+    <li> Niz koji završava znakom &#39;.&#39; lik. Adresa domaćina odgovara ako se njegova prva numerička polja podudaraju s danim nizom. Na primjer, obrazac &#39;131.155.&#39; podudara se s adresom (gotovo) svakog domaćina na mreži Sveučilišta u Eindhovenu (131.155.xx). </li>
+    <li> Niz koji započinje s znakom &#39;@&#39; tretira se kao NIS (ranije YP) naziv mrežne grupe. Ime hosta je podudarno ako je član domaćina određene mreže. Podudarnosti na Netgroup grupi nisu podržane za nazive procesa demona ili za korisnička imena klijenata. </li>
+    <li> Izraz oblika &#39;nnnn / mmmm&#39; tumači se kao par &#39;mreža / maska&#39;. IPv4 adresa glavnog računala podudara se ako je &#39;neto&#39; jednaka bitovima AND adrese i &#39;maske&#39;. Na primjer, uzorak mreže / maske &#39;131.155.72.0/255.255.254.0&#39; odgovara svakoj adresi u rasponu &#39;131.155.72.0&#39; do &#39;131.155.73.255&#39;. </li>
+    <li> Izraz oblika &#39;[n: n: n: n: n: n: n: n] / m&#39; tumači se kao par &#39;[net]/prefixlen&#39;. IPv6 adresa glavnog računala podudara se ako su „prefiksna“ bita od „neto“ jednaka „prefiksna“ bita adrese. Na primjer, obrazac [net]/prefikslen &#39;[3ffe: 505: 2: 1 ::]/64&#39; odgovara svakoj adresi u rasponu &#39;3ffe: 505: 2: 1:&#39;? kroz &#39;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&#39;. </li>
+    <li> Niz koji započinje s znakom &#39;/&#39; tretira se kao naziv datoteke. Ime ili adresa hosta se podudaraju ako se podudaraju s bilo kojim nazivom ili uzorkom hosta navedenim u imenovanoj datoteci. Format datoteke je nula ili više redaka s nula ili više obrazaca imena ili adrese odvojenih bijelim prostorom. Uzorak naziva datoteke može se koristiti bilo gdje uzorak imena računala ili adrese. </li>
+    <li> Oznake &quot;*&quot; i &quot;?&quot; mogu se upotrijebiti za podudaranje imena hostova ili IP adresa. Ova metoda podudaranja ne može se koristiti zajedno s podudaranjem &quot;net/maska&quot;, podudaranje imena hosta koje počinje s &quot;.&quot; ili podudaranje IP adrese koja završava s &quot;.&quot;. </li>
+</ul>
+<h3> Zamjenski znakovi </h3> Jezik kontrole pristupa podržava eksplicitne zamjenske znakove: <table border>
+    <tr>
+        <td> <b>SVI</b> </td>
+        <td> Univerzalni zamjenski znak, uvijek se podudara. </td>
+    </tr>
+    <tr>
+        <td> <b>LOKALNI</b> </td>
+        <td> Odgovara bilo kojem domaćinu čije ime ne sadrži znak točke. </td>
+    </tr>
+    <tr>
+        <td> <b>NEPOZNATA</b> </td>
+        <td> Odgovara svakom korisniku čije je ime nepoznato i podudara se s bilo kojim domaćinom čije je ime ili adresa nepoznata. Ovaj se obrazac treba koristiti s oprezom: imena hosta možda nisu dostupna zbog privremenih problema s poslužiteljem imena. Mrežna adresa neće biti dostupna kada softver ne može shvatiti o kojoj vrsti mreže govori. </td>
+    </tr>
+    <tr>
+        <td> <b>ZNAN</b> </td>
+        <td> Odgovara svakom korisniku čije je ime poznato i podudara se s bilo kojim domaćinom čije su ime i adresa poznati. Ovaj se obrazac treba koristiti s oprezom: imena hosta možda nisu dostupna zbog privremenih problema s poslužiteljem imena. Mrežna adresa neće biti dostupna kada softver ne može shvatiti o kojoj vrsti mreže govori. </td>
+    </tr>
+    <tr>
+        <td> <b>paranoidan</b> </td>
+        <td> Odgovara bilo kojem domaćinu čije se ime ne podudara s njegovom adresom. Kad se tcpd izgradi s -DPARANOID (zadani način), ispada zahtjeve takvih klijenata čak i prije nego što pogledate tablice za kontrolu pristupa. Izradite bez -DPARANOID kada želite veću kontrolu nad takvim zahtjevima. </td>
+    </tr>
+</table>
+<h3> operatori </h3> <b>EXCEPT</b> Namjenska upotreba je oblika: &#39;list_1 EXCEPT list_2&#39;; ovaj konstrukt odgovara onome što odgovara listi_1, osim ako ne odgovara listi_2. Operator EXCEPT može se koristiti u daemon_lists i u client_listi. Operator EXCEPT može se ugniježđiti: ako bi kontrolni jezik dozvolio uporabu zagrada, &#39;EXCEPT b EXCEPT c&#39; će se raščlaniti kao &#39;(EXCEPT (b EXCEPT c))&#39;. <h3> Komande granata </h3> Ako pravilo praćenja pristupa u prvom podudaranju sadrži naredbu ljuske, naredba se podvrgava% <letter> zamjene (vidi sljedeći odjeljak). Rezultat je izvršen a /bin/sh nadređenim postupkom sa standardnim ulazom, izlazom i pogreškom povezanim s /dev/null. Na kraju naredbe navedite &quot;&amp;&quot; ako ne želite čekati dok se ne ispuni. <p> Naredbe ljuske ne bi se trebale oslanjati na PATH postavku inetda. Umjesto toga, trebali bi upotrebljavati apsolutna imena staza ili bi trebali započeti s izričitom izjavom PATH = što god. <h3> % Proširenja </h3> Sljedeće ekspanzije dostupne su u naredbama ljuske: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> Adresa klijenta (poslužitelja) </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Podaci o klijentu: korisnik @ domaćin, korisnička @ adresa, ime računala ili samo adresa, ovisno o tome koliko je podataka dostupno. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> Naziv procesa demona (vrijednost argv[0]). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Naziv ili adresa klijenta (poslužitelja) ako ime glavnog računala nije dostupno. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> Ime klijenta (poslužitelja) (ili &quot;nepoznato&quot; ili &quot;paranoično&quot;). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> Id procesa demona. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Podaci o poslužitelju: daemon@host, daemon @ adresa ili samo ime daemona, ovisno o tome koliko je podataka dostupno. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Korisničko ime klijenta (ili &quot;nepoznato&quot;). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Proširi se na jedan &#39;%? lik. </td>
+            </tr>
+        </table> Znakovi u%ekspanzijama koji mogu zbuniti ljusku zamjenjuju se podvlakama.
+        <hr />

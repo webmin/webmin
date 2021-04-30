@@ -1,0 +1,8 @@
+index_title=Cluster Change lösenord
+index_noservers=Inga servrar att hantera användare har definierats i <a href=$1>Cluster Users and Groups</a> -modulen.
+index_hosts=Alla lösenordsändringar som görs med den här modulen kommer att göras på alla $1 -värdar som hanteras av modulen Cluster Users and Groups.
+
+passwd_err=Det gick inte att ändra lösenordet
+passwd_title=Ändra lösenord
+passwd_on=Ändrar lösenord på $1 ..
+passwd_euser=användare finns inte!

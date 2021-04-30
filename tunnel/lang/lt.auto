@@ -1,0 +1,21 @@
+index_elink=Kol kas nenustatytas URL į tunelį.
+index_url=Įveskite URL, kurį norite atidaryti:
+index_open=Atviras
+
+link_eurl=Neteisingas tunelio URL : $1 
+link_elogin=Nepavyko prisijungti prie $1 kaip $2.
+link_eautologin=Netinkamas prisijungimo vardas arba slaptažodis, skirtas $1. <a href='$2'>Norėdami prisijungti, spustelėkite čia</a>.
+link_enouser=Norint prisijungti prie $1, reikalingas vartotojo vardas ir slaptažodis, tačiau joks nebuvo sukonfigūruotas.
+link_ebadurl=Jums neleidžiama pasiekti URL $1 
+link_mconfig=Norėdami pakeisti prisijungimą, naudokite puslapį <a href='$1'>modulio konfigūracija</a>.
+
+login_title=Prisijungimas prie svetainės
+login_desc=Norėdami prisijungti prie $1, turite pateikti vartotojo vardą ir slaptažodį.
+login_header=Tinklalapio autentifikavimas
+login_user=Vartotojo vardas
+login_pass=Slaptažodis
+login_login=Prisijungti
+login_clear=Aišku
+
+seturl_err=Nepavyko atidaryti URL
+seturl_eurl=Įvestas neteisingas URL

@@ -19,7 +19,7 @@ $rec || &error($text{'edit_egone'});
 &can_edit_type($rec->{'type'}, \%access) ||
 	&error($text{'recs_ecannottype'});
 
-my $desc = &text('edit_header', &ip6int_to_net(&arpa_to_ip($dom)));
+my $desc = &text('edit_header', &zone_subhead($zone));
 &ui_print_header($desc, &text('edit_title', $text{"edit_".$rec->{'type'}} || $rec->{'type'}), "",
 		 undef, undef, undef, undef, &restart_links($zone));
 

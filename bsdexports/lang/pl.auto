@@ -1,0 +1,52 @@
+index_title=Wywóz NFS
+index_add=Dodaj nowy eksport.
+index_dirs=Katalogi
+index_clients=Klienci
+index_everyone=Każdy
+index_none=Nie zdefiniowano jeszcze eksportu.
+index_delete=Usuń wybrane eksporty
+index_apply=Zatwierdź zmiany
+index_applydesc=Kliknij ten przycisk, aby zastosować bieżącą konfigurację eksportu plików. Dzięki temu wszystkie wyżej wymienione katalogi będą dostępne z określonymi opcjami.
+index_return=lista eksportu
+index_echeck=Serwer NFS nie może być używany w tym systemie : $1 
+
+check_ecmd=Polecenie serwera NFS $1 nie jest zainstalowane
+
+delete_err=Nie udało się usunąć eksportu
+delete_enone=Nie wybrano
+
+edit_title1=Edytuj eksport
+edit_title2=Utwórz eksport
+edit_header1=Opcje eksportu
+edit_dirs=Katalogi do eksportu
+edit_alldirs=Eksportować podkatalogi?
+edit_ro=Tylko czytać?
+edit_kerb=Używać Kerberos?
+edit_header2=Zdalne mapowanie użytkowników
+edit_maproot=Odwzoruj użytkownika root na
+edit_mapusers=Mapuj wszystkich użytkowników na
+edit_unpriv=Nieuprzywilejowany użytkownik
+edit_uid=Użytkownik / UID
+edit_gids=I grupy / GID
+edit_mapall=Mapuj wszystkich użytkowników na
+edit_header3=Klienci dla tego eksportu
+edit_clients=Klienci
+edit_hosts=Hosty / grupy sieciowe
+edit_network=Sieć
+edit_mask=Maska
+
+save_err=Nie udało się zapisać eksportu
+save_edir=„$1” nie jest katalogiem lub nie istnieje
+save_enone=Musisz podać co najmniej jeden katalog do wyeksportowania
+save_esub=Można podać tylko jeden katalog, jeśli wybrano opcję <b>eksport podkatalogów</b>
+save_eroot=Podczas korzystania z opcji <b>eksportu podkatalogów</b> wyeksportowany katalog musi być katalogiem głównym systemu plików <i>lokalnego</i>
+save_euser=„$1” nie jest prawidłowym użytkownikiem ani identyfikatorem UID
+save_egroup=„$1” nie jest prawidłową grupą lub identyfikatorem GID
+save_ekerb=Użytkownicy root mapy, mapuj wszystkich użytkowników i opcje Kerberos wzajemnie się wykluczają
+save_ehosts=Musisz podać co najmniej jeden host, aby wyeksportować
+save_enetwork=„$1” nie jest prawidłową siecią
+save_enetmask=„$1” nie jest prawidłową maską sieci
+save_esame1=Katalog <tt>$1</tt> jest już eksportowany do <tt>$2</tt>. Twój system operacyjny nie pozwala na eksportowanie katalogów w tym samym <i>lokalnym</i> systemie plików do tego samego hosta osobno
+save_esame2=Katalog <tt>$1</tt> jest już eksportowany do <tt>$2</tt>. Twój system operacyjny nie pozwala na eksportowanie katalogów w tym samym <i>lokalnym</i> systemie plików do tej samej sieci osobno
+
+restart_err=Nie udało się zastosować zmian

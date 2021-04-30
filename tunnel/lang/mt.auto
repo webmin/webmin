@@ -1,0 +1,21 @@
+index_elink=L-ebda URL għall-mina għadu ma ġie stabbilit s'issa.
+index_url=Daħħal URL biex tiftaħ:
+index_open=Miftuħ
+
+link_eurl=URL tal-mina mhux validu : $1 
+link_elogin=Naqas mill-login għal $1 bħala $2.
+link_eautologin=Login jew password mhux validi għal $1. <a href='$2'>Ikklikkja hawn</a> biex tidħol.
+link_enouser=Kunjom ta 'l-utent u password huwa meħtieġ biex tidħol ma' $1, iżda l-ebda wieħed ma ġie kkonfigurat.
+link_ebadurl=M'għandekx permess taċċessa l-URL $1 
+link_mconfig=Uża l-<a href='$1'>konfigurazzjoni tal-modulu</a> biex tibdel id-dħul.
+
+login_title=Idħol fil-Website
+login_desc=Għandek tipprovdi username u password biex tidħol ma ' $1.
+login_header=Awtentikazzjoni tal-Websajt
+login_user=Username
+login_pass=Password
+login_login=Idħol
+login_clear=Ċari
+
+seturl_err=Naqset milli tiftaħ URL
+seturl_eurl=URL imdaħħal mhux validu

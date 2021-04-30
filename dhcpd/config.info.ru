@@ -1,0 +1,13 @@
+line1=Настраиваемые параметры,11
+lease_sort=Упорядочить аренды по,1,0-Порядку в файле,1-Адресу IP,2-Имени узла
+hostnet_list=Показывать подсети и узлы как,1,0-Значки,1-Список
+dhcpd_nocols=Пиктограммы в строке,0
+lease_tz=Показывать время аренды как,1,0-GMT,1-Местное время
+line2=Системные параметры,11
+dhcpd_conf=Файл настроек сервера DHCP,0
+dhcpd_path=Исполняемый файл сервера DHCP,0
+start_cmd=Команда для запуска сервера DHCP,3,Программа запуска сервера
+restart_cmd=Команда для применения настроек,3,Убить и перезапустить
+pid_file=Путь к файлу PID сервера DHCP,0
+lease_file=Файл аренды сервера DHCP,0
+interfaces_type=Тип интерфейса файлов,4,redhat-Redhat,mandrake-Mandrake,suse-SuSE,debian-Debian,caldera-Caldera,-Webmin

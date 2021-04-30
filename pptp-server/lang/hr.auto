@@ -1,0 +1,152 @@
+index_title=PPTP VPN poslužitelj
+index_version=Verzija PoPToP $1 
+index_epptpd=PoPToP PPTP poslužitelj $1 nije pronađen u vašem sustavu ili nije pravi program. Možda nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
+index_econfig=Konfiguracijska datoteka PPTP poslužitelja $1 nije pronađena u vašem sustavu. Možda je vaša konfiguracija <a href='$2'>modula</a> netočna.
+index_stop=Zaustavite PPTP poslužitelj
+index_stopdesc=Kliknite ovaj gumb da biste isključili pokrenuti proces PPTP poslužitelja, tako da neće biti prihvaćena nova veza. Postojeće VPN veze ipak ostaju aktivne.
+index_start=Pokrenite PPTP poslužitelj
+index_startdesc=Kliknite ovaj gumb kako biste pokrenuli proces PPTP poslužitelja tako da može primati VPN veze od klijenata.
+index_apply=Primijeni konfiguraciju
+index_applydesc=Kliknite ovaj gumb da biste primijenili trenutne opcije PPTP poslužitelja zaustavljanjem i ponovnim pokretanjem postupka PPTP poslužitelja. Promjene opcija PPP-a i PPP računa uvijek će se primjenjivati na sve nove veze
+index_return=indeks modula
+index_epppd=Program PPP poslužitelja $1 nije instaliran na vašem sustavu. PPTP ovisi o njemu.
+
+conf_title=Opcije PPTP servera
+conf_ecannot=Nije vam dopušteno uređivanje opcija PPTP poslužitelja
+conf_header=Konfiguracija PPTP poslužitelja
+conf_speed=Brzina prijenosa PPP-a
+conf_baud=bps
+conf_listen=Slušajte na adresi
+conf_all=Sve adrese
+conf_localip=IP adrese za kraj poslužitelja
+conf_remoteip=IP adrese dodijeliti klijentima
+conf_ipxnets=IPX mreže za dodjelu
+conf_from=Iz
+conf_to=do
+conf_option=Datoteka PPP opcija
+conf_mode0=Globalne postavke
+conf_mode1=Postavke specifične za PPTP
+conf_mode2=Prilagođena datoteka
+conf_ipdesc=IP adresu u oba se raspona može unijeti pojedinačno (poput 192.168.1.1) ili kao rasponi (poput 192.168.2.32-64)
+conf_err=Spremanje opcija poslužitelja nije uspjelo
+conf_espeed=Nedostaje ili nije valjana brzina prijenosa
+conf_elisten=Nedostaje ili nevažeća adresa za slušanje
+conf_eoption=Prilagođena datoteka PPP s nedostajućim ili nevažećim izgledom
+conf_elocalip='$1' nije valjana lokalna IP adresa ili raspon
+conf_eremoteip='$1' nije valjana udaljena IP adresa ili raspon
+conf_efrom=Nedostaje ili nije važeća IPX mreža s adrese
+conf_eto=Nedostaje ili nije važeća IPX mreža za adresiranje
+
+options_title=Opcije PPP-a
+options_ecannot=Nije vam dopušteno uređivanje PPP opcija
+options_desc0=PPP opcije u nastavku od $1 primjenjuju se na SVE dolazne veze koje je primio vaš sustav, uključujući one za biranje modema.
+options_desc1=PPP opcije ispod $1 odnose se samo na sve PPTP veze.
+options_desc2=Koristit će ih nove veze uspostavljene nakon spremanja ovog obrasca.
+options_header=Opcije PPP veze
+options_proxyarp=Stvoriti proxy ARP unos?
+options_lock=Zaključati datoteku PTY uređaja?
+options_auth=Zahtijevate provjeru autentičnosti?
+options_auth0=Ne, ali sprječavaju usmjerene IP-ove
+options_auth1=Nikada
+options_auth2=Stalno
+options_login=Također obaviti unix autentifikaciju?
+options_pap=PAP provjera autentičnosti
+options_chap=CHAP provjera autentičnosti
+options_req=Mora se koristiti
+options_all=Može se koristiti
+options_ref=Ne mogu se upotrijebiti
+options_name=Naziv poslužitelja za provjeru autentičnosti
+options_hn=Pravo ime domaćina
+options_mtu=Maksimalna veličina paketa za slanje
+options_mru=Maksimalna veličina prijemnog paketa
+options_err=Spremanje opcija PPP-a nije uspjelo
+options_emtu=Nedostaje ili neispravna maksimalna veličina paketa za slanje
+options_emru=Nedostaje ili neispravna maksimalna veličina prijemnog paketa
+options_ename=Nedostaje ili nevažeće ime poslužitelja za provjeru autentičnosti
+options_version=PPPd verzija $1 
+options_msdesc=Dolje opcije omogućuju MS-CHAP metodu provjere autentičnosti i MPPE enkripciju, koju Windows VPN klijenti zadani koriste prema zadanim postavkama. Međutim, MPPE zahtijeva podršku i u PPP-ovom demonu i u jezgri operacijskog sustava.
+options_mschap=MS-CHAP provjera autentičnosti
+options_mschap-v2=MS-CHAP verzija 2 autentifikacija
+options_chapms=MS-CHAP provjera autentičnosti
+options_chapms-v2=MS-CHAP verzija 2 autentifikacija
+
+secrets_title=PPP računi
+secrets_ecannot=Nije vam dopušteno uređivanje PPP računa
+secrets_return=indeks
+secrets_none=Još nije stvoren PPP račun.
+secrets_enopfile=Datoteka PPP lozinke $1 ne postoji u vašem sustavu. Možda PPP nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
+secrets_table=PPP čini $1 
+secrets_user=Korisničko ime
+secrets_ips=IP adrese
+secrets_uany=BILO
+secrets_sany=BILO
+secrets_create=Kreirajte novi PPP račun.
+secrets_desc=PPP računi navedeni na ovoj stranici preuzimaju se iz datoteke $1 koja se koristi za $3 provjeru autentičnosti. Prikazani su samo oni za vaš poslužitelj $2, a ne računi za uspostavljanje odlaznih veza.
+secrets_delete=Izbrišite odabrane PPP račune
+
+edit_secret_etitle=Uredite PPP račun
+edit_secret_ctitle=Kreirajte PPP račun
+edit_secret_acc=PPP račun
+edit_secret_user=Korisničko ime
+edit_secret_serv=server
+edit_secret_sany=bilo koji
+edit_secret_uany=bilo koji
+edit_secret_pass=Zaporka
+edit_secret_none=nijedan
+edit_secret_ffile=Iz datoteke
+edit_secret_leave=Ostavite nepromijenjeno
+edit_secret_setto=Postavljen
+edit_secret_vaddr=Valjane adrese
+edit_secret_aany=Dopusti bilo koji
+edit_secret_anone=Dopusti nijedno
+edit_secret_alist=Dopusti popis ..
+edit_secret_save=Uštedjeti
+edit_secret_del=Izbrisati
+edit_secret_return=popis računa
+
+save_secret_esave=Spremanje računa nije uspjelo
+save_secret_enoip='$1' nije valjana adresa
+
+stop_err=Zaustavljanje PPTP poslužitelja nije uspjelo
+stop_egone=Nema više trčanja
+stop_ecannot=Zabranjeno vam je zaustavljanje PPTP poslužitelja
+
+start_err=Nije uspio pokretanje PPTP poslužitelja
+start_ecannot=Nije vam dopušteno pokretanje PPTP poslužitelja
+
+apply_err=Ponovno pokretanje PPTP poslužitelja nije uspjelo
+apply_ecannot=Nije vam dopušteno ponovno pokretanje PPTP poslužitelja
+
+conns_title=Aktivne veze
+conns_ecannot=Nije vam dopušteno upravljanje aktivnim vezama
+conns_desc=Ova stranica prikazuje trenutno aktivne PPTP veze s vašim poslužiteljem. Da biste ga prisilno isključili kliknite na njegovo sučelje.
+conns_iface=PPP sučelje
+conns_client=Adresa klijenta
+conns_stime=Povezana od
+conns_local=VPN adresa poslužitelja
+conns_remote=VPN adresa klijenta
+conns_none=Trenutno se ne čini da su nikakve PPTP veze aktivne.
+conns_unknown=Nepoznata
+conns_user=Korisničko ime
+
+disc_err=Prekid veze nije uspio
+disc_egone=Veze više nisu aktivne
+disc_ekill=Proces se više ne pokreće
+
+log_secret_create=Izrađen PPP račun $1 
+log_secret_modify=Izmijenjen PPP račun $1 
+log_secret_delete=Izbrisan PPP račun $1 
+log_deletes=Izbrisani $1 PPP računi
+log_conf=Izmijenjene opcije PPTP poslužitelja
+log_options=Izmijenjene opcije PPP-a
+log_disc=Prekinuta klijent $1 
+log_start=Pokrenut PPTP poslužitelj
+log_stop=Zaustavljen PPTP poslužitelj
+log_apply=Primijenjena konfiguracija PPTP poslužitelja
+
+acl_conf=Može li se urediti konfiguracija?
+acl_options=Mogu li uređivati opcije?
+acl_secrets=Može li upravljati PPTP računima?
+acl_conns=Mogu li pregledati veze?
+acl_stop=Može li se zaustaviti i pokrenuti PPTP poslužitelj?
+acl_apply=Može li primijeniti konfiguraciju?

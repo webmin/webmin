@@ -1,0 +1,75 @@
+index_title=GRUB Käynnistinkuormaaja
+index_add=Lisää uusi käynnistysvaihtoehto.
+index_global=Muokkaa yleisiä asetuksia
+index_globalmsg=Muokkaa yleisiä käynnistysasetuksia, jotka koskevat kaikkia käynnistysvalikkovaihtoehtoja, ja valitse laite, johon GRUB on asennettu.
+index_install=Asenna GRUB
+index_installmsg=Asenna GRUB-käynnistyslaite $1 : ään, jotta näet yllä olevat asetukset käynnistyksen yhteydessä. Tämä ohittaa kaikki olemassa olevat käynnistyslataimet, kuten LILO, ja saattaa tehdä järjestelmästä käynnistymättömän!
+index_none=Käynnistysasetuksia ei ole määritetty. Varmista, että olet lisännyt vähintään yhden ennen grubin asentamista.
+index_efile=GRUB-valikkotiedostoa $1 ei löydy järjestelmästäsi. Ehkä GRUBia ei ole asennettu, tai <a href='$2'>moduulin kokoonpano</a> on väärä.
+index_epath=GRUB-suoritettavaa $1 ei löydy järjestelmästäsi. Ehkä GRUBia ei ole asennettu, tai <a href='$2'>moduulin kokoonpano</a> on väärä.
+index_return=vaihtoehtojen luettelo
+
+title_add=Lisää käynnistysvaihtoehto
+title_edit=Muokkaa käynnistysvaihtoehtoa
+title_header=Käynnistysvalikon vaihtoehdot
+title_title=Option otsikko
+title_root=Käynnistyskuva-osio
+title_noverify=Älä asenna ja tarkista osiota
+title_other=Muu laitetiedosto
+title_sel=valittu
+title_boot=Käynnistä käyttöjärjestelmä
+title_kernel=Ydin
+title_kfile=Polku ytimeen
+title_args=Ytimen vaihtoehdot
+title_initrd=Alkuperäinen ramdisk-tiedosto
+title_modules=Lisämoduulit
+title_chain=Muu käyttöjärjestelmä
+title_chain_def=Ensimmäisestä osioalueesta
+title_chain_file=Ketjulataustiedostosta
+title_makeactive=Tee juuriosiosta aktiivinen?
+title_none1=Ei mitään
+title_none2=(ei käynnistyksen valikkokohta)
+title_err=Käynnistysasetuksen tallentaminen epäonnistui
+title_etitle=Puuttuu vaihtoehdon otsikko
+title_eroot=Puuttuva pääosio
+title_ekernel=Puuttuva tai virheellinen ytimen polku
+title_echain=Puuttuva tai virheellinen ketjutuontatiedosto
+title_edev=Juuriosiolaitetta $1 ei tueta
+title_einitrd=Alkuperäinen ramdisk-tiedostonimi puuttuu
+title_lock=Salasana lukittu?
+
+global_title=Globaalit vaihtoehdot
+global_header=Globaalit käynnistysvalikon vaihtoehdot
+global_default=Oletuskäynnistysvaihtoehto
+global_fallback=Fallback boot -vaihtoehto
+global_first=Ensimmäinen luettelossa
+global_timeout=Aikakatkaisu ennen oletuksen lataamista
+global_forever=Odota ikuisesti
+global_secs=sekuntia
+global_install=Asenna GRUB levylle/osioon
+global_sel=valittu
+global_other=muut
+global_password=Käynnistyssalasana
+global_none=Ei mitään
+global_password_file=Käytä valikkotiedostoa, jos salasana syötetään:
+global_err=Globaalien asetusten tallentaminen epäonnistui
+global_etimeout=Puuttuva tai virheellinen aikakatkaisu
+global_edev=Asennuslevyä/osiota ei tueta $1 
+global_eother=Puuttuva tai virheellinen levy/osio
+global_epassword=Puuttuva tai virheellinen käynnistyssalasana
+global_epasswordfile=Puuttuu vaihtoehtoinen valikkotiedostonimi
+
+install_title=Asenna GRUB
+install_err=GRUB: n asennus epäonnistui
+install_efind=Valikkotiedostoa ei löytynyt
+install_desc=GRUB: n asentaminen tiedostoon $1 komennoilla $2 ja $3.
+install_ok=.. asennus valmis.
+install_failed=.. asennus epäonnistui!
+
+log_create_title=Luotu käynnistysvaihtoehto $1 
+log_delete_title=Poistettu käynnistysvaihtoehto $1 
+log_modify_title=Muokattu käynnistysvaihtoehto $1 
+log_up_title=Siirretty käynnistysvaihtoehto $1 ylöspäin
+log_down_title=Siirtynyt käynnistysvaihtoehto $1 alas
+log_global=Vaihdetut globaalit vaihtoehdot
+log_install=Asennettu GRUB

@@ -1,1 +1,11 @@
-sort_mode=Trier les h魌es par,1,1-Nom d'h魌e,0-Ordre d'ajout,2-Description
+line1=Option d'affichage,11
+sort_mode=Trier les h么tes par,1,1-Nom d'h么te,0-Ordre ajout茅,2-Description
+table_mode=Afficher les h么tes comme,1,1-Table,0-Ic么nes
+conf_host_links=Fournir un lien pour modifier les h么tes?,1,1-Oui,0-Non
+line2=Options des utilisateurs et des groupes,11
+conf_add_user=Autoriser l'ajout d'utilisateurs?,1,1-Oui,0-Non
+conf_add_group=Autoriser l'ajout de groupe?,1,1-Oui,0-Non
+conf_find_user=Autoriser la recherche dans la base de donn茅es des utilisateurs?,1,1-Oui,0-Non
+conf_find_group=Autoriser la recherche dans la base de donn茅es de groupe?,1,1-Oui,0-Non
+conf_allow_refresh=Autoriser l'actualisation des listes d'utilisateurs et de groupes?,1,1-Oui,0-Non
+conf_allow_sync=Autoriser la synchronisation du serveur?,1,1-Oui,0-Non

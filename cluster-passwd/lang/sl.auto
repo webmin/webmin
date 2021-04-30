@@ -1,0 +1,8 @@
+index_title=Grozdi za spremembo gesel
+index_noservers=V modulu <a href=$1>Uporabniki in skupine grozdov</a> niso bili definirani nobeni strežniki za upravljanje uporabnikov.
+index_hosts=Vse spremembe gesla, izvedene s tem modulom, bodo izvedene na vseh $1 gostiteljih, ki jih upravlja modul Uporabniki in skupine gruč.
+
+passwd_err=Gesla ni bilo mogoče spremeniti
+passwd_title=Spreminjanje gesla
+passwd_on=Spreminjanje gesla na $1.
+passwd_euser=Uporabnik ne obstaja!

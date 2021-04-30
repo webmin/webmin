@@ -1,0 +1,67 @@
+index_title=نسخ ملفات الكتلة
+index_add=قم بإنشاء نسخة ملف مجدولة جديدة.
+index_none=لم يتم تحديد نسخ الملفات المجدولة.
+index_servers=نسخ إلى الخوادم
+index_return=قائمة نسخ الكتلة
+index_more=$1 أكثر ..
+index_run=اركض الآن ..
+index_files=نسخ الملفات
+index_sched=المقرر؟
+index_when=نعم ،$1
+index_act=عمل
+index_exec=نفذ - اعدم
+index_delete=حذف النسخ المحددة
+
+edit_title=تحرير نسخة الكتلة
+create_title=إنشاء نسخة نظامية
+edit_header=تفاصيل نسخة الكتلة
+edit_files=نسخ الملفات
+edit_dest=وجهة بشكل مباشر
+edit_cmd=الأمر للتشغيل بعد النسخ
+edit_before=الأمر للتشغيل قبل النسخ
+edit_remote=على الخوادم البعيدة
+edit_dmode0=انسخ المسارات الكاملة تحت الدليل
+edit_dmode1=نسخ إلى هذا الدليل
+edit_servers=نسخ إلى الخوادم
+edit_group=أعضاء$1
+edit_this=هذا الخادم
+edit_all=&lt;جميع المضيفين&gt;
+edit_sched=هل تريد النسخ في الموعد المحدد؟
+edit_schedyes=نعم ، في الأوقات المحددة أدناه ..
+edit_run=نسخ الآن
+edit_return=نسخة الكتلة
+edit_email=إخراج البريد الإلكتروني إلى
+edit_none=لا أحد
+
+save_err=فشل في حفظ مهمة cron للكتلة
+save_efiles=لم يتم إدخال أي ملفات لنسخها
+save_edest=دليل الوجهة مفقود
+save_eservers=لم يتم إدخال أي خوادم للنسخ
+save_efile=إن ملف نسخ '$1' ليس مسارًا مطلقًا
+save_eemail=عنوان البريد الإلكتروني مفقود أو غير صالح
+
+exec_title=نسخ الملفات
+exec_files1=جاري نسخ ملفات $1 إلى الملقمات المحددة$2 ..
+exec_files2=جاري نسخ$1 إلى الملقمات المحددة$2 ..
+exec_under=(تحت الدليل$1)
+exec_failed=فشل النسخ إلى $1 : $2 
+exec_success=نسخ الملفات التالية إلى$1 :
+exec_made=إنشاء الدلائل التالية على$1 :
+exec_nohosts=لم يتم تحديد مضيفات للتشغيل عليها ، أو أن المجموعات المحددة لا تحتوي على مضيفات قابلة للاستخدام.
+exec_nothing=لم يتم نسخ أية ملفات إلى$1 بنجاح.
+exec_not=فشل في نسخ الملفات التالية إلى$1 :
+exec_cmd=إخراج أمر ما بعد النسخ على$1 :
+exec_before=إخراج الأمر قبل النسخ على$1 :
+exec_on=فشل في التشغيل على $1 : $2 
+
+log_create=تم إنشاء نسخة لملقمات $1 إلى$2
+log_modify=نسخة معدلة لملقمات $1 إلى$2
+log_delete=نسخة محذوفة لملقمات $1 إلى$2
+log_exec=تم نسخ$1 إلى$2 ملقمات
+log_deletes=تم حذف$1 نسخ
+
+email_subject_succeeded=نجحت نسخة نظام المجموعة من$1
+email_subject_failed=فشل نسخ الكتلة من$1
+
+delete_err=فشل حذف النسخ
+delete_enone=لا شيء محدد

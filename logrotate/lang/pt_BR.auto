@@ -1,0 +1,115 @@
+index_title=Rotação do arquivo de log
+index_econf=O arquivo de configuração de rotação de log $1 não foi encontrado no seu sistema. Talvez o logrotate não esteja instalado ou a <a href='$2'>configuração do módulo</a> esteja incorreta.
+index_ecmd=O programa de rotação de log $1 não foi encontrado no seu sistema. Talvez não esteja instalado ou a <a href='$2'>configuração do módulo</a> está incorreta.
+index_eversion=Falha ao obter a versão do logrotate com o comando $1 : $2 
+index_version=Logrotate versão $1 
+index_add=Adicione um novo arquivo de log para girar.
+index_file=Arquivo de log
+index_period=Período de rotação
+index_post=Comando pós-rotação
+index_none=Nenhum arquivo de log foi definido ainda.
+index_global=Editar opções globais
+index_globaldesc=Clique neste botão para editar as configurações aplicáveis a todos os arquivos de log e definir os padrões para os logs.
+index_sched=Editar programação
+index_scheddesc=Clique neste botão para editar a programação na qual a rotação do log é executada pelo Cron, ou habilite ou desabilite.
+index_nocmd=Nenhum
+index_notset=Não configurado
+index_return=lista de arquivos de log
+index_force=Forçar rotação do registro
+index_forcedesc=Força a rotação imediata de todos os arquivos de log, mesmo que ainda não esteja na hora.
+index_logrotate=Logrotate
+index_delete=Excluir rotações de log selecionadas
+
+period_daily=Diariamente
+period_weekly=Semanal
+period_monthly=Por mês
+period_never=Nunca
+period_bytes=bytes
+
+edit_title1=Editar arquivo de log
+edit_title2=Criar arquivo de log
+edit_header=Detalhes do arquivo de log girado
+edit_file=Caminhos do arquivo de log
+edit_sched=Horário de rotação
+edit_rotate=Número de logs antigos a serem mantidos
+edit_compress=Compactar arquivos de log antigos?
+edit_delaycompress=Atraso na compactação até o próximo ciclo?
+edit_copytruncate=Truncar arquivo de log no local?
+edit_ifempty=Girar mesmo se o arquivo de log estiver vazio?
+edit_missingok=Ignorar arquivo de log se estiver faltando?
+edit_size=Tamanho máximo antes de girar
+edit_always=Ignorado
+edit_minsize=Tamanho mínimo para girar
+edit_nominsize=Sempre
+edit_ext=Extensão para nomes de arquivos alternados
+edit_dateext=Usar extensão de data para arquivos rotacionados
+edit_mail=Enviar arquivo de log antes de excluir?
+edit_mailto=Sim, para endereçar
+edit_mailno=Não, não envie e-mail
+edit_mailfl=Arquivo de log para email
+edit_mailfirst=O mais recente que acabou de ser girado
+edit_maillast=Mais antigo que está prestes a ser excluído
+edit_create=Recriar arquivo de log após a rotação?
+edit_createas=Sim, com o modo $1 e de propriedade do usuário $2 e do grupo $3 
+edit_createno=Não, não recrie
+edit_createsame=Sim, com permissões antigas
+edit_olddir=Armazenar logs rotativos antigos
+edit_olddirto=Diretório
+edit_olddirsame=Mesmo diretório que o arquivo de log
+edit_errors=Enviar mensagens de erro por e-mail para
+edit_errorsno=Ninguém
+edit_errorsto=Endereço ou usuário
+edit_post=Comandos a serem executados após a rotação
+edit_pre=Comandos a serem executados antes da rotação
+edit_default=Padrão ($1)
+edit_sharedscripts=Executar scripts apenas uma vez para todos os arquivos?
+edit_now=Rodar agora
+
+global_title=Opções Globais
+global_header=Opções padrão para todos os arquivos de log
+
+save_err=Falha ao salvar o log
+save_efile=Nome de arquivo de log ausente ou inválido
+save_esize=Tamanho máximo ausente ou inválido
+save_eminsize=Tamanho mínimo ausente ou inválido
+save_erotate=Número máximo de registros antigos ausente ou inválido para manter
+save_ecreatemode=Modo de criação octal de 3 ou 4 dígitos ausente ou inválido
+save_ecreateuser=Usuário de criação ausente ou inválido
+save_ecreategroup=Grupo de criação ausente ou inválido
+save_emust1=Você deve entrar em um modo de criação ao inserir um usuário de criação
+save_emust2=Você deve inserir um usuário de criação ao entrar em um grupo de criação
+save_eolddirto=Diretório ausente ou inválido para logs rotados antigos
+save_eext=Extensão ausente para nomes de arquivos de log alternados
+save_emailto=Endereço de email ausente para logs alternados
+save_eerrors=Endereço de e-mail ausente para mensagens de erro
+save_epre=O script de pré-rotação não pode conter uma linha <tt>endscript</tt> ou <tt>endrotate</tt>
+save_epost=O script pós-rotação não pode conter uma linha <tt>endscript</tt> ou <tt>endrotate</tt>
+save_enofiles=Nenhum arquivo para girar inserido
+
+log_modify_sched=Trabalho de Cron de rotação de log alterado
+log_create_sched=Trabalho Cron de rotação de log criado
+log_delete_sched=Trabalho de cron de rotação de log excluído
+log_global=Opções globais modificadas
+log_create=Adicionada rotação para o arquivo de log $1 
+log_modify=Rotação modificada para o arquivo de log $1 
+log_delete=Rotação excluída para o arquivo de log $1 
+log_delete_logs=Rotação excluída para $1 arquivos de log
+
+sched_title=Programação de rotação de logs
+sched_desc=Para que a rotação de log configurada usando este módulo seja executada, o comando $1 deve ser executado regularmente (normalmente diariamente) pelo Cron.
+sched_runparts=Atualmente, o comando de rotação de log está sendo executado a partir do script $1 $2 e não pode ser ajustado.
+sched_sched=Trabalho cron de rotação de log
+sched_disabled=Desativado
+sched_enabled=Ativado, às vezes abaixo ..
+sched_save=Update Cron Job
+sched_err=Falha ao salvar a programação de rotação
+sched_when=Tempos a executar
+
+force_title=Forçar rotação do registro
+force_doing=Forçando a rotação imediata de todos os arquivos de log.
+force_doingone=Forçando a rotação imediata de um arquivo de log.
+force_done=.. feito.
+force_failed=.. falhou! Veja a saída acima para o motivo.
+
+delete_err=Falha ao excluir logs
+delete_enone=Nenhum selecionado

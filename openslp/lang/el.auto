@@ -1,0 +1,50 @@
+index_title=Διαμόρφωση OpenSLP
+index_return=Διαμόρφωση OpenSLP
+index_eslpd=Ο δαίμονας OpenSLP $1 δεν βρέθηκε στο σύστημά σας. Ίσως να μην έχει εγκατασταθεί ή η διαμόρφωση της μονάδας σας <a href='$2'></a> είναι εσφαλμένη.
+index_econf=Το αρχείο διαμόρφωσης OpenSLP $1 δεν βρέθηκε στο σύστημά σας. Ίσως να μην έχει εγκατασταθεί ή η διαμόρφωση της μονάδας σας <a href='$2'></a> είναι εσφαλμένη.
+index_version=Η έκδοση OpenSLP $1 
+
+slp_apply=Εφαρμογή αλλαγών
+slp_stop=Σταματήστε το OpenSLP
+
+snda_title=Στατικό πεδίο εφαρμογής και DA
+snda_useScopes=Στατική λίστα Scopes
+snda_DAAddresses=Στατική λίστα πρακτορείων καταλόγου (DA)
+
+netcfg_title=Ρύθμιση δικτύου
+netcfg_isBroadcastOnly=Οι μεταδόσεις δύναμης πρέπει να χρησιμοποιούνται αντί για πολυεκπομπή
+netcfg_passiveDADetection=Χρησιμοποιήστε παθητική ανίχνευση DA
+netcfg_activeDADetection=Χρησιμοποιήστε ενεργή ανίχνευση DA (περιορίστε μόνο στις διευθύνσεις DHCP ή DA)
+netcfg_DAActiveDiscoveryInterval=Active Discovery σε δευτερόλεπτα (0 απενεργοποιεί την ενεργή ανίχνευση)
+netcfg_multicastTTL=Πολυεκπομπή TTL (0-255)
+netcfg_DADiscoveryMaximumWait=Μέγιστος χρόνος αναμονής για αιτήματα εντοπισμού DA (σε χιλιοστά του δευτερολέπτου)
+netcfg_DADiscoveryTimeouts=Διαδοχικοί χρόνοι αναμονής για την εξακρίβωση DA (σε χιλιοστά του δευτερολέπτου)
+netcfg_HintsFile=Η διαδρομή προς το αρχείο OpenSLP υποδηλώνει
+netcfg_multicastMaximumWait=Μέγιστη αναμονή για αιτήματα πολλαπλής διανομής (σε χιλιοστά του δευτερολέπτου)
+netcfg_multicastTimeouts=Διαδοχικοί χρόνοι αναμονής πολλαπλής διανομής (σε χιλιοστά του δευτερολέπτου)
+netcfg_unicastMaximumWait=Μέγιστο χρονικό διάστημα μεταξύ αιτήσεων unicast (σε χιλιοστά του δευτερολέπτου)
+netcfg_randomWaitBound=Μέγιστη τιμή για όλες τις παραμέτρους τυχαίας αναμονής (σε χιλιοστά του δευτερολέπτου)
+netcfg_MTU=Μέγεθος πακέτου MTU (σε bytes)
+netcfg_interfaces=Οι διευθύνσεις IP των διεπαφών που πρέπει να ακούσει η DA/SA
+
+dacfg_title=Διαμόρφωση DA
+dacfg_isDA=Λειτουργία μόνο ως DA (διαβάστε τον οδηγό χρηστών πριν αλλάξετε αυτό το στοιχείο)
+
+log_title=Παρακολούθηση και καταγραφή
+log_traceDATraffic=Εκτύπωση μηνυμάτων κυκλοφορίας DA
+log_traceMsg=Εκτυπώστε τα λεπτομερή μηνύματα SLP
+log_traceDrop=Εκτύπωση SLP έπεσε πληροφορίες μηνυμάτων
+log_traceReg=Εκτυπώστε τις πληροφορίες εγγραφής και διαγραφής από την υπηρεσία DA και SA
+
+error_open=Σφάλμα κατά το άνοιγμα αρχείου
+error_flock_on=Σφάλμα δημιουργίας κλειδώματος αρχείου
+error_flock_off=Σφάλμα κατά την καταστροφή του κλειδώματος αρχείων
+error_hup=Παρουσιάστηκε σφάλμα κατά την επανεκκίνηση του OpenSLP με PID
+
+index_start=Ξεκινήστε το OpenSLP
+index_startmsg=Κάντε κλικ σε αυτό το κουμπί για να ξεκινήσετε τον δαίμονα OpenSLP στο σύστημά σας.
+index_stop=Σταματήστε το OpenSLP
+index_stopmsg=Κάντε κλικ σε αυτό το κουμπί για να σταματήσετε το δαίμονα OpenSLP στο σύστημά σας.
+
+stop_err=Δεν ήταν δυνατή η διακοπή του OpenSLP
+start_err=Δεν ήταν δυνατή η εκκίνηση του OpenSLP

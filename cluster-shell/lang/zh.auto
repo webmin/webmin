@@ -1,0 +1,22 @@
+index_title=集群外壳命令
+index_cmd=运行命令
+index_old=要么
+index_server=在服务器上运行
+index_run=立即运行命令
+index_return=模块索引
+index_this=这个服务器
+index_all=&lt;所有主机&gt;
+index_group=$1的成员
+index_clear=清除历史记录
+index_edit=编辑上一个
+
+run_title=运行命令
+run_err=运行命令失败
+run_ecmd=没有输入命令
+run_failed=无法在 $1上运行： $2
+run_success=$1..的输出
+run_enone=没有要在选定服务器上运行的服务器
+
+log_clear=清除命令历史
+log_run=在 $2台服务器上运行了 $1
+log_run_l=在 $2上跑了 $1

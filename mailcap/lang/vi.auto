@@ -1,0 +1,46 @@
+index_title=Chương trình loại MIME
+index_none=Không có chương trình xử lý loại MIME nào được xác định.
+index_add=Thêm một chương trình loại MIME mới.
+index_type=Loại MIME
+index_program=Chương trình xử lý
+index_cmt=Sự miêu tả
+index_delete=Xóa đã chọn
+index_disable=Vô hiệu hóa được chọn
+index_enable=Cho phép chọn
+index_enabled=Đã bật?
+index_return=danh sách các chương trình
+
+edit_title1=Tạo chương trình loại MIME
+edit_title2=Chỉnh sửa chương trình loại MIME
+edit_header=Chi tiết chương trình xử lý kiểu MIME
+edit_type=Loại MIME
+edit_enabled=Đã bật?
+edit_program=Chương trình xử lý
+edit_cmt=Sự miêu tả
+edit_egone=Chương trình không còn tồn tại!
+edit_test=Lệnh kiểm tra
+edit_none=Không có (luôn luôn sử dụng chương trình)
+edit_term=Hiển thị đầu ra trong thiết bị đầu cuối?
+edit_copious=Sản xuất nhiều sản lượng?
+edit_desc=Mô tả loại MIME
+
+save_err=Không thể lưu chương trình loại MIME
+save_etype=Loại MIME bị thiếu hoặc không hợp lệ
+save_eprogram=Thiếu chương trình xử lý
+save_eclash=Một chương trình được kích hoạt cho loại MIME đã nhập đã tồn tại
+save_etest=Lệnh kiểm tra thiếu hoặc không hợp lệ
+save_edesc=Mô tả loại MIME không hợp lệ
+
+delete_err=Không thể xóa các chương trình loại MIME
+disable_err=Không thể tắt các chương trình loại MIME
+disable_eclash=Một chương trình loại MIME bị vô hiệu hóa cho $1 đã tồn tại
+enable_err=Không thể bật chương trình loại MIME
+enable_eclash=Đã tồn tại chương trình loại MIME cho $1 
+delete_enone=Không được chọn
+
+log_delete_mailcap=Xóa chương trình loại MIME cho $1 
+log_create_mailcap=Tạo chương trình loại MIME cho $1 
+log_modify_mailcap=Chương trình loại MIME đã sửa đổi cho $1 
+log_delete_mailcaps=Đã xóa các chương trình loại 1 MIME
+log_disable_mailcaps=Vô hiệu hóa các chương trình loại 1 MIME
+log_enable_mailcaps=Đã bật chương trình loại 1 MIME

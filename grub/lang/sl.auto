@@ -1,0 +1,75 @@
+index_title=GRUB Looter
+index_add=Dodajte novo možnost zagona.
+index_global=Uredi globalne možnosti
+index_globalmsg=Uredite globalne možnosti zagona, ki veljajo za vse izbire zagonskega menija, in izberite napravo, na katero je nameščen GRUB.
+index_install=Namestite GRUB
+index_installmsg=Namestite zagonski nakladalec GRUB na $1, da prikažete zgornje možnosti ob zagonu. To bo razveljavilo vse obstoječe zagonske nakladače, kot je LILO, in vaš sistem bo lahko onemogočil!
+index_none=Možnosti zagona niso definirane. Pred namestitvijo grušča se prepričajte, da ste dodali vsaj enega.
+index_efile=Datoteke menija GRUB $1 v vašem sistemu ni bilo mogoče najti. Morda GRUB ni nameščen ali je <a href='$2'>konfiguracija modula</a> napačna.
+index_epath=Izvedljivega GRUB $1 v vašem sistemu ni bilo mogoče najti. Morda GRUB ni nameščen ali je <a href='$2'>konfiguracija modula</a> napačna.
+index_return=seznam možnosti
+
+title_add=Dodaj možnost zagona
+title_edit=Uredi možnost zagona
+title_header=Podrobnosti o možnosti menija za zagon
+title_title=Naslov možnosti
+title_root=Zagonska particija slike
+title_noverify=Ne namestite in preverite particije
+title_other=Druga datoteka datoteke
+title_sel=Izbrano
+title_boot=Operacijski sistem za zagon
+title_kernel=Jedro
+title_kfile=Pot do jedra
+title_args=Možnosti jedra
+title_initrd=Začetna datoteka ramdisk
+title_modules=Dodatni moduli
+title_chain=Drugi OS
+title_chain_def=Od prvega prekatnega sektorja
+title_chain_file=Iz datoteke verižnega nakladalca
+title_makeactive=Ali naj bo korenska particija aktivna?
+title_none1=Noben
+title_none2=(vnos menija brez zagona)
+title_err=Možnosti zagona ni bilo mogoče shraniti
+title_etitle=Manjka naslov možnosti
+title_eroot=Manjka korenska particija
+title_ekernel=Manjkajoča ali neveljavna pot jedra
+title_echain=Manjkajoča ali neveljavna datoteka verižnika
+title_edev=Nepodprta naprava korenske particije $1 
+title_einitrd=Manjka začetno ime datoteke ramdisk
+title_lock=Geslo je zaklenjeno?
+
+global_title=Globalne možnosti
+global_header=Možnosti globalnega zagonskega menija
+global_default=Privzeta možnost zagona
+global_fallback=Možnost zagonskega zagona
+global_first=Najprej na seznamu
+global_timeout=Čas pred nalaganjem privzetega nalaganja
+global_forever=Počakaj za vedno
+global_secs=sekund
+global_install=Namestite GRUB na disk/particijo
+global_sel=Izbrano
+global_other=Drugo
+global_password=Zagonsko geslo
+global_none=Noben
+global_password_file=Če ste vnesli geslo, uporabite meni:
+global_err=Globalnih možnosti ni bilo mogoče shraniti
+global_etimeout=Manjkajoča ali neveljavna časovna omejitev
+global_edev=Nepodprta namestitev diska/particije $1 
+global_eother=Manjkajoči ali neveljavni disk/particija
+global_epassword=Manjkajoče ali neveljavno zagonsko geslo
+global_epasswordfile=Manjka nadomestno ime datoteke
+
+install_title=Namestite GRUB
+install_err=Namestitve GRUB ni bilo mogoče namestiti
+install_efind=Datoteke menijev ni bilo mogoče najti
+install_desc=Namestitev GRUB na $1 z ukazi $2 in $3 ..
+install_ok=.. namestite dokončano.
+install_failed=.. namestitev ni uspela!
+
+log_create_title=Ustvarjena možnost zagona $1 
+log_delete_title=Izbrisana možnost zagona $1 
+log_modify_title=Spremenjena možnost zagona $1 
+log_up_title=Možnost zagona premaknjena $1 
+log_down_title=Možnost zagona premaknjena navzdol $1 
+log_global=Spremenjene globalne možnosti
+log_install=Nameščen GRUB

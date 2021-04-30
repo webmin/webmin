@@ -1,0 +1,37 @@
+index_title=Klastera Krona darbi
+index_add=Izveidojiet jaunu klasteru izveidošanas darbu.
+index_none=Nav definēti klasteru veidošanas darbi.
+index_servers=Palaist serveros
+index_return=klasteru kronu darbu saraksts
+index_more=Vēl $1 ..
+index_run=Palaist tagad ..
+index_actions=Darbības
+
+edit_title=Rediģēt klastera Krona darbu
+create_title=Izveidot klasteru Kronu darbu
+edit_servers=Palaist serveros
+edit_group=$1 dalībnieki
+edit_this=šis serveris
+edit_all=&lt;Visi saimnieki&gt;
+edit_emissing=Krona darbs vairs nepastāv!
+
+save_err=Neizdevās saglabāt kopas cron darbu
+
+exec_title=Izpildiet klastera Krona darbu
+exec_cmd=Notiek $1 darbināšana atlasītajos serveros.
+exec_failed=Neizdevās palaist $1 : $2 
+exec_success=Izeja no $1.
+exec_nohosts=Nav neviena saimnieka, kurš ir izvēlēts darboties, vai atlasītajās grupās nav neviena izmantojama resursdatora.
+
+log_run=Darbināja $1 uz $2 serveriem
+log_run_l=Notika $1 uz $2 
+log_create=Tika izveidots kopas cron darbs $1 
+log_create_l=Izveidots klastera izveidošanas darbs $2 $1 
+log_modify=Modificēts kopas cron darbs $1 
+log_modify_l=Modificēts klastera cron darbs $2 $1 
+log_delete=Dzēsts kopas cron darbs $1 
+log_delete_l=Izdzēsts kopas cron darbs $2 $1 
+log_deletes=Tika izdzēsti $1 klastera izveidošanas darbi
+
+delete_err=Neizdevās izdzēst klastera izveidošanas darbus
+delete_enone=Nav atlasīts

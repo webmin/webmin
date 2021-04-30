@@ -1,0 +1,75 @@
+index_title=GRUB-laaier
+index_add=Voeg 'n nuwe opstartopsie by.
+index_global=Wysig globale opsies
+index_globalmsg=Wysig wêreldwye opstartopsies wat van toepassing is op alle keuselys-opsies, en kies die toestel waarop GRUB geïnstalleer is.
+index_install=Installeer GRUB
+index_installmsg=Installeer die GRUB-laaier op $1 om die opsies hierbo te wys tydens die opstartyd. Dit sal enige bestaande laaier soos LILO ignoreer en dit kan u stelsel onbedrywig maak!
+index_none=Geen opstartopsies is gedefinieër nie. Maak seker dat u ten minste een byvoeg voordat u grub installeer.
+index_efile=Die GRUB-menu lêer $1 is nie op u stelsel gevind nie. Miskien is GRUB nie geïnstalleer nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
+index_epath=Die GRUB-uitvoerbare $1 is nie op u stelsel gevind nie. Miskien is GRUB nie geïnstalleer nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
+index_return=opsies lys
+
+title_add=Voeg selflaaiposisie by
+title_edit=Wysig selflaaiposisie
+title_header=Besonderhede van die opsie van die opstartmenu
+title_title=Opsie titel
+title_root=Bootbeeld-partisie
+title_noverify=Moenie die partisie monteer en verifieer nie
+title_other=Ander toestellêer
+title_sel=gekies
+title_boot=Bedryfstelsel om te begin
+title_kernel=Kern
+title_kfile=Pad na kern
+title_args=Kernopsies
+title_initrd=Aanvanklike ramdisk-lêer
+title_modules=Ekstra modules
+title_chain=Ander bedryfstelsel
+title_chain_def=Van die eerste sektor van die verdeling
+title_chain_file=Van die kettinglaaierlêer
+title_makeactive=Maak wortelpartisie aktief?
+title_none1=Geen
+title_none2=(nie-opstart-kieslysinskrywing)
+title_err=Die opstartopsie is nie gestoor nie
+title_etitle=Ontbrekende opsietitel
+title_eroot=Wortelpartisie ontbreek
+title_ekernel=Ontbrekende of ongeldige kernpad
+title_echain=Ontbrekende of ongeldige kettinglaaierlêer
+title_edev=Ongesteunde wortelpartisietoestel $1 
+title_einitrd=Aanvanklike ramdisk-lêernaam ontbreek
+title_lock=Wagwoord gesluit?
+
+global_title=Wêreldwye opsies
+global_header=Wêreldwye opstartmenu-opsies
+global_default=Standaard opstartopsie
+global_fallback=Terugskakel-opsie
+global_first=Eerste op die lys
+global_timeout=Uittreksel voordat u verstek laai
+global_forever=Wag vir ewig
+global_secs=sekondes
+global_install=Installeer GRUB op die skyf/partisie
+global_sel=gekies
+global_other=ander
+global_password=Begin wagwoord
+global_none=Geen
+global_password_file=Gebruik die menu-lêer as u die wagwoord invoer:
+global_err=Globale opsies kon nie gestoor word nie
+global_etimeout=Ontbrekende of ongeldige tydsverloop
+global_edev=Ongesteunde installasie skyf/partisie $1 
+global_eother=Ontbrekende of ongeldige skyf/partisie
+global_epassword=Ontbrekende of ongeldige opstartwagwoord ontbreek
+global_epasswordfile=Alternatiewe menu-lêernaam ontbreek
+
+install_title=Installeer GRUB
+install_err=Kon nie GRUB installeer nie
+install_efind=Kon nie die menu-lêer vind nie
+install_desc=Installeer GRUB op $1 met opdragte $2 en $3.
+install_ok=.. installeer voltooi.
+install_failed=.. installering misluk!
+
+log_create_title=Die opstartopsie $1 is geskep
+log_delete_title=Opstelopsie $1 is uitgevee
+log_modify_title=Gewysigde opstartopsie $1 
+log_up_title=Opstartopsie $1 is opgeskuif
+log_down_title=Oplaai-opsie $1 is verwyder
+log_global=Verander globale opsies
+log_install=GRUB geïnstalleer

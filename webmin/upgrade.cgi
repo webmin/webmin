@@ -49,7 +49,7 @@ elsif ($in{'source'} == 1) {
 elsif ($in{'source'} == 2) {
 	# find latest version at www.webmin.com by looking at index page
 	&error_setup($text{'upgrade_err3'});
-	($ok, $version) = &get_latest_webmin_version();
+	($ok, $version, $release) = &get_latest_webmin_version();
 	$ok || &inst_error($version);
 	if (!$in{'force'}) {
 		if ($version == &get_webmin_version()) {
@@ -61,23 +61,27 @@ elsif ($in{'source'} == 2) {
 		}
 	if ($in{'mode'} eq 'rpm') {
 		# Downloading RPM
+		$release ||= 1;
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$osdn_host/webadmin/webmin-$version-1.noarch.rpm");
+		    "http://$osdn_host/webadmin/webmin-${version}-${release}.noarch.rpm");
 		}
 	elsif ($in{'mode'} eq 'deb') {
 		# Downloading Debian package
+		$release = $release ? "-".$release : "";
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$osdn_host/webadmin/webmin_${version}_all.deb");
+		    "http://$osdn_host/webadmin/webmin_${version}${release}_all.deb");
 		}
 	elsif ($in{'mode'} eq 'solaris-pkg') {
 		# Downloading my Solaris package
+		$release = $release ? "-".$release : "";
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$osdn_host/webadmin/webmin-$version.pkg.gz");
+		    "http://$osdn_host/webadmin/webmin-${version}${release}.pkg.gz");
 		}
 	else {
 		# Downloading tar.gz file
+		$release = $release ? "-".$release : "";
 		$progress_callback_url = &convert_osdn_url(
-			"http://$osdn_host/webadmin/webmin-$version.tar.gz");
+			"http://$osdn_host/webadmin/webmin-${version}${release}.tar.gz");
 		}
 	($host, $port, $page, $ssl) = &parse_http_url($progress_callback_url);
 	$file = &transname();
@@ -188,7 +192,7 @@ else {
 
 if ($in{'mode'} ne 'gentoo') {
 	# gunzip the file if needed
-	open(FILE, $file);
+	open(FILE, "<$file");
 	read(FILE, $two, 2);
 	close(FILE);
 	if ($two eq "\037\213") {
@@ -211,7 +215,7 @@ $qfile = quotemeta($file);
 if ($in{'mode'} eq 'rpm') {
 	# Check if it is an RPM package
 	$rpmname = "webmin";
-	if (open(RPM, "$root_directory/rpm-name")) {
+	if (open(RPM, "<$root_directory/rpm-name")) {
 		chop($rpmname = <RPM>);
 		close(RPM);
 		}
@@ -248,7 +252,7 @@ if ($in{'mode'} eq 'rpm') {
 elsif ($in{'mode'} eq 'deb') {
 	# Check if it is a Debian package
 	$debname = "webmin";
-	if (open(RPM, "$root_directory/deb-name")) {
+	if (open(RPM, "<$root_directory/deb-name")) {
 		chop($debname = <RPM>);
 		close(RPM);
 		}
@@ -362,7 +366,7 @@ elsif ($in{'mode'} eq 'solaris-pkg' || $in{'mode'} eq 'sun-pkg') {
 	}
 elsif ($in{'mode'} eq 'gentoo') {
 	# Check if it is a gentoo .tar.gz or .ebuild file of webmin
-	open(EMERGE, "emerge --pretend '$file' 2>/dev/null |");
+	open(EMERGE, "emerge --pretend ".quotemeta($file)." 2>/dev/null |");
 	while(<EMERGE>) {
 		s/\r|\n//g;
 		s/\033[^m]+m//g;
@@ -447,7 +451,7 @@ else {
 		}
 	else {
 		# Next to the current directory
-		$extract = "../..";
+		$extract = "$root_directory/..";
 		}
 
 	# Do the extraction of the tar file, and run setup.sh
@@ -456,7 +460,7 @@ else {
 		# Extact top-level files like setup.sh and os_list.txt
 		$topfiles = join(" ", map { quotemeta($_) }
 					  grep { !$tardir{$_} } @topfiles);
-		$out = `cd $extract ; tar xf $file $topfiles 2>&1 >/dev/null`;
+		$out = `cd $extract && tar xf $file $topfiles 2>&1 >/dev/null`;
 		if ($?) {
 			&inst_error(&text('upgrade_euntar', "<tt>$out</tt>"));
 			}
@@ -478,14 +482,14 @@ else {
 		# Extract current modules and other directories
 		$mods = join(" ", map { quotemeta("webmin-$version/$_") }
 				      @mods);
-		$out = `cd $extract ; tar xf $file $mods 2>&1 >/dev/null`;
+		$out = `cd $extract && tar xf $file $mods 2>&1 >/dev/null`;
 		if ($?) {
 			&inst_error(&text('upgrade_euntar', "<tt>$out</tt>"));
 			}
 		}
 	else {
 		# Extract the whole file
-		$out = `cd $extract ; tar xf $file 2>&1 >/dev/null`;
+		$out = `cd $extract && tar xf $file 2>&1 >/dev/null`;
 		if ($?) {
 			&inst_error(&text('upgrade_euntar', "<tt>$out</tt>"));
 			}

@@ -1,0 +1,85 @@
+main_title3=Webmin $1 ($2)
+
+category_=도구
+
+longcategory_=기타 기타 작업을 수행하는 모듈
+
+fail=실패한
+euserdbacl=사용자 ACL을 가져 오지 못했습니다  : $1
+euserdbacl2=사용자 ACL을 업데이트하지 못했습니다  : $1
+egroupdbacl=그룹 ACL을 가져 오지 못했습니다  : $1
+egroupdbacl2=그룹 ACL을 업데이트하지 못했습니다  : $1
+
+config_emodule=모듈이 존재하지 않습니다
+
+referer_fix3u=Webmin에서 확인할 수 있도록 브라우저가 리퍼러 정보를 보내도록 구성되어 있는지 확인하십시오.
+
+session_twofactor=2 단계 토큰
+session_twofailed=이중 인증 실패  : $1
+
+acl_readonly2=사용자가 데모 모드입니까?
+acl_readonlyyes=예 (일부 모듈을 사용하지 못할 수 있음)
+acl_negative=사용자에게 새로운 모듈 권한을 부여 하시겠습니까?
+acl_webminsearch=Webmin 검색 필드를 표시 하시겠습니까?
+
+elock_tries2=$2 분 후에 $1 파일을 잠그지 못했습니다. 마지막 오류  : $3
+
+progress_size2=$1 ($2) 다운로드 중. ..
+progress_datan=$1 수신 ($2 %)
+progress_data2n=$1을 받았습니다.
+
+ui_filterbox=입력하여 필터링하십시오 ..
+
+wsearch_on=($1에서)
+wsearch_helpfor=<i>$1</i>에 대한 도움말
+wsearch_htext=일치하는 텍스트
+wsearch_htype=출처
+wsearch_hcgis=참고 문헌
+wsearch_type_mod=모듈 이름
+wsearch_type_config=구성
+wsearch_type_help=도움말 페이지
+wsearch_type_text=사용자 인터페이스
+wsearch_type_dir=모듈 URL
+wsearch_hmod=구성 단위
+wsearch_moddir=URL 경로 /$1/
+wsearch_searching=$1 검색 중 ..
+wsearch_found=$1 결과를 찾았습니다.
+
+sql_emysqldriver=MySQL DBI 드라이버를로드하지 못했습니다
+sql_emysqlconnect=MySQL 데이터베이스에 연결하지 못했습니다  : $1
+sql_epostgresqldriver=PostgreSQL DBI 드라이버를로드하지 못했습니다
+sql_epostgresqlconnect=PostgreSQL 데이터베이스에 연결하지 못했습니다  : $1
+sql_eldapdriver=LDAP perl 모듈을로드하지 못했습니다.
+sql_eldapconnect=LDAP 서버 $1에 연결하지 못했습니다.
+sql_eldaptls=LDAP에 대한 TLS 암호화를 시작하지 못했습니다  : $1
+sql_eldaplogin=$1으로 LDAP 서버에 로그인하지 못했습니다  : $2
+
+log_email_subject=$1의 Webmin 작업
+log_email_global=Webmin 글로벌 액션
+log_email_desc=이 이메일은 사용자 조치에 대한 응답으로 Webmin에 의해 발송되었습니다.
+log_email_mod=웹민 모듈 : $1
+log_email_moddesc=모듈 제목 : $1
+log_email_time=$1에서 수행 된 작업
+log_email_system=시스템에서 수행 : $1
+log_email_user=사용자가 수행 : $1
+log_email_script=웹민 스크립트 : $1
+log_email_session=세션 ID : $1
+log_email_remote=고객 주소 : $1
+
+nice_size_PB=PB
+nice_size_PiB=PiB
+nice_size_TB=결핵
+nice_size_TiB=TiB
+nice_size_GB=GB
+nice_size_GiB=수코양이
+nice_size_MB=MB
+nice_size_MiB=MiB
+nice_size_kB=kB
+nice_size_kiB=KiB
+nice_size_b=바이트
+
+langauto_include=기계 번역 포함
+
+file_truncated_message=$1 의 데이터를 가져 왔습니다. $3 에서 $2 을 (를) 잘랐습니다.
+file_truncated_message_head=데이터의 시작 $1 을 (를) 가져 왔고 $3 에서 $2 을 (를) 잘랐습니다.
+file_truncated_message_tail=데이터의 끝 $1 을 (를) 가져 왔습니다. $3 에서 $2 을 (를) 자릅니다

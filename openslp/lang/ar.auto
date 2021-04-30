@@ -1,0 +1,50 @@
+index_title=تكوين OpenSLP
+index_return=تكوين OpenSLP
+index_eslpd=لم يتم العثور على البرنامج الخفي لـ OpenSLP $1 على نظامك. ربما لم يتم تثبيته أو أن <a href='$2'>تهيئة الوحدة النمطية</a> غير صحيحة.
+index_econf=لم يتم العثور على ملف تكوين OpenSLP $1 على نظامك. ربما لم يتم تثبيته أو أن <a href='$2'>تهيئة الوحدة النمطية</a> غير صحيحة.
+index_version=إصدار OpenSLP$1
+
+slp_apply=تطبيق التغييرات
+slp_stop=أوقف OpenSLP
+
+snda_title=نطاق ثابت وجدول أعمال
+snda_useScopes=قائمة ثابتة للنطاقات
+snda_DAAddresses=قائمة ثابتة لوكلاء الدليل (DA)
+
+netcfg_title=تكوين شبكة
+netcfg_isBroadcastOnly=فرض استخدام عمليات البث بدلاً من الإرسال المتعدد
+netcfg_passiveDADetection=استخدم كشف DA السلبي
+netcfg_activeDADetection=استخدام كشف DA النشط (يقتصر على عناوين DHCP أو DA فقط)
+netcfg_DAActiveDiscoveryInterval=الاكتشاف النشط في ثوان (0 يعطل الاكتشاف النشط)
+netcfg_multicastTTL=الإرسال المتعدد TTL (0-255)
+netcfg_DADiscoveryMaximumWait=أقصى وقت انتظار لطلبات اكتشاف DA (بالمللي ثانية)
+netcfg_DADiscoveryTimeouts=أوقات انتظار اكتشاف DA المتتالية (بالمللي ثانية)
+netcfg_HintsFile=مسار ملف تلميحات OpenSLP
+netcfg_multicastMaximumWait=الحد الأقصى للانتظار لطلبات الإرسال المتعدد (بالمللي ثانية)
+netcfg_multicastTimeouts=أوقات انتظار الإرسال المتعدد المتتالية (بالمللي ثانية)
+netcfg_unicastMaximumWait=أقصى قدر من الوقت بين طلبات البث الأحادي (بالمللي ثانية)
+netcfg_randomWaitBound=القيمة القصوى لجميع معلمات الانتظار العشوائية (بالمللي ثانية)
+netcfg_MTU=حجم حزمة MTU (بالبايت)
+netcfg_interfaces=عناوين IP للواجهات التي يجب أن يستمع إليها DA/SA
+
+dacfg_title=تكوين DA
+dacfg_isDA=تعمل كجهاز DA فقط (اقرأ دليل المستخدمين قبل تغيير هذا)
+
+log_title=تتبع وتسجيل
+log_traceDATraffic=طباعة رسائل المرور DA
+log_traceMsg=طباعة رسائل تفاصيل SLP
+log_traceDrop=إسقاط طباعة SLP معلومات الرسالة
+log_traceReg=طباعة معلومات التسجيل وإلغاء التسجيل DA و SA
+
+error_open=خطأ في فتح الملف
+error_flock_on=خطأ في إنشاء قفل الملف
+error_flock_off=خطأ في تدمير قفل الملف
+error_hup=خطأ في إعادة تشغيل OpenSLP باستخدام PID
+
+index_start=قم بتشغيل OpenSLP
+index_startmsg=انقر فوق هذا الزر لبدء برنامج OpenSLP على نظامك.
+index_stop=أوقف OpenSLP
+index_stopmsg=انقر فوق هذا الزر لإيقاف البرنامج الخفي لـ OpenSLP على نظامك.
+
+stop_err=فشل إيقاف OpenSLP
+start_err=فشل بدء OpenSLP

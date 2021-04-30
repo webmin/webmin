@@ -1,0 +1,83 @@
+index_return=λίστα χρηστών
+index_system6=Διακομιστής αλληλογραφίας: Exim
+index_system5=Διακομιστής αλληλογραφίας: Qmail+VPopMail
+index_system4=Διακομιστής αλληλογραφίας: Qmail+LDAP
+
+mail_whitemove=Να επιτρέπονται οι αποστολείς και τα εισερχόμενα
+mail_fromfilter=Δημιουργήστε φίλτρο ανά αποστολέα
+mail_tofilter=Δημιουργήστε φίλτρο ανά παραλήπτη
+mail_subfilter=Δημιουργήστε φίλτρο ανά θέμα
+
+mail_selread=Επιλέξτε διαβάσει.
+mail_selunread=Επιλέξτε μη αναγνωσμένο.
+mail_selspecial=Επιλέξτε ειδική.
+mail_specialsync=Sync Special
+
+view_nobody=Αυτό το μήνυμα δεν περιέχει περιεχόμενα σώματος.
+view_afile=Όνομα συνημμένου
+view_atype=Τύπος συνημμένου
+view_aactions=Ενέργειες
+view_aview=Θέα
+view_aopen=Ανοιξε
+view_asave=Αποθηκεύσετε
+view_aplain=Ακατέργαστος
+view_anofile=Δεν υπάρχει όνομα αρχείου
+view_asize=Μέγεθος αρχείου
+view_markas0=Αδιάβαστος
+view_markas1=Ανάγνωση
+view_markas2=Ειδικός
+view_sub2=Επισυναπτόμενο μήνυμα ηλεκτρονικού ταχυδρομείου από $1
+
+view_dheader=Αποσυνδέστε το συνημμένο στο διακομιστή
+view_whitemove=Να επιτρέπεται ο αποστολέας και τα εισερχόμενα
+view_hammove=Αναφορά ζαμπόν και εισερχομένων
+view_images=Εμφάνιση εικόνων
+view_aall=Αποθηκεύστε όλα τα συνημμένα ως ZIP.
+view_aslideshow=Εμφάνιση όλων των εικόνων.
+
+reply_dsn=Ζητήστε ειδοποίηση ανάγνωσης κατάστασης;
+reply_del=Ζητήστε την ειδοποίηση κατάστασης παράδοσης;
+reply_aboot=Προσθήκη παραληπτών στο βιβλίο διευθύνσεων;
+reply_tabfrom=Από
+reply_tabto=Προς το
+reply_tabreplyto=Να απαντήσουν σε
+reply_tabcc=Cc
+reply_tabbcc=Bcc
+reply_tabsigning=Υπογραφή
+reply_taboptions=Επιλογές
+reply_addattach=Προσθέστε το πεδίο συνημμένου.
+reply_addssattach=Προσθέστε το πεδίο συνημμένης πλευράς διακομιστή.
+reply_html0=Σύνθεση κειμένου
+reply_html1=Σύνθεση HTML
+
+reply_save=Αποθηκεύστε και επεξεργαστείτε
+
+send_title2=Αποθηκεύτηκε αλληλογραφία
+
+confirm_warnf=Είστε βέβαιοι ότι θέλετε να διαγράψετε τα επιλεγμένα μηνύματα $1 από το φάκελο <b>$2</b>;
+confirm_warnallf=Είστε βέβαιοι ότι θέλετε να διαγράψετε όλα τα μηνύματα στο φάκελο <b>$1</b>;
+
+search_msg6=Αποτελέσματα αναζήτησης για $1 στο πεδίο $2
+search_attach=Πρέπει να έχετε συνημμένα;
+
+sform_header=Προηγμένες επιλογές αναζήτησης ηλεκτρονικού ταχυδρομείου
+sform_andmode=Λειτουργία κριτηρίων
+sform_folder2=Αναζήτηση σε φάκελο (-ες)
+sform_allmsg=ολόκληρο το μήνυμα
+
+razor_moved=.. έγινε και μετακινήθηκε στο φάκελο $1.
+
+slide_title=Συνημμένες εικόνες
+slide_prev=Προηγούμενος
+slide_next=Επόμενο
+
+left_mail=Ταχυδρομείο
+left_search=Αναζήτηση:
+left_folders=Διαχείριση φακέλων
+left_addresses=Βιβλίο διευθύνσεων
+left_prefs=Προτιμήσεις αλληλογραφίας
+left_forward=Προώθηση ηλεκτρονικού ταχυδρομείου
+left_autoreply=Αυτόματη απάντηση
+left_filter=Φίλτρα ηλεκτρονικού ταχυδρομείου
+left_pass=Άλλαξε κωδικό
+left_sig=Επεξεργασία υπογραφής

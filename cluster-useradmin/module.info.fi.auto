@@ -1,0 +1,3 @@
+longdesc_fi=Luo, päivitä ja poista käyttäjiä ja ryhmiä useilta palvelimilta. Toisin kuin NIS, jokaisella palvelimella on oma salasanansa ja ryhmätiedostot, jotka tämä moduuli päivittää etäyhteyden kautta.
+name_fi=Klusterin käyttäjät
+desc_fi=Klusterin käyttäjät ja ryhmät

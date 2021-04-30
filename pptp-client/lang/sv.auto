@@ -1,0 +1,112 @@
+index_title=PPTP VPN-klient
+index_epptp=PPTP-klientprogrammet $1 hittades inte på ditt system. Kanske är den inte installerad eller så är din <a href='$2'>modulkonfiguration</a> felaktig.
+index_eppp=PPP-serverprogrammet $1 är inte installerat på ditt system. PPTP beror på att den fungerar.
+index_eoptions=Den globala PPTP-PPP-alternativfilen $1 finns inte. Antingen skapa den, eller justera <a href='$2'>modulkonfiguration</a> för att använda en annan fil, eller ingen alls.
+index_header=Definierade tunnlar
+index_none=Inga PPTP-tunnlar har definierats än.
+index_tunnel=Tunnel $1 
+index_add=Lägg till en ny PPTP VPN-tunnel.
+index_conn=Koppla till:
+index_pass=med valfritt lösenord:
+index_conndesc=Klicka på den här knappen för att ansluta den valda PPTP VPN-tunneln med den aktuella konfigurationen.
+index_disc=Koppla från:
+index_discdesc=Klicka på den här knappen för att koppla bort den valda för närvarande aktiva PPTP VPN-tunneln och ta bort alla rutter genom den.
+index_return=PPTP-tunnellista
+index_opts=Redigera globala PPP-alternativ
+index_optsdesc=Klicka på den här knappen för att redigera PPP-alternativen som gäller för alla PPTP VPN-tunnlar.
+index_version=PPPd-version $1 
+index_boot=Anslut vid start:
+index_noboot=&lt;Anslut inte&gt;
+index_bootdesc=Ändra det här alternativet för att kontrollera om den valda PPTP VPN-anslutningen startas vid starttid eller inte.
+
+disc_err=Det gick inte att koppla bort tunneln
+disc_egone=Inte längre aktiv
+disc_ekill=Det gick inte att döda pppd-processen
+disc_done=Tunnel $1 kopplades bort.
+
+conn_err=Det gick inte att ansluta tunneln
+conn_egone=Tunneln finns inte längre
+cone_ealready=Redan ansluten
+conn_einvalid=IP-adress saknas i konfigurationsfilen
+conn_title=Anslutande tunnel
+conn_cmd=Upprätta en PPTP-anslutning med kommandot $1 ..
+conn_ok=.. anslutning aktiverats med hjälp av gränssnitt $1. Din lokala adress är $2 och fjärradressen är $3.
+conn_timeout=.. anslutningen misslyckades! Kontrollera loggmeddelandena nedan för information om varför.
+conn_routes=Lägga till rutter med kommandon ..
+conn_mppe=MPPE-protokollet för VPN-kryptering kräver PPP-demon och kärnstöd. Felen ovan antyder dock att en eller båda inte är tillgängliga på ditt system. Om PPTP-servern inte kräver MPPE kan du prova att stänga av alla alternativ relaterade till den på sidan <a href='$1'>globala PPP-alternativ</a>.
+
+edit_title1=Lägg till PPTP-tunnel
+edit_title2=Redigera PPTP-tunnel
+edit_header=PPTP-VPN-tunnelalternativ
+edit_name=Tunnelnamn
+edit_server=Anslut till servern
+edit_login=Logga in som användare
+edit_same=System värdnamn
+edit_pass=Logga in med lösenord
+edit_remote=Serverns namn
+edit_auto=Automatisk
+edit_adddef=Lägg till standardrutt?
+edit_def1=Via andra änden
+edit_def2=Via gateway ..
+edit_deldef=Radera gammal standardrutt?
+edit_routes=Rutter att lägga till efter anslutning
+edit_type=Typ
+edit_type0=&nbsp;
+edit_type1=Nätverk
+edit_type2=Enskild värd
+edit_net=Nätverk eller värd
+edit_mask=nätmask
+edit_gw=Via gateway
+edit_gw_def=Andra sidan
+edit_unknown=Andra <tt>rutt</tt> -kommandon
+edit_file=PPP-alternativfil
+edit_none=Ingen
+edit_global=Standard global fil
+edit_ofile=Annan fil ..
+
+save_err=Det gick inte att spara tunneln
+save_ename=Tunnelnamn saknas
+save_eserver=Saknad eller ogiltig server att ansluta till
+save_elogin=Saknat eller ogiltigt inloggningsnamn
+save_eremote=Saknas eller ogiltigt fjärrserverns namn
+save_edef=Saknad eller ogiltig standardvägsparti
+save_enet=Ogiltig nätverksadress i rutt $1 
+save_emask=Ogiltig nätmask i rutt $1 
+save_egw=Ogiltig gateway för nätverk i rutt $1 
+save_ehost=Ogiltig värd-IP-adress i rutt $1 
+save_emask2=Ingen nätmask behövs för värdväg $1 
+save_egw2=Ogiltig gateway för värd på väg $1 
+save_erename=Det gick inte att namnge tunnelfilen igen
+save_eclash=En tunnel eller PPP-kamrater med samma namn finns redan
+save_efile=Saknad eller ogiltig PPP-alternativfil
+
+opts_title=Globala PPP-alternativ
+opts_desc=Inställningarna nedan är hämtade från $1 och kommer att gälla för alla tunnlar som är inställda på att använda standard global PPP-alternativfil.
+opts_header=PPP-alternativ för alla tunnlar
+opts_mtu=Maximal skicka paketstorlek
+opts_mru=Maximal mottagningspaketstorlek
+opts_err=Det gick inte att spara globala PPP-alternativ
+opts_emtu=Saknas eller ogiltig maximalt skickande paketstorlek
+opts_emru=Saknas eller ogiltig maximalt mottagande paketstorlek
+opts_msdesc=Alternativen nedan aktiverar MPPE-kryptering som används av Windows VPN-servrar. MPPE kräver dock stöd i både PPP-demonen och operativsystemkärnan.
+
+mppe_mppe-40=Använd 40-bitars MPPE-kryptering?
+mppe_mppe-128=Använder du 128-bitars MPPE-kryptering?
+mppe_mppe-stateless=Aktivera stateless MPPE-läge?
+mppe_mppe=Aktivera MPPE-kryptering?
+mppe_m2=Måste användas
+mppe_m0=Kan inte användas
+mppe_d0=Inaktiverad
+mppe_d1=Tillåten
+mppe_mppe-stateful=Aktiverar tillstånd MPPE-läge?
+mppe_old=Varning - MPPE-direktiven $1 i gammal stil hittades i din konfigurationsfil, även om PPP-demonen stöder direktiven i ny stil.
+mppe_new=Varning - MPPE-direktiven $1 i ny stil hittades i din konfigurationsfil, även om din PPP-demon endast stöder de gamla stildirektiven.
+
+log_create=Skapad PPTP-tunnel $1 
+log_update=Modifierad PPTP-tunnel $1 
+log_delete=PPTP-tunnel $1 raderad
+log_conn=Ansluten tunnel $1 
+log_conn_l=Ansluten tunnel $1 med lokal adress $2 
+log_failed=Det gick inte att ansluta tunnel $1 
+log_disc=Frånkopplad tunnel $1 
+log_opts=Redigerade globala PPP-alternativ

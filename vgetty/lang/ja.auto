@@ -1,0 +1,118 @@
+index_title=ボイスメールサーバー
+index_ecmd=Vgettyコマンド $1がシステムで見つかりませんでした。インストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
+index_econfig=Vgetty構成ファイル $1がシステムで見つかりませんでした。インストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
+index_return=ボイスメールインデックス
+
+vgetty_title=シリアルポート構成
+vgetty_desc=サーバーがシリアルポートに接続されたモデムで音声通話に応答するには、以下にリストされている必要があります。このリストにポートを追加すると、 $1プログラムは通話に応答してメッセージを再生するように構成されます。
+vgetty_add=新しいシリアルポートを追加します
+vgetty_tty=シリアルデバイス
+vgetty_type=タイプ
+vgetty_vgetty=ボイス
+vgetty_mgetty=データ/ファックス
+vgetty_none=ボイスメール用にまだシリアルポートが設定されていません。
+vgetty_apply=設定を適用
+vgetty_applydesc=このボタンをクリックして、コマンド $1を実行し、すべてのVgettyプロセスを強制終了して、現在のボイスメールサーバー構成を適用します。
+vgetty_applyerr=構成を適用できませんでした
+vgetty_return=シリアルポートリスト
+vgetty_create=シリアルポートを追加
+vgetty_edit=シリアルポートを編集
+vgetty_header=シリアルポート設定オプション
+vgetty_ts=シリアルポート $1
+vgetty_other=その他のデバイス
+vgetty_rings=答える前に鳴る
+vgetty_default=グローバルデフォルト
+vgetty_ans=回答モード
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=ボイス
+vgetty_ans_fax=ファックス
+vgetty_ans_data=データ
+vgetty_err=シリアルポートの保存に失敗しました
+vgetty_etty=シリアルデバイスが存在しないか存在しない
+vgetty_erings=リングの欠落または無効な数
+vgetty_erings2=リングの数は少なくとも2でなければなりません
+vgetty_eans=回答モードが選択されていません
+vgetty_eclash=シリアルポート $1は既に使用されています
+
+options_title=ボイスメールサーバーオプション
+options_header=すべてのシリアルポートのオプション
+options_maxlen=最大メッセージ長
+options_secs=秒
+options_minlen=最小メッセージ長
+options_silence=メッセージの終わりから無音を削除しますか？
+options_thresh=無音しきい値レベル
+options_rgain=録音音量レベル
+options_tgain=再生音量レベル
+options_rings=答える前に鳴る
+options_perport=シリアルポートごとに設定可能
+options_ans=回答モード
+options_keep=データまたはDTMFコードを含むメッセージを保持しますか？
+options_light=受信後に自動応答ライトを有効にしますか？
+options_owner=メッセージファイルのUnix所有者
+options_group=メッセージファイル用のUnixグループ
+options_mode=メッセージファイルのアクセス許可
+options_prog=メッセージを録音した後
+options_prog0=何もしない
+options_prog1=WAV形式のメールで
+options_prog2=メッセージファイルでコマンドを実行する
+options_err=ボイスメールオプションを保存できませんでした
+options_erings=リングの欠落または無効な数
+options_erings2=リングの数は少なくとも2でなければなりません
+options_emaxlen=最大メッセージ長が欠落しているか無効です
+options_eminlen=最小メッセージ長が欠落しているか無効です
+options_ethresh=無音しきい値または無効な無音しきい値
+options_ergain=録音ボリュームレベルが欠落しているか無効です
+options_ergain2=録音音量レベルは0〜100の間である必要があります
+options_etgain=再生音量レベルが欠落しているか無効です
+options_etgain2=再生音量レベルは0〜100の間である必要があります
+options_eemail=メールアドレスが見つからないか無効です
+options_eprog=実行するプログラムが存在しないか存在しない
+options_eowner=メッセージファイルのUnixユーザーが見つからないか無効です
+options_egroup=メッセージファイルのUnixグループが見つからないか無効です
+options_emode=メッセージファイルの8進数の許可がないか、無効です
+
+received_title=受信したメッセージ
+recieved_desc=サーバーが受信したボイスメールメッセージは以下のとおりです。メッセージを聞くには、最初の列の日付/時刻をクリックします。
+received_none=受信したボイスメールメッセージは見つかりませんでした。
+received_date=で受け取った
+received_size=ファイルサイズ
+received_speed=サンプルレート
+received_type=オーディオ形式
+received_delete=選択したメッセージを削除
+received_move=選択したメッセージをグリーティングに変換する
+received_all=すべて選択
+received_invert=選択を反転
+
+listen_efile=無効なメッセージファイル名！
+listen_epath=ボイスメールメッセージはもう存在しません
+
+delete_efile=無効なメッセージファイル名！
+
+messages_title=あいさつ文
+messages_desc=このページには、発信者がボイスメールサーバーに接続したときに再生されるグリーティングメッセージが一覧表示されます。複数ある場合は、ランダムに選択された単一のメッセージが使用されます。
+messages_file=ファイル名
+messages_none=挨拶メッセージはありません。
+messages_updesc=このフォームを使用すると、追加のグリーティングメッセージWAVファイルをアップロードできます。このファイルは、モデムで使用するために選択された形式に変換されます。アップロードされたWAVのサンプルレートは、選択した形式と同様に、受信したメッセージのサンプルレートと同じである必要があります。
+messages_upload=メッセージをアップロード
+messages_fmt=に変換
+
+pvfdesc=$1、 $2ビット
+
+upload_err=メッセージを追加できませんでした
+upload_emessage=WAVファイルが選択されていません
+upload_ewav=WAVファイルの変換に失敗しました： $1
+upload_epvf=RMDファイルの作成に失敗しました： $1
+upload_esame=メッセージファイル $1は既に存在します
+
+log_apply=適用された構成
+log_upload=グリーティングメッセージ $1をアップロードしました
+log_move=変換された $1受信メッセージ
+log_delete0=$1の受信メッセージを削除しました
+log_delete1=$1グリーティングメッセージを削除しました
+log_options=ボイスメールオプションの変更
+log_vgetty_create=シリアルポート $1を追加しました
+log_vgetty_modify=変更されたシリアルポート $1
+log_vgetty_delete=シリアルポート $1を削除しました
+
+email_subject=ボイスメールメッセージ
+email_body=$1で $2が受信したボイスメールメッセージ。

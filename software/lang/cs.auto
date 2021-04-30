@@ -1,0 +1,94 @@
+index_epackagecmd=Balíčkový systém $1 vyžaduje příkaz $2 
+index_eupdatecmd=Aktualizační systém $1 vyžaduje příkaz $2 
+index_epackagecheck=Vybraný systém správy balíků není platný: $1. <br>Možná budete muset vybrat jiný systém na stránce<a href='$2'> konfigurace modulu </a>.
+index_eupdatecheck=Vybraný aktualizační systém není platný: $1. <br>Možná budete muset vybrat jinou metodu aktualizace na stránce<a href='$2'> konfigurace modulu </a>.
+index_echeckpackage=Nebyl detekován žádný systém balíků!
+index_echeckupdate=Nebyl detekován žádný aktualizační systém!
+index_filter=Filtrovat balíčky
+index_filterclear=Vymazat filtr
+index_filtered=Zobrazují se <tt>$1</tt> balíčky z <tt>$2</tt>
+
+edit_listdesc=Zobrazit všechny soubory v tomto balíčku a jejich aktuální stav ověření.
+edit_uninstdesc=Odeberte tento balíček ze systému.
+
+delete_purge=Vymazat konfigurační soubory?
+delete_depstoo=Také jste odstranili nepoužívané závislosti?
+
+install_eupdate=Nebyl zadán žádný balíček k instalaci
+
+slack_edir=Chybí adresář balíčků Slackware $1 
+
+log_install_yum_l=Nainstalované balíčky $1 od YUM
+log_install_yum=Nainstalovali se balíčky ($2) z YUM
+log_install_rhn_l=Nainstalované balíčky $1 od Redhat Network
+log_install_rhn=Nainstalované balíčky ($2) od Redhat Network
+
+apt_repo_url=Základní URL úložiště
+apt_repo_path=Složky distribuční cesty
+apt_repo_eurl=Chybějící nebo neplatně vypadající základní adresa URL
+apt_repo_epath=Chybějící distribuční cesta
+
+yum_repo_id=ID úložiště
+yum_repo_name=Popis úložiště
+yum_repo_url=Základní adresa URL balíčku
+yum_repo_gpg=Soubor certifikátu GPG
+yum_repo_none=Nepodepsáno
+yum_repo_eid=Chybějící nebo neplatné ID úložiště - jsou povolena pouze písmena a čísla
+yum_repo_eidclash=ID úložiště se již používá
+yum_repo_ename=Chybí název úložiště
+yum_repo_eurl=Chybějící nebo neplatná adresa URL úložiště
+yum_repo_egpg=Soubor certifikátu GPG chybí nebo neexistuje
+yum_repo_efile=Soubor úložiště již existuje!
+
+cygwin_edb=Chybí databáze balíčků Cygwin $1 
+
+missing_msg=Balíček $1 může automaticky nainstalovat Webmin pomocí $2.
+missing_now=Nainstalovat nyní
+
+ports_install=Instalace portů FreeBSD $1 ..
+ports_failed=.. některé porty selhaly
+ports_ok=.. instalace dokončena
+ports_input=Balíček z portů
+ports_find=Prohledat porty
+ports_name=Porty FreeBSD
+ports_form=Aktualizujte databázi portů
+ports_apply=Stáhněte si nejnovější snímek
+ports_upgrade=Stahování snímků Porty
+ports_running=Spouštím příkaz $1 ..
+
+pkg_install=Instalace balíčků FreeBSD $1 ..
+pkg_failed=.. některé balíčky selhaly
+pkg_ok=.. instalace dokončena
+pkg_find=Hledat pkgng
+pkg_input=Balíček od pkgng
+
+pkgsrc_install=Instalace balíčků pkgsrc $1 ..
+pkgsrc_failed=.. některé balíčky selhaly
+pkgsrc_ok=.. instalace dokončena
+pkgsrc_find=Hledat pkgng
+pkgsrc_input=Balíček od pkgsrc
+
+log_IPKG_update=Aktualizovaná databáze IPKG
+log_IPKG_upgrade=Aktualizované nainstalované balíčky IPKG
+
+IPKG_name=IPKG
+IPKG_input=Balíček od IPKG
+IPKG_find=Procházet IPKG ..
+IPKG_form=Správa balíčků IPKG
+IPKG_update=Aktualizujte databázi balíčků IPKG
+IPKG_upgrade=Upgradujte nainstalované balíčky IPKG
+IPKG_title_update=Aktualizace IPKG databáze
+IPKG_title_upgrade=Upgradování nainstalovaných balíčků
+IPKG_updatedesc=Spouštím příkaz $1 ..
+IPKG_upgradefailed=.. selhalo!
+IPKG_upgradeok=.. kompletní.
+IPKG_install=Instalace balíčků s příkazem $1 ..
+IPKG_ok=.. instalace dokončena.
+IPKG_failed=.. instalace se nezdařila!
+IPKG_index_tree=Správa balíčků IPKG
+IPKG_install_package=Nainstalujte
+IPKG_install_packagedesc=Nainstalujte tento balíček do svého systému
+IPKG_noupgrade=Nic k upgradu
+IPKG-edit_title=Správa balíčku IPKG
+IPKG_update_avail=Dostupná aktualizace:
+IPKG_not_installed=Balíček není nainstalován

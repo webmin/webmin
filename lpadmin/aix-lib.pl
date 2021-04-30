@@ -7,7 +7,7 @@ sub get_qconfig
 local @rv;
 local $prn;
 local $lnum = 0;
-open(CONF, $config{'printcap_file'});
+open(CONF, "<".$config{'printcap_file'});
 while(<CONF>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//;	

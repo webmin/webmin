@@ -1,0 +1,3 @@
+name_hr=Upravitelj korisnika
+desc_hr=Korisnici i grupe
+longdesc_hr=Stvorite i uredite Unix korisnike i grupe iz datoteka /etc/passwd i /etc/group.

@@ -1,0 +1,103 @@
+index_title=Bihotzeko taupada monitorea
+index_return=taupadetako monitorea
+index_edir=$1 taupadak konfiguratzeko direktorioa ez da existitzen. Agian Heartbeat ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_start=Hasi Heartbeat Monitor
+index_startmsg=Egin klik botoi honetan Heartbeat monitorizazio prozesua hasteko. Horrek zure sistemako failover zerbitzua automatikoki gaituko du uneko konfigurazioarekin.
+index_apply=Aplikatu aldaketak
+index_applymsg=Egin klik botoi honetan Heartbeat monitorizazio prozesua uneko konfigurazioa berriro kargatzera behartzeko.
+index_eha_cf=Ez zen aurkitu zure sisteman bihotz taupaden konfigurazio fitxategia. Agian ez da oraindik lekuan kopiatu, edo <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_eharesources=$1 fitxategia ez da zure sisteman aurkitu. Agian ez da oraindik lekuan kopiatu, edo <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_eauthkeys=$1 autentikazioko gakoen fitxategia ez da zure sisteman aurkitu. Agian ez da oraindik lekuan kopiatu, edo <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_ereq_resource_cmd=Beste nodoari ($1) baliabideak eskatzeko scripta ez da zure sisteman aurkitu. Agian ez da oraindik lekuan kopiatu, edo <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_version=Bihotz taupadak $1 bertsioa
+index_noversion=Abisua - Ezin da zure sisteman instalatutako Heartbeat-en bertsioa automatikoki hauteman. <a href='$1'>moduluaren konfigurazioa</a> orrian ezarri beharko zenuke.
+index_status=Bihotz taupaden egoera
+
+conf_title=Konfigurazio aukerak
+conf_header=Bihotzeko taupen konfigurazio aukerak
+conf_serials=Bihotzeko taupada portuko serieak
+conf_baud=Serie portuko Baud tasa
+conf_bcasts=Ethernet bihotz taupaden interfazeak
+conf_none=Bat ere ez
+conf_udpport=UDP bihotz taupadaren portua
+conf_mcast=Multicast bihotzeko tarte gailua
+conf_mcastv=$1 gailua, $2 taldea, $3 portua, $4 TTL, $5 itzulkorra
+conf_enabled=Gaituta
+conf_disabled=Desgaituta
+conf_keepalive=Bihotz taupaden arteko denbora
+conf_nice_failback=Failback portaera polita
+conf_secs=segundutan
+conf_deadtime=Zenbakia baino lehen denbora hilda dago
+conf_watchdog=Zaintza gailuen fitxategia
+conf_node=Ostalariak klusterrean
+conf_logfile=Bihotz taupen erregistro fitxategia
+conf_logfacility=Syslog erregistro instalazioa
+conf_initdead=Hasierako hildako denbora
+conf_ok=Gorde Aukerak
+conf_err=Ezin izan da aukerak gordetzea
+conf_ebaud=Galdutako baud tasa edo baliogabea
+conf_ebcast=Ez da bihotz taupaden emisio interfazerik sartu
+conf_ebcastif='$1' ez da baliozko transmisio interfazea
+conf_eudpport=Bihotz taupaden portu falta edo baliogabea
+conf_ekeepalive=Bihotz taupaden artean denbora falta edo baliogabea
+conf_edeadtime=Hildako denbora falta edo baliogabea
+conf_ewatchdog=Falta den edo ez dagoen zaintza-gailuaren fitxategia
+conf_enonode=Ez da kluster ostalaririk sartu
+conf_ethisnode=$1 ostalari hau ez dago kluster ostalarien zerrendan
+conf_elogfile=Falta fitxategiaren izena edo falta da
+conf_einitdead=Hasierako denbora-falta edo baliogabea
+conf_einitdead2=Hasierako hildako denbora nodo bat hiltzat jotzen den bi aldiz gutxienez bikoitza izan behar da
+conf_emcast_dev=Multicast gailuaren falta edo baliogabea da
+conf_emcast_ip=Multicast taldeko helbide falta edo baliogabea
+conf_emcast_port=Multicast atariko zenbaki bat falta edo baliogabea
+conf_emcast_ttl=Denbora bizitzeko multicast denbora falta da edo baliogabea
+conf_auto_on=$ {Conf_enabled}
+conf_auto_off=$ {Conf_disabled}
+conf_auto_legacy=Legatu moduan
+conf_auto_=$ {Lehenetsia}
+
+res_title=Klusterreko baliabideak
+res_node=Nodo nagusia
+res_ips=IP helbideak
+res_servs=Nodo Zerbitzuak
+res_none=Bat ere ez
+res_nores=Ez da klusterreko baliabiderik definitu zure sisteman.
+res_add=Gehitu kluster baliabidea
+res_return=baliabideen zerrenda
+res_active=Baliabideen egoera
+res_getserv=Lortu Baliabidea
+res_hbdown=Bihotz taupadak behera
+res_up=arriba
+res_down=DOWN
+
+node_create=Gehitu Klusterraren Baliabidea
+node_edit=Editatu Klusterreko baliabidea
+node_header=Klusterraren baliabideen xehetasunak
+node_node=Baliabidearen nodo nagusia
+node_ips=Baliabideen IP helbideak
+node_ip=IP helbidea
+node_cidr=Netmaskatzeko CIDR
+node_broad=Emisioaren helbidea
+node_servs=Baliabideetarako zerbitzuak
+node_serv=zerbitzua
+node_args=Argudio osagarriak
+node_err=Huts egin du klusterreko baliabidea gordetzean
+node_enone=Nodo primario falta edo baliogabea
+node_eip='$1' ez da baliozko IP helbide bat
+node_ecidr='$1' ez da baliozko CIDR
+node_ebroad='$1' ez da baliozko emisio-helbide bat
+
+auth_title=Autentifikazio-gakoak
+auth_header=Klusterren nodoen autentikazioa
+auth_mode=Autentifikazio modua
+auth_crc=CRC (segurtasunik gabe)
+auth_sha1=SHA1 pasahitzarekin
+auth_md5=Pasahitza duen MD5
+auth_err=Ezin izan da autentikazio-gakoak gorde
+auth_emd5=MD5 pasahitz falta edo baliogabea
+auth_esha1=SHA1 pasahitz falta edo baliogabea
+
+start_err=Huts egin du bihotz taupadak sortzen
+
+apply_err=Ezin izan dira aldaketak aplikatu
+apply_epid=Prozesua ez da exekutatzen

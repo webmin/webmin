@@ -1,0 +1,103 @@
+index_title=Hartslagmonitor
+index_return=hartklop monitor
+index_edir=Die hartklop-opstellinggids $1 bestaan nie. Miskien is Heartbeat nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
+index_start=Begin hartklopmonitor
+index_startmsg=Klik op hierdie knoppie om die Heartbeat-monitorproses te begin. Dit sal outomatiese diensonderbreking op u stelsel met die huidige konfigurasie moontlik maak.
+index_apply=Pas veranderinge toe
+index_applymsg=Klik op hierdie knoppie om die lopende Heartbeat-monitorproses te dwing om die huidige konfigurasie te herlaai.
+index_eha_cf=Die hartklop-konfigurasielêer $1 is nie op u stelsel gevind nie. Miskien is dit nog nie op sy plek gekopieër nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
+index_eharesources=Die hulpbronlêer $1 is nie op u stelsel gevind nie. Miskien is dit nog nie op sy plek gekopieër nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
+index_eauthkeys=Die verifikasiesleutelslêer $1 is nie op u stelsel gevind nie. Miskien is dit nog nie op sy plek gekopieër nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
+index_ereq_resource_cmd=Die skrip om hulpbronne van die ander node ($1) aan te vra, is nie op u stelsel gevind nie. Miskien is dit nog nie op sy plek gekopieër nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
+index_version=Hartklopweergawe $1 
+index_noversion=Waarskuwing - die weergawe van Heartbeat wat op u stelsel geïnstalleer is, kon nie outomaties opgespoor word nie. U moet dit op die <a href='$1'>module-opstelling</a> instel.
+index_status=Hartslagstatus
+
+conf_title=Opstellingsopsies
+conf_header=Opsies vir hartklopkonfigurasies
+conf_serials=Seriële hartklop-poorte
+conf_baud=Baud tarief vir reekspoort
+conf_bcasts=Ethernet-hartklop-koppelvlakke
+conf_none=Geen
+conf_udpport=UDP hartklop hawe
+conf_mcast=Multicast-hartklop-toestel
+conf_mcastv=Toestel $1, groep $2, poort $3, TTL $4, terugloop $5 
+conf_enabled=enabled
+conf_disabled=gestremde
+conf_keepalive=Tyd tussen hartklop
+conf_nice_failback=Lekker terugvalgedrag
+conf_secs=sekondes
+conf_deadtime=Die tyd voor die nodus word as dood beskou
+conf_watchdog=Waghond-toestellêer
+conf_node=Gashere in groepering
+conf_logfile=Hartslag log-lêer
+conf_logfacility=Syslog-logfasiliteit
+conf_initdead=Aanvanklike dooie tyd
+conf_ok=Stoor opsies
+conf_err=Opslaan van opsies is misluk
+conf_ebaud=Ontbrekende of ongeldige baudkoers
+conf_ebcast=Geen hartklop-uitsending-koppelvlakke is ingevoer nie
+conf_ebcastif='$1' is nie 'n geldige uitsending-koppelvlak nie
+conf_eudpport=Hartslagpoort ontbreek of ongeldig
+conf_ekeepalive=Ontbrekende of ongeldige tyd tussen hartklop
+conf_edeadtime=Onttyd of ongeldige dooie tyd
+conf_ewatchdog=Ontbrekende of nie-bestaande waghondtoestellêer
+conf_enonode=Geen groep gashere is ingevoer nie
+conf_ethisnode=Hierdie gasheer $1 is nie op die lys van cluster hosts nie
+conf_elogfile=Ontbrekende of ongeldige loglêernaam
+conf_einitdead=Aanvanklike dooie tyd ontbreek of ongeldig
+conf_einitdead2=Die aanvanklike dooie tyd moet minstens twee keer die tyd wees voordat 'n node as dood beskou word
+conf_emcast_dev=Multicast-toestel ontbreek of ongeldig
+conf_emcast_ip=Ontbrekende of ongeldige multicast-groepadres
+conf_emcast_port=Ontbrekende of ongeldige multicast-poortnommer
+conf_emcast_ttl=Ontbrekende of ongeldige multicast-tyd om te leef
+conf_auto_on=$ {Conf_enabled}
+conf_auto_off=$ {Conf_disabled}
+conf_auto_legacy=Legacy-modus
+conf_auto_=$ {Verstek}
+
+res_title=Cluster Resources
+res_node=Primêre knooppunt
+res_ips=IP-adresse
+res_servs=Knooppuntdienste
+res_none=Geen
+res_nores=Geen klusterhulpbronne is op u stelsel gedefinieer nie.
+res_add=Voeg 'n groephulpbron by
+res_return=bronne lys
+res_active=Hulpbronstatus
+res_getserv=Kry hulpbronne
+res_hbdown=Hartslag neer
+res_up=UP
+res_down=DOWN
+
+node_create=Voeg klusterhulpbronne by
+node_edit=Wysig klusterhulpbron
+node_header=Besonderhede oor groepehulpbronne
+node_node=Primêre knooppunt vir hulpbron
+node_ips=IP-adresse vir hulpbronne
+node_ip=IP adres
+node_cidr=Netmasker CIDR
+node_broad=Uitsaaiadres
+node_servs=Dienste vir hulpbronne
+node_serv=diens
+node_args=Bykomende argumente
+node_err=Kon nie die groephulpbron stoor nie
+node_enone=Primêre knooppunt ontbreek of ongeldig
+node_eip='$1' is nie 'n geldige IP-adres nie
+node_ecidr='$1' is nie 'n geldige CIDR nie
+node_ebroad='$1' is nie 'n geldige uitsaaiadres nie
+
+auth_title=Verifikasie sleutels
+auth_header=Cluster node-verifikasie
+auth_mode=Verifikasiemodus
+auth_crc=CRC (Geen sekuriteit)
+auth_sha1=SHA1 met wagwoord
+auth_md5=MD5 met wagwoord
+auth_err=Kon nie stawingsleutels stoor nie
+auth_emd5=MD5-wagwoord ontbreek of ongeldig
+auth_esha1=SHA1-wagwoord ontbreek of ongeldig
+
+start_err=Kon nie hartklop begin nie
+
+apply_err=Kon nie veranderinge toepas nie
+apply_epid=Proses loop nie meer nie

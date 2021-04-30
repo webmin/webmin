@@ -1,0 +1,120 @@
+index_title=Pelayan IM Jabber
+index_econfig=Fail konfigurasi Jabber $1 tidak wujud. Sama ada Jabber tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
+index_edir=Direktori asas Jabber $1 tidak wujud. Sama ada Jabber tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
+index_emodules=Mod perl Perl $1 dan $2 yang diperlukan oleh Webmin untuk mengendalikan konfigurasi XML Jabber tidak dipasang. <a href='$3'>Klik di sini</a> untuk memasangnya secara langsung dari CPAN.
+index_emodule=Mod Perl $1 yang diperlukan oleh Webmin untuk mengendalikan konfigurasi XML Jabber tidak dipasang. <a href='$2'>Klik di sini</a> untuk memasangnya secara langsung dari CPAN.
+index_expat=Pastikan anda mempunyai perpustakaan dan tajuk Expat C yang dipasang sebelum cuba memasang mod Perl, kerana ia bergantung padanya dan akan gagal jika tidak tersedia.
+index_eparse=Modul $1 perl tidak dapat menghuraikan fail konfigurasi Jabber anda : $2 
+index_ejabberd=Program pelayan Jabber $1 tidak dijumpai pada sistem anda. Sama ada Jabber tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
+index_eversion=Webmin hanya menyokong versi Jabber $2, tetapi arahan $3 melaporkan maklumat versi berikut : $1 
+index_eversion2=Webmin hanya menyokong versi Jabber di bawah $2, tetapi arahan $3 melaporkan maklumat versi berikut : $1 
+index_start=Mula Pelayan Jabber
+index_startmsg=Klik butang ini untuk memulakan pelayan Jabber pada sistem anda. Sehingga ia dimulakan, tiada pelanggan mesej segera akan dapat menggunakannya.
+index_stop=Hentikan Pelayan Jabber
+index_stopmsg=Klik butang ini untuk menghentikan pelayan Jabber yang sedang berjalan pada sistem anda. Tidak ada pelanggan mesej segera yang dapat menggunakannya apabila ia dihentikan.
+index_restart=Terapkan Perubahan
+index_restartmsg=Klik butang ini untuk menerapkan konfigurasi semasa dengan berhenti dan kemudian mulakan semula pelayan Jabber.
+index_comments=Amaran - fail konfigurasi Jabber anda $1 mengandungi komen, yang akan dialih keluar jika perubahan konfigurasi dibuat menggunakan modul ini.
+index_return=Menu Jabber
+index_version=Versi Jabber $1 
+
+general_title=Pilihan Umum
+general_header=Pilihan pelayan Jabber Global
+general_host=Nama hos pelayan anda
+general_elog=Fail log ralat
+general_elogfmt=Format log ralat
+general_rlog=Fail log akses
+general_rlogfmt=Format log masuk
+general_pidfile=Fail ID proses
+general_err=Gagal menyimpan pilihan umum
+general_ehost=Nama hos pelayan yang hilang atau tidak sah
+general_eelog=Fail log ralat hilang atau tidak sah
+general_eelogfmt=Format log kesalahan yang tiada
+general_erlog=Fail log trafik hilang atau tidak sah
+general_erlogfmt=Format log trafik hilang
+general_epidfile=Fail ID proses hilang atau tidak sah
+
+messages_title=Mesej
+messages_header=Mesej pelayan Jabber untuk pelanggan
+messages_wsubject=Subjek mesej selamat datang
+messages_wbody=Selamatkan awak mesej
+messages_vcard=VCard pelayan
+messages_rinstr=Arahan pendaftaran
+messages_rnotify=Beritahu admin pada pendaftaran?
+messages_rfields=Bidang pendaftaran yang diperlukan
+messages_vcard2jud=Hantar vCard ke direktori pengguna Jabber?
+messages_err=Gagal menyimpan mesej
+messages_evcard=XML vCard tidak sah : $1 
+messages_etag=Server vCard XML tidak bermula dengan &lt;vCard&gt;
+
+modules_title=Modul Jabber
+modules_desc=Modul-modul yang disenaraikan di bawah digunakan untuk memproses mesej yang diterima oleh pengurus sesi Jabber. Anda hanya perlu menukar senarai ini jika anda tahu apa yang anda lakukan.
+modules_header=Modul pengurus sesi pelayan jabber
+modules_mod=Nama modul
+modules_so=Perpustakaan dikongsi
+modules_err=Gagal menyimpan modul Jabber
+modules_emod='$1' bukan nama modul yang sah
+modules_eso=Perpustakaan dikongsi '$1' tidak wujud
+
+karma_title=Kawalan Trafik Karma
+karma_header=Pilihan kawalan kadar trafik
+karma_rate=Pengendalian sambungan yang berlebihan
+karma_rate_def=Dinyahdayakan
+karma_rate_sel=Sekat klien untuk $2 saat selepas $1 sambungan
+karma_mode=Mod karma
+karma_none=Tiada had
+karma_low=Had lalu lintas yang rendah
+karma_medium=Had lalu lintas sederhana
+karma_high=Had trafik yang tinggi
+karma_sel=Gunakan tetapan yang dipilih di bawah ..
+karma_heartbeat=Panjang tempoh dalam saat (<tt>denyutan jantung</tt>)
+karma_init=Tempoh permulaan (<tt>init</tt>)
+karma_max=Karma maksimum (<tt>max</tt>)
+karma_inc=Karma increment (<tt>inc</tt>)
+karma_dec=Penurunan karma (<tt>dec</tt>)
+karma_penalty=Tempoh penalti (<tt>penalti</tt>)
+karma_restore=Burst restore periods (<tt>restore</tt>)
+karma_err=Gagal menyimpan pilihan karma
+karma_eheartbeat=Tempoh tempoh yang hilang atau tidak sah
+karma_einit=Tempoh permulaan yang hilang atau tidak sah
+karma_emax=Karma yang hilang atau tidak sah maksimum
+karma_einc=Tambahan karma yang hilang atau tidak sah
+karma_edec=Penurunan karma yang hilang atau tidak sah
+karma_epenalty=Tempoh penalti yang hilang atau tidak sah
+karma_erestore=Tempoh pemulihan yang hilang atau tidak sah
+karma_epoints=Bilangan sambungan yang hilang atau tidak sah
+karma_etime=Masa yang hilang atau tidak sah untuk disekat
+
+ips_title=Kawalan Akses IP
+ips_header=Kawalan akses IP pelayan Jabber
+ips_allow=IP pelanggan yang dibenarkan
+ips_all=Semua alamat
+ips_deny=IP pelanggan yang ditolak
+ips_none=Tiada
+ips_sel=Alamat yang disenaraikan/netmasks ..
+ips_err=Gagal menyimpan kawalan akses IP
+ips_eaddr='$1' bukan alamat IP atau alamat IP/netmask yang sah
+
+file_title=Edit Fail Config
+file_desc=Gunakan borang di bawah untuk mengedit fail konfigurasi Jabber secara langsung. Ini hanya perlu dilakukan jika anda memahami format konfigurasi XML.
+file_header=Edit fail konfigurasi Jabber
+file_err=Gagal menyimpan fail konfigurasi
+
+admin_title=Pengguna Pentadbiran
+admin_header=Pengguna pentadbir pelayan
+admin_read=Baca admin akses
+admin_write=Tulis admin akses
+admin_reply=Autoreply to admin messages?
+admin_rsubject=Subjek autoreply
+admin_rbody=Mesej autoreply
+
+filter_title=Penapis Pengguna
+filter_header=Kebenaran penapis pengguna
+filter_max=Peraturan penapis maksimum
+filter_conds=Syarat penapis yang dibenarkan
+filter_acts=Tindakan penapis yang dibenarkan
+
+restart_err=Gagal menggunakan perubahan
+stop_err=Gagal menghentikan Jabber
+stop_epid=Gagal mencari proses Jabber
+start_err=Gagal memulakan Jabber

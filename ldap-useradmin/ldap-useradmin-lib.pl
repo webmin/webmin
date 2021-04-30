@@ -65,9 +65,24 @@ if (!$cfile || !-r $cfile) {
 		}
 	}
 
+# If a bind credentials file is defined, read the password from the file
+# Otherwise, read the password from the "pass" config option
+my $ldapPassword;
+if ( $config{'ldap_pass_file'} ){
+	if (open my $fh, "<", $config{'ldap_pass_file'} ){
+		local $/;
+		$ldapPassword =  <$fh>;
+		close($fh);
+	} else {
+		&error($text{'conn_efile_open'} . " " . $config{'ldap_pass_file'});
+	}
+} else {
+	$ldapPassword = $config{'pass'};
+}
+
 local $ldap = &ldap_client::generic_ldap_connect(
 		$config{'ldap_host'}, $config{'ldap_port'},
-		$config{'ldap_tls'}, $config{'login'}, $config{'pass'});
+		$config{'ldap_tls'}, $config{'login'}, $ldapPassword);
 if (ref($ldap)) { return $ldap; }
 elsif ($_[0]) { return $ldap; }
 else { &error($ldap); }
@@ -166,6 +181,15 @@ if ($config{'md5'} == 3) {
 	$out =~ s/^\{md5\}//i;
 	return $out;
 	}
+if ($config{'md5'} == 6) {
+	# SHA512 encryption
+	local $err = &useradmin::check_sha512();
+	if ($err) {
+		&error($text{'usave_edigestsha512'});
+		}
+	local $out = &useradmin::encrypt_sha512($pass, $salt);
+	return "{CRYPT}" . $out;
+	}
 if ($config{'md5'} == 1) {
 	# Unix MD5 encryption
 	&foreign_require("useradmin", "user-lib.pl");
@@ -209,7 +233,7 @@ sub create_user
 local $ldap = &ldap_connect();
 local $base = &get_user_base();
 $_[0]->{'dn'} = "uid=$_[0]->{'user'},$base";
-local @classes = ( "posixAccount", "shadowAccount",
+local @classes = ( &def_user_obj_class(), "shadowAccount",
 		   split(/\s+/, $config{'other_class'}),
 		   @{$_[0]->{'ldap_class'}} );
 local $schema = $ldap->schema();
@@ -332,7 +356,7 @@ sub create_group
 local $ldap = &ldap_connect();
 local $base = &get_group_base();
 $_[0]->{'dn'} = "cn=$_[0]->{'group'},$base";
-local @classes = ( "posixGroup" );
+local @classes = ( &def_group_obj_class() );
 push(@classes, split(/\s+/, $config{'gother_class'}));
 @classes = &uniquelc(@classes);
 local @attrs = &group_to_dn($_[0]);
@@ -1220,7 +1244,7 @@ return undef;
 # Returns an LDAP filter expression to find users
 sub user_filter
 {
-my $rv = "(objectClass=posixAccount)";
+my $rv = "(objectClass=".&def_user_obj_class().")";
 if ($config{'user_filter'}) {
 	$rv = "(&".$rv."(".$config{'user_filter'}."))";
 	}
@@ -1231,11 +1255,35 @@ return $rv;
 # Returns an LDAP filter expression to find groups
 sub group_filter
 {
-my $rv = "(objectClass=posixGroup)";
+my $rv = "(objectClass=".&def_group_obj_class().")";
 if ($config{'group_filter'}) {
 	$rv = "(&".$rv."(".$config{'group_filter'}."))";
 	}
 return $rv;
+}
+
+# def_user_obj_class()
+# Returns the objectClass to use for LDAP users
+# Default is "posixAccount" if not overridden
+sub def_user_obj_class
+{
+my $userObjClass = "posixAccount";
+if ($config{'custom_user_obj_class'}){
+	$userObjClass = $config{'custom_user_obj_class'};
+}
+return $userObjClass;
+}
+
+# def_group_obj_class()
+# Returns the objectClass to use for LDAP groups
+# Default is "posixGroup" if not overridden
+sub def_group_obj_class
+{
+my $groupObjClass = "posixGroup";
+if ($config{'custom_group_obj_class'}){
+	$groupObjClass = $config{'custom_group_obj_class'};
+}
+return $groupObjClass;
 }
 
 1;

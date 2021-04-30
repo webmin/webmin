@@ -1,0 +1,33 @@
+index_title=Абгорткі TCP
+index_return=паказальнік
+index_allowtitle=Дазволена гаспадарам
+index_denytitle=Гаспадары адмаўляюцца
+index_norule=У <tt>$1</tt> пакуль не вызначаны правілы.
+index_nofile=Файл "$1" не існуе - праверце сваю <a href="/config.cgi?tcpwrappers">канфігурацыю модуля</a>
+index_add=Дадайце новае правіла.
+index_service=Дэман
+index_hosts=Гаспадары
+index_cmd=Камандаванне
+index_delete=Выдаліць выбранае
+index_none=ніхто
+
+edit_title1allow=Стварыць дазволіць правіла
+edit_title2allow=Рэдагаваць Дазволіць правіла
+edit_title1deny=Стварыце правіла адмовы
+edit_title2deny=Рэдагаваць правіла адмовы
+edit_eid=Гэтае правіла не знойдзена
+edit_header=Варыянты правілаў
+edit_service=Паслугі
+edit_except=Акрамя паслуг
+edit_hosts=Аддаленыя хасты
+edit_hostsexcept=За выключэннем гаспадароў
+edit_cmd=Каманды ракавінкі
+edit_efound=Дэман "$1" у канфігурацыі xinetd не знойдзены.
+
+save_errtitle=Памылка пры правіле захавання
+save_ehost=Увод хоста змяшчае дрэнныя сімвалы
+save_ecmd=Увод каманды змяшчае дрэнныя сімвалы
+save_eservice=Імёны дэмана ўтрымліваюць дрэнныя сімвалы
+
+del_errtitle=Памылка выдалення правілаў
+del_enone=Няма правілаў для выдалення

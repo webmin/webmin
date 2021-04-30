@@ -1,0 +1,33 @@
+index_title=TCP Wrappers
+index_return=ดัชนี
+index_allowtitle=โฮสต์ที่ได้รับอนุญาต
+index_denytitle=โฮสต์ที่ถูกปฏิเสธ
+index_norule=ยังไม่ได้กำหนดกฎใน <tt>$1</tt>
+index_nofile=ไม่มีไฟล์ '$1' - ตรวจสอบ <a href="/config.cgi?tcpwrappers">การกำหนดค่าโมดูล</a>
+index_add=เพิ่มกฎใหม่
+index_service=ภูต
+index_hosts=โฮสต์
+index_cmd=คำสั่ง
+index_delete=ลบที่เลือก
+index_none=ไม่มี
+
+edit_title1allow=สร้างกฎการอนุญาต
+edit_title2allow=แก้ไขอนุญาตกฎ
+edit_title1deny=สร้างกฎการปฏิเสธ
+edit_title2deny=แก้ไขกฎปฏิเสธ
+edit_eid=ไม่พบกฎนี้
+edit_header=ตัวเลือกกฎ
+edit_service=บริการ
+edit_except=ยกเว้นบริการ
+edit_hosts=โฮสต์ระยะไกล
+edit_hostsexcept=ยกเว้นโฮสต์
+edit_cmd=คำสั่งเชลล์
+edit_efound=ไม่พบ Daemon '$1' ในการกำหนดค่า xinetd
+
+save_errtitle=ข้อผิดพลาดในการบันทึกกฎ
+save_ehost=โฮสต์อินพุตมีอักขระที่ไม่ดี
+save_ecmd=อินพุตคำสั่งมีอักขระที่ไม่ดี
+save_eservice=ชื่อ Daemon มีอักขระที่ไม่ดี
+
+del_errtitle=ข้อผิดพลาดในการลบกฎ
+del_enone=ไม่มีกฎที่ทำเครื่องหมายให้ลบ

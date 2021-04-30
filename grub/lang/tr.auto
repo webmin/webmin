@@ -1,0 +1,75 @@
+index_title=GRUB Boot Loader
+index_add=Yeni bir önyükleme seçeneği ekleyin.
+index_global=Genel Seçenekleri Düzenle
+index_globalmsg=Tüm önyükleme menüsü seçeneklerine uygulanan genel önyükleme seçeneklerini düzenleyin ve GRUB'un yüklü olduğu aygıtı seçin.
+index_install=GRUB'u yükle
+index_installmsg=Yukarıdaki seçenekleri açılış sırasında görüntülemek için GRUB önyükleme yükleyicisini $1 üzerine kurun. Bu, LILO gibi mevcut önyükleme yükleyicilerini geçersiz kılar ve sisteminizi önyüklenemez hale getirebilir!
+index_none=Hiçbir önyükleme seçeneği tanımlanmadı. Grub'u kurmadan önce en az bir tane eklediğinizden emin olun.
+index_efile=$1 GRUB menü dosyası sisteminizde bulunamadı. Belki GRUB yüklü değil veya <a href='$2'>modül yapılandırması</a> yanlış.
+index_epath=GRUB yürütülebilir $1 sisteminizde bulunamadı. Belki GRUB yüklü değil veya <a href='$2'>modül yapılandırması</a> yanlış.
+index_return=seçenekler listesi
+
+title_add=Önyükleme Seçeneği Ekle
+title_edit=Önyükleme Seçeneğini Düzenle
+title_header=Önyükleme menüsü seçenek ayrıntıları
+title_title=Seçenek başlığı
+title_root=Önyükleme görüntüsü bölümü
+title_noverify=Bölümü bağlama ve doğrulama
+title_other=Diğer cihaz dosyası
+title_sel=seçilmiş
+title_boot=Önyükleme için işletim sistemi
+title_kernel=Çekirdek
+title_kfile=Çekirdeğe giden yol
+title_args=Çekirdek seçenekleri
+title_initrd=İlk ramdisk dosyası
+title_modules=Ekstra modüller
+title_chain=Diğer İşletim Sistemleri
+title_chain_def=Bölümün ilk sektöründen
+title_chain_file=Chainloader dosyasından
+title_makeactive=Kök bölümü etkin mi yapılıyor?
+title_none1=Yok
+title_none2=(önyükleme dışı menü girişi)
+title_err=Önyükleme seçeneği kaydedilemedi
+title_etitle=Seçenek başlığı eksik
+title_eroot=Kök bölümü eksik
+title_ekernel=Eksik veya geçersiz çekirdek yolu
+title_echain=Eksik veya geçersiz zincir yükleyici dosyası
+title_edev=Desteklenmeyen kök bölümleme aygıtı $1 
+title_einitrd=İlk ramdisk dosya adı eksik
+title_lock=Şifre kilitlendi mi?
+
+global_title=Global Seçenekler
+global_header=Global önyükleme menüsü seçenekleri
+global_default=Varsayılan önyükleme seçeneği
+global_fallback=Yedek önyükleme seçeneği
+global_first=Listedeki ilk
+global_timeout=Varsayılan yüklemeden önce zaman aşımı
+global_forever=Sonsuza kadar bekle
+global_secs=saniye
+global_install=GRUB'u disk/bölüme yükle
+global_sel=seçilmiş
+global_other=Diğer
+global_password=Önyükleme parolası
+global_none=Yok
+global_password_file=Şifre girilirse menü dosyasını kullanın:
+global_err=Global seçenekler kaydedilemedi
+global_etimeout=Eksik veya geçersiz zaman aşımı
+global_edev=Desteklenmeyen yükleme diski/bölümü $1 
+global_eother=Eksik veya geçersiz disk/bölüm
+global_epassword=Eksik veya geçersiz önyükleme parolası
+global_epasswordfile=Alternatif menü dosya adı eksik
+
+install_title=GRUB'u yükle
+install_err=GRUB yüklenemedi
+install_efind=Menü dosyası bulunamadı
+install_desc=$1 ve $3 komutlarıyla GRUB'u $1 üzerine yükleme.
+install_ok=.. yükleme tamamlandı.
+install_failed=.. yükleme başarısız!
+
+log_create_title=$1 önyükleme seçeneği oluşturuldu
+log_delete_title=$1 silinen önyükleme seçeneği
+log_modify_title=Değiştirilmiş önyükleme seçeneği $1 
+log_up_title=Önyükleme seçeneği $1 taşındı
+log_down_title=$1 önyükleme seçeneği taşındı
+log_global=Değişen global seçenekler
+log_install=Kurulu GRUB

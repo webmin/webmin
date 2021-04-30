@@ -1,0 +1,37 @@
+index_title=Spremeni jezik in temo
+index_lang=Jezik uporabniškega vmesnika Webmin
+index_langglobal2=Globalni jezik.. $1 ($2)
+index_langset=Osebna izbira ..
+index_theme=Tema spletnega uporabniškega vmesnika
+index_overlay=Prekrivanje teme
+index_overlaydef=Brez - uporabite privzete teme
+index_themeglobal=Globalna tema ($1)
+index_themeset=Osebna izbira ..
+index_pass=Geslo za prijavo v Webmin
+index_passleave=Pustite nespremenjene
+index_passset=Nastavljena ..
+index_passagain=Ponovno vpišite geslo
+index_ok=Spremeni spremembe
+index_themedef=Stara spletna tema
+index_desc2=Ta modul se lahko uporablja za spremembo $1, samo za vaš Webmin račun.
+index_d3=$1, $2 in $3 
+index_d2=$1 in $2 
+index_d1=$1 
+index_dlang=jezik, v katerem so prikazani moduli
+index_dtheme=tema, ki nadzira videz Webmina
+index_dpass=geslo, s katerim ste se prijavili
+
+change_title=Spreminjanje nastavitev
+change_user=Spreminjanje prijave v Webmin ..
+change_done=.. Končano
+change_restart=Ponovno naloži Webmin ..
+change_redirect=Preusmeritev na glavni meni ..
+change_ecolon=Vaše geslo ne sme vsebovati znaka:
+change_epass2=Nova gesla se ne ujemajo
+change_epass=Novo geslo ni veljavno : $1 
+change_eoverlay=Prekrivanja teme ne morete izbrati, razen če izberete tudi temo uporabniškega vmesnika
+change_eoverlay2=Prebrano prekrivanje teme ni združljivo z izbrano temo uporabniškega vmesnika
+
+acl_lang=Ali lahko spremenite jezik?
+acl_theme=Ali lahko spremenite temo?
+acl_pass=Ali lahko spremenite geslo (če je nastavljeno v Webminu)?

@@ -1,0 +1,207 @@
+index_eshow=Program stanu MySQL $1 nie został znaleziony w twoim systemie. Być może MySQL nie jest zainstalowany lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+index_estart=Skrypt uruchamiania MySQL $1 nie został znaleziony w twoim systemie. Być może MySQL nie jest zainstalowany lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+index_version2=Wersja $3 $1 na $2 
+index_nomod=Ostrzeżenie: moduł Perl $1 nie jest zainstalowany w twoim systemie, więc Webmin nie będzie mógł niezawodnie uzyskać dostępu do twojej bazy danych MySQL. <a href='$2'>Kliknij tutaj</a>, aby zainstalować teraz.
+index_nomods=Ostrzeżenie: moduły Perla $1 i $2 nie są zainstalowane w twoim systemie, więc Webmin nie będzie mógł niezawodnie uzyskać dostępu do twojej bazy danych MySQL. <a href='$3'>Kliknij tutaj</a>, aby je teraz zainstalować.
+index_eenvpass=Program kliencki MySQL $1 nie akceptuje haseł przekazywanych przy użyciu zmiennej środowiskowej <tt>MYSQL_PWD</tt>. Aby upewnić się, że Webmin może w pełni komunikować się z MySQL, tę opcję należy wyłączyć na stronie <a href='$2'>konfiguracji modułu</a>. Alternatywnie możesz usunąć dowolne hasło ustawione w pliku <tt>root</tt> użytkownika <tt>.my.cnf</tt>.
+index_ecnf=Plik konfiguracyjny MySQL $1 nie został znaleziony w twoim systemie. Użyj strony <a href='$2'>konfiguracja modułu</a>, aby ustawić prawidłową ścieżkę.
+index_nodbs=Nie masz dostępu do żadnych baz danych MySQL.
+index_nodbs2=W twoim systemie nie znaleziono baz danych MySQL.
+index_nodbs3=Żadna baza danych MySQL nie pasuje do twojego wyszukiwania.
+index_toomany=Istnieje zbyt wiele baz danych do wyświetlenia. Znajdź pasujące bazy danych:
+index_showing=Pokazuję bazy danych pasujące do $1 ..
+index_emsg=Pełny komunikat o błędzie MySQL to : $1 
+
+dbase_header=Tabele, indeksy i widoki baz danych
+dbase_empty=Pusta baza danych
+dbase_toomany=Istnieje zbyt wiele tabel do wyświetlenia. Znajdź tabele pasujące:
+
+ddrop_rusure2=Czy na pewno chcesz opróżnić bazę danych $1 ? $2 tabele zawierające $3 wiersze danych zostaną usunięte.
+ddrop_empty2=Usuń wszystkie tabele
+
+ddrops_rusure=Czy na pewno chcesz usunąć $1 wybranych baz danych? $2 tabele zawierające $3 wiersze danych zostaną usunięte.
+ddrops_rusure2=Czy na pewno chcesz usunąć $1 wybranych baz danych?
+ddrops_mysql=Ponieważ wybrano główną bazę danych, jej upuszczenie prawdopodobnie uniemożliwi korzystanie z serwera MySQL!
+
+table_csv=Eksportuj jako CSV
+table_copy2=Skopiuj pola z bazy danych
+table_copy2t=i stół
+table_epnull=Pole klucza podstawowego $1 nie może dopuszczać wartości zerowych
+table_eenum=Musisz wprowadzić co najmniej jedną opcję dla pola $1 $2 
+table_eautokey=Pole automatycznego przyrostu musi również być kluczem podstawowym
+table_eauto=Tylko jedno pole może być automatycznie zwiększane
+table_delete=Usuń wybrane pola
+
+tdrops_rusure=Czy na pewno chcesz upuścić $1 wybranych tabel w bazie danych $2 ? $3 wiersze danych zostaną usunięte.
+tdrops_rusure2=Czy na pewno chcesz upuścić $1 wybranych tabel w bazie danych $2 ?
+
+field_defempty=Pusta struna
+
+view_refresh=Odświeżać
+view_search2=Wyszukaj wiersze, w których pole $2 $3 $1 
+view_searchheadnot=Wyniki wyszukiwania dla nie $1 w polu $2 ..
+view_searchhead2=Zaawansowane wyniki wyszukiwania w polach $1 ..
+view_go=Udać się
+view_keep=Pozostaw niezmieniony
+view_set=Ustaw na zawartość pliku ..
+view_sqlrun=Wyniki wygenerowane przez zapytanie SQL : $1 
+
+users_derr=Nie udało się usunąć użytkowników
+users_drusure=Czy na pewno chcesz usunąć wybrane uprawnienia $1 MySQL?
+
+user_vwarning=OSTRZEŻENIE: Ten użytkownik MySQL jest loginem administracyjnym dla domeny Virtualmin $1. Zmiana dowolnych ustawień tutaj może powodować błędy w Virtualmin.
+user_locked=Zablokowany
+user_priv_select=Wybierz dane tabeli
+user_priv_insert=Wstaw dane tabeli
+user_priv_update=Zaktualizuj dane tabeli
+user_priv_delete=Usuń dane tabeli
+user_priv_create=Twórz tabele
+user_priv_drop=Upuść tabele
+user_priv_reload=Załaduj ponownie granty
+user_priv_shutdown=Zamknij bazę danych
+user_priv_process=Zarządzaj procesami
+user_priv_file=Operacje na plikach
+user_priv_grant=Przyznaj uprawnienia
+user_priv_references=Operacje referencyjne
+user_priv_index=Zarządzaj indeksami
+user_priv_alter=Zmień tabele
+user_priv_show_db=Pokaż bazy danych
+user_priv_super=Superuser
+user_priv_create_tmp_table=Twórz tabele tymczasowe
+user_priv_lock=Zablokuj stoły
+user_priv_lock_tables=Zablokuj stoły
+user_priv_execute=Wykonać
+user_priv_repl_slave=Replikacja slave
+user_priv_repl_client=Replikacja klienta
+user_priv_create_view=Utwórz widok
+user_priv_show_view=Pokaż widok
+user_priv_create_routine=Utwórz rutynę
+user_priv_alter_routine=Alter Routine
+user_priv_create_user=Stwórz użytkownika
+user_priv_event=Stworzyć wydarzenie
+user_priv_trigger=Utwórz wyzwalacz
+user_priv_create_tablespace=Utwórz przestrzeń tabel
+user_eslash=MySQL nie obsługuje hasła zawierającego odwrotny ukośnik
+user_ssl=Wymagany typ certyfikatu
+user_cipher=Szyfr SSL
+user_max_user_connections=Maksymalna liczba jednoczesnych logowań
+user_max_connections=Maksymalna liczba połączeń na godzinę
+user_max_updates=Maksymalna liczba aktualizacji na godzinę
+user_max_questions=Maksymalna liczba zapytań na godzinę
+user_maxatmost=Najbardziej
+user_emax_user_connections=Maksymalna liczba jednoczesnych loginów musi być liczbą
+user_emax_connections=Maksymalna liczba połączeń na godzinę musi być liczbą
+user_emax_updates=Maksymalna liczba aktualizacji na godzinę musi być liczbą
+user_emax_questions=Maksymalna liczba zapytań na godzinę musi być liczbą
+
+dbs_drusure=Czy na pewno chcesz usunąć wybrane uprawnienia $1 do bazy danych MySQL?
+
+hosts_return=uprawnienia hosta
+
+newdb_tname=O imieniu
+newdb_collation=Kolejność sortowania
+newdb_str=z polami poniżej
+
+exec_ecompress=Plik SQL jest skompresowany, ale program $1 potrzebny do rozpakowania go nie jest zainstalowany.
+exec_created=Utworzono $1 tabel.
+
+tprivs_drusure=Czy na pewno chcesz usunąć wybrane uprawnienia $1 do tabeli MySQL?
+
+cprivs_enone=Nie wybrano żadnych pól
+cprivs_dtitle=Usuń uprawnienia do kolumny
+cprivs_drusure=Czy na pewno chcesz usunąć wybrane uprawnienia $1 do kolumny MySQL?
+
+eparse=Webmin nie może przeanalizować danych wyjściowych polecenia $1 ze względu na naturę danych w bazie danych. Aby rozwiązać ten problem, musisz zainstalować moduły Perl $2 i $3.
+edenied=Nie masz dostępu do tej bazy danych MySQL
+
+log_manual=Ręcznie zmodyfikowany plik konfiguracyjny
+
+backup_prefix=Prefiks nazwy pliku
+backup_eprefix=Prefiks nazwy pliku nie może zawierać /
+backup_noprefix=Żaden
+backup_download=Pobierz w przeglądarce
+backup_path=Ścieżka na serwerze
+backup_eisdir=Miejsce docelowe kopii zapasowej $1 to katalog
+backup_ucron=Aktualizacja zaplanowanej ścieżki tworzenia kopii zapasowych, opcji i godzin dla bazy danych.
+backup_edownloadall=Można pobrać tylko jedną kopię zapasową bazy danych
+backup_edownloadsave=Trybu pobierania nie można używać do zaplanowanych kopii zapasowych
+
+csv_where=SQL <tt>gdzie</tt> klauzula dla wierszy do wyeksportowania
+csv_format0=CSV z cytatami
+csv_format1=CSV bez cytatów
+csv_format2=Rozdzielone tabulatorami
+csv_ewhere=Brak klauzuli <tt>gdzie</tt>
+csv_headers=Czy uwzględnić nazwy kolumn w CSV?
+
+cnf_stor=Domyślny silnik przechowywania tabel
+cnf_big-tables=Zezwolić na duże stoły?
+cnf_emysqld=Nie można znaleźć sekcji [mysqld] w my.cnf
+cnf_esocket=Brak nazwy pliku gniazda UNIX
+cnf_key_buffer=Rozmiar bufora klucza
+cnf_key_buffer_size=Rozmiar bufora klucza
+cnf_max_allowed_packet=Maksymalny rozmiar pakietu
+cnf_max_connections=Maksymalna liczba połączeń
+cnf_query_cache_size=Zapytanie o rozmiar pamięci podręcznej w bajtach
+cnf_equery_cache_size=Nieprawidłowy rozmiar pamięci podręcznej zapytań
+cnf_table_cache=Tabele do buforowania
+cnf_table_open_cache=Tabele do buforowania
+cnf_sort_buffer=Sortuj rozmiar bufora
+cnf_sort_buffer_size=Sortuj rozmiar bufora
+cnf_net_buffer_length=Rozmiar bufora sieciowego
+cnf_myisam_sort_buffer_size=Rozmiar bufora sortowania MyISAM
+cnf_ekey_buffer=Brak lub nieprawidłowy rozmiar bufora kluczy
+cnf_ekey_buffer_size=Brak lub nieprawidłowy rozmiar bufora kluczy
+cnf_emax_allowed_packet=Brakujący lub nieprawidłowy maksymalny rozmiar pakietu
+cnf_etable_cache=Brakujące lub nieprawidłowe tabele do buforowania
+cnf_esort_buffer=Brak lub nieprawidłowy rozmiar bufora sortowania
+cnf_esort_buffer_size=Brak lub nieprawidłowy rozmiar bufora sortowania
+cnf_enet_buffer_length=Brakujący lub nieprawidłowy rozmiar bufora sieciowego
+cnf_emyisam_sort_buffer_size=Brak lub nieprawidłowy rozmiar bufora sortowania MyISAM
+cnf_emax_connections=Brakująca lub nieprawidłowa maksymalna liczba połączeń
+cnf_fpt=Oddzielny plik dla każdej tabeli InnoDB?
+cnf_ilt=Limit czasu blokady InnoDB (w sekundach)
+cnf_eilt=Limit czasu blokady InnoDB musi być liczbą całkowitą
+
+manual_title=Edytuj pliki konfiguracji
+manual_file=Edytuj plik konfiguracyjny:
+manual_ok=dobrze
+manual_efile=Nieprawidłowy plik konfiguracyjny!
+manual_err=Nie udało się zapisać pliku konfiguracyjnego
+
+index_fields=Pola w indeksie
+index_unique=Wyjątkowy
+index_fulltext=Pełny tekst
+index_spatial=Przestrzenny
+index_ename=Brakująca lub nieprawidłowa nazwa indeksu
+index_eclash=Indeks o tej samej nazwie już istnieje
+index_ecols=Nie wybrano żadnych pól
+index_ecannot=Nie możesz zarządzać indeksami
+
+syslog_desc=Komunikaty o błędach MySQL
+syslog_desc2=Komunikat o błędzie MySQL
+syslog_logdesc=Zapytania MySQL
+
+view_header1=Pokaż szczegóły
+view_query=Kwerenda wyboru SQL
+view_algorithm=Wyświetl algorytm przetwarzania
+view_merge=Scal SQL
+view_security=Zobacz uprawnienia do wykonywania
+view_err=Nie udało się zapisać widoku
+view_ename=Brak lub nieprawidłowa nazwa widoku
+view_eclash=Widok o tej samej nazwie już istnieje
+view_eclash2=Tabela o tej samej nazwie już istnieje
+view_equery=Brak zapytania SQL
+view_check=Wstawianie sprawdzania
+view_cascaded=Podstawowe poglądy
+
+procs_kill=Zabij wybrane połączenia
+
+root_epass2=Hasła nie pasują do siebie
+
+mysqlpass_err=Tryb bezpieczny MySQL
+mysqlpass_esafecmd=Nie znaleziono polecenia $1 potrzebnego do uruchomienia MySQL z wyłączonym uwierzytelnianiem
+mysqlpass_eshutdown=Zamknięcie nie powiodło się : $1 
+mysqlpass_esafe=Uruchamianie w trybie awaryjnym nie powiodło się : $1 
+mysqlpass_estartup=Uruchomienie nie powiodło się : $1 
+mysqlpass_echange=Zmiana hasła nie powiodła się : $1 
+mysqlpass_echange_forcepass=Wymuś zastąpienie podanego hasła, jeśli zostanie zgubione lub zapomniane

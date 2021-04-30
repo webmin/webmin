@@ -1,1 +1,1 @@
-desc_es=Configuración de Postfix
+desc_es=ConfiguraciÃ³n de Postfix

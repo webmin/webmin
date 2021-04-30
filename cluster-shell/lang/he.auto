@@ -1,0 +1,22 @@
+index_title=פקודות מעטפת אשכול
+index_cmd=פקודה לרוץ
+index_old=או
+index_server=הפעל בשרתים
+index_run=הפעל את הפקודה עכשיו
+index_return=אינדקס מודול
+index_this=שרת זה
+index_all=&lt;כל המארחים&gt;
+index_group=חברים ב- $1 
+index_clear=נקה היסטוריה
+index_edit=ערוך קודם
+
+run_title=הפעל את הפקודה
+run_err=הפעלת הפקודה נכשלה
+run_ecmd=לא הוזמנה שום פקודה
+run_failed=ההפעלה של $1 : $2 נכשלה
+run_success=תפוקה מ- $1 ..
+run_enone=אין שרתים להפעלה שנבחרו
+
+log_clear=ניקוי היסטוריית הפקודה
+log_run=רץ $1 על $2 שרתי
+log_run_l=רץ $1 על $2 

@@ -46,13 +46,18 @@ if (&has_command("ntpdate")) {
 elsif (&has_command("sntp")) {
 	$out = &backquote_logged("sntp -s $servs 2>&1");
 	}
+elsif (&has_command("chronyc")) {
+	$out = &backquote_logged("systemctl restart chronyd 2>&1");
+	$out .= &backquote_logged("chronyc makestep 2>&1");
+	sleep 5;
+	}
 else {
 	$out = "Missing ntpdate and sntp commands";
 	$? = 1;
 	}
 if ($? && $config{'ntp_only'}) {
 	# error using ntp, but nothing else is allowed
-	return &text('error_entp', "<tt>$out</tt>");
+	return &text('error_entp', "$out");
 	}
 elsif ($?) {
 	# error using ntp. use timeservice

@@ -1,0 +1,3 @@
+name_zh=隧道
+desc_zh=SSL隧道
+longdesc_zh=设置SSL隧道，以使用从inetd运行的隧道对POP3和IMAP等服务进行加密。

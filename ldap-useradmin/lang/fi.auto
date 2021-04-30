@@ -1,0 +1,103 @@
+index_title=LDAP-käyttäjät ja ryhmät
+index_ebase=Järjestelmästäsi ei löytynyt LDAP-asiakasmääritystiedostoa, joten käyttäjän ja ryhmän perustat on asetettava <a href='$1'>moduulin kokoonpanosivulle</a>.
+index_eperl=$1 Perl -moduulia, jota tämä moduuli vaatii, ei ole asennettu tai se ei toimi oikein. <a href='$2'>Napsauta tätä</a>, niin se ladataan ja asennetaan nyt.
+index_eperl2=Perlin ilmoittama virhe yrittäessäsi ladata moduulia oli :
+index_eldap=$1. Napsauta tätä säätääksesi <a href='$2'>moduulin kokoonpanoa</a>.
+index_eschema=Webmin on muodostanut yhteyden LDAP-palvelimeen, mutta epäonnistui hakemaan kaavaa. Varmista, että pääsyä ei ole evätty <a href='$1'>LDAP-palvelimessa</a>.
+index_eimap=$1. Ehkä <a href='$2'>moduulin kokoonpano</a> on väärä.
+index_emd5=Tämä moduuli on <a href='$1'>määritetty</a> käyttämään MD5-salausta salasanoihin, mutta $2 Perl -moduulia ei ole asennettu. <a href='$3'>Napsauta tätä</a>, jotta $2 -moduuli ladataan ja asennetaan.
+index_eslappasswd=Tämä moduuli on <a href='$1'>määritetty</a> käyttämään LDAP MD5 -salaus salasanoille, mutta salasanan salaamiseen käytettyä ohjelmaa <tt>$2</tt> ei ole asennettu.
+index_eusearch=Alle $1 : n käyttäjien etsiminen epäonnistui : $2 
+index_uadd=Lisää uusi LDAP-käyttäjä.
+index_gadd=Lisää uusi LDAP-ryhmä.
+index_unone=Yhtään LDAP-käyttäjää ei löytynyt alle $1.
+index_gnone=Yhtään LDAP-ryhmää ei löytynyt kohdasta $1.
+index_return=käyttäjäluettelo
+index_greturn=ryhmäluettelo
+index_egsearch=Ryhmiä, jotka ovat alle $1 : $2, ei löytynyt
+index_samba=Samba?
+index_cyrus=IMAP?
+index_users=LDAP-käyttäjät
+index_groups=LDAP-ryhmät
+
+imap_econn=Yhteyden muodostaminen IMAP-palvelimeen $1 epäonnistui
+imap_elogin=Kirjautuminen IMAP-palvelimeen $1 epäonnistui muodossa $2 : $3 
+conn_eldap_host=Järjestelmästäsi ei löytynyt LDAP-asiakasmääritystiedostoa, joten LDAP-palvelin on asetettava Moduulin kokoonpanosivulle
+conn_elogin=Järjestelmästäsi ei löytynyt LDAP-asiakasmääritystiedostoa, joten LDAP-kirjautuminen on asetettava Moduulin kokoonpanosivulla
+conn_efile_open=LDAP-sidontatiedot-tiedostoa ei voitu avata:
+
+uedit_cap=Käyttäjän ominaisuudet
+uedit_samba=Samba kirjautuminen?
+uedit_cyrus=IMAP-palvelimen kirjautuminen?
+uedit_dn=Käyttäjän LDAP DN
+uedit_classes=LDAP-objektiluokat
+uedit_alias=Postin aliakset
+uedit_fields=Lisä LDAP-kentät
+uedit_firstname=Etunimi
+uedit_lastname=Sukunimi
+uedit_raw=LDAP-ominaisuudet
+uedit_return=käyttäjän tiedot
+uedit_quota=IMAP-kiintiö
+uedit_unquota=Älä muuta
+uedit_sambapassopts=Samban salasana-asetukset
+uedit_sambapwdlastset=Viimeisin salasanan päivitys
+uedit_sambapwdcanchange=Salasana voi muuttua
+uedit_sambabadpasswordcount=Virheellinen salasanamäärä
+uedit_sambaacctflags=Tililiput
+
+usave_eadd=Käyttäjän lisääminen LDAP-tietokantaan epäonnistui : $1 
+usave_emod=Käyttäjän muokkaaminen epäonnistui LDAP-tietokannassa : $1 
+usave_emoddn=Käyttäjän nimeäminen epäonnistui LDAP-tietokannassa : $1 
+usave_egroupmod=Ryhmän $1 muokkaaminen epäonnistui LDAP-tietokannassa : $2 
+usave_edelete=Käyttäjän poistaminen LDAP-tietokannasta epäonnistui : $1 
+usave_eicreate=Käyttäjän luominen epäonnistui
+usave_eiacl=Järjestelmänvalvojalle oikeuksien myöntäminen epäonnistui
+usave_eimap=Käyttäjä tallennettiin onnistuneesti LDAP-tietokantaan, mutta tapahtui IMAP-virhe: $1 : $2 
+usave_eisub=Käyttäjän tilaaminen kansioon $1 epäonnistui
+usave_eiquota=IMAP-kiintiön asettaminen epäonnistui
+usave_eifolder=Kansion $1 luominen epäonnistui
+usave_eilogin=Kirjautuminen uusiin käyttäjiin epäonnistui
+usave_ecyruspass=Käyttäjän normaali salasana on syötettävä tai Ei salasanaa vaadita -vaihtoehto on valittava, kun IMAP otetaan käyttöön.
+usave_ebook=Osoitekirjamerkinnän luominen epäonnistui : $1 
+usave_emodbook=Osoitekirjan merkinnän muokkaaminen epäonnistui : $1 
+usave_emodbookdn=Osoitekirjan merkinnän nimeäminen epäonnistui : $1 
+usave_egone=Käyttäjää ei enää ole!
+usave_ex86=Tätä moduulia ei voida käyttää asettamaan salasana Samba-käyttäjälle muissa kuin Intel-järjestelmissä, koska se riippuu kootusta x86-ohjelmasta.
+usave_esamba=Tätä moduulia ei voida käyttää asettamaan Samba-käyttäjän salasana, koska Samba Windows File Sharing -moduulia ei ole asennettu.
+usave_ealiasdup=$2 käyttää jo aliavaa $1 
+usave_eattrdup=Kohde $1 käyttää jo $2 $3 
+usave_eattrdupu=Käyttäjä $1 käyttää jo tuotetta $2 $3 
+usave_eattrdupg=Ryhmä $1 käyttää jo $2 $3 
+usave_ereal=Puuttuu oikea nimi
+usave_equota=Puuttuva tai virheellinen IMAP-kiintiö
+
+search_err=$1 : n haku $2 : sta epäonnistui : $3 
+
+gedit_dn=Konsernin LDAP DN
+gedit_return=ryhmän yksityiskohdat
+gedit_cap=Ryhmäominaisuudet
+gedit_samba=Samba-ryhmä?
+
+gsave_egone=Ryhmää ei enää ole!
+gsave_edelete=Ryhmän poistaminen LDAP-tietokannasta epäonnistui : $1 
+gsave_eadd=Ryhmän lisääminen LDAP-tietokantaan epäonnistui : $1 
+gsave_emod=Ryhmän muokkaaminen epäonnistui LDAP-tietokannassa : $1 
+gsave_emoddn=Ryhmän nimeäminen epäonnistui LDAP-tietokannassa : $1 
+
+gdel_group=Poistetaan LDAP-ryhmämerkintä ..
+
+udel_pass=Poistetaan LDAP-käyttäjän tieto ..
+udel_book=Poistetaan osoitekirjasta ..
+udel_imap=Poistetaan IMAP-kansio ..
+udel_warnimap=Olemassa oleva postilaatikko poistetaan, kun poistetaan kotihakemisto!
+udel_failed=.. epäonnistui!  : $1 
+
+raw_title=LDAP-ominaisuudet
+raw_name=Ominaisuuden nimi
+raw_value=arvot
+raw_for=$1 : lle
+
+batch_samba=Luoko Samba-tili uusille käyttäjille?
+batch_imap=Luoko IMAP-tili uusille käyttäjille?
+batch_descafter3=<b>Luo</b>- ja <b>Muokkaa</b> -riville voit valinnaisesti lisätä ylimääräisiä kenttiä, jotka sisältävät LDAP-määritteitä <i>nimi</i> = <i>arvo</i> muodossa voidaan osoittaa uusille tai muokattuille käyttäjille.
+batch_eattr=Virheellinen LDAP-määrite rivillä $1 : $2 

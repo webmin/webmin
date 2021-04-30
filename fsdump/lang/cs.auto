@@ -1,0 +1,16 @@
+dump_exclude=Soubory a adresáře, které chcete přeskočit
+dump_ehuser2=Uživatelské jméno nemůže obsahovat znak @
+dump_fok=Zastavit, pokud příkaz selže
+dump_fok2=Nahlásit selhání, pokud se příkaz nezdaří
+dump_aok=Přeskočte příkaz, i když se záloha nezdaří
+dump_gzip3=Ano, s XZ
+dump_ignoreread=Ignorovat chyby čtení v souborech?
+dump_eftpupdate=Přidání souborů do existujícího archivu není možné při použití FTP.
+dump_eleveldir=Pro adresáře, které nejsou přípojnými body souborového systému, jsou povoleny pouze zálohy úrovně 0
+dump_eupdatedir=Soubor <tt>/etc/dumpdates</tt> lze aktualizovat pouze pro adresáře, které jsou připojovacími body souborového systému.
+
+edit_title3=Klonování zálohy
+edit_when=Kdy zálohovat
+edit_clone=Klonovat
+
+log_kill=Ukončená záloha pro $1 

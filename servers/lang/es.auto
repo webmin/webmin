@@ -1,0 +1,70 @@
+index_nosearch=Ningún servidor coincide con su búsqueda.
+index_defport=Puerto Webmin
+index_auto=Buscar servidores automáticamente
+index_automsg=Haga clic en este botón para configurar el descubrimiento periódico automático de nuevos servidores Webmin en su red.
+index_search=Mostrar servidores que coinciden:
+index_ok=Buscar
+
+edit_realhost=Nombre de host real
+edit_portnone=Ninguno establecido
+edit_checkssl=¿Comprobar certificado SSL remoto?
+edit_mode3=Inicie sesión con nombre de usuario y contraseña de este servidor
+edit_luser=Nombre de usuario para servidor remoto
+edit_lpass=Contraseña para servidor remoto
+edit_same=Solo está disponible no en el modo de autenticación de sesión y cuando la contraseña está disponible para los programas de Webmin.
+
+save_ehost2=El host no existe
+save_eport2=Se debe proporcionar un puerto si se selecciona un tipo de enlace con un inicio de sesión
+save_egroup2=Nuevo nombre de grupo no válido
+
+find_already2=Se encontró un servidor host conocido en $1 
+find_skip=Ignorando el servidor en $1 
+find_eiface=No se pudo encontrar la interfaz para escanear
+find_eport=Número de puerto faltante o no válido
+
+acl_auto=¿Se puede configurar la detección automática de servidores?
+acl_add=¿Puede registrar nuevos servidores?
+acl_forcefast=¿Forzar el modo RPC rápido al predeterminado?
+acl_forcetype=¿Forzar el tipo de sistema operativo a predeterminado?
+acl_forcelink=¿Forzar el tipo de inicio de sesión predeterminado?
+acl_links=Se puede conectar a través de servidores?
+
+login_esame=La opción de usar el mismo inicio de sesión que este servidor solo se puede usar cuando no está en modo de autenticación de sesión y cuando la contraseña está disponible para los programas de Webmin.
+
+delete_title=Eliminar servidores
+delete_rusure=¿Está seguro de que desea eliminar los servidores seleccionados $1 ?
+delete_confirm=Elimina ahora
+
+auto_title=Buscar servidores automáticamente
+auto_header=Opciones de registro automático del servidor
+auto_sched=¿Buscar nuevos servidores?
+auto_sched1=Sí, cada $1 minutos
+auto_net=Red IP para escanear
+auto_auto=Red local
+auto_ip=Redes IP $1 
+auto_iface=Red en la interfaz $1 
+auto_user=Nombre de usuario para nuevos servidores
+auto_pass=Contraseña para nuevos servidores
+auto_type=Tipo de sistema predeterminado
+auto_err=Error al guardar la configuración de búsqueda automática
+auto_emins=Número de minutos faltantes o no válidos
+auto_enet=Dirección de red faltante o inválida
+auto_eiface=Interfaz de red faltante o inválida
+auto_euser=Falta nombre de usuario
+auto_cluster-software=¿Agregar a paquetes de software de clúster?
+auto_remove=¿Eliminar servidores registrados que no se encuentran?
+auto_email=Enviar notificación por correo electrónico a
+auto_none=No enviar
+auto_eemail=Falta la dirección de correo electrónico para notificaciones
+auto_smtp=Enviar a través del servidor SMTP
+auto_self=Este sistema
+auto_esmtp=Falta o no es válido el servidor SMTP
+auto_findself=Registre este sistema también?
+
+config_deftype=Tipo de sistema predeterminado
+config_typeauto=Automático
+
+email_regsubject=Sistema $1 registrado
+email_reg=El sistema $1 se ha registrado automáticamente.
+email_unregsubject=Sistema $1 no registrado
+email_unreg=El sistema $1 ha sido automáticamente desregistrado.

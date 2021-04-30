@@ -1,0 +1,33 @@
+index_applymsg2=Kattintson erre a gombra az aktuális konfiguráció alkalmazásához a ProFTPD leállításával és újraindításával.
+index_stop=Stop Server
+index_stopmsg=Kattintson erre a gombra az FTP-kiszolgáló leállításához, amely megakadályozza az új FTP-ügyfelek csatlakozását.
+index_proftpd=ProFTPd
+
+manual_etest=Konfigurációs fájl hibája észlelve : $1 
+
+dserv_eanondir=A könyvtárnak a névtelen FTP könyvtár alatt kell lennie
+
+mod_core_octal=Oktális maszk
+mod_core_umask_d=Új könyvtármaszk
+mod_core_firstcdt=Mindig mutassa
+
+mod_ls_options=Könyvtárak listájának lehetőségei
+mod_ls_strict=Felülírja a felhasználói lehetőségeket?
+
+stop_err=Az FTP-kiszolgáló megállítása nem sikerült
+stop_einetd=Inetd módban nem állíthatja le a szerver démont.
+stop_erun=Nem fut
+
+apply_err=Nem sikerült alkalmazni az FTP-konfigurációt
+apply_egone=Már nem fut
+
+log_anonc=Anonim FTP beállítása a (z) $1 kiszolgálóra
+log_anons=A (z) $1 kiszolgáló névtelen FTP-je újrakonfigurálva
+log_anond=A (z) $1 szerver névtelen FTP-jét törölte
+log_anonm=A (z) $1 szerver névtelen FTP-jének kézi szerkesztése
+log_anon=Megváltozott a (z) $1 névtelen FTP-ben a $2 kiszolgálón
+
+eafter=A konfiguráció ellenőrzése sikertelen: $1 A módosításokat nem mentettük.
+proftpd_apply=Módosítások elfogadása
+proftpd_stop=A ProFTPd leállítása
+proftpd_start=Indítsa el a ProFTPd-t

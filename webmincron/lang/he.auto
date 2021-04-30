@@ -1,0 +1,20 @@
+edit_mins=דקות
+edit_hours=שעה (ות
+edit_days=ימים
+edit_months=חודשים
+edit_weekdays=ימי חול
+edit_all=את כל
+edit_selected=נבחר ..
+edit_run=רוץ עכשיו
+edit_clone=שיבוט ג'וב
+edit_return=עבודה cron
+edit_special1=לוח זמנים פשוט ..
+edit_special0=השעות והתאריכים שנבחרו למטה ..
+edit_special_hourly=לפי שעה
+edit_special_daily=מדי יום (בחצות)
+edit_special_weekly=שבועי (ביום ראשון)
+edit_special_monthly=חודשי (ב -1)
+edit_special_yearly=שנתי (ב -1 בינואר)
+
+log_success=רץ בהצלחה <tt>$2</tt> ב- <tt>$1</tt>
+log_failure=ההפעלה של <tt>$2</tt> נכשלה ב- <tt>$1</tt> : $3 

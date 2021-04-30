@@ -1,0 +1,316 @@
+index_title=Pentadbiran Printer
+index_header=Pencetak yang tersedia
+index_name=Mesin pencetak
+index_desc=Penerangan
+index_to=Cetak kepada
+index_driver=Pemandu
+index_enabled=Dihidupkan?
+index_accepting=Menerima?
+index_jobs=Pekerjaan
+index_none=Tiada pencetak dipasang pada sistem ini.
+index_list=Senarai ..
+index_jlist=Pekerjaan ..
+index_jcount=$1 pekerjaan ..
+index_add=Tambah pencetak baru.
+index_stop=Berhenti Berjadual
+index_stopmsg=Klik butang ini untuk menghentikan proses penjadual cetak yang berjalan. Ini akan menghalang mana-mana pengguna tempatan atau jauh dari mencetak pada sistem anda.
+index_start=Mula Berjadual
+index_startmsg=Klik butang ini untuk memulakan proses penjadual cetak. Ini akan membolehkan pengguna tempatan dan jauh mencetak pada sistem anda.
+index_restart=Restart Scheduler
+index_restartmsg=Klik butang ini untuk memulakan semula proses penjadual cetak. Ini akan memaksa konfigurasi cetakan semasa digunakan.
+index_return=senarai pencetak
+index_esystem=Sama ada memasang perisian untuk sistem cetakan yang anda pilih, atau gunakan konfigurasi modul <a href='$1'></a> untuk mengubahnya.
+index_style=Sistem cetakan: $1 
+index_cluster=Pelayan Kluster
+index_clusterdesc=Klik butang ini untuk menyediakan pelayan Webmin tambahan di mana pencetak akan dicipta, dikemas kini dan dipadam.
+index_delete=Padam Pencetak yang Dipilih
+
+style_solaris=Solaris
+style_linux=Linux LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=CUPS
+style_irix=IRIX
+style_aix=AIX
+
+edit_eedit=Anda tidak dibenarkan menyunting pencetak ini
+edit_eadd=Anda tidak dibenarkan menambah pencetak
+edit_add=Buat Pencetak
+edit_edit=Edit Pencetak
+edit_conf=Konfigurasi Pencetak
+edit_name=Nama
+edit_acc=Menerima permintaan?
+edit_why=Tidak - Kenapa tidak
+edit_desc=Penerangan
+edit_ena=Percetakan diaktifkan?
+edit_acl=Kawalan akses
+edit_allow=Benarkan semua orang
+edit_deny=Tolak semua orang
+edit_allowu=Benarkan pengguna tersenarai ..
+edit_denyu=Menyangkal pengguna berdaftar ..
+edit_banner=Cetak spanduk?
+edit_opt=Pilihan
+edit_default=Pencetak lalai?
+edit_already=Sudah menjadi pencetak lalai
+edit_max=Saiz kerja cetakan maksimum
+edit_unlimited=Tidak terhad
+edit_dacc=Pemandu menerima
+edit_dtext=Teks
+edit_dpost=Postscript
+edit_dother=Lain-lain
+edit_alt=Nama pencetak ganti
+edit_dest=Cetak Destinasi
+edit_dev=Peranti tempatan
+edit_file=Fail setempat
+edit_remote=Pelayan jauh Unix
+edit_rqueue=Mesin pencetak
+edit_type=Taipkan
+edit_smb=Pelayan Windows jauh
+edit_share=Mesin pencetak
+edit_user=Pengguna
+edit_pass=Kata laluan
+edit_wgroup=Kumpulan kerja
+edit_hpnp=Pelayan HPNP jauh
+edit_port=Pelabuhan
+edit_direct=Sambungan TCP langsung
+edit_dport=Pelabuhan
+edit_driver=Pemacu Pencetak
+edit_check=Periksa sama ada pelayan jauh sudah siap?
+
+blocks=blok
+
+save_err=Gagal menyimpan pencetak
+save_eadd=Anda tidak dibenarkan menambah pencetak
+save_eedit=Anda tidak dibenarkan menyunting pencetak ini
+save_ename='$1' bukan nama pencetak yang sah
+save_edup=Pencetak yang dipanggil '$1' sudah wujud
+save_eallow=Tiada pengguna yang dibenarkan masuk
+save_edeny=Tiada pengguna untuk menyangkal masuk
+save_euser=Pengguna '$1' tidak wujud
+save_etype=Anda mesti memilih sekurang-kurangnya satu jenis bagi pemandu ini untuk menerima
+save_emax=Saiz tugas cetak maksimum mestilah integer
+save_efile='$1' tidak wujud
+save_erhost=Hos jauh '$1' tidak wujud
+save_erport=Port jauh '$1' tidak sah
+save_erqueue='$1' bukan nama beratur jarak jauh yang sah
+save_eremote=Pemacu tidak boleh digunakan dengan pencetak Unix jauh
+save_edhost=Tuan rumah langsung '$1' tidak wujud
+save_edport=Pelabuhan langsung atau tidak sah
+save_evalid=Sistem cetak tidak membenarkan pencetak ini
+save_errslave=Pencetak mencipta OK pada sistem ini, tetapi ralat berikut berlaku pada sistem kluster : $1 
+save_egone=Tiada pencetak bernama '$1' telah dijumpai
+save_errdelslave=Pencetak dipadamkan OK pada sistem ini, tetapi ralat berikut berlaku pada sistem kluster : $1 
+
+jobs_title=Cetak Pekerjaan
+jobs_header=Mencetak pekerjaan pada $1 
+jobs_id=ID kerja
+jobs_size=Saiz
+jobs_by=Dikemukakan oleh
+jobs_when=Dihantar Pada
+jobs_file=Nama fail
+jobs_cancel=Klik pada ID pekerjaan dari senarai di atas untuk membatalkannya.
+jobs_cancelview=Klik pada ID pekerjaan dari senarai di atas untuk membatalkan, atau klik pada saiz kerja untuk melihatnya.
+jobs_none=Pencetak $1 tidak mempunyai pekerjaan yang belum selesai.
+jobs_all=Batalkan semua kerja cetak
+jobs_bytes=bait
+jobs_test=Halaman Ujian Cetak
+jobs_cancelsel=Batalkan Pekerjaan Terpilih
+jobs_on=Pada pencetak $1 
+jobs_return=senarai kerja cetak
+
+cancel_ecannot=Anda tidak dibenarkan membatalkan kerja cetakan
+cancel_err=Gagal membatalkan kerja cetak
+cancel_egone=Pekerjaan cetakan $1 tidak lagi wujud
+
+view_ecannot=Anda tidak boleh melihat kerja cetakan ini
+view_egone=Pekerjaan cetakan ini tidak lagi wujud
+
+start_ecannot=Anda tidak dibenarkan memulakan penjadual
+start_err=Gagal memulakan penjadual
+
+stop_ecannot=Anda tidak dibenarkan untuk menghentikan penjadual
+stop_err=Gagal menghentikan penjadual
+
+restart_ecannot=Anda tidak dibenarkan memulakan semula penjadual
+restart_err=Gagal memulakan semula penjadual
+
+webmin_none=Tiada
+webmin_nonemsg=Pencetak pos atau teks
+webmin_remotemsg=Pencetak jauh
+webmin_model=Model
+webmin_prog=Program
+webmin_driver=Pemandu Webmin
+webmin_uniprint=Uniprint driver
+webmin_edrivers=Gagal mendapatkan pemandu daripada $1. Pemacu pencetak Webmin menggunakan ghostscript tidak tersedia
+webmin_egs=Perintah $1 tidak dijumpai. Pemacu pencetak Webmin menggunakan ghostscript tidak tersedia
+webmin_edriver='$1' tidak wujud
+
+caldera_none=Tiada
+caldera_nonemsg=Pencetak jauh atau mentah
+caldera_prog=Program
+caldera_coas=Pemandu COAS
+caldera_printer=Pencetak dan resolusi
+caldera_eof=Hantar EOF?
+caldera_paper=Saiz kertas
+caldera_double=Cetak dua sisi?
+caldera_gsopts=Pilihan GS tambahan
+caldera_uniprint=Uniprint driver
+caldera_eprog='$1' tidak wujud
+caldera_edriver=Tiada pemandu pencetak dipilih
+caldera_eres=Tiada resolusi yang dipilih
+
+redhat_none=Tiada
+redhat_nonemsg=Pencetak pos atau teks
+redhat_prog=Program
+redhat_driver=Pemandu Redhat
+redhat_printer=Pencetak dan resolusi
+redhat_eof=Hantar EOF?
+redhat_paper=Saiz kertas
+redhat_pages=Halaman setiap halaman output
+redhat_gsopts=Pilihan GS tambahan
+redhat_hmargin=Margin kanan/kiri
+redhat_vmargin=Margin atas/bawah
+redhat_crlf=Betulkan teks tangga lurus?
+redhat_eprog='$1' tidak wujud
+redhat_edriver=Tiada pemandu pencetak dipilih
+redhat_ehmargin=Margin kanan/kiri yang hilang atau tidak sah
+redhat_evmargin=Lebar atas/bawah hilang atau tidak sah
+redhat_eres=Tiada resolusi yang dipilih
+redhat_printer2=Model pencetak dan pemandu
+
+suse_none=Tiada
+suse_nonemsg=Pencetak pos atau teks
+suse_prog=Program
+suse_driver=Pemandu APSfilter
+suse_printer=Jenis pencetak
+suse_res=Resolusi dalam DPI
+suse_colour=Pencetak warna?
+suse_paper=Saiz kertas
+suse_method=Kaedah penapis
+suse_auto=Automatik
+suse_ascii=ASCII
+suse_raw=Raw
+suse_extra=Pilihan ghostscript tambahan
+suse_yast2=Pemandu YAST2
+suse_edriver=Tiada jenis pencetak dipilih
+suse_eres=Resolusi yang hilang atau tidak sah
+
+estop=Gagal menghentikan lpd : $1 
+
+acl_printers=Pencetak pengguna boleh mengkonfigurasi
+acl_add=Boleh menambah pencetak baru?
+acl_cancel=Boleh membatalkan kerja cetak?
+acl_stop=Bolehkah berhenti atau memulakan penjadual?
+acl_restart=Mulakan semula sahaja
+acl_listed=Hanya pada pencetak yang dipilih ..
+acl_pall=Semua pencetak
+acl_psel=Terpilih ..
+acl_view=Tunjukkan pencetak yang tidak boleh dikonfigurasikan?
+acl_test=Boleh mencetak halaman ujian?
+acl_user=Urus pekerjaan cetakan yang dimiliki oleh
+acl_user_all=Semua pengguna
+acl_user_this=Pengguna Webmin semasa
+acl_delete=Bolehkah memadam pencetak?
+acl_cluster=Boleh menguruskan cluster pencetak?
+
+log_stop=Berhenti penjadual cetak
+log_start=Memulakan penjadual cetak
+log_restart=Penjadual cetak semula
+log_cancel_job=Membatalkan kerja cetak $2 pada $1 
+log_cancel_all=Membatalkan semua tugas cetak pada $1 
+log_cancel_sel=Dibatalkan $2 pekerjaan cetak pada $1 
+log_create=Pencetak yang dibuat $1 pada $2 
+log_modify=Pencetak yang diubahsuai $1 pada $2 
+log_delete=Pencetak yang dipotong $1 pada $2 
+log_create_l=Dibuat $3 pencetak $1 pada $2 
+log_modify_l=Diperbodakan $3 pencetak $1 pada $2 
+log_delete_l=Dihapus $3 pencetak $1 pada $2 
+
+linux_paralel=Port Selari $1 
+linux_serial=Port Serial $1 (COM $1)
+linux_null=Peranti Null
+linux_usb=Pencetak USB $1 
+linux_ecmd=Perintah $1 tidak dijumpai pada sistem anda, yang menunjukkan sistem cetak Linux tidak dipasang.
+linux_espool=Direktori spool $1 tidak wujud pada sistem anda, yang menunjukkan sistem cetak Linux tidak dipasang.
+
+freebsd_paralel=Pelabuhan Selari
+freebsd_serial=Port Serial $1 (COM $1)
+freebsd_ecmd=Perintah $1 tidak ditemui pada sistem anda, yang menunjukkan bahawa sistem cetakan FreeBSD tidak dipasang.
+freebsd_espool=Direktori spool $1 tidak wujud pada sistem anda, yang menunjukkan bahawa sistem cetak FreeBSD tidak dipasang.
+
+openbsd_paralel=Pelabuhan Selari
+openbsd_serial=Port Serial $1 (COM $1)
+
+unixware_paralel=Port Selari $1 
+unixware_serial=Port Serial $1 
+unixware_null=Peranti Null
+unixware_ecmd=Perintah $1 tidak ditemui pada sistem anda, yang menunjukkan bahawa sistem cetak UnixWare tidak dipasang.
+
+hpux_paralel=Selari $1 
+hpux_serial=Serial $1 
+hpux_null=Peranti Null
+hpux_ecmd=Perintah $1 tidak ditemui pada sistem anda, yang menunjukkan bahawa sistem cetak HPUX tidak dipasang.
+hpux_eiface=Direktori skrip antara muka $1 tidak wujud pada sistem anda, yang menunjukkan bahawa sistem cetak HPUX tidak dipasang.
+
+lprng_paralel=Port Selari $1 
+lprng_serial=Port Serial $1 (COM $1)
+lprng_null=Peranti Null
+lprng_ecmd=Perintah $1 tidak dijumpai pada sistem anda, yang menunjukkan bahawa sistem cetakan LPRng tidak dipasang.
+lprng_espool=Direktori spool $1 tidak wujud pada sistem anda, yang menunjukkan bahawa sistem cetakan LPRng tidak dipasang.
+
+solaris_paralel=Pelabuhan Selari
+solaris_uparalel=Pelabuhan Selari Ultra 5/10
+solaris_serial=Port Serial $1 
+solaris_null=Peranti Null
+solaris_ecmd=Perintah $1 tidak ditemui pada sistem anda, yang menunjukkan bahawa sistem cetak Solaris tidak dipasang.
+
+test_title=Halaman Ujian Cetak
+test_ecannot=Anda tidak dibenarkan mencetak halaman ujian
+test_desc=Borang ini membolehkan anda mencetak halaman ujian untuk pencetak $1. Pilih jenis halaman yang ingin anda cetak :
+test_0=Halaman putih tulisan hitam dan putih
+test_1=Halaman Postscript Warna
+test_2=Teks ASCII biasa
+test_3=Mana-mana fail yang dimuat naik
+test_print=Cetak halaman
+test_exec=Halaman ujian percetakan dengan arahan $1 ..
+test_failed=.. arahan gagal!
+test_ok=.. arahan lengkap.
+
+cups_none=Tiada
+cups_nonemsg=Pencetak jauh atau mentah
+cups_prog=Program
+cups_driver=Pemandu CUPS
+cups_eprog='$1' bukan program yang sah
+cups_opts=Pilihan untuk $1 
+cups_ecmd=Perintah $1 tidak ditemui pada sistem anda, yang menunjukkan bahawa sistem cetakan CUPS tidak dipasang.
+
+irix_ecmd=Perintah $1 tidak ditemui pada sistem anda, yang menunjukkan sistem cetak IRIX tidak dipasang.
+irix_eiface=Direktori skrip antara muka $1 tidak wujud pada sistem anda, yang menunjukkan sistem cetak IRIX tidak dipasang.
+
+aix_port=Port pencetak $1 
+aix_edesc=Huraian tidak sah - hanya huruf dan nombor yang dibenarkan, dan tiada ruang
+aix_ecmd=Pelayar pencetak AIX $1 tidak dijumpai. Mungkin ia tidak dipasang, atau sistem cetakan lain sedang digunakan.
+
+cluster_title=Pelayan Pencetak Kluster
+cluster_none=Tiada pelayan telah ditambahkan ke cluster pencetak lagi.
+cluster_host=Nama hos
+cluster_desc=Penerangan
+cluster_os=Sistem operasi
+cluster_add=Tambah pelayan
+cluster_gadd=Tambah pelayan dalam kumpulan
+cluster_need=Anda mesti menambah pelayan dengan log masuk dan kata laluan dalam Modul Indeks Servis Webmin sebelum mereka boleh diuruskan di sini.
+cluster_return=pelayan kluster
+cluster_delete=Buang yang ditanda
+cluster_ecannot=Anda tidak dibenarkan untuk menguruskan pelayan pencetak kluster
+
+add_title=Tambah Pelayan
+add_msg=Menambah $1 ..
+add_gmsg=Menambah pelayan dalam kumpulan $1 ..
+add_err=Gagal menambah pelayan
+add_gerr=Gagal menambah kumpulan
+add_echeck=Server $1 tidak mempunyai modul Pentadbiran Printer
+add_ediff=Server $1 menggunakan sistem cetakan yang berlainan ($2) ke pelayan ini
+add_ediff2=Server $1 menggunakan pemacu cetakan yang berlainan ($2) ke pelayan ini
+add_ok=Ditambah $1, dengan $2 pencetak.

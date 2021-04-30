@@ -1,0 +1,17 @@
+title_noverify=不要挂载和验证分区
+title_initrd=初始ramdisk文件
+title_modules=额外的模块
+title_none1=没有
+title_none2=（非引导菜单项）
+title_einitrd=缺少初始ramdisk文件名
+title_lock=密码已锁定？
+
+global_forever=永远等
+
+log_create_title=已创建启动选项 $1
+log_delete_title=删除的引导选项 $1
+log_modify_title=修改后的引导选项 $1
+log_up_title=引导选项 $1已上移
+log_down_title=下移启动选项 $1
+log_global=更改的全局选项
+log_install=已安装的GRUB

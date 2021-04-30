@@ -17,7 +17,7 @@ sub get_config
 {
 local (@rv, $sect);
 local $lnum = 0;
-open(FILE, $config{'file'});
+open(FILE, "<".$config{'file'});
 while(<FILE>) {
 	s/^\s*;.*//;
 	s/\r|\n//g;
@@ -108,7 +108,7 @@ sub save_connect_details
 sub get_connect_details
 {
 local ($ip, $pid, $sect);
-open(DETAILS, $details_file) || return ();
+open(DETAILS, "<".$details_file) || return ();
 chop($ip = <DETAILS>);
 chop($pid = <DETAILS>);
 chop($sect = <DETAILS>);
@@ -172,7 +172,7 @@ if (!($pid = fork())) {
 	exec($config{'wvdial'}, $sect);
 	exit(1);
 	}
-while (!open(TEMP, $temp)) { }
+while (!open(TEMP, "<".$temp)) { }
 &additional_log("exec", undef, "$config{'wvdial'} $sect");
 unlink($temp);
 

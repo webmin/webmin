@@ -1,0 +1,75 @@
+index_title=GRUB įkrovimo krautuvas
+index_add=Pridėkite naują įkrovos parinktį.
+index_global=Redaguoti visuotines parinktis
+index_globalmsg=Redaguokite visuotines įkrovos parinktis, taikomas visoms įkrovos meniu pasirinktims, ir pasirinkite įrenginį, kuriame GRUB yra įdiegtas.
+index_install=Įdiekite GRUB
+index_installmsg=Įdiekite GRUB įkroviklį $1, kad paleisties metu būtų rodomos aukščiau pateiktos parinktys. Tai nepaisys esamo įkrovos kaupiklio, pvz., LILO, ir gali padaryti jūsų sistemą neįkraunamą!
+index_none=Neapibrėžtos jokios įkrovos parinktys. Prieš diegdami grubą, būtinai pridėkite bent vieną.
+index_efile=Jūsų sistemoje nerastas GRUB meniu failas $1. Galbūt GRUB neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_epath=GRUB vykdomasis $1 jūsų sistemoje nerastas. Galbūt GRUB neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_return=parinkčių sąrašas
+
+title_add=Pridėti įkrovos parinktį
+title_edit=Redaguoti įkrovos parinktį
+title_header=„Boot“ meniu parinkties informacija
+title_title=Pasirinkimo pavadinimas
+title_root=Įkrovos vaizdo skaidinys
+title_noverify=Nemontuokite ir nepatikrinkite skaidinio
+title_other=Kitas įrenginio failas
+title_sel=Pasirinkta
+title_boot=Paleisti operacinę sistemą
+title_kernel=Branduolys
+title_kfile=Kelias į branduolį
+title_args=Branduolio parinktys
+title_initrd=Pradinis „ramdisk“ failas
+title_modules=Papildomi moduliai
+title_chain=Kita OS
+title_chain_def=Nuo pirmojo pertvarų sektoriaus
+title_chain_file=Iš „grandloader“ failo
+title_makeactive=Padaryti šakninį skaidinį aktyviu?
+title_none1=Nė vienas
+title_none2=(meniu įrašas be įkrovos)
+title_err=Nepavyko išsaugoti įkrovos parinkties
+title_etitle=Trūksta pasirinkimo pavadinimo
+title_eroot=Trūksta šakninio skaidinio
+title_ekernel=Trūksta arba netinkamas branduolio kelias
+title_echain=Trūksta arba netinkamas grandinės įkėlimo failas
+title_edev=Nepalaikomas šakninio skaidinio įrenginys $1 
+title_einitrd=Trūksta pradinio „ramdisk“ failo pavadinimo
+title_lock=Slaptažodis užrakintas?
+
+global_title=Visuotinės parinktys
+global_header=Visuotinės įkrovos meniu parinktys
+global_default=Numatytoji įkrovos parinktis
+global_fallback=Atsarginės įkrovos parinktis
+global_first=Pirma sąraše
+global_timeout=Laikas prieš įkeliant numatytąją
+global_forever=Palaukite amžinai
+global_secs=sekundžių
+global_install=Įdiekite GRUB diske/skaidinyje
+global_sel=Pasirinkta
+global_other=Kiti
+global_password=Paleiskite slaptažodį
+global_none=Nė vienas
+global_password_file=Naudokite meniu failą, jei įvedate slaptažodį:
+global_err=Nepavyko išsaugoti visuotinių parinkčių
+global_etimeout=Trūksta arba netinkamas laikas
+global_edev=Nepalaikomas įdiegimo diskas/skaidinys $1 
+global_eother=Trūksta arba netinkamas diskas/skaidinys
+global_epassword=Trūksta arba netinkamas įkrovos slaptažodis
+global_epasswordfile=Trūksta alternatyvaus meniu failo pavadinimo
+
+install_title=Įdiekite GRUB
+install_err=Nepavyko įdiegti GRUB
+install_efind=Nepavyko rasti meniu failo
+install_desc=GRUB diegimas $1 komandomis $2 ir $3 ..
+install_ok=.. įdiegti baigta.
+install_failed=.. įdiegti nepavyko!
+
+log_create_title=Sukurta įkrovos parinktis $1 
+log_delete_title=Ištrinta įkrovos parinktis $1 
+log_modify_title=Modifikuota įkrovos parinktis $1 
+log_up_title=Perkelta įkrovos parinktis $1 aukštyn
+log_down_title=Perkelta įkrovos parinktis $1 žemyn
+log_global=Pasikeitė globalios galimybės
+log_install=Įdiegta GRUB

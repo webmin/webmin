@@ -1,0 +1,126 @@
+<header> Gör substituerande reservdestinationer i halvtid? </header> Om det här alternativet är inställt på <b>Ja</b> , kan koder som%d,%m,%Y och%u användas i filnamnet för reservdestination. Dessa kommer att ersättas med respektive dag, månad år och veckodag när säkerhetskopian utförs. Detta är användbart om du vill spara en annan säkerhetskopia varje dag, så att du kan rulla tillbaka ett system till ett tidigare datum. <p> Några av de andra koderna som kan användas är: <br><pre> <font size=-1>
+ %a Det förkortade veckodagets namn enligt kurvan
+        hyra språk.
+
+ %A Hela veckodagen enligt aktuellt
+        locale.
+
+ %b Det förkortade månadsnamnet enligt det aktuella
+        locale.
+
+ %B Hela månadens namn enligt aktuellt
+        locale.
+
+ %c Föredraget datum- och tidsrepresentation för
+        nuvarande språk.
+
+ %C Århundradstalet (år / 100) som ett tvåsiffrigt heltal.
+
+ %d Månadens dag som decimaltal (intervall 01
+        till 31).
+
+ %e Liksom%d, månadens månad som decimaltal,
+        men en ledande noll ersätts av ett mellanslag.
+
+ %E Modifier: använd alternativt format, se nedan.
+
+ %G ISO 8601-året med århundrade som decimaltal.
+        Det 4-siffriga året som motsvarar ISO-veckanummer
+        ber (se%V). Detta har samma format och värde
+        som%y, förutom att om ISO-veckonummeret hör hemma
+        till föregående eller nästa år används det året
+        istället.
+
+ %g Som%G, men utan århundrade, dvs med en tvåsiffrig
+        år (00-99).
+
+ %h motsvarar%b.
+
+ %H Timmen som decimaltal med en 24-timmars klocka
+        (intervallet 00 till 23).
+
+ %I Timmen som ett decimaltal med en 12-timmars klocka
+        (intervall 01 till 12).
+
+ %j Årets dag som decimaltal (intervall 001
+        till 366).
+
+ %k timmen (24-timmars klocka) som ett decimaltal (intervall
+        0 till 23); enstaka siffror föregås av ett tomt.
+        (Se även%H.)
+
+ %l timmen (12-timmars klocka) som ett decimaltal (intervall
+        1 till 12); enstaka siffror föregås av ett tomt.
+        (Se även%I.)
+
+ %m Månaden som decimaltal (intervall 01 till 12).
+
+ %M Minuten som decimaltal (intervall 00 till 59).
+
+ %n En ny linje-karaktär.
+
+ %O Modifier: använd alternativt format, se nedan.
+
+ %p Antingen &quot;AM&quot; eller &quot;PM&quot; enligt den angivna tiden
+        värde eller motsvarande strängar för strömmen
+        locale. Middag behandlas som &quot;pm&quot; och midnatt som
+        `am&#39;.
+
+ %P Gillar%p men med små bokstäver: `am &#39;eller` pm&#39; eller en corre
+        spondande sträng för det aktuella språket.
+
+ %r Tiden i noteringen am eller pm. I POSIX
+        landskapsnivå detta motsvarar `%I:%M:%S%p’.
+
+ %R Tiden i 24-timmars notation (%H:%M). För en
+        version inklusive sekunderna, se%T nedan.
+
+ %s Antalet sekunder sedan Epok, dvs. sedan
+        1970-01-01 00:00:00 UTC.
+
+ %S Den andra som ett decimaltal (intervall 00 till 61).
+
+ %t Ett flikkaraktär.
+
+ %T Tiden i 24-timmars notation (%H:%M:%S).
+
+ %u Veckodagen som decimal, intervall 1 till 7,
+        Måndag är 1. Se även%w.
+
+ %U Veckonummeret för det aktuella året som decimal
+        nummer, intervall 00 till 53, börjar med det första
+        Söndag som första dagen i vecka 01. Se även%V och
+        %W.
+
+ %V ISO 8601: 1988 veckonummer för innevarande år
+        som decimaltal, intervall 01 till 53, där vecka 1
+        är den första veckan som har minst fyra dagar i
+        innevarande år, och med måndag som första dagen av
+        veckan. Se även%U och%W.
+
+ %w Veckodagen som decimal, intervall 0 till 6,
+        Söndagen är 0. Se även%u.
+
+ %W Veckonummeret för det aktuella året som decimal
+        nummer, intervall 00 till 53, börjar med det första
+        Måndag som första dagen i vecka 01.
+
+ %x Den föredragna datumrepresentationen för den aktuella
+        landskap utan tid.
+
+ %X Den föredragna tidsrepresentationen för strömmen
+        språk utan datumet.
+
+ %y Året som decimaltal utan århundrade
+        (intervallet 00 till 99).
+
+ %Y Året som decimaltal inklusive århundradet.
+
+ %z Tidszonen som timförskjutning från GMT. Behövs för
+        avge RFC822-konforma datum (med &quot;%a,%d%b%Y
+        %H:%M:%S%z &quot;).
+
+ %Z Tidszonen eller namnet eller förkortningen.
+
+ %%En bokstavlig &quot;%&quot; -tecken.
+</font> </pre><footer>

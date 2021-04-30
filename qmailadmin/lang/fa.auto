@@ -1,0 +1,405 @@
+index_title=سرور نامه QMail
+index_edir=دایرکتوری پایه QMail $1 وجود ندارد. شاید QMail نصب نشده باشد ، یا پیکربندی <a href='$2'>ماژول شما</a> نادرست باشد.
+index_edir2=به نظر نمی رسد که فهرست $1 فهرست اصلی QMail است. شاید QMail نصب نشده باشد ، یا پیکربندی <a href='$2'>ماژول شما</a> نادرست باشد.
+index_return=پیکربندی QMail
+index_stop=فرآیندهای QMail را متوقف کنید
+index_stopmsg=با کلیک بر روی این دکمه برای متوقف کردن فرآیندهای پس زمینه QMail مسئول تحویل نامه صف. بدون این مراحل ، نامه ارسال نمی شود یا به درستی به سیستم شما تحویل داده می شود.
+index_start=مراحل QMail را شروع کنید
+index_startmsg=برای شروع فرآیندهای پس زمینه QMail مسئول تحویل نامه های صف بندی شده ، روی این دکمه کلیک کنید. بدون این مراحل ، نامه ارسال نمی شود یا به درستی به سیستم شما تحویل داده می شود.
+
+opts_title=گزینه های QMail
+opts_me=نام میزبان محلی
+opts_helo=نام میزبان برای SMTP HELO
+opts_toconnect=پایان زمان اتصال SMTP
+opts_secs=ثانیه
+opts_toremote=پایان پاسخ SMTP
+opts_bytes=حداکثر اندازه پیام
+opts_unlimited=نامحدود
+opts_timeout=زمانبندی داده ورودی SMTP
+opts_localip=نام میزبان برای ایمیل به آدرس IP محلی
+opts_greet=پیام تبریک SMTP
+opts_err=گزینه های QMail ذخیره نشد
+opts_eme=نام میزبان محلی نامعتبر است
+opts_etoconnect=زمان پایان اتصال SMTP نامعتبر است
+opts_etoremote=پایان نامه پاسخ خروجی SMTP نامعتبر است
+opts_ebytes=حداکثر اندازه پیام نامعتبر است
+opts_etimeout=پایان داده های ورودی SMTP نامعتبر است
+opts_elocalip=نام میزبان آدرس IP نامعتبر است
+
+aliases_title=نام مستعارهای ایمیل
+aliases_addr=نشانی
+aliases_to=نام مستعار برای ..
+aliases_type1=آدرس 1
+aliases_type2=فهرست نامه$1
+aliases_type3=پرونده نامه$1
+aliases_type4=برنامه$1
+aliases_type5=تأیید پرونده$1
+aliases_type6=پرونده فیلتر$1 را اعمال کنید
+aliases_none=هیچ یک
+aliases_return=لیست نام مستعار
+aliases_toomany=تعداد زیادی نام مستعار ایمیل برای سیستم در این صفحه نمایش داده شده است.
+aliases_go=یافتن نامهای مستعار:
+aliases_delete=نام مستعار انتخاب شده را حذف کنید
+
+aform_type0=هیچ یک
+aform_type1=آدرس ایمیل
+aform_type2=دایرکتوری نامه
+aform_type3=پرونده نامه
+aform_type4=خوراک به برنامه
+aform_type5=به طور خودکار از پرونده
+aform_type6=پرونده فیلتر را اعمال کنید
+aform_edit=ویرایش نام مستعار
+aform_create=نام مستعار را ایجاد کنید
+aform_name=نشانی
+aform_val=نام مستعار
+aform_afile=ویرایش ..
+aform_novirt=&lt;همه دامنه&gt;
+aform_return=نام مستعار
+
+asave_err=ذخیره نام مستعار انجام نشد
+asave_eaddr='$1' یک آدرس معتبر نیست
+asave_ealready=نام مستعار "$1" در حال حاضر وجود دارد
+asave_etype1='$1' یک آدرس ایمیل معتبر نیست
+asave_etype2='$1' یک فهرست نامه معتبر نیست
+asave_etype3='$1' نام خانوادگی معتبر نیست
+asave_etype4='$1' یک برنامه معتبر نیست یا وجود ندارد
+asave_etype5=پرونده تأیید خودکار "$1" معتبر نیست
+asave_etype4none=هیچ برنامه ای داده نشده
+asave_etype6=پرونده فیلتر "$1" معتبر نیست
+
+adelete_err=نام مستعار حذف نشد
+adelete_enone=هیچ یک انتخاب نشده است
+
+locals_title=دامنه های محلی
+locals_domains=دامنه های محلی برای این سرور
+locals_desc=Qmail برای ارسال به ایمیل کاربران محلی به دامنه ها و نامهای میزبان ذکر شده در جعبه متن در سمت چپ ، ایمیل را می پذیرد. اگر می خواهید سرور نامه شما چندین دامنه ایمیل را مدیریت کند ، همه آنها باید در این فرم ذکر شوند.
+locals_only=فقط نام میزبان محلی$1
+locals_sel=دامنه های ذکر شده در زیر ..
+
+rcpts_title=دامنه های پذیرفته شده
+rcpts_domains=دامنه های محلی و رله پذیرفته شده است
+rcpts_all=هر دامنه
+rcpts_sel=دامنه های ذکر شده در زیر ..
+rcpts_desc=Qmail فقط برای ارسال پیام یا ارسال محلی ، فقط نامه را به دامنه ها و نامهای میزبان درج شده در جعبه متن در سمت چپ ارسال می کند. همچنین می توانید کارتهای وحشی را که مطابق با همه میزبان ها در یک دامنه مانند <tt>.foo.com</tt> باشد وارد کنید. اگر می خواهید سرور پست الکترونیکی برای مشتری ایمیل خود را ارسال کند ، باید ایمیل را از هر دامنه بپذیرید.
+rcpts_domains2=دامنه های محلی و رله اضافی
+rcpts_desc2=اگر تعداد زیادی دامنه پذیرفته شده دارید ، کمتر مورد استفاده باید در این جعبه متن وارد شود. بطور کلی ، 50 دامنه مجاز شما باید در جعبه متن بالا وارد شود ، و بقیه در این مورد.
+
+bads_title=آدرس های رد شده
+bads_addresses=آدرس های ایمیل رد شده است
+bads_desc=QMail نامه را برای تحویل یا انتقال از هر یک از آدرس های ذکر شده در جعبه متن در سمت چپ ، که باید به عنوان <tt>نام کاربری @ نام دامنه</tt> وارد شود ، رد می کند. اگر می خواهید نامه را از کل دامنه رد کنید ، باید به عنوان <tt>domainname</tt> وارد شود.
+
+routes_title=مسیریابی دامنه
+routes_toomany=مسیرهای دامنه زیادی در سیستم شما برای نمایش در این صفحه وجود دارد.
+routes_go=مسیرهای دامنه مطابقت:
+routes_from=نامه برای دامنه
+routes_to=ارسال از طریق سرور
+routes_direct=تحویل مستقیم
+routes_defroute=همه نامه های ارسال شده دیگر را از طریق:
+routes_return=مسیرهای دامنه
+routes_delete=مسیرهای انتخاب شده دامنه را حذف کنید
+
+rform_edit=مسیر دامنه را ویرایش کنید
+rform_create=مسیر دامنه را ایجاد کنید
+rform_from=نامه برای میزبان یا دامنه
+rform_to=ارسال از طریق سرور SMTP
+rform_port=درگاه SMTP
+
+rsave_err=ذخیره مسیر دامنه انجام نشد
+rsave_efrom='$1' نام دامنه معتبری نیست
+rsave_eto='$1' یک سرور معتبر SMTP نیست
+rsave_eport='$1' یک شماره پورت معتبر نیست
+
+rdelete_err=مسیرهای دامنه حذف نشد
+
+percents_title=دامنه آدرس
+percents_domains=دامنه هایی که ٪ از آدرس را پشتیبانی می کنند
+percents_desc=در صورتی که <tt>seconddomain</tt> در کادر متن سمت چپ ذکر شده باشد ، QMail با آدرس در قالب <tt>user٪firstdomain@seconddomain</tt> ایمیل را می پذیرد. پیام های موجود در این قالب از طریق این سرور پست الکترونیکی به <tt>user@firstdomain</tt> منتقل می شود.
+
+virts_title=نگاشتهای مجازی
+virts_toomany=تعداد نمایشهای مجازی زیادی در سیستم شما برای نمایش در این صفحه وجود دارد.
+virts_go=تطبیق نگاشتهای مجازی را پیدا کنید:
+virts_from=ارسال نامه برای
+virts_prepend=پیشوند پیشوند
+virts_all=همه آدرسها
+virts_none=مجازی نیست
+virts_desc=نگاشتهای مجازی توسط QMail برای مدیریت ایمیل به دامنه های مختلف روی سرور شما ، با افزودن متن به قسمت کاربر آدرس ایمیل قبل از پردازش بیشتر ، استفاده می شود. می توانید با ایجاد نقشه جدید مجازی برای یک دامنه ، از آنها برای تنظیم دامنه های نامه مجازی استفاده کنید ، سپس با استفاده از صفحه <a href='$1'>Mail Aliases</a> برای ایجاد نام های مستعار در آن دامنه.
+virts_return=نگاشتهای مجازی
+virts_delete=نقشه های انتخاب شده مجازی را حذف کنید
+
+vform_edit=نقشه برداری مجازی را ویرایش کنید
+vform_create=نقشه برداری مجازی ایجاد کنید
+vform_from=نامه برای آدرس
+vform_all=هر آدرسی که با نقشه مجازی دیگری مطابقت ندارد
+vform_domain=آدرسهای دارای دامنه
+vform_user=نشانی
+vform_to=نام کاربری را آماده کنید
+vform_none=هیچ چی
+vform_prepend=پیشوند مشخص شده
+vform_auto=پیشوند به صورت خودکار انتخاب شده است
+
+vsave_err=ذخیره نقشه برداری مجازی انجام نشد
+vsave_edomain="$1" دامنه ایمیل معتبری نیست
+vsave_euser='$1' نام کاربری ایمیل معتبری نیست
+vsave_eprepend="$1" یک پیشوند نقشه برداری معتبر نیست
+vsave_eboth=شما نمی توانید هر "آدرس را منطبق با نقشه نویسی مجازی" و "هیچ چیز" انتخاب کنید.
+
+vdelete_err=حذف نقشه های مجازی انجام نشد
+
+stop_err=فرایند ارسال qmail دیگر اجرا نمی شود
+
+log_stop=فرآیندهای QMail را متوقف کرد
+log_start=فرآیندهای QMail را شروع کرد
+log_opts=گزینه های QMail تغییر یافته است
+log_alias_create=ایجاد نام مستعار$1
+log_alias_delete=نام مستعار$1 را حذف کنید
+log_alias_modify=نام مستعار$1
+log_delete_aliases=$1 نام مستعار حذف شد
+log_virt_create=نقشه برداری مجازی$1 ایجاد شد
+log_virt_delete=نقشه برداری مجازی$1 حذف شد
+log_virt_modify=نقشه برداری مجازی$1
+log_delete_virts=تم حذف تعيينات افتراضية $1
+log_virtall_create=نقشه برداری مجازی catchall ایجاد شده است
+log_virtall_delete=نقشه برداری مجازی catchall حذف شد
+log_virtall_modify=نقشه برداری مجازی catchall اصلاح شده
+log_locals=دامنه های محلی تغییر کرده است
+log_rcpts=دامنههای پذیرفته شده تغییر یافته است
+log_bads=آدرس های رد شده تغییر یافته است
+log_percents=دامنه ٪ آدرس تغییر یافت
+log_route_create=مسیر$1 ایجاد شد
+log_route_delete=مسیر برای$1 حذف شد
+log_route_modifed=مسیر اصلاح شده برای$1
+log_delete_routes=$1 مسیر حذف شد
+log_defroute=مسیر پیش فرض اصلاح شده
+log_assign_create=کاربر ایمیل ایجاد شده$1
+log_assign_delete=کاربر پست الکترونیکی$1 حذف شد
+log_assign_modifed=کاربر اصلاح شده ایمیل$1
+log_delete_assigns=$1 کاربر ایمیل حذف شد
+log_delmail=$1 پیام از$2 حذف شد
+log_movemail=پیام$1 از$2 به$3 منتقل شد
+log_send=نامه به$1 ارسال شد
+
+rfile_title=File Autoreply File را ویرایش کنید
+rfile_desc=از قسمت متن زیر استفاده کنید تا پیام autoreply را در$1 ویرایش کنید. این پیام ممکن است حاوی ماکروها $ SUBJECT ، $ FROM ، $ TO ، $ DATE و BODY $ باشد که با فعال شدن خودکار خودکار گسترش می یابد.
+rfile_desc2=همچنین می توانید هدرهای پستی را تنظیم کنید که پیش فرض های مورد استفاده در استفاده خودکار را با قرار دادن خط هایی مانند: <br><tt> از: foo@bar.com </tt><br> <tt>موضوع: در تعطیلات</tt> <br> در بالای پیام ، با یک خط خالی از بدن جدا شده است.
+rfile_efile=شما مجاز به ویرایش$1 نیستید.
+rfile_undo=واگرد تغییر
+rfile_replies=پاسخ ها را برای جلوگیری از حلقه های پست پیگیری می کنید؟
+rfile_none=نه
+rfile_file=بله ، با استفاده از پرونده log
+rfile_period=حداقل فاصله بین پاسخ ها
+rfile_default=پیش فرض (1 ساعت)
+rfile_secs=ثانیه
+rfile_ereplies=پاسخی برای پرونده پرونده ردیابی وجود ندارد
+rfile_eperiod=تعداد ثانیه از نامشخص یا نامعتبر است
+rfile_no_autoreply=autoreplies را ارسال نکنید
+rfile_from=از: آدرس برای پاسخ
+rfile_auto=خودکار (بر اساس آدرس گیرنده)
+rfile_efrom=گمشده از: آدرس
+rfile_fromdesc=آدرس از: آدرس باید همیشه در صورت امکان مشخص شود ، زیرا ممکن است روش خودکار قابل اعتماد نباشد.
+
+ffile_title=پرونده فیلتر را ویرایش کنید
+ffile_desc=برای تنظیم قوانین فیلتر در پرونده$1 از فرم زیر استفاده کنید.
+ffile_efile=شما مجاز به ویرایش$1 نیستید.
+ffile_line=اگر قسمت $1 $2$3 باشد ، به$4 بروید
+ffile_from=از جانب
+ffile_to=به
+ffile_subject=موضوع
+ffile_cc=CC
+ffile_body=بدن
+ffile_what0=مطابقت ندارد
+ffile_what1=مسابقات
+ffile_other=در غیر این صورت به$1 بروید
+ffile_err=ذخیره فیلتر فیلتر انجام نشد
+ffile_ematch=مسابقه وجود ندارد
+ffile_eaction=آدرس حمل و نقل وجود ندارد
+
+queue_title=صف نامه
+queue_count=$1 پیام
+queue_none=هیچ پیام پستی در حال حاضر برای تحویل صف نشده است
+queue_id=شناسه نامه
+queue_date=ارسال شد
+queue_from=از جانب
+queue_to=به
+queue_cc=سی سی
+queue_subject=موضوع
+queue_return=صف نامه
+queue_delete=پیام های انتخاب شده را حذف کنید
+queue_all=انتخاب همه
+queue_invert=انتخاب معکوس
+queue_refresh=صف ایمیل را تازه کنید
+queue_refreshdesc=بارگیری این صفحه برای نشان دادن وضعیت فعلی صف نامه.
+
+qview_title=پیام صف
+qview_desc=از پرونده$1
+qview_headers=هدرهای ایمیل
+qview_attach=پیوست ها
+
+assigns_title=تکالیف کاربر ایمیل
+assigns_return=تکالیف کاربر پست الکترونیکی
+assigns_toomany=تعداد کاربران ایمیل بیش از حد در سیستم شما برای نمایش در این صفحه وجود دارد.
+assigns_go=یافتن متناسب با کاربران ایمیل:
+assigns_address=نامه برای آدرس دهی
+assigns_user=کاربر یونیکس
+assigns_uid=UID
+assigns_gid=پیشنهاد
+assigns_home=دایرکتوری خانگی
+assigns_desc=تکالیف کاربر پست الکترونیکی به شما امکان می دهد صندوق پستی را برای کاربرانی ایجاد کنید که در لیست کاربران یونیکس تعریف نشده اند. هر وظیفه نامه ای را برای نام کاربری یا الگوی نام کاربری انتخاب شده ارسال می کند ، گویی که آن را به یک صندوق پستی کاربر یونیکس واقعی تحویل داده شده است.
+assigns_delete=کاربران منتخب ایمیل را حذف کنید
+
+sform_edit=ویرایش کاربر ایمیل
+sform_create=کاربر ایمیل ایجاد کنید
+sform_address=نام کاربری آدرس
+sform_mode0=نام کاربری دقیق
+sform_mode1=نام کاربری با شروع
+sform_user=کاربر یونیکس
+sform_uid=UID
+sform_gid=پیشنهاد
+sform_home=دایرکتوری خانگی
+
+ssave_err=ذخیره ایمیل کاربر انجام نشد
+ssave_eaddress=نام کاربری نامعتبر یا نامعتبر است
+ssave_euser=کاربر یونیکس وجود ندارد یا نامعتبر است
+ssave_euid=UID موجود نیست یا نامعتبر است
+ssave_egid=GID موجود یا نامعتبر است
+ssave_ehome=فهرست خانه موجود نیست یا نامعتبر است
+
+sdelete_err=کاربران ایمیل حذف نشدند
+
+delete_egone=پیام در صف دیگر وجود ندارد
+delete_ebogus=نام صف نامعتبر است
+
+boxes_title=صندوق های پستی کاربر
+boxes_user=کاربر
+boxes_size=اندازه صندوق پستی
+boxes_none=نامه ای نیست
+boxes_return=صندوق های پستی
+boxes_sent=نامه ارسال شده
+boxes_ecannot=شما مجاز به خواندن ایمیل نیستید
+boxes_toomany=کاربران زیادی در سیستم شما برای لیست کردن صندوق های پستی آنها وجود دارد.
+boxes_go=مشاهده نامه برای کاربر:
+
+mail_title=ایمیل کاربر
+mail_from=از جانب
+mail_date=تاریخ
+mail_subject=موضوع
+mail_to=به
+mail_cc=سی سی
+mail_bcc=بی سی سی
+mail_pri=اولویت
+mail_highest=مرتفع ترین
+mail_high=بالا
+mail_normal=معمولی
+mail_low=کم
+mail_lowest=پایین ترین
+mail_for=در 1
+mail_for2=برای کاربر$1
+mail_sent=در لیست نامه ارسال شده
+mail_size=اندازه
+mail_delete=حذف
+mail_compose=ساختن
+mail_return=صندوق پستی کاربر
+mail_pos=پیام$1 تا$2 از$3
+mail_none=این صندوق پستی هیچ پیامی ندارد
+mail_ecannot=شما مجاز به خواندن ایمیل این کاربر نیستید
+mail_all=انتخاب همه
+mail_invert=انتخاب معکوس
+mail_search=پیام ها را در کجا پیدا کنید
+mail_body=بدن
+mail_match=مسابقات
+mail_ok=جستجو کردن
+mail_nonefrom=هیچ یک
+mail_mark=علامت گذاری به عنوان:
+mail_mark0=خوانده نشده
+mail_mark1=خواندن
+mail_mark2=ویژه
+mail_forward=رو به جلو
+mail_rfc=از خط
+mail_move=انتقال به:
+mail_eexists=پیام دیگر وجود ندارد!
+
+view_title=ایمیل را بخوانید
+view_desc=پیام$1 به$2
+view_desc2=پیام$1 برای کاربر$2
+view_desc3=پیام$1
+view_sent=پیام$1 در لیست نامه های ارسال شده
+view_qdesc=پیام$1 صف شد
+view_headers=هدرهای ایمیل
+view_allheaders=مشاهده همه هدرها
+view_noheaders=عناوین اصلی را مشاهده کنید
+view_attach=پیوست ها
+view_reply=پاسخ
+view_reply2=پاسخ به همه
+view_enew=ویرایش به عنوان جدید
+view_forward=رو به جلو
+view_delete=حذف
+view_strip=پیوست ها را حذف کنید
+view_ecannot=شما مجاز به خواندن ایمیل این کاربر نیستید
+view_mark=علامت گذاری پیام به عنوان:
+view_mark0=خوانده نشده
+view_mark1=خواندن
+view_mark2=ویژه
+view_return=ایمیل اصلی
+view_sub=ایمیل پیوست شده
+
+compose_title=نوشتن ایمیل
+reply_title=پاسخ به ایمیل
+forward_title=ارسال ایمیل
+enew_title=ویرایش ایمیل
+reply_headers=هدرهای ایمیل
+reply_attach=پیوست های ارسال شده
+reply_mailforward=پیام های ارسال شده
+reply_attach2=پیوست های مشتری و سرور
+reply_send=ارسال ایمیل
+reply_ecannot=شما مجاز به ارسال نامه به عنوان این کاربر نیستید
+
+send_err=ارسال نامه انجام نشد
+send_eto=برای آدرس دهی وجود ندارد
+send_efrom=آدرس موجود نیست
+send_title=پیام فرستاده شد
+send_ok=نامه با موفقیت به$1 ارسال شد
+send_ecannot=شما مجاز به ارسال نامه به عنوان این کاربر نیستید
+send_esmtp=دستور SMTP $1 انجام نشد :$2
+send_efile=پرونده پیوست $1 وجود ندارد
+send_eattach=پیوست ها نمی توانند بیش از اندازه 1 kB در اندازه داشته باشند.
+send_eperms=کاربر$1 نمی تواند$2 را بخواند
+send_eperms2=شما مجاز به ارسال پرونده$1 نیستید
+send_epath=Sendmail اجرایی$1 وجود ندارد.
+
+delete_title=ایمیل را حذف کنید
+delete_rusure=آیا مطمئن هستید که می خواهید$1 پیام انتخاب شده را از$2 حذف کنید؟ این ممکن است مدتی طول بکشد تا یک پرونده نامه پستی بزرگ باشد. تا زمانی که حذف حذف نشده است ، دیگر اقدامات دیگری نباید انجام شود.
+delete_rusure2=آیا مطمئن هستید که می خواهید این پیام را از$1 حذف کنید؟ این ممکن است مدتی طول بکشد تا یک پرونده نامه پستی بزرگ باشد. تا زمانی که حذف حذف نشده است ، دیگر اقدامات دیگری نباید انجام شود.
+delete_ok=اکنون حذف کنید
+delete_ecannot=اکنون مجاز به حذف نامه از این کاربر هستید
+delete_enone=هیچ پستی برای حذف انتخاب نشده است
+delete_emnone=هیچ نامه ای برای علامت گذاری انتخاب نشده است
+delete_nobutton=روی دکمه ای کلیک نشد
+
+search_title=نتایج جستجو
+search_ecannot=شما مجاز به جستجوی ایمیل این کاربر نیستید
+search_ematch=شما باید متن را وارد کنید تا با آن مطابقت داشته باشید.
+search_efield=شما باید یک نوع جستجو را انتخاب کنید.
+search_none=پیامی یافت نشد
+search_results2=$1 پیام ایمیل مطابقت با$2 ..
+search_results3=$1 پیام پستی با$2 مطابقت ندارد.
+
+match_from=از: مسابقات
+match_subject=موضوع: مسابقات
+match_to=به: مسابقات
+match_cc=سی سی: مسابقات
+match_date=تاریخ: مسابقات
+match_body=مسابقات بدن
+match_size=اندازه بیشتر از
+match_headers=هدرها مطابقت دارند
+match_=-----------------
+match_!from=از: مطابقت ندارد
+match_!subject=موضوع: مطابقت ندارد
+match_!to=به: مطابقت ندارد
+match_!cc=سی سی: مطابقت ندارد
+match_!date=تاریخ: مطابقت ندارد
+match_!body=بدن مطابقت ندارد
+match_!size=اندازه کمتر از
+match_!headers=هدرها مطابقت ندارند
+
+delq_titles=حذف پیام ها
+delq_rusure=آیا مطمئن هستید که می خواهید$1 پیام های منتهی به صف را حذف کنید؟
+delq_confirm=پیام ها را حذف کنید

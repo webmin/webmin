@@ -1,0 +1,3 @@
+name_el=IPsec
+desc_el=IPsec VPN Configuration
+longdesc_el=Ρυθμίστε έναν υπολογιστή-πελάτη ή έναν διακομιστή για ένα VPN IPsec χρησιμοποιώντας το FreeSWAN.

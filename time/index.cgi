@@ -208,7 +208,7 @@ my %assoc_month = ( "Jan", $text{ 'month_1' }, "Feb", $text{ 'month_2' }, "Mar",
 my $rv = &ui_table_start($label, "width=100%", 6);
 if (!$ro) {
 	$rv .= &ui_table_row($text{'date'},
-	    &ui_select("date", $src{'date'}, [ 1 .. 31 ]));
+	    &ui_select("date", int($src{'date'}), [ 1 .. 31 ]));
 	$rv .= &ui_table_row($text{'month'},
 	    &ui_select("month",
 		       &zeropad(&month_to_number($src{'month'})+1, 2),

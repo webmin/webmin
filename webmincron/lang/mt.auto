@@ -1,0 +1,20 @@
+edit_mins=Minuti
+edit_hours=Sigħat
+edit_days=Jiem
+edit_months=Xhur
+edit_weekdays=Ferjali matul il-ġimgħa
+edit_all=Kollha
+edit_selected=Magħżula ..
+edit_run=Ħaddem Issa
+edit_clone=Xogħol klonu
+edit_return=xogħol cron
+edit_special1=Skeda sempliċi ..
+edit_special0=Ħinijiet u dati magħżula hawn taħt ..
+edit_special_hourly=Kull siegħa
+edit_special_daily=Kuljum (f'nofsillejl)
+edit_special_weekly=Kull ġimgħa (il-Ħadd)
+edit_special_monthly=Kull xahar (l-1)
+edit_special_yearly=Kull sena (fl-1 ta 'Jan)
+
+log_success=Irnexxa b'suċċess <tt>$2</tt> f '<tt>$1</tt>
+log_failure=Ma rnexxiex jaħdem <tt>$2</tt> f '<tt>$1</tt> : $3 

@@ -1,0 +1,46 @@
+index_title=MIMEタイププログラム
+index_none=MIMEタイプハンドラプログラムはまだ定義されていません。
+index_add=新しいMIMEタイプのプログラムを追加します。
+index_type=MIMEタイプ
+index_program=ハンドラープログラム
+index_cmt=説明
+index_delete=選択を削除します
+index_disable=選択を無効にする
+index_enable=選択を有効にする
+index_enabled=有効にしましたか？
+index_return=プログラムのリスト
+
+edit_title1=MIMEタイププログラムの作成
+edit_title2=MIMEタイププログラムの編集
+edit_header=MIMEタイプハンドラプログラムの詳細
+edit_type=MIMEタイプ
+edit_enabled=有効にしましたか？
+edit_program=ハンドラープログラム
+edit_cmt=説明
+edit_egone=プログラムはもう存在しません！
+edit_test=テストコマンド
+edit_none=なし（常にプログラムを使用）
+edit_term=端末に出力を表示しますか？
+edit_copious=大量の出力を生成しますか？
+edit_desc=MIMEタイプの説明
+
+save_err=MIMEタイププログラムを保存できませんでした
+save_etype=MIMEタイプが見つからないか無効です
+save_eprogram=ハンドラープログラムがありません
+save_eclash=入力されたMIMEタイプの有効なプログラムは既に存在します
+save_etest=テストコマンドが見つからないか無効です
+save_edesc=無効なMIMEタイプの説明
+
+delete_err=MIMEタイプのプログラムを削除できませんでした
+disable_err=MIMEタイプのプログラムを無効にできませんでした
+disable_eclash=$1の無効なMIMEタイププログラムは既に存在します
+enable_err=MIMEタイプのプログラムを有効にできませんでした
+enable_eclash=$1の有効なMIMEタイププログラムは既に存在します
+delete_enone=何も選択されていません
+
+log_delete_mailcap=$1のMIMEタイププログラムを削除します
+log_create_mailcap=$1のMIMEタイププログラムを作成しました
+log_modify_mailcap=$1の変更されたMIMEタイププログラム
+log_delete_mailcaps=$1 MIMEタイプのプログラムを削除しました
+log_disable_mailcaps=$1 MIMEタイプのプログラムを無効にしました
+log_enable_mailcaps=有効な $1 MIMEタイププログラム

@@ -1,21 +1,26 @@
-edit_compress=Komprimova» staré súbory záznamov?
-edit_create=Znovuvytvori» súbory záznamov po archivácii?
-edit_createno=Nie, nevytvára» znovu
-edit_createsame=Áno, s pôvodnımi právami
-edit_delaycompress=Odlo¾i» kompresiu a¾ do ïaµ¹ieho spustenia archivácie?
-index_notset=Nenastaven0
-index_period=Èastos» archivácie
-index_post=Príkaz po archivácii
-index_return=Zoznam záznamovıch súborov
-index_sched=Upravi» èasovı plán
-index_title=Archivácia systémovıch záznamov
+index_title=ArchivÃ¡cia systÃ©movÃ½ch zÃ¡znamov
 index_version=Logrotate verzia $1
-log_create=Pridaná archivácia pre súbor záznamov $1
-log_create_sched=Vytvorená cron úloha pre archiváciu záznamov
-log_global=Upravené globálne mo¾nosti
+index_period=ÄŒastosÅ¥ archivÃ¡cie
+index_post=PrÃ­kaz po archivÃ¡cii
+index_sched=UpraviÅ¥ ÄasovÃ½ plÃ¡n
+index_notset=Nenastaven0
+index_return=Zoznam zÃ¡znamovÃ½ch sÃºborov
+
 period_daily=Denne
-period_monthly=Mesaène
+period_weekly=TÃ½Å¾denne
+period_monthly=MesaÄne
 period_never=Nikdy
-period_weekly=Tı¾denne
-save_err=Zlyhalo ulo¾enie záznamov
-sched_save=Aktualizova» úlohu v crone
+
+edit_compress=KomprimovaÅ¥ starÃ© sÃºbory zÃ¡znamov?
+edit_delaycompress=OdloÅ¾iÅ¥ kompresiu aÅ¾ do ÄaÄ¾Å¡ieho spustenia archivÃ¡cie?
+edit_create=ZnovuvytvoriÅ¥ sÃºbory zÃ¡znamov po archivÃ¡cii?
+edit_createno=Nie, nevytvÃ¡raÅ¥ znovu
+edit_createsame=Ãno, s pÃ´vodnÃ½mi prÃ¡vami
+
+save_err=Zlyhalo uloÅ¾enie zÃ¡znamov
+
+log_create_sched=VytvorenÃ¡ cron Ãºloha pre archivÃ¡ciu zÃ¡znamov
+log_global=UpravenÃ© globÃ¡lne moÅ¾nosti
+log_create=PridanÃ¡ archivÃ¡cia pre sÃºbor zÃ¡znamov $1
+
+sched_save=AktualizovaÅ¥ Ãºlohu v crone

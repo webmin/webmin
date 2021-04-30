@@ -50,5 +50,3 @@ apply_err=Failed to apply configuration
 
 delete_err=Failed to delete processes
 delete_enone=None selected
-
-__norefs=1

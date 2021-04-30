@@ -1,0 +1,200 @@
+index_title=MON Diensmonitor
+index_return=MON-indeks
+index_edir=Die MON-gids $1 bestaan nie. Miskien is MON nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
+mon_global_title=Globale variëteitkonfigurasie
+mon_conf_title=Basiese konfigurasie
+mon_status_title=Bedryfsstatus
+hostgroups_title=MON-konfigurasie-gasheergroepe
+services_title=Kykgroepe-diensdefinisies
+
+head_hostgroups=Gasheer groepe en dienste
+head_groups=Gasheergroep Naam
+head_members=Gasheer groeplede
+head_services=Gasheer groepdienste om na te kyk
+head_service=Diens om te kyk
+head_param=Diensparameters
+head_watch=Kyk die groep?
+head_monauth=Verskaf verifikasie vir MONCMD
+head_usr=Gebruikersnaam
+head_pass=wagwoord
+head_mand=(Parameters in "RODE KLEUR" is verpligtend)
+
+err_nomon=pakket 'mon' is nie op die stelsel geïnstalleer nie
+err_nomonconf=Die MON-konfigurasielêer $1 is nie op u stelsel gevind nie. Miskien is MON nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
+err_nowatch=Geen waggroepe gekies nie. Kies ten minste een waggroep om voort te gaan.
+err_noserv=Geen dienste gekies vir die horlosiegroep nie
+err_nomemb=Geen gashere/lede is gekies vir die horlosiegroep nie
+err_monrun=MON loop nie op die gasheermasjien nie. Begin MON.
+stop_err=Kon nie MON stop nie
+stop_epid=Nie meer hardloop nie
+start_err=Kon nie MON begin nie
+restart_err=Kon nie MON herbegin nie
+restart_epid=Kon nie PID kry nie
+
+other=Ander (ruimte geskei)
+next=volgende
+mon_stat=MAAN-status
+mon_off=MON-dienste nie begin nie
+mon_start=Begin MON-dienste
+mon_stop=Stop MON dienste
+mon_restart=Herbegin MON-dienste
+mon_startdesc=Klik op hierdie knoppie om die MON-bediener te begin. Totdat dit begin word, sal geen gekonfigureerde monitering gedoen word nie.
+mon_stopdesc=Klik op hierdie knoppie om die MON-bediener te stop. As gestop word, sal die gekonfigureerde monitering stop.
+mon_restartdesc=Klik op hierdie knoppie om die huidige MON-opstelling toe te pas deur die bedienerproses weer te begin.
+line=(een op elke reël)
+save_apply=Stoor en pas toe
+watch=Watchgroup
+members=lede
+def_perargs=wd {Sat-Sun}
+
+def_desc=beskrywing
+def_inter=interval
+def_mon=monitor
+def_dep=dpend
+def_per=tydperk
+def_alert=waarskuwing
+def_alertevr=alertevery
+def_alertaft=alertafter
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=trapduration
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=Gasheer groepe
+groups_group=Groepnaam
+groups_members=Lede gasheer
+
+watches_title=Kyklyste
+watches_group=Kyk groep
+watches_services=Dienste wat dopgehou word
+watches_sadd=Voeg diens by ..
+watches_add=Voeg kyklys vir groep by :
+watches_return=dophoulyste
+watches_none=Geen kyklyste is nog gedefinieër nie.
+
+global_title=Wêreldwye opsies
+global_header=Globale MON-opstellingsopsies
+global_maxprocs=Maksimum MON-prosesse
+global_histlength=Lengte van die gebeurtenisgeskiedenis
+global_alertdir=Gids vir waarskuwingsprogramme
+global_mondir=Monitor programme gids
+global_authtype=Verifikasie Tipe
+global_authtype_=verstek
+global_authtype_getpwnam=Stelseloproepe
+global_authtype_userfile=MON gebruikers lêer
+global_authtype_shadow=Skaduwelêer
+global_userfile=MON-gebruiker se lêer
+global_emaxprocs=Ontbrekende of ongeldige aantal MON-prosesse
+global_ehistlength=Die lengte van die gebeurtenisgeskiedenis ontbreek of ongeldig
+global_ealertdir=Gids vir ontbrekende of ongeldige programme
+global_emondir=Gids vir ontbrekende of ongeldige monitorprogramme
+global_euserfile=Lêer van MON-gebruikers ontbreek
+
+watch_title=Wysigingslys wysig
+watch_header=Besonderhede van gasheergroephorlosies
+watch_group=Gasheer groep om te kyk
+watch_services=Dienste wat dopgehou word
+watch_service=Diensnaam
+watch_monitor=Monitor om te gebruik
+watch_interval=Gaan elkeen na
+watch_periods=Moniteringstydperke
+
+service_title=Voeg diens by
+service_title2=Redigeer diens
+service_header=Diensbesonderhede gekyk
+service_name=Naam van diens
+service_interval=Gaan elkeen na
+service_desc=beskrywing
+service_units_s=sekondes
+service_units_m=minute
+service_units_h=ure
+service_units_d=dae
+service_units_w=weke
+service_monitor=Met behulp van monitor
+service_mon1=Standaard monitor
+service_mon0=Ander monitor ..
+service_args=Monitor parameters
+service_period=Moniteringstydperk $1 
+service_days=Dae om na te gaan
+service_hours=Ure om na te gaan
+service_all=Almal
+service_pstr=Tydspesifikasie
+service_new=Nuwe moniteringstydperk
+service_alerts=Waarskuwings vir periode
+service_alert=alert
+service_atype=Hardloop wanneer
+service_atype_alert=Diens gaan af
+service_atype_upalert=Dienste kom op
+service_atype_startupalert=MON begin
+service_aargs=Bykomende parameters
+service_every=Stuur waarskuwing
+service_every_def=Elke keer as monitor uitgevoer word
+service_every_time=elke
+service_num=Maksimum waarskuwings om te stuur
+service_unlimited=Unlimited
+service_after=Mislukkings voor waarskuwing
+service_immediate=onmiddellik
+service_after_num=Na $1 mislukkings
+service_aftertime=Binne tydinterval
+service_newperiod=Voeg 'n nuwe periode by
+service_delperiod=Skrap hierdie periode
+service_err=Kon nie die diens stoor nie
+service_ename=Diensnaam ontbreek of ongeldig
+service_einterval=Ontbrekende of ongeldige tjekinterval
+service_eother=Ontbrekende of ongeldige monitor
+service_ehour=Ontbrekende of ongeldige uur vir periode $1 (moet om 09:00 of 17:00 wees)
+service_eperiod=Geen dae of ure gespesifiseer vir periode $1 nie
+service_eevery=Ontbrekende of ongeldige dienswaarskuwingsinterval
+service_eafter=Ontbrekende of ongeldige aantal foute voor waarskuwing
+service_enum=Maksimum waarskuwings ontbreek of ongeldig om gestuur te word
+service_epstr=Spesifisering van periode ontbreek
+service_known0=<tt>Tyd::Periode</tt> string
+service_known1=Gespesifiseerde dae en ure
+service_known2=Gedefinieerde periode
+
+status_title=MAAN-status
+status_ecgi=Die MON-status CGI-program $1 bestaan nie. Miskien is dit nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
+status_eperl=Die CGI-program vir die MON-status vereis die $1 perl-module. <a href='$2'>Klik hier</a> om dit direk vanaf CPAN te installeer.
+status_esame=Die MON-status CGI-program $1 is op die <tt>mon.cgi</tt> -skrip in hierdie Webmin-module ingestel, nie op die CGI-program wat met MON gelei word nie. Pas die <a href='$2'>module-opstelling</a> aan om die regte pad te gebruik.
+
+users_title=MON gebruikers
+users_etype=Die MON-gebruikerslys kan nie geredigeer word nie, omdat MON nie tans opgestel is om dit vir verifikasie op die <a href='$1'>Global Options</a> -bladsy te gebruik nie.
+users_header=MON-gebruikers in $1 toegelaat
+users_nousers=Geen MON-gebruikers is in $1 gedefinieer nie.
+users_add=Skep 'n nuwe gebruiker.
+users_return=MON gebruikers lys
+
+user_create=Skep MON-gebruiker
+user_edit=Wysig MON-gebruiker
+user_header=MON gebruikersbesonderhede
+user_user=Gebruikersnaam
+user_pass=wagwoord
+user_leave=Laat onveranderd
+user_err=Kon nie gebruiker stoor nie
+user_euser=Gebruikernaam ontbreek of ongeldig
+user_esame='N Gebruiker met dieselfde naam bestaan reeds
+
+auth_title=Kliëntopdragte
+auth_desc=Op hierdie bladsy kan u bepaal watter MON-opdragte uitgevoer kan word deur watter gebruikers wanneer u die kliëntprogramme gebruik.
+auth_cmd=MON opdrag
+auth_users=Toegestane gebruikers
+auth_none=niemand
+auth_all=almal
+auth_sel=Slegs gebruikers
+auth_err=Kon nie kliëntopdragte stoor nie
+auth_eusers=Geen gebruikers voer vir opdrag $1 in nie
+
+periods_title=Gedefinieerde periodes
+periods_period=Periode naam
+periods_times=Dae en tye
+periods_alldays=Alle dae
+periods_allhours=Alle ure
+periods_err=Kon nie gedefinieerde periodes stoor nie
+periods_ename='$1' is nie 'n geldige periodenaam nie
+periods_ehour=Ontbrekende of ongeldige uur vir periode $1 (moet om 09:00 of 17:00 wees)
+
+show_title=Bedryfsstatus
+show_ecgi=Die MON-statusprogram $1 bestaan nie. Miskien is dit nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.

@@ -1,0 +1,120 @@
+index_title=Jabber IM serveris
+index_econfig=Jabber konfigurācijas fails $1 neeksistē. Vai nu Jabber nav instalēts, vai arī jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_edir=Jabber bāzes direktorija $1 neeksistē. Vai nu Jabber nav instalēts, vai arī jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_emodules=Perl moduļi $1 un $2, kas Webmin nepieciešami Jabber XML konfigurācijas apstrādei, nav instalēti. <a href='$3'>Noklikšķiniet šeit</a>, lai instalētu tos tieši no CPAN.
+index_emodule=Perl modulis $1, kas Webmin nepieciešams Jabber XML konfigurācijas apstrādei, nav instalēts. <a href='$2'>Noklikšķiniet šeit</a>, lai instalētu to tieši no CPAN.
+index_expat=Pirms mēģināt instalēt Perl moduļus, pārliecinieties, vai esat instalējis Expat C bibliotēku un galvenes, jo tie ir atkarīgi no tā un neizdosies, ja tas nebūs pieejams.
+index_eparse=Perl modulis $1 nevarēja parsēt jūsu Jabber konfigurācijas failu : $2 
+index_ejabberd=Jabber servera programma $1 jūsu sistēmā netika atrasta. Vai nu Jabber nav instalēts, vai arī jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_eversion=Webmin atbalsta tikai Jabber versiju $2, bet komanda $3 ziņoja par šādu versijas informāciju : $1 
+index_eversion2=Webmin atbalsta tikai Jabber versijas zem $2, bet komanda $3 ziņoja par šādu versijas informāciju : $1 
+index_start=Startējiet Jabber Server
+index_startmsg=Noklikšķiniet uz šīs pogas, lai savā sistēmā startētu Jabber serveri. Kamēr tā nav sākta, neviens tērzēšanas klients to nevarēs izmantot.
+index_stop=Apturiet Jabber Server
+index_stopmsg=Noklikšķiniet uz šīs pogas, lai apturētu Jabber servera darbību jūsu sistēmā. Neviens tūlītējās ziņojumapmaiņas klients to nevarēs izmantot, kad tas tiks apturēts.
+index_restart=Lietot izmaiņas
+index_restartmsg=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējo konfigurāciju, apstādinot un pēc tam atkārtoti palaižot Jabber serveri.
+index_comments=Brīdinājums - jūsu Jabber konfigurācijas failā $1 ir komentāri, kas tiks noņemti, ja, izmantojot šo moduli, tiks veiktas kādas konfigurācijas izmaiņas.
+index_return=Jabber izvēlne
+index_version=Jabber versija $1 
+
+general_title=Vispārīgās iespējas
+general_header=Globālās Jabber servera iespējas
+general_host=Jūsu servera resursdators
+general_elog=Kļūdu žurnāla fails
+general_elogfmt=Kļūdu žurnāla formāts
+general_rlog=Piekļuves žurnāla failam
+general_rlogfmt=Piekļuves žurnāla formāts
+general_pidfile=Procesa ID fails
+general_err=Neizdevās saglabāt vispārējās iespējas
+general_ehost=Trūkst vai nav derīgs servera resursdators
+general_eelog=Trūkst vai nav derīgs kļūdu žurnāla fails
+general_eelogfmt=Trūkst kļūdu žurnāla formāta
+general_erlog=Trūkst vai nav derīgs satiksmes žurnāla fails
+general_erlogfmt=Trūkst satiksmes žurnāla formāta
+general_epidfile=Trūkst vai nav derīgs procesa ID fails
+
+messages_title=Ziņas
+messages_header=Jabber servera ziņojums klientiem
+messages_wsubject=Sveiciena ziņojuma tēma
+messages_wbody=Sveiciena ziņojuma pamatteksts
+messages_vcard=Servera vCard
+messages_rinstr=Reģistrācijas instrukcijas
+messages_rnotify=Vai paziņot administratoram par reģistrāciju?
+messages_rfields=Obligāti reģistrācijas lauki
+messages_vcard2jud=Vai sūtīt vCard uz Jabber lietotāju direktoriju?
+messages_err=Neizdevās saglabāt ziņojumus
+messages_evcard=Nederīgs vCard XML : $1 
+messages_etag=Servera vCard XML nesākas ar &lt;vCard&gt;
+
+modules_title=Jabber moduļi
+modules_desc=Zemāk uzskaitītie moduļi tiek izmantoti, lai apstrādātu ziņojumus, ko saņem Jabber sesiju pārvaldnieks. Jums vajadzētu mainīt šo sarakstu tikai tad, ja zināt, ko darāt.
+modules_header=Jabber servera sesiju pārvaldnieka moduļi
+modules_mod=Moduļa nosaukums
+modules_so=Kopīga bibliotēka
+modules_err=Neizdevās saglabāt Jabber moduļus
+modules_emod='$1' nav derīgs moduļa nosaukums
+modules_eso=Koplietotā bibliotēka '$1' neeksistē
+
+karma_title=Karmas satiksmes kontrole
+karma_header=Satiksmes ātruma kontroles iespējas
+karma_rate=Pārmērīga savienojuma apstrāde
+karma_rate_def=Invalīds
+karma_rate_sel=Bloķējiet klientu uz $2 sekundēm pēc $1 savienojumiem
+karma_mode=Karmas režīms
+karma_none=Bez robežām
+karma_low=Zemi satiksmes ierobežojumi
+karma_medium=Vidēja līmeņa satiksmes ierobežojumi
+karma_high=Augsti satiksmes ierobežojumi
+karma_sel=Izmantojiet zemāk atlasītos iestatījumus.
+karma_heartbeat=Perioda garums sekundēs (<tt>sirdsdarbība</tt>)
+karma_init=Inicializācijas periodi (<tt>init</tt>)
+karma_max=Karmas maksimums (<tt>max</tt>)
+karma_inc=Karmas pieaugums (<tt>inc</tt>)
+karma_dec=Karmas dekrēts (<tt>dec</tt>)
+karma_penalty=Soda periodi (<tt>sods</tt>)
+karma_restore=Pārraušanas periodi (<tt>atjaunot</tt>)
+karma_err=Neizdevās saglabāt karmas iespējas
+karma_eheartbeat=Trūkst vai nav derīgs laika posms
+karma_einit=Trūkst vai nav derīgi inicializācijas periodi
+karma_emax=Trūkst vai nav derīga karma
+karma_einc=Trūkst vai nav derīgs karmas pieaugums
+karma_edec=Trūkst vai nav spēkā karmas dekrēts
+karma_epenalty=Trūkst vai nav spēkā soda termiņi
+karma_erestore=Trūkst vai nav derīgi atjaunošanas periodi
+karma_epoints=Trūkst vai nav derīgs savienojumu skaits
+karma_etime=Trūkst laika vai tas nav derīgs
+
+ips_title=IP piekļuves kontrole
+ips_header=Jabber servera IP piekļuves kontrole
+ips_allow=Atļautie klienta IP
+ips_all=Visas adreses
+ips_deny=Noraidīti klienta IP
+ips_none=Nav
+ips_sel=Norādītās adreses/tīkla maskas ..
+ips_err=Neizdevās saglabāt IP piekļuves kontroli
+ips_eaddr=“$1” nav derīga IP adrese vai IP adrese/tīkla maska
+
+file_title=Rediģēt konfigurācijas failu
+file_desc=Izmantojiet zemāk esošo formu, lai tieši rediģētu Jabber konfigurācijas failu. Tas jādara tikai tad, ja saprotat XML konfigurācijas formātu.
+file_header=Rediģēt Jabber konfigurācijas failu
+file_err=Neizdevās saglabāt konfigurācijas failu
+
+admin_title=Administratīvie lietotāji
+admin_header=Servera administrēšanas lietotāji
+admin_read=Lasīt piekļuves administratorus
+admin_write=Rakstiet piekļuves administratorus
+admin_reply=Automātiski atbildēt uz administratora ziņojumiem?
+admin_rsubject=Automātiski atbildīgs priekšmets
+admin_rbody=Automātiskas atbildes ziņojums
+
+filter_title=Lietotāju filtri
+filter_header=Lietotāju filtru atļaujas
+filter_max=Maksimālie filtru noteikumi
+filter_conds=Atļautie filtra apstākļi
+filter_acts=Atļautās filtra darbības
+
+restart_err=Neizdevās piemērot izmaiņas
+stop_err=Neizdevās apturēt Džabberu
+stop_epid=Neizdevās atrast Jabber procesu
+start_err=Neizdevās palaist Jabber

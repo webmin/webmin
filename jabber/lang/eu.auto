@@ -1,0 +1,120 @@
+index_title=Jabber IM zerbitzaria
+index_econfig=$1 Jabber konfigurazio fitxategia ez da existitzen. Jabber ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_edir=$1 Jabber base direktorioa ez da existitzen. Jabber ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_emodules=Ez dira instalatuta Jabber-en XML konfigurazioa kudeatzeko Webmin-ek behar dituzten $1 eta $2 Perl moduluak. <a href='$3'>Egin klik hemen</a> zuzenean instalatzeko CPAN-tik.
+index_emodule=Ez dago instalatuta Webmin-ek Jabber-en XML konfigurazioa kudeatzeko behar duen $1 Perl modulua. <a href='$2'>Egin klik hemen</a> zuzenean CPAN-tik instalatzeko.
+index_expat=Ziurtatu Expat C liburutegia eta goiburuak instalatuta dituzula Perl moduluak instalatzen saiatu aurretik, haien mende baitago eta huts egingo ez balego.
+index_eparse=$1 perl moduluak ezin izan du Jabber konfigurazio fitxategia analizatu : $2 
+index_ejabberd=$1 Jabber zerbitzariaren programa ez da aurkitu zure sisteman. Jabber ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_eversion=Webmin-ek Jabber $2 bertsioa bakarrik onartzen du, baina $3 komandoak hurrengo bertsioaren informazioa eman zuen : $1 
+index_eversion2=Webmin-ek Jabber bertsioak $2 azpitik onartzen ditu, baina $3 komandoak honako bertsioaren informazioa eman zuen : $1 
+index_start=Hasi Jabber Server
+index_startmsg=Egin klik botoi honetan Jabber zerbitzaria zure sisteman abiarazteko. Hasi arte, ez da berehalako mezularitzako bezeroek erabili ahal izango.
+index_stop=Utzi Jabber Server
+index_stopmsg=Egin klik botoi honetan zure sisteman Jabber zerbitzaria martxan jartzeko. Ez da berehalako mezularitzako bezeroek erabiltzerik geldituko.
+index_restart=Aplikatu aldaketak
+index_restartmsg=Egin klik botoi honetan uneko konfigurazioa geldiarazteko eta ondoren Jabber zerbitzaria berriro martxan jartzeko.
+index_comments=Abisua: zure Jabber konfigurazio fitxategiak $1 du iruzkinak, eta ezabatu egingo dira konfigurazio aldaketa modulu hau erabiliz gero.
+index_return=Jabber menua
+index_version=Jabber $1 bertsioa
+
+general_title=Aukera Orokorrak
+general_header=Jabber zerbitzari globalaren aukerak
+general_host=Zure zerbitzariaren ostalariaren izena
+general_elog=Errorea erregistro fitxategia
+general_elogfmt=Akatsen erregistro formatua
+general_rlog=Sarbide-erregistroko fitxategira
+general_rlogfmt=Sarbide erregistro formatua
+general_pidfile=Prozesuaren ID fitxategia
+general_err=Aukera orokorrak gordetzean huts egin du
+general_ehost=Zerbitzari ostalariaren izen falta edo baliogabea
+general_eelog=Falta edo akatsen erregistro fitxategia falta da
+general_eelogfmt=Falta da akatsen erregistro formatua
+general_erlog=Falta edo trafiko erregistroaren fitxategi baliogabea
+general_erlogfmt=Trafikoko erregistroaren formatua falta da
+general_epidfile=Falta ID edo prozesua ID fitxategia falta
+
+messages_title=Mezuak
+messages_header=Jabber zerbitzariaren mezua bezeroentzat
+messages_wsubject=Ongi etorri mezuaren gaia
+messages_wbody=Ongietorri mezua gorputza
+messages_vcard=Zerbitzaria vCard
+messages_rinstr=Izena emateko argibideak
+messages_rnotify=Eman izena erregistratzean administratzailea?
+messages_rfields=Beharrezkoak diren erregistro-eremuak
+messages_vcard2jud=Bidali vCard Jabber erabiltzailearen direktoriora?
+messages_err=Huts egin du mezuak gordetzean
+messages_evcard=VCard XML baliogabea : $1 
+messages_etag=Server vCard XML ez da &lt;vCard&gt; ekin hasten
+
+modules_title=Jabber moduluak
+modules_desc=Jarraian agertzen diren moduluak Jabber saioko kudeatzaileak jasotako mezuak prozesatzeko erabiltzen dira. Zerrendan ari zaren hori badakizu soilik aldatu beharko zenuke zerrenda hau.
+modules_header=Jabber zerbitzariaren saio kudeatzailearen moduluak
+modules_mod=Moduluaren izena
+modules_so=Liburutegi partekatua
+modules_err=Huts egin du Jabber moduluak gordetzean
+modules_emod='$1' ez da baliozko moduluaren izena
+modules_eso="$1" liburutegi partekatua ez dago
+
+karma_title=Karma Trafiko Kontrola
+karma_header=Trafiko tasak kontrolatzeko aukerak
+karma_rate=Gehiegizko konexioen manipulazioa
+karma_rate_def=Desgaituta
+karma_rate_sel=Bezeroa blokeatu $2 segundotan $1 konexioen ondoren
+karma_mode=Karma modua
+karma_none=Mugarik ez
+karma_low=Zirkulazio mugak baxuak
+karma_medium=Trafiko ertaineko mugak
+karma_high=Zirkulazio mugak altuak
+karma_sel=Erabili azpian aukeratutako ezarpenak ..
+karma_heartbeat=Epearen luzera segundotan (<tt>taupadak</tt>)
+karma_init=Hasierako aldiak (<tt>init</tt>)
+karma_max=Karma maximoa (<tt>max</tt>)
+karma_inc=Karma gehikuntza (<tt>inc</tt>)
+karma_dec=Karmaren deklinabidea (<tt>dec</tt>)
+karma_penalty=Zigor-aldiak (<tt>zigorra</tt>)
+karma_restore=Leheneratzeko epeak (<tt>leheneratu</tt>)
+karma_err=Ezin izan da karma aukerak gorde
+karma_eheartbeat=Falta edo epe baliogabea
+karma_einit=Hasierako epeak falta edo baliogabeak
+karma_emax=Gehienezko karma falta edo baliogabea
+karma_einc=Karma gehikuntza falta edo baliogabea
+karma_edec=Falta den karmaren deklinabidea falta da edo
+karma_epenalty=Zigorraren epea falta edo baliogabea
+karma_erestore=Falta diren edo baliogabeko leheneratze epeak
+karma_epoints=Konexio kopurua falta edo baliogabea da
+karma_etime=Falta denbora edo baliogabea da
+
+ips_title=IP Sarbide Kontrola
+ips_header=Jabber zerbitzariaren IP sarbide kontrola
+ips_allow=Bezeroaren IPak baimendu
+ips_all=Helbide guztiak
+ips_deny=Bezeroaren IPak ukatu dira
+ips_none=Bat ere ez
+ips_sel=Zerrendatutako helbideak/netmasks ..
+ips_err=Huts egin du IP sarbide kontrola gordetzean
+ips_eaddr='$1' ez da baliozko IP helbide edo IP helbide/netmask
+
+file_title=Editatu Konfigurazio fitxategia
+file_desc=Erabili beheko formularioa Jabber konfigurazio fitxategia zuzenean editatzeko. XML konfigurazio formatua ulertzen baduzu bakarrik egin beharko da.
+file_header=Editatu Jabber konfigurazio fitxategia
+file_err=Ezin izan da konfiguratu fitxategia gordetzean
+
+admin_title=Erabiltzaile administratiboak
+admin_header=Zerbitzariaren administrazio erabiltzaileak
+admin_read=Irakurri sarbide administratzaileak
+admin_write=Idatzi sarbide administratzaileak
+admin_reply=Autoreply administratzaileentzako mezuak?
+admin_rsubject=Egite automatikoko gaia
+admin_rbody=Autoreply mezua
+
+filter_title=Erabiltzaile iragazkiak
+filter_header=Erabiltzaile iragazkien baimenak
+filter_max=Gehienezko iragazkiaren arauak
+filter_conds=Baimendu iragazkiaren baldintzak
+filter_acts=Baimendu iragazki ekintzak
+
+restart_err=Ezin izan dira aldaketak aplikatu
+stop_err=Huts egin du Jabber gelditzeko
+stop_epid=Ezin izan da Jabber prozesua aurkitu
+start_err=Huts egin du Jabber abiaraztean

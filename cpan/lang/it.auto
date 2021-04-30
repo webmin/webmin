@@ -1,0 +1,4 @@
+index_allmods2=Moduli mancanti utilizzati da Webmin
+index_wantmods=Moduli da installare
+
+download_fallback=Alcuni moduli non sono stati installati dai pacchetti, provando invece l'installazione dall'origine.

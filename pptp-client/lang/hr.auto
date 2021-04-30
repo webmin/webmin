@@ -1,0 +1,112 @@
+index_title=PPTP VPN klijent
+index_epptp=Program PPTP klijenta $1 nije pronađen u vašem sustavu. Možda nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
+index_eppp=Program PPP poslužitelja $1 nije instaliran na vašem sustavu. PPTP ovisi o njemu.
+index_eoptions=Globalna datoteka PPP PPP opcija $1 ne postoji. Ili je napravite ili prilagodite konfiguraciju <a href='$2'>modula</a> da biste koristili drugu datoteku ili je uopće nema.
+index_header=Definirani tuneli
+index_none=Još nisu definirani PPTP tuneli.
+index_tunnel=Tunel $1 
+index_add=Dodajte novi PPTP VPN tunel.
+index_conn=Povežite se s:
+index_pass=s opcionalnom lozinkom:
+index_conndesc=Kliknite ovaj gumb da biste povezali odabrani PPTP VPN tunel koristeći njegovu trenutnu konfiguraciju.
+index_disc=Prekini vezu s:
+index_discdesc=Kliknite ovaj gumb da biste odspojili odabrani trenutno aktivni tunel PPTP VPN i uklonili sve rute kroz njega.
+index_return=Popis tunela PPTP
+index_opts=Uređivanje Globalnih opcija PPP-a
+index_optsdesc=Kliknite ovaj gumb za uređivanje PPP opcija koje se primjenjuju na sve PPTP VPN tunele.
+index_version=PPPd verzija $1 
+index_boot=Povežite se pri pokretanju:
+index_noboot=&lt;Ne spajaj&gt;
+index_bootdesc=Promijenite ovu opciju za kontrolu da li je odabrana PPTP VPN veza pokrenuta u vrijeme dizanja ili ne.
+
+disc_err=Nije uspjelo prekidanje tunela
+disc_egone=Više nije aktivan
+disc_ekill=Ubijanje pppd postupka nije uspjelo
+disc_done=Tunel $1 uspješno je iskopčan.
+
+conn_err=Nije uspjelo spajanje tunela
+conn_egone=Tunel više ne postoji
+cone_ealready=Već je povezano
+conn_einvalid=Nedostaje IP adresa poslužitelja u konfiguracijskoj datoteci
+conn_title=Spajanje tunela
+conn_cmd=Uspostavljanje PPTP veze s naredbom $1 ..
+conn_ok=.. veza je uspješno aktivirana pomoću sučelja $1. Vaša je lokalna adresa $2, a udaljena adresa $3.
+conn_timeout=.. veza nije uspjela! Provjerite zapisnike u nastavku kako biste saznali zašto.
+conn_routes=Dodavanje ruta naredbama ..
+conn_mppe=MPPE protokol za VPN šifriranje zahtijeva PPP podršku demona i kernela. Međutim, gornje pogreške sugeriraju da jedan ili oba nisu dostupni u vašem sustavu. Ako PPTP poslužitelj ne zahtijeva MPPE, pokušajte isključiti sve opcije povezane s njim na stranici <a href='$1'>globalne opcije PPP</a>.
+
+edit_title1=Dodajte PPTP tunel
+edit_title2=Uređivanje PPTP tunela
+edit_header=Opcije tunela PPTP
+edit_name=Naziv tunela
+edit_server=Spajanje na poslužitelj
+edit_login=Prijavite se kao korisnik
+edit_same=Naziv glavnog računala
+edit_pass=Prijavite se lozinkom
+edit_remote=Ime poslužitelja
+edit_auto=Automatski
+edit_adddef=Dodati zadanu rutu?
+edit_def1=Preko drugog kraja
+edit_def2=Preko prolaza ..
+edit_deldef=Želite li izbrisati staru zadanu rutu?
+edit_routes=Rute koje treba dodati nakon povezivanja
+edit_type=Tip
+edit_type0=&nbsp;
+edit_type1=Mreža
+edit_type2=Jedan domaćin
+edit_net=Mreža ili domaćin
+edit_mask=Mrežna maska
+edit_gw=Preko prolaza
+edit_gw_def=Drugi kraj
+edit_unknown=Ostale naredbe <tt>route</tt>
+edit_file=Datoteka PPP opcija
+edit_none=nijedan
+edit_global=Standardna globalna datoteka
+edit_ofile=Druga datoteka ..
+
+save_err=Nije uspjelo spremanje tunela
+save_ename=Nedostaje naziv tunela
+save_eserver=Nedostaje ili nije važeći poslužitelj na koji bi se mogao povezati
+save_elogin=Nedostaje ili nevažeće ime za prijavu
+save_eremote=Nedostaje ili nevažeće ime udaljenog poslužitelja
+save_edef=Nedostaje ili nije važeći zadani gateway
+save_enet=Nevažeća mrežna adresa u ruti $1 
+save_emask=Nevažeća mrežna maska na ruti $1 
+save_egw=Nevažeći gateway za mrežu u ruti $1 
+save_ehost=Nevažeća IP adresa glavnog računala u ruti $1 
+save_emask2=Za glavnu rutu $1 nije potrebna mrežna maska
+save_egw2=Nevažeća pristupnica za host u ruti $1 
+save_erename=Ponovno imenovanje datoteke tunela nije uspjelo
+save_eclash=Tunel ili PPP peer s istim nazivom već postoji
+save_efile=Nedostaje ili nije važeća datoteka opcija PPP
+
+opts_title=Općenite opcije JPP-a
+opts_desc=Postavke u nastavku preuzete su od $1 i primjenjivat će se na sve tunele koji su postavljeni za korištenje standardne datoteke s opcijama PPP.
+opts_header=PPP opcije za sve tunele
+opts_mtu=Maksimalna veličina paketa za slanje
+opts_mru=Maksimalna veličina prijemnog paketa
+opts_err=Spremanje globalnih opcija PPP-a nije uspjelo
+opts_emtu=Nedostaje ili neispravna maksimalna veličina paketa za slanje
+opts_emru=Nedostaje ili neispravna maksimalna veličina prijemnog paketa
+opts_msdesc=Dolje opcije omogućuju MPPE enkripciju, koju koriste Windows VPN poslužitelji. Međutim, MPPE zahtijeva podršku i u PPP-ovom demonu i u jezgri operacijskog sustava.
+
+mppe_mppe-40=Koristite 40-bitnu MPPE enkripciju?
+mppe_mppe-128=Koristite 128-bitnu MPPE enkripciju?
+mppe_mppe-stateless=Želite li omogućiti MPPE način rada bez stanja?
+mppe_mppe=Želite li omogućiti MPPE šifriranje?
+mppe_m2=Mora se koristiti
+mppe_m0=Ne mogu se upotrijebiti
+mppe_d0=Onemogućeno
+mppe_d1=dopušteno
+mppe_mppe-stateful=Želite li omogućiti MPPE način rada?
+mppe_old=Upozorenje - stare konfiguracije MPPE $1 pronađene su u vašoj konfiguracijskoj datoteci, iako vaš PPP demon podržava nove smjernice.
+mppe_new=Upozorenje - U vašoj konfiguracijskoj datoteci pronađene su nove MPPE smjernice $1, iako vaš PPP demon podržava samo stare smjernice.
+
+log_create=Stvoren PPTP tunel $1 
+log_update=Izmijenjeni PPTP tunel $1 
+log_delete=Izbrisan PPTP tunel $1 
+log_conn=Spojeni tunel $1 
+log_conn_l=Spojeni tunel $1 s lokalnom adresom $2 
+log_failed=Nije uspjelo spajanje tunela $1 
+log_disc=Isključeni tunel $1 
+log_opts=Uređene globalne PPP opcije

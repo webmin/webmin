@@ -1,0 +1,58 @@
+index_title=Статус SMART Drive
+index_ecmd=Каманда SMART кіравання $1 не знойдзена ў вашай сістэме альбо ўсталявана няправільна ў канфігурацыі модуля <a href='$2'></a>. Ён павінен быць усталяваны да таго, як гэты модуль можа быць выкарыстаны.
+index_ecmd2=Здаецца, каманда $1 не з'яўляецца камандай кіравання SMART. Ён павінен быць усталяваны правільна ў канфігурацыі модуля <a href='$2'></a>, перш чым гэты модуль можа быць выкарыстаны.
+index_version=Версія SMARTsuite $1 
+index_show=Паказаць стан дыска:
+index_ok=Паказаць
+index_eidescsi=У вашай сістэме не знойдзена дыскаў IDE, SCSI або SATA.
+index_drive=Статус дыска $1 
+index_drivesub=Статус дыска $1, дыск $2 
+index_desc=Размяшчэнне
+index_size=Памер дыска
+index_model=Зрабі і мадэлюй
+index_support=Падтрымлівае SMART?
+index_enabled=SMART уключаны?
+index_check=Прайшоў праверку прывада?
+index_short=Кароткі тэст
+index_ext=Пашыраны саматэставанне
+index_data=Тэст збору дадзеных
+index_errors=Памылкі ўвайшлі ў сістэму
+index_ecount=Выяўлены $1 памылкі
+index_attrs=Дадатковыя атрыбуты SMART
+index_raw=Поўны справаздачу аб стане SMART
+index_return=Індэкс модуля
+index_family=Мадэль сям'і
+index_serial=Серыйны нумар
+index_capacity=Ёмістасць
+index_norm=Нармалізавана:
+
+monitor_type=SMART Drive Check
+monitor_type2=SSD Wearout
+monitor_drive=Дыск для праверкі
+monitor_errors=Праверце часопіс памылак?
+monitor_errorsinc=Так, але толькі папярэджвайце, калі колькасць памылак павялічыцца
+monitor_other=Іншае ..
+monitor_edrive=Адсутнічае альбо несапраўдны дыск для праверкі
+monitor_nosuch=Няма такога драйву
+monitor_nosmart=Няма падтрымкі SMART
+monitor_errorsfound=Зафіксавана памылка $1 
+monitor_errorsinced=Памылкі павялічыліся з $2 да $1 
+monitor_wearlevel=Збой, калі ўзровень зносу апусціцца ніжэй
+monitor_ewearlevel=Няправільны працэнт зносу
+monitor_nowearout=Прывад не паведамляе пра індыкатар SSD
+monitor_wornout=Узровень зносу ўпаў да $1 
+
+short_title=Кароткі тэст
+short_doing=Пачатак кароткага саматэставання $1.
+short_failed=.. няўдала!
+short_ok=.. тэст пачаўся ў парадку. Пра вынікі глядзіце стан дыска на галоўнай старонцы модуля.
+
+ext_title=Пашыраны саматэставанне
+ext_doing=Пачатак пашыранага саматэставання $1.
+ext_failed=.. няўдала!
+ext_ok=.. тэст пачаўся ў парадку. Пра вынікі глядзіце стан дыска на галоўнай старонцы модуля.
+
+data_title=Тэст збору дадзеных
+data_doing=Пачынаецца збор дадзеных у аўтаномным рэжыме на $1.
+data_failed=.. няўдала!
+data_ok=.. збор пачаўся ў парадку. Пра вынікі глядзіце стан дыска на галоўнай старонцы модуля.

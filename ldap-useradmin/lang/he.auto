@@ -1,0 +1,103 @@
+index_title=משתמשי LDAP וקבוצות
+index_ebase=לא נמצא קובץ תצורת לקוח LDAP במערכת שלך, ולכן יש להגדיר את בסיסי המשתמש והקבוצה בדף <a href='$1'>תצורת המודול</a>.
+index_eperl=מודול $1 Perl שדורש מודול זה אינו מותקן או אינו פועל כראוי. <a href='$2'>לחץ כאן</a> כדי להוריד אותו ולהתקין אותו כעת.
+index_eperl2=השגיאה שפרל דיווחה כשניסה לטעון את המודול הייתה :
+index_eldap=$1. לחץ כאן כדי להתאים את <a href='$2'>תצורת המודול</a>.
+index_eschema=Webmin התחבר לשרת LDAP, אך לא הצליח להביא את הסכימה. ודא כי הגישה לא נדחתה במודול <a href='$1'>LDAP</a>.
+index_eimap=$1. אולי <a href='$2'>תצורת המודול</a> שלך שגויה.
+index_emd5=מודול זה הוגדר <a href='$1'></a> לשימוש בהצפנת MD5 לסיסמאות, אך מודול $2 Perl אינו מותקן. <a href='$3'>לחץ כאן</a> כדי להוריד ולהתקין את מודול $2.
+index_eslappasswd=מודול זה הוגדר <a href='$1'></a> לשימוש בהצפנת LDAP MD5 לסיסמאות, אך התוכנית <tt>$2</tt> המשמשת להצפנת סיסמה אינה מותקנת.
+index_eusearch=חיפוש של משתמשים מתחת ל- $1 : $2 נכשל
+index_uadd=הוסף משתמש LDAP חדש.
+index_gadd=הוסף קבוצת LDAP חדשה.
+index_unone=לא נמצאו משתמשי LDAP תחת $1.
+index_gnone=לא נמצאו קבוצות LDAP תחת $1.
+index_return=רשימת משתמש
+index_greturn=רשימת קבוצות
+index_egsearch=חיפוש של קבוצות מתחת ל- $1 : $2 נכשל
+index_samba=סמבה?
+index_cyrus=IMAP?
+index_users=משתמשי LDAP
+index_groups=קבוצות LDAP
+
+imap_econn=התחברות לשרת IMAP $1 נכשלה
+imap_elogin=כניסה לשרת IMAP $1 נכשלה כ- $2 : $3 
+conn_eldap_host=לא נמצא קובץ תצורת לקוח LDAP במערכת שלך, ולכן יש להגדיר את שרת LDAP בדף תצורת המודול
+conn_elogin=לא נמצא קובץ תצורת לקוח LDAP במערכת שלך, ולכן יש להגדיר את כניסת ה- LDAP בדף תצורת המודול
+conn_efile_open=לא ניתן לפתוח את קובץ אישורי הכריכה של LDAP:
+
+uedit_cap=יכולות משתמש
+uedit_samba=כניסה לסמבה?
+uedit_cyrus=התחברות לשרת IMAP?
+uedit_dn=LDAP DN של המשתמש
+uedit_classes=שיעורי אובייקטים של LDAP
+uedit_alias=כינויי דואר
+uedit_fields=שדות נוספים של LDAP
+uedit_firstname=שם פרטי
+uedit_lastname=שם משפחה
+uedit_raw=תכונות LDAP
+uedit_return=פרטי המשתמש
+uedit_quota=מכסת IMAP
+uedit_unquota=אל תשתנה
+uedit_sambapassopts=אפשרויות סיסמא של סמבה
+uedit_sambapwdlastset=עדכון סיסמא אחרון
+uedit_sambapwdcanchange=הסיסמה יכולה להשתנות
+uedit_sambabadpasswordcount=ספירת סיסמאות שגויה
+uedit_sambaacctflags=דגלי חשבון
+
+usave_eadd=הוספת משתמש למאגר LDAP נכשל : $1 
+usave_emod=שינוי המשתמש במסד הנתונים של LDAP נכשל : $1 
+usave_emoddn=שינוי שם המשתמש נכשל במסד הנתונים של LDAP : $1 
+usave_egroupmod=שינוי קבוצת $1 במסד הנתונים של LDAP נכשל : $2 
+usave_edelete=מחיקת המשתמש נכשלה ממסד הנתונים של LDAP : $1 
+usave_eicreate=יצירת משתמש נכשלה
+usave_eiacl=מתן זכויות למנהל נכשל
+usave_eimap=המשתמש נשמר בהצלחה במסד הנתונים של LDAP, אך אירעה שגיאה ב- IMAP: $1 : $2 
+usave_eisub=הרשמת המשתמש לתיקיה $1 נכשלה
+usave_eiquota=הגדרת מכסת IMAP נכשלה
+usave_eifolder=יצירת תיקיה $1 נכשלה
+usave_eilogin=הכניסה כמשתמש חדש נכשלה
+usave_ecyruspass=יש להזין את הסיסמה הרגילה של המשתמש או לבחור באפשרות ללא סיסמה חובה בעת הפעלת IMAP.
+usave_ebook=יצירת הערך של פנקס הכתובות נכשלה : $1 
+usave_emodbook=שינוי רשומת פנקס הכתובות נכשלה : $1 
+usave_emodbookdn=שינוי שם רשומת פנקס הכתובות נכשל : $1 
+usave_egone=המשתמש כבר לא קיים!
+usave_ex86=לא ניתן להשתמש במודול זה כדי להגדיר את הסיסמה עבור משתמש סמבה במערכות שאינן אינטל, מכיוון שהוא תלוי בתוכנית x86 מורכבת.
+usave_esamba=לא ניתן להשתמש במודול זה כדי להגדיר את הסיסמה למשתמש Samba, מכיוון שמודול שיתוף הקבצים של Samba Windows אינו מותקן.
+usave_ealiasdup=הכינוי $1 משמש כבר על ידי $2 
+usave_eattrdup=האובייקט $1 כבר משתמש ב- $2 $3 
+usave_eattrdupu=המשתמש $1 כבר משתמש ב- $2 $3 
+usave_eattrdupg=הקבוצה $1 כבר משתמשת ב- $2 $3 
+usave_ereal=חסר שם אמיתי
+usave_equota=מכסת IMAP חסרה או לא חוקית
+
+search_err=חיפוש $1 תחת $2 נכשל : $3 
+
+gedit_dn=ה- LDAP DN של הקבוצה
+gedit_return=פרטי קבוצה
+gedit_cap=יכולות קבוצתיות
+gedit_samba=קבוצת סמבה?
+
+gsave_egone=הקבוצה כבר לא קיימת!
+gsave_edelete=מחיקת הקבוצה ממאגר LDAP נכשלה : $1 
+gsave_eadd=הוספת קבוצה למסד הנתונים של LDAP נכשלה : $1 
+gsave_emod=שינוי הקבוצה במסד הנתונים של LDAP נכשל : $1 
+gsave_emoddn=שינוי שם הקבוצה נכשל במסד הנתונים של LDAP : $1 
+
+gdel_group=מוחק רשומה לקבוצת LDAP ..
+
+udel_pass=מוחק את רשומת המשתמש של LDAP ..
+udel_book=מוחק מתוך פנקס הכתובות ..
+udel_imap=מוחק תיקיית IMAP ..
+udel_warnimap=תיבת הדואר הקיימת תימחק בעת מחיקת ספריית הבית!
+udel_failed=.. נכשל!  : $1 
+
+raw_title=תכונות LDAP
+raw_name=שם מאפיין
+raw_value=ערכים
+raw_for=בשביל 1
+
+batch_samba=ליצור חשבון סמבה למשתמשים חדשים?
+batch_imap=ליצור חשבון IMAP למשתמשים חדשים?
+batch_descafter3=ב <b>צור</b> ו <b>שינוי</b> שורות, אתה יכול להוסיף שדות נוספים המכילים תכונות LDAP בתבנית <i>שם</i> = <i>ערך</i> להיות מוקצה למשתמשים החדשים או שהשתנו.
+batch_eattr=תכונה LDAP לא חוקית בשורה $1 : $2 

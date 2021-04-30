@@ -1,0 +1,33 @@
+index_title=TCP обгортки
+index_return=покажчик
+index_allowtitle=Дозволено господарів
+index_denytitle=Відмовили господарі
+index_norule=У <tt>$1</tt> правила ще не визначено.
+index_nofile=Файл "$1" не існує - перевірте свою <a href="/config.cgi?tcpwrappers">конфігурацію модуля</a>
+index_add=Додайте нове правило.
+index_service=Демон
+index_hosts=Господарі
+index_cmd=Командування
+index_delete=Видалити вибране
+index_none=жоден
+
+edit_title1allow=Створити дозволити правило
+edit_title2allow=Редагувати Дозволити правило
+edit_title1deny=Створіть правило заборонити
+edit_title2deny=Редагуйте правило заборони
+edit_eid=Це правило не знайдено
+edit_header=Варіанти правила
+edit_service=Послуги
+edit_except=Крім послуг
+edit_hosts=Віддалені хости
+edit_hostsexcept=За винятком господарів
+edit_cmd=Команди оболонки
+edit_efound=Демон "$1" не знайдено в конфігурації xinetd.
+
+save_errtitle=Помилка правила збереження
+save_ehost=Введення хоста містить погані символи
+save_ecmd=Командний вхід містить погані символи
+save_eservice=Імена демонів містять погані символи
+
+del_errtitle=Помилка видалення правил
+del_enone=Немає правил для видалення

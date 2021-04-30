@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 # Write an actions log for a login
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use strict;
 use warnings;
 use WebminCore;

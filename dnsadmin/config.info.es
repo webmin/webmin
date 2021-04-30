@@ -1,7 +1,7 @@
-named_boot_file=Archivo de configuración primaria,0
 show_list=Mostrar dominios como,1,0-Iconos,1-Lista
-soa_style=Estilo de Número serial,1,0-Número en ejecución,1-Basado en fecha (AAAAMMDDnn)
-records_order=Orden en que mostrar los registros,1,1-Alfabéticamente,0-Según se añadieron
+soa_style=Estilo de NÃºmero serial,1,0-NÃºmero en ejecuciÃ³n,1-Basado en fecha (AAAAMMDDnn)
+records_order=Orden en que mostrar los registros,1,1-AlfabÃ©ticamente,0-SegÃºn se aÃ±adieron
+updserial_on=GenerÃ¡lmente manejar nÃºmeros de serie,1,0-No,1-SÃ­
+named_boot_file=Archivo de configuraciÃ³n primaria,0
 named_pid_file=Archivo de ID de proceso,0
 named_pathname=Trayectoria completa a <i>named</i>,0
-updserial_on=Generálmente manejar números de serie,1,0-No,1-Sí

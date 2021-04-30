@@ -6,17 +6,23 @@ require './net-lib.pl';
 $access{'dns'} == 2 || &error($text{'dns_ecannot'});
 &error_setup($text{'dns_err'});
 &ReadParse();
-$old_hostname = &get_system_hostname();
+$old_fqdn = &get_system_hostname(); # Fully-Qualified Domain Name
+$old_pqdn = &get_system_hostname(1); # Partially Qualified Domain Name (short name)
+$old_hostname = &get_hostname();
 
-$in{'hostname'} =~ /^[A-z0-9\.\-]+$/ ||
-	&error(&text('dns_ehost', $in{'hostname'}));
+$in{'hostname'} =~ /^[A-Za-z0-9\.\-]+$/ ||
+	&error(&text('dns_ehost', &html_escape($in{'hostname'})));
 $dns = { };
+
+$new_pqdn = $in{'hostname'};
+$new_pqdn =~ s/\..*$//;
+
 for($i=0; defined($ns = $in{"nameserver_$i"}); $i++) {
 	$ns = $in{"nameserver_$i"};
 	$ns =~ s/^\s+//; $ns =~ s/\s+$//;
 	if ($ns) {
 		&check_ipaddress_any($ns) ||
-			&error(&text('dns_ens', $ns));
+			&error(&text('dns_ens', &html_escape($ns)));
 		push(@{$dns->{'nameserver'}}, $ns);
 		}
 	}
@@ -32,7 +38,7 @@ if ($in{'name0'}) {
 	    $ns =~ s/^\s+//; $ns =~ s/\s+$//;
 	    if ($ns) {
 		&check_ipaddress_any($ns) ||
-		    &error(&text('dns_ens', $ns));
+		    &error(&text('dns_ens', &html_escape($ns)));
 		push(@{$dns->{$nskey}}, $ns);
 	    }
 	}
@@ -43,24 +49,33 @@ if ($in{'name0'}) {
 if (!$in{'domain_def'}) {
 	@dlist = split(/\s+/, $in{'domain'});
 	foreach $d (@dlist) {
-		$d =~ /^[A-z0-9\.\-]+$/ ||
-			&error(&text('dns_edomain', $d));
+		$d =~ /^[A-Za-z0-9\.\-]+$/ ||
+			&error(&text('dns_edomain', &html_escape($d)));
+		$new_fqdn = "$new_pqdn.$d" if !$new_fqdn;
 		push(@{$dns->{'domain'}}, $d);
 		}
-	@dlist>0 || &error($text{'dns_esearch'});
+	@dlist || &error($text{'dns_esearch'});
 	}
 &parse_order($dns);
 &save_dns_config($dns);
 &save_hostname($in{'hostname'});
 
-if ($in{'hosts'} && $in{'hostname'} ne $old_hostname) {
-	# Update hostname in /etc/hosts too
+if ($in{'hosts'} && ($in{'hostname'} ne $old_hostname || $new_fqdn ne $old_fqdn)) {
+	# Update hostname/fqdn/pqdn in /etc/hosts too
 	@hosts = &list_hosts();
 	foreach $h (@hosts) {
 		local $found = 0;
 		foreach $n (@{$h->{'hosts'}}) {
 			if (lc($n) eq lc($old_hostname)) {
 				$n = $in{'hostname'};
+				$found++;
+				}
+			elsif (lc($n) eq lc($old_fqdn) && $new_fqdn) {
+				$n = $new_fqdn;
+				$found++;
+				}
+			elsif (lc($n) eq lc($old_pqdn)) {
+				$n = $new_pqdn;
 				$found++;
 				}
 			}
@@ -74,6 +89,14 @@ if ($in{'hosts'} && $in{'hostname'} ne $old_hostname) {
 		foreach $n (@{$h->{'ipnodes'}}) {
 			if (lc($n) eq lc($old_hostname)) {
 				$n = $in{'hostname'};
+				$found++;
+				}
+			elsif (lc($n) eq lc($old_fqdn) && $new_fqdn) {
+				$n = $new_fqdn;
+				$found++;
+				}
+			elsif (lc($n) eq lc($old_pqdn)) {
+				$n = $new_pqdn;
 				$found++;
 				}
 			}
@@ -92,13 +115,9 @@ if (&foreign_installed("postfix") && $in{'hostname'} ne $old_hostname) {
 		&postfix::set_current_value("mydestination",
 					    join(", ", @mydests));
 		}
-	$old_shorthostname = $old_hostname;
-	$old_shorthostname =~ s/\..*$//;
-	$shorthostname = $in{'hostname'};
-	$shorthostname =~ s/\..*$//;
-	$idx = &indexoflc($old_shorthostname, @mydests);
+	$idx = &indexoflc($old_pqdn, @mydests);
 	if ($idx >= 0) {
-		$mydests[$idx] = $shorthostname;
+		$mydests[$idx] = $new_pqdn;
 		&postfix::set_current_value("mydestination",
 					    join(", ", @mydests));
 		}

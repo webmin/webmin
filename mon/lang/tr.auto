@@ -1,0 +1,200 @@
+index_title=MON Servis Monitörü
+index_return=MON dizini
+index_edir=$1 MON dizini mevcut değil. MON yüklü değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
+mon_global_title=Global Değişkenler Yapılandırması
+mon_conf_title=Temel yapılandırma
+mon_status_title=Operasyonel durum
+hostgroups_title=MON Yapılandırma-Ana Bilgisayar Grupları
+services_title=İzleme Grupları-Hizmet Tanımları
+
+head_hostgroups=Ana Bilgisayar Grupları ve Hizmetleri
+head_groups=Ana Bilgisayar Grubu Adı
+head_members=Ana Bilgisayar Grubu Üyeleri
+head_services=İzlenecek Hostgroup Hizmetleri
+head_service=İzlemek için hizmet
+head_param=Servis Parametreleri
+head_watch=Grubu izlemek?
+head_monauth=MONCMD için Kimlik Doğrulaması Sağlayın
+head_usr=Kullanıcı adı
+head_pass=Parola
+head_mand=("KIRMIZI RENK" içindeki parametreler zorunludur)
+
+err_nomon='mon' paketi sistemde kurulu değil
+err_nomonconf=$1 MON yapılandırma dosyası sisteminizde bulunamadı. MON yüklü değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
+err_nowatch=İzleme Grubu seçilmedi. Devam etmek için en az bir İzleme Grubu seçin.
+err_noserv=İzleme grubu için Hizmet seçilmedi
+err_nomemb=İzleme grubu için Ana Bilgisayar/Üye seçilmedi
+err_monrun=MON, hostmachine üzerinde çalışmıyor. Lütfen MON ile başlayın.
+stop_err=MON durdurulamadı
+stop_epid=Artık koşmuyor
+start_err=MON başlatılamadı
+restart_err=MON yeniden başlatılamadı
+restart_epid=PID alınamadı
+
+other=Diğer (boşlukla ayrılmış)
+next=Sonraki
+mon_stat=MON Durumu
+mon_off=MON Hizmetleri Başlatılmadı
+mon_start=MON Hizmetlerini Başlat
+mon_stop=MON Hizmetlerini Durdurma
+mon_restart=MON Hizmetlerini Yeniden Başlat
+mon_startdesc=MON sunucusunu başlatmak için bu düğmeyi tıklatın. Başlatılana kadar, yapılandırılmış izleme yapılmaz.
+mon_stopdesc=MON sunucusunu durdurmak için bu düğmeyi tıklatın. Durdurulduğunda, yapılandırılmış izleme durur.
+mon_restartdesc=Sunucu işlemini yeniden başlatarak geçerli MON yapılandırmasını uygulamak için bu düğmeyi tıklatın.
+line=(her satırda bir tane)
+save_apply=Kaydet ve Uygula
+watch=Watchgroup
+members=Üyeler
+def_perargs=wd {Cts-Paz}
+
+def_desc=açıklama
+def_inter=Aralık
+def_mon=izlemek
+def_dep=dpend
+def_per=dönem
+def_alert=uyarmak
+def_alertevr=alertevery
+def_alertaft=alertafter
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=trapduration
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=Ana Bilgisayar Grupları
+groups_group=Grup ismi
+groups_members=Üye ev sahipleri
+
+watches_title=İzleme Listeleri
+watches_group=İzleme grubu
+watches_services=İzlenen hizmetler
+watches_sadd=Hizmet ekle ..
+watches_add=Grup için izleme listesi ekle :
+watches_return=izleme listeleri
+watches_none=Henüz hiçbir izleme listesi tanımlanmadı.
+
+global_title=Global Seçenekler
+global_header=Global MON yapılandırma seçenekleri
+global_maxprocs=Maksimum MON işlemi
+global_histlength=Etkinlik geçmişi uzunluğu
+global_alertdir=Uyarı programları dizini
+global_mondir=İzleme programları dizini
+global_authtype=Kimlik Doğrulama Türü
+global_authtype_=Varsayılan
+global_authtype_getpwnam=Sistem çağrıları
+global_authtype_userfile=MON kullanıcıları dosyası
+global_authtype_shadow=Gölge dosyası
+global_userfile=MON kullanıcı dosyası
+global_emaxprocs=MON işlemi eksik veya geçersiz
+global_ehistlength=Eksik veya geçersiz etkinlik geçmişi uzunluğu
+global_ealertdir=Eksik veya geçersiz uyarı programları dizini
+global_emondir=Eksik veya geçersiz monitör programları dizini
+global_euserfile=Eksik MON kullanıcı dosyası
+
+watch_title=İzleme Listesini Düzenle
+watch_header=Ana makine grubu izleme ayrıntıları
+watch_group=İzlenecek ana makine grubu
+watch_services=İzlenen hizmetler
+watch_service=Hizmet adı
+watch_monitor=Kullanılacak monitör
+watch_interval=Her birini kontrol et
+watch_periods=İzleme süreleri
+
+service_title=Hizmet Ekle
+service_title2=Hizmeti Düzenle
+service_header=İzlenen hizmet ayrıntıları
+service_name=Hizmetin adı
+service_interval=Her birini kontrol et
+service_desc=Açıklama
+service_units_s=saniye
+service_units_m=dakika
+service_units_h=saatler
+service_units_d=günler
+service_units_w=haftalar
+service_monitor=Monitörü kullanma
+service_mon1=Standart monitör
+service_mon0=Diğer monitör ..
+service_args=Monitör parametreleri
+service_period=İzleme süresi $1 
+service_days=Kontrol edilecek günler
+service_hours=Kontrol edilecek saatler
+service_all=Herşey
+service_pstr=Dönem belirtimi
+service_new=Yeni izleme süresi
+service_alerts=Dönem uyarıları
+service_alert=Uyarmak
+service_atype=Ne zaman çalıştır
+service_atype_alert=Hizmet kapanıyor
+service_atype_upalert=Hizmetler geliyor
+service_atype_startupalert=MON başlar
+service_aargs=Ek parametreler
+service_every=Uyarı gönder
+service_every_def=Monitör her çalıştırıldığında
+service_every_time=Her
+service_num=Gönderilecek maksimum uyarı
+service_unlimited=Sınırsız
+service_after=Uyarı öncesi hatalar
+service_immediate=Hemen
+service_after_num=$1 hatadan sonra
+service_aftertime=Zaman aralığı içinde
+service_newperiod=Yeni bir dönem ekle
+service_delperiod=Bu dönemi sil
+service_err=Hizmet kaydedilemedi
+service_ename=Eksik veya geçersiz hizmet adı
+service_einterval=Eksik veya geçersiz kontrol aralığı
+service_eother=Eksik veya geçersiz monitör
+service_ehour=$1 dönemi için eksik veya geçersiz saat (09:00 veya 17:00 gibi olmalıdır)
+service_eperiod=$1 dönemi için gün veya saat belirtilmedi
+service_eevery=Eksik veya geçersiz servis uyarı aralığı
+service_eafter=Uyarıdan önce eksik veya geçersiz hata sayısı
+service_enum=Gönderilecek eksik veya geçersiz maksimum uyarı
+service_epstr=Eksik dönem belirtimi
+service_known0=<tt>Zaman::Dönem</tt> dize
+service_known1=Belirtilen günler ve saatler
+service_known2=Tanımlanan süre
+
+status_title=MON Durumu
+status_ecgi=MON durum CGI programı $1 mevcut değil. Belki yüklü değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
+status_eperl=MON durum CGI programı $1 perl modülünü gerektirir. Doğrudan CPAN'dan yüklemek için <a href='$2'>burayı tıklayın</a>.
+status_esame=MON durumu CGI programı $1, MON ile birlikte gelen CGI programına değil, bu Webmin modülündeki <tt>mon.cgi</tt> komut dosyasına ayarlandı. Doğru yolu kullanmak için <a href='$2'>modül yapılandırmasını</a> ayarlayın.
+
+users_title=MON Kullanıcıları
+users_etype=MON kullanıcıları listesi şu anda <a href='$1'>Genel Seçenekler</a> sayfasında kimlik doğrulama için kullanmak üzere yapılandırılmadığından MON kullanıcıları listesi düzenlenemez.
+users_header=$1 içinde izin verilen MON kullanıcıları
+users_nousers=$1 içinde MON kullanıcısı tanımlanmadı.
+users_add=Yeni bir kullanıcı oluşturun.
+users_return=MON kullanıcı listesi
+
+user_create=MON Kullanıcısı Oluştur
+user_edit=MON Kullanıcısını Düzenle
+user_header=MON kullanıcı detayları
+user_user=Kullanıcı adı
+user_pass=Parola
+user_leave=Değişmeden bırak
+user_err=Kullanıcı kaydedilemedi
+user_euser=Eksik veya geçersiz kullanıcı adı
+user_esame=Aynı ada sahip bir kullanıcı zaten var
+
+auth_title=İstemci Komutları
+auth_desc=Bu sayfa, istemci programlarını kullanırken hangi MON komutlarının hangi kullanıcılar tarafından çalıştırılabileceğini kontrol etmenizi sağlar.
+auth_cmd=MON komutu
+auth_users=İzin verilen kullanıcılar
+auth_none=Kimse
+auth_all=herkes
+auth_sel=Sadece kullanıcılar
+auth_err=İstemci komutları kaydedilemedi
+auth_eusers=$1 komutu için kullanıcı girmedi
+
+periods_title=Tanımlı Dönemler
+periods_period=Dönem adı
+periods_times=Günler ve saatler
+periods_alldays=Tüm günler
+periods_allhours=Tüm saatler
+periods_err=Tanımlanan dönemler kaydedilemedi
+periods_ename='$1' geçerli bir dönem adı değil
+periods_ehour=$1 dönemi için eksik veya geçersiz saat (09:00 veya 17:00 gibi olmalıdır)
+
+show_title=Operasyonel durum
+show_ecgi=$1 MON durum programı mevcut değil. Belki yüklü değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.

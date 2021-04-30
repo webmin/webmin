@@ -1,0 +1,52 @@
+index_title=Izvoz NFS
+index_add=Dodajte nov izvoz.
+index_dirs=Imeniki
+index_clients=Stranke
+index_everyone=Vsi
+index_none=Izvoz še ni opredeljen.
+index_delete=Izbrišite izbrane izvoznike
+index_apply=Uporabi spremembe
+index_applydesc=Kliknite ta gumb, če želite uporabiti trenutno konfiguracijo izvoza datotek. Tako bodo vsi našteti imeniki na voljo z navedenimi možnostmi.
+index_return=izvozni seznam
+index_echeck=V tem sistemu strežnika NFS ni mogoče uporabiti : $1 
+
+check_ecmd=Ukaz strežnika NFS $1 ni nameščen
+
+delete_err=Izvoza ni bilo mogoče izbrisati
+delete_enone=Izbrana ni nobena
+
+edit_title1=Uredi izvoz
+edit_title2=Ustvari izvoz
+edit_header1=Možnosti izvoza
+edit_dirs=Imeniki za izvoz
+edit_alldirs=Izvozi poddirektorje?
+edit_ro=Le za branje?
+edit_kerb=Uporabljate Kerberos?
+edit_header2=Oddaljeno preslikavo uporabnikov
+edit_maproot=Uporabnik korenskega zemljevida v
+edit_mapusers=Zemljevid vseh uporabnikov
+edit_unpriv=Neprivilegirani uporabnik
+edit_uid=Uporabnik / UID
+edit_gids=In skupine / GID-ji
+edit_mapall=Zemljevid vseh uporabnikov
+edit_header3=Stranke za ta izvoz
+edit_clients=Stranke
+edit_hosts=Gostitelji / mreže
+edit_network=Omrežje
+edit_mask=Maska
+
+save_err=Izvoza ni bilo mogoče shraniti
+save_edir='$1' ni imenik ali ne obstaja
+save_enone=Za izvoz morate vnesti vsaj en imenik
+save_esub=Če je izbrana možnost <b>izvozni podimeniki</b>, je dovoljen samo en imenik
+save_eroot=Pri uporabi možnosti <b>izvozni podimeniki</b> mora biti izvoženi imenik koren <i>lokalnega</i> datotečnega sistema
+save_euser='$1' ni veljaven uporabnik ali UID
+save_egroup='$1' ni veljavna skupina ali GID
+save_ekerb=Uporabniki korenskega zemljevida, zemljevid vseh uporabnikov in možnosti kerberos se medsebojno izključujejo
+save_ehosts=Za izvoz morate vnesti vsaj enega gostitelja
+save_enetwork='$1' ni veljavno omrežje
+save_enetmask='$1' ni veljavna omrežna maska
+save_esame1=Imenik <tt>$1</tt> je že izvožen v <tt>$2</tt>. Vaš operacijski sistem ne dovoljuje, da bi se imeniki v istem <i>lokalnem</i> datotečnem sistemu posebej izvozili na isti gostitelj
+save_esame2=Imenik <tt>$1</tt> je že izvožen v <tt>$2</tt>. Vaš operacijski sistem ne dovoljuje, da bi se imeniki v istem <i>lokalnem</i> datotečnem sistemu posebej izvozili v isto omrežje
+
+restart_err=Sprememb ni bilo mogoče uporabiti

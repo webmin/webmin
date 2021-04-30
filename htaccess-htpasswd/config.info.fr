@@ -1,4 +1,9 @@
-htaccess=Nom du fichier d'option Apache,0
+htaccess=Nom du fichier d'options Apache,0
 htpasswd=Nom du fichier des utilisateurs,0
-sort=Tri des utilisateurs par,1,1-Nom d'utilisateur,0-Ordre dans le fichier
-md5=Cryptage MD5?,1,1-Oui,0-Non
+htgroups=Nom de fichier des groupes,0
+sort=Trier les utilisateurs par,1,1-Nom d'utilisateur,0-Ordre dans le fichier
+md5=Offrir une option de cryptage MD5?,1,1-Oui,0-Non
+sha1=Offrir une option de cryptage SHA1?,1,1-Oui,0-Non
+digest=Offre digest option de cryptage?,1,1-Oui,0-Non
+extra_directives=Directives supplémentaires à inclure dans .htaccess,9,0,0,\t
+perms=Autorisations pour les fichiers créés,3,Par défaut (644)

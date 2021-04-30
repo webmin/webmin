@@ -1,0 +1,103 @@
+index_title=Usuários e grupos LDAP
+index_ebase=Nenhum arquivo de configuração do cliente LDAP foi encontrado em seu sistema, portanto, as bases de usuários e grupos devem ser definidas na página <a href='$1'>config do módulo</a>.
+index_eperl=O módulo $1 Perl que este módulo requer não está instalado ou não está funcionando corretamente. <a href='$2'>Clique aqui</a> para fazer o download e instalar agora.
+index_eperl2=O erro relatado pelo Perl ao tentar carregar o módulo foi :
+index_eldap=$1. Clique aqui para ajustar a <a href='$2'>configuração do módulo</a>.
+index_eschema=O Webmin se conectou ao servidor LDAP, mas não conseguiu buscar o esquema. Verifique se o acesso não foi negado no módulo <a href='$1'>Servidor LDAP</a>.
+index_eimap=$1. Talvez sua <a href='$2'>configuração do módulo</a> esteja incorreta.
+index_emd5=Este módulo foi <a href='$1'>configurado</a> para usar a criptografia MD5 para senhas, mas o módulo Perl $2 não está instalado. <a href='$3'>Clique aqui</a> para que o módulo $2 seja baixado e instalado.
+index_eslappasswd=Este módulo foi <a href='$1'>configurado</a> para usar a criptografia LDAP MD5 para senhas, mas o programa <tt>$2</tt> usado para criptografar uma senha não está instalado.
+index_eusearch=Falha ao procurar usuários com $1 : $2 
+index_uadd=Adicione um novo usuário LDAP.
+index_gadd=Adicione um novo grupo LDAP.
+index_unone=Nenhum usuário LDAP foi encontrado em $1.
+index_gnone=Nenhum grupo LDAP foi encontrado em $1.
+index_return=Lista de usuários
+index_greturn=lista de grupos
+index_egsearch=Falha ao procurar grupos abaixo de $1 : $2 
+index_samba=Samba?
+index_cyrus=IMAP?
+index_users=Usuários LDAP
+index_groups=Grupos LDAP
+
+imap_econn=Falha ao conectar ao servidor IMAP $1 
+imap_elogin=Falha ao fazer login no servidor IMAP $1 como $2 : $3 
+conn_eldap_host=Nenhum arquivo de configuração do cliente LDAP foi encontrado em seu sistema, portanto, o servidor LDAP deve ser definido na página Configuração do Módulo
+conn_elogin=Nenhum arquivo de configuração do cliente LDAP foi encontrado em seu sistema; portanto, o login LDAP deve ser definido na página Configuração do módulo
+conn_efile_open=Não foi possível abrir o arquivo de credenciais de vinculação do LDAP:
+
+uedit_cap=Capacidades do usuário
+uedit_samba=Samba login?
+uedit_cyrus=Login no servidor IMAP?
+uedit_dn=DN LDAP do usuário
+uedit_classes=Classes de objetos LDAP
+uedit_alias=Aliases de email
+uedit_fields=Campos LDAP adicionais
+uedit_firstname=Primeiro nome
+uedit_lastname=Último nome
+uedit_raw=Atributos LDAP
+uedit_return=Detalhes do usuario
+uedit_quota=Cota IMAP
+uedit_unquota=Não mude
+uedit_sambapassopts=Opções de senha do Samba
+uedit_sambapwdlastset=Última atualização de senha
+uedit_sambapwdcanchange=A senha pode mudar
+uedit_sambabadpasswordcount=Contagem de senha incorreta
+uedit_sambaacctflags=Sinalizadores de conta
+
+usave_eadd=Falha ao adicionar usuário ao banco de dados LDAP : $1 
+usave_emod=Falha ao modificar o usuário no banco de dados LDAP : $1 
+usave_emoddn=Falha ao renomear o usuário no banco de dados LDAP : $1 
+usave_egroupmod=Falha ao modificar o grupo $1 no banco de dados LDAP : $2 
+usave_edelete=Falha ao excluir usuário do banco de dados LDAP : $1 
+usave_eicreate=Falha ao criar usuário
+usave_eiacl=Falha ao conceder direitos ao administrador
+usave_eimap=O usuário foi salvo com sucesso no banco de dados LDAP, mas ocorreu um erro IMAP: $1 : $2 
+usave_eisub=Falha ao inscrever o usuário na pasta $1 
+usave_eiquota=Falha ao definir a cota IMAP
+usave_eifolder=Falha ao criar a pasta $1 
+usave_eilogin=Falha ao fazer login como novo usuário
+usave_ecyruspass=A senha normal do usuário deve ser inserida ou a opção Sem senha necessária, selecionada ao ativar o IMAP.
+usave_ebook=Falha ao criar a entrada do catálogo de endereços : $1 
+usave_emodbook=Falha ao modificar a entrada do catálogo de endereços : $1 
+usave_emodbookdn=Falha ao renomear a entrada da agenda : $1 
+usave_egone=O usuário não existe mais!
+usave_ex86=Este módulo não pode ser usado para definir a senha de um usuário Samba em sistemas que não sejam da Intel, pois depende de um programa x86 compilado.
+usave_esamba=Este módulo não pode ser usado para definir a senha de um usuário Samba, pois o módulo Samba Windows File Sharing não está instalado.
+usave_ealiasdup=O alias $1 já é usado por $2 
+usave_eattrdup=O objeto $1 já está usando o $2 $3 
+usave_eattrdupu=O usuário $1 já está usando o $2 $3 
+usave_eattrdupg=O grupo $1 já está usando o $2 $3 
+usave_ereal=Nome verdadeiro ausente
+usave_equota=Cota IMAP ausente ou inválida
+
+search_err=Falha na pesquisa de $1 em $2 : $3 
+
+gedit_dn=DN LDAP do grupo
+gedit_return=detalhes do grupo
+gedit_cap=Recursos de grupo
+gedit_samba=Grupo de samba?
+
+gsave_egone=O grupo não existe mais!
+gsave_edelete=Falha ao excluir o grupo do banco de dados LDAP : $1 
+gsave_eadd=Falha ao adicionar grupo ao banco de dados LDAP : $1 
+gsave_emod=Falha ao modificar o grupo no banco de dados LDAP : $1 
+gsave_emoddn=Falha ao renomear o grupo no banco de dados LDAP : $1 
+
+gdel_group=Excluindo a entrada do grupo LDAP.
+
+udel_pass=Excluindo a entrada do usuário LDAP.
+udel_book=Excluindo da lista de endereços.
+udel_imap=Excluindo pasta IMAP ..
+udel_warnimap=A caixa postal existente será excluída ao excluir o diretório inicial!
+udel_failed=.. falhou!  : $1 
+
+raw_title=Atributos LDAP
+raw_name=Nome do Atributo
+raw_value=Valores
+raw_for=Por 1
+
+batch_samba=Criar conta Samba para novos usuários?
+batch_imap=Criar conta IMAP para novos usuários?
+batch_descafter3=Nas linhas <b>create</b> e <b>modify</b>, você pode opcionalmente acrescentar campos extras contendo atributos LDAP no formato <i>nome</i> = <i>valor</i>, para ser atribuído aos usuários novos ou modificados.
+batch_eattr=Atributo LDAP inválido na linha $1 : $2 

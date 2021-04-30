@@ -1,0 +1,46 @@
+index_title=תוכניות מסוג MIME
+index_none=טרם הוגדרו תוכניות מטפל מסוג MIME.
+index_add=הוסף תוכנית חדשה מסוג MIME.
+index_type=סוג MIME
+index_program=תוכנית מטפלת
+index_cmt=תיאור
+index_delete=מחק את הנבחר
+index_disable=השבת נבחר
+index_enable=אפשר נבחרים
+index_enabled=מופעל?
+index_return=רשימת התוכניות
+
+edit_title1=צור תוכנית מסוג MIME
+edit_title2=ערוך תוכנית מסוג MIME
+edit_header=פרטי תוכנית תוכנית המטפל מסוג MIME
+edit_type=סוג MIME
+edit_enabled=מופעל?
+edit_program=תוכנית מטפלת
+edit_cmt=תיאור
+edit_egone=התוכנית כבר לא קיימת!
+edit_test=פקודת מבחן
+edit_none=אין (השתמש תמיד בתוכנית)
+edit_term=להציג פלט במסוף?
+edit_copious=מייצר המון תפוקה?
+edit_desc=תיאור סוג MIME
+
+save_err=שמירת התוכנית מסוג MIME נכשלה
+save_etype=סוג MIME חסר או לא חוקי
+save_eprogram=תוכנית מטפל חסרה
+save_eclash=כבר קיימת תוכנית מופעלת לסוג ה- MIME שהוזן
+save_etest=פקודת בדיקה חסרה או לא חוקית
+save_edesc=תיאור סוג MIME לא חוקי
+
+delete_err=מחיקת תוכניות מסוג MIME נכשלה
+disable_err=השבתת תוכניות מסוג MIME נכשלה
+disable_eclash=קיימת כבר תוכנית מסוג MIME מושבתת עבור $1 
+enable_err=הפעלת תוכניות מסוג MIME נכשלה
+enable_eclash=קיימת כבר תוכנית מסוג MIME מופעלת עבור $1 
+delete_enone=לא נבחר
+
+log_delete_mailcap=מחק תוכנית מסוג MIME עבור $1 
+log_create_mailcap=יצר תוכנית מסוג MIME עבור $1 
+log_modify_mailcap=התוכנית שונה מסוג MIME עבור $1 
+log_delete_mailcaps=נמחקו $1 תוכניות מסוג MIME
+log_disable_mailcaps=מושבת $1 תוכניות מסוג MIME
+log_enable_mailcaps=מופעל $1 תוכניות מסוג MIME

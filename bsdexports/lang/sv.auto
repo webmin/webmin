@@ -1,0 +1,52 @@
+index_title=NFS-export
+index_add=Lägg till en ny export.
+index_dirs=Kataloger
+index_clients=kunder
+index_everyone=Alla
+index_none=Ingen export har definierats än.
+index_delete=Radera vald export
+index_apply=Applicera förändringar
+index_applydesc=Klicka på den här knappen för att tillämpa den aktuella filexportkonfigurationen. Detta kommer att göra alla kataloger listade ovan tillgängliga med de angivna alternativen.
+index_return=exportlista
+index_echeck=NFS-servern kan inte användas på det här systemet : $1 
+
+check_ecmd=NFS-serverkommando $1 är inte installerat
+
+delete_err=Det gick inte att ta bort exporten
+delete_enone=Ingen vald
+
+edit_title1=Redigera Export
+edit_title2=Skapa export
+edit_header1=Exportalternativ
+edit_dirs=Kataloger att exportera
+edit_alldirs=Exportera underkataloger?
+edit_ro=Endast läst?
+edit_kerb=Använder du Kerberos?
+edit_header2=Fjärrkontroll av användare
+edit_maproot=Karta root-användare till
+edit_mapusers=Karta alla användare till
+edit_unpriv=Obehörig användare
+edit_uid=Användare / UID
+edit_gids=Och grupper / GID
+edit_mapall=Karta alla användare till
+edit_header3=Kunder för denna export
+edit_clients=kunder
+edit_hosts=Värdar / netgrupper
+edit_network=Nätverk
+edit_mask=Mask
+
+save_err=Det gick inte att spara export
+save_edir='$1' är inte en katalog eller finns inte
+save_enone=Du måste ange minst en katalog för att exportera
+save_esub=Endast en katalog kan ges om alternativet <b>exportunderkataloger</b> är valt
+save_eroot=När du använder alternativet <b>exportunderkataloger</b> måste den exporterade katalogen vara roten till ett <i>lokalt</i> filsystem
+save_euser='$1' är inte en giltig användare eller UID
+save_egroup='$1' är inte en giltig grupp eller GID
+save_ekerb=Kartorotanvändare, kartlägga alla användare och kerberosalternativ är ömsesidigt exklusiva
+save_ehosts=Du måste ange minst en värd att exportera till
+save_enetwork='$1' är inte ett giltigt nätverk
+save_enetmask='$1' är inte ett giltigt nätmask
+save_esame1=Katalogen <tt>$1</tt> exporteras redan till <tt>$2</tt>. Ditt operativsystem tillåter inte kataloger på samma <i>lokala</i> filsystem att exporteras till samma värd separat
+save_esame2=Katalogen <tt>$1</tt> exporteras redan till <tt>$2</tt>. Ditt operativsystem tillåter inte kataloger på samma <i>lokala</i> filsystem att exporteras till samma nätverk separat
+
+restart_err=Det gick inte att tillämpa ändringar

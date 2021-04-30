@@ -1,0 +1,3 @@
+name_th=fetchmail
+desc_th=Fetchmail Mail Retrieval
+longdesc_th=กำหนดค่าโปรแกรม fetchmail ที่เป็นที่นิยมสำหรับการดึงจดหมายจากเซิร์ฟเวอร์อื่นโดยอัตโนมัติ

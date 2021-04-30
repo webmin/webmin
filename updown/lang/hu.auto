@@ -1,0 +1,15 @@
+index_descdownload=Ez az űrlap lehetővé teszi fájlok vagy weboldalak letöltését a HTTP vagy FTP URL-ekből a Webmin futtató rendszerbe. A letöltés azonnal elvégezhető, vagy a jövőben egy bizonyos időre tervezhető.
+
+download_enone=Nincs megadva letölthető URL
+
+fetch_ezip=A könyvtárat csak akkor lehet letölteni, ha a <tt>zip</tt> parancs telepítve van
+fetch_eroot=A gyökérkönyvtár nem tölthető le!
+
+email_downmsg=A következő letöltés befejeződött :
+email_extfailed=a kinyerés sikertelen : $1 
+email_extdone_zip=ZIP fájl kibontva
+email_extdone_tar=A TAR fájl kibontva
+email_extdone_tgz=Gzipelt TAR fájl kibontva
+email_extdone_tbz2=A tömörített TAR fájl kibontva
+email_extdone_lha=Az LHArc fájl kibontva
+email_upmsg=A következő feltöltések befejeződtek :

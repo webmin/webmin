@@ -1,0 +1,40 @@
+index_type=Tipo de clave SSH:
+index_rsa1=RSA (para SSH v1)
+index_rsa=RSA (para SSH v2)
+index_dsa=DSA (para SSH v2)
+
+users_dsa=¿Permitir autenticación DSA (SSH 2)?
+users_authkeys_set=Archivo debajo de casa
+users_eauthkeys=Archivo de claves autorizadas faltantes o de aspecto no válido
+users_maxauthtries=Intentos máximos de inicio de sesión por conexión
+users_emaxauthtries=Número de intentos de inicio de sesión faltantes o no numéricos por conexión
+users_chal=¿Usar autenticación de desafío-respuesta?
+
+net_all4=Todas las direcciones IPv4
+net_all6=Todas las direcciones IPv6
+net_sel=Habla a ..
+
+host_prots1=Solo 1
+host_prots2=Solo 2
+host_prots12=1 y luego 2
+host_prots21=2 y luego 1
+
+log_manual=Edición manual del archivo de configuración $1
+
+sync_type=Tipo de llave
+sync_auto=&lt;Automático&gt;
+
+keys_title=Host SSH Keys
+keys_desc=Esta página le permite ver las claves SSH para este host.
+keys_none=No se encontraron entradas de HostKey en su configuración SSHD.
+
+manual_title=Editar archivos de configuración
+manual_ecannot=No tiene permiso para editar el archivo de configuración del servidor SSH
+manual_ok=Editar
+manual_efile=El archivo seleccionado no forma parte de la configuración del servidor SSH
+manual_file=Editar archivo de configuración:
+manual_edata=¡Nada entró!
+manual_err=Error al guardar el archivo de configuración
+
+dknown_err=Error al eliminar hosts conocidos
+dknown_enone=Ninguna seleccionada

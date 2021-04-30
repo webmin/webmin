@@ -1,0 +1,57 @@
+index_title=NFS-aandele
+index_add=Begin om 'n nuwe gids te deel.
+index_dir=Gids
+index_clients=kliënte
+index_everyone=almal
+index_delete=Vee geselekteerde aandele uit
+index_none=Daar word tans geen kaarte vir hierdie stelsel uitgevoer nie.
+index_apply=Pas veranderinge toe
+index_applydesc=Klik op hierdie knoppie om die huidige konfigurasie van lêerdeling toe te pas. Dit sal al die bogenoemde kaarte beskikbaar stel met die gespesifiseerde opsies.
+index_return=lys van aandele
+
+edit_title1=Wysig Deel
+edit_title2=Skep Deel
+edit_header1=Deel besonderhede
+edit_dir=Gids
+edit_desc=beskrywing
+edit_ro=Leesalleen toegang
+edit_rw=Lees-skryf toegang
+edit_root=Worteltoegang
+edit_none=Geen
+edit_all=Alle gashere
+edit_listed=Genoteerde gashere ..
+edit_header2=Aandele-opsies
+edit_nosub=Laat montering van sub-gidse toe?
+edit_nosuid=Laat sekere lêers toe?
+edit_des=Kliënte moet DES gebruik?
+edit_kerberos=Kliënte moet kerberos gebruik?
+edit_anon=Anonieme gebruiker
+edit_anon0=Nie gestel nie
+edit_anon1=Geen toegang
+edit_aclok=Laat ACL's toe?
+edit_public=WebNFS-aandeel?
+edit_index=WebNFS-indekslêer
+
+save_err=Die deling kon nie gestoor word nie
+save_edirectory='$1' is nie 'n geldige gidsnaam nie
+save_edirectory2=Die gids '$1' bestaan nie
+save_erw=U het geen gashere gelys om mee te lees-skryf nie
+save_ero=U het geen gashere gelys om net leesalleen mee te deel nie
+save_eroot=U het geen gashere gelys om mee wortel te deel nie
+save_ealready=Die gids '$1' word reeds gedeel
+save_ehost=Die gasheer '$1' bestaan nie
+
+log_modify=Gewysigde NFS-aandeel $1 
+log_rename=NFS-aandeel $1 na $2 verander
+log_create=NFS-aandeel $1 geskep
+log_delete=NFS-aandeel $1 is uitgevee
+log_apply=Toegepaste wysigings
+
+acl_view=Kan NFS-aandele verander?
+
+ecannot=U mag nie NFS-aandele bestuur nie
+
+delete_err=Kon nie delings uitvee nie
+delete_enone=Geen gekies nie
+
+restart_err=Kon nie veranderinge toepas nie

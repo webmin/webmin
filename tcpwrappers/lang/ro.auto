@@ -1,0 +1,33 @@
+index_title=Învelitori TCP
+index_return=index
+index_allowtitle=Gazde permise
+index_denytitle=Gazde refuzate
+index_norule=Nu au fost definite încă reguli în <tt>$1</tt>.
+index_nofile=Fișierul „$1” nu există - verificați <a href="/config.cgi?tcpwrappers">configurația modulului</a>
+index_add=Adăugați o nouă regulă.
+index_service=daemon
+index_hosts=gazdele
+index_cmd=Comanda
+index_delete=Sterge selectia
+index_none=nici unul
+
+edit_title1allow=Creați Permiteți o regulă
+edit_title2allow=Editați Permite regula
+edit_title1deny=Creați regula negării
+edit_title2deny=Editează regula negării
+edit_eid=Această regulă nu a fost găsită
+edit_header=Opțiuni de regulă
+edit_service=Servicii
+edit_except=Cu excepția serviciilor
+edit_hosts=Gazde la distanță
+edit_hostsexcept=Cu excepția gazdelor
+edit_cmd=Porunci Shell
+edit_efound=Daemon „$1” nu a fost găsit în configurația xinetd.
+
+save_errtitle=Eroare la regula de salvare
+save_ehost=Intrarea gazdă conține caractere rele
+save_ecmd=Intrarea comenzii conține caractere rele
+save_eservice=Numele de demoni conțin caractere rele
+
+del_errtitle=Eroare la ștergerea regulilor
+del_enone=Nu există reguli marcate pentru ștergere

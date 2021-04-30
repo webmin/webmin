@@ -1,0 +1,35 @@
+index_forcecpan=一律从源代码安装最新版本
+index_delete=卸载模块
+index_upgrade=升级模块
+index_recs=Webmin建议安装以下Perl模块：
+index_user=$1（由 $2使用）
+index_recsok=安装选定的模块
+index_recsgot=已安装Webmin推荐的以下所有Perl模块： $1
+index_ezone=Perl似乎与全局区域共享，因此无法在此处安装模块。必须将它们安装在全局区域中。
+index_none=在您的系统上找不到已安装的Perl模块。
+index_tabmods=现有模块
+index_tabinstall=安装模块
+index_tabsuggest=建议模块
+index_allmods2=Webmin使用的缺少模块
+index_wantmods=要安装的模块
+
+download_ecpangz=URL $1不是CPAN模块列表。检查模块配置。
+download_ebuild=需要构建 $1的一个或多个Perl模块，但是尚未安装此Perl模块。
+download_yum=从软件包 $2..中安装Perl模块 $1。
+download_missingok=CPAN中缺少的模块
+download_fallback=有些模块无法从软件包安装，而是尝试从源代码安装。
+
+edit_method=从安装
+edit_rpm=RPM软件包 $1
+edit_debian=Debian软件包 $1
+edit_manual=手动安装Perl模块
+
+uninstall_rpm=卸载 $1 RPM软件包将删除该模块。
+uninstall_debian=卸载 $1 Debian软件包将删除该模块。
+uninstall_err=无法卸载模块
+
+uninstalls_title=卸载模块
+uninstalls_err=无法卸载模块
+uninstalls_enone=未选择
+uninstalls_emod=$1失败： $2
+uninstalls_rusure=您确定要卸载 $1所选模块吗？ $2个子模块和 $3个文件将被删除。

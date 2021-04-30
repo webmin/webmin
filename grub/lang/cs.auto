@@ -1,0 +1,14 @@
+title_noverify=Nepřipojujte a neověřujte oddíl
+title_modules=Extra moduly
+title_none1=Žádný
+title_none2=(položka nabídky bez zavádění systému)
+
+global_forever=Počkej navždy
+
+log_create_title=Byla vytvořena možnost spuštění $1 
+log_delete_title=Smazaná možnost spuštění $1 
+log_modify_title=Upravená možnost spuštění $1 
+log_up_title=Možnost přesunutí nahoru $1 
+log_down_title=Možnost spouštění dolů $1 
+log_global=Změněny globální možnosti
+log_install=Nainstalovaný GRUB

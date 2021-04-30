@@ -1,0 +1,7 @@
+index_einetd=Ve vašem systému není nainstalován <tt>inetd</tt> ani <tt>xinetd</tt>. Jeden je třeba poslouchat přijímat síťová připojení a předávat <tt>stunnel</tt>.
+index_eversion=Verze STunnel nainstalovaná ve vašem systému je $1, ale tento modul nepodporuje verzi $2 a vyšší.
+index_conf=Z konfiguračního souboru $1 
+index_noconf=Žádný konfigurační soubor!
+index_delete=Smazat vybrané tunely
+
+log_delete_stunnels=Smazáno $1 SSL tunelů

@@ -1,0 +1,18 @@
+index_title=Komanda Shell
+index_ok=Izvrši naredbu:
+index_history=Povijest zapovijedi
+index_clear=Čista povijest
+index_clearcmds=Izbriši naredbe
+index_desc=Unesite tekst naredbe za ljuštenje u tekstualno polje ispod. Naredba <tt>cd</tt> može se koristiti za promjenu direktorija za naredne naredbe.
+index_pok=Izvršite prethodnu naredbu
+index_edit=Uređivanje prethodnog
+index_trunced=Ukupni učinak $2 smanjen je na $1.
+index_timedout=Naredba je prekinuta nakon pokretanja $1 sekunde.
+
+acl_user=Izvršite naredbe kao korisnik
+acl_user_def=Trenutačni korisnik Webmina
+acl_shellenv=Koristite odabrano okruženje korisnika?
+acl_chroot=Chroot u imenik
+
+log_run=Naredba ran $1 
+log_clear=Izbrisana povijest naredbi

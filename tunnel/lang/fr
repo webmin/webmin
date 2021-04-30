@@ -1,13 +1,21 @@
+index_elink=Aucune URL vers laquelle effectuer un tunnel n'a encore été définie.
+index_url=Entrez une URL à ouvrir :
 index_open=Ouvrir
-index_url=Entrez une URL &#224; ouvrir :
-link_ebadurl=Vous n'&#234;tes pas autoris&#233; &#224; acc&#233;der &#224; l'URL $1
-link_enouser=Un identifiant et un mot de passe sont requis pour se connecter &#224; $1 mais aucun n'a &#233;t&#233; configur&#233;.
-login_clear=Effacer
-login_desc=Vous devez sp&#233;cifiez un identifiant et un mot de passe pour de connecter &#224; $1.
-login_header=Authentification au site Web
-login_login=Identifiant
-login_pass=Mot de passe
+
+link_eurl=URL de tunnel non valide : $1
+link_elogin=Échec de la connexion à $1 en tant que $2.
+link_eautologin=Identifiant ou mot de passe non valide pour $1. <a href='$2'>Cliquez ici</a> pour vous connecter.
+link_enouser=Un identifiant et un mot de passe sont requis pour se connecter à $1 mais aucun n'a été configuré.
+link_ebadurl=Vous n'êtes pas autorisé à accéder à l'URL $1
+link_mconfig=Utilisez la page <a href='$1'>de configuration du module</a> pour modifier la connexion.
+
 login_title=Connexion au site Web
+login_desc=Vous devez spécifiez un identifiant et un mot de passe pour de connecter à $1.
+login_header=Authentification au site Web
 login_user=Identifiant
-seturl_err=L'ouverture de l'URL a &#233;chou&#233;
-seturl_eurl=Vous avez entr&#233; une URL invalide
+login_pass=Mot de passe
+login_login=Identifiant
+login_clear=Effacer
+
+seturl_err=L'ouverture de l'URL a échoué
+seturl_eurl=Vous avez entré une URL invalide

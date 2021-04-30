@@ -1,0 +1,21 @@
+index_elink=Ainda não foi definido nenhum URL para o encapsulamento.
+index_url=Digite o URL para abrir:
+index_open=Aberto
+
+link_eurl=URL de encapsulamento inválido : $1 
+link_elogin=Falha ao fazer login em $1 como $2.
+link_eautologin=Login ou senha inválida para $1. <a href='$2'>Clique aqui</a> para fazer login.
+link_enouser=É necessário um nome de usuário e senha para fazer login em $1, mas nenhum foi configurado.
+link_ebadurl=Você não tem permissão para acessar o URL $1 
+link_mconfig=Use a página de configuração do módulo <a href='$1'></a> para alterar o login.
+
+login_title=Entrar no site
+login_desc=Você deve fornecer um nome de usuário e senha para fazer login em $1.
+login_header=Autenticação de site
+login_user=Nome do usuário
+login_pass=Senha
+login_login=Conecte-se
+login_clear=Claro
+
+seturl_err=Falha ao abrir o URL
+seturl_eurl=URL inválido inserido

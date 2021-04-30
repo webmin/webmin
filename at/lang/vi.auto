@@ -1,0 +1,81 @@
+index_title=Các lệnh được lên lịch
+index_header=Lệnh mới theo lịch trình
+index_user=Chạy với tư cách người dùng
+index_date=Chạy đúng ngày
+index_time=Chạy đúng lúc
+index_cmd=Các lệnh thực thi
+index_mail=Gửi email khi hoàn thành?
+index_id=ID công việc
+index_exec=Chạy tại
+index_created=Được tạo ra
+index_dir=Chạy trong thư mục
+index_return=danh sách lệnh
+index_cdate=Ngay hiện tại
+index_ctime=Thời điểm hiện tại
+index_allow=Người dùng lệnh được lên lịch
+index_amode=Người dùng cho phép
+index_amode0=Tất cả người dùng Unix
+index_amode1=Chỉ người dùng được liệt kê ..
+index_amode2=Tất cả ngoại trừ người dùng được liệt kê ..
+index_delete=Hủy bỏ các lệnh đã chọn
+index_noat=Lệnh $1 không được tìm thấy trên hệ thống của bạn - có thể nó chưa được cài đặt hoặc không có sẵn cho hệ điều hành của bạn.
+index_nostyle=Webmin không biết cách quản lý các lệnh lịch trình trên hệ điều hành này.
+index_stop=Dừng máy chủ lệnh đã lên lịch
+index_stopdesc=Tắt quá trình máy chủ nền <tt>atd</tt> chạy các lệnh đã lên lịch. Điều này sẽ ngăn không cho các lệnh thực thi vào những thời điểm cụ thể của chúng.
+index_start=Khởi động máy chủ lệnh đã lên lịch
+index_startdesc=Khởi động quy trình máy chủ nền <tt>atd</tt> chạy các lệnh đã lên lịch. Điều này là bắt buộc để các lệnh thực thi tại thời điểm xác định của chúng.
+index_boot=Khởi động máy chủ lúc khởi động?
+index_bootdesc=Thay đổi cài đặt này để bật hoặc tắt khởi động máy chủ lệnh đã lên lịch tại thời điểm khởi động hệ thống.
+
+edit_title=Lệnh theo lịch trình
+edit_cmd=Kịch bản đầy đủ để thực thi
+edit_shortcmd=Lệnh thực thi
+edit_header=Chi tiết lệnh theo lịch trình
+edit_delete=Hủy lệnh này
+edit_run=Chạy ngay đi
+edit_ejob=Lệnh theo lịch trình không còn tồn tại!
+edit_ecannot=Bạn không được phép chỉnh sửa lệnh theo lịch trình này
+edit_showfull=Hiển thị kịch bản đầy đủ.
+
+create_err=Không thể tạo lệnh lịch biểu
+create_euser=Tên người dùng bị thiếu hoặc không hợp lệ
+create_edate=Ngày hoặc thời gian bị thiếu hoặc không hợp lệ
+create_ecmd=Không có lệnh nào được nhập
+create_efuture=Ngày giờ là quá khứ
+create_edir=Thư mục bị thiếu hoặc không hợp lệ
+create_ecannot=Bạn không được phép tạo các lệnh theo lịch trình cho người dùng này
+create_eallow=Người dùng được chỉ định không được phép chạy các lệnh theo lịch trình
+
+delete_err=Không thể hủy lệnh
+delete_egone=Lệnh đã chạy hoặc bị xóa
+
+acl_users=Có thể chỉnh sửa các lệnh theo lịch trình cho
+acl_all=Tất cả người dùng
+acl_this=Người dùng Webmin hiện tại
+acl_only=Chỉ người dùng
+acl_except=Tất cả ngoại trừ người dùng
+acl_allow=Có thể chỉnh sửa cho phép Tại người dùng?
+
+run_title=Chạy lệnh
+run_output=Đầu ra từ lệnh theo lịch trình ..
+run_none=Không có đầu ra được tạo ra
+
+allow_err=Không thể lưu người dùng được phép
+allow_ecannot=Bạn không được phép quản lý người dùng được phép
+allow_eusers=Không có người dùng nào được nhập
+
+deletes_err=Không thể hủy lệnh
+deletes_enone=Không được chọn
+
+log_allow=Thay đổi người dùng được phép
+log_create_job=Tạo lệnh theo lịch trình cho $1 
+log_delete_job=Lệnh đã hủy theo lịch trình cho $1 
+log_exec_job=Đã thực hiện lệnh theo lịch trình cho $1 
+log_delete_jobs=Đã hủy $1 lệnh theo lịch
+log_stop=Máy chủ lệnh đã lên lịch đã dừng
+log_start=Đã khởi động máy chủ lệnh theo lịch trình
+log_bootup=Đã bật máy chủ lệnh được lập lịch khi khởi động
+log_bootdown=Đã tắt máy chủ lệnh đã lên lịch khi khởi động
+
+stop_err=Không dừng được máy chủ
+start_err=Không khởi động được máy chủ

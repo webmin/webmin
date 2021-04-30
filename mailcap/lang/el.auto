@@ -1,0 +1,46 @@
+index_title=Προγράμματα τύπου MIME
+index_none=Κανένα πρόγραμμα χειρισμού τύπου MIME δεν έχει καθοριστεί ακόμα.
+index_add=Προσθέστε ένα νέο πρόγραμμα τύπου MIME.
+index_type=Τύπος MIME
+index_program=Πρόγραμμα χειριστή
+index_cmt=Περιγραφή
+index_delete=Διαγραφή επιλεγμένων
+index_disable=Απενεργοποίηση επιλεγμένων
+index_enable=Ενεργοποίηση επιλεγμένων
+index_enabled=Ενεργοποιήθηκε;
+index_return=λίστα προγραμμάτων
+
+edit_title1=Δημιουργία προγράμματος τύπου MIME
+edit_title2=Επεξεργασία προγράμματος MIME Type
+edit_header=Λεπτομέρειες προγράμματος χειριστή τύπου MIME
+edit_type=Τύπος MIME
+edit_enabled=Ενεργοποιήθηκε;
+edit_program=Πρόγραμμα χειριστή
+edit_cmt=Περιγραφή
+edit_egone=Το πρόγραμμα δεν υπάρχει πλέον!
+edit_test=Δοκιμή εντολής
+edit_none=Καμία (πάντοτε χρήση προγράμματος)
+edit_term=Εμφάνιση της εξόδου στο τερματικό;
+edit_copious=Παράγει πολλά αποτελέσματα;
+edit_desc=Περιγραφή τύπου MIME
+
+save_err=Αποτυχία αποθήκευσης προγράμματος τύπου MIME
+save_etype=Λείπει ή μη έγκυρος τύπος MIME
+save_eprogram=Λείπει πρόγραμμα χειριστή
+save_eclash=Υπάρχει ήδη ενεργοποιημένο πρόγραμμα για τον καταχωρημένο τύπο MIME
+save_etest=Λανθασμένη ή μη έγκυρη εντολή δοκιμής
+save_edesc=Μη έγκυρη περιγραφή τύπου MIME
+
+delete_err=Δεν ήταν δυνατή η διαγραφή προγραμμάτων τύπου MIME
+disable_err=Αποτυχία απενεργοποίησης προγραμμάτων τύπου MIME
+disable_eclash=Ένα απενεργοποιημένο πρόγραμμα τύπου MIME για το $1 υπάρχει ήδη
+enable_err=Αποτυχία ενεργοποίησης προγραμμάτων τύπου MIME
+enable_eclash=Υπάρχει ήδη ενεργοποιημένο πρόγραμμα τύπου MIME για το $1 
+delete_enone=Δεν έχει επιλεγεί
+
+log_delete_mailcap=Διαγράψτε το πρόγραμμα τύπου MIME για το $1 
+log_create_mailcap=Δημιουργήθηκε πρόγραμμα τύπου MIME για το $1 
+log_modify_mailcap=Τροποποιημένο πρόγραμμα τύπου MIME για το $1 
+log_delete_mailcaps=Διαγράφηκαν $1 προγράμματα τύπου MIME
+log_disable_mailcaps=Απενεργοποιημένα προγράμματα $1 MIME
+log_enable_mailcaps=Ενεργοποιήθηκαν $1 προγράμματα τύπου MIME

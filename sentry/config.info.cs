@@ -1,0 +1,16 @@
+sec1=Nastavení hlídače portů,11
+portsentry=Cesta k démonu Portsentry,0
+portsentry_config=Cestra ke konfiguračnímu souboru Portsentry,0
+portsentry_pid=Portsentry PID soubo,3,None
+portsentry_ignore=Portsentry soubor ingnorovaných hostů,3,Najít z konfigurace
+portsentry_start=Příkaz spouštějící portsentry,3,Spustit démony v níže uvedených módech
+portsentry_stop=Příkaz k ukončení portsentry,3,Zabít procesy
+portsentry_tmode=Portsentry TCP mód,1,tcp-Základní port,stcp-Stealth mód,atcp-Rozšířený stealth mód
+portsentry_umode=Portsentry UDP mód,1,tcp-Základní port,stcp-Stealth mód,atcp-Rozšířený stealth mód
+sec2=Nastavení Hostsentry,11
+hostsentry=Cesta k hostsentry.py python skriptu,0
+hostsentry_config=Cesta k hostsentry konfiguračnímu souboru,0
+hostsentry_start=Příkaz pro spuštění hostsentry,3,Spustit python skript
+hostsentry_stop=Příkaz pro ukončení hostsentry,3,Zabít procesy
+sec3=Nastavení Logcheck,11
+logcheck=Cesta k logcheck.sh skriptu,0

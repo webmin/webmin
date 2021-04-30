@@ -1,0 +1,37 @@
+index_title=Cluster Cron İş İlanları
+index_add=Yeni bir küme cron işi oluşturun.
+index_none=Hiçbir küme cron işi tanımlanmadı.
+index_servers=Sunucularda çalıştır
+index_return=cluster cron iş listesi
+index_more=$1 tane daha ..
+index_run=Şimdi koş ..
+index_actions=Hareketler
+
+edit_title=Küme Cron İşini Düzenle
+create_title=Küme Cron İşi Oluştur
+edit_servers=Sunucularda çalıştır
+edit_group=$1 üyeleri
+edit_this=bu sunucu
+edit_all=&lt;Tüm ana makineler&gt;
+edit_emissing=Cron işi artık mevcut değil!
+
+save_err=Küme cron işi kaydedilemedi
+
+exec_title=Küme Cron İşini Yürüt
+exec_cmd=$1 seçili sunucularda çalıştırılıyor.
+exec_failed= $1 : $2 üzerinde çalıştırılamadı
+exec_success=$1 'den çıktı ..
+exec_nohosts=Çalıştırmak için seçilen ana bilgisayar yok veya seçilen gruplar kullanılabilir ana bilgisayar içermiyor.
+
+log_run=$2 sunucusunda $1 koştu
+log_run_l=$2 üzerinde $1 koştu
+log_create=$1 için küme cron işi oluşturuldu
+log_create_l=$1 için küme cron işi $2 oluşturuldu
+log_modify=$1 için küme cron işi değiştirildi
+log_modify_l=$1 için küme cron işi $2 değiştirildi
+log_delete=$1 için küme cron işi silindi
+log_delete_l=$1 için küme cron işi $2 silindi
+log_deletes=$1 küme cron işi silindi
+
+delete_err=Küme cron işleri silinemedi
+delete_enone=Hiçbiri seçilmedi

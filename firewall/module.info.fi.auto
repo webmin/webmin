@@ -1,0 +1,3 @@
+desc_fi=Linux-palomuuri
+name_fi=palomuuri
+longdesc_fi=Määritä Linux-palomuuri iptable-ohjelmien avulla. Mahdollistaa kaikkien taulukoiden, ketjujen, sääntöjen ja asetusten muokkaamisen.

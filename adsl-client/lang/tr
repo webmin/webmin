@@ -1,59 +1,64 @@
-index_boot=Açılışta başlat
-index_bootdesc=Açılışta ADSL bağlantınızın başlayıp başlamayacağını kontrol etmek için bu seçeneği değiştiriniz.
-index_bytes=byte
-index_cancel=Bağlantıyı iptal et
-index_canceldesc=ADSL istemcisi bir bağlantı kurmaya çalışıyor. Bu butonu tıkladığınızda bağlantı denemesi $1 komutu ile iptal edilecektir.
-index_connect=Bağlantı için beklenecek süre
-index_demand=İstek üzerine bağlantı yapılsın mı?
-index_desc=Aşağıdaki ayarlar sisteminizde başlatılacak olan yeni ADSL bağlantılarına uygulanacaktır. Eğer bunları değiştirirseniz, aktif hale gelmesi için bağlantıyı kapamalı ve yeniden başlatmalısınız.
-index_dns=DNS yapılandırması ISP'den alınsın mı?
-index_eadsl=RP-PPPoE komutu $1 sisteminizde bulunamadı. Kurulmamış ya da <a href='$2'>modül yapılandırmanız</a> yanlış olabilir.
-index_econfig=RP-PPPoE ADSL yapılandırma dosyası $1 sisteminizde bulunamadı. Kurulmamış ya da <a href='$2'>modül yapılandırmanız</a> yanlış olabilir.
-index_emodem=Mevcut yapılandırma dosyası bir ADSL bağlantısı için değil, RedHat Linux üzerindeki bir modeme aittir. <a href='$2'>Modül yapılandırması</a> sayfasından $1'de başka bir <tt>ifcfg-ppp*</tt> dosyası seçebilir, ya da mevcut değilse modülün sizin için oluşturmasını sağlayabilirsiniz.
-index_esetup=RedHat ADSL yapılandırma dosyası $1 sisteminizde mevcut değil. Aşağıdaki butona tıkladığından temel ayarlara sahip bir dosya oluşturulacaktır.
-index_eth=Ethernet arayüzü
-index_forever=Daima
-index_fw=Bağlantıda aktive edilecek güvenlik duvarı
-index_fw_masquerade=NAT ağ geçidi için
-index_fw_none=Yok
-index_fw_standalone=Tek makine için
-index_header=ADSL istemcisi yapılandırma seçenekleri
-index_mss=Paket boyutu sınırlansın mı?
-index_other=Diğer..
-index_psize=Evet, bu şekilde
-index_return=modül ana sayfası
-index_save=Yapılandırmayı kaydet
-index_sec=Parola
-index_secs=saniye
-index_setup=Yapılandırma dosyasını ayarla
-index_start=ADSL'i Başlat
-index_startdesc=ADSL bağlantınız aktif değil. Bu butonu tıkladığınızda bağlantı $1 komutu ile başlayacaktır.
+index_title=ADSL Ä°stemcisi
+index_eadsl=RP-PPPoE komutu $1 sisteminizde bulunamadÄ±. KurulmamÄ±ÅŸ ya da <a href='$2'>modÃ¼l yapÄ±landÄ±rmanÄ±z</a> yanlÄ±ÅŸ olabilir.
+index_econfig=RP-PPPoE ADSL yapÄ±landÄ±rma dosyasÄ± $1 sisteminizde bulunamadÄ±. KurulmamÄ±ÅŸ ya da <a href='$2'>modÃ¼l yapÄ±landÄ±rmanÄ±z</a> yanlÄ±ÅŸ olabilir.
+index_emodem=Mevcut yapÄ±landÄ±rma dosyasÄ± bir ADSL baÄŸlantÄ±sÄ± iÃ§in deÄŸil, RedHat Linux Ã¼zerindeki bir modeme aittir. <a href='$2'>ModÃ¼l yapÄ±landÄ±rmasÄ±</a> sayfasÄ±ndan $1'de baÅŸka bir <tt>ifcfg-ppp*</tt> dosyasÄ± seÃ§ebilir, ya da mevcut deÄŸilse modÃ¼lÃ¼n sizin iÃ§in oluÅŸturmasÄ±nÄ± saÄŸlayabilirsiniz.
 index_stop=ADSL'i Kapat
-index_stopdesc=ADSL bağlantınız $1 IP adresi ile aktif. Bu butonu tıkladığınızda bağlantı $1 komutu ile kapatılacaktır.
-index_timeout=Evet, bu sürede 
-index_title=ADSL İstemcisi
-index_user=Kullanıcı adı
-index_version=RP-PPPoE sürüm $1
-log_bootdown=ADSL'in açılışta başlaması kapatıldı
-log_bootup=ADSL'in açılışta başlaması açıldı
-log_save=istemci yapılandırması kaydedildi
-log_setup=Öntanımlı yapılandırma yapıldı
-log_start=ADSL başladı
-log_stop=ADSL kapatıldı
-save_desc=ADSL istemcisi yapılandırmanız başarı ile kaydedildi, ama yeniden bağlanılana kadar kullanılmayacaktır.
-save_econnect=Eksik ya da geçersiz bağlantı gecikme süresi
-save_eeth=Eksik ya da geçersiz ethernet arayüzü
-save_emss=Eksik ya da geçersiz maksimum paket boyutu
-save_err=ADSL yapılandırmasının kaydedilmesinde hata oluştu
-save_etimeout=Eksik ya da geçersiz istek üzerine bağlantı gecikme süresi
-save_euser=Eksik ya da geçersiz kullanıcı adı
-save_title=Yapılandırmayı Kaydet
-start_bg=ADSL bağlantınız 20 saniye içinde başlatılacaktır. ADSL istemci programı başarılı olana kadar bağlanmayı deneyecektir.
-start_demand=İstek üzerine bağlantı aktif olduğundan ADSL bağlantınız sadece gerektiğinde başlatılacaktır.
-start_err=ADSL bağlantısının başlatılmasında hata oluştu
-start_ip=ADSL bağlantısı $1 IP adresi ile oluşturuldu.
-start_title=ADSL'i Başlat
-stop_err=ADSL bağlantısının kapatılmasında hata oluştu
-stop_failed=ADSL bağlantısını bir sebepten dolayı hala aktif!
-stop_ok=ADSL bağlantınız başarı ile kapatıldı.
+index_stopdesc=ADSL baÄŸlantÄ±nÄ±z $1 IP adresi ile aktif. Bu butonu tÄ±kladÄ±ÄŸÄ±nÄ±zda baÄŸlantÄ± $1 komutu ile kapatÄ±lacaktÄ±r.
+index_start=ADSL'i BaÅŸlat
+index_startdesc=ADSL baÄŸlantÄ±nÄ±z aktif deÄŸil. Bu butonu tÄ±kladÄ±ÄŸÄ±nÄ±zda baÄŸlantÄ± $1 komutu ile baÅŸlayacaktÄ±r.
+index_boot=AÃ§Ä±lÄ±ÅŸta baÅŸlat
+index_bootdesc=AÃ§Ä±lÄ±ÅŸta ADSL baÄŸlantÄ±nÄ±zÄ±n baÅŸlayÄ±p baÅŸlamayacaÄŸÄ±nÄ± kontrol etmek iÃ§in bu seÃ§eneÄŸi deÄŸiÅŸtiriniz.
+index_return=modÃ¼l ana sayfasÄ±
+index_version=RP-PPPoE sÃ¼rÃ¼m $1
+index_esetup=RedHat ADSL yapÄ±landÄ±rma dosyasÄ± $1 sisteminizde mevcut deÄŸil. AÅŸaÄŸÄ±daki butona tÄ±kladÄ±ÄŸÄ±ndan temel ayarlara sahip bir dosya oluÅŸturulacaktÄ±r.
+index_setup=YapÄ±landÄ±rma dosyasÄ±nÄ± ayarla
+index_cancel=BaÄŸlantÄ±yÄ± iptal et
+index_canceldesc=ADSL istemcisi bir baÄŸlantÄ± kurmaya Ã§alÄ±ÅŸÄ±yor. Bu butonu tÄ±kladÄ±ÄŸÄ±nÄ±zda baÄŸlantÄ± denemesi $1 komutu ile iptal edilecektir.
+
+index_header=ADSL istemcisi yapÄ±landÄ±rma seÃ§enekleri
+index_desc=AÅŸaÄŸÄ±daki ayarlar sisteminizde baÅŸlatÄ±lacak olan yeni ADSL baÄŸlantÄ±larÄ±na uygulanacaktÄ±r. EÄŸer bunlarÄ± deÄŸiÅŸtirirseniz, aktif hale gelmesi iÃ§in baÄŸlantÄ±yÄ± kapamalÄ± ve yeniden baÅŸlatmalÄ±sÄ±nÄ±z.
+index_eth=Ethernet arayÃ¼zÃ¼
+index_other=DiÄŸer..
+index_demand=Ä°stek Ã¼zerine baÄŸlantÄ± yapÄ±lsÄ±n mÄ±?
+index_timeout=Evet, bu sÃ¼rede 
+index_secs=saniye
+index_user=KullanÄ±cÄ± adÄ±
+index_sec=Parola
+index_dns=DNS yapÄ±landÄ±rmasÄ± ISP'den alÄ±nsÄ±n mÄ±?
+index_save=YapÄ±landÄ±rmayÄ± kaydet
+index_mss=Paket boyutu sÄ±nÄ±rlansÄ±n mÄ±?
+index_psize=Evet, bu ÅŸekilde
+index_bytes=byte
+index_fw=BaÄŸlantÄ±da aktive edilecek gÃ¼venlik duvarÄ±
+index_fw_none=Yok
+index_fw_standalone=Tek makine iÃ§in
+index_fw_masquerade=NAT aÄŸ geÃ§idi iÃ§in
+index_connect=BaÄŸlantÄ± iÃ§in beklenecek sÃ¼re
+index_forever=Daima
+
+start_err=ADSL baÄŸlantÄ±sÄ±nÄ±n baÅŸlatÄ±lmasÄ±nda hata oluÅŸtu
+start_title=ADSL'i BaÅŸlat
+start_ip=ADSL baÄŸlantÄ±sÄ± $1 IP adresi ile oluÅŸturuldu.
+start_demand=Ä°stek Ã¼zerine baÄŸlantÄ± aktif olduÄŸundan ADSL baÄŸlantÄ±nÄ±z sadece gerektiÄŸinde baÅŸlatÄ±lacaktÄ±r.
+start_bg=ADSL baÄŸlantÄ±nÄ±z 20 saniye iÃ§inde baÅŸlatÄ±lacaktÄ±r. ADSL istemci programÄ± baÅŸarÄ±lÄ± olana kadar baÄŸlanmayÄ± deneyecektir.
+
+save_err=ADSL yapÄ±landÄ±rmasÄ±nÄ±n kaydedilmesinde hata oluÅŸtu
+save_eeth=Eksik ya da geÃ§ersiz ethernet arayÃ¼zÃ¼
+save_etimeout=Eksik ya da geÃ§ersiz istek Ã¼zerine baÄŸlantÄ± gecikme sÃ¼resi
+save_euser=Eksik ya da geÃ§ersiz kullanÄ±cÄ± adÄ±
+save_econnect=Eksik ya da geÃ§ersiz baÄŸlantÄ± gecikme sÃ¼resi
+save_emss=Eksik ya da geÃ§ersiz maksimum paket boyutu
+save_title=YapÄ±landÄ±rmayÄ± Kaydet
+save_desc=ADSL istemcisi yapÄ±landÄ±rmanÄ±z baÅŸarÄ± ile kaydedildi, ama yeniden baÄŸlanÄ±lana kadar kullanÄ±lmayacaktÄ±r.
+
+stop_err=ADSL baÄŸlantÄ±sÄ±nÄ±n kapatÄ±lmasÄ±nda hata oluÅŸtu
 stop_title=ADSL'i Kapat
+stop_ok=ADSL baÄŸlantÄ±nÄ±z baÅŸarÄ± ile kapatÄ±ldÄ±.
+stop_failed=ADSL baÄŸlantÄ±sÄ±nÄ± bir sebepten dolayÄ± hala aktif!
+
+log_save=istemci yapÄ±landÄ±rmasÄ± kaydedildi
+log_stop=ADSL kapatÄ±ldÄ±
+log_start=ADSL baÅŸladÄ±
+log_bootup=ADSL'in aÃ§Ä±lÄ±ÅŸta baÅŸlamasÄ± aÃ§Ä±ldÄ±
+log_bootdown=ADSL'in aÃ§Ä±lÄ±ÅŸta baÅŸlamasÄ± kapatÄ±ldÄ±
+log_setup=Ã–ntanÄ±mlÄ± yapÄ±landÄ±rma yapÄ±ldÄ±

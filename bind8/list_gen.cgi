@@ -14,7 +14,7 @@ my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 my $dom = $zone->{'name'};
 &can_edit_zone($zone) || &error($text{'master_ecannot'});
 
-my $desc = &text('recs_header', &ip6int_to_net(&arpa_to_ip($dom)));
+my $desc = &text('recs_header', &zone_subhead($zone));
 &ui_print_header($desc, $text{'gen_title'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
@@ -36,7 +36,7 @@ else {
 	}
 my $i = 0;
 foreach my $g (@gens, { }) {
-	my @gv = @{$g->{'generate'}};
+	my @gv = $g->{'generate'} ? @{$g->{'generate'}} : ( );
 	my @cols = ( );
 	my @r = $gv[0] =~ /^(\d+)-(\d+)(\/(\d+))?$/ ? ( $1, $2, $4 ) : ( );
 	push(@cols, &ui_select("type_$i", uc($gv[2]),

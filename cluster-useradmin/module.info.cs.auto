@@ -1,0 +1,2 @@
+name_cs=Uživatelé klastru
+longdesc_cs=Vytvářejte, aktualizujte a odstraňujte uživatele a skupiny na více serverech. Na rozdíl od NIS má každý server vlastní soubory passwd a group, které jsou tímto modulem vzdáleně aktualizovány.

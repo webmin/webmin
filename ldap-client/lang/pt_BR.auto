@@ -1,0 +1,19 @@
+index_ldapmod=Cliente LDAP
+index_stop=Parar daemon do cliente LDAP
+index_stopdesc=Encerre o daemon do cliente LDAP local, necessário para consultar o servidor LDAP remoto.
+index_start=Iniciar daemon do cliente LDAP
+index_startdesc=Inicie o daemon do cliente LDAP local, necessário para consultar o servidor LDAP remoto. Até ser iniciado, usuários e grupos no LDAP não estarão acessíveis.
+index_restart=Reinicie o daemon do cliente LDAP
+index_restartdesc=Aplique a configuração atual reiniciando o daemon do cliente LDAP local.
+index_atboot=Iniciar cliente LDAP na inicialização
+index_atbootdesc=Altera se o daemon do cliente LDAP é iniciado quando o sistema é inicializado ou não.
+
+order_sss=Serviços de segurança do sistema
+order_mdns4=DNS multicast
+order_mdns4_minimal=DNS multicast (mínimo)
+
+log_atboot=Daemon do cliente LDAP ativado no momento da inicialização
+log_delboot=Daemon do cliente LDAP desativado no momento da inicialização
+log_start=Daemon do cliente LDAP iniciado
+log_stop=Daemon do cliente LDAP parado
+log_restart=Daemon do cliente LDAP reiniciado

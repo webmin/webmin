@@ -82,7 +82,7 @@ if ($gconfig{'os_type'} eq 'freebsd') {
 	}
 else {
 	# Get interfaces from Linux proc file
-	open(TR, "/proc/net/dev");
+	open(TR, "</proc/net/dev");
 	while(<TR>) {
 		if (/^\s*([a-z0-9]+):\s*(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/) {
 			$rv{$1} = [ $2, $3, $10, $11 ];

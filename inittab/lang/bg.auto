@@ -1,0 +1,53 @@
+inittab_new=Създайте нов процес на init.
+inittab_id=документ за самоличност
+inittab_active=Активен?
+inittab_runlevels=Стартиране на стартиране
+inittab_action=действие
+inittab_process=процес
+inittab_none=Нито един
+inittab_respawn=Процес на възстановяване
+inittab_wait=изчакайте
+inittab_once=Веднъж на ниво
+inittab_boot=Време за зареждане
+inittab_bootwait=Време за стартиране, изчакайте до прекратяване
+inittab_off=Не правете нищо
+inittab_ondemand=Винаги когато са в A, B, C
+inittab_initdefault=След стартиране на системата
+inittab_sysinit=По време на зареждането на системата
+inittab_powerwait=Мощността намалява
+inittab_powerfail=Захранването намалява, без да чака
+inittab_powerokwait=Захранването се възстановява
+inittab_powerfailnow=Прекъсване на захранването
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Специална комбинация от клавиши
+inittab_kbrequest=Специална комбинация от клавиши
+inittab_return=процес списък
+inittab_apply=Приложете конфигурацията на Init
+inittab_applymsg=Щракнете върху този бутон, за да приложите текущата конфигурация на SysV Init, като изпълните командата <tt>telinit q</tt>. Имайте предвид, че всяка грешка във вашата конфигурация може да направи системата неизползваема, когато се изпълнява тази команда.
+index_delete=Изтрийте избраните процеси
+inittab_none2=Не са намерени процеси за зареждане във вашата система. Това вероятно показва, че не използва конфигурационния файл SysV init.
+
+edit_inittab_err=Не ви е позволено да редактирате процес
+edit_inittab_title=Редактиране на процеса $1 
+edit_inittab_details=Подробности за процеса
+edit_inittab_del=Изтрий
+edit_inittab_save=Запази
+
+new_inittab_err=Не ви е позволено да създадете нов процес
+new_inittab_title=Нов процес
+
+save_inittab_err=Не ви е позволено да запишете процес
+save_inittab_noid=Грешка, не е въведен процес на име
+save_inittab_already=Грешка, процесът с име вече съществува
+
+log_modify=Променен процес на init $1 
+log_rename=Преименуван на init процес $1 до $2 
+log_create=Създаден е init процес $1 
+log_delete=Изтрит процес на init $1 
+log_apply=Приложна конфигурация
+log_deletes=Изтрити $1 init процеси
+
+apply_err=Конфигурацията не се прилага
+
+delete_err=Изтриването на процесите не бе успешно
+delete_enone=Няма избран

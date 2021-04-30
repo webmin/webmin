@@ -1,0 +1,17 @@
+index_delete=Eliminar las rotaciones de registro seleccionadas
+
+period_bytes=bytes
+
+edit_minsize=Tamaño mínimo para rotar
+edit_nominsize=Siempre
+edit_dateext=Usar extensión de fecha para archivos rotados
+
+save_eminsize=Tamaño mínimo faltante o no válido
+save_enofiles=No hay archivos para rotar ingresados
+
+log_delete_logs=Rotación eliminada para $1 archivos de registro
+
+sched_when=Tiempos para correr
+
+delete_err=Error al eliminar registros
+delete_enone=Ninguna seleccionada

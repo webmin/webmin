@@ -1,0 +1,275 @@
+index_headeracc=Řízení přístupu záhlaví
+index_refresh=Aktualizovat pravidla
+index_cachemgr=Hesla správce mezipaměti
+index_stop=Zastavte chobotnici
+index_stopdesc=Klepnutím na toto tlačítko zastavíte běžící Squid proxy server. Po zastavení nebudou klienti, kteří jej používají, moci zadávat požadavky na web nebo FTP.
+index_start=Start Squid
+index_startdesc=Klepnutím na toto tlačítko spustíte Squid proxy server pomocí aktuální konfigurace.
+index_restart=Použít konfiguraci
+index_restartdesc=Klepnutím na toto tlačítko aktivujete aktuální konfiguraci Squid.
+index_iptables=Nastavení přesměrování portů
+index_squid=Squid Proxy Server
+index_manual=Upravit konfigurační soubory
+
+manual_title=Upravit konfigurační soubory
+manual_file=Vyberte konfigurační soubor, který chcete upravit:
+manual_change=Změna
+manual_editing=Pomocí textového pole níže ručně upravte konfigurace v $1. Buďte opatrní, protože nebude provedena žádná kontrola syntaxe ani platnosti.
+manual_err=Uložení konfiguračního souboru se nezdařilo
+manual_efile=Neplatný konfigurační název souboru!
+manual_ecannot=Není dovoleno ručně upravovat konfigurační soubory
+
+acl_nodns=Zakázat vyhledávání?
+acl_mai=Maximální přihlašovací IP adresy na uživatele
+acl_maistrict=<b>Přísně vynutitelné</b>
+acl_mairemind=nezapomeňte nastavit Authenticate IP Cache na> 0 v modulu „Authentication Programs Module“
+acl_file=Uložte hodnoty ACL do souboru
+acl_nofile=Chobotnice konfigurace
+acl_infile=Samostatný soubor
+acl_keep=Stačí použít existující obsah souboru?
+
+aclsave_enofile=Nebyl zadán žádný název souboru ACL
+aclsave_ealready=Soubor ACL již existuje
+
+cach_esame=Spustitelný soubor <b>Squid cachemgr.cgi</b> je nastaven na program Webmin's cachemgr.cgi, nikoli na program dodávaný společností Squid.
+
+clear_url=Odebrat jednu URL z mezipaměti:
+clear_ok=Odstranit
+
+eacl_noprr=Nejsou definována žádná omezení odpovědi proxy
+eacl_addprr=Přidejte omezení odpovědi serveru proxy.
+
+eacl_replypr=Odpovědět proxy omezení
+eacl_replynopr=Nejsou definována žádná omezení proxy proxy
+
+eacl_ext=Externí ACL programy
+eacl_ename=Jméno třídy
+eacl_format=Vstupní formát
+eacl_program=Obslužný program
+eacl_noext=Nejsou definovány žádné externí programy ACL.
+eacl_addext=Přidejte externí program ACL.
+eacl_eclass=Nebyla vybrána žádná třída programu
+eacl_cname=Zadejte název
+eacl_file=Ze souboru $1
+eacl_hdelete=Smazat vybraná omezení
+
+ec_coss=COSS
+ec_gap=Maximální mezera pro čtení před námi
+ec_maxreplies=Maximální velikost těla odpovědi
+ec_maxrn=Velikost (kB)
+ec_maxracls=Pro požadavky odpovídající ACL (ponechejte prázdné pro všechny)
+
+ech_siq2=Odmítnout dotazy ICP?
+ech_timeo=Časový limit připojení hostitele
+ech_digest=Souhrnná adresa URL hostitele mezipaměti
+ech_maxconn=Maximální souběžné připojení
+ech_miss=Povolit žádosti o slečnu?
+ech_htcp=Použít HTCP místo ICP?
+ech_origin=Považujete hostitele za server původu?
+ech_force=Vynutit hostitele: záhlaví na
+ech_same=Beze změny
+ech_ssl=Připojit se pomocí SSL?
+
+eicp_thost=Název hostitele
+eicp_ttype=Typ
+eicp_tpport=Proxy port
+eicp_tiport=ICP port
+eicp_delete=Odstranit vybrané mezipaměti
+
+elogs_none=Žádný
+
+elogs_logformat=Přístup k formátům protokolu
+elogs_fname=Název formátu
+elogs_ffmt=Definice formátu
+elogs_logformat1=Výchozí (pojmenované <tt>chobotnice</tt>, ve standardním formátu)
+elogs_logformat0=Vlastní formáty definované níže ..
+elogs_access=Přístup k souborům protokolu
+elogs_afile=Log soubor
+elogs_afmt=Název formátu
+elogs_aacls=Přihlaste se pouze pro ACL
+elogs_notset=Nenastaveno
+elogs_dont=Nepřihlásit se
+elogs_file=Soubor $1
+elogs_squid=Chobotnice standard
+
+eports_ssl=SSL adresy a porty
+eports_opts=Možnosti portu
+eports_checkhost=Ověřit názvy hostitelů v adresách URL?
+eports_underscore=Povolit podtržítko v názvech hostitelů?
+eports_all=Všechno
+
+eprogs_sppe=Ping program povolen?
+eprogs_startup=Programy začínající na začátku
+eprogs_idle=Minimální počet spuštěných programů
+eprogs_concurrency=Počet souběžných požadavků na program
+eprogs_aittl=Ověřte čas mezipaměti IP
+
+ahttp_replyheader=Vytvořte omezení odpovědi na proxy
+ahttp_replyheader1=Upravit omezení odpovědi na proxy
+ahttp_replypr=Omezení odpovědi proxy
+
+icache_euser=Uživatel, který spouští Squid, neexistuje
+
+scache_emaxrs=Neplatná maximální velikost těla v řádku $1
+
+slogs_efname=Neplatný název formátu v řádku $1
+slogs_effmt=Chybí formát protokolu v řádku $1
+slogs_eafile=Chybějící nebo neplatný soubor protokolu v řádku $1
+
+sprog_emsg10='$1' není platný TTL
+sprog_echildren=Počet programů musí být číslo větší než nula
+
+lib_aclmuip=Maximální IP uživatele
+
+log_https_delete=Odstraněno omezení proxy serveru $1
+log_headeracc_create=Vytvořené pravidlo přístupu k záhlaví
+log_headeracc_modify=Upravené pravidlo přístupu k hlavičce
+log_headeracc_delete=Odstraněné pravidlo přístupu k záhlaví
+log_headeracc_move=Pravidlo přístupu k přesunutému záhlaví
+log_icps_delete=Byla odstraněna omezení ICP $1
+log_hosts_delete=Vymazáno $1 hostitelé mezipaměti
+log_pools_delete=Smazáno $1 fondy pro zpoždění
+log_refresh_create=Vytvořeno pravidlo aktualizace pro $1
+log_refresh_modify=Upravené pravidlo aktualizace pro $1
+log_refresh_delete=Odstraněné pravidlo aktualizace pro $1
+
+log_refresh_move=Přesunuto pravidlo aktualizace pro $1
+log_refreshes_delete=Byla odstraněna $1 pravidla aktualizace
+log_iptables=Aktualizované nastavení přesměrování portů
+log_purge=Odebrána adresa URL $1 z mezipaměti
+log_cachemgr=Změněna hesla správce vyrovnávací paměti
+
+acl_restart=Lze použít Squid konfiguraci?
+
+delay_class_4=Agregovaná, individuální, síťová a uživatelská
+delay_class_5=Seskupení značek
+delay_user=Uživatelský limit
+delay_tag=Limit značky
+delay_delete=Odstranit vybrané zpožděné bazény
+
+pool_user=Uživatelský limit (pro třídu 4)
+pool_tag=Limit značky (pro třídu 5)
+dpool_err=Smazání fondů zpoždění se nezdařilo
+
+dpool_enone=Nebyl vybrán žádný
+
+authparam_mui_msg=Pokud používáte ACL <b>"max_user_ip"</b>, musí být ověřovací IP TTL větší než 0. Zadejte čas, kdy si přejete, aby si Squid vzpomněl na vztah mezi uživatelem a IP. Uživatel se může přihlásit ze zapamatované IP pouze do uplynutí této doby, a to i v případě, že zavřel prohlížeč.
+ext_title1=Vytvořit externí program
+ext_title2=Upravit externí program
+ext_header=Podrobnosti o externím programu ACL
+ext_name=Název typu programu
+ext_format=Řetězec vstupního formátu
+ext_ttl=TTL pro výsledky v mezipaměti
+ext_negative_ttl=TTL pro mezipaměti negativní výsledky
+ext_concurrency=Počet spuštěných programů
+ext_children=Počet spuštěných programů
+ext_cache=Velikost mezipaměti
+ext_ttl_u=sekundy
+ext_negative_ttl_u=sekundy
+ext_concurrency_u=programy
+ext_children_u=programy
+ext_cache_u=bajtů
+ext_program=Cesta programu a argumenty
+ext_err=Nepodařilo se uložit externí program ACL
+ext_ename=Chybějící nebo neplatný název typu
+ext_eformat=Chybějící nebo neplatný formátovací řetězec
+ext_ettl=Chybí nebo je neplatný TTL
+ext_enegative_ttl=Chybějící nebo neplatný záporný TTL
+ext_econcurrency=Chybějící nebo neplatný počet programů
+ext_echildren=Chybějící nebo neplatný počet programů
+ext_ecache=Chybějící nebo neplatná velikost mezipaměti
+ext_eprogram=Byla zadána neplatná cesta programu
+ext_eclash=Externí typ programu se stejným názvem již existuje
+ext_eused=Tento externí program používá ACL
+
+header_title=Řízení přístupu záhlaví
+header_none=Dosud nebyla definována žádná pravidla řízení přístupu k hlavičkám.
+header_name=HTTP hlavička
+header_act=Akce
+header_acls=Pro ACL
+header_add=Přidejte nové pravidlo řízení přístupu záhlaví.
+header_create=Vytvořit pravidlo přístupu záhlaví
+header_create_request_header_access=Vytvořit pravidlo přístupu záhlaví požadavku
+header_create_reply_header_access=Vytvořit pravidlo přístupu k hlavičce odpovědi
+header_edit=Upravit pravidlo přístupu záhlaví
+header_edit_request_header_access=Upravit pravidlo přístupu k záhlaví požadavku
+header_edit_reply_header_access=Upravit pravidlo přístupu k hlavičce odpovědi
+header_header=Podrobnosti pravidla řízení přístupu k hlavičce HTTP
+header_return=seznam pravidel řízení přístupu záhlaví
+header_ecannot=Není dovoleno upravovat pravidla řízení přístupu záhlaví
+header_err=Uložení pravidla řízení přístupu k záhlaví se nezdařilo
+header_ename=Chybějící nebo neplatný název záhlaví
+header_request_header_access=Záhlaví žádosti
+header_reply_header_access=Odpovědět záhlaví
+
+refresh_title=Aktualizovat pravidla
+refresh_none=Dosud nebyla definována žádná pravidla obnovení.
+refresh_re=Regulární výraz
+refresh_min=Minimální doba
+refresh_pc=Procento věku
+refresh_max=Maximální doba
+refresh_add=Přidejte nové pravidlo aktualizace.
+refresh_ecannot=Není dovoleno upravovat pravidla aktualizace
+refresh_create=Vytvořit pravidlo aktualizace
+refresh_edit=Upravit pravidlo aktualizace
+refresh_return=seznam aktualizovaných pravidel
+refresh_header=Aktualizujte podrobnosti pravidla
+refresh_caseless=Ignorovat případ?
+refresh_err=Pravidlo aktualizace se nepodařilo uložit
+refresh_options=Aktualizujte možnosti pravidla
+refresh_override-expire=Vynutit minimální věk nad věkem stanovený serverem
+refresh_override-lastmod=Vynutit minimální věk i na nedávno upravených objektech
+refresh_reload-into-ims=Převést záhlaví bez mezipaměti klienta na If-Modified-Since
+refresh_ignore-reload=Ignorovat klienta bez mezipaměti nebo znovu načíst záhlaví
+refresh_ere=Chybějící nebo neplatný regulární výraz
+refresh_emin=Chybějící nebo neplatný minimální čas
+refresh_emax=Chybějící nebo neplatný maximální čas
+refresh_epc=Chybějící nebo neplatné procento věku
+refresh_delete=Odstranit vybraná pravidla pro aktualizaci
+drefresh_err=Smazání pravidel aktualizace se nezdařilo
+drefesh_enone=Nebyl vybrán žádný
+
+iptables_title=Nastavení přesměrování portů
+iptables_inst0=Příkazy brány firewall IPtables potřebné k nastavení přesměrování portů se ve vašem systému nezdají nainstalovány. Další podrobnosti naleznete v modulu <a href='$1'>Linux Firewall</a>.
+iptables_inst1=Zdá se, že modul <a href='$1'>Linux Firewall</a> nebyl ve vašem systému plně nastaven. Tento modul využívá tento k nastavení přesměrování portů Frox.
+iptables_desc=Squid může provádět transparentní HTTP proxy pro požadavky na portu $1, nastavením pravidel brány firewall tak, aby je automaticky předávala na port $2, na kterém Squid poslouchá. To bude fungovat pouze v případě, že systém, na kterém běží Squid, je také směrovačem vaší sítě. To lze provést přidáním pravidla IPtables do brány firewall za předpokladu, že je spravována modulem <a href='$3'>Linux Firewall</a>.
+iptables_disabled=Přesměrování portů je zakázáno
+iptables_enabled3=Přesměrování portů je povoleno pro klienty v síti
+iptables_enabled4=Přesměrování portů je povoleno pro klienty na rozhraní
+iptables_apply=Použít konfiguraci brány firewall a Squid?
+iptables_save=Uložit a použít
+iptables_err=Uložení přesměrování portů se nezdařilo
+iptables_enet=Chybějící nebo neplatná síťová adresa (měla by být jako 192.168.1.0/24)
+iptables_eiface=Chybějící nebo neplatné síťové rozhraní
+iptables_eapply=Použití brány firewall se nezdařilo : $1
+iptables_eapply2=Aplikace Squid se nezdařila : $1
+
+syslog_access=Squid access log
+syslog_cache=Kalamáry caching log
+syslog_store=Protokol úložiště chobotnic
+
+purge_err=Vymazání adresy URL z mezipaměti se nezdařilo
+purge_title=Vymazat URL s mezipamětí
+purge_doing=Vymazání adresy URL $1 ..
+purge_done=.. Hotovo.
+purge_failed=.. selhalo! Viz výše uvedená chybová zpráva z důvodu důvodu.
+
+dhttp_err=Odstranění omezení serveru proxy se nezdařilo
+dhttp_enone=Nebyl vybrán žádný
+
+dicp_err=Odstranění omezení ICP se nezdařilo
+dicp_enone=Nebyl vybrán žádný
+
+cachemgr_title=Hesla správce mezipaměti
+cachemgr_ecannot=Není dovoleno upravovat hesla správce vyrovnávací paměti
+cachemgr_def1=Nevyžadují se žádná hesla
+cachemgr_def0=Hesla a akce uvedené níže ..
+cachemgr_pass=Heslo
+cachemgr_none=Není potřeba
+cachemgr_set=Nastaven na
+cachemgr_disable=Akce jsou zakázány
+cachemsg_actions=Použít na akce
+cachemgr_all=Toto heslo použijte pro všechny akce
+cachemgr_others=Jiné akce:
+cachemgr_enone=Nebylo zadáno - měli byste místo toho vybrat <i>Žádná hesla</i>
+cachemgr_err=Nepodařilo se uložit hesla správce mezipaměti

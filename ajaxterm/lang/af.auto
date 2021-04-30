@@ -1,0 +1,5 @@
+index_title=Teksaanmelding
+index_epython=Ajaxterm vereis dat Python moet loop, maar die $1 -opdrag is nie op u stelsel gevind nie.
+index_estart=Ajaxterm het na $1 sekondes nie verbindings op poort $2 begin aanvaar nie.
+index_popup=Maak in 'n aparte venster oop.
+index_credits=Gebruik kode van <a href='$1' target=_new>Ajaxterm</a> deur Antony Lesuisse.

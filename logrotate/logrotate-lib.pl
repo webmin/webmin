@@ -1,11 +1,11 @@
 # logrotate-lib.pl
-# Common functions for parsing the logrotate configuration file
+# Common functions for parsing the logrotate configuration file.
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 
-if (open(VERSION, "$module_config_directory/version")) {
+if (open(VERSION, "<$module_config_directory/version")) {
 	chop($logrotate_version = <VERSION>);
 	close(VERSION);
 	}
@@ -45,7 +45,7 @@ local $addto = \@rv;
 local $section = undef;
 local $lnum = 0;
 local $fh = "FILE".$file_count++;
-open($fh, $file);
+open($fh, "<".$file);
 while(<$fh>) {
 	s/\r|\n//g;
 	s/#.*$//;

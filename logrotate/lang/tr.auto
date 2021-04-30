@@ -1,0 +1,115 @@
+index_title=Günlük Dosyası Döndürme
+index_econf=$1 günlük döndürme yapılandırma dosyası sisteminizde bulunamadı. Belki logrotate kurulu değil veya <a href='$2'>modül yapılandırması</a> yanlış.
+index_ecmd=$1 günlük döndürme programı sisteminizde bulunamadı. Belki yüklü değil veya <a href='$2'>modül yapılandırması</a> yanlış.
+index_eversion= $1 : $2 komutuyla logrotate sürümü alınamadı
+index_version=Logrotate sürüm $1 
+index_add=Döndürmek için yeni bir günlük dosyası ekleyin.
+index_file=Log dosyası
+index_period=Dönme süresi
+index_post=Dönüş sonrası komutu
+index_none=Henüz herhangi bir günlük dosyası tanımlanmadı.
+index_global=Genel Seçenekleri Düzenle
+index_globaldesc=Tüm günlük dosyalarına uygulanan ayarı düzenlemek ve günlüklerin varsayılan değerlerini tanımlamak için bu düğmeyi tıklatın.
+index_sched=Programı Düzenle
+index_scheddesc=Logrotate'in Cron tarafından çalıştırıldığı zamanlamayı düzenlemek için bu düğmeyi tıklatın veya etkinleştirin veya devre dışı bırakın.
+index_nocmd=Yok
+index_notset=Belirlenmedi
+index_return=günlük dosyaları listesi
+index_force=Günlük Döndürmeyi Zorla
+index_forcedesc=Henüz olmasa bile, tüm günlük dosyalarının hemen döndürülmesini sağlayın.
+index_logrotate=logrotate
+index_delete=Seçili Günlük Rotasyonlarını Sil
+
+period_daily=Günlük
+period_weekly=Haftalık
+period_monthly=Aylık
+period_never=Asla
+period_bytes=bayt
+
+edit_title1=Günlük Dosyasını Düzenle
+edit_title2=Günlük Dosyası Oluştur
+edit_header=Döndürülmüş günlük dosyası ayrıntıları
+edit_file=Günlük dosyası yolları
+edit_sched=Dönme programı
+edit_rotate=Saklanacak eski günlük sayısı
+edit_compress=Eski günlük dosyaları sıkıştırılsın mı?
+edit_delaycompress=Sıkıştırmayı bir sonraki döngüye kadar ertele?
+edit_copytruncate=Günlük dosyası kesilsin mi?
+edit_ifempty=Günlük dosyası boş olsa bile döndürülsün mü?
+edit_missingok=Eksikse günlük dosyası yoksayılsın mı?
+edit_size=Döndürmeden önce maksimum boyut
+edit_always=Yok Sayılan
+edit_minsize=Döndürülecek minimum boyut
+edit_nominsize=Her zaman
+edit_ext=Döndürülmüş dosya adları için uzantı
+edit_dateext=Döndürülmüş dosyalar için tarih uzantısını kullan
+edit_mail=Silmeden önce günlük dosyası e-postayla gönderilsin mi?
+edit_mailto=Evet, adreslemek
+edit_mailno=Hayır, e-posta gönderme
+edit_mailfl=Günlük dosyasını e-postaya gönder
+edit_mailfirst=En yeni döndürülmüş
+edit_maillast=Silinmek üzere olan en eski
+edit_create=Rotasyondan sonra günlük dosyası yeniden oluşturulsun mu?
+edit_createas=Evet, $1 modu ile $2 kullanıcısı ve $3 grubuna ait
+edit_createno=Hayır, yeniden oluşturma
+edit_createsame=Evet, eski izinlerle
+edit_olddir=Eski döndürülmüş günlükleri depola
+edit_olddirto=rehber
+edit_olddirsame=Günlük dosyasıyla aynı dizin
+edit_errors=Hata mesajlarını adresine e-postayla gönder
+edit_errorsno=Kimse
+edit_errorsto=Adres veya kullanıcı
+edit_post=Döndürme sonrasında çalıştırılacak komutlar
+edit_pre=Döndürmeden önce çalıştırılacak komutlar
+edit_default=Varsayılan ($1)
+edit_sharedscripts=Tüm dosyalar için komut dosyalarını yalnızca bir kez mi çalıştırmak istiyorsunuz?
+edit_now=Şimdi Döndür
+
+global_title=Global Seçenekler
+global_header=Tüm günlük dosyaları için varsayılan seçenekler
+
+save_err=Günlük kaydedilemedi
+save_efile=Eksik veya geçersiz günlük dosya adı
+save_esize=Eksik veya geçersiz maksimum boyut
+save_eminsize=Eksik veya geçersiz minimum boyut
+save_erotate=Saklanacak eksik veya geçersiz maksimum eski günlük sayısı
+save_ecreatemode=Eksik veya geçersiz 3 veya 4 basamaklı sekizli oluşturma modu
+save_ecreateuser=Eksik veya geçersiz oluşturma kullanıcısı
+save_ecreategroup=Eksik veya geçersiz oluşturma grubu
+save_emust1=Bir oluşturma kullanıcısına girerken bir oluşturma moduna girmelisiniz
+save_emust2=Bir oluşturma grubuna girerken bir oluşturma kullanıcısı girmelisiniz
+save_eolddirto=Eski döndürülmüş günlükler için eksik veya geçersiz dizin
+save_eext=Döndürülmüş günlük dosya adları için eksik uzantı
+save_emailto=Döndürülmüş günlükler için eksik e-posta adresi
+save_eerrors=Hata mesajları için eksik e-posta adresi
+save_epre=Döndürme öncesi komut dosyası <tt>endscript</tt> veya <tt>endrotate</tt> satırı içeremez
+save_epost=Döndürme sonrası komut dosyası <tt>endscript</tt> veya <tt>endrotate</tt> satırı içeremez
+save_enofiles=Döndürülecek dosya girilmedi
+
+log_modify_sched=Günlük döndürme Cron işi değiştirildi
+log_create_sched=Günlük döndürme Cron işi oluşturuldu
+log_delete_sched=Silinen günlük döndürme Cron işi
+log_global=Değiştirilmiş global seçenekler
+log_create=$1 günlük dosyası için döndürme eklendi
+log_modify=$1 günlük dosyası için değiştirilmiş döndürme
+log_delete=$1 günlük dosyası için döndürme silindi
+log_delete_logs=$1 günlük dosyası için silinen döndürme
+
+sched_title=Günlük Döndürme Programı
+sched_desc=Bu modül kullanılarak gerçekleştirilecek günlük dönüşü için $1 komutu Cron tarafından düzenli bir programda (genellikle günlük) çalıştırılmalıdır.
+sched_runparts=Şu anda, günlük döndürme komutu $1 $2 komut dosyasından çalıştırılıyor ve ayarlanamıyor.
+sched_sched=Günlük döndürme cron işi
+sched_disabled=engelli
+sched_enabled=Aşağıdaki zamanlarda etkin ..
+sched_save=Cron İşini Güncelle
+sched_err=Dönüş programı kaydedilemedi
+sched_when=Koşma zamanı
+
+force_title=Günlük Döndürmeyi Zorla
+force_doing=Tüm günlük dosyalarının anında döndürülmesini zorlamak ..
+force_doingone=Bir günlük dosyasının hemen döndürülmesini zorlama ..
+force_done=.. bitti.
+force_failed=.. başarısız oldu! Nedeni için yukarıdaki çıktıya bakın.
+
+delete_err=Günlükler silinemedi
+delete_enone=Hiçbiri seçilmedi

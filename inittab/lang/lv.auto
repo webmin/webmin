@@ -1,0 +1,53 @@
+inittab_new=Izveidojiet jaunu procesu.
+inittab_id=ID
+inittab_active=Aktīvs?
+inittab_runlevels=Sāknēšanas līmenis
+inittab_action=Darbība
+inittab_process=Process
+inittab_none=Nav
+inittab_respawn=Respawn process
+inittab_wait=Pagaidiet
+inittab_once=Reiz līmenī
+inittab_boot=Sāknēšanas laiks
+inittab_bootwait=Sāknēšanas laiks, pagaidiet līdz pārtraukšanai
+inittab_off=Neko nedarīt
+inittab_ondemand=Ikreiz, kad atrodas A, B, C
+inittab_initdefault=Pēc sistēmas sāknēšanas
+inittab_sysinit=Sistēmas sāknēšanas laikā
+inittab_powerwait=Jauda samazinās
+inittab_powerfail=Jauda samazinās, negaidot
+inittab_powerokwait=Jauda tiek atjaunota
+inittab_powerfailnow=Jauda neizdodas
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Īpaša taustiņu kombinācija
+inittab_kbrequest=Īpaša taustiņu kombinācija
+inittab_return=procesu saraksts
+inittab_apply=Lietot Init Configuration
+inittab_applymsg=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējo SysV Init konfigurāciju, palaižot komandu <tt>telinit q</tt>. Ņemiet vērā, ka jebkādas kļūdas konfigurācijā var padarīt sistēmu nelietojamu šīs komandas palaišanas laikā.
+index_delete=Dzēst atlasītos procesus
+inittab_none2=Sistēmā netika atrasti sāknēšanas procesi. Tas, iespējams, norāda, ka tas neizmanto SysV init konfigurācijas failu.
+
+edit_inittab_err=Jums nav atļauts rediģēt procesu
+edit_inittab_title=Rediģēt procesu $1 
+edit_inittab_details=Procesa detaļas
+edit_inittab_del=Dzēst
+edit_inittab_save=Saglabāt
+
+new_inittab_err=Jums nav atļauts izveidot jaunu procesu
+new_inittab_title=Jauns process
+
+save_inittab_err=Jums nav atļauts saglabāt procesu
+save_inittab_noid=Kļūda, nav ievadīts vārda process
+save_inittab_already=Kļūda, nosaukšanas process jau pastāv
+
+log_modify=Modificēts procesa sākums $1 
+log_rename=Pārdēvēts procesa sākums $1 līdz $2 
+log_create=Izveidots procesa sākums $1 
+log_delete=Izdzēsts procesa sākums $1 
+log_apply=Lietotā konfigurācija
+log_deletes=Izdzēsti $1 init procesi
+
+apply_err=Neizdevās piemērot konfigurāciju
+
+delete_err=Neizdevās izdzēst procesus
+delete_enone=Nav atlasīts

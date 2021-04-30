@@ -118,7 +118,7 @@ if ($include_config_files || $forglobal) {
 		}
 	else {
 		# A single file that can be read right here
-		open(FILE, $file);
+		open(FILE, "<".$file);
 		while(<FILE>) {
 			s/\r|\n//g;
 			s/^#.*$//;
@@ -1073,7 +1073,7 @@ else {
 sub list_spamassassin_languages
 {
 local @rv;
-open(LANGS, "$module_root_directory/langs");
+open(LANGS, "<$module_root_directory/langs");
 while(<LANGS>) {
 	if (/^(\S+)\s+(.*)/) {
 		push(@rv, [ $1, $2 ]);
@@ -1088,7 +1088,7 @@ return @rv;
 sub list_spamassassin_locales
 {
 local @rv;
-open(LANGS, "$module_root_directory/locales");
+open(LANGS, "<$module_root_directory/locales");
 while(<LANGS>) {
 	if (/^(\S+)\s+(.*)/) {
 		push(@rv, [ $1, $2 ]);

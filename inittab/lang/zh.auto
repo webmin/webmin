@@ -1,0 +1,12 @@
+inittab_active=活性？
+inittab_kbrequest=特殊组合键
+index_delete=删除选定的进程
+inittab_none2=在您的系统上找不到启动过程。这可能表明它不使用SysV初始化配置文件。
+
+log_apply=应用的配置
+log_deletes=已删除 $1初始化进程
+
+apply_err=应用配置失败
+
+delete_err=删除进程失败
+delete_enone=未选择

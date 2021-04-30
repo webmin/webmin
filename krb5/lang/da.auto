@@ -1,0 +1,17 @@
+index_title=Kerberos5-konfiguration
+index_econf=Kerberos5-konfigurationsfilen $1 blev ikke fundet på dit system. Måske er det ikke installeret, eller <a href='$2'>modulkonfiguration</a> er forkert.
+
+logging=Logfiler
+default_log=Standard logfil
+kdc_log=KDC-logfil
+admin_log=Admin-serverlogfil
+
+libdefaults=Standardkonfiguration
+dns_kdc=Brug DNS til at slå KDC op
+default_realm=Rige
+domain=Domænenavn
+default_kdc=KDC
+default_admin=Admin-server
+default_domain=Standard domænenavn
+
+save=Opdater konfiguration

@@ -1,0 +1,8 @@
+index_title=Ryhmämuutossalasanat
+index_noservers=<a href=$1>klusterin käyttäjiä ja ryhmiä</a> -moduulissa ei ole määritetty palvelimia käyttäjien hallitsemiseksi.
+index_hosts=Kaikki salasanamuutokset, jotka tehdään tällä moduulilla, tehdään kaikille $1 -isäntäyrityksille, joita klusterin käyttäjät ja ryhmät hallinnoivat.
+
+passwd_err=Salasanan vaihtaminen epäonnistui
+passwd_title=Salasanan vaihtaminen
+passwd_on=Salasanan vaihtaminen $1 : ssä.
+passwd_euser=Käyttäjää ei ole olemassa!

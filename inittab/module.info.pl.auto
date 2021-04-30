@@ -1,0 +1,3 @@
+name_pl=Inittab
+longdesc_pl=Skonfiguruj usługi niskiego poziomu, które będą uruchamiane podczas rozruchu, i wybierz początkowy poziom uruchamiania.
+desc_pl=Pierwsze uruchomienie systemu

@@ -52,7 +52,7 @@ if (!$miniserv{'root'} && !-d $miniserv{'root'}) {
 $ver = &get_usermin_version();
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 	&help_search_link("usermin", "google"), undef, undef,
-	&text('index_version', $ver));
+	&text('index_version', &get_usermin_version(1)));
 
 @links = ( "edit_access.cgi",
 	   "edit_bind.cgi",

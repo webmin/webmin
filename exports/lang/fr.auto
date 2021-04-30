@@ -1,0 +1,20 @@
+index_add4=Ajoutez une nouvelle exportation NFSv4.
+index_delete=Supprimer les exportations sélectionnées
+index_disable=Désactiver la sélection
+index_enable=Activer la sélection
+
+edit_network4=Réseau IPv4
+edit_network6=Réseau IPv6
+edit_secs=Niveaux de sécurité
+edit_sec_sys=Pas de sécurité
+edit_sec_krb5=Authentification Kerberos
+edit_sec_krb5i=Intégrité Kerberos
+edit_sec_krb5p=Confidentialité Kerberos
+edit_sec_lipkey=LIPKEY
+edit_sec_spkm=SPKM
+
+save_epfs=Le chemin du pseudo-système de fichiers '$1' ne ressemble pas à un chemin absolu
+save_eanonuid=Nom d'utilisateur à accès anonyme non valide
+save_eanongid=Nom de groupe d'accès anonyme non valide
+
+log_delete_exports=Exportations $1 NFS supprimées

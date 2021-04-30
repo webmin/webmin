@@ -1,0 +1,34 @@
+index_test=Csak mutasd meg, mit fognak helyreállítani?
+index_nostrftime=Figyelem! Néhány biztonsági mentési feladat % -ban használja a fájlneveket, de az strftime cseréje nem engedélyezett a Module Config oldalon.
+index_tabsched=Ütemezett biztonsági mentések
+index_tabbackup=Biztonsági mentés most
+index_tabrestore=Visszaállítás most
+
+edit_header2=Biztonsági mentés előtti és utáni parancsok
+edit_header3=Biztonsági menetrend
+edit_other2=Egyéb visszaállítandó fájlok
+edit_pre=Biztonsági mentés előtti parancs
+edit_post=Biztonsági mentés utáni parancs
+
+backup_port=Szerver port
+
+backup_epath2=Hiányzó vagy érvénytelen abszolút útvonal az SSH-kiszolgálón
+backup_eport=Hiányzó vagy érvénytelen FTP-kiszolgáló-port
+backup_esport=Hiányzó vagy érvénytelen SSH szerver port
+
+restore_emods=Nincs kiválasztva modul vagy más fájl
+restore_testing=A tartalék kivonása a $1 -ből.
+restore_done2=.. a biztonsági másolatban található fájlok :
+
+nice_ftpp=$2 az $1 porton $3 FTP-n keresztül
+nice_sshp=$2 a $1 porton $3 SSH-n keresztül
+
+email_mods=Modulok biztonsági mentése :
+email_failed=$1 -re sikertelen :
+email_ok=$1 -re sikerült.
+email_sfailed=A konfiguráció biztonsági mentése a $1 -nél nem sikerült
+email_sok=A konfiguráció biztonsági mentése a $1 -en sikeres volt
+email_final=A végleges biztonsági mentési fájl mérete $1 volt
+email_pre=$1 biztonsági mentés előtti parancs futtatása.
+email_post=A biztonsági mentés utáni parancs futtatása: $1.
+email_prefailed=A biztonsági mentés előtti parancs sikertelen!

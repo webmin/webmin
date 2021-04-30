@@ -1,0 +1,402 @@
+index_msgnosupported2=Webmin은 귀하의 오징어 버전을 지원하지 않습니다. 이 모듈은 $1에서 $2까지의 버전 만 지원합니다.
+index_delay=지연 수영장
+index_authparam=인증 프로그램
+index_headeracc=헤더 액세스 제어
+index_refresh=규칙 새로 고침
+index_cachemgr=캐시 관리자 비밀번호
+index_squidver=<tt>$1</tt> 명령은 다음을 반환했습니다.
+index_version=오징어 버전 $1
+
+index_stop=오징어를 중지
+index_stopdesc=실행중인 Squid 프록시 서버를 중지하려면이 단추를 클릭하십시오. 일단 중지되면이를 사용하는 클라이언트는 웹 또는 FTP 요청을 할 수 없습니다.
+index_start=오징어 시작
+index_startdesc=현재 구성을 사용하여 Squid 프록시 서버를 시작하려면이 버튼을 클릭하십시오.
+index_restart=구성 적용
+index_restartdesc=이 버튼을 클릭하면 현재 오징어 구성이 활성화됩니다.
+index_iptables=포트 리디렉션 설정
+index_squid=오징어 프록시 서버
+index_manual=구성 파일 편집
+
+manual_title=구성 파일 편집
+manual_file=편집 할 구성 파일을 선택하십시오.
+manual_change=변화
+manual_editing=$1에서 구성을 수동으로 편집하려면 아래 텍스트 상자를 사용하십시오. 구문이나 유효성 검사가 수행되지 않으므로주의하십시오.
+manual_err=구성 파일을 저장하지 못했습니다
+manual_efile=구성 파일 이름이 잘못되었습니다!
+manual_ecannot=구성 파일을 수동으로 편집 할 수 없습니다
+
+acl_eusersall=모든 사용자들
+acl_euserssel=나열된 것만 ..
+acl_nodns=조회를 비활성화 하시겠습니까?
+acl_rfcusersr=RFC931 사용자 정규식
+acl_mai=사용자 당 최대 로그온 IP
+acl_maistrict=<b>엄격히 시행</b>
+acl_mairemind="인증 프로그램 모듈"에서 IP 캐시 인증을> 0으로 설정해야합니다.
+acl_rpmt=회신 MIME 유형
+acl_extclass=프로그램 클래스
+acl_extargs=추가 인수
+acl_file=파일에 ACL 값 저장
+acl_nofile=오징어 구성
+acl_infile=별도 파일
+acl_keep=파일의 기존 내용 만 사용 하시겠습니까?
+
+aclsave_enofile=ACL 파일 이름이 입력되지 않았습니다
+aclsave_ealready=ACL 파일이 이미 존재합니다
+
+cach_ecannot=캐시 관리자 통계에 액세스 할 수 없습니다
+cach_esame=<b>Squid cachemgr.cgi 실행 파일</b>은 Squid에서 제공하는 것이 아니라 Webmin의 cachemgr.cgi 프로그램으로 설정되어 있습니다.
+
+clear_ecannot=캐시를 지우고 다시 만들 수 없습니다
+clear_url=캐시에서 하나의 URL을 제거하십시오.
+clear_ok=없애다
+
+eacl_ecannot=액세스 제어를 편집 할 수 없습니다
+eacl_noprr=프록시 응답 제한이 정의되지 않았습니다.
+eacl_addprr=프록시 응답 제한을 추가하십시오.
+
+eacl_replypr=회신 프록시 제한
+eacl_replynopr=응답 프록시 제한이 정의되지 않았습니다.
+
+eacl_ext=외부 ACL 프로그램
+eacl_ename=수업 명
+eacl_format=입력 형식
+eacl_program=핸들러 프로그램
+eacl_noext=외부 ACL 프로그램이 정의되지 않았습니다.
+eacl_addext=외부 ACL 프로그램을 추가하십시오.
+eacl_eclass=선택된 프로그램 클래스가 없습니다
+eacl_cname=타입 이름
+eacl_file=$1 파일에서
+eacl_hdelete=선택된 제한 사항 삭제
+
+eadm_ecannot=관리 옵션을 편집 할 수 없습니다
+
+eauth_ecannot=프록시 인증을 편집 할 수 없습니다
+
+ec_ecannot=캐시 옵션을 편집 할 수 없습니다
+ec_opts=옵션
+ec_coss=교차
+ec_gap=최대 클라이언트 미리 읽기 간격
+ec_maxreplies=최대 회신 본문 크기
+ec_maxrn=크기 (kB)
+ec_maxracls=ACL과 일치하는 요청의 경우 (모두 비워 둡니다)
+
+ech_siq2=ICP 쿼리를 거부 하시겠습니까?
+ech_pass=이 캐시에 클라이언트 인증을 전달하십시오.
+ech_upass=비밀번호로 클라이언트 로그인을 전달하십시오.
+ech_timeo=호스트 연결 시간 초과
+ech_digest=호스트 캐시 다이제스트 URL
+ech_maxconn=최대 동시 연결
+ech_miss=미스 요청을 허용 하시겠습니까?
+ech_htcp=ICP 대신 HTCP를 사용 하시겠습니까?
+ech_origin=호스트를 오리진 서버로 취급 하시겠습니까?
+ech_force=호스트 강제 : 헤더
+ech_same=변하지 않은
+ech_ssl=SSL을 사용하여 연결 하시겠습니까?
+
+eicp_ecannot=다른 캐시를 편집 할 수 없습니다
+eicp_thost=호스트 이름
+eicp_ttype=유형
+eicp_tpport=프록시 포트
+eicp_tiport=ICP 포트
+eicp_delete=선택된 캐시 삭제
+
+elogs_ecannot=로깅을 편집 할 수 없습니다
+elogs_none=없음
+elogs_logformat=액세스 로그 형식
+elogs_fname=형식 이름
+elogs_ffmt=형식 정의
+elogs_logformat1=기본값 (표준 형식을 사용하는 <tt>오징어</tt>)
+elogs_logformat0=아래에 정의 된 사용자 정의 형식 ..
+elogs_access=액세스 로그 파일
+elogs_afile=로그 파일
+elogs_afmt=형식 이름
+elogs_aacls=ACL 만 기록
+elogs_notset=미 설정
+elogs_dont=기록하지 마십시오
+elogs_file=$1 파일
+elogs_squid=오징어 표준
+
+emem_ecannot=메모리 사용량을 편집 할 수 없습니다
+
+emisc_ecannot=기타 옵션을 편집 할 수 없습니다
+emisc_hash=단일 HTTP Accel 서버 만 있습니까?
+emisc_wccprtr=WCCP 라우터 주소
+emisc_wccpin=WCCP 수신 주소
+emisc_wccpout=WCCP 발신 주소
+emisc_none=없음
+emisc_virtual=가상
+
+eports_ecannot=포트 및 네트워킹을 편집 할 수 없습니다
+eports_ssl=SSL 주소 및 포트
+eports_opts=포트 옵션
+eports_def=기본값 (일반적으로 3128)
+eports_sel=아래에 나열되어 있습니다 ..
+eports_unc=불완전한 SSL 종료가 있습니까?
+eports_checkhost=URL에서 호스트 이름을 확인 하시겠습니까?
+eports_underscore=호스트 이름에 밑줄을 허용 하시겠습니까?
+eports_all=모두
+
+eprogs_ecannot=도우미 프로그램을 편집 할 수 없습니다
+eprogs_sppe=핑 프로그램이 활성화 되었습니까?
+eprogs_startup=처음 시작할 프로그램
+eprogs_idle=실행할 최소 프로그램
+eprogs_concurrency=프로그램 당 동시 요청 수
+eprogs_capweb=Webmin 기본값
+eprogs_ttl=인증 캐시 시간
+eprogs_aittl=IP 캐시 시간 인증
+eprogs_realm=인증 영역
+
+euser_e=활성화 되었습니까?
+
+ahttp_replyheader=프록시 응답 제한 만들기
+ahttp_replyheader1=프록시 응답 제한 편집
+ahttp_replypr=프록시 응답 제한
+
+icache_ecannot=캐시를 초기화 할 수 없습니다
+icache_euser=존재하지 않는 Squid를 실행하는 사용자
+
+scache_emaxrs=행의 유효하지 않은 최대 본문 크기 $1
+
+slogs_efname=$1 행의 잘못된 형식 이름
+slogs_effmt=$1 행에 누락 된 로그 형식
+slogs_eafile=$1 행에 없거나 잘못된 로그 파일
+
+sprog_emsg9='$1'은 (는) 유효한 캐시 시간이 아닙니다
+sprog_emsg10='$1'은 (는) 유효한 TTL이 아닙니다
+sprog_echildren=프로그램 수는 0보다 큰 수 여야합니다
+
+suser_etaken=사용자 이름이 이미 사용 중입니다
+
+start_ecannot=오징어를 시작할 수 없습니다
+stop_ecannot=오징어를 멈출 수 없습니다
+
+calamaris_ecannot=Calamaris 로그 분석에 액세스 할 수 없습니다
+
+lib_aclrpmt=회신 MIME 유형
+lib_aclrur=RFC931 사용자 정규식
+lib_aclext=외부 프로그램
+lib_aclmuip=최대 사용자 IP
+
+log_authparam=변경된 인증 프로그램 옵션
+log_https_delete=$1 프록시 제한이 삭제되었습니다.
+log_headeracc_create=생성 된 헤더 액세스 규칙
+log_headeracc_modify=수정 된 헤더 액세스 규칙
+log_headeracc_delete=삭제 된 헤더 액세스 규칙
+log_headeracc_move=이동 한 헤더 액세스 규칙
+log_icps_delete=$1 ICP 제한이 삭제되었습니다.
+log_hosts_delete=$1 캐시 호스트가 삭제되었습니다.
+log_delay=글로벌 지연 풀 옵션 변경
+log_pool_create=지연 풀 $1 추가
+log_pool_modify=수정 된 지연 풀 $1
+log_pool_delete=삭제 된 지연 풀 $1
+log_pools_delete=$1 지연 풀이 삭제되었습니다.
+log_delay_create=지연 풀 $1에 대한 ACL 추가
+log_delay_modify=지연 풀 $1에 대한 수정 된 ACL
+log_delay_delete=지연 풀 $1에 대해 삭제 된 ACL
+
+log_delay_move=지연 풀 $1에 대한 ACL 이동
+log_refresh_create=$1에 대한 새로 고침 규칙을 생성했습니다.
+log_refresh_modify=$1에 대한 수정 된 새로 고침 규칙
+log_refresh_delete=$1에 대한 새로 고침 규칙이 삭제되었습니다.
+
+log_refresh_move=$1에 대한 새로 고침 규칙이 이동되었습니다.
+log_refreshes_delete=$1 새로 고침 규칙이 삭제되었습니다.
+log_iptables=업데이트 된 포트 리디렉션 설정
+log_purge=캐시에서 URL $1을 제거했습니다.
+log_cachemgr=변경된 캐시 관리자 비밀번호
+
+acl_sections=허용 된 구성 페이지
+acl_start=오징어를 시작하고 멈출 수 있습니까?
+acl_restart=오징어 구성을 적용 할 수 있습니까?
+
+delay_title=지연 수영장
+delay_add=새로운 지연 풀을 추가하십시오.
+delay_num=번호
+delay_class=수업
+delay_class_1=골재
+delay_class_2=집계 및 개인
+delay_class_3=집계, 개인 및 네트워크
+delay_class_4=집계, 개인, 네트워크 및 사용자
+delay_class_5=태그 그룹
+delay_agg=집계 한도
+delay_ind=개인 한도
+delay_net=네트워크 제한
+delay_user=사용자 한도
+delay_tag=태그 한도
+delay_none=아직 지연 풀이 정의되지 않았습니다.
+delay_unlimited=제한 없는
+delay_param=$1/sec, $2 최대
+delay_header=글로벌 지연 풀 옵션
+delay_initial=초기 버킷 레벨
+delay_err=지연 풀 옵션을 저장하지 못했습니다.
+delay_ecannot=지연 풀을 편집 할 수 없습니다
+delay_epercent='$1'은 (는) 유효한 초기 버킷 수준 백분율이 아닙니다.
+delay_return=지연 풀 목록
+delay_delete=선택된 지연 풀 삭제
+pool_title1=지연 풀 추가
+pool_title2=지연 풀 편집
+pool_header=풀 옵션 지연
+pool_num=풀 번호
+pool_class=풀 클래스
+pool_agg=집계 제한 (클래스 1, 2 및 3)
+pool_ind=개인 한도 (2 급 및 3 급)
+pool_net=네트워크 제한 (클래스 3)
+pool_user=사용자 한도 (4 급)
+pool_tag=태그 한도 (5 급)
+pool_limit1=/ 둘째,
+pool_limit2=최대
+pool_err=지연 풀을 저장하지 못했습니다.
+pool_elimit1='$1'은 (는) 유효한 바이트/초가 아닙니다.
+pool_elimit2='$1'은 (는) 유효한 최대 바이트 수가 아닙니다.
+pool_aclheader=풀과 일치하는 ACL
+pool_noacl=이 풀과 일치하는 ACL이 아직 정의되지 않았습니다.
+pool_add=이 풀에 대한 새 ACL 추가
+pool_return=지연 수영장
+pool_unit0=비트
+pool_unit1=바이트
+pool_unit2=KB
+pool_unit3=kB
+pool_unit4=MB
+pool_unit5=MB
+
+dpool_err=지연 풀을 삭제하지 못했습니다.
+dpool_enone=선택된 사항 없음
+
+apool_header=지연 풀 ACL 추가
+apool_header1=지연 풀 ACL 편집
+apool_pr=풀 ACL 지연
+
+authparam_title=인증 프로그램
+authparam_header=외부 인증 프로그램 옵션
+authparam_ttl=비밀번호를 캐시 할 시간
+authparam_ipttl=사용자를 IP 주소에 바인딩하는 시간
+authparam_never=못
+authparam_ecannot=인증 프로그램을 편집 할 수 없습니다
+authparam_err=인증 프로그램을 저장하지 못했습니다
+authparam_bprogram=기본 인증 프로그램
+authparam_dprogram=다이제스트 인증 프로그램
+authparam_nprogram=NTLM 인증 프로그램
+authparam_reuses=NTLM 챌린지를 재사용 할 수있는 횟수
+authparam_lifetime=NTLM 과제의 수명
+authparam_ereuses='$1'은 (는) 유효한 재사용 횟수가 아닙니다
+authparam_elifetime='$1'은 (는) 유효한 챌린지 수명이 아닙니다.
+authparam_mui_msg=<b>"max_user_ip"</b> ACL을 사용하는 경우 인증 IP TTL이 0보다 커야합니다. Squid가 사용자/IP 관계를 기억할 시간을 입력하십시오. 사용자는 브라우저를 닫은 경우에도이 시간이 지날 때까지 기억 된 IP에서 로그온 할 수 있습니다.
+ext_title1=외부 프로그램 만들기
+ext_title2=외부 프로그램 편집
+ext_header=외부 ACL 프로그램 세부 사항
+ext_name=프로그램 유형 이름
+ext_format=입력 형식 문자열
+ext_ttl=캐시 된 결과에 대한 TTL
+ext_negative_ttl=캐시 된 부정적인 결과에 대한 TTL
+ext_concurrency=실행할 프로그램 수
+ext_children=실행할 프로그램 수
+ext_cache=캐시 크기
+ext_ttl_u=초
+ext_negative_ttl_u=초
+ext_concurrency_u=프로그램들
+ext_children_u=프로그램들
+ext_cache_u=바이트
+ext_program=프로그램 경로 및 인수
+ext_err=외부 ACL 프로그램을 저장하지 못했습니다
+ext_ename=유형 이름이 없거나 유효하지 않습니다
+ext_eformat=없거나 잘못된 형식 문자열
+ext_ettl=누락되거나 잘못된 TTL
+ext_enegative_ttl=부정 TTL이 없거나 유효하지 않음
+ext_econcurrency=프로그램 수가 없거나 유효하지 않습니다
+ext_echildren=프로그램 수가 없거나 유효하지 않습니다
+ext_ecache=캐시 크기가 없거나 유효하지 않습니다
+ext_eprogram=잘못된 프로그램 경로가 입력되었습니다
+ext_eclash=같은 이름의 외부 프로그램 유형이 이미 존재합니다
+ext_eused=이 외부 프로그램이 ACL에서 사용 중입니다
+
+header_title=헤더 액세스 제어
+header_none=아직 헤더 액세스 제어 규칙이 정의되지 않았습니다.
+header_name=HTTP 헤더
+header_act=동작
+header_acls=ACL의 경우
+header_add=새로운 헤더 액세스 제어 규칙을 추가하십시오.
+header_create=헤더 액세스 규칙 생성
+header_create_request_header_access=요청 헤더 액세스 규칙 생성
+header_create_reply_header_access=회신 헤더 액세스 규칙 생성
+header_edit=헤더 액세스 규칙 편집
+header_edit_request_header_access=요청 헤더 액세스 규칙 편집
+header_edit_reply_header_access=회신 헤더 액세스 규칙 편집
+header_header=HTTP 헤더 액세스 제어 규칙 세부 사항
+header_return=헤더 액세스 제어 규칙 목록
+header_ecannot=헤더 액세스 제어 규칙을 편집 할 수 없습니다
+header_err=헤더 액세스 제어 규칙을 저장하지 못했습니다.
+header_ename=헤더 이름이 없거나 유효하지 않습니다
+header_request_header_access=요청 헤더
+header_reply_header_access=회신 헤더
+
+refresh_title=규칙 새로 고침
+refresh_none=새로 고침 규칙이 아직 정의되지 않았습니다.
+refresh_re=정규식
+refresh_min=최소 시간
+refresh_pc=나이 비율
+refresh_max=최대 시간
+refresh_add=새로운 새로 고침 규칙을 추가하십시오.
+refresh_ecannot=새로 고침 규칙을 편집 할 수 없습니다
+refresh_create=새로 고침 규칙 만들기
+refresh_edit=새로 고침 규칙 수정
+refresh_return=규칙 목록 새로 고침
+refresh_header=규칙 세부 사항 새로 고침
+refresh_caseless=사례를 무시 하시겠습니까?
+refresh_err=새로 고침 규칙을 저장하지 못했습니다.
+refresh_options=규칙 새로 고침
+refresh_override-expire=서버에서 설정 한 최소 연령 이상을 시행
+refresh_override-lastmod=최근 수정 된 객체에서도 최소 연령 적용
+refresh_reload-into-ims=클라이언트 비 캐시 헤더를 If-Modified-Since로 변환
+refresh_ignore-reload=클라이언트 비 캐시 또는 리로드 헤더 무시
+refresh_ere=정규식이 없거나 잘못되었습니다
+refresh_emin=최소 또는 누락 된 최소 시간
+refresh_emax=최대 시간이 없거나 잘못되었습니다
+refresh_epc=연령대가 없거나 잘못되었습니다
+refresh_delete=선택된 새로 고침 규칙 삭제
+drefresh_err=새로 고침 규칙을 삭제하지 못했습니다.
+drefesh_enone=선택된 사항 없음
+
+iptables_title=포트 리디렉션 설정
+iptables_inst0=포트 리디렉션을 설정하는 데 필요한 IPtables 방화벽 명령이 시스템에 설치되어 있지 않습니다. 자세한 내용은 <a href='$1'>Linux 방화벽</a> 모듈을 참조하십시오.
+iptables_inst1=<a href='$1'>Linux 방화벽</a> 모듈이 시스템에서 완전히 설정되지 않은 것 같습니다. 이 모듈은이 모듈을 사용하여 Frox 포트 리디렉션을 설정합니다.
+iptables_desc=Squid는 포트 $1에서 요청에 대해 투명한 HTTP 프록시를 수행 할 수 있습니다. 방화벽 규칙은 Squid가 수신하는 포트 $2에 자동 전달하도록 방화벽 규칙을 설정합니다. Squid를 실행하는 시스템이 네트워크의 라우터이기도 한 경우에만 작동합니다. IPtables 규칙을 <a href='$3'>Linux 방화벽</a> 모듈에서 관리한다고 가정하면 방화벽에 IPtables 규칙을 추가하면됩니다.
+iptables_disabled=포트 리디렉션이 비활성화되었습니다
+iptables_enabled3=네트워크의 클라이언트에 대해 포트 리디렉션이 활성화되었습니다.
+iptables_enabled4=인터페이스의 클라이언트에 대해 포트 리디렉션이 활성화되었습니다.
+iptables_apply=방화벽 및 오징어 구성을 적용 하시겠습니까?
+iptables_save=저장하고 적용
+iptables_err=포트 전달을 저장하지 못했습니다
+iptables_enet=네트워크 주소가 없거나 유효하지 않습니다 (192.168.1.0/24와 같아야 함)
+iptables_eiface=네트워크 인터페이스가 없거나 유효하지 않습니다
+iptables_eapply=방화벽 적용 실패  : $1
+iptables_eapply2=오징어 적용 실패  : $1
+
+syslog_access=오징어 액세스 로그
+syslog_cache=오징어 캐싱 로그
+syslog_store=오징어 개체 저장소 로그
+
+purge_err=캐시에서 URL을 지우지 못했습니다.
+purge_title=캐시 된 URL 지우기
+purge_doing=URL 삭제 $1 ..
+purge_done=.. 완료.
+purge_failed=.. 실패했습니다! 이유는 위의 오류 메시지를 참조하십시오.
+
+dhttp_err=프록시 제한을 삭제하지 못했습니다.
+dhttp_enone=선택된 사항 없음
+
+dicp_err=ICP 제한을 삭제하지 못했습니다.
+dicp_enone=선택된 사항 없음
+
+cachemgr_title=캐시 관리자 비밀번호
+cachemgr_ecannot=캐시 관리자 비밀번호를 편집 할 수 없습니다
+cachemgr_def1=비밀번호가 필요하지 않습니다
+cachemgr_def0=아래에 지정된 비밀번호 및 조치 ..
+cachemgr_pass=암호
+cachemgr_none=필요 없음
+cachemgr_set=로 설정
+cachemgr_disable=사용 중지 된 작업
+cachemsg_actions=행동에 적용
+cachemgr_all=모든 작업에이 암호를 사용하십시오
+cachemgr_others=다른 행동:
+cachemgr_enone=입력 한 내용 없음-대신 <i>비밀번호 필요 없음</i>을 선택해야합니다
+cachemgr_err=캐시 관리자 비밀번호를 저장하지 못했습니다.

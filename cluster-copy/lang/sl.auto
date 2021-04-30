@@ -1,0 +1,67 @@
+index_title=Kopiraj datoteke
+index_add=Ustvari novo načrtovano kopijo datoteke.
+index_none=Ni določenih nobenih načrtovanih kopij datotek.
+index_servers=Kopiraj v strežnike
+index_return=seznam kopij grozda
+index_more=$1 več ..
+index_run=Zaženi zdaj ..
+index_files=Datoteke za kopiranje
+index_sched=Po načrtih?
+index_when=Da, $1 
+index_act=Ukrep
+index_exec=Izvedite
+index_delete=Izbrišite izbrane kopije
+
+edit_title=Urejanje kopije grozda
+create_title=Ustvari kopijo grozda
+edit_header=Podrobnosti kopiranja grozda
+edit_files=Datoteke za kopiranje
+edit_dest=Ciljni imenik
+edit_cmd=Ukaz za zagon po kopiranju
+edit_before=Ukaz za zagon pred kopiranjem
+edit_remote=Na oddaljenih strežnikih
+edit_dmode0=Kopirajte celotne poti pod imenik
+edit_dmode1=Kopirajte v ta imenik
+edit_servers=Kopiraj v strežnike
+edit_group=Člani $1 
+edit_this=ta strežnik
+edit_all=&lt;Vsi gostitelji&gt;
+edit_sched=Kopiram po urniku?
+edit_schedyes=Da, v trenutkih, izbranih spodaj.
+edit_run=Kopiraj zdaj
+edit_return=grozdna kopija
+edit_email=Izhod po e-pošti v
+edit_none=Nihče
+
+save_err=Ni bilo mogoče shraniti opravila cluster cron
+save_efiles=Ni vnesenih datotek
+save_edest=Manjka ciljni imenik
+save_eservers=V vneseni strežnik ni mogoče kopirati
+save_efile=Datoteka za kopiranje $1 ni absolutna pot
+save_eemail=Manjkajoči ali neveljaven e-poštni naslov
+
+exec_title=Kopiranje datotek
+exec_files1=Kopiranje datotek $1 v izbrane strežnike $2 ..
+exec_files2=Kopiranje $1 v izbrane strežnike $2 ..
+exec_under=(pod imenikom $1)
+exec_failed=Kopiranja na $1 : $2 ni bilo mogoče kopirati
+exec_success=Kopirajte naslednje datoteke v $1  :
+exec_made=Ustvarili so naslednje imenike v $1  :
+exec_nohosts=Noben gostitelj ni izbran, če želite izvajati, ali izbrane skupine ne vsebujejo uporabnih gostiteljev.
+exec_nothing=Nobena datoteka ni bila uspešno kopirana v $1.
+exec_not=Kopiranje naslednjih datotek v $1 ni uspelo :
+exec_cmd=Izpis ukaza za naknadno kopiranje na $1  :
+exec_before=Pred kopiranje izhodnega ukaza na $1  :
+exec_on= $1 : $2 ni bilo mogoče zagnati
+
+log_create=Ustvarjena kopija za $1 do $2 strežnike
+log_modify=Spremenjena kopija za $1 do $2 strežnike
+log_delete=Izbrisana kopija za $1 do $2 strežnike
+log_exec=Kopirali so strežnike od $1 do $2 
+log_deletes=Izbrisanih $1 kopij
+
+email_subject_succeeded=Skupina kopij $1 je uspela
+email_subject_failed=Kopija kopice $1 ni uspela
+
+delete_err=Izbris kopij ni uspel
+delete_enone=Izbrana ni nobena

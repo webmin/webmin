@@ -1,0 +1,116 @@
+index_title=FirewallD
+index_atboot=Включить брандмауэр во время загрузки?
+index_bootup=Активировать при загрузке
+index_bootupdesc=Измените этот параметр, чтобы контролировать, активирован ли ваш брандмауэр во время загрузки или нет.
+index_apply=Применить конфигурацию
+index_applydesc=Нажмите эту кнопку, чтобы активировать указанную выше конфигурацию брандмауэра. Все действующие правила брандмауэра будут сброшены и заменены
+index_restart=Применить конфигурацию
+index_restartdesc=Активируйте все разрешенные службы и порты, перечисленные выше, во всех зонах. Любые активные правила, которые не были созданы постоянно, будут заменены.
+index_start=Запустите FirewallD
+index_startdesc=Запустите сервер FirewallD и примените правила, перечисленные выше.
+index_stop=Остановить FirewallD
+index_stopdesc=Завершите работу сервера FirewallD и удалите все правила, перечисленные выше.
+index_cerr=Модуль FirewallD не может быть использован : $1 
+index_zone=Показать правила в зоне:
+index_zoneok=Изменить
+index_zoneadd=Добавить зону ..
+index_zonedel=Удалить зону
+index_zonedef=Использовать по умолчанию
+index_type=Тип правила
+index_port=Порт или служба
+index_proto=протокол
+index_tservice=обслуживание
+index_tport=порт
+index_tforward=Вперед
+index_padd=Добавьте разрешенный порт.
+index_sadd=Добавьте разрешенный сервис.
+index_fadd=Добавьте порт вперед.
+index_delete=Удалить выбранные правила
+index_return=список зон
+index_ezones=Зоны FirewallD не найдены!
+index_none=В этой зоне еще нет разрешенных портов или служб.
+index_ifaces=Примените правила к интерфейсам:
+
+port_edit=Изменить порт
+port_create=Добавить порт
+port_header=Разрешенные параметры порта
+port_zone=Разрешено в зоне
+port_port=Порт для разрешения
+port_mode0=Один порт
+port_mode1=Диапазон портов
+port_mode2=То же, что и оригинальный порт
+port_proto=Сетевой протокол
+port_ezone=Зона не существует!
+port_err=Не удалось сохранить порт
+port_eport=Отсутствует или неверный номер порта или имя
+port_eportlow=Низкий порт должен быть числом
+port_eporthigh=Высокий порт должен быть числом
+port_eportrange=Низкий порт должен быть ниже верхнего порта
+
+serv_edit=Редактировать Сервис
+serv_create=Добавить сервис
+serv_header=Разрешенные варианты обслуживания
+serv_name=Служба, чтобы позволить
+serv_err=Не удалось сохранить сервис
+
+forward_edit=Редактировать Вперед
+forward_create=Создать Форвард
+forward_header=Параметры переадресации портов
+forward_zone=Вперед для зоны
+forward_err=Не удалось сохранить вперед
+forward_port=Исходный порт
+forward_dstport=Дезинтационный порт
+forward_dstaddr=Адрес назначения
+forward_dstlocal=Эта система
+forward_edstaddr=Неверный адрес назначения IPv4
+forward_eneither=Либо адрес назначения или порт, либо оба должны быть введены
+
+check_ecmd=Управляющая команда FirewallD $1 не найдена в вашей системе
+
+delete_err=Не удалось удалить правила
+delete_enone=Не выбрано, ничего не выбрано!
+delete_edel=Ошибка удаления $1 : $2 
+
+zone_title=Создать зону
+zone_header=Новые настройки зоны
+zone_name=Название зоны
+zone_mode=Разрешенные порты и сервисы
+zone_mode0=Нет (весь трафик будет заблокирован)
+zone_mode1=Копировать из зоны
+zone_mode2=Только SSH, IDENT и Webmin
+zone_mode3=SSH, IDENT, Webmin и высокие порты
+zone_mode4=Порты, используемые для виртуального хостинга
+zone_err=Не удалось создать зону
+zone_ename=Отсутствует или неверное имя зоны
+zone_eclash=Зона с таким именем уже существует
+
+delzone_title=Удалить зону
+delzone_err=Не удалось удалить зону
+delzone_edefault=Зона по умолчанию не может быть удалена
+delzone_rusure=Вы уверены, что хотите удалить зону $1, которая содержит $2 портов и $3 служб?
+
+defzone_err=Не удалось сделать зону по умолчанию
+
+restart_err=Не удалось применить конфигурацию
+
+stop_err=Не удалось остановить FirewallD
+start_err=Не удалось запустить FirewallD
+log_stop=Остановленный FirewallD
+log_start=Запущен FirewallD
+log_restart=Прикладная конфигурация FirewallD
+log_bootup=Включен FirewallD при загрузке
+log_bootdown=Отключен FirewallD при загрузке
+log_create_port=Добавлен разрешенный порт $1 
+log_delete_port=Удален разрешенный порт $1 
+log_update_port=Обновлен разрешенный порт $1 
+log_create_serv=Добавлен разрешенный сервис $1 
+log_delete_serv=Удален разрешенный сервис $1 
+log_update_serv=Обновлен разрешенный сервис $1 
+log_create_forward=Добавлен форвард $1 
+log_delete_forward=Удален вперед $1 
+log_update_forward=Обновлен форвард $1 
+log_delete_rules=Удалено $1 разрешенных портов
+log_ifaces_zone=Обновлены интерфейсы для зоны $1 
+log_create_zone=Созданная зона $1 
+log_delete_zone=Удаленная зона $1 
+log_default_zone=Зона $1 сделана по умолчанию

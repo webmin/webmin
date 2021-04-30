@@ -1,0 +1,39 @@
+index_title=יצוא NFS
+index_add=הוסף ייצוא חדש של NFS
+index_dir=מדריך
+index_hosts=מארחים מורשים
+index_all=כל המארחים
+index_none=טרם הוגדר יצוא NFS.
+index_apply=החל תצורה
+index_applydesc=לחץ על כפתור זה כדי להפעיל את כל היצוא המפורט לעיל, עם האפשרויות המוגדרות שלו.
+index_return=רשימת יצוא
+
+edit_title1=צור ייצוא
+edit_title2=ערוך ייצוא
+edit_header=ייצא פרטים
+edit_dir=מדריך לייצוא
+edit_hosts=ייצא למארחים/קבוצות רשת
+edit_ro=לקריאה בלבד?
+edit_wsync=לסנכרן לאחר כותב?
+edit_anon=הרשאות משתמש שורש
+edit_anon1=ברירת מחדל (התייחס כאל <tt>אף אחד</strong>)
+edit_anon2=לדחות גישה
+edit_anon0=התייחס כאל משתמש
+edit_rw=גישה לקריאה/כתיבה
+edit_root=גישה לקובץ שורש
+edit_access=הר גישה
+edit_all=כל המארחים
+edit_sel=מארחים רשומים ..
+edit_none=אין מארחים
+
+save_err=שמירת הייצוא נכשלה
+save_edir=ספרייה חסרה או לא קיימת לייצוא
+save_eanon=משתמש שורש חסר או לא חוקי
+save_erw=לא נכנסו מארחי קריאה וכתיבה
+save_eroot=לא הוזנו מארחי גישה לקובצי שורש
+save_eaccess=לא הוזנו מארחי גישה להר
+
+log_create_export=יצר יצוא של $1 
+log_delete_export=ייצוא של $1 נמחק
+log_modify_export=ייצוא שונה של $1 
+log_apply=תצורה מיושמת

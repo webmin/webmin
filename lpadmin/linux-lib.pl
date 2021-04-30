@@ -217,7 +217,7 @@ local(@rv, @line, @comment, @eline, @sline, $line, $cont, $lnum, $i,
       %done, $capfile);
 foreach $capfile ($config{'printcap_file'}, $config{'ro_printcap_file'}) {
 	next if (!$capfile || $done{$capfile}++);
-	open(CAP, $capfile);
+	open(CAP, "<".$capfile);
 	$lnum = 0;
 	while($line = <CAP>) {
 		$line =~ s/\s+$//g;	# remove trailing spaces/newline

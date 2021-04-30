@@ -1,0 +1,18 @@
+index_title=Aginte maskorra
+index_ok=Komandoa exekutatu:
+index_history=Aginduen historia
+index_clear=Historia garbia
+index_clearcmds=Komandoak garbitu
+index_desc=Sartu shell komandoa exekutatzeko beheko testu-eremuan. <tt>cd</tt> komandoa hurrengo aginduak egiteko direktorio aldatzeko erabil daiteke.
+index_pok=Aurreko agindua gauzatzea
+index_edit=Aurrekoa aldatu
+index_trunced=$2 -ko guztizko emaitza $1 -en moztu da.
+index_timedout=Komandoa $1 segundo exekutatu ondoren amaitu da.
+
+acl_user=Komandoak erabiltzaile gisa exekutatu
+acl_user_def=Uneko Webmin erabiltzailea
+acl_shellenv=Erabili hautatutako erabiltzailearen ingurunea?
+acl_chroot=Koadernatu direktoriora
+
+log_run=Rango komandoa $1 
+log_clear=Komandoen historia garbitu

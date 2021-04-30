@@ -1,0 +1,23 @@
+index_md5=MD5-salaus on käytössä moduulin kokoonpanossa, mutta siihen tarvittavaa $1 Perl -moduulia ei ole asennettu.
+index_sha1=SHA1-salaus on käytössä moduulin kokoonpanossa, mutta siihen tarvittavaa $1 Perl -moduulia ei ole asennettu.
+index_digest2=Tiivistelmäsalaus on käytössä moduulin kokoonpanossa, mutta siihen tarvittavaa komentoa $1 tai $2 Perl ei ole asennettu.
+index_remove=Poista suojaus ja poista tiedostot
+
+dir_header2=Käyttäjän synkronointiasetukset
+dir_crypt0=Unix-krypta
+dir_crypt1=MD5
+dir_crypt2=SHA1
+dir_crypt3=Sulattaa
+dir_ecannotcreate=Et voi määrittää suojattuja hakemistoja
+dir_delete2=Poista suojaus ja poista tiedostot
+dir_delete3=Poista suojaus ja poista tiedosto
+dir_apache=Muokkaa Apache-asetuksia
+dir_efiledir='$1' on hakemisto, joten sitä ei voida käyttää käyttäjätiedostona
+dir_egfiledir='$1' on hakemisto, joten sitä ei voida käyttää ryhmätiedostona
+
+acl_uonly=Voiko suojattuja hakemistoja lisätä ja muuttaa?
+
+search_found=Löytyi uusi Apache-asetusten tiedosto $1 käyttäjillä $2 : ssa.
+search_already=Ohitetaan tunnettu Apache-asetusten tiedosto $1.
+search_noprot=Ohitetaan Apache-asetusten tiedosto $1, koska se ei suojaa hakemistoa.
+search_open=Apache-asetusten tiedostoa $1 ei voitu avata : $2 

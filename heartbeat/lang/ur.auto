@@ -1,0 +1,103 @@
+index_title=دل کی دھڑکن مانیٹر
+index_return=دل کی دھڑکن مانیٹر
+index_edir=The heartbeat config directory $1 does not exist. Maybe Heartbeat is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_start=دل کی دھڑکن مانیٹر شروع کریں
+index_startmsg=دل کی دھڑکن مانیٹر کے عمل کو شروع کرنے کے لئے اس بٹن پر کلک کریں۔ یہ موجودہ ترتیب کے ساتھ آپ کے سسٹم میں خودکار سروس فیل اوور کو قابل بنائے گی۔
+index_apply=تبدیلیوں کا اطلاق کریں
+index_applymsg=چلنے والی دل کی دھڑکن مانیٹر کے عمل کو موجودہ کنفیگریشن کو دوبارہ لوڈ کرنے پر مجبور کرنے کے لئے اس بٹن پر کلک کریں۔
+index_eha_cf=The heartbeat configuration file $1 was not found on your system. Maybe it has not been copied into place yet, or the <a href='$2'>module configuration</a> is incorrect.
+index_eharesources=The resources file $1 was not found on your system. Maybe it has not been copied into place yet, or the <a href='$2'>module configuration</a> is incorrect.
+index_eauthkeys=The authentication keys file $1 was not found on your system. Maybe it has not been copied into place yet, or the <a href='$2'>module configuration</a> is incorrect.
+index_ereq_resource_cmd=The script to request resources from the other node ($1) was not found on your system. Maybe it has not been copied into place yet, or the <a href='$2'>module configuration</a> is incorrect.
+index_version=دل کی دھڑکن کا ورژن$1
+index_noversion=Warning - The version of Heartbeat installed on your system could not be automatically detected. You should set it on the <a href='$1'>module configuration</a> page.
+index_status=دل کی دھڑکن کی حیثیت
+
+conf_title=تشکیل کے اختیارات
+conf_header=دل کی دھڑکن ترتیب کے اختیارات
+conf_serials=سیریل دل کی دھڑکن بندرگاہیں
+conf_baud=سیریل پورٹ کے لئے بوڈ کی شرح
+conf_bcasts=ایتھرنیٹ دل کی دھڑکن انٹرفیس
+conf_none=کوئی نہیں
+conf_udpport=UDP دل کی دھڑکن بندرگاہ
+conf_mcast=ملٹی کاسٹ دل کی دھڑکن والا آلہ
+conf_mcastv=ڈیوائس$1، گروپ$2، پورٹ$3، ٹی ٹی ایل$4، لوپ بیک$5
+conf_enabled=فعال
+conf_disabled=غیر فعال
+conf_keepalive=دل کی دھڑکنوں کے درمیان وقت
+conf_nice_failback=اچھا فیل بیک رویہ
+conf_secs=سیکنڈ
+conf_deadtime=نوڈ سے پہلے کا وقت مردہ سمجھا جاتا ہے
+conf_watchdog=واچ ڈاگ ڈیوائس فائل
+conf_node=کلسٹر میں میزبان
+conf_logfile=دل کی دھڑکن لاگ فائل
+conf_logfacility=سیسلاگ لاگ سہولت
+conf_initdead=ابتدائی مردہ وقت
+conf_ok=اختیارات محفوظ کریں
+conf_err=اختیارات کو بچانے میں ناکام
+conf_ebaud=غائب یا باؤڈ کی غلط شرح
+conf_ebcast=دل کی دھڑکن کا کوئی نشریاتی انٹرفیس داخل نہیں ہوا
+conf_ebcastif='$1' ایک درست نشریاتی انٹرفیس نہیں ہے
+conf_eudpport=دل کی دھڑکن سے متعلق پورٹ غائب ہے
+conf_ekeepalive=دل کی دھڑکنوں کے مابین غائب یا غلط وقت
+conf_edeadtime=گمشدہ یا غلط ڈیڈ ٹائم
+conf_ewatchdog=لاپتہ یا غیر لا محدود واچ ڈاگ ڈیوائس فائل
+conf_enonode=کوئی بھی کلسٹر میزبان داخل نہیں ہوا
+conf_ethisnode=یہ میزبان$1 کلسٹر میزبان فہرست میں شامل نہیں ہے
+conf_elogfile=گم شدہ یا غلط لاگ فائل نام
+conf_einitdead=ابتدائی ڈیڈ ٹائم چھوٹا یا غلط ہے
+conf_einitdead2=نوڈ کو مردہ سمجھنے سے پہلے ابتدائی مردہ وقت کم از کم دو بار ہونا چاہئے
+conf_emcast_dev=لاپتہ یا غلط ملٹی کاسٹ ڈیوائس
+conf_emcast_ip=گمشدہ یا غلط ملٹی کاسٹ گروپ کا پتہ
+conf_emcast_port=گمشدہ یا غلط ملٹی کاسٹ پورٹ نمبر
+conf_emcast_ttl=ملٹی کاسٹ ٹائم لائیو کے لئے لاپتہ یا غلط
+conf_auto_on=$ {conf_en सक्षम}
+conf_auto_off=$ {conf_disabled}
+conf_auto_legacy=میراثی وضع
+conf_auto_={{پہلے سے طے شدہ}
+
+res_title=کلسٹر وسائل
+res_node=پرائمری نوڈ
+res_ips=IP پتے
+res_servs=نوڈ خدمات
+res_none=کوئی نہیں
+res_nores=آپ کے سسٹم پر کسی بھی کلسٹر وسائل کی تعریف نہیں کی گئی ہے۔
+res_add=ایک کلسٹر وسیلہ شامل کریں
+res_return=وسائل کی فہرست
+res_active=وسائل کی حیثیت
+res_getserv=وسیلہ حاصل کریں
+res_hbdown=دل کی دھڑکن نیچے
+res_up=یوپی
+res_down=نیچے
+
+node_create=کلسٹر ریسورس شامل کریں
+node_edit=کلسٹر ریسورس میں ترمیم کریں
+node_header=کلسٹر وسائل کی تفصیلات
+node_node=وسائل کے لئے بنیادی نوڈ
+node_ips=وسائل کے لئے IP پتوں
+node_ip=IP پتہ
+node_cidr=نیٹ ماسک سی آئی ڈی آر
+node_broad=براڈکاسٹ ایڈریس
+node_servs=وسائل کے لئے خدمات
+node_serv=خدمت
+node_args=اضافی دلائل
+node_err=کلسٹر وسائل کو بچانے میں ناکام
+node_enone=غائب یا غلط پرائمری نوڈ
+node_eip='$1' درست IP ایڈریس نہیں ہے
+node_ecidr='$1' درست CIDR نہیں ہے
+node_ebroad='$1' ایک درست نشریاتی پتہ نہیں ہے
+
+auth_title=توثیق کی کلیدیں
+auth_header=کلسٹر نوڈ کی توثیق
+auth_mode=توثیق کا طریقہ
+auth_crc=CRC (کوئی سیکیورٹی نہیں)
+auth_sha1=پاس ورڈ کے ساتھ SHA1
+auth_md5=پاس ورڈ کے ساتھ MD5
+auth_err=توثیق کیز کو بچانے میں ناکام
+auth_emd5=گم شدہ یا غلط MD5 پاس ورڈ
+auth_esha1=لاپتہ یا غلط SHA1 پاس ورڈ
+
+start_err=دل کی دھڑکن شروع کرنے میں ناکام
+
+apply_err=تبدیلیاں لاگو کرنے میں ناکام
+apply_epid=عمل اب نہیں چل رہا ہے

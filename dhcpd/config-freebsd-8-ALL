@@ -14,3 +14,4 @@ interfaces_type=freebsd
 start_cmd=/usr/local/etc/rc.d/isc-dhcpd forcestart
 stop_cmd=/usr/local/etc/rc.d/isc-dhcpd forcestop
 restart_cmd=/usr/local/etc/rc.d/isc-dhcpd onerestart
+lease_vendor=0

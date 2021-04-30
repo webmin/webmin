@@ -107,5 +107,3 @@ force_failed=.. failed! See the output above for the reason why.
 
 delete_err=Failed to delete logs
 delete_enone=None selected
-
-__norefs=1

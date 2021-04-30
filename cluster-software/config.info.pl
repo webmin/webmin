@@ -1,2 +1,2 @@
-sort_mode=Sortuj hosty wed≥ug,1,1-Nazw,0-Kolejno∂ci dodania,2-Opisu
-table_mode=Wy∂wietl hosty jako,1,1-Tabela,0-Ikony
+sort_mode=Sortuj hosty wed≈Çug,1,1-Nazw,0-Kolejno≈õci dodania,2-Opisu
+table_mode=Wy≈õwietl hosty jako,1,1-Tabela,0-Ikony

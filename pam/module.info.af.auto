@@ -1,0 +1,3 @@
+name_af=PAM
+longdesc_af=Stel die PAM-verifikasiestappe op wat deur dienste soos telnet, POP en FTP gebruik word.
+desc_af=PAM-verifikasie

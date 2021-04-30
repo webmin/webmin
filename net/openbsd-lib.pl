@@ -306,6 +306,11 @@ sub can_edit
       return $_[0] =~ /netmask|broadcast|dhcp/;
   }
 
+sub can_broadcast_def
+{
+return 0;
+}
+
 # valid_boot_address(address)
 # Is some address valid for a bootup interface
 sub valid_boot_address
@@ -477,7 +482,7 @@ print &ui_table_row($text{'routes_routed'},
 sub parse_routing
   {
       $in{'defr_def'} || &check_ipaddress($in{'defr'}) ||
-	&error(&text('routes_edefault', $in{'defr'}));
+	&error(&text('routes_edefault', &html_escape($in{'defr'})));
 
       &read_routing;
 

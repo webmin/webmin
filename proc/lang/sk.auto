@@ -1,0 +1,205 @@
+index_title=Spustené procesy
+index_display=zobraziť
+index_tree=PID
+index_user=užívateľ
+index_size=Pamäť
+index_cpu=CPU
+index_search=Vyhľadávanie
+index_zone=zóna
+index_run=Beh ..
+index_return=zoznam procesov
+index_mem2=<b>Skutočná pamäť:</b> $1 celkom / $2 zadarmo
+index_mem3=<b>Skutočná pamäť:</b> $1 celkom / $2 zadarmo / $3 v pamäti cache
+index_swap2=<b>Odkladací priestor:</b> $1 celkom / $2 zadarmo
+index_burst=<b>Zhluková pamäť: celkom</b> $1 
+index_loadname=Priemer zaťaženia procesora:
+index_loadnums=$1 (1 min.), $2 (5 min.), $3 (15 min.)
+index_cpuname=Typ CPU:
+index_inzone=V zóne $1 
+
+pid=ID
+owner=vlastník
+command=príkaz
+cpu=CPU
+size=veľkosť
+parent=Rodičovský proces
+runtime=Beh programu
+nice=Pekná úroveň
+stime=zahájená
+sclass=Trieda plánovania IO
+sprio=Priorita IO
+
+search_user=Vo vlastníctve
+search_match=vhodný
+search_cpupc=Používa viac ako $1% CPU
+search_cpupc2=Použitie viac CPU ako
+search_fs=Používanie súborového systému
+search_files=Pomocou súboru
+search_submit=Vyhľadávanie
+search_none=Nenašli sa žiadne zodpovedajúce procesy.
+search_kill=Poslať signál
+search_ignore=Vo výsledku ignorujte procesy vyhľadávania
+search_return=vyhľadávací formulár
+search_sigterm=Ukončiť procesy
+search_sigkill=Zabite procesy
+search_port=Pomocou portu
+search_protocol=protokol
+search_ip=Pomocou adresy IP
+
+run_command=Príkaz na spustenie
+run_submit=beh
+run_mode=Spustiť režim
+run_bg=Bežať v pozadí
+run_fg=Počkajte, kým sa nedokončí
+run_input=Vstup do príkazu
+run_title=Príkazový výstup
+run_output=Výstup z $1 ..
+run_none=Nebol vygenerovaný žiadny výstup
+run_ecannot=Nemáte povolené spúšťať príkazy
+run_as=Spustiť ako používateľ
+run_euser=Chýbajúce alebo neplatné používateľské meno
+run_euser2=Ako vybratý používateľ nemáte povolené spúšťať príkazy
+
+edit_title=Informácie o procese
+edit_gone=Tento proces už nie je spustený
+edit_sub=vlákna
+edit_subid=ID
+edit_subcmd=Príkaz na čiastkový proces
+edit_kill=Poslať signál
+edit_change=zmena
+edit_prilow=Nízka priorita
+edit_prihigh=Vysoká priorita
+edit_pridef=štandardné
+edit_none=nikto
+edit_ecannot=Nemáte oprávnenie upravovať procesy
+edit_sigterm=vypovedať
+edit_sigkill=kill
+edit_sigstop=pozastaviť
+edit_sigcont=Pokračovať
+edit_open=Súbory a pripojenia
+edit_trace=Stopový proces
+edit_return=podrobnosti procesu
+
+kill_err=Nepodarilo sa odoslať signál $1 na spracovanie $2 
+kill_title=Poslať signál
+kill_sent=zaslaná
+kill_ecannot=Nemáte povolené zabíjať procesy
+
+renice_err=Proces sa nepodarilo premenovať $1 
+renice_ecannot=Nemáte povolenie na opakovanie procesov
+
+linux_pri=priorita
+linux_tty=TTY
+linux_status=Postavenie
+linux_wchan=Čaká sa
+linux_mem=Pamäť
+linux_group=skupina
+linux_ruser=Skutočný používateľ
+linux_rgroup=Skutočná skupina
+linux_pgid=ID skupiny procesov
+linux_stime=zahájená
+
+linuxstat_R=beh
+linuxstat_S=spacie
+linuxstat_D=Hlboký spánok
+linuxstat_T=zastavený
+linuxstat_Z=živá mŕtvola
+
+linux_real=Reálny čas
+linux_be=Najlepšie úsilie
+linux_idle=nečinný
+
+freebsd_ruser=Skutočný používateľ
+freebsd_rgroup=Skutočná skupina
+freebsd_tty=TTY
+freebsd_pgid=Procesná skupina
+freebsd_stime=zahájená
+freebsd_lim=Limit pamäte
+
+hpux_pri=priorita
+hpux_tty=TTY
+hpux_status=Postavenie
+hpux_wchan=Čakať na
+hpux_stime=zahájená
+
+hpuxstat_0=neexistujúce
+hpuxstat_S=spacie
+hpuxstat_W=čakania
+hpuxstat_R=beh
+hpuxstat_I=prechodný
+hpuxstat_Z=živá mŕtvola
+hpuxstat_T=zastavený
+hpuxstat_G=rastúce
+
+macos_tty=TTY
+
+sysv_group=skupina
+sysv_ruser=Skutočný používateľ
+sysv_rgroup=Skutočná skupina
+sysv_pgid=ID skupiny procesov
+sysv_tty=TTY
+sysv_stime=zahájená
+sysv_task=ID úlohy
+sysv_zone=Názov zóny
+
+log_run=Príkaz Ran $1
+log_kill=Odoslal sa signál $1 na spracovanie $2 
+log_kills=Pošlite signál $1 procesom $2 
+log_kill_l=Odoslal sa signál $1 na spracovanie $2 
+log_kills_l=Odoslal sa signál $1 na spracovanie <br> $2 
+log_renice=Zmenená priorita procesu $2 na $1 
+
+acl_manage=Spravujte procesy ako užívateľ
+acl_manage_def=Aktuálny užívateľ Webmin
+acl_edit=Môžu zabíjať a obnovovať procesy?
+acl_run=Dokáže spúšťať príkazy?
+acl_only=Vidíte iba vlastné procesy?
+acl_who=Dokáže spravovať procesy pre používateľov
+acl_who0=Všetci používatelia
+acl_who1=Aktuálny užívateľ Webmin
+acl_who2=Registrovaní užívatelia ..
+
+kill_kill=Proces zabíjania
+kill_term=vypovedať
+kill_hup=Reštart
+kill_stop=Stop
+kill_cont=ďalej
+
+open_title=Otvorte Súbory a pripojenia
+open_proc=Pre proces $1 (PID $2)
+open_header1=Otvorte súbory
+open_header2=Otvorte sieťové pripojenia
+open_type=typ
+open_proto=Protokol
+open_desc=podrobnosti
+open_fd=Popisovač súborov
+open_listen1=Počúvanie na porte $1 
+open_listen2=Počúvanie na adrese $1 port $2 
+open_recv=Príjem na $1:$2 
+open_conn=Pripojené od $1 do $2 v stave $3 
+open_cwd=Aktuálny smer
+open_rtd=Root dir
+open_txt=Programový kód
+open_mem=Zdieľaná knižnica
+open_dir=adresár
+open_reg=Bežný súbor
+open_chr=Charakter špeciálne
+open_blk=Blok špeciálne
+open_size=Veľkosť súboru
+open_inode=Inode
+open_file=cesta
+
+trace_title=Stopový proces
+trace_start=Spustenie sledovania systémových hovorov pre $1 ..
+trace_doing=Sledovanie systémových volaní pre $1  :
+trace_done=.. proces sa skončil.
+trace_failed=.. sledovanie zlyhalo!
+trace_sorry=Táto stránka vyžaduje podporu Java vo vašom prehliadači. Ak chcete použiť sledovanie textu iba v texte, upravte konfiguráciu modulu.
+trace_syscalls=Sledovanie systémových volaní:
+trace_all=všetko
+trace_sel=Uvedený ..
+trace_change=zmena
+
+windows_threads=Vlákna sa spracovávajú
+
+syslog_dmesg=Správy jadra

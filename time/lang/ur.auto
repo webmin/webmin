@@ -1,0 +1,70 @@
+index_title=نظام کا وقت
+index_timeserver=ٹائم سرور
+index_addresses=ٹائمزرور میزبان نام یا پتے
+index_zone=ٹائم زون
+index_eformat=Unrecognized <tt>hwclock</tt> output format
+index_sched=شیڈول پر ہم وقت سازی کریں؟
+index_schedyes=ہاں ، نیچے اوقات میں ..
+index_sync=مطابقت پذیری اور درخواست دیں
+index_hardware2=ہارڈویئر کا وقت بھی طے کریں
+index_boot=مطابقت پذیر جب Webmin شروع ہوتا ہے؟
+index_tzheader=ٹائم زون
+index_tz=ٹائم زون کو تبدیل کریں
+index_ehwclock=$1 ناکام :$2
+index_tabtime=وقت ٹھیک کرنا
+index_tabzone=ٹائم زون تبدیل کریں
+index_tabsync=ٹائم سرور کی مطابقت پذیری
+index_desctime=یہ فارم نظام کے موجودہ وقت کو تبدیل کرنے کے لئے ہے ، جو تمام چلنے والے عمل کے ذریعہ استعمال ہوتا ہے۔ آپریٹنگ سسٹم پر جن کی ایک الگ ہارڈویئر گھڑی ہے ، اسے بھی سیٹ کرنے کے لئے استعمال کیا جاسکتا ہے۔
+index_desczone=یہ فارم آپ کو سسٹم کا ڈیفالٹ ٹائم زون متعین کرنے کی اجازت دیتا ہے ، جو سسٹم ٹائم کو انسان کو پڑھنے کے قابل فارمیٹ اور آفسیٹ میں تبدیل کرنے کے لئے استعمال ہوتا ہے۔
+index_descsync=This form is for configuring the system to automatically synchronize the time with a remote server. Synchronization will be done using the Unix <tt>time</tt> protocol or NTP, depending on which commands are installed and what the remote system supports.
+
+action_save=محفوظ کریں
+action_apply=درخواست دیں
+action_sync=ہارڈ ویئر کے وقت کے مطابق سسٹم کا وقت مقرر کریں
+action_sync_s=نظام کے وقت کے مطابق ہارڈ ویئر کا وقت مقرر کریں
+action_timeserver_sys=مطابقت پذیری کا نظام
+action_timeserver_hw=ہارڈویئر کا وقت مطابقت پذیر
+action_savezone=ٹائم زون تبدیل کریں
+
+acl_sys=صارف نظام کے وقت میں ترمیم کرسکتا ہے؟
+acl_hw=صارف ہارڈ ویئر کے وقت میں ترمیم کرسکتا ہے؟
+acl_timezone=صارف ٹائم زون سیٹ کرسکتا ہے؟
+acl_ntp=ٹائم سرور کے ساتھ ہم وقت سازی کر سکتے ہیں؟
+acl_yes=جی ہاں
+acl_no=نہیں
+acl_error=آپ کے پاس سسٹم ٹائم ماڈیول تک رسائی ہے ، لیکن آپ نہ تو نظام وقت اور ہارڈ ویئر کے وقت میں ترمیم کرسکتے ہیں
+acl_nosys=آپ کو نظام وقت میں ترمیم کرنے کی اجازت نہیں ہے
+acl_nohw=آپ کو ہارڈ ویئر کے وقت میں ترمیم کرنے کی اجازت نہیں ہے
+acl_nontp=آپ کو ٹائم سرور کے ساتھ ہم وقت ساز ہونے کی اجازت نہیں ہے
+
+sys_title=نظام کا وقت
+hw_title=ہارڈ ویئر کا وقت
+
+day=دن
+month=مہینہ
+date=تاریخ
+hour=قیامت
+year=سال
+minute=منٹ
+second=دوسرا
+
+error_cnf=خرابی:$1 کمانڈ نہیں ملا
+error_hw=ہارڈویئر کا وقت مقرر نہیں کیا جاسکتا :$1
+error_sync=سسٹم ٹائم کے ساتھ ہم آہنگ نہیں ہوسکتا :$1
+error_ediff=مقامی وقت کے ساتھ مختلف ٹائم سرور بہت بڑا ہے:$1 دن
+error_entp=این ٹی پی وقت کی ہم آہنگی ناکام ہوگئی :$1
+error_etimeserver=داخل ہونے کے ساتھ مطابقت پذیر ہونے کے لئے ٹائم سرورز نہیں ہیں
+
+log_set_date=سسٹم کا وقت $1 پر متعین کریں
+log_set_hwclock=ہارڈ ویئر گھڑی کو$1 پر سیٹ کریں
+log_remote_date=نظام کا وقت $2 سے نکالا گیا
+log_remote_hwclock=ہارڈویئر کا وقت $2 سے نکالا گیا
+log_remote_date_l=سسٹم ٹائم$1 کو$2 سے حاصل کیا
+log_remote_hwclock_l=ہارڈ ویئر کا وقت $1 سے$2 لایا
+log_sync=ہارڈ ویئر کے وقت کے ساتھ ہم وقت ساز نظام
+log_sync_s=سسٹم ٹائم کے ساتھ ہم وقت ساز ہارڈویئر کا وقت
+log_timezone=ٹائم زون کو$1 میں تبدیل کر دیا گیا
+
+timezone_err=ٹائم زون کو بچانے میں ناکام
+timezone_ecannot=آپ کو ٹائم زون کو تبدیل کرنے کی اجازت نہیں ہے
+timezone_enone=کوئی زون منتخب نہیں کیا گیا

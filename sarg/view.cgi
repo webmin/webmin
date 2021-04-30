@@ -21,9 +21,10 @@ if (-d $full && -r "$full/index.html") {
 	}
 
 # Display file contents
+my $bs = &get_buffer_size();
 if ($full =~ /\.(html|htm)$/i && !$config{'naked'}) {
-	open(FILE, $full) || &error($text{'view_eopen'}." : $full");
-	while(read(FILE, $buf, 1024)) {
+	open(FILE, "<$full") || &error($text{'view_eopen'}." : $full");
+	while(read(FILE, $buf, $bs)) {
 		$data .= $buf;
 		}
 	close(FILE);
@@ -54,10 +55,10 @@ elsif (-d $full) {
 	}
 else {
 	# Show RAW file contents
-	open(FILE, $full) || &error($text{'view_eopen'}." : $full");
+	open(FILE, "<$full") || &error($text{'view_eopen'}." : $full");
 	print "Content-type: ",&guess_mime_type($full, "text/plain"),"\n";
 	print "\n";
-	while(read(FILE, $buf, 1024)) {
+	while(read(FILE, $buf, $bs)) {
 		print $buf;
 		}
 	close(FILE);

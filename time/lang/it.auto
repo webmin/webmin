@@ -1,0 +1,10 @@
+index_boot=Sincronizzare all'avvio di Webmin?
+index_tabtime=Tempo impostato
+index_tabzone=Cambia fuso orario
+index_tabsync=Sincronizzazione del server orario
+index_desctime=Questo modulo serve per modificare l'ora corrente del sistema, utilizzata da tutti i processi in esecuzione. Sui sistemi operativi che hanno un orologio hardware separato, può essere utilizzato anche per impostarlo.
+index_desczone=Questo modulo consente di impostare il fuso orario predefinito del sistema, che viene utilizzato per convertire l'ora del sistema in un formato leggibile e in offset.
+index_descsync=Questo modulo serve per configurare il sistema per sincronizzare automaticamente l'ora con un server remoto. La sincronizzazione verrà eseguita utilizzando il protocollo Unix <tt>time</tt> o NTP, a seconda di quali comandi sono installati e di cosa supporta il sistema remoto.
+
+minute=minuto
+second=Secondo

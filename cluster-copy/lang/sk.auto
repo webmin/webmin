@@ -1,0 +1,67 @@
+index_title=Súbory na kopírovanie klastrov
+index_add=Vytvorte novú naplánovanú kópiu súboru.
+index_none=Neboli definované žiadne plánované kópie súborov.
+index_servers=Kopírovať na servery
+index_return=zoznam kópií klastrov
+index_more=ešte $1 ..
+index_run=Spustiť teraz ..
+index_files=Súbory na kopírovanie
+index_sched=Naplánovaný?
+index_when=Áno, $1 
+index_act=akčné
+index_exec=popraviť
+index_delete=Odstrániť vybrané kópie
+
+edit_title=Upraviť kópiu klastra
+create_title=Vytvorte kópiu klastra
+edit_header=Podrobnosti o kópii klastra
+edit_files=Súbory na kopírovanie
+edit_dest=Cieľový adresár
+edit_cmd=Príkaz na spustenie po skopírovaní
+edit_before=Príkaz na spustenie pred kopírovaním
+edit_remote=Na vzdialených serveroch
+edit_dmode0=Skopírujte celé cesty do adresára
+edit_dmode1=Skopírujte do tohto adresára
+edit_servers=Kopírovať na servery
+edit_group=Členovia $1 
+edit_this=tento server
+edit_all=&lt;Všetci hostitelia&gt;
+edit_sched=Kopírovať podľa plánu?
+edit_schedyes=Áno, v časoch vybraných nižšie.
+edit_run=Teraz skopírujte
+edit_return=kópia klastra
+edit_email=Výstup e-mailu na adresu
+edit_none=nikto
+
+save_err=Uloženie úlohy cron klastra zlyhalo
+save_efiles=Neboli zadané žiadne súbory na kopírovanie
+save_edest=Chýba cieľový adresár
+save_eservers=Nie sú zadané žiadne servery na kopírovanie
+save_efile=Súbor na kopírovanie $1 nie je absolútna cesta
+save_eemail=Chýbajúca alebo neplatná e-mailová adresa
+
+exec_title=Kopírovanie súborov
+exec_files1=Kopíruje sa súbor $1 na vybrané servery $2 ..
+exec_files2=Kopíruje sa $1 na vybrané servery $2 ..
+exec_under=(v adresári $1)
+exec_failed=Nepodarilo sa skopírovať do $1 : $2 
+exec_success=Skopírovali nasledujúce súbory do $1  :
+exec_made=Na $1 boli vytvorené nasledujúce adresáre :
+exec_nohosts=Nie sú vybraní hostitelia, na ktorých sa má spustiť, alebo vybrané skupiny neobsahujú použiteľných hostiteľov.
+exec_nothing=Do $1 neboli úspešne skopírované žiadne súbory.
+exec_not=Nepodarilo sa skopírovať nasledujúce súbory do $1  :
+exec_cmd=Výstup príkazu po kopírovaní na $1  :
+exec_before=Výstup príkazu pred kopírovaním na $1  :
+exec_on=Spustenie zlyhalo na $1 : $2 
+
+log_create=Vytvorená kópia pre servery $1 až $2 
+log_modify=Upravená kópia pre servery $1 až $2 
+log_delete=Odstránená kópia pre servery $1 až $2 
+log_exec=Skopírované servery $1 až $2 
+log_deletes=Odstránené $1 kópie
+
+email_subject_succeeded=Klastrová kópia $1 bola úspešná
+email_subject_failed=Klastrová kópia $1 zlyhala
+
+delete_err=Kópie sa nepodarilo odstrániť
+delete_enone=Žiadne vybraté

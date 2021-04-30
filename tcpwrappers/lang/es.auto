@@ -1,0 +1,33 @@
+index_title=TCP Wrappers
+index_return=índice
+index_allowtitle=Anfitriones permitidos
+index_denytitle=Anfitriones denegados
+index_norule=Aún no se han definido reglas en <tt>$1</tt>.
+index_nofile=El archivo '$1' no existe: compruebe la configuración del módulo <a href="/config.cgi?tcpwrappers"></a>
+index_add=Agregar una nueva regla.
+index_service=Demonio
+index_hosts=Hospedadores
+index_cmd=Mando
+index_delete=Eliminar seleccionado
+index_none=ninguna
+
+edit_title1allow=Crear regla de permiso
+edit_title2allow=Editar regla de permiso
+edit_title1deny=Crear regla de denegación
+edit_title2deny=Editar regla de denegación
+edit_eid=Esta regla no fue encontrada
+edit_header=Opciones de regla
+edit_service=Servicios
+edit_except=Excepto servicios
+edit_hosts=Hosts remotos
+edit_hostsexcept=Excepto los anfitriones
+edit_cmd=Comandos de Shell
+edit_efound=El demonio '$1' no se encontró en la configuración de xinetd.
+
+save_errtitle=Error al guardar la regla
+save_ehost=La entrada del host contiene caracteres incorrectos
+save_ecmd=La entrada de comando contiene caracteres incorrectos
+save_eservice=Los nombres de los demonios contienen caracteres malos
+
+del_errtitle=Error al eliminar reglas
+del_enone=No hay reglas marcadas para eliminar

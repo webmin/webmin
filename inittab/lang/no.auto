@@ -1,0 +1,53 @@
+inittab_new=Lag en ny init-prosess.
+inittab_id=ID
+inittab_active=Aktiv?
+inittab_runlevels=Oppstartsløp
+inittab_action=Handling
+inittab_process=Prosess
+inittab_none=Ingen
+inittab_respawn=Respawn prosess
+inittab_wait=Vente
+inittab_once=En gang på nivå
+inittab_boot=Oppstart
+inittab_bootwait=Oppstarttid, vent til terminering
+inittab_off=Gjør ingenting
+inittab_ondemand=Når som helst i A, B, C
+inittab_initdefault=Etter systemstart
+inittab_sysinit=Under systemstart
+inittab_powerwait=Kraften går ned
+inittab_powerfail=Kraften går ned uten å vente
+inittab_powerokwait=Strømmen gjenopprettes
+inittab_powerfailnow=Strøm svikter
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Spesiell tastekombinasjon
+inittab_kbrequest=Spesiell tastekombinasjon
+inittab_return=prosessliste
+inittab_apply=Bruk Init-konfigurasjon
+inittab_applymsg=Klikk på denne knappen for å bruke gjeldende SysV Init-konfigurasjon ved å kjøre kommandoen <tt>telinit q</tt>. Vær oppmerksom på at eventuelle feil i konfigurasjonen din kan gjøre systemet ubrukelig når denne kommandoen kjøres.
+index_delete=Slett valgte prosesser
+inittab_none2=Ingen oppstartsprosesser ble funnet på systemet ditt. Dette indikerer sannsynligvis at den ikke bruker SysV init-konfigurasjonsfilen.
+
+edit_inittab_err=Du har ikke lov til å redigere en prosess
+edit_inittab_title=Rediger prosess $1 
+edit_inittab_details=Behandle detaljer
+edit_inittab_del=Slett
+edit_inittab_save=Lagre
+
+new_inittab_err=Du har ikke lov til å opprette en ny prosess
+new_inittab_title=Ny prosess
+
+save_inittab_err=Du har ikke lov til å lagre en prosess
+save_inittab_noid=Feil, ingen navneprosesser er angitt
+save_inittab_already=Feil, navneprosessen eksisterer allerede
+
+log_modify=Endret startprosess $1 
+log_rename=Omdøpt til prosess $1 til $2 
+log_create=Opprettet startprosess $1 
+log_delete=Slettet startprosess $1 
+log_apply=Anvendt konfigurasjon
+log_deletes=$1 init prosesser er slettet
+
+apply_err=Kunne ikke bruke konfigurasjonen
+
+delete_err=Kunne ikke slette prosesser
+delete_enone=Ingen valgt

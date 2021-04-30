@@ -1,0 +1,120 @@
+acl_ro=Kan bara visa kvoter, inte redigera?
+acl_uuid=Användare med UID inom räckvidd
+acl_ggid=Grupper med GID inom räckvidd
+acl_maxblocks=Högsta tillåtna blockkvot
+acl_maxfiles=Högsta tillåtna filkvot
+acl_unlimited=Obegränsat
+acl_email=Kan du ställa in meddelanden via e-post?
+
+egroup_kused=Kilobyter används
+egroup_sklimit=Mjuk kilobytgräns
+egroup_hklimit=Hård kilobytgräns
+egroup_listalldesc=Klicka på den här knappen för att visa en lista över alla filsystem där denna grupp har diskkvoter, med länkar för att redigera dem.
+
+euser_kused=Kilobyter används
+euser_bdisk=Tillgängliga block på disken
+euser_kdisk=Tillgängliga kilobyter på disken
+euser_sdisk=Tillgängligt utrymme på disken
+euser_sklimit=Mjuk kilobytgräns
+euser_hklimit=Hård kilobytgräns
+euser_fdisk=Tillgängliga filer på disken
+euser_listalldesc=Klicka på den här knappen för att visa en lista över alla filsystem som denna användare har diskkvoter på, med länkar för att redigera dem.
+
+gfilesys_kbs=kilobyte
+gfilesys_space=Disk utrymme
+gfilesys_editdesc=Visa och redigera kvoterna för denna grupp i vissa andra filsystem som den för närvarande inte har kvoter på.
+gfilesys_copydesc=Kopiera kvotgränser för denna grupp på alla filsystem till några eller alla andra grupper.
+gfilesys_enone=Inget gruppnamn anges
+
+index_supported=Kvoter stöds inte ännu
+index_enable2=Aktivera support
+index_mountonly=Kan endast aktiveras vid montering
+index_euserdesc=Ange eller välj en användare och klicka på den här knappen för att se hans kvoter på alla filsystem.
+index_egroupdesc=Ange eller välj en grupp och klicka på den här knappen för att se dess kvoter på alla filsystem.
+index_mountmod=Du kan aktivera kvoter för ett filsystem i <a href='$1'>Disk- och nätverksfilsystem</a> -modulen.
+
+lgroups_tablist=Grupplista
+lgroups_kbs=kilobyte
+lgroups_space=Disk utrymme
+lgroups_info=Webmin kan konfigureras för att automatiskt ställa in kvoterna i detta filsystem när en ny Unix-grupp skapas. Detta fungerar bara när $1 Webmin-modulen används för att lägga till grupper.
+lgroups_newgroup=Nya gruppkvoter
+lgroups_mass=Uppdatera valda grupper
+lgroups_to=E-postdestination
+lgroups_tosame=Mailbox med samma namn som grupp
+lgroups_tofixed=Adress 1
+lgroups_emailheader=E-post till grupper som närmar sig kvoten
+lgroups_email=Skicka e-post till grupper?
+lgroups_tovirt=Virtualmin domänägare
+
+suser_emaxblocks=Du får inte bevilja blockgränser över $1 
+suser_emaxfiles=Du får inte bevilja filgränser över $1 
+
+ufilesys_kbs=kilobyte
+ufilesys_space=Disk utrymme
+ufilesys_editdesc=Visa och redigera kvoterna för den här användaren i vissa andra filsystem som han för närvarande inte har kvoter på.
+ufilesys_copydesc=Kopiera kvotgränser för den här användaren på alla filsystem till några eller alla andra användare.
+ufilesys_grace=Nåd
+ufilesys_enone=Inget användarnamn angett
+
+lusers_tablist=Användarlista
+lusers_tabdefault=Standardkvoter
+lusers_tabemail=E-postmeddelanden
+lusers_bsize=Kvotblockstorlek: $1 byte
+lusers_kbs=kilobyte
+lusers_space=Disk utrymme
+lusers_grace=Nåd
+lusers_pc_hblocks=Hård %
+lusers_pc_sblocks=Mjuk %
+lusers_emailheader=E-post till användare som närmar sig kvoten
+lusers_email=Skicka e-post till användare?
+lusers_interval=Intervall mellan meddelanden
+lusers_hours=timmar
+lusers_ltype=Begränsningstyp
+lusers_percent=Varna när användningen når
+lusers_domain=Domän för användaradresser
+luser_virtualmin=Hämta domän från Virtualmin?
+lusers_from=Från: adress för e-post
+lusers_mass=Uppdatera utvalda användare
+lusers_cc=Skicka också e-post till
+lusers_nocc=Ingen
+
+log_email_user=Ändra e-postalternativ för användare på $1 
+log_email_group=Ändra gruppens e-postalternativ på $1 
+log_gsync=Ändrade nya gruppkvoter på $1 
+log_support=Aktiverat kvotstöd för $1 
+
+email_err=Det gick inte att spara e-postalternativ
+email_ecannot=Du får inte ändra e-postalternativ
+email_einterval=Saknas eller ogiltigt intervall
+email_epercent=Saknad eller ogiltig användningsprocent
+email_edomain=Saknad eller ogiltig e-postdomän
+email_efrom=Saknas eller ogiltig Från: adress
+email_ecc=Cc: -adress saknas eller ogiltig
+email_msg=Diskanvändning för användare $1 på filsystem $2 har nått $3% av den tillåtna kvoten. $4 av diskutrymmet används, av maximalt $5.
+gemail_msg=Diskanvändning för grupp $1 på filsystem $2 har nått $3% av den tillåtna kvoten. $4 av diskutrymmet används, av maximalt $5.
+email_subject=Diskkvoten överskred
+gemail_subject=Diskkvoten överskred
+email_eto=Saknar e-postadress för destination
+
+umass_title=Uppdatera användarkvoter
+umass_header=Kvotändringar för att gälla för utvalda användare
+umass_sblocks=Mjuk blockgräns
+umass_hblocks=Hård blockgräns
+umass_sfiles=Mjuka filer begränsar
+umass_hfiles=Hårda filer begränsar
+umass_leave=Lämna oförändrat
+umass_unlimited=Ställ in på obegränsad
+umass_set=Satt till
+umass_ok=Uppdatera användare
+umass_esblocks=Saknad eller ogiltig mjuk blockgräns
+umass_ehblocks=Saknas eller ogiltig hårdblockgräns
+umass_esfiles=Saknad eller ogiltig gräns för mjuk fil
+umass_ehfiles=Saknas eller ogiltig gräns för hårddisk
+umass_count=Ändringarna nedan gäller för $1 utvalda användare ..
+umass_err=Det gick inte att uppdatera användarkvoterna
+
+gmass_title=Uppdatera gruppkvoter
+gmass_header=Kvotändringar för att gälla för utvalda grupper
+gmass_count=Ändringarna nedan gäller för $1 utvalda grupper ..
+gmass_ok=Uppdatera grupper
+gmass_err=Det gick inte att uppdatera gruppkvoter

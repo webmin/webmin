@@ -7,10 +7,14 @@ my $re = $_[0]->{'regexp'};
 if ($re ne '') {
 	# Get output and compare
 	my $out = &backquote_logged("($_[0]->{'cmd'}) 2>&1 </dev/null");
-	if ($_[0]->{'remode'} == 0 && $out !~ /$re/) {
+	my $match = eval { $out =~ /$re/ };
+	if ($@) {
+		return { 'up' => -1, 'desc' => $@ };
+		}
+	elsif ($_[0]->{'remode'} == 0 && !$match) {
 		return { 'up' => 0 };
 		}
-	elsif ($_[0]->{'remode'} == 1 && $out =~ /$re/) {
+	elsif ($_[0]->{'remode'} == 1 && $match) {
 		return { 'up' => 0 };
 		}
 	}

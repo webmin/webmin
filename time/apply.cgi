@@ -35,7 +35,7 @@ if ($in{'action'} eq $text{'action_sync'}) {
   &error( $text{ 'acl_nosys' } ) if( $access{ 'sysdate' } );
   $err = &set_system_time($in{ 'second' }, $in{'minute'}, $in{'hour'},
 		   $in{'date'}, $in{'month'}-1, $in{'year'}-1900);
-  &error($err) if ($err);
+  &error(&html_escape($err)) if ($err);
   &webmin_log("set", "date", time(), \%in);
 
 } elsif ($in{'action'} eq $text{'action_save'} || $in{'mode'} eq 'hwdate' ) {
@@ -43,7 +43,7 @@ if ($in{'action'} eq $text{'action_sync'}) {
   &error( $text{ 'acl_nohw' } ) if( $access{ 'hwdate' } );
   $err = &set_hardware_time($in{ 'second' }, $in{'minute'}, $in{'hour'},
 		   $in{'date'}, $in{'month'}-1, $in{'year'}-1900);
-  &error( &text( 'error_hw', $err ) ) if ($err);
+  &error( &text( 'error_hw', &html_escape($err) ) ) if ($err);
   local $hwtime = timelocal($in{'second'}, $in{'minute'}, $in{'hour'},
 			    $in{'date'}, $in{'month'}-1, $in{'year'} < 200 ?
 			    $in{'year'} : $in{'year'}-1900);
@@ -54,7 +54,7 @@ if ($in{'action'} eq $text{'action_sync'}) {
   $access{'ntp'} || &error($text{'acl_nontp'});
   $in{'timeserver'} =~ /\S/ || &error($text{'error_etimeserver'});
   $err = &sync_time($in{'timeserver'}, $in{'hardware'});
-  &error($err) if ($err);
+  &error("<pre>".&html_escape($err)."</pre>") if ($err);
 
   # Save settings in module config
   &lock_file($module_config_file);

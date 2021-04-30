@@ -1,0 +1,3 @@
+desc_lt=Paleidimas ir išjungimas
+name_lt=Įkrovos vadybininkas
+longdesc_lt=Sąrankos scenarijai, kuriuos reikia paleisti įkrovos metu iš /etc/init.d arba /etc/rc.local.

@@ -1,0 +1,152 @@
+index_title=Serwer PPTP VPN
+index_version=Wersja PoPToP $1 
+index_epptpd=Serwer PPT PoPToP $1 nie został znaleziony w twoim systemie lub nie jest odpowiednim programem. Być może nie jest zainstalowany lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+index_econfig=Plik konfiguracyjny serwera PPTP $1 nie został znaleziony w twoim systemie. Może Twoja <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
+index_stop=Zatrzymaj serwer PPTP
+index_stopdesc=Kliknij ten przycisk, aby zamknąć uruchomiony proces serwera PPTP, aby nowe połączenia nie były akceptowane. Istniejące połączenia VPN pozostaną jednak aktywne.
+index_start=Uruchom serwer PPTP
+index_startdesc=Kliknij ten przycisk, aby uruchomić proces serwera PPTP, aby mógł odbierać połączenia VPN od klientów.
+index_apply=Zastosuj konfigurację
+index_applydesc=Kliknij ten przycisk, aby zastosować bieżące opcje serwera PPTP, zatrzymując i ponownie uruchamiając proces serwera PPTP. Zmiany opcji PPP i kont PPP będą zawsze obowiązywały dla nowych połączeń
+index_return=indeks modułu
+index_epppd=Program serwera PPP $1 nie jest zainstalowany w twoim systemie. PPTP zależy od niego do działania.
+
+conf_title=Opcje serwera PPTP
+conf_ecannot=Nie możesz edytować opcji serwera PPTP
+conf_header=Konfiguracja serwera PPTP
+conf_speed=Szybkość transmisji PPP
+conf_baud=bps
+conf_listen=Słuchaj na adres
+conf_all=Wszystkie adresy
+conf_localip=Adresy IP końca połączenia z serwerem
+conf_remoteip=Adresy IP do przydzielenia klientom
+conf_ipxnets=Sieci IPX do przydzielenia
+conf_from=Od
+conf_to=do
+conf_option=Plik opcji PPP
+conf_mode0=Ustawienia ogólne
+conf_mode1=Ustawienia specyficzne dla PPTP
+conf_mode2=Plik niestandardowy
+conf_ipdesc=Adres IP w obu zakresach można wprowadzić pojedynczo (jak 192.168.1.1) lub jako zakresy (jak 192.168.2.32-64)
+conf_err=Nie udało się zapisać opcji serwera
+conf_espeed=Brakująca lub nieprawidłowa szybkość transmisji
+conf_elisten=Brakujący lub nieprawidłowy adres do nasłuchiwania
+conf_eoption=Brakujący lub nieprawidłowo wyglądający niestandardowy plik opcji PPP
+conf_elocalip=„$1” nie jest prawidłowym lokalnym adresem IP ani zakresem
+conf_eremoteip=„$1” nie jest prawidłowym zdalnym adresem IP ani zakresem
+conf_efrom=Brakująca lub nieprawidłowa sieć IPX z adresu
+conf_eto=Brakująca lub nieprawidłowa sieć IPX do zaadresowania
+
+options_title=Opcje PPP
+options_ecannot=Nie możesz edytować opcji PPP
+options_desc0=Poniższe opcje PPP z $1 mają zastosowanie do WSZYSTKICH połączeń przychodzących odebranych przez system, w tym do modemów telefonicznych.
+options_desc1=Poniższe opcje PPP z $1 dotyczą tylko wszystkich połączeń PPTP.
+options_desc2=Będą one używane przez wszystkie nowe połączenia ustanowione po zapisaniu tego formularza.
+options_header=Opcje połączenia PPP
+options_proxyarp=Utworzyć wpis ARP proxy?
+options_lock=Zablokować plik urządzenia PTY?
+options_auth=Wymagać uwierzytelnienia?
+options_auth0=Nie, ale zapobiegaj routingowym adresom IP
+options_auth1=Nigdy
+options_auth2=Zawsze
+options_login=Czy także uwierzytelnianie w systemie UNIX?
+options_pap=Uwierzytelnianie PAP
+options_chap=Uwierzytelnianie CHAP
+options_req=Musi być użyte
+options_all=Może być użyty
+options_ref=Nie może być użyty
+options_name=Nazwa serwera do uwierzytelnienia
+options_hn=Prawdziwa nazwa hosta
+options_mtu=Maksymalny rozmiar wysyłanego pakietu
+options_mru=Maksymalny rozmiar odbieranego pakietu
+options_err=Nie udało się zapisać opcji PPP
+options_emtu=Brakujący lub nieprawidłowy maksymalny rozmiar pakietu wysyłającego
+options_emru=Brakujący lub nieprawidłowy maksymalny rozmiar pakietu odbiorczego
+options_ename=Brak lub nieprawidłowa nazwa serwera do uwierzytelnienia
+options_version=Wersja PPPd $1 
+options_msdesc=Poniższe opcje włączają metodę uwierzytelniania MS-CHAP i szyfrowanie MPPE, używane domyślnie przez klientów Windows VPN. Jednak MPPE wymaga obsługi zarówno demona PPP, jak i jądra systemu operacyjnego.
+options_mschap=Uwierzytelnianie MS-CHAP
+options_mschap-v2=Uwierzytelnianie MS-CHAP wersja 2
+options_chapms=Uwierzytelnianie MS-CHAP
+options_chapms-v2=Uwierzytelnianie MS-CHAP wersja 2
+
+secrets_title=Konta PPP
+secrets_ecannot=Nie możesz edytować kont PPP
+secrets_return=indeks
+secrets_none=Nie utworzono jeszcze kont PPP.
+secrets_enopfile=Plik haseł PPP $1 nie istnieje w twoim systemie. Być może PPP nie jest zainstalowany lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+secrets_table=Konta PPP dla $1 
+secrets_user=Nazwa Użytkownika
+secrets_ips=Adresy IP
+secrets_uany=KAŻDY
+secrets_sany=KAŻDY
+secrets_create=Utwórz nowe konto PPP.
+secrets_desc=Konta PPP wymienione na tej stronie pochodzą z pliku $1, który jest używany do uwierzytelniania $3. Wyświetlane są tylko te dla twojego serwera $2, a nie konta do nawiązywania połączeń wychodzących.
+secrets_delete=Usuń wybrane konta PPP
+
+edit_secret_etitle=Edytuj konto PPP
+edit_secret_ctitle=Utwórz konto PPP
+edit_secret_acc=Konto PPP
+edit_secret_user=Nazwa Użytkownika
+edit_secret_serv=serwer
+edit_secret_sany=Każdy
+edit_secret_uany=Każdy
+edit_secret_pass=Hasło
+edit_secret_none=Żaden
+edit_secret_ffile=Z pliku
+edit_secret_leave=Pozostaw niezmieniony
+edit_secret_setto=Ustawić
+edit_secret_vaddr=Prawidłowe adresy
+edit_secret_aany=Zezwalaj na dowolne
+edit_secret_anone=Nie zezwalaj na żadne
+edit_secret_alist=Umożliwić wymienionym ..
+edit_secret_save=Zapisać
+edit_secret_del=Usunąć
+edit_secret_return=lista kont
+
+save_secret_esave=Nie udało się zapisać konta
+save_secret_enoip=„$1” nie jest prawidłowym adresem
+
+stop_err=Nie udało się zatrzymać serwera PPTP
+stop_egone=Już nie działa
+stop_ecannot=Nie możesz zatrzymać serwera PPTP
+
+start_err=Nie udało się uruchomić serwera PPTP
+start_ecannot=Nie możesz uruchomić serwera PPTP
+
+apply_err=Nie można ponownie uruchomić serwera PPTP
+apply_ecannot=Nie możesz ponownie uruchomić serwera PPTP
+
+conns_title=Aktywne połączenia
+conns_ecannot=Nie możesz zarządzać aktywnymi połączeniami
+conns_desc=Ta strona zawiera listę aktualnie aktywnych połączeń PPTP z twoim serwerem. Aby wymusić rozłączenie jednego, kliknij jego nazwę interfejsu.
+conns_iface=Interfejs PPP
+conns_client=Adres klienta
+conns_stime=Połączony od
+conns_local=Adres VPN serwera
+conns_remote=Adres klienta VPN
+conns_none=Obecnie wydaje się, że żadne połączenia PPTP nie są aktywne.
+conns_unknown=Nieznany
+conns_user=Nazwa Użytkownika
+
+disc_err=Nie udało się rozłączyć
+disc_egone=Połączenia nie są już aktywne
+disc_ekill=Proces nie jest już uruchomiony
+
+log_secret_create=Utworzono konto PPP $1 
+log_secret_modify=Zmodyfikowane konto PPP $1 
+log_secret_delete=Usunięto konto PPP $1 
+log_deletes=Usunięto $1 kont PPP
+log_conf=Zmodyfikowane opcje serwera PPTP
+log_options=Zmodyfikowane opcje PPP
+log_disc=Odłączony klient $1 
+log_start=Uruchomiono serwer PPTP
+log_stop=Zatrzymano serwer PPTP
+log_apply=Zastosowana konfiguracja serwera PPTP
+
+acl_conf=Czy można edytować konfigurację?
+acl_options=Czy można edytować opcje?
+acl_secrets=Czy można zarządzać kontami PPTP?
+acl_conns=Czy można wyświetlić połączenia?
+acl_stop=Czy można zatrzymać i uruchomić serwer PPTP?
+acl_apply=Czy można zastosować konfigurację?

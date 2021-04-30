@@ -1,0 +1,115 @@
+index_key=TSIGキーの編集（DNSサーバーへの更新の認証に使用）
+index_desc=説明
+index_buttekey=TSIGキーの編集
+index_stop=サーバーを停止
+index_stopdesc=このボタンをクリックして、システムで実行中のDHCPサーバーを停止します。停止すると、DHCPクライアントはIPアドレスを要求できなくなります。
+index_sublook2=アドレスでサブネットを編集します。
+index_shalook2=共有ネットワークを編集します。
+index_dhcpd=ISC DHCPd
+index_delete=選択を削除します
+
+esub_fopeer=フェールオーバーピア
+
+listl_unknown=わからない
+listl_allocs=$1 IPアドレスが利用可能、 $2が割り当てられました（$3％）
+listl_mode=ディスプレイモード ：
+listl_mode_0=DHCPリース
+listl_mode_1=サブネットと使用法
+listl_size=合計IP
+listl_used=割り当て済み
+listl_pc=割合
+listl_err=リースを削除できませんでした
+listl_enone=何も選択されていません
+
+listl_refresh=リストを更新
+
+restart_conftext=$2の $1の周りの行：
+
+sopt_edname=「$1」は有効なオプション名ではありません
+sopt_ednum=「$1」は有効なオプション番号ではありません
+sopt_edtype=「$1」は有効なオプションタイプではありません
+sopt_ecval=カスタムオプション '$1'の値がありません
+sopt_ecip=カスタムオプション「$1」の値はIPアドレスである必要があります
+
+ssub_invalidfopeer=有効なフェールオーバーピアではありません
+
+plib_toffset=時間オフセット
+plib_serverid=DHCPサーバー識別子
+
+eopt_domsearch=検索するDNSドメイン
+eopt_toffset=時間オフセット
+eopt_cname=名前
+eopt_def=オプション定義
+eopt_dname=オプション名
+eopt_dnum=数
+eopt_dtype=タイプ
+eopt_slpa=SLPディレクトリエージェントIP
+eopt_slpaips=これらのIPのみですか？
+eopt_slps=SLPサービススコープ
+eopt_slpsonly=このスコープのみ？
+
+log_stop=停止したDHCPサーバー
+log_delete_subnets=$1サブネットと共有ネットワークを削除しました
+log_delete_hosts=$1個のホストとホストグループを削除しました
+
+keys_edit=TSIGキーの編集
+keys_create=作成されたTSIGキー
+keys_title=DNSキー
+keys_id=キーID
+keys_alg=アルゴリズム
+keys_secret=秘密のひも
+keys_ecannot=DNSキーの編集は許可されていません
+keys_err=DNSキーを保存できませんでした
+keys_ekey=「$1」は有効なキーIDではありません
+keys_esecret=キー $1のbase-64エンコードシークレットが見つからないか無効です
+
+eacl_uniqh=重複したハードウェアアドレスでホストを作成する
+eacl_uniqi=重複したIPアドレスを持つホストを作成する
+
+acl_zones=ダイナミックDNSゾーンを編集できますか？
+
+zone_key=DNSゾーン
+index_addzone=新しいDNSゾーンを追加します。
+index_zone=ゾーン
+index_nozones=DNSゾーンはまだ定義されていません。
+zone_crheader=ゾーンを作成
+zone_eheader=ゾーンを編集
+zone_tabhdr=ゾーンの詳細
+zone_desc=ゾーンの説明（オプション）
+zone_name=ゾーンの名前
+zone_primary=プライマリNSのIP
+zone_return=メインメニュー
+zone_faildel=ゾーンを削除できませんでした
+zone_failsave=ゾーンを保存できませんでした
+zone_tsigkey=TSIGキー
+zone_ecannot=DNSゾーンの編集は許可されていません
+
+plib_clientupdates=クライアントは自分の記録を更新できますか？
+
+text_title=dhcpd.conf
+text_editor=テキストエディタ
+text_return=メインメニュー
+text_undo=元に戻す
+text_ecannot=構成ファイルを編集することはできません
+
+index_buttetext=構成を手動で編集する
+index_text=構成ファイルを手動で編集する
+
+stop_err=DHCPサーバーを停止できませんでした
+stop_ekill=走っていない！
+
+sdelete_err=サブネットと共有ネットワークを削除できませんでした
+sdelete_enone=何も選択されていません
+sdelete_title=サブネットと共有ネットワークを削除する
+sdelete_rusure1=選択した $1個のサブネットと $2個の共有ネットワークを削除してもよろしいですか？ネットワーク内の他のサブネットまたは他のオブジェクトも失われます。
+sdelete_rusure2=選択した $1個のサブネットを削除してもよろしいですか？サブネット内の他のオブジェクトも失われます。
+sdelete_rusure3=選択した $2個の共有ネットワークを削除してもよろしいですか？ネットワーク内のサブネットやその他のオブジェクトも失われます。
+sdelete_ok=今すぐ削除
+
+hdelete_err=ホストとグループを削除できませんでした
+hdelete_enone=何も選択されていません
+hdelete_title=ホストとグループを削除する
+hdelete_rusure1=選択した $1個のホストと $2個のグループを削除してもよろしいですか？グループ内の他のホストも失われます。
+hdelete_rusure2=選択した $1個のホストを削除してもよろしいですか？
+hdelete_rusure3=選択した $2グループを削除してもよろしいですか？グループ内のホストも失われます。
+hdelete_ok=今すぐ削除

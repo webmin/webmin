@@ -1,0 +1,58 @@
+index_title=SMART Sürücü Durumu
+index_ecmd=$1 SMART kontrol komutu sisteminizde bulunamadı veya <a href='$2'>modül yapılandırmasında</a> doğru ayarlanmadı. Bu modülün kullanılabilmesi için önce takılması gerekir.
+index_ecmd2=$1 komutu SMART kontrol komutu olarak görünmüyor. Bu modülün kullanılabilmesi için <a href='$2'>modül yapılandırmasında</a> doğru ayarlanması gerekir.
+index_version=SMARTsuite sürümü $1 
+index_show=Sürücünün durumunu göster:
+index_ok=Göstermek
+index_eidescsi=Sisteminizde IDE, SCSI veya SATA sürücü bulunamadı.
+index_drive=$1 sürücüsünün durumu
+index_drivesub=$1 sürücüsünün durumu, $2 disk
+index_desc=yer
+index_size=Sürücü boyutu
+index_model=Marka ve model
+index_support=SMART desteği var mı?
+index_enabled=SMART etkin mi?
+index_check=Sürücü kontrolünden geçtiniz mi?
+index_short=Kısa Öz Test
+index_ext=Genişletilmiş Otomatik Test
+index_data=Veri Toplama Testi
+index_errors=Günlüğe kaydedilen hatalar
+index_ecount=$1 hata tespit edildi
+index_attrs=Ek SMART özellikleri
+index_raw=Tam SMART durum raporu
+index_return=modül dizini
+index_family=Model ailesi
+index_serial=Seri numarası
+index_capacity=Kapasite
+index_norm=normalize:
+
+monitor_type=SMART Sürücü Kontrolü
+monitor_type2=SSD Wearout
+monitor_drive=Kontrol etmek için sür
+monitor_errors=Hata günlüğü de kontrol edilsin mi?
+monitor_errorsinc=Evet, ancak yalnızca hata sayısı arttığında uyar
+monitor_other=Diğer ..
+monitor_edrive=Kontrol edilecek eksik veya geçersiz sürücü
+monitor_nosuch=Böyle bir sürüş yok
+monitor_nosmart=SMART desteği yok
+monitor_errorsfound=$1 hata bildirildi
+monitor_errorsinced=Hatalar $2 'den $1 'e yükseltildi
+monitor_wearlevel=Aşınma seviyesi altına düşerse başarısız olur
+monitor_ewearlevel=Geçersiz aşınma seviyesi yüzdesi
+monitor_nowearout=Sürücü bir SSD zayıflama göstergesi bildirmiyor
+monitor_wornout=Aşınma seviyesi $1 'e düştü
+
+short_title=Kısa Öz Test
+short_doing=$1 kısa öz testi başlatılıyor.
+short_failed=.. başarısız oldu!
+short_ok=.. test tamamlandı. Sonuçlar için modülün ana sayfasındaki sürücü durumuna bakın.
+
+ext_title=Genişletilmiş Otomatik Test
+ext_doing=$1 genişletilmiş kendi kendini testine başlanıyor.
+ext_failed=.. başarısız oldu!
+ext_ok=.. test tamamlandı. Sonuçlar için modülün ana sayfasındaki sürücü durumuna bakın.
+
+data_title=Veri Toplama Testi
+data_doing=$1 üzerinde çevrimdışı veri toplama başlatılıyor.
+data_failed=.. başarısız oldu!
+data_ok=.. koleksiyon TAMAM başladı. Sonuçlar için modülün ana sayfasındaki sürücü durumuna bakın.

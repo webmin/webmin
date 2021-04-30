@@ -1,0 +1,39 @@
+index_title=NFS esportazioak
+index_add=Gehitu NFS esportazio berria
+index_dir=Directory
+index_hosts=Onartutako ostalariak
+index_all=Ostalari guztiak
+index_none=Oraindik ez dira NFS esportazioak zehaztu.
+index_apply=Aplikatu konfigurazioa
+index_applydesc=Egin klik botoi honetan goian zerrendatutako esportazio guztiak aktibo izateko, konfiguratutako aukerekin.
+index_return=esportazioen zerrenda
+
+edit_title1=Sortu Export
+edit_title2=Editatu Exporta
+edit_header=Esportatu xehetasunak
+edit_dir=Esportatu beharreko direktorioa
+edit_hosts=Esportatu ostalari/sare-taldeetara
+edit_ro=Irakurtzeko soilik?
+edit_wsync=Sinkronizatu ondoren idatzi?
+edit_anon=Erabiltzaile baimenak sustraitu
+edit_anon1=Lehenespenez (<tt>inor</tt> gisa tratatu)
+edit_anon2=Sarbidea ukatu
+edit_anon0=Erabiltzaile gisa tratatu
+edit_rw=Irakurtzeko/idazteko sarbidea
+edit_root=Erroko sarbidea
+edit_access=Mendirako sarbidea
+edit_all=Ostalari guztiak
+edit_sel=Zerrendatutako ostalariak ..
+edit_none=Ostalaririk ez
+
+save_err=Ezin izan da esportazioa gorde
+save_edir=Esportatu beharreko direktorio falta edo ez dago
+save_eanon=Erabiltzaile rootaren falta edo baliogabea
+save_erw=Ez da irakurri idazteko ostalaririk sartu
+save_eroot=Ez da fitxategi erroko sarbide ostalaririk sartu
+save_eaccess=Ez da sartu sarbide ostalaririk
+
+log_create_export=$1 esportazio sortua
+log_delete_export=$1 esportazio ezabatu da
+log_modify_export=$1 esportazio aldatua
+log_apply=Aplikatutako konfigurazioa

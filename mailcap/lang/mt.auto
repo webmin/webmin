@@ -1,0 +1,46 @@
+index_title=Programmi tat-Tip MIME
+index_none=L-ebda programmi ta 'mmaniġġjar tat-tip MIME ma ġew definiti s'issa.
+index_add=Żid programm ġdid tat-tip MIME.
+index_type=Tat-tip MIME
+index_program=Programm ta 'mmaniġġjar
+index_cmt=Deskrizzjoni
+index_delete=Ħassar Magħżul
+index_disable=Iddiżattiva l-Għażla
+index_enable=Attiv magħżula
+index_enabled=Abilitata?
+index_return=lista tal-programmi
+
+edit_title1=Oħloq Programm tat-Tip MIME
+edit_title2=Editja l-Programm tat-Tip MIME
+edit_header=Dettalji dwar il-programm tat-titolu MIME
+edit_type=Tat-tip MIME
+edit_enabled=Abilitata?
+edit_program=Programm ta 'mmaniġġjar
+edit_cmt=Deskrizzjoni
+edit_egone=Programm m'għadux jeżisti!
+edit_test=Kmand tat-test
+edit_none=Xejn (dejjem uża l-programm)
+edit_term=Uri l-output fit-terminal?
+edit_copious=Jipproduċi ħafna produzzjoni?
+edit_desc=Deskrizzjoni tat-tip MIME
+
+save_err=Ma rnexxielux isalva programm tat-tip MIME
+save_etype=Tip MIME nieqes jew invalidu
+save_eprogram=Programm tal-immaniġġjar nieqes
+save_eclash=Programm attivat għat-tip MIME mdaħħal diġà jeżisti
+save_etest=Mandat tat-test nieqes jew invalidu
+save_edesc=Deskrizzjoni tat-tip MIME mhux valida
+
+delete_err=Naqset milli tħassar il-programmi tat-tip MIME
+disable_err=Naqset milli tiddiżattiva l-programmi tat-tip MIME
+disable_eclash=Diġa jeżisti programm tat-tip MIME b'diżabilità għal $1 
+enable_err=Naqas milli jippermetti programmi tat-tip MIME
+enable_eclash=Diġa jeżisti programm tat-tip MIME attivat għal $1 
+delete_enone=L-ebda magħżul
+
+log_delete_mailcap=Ħassar il-programm tat-tip MIME għal $1 
+log_create_mailcap=Inħoloq programm tat-tip MIME għal $1 
+log_modify_mailcap=Programm modifikat tat-tip MIME għal $1 
+log_delete_mailcaps=Programmi mħassra tat-tip MIME $1 
+log_disable_mailcaps=Programmi tat-tip MIME $1 b'diżabilità
+log_enable_mailcaps=Attiva l-programmi tat-tip MIME $1 

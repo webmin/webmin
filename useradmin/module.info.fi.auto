@@ -1,0 +1,3 @@
+name_fi=Käyttäjähallinta
+longdesc_fi=Luo ja muokkaa Unix-käyttäjiä ja ryhmiä tiedostoista /etc/passwd ja /etc/group.
+desc_fi=Käyttäjät ja ryhmät

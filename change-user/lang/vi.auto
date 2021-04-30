@@ -1,0 +1,37 @@
+index_title=Thay đổi ngôn ngữ và chủ đề
+index_lang=Ngôn ngữ giao diện người dùng Webmin
+index_langglobal2=Ngôn ngữ toàn cầu.. $1 ($2)
+index_langset=Lựa chọn cá nhân ..
+index_theme=Chủ đề giao diện người dùng Webmin
+index_overlay=Lớp phủ chủ đề
+index_overlaydef=Không có - sử dụng mặc định chủ đề
+index_themeglobal=Chủ đề toàn cầu ($1)
+index_themeset=Lựa chọn cá nhân ..
+index_pass=Mật khẩu đăng nhập Webmin
+index_passleave=Không thay đổi
+index_passset=Đặt thành ..
+index_passagain=Nhập lại mật khẩu
+index_ok=Thay đổi
+index_themedef=Chủ đề Webmin cũ
+index_desc2=Mô-đun này có thể được sử dụng để thay đổi $1, chỉ cho tài khoản Webmin của bạn.
+index_d3=$1, $2 và $3 
+index_d2=$1 và $2
+index_d1=$1 
+index_dlang=ngôn ngữ mà các mô-đun được hiển thị trong
+index_dtheme=chủ đề kiểm soát sự xuất hiện của Webmin
+index_dpass=mật khẩu được sử dụng để đăng nhập với
+
+change_title=Thay đổi cài đặt
+change_user=Sửa đổi đăng nhập Webmin ..
+change_done=.. làm xong
+change_restart=Đang tải lại Webmin ..
+change_redirect=Chuyển hướng đến menu chính ..
+change_ecolon=Mật khẩu của bạn không thể chứa: ký tự
+change_epass2=mật khẩu mới không khớp
+change_epass=Mật khẩu mới không hợp lệ : $1 
+change_eoverlay=Bạn không thể chọn lớp phủ chủ đề trừ khi chủ đề UI cũng được chọn
+change_eoverlay2=Lớp phủ chủ đề đã chọn không tương thích với chủ đề UI được chọn
+
+acl_lang=Có thể thay đổi ngôn ngữ?
+acl_theme=Có thể thay đổi chủ đề?
+acl_pass=Có thể thay đổi mật khẩu (khi được đặt trong Webmin) không?

@@ -1,0 +1,57 @@
+index_title=NFS akcijas
+index_add=Sāciet koplietot jaunu direktoriju.
+index_dir=Katalogs
+index_clients=Klienti
+index_everyone=Visi
+index_delete=Dzēst atlasītās akcijas
+index_none=Pašlaik šajā sistēmā netiek eksportēti direktoriji.
+index_apply=Lietot izmaiņas
+index_applydesc=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējo failu koplietošanas konfigurāciju. Tādējādi visi iepriekš uzskaitītie direktoriji būs pieejami ar norādītajām opcijām.
+index_return=akciju saraksts
+
+edit_title1=Rediģēt kopīgot
+edit_title2=Izveidot kopīgošanu
+edit_header1=Kopīgojiet informāciju
+edit_dir=Katalogs
+edit_desc=Apraksts
+edit_ro=Piekļuve tikai lasīšanai
+edit_rw=Piekļuve lasīšanai un rakstīšanai
+edit_root=Saknes pieeja
+edit_none=Nav
+edit_all=Visi saimnieki
+edit_listed=Uzskaitītie saimnieki ..
+edit_header2=Akciju iespējas
+edit_nosub=Vai atļaut apakšdārzu montāžu?
+edit_nosuid=Vai atļaut setuid failus?
+edit_des=Klientiem ir jāizmanto DES?
+edit_kerberos=Klientiem ir jāizmanto kerberos?
+edit_anon=Anonīms lietotājs
+edit_anon0=Nav uzstādīts
+edit_anon1=Nav piekļuves
+edit_aclok=Vai atļaut ACL?
+edit_public=WebNFS daļa?
+edit_index=WebNFS indeksa fails
+
+save_err=Neizdevās saglabāt kopīgošanu
+save_edirectory='$1' nav derīgs direktorija nosaukums
+save_edirectory2=Mape '$1' neeksistē
+save_erw=Jūs neesat uzskaitījis nevienu saimnieku, ar kuru kopīgot lasīšanas un rakstīšanas procesu
+save_ero=Jūs neesat uzskaitījis nevienu saimnieku, ar kuru kopīgot tikai lasāmu saturu
+save_eroot=Jūs neesat uzskaitījis nevienu saimnieku, ar kuru koplietot saknes
+save_ealready=Mape “$1” jau tiek koplietota
+save_ehost=Resursdators '$1' neeksistē
+
+log_modify=Pārveidota NFS daļa $1 
+log_rename=Mainīta NFS daļa no $1 līdz $2 
+log_create=Izveidota NFS daļa $1 
+log_delete=Dzēsta NFS daļa $1 
+log_apply=Lietotās izmaiņas
+
+acl_view=Vai var rediģēt NFS akcijas?
+
+ecannot=Jums nav atļauts pārvaldīt NFS akcijas
+
+delete_err=Neizdevās izdzēst kopīgošanu
+delete_enone=Nav atlasīts
+
+restart_err=Neizdevās piemērot izmaiņas

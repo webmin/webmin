@@ -1,0 +1,17 @@
+index_title=Kerberos5 konfigurācija
+index_econf=Kerberos5 konfigurācijas fails $1 jūsu sistēmā netika atrasts. Varbūt tas nav instalēts, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+
+logging=Žurnāla faili
+default_log=Noklusējuma žurnālfails
+kdc_log=KDC žurnālfails
+admin_log=Administratora servera žurnālfails
+
+libdefaults=Noklusējuma konfigurācija
+dns_kdc=Izmantojiet DNS, lai meklētu KDC
+default_realm=Valstība
+domain=Domēna vārds
+default_kdc=KDC
+default_admin=Administratora serveris
+default_domain=Noklusējuma domēna vārds
+
+save=Atjaunināt konfigurāciju

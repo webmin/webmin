@@ -1,0 +1,213 @@
+index_version2=Sendmail versión $1, config $2 
+index_xversion=Versión de Sendmail $1 
+index_sendmail=Enviar correo
+
+opts_maxbad=Máximo destinatarios malos
+opts_maxrcpt=Destinatarios máximos por mensaje
+opts_below=Entró a continuación ..
+opts_qso=Ordenar cola de correo por
+opts_priority=Prioridad
+opts_host=Nombre de host
+opts_time=Tiempo recibido
+
+aliases_enofile=Ningún archivo de alias está definido en su configuración de Sendmail
+aliases_delete=Eliminar alias seleccionados
+
+aform_file=Agregar al archivo de alias
+aform_cmt=Descripción
+
+rfile_replies=¿Rastrear respuestas para evitar bucles de correo?
+rfile_none=No
+rfile_file=Sí, usando el archivo de registro
+rfile_period=Intervalo mínimo entre respuestas
+rfile_default=Por defecto (1 hora)
+rfile_secs=segundos
+rfile_ereplies=Falta el archivo de registro de seguimiento de respuestas
+rfile_eperiod=Número de segundos faltantes o inválidos entre respuestas
+rfile_no_autoreply=No envíe respuestas automáticas a
+rfile_no_regexp=No envíe respuestas automáticas a mensajes que coincidan con expresiones regulares
+rfile_from=De: dirección para respuesta
+rfile_auto=Automático (según la dirección del destinatario)
+rfile_efrom=Falta de: dirección
+rfile_fromdesc=Siempre se debe especificar una dirección De: siempre que sea posible, ya que el método automático puede no ser confiable.
+
+adelete_err=Error al eliminar alias
+adelete_enone=Ninguna seleccionada
+adelete_ecannot=No tiene permiso para eliminar el alias $1 
+
+masq_ndomains=Dominios para no enmascarar
+
+virtusers_cmt=Descripción
+virtusers_delete=Eliminar asignaciones de direcciones seleccionadas
+
+vform_domain=Dominio
+vform_cmt=Descripción
+vform_err_unavailable=Indisponible
+vform_err_tempfail=Fallo temporal
+vform_err_protocol=Error de protocolo
+
+vdelete_err=Error al eliminar asignaciones de direcciones
+vdelete_ecannot=No tiene permiso para eliminar la asignación de $1 
+
+mailers_desc3=También debe tener una entrada en la lista de <a href='$1'>dominios de retransmisión</a> para cada dominio también.
+mailers_delete=Eliminar rutas de dominio seleccionadas
+
+mform_host2=Host o dominio
+mform_domain2=Todos los hosts en el dominio.
+mform_domain3=Dominio y todos sus anfitriones
+
+mdelete_err=Error al eliminar el enrutador de dominio
+mdelete_ecannot=No está permitido eliminar la ruta para $1 
+
+generics_delete=Eliminar direcciones salientes seleccionadas
+
+gsave_ecannot3=No tiene permiso para guardar esta dirección saliente
+gsave_ealready=Ya existe una asignación de dirección saliente para '$1'
+
+gdelete_err=Error al eliminar asignaciones de direcciones salientes
+gdelete_ecannot=No tiene permiso para eliminar la asignación de $1 
+
+domains_delete=Eliminar asignaciones de dominio seleccionadas
+
+dsave_ealready=Ya existe una asignación de dominio para '$1'
+
+ddelete_err=Error al eliminar asignaciones de dominio
+ddelete_ecannot=No tiene permiso para eliminar la asignación de $1 
+
+access_delete=Eliminar reglas de control de spam seleccionadas
+
+sform_type3=Dominio
+sform_tag=Partido contra
+sform_tag_=Todo
+sform_tag_from=De la Dirección
+sform_tag_to=Dirigirse
+sform_tag_connect=Información de conexión
+sform_tag_spam=Información de spam
+
+ssave_ecannot2=No tiene permiso para guardar esta regla de control de spam
+
+sdelete_err=Error al eliminar las reglas de control de spam
+sdelete_ecannot=No está permitido eliminar la regla para $1 
+
+mailq_dir=Directorio
+mailq_locked=Incluso si está bloqueado
+mailq_flushsel=Vaciar mensajes seleccionados
+mailq_flushquar=Cola en cuarentena al ras
+mailq_flushquardesc=Haga clic en este botón para forzar la entrega de solo mensajes en cuarentena en la cola.
+mailq_search=Encuentra mensajes en cola donde
+mailq_quar=En cuarentena
+mailq_refresh=Actualizar la cola de correo
+mailq_refreshdesc=Vuelva a cargar esta página para mostrar el estado actual de la cola de correo.
+
+flushq_desc2=Forzar el intento de entrega de $1 mensajes seleccionados.
+flushq_ecannot=No tiene permiso para vaciar la cola de correo
+
+searchq_title=Resultados de búsqueda de cola
+searchq_none=No se encontraron mensajes en cola.
+
+delq_titles=Eliminar mensajes
+delq_force=Forzar eliminación de todos modos
+delq_ecannot2=no puedes borrar este mensaje
+delq_rusure=¿Está seguro de que desea eliminar los mensajes en cola seleccionados $1 ?
+delq_confirm=Eliminar mensajes
+
+mail_euserexists=Este usuario de Unix no existe
+mail_move=Mover a:
+mail_copy=Copiar a:
+mail_eexists=¡El mensaje ya no existe!
+
+view_body=Mensaje de texto
+view_flush=Rubor
+view_print=Impresión
+view_egone=Este mensaje ya no existe.
+view_afile=Nombre del archivo adjunto
+view_atype=Tipo de archivo adjunto
+view_asize=Tamaño del archivo
+
+enew_title=Editar correo electrónico
+reply_body=Mensaje de texto
+
+delete_title=Eliminar correo
+delete_rusure=¿Está seguro de que desea eliminar los mensajes seleccionados $1 de $2 ? Esto puede tomar algún tiempo para un archivo de correo grande. Hasta que la eliminación haya finalizado, no se debe realizar ninguna otra acción.
+delete_rusure2=¿Seguro que quieres eliminar este mensaje de $1 ? Esto puede tomar algún tiempo para un archivo de correo grande. Hasta que la eliminación haya finalizado, no se debe realizar ninguna otra acción.
+delete_ok=Elimina ahora
+delete_efnone=Ningún correo seleccionado para reenviar
+delete_emoveuser=El usuario al que mover el correo no existe
+delete_emovecannot=No tiene permiso para mover el correo al usuario especificado
+delete_emovenone=No hay correo seleccionado para mover
+delete_nobutton=No se hizo clic en ningún botón
+
+search_efield=Debes seleccionar un tipo de búsqueda.
+search_ewhat=No se ha ingresado ningún texto para la fila $1 
+search_enone=No se ingresaron criterios de búsqueda
+search_results2=$1 mensajes de correo que coinciden con $2 ..
+search_results4=$1 mensajes de correo que coinciden con su búsqueda ..
+search_local=En carpetas locales
+search_all=En todas las carpetas
+search_eboolean=Las búsquedas booleanas que usan 'y' y 'o' no son compatibles
+
+file_ecannot=No tienes permiso para editar este archivo
+file_ealias=Formato no válido para la línea de archivo de alias : $1 
+file_etab=Formato no válido para la línea del archivo de mapa : $1 
+
+acl_ports=Puede editar puertos de red?
+acl_manual=¿Se pueden editar archivos manualmente?
+acl_flushq=¿Puede vaciar la cola del correo?
+acl_vcatchall=¿Se pueden crear asignaciones genéricas?
+acl_qdoms=Direcciones visibles en la cola
+acl_qdomsmode=Dirección de la cola para que coincida
+acl_qdomsmode0=De la Dirección
+acl_qdomsmode1=Dirigirse
+acl_qdomsmode2=Cualquier dirección
+acl_usersu=Con UID en rango
+acl_spam=Direcciones de control de spam que este usuario puede editar
+
+log_ports=Cambiar puertos de red
+log_movemail=Se movieron $1 mensajes de $2 a $3 
+log_delete_aliases=$1 alias eliminados
+log_delete_virtusers=Asignaciones de direcciones $1 eliminadas
+log_delete_domains=Asignaciones de dominio $1 eliminadas
+log_delete_accesses=Se eliminaron $1 entradas de control de spam
+log_delete_generics=Direcciones salientes $1 eliminadas
+log_delete_mailers=Rutas de dominio $1 eliminadas
+
+match_status=Coincidencias de estado
+match_headers=Encabezados coinciden
+match_=-----------------
+match_!status=El estado no coincide
+match_!headers=Los encabezados no coinciden
+
+stop_err=Error al detener sendmail
+stop_ecannot=No tienes permiso para detener sendmail
+stop_epid=Sendmail no parece estar ejecutándose
+restart_epids=No se pudieron encontrar los procesos de sendmail
+restart_ekill=Error al señalar los procesos de sendmail : $1 
+
+start_err=Error al iniciar sendmail
+start_ecannot=No tienes permiso para iniciar sendmail
+
+ports_title=Puertos de red
+ports_name=Nombre del puerto
+ports_addr=Escucha en la dirección
+ports_all=Todos
+ports_ip=IP
+ports_family=Protocolo
+ports_inet=IPv4
+ports_inet6=IPv6
+ports_port=Escucha en el puerto
+ports_opts=Opciones de puerto
+ports_mod_a=Requerir autenticación SMTP
+ports_mod_b=Use la misma interfaz para el correo electrónico saliente
+ports_mod_c=Realizar la canonificación del nombre de host
+ports_mod_f=Requerir nombre de host totalmente calificado
+ports_mod_h=Use el nombre de la interfaz para HELO
+ports_mod_C=No realice la canonificación del nombre de host
+ports_mod_E=No permitir ETRN
+ports_def1=Aceptar correo electrónico en el puerto 25 y todas las direcciones
+ports_def0=Acepte correo electrónico solo en los puertos a continuación.
+ports_err=Error al guardar los puertos de red
+ports_ecannot=No tiene permiso para administrar puertos de red
+ports_ename=Nombre de puerto no válido en la fila $1 
+ports_eclash=Nombre de puerto duplicado en la fila $1 
+ports_eaddress=Dirección IP faltante o no válida en la fila $1 
+ports_eport=Número de puerto faltante o no válido en la fila $1 

@@ -1,0 +1,5 @@
+index_emodules=Los módulos Perl $1 y $2 que requiere Webmin para manejar la configuración XML de Jabber no están instalados. <a href='$3'>Haga clic aquí</a> para instalarlos directamente desde CPAN.
+index_expat=Asegúrese de tener instalada la biblioteca Expat C y los encabezados antes de intentar instalar los módulos Perl, ya que dependen de él y fallarán si no está disponible.
+index_eversion2=Webmin solo admite versiones de Jabber inferiores a $2, pero el comando $3 informó la siguiente información de versión : $1 
+
+stop_epid=Error al encontrar el proceso de Jabber

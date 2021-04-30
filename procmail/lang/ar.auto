@@ -1,0 +1,129 @@
+index_title=تصفية البريد Procmail
+index_procmail=مرشح بريد Procmail
+index_desc_other=ستطبق إجراءات procmail أدناه من$1 على <b>جميع</b> البريد الإلكتروني الذي يتم تسليمه إلى المستخدمين على نظامك. ومع ذلك ، سيتم استخدامها فقط إذا تم تثبيت Procmail وتم تكوين خادم البريد الخاص بك لاستخدامه.
+index_mserr=تحذير - لن يتم استخدام أي قواعد محددة أدناه :$1
+index_action=الإجراء المطلوب اتخاذه
+index_conds=الظروف
+index_move=نقل
+index_ba=أضف
+index_act6=تعيين المتغير$1
+index_act5=تنفيذ كتلة شرطية
+index_act4=تغذية للبرنامج$1
+index_act3=إعادة التوجيه إلى$1
+index_act2=اكتب إلى maildir$1
+index_act1=اكتب إلى مجلد MH$1
+index_act0=إلحاق بالملف$1
+index_noconds=تنفيذ الإجراء دائمًا
+index_re=مطابقة التعبير العادي$1
+index_nre=لا تتطابق مع التعبير العادي$1
+index_shell=تقييم الأمر$1
+index_exit=إنهاء حالة الأمر$1
+index_lt=الحجم <$1
+index_gt=الحجم>$1
+index_add=أضف إجراء تصفية جديد.
+index_eadd=أضف إعداد متغير جديد.
+index_badd=أضف كتلة شرطية جديدة.
+index_iadd=أضف ملف تضمين جديد.
+index_none=لم يتم تكوين إجراءات Procmail حتى الآن.
+index_return=قائمة الإجراءات
+index_env=قم بتعيين المتغير$1 إلى$2
+index_include=تتضمن العملية الملف$1
+index_man=تحرير التكوين يدويًا
+index_mandesc=قم بتحرير ملف التكوين الأساسي لـ Procmail مباشرةً لإنشاء القواعد والمتغيرات والكتل الخاصة بك.
+index_ecmd=لم يتم العثور على برنامج Procmail $1 على نظامك. إما أنه غير مثبت أو أن <a href='$2'>تكوين الوحدة النمطية</a> غير صحيح.
+index_delete=حذف الإجراءات المحددة
+
+edit_title2=تحرير الإجراء
+edit_title1=إنشاء عمل
+edit_header1=تفاصيل إجراءات التسليم
+edit_header2=شروط العمل
+edit_action=وضع التوصيل
+edit_block=كود Procmail للتنفيذ
+edit_amode_0=إلحاق ملف
+edit_amode_1=الكتابة إلى مجلد MH
+edit_amode_2=الكتابة إلى maildir
+edit_amode_3=إلى الأمام لمعالجة
+edit_amode_4=تغذية البرنامج
+edit_amode_6=تعيين متغير
+edit_flag_H=تطبيق الشروط على الرؤوس
+edit_flag_B=تطبيق الشروط على الجسم
+edit_flag_D=مطابقة حساسة لحالة الأحرف
+edit_flag_h=رؤوس التغذية إلى الوجهة
+edit_flag_b=جسم التغذية إلى الوجهة
+edit_flag_c=استمر في المعالجة حتى في حالة تطابق الشروط
+edit_flag_w=انتظر انتهاء برنامج العمل ، وتحقق من النتيجة
+edit_flag_W=انتظر انتهاء برنامج الإجراء ، ولكن تجاهل النتيجة
+edit_flag_i=تجاهل أخطاء الكتابة عند التسليم
+edit_flag_r=اكتب البريد في الوضع الخام
+edit_flag_f=برنامج العمل هو مرشح
+edit_lockfile=ملف قفل التسليم
+edit_cmode_re=يطابق التعبير العادي
+edit_cmode_nre=لا يتطابق مع التعبير العادي
+edit_cmode_shell=تقييم إخراج الأمر
+edit_cmode_exit=تحقق من حالة خروج الأمر
+edit_cmode_lt=البريد أصغر من
+edit_cmode_gt=البريد أكبر من
+edit_conddesc=لتنفيذ الإجراء أعلاه ، يجب أن تتطابق جميع الشروط الواردة أدناه. إذا لم تكن هناك شروط ، سيتم تنفيذ الإجراء دائمًا.
+edit_none=لا يوجد
+edit_lock=ملف محدد
+edit_ctype=نوع الشرط
+edit_cvalue=التعبير العادي أو الأمر
+
+save_err=فشل في حفظ الإجراء
+save_eaction_0=ملف مفقود للإلحاق به
+save_eaction_1=مجلد MH مفقود للكتابة إليه
+save_eaction_2=مفقود maildir للكتابة إليه
+save_eaction_3=عنوان مفقود لإعادة التوجيه إليه
+save_eaction_4=برنامج مفقود للتغذية
+save_eaction_6=متغير مفقود للتعيين
+save_eactionvar=يجب إدخال متغير الضبط مثل NAME = value
+save_elockfile=اسم ملف القفل مفقود
+save_esize=حجم البريد مفقود أو غير صالح للشرط$1
+save_ere=تعبير عادي مفقود للشرط$1
+save_eshell=أمر مفقود للشرط$1
+
+env_title1=إنشاء متغير
+env_title2=تحرير متغير
+env_header=متغير بيئة Procmail
+env_name=اسم المتغير
+env_value=القيمة
+env_err=فشل في حفظ المتغير
+env_ename=اسم متغير مفقود أو غير صالح
+
+inc_title1=إضافة ملف تضمين
+inc_title2=تحرير تضمين ملف
+inc_header=ملف قواعد procmail المضمنة
+inc_inc=ملف مدرج
+inc_einc=لم يتم إدخال ملف التضمين
+
+config_eline=سطر غير معروف$1 في $2 : $3 
+
+manual_title=تحرير التكوين
+manual_desc=يمكن استخدام هذه الصفحة لتحرير ملف تكوين Procmail يدويًا$1. كن حذرا ، حيث لن يتم التحقق من بناء الجملة.
+manual_edata=لم يتم توفير البيانات من قبل المتصفح الخاص بك!
+
+log_create_rec=وصفة تم إنشاؤها إلى$1
+log_delete_rec=وصفة محذوفة إلى$1
+log_modify_rec=وصفة معدلة إلى$1
+log_delete_recs=تم حذف وصفات$1
+log_act5=تنفيذ كتلة شرطية
+log_act4=إطعام للبرنامج$1
+log_act3=إعادة التوجيه إلى$1
+log_act2=الكتابة إلى maildir$1
+log_act1=الكتابة إلى مجلد MH$1
+log_act0=إلحاق بالملف$1
+log_create_env=متغير البيئة الذي تم إنشاؤه$1
+log_modify_env=متغير البيئة المعدل$1
+log_delete_env=متغير البيئة المحذوفة$1
+log_create_inc=تم إنشاء ملف التضمين$1
+log_modify_inc=تعديل ملف التضمين$1
+log_delete_inc=يتضمن الملف المحذوف$1
+log_manual=التكوين الذي تم تحريره يدويًا
+log_up=تم نقل إدخال لأعلى
+log_down=تم نقل الإدخال لأسفل
+
+delete_err=فشل في حذف الإجراءات
+delete_enone=لم يتم تحديد شيء
+
+check_epostfix=Procmail غير ممكّن في تكوين Postfix. يجب أن يتضمن ملف التكوين <tt>$2</tt> خيار <tt>$1</tt> على <tt>$3</tt>.
+check_esendmail=لم يتم إعداد Sendmail لاستخدام Procmail للتسليم المحلي. يمكن تكوين هذا في الوحدة النمطية <a href='$1'>Sendmail Mail Server</a> في Webmin.

@@ -49,8 +49,9 @@ else {
 		}
 	print "Content-type: application/x-gzip\n\n";
 	my $buf;
-	open(TEMP, $temp);
-	while(read(TEMP, $buf, 1024)) {
+	open(TEMP, "<$temp");
+	my $bs = &get_buffer_size();
+	while(read(TEMP, $buf, $bs)) {
 		print $buf;
 		}
 	close(TEMP);

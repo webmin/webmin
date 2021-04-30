@@ -1,1 +1,1 @@
-desc_es=Gestor de Volumenes Lógicos
+desc_es=Gestor de Volumenes LÃ³gicos

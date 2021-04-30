@@ -139,10 +139,6 @@ while($f = readdir(CONF)) {
 			$b->{'netmask'} = &prefix_to_mask($conf{'PREFIX0'});
 			}
 		$b->{'broadcast'} = $conf{'BROADCAST'};
-		if (!$b->{'broadcast'} && $b->{'address'} && $b->{'netmask'}) {
-			$b->{'broadcast'} = &compute_broadcast($b->{'address'},
-							       $b->{'netmask'});
-			}
 		$b->{'gateway'} = $conf{'GATEWAY'};
 		$b->{'gateway6'} = $conf{'IPV6_DEFAULTGW'};
 		$b->{'mtu'} = $conf{'MTU'};
@@ -189,6 +185,25 @@ while($f = readdir(CONF)) {
 			$bridge_map{$conf{'BRIDGE'}} = $b->{'fullname'};
 			}
 		push(@rv, $b);
+
+		# Extra IPADDRn lines in the config are virtual IPs
+		my $i = 0;
+		while(defined($conf{'IPADDR'.($i+1)})) {
+			my $acfg = { 'name' => $b->{'name'},
+				     'virtual' => $i,
+				     'fullname' => $b->{'name'}.":".$i,
+				     'file' => $b->{'file'},
+				     'parent' => $b->{'fullname'},
+				     'edit' => 1,
+				     'up' => 1, };
+			$acfg->{'address'} = $conf{'IPADDR'.($i+1)};
+			$acfg->{'netmask'} = $conf{'NETMASK'.($i+1)} ||
+				&prefix_to_mask($conf{'PREFIX'.($i+1)}) ||
+				$b->{'netmask'};
+			$acfg->{'index'} = scalar(@rv);
+			push(@rv, $acfg);
+			$i++;
+			}
 		}
 	}
 closedir(CONF);
@@ -222,143 +237,162 @@ $conf{'USERCTL'} = "no";
 sub save_interface
 {
 my ($b) = @_;
-local(%conf);
-local $name = $b->{'range'} ne "" ? $b->{'name'}."-range".$b->{'range'} :
-	      $b->{'virtual'} ne "" ? $b->{'name'}.":".$b->{'virtual'} :
-	      $b->{'vlanid'} ne "" ? $b->{'physical'}.".".$b->{'vlanid'}
-				       : $b->{'name'};
-my $file = $b->{'file'} || "$net_scripts_dir/ifcfg-$name";
-&lock_file($file);
-&read_env_file($file, \%conf);
-if ($b->{'range'} ne "") {
-	# Special case - saving a range
-	$conf{'IPADDR_START'} = $b->{'start'};
-	$conf{'IPADDR_END'} = $b->{'end'};
-	$conf{'CLONENUM_START'} = $b->{'num'};
+my $pmode = $b->{'parent'} && $b->{'virtual'} ne '' ||
+	    $gconfig{'os_version'} >= 16 && $b->{'virtual'} ne '';
+my $name = $b->{'range'} ne "" ? $b->{'name'}."-range".$b->{'range'} :
+	   $b->{'virtual'} ne "" ? $b->{'name'}.":".$b->{'virtual'} :
+	   $b->{'vlanid'} ne "" ? $b->{'physical'}.".".$b->{'vlanid'}
+				: $b->{'name'};
+if ($pmode) {
+	# Virtual interface being updated in it's parent's config file
+	$name =~ s/:\d+$//;
+	my $file = $b->{'file'} || "$net_scripts_dir/ifcfg-$name";
+	&lock_file($file);
+	&read_env_file($file, \%conf);
+	my $n = $b->{'virtual'} + 1;
+	$conf{'IPADDR'.$n} = $b->{'address'};
+	$conf{'PREFIX'.$n} = &mask_to_prefix($b->{'netmask'});
+	delete($conf{'NETMASK'.$n});
+	&write_env_file($file, \%conf);
+	&unlock_file($file);
+	$b->{'parent'} ||= $b->{'name'};
 	}
 else {
-	# Saving a normal interface
-	$conf{'DEVICE'} = $name;
-	my $pfx = $conf{'IPADDR0'} ? '0' : '';
-	$conf{'IPADDR'.$pfx} = $b->{'address'};
-	$conf{'NETMASK'.$pfx} = $b->{'netmask'};
-	delete($conf{'PREFIX'.$pfx});
-	if ($b->{'address'} && $b->{'netmask'}) {
-		$conf{'NETWORK'.$pfx} = &compute_network($b->{'address'},
-						         $b->{'netmask'});
+	# Interface has it's own file
+	local(%conf);
+	my $file = $b->{'file'} || "$net_scripts_dir/ifcfg-$name";
+	&lock_file($file);
+	&read_env_file($file, \%conf);
+	if ($b->{'range'} ne "") {
+		# Special case - saving a range
+		$conf{'IPADDR_START'} = $b->{'start'};
+		$conf{'IPADDR_END'} = $b->{'end'};
+		$conf{'CLONENUM_START'} = $b->{'num'};
 		}
 	else {
-		$conf{'NETWORK'.$pfx} = '';
-		}
-	$conf{'BROADCAST'.$pfx} = $b->{'broadcast'};
-	if ($b->{'gateway'}) {
-		$conf{'GATEWAY'} = $b->{'gateway'};
-		}
-	else {
-		delete($conf{'GATEWAY'});
-		}
-	if ($b->{'gateway6'}) {
-		$conf{'IPV6_DEFAULTGW'} = $b->{'gateway6'};
-		}
-	else {
-		delete($conf{'IPV6_DEFAULTGW'});
-		}
-	$conf{'MTU'} = $b->{'mtu'};
-	$conf{'MACADDR'} = $b->{'ether'};
-	$conf{'ONBOOT'} = $b->{'up'} ? "yes" : "no";
-	$conf{'ONPARENT'} = $b->{'up'} ? "yes" : "no"
-		if ($b->{'virtual'} ne '');
-	$conf{'BOOTPROTO'} = $b->{'bootp'} ? "bootp" :
-			     $b->{'dhcp'} ? "dhcp" : "none";
-	delete($conf{'IPV6ADDR'});
-	delete($conf{'IPV6ADDR_SECONDARIES'});
-	local @ip6s;
-	for(my $i=0; $i<@{$b->{'address6'}}; $i++) {
-		push(@ip6s, $b->{'address6'}->[$i]."/".
-			    $b->{'netmask6'}->[$i]);
-		}
-	if ((@ip6s || $b->{'auto6'}) && lc($conf{'IPV6INIT'}) ne 'yes') {
-		$conf{'IPV6INIT'} = 'yes';
-		}
-	elsif (!@ip6s && !$b->{'auto6'}) {
-		$conf{'IPV6INIT'} = 'no';
-		}
-	if (@ip6s) {
-		$conf{'IPV6ADDR'} = shift(@ip6s);
-		$conf{'IPV6ADDR_SECONDARIES'} = join(" ", @ip6s);
-		}
-	if ($b->{'fullname'} =~ /^br(\d+)$/) {
-		&has_command("brctl") ||
-			&error("Bridges cannot be created unless the brctl ".
-			       "command is installed");
-		$conf{'TYPE'} = 'Bridge';
-		}
-	if ($b->{'fullname'} =~ /^bond(\d+)$/) {
-		$conf{'BONDING_OPTS'} = "mode=$b->{'mode'}";
-		if ($b->{'miimon'}) {
-			$conf{'BONDING_OPTS'} .= " miimon=$b->{'miimon'}";
+		# Saving a normal interface
+		$conf{'DEVICE'} = $name;
+		my $pfx = $conf{'IPADDR0'} ? '0' : '';
+		$conf{'IPADDR'.$pfx} = $b->{'address'};
+		$conf{'NETMASK'.$pfx} = $b->{'netmask'};
+		delete($conf{'PREFIX'.$pfx});
+		if ($b->{'address'} && $b->{'netmask'}) {
+			$conf{'NETWORK'.$pfx} = &compute_network($b->{'address'},
+								 $b->{'netmask'});
 			}
-		if ($b->{'updelay'}) {
-			$conf{'BONDING_OPTS'} .= " updelay=$b->{'updelay'}";
+		else {
+			$conf{'NETWORK'.$pfx} = '';
 			}
-		if ($b->{'downdelay'}) {
-			$conf{'BONDING_OPTS'} .= " downdelay=$b->{'downdelay'}";
+		$conf{'BROADCAST'.$pfx} = $b->{'broadcast'};
+		if ($b->{'gateway'}) {
+			$conf{'GATEWAY'} = $b->{'gateway'};
 			}
+		else {
+			delete($conf{'GATEWAY'});
+			}
+		if ($b->{'gateway6'}) {
+			$conf{'IPV6_DEFAULTGW'} = $b->{'gateway6'};
+			}
+		else {
+			delete($conf{'IPV6_DEFAULTGW'});
+			}
+		$conf{'MTU'} = $b->{'mtu'};
+		$conf{'MACADDR'} = $b->{'ether'};
+		$conf{'ONBOOT'} = $b->{'up'} ? "yes" : "no";
+		$conf{'ONPARENT'} = $b->{'up'} ? "yes" : "no"
+			if ($b->{'virtual'} ne '');
+		$conf{'BOOTPROTO'} = $b->{'bootp'} ? "bootp" :
+				     $b->{'dhcp'} ? "dhcp" : "none";
+		delete($conf{'IPV6ADDR'});
+		delete($conf{'IPV6ADDR_SECONDARIES'});
+		local @ip6s;
+		for(my $i=0; $i<@{$b->{'address6'}}; $i++) {
+			push(@ip6s, $b->{'address6'}->[$i]."/".
+				    $b->{'netmask6'}->[$i]);
+			}
+		if ((@ip6s || $b->{'auto6'}) && lc($conf{'IPV6INIT'}) ne 'yes') {
+			$conf{'IPV6INIT'} = 'yes';
+			}
+		elsif (!@ip6s && !$b->{'auto6'}) {
+			$conf{'IPV6INIT'} = 'no';
+			}
+		if (@ip6s) {
+			$conf{'IPV6ADDR'} = shift(@ip6s);
+			$conf{'IPV6ADDR_SECONDARIES'} = join(" ", @ip6s);
+			}
+		if ($b->{'fullname'} =~ /^br(\d+)$/) {
+			&has_command("brctl") ||
+				&error("Bridges cannot be created unless the brctl ".
+				       "command is installed");
+			$conf{'TYPE'} = 'Bridge';
+			}
+		if ($b->{'fullname'} =~ /^bond(\d+)$/) {
+			$conf{'BONDING_OPTS'} = "mode=$b->{'mode'}";
+			if ($b->{'miimon'}) {
+				$conf{'BONDING_OPTS'} .= " miimon=$b->{'miimon'}";
+				}
+			if ($b->{'updelay'}) {
+				$conf{'BONDING_OPTS'} .= " updelay=$b->{'updelay'}";
+				}
+			if ($b->{'downdelay'}) {
+				$conf{'BONDING_OPTS'} .= " downdelay=$b->{'downdelay'}";
+				}
 
-		my @values = split(/\s+/, $b->{'partner'});
-		foreach my $val (@values) {
-			&save_bond_interface($val, $b->{'fullname'});
+			my @values = split(/\s+/, $b->{'partner'});
+			foreach my $val (@values) {
+				&save_bond_interface($val, $b->{'fullname'});
+				}
+			}
+		if ($b->{'vlan'} == 1) {
+			$conf{'VLAN'} = "yes";
 			}
 		}
-	if ($b->{'vlan'} == 1) {
-		$conf{'VLAN'} = "yes";
+	$conf{'NAME'} = $b->{'desc'};
+	if (!-r $file) {
+		# New interfaces shouldn't be controller by network manager
+		$conf{'NM_CONTROLLED'} = 'no';
 		}
-	}
-$conf{'NAME'} = $b->{'desc'};
-if (!-r $file) {
-	# New interfaces shouldn't be controller by network manager
-	$conf{'NM_CONTROLLED'} = 'no';
-	}
-&write_env_file($file, \%conf);
+	&write_env_file($file, \%conf);
 
-# If this is a bridge, set BRIDGE in real interface
-if ($b->{'bridge'}) {
-	foreach my $efile (glob("$net_scripts_dir/ifcfg-e*")) {
-		local %bconf;
-		&lock_file($efile);
-		&read_env_file($efile, \%bconf);
-		if ($bconf{'DEVICE'} eq $b->{'bridgeto'} &&
-		    $b->{'bridgeto'}) {
-			# Correct device for bridge
-			$bconf{'BRIDGE'} = $b->{'fullname'};
-			&write_env_file($efile, \%bconf);
+	# If this is a bridge, set BRIDGE in real interface
+	if ($b->{'bridge'}) {
+		foreach my $efile (glob("$net_scripts_dir/ifcfg-e*")) {
+			local %bconf;
+			&lock_file($efile);
+			&read_env_file($efile, \%bconf);
+			if ($bconf{'DEVICE'} eq $b->{'bridgeto'} &&
+			    $b->{'bridgeto'}) {
+				# Correct device for bridge
+				$bconf{'BRIDGE'} = $b->{'fullname'};
+				&write_env_file($efile, \%bconf);
+				}
+			elsif ($bconf{'BRIDGE'} eq $b->{'fullname'} &&
+			       $bconf{'BRIDGE'}) {
+				# Was using this bridge, shouldn't be
+				delete($bconf{'BRIDGE'});
+				&write_env_file($efile, \%bconf);
+				}
+			&unlock_file($efile);
 			}
-		elsif ($bconf{'BRIDGE'} eq $b->{'fullname'} &&
-		       $bconf{'BRIDGE'}) {
-			# Was using this bridge, shouldn't be
-			delete($bconf{'BRIDGE'});
-			&write_env_file($efile, \%bconf);
+		}
+
+	# Link to devices directory
+	if (-d &translate_filename($devices_dir)) {
+		&link_file($file, "$devices_dir/ifcfg-$name");
+		}
+	&unlock_file($file);
+
+	# Make sure IPv6 is enabled globally
+	if (@{$b->{'address6'}}) {
+		local %conf;
+		&lock_file($network_config);
+		&read_env_file($network_config, \%conf);
+		if (lc($conf{'NETWORKING_IPV6'}) ne 'yes') {
+			$conf{'NETWORKING_IPV6'} = 'yes';
+			&write_env_file($network_config, \%conf);
 			}
-		&unlock_file($efile);
+		&unlock_file($network_config);
 		}
-	}
-
-# Link to devices directory
-if (-d &translate_filename($devices_dir)) {
-	&link_file($file, "$devices_dir/ifcfg-$name");
-	}
-&unlock_file($file);
-
-# Make sure IPv6 is enabled globally
-if (@{$b->{'address6'}}) {
-	local %conf;
-	&lock_file($network_config);
-	&read_env_file($network_config, \%conf);
-	if (lc($conf{'NETWORKING_IPV6'}) ne 'yes') {
-		$conf{'NETWORKING_IPV6'} = 'yes';
-		&write_env_file($network_config, \%conf);
-		}
-	&unlock_file($network_config);
 	}
 }
 
@@ -367,17 +401,37 @@ if (@{$b->{'address6'}}) {
 sub delete_interface
 {
 my ($b) = @_;
-local $name = $b->{'range'} ne "" ? $b->{'name'}."-range".
-				    $b->{'range'} :
-	      $b->{'virtual'} ne "" ? $b->{'name'}.":".$b->{'virtual'}
-				    : $b->{'name'};
 my $file = $b->{'file'} || "$net_scripts_dir/ifcfg-$name";
-&lock_file($file);
-&unlink_file("$net_scripts_dir/ifcfg-$name");
-if (-d &translate_filename($devices_dir)) {
-	&unlink_file("$devices_dir/ifcfg-$name");
+if ($b->{'virtual'} ne '' && $b->{'parent'}) {
+	# Virtual interface in it's parent's file .. just remove the IP
+	my %conf;
+	my $i = $b->{'virtual'}+1;
+	&lock_file($file);
+	&read_env_file($file, \%conf);
+	for($n=$i; defined($conf{'IPADDR'.$n}); $n++) {
+		$conf{'IPADDR'.$n} = $conf{'IPADDR'.($n+1)};
+		$conf{'NETMASK'.$n} = $conf{'NETMASK'.($n+1)};
+		$conf{'PREFIX'.$n} = $conf{'PREFIX'.($n+1)};
+		delete($conf{'IPADDR'.($n+1)});
+		delete($conf{'NETMASK'.($n+1)});
+		delete($conf{'PREFIX'.($n+1)});
+		}
+	&write_env_file($file, \%conf);
+	&unlock_file($file);
 	}
-&unlock_file($file);
+else {
+	# Interface has it's own file that should be deleted
+	my $name = $b->{'range'} ne "" ? $b->{'name'}."-range".
+					 $b->{'range'} :
+		   $b->{'virtual'} ne "" ? $b->{'name'}.":".$b->{'virtual'}
+					 : $b->{'name'};
+	&lock_file($file);
+	&unlink_file("$net_scripts_dir/ifcfg-$name");
+	if (-d &translate_filename($devices_dir)) {
+		&unlink_file("$devices_dir/ifcfg-$name");
+		}
+	&unlock_file($file);
+	}
 }
 
 # can_edit(what)
@@ -390,6 +444,11 @@ if ($supports_mtu) {
 else {
 	return $_[0] ne "mtu";
 	}
+}
+
+sub can_broadcast_def
+{
+return 1;
 }
 
 # valid_boot_address(address)
@@ -407,7 +466,7 @@ local %conf;
 if ($conf{'HOSTNAME'}) {
 	return $conf{'HOSTNAME'};
 	}
-return &get_system_hostname(1);
+return &get_system_hostname();
 }
 
 # save_hostname(name)
@@ -415,7 +474,7 @@ sub save_hostname
 {
 local $old = &get_hostname();
 local %conf;
-&system_logged("hostname $_[0] >/dev/null 2>&1");
+&system_logged("hostname ".quotemeta($_[0])." >/dev/null 2>&1");
 &open_lock_tempfile(HOST, ">/etc/HOSTNAME");
 &print_tempfile(HOST, $_[0],"\n");
 &close_tempfile(HOST);
@@ -442,6 +501,12 @@ if (-r "/etc/hostname") {
 	&open_lock_tempfile(HOST, ">/etc/hostname");
 	&print_tempfile(HOST, $_[0],"\n");
 	&close_tempfile(HOST);
+	}
+
+# Use the hostnamectl command as well
+if (&has_command("hostnamectl")) {
+	&system_logged("hostnamectl set-hostname ".quotemeta($_[0]).
+		       " >/dev/null 2>&1");
 	}
 
 undef(@main::get_system_hostname);	# clear cache
@@ -639,13 +704,13 @@ if (!$supports_dev_gateway) {
 	# Just update a single file
 	if ($in{'gateway_def'}) { delete($conf{'GATEWAY'}); }
 	elsif (!&to_ipaddress($in{'gateway'})) {
-		&error(&text('routes_edefault', $in{'gateway'}));
+		&error(&text('routes_edefault', &html_escape($in{'gateway'})));
 		}
 	else { $conf{'GATEWAY'} = $in{'gateway'}; }
 
 	if ($in{'gatewaydev_def'}) { delete($conf{'GATEWAYDEV'}); }
 	elsif ($in{'gatewaydev'} !~ /^\S+$/) {
-		&error(&text('routes_edevice', $in{'gatewaydev'}));
+		&error(&text('routes_edevice', &html_escape($in{'gatewaydev'})));
 		}
 	else { $conf{'GATEWAYDEV'} = $in{'gatewaydev'}; }
 	}
@@ -678,7 +743,7 @@ else {
 			local ($b) = grep { $_->{'fullname'} eq
 					    $in{"gatewaydev$r"} } @boot;
 			$b->{'gateway'} && &error(&text('routes_eclash2',
-							$in{"gatewaydev$r"}));
+							&html_escape($in{"gatewaydev$r"})));
 			$b->{'gateway'} = $in{"gateway$r"};
 			$b->{'gateway6'} = $in{"gateway6$r"};
 			}
@@ -699,10 +764,10 @@ else {
 for($i=0; defined($dev = $in{"dev_$i"}); $i++) {
 	next if (!$dev);
 	$net = $in{"net_$i"}; $netmask = $in{"netmask_$i"}; $gw = $in{"gw_$i"};
-	$dev =~ /^\S+$/ || &error(&text('routes_edevice', $dev));
-	&to_ipaddress($net) || &error(&text('routes_enet', $net));
-	&check_ipaddress($netmask) || &error(&text('routes_emask', $netmask));
-	&to_ipaddress($gw) || &error(&text('routes_egateway', $gw));
+	$dev =~ /^\S+$/ || &error(&text('routes_edevice', &html_escape($dev)));
+	&to_ipaddress($net) || &error(&text('routes_enet', &html_escape($net)));
+	&check_ipaddress($netmask) || &error(&text('routes_emask', &html_escape($netmask)));
+	&to_ipaddress($gw) || &error(&text('routes_egateway', &html_escape($gw)));
 	if ($netmask eq "255.255.255.255") {
 		push(@st, "$dev host $net gw $gw\n");
 		}
@@ -714,11 +779,11 @@ for($i=0; defined($dev = $in{"dev_$i"}); $i++) {
 for($i=0; defined($dev = $in{"ldev_$i"}); $i++) {
 	$net = $in{"lnet_$i"}; $netmask = $in{"lnetmask_$i"};
 	next if (!$dev && !$net);
-	$dev =~ /^\S+$/ || &error(&text('routes_edevice', $dev));
+	$dev =~ /^\S+$/ || &error(&text('routes_edevice', &html_escape($dev)));
 	&to_ipaddress($net) ||
 	    $net =~ /^(\S+)\/(\d+)$/ && &to_ipaddress("$1") ||
-		&error(&text('routes_enet', $net));
-	&check_ipaddress($netmask) || &error(&text('routes_emask', $netmask));
+		&error(&text('routes_enet', &html_escape($net)));
+	&check_ipaddress($netmask) || &error(&text('routes_emask', &html_escape($netmask)));
 	if ($netmask eq "255.255.255.255") {
 		push(@st, "$dev host $net\n");
 		}
@@ -797,11 +862,17 @@ return &ui_select($name, $value, \@opts);
 # Apply the interface and routing settings
 sub apply_network
 {
-if ($gconfig{'os_type'} eq 'mandrake-linux') {
-	&system_logged("(cd / ; service network stop ; service network start) >/dev/null 2>&1");
+&foreign_require("init");
+if (&init::action_status("network")) {
+	# Older system that has an init.d/network script
+	my $err = &init::restart_action("network");
+	&error($err) if ($err);
 	}
 else {
-	&system_logged("(cd / ; /etc/init.d/network stop ; /etc/init.d/network start) >/dev/null 2>&1");
+	# Probably CentOS 8 that has no apply command
+	foreach my $b (&boot_interfaces()) {
+		&apply_interface($b) if ($b->{'virtual'} eq '');
+		}
 	}
 }
 
@@ -809,7 +880,21 @@ else {
 # Calls an OS-specific function to make a boot-time interface active
 sub apply_interface
 {
-local $out = &backquote_logged("cd / ; ifdown '$_[0]->{'fullname'}' >/dev/null 2>&1 </dev/null ; ifup '$_[0]->{'fullname'}' 2>&1 </dev/null");
+my ($i) = @_;
+my $out;
+if ($i->{'parent'} && $i->{'virtual'} ne '') {
+	$out = &backquote_logged(
+		"cd / ; ".
+		"ifup ".quotemeta($i->{'name'})." 2>&1 </dev/null");
+	}
+else {
+	$out = &backquote_logged(
+		"cd / ; ".
+		"ifdown ".quotemeta($i->{'fullname'}).
+			" >/dev/null 2>&1 </dev/null ; ".
+		"ifup ".quotemeta($i->{'fullname'}).
+			" 2>&1 </dev/null");
+	}
 return $? || $out =~ /error/i ? $out : undef;
 }
 
@@ -839,14 +924,15 @@ return $conf{'GATEWAY'} ? ( $conf{'GATEWAY'}, $conf{'GATEWAYDEV'} ) : ( );
 # in the boot time settings.
 sub set_default_gateway
 {
+my ($gw, $gwdev) = @_;
+my %conf;
 &lock_file($network_config);
 &read_env_file($network_config, \%conf);
 if (!$supports_dev_gateway) {
 	# Just update the network config file
-	local %conf;
-	if ($_[0]) {
-		$conf{'GATEWAY'} = $_[0];
-		$conf{'GATEWAYDEV'} = $_[1];
+	if ($gw) {
+		$conf{'GATEWAY'} = $gw;
+		$conf{'GATEWAYDEV'} = $gwdev;
 		}
 	else {
 		delete($conf{'GATEWAY'});
@@ -858,8 +944,8 @@ else {
 	local @boot = grep { $->{'virtual'} eq '' } &boot_interfaces();
 	foreach $b (@boot) {
 		delete($b->{'gateway'});
-		if ($_[0] && $b->{'fullname'} eq $_[1]) {
-			$b->{'gateway'} = $_[0];
+		if ($gw && $b->{'fullname'} eq $gwdev) {
+			$b->{'gateway'} = $gw;
 			&save_interface($b);
 			}
 		}
@@ -1089,6 +1175,13 @@ foreach my $b (&boot_interfaces()) {
 		# Add an empty DNS1 line so that we know to update this file
 		# later if DNS resolves come back
 		$ifc{'DNS1'} = ''
+		}
+	my @d = @{$conf->{'domain'}};
+	if (@d) {
+		$ifc{'DOMAIN'} = $d[0];
+		}
+	else {
+		delete($ifc{'DOMAIN'});
 		}
 	&write_env_file($b->{'file'}, \%ifc);
 	&unlock_file($b->{'file'});

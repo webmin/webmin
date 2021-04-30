@@ -1,0 +1,25 @@
+index_ouser=Od jiných uživatelů než Webmin
+index_sdesc=Popis akce obsahuje
+index_long=Zobrazit úplné popisy akcí?
+index_global=&lt;Ne v žádném modulu&gt;
+
+search_critd=kde popis obsahuje <tt>$1</tt>
+search_global=Žádný
+search_global_login=Přihlášen do Webmin
+search_global_logout=Odhlášení z Webmin
+search_global_failed=Přihlášení k Webmin se nezdařilo : $1 
+search_global_expiredpass=Platnost hesla vypršela
+search_global_wronguser=Neplatný uživatel
+search_global_wrongpass=Neplatné heslo
+search_global_baduser=Špatné uživatelské jméno
+search_global_badpass=Špatné heslo
+search_global_twofactor=Neplatný token dvoufaktorů
+search_csv=Exportovat jako CSV.
+
+view_output=Obsah webové stránky
+view_files=Soubory se změnily a spouštěly příkazy
+view_raw=Nezpracovaná data protokolu
+view_rawname=Název parametru
+view_rawvalue=Hodnota parametru
+
+acl_self=Pouze já

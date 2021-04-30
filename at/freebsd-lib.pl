@@ -6,7 +6,7 @@ our (%config);
 sub list_atjobs
 {
 my @rv;
-opendir(my $DIR, $config{'at_dir'});
+opendir(my $DIR, $config{'at_dir'}) || return ();
 while(my $f = readdir($DIR)) {
 	my $p = "$config{'at_dir'}/$f";
 	if ($f =~ /^c(\S{5})(\S+)$/) {
@@ -15,7 +15,7 @@ while(my $f = readdir($DIR)) {
 			       'date' => hex($2) * 60,
 			       'user' => scalar(getpwuid($st[4])),
 			       'created' => $st[9] };
-		open(my $FILE, $p);
+		open(my $FILE, "<".$p);
 		while(<$FILE>) {
 			$job->{'cmd'} .= $_;
 			}

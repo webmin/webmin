@@ -1,0 +1,3 @@
+desc_fi=TCP-kääre
+longdesc_fi=Määritä TCP-kääreiden verkon käyttöoikeustiedostot
+name_fi=tcpwrappers

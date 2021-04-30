@@ -1,0 +1,58 @@
+index_title=SMART Drive Status
+index_ecmd=Il-kmand tal-kontroll SMART $1 ma nstabx fis-sistema tiegħek jew mhuwiex issettjat b'mod korrett fil-<a href='$2'>konfigurazzjoni tal-modulu</a>. Għandu jkun installat qabel ma jkun jista 'jintuża dan il-modulu.
+index_ecmd2=Il-kmand $1 ma jidhirx li huwa l-kmand ta 'kontroll SMART. Għandu jkun issettjat sewwa fil- <a href='$2'>konfigurazzjoni tal-modulu</a> qabel ma jkun jista 'jintuża dan il-modulu.
+index_version=Verżjoni SMARTsuite $1 
+index_show=Uri l-istat tas-sewqan:
+index_ok=Uri
+index_eidescsi=L-ebda drives IDE, SCSI jew SATA ma nstabu fis-sistema tiegħek.
+index_drive=Status ta 'sewqan $1 
+index_drivesub=Status ta 'sewqan $1, disk $2 
+index_desc=Post
+index_size=Daqs tas-sewqan
+index_model=Għamla u mudell
+index_support=Jappoġġja SMART?
+index_enabled=SMART attivata?
+index_check=Għaddejt il-kontroll tas-sewqan?
+index_short=Test Awto Qasir
+index_ext=Test Awt Estendut
+index_data=Test tal-Ġbir tad-Dejta
+index_errors=Żbalji illoggjati
+index_ecount=$1 skoperti żbalji
+index_attrs=Attributi addizzjonali SMART
+index_raw=Rapport tal-istatus SMART sħiħ
+index_return=indiċi tal-modulu
+index_family=Mudell tal-familja
+index_serial=Numru tas-serje
+index_capacity=Kapaċità
+index_norm=Normalizzat:
+
+monitor_type=SMART Drive Iċċekkja
+monitor_type2=Wearout SSD
+monitor_drive=Sewqan biex tivverifika
+monitor_errors=Iċċekkja wkoll il-ġurnal ta 'żball?
+monitor_errorsinc=Iva, imma biss twissija jekk l-għadd tal-iżbalji jiżdied
+monitor_other=Oħrajn ..
+monitor_edrive=Drive nieqsa jew invalida biex tivverifika
+monitor_nosuch=L-ebda drive bħal dan
+monitor_nosmart=L-ebda appoġġ SMART
+monitor_errorsfound=Żbaljati $1 irrappurtati
+monitor_errorsinced=L-iżbalji żdiedu minn $2 għal $1 
+monitor_wearlevel=Ma tgħaddix jekk il-livell ta ’xedd jaqa’ taħt
+monitor_ewearlevel=Perċentwali tal-livell ta 'xedd mhux validu
+monitor_nowearout=Is-sewqan ma jirrapportax indikatur ta 'użu ta' SSD
+monitor_wornout=Il-livell ta 'xedd naqas għal $1 
+
+short_title=Test Awto Qasir
+short_doing=Bidu awto-test qasir ta ' $1 ..
+short_failed=.. naqas!
+short_ok=.. it-test beda OK. Ara l-istat tas-sewqan fuq il-paġna ewlenija tal-modulu għar-riżultati.
+
+ext_title=Test Awt Estendut
+ext_doing=Bidu test awtonomu estiż ta ' $1 ..
+ext_failed=.. naqas!
+ext_ok=.. it-test beda OK. Ara l-istat tas-sewqan fuq il-paġna ewlenija tal-modulu għar-riżultati.
+
+data_title=Test tal-Ġbir tad-Dejta
+data_doing=Bidu tal-ġbir tad-dejta offlajn fuq $1 ..
+data_failed=.. naqas!
+data_ok=.. il-ġabra bdiet OK. Ara l-istat tas-sewqan fuq il-paġna ewlenija tal-modulu għar-riżultati.

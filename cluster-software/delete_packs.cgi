@@ -27,7 +27,7 @@ foreach $p (@packs) {
 	}
 $found || &error($text{'deletes_enone'});
 
-&ui_print_header(undef, $text{'deletes_title'}, "", "delete");
+&ui_print_header(undef, $text{'deletes_title'}, "", undef);
 
 if ($in{'sure'}) {
 	# do the deletion

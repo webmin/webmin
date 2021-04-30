@@ -1,2 +1,2 @@
-desc_pl=Samba - udostêpnianie plików dla Windows
-longdesc_pl=Twórz i edytuj wspó³dzielone przez Samba pliki i drukarki.
+desc_pl=Samba - udostÄ™pnianie plikÃ³w dla Windows
+longdesc_pl=TwÃ³rz i edytuj wspÃ³Å‚dzielone przez Samba pliki i drukarki.

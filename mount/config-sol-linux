@@ -9,3 +9,5 @@ passwd_mindex=4
 by_view=0
 show_used=1
 nfs_check=1
+sysinfo=1
+sort_mode=2

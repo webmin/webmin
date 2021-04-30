@@ -1,0 +1,96 @@
+index_zone=Zone
+index_mem2=<b>Mémoire réelle:</b> $1 total / $2 gratuit
+index_mem3=<b>Mémoire réelle:</b> $1 total / $2 gratuit / $3 mis en cache
+index_swap2=<b>Échange d'espace:</b> $1 total / $2 gratuit
+index_burst=<b>Mémoire éclatée:</b> $1 au total
+index_loadname=Moyennes de charge du processeur:
+index_loadnums=$1 (1 min), $2 (5 min), $3 (15 min)
+index_cpuname=Type de CPU:
+index_inzone=Dans la zone $1 
+
+stime=Commencé
+sclass=Classe de planification IO
+sprio=Priorité IO
+
+search_cpupc2=Utiliser plus de CPU que
+search_sigterm=Mettre fin aux processus
+search_sigkill=Tuer les processus
+search_port=Utilisation du port
+search_protocol=protocole
+search_ip=Utiliser l'adresse IP
+
+run_as=Exécuter en tant qu'utilisateur
+run_euser=Nom d'utilisateur manquant ou invalide
+run_euser2=Vous n'êtes pas autorisé à exécuter des commandes en tant qu'utilisateur sélectionné
+
+edit_subid=Identifiant
+edit_subcmd=Commande de sous-processus
+edit_sigterm=Mettre fin
+edit_sigkill=Tuer
+edit_sigstop=Suspendre
+edit_sigcont=Reprendre
+edit_open=Fichiers et connexions
+edit_trace=Processus de suivi
+edit_return=détails du processus
+
+linux_stime=Commencé
+
+linux_real=Temps réel
+linux_be=Meilleur effort
+linux_idle=Tourner au ralenti
+
+freebsd_stime=Commencé
+
+hpux_stime=Commencé
+
+sysv_stime=Commencé
+sysv_task=ID de tâche
+sysv_zone=Nom de zone
+
+log_renice=Modification de la priorité du processus $2 en $1 
+
+acl_manage_def=Utilisateur Webmin actuel
+acl_only=Ne peut voir que ses propres processus?
+acl_who=Peut gérer les processus pour les utilisateurs
+acl_who0=Tous les utilisateurs
+acl_who1=Utilisateur Webmin actuel
+acl_who2=Utilisateurs répertoriés ..
+
+open_title=Fichiers ouverts et connexions
+open_proc=Pour le processus $1 (PID $2)
+open_header1=Ouvrir des fichiers
+open_header2=Connexions réseau ouvertes
+open_type=Type
+open_proto=Protocole
+open_desc=Détails
+open_fd=Descripteur de fichier
+open_listen1=Écoute sur le port $1 
+open_listen2=Écoute sur l'adresse $1 port $2 
+open_recv=Réception le $1:$2 
+open_conn=Connecté de $1 à $2 dans l'état $3 
+open_cwd=Dir actuel
+open_rtd=Répertoire racine
+open_txt=Code de programme
+open_mem=Bibliothèque partagée
+open_dir=Annuaire
+open_reg=Fichier régulier
+open_chr=Caractère spécial
+open_blk=Bloc spécial
+open_size=Taille du fichier
+open_inode=Inode
+open_file=Chemin
+
+trace_title=Processus de suivi
+trace_start=Démarrage de la trace d'appel système pour $1 ..
+trace_doing=Trace d'appel système pour $1  :
+trace_done=.. le processus est terminé.
+trace_failed=.. le traçage a échoué!
+trace_sorry=Cette page nécessite la prise en charge Java dans votre navigateur. Pour utiliser une trace de processus en texte uniquement, ajustez la configuration du module.
+trace_syscalls=Suivi des appels système:
+trace_all=Tout
+trace_sel=Listé ..
+trace_change=Changement
+
+windows_threads=Fils en cours
+
+syslog_dmesg=Messages du noyau

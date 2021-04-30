@@ -1,0 +1,115 @@
+index_title=Erregistroaren fitxategien biraketa
+index_econf=$1 fitxategiaren biraketa-konfigurazio fitxategia ez da zure sisteman aurkitu. Agian logrotatua ez dago instalatuta edo <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_ecmd=$1 erregistroaren biraketa programa ez da zure sisteman aurkitu. Agian ez dago instalatuta edo <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_eversion=Huts egin du logrotate bertsioa lortzeko $1 : $2 komandoarekin
+index_version=$1 bertsio logrotatua
+index_add=Gehitu erregistro fitxategi berria biratzeko.
+index_file=Erregistro fitxategia
+index_period=Biraketa-aldia
+index_post=Biraketa osteko komandoa
+index_none=Oraindik ez da erregistro fitxategirik zehaztu.
+index_global=Editatu Aukera Globala
+index_globaldesc=Egin klik botoi honetan egunkariko fitxategi guztiei aplikatuko zaien ezarpena editatzeko eta erregistroetarako lehenetsitakoak zehazteko.
+index_sched=Editatu Egutegia
+index_scheddesc=Egin klik botoi honetan Cron-ek erabiltzen duen egutegia programatzeko edo aktibatzeko edo desgaitzeko.
+index_nocmd=Bat ere ez
+index_notset=Ez dago ezarri
+index_return=erregistro fitxategien zerrenda
+index_force=Indarraren egunkariaren biraketa
+index_forcedesc=Behartu erregistro fitxategi guztien berehalako biraketa, oraindik denbora ez bada ere.
+index_logrotate=Logrotate
+index_delete=Ezabatu hautatutako egunkariaren biraketak
+
+period_daily=Daily
+period_weekly=Asteroko
+period_monthly=Hileroko
+period_never=Inoiz ez
+period_bytes=byte
+
+edit_title1=Editatu log fitxategia
+edit_title2=Sortu erregistro fitxategia
+edit_header=Biratu erregistro fitxategiaren xehetasunak
+edit_file=Fitxategien bide-erregistroa
+edit_sched=Biraketa egutegia
+edit_rotate=Gorde beharreko erregistro zahar kopurua
+edit_compress=Log fitxategi zaharrak konprimitu?
+edit_delaycompress=Hurrengo zikloa arte atzeratu konpresioa?
+edit_copytruncate=Eguneratu erregistro fitxategia bere lekuan?
+edit_ifempty=Biratu bihurketa fitxategia hutsik badago ere?
+edit_missingok=Ez ahaztu erregistro fitxategia falta bada?
+edit_size=Gehienezko tamaina biratu aurretik
+edit_always=Ez ikusi
+edit_minsize=Biratzeko gutxieneko tamaina
+edit_nominsize=beti
+edit_ext=Biratutako fitxategi-izenetarako luzapena
+edit_dateext=Erabili data luzapena biratutako fitxategietarako
+edit_mail=Ezabatu aurretik mezu elektronikoaren fitxategia ezabatu aurretik?
+edit_mailto=Bai, helbidera
+edit_mailno=Ez, ez bidali mezu elektronikoa
+edit_mailfl=Log fitxategia posta elektronikora
+edit_mailfirst=Berriena biratu besterik ez zen egin
+edit_maillast=Ezabatu nahi den zaharrena
+edit_create=Sortu berriro erregistro fitxategia biraketa ondoren?
+edit_createas=Bai, $1 moduarekin eta $2 eta $3 erabiltzailearen jabetzakoa da
+edit_createno=Ez, ez sortu berriro
+edit_createsame=Bai, baimen zaharrekin
+edit_olddir=Biltegiratu biratutako erregistro zaharrak
+edit_olddirto=Directory
+edit_olddirsame=Log fitxategiaren direktorio bera
+edit_errors=Mezu elektronikoen errorea
+edit_errorsno=Inork
+edit_errorsto=Helbidea edo erabiltzailea
+edit_post=Biraketaren ondoren exekutatzeko aginduak
+edit_pre=Biraketa aurretik exekutatzeko komandoak
+edit_default=Lehenespenez ($1)
+edit_sharedscripts=Gidoiak bakarrik exekutatu fitxategi guztientzako?
+edit_now=Biratu Orain
+
+global_title=Aukera Globala
+global_header=Lehenetsitako erregistro-fitxategi guztien aukera
+
+save_err=Ezin izan da erregistroa gorde
+save_efile=Falta fitxategiaren izena edo falta da
+save_esize=Gehieneko tamaina falta edo baliogabea
+save_eminsize=Gutxieneko tamaina falta edo baliogabea da
+save_erotate=Gorde beharreko erregistro zahar gehienen kopurua falta edo baliogabea
+save_ecreatemode=3 edo 4 digituko zortzimila sortzeko modua falta da edo ez da balio
+save_ecreateuser=Erabiltzaile falta edo baliogabea sortzea
+save_ecreategroup=Sorkuntza-talde falta edo baliogabea
+save_emust1=Sorkuntza-modua sartu behar duzu sorkuntza-erabiltzailea sartzean
+save_emust2=Sorkuntza-talde bat sartu behar duzu sorkuntza-talde batean sartzean
+save_eolddirto=Falta edo direktorio baliogabea biratutako erregistro zaharrentzat
+save_eext=Falta da luzapena
+save_emailto=Biratutako erregistroen helbide elektronikoa falta da
+save_eerrors=Helbide elektronikoa falta da akats mezuetarako
+save_epre=Biratze aurreko gidoiak ezin du <tt>endscript</tt> edo <tt>endrotate</tt> lerro bat eduki
+save_epost=Biraketa osteko scriptak ezin du <tt>endscript</tt> edo <tt>endrotate</tt> lerro bat eduki
+save_enofiles=Ez da biratzeko birik fitxategirik sartu
+
+log_modify_sched=Aldatu egin da egunkariaren biraketa Cron lana
+log_create_sched=Kronen biraketa erregistroa sortu da
+log_delete_sched=Logen biraketa ezabatu da Cron lana
+log_global=Aukera globaleko aldaketak
+log_create=Biraketa gehitu da $1 erregistrorako
+log_modify=Biraketa aldatua $1 erregistrorako
+log_delete=Biraketa ezabatu da $1 erregistrorako
+log_delete_logs=Biraketa ezabatu da $1 erregistro fitxategietarako
+
+sched_title=Erregistroaren Biraketa Egutegia
+sched_desc=Modulu hau erabiltzeko konfiguratutako biraketa erregistroa, Cron-ek $1 komandoak ordutegi arrunt batean (normalean egunero) Cron-ek exekutatu behar du.
+sched_runparts=Gaur egun, erregistroaren biraketa komandoa $1 $2 scriptetik exekutatzen ari da eta ezin da doitu.
+sched_sched=Erregistro biraketa cron lana
+sched_disabled=Desgaituta
+sched_enabled=Gaituta, beheko une batzuetan ..
+sched_save=Eguneratu Cron lana
+sched_err=Huts egin du biraketa egutegia gordetzean
+sched_when=Korrika egiteko garaiak
+
+force_title=Indarraren egunkariaren biraketa
+force_doing=Erregistroko fitxategi guztien berehalako biraketa behartuta ..
+force_doingone=Eguneroko fitxategi baten berehalako biraketa behartuta ..
+force_done=.. egin.
+force_failed=.. huts egin du! Ikusi goiko irteera zergatik dagoen.
+
+delete_err=Ezin izan da erregistroak ezabatu
+delete_enone=Ez da hautatu

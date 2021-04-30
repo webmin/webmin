@@ -1,1 +1,1 @@
-desc_es=Páginas del Manual
+desc_es=PÃ¡ginas del Manual

@@ -35,7 +35,7 @@ print "<tr $tb> <td><b>$text{'gedit_details'}</b></td> </tr>\n";
 print "<tr $cb> <td><table width=100%>\n";
 
 print "<tr> <td valign=top><b>$text{'gedit_group'}</b></td>\n";
-print "<td valign=top><font size=+1><i>$ginfo{'group'}</i></font></td>\n";
+print "<td valign=top><font size=3><i>$ginfo{'group'}</i></font></td>\n";
 
 print "<td valign=top><b>$text{'gedit_gid'}</b></td>\n";
 printf "<td><input type=radio name=gid_def value=1 checked> %s (%s)\n",
@@ -77,11 +77,11 @@ print "<td><input type=radio name=chgid value=2> $text{'gedit_allfiles'}</td> </
 
 print "<tr> <td><b>$text{'uedit_servs'}</b></td>\n";
 print "<td><input type=radio name=servs value=1> $text{'uedit_mall'}</td>\n";
-print "<td><input type=radio name=servs value=0 checked> $text{'uedit_mthis'}</td> </tr>\n";
+print "<td colspan=2><input type=radio name=servs value=0 checked> $text{'uedit_mthis'}</td> </tr>\n";
 
 print "<tr> <td><b>$text{'gedit_mothers'}</b></td>\n";
 print "<td><input type=radio name=others value=1 checked> $text{'yes'}</td>\n";
-print "<td><input type=radio name=others value=0> $text{'no'}</td> </tr>\n";
+print "<td colspan=2><input type=radio name=others value=0> $text{'no'}</td> </tr>\n";
 
 print "</table></td> </tr></table><p>\n";
 
@@ -142,6 +142,7 @@ if ($config{'table_mode'}) {
 else {
 	# Show as icons
 	&icons_table(\@links, \@titles, \@icons);
+	print "<br>";
 	}
 
 &ui_print_footer("", $text{'index_return'});

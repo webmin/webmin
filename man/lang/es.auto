@@ -1,0 +1,10 @@
+index_custom=Documentación personalizada
+
+search_custom=Documentación personalizada
+search_doxfer=Documentación en línea de Webmin
+
+man_epath=¡La página del manual no puede ser camino!
+
+acl_allow=¿Se pueden editar los tipos de búsqueda permitidos?
+
+check_ecannot=No tiene permiso para editar los tipos de búsqueda permitidos

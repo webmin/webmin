@@ -1,0 +1,83 @@
+index_title=Spremljanje pasovne širine
+index_efiresys=V vašem sistemu niso bili zaznani nobeni podprti požarni zidovi (IPtables, IPFW, IPFilter ali Shorewall). Preverite ustrezne module, da se prepričate o njihovi konfiguraciji.
+index_efiresys2=Konfiguriranega sistema požarnega zidu $1 ni bilo mogoče najti v vašem sistemu. Prilagodite konfiguracijo <a href='$2'>modula</a> za uporabo pravilnega požarnega zidu.
+index_elog=Datoteka $1, ki se uporablja za beleženje pasovne širine, je dejansko imenik v vašem sistemu. Prilagodite konfiguracijo modula <a href='$2'></a>, da uporabite drugo pot.
+index_edir=Imenik za shranjevanje podatkov o pasovni širini $1 ne obstaja ali ni imenik. Prilagodite konfiguracijo modula <a href='$2'></a>, da uporabite drugo pot.
+index_emod=Webmin modul $1 ni nameščen v tem sistemu ali ga vaš operacijski sistem ne podpira. Modul za spremljanje pasovne širine ne more delovati brez njega.
+index_esyslog=V tem sistemu ni nameščen noben modul sistemskih dnevnikov in ga ne podpira vaš operacijski sistem. Modul za spremljanje pasovne širine ne more delovati brez enega od njih.
+index_firesys=Uporaba požarnega zidu $1 in $2 
+index_setupcannot=Vendar nimate dovoljenj, da bi ga nastavili!
+index_setupdesc=Preden ta modul lahko poroča o uporabi omrežja v vašem sistemu, mora biti nastavljen za spremljanje prometa na izbranem zunanjem omrežnem vmesniku.
+index_setupdesc2=<b>Opozorilo - ta modul bo beležil VSE omrežni promet, ki je bil poslan ali prejet na izbrani vmesnik. To bo porabilo veliko prostora na disku in čas CPU-ja na hitri omrežni povezavi.</b>
+index_missing3=Dodati je treba več pravil požarnega zidu in ustvariti vnos konfiguracije syslog.
+index_missing2=Dodati je treba več pravil požarnega zidu.
+index_missing1=Ustvariti je treba vnos v konfiguracijo syslog.
+index_iface=Zunanji omrežni vmesnik
+index_other=Drugo ..
+index_setup=Namestite zdaj
+index_by=Pokaži promet po
+index_hour=uro
+index_host=gostitelj
+index_proto=protokol
+index_iport=notranja vrata
+index_oport=zunanja vrata
+index_port=pristanišče
+index_for=za
+index_all=&lt;vse&gt;
+index_forhour=uro ..
+index_forhost=gostitelj ..
+index_forproto=protokol ..
+index_foriport=notranja vrata ..
+index_foroport=zunanja vrata ..
+index_search=Ustvari poročilo
+index_none=Ta modul še ni povzel prometa. Če ste ga šele nastavili, bo obdelava prometa lahko trajala vsaj eno uro.
+index_ehour=Neveljavna ura - mora biti v obliki llll-mm-dd hh: mm
+index_eport=Neznano ime vrat
+index_eproto=Manjka protokol
+index_ehost=Manjkajoči ali neveljaven gostitelj
+index_from=Za promet po
+index_to=Za promet prej
+index_efrom=Neveljaven začetni datum in ura
+index_eto=Neveljaven datum in čas zaključka
+index_err=Poročila ni bilo mogoče ustvariti
+index_usage=Omrežni promet <font color=#ff0000>prenesen</font> in <font color=#0000ff>naložen</font>
+index_hhour=Ura
+index_hhost=Gostitelj
+index_hday=Dan
+index_hproto=Protokol
+index_hiport=Pristanišče
+index_hoport=Pristanišče
+index_hport=Pristanišče
+index_low=Samo vrata strežnika?
+index_resolv=Rešite imena gostiteljev?
+index_nomatch=Noben promet se ne ujema z izbranimi merili.
+index_turnoff=Izklopite nadzor
+index_turnoffdesc=Kliknite ta gumb, da odstranite pravila požarnega zidu, konfiguracijo syslog in opravilo Cron, ki se uporablja za spremljanje pasovne širine. Vsi obstoječi zbrani podatki ostanejo nedotaknjeni.
+index_rotate=Posodobite statistiko
+index_rotatedesc=Kliknite ta gumb, če želite obdelati ves zabeleženi omrežni promet do trenutnega časa, tako da je takoj na voljo za poročanje.
+index_eiptables=Opozorilo - V konfiguraciji IPtables je prišlo do napake: $1. Z nastavitvijo nadzora pasovne širine bodo izbrisana vsa pravila požarnega zidu.
+index_return=obrazec za poročilo
+
+log_setup=Nastavitev nadzora pasovne širine na vmesniku $1 
+log_turnoff=Onemogočeno spremljanje pasovne širine
+log_rotate=Posodobljena statistika
+
+acl_setup=Ali lahko nastavite in onemogočite spremljanje?
+
+turnoff_ecannot=Ne smete onemogočiti spremljanja
+
+setup_ecannot=Nimate dovoljenja za spremljanje
+setup_eiface=Manjkajoče ali neveljavno ime vmesnika
+setup_ezone=Za izbran vmesnik ni bilo mogoče najti območja Shorewall
+
+system_firewall=IPtables
+system_ipfw=IPFW
+system_ipfilter=IPFilter
+system_shorewall=Shorewall
+
+syslog_syslog=Syslog
+syslog_syslog-ng=Syslog-NG
+
+rotate_title=Posodabljanje statistike
+rotate_doing=Obdelava zabeleženega omrežnega prometa ..
+rotate_done=.. Končano.

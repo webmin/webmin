@@ -6,7 +6,7 @@ require './qmail-lib.pl';
 &ReadParse();
 
 &ui_print_header(undef, $text{'rfile_title'}, "");
-open(FILE, $in{'file'});
+open(FILE, "<$in{'file'}");
 while(<FILE>) {
 	if (/^Reply-Tracking:\s*(.*)/) {
 		$replies = $1;

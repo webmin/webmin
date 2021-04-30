@@ -1,0 +1,7 @@
+category_=ツール
+
+longcategory_=その他のその他のタスクを実行するモジュール
+
+file_truncated_message=データの $1をフェッチし、 $3から $2を切り捨てました
+file_truncated_message_head=データの最初の $1をフェッチし、 $3から $2を切り捨てました
+file_truncated_message_tail=データの終了 $1をフェッチし、 $3から $2を切り捨てました

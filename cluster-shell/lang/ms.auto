@@ -1,0 +1,22 @@
+index_title=Cluster Shell Commands
+index_cmd=Perintah untuk lari
+index_old=atau
+index_server=Jalankan pada pelayan
+index_run=Jalankan Perintah Sekarang
+index_return=indeks modul
+index_this=pelayan ini
+index_all=&lt;Semua tuan rumah&gt;
+index_group=Ahli $1 
+index_clear=Jelas Sejarah
+index_edit=Edit Sebelumnya
+
+run_title=Jalankan Perintah
+run_err=Gagal menjalankan arahan
+run_ecmd=Tiada arahan yang dimasukkan
+run_failed=Gagal berjalan pada $1 : $2 
+run_success=Output dari $1 ..
+run_enone=Tiada pelayan untuk dijalankan dipilih
+
+log_clear=Sejarah arahan yang telah dihapuskan
+log_run=Ran $1 pada pelayan $2 
+log_run_l=Ran $1 on $2 

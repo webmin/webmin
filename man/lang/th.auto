@@ -1,0 +1,79 @@
+index_title=เอกสารประกอบระบบ
+index_header=ค้นหาเอกสารของระบบ
+index_for=ค้นหา
+index_where=ค้นหาใน
+index_alldoc=เอกสารทั้งหมด
+index_man=หน้าคู่มือ
+index_doc=เอกสารแพคเกจ
+index_kernel=เอกสารประกอบเคอร์เนล
+index_info=หน้าข้อมูล
+index_howto=เอกสาร HOWTO
+index_kde=เอกสารประกอบของ KDE
+index_perl=เอกสารประกอบโมดูล Perl
+index_custom=เอกสารที่กำหนดเอง
+index_help=Webmin ช่วย
+index_reset=ตั้งค่าใหม่
+index_search=ค้นหา
+index_return=แบบฟอร์มการค้นหา
+index_type=การจับคู่
+index_name=ชื่อเท่านั้น
+index_data=ชื่อและเนื้อหา
+index_google=ค้นหา Google
+index_others=เมื่อค้นหาเอกสารจากโมดูลอื่นอนุญาตการค้นหาด้วยค่ะ
+index_other_man=หน้าคู่มือ
+index_other_help=ความช่วยเหลือของ Webmin
+index_other_doc=เอกสารแพคเกจ
+index_other_kernel=เอกสารประกอบเคอร์เนล
+index_other_howto=เอกสาร HOWTO
+index_other_perl=เอกสารประกอบโมดูล Perl
+index_other_google=เครื่องมือค้นหาของ Google
+index_other_kde=เอกสารประกอบของ KDE
+index_and=ตรงทั้งหมด
+index_or=ตรงไหนก็ได้
+
+search_efor=ไม่มีหน้าคู่มือในการค้นหาที่ป้อน
+search_title=ผลการค้นหา
+search_desc=ลักษณะ
+search_type=ชนิด
+search_file=หน้าหรือไฟล์
+search_man=หน้าคู่มือ
+search_howto=เอกสาร HOWTO
+search_doc=เอกสารแพคเกจ
+search_kernel=เอกสารประกอบเคอร์เนล
+search_kde=เอกสารประกอบของ KDE
+search_perl=โมดูล Perl
+search_help=Webmin ช่วย
+search_custom=เอกสารที่กำหนดเอง
+search_none=ไม่พบเอกสารที่ตรงกับ $1 
+search_for=สำหรับ $1 
+search_google=ผลการค้นหาของ Google
+search_doxfer=เอกสารออนไลน์ของ Webmin
+
+howto_title=เอกสาร HOWTO
+howto_header=แฟ้มเอกสาร HOWTO $1 
+howto_epath=เส้นทางเอกสาร HOWTO ไม่ถูกต้อง
+
+doc_title=แพ็คเกจเอกสาร
+doc_header=แฟ้มเอกสารแพ็คเกจ $1 
+doc_epath=เส้นทางเอกสารแพคเกจไม่ถูกต้อง
+
+man_title=หน้าคู่มือ
+man_header=หน้าคู่มือสำหรับ $1 ($2)
+man_noentry=ไม่มีหน้าคู่มือสำหรับ $1 !
+man_epath=หน้าคู่มือไม่สามารถเป็นเส้นทางได้!
+
+kernel_title=เอกสารเคอร์เนล
+kernel_header=แฟ้มเอกสารเคอร์เนล $1 
+kernel_epath=เส้นทางเอกสารเคอร์เนลไม่ถูกต้อง
+
+kde_title=เอกสารประกอบของ KDE
+kde_header=แฟ้มเอกสารของ KDE $1 
+kde_epath=เส้นทางเอกสารของ KDE ไม่ถูกต้อง
+
+perl_title=โมดูล Perl
+perl_header=เอกสารประกอบสำหรับโมดูล Perl $1 
+perl_emod=ชื่อโมดูล Perl ไม่ถูกต้อง
+
+acl_allow=สามารถแก้ไขประเภทการค้นหาที่อนุญาตหรือไม่
+
+check_ecannot=คุณไม่ได้รับอนุญาตให้แก้ไขประเภทการค้นหาที่อนุญาต

@@ -1,0 +1,11 @@
+index_none=U het geen toegang tot gebruikers om hul wagwoorde te verander nie.
+
+passwd_expire=Dwing die gebruiker om wagwoord te verander by die volgende aanmelding?
+passwd_others=Wagwoord in ander modules verander?
+passwd_ok2=Die wagwoord vir gebruiker $1 is suksesvol verander.
+
+acl_self=Laat u altyd u eie wagwoord verander?
+acl_opt=opsioneel
+acl_expire=Kan gebruikers dwing om wagwoord te verander by die volgende aanmelding?
+acl_sec=Sluit sekondêre groepe in?
+acl_notusers=Behalwe vir gebruikers

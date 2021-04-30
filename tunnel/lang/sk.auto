@@ -1,0 +1,21 @@
+index_elink=Zatiaľ nebola nastavená žiadna webová adresa, na ktorú by sa malo nasmerovať tunel.
+index_url=Zadajte adresu URL, ktorú chcete otvoriť:
+index_open=Otvorené
+
+link_eurl=Neplatná adresa URL tunela : $1 
+link_elogin=Nepodarilo sa prihlásiť do $1 ako $2.
+link_eautologin=Neplatné prihlasovacie meno alebo heslo pre $1. <a href='$2'>Kliknite sem</a> a prihláste sa.
+link_enouser=Na prihlásenie do $1 je potrebné užívateľské meno a heslo, ale žiadne nebolo nakonfigurované.
+link_ebadurl=Nemáte povolenie na prístup k adrese URL $1 
+link_mconfig=Pomocou stránky <a href='$1'>Konfigurácia modulu</a> môžete zmeniť prihlasovacie údaje.
+
+login_title=Prihláste sa na webovú stránku
+login_desc=Na prihlásenie do $1 musíte zadať užívateľské meno a heslo.
+login_header=Autentifikácia webových stránok
+login_user=užívateľské meno
+login_pass=heslo
+login_login=Prihlásiť sa
+login_clear=jasný
+
+seturl_err=Nepodarilo sa otvoriť webovú adresu
+seturl_eurl=Zadaná neplatná adresa URL

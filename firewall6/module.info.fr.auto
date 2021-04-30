@@ -1,0 +1,3 @@
+name_fr=Pare-feu6
+longdesc_fr=Configurez un pare-feu Linux à l'aide d'ip6tables. Permet l'édition de toutes les tables, chaînes, règles et options.
+desc_fr=Pare-feu IPv6 Linux

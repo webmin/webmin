@@ -1,0 +1,172 @@
+index_dumpdesc=Cliquez sur ce bouton pour afficher les informations de traçage Shorewall à partir de la commande <tt>vidage shorewall</tt>.
+
+list_add=Ajouter
+dump_title=Vidage du pare-feu
+
+zones_1new=Zone parent
+zones_4new=Options entrantes
+zones_5new=Options sortantes
+zones_efwid=Les ID de zone $ FW et fw sont réservés au pare-feu
+zones_firewall=Système pare-feu
+zones_eopts_in=Options entrantes de zone non valides
+zones_eopts_out=Options de sortie de zone non valides
+
+rules_6=Limite de taux
+rules_7=Ensemble d'utilisateurs
+rules_dnat_dest=Pour DNAT ou REDIRECT, indiquez ici la nouvelle adresse ou le nouveau port de destination.
+rules_dnat_port=Pour DNAT ou REDIRECT, remplissez le port de destination d'origine ici.
+rules_rate=Expression de limite de débit
+rules_set=La règle s'applique à l'ensemble d'utilisateurs
+rules_macro=Paramètre d'action de macro
+rules_emacro=Paramètre de macro manquant ou non valide
+
+masq_3=Restreindre au protocole
+masq_4=Restreindre aux ports
+masq_eports=Liste de ports séparés par des virgules manquants ou invalides
+
+proxyarp_3=Persistant?
+proxyarp_pers=Quitter l'itinéraire même lorsque le pare-feu s'est arrêté?
+
+routestopped_2=Options d'itinéraire
+
+tunnels_egeneric=Protocole ou protocole manquant: port pour tunnel générique
+
+hosts_title=Hôtes de zone
+hosts_desc=Cette page répertorie les hôtes et les réseaux qui font partie de zones particulières. Vous n'avez généralement pas besoin de modifier cette liste.
+hosts_add=Ajoutez un nouvel hôte de zone.
+hosts_none=Aucun hôte de zone n'a encore été défini.
+hosts_return=liste d'hôtes de zone
+hosts_edit=Modifier l'hôte de zone
+hosts_create=Créer un hôte de zone
+hosts_err=Échec de l'enregistrement de l'hôte de zone
+hosts_enet=Adresse hôte manquante ou invalide
+hosts_header=Détails de l'hôte de zone
+hosts_routestopped=Route même lorsque le pare-feu est arrêté?
+hosts_ipset=Ensemble IP $1 
+
+blacklist_title=Hôtes de la liste noire
+blacklist_desc=Cette page répertorie les hôtes et les services qui seront bloqués si leur trafic arrive sur une interface avec l'option <b>liste noire</b>.
+blacklist_none=Aucun hôte de liste noire n'a encore été défini.
+blacklist_any=Tout
+
+blacklist_header=Détails sur l'hôte de la liste noire
+blacklist_ports=Port ou liste de ports
+blacklist_err=Échec de l'enregistrement de l'hôte de la liste noire
+blacklist_ehost=Adresse IP hôte ou adresse réseau manquante ou non valide
+blacklist_emac=Adresse MAC manquante ou invalide
+blacklist_eipset=Nom d'ensemble IP manquant
+blacklist_edit=Modifier l'hôte de la liste noire
+blacklist_create=Créer un hôte de liste noire
+blacklist_eproto=Protocole manquant ou invalide
+blacklist_eports=Numéro de port non valide ou liste de ports séparés par des virgules
+blacklist_eports2=Les ports ne peuvent être spécifiés que pour les protocoles TCP et UDP
+blacklist_return=hôtes liste noire
+
+providers_title=Fournisseurs de routage supplémentaires
+providers_desc=Cette page définit des tables de routage supplémentaires. Celles-ci sont nécessaires si vous avez des connexions à plusieurs FAI ou plusieurs connexions au même FAI, ou si vous exécutez Squid en tant que proxy transparent sur un hôte autre que le pare-feu.
+providers_add=Ajoutez un nouveau fournisseur de routage.
+providers_none=Aucun fournisseur de routage n'a encore été défini.
+providers_2=marque
+providers_mark=Numéro de marque
+providers_dup=Fournisseur en double
+providers_main=Table principale
+providers_gateway=Routeur de passerelle
+providers_track=Suivi des connexions
+providers_balance=Trafic d'équilibrage de charge
+providers_loose=Autoriser le trafic depuis le pare-feu
+providers_edit=Modifier le fournisseur de routage
+providers_create=Créer un fournisseur de routage
+providers_header=Détails supplémentaires sur le fournisseur de routage
+providers_copy=Copier des routes via des interfaces
+providers_emark=Numéro de marque de fournisseur manquant ou invalide
+providers_edup=Fournisseur manquant à dupliquer
+providers_return=liste des fournisseurs de routage
+
+route_rules_title=Règles de routage
+route_rules_desc=La page contrôle le trafic acheminé vers les fournisseurs définis sur la page Fournisseurs de routage supplémentaires.
+route_rules_ip=Adresse IP, réseau ou interface
+route_rules_add=Ajoutez une nouvelle règle de routage.
+route_rules_none=Aucune règle de routage n'a encore été définie.
+route_rules_0=Source de trafic
+route_rules_1=Destination du trafic
+route_rules_2=Fournisseur
+route_rules_3=Priorité
+route_rules_4=marque
+route_rules_header=Options de règle de routage
+route_rules_src=Source de trafic
+route_rules_dst=Destination du trafic
+route_rules_prov=Route via le fournisseur
+route_rules_main=Table de routage par défaut
+route_rules_pri=Priorité des règles
+route_rules_mark=Marquer le paquet avec
+route_rules_nomark=Rien
+route_rules_esrc=Source de trafic manquante
+route_rules_edst=Destination de trafic manquante
+route_rules_epri=La priorité de la règle doit être un nombre
+route_rules_emark=La marque de paquet doit être au format numérique ou numérique/masque
+route_rules_return=liste des règles de routage
+route_rules_edit=Modifier la règle de routage
+route_rules_create=Créer une règle de routage
+
+manual_desc=Ce formulaire peut être utilisé pour modifier manuellement le fichier Shorewall $1. Soyez prudent, car aucune vérification de la syntaxe ne sera effectuée sur les modifications.
+manual_reset=annuler
+manual_err=Impossible d'enregistrer le fichier de table
+manual_efile=Nom de table non valide!
+manual_edata=Aucun contenu de fichier de table entré.
+
+acl_files=Tables Shorewall disponibles
+acl_all=Tout
+acl_sel=Sélectionné ci-dessous ..
+
+delete_err=Impossible de supprimer des lignes
+delete_enone=Aucune ligne sélectionnée
+
+opts_routeback=Accepter le trafic vers l'hôte
+opts_source=Autoriser de l'hôte vers n'importe quelle destination
+opts_dest=Autoriser à héberger à partir de n'importe quelle source
+opts_critical=Toujours autoriser le trafic entre le pare-feu
+opts_maclist=Comparer avec la liste MAC?
+opts_norfc1918=Rejeter les paquets IP privés
+opts_blacklist=Rejeter les paquets sur la liste noire
+opts_tcpflags=Vérifiez les drapeaux TCP illégaux
+opts_nosmurfs=Vérifier les paquets source de diffusion
+opts_routefilter=Activer le filtrage de route anti-usurpation
+opts_logmartians=Journaliser les paquets avec des sources impossibles
+opts_arp_filter=Répondre uniquement aux requêtes ARP pour l'interface IP
+opts_detectnets=Zone Taylor pour inclure uniquement les hôtes routés
+opts_upnp=Remapper les paquets via UPNP
+
+comment_header=Détails des commentaires du tableau
+
+log_create_table=Entrée ajoutée à la table $1 
+log_modify_table=Entrée modifiée dans la table $1 
+log_delete_table=Entrée supprimée de la table $1 
+log_deletes_table=Entrées supprimées de la table $1 
+log_up_table=Entrée déplacée vers le haut dans la table $1 
+log_down_table=Entrée déplacée vers le bas dans le tableau $1 
+log_manual_table=Modification manuelle du fichier de table $1 
+log_create_comment=Ajout d'un commentaire au tableau $1 
+log_modify_comment=Commentaire modifié dans le tableau $1 
+log_delete_comment=Commentaire supprimé de la table $1 
+log_refresh=Pare-feu actualisé
+log_clear=Pare-feu effacé
+
+shorewall_conf_title=Fichier de configuration maître
+shorewall_conf_desc=Cette page vous permet de configurer les variables de configuration globales. REMARQUE: Il n'est pas recommandé de modifier l'ordre des variables ici si vous souhaitez conserver la position relative des commentaires dans le fichier de configuration.
+shorewall_conf_add=Ajoutez une nouvelle variable de configuration.
+shorewall_conf_none=Aucune configuration de mur de rive trouvée.
+shorewall_conf_return=liste des variables de configuration
+shorewall_conf_edit=Modifier la variable de configuration
+shorewall_conf_create=Créer une variable de configuration
+shorewall_conf_header=Détails des variables de configuration
+shorewall_conf_err=Impossible d'enregistrer la variable de configuration
+shorewall_conf_varname=Nom de variable non valide (doit être un nom de variable shell valide)
+
+params_title=Paramètres personnalisés
+params_desc=Cette page vous permet de configurer les paramètres personnalisés de Shorewall. REMARQUE: Il n'est pas recommandé de modifier l'ordre des paramètres ici si vous souhaitez conserver la position relative des commentaires dans le fichier de configuration.
+params_none=Aucun paramètre personnalisé trouvé.
+params_return=liste des paramètres personnalisés
+params_edit=Modifier le paramètre personnalisé
+params_header=Détails des paramètres personnalisés
+params_err=Impossible d'enregistrer le paramètre personnalisé
+params_varname=Nom de paramètre non valide (doit être un nom de variable shell valide)

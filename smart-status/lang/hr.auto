@@ -1,0 +1,58 @@
+index_title=Status SMART pogona
+index_ecmd=Naredba za kontrolu SMART $1 nije pronađena u vašem sustavu ili nije ispravno postavljena u konfiguraciji modula <a href='$2'></a>. Mora biti instaliran prije nego što se ovaj modul može koristiti.
+index_ecmd2=Čini se da naredba $1 nije naredba SMART kontrola. Morate ga pravilno postaviti u konfiguraciji <a href='$2'>modula</a> prije nego što se ovaj modul može koristiti.
+index_version=SMARTsuita verzija $1 
+index_show=Prikaži status pogona:
+index_ok=Pokazati
+index_eidescsi=U vašem sustavu nisu pronađeni IDE, SCSI ili SATA pogoni.
+index_drive=Status pogona $1 
+index_drivesub=Status pogona $1, disk $2 
+index_desc=Mjesto
+index_size=Veličina pogona
+index_model=Napravite i modelirajte
+index_support=Podržava SMART?
+index_enabled=SMART omogućen?
+index_check=Prošla provjera pogona?
+index_short=Kratki test
+index_ext=Prošireni samotestiranje
+index_data=Test prikupljanja podataka
+index_errors=Pogreške su zabilježene
+index_ecount=Otkrivene su $1 pogreške
+index_attrs=Dodatni atributi SMART
+index_raw=Potpuno SMART izvješće o statusu
+index_return=indeks modula
+index_family=Obitelj modela
+index_serial=Serijski broj
+index_capacity=Kapacitet
+index_norm=normalizirani:
+
+monitor_type=SMART Drive Check
+monitor_type2=SSD Wearout
+monitor_drive=Vozite na provjeru
+monitor_errors=Provjerite i dnevnik pogrešaka?
+monitor_errorsinc=Da, ali upozorite samo ako se povećava broj pogrešaka
+monitor_other=Ostali ..
+monitor_edrive=Nedostaje ili neispravan pogon za provjeru
+monitor_nosuch=Nema takvog pogona
+monitor_nosmart=Nema SMART podrške
+monitor_errorsfound=Prijavljene su pogreške $1 
+monitor_errorsinced=Pogreške su porasle sa $2 na $1 
+monitor_wearlevel=Ne uspijeva ako razina habanja padne ispod
+monitor_ewearlevel=Nevažeći postotak istrošenosti
+monitor_nowearout=Pogon ne izvještava o SSD indikatoru kretanja
+monitor_wornout=Razina trošenja pala je na $1 
+
+short_title=Kratki test
+short_doing=Počevši s kratkim samoprovjerom od $1 ..
+short_failed=.. neuspjeh!
+short_ok=.. test je započeo u redu. Za rezultate pogledajte status pogona na glavnoj stranici modula.
+
+ext_title=Prošireni samotestiranje
+ext_doing=Početak produženog samoprovjere od $1 ..
+ext_failed=.. neuspjeh!
+ext_ok=.. test je započeo u redu. Za rezultate pogledajte status pogona na glavnoj stranici modula.
+
+data_title=Test prikupljanja podataka
+data_doing=Pokretanje izvanmrežne zbirke podataka na $1 ..
+data_failed=.. neuspjeh!
+data_ok=.. prikupljanje je započelo OK. Za rezultate pogledajte status pogona na glavnoj stranici modula.

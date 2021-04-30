@@ -1,1 +1,1 @@
-desc_es=Vgetty - Contestador Autom&#225;tico
+desc_es=Vgetty - Contestador Automático

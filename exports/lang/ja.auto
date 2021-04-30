@@ -1,0 +1,40 @@
+index_add4=新しいNFSv4エクスポートを追加します。
+index_delete=選択したエクスポートを削除
+index_disable=選択を無効にする
+index_enable=選択を有効にする
+
+edit_vers=NFSバージョン
+edit_nfs_vers=NFSバージョン
+edit_pfs=エクスポートするNFSv4疑似ファイルシステム
+edit_network4=IPv4ネットワーク
+edit_network6=IPv6ネットワーク
+edit_address=住所
+edit_prefix=/
+edit_subtree_check=サブツリーチェックを無効にしますか？
+edit_hide=ファイルシステムを非表示にしますか？
+edit_auth=（認証ありまたはなし）
+edit_secs=セキュリティレベル
+edit_integrity=誠実さ
+edit_privacy=プライバシー（整合性を含む）
+edit_v2opts=NFSv2固有のオプション
+edit_sync=すべての書き込みをすぐに同期しますか？
+edit_sync1=はい
+edit_sync2=番号
+edit_sync0=デフォルト
+edit_in=に
+edit_sec_sys=セキュリティなし
+edit_sec_krb5=Kerberos認証
+edit_sec_krb5i=Kerberos整合性
+edit_sec_krb5p=Kerberosプライバシー
+edit_sec_lipkey=リップキー
+edit_sec_spkm=SPKM
+
+save_epfs=擬似ファイルシステムパス '$1'は絶対パスのように見えません
+save_pfs=「$1」はすでにディレクトリとしてエクスポートされています
+save_create_dir=ディレクトリ「$1」を作成できません
+save_eanonuid=無効な匿名アクセスユーザー名
+save_eanongid=無効な匿名アクセスグループ名
+
+exports_gss=認証済みネットワーク： $1
+
+log_delete_exports=$1 NFSエクスポートを削除しました

@@ -425,7 +425,8 @@ elsif (!$check) {
 elsif ($total) {
 	print &ui_form_end([ [ "edit", $text{'view_edit'} ],
 			     [ "new", $text{'view_new'} ],
-			     [ "delete", $text{'view_delete'} ] ]);
+			     [ "delete", $text{'view_delete'} ],
+			     [ "refresh", $text{'view_refresh'} ] ]);
 	}
 else {
 	print &ui_form_end([ [ "new", $text{'view_new'} ] ]);
@@ -434,36 +435,36 @@ else {
 if (!$in{'field'} && $total > $displayconfig{'perpage'}) {
 	# Show search and jump buttons
 	print &ui_hr();
-	print "<table width=100%><tr>\n";
-	print "<form action=view_table.cgi>\n";
-	print "<input type=hidden name=search value=1>\n";
+
+	print &ui_form_start("view_table.cgi");
+	print &ui_hidden("search", 1);
 	print &ui_hidden("db", $in{'db'});
 	print &ui_hidden("table", $in{'table'});
 	$sel = &ui_select("field", undef,
 			[ map { [ $_->{'field'}, $_->{'field'} ] } @str ]);
 	$match = &ui_select("match", 0,
 			[ map { [ $_, $text{'view_match'.$_} ] } (0.. 5) ]);
-	print "<td>",&text('view_search2', "<input name=for size=20>", $sel,
-			   $match);
-	print "&nbsp;&nbsp;",
-	      "<input type=submit value='$text{'view_searchok'}'></td>\n";
-	print "</form>\n";
+	print &text('view_search2', &ui_textbox("for", "", 20),
+			  $sel, $match),"\n";
+	print &ui_submit($text{'view_searchok'});
+	print &ui_form_end();
 
-	print "<form action=view_table.cgi>\n";
+	# Advanced search form
+	print &ui_form_start("search_form.cgi");
 	print &ui_hidden("db", $in{'db'});
 	print &ui_hidden("table", $in{'table'});
-	print "<td align=right><input type=submit value='$text{'view_jump'}'> ";
-	print "<input name=jump size=6></td></form>\n";
+	print &ui_submit($text{'view_adv'});
+	print &ui_form_end();
+	print "<p>\n";
 
-	print "</tr><tr>\n";
-
-	print "<form action=search_form.cgi>\n";
+	# Jump to a row
+	print &ui_form_start("view_table.cgi");
+	print "<b>$text{'view_jump'}</b>\n";
 	print &ui_hidden("db", $in{'db'});
 	print &ui_hidden("table", $in{'table'});
-	print "<td><input type=submit value='$text{'view_adv'}'></td>\n";
-	print "</form>\n";
-
-	print "</tr> </table>\n";
+	print &ui_textbox("jump", "", 6);
+	print &ui_submit($text{'view_go'});
+	print &ui_form_end();
 	}
 
 if ($access{'edonly'}) {

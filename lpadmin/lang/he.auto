@@ -1,0 +1,316 @@
+index_title=ניהול מדפסות
+index_header=מדפסות זמינות
+index_name=מדפסת
+index_desc=תיאור
+index_to=הדפס ל-
+index_driver=נהג
+index_enabled=מופעל?
+index_accepting=מקבלים?
+index_jobs=מקומות תעסוקה
+index_none=אין מדפסות המותקנות במערכת זו.
+index_list=רשימה ..
+index_jlist=מקומות תעסוקה ..
+index_jcount=$1 משרות ..
+index_add=הוסף מדפסת חדשה.
+index_stop=עצור את מתזמן
+index_stopmsg=לחץ על כפתור זה כדי להפסיק את תהליך מתזמן ההדפסה. זה ימנע ממשתמשים מקומיים או מרוחקים להדפיס במערכת שלך.
+index_start=הפעל את מתזמן
+index_startmsg=לחץ על כפתור זה כדי להתחיל בתהליך מתזמן ההדפסה. זה יאפשר למשתמשים מקומיים ומרוחקים להדפיס במערכת שלך.
+index_restart=הפעל מחדש את מתזמן
+index_restartmsg=לחץ על כפתור זה כדי להפעיל מחדש את תהליך מתזמן ההדפסה. זה יאלץ להחיל את תצורת ההדפסה הנוכחית.
+index_return=רשימת מדפסות
+index_esystem=התקן את התוכנה עבור מערכת ההדפסה שבחרת, או השתמש ב <a href='$1'>תצורת המודול</a> כדי לשנות אותה.
+index_style=מערכת הדפסה: $1 
+index_cluster=שרתי אשכול
+index_clusterdesc=לחץ על כפתור זה כדי להגדיר שרתי Webmin נוספים עליהם יווצרו, יעודכנו ונמחקו מדפסות.
+index_delete=מחק מדפסות שנבחרו
+
+style_solaris=סולאריס
+style_linux=לינוקס LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=יוניקסוור
+style_cups=כוסות
+style_irix=IRIX
+style_aix=AIX
+
+edit_eedit=אינך רשאי לערוך מדפסת זו
+edit_eadd=אינך מורשה להוסיף מדפסות
+edit_add=צור מדפסת
+edit_edit=ערוך מדפסת
+edit_conf=תצורת מדפסת
+edit_name=שם
+edit_acc=מקבל בקשות?
+edit_why=לא למה לא
+edit_desc=תיאור
+edit_ena=הדפסה מופעלת?
+edit_acl=בקרת גישה
+edit_allow=אפשר לכולם
+edit_deny=דחה את כולם
+edit_allowu=אפשר למשתמשים הרשומים ..
+edit_denyu=דחה את המשתמשים הרשומים ..
+edit_banner=להדפיס באנר?
+edit_opt=אופציונאלי
+edit_default=מדפסת ברירת מחדל?
+edit_already=כבר מדפסת ברירת המחדל
+edit_max=גודל עבודת הדפסה מקסימלי
+edit_unlimited=ללא הגבלה
+edit_dacc=הנהג מקבל
+edit_dtext=טקסט
+edit_dpost=תסריט
+edit_dother=אחר
+edit_alt=שמות מדפסת חלופיים
+edit_dest=הדפסת יעד
+edit_dev=מכשיר מקומי
+edit_file=קובץ מקומי
+edit_remote=שרת יוניקס מרוחק
+edit_rqueue=מדפסת
+edit_type=סוג
+edit_smb=שרת חלונות מרוחק
+edit_share=מדפסת
+edit_user=משתמש
+edit_pass=סיסמה
+edit_wgroup=קבוצת עבודה
+edit_hpnp=שרת HPNP מרוחק
+edit_port=נמל
+edit_direct=חיבור TCP ישיר
+edit_dport=נמל
+edit_driver=מנהל מדפסת
+edit_check=בדוק אם השרת המרוחק פועל?
+
+blocks=חסימות
+
+save_err=שמירת המדפסת נכשלה
+save_eadd=אינך מורשה להוסיף מדפסות
+save_eedit=אינך רשאי לערוך מדפסת זו
+save_ename='$1' אינו שם מדפסת תקף
+save_edup=מדפסת בשם '$1' קיימת כבר
+save_eallow=אין משתמשים להתיר להזין
+save_edeny=אין משתמשים להכחיש שנכנסו
+save_euser=המשתמש '$1' אינו קיים
+save_etype=עליך לבחור לפחות סוג אחד עבור מנהל התקן זה כדי לקבל
+save_emax=גודל עבודת ההדפסה המרבי חייב להיות מספר שלם
+save_efile='$1' אינו קיים
+save_erhost=מארח מרחוק '$1' אינו קיים
+save_erport=היציאה המרוחקת '$1' אינה תקפה
+save_erqueue='$1' אינו שם תור מרוחק חוקי
+save_eremote=לא ניתן להשתמש במנהלי התקנים עם מדפסות יוניקס מרוחקות
+save_edhost=מארח ישיר '$1' אינו קיים
+save_edport=יציאה ישירה חסרה או לא חוקית
+save_evalid=מערכת ההדפסה לא איפשרה למדפסת זו
+save_errslave=מדפסת יצרה אישור במערכת זו, אך השגיאות הבאות התרחשו במערכות אשכול : $1 
+save_egone=לא נמצאה מדפסת בשם '$1'
+save_errdelslave=המדפסת מחקה אישור במערכת זו, אך השגיאות הבאות התרחשו במערכות אשכול : $1 
+
+jobs_title=עבודות הדפסה
+jobs_header=עבודות הדפסה ב- $1 
+jobs_id=מזהה משרה
+jobs_size=גודל
+jobs_by=שהוגש על ידי
+jobs_when=הוגש בשעה
+jobs_file=שם קובץ
+jobs_cancel=לחץ על מספר זיהוי עבודה מהרשימה למעלה כדי לבטל.
+jobs_cancelview=לחץ על מזהה משרה מהרשימה שלמעלה כדי לבטל, או לחץ על גודל העבודה כדי להציג אותו.
+jobs_none=למדפסת $1 אין עבודות ממתינות.
+jobs_all=בטל את כל עבודות ההדפסה
+jobs_bytes=בתים
+jobs_test=הדפס דף מבחן
+jobs_cancelsel=בטל משרות שנבחרו
+jobs_on=במדפסת $1 
+jobs_return=רשימת עבודות הדפסה
+
+cancel_ecannot=אינך רשאי לבטל עבודות הדפסה
+cancel_err=ביטול עבודת ההדפסה נכשל
+cancel_egone=משימת הדפסה $1 כבר לא קיימת
+
+view_ecannot=אינך יכול להציג משימת הדפסה זו
+view_egone=משימת הדפסה זו כבר לא קיימת
+
+start_ecannot=אינך מורשה להפעיל את המתזמן
+start_err=הפעלת המתזמן נכשלה
+
+stop_ecannot=אינך רשאי להפסיק את המתזמן
+stop_err=עצירת המתזמן נכשלה
+
+restart_ecannot=אינך רשאי להפעיל מחדש את המתזמן
+restart_err=ההפעלה מחדש של המתזמן נכשלה
+
+webmin_none=אף אחד
+webmin_nonemsg=מדפסת טקסט או מדפסת טקסט
+webmin_remotemsg=מדפסת מרחוק
+webmin_model=דוגמנית
+webmin_prog=תכנית
+webmin_driver=מנהל התקן Webmin
+webmin_uniprint=Uniprint מנהל התקן
+webmin_edrivers=השגת נהגים מ- $1 נכשלה. מנהלי התקן מדפסת Webmin המשתמשים ב- ghostscript אינם זמינים
+webmin_egs=הפקודה $1 לא נמצאה. מנהלי התקן מדפסת Webmin המשתמשים ב- ghostscript אינם זמינים
+webmin_edriver='$1' אינו קיים
+
+caldera_none=אף אחד
+caldera_nonemsg=מדפסת מרחוק או גולמית
+caldera_prog=תכנית
+caldera_coas=נהג COAS
+caldera_printer=מדפסת ורזולוציה
+caldera_eof=לשלוח EOF?
+caldera_paper=גודל נייר
+caldera_double=להדפיס דו צדדית?
+caldera_gsopts=אפשרויות GS נוספות
+caldera_uniprint=Uniprint מנהל התקן
+caldera_eprog='$1' אינו קיים
+caldera_edriver=לא נבחר מנהל התקן מדפסת
+caldera_eres=לא נבחרה רזולוציה
+
+redhat_none=אף אחד
+redhat_nonemsg=מדפסת טקסט או מדפסת טקסט
+redhat_prog=תכנית
+redhat_driver=נהג Redhat
+redhat_printer=מדפסת ורזולוציה
+redhat_eof=לשלוח EOF?
+redhat_paper=גודל נייר
+redhat_pages=דפים לעמוד הפלט
+redhat_gsopts=אפשרויות GS נוספות
+redhat_hmargin=שוליים ימניים/שמאליים
+redhat_vmargin=שולי עליון/תחתון
+redhat_crlf=לתקן טקסט מדרגות מדרגות?
+redhat_eprog='$1' אינו קיים
+redhat_edriver=לא נבחר מנהל התקן מדפסת
+redhat_ehmargin=שולי ימין/שמאל חסרים או לא חוקיים
+redhat_evmargin=שולי עליון/תחתון חסרים או לא חוקיים
+redhat_eres=לא נבחרה רזולוציה
+redhat_printer2=דגם מדפסת ומנהל התקן
+
+suse_none=אף אחד
+suse_nonemsg=מדפסת טקסט או מדפסת טקסט
+suse_prog=תכנית
+suse_driver=מנהל התקן APSfilter
+suse_printer=סוג מדפסת
+suse_res=החלטה ב- DPI
+suse_colour=מדפסת צבעונית?
+suse_paper=גודל נייר
+suse_method=שיטת סינון
+suse_auto=אוטומטי
+suse_ascii=ASCII
+suse_raw=גלם
+suse_extra=אפשרויות תוספת רוח רפאים נוספות
+suse_yast2=נהג YAST2
+suse_edriver=לא נבחר סוג מדפסת
+suse_eres=רזולוציה חסרה או לא תקפה
+
+estop=עצירת lpd נכשלה : $1 
+
+acl_printers=מדפסות שמשתמש זה יכול להגדיר
+acl_add=האם ניתן להוסיף מדפסות חדשות?
+acl_cancel=האם ניתן לבטל עבודות הדפסה?
+acl_stop=האם ניתן לעצור או להתחיל לתזמן?
+acl_restart=הפעל מחדש בלבד
+acl_listed=רק במדפסות שנבחרו ..
+acl_pall=כל המדפסות
+acl_psel=נבחר ..
+acl_view=להציג מדפסות שאינן ניתנות להגדרה?
+acl_test=האם ניתן להדפיס דפי בדיקה?
+acl_user=נהל עבודות הדפסה בבעלות
+acl_user_all=כל המשתמשים
+acl_user_this=משתמש נוכחי Webmin
+acl_delete=האם ניתן למחוק מדפסות?
+acl_cluster=האם ניתן לנהל אשכול מדפסות?
+
+log_stop=מתזמן הדפסה הופסק
+log_start=מתזמן הדפסה שהתחיל
+log_restart=מתזמן הדפסה שהופעל מחדש
+log_cancel_job=עבודת ההדפסה בוטלה $2 על $1 
+log_cancel_all=ביטל את כל עבודות ההדפסה ב- $1 
+log_cancel_sel=בוטל $2 עבודות הדפסה ב- $1 
+log_create=יצר את המדפסת $1 על $2 
+log_modify=מדפסת שונה $1 על $2 
+log_delete=המדפסת $1 על $2 נמחקה
+log_create_l=נוצר מדפסת $3 $1 על $2 
+log_modify_l=מדפסת $3 שונה $1 על $2 
+log_delete_l=$3 מדפסת $1 על $2 נמחקה
+
+linux_paralel=יציאה מקבילה $1 
+linux_serial=יציאה טורית $1 (COM $1)
+linux_null=מכשיר אפס
+linux_usb=מדפסת USB $1 
+linux_ecmd=הפקודה $1 לא נמצאה במערכת שלך, מה שמצביע על כך שמערכת ההדפסה של Linux אינה מותקנת.
+linux_espool=ספריית ה- spool $1 אינה קיימת במערכת שלך, מה שמצביע על כך שמערכת ההדפסה של Linux אינה מותקנת.
+
+freebsd_paralel=נמל מקביל
+freebsd_serial=יציאה טורית $1 (COM $1)
+freebsd_ecmd=הפקודה $1 לא נמצאה במערכת שלך, מה שמצביע על כך שמערכת ההדפסה FreeBSD אינה מותקנת.
+freebsd_espool=ספריית ה- spool $1 אינה קיימת במערכת שלך, מה שמצביע על כך שמערכת ההדפסה FreeBSD אינה מותקנת.
+
+openbsd_paralel=נמל מקביל
+openbsd_serial=יציאה טורית $1 (COM $1)
+
+unixware_paralel=יציאה מקבילה $1 
+unixware_serial=יציאה טורית $1 
+unixware_null=מכשיר אפס
+unixware_ecmd=הפקודה $1 לא נמצאה במערכת שלך, מה שמצביע על כך שמערכת ההדפסה UnixWare אינה מותקנת.
+
+hpux_paralel=מקביל $1 
+hpux_serial=סידורי $1 
+hpux_null=מכשיר אפס
+hpux_ecmd=הפקודה $1 לא נמצאה במערכת שלך, מה שמצביע על כך שמערכת ההדפסה HPUX אינה מותקנת.
+hpux_eiface=ספריית סקריפטי הממשק $1 אינה קיימת במערכת שלך, מה שמצביע על כך שמערכת ההדפסה HPUX אינה מותקנת.
+
+lprng_paralel=יציאה מקבילה $1 
+lprng_serial=יציאה טורית $1 (COM $1)
+lprng_null=מכשיר אפס
+lprng_ecmd=הפקודה $1 לא נמצאה במערכת שלך, מה שמצביע על כך שמערכת ההדפסה LPRng אינה מותקנת.
+lprng_espool=ספריית הסליל $1 אינה קיימת במערכת שלך, מה שמצביע על כך שמערכת ההדפסה LPRng אינה מותקנת.
+
+solaris_paralel=נמל מקביל
+solaris_uparalel=נמל מקביל אולטרה 5/10
+solaris_serial=יציאה טורית $1 
+solaris_null=מכשיר אפס
+solaris_ecmd=הפקודה $1 לא נמצאה במערכת שלך, מה שמצביע על כך שמערכת ההדפסה של Solaris אינה מותקנת.
+
+test_title=הדפס דף מבחן
+test_ecannot=אינך מורשה להדפיס דפי בדיקה
+test_desc=טופס זה מאפשר לך להדפיס דף בדיקה למדפסת $1. בחר את סוג העמוד שברצונך להדפיס :
+test_0=עמוד PostScript בשחור לבן
+test_1=דף PostScript צבעוני
+test_2=טקסט ASCII רגיל
+test_3=כל קובץ שהועלה
+test_print=הדפס דף
+test_exec=הדפסת דף מבחן עם פקודה $1.
+test_failed=הפקודה נכשלה!
+test_ok=הפקודה הושלמה.
+
+cups_none=אף אחד
+cups_nonemsg=מדפסת מרחוק או גולמית
+cups_prog=תכנית
+cups_driver=מנהל התקן CUPS
+cups_eprog='$1' אינה תוכנית חוקית
+cups_opts=אפשרויות ל- $1 
+cups_ecmd=הפקודה $1 לא נמצאה במערכת שלך, מה שמצביע על כך שמערכת ההדפסה CUPS אינה מותקנת.
+
+irix_ecmd=הפקודה $1 לא נמצאה במערכת שלך, מה שמצביע על כך שמערכת ההדפסה IRIX אינה מותקנת.
+irix_eiface=ספריית סקריפטי הממשק $1 אינה קיימת במערכת שלך, מה שמצביע על כך שמערכת ההדפסה IRIX אינה מותקנת.
+
+aix_port=יציאת מדפסת $1 
+aix_edesc=תיאור לא חוקי - מותר רק אותיות ומספרים ללא רווחים
+aix_ecmd=שרת המדפסת AIX $1 לא נמצא. אולי זה לא מותקן, או שמערכת הדפסה אחרת נמצאת בשימוש.
+
+cluster_title=שרתי מדפסות אשכול
+cluster_none=עדיין לא נוספו שרתים לאשכול המדפסות.
+cluster_host=שם מארח
+cluster_desc=תיאור
+cluster_os=מערכת הפעלה
+cluster_add=הוסף שרת
+cluster_gadd=הוסף שרתים בקבוצה
+cluster_need=עליך להוסיף שרתים עם כניסה וסיסמה במודול אינדקס שרתי Webmin לפני שניתן יהיה לנהל אותם כאן.
+cluster_return=שרתי אשכול
+cluster_delete=הסר פריטים שנבחרו
+cluster_ecannot=אינך מורשה לנהל שרתי מדפסות באשכול
+
+add_title=הוסף שרתים
+add_msg=מוסיף $1 ..
+add_gmsg=הוספת שרתים בקבוצה $1 ..
+add_err=הוספת השרת נכשלה
+add_gerr=הוספת קבוצה נכשלה
+add_echeck=לשרת $1 אין את מודול ניהול המדפסת
+add_ediff=שרת $1 משתמש במערכת הדפסה שונה ($2) לשרת זה
+add_ediff2=שרת $1 משתמש במנהל התקן הדפסה אחר ($2) לשרת זה
+add_ok=נוסף $1, עם $2 מדפסות.

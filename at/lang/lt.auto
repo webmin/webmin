@@ -1,0 +1,81 @@
+index_title=Suplanuotos komandos
+index_header=Nauja suplanuota komanda
+index_user=Vykdyti kaip vartotoją
+index_date=Bėk į pasimatymą
+index_time=Paleisti laiku
+index_cmd=Įsakymai vykdyti
+index_mail=Siųsti el. Laišką baigus?
+index_id=Darbovietės ID
+index_exec=Bėgti
+index_created=Sukurtas
+index_dir=Vykdyti kataloge
+index_return=komandų sąrašas
+index_cdate=Dabartinė data
+index_ctime=Dabartinis laikas
+index_allow=Leidžiami suplanuotų komandų vartotojai
+index_amode=Vartotojai gali leisti
+index_amode0=Visi „Unix“ vartotojai
+index_amode1=Tik išvardyti vartotojai ..
+index_amode2=Visi, išskyrus išvardytus vartotojus ..
+index_delete=Atšaukti pasirinktas komandas
+index_noat=Komanda $1 nerasta jūsų sistemoje - galbūt ji neįdiegta arba jos negalima jūsų operacinei sistemai.
+index_nostyle=„Webmin“ nežino, kaip valdyti tvarkaraščio komandas šioje operacinėje sistemoje.
+index_stop=Sustabdyti planuojamų komandų serverį
+index_stopdesc=Išjunkite <tt>atd</tt> foninio serverio procesą, vykdantį suplanuotas komandas. Tai neleis komandoms vykdyti nurodytu laiku.
+index_start=Paleiskite suplanuotų komandų serverį
+index_startdesc=Paleiskite foninio serverio procesą <tt>atd</tt>, vykdantį suplanuotas komandas. Tai reikalinga komandoms vykdyti nurodytu laiku.
+index_boot=Paleisti serverį įkrovos metu?
+index_bootdesc=Pakeiskite šį parametrą, jei norite įjungti arba išjungti suplanuotų komandų serverio paleidimą sistemos paleidimo metu.
+
+edit_title=Suplanuota komanda
+edit_cmd=Visas scenarijus vykdyti
+edit_shortcmd=Įsakymas vykdyti
+edit_header=Suplanuota komandos informacija
+edit_delete=Atšaukite šią komandą
+edit_run=Vykdyk dabar
+edit_ejob=Suplanuota komanda nebeegzistuoja!
+edit_ecannot=Jums neleidžiama redaguoti šios suplanuotos komandos
+edit_showfull=Rodyti visą scenarijų.
+
+create_err=Nepavyko sukurti tvarkaraščio komandos
+create_euser=Trūksta arba netinkamas vartotojo vardas
+create_edate=Trūksta arba netinkama data ar laikas
+create_ecmd=Neįvestos komandos
+create_efuture=Data ir laikas yra praeityje
+create_edir=Trūksta arba netinkamas katalogas
+create_ecannot=Jums neleidžiama kurti suplanuotų komandų šiam vartotojui
+create_eallow=Nurodytam vartotojui neleidžiama vykdyti suplanuotų komandų
+
+delete_err=Nepavyko atšaukti komandos
+delete_egone=Komanda jau paleista arba ištrinta
+
+acl_users=Gali redaguoti suplanuotas komandas
+acl_all=Visi vartotojai
+acl_this=Dabartinis „Webmin“ vartotojas
+acl_only=Tik vartotojai
+acl_except=Visi, išskyrus vartotojus
+acl_allow=Ar galima redaguoti vartotojams?
+
+run_title=Bėgimo komanda
+run_output=Išėjimas iš suplanuotos komandos ..
+run_none=Negaunama išvestis
+
+allow_err=Nepavyko išsaugoti leistinų vartotojų
+allow_ecannot=Jums neleidžiama valdyti leidžiamų vartotojų
+allow_eusers=Neįvestas joks vartotojas
+
+deletes_err=Nepavyko atšaukti komandų
+deletes_enone=Nepasirinkta
+
+log_allow=Pakeisti leidžiami vartotojai
+log_create_job=Sukurta suplanuota komanda $1 
+log_delete_job=Atšaukta suplanuota komanda $1 
+log_exec_job=Vykdyta suplanuota komanda $1 
+log_delete_jobs=Atšauktos $1 suplanuotos komandos
+log_stop=Sustabdytas suplanuotų komandų serveris
+log_start=Paleistas suplanuotų komandų serveris
+log_bootup=Įjungus suplanuotų komandų serverį įgalintas
+log_bootdown=Įkrovimo metu išjungtas suplanuotų komandų serveris
+
+stop_err=Nepavyko sustabdyti serverio
+start_err=Nepavyko paleisti serverio

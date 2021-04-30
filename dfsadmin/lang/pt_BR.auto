@@ -1,0 +1,57 @@
+index_title=Ações NFS
+index_add=Comece a compartilhar um novo diretório.
+index_dir=Diretório
+index_clients=Clientes
+index_everyone=Todos
+index_delete=Excluir compartilhamentos selecionados
+index_none=No momento, nenhum diretório está sendo exportado para este sistema.
+index_apply=Aplicar mudanças
+index_applydesc=Clique neste botão para aplicar a configuração atual de compartilhamento de arquivos. Isso tornará todos os diretórios listados acima disponíveis com as opções especificadas.
+index_return=lista de ações
+
+edit_title1=Editar compartilhamento
+edit_title2=Criar compartilhamento
+edit_header1=Compartilhar detalhes
+edit_dir=Diretório
+edit_desc=Descrição
+edit_ro=Acesso somente leitura
+edit_rw=Acesso de leitura / gravação
+edit_root=Acesso root
+edit_none=Nenhum
+edit_all=Todos os hosts
+edit_listed=Anfitriões listados ..
+edit_header2=Opções de compartilhamento
+edit_nosub=Permitir montagem de subdiretórios?
+edit_nosuid=Permitir arquivos setuid?
+edit_des=Os clientes devem usar DES?
+edit_kerberos=Os clientes devem usar kerberos?
+edit_anon=Usuário anônimo
+edit_anon0=Não configurado
+edit_anon1=Sem acesso
+edit_aclok=Permitir ACLs?
+edit_public=Compartilhamento WebNFS?
+edit_index=Arquivo de índice WebNFS
+
+save_err=Falha ao salvar o compartilhamento
+save_edirectory='$1' não é um nome de diretório válido
+save_edirectory2=O diretório '$1' não existe
+save_erw=Você não listou nenhum host com o qual compartilhar leitura / gravação
+save_ero=Você não listou nenhum host para compartilhar somente leitura com
+save_eroot=Você não listou nenhum host para compartilhar root
+save_ealready=O diretório '$1' já está sendo compartilhado
+save_ehost=O host '$1' não existe
+
+log_modify=Compartilhamento NFS modificado $1 
+log_rename=Compartilhamento NFS alterado $1 para $2 
+log_create=Compartilhamento NFS criado $1 
+log_delete=Compartilhamento NFS excluído $1 
+log_apply=Alterações aplicadas
+
+acl_view=Pode editar compartilhamentos NFS?
+
+ecannot=Você não tem permissão para gerenciar compartilhamentos NFS
+
+delete_err=Falha ao excluir compartilhamentos
+delete_enone=Nenhum selecionado
+
+restart_err=Falha ao aplicar as alterações

@@ -59,5 +59,12 @@ foreach my $w (split(/\s+/, $_[0])) {
 return 1;
 }
 
+# check_ipvx_ipaddress(ipv4)
+# Validates an IPv4 address
+sub check_ipvx_ipaddress
+{
+return &check_ipaddress(@_);
+}
+
 1;
 

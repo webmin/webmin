@@ -1,0 +1,177 @@
+index_dump=Dökümü Göster
+index_dumpdesc=<tt>shorewall dökümü</tt> komutundan Shorewall izleme bilgilerini görüntülemek için bu düğmeyi tıklayın.
+
+list_delete=Silme seçildi
+
+dump_title=Güvenlik Duvarı Dökümü
+
+zones_1new=Ana bölge
+zones_2new=Bölge türü
+zones_3new=Bölge seçenekleri
+zones_4new=Gelen seçenekler
+zones_5new=Giden seçenekler
+zones_6new=Yorum Yap
+zones_ipv4=IPv4
+zones_ipsec=IPsec
+zones_firewall=Güvenlik duvarı sistemi
+zones_eopts=Geçersiz bölge seçenekleri
+zones_eopts_in=Geçersiz bölge gelen seçenekleri
+zones_eopts_out=Geçersiz bölge giden seçenekleri
+
+rules_eaction=Hiçbir eylem seçilmedi
+rules_macro=Makro eylem parametresi
+rules_none2=Yok
+rules_emacro=Eksik veya geçersiz makro parametresi
+
+tos_6=Ölçek
+
+masq_3=Protokolle kısıtla
+masq_4=Bağlantı noktalarıyla kısıtla
+masq_5=IPsec seçenekleri
+masq_any=Herhangi bir protokol
+masq_all=Tüm bağlantı noktaları
+masq_eports=Virgülle ayrılmış bağlantı noktaları listesi eksik veya geçersiz
+masq_eipsec=IPsec seçenekleri eksik
+
+routestopped_2=Rota seçenekleri
+
+hosts_enet=Eksik veya geçersiz ana bilgisayar adresi
+hosts_ip=Adres veya ağ $1 
+hosts_mac=MAC adresi $1 
+hosts_ipset=IP seti $1 
+hosts_any=Herhangi bir ana bilgisayar
+
+blacklist_emac=Eksik veya geçersiz MAC adresi
+blacklist_eipset=IP grubu adı eksik
+
+providers_title=Ek Yönlendirme Sağlayıcıları
+providers_desc=Bu sayfa ek yönlendirme tablolarını tanımlar. Birden fazla ISS'ye veya aynı ISS'ye birden fazla bağlantınız varsa veya Squid'i güvenlik duvarı dışındaki bir ana bilgisayarda şeffaf bir proxy olarak çalıştırıyorsanız bunlar gereklidir.
+providers_add=Yeni bir yönlendirme sağlayıcısı ekleyin.
+providers_none=Henüz hiçbir yönlendirme sağlayıcısı tanımlanmadı.
+providers_0=ad
+providers_1=Numara
+providers_2=işaret
+providers_3=Arayüz
+providers_4=geçit
+providers_name=Sağlayıcı adı
+providers_number=Tedarikçi numarası
+providers_mark=Numarayı işaretle
+providers_dup=Yinelenen sağlayıcı
+providers_main=Ana tablo
+providers_iface=Ağ Arayüzü
+providers_gateway=Ağ geçidi yönlendiricisi
+providers_auto=Otomatik algıla
+providers_opts=Ekstra seçenekler
+providers_track=Ray bağlantıları
+providers_balance=Yük dengesi trafiği
+providers_loose=Güvenlik duvarından gelen trafiğe izin ver
+providers_edit=Yönlendirme Sağlayıcısını Düzenle
+providers_create=Yönlendirme Sağlayıcısı Oluştur
+providers_header=Ek yönlendirme sağlayıcısı ayrıntıları
+providers_copy=Arayüzler üzerinden rota kopyalama
+providers_err=Yönlendirme sağlayıcısı kaydedilemedi
+providers_ename=Eksik veya geçersiz sağlayıcı adı
+providers_enumber=Eksik veya geçersiz sağlayıcı numarası
+providers_emark=Eksik veya geçersiz sağlayıcı işareti numarası
+providers_edup=Yinelenecek sağlayıcı eksik
+providers_egateway=Eksik veya geçersiz ağ geçidi
+providers_return=yönlendirme sağlayıcılarının listesi
+
+route_rules_title=Yönlendirme Kuralları
+route_rules_desc=Sayfa, hangi trafiğin Ek Yönlendirme Sağlayıcıları sayfasında tanımlanan sağlayıcılara yönlendirileceğini denetler.
+route_rules_ip=IP adresi, ağ veya arayüz
+route_rules_add=Yeni bir yönlendirme kuralı ekleyin.
+route_rules_none=Henüz hiçbir yönlendirme kuralı tanımlanmadı.
+route_rules_0=Trafik kaynağı
+route_rules_1=Trafik hedefi
+route_rules_2=Sağlayıcı
+route_rules_3=öncelik
+route_rules_4=işaret
+route_rules_header=Yönlendirme kuralı seçenekleri
+route_rules_src=Trafik kaynağı
+route_rules_dst=Trafik hedefi
+route_rules_prov=Sağlayıcı üzerinden rota
+route_rules_main=Varsayılan yönlendirme tablosu
+route_rules_pri=Kural önceliği
+route_rules_mark=Paketi ile işaretle
+route_rules_nomark=Hiçbir şey değil
+route_rules_esrc=Trafik kaynağı eksik
+route_rules_edst=Trafik hedefi eksik
+route_rules_epri=Kural önceliği bir sayı olmalıdır
+route_rules_emark=Paket işareti sayı veya sayı/maske biçiminde olmalıdır
+route_rules_return=yönlendirme kuralları listesi
+route_rules_edit=Yönlendirme Kuralını Düzenle
+route_rules_create=Yönlendirme Kuralı Oluştur
+
+delete_err=Satırlar silinemedi
+delete_enone=Seçili satır yok
+
+opts_routeback=Ana bilgisayara geri gelen trafiği kabul et
+opts_source=Ana bilgisayardan herhangi bir hedefe izin ver
+opts_dest=Herhangi bir kaynaktan barındırmaya izin ver
+opts_critical=Güvenlik duvarı arasındaki trafiğe her zaman izin ver
+opts_maclist=MAC listesiyle karşılaştır?
+opts_norfc1918=Özel IP paketlerini reddet
+opts_blacklist=Kara listedeki paketleri reddet
+opts_tcpflags=Yasadışı TCP bayraklarını kontrol edin
+opts_nosmurfs=Yayın kaynak paketlerini kontrol edin
+opts_ipsec=IPsec bölgesi
+opts_dhcp=Arabirim DHCP kullanır
+opts_routefilter=Sahteciliğe karşı yol filtrelemeyi etkinleştir
+opts_logmartians=İmkansız kaynaklara sahip günlük paketleri
+opts_proxyarp=Proxy ARP'yi etkinleştir
+opts_arp_filter=Yalnızca arayüz IP'si için ARP isteklerine yanıt verin
+opts_detectnets=Taylor bölgesi yalnızca yönlendirilmiş ana makineleri içerecek
+opts_upnp=Paketleri UPNP ile yeniden eşleştirin
+
+comment_add=Yeni bir yorum ekleyin.
+comment_edit=Yorumu Düzenle
+comment_create=Yorum Oluştur
+comment_header=Tablo yorumu ayrıntıları
+comment_msg=İleti
+comment_err=Yorum kaydedilemedi
+comment_enone=Mesaj girilmedi
+
+log_create_table=$1 tablosuna giriş eklendi
+log_modify_table=$1 tablosundaki değiştirilmiş giriş
+log_delete_table=$1 tablosundan giriş silindi
+log_deletes_table=$1 tablosundan silinen girişler
+log_up_table=$1 tablosuna giriş taşındı
+log_down_table=$1 tablosundaki giriş taşındı
+log_manual_table=$1 tablo dosyasını el ile düzenledi
+log_create_comment=$1 tablosuna yorum eklendi
+log_modify_comment=$1 tablosundaki yorum değiştirildi
+log_delete_comment=$1 tablosundan yorum silindi
+log_stop=Güvenlik duvarı durduruldu
+log_start=Güvenlik duvarı başlatıldı
+log_refresh=Yenilenmiş güvenlik duvarı
+log_restart=Yeniden başlatılan güvenlik duvarı
+log_clear=Güvenlik duvarı temizlendi
+
+shorewall_conf_title=Ana yapılandırma dosyası
+shorewall_conf_desc=Bu sayfa genel yapılandırma değişkenlerini yapılandırmanıza izin verir. NOT: Yapılandırma dosyasındaki yorumların göreli konumunu korumak istiyorsanız, burada değişkenlerin sırasını değiştirmeniz önerilmez.
+shorewall_conf_add=Yeni bir yapılandırma değişkeni ekleyin.
+shorewall_conf_none=Shorewall yapılandırması bulunamadı.
+shorewall_conf_0=Değişken
+shorewall_conf_1=değer
+shorewall_conf_2=Yorum Yap
+shorewall_conf_return=yapılandırma değişkenleri listesi
+shorewall_conf_edit=Yapılandırma değişkenini düzenle
+shorewall_conf_create=Yapılandırma değişkeni oluştur
+shorewall_conf_header=Yapılandırma değişkeni ayrıntıları
+shorewall_conf_err=Yapılandırma değişkeni kaydedilemedi
+shorewall_conf_varname=Geçersiz değişken adı (geçerli bir kabuk değişken adı olmalıdır)
+
+params_title=Özel parametreler
+params_desc=Bu sayfa Shorewall'un özel parametrelerini yapılandırmanıza izin verir. NOT: Yapılandırma dosyasındaki yorumların göreli konumunu korumak istiyorsanız, burada parametrelerin sırasını değiştirmek önerilmez.
+params_add=Yeni bir özel parametre ekleyin.
+params_none=Özel parametre bulunamadı.
+params_0=Parametre
+params_1=değer
+params_2=Yorum Yap
+params_return=özel parametre listesi
+params_edit=Özel parametreyi düzenle
+params_create=Özel parametre oluştur
+params_header=Özel parametre ayrıntıları
+params_err=Özel parametre kaydedilemedi
+params_varname=Geçersiz parametre adı (geçerli bir kabuk değişkeni adı olmalıdır)

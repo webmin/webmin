@@ -1,2 +1,2 @@
-desc_pl=Rotacja logów
-longdesc_pl=Ustaw automatyczn± rotacjê dla Apache, Squid, Syslog i innych plików logów.
+desc_pl=Rotacja logÃ³w
+longdesc_pl=Ustaw automatycznÄ… rotacjÄ™ dla Apache, Squid, Syslog i innych plikÃ³w logÃ³w.

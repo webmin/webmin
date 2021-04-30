@@ -1,0 +1,53 @@
+inittab_new=Luo uusi aloitusprosessi.
+inittab_id=ID
+inittab_active=Aktiivinen?
+inittab_runlevels=Käynnistystaso
+inittab_action=Toiminta
+inittab_process=Käsitellä asiaa
+inittab_none=Ei mitään
+inittab_respawn=Respawn-prosessi
+inittab_wait=Odota
+inittab_once=Kerran kerran tasolla
+inittab_boot=Käynnistymisaika
+inittab_bootwait=Käynnistysaika, odota loppuun saakka
+inittab_off=Älä tee mitään
+inittab_ondemand=Aina A, B, C
+inittab_initdefault=Järjestelmän käynnistyksen jälkeen
+inittab_sysinit=Järjestelmän käynnistyksen aikana
+inittab_powerwait=Virta laskee
+inittab_powerfail=Virta laskee odottamatta
+inittab_powerokwait=Virta on palautettu
+inittab_powerfailnow=Virta katkeaa
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Erityinen näppäinyhdistelmä
+inittab_kbrequest=Erityinen näppäinyhdistelmä
+inittab_return=prosessiluettelo
+inittab_apply=Käytä Init-kokoonpanoa
+inittab_applymsg=Napsauta tätä painiketta, jos haluat käyttää nykyistä SysV Init -määritystä suorittamalla komennon <tt>telinit q</tt>. Huomaa, että mahdolliset kokoonpanovirheet voivat tehdä järjestelmästä käyttökelvottoman, kun tätä komentoa suoritetaan.
+index_delete=Poista valitut prosessit
+inittab_none2=Järjestelmästäsi ei löytynyt käynnistysprosesseja. Tämä todennäköisesti osoittaa, että se ei käytä SysV init -määritystiedostoa.
+
+edit_inittab_err=Et voi muokata prosessia
+edit_inittab_title=Muokkaa prosessia $1 
+edit_inittab_details=Prosessin yksityiskohdat
+edit_inittab_del=Poistaa
+edit_inittab_save=Tallentaa
+
+new_inittab_err=Et voi luoda uutta prosessia
+new_inittab_title=Uusi prosessi
+
+save_inittab_err=Et voi tallentaa prosessia
+save_inittab_noid=Virhe, nimiprosessia ei annettu
+save_inittab_already=Virhe, nimiprosessi on jo olemassa
+
+log_modify=Muokattu aloitusprosessi $1 
+log_rename=Nimeänyt uudelleen prosessin $1 - $2 
+log_create=Luotu aloitusprosessi $1 
+log_delete=Poistettu aloitusprosessi $1 
+log_apply=Sovellettu kokoonpano
+log_deletes=Poistettu $1 aloitusprosessit
+
+apply_err=Asetusten määrittäminen epäonnistui
+
+delete_err=Prosessien poistaminen epäonnistui
+delete_enone=Mitään ei ole valittu

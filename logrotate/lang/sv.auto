@@ -1,0 +1,115 @@
+index_title=Loggfilrotation
+index_econf=Loggrotationskonfigurationsfilen $1 hittades inte på ditt system. Kanske är logrotate inte installerat, eller <a href='$2'>modulkonfiguration</a> är felaktig.
+index_ecmd=Loggarotationsprogrammet $1 hittades inte på ditt system. Kanske är den inte installerad, eller <a href='$2'>modulkonfiguration</a> är felaktig.
+index_eversion=Det gick inte att få versionen av logrotate med kommandot $1 : $2 
+index_version=Logrotate-version $1 
+index_add=Lägg till en ny loggfil för att rotera.
+index_file=Loggfil
+index_period=Rotationsperiod
+index_post=Kommando efter rotation
+index_none=Inga loggfiler har definierats än.
+index_global=Redigera globala alternativ
+index_globaldesc=Klicka på den här knappen för att redigera inställningen som gäller alla loggfiler och definiera standardvärdena för loggar.
+index_sched=Redigera schema
+index_scheddesc=Klicka på den här knappen för att redigera schemat som logrotate drivs av Cron, eller aktivera eller inaktivera det.
+index_nocmd=Ingen
+index_notset=Inte inställd
+index_return=loggfiler lista
+index_force=Tvinga loggrotation
+index_forcedesc=Tvinga omedelbar rotation av alla loggfiler, även om det ännu inte är dags.
+index_logrotate=logrotate
+index_delete=Radera valda loggarotationer
+
+period_daily=Dagligen
+period_weekly=Varje vecka
+period_monthly=En gång i månaden
+period_never=Aldrig
+period_bytes=bitgrupper
+
+edit_title1=Redigera loggfil
+edit_title2=Skapa loggfil
+edit_header=Roterade loggfildetaljer
+edit_file=Logga filvägar
+edit_sched=Rotationsschema
+edit_rotate=Antal gamla loggar att behålla
+edit_compress=Komprimera gamla loggfiler?
+edit_delaycompress=Försena komprimering till nästa cykel?
+edit_copytruncate=Trunka loggfilen på plats?
+edit_ifempty=Rotera även om loggfilen är tom?
+edit_missingok=Ignorera loggfilen om den saknas?
+edit_size=Maximal storlek innan du roterar
+edit_always=ignoreras
+edit_minsize=Minsta storlek att rotera
+edit_nominsize=Alltid
+edit_ext=Tillägg för roterade filnamn
+edit_dateext=Använd datumförlängning för roterade filer
+edit_mail=E-postloggfil innan du tar bort?
+edit_mailto=Ja, att adressera
+edit_mailno=Nej, maila inte
+edit_mailfl=Logga fil till e-post
+edit_mailfirst=Det nyaste som bara roterades
+edit_maillast=Äldsta som håller på att raderas
+edit_create=Skapa loggfilen igen efter rotation?
+edit_createas=Ja, med läge $1 och ägs av användare $2 och grupp $3 
+edit_createno=Nej, skapa inte om
+edit_createsame=Ja, med gamla behörigheter
+edit_olddir=Lagra gamla roterade loggar
+edit_olddirto=Directory
+edit_olddirsame=Samma katalog som loggfil
+edit_errors=E-post felmeddelanden till
+edit_errorsno=Ingen
+edit_errorsto=Adress eller användare
+edit_post=Kommandon som ska köras efter rotation
+edit_pre=Kommandon som ska köras före rotation
+edit_default=Standard ($1)
+edit_sharedscripts=Kör du bara skript en gång för alla filer?
+edit_now=Rotera nu
+
+global_title=Globala alternativ
+global_header=Standardalternativ för alla loggfiler
+
+save_err=Det gick inte att spara loggen
+save_efile=Saknat eller ogiltigt loggfilnamn
+save_esize=Maximal storlek saknas eller ogiltig
+save_eminsize=Saknas eller ogiltig minsta storlek
+save_erotate=Det maximala antalet gamla loggar saknas eller ogiltigt att behålla
+save_ecreatemode=Saknar eller ogiltig 3 eller 4-siffrig octal skapande läge
+save_ecreateuser=Saknad eller ogiltig skapande användare
+save_ecreategroup=Saknad eller ogiltig skapande grupp
+save_emust1=Du måste gå in i ett skapande-läge när du anger en skapande användare
+save_emust2=Du måste ange en skapande användare när du skriver in en skapande grupp
+save_eolddirto=Saknad eller ogiltig katalog för gamla roterade loggar
+save_eext=Saknas tillägg för roterade loggfilnamn
+save_emailto=E-postadress saknas för roterade loggar
+save_eerrors=E-postadress saknas för felmeddelanden
+save_epre=Förrotationsskriptet kan inte innehålla en <tt>slutskrift</tt> eller <tt>endrotate</tt> rad
+save_epost=Post-rotationsskriptet kan inte innehålla en <tt>slutskrift</tt> eller <tt>endrotate</tt> rad
+save_enofiles=Inga filer att rotera har angivits
+
+log_modify_sched=Ändrat logrotation Cron-jobb
+log_create_sched=Skapad logrotation Cron-jobb
+log_delete_sched=Raderad logrotation Cron-jobb
+log_global=Modifierade globala alternativ
+log_create=Lagt till rotation för loggfil $1 
+log_modify=Ändrad rotation för loggfil $1 
+log_delete=Raderad rotation för loggfil $1 
+log_delete_logs=Raderad rotation för $1 loggfiler
+
+sched_title=Logga rotationsschema
+sched_desc=För att loggrotation konfigureras med hjälp av denna modul ska utföras, måste kommandot $1 köras enligt ett vanligt schema (vanligtvis dagligen) av Cron.
+sched_runparts=För närvarande körs rotationskommandot från skriptet $1 $2 och kan inte justeras.
+sched_sched=Log rotation cron jobb
+sched_disabled=Inaktiverad
+sched_enabled=Aktiverad, ibland under ..
+sched_save=Uppdatera Cron Job
+sched_err=Det gick inte att spara rotationsschema
+sched_when=Tider att springa
+
+force_title=Tvinga loggrotation
+force_doing=Tvingar omedelbar rotation av alla loggfiler ..
+force_doingone=Tvingar omedelbar rotation av en loggfil ..
+force_done=.. Gjort.
+force_failed=.. misslyckades! Se utgången ovan för anledningen.
+
+delete_err=Det gick inte att ta bort loggar
+delete_enone=Ingen vald

@@ -1,0 +1,120 @@
+index_title=Jabber strežnik IM
+index_econfig=Datoteka za konfiguracijo Jabber $1 ne obstaja. Jabber ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
+index_edir=Osnovni imenik Jabber $1 ne obstaja. Jabber ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
+index_emodules=Modula Perl $1 in $2, ki ju Webmin potrebuje za upravljanje konfiguracije XML Jabberja, nista nameščena. <a href='$3'>Kliknite tukaj</a>, da jih namestite neposredno iz CPAN-a.
+index_emodule=Modul Perl $1, ki ga Webmin potrebuje za ravnanje z Jabberjevo konfiguracijo XML, ni nameščen. <a href='$2'>Kliknite tukaj</a>, da ga namestite neposredno iz CPAN-a.
+index_expat=Prepričajte se, da imate nameščeno knjižnico Expat C in glave, preden poskusite namestiti module Perl, saj so ti odvisni od tega in če ne bodo na voljo.
+index_eparse=Modul $1 perl ni mogel razčleniti vaše konfiguracijske datoteke Jabber : $2 
+index_ejabberd=Program za strežnik Jabber $1 v vašem sistemu ni bil najden. Jabber ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
+index_eversion=Webmin podpira samo različico Jabber $2, vendar je ukaz $3 sporočil naslednje informacije o različici : $1 
+index_eversion2=Webmin podpira samo različice Jabber pod $2, vendar je ukaz $3 sporočil naslednje informacije o različici : $1 
+index_start=Zaženite strežnik Jabber
+index_startmsg=Kliknite ta gumb za zagon strežnika Jabber v vašem sistemu. Dokler ga ne začnete, noben odjemalec za takojšnje sporočanje ne bo mogel uporabljati.
+index_stop=Ustavi strežnik Jabber
+index_stopmsg=Kliknite ta gumb, če želite ustaviti delovanje strežnika Jabber v vašem sistemu. Noben odjemalec za takojšnje sporočanje ga ne bo mogel uporabljati, ko se ustavi.
+index_restart=Uporabi spremembe
+index_restartmsg=Kliknite ta gumb, če želite uporabiti trenutno konfiguracijo, tako da ustavite in nato znova zaženete Jabberjev strežnik.
+index_comments=Opozorilo - vaša konfiguracijska datoteka Jabber $1 vsebuje komentarje, ki bodo odstranjeni, če se s tem modulom opravijo kakršne koli spremembe konfiguracije.
+index_return=Jabber meni
+index_version=Različica Jabber $1 
+
+general_title=Splošne možnosti
+general_header=Možnosti globalnega strežnika Jabber
+general_host=Ime gostitelja vašega strežnika
+general_elog=Datoteka dnevnika napak
+general_elogfmt=Oblika dnevnika napak
+general_rlog=Datoteka dnevnika dostopa
+general_rlogfmt=Dostop do zapisa dnevnika
+general_pidfile=Datoteka ID procesa
+general_err=Splošnih možnosti ni bilo mogoče shraniti
+general_ehost=Manjkajoče ali neveljavno ime gostitelja strežnika
+general_eelog=Manjkajoča ali neveljavna datoteka dnevnika napak
+general_eelogfmt=Manjka oblika zapisa napak
+general_erlog=Manjkajoča ali neveljavna datoteka dnevnika prometa
+general_erlogfmt=Manjka oblika zapisa prometa
+general_epidfile=Manjkajoča ali neveljavna datoteka ID-ja procesa
+
+messages_title=Sporočila
+messages_header=Sporočilo strežnika Jabber za stranke
+messages_wsubject=Zadeva dobrodošlega sporočila
+messages_wbody=Telo dobrodošlega sporočila
+messages_vcard=Server vCard
+messages_rinstr=Navodila za registracijo
+messages_rnotify=Ali ob prijavi obvestite skrbnika?
+messages_rfields=Obvezna polja za registracijo
+messages_vcard2jud=Pošlji vCard v uporabniški imenik Jabber?
+messages_err=Sporočila ni bilo mogoče shraniti
+messages_evcard=Neveljaven XML vCard : $1 
+messages_etag=Server vCard XML se ne začne z &lt;vCard&gt;
+
+modules_title=Jabber moduli
+modules_desc=Spodaj navedeni moduli se uporabljajo za obdelavo sporočil, ki jih je prejel upravitelj sej Jabber. Ta seznam spremenite le, če veste, kaj počnete.
+modules_header=Moduli upravitelja sej Jabber
+modules_mod=Ime modula
+modules_so=Skupna knjižnica
+modules_err=Ni bilo mogoče shraniti Jabber modulov
+modules_emod='$1' ni veljavno ime modula
+modules_eso=Knjižnica v skupni rabi '$1' ne obstaja
+
+karma_title=Karma nadzor prometa
+karma_header=Možnosti nadzora hitrosti prometa
+karma_rate=Prekomerno ravnanje s povezavo
+karma_rate_def=Onemogočeno
+karma_rate_sel=Blokirajte odjemalca za $2 sekundi po $1 povezavah
+karma_mode=Karma način
+karma_none=Brez omejitev
+karma_low=Nizke omejitve prometa
+karma_medium=Srednje omejitve prometa
+karma_high=Visoke omejitve prometa
+karma_sel=Uporabite spodnje nastavitve.
+karma_heartbeat=Dolžina obdobja v sekundah (<tt>srčni utrip</tt>)
+karma_init=Obdobja inicializacije (<tt>init</tt>)
+karma_max=Karma največ (<tt>max</tt>)
+karma_inc=Prirast Karme (<tt>inc</tt>)
+karma_dec=Karma ukaz (<tt>dec</tt>)
+karma_penalty=Kazni (<tt>kazen</tt>)
+karma_restore=Obdobja obnovitve prekinitve (<tt>obnova</tt>)
+karma_err=Možnosti karme ni bilo mogoče shraniti
+karma_eheartbeat=Manjkajoča ali neveljavna dolžina obdobja
+karma_einit=Manjkajoča ali neveljavna obdobja inicializacije
+karma_emax=Manjkajoča ali neveljavna karma
+karma_einc=Manjkajoči ali neveljavni prirastek karme
+karma_edec=Manjkajoča ali neveljavna uredba o karmi
+karma_epenalty=Manjkajoče ali neveljavne kazenske dobe
+karma_erestore=Manjkajoča ali neveljavna obdobja obnovitve
+karma_epoints=Manjkajoče ali neveljavno število povezav
+karma_etime=Manjka ali neveljaven čas za blokiranje
+
+ips_title=Nadzor dostopa IP
+ips_header=Nadzor dostopa do IP strežnika Jabber
+ips_allow=Dovoljeni IP-odjemalci
+ips_all=Vsi naslovi
+ips_deny=Zavrnjeni IP-ji odjemalcev
+ips_none=Noben
+ips_sel=Navedeni naslovi/omrežne maske ..
+ips_err=Nadzor dostopa do IP ni uspel shraniti
+ips_eaddr='$1' ni veljaven naslov IP ali naslov IP/omrežja
+
+file_title=Uredi datoteko za konfiguriranje
+file_desc=Uporabite spodnji obrazec za neposredno urejanje konfiguracijske datoteke Jabber. To je treba storiti le, če razumete obliko konfiguracije XML.
+file_header=Uredite konfiguracijsko datoteko Jabber
+file_err=Konfiguracijske datoteke ni bilo mogoče shraniti
+
+admin_title=Upravni uporabniki
+admin_header=Uporabniki strežniške administracije
+admin_read=Preberite dostop skrbnikov
+admin_write=Napišite dostopne skrbnike
+admin_reply=Samodejno odgovarjate na skrbniška sporočila?
+admin_rsubject=Samodejno odgovor
+admin_rbody=Samodejno odgovori sporočilo
+
+filter_title=Uporabniški filtri
+filter_header=Dovoljenja uporabniškega filtra
+filter_max=Najvišja pravila filtra
+filter_conds=Dovoljeni pogoji filtriranja
+filter_acts=Dovoljena dejanja filtra
+
+restart_err=Spremembe ni bilo mogoče uporabiti
+stop_err=Jabberja ni bilo mogoče ustaviti
+stop_epid=Ni bilo mogoče najti postopka Jabber
+start_err=Jabberja ni bilo mogoče zagnati

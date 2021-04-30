@@ -1,0 +1,115 @@
+index_title=Vrtenje datoteke dnevnika
+index_econf=Konfiguracijske datoteke rotacije dnevnika $1 v vašem sistemu ni bilo mogoče najti. Mogoče logrotate ni nameščen ali pa je konfiguracija <a href='$2'>modula</a> napačna.
+index_ecmd=Programa vrtenja dnevnika $1 v vašem sistemu ni bilo mogoče najti. Mogoče ni nameščen ali je konfiguracija <a href='$2'>modula</a> napačna.
+index_eversion=Ni bilo mogoče dobiti različice logrotate z ukazom $1 : $2 
+index_version=Logrotate različica $1 
+index_add=Za vrtenje dodajte novo datoteko dnevnika.
+index_file=Dnevnik
+index_period=Obdobje rotacije
+index_post=Ukaz po vrtenju
+index_none=Nobene datoteke dnevnika še niso definirane.
+index_global=Uredi globalne možnosti
+index_globaldesc=Kliknite ta gumb, če želite urediti nastavitve, ki veljajo za vse datoteke dnevnika, in določite privzete vrednosti za dnevnike.
+index_sched=Uredi urnik
+index_scheddesc=Kliknite ta gumb, če želite urediti urnik, na katerem logrotate vodi Cron, ali ga omogočiti ali onemogočiti.
+index_nocmd=Noben
+index_notset=Ni nastavljeno
+index_return=seznam datotek dnevnika
+index_force=Vrtenje dnevnika sil
+index_forcedesc=Prisilite takojšnjo rotacijo vseh datotek dnevnika, tudi če še ni čas.
+index_logrotate=Logrotate
+index_delete=Izbrišite izbrane rotacije dnevnika
+
+period_daily=Vsakodnevno
+period_weekly=Tedensko
+period_monthly=Mesečno
+period_never=Nikoli
+period_bytes=bajti
+
+edit_title1=Uredi datoteko dnevnika
+edit_title2=Ustvari datoteko dnevnika
+edit_header=Podrobnosti zavrtenih datotek dnevnika
+edit_file=Dnevnik poti datotek
+edit_sched=Urnik vrtenja
+edit_rotate=Število starih dnevnikov, ki jih je treba hraniti
+edit_compress=Stisnite stare dnevniške datoteke?
+edit_delaycompress=Zamudo stiskanja do naslednjega cikla?
+edit_copytruncate=Obrezati datoteko dnevnika na svojem mestu?
+edit_ifempty=Zavrtite, tudi če je datoteka dnevnika prazna?
+edit_missingok=Če zanemarite datoteko dnevnika, če manjka?
+edit_size=Največja velikost pred vrtenjem
+edit_always=Ignorirano
+edit_minsize=Najmanjša velikost, ki jo je treba zasukati
+edit_nominsize=Nenehno
+edit_ext=Podaljšek za zasukane datoteke
+edit_dateext=Uporabite razširitev datuma za zasukane datoteke
+edit_mail=E-poštno datoteko dnevnika pred izbrisom?
+edit_mailto=Da, na naslov
+edit_mailno=Ne, ne pošljite e-pošte
+edit_mailfl=Prijavite datoteko v e-pošto
+edit_mailfirst=Najnovejše, ki se je ravno zavrtilo
+edit_maillast=Najstarejša, ki jo je treba izbrisati
+edit_create=Ali po vrtenju ustvarite datoteko dnevnika?
+edit_createas=Da, v načinu $1 in v lasti uporabnika $2 in skupine $3 
+edit_createno=Ne, ne ustvarite na novo
+edit_createsame=Da, s starimi dovoljenji
+edit_olddir=Shranite stare zasukane dnevnike
+edit_olddirto=Imenik
+edit_olddirsame=Isti imenik kot datoteko dnevnika
+edit_errors=Pošljite sporočila o napaki na
+edit_errorsno=Nihče
+edit_errorsto=Naslov ali uporabnik
+edit_post=Ukazi za zagon po vrtenju
+edit_pre=Ukazi za zagon pred vrtenjem
+edit_default=Privzeto ($1)
+edit_sharedscripts=Za vse datoteke enkrat zaženite skripte?
+edit_now=Zavrtite zdaj
+
+global_title=Globalne možnosti
+global_header=Privzete možnosti za vse datoteke dnevnika
+
+save_err=Dnevnika ni bilo mogoče shraniti
+save_efile=Manjkajoče ali neveljavno ime datoteke dnevnika
+save_esize=Manjkajoča ali neveljavna največja velikost
+save_eminsize=Manjkajoča ali neveljavna minimalna velikost
+save_erotate=Manjkajoče ali neveljavno največje število starih dnevnikov, ki jih želite obdržati
+save_ecreatemode=Manjkajoč ali neveljaven 3-ali štirimestni način ustvarjanja osmerov
+save_ecreateuser=Manjkajoči ali neveljaven uporabnik ustvarjanja
+save_ecreategroup=Manjkajoča ali neveljavna skupina za ustvarjanje
+save_emust1=Ko vnesete uporabnika ustvarjanja, morate vstopiti v način ustvarjanja
+save_emust2=Ko vstopate v ustvarjalno skupino, morate vnesti uporabnika ustvarjanja
+save_eolddirto=Manjkajoči ali neveljaven imenik za stare zasukane dnevnike
+save_eext=Manjkajoča končnica za zasučene datoteke dnevnikov
+save_emailto=Manjkajoči e-poštni naslov za zasukane dnevnike
+save_eerrors=Manjka e-poštni naslov za sporočila o napaki
+save_epre=Skripta pred vrtenjem ne sme vsebovati vrstice <tt>endcript</tt> ali <tt>endrotate</tt>
+save_epost=Skripta po vrtenju ne sme vsebovati vrstice <tt>končnega skripta</tt> ali <tt>potrditve</tt>
+save_enofiles=Vnešena ni nobena datoteka
+
+log_modify_sched=Spremenjeno vrtenje dnevnika Cron opravilo
+log_create_sched=Ustvarjeno vrtenje dnevnika Cron
+log_delete_sched=Izbrisano vrtenje dnevnika Cron opravilo
+log_global=Spremenjene globalne možnosti
+log_create=Za datoteko dnevnika $1 je dodano vrtenje
+log_modify=Spremenjeno vrtenje datoteke dnevnika $1 
+log_delete=Izbrisano vrtenje datoteke dnevnika $1 
+log_delete_logs=Izbrisana rotacija za $1 datoteke datotek
+
+sched_title=Načrt vrtenja dnevnika
+sched_desc=Za izvedbo vrtenja dnevnika, ki je konfigurirano s tem modulom, mora Cron uvesti v običajnem urniku (običajno vsak dan) v rednem urniku.
+sched_runparts=Trenutno se ukaz vrtenja dnevnika izvaja iz skripta $1 $2 in ga ni mogoče prilagoditi.
+sched_sched=Naloga vrtilnega ročaja dnevnika
+sched_disabled=Onemogočeno
+sched_enabled=Omogočeno, včasih spodaj ..
+sched_save=Posodobite Cron Job
+sched_err=Urnika vrtenja ni bilo mogoče shraniti
+sched_when=Časi, ki tečejo
+
+force_title=Vrtenje dnevnika sil
+force_doing=Prisiljanje takojšnje zasuke vseh datotek dnevnika ..
+force_doingone=Prisiljanje takojšnjega vrtenja ene datoteke dnevnika ..
+force_done=.. Končano.
+force_failed=.. ni uspelo! Glej zgornji izid za razlog.
+
+delete_err=Brisanja dnevnikov ni bilo mogoče
+delete_enone=Izbrana ni nobena

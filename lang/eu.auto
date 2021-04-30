@@ -1,0 +1,84 @@
+main_title3=Webmin $1 ($2)
+main_refreshmods=Eguneratu moduluak
+
+category_=Tresnak
+
+longcategory_=Askotariko zereginak betetzen dituzten moduluak
+
+fail=Huts
+euserdbacl=Huts egin du ACL erabiltzailea eskuratzean : $1
+euserdbacl2=Huts egin du ACL erabiltzailea eguneratzean : $1
+egroupdbacl=Huts egin du ACL taldea eskuratzean : $1
+egroupdbacl2=Huts egin du ACL taldea eguneratzean : $1
+
+config_emodule=Modulua ez da existitzen
+
+referer_fix3u=Ziurtatu zure arakatzailea erreferentziako informazioa bidaltzeko konfiguratuta dagoela Webmin-ek egiaztatu dezan.
+
+session_twofactor=Bi faktoreko token
+session_twofailed=Bi faktoreren autentikazioa huts egin da : $1
+
+acl_webminsearch=Erakutsi Webmin bilaketa-eremua?
+
+elock_tries2=Ezin izan da $1 fitxategia blokeatu, $2 minutu igaro ondoren. Azken errorea hau izan da : $3
+
+progress_size2=$1 deskargatzen ($2) ..
+progress_datan=$1 ($2 %)
+progress_data2n=$1 jaso da
+
+ui_searchfor=Testua dauka
+ui_filterbox=Idatzi iragazkia ..
+
+wsearch_on=($1)
+wsearch_helpfor=Laguntza <i>$1</i>
+wsearch_htext=Testuarekin bat egitea
+wsearch_htype=Iturria
+wsearch_hcgis=erreferentziak
+wsearch_type_mod=Moduluaren izena
+wsearch_type_config=konfigurazioa
+wsearch_type_help=Laguntza orria
+wsearch_type_text=Erabiltzaile interfazea
+wsearch_type_dir=Moduluaren URLa
+wsearch_hmod=modulua
+wsearch_moddir=URL bidea /$1/
+wsearch_searching=$1 bila ..
+wsearch_found=$1 emaitzak aurkitu ditu :
+
+sql_emysqldriver=Ezin izan da MySQL DBI driverrik kargatu
+sql_emysqlconnect=Ezin izan da MySQL datu-basera konektatu : $1
+sql_epostgresqldriver=Ezin izan da PostgreSQL DBI driverra kargatu
+sql_epostgresqlconnect=Huts egin du PostgreSQL datu-basera konektatzean : $1
+sql_eldapdriver=Ezin izan da LDAP perl modulua kargatu
+sql_eldapconnect=Huts egin du LDAP zerbitzarira konektatzean $1
+sql_eldaptls=Huts egin du LDL enkriptatzeko TLS abiaraztean : $1
+sql_eldaplogin=Huts egin du LDAP zerbitzarira sartzean $1 : $2 
+
+log_email_subject=Webmin ekintza $1
+log_email_global=Webmin ekintza globala
+log_email_desc=Mezu elektroniko hau Webmin-ek bidali zuen erabiltzaileen ekintza bati erantzunez.
+log_email_mod=Webmin modulua: $1
+log_email_moddesc=Moduluaren izenburua: $1
+log_email_time=Egindako ekintza: $1
+log_email_system=Sisteman egin da: $1
+log_email_user=Erabiltzaileak eginak: $1
+log_email_script=Webmin script: $1
+log_email_session=Saioaren IDa: $1
+log_email_remote=Bezeroaren helbidea: $1
+
+nice_size_PB=PB
+nice_size_PiB=PIB
+nice_size_TB=TB
+nice_size_TiB=TiB
+nice_size_GB=GB
+nice_size_GiB=GiB
+nice_size_MB=MB
+nice_size_MiB=MiB
+nice_size_kB=kB
+nice_size_kiB=KiB
+nice_size_b=byte
+
+langauto_include=Sartu itzulpen automatikoak
+
+file_truncated_message=datuen $1 eskuratu du, $2 moztu du $3 tik
+file_truncated_message_head=$1 hasierako datuak eskuratu ditu, $2 moztu dira $3 tik
+file_truncated_message_tail=datuen $1 amaiera lortu da, $2 moztu da $3 tik

@@ -1,0 +1,3 @@
+desc_bg=NFS износ
+name_bg=SGIExports
+longdesc_bg=Редактирайте файлови споделяния, както са дефинирани във файла /etc/exports export /etc/exports на Irix

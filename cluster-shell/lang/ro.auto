@@ -1,0 +1,22 @@
+index_title=Comenzi Cluster Shell
+index_cmd=Porunca de a rula
+index_old=sau
+index_server=Rulați pe servere
+index_run=Rulați comanda acum
+index_return=indexul modulului
+index_this=acest server
+index_all=&lt;Toate gazdele&gt;
+index_group=Membrii $1 
+index_clear=Sterge istoricul
+index_edit=Editează anterior
+
+run_title=Executa comanda
+run_err=Nu a reușit să ruleze comanda
+run_ecmd=Nu a fost introdusă nicio comandă
+run_failed=Nu a putut fi executat pe $1 : $2 
+run_success=Ieșire din $1 ..
+run_enone=Nu există servere pentru a rula pe selectate
+
+log_clear=Istoric de comandă șters
+log_run=Rulați $1 pe serverele $2 
+log_run_l=Range $1 pe $2 

@@ -1,0 +1,405 @@
+index_title=QMail posta zerbitzaria
+index_edir=$1 QMail base direktorio ez dago. Agian QMail ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_edir2=Ez dirudi $1 direktorioaren QMail base direktorioa. Agian QMail ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_return=QMail konfigurazioa
+index_stop=Gelditu QMail prozesuak
+index_stopmsg=Egin klik botoi honetan ilarako posta entregatzeaz arduratzen diren QMail prozesuak atzeko planoan gelditzeko. Prozesu horiek gabe, ez da mezua bidaliko eta ez da zure sistemara bidaliko behar bezala.
+index_start=Hasi QMail prozesuak
+index_startmsg=Egin klik botoi honetan ilarako posta entregatzeaz arduratzen diren QMail prozesuak atzeko planoan abiarazteko. Prozesu horiek gabe, ez da mezua bidaliko eta ez da zure sistemara bidaliko behar bezala.
+
+opts_title=QMail Aukerak
+opts_me=Tokiko ostalariaren izena
+opts_helo=SMTP HELO ostalariaren izena
+opts_toconnect=SMTP konexioa iraungitzea
+opts_secs=segundutan
+opts_toremote=SMTP irteerako erantzunaren iraupena
+opts_bytes=Gehieneko mezuaren tamaina
+opts_unlimited=Mugarik gabe
+opts_timeout=SMTP sarrerako datuak iraungitzea
+opts_localip=Tokiko IP helbidera ostalariaren izena
+opts_greet=SMTP agur mezua
+opts_err=Ezin izan da QMail aukerak gordetzea
+opts_eme=Tokiko ostalariaren izena baliogabea
+opts_etoconnect=SMTP konexio iraupen baliogabea
+opts_etoremote=SMTP irteerako erantzunaren epea baliogabea da
+opts_ebytes=Gehienezko mezuen tamaina baliogabea
+opts_etimeout=SMTP sarrerako denbora epea baliogabea da
+opts_elocalip=Tokiko IP helbide ostalariaren izena baliogabea
+
+aliases_title=Posta ezizenak
+aliases_addr=Helbidea
+aliases_to=Alias ..
+aliases_type1=Helbidea 1
+aliases_type2=$1 posta elektronikoa
+aliases_type3=$1 fitxategia
+aliases_type4=$1 programa
+aliases_type5=$1 fitxategi automatikoki hornitzea
+aliases_type6=Aplikatu $1 iragazkia
+aliases_none=Bat ere ez
+aliases_return=ezizenen zerrenda
+aliases_toomany=Zure sisteman posta ezizen gehiegi daude orrialde honetan bistaratzeko.
+aliases_go=Aurkitu ezarpenak bat datozenak:
+aliases_delete=Ezabatu hautatutako ezizenak
+
+aform_type0=Bat ere ez
+aform_type1=Posta elektroniko helbidea
+aform_type2=Mail direktorioa
+aform_type3=Posta fitxategia
+aform_type4=Programa elikatzeko
+aform_type5=Autoreply fitxategitik
+aform_type6=Aplikatu iragazkiaren fitxategia
+aform_edit=Editatu ezizena
+aform_create=Sortu ezizena
+aform_name=Helbidea
+aform_val=Alias to
+aform_afile=Editatu ..
+aform_novirt=&lt;Domeinu guztiak&gt;
+aform_return=alias
+
+asave_err=Huts egin du ezizena gordetzean
+asave_eaddr='$1' ez da baliozko helbide bat
+asave_ealready=Lehendik dago '$1' ezizena
+asave_etype1='$1' ez da baliozko helbide elektronikoa
+asave_etype2='$1' ez da baliozko posta direktorio bat
+asave_etype3='$1' ez da baliozko mezuen fitxategi izena
+asave_etype4='$1' ez da baliozko programa edo ez da existitzen
+asave_etype5=Ez da baliozko autoreply '$1' fitxategia
+asave_etype4none=Ez da programarik eman
+asave_etype6="$1" iragazkiaren fitxategia ez da baliozkoa
+
+adelete_err=Ezin izan da ezizena ezabatu
+adelete_enone=Ez da hautatu
+
+locals_title=Tokiko domeinuak
+locals_domains=Zerbitzari honentzako domeinu lokalak
+locals_desc=Qmail-ek onartuko du tokiko erabiltzaileei mezu elektronikoa ezkerreko testu-koadroan zerrendatutako domeinu eta ostalariei posta elektronikoa emateko. Zure posta-zerbitzariak posta elektronikoko domeinu ugari kudeatu nahi badituzu, guztiak inprimaki honetan zerrendatu beharko lirateke.
+locals_only=$1 tokiko ostalariaren izena bakarrik
+locals_sel=Jarraian agertzen diren domeinuak
+
+rcpts_title=Onartutako domeinuak
+rcpts_domains=Onartutako tokiko eta erreleboko domeinuak
+rcpts_all=Edozein domeinu
+rcpts_sel=Jarraian agertzen diren domeinuak
+rcpts_desc=Qmail-ek onartuko du mezu lokala edo ostalaritzako izena soilik bidaltzea posta elektronikoa ezkerreko testu-koadroan. <tt>.foo.com</tt> bezalako domeinuko ostalari guztiak bat datozen komodinak sartu ditzakezu. Zure posta zerbitzariak bezeroei posta elektronikoa erreproduzitzea nahi baduzu, edozein domeinuko posta onartu behar duzu.
+rcpts_domains2=Tokiko eta erreleboko domeinu osagarriak
+rcpts_desc2=Onartutako domeinu ugari izanez gero, gutxiago erabiltzen direnak idatzi behar dira testu-koadro honetan. Oro har, zure baimendutako lehen 50 domeinuak goiko testu-koadroan sartu behar dira eta gainontzekoak hauetara.
+
+bads_title=Ezeztatutako helbideak
+bads_addresses=Ezeztatu egin zaizkie helbide elektronikoak
+bads_desc=QMail-ek posta elektronikoa baztertu egingo du testu-koadroan agertzen den helbideren bat bidaltzeko edo erreproduzitzeko, hau da, <tt>erabiltzaile izena @ domainname</tt> gisa idatzi behar da. Posta domeinu oso batetik baztertu nahi baduzu, <tt>@domainname</tt> gisa idatzi behar da.
+
+routes_title=Domeinu bideratzea
+routes_toomany=Zure sisteman domeinu-bide gehiegi daude orrialde honetan bistaratzeko.
+routes_go=Aurkitu domeinuko bideak bat datozenak:
+routes_from=Posta domeinuetarako
+routes_to=Bidali zerbitzari bidez
+routes_direct=Bidali zuzenean
+routes_defroute=Bidali irteerako beste posta bidez:
+routes_return=domeinu bideak
+routes_delete=Ezabatu hautatutako domeinu bideak
+
+rform_edit=Editatu domeinuaren ibilbidea
+rform_create=Sortu Domeinu Ibilbidea
+rform_from=Posta ostalariaren edo domeinuaren arabera
+rform_to=Bidali SMTP zerbitzariaren bidez
+rform_port=SMTP portua
+
+rsave_err=Huts egin du domeinuaren ibilbidea gordetzean
+rsave_efrom='$1' ez da baliozko domeinu izena
+rsave_eto='$1' ez da baliozko SMTP zerbitzaria
+rsave_eport='$1' ez da baliozko ataka-zenbakia
+
+rdelete_err=Ezin izan da domeinuaren ibilbideak ezabatu
+
+percents_title=Helbide domeinuak
+percents_domains=% Helbideak onartzen dituzten domeinuak
+percents_desc=QMail-ek helbide elektronikoak onartuko ditu <tt>user%firstdomain@seconddomain</tt> formatuan <tt>seconddomain</tt> ezkerreko testu-koadroan agertzen bada. Formatu honetako mezuak <tt>user@firstdomain</tt> -era bidaliko dira posta-zerbitzari honen bidez.
+
+virts_title=Mapaketa birtualak
+virts_toomany=Zure sisteman mapaketa birtual gehiegi daude orrialde honetan bistaratzeko.
+virts_go=Aurkitu bat datozen mapaketa birtualak:
+virts_from=Posta
+virts_prepend=Aurretik aurrizkia
+virts_all=Helbide guztiak
+virts_none=Ez da birtuala
+virts_desc=Mapeketa birtualak QMail-ek zure zerbitzariko domeinu desberdinetara mezu elektronikoak kudeatzeko erabiltzen ditu, testua erabiltzaileari helbide elektronikoaren zatira bidali aurretik prozesatu aurretik. Posta elektronikoko domeinu birtualak konfiguratzeko erabil ditzakezu domeinu baterako mapeamendu birtual berria sortuz eta, ondoren, <a href='$1'>Mail alias</a> orria erabiliz domeinu horren barruan alias sortzeko.
+virts_return=mapaketa birtualak
+virts_delete=Ezabatu hautatutako mapepen birtualak
+
+vform_edit=Editatu mapeamendu birtuala
+vform_create=Sortu mapeketa birtuala
+vform_from=Posta helbiderako
+vform_all=Helbide berria ez dator bat beste mapaketa birtualarekin
+vform_domain=Helbideak domeinuarekin
+vform_user=Helbidea
+vform_to=Erabiltzaile-izenaren aurretik
+vform_none=Ezer
+vform_prepend=Zehaztutako aurrizkia
+vform_auto=Automatikoki aukeratutako aurrizkia
+
+vsave_err=Ezin izan da mapeamendu birtuala gordetzea
+vsave_edomain='$1' ez da baliozko helbide elektroniko bat
+vsave_euser='$1' ez da baliozko helbide elektronikoa
+vsave_eprepend='$1' ez da baliozko mapaketa aurrizkia
+vsave_eboth=Ezin duzu 'Beste helbide bat ez datorren beste mapeamendu birtual bat' eta 'Ezer' aukeratu
+
+vdelete_err=Ezin izan da mapaketa birtualak ezabatu
+
+stop_err=qmail-send prozesua ez da exekutatzen
+
+log_stop=QMail prozesuak geldituta
+log_start=QMail prozesuak abiarazi dira
+log_opts=QMail aukerak aldatu dira
+log_alias_create=$1 ezizena sortu da
+log_alias_delete=Ezabatu $1 alias
+log_alias_modify=$1 ezizena aldatu
+log_delete_aliases=$1 ezizenak ezabatu dira
+log_virt_create=$1 kartografia birtuala sortu da
+log_virt_delete=$1 kartografia birtuala ezabatu da
+log_virt_modify=$1 mapatze birtual aldatua
+log_delete_virts=$1 mapping birtualak ezabatu dira
+log_virtall_create=Katchall-eko mapaketa birtuala sortu da
+log_virtall_delete=Katchall-en biografia birtuala ezabatu da
+log_virtall_modify=Aldatutako katchall-en biografia birtuala
+log_locals=Tokiko domeinuak aldatu dira
+log_rcpts=Aldatutako onartutako domeinuak
+log_bads=Aldatutako helbide baztertuak
+log_percents=% Helbide domeinu aldatuak
+log_route_create=$1 erako ibilbidea sortu da
+log_route_delete=$1 eko ibilbidea ezabatu da
+log_route_modifed=$1 erako ibilbidea aldatua
+log_delete_routes=$1 ibilbide ezabatu dira
+log_defroute=Aldatutako ibilbide lehenetsia
+log_assign_create=$1 posta elektronikoaren erabiltzailea
+log_assign_delete=$1 posta elektronikoaren erabiltzailea ezabatu da
+log_assign_modifed=$1 posta elektronikoko erabiltzailea
+log_delete_assigns=$1 mezuak ezabatu dira
+log_delmail=$1 mezuak $2 ezabatu dira
+log_movemail=$1 mezuak $2 tik $3 ra mugitu ziren
+log_send=$1 (e) k bidali du posta
+
+rfile_title=Editatu automatikoki fitxategia
+rfile_desc=Erabili beheko test eremua automatikoki bidaltzeko mezua $1 editatzeko. Mezuak $SUBJECT, $FROM, $TO, $DATE eta $BODY makroak izan ditzake, automatikoki hornitzen denean aktibatuko direnak.
+rfile_desc2=Autoreplantean erabilitako lehenetsiak gehitu edo ordezkatzen dituzten posta-goiburuak ere ezar ditzakezu, honela lerroak jarriz: <br><tt> From: foo@bar.com </tt><br> <tt>Asunto: Oporretan</tt> <br> mezuaren goiko aldean, gorputzetik marra zuri bakar batez bereizita.
+rfile_efile=Ezin duzu $1 editatu.
+rfile_undo=Aldaketak desegin
+rfile_replies=Jarraitu erantzunak posta-begiztak saihesteko?
+rfile_none=Ez
+rfile_file=Bai, log fitxategia erabiliz
+rfile_period=Erantzunen arteko gutxieneko tartea
+rfile_default=Lehenespenez (1 ordu)
+rfile_secs=segundutan
+rfile_ereplies=Falta zen erantzunaren jarraipen-fitxategiaren erregistroa
+rfile_eperiod=Erantzunen artean segundo kopuru falta edo baliogabea
+rfile_no_autoreply=Ez bidali autoreplia helbidera
+rfile_from=Noiz: erantzuteko helbidea
+rfile_auto=Automatikoa (hartzailearen helbidean oinarrituta)
+rfile_efrom=Falta da: helbidea
+rfile_fromdesc=A From: helbidea beti zehaztu behar da posible den moduan, baliteke metodo automatikoa ez dela fidagarria.
+
+ffile_title=Editatu iragazkiaren fitxategia
+ffile_desc=Erabili beheko formularioa $1 fitxategiaren arauak konfiguratzeko.
+ffile_efile=Ezin duzu $1 editatu.
+ffile_line=$1 eremuak $2 $3 bada $4 ra
+ffile_from=batetik
+ffile_to=to
+ffile_subject=gaia
+ffile_cc=CC
+ffile_body=body
+ffile_what0=ez dator bat
+ffile_what1=partiduak
+ffile_other=Bestela $1 birbidali
+ffile_err=Ezin izan da iragazkiaren fitxategia gorde
+ffile_ematch=Partida falta da
+ffile_eaction=Birbidaltze helbidea falta da
+
+queue_title=Posta ilara
+queue_count=$1 mezuak
+queue_none=Oraindik ez dago posta mezuen ilaran entrega egiteko
+queue_id=Mail ID
+queue_date=bidalia
+queue_from=aurrera
+queue_to=to
+queue_cc=cc
+queue_subject=Gaia
+queue_return=posta ilara
+queue_delete=Ezabatu hautatutako mezuak
+queue_all=Hautatu guztiak
+queue_invert=Alderantzizko hautapena
+queue_refresh=Eguneratu posta ilara
+queue_refreshdesc=Kargatu orri hau posta-ilarako uneko egoera erakusteko.
+
+qview_title=Ilarako mezua
+qview_desc=$1 fitxategitik
+qview_headers=Posta goiburuak
+qview_attach=eranskinak
+
+assigns_title=Mail Erabiltzaileen zereginak
+assigns_return=posta erabiltzaileen zereginak
+assigns_toomany=Zure sisteman posta elektroniko gehiegi daude orrialde honetan bistaratzeko.
+assigns_go=Aurkitu bat datozen mezu elektronikoak:
+assigns_address=Posta helbidera
+assigns_user=Unix erabiltzailea
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=Hasiera direktorio
+assigns_desc=Posta erabiltzaileen esleipenek Unix erabiltzaileen zerrendan definitzen ez diren erabiltzaileentzako postontzi kaxak sortzeko aukera ematen dute. Esleipen bakoitzak hautatutako erabiltzaile edo erabiltzaile eredu baten eredua bidaliko du, benetako Unix erabiltzailearen postontzira bidaliko balitz bezala.
+assigns_delete=Ezabatu hautatutako posta-erabiltzaileak
+
+sform_edit=Editatu posta-erabiltzailea
+sform_create=Sortu posta-erabiltzailea
+sform_address=Helbide-izena
+sform_mode0=Erabiltzaile izena
+sform_mode1=Erabiltzaile-izenak hasita
+sform_user=Unix erabiltzailea
+sform_uid=UID
+sform_gid=GID
+sform_home=Hasiera direktorio
+
+ssave_err=Huts egin du posta erabiltzailea gordetzean
+ssave_eaddress=Helbide-izen falta edo baliogabea
+ssave_euser=Unix-eko erabiltzaile falta edo baliogabea
+ssave_euid=UID falta edo baliogabea
+ssave_egid=GID falta edo baliogabea
+ssave_ehome=Etxeko direktorio falta edo baliogabea
+
+sdelete_err=Ezin izan da posta-erabiltzaileak ezabatu
+
+delete_egone=Ez dago ilaran mezurik
+delete_ebogus=Ilaren fitxategi izen baliogabea
+
+boxes_title=Erabiltzaileen postontziak
+boxes_user=Erabiltzaileak
+boxes_size=Postontzien tamaina
+boxes_none=Ez dago posta
+boxes_return=postontzi
+boxes_sent=Bidalitako mezuak
+boxes_ecannot=Ezin duzu mezu elektronikoa irakurri
+boxes_toomany=Erabiltzaile gehiegi daude zure sisteman postontzi guztiak zerrendatzeko.
+boxes_go=Ikusi mezua erabiltzailearentzat:
+
+mail_title=Erabiltzailearen helbide elektronikoa
+mail_from=aurrera
+mail_date=data
+mail_subject=Gaia
+mail_to=to
+mail_cc=cc
+mail_bcc=Bcc
+mail_pri=Lehentasuna
+mail_highest=Highest
+mail_high=High
+mail_normal=normal
+mail_low=Behe
+mail_lowest=baxuena
+mail_for=$1 ean
+mail_for2=$1 erabiltzailearentzat
+mail_sent=Bidalitako posta-zerrendan
+mail_size=Tamaina
+mail_delete=Ezabatu
+mail_compose=Idatzi
+mail_return=erabiltzailearen postontzia
+mail_pos=$1 eta $2 mezuak $3 
+mail_none=Postontzi honek ez du mezurik
+mail_ecannot=Ez duzu baimenik erabiltzaile honen mezu elektronikoa irakurtzeko
+mail_all=Hautatu guztiak
+mail_invert=Alderantzizko hautapena
+mail_search=Bilatu non mezuak
+mail_body=Gorputzeko
+mail_match=partiduak
+mail_ok=Search
+mail_nonefrom=Bat ere ez
+mail_mark=Markatu:
+mail_mark0=Irakurri gabeko
+mail_mark1=Irakurri
+mail_mark2=Berezia
+mail_forward=Aurrera
+mail_rfc=Lerrotik
+mail_move=Mugitu:
+mail_eexists=Mezua ez da jada!
+
+view_title=Irakurri posta elektronikoa
+view_desc=$1 mezua $2 an
+view_desc2=$1 mezua $2 erabiltzailearentzat
+view_desc3=$1 mezua
+view_sent=Bidalitako posta zerrendan $1 mezua
+view_qdesc=$1 mezuko ilaran
+view_headers=Posta goiburuak
+view_allheaders=Ikusi goiburu guztiak
+view_noheaders=Ikusi oinarrizko goiburuak
+view_attach=eranskinak
+view_reply=Erantzun
+view_reply2=Guztiei erantzun
+view_enew=Editatu berria gisa
+view_forward=Aurrera
+view_delete=Ezabatu
+view_strip=Kendu Eranskinak
+view_ecannot=Ez duzu baimenik erabiltzaile honen mezu elektronikoa irakurtzeko
+view_mark=Markatu mezua honela:
+view_mark0=Irakurri gabeko
+view_mark1=Irakurri
+view_mark2=Berezia
+view_return=jatorrizko posta elektronikoa
+view_sub=Erantsitako posta elektronikoa
+
+compose_title=Idatzi posta elektronikoa
+reply_title=Erantzun Posta elektronikora
+forward_title=Birbidali posta elektronikoa
+enew_title=Editatu helbide elektronikoa
+reply_headers=Posta goiburuak
+reply_attach=Birbidaliko eranskinak
+reply_mailforward=Birbidalitako mezuak
+reply_attach2=Bezeroaren eta zerbitzariaren aldetik eranskinak
+reply_send=Bidali Posta
+reply_ecannot=Erabiltzaile gisa ezin duzu posta elektronikoz bidali
+
+send_err=Ezin izan da posta bidaltzean huts egin
+send_eto=Falta helbidean
+send_efrom=Helbidea ez da falta
+send_title=Posta bidalita
+send_ok=Posta $1 era bidali da
+send_ecannot=Erabiltzaile gisa ezin duzu posta elektronikoz bidali
+send_esmtp=$1 SMTP komandoak huts egin du : $2 
+send_efile=$1 fitxategi erantsia ez da existitzen
+send_eattach=Eranskinetan ezin dira $1 kB-ko neurria baino gehiago izan.
+send_eperms=$1 erabiltzaileak ezin du $2 irakurri
+send_eperms2=Ezin duzu $1 fitxategia bidali
+send_epath=Sendmail $1 exekutagarria ez da existitzen.
+
+delete_title=Ezabatu Posta
+delete_rusure=Ziur $1 hautatutako mezuak $2 ezabatu nahi duzula? Baliteke denbora pixka bat igortzea posta elektronikoko fitxategi handi baterako. Ezabatzea amaitu arte, ez da beste ekintzarik egin behar.
+delete_rusure2=Ziur mezu hau $1 etik ezabatu nahi duzula? Baliteke denbora pixka bat igortzea posta elektronikoko fitxategi handi baterako. Ezabatzea amaitu arte, ez da beste ekintzarik egin behar.
+delete_ok=Ezabatu orain
+delete_ecannot=Erabiltzaile honi posta elektronikoa ezabatzeko baimena duzu orain
+delete_enone=Ez da posta elektronikoa hautatu ezabatzeko
+delete_emnone=Ez da markarik hautatu markatzeko
+delete_nobutton=Ez da botoia sakatu
+
+search_title=Bilaketaren emaitzak
+search_ecannot=Ez duzu baimenik erabiltzaile honen mezu elektronikoa bilatzeko
+search_ematch=Testua sartu behar duzu aurka egiteko.
+search_efield=Bilaketa mota bat aukeratu behar duzu.
+search_none=Ez da mezuik aurkitu.
+search_results2=$1 mezuak $2 bat datozen.
+search_results3=$1 mezuak $2 ez datozen mezuak.
+
+match_from=Noiztik: partiduak
+match_subject=Gaia: partiduak
+match_to=Nori: partiduak
+match_cc=Cc: partiduak
+match_date=Data: partiduak
+match_body=Gorputz partiduak
+match_size=Neurria baino handiagoa da
+match_headers=Goiburuekin bat
+match_=-----------------
+match_!from=Nori ez dator bat
+match_!subject=Gaia: ez dator bat
+match_!to=Norekin ez dator bat
+match_!cc=CC: ez dator bat
+match_!date=Data: ez dator bat
+match_!body=Gorputza ez dator
+match_!size=Neurria baino txikiagoa da
+match_!headers=Goiburuak ez datoz bat
+
+delq_titles=Mezuak ezabatzen
+delq_rusure=Ziur zaude $1 hautatutako ilarako mezuak ezabatu nahi dituzula?
+delq_confirm=Ezabatu mezuak

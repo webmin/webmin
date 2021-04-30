@@ -1,0 +1,68 @@
+acl_ggid=Gruppi con GID nell'intervallo
+
+egroup_listalldesc=Fare clic su questo pulsante per visualizzare un elenco di tutti i filesystem su cui questo gruppo ha quote disco, con collegamenti per modificarle.
+
+euser_listalldesc=Fare clic su questo pulsante per visualizzare un elenco di tutti i filesystem su cui questo utente dispone di quote disco, con collegamenti per modificarle.
+
+gfilesys_editdesc=Visualizza e modifica le quote per questo gruppo su alcuni altri filesystem su cui attualmente non ha quote.
+gfilesys_copydesc=Copia i limiti di quota per questo gruppo su tutti i filesystem su alcuni o su tutti gli altri gruppi.
+gfilesys_enone=Nessun nome di gruppo inserito
+
+index_supported=Quote non ancora supportate
+index_enable2=Abilita supporto
+index_euserdesc=Immettere o selezionare un utente e fare clic su questo pulsante per visualizzare le quote su tutti i file system.
+index_egroupdesc=Immettere o selezionare un gruppo e fare clic su questo pulsante per visualizzare le quote su tutti i file system.
+
+lgroups_tablist=Elenco dei gruppi
+lgroups_mass=Aggiorna gruppi selezionati
+lgroups_to=Destinazione e-mail
+lgroups_tosame=Cassetta postale con lo stesso nome del gruppo
+lgroups_tofixed=Indirizzo 1
+lgroups_emailheader=Email ai gruppi che si avvicinano alla quota
+lgroups_email=Invia email ai gruppi?
+lgroups_tovirt=Proprietario del dominio Virtualmin
+
+ufilesys_editdesc=Visualizza e modifica le quote per questo utente su alcuni altri filesystem su cui attualmente non ha quote.
+ufilesys_copydesc=Copia i limiti di quota per questo utente su tutti i filesystem su alcuni o tutti gli altri utenti.
+ufilesys_enone=Nessun nome utente inserito
+
+lusers_tablist=Lista degli utenti
+lusers_tabdefault=Quote predefinite
+lusers_tabemail=Notifiche di posta elettronica
+lusers_pc_sblocks=Morbido %
+luser_virtualmin=Ottieni dominio da Virtualmin?
+lusers_mass=Aggiorna utenti selezionati
+lusers_cc=Invia anche e-mail a
+lusers_nocc=Nessuno
+
+log_email_user=Modifica le opzioni email dell'utente su $1 
+log_email_group=Modifica le opzioni di posta elettronica di gruppo su $1 
+log_support=Supporto quota abilitato per $1 
+
+email_ecc=Cc mancante o non valido: indirizzo
+gemail_msg=L'utilizzo del disco per il gruppo $1 sul filesystem $2 ha raggiunto $3% della quota consentita. $4 di spazio su disco è in uso, su un massimo di $5.
+gemail_subject=Spazio su disco esaurito
+email_eto=Indirizzo email di destinazione mancante
+
+umass_title=Aggiorna quote utente
+umass_header=Modifiche alla quota da applicare agli utenti selezionati
+umass_sblocks=Limite soft block
+umass_hblocks=Limite del blocco rigido
+umass_sfiles=Limite di file software
+umass_hfiles=Limite di file fissi
+umass_leave=Lascia invariato
+umass_unlimited=Impostare su illimitato
+umass_set=Impostato
+umass_ok=Aggiorna utenti
+umass_esblocks=Limite di blocco software mancante o non valido
+umass_ehblocks=Limite di hard disk mancante o non valido
+umass_esfiles=Limite di file software mancante o non valido
+umass_ehfiles=Limite file hard mancante o non valido
+umass_count=Le seguenti modifiche si applicheranno a $1 utenti selezionati.
+umass_err=Impossibile aggiornare le quote utente
+
+gmass_title=Aggiorna quote di gruppo
+gmass_header=Modifiche alla quota da applicare ai gruppi selezionati
+gmass_count=Le modifiche seguenti verranno applicate a $1 gruppi selezionati.
+gmass_ok=Gruppi di aggiornamento
+gmass_err=Impossibile aggiornare le quote di gruppo

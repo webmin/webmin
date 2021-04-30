@@ -1,0 +1,200 @@
+index_title=מוניטור שירות MON
+index_return=מדד MON
+index_edir=ספריית MON $1 אינה קיימת. אולי MON לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+mon_global_title=תצורה כוללת של מגוון Varibles
+mon_conf_title=תצורה בסיסית
+mon_status_title=סטטוס תפעולי
+hostgroups_title=קבוצות תצורה של MON - קבוצות מארחים
+services_title=קבוצות שעונים-הגדרות שירות
+
+head_hostgroups=קבוצות מארחים ושירותים
+head_groups=שם קבוצת מארח
+head_members=חברי קבוצת מארח
+head_services=שירותי קבוצת מארח לצפייה
+head_service=שירות לצפייה
+head_param=פרמטרי שירות
+head_watch=צופה בקבוצה?
+head_monauth=ספק אימות עבור MONCMD
+head_usr=שם משתמש
+head_pass=סיסמה
+head_mand=(פרמטרים ב"צבע אדום "הם חובה)
+
+err_nomon=החבילה 'שני' אינה מותקנת במערכת
+err_nomonconf=קובץ התצורה של MON $1 לא נמצא במערכת שלך. אולי MON לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+err_nowatch=לא נבחרו קבוצות שעונים. בחר קבוצת שעונים אחת לפחות כדי להמשיך.
+err_noserv=לא נבחרו שירותים בקבוצת השעונים
+err_nomemb=לא נבחרו מארחים/חברים בקבוצת השעונים
+err_monrun=MON לא פועל במכונה המארחת. אנא התחל את MON.
+stop_err=עצירת MON נכשלה
+stop_epid=כבר לא רץ
+start_err=ההפעלה של MON נכשלה
+restart_err=ההפעלה מחדש של MON נכשלה
+restart_epid=השגת PID נכשלה
+
+other=אחר (חלל מופרד)
+next=הבא
+mon_stat=מצב חודש
+mon_off=שירותי MON לא התחילו
+mon_start=התחל את שירותי MON
+mon_stop=עצור את שירותי MON
+mon_restart=הפעל מחדש את שירותי MON
+mon_startdesc=לחץ על כפתור זה כדי להפעיל את שרת ה- MON. עד שתתחיל, לא יבוצע ניטור מוגדר.
+mon_stopdesc=לחץ על כפתור זה כדי לעצור את שרת ה- MON. בעת עצירה, הניטור המוגדר ייפסק.
+mon_restartdesc=לחץ על כפתור זה כדי להחיל את התצורה הנוכחית של MON על ידי הפעלה מחדש של תהליך השרת.
+line=(אחד בכל שורה)
+save_apply=שמור והחל
+watch=קבוצת שעונים
+members=חברים
+def_perargs=wd {שבת-שמש}
+
+def_desc=תיאור
+def_inter=מרווח
+def_mon=צג
+def_dep=dpend
+def_per=פרק זמן
+def_alert=ערני
+def_alertevr=alertevery
+def_alertaft=אחר כך
+def_alertstr=סטארט-אפלט
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=מלכודת
+def_rand=סגר
+def_exclhost=לא לכלול_מארחים
+def_exclper=אי הכללה של תקופה
+
+groups_title=קבוצות מארחות
+groups_group=שם קבוצה
+groups_members=מארח חברים
+
+watches_title=רשימות צפייה
+watches_group=קבוצת צופים
+watches_services=השירותים הנצפים
+watches_sadd=הוסף שירות ..
+watches_add=הוסף רשימת צפייה לקבוצה :
+watches_return=רשימות שעונים
+watches_none=טרם הוגדרו רשימות צפייה.
+
+global_title=אופציות עולמיות
+global_header=אפשרויות תצורה גלובליות של MON
+global_maxprocs=תהליכים מקסימליים של MON
+global_histlength=אורך היסטוריית האירועים
+global_alertdir=מדריך לתוכניות התראה
+global_mondir=עקוב אחר ספריית התוכניות
+global_authtype=סוג האימות
+global_authtype_=ברירת מחדל
+global_authtype_getpwnam=שיחות מערכת
+global_authtype_userfile=קובץ משתמשים MON
+global_authtype_shadow=קובץ צל
+global_userfile=קובץ המשתמש של MON
+global_emaxprocs=מספר חסר של תהליכים של MON או לא תקף
+global_ehistlength=אורך היסטוריית האירועים חסר או לא תקף
+global_ealertdir=ספריית תוכניות התראה חסרה או לא חוקית
+global_emondir=ספריית תוכניות צג חסרה או לא חוקית
+global_euserfile=קובץ המשתמשים של MON חסר
+
+watch_title=ערוך את רשימת הצפייה
+watch_header=פרטי שעון של הקבוצה המארחת
+watch_group=הקבוצה המארחת לצפייה
+watch_services=השירותים הנצפים
+watch_service=שם השירות
+watch_monitor=צג לשימוש
+watch_interval=בדוק כל
+watch_periods=תקופות פיקוח
+
+service_title=הוסף שירות
+service_title2=שירות עריכה
+service_header=צפו בפרטי השירות
+service_name=שם השירות
+service_interval=בדוק כל
+service_desc=תיאור
+service_units_s=שניות
+service_units_m=דקות
+service_units_h=שעה (ות
+service_units_d=ימים
+service_units_w=שבועות
+service_monitor=באמצעות צג
+service_mon1=צג רגיל
+service_mon0=צג אחר ..
+service_args=צג פרמטרים
+service_period=תקופת המעקב $1 
+service_days=ימים לבדוק
+service_hours=שעות לבדוק
+service_all=את כל
+service_pstr=מפרט לתקופה
+service_new=תקופת ניטור חדשה
+service_alerts=התראות לתקופה
+service_alert=התראה
+service_atype=לרוץ מתי
+service_atype_alert=השירות יורד
+service_atype_upalert=שירותים עולה
+service_atype_startupalert=MON מתחיל
+service_aargs=פרמטרים נוספים
+service_every=שלח התראה
+service_every_def=בכל פעם שמוניטור מופעל
+service_every_time=כל
+service_num=התראות מרביות לשליחה
+service_unlimited=ללא הגבלה
+service_after=כשלים לפני ההתראה
+service_immediate=מיד
+service_after_num=לאחר כישלונות $1 
+service_aftertime=בפרק זמן
+service_newperiod=הוסף תקופה חדשה
+service_delperiod=מחק תקופה זו
+service_err=שמירת השירות נכשלה
+service_ename=שם שירות חסר או לא חוקי
+service_einterval=מרווח בדיקה חסר או לא חוקי
+service_eother=צג חסר או לא חוקי
+service_ehour=שעה חסרה או לא חוקית לתקופה $1 (חייבת להיות כמו 9 בבוקר או 17:00)
+service_eperiod=אין ימים ושעות שצוינו לתקופה $1 
+service_eevery=מרווח התראת שירות חסר או לא תקף
+service_eafter=מספר כישלונות חסר או לא חוקי לפני ההתראה
+service_enum=התראות מרביות חסרות או לא חוקיות שנשלחו
+service_epstr=מפרט תקופה חסר
+service_known0=<tt>זמן :: תקופה</strong> מחרוזת
+service_known1=ימים ושעות שצוינו
+service_known2=תקופה מוגדרת
+
+status_title=מצב חודש
+status_ecgi=תוכנית ה- CGI של סטטוס MON $1 אינה קיימת. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+status_eperl=תוכנית CGI סטטוס MON דורשת את המודול $1 פרל. <a href='$2'>לחץ כאן</a> כדי להתקין אותו ישירות מ- CPAN.
+status_esame=תוכנית ה- CGI של סטטוס MON $1 הוגדרה לתסריט <tt>mon.cgi</tt> במודול Webmin זה, ולא לתוכנית CGI שמגיעה עם MON. התאם את <a href='$2'>תצורת המודול</a> לשימוש בנתיב הנכון.
+
+users_title=משתמשי חודש
+users_etype=לא ניתן לערוך את רשימת משתמשי MON מאחר ו- MON אינה מוגדרת כרגע לשימוש בה לצורך אימות בדף <a href='$1'>אפשרויות גלובליות</a>.
+users_header=משתמשים מורשים של MON ב- $1 
+users_nousers=לא הוגדרו משתמשים ב- MON ב- $1.
+users_add=צור משתמש חדש.
+users_return=רשימת משתמשים MON
+
+user_create=צור משתמש MON
+user_edit=ערוך משתמש MON
+user_header=פרטי משתמש MON
+user_user=שם משתמש
+user_pass=סיסמה
+user_leave=השאר ללא שינוי
+user_err=שמירת המשתמש נכשלה
+user_euser=שם משתמש חסר או לא חוקי
+user_esame=משתמש עם אותו שם כבר קיים
+
+auth_title=פקודות לקוח
+auth_desc=דף זה מאפשר לך לשלוט על פקודות ה- MON שניתן להפעיל על ידי אותם משתמשים בעת שימוש בתוכנות הלקוח.
+auth_cmd=פקודה MON
+auth_users=משתמשים מורשים
+auth_none=אף אחד
+auth_all=כולם
+auth_sel=רק משתמשים
+auth_err=שמירת פקודות הלקוח נכשלה
+auth_eusers=אין משתמשים שנכנסים לפקודה $1 
+
+periods_title=תקופות מוגדרות
+periods_period=שם תקופה
+periods_times=ימים ושעות
+periods_alldays=כל הימים
+periods_allhours=כל השעות
+periods_err=שמירת תקופות מוגדרות נכשלה
+periods_ename='$1' אינו שם תקף
+periods_ehour=שעה חסרה או לא חוקית לתקופה $1 (חייבת להיות כמו 9 בבוקר או 17:00)
+
+show_title=סטטוס תפעולי
+show_ecgi=תוכנית מצב MON $1 אינה קיימת. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.

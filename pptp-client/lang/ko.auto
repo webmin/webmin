@@ -1,0 +1,112 @@
+index_title=PPTP VPN 클라이언트
+index_epptp=시스템에서 PPTP 클라이언트 프로그램 $1 을 (를) 찾을 수 없습니다. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+index_eppp=PPP 서버 프로그램 $1 이 (가) 시스템에 설치되어 있지 않습니다. PPTP는 작동에 의존합니다.
+index_eoptions=글로벌 PPTP PPP 옵션 파일 $1 이 (가) 없습니다. 다른 파일을 사용하거나 전혀 사용하지 않도록이를 만들거나 <a href='$2'>모듈 구성</a>을 조정하십시오.
+index_header=정의 된 터널
+index_none=아직 PPTP 터널이 정의되지 않았습니다.
+index_tunnel=터널 $1 
+index_add=새로운 PPTP VPN 터널을 추가하십시오.
+index_conn=연결 :
+index_pass=선택적 비밀번호 사용 :
+index_conndesc=현재 구성을 사용하여 선택한 PPTP VPN 터널을 연결하려면이 버튼을 클릭하십시오.
+index_disc=연결 해제 :
+index_discdesc=선택한 현재 활성화 된 PPTP VPN 터널의 연결을 끊고 터널을 통과하는 모든 경로를 제거하려면이 버튼을 클릭하십시오.
+index_return=PPTP 터널 목록
+index_opts=글로벌 PPP 옵션 편집
+index_optsdesc=모든 PPTP VPN 터널에 적용되는 PPP 옵션을 편집하려면이 버튼을 클릭하십시오.
+index_version=PPPd 버전 $1 
+index_boot=부팅시 연결 :
+index_noboot=&lt;연결하지 마십시오&gt;
+index_bootdesc=부팅시 선택한 PPTP VPN 연결의 시작 여부를 제어하려면이 옵션을 변경하십시오.
+
+disc_err=터널 연결을 끊지 못했습니다
+disc_egone=더 이상 활성화되지 않음
+disc_ekill=pppd 프로세스를 종료하지 못했습니다
+disc_done=터널 $1 의 연결이 끊어졌습니다.
+
+conn_err=터널을 연결하지 못했습니다
+conn_egone=터널이 더 이상 존재하지 않습니다
+cone_ealready=이미 연결
+conn_einvalid=구성 파일에 서버 IP 주소가 없습니다.
+conn_title=터널 연결
+conn_cmd=$1 명령으로 PPTP 연결 설정
+conn_ok=.. 인터페이스 $1 을 (를) 사용하여 연결이 성공적으로 활성화되었습니다. 로컬 주소는 $2 이고 원격 주소는 $3 입니다.
+conn_timeout=.. 연결에 실패! 자세한 내용은 아래 로그 메시지를 확인하십시오.
+conn_routes=명령으로 경로 추가하기 ..
+conn_mppe=VPN 암호화를위한 MPPE 프로토콜에는 PPP 데몬 및 커널 지원이 필요합니다. 그러나 위의 오류는 시스템에서 하나 또는 둘 다를 사용할 수 없음을 나타냅니다. PPTP 서버에 MPPE가 필요하지 않은 경우 <a href='$1'>전역 PPP 옵션</a> 페이지에서 이와 관련된 모든 옵션을 해제하십시오.
+
+edit_title1=PPTP 터널 추가
+edit_title2=PPTP 터널 편집
+edit_header=PPTP VPN 터널 옵션
+edit_name=터널 이름
+edit_server=서버에 연결
+edit_login=사용자로 로그인
+edit_same=시스템 호스트 이름
+edit_pass=비밀번호로 로그인
+edit_remote=서버 이름
+edit_auto=자동적 인
+edit_adddef=기본 경로를 추가 하시겠습니까?
+edit_def1=다른 쪽 끝을 통해
+edit_def2=게이트웨이를 통해 ..
+edit_deldef=기존 기본 경로를 삭제 하시겠습니까?
+edit_routes=연결 후 추가 할 경로
+edit_type=유형
+edit_type0=&nbsp;
+edit_type1=회로망
+edit_type2=단일 호스트
+edit_net=네트워크 또는 호스트
+edit_mask=넷 마스크
+edit_gw=게이트웨이를 통해
+edit_gw_def=다른 끝
+edit_unknown=다른 <tt>경로</tt> 명령
+edit_file=PPP 옵션 파일
+edit_none=없음
+edit_global=표준 글로벌 파일
+edit_ofile=다른 파일 ..
+
+save_err=터널을 저장하지 못했습니다
+save_ename=터널 이름이 없습니다.
+save_eserver=연결할 서버가 없거나 유효하지 않습니다
+save_elogin=로그인 이름이 없거나 잘못되었습니다
+save_eremote=원격 서버 이름이 없거나 유효하지 않습니다
+save_edef=기본 경로 게이트웨이가 없거나 잘못되었습니다
+save_enet=경로 $1 의 잘못된 네트워크 주소
+save_emask=경로 $1 의 유효하지 않은 넷 마스크
+save_egw=경로 $1 의 네트워크에 대한 잘못된 게이트웨이
+save_ehost=경로 $1 의 유효하지 않은 호스트 IP 주소
+save_emask2=호스트 경로 $1 에 넷 마스크가 필요하지 않습니다
+save_egw2=경로 $1 의 호스트에 대한 잘못된 게이트웨이
+save_erename=터널 파일 이름을 바꾸지 못했습니다.
+save_eclash=동일한 이름의 터널 또는 PPP 피어가 이미 존재합니다
+save_efile=PPP 옵션 파일이 없거나 잘못되었습니다
+
+opts_title=글로벌 PPP 옵션
+opts_desc=아래 설정은 $1 에서 가져 오며 표준 글로벌 PPP 옵션 파일을 사용하도록 설정된 모든 터널에 적용됩니다.
+opts_header=모든 터널에 대한 PPP 옵션
+opts_mtu=최대 전송 패킷 크기
+opts_mru=최대 수신 패킷 크기
+opts_err=글로벌 PPP 옵션을 저장하지 못했습니다
+opts_emtu=최대 전송 패킷 크기가 없거나 유효하지 않습니다
+opts_emru=최대 수신 패킷 크기가 없거나 유효하지 않습니다
+opts_msdesc=아래 옵션은 Windows VPN 서버에서 사용되는 MPPE 암호화를 활성화합니다. 그러나 MPPE는 PPP 데몬과 운영 체제 커널 모두에서 지원이 필요합니다.
+
+mppe_mppe-40=40 비트 MPPE 암호화를 사용 하시겠습니까?
+mppe_mppe-128=128 비트 MPPE 암호화를 사용 하시겠습니까?
+mppe_mppe-stateless=상태 비 저장 MPPE 모드를 사용 하시겠습니까?
+mppe_mppe=MPPE 암호화를 사용 하시겠습니까?
+mppe_m2=사용해야합니다
+mppe_m0=쓸 수 없다
+mppe_d0=비활성화
+mppe_d1=허용됨
+mppe_mppe-stateful=상태 저장 MPPE 모드를 사용 하시겠습니까?
+mppe_old=경고-PPP 데몬이 새 스타일 지시문을 지원하더라도 구식 MPPE 지시문 $1 이 구성 파일에 있습니다.
+mppe_new=경고-PPP 디먼이 이전 스타일 지시문 만 지원하더라도 새로운 스타일 MPPE 지시문 $1 이 구성 파일에 있습니다.
+
+log_create=PPTP 터널 $1 생성
+log_update=수정 된 PPTP 터널 $1 
+log_delete=PPTP 터널 $1 을 (를) 삭제했습니다.
+log_conn=연결된 터널 $1 
+log_conn_l=로컬 주소가 $2 인 터널 $1 을 (를) 연결했습니다.
+log_failed=터널 $1 에 연결하지 못했습니다
+log_disc=연결이 끊어진 터널 $1 
+log_opts=편집 된 글로벌 PPP 옵션

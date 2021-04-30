@@ -1,0 +1,59 @@
+index_title=Naplánované příkazy
+index_header=Nově naplánovaný příkaz
+index_user=Spustit pod uživatelem
+index_date=Datum spuštění
+index_time=Čas spuštění
+index_cmd=Příkazy ke spuětění
+index_id=ID úlohy
+index_exec=Spustit v
+index_created=Vytvořeno na
+index_dir=Spustit v adresáři
+index_return=Seznam příkazů
+index_cdate=Aktuální datum
+index_ctime=Aktuální čas
+index_allow=Uživatelé, kteří mohou naplánovat příkazy
+index_amode=Povolení uživatelé
+index_amode0=Všichni unix uživatelé
+index_amode1=Pouze vybraní uživatelé ..
+index_amode2=Všichni kromě vybraných uživatelů ..
+index_delete=Přerušit vybrané příkazy
+
+edit_title=Naplánovaný příkaz
+edit_cmd=Uplný skript ke spuštění
+edit_shortcmd=Příkaz ke spuštění
+edit_header=Detaily naplánovaného příkazu
+edit_delete=Stornovat tento příkaz
+edit_run=Ihned spustit
+edit_ejob=Naplánovaný příkaz již neexistuje!
+edit_ecannot=Nemáte oprávnění editovat naplánovaný příkaz
+edit_showfull=Zobrazit celý skript.
+
+create_err=Chyba při vytváření naplánovaného příkazu
+create_euser=Chybějící nebo nesprávné jméno uživatele
+create_edate=Chybějící nebo nesprávné datum nebo čas
+create_ecmd=Nejsou vloženy žádné příkazy
+create_efuture=Uveden starý datum a čas
+create_edir=Chybějící nebo nesprávný adresář
+create_ecannot=Nemáte oprávnění vytvořit naplánované příkazy pro tohoto uživatele
+create_eallow=Daný uživatel nemůže spustit naplánované příkazy
+
+delete_err=Chyba při stornování příkazu
+delete_egone=Příkaz právě běží nebo je mazán
+
+acl_users=Může editovat naplánované příkazy pro
+acl_all=Všichni uživatelé
+acl_this=Aktuýlního Webmin uživatele
+acl_only=Pouze uživatele
+acl_except=Všichni uživatelé kromě
+acl_allow=Je možné upravovat At uživatele?
+
+run_title=Spuštěný příkaz
+run_output=Výstup z naplánovaného příkazu ..
+run_none=Nebyl generován žádný výstup
+
+allow_err=Chyba při ukládání povolených uživatelů
+allow_ecannot=Nemáte oprávnění spravovat povolené uživatele
+allow_eusers=Nebyli vloženi žádní uživatelé
+
+deletes_err=Chyba při opuštění příkazů
+deletes_enone=Nic nebylo vybráno

@@ -1,0 +1,46 @@
+index_title=برنامه های نوع MIME
+index_none=هنوز هیچ برنامه کنترل کننده نوع MIME تعریف نشده است.
+index_add=یک برنامه جدید از نوع MIME اضافه کنید.
+index_type=نوع MIME
+index_program=برنامه کنترل
+index_cmt=شرح
+index_delete=انتخاب شده را پاک کن
+index_disable=غیرفعال شده انتخاب شده است
+index_enable=انتخاب را فعال کنید
+index_enabled=فعال شده است؟
+index_return=لیست برنامه ها
+
+edit_title1=برنامه MIME Type ایجاد کنید
+edit_title2=برنامه نوع MIME را ویرایش کنید
+edit_header=جزئیات برنامه کنترل کننده نوع MIME
+edit_type=نوع MIME
+edit_enabled=فعال شده است؟
+edit_program=برنامه کنترل
+edit_cmt=شرح
+edit_egone=برنامه دیگر وجود ندارد!
+edit_test=دستور تست
+edit_none=هیچ کدام (همیشه از برنامه استفاده کنید)
+edit_term=نمایش خروجی در ترمینال؟
+edit_copious=بازده زیادی تولید می کنید؟
+edit_desc=توضیحات نوع MIME
+
+save_err=برنامه نوع MIME ذخیره نشد
+save_etype=نوع MIME وجود ندارد یا نامعتبر است
+save_eprogram=برنامه کنترل کننده گم شده
+save_eclash=برنامه فعال شده برای نوع MIME وارد شده در حال حاضر وجود دارد
+save_etest=دستور تست نامعتبر یا نامعتبر است
+save_edesc=توضیحات نامعتبر از نوع MIME
+
+delete_err=برنامه های نوع MIME حذف نشد
+disable_err=غیرفعال کردن برنامه های نوع MIME انجام نشد
+disable_eclash=یک برنامه نوع MIME غیرفعال برای$1 از قبل وجود دارد
+enable_err=برنامه های نوع MIME فعال نشد
+enable_eclash=یک برنامه نوع MIME فعال برای$1 در حال حاضر وجود دارد
+delete_enone=هیچ یک انتخاب نشده است
+
+log_delete_mailcap=برنامه نوع MIME را برای$1 حذف کنید
+log_create_mailcap=برنامه نوع MIME برای$1 ایجاد شد
+log_modify_mailcap=برنامه نوع MIME اصلاح شده برای$1
+log_delete_mailcaps=برنامه های$1 MIME حذف شدند
+log_disable_mailcaps=غیرفعال کردن$1 برنامه های نوع MIME
+log_enable_mailcaps=برنامه های$1 MIME را فعال کنید

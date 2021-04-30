@@ -1,0 +1,103 @@
+index_title=ハートビートモニター
+index_return=ハートビートモニター
+index_edir=ハートビート構成ディレクトリ $1は存在しません。ハートビートがインストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
+index_start=ハートビートモニターを開始する
+index_startmsg=このボタンをクリックして、ハートビートモニタープロセスを開始します。これにより、現在の構成でシステムの自動サービスフェールオーバーが有効になります。
+index_apply=変更を適用
+index_applymsg=このボタンをクリックして、実行中のハートビートモニタープロセスに現在の構成を強制的に再読み込みさせます。
+index_eha_cf=ハートビート構成ファイル $1がシステムで見つかりませんでした。まだコピーされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
+index_eharesources=リソースファイル $1がシステムで見つかりませんでした。まだコピーされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
+index_eauthkeys=認証キーファイル $1がシステムで見つかりませんでした。まだコピーされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
+index_ereq_resource_cmd=他のノード（$1）からリソースを要求するスクリプトがシステムに見つかりませんでした。まだコピーされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
+index_version=ハートビートバージョン $1
+index_noversion=警告-システムにインストールされているハートビートのバージョンを自動的に検出できませんでした。 <a href='$1'>モジュール設定</a>ページで設定する必要があります。
+index_status=ハートビートステータス
+
+conf_title=構成オプション
+conf_header=ハートビート構成オプション
+conf_serials=シリアルハートビートポート
+conf_baud=シリアルポートのボーレート
+conf_bcasts=イーサネットハートビートインターフェイス
+conf_none=なし
+conf_udpport=UDPハートビートポート
+conf_mcast=マルチキャストハートビートデバイス
+conf_mcastv=デバイス $1、グループ $2、ポート $3、TTL $4、ループバック $5
+conf_enabled=有効化
+conf_disabled=無効
+conf_keepalive=ハートビート間の時間
+conf_nice_failback=素敵なフェールバック動作
+conf_secs=秒
+conf_deadtime=ノードがデッドとみなされるまでの時間
+conf_watchdog=ウォッチドッグデバイスファイル
+conf_node=クラスター内のホスト
+conf_logfile=ハートビートログファイル
+conf_logfacility=syslogログ機能
+conf_initdead=初期デッドタイム
+conf_ok=保存オプション
+conf_err=オプションを保存できませんでした
+conf_ebaud=ボーレートが欠落しているか無効です
+conf_ebcast=ハートビートブロードキャストインターフェイスが入力されていません
+conf_ebcastif=「$1」は有効なブロードキャストインターフェイスではありません
+conf_eudpport=ハートビートポートがないか、無効です
+conf_ekeepalive=ハートビート間の時間がないか無効です
+conf_edeadtime=デッドタイムが欠落しているか無効です
+conf_ewatchdog=ウォッチドッグデバイスファイルが存在しないか存在しない
+conf_enonode=クラスターホストが入力されていません
+conf_ethisnode=このホスト $1はクラスターホストリストにありません
+conf_elogfile=ログファイル名がないか、無効です
+conf_einitdead=初期デッドタイムが欠落しているか無効です
+conf_einitdead2=最初のデッドタイムは、ノードがデッドとみなされるまでの時間の少なくとも2倍である必要があります
+conf_emcast_dev=マルチキャストデバイスが見つからないか無効です
+conf_emcast_ip=マルチキャストグループアドレスが欠落しているか無効です
+conf_emcast_port=マルチキャストポート番号が欠落しているか無効です
+conf_emcast_ttl=マルチキャストの存続時間の欠落または無効
+conf_auto_on=$ {conf_enabled}
+conf_auto_off=$ {conf_disabled}
+conf_auto_legacy=レガシーモード
+conf_auto_=$ {デフォルト}
+
+res_title=クラスターリソース
+res_node=プライマリノード
+res_ips=IPアドレス
+res_servs=ノードサービス
+res_none=なし
+res_nores=システムにクラスターリソースが定義されていません。
+res_add=クラスターリソースを追加する
+res_return=リソースリスト
+res_active=リソースの状態
+res_getserv=リソースを取得
+res_hbdown=ハートビートダウン
+res_up=アップ
+res_down=ダウン
+
+node_create=クラスターリソースの追加
+node_edit=クラスターリソースの編集
+node_header=クラスターリソースの詳細
+node_node=リソースのプライマリノード
+node_ips=リソースのIPアドレス
+node_ip=IPアドレス
+node_cidr=ネットマスクCIDR
+node_broad=放送アドレス
+node_servs=リソースのサービス
+node_serv=サービス
+node_args=追加の引数
+node_err=クラスターリソースの保存に失敗しました
+node_enone=プライマリノードが見つからないか無効です
+node_eip=「$1」は有効なIPアドレスではありません
+node_ecidr=「$1」は有効なCIDRではありません
+node_ebroad=「$1」は有効なブロードキャストアドレスではありません
+
+auth_title=認証キー
+auth_header=クラスターノード認証
+auth_mode=認証モード
+auth_crc=CRC（セキュリティなし）
+auth_sha1=パスワード付きのSHA1
+auth_md5=パスワード付きのMD5
+auth_err=認証キーを保存できませんでした
+auth_emd5=MD5パスワードがないか無効です
+auth_esha1=SHA1パスワードがないか無効です
+
+start_err=ハートビートを開始できませんでした
+
+apply_err=変更を適用できませんでした
+apply_epid=プロセスはもう実行されていません

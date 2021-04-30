@@ -1,0 +1,115 @@
+index_title=Žurnalo failo pasukimas
+index_econf=Jūsų sistemoje nerastas žurnalo pasukimo konfigūracijos failas $1. Galbūt logrotatas neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_ecmd=Jūsų sistemoje nerasta žurnalo pasukimo programa $1. Galbūt jis neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_eversion=Nepavyko gauti logrotato versijos su komanda $1 : $2 
+index_version=Logrotate versija $1 
+index_add=Pridėkite naują žurnalo failą, kad pasuktumėte.
+index_file=Žurnalo failas
+index_period=Rotacijos laikotarpis
+index_post=Po rotacijos komanda
+index_none=Žurnalų failai dar nebuvo apibrėžti.
+index_global=Redaguoti visuotines parinktis
+index_globaldesc=Spustelėkite šį mygtuką, norėdami redaguoti visiems žurnalų failams taikomą nustatymą ir apibrėžti numatytuosius žurnalų parametrus.
+index_sched=Redaguoti tvarkaraštį
+index_scheddesc=Spustelėkite šį mygtuką, norėdami redaguoti tvarkaraštį, kuriame logotipą valdo „Cron“, arba įgalinti ar išjungti.
+index_nocmd=Nė vienas
+index_notset=Nenustatyta
+index_return=žurnalų failų sąrašas
+index_force=Priverstinis žurnalo pasukimas
+index_forcedesc=Priverskite nedelsiant pasukti visus žurnalų failus, net jei dar nėra laiko.
+index_logrotate=Logrotatas
+index_delete=Ištrinti pasirinktus žurnalo pasukimus
+
+period_daily=Kasdien
+period_weekly=Kas savaitę
+period_monthly=Kas mėnesį
+period_never=Niekada
+period_bytes=baitų
+
+edit_title1=Redaguoti žurnalo failą
+edit_title2=Sukurti žurnalo failą
+edit_header=Pasukta žurnalo failo informacija
+edit_file=Žurnalo failo keliai
+edit_sched=Rotacijos grafikas
+edit_rotate=Laikomų senų rąstų skaičius
+edit_compress=Suspausti senus žurnalo failus?
+edit_delaycompress=Atidėti suspaudimą iki kito ciklo?
+edit_copytruncate=Sutrumpinti žurnalo failą vietoje?
+edit_ifempty=Pasukti net jei žurnalo failas tuščias?
+edit_missingok=Ignoruoti žurnalo failą, jei jo nėra?
+edit_size=Maksimalus dydis prieš sukant
+edit_always=Nepaisoma
+edit_minsize=Mažiausias pasisukimo dydis
+edit_nominsize=Visada
+edit_ext=Pasuktų failų vardų plėtinys
+edit_dateext=Paskirtiems failams naudoti datos pratęsimą
+edit_mail=El. Pašto žurnalo failas prieš ištrinant?
+edit_mailto=Taip, kreiptis
+edit_mailno=Ne, nerašykite el. Paštu
+edit_mailfl=Užregistruokite failą el. Paštu
+edit_mailfirst=Naujausias, kuris buvo ką tik sukamas
+edit_maillast=Seniausia, kurią ketinama ištrinti
+edit_create=Iš naujo sukurti žurnalo failą po pasukimo?
+edit_createas=Taip, naudojant $1 režimą ir priklauso vartotojui $2 ir grupei $3 
+edit_createno=Ne, nekurkite iš naujo
+edit_createsame=Taip, su senais leidimais
+edit_olddir=Laikykite senus pasuktus rąstus
+edit_olddirto=Katalogas
+edit_olddirsame=Tas pats katalogas, kaip žurnalo failas
+edit_errors=Siųsti klaidų pranešimus el. Paštu
+edit_errorsno=Niekas
+edit_errorsto=Adresas arba vartotojas
+edit_post=Komandos paleisti po rotacijos
+edit_pre=Komandos turi bėgti prieš sukimąsi
+edit_default=Numatytasis ($1)
+edit_sharedscripts=Tik paleiskite visų failų scenarijus vieną kartą?
+edit_now=Sukti dabar
+
+global_title=Visuotinės parinktys
+global_header=Numatytosios visų žurnalo failų parinktys
+
+save_err=Nepavyko išsaugoti žurnalo
+save_efile=Trūksta arba netinkamas žurnalo failo vardas
+save_esize=Trūksta arba netinkamas didžiausias dydis
+save_eminsize=Trūksta arba netinkamas minimalus dydis
+save_erotate=Trūksta arba netinkamas maksimalus saugomų senų žurnalų skaičius
+save_ecreatemode=Trūksta arba netinkamas 3 ar 4 skaitmenų aštuonkojų kūrimo būdas
+save_ecreateuser=Trūksta arba netinkamas kūrimo vartotojas
+save_ecreategroup=Trūksta arba netinkama kūrimo grupė
+save_emust1=Įvesdami kūrimo vartotoją turite įvesti kūrimo režimą
+save_emust2=Įvesdami kūrimo grupę turite įvesti kūrinio vartotoją
+save_eolddirto=Trūksta arba netinkamas senų pasuktų žurnalų katalogas
+save_eext=Trūksta pasuktų žurnalo failų vardų plėtinių
+save_emailto=Trūksta pasuktų žurnalų el. Pašto adresų
+save_eerrors=Trūksta klaidų pranešimų el. Pašto adreso
+save_epre=Prieš sukimąsi scenarijuje negali būti eilutės <tt>pabaigos scenarijus</tt> arba <tt>endrotate</tt>
+save_epost=Po rotacijos esančiame scenarijuje negali būti eilutės <tt>pabaigos scenarijus</tt> arba <tt>endrotate</tt>
+save_enofiles=Neįvesta jokių sukamų failų
+
+log_modify_sched=Pakeistas žurnalo pasukimas Cron darbas
+log_create_sched=Sukurtas rąstų rotacijos „Cron“ darbas
+log_delete_sched=Ištrinta žurnalo kaitaliojimo „Cron“ užduotis
+log_global=Modifikuotos visuotinės parinktys
+log_create=Pridėta žurnalo failo rotacija $1 
+log_modify=Modifikuota žurnalo failo rotacija $1 
+log_delete=Ištrinta žurnalo failo rotacija $1 
+log_delete_logs=Ištrinta $1 žurnalo failų rotacija
+
+sched_title=Žurnalų pasukimo grafikas
+sched_desc=Norėdami atlikti žurnalo pasukimą, sukonfigūruotą naudojant šį modulį, komandą $1 turi vykdyti įprastas grafikas (paprastai kasdien), kurį teikia „Cron“.
+sched_runparts=Šiuo metu žurnalo pasukimo komanda vykdoma iš scenarijaus $1 $2 ir negali būti koreguojama.
+sched_sched=Rąstų kaitaliojimo darbas
+sched_disabled=Neįgalus
+sched_enabled=Įgalinta, kartais žemiau ..
+sched_save=Atnaujinkite „Cron Job“
+sched_err=Nepavyko išsaugoti rotacijos grafiko
+sched_when=Laikai bėgti
+
+force_title=Priverstinis žurnalo pasukimas
+force_doing=Privedant betarpišką visų žurnalo failų sukimą
+force_doingone=Priverstinis greitas vieno žurnalo failo pasukimas.
+force_done=.. padaryta.
+force_failed=.. nepavyko! Norėdami sužinoti priežastį, skaitykite aukščiau pateiktą išvestį.
+
+delete_err=Nepavyko ištrinti žurnalų
+delete_enone=Nepasirinkta

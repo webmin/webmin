@@ -13,15 +13,8 @@ else {
 $account_key = "$module_config_directory/letsencrypt.pem";
 
 $letsencrypt_chain_urls = [
-	"https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem",
+	"https://letsencrypt.org/certs/lets-encrypt-r3-cross-signed.pem",
 	];
-
-sub get_letsencrypt_python_cmd
-{
-return &has_command("python2.7") || &has_command("python27") ||
-       &has_command("python2.6") || &has_command("python26") ||
-       &has_command("python");
-}
 
 # check_letsencrypt()
 # Returns undef if all dependencies are installed, or an error message
@@ -31,24 +24,34 @@ if (&has_command($letsencrypt_cmd)) {
 	# Use official client
 	return undef;
 	}
-my $python = &get_letsencrypt_python_cmd();
+my $python = &get_python_cmd();
 if (!$python || !&has_command("openssl")) {
-	return $text{'letsencrypt_ecmds'};
-	}
+        return $text{'letsencrypt_ecmds'};
+        }
 my $out = &backquote_command("$python -c 'import argparse' 2>&1");
 if ($?) {
-	return &text('letsencrypt_epythonmod', 'argparse');
-	}
+        return &text('letsencrypt_epythonmod', '<tt>argparse</tt>');
+        }
 my $ver = &backquote_command("$python --version 2>&1");
 if ($ver !~ /Python\s+([0-9\.]+)/) {
-	return &text('letsencrypt_epythonver',
-		     "<tt>".&html_escape($out)."</tt>");
-	}
+        return &text('letsencrypt_epythonver',
+                     "<tt>".&html_escape($out)."</tt>");
+        }
 $ver = $1;
 if ($ver < 2.5) {
-	return &text('letsencrypt_epythonver2', '2.5', $ver);
-	}
+        return &text('letsencrypt_epythonver2', '2.5', $ver);
+        }
 return undef;
+}
+
+# get_letsencrypt_install_message(return-link, return-title)
+# Returns a link or form to install Let's Encrypt
+sub get_letsencrypt_install_message
+{
+my ($rlink, $rmsg) = @_;
+&foreign_require("software");
+return &software::missing_install_link(
+	"certbot", $text{'letsencrypt_certbot'}, $rlink, $rmsg);
 }
 
 # request_letsencrypt_cert(domain|&domains, webroot, [email], [keysize],
@@ -84,7 +87,8 @@ if ($mode eq "web") {
 	my @st = stat($webroot);
 	my $user = getpwuid($st[4]);
 	if (!-d $challenge) {
-		my $cmd = "mkdir -p -m 755 ".quotemeta($challenge);
+		my $cmd = "mkdir -p -m 755 ".quotemeta($challenge).
+			  " && chmod 755 ".quotemeta($wellknown);
 		if ($user && $user ne "root") {
 			$cmd = &command_as_user($user, 0, $cmd);
 			}
@@ -138,14 +142,19 @@ if ($mode eq "dns") {
 			      "letsencrypt-cleanup.pl");
 	}
 
-if (($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") || $wildcard) {
-	# Use the native Let's Encrypt client if possible
+if ($letsencrypt_cmd) {
+	# Call the native Let's Encrypt client
 	my $temp = &transname();
 	&open_tempfile(TEMP, ">$temp");
 	&print_tempfile(TEMP, "email = $email\n");
 	&print_tempfile(TEMP, "text = True\n");
 	&close_tempfile(TEMP);
 	my $dir = $letsencrypt_cmd;
+	my $cmd_ver = &get_certbot_major_version($letsencrypt_cmd);
+	my $old_flags;
+	if ($cmd_ver < 1.11) {
+		$old_flags = " --manual-public-ip-logging-ok";
+		}
 	$dir =~ s/\/[^\/]+$//;
 	$size ||= 2048;
 	my $out;
@@ -159,7 +168,9 @@ if (($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") || $wildcard) {
 			" --webroot-path ".quotemeta($webroot).
 			" --duplicate".
 			" --force-renewal".
-			" --manual-public-ip-logging-ok".
+			"$old_flags".
+			" --non-interactive".
+			" --agree-tos".
 			" --config $temp".
 			" --rsa-key-size $size".
 			" --cert-name ".quotemeta($doms[0]).
@@ -179,7 +190,9 @@ if (($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") || $wildcard) {
 			" --manual-cleanup-hook $cleanup_hook".
 			" --duplicate".
 			" --force-renewal".
-			" --manual-public-ip-logging-ok".
+			"$old_flags".
+			" --non-interactive".
+			" --agree-tos".
 			" --config $temp".
 			" --rsa-key-size $size".
 			" --cert-name ".quotemeta($doms[0]).
@@ -196,14 +209,15 @@ if (($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") || $wildcard) {
 		return (0, "<pre>".&html_escape($out || "No output from $letsencrypt_cmd")."</pre>");
 		}
 	my ($full, $cert, $key, $chain);
-	if ($out =~ /(\/etc\/letsencrypt\/(?:live|archive)\/[a-zA-Z0-9\.\_\-\/\r\n ]*\.pem)/) {
+	if ($out =~ /(\/etc\/letsencrypt\/(?:live|archive)\/[a-zA-Z0-9\.\_\-\/\r\n\* ]*\.pem)/) {
 		# Output contained the full path
 		$full = $1;
 		$full =~ s/\s//g;
 		}
 	else {
 		# Try searching common paths
-		my @fulls = glob("/etc/letsencrypt/live/$doms[0]-*/cert.pem");
+		my @fulls = (glob("/etc/letsencrypt/live/$doms[0]-*/cert.pem"),
+			     glob("/usr/local/etc/letsencrypt/live/$doms[0]-*/cert.pem"));
 		if (@fulls) {
 			my %stats = map { $_, [ stat($_) ] } @fulls;
 			@fulls = sort { $stats{$a}->[9] <=> $stats{$b}->[9] }
@@ -227,19 +241,20 @@ if (($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") || $wildcard) {
 	&set_ownership_permissions(undef, undef, 0600, $key);
 	&set_ownership_permissions(undef, undef, 0600, $chain);
 	&cleanup_wellknown($wellknown_new, $challenge_new);
+
+	# Attempt to update the contact email on file with let's encrypt
+	&system_logged("$letsencrypt_cmd register --update-registration".
+	       " --email ".quotemeta($email)." >/dev/null 2>&1 </dev/null");
+
 	return (1, $cert, $key, $chain);
+	}
+elsif ($mode eq "dns") {
+	# Python client doesn't support DNS
+	return (0, $text{'letsencrypt_eacmedns'});
 	}
 else {
 	# Fall back to local Python client
 	$size ||= 4096;
-
-	# But first check if the native Let's Encrypt client was used previously
-	# for this system - if so, it must be used in future due to the account
-	# key.
-	if (-d "/etc/letsencrypt/accounts") {
-		&cleanup_wellknown($wellknown_new, $challenge_new);
-		return (0, &text('letsencrypt_enative', '/etc/letsencrypt'));
-		}
 
 	# Generate the account key if missing
 	if (!-r $account_key) {
@@ -271,7 +286,7 @@ else {
 	&copy_source_dest($csr, "/tmp/lets.csr", 1);
 
 	# Find a reasonable python version
-	my $python = &get_letsencrypt_python_cmd();
+	my $python = &get_python_cmd();
 
 	# Request the cert and key
 	my $cert = &transname();
@@ -284,7 +299,7 @@ else {
 				: "--dns-hook $dns_hook ".
 				  "--cleanup-hook $cleanup_hook ").
 		($staging ? "--ca https://acme-staging.api.letsencrypt.org "
-			  : "").
+			  : "--disable-check ").
 		"--quiet ".
 		"2>&1 >".quotemeta($cert));
 	&reset_environment();
@@ -307,8 +322,28 @@ else {
 		}
 	-r $cert && -s $cert || return (0, &text('letsencrypt_ecert', $cert));
 
-	# Download the latest chained cert files
+	# Check if the returned cert contains a CA cert as well
 	my $chain = &transname();
+	my @certs = &cert_file_split($cert);
+	my %donecert;
+	if (@certs > 1) {
+		# Yes .. keep the first as the cert, and use the others as
+		# the chain
+		my $orig = shift(@certs);
+		my $fh = "CHAIN";
+		&open_tempfile($fh, ">$chain");
+		foreach my $c (@certs) {
+			&print_tempfile($fh, $c);
+			$donecert{$c}++;
+			}
+		&close_tempfile($fh);
+		my $fh2 = "CERT";
+		&open_tempfile($fh2, ">$cert");
+		&print_tempfile($fh2, $orig);
+		&close_tempfile($fh2);
+		}
+
+	# Download the latest chained cert files
 	foreach my $url (@$letsencrypt_chain_urls) {
 		my $cout;
 		my ($host, $port, $page, $ssl) = &parse_http_url($url);
@@ -322,16 +357,18 @@ else {
 			&cleanup_wellknown($wellknown_new, $challenge_new);
 			return (0, &text('letsencrypt_echain2', $url));
 			}
-		my $fh = "CHAIN";
-		&open_tempfile($fh, ">>$chain");
-		&print_tempfile($fh, $cout);
-		&close_tempfile($fh);
+		if (!$donecert{$cout}++) {
+			my $fh = "CHAIN";
+			&open_tempfile($fh, ">>$chain");
+			&print_tempfile($fh, $cout);
+			&close_tempfile($fh);
+			}
 		}
 
 	# Copy the per-domain files
 	my $certfinal = "$module_config_directory/$doms[0].cert";
 	my $keyfinal = "$module_config_directory/$doms[0].key";
-	my $chainfinal = "$module_config_directory/$doms[0].chain";
+	my $chainfinal = "$module_config_directory/$doms[0].ca";
 	&copy_source_dest($cert, $certfinal, 1);
 	&copy_source_dest($key, $keyfinal, 1);
 	&copy_source_dest($chain, $chainfinal, 1);
@@ -366,12 +403,23 @@ my ($d) = @_;
 my $bd = $d;
 while ($bd =~ /\./) {
 	my $z = &bind8::get_zone_name($bd, "any");
-	if ($z) {
+	if ($z && $z->{'file'} && $z->{'type'} eq 'master') {
 		return ($z, $bd);
 		}
 	$bd =~ s/^[^\.]+\.//;
 	}
 return ( );
+}
+
+# Returns Let's Encrypt client major version, such as 1.11 or 0.40
+sub get_certbot_major_version
+{
+my ($cmd) = @_;
+my $out = &backquote_command("$cmd --version");
+if ($out && $out =~ /\s*(\d+\.\d+)\s*/) {
+	return $1;
+	}
+	return 0;
 }
 
 1;

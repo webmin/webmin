@@ -1,0 +1,8 @@
+index_title=Cluster Schimbă parolele
+index_noservers=În modulul <a href=$1>Utilizatori și grupuri de grup</a> nu au fost definite servere pentru a administra utilizatorii.
+index_hosts=Toate modificările de parolă efectuate cu acest modul vor fi efectuate pe toate gazdele $1 gestionate de modulul Utilizatori și grupuri Cluster.
+
+passwd_err=Nu a reușit să schimbe parola
+passwd_title=Schimbarea parolei
+passwd_on=Schimbarea parolei pe $1 ..
+passwd_euser=utilizatorul nu exista!

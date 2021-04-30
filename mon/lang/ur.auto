@@ -1,0 +1,200 @@
+index_title=پیر سروس مانیٹر
+index_return=پیر انڈیکس
+index_edir=The MON directory $1 does not exist. Maybe MON is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+mon_global_title=عالمی متغیرات کی تشکیل
+mon_conf_title=بنیادی ترتیب
+mon_status_title=آپریشنل حیثیت
+hostgroups_title=پیر کی تشکیل - میزبان گروپ
+services_title=واچ گروپس سروس کی تعریفیں
+
+head_hostgroups=میزبان گروپ اور خدمات
+head_groups=میزبان گروپ کا نام
+head_members=میزبان گروپ کے ممبران
+head_services=دیکھنے کے لئے میزبان گروپ کی خدمات
+head_service=دیکھنے کی خدمت
+head_param=سروس پیرامیٹرز
+head_watch=گروپ دیکھیں؟
+head_monauth=MONCMD کے لئے توثیق فراہم کریں
+head_usr=صارف نام
+head_pass=پاس ورڈ
+head_mand=("سرخ رنگ" میں پیرامیٹرز لازمی ہیں)
+
+err_nomon=پیکیج 'سوم' سسٹم پر انسٹال نہیں ہے
+err_nomonconf=The MON configuration file $1 was not found on your system. Maybe MON is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+err_nowatch=کوئی واچ گروپ نہیں منتخب کیا گیا۔ آگے بڑھنے کے لئے کم از کم ایک واچ گروپ منتخب کریں۔
+err_noserv=واچ گروپ کے لئے کوئی سروسز منتخب نہیں کی گئیں
+err_nomemb=واچ گروپ کے لئے کوئی میزبان/ممبر منتخب نہیں ہوئے ہیں
+err_monrun=MON میزبان مشین پر نہیں چل رہا ہے۔ برائے مہربانی MON شروع کریں۔
+stop_err=MON کو روکنے میں ناکام
+stop_epid=اب نہیں چل رہا ہے
+start_err=MON شروع کرنے میں ناکام
+restart_err=MON کو دوبارہ شروع کرنے میں ناکام
+restart_epid=PID حاصل کرنے میں ناکام
+
+other=دیگر (جگہ الگ)
+next=اگلے
+mon_stat=پیر کی حیثیت
+mon_off=MON خدمات کا آغاز نہیں ہوا
+mon_start=MON سروسز شروع کریں
+mon_stop=MON خدمات بند کرو
+mon_restart=MON سروسز کو دوبارہ شروع کریں
+mon_startdesc=MON سرور شروع کرنے کے لئے اس بٹن پر کلک کریں۔ جب تک یہ شروع نہیں ہوتا ہے ، کوئی تشکیل شدہ مانیٹرنگ نہیں کی جائے گی۔
+mon_stopdesc=MON سرور کو روکنے کے لئے اس بٹن پر کلک کریں۔ جب رکنا ، تشکیل شدہ مانیٹرنگ ختم ہوجائے گی۔
+mon_restartdesc=سرور کے عمل کو دوبارہ شروع کرکے موجودہ MON ترتیب کو نافذ کرنے کے لئے اس بٹن پر کلک کریں۔
+line=(ہر لائن پر ایک)
+save_apply=محفوظ کریں اور لگائیں
+watch=واچ گروپ
+members=ممبران
+def_perargs=wd {ہفتہ-اتوار
+
+def_desc=تفصیل
+def_inter=وقفہ
+def_mon=مانیٹر کریں
+def_dep=dpend
+def_per=مدت
+def_alert=انتباہ
+def_alertevr=انتباہ
+def_alertaft=انتباہ
+def_alertstr=startupalert
+def_allow=اجازت_ایمپیٹی_گروپ
+def_traptime=ٹراپ ٹائم آؤٹ
+def_trapdur=trapduration
+def_rand=رینڈسکیو
+def_exclhost=خارج_ہوسٹس
+def_exclper=خارج_پیرائڈ
+
+groups_title=میزبان گروپ
+groups_group=گروہ کا نام
+groups_members=ممبر میزبان
+
+watches_title=فہرستیں دیکھیں
+watches_group=دیکھنے کا گروپ
+watches_services=خدمات دیکھے جارہے ہیں
+watches_sadd=سروس شامل کریں ..
+watches_add=گروپ کے لئے واچ لسٹ شامل کریں :
+watches_return=واچ فہرستیں
+watches_none=ابھی تک کسی واچ لسٹ کی وضاحت نہیں کی گئی ہے۔
+
+global_title=عالمی اختیارات
+global_header=گلوبل MON ترتیب کے اختیارات
+global_maxprocs=زیادہ سے زیادہ پیر کے عمل
+global_histlength=واقعہ کی تاریخ کی لمبائی
+global_alertdir=انتباہ پروگراموں کی ڈائرکٹری
+global_mondir=پروگراموں کی ڈائرکٹری مانیٹر کریں
+global_authtype=توثیق کی قسم
+global_authtype_=پہلے سے طے شدہ
+global_authtype_getpwnam=سسٹم کالز
+global_authtype_userfile=MON صارفین فائل کرتے ہیں
+global_authtype_shadow=شیڈو فائل
+global_userfile=MON صارف کی فائل
+global_emaxprocs=MON عمل کی گمشدہ یا غلط تعداد
+global_ehistlength=تاریخ کی تاریخ کی تاریخ غائب یا غلط ہے
+global_ealertdir=انتباہ یا غلط انتباہ پروگراموں کی ڈائرکٹری
+global_emondir=لاپتہ یا ناجائز مانیٹر پروگراموں کی ڈائرکٹری
+global_euserfile=صارفین کی فائل غائب
+
+watch_title=واچ لسٹ میں ترمیم کریں
+watch_header=میزبان گروپ واچ تفصیلات
+watch_group=دیکھنے کے لئے میزبان گروپ
+watch_services=خدمات دیکھے جارہے ہیں
+watch_service=سروس کا نام
+watch_monitor=استعمال کرنے کے لئے مانیٹر
+watch_interval=ہر چیک کریں
+watch_periods=مانیٹرنگ ادوار
+
+service_title=سروس شامل کریں
+service_title2=سروس میں ترمیم کریں
+service_header=خدمت کی تفصیلات دیکھیں
+service_name=خدمت کا نام
+service_interval=ہر چیک کریں
+service_desc=تفصیل
+service_units_s=سیکنڈ
+service_units_m=منٹ
+service_units_h=گھنٹے
+service_units_d=دن
+service_units_w=ہفتوں
+service_monitor=مانیٹر کا استعمال کرتے ہوئے
+service_mon1=معیاری مانیٹر
+service_mon0=دوسرے مانیٹر ..
+service_args=پیرامیٹرز کی نگرانی کریں
+service_period=نگرانی کی مدت$1
+service_days=چیک کرنے کے دن
+service_hours=چیک کرنے کے اوقات
+service_all=سب
+service_pstr=مدت کی تفصیلات
+service_new=نگرانی کا نیا دورانیہ
+service_alerts=انتباہات
+service_alert=انتباہ
+service_atype=جب چلائیں
+service_atype_alert=خدمت نیچے جاتی ہے
+service_atype_upalert=خدمات آتی ہیں
+service_atype_startupalert=ماہ شروع ہوتا ہے
+service_aargs=اضافی پیرامیٹرز
+service_every=الرٹ بھیجیں
+service_every_def=ہر بار مانیٹر چلایا جاتا ہے
+service_every_time=ہر کوئی
+service_num=بھیجنے کے لئے زیادہ سے زیادہ انتباہات
+service_unlimited=لامحدود
+service_after=انتباہ سے پہلے کی ناکامیاں
+service_immediate=فورا
+service_after_num=$1 ناکامیوں کے بعد
+service_aftertime=وقت کے وقفے کے اندر
+service_newperiod=ایک نیا دورانیہ شامل کریں
+service_delperiod=اس مدت کو حذف کریں
+service_err=سروس کو بچانے میں ناکام
+service_ename=لاپتہ یا غلط سروس کا نام
+service_einterval=گمشدہ یا غلط وقفہ چیک
+service_eother=لاپتہ یا ناجائز مانیٹر
+service_ehour=$1 مدت کے لئے گمشدہ یا غلط گھنٹہ (صبح 9 بجے یا شام 5 بجے تک ہونا چاہئے)
+service_eperiod=$1 کی مدت کے لئے کوئی دن یا گھنٹوں کی وضاحت نہیں کی گئی ہے
+service_eevery=لاپتہ یا غلط سروس الرٹ وقفہ
+service_eafter=انتباہ سے قبل ناکامیوں کی گمشدہ یا غلط تعداد
+service_enum=لاپتہ یا زیادہ سے زیادہ انتباہات بھیجے گئے
+service_epstr=لاپتہ مدت تفصیلات
+service_known0=<tt>Time::Period</tt> string
+service_known1=مخصوص دن اور اوقات
+service_known2=مقررہ مدت
+
+status_title=پیر کی حیثیت
+status_ecgi=The MON status CGI program $1 does not exist. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+status_eperl=The MON status CGI program requires the $1 perl module. <a href='$2'>Click here</a> to install it directly from CPAN.
+status_esame=The MON status CGI program $1 has been set to the <tt>mon.cgi</tt> script in this Webmin module, not the CGI program that comes with MON. Adjust the <a href='$2'>module configuration</a> to use the correct path.
+
+users_title=ماہی صارف
+users_etype=The MON users list cannot be edited because MON is not currently configured to use it for authentication on the <a href='$1'>Global Options</a> page.
+users_header=$1 میں MON صارفین کی اجازت ہے
+users_nousers=$1 میں کسی بھی MON صارفین کی تعریف نہیں کی گئی ہے۔
+users_add=نیا صارف بنائیں۔
+users_return=MON صارفین کی فہرست
+
+user_create=MON صارف بنائیں
+user_edit=MON صارف میں ترمیم کریں
+user_header=ماہ صارف کی تفصیلات
+user_user=صارف نام
+user_pass=پاس ورڈ
+user_leave=کوئی تبدیلی نہیں چھوڑ دیں
+user_err=صارف کو بچانے میں ناکام
+user_euser=غائب یا غلط صارف نام
+user_esame=ایک ہی نام والا صارف پہلے سے موجود ہے
+
+auth_title=کلائنٹ کے احکام
+auth_desc=یہ صفحہ آپ کو یہ کنٹرول کرنے کی اجازت دیتا ہے کہ کلائنٹ کے پروگراموں کا استعمال کرتے وقت کون سے صارف کمانڈ کو چلا سکتے ہیں۔
+auth_cmd=MON کمانڈ
+auth_users=اجازت شدہ صارفین
+auth_none=کوئی نہیں
+auth_all=ہر ایک
+auth_sel=صرف صارف
+auth_err=مؤکل کے احکامات کو بچانے میں ناکام
+auth_eusers=کوئی صارف کمانڈ$1 کے لئے داخل نہیں ہے
+
+periods_title=متعین ادوار
+periods_period=مدت کا نام
+periods_times=دن اور اوقات
+periods_alldays=تمام دنوں
+periods_allhours=سارے گھنٹے
+periods_err=متعین ادوار کو بچانے میں ناکام
+periods_ename='$1' درست مدت نام نہیں ہے
+periods_ehour=$1 مدت کے لئے گمشدہ یا غلط گھنٹہ (صبح 9 بجے یا شام 5 بجے تک ہونا چاہئے)
+
+show_title=آپریشنل حیثیت
+show_ecgi=The MON status program $1 does not exist. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.

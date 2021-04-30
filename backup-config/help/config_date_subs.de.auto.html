@@ -1,0 +1,126 @@
+<header> Ersetzen Sie Backup-Ziele zeitweise? </header> Wenn diese Option auf <b>Ja gesetzt ist</b> , können Codes wie%d,%m,%Y und%u im Dateinamen des Sicherungsziels verwendet werden. Diese werden durch den Tag, das Monat, das Jahr und den Wochentag ersetzt, an dem die Sicherung durchgeführt wird. Dies ist nützlich, wenn Sie jeden Tag ein anderes Backup speichern möchten, damit Sie ein System auf ein vorheriges Datum zurücksetzen können. <p> Einige der anderen Codes, die verwendet werden können, sind: <br><pre> <font size=-1>
+ %a Der abgekürzte Wochentagsname gemäß dem aktuellen Stand
+        Gebietsschema mieten.
+
+ %A Der vollständige Wochentagsname gemäß dem aktuellen
+        Gebietsschema.
+
+ %b Der abgekürzte Monatsname gemäß dem aktuellen
+        Gebietsschema.
+
+ %B Der vollständige Monatsname gemäß dem aktuellen
+        Gebietsschema.
+
+ %c Die bevorzugte Datums- und Uhrzeitdarstellung für die
+        aktuelles Gebietsschema.
+
+ %C Die Jahrhundertzahl (Jahr / 100) als zweistellige Ganzzahl.
+
+ %d Der Tag des Monats als Dezimalzahl (Bereich 01
+        bis 31).
+
+ %e Wie%d, der Tag des Monats als Dezimalzahl,
+        Eine führende Null wird jedoch durch ein Leerzeichen ersetzt.
+
+ %E Modifikator: Verwenden Sie ein alternatives Format, siehe unten.
+
+ %G Das ISO 8601-Jahr mit dem Jahrhundert als Dezimalzahl.
+        Das 4-stellige Jahr entsprechend der ISO-Wochennummer
+        ber (siehe%V). Dies hat das gleiche Format und den gleichen Wert
+        als%y, außer wenn die ISO-Wochennummer dazu gehört
+        für das vorherige oder nächste Jahr wird dieses Jahr verwendet
+        stattdessen.
+
+ %g Wie%G, jedoch ohne Jahrhundert, dh mit einer zweistelligen Zahl
+        Jahr (00-99).
+
+ %h Entspricht%b.
+
+ %H Die Stunde als Dezimalzahl im 24-Stunden-Format
+        (Bereich 00 bis 23).
+
+ %I Die Stunde als Dezimalzahl im 12-Stunden-Format
+        (Bereich 01 bis 12).
+
+ %j Der Tag des Jahres als Dezimalzahl (Bereich 001
+        bis 366).
+
+ %k Die Stunde (24-Stunden-Uhr) als Dezimalzahl (Bereich)
+        0 bis 23); Vor einzelnen Ziffern steht ein Leerzeichen.
+        (Siehe auch%H.)
+
+ %l Die Stunde (12-Stunden-Uhr) als Dezimalzahl (Bereich)
+        1 bis 12); Vor einzelnen Ziffern steht ein Leerzeichen.
+        (Siehe auch%I.)
+
+ %m Der Monat als Dezimalzahl (Bereich 01 bis 12).
+
+ %M Die Minute als Dezimalzahl (Bereich 00 bis 59).
+
+ %n Ein Zeilenumbruchzeichen.
+
+ %O Modifikator: Verwenden Sie ein alternatives Format, siehe unten.
+
+ %p Je nach gegebener Zeit entweder &quot;AM&quot; oder &quot;PM&quot;
+        Wert oder die entsprechenden Zeichenfolgen für den aktuellen
+        Gebietsschema. Mittag wird als &quot;Uhr&quot; und Mitternacht als behandelt
+        bin.
+
+ %P Wie%p, jedoch in Kleinbuchstaben: &quot;am&quot; oder &quot;pm&quot; oder eine Korrektur
+        sponding string für das aktuelle Gebietsschema.
+
+ %r Die Zeit in der Notation am oder pm. In der POSIX
+        Gebietsschema Dies entspricht &quot;%I:%M:%S%p&quot;.
+
+ %R Die Zeit in 24-Stunden-Notation (%H:%M). Für ein
+        Version einschließlich der Sekunden, siehe%T unten.
+
+ %s Die Anzahl der Sekunden seit der Epoche, dh seit
+        1970-01-01 00:00:00 UTC.
+
+ %S Die Sekunde als Dezimalzahl (Bereich 00 bis 61).
+
+ %t Ein Tabulatorzeichen.
+
+ %T Die Zeit in 24-Stunden-Notation (%H:%M:%S).
+
+ %u Der Wochentag als Dezimalzahl, Bereich 1 bis 7,
+        Montag ist 1. Siehe auch%w.
+
+ %U Die Wochennummer des aktuellen Jahres als Dezimalzahl
+        Nummer, Bereich 00 bis 53, beginnend mit der ersten
+        Sonntag als erster Tag der Woche 01. Siehe auch%V und
+        %W.
+
+ %V Die ISO 8601: 1988-Wochennummer des laufenden Jahres
+        als Dezimalzahl Bereich 01 bis 53, wobei Woche 1
+        ist die erste Woche, die mindestens 4 Tage in der hat
+        aktuelles Jahr und mit Montag als erstem Tag von
+        die Woche. Siehe auch%U und%W.
+
+ %w Der Wochentag als Dezimalzahl, Bereich 0 bis 6,
+        Sonntag ist 0. Siehe auch%u.
+
+ %W Die Wochennummer des aktuellen Jahres als Dezimalzahl
+        Nummer, Bereich 00 bis 53, beginnend mit der ersten
+        Montag als erster Tag der Woche 01.
+
+ %x Die bevorzugte Datumsdarstellung für den aktuellen
+        Gebietsschema ohne die Zeit.
+
+ %X Die bevorzugte Zeitdarstellung für den Strom
+        Gebietsschema ohne Datum.
+
+ %y Das Jahr als Dezimalzahl ohne Jahrhundert
+        (Bereich 00 bis 99).
+
+ %Y Das Jahr als Dezimalzahl einschließlich des Jahrhunderts.
+
+ %z Die Zeitzone als Stundenversatz von GMT. Erforderlich für
+        RFC822-konforme Daten ausgeben (unter Verwendung von &quot;%a,%d%b%Y&quot;
+        %H:%M:%S%z &quot;).
+
+ %Z Die Zeitzone oder der Name oder die Abkürzung.
+
+ %%Ein wörtliches% -Zeichen.
+</font> </pre><footer>

@@ -1,47 +1,56 @@
-access_all=V¹etci
-access_allowg=Povoli» iba èlenov skupín
-access_allowh=Povoli» iba hostiteµov
-access_allowu=Povoli» iba u¾ívateµov
-access_denyg=Zakáza» èlenov skupín
-access_denyh=Zakáza» hostiteµov
-access_denyu=Zakáza» u¾ívateµov
-host_clevel=Úroveò kompresie
-host_clevel_1=Najhor¹ia
-host_clevel_9=Najlep¹ia
-host_comp=Komprimova» SSH tok údajov?
-host_lrport=Vzdialenı port
-host_name=Mo¾nosti pre hostiteµa
-host_port=Port pre spojenie
-host_prots=Skúsi» SSH protokoly
-host_prots_sel=Vybrané..
-host_proxy_def=®iadna
-host_rlport=Lokálny port
-host_rrport=Vzdialenı port
-host_user=Prihlási» sa ako u¾ivateµ
-index_start=Spusti» Server
 index_title=SSH Server
-index_type=Typ SSH kµúèa:
+index_start=SpustiÅ¥ Server
 index_version=$1
-log_start=Spustenı SSH server
-log_stop=Zastavenı SSH server
-manual_edata=Niè nebolo zadané!
-net_laddress=Adresa
-net_listen=Poèúva» na adrese
-net_listen2=Poèúva» na adresách
-net_listen_def=V¹etky adresy
-net_lport=Port
-net_port=Poèúva» na porte
-net_prots=Povoli» protokoly
-net_prots_1=SSH v1
-net_prots_2=SSH v2
-secs=sekúnd
-start_err=Zlyhalo spustenie SSH servera
-sync_type=Typ kµúèa
-users_auth=Povoli» autentifikáciu pomocou hesla?
-users_banner_def=®iadny
+index_type=Typ SSH kÄ¾ÃºÄa:
+
+secs=sekÃºnd
+
+users_title=AutentifikÃ¡cia
 users_expire_def=Nikdy
 users_pexpire_def=Nikdy
-users_root=Povoli» prihlásenie root-a?
-users_rsa=Povoli» RSA autentifikáciu?
-users_strict=Skontrolova» práva na súboroch s kµúèmi?
-users_title=Autentifikácia
+users_auth=PovoliÅ¥ autentifikÃ¡ciu pomocou hesla?
+users_root=PovoliÅ¥ prihlÃ¡senie root-a?
+users_rsa=PovoliÅ¥ RSA autentifikÃ¡ciu?
+users_strict=SkontrolovaÅ¥ prÃ¡va na sÃºboroch s kÄ¾ÃºÄmi?
+users_banner_def=Å½iadny
+
+net_port=PoÄÃºvaÅ¥ na porte
+net_prots=PovoliÅ¥ protokoly
+net_prots_1=SSH v1
+net_prots_2=SSH v2
+net_listen=PoÄÃºvaÅ¥ na adrese
+net_listen2=PoÄÃºvaÅ¥ na adresÃ¡ch
+net_laddress=Adresa
+net_lport=Port
+net_listen_def=VÅ¡etky adresy
+
+access_allowu=PovoliÅ¥ iba uÅ¾Ã­vateÄ¾ov
+access_allowg=PovoliÅ¥ iba Älenov skupÃ­n
+access_all=VÅ¡etci
+access_denyu=ZakÃ¡zaÅ¥ uÅ¾Ã­vateÄ¾ov
+access_denyg=ZakÃ¡zaÅ¥ Älenov skupÃ­n
+access_allowh=PovoliÅ¥ iba hostiteÄ¾ov
+access_denyh=ZakÃ¡zaÅ¥ hostiteÄ¾ov
+
+start_err=Zlyhalo spustenie SSH servera
+
+host_name=MoÅ¾nosti pre hostiteÄ¾a
+host_user=PrihlÃ¡siÅ¥ sa ako uÅ¾ivateÄ¾
+host_port=Port pre spojenie
+host_comp=KomprimovaÅ¥ SSH tok Ãºdajov?
+host_clevel=ÃšroveÅˆ kompresie
+host_clevel_1=NajhorÅ¡ia
+host_clevel_9=NajlepÅ¡ia
+host_lrport=VzdialenÃ½ port
+host_rrport=VzdialenÃ½ port
+host_rlport=LokÃ¡lny port
+host_prots=SkÃºsiÅ¥ SSH protokoly
+host_prots_sel=VybranÃ©..
+host_proxy_def=Å½iadna
+
+log_stop=ZastavenÃ½ SSH server
+log_start=SpustenÃ½ SSH server
+
+sync_type=Typ kÄ¾ÃºÄa
+
+manual_edata=NiÄ nebolo zadanÃ©!

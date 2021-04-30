@@ -1,0 +1,49 @@
+index_test=Sadece neyin geri yükleneceğini göster?
+index_nostrftime=Uyarı - bazı yedekleme işleri dosya adlarında % kullanır, ancak Modül Yapılandırma sayfasında strftime değiştirme etkin değildir.
+index_tabsched=Zamanlanmış yedeklemeler
+index_tabbackup=Şimdi yedekle
+index_tabrestore=Şimdi geri yükle
+
+edit_header2=Yedekleme öncesi ve sonrası komutları
+edit_header3=Yedekleme programı
+edit_other2=Geri yüklenecek diğer dosyalar
+edit_what=Yedeğe dahil et
+edit_webmin=Webmin modülü yapılandırma dosyaları
+edit_nofiles=Sunucu yapılandırma dosyaları
+edit_run=Şimdi Kaydet ve Yedekle
+edit_return=yedek form
+edit_other=Listelenen diğer dosyalar ..
+edit_pre=Ön yedekleme komutu
+edit_post=Yedekleme sonrası komutu
+
+save_ewebmin=Ne webmin ne de sunucu yapılandırma dosyaları seçilmedi
+
+backup_port=Sunucu portu
+
+backup_epath2=SSH sunucusunda eksik veya geçersiz mutlak yol
+backup_eport=Eksik veya geçersiz FTP sunucusu bağlantı noktası
+backup_esport=Eksik veya geçersiz SSH sunucusu bağlantı noktası
+
+restore_emods=Hiçbir modül veya başka dosya seçilmedi
+restore_testing=$1 kaynağından yedek içeriği çıkarılıyor.
+restore_done2=.. yedek dosya :
+
+nice_ftpp=FTP aracılığıyla $1 bağlantı noktasında $3 $3 
+nice_sshp=$1 bağlantı noktasında $2, SSH üzerinden $3 
+
+log_run_backup=$1 modülünün $2 konumuna yürütülmesi
+
+run_title=Yedekleme Yapılandırmaları
+run_doing=$1 modülünün $2 dizinine yedeklenmesi başlatılıyor.
+run_ok=.. yedekleme başarıyla tamamlandı.
+run_failed=.. yedekleme başarısız! Nedeni için yukarıdaki hata mesajına bakın.
+
+email_mods=Modüllerin yedeklenmesi :
+email_failed=$1 ile başarısız oldu :
+email_ok=$1 başarılı oldu.
+email_sfailed=$1 üzerindeki yapılandırma yedeklemesi başarısız oldu
+email_sok=$1 üzerindeki yapılandırma yedeklemesi başarılı
+email_final=Nihai yedekleme dosyası boyutu $1 idi
+email_pre=$1 ön yedekleme komutu çalıştırılıyor.
+email_post=Yedekleme sonrası $1 komutu çalıştırılıyor ..
+email_prefailed=Ön yedekleme komutu başarısız oldu!

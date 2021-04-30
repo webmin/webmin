@@ -1,0 +1,13 @@
+index_boot=Synchronizovať pri spustení Webmin?
+index_ehwclock=$1 zlyhalo : $2 
+index_tabtime=Nastav čas
+index_tabzone=Zmeniť časové pásmo
+index_tabsync=Synchronizácia časového servera
+index_desctime=Tento formulár slúži na zmenu aktuálneho času systému, ktorý používajú všetky spustené procesy. Na operačných systémoch, ktoré majú samostatné hardvérové hodiny, sa dá tiež použiť na nastavenie.
+index_desczone=Tento formulár vám umožňuje nastaviť predvolené časové pásmo systému, ktoré sa používa na prevod systémového času na formát čitateľný pre človeka a ofset.
+index_descsync=Tento formulár slúži na konfiguráciu systému na automatickú synchronizáciu času so vzdialeným serverom. Synchronizácia sa vykoná pomocou protokolu Unix <tt>time</tt> alebo NTP, v závislosti od toho, ktoré príkazy sú nainštalované a čo vzdialený systém podporuje.
+
+minute=minúta
+second=druhý
+
+error_etimeserver=Neboli zadané žiadne časové servery na synchronizáciu so zadaným serverom

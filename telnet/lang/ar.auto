@@ -1,0 +1,8 @@
+index_title=تسجيل الدخول إلى SSH
+index_warn=تحذير! جلسة telnet هذه <b>غير</b> مشفرة.
+index_nojava=تتطلب هذه الوحدة جافا لتعمل ، ولكن متصفحك لا يدعم جافا
+index_credits=تم تطوير التطبيق الصغير بموجب GPL بواسطة <a href='$1' target=_top>Matthias L. Jugel & Marcus Mei�ner</a>.
+index_sshcredits=يتضمن البرنامج الذي طوره فريق تطوير Cryptix (<a href=$1 target=_top>$1</a>).
+index_esocket=لا يوجد خادم telnet يعمل على المنفذ$1 $2.
+index_esocket2=لا يوجد خادم SSH يعمل على المنفذ$1 $2.
+index_elookup=فشل البحث عن عنوان IP لـ$1 لاختبار telnet أو خادم SSH.

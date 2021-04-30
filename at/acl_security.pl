@@ -8,34 +8,35 @@ require 'at-lib.pl';
 # Output HTML for editing security options for the at module
 sub acl_security_form
 {
-print "<tr> <td valign=top><b>$text{'acl_users'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=mode value=0 %s> $text{'acl_all'}<br>\n",
-	$_[0]->{'mode'} == 0 ? "checked" : "";
-printf "<input type=radio name=mode value=3 %s> $text{'acl_this'}<br>\n",
-	$_[0]->{'mode'} == 3 ? "checked" : "";
-printf "<input type=radio name=mode value=1 %s> $text{'acl_only'}\n",
-	$_[0]->{'mode'} == 1 ? "checked" : "";
-printf "<input name=userscan size=40 value='%s'> %s<br>\n",
-	$_[0]->{'mode'} == 1 ? $_[0]->{'users'} : "",
-	&user_chooser_button("userscan", 1);
-printf "<input type=radio name=mode value=2 %s> $text{'acl_except'}\n",
-	$_[0]->{'mode'} == 2 ? "checked" : "";
-printf "<input name=userscannot size=40 value='%s'> %s</td> </tr>\n",
-	$_[0]->{'mode'} == 2 ? $_[0]->{'users'} : "",
-	&user_chooser_button("userscannot", 1);
+my ($o) = @_;
 
-print "<tr> <td valign=top><b>$text{'acl_allow'}</b></td> <td colspan=3>\n";
-print &ui_yesno_radio("allow", $_[0]->{'allow'}),"</td> </tr>\n";
+print &ui_table_row($text{'acl_users'},
+    &ui_radio_table("mode", $o->{'mode'},
+	[ [ 0, $text{'acl_all'} ],
+	  [ 3,$text{'acl_this'} ],
+	  [ 1, $text{'acl_only'},
+		&ui_textbox("userscan", $o->{'mode'} == 1 ? $o->{'users'} : "", 40)." ".&user_chooser_button("userscan", 1) ],
+	  [ 2, $text{'acl_except'},
+		&ui_textbox("userscannot", $o->{'mode'} == 2 ? $o->{'users'} : "", 40)." ".&user_chooser_button("userscannot", 1) ],
+	]), 3);
+
+print &ui_table_row($text{'acl_allow'},
+	&ui_yesno_radio("allow", $o->{'allow'}), 3);
+
+print &ui_table_row($text{'acl_stop'},
+	&ui_yesno_radio("stop", $o->{'stop'}), 3);
 }
 
 # acl_security_save(&options)
 # Parse the form for security options for the cron module
 sub acl_security_save
 {
-$_[0]->{'mode'} = $in{'mode'};
-$_[0]->{'users'} = $in{'mode'} == 0 || $in{'mode'} == 3 ? "" :
-		   $in{'mode'} == 1 ? $in{'userscan'}
-				    : $in{'userscannot'};
-$_[0]->{'allow'} = $in{'allow'};
+my ($o) = @_;
+$o->{'mode'} = $in{'mode'};
+$o->{'users'} = $in{'mode'} == 0 || $in{'mode'} == 3 ? "" :
+		$in{'mode'} == 1 ? $in{'userscan'}
+				 : $in{'userscannot'};
+$o->{'allow'} = $in{'allow'};
+$o->{'stop'} = $in{'stop'};
 }
 

@@ -1,0 +1,112 @@
+index_title=Klient PPTP VPN
+index_epptp=Program klienta $1 PPTP nie został znaleziony w twoim systemie. Być może nie jest zainstalowany lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+index_eppp=Program serwera PPP $1 nie jest zainstalowany w twoim systemie. PPTP zależy od niego do działania.
+index_eoptions=Globalny plik opcji PPTP PPP $1 nie istnieje. Utwórz go lub dostosuj konfigurację modułu <a href='$2'></a>, aby użyć innego pliku lub w ogóle go nie używaj.
+index_header=Zdefiniowane tunele
+index_none=Nie zdefiniowano jeszcze tuneli PPTP.
+index_tunnel=Tunel $1 
+index_add=Dodaj nowy tunel PPTP VPN.
+index_conn=Połącz z:
+index_pass=z opcjonalnym hasłem:
+index_conndesc=Kliknij ten przycisk, aby połączyć wybrany tunel PPTP VPN przy użyciu jego bieżącej konfiguracji.
+index_disc=Odłącz od:
+index_discdesc=Kliknij ten przycisk, aby odłączyć wybrany aktualnie aktywny tunel PPTP VPN i usunąć wszystkie trasy przez niego.
+index_return=Lista tuneli PPTP
+index_opts=Edytuj globalne opcje PPP
+index_optsdesc=Kliknij ten przycisk, aby edytować opcje PPP, które dotyczą wszystkich tuneli PPTP VPN.
+index_version=Wersja PPPd $1 
+index_boot=Połącz przy rozruchu:
+index_noboot=&lt;Nie łącz się&gt;
+index_bootdesc=Zmień tę opcję, aby kontrolować, czy wybrane połączenie PPTP VPN jest uruchamiane podczas uruchamiania, czy nie.
+
+disc_err=Nie udało się odłączyć tunelu
+disc_egone=Nie jest już aktywny
+disc_ekill=Nie udało się zabić procesu pppd
+disc_done=Tunel $1 został pomyślnie odłączony.
+
+conn_err=Nie udało się połączyć tunelu
+conn_egone=Tunel już nie istnieje
+cone_ealready=Już połączony
+conn_einvalid=Brakuje adresu IP serwera w pliku konfiguracyjnym
+conn_title=Tunel łączący
+conn_cmd=Ustanawianie połączenia PPTP za pomocą polecenia $1 ..
+conn_ok=.. połączenie zostało pomyślnie aktywowane przy użyciu interfejsu $1. Twój adres lokalny to $2, a adres zdalny to $3.
+conn_timeout=.. połączenie nieudane! Sprawdź komunikaty dziennika poniżej, aby uzyskać informacje o tym, dlaczego
+conn_routes=Dodawanie tras za pomocą poleceń ..
+conn_mppe=Protokół MPPE do szyfrowania VPN wymaga demona PPP i obsługi jądra. Jednak powyższe błędy sugerują, że jeden lub oba nie są dostępne w twoim systemie. Jeśli serwer PPTP nie wymaga MPPE, spróbuj wyłączyć wszystkie powiązane z nim opcje na stronie <a href='$1'>globalne opcje PPP</a>.
+
+edit_title1=Dodaj tunel PPTP
+edit_title2=Edytuj tunel PPTP
+edit_header=Opcje tunelu PPTP VPN
+edit_name=Nazwa tunelu
+edit_server=Połączyć się z serwerem
+edit_login=Zaloguj się jako użytkownik
+edit_same=Nazwa hosta systemu
+edit_pass=Zaloguj się za pomocą hasła
+edit_remote=Nazwa serwera
+edit_auto=Automatyczny
+edit_adddef=Dodać domyślną trasę?
+edit_def1=Przez drugi koniec
+edit_def2=Przez bramę ..
+edit_deldef=Usunąć starą domyślną trasę?
+edit_routes=Trasy do dodania po połączeniu
+edit_type=Rodzaj
+edit_type0=&nbsp;
+edit_type1=Sieć
+edit_type2=Pojedynczy host
+edit_net=Sieć lub host
+edit_mask=Maska sieci
+edit_gw=Przez bramę
+edit_gw_def=Drugi koniec
+edit_unknown=Inne polecenia <tt>route</tt>
+edit_file=Plik opcji PPP
+edit_none=Żaden
+edit_global=Standardowy plik globalny
+edit_ofile=Inny plik ..
+
+save_err=Nie udało się zapisać tunelu
+save_ename=Brak nazwy tunelu
+save_eserver=Brakujący lub nieprawidłowy serwer do połączenia
+save_elogin=Brakująca lub nieprawidłowa nazwa logowania
+save_eremote=Brakująca lub nieprawidłowa nazwa zdalnego serwera
+save_edef=Brakująca lub nieprawidłowa domyślna brama trasy
+save_enet=Nieprawidłowy adres sieciowy na trasie $1 
+save_emask=Nieprawidłowa maska sieci na trasie $1 
+save_egw=Nieprawidłowa brama dla sieci na trasie $1 
+save_ehost=Nieprawidłowy adres IP hosta na trasie $1 
+save_emask2=Maska sieci nie jest wymagana dla trasy hosta $1 
+save_egw2=Nieprawidłowa brama dla hosta na trasie $1 
+save_erename=Nie można zmienić nazwy pliku tunelu
+save_eclash=Tunel lub partner PPP o tej samej nazwie już istnieje
+save_efile=Brakujący lub nieprawidłowy plik opcji PPP
+
+opts_title=Globalne opcje PPP
+opts_desc=Poniższe ustawienia pochodzą z $1 i będą miały zastosowanie do wszystkich tuneli skonfigurowanych do korzystania ze standardowego globalnego pliku opcji PPP.
+opts_header=Opcje PPP dla wszystkich tuneli
+opts_mtu=Maksymalny rozmiar wysyłanego pakietu
+opts_mru=Maksymalny rozmiar odbieranego pakietu
+opts_err=Nie udało się zapisać globalnych opcji PPP
+opts_emtu=Brakujący lub nieprawidłowy maksymalny rozmiar pakietu wysyłającego
+opts_emru=Brakujący lub nieprawidłowy maksymalny rozmiar pakietu odbiorczego
+opts_msdesc=Poniższe opcje włączają szyfrowanie MPPE, używane przez serwery Windows VPN. Jednak MPPE wymaga obsługi zarówno demona PPP, jak i jądra systemu operacyjnego.
+
+mppe_mppe-40=Używać 40-bitowego szyfrowania MPPE?
+mppe_mppe-128=Używać 128-bitowego szyfrowania MPPE?
+mppe_mppe-stateless=Włączyć tryb bezstanowy MPPE?
+mppe_mppe=Włączyć szyfrowanie MPPE?
+mppe_m2=Musi być użyte
+mppe_m0=Nie może być użyty
+mppe_d0=Niepełnosprawny
+mppe_d1=Dozwolony
+mppe_mppe-stateful=Włączyć stanowy tryb MPPE?
+mppe_old=Ostrzeżenie - w pliku konfiguracyjnym znaleziono stare dyrektywy MPPE $1, mimo że demon PPP obsługuje dyrektywy w nowym stylu.
+mppe_new=Ostrzeżenie - w pliku konfiguracyjnym znaleziono nowe dyrektywy MPPE $1, mimo że demon PPP obsługuje tylko dyrektywy w starym stylu.
+
+log_create=Utworzono tunel PPTP $1 
+log_update=Zmodyfikowany tunel PPTP $1 
+log_delete=Usunięto tunel PPTP $1 
+log_conn=Podłączony tunel $1 
+log_conn_l=Połączony tunel $1 z adresem lokalnym $2 
+log_failed=Nie udało się połączyć tunelu $1 
+log_disc=Odłączony tunel $1 
+log_opts=Edytowane globalne opcje PPP

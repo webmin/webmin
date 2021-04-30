@@ -1,0 +1,3 @@
+desc_pl=Zarządzanie woluminami logicznymi
+name_pl=LVM
+longdesc_pl=Skonfiguruj grupy woluminów, woluminy fizyczne i woluminy logiczne dla Linux LVM.

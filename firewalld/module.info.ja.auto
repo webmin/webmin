@@ -1,0 +1,2 @@
+desc_ja=FirewallD
+longdesc_ja=許可されたサービスとポートを編集して、FirewallDを使用してLinuxファイアウォールを構成します。

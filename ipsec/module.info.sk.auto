@@ -1,0 +1,3 @@
+desc_sk=Konfigurácia VPN IPsec
+name_sk=IPsec
+longdesc_sk=Nastavte FreeSWAN klienta alebo server pre IPsec VPN.

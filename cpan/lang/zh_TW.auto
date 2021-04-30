@@ -1,0 +1,35 @@
+index_forcecpan=一律從源代碼安裝最新版本
+index_delete=卸載模塊
+index_upgrade=升級模塊
+index_recs=Webmin建議安裝以下Perl模塊：
+index_user=$1（由 $2使用）
+index_recsok=安裝選定的模塊
+index_recsgot=已安裝Webmin推薦的以下所有Perl模塊： $1
+index_ezone=Perl似乎與全局區域共享，因此無法在此處安裝模塊。必須將它們安裝在全局區域中。
+index_none=在您的系統上找不到已安裝的Perl模塊。
+index_tabmods=現有模塊
+index_tabinstall=安裝模塊
+index_tabsuggest=建議模塊
+index_allmods2=Webmin使用的缺少模塊
+index_wantmods=要安裝的模塊
+
+download_ecpangz=URL $1不是CPAN模塊列表。檢查模塊配置。
+download_ebuild=需要構建 $1的一個或多個Perl模塊，但是尚未安裝此Perl模塊。
+download_yum=從軟件包 $2..中安裝Perl模塊 $1。
+download_missingok=CPAN中缺少的模塊
+download_fallback=某些模塊無法從軟件包安裝，而是嘗試從源代碼安裝。
+
+edit_method=從安裝
+edit_rpm=RPM軟件包 $1
+edit_debian=Debian軟件包 $1
+edit_manual=手動安裝Perl模塊
+
+uninstall_rpm=卸載 $1 RPM軟件包將刪除該模塊。
+uninstall_debian=卸載 $1 Debian軟件包將刪除該模塊。
+uninstall_err=無法卸載模塊
+
+uninstalls_title=卸載模塊
+uninstalls_err=無法卸載模塊
+uninstalls_enone=未選擇
+uninstalls_emod=$1失敗： $2
+uninstalls_rusure=您確定要卸載 $1所選模塊嗎？ $2子模塊和 $3文件將被刪除。

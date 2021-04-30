@@ -1,0 +1,17 @@
+index_ldapmod=LDAP-client
+index_stop=Stop LDAP Client Daemon
+index_stopdesc=Sluit de lokale LDAP-clientdaemon af, die nodig is om de externe LDAP-server te bevragen.
+index_start=Start LDAP Client Daemon
+index_startdesc=Start de lokale LDAP-clientdaemon op, die nodig is om de externe LDAP-server te bevragen. Zolang het niet is gestart, zijn gebruikers en groepen in LDAP niet toegankelijk.
+index_restart=Start LDAP Client Daemon opnieuw op
+index_restartdesc=Pas de huidige configuratie toe door de lokale LDAP-clientdaemon opnieuw op te starten.
+index_atboot=Start LDAP-client bij opstarten
+index_atbootdesc=Wijzigt of de LDAP-clientdaemon wordt gestart wanneer het systeem opstart of niet.
+
+order_sss=Systeembeveiligingsservices
+
+log_atboot=LDAP-clientdaemon ingeschakeld tijdens het opstarten
+log_delboot=LDAP-clientdaemon uitgeschakeld tijdens opstarten
+log_start=Gestarte LDAP-clientdaemon
+log_stop=LDAP-clientdaemon gestopt
+log_restart=Herstartte LDAP-clientdaemon

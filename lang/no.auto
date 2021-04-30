@@ -1,0 +1,3 @@
+file_truncated_message=hentet $1 av data, avkortet $2 av $3 
+file_truncated_message_head=hentet begynnelsen $1 av dataene, avkortet $2 av $3 
+file_truncated_message_tail=hentet slutt $1 av data, avkortet $2 av $3 

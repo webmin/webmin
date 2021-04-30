@@ -1,0 +1,17 @@
+index_title=Konfigurazzjoni Kerberos5
+index_econf=Il-fajl tal-konfigurazzjoni Kerberos5 $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-<a href='$2'>konfigurazzjoni tal-modulu</a> mhix korretta.
+
+logging=Log fajls
+default_log=Fajl tal-log awtomatiku
+kdc_log=Fajl tal-log KDC
+admin_log=File fajl log server
+
+libdefaults=Konfigurazzjoni Default
+dns_kdc=Uża DNS biex tfittex KDC
+default_realm=Isfera
+domain=Isem tad-domain
+default_kdc=KDC
+default_admin=Server Admin
+default_domain=Isem tad-dominju Default
+
+save=Konfigurazzjoni Aġġornament

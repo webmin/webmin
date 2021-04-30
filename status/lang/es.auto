@@ -1,0 +1,255 @@
+index_refsel=Actualizar seleccionado
+index_group=Miembros de $1 
+index_tmpls=Editar plantillas de correo electrónico
+index_tmplsdesc=Ver y editar plantillas utilizadas para construir mensajes de correo electrónico enviados cuando los servicios monitoreados dejan de funcionar.
+
+type_sslcert=Certificado SSL
+type_ftp=Servicio FTP remoto
+type_fail2ban=Servidor Fail2Ban
+type_du=Tamaño del directorio
+type_consume=Consumo de espacio en disco
+type_dovecot=Dovecot IMAP/POP3 Server
+type_init=Acción de arranque
+type_query=Consulta SQL
+type_alive=Sistema vivo
+type_rssh=SSH remoto
+type_slapd=Servidor LDAP
+type_ldap=Conexión LDAP
+
+mon_virtualmin=¡Advertencia! Este monitor está asociado con el dominio de Virtualmin $1, por lo que no debe editarse ni eliminarse aquí.
+mon_header2=Comandos para ejecutar
+mon_header3=Opciones de servicio monitoreadas
+mon_remotes2=Ejecutar en hosts y grupos
+mon_ontimeout=Si el monitor agota el tiempo de espera, ejecute el comando
+mon_eremote2=No se pudo contactar al servidor Webmin $1 : $2 
+mon_etype=Nombre de tipo de monitor no válido
+mon_notifysms=SMS
+mon_empty=No miembros
+mon_onemem=Un miembro
+mon_members=$1 miembros
+mon_enoremote=No hay hosts o grupos para ejecutar en seleccionados
+mon_tmpl=Plantilla para mensajes
+mon_notmpl=Ninguno (use los valores predeterminados de Webmin)
+mon_header4=Historial de estado
+mon_hwhen=Comprobar Fecha
+mon_hold=Estado antiguo
+mon_hnew=Nuevo estado
+mon_hvalue=Valor
+mon_changes0=Mostrar cada tipo de evento
+mon_changes1=Mostrar solo cambios
+mon_all=Mostrar todos los eventos históricos
+mon_nochanges=No se produjeron cambios de estado en los últimos $1 eventos históricos.
+
+sched_pnone=No envíes paginas
+sched_warn3=Mientras el servicio esté activo
+sched_eemailserver=Su servidor de correo no está instalado : $1 
+sched_sms=Enviar SMS a
+sched_smsno=Nadie
+sched_smscarrier=Teléfono en el operador
+sched_smsnumber=con numero
+sched_esmsnumber=Número de SMS faltante o no numérico
+sched_esmsname=Número de SMS faltante o de aspecto no válido
+sched_subject=Asunto para mensajes SMS
+sched_subject0=Ninguno (la alerta está en el cuerpo)
+sched_subject1=Texto de alerta (deje el cuerpo vacío)
+sched_subject2=Texto personalizado
+sched_esubject=Falta el asunto del mensaje SMS
+
+http_regexp=La página debe coincidir con regexp
+http_eregexp=No se ingresó ninguna expresión regular para que la página coincida
+http_none2=No coinciden
+http_ehead=El método de solicitud HEAD no se puede usar al verificar una expresión regular
+
+proc_asuser=Ejecutando como usuario
+proc_anyuser=Cualquier usuario
+proc_easuser=Usuario para que el proceso se ejecute ya que no existe
+
+exec_mode=Verificación del estado de salida
+exec_mode0=Monitor de fallas si falla el comando
+exec_mode1=No se puede supervisar si el comando tiene éxito
+exec_mode2=Ignorar el éxito o el fracaso
+exec_regexp=Comparar salida con regexp
+exec_noregexp=No verifique
+exec_remode=Verificación de expresiones regulares
+exec_remode0=Falla si la salida no coincide
+exec_remode1=Falla si la salida coincide
+
+file_elarge=Archivos demasiado grandes : $1 
+file_esmall=Archivos demasiado pequeños : $1 
+file_eowner=Archivos con propietario incorrecto : $1 
+file_egroup=Archivos con grupo incorrecto : $1 
+file_owner=El propietario del archivo debe ser
+file_group=El grupo de archivos debe ser
+file_nocheck=Cualquier cosa
+file_perms=Los permisos octales deben ser
+file_eperm=Archivos con permisos incorrectos : $1 
+
+space_mode0=Tamaño absoluto
+space_mode1=Porcentaje del total
+space_epc=Porcentaje de espacio libre faltante o no válido
+space_inode=Inodos mínimos libres
+space_ierr=Solo $1 inodes libre
+space_merr=Solo $1 espacio libre
+space_perr=Solo $1% gratis
+space_dferr=Error al obtener el tamaño del sistema de archivos
+
+log_tmpl_create=Plantilla de correo electrónico creada $1 
+log_tmpl_modify=Plantilla de correo electrónico modificada $1 
+log_tmpl_delete=Plantilla de correo electrónico eliminada $1 
+log_tmpl_deletes=Plantillas de correo electrónico $1 eliminadas
+log_refresh=Estados de monitor actualizados
+
+memory_freeswap=$1 memoria virtual libre
+memory_freelow=Solo $1 memoria real libre
+memory_freelowswap=Solo $1 memoria virtual libre
+memory_minswap=Memoria virtual libre mínima
+memory_eminswap=Falta o no es válida la cantidad de memoria virtual libre
+
+init_action=Acción para verificar
+init_eaction=Ninguna acción seleccionada
+
+refresh_doing2=Actualización del estado de $1 monitores seleccionados.
+
+nut_eups=No hay USP para verificar ingresado
+
+monitor_sub_isup=$1 hasta $2 
+monitor_pager_isup=$1 : "$2" ha subido $3 
+monitor_snmp_isup=$1:$2 
+monitor_email_isup=El monitor en $1 para '$2' ha detectado que el servicio está activo en $3 
+monitor_runerr=Error al ejecutar $1 en $2 : $3 
+monitor_email_stat=Estado actual: $1 
+
+deletes_enone=No hay monitores seleccionados
+
+ftp_host=Servidor FTP host
+ftp_port=Puerto FTP
+ftp_user=Inicie sesión como usuario
+ftp_anon=Anónimo
+ftp_pass=Con contraseña
+ftp_file=Archivo para buscar
+ftp_none=Ninguno (solo inicie sesión)
+ftp_ehost=Host de servidor FTP faltante o no válido
+ftp_eport=Puerto de servidor FTP faltante o no válido
+ftp_efile=Falta el archivo o no es válido para descargar
+ftp_tls=¿Utiliza el cifrado TLS?
+ftp_etls=TLS no se puede habilitar a menos que esté instalado el módulo $1 Perl
+ftp_econn=Conexión FTP TLS fallida
+ftp_econn2=Conexión FTP TLS fallida : $1 
+ftp_elogin=Error de inicio de sesión de TLS FTP : $1 
+ftp_etlsfile=Error de descarga de TLS FTP : $1 
+
+query_driver=Tipo de base de datos SQL
+query_db=Nombre de la base de datos
+query_host=Servidor de base de datos host
+query_local=Este servidor
+query_user=Inicie sesión como usuario
+query_pass=Iniciar sesión con contraseña
+query_sql=Consulta SQL para ejecutar
+query_result=Resultado Esperado
+query_ignore=Ignorar resultado
+query_edriver=El módulo del controlador Perl $1 no está instalado
+query_edb=Nombre de base de datos faltante o no válido
+query_ehost=Nombre de host del servidor de bases de datos faltante o no válido
+query_euser=Nombre de usuario no válido
+query_epass=Contraseña invalida
+query_esql=Falta la consulta SQL
+query_eresult=Falta el resultado esperado
+query_elogin=Error de inicio de sesión : $1 
+query_eprepare=Error de SQL : $1 
+query_eexecute=Error de SQL : $1 
+query_ewrong=Resultado incorrecto : $1 
+
+consume_rate=Máxima tasa de consumo (por segundo)
+consume_high=La tasa de consumo es $1 / segundo
+
+alive_up=Subir para $1 
+
+rssh_host=Servidor host SSH
+rssh_ruser=Inicie sesión como usuario
+rssh_rpass=Iniciar sesión con contraseña
+rssh_nopass=Ninguno requerido
+rssh_nologin=No intentes iniciar sesión
+rssh_ehost=Servidor SSH faltante o inválido
+rssh_eruser=Falta nombre de usuario
+rssh_ecmd=El comando <tt>ssh</tt> no está instalado en su sistema
+rssh_eproc=El módulo Procesos en ejecución no es compatible con su sistema
+rssh_wrongpass=Inicio de sesión incorrecto
+rssh_failed=La conexión falló
+rssh_error=Error de SSH
+rssh_haspass=Contraseña
+rssh_port=Puerto del servidor SSH
+rssh_eport=Número de puerto faltante o no válido
+
+tmpls_title=Plantillas de correo electrónico
+tmpls_ecannot=No tienes permiso para editar plantillas de correo electrónico
+tmpls_none=Aún no se han definido plantillas de correo electrónico. Todas las alertas se enviarán utilizando los mensajes predeterminados de Webmin.
+tmpls_desc=Descripción
+tmpls_email=Mensaje de correo electrónico
+tmpls_add=Agregue una nueva plantilla de correo electrónico.
+tmpls_return=lista de plantillas
+tmpls_delete=Eliminar plantillas seleccionadas
+
+tmpl_title1=Crear plantilla de correo electrónico
+tmpl_title2=Editar plantilla de correo electrónico
+tmpl_header=Alertar mensajes de plantilla de correo electrónico
+tmpl_desc=Descripción de la plantilla
+tmpl_email=Mensaje de correo electrónico
+tmpl_sms=Mensaje SMS
+tmpl_sms1=Webmin por defecto
+tmpl_sms0=Mensaje personalizado a continuación. ..
+tmpl_snmp=Mensaje de buscapersonas
+tmpl_instr=Instrucciones y sustituciones
+tmpl_subs=Los mensajes de correo electrónico, SMS y buscapersonas definidos en esta página pueden usar las siguientes sustituciones :
+tmpl_subs_desc=Descripción del servicio
+tmpl_subs_host=Host siendo monitoreado
+tmpl_subs_date=Fecha actual
+tmpl_subs_time=Tiempo actual
+tmpl_subs_status=Estado del servicio, como <i>Abajo</i>
+tmpl_subs2=Además, puede usar bloques condicionales como: <tt>$1 El servicio está inactivo $2 El servicio está bien $3</tt>
+tmpl_err=Error al guardar la plantilla de correo electrónico
+tmpl_edesc=Falta la descripción de la plantilla
+tmpl_emsg=Mensaje de correo electrónico perdido
+tmpl_esms=Mensaje SMS perdido
+tmpl_esnmp=Falta el mensaje SNMP
+tmpl_err2=Error al eliminar la plantilla de correo electrónico
+tmpl_eusers=Está en uso por los siguientes monitores : $1 
+
+dtmpls_err=Error al eliminar plantillas
+dtmpls_enone=Ninguna seleccionada
+dtmpls_eusers=$1 está en uso por los siguientes monitores : $2 
+
+sslcert_src=Ubicación del certificado
+sslcert_url=Desde la URL HTTPS
+sslcert_file=Del archivo en el servidor
+sslcert_eurl=URL faltante, no válida o no SSL
+sslcert_efile=Archivo de certificado faltante o no válido
+sslcert_ecert=No se pudo obtener el certificado
+sslcert_edown=El servidor web está inactivo
+sslcert_days=Días antes del vencimiento para fallar
+sslcert_when=Cuando expiró
+sslcert_mismatch=¿También detecta una falta de coincidencia del nombre de host?
+sslcert_edays=Número de días faltante o inválido
+sslcert_eopenssl=El comando <tt>openssl</tt> es necesario para verificar los certificados
+sslcert_estart=No válido hasta $1 
+sslcert_eend=No válido después de $1 
+sslcert_left=Hasta - $1 días hasta el vencimiento
+sslcert_ematch=El nombre de host $1 no coincide con el certificado $2 
+sslcert_emismatch=La verificación del nombre de host del certificado solo se puede usar cuando se verifica una URL
+
+du_dir=Directorio para monitorear
+du_max=Talla máxima
+du_edir=Ruta de directorio faltante o no absoluta
+du_emax=Tamaño máximo faltante o no numérico
+du_over=El tamaño es $1 
+du_under=El tamaño es solo $1 
+
+ldap_edriver=El módulo Perl $1 no está instalado
+ldap_host=Nombre de host del servidor LDAP
+ldap_port=Puerto del servidor LDAP
+ldap_ssl=¿Usar conexión SSL?
+ldap_user=Inicio de sesión en el servidor LDAP
+ldap_pass=Contraseña del servidor LDAP
+
+info_desc=Monitor del sistema
+info_last=Estado actual
+info_title=Sistema y estado del servidor

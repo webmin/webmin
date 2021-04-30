@@ -1,12 +1,14 @@
-acl_user=Wykonaæ polecenie jako u¿ytkownik
-acl_user_def=Aktualny u¿ytkownik Webmina
-index_clear=Wyczy¶æ historiê
-index_clearcmds=Wyczy¶æ komendy
-index_desc=Podaj w&nbsp;polu tekstowym poni¿ej polecenie pow³oki Uniksa, które ma byæ wykonanae. Za pomoc± polecenia <tt>cd</tt> mo¿na zmieniæ katalog dla nastêpnych poleceñ.
-index_edit=Edytuj poprzednie polecenia
-index_history=Historia poleceñ
+index_title=Linia poleceÅ„
 index_ok=Wykonaj polecenie:
+index_history=Historia poleceÅ„
+index_clear=WyczyÅ›Ä‡ historiÄ™
+index_clearcmds=WyczyÅ›Ä‡ komendy
+index_desc=Podaj wÂ polu tekstowym poniÅ¼ej polecenie powÅ‚oki Uniksa, ktÃ³re ma byÄ‡ wykonanae. Za pomocÄ… polecenia <tt>cd</tt> moÅ¼na zmieniÄ‡ katalog dla nastÄ™pnych poleceÅ„.
 index_pok=Uruchom poprzednie polecenie
-index_title=Linia poleceñ
-log_clear=Wyczyszczono historie poleceñ
-log_run=Uruchom komendê $1
+index_edit=Edytuj poprzednie polecenia
+
+acl_user=WykonaÄ‡ polecenie jako uÅ¼ytkownik
+acl_user_def=Aktualny uÅ¼ytkownik Webmina
+
+log_run=Uruchom komendÄ™ $1
+log_clear=Wyczyszczono historie poleceÅ„

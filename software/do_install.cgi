@@ -13,6 +13,10 @@ else {
 	&ui_print_header(undef, $text{'do_title'}, "");
 	}
 
+# Save this CGI from being killed by a webmin or apache upgrade
+$SIG{'TERM'} = 'IGNORE';
+$SIG{'PIPE'} = 'IGNORE';
+
 @packages = &file_packages($in{'file'});
 if (defined(&install_packages) && @packages > 1) {
 	# Can install everything in one hit

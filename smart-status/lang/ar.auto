@@ -1,0 +1,58 @@
+index_title=حالة محرك سمارت
+index_ecmd=لم يتم العثور على أمر التحكم SMART $1 في النظام الخاص بك ، أو لم يتم تعيينه بشكل صحيح في <a href='$2'>تكوين الوحدة النمطية</a>. يجب تثبيته قبل استخدام هذه الوحدة.
+index_ecmd2=لا يبدو أن الأمر$1 هو أمر التحكم SMART. يجب تعيينها بشكل صحيح في <a href='$2'>تكوين الوحدة النمطية</a> قبل أن تتمكن من استخدام هذه الوحدة.
+index_version=إصدار SMARTsuite$1
+index_show=إظهار حالة محرك الأقراص:
+index_ok=تبين
+index_eidescsi=لم يتم العثور على محركات أقراص IDE أو SCSI أو SATA على نظامك.
+index_drive=حالة محرك الأقراص$1
+index_drivesub=حالة محرك الأقراص $1 ، القرص$2
+index_desc=موقعك
+index_size=حجم محرك الأقراص
+index_model=الصنع و النوع
+index_support=يدعم سمارت؟
+index_enabled=تم تمكين SMART؟
+index_check=اجتاز فحص القيادة؟
+index_short=اختبار ذاتي قصير
+index_ext=اختبار ذاتي ممتد
+index_data=اختبار جمع البيانات
+index_errors=تم تسجيل أخطاء
+index_ecount=تم الكشف عن أخطاء$1
+index_attrs=سمات SMART إضافية
+index_raw=تقرير حالة SMART الكامل
+index_return=مؤشر الوحدة
+index_family=عائلة نموذجية
+index_serial=رقم سري
+index_capacity=سعة
+index_norm=تطبيع:
+
+monitor_type=فحص محرك سمارت
+monitor_type2=اهتراء SSD
+monitor_drive=دفع للتحقق
+monitor_errors=تحقق من سجل الأخطاء أيضا؟
+monitor_errorsinc=نعم ، ولكن التنبيه فقط إذا زاد عدد الأخطاء
+monitor_other=آخر ..
+monitor_edrive=محرك أقراص مفقود أو غير صالح للتحقق
+monitor_nosuch=لا يوجد مثل هذا محرك الأقراص
+monitor_nosmart=لا يوجد دعم SMART
+monitor_errorsfound=تم الإبلاغ عن أخطاء$1
+monitor_errorsinced=زادت الأخطاء من$2 إلى$1
+monitor_wearlevel=فشل إذا انخفض مستوى التآكل أدناه
+monitor_ewearlevel=نسبة التآكل غير صالحة
+monitor_nowearout=محرك الأقراص لا يبلغ عن مؤشر تآكل SSD
+monitor_wornout=انخفض مستوى التآكل إلى$1
+
+short_title=اختبار ذاتي قصير
+short_doing=بدء الاختبار الذاتي القصير لـ$1 ..
+short_failed=.. فشل!
+short_ok=.. بدأ الاختبار موافق. انظر حالة محرك الأقراص على الصفحة الرئيسية للوحدة للحصول على النتائج.
+
+ext_title=اختبار ذاتي ممتد
+ext_doing=جاري بدء الاختبار الذاتي الموسع لـ$1 ..
+ext_failed=.. فشل!
+ext_ok=.. بدأ الاختبار موافق. انظر حالة محرك الأقراص على الصفحة الرئيسية للوحدة للحصول على النتائج.
+
+data_title=اختبار جمع البيانات
+data_doing=جاري بدء تجميع البيانات دون اتصال على$1 ..
+data_failed=.. فشل!
+data_ok=.. بدأت المجموعة موافق. انظر حالة محرك الأقراص على الصفحة الرئيسية للوحدة للحصول على النتائج.

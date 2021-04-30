@@ -1,0 +1,103 @@
+index_title=Monitor srdcového rytmu
+index_return=monitora srdcového rytmu
+index_edir=Konfiguračný adresár prezenčného signálu $1 neexistuje. Možno Heartbeat nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_start=Spustite monitor srdcového rytmu
+index_startmsg=Kliknutím na toto tlačidlo spustíte proces sledovania srdcového rytmu. Umožní to automatické zlyhanie služby vo vašom systéme s aktuálnou konfiguráciou.
+index_apply=Aplikovať zmeny
+index_applymsg=Kliknutím na toto tlačidlo vynútite prebiehajúci proces sledovania srdcového rytmu, aby znova načítal aktuálnu konfiguráciu.
+index_eha_cf=Vo vašom systéme sa nenašiel konfiguračný súbor prezenčného signálu $1. Možno to ešte nebolo skopírované na miesto alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_eharesources=Súbor zdrojov $1 nebol vo vašom systéme nájdený. Možno to ešte nebolo skopírované na miesto alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_eauthkeys=Vo vašom systéme sa nenašiel súbor autentifikačných kľúčov $1. Možno to ešte nebolo skopírované na miesto alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_ereq_resource_cmd=Skript na vyžiadanie zdrojov z druhého uzla ($1) nebol vo vašom systéme nájdený. Možno to ešte nebolo skopírované na miesto alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_version=Heartbeat verzia $1 
+index_noversion=Varovanie - Verzia Heartbeat nainštalovaná vo vašom systéme sa nedala automaticky zistiť. Mali by ste ho nastaviť na stránke <a href='$1'>Konfigurácia modulu</a>.
+index_status=Stav srdca
+
+conf_title=Možnosti konfigurácie
+conf_header=Možnosti konfigurácie prezenčného signálu
+conf_serials=Sériové porty srdcového rytmu
+conf_baud=Prenosová rýchlosť pre sériový port
+conf_bcasts=Rozhrania Heartbeat Ethernet
+conf_none=nikto
+conf_udpport=Port srdcového rytmu UDP
+conf_mcast=Multicastový tlkot srdca
+conf_mcastv=Zariadenie $1, skupina $2, port $3, TTL $4, spätná slučka $5 
+conf_enabled=povolené
+conf_disabled=invalidný
+conf_keepalive=Čas medzi údermi srdca
+conf_nice_failback=Príjemné správanie pri zlyhaní
+conf_secs=sekundy
+conf_deadtime=Čas pred uzlom sa považuje za mŕtvy
+conf_watchdog=Súbor zariadenia strážneho psa
+conf_node=Hostitelia v klastri
+conf_logfile=Súbor denníka prezenčného signálu
+conf_logfacility=Zariadenie protokolu Syslog
+conf_initdead=Počiatočný mŕtvy čas
+conf_ok=Možnosti uloženia
+conf_err=Možnosti sa nepodarilo uložiť
+conf_ebaud=Chýbajúca alebo neplatná prenosová rýchlosť
+conf_ebcast=Nezadali sa žiadne srdcové tepové rozhrania
+conf_ebcastif='$1' nie je platné rozhranie pre vysielanie
+conf_eudpport=Chýba alebo je neplatný port signálu tepu
+conf_ekeepalive=Chýbajúci alebo neplatný čas medzi údermi srdca
+conf_edeadtime=Chýbajúci alebo neplatný mŕtvy čas
+conf_ewatchdog=Chýba alebo neexistuje súbor zariadenia strážneho psa
+conf_enonode=Neboli zadaní žiadni hostitelia klastrov
+conf_ethisnode=Tento hostiteľ $1 nie je na zozname hostiteľov klastrov
+conf_elogfile=Chýba alebo je neplatný názov súboru denníka
+conf_einitdead=Chýbajúci alebo neplatný počiatočný mŕtvy čas
+conf_einitdead2=Počiatočný mŕtvy čas musí byť najmenej dvojnásobok času, kým sa uzol považuje za mŕtvy
+conf_emcast_dev=Chýba alebo je neplatné multicastové zariadenie
+conf_emcast_ip=Chýba alebo je neplatná adresa skupiny skupinového vysielania
+conf_emcast_port=Chýba alebo je neplatné číslo portu multicast
+conf_emcast_ttl=Chýbajúci alebo neplatný čas doženia multicast
+conf_auto_on=$ {Conf_enabled}
+conf_auto_off=$ {Conf_disabled}
+conf_auto_legacy=Starý režim
+conf_auto_=$ {Predvolené}
+
+res_title=Klastrové zdroje
+res_node=Primárny uzol
+res_ips=IP adresy
+res_servs=Uzlové služby
+res_none=nikto
+res_nores=Vo vašom systéme nie sú definované žiadne klastrové prostriedky.
+res_add=Pridajte prostriedok klastra
+res_return=zoznam zdrojov
+res_active=Stav zdrojov
+res_getserv=Získajte prostriedky
+res_hbdown=Srdce dole
+res_up=UP
+res_down=DOWN
+
+node_create=Pridať zdroj klastra
+node_edit=Upraviť klastrový prostriedok
+node_header=Podrobnosti o klastrovom prostriedku
+node_node=Primárny uzol pre prostriedok
+node_ips=IP adresy zdroja
+node_ip=IP adresa
+node_cidr=Netmask CIDR
+node_broad=Vysielacia adresa
+node_servs=Služby týkajúce sa zdrojov
+node_serv=služba
+node_args=Ďalšie argumenty
+node_err=Nepodarilo sa uložiť prostriedok klastra
+node_enone=Chýba alebo je neplatný primárny uzol
+node_eip=$1 nie je platná adresa IP
+node_ecidr=$1 nie je platný CIDR
+node_ebroad=$1 nie je platná vysielacia adresa
+
+auth_title=Autentifikačné kľúče
+auth_header=Autentifikácia klastrových uzlov
+auth_mode=Režim overovania
+auth_crc=CRC (bez zabezpečenia)
+auth_sha1=SHA1 s heslom
+auth_md5=MD5 s heslom
+auth_err=Autentifikačné kľúče sa nepodarilo uložiť
+auth_emd5=Chýbajúce alebo neplatné heslo MD5
+auth_esha1=Chýbajúce alebo neplatné heslo SHA1
+
+start_err=Nepodarilo sa spustiť tlkot srdca
+
+apply_err=Nepodarilo sa uplatniť zmeny
+apply_epid=Proces už nie je spustený

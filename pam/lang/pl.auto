@@ -1,0 +1,53 @@
+desc_su-l=Przełącz użytkownika (z loginem)
+desc_usermin=Serwer WWW użytkownika
+desc_cupsys=Drukowanie CUPS
+desc_libcupsys2=Drukowanie CUPS
+desc_ssh=Logowanie SSH
+desc_proftpd=Serwer transferu plików ProFTPd
+desc_qpopper=Serwer poczty POP
+desc_dovecot=Serwer pocztowy POP / IMAP
+desc_cron=Demon poleceń zaplanowanych
+desc_runuser=Uruchom komendę jako użytkownik
+desc_runuser-l=Uruchom komendę jako użytkownik (z loginem)
+desc_postgresql=Baza danych PostgreSQL
+desc_crond=Demon Cron
+desc_smtp=Uwierzytelnianie SMTP
+desc_smtp.postfix=Uwierzytelnianie Postfix SMTP
+desc_smtp.sendmail=Uwierzytelnianie Sendmail SMTP
+desc_config-util=Narzędzia konfiguracyjne
+desc_newrole=Nowa rola SELinuksa
+desc_radius=Logowanie przez modem RADIUS
+desc_pptpconfig=Protokół tunelowania punkt-punkt
+desc_atd=Demon poleceń zaplanowanych
+desc_kcheckpass=Sprawdzanie hasła KDE
+desc_common-account=Wspólna weryfikacja konta
+desc_common-auth=Wspólne uwierzytelnianie
+desc_common-password=Wspólna zmiana hasła
+desc_common-session=Wspólna konfiguracja sesji
+
+edit_file=Plik konfiguracyjny
+edit_addinc=Dodaj dołączoną usługę
+edit_inc=Uwzględnij usługę $1 
+edit_iheader=Zawarte usługi PAM
+
+pam_foreground.so=Konfiguracja konsoli
+
+unix_nullok_secure=Czy akceptujesz hasła zerowe w bezpiecznych urządzeniach TTY?
+unix_min=Minimalna długość hasła
+unix_nomin=Żaden
+unix_max=Maksymalna długość hasła
+unix_nomax=Bez limitu
+unix_obscure=Zapobiegać użyciu łatwych haseł?
+unix_emin=Brakująca lub nieprawidłowa minimalna długość hasła
+unix_emax=Brakująca lub nieprawidłowa maksymalna długość hasła
+
+log_inc_create=Dodano m.in. $1 dla usługi $2 
+log_inc_modify=Zmodyfikowane obejmują $1 dla usługi $2 
+log_inc_delete=Usunięte są $1 dla usługi $2 
+log_incs=Zaktualizowano obejmuje usługę $1 
+
+inc_edit=Edytuj dołączoną usługę
+inc_create=Utwórz uwzględnioną usługę
+inc_header=Zawarte szczegóły usługi PAM
+inc_inc=Zawarta usługa PAM
+inc_err=Nie udało się zapisać dołączonej usługi

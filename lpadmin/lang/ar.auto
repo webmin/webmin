@@ -1,0 +1,316 @@
+index_title=إدارة الطابعة
+index_header=الطابعات المتاحة
+index_name=طابعة
+index_desc=وصف
+index_to=طباعة إلى
+index_driver=سائق
+index_enabled=ممكن؟
+index_accepting=قبول؟
+index_jobs=وظائف
+index_none=لا توجد طابعات مثبتة على هذا النظام.
+index_list=قائمة ..
+index_jlist=وظائف ..
+index_jcount=$1 وظائف ..
+index_add=أضف طابعة جديدة.
+index_stop=إيقاف جدولة
+index_stopmsg=انقر فوق هذا الزر لإيقاف عملية جدولة الطباعة الجارية. سيمنع هذا أي مستخدمين محليين أو عن بعد من الطباعة على نظامك.
+index_start=بدء المجدول
+index_startmsg=انقر فوق هذا الزر لبدء عملية جدولة الطباعة. سيسمح ذلك للمستخدمين المحليين والبعيدين بالطباعة على نظامك.
+index_restart=إعادة تشغيل المجدول
+index_restartmsg=انقر فوق هذا الزر لإعادة تشغيل عملية جدولة الطباعة. سيؤدي ذلك إلى فرض تكوين الطباعة الحالي ليتم تطبيقه.
+index_return=قائمة الطابعات
+index_esystem=إما تثبيت البرنامج لنظام الطباعة الذي اخترته ، أو استخدام <a href='$1'>تكوين الوحدة النمطية</a> لتغييره.
+index_style=نظام الطباعة:$1
+index_cluster=خوادم الكتلة
+index_clusterdesc=انقر فوق هذا الزر لإعداد خوادم Webmin إضافية سيتم إنشاء الطابعات وتحديثها وحذفها عليها.
+index_delete=حذف الطابعات المحددة
+
+style_solaris=سولاريس
+style_linux=لينكس LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=كؤوس
+style_irix=IRIX
+style_aix=AIX
+
+edit_eedit=لا يسمح لك بتحرير هذه الطابعة
+edit_eadd=لا يسمح لك بإضافة طابعات
+edit_add=إنشاء طابعة
+edit_edit=تحرير الطابعة
+edit_conf=تكوين الطابعة
+edit_name=اسم
+edit_acc=قبول الطلبات؟
+edit_why=لا لماذا لا
+edit_desc=وصف
+edit_ena=تمكين الطباعة؟
+edit_acl=صلاحية التحكم صلاحية الدخول
+edit_allow=اسمح للجميع
+edit_deny=حرمان الجميع
+edit_allowu=السماح للمستخدمين المدرجين ..
+edit_denyu=رفض المستخدمين المدرجين ..
+edit_banner=طباعة الشعار؟
+edit_opt=اختياري
+edit_default=الطابعة الافتراضية؟
+edit_already=بالفعل الطابعة الافتراضية
+edit_max=الحد الأقصى لحجم مهمة الطباعة
+edit_unlimited=غير محدود
+edit_dacc=يقبل السائق
+edit_dtext=نص
+edit_dpost=بوستسكريبت
+edit_dother=آخر
+edit_alt=أسماء طابعة بديلة
+edit_dest=وجهة الطباعة
+edit_dev=الجهاز المحلي
+edit_file=ملف محلي
+edit_remote=خادم Unix البعيد
+edit_rqueue=طابعة
+edit_type=اكتب
+edit_smb=خادم Windows البعيد
+edit_share=طابعة
+edit_user=المستعمل
+edit_pass=كلمه السر
+edit_wgroup=مجموعة العمل
+edit_hpnp=خادم HPNP البعيد
+edit_port=ميناء
+edit_direct=اتصال TCP مباشر
+edit_dport=ميناء
+edit_driver=برنامج تشغيل الطابعة
+edit_check=تحقق ما إذا كان الخادم البعيد قيد التشغيل؟
+
+blocks=الكتل
+
+save_err=فشل في حفظ الطابعة
+save_eadd=لا يسمح لك بإضافة طابعات
+save_eedit=لا يسمح لك بتحرير هذه الطابعة
+save_ename=إن '$1' ليس اسم طابعة صالحًا
+save_edup=توجد طابعة تسمى "$1" بالفعل
+save_eallow=لم يتم إدخال مستخدمين للسماح
+save_edeny=لم يتم إدخال أي مستخدمين للرفض
+save_euser=المستخدم '$1' غير موجود
+save_etype=يجب تحديد نوع واحد على الأقل ليقبله برنامج التشغيل هذا
+save_emax=يجب أن يكون الحد الأقصى لحجم مهمة الطباعة عددًا صحيحًا
+save_efile="$1" غير موجود
+save_erhost=المضيف البعيد '$1' غير موجود
+save_erport=المنفذ البعيد '$1' غير صالح
+save_erqueue=إن '$1' ليس اسم قائمة انتظار بعيد صالح
+save_eremote=لا يمكن استخدام برامج التشغيل مع طابعات Unix البعيدة
+save_edhost=المضيف المباشر '$1' غير موجود
+save_edport=منفذ مباشر مفقود أو غير صالح
+save_evalid=لم يسمح نظام الطباعة بهذه الطابعة
+save_errslave=أنشأت الطابعة "موافق" على هذا النظام ، ولكن حدثت الأخطاء التالية في أنظمة المجموعة :$1
+save_egone=لم يتم العثور على طابعة باسم '$1'
+save_errdelslave=حذفت الطابعة موافق على هذا النظام ، ولكن حدثت الأخطاء التالية في أنظمة المجموعة :$1
+
+jobs_title=مهام الطباعة
+jobs_header=مهام الطباعة على$1
+jobs_id=معرف الوظيفة
+jobs_size=بحجم
+jobs_by=مقدم من
+jobs_when=تم الإرسال في
+jobs_file=اسم الملف
+jobs_cancel=انقر فوق معرف وظيفة من القائمة أعلاه للإلغاء.
+jobs_cancelview=انقر فوق معرّف وظيفة من القائمة أعلاه للإلغاء ، أو انقر فوق حجم المهمة لعرضه.
+jobs_none=لا تحتوي الطابعة$1 على أي مهام معلقة.
+jobs_all=قم بإلغاء جميع مهام الطباعة
+jobs_bytes=بايت
+jobs_test=طباعة صفحة الاختبار
+jobs_cancelsel=إلغاء الوظائف المختارة
+jobs_on=على الطابعة$1
+jobs_return=قائمة مهام الطباعة
+
+cancel_ecannot=لا يسمح لك بإلغاء مهام الطباعة
+cancel_err=فشل في إلغاء مهمة الطباعة
+cancel_egone=لم تعد مهمة الطباعة$1 موجودة
+
+view_ecannot=لا يمكنك عرض مهمة الطباعة هذه
+view_egone=لم تعد مهمة الطباعة هذه موجودة
+
+start_ecannot=غير مسموح لك ببدء المجدول
+start_err=فشل بدء المجدول
+
+stop_ecannot=غير مسموح لك بإيقاف المجدول
+stop_err=فشل في إيقاف المجدول
+
+restart_ecannot=غير مسموح لك بإعادة تشغيل المجدول
+restart_err=فشل إعادة تشغيل المجدول
+
+webmin_none=لا يوجد
+webmin_nonemsg=بوستسكريبت أو طابعة نصية
+webmin_remotemsg=طابعة عن بعد
+webmin_model=نموذج
+webmin_prog=برنامج
+webmin_driver=برنامج تشغيل Webmin
+webmin_uniprint=سائق يونيبرنت
+webmin_edrivers=فشل في الحصول على برامج تشغيل من$1. برامج تشغيل الطابعة Webmin باستخدام ghostscript غير متوفرة
+webmin_egs=لم يتم العثور على الأمر$1. برامج تشغيل الطابعة Webmin باستخدام ghostscript غير متوفرة
+webmin_edriver="$1" غير موجود
+
+caldera_none=لا يوجد
+caldera_nonemsg=طابعة عن بعد أو الخام
+caldera_prog=برنامج
+caldera_coas=سائق COAS
+caldera_printer=الطابعة والدقة
+caldera_eof=إرسال EOF؟
+caldera_paper=حجم الورق
+caldera_double=طباعة على الوجهين؟
+caldera_gsopts=خيارات GS إضافية
+caldera_uniprint=سائق يونيبرنت
+caldera_eprog="$1" غير موجود
+caldera_edriver=لم يتم تحديد برنامج تشغيل الطابعة
+caldera_eres=لم يتم تحديد قرار
+
+redhat_none=لا يوجد
+redhat_nonemsg=بوستسكريبت أو طابعة نصية
+redhat_prog=برنامج
+redhat_driver=سائق Redhat
+redhat_printer=الطابعة والدقة
+redhat_eof=إرسال EOF؟
+redhat_paper=حجم الورق
+redhat_pages=الصفحات لكل صفحة الإخراج
+redhat_gsopts=خيارات GS إضافية
+redhat_hmargin=الهامش الأيمن/الأيسر
+redhat_vmargin=الهامش العلوي/السفلي
+redhat_crlf=هل تريد إصلاح نص يخطو الدرج؟
+redhat_eprog="$1" غير موجود
+redhat_edriver=لم يتم تحديد برنامج تشغيل الطابعة
+redhat_ehmargin=الهامش الأيمن/الأيسر مفقود أو غير صالح
+redhat_evmargin=الهامش العلوي/السفلي مفقود أو غير صالح
+redhat_eres=لم يتم تحديد قرار
+redhat_printer2=طراز الطابعة وبرنامج التشغيل
+
+suse_none=لا يوجد
+suse_nonemsg=بوستسكريبت أو طابعة نصية
+suse_prog=برنامج
+suse_driver=سائق APSfilter
+suse_printer=نوع الطابعة
+suse_res=القرار في DPI
+suse_colour=طابعة ملونة؟
+suse_paper=حجم الورق
+suse_method=طريقة التصفية
+suse_auto=تلقائي
+suse_ascii=ASCII
+suse_raw=الخام
+suse_extra=خيارات إضافية ghostscript
+suse_yast2=سائق YAST2
+suse_edriver=لم يتم تحديد نوع طابعة
+suse_eres=قرار مفقود أو غير صالح
+
+estop=فشل إيقاف lpd :$1
+
+acl_printers=الطابعات التي يمكن لهذا المستخدم تكوينها
+acl_add=يمكن إضافة طابعات جديدة؟
+acl_cancel=يمكن إلغاء مهام الطباعة؟
+acl_stop=يمكن التوقف أو بدء جدولة؟
+acl_restart=إعادة التشغيل فقط
+acl_listed=فقط على طابعات مختارة ..
+acl_pall=جميع الطابعات
+acl_psel=المحدد ..
+acl_view=هل تريد إظهار الطابعات غير القابلة للتكوين؟
+acl_test=يمكن طباعة صفحات الاختبار؟
+acl_user=إدارة مهام الطباعة التي يملكها
+acl_user_all=جميع المستخدمين
+acl_user_this=مستخدم Webmin الحالي
+acl_delete=يمكن حذف الطابعات؟
+acl_cluster=يمكن إدارة مجموعة الطابعة؟
+
+log_stop=توقف جدولة الطباعة
+log_start=بدأ جدولة الطباعة
+log_restart=إعادة جدولة الطباعة
+log_cancel_job=تم إلغاء مهمة الطباعة$2 على$1
+log_cancel_all=تم إلغاء كافة مهام الطباعة في$1
+log_cancel_sel=تم إلغاء مهام طباعة$2 على$1
+log_create=تم إنشاء الطابعة$1 على$2
+log_modify=طابعة معدلة$1 على$2
+log_delete=الطابعة المحذوفة$1 على$2
+log_create_l=تم إنشاء طابعة$3 $1 على$2
+log_modify_l=طابعة$3 معدلة$1 على$2
+log_delete_l=تم حذف طابعة$3 $1 على$2
+
+linux_paralel=المنفذ المتوازي$1
+linux_serial=المنفذ التسلسلي$1 (COM$1)
+linux_null=جهاز فارغ
+linux_usb=طابعة USB$1
+linux_ecmd=لم يتم العثور على الأمر$1 على نظامك ، مما يشير إلى أن نظام طباعة Linux غير مثبت.
+linux_espool=دليل التخزين المؤقت $1 غير موجود على نظامك ، مما يشير إلى أن نظام طباعة Linux غير مثبت.
+
+freebsd_paralel=المنفذ المتوازي
+freebsd_serial=المنفذ التسلسلي$1 (COM$1)
+freebsd_ecmd=لم يتم العثور على الأمر$1 على النظام الخاص بك ، مما يشير إلى أن نظام الطباعة FreeBSD غير مثبت.
+freebsd_espool=دليل التخزين المؤقت $1 غير موجود على نظامك ، مما يشير إلى أن نظام طباعة FreeBSD غير مثبت.
+
+openbsd_paralel=المنفذ المتوازي
+openbsd_serial=المنفذ التسلسلي$1 (COM$1)
+
+unixware_paralel=المنفذ المتوازي$1
+unixware_serial=المنفذ التسلسلي$1
+unixware_null=جهاز فارغ
+unixware_ecmd=لم يتم العثور على الأمر$1 على النظام الخاص بك ، مما يشير إلى أن نظام الطباعة UnixWare غير مثبت.
+
+hpux_paralel=$1 الموازي
+hpux_serial=المسلسل$1
+hpux_null=جهاز فارغ
+hpux_ecmd=لم يتم العثور على الأمر$1 على نظامك ، مما يشير إلى أن نظام طباعة HPUX غير مثبت.
+hpux_eiface=دليل البرامج النصية للواجهة$1 غير موجود على نظامك ، مما يشير إلى أن نظام طباعة HPUX غير مثبت.
+
+lprng_paralel=المنفذ المتوازي$1
+lprng_serial=المنفذ التسلسلي$1 (COM$1)
+lprng_null=جهاز فارغ
+lprng_ecmd=لم يتم العثور على الأمر$1 على النظام الخاص بك ، مما يشير إلى أن نظام طباعة LPRng غير مثبت.
+lprng_espool=دليل التخزين المؤقت $1 غير موجود على نظامك ، مما يشير إلى أن نظام طباعة LPRng غير مثبت.
+
+solaris_paralel=المنفذ المتوازي
+solaris_uparalel=منفذ Ultra 5/10 الموازي
+solaris_serial=المنفذ التسلسلي$1
+solaris_null=جهاز فارغ
+solaris_ecmd=لم يتم العثور على الأمر$1 على نظامك ، مما يشير إلى أن نظام طباعة Solaris غير مثبت.
+
+test_title=طباعة صفحة الاختبار
+test_ecannot=لا يسمح لك بطباعة صفحات الاختبار
+test_desc=يسمح لك هذا النموذج بطباعة صفحة اختبار للطابعة$1. حدد نوع الصفحة التي تريد طباعتها :
+test_0=صفحة بوستسكريبت أبيض وأسود
+test_1=صفحة بوستسكريبت ملونة
+test_2=نص ASCII عادي
+test_3=أي ملف تم تحميله
+test_print=طباعة الصفحة
+test_exec=طباعة صفحة الاختبار بالأمر$1 ..
+test_failed=.. فشل الأمر!
+test_ok=.. اكتمل الأمر.
+
+cups_none=لا يوجد
+cups_nonemsg=طابعة عن بعد أو الخام
+cups_prog=برنامج
+cups_driver=سائق CUPS
+cups_eprog=إن '$1' ليس برنامجًا صالحًا
+cups_opts=خيارات$1
+cups_ecmd=لم يتم العثور على الأمر$1 على نظامك ، مما يشير إلى أن نظام طباعة CUPS غير مثبت.
+
+irix_ecmd=لم يتم العثور على الأمر$1 على النظام الخاص بك ، مما يشير إلى أن نظام طباعة IRIX غير مثبت.
+irix_eiface=دليل البرامج النصية للواجهة$1 غير موجود على نظامك ، مما يشير إلى أن نظام طباعة IRIX غير مثبت.
+
+aix_port=منفذ الطابعة$1
+aix_edesc=وصف غير صالح - يسمح فقط باستخدام الأحرف والأرقام ، ولا توجد مسافات
+aix_ecmd=لم يتم العثور على ملقم طابعة AIX$1. ربما لم يتم تثبيته أو أن هناك نظام طباعة آخر قيد الاستخدام.
+
+cluster_title=خوادم الطابعة العنقودية
+cluster_none=لم تتم إضافة أي خوادم إلى مجموعة الطابعة حتى الآن.
+cluster_host=اسم المضيف
+cluster_desc=وصف
+cluster_os=نظام التشغيل
+cluster_add=إضافة خادم
+cluster_gadd=أضف خوادم في المجموعة
+cluster_need=يجب عليك إضافة خوادم باسم تسجيل الدخول وكلمة المرور في وحدة Webmin Servers Index النمطية قبل أن تتم إدارتها هنا.
+cluster_return=خوادم الكتلة
+cluster_delete=ازل المحدد
+cluster_ecannot=غير مسموح لك بإدارة خوادم طابعة الكتلة
+
+add_title=إضافة خوادم
+add_msg=جاري إضافة$1 ..
+add_gmsg=جاري إضافة خوادم في المجموعة$1 ..
+add_err=فشلت إضافة الخادم
+add_gerr=فشل في إضافة مجموعة
+add_echeck=لا يحتوي الخادم$1 على وحدة إدارة الطابعة
+add_ediff=يستخدم الخادم$1 نظام طباعة مختلف ($2) لهذا الخادم
+add_ediff2=يستخدم الخادم$1 برنامج تشغيل طباعة مختلف ($2) لهذا الخادم
+add_ok=تمت إضافة$1 ، مع طابعات$2.

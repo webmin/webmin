@@ -1,0 +1,118 @@
+index_title=Balso pašto serveris
+index_ecmd=„Vgetty“ komanda $1 nerasta jūsų sistemoje. Galbūt jis neįdiegtas, arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_econfig=„Vgetty“ konfigūracijos failas $1 nerastas jūsų sistemoje. Galbūt jis neįdiegtas, arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_return=balso pašto rodyklė
+
+vgetty_title=Serijinio prievado konfigūracija
+vgetty_desc=Kad jūsų serveris atsakytų į balso skambučius modemu, prijungtu prie nuosekliojo prievado, jis turi būti nurodytas žemiau. Įtraukus prie šio sąrašo prievadą, programa $1 bus sukonfigūruota atsakyti į skambučius ir atkurti pranešimą.
+vgetty_add=Pridėkite naują nuoseklųjį prievadą
+vgetty_tty=Serijinis prietaisas
+vgetty_type=Tipas
+vgetty_vgetty=Balsas
+vgetty_mgetty=Duomenys/faksas
+vgetty_none=Dar nėra sukonfigūruoti nuoseklieji balso pašto pašto prievadai.
+vgetty_apply=Taikyti konfigūraciją
+vgetty_applydesc=Spustelėkite šį mygtuką, kad pritaikytumėte dabartinę balso pašto serverio konfigūraciją, paleisdami komandą $1 ir užmušdami visus „Vgetty“ procesus.
+vgetty_applyerr=Nepavyko pritaikyti konfigūracijos
+vgetty_return=nuosekliųjų prievadų sąrašas
+vgetty_create=Pridėti nuoseklųjį prievadą
+vgetty_edit=Redaguoti serijos prievadą
+vgetty_header=Serijinio prievado konfigūracijos parinktys
+vgetty_ts=Serijinis prievadas $1 
+vgetty_other=Kitas prietaisas ..
+vgetty_rings=Žiedai prieš atsakant
+vgetty_default=Visuotinis nutylėjimas
+vgetty_ans=Atsakymo režimas
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=Balsas
+vgetty_ans_fax=Faksas
+vgetty_ans_data=Duomenys
+vgetty_err=Nepavyko išsaugoti nuosekliojo prievado
+vgetty_etty=Trūksta arba neegzistuoja serijinis įrenginys
+vgetty_erings=Trūksta arba netinkamas žiedų skaičius
+vgetty_erings2=Žiedų skaičius turi būti ne mažesnis kaip 2
+vgetty_eans=Nepasirinktas nei vienas atsakymo režimas
+vgetty_eclash=Serijinis prievadas $1 jau naudojamas
+
+options_title=Balso pašto serverio parinktys
+options_header=Visų nuosekliųjų prievadų parinktys
+options_maxlen=Maksimali pranešimo trukmė
+options_secs=sekundžių
+options_minlen=Mažiausia pranešimo trukmė
+options_silence=Pašalinti tylą nuo pranešimų pabaigos?
+options_thresh=Tylos slenksčio lygis
+options_rgain=Įrašymo garsumo lygis
+options_tgain=Atkūrimo garsumo lygis
+options_rings=Žiedai prieš atsakant
+options_perport=Galima nustatyti kiekvienam nuosekliajam prievadui
+options_ans=Atsakymo režimas
+options_keep=Laikyti pranešimus, kuriuose yra duomenų ar DTMF kodus?
+options_light=Įjungti automatinio atsakymo lemputę gavę?
+options_owner=„Unix“ pranešimų failų savininkas
+options_group=„Unix“ grupė pranešimų failams
+options_mode=Pranešimų failų leidimai
+options_prog=Po įrašymo pranešimą
+options_prog0=Nieko nedaryk
+options_prog1=Siųsti WAV formatu el. Paštu
+options_prog2=Vykdyti komandą pranešimo faile
+options_err=Nepavyko išsaugoti balso pašto parinkčių
+options_erings=Trūksta arba netinkamas žiedų skaičius
+options_erings2=Žiedų skaičius turi būti ne mažesnis kaip 2
+options_emaxlen=Trūksta arba netinkama didžiausia pranešimo trukmė
+options_eminlen=Trūksta arba netinkamas minimalus pranešimo ilgis
+options_ethresh=Trūksta arba netinkama tylos slenkstis
+options_ergain=Trūksta arba netinkamas įrašymo garsumo lygis
+options_ergain2=Įrašymo garsumo lygis turi būti nuo 0 iki 100
+options_etgain=Trūksta arba netinkamas atkūrimo garsumo lygis
+options_etgain2=Atkūrimo garsumo lygis turi būti nuo 0 iki 100
+options_eemail=Trūksta arba netinkamas el. Pašto adresas
+options_eprog=Trūksta programos arba jos nėra
+options_eowner=Trūksta arba netinkamas pranešimų failų „Unix“ vartotojas
+options_egroup=Trūksta arba netinkama pranešimų failų „Unix“ grupė
+options_emode=Trūksta arba netinkami aštuonių pranešimų failų leidimai
+
+received_title=Gautos žinutės
+recieved_desc=Balso pašto pranešimai, kuriuos gavo jūsų serveris, yra išvardyti žemiau. Norėdami išklausyti pranešimą, pirmame stulpelyje spustelėkite datą/laiką.
+received_none=Nerasta gautų balso pašto pranešimų.
+received_date=Gauta
+received_size=Failo dydis
+received_speed=Imties dažnis
+received_type=Garso formatas
+received_delete=Ištrinti pasirinktus pranešimus
+received_move=Konvertuoti pasirinktus į sveikinimus
+received_all=Pasirinkti viską
+received_invert=Apverskite pasirinkimą
+
+listen_efile=Netinkamas pranešimo failo vardas!
+listen_epath=Balso pašto pranešimas nebeegzistuoja
+
+delete_efile=Netinkamas pranešimo failo vardas!
+
+messages_title=Sveikinimo žinutės
+messages_desc=Šiame puslapyje pateikiami sveikinimo pranešimai, kurie bus grojami, kai skambinantysis prisijungs prie jūsų balso pašto serverio. Jei turite daugiau nei vieną, bus naudojamas vienas atsitiktinai pasirinktas pranešimas.
+messages_file=Failo pavadinimas
+messages_none=Nėra sveikinimo pranešimų.
+messages_updesc=Ši forma leidžia įkelti papildomą sveikinimo pranešimo WAV failą, kuris bus konvertuotas į pasirinktą formatą, kurį naudos jūsų modemas. Įkelto WAV atrankos dažnis turėtų būti toks pat kaip gautų pranešimų atrankos dažnis, kaip ir pasirinktas formatas.
+messages_upload=Įkelkite pranešimą
+messages_fmt=konvertuoti į
+
+pvfdesc=$1, $2 bitai
+
+upload_err=Nepavyko pridėti pranešimo
+upload_emessage=Nepasirinktas WAV failas
+upload_ewav=Nepavyko konvertuoti WAV failo : $1 
+upload_epvf=Nepavyko sukurti RMD failo : $1 
+upload_esame=Žinutės failas $1 jau yra
+
+log_apply=Taikoma konfigūracija
+log_upload=Įkeltas sveikinimo pranešimas $1 
+log_move=Konvertuoti $1 gauti pranešimai
+log_delete0=Ištrinta $1 gauta žinutė
+log_delete1=Ištrinta $1 sveikinimo žinutė
+log_options=Pakeistos balso pašto parinktys
+log_vgetty_create=Pridėtas serijinis prievadas $1 
+log_vgetty_modify=Modifikuotas serijinis prievadas $1 
+log_vgetty_delete=Ištrintas serijinis prievadas $1 
+
+email_subject=Balso pašto pranešimas
+email_body=Balso pašto pranešimas, gautas $1, $2.

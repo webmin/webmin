@@ -1,0 +1,405 @@
+index_title=کیو میل میل سرور
+index_edir=The QMail base directory $1 does not exist. Maybe QMail is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_edir2=The directory $1 does not appear to be the QMail base directory. Maybe QMail is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_return=کیو میل ترتیب
+index_stop=کیو میل کے عمل کو روکیں
+index_stopmsg=قطار میں میل کی فراہمی کے ذمہ دار پس منظر QMail کے عمل کو روکنے کے لئے اس بٹن پر کلک کریں۔ ان کارروائیوں کے بغیر ، میل کو آپ کے سسٹم سے مناسب طریقے سے نہیں بھیجا جا. گا اور نہیں دیا جائے گا۔
+index_start=کیو میل عمل شروع کریں
+index_startmsg=قطار والے میل کی فراہمی کے ذمہ دار پس منظر QMail کے عمل کو شروع کرنے کے لئے اس بٹن پر کلک کریں۔ ان کارروائیوں کے بغیر ، میل کو آپ کے سسٹم سے مناسب طریقے سے نہیں بھیجا جا. گا اور نہیں دیا جائے گا۔
+
+opts_title=کیو میل کے اختیارات
+opts_me=مقامی میزبان کا نام
+opts_helo=SMTP HELO کا میزبان نام
+opts_toconnect=SMTP کنکشن کا وقت ختم
+opts_secs=سیکنڈ
+opts_toremote=SMTP سبکدوش ہونے والے ردعمل کا وقت ختم ہوا
+opts_bytes=پیغام کا زیادہ سے زیادہ سائز
+opts_unlimited=لامحدود
+opts_timeout=SMTP آنے والا ڈیٹا کا وقت ختم
+opts_localip=مقامی IP پتے پر ای میل کے لئے میزبان نام
+opts_greet=ایس ایم ٹی پی سلام کا پیغام
+opts_err=کیو میل کے اختیارات کو بچانے میں ناکام
+opts_eme=مقامی مقامی میزبان نام
+opts_etoconnect=غلط SMTP کنکشن کا وقت ختم ہوگیا
+opts_etoremote=غلط SMTP سبکدوش ہونے والے ردعمل کا وقت ختم
+opts_ebytes=غلط پیغام کی زیادہ سے زیادہ سائز
+opts_etimeout=غلط SMTP آنے والا ڈیٹا ٹائم آؤٹ
+opts_elocalip=غلط مقامی IP پتہ میزبان نام
+
+aliases_title=میل عرفات
+aliases_addr=پتہ
+aliases_to=عرف سے ..
+aliases_type1=پتہ 1
+aliases_type2=میل ڈائریکٹری$1
+aliases_type3=میل فائل$1
+aliases_type4=پروگرام$1
+aliases_type5=خود کار طریقے سے فائل$1
+aliases_type6=فلٹر فائل$1 کا اطلاق کریں
+aliases_none=کوئی نہیں
+aliases_return=عرف کی فہرست
+aliases_toomany=آپ کے سسٹم پر اس صفحے پر ظاہر کرنے کے لئے بہت سارے میل عرفات موجود ہیں۔
+aliases_go=مماثل عرفات تلاش کریں:
+aliases_delete=منتخب کردہ عرفات کو حذف کریں
+
+aform_type0=کوئی نہیں
+aform_type1=ای میل اڈریس
+aform_type2=میل ڈائریکٹری
+aform_type3=میل فائل
+aform_type4=پروگرام کو کھانا کھلانا
+aform_type5=فائل سے خودکار طریقے سے
+aform_type6=فلٹر فائل لگائیں
+aform_edit=عرف میں ترمیم کریں
+aform_create=عرف پیدا کریں
+aform_name=پتہ
+aform_val=عرف عرف
+aform_afile=ترمیم ..
+aform_novirt=&lt;تمام ڈومینز&gt;
+aform_return=عرف
+
+asave_err=عرف کو بچانے میں ناکام
+asave_eaddr='$1' درست پتہ نہیں ہے
+asave_ealready='$1' کا عرفی نام پہلے سے موجود ہے
+asave_etype1='$1' درست ای میل پتہ نہیں ہے
+asave_etype2='$1' ایک درست میل ڈائرکٹری نہیں ہے
+asave_etype3='$1' ایک درست میل فائل نام نہیں ہے
+asave_etype4='$1' ایک درست پروگرام نہیں ہے یا موجود نہیں ہے
+asave_etype5=خود کار طریقے سے فائل '$1' درست نہیں ہے
+asave_etype4none=کوئی پروگرام نہیں دیا گیا
+asave_etype6=فلٹر فائل 'Fil 1' درست نہیں ہے
+
+adelete_err=عرفی نام کو حذف کرنے میں ناکام
+adelete_enone=کوئی بھی منتخب نہیں ہوا
+
+locals_title=مقامی ڈومینز
+locals_domains=اس سرور کیلئے مقامی ڈومینز
+locals_desc=بائیں طرف ٹیکسٹ باکس میں درج ڈومینز اور میزبان ناموں کو مقامی صارفین کی ای میل کیلیے کوئیل قبول کرے گا۔ اگر آپ چاہتے ہیں کہ آپ کا میل سرور متعدد ای میل ڈومینز کو سنبھالے ، تو وہ سبھی اس فارم پر درج ہونگے۔
+locals_only=صرف مقامی میزبان نام$1
+locals_sel=ذیل میں ڈومین درج ہیں ..
+
+rcpts_title=قبول شدہ ڈومینز
+rcpts_domains=مقامی اور ریلے ڈومین قبول کیے گئے
+rcpts_all=کوئی ڈومین
+rcpts_sel=ذیل میں ڈومین درج ہیں ..
+rcpts_desc=Qmail will accept for relaying or local delivery only mail to domains and hostnames listed in the text box to the left. You can also enter wildcards that match all hosts in a domain like <tt>.foo.com</tt>. If you want your mail server to relay email for clients, you must accept mail from any domain.
+rcpts_domains2=اضافی مقامی اور ریلے ڈومینز
+rcpts_desc2=اگر آپ کے پاس قبول شدہ ڈومینز کی ایک بڑی تعداد ہے تو ، اس ٹیکسٹ باکس میں عام طور پر کم استعمال ہونے والے افراد کو داخل کیا جانا چاہئے۔ عام طور پر ، آپ کے پہلے 50 اجازت شدہ ڈومین بالائی متن والے خانے میں داخل ہونے چاہئیں ، اور بقیہ اس میں۔
+
+bads_title=مسترد کردہ پتے
+bads_addresses=مسترد کردہ ای میل پتوں
+bads_desc=QMail will reject mail for delivery or relaying from any of the addresses listed in the text box to the left, which must be entered as <tt>username@domainname</tt>. If you want to reject mail from an entire domain, it should be entered as <tt>@domainname</tt>.
+
+routes_title=ڈومین روٹنگ
+routes_toomany=آپ کے سسٹم میں بہت سارے ڈومین راستے ہیں جو اس صفحے پر آویزاں ہیں۔
+routes_go=مماثل ڈومین راستے تلاش کریں:
+routes_from=ڈومین کے لئے میل
+routes_to=سرور کے ذریعے بھیجیں
+routes_direct=براہ راست فراہمی
+routes_defroute=سبھی سبکدوش ہونے والی میل کو بذریعہ ترسیل کریں:
+routes_return=ڈومین راستے
+routes_delete=منتخب کردہ ڈومین روٹس کو حذف کریں
+
+rform_edit=ڈومین روٹ میں ترمیم کریں
+rform_create=ڈومین روٹ بنائیں
+rform_from=میزبان یا ڈومین کیلئے میل
+rform_to=SMTP سرور کے ذریعے بھیجیں
+rform_port=ایس ایم ٹی پی پورٹ
+
+rsave_err=ڈومین روٹ کو بچانے میں ناکام
+rsave_efrom='$1' ایک درست ڈومین نام نہیں ہے
+rsave_eto='$1' ایک درست SMTP سرور نہیں ہے
+rsave_eport='$1' ایک درست پورٹ نمبر نہیں ہے
+
+rdelete_err=ڈومین روٹس کو حذف کرنے میں ناکام
+
+percents_title=ایڈریس ڈومینز
+percents_domains=ڈومینز جو ٪ پتے کی حمایت کرتے ہیں
+percents_desc=QMail will accept email with addresses in the format <tt>user%firstdomain@seconddomain</tt> if the <tt>seconddomain</tt> is listed in the text box to the left. Messages in this format will then be forwarded on to <tt>user@firstdomain</tt> by this mail server.
+
+virts_title=ورچوئل میپنگز
+virts_toomany=اس صفحے پر ظاہر کرنے کے لئے آپ کے سسٹم میں بہت ساری ورچوئل میپنگز ہیں۔
+virts_go=ملاپ والے ورچوئل میپنگز تلاش کریں:
+virts_from=کے لئے میل
+virts_prepend=سابقہ تیار کریں
+virts_all=تمام پتے
+virts_none=ورچوئل نہیں
+virts_desc=Virtual mappings are used by QMail to handle email to different domains on your server, by prepending text to the user part of the email address before further processing. You can use them to setup virtual mail domains by creating a new virtual mapping for a domain, then using the <a href='$1'>Mail Aliases</a> page to create aliases within that domain.
+virts_return=ورچوئل میپنگز
+virts_delete=منتخب کردہ ورچوئل میپنگز کو حذف کریں
+
+vform_edit=ورچوئل میپنگ میں ترمیم کریں
+vform_create=ورچوئل میپنگ بنائیں
+vform_from=ایڈریس کے لئے میل
+vform_all=کوئی پتہ کوئی دوسرا ورچوئل میپنگ سے مماثل نہیں ہے
+vform_domain=ڈومین والے پتے
+vform_user=پتہ
+vform_to=صارف نام کے لئے تیار کریں
+vform_none=کچھ نہیں
+vform_prepend=متعینہ سابقہ
+vform_auto=خودکار طور پر منتخب شدہ سابقہ
+
+vsave_err=ورچوئل میپنگ کو محفوظ کرنے میں ناکام
+vsave_edomain='$1' ایک درست ای میل ڈومین نہیں ہے
+vsave_euser='$1' ایک درست ای میل صارف نام نہیں ہے
+vsave_eprepend='$1' درست نقشہ سازی کا سابقہ نہیں ہے
+vsave_eboth=آپ 'کوئی بھی پتہ دوسرے مجازی نقشہ سازی سے میل نہیں کھاتے' اور 'کچھ نہیں' دونوں کو منتخب نہیں کرسکتے ہیں۔
+
+vdelete_err=ورچوئل میپنگز کو حذف کرنے میں ناکام
+
+stop_err=Qmail-send عمل اب نہیں چل رہا ہے
+
+log_stop=QMail کے عمل بند ہوگئے
+log_start=کیو میل کے عمل شروع ہوئے
+log_opts=کیو میل کے اختیارات بدل گئے
+log_alias_create=عرف$1 تشکیل دیا گیا
+log_alias_delete=عرف$1 کو حذف کریں
+log_alias_modify=ترمیم شدہ عرف$1
+log_delete_aliases=حذف شدہ$1 عرفی نام
+log_virt_create=ورچوئل میپنگ$1 بنائی گئی
+log_virt_delete=حذف شدہ ورچوئل میپنگ$1
+log_virt_modify=تبدیل شدہ ورچوئل میپنگ$1
+log_delete_virts=حذف شدہ$1 ورچوئل میپنگز
+log_virtall_create=کیچل ورچوئل میپنگ بنائی گئی
+log_virtall_delete=حذف شدہ کیچل ورچوئل میپنگ
+log_virtall_modify=تبدیل شدہ کیچل ورچوئل میپنگ
+log_locals=تبدیل شدہ مقامی ڈومینز
+log_rcpts=قبول شدہ ڈومینز تبدیل کردیئے گئے
+log_bads=مسترد کردہ پتے بدل گئے
+log_percents=ایڈریس ڈومین تبدیل کر دی گئ
+log_route_create=$1 کے لئے راستہ بنایا گیا
+log_route_delete=$1 کے لئے حذف شدہ راستہ
+log_route_modifed=$1 کے لئے تبدیل شدہ راستہ
+log_delete_routes=حذف شدہ$1 راستے
+log_defroute=ترمیم شدہ طے شدہ راستہ
+log_assign_create=میل صارف$1 تشکیل دیا گیا
+log_assign_delete=حذف شدہ میل صارف$1
+log_assign_modifed=ترمیم شدہ میل صارف$1
+log_delete_assigns=حذف شدہ$1 میل صارفین
+log_delmail=$1 سے$1 پیغامات کو حذف کردیا گیا
+log_movemail=$1 پیغامات کو$2 سے$3 میں منتقل کردیا گیا
+log_send=$1 پر ای میل بھیجی گئی
+
+rfile_title=خودکار طریقے سے فائل میں ترمیم کریں
+rfile_desc=Use the text area below to edit the autoreply message in $1. The message may contain the macros $SUBJECT, $FROM, $TO, $DATE and $BODY which will be expanded when the autoreply is activated.
+rfile_desc2=You can also set mail headers that add to or replace the defaults used in the autoreply by putting lines like:<br><tt>From: foo@bar.com</tt><br><tt>Subject: On holiday</tt><br>at the top of the message, separated from the body by a single blank line.
+rfile_efile=آپ کو$1 میں ترمیم کرنے کی اجازت نہیں ہے۔
+rfile_undo=تبدیلیوں کو کالعدم کریں
+rfile_replies=میل لوپ کو روکنے کے لئے جوابات سے باخبر رہیں؟
+rfile_none=نہیں
+rfile_file=ہاں ، لاگ فائل کا استعمال کرتے ہوئے
+rfile_period=جوابات کے درمیان کم از کم وقفہ
+rfile_default=پہلے سے طے شدہ (1 گھنٹہ)
+rfile_secs=سیکنڈ
+rfile_ereplies=جواب سے باخبر رہنے والی لاگ فائل غائب ہے
+rfile_eperiod=جوابات کے مابین سیکنڈ کی گمشدہ یا غلط تعداد
+rfile_no_autoreply=پر آٹو پلے نہ بھیجیں
+rfile_from=منجانب: جواب کے لئے پتہ
+rfile_auto=خودکار (وصول کنندہ کے پتے پر مبنی)
+rfile_efrom=گم: منجانب
+rfile_fromdesc=A منجانب: ہر جگہ جہاں بھی ممکن ہو پتے کی وضاحت کی جانی چاہئے ، کیونکہ خودکار طریقہ قابل اعتماد نہیں ہوسکتا ہے۔
+
+ffile_title=فلٹر فائل میں ترمیم کریں
+ffile_desc=فائل$1 میں فلٹر قواعد ترتیب دینے کے لئے نیچے دیئے گئے فارم کا استعمال کریں۔
+ffile_efile=آپ کو$1 میں ترمیم کرنے کی اجازت نہیں ہے۔
+ffile_line=اگر$1 فیلڈ$2 $3 ہے تو آگے$4 پر جائیں
+ffile_from=سے
+ffile_to=کرنے کے لئے
+ffile_subject=مضمون
+ffile_cc=سی سی
+ffile_body=جسم
+ffile_what0=مماثل نہیں ہے
+ffile_what1=میچ
+ffile_other=بصورت دیگر$1 پر آگے بڑھیں
+ffile_err=فلٹر فائل کو محفوظ کرنے میں ناکام
+ffile_ematch=گمشدہ میچ
+ffile_eaction=فارورڈنگ پتہ غائب ہے
+
+queue_title=میل قطار
+queue_count=$1 پیغامات
+queue_none=فی الحال کوئی میل پیغامات کی ترسیل کے لئے قطار میں نہیں ہیں
+queue_id=میل ID
+queue_date=بھیجا گیا
+queue_from=سے
+queue_to=کرنا
+queue_cc=سی سی
+queue_subject=مضمون
+queue_return=میل قطار
+queue_delete=منتخب کردہ پیغامات کو حذف کریں
+queue_all=تمام منتخب کریں
+queue_invert=الٹا انتخاب
+queue_refresh=میل قطار کو تازہ کریں
+queue_refreshdesc=میل قطار کی موجودہ حالت ظاہر کرنے کے لئے اس صفحے کو دوبارہ لوڈ کریں۔
+
+qview_title=قطار میں موجود پیغام
+qview_desc=فائل$1 سے
+qview_headers=میل ہیڈر
+qview_attach=اٹیچمنٹ
+
+assigns_title=میل صارف کی تفویض
+assigns_return=صارف کی اسائنمنٹس کو میل کریں
+assigns_toomany=آپ کے سسٹم میں بہت سے میل صارفین موجود ہیں جو اس صفحے پر آویزاں ہیں۔
+assigns_go=میل والے میل تلاش کریں:
+assigns_address=ایڈریس پر میل کریں
+assigns_user=یونکس صارف
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=ہوم ڈائریکٹری
+assigns_desc=میل صارف کی اسائنمنٹس آپ کو ان صارفین کے لئے میل باکس بنانے کی اجازت دیتی ہیں جن کی یونکس صارف کی فہرست میں تعریف نہیں کی گئی ہے۔ ہر ایک تفویض منتخب کردہ صارف نام یا صارف نام کے نمونہ کے لئے میل فراہم کرے گا ، گویا یہ حقیقی یونکس صارف کے میل باکس میں پہنچایا جارہا ہے۔
+assigns_delete=منتخب میل صارفین کو حذف کریں
+
+sform_edit=میل صارف میں ترمیم کریں
+sform_create=میل صارف بنائیں
+sform_address=پتہ کا صارف نام
+sform_mode0=عین صارف نام
+sform_mode1=کے ساتھ شروع ہونے والے صارف نام
+sform_user=یونکس صارف
+sform_uid=UID
+sform_gid=GID
+sform_home=ہوم ڈائریکٹری
+
+ssave_err=میل صارف کو بچانے میں ناکام
+ssave_eaddress=گم شدہ یا غلط ایڈریس صارف نام
+ssave_euser=لاپتہ یا غلط یونکس صارف
+ssave_euid=لاپتہ یا غلط UID
+ssave_egid=لاپتہ یا غلط GID
+ssave_ehome=لاپتہ یا غلط ہوم ڈائریکٹری
+
+sdelete_err=میل صارفین کو حذف کرنے میں ناکام
+
+delete_egone=قطار میں موجود پیغام اب موجود نہیں ہے
+delete_ebogus=غلط قطار فائل نام
+
+boxes_title=صارف میل باکسز
+boxes_user=صارف
+boxes_size=میل باکس کا سائز
+boxes_none=کوئی میل نہیں
+boxes_return=میل باکس
+boxes_sent=میل بھیجا
+boxes_ecannot=آپ کو ای میل پڑھنے کی اجازت نہیں ہے
+boxes_toomany=آپ کے سسٹم میں بہت سارے صارفین اپنے تمام میل باکسوں کی فہرست کے ل. ہیں۔
+boxes_go=صارف کے لئے میل دیکھیں:
+
+mail_title=صارف کا ای میل
+mail_from=سے
+mail_date=تاریخ
+mail_subject=مضمون
+mail_to=کرنا
+mail_cc=سی سی
+mail_bcc=بی سی سی
+mail_pri=ترجیح
+mail_highest=اعلی ترین
+mail_high=اونچا
+mail_normal=عام
+mail_low=کم
+mail_lowest=سب سے کم
+mail_for=$1 میں
+mail_for2=صارف$1 کے لئے
+mail_sent=بھیجے گئے میل لسٹ میں
+mail_size=سائز
+mail_delete=حذف کریں
+mail_compose=تحریر کریں
+mail_return=صارف میل باکس
+mail_pos=پیغامات $1 سے$2 میں$3
+mail_none=اس میل باکس میں کوئی پیغامات نہیں ہیں
+mail_ecannot=آپ کو اس صارف کا ای میل پڑھنے کی اجازت نہیں ہے
+mail_all=تمام منتخب کریں
+mail_invert=الٹا انتخاب
+mail_search=جہاں پیغامات ڈھونڈیں
+mail_body=جسم
+mail_match=میچ
+mail_ok=تلاش کریں
+mail_nonefrom=کوئی نہیں
+mail_mark=بطور نشان زد کریں:
+mail_mark0=غیر پڑھے ہوئے
+mail_mark1=پڑھیں
+mail_mark2=خصوصی
+mail_forward=آگے
+mail_rfc=لائن سے
+mail_move=پر منتقل:
+mail_eexists=پیغام اب موجود نہیں ہے!
+
+view_title=ای میل پڑھیں
+view_desc=پیغام$1 میں$2
+view_desc2=پیغام$1 صارف$2 کے لئے
+view_desc3=پیغام$1
+view_sent=بھیجے گئے میل لسٹ میں پیغام $1
+view_qdesc=قطار میں موجود پیغام$1
+view_headers=میل ہیڈر
+view_allheaders=تمام ہیڈر دیکھیں
+view_noheaders=بنیادی ہیڈر دیکھیں
+view_attach=اٹیچمنٹ
+view_reply=جواب دیں
+view_reply2=سب کو جواب
+view_enew=نئے کے بطور ترمیم کریں
+view_forward=آگے
+view_delete=حذف کریں
+view_strip=اٹیچمنٹ کو ہٹا دیں
+view_ecannot=آپ کو اس صارف کا ای میل پڑھنے کی اجازت نہیں ہے
+view_mark=پیغام کو بطور نشان زد کریں:
+view_mark0=غیر پڑھے ہوئے
+view_mark1=پڑھیں
+view_mark2=خصوصی
+view_return=اصل ای میل
+view_sub=منسلک ای میل
+
+compose_title=ای میل لکھیں
+reply_title=ای میل کا جواب دیں
+forward_title=فارورڈ ای میل
+enew_title=ای میل میں ترمیم کریں
+reply_headers=میل ہیڈر
+reply_attach=فارورڈ منسلکات
+reply_mailforward=آگے بھیجے گئے پیغامات
+reply_attach2=کلائنٹ اور سرور سائیڈ اٹیچمنٹ
+reply_send=میل بھیجیں
+reply_ecannot=آپ کو بطور صارف اس میل کو بھیجنے کی اجازت نہیں ہے
+
+send_err=میل بھیجنے میں ناکام
+send_eto=پتہ غائب ہے
+send_efrom=پتہ غائب ہے
+send_title=میل بھیج دیا گیا
+send_ok=میل کامیابی کے ساتھ$1 پر بھیج دی گئی
+send_ecannot=آپ کو بطور صارف اس میل کو بھیجنے کی اجازت نہیں ہے
+send_esmtp=SMTP کمانڈ$1 ناکام ہوگئی :$2
+send_efile=منسلک فائل$1 موجود نہیں ہے
+send_eattach=منسلکات زیادہ سے زیادہ$1 kB سائز میں نہیں ہوسکتے ہیں۔
+send_eperms=صارف$1 $2 نہیں پڑھ سکتا ہے
+send_eperms2=آپ کو فائل$1 بھیجنے کی اجازت نہیں ہے
+send_epath=ای میل بھیجنے والی$1 موجود نہیں ہے۔
+
+delete_title=میل کو حذف کریں
+delete_rusure=کیا آپ واقعی$1 سے منتخب کردہ $1 پیغامات کو$2 سے حذف کرنا چاہتے ہیں؟ ایک بڑی میل فائل میں کچھ وقت لگ سکتا ہے۔ جب تک حذف ہونے کا کام ختم نہیں ہوجاتا ، کوئی اور کارروائی نہیں کی جانی چاہئے۔
+delete_rusure2=کیا آپ واقعی اس پیغام کو$1 سے حذف کرنا چاہتے ہیں؟ ایک بڑی میل فائل میں کچھ وقت لگ سکتا ہے۔ جب تک حذف ہونے کا کام ختم نہیں ہوجاتا ، کوئی اور کارروائی نہیں کی جانی چاہئے۔
+delete_ok=ابھی حذف کریں
+delete_ecannot=اب آپ کو اس صارف کے میل کو حذف کرنے کی اجازت ہے
+delete_enone=حذف کرنے کے لئے کوئی میل منتخب نہیں کیا گیا ہے
+delete_emnone=نشان کے لئے کوئی میل منتخب نہیں کیا گیا ہے
+delete_nobutton=کوئی بٹن نہیں کلکس کیا گیا
+
+search_title=تلاش کے نتائج
+search_ecannot=آپ کو اس صارف کے ای میل کو تلاش کرنے کی اجازت نہیں ہے
+search_ematch=اس کے مقابلہ کیلئے آپ کو متن درج کرنا ہوگا۔
+search_efield=آپ کو تلاش کی قسم منتخب کرنا ہوگی۔
+search_none=کوئی پیغام نہیں ملا۔
+search_results2=$1 میل پیغامات $2 سے ملتے ہیں ..
+search_results3=$1 میل پیغامات $2 سے مماثل نہیں ہیں۔
+
+match_from=منجانب: میچ
+match_subject=موضوع: میچ
+match_to=منجانب: میچ
+match_cc=سی سی: میچز
+match_date=تاریخ: میچ
+match_body=باڈی میچ
+match_size=سائز اس سے زیادہ ہے
+match_headers=ہیڈرز میچ
+match_=-----------------
+match_!from=منجانب: مماثل نہیں ہے
+match_!subject=موضوع: مماثل نہیں ہے
+match_!to=To: مماثل نہیں ہے
+match_!cc=سی سی: مماثل نہیں ہے
+match_!date=تاریخ: مماثل نہیں ہے
+match_!body=باڈی مماثل نہیں ہے
+match_!size=سائز اس سے کم ہے
+match_!headers=ہیڈر مماثل نہیں ہیں
+
+delq_titles=پیغامات کو حذف کرنا
+delq_rusure=کیا آپ واقعی$1 قطار میں لائے ہوئے پیغامات کو حذف کرنا چاہتے ہیں؟
+delq_confirm=پیغامات کو حذف کریں

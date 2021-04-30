@@ -24,7 +24,7 @@ print &ui_table_row($text{'conf_seed'},
 # Type for new worlds
 my $type = &find_value("level-type", $conf) || "DEFAULT";
 print &ui_table_row($text{'conf_type'},
-	&ui_select("type", $type,
+	&ui_select("type", uc($type),
 		[ [ "DEFAULT", $text{'conf_type_default'} ],
 		  [ "FLAT", $text{'conf_type_flat'} ],
 		  [ "AMPLIFIED", $text{'conf_type_amplified'} ],
@@ -54,10 +54,10 @@ my $diff = &find_value("difficulty", $conf);
 $diff = 1 if (!defined($diff));
 print &ui_table_row($text{'conf_difficulty'},
 	&ui_select("diff", $diff,
-		   [ [ 0, $text{'cmds_peaceful'} ],
-		     [ 1, $text{'cmds_easy'} ],
-		     [ 2, $text{'cmds_normal'} ],
-		     [ 3, $text{'cmds_hard'} ] ]));
+		   [ [ 'peaceful', $text{'cmds_peaceful'} ],
+		     [ 'easy', $text{'cmds_easy'} ],
+		     [ 'normal', $text{'cmds_normal'} ],
+		     [ 'hard', $text{'cmds_hard'} ] ]));
 
 # Default game mode
 my $gamemode = &find_value("gamemode", $conf);

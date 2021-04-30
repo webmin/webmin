@@ -1,0 +1,115 @@
+index_title=יומן סיבוב קבצים
+index_econf=קובץ תצורת סיבוב היומן $1 לא נמצא במערכת שלך. אולי logrotate אינו מותקן, או <a href='$2'>תצורת המודול</a> שגויה.
+index_ecmd=תוכנית סיבוב היומן $1 לא נמצאה במערכת שלך. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שגויה.
+index_eversion=נכשלה קבלת גרסת logrotate עם הפקודה $1 : $2 
+index_version=גרסת Logrotate $1 
+index_add=הוסף קובץ יומן חדש לסיבוב.
+index_file=קובץ לוג
+index_period=תקופת הסיבוב
+index_post=פקודה לאחר הסיבוב
+index_none=עדיין לא הוגדרו קבצי יומן.
+index_global=ערוך אפשרויות גלובליות
+index_globaldesc=לחץ על כפתור זה כדי לערוך את ההגדרה החלה על כל קבצי היומן ולהגדיר את ברירת המחדל עבור יומני.
+index_sched=ערוך את לוח הזמנים
+index_scheddesc=לחץ על כפתור זה כדי לערוך את לוח הזמנים שעליו מנוהל לוגוטרט על ידי Cron, או להפעיל או להשבית אותו.
+index_nocmd=אף אחד
+index_notset=לא מוכן
+index_return=רשימת קבצי יומן
+index_force=כוח סיבוב יומן
+index_forcedesc=כפה את הסיבוב המיידי של כל קבצי היומן, גם אם עדיין לא הגיע הזמן.
+index_logrotate=לוגוטייט
+index_delete=מחק סיבובי יומן שנבחרו
+
+period_daily=יומי
+period_weekly=שבועי
+period_monthly=חודשי
+period_never=לעולם לא
+period_bytes=בתים
+
+edit_title1=ערוך קובץ יומן
+edit_title2=צור קובץ יומן
+edit_header=פרטי קובץ יומן מסתובבים
+edit_file=יומן נתיבי קובץ
+edit_sched=לוח זמנים לסיבוב
+edit_rotate=מספר היומנים הישנים שיש לשמור
+edit_compress=לדחוס קבצי יומן ישנים?
+edit_delaycompress=לעכב דחיסה עד למחזור הבא?
+edit_copytruncate=לקצץ את קובץ היומן במקום?
+edit_ifempty=סובב גם אם קובץ היומן ריק?
+edit_missingok=להתעלם מקובץ היומן אם חסר?
+edit_size=גודל מקסימלי לפני הסיבוב
+edit_always=התעלמו
+edit_minsize=גודל מינימלי לסיבוב
+edit_nominsize=תמיד
+edit_ext=סיומת לשמות קבצים מסתובבים
+edit_dateext=השתמש בתוסף תאריך לקבצים מסתובבים
+edit_mail=קובץ יומן דוא"ל לפני המחיקה?
+edit_mailto=כן, לכתובת
+edit_mailno=לא, אל תשלח דוא"ל
+edit_mailfl=רישום קובץ לדוא"ל
+edit_mailfirst=הכי חדש שזה עתה הסתובב
+edit_maillast=העתיק ביותר שעומד למחוק
+edit_create=ליצור מחדש קובץ יומן לאחר סיבוב?
+edit_createas=כן, במצב $1 ובבעלות המשתמש $2 וקבוצה $3 
+edit_createno=לא, אל תיצור מחדש
+edit_createsame=כן, עם הרשאות ישנות
+edit_olddir=אחסן יומנים מסתובבים ישנים
+edit_olddirto=מדריך
+edit_olddirsame=ספרייה זהה לקובץ היומן
+edit_errors=שלח דוא"ל הודעות שגיאה אל
+edit_errorsno=אף אחד
+edit_errorsto=כתובת או משתמש
+edit_post=פקודות להפעלה לאחר סיבוב
+edit_pre=פקודות להפעלה לפני סיבוב
+edit_default=ברירת מחדל ($1)
+edit_sharedscripts=רק להריץ סקריפטים פעם אחת לכל הקבצים?
+edit_now=סובב עכשיו
+
+global_title=אופציות עולמיות
+global_header=אפשרויות ברירת מחדל עבור כל קבצי היומן
+
+save_err=שמירת היומן נכשלה
+save_efile=שם קובץ יומן חסר או לא חוקי
+save_esize=גודל מקסימלי חסר או לא חוקי
+save_eminsize=גודל מינימלי חסר או לא חוקי
+save_erotate=המספר המרבי המרבי חסר או לא חוקי של יומנים ישנים לשמור
+save_ecreatemode=מצב יצירה אוקטלי 3 או 4 ספרות חסר או לא תקף
+save_ecreateuser=משתמש יצירה חסר או לא חוקי
+save_ecreategroup=קבוצת יצירה חסרה או לא חוקית
+save_emust1=עליך להיכנס למצב יצירה כשאתה נכנס למשתמש היצירה
+save_emust2=עליך להזין משתמש יצירה כשאתה נכנס לקבוצת יצירה
+save_eolddirto=ספריה חסרה או לא חוקית עבור יומנים מסתובבים ישנים
+save_eext=חסרה סיומת לשמות קבצי יומן מסתובבים
+save_emailto=כתובת דוא"ל חסרה ליומנים מסובבים
+save_eerrors=כתובת דוא"ל חסרה להודעות שגיאה
+save_epre=סקריפט טרום-סיבוב לא יכול להכיל קו <tt>סיום</tt> או <tt>סוף-סוף</tt>
+save_epost=סקריפט שלאחר הסיבוב לא יכול להכיל קו <tt>סיום</tt> או <tt>endrotate</tt>
+save_enofiles=לא נכנסו קבצים לסיבוב
+
+log_modify_sched=שינוי סיבוב יומן Cron עבודה
+log_create_sched=יצר סיבוב יומן Cron עבודה
+log_delete_sched=סיבוב יומן נמחק משימת Cron
+log_global=אפשרויות גלובליות השתנו
+log_create=סיבוב נוסף לקובץ היומן $1 
+log_modify=סיבוב שונה לקובץ היומן $1 
+log_delete=הסיבוב נמחק לקובץ היומן $1 
+log_delete_logs=הסיבוב נמחק עבור קבצי יומן $1 
+
+sched_title=לוח זמנים לסיבוב יומן
+sched_desc=לצורך ביצוע סיבוב יומנים המוגדר באמצעות מודול זה, יש לבצע את הפקודה $1 בלוח זמנים קבוע (לרוב מדי יום) על ידי Cron.
+sched_runparts=נכון לעכשיו, פקודת סיבוב היומן מופעלת מהסקריפט $1 $2, ולא ניתן לכוונן אותה.
+sched_sched=יומן סיבוב עבודה
+sched_disabled=נכים
+sched_enabled=מופעלת, לפעמים מתחת ..
+sched_save=עדכן את Cron Job
+sched_err=שמירת לוח הזמנים של הסיבוב נכשל
+sched_when=פעמים לרוץ
+
+force_title=כוח סיבוב יומן
+force_doing=מכריח את הסיבוב המיידי של כל קבצי היומן ..
+force_doingone=מכריח את הסיבוב המיידי של קובץ יומן אחד ..
+force_done=.. בוצע.
+force_failed=.. נכשל! ראה את הפלט למעלה מהסיבה שבגללה.
+
+delete_err=מחיקת יומני נכשלה
+delete_enone=לא נבחר

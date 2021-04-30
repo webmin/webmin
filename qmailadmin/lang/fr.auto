@@ -1,0 +1,405 @@
+index_title=Serveur de messagerie QMail
+index_edir=Le répertoire de base QMail $1 n'existe pas. Peut-être que QMail n'est pas installé ou que la <a href='$2'>configuration du module</a> est incorrecte.
+index_edir2=Le répertoire $1 ne semble pas être le répertoire de base de QMail. Peut-être que QMail n'est pas installé ou que la <a href='$2'>configuration du module</a> est incorrecte.
+index_return=Configuration de QMail
+index_stop=Arrêter les processus QMail
+index_stopmsg=Cliquez sur ce bouton pour arrêter les processus QMail d'arrière-plan chargés de remettre le courrier en file d'attente. Sans ces processus, le courrier ne sera pas envoyé ou livré correctement à votre système.
+index_start=Démarrer les processus QMail
+index_startmsg=Cliquez sur ce bouton pour démarrer les processus QMail d'arrière-plan chargés de remettre le courrier en file d'attente. Sans ces processus, le courrier ne sera pas envoyé ou livré correctement à votre système.
+
+opts_title=Options de QMail
+opts_me=Nom d'hôte local
+opts_helo=Nom d'hôte pour SMTP HELO
+opts_toconnect=Délai d'expiration de la connexion SMTP
+opts_secs=secondes
+opts_toremote=Délai d'expiration de la réponse SMTP
+opts_bytes=Taille maximale des messages
+opts_unlimited=Illimité
+opts_timeout=Délai d'expiration des données entrantes SMTP
+opts_localip=Nom d'hôte pour le courrier électronique vers l'adresse IP locale
+opts_greet=Message d'accueil SMTP
+opts_err=Impossible d'enregistrer les options de QMail
+opts_eme=Nom d'hôte local non valide
+opts_etoconnect=Délai d'expiration de connexion SMTP non valide
+opts_etoremote=Délai de réponse sortant SMTP non valide
+opts_ebytes=Taille maximale du message non valide
+opts_etimeout=Délai d'expiration des données entrantes SMTP non valide
+opts_elocalip=Nom d'hôte de l'adresse IP locale non valide
+
+aliases_title=Alias de messagerie
+aliases_addr=Adresse
+aliases_to=Alias pour ..
+aliases_type1=Adresse 1
+aliases_type2=Répertoire de messagerie $1 
+aliases_type3=Fichier de messagerie $1 
+aliases_type4=Programme $1 
+aliases_type5=Fichier à réponse automatique $1 
+aliases_type6=Appliquer le fichier de filtre $1 
+aliases_none=Aucun
+aliases_return=liste d'alias
+aliases_toomany=Il y a trop d'alias de messagerie sur votre système pour s'afficher sur cette page.
+aliases_go=Rechercher des alias correspondant:
+aliases_delete=Supprimer les alias sélectionnés
+
+aform_type0=Aucun
+aform_type1=Adresse électronique
+aform_type2=Répertoire de messagerie
+aform_type3=Fichier courrier
+aform_type4=Alimentation au programme
+aform_type5=Réponse automatique à partir du fichier
+aform_type6=Appliquer un fichier de filtre
+aform_edit=Modifier l'alias
+aform_create=Créer un alias
+aform_name=Adresse
+aform_val=Alias à
+aform_afile=Éditer ..
+aform_novirt=&lt;Tous les domaines&gt;
+aform_return=alias
+
+asave_err=Échec de l'enregistrement de l'alias
+asave_eaddr='$1' n'est pas une adresse valide
+asave_ealready=Un alias pour «$1» existe déjà
+asave_etype1='$1' n'est pas une adresse e-mail valide
+asave_etype2='$1' n'est pas un répertoire de messagerie valide
+asave_etype3='$1' n'est pas un nom de fichier de messagerie valide
+asave_etype4='$1' n'est pas un programme valide ou n'existe pas
+asave_etype5=Le fichier de réponse automatique «$1» n'est pas valide
+asave_etype4none=Aucun programme donné
+asave_etype6=Le fichier de filtre '$1' n'est pas valide
+
+adelete_err=Impossible de supprimer les alias
+adelete_enone=Aucune sélection
+
+locals_title=Domaines locaux
+locals_domains=Domaines locaux pour ce serveur
+locals_desc=Qmail acceptera la livraison aux utilisateurs locaux d'un courrier électronique vers les domaines et les noms d'hôte répertoriés dans la zone de texte à gauche. Si vous souhaitez que votre serveur de messagerie gère plusieurs domaines de messagerie, ils doivent tous être répertoriés sur ce formulaire.
+locals_only=Uniquement le nom d'hôte local $1 
+locals_sel=Domaines répertoriés ci-dessous ..
+
+rcpts_title=Domaines acceptés
+rcpts_domains=Domaines locaux et relais acceptés
+rcpts_all=Tout domaine
+rcpts_sel=Domaines répertoriés ci-dessous ..
+rcpts_desc=Qmail n'acceptera pour le relais ou la livraison locale que du courrier aux domaines et noms d'hôte répertoriés dans la zone de texte à gauche. Vous pouvez également saisir des caractères génériques qui correspondent à tous les hôtes d'un domaine tel que <tt>.foo.com</tt>. Si vous souhaitez que votre serveur de messagerie relaie le courrier électronique pour les clients, vous devez accepter le courrier de n'importe quel domaine.
+rcpts_domains2=Domaines locaux et relais supplémentaires
+rcpts_desc2=Si vous disposez d'un grand nombre de domaines acceptés, les domaines les moins utilisés doivent être saisis dans cette zone de texte. En général, vos 50 premiers domaines autorisés doivent être entrés dans la zone de texte supérieure et le reste dans celle-ci.
+
+bads_title=Adresses refusées
+bads_addresses=Adresses e-mail refusées
+bads_desc=QMail rejettera le courrier pour la livraison ou le relais à partir de l'une des adresses répertoriées dans la zone de texte à gauche, qui doit être entrée en tant que <tt>nom d'utilisateur @ nom de domaine</tt>. Si vous souhaitez rejeter le courrier d'un domaine entier, il doit être saisi sous <tt>@domainname</tt>.
+
+routes_title=Routage de domaine
+routes_toomany=Il y a trop de routes de domaine sur votre système pour être affichées sur cette page.
+routes_go=Trouver des itinéraires de domaine correspondant:
+routes_from=Mail pour le domaine
+routes_to=Envoyer via le serveur
+routes_direct=Livrez directement
+routes_defroute=Livrez tous les autres courriers sortants via:
+routes_return=itinéraires de domaine
+routes_delete=Supprimer les itinéraires de domaine sélectionnés
+
+rform_edit=Modifier la route du domaine
+rform_create=Créer une route de domaine
+rform_from=Mail pour hôte ou domaine
+rform_to=Envoyer via un serveur SMTP
+rform_port=Port SMTP
+
+rsave_err=Échec de l'enregistrement de l'itinéraire du domaine
+rsave_efrom='$1' n'est pas un nom de domaine valide
+rsave_eto='$1' n'est pas un serveur SMTP valide
+rsave_eport='$1' n'est pas un numéro de port valide
+
+rdelete_err=Impossible de supprimer les itinéraires de domaine
+
+percents_title=% Domaines d'adresses
+percents_domains=Domaines prenant en charge % adresses
+percents_desc=QMail acceptera les e-mails avec des adresses au format <tt>user%firstdomain@seconddomain</tt> si le <tt>seconddomain</tt> est répertorié dans la zone de texte à gauche. Les messages de ce format seront ensuite transmis à <tt>user@firstdomain</tt> par ce serveur de messagerie.
+
+virts_title=Mappages virtuels
+virts_toomany=Il y a trop de mappages virtuels sur votre système pour les afficher sur cette page.
+virts_go=Rechercher des correspondances virtuelles:
+virts_from=Mail pour
+virts_prepend=Ajouter un préfixe
+virts_all=Toutes les adresses
+virts_none=Pas virtuel
+virts_desc=Les mappages virtuels sont utilisés par QMail pour gérer les e-mails vers différents domaines sur votre serveur, en ajoutant du texte à la partie utilisateur de l'adresse e-mail avant de poursuivre le traitement. Vous pouvez les utiliser pour configurer des domaines de messagerie virtuels en créant un nouveau mappage virtuel pour un domaine, puis en utilisant la page <a href='$1'>Alias de messagerie</a> pour créer des alias dans ce domaine.
+virts_return=mappages virtuels
+virts_delete=Supprimer les mappages virtuels sélectionnés
+
+vform_edit=Modifier le mappage virtuel
+vform_create=Créer un mappage virtuel
+vform_from=Mail pour l'adresse
+vform_all=Toute adresse ne correspondant pas à un autre mappage virtuel
+vform_domain=Adresses avec domaine
+vform_user=Adresse
+vform_to=Ajouter au nom d'utilisateur
+vform_none=Rien
+vform_prepend=Préfixe spécifié
+vform_auto=Préfixe choisi automatiquement
+
+vsave_err=Échec de l'enregistrement du mappage virtuel
+vsave_edomain='$1' n'est pas un domaine de messagerie valide
+vsave_euser='$1' n'est pas un nom d'utilisateur de messagerie valide
+vsave_eprepend='$1' n'est pas un préfixe de mappage valide
+vsave_eboth=Vous ne pouvez pas sélectionner à la fois 'Toute adresse ne correspondant pas à un autre mappage virtuel' et 'Rien'
+
+vdelete_err=Impossible de supprimer les mappages virtuels
+
+stop_err=le processus d'envoi de qmail n'est plus en cours d'exécution
+
+log_stop=Processus QMail arrêtés
+log_start=Processus QMail démarrés
+log_opts=Options QMail modifiées
+log_alias_create=Alias créé $1 
+log_alias_delete=Supprimer l'alias $1 
+log_alias_modify=Alias modifié $1 
+log_delete_aliases=$1 alias supprimés
+log_virt_create=Mappage virtuel créé $1 
+log_virt_delete=Mappage virtuel supprimé $1 
+log_virt_modify=Mappage virtuel modifié $1 
+log_delete_virts=$1 mappages virtuels supprimés
+log_virtall_create=Création de la cartographie virtuelle catchall
+log_virtall_delete=Cartographie virtuelle de fourre-tout supprimée
+log_virtall_modify=Cartographie virtuelle de fourre-tout modifiée
+log_locals=Domaines locaux modifiés
+log_rcpts=Domaines acceptés modifiés
+log_bads=Adresses refusées modifiées
+log_percents=% Domaines d'adresse modifiés
+log_route_create=Itinéraire créé pour $1 
+log_route_delete=Route supprimée pour $1 
+log_route_modifed=Route modifiée pour $1 
+log_delete_routes=$1 itinéraires supprimés
+log_defroute=Route par défaut modifiée
+log_assign_create=Utilisateur de messagerie créé $1 
+log_assign_delete=Utilisateur de messagerie supprimé $1 
+log_assign_modifed=Utilisateur de messagerie modifié $1 
+log_delete_assigns=$1 utilisateurs de messagerie supprimés
+log_delmail=$1 messages supprimés de $2 
+log_movemail=Déplacement de $1 messages de $2 vers $3 
+log_send=Courrier envoyé à $1 
+
+rfile_title=Modifier le fichier à réponse automatique
+rfile_desc=Utilisez la zone de texte ci-dessous pour modifier le message de réponse automatique dans $1. Le message peut contenir les macros $SUBJECT, $FROM, $TO, $DATE et $BODY qui seront développées lorsque la réponse automatique sera activée.
+rfile_desc2=Vous pouvez également définir des en-têtes de courrier qui ajoutent ou remplacent les valeurs par défaut utilisées dans la réponse automatique en mettant des lignes comme: <br><tt> De: foo@bar.com </tt><br> <tt>Objet: En vacances</tt> <br> en haut du message, séparé du corps par une seule ligne vierge.
+rfile_efile=Vous n'êtes pas autorisé à modifier $1.
+rfile_undo=Annuler les changements
+rfile_replies=Suivre les réponses pour éviter les boucles de messagerie?
+rfile_none=Non
+rfile_file=Oui, en utilisant le fichier journal
+rfile_period=Intervalle minimum entre les réponses
+rfile_default=Par défaut (1 heure)
+rfile_secs=secondes
+rfile_ereplies=Fichier journal de suivi des réponses manquant
+rfile_eperiod=Nombre de secondes manquant ou invalide entre les réponses
+rfile_no_autoreply=N'envoyez pas de réponses automatiques à
+rfile_from=De: adresse de réponse
+rfile_auto=Automatique (basé sur l'adresse du destinataire)
+rfile_efrom=Absent de: adresse
+rfile_fromdesc=A De: l'adresse doit toujours être spécifiée dans la mesure du possible, car la méthode automatique peut ne pas être fiable.
+
+ffile_title=Modifier le fichier de filtre
+ffile_desc=Utilisez le formulaire ci-dessous pour configurer les règles de filtrage dans le fichier $1.
+ffile_efile=Vous n'êtes pas autorisé à modifier $1.
+ffile_line=Si le champ $1 $2 $3 transmet ensuite à $4 
+ffile_from=de
+ffile_to=à
+ffile_subject=matière
+ffile_cc=CC
+ffile_body=corps
+ffile_what0=ne correspond pas
+ffile_what1=allumettes
+ffile_other=Sinon, transférez à $1 
+ffile_err=Impossible d'enregistrer le fichier de filtre
+ffile_ematch=Match manquant
+ffile_eaction=Adresse de transfert manquante
+
+queue_title=File d'attente de messagerie
+queue_count=$1 messages
+queue_none=Aucun message électronique n'est actuellement en attente de livraison
+queue_id=Identifiant de messagerie
+queue_date=Expédié
+queue_from=De
+queue_to=À
+queue_cc=Cc
+queue_subject=Matière
+queue_return=file d'attente de messagerie
+queue_delete=Supprimer les messages sélectionnés
+queue_all=Tout sélectionner
+queue_invert=Inverser la sélection
+queue_refresh=Actualiser la file d'attente de messagerie
+queue_refreshdesc=Rechargez cette page pour afficher l'état actuel de la file d'attente de messagerie.
+
+qview_title=Message en file d'attente
+qview_desc=Depuis le fichier $1 
+qview_headers=En-têtes de courrier
+qview_attach=Pièces jointes
+
+assigns_title=Affectations d'utilisateurs de messagerie
+assigns_return=affectations des utilisateurs de messagerie
+assigns_toomany=Il y a trop d'utilisateurs de messagerie sur votre système pour les afficher sur cette page.
+assigns_go=Rechercher des utilisateurs de messagerie correspondant:
+assigns_address=Mail à l'adresse
+assigns_user=Utilisateur Unix
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=Répertoire personnel
+assigns_desc=Les affectations d'utilisateurs de messagerie vous permettent de créer des boîtes aux lettres pour les utilisateurs qui ne sont pas définis dans la liste des utilisateurs Unix. Chaque affectation livrera du courrier pour un nom d'utilisateur ou un modèle de nom d'utilisateur choisi, comme s'il était remis à la boîte aux lettres d'un utilisateur Unix réel.
+assigns_delete=Supprimer les utilisateurs de messagerie sélectionnés
+
+sform_edit=Modifier l'utilisateur de messagerie
+sform_create=Créer un utilisateur de messagerie
+sform_address=Nom d'utilisateur de l'adresse
+sform_mode0=Nom d'utilisateur exact
+sform_mode1=Noms d'utilisateur commençant par
+sform_user=Utilisateur Unix
+sform_uid=UID
+sform_gid=GID
+sform_home=Répertoire personnel
+
+ssave_err=Échec de l'enregistrement de l'utilisateur de messagerie
+ssave_eaddress=Nom d'utilisateur d'adresse manquante ou invalide
+ssave_euser=Utilisateur Unix manquant ou invalide
+ssave_euid=UID manquant ou invalide
+ssave_egid=GID manquant ou invalide
+ssave_ehome=Répertoire de départ manquant ou invalide
+
+sdelete_err=Impossible de supprimer les utilisateurs de messagerie
+
+delete_egone=Le message en file d'attente n'existe plus
+delete_ebogus=Nom de fichier de file d'attente non valide
+
+boxes_title=Boîtes aux lettres utilisateur
+boxes_user=Utilisateur
+boxes_size=Taille de la boîte aux lettres
+boxes_none=Pas de courrier
+boxes_return=boîtes aux lettres
+boxes_sent=Mail envoyé
+boxes_ecannot=Vous n'êtes pas autorisé à lire les e-mails
+boxes_toomany=Il y a trop d'utilisateurs sur votre système pour répertorier toutes leurs boîtes aux lettres.
+boxes_go=Afficher le courrier de l'utilisateur:
+
+mail_title=Courriel de l'utilisateur
+mail_from=De
+mail_date=Date
+mail_subject=Matière
+mail_to=À
+mail_cc=Cc
+mail_bcc=Cci
+mail_pri=Priorité
+mail_highest=Plus haut
+mail_high=Haute
+mail_normal=Ordinaire
+mail_low=Faible
+mail_lowest=Le plus bas
+mail_for=En 1
+mail_for2=Pour l'utilisateur $1 
+mail_sent=Dans la liste de diffusion envoyée
+mail_size=Taille
+mail_delete=Supprimer
+mail_compose=Composer
+mail_return=boîte aux lettres utilisateur
+mail_pos=Messages $1 à $2 sur $3 
+mail_none=Cette boîte aux lettres n'a aucun message
+mail_ecannot=Vous n'êtes pas autorisé à lire l'e-mail de cet utilisateur
+mail_all=Tout sélectionner
+mail_invert=Inverser la sélection
+mail_search=Trouvez des messages où
+mail_body=Corps
+mail_match=allumettes
+mail_ok=Chercher
+mail_nonefrom=Aucun
+mail_mark=Marquer comme:
+mail_mark0=Non lu
+mail_mark1=Lis
+mail_mark2=Spécial
+mail_forward=Vers l'avant
+mail_rfc=De la ligne
+mail_move=Déménager à:
+mail_eexists=Le message n'existe plus!
+
+view_title=Lire l'e-mail
+view_desc=Message $1 dans $2 
+view_desc2=Message $1 pour l'utilisateur $2 
+view_desc3=Message $1 
+view_sent=Message $1 dans la liste de diffusion envoyée
+view_qdesc=Message en file d'attente $1 
+view_headers=En-têtes de courrier
+view_allheaders=Voir tous les en-têtes
+view_noheaders=Afficher les en-têtes de base
+view_attach=Pièces jointes
+view_reply=Répondre
+view_reply2=Répondre à tous
+view_enew=Modifier comme nouveau
+view_forward=Vers l'avant
+view_delete=Supprimer
+view_strip=Supprimer les pièces jointes
+view_ecannot=Vous n'êtes pas autorisé à lire l'e-mail de cet utilisateur
+view_mark=Marquer le message comme:
+view_mark0=Non lu
+view_mark1=Lis
+view_mark2=Spécial
+view_return=e-mail d'origine
+view_sub=Courriel joint
+
+compose_title=Écrire un email
+reply_title=Répondre à un e-mail
+forward_title=Un courriel transféré
+enew_title=Modifier l'e-mail
+reply_headers=En-têtes de courrier
+reply_attach=Pièces jointes transmises
+reply_mailforward=Messages transférés
+reply_attach2=Pièces jointes côté client et côté serveur
+reply_send=Envoyer un mail
+reply_ecannot=Vous n'êtes pas autorisé à envoyer des e-mails en tant qu'utilisateur
+
+send_err=Échec de l'envoi du courrier
+send_eto=Adresse manquante
+send_efrom=Adresse de l'expéditeur manquante
+send_title=Email envoyé
+send_ok=E-mail envoyé avec succès à $1 
+send_ecannot=Vous n'êtes pas autorisé à envoyer des e-mails en tant qu'utilisateur
+send_esmtp=La commande SMTP $1 a échoué : $2 
+send_efile=Le fichier joint $1 n'existe pas
+send_eattach=Les pièces jointes ne peuvent pas totaliser plus de $1 Ko.
+send_eperms=L'utilisateur $1 ne peut pas lire $2 
+send_eperms2=Vous n'êtes pas autorisé à envoyer le fichier $1 
+send_epath=L'exécutable Sendmail $1 n'existe pas.
+
+delete_title=Supprimer le courrier
+delete_rusure=Voulez-vous vraiment supprimer les messages $1 sélectionnés de $2 ? Cela peut prendre un certain temps pour un fichier courrier volumineux. Tant que la suppression n'est pas terminée, aucune autre action ne doit être effectuée.
+delete_rusure2=Voulez-vous vraiment supprimer ce message de $1 ? Cela peut prendre un certain temps pour un fichier courrier volumineux. Tant que la suppression n'est pas terminée, aucune autre action ne doit être effectuée.
+delete_ok=Effacer maintenant
+delete_ecannot=Vous êtes maintenant autorisé à supprimer le courrier de cet utilisateur
+delete_enone=Aucun courrier sélectionné pour supprimer
+delete_emnone=Aucun courrier sélectionné pour marquer
+delete_nobutton=Aucun bouton cliqué
+
+search_title=Résultats de recherche
+search_ecannot=Vous n'êtes pas autorisé à rechercher l'e-mail de cet utilisateur
+search_ematch=Vous devez saisir du texte à comparer.
+search_efield=Vous devez sélectionner un type de recherche.
+search_none=Aucun message trouvé.
+search_results2=$1 messages électroniques correspondant à $2 ..
+search_results3=$1 messages électroniques ne correspondant pas à $2 ..
+
+match_from=De: matchs
+match_subject=Objet: matches
+match_to=À: correspond
+match_cc=Cc: matchs
+match_date=Date: matchs
+match_body=Matchs du corps
+match_size=La taille est supérieure à
+match_headers=Correspondance des en-têtes
+match_=-----------------
+match_!from=De: ne correspond pas
+match_!subject=Objet: ne correspond pas
+match_!to=À: ne correspond pas
+match_!cc=Cc: ne correspond pas
+match_!date=Date: ne correspond pas
+match_!body=Le corps ne correspond pas
+match_!size=La taille est inférieure à
+match_!headers=Les en-têtes ne correspondent pas
+
+delq_titles=Suppression de messages
+delq_rusure=Êtes-vous sûr de vouloir supprimer les $1 messages en file d'attente sélectionnés?
+delq_confirm=Supprimer les messages

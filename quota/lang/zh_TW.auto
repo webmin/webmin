@@ -1,0 +1,92 @@
+acl_ggid=GID在範圍內的組
+acl_email=可以設置電子郵件通知嗎？
+
+egroup_listalldesc=單擊此按鈕以顯示該組在其上具有磁盤配額的所有文件系統的列表，以及用於編輯它們的鏈接。
+
+euser_sdisk=磁盤上的可用空間
+euser_listalldesc=單擊此按鈕以顯示該用戶具有磁盤配額的所有文件系統的列表，並帶有編輯它們的鏈接。
+
+gfilesys_space=磁盤空間
+gfilesys_editdesc=在當前沒有配額的其他某個文件系統上查看和編輯該組的配額。
+gfilesys_copydesc=將所有文件系統上該組的配額限制複製到某些或所有其他組。
+gfilesys_enone=未輸入組名
+
+index_supported=尚不支持配額
+index_enable2=啟用支持
+index_euserdesc=輸入或選擇一個用戶，然後單擊此按鈕以查看其在所有文件系統上的配額。
+index_egroupdesc=輸入或選擇一個組，然後單擊此按鈕以查看其在所有文件系統上的配額。
+index_mountmod=您可以在<a href='$1'>磁盤和網絡文件系統</a>模塊中為文件系統啟用配額。
+
+lgroups_tablist=群組清單
+lgroups_space=磁盤空間
+lgroups_mass=更新選定的組
+lgroups_to=電子郵件目的地
+lgroups_tosame=與組同名的郵箱
+lgroups_tofixed=地址1
+lgroups_emailheader=電郵給即將達到配額的群組
+lgroups_email=向群組發送電子郵件？
+lgroups_tovirt=Virtualmin域所有者
+
+ufilesys_space=磁盤空間
+ufilesys_editdesc=在其他當前沒有配額的文件系統上查看和編輯該用戶的配額。
+ufilesys_copydesc=將此用戶在所有文件系統上的配額限制複製到某些或所有其他用戶。
+ufilesys_enone=沒有輸入用戶名
+
+lusers_tablist=用戶清單
+lusers_tabdefault=默認配額
+lusers_tabemail=郵件通知
+lusers_space=磁盤空間
+lusers_pc_hblocks=硬％
+lusers_pc_sblocks=柔軟的 ％
+lusers_emailheader=給即將達到配額的用戶發送電子郵件
+lusers_email=向用戶發送電子郵件？
+lusers_interval=消息間隔
+lusers_hours=小時
+lusers_ltype=限制類型
+lusers_percent=達到使用量時發出警告
+lusers_domain=用戶地址的域
+luser_virtualmin=從Virtualmin獲取域名？
+lusers_from=發件人：電子郵件地址
+lusers_mass=更新所選用戶
+lusers_cc=同時發送電子郵件至
+lusers_nocc=沒有人
+
+log_email_user=更改 $1上的用戶電子郵件選項
+log_email_group=更改 $1上的網上論壇電子郵件選項
+log_support=為 $1啟用了配額支持
+
+email_err=無法保存電子郵件選項
+email_ecannot=您無權修改電子郵件選項
+email_einterval=間隔缺失或無效
+email_epercent=丟失或無效的使用百分比
+email_edomain=郵件域缺失或無效
+email_efrom=缺少或無效的發件人：地址
+email_ecc=抄送地址：缺失或無效
+email_msg=用戶 $1在文件系統 $2上的磁盤使用率已達到允許配額的 $3％。正在使用 $4的磁盤空間，最大為 $5。
+gemail_msg=文件系統 $2上組 $1的磁盤使用率已達到允許配額的 $3％。正在使用 $4的磁盤空間，最大為 $5。
+email_subject=磁盤配額超標
+gemail_subject=磁盤配額超標
+email_eto=缺少目標電子郵件地址
+
+umass_title=更新用戶配額
+umass_header=配額更改將應用於選定的用戶
+umass_sblocks=軟塊限制
+umass_hblocks=硬塊限制
+umass_sfiles=軟文件限制
+umass_hfiles=硬文件限制
+umass_leave=保持不變
+umass_unlimited=設置為無限
+umass_set=調成
+umass_ok=更新用戶
+umass_esblocks=缺少或無效的軟塊限制
+umass_ehblocks=缺少或無效的硬塊限制
+umass_esfiles=缺少或無效的軟文件限制
+umass_ehfiles=缺少或無效的硬盤文件限制
+umass_count=以下更改將應用於 $1個選定的用戶 ..
+umass_err=無法更新用戶配額
+
+gmass_title=更新組配額
+gmass_header=配額更改將應用於選定的組
+gmass_count=以下更改將應用於 $1個選定的組 ..
+gmass_ok=更新群組
+gmass_err=無法更新組配額

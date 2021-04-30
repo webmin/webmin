@@ -1,0 +1,11 @@
+title_modules=Moduli extra
+title_none1=Nessuna
+title_none2=(voce di menu senza avvio)
+
+log_create_title=Opzione di avvio creata $1 
+log_delete_title=Opzione di avvio eliminata $1 
+log_modify_title=Opzione di avvio modificata $1 
+log_up_title=Opzione di avvio spostata in alto $1 
+log_down_title=Opzione di avvio spostata verso il basso $1 
+log_global=Opzioni globali modificate
+log_install=GRUB installato

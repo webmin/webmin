@@ -1,0 +1,71 @@
+<header> Obaly TCP </header>
+<h3> vzory </h3> Jazyk kontroly prístupu implementuje nasledujúce vzory: <ul>
+    <li> Reťazec, ktorý začína znakom „.“ charakteru. Názov hostiteľa sa zhoduje, ak sa posledné komponenty jeho názvu zhodujú so zadaným vzorom. Napríklad vzor „.tue.nl“ zodpovedá názvu hostiteľa „wzv.win.tue.nl“. </li>
+    <li> Reťazec, ktorý končí znakom „.“ charakteru. Adresa hostiteľa sa zhoduje, ak sa jeho prvé číselné polia zhodujú s daným reťazcom. Napríklad vzor „131.155“. zodpovedá adrese (takmer) každého hostiteľa v sieti Eindhoven University (131.155.xx). </li>
+    <li> Reťazec, ktorý začína znakom „@“, sa považuje za názov siete NIS (predtým YP). Názov hostiteľa sa zhoduje, ak je hostiteľom určenej sieťovej skupiny. Zhody Netgroup nie sú podporované pre názvy procesov démona ani pre užívateľské mená klientov. </li>
+    <li> Výraz „nnnn / mmmm“ sa interpretuje ako pár „sieť / maska“. Adresa hostiteľa IPv4 sa spáruje, ak sa „net“ rovná bitovej A adresy a „masky“. Napríklad vzor sieť / maska „131.155.72.0/255.255.254.0“ zodpovedá každej adrese v rozsahu „131.155.72.0“ až „131.155.73.255“. </li>
+    <li> Výraz „[n: n: n: n: n: n: n: n] / m“ sa interpretuje ako pár „[net]/prefixlen“. Hostiteľská adresa IPv6 sa spáruje, ak sa „prefixované“ bity „netu“ rovnajú „prefixovaným“ bitom adresy. Napríklad vzor [net]/predpona &#39;[3ffe: 505: 2: 1 ::]/64&#39; zodpovedá každej adrese v rozsahu &#39;3ffe: 505: 2: 1:&#39;? prostredníctvom &#39;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&#39;. </li>
+    <li> Reťazec začínajúci znakom „/“ sa považuje za názov súboru. Názov hostiteľa alebo adresa sa zhodujú, ak sa zhodujú s akýmkoľvek názvom hostiteľa alebo vzorom adresy uvedeným v pomenovanom súbore. Formát súboru je nula alebo viac riadkov s nulovým alebo viacerými názvami hostiteľov alebo adresami oddelenými medzerou. Vzor názvu súboru sa dá použiť kdekoľvek, kde sa dá použiť názov hostiteľa alebo vzor adresy. </li>
+    <li> Zástupné znaky „*“ a „?“ je možné použiť na priradenie názvov hostiteľov alebo IP adries. Túto metódu porovnania nie je možné použiť v spojení s porovnaním „net/mask“, porovnaním názvu hostiteľa počnúc „.“ alebo zhoda adresy IP končiaca na „.“. </li>
+</ul>
+<h3> zástupné znaky </h3> Jazyk kontroly prístupu podporuje explicitné zástupné znaky: <table border>
+    <tr>
+        <td> <b>ALL</b> </td>
+        <td> Univerzálny zástupný znak sa vždy zhoduje. </td>
+    </tr>
+    <tr>
+        <td> <b>LOCAL</b> </td>
+        <td> Zodpovedá každému hostiteľovi, ktorého meno neobsahuje bodkový znak. </td>
+    </tr>
+    <tr>
+        <td> <b>NEZNÁMY</b> </td>
+        <td> Zodpovedá každému používateľovi, ktorého meno nie je známe, a zhoduje sa s ľubovoľným hostiteľom, ktorého meno alebo adresa nie sú známe. Tento vzorec by sa mal používať opatrne: názvy hostiteľov môžu byť nedostupné z dôvodu dočasných problémov so serverom názvov. Sieťová adresa nebude k dispozícii, keď softvér nedokáže zistiť, s ktorou sieťou sa hovorí. </td>
+    </tr>
+    <tr>
+        <td> <b>ZNÁME</b> </td>
+        <td> Zodpovedá každému používateľovi, ktorého meno je známe, a zhoduje sa s každým hostiteľom, ktorého meno a adresa sú známe. Tento vzorec by sa mal používať opatrne: názvy hostiteľov môžu byť nedostupné z dôvodu dočasných problémov so serverom názvov. Sieťová adresa nebude k dispozícii, keď softvér nedokáže zistiť, s ktorou sieťou sa hovorí. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOID</b> </td>
+        <td> Zodpovedá každému hostiteľovi, ktorého meno sa nezhoduje s jeho adresou. Keď je tcpd postavený s -DPARANOID (predvolený režim), zruší požiadavky týchto klientov ešte predtým, ako sa pozrieme na tabuľky riadenia prístupu. Zostavte bez -DPARANOID, ak chcete mať väčšiu kontrolu nad takýmito požiadavkami. </td>
+    </tr>
+</table>
+<h3> operátori </h3> <b>VÝNIMKA</b> Účel použitia je vo forme: &#39;list_1 EXCEPT list_2&#39;; tento konštrukt sa zhoduje so všetkým, čo zodpovedá zoznamu_1, pokiaľ sa nezhoduje so zoznamom_2. Operátor EXCEPT sa dá použiť v daemon_lists a client_lists. Operátor EXCEPT môže byť vnorený: ak by riadiaci jazyk umožnil použitie zátvoriek, „EXCEPT b EXCEPT c“ by sa analyzovalo ako „(EXCEPT (b EXCEPT c))“ “. <h3> Príkazy Shell </h3> Ak pravidlo riadenia prístupu s prvou zhodou obsahuje príkaz shellu, tento príkaz podlieha% <letter> substitúcie (pozri nasledujúcu časť). Výsledok je vykonaný podriadeným procesom /bin/sh so štandardným vstupom, výstupom a chybou pripojenou k /dev/null. Ak nechcete čakať na dokončenie príkazu, na konci príkazu zadajte znak „&amp;“. <p> Príkazy shellu by sa nemali spoliehať na nastavenie PATH inetd. Namiesto toho by mali používať absolútne názvy ciest, alebo by mali začínať výslovným príkazom PATH = vôbec. <h3> % Expanzií </h3> V príkazoch shellu sú dostupné nasledujúce rozšírenia: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> Adresa hostiteľa klienta (servera). </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Informácie o klientovi: user@host, user@address, meno hostiteľa alebo iba adresa, v závislosti od toho, koľko informácií je k dispozícii. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> Názov procesu démona (hodnota argv[0]). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Názov alebo adresa hostiteľa (servera) hostiteľa, ak názov hostiteľa nie je k dispozícii. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> Názov hostiteľa klienta (servera) (alebo „neznámy“ alebo „paranoidný“). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> ID démonského procesu. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Informácie o serveri: démon @ host, démon @ adresa alebo iba názov démona, v závislosti od toho, koľko informácií je k dispozícii. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Meno používateľa klienta (alebo „neznáme“). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Rozšíri sa na jediné &#39;%? charakteru. </td>
+            </tr>
+        </table> Znaky v%expanziách, ktoré môžu mýliť shell, sú nahradené znakmi podčiarknutia.
+        <hr />

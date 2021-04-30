@@ -1,0 +1,131 @@
+category_=Eszközök
+
+longcategory_=Egyéb különféle feladatokat ellátó modulok
+
+error_stack=Hívja a Stack Trace-t
+error_line=Vonal
+error_stackline=A $1 fájlban a $2 sorban hívja a $3
+efileclose=Nem sikerült írni a $1 címre bezáráskor : $2
+efileopen=Nem sikerült megnyitni a $1 írást : $2
+fail=nem sikerült
+euserdbacl=A felhasználói ACL letöltése nem sikerült : $1
+euserdbacl2=Nem sikerült frissíteni a felhasználói ACL-t : $1
+egroupdbacl=Az ACL csoport letöltése nem sikerült : $1
+egroupdbacl2=Az ACL csoport frissítése nem sikerült : $1
+
+chooser_eopen=A felsorolás sikertelen : $1
+
+config_emodule=A modul nem létezik
+config_ewebmin=A 14. paraméter csak a Webminben működik
+
+referer_warn_unknown=<b>Figyelem!</b> A Webmin észlelte, hogy a $1 programhoz egy ismeretlen URL-címről kapcsolódtak, amely úgy tűnik, hogy kívül esik a Webmin szerverén. Ez lehet egy kísérlet, hogy becsapja a szervert egy veszélyes parancs végrehajtására.
+referer_fix1=If this is a legitimate link, you can allow links from this URL as follows :<ul><li>Login to Webmin normally.</li><li>Go to the <b>Webmin Configuration</b> module.</li><li>Click on the Trusted Referrers icon.</li><li>Enter the hostname $1 into the <b>Trusted websites</b> field, and click <b>Save</b></li>.</ul>
+referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.</li><li>Save the file.</li></ul>
+referer_fix3u=Győződjön meg arról, hogy a böngésző úgy van beállítva, hogy küldjön hivatkozási információkat, hogy azokat a Webmin ellenőrizze.
+referer_fix2u=Alternately, you can configure Webmin to allow links from unknown referers by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Find the line <tt>referers_none=1</tt> and change it to <tt>referers_none=0</tt>.</li><li>Save the file.</li></ul><p></p>WARNING - this has the side effect of opening your system up to reflected XSS attacks and so is not recommended!
+
+session_twofactor=Két tényező token
+session_twofailed=Kétfaktoros hitelesítés sikertelen : $1
+
+pam_mesg=A $1 webminiszterre való bejelentkezéshez meg kell válaszolnia az alábbi kérdést.
+pam_mesg2=A bejelentkezéshez meg kell válaszolnia az alábbi kérdést.
+
+acl_otherdirs=Egyéb látható könyvtárak a fájlválasztóban
+acl_nodot=Pont fájlok elrejtése a fájlválasztóban?
+acl_feedback3=Igen, a konfigurációs fájlokkal
+acl_readonly2=A felhasználó demo módban van?
+acl_readonlyyes=Igen (Előfordulhat, hogy egyes modulok nem érhetők el)
+acl_negative=Új modul engedélyeket ad a felhasználónak?
+acl_fileunix=Böngészés a fájlok között Unix felhasználóként
+acl_sameunix=Ugyanaz, mint a Webmin bejelentkezés
+acl_webminsearch=Megjeleníti a Webmin keresési mezőjét?
+
+emodulecheck=A $1 modul nem érhető el a rendszerén
+elock_tries2=A $1 fájl bezárása a $2 perc után nem sikerült. Utolsó hiba : $3
+
+progress_size2=$1 letöltése ($2) ..
+progress_incache=$1 található a gyorsítótárban.
+
+readparse_cdheader=Hiányzik a tartalom-elrendezés fejléce
+readparse_enc=Várt az űrlapadatok kódolása, de megkapta a normál kódolást
+readparse_max=Az adatok meghaladták a $1 bájtok maximális méretét
+
+password_expired=Jelszava lejárt, és új kell választani.
+password_temp=Az ideiglenes bejelentkezés helyett új jelszót kell választania.
+password_done=Jelszava sikeresen megváltozott. Most <a href='$1'>ismét bejelentkezhet</a> az új jelszóval.
+password_err=Nem sikerült megváltoztatni a jelszót
+password_euser=A felhasználónév nem található a jelszó fájlban!
+password_eold=A jelenlegi jelszó helytelen
+password_enew1=Nincs új jelszó megadva
+password_enew2=Az új jelszavak nem egyeznek
+password_epam=PAM hiba : $1
+password_emodpam=A jelszó megváltoztatásához szükséges Authen::PAM perl modul nincs telepítve!
+password_enewpass=Az új jelszó nem engedélyezett : $1
+
+ui_mandatory=A mező kitöltése kötelező
+ui_checkmandatory=Semmit nem választottak ki
+ui_errors=Több hibát találtak :
+ui_nothing=Semmi nem lépett be
+ui_searchcol=Keressen sorokat, ahol
+ui_searchfor=Tartalmazza a szöveget
+ui_paging=A (z) $1 sorok megjelenítése a $3 értékre $2
+ui_rowlabel=$2 a $1 sorban :
+ui_filterbox=Írja be a szűrést ..
+
+header_statusmsg=$1 bejelentkezve $2 $3 a $4 ($5)
+
+uptracker_eid=Nincs feltöltve azonosító
+uptracker_eid2=A feltöltési azonosító érvénytelen!
+
+wsearch_type=Egyezés típusa
+wsearch_mod=$1 modul
+wsearch_config_webmin=Webmin modul konfigurálása
+wsearch_inmod=A $1 kategóriában
+wsearch_text=A felhasználói felület szövege
+wsearch_esearch=Nincs megadva keresendő.
+wsearch_enone=Nem található Webmin modul vagy oldal, amely megfelel a $1 értéknek.
+wsearch_on=($1 esetén)
+wsearch_helpfor=Segítség a <i>$1</i> számára
+wsearch_htext=Megfelelő szöveg
+wsearch_moddir=URL elérési út /$1/
+wsearch_searching=$1 keresése ..
+wsearch_found=talált $1 eredmények :
+
+sql_emysqldriver=Nem sikerült betölteni a MySQL DBI illesztőprogramot
+sql_emysqlconnect=Nem sikerült csatlakozni a MySQL adatbázishoz : $1
+sql_epostgresqldriver=Nem sikerült betölteni a PostgreSQL DBI illesztőprogramot
+sql_epostgresqlconnect=Nem sikerült csatlakozni a PostgreSQL adatbázishoz : $1
+sql_eldapdriver=Nem sikerült betölteni az LDAP perl modult
+sql_eldapconnect=Nem sikerült csatlakozni az $1 LDAP szerverhez
+sql_eldaptls=Nem sikerült elindítani a TLS titkosítást az LDAP számára : $1
+sql_eldaplogin=Nem sikerült bejelentkezni az LDAP szerverre, mivel $1 : $2 
+
+log_email_subject=Webmin művelet a $1 kategóriában
+log_email_global=A Webmin globális akciója
+log_email_desc=Ezt az e-mailt a Webmin küldte válaszként egy felhasználói műveletre.
+log_email_mod=Webmin modul: $1
+log_email_moddesc=Modul címe: $1
+log_email_time=Művelet: $1
+log_email_system=Rendszeren hajtják végre: $1
+log_email_user=Végrehajtja a felhasználó: $1
+log_email_script=Webmin szkript: $1
+log_email_session=Munkamenet azonosítója: $1
+log_email_remote=Ügyfél címe: $1
+
+nice_size_PB=PB
+nice_size_PiB=PiB
+nice_size_TB=tuberkulózis
+nice_size_TiB=TiB
+nice_size_GB=GB
+nice_size_GiB=Ellenék
+nice_size_MB=MB
+nice_size_MiB=MiB
+nice_size_kB=kB
+nice_size_kiB=Kib
+nice_size_b=bájt
+
+langauto_include=Tartalmazza a gépi fordításokat
+
+file_truncated_message=lekérte az $1 adatot, a (z) $2 csonkolta a (z) $3 közül
+file_truncated_message_head=lekérte az adatok $1 elejét, a (z) $2 csonkolta a (z) $3 -ból
+file_truncated_message_tail=lekérte az adatok $1 végét, a (z) $2 csonkolta a (z) $3 -ból

@@ -1,0 +1,113 @@
+access_ecidr8=Rozmiar sieci IPv6 „$1” musi być podzielny przez 8
+
+bind_maxconns=Maksymalna łączna liczba jednoczesnych połączeń
+bind_maxconns_per_ip=Maksymalna liczba jednoczesnych połączeń na adres IP
+bind_maxconns_per_net=Maksymalna liczba jednoczesnych połączeń na sieć
+bind_emaxconns=Maksymalna liczba jednoczesnych połączeń musi być większa niż 1
+bind_emaxconns_per_ip=Maksymalna liczba jednoczesnych połączeń na adres IP musi być większa niż 1
+bind_emaxconns_per_net=Maksymalna liczba jednoczesnych połączeń na sieć musi być większa niż 1
+
+log_global=&lt;Działania globalne&gt;
+log_sched=Zalogować zaplanowane funkcje?
+log_email=Wyślij zarejestrowane działania pocztą e-mail na adres
+log_emailnone=Nie wysyłaj
+log_inmodsemail=Wyślij e-mail z działaniami w
+
+ui_nice_size_type=Użyj binarnych jednostek miary (KiB, MiB, GiB zamiast KB, MB, GB)
+
+mods_checksig=Sprawdź plik podpisu dla pobranych modułów?
+
+ssl_ekey2=Plik klucza prywatnego SSL $1 nie zawiera klucza formatu PEM
+ssl_ecert2=Plik certyfikatu SSL $1 nie zawiera certyfikatu formatu PEM
+ssl_edhparams=Nie udało się wygenerować pliku parametrów PFS DH : $1
+ssl_epfsversion=PFS wymaga wersji Net::SSLeay $2, ale ten system ma tylko wersję $1
+ssl_tablets=Szyfrujmy
+ssl_letsdesc=Let's Encrypt to bezpłatny, zautomatyzowany i otwarty urząd certyfikacji, którego można użyć do wygenerowania certyfikatu SSL do użytku przez Webmin.
+ssl_letserr=Niestety, Let's Encrypt nie może być używany w twoim systemie: $1.
+ssl_letserr2=Alternatywnie sprawdź stronę <a href='$1'>konfiguracji modułu</a>, aby upewnić się, że używasz poprawnej ścieżki do polecenia <tt>letsencrypt</tt>.
+
+ssl_letsdesc2=Na tej stronie można zażądać nowego certyfikatu, który zastąpi inne skonfigurowane obecnie w Webmin. Jednak usługa Let's Encrypt wymaga potwierdzenia własności domeny certyfikatu przez sprawdzenie, czy ten system obsługuje witrynę internetową dla domeny. Odbywa się to poprzez umieszczenie małego pliku tymczasowego w katalogu dokumentów witryny.
+ssl_letsheader=Opcje nowego certyfikatu SSL
+ssl_letsdoms=Nazwy hostów dla certyfikatu
+ssl_webroot=Katalog główny witryny dla pliku sprawdzania poprawności
+ssl_webroot0=Host wirtualny Apache zgodny z nazwą hosta
+ssl_webroot1=Inny wirtualny host Apache
+ssl_webroot2=Inny katalog
+ssl_webroot3=Użyj domen DNS do weryfikacji
+ssl_letsok=Poproś o certyfikat
+ssl_letsonly=Po prostu zaktualizuj odnowienie
+ssl_usewebmin=Skopiować nowy klucz i certyfikat do Webmina?
+ssl_letsrenew=Miesiące między automatycznym przedłużeniem
+ssl_letsnotrenew=Odnów tylko ręcznie
+ssl_staging=Zaszyfrujmy serwer
+ssl_staging0=Real
+ssl_staging1=Inscenizacja (tylko test)
+
+newkey_ecns=Nie wprowadzono nazw serwerów
+
+ca_alt=Dodatkowe domeny
+
+session_sha512=Użyj szyfrowania SHA512
+session_esha512mod=Nie można użyć szyfrowania SHA512, ponieważ moduł Perl $1 nie jest zainstalowany.
+
+log_letsencrypt=Zażądałem nowego certyfikatu SSL od Let's Encrypt
+log_letsencryptdns=Utworzono Let's Encrypt DNS record dla $1
+log_letsencryptcleanup=Usunięto Let's Encrypt DNS record dla $1
+
+ipkey_ips2=Adresy IP i nazwy hostów
+ipkey_eip2=„$1” nie jest prawidłowym adresem IP ani nazwą hosta
+
+advanced_listdir=Wyświetlać katalogi bez pliku indeksu?
+advanced_headers=Dodatkowe nagłówki HTTP
+advanced_eheader=Nagłówki muszą być sformatowane jak <tt>Header: Value</tt>
+advanced_sortconfigs=Zapisać pliki konfiguracyjne posortowane według kluczy?
+advanced_bufsize=Rozmiar bufora sieciowego w bajtach
+advanced_ebufsize=Rozmiar bufora sieciowego musi być liczbą większą niż zero
+
+sendmail_port=Port SMTP
+sendmail_ssl0=Nigdy nie szyfruj
+sendmail_ssl1=Zawsze używaj TLS
+sendmail_ssl2=Przełącz za pomocą STARTTLS
+sendmail_url=Adres URL Webmin do użytku w wiadomościach e-mail
+sendmail_url_def=Domyślnie ($1)
+sendmail_url_custom=Niestandardowy adres URL
+sendmail_eurl=Brakujący lub nieprawidłowy niestandardowy URL
+
+twofactor_eusers=Nie można wyłączyć uwierzytelniania dwuskładnikowego, ponieważ obecnie zarejestrowani są następujący użytkownicy : $1
+
+letsencrypt_title=Zaszyfrujmy żądanie certyfikatu
+letsencrypt_err=Nie można poprosić o certyfikat
+letsencrypt_ecmds=W systemie nie znaleziono ani polecenia klienta Let's Encrypt <tt>certbot</tt>, ani <tt>python</tt>
+letsencrypt_epythonmod=Moduł Pythona $1 wymagany przez wbudowanego klienta Let's Encrypt nie jest zainstalowany
+letsencrypt_epythonver=Nie udało się pobrać wersji Pythona : $1
+letsencrypt_epythonver2=Wymagana jest wersja Python $1 lub wyższa, ale masz tylko wersję $2.
+letsencrypt_certbot=Certbot
+letsencrypt_edroot=Wirtualny host Apache $1 nie ma katalogu dokumentów!
+letsencrypt_edom=Brakująca lub nieprawidłowa nazwa domeny
+letsencrypt_erenew=Brakujący lub nienumeryczny interwał odnawiania
+letsencrypt_ewebroot=Katalog dokumentów witryny nie istnieje
+letsencrypt_evhost=Nie znaleziono hosta wirtualnego pasującego $1
+letsencrypt_efull=Oczekiwany pełny plik certyfikatu $1 nie został znaleziony
+letsencrypt_ecert=Oczekiwany plik certyfikatu $1 nie został znaleziony
+letsencrypt_ekey=Oczekiwany plik klucza prywatnego $1 nie został znaleziony
+letsencrypt_doing=Żądanie nowego certyfikatu dla $1, przy użyciu katalogu witryny $2 ..
+letsencrypt_doingdns=Żądanie nowego certyfikatu dla $1, przy użyciu weryfikacji DNS.
+letsencrypt_failed=.. żądanie nie powiodło się : $1
+letsencrypt_done=.. żądanie powiodło się!
+letsencrypt_show=Nowy certyfikat i klucz prywatny zostały zapisane w następujących plikach :
+letsencrypt_cert=Certyfikat SSL
+letsencrypt_key=Klucz prywatny SSL
+letsencrypt_chain=Łańcuchowy certyfikat CA
+letsencrypt_webmin=Konfigurowanie Webmina do używania nowego certyfikatu i klucza ..
+letsencrypt_wdone=.. gotowy!
+letsencrypt_eaccountkey=Nie udało się wygenerować klucza konta : $1
+letsencrypt_etiny=Nie można zażądać certyfikatu : $1
+letsencrypt_echain=Nie udało się pobrać powiązanego certyfikatu : $1
+letsencrypt_echain2=Łańcuch certyfikatu pobrany z $1 jest pusty
+letsencrypt_ecsr=Nie udało się wygenerować CSR : $1
+letsencrypt_ekeygen=Nie udało się wygenerować klucza prywatnego : $1
+letsencrypt_enative=Natywny klient Let's Encrypt (certbot) był wcześniej używany w tym systemie i musi być używany do wszystkich przyszłych żądań certyfikatów
+letsencrypt_eacmedns=Tylko oficjalny klient Let's Encrypt obsługuje sprawdzanie poprawności na podstawie DNS
+
+announce_hide=Ukryj to ogłoszenie
+alert_hide=Ukryj alert

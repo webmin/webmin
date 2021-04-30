@@ -1,0 +1,42 @@
+index_ouser=Nem Webmin felhasználó által
+index_yesterday=Csak tegnapra
+index_week=Az elmúlt héten
+index_susers=A Webmin felhasználók intézkedései
+index_smods=Műveletek a modulban
+index_sfile=A fájlt módosító műveletek
+index_sdiff=Fájlváltás vagy parancsfuttatás
+index_dall=Bármilyen változás
+index_diff=A következő változtatásokat tartalmaz:
+index_stimes=Akciók a dátumokon
+index_sdesc=A művelet leírása tartalmazza
+index_shost=Forrás Webmin szerver
+index_long=Megmutatja a teljes műveleti leírást?
+index_global=&lt;Egyetlen modulban sem&gt;
+
+search_none2=Egyik művelet sem felelt meg a keresett műveleteknek
+search_critd=ahol a leírás <tt>$1</tt>
+search_global=Egyik sem
+search_global_login=Bejelentkezés a Webminbe
+search_global_logout=Kijelentkezett a Webminből
+search_global_failed=Nem sikerült bejelentkezni a Webminbe : $1 
+search_global_expiredpass=A jelszó lejárt
+search_global_wronguser=Érvénytelen felhasználó
+search_global_wrongpass=Érvénytelen jelszó
+search_global_baduser=Rossz felhasználónév
+search_global_badpass=Rossz jelszó
+search_global_twofactor=Érvénytelen twofactor token
+search_csv=Exportálás CSV formátumban.
+
+view_rollback2=A kijelölt fájlok visszatekerése
+view_anno=Naplóbejegyzés megjegyzés
+view_output=A Webmin oldal tartalma
+view_files=A fájlok megváltoztak és a parancsok futnak
+view_raw=Nyers naplóadatok
+view_rawname=Paraméter neve
+view_rawvalue=Paraméter értéke
+
+acl_self=Csak én
+
+rollback_enone=Nincs kiválasztva fájl
+
+log_rollback=A (z) $1 modul $1 visszalépése

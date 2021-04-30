@@ -1,0 +1,250 @@
+index_treturn=arbre de package
+index_tree=Arbre de package
+index_epackagecmd=Le système de package $1 nécessite la commande $2 
+index_eupdatecmd=Le système de mise à jour $1 nécessite la commande $2 
+index_epackagecheck=Le système de gestion des packages sélectionné n'est pas valide: $1. <br>Vous devrez peut-être sélectionner un autre système sur la page<a href='$2'> configuration du module </a>.
+index_eupdatecheck=Le système de mise à jour sélectionné n'est pas valide: $1. <br>Vous devrez peut-être sélectionner une méthode de mise à jour différente sur la page<a href='$2'> configuration du module </a>.
+index_echeckpackage=Aucun système de package n'a été détecté!
+index_echeckupdate=Aucun système de mise à jour n'a été détecté!
+index_filter=Filtrer les packages
+index_filterclear=Effacer le filtre
+index_filtered=Affichage des <tt>$1</tt> packages sur <tt>$2</tt>
+
+search_esearch=Vous n'avez rien entré à rechercher!
+search_delete=Désinstaller les packages sélectionnés
+search_selall=Tout sélectionner
+search_invert=Inverser la sélection
+
+edit_listdesc=Afficher tous les fichiers de ce package et leur état de vérification actuel.
+edit_uninstdesc=Supprimez ce package de votre système.
+edit_egone=Le package n'est plus installé
+
+delete_rusure2=Voulez-vous vraiment supprimer le package $1 ?
+delete_noscripts=Ignorer les scripts de désinstallation?
+delete_efile=Fichier temporaire non valide à supprimer
+delete_purge=Purger les fichiers de configuration?
+delete_depstoo=Supprimé également les dépendances inutilisées?
+
+install_eupdate=Aucun package à installer entré
+
+rpm_notriggers=Exécuter des scripts déclenchés?
+rpm_ignoresize=Vérifiez la taille du système de fichiers?
+rpm_search=Rechercher rpmfind.net pour:
+rpm_none=Aucun package correspondant à votre recherche n'a été trouvé.
+rpm_find=Recherche rpmfind.net ..
+rpm_findrpm=Nom de fichier du package
+rpm_finddistro=Distribution
+rpm_finddesc=La description
+
+slack_edir=Répertoire des packages Slackware manquant $1 
+
+log_install_yum_l=Package (s) installé (s) $1 à partir de YUM
+log_install_yum=$2 package (s) installé (s) depuis YUM
+log_install_rhn_l=Package (s) installé (s) $1 à partir du réseau Redhat
+log_install_rhn=$2 package (s) installé (s) depuis le réseau Redhat
+log_deletes_l=Packages non installés $1 
+log_deletes=Packages $1 non installés
+log_urpmi_update=Packages URPMI disponibles et mis à jour
+log_urpmi_upgrade=Packages URPMI installés et mis à niveau
+log_upgrade_yum_l=Package (s) mis à niveau $1 de YUM
+log_upgrade_yum=$2 package (s) mis à niveau depuis YUM
+log_check_rhn_l=Package (s) mis à niveau $1 à partir du réseau Redhat
+log_check_rhn=Package (s) $2 mis à niveau depuis Redhat Network
+
+rhn_find=Rechercher RHN ..
+rhn_header=Options de mise à niveau automatique des packages
+rhn_nonefound=Aucun package disponible pour la mise à jour.
+rhn_name=Réseau Redhat
+
+apt_header=Options de mise à niveau du package APT
+apt_repo_url=URL de base du référentiel
+apt_repo_path=Composants du chemin de distribution
+apt_repo_eurl=URL de base manquante ou non valide
+apt_repo_epath=Chemin de distribution manquant
+
+yum_input=Forfait de YUM
+yum_install=Installation du ou des packages avec la commande $1 ..
+yum_ok=.. installation terminée.
+yum_failed=.. l'installation a échoué!
+yum_find=Parcourir YUM ..
+yum_package=Paquet
+yum_version=Version
+yum_arch=Architecture
+yum_form=Mettre à niveau tous les packages
+yum_apply=Mettre à niveau tous les packages d'installation à partir de YUM
+yum_upgrade=Mettre à niveau tous les packages
+yum_upgradedesc=Mise à niveau de tous les packages avec la commande $1 ..
+yum_upgradefailed=.. la mise à niveau a échoué!
+yum_upgradeok=.. mise à niveau terminée.
+yum_title=Parcourir YUM
+yum_name=MIAM
+yum_enable=Activer le référentiel:
+yum_none=&lt;Aucun&gt;
+yum_repo_id=ID du référentiel
+yum_repo_name=Description du référentiel
+yum_repo_url=URL de base du package
+yum_repo_gpg=Fichier de certificat GPG
+yum_repo_none=Pas signé
+yum_repo_eid=ID de référentiel manquant ou non valide - seules les lettres et les chiffres sont autorisés
+yum_repo_eidclash=L'ID du référentiel est déjà utilisé
+yum_repo_ename=Nom de référentiel manquant
+yum_repo_eurl=URL de référentiel manquante ou non valide
+yum_repo_egpg=Fichier GPG cert manquant ou inexistant
+yum_repo_efile=Le fichier de référentiel existe déjà!
+
+urpmi_name=URPMI
+urpmi_input=Forfait de URPMI
+urpmi_find=Parcourir URPMI ..
+urpmi_form=Mettre à niveau tous les packages
+urpmi_update=Mettre à jour les packages URPMI disponibles
+urpmi_upgrade=Mettre à niveau les packages URPMI installés vers les dernières versions
+urpmi_title_update=Mise à jour des packages disponibles
+urpmi_title_upgrade=Mise à niveau des packages installés
+urpmi_updatedesc=Exécution de la commande $1 ..
+uprmi_upgradefailed=.. échoué!
+urpmi_upgradeok=.. Achevée.
+urpmi_install=Installation du ou des packages avec la commande $1 ..
+urpmi_ok=.. installation terminée.
+urpmi_failed=.. l'installation a échoué!
+
+aix_unknown=Inconnue
+aix_device=Périphérique d'entrée / répertoire pour le logiciel
+aix_software=LOGICIEL à installer
+aix_preview=APERÇU seulement? (l'opération d'installation ne se produira PAS)
+aix_commit=COMMITER les mises à jour logicielles?
+aix_save=ENREGISTRER les fichiers remplacés?
+aix_auto=Installer AUTOMATIQUEMENT le logiciel requis?
+aix_extend=ÉTENDRE les systèmes de fichiers si l'espace est nécessaire?
+aix_overwrite=ÉCRASER des versions identiques ou plus récentes?
+aix_verify=VÉRIFIEZ l'installation et vérifiez la taille des fichiers?
+aix_include=Inclure les jeux de fichiers LANGUAGE correspondants?
+aix_detail=Sortie DÉTAILLÉE?
+aix_process=Traiter plusieurs volumes?
+aix_accept=ACCEPTER de nouveaux accords de licence?
+aix_license=Aperçu des nouveaux accords de LICENCE?
+aix_clean=Échec de l'installation de nettoyage?
+aix_manager=Gestionnaire de packages AIX
+
+emerge_input=Depuis le référentiel Portage
+emerge_find=Chercher ..
+emerge_install=Installation du package avec la commande $1 ..
+emerge_failed=.. l'installation a échoué!
+emerge_ok=.. installation terminée.
+emerge_search=Rechercher un package:
+emerge_pack=Paquet
+emerge_class=Classe
+emerge_none=Aucun forfait ne correspond à votre recherche.
+emerge_noreplace=Remplacer les packages existants?
+emerge_onlydeps=Installer uniquement les dépendances?
+emerge_title=Rechercher Portage
+emerge_name=Portage
+
+cygwin_fmissing=Le fichier est manquant
+cygwin_lmissing=Le fichier vers lequel le lien pointe est manquant
+cygwin_estat=Échec de la création du fichier de statistiques: $1 
+cygwin_elread=Impossible de lire le lien symbolique: $1 
+cygwin_elstat=Impossible de créer un lien symbolique: $1 
+cygwin_badpostscript=Attention: ce script ne semble pas avoir été exécuté
+cygwin_pkgexists=Le package $1 existe déjà.
+cygwin_warnuse=Avertissement: Ce n'est pas une interface officielle pour gérer le logiciel Cygwin. À utiliser à vos risques et périls.
+cygwin_edb=Base de données des packages Cygwin manquante $1 
+
+deletes_err=Impossible de supprimer les packages
+deletes_desc=Désinstallation des packages $1 ..
+deletes_failed1=Échec de la désinstallation de $1 : $2 
+deletes_success1=Désinstallation réussie de $1 
+deletes_failed2=La désinstallation a échoué : $1 
+deletes_success2=.. désinstallation terminée.
+deletes_rusure=Voulez-vous vraiment désinstaller les packages $1 ?
+deletes_ok=Supprimez-les tous
+
+csw_input=Package de CSW
+csw_install=Installation du ou des packages avec la commande $1 ..
+csw_ok=.. installation terminée.
+csw_failed=.. l'installation a échoué!
+csw_retry=.. réessayer avec de nouvelles dépendances.
+csw_find=Parcourir CSW ..
+csw_package=Paquet
+csw_title=Parcourir CSW
+csw_name=CSW
+csw_form=Forfaits de mise à niveau
+csw_upgrade=Mettre à niveau tous les packages installés
+csw_updatedesc=Mise à niveau de tous les packages installés avec la commande $1 ..
+
+missing_msg=Le package $1 peut être installé automatiquement par Webmin à l'aide de $2.
+missing_now=Installer maintenant
+
+find_title=Rechercher un package
+find_search=Trouvez les packages correspondants:
+find_none=Aucun package correspondant à votre recherche n'a été trouvé.
+
+msi_users=Rendre la nouvelle application disponible pour
+msi_users0=Personne
+msi_users1=Utilisateur actuel
+msi_users2=Tous les utilisateurs
+msi_missing=N'existe pas
+msi_size=Mauvaise taille
+
+hpux_create_target_path=Créer un chemin cible?
+hpux_mount_all_filesystems=Monter tous les systèmes de fichiers?
+hpux_reinstall=Réinstaller?
+hpux_reinstall_files=Réinstaller des fichiers?
+hpux_reinstall_files_use_cksum=Réinstaller les fichiers à l'aide de la somme de contrôle?
+hpux_allow_multiple_versions=Autoriser plusieurs versions?
+hpux_defer_configure=Différer la configuration?
+hpux_autorecover_product=Produit de récupération automatique?
+hpux_allow_downdate=Autoriser la mise à jour?
+hpux_allow_incompatible=Autoriser incompatible?
+hpux_autoselect_dependencies=Dépendances de sélection automatique?
+hpux_enforce_dependencies=Appliquer les dépendances?
+hpux_enforce_scripts=Appliquer des scripts?
+hpux_enforce_dsa=Appliquer l'analyse de l'espace disque?
+hpux_root=Répertoire racine
+
+ports_install=Installation des ports FreeBSD $1 ..
+ports_failed=.. certains ports ont échoué
+ports_ok=.. installation terminée
+ports_input=Paquet depuis les ports
+ports_find=Ports de recherche
+ports_name=Ports FreeBSD
+ports_form=Mettre à jour la base de données des ports
+ports_apply=Télécharger le dernier instantané
+ports_upgrade=Téléchargement de l'instantané des ports
+ports_running=Exécution de la commande $1 ..
+
+pkg_install=Installation des packages FreeBSD $1 ..
+pkg_failed=.. certains packages ont échoué
+pkg_ok=.. installation terminée
+pkg_find=Rechercher pkgng
+pkg_input=Paquet de pkgng
+
+pkgsrc_install=Installation des packages pkgsrc $1 ..
+pkgsrc_failed=.. certains packages ont échoué
+pkgsrc_ok=.. installation terminée
+pkgsrc_find=Rechercher pkgng
+pkgsrc_input=Paquet de pkgsrc
+
+log_IPKG_update=Base de données IPKG mise à jour
+log_IPKG_upgrade=Packages IPKG installés mis à niveau
+
+IPKG_name=IPKG
+IPKG_input=Paquet d'IPKG
+IPKG_find=Parcourir IPKG ..
+IPKG_form=Gérer les packages IPKG
+IPKG_update=Mettre à jour la base de données des packages IPKG
+IPKG_upgrade=Mettre à niveau les packages IPKG installés
+IPKG_title_update=Mise à jour de la base de données IPKG
+IPKG_title_upgrade=Mise à niveau des packages installés
+IPKG_updatedesc=Exécution de la commande $1 ..
+IPKG_upgradefailed=.. échoué!
+IPKG_upgradeok=.. Achevée.
+IPKG_install=Installation du ou des packages avec la commande $1 ..
+IPKG_ok=.. installation terminée.
+IPKG_failed=.. l'installation a échoué!
+IPKG_index_tree=Gérer les packages IPKG
+IPKG_install_package=Installer
+IPKG_install_packagedesc=Installez ce package sur votre système
+IPKG_noupgrade=Rien à mettre à niveau
+IPKG-edit_title=Gérer le package IPKG
+IPKG_update_avail=Mise à jour disponible:
+IPKG_not_installed=Le package n'est pas installé

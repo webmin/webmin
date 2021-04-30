@@ -13,7 +13,6 @@ index_chain=Chain $1
 index_action=Action
 index_desc=Condition
 index_comm=Comment
-index_no_comment=
 index_move=Move
 index_none=There are no rules defined for this chain.
 index_policy=Set Default Action To:
@@ -125,12 +124,12 @@ desc_conds=If $1
 desc_and=and
 desc_always=Always
 
-redhat_escript=The Redhat IPtables startup script $1 was not found on your system.
 redhat_eoutput=An error occured getting IPtables status from the command $1. This probably indicates that your system has been configured to use IPchains instead of IPtables.
 
 gentoo_escript=The Gentoo IPtables startup script $1 was not found on your system.
 
 eiptables=Unknown IPtables save file line : $1
+eip6tables=Unknown ip6tables save file line : $1
 
 edit_title1=Add Rule
 edit_title2=Edit Rule
@@ -345,5 +344,3 @@ rename_header=Chain rename options
 rename_adjust=Modify other rules that jump to this chain?
 rename_none=None
 rename_ecannot=You are not allowed to rename chains
-__norefs=1
-eip6tables=Unknown ip6tables save file line : $1

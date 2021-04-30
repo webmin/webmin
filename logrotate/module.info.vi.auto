@@ -1,0 +1,3 @@
+desc_vi=Nhật ký xoay tệp
+longdesc_vi=Thiết lập xoay tự động các tệp nhật ký Apache, Squid, Syslog và các tệp nhật ký khác.
+name_vi=Logrotate

@@ -1,0 +1,405 @@
+index_title=QMail Mail Server
+index_edir=QMail-basismappet $1 findes ikke. Måske er QMail ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+index_edir2=Kataloget $1 ser ikke ud til at være QMail-basismappen. Måske er QMail ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+index_return=QMail-konfiguration
+index_stop=Stop QMail-processer
+index_stopmsg=Klik på denne knap for at stoppe baggrunden af QMail-processer, der er ansvarlige for levering af e-mail i kø. Uden disse processer vil der ikke blive sendt e-mails fra eller leveret til dit system korrekt.
+index_start=Start QMail-processer
+index_startmsg=Klik på denne knap for at starte baggrunden QMail-processer, der er ansvarlige for levering af e-mail i kø. Uden disse processer vil der ikke blive sendt e-mails fra eller leveret til dit system korrekt.
+
+opts_title=QMail-indstillinger
+opts_me=Lokalt værtsnavn
+opts_helo=Værtsnavn til SMTP HELO
+opts_toconnect=SMTP-forbindelsestimeout
+opts_secs=sekunder
+opts_toremote=SMTP udgående svar timeout
+opts_bytes=Maksimal meddelelsesstørrelse
+opts_unlimited=Ubegrænset
+opts_timeout=SMTP indgående datatimeout
+opts_localip=Værtsnavn til e-mail til lokal IP-adresse
+opts_greet=SMTP hilsen meddelelse
+opts_err=Kunne ikke gemme QMail-indstillinger
+opts_eme=Ugyldigt lokalt værtsnavn
+opts_etoconnect=Ugyldig timeout for SMTP-forbindelse
+opts_etoremote=Ugyldig SMTP-udgående timeout
+opts_ebytes=Ugyldig maksimal meddelelsesstørrelse
+opts_etimeout=Ugyldig timeout for SMTP-indgående data
+opts_elocalip=Ugyldig lokal IP-adresse-værtsnavn
+
+aliases_title=Mail aliaser
+aliases_addr=Adresse
+aliases_to=Alias til ..
+aliases_type1=Adresse 1
+aliases_type2=Mailkatalog $1 
+aliases_type3=E-mail-fil $1 
+aliases_type4=Program $1 
+aliases_type5=Send fil $1 automatisk
+aliases_type6=Anvend filterfil $1 
+aliases_none=Ingen
+aliases_return=alias liste
+aliases_toomany=Der er for mange mailaliaser på dit system til at blive vist på denne side.
+aliases_go=Find aliaser, der matcher:
+aliases_delete=Slet valgte aliaser
+
+aform_type0=Ingen
+aform_type1=Email adresse
+aform_type2=Mailkatalog
+aform_type3=E-mail-fil
+aform_type4=Feed til program
+aform_type5=Send automatisk fra fil
+aform_type6=Anvend filterfil
+aform_edit=Rediger alias
+aform_create=Opret alias
+aform_name=Adresse
+aform_val=Alias til
+aform_afile=Redigere ..
+aform_novirt=&lt;Alle domæner&gt;
+aform_return=alias
+
+asave_err=Kunne ikke gemme alias
+asave_eaddr='$1' er ikke en gyldig adresse
+asave_ealready=Et alias til '$1' findes allerede
+asave_etype1='$1' er ikke en gyldig e-mail-adresse
+asave_etype2='$1' er ikke et gyldigt postkatalog
+asave_etype3='$1' er ikke et gyldigt e-mail-filnavn
+asave_etype4='$1' er ikke et gyldigt program eller findes ikke
+asave_etype5=Filen '$1' er automatisk gyldig
+asave_etype4none=Intet program givet
+asave_etype6=Filterfil '$1' er ikke gyldig
+
+adelete_err=Kunne ikke slette aliaser
+adelete_enone=Ingen valgt
+
+locals_title=Lokale domæner
+locals_domains=Lokale domæner til denne server
+locals_desc=Qmail accepterer for levering til lokale brugere e-mail til domæner og værtsnavne, der er anført i tekstfeltet til venstre. Hvis du vil have din mailserver til at håndtere flere e-mail-domæner, skal de alle være anført på denne formular.
+locals_only=Kun lokalt værtsnavn $1 
+locals_sel=Domæner anført nedenfor ..
+
+rcpts_title=Accepterede domæner
+rcpts_domains=Accepterede lokale og relæ-domæner
+rcpts_all=Ethvert domæne
+rcpts_sel=Domæner anført nedenfor ..
+rcpts_desc=Qmail accepterer kun videresendelse eller lokal levering af mail til domæner og værtsnavne, der er anført i tekstfeltet til venstre. Du kan også indtaste wildcards, der matcher alle værter i et domæne som <tt>.foo.com</tt>. Hvis du vil have din mailserver til at videresende e-mail til klienter, skal du acceptere e-mail fra ethvert domæne.
+rcpts_domains2=Yderligere lokale og relæ-domæner
+rcpts_desc2=Hvis du har et stort antal accepterede domæner, skal mindre almindeligt anvendte domæner indtastes i dette tekstfelt. Generelt skal dine første 50 tilladte domæner indtastes i det øverste tekstfelt, og resten til dette.
+
+bads_title=Afviste adresser
+bads_addresses=Afvist e-mail-adresser
+bads_desc=QMail afviser e-mail til levering eller videresendelse fra en af de adresser, der er anført i tekstfeltet til venstre, som skal indtastes som <tt>brugernavn @ domænenavn</tt>. Hvis du vil afvise e-mail fra et helt domæne, skal det indtastes som <tt>@domænenavn</tt>.
+
+routes_title=Domænestyring
+routes_toomany=Der er for mange domæneruter på dit system til at blive vist på denne side.
+routes_go=Find domæneruter, der matcher:
+routes_from=Mail til domæne
+routes_to=Send via server
+routes_direct=Lever direkte
+routes_defroute=Lever al anden udgående mail via:
+routes_return=domæneruter
+routes_delete=Slet valgte domæneruter
+
+rform_edit=Rediger domænerute
+rform_create=Opret domænerute
+rform_from=Mail til vært eller domæne
+rform_to=Send via SMTP-server
+rform_port=SMTP-port
+
+rsave_err=Kunne ikke gemme domænerute
+rsave_efrom='$1' er ikke et gyldigt domænenavn
+rsave_eto='$1' er ikke en gyldig SMTP-server
+rsave_eport='$1' er ikke et gyldigt portnummer
+
+rdelete_err=Kunne ikke slette domæneruter
+
+percents_title=% Adresse domæner
+percents_domains=Domæner, der understøtter % adresser
+percents_desc=QMail accepterer e-mail med adresser i formatet <tt>user%firstdomain@seconddomain</tt> hvis <tt>seconddomain</tt> er anført i tekstfeltet til venstre. Meddelelser i dette format videresendes derefter til <tt>user@firstdomain</tt> af denne postserver.
+
+virts_title=Virtuel kortlægning
+virts_toomany=Der er for mange virtuelle kortlægninger på dit system til at blive vist på denne side.
+virts_go=Find virtuelle kortlægninger, der matcher:
+virts_from=Mail til
+virts_prepend=Forbered præfiks
+virts_all=Alle adresser
+virts_none=Ikke virtuel
+virts_desc=Virtuelle kortlægninger bruges af QMail til at håndtere e-mail til forskellige domæner på din server ved at forberede tekst til brugerdelen af e-mail-adressen, inden videre behandling. Du kan bruge dem til at konfigurere virtuelle maildomæner ved at oprette en ny virtuel kortlægning til et domæne og derefter bruge <a href='$1'>Mailaliaser</a> til at oprette aliasser inden for det domæne.
+virts_return=virtuelle kortlægninger
+virts_delete=Slet valgte virtuelle kortlægninger
+
+vform_edit=Rediger virtuel kortlægning
+vform_create=Opret virtuel kortlægning
+vform_from=Mail til adresse
+vform_all=Enhver adresse, der ikke matcher en anden virtuel kortlægning
+vform_domain=Adresser med domæne
+vform_user=Adresse
+vform_to=Forbered dig på brugernavnet
+vform_none=Ikke noget
+vform_prepend=Specificeret præfiks
+vform_auto=Automatisk valgt præfiks
+
+vsave_err=Kunne ikke gemme virtuel kortlægning
+vsave_edomain='$1' er ikke et gyldigt e-mail-domæne
+vsave_euser='$1' er ikke et gyldigt e-mail-brugernavn
+vsave_eprepend='$1' er ikke et gyldigt kortlægningspræfiks
+vsave_eboth=Du kan ikke vælge både 'Enhver adresse der ikke matcher en anden virtuel kortlægning' og 'Intet'
+
+vdelete_err=Kunne ikke slette virtuelle kortlægninger
+
+stop_err=qmail-send-processen kører ikke længere
+
+log_stop=Stopede QMail-processer
+log_start=Startede QMail-processer
+log_opts=Ændrede QMail-indstillinger
+log_alias_create=Oprettet alias $1 
+log_alias_delete=Slet alias $1 
+log_alias_modify=Ændret alias $1 
+log_delete_aliases=$1 aliaser er slettet
+log_virt_create=Oprettet virtuel kortlægning $1 
+log_virt_delete=Slettet virtuel kortlægning $1 
+log_virt_modify=Ændret virtuel kortlægning $1 
+log_delete_virts=Slet $1 virtuelle kortlægninger
+log_virtall_create=Oprettet catchall virtuel kortlægning
+log_virtall_delete=Slettet catchall virtuel kortlægning
+log_virtall_modify=Ændret catchall virtual mapping
+log_locals=Ændrede lokale domæner
+log_rcpts=Ændrede accepterede domæner
+log_bads=Ændrede afviste adresser
+log_percents=Ændrede % adressedomæner
+log_route_create=Oprettet rute for $1 
+log_route_delete=Slettet rute for $1 
+log_route_modifed=Ændret rute for $1 
+log_delete_routes=Slet $1 ruter
+log_defroute=Ændret standardrute
+log_assign_create=Oprettet mailbruger $1 
+log_assign_delete=Slet mailbruger $1 
+log_assign_modifed=Ændret mailbruger $1 
+log_delete_assigns=$1 mail-brugere er slettet
+log_delmail=Slet $1 meddelelser fra $2 
+log_movemail=$1 meddelelser blev flyttet fra $2 til $3 
+log_send=Sendt mail til $1 
+
+rfile_title=Rediger fil automatisk
+rfile_desc=Brug tekstområdet nedenfor til at redigere autosvarmeddelelsen i $1. Meddelelsen kan indeholde makroerne $SUBJECT, $FROM, $TO, $DATE og $BODY, som udvides, når autoreply er aktiveret.
+rfile_desc2=Du kan også indstille mailoverskrifter, der tilføjer eller erstatter standardindstillingerne, der bruges i autoreplayet, ved at sætte linjer som: <br><tt> Fra: foo@bar.com </tt><br> <tt>Emne: På ferie</tt> <br> øverst i meddelelsen, adskilt fra kroppen med en enkelt tom linje.
+rfile_efile=Du har ikke tilladelse til at redigere $1.
+rfile_undo=Fortryd ændringer
+rfile_replies=Spor svar for at forhindre e-mail-løkker?
+rfile_none=Ingen
+rfile_file=Ja, ved hjælp af logfil
+rfile_period=Minimumsinterval mellem svar
+rfile_default=Standard (1 time)
+rfile_secs=sekunder
+rfile_ereplies=Manglende svarsporingslogfil
+rfile_eperiod=Manglende eller ugyldigt antal sekunder mellem svarene
+rfile_no_autoreply=Send ikke autoreplies til
+rfile_from=Fra: adresse til svar
+rfile_auto=Automatisk (baseret på modtagerens adresse)
+rfile_efrom=Mangler fra: adresse
+rfile_fromdesc=A Fra: adresse skal altid specificeres, hvor det er muligt, da den automatiske metode muligvis ikke er pålidelig.
+
+ffile_title=Rediger filterfil
+ffile_desc=Brug formularen herunder til at indstille filterregler i filen $1.
+ffile_efile=Du har ikke tilladelse til at redigere $1.
+ffile_line=Hvis $1 -feltet $2 $3, videresendes til $4 
+ffile_from=fra
+ffile_to=til
+ffile_subject=emne
+ffile_cc=CC
+ffile_body=legeme
+ffile_what0=stemmer ikke overens
+ffile_what1=Tændstikker
+ffile_other=Ellers videresendes til $1 
+ffile_err=Kunne ikke gemme filterfilen
+ffile_ematch=Manglende kamp
+ffile_eaction=Manglende viderestillingsadresse
+
+queue_title=Mailkø
+queue_count=$1 meddelelser
+queue_none=Der er i øjeblikket ingen e-mails i kø for levering
+queue_id=Mail-id
+queue_date=Sendt
+queue_from=Fra
+queue_to=Til
+queue_cc=cc
+queue_subject=Emne
+queue_return=mail kø
+queue_delete=Slet valgte meddelelser
+queue_all=Vælg alle
+queue_invert=Invertere valg
+queue_refresh=Opdater postkø
+queue_refreshdesc=Genindlæs denne side for at vise den aktuelle status for mailkøen.
+
+qview_title=Meddelelse i kø
+qview_desc=Fra fil $1 
+qview_headers=Mailoverskrifter
+qview_attach=Vedhæftede filer
+
+assigns_title=Mailbrugeropgaver
+assigns_return=mail brugeropgaver
+assigns_toomany=Der er for mange e-mail-brugere på dit system til at vises på denne side.
+assigns_go=Find e-mail-brugere, der matcher:
+assigns_address=Mail til adresse
+assigns_user=Unix bruger
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=Hjem bibliotek
+assigns_desc=Mailbrugeropgaver giver dig mulighed for at oprette postkasser til brugere, der ikke er defineret i Unix-brugerlisten. Hver opgave leverer mail til et valgt brugernavn eller brugernavn mønster, som om det blev leveret til en ægte Unix brugers postkasse.
+assigns_delete=Slet valgte mail-brugere
+
+sform_edit=Rediger mailbruger
+sform_create=Opret mailbruger
+sform_address=Adresse brugernavn
+sform_mode0=Det nøjagtige brugernavn
+sform_mode1=Brugernavne starter med
+sform_user=Unix bruger
+sform_uid=UID
+sform_gid=GID
+sform_home=Hjem bibliotek
+
+ssave_err=Kunne ikke gemme mailbrugeren
+ssave_eaddress=Manglende eller ugyldig adresse brugernavn
+ssave_euser=Manglende eller ugyldig Unix-bruger
+ssave_euid=Manglende eller ugyldig UID
+ssave_egid=Manglende eller ugyldig GID
+ssave_ehome=Manglende eller ugyldig hjemmekatalog
+
+sdelete_err=Kunne ikke slette e-mail-brugere
+
+delete_egone=Besked i kø findes ikke længere
+delete_ebogus=Ugyldigt kønavn
+
+boxes_title=Brugerpostkasser
+boxes_user=Bruger
+boxes_size=Postkassestørrelse
+boxes_none=Ingen mail
+boxes_return=postkasser
+boxes_sent=Sendt post
+boxes_ecannot=Du har ikke lov til at læse e-mail
+boxes_toomany=Der er for mange brugere på dit system til at liste alle deres postkasser.
+boxes_go=Se mail til bruger:
+
+mail_title=Bruger-e-mail
+mail_from=Fra
+mail_date=Dato
+mail_subject=Emne
+mail_to=Til
+mail_cc=cc
+mail_bcc=Bcc
+mail_pri=Prioritet
+mail_highest=Højeste
+mail_high=Høj
+mail_normal=Normal
+mail_low=Lav
+mail_lowest=Laveste
+mail_for=I $1 
+mail_for2=For bruger $1 
+mail_sent=I sendt mailliste
+mail_size=Størrelse
+mail_delete=Slet
+mail_compose=Compose
+mail_return=brugerpostkasse
+mail_pos=Meddelelser $1 til $2 af $3 
+mail_none=Denne postkasse har ingen beskeder
+mail_ecannot=Du har ikke tilladelse til at læse denne brugers e-mail
+mail_all=Vælg alle
+mail_invert=Invertere valg
+mail_search=Find beskeder hvor
+mail_body=Legeme
+mail_match=Tændstikker
+mail_ok=Søg
+mail_nonefrom=Ingen
+mail_mark=Marker som:
+mail_mark0=Ulæst
+mail_mark1=Læs
+mail_mark2=Særlig
+mail_forward=Frem
+mail_rfc=Fra linje
+mail_move=Flytte til:
+mail_eexists=Beskeden findes ikke længere!
+
+view_title=Læs e-mail
+view_desc=Meddelelse $1 i $2 
+view_desc2=Meddelelse $1 for bruger $2 
+view_desc3=Meddelelse $1 
+view_sent=Meddelelse $1 i listen over sendte mails
+view_qdesc=Besked i kø $1 
+view_headers=Mailoverskrifter
+view_allheaders=Se alle overskrifter
+view_noheaders=Se grundlæggende overskrifter
+view_attach=Vedhæftede filer
+view_reply=Svar
+view_reply2=Svar alle
+view_enew=Rediger som nyt
+view_forward=Frem
+view_delete=Slet
+view_strip=Fjern vedhæftede filer
+view_ecannot=Du har ikke tilladelse til at læse denne brugers e-mail
+view_mark=Marker besked som:
+view_mark0=Ulæst
+view_mark1=Læs
+view_mark2=Særlig
+view_return=original e-mail
+view_sub=Vedhæftet e-mail
+
+compose_title=Skriv e-mail
+reply_title=Svar på e-mail
+forward_title=Videresend e-mail
+enew_title=Rediger e-mail
+reply_headers=Mailoverskrifter
+reply_attach=Videresendte vedhæftede filer
+reply_mailforward=Videresendte meddelelser
+reply_attach2=Klient- og serversiden vedhæftede filer
+reply_send=Send mail
+reply_ecannot=Du har ikke tilladelse til at sende mail som denne bruger
+
+send_err=Kunne ikke sende mail
+send_eto=Mangler til adresse
+send_efrom=Mangler fra adresse
+send_title=Sendt mail
+send_ok=E-mail sendt med succes til $1 
+send_ecannot=Du har ikke tilladelse til at sende mail som denne bruger
+send_esmtp=SMTP-kommando $1 mislykkedes : $2 
+send_efile=Den vedhæftede fil $1 findes ikke
+send_eattach=Vedhæftede filer kan ikke være mere end $1 kB i størrelse.
+send_eperms=Bruger $1 kan ikke læse $2 
+send_eperms2=Du har ikke tilladelse til at sende fil $1 
+send_epath=Sendmail-eksekverbar $1 findes ikke.
+
+delete_title=Slet mail
+delete_rusure=Er du sikker på, at du vil slette de $1 valgte meddelelser fra $2 ? Det kan tage lidt tid for en stor postfil. Indtil sletningen er afsluttet, skal der ikke udføres nogen anden handling.
+delete_rusure2=Er du sikker på, at du vil slette denne meddelelse fra $1 ? Det kan tage lidt tid for en stor postfil. Indtil sletningen er afsluttet, skal der ikke udføres nogen anden handling.
+delete_ok=Slet nu
+delete_ecannot=Du har nu lov til at slette e-mail fra denne bruger
+delete_enone=Ingen mail valgt at slette
+delete_emnone=Ingen mail valgt til at markere
+delete_nobutton=Der blev ikke klikket på nogen knap
+
+search_title=Søgeresultater
+search_ecannot=Du har ikke tilladelse til at søge på denne brugers e-mail
+search_ematch=Du skal indtaste tekst for at matche mod.
+search_efield=Du skal vælge en søgningstype.
+search_none=Ingen meddelelser fundet.
+search_results2=$1 mail-meddelelser, der matcher $2 ..
+search_results3=$1 e-mail-meddelelser stemmer ikke overens
+
+match_from=Fra: kampe
+match_subject=Emne: kampe
+match_to=Til: kampe
+match_cc=Cc: kampe
+match_date=Dato: kampe
+match_body=Body matches
+match_size=Størrelsen er større end
+match_headers=Headers match
+match_=-----------------
+match_!from=Fra: stemmer ikke overens
+match_!subject=Emne: stemmer ikke overens
+match_!to=Til: stemmer ikke overens
+match_!cc=Cc: stemmer ikke overens
+match_!date=Dato: stemmer ikke overens
+match_!body=Krop stemmer ikke overens
+match_!size=Størrelsen er mindre end
+match_!headers=Overskrifter matcher ikke
+
+delq_titles=Sletning af meddelelser
+delq_rusure=Er du sikker på, at du vil slette de $1 valgte købeskeder?
+delq_confirm=Slet meddelelser

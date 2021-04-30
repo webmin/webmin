@@ -1,8 +1,8 @@
-date_subs=Fes la substitució <tt>strftime</tt> de les destinacions de la còpia,1,1-Sí,0-No
-webmin_subs=Fes la substitució de les variables Webmin a les destinacions de còpia,1,1-Sí,0-No
-smtp_server=Envia el correu via servidor SMTP,3,Mòdul de Lectura del Correu d'Usuaris
-run_mode=Executa les còpies,1,0-En primer pla,1-En segon pla
-nonewtape=Acció quan la cinta queda plena,1,1-Falla immediatament,0-Demana una altra cinta
-always_tar=Utilitza sempre el format TAR per a les còpies,1,1-Sí,0-No
-error_email=Envia correu de la còpia,1,0-Sempre,1-Només si es produeix un error
-simple_sched=Format del selector de planificació,1,1-Simple,0-Complex
+date_subs=Fes la substituciÃ³ <tt>strftime</tt> de les destinacions de la cÃ²pia,1,1-SÃ­,0-No
+webmin_subs=Fes la substituciÃ³ de les variables Webmin a les destinacions de cÃ²pia,1,1-SÃ­,0-No
+smtp_server=Envia el correu via servidor SMTP,3,MÃ²dul de Lectura del Correu d'Usuaris
+run_mode=Executa les cÃ²pies,1,0-En primer pla,1-En segon pla
+nonewtape=AcciÃ³ quan la cinta queda plena,1,1-Falla immediatament,0-Demana una altra cinta
+always_tar=Utilitza sempre el format TAR per a les cÃ²pies,1,1-SÃ­,0-No
+error_email=Envia correu de la cÃ²pia,1,0-Sempre,1-NomÃ©s si es produeix un error
+simple_sched=Format del selector de planificaciÃ³,1,1-Simple,0-Complex

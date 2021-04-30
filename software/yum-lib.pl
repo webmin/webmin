@@ -25,6 +25,7 @@ sub update_system_install
 {
 local $update = $_[0] || $in{'update'};
 local $in = $_[1];
+$update =~ s/\.\*/\*/g;
 local $enable;
 if ($in->{'enablerepo'}) {
 	$enable = "enablerepo=".quotemeta($in->{'enablerepo'});
@@ -54,12 +55,20 @@ else {
 	$cmd = "install";
 	}
 
-print "<b>",&text('yum_install', "<tt>$yum_command $enable -y $cmd $update</tt>"),"</b><p>\n";
+# Work out the command to run, which may enable some repos
+my $fullcmd = "$yum_command $enable -y $cmd $update";
+foreach my $u (@updates) {
+	my $repo = &update_system_repo($u);
+	if ($repo) {
+		$fullcmd = "$yum_command -y $cmd $repo ; $fullcmd";
+		}
+	}
+
+print "<b>",&text('yum_install', "<tt>".&html_escape($fullcmd)."</tt>"),"</b><p>\n";
 print "<pre>";
-&additional_log('exec', undef, "$yum_command $enable -y install $update");
+&additional_log('exec', undef, $fullcmd);
 $SIG{'TERM'} = 'ignore';	# Installing webmin itself may kill this script
-local $qm = join(" ", map { quotemeta($_) } @names);
-&open_execute_command(CMD, "$yum_command $enable -y $cmd $qm </dev/null", 2);
+&open_execute_command(CMD, "$fullcmd </dev/null", 2);
 while(<CMD>) {
 	s/\r|\n//g;
 	if (/^\[(update|install|deps):\s+(\S+)\s+/) {
@@ -217,6 +226,15 @@ return $name eq "apache" ? "httpd mod_.*" :
        			  $name;
 }
 
+# update_system_repo(package)
+# Returns the extra repo package that needs to be installed first before
+# installing some package, if needed
+sub update_system_repo
+{
+local ($name) = @_;
+return $name eq "certbot" ? "epel-release" : undef;
+}
+
 # update_system_available()
 # Returns a list of package names and versions that are available from YUM
 sub update_system_available
@@ -264,6 +282,7 @@ while(<PKG>) {
 		}
 	}
 close(PKG);
+@rv = grep { $_->{'arch'} ne 'src' } @rv;
 &set_yum_security_field(\%done);
 return @rv;
 }
@@ -306,10 +325,11 @@ sub update_system_updates
 {
 local @rv;
 local %done;
-&open_execute_command(PKG, "$yum_command check-update 2>/dev/null", 1, 1);
+&open_execute_command(PKG, "$yum_command check-update 2>/dev/null | tr '\n' '#' | sed -e 's/# / /g' | tr '#' '\n'", 1, 1);
+
 while(<PKG>) {
         s/\r|\n//g;
-	if (/^(\S+)\.([^\.]+)\s+(\S+)\s+(\S+)/) {
+	if (/^(\S+)\.([^\.]+)\s+(\S+)\s+(\S+)/ && $2 ne 'src') {
 		local $pkg = { 'name' => $1,
 			       'arch' => $2,
 			       'version' => $3,
@@ -332,7 +352,7 @@ sub get_yum_config
 {
 local @rv;
 local $sect;
-open(CONF, $yum_config);
+open(CONF, "<".$yum_config);
 while(<CONF>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//;

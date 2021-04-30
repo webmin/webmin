@@ -1,0 +1,8 @@
+edit_minsize=회전 할 최소 크기
+edit_nominsize=항상
+edit_dateext=회전 된 파일에 날짜 확장명 사용
+
+save_eminsize=최소 크기가 없거나 유효하지 않습니다
+save_enofiles=회전 할 파일이 입력되지 않았습니다
+
+sched_when=실행 시간

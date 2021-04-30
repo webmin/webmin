@@ -1,0 +1,7 @@
+search_doxfer=Documentation en ligne Webmin
+
+man_epath=La page de manuel ne peut pas être un chemin!
+
+acl_allow=Peut modifier les types de recherche autorisés?
+
+check_ecannot=Vous n'êtes pas autorisé à modifier les types de recherche autorisés

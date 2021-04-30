@@ -1,0 +1,385 @@
+main_homepage=Sākumlapa
+main_feedback=Atsauksmes ..
+main_switch=Mainīt lietotāju ..
+main_logout=Izlogoties
+main_version=$1 versija $2 ($3)
+main_title=Webmin $1 vietnē $2 ($3)
+main_title2=Webmin
+main_title3=Webmin $1 ($2)
+main_none=Jums nav piekļuves nevienam Webmin modulim.
+main_skill=Zināšanu līmenis
+main_readonly=(Tikai lasīšanas režīms)
+main_return=Atgriezieties sadaļā $1
+main_unused=Neizmantoti moduļi
+main_refreshmods=Atsvaidziniet moduļus
+
+link_essl=Net::SSLeay Perl modulis, kas nepieciešams HTTPS savienojumu izveidošanai, jūsu sistēmā nav instalēts.
+
+category_servers=Serveri
+category_hardware=Aparatūra
+category_system=Sistēma
+category_webmin=Webmin
+category_net=Tīklošana
+category_syslet=Sinteles
+category_cluster=Klastera
+category_info=Informācija
+category_=Rīki
+
+longcategory_servers=Tīkla, e-pasta, FTP un citu serveru konfigurācijas moduļi
+longcategory_hardware=Moduļi printera, diska un citas aparatūras konfigurēšanai
+longcategory_system=Moduļi lietotājiem, failu sistēmas, Cron darbi un citi sistēmas iestatījumi
+longcategory_webmin=Paši Webmin konfigurēšanas moduļi
+longcategory_net=Tīkla un tīkla pakalpojumu konfigurēšanas moduļi
+longcategory_cluster=Moduļi, kas var pārvaldīt vairākus serverus no vienas saskarnes
+longcategory_info=Moduļi, kas parāda informāciju par jūsu sistēmu
+longcategory_=Moduļi, kas veic citus dažādus uzdevumus
+
+header_webmin=Webmin indekss
+header_module=Moduļu indekss
+header_help=Palīdzība ..
+header_config=Moduļa konfigurācija
+header_servers=Webmin serveri
+
+index=indekss
+yes=Jā
+no=Nē
+save=Saglabāt
+create=Izveidot
+delete=Dzēst
+find=Atrodi
+error=Kļūda
+error_previous=iepriekšējā lapa
+error_stack=Zvana steku izsekošana
+error_file=Fails
+error_line=Līnija
+error_sub=Funkcija
+error_stackline=Failā $1 rindā $2 izsaucot $3
+efilewrite=Neizdevās uzrakstīt $1 : $2 
+efileclose=Slēdzot neizdevās uzrakstīt $1 : $2 
+efileopen=Neizdevās atvērt $1 rakstīšanai : $2
+default=Noklusējums
+modify=Modificēt
+reset=Atiestatīt
+ok=labi
+cancel=Atcelt
+fail=Neizdevās
+helpsearch=Meklēt dokumentos ..
+switch_remote_euser=Unix lietotājs $1 neeksistē.
+programname=Webmin
+euserdbacl=Neizdevās ielādēt lietotāja ACL : $1
+euserdbacl2=Neizdevās atjaunināt lietotāja ACL : $1
+egroupdbacl=Neizdevās izgūt grupas ACL : $1
+egroupdbacl2=Neizdevās atjaunināt grupas ACL : $1
+
+chooser_title1=Izvēlēties failu ..
+chooser_title2=Izvēlieties direktoriju ..
+chooser_dir=$1 direktorijs
+chooser_ok=Labi
+chooser_date=Izvēlieties datumu
+chooser_eopen=Sarakstīšana neizdevās : $1
+
+users_title1=Atlasiet Lietotāji ..
+users_title2=Atlasiet Lietotājs ..
+users_sel=Atlasītie lietotāji
+users_all=Visi lietotāji
+users_ok=Labi
+users_cancel=Atcelt
+users_clear=Skaidrs
+
+groups_title1=Atlasiet grupas ..
+groups_title2=Atlasiet grupu ..
+groups_all=Visas grupas
+groups_sel=Atlasītās grupas
+groups_ok=Labi
+groups_cancel=Atcelt
+groups_clear=Skaidrs
+
+modules_title1=Atlasiet moduļus ..
+modules_title2=Atlasiet moduli ..
+modules_sel=Atlasītie moduļi
+modules_all=Visi moduļi
+modules_ok=Labi
+modules_cancel=Atcelt
+modules_clear=Skaidrs
+
+config_ecannot=Jums nav atļauts konfigurēt šo moduli
+config_title=Konfigurācija
+config_dir=Modulim $1
+config_header=Konfigurējamas opcijas $1
+config_none=Nav
+config_eaccess=Jums nav atļauts piekļūt šim modulim
+config_emodule=Moduļa nav
+config_err=Neizdevās saglabāt konfigurāciju
+config_nochange=Nemaini
+config_setto=Iestatīts uz
+config_ewebmin=14. parametra tips darbojas tikai Webmin
+
+help_err=Neizdevās parādīt palīdzību
+help_epath=Trūkst vai nav derīgs palīdzības ceļš
+help_efile=Neizdevās nolasīt palīdzības failu $1
+help_eheader=Trūkst sadaļas &lt;header&gt;
+help_einclude=Neizdevās iekļaut $1
+help_eif=$1 neizdevās : $2
+help_eexec=$1 neizdevās : $2
+
+referer_title=Drošības brīdinājums
+referer_warn=<b>Brīdinājums!</b> Webmin ir atklājis, ka programma $2 ir saistīta ar URL $1, kas, šķiet, atrodas ārpus Webmin serveris. Tas var būt mēģinājums pievilināt serveri bīstamas komandas izpildē.
+referer_warn_unknown=<b>Brīdinājums!</b> Webmin ir atklājis, ka programma $1 ir piesaistīta no nezināma URL, kas, šķiet, atrodas ārpus Webmin servera. Tas var būt mēģinājums pievilināt serveri bīstamas komandas izpildē.
+referer_fix1=If this is a legitimate link, you can allow links from this URL as follows :<ul><li>Login to Webmin normally.</li><li>Go to the <b>Webmin Configuration</b> module.</li><li>Click on the Trusted Referrers icon.</li><li>Enter the hostname $1 into the <b>Trusted websites</b> field, and click <b>Save</b></li>.</ul>
+referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.</li><li>Save the file.</li></ul>
+referer_fix3u=Pārliecinieties, vai jūsu pārlūkprogramma ir konfigurēta, lai nosūtītu atsauces informāciju, lai Webmin to varētu pārbaudīt.
+referer_fix2u=Alternately, you can configure Webmin to allow links from unknown referers by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Find the line <tt>referers_none=1</tt> and change it to <tt>referers_none=0</tt>.</li><li>Save the file.</li></ul><p></p>WARNING - this has the side effect of opening your system up to reflected XSS attacks and so is not recommended!
+
+session_header=Pieteikšanās Webmin
+session_mesg=Lai pieteiktos Webmin serverī vietnē $1, jums jāievada lietotājvārds un parole.
+session_mesg2=Lai pieteiktos, jums jāievada lietotājvārds un parole.
+session_user=Lietotājvārds
+session_pass=Parole
+session_twofactor=Divfaktoru marķieris
+session_login=Pieslēgties
+session_clear=Skaidrs
+session_failed=Pieslēgšanās neizdevās. Lūdzu mēģiniet vēlreiz.
+session_twofailed=Divu faktoru autentifikācija neizdevās : $1
+session_logout=Atteikšanās ir veiksmīga. Izmantojiet zemāk esošo formu, lai vēlreiz pieteiktos.
+session_timed_out=Sesijai beidzās laiks pēc $1 minūšu bezdarbības.
+session_save=Vai neatgriezeniski atcerieties pieteikšanos?
+
+pam_header=Pieteikšanās Webmin
+pam_mesg=Lai pieteiktos Webmin serverī vietnē $1, jums ir jāatbild uz zemāk redzamo jautājumu.
+pam_mesg2=Lai pieteiktos, jums ir jāatbild uz zemāk redzamo jautājumu.
+pam_login=Turpināt
+pam_restart=Restartēt
+
+acl_root=Sakņu direktorijs failu atlasītājam
+acl_otherdirs=Citi redzamie direktoriji failu atlasītājā
+acl_nodot=Vai paslēpt punktveida failus failu atlasītājā?
+acl_home=Lietotāja mājas katalogs
+acl_uedit=Lietotāji, kas redzami lietotāju atlasītājā
+acl_uedit_all=Visi lietotāji
+acl_uedit_none=Nav lietotāju
+acl_uedit_only=Tikai lietotāji
+acl_uedit_except=Visi, izņemot lietotājus
+acl_uedit_uid=Lietotāji ar UID diapazonā
+acl_uedit_group=Lietotāji ar grupu
+acl_gedit=Grupas ir redzamas grupas izvēlē
+acl_gedit_all=Visas grupas
+acl_gedit_none=Nav grupu
+acl_gedit_only=Tikai grupas
+acl_gedit_except=Visi, izņemot grupas
+acl_gedit_gid=Grupas ar GID diapazonā
+acl_feedback=Vai var nosūtīt atsauksmes pa e-pastu?
+acl_feedback2=Jā
+acl_feedback1=Jā, bet ne ar konfigurācijas failiem
+acl_feedback0=Nē
+acl_feedback3=Jā, ar konfigurācijas failiem
+acl_rpc=Vai var pieņemt RPC zvanus?
+acl_rpc2=Tikai <tt>saknei</tt> vai <tt>administratoram</tt>
+acl_rpc1=Jā
+acl_rpc0=Nē
+acl_readonly2=Lietotājs darbojas demonstrācijas režīmā?
+acl_readonlyyes=Jā (daži moduļi var nebūt pieejami)
+acl_negative=Vai piešķirt lietotājam jaunas moduļa atļaujas?
+acl_fileunix=Pārlūkojiet failus kā Unix lietotājs
+acl_sameunix=Tas pats, kas Webmin pieteikšanās
+acl_webminsearch=Rādīt Webmin meklēšanas lauku?
+
+month_1=Janvārī
+month_2=Februāris
+month_3=Martā
+month_4=Aprīlī
+month_5=Maijā
+month_6=jūnijs
+month_7=Jūlijs
+month_8=augusts
+month_9=Septembrī
+month_10=Oktobris
+month_11=Novembrī
+month_12=Decembrī
+
+day_0=Svētdien
+day_1=Pirmdien
+day_2=Otrdiena
+day_3=Trešdien
+day_4=Ceturtdiena
+day_5=Piektdiena
+day_6=Sestdien
+
+smonth_1=Jan
+smonth_2=Februāris
+smonth_3=Mar
+smonth_4=Aprīlis
+smonth_5=Maijā
+smonth_6=Jūnijs
+smonth_7=Jūl
+smonth_8=Aug
+smonth_9=Septembris
+smonth_10=Oktobris
+smonth_11=Novembrī
+smonth_12=Decembris
+
+sday_0=Su
+sday_1=Mo
+sday_2=Tu
+sday_3=Mēs
+sday_4=Th
+sday_5=Fr
+sday_6=Sa
+
+emodule=Piekļuve liegta: lietotājam $1 nav atļauts izmantot moduli $2
+emodulecheck=Modulis $1 jūsu sistēmā nav pieejams
+elock_tries2=Neizdevās bloķēt failu $1 pēc $2 minūtēm. Pēdējā kļūda bija : $3
+
+skill_high=Eksperts
+skill_medium=Starpposms
+skill_low=Iesācējs
+
+feedback_title=Webmin atsauksmes
+feedback_desc=Šī veidlapa ļauj jums ziņot par kļūdām WebMine izstrādātājiem par ieteikumiem, kas saistīti ar visām atrastām problēmām vai trūkstošām funkcijām. Noklikšķinot uz pogas Sūtīt, uz veidlapā ievadīto informāciju tiks nosūtīts e-pasts uz $1.
+feedback_desc2=Šīs atsauksmes tiks nosūtītas Webmin izstrādātājam, nevis jūsu sistēmas administratoram, ISP vai mitināšanas uzņēmumam. Lūdzu, rakstiet atsauksmes angļu valodā, pat ja jūs šobrīd darbināt Webmin citā valodā.
+feedback_header=Informācija par atsauksmēm
+feedback_name=Tavs vārds
+feedback_email=Tava epasta adrese
+feedback_module=Par moduli
+feedback_all=Visi moduļi
+feedback_text=Problēmas vai ieteikuma apraksts
+feedback_os=Vai e-pastā ir iekļauta operētājsistēmas informācija?
+feedback_osdesc=Ja šī opcija ir atlasīta, automātiskajā atgriezeniskās saites e-pastā tiks iekļauts jūsu operētājsistēmas nosaukums un versija.
+feedback_config=Vai e-pastā iekļaut moduļa konfigurāciju?
+feedback_configdesc=Ja tas ir atlasīts, e-pasta ziņojumā būs ietverta saistītā moduļa konfigurācija un visu konfigurācijas failu saturs, ko modulis izmanto. Piemēram, ja atsauksmes bija saistītas ar <i>Lietotāji un grupas</i> moduli, tiks nosūtīti <tt>/etc/passwd</tt> un <tt>/etc/shadow</tt> faili.
+feedback_attach=Papildu pievienotie faili
+feedback_send=Sūtīt atsauksmes
+feedback_mailserver=Sūtīt caur SMTP serveri
+feedback_mailserver_def=Vietējā sendmail programma
+feedback_err=Neizdevās nosūtīt atsauksmes
+feedback_emodule=Jūs izvēlējāties iekļaut moduļa konfigurāciju e-pastā, bet neizvēlējāties moduli.
+feedback_emodule2=Atlasītais modulis neeksistē
+feedback_econfig=Jums nav pilnīgas piekļuves izvēlētajam modulim.
+feedback_via=Nosūtītas atsauksmes $1 caur SMTP serveri $2
+feedback_prog=Nosūtītas atsauksmes $1, izmantojot sendmail programmu $2
+feedback_esend=Neizdevās nosūtīt atsauksmes, izmantojot sendmail programmu vai vietējo SMTP serveri.
+feedback_to=Nosūtiet atsauksmes uz adresēm
+feedback_enoto=Netika ievadīta neviena adrese, uz kuru sūtīt atsauksmes
+feedback_ecannot=Jums nav atļauts sūtīt atsauksmes
+feedback_ecannot2=Jums nav atļauts sūtīt atsauksmes, kas satur konfigurācijas failus
+
+progress_size2=Notiek $1 lejupielāde ($2) ..
+progress_nosize=Notiek $1 lejupielāde ..
+progress_datan=Saņemts $1 ($2 %)
+progress_data2n=Saņemts $1
+progress_done=.. lejupielāde pabeigta.
+progress_incache=Kešatmiņā atrasts $1.
+
+readparse_cdheader=Trūkst satura izvietojuma galvenes
+readparse_enc=Gaidīja formas datu kodējumu, bet ieguva parasto kodējumu
+readparse_max=Dati pārsniedza $1 baitu maksimālo lielumu
+
+password_expired=Jūsu parolei ir beidzies derīguma termiņš, un ir jāizvēlas jauna.
+password_temp=Lai aizstātu pagaidu pieteikumvārdu, jums jāizvēlas jauna parole.
+password_header=Atlasiet jaunu paroli
+password_user=Lietotājvārds
+password_old=Pašreizējā parole
+password_new1=Jauna parole
+password_new2=Atkal jauna parole
+password_ok=Pārmaiņas
+password_clear=Skaidrs
+password_done=Jūsu parole ir veiksmīgi nomainīta. Tagad jūs varat <a href='$1'>pieteikties vēlreiz</a> ar jauno paroli.
+password_err=Neizdevās mainīt paroli
+password_euser=Jūsu paroles failā netika atrasts jūsu pieteikumvārds.
+password_eold=Pašreizējā parole nav pareiza
+password_enew1=Jauna parole netika ievadīta
+password_enew2=Jaunās paroles nesakrīt
+password_epam=PAM kļūda : $1
+password_emodpam=Authen::PAM perl modulis, kas nepieciešams paroles maiņai, nav instalēts!
+password_enewpass=Jauna parole nav atļauta : $1
+
+ui_mandatory=Šis lauks ir obligāts
+ui_checkmandatory=Nekas netika izvēlēts
+ui_errors=Tika atrastas vairākas kļūdas :
+ui_nothing=Nekas neiebrauca
+ui_searchcol=Atrodiet rindas kur
+ui_searchfor=Satur tekstu
+ui_searchok=Meklēt
+ui_selall=Izvēlēties visus.
+ui_selinv=Apgrieztā atlase.
+ui_edate=Nederīgs datums
+ui_etime=Laiks nav derīgs
+ui_paging=Rāda rindas $1 uz $2 no $3
+ui_rowlabel=$2 rindā $1 :
+ui_filterbox=Ierakstiet, lai filtrētu ..
+
+header_statusmsg=$1 pieteicies $2 $3 uz $4 ($5)
+
+uptracker_title=Notiek faila augšupielāde
+uptracker_file=Faila nosaukums
+uptracker_size=Izmērs
+uptracker_pc=Progress
+uptracker_eid=Nav norādīts augšupielādes ID
+uptracker_eid2=Augšupielādes ID nav derīgs.
+uptracker_of=$1 no $2
+
+wsearch_title=Meklēt $1
+wsearch_modt=Modulis
+wsearch_mtitle=Moduļa nosaukums
+wsearch_what=Atbilstošā lapa
+wsearch_type=Atbilstības tips
+wsearch_mod=$1 modulis
+wsearch_config_webmin=Webmin moduļa konfigurēšana
+wsearch_config_usermin=Usermin preferences
+wsearch_help=Palīdzības lapa
+wsearch_inmod=$1
+wsearch_text=Lietotāja saskarnes teksts
+wsearch_esearch=Netika ievadīts nekas meklējams.
+wsearch_enone=Netika atrasti Webmin moduļi vai lapas, kas atbilst $1.
+wsearch_on=(Par $1)
+wsearch_helpfor=Palīdzība <i>$1</i>
+wsearch_htext=Atbilstošs teksts
+wsearch_htype=Avots
+wsearch_hcgis=Atsauces
+wsearch_type_mod=Moduļa nosaukums
+wsearch_type_config=Konfigurācija
+wsearch_type_help=Palīdzības lapa
+wsearch_type_text=Lietotāja interfeiss
+wsearch_type_dir=Moduļa URL
+wsearch_hmod=Modulis
+wsearch_moddir=URL ceļš /$1/
+wsearch_searching=Meklē $1 ..
+wsearch_found=atrasti $1 rezultāti :
+
+sql_emysqldriver=Neizdevās ielādēt MySQL DBI draiveri
+sql_emysqlconnect=Neizdevās izveidot savienojumu ar MySQL datu bāzi : $1
+sql_epostgresqldriver=Neizdevās ielādēt PostgreSQL DBI draiveri
+sql_epostgresqlconnect=Neizdevās izveidot savienojumu ar PostgreSQL datu bāzi : $1
+sql_eldapdriver=Neizdevās ielādēt LDAP perl moduli
+sql_eldapconnect=Neizdevās izveidot savienojumu ar LDAP serveri $1
+sql_eldaptls=Neizdevās sākt TLS šifrēšanu LDAP : $1
+sql_eldaplogin=Neizdevās pieteikties LDAP serverī kā $1 : $2 
+
+log_email_subject=Webmin darbība $1
+log_email_global=Webmin globālā darbība
+log_email_desc=Šo e-pastu Webmin nosūtīja, atbildot uz lietotāja rīcību.
+log_email_mod=Webmin modulis: $1
+log_email_moddesc=Moduļa nosaukums: $1
+log_email_time=Darbība veikta: $1
+log_email_system=Tiek veikts sistēmā: $1
+log_email_user=Veic lietotājs: $1
+log_email_script=Webmin skripts: $1
+log_email_session=Sesijas ID: $1
+log_email_remote=Klienta adrese: $1
+
+nice_size_PB=PB
+nice_size_PiB=PiB
+nice_size_TB=TB
+nice_size_TiB=TiB
+nice_size_GB=GB
+nice_size_GiB=GiB
+nice_size_MB=MB
+nice_size_MiB=MiB
+nice_size_kB=kB
+nice_size_kiB=KiB
+nice_size_b=baiti
+
+langauto_include=Iekļaujiet mašīntulkojumus
+
+file_truncated_message=ienesa $1 no datiem, saīsināja $2 no $3 
+file_truncated_message_head=ienesa datu sākumu $1, saīsināja $2 no $3 
+file_truncated_message_tail=ienesa datu beigas $1, saīsināja $2 no $3 

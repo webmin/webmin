@@ -1,0 +1,103 @@
+index_title=Theo dõi nhịp tim
+index_return=theo dõi nhịp tim
+index_edir=Thư mục cấu hình heartbeat $1 không tồn tại. Có thể Heartbeat chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> của bạn không chính xác.
+index_start=Bắt đầu theo dõi nhịp tim
+index_startmsg=Nhấn vào nút này để bắt đầu quá trình theo dõi Heartbeat. Điều này sẽ cho phép chuyển đổi dự phòng tự động trên hệ thống của bạn với cấu hình hiện tại.
+index_apply=Áp dụng các thay đổi
+index_applymsg=Nhấp vào nút này để buộc quá trình theo dõi Heartbeat đang chạy để tải lại cấu hình hiện tại.
+index_eha_cf=Không tìm thấy tệp cấu hình nhịp tim $1 trên hệ thống của bạn. Có thể nó chưa được sao chép vào vị trí hoặc <a href='$2'>cấu hình mô-đun</a> không chính xác.
+index_eharesources=Không tìm thấy tệp tài nguyên $1 trên hệ thống của bạn. Có thể nó chưa được sao chép vào vị trí hoặc <a href='$2'>cấu hình mô-đun</a> không chính xác.
+index_eauthkeys=Không tìm thấy tệp khóa xác thực $1 trên hệ thống của bạn. Có thể nó chưa được sao chép vào vị trí hoặc <a href='$2'>cấu hình mô-đun</a> không chính xác.
+index_ereq_resource_cmd=Tập lệnh yêu cầu tài nguyên từ nút khác ($1) không được tìm thấy trên hệ thống của bạn. Có thể nó chưa được sao chép vào vị trí hoặc <a href='$2'>cấu hình mô-đun</a> không chính xác.
+index_version=Phiên bản nhịp tim $1 
+index_noversion=Cảnh báo - Không thể tự động phát hiện phiên bản Heartbeat được cài đặt trên hệ thống của bạn. Bạn nên đặt nó trên trang <a href='$1'>cấu hình mô-đun</a>.
+index_status=Tình trạng nhịp tim
+
+conf_title=Tùy chọn cấu hình
+conf_header=Tùy chọn cấu hình Heartbeat
+conf_serials=Cổng nhịp tim nối tiếp
+conf_baud=Tốc độ truyền cho cổng nối tiếp
+conf_bcasts=Giao diện nhịp tim Ethernet
+conf_none=không ai
+conf_udpport=Cổng nhịp tim UDP
+conf_mcast=Thiết bị nhịp tim đa điểm
+conf_mcastv=Thiết bị $1, nhóm $2, cổng $3, TTL $4, loopback $5 
+conf_enabled=Đã bật
+conf_disabled=Tàn tật
+conf_keepalive=Thời gian giữa những nhịp đập
+conf_nice_failback=Hành vi dự phòng tốt đẹp
+conf_secs=giây
+conf_deadtime=Thời gian trước khi nút được coi là chết
+conf_watchdog=Tập tin thiết bị giám sát
+conf_node=Máy chủ trong cụm
+conf_logfile=Nhật ký nhịp tim
+conf_logfacility=Cơ sở nhật ký nhật ký hệ thống
+conf_initdead=Thời gian chết ban đầu
+conf_ok=Lưu tùy chọn
+conf_err=Không thể lưu tùy chọn
+conf_ebaud=Tốc độ baud bị thiếu hoặc không hợp lệ
+conf_ebcast=Không có giao diện phát sóng nhịp tim được nhập
+conf_ebcastif='$1' không phải là giao diện quảng bá hợp lệ
+conf_eudpport=Cổng nhịp tim bị thiếu hoặc không hợp lệ
+conf_ekeepalive=Mất thời gian hoặc không hợp lệ giữa các nhịp tim
+conf_edeadtime=Thiếu thời gian chết hoặc không hợp lệ
+conf_ewatchdog=Tập tin thiết bị watchdog bị thiếu hoặc không tồn tại
+conf_enonode=Không có máy chủ cụm nào được nhập
+conf_ethisnode=Máy chủ lưu trữ $1 này không có trong danh sách máy chủ cụm
+conf_elogfile=Tên tệp nhật ký bị thiếu hoặc không hợp lệ
+conf_einitdead=Thiếu hoặc không hợp lệ thời gian chết ban đầu
+conf_einitdead2=Thời gian chết ban đầu phải ít nhất gấp đôi thời gian trước khi một nút được coi là chết
+conf_emcast_dev=Thiết bị phát đa hướng bị thiếu hoặc không hợp lệ
+conf_emcast_ip=Địa chỉ nhóm phát đa hướng bị thiếu hoặc không hợp lệ
+conf_emcast_port=Số cổng đa hướng bị thiếu hoặc không hợp lệ
+conf_emcast_ttl=Thời gian tồn tại bị thiếu hoặc không hợp lệ
+conf_auto_on=$ {conf_enables}
+conf_auto_off=$ {conf_disables}
+conf_auto_legacy=Chế độ kế thừa
+conf_auto_=$ {mặc định}
+
+res_title=Tài nguyên cụm
+res_node=Nút chính
+res_ips=Các địa chỉ IP
+res_servs=Dịch vụ nút
+res_none=không ai
+res_nores=Không có tài nguyên cụm đã được xác định trên hệ thống của bạn.
+res_add=Thêm tài nguyên cụm
+res_return=danh sách tài nguyên
+res_active=Tình trạng tài nguyên
+res_getserv=Nhận tài nguyên
+res_hbdown=Nhịp tim đập xuống
+res_up=LÊN
+res_down=XUỐNG
+
+node_create=Thêm tài nguyên cụm
+node_edit=Chỉnh sửa tài nguyên cụm
+node_header=Chi tiết tài nguyên cụm
+node_node=Nút chính cho tài nguyên
+node_ips=Địa chỉ IP cho tài nguyên
+node_ip=địa chỉ IP
+node_cidr=CIDR Netmask
+node_broad=Địa chỉ quảng bá
+node_servs=Dịch vụ tài nguyên
+node_serv=Dịch vụ
+node_args=Đối số bổ sung
+node_err=Không thể lưu tài nguyên cụm
+node_enone=Nút chính bị thiếu hoặc không hợp lệ
+node_eip='$1' không phải là địa chỉ IP hợp lệ
+node_ecidr='$1' không phải là CIDR hợp lệ
+node_ebroad='$1' không phải là địa chỉ quảng bá hợp lệ
+
+auth_title=Khóa xác thực
+auth_header=Xác thực nút cụm
+auth_mode=Chế độ xác thực
+auth_crc=CRC (Không bảo mật)
+auth_sha1=SHA1 với mật khẩu
+auth_md5=MD5 với mật khẩu
+auth_err=Không thể lưu khóa xác thực
+auth_emd5=Mật khẩu MD5 bị thiếu hoặc không hợp lệ
+auth_esha1=Mật khẩu SHA1 bị thiếu hoặc không hợp lệ
+
+start_err=Không thể bắt đầu nhịp tim
+
+apply_err=Không thể áp dụng thay đổi
+apply_epid=Quá trình không còn chạy

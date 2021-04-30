@@ -1,0 +1,17 @@
+edit_mins=Минут
+edit_hours=Часов
+edit_days=Дней
+edit_months=Месяц
+edit_weekdays=Будни
+edit_all=Все
+edit_selected=Выбрано ...
+edit_run=Выполняется
+edit_clone=Копия задания
+edit_return=Задание
+edit_special1=Единоразовое расписание
+edit_special0=Время и дата выбраны ниже ...
+edit_special_hourly=Ежечасно
+edit_special_daily=Ежедневно (в полночь)
+edit_special_weekly=Еженедельно (в воскресенье)
+edit_special_monthly=Ежемесячно (1 числа)
+edit_special_yearly=Ежегодно (1 января)

@@ -1,0 +1,9 @@
+index_digest2=Az emésztett titkosítás engedélyezve van a modul konfigurációjában, de az ehhez szükséges $1 parancs vagy $2 Perl modul nincs telepítve.
+
+dir_header2=Felhasználói szinkronizálási lehetőségek
+dir_ecannotcreate=Nem engedélyezi a védett könyvtárak konfigurálását
+dir_apache=Az Apache beállítások szerkesztése
+dir_efiledir=A '$1' könyvtár, ezért nem használható felhasználói fájlként
+dir_egfiledir=A '$1' könyvtár, ezért nem használható csoportfájlként
+
+acl_uonly=Felvehet és módosíthat védett könyvtárakat?

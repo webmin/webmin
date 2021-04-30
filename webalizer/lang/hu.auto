@@ -1,0 +1,5 @@
+index_version_awffull=AWFFull
+index_disable=Ütemezés kiválasztva
+
+log_enable_logs=Ütemezett jelentéskészítés $1 naplókon
+log_disable_logs=Ütemezés nélküli jelentés a $1 naplókon

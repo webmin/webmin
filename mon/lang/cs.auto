@@ -1,0 +1,6 @@
+watches_none=Zatím nebyly definovány žádné seznamy sledování.
+
+status_esame=Program MON stav CGI $1 byl v tomto modulu Webmin nastaven na skript <tt>mon.cgi</tt>, nikoli na program CGI dodávaný s MON. Upravte konfiguraci modulu <a href='$2'></a> a použijte správnou cestu.
+
+show_title=Provozní stav
+show_ecgi=Stavový program MON $1 neexistuje. Možná není nainstalována nebo je vaše <a href='$2'>konfigurace modulu</a> nesprávná.

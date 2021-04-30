@@ -1,0 +1,33 @@
+log_authparam=Geänderte Authentifizierungsprogrammoptionen
+log_clear=Cache geleert und neu erstellt
+log_headeracc_create=Header-Zugriffsregel erstellt
+log_headeracc_modify=Geänderte Header-Zugriffsregel
+log_headeracc_delete=Header-Zugriffsregel gelöscht
+log_headeracc_move=Verschobene Header-Zugriffsregel
+log_always_create=Direkte Abruf-ACLs erstellt
+
+log_always_modify=Geänderte Direktabruf-ACLs
+log_always_delete=Direktabruf-ACLs gelöscht
+log_always_move=Direktabruf-ACLs verschoben
+log_never_create=Erstellt niemals direkte Abruf-ACLs
+
+log_never_modify=Geänderte ACLs zum direkten Abrufen
+log_never_delete=Gelöschte niemals direkte Abruf-ACLs
+log_never_move=Verschobene niemals direkte Abruf-ACLs
+log_delay=Die Optionen für den globalen Verzögerungspool wurden geändert
+log_pool_create=Verzögerungspool $1 hinzugefügt
+log_pool_modify=Geänderter Verzögerungspool $1
+log_pool_delete=Gelöschter Verzögerungspool $1
+log_pools_delete=$1 -Verzögerungspools gelöscht
+log_delay_create=ACL für Verzögerungspool $1 hinzugefügt
+log_delay_modify=Geänderte ACL für den Verzögerungspool $1
+log_delay_delete=Gelöschte ACL für Verzögerungspool $1
+
+log_delay_move=Verschobene ACL für Verzögerungspool $1
+log_refresh_create=Aktualisierungsregel für $1 erstellt
+log_refresh_modify=Geänderte Aktualisierungsregel für $1
+log_refresh_delete=Aktualisierungsregel für $1 gelöscht
+
+log_refresh_move=Verschobene Aktualisierungsregel für $1
+log_iptables=Das Setup für die Portumleitung wurde aktualisiert
+log_cachemgr=Geänderte Cache-Manager-Passwörter

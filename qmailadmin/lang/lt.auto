@@ -1,0 +1,405 @@
+index_title=„QMail“ pašto serveris
+index_edir=„QMail“ bazės katalogo $1 nėra. Gal „QMail“ neįdiegta arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_edir2=Atrodo, kad katalogas $1 nėra „QMail“ bazinis katalogas. Gal „QMail“ neįdiegta arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_return=„QMail“ konfigūracija
+index_stop=Sustabdykite „QMail“ procesus
+index_stopmsg=Spustelėkite šį mygtuką, norėdami sustabdyti foninius „QMail“ procesus, atsakingus už eilėje esančių laiškų pristatymą. Be šių procesų el. Paštas nebus tinkamai išsiųstas ar pristatytas į jūsų sistemą.
+index_start=Paleiskite „QMail“ procesus
+index_startmsg=Spustelėkite šį mygtuką, kad pradėtumėte fono „QMail“ procesus, atsakingus už eilėje esančių laiškų pristatymą. Be šių procesų el. Paštas nebus tinkamai išsiųstas ar pristatytas į jūsų sistemą.
+
+opts_title=„QMail“ parinktys
+opts_me=Vietinis pagrindinio kompiuterio vardas
+opts_helo=Pagrindinis SMTP HELO pavadinimas
+opts_toconnect=SMTP ryšio laikas
+opts_secs=sekundžių
+opts_toremote=SMTP išeinančio atsako laikas
+opts_bytes=Maksimalus pranešimo dydis
+opts_unlimited=Neribota
+opts_timeout=SMTP gaunamų duomenų laikas
+opts_localip=Pagrindinio kompiuterio vardas el. Pašto vietiniam IP adresui
+opts_greet=SMTP sveikinimo pranešimas
+opts_err=Nepavyko išsaugoti „QMail“ parinkčių
+opts_eme=Netinkamas vietinio kompiuterio vardas
+opts_etoconnect=Netinkamas SMTP ryšio laikas
+opts_etoremote=Netinkamas SMTP siunčiamo atsakymo laikas
+opts_ebytes=Neteisingas didžiausias pranešimo dydis
+opts_etimeout=Netinkamas gaunamų duomenų SMTP laikas
+opts_elocalip=Netinkamas vietinio IP adreso pagrindinio kompiuterio vardas
+
+aliases_title=Pašto slapyvardžiai
+aliases_addr=Adresas
+aliases_to=Slapyvardis į ..
+aliases_type1=1 Adresas
+aliases_type2=Pašto katalogas $1 
+aliases_type3=Pašto failas $1 
+aliases_type4=Programa $1 
+aliases_type5=$1 automatinio atsakymo failas
+aliases_type6=Taikyti filtro failą $1 
+aliases_none=Nė vienas
+aliases_return=slapyvardžių sąrašas
+aliases_toomany=Jūsų sistemoje yra per daug pašto slapyvardžių, kad būtų rodomi šiame puslapyje.
+aliases_go=Rasti slapyvardžius, atitinkančius:
+aliases_delete=Ištrinti pasirinktus slapyvardžius
+
+aform_type0=Nė vienas
+aform_type1=Elektroninio pašto adresas
+aform_type2=Pašto katalogas
+aform_type3=Pašto failas
+aform_type4=Pateikti į programą
+aform_type5=Automatinis atsakymas iš failo
+aform_type6=Taikyti filtro failą
+aform_edit=Redaguoti slapyvardį
+aform_create=Sukurti slapyvardį
+aform_name=Adresas
+aform_val=Pseudonimas
+aform_afile=Redaguoti ..
+aform_novirt=&lt;Visi domenai&gt;
+aform_return=slapyvardis
+
+asave_err=Nepavyko išsaugoti slapyvardžio
+asave_eaddr=„$1“ nėra teisingas adresas
+asave_ealready=„$1“ slapyvardis jau yra
+asave_etype1=„$1“ nėra teisingas el. Pašto adresas
+asave_etype2=„$1“ nėra galiojantis pašto katalogas
+asave_etype3=„$1“ nėra teisingas pašto failo vardas
+asave_etype4=„$1“ nėra tinkama programa arba jos nėra
+asave_etype5=„$1“ automatinio atsakymo failas negalioja
+asave_etype4none=Neįteikta jokia programa
+asave_etype6=Filtras „$1“ netinkamas
+
+adelete_err=Nepavyko ištrinti slapyvardžių
+adelete_enone=Nepasirinkta
+
+locals_title=Vietos domenai
+locals_domains=Vietiniai šio serverio domenai
+locals_desc=„Qmail“ priims vietiniams vartotojams pristatymą į domenus ir pagrindinius vardus, nurodytus teksto laukelyje kairėje. Jei norite, kad jūsų pašto serveris tvarkytų kelis el. Pašto domenus, jie visi turėtų būti išvardyti šioje formoje.
+locals_only=Tik vietinis pagrindinio kompiuterio vardas $1 
+locals_sel=Domenai, išvardyti žemiau ..
+
+rcpts_title=Priimtini domenai
+rcpts_domains=Priimami vietiniai ir esminiai domenai
+rcpts_all=Bet koks domenas
+rcpts_sel=Domenai, išvardyti žemiau ..
+rcpts_desc=„Qmail“ priims perduoti ar siųsti vietinius laiškus tik į domenus ir pagrindinius vardus, išvardytus teksto laukelyje kairėje. Taip pat galite įvesti pakaitos ženklus, kurie atitinka visus pagrindinio tinklo domenus, pvz., <tt>.foo.com</tt>. Jei norite, kad jūsų pašto serveris perduotų klientams el. Laiškus, turite priimti laiškus iš bet kurio domeno.
+rcpts_domains2=Papildomi vietiniai ir tarpiniai domenai
+rcpts_desc2=Jei turite daug priimtinų domenų, į šį teksto lauką reikėtų įvesti rečiau naudojamus domenus. Apskritai, jūsų pirmieji 50 leidžiamų domenų turėtų būti įvesti į viršutinį teksto lauką, o likusieji - į šį.
+
+bads_title=Atmesti adresai
+bads_addresses=Atmesti el. Pašto adresai
+bads_desc=„QMail“ atmes pristatymą ar persiuntimą iš bet kurio iš teksto laukelyje kairėje nurodytų adresų, kuriuos reikia įvesti kaip <tt>vartotojo vardas @ domeno vardas</tt>. Jei norite atmesti laiškus iš viso domeno, jie turėtų būti įvesti kaip <tt>@domainname</tt>.
+
+routes_title=Domenų maršrutizavimas
+routes_toomany=Jūsų sistemoje yra per daug domenų maršrutų, kad juos būtų galima rodyti šiame puslapyje.
+routes_go=Rasti domenų maršrutus, atitinkančius:
+routes_from=Paštas domenui
+routes_to=Siųsti per serverį
+routes_direct=Pristatykite tiesiogiai
+routes_defroute=Pristatykite visus kitus siunčiamus laiškus per:
+routes_return=domenų maršrutai
+routes_delete=Ištrinti pasirinktus domeno maršrutus
+
+rform_edit=Redaguoti domeno maršrutą
+rform_create=Sukurti domeno maršrutą
+rform_from=Paštas pagrindiniam kompiuteriui ar domenui
+rform_to=Siųsti per SMTP serverį
+rform_port=SMTP prievadas
+
+rsave_err=Nepavyko išsaugoti domeno maršruto
+rsave_efrom=„$1“ nėra teisingas domeno vardas
+rsave_eto=„$1“ nėra galiojantis SMTP serveris
+rsave_eport=„$1“ nėra galiojantis prievado numeris
+
+rdelete_err=Nepavyko ištrinti domeno maršrutų
+
+percents_title=% Domenų
+percents_domains=Domenai, palaikantys % adresų
+percents_desc=QMail will accept email with addresses in the format <tt>user%firstdomain@seconddomain</tt>, jei <tt>seconddomain</tt> nurodytas teksto lauke kairėje. Tuomet šio formato pranešimai bus persiųsti <tt>user@firstdomain</tt> šiuo pašto serveriu.
+
+virts_title=Virtualūs žemėlapiai
+virts_toomany=Jūsų sistemoje yra per daug virtualių žemėlapių, kad juos būtų galima rodyti šiame puslapyje.
+virts_go=Raskite atitikimą atitinkančius virtualius žemėlapius:
+virts_from=Paštas
+virts_prepend=Pridėkite priešdėlį
+virts_all=Visi adresai
+virts_none=Ne virtualus
+virts_desc=„QMail“ naudoja virtualius atvaizdavimus el. Laiškams tvarkyti įvairiuose jūsų serverio domenuose, iš anksto paruošdamas tekstą vartotojo el. Pašto adreso daliai prieš toliau apdorodamas. Galite juos naudoti norėdami nustatyti virtualius pašto domenus, sukurdami naują domeno virtualų atvaizdą, tada naudodami puslapį <a href='$1'>pašto slapyvardžiai</a> ir sukurdami slapyvardžius tame domene.
+virts_return=virtualūs žemėlapiai
+virts_delete=Ištrinti pasirinktus virtualius žemėlapius
+
+vform_edit=Redaguoti virtualų atvaizdą
+vform_create=Sukurkite virtualų žemėlapių sudarymą
+vform_from=Pašto adresas
+vform_all=Bet koks adresas neatitinka kito virtualiojo žemėlapio
+vform_domain=Adresai su domenu
+vform_user=Adresas
+vform_to=Pridėkite prie vartotojo vardo
+vform_none=Nieko
+vform_prepend=Nurodytas priešdėlis
+vform_auto=Automatiškai pasirinktas priešdėlis
+
+vsave_err=Nepavyko išsaugoti virtualiojo žemėlapio
+vsave_edomain=„$1“ nėra galiojantis el. Pašto domenas
+vsave_euser=„$1“ nėra teisingas el. Pašto vartotojo vardas
+vsave_eprepend=„$1“ nėra teisingas žemėlapio priešdėlis
+vsave_eboth=Negalite pasirinkti nei „Bet kokio adreso, neatitinkančio kito virtualiojo žemėlapio“, nei „Nieko“
+
+vdelete_err=Nepavyko ištrinti virtualių žemėlapių
+
+stop_err=„qmail“ siuntimo procesas nebeveikia
+
+log_stop=Sustabdyti „QMail“ procesai
+log_start=Pradėti „QMail“ procesai
+log_opts=Pakeistos „QMail“ parinktys
+log_alias_create=Sukurtas slapyvardis $1 
+log_alias_delete=Ištrinti slapyvardį $1 
+log_alias_modify=Modifikuotas slapyvardis $1 
+log_delete_aliases=Ištrinta $1 slapyvardžiai
+log_virt_create=Sukurtas virtualus žemėlapis $1 
+log_virt_delete=Ištrintas virtualus žemėlapis $1 
+log_virt_modify=Modifikuotas virtualus žemėlapis $1 
+log_delete_virts=Ištrinta $1 virtualioji schema
+log_virtall_create=Sukurtas virtualus žemėlapių žemėlapis
+log_virtall_delete=Ištrinta „cachall“ virtualioji atvaizdavimas
+log_virtall_modify=Modifikuotas „cachall“ virtualusis žemėlapis
+log_locals=Pakeisti vietiniai domenai
+log_rcpts=Pakeitė priimtus domenus
+log_bads=Pakeisti atmesti adresai
+log_percents=Pakeista % domenų
+log_route_create=Sukurtas maršrutas $1 
+log_route_delete=Ištrintas maršrutas $1 
+log_route_modifed=Modifikuotas maršrutas $1 
+log_delete_routes=Ištrinti $1 maršrutai
+log_defroute=Pakeistas numatytasis maršrutas
+log_assign_create=Sukurtas pašto vartotojas $1 
+log_assign_delete=Pašalintas pašto vartotojas $1 
+log_assign_modifed=Modifikuotas pašto vartotojas $1 
+log_delete_assigns=Ištrinti $1 pašto vartotojai
+log_delmail=Ištrinta $1 žinutė iš $2 
+log_movemail=$1 pranešimai perkelti iš $2 į $3 
+log_send=Išsiųstas laiškas $1 
+
+rfile_title=Redaguoti automatinio atsakymo failą
+rfile_desc=Norėdami redaguoti $1 automatinio atsakymo pranešimą, naudokite žemiau esantį teksto lauką. Pranešime gali būti makrokomandos $SUBJECT, $FROM, $TO, $DATE ir $BODY, kurios bus išplėstos suaktyvinus automatinį atsakymą.
+rfile_desc2=Taip pat galite nustatyti pašto antraštes, kurios prideda arba pakeičia automatiniame atsakyme naudojamus numatytuosius parametrus, įvesdami tokias eilutes: <br><tt> Iš: foo@bar.com </tt><br> <tt>Tema: Atostogų metu</tt> <br> pranešimo viršuje, atskirtą nuo turinio viena tuščia eilute.
+rfile_efile=Jums neleidžiama redaguoti $1.
+rfile_undo=Anuliuoti pakeitimus
+rfile_replies=Stebėti atsakymus, kad būtų išvengta pašto kilpų?
+rfile_none=Ne
+rfile_file=Taip, naudojant žurnalo failą
+rfile_period=Mažiausias intervalas tarp atsakymų
+rfile_default=Numatytasis (1 valanda)
+rfile_secs=sekundžių
+rfile_ereplies=Trūksta atsakymo stebėjimo žurnalo failo
+rfile_eperiod=Trūksta arba netinkamas sekundžių skaičius tarp atsakymų
+rfile_no_autoreply=Nesiųskite automatinių atsakymų į
+rfile_from=Nuo: atsakymo adresas
+rfile_auto=Automatinis (pagal gavėjo adresą)
+rfile_efrom=Trūksta nuo: adresas
+rfile_fromdesc=A Nuo: adresas visada turėtų būti nurodytas, jei įmanoma, nes automatinis metodas gali būti nepatikimas.
+
+ffile_title=Redaguoti filtro failą
+ffile_desc=Norėdami nustatyti filtro taisykles faile $1, naudokite žemiau esančią formą.
+ffile_efile=Jums neleidžiama redaguoti $1.
+ffile_line=Jei $1 laukas $2 $3, tada pirmyn į $4 
+ffile_from=iš
+ffile_to=į
+ffile_subject=subjektas
+ffile_cc=CC
+ffile_body=kūnas
+ffile_what0=nesutampa
+ffile_what1=degtukai
+ffile_other=Priešingu atveju nukreipkite į $1 
+ffile_err=Nepavyko išsaugoti filtro failo
+ffile_ematch=Trūksta rungtynių
+ffile_eaction=Trūksta persiuntimo adreso
+
+queue_title=Pašto eilė
+queue_count=$1 žinutės
+queue_none=Šiuo metu pašto pristatymo eilės nėra
+queue_id=Pašto ID
+queue_date=Išsiųsta
+queue_from=Iš
+queue_to=Kam
+queue_cc=Kopija
+queue_subject=Tema
+queue_return=pašto eilė
+queue_delete=Ištrinti pasirinktus pranešimus
+queue_all=Pasirinkti viską
+queue_invert=Apverskite pasirinkimą
+queue_refresh=Atnaujinti pašto eilę
+queue_refreshdesc=Iš naujo įkelkite šį puslapį, kad būtų parodyta dabartinė pašto eilės būsena.
+
+qview_title=Eilė eilėje
+qview_desc=Iš failo $1 
+qview_headers=Pašto antraštės
+qview_attach=Priedai
+
+assigns_title=Pašto vartotojo priskyrimai
+assigns_return=pašto vartotojo užduotys
+assigns_toomany=Jūsų sistemoje yra per daug pašto vartotojų, kad jie būtų rodomi šiame puslapyje.
+assigns_go=Rasti pašto vartotojus, atitinkančius:
+assigns_address=Paštu adresu
+assigns_user=„Unix“ vartotojas
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=Pagrindinis katalogas
+assigns_desc=Pašto vartotojo priskyrimai leidžia sukurti pašto dėžutes vartotojams, kurie nėra apibrėžti „Unix“ vartotojų sąraše. Kiekviena užduotis pateiks laiškus pasirinktu vartotojo vardu ar vartotojo vardu, tarsi jis būtų siunčiamas į tikrojo „Unix“ vartotojo pašto dėžutę.
+assigns_delete=Ištrinti pasirinktus pašto vartotojus
+
+sform_edit=Redaguoti pašto vartotoją
+sform_create=Sukurti pašto vartotoją
+sform_address=Adreso vartotojo vardas
+sform_mode0=Tikslus vartotojo vardas
+sform_mode1=Vartotojo vardai, prasidedantys raide
+sform_user=„Unix“ vartotojas
+sform_uid=UID
+sform_gid=GID
+sform_home=Pagrindinis katalogas
+
+ssave_err=Nepavyko išsaugoti pašto vartotojo
+ssave_eaddress=Trūksta arba netinkamas adreso vartotojo vardas
+ssave_euser=Trūksta arba netinkamas „Unix“ vartotojas
+ssave_euid=Trūksta arba netinkamas UID
+ssave_egid=Trūksta arba netinkamas GID
+ssave_ehome=Trūksta arba netinkamas namų katalogas
+
+sdelete_err=Nepavyko ištrinti pašto vartotojų
+
+delete_egone=Eilė eilėje nebeegzistuoja
+delete_ebogus=Neteisingas eilės failo vardas
+
+boxes_title=Vartotojo pašto dėžutės
+boxes_user=Vartotojas
+boxes_size=Pašto dėžutės dydis
+boxes_none=Nėra pašto
+boxes_return=pašto dėžutės
+boxes_sent=Išsiųsti laiškai
+boxes_ecannot=Jums neleidžiama skaityti el. Laiškų
+boxes_toomany=Jūsų sistemoje yra per daug vartotojų, kad galėtų išvardyti visas jų pašto dėžutes.
+boxes_go=Peržiūrėti vartotojo el. Paštą:
+
+mail_title=Vartotojo el. Paštas
+mail_from=Iš
+mail_date=Data
+mail_subject=Tema
+mail_to=Kam
+mail_cc=Kopija
+mail_bcc=Neišsaugota kopija
+mail_pri=Prioritetas
+mail_highest=Aukščiausias
+mail_high=Aukštas
+mail_normal=Normalus
+mail_low=Žemas
+mail_lowest=Žemiausia
+mail_for=$1 
+mail_for2=Vartotojui $1 
+mail_sent=Išsiųstų laiškų sąraše
+mail_size=Dydis
+mail_delete=Ištrinti
+mail_compose=Sudarykite
+mail_return=vartotojo pašto dėžutė
+mail_pos=Žinutės nuo $1 iki $2 iš $3 
+mail_none=Šioje pašto dėžutėje nėra pranešimų
+mail_ecannot=Jums neleidžiama skaityti šio vartotojo el. Pašto
+mail_all=Pasirinkti viską
+mail_invert=Apverskite pasirinkimą
+mail_search=Raskite pranešimus kur
+mail_body=kūnas
+mail_match=degtukai
+mail_ok=Paieška
+mail_nonefrom=Nė vienas
+mail_mark=Pažymėti kaip:
+mail_mark0=Neskaityta
+mail_mark1=Skaitykite
+mail_mark2=Ypatinga
+mail_forward=Persiųsti
+mail_rfc=Iš eilutės
+mail_move=Pereiti prie:
+mail_eexists=Pranešimo nebeegzistuoja!
+
+view_title=Skaityti el. Laišką
+view_desc=$1 pranešimas $2 
+view_desc2=$2 vartotojo $2 pranešimas
+view_desc3=Žinutė $1 
+view_sent=$1 pranešimas išsiųstų laiškų sąraše
+view_qdesc=Eilės pranešimas $1 
+view_headers=Pašto antraštės
+view_allheaders=Peržiūrėkite visas antraštes
+view_noheaders=Peržiūrėkite pagrindines antraštes
+view_attach=Priedai
+view_reply=Atsakyk
+view_reply2=Atsakyti visiems
+view_enew=Redaguoti kaip naują
+view_forward=Persiųsti
+view_delete=Ištrinti
+view_strip=Pašalinti priedus
+view_ecannot=Jums neleidžiama skaityti šio vartotojo el. Pašto
+view_mark=Pažymėti pranešimą kaip:
+view_mark0=Neskaityta
+view_mark1=Skaitykite
+view_mark2=Ypatinga
+view_return=originalus el
+view_sub=Pridedamas el. Paštas
+
+compose_title=Sukurti el. Laišką
+reply_title=Atsakyti el. Paštu
+forward_title=Persiųsti el. Laišką
+enew_title=Redaguoti el. Paštą
+reply_headers=Pašto antraštės
+reply_attach=Persiųsti priedai
+reply_mailforward=Persiuntė pranešimus
+reply_attach2=Kliento ir serverio priedai
+reply_send=Išsiųsti laišką
+reply_ecannot=Jums neleidžiama siųsti laiškų kaip šiam vartotojui
+
+send_err=Nepavyko išsiųsti laiškų
+send_eto=Nėra adreso
+send_efrom=Nėra adreso
+send_title=Paštas išsiųstas
+send_ok=Laiškas sėkmingai išsiųstas $1 
+send_ecannot=Jums neleidžiama siųsti laiškų kaip šiam vartotojui
+send_esmtp=$1 SMTP komanda nepavyko : $2 
+send_efile=Pridedamas failas $1 neegzistuoja
+send_eattach=Priedų dydis negali viršyti $1 kB.
+send_eperms=$1 vartotojas negali nuskaityti $2 
+send_eperms2=Jums neleidžiama siųsti failo $1 
+send_epath=„Sendmail“ vykdomasis $1 neegzistuoja.
+
+delete_title=Ištrinti paštą
+delete_rusure=Ar tikrai norite ištrinti $1 pasirinktus pranešimus iš $2 ? Didelio pašto failo sukūrimas gali šiek tiek užtrukti. Kol naikinimas nebus baigtas, jokie kiti veiksmai neturėtų būti atliekami.
+delete_rusure2=Ar tikrai norite ištrinti šį pranešimą iš $1 ? Didelio pašto failo sukūrimas gali šiek tiek užtrukti. Kol naikinimas nebus baigtas, jokie kiti veiksmai neturėtų būti atliekami.
+delete_ok=Ištrinti dabar
+delete_ecannot=Dabar jums leidžiama ištrinti šio vartotojo laiškus
+delete_enone=Pašalinti nėra pasirinkto pašto
+delete_emnone=Nepažymėtas paštas
+delete_nobutton=Nepaspaudė nė vieno mygtuko
+
+search_title=Paieškos rezultatai
+search_ecannot=Jums neleidžiama ieškoti šio vartotojo el. Pašto
+search_ematch=Turite įvesti tekstą, kad atitiktumėte.
+search_efield=Turite pasirinkti paieškos tipą.
+search_none=Nerasta jokių pranešimų.
+search_results2=$1 pašto žinutės, atitinkančios $2 ..
+search_results3=$1 pašto žinutės, neatitinkančios $2 ..
+
+match_from=Iš: degtukai
+match_subject=Tema: degtukai
+match_to=Kam: rungtynės
+match_cc=Kopija: atitikmenys
+match_date=Data: rungtynės
+match_body=Kūno degtukai
+match_size=Dydis yra didesnis nei
+match_headers=Antraštės sutampa
+match_=-----------------
+match_!from=Nuo: nesutampa
+match_!subject=Tema: nesutampa
+match_!to=Kam: nesutampa
+match_!cc=Kopija: nesutampa
+match_!date=Data: nesutampa
+match_!body=Kūnas nesutampa
+match_!size=Dydis yra mažesnis nei
+match_!headers=Antraštės nesutampa
+
+delq_titles=Pranešimų trynimas
+delq_rusure=Ar tikrai norite ištrinti $1 pasirinktus eilės pranešimus?
+delq_confirm=Ištrinti pranešimus

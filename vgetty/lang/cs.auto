@@ -1,0 +1,9 @@
+options_eowner=Chybějící nebo neplatný uživatel Unixu pro soubory zpráv
+options_egroup=Chybí nebo je neplatná skupina Unix pro soubory zpráv
+options_emode=Chybějící nebo neplatná osmičková oprávnění pro soubory zpráv
+
+received_all=Vybrat vše
+received_invert=Obrátit výběr
+
+email_subject=Hlasová zpráva
+email_body=Zpráva hlasové schránky byla přijata na $1 po $2.

@@ -1,0 +1,50 @@
+index_title=Konfiguracija OpenSLP
+index_return=Konfiguracija OpenSLP
+index_eslpd=V vašem sistemu ni bilo mogoče najti demona OpenSLP $1. Mogoče ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
+index_econf=Konfiguracijske datoteke OpenSLP $1 v vašem sistemu ni bilo mogoče najti. Mogoče ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
+index_version=Različica OpenSLP $1 
+
+slp_apply=Uporabi spremembe
+slp_stop=Ustavite OpenSLP
+
+snda_title=Statični obseg in DA
+snda_useScopes=Statični seznam področja uporabe
+snda_DAAddresses=Statični seznam agentov imenikov (DA)
+
+netcfg_title=Konfiguracija omrežja
+netcfg_isBroadcastOnly=Prisilite, da se oddaje uporabljajo namesto večpredstavnih sporočil
+netcfg_passiveDADetection=Uporabite pasivno zaznavanje DA
+netcfg_activeDADetection=Uporabite aktivno zaznavanje DA (omeji se samo na naslove DHCP ali DA)
+netcfg_DAActiveDiscoveryInterval=Aktivno odkrivanje v nekaj sekundah (0 onemogoči Active Discovery)
+netcfg_multicastTTL=Multicast TTL (0-255)
+netcfg_DADiscoveryMaximumWait=Najdaljši čas čakanja na zahteve za odkritje DA (v milisekundah)
+netcfg_DADiscoveryTimeouts=Zaporedne čakalne dobe za odkritje DA (v milisekundah)
+netcfg_HintsFile=Pot do datoteke z namigi OpenSLP
+netcfg_multicastMaximumWait=Najdaljše čakanje na zahteve za večkratno oddajanje (v milisekundah)
+netcfg_multicastTimeouts=Zaporedne čakalne dobe za večkratno oddajanje (v milisekundah)
+netcfg_unicastMaximumWait=Najdaljši čas med enicast zahtevami (v milisekundah)
+netcfg_randomWaitBound=Najvišja vrednost za vse parametre naključnega čakanja (v milisekundah)
+netcfg_MTU=Velikost paketov MTU (v bajtih)
+netcfg_interfaces=IP naslovi vmesnikov, ki naj jih DA/SA poslušajo
+
+dacfg_title=Konfiguracija DA
+dacfg_isDA=Deluje samo kot DA (preberite navodila za uporabnike, preden to spremenite)
+
+log_title=Sledenje in beleženje
+log_traceDATraffic=Natisnite prometna sporočila DA
+log_traceMsg=Natisnite podrobna sporočila SLP
+log_traceDrop=Natisni informacije o sporočilu, ki so padle po SLP
+log_traceReg=Natisnite podatke o registraciji in odjavi registracije DA in SA
+
+error_open=Napaka pri odpiranju datoteke
+error_flock_on=Napaka pri ustvarjanju zaklepanja datoteke
+error_flock_off=Napaka pri uničevanju zaklepanja datotek
+error_hup=Napaka pri ponovnem zagonu OpenSLP s PID-om
+
+index_start=Zaženite OpenSLP
+index_startmsg=Kliknite ta gumb za zagon demona OpenSLP v vašem sistemu.
+index_stop=Ustavite OpenSLP
+index_stopmsg=Kliknite ta gumb, da zaustavite demon OpenSLP v vašem sistemu.
+
+stop_err=Zaustavitve OpenSLP ni uspelo
+start_err=Zagon OpenSLP ni uspel

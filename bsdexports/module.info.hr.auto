@@ -1,0 +1,3 @@
+desc_hr=Izvoz NFS-a
+longdesc_hr=Uređivanje dionica datoteke iz datoteke FreeBSD /etc/exports.
+name_hr=BSDexports

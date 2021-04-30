@@ -187,7 +187,7 @@ print &ui_table_row($text{'edit_source'},
 	&ui_grid_table([
 		&print_mode("source", $rule->{'s'}),
 		&ui_textarea("source", join(" ", split(/,/, $rule->{'s'}->[1])),
-			     4, 80),
+			     4, 60),
 		], 2));
 
 # Packet destination
@@ -195,7 +195,7 @@ print &ui_table_row($text{'edit_dest'},
 	&ui_grid_table([
 		&print_mode("dest", $rule->{'d'}),
 		&ui_textarea("dest", join(" ", split(/,/, $rule->{'d'}->[1])),
-			     4, 80),
+			     4, 60),
 		], 2));
 
 # Incoming interface
@@ -456,7 +456,7 @@ local ($name, $value) = @_;
 local @stdprotos = ( 'tcp', 'udp', "icmp${ipvx_icmp}", undef );
 $value ||= "tcp";
 local @otherprotos;
-open(PROTOS, "/etc/protocols");
+open(PROTOS, "</etc/protocols");
 while(<PROTOS>) {
 	s/\r|\n//g;
 	s/#.*$//;

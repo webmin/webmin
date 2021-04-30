@@ -1,0 +1,17 @@
+inittab_active=活性？
+inittab_apply=應用初始化配置
+inittab_applymsg=單擊此按鈕以通過運行命令<tt>telinit q</tt>應用當前的SysV初始化配置。請注意，運行此命令時，配置中的任何錯誤都可能使系統無法使用。
+index_delete=刪除選定的進程
+inittab_none2=在您的系統上找不到啟動過程。這可能表明它不使用SysV初始化配置文件。
+
+log_modify=修改後的初始化過程 $1
+log_rename=將初始化進程 $1重命名為 $2
+log_create=已創建初始化進程 $1
+log_delete=刪除的初始化進程 $1
+log_apply=應用的配置
+log_deletes=已刪除 $1初始化進程
+
+apply_err=應用配置失敗
+
+delete_err=刪除進程失敗
+delete_enone=未選擇

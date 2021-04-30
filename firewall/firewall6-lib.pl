@@ -57,5 +57,12 @@ foreach my $w (split(/,/, $_[0])) {
 return 1;
 }
 
+# check_ipvx_ipaddress(ipv6)
+# Validates an IPv6 address
+sub check_ipvx_ipaddress
+{
+return &check_ip6address(@_);
+}
+
 1;
 

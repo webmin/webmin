@@ -1,0 +1,17 @@
+index_custom=맞춤형 문서
+index_google=구글 검색
+index_others=다른 모듈에서 문서를 검색 할 때는 ..
+index_other_google=구글 검색 엔진
+index_other_kde=KDE 문서
+index_and=모두 일치
+index_or=일치
+
+search_custom=맞춤형 문서
+search_google=구글 검색 결과
+search_doxfer=Webmin 온라인 설명서
+
+man_epath=매뉴얼 페이지는 경로가 될 수 없습니다!
+
+acl_allow=허용 된 검색 유형을 편집 할 수 있습니까?
+
+check_ecannot=허용 된 검색 유형을 편집 할 수 없습니다

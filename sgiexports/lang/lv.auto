@@ -1,0 +1,39 @@
+index_title=NFS eksports
+index_add=Pievienojiet jaunu NFS eksportu
+index_dir=Katalogs
+index_hosts=Atļautie saimnieki
+index_all=Visi saimnieki
+index_none=Pagaidām nav definēts neviens NFS eksports.
+index_apply=Lietot konfigurāciju
+index_applydesc=Noklikšķiniet uz šīs pogas, lai aktivizētu visus iepriekš uzskaitītos eksportus ar konfigurētajām opcijām.
+index_return=eksporta saraksts
+
+edit_title1=Izveidot eksportu
+edit_title2=Rediģēt eksportēšanu
+edit_header=Eksportēt informāciju
+edit_dir=Eksportējamais direktorijs
+edit_hosts=Eksportēt uz mitinātājiem/tīkla grupām
+edit_ro=Tikai lasīt?
+edit_wsync=Sinhronizēt pēc rakstīšanas?
+edit_anon=Saknes lietotāja atļaujas
+edit_anon1=Noklusējums (izturieties kā <tt>neviens</tt>)
+edit_anon2=Liegt piekļuvi
+edit_anon0=Izturieties kā pret lietotāju
+edit_rw=Lasīšanas/rakstīšanas piekļuve
+edit_root=Piekļuve saknes failam
+edit_access=Piekļuve kalnam
+edit_all=Visi saimnieki
+edit_sel=Uzskaitītie saimnieki ..
+edit_none=Nav saimnieku
+
+save_err=Neizdevās saglabāt eksportu
+save_edir=Trūkst eksportējama direktorija vai tās nav
+save_eanon=Trūkst vai nav derīgs saknes lietotājs
+save_erw=Nav ievadīti lasīšanas un rakstīšanas resursdatori
+save_eroot=Nav ievadīti saknes faila piekļuves resursdatori
+save_eaccess=Nav ievadīti mount piekļuves saimnieki
+
+log_create_export=Izveidots $1 eksports
+log_delete_export=Izdzēsts $1 eksports
+log_modify_export=Modificēts $1 eksports
+log_apply=Lietotā konfigurācija

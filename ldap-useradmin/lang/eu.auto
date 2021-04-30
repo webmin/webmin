@@ -1,0 +1,103 @@
+index_title=LDAP erabiltzaileak eta taldeak
+index_ebase=Ez da LDAP bezeroaren konfigurazio fitxategirik aurkitu zure sisteman, beraz, erabiltzailearen eta taldearen oinarriak <a href='$1'>moduluaren konfigurazio</a> orrian ezarri behar dira.
+index_eperl=Modulu honek eskatzen duen $1 Perl modulua ez dago instalatuta edo ez dabil behar bezala. <a href='$2'>Egin klik hemen</a> deskargatu eta instalatzeko.
+index_eperl2=Perl-ek modulua kargatzerakoan salatu zuen errorea honako hau izan da :
+index_eldap=$1. Egin klik hemen <a href='$2'>moduluaren konfigurazioa</a> doitzeko.
+index_eschema=Webmin LDAP zerbitzariarekin konektatu da, baina eskema eskuratu zuen. Ziurtatu <a href='$1'>LDAP zerbitzaria</a> moduluan sarbidea ukatu ez zaiola.
+index_eimap=$1. Agian zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_emd5=Modulu hau <a href='$1'>konfiguratuta dago</a> pasahitzetarako MD5 enkriptatzea erabiltzeko, baina $2 Perl modulua ez dago instalatuta. <a href='$3'>Egin klik hemen</a> $2 modulua deskargatu eta instalatzeko.
+index_eslappasswd=Modulu <a href='$1'>konfiguratuta dago</a> pasahitzetarako LDAP MD5 enkriptatzea erabiltzeko, baina pasahitza zifratzeko erabiltzen den <tt>$2</tt> programa ez dago instalatuta.
+index_eusearch=Ezin izan da $1 azpiko erabiltzaileak bilatzean bilatu : $2 
+index_uadd=Gehitu LDAP erabiltzaile berria.
+index_gadd=Gehitu LDAP talde berria.
+index_unone=Ez da LDAP erabiltzailerik aurkitu $1 baino gutxiago.
+index_gnone=Ez da $1 azpian LDAP taldeik aurkitu.
+index_return=erabiltzaileen zerrenda
+index_greturn=taldeen zerrenda
+index_egsearch=Ezin izan da $1 etik beherako taldeak bilatu : $2 
+index_samba=Samba?
+index_cyrus=IMAP?
+index_users=LDAP erabiltzaileak
+index_groups=LDAP Taldeak
+
+imap_econn=Ezin izan da IMAP zerbitzariarekin konektatu $1 
+imap_elogin=Ezin izan da $2 : $3 IMAP zerbitzarira saioa hasi
+conn_eldap_host=Ez da LDAP bezeroaren konfigurazio fitxategirik aurkitu zure sisteman, eta, beraz, LDAP zerbitzaria ezarri behar da moduluen konfigurazio orrian
+conn_elogin=Ez da zure sisteman LDAP bezeroaren konfigurazio fitxategirik aurkitu, beraz, LDAP saioa moduluaren konfigurazio orrian ezarri behar da
+conn_efile_open=Ezin izan da LDAP lotura kredentzialen fitxategia ireki:
+
+uedit_cap=Erabiltzailearen gaitasunak
+uedit_samba=Samba saioa?
+uedit_cyrus=IMAP zerbitzariaren saioa?
+uedit_dn=Erabiltzailearen LDAP DN
+uedit_classes=LDAP objektu klaseak
+uedit_alias=Posta ezizena
+uedit_fields=LDAP eremu gehigarriak
+uedit_firstname=Izena
+uedit_lastname=Abizena
+uedit_raw=LDAP Ezaugarriak
+uedit_return=erabiltzailearen xehetasunak
+uedit_quota=IMAP kuota
+uedit_unquota=Ez aldatu
+uedit_sambapassopts=Samba Password Aukerak
+uedit_sambapwdlastset=Pasahitzaren azken eguneratzea
+uedit_sambapwdcanchange=Pasahitza alda daiteke
+uedit_sambabadpasswordcount=Pasahitzen kopurua okerra da
+uedit_sambaacctflags=Kontuaren banderak
+
+usave_eadd=Huts egin du erabiltzaileak LDAP datu-basean gehitzerakoan : $1 
+usave_emod=Ezin izan da erabiltzailea LDAP datu-basean aldatu : $1 
+usave_emoddn=Huts egin du erabiltzailea LDAP datu-basean berriz aldatzeak : $1 
+usave_egroupmod=Ezin izan da $1 taldea aldatu LDAP datu-basean : $2 
+usave_edelete=Ezin izan da erabiltzailea LDAP datu-basetik ezabatu : $1 
+usave_eicreate=Huts egin du erabiltzailea sortzerakoan
+usave_eiacl=Huts egin du administratzaileentzako eskubideak ematean
+usave_eimap=Erabiltzailea LDAP datu-basean ondo gorde da, baina IMAP akats bat gertatu da: $1 : $2 
+usave_eisub=Ezin izan da erabiltzailea $1 karpetan harpidetu
+usave_eiquota=Ezin izan da IMAP kuota ezarri
+usave_eifolder=Huts egin du $1 karpeta sortzean
+usave_eilogin=Ezin izan da erabiltzaile berri gisa saioa hasi
+usave_ecyruspass=Erabiltzailearen pasahitza normala sartu behar da edo ez da pasahitzik behar aukeran IMAP gaitzen denean.
+usave_ebook=Huts egin du helbide liburuko sarrera sortzerakoan : $1 
+usave_emodbook=Huts egin du helbide liburuko sarrera aldatzerakoan : $1 
+usave_emodbookdn=Huts egin du helbide liburuko sarrerak berriz aldatzeari : $1 
+usave_egone=Erabiltzailea jada ez dago!
+usave_ex86=Modulu hau ezin da erabili Samba erabiltzailearen pasahitza Intel ez diren sistemetan ezartzeko, konpilatutako x86 programaren araberakoa baita.
+usave_esamba=Modulu hau ezin da pasahitza Samba erabiltzaile bat ezartzeko, Samba Windows File Sharing modulua ez dago instalatuta.
+usave_ealiasdup=$1 ezizena $2 k erabiltzen du dagoeneko
+usave_eattrdup=$1 objektua $2 $3 erabiltzen ari da dagoeneko
+usave_eattrdupu=$1 erabiltzailea $2 $3 erabiltzen ari da dagoeneko
+usave_eattrdupg=$1 taldea $2 $3 erabiltzen ari da dagoeneko
+usave_ereal=Izen erreala falta da
+usave_equota=IMAPeko kuota falta edo baliogabea da
+
+search_err=$2 azpian $1 bilatzeak huts egin du : $3 
+
+gedit_dn=Taldearen LDAP DN
+gedit_return=taldeko xehetasunak
+gedit_cap=Taldearen gaitasunak
+gedit_samba=Samba taldea?
+
+gsave_egone=Taldea ez dago jada!
+gsave_edelete=Ezin izan da taldea LDAP datu-basetik ezabatu : $1 
+gsave_eadd=Huts egin du taldea LDAP datu-basean gehitzeak : $1 
+gsave_emod=Ezin izan da taldea aldatu LDAP datu-basean : $1 
+gsave_emoddn=Huts egin du taldea berriz aldatzeak LDAP datu-basean : $1 
+
+gdel_group=LDAP taldeko sarrera ezabatzen ..
+
+udel_pass=LDAP erabiltzailearen sarrera ezabatzen ..
+udel_book=Helbide-liburutik ezabatzen ..
+udel_imap=IMAP karpeta ezabatzen ..
+udel_warnimap=Lehendik dagoen postontzia etxeko direktorio ezabatzean ezabatuko da!
+udel_failed=.. huts egin du!  : $1 
+
+raw_title=LDAP Ezaugarriak
+raw_name=Ezaugarri izena
+raw_value=Baloreak
+raw_for=$1 erako
+
+batch_samba=Sortu Samba kontua erabiltzaile berrientzako?
+batch_imap=Sortu IMAP kontua erabiltzaile berrientzako?
+batch_descafter3=<b>Sortu</b> eta <b>aldatu</b> lerroetan, aukeraz erantsi ahal izango dituzu LDAP atributuak dituzten eremu gehigarriak <i>izena</i> = <i>balioa</i> formatuan, erabiltzaile berriei edo aldatutakoei esleitu.
+batch_eattr=LDAP atributu baliogabea $1 : $2 lerroan

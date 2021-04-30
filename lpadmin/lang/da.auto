@@ -1,0 +1,316 @@
+index_title=Printeradministration
+index_header=Tilgængelige printere
+index_name=Printer
+index_desc=Beskrivelse
+index_to=Udskriv til
+index_driver=Chauffør
+index_enabled=Aktiveret?
+index_accepting=Accept?
+index_jobs=Job
+index_none=Ingen printere er installeret på dette system.
+index_list=Liste ..
+index_jlist=Job ..
+index_jcount=$1 job ..
+index_add=Tilføj en ny printer.
+index_stop=Stop planlægning
+index_stopmsg=Klik på denne knap for at stoppe den kørende printplanlægningsproces. Dette forhindrer lokale eller eksterne brugere i at udskrive på dit system.
+index_start=Start planlægning
+index_startmsg=Klik på denne knap for at starte printplanlægningsprocessen. Dette giver lokale og eksterne brugere mulighed for at udskrive på dit system.
+index_restart=Genstart planlægning
+index_restartmsg=Klik på denne knap for at genstarte printplanlægningsprocessen. Dette tvinger den aktuelle udskrivningskonfiguration til at blive anvendt.
+index_return=printerliste
+index_esystem=Installer enten softwaren til dit valgte udskriftssystem, eller brug <a href='$1'>modulkonfiguration</a> til at ændre det.
+index_style=Udskrivningssystem: $1 
+index_cluster=Cluster-servere
+index_clusterdesc=Klik på denne knap for at konfigurere yderligere Webmin-servere, hvorpå printere oprettes, opdateres og slettes.
+index_delete=Slet valgte printere
+
+style_solaris=Solaris
+style_linux=Linux LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=CUPS
+style_irix=IRIX
+style_aix=AIX
+
+edit_eedit=Du har ikke tilladelse til at redigere denne printer
+edit_eadd=Det er ikke tilladt at tilføje printere
+edit_add=Opret printer
+edit_edit=Rediger printer
+edit_conf=Printerkonfiguration
+edit_name=Navn
+edit_acc=Accepterer du anmodninger?
+edit_why=Nej - hvorfor ikke
+edit_desc=Beskrivelse
+edit_ena=Udskrivning aktiveret?
+edit_acl=Adgangskontrol
+edit_allow=Tillad alle
+edit_deny=Nægt alle
+edit_allowu=Tillad listede brugere ..
+edit_denyu=Nægt de listede brugere ..
+edit_banner=Udskriv banner?
+edit_opt=Valgfri
+edit_default=Standardprinter?
+edit_already=Allerede standardprinteren
+edit_max=Maksimal udskriftsjobstørrelse
+edit_unlimited=Ubegrænset
+edit_dacc=Driveren accepterer
+edit_dtext=Tekst
+edit_dpost=efterskrift
+edit_dother=Andet
+edit_alt=Alternative printernavne
+edit_dest=Print destination
+edit_dev=Lokal enhed
+edit_file=Lokal fil
+edit_remote=Fjern Unix-server
+edit_rqueue=Printer
+edit_type=Type
+edit_smb=Ekstern Windows-server
+edit_share=Printer
+edit_user=Bruger
+edit_pass=Adgangskode
+edit_wgroup=arbejdsgruppe
+edit_hpnp=Ekstern HPNP-server
+edit_port=Havn
+edit_direct=Direkte TCP-forbindelse
+edit_dport=Havn
+edit_driver=Printerdriver
+edit_check=Kontroller, om ekstern server er op?
+
+blocks=blokke
+
+save_err=Kunne ikke gemme printeren
+save_eadd=Det er ikke tilladt at tilføje printere
+save_eedit=Du har ikke tilladelse til at redigere denne printer
+save_ename='$1' er ikke et gyldigt printernavn
+save_edup=En printer kaldet '$1' findes allerede
+save_eallow=Ingen brugere, der tillader indtastning
+save_edeny=Ingen brugere at nægte indtastet
+save_euser=Bruger '$1' findes ikke
+save_etype=Du skal vælge mindst en type for denne driver til at acceptere
+save_emax=Den maksimale udskriftsjobstørrelse skal være et heltal
+save_efile='$1' findes ikke
+save_erhost=Fjernhost '$1' findes ikke
+save_erport=Fjernport '$1' er ikke gyldig
+save_erqueue='$1' er ikke et gyldigt fjernkønavn
+save_eremote=Drivere kan ikke bruges med eksterne Unix-printere
+save_edhost=Direkte vært '$1' findes ikke
+save_edport=Manglende eller ugyldig direkte port
+save_evalid=Printersystemet tillader ikke denne printer
+save_errslave=Printer oprettet OK på dette system, men følgende fejl opstod på klyngesystemer : $1 
+save_egone=Ingen printer med navnet '$1' blev fundet
+save_errdelslave=Printer slettet OK på dette system, men følgende fejl opstod på klyngesystemer : $1 
+
+jobs_title=Printjob
+jobs_header=Udskriftsjob på $1 
+jobs_id=Job-id
+jobs_size=Størrelse
+jobs_by=Indsendt af
+jobs_when=Indsendt kl
+jobs_file=Filnavn
+jobs_cancel=Klik på et job-id fra listen ovenfor for at annullere.
+jobs_cancelview=Klik på et job-id fra listen ovenfor for at annullere, eller klik på jobstørrelsen for at se det.
+jobs_none=Printeren $1 har ingen ventende job.
+jobs_all=Annuller alle udskriftsjob
+jobs_bytes=bytes
+jobs_test=Udskriv testside
+jobs_cancelsel=Annuller valgte job
+jobs_on=På printer $1 
+jobs_return=liste over udskriftsjob
+
+cancel_ecannot=Du har ikke tilladelse til at annullere udskriftsjob
+cancel_err=Kunne ikke annullere udskriftsjob
+cancel_egone=Udskriftsjob $1 findes ikke længere
+
+view_ecannot=Du kan ikke se dette udskriftsjob
+view_egone=Dette udskriftsjob findes ikke længere
+
+start_ecannot=Du har ikke tilladelse til at starte planlæggeren
+start_err=Kunne ikke starte scheduler
+
+stop_ecannot=Du har ikke tilladelse til at stoppe planlæggeren
+stop_err=Kunne ikke stoppe scheduler
+
+restart_ecannot=Du har ikke tilladelse til at genstarte planlæggeren
+restart_err=Kunne ikke genstarte scheduler
+
+webmin_none=Ingen
+webmin_nonemsg=Efterskrift eller tekstprinter
+webmin_remotemsg=Fjernprinter
+webmin_model=Model
+webmin_prog=Program
+webmin_driver=Webmin-driver
+webmin_uniprint=Uniprint-driver
+webmin_edrivers=Kunne ikke hente chauffører fra $1. Webmin-printerdrivere, der bruger ghostscript, er ikke tilgængelige
+webmin_egs=Kommandoen $1 blev ikke fundet. Webmin-printerdrivere, der bruger ghostscript, er ikke tilgængelige
+webmin_edriver='$1' findes ikke
+
+caldera_none=Ingen
+caldera_nonemsg=Ekstern printer eller rå printer
+caldera_prog=Program
+caldera_coas=COAS-driver
+caldera_printer=Printer og opløsning
+caldera_eof=Send EOF?
+caldera_paper=Papirstørrelse
+caldera_double=Udskriv dobbeltsidet?
+caldera_gsopts=Yderligere GS-indstillinger
+caldera_uniprint=Uniprint-driver
+caldera_eprog='$1' findes ikke
+caldera_edriver=Ingen printerdriver valgt
+caldera_eres=Ingen opløsning valgt
+
+redhat_none=Ingen
+redhat_nonemsg=Efterskrift eller tekstprinter
+redhat_prog=Program
+redhat_driver=Redhat driver
+redhat_printer=Printer og opløsning
+redhat_eof=Send EOF?
+redhat_paper=Papirstørrelse
+redhat_pages=Sider pr. Udgangsside
+redhat_gsopts=Yderligere GS-indstillinger
+redhat_hmargin=Højre/venstre margen
+redhat_vmargin=Øverste/nederste margen
+redhat_crlf=Rettelse af trappetrin tekst?
+redhat_eprog='$1' findes ikke
+redhat_edriver=Ingen printerdriver valgt
+redhat_ehmargin=Manglende eller ugyldig højre/venstre margen
+redhat_evmargin=Manglende eller ugyldig øverste/nederste margin
+redhat_eres=Ingen opløsning valgt
+redhat_printer2=Printermodel og driver
+
+suse_none=Ingen
+suse_nonemsg=Efterskrift eller tekstprinter
+suse_prog=Program
+suse_driver=APSfilter-driver
+suse_printer=Printertype
+suse_res=Opløsning i DPI
+suse_colour=Farveprinter?
+suse_paper=Papirstørrelse
+suse_method=Filtreringsmetode
+suse_auto=Automatisk
+suse_ascii=ASCII
+suse_raw=Rå
+suse_extra=Ekstra ghostscript-indstillinger
+suse_yast2=YAST2 driver
+suse_edriver=Ingen printertype valgt
+suse_eres=Manglende eller ugyldig opløsning
+
+estop=Kunne ikke stoppe lpd : $1 
+
+acl_printers=Printere, som denne bruger kan konfigurere
+acl_add=Kan tilføje nye printere?
+acl_cancel=Kan annullere udskriftsjob?
+acl_stop=Kan stoppe eller starte scheduler?
+acl_restart=Genstart kun
+acl_listed=Kun på udvalgte printere ..
+acl_pall=Alle printere
+acl_psel=Valgte ..
+acl_view=Vis ikke-konfigurerbare printere?
+acl_test=Kan udskrives testsider?
+acl_user=Administrer udskriftsjob, der ejes af
+acl_user_all=Alle brugere
+acl_user_this=Nuværende Webmin-bruger
+acl_delete=Kan du slette printere?
+acl_cluster=Kan administrere printerklynge?
+
+log_stop=Stoppet printplanlægning
+log_start=Startet printplanlægning
+log_restart=Genstartet printplanlægning
+log_cancel_job=Annulleret udskriftsjob $2 på $1 
+log_cancel_all=Annulleret alle udskriftsjob på $1 
+log_cancel_sel=Annulleret $2 udskriftsjob på $1 
+log_create=Oprettet printer $1 på $2 
+log_modify=Ændret printer $1 på $2 
+log_delete=Slet printer $1 på $2 
+log_create_l=Oprettet $3 printer $1 på $2 
+log_modify_l=Ændret $3 printer $1 på $2 
+log_delete_l=Slet $3 printer $1 på $2 
+
+linux_paralel=Parallelport $1 
+linux_serial=Seriel port $1 (COM $1)
+linux_null=Nul enhed
+linux_usb=USB-printer $1 
+linux_ecmd=Kommandoen $1 blev ikke fundet på dit system, hvilket indikerer, at Linux-printersystemet ikke er installeret.
+linux_espool=Spoolkataloget $1 findes ikke på dit system, hvilket indikerer, at Linux-printersystemet ikke er installeret.
+
+freebsd_paralel=Parallel havn
+freebsd_serial=Seriel port $1 (COM $1)
+freebsd_ecmd=Kommandoen $1 blev ikke fundet på dit system, hvilket indikerer, at FreeBSD-udskrivningssystemet ikke er installeret.
+freebsd_espool=Spoolkataloget $1 findes ikke på dit system, hvilket indikerer, at FreeBSD-printersystemet ikke er installeret.
+
+openbsd_paralel=Parallel havn
+openbsd_serial=Seriel port $1 (COM $1)
+
+unixware_paralel=Parallelport $1 
+unixware_serial=Seriel port $1 
+unixware_null=Nul enhed
+unixware_ecmd=Kommandoen $1 blev ikke fundet på dit system, hvilket indikerer, at UnixWare-udskrivningssystemet ikke er installeret.
+
+hpux_paralel=Parallel $1 
+hpux_serial=Serien $1 
+hpux_null=Nul enhed
+hpux_ecmd=Kommandoen $1 blev ikke fundet på dit system, hvilket indikerer, at HPUX-printersystemet ikke er installeret.
+hpux_eiface=Interface-scripts-biblioteket $1 findes ikke på dit system, hvilket indikerer, at HPUX-printersystemet ikke er installeret.
+
+lprng_paralel=Parallelport $1 
+lprng_serial=Seriel port $1 (COM $1)
+lprng_null=Nul enhed
+lprng_ecmd=Kommandoen $1 blev ikke fundet på dit system, hvilket indikerer, at LPRng-printersystemet ikke er installeret.
+lprng_espool=Spoolkataloget $1 findes ikke på dit system, hvilket indikerer, at LPRng-printersystemet ikke er installeret.
+
+solaris_paralel=Parallel havn
+solaris_uparalel=Ultra 5/10 parallelport
+solaris_serial=Seriel port $1 
+solaris_null=Nul enhed
+solaris_ecmd=Kommandoen $1 blev ikke fundet på dit system, hvilket indikerer, at Solaris-udskrivningssystemet ikke er installeret.
+
+test_title=Udskriv testside
+test_ecannot=Du må ikke udskrive testsider
+test_desc=Denne formular giver dig mulighed for at udskrive en testside for printer $1. Vælg den type side, du vil udskrive :
+test_0=Sort-hvid Postscript-side
+test_1=Farve Postscript side
+test_2=Almindelig ASCII-tekst
+test_3=Enhver uploadet fil
+test_print=Udskriv side
+test_exec=Udskrivning af testside med kommando $1 ..
+test_failed=.. kommandoen mislykkedes!
+test_ok=.. kommandoen fuldført.
+
+cups_none=Ingen
+cups_nonemsg=Ekstern printer eller rå printer
+cups_prog=Program
+cups_driver=CUPS-driver
+cups_eprog='$1' er ikke et gyldigt program
+cups_opts=Valgmuligheder for $1 
+cups_ecmd=Kommandoen $1 blev ikke fundet på dit system, hvilket indikerer, at CUPS-udskrivningssystemet ikke er installeret.
+
+irix_ecmd=Kommandoen $1 blev ikke fundet på dit system, hvilket indikerer, at IRIX-udskrivningssystemet ikke er installeret.
+irix_eiface=Interface-scripts-biblioteket $1 findes ikke på dit system, hvilket indikerer, at IRIX-printersystemet ikke er installeret.
+
+aix_port=Printerport $1 
+aix_edesc=Ugyldig beskrivelse - kun bogstaver og tal er tilladt og ingen mellemrum
+aix_ecmd=AIX-printerserveren $1 blev ikke fundet. Måske er det ikke installeret, eller et andet printersystem er i brug.
+
+cluster_title=Clusterprintservere
+cluster_none=Der er endnu ikke tilføjet nogen servere til printerklyngen.
+cluster_host=Værtsnavn
+cluster_desc=Beskrivelse
+cluster_os=Operativ system
+cluster_add=Tilføj server
+cluster_gadd=Tilføj servere i gruppe
+cluster_need=Du skal tilføje servere med et login og password i Webmin Servers Index-modulet, før de kan styres her.
+cluster_return=klyngeservere
+cluster_delete=Fjern valgte
+cluster_ecannot=Du har ikke tilladelse til at administrere klyngeprintservere
+
+add_title=Tilføj servere
+add_msg=Tilføjer $1 ..
+add_gmsg=Tilføjelse af servere i gruppe $1 ..
+add_err=Kunne ikke tilføje server
+add_gerr=Kunne ikke tilføje gruppe
+add_echeck=Server $1 har ikke printeradministrationsmodulet
+add_ediff=Server $1 bruger et andet printersystem ($2) til denne server
+add_ediff2=Server $1 bruger en anden printerdriver ($2) til denne server
+add_ok=Tilføjet $1, med $2 printere.

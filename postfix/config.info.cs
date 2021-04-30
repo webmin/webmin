@@ -1,0 +1,9 @@
+line1=Nastavení konfigurace,11
+perpage=Pořet poštovních zpráv zobrazených na jedné stránce,0,6
+line2=Konfigurace systému,11
+postfix_control_command=Úplná cesta ke kontrolnímu příkazu Postfixu,0
+postfix_config_command=Úplná cesta ke konfiguračnímu příkazu Postfixu,0
+postfix_config_file=Úplná cesta ke konfiguračnímu souboru Postfixu,0
+postfix_aliases_table_command=Úplná cesta k příkazu Postfixu generujícího aliasy,0
+postfix_newaliases_command=Úplná cesta k příkazu "newaliases" (Sendmail kompatibilita),0
+postfix_lookup_table_command=Úplná cesta k příkazovému managementu pro zpětvovazebnou tabulku Postfixu (`postmap'),0

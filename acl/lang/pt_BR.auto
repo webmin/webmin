@@ -1,0 +1,145 @@
+index_screate=Crie um novo usuário seguro.
+index_twofactor=Autenticação de dois fatores
+index_joingroup=Adicionar ao grupo:
+index_eulist=Falha ao listar usuários: $1 
+index_eglist=Falha ao listar grupos: $1 
+
+edit_title3=Criar usuário Webmin seguro
+edit_twofactor=Tipo de autenticação de dois fatores
+edit_twofactorprov=Usando o provedor $1 com o ID $2 
+edit_twofactorcancel=Remover requisito de autenticação de dois fatores
+edit_twofactornone=Nenhuma configuração ainda
+edit_twofactoradd=Ativar dois fatores para o usuário
+edit_egone=O usuário selecionado não existe mais!
+edit_proto=Tipo de armazenamento
+edit_proto_mysql=Banco de dados MySQL
+edit_proto_postgresql=Banco de dados PostgreSQL
+edit_proto_ldap=Servidor LDAP
+edit_proto_=Ficheiros locais
+edit_safe=Nível de privilégio
+edit_safe0=Irrestrito
+edit_safe1=Apenas módulos seguros
+edit_unsafe=Redefinir para irrestrito
+
+save_eunixname=O nome de usuário '$1' não é um usuário Unix e, portanto, não pode ser usado no modo de segurança
+save_etemp=A opção de forçar uma alteração de senha no próximo login não pode ser usada, a menos que <a href='$1'>solicite aos usuários que insiram novas senhas</a> esteja ativado
+
+delete_eanonuser=Este usuário está sendo usado para acesso anônimo ao módulo
+
+cert_etempdir=Arquivo de certificado inválido
+
+acl_pass=Pode alterar as restrições de senha?
+acl_sql=Pode configurar o banco de dados de usuários e grupos?
+
+log_joingroup=Adicionados $1 usuários Webmin ao grupo $2 
+log_sql=Banco de dados de usuário e grupo alterado
+log_twofactor=Usuário registrado $1 com o provedor de dois fatores $2 
+log_onefactor=Usuário desinscrito $1 para autenticação de dois fatores
+
+gedit_desc=Descrição do grupo
+gedit_egone=O grupo selecionado não existe mais!
+
+gsave_edesc=Descrição inválida - o caractere: não é permitido
+
+convert_sync2=Sincronizar senha com o usuário Unix no futuro?
+convert_user=Usuário Unix
+convert_action=Medida tomada
+convert_done= $1 usuários convertidos, $2 inválidos, $3 já existem, $4 excluído.
+convert_users=Usuários para converter
+
+sync_when=Quando sincronizar
+
+unix_restrict2=Restrições adicionais
+unix_header=Configurações de autenticação de usuário Unix
+unix_utable=Usuários Unix permitidos
+
+sessions_actions=Ações..
+sessions_logouts=Mostrar também sessões desconectadas.
+sessions_state=Estado
+sessions_this=Este login
+sessions_in=Logado
+sessions_out=Desconectado
+sessions_kill=Desconectar..
+
+logins_title=Logins recentes do Webmin
+
+udeletes_jerr=Falha ao adicionar usuários ao grupo
+
+pass_ecannot=Você não tem permissão para editar restrições de senha
+
+sql_title=Banco de dados de usuário e grupo
+sql_ecannot=Você não tem permissão para configurar o banco de dados de usuário e grupo
+sql_header=Opções para back-end do banco de dados para usuários e grupos
+sql_host=nome de anfitrião
+sql_user=Nome do usuário
+sql_pass=Senha
+sql_db=Nome do banco de dados
+sql_ssl=Criptografia de conexão
+sql_ssl0=Nenhum
+sql_ssl1=SSL
+sql_ssl2=TLS
+sql_userclass=Classe de objeto para usuários
+sql_groupclass=Classe de objeto para grupos
+sql_euserclass=Classe de objeto ausente ou inválida para usuários
+sql_egroupclass=Classe de objeto ausente ou inválida para grupos
+sql_none=Use apenas arquivos locais para armazenar usuários e grupos
+sql_mysql=Use banco de dados MySQL
+sql_postgresql=Use o banco de dados PostgreSQL
+sql_ldap=Usar servidor LDAP
+sql_prefix=Criar sob DN
+sql_addto0=Adicione novos usuários ao banco de dados selecionado acima
+sql_addto1=Adicionar novos usuários a arquivos locais
+sql_emod=Módulo Perl obrigatório ausente <tt>$1</tt>
+sql_etable=Falha ao consultar a tabela necessária $1:$2 
+sql_eldapdn=DN LDAP base $1 não foi encontrado
+sql_eclass=A classe de objeto LDAP $1 não existe no esquema do servidor
+sql_err=Falha ao salvar as configurações de banco de dados do usuário e grupo
+sql_ehost=Nome de host ausente ou não resolvível
+sql_euser=Nome de usuário ausente ou inválido (nenhum espaço permitido)
+sql_epass=Senha inválida (nenhum espaço permitido)
+sql_edb=Nome de banco de dados inválido (nenhum espaço permitido)
+sql_eprefix=DN base ausente ou inválido (nenhum espaço permitido)
+sql_eprefix2=DN base com aparência inválida - deve ser como <tt>dc = mydomain, dc = com</tt>
+sql_title2=Criar tabelas ausentes
+sql_tableerr=As configurações de banco de dados de usuário e grupo são válidas, mas algumas tabelas necessárias pelo Webmin estão ausentes: $1 
+sql_tableerr2=Clique no botão <b>Criar tabelas</b> abaixo para que elas sejam criadas automaticamente ou execute manualmente o SQL abaixo.
+sql_make=Criar tabelas
+sql_title3=Criar DN ausente
+sql_dnerr=As configurações de banco de dados de usuário e grupo são válidas, mas o DN LDAP necessário ao Webmin está ausente: $1 
+sql_dnerr2=Clique no botão <b>Criar DN</b> abaixo para que ele seja criado automaticamente ou adicione-o ao servidor LDAP manualmente.
+sql_makedn=Criar DN
+sql_schema=Faça o download do esquema LDAP
+
+make_title=Criar tabelas de usuário e grupo
+make_err=Falha ao criar tabelas de usuário e grupo
+make_exec=Executando SQL $1..
+make_failed=.. criação falhou: $1 
+make_done=.. feito
+make_still=Alguns problemas foram encontrados mesmo após a criação da tabela: $1 
+
+makedn_title=Criar DN LDAP
+makedn_eoc=Nenhuma classe de objeto estrutural encontrada!
+makedn_exec=Criando DN pai $1..
+makedn_failed=.. criação falhou: $1 
+makedn_done=.. feito
+makedn_still=Alguns problemas foram encontrados mesmo após a criação do DN: $1 
+
+schema_title=Faça o download do esquema LDAP
+schema_desc=Antes que o Webmin possa usar um servidor LDAP para armazenar usuários e grupos, ele deve ser configurado para usar o esquema abaixo. Isso geralmente pode ser feito salvando a definição do esquema em <tt>/etc/ldap/schema</tt> ou <tt>/etc/openldap/schema</tt> como <tt>webmin.schema</tt>, depois, configurando o servidor para carregar esse arquivo de esquema.
+schema_download=Faça o download do arquivo de esquema: <a href=$1>$1</a>
+
+twofactor_err=Falha ao configurar a autenticação de dois fatores
+twofactor_euser=Seu usuário Webmin não foi encontrado!
+twofactor_title=Autenticação de dois fatores
+twofactor_disable=Desativar autenticação de dois fatores
+twofactor_already=Seu login no Webmin já tem autenticação de dois fatores ativada com o provedor $1 e o ID da conta $2.
+twofactor_already2=O login do Webmin $3 já tem autenticação de dois fatores ativada com o provedor $1 e o ID da conta $2.
+twofactor_desc=Esta página permite que você ative a autenticação de dois fatores para seu login no Webmin usando <a href='$2' target=_blank>$1</a>. Uma vez ativo, um token de autenticação adicional será necessário ao efetuar login no Webmin.
+twofactor_desc2=Esta página permite ativar a autenticação de dois fatores para o login no Webmin $3 usando <a href='$2' target=_blank>$1</a>. Uma vez ativo, um token de autenticação adicional será necessário ao efetuar login no Webmin.
+twofactor_enable=Inscreva-se para autenticação de dois fatores
+twofactor_header=Detalhes de registro de autenticação de dois fatores
+twofactor_enrolling=Registrando para autenticação de dois fatores com o provedor $1..
+twofactor_failed=.. inscrição falhou: $1 
+twofactor_done=.. completo. Seu ID com este provedor é <tt>$1</tt>.
+twofactor_setup=A autenticação de dois fatores ainda não foi ativada neste sistema, mas pode ser ativada usando o módulo <a href='$1'>Webmin Configuration</a>.
+twofactor_ebutton=Nenhum botão clicou!

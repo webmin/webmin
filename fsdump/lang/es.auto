@@ -1,0 +1,116 @@
+index_none2=No existen configuraciones de copias de seguridad del sistema de archivos a las que tenga acceso.
+index_restore2=Restaurar copia de seguridad del sistema de archivos
+index_restoremsg2=Haga clic en este botón para comenzar el proceso de seleccionar una copia de seguridad del sistema de archivos para restaurar.
+index_running=Ejecución de trabajos de respaldo
+index_jobs=Copias de seguridad programadas
+index_start=Empezó a las
+index_status=Estado actual
+index_status_running=Corriendo
+index_status_tape=Esperando la cinta
+index_action=Acción
+index_kill=Terminar
+index_newtape=Cinta cargada
+index_noact=Ninguno disponible
+index_now=Apoyo ..
+index_follow=Después de $1 
+index_forcetar=En formato TAR
+index_delete=Eliminar copias de seguridad seleccionadas
+index_nostrftime=Advertencia: algunos trabajos de copia de seguridad usan % en sus nombres de archivo, pero la sustitución de strftime no está habilitada en la página de configuración del módulo.
+
+dump_exclude=Archivos y directorios para omitir
+dump_ehuser2=El nombre de usuario no puede contener el carácter @
+dump_fok=Detener si falla el comando
+dump_fok2=Informe de falla si falla el comando
+dump_aok=Omitir comando incluso si falla la copia de seguridad
+dump_rsh3=FTP
+dump_pass=Contraseña para iniciar sesión SSH
+dump_pass2=Contraseña para inicio de sesión SSH/FTP
+dump_ecannot1=No tienes permiso para crear copias de seguridad
+dump_ecannot2=No tienes permiso para editar esta copia de seguridad
+dump_ecannot3=No tiene permiso para hacer una copia de seguridad de este directorio
+dump_format=Formato de copia de seguridad
+dump_tar=Unix TAR
+dump_dumpfs=Volcado del sistema de archivos $1 
+dump_gzip=Comprimir archivo?
+dump_gzip1=Sí, con gzip
+dump_gzip2=Sí, con bzip2
+dump_gzip3=Sí, con XZ
+dump_bcomp=¿Almacenar datos comprimidos en bloques?
+dump_xdev=¿Limitar la copia de seguridad a un sistema de archivos?
+dump_update2=¿Solo agrega nuevos archivos al archivo?
+dump_ignoreread=¿Ignorar errores de lectura en archivos?
+dump_notape=Solicitar nueva cinta si es necesario?
+dump_rmt=Ruta a <tt>rmt</tt> en el sistema remoto
+dump_links=¿Seguir enlaces simbólicos?
+dump_egzip=La opción de compresión gzip es incompatible con la opción de tamaño de cinta
+dump_egzip2=La opción de compresión gzip es incompatible con la opción de copia de seguridad de múltiples archivos
+dump_egzip3=La opción de compresión gzip es incompatible con la opción de simplemente agregar nuevos archivos al archivo
+dump_emulti=Las copias de seguridad de múltiples archivos no se pueden hacer en un dispositivo de cinta
+dump_emulti2=Las copias de seguridad de múltiples archivos no se pueden hacer en un servidor remoto
+dump_ermt=Falta o no es válida la ruta al programa <tt>rmt</tt>
+dump_reverify=¿Intenta restaurar la prueba después de la copia de seguridad para verificar?
+dump_remount=¿Volver a montar con la opción <tt>noatime</tt> durante la copia de seguridad?
+dump_eftpupdate=No es posible agregar archivos a un archivo existente cuando se utiliza FTP.
+dump_eleveldir=Solo se permiten copias de seguridad de nivel 0 para directorios que no son puntos de montaje del sistema de archivos
+dump_eupdatedir=El archivo <tt>/etc/dumpdates</tt> solo se puede actualizar para directorios que son puntos de montaje del sistema de archivos
+
+edit_title3=Copia de seguridad de clonación
+edit_header2=Programa de respaldo
+edit_header3=Opciones de respaldo
+edit_enabled_af=Habilitado, después de:
+edit_to=$1 a $2 
+edit_tolevel=$1 a $2 (nivel $3)
+edit_special=Programa de respaldo
+edit_when=Cuando hacer una copia de seguridad
+edit_clone=Clon
+
+backup_reverify=.. completo. Ahora verificando la copia de seguridad. ..
+backup_beforefailed=.. antes de que fallara el comando de copia de seguridad!
+backup_afterfailed=.. después de que el comando de copia de seguridad falló!
+backup_noverify=.. ¡Fallo en la verificación!
+backup_notape=.. copia de seguridad excedió la capacidad de una sola cinta. El cambio de cinta solo es compatible cuando las copias de seguridad se ejecutan como procesos en segundo plano.
+backup_egone=¡La copia de seguridad no existe!
+backup_bg=Iniciando el proceso de respaldo en segundo plano. Puede controlar su progreso en la sección <b>Ejecución de trabajos de copia de seguridad</b> en la página principal del módulo, y se le notificará su estado final por correo electrónico.
+backup_ecannot=No tiene permiso para hacer una copia de seguridad de este directorio
+
+restore_theader=Restaurar copia de seguridad del archivo Unix TAR
+restore_ecannot=No tiene permiso para restaurar copias de seguridad
+restore_perms=Restaurar permisos de archivo?
+restore_gzip=¿Descomprimir archivo?
+restore_keep=¿No sobrescribir archivos?
+restore_emulti=Las restauraciones de múltiples archivos no se pueden hacer desde un dispositivo de cinta
+restore_emulti2=Las restauraciones de múltiples archivos no se pueden hacer desde un servidor remoto
+
+log_bgbackup=Se inició la copia de seguridad de $1 a $2 
+log_kill=Copia de seguridad finalizada para $1 
+
+kill_err=Error al finalizar la copia de seguridad
+kill_egone=¡Ya no corre!
+kill_ecannot=No tiene permiso para finalizar esta copia de seguridad
+
+newtape_err=Error al señalar nueva cinta
+newtape_egone=¡La copia de seguridad ya no se está ejecutando!
+newtape_estatus=La copia de seguridad ya no está esperando una nueva cinta
+newtape_ecannot=No tiene permiso para administrar esta copia de seguridad
+
+acl_edit=¿Puede crear y editar copias de seguridad?
+acl_restore=Puede restaurar copias de seguridad?
+acl_cmds=¿Se pueden editar los comandos antes y después?
+acl_extra=¿Se pueden editar parámetros adicionales de la línea de comandos?
+acl_dirs=Directorios permitidos para copias de seguridad
+acl_all=Todos los directorios
+acl_list=Solo listado ..
+
+delete_err=Error al eliminar las copias de seguridad
+delete_enone=Ninguna seleccionada
+
+email_already=La copia de seguridad ya se está ejecutando con PID $1.
+email_ebefore=¡El comando antes de la copia de seguridad falló!
+email_verify=Verificando copia de seguridad ..
+email_eafter=¡El comando después de la copia de seguridad falló!
+email_subject=Copia de seguridad de $1 en $2 
+email_ok=Copia de seguridad exitosa
+email_failed=¡Copia de seguridad fallida!
+
+newtape_subject=Cambio de cinta $1 para la copia de seguridad de $2 en $3 
+newtape_body=La copia de seguridad de $2 en $3 ha alcanzado la cantidad máxima de datos permitida en la cinta $1. Deberá cargar una nueva cinta y presionar el enlace 'Cinta cargada' en el módulo de Copia de seguridad del sistema de archivos de Webmin para que la copia de seguridad continúe.

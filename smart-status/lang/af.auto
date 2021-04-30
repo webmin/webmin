@@ -1,0 +1,58 @@
+index_title=SMART Drive-status
+index_ecmd=Die SMART-beheeropdrag $1 is nie op u stelsel gevind nie, of is nie korrek opgestel in die <a href='$2'>module-opstelling</a> nie. Dit moet geïnstalleer word voordat hierdie module gebruik kan word.
+index_ecmd2=Die opdrag $1 blyk nie die SMART-beheeropdrag te wees nie. Dit moet korrek in die <a href='$2'>module-opstelling</a> gestel word voordat hierdie module gebruik kan word.
+index_version=SMARTsuite weergawe $1 
+index_show=Wys die status van die skyf:
+index_ok=Wys
+index_eidescsi=Geen IDE-, SCSI- of SATA-aandrywers is op u stelsel gevind nie.
+index_drive=Status van drywer $1 
+index_drivesub=Status van skyf $1, skyf $2 
+index_desc=plek
+index_size=Ry grootte
+index_model=Maak en modelleer
+index_support=Ondersteun SMART?
+index_enabled=SMART geaktiveer?
+index_check=Bestuurstjek geslaag?
+index_short=Kort selftoets
+index_ext=Uitgebreide selftoets
+index_data=Toets van data-insameling
+index_errors=Foute aangeteken
+index_ecount=$1 foute bespeur
+index_attrs=Bykomende SMART-eienskappe
+index_raw=Volledige SMART-statusverslag
+index_return=module-indeks
+index_family=Modelfamilie
+index_serial=Reeksnommer
+index_capacity=kapasiteit
+index_norm=genormaliseer:
+
+monitor_type=SMART Drive Check
+monitor_type2=SSD Wearout
+monitor_drive=Ry om na te gaan
+monitor_errors=Gaan foutfout ook na?
+monitor_errorsinc=Ja, maar slegs waarskuwing as fouttelling toeneem
+monitor_other=Ander ..
+monitor_edrive=Ontbrekende of ongeldige stasie om na te gaan
+monitor_nosuch=Geen so ry nie
+monitor_nosmart=Geen SMART-ondersteuning nie
+monitor_errorsfound=Gerapporteer $1 foute
+monitor_errorsinced=Foute het toegeneem van $2 tot $1 
+monitor_wearlevel=Misluk as die slytasievlak onder is
+monitor_ewearlevel=Ongeldige slytasiepersentasie
+monitor_nowearout=Drive meld nie 'n SSD-wearout-aanwyser aan nie
+monitor_wornout=Dravlak het tot $1 gedaal
+
+short_title=Kort selftoets
+short_doing=Begin kort selftoets van $1.
+short_failed=.. misluk!
+short_ok=.. toets begin OK. U kan die resultate op die hoofblad van die module sien.
+
+ext_title=Uitgebreide selftoets
+ext_doing=Begin met uitgebreide selftoets van $1.
+ext_failed=.. misluk!
+ext_ok=.. toets begin OK. U kan die resultate op die hoofblad van die module sien.
+
+data_title=Toets van data-insameling
+data_doing=Begin vanlyn data-insameling op $1.
+data_failed=.. misluk!
+data_ok=.. versameling begin OK. U kan die resultate op die hoofblad van die module sien.

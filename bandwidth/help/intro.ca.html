@@ -1,58 +1,58 @@
-<header>Monitorització d'Amplada de Banda</header>
+<header>MonitoritzaciÃ³ d'Amplada de Banda</header>
 
-Aquest mòdul es pot utilitzar per crear informes senzills sobre l'ús de 
-l'amplada de banda per port, host, protocol i hora per al trànsit enviat
-o reenviat a través del sistema. És útil tant per a hosts independents com
+Aquest mÃ²dul es pot utilitzar per crear informes senzills sobre l'Ãºs de 
+l'amplada de banda per port, host, protocol i hora per al trÃ nsit enviat
+o reenviat a travÃ©s del sistema. Ã‰s Ãºtil tant per a hosts independents com
 per aquells que actuen de portal (possiblement amb NAT) d'una xarxa. <p>
 
-Abans de poder-lo utilitzar, el mòdul ha de configurar algunes regles del
-tallafoc i una entrada de syslog per capturar el trànsit enviat i rebut 
-a través del sistema. En el moment de configurar-lo, has de seleccionar
-la interfície de xarxa externa del sistema sobre la qual es monitoritzarà
-el trànsit. Això serà habitualment la interfície PPP utilitzada pel
-trucador o la connexió ADSL, o la interfície Ethernet connectada al mòdem
+Abans de poder-lo utilitzar, el mÃ²dul ha de configurar algunes regles del
+tallafoc i una entrada de syslog per capturar el trÃ nsit enviat i rebut 
+a travÃ©s del sistema. En el moment de configurar-lo, has de seleccionar
+la interfÃ­cie de xarxa externa del sistema sobre la qual es monitoritzarÃ 
+el trÃ nsit. AixÃ² serÃ  habitualment la interfÃ­cie PPP utilitzada pel
+trucador o la connexiÃ³ ADSL, o la interfÃ­cie Ethernet connectada al mÃ²dem
 de cable o encaminador. <p>
 
-Un cop s'ha capturat almenys una hora de trànsit, el mòdul es pot utilitzar
-per generar informes resumint el trànsit per una de les categories següents:
+Un cop s'ha capturat almenys una hora de trÃ nsit, el mÃ²dul es pot utilitzar
+per generar informes resumint el trÃ nsit per una de les categories segÃ¼ents:
 <li><b>Hora</b><br>
-    La data i hora en què s'han rebut les dades.
+    La data i hora en quÃ¨ s'han rebut les dades.
 <li><b>Dia</b><br>
-    La data en què s'han rebut les dades.
+    La data en quÃ¨ s'han rebut les dades.
 <li><b>Host</b><br>
     El host de la xarxa interna o host tallafoc que ha enviat o rebut les dades.
 <li><b>Port intern</b><br>
     El port del host intern o tallafoc al qual s'han enviat les dades.
-    Aquest mode és útil per determinar quant trànsit s'ha generat per 
+    Aquest mode Ã©s Ãºtil per determinar quant trÃ nsit s'ha generat per 
     connexions a cadascun dels servidors.
 <li><b>Port extern</b><br>
     El port d'algun servidor fora de la xarxa al qual s'han enviat les dades.
-    Això es pot utilitzar per determinar a quins serveis estan accedint
+    AixÃ² es pot utilitzar per determinar a quins serveis estan accedint
     els usuaris de la xarxa.
 <li><b>Port</b><br>
-    Ambdós ports, intern i extern. Útil per comparar tot l'ús de la xarxa
+    AmbdÃ³s ports, intern i extern. Ãštil per comparar tot l'Ãºs de la xarxa
     per tipus de servei.
 </ul>
 
-També pots triar limitar l'informe al host, port o protocol seleccionat.
-El host es pot introduir per adreça IP, nom de host o adreça de xarxa,
-com ara 192.168.1.0. El port es pot introduir per nom o per número,
-i coincidirà tant amb TCP com amb UDP. <p>
+TambÃ© pots triar limitar l'informe al host, port o protocol seleccionat.
+El host es pot introduir per adreÃ§a IP, nom de host o adreÃ§a de xarxa,
+com ara 192.168.1.0. El port es pot introduir per nom o per nÃºmero,
+i coincidirÃ  tant amb TCP com amb UDP. <p>
 
-L'informe també es pot limitar al trànsit recollit entre hores seleccionades,
-utilitzant els camps <b>Per al trànsit després de</b> i <b>Per al trànsit
-abans de</b>. Com que el trànsit es resumeix cada hora, no pots limitar 
-l'informe amb una precisió més gran d'una hora. <p>
+L'informe tambÃ© es pot limitar al trÃ nsit recollit entre hores seleccionades,
+utilitzant els camps <b>Per al trÃ nsit desprÃ©s de</b> i <b>Per al trÃ nsit
+abans de</b>. Com que el trÃ nsit es resumeix cada hora, no pots limitar 
+l'informe amb una precisiÃ³ mÃ©s gran d'una hora. <p>
 
-L'opció <b>Només els ports del servidor</b> és útil quan s'informa pel
+L'opciÃ³ <b>NomÃ©s els ports del servidor</b> Ã©s Ãºtil quan s'informa pel
 port d'entrada, de sortida, o tots. Restringeix la mostra als ports 
 utilitzats habitualment pels servidors (aquells per sota de 1024 o que
 tenen noms), per evitar saturar l'informe amb els recomptes de ports del
-cantó client que normalment no són gaire útils. <p>
+cantÃ³ client que normalment no sÃ³n gaire Ãºtils. <p>
 
-L'opció <b>Resol els noms de host</b> es pot seleccionar quan s'informa
-per host. Provocarà que totes les adreces IP es resolguin a noms de host,
-allà on sigui possible. <p>
+L'opciÃ³ <b>Resol els noms de host</b> es pot seleccionar quan s'informa
+per host. ProvocarÃ  que totes les adreces IP es resolguin a noms de host,
+allÃ  on sigui possible. <p>
 
 <hr>
 

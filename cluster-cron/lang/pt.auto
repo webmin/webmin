@@ -1,0 +1,37 @@
+index_title=Empregos no Cluster Cron
+index_add=Crie um novo trabalho cron de cluster.
+index_none=Nenhuma tarefa cron de cluster foi definida.
+index_servers=Executar em servidores
+index_return=lista de tarefas agendadas do cluster
+index_more=mais $1 ..
+index_run=Corra agora ..
+index_actions=Ações
+
+edit_title=Editar trabalho de criação de cluster
+create_title=Criar trabalho Cron de cluster
+edit_servers=Executar em servidores
+edit_group=Membros de $1 
+edit_this=este servidor
+edit_all=&lt;Todos os hosts&gt;
+edit_emissing=O trabalho Cron não existe mais!
+
+save_err=Falha ao salvar o trabalho agendado do cluster
+
+exec_title=Executar trabalho de criação de cluster
+exec_cmd=Executando $1 nos servidores selecionados.
+exec_failed=Falha ao executar no $1 : $2 
+exec_success=Saída de $1 ..
+exec_nohosts=Nenhum host selecionado para execução ou grupos selecionados não contêm nenhum host utilizável.
+
+log_run=Ran $1 em $2 servidores
+log_run_l=Ran $1 em $2 
+log_create=Trabalho cron de cluster criado para $1 
+log_create_l=Trabalho cron de cluster criado $2 para $1 
+log_modify=Trabalho agendado do cluster modificado para $1 
+log_modify_l=Tarefa cron de cluster modificada $2 para $1 
+log_delete=Trabalho cron de cluster excluído para $1 
+log_delete_l=Trabalho cron de cluster excluído $2 para $1 
+log_deletes=$1 tarefas agendadas do cluster excluídas
+
+delete_err=Falha ao excluir tarefas cron do cluster
+delete_enone=Nenhum selecionado

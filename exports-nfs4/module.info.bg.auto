@@ -1,0 +1,3 @@
+name_bg=Export Manager
+desc_bg=NFS v4 износ
+longdesc_bg=Редактирайте NFS v4 файлови дялове, дефинирани в /etc/exports.

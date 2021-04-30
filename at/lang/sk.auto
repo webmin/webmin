@@ -1,0 +1,29 @@
+index_mail=Poslať e-mail po dokončení?
+index_delete=Zrušiť vybrané príkazy
+index_noat=Príkaz $1 nebol vo vašom systéme nájdený - možno nie je nainštalovaný alebo nie je k dispozícii pre váš operačný systém.
+index_nostyle=Webmin nevie, ako spravovať príkazy plánovania v tomto operačnom systéme.
+index_stop=Zastavte server naplánovaných príkazov
+index_stopdesc=Ukončite proces servera na pozadí <tt>atd</tt>, ktorý spúšťa naplánované príkazy. Toto zabráni vykonaniu príkazov v zadanom čase.
+index_start=Spustite server Naplánované príkazy
+index_startdesc=Spustite proces servera na pozadí <tt>atd</tt>, ktorý spúšťa naplánované príkazy. Toto je potrebné na to, aby sa príkazy mohli vykonávať v zadaných časoch.
+index_boot=Spustiť server pri štarte?
+index_bootdesc=Toto nastavenie zmeňte, aby ste povolili alebo zakázali spustenie servera naplánovaných príkazov v čase zavádzania systému.
+
+edit_shortcmd=Príkaz na vykonanie
+edit_showfull=Zobraziť celý skript.
+
+deletes_err=Nepodarilo sa zrušiť príkazy
+deletes_enone=Žiadne vybraté
+
+log_allow=Zmenení povolení používatelia
+log_create_job=Bol vytvorený naplánovaný príkaz pre $1 
+log_delete_job=Zrušený naplánovaný príkaz pre $1 
+log_exec_job=Vykonal sa naplánovaný príkaz pre $1 
+log_delete_jobs=Zrušené $1 naplánované príkazy
+log_stop=Server plánovaných príkazov bol zastavený
+log_start=Server spustených naplánovaných príkazov
+log_bootup=Server povolených naplánovaných príkazov pri štarte
+log_bootdown=Zakázaný server naplánovaných príkazov pri štarte
+
+stop_err=Server sa nepodarilo zastaviť
+start_err=Server sa nepodarilo spustiť

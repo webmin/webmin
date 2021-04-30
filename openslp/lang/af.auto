@@ -1,0 +1,50 @@
+index_title=OpenSLP-konfigurasie
+index_return=OpenSLP-konfigurasie
+index_eslpd=Die OpenSLP-dememonie $1 is nie op u stelsel gevind nie. Miskien is dit nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
+index_econf=Die OpenSLP-konfigurasielêer $1 is nie op u stelsel gevind nie. Miskien is dit nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
+index_version=OpenSLP-weergawe $1 
+
+slp_apply=Pas veranderinge toe
+slp_stop=Stop OpenSLP
+
+snda_title=Statiese omvang en DA
+snda_useScopes=Statiese lys van bestek
+snda_DAAddresses=Statiese lys van gidsagente (DA)
+
+netcfg_title=Netwerkopstelling
+netcfg_isBroadcastOnly=Dwing uitsendings om in plaas van multicast gebruik te word
+netcfg_passiveDADetection=Gebruik passiewe DA-opsporing
+netcfg_activeDADetection=Gebruik aktiewe DA-opsporing (beperk slegs tot DHCP- of DA-adresse)
+netcfg_DAActiveDiscoveryInterval=Aktiewe ontdekking binne sekondes (0 skakel Active Discovery uit)
+netcfg_multicastTTL=Multicast TTL (0-255)
+netcfg_DADiscoveryMaximumWait=Maksimum wagtyd vir DA-versoeke (in millisekondes)
+netcfg_DADiscoveryTimeouts=Opeenvolgende wagtye van die DA-ontdekking (in millisekondes)
+netcfg_HintsFile=Pad na OpenSLP wenke lêer
+netcfg_multicastMaximumWait=Maksimum wag op multicast-versoeke (in millisekondes)
+netcfg_multicastTimeouts=Opeenvolgende wagtye vir multicast (in millisekondes)
+netcfg_unicastMaximumWait=Maksimum tyd tussen unicast-versoeke (in millisekondes)
+netcfg_randomWaitBound=Maksimum waarde vir alle ewekansige wagparameters (in millisekondes)
+netcfg_MTU=MTU-pakkiegrootte (in grepe)
+netcfg_interfaces=IP-adresse van koppelvlakke waarna die DA/SA moet luister
+
+dacfg_title=DA-konfigurasie
+dacfg_isDA=Werk slegs as 'n DA (lees gebruikershandleiding voordat u dit verander)
+
+log_title=Opsporing en logboek
+log_traceDATraffic=Druk DA-verkeersboodskappe
+log_traceMsg=Druk SLP-detailboodskappe
+log_traceDrop=Druk die SLP-boodskapinligting
+log_traceReg=Druk inligting oor DA en SA se registrasie en deregistrasie uit
+
+error_open=Kon nie lêer oopmaak nie
+error_flock_on=Kon nie lêerslot skep nie
+error_flock_off=Kon nie lêerslot vernietig nie
+error_hup=Kon nie OpenSLP met PID herbegin nie
+
+index_start=Begin OpenSLP
+index_startmsg=Klik op hierdie knoppie om die OpenSLP-daemon op u stelsel te begin.
+index_stop=Stop OpenSLP
+index_stopmsg=Klik op hierdie knoppie om die OpenSLP-daemon op u stelsel te stop.
+
+stop_err=Kon nie OpenSLP stop nie
+start_err=Kon nie OpenSLP begin nie

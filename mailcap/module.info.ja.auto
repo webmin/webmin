@@ -1,0 +1,2 @@
+desc_ja=MIMEタイププログラム
+longdesc_ja=MIMEタイプをハンドラープログラムにマップする/etc/mailcap ファイルを編集します。

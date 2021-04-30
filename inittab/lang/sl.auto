@@ -1,0 +1,53 @@
+inittab_new=Ustvari nov postopek init.
+inittab_id=ID
+inittab_active=Aktivno?
+inittab_runlevels=Bootup runlevel
+inittab_action=Ukrep
+inittab_process=Proces
+inittab_none=Noben
+inittab_respawn=Postopek ponovnega zagona
+inittab_wait=Počakaj
+inittab_once=Enkrat na ravni
+inittab_boot=Čas zagona
+inittab_bootwait=Čas zagona, počakajte do konca
+inittab_off=Delati nič
+inittab_ondemand=Kadar koli v A, B, C
+inittab_initdefault=Po zagonu sistema
+inittab_sysinit=Med zagonom sistema
+inittab_powerwait=Moč pada
+inittab_powerfail=Moč pada brez čakanja
+inittab_powerokwait=Moč se obnovi
+inittab_powerfailnow=Izpad elektrike
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Posebna kombinacija tipk
+inittab_kbrequest=Posebna kombinacija tipk
+inittab_return=seznam procesov
+inittab_apply=Uporabi Init Configuration
+inittab_applymsg=Kliknite ta gumb, če želite uporabiti trenutno konfiguracijo SysV Init z izvajanjem ukaza <tt>telinit q</tt>. Zavedajte se, da lahko kakršne koli napake v vaši konfiguraciji naredijo sistem neuporaben, ko se ta ukaz izvaja.
+index_delete=Izbrišite izbrane procese
+inittab_none2=V vašem sistemu ni bilo najdenih procesov zagona. To verjetno kaže, da ne uporablja konfiguracijske datoteke SysV init.
+
+edit_inittab_err=Nimate dovoljenja za urejanje postopka
+edit_inittab_title=Urejanje postopka $1 
+edit_inittab_details=Podrobnosti procesa
+edit_inittab_del=Izbriši
+edit_inittab_save=Shrani
+
+new_inittab_err=Ni vam dovoljeno ustvariti novega postopka
+new_inittab_title=Nov postopek
+
+save_inittab_err=Ni vam dovoljeno shraniti postopka
+save_inittab_noid=Napaka, ni bil vnesen noben postopek
+save_inittab_already=Napaka, postopek z imenom že obstaja
+
+log_modify=Spremenjen init postopek $1 
+log_rename=Preimenovan init postopek $1 do $2 
+log_create=Ustvarjen init postopek $1 
+log_delete=Izbrisan init postopek $1 
+log_apply=Uporabljena konfiguracija
+log_deletes=Izbrisani so $1 init procesi
+
+apply_err=Konfiguracije ni bilo mogoče uporabiti
+
+delete_err=Procesov ni bilo mogoče izbrisati
+delete_enone=Izbrana ni nobena

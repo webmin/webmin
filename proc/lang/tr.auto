@@ -1,0 +1,44 @@
+index_zone=bölge
+index_mem2=<b>Gerçek bellek:</b> $1 toplam / $2 boş
+index_mem3=<b>Gerçek bellek:</b> $1 toplam / $2 boş / $3 önbelleğe alındı
+index_swap2=<b>Yer değiştirme:</b> $1 toplam / $2 boş
+index_burst=<b>Burstable belleği:</b> toplam $1 
+index_loadname=CPU yük ortalamaları:
+index_loadnums=$1 (1 dk.), $2 (5 dk.), $3 (15 dk.)
+index_cpuname=CPU türü:
+index_inzone=$1 bölgesinde
+
+sclass=IO zamanlama sınıfı
+sprio=ES önceliği
+
+search_cpupc2=Daha fazla CPU kullanma
+search_ip=IP adresini kullanma
+
+run_as=Kullanıcı olarak çalıştır
+run_euser=Eksik veya geçersiz kullanıcı adı
+run_euser2=Seçili kullanıcı olarak komut çalıştırmanıza izin verilmiyor
+
+edit_subid=İD
+edit_subcmd=Alt işlem komutu
+
+linux_real=Gerçek zaman
+linux_be=En iyi çaba
+linux_idle=Boşta
+
+sysv_task=Görev Kimliği
+sysv_zone=Bölge adı
+
+log_renice=$2 işleminin önceliği $1 olarak değiştirildi
+
+acl_who=Kullanıcılar için süreçleri yönetebilir
+acl_who0=Tüm kullanıcılar
+acl_who1=Geçerli Webmin kullanıcısı
+acl_who2=Listelenen kullanıcılar ..
+
+open_recv= $1:$2 üzerinden alma
+
+trace_doing=$1 için sistem çağrısı izleme :
+
+windows_threads=İşlemdeki konular
+
+syslog_dmesg=Çekirdek mesajları

@@ -1,11 +1,11 @@
 <header>Ajuda de les Definicions de Serveis de MON</header>
 
-<p>Aquest és el segon i últim pas de la configuració de MON.
+<p>Aquest Ã©s el segon i Ãºltim pas de la configuraciÃ³ de MON.
 <p>Els valors per defecte dels Serveis obligatoris es mostren
-<marcats amb vermell>. Mira el tema d'ajuda corresponent per a més
-informació sobre les Definicions de Serveis.
-<p>Per a <b>"mail.alert"</b>, assegura't que sendmail està configurat
-i el dimoni <b>"sendmail"</b> està en execució a la màquina hoste.
+<marcats amb vermell>. Mira el tema d'ajuda corresponent per a mÃ©s
+informaciÃ³ sobre les Definicions de Serveis.
+<p>Per a <b>"mail.alert"</b>, assegura't que sendmail estÃ  configurat
+i el dimoni <b>"sendmail"</b> estÃ  en execuciÃ³ a la mÃ quina hoste.
 
 <H3>Definicions de Servei</H3>
 <P>
@@ -13,16 +13,16 @@ i el dimoni <b>"sendmail"</b> està en execució a la màquina hoste.
 
 <DT><B>service</B><I> nom</I>
 <DD>
-La definició d'un servei comença amb la paraula clau
+La definiciÃ³ d'un servei comenÃ§a amb la paraula clau
 <B>service</B>
-seguida d'una paraula que és l'etiqueta d'aquest servei.
+seguida d'una paraula que Ã©s l'etiqueta d'aquest servei.
 <P>
-Els components d'un servei són un interval, monitor i un o més
-períodes de temps, tal i com es defineix més avall.
+Els components d'un servei sÃ³n un interval, monitor i un o mÃ©s
+perÃ­odes de temps, tal i com es defineix mÃ©s avall.
 <P>
 Si es defineix un nom de servei &quot;default&quot;  dins d'un
-grup d'observació anomenat &quot;default&quot; (vegeu més amunt),
-llavors la definició default/default s'utilitzarà per a manipular
+grup d'observaciÃ³ anomenat &quot;default&quot; (vegeu mÃ©s amunt),
+llavors la definiciÃ³ default/default s'utilitzarÃ  per a manipular
 trampes desconegudes de mon.
 <P>
 
@@ -30,261 +30,261 @@ trampes desconegudes de mon.
 <DD>
 La paraula clau
 <B>interval</B>
-seguida d'un valor de temps especifica la freqüència amb què es dispara
-un script de monitorització.
+seguida d'un valor de temps especifica la freqÃ¼Ã¨ncia amb quÃ¨ es dispara
+un script de monitoritzaciÃ³.
 
 Els valors de temps es defineixen com a &quot;30s&quot;, &quot;5m&quot;,
 &quot;1h&quot;, o &quot;1d&quot;, que vol dir 30 segons, 1 hora o 1 dia.
-La part numèrica pot ser una fracció, com ara &quot;1.5h&quot; o bé una
-hora i mitja. Aquest format d'una especificació de temps serà referida
+La part numÃ¨rica pot ser una fracciÃ³, com ara &quot;1.5h&quot; o bÃ© una
+hora i mitja. Aquest format d'una especificaciÃ³ de temps serÃ  referida
 com a <I>temps</I>.
 <P>
 
 <DT><B>traptimeout</B><I> temps</I>
 <DD>
-Aquesta paraula clau pren el mateix argument d'especificació de temps
-que <B>interval</B><I>,</I> i fa que el servei esperi una desviació d'una
-font exterior al menys amb aquest freqüència, altrament s'enregistrarà
-una fallada. Això s'utilitza per a serveis de l'estil de <i>hearbeat</i>.
+Aquesta paraula clau pren el mateix argument d'especificaciÃ³ de temps
+que <B>interval</B><I>,</I> i fa que el servei esperi una desviaciÃ³ d'una
+font exterior al menys amb aquest freqÃ¼Ã¨ncia, altrament s'enregistrarÃ 
+una fallada. AixÃ² s'utilitza per a serveis de l'estil de <i>hearbeat</i>.
 <P>
 
 <DT><B>trapduration</B><I> temps</I>
 <DD>
-Si es rep una desviació, l'estat del servei al qual s'ha lliurat la desviació,
-romandrà normalment constant. Si s'especifica <B>trapduration</B>, l'estat
-del servei romandrà en estat de fallada durant el temps especificat per
-<I>temps</I>, i llavors es restaurarà a &quot;operatiu&quot;.
+Si es rep una desviaciÃ³, l'estat del servei al qual s'ha lliurat la desviaciÃ³,
+romandrÃ  normalment constant. Si s'especifica <B>trapduration</B>, l'estat
+del servei romandrÃ  en estat de fallada durant el temps especificat per
+<I>temps</I>, i llavors es restaurarÃ  a &quot;operatiu&quot;.
 <P>
 
 <DT><B>randskew</B><I> temps</I>
 <DD>
-Ajusta de forma aleatòria l'interval especificat pel paràmetre
-<B>interval</B> amb més/menys <B>randskew</B>, més que no pas fer
-que el script de monitorització s'executi al principi de cada interval.
+Ajusta de forma aleatÃ²ria l'interval especificat pel parÃ metre
+<B>interval</B> amb mÃ©s/menys <B>randskew</B>, mÃ©s que no pas fer
+que el script de monitoritzaciÃ³ s'executi al principi de cada interval.
 
-El valor de trasllat s'especifica igual que el paràmetre <B>interval</B>:
+El valor de trasllat s'especifica igual que el parÃ metre <B>interval</B>:
 &quot;30s&quot;, &quot;5m&quot;, etc...
-Per exemple, si <B>interval</B> és 1m i <B>randskew</B> és
-&quot;5s&quot;, llavors <I>mon</I> programarà el script de monitorització
-a un temps d'entre 55 segons i 65 segons. La intenció és ajudar a distribuir
-la càrrega del servidor quan hi ha molts serveis programats als mateixos
+Per exemple, si <B>interval</B> Ã©s 1m i <B>randskew</B> Ã©s
+&quot;5s&quot;, llavors <I>mon</I> programarÃ  el script de monitoritzaciÃ³
+a un temps d'entre 55 segons i 65 segons. La intenciÃ³ Ã©s ajudar a distribuir
+la cÃ rrega del servidor quan hi ha molts serveis programats als mateixos
 intervals.
 <P>
 
 <DT><B>monitor</B><I> nom [arg...]</I>
 <DD>
 La paraula clau <B>monitor</B> seguida d'un nom de script i uns arguments
-especifica el monitor que s'ha d'executar quan expira el cronòmetre.
-Quan s'especifiquen els arguments a enviar al script de monitorització,
+especifica el monitor que s'ha d'executar quan expira el cronÃ²metre.
+Quan s'especifiquen els arguments a enviar al script de monitoritzaciÃ³,
 se segueixen les convencions tipus shell per a les cometes. El script
 s'invoca des del directori donat amb l'argument <B>-s</B>, i totes les
-paraules següents es passen com a argument al programa de monitorització,
-seguides de la llista de hosts del grup referit pel grup d'observació
-actual. Si la línia del monitor acaba amb &quot;;;&quot; com una paraula
+paraules segÃ¼ents es passen com a argument al programa de monitoritzaciÃ³,
+seguides de la llista de hosts del grup referit pel grup d'observaciÃ³
+actual. Si la lÃ­nia del monitor acaba amb &quot;;;&quot; com una paraula
 separada, llavors no s'afegeixen els grups de hosts a la llista d'arguments
 quan s'invoca el programa.
 <P>
 
 <DT><B>allow_empty_group</B>
 <DD>
-L'opció <B>allow_empty_group</B> permetrà que s'invoqui un monitor fins i tot
-quan el grup de hosts d'aquest observació estigui buit a causa dels hosts
-desactivats. La conducta per defecte és no invocar el monitor quan tots els
+L'opciÃ³ <B>allow_empty_group</B> permetrÃ  que s'invoqui un monitor fins i tot
+quan el grup de hosts d'aquest observaciÃ³ estigui buit a causa dels hosts
+desactivats. La conducta per defecte Ã©s no invocar el monitor quan tots els
 hosts d'un grup han estat desactivats.
 <P>
 
-<DT><B>description</B><I> descripció</I>
+<DT><B>description</B><I> descripciÃ³</I>
 <DD>
-El text que segueix a <B>description</B> és analitzat pels programes client
-i passat a avisos i monitors a través d'una variable d'entorn. Hauria de
-contenir una descripció breu del servei, apropiada per a incloure en un
-correu electrònic o una pàgina web.
+El text que segueix a <B>description</B> Ã©s analitzat pels programes client
+i passat a avisos i monitors a travÃ©s d'una variable d'entorn. Hauria de
+contenir una descripciÃ³ breu del servei, apropiada per a incloure en un
+correu electrÃ²nic o una pÃ gina web.
 <P>
 
 <DT><B>exclude_hosts</B><I> host [host...]</I>
 <DD>
-Tots els hosts llistats després de <B>exclude_hosts</B> seran exclosos 
-de la comprovació del servei.
+Tots els hosts llistats desprÃ©s de <B>exclude_hosts</B> seran exclosos 
+de la comprovaciÃ³ del servei.
 <P>
 
-<DT><B>exclude_period</B><I> període</I>
+<DT><B>exclude_period</B><I> perÃ­ode</I>
 <DD>
-No executar un monitor programat durant el temps identificat per <I>període</I>.
+No executar un monitor programat durant el temps identificat per <I>perÃ­ode</I>.
 <P>
 
-<DT><B>depend</B><I> expressió</I>
+<DT><B>depend</B><I> expressiÃ³</I>
 <DD>
-La paraula clau <B>depend</B> s'utilitza per especificar una expressió de
-dependència que s'avalua a veritat o fals, en el sentit booleà. Les 
-dependències són, de fet, expressions Perl, i n'han d'obeir totes les
-regles sintàctiques. Les expressions s'avaluen en l'espai del seu propi
+La paraula clau <B>depend</B> s'utilitza per especificar una expressiÃ³ de
+dependÃ¨ncia que s'avalua a veritat o fals, en el sentit booleÃ . Les 
+dependÃ¨ncies sÃ³n, de fet, expressions Perl, i n'han d'obeir totes les
+regles sintÃ ctiques. Les expressions s'avaluen en l'espai del seu propi
 paquet, per evitar efectes secundaris no desitjats. Si es troba un error
-de sintaxi en avaluar l'expressió, s'enregistra a través de syslog.
+de sintaxi en avaluar l'expressiÃ³, s'enregistra a travÃ©s de syslog.
 <P>
-Abans de l'avaluació, s'efectuen les següents substitucions a l'expressió:
+Abans de l'avaluaciÃ³, s'efectuen les segÃ¼ents substitucions a l'expressiÃ³:
 les frases del tipus &quot;group:service&quot; se substitueixen amb el valor
-de l'estat actual d'operació del servei especificat. Aquestes substitucions
-de l'estat d'operació es calculen de forma recursiva, de manera que si el
-servei a depèn del servei B, i el servei B depèn del servei C, llavors el
-servei A depèn del servei C. Els estats d'operació correctes (que s'avaluen
-a &quot;1&quot;) són &quot;STAT_OK&quot;, &quot;STAT_COLDSTART&quot;, 
+de l'estat actual d'operaciÃ³ del servei especificat. Aquestes substitucions
+de l'estat d'operaciÃ³ es calculen de forma recursiva, de manera que si el
+servei a depÃ¨n del servei B, i el servei B depÃ¨n del servei C, llavors el
+servei A depÃ¨n del servei C. Els estats d'operaciÃ³ correctes (que s'avaluen
+a &quot;1&quot;) sÃ³n &quot;STAT_OK&quot;, &quot;STAT_COLDSTART&quot;, 
 &quot;STAT_WARMSTART&quot;, i &quot;STAT_UNKNOWN&quot;. Es pot utilitzar
-la paraula &quot;SELF&quot; (tot en majúscules) per al grup (p. ex.,
-&quot;SELF:service&quot;), i és un abreujament del grup d'observació actual.
+la paraula &quot;SELF&quot; (tot en majÃºscules) per al grup (p. ex.,
+&quot;SELF:service&quot;), i Ã©s un abreujament del grup d'observaciÃ³ actual.
 <P>
-Aquesta característica es pot utilitzar per controlar els avisos dels
-serveis que depenen d'altres serveis. p. ex., una prova SMTP que depèn
-de la màquina a la qual es fa ping.
+Aquesta caracterÃ­stica es pot utilitzar per controlar els avisos dels
+serveis que depenen d'altres serveis. p. ex., una prova SMTP que depÃ¨n
+de la mÃ quina a la qual es fa ping.
 <P>
 
 <DT><B>dep_behavior</B><I> {a|m}</I>
 <DD>
-L'avaluació dels grafs de dependència pot controlar la supressió d'avisos
-o bé d'invocacions del monitor.
+L'avaluaciÃ³ dels grafs de dependÃ¨ncia pot controlar la supressiÃ³ d'avisos
+o bÃ© d'invocacions del monitor.
 <P>
-<B>Supressió d'avís</B>.
-Si s'estableix aquesta opció a &quot;a&quot;, llavors l'expressió de
-dependència s'avaluarà després que s'executi el monitor d'aquest servei
-o després de rebre una desviació. Només s'enviarà un avís si l'avaluació
-reïx, volent dir que cap dels nodes del graf de dependència indica fallada.
+<B>SupressiÃ³ d'avÃ­s</B>.
+Si s'estableix aquesta opciÃ³ a &quot;a&quot;, llavors l'expressiÃ³ de
+dependÃ¨ncia s'avaluarÃ  desprÃ©s que s'executi el monitor d'aquest servei
+o desprÃ©s de rebre una desviaciÃ³. NomÃ©s s'enviarÃ  un avÃ­s si l'avaluaciÃ³
+reÃ¯x, volent dir que cap dels nodes del graf de dependÃ¨ncia indica fallada.
 <P>
-<B>Supressió de monitor</B>.
-Si s'estableix a &quot;m&quot;, llavors l'expressió de dependència 
-s'avaluarà abans que s'executi el monitor d'aquest servei. Si l'avaluació
-reïx, llavors el monitor s'executarà. Altrament, el monitor no s'executarà
-i l'estat del servei romandrà igual.
+<B>SupressiÃ³ de monitor</B>.
+Si s'estableix a &quot;m&quot;, llavors l'expressiÃ³ de dependÃ¨ncia 
+s'avaluarÃ  abans que s'executi el monitor d'aquest servei. Si l'avaluaciÃ³
+reÃ¯x, llavors el monitor s'executarÃ . Altrament, el monitor no s'executarÃ 
+i l'estat del servei romandrÃ  igual.
 <P>
 </DL>
 
 <A NAME="lbAO">&nbsp;</A>
-<H3>Definicions de Període</H3>
+<H3>Definicions de PerÃ­ode</H3>
 
 <P>
-Els períodes s'utilitzen per definir les condicions que han de permetre
+Els perÃ­odes s'utilitzen per definir les condicions que han de permetre
 el lliurament dels avisos.
 <P>
 <DL COMPACT>
 
-<DT><B>period</B><I> [etiqueta:] període</I>
+<DT><B>period</B><I> [etiqueta:] perÃ­ode</I>
 <DD>
-Un període agrupa un o més avisos i variables que controlen amb quina 
-freqüència se succeeix un avís quan hi ha una fallada.
-La paraula clau <B>period</B> té dues formes. La primera pren un argument
-que és una especificació de període del mòdul Perl Time::Period de Patrick
-Ryan. Vegeu &quot;perldoc Time::Period&quot; per a més informació.
+Un perÃ­ode agrupa un o mÃ©s avisos i variables que controlen amb quina 
+freqÃ¼Ã¨ncia se succeeix un avÃ­s quan hi ha una fallada.
+La paraula clau <B>period</B> tÃ© dues formes. La primera pren un argument
+que Ã©s una especificaciÃ³ de perÃ­ode del mÃ²dul Perl Time::Period de Patrick
+Ryan. Vegeu &quot;perldoc Time::Period&quot; per a mÃ©s informaciÃ³.
 <P>
-La segona forma necessita una etiqueta seguida d'una especificació de
-període, tal i com es defineix abans. L'etiqueta és un caràcter alfabètic
-o subguió (_) seguit de zero o més caràcters alfanumèrics o subguions i 
-acabada amb dos punts (:). Aquesta forma permet períodes múltiples amb
-la mateixa definició de període. Un ús és tenir una definició de període 
-que no té cap paràmetre <B>alertafter</B> ni <B>alertevery</B> per a un
-període de temps particular, i un altre per al mateix període de temps 
-amb un conjunt d'avisos diferents que sí contenen aquests paràmetres.
+La segona forma necessita una etiqueta seguida d'una especificaciÃ³ de
+perÃ­ode, tal i com es defineix abans. L'etiqueta Ã©s un carÃ cter alfabÃ¨tic
+o subguiÃ³ (_) seguit de zero o mÃ©s carÃ cters alfanumÃ¨rics o subguions i 
+acabada amb dos punts (:). Aquesta forma permet perÃ­odes mÃºltiples amb
+la mateixa definiciÃ³ de perÃ­ode. Un Ãºs Ã©s tenir una definiciÃ³ de perÃ­ode 
+que no tÃ© cap parÃ metre <B>alertafter</B> ni <B>alertevery</B> per a un
+perÃ­ode de temps particular, i un altre per al mateix perÃ­ode de temps 
+amb un conjunt d'avisos diferents que sÃ­ contenen aquests parÃ metres.
 <P>
 
 <DT><B>alertevery</B><I> temps</I>
 <DD>
-La paraula clau <B>alertevery</B> (en una definició <B>period</B>)
+La paraula clau <B>alertevery</B> (en una definiciÃ³ <B>period</B>)
 pren el mateix tipus d'arguments que la variable <B>interval</B>,
-i limita el nombre de vegades que s'envia un avís quan el servei
-segueix fallant. Per exemple, si l'interval és &quot;1h&quot;, llavors
-només els avisos de la secció del període s'enviaran cada hora.
-Si en una entrada de període s'omet la paraula clau <B>alertevery</B>,
-s'enviarà un avís cada cop que es detecti una fallada. Per defecte, 
+i limita el nombre de vegades que s'envia un avÃ­s quan el servei
+segueix fallant. Per exemple, si l'interval Ã©s &quot;1h&quot;, llavors
+nomÃ©s els avisos de la secciÃ³ del perÃ­ode s'enviaran cada hora.
+Si en una entrada de perÃ­ode s'omet la paraula clau <B>alertevery</B>,
+s'enviarÃ  un avÃ­s cada cop que es detecti una fallada. Per defecte, 
 si canvia la sortida de dues fallades successives, llavors s'ignora
 l'interval <b>alertevery</b>.
-Si el darrer argument és la paraula &quot;summary&quot;, llavors només
-es tindran en compte les línies de sortida del resum en comparar la
+Si el darrer argument Ã©s la paraula &quot;summary&quot;, llavors nomÃ©s
+es tindran en compte les lÃ­nies de sortida del resum en comparar la
 sortida de les successives fallades.
 <P>
 
-<DT><B>alertafter</B><I> núm</I>
+<DT><B>alertafter</B><I> nÃºm</I>
 <DD>
 <P>
 
-<DT><B>alertafter</B><I> núm temps</I>
+<DT><B>alertafter</B><I> nÃºm temps</I>
 <DD>
-La paraula clau <B>alertafter</B> (en una secció <B>period</B>) té dues
-formes: només amb l'argument &quot;núm&quot;, o amb els arguments
-&quot;núm temps&quot;. Amb la primera forma, només s'invocarà un avís
-després de &quot;núm&quot; fallades consecutives.
+La paraula clau <B>alertafter</B> (en una secciÃ³ <B>period</B>) tÃ© dues
+formes: nomÃ©s amb l'argument &quot;nÃºm&quot;, o amb els arguments
+&quot;nÃºm temps&quot;. Amb la primera forma, nomÃ©s s'invocarÃ  un avÃ­s
+desprÃ©s de &quot;nÃºm&quot; fallades consecutives.
 <P>
-Amb la segona forma, els arguments són un enter positiu seguit d'un interval,
-tal i com  es descriu a la variable <B>interval</B> més amunt.
-Si s'especifiquen aquests paràmetres, llavors els avisos d'aquest període
-només es cridaran després que s'esdevingui aquest nombre de fallades en
+Amb la segona forma, els arguments sÃ³n un enter positiu seguit d'un interval,
+tal i com  es descriu a la variable <B>interval</B> mÃ©s amunt.
+Si s'especifiquen aquests parÃ metres, llavors els avisos d'aquest perÃ­ode
+nomÃ©s es cridaran desprÃ©s que s'esdevingui aquest nombre de fallades en
 aquest interval. Per exemple, si es donen a <B>alertafter</B> els arguments
-&quot;3&nbsp;30m&quot;, llavors l'avís es cridarà si se succeeixen 3
+&quot;3&nbsp;30m&quot;, llavors l'avÃ­s es cridarÃ  si se succeeixen 3
 fallades en 30 minuts.
 <P>
 
-<DT><B>numalerts</B> <I>núm</I>
+<DT><B>numalerts</B> <I>nÃºm</I>
 <DD>
 <P>
-Aquesta variable diu al servidor que no cridi més de <I>núm</I> avisos
-durant una fallada. El comptador d'avisos es manté en base al període,
-i es reinicia després de cada pas a operatiu.
+Aquesta variable diu al servidor que no cridi mÃ©s de <I>nÃºm</I> avisos
+durant una fallada. El comptador d'avisos es mantÃ© en base al perÃ­ode,
+i es reinicia desprÃ©s de cada pas a operatiu.
 <P>
 
 <DT><B>comp_alerts</B>
 <DD>
 <P>
-Si s'especifica aquesta opció, llavors només es cridaran els avisos
-<b>upalert</b> si s'ha cridat l'avís &quot;down&quot; corresponent.
+Si s'especifica aquesta opciÃ³, llavors nomÃ©s es cridaran els avisos
+<b>upalert</b> si s'ha cridat l'avÃ­s &quot;down&quot; corresponent.
 <P>
 
-<DT><B>alert</B><I> avís [arg...]</I>
+<DT><B>alert</B><I> avÃ­s [arg...]</I>
 <DD>
-Un període pot contenir múltiples avisos, que es disparen en cas de 
-fallada del servei. Un avís s'especifica amb la paraula clau
-<B>alert</B>, seguida d'un paràmetre <B>exit</B> opcional, i els 
-arguments que s'interpreten igual que la definició <B>monitor</B>,
-però sense l'excepció &quot;;;&quot;. El paràmetre <B>exit</B>
+Un perÃ­ode pot contenir mÃºltiples avisos, que es disparen en cas de 
+fallada del servei. Un avÃ­s s'especifica amb la paraula clau
+<B>alert</B>, seguida d'un parÃ metre <B>exit</B> opcional, i els 
+arguments que s'interpreten igual que la definiciÃ³ <B>monitor</B>,
+perÃ² sense l'excepciÃ³ &quot;;;&quot;. El parÃ metre <B>exit</B>
 pren la forma <B>exit=x</B> o <B>exit=x-y</B> i per efecte que 
-l'avís només es cridi si l'estat de sortida del script de monitorització
-és dins del rang del paràmetre <B>exit</B>. Si, per exemple, la línia 
-d'avís és <I>alert exit=10-20 mail.alert mis</I>, llavors
-<I>mail-alert</I> només s'invocarà amb <I>mis</I> com a arguments
-si el valor de retorn del programa monitor està entre 10 i 20.
-Aquesta característica permet disparar avisos diferents en diferents
+l'avÃ­s nomÃ©s es cridi si l'estat de sortida del script de monitoritzaciÃ³
+Ã©s dins del rang del parÃ metre <B>exit</B>. Si, per exemple, la lÃ­nia 
+d'avÃ­s Ã©s <I>alert exit=10-20 mail.alert mis</I>, llavors
+<I>mail-alert</I> nomÃ©s s'invocarÃ  amb <I>mis</I> com a arguments
+si el valor de retorn del programa monitor estÃ  entre 10 i 20.
+Aquesta caracterÃ­stica permet disparar avisos diferents en diferents
 nivells de severitat (com ara quan l'espai lliure del disc passa del
 8% al 3%).
 <P>
-Vegeu la secció <B>PROGRAMES D'AVÍS</B> més amunt per a una llista de
-paràmetres que mon passarà automàticament als programes d'avís.
+Vegeu la secciÃ³ <B>PROGRAMES D'AVÃS</B> mÃ©s amunt per a una llista de
+parÃ metres que mon passarÃ  automÃ ticament als programes d'avÃ­s.
 <P>
 
-<DT><B>upalert</B><I> avís [arg...]</I>
+<DT><B>upalert</B><I> avÃ­s [arg...]</I>
 <DD>
-<B>upalert</B> és el complement de <B>alert</B>.
-Es crida quan un servei fa la transició d'estat de fallada a operatiu.
-El script <B>upalert</B> es crida subministrant els mateixos paràmetres
-que el script <B>alert</B>, amb l'addició del paràmetre <B>-u</B>,
-que s'utilitza per deixar que un script d'avís sàpiga que
-està essent cridat com a <B>upalert</B>. Es poden especificar avisos
-múltiples per a cada definició de període. Tingues en compte que la
-conducta per defecte és que s'enviï un avís <B>upalert</B> independentment
+<B>upalert</B> Ã©s el complement de <B>alert</B>.
+Es crida quan un servei fa la transiciÃ³ d'estat de fallada a operatiu.
+El script <B>upalert</B> es crida subministrant els mateixos parÃ metres
+que el script <B>alert</B>, amb l'addiciÃ³ del parÃ metre <B>-u</B>,
+que s'utilitza per deixar que un script d'avÃ­s sÃ piga que
+estÃ  essent cridat com a <B>upalert</B>. Es poden especificar avisos
+mÃºltiples per a cada definiciÃ³ de perÃ­ode. Tingues en compte que la
+conducta per defecte Ã©s que s'enviÃ¯ un avÃ­s <B>upalert</B> independentment
 de si s'han enviat abans avisos &quot;down&quot;, ja que &quot;down&quot;
-es dispara durant una transició d'estat. Estableix l'opció d'avisos per
-període <B>comp_alerts</B> per aparellar els avisos <B>upalert</B> amb
+es dispara durant una transiciÃ³ d'estat. Estableix l'opciÃ³ d'avisos per
+perÃ­ode <B>comp_alerts</B> per aparellar els avisos <B>upalert</B> amb
 els avisos &quot;down&quot;.
 <P>
 
-<DT><B>startupalert</B><I> avís [arg...]</I>
+<DT><B>startupalert</B><I> avÃ­s [arg...]</I>
 <DD>
-<B>startupalert</B> només es crida quan el servidor <B>mon</B> inicia
-la seva execució.
+<B>startupalert</B> nomÃ©s es crida quan el servidor <B>mon</B> inicia
+la seva execuciÃ³.
 <P>
 
 <DT><B>upalertafter</B><I> temps</I>
 <DD>
-El paràmetre <B>upalertafter</B> s'especifica com una cadena que segueix
-la sintaxi del paràmetre <B>interval</B> (&quot;30s&quot;, &quot;1m&quot;,
-etc.), i controla l'execució de <B>upalert</B>.
-Si un servei torna a estar operatiu després de fallar durant un temps
-més gran o igual que el valor d'aquesta opció, llavors es cridarà un
-<B>upalert</B>. Utilitza aquesta opció per evitar que es cridi
+El parÃ metre <B>upalertafter</B> s'especifica com una cadena que segueix
+la sintaxi del parÃ metre <B>interval</B> (&quot;30s&quot;, &quot;1m&quot;,
+etc.), i controla l'execuciÃ³ de <B>upalert</B>.
+Si un servei torna a estar operatiu desprÃ©s de fallar durant un temps
+mÃ©s gran o igual que el valor d'aquesta opciÃ³, llavors es cridarÃ  un
+<B>upalert</B>. Utilitza aquesta opciÃ³ per evitar que es cridi
 un <B>upalert</B> a causa de  &quot;blips&quot; (petits talls).
 <P>
 

@@ -79,6 +79,7 @@ session_maxlife=Maximum session lifetime
 session_epath=Missing or invalid directory for session files
 session_elife=Missing or invalid cookie lifetime
 session_emaxlife=Missing or invalid maximum session lifetime
+session_eredis=Missing or disabled redis extension
 
 safe_title=Safe Mode Options
 safe_header=Safe file access mode options

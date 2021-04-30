@@ -1,0 +1,6 @@
+index_delete=حساب های منتخب را حذف کنید
+
+log_deletes=$1 حساب PPP حذف شد
+
+delete_err=حذف حساب ها انجام نشد
+delete_enone=هیچ یک انتخاب نشده است

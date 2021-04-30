@@ -1,0 +1,3 @@
+name_de=PPTPd
+longdesc_de=Richten Sie Ihr System als PPTP-Server ein, damit Linux- oder Windows-VPN-Clients eine Verbindung herstellen können.
+desc_de=PPTP VPN Server

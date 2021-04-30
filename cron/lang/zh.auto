@@ -1,0 +1,118 @@
+index_when=有时跑
+index_comment=描述
+index_none3=您还没有任何Cron工作。
+index_ecreate=创建一个新的环境变量。
+index_manual=手动编辑cron作业。
+index_env=环境变量
+index_move=移动
+index_next=下一轮
+index_nunknown=未知
+index_run=跑步吗
+index_ecmd=找不到用于管理用户Cron配置的命令 $1。也许在该系统上未安装Cron？
+index_esingle=列出Cron作业的文件 $1不存在。也许在该系统上未安装Cron？
+index_ecrondir=Cron作业目录 $1不存在。也许模块的配置不正确，或者未安装Cron？
+index_ecrondir_create=尝试创建作业目录 $1吗？
+index_delete=删除选定的工作
+index_disable=禁用选定的作业
+index_enable=启用所选作业
+index_esearch=没有职位与您对 $1的搜索匹配。
+index_toomany2=有太多工作要显示。使用上面的搜索表单来限制列表。
+index_search=查找匹配的Cron职位
+index_ok=搜索
+index_searchres=与 $1..相匹配的Cron作业
+index_reset=重置搜索。
+index_econfigcheck=Cron作业无法在您的系统上管理，因为模块配置无效： $1
+
+edit_next=下次运行时间
+edit_comment=描述
+edit_range=执行日期范围
+edit_saverun=立即保存并运行
+edit_clone=克隆作业
+lcedit_special_hourly=每小时
+lcedit_special_daily=每天（午夜）
+lcedit_special_weekly=每周（星期日）
+lcedit_special_monthly=每月（1日）
+lcedit_special_yearly=每年（1月1日）
+lcedit_special_reboot=系统启动时
+
+save_ecannot2=您无权创建Cron作业
+save_eidx=Cron作业已成功保存，但由于找不到而无法运行！
+
+env_title1=编辑环境变量
+env_title2=创建环境变量
+env_user=对于用户
+env_active=活性？
+env_details=环境变量详细信息
+env_err=保存环境变量失败
+env_order=注意-此环境变量设置仅在模块主页上的作业列表中之后才适用于Cron作业。
+env_where=添加环境变量
+env_where2=移动环境变量
+env_top=用户的所有Cron作业之前
+env_bot=在所有Cron工作之后
+env_leave=当前位置
+
+exec_cmdbg=运行命令 $1作为后台进程。
+
+acl_command=可以查看和编辑Cron命令吗？
+acl_create=可以创建Cron职位吗？
+acl_delete=可以删除Cron作业吗？
+acl_move=可以移动Cron职位吗？
+acl_kill=可以终止Cron工作吗？
+acl_hourly=将工作限制在每小时以下？
+acl_hourlydef=如在模块配置中设置
+
+log_kill=$1的Cron作业已终止
+log_kill_l=已终止 $1的Cron作业“$2”
+log_env_create=为 $1创建了环境变量
+log_env_modify=修改了 $1的环境变量
+log_env_delete=已删除 $1的环境变量
+log_move=已将Cron作业移至 $1
+log_crons_delete=已删除 $1个Cron作业
+log_crons_disable=已停用 $1个Cron作业
+log_crons_enable=已启用 $1个Cron作业
+
+when_min=每一分钟
+when_hour=每小时每小时 $1
+when_day=每天 $2:$1
+when_month=每月第 $3天的 $2:$1
+when_weekday=每 $3，在 $2:$1
+when_cron=在cron时间 $1
+when_interval=每 $1秒
+when_boot=在启动时
+
+ucwhen_min=每一分钟
+ucwhen_hour=每小时的 $1每小时
+ucwhen_day=每天 $2:$1
+ucwhen_month=每月第 $3天的 $2:$1
+ucwhen_weekday=$2处的每个 $3:$1
+ucwhen_cron=Cron时间 $1
+ucwhen_interval=每 $1秒
+ucwhen_boot=在启动时
+
+move_err=无法移动Cron工作
+move_etype=这项工作无法转移
+
+kill_err=无法终止Cron作业
+kill_ecannot=您无权终止此工作
+kill_egone=不再运行
+kill_ekill=杀死失败： $1
+kill_title=终止Cron Job
+kill_rusure=您确定要使用PID $2终止进程 $1吗？
+kill_rusure2=您确定要用PID $2终止进程 $1及其所有子进程吗？
+kill_ok=是的，终止它
+
+range_all=在任何日期运行
+range_start=仅从 $1运行
+range_end=至 $1
+range_estart=开始范围内缺少或无效的开始日期
+range_eend=结束日期缺少或无效的运行日期
+
+delete_err=无法删除Cron作业
+delete_enone=未选择
+
+manual_title=手动编辑Cron作业
+manual_edit=Cron文件进行编辑：
+manual_ok=编辑
+manual_editing=使用下面的文本框编辑 $1中的Cron作业。注意，因为Webmin不会进行任何验证！
+manual_efile=所选文件无效！
+manual_ecannot=您无权手动编辑Cron作业

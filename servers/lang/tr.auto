@@ -1,0 +1,79 @@
+index_nosearch=Aramanızla eşleşen sunucu yok.
+index_defuser=Sunucular için varsayılan giriş
+index_defpass=Varsayılan şifre
+index_defport=Webmin bağlantı noktası
+index_delete=Seçilen Sunucuları Sil
+index_auto=Sunucuları Otomatik Bul
+index_automsg=Ağınızdaki yeni Webmin sunucularının otomatik periyodik keşfini ayarlamak için bu düğmeyi tıklatın.
+index_search=Eşleşen sunucuları göster:
+index_ok=Arama
+
+edit_realhost=Gerçek ana bilgisayar adı
+edit_portnone=Hiçbiri ayarlanmadı
+edit_checkssl=Uzak SSL sertifikası kontrol edilsin mi?
+edit_mode3=Bu sunucudan kullanıcı adı ve şifre ile giriş yapın
+edit_luser=Uzak sunucu için kullanıcı adı
+edit_lpass=Uzak sunucu şifresi
+edit_same=Yalnızca oturum kimlik doğrulama modunda değil ve parola Webmin programları tarafından kullanılabilir olduğunda kullanılabilir.
+
+save_ehost2=Ana makine yok
+save_eport2=Girişli bir bağlantı türü seçiliyse bir bağlantı noktası verilmelidir
+save_egroup2=Geçersiz yeni grup adı
+
+find_but=$1 adresinde yeni sunucu bulundu, ancak kimlik doğrulama başarısız oldu : $2 
+find_already2=$1 adresinde bilinen sunucu ana bilgisayarı bulundu
+find_skip=$1 sunucusunda yoksayılıyor
+find_eiface=Taranacak arayüz bulunamadı
+find_eport=Eksik veya geçersiz bağlantı noktası numarası
+
+log_deletes=$1 sunucu silindi
+
+acl_auto=Sunucuların otomatik algılanması ayarlanabiliyor mu?
+acl_add=Yeni sunucular kaydedilebilir mi?
+acl_forcefast=Hızlı RPC modunu varsayılana zorla?
+acl_forcetype=İşletim sistemi türü varsayılana zorlansın mı?
+acl_forcelink=Giriş türü varsayılana zorlansın mı?
+acl_links=Sunuculara bağlanabilir mi?
+
+login_esame=Bu sunucuyla aynı oturum açma özelliğini kullanma seçeneği, yalnızca oturum kimlik doğrulama modunda değilken ve parola Webmin programları tarafından kullanılabilir olduğunda kullanılabilir.
+
+delete_err=Sunucular silinemedi
+delete_enone=Hiçbiri seçilmedi
+delete_ecannot=Sunucuları silme izniniz yok
+delete_title=Sunucuları Sil
+delete_rusure=Seçilen $1 sunucuyu kaldırmak istediğinizden emin misiniz?
+delete_confirm=Şimdi sil
+
+auto_title=Sunucuları Otomatik Bul
+auto_header=Otomatik sunucu kayıt seçenekleri
+auto_sched=Yeni sunucuları kontrol etmek istiyor musunuz?
+auto_sched1=Evet, her $1 dakikada bir
+auto_net=Taranacak IP ağı
+auto_auto=Yerel ağ
+auto_ip=IP ağları $1 
+auto_iface=$1 arabirimindeki ağ
+auto_user=Yeni sunucular için kullanıcı adı
+auto_pass=Yeni sunucular için şifre
+auto_type=Varsayılan sistem türü
+auto_err=Otomatik bulma ayarları kaydedilemedi
+auto_emins=Eksik veya geçersiz dakika sayısı
+auto_enet=Eksik veya geçersiz ağ adresi
+auto_eiface=Eksik veya geçersiz ağ arayüzü
+auto_euser=Eksik kullanıcı adı
+auto_cluster-software=Küme Yazılım Paketleri Eklensin mi?
+auto_remove=Bulunmayan kayıtlı sunucular kaldırılsın mı?
+auto_email=Adresine e-posta bildirimi gönder
+auto_none=Gönderme
+auto_eemail=Bildirimler için eksik e-posta adresi
+auto_smtp=SMTP sunucusu üzerinden gönder
+auto_self=Bu sistem
+auto_esmtp=Eksik veya geçersiz SMTP sunucusu
+auto_findself=Bu sistem de kaydedilsin mi?
+
+config_deftype=Varsayılan sistem türü
+config_typeauto=Otomatik
+
+email_regsubject=$1 sistemi kaydedildi
+email_reg=$1 sistemi otomatik olarak kaydedildi.
+email_unregsubject=Sistem $1 kayıtlı değil
+email_unreg=$1 sisteminin otomatik olarak kaydı kaldırıldı.

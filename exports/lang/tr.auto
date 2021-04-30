@@ -1,0 +1,23 @@
+index_add4=Yeni bir NFSv4 dışa aktarma ekleyin.
+index_delete=Seçilen Dışa Aktarmaları Sil
+index_disable=Seçilenleri Devre Dışı Bırak
+index_enable=Seçilenleri Etkinleştir
+
+edit_pfs=Dışa aktarılacak NFSv4 Pseudofilesystem
+edit_network4=IPv4 ağı
+edit_network6=IPv6 ağı
+edit_subtree_check=Alt ağaç denetimi devre dışı bırakılsın mı?
+edit_secs=Güvenlik seviyeleri
+edit_privacy=Gizlilik (Dürüstlük dahil)
+edit_sec_sys=Güvenlik yok
+edit_sec_krb5=Kerberos kimlik doğrulaması
+edit_sec_krb5i=Kerberos bütünlüğü
+edit_sec_krb5p=Kerberos gizlilik
+edit_sec_lipkey=LIPKEY
+edit_sec_spkm=SPKM
+
+save_epfs=Sözde dosya sistemi yolu '$1' mutlak bir yol gibi görünmüyor
+save_eanonuid=Geçersiz anonim erişim kullanıcı adı
+save_eanongid=Geçersiz anonim erişim grubu adı
+
+log_delete_exports=$1 NFS dışa aktarımı silindi

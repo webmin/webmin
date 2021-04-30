@@ -1,0 +1,103 @@
+index_title=Korisnici i grupe LDAP-a
+index_ebase=U vašem sustavu nije pronađena konfiguracijska datoteka LDAP klijenta, pa se baze korisnika i grupe moraju postaviti na <a href='$1'>konfiguraciju modula</a>.
+index_eperl=Modul $1 Perl koji ovaj modul zahtijeva nije instaliran ili ne radi ispravno. <a href='$2'>Kliknite ovdje</a> da biste ga odmah preuzeli i instalirali.
+index_eperl2=Pogreška koju je Perl prijavio prilikom pokušaja učitavanja modula bila je :
+index_eldap=$1. Kliknite ovdje da biste prilagodili konfiguraciju <a href='$2'>modula</a>.
+index_eschema=Webmin se povezao s LDAP serverom, ali nije uspio dohvatiti shemu. Provjerite nije li onemogućen pristup u modulu <a href='$1'>LDAP poslužitelja</a>.
+index_eimap=$1. Možda je vaša konfiguracija <a href='$2'>modula</a> netočna.
+index_emd5=Ovaj modul je konfiguriran <a href='$1'></a> za korištenje enkripcije MD5 za lozinke, ali $2 Perl modul nije instaliran. <a href='$3'>Kliknite ovdje</a> da biste preuzeli i instalirali modul $2.
+index_eslappasswd=Ovaj modul je konfiguriran <a href='$1'></a> za korištenje LDAP MD5 enkripcije za lozinke, ali program <tt>$2</tt> koji se koristi za šifriranje lozinke nije instaliran.
+index_eusearch=Pretraživanje korisnika ispod $1 : $2 nije uspjelo
+index_uadd=Dodajte novog korisnika LDAP-a.
+index_gadd=Dodajte novu grupu LDAP.
+index_unone=Nisu pronađeni korisnici LDAP-a ispod $1.
+index_gnone=Nije pronađena nijedna LDAP grupa ispod $1.
+index_return=popis korisnika
+index_greturn=popis grupa
+index_egsearch=Nije bilo moguće pretraživati grupe ispod $1 : $2 
+index_samba=Samba?
+index_cyrus=IMAP?
+index_users=Korisnici LDAP-a
+index_groups=LDAP grupe
+
+imap_econn=Povezivanje s IMAP serverom $1 nije uspjelo
+imap_elogin=Prijava na IMAP poslužitelj $1 nije uspjela kao $2 : $3 
+conn_eldap_host=U vašem sustavu nije pronađena konfiguracijska datoteka LDAP klijenta, pa LDAP poslužitelj mora biti postavljen na stranici Konfiguriranje modula
+conn_elogin=U vašem sustavu nije pronađena konfiguracijska datoteka LDAP klijenta, pa se LDAP prijava mora postaviti na stranici Konfiguriranje modula
+conn_efile_open=Nije moguće otvoriti datoteku vjerodajnica za povezivanje LDAP-a:
+
+uedit_cap=Korisničke mogućnosti
+uedit_samba=Samba prijava?
+uedit_cyrus=Prijava za IMAP poslužitelj?
+uedit_dn=Korisnikov LDAP DN
+uedit_classes=LDAP klase objekata
+uedit_alias=Aliasi za poštu
+uedit_fields=Dodatna LDAP polja
+uedit_firstname=Ime
+uedit_lastname=Prezime
+uedit_raw=LDAP atributi
+uedit_return=korisnički podaci
+uedit_quota=IMAP kvota
+uedit_unquota=Ne mijenjajte se
+uedit_sambapassopts=Opcije Samba lozinke
+uedit_sambapwdlastset=Posljednje ažuriranje lozinke
+uedit_sambapwdcanchange=Lozinka se može promijeniti
+uedit_sambabadpasswordcount=Loš broj zaporki
+uedit_sambaacctflags=Oznake računa
+
+usave_eadd=Dodavanje korisnika u bazu podataka LDAP nije uspjelo : $1 
+usave_emod=Nije uspjela izmjena korisnika u LDAP bazi podataka : $1 
+usave_emoddn=Preimenovanje korisnika u LDAP bazi podataka nije uspjelo : $1 
+usave_egroupmod=Nije uspjela izmjena grupe $1 u LDAP bazi podataka : $2 
+usave_edelete=Brisanje korisnika iz baze podataka LDAP nije uspjelo : $1 
+usave_eicreate=Izrada korisnika nije uspjela
+usave_eiacl=Nije uspjelo odobriti prava administratoru
+usave_eimap=Korisnik je uspješno spremljen u bazu podataka LDAP, ali došlo je do IMAP pogreške: $1 : $2 
+usave_eisub=Pretplata korisnika na mapu $1 nije uspjela
+usave_eiquota=Nije uspjelo postavljanje kvote IMAP
+usave_eifolder=Izrada mape $1 nije uspjela
+usave_eilogin=Prijavljivanje kao novi korisnik nije uspjelo
+usave_ecyruspass=Prilikom aktiviranja IMAP-a mora se unijeti uobičajena korisnička lozinka ili izabrana opcija Bez lozinke.
+usave_ebook=Nije uspio stvoriti unos adresara : $1 
+usave_emodbook=Nije uspjela izmjena unosa adresara : $1 
+usave_emodbookdn=Nije uspjelo preimenovanje unosa u adresaru : $1 
+usave_egone=Korisnik više ne postoji!
+usave_ex86=Ovaj se modul ne može koristiti za postavljanje lozinke za Samba korisnika na ne-Intelovim sustavima, jer to ovisi o sastavljenom x86 programu.
+usave_esamba=Ovaj se modul ne može koristiti za postavljanje lozinke za Samba korisnika, jer Samba Windows dijeljenje datoteka nije instaliran.
+usave_ealiasdup=Alias $1 već koristi $2 
+usave_eattrdup=Objekt $1 već koristi $2 $3 
+usave_eattrdupu=Korisnik $1 već koristi $2 $3 
+usave_eattrdupg=Grupa $1 već koristi $2 $3 
+usave_ereal=Nedostaje pravo ime
+usave_equota=Nedostaje ili nije važeća IMAP kvota
+
+search_err=Potraga za $1 ispod $2 nije uspjela : $3 
+
+gedit_dn=LDAP grupe DN
+gedit_return=detalji grupe
+gedit_cap=Mogućnosti grupe
+gedit_samba=Samba grupa?
+
+gsave_egone=Grupa više ne postoji!
+gsave_edelete=Brisanje grupe iz baze podataka LDAP nije uspjelo : $1 
+gsave_eadd=Nije uspjelo dodavanje grupe u bazu podataka LDAP : $1 
+gsave_emod=Nije uspjela izmjena grupe u LDAP bazi podataka : $1 
+gsave_emoddn=Preimenovanje grupe u LDAP bazi podataka nije uspjelo : $1 
+
+gdel_group=Brisanje unosa grupe LDAP. ..
+
+udel_pass=Brisanje unosa korisnika LDAP. ..
+udel_book=Brisanje iz adresara ..
+udel_imap=Brisanje IMAP mape ..
+udel_warnimap=Postojeća poštanska pošta će se izbrisati prilikom brisanja kućnog imenika!
+udel_failed=.. neuspjeh!  : $1 
+
+raw_title=LDAP atributi
+raw_name=Naziv atributa
+raw_value=vrijednosti
+raw_for=Za $1 
+
+batch_samba=Želite li stvoriti Samba račun za nove korisnike?
+batch_imap=Želite li stvoriti IMAP račun za nove korisnike?
+batch_descafter3=U <b>stvoriti</b> i <b>izmijeniti</b> redove, po želji možete dodati dodatna polja koja sadrže atribute LDAP u formatu <i>name</i> = <i>vrijednosti</i> dodijeliti novim ili promijenjenim korisnicima.
+batch_eattr=Nevažeći atribut LDAP u retku $1 : $2 

@@ -1,0 +1,103 @@
+index_title=하트 비트 모니터
+index_return=하트 비트 모니터
+index_edir=하트 비트 구성 디렉토리 $1 이 (가) 없습니다. 하트 비트가 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+index_start=하트 비트 모니터 시작
+index_startmsg=하트 비트 모니터 프로세스를 시작하려면이 단추를 클릭하십시오. 이렇게하면 현재 구성으로 시스템에서 자동 서비스 장애 조치가 가능합니다.
+index_apply=변경 승인
+index_applymsg=실행중인 하트 비트 모니터 프로세스가 현재 구성을 다시로드하도록하려면이 단추를 클릭하십시오.
+index_eha_cf=시스템에서 하트 비트 구성 파일 $1 을 (를) 찾을 수 없습니다. 아직 복사되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+index_eharesources=시스템에서 자원 파일 $1 을 (를) 찾을 수 없습니다. 아직 복사되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+index_eauthkeys=시스템에서 인증 키 파일 $1 을 (를) 찾을 수 없습니다. 아직 복사되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+index_ereq_resource_cmd=시스템에서 다른 노드 ($1)의 리소스를 요청하는 스크립트를 찾을 수 없습니다. 아직 복사되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+index_version=하트 비트 버전 $1 
+index_noversion=경고-시스템에 설치된 하트 비트 버전을 자동으로 감지 할 수 없습니다. <a href='$1'>모듈 구성</a> 페이지에서 설정해야합니다.
+index_status=하트 비트 상태
+
+conf_title=구성 옵션
+conf_header=하트 비트 구성 옵션
+conf_serials=직렬 하트 비트 포트
+conf_baud=직렬 포트의 전송 속도
+conf_bcasts=이더넷 하트 비트 인터페이스
+conf_none=없음
+conf_udpport=UDP 하트 비트 포트
+conf_mcast=멀티 캐스트 하트 비트 장치
+conf_mcastv=장치 $1, 그룹 $2, 포트 $3, TTL $4, 루프백 $5 
+conf_enabled=가능
+conf_disabled=비활성화
+conf_keepalive=하트 비트 사이의 시간
+conf_nice_failback=좋은 장애 복구 동작
+conf_secs=초
+conf_deadtime=노드가 죽은 것으로 간주되기 전의 시간
+conf_watchdog=워치 독 장치 파일
+conf_node=클러스터의 호스트
+conf_logfile=하트 비트 로그 파일
+conf_logfacility=Syslog 로그 기능
+conf_initdead=초기 데드 타임
+conf_ok=저장 옵션
+conf_err=옵션을 저장하지 못했습니다
+conf_ebaud=전송 속도가 없거나 유효하지 않습니다
+conf_ebcast=하트 비트 브로드 캐스트 인터페이스가 입력되지 않았습니다
+conf_ebcastif='$1'은 (는) 유효한 브로드 캐스트 인터페이스가 아닙니다
+conf_eudpport=하트 비트 포트가 없거나 유효하지 않습니다
+conf_ekeepalive=하트 비트 사이의 시간이 없거나 잘못되었습니다
+conf_edeadtime=누락되거나 잘못된 데드 타임
+conf_ewatchdog=없거나 감시 장치 파일이 없거나 존재하지 않습니다
+conf_enonode=입력 한 클러스터 호스트가 없습니다
+conf_ethisnode=이 호스트 $1 이 (가) 클러스터 호스트 목록에 없습니다.
+conf_elogfile=로그 파일 이름이 없거나 잘못되었습니다
+conf_einitdead=초기 데드 타임이 없거나 잘못되었습니다
+conf_einitdead2=초기 데드 타임은 노드가 데드로 간주되기 전에 최소 두 배의 시간이어야합니다
+conf_emcast_dev=멀티 캐스트 장치가 없거나 잘못되었습니다
+conf_emcast_ip=누락되거나 잘못된 멀티 캐스트 그룹 주소
+conf_emcast_port=멀티 캐스트 포트 번호가 없거나 잘못되었습니다
+conf_emcast_ttl=멀티 캐스트 수명이 없거나 잘못되었습니다
+conf_auto_on=$ {conf_enabled}
+conf_auto_off=$ {conf_disabled}
+conf_auto_legacy=레거시 모드
+conf_auto_=$ {default}
+
+res_title=클러스터 리소스
+res_node=기본 노드
+res_ips=IP 주소
+res_servs=노드 서비스
+res_none=없음
+res_nores=시스템에 클러스터 리소스가 정의되어 있지 않습니다.
+res_add=클러스터 리소스 추가
+res_return=자원 목록
+res_active=자원 상태
+res_getserv=자원 확보
+res_hbdown=하트 비트 다운
+res_up=쪽으로
+res_down=내려가는
+
+node_create=클러스터 리소스 추가
+node_edit=클러스터 리소스 편집
+node_header=클러스터 자원 세부 사항
+node_node=자원의 기본 노드
+node_ips=자원의 IP 주소
+node_ip=IP 주소
+node_cidr=넷 마스크 CIDR
+node_broad=방송 주소
+node_servs=자원 서비스
+node_serv=서비스
+node_args=추가 인수
+node_err=클러스터 리소스를 저장하지 못했습니다
+node_enone=기본 노드가 없거나 유효하지 않습니다
+node_eip='$1'은 (는) 유효한 IP 주소가 아닙니다
+node_ecidr='$1'은 (는) 유효한 CIDR이 아닙니다.
+node_ebroad='$1'은 (는) 유효한 브로드 캐스트 주소가 아닙니다.
+
+auth_title=인증 키
+auth_header=클러스터 노드 인증
+auth_mode=인증 모드
+auth_crc=CRC (보안 없음)
+auth_sha1=비밀번호가있는 SHA1
+auth_md5=비밀번호가있는 MD5
+auth_err=인증 키를 저장하지 못했습니다
+auth_emd5=MD5 비밀번호가 없거나 잘못되었습니다
+auth_esha1=SHA1 비밀번호가 없거나 잘못되었습니다
+
+start_err=하트 비트를 시작하지 못했습니다
+
+apply_err=변경 사항을 적용하지 못했습니다
+apply_epid=프로세스가 더 이상 실행되지 않습니다

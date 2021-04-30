@@ -1,0 +1,152 @@
+index_title=PPTP VPN server
+index_version=Verze PoPToP $1 
+index_epptpd=Server PoPToP PPTP $1 nebyl ve vašem systému nalezen nebo není správným programem. Možná není nainstalována nebo je vaše <a href='$2'>konfigurace modulu</a> nesprávná.
+index_econfig=Konfigurační soubor serveru PPTP $1 nebyl ve vašem systému nalezen. Možná je vaše <a href='$2'>konfigurace modulu</a> nesprávná.
+index_stop=Zastavte server PPTP
+index_stopdesc=Klepnutím na toto tlačítko vypnete běžící proces serveru PPTP, takže nebudou přijata žádná nová připojení. Existující připojení VPN však zůstanou aktivní.
+index_start=Spusťte server PPTP
+index_startdesc=Klepnutím na toto tlačítko spustíte proces serveru PPTP, aby mohl přijímat připojení VPN od klientů.
+index_apply=Použít konfiguraci
+index_applydesc=Klepnutím na toto tlačítko použijete aktuální možnosti serveru PPTP zastavením a opětovným spuštěním procesu serveru PPTP. Změny možností PPP a účtů PPP se budou vždy vztahovat na všechna nová připojení
+index_return=index modulu
+index_epppd=Ve vašem systému není nainstalován program serveru PPP $1. PPTP závisí na tom, jak funguje.
+
+conf_title=Možnosti serveru PPTP
+conf_ecannot=Není dovoleno upravovat možnosti serveru PPTP
+conf_header=Konfigurace serveru PPTP
+conf_speed=Přenosová rychlost PPP
+conf_baud=bps
+conf_listen=Poslouchejte na adrese
+conf_all=Všechny adresy
+conf_localip=IP adresy pro ukončení připojení k serveru
+conf_remoteip=IP adresy, které mají být přidělovány klientům
+conf_ipxnets=Sítě IPX, které mají být přiděleny
+conf_from=Z
+conf_to=na
+conf_option=Soubor voleb PPP
+conf_mode0=Globální nastavení
+conf_mode1=Nastavení specifická pro PPTP
+conf_mode2=Vlastní soubor
+conf_ipdesc=IP adresu v obou rozsazích lze zadat buď samostatně (jako 192.168.1.1), nebo jako rozsahy (jako 192.168.2.32-64)
+conf_err=Možnosti serveru se nepodařilo uložit
+conf_espeed=Chybějící nebo neplatná přenosová rychlost
+conf_elisten=Chybějící nebo neplatná adresa pro poslech
+conf_eoption=Chybějící nebo neplatně vypadající soubor vlastních možností PPP
+conf_elocalip='$1' není platná místní IP adresa nebo rozsah
+conf_eremoteip='$1' není platná vzdálená IP adresa nebo rozsah
+conf_efrom=Chybí nebo je neplatná síť IPX z adresy
+conf_eto=Chybějící nebo neplatná síť IPX pro adresu
+
+options_title=Možnosti PPP
+options_ecannot=Není dovoleno upravovat možnosti PPP
+options_desc0=Možnosti PPP níže od $1 platí pro VŠECHNY příchozí připojení přijatá vaším systémem, včetně těch pro modemy vytáčení.
+options_desc1=Možnosti PPP níže od $1 platí pouze pro všechna připojení PPTP.
+options_desc2=Budou použity při všech nových připojeních vytvořených po uložení tohoto formuláře.
+options_header=Možnosti připojení PPP
+options_proxyarp=Vytvořit proxy ARP záznam?
+options_lock=Zamknout soubor zařízení PTY?
+options_auth=Vyžadovat ověření?
+options_auth0=Ne, ale brání směrovaným IP
+options_auth1=Nikdy
+options_auth2=Vždy
+options_login=Také provádí unixovou autentizaci?
+options_pap=PAP autentizace
+options_chap=Autentizace CHAP
+options_req=Musí být použito
+options_all=Může být použit
+options_ref=Nelze použít
+options_name=Název serveru pro ověření
+options_hn=Skutečné jméno hostitele
+options_mtu=Maximální velikost odesílaného paketu
+options_mru=Maximální velikost přijímaného paketu
+options_err=Možnosti PPP se nepodařilo uložit
+options_emtu=Chybí nebo je neplatná maximální velikost odesílacího paketu
+options_emru=Chybí nebo je neplatná maximální velikost přijímajícího paketu
+options_ename=Chybějící nebo neplatný název serveru pro ověření
+options_version=Verze PPPd $1 
+options_msdesc=Níže uvedené možnosti povolují metodu ověřování MS-CHAP a šifrování MPPE, které ve výchozím nastavení používají klienti Windows VPN. MPPE však vyžaduje podporu jak v démonu PPP, tak v jádře operačního systému.
+options_mschap=Ověřování MS-CHAP
+options_mschap-v2=Ověřování MS-CHAP verze 2
+options_chapms=Ověřování MS-CHAP
+options_chapms-v2=Ověřování MS-CHAP verze 2
+
+secrets_title=Účty PPP
+secrets_ecannot=Není dovoleno upravovat účty PPP
+secrets_return=index
+secrets_none=Zatím nebyly vytvořeny žádné účty PPP.
+secrets_enopfile=Soubor hesel PPP $1 ve vašem systému neexistuje. Možná není nainstalován PPP nebo je vaše <a href='$2'>konfigurace modulu</a> nesprávná.
+secrets_table=PPP odpovídá $1 
+secrets_user=Uživatelské jméno
+secrets_ips=IP adresy
+secrets_uany=ŽÁDNÝ
+secrets_sany=ŽÁDNÝ
+secrets_create=Vytvořit nový účet PPP.
+secrets_desc=Účty PPP uvedené na této stránce jsou převzaty ze souboru $1, který se používá pro ověření $3. Jsou zobrazeny pouze účty pro váš server $2, nikoli účty pro odchozí připojení.
+secrets_delete=Smazat vybrané účty PPP
+
+edit_secret_etitle=Upravit účet PPP
+edit_secret_ctitle=Vytvořit účet PPP
+edit_secret_acc=Účet PPP
+edit_secret_user=Uživatelské jméno
+edit_secret_serv=Server
+edit_secret_sany=Žádný
+edit_secret_uany=Žádný
+edit_secret_pass=Heslo
+edit_secret_none=Žádný
+edit_secret_ffile=Ze souboru
+edit_secret_leave=Nechte beze změny
+edit_secret_setto=Nastaven na
+edit_secret_vaddr=Platné adresy
+edit_secret_aany=Povolit jakékoli
+edit_secret_anone=Nedovolte žádné
+edit_secret_alist=Povolit uvedené ..
+edit_secret_save=Uložit
+edit_secret_del=Odstranit
+edit_secret_return=seznam účtů
+
+save_secret_esave=Uložení účtu se nezdařilo
+save_secret_enoip='$1' není platná adresa
+
+stop_err=Zastavení serveru PPTP se nezdařilo
+stop_egone=Už neběží
+stop_ecannot=Není dovoleno zastavit server PPTP
+
+start_err=Spuštění serveru PPTP se nezdařilo
+start_ecannot=Není dovoleno spustit server PPTP
+
+apply_err=Nepodařilo se znovu spustit server PPTP
+apply_ecannot=Není dovoleno restartovat server PPTP
+
+conns_title=Aktivní připojení
+conns_ecannot=Nemáte oprávnění spravovat aktivní připojení
+conns_desc=Tato stránka obsahuje seznam aktuálně aktivních připojení PPTP k vašemu serveru. Chcete-li jeden násilně odpojit, klikněte na jeho název rozhraní.
+conns_iface=Rozhraní PPP
+conns_client=Adresa klienta
+conns_stime=Připojeno od
+conns_local=Adresa VPN serveru
+conns_remote=VPN adresa klienta
+conns_none=Zdá se, že v tuto chvíli nejsou aktivní žádná připojení PPTP.
+conns_unknown=Neznámý
+conns_user=Uživatelské jméno
+
+disc_err=Nepodařilo se odpojit
+disc_egone=Připojení již není aktivní
+disc_ekill=Proces již není spuštěn
+
+log_secret_create=Vytvořený účet PPP $1 
+log_secret_modify=Upravený účet PPP $1 
+log_secret_delete=Smazaný účet PPP $1 
+log_deletes=Smazané účty $1 PPP
+log_conf=Změněné možnosti serveru PPTP
+log_options=Upravené možnosti PPP
+log_disc=Odpojený klient $1 
+log_start=Spuštěn PPTP server
+log_stop=Zastaven server PPTP
+log_apply=Použitá konfigurace serveru PPTP
+
+acl_conf=Lze upravit konfiguraci?
+acl_options=Lze upravit možnosti?
+acl_secrets=Lze spravovat účty PPTP?
+acl_conns=Lze zobrazit připojení?
+acl_stop=Lze zastavit a spustit server PPTP?
+acl_apply=Lze použít konfiguraci?

@@ -1,0 +1,3 @@
+name_pl=Kierownik eksportu
+longdesc_pl=Edytuj udziały plików NFS zdefiniowane w /etc/exports.
+desc_pl=Wywóz NFS

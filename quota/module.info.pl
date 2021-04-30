@@ -1,1 +1,1 @@
-desc_pl=Przydzia≥y (Quota) dyskÛw
+desc_pl=Przydzia≈Çy (Quota) dysk√≥w

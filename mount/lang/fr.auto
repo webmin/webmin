@@ -1,0 +1,74 @@
+index_used=Utilisé
+index_none=Vous n'avez accès à aucun système de fichiers monté.
+index_root=Système de fichiers racine
+
+edit_usage=Utilisation du disque
+edit_nfs_opt4=Options spécifiques à NFSv4
+
+save_force=Le montage sur $1 n'a pas pu être supprimé, car le montage est actuellement utilisé. Pour tenter un démontage forcé, cliquez sur le bouton ci-dessous
+save_fapply=Forcer le démontage
+
+smb_eworkgroup=Aucun groupe de travail défini sur la page de configuration du module
+smb_emaster=Aucun maître de navigation n'a été trouvé pour le groupe de travail $1
+
+solaris_idedev=Contrôleur IDE $1 lecteur $2 partition $3
+solaris_lvm=Périphérique LVM
+solaris_vg=Groupe de volumes
+solaris_lv=Volume logique
+solaris_vxfs=Périphérique VXFS
+solaris_hfs=Appareil HFS
+
+linux_uuid=Partition avec ID $1
+linux_usel=Partition avec ID
+linux_nodev=Interdire les fichiers de l'appareil?
+linux_noexec=Interdire l'exécution des binaires?
+linux_ifuser=Si montable par les utilisateurs
+linux_quotaj=Type de stockage de quota
+linux_quotaj1=Journalisation
+linux_quotaj0=Ordinaire
+linux_etimeo=Le délai doit être un nombre
+linux_credentials=Fichier d'informations d'identification
+linux_noatime=Vous évitez de mettre à jour les derniers accès?
+linux_netdev=Attendez que les interfaces réseau soient en place?
+linux_nofail=Continuer le démarrage même si le montage échoue?
+linux_nfsvers=Forcer la version NFS
+linux_nfsdefault=Utiliser la version par défaut
+linux_swappri=Priorité de la mémoire virtuelle
+linux_eswappri=Priorité de mémoire virtuelle numérique manquante ou non valide
+linux_codepage=Page de code
+linux_iocharset=Jeu de caractères IO
+linux_ecodepage=Page de codes manquante ou invalide
+linux_eiocharset=Jeu de caractères IO manquant ou invalide
+linux_nounix=Désactiver les extensions CIFS Unix?
+linux_noserverino=Générer des numéros d'inode côté client?
+linux_cvers=Version CIFS
+linux_ecvers=La version CIFS doit être un nombre
+
+log_swap=Fichier d'échange créé $1
+
+acl_types=Types de systèmes de fichiers pouvant être utilisés
+acl_fslist=Noms de types répertoriés
+acl_user=Vous ne pouvez modifier que vos propres systèmes de fichiers?
+acl_hide=Masquer les systèmes de fichiers non modifiables?
+acl_simple=Afficher le formulaire de montage simple?
+acl_simopts=Afficher les options de système de fichiers simplifiées?
+acl_browse=Afficher le fichier et partager les boutons de navigation?
+
+freebsd_ide=Disque dur IDE
+freebsd_device=Dispositif
+freebsd_slice=Tranche
+freebsd_part=Cloison
+freebsd_scsi=Disque SCSI
+freebsd_other=Autre appareil
+freebsd_select=Partition de disque
+freebsd_idedev=Périphérique IDE $1, tranche $2, partition $3
+freebsd_scsidev=Périphérique SCSI $1, tranche $2, partition $3
+freebsd_edevpath=L'autre périphérique doit être un chemin absolu, comme <tt>/dev/cdrom</tt>
+freebsd_edevfile=Le fichier de périphérique '$1' n'existe pas
+
+cswap_file=Le fichier d'échange $1 n'existe pas.
+cswap_size=Créez et montez un fichier d'échange de taille
+
+acl_sysinfo=Afficher les données de disque disponibles sur le tableau de bord?
+sysinfo_total=Total
+sysinfo_dev=Reference de l'appareil

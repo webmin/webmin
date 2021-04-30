@@ -1,5 +1,4 @@
 category=system
-risk=high
 os_support=*-linux slackware-linux{-d "/etc/pam.d"} macos 
 desc=PAM Authentication
 name=PAM

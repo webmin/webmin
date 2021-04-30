@@ -1,0 +1,75 @@
+index_title=GRUB ブート ローダー
+index_add=新規ブート オプションを追加
+index_global=グローバルオプションを編集
+index_globalmsg=すべてのブートメニューの選択肢に適用するグローバル ブートアップオプションを編集して、GRUB がインストールされるデバイスを選択します。
+index_install=GRUB のインストール
+index_installmsg=ブートアップに上のオプションを表示するために GRUB ローダーを $1 をインストールします。この操作により、LILO などの既存のブート ローダーが上書きされ、システムをブートできなくなる可能性があります。
+index_none=定義されたブートオプションはありません。GRUB をインストールする前に少なくとも 1つのオプションを追加してください。
+index_efile=GRUB メニュー ファイル $1 がシステムにありませんでした。GRUB がインストールされていないか、<a href='$2'>モジュール設定</a>が不正な可能性があります。
+index_epath=GRUB 実行ファイル $1がシステムにありませんでした。GRUB がインストールされていないか、<a href='$2'>モジュール設定</a> が不正な可能性があります。
+index_return=オプション リスト
+
+title_add=ブートオプションの追加
+title_edit=ブートオプションの編集
+title_header=ブートメニューオプションの詳細
+title_title=オプション タイトル
+title_root=ブート画像パーティション
+title_noverify=パーティションをマウント、ベリファイしない
+title_other=その他
+title_sel=選択..
+title_boot=ブートするオペレーティングシステム
+title_kernel=Linux カーネル
+title_kfile=カーネルへのパス
+title_args=カーネルのオプション
+title_initrd=初期 RAMDISK ファイル
+title_modules=外部モジュール
+title_chain=他の OS
+title_chain_def=パーティションの最初のセクタから
+title_chain_file=chainloader ファイルから
+title_makeactive=root パーティションをアクティブにしますか？
+title_none1=無し
+title_none2=（非起動メニューエントリ）
+title_err=ブートオプションを保存できませんでした
+title_etitle=オプションタイトルがありません
+title_eroot=root パーティションがありません
+title_ekernel=カーネルのパスがないか無効です
+title_echain=chainloader ファイルがないか無効です
+title_edev=root パーティションデバイス $1 がサポートされていません
+title_einitrd=初期 RAMDISK ファイル名が指定されていません
+title_lock=パスワードロックされていますか？
+
+global_title=グローバル オプション
+global_header=グローバルブートメニュー オプション
+global_default=デフォルト ブート オプション
+global_fallback=フォールバックブートオプション
+global_first=リストの最初
+global_timeout=デフォルトをロードするまでのタイムアウト
+global_forever=永久に待機
+global_secs=秒
+global_install=GRUB をディスク/パーティションにインストール
+global_sel=選択..
+global_other=その他
+global_password=起動パスワード
+global_none=無し
+global_password_file=パスワードが入力された場合使用するメニューファイル：
+global_err=グローバル オプションを保存できませんでした
+global_etimeout=タイムアウトがないか無効です
+global_edev=インストール ディスク/パーティション $1 はサポートされません
+global_eother=ディスク/パーティションがないか無効です
+global_epassword=ブートパスワードが指定されていないか不正です
+global_epasswordfile=オルタネイトメニューファイル名が指定されていません
+
+install_title=GRUB のインストール
+install_err=GRUB をインストールできませんでした
+install_efind=メニューファイルがありませんでした
+install_desc=GRUB を $1 にコマンド $2 と $3 でインストールしています ..
+install_ok=.. インストールを完了しました。
+install_failed=.. インストールに失敗しました。
+
+log_create_title=起動オプション $1 が作成されました
+log_delete_title=起動オプション $1 が削除されました
+log_modify_title=起動オプション $1 が変更されました
+log_up_title=起動オプション $1 を上に移動しました
+log_down_title=起動オプション $1 を下に移動しました
+log_global=全体的オプションを変更しました
+log_install=導入された GRUB

@@ -1,0 +1,71 @@
+<header> TCP-omslag </header>
+<h3> Mönster </h3> Åtkomstkontrollspråket implementerar följande mönster: <ul>
+    <li> En sträng som börjar med en &#39;.&#39; karaktär. Ett värdnamn matchas om de sista komponenterna i dess namn matchar det angivna mönstret. Till exempel matchar mönstret &#39;.tue.nl&#39; värdnamnet &#39;wzv.win.tue.nl&#39;. </li>
+    <li> En sträng som slutar med en &#39;.&#39; karaktär. En värdadress matchas om dess första numeriska fält matchar den givna strängen. Till exempel mönstret &#39;131.155.&#39; matchar adressen till (nästan) varje värd i Eindhoven University nätverk (131.155.xx). </li>
+    <li> En sträng som börjar med ett &quot;@&quot; -tecken behandlas som ett NIS-grupp (tidigare YP). Ett värdnamn matchas om det är en värdmedlem i den angivna netgruppen. Netgroup-matchningar stöds inte för daemonprocessnamn eller för klientanvändarnamn. </li>
+    <li> Ett uttryck av formen &quot;nnnn / mmmm&quot; tolkas som ett &quot;nät / mask&quot; -par. En IPv4-värdadress matchas om &#39;net&#39; är lika med bitens OCH för adressen och &#39;masken&#39;. Exempelvis matchar nät- / maskmönstret &#39;131.155.72.0/255.255.254.0&#39; varje adress inom intervallet &#39;131.155.72.0&#39; till &#39;131.155.73.255&#39;. </li>
+    <li> Ett uttryck av formen &#39;[n: n: n: n: n: n: n: n] / m&#39; tolkas som ett &quot;[net]/prefixlen&quot; -par. En IPv6-värdadress matchas om &quot;prefixlen&quot; bitar av &quot;net&quot; är lika med &quot;prefixlen&quot; bitarna i adressen. Till exempel matchar [net]/prefixlenmönstret &#39;[3ffe: 505: 2: 1 ::]/64&#39; varje adress i intervallet &#39;3ffe: 505: 2: 1:&#39;? till och med &#39;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&#39;. </li>
+    <li> En sträng som börjar med ett &quot;/&quot; -tecken behandlas som ett filnamn. Ett värdnamn eller adress matchas om det matchar något värdnamn eller adressmönster som listas i den namngivna filen. Filformatet är noll eller fler rader med noll eller fler värdnamn eller adressmönster separerade med blanksteg. Ett filnamnsmönster kan användas var som helst som ett värdnamn eller adressmönster kan användas. </li>
+    <li> Wildcards &#39;*&#39; och &#39;?&#39; kan användas för att matcha värdnamn eller IP-adresser. Denna metod för matchning kan inte användas i kombination med &quot;net/mask&quot; matchning, värdnamnsmatchning börjar med &quot;.&quot; eller IP-adressmatchning som slutar med &#39;.&#39;. </li>
+</ul>
+<h3> Jokertecken </h3> Åtkomstkontrollspråket stöder uttryckliga jokertecken: <table border>
+    <tr>
+        <td> <b>ALLT</b> </td>
+        <td> Det universella jokerteckenet matchar alltid. </td>
+    </tr>
+    <tr>
+        <td> <b>LOKAL</b> </td>
+        <td> Matchar alla värdar vars namn inte innehåller ett prickstecken. </td>
+    </tr>
+    <tr>
+        <td> <b>OKÄND</b> </td>
+        <td> Matchar alla användare vars namn är okänt och matchar alla värdar vars namn eller adress är okänd. Detta mönster bör användas med försiktighet: värdnamn kan vara otillgängliga på grund av tillfälliga namnserverproblem. En nätverksadress kommer inte att vara tillgänglig när programvaran inte kan ta reda på vilken typ av nätverk den pratar med. </td>
+    </tr>
+    <tr>
+        <td> <b>KÄND</b> </td>
+        <td> Matchar alla användare vars namn är känt och matchar alla värdar vars namn och adress är känd. Detta mönster bör användas med försiktighet: värdnamn kan vara otillgängliga på grund av tillfälliga namnserverproblem. En nätverksadress kommer inte att vara tillgänglig när programvaran inte kan ta reda på vilken typ av nätverk den pratar med. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOID</b> </td>
+        <td> Matchar alla värdar vars namn inte stämmer med dess adress. När tcpd är byggd med -DPARANOID (standardläge), släpper den förfrågningar från sådana klienter redan innan man tittar på åtkomstkontrolltabellerna. Bygg utan -DPARANOID när du vill ha mer kontroll över sådana förfrågningar. </td>
+    </tr>
+</table>
+<h3> operatörer </h3> <b>EXCEPT</b> Avsedd användning är av formen: &#39;list_1 EXCEPT list_2&#39;; denna konstruktion matchar allt som matchar lista_1 såvida det inte matchar lista_2. EXCEPT-operatören kan användas i daemon_lists och i client_lists. EXCEPT-operatören kan kapslas: om kontrollspråket tillåter användning av parenteser, &quot;a EXCEPT b EXCEPT c&quot; skulle tolkas som &quot;(a EXCEPT (b EXCEPT c))&quot;. <h3> Shell-kommandon </h3> Om den första matchade åtkomstkontrollregeln innehåller ett shell-kommando utsätts det kommandot för% <letter> ersättningar (se nästa avsnitt). Resultatet exekveras av en /bin/sh barnprocess med standardingång, utgång och fel anslutet till /dev/null. Ange ett &#39;&amp;&#39; i slutet av kommandot om du inte vill vänta tills det är slutfört. <p> Shell-kommandon bör inte lita på inställningen PATH för inetd. Istället bör de använda absoluta sökvägar, eller så bör de börja med ett uttryckligt uttalande om PATH = någonsin. <h3> % Utvidgningar </h3> Följande utvidgningar är tillgängliga inom skalkommandon: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> Klientens (server) värdadress. </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Klientinformation: user@host, user @ adress, ett värdnamn eller bara en adress, beroende på hur mycket information som finns tillgänglig. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> Namnet på daemonprocessen (argv[0]). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Klient (server) värdnamn eller adress, om värdnamnet inte är tillgängligt. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> Klient (server) värdnamn (eller &quot;okänt&quot; eller &quot;paranoid&quot;). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> ID-processen för demonet. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Serverinformation: daemon@host, daemon @ -adress eller bara ett daemon-namn, beroende på hur mycket information som finns tillgänglig. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Kundens användarnamn (eller &quot;okänt&quot;). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Expanderar till en enda%? karaktär. </td>
+            </tr>
+        </table> Tecken i%utvidgningar som kan förvirra skalet ersätts av understreck.
+        <hr />

@@ -1,0 +1,3 @@
+desc_da=Printeradministration
+name_da=lpadmin
+longdesc_da=Opret og rediger lokale og fjernprintere. Understøtter Windows-printerservere og Ghostscript-printerdrivere.

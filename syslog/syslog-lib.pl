@@ -36,7 +36,8 @@ foreach my $line (@lines) {
 			last if ($line !~ s/\\$//);
 			}
 		}
-	if ($line =~ /^\$IncludeConfig\s+(\S+)/) {
+	if ($line =~ /^\$IncludeConfig\s+(\S+)/ ||
+	    $line =~ /^include\(file="([^"]+)"/) {
 		# rsyslog include statement .. follow the money
 		foreach my $icfile (glob($1)) {
 			my $ic = &get_config($icfile);

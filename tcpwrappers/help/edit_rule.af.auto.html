@@ -1,0 +1,71 @@
+<header> TCP Wrappers </header>
+<h3> patrone </h3> Die taal vir toegangsbeheer implementeer die volgende patrone: <ul>
+    <li> &#39;N String wat met &#39;n&#39; begin &#39;. karakter. &#39;N Gasheernaam word gepas as die laaste komponente van sy naam ooreenstem met die gespesifiseerde patroon. Byvoorbeeld, die patroon &#39;.tue.nl&#39; stem ooreen met die gasheernaam &#39;wzv.win.tue.nl&#39;. </li>
+    <li> &#39;N String wat eindig met&#39;. &#39; karakter. &#39;N Gasheeradres word gepas as die eerste numeriese velde ooreenstem met die gegewe string. Byvoorbeeld, die patroon &#39;131.155.&#39; stem ooreen met die adres van (byna) elke gasheer op die Eindhoven Universiteit-netwerk (131.155.xx). </li>
+    <li> &#39;N String wat met &#39;n&#39; @ &#39;-karakter begin, word behandel as &#39;n NIS (voorheen YP) netgroepnaam. &#39;N Gasheernaam word gepas as dit &#39;n gasheerlid van die gespesifiseerde netgroep is. Netgroep-wedstryde word nie ondersteun vir die naam van die demoonproses of vir die gebruikersnaam van klante nie. </li>
+    <li> &#39;N Uitdrukking van die vorm&#39; nnnn / mmmm &#39;word geïnterpreteer as &#39;n&#39; net/masker&#39;-paar. &#39;N IPv4-gasheeradres word gekoppel as&#39; net &#39;gelyk is aan die bitwise EN van die adres en die&#39; masker &#39;. Byvoorbeeld, die net- / maskerpatroon &#39;131.155.72.0/255.255.254.0&#39; pas by elke adres in die reeks &#39;131.155.72.0&#39; tot &#39;131.155.73.255&#39;. </li>
+    <li> &#39;N Uitdrukking van die vorm&#39; [n: n: n: n: n: n: n: n] / m &#39;word geïnterpreteer as &#39;n&#39; [net]/voorvoegsel &#39;-paar. &#39;N IPv6-gasheeradres word ooreenstem as&#39; prefixlen &#39;-bits&#39; net &#39;gelyk is aan die&#39; prefixlen &#39;-bits van die adres. Byvoorbeeld, die [net]/voorvoegselpatroon &#39;[3ffe: 505: 2: 1 ::]/64&#39; stem ooreen met elke adres in die reeks &#39;3ffe: 505: 2: 1:&#39;? deur &#39;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&#39;. </li>
+    <li> &#39;N String wat met &#39;n&#39; / &#39;karakter begin, word as &#39;n lêernaam behandel. Daar is &#39;n gasheernaam of adres wat ooreenstem as dit ooreenstem met enige gasheernaam of adrespatroon wat in die genoemde lêer gelys is. Die lêerformaat is nul of meer reëls met nul of meer gasheernaam of adrespatrone geskei deur &#39;n wit ruimte. &#39;N Lêernaampatroon kan oral gebruik word waar &#39;n gasheernaam of adrespatroon gebruik kan word. </li>
+    <li> Wildcards &#39;*&#39; en &#39;?&#39; kan gebruik word om gasheername of IP-adresse te pas. Hierdie metode van bypassing kan nie gebruik word in samewerking met &#39;net/masker&#39; -passing nie, gasheernaampassing begin met &#39;.&#39; of IP-adres wat ooreenstem met &#39;.&#39;. </li>
+</ul>
+<h3> wildcards </h3> Die taal vir toegangsbeheer ondersteun eksplisiete wildkaarte: <table border>
+    <tr>
+        <td> <b>ALMAL</b> </td>
+        <td> Die universele wildkaart pas altyd by mekaar. </td>
+    </tr>
+    <tr>
+        <td> <b>PLAASLIKE</b> </td>
+        <td> Kom ooreen met enige gasheer wie se naam nie &#39;n puntkarakter bevat nie. </td>
+    </tr>
+    <tr>
+        <td> <b>ONBEKEND</b> </td>
+        <td> Pas by enige gebruiker wie se naam onbekend is, en pas by enige gasheer wie se naam of adres onbekend is. Hierdie patroon moet met omsigtigheid gebruik word: gasheername is moontlik nie beskikbaar nie as gevolg van tydelike probleme op die naambediener. &#39;N Netwerkadres sal nie beskikbaar wees as die sagteware nie kan bepaal watter tipe netwerk dit is nie. </td>
+    </tr>
+    <tr>
+        <td> <b>BEKENDE</b> </td>
+        <td> Pas elke gebruiker wie se naam bekend is, en pas by enige gasheer wie se naam en adres bekend is. Hierdie patroon moet met omsigtigheid gebruik word: gasheername is moontlik nie beskikbaar nie as gevolg van tydelike probleme op die naambediener. &#39;N Netwerkadres sal nie beskikbaar wees as die sagteware nie kan bepaal watter tipe netwerk dit is nie. </td>
+    </tr>
+    <tr>
+        <td> <b>Paranoid</b> </td>
+        <td> Pas elke gasheer wie se naam nie ooreenstem met sy adres nie. As tcpd gebou is met -DPARANOID (standaardmodus), laat dit versoeke van sulke kliënte af selfs voordat daar na die toegangsbeheertafels gekyk word. Bou sonder -DPARANOID as u meer beheer oor sulke versoeke wil hê. </td>
+    </tr>
+</table>
+<h3> operateurs </h3> <b>BEANTWOORD</b> Beoogde gebruik is van die vorm: &#39;list_1 EXCEPT list_2&#39;; hierdie konstruksie pas by alles wat by lys_1 pas, tensy dit ooreenstem met lys_2. Die EXCEPT-operateur kan in daemon_lists en in client_lists gebruik word. Die BEPAALDE operateur kan geneste word: as die beheertaal die gebruik van hakies moontlik sal maak, sou &#39;a EXCEPT b EXCEPT c&#39; ontleed word as &#39;(a EXCEPT (b EXCEPT c))&#39;. <h3> Shell-opdragte </h3> As die reël met die eerste toegangsbeheer &#39;n dopopdrag bevat, word die opdrag onderwerp aan% <letter> vervangings (sien volgende afdeling). Die resultaat word uitgevoer deur &#39;n /bin/sh kind-proses met standaard invoer, uitvoer en fout gekoppel aan /dev/null. Spesifiseer &#39;n &#39;&amp;&#39; aan die einde van die opdrag as u nie wil wag totdat dit voltooi is nie. <p> Shell-opdragte moet nie op die PATH-instelling van die inetd staatmaak nie. In plaas daarvan moet hulle absolute padname gebruik, of hulle moet begin met &#39;n eksplisiete verklaring van PATH = wat ook al. <h3> % Uitbreidings </h3> Die volgende uitbreidings is binne skulpopdragte beskikbaar: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> Die kliënt (bediener) gasheeradres. </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Kliëntinligting: gebruiker @ gasheer, gebruiker @ adres, &#39;n gasheernaam of net &#39;n adres, afhangende van hoeveel inligting beskikbaar is. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> Die naam van die daemonproses (argv[0] -waarde). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> Die kliënt (bediener) gasheernaam of adres as die gasheernaam nie beskikbaar is nie. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> Die kliënt (bediener) gasheernaam (of &#39;onbekend&#39; of &#39;paranoïes&#39;). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> Die daemon-proses-ID. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Bedienerinligting: daemon@host, daemon @ adres, of net &#39;n daemonnaam, afhangend van hoeveel inligting beskikbaar is. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> Die gebruiker se naam (of &quot;onbekend&quot;). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Brei uit na &#39;n enkele%? karakter. </td>
+            </tr>
+        </table> Karakters in%uitbreidings wat die dop kan verwar, word vervang met onderstreep.
+        <hr />

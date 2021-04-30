@@ -1,0 +1,205 @@
+index_title=Zagon procesov
+index_display=Zaslon
+index_tree=PID
+index_user=Uporabnik
+index_size=Spomin
+index_cpu=CPU
+index_search=Iskanje
+index_zone=Cona
+index_run=Zaženi ..
+index_return=seznam procesov
+index_mem2=<b>Pravi pomnilnik:</b> $1 skupaj / $2 brezplačno
+index_mem3=<b>Pravi pomnilnik:</b> $1 skupaj / $2 prosto / $3 predpomnjeno
+index_swap2=<b>Zamenjajte prostor:</b> $1 skupaj / $2 brezplačno
+index_burst=<b>Burstable memory:</b> $1 skupaj
+index_loadname=CPU obremenitve povprečja:
+index_loadnums=$1 (1 min), $2 (5 min), $3 (15 min)
+index_cpuname=Vrsta CPU-ja:
+index_inzone=V coni $1 
+
+pid=ID
+owner=Lastnik
+command=Ukaz
+cpu=CPU
+size=Velikost
+parent=Starševski postopek
+runtime=Čas izvajanja
+nice=Lepa raven
+stime=Začelo
+sclass=IO razporejanje razredov
+sprio=Prednost IO
+
+search_user=Lasti
+search_match=Ujemanje
+search_cpupc=Uporaba več kot $1% CPU-ja
+search_cpupc2=Uporaba več CPU kot
+search_fs=Uporaba datotečnega sistema
+search_files=Uporaba datoteke
+search_submit=Iskanje
+search_none=Ni najdenih procesov ujemanja.
+search_kill=Pošlji signal
+search_ignore=Rezultat ignorirajte iskalne procese
+search_return=iskalni obrazec
+search_sigterm=Prekini procese
+search_sigkill=Ubiti procese
+search_port=Uporaba vrat
+search_protocol=protokol
+search_ip=Uporaba IP naslova
+
+run_command=Ukaz za zagon
+run_submit=Teči
+run_mode=Način teka
+run_bg=Teči v ozadju
+run_fg=Počakajte, da končate
+run_input=Vnos v ukaz
+run_title=Ukazni izhod
+run_output=Izhod iz $1.
+run_none=Izhod ne ustvarja
+run_ecannot=Ne smete zagnati ukazov
+run_as=Zaženi kot uporabnik
+run_euser=Manjkajoče ali neveljavno uporabniško ime
+run_euser2=Ukaza ne smete zagnati kot izbrani uporabnik
+
+edit_title=Obdelajte informacije
+edit_gone=Ta postopek se ne izvaja več
+edit_sub=Podprocesi
+edit_subid=ID
+edit_subcmd=Ukaz podprocesa
+edit_kill=Pošlji signal
+edit_change=Spremeni se
+edit_prilow=Nizka prioriteta
+edit_prihigh=Visoka prioriteta
+edit_pridef=Privzeto
+edit_none=Noben
+edit_ecannot=Ni vam dovoljeno urejati procesov
+edit_sigterm=Prenehati
+edit_sigkill=Ubij
+edit_sigstop=Prekinite
+edit_sigcont=Nadaljuj
+edit_open=Datoteke in povezave
+edit_trace=Proces sledenja
+edit_return=podrobnosti procesa
+
+kill_err=Ni bilo mogoče poslati signala $1 za obdelavo $2 
+kill_title=Pošlji signal
+kill_sent=poslan
+kill_ecannot=Ni vam dovoljeno ubijati procesov
+
+renice_err=Procesu ponovne odobritve $1 ni bilo mogoče
+renice_ecannot=Postopka ne morete ponovno nadgraditi
+
+linux_pri=Prednost
+linux_tty=TTY
+linux_status=Stanje
+linux_wchan=Čakanje v
+linux_mem=Spomin
+linux_group=Skupina
+linux_ruser=Pravi uporabnik
+linux_rgroup=Prava skupina
+linux_pgid=ID skupine procesov
+linux_stime=Začelo
+
+linuxstat_R=Teče
+linuxstat_S=Spanje
+linuxstat_D=Globok spanec
+linuxstat_T=Ustavljeno
+linuxstat_Z=Zombi
+
+linux_real=V realnem času
+linux_be=Najboljši trud
+linux_idle=Nedejaven
+
+freebsd_ruser=Pravi uporabnik
+freebsd_rgroup=Prava skupina
+freebsd_tty=TTY
+freebsd_pgid=Procesna skupina
+freebsd_stime=Začelo
+freebsd_lim=Omejitev pomnilnika
+
+hpux_pri=Prednost
+hpux_tty=TTY
+hpux_status=Stanje
+hpux_wchan=Čakam na
+hpux_stime=Začelo
+
+hpuxstat_0=Neobstoječe
+hpuxstat_S=Spanje
+hpuxstat_W=Čakanje
+hpuxstat_R=Teče
+hpuxstat_I=Vmesni
+hpuxstat_Z=Zombi
+hpuxstat_T=Ustavljeno
+hpuxstat_G=Gojenje
+
+macos_tty=TTY
+
+sysv_group=Skupina
+sysv_ruser=Pravi uporabnik
+sysv_rgroup=Prava skupina
+sysv_pgid=ID skupine procesov
+sysv_tty=TTY
+sysv_stime=Začelo
+sysv_task=ID naloge
+sysv_zone=Ime cone
+
+log_run=Ukaz ran "$1"
+log_kill=Poslan signal $1 za obdelavo $2 
+log_kills=Pošlji signal $1 do $2 procesov
+log_kill_l=Poslan signal $1 za obdelavo $2 
+log_kills_l=Poslan signal $1 procesom <br> $2 
+log_renice=Spremenjena prednost postopka $2 na $1 
+
+acl_manage=Upravljanje procesov kot uporabnik
+acl_manage_def=Trenutni uporabnik Webmin-a
+acl_edit=Ali lahko ubija in zavrača procese?
+acl_run=Ali lahko izvajate ukaze?
+acl_only=Ali lahko vidite samo lastne procese?
+acl_who=Lahko upravlja procese za uporabnike
+acl_who0=Vsi uporabniki
+acl_who1=Trenutni uporabnik Webmin-a
+acl_who2=Uporabniki na seznamu ..
+
+kill_kill=Proces ubijanja
+kill_term=Prenehati
+kill_hup=Ponovni zagon
+kill_stop=Nehaj
+kill_cont=Nadaljujte
+
+open_title=Odprite datoteke in povezave
+open_proc=Za postopek $1 (PID $2)
+open_header1=Odprite datoteke
+open_header2=Odprite omrežne povezave
+open_type=Vtipkajte
+open_proto=Protokol
+open_desc=Podrobnosti
+open_fd=Deskriptor datoteke
+open_listen1=Poslušanje v pristanišču $1 
+open_listen2=Poslušanje naslova $1 vrata $2 
+open_recv=Prejemanje $1:$2 
+open_conn=Povezana od $1 do $2 v stanju $3 
+open_cwd=Trenutni dir
+open_rtd=Root dir
+open_txt=Programska koda
+open_mem=Skupna knjižnica
+open_dir=Imenik
+open_reg=Navadna datoteka
+open_chr=Znak poseben
+open_blk=Blok poseben
+open_size=Velikost datoteke
+open_inode=Inode
+open_file=Pot
+
+trace_title=Proces sledenja
+trace_start=Zagon sledenja sistemskega klica za $1 ..
+trace_doing=Sled sistemskega klica za $1  :
+trace_done=.. postopek se je končal.
+trace_failed=.. sledenje ni uspelo!
+trace_sorry=Ta stran zahteva podporo Java v vašem brskalniku. Če želite uporabiti samo sled besedila, prilagodite konfiguracijo modula.
+trace_syscalls=Sistem sledenja klicev:
+trace_all=Vse
+trace_sel=Seznami ..
+trace_change=Spremeni se
+
+windows_threads=Niti v postopku
+
+syslog_dmesg=Sporočila jedra

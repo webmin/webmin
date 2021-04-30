@@ -1,0 +1,37 @@
+index_title=Skift sprog og tema
+index_lang=Webmin UI-sprog
+index_langglobal2=Globalt sprog.. $1 ($2)
+index_langset=Personligt valg ..
+index_theme=Webmin UI-tema
+index_overlay=Temaoverlay
+index_overlaydef=Ingen - brug standardindstillinger
+index_themeglobal=Globalt tema ($1)
+index_themeset=Personligt valg ..
+index_pass=Webmin login-adgangskode
+index_passleave=Lad være uændret
+index_passset=Indstillet til ..
+index_passagain=Genindtast kodeord
+index_ok=Lave ændringer
+index_themedef=Gamle Webmin-tema
+index_desc2=Dette modul kan bruges til at ændre $1 kun til din Webmin-konto.
+index_d3=$1, $2 og $3 
+index_d2=$1 og $2 
+index_d1=$1 
+index_dlang=det sprog, som moduler vises på
+index_dtheme=det tema, der styrer Webmins udseende
+index_dpass=det kodeord, der bruges til at logge ind med
+
+change_title=Ændring af indstillinger
+change_user=Ændring af Webmin login ..
+change_done=.. Færdig
+change_restart=Genindlæser Webmin ..
+change_redirect=Retning til hovedmenu ..
+change_ecolon=Din adgangskode kan ikke indeholde tegnet:
+change_epass2=Nye adgangskoder stemmer ikke overens
+change_epass=Den nye adgangskode er ikke gyldig : $1 
+change_eoverlay=Du kan ikke vælge et temaoverlay, medmindre der også vælges et UI-tema
+change_eoverlay2=Det valgte temaoverlay er ikke kompatibelt med det valgte UI-tema
+
+acl_lang=Kan ændre sprog?
+acl_theme=Kan ændre tema?
+acl_pass=Kan ændre adgangskode (når det er indstillet i Webmin)?

@@ -1,0 +1,197 @@
+index_title=Běžící procesy
+index_display=Zobrazit
+index_tree=PID
+index_user=Uživatel
+index_size=Paměť
+index_cpu=CPU
+index_search=Hledání
+index_zone=Zóna
+index_run=Spustit..
+index_return=seznam procesů
+index_mem2=<b>Skutečná paměť:</b> $1 celkem / $2 volná
+index_swap2=<b>Swap místo:</b> $1 celkem / $2 volná
+index_loadname=CPU nahrál průměry:
+index_loadnums=$1 (1 min) , $2 (5 min) , $3 (15 min)
+index_cpuname=Typ CPU:
+index_inzone=V zóně $1
+
+pid=IP procesu
+owner=Vlastník
+command=Příkaz
+cpu=CPU
+size=Velikost
+parent=Parent proces
+runtime=Doba spuštění
+nice=Úrověň oživení
+stime=Spuštěno
+
+search_user=Vlastněno
+search_match=Vyhovuje
+search_cpupc=Využívající více než $1% CPU
+search_cpupc2=Používá více CPU než
+search_fs=Používající souborový systém
+search_files=Používající soubor
+search_submit=Hledat
+search_none=Nebyly nalezeny žádné vyhovující procesy.
+search_kill=Poslat signál
+search_ignore=Vynechat ve výsledcích hledaných procesů
+search_return=formulář pro hledání
+search_sigterm=Přerušit procesy
+search_sigkill=Zebít procesy
+search_port=Používající port
+search_protocol=protokol
+search_ip=Využitá IP adresa
+
+run_command=Příkaz pro spuštění
+run_submit=Spustit
+run_mode=Mód spuštění
+run_bg=Běžet v pozadí
+run_fg=Počkat,dokud nebude ukončen
+run_input=Vstup do příkazu
+run_title=Výstup příkazu
+run_output=Výstup z $1 ..
+run_none=Nebyl generován žádný výstup
+run_ecannot=Nemáte oprávnění spouštět příkazy
+run_as=Spustit pod uživatelem
+run_euser=Chybějící nebo neplatné jméno uživatele
+run_euser2=Nemáte oprávnění ke spuštění příkazů pod vybraným uživatelem
+
+edit_title=Informace o procesu
+edit_gone=Tento proces již neběží
+edit_sub=Podprocesy
+edit_subid=ID
+edit_subcmd=Příkaz pro vnořené procesy
+edit_kill=Poslat signál
+edit_change=Změnit
+edit_prilow=Nízká priorita
+edit_prihigh=Vysoká priorita
+edit_pridef=Výchozí
+edit_none=Nic
+edit_ecannot=Nemáte oprávnění editovat procesy
+edit_sigterm=Přerušit proces
+edit_sigkill=Zabít proces
+edit_sigstop=Přerušit
+edit_sigcont=Souhrn
+edit_open=Soubory a připojení
+edit_trace=Trasování procesu
+edit_return=detaily procesu
+
+kill_err=Chyba při odeslání signálu $1 procesu $2
+kill_title=Poslat signál
+kill_sent=Odeslán
+kill_ecannot=YNemáte oprávnění zabít proces
+
+renice_err=Chyba při oživení procesu $1
+renice_ecannot=Nemáte oprávnění oživovat procesy
+
+linux_pri=Priorita
+linux_tty=TTY
+linux_status=Stav
+linux_wchan=Čeká v
+linux_mem=Paměť
+linux_group=Skupina
+linux_ruser=Skutečný uživatel
+linux_rgroup=Skutečná skupina
+linux_pgid=ID skupiny procesu
+linux_stime=$stime
+
+linuxstat_R=Běží
+linuxstat_S=Spí
+linuxstat_D=Tvrdý spánek
+linuxstat_T=Ukončen
+linuxstat_Z=Zombie
+
+freebsd_ruser=Skutečný uživatel
+freebsd_rgroup=Skutečná skupina
+freebsd_tty=TTY
+freebsd_pgid=Skupina procesu
+freebsd_stime=$stime
+freebsd_lim=Limit paměti
+
+hpux_pri=Priorita
+hpux_tty=TTY
+hpux_status=Stav
+hpux_wchan=Čekání na
+hpux_stime=$stime
+
+hpuxstat_0=Neexistující
+hpuxstat_S=Spící
+hpuxstat_W=Čekající
+hpuxstat_R=Běžící
+hpuxstat_I=Zprostředkovatel
+hpuxstat_Z=Zombie
+hpuxstat_T=Ukončen
+hpuxstat_G=Nabíhající
+
+macos_tty=TTY
+
+sysv_group=Skupina
+sysv_ruser=Skutečný uživatel
+sysv_rgroup=Skutečná skupina
+sysv_pgid=ID skupiny procesu
+sysv_tty=TTY
+sysv_stime=$stime
+sysv_task=ID úlohy
+sysv_zone=Název zóny
+
+log_run=Spuštěn příkaz "$1"
+log_kill=Odeslán signál $1 do procesu $2
+log_kills=Odeslán signál $1 do $2 procesů
+log_kill_l=Odeslán signál $1 do procesu $2
+log_kills_l=Odeslán signál $1 do processů<br>$2
+log_renice=Změnit prioritu procesu $2 na $1
+
+acl_manage=Spravovat procesy pod uživatelem
+acl_manage_def=Aktuální Webmin uživatel
+acl_edit=Může zabít a oživit proces?
+acl_run=Může spouštět příkazy?
+acl_only=Budou zobrazeny pouze vlastní procesy?
+acl_who=Může spravovat procesy uživatelů
+acl_who0=Všichni uživatelé
+acl_who1=Aktuální Webmin uživatel
+acl_who2=Uživatelé ze seznamu ..
+
+kill_kill=Zabít proces
+kill_term= Přerušit  
+kill_hup=  Restartovat   
+kill_stop=    Ukončit    
+kill_cont=  Pokračovat  
+
+open_title=Otevřené soubory a připojení
+open_proc=Pro proces $1 (PID $2)
+open_header1=Otevřené soubory
+open_header2=Otevřít síťová připojení
+open_type=Typ
+open_proto=Protokol
+open_desc=Detaily
+open_fd=Popisovač souboru
+open_listen1=Poslouchání na portu $1
+open_listen2=Poslouchání na adrese $1 portu $2
+open_recv=Přijímání na $1:$2
+open_conn=Připojeno z $1 k $2 ve stavu $3
+open_cwd=aktuální adresář
+open_rtd=Kořenový adresář
+open_txt=Kód programu
+open_mem=Sdílená knihovna
+open_dir=Adresář
+open_reg=Regulární soubor
+open_chr=Speciální znak
+open_blk=Speciální blok
+open_size=Velikost souboru
+open_inode=Inode
+open_file=Cesta
+
+trace_title=Trasovaný proces
+trace_start=Spuštěn systém trasování pro $1 ..
+trace_doing=Systémové trasování pro $1 :
+trace_done=.. proces byl přerušen.
+trace_failed=.. chyba v trasování!
+trace_sorry=Tato stránka vyžaduje ve vašem prohlížeči podporu Java. Chcete-li využít pouze textové zobrazování trasování procesu, přejděte do konfigurace modulu.
+trace_syscalls=Volání systémového trasování:
+trace_all=Vše
+trace_sel=Seznam..
+trace_change=Změnit
+
+windows_threads=Vlákna v procesu
+
+syslog_dmesg=Zprávy jádra

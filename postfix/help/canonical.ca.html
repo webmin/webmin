@@ -1,75 +1,75 @@
-<header>Mapejat Canònic</header>
+<header>Mapejat CanÃ²nic</header>
 
-El fitxer canònic opcional especifica un mapejat d'adreça per a adreces
+El fitxer canÃ²nic opcional especifica un mapejat d'adreÃ§a per a adreces
 locals i no locals. El dimoni cleanup(8) utilitza aquest mapejat.
-El mapejat de l'adreça és recursiu.
+El mapejat de l'adreÃ§a Ã©s recursiu.
 
 <p>
 
 El fitxer fa d'entrada de l'ordre postmap(1). El resultat, un fitxer
-indexat en format dbm o db, s'utilitza com a recerca ràpida per part
+indexat en format dbm o db, s'utilitza com a recerca rÃ pida per part
 del sistema de correu.
 
 <p>
 
-El mapejat canònic afecta tan les adreces de la capçalera del missatge
-(això és, les adreces que apareixen dins dels missatges) com adreces 
+El mapejat canÃ²nic afecta tan les adreces de la capÃ§alera del missatge
+(aixÃ² Ã©s, les adreces que apareixen dins dels missatges) com adreces 
 d'embolcall de missatges (per exemples, les adreces que  s'utilitzen
 en les ordres del protocol SMTP). Ho podeu veure, si voleu, com el conjunt
 d'ordres <tt>S3</tt> de Sendmail.
 
 <p>
 
-La taula canònica s'utilitza típicament per reemplaçar noms d'usuari
-per<tt>Primercognom.Segoncognom</tt>, o per netejar les adreces produïdes
+La taula canÃ²nica s'utilitza tÃ­picament per reemplaÃ§ar noms d'usuari
+per<tt>Primercognom.Segoncognom</tt>, o per netejar les adreces produÃ¯des
 per sistemes de correu propietaris.
 
 <p>
 
-No s'ha de confondre el mapejat canònic amb el suport de domini virtual.
-Per a aquest propòsit, utilitzeu el mapa de <a href=virtual>domini virtual</a>.
+No s'ha de confondre el mapejat canÃ²nic amb el suport de domini virtual.
+Per a aquest propÃ²sit, utilitzeu el mapa de <a href=virtual>domini virtual</a>.
 
 <p>
 
-No s'ha de confondre el mapejat canònic amb els àlies locals..
-Per a aquest propòsit, utilitzeu el mapa de <a href=virtual>àlies de correu</a>.
+No s'ha de confondre el mapejat canÃ²nic amb els Ã lies locals..
+Per a aquest propÃ²sit, utilitzeu el mapa de <a href=virtual>Ã lies de correu</a>.
 
 <p>
 
-El format dels mapejats canònics és el que segueix; els mapejats es proven
+El format dels mapejats canÃ²nics Ã©s el que segueix; els mapejats es proven
 en l'ordre llistat:
 
 <ul>
 
-<li><b><tt>usuari@domini</tt></b> mapejat a... <b><tt>adreça</tt></b>:<br>
-<tt>usuari@domini</tt> es canvia per <tt>adreça</tt>. Aquesta forma té la
-precedència més alta. Aquesta forma és útil per netejar adreces produïdes
-per sistemes de correu propietaris. També són útils per a produir adreces
-de l'estil <tt>Primercognom.Segoncognom</tt>, però mireu més avall una
-solució més senzilla.
+<li><b><tt>usuari@domini</tt></b> mapejat a... <b><tt>adreÃ§a</tt></b>:<br>
+<tt>usuari@domini</tt> es canvia per <tt>adreÃ§a</tt>. Aquesta forma tÃ© la
+precedÃ¨ncia mÃ©s alta. Aquesta forma Ã©s Ãºtil per netejar adreces produÃ¯des
+per sistemes de correu propietaris. TambÃ© sÃ³n Ãºtils per a produir adreces
+de l'estil <tt>Primercognom.Segoncognom</tt>, perÃ² mireu mÃ©s avall una
+soluciÃ³ mÃ©s senzilla.
 
-<li><b><tt>usuari</tt></b> mapejat a... <b><tt>adreça</tt></b>:<br>
-<tt>usuari@lloc</tt> es canvia per <tt>adreça</tt> quan el lloc és igual
-a <tt>$myorigin</tt>, quan el lloc està llistat a <tt>$mydestination</tt>, 
-o quan està llistat a <tt>$inet_interfaces</tt>. Aquesta forma és útil
-per reemplaçar noms d'usuari per <tt>Primercognom.Segoncognom</tt>.
+<li><b><tt>usuari</tt></b> mapejat a... <b><tt>adreÃ§a</tt></b>:<br>
+<tt>usuari@lloc</tt> es canvia per <tt>adreÃ§a</tt> quan el lloc Ã©s igual
+a <tt>$myorigin</tt>, quan el lloc estÃ  llistat a <tt>$mydestination</tt>, 
+o quan estÃ  llistat a <tt>$inet_interfaces</tt>. Aquesta forma Ã©s Ãºtil
+per reemplaÃ§ar noms d'usuari per <tt>Primercognom.Segoncognom</tt>.
 
 <li><b><tt>@domini</tt></b> mapejat a... <b><tt>address</tt></b>:<br>
 Totes les adreces del domini es canvien per <tt>address</tt>. Aquesta 
-forma té la precedència més baixa.
+forma tÃ© la precedÃ¨ncia mÃ©s baixa.
 
 </ul>
 
-En totes les formes anteriors, quan l'adreça té la forma
-<tt>@unaltredomini</tt>, el resultat és el mateix usuari a
+En totes les formes anteriors, quan l'adreÃ§a tÃ© la forma
+<tt>@unaltredomini</tt>, el resultat Ã©s el mateix usuari a
 <tt>@otherdomain</tt>.
 
 <p>
-EXTENSIÓ D'ADRECES: Quan falla la consulta a la taula, i la part local de 
-l'adreça conté el delimitador opcional de destinatari (p. ex.,
-<tt>usuari+foo@domini</tt>), la cerca es repeteix per a l'adreça no estesa
-(p. ex., <tt>usuari@domini</tt>), i l'extensió no coincident es propaga al
-resultat de la consulta de la taula. L'ordre de recerca és:
+EXTENSIÃ“ D'ADRECES: Quan falla la consulta a la taula, i la part local de 
+l'adreÃ§a contÃ© el delimitador opcional de destinatari (p. ex.,
+<tt>usuari+foo@domini</tt>), la cerca es repeteix per a l'adreÃ§a no estesa
+(p. ex., <tt>usuari@domini</tt>), i l'extensiÃ³ no coincident es propaga al
+resultat de la consulta de la taula. L'ordre de recerca Ã©s:
 <tt>usuari+foo@domini</tt>, <tt>usuari@domini</tt>, <tt>usuari+foo</tt>,
 <tt>usuari</tt>, i <tt>@domini</tt>.
 

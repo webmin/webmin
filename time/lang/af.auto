@@ -1,0 +1,70 @@
+index_title=Stelsel tyd
+index_timeserver=Tydbediener
+index_addresses=Timeserver-gasheername of -adresse
+index_zone=Tydsone
+index_eformat=Onherkenbare <tt>hwklok</tt> uitvoerformaat
+index_sched=Sinkroniseer op skedule?
+index_schedyes=Ja, soms hieronder ..
+index_sync=Sinkroniseer en pas toe
+index_hardware2=Stel ook hardeware tyd in
+index_boot=Sinkroniseer wanneer Webmin begin?
+index_tzheader=Tydsone
+index_tz=Verander tydsone na
+index_ehwclock=$1 het misluk : $2 
+index_tabtime=Vasgestelde tyd
+index_tabzone=Verander tydsone
+index_tabsync=Tydbedienersinkronisering
+index_desctime=Hierdie vorm is bedoel om die huidige tyd van die stelsel te verander, wat deur alle prosesse gebruik word. Op bedryfstelsels met 'n aparte hardewareklok kan dit ook gebruik word om dit in te stel.
+index_desczone=Met hierdie vorm kan u die standaardtydsone van die stelsel instel, wat gebruik word om die stelseltyd te omskep in 'n leesbare formaat en verreken.
+index_descsync=Hierdie vorm is bedoel om die stelsel op te stel om die tyd outomaties met 'n eksterne bediener te sinchroniseer. Synchronisasie sal met behulp van die Unix <tt>time</tt> protokol of NTP geskied, afhangend van watter opdragte geïnstalleer is en wat die afstandstelsel ondersteun.
+
+action_save=Save
+action_apply=aansoek doen
+action_sync=Stel stelseltyd in volgens die hardeware tyd
+action_sync_s=Stel hardeware tyd in volgens die stelsel tyd
+action_timeserver_sys=Sinkroniseer stelseltyd
+action_timeserver_hw=Sinkroniseer hardeware-tyd
+action_savezone=Verander tydsone
+
+acl_sys=Gebruiker kan stelseltyd redigeer?
+acl_hw=Gebruiker kan hardeware tyd verander?
+acl_timezone=Gebruiker kan tydsone instel?
+acl_ntp=Kan u sinchroniseer met die tydbediener?
+acl_yes=Ja
+acl_no=Geen
+acl_error=U het toegang tot die stelseltydmodule, maar u kan nie die stelsel- of hardeware-tyd wysig nie
+acl_nosys=U mag nie die stelseltyd redigeer nie
+acl_nohw=U mag nie hardeware-tyd wysig nie
+acl_nontp=U mag nie met 'n tydbediener gesinchroniseer word nie
+
+sys_title=Stelsel tyd
+hw_title=Hardeware tyd
+
+day=dag
+month=maand
+date=datum
+hour=Uur
+year=Jaar
+minute=minuut
+second=tweede
+
+error_cnf=Fout: opdrag $1 nie gevind nie
+error_hw=Kan nie die hardeware tyd instel nie : $1 
+error_sync=Kan nie met die stelseltyd sinkroniseer nie : $1 
+error_ediff=Die tydbediener verskil met plaaslike tyd is te groot: $1 dae
+error_entp=NTP-tydsinkronisasie het misluk : $1 
+error_etimeserver=Geen tydbedieners om mee te sinkroniseer met ingevoerde nie
+
+log_set_date=Stel stelseltyd op $1 
+log_set_hwclock=Stel hardewarehorlosie op $1 
+log_remote_date=Stelseltyd van $2 afgehaal
+log_remote_hwclock=Hardeware tyd van $2 afgehaal
+log_remote_date_l=Stelseltyd $1 van $2 afgehaal
+log_remote_hwclock_l=Hardeware tyd $1 van $2 gaan haal
+log_sync=Gesinchroniseerde stelseltyd met hardeware-tyd
+log_sync_s=Gesynchroniseerde hardeware tyd met stelseltyd
+log_timezone=Tydsone verander na $1 
+
+timezone_err=Kon nie tydsone stoor nie
+timezone_ecannot=U mag nie die tydsone verander nie
+timezone_enone=Geen sone gekies nie

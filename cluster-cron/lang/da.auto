@@ -1,0 +1,37 @@
+index_title=Cluster Cron Jobs
+index_add=Opret et nyt cluster-cron-job.
+index_none=Der er ikke defineret nogen cluster cron-job.
+index_servers=Kør på servere
+index_return=cluster cron job liste
+index_more=$1 mere ..
+index_run=Kør nu ..
+index_actions=Handlinger
+
+edit_title=Rediger Cluster Cron Job
+create_title=Opret Cluster Cron Job
+edit_servers=Kør på servere
+edit_group=Medlemmer af $1 
+edit_this=denne server
+edit_all=&lt;Alle værter&gt;
+edit_emissing=Cron-job findes ikke længere!
+
+save_err=Kunne ikke gemme cluster-cron-job
+
+exec_title=Udfør Cluster Cron Job
+exec_cmd=Kører $1 på udvalgte servere ..
+exec_failed=Kunne ikke køre på $1 : $2 
+exec_success=Output fra $1 ..
+exec_nohosts=Ingen værter valgt til at køre på, eller valgte grupper indeholder ingen brugbare værter.
+
+log_run=Kørte $1 på $2 -servere
+log_run_l=Løb $1 på $2 
+log_create=Oprettet cluster cron-job for $1 
+log_create_l=Oprettet cluster cron-job $2 for $1 
+log_modify=Ændret cluster cron-job for $1 
+log_modify_l=Ændret cluster cron-job $2 for $1 
+log_delete=Slettet cluster cron-job for $1 
+log_delete_l=Slettet cluster cron-job $2 for $1 
+log_deletes=Slet $1 cluster cron-job
+
+delete_err=Kunne ikke slette cluster-cron-job
+delete_enone=Ingen valgt

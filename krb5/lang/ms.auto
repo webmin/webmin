@@ -1,0 +1,17 @@
+index_title=Konfigurasi Kerberos5
+index_econf=Fail konfigurasi Kerberos5 $1 tidak dijumpai pada sistem anda. Mungkin ia tidak dipasang, atau konfigurasi modul <a href='$2'></a> tidak betul.
+
+logging=Log fail
+default_log=Fail log lalai
+kdc_log=Fail log KDC
+admin_log=Fail log pelayan admin
+
+libdefaults=Konfigurasi Lalai
+dns_kdc=Gunakan DNS untuk mencari KDC
+default_realm=Realm
+domain=Nama domain
+default_kdc=KDC
+default_admin=Pelayan pentadbir
+default_domain=Nama domain lalai
+
+save=Kemas kini Konfigurasi

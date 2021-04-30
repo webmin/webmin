@@ -1,0 +1,18 @@
+index_title=Opdrag Shell
+index_ok=Voer opdrag uit:
+index_history=Opdraggeskiedenis
+index_clear=Verwyder geskiedenis
+index_clearcmds=Maak opdragte skoon
+index_desc=Voer 'n skulpopdrag in om in die teksveld hieronder uit te voer. Die <tt>cd</tt> opdrag kan gebruik word om die gids te verander vir daaropvolgende opdragte.
+index_pok=Voer vorige opdrag uit
+index_edit=Wysig vorige
+index_trunced=Die totale uitset van $2 is afgekap tot $1.
+index_timedout=Die opdrag is beëindig nadat dit $1 sekondes was.
+
+acl_user=Voer opdragte uit as gebruiker
+acl_user_def=Huidige Webmin-gebruiker
+acl_shellenv=Gebruik die omgewing van die geselekteerde gebruiker?
+acl_chroot=Chroot na gids
+
+log_run=Het opdrag $1 gedoen
+log_clear=Opdraggeskiedenis verwyder

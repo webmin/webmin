@@ -1,0 +1,126 @@
+<header> Is-sostituzzjoni tas-sostituzzjoni ta &#39;destinazzjonijiet ta&#39; backup? </header> Jekk din l-għażla hija ssettjata għal <b>Iva</b> , kodiċi bħal%d,%m,%Y u%u jistgħu jintużaw fid-destinazzjoni tal-fajl. Dawn għandhom jiġu sostitwiti bil-jum, ix-xahar tas-sena u l-jum tal-ġimgħa rispettivament meta jsir il-backup. Dan huwa utli jekk trid tiffranka backup differenti kuljum, sabiex tkun tista &#39;terġa&#39; tpoġġi sistema lura għal data preċedenti. <p> Uħud mill-kodiċi l-oħra li jistgħu jintużaw huma: <br><pre> <font size=-1>
+ %a L-isem tal-ġimgħa mqassar skond il-kur
+        kera tal-lokal.
+
+ %A L-isem sħiħ tal-ġimgħa skond il-kurrent
+        locale
+
+ %b L-isem tax-xahar imqassar skond il-kurrent
+        locale
+
+ %B L-isem tax-xahar sħiħ skont il-kurrent
+        locale
+
+ %c Id - data u r - rappreżentazzjoni tal - ħin preferuti għall - IFRS
+        locale kurrenti.
+
+ %C Is-seklu numru (sena / 100) bħala numru sħiħ b&#39;żewġ ċifri.
+
+ %d Il-jum tax-xahar bħala numru deċimali (firxa 01
+        sal-31).
+
+ %e Bħal%d, il-jum tax-xahar bħala numru deċimali,
+        iżda żero ewlieni jinbidel bi spazju.
+
+ %E Modifikatur: uża format alternattiv, ara hawn taħt.
+
+ %G Is-sena ISO 8601 bis-seklu bħala numru deċimali.
+        Is-sena b&#39;erba &#39;ċifri li tikkorrispondi għall-ġimgħa ISO num
+        ber (ara%V). Dan għandu l-istess format u valur
+        as%y, ħlief li jekk in-numru tal-ġimgħa ISO jappartjeni
+        għas-sena ta &#39;qabel jew dik ta&#39; wara, dik is-sena tintuża
+        minflok.
+
+ %g Bħal%G, iżda mingħajr seklu, jiġifieri, b&#39;żewġ ċifri
+        sena (00-99).
+
+ %h Ekwivalenti għal%b.
+
+ %H Is-siegħa bħala numru deċimali bl-użu ta &#39;arloġġ ta&#39; 24 siegħa
+        (medda 00 sa 23).
+
+ %I Is-siegħa bħala numru deċimali bl-użu ta &#39;arloġġ ta&#39; 12-il siegħa
+        (firxa 01 sa 12).
+
+ %j Il-jum tas-sena bħala numru deċimali (firxa 001
+        għal 366).
+
+ %k Is-siegħa (arloġġ ta &#39;24 siegħa) bħala numru deċimali (firxa
+        0 sa 23); Ċifri singoli huma ppreċeduti minn vojt.
+        (Ara wkoll%H.)
+
+ %l Is-siegħa (12-il siegħa arloġġ) bħala numru deċimali (firxa
+        1 sa 12); Ċifri singoli huma ppreċeduti minn vojt.
+        (Ara wkoll%I.)
+
+ %m Ix-xahar bħala numru deċimali (firxa 01 sa 12).
+
+ %M Il-minuta bħala numru deċimali (medda 00 sa 59).
+
+ %n Karattru newline.
+
+ %O Modifikatur: uża format alternattiv, ara hawn taħt.
+
+ %p Jew &#39;AM&#39; jew `PM &#39;skond il-ħin mogħti
+        valur, jew il-kordi korrispondenti għall-kurrent
+        locale F’nofsinhar jiġi ttrattat bħala `pm’ u nofsillejl bħala
+        &#39;jien&#39;.
+
+ %P Bħal%p imma f&#39;kaxxa żgħira: `am &#39;jew&#39; pm &#39;jew&#39; corre &#39;
+        sponding string għall-locale kurrenti.
+
+ %r Il-ħin fl-am jew fin-notazzjoni pm. Fil-POSIX
+        locale dan huwa ekwivalenti għal `%I:%M:%S%p &#39;.
+
+ %R Il-ħin fin-notazzjoni ta ’24 siegħa (%H:%M). Għal
+        verżjoni li tinkludi s-sekondi, ara%T hawn taħt.
+
+ %s In-numru ta &#39;sekondi mill-Epoch, jiġifieri, minn
+        1970-01-01 00:00:00 UTC.
+
+ %S It-tieni bħala numru deċimali (firxa 00 sa 61).
+
+ %t karattru tab.
+
+ %T Il-ħin fin-notazzjoni ta ’24 siegħa (%H:%M:%S).
+
+ Il-jum tal-ġimgħa bħala deċimali, medda 1 sa 7,
+        It-Tnejn qed 1. Ara wkoll%w.
+
+ %U In-numru tal-ġimgħa tas-sena kurrenti bħala deċimali
+        numru, medda 00 sa 53, li tibda bl-ewwel
+        Il-Ħadd bħala l-ewwel jum tal-ġimgħa 01. Ara wkoll%V u
+        %W.
+
+ %V In-numru ISO 8601: 1988 tal-ġimgħa tas-sena kurrenti
+        bħala numru deċimali, medda 01 sa 53, fejn il-ġimgħa 1
+        hija l-ewwel ġimgħa li għandha mill-inqas 4 ijiem fil-CMS
+        is-sena kurrenti, u bit-Tnejn bħala l-ewwel jum ta &#39;
+        il-ġimgħa. Ara wkoll%U u%W.
+
+ %w Il-ġurnata tal-ġimgħa bħala deċimali, medda 0 sa 6,
+        Il-Ħadd li qiegħed 0. Ara wkoll%u.
+
+ %W In-numru tal-ġimgħa tas-sena kurrenti bħala deċimali
+        numru, medda 00 sa 53, li tibda bl-ewwel
+        It-Tnejn bħala l-ewwel jum tal-ġimgħa 01.
+
+ %x Ir-rappreżentazzjoni tad-data preferuta għall-kurrent
+        locale mingħajr il-ħin.
+
+ %X Ir-rappreżentazzjoni tal-ħin preferuta għall-kurrent
+        locale mingħajr id-data.
+
+ %y Is-sena bħala numru deċimali mingħajr seklu
+        (medda 00 sa 99).
+
+ %Y Is-sena bħala numru deċimali inkluż is-seklu.
+
+ %z Il-ħin tal-ħin bħala siegħa ikkumpensata mill-GMT. Meħtieġ
+        jarmi dati konformi mal-RFC822 (bl-użu ta &#39;&quot;%a,%d%b%Y
+        %H:%M:%S%z &quot;).
+
+ %Z Il-ħin tal-ħin jew l-isem jew l-abbrevjazzjoni.
+
+ %%Karattru litterali ta &#39;&#39;% &#39;.
+</font> </pre><footer>

@@ -1,0 +1,3 @@
+name_it=Responsabile delle esportazioni
+longdesc_it=Modifica le condivisioni di file NFS definite in /etc/exports.
+desc_it=Esportazioni NFS

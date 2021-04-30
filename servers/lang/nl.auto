@@ -1,0 +1,11 @@
+index_nosearch=Geen enkele server komt overeen met uw zoekopdracht.
+index_search=Toon servers die overeenkomen met:
+index_ok=Zoeken
+
+edit_checkssl=Extern SSL-certificaat controleren?
+
+find_already2=Bekende serverhost gevonden op $1 
+
+delete_title=Servers verwijderen
+delete_rusure=Weet u zeker dat u de $1 geselecteerde servers wilt verwijderen?
+delete_confirm=Verwijder nu

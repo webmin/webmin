@@ -12,7 +12,7 @@ sub parse_gentoo_net
 local @rv;
 local $sect;
 local $lnum = 0;
-open(CONF, $gentoo_net_config);
+open(CONF, "<".$gentoo_net_config);
 while(<CONF>) {
 	s/\r|\n//g;
 	s/#.*$//;
@@ -251,6 +251,11 @@ sub can_edit
 return $_[0] ne 'up' && $_[0] ne 'bootp';
 }
 
+sub can_broadcast_def
+{
+return 0;
+}
+
 # valid_boot_address(address)
 # Is some address valid for a bootup interface
 sub valid_boot_address
@@ -266,7 +271,7 @@ local %host;
 if ($host{'HOSTNAME'}) {
 	return $host{'HOSTNAME'};
 	}
-return &get_system_hostname(1);
+return &get_system_hostname();
 }
 
 # save_hostname(name)
@@ -303,7 +308,7 @@ if ($in{'route_def'}) {
 	}
 else {
 	&check_ipaddress($in{'gw'}) ||
-		&error(&text('routes_edefault', $in{'gw'}));
+		&error(&text('routes_edefault', &html_escape($in{'gw'})));
 	&set_default_gateway($in{'gw'}, $in{'dev'});
 	}
 }

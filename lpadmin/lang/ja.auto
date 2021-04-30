@@ -1,0 +1,85 @@
+index_header=利用可能なプリンター
+index_jlist=仕事 ..
+index_jcount=$1ジョブ。
+index_esystem=選択した印刷システムにソフトウェアをインストールするか、<a href='$1'>モジュール構成</a>を使用して変更します。
+index_style=印刷システム： $1
+index_cluster=クラスターサーバー
+index_clusterdesc=このボタンをクリックして、プリンターを作成、更新、削除する追加のWebminサーバーをセットアップします。
+index_delete=選択したプリンターを削除する
+
+style_solaris=Solaris
+style_linux=Linux LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=カップ
+style_irix=IRIX
+style_aix=AIX
+
+save_erport=リモートポート '$1'は無効です
+save_evalid=印刷システムはこのプリンターを許可しませんでした
+save_errslave=このシステムでプリンターは正常に作成されましたが、クラスターシステムで次のエラーが発生しました： $1
+save_egone=「$1」という名前のプリンターが見つかりませんでした
+save_errdelslave=このシステムでプリンターが削除されましたが、クラスターシステムで次のエラーが発生しました： $1
+
+jobs_cancelsel=選択したジョブをキャンセル
+jobs_on=プリンター $1
+jobs_return=印刷ジョブのリスト
+
+acl_user=が所有する印刷ジョブを管理する
+acl_user_all=すべてのユーザー
+acl_user_this=現在のWebminユーザー
+acl_delete=プリンターを削除できますか？
+acl_cluster=プリンタークラスターを管理できますか？
+
+log_cancel_sel=$1の $2印刷ジョブをキャンセルしました
+
+linux_ecmd=コマンド $1がシステムで見つかりませんでした。これは、Linuxプリントシステムがインストールされていないことを示しています。
+linux_espool=スプールディレクトリ $1はシステムに存在しません。これは、Linuxプリントシステムがインストールされていないことを示しています。
+
+freebsd_ecmd=コマンド $1がシステムで見つかりませんでした。これは、FreeBSD印刷システムがインストールされていないことを示しています。
+freebsd_espool=スプールディレクトリ $1はシステムに存在しません。これは、FreeBSD印刷システムがインストールされていないことを示しています。
+
+unixware_ecmd=コマンド $1がシステムで見つかりませんでした。これは、UnixWare印刷システムがインストールされていないことを示しています。
+
+hpux_ecmd=コマンド $1がシステムで見つかりませんでした。これは、HPUX印刷システムがインストールされていないことを示しています。
+hpux_eiface=インターフェイススクリプトディレクトリ $1はシステムに存在しません。これは、HPUX印刷システムがインストールされていないことを示しています。
+
+lprng_ecmd=コマンド $1がシステムで見つかりませんでした。これは、LPRng印刷システムがインストールされていないことを示しています。
+lprng_espool=スプールディレクトリ $1はシステムに存在しません。これは、LPRng印刷システムがインストールされていないことを示しています。
+
+solaris_ecmd=コマンド $1がシステムで見つかりませんでした。これは、Solaris印刷システムがインストールされていないことを示しています。
+
+cups_eprog=「$1」は有効なプログラムではありません
+cups_opts=$1のオプション
+cups_ecmd=コマンド $1がシステムで見つかりませんでした。これは、CUPS印刷システムがインストールされていないことを示しています。
+
+irix_ecmd=コマンド $1がシステムで見つかりませんでした。これは、IRIX印刷システムがインストールされていないことを示しています。
+irix_eiface=インターフェイススクリプトディレクトリ $1はシステムに存在しません。これは、IRIX印刷システムがインストールされていないことを示しています。
+
+aix_port=プリンターポート $1
+aix_edesc=無効な説明-文字と数字のみが許可され、スペースは許可されません
+aix_ecmd=AIXプリンターサーバー $1が見つかりませんでした。インストールされていないか、別の印刷システムが使用されている可能性があります。
+
+cluster_title=クラスタープリンターサーバー
+cluster_none=プリンタクラスタにまだサーバーが追加されていません。
+cluster_host=ホスト名
+cluster_desc=説明
+cluster_os=オペレーティング・システム
+cluster_add=サーバーを追加
+cluster_gadd=グループにサーバーを追加
+cluster_need=ここで管理するには、Webmin Servers Indexモジュールでログインとパスワードを使用してサーバーを追加する必要があります。
+cluster_return=クラスタサーバー
+cluster_delete=削除選択
+cluster_ecannot=クラスタープリンターサーバーを管理することはできません
+
+add_title=サーバーを追加する
+add_msg=$1を追加します ..
+add_gmsg=グループ $1にサーバーを追加します ..
+add_err=サーバーを追加できませんでした
+add_gerr=グループを追加できませんでした
+add_echeck=サーバー $1にはプリンター管理モジュールがありません
+add_ediff=サーバー $1はこのサーバーとは異なる印刷システム（$2）を使用しています
+add_ediff2=サーバー $1はこのサーバーとは異なるプリンタードライバー（$2）を使用しています
+add_ok=$1、 $2プリンターを追加しました。

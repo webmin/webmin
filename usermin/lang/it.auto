@@ -1,0 +1,18 @@
+index_eroot=La directory di configurazione Usermin $1 esiste, ma la directory root del programma $2 a cui fa riferimento non esiste! È necessario scaricare e reinstallare manualmente Usermin.
+
+session_authmode=Metodo di autenticazione
+
+ssl_savekey=Questo modulo consente di caricare una chiave privata SSL esistente in formato PEM e un certificato che il server Usermin può utilizzare.
+ssl_copycert=Copia certificato da Webmin
+ssl_copycertdesc=Copia il certificato SSL, la chiave privata, il certificato CA e altre impostazioni utilizzate da Webmin.
+
+ui_hnm0=Nome host reale
+ui_hnm1=Nome host dall'URL
+ui_hnm2=Nome di dominio dall'URL
+ui_hnm3=Altro nome ..
+
+log_copycert=Impostazioni SSL copiate da Webmin
+
+copycert_err=Impossibile copiare le impostazioni SSL da Webmin
+copycert_essl=SSL non è abilitato
+copycert_ekeyfile=Nessun file di chiave privata è impostato in Webmin

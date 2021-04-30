@@ -1,0 +1,67 @@
+index_title=Cluster Copiați fișiere
+index_add=Creați o nouă copie programată a fișierului.
+index_none=Nu au fost definite copii de fișiere programate.
+index_servers=Copiați pe servere
+index_return=lista copiilor de cluster
+index_more=încă $1 ..
+index_run=Rula acum ..
+index_files=Fișiere de copiat
+index_sched=Programat?
+index_when=Da, $1 
+index_act=Acțiune
+index_exec=A executa
+index_delete=Ștergeți copiile selectate
+
+edit_title=Editează copiere cluster
+create_title=Creați copiere cluster
+edit_header=Detalii de copiere a clusterului
+edit_files=Fișiere de copiat
+edit_dest=Directorul destinație
+edit_cmd=Comandă să rulezi după copiere
+edit_before=Comandați să rulați înainte de a copia
+edit_remote=Pe serverele la distanță
+edit_dmode0=Copiați căile complete în director
+edit_dmode1=Copiați în acest director
+edit_servers=Copiați pe servere
+edit_group=Membrii $1 
+edit_this=acest server
+edit_all=&lt;Toate gazdele&gt;
+edit_sched=Copiați pe program?
+edit_schedyes=Da, la orele selectate mai jos ..
+edit_run=Copiați acum
+edit_return=copie cluster
+edit_email=Ieșire prin e-mail către
+edit_none=Nimeni
+
+save_err=Nu a reușit să salvați lucrarea cron de cluster
+save_efiles=Nu au fost introduse fișiere de copiat
+save_edest=Lipsește directorul destinație
+save_eservers=Nu există servere pe care să le copieze
+save_efile=Fișierul pentru a copia „$1” nu este o cale absolută
+save_eemail=Adresa de e-mail lipsă sau nevalidă
+
+exec_title=Copiere fișiere
+exec_files1=Copierea fișierelor $1 pe serverele selectate $2.
+exec_files2=Copierea $1 pe serverele selectate $2.
+exec_under=(sub directorul $1)
+exec_failed=Eroare la copierea pe $1 : $2 
+exec_success=Copiați următoarele fișiere în $1  :
+exec_made=Au creat următoarele directoare pe $1  :
+exec_nohosts=Nicio gazdă selectată pentru a rula sau grupurile selectate nu conțin nicio gazdă utilizabilă.
+exec_nothing=Niciun fișier nu a fost copiat cu succes în $1.
+exec_not=Nu a reușit să copieze următoarele fișiere pe $1  :
+exec_cmd=Rezultatul comenzii post-copiere pe $1  :
+exec_before=Ieșirea comenzii înainte de copiere pe $1  :
+exec_on=Nu a putut fi executat pe $1 : $2 
+
+log_create=Copie creată pentru serverele $1 la $2 
+log_modify=Copie modificată pentru serverele $1 la $2 
+log_delete=Copie ștersă pentru serverele $1 la $2 
+log_exec=Copiate serverele $1 la $2 
+log_deletes=Copii $1 șterse
+
+email_subject_succeeded=Copia clusterului $1 a reușit
+email_subject_failed=Copia clusterului din $1 a eșuat
+
+delete_err=Nu a reușit ștergerea copiilor
+delete_enone=Nimic selectat

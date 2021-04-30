@@ -1,0 +1,129 @@
+index_title=Filter pošty Procmail
+index_procmail=Filter pošty Procmail
+index_desc_other=Akcie procmail uvedené nižšie od $1 sa budú vzťahovať na <b>všetok</b> e-mail doručený používateľom vo vašom systéme. Použijú sa však iba vtedy, ak je nainštalovaný program Procmail a váš poštový server je nakonfigurovaný na jeho používanie.
+index_mserr=Varovanie - nepoužijú sa žiadne pravidlá definované nižšie : $1 
+index_action=Kroky, ktoré treba vykonať
+index_conds=podmienky
+index_move=sťahovať
+index_ba=pridať
+index_act6=Nastaviť premennú $1 
+index_act5=Vykonajte podmienený blok
+index_act4=Informačný kanál $1 
+index_act3=Poslať ďalej na $1 
+index_act2=Napíšte maildir $1 
+index_act1=Napíšte do priečinka MH $1 
+index_act0=Pripojiť k súboru $1 
+index_noconds=Vždy vykonajte akciu
+index_re=Zápas regexp $1 
+index_nre=Nezodpovedajú regexp $1 
+index_shell=Vyhodnoťte príkaz $1 
+index_exit=Ukončenie stavu príkazu $1 
+index_lt=Veľkosť je < $1 
+index_gt=Veľkosť je> $1 
+index_add=Pridajte novú akciu filtra.
+index_eadd=Pridajte nové nastavenie premennej.
+index_badd=Pridajte nový podmienený blok.
+index_iadd=Pridajte nový súbor zahrnutia.
+index_none=Zatiaľ neboli nakonfigurované žiadne akcie programu Procmail.
+index_return=zoznam akcií
+index_env=Nastavte premennú $1 na $2 
+index_include=Proces zahrnutia súboru $1 
+index_man=Ručné úpravy konfigurácie
+index_mandesc=Priamo upravte primárny konfiguračný súbor Procmail a vytvorte si vlastné pravidlá, premenné a bloky.
+index_ecmd=Program Procmail $1 nebol vo vašom systéme nájdený. Buď nie je nainštalovaný, alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_delete=Odstrániť vybrané akcie
+
+edit_title2=Upraviť akciu
+edit_title1=Vytvorenie akcie
+edit_header1=Podrobnosti o dodávke
+edit_header2=Akčné podmienky
+edit_action=Režim doručenia
+edit_block=Vykonajte kód programu Procmail
+edit_amode_0=Pripojiť k súboru
+edit_amode_1=Napíšte do priečinka MH
+edit_amode_2=Napíšte maildir
+edit_amode_3=Poslať ďalej
+edit_amode_4=Krmivo do programu
+edit_amode_6=Nastaviť premennú
+edit_flag_H=Na záhlavie použite podmienky
+edit_flag_B=Aplikujte podmienky na telo
+edit_flag_D=Zhoda s rozlišovaním veľkých a malých písmen
+edit_flag_h=Zacielujte hlavičky na miesto určenia
+edit_flag_b=Kŕmte telo do cieľa
+edit_flag_c=Pokračujte v spracovávaní, aj keď sa podmienky zhodujú
+edit_flag_w=Počkajte na dokončenie akčného programu a skontrolujte výsledok
+edit_flag_W=Počkajte na dokončenie akčného programu, ale výsledok ignorujte
+edit_flag_i=Ignorovať chyby zápisu pri doručení
+edit_flag_r=Napíšte e-mail v surovom režime
+edit_flag_f=Akčný program je filter
+edit_lockfile=Blokovací súbor dodávky
+edit_cmode_re=Zodpovedá regulárnemu výrazu
+edit_cmode_nre=Nezodpovedá regulárnemu výrazu
+edit_cmode_shell=Vyhodnoťte výstup príkazu
+edit_cmode_exit=Skontrolujte stav ukončenia príkazu
+edit_cmode_lt=Pošta je menšia ako
+edit_cmode_gt=Pošta je väčšia ako
+edit_conddesc=Na vykonanie vyššie uvedenej akcie sa musia zhodovať všetky nižšie uvedené podmienky. Ak neexistujú žiadne podmienky, akcia sa vždy vykoná.
+edit_none=nikto
+edit_lock=Konkrétny súbor
+edit_ctype=Typ podmienky
+edit_cvalue=Regulárny výraz alebo príkaz
+
+save_err=Nepodarilo sa uložiť akciu
+save_eaction_0=Chýba súbor na pripojenie
+save_eaction_1=Chýba priečinok MH na zápis
+save_eaction_2=Chýba maildir, do ktorého je možné napísať
+save_eaction_3=Chýba adresa, ktorú chcete poslať ďalej
+save_eaction_4=Chýba program na odoslanie do
+save_eaction_6=Chýba nastaviteľná premenná
+save_eactionvar=Premenná, ktorá sa má nastaviť, sa musí zadať ako NAME = hodnota
+save_elockfile=Chýba názov súboru zámku
+save_esize=Chýbajúca alebo neplatná veľkosť pošty pre podmienku $1 
+save_ere=Chýba regulárny výraz pre podmienku $1 
+save_eshell=Chýba príkaz pre podmienku $1 
+
+env_title1=Vytvorte premennú
+env_title2=Upraviť premennú
+env_header=Premenná prostredia Procmail
+env_name=Názov premennej
+env_value=hodnota
+env_err=Nepodarilo sa uložiť premennú
+env_ename=Chýba alebo je neplatný názov premennej
+
+inc_title1=Pridať zahrnúť súbor
+inc_title2=Upraviť zahrnúť súbor
+inc_header=Zahrnutý súbor pravidiel procmailu
+inc_inc=Zahrnutý súbor
+inc_einc=Nebol zadaný žiadny súbor na zahrnutie
+
+config_eline=Neznámy riadok $1 v $2 : $3 
+
+manual_title=Upraviť konfiguráciu
+manual_desc=Táto stránka sa dá použiť na manuálnu úpravu konfiguračného súboru Procmail $1. Buďte opatrní, pretože nebude vykonaná žiadna kontrola syntaxe.
+manual_edata=Váš prehliadač neposkytol žiadne údaje!
+
+log_create_rec=Vytvoril sa recept na $1 
+log_delete_rec=Odstránený recept na $1 
+log_modify_rec=Upravený recept na $1 
+log_delete_recs=Odstránené $1 recepty
+log_act5=vykonať podmienený blok
+log_act4=feed to progam $1 
+log_act3=poslať ďalej na $1 
+log_act2=napíšte na maildir $1 
+log_act1=zapisovať do priečinka MH $1 
+log_act0=pripojiť k súboru $1 
+log_create_env=Vytvorená premenná prostredia $1 
+log_modify_env=Upravená premenná prostredia $1 
+log_delete_env=Vymazaná premenná prostredia $1 
+log_create_inc=Bol vytvorený zahrnúť súbor $1 
+log_modify_inc=Upravený zahrnúť súbor $1 
+log_delete_inc=Odstránené zahŕňajú súbor $1 
+log_manual=Ručne upravená konfigurácia
+log_up=Posunul záznam nahor
+log_down=Posunutý vstup nadol
+
+delete_err=Akcie sa nepodarilo odstrániť
+delete_enone=Žiadne vybraté
+
+check_epostfix=Procmail nie je povolený v konfigurácii Postfixu. Konfiguračný súbor <tt>$2</tt> musí mať možnosť <tt>$1</tt> nastavenú na <tt>$3</tt>.
+check_esendmail=Program Sendmail nie je nastavený na používanie protokolu Procmail na lokálne doručovanie. Toto je možné nakonfigurovať v module <a href='$1'>Sendmail Mail Server</a> správcu webu.

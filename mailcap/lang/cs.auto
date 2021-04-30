@@ -1,0 +1,46 @@
+index_title=Programy typu MIME
+index_none=Zatím nebyly definovány žádné programy obsluhy typu MIME.
+index_add=Přidejte nový program typu MIME.
+index_type=Typ MIME
+index_program=Obslužný program
+index_cmt=Popis
+index_delete=Smazat vybrané
+index_disable=Zakázat vybrané
+index_enable=Povolit vybrané
+index_enabled=Povoleno?
+index_return=seznam programů
+
+edit_title1=Vytvořte program typu MIME
+edit_title2=Upravit program typu MIME
+edit_header=Podrobnosti programu obsluhy typu MIME
+edit_type=Typ MIME
+edit_enabled=Povoleno?
+edit_program=Obslužný program
+edit_cmt=Popis
+edit_egone=Program již neexistuje!
+edit_test=Vyzkoušejte příkaz
+edit_none=Žádné (vždy použijte program)
+edit_term=Zobrazit výstup na terminálu?
+edit_copious=Produkuje spoustu výstupu?
+edit_desc=Popis typu MIME
+
+save_err=Uložení programu typu MIME se nezdařilo
+save_etype=Chybějící nebo neplatný typ MIME
+save_eprogram=Chybí program obsluhy
+save_eclash=Aktivovaný program pro zadaný typ MIME již existuje
+save_etest=Chybějící nebo neplatný testovací příkaz
+save_edesc=Neplatný popis typu MIME
+
+delete_err=Smazání programů typu MIME se nezdařilo
+disable_err=Nepodařilo se zakázat programy typu MIME
+disable_eclash=Zakázaný program typu MIME pro $1 již existuje
+enable_err=Nepodařilo se povolit programy typu MIME
+enable_eclash=Povolený program typu MIME pro $1 již existuje
+delete_enone=Nebyl vybrán žádný
+
+log_delete_mailcap=Odstraňte program typu MIME pro $1 
+log_create_mailcap=Byl vytvořen program typu MIME pro $1 
+log_modify_mailcap=Upravený program typu MIME pro $1 
+log_delete_mailcaps=Smazané programy typu $1 MIME
+log_disable_mailcaps=Zakázáno programy typu $1 MIME
+log_enable_mailcaps=Povoleno programy typu $1 MIME

@@ -1,0 +1,99 @@
+index_used=Kullanılmış
+index_none=Bağlı dosya sistemlerine erişiminiz yok.
+index_mount2=Şifre ile bağlan:
+index_root=Kök dosya sistemi
+
+edit_usage=Disk kullanımı
+edit_nfs_opt4=NFSv4'e özgü seçenekler
+edit_advanced=Gelişmiş mod
+
+save_force=$1 üzerindeki bağ, bağlanma şu anda kullanımda olduğundan kaldırılamadı. Zorla sökülmeyi denemek için aşağıdaki düğmeyi tıklayın
+save_fapply=Takılmayı Zorla
+
+smb_eworkgroup=Modül Yapılandırma sayfasında çalışma grubu ayarlanmadı
+smb_emaster=$1 çalışma grubu için gözatma yöneticisi bulunamadı
+
+solaris_idedev=IDE denetleyicisi $1 sürücü $2 bölümü $3
+solaris_lvm=LVM Cihazı
+solaris_vg=Hacim grubu
+solaris_lv=Mantıksal hacim
+solaris_vxfs=VXFS cihazı
+solaris_hfs=HFS cihazı
+
+linux_burnerdev=CD yazıcı sürücüsü
+linux_uuid=$1 kimliğine sahip bölüm
+linux_lsel=Bölüm etiketli
+linux_usel=Kimliğe sahip bölüm
+linux_nodev=Cihaz dosyalarına izin verilmiyor mu?
+linux_noexec=İkili dosyaların yürütülmesine izin verme?
+linux_ifuser=Kullanıcılar tarafından monte edilebilirse
+linux_quotaj=Kota depolama türü
+linux_quotaj1=jurnalli
+linux_quotaj0=Düzenli
+linux_etimeo=Zaman aşımı bir sayı olmalıdır
+linux_credentials=Kimlik Bilgileri Dosyası
+linux_nr_blocks=Maksimum blok kullanılabilir
+linux_nr_inodes=Maksimum kullanılabilir inode
+linux_noenforce=Evet, ama zorlama
+linux_df=Ayrılmış bloklar dosya sistemi boyutuna eklensin mi?
+linux_noatime=Son erişim sürelerini güncellemekten kaçının?
+linux_netdev=Ağ arayüzleri bitene kadar bekleyin?
+linux_nofail=Takma başarısız olsa bile önyüklemeye devam edilsin mi?
+linux_rsize=Arabellek boyutunu oku
+linux_wsize=Yazma arabellek boyutu
+linux_integrity=Bütünlük
+linux_privacy=Gizlilik (Dürüstlük dahil)
+linux_nfsvers=NFS sürümünü zorla
+linux_nfsdefault=Varsayılan sürümü kullan
+linux_swappri=Sanal bellek önceliği
+linux_eswappri=Eksik veya geçersiz sayısal sanal bellek önceliği
+linux_codepage=Kod sayfası
+linux_iocharset=IO karakter kümesi
+linux_ecodepage=Eksik veya geçersiz kod sayfası
+linux_eiocharset=Eksik veya geçersiz G / Ç karakter kümesi
+linux_nounix=CIFS Unix uzantıları devre dışı bırakılsın mı?
+linux_noserverino=İstemci tarafında inode numaraları oluşturulsun mu?
+linux_cvers=CIFS sürümü
+linux_ecvers=CIFS sürümü bir sayı olmalıdır
+
+log_swap=Takas dosyası $1 oluşturuldu
+
+irix_nosuid=Setuid programlarına izin verme?
+irix_grpid=Dosyalar üst GID miras alır?
+irix_nodev=Cihaz dosyalarına izin verilmiyor mu?
+irix_retrans=Yeniden İletim Sayısı
+irix_quotano=Evet, ama zorlama
+irix_auto=Otomatik sayaç kaynağı
+irix_automap=Harita dosyası
+
+irix_eauthmap2=Eksik veya geçersiz otomatik sayı eşleme dosyası
+
+acl_types=Kullanılabilecek dosya sistemi türleri
+acl_fslist=Listelenen tür adları
+acl_user=Yalnızca kendi dosya sistemlerini düzenleyebilir mi?
+acl_hide=Düzenlenemeyen dosya sistemleri gizlensin mi?
+acl_simple=Basit bağlama formu gösterilsin mi?
+acl_simopts=Basitleştirilmiş dosya sistemi seçenekleri gösterilsin mi?
+acl_browse=Dosya göster ve paylaş gözatma düğmeleri?
+
+egcc=Sisteminizde takılı dosya sistemlerini listelemek için bir program oluşturmak için gereken GCC veya CC derleyicisi kullanılamaz.
+ecompile=Sisteminize bağlı dosya sistemlerini listelemek için bir program oluşturulurken bir hata oluştu : $1
+
+freebsd_ide=IDE sabit diski
+freebsd_device=cihaz
+freebsd_slice=Dilim
+freebsd_part=bölme
+freebsd_scsi=SCSI diski
+freebsd_other=Diğer cihaz
+freebsd_select=Disk bölümü
+freebsd_idedev=IDE cihazı $1, dilim $2, bölüm $3
+freebsd_scsidev=SCSI cihazı $1, dilim $2, bölüm $3
+freebsd_edevpath=Diğer cihaz, <tt>/dev/cdrom</tt> gibi mutlak bir yol olmalıdır
+freebsd_edevfile='$1' cihaz dosyası mevcut değil
+
+cswap_file=$1 takas dosyası mevcut değil.
+cswap_size=Boyutu olan bir takas dosyası oluşturma ve bağlama
+
+acl_sysinfo=Gösterge Tablosunda kullanılabilir disk verileri gösterilsin mi?
+sysinfo_total=Toplam
+sysinfo_dev=Cihaz Kimliği

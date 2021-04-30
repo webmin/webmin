@@ -1,0 +1,152 @@
+index_title=Server VPN PPTP
+index_version=Versione PoPToP $1 
+index_epptpd=Il server PPTP PoPToP $1 non è stato trovato sul tuo sistema o non è il programma giusto. Forse non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
+index_econfig=Il file di configurazione del server PPTP $1 non è stato trovato sul tuo sistema. Forse la tua <a href='$2'>configurazione del modulo</a> non è corretta.
+index_stop=Arresta il server PPTP
+index_stopdesc=Fare clic su questo pulsante per chiudere il processo del server PPTP in esecuzione, in modo che non vengano accettate nuove connessioni. Le connessioni VPN esistenti rimarranno comunque attive.
+index_start=Avviare il server PPTP
+index_startdesc=Fare clic su questo pulsante per avviare il processo del server PPTP in modo che possa ricevere connessioni VPN dai client.
+index_apply=Applica configurazione
+index_applydesc=Fare clic su questo pulsante per applicare le opzioni correnti del server PPTP arrestando e riavviando il processo del server PPTP. Le modifiche alle opzioni PPP e agli account PPP verranno sempre applicate a tutte le nuove connessioni
+index_return=indice del modulo
+index_epppd=Il programma server PPP $1 non è installato sul tuo sistema. Il PPTP dipende da esso per funzionare.
+
+conf_title=Opzioni del server PPTP
+conf_ecannot=Non è consentito modificare le opzioni del server PPTP
+conf_header=Configurazione del server PPTP
+conf_speed=Baud rate PPP
+conf_baud=bps
+conf_listen=Ascolta l'indirizzo
+conf_all=Tutti gli indirizzi
+conf_localip=Indirizzi IP per fine server della connessione
+conf_remoteip=Indirizzi IP da allocare ai client
+conf_ipxnets=Reti IPX da allocare
+conf_from=A partire dal
+conf_to=per
+conf_option=File di opzioni PPP
+conf_mode0=Impostazioni globali
+conf_mode1=Impostazioni specifiche per PPTP
+conf_mode2=File personalizzato
+conf_ipdesc=L'indirizzo IP in entrambi gli intervalli può essere inserito singolarmente (come 192.168.1.1) o come intervalli (come 192.168.2.32-64)
+conf_err=Impossibile salvare le opzioni del server
+conf_espeed=Baud rate mancante o non valido
+conf_elisten=Indirizzo mancante o non valido per l'ascolto
+conf_eoption=File di opzioni PPP personalizzato mancante o dall'aspetto non valido
+conf_elocalip='$1' non è un indirizzo o intervallo IP locale valido
+conf_eremoteip='$1' non è un indirizzo o intervallo IP remoto valido
+conf_efrom=Rete IPX mancante o non valida dall'indirizzo
+conf_eto=Rete IPX mancante o non valida da indirizzare
+
+options_title=Opzioni PPP
+options_ecannot=Non puoi modificare le opzioni PPP
+options_desc0=Le opzioni PPP riportate di seguito da $1 si applicano a TUTTE le connessioni in entrata ricevute dal sistema, comprese quelle ai modem dialup.
+options_desc1=Le opzioni PPP di seguito da $1 si applicano solo a tutte le connessioni PPTP.
+options_desc2=Saranno utilizzati da tutte le nuove connessioni stabilite dopo il salvataggio di questo modulo.
+options_header=Opzioni di connessione PPP
+options_proxyarp=Creare una voce ARP proxy?
+options_lock=Blocca il file del dispositivo PTY?
+options_auth=Hai bisogno di autenticazione?
+options_auth0=No, ma impedisce gli IP indirizzati
+options_auth1=Mai
+options_auth2=Sempre
+options_login=Anche l'autenticazione unix?
+options_pap=Autenticazione PAP
+options_chap=Autenticazione CHAP
+options_req=Deve essere usato
+options_all=Può essere usato
+options_ref=Non può essere usato
+options_name=Nome del server per l'autenticazione
+options_hn=Nome host reale
+options_mtu=Dimensione massima del pacchetto di invio
+options_mru=Dimensione massima del pacchetto di ricezione
+options_err=Impossibile salvare le opzioni PPP
+options_emtu=Dimensione massima del pacchetto di invio mancante o non valida
+options_emru=Dimensione massima del pacchetto di ricezione mancante o non valida
+options_ename=Nome del server mancante o non valido per l'autenticazione
+options_version=Versione PPPd $1 
+options_msdesc=Le opzioni seguenti abilitano il metodo di autenticazione MS-CHAP e la crittografia MPPE, utilizzati per impostazione predefinita dai client VPN di Windows. Tuttavia, MPPE richiede il supporto sia nel demone PPP che nel kernel del sistema operativo.
+options_mschap=Autenticazione MS-CHAP
+options_mschap-v2=Autenticazione MS-CHAP versione 2
+options_chapms=Autenticazione MS-CHAP
+options_chapms-v2=Autenticazione MS-CHAP versione 2
+
+secrets_title=Conti PPP
+secrets_ecannot=Non sei autorizzato a modificare gli account PPP
+secrets_return=indice
+secrets_none=Non sono ancora stati creati account PPP.
+secrets_enopfile=Il file di password PPP $1 non esiste sul tuo sistema. Forse PPP non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
+secrets_table=Account PPP per $1 
+secrets_user=Nome utente
+secrets_ips=Indirizzi IP
+secrets_uany=QUALUNQUE
+secrets_sany=QUALUNQUE
+secrets_create=Crea un nuovo account PPP.
+secrets_desc=Gli account PPP elencati in questa pagina sono presi dal file $1, utilizzato per l'autenticazione $3. Vengono visualizzati solo quelli per il tuo server $2, non gli account per effettuare connessioni in uscita.
+secrets_delete=Elimina gli account PPP selezionati
+
+edit_secret_etitle=Modifica account PPP
+edit_secret_ctitle=Crea un account PPP
+edit_secret_acc=Conto PPP
+edit_secret_user=Nome utente
+edit_secret_serv=server
+edit_secret_sany=Qualunque
+edit_secret_uany=Qualunque
+edit_secret_pass=Parola d'ordine
+edit_secret_none=Nessuna
+edit_secret_ffile=Dal file
+edit_secret_leave=Lascia invariato
+edit_secret_setto=Impostato
+edit_secret_vaddr=Indirizzi validi
+edit_secret_aany=Consenti qualsiasi
+edit_secret_anone=Non consentire nessuno
+edit_secret_alist=Consentiti elencati ..
+edit_secret_save=Salva
+edit_secret_del=Elimina
+edit_secret_return=elenco dei conti
+
+save_secret_esave=Impossibile salvare l'account
+save_secret_enoip='$1' non è un indirizzo valido
+
+stop_err=Impossibile arrestare il server PPTP
+stop_egone=Non più in esecuzione
+stop_ecannot=Non è consentito arrestare il server PPTP
+
+start_err=Impossibile avviare il server PPTP
+start_ecannot=Non è consentito avviare il server PPTP
+
+apply_err=Impossibile riavviare il server PPTP
+apply_ecannot=Non è consentito riavviare il server PPTP
+
+conns_title=Connessioni attive
+conns_ecannot=Non è consentito gestire connessioni attive
+conns_desc=Questa pagina elenca le connessioni PPTP attualmente attive al tuo server. Per disconnetterlo forzatamente, fai clic sul nome della sua interfaccia.
+conns_iface=Interfaccia PPP
+conns_client=Indirizzo cliente
+conns_stime=Connesso da allora
+conns_local=Indirizzo VPN del server
+conns_remote=Indirizzo VPN client
+conns_none=Nessuna connessione PPTP sembra essere attiva in questo momento.
+conns_unknown=Sconosciuto
+conns_user=Nome utente
+
+disc_err=Impossibile disconnettersi
+disc_egone=Le connessioni non sono più attive
+disc_ekill=Il processo non è più in esecuzione
+
+log_secret_create=Account PPP creato $1 
+log_secret_modify=Account PPP modificato $1 
+log_secret_delete=Account PPP eliminato $1 
+log_deletes=Account PPP $1 eliminati
+log_conf=Opzioni del server PPTP modificate
+log_options=Opzioni PPP modificate
+log_disc=Client disconnesso $1 
+log_start=Server PPTP avviato
+log_stop=Server PPTP arrestato
+log_apply=Configurazione del server PPTP applicata
+
+acl_conf=Puoi modificare la configurazione?
+acl_options=Puoi modificare le opzioni?
+acl_secrets=È possibile gestire account PPTP?
+acl_conns=È possibile visualizzare le connessioni?
+acl_stop=È possibile arrestare e avviare il server PPTP?
+acl_apply=È possibile applicare la configurazione?

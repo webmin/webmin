@@ -1,0 +1,23 @@
+index_sel_ro=seçilen ana makineler okuma erişimi
+index_all_ro=tüm ana bilgisayarlar okuma erişimi
+index_ro_rw=tüm ana bilgisayarlar okuma erişimi, seçilen ana bilgisayarlar yazma erişimi
+index_sel_rw=seçilen ana makineler yazma erişimi
+index_all_rw=tüm ev sahipleri yazma erişimi
+index_sel_root=seçilen ana bilgisayar kök erişimi
+
+edit_security=İhracat güvenliği
+edit_sel_ro=Listelenen ana makineler okuma erişimi
+edit_all_ro=Tüm ana bilgisayarlar okuma erişimi
+edit_ro_rw=Tüm ana bilgisayarlar okuma erişimi, listelenen ana bilgisayarlar yazma erişimi
+edit_sel_rw=Listelenen ana makineler yazma erişimi
+edit_all_rw=Tüm ev sahipleri yazma erişimi
+edit_sel_hosts=Listelenen ana makineler
+edit_all_hosts=Tüm ev sahipleri
+edit_user_access=Kullanıcı erişimi
+edit_root_access=Kök erişimi
+edit_anon_access=Anonim kullanıcı
+edit_anon_notset=Belirlenmedi
+edit_anon_noaccess=Erişim yok
+edit_async=Asenkron yazarlar
+
+save_enohost='$1' - Hiçbir ana bilgisayarı listelemediniz

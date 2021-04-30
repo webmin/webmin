@@ -103,7 +103,7 @@ sub traverse
 local($s, $act, $i);
 
 # Show the icon and class name
-print "<tr style=\"border-top: 1px solid #aaaaaa33\"> <td>", $spacer x $_[1];
+print "<tr style=\"border-top: 1px solid #aaaaaa28\"> <td>", $spacer x $_[1];
 if ($_[0]) {
 	print "<a name=\"$_[0]\"></a>\n";
 	$act = $heiropen{$_[0]} ? "close" : "open";

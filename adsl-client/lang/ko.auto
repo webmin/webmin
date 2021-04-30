@@ -1,0 +1,66 @@
+index_title=ADSL 클라이언트
+index_eadsl=시스템에서 RP-PPPoE 명령 $1 을 (를) 찾을 수 없거나 유효하지 않습니다. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+index_econfig=시스템에서 RP-PPPoE ADSL 구성 파일 $1 을 (를) 찾을 수 없습니다. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+index_emodem=현재 설정 파일은 ADSL 연결이 아닌 Redhat Linux의 모뎀 용 파일입니다. <a href='$2'>모듈 구성</a> 페이지를 사용하여 $1 에 다른 <tt>ifcfg-ppp *</tt> 파일 중 하나를 지정하거나 아직 존재하지 않는 파일을 지정하십시오. 당신을 위해 그것을 만들 수 있습니다.
+index_stop=ADSL 종료
+index_stopdesc=ADSL 연결이 현재 IP 주소 $1 로 활성화되어 있습니다. 이 버튼을 클릭하면 $2 명령으로 종료됩니다.
+index_start=ADSL 시작
+index_startdesc=ADSL 연결이 현재 비활성화되어 있습니다. 이 버튼을 클릭하여 $1 명령으로 시작하십시오.
+index_boot=부팅시 시작
+index_bootdesc=부팅시 ADSL 연결을 가져올 지 여부를 제어하려면이 옵션을 변경하십시오.
+index_return=모듈 색인
+index_version=RP-PPPoE 버전 $1 
+index_esetup=시스템에 Redhat ADSL 구성 파일 $1 이 (가) 없습니다. 그러나이 모듈은 아래 버튼을 클릭하여 기본 기본값으로 설정할 수 있습니다.
+index_setup=설정 구성 파일
+index_cancel=연결 취소
+index_canceldesc=ADSL 클라이언트가 현재 연결을 설정하려고합니다. $1 명령으로 시도를 취소하려면이 버튼을 클릭하십시오.
+index_cdemand=주문형 취소
+index_cdemanddesc=ADSL 클라이언트는 현재 주문형 연결 요청을 기다리고 있습니다. 명령 및 $1 (으)로 중지하려면이 단추를 클릭하십시오.
+
+index_header=ADSL 클라이언트 구성 옵션
+index_desc=아래 설정은 시스템에서 시작한 새로운 ADSL 연결에 적용됩니다. 변경 한 경우 수정 사항을 적용하려면 연결을 종료했다가 다시 시작해야합니다.
+index_eth=이더넷 인터페이스
+index_other=다른 ..
+index_demand=주문형 연결?
+index_timeout=예, 시간 초과
+index_secs=초
+index_user=사용자로 로그인
+index_sec=비밀번호로 로그인
+index_dns=ISP로부터 DNS 구성을 받으십니까?
+index_save=구성 저장
+index_mss=패킷 크기를 제한 하시겠습니까?
+index_psize=네
+index_bytes=바이트
+index_fw=연결시 활성화 할 방화벽
+index_fw_none=없음
+index_fw_standalone=단일 호스트
+index_fw_masquerade=NAT 게이트웨이
+index_connect=연결 시도 시간
+index_forever=영원히
+
+start_err=ADSL 연결을 시작하지 못했습니다
+start_title=ADSL 시작
+start_ip=IP 주소가 $1 인 ADSL 연결이 설정되었습니다.
+start_demand=주문형 연결 모드가 활성화되어 있으므로 ADSL 연결은 필요할 때만 시작됩니다.
+start_bg=20 초 이내에 ADSL 연결이 시작되지 않았습니다. ADSL 클라이언트는 성공할 때까지 백그라운드에서 계속 연결을 시도합니다.
+
+save_err=ADSL 구성을 저장하지 못했습니다
+save_eeth=이더넷 인터페이스가 없거나 잘못 표시됨
+save_etimeout=주문형 시간 초과가 없거나 잘못되었습니다.
+save_euser=사용자 이름이 없거나 잘못되었습니다
+save_econnect=연결 시간이 없거나 잘못되었습니다
+save_emss=최대 패킷 크기가 없거나 잘못되었습니다
+save_title=구성 저장
+save_desc=ADSL 클라이언트 구성이 성공적으로 저장되었지만 다시 연결할 때까지 사용되지 않습니다.
+
+stop_err=ADSL 연결을 종료하지 못했습니다
+stop_title=ADSL 종료
+stop_ok=ADSL 연결이 성공적으로 종료되었습니다.
+stop_failed=어떤 이유로 ADSL 연결이 여전히 활성화되어 있습니다!
+
+log_save=저장된 클라이언트 구성
+log_stop=ADSL 종료
+log_start=ADSL 시작
+log_bootup=부팅시 ADSL 활성화
+log_bootdown=부팅시 비활성화 된 ADSL
+log_setup=기본 구성 설정

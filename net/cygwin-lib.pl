@@ -246,6 +246,11 @@ sub can_edit
 return $_[0] =~ /^(dhcp|netmask)$/;
 }
 
+sub can_broadcast_def
+{
+return 0;
+}
+
 # valid_boot_address(address)
 # Is some address valid for a bootup interface
 sub valid_boot_address
@@ -422,7 +427,7 @@ sub parse_routing
 		    if ($gateway != $_->{'gateway'} ||
 			$gwmetric != $_->{'gwmetric'}) {
 			&check_ipaddress($gateway) ||
-			    &error(&text('routes_egateway', $gateway));
+			    &error(&text('routes_egateway', &html_escape($gateway)));
 			my $cmd = "netsh interface ip set address name = \"" .
 			    $_->{'name'} . "\" gateway = $gateway " .
 				"gwmetric = $gwmetric";

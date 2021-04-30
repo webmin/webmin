@@ -406,5 +406,3 @@ log_ftpaccessm=Manually edited options file $1
 log_ftpaccess=Changed $1 in options file $2
 log_start=Started proftpd
 log_apply=Applied changes
-
-

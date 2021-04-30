@@ -1,0 +1,52 @@
+index_title=NFS出口
+index_add=添加一個新的導出。
+index_dirs=目錄
+index_clients=客戶群
+index_everyone=大家
+index_none=尚未定義出口。
+index_delete=刪除選定的導出
+index_apply=應用更改
+index_applydesc=單擊此按鈕以應用當前文件導出配置。這將使上面列出的所有目錄都具有指定的選項。
+index_return=出口清單
+index_echeck=NFS服務器不能在此系統上使用： $1
+
+check_ecmd=未安裝NFS服務器命令 $1
+
+delete_err=無法刪除導出
+delete_enone=未選擇
+
+edit_title1=編輯導出
+edit_title2=創建導出
+edit_header1=導出選項
+edit_dirs=出口目錄
+edit_alldirs=導出子目錄？
+edit_ro=只讀？
+edit_kerb=使用Kerberos？
+edit_header2=遠程用戶映射
+edit_maproot=將root用戶映射到
+edit_mapusers=將所有用戶映射到
+edit_unpriv=非特權用戶
+edit_uid=用戶/ UID
+edit_gids=和組/ GID
+edit_mapall=將所有用戶映射到
+edit_header3=此出口的客戶
+edit_clients=客戶群
+edit_hosts=主機/網絡組
+edit_network=網絡
+edit_mask=面具
+
+save_err=無法保存導出
+save_edir='$1'不是目錄或不存在
+save_enone=您必須至少輸入一個目錄才能導出
+save_esub=如果選擇<b>導出子目錄</b>選項，則只能指定一個目錄
+save_eroot=使用<b>export子目錄</b>選項時，導出的目錄必須是<i>local</i>文件系統的根目錄
+save_euser='$1'不是有效的用戶或UID
+save_egroup='$1'不是有效的群組或GID
+save_ekerb=映射根用戶，映射所有用戶和kerberos選項是互斥的
+save_ehosts=您必須輸入至少一台主機才能導出到
+save_enetwork=“$1”不是有效的網絡
+save_enetmask='$1'不是有效的網絡掩碼
+save_esame1=目錄<tt>$1</tt>已被導出到<tt>$2</tt>。您的操作系統不允許將同一<i>local</i>文件系統上的目錄分別導出到同一主機
+save_esame2=目錄<tt>$1</tt>已被導出到<tt>$2</tt>。您的操作系統不允許將同一<i>local</i>文件系統上的目錄分別導出到同一網絡
+
+restart_err=無法應用更改

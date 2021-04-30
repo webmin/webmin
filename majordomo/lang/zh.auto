@@ -1,0 +1,27 @@
+index_eversion2=在程序目录 $2下找不到Majordomo版本文件 $1。也许您的<a href='$3'>模块配置</a>不正确，或者未安装majordomo。
+index_esendmail2=您的系统上未安装或未正确设置Sendmail。检查<a href=$2>Sendmail模块</a>配置。
+index_epostfix=Postfix未安装或在系统上未正确设置。检查<a href='$1'>Postfix模块</a>配置。
+index_esendmail3=未安装管理别名所需的Sendmail Webmin模块。
+index_version=Majordomo版本 $1
+index_name=列表名称
+index_info=清单信息
+index_mail=邮件地址
+index_moderated=适度
+index_count=用户数
+global_saved=（已保存）
+create_archive=存档邮件列表？
+create_archiveyear=在年度档案中
+create_archivemonth=在月度档案中
+create_archiveday=在每日档案中
+create_minimum=最低要求信息
+alias_err=无法设置别名
+alias_eowner=缺少所有者的电子邮件地址
+check_title=检查Majordomo配置
+check_test=测试. ..
+check_result=结果/附加检查
+check_status=状态
+check_perm=权限
+check_exec=世界可执行文件！
+check_write=世界可写！
+check_read=世界可读！
+check_possible=可能的问题

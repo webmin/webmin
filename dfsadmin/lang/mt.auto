@@ -1,0 +1,57 @@
+index_title=Ishma NFS
+index_add=Ibda qsim ta 'direttorju ġdid.
+index_dir=Direttorju
+index_clients=Klijenti
+index_everyone=Kulħadd
+index_delete=Ħassar l-Ishma Magħżula
+index_none=L-ebda direttorju bħalissa ma huwa esportat fuq din is-sistema.
+index_apply=Applika l-Bidliet
+index_applydesc=Ikklikkja din il-buttuna biex tapplika l-konfigurazzjoni attwali tal-qsim tal-fajls. Dan jagħmel id-direttorji elenkati hawn fuq disponibbli bl-għażliet speċifikati.
+index_return=lista tal - ishma
+
+edit_title1=Edit Aqsam
+edit_title2=Oħloq Sehem
+edit_header1=Aqsam id-dettalji
+edit_dir=Direttorju
+edit_desc=Deskrizzjoni
+edit_ro=Aċċess għal qari biss
+edit_rw=Aċċess għall-kitba
+edit_root=Aċċess għall-għeruq
+edit_none=Xejn
+edit_all=L-ospiti kollha
+edit_listed=Ospitanti elenkati ..
+edit_header2=Aqsam l-għażliet
+edit_nosub=Ħalli l-immuntar tas-subdirs?
+edit_nosuid=Ħalli l-fajls setuid?
+edit_des=Il-klijenti għandhom jużaw DES?
+edit_kerberos=Il-klijenti għandhom jużaw il-kerberos?
+edit_anon=Utent anonimu
+edit_anon0=Mhux imwaqqaf
+edit_anon1=L-ebda aċċess
+edit_aclok=Ħalli l-ACLs?
+edit_public=Sehem WebNFS?
+edit_index=Fajl indiċi WebNFS
+
+save_err=Ma rnexxielux isalva sehem
+save_edirectory="$1" mhux isem tad-direttorju validu
+save_edirectory2=Id-direttorju '$1' ma jeżistix
+save_erw=Ma elenkajt l-ebda host biex taqsam il-qari bil-miktub
+save_ero=Inti ma elenkat l-ebda host biex taqsamhom jinqraw biss
+save_eroot=Inti ma elenkat l-ebda host biex taqsam l-għeruq magħhom
+save_ealready=Id-direttorju '$1' diġà qiegħed jinqasam
+save_ehost=L-ospitant "$1" ma jeżistix
+
+log_modify=Sehem modifikat ta 'NFS $1 
+log_rename=Sehem mibdul ta 'NFS $1 sa $2 
+log_create=Sehem ta 'NFS maħluqa $1 
+log_delete=Sehem imħassar NFS $1 
+log_apply=Bidliet applikati
+
+acl_view=Tista 'teditja l-ishma NFS?
+
+ecannot=M'għandekx permess timmaniġġja ishma NFS
+
+delete_err=Naqset milli tħassar l-ishma
+delete_enone=L-ebda magħżul
+
+restart_err=Ma rnexxielux japplika tibdil

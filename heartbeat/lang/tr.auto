@@ -1,0 +1,103 @@
+index_title=Kalp Atışı Monitörü
+index_return=kalp atışı monitör
+index_edir=$1 kalp atışı yapılandırma dizini mevcut değil. Belki Kalp Atışı yüklü değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
+index_start=Kalp Atışı Monitörünü Başlat
+index_startmsg=Kalp Atışı izleme işlemini başlatmak için bu düğmeyi tıklatın. Bu, geçerli yapılandırma ile sisteminizde otomatik hizmet yük devretmeyi etkinleştirir.
+index_apply=Değişiklikleri uygula
+index_applymsg=Çalışan Kalp Atışı izleme işlemini geçerli yapılandırmayı yeniden yüklemeye zorlamak için bu düğmeyi tıklatın.
+index_eha_cf=$1 kalp atışı yapılandırma dosyası sisteminizde bulunamadı. Belki henüz kopyalanmadı veya <a href='$2'>modül yapılandırması</a> yanlış.
+index_eharesources=$1 kaynak dosyası sisteminizde bulunamadı. Belki henüz kopyalanmadı veya <a href='$2'>modül yapılandırması</a> yanlış.
+index_eauthkeys=$1 kimlik doğrulama anahtarları dosyası sisteminizde bulunamadı. Belki henüz kopyalanmadı veya <a href='$2'>modül yapılandırması</a> yanlış.
+index_ereq_resource_cmd=Diğer düğümden ($1) kaynak talep eden komut dosyası sisteminizde bulunamadı. Belki henüz kopyalanmadı veya <a href='$2'>modül yapılandırması</a> yanlış.
+index_version=Kalp atışı sürümü $1 
+index_noversion=Uyarı - Sisteminizde kurulu olan Kalp Atışı sürümü otomatik olarak algılanamadı. <a href='$1'>modül yapılandırması</a> sayfasında ayarlamanız gerekir.
+index_status=Kalp atışı durumu
+
+conf_title=Konfigürasyon Seçenekleri
+conf_header=Kalp atışı yapılandırma seçenekleri
+conf_serials=Seri kalp atışı bağlantı noktaları
+conf_baud=Seri port için baud hızı
+conf_bcasts=Ethernet kalp atışı arabirimleri
+conf_none=Yok
+conf_udpport=UDP kalp atışı bağlantı noktası
+conf_mcast=Multicast kalp atışı cihazı
+conf_mcastv=Aygıt $1, grup $2, bağlantı noktası $3, TTL $4, geri döngü $5 
+conf_enabled=Etkin
+conf_disabled=engelli
+conf_keepalive=Kalp atışları arasındaki süre
+conf_nice_failback=Nice Failback Davranışı
+conf_secs=saniye
+conf_deadtime=Düğümün ölü olduğu düşünülmeden önceki süre
+conf_watchdog=Bekçi köpeği aygıt dosyası
+conf_node=Kümedeki ana makineler
+conf_logfile=Kalp atışı günlük dosyası
+conf_logfacility=Syslog günlük özelliği
+conf_initdead=İlk ölü zaman
+conf_ok=Kaydetme Seçenekleri
+conf_err=Seçenekler kaydedilemedi
+conf_ebaud=Eksik veya geçersiz baud hızı
+conf_ebcast=Kalp atışı yayını arabirimi girilmedi
+conf_ebcastif='$1' geçerli bir yayın arayüzü değil
+conf_eudpport=Eksik veya geçersiz kalp atışı bağlantı noktası
+conf_ekeepalive=Kalp atışları arasında eksik veya geçersiz zaman
+conf_edeadtime=Eksik veya geçersiz ölü zaman
+conf_ewatchdog=Eksik veya var olmayan bekçi köpeği cihaz dosyası
+conf_enonode=Hiçbir küme ana bilgisayarı girilmedi
+conf_ethisnode=Bu ana bilgisayar $1, küme ana bilgisayarları listesinde değil
+conf_elogfile=Eksik veya geçersiz günlük dosya adı
+conf_einitdead=Eksik veya geçersiz ilk ölü zaman
+conf_einitdead2=İlk ölü zaman, bir düğümün ölü olarak kabul edilmesinden en az iki kez önce olmalıdır
+conf_emcast_dev=Eksik veya geçersiz çok noktaya yayın cihazı
+conf_emcast_ip=Eksik veya geçersiz çok noktaya yayın grubu adresi
+conf_emcast_port=Eksik veya geçersiz çok noktaya yayın bağlantı noktası numarası
+conf_emcast_ttl=Eksik veya geçersiz çoklu yayın yaşam süresi
+conf_auto_on=$ {Conf_enabled}
+conf_auto_off=$ {Conf_disabled}
+conf_auto_legacy=Eski mod
+conf_auto_=$ {Varsayılan}
+
+res_title=Küme Kaynakları
+res_node=Birincil Düğüm
+res_ips=IP Adresleri
+res_servs=Düğüm Hizmetleri
+res_none=Yok
+res_nores=Sisteminizde hiçbir küme kaynağı tanımlanmadı.
+res_add=Küme kaynağı ekle
+res_return=kaynaklar listesi
+res_active=Kaynak Durumu
+res_getserv=Kaynak Alın
+res_hbdown=Kalp atışı
+res_up=YUKARI
+res_down=AŞAĞI
+
+node_create=Küme Kaynağı Ekle
+node_edit=Küme Kaynağını Düzenle
+node_header=Küme kaynağı ayrıntıları
+node_node=Kaynak için birincil düğüm
+node_ips=Kaynak için IP adresleri
+node_ip=IP adresi
+node_cidr=Netmask CIDR
+node_broad=Yayın adresi
+node_servs=Kaynak hizmetleri
+node_serv=Hizmet
+node_args=Ek argümanlar
+node_err=Küme kaynağı kaydedilemedi
+node_enone=Eksik veya geçersiz birincil düğüm
+node_eip='$1' geçerli bir IP adresi değil
+node_ecidr='$1' geçerli bir CIDR değil
+node_ebroad='$1' geçerli bir yayın adresi değil
+
+auth_title=Kimlik Doğrulama Anahtarları
+auth_header=Küme düğümü kimlik doğrulaması
+auth_mode=Kimlik Doğrulama Modu
+auth_crc=CRC (Güvenlik yok)
+auth_sha1=Şifreli SHA1
+auth_md5=Şifreli MD5
+auth_err=Kimlik doğrulama anahtarları kaydedilemedi
+auth_emd5=Eksik veya geçersiz MD5 şifresi
+auth_esha1=Eksik veya geçersiz SHA1 şifresi
+
+start_err=Kalp atışı başlatılamadı
+
+apply_err=Değişiklikler uygulanamadı
+apply_epid=İşlem artık çalışmıyor

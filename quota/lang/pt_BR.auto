@@ -1,0 +1,110 @@
+acl_ro=Só pode visualizar cotas, não editar?
+acl_ggid=Grupos com GID no intervalo
+acl_email=Pode configurar notificações por email?
+
+egroup_kused=Kilobytes usados
+egroup_sklimit=Limite de kilobyte suave
+egroup_hklimit=Limite de kilobyte rígido
+egroup_listalldesc=Clique neste botão para exibir uma lista de todos os sistemas de arquivos nos quais esse grupo possui cotas de disco, com links para editá-los.
+
+euser_kused=Kilobytes usados
+euser_kdisk=Kilobytes disponíveis no disco
+euser_sdisk=Espaço disponível no disco
+euser_sklimit=Limite de kilobyte suave
+euser_hklimit=Limite de kilobyte rígido
+euser_listalldesc=Clique neste botão para exibir uma lista de todos os sistemas de arquivos nos quais este usuário possui cotas de disco, com links para editá-los.
+
+gfilesys_kbs=Kilobytes
+gfilesys_space=Espaço em disco
+gfilesys_editdesc=Visualize e edite as cotas desse grupo em outro sistema de arquivos no qual ele não possui cotas.
+gfilesys_copydesc=Copie os limites de cota para este grupo em todos os sistemas de arquivos para alguns ou todos os outros grupos.
+gfilesys_enone=Nenhum nome de grupo digitado
+
+index_supported=Cotas ainda não suportadas
+index_enable2=Ativar suporte
+index_euserdesc=Digite ou selecione um usuário e clique neste botão para visualizar suas cotas em todos os sistemas de arquivos.
+index_egroupdesc=Digite ou selecione um grupo e clique neste botão para visualizar suas cotas em todos os sistemas de arquivos.
+index_mountmod=Você pode ativar cotas para um sistema de arquivos no módulo <a href='$1'>Disk and Network Filesystems</a>.
+
+lgroups_tablist=Lista de grupos
+lgroups_kbs=Kilobytes
+lgroups_space=Espaço em disco
+lgroups_info=O Webmin pode ser configurado para definir automaticamente as cotas neste sistema de arquivos quando um novo grupo Unix é criado. Isso funcionará apenas quando o módulo $1 Webmin for usado para adicionar grupos.
+lgroups_newgroup=Novas cotas de grupo
+lgroups_mass=Atualizar grupos selecionados
+lgroups_to=Destino de email
+lgroups_tosame=Caixa de correio com o mesmo nome do grupo
+lgroups_tofixed=Endereço 1
+lgroups_emailheader=Enviar e-mail para grupos que se aproximam da cota
+lgroups_email=Enviar email para grupos?
+lgroups_tovirt=Proprietário do domínio Virtualmin
+
+ufilesys_kbs=Kilobytes
+ufilesys_space=Espaço em disco
+ufilesys_editdesc=Visualize e edite as cotas para esse usuário em outro sistema de arquivos em que ele atualmente não possui cotas.
+ufilesys_copydesc=Copie os limites de cota para esse usuário em todos os sistemas de arquivos para alguns ou todos os outros usuários.
+ufilesys_grace=Graça
+ufilesys_enone=Nenhum nome de usuário digitado
+
+lusers_tablist=Lista de usuários
+lusers_tabdefault=Cotas padrão
+lusers_tabemail=Notificações por email
+lusers_bsize=Tamanho do bloco de cota: $1 bytes
+lusers_kbs=Kilobytes
+lusers_space=Espaço em disco
+lusers_grace=Graça
+lusers_pc_hblocks=Difícil %
+lusers_pc_sblocks=Suave %
+lusers_emailheader=E-mail para usuários que se aproximam da cota
+lusers_email=Enviar email para os usuários?
+lusers_interval=Intervalo entre mensagens
+lusers_hours=horas
+lusers_ltype=Tipo de limite
+lusers_percent=Avisar quando o uso atingir
+lusers_domain=Domínio para endereços de usuário
+luser_virtualmin=Obter domínio do Virtualmin?
+lusers_from=De: endereço para email
+lusers_mass=Atualizar usuários selecionados
+lusers_cc=Envie também email para
+lusers_nocc=Ninguém
+
+log_email_user=Alterar as opções de email do usuário em $1 
+log_email_group=Alterar as opções de e-mail do grupo em $1 
+log_gsync=Novas cotas de grupos alteradas em $1 
+log_support=Suporte de cota ativado para $1 
+
+email_err=Falha ao salvar as opções de email
+email_ecannot=Você não tem permissão para modificar opções de email
+email_einterval=Intervalo ausente ou inválido
+email_epercent=Porcentagem de uso ausente ou inválida
+email_edomain=Domínio de email ausente ou inválido
+email_efrom=Endereço De: ausente ou inválido
+email_ecc=Endereço Cc: ausente ou inválido
+email_msg=O uso do disco para o usuário $1 no sistema de arquivos $2 atingiu $3% da cota permitida. $4 de espaço em disco está sendo usado, no máximo $5.
+gemail_msg=O uso do disco para o grupo $1 no sistema de arquivos $2 atingiu $3% da cota permitida. $4 de espaço em disco está sendo usado, no máximo $5.
+email_subject=Cota de disco excedida
+gemail_subject=Cota de disco excedida
+email_eto=Endereço de e-mail de destino ausente
+
+umass_title=Atualizar cotas de usuário
+umass_header=Alterações de cota a serem aplicadas a usuários selecionados
+umass_sblocks=Limite de bloqueio suave
+umass_hblocks=Limite de bloco rígido
+umass_sfiles=Limite de arquivos flexíveis
+umass_hfiles=Limite de arquivos físicos
+umass_leave=Deixar inalterado
+umass_unlimited=Definir como ilimitado
+umass_set=Definido como
+umass_ok=Atualizar usuários
+umass_esblocks=Limite de bloco flexível ausente ou inválido
+umass_ehblocks=Limite de bloco rígido ausente ou inválido
+umass_esfiles=Limite de arquivo virtual ausente ou inválido
+umass_ehfiles=Limite de arquivo rígido ausente ou inválido
+umass_count=As alterações abaixo serão aplicadas a $1 usuários selecionados.
+umass_err=Falha ao atualizar cotas de usuário
+
+gmass_title=Atualizar cotas de grupo
+gmass_header=Alterações de cota a serem aplicadas aos grupos selecionados
+gmass_count=As alterações abaixo serão aplicadas a $1 grupos selecionados.
+gmass_ok=Atualizar grupos
+gmass_err=Falha ao atualizar cotas do grupo

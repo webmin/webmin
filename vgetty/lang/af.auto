@@ -1,0 +1,118 @@
+index_title=Stemposbediener
+index_ecmd=Die Vgetty-opdrag $1 is nie op u stelsel gevind nie. Miskien is dit nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
+index_econfig=Die Vgetty-opstellinglêer $1 is nie op u stelsel gevind nie. Miskien is dit nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
+index_return=stemposindeks
+
+vgetty_title=Seriële poortkonfigurasie
+vgetty_desc=Dat u bediener stemoproepe kan beantwoord met 'n modem wat aan 'n seriële poort gekoppel is, moet dit hieronder gelys word. As u 'n poort by hierdie lys voeg, sal die $1 -program opgestel word om oproepe te beantwoord en 'n boodskap te speel.
+vgetty_add=Voeg 'n nuwe reekspoort by
+vgetty_tty=Reeksapparaat
+vgetty_type=tipe
+vgetty_vgetty=stem
+vgetty_mgetty=Data/faks
+vgetty_none=Nog geen seriële poorte is opgestel vir stempos nie.
+vgetty_apply=Pas konfigurasie toe
+vgetty_applydesc=Klik op hierdie knoppie om die huidige konfigurasie van die stemposbediener toe te pas deur die opdrag $1 uit te voer en alle Vgetty-prosesse dood te maak.
+vgetty_applyerr=Kon nie konfigurasie toepas nie
+vgetty_return=reekspoortlys
+vgetty_create=Voeg seriepoort by
+vgetty_edit=Wysig seriële poort
+vgetty_header=Opstellingsopsies vir seriële poort
+vgetty_ts=Reekspoort $1 
+vgetty_other=Ander toestel ..
+vgetty_rings=Ringe voordat jy antwoord
+vgetty_default=Wêreldwye standaard
+vgetty_ans=Antwoordmodus
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=stem
+vgetty_ans_fax=Faks
+vgetty_ans_data=data
+vgetty_err=Kon nie die seriële poort stoor nie
+vgetty_etty=Seriële toestel ontbreek of bestaan nie
+vgetty_erings=Ontbrekende of ongeldige aantal ringe
+vgetty_erings2=Aantal ringe moet minstens 2 wees
+vgetty_eans=Geen antwoordmodusse gekies nie
+vgetty_eclash=Die reekspoort $1 is reeds in gebruik
+
+options_title=Stemboodskapper-opsies
+options_header=Opsies vir alle seriële poorte
+options_maxlen=Maksimum boodskaplengte
+options_secs=sekondes
+options_minlen=Minimum boodskaplengte
+options_silence=Verwyder stilte aan die einde van die boodskappe?
+options_thresh=Stilte drempelvlak
+options_rgain=Opneem volume vlak
+options_tgain=Afspeelvolume vlak
+options_rings=Ringe voordat jy antwoord
+options_perport=Kan ingestel word vir elke reekspoort
+options_ans=Antwoordmodus
+options_keep=Hou boodskappe wat data of DTMF-kodes bevat?
+options_light=Aktiveer outomatiese antwoordlig ná ontvangs?
+options_owner=Unix eienaar vir boodskaplêers
+options_group=Unix-groep vir boodskaplêers
+options_mode=Toestemmings vir boodskaplêers
+options_prog=Na die opneem van die boodskap
+options_prog0=Doen niks
+options_prog1=E-pos in WAV-formaat na
+options_prog2=Begin opdrag op die boodskaplêer
+options_err=Kon nie stemposopsies stoor nie
+options_erings=Ontbrekende of ongeldige aantal ringe
+options_erings2=Aantal ringe moet minstens 2 wees
+options_emaxlen=Maksimum boodskaplengte ontbreek of ongeldig
+options_eminlen=Minimale lengte van die boodskap ontbreek of ongeldig
+options_ethresh=Ontbrekende of ongeldige stilte drempel
+options_ergain=Ontbrekende of ongeldige opnamevolumesvlak
+options_ergain2=Die opname volume moet tussen 0 en 100 wees
+options_etgain=Die vlak van die terugspeelvolume ontbreek of ongeldig
+options_etgain2=Die volume van die afspeel moet tussen 0 en 100 wees
+options_eemail=E-posadres ontbreek of ongeldig
+options_eprog=Program ontbreek of bestaan nie om te loop nie
+options_eowner=Ontbrekende of ongeldige Unix-gebruiker vir boodskaplêers
+options_egroup=Unix-groep ontbreek of ongeldig vir boodskaplêers
+options_emode=Oktale regte vir boodskaplêers ontbreek of ongeldig
+
+received_title=Boodskappe ontvang
+recieved_desc=Stemposboodskappe wat deur u bediener ontvang is, word hieronder gelys. Klik op die datum/tyd in die eerste kolom om na 'n boodskap te luister.
+received_none=Geen stemposboodskappe is ontvang nie.
+received_date=Ontvang by
+received_size=Lêergrootte
+received_speed=Voorbeeldtempo
+received_type=Oudioformaat
+received_delete=Vee geselekteerde boodskappe uit
+received_move=Skakel gekies om na groete
+received_all=Kies alles
+received_invert=Keer die keuse om
+
+listen_efile=Ongeldige boodskaplêernaam!
+listen_epath=Stemposboodskap bestaan nie meer nie
+
+delete_efile=Ongeldige boodskaplêernaam!
+
+messages_title=Groete boodskappe
+messages_desc=Hierdie bladsy lys groetboodskappe wat gespeel sal word wanneer 'n oproeper met u stemposbediener skakel. As u meer as een het, word 'n enkele lukraak gekose boodskap gebruik.
+messages_file=Lêernaam
+messages_none=Geen groetboodskappe is beskikbaar nie.
+messages_updesc=Met hierdie vorm kan u 'n ekstra WAV-lêer vir die groetboodskap oplaai, wat omgeskakel sal word na die gekose formaat vir gebruik deur u modem. Die voorbeeldtempo van die opgelaaide WAV moet dieselfde wees as die voorbeeldtempo van ontvangde boodskappe, net soos die gekose formaat.
+messages_upload=Laai boodskap op
+messages_fmt=verander na
+
+pvfdesc=$1, $2 bisse
+
+upload_err=Kon nie boodskap byvoeg nie
+upload_emessage=Geen WAV-lêer is gekies nie
+upload_ewav=Kon nie WAV-lêer omskakel nie : $1 
+upload_epvf=Kon nie RMD-lêer skep nie : $1 
+upload_esame=Die boodskaplêer $1 bestaan reeds
+
+log_apply=Toegepaste konfigurasie
+log_upload=Groetboodskap $1 opgelaai
+log_move=Omgeskakel $1 ontvang boodskappe
+log_delete0=$1 ontvangde boodskappe is uitgevee
+log_delete1=$1 groeteboodskappe is verwyder
+log_options=Verander stemposopsies
+log_vgetty_create=Seriële poort $1 bygevoeg
+log_vgetty_modify=Gewysigde reekspoort $1 
+log_vgetty_delete=Seriële poort $1 is uitgevee
+
+email_subject=Stemposboodskap
+email_body=Stemposboodskap ontvang teen $1 by $2.

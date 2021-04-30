@@ -1,0 +1,77 @@
+index_parted=<tt>ayrıştırıldı</tt>
+index_fdisk=<tt>fdisk</tt> kullanma
+index_ecmd=Bölüm yönetimi için $1 komutunu kullanmayı seçtiniz, ancak sisteminizde yüklü değil.
+index_hdparmdesc=DMA modu, bekleme zaman aşımı ve okunan sektör sayısı gibi bir IDE sürücüsünün ayarlarını değiştirin.
+index_smart=SMART durumunu göster
+index_smartdesc=Sıcaklık ve hata oranları dahil, bu sürücü tarafından bildirilen durumu görüntüler.
+index_blink=Sürüş tanımla
+index_relabel=Bölümleri Sil
+index_relabeldesc=Mevcut tüm bölümleri silin ve farklı formatta yeni bir bölüm tablosu oluşturun.
+index_relabel2=Bölümleme Tablosu Oluştur
+index_relabeldesc2=Bölümlerin eklenebilmesi için bu diskte yeni bir boş bölüm tablosu oluşturun.
+index_dname=Disk adı
+index_dsize=Toplam boyut
+index_dmodel=Marka ve model
+index_dctrl=kontrolör
+index_dacts=Hareketler
+index_dhdparm=IDE parametreleri
+index_dsmart=SMART durumu
+index_dscsi=SCSI cihazı $1 denetleyici $2 
+index_draid=RAID seviyesi $1 
+index_dparts=bölmeler
+index_none2=Bu sistemde disk bulunamadı.
+
+select_nvme=NVME SSD $1 sürücü $2 
+select_nvmepart=NVME SSD $1 sürücü $2 bölüm $3 
+
+edit_mountiscsi=iSCSI paylaşılan cihazı $1 
+edit_name=Bölüm adı
+edit_volid=Birim Kimliği
+edit_newmount2=Dağı Bölümü
+edit_mountmsg2=Kullanılabilir bellek miktarını artırmak için bu bölümü sisteminize sanal bellek olarak takın.
+
+msdos_F_other=Diğer ..
+
+btrfs_l=Yaprak boyutu
+btrfs_n=Düğüm boyutu
+btrfs_s=Sektör büyüklüğü
+
+fatx_none=FATX dosya sistemleri için seçenek yoktur.
+
+blink_title=Drive'ı tanımlayın
+blink_desc=Sürücünün etkinlik LED'i şimdi altmış kez yanacaktır
+blink_back=Geri dön
+
+fs_ext4=Yeni Linux Yerel
+fs_btrfs=BTR
+
+disk_title=Disk Bölümlerini Düzenle
+disk_egone=Disk artık mevcut değil!
+disk_no=Numara
+disk_type=tip
+disk_extent=kapsam
+disk_start=Başlat
+disk_end=Son
+disk_use=Tarafından kullanılan
+disk_free=Boş alan
+disk_vm=Sanal bellek
+disk_iscsi=iSCSI paylaşılan cihazı $1 
+disk_none=Bu diskte henüz bölüm yok.
+disk_size=Boyut
+disk_dsize=<b>Disk boyutu:</b> $1 
+disk_model=<b>Marka ve model:</b> $1 
+disk_cylinders=<b>Silindirler:</b> $1 
+disk_table=<b>Bölümleme tablosu biçimi:</b> $1 
+disk_notable=<b>Bölümleme tablosu biçimi:</b> Hiçbiri oluşturulmadı
+disk_needtable=Bölümleme tablosu olmadan bölüm oluşturulamaz.
+disk_return=bölüm listesi
+
+relabel_title=Bölümleri Sil
+relabel_warn=Disk etiketini yeniden yazarak $1 ($2) üzerindeki tüm bölümleri silmek istediğinizden emin misiniz? Mevcut tüm veri ve dosya sistemleri kaybolacak!
+relabel_parts=Mevcut bölümler
+relabel_noparts=Henüz oluşturulmadı
+relabel_table=Bölümleme tablosu biçimi
+relabel_ok=Sil ve Yeniden Etiketle
+
+table_msdos=MS-DOS (Standart bölüm biçimi)
+table_gpt=GPT (2T veya daha büyük diskler için)

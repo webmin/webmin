@@ -60,7 +60,7 @@ if ($version{'type'} eq 'openssh' && $version{'number'} >= 2) {
 	# Protocols
 	$prots = &find_value("Protocol", $conf);
 	@prots = $prots ? split(/,/, $prots) :
-		 $version{'number'} >= 2.9 ? (1, 2) : (1);
+		 $version{'number'} >= 2.9 ? (1, 2) : (2);
 	$cbs = "";
 	foreach $p (1, 2) {
 		$cbs .= &ui_checkbox("prots", $p, $text{"net_prots_$p"},

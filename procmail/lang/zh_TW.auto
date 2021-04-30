@@ -1,0 +1,129 @@
+index_title=Procmail郵件過濾器
+index_procmail=Procmail郵件過濾器
+index_desc_other=以下來自 $1的procmail操作將適用於傳送給系統上用戶的<b>all</b>電子郵件。但是，僅當安裝了Procmail並且您的郵件服務器配置為使用它們時，才使用它們。
+index_mserr=警告-以下定義的任何規則都不會使用： $1
+index_action=採取的行動
+index_conds=條件
+index_move=移動
+index_ba=加
+index_act6=設置變量 $1
+index_act5=執行條件塊
+index_act4=供稿到程序 $1
+index_act3=轉發到 $1
+index_act2=寫入maildir $1
+index_act1=寫入MH文件夾 $1
+index_act0=附加到文件 $1
+index_noconds=一律執行動作
+index_re=匹配正則表達式 $1
+index_nre=與regexp $1不匹配
+index_shell=評估命令 $1
+index_exit=命令 $1的退出狀態
+index_lt=大小為< $1
+index_gt=大小大於 $1
+index_add=添加一個新的過濾器動作。
+index_eadd=添加一個新的變量設置。
+index_badd=添加一個新的條件塊。
+index_iadd=添加一個新的包含文件。
+index_none=尚未配置Procmail操作。
+index_return=動作清單
+index_env=將變量 $1設置為 $2
+index_include=處理包含文件 $1
+index_man=手動編輯配置
+index_mandesc=直接編輯Procmail主配置文件，以創建自己的規則，變量和塊。
+index_ecmd=在您的系統上找不到Procmail程序 $1。要么未安裝，要么<a href='$2'>模塊配置</a>不正確。
+index_delete=刪除所選動作
+
+edit_title2=編輯動作
+edit_title1=建立動作
+edit_header1=交貨動作詳細信息
+edit_header2=動作條件
+edit_action=投放方式
+edit_block=Procmail代碼執行
+edit_amode_0=附加到文件
+edit_amode_1=寫入MH文件夾
+edit_amode_2=寫入maildir
+edit_amode_3=轉發到地址
+edit_amode_4=提要節目
+edit_amode_6=設定變量
+edit_flag_H=將條件應用於標題
+edit_flag_B=對身體施加條件
+edit_flag_D=區分大小寫的匹配
+edit_flag_h=將標頭輸入到目標
+edit_flag_b=將身體餵入目的地
+edit_flag_c=即使條件匹配也繼續處理
+edit_flag_w=等待動作程序完成，然後檢查結果
+edit_flag_W=等待動作程序完成，但忽略結果
+edit_flag_i=忽略交貨時的寫入錯誤
+edit_flag_r=以原始模式寫出郵件
+edit_flag_f=動作程序是過濾器
+edit_lockfile=交貨鎖定文件
+edit_cmode_re=匹配正則表達式
+edit_cmode_nre=與正則表達式不匹配
+edit_cmode_shell=評估命令輸出
+edit_cmode_exit=檢查命令的退出狀態
+edit_cmode_lt=郵件小於
+edit_cmode_gt=郵件大於
+edit_conddesc=為了執行上述動作，必須滿足以下所有條件。如果沒有條件，則將始終執行該操作。
+edit_none=沒有
+edit_lock=特定檔案
+edit_ctype=條件類型
+edit_cvalue=正則表達式或命令
+
+save_err=無法保存動作
+save_eaction_0=缺少要追加的文件
+save_eaction_1=缺少要寫入的MH文件夾
+save_eaction_2=缺少要寫入的maildir
+save_eaction_3=缺少要轉發的地址
+save_eaction_4=缺少要饋送的程序
+save_eaction_6=缺少要設置的變量
+save_eactionvar=必須輸入要設置的變量，例如NAME = value
+save_elockfile=缺少鎖定文件名
+save_esize=條件 $1的郵件大小丟失或無效
+save_ere=條件 $1缺少正則表達式
+save_eshell=條件 $1缺少命令
+
+env_title1=創建變量
+env_title2=編輯變量
+env_header=Procmail環境變量
+env_name=變量名
+env_value=值
+env_err=保存變量失敗
+env_ename=變量名缺失或無效
+
+inc_title1=添加包含文件
+inc_title2=編輯包含文件
+inc_header=隨附的procmail規則文件
+inc_inc=包含文件
+inc_einc=沒有輸入包含文件
+
+config_eline=$2中的未知行 $1 : $3
+
+manual_title=編輯配置
+manual_desc=此頁面可用於手動編輯Procmail配置文件 $1。請注意，因為不會進行語法檢查。
+manual_edata=您的瀏覽器未提供任何數據！
+
+log_create_rec=已創建配方到 $1
+log_delete_rec=已將配方刪除到 $1
+log_modify_rec=將配方修改為 $1
+log_delete_recs=已刪除 $1個食譜
+log_act5=執行條件塊
+log_act4=餵給節目 $1
+log_act3=轉發到 $1
+log_act2=寫入maildir $1
+log_act1=寫入MH文件夾 $1
+log_act0=附加到文件 $1
+log_create_env=已創建環境變量 $1
+log_modify_env=修改後的環境變量 $1
+log_delete_env=刪除的環境變量 $1
+log_create_inc=已創建包含文件 $1
+log_modify_inc=修改的包含文件 $1
+log_delete_inc=刪除的包含文件 $1
+log_manual=手動編輯的配置
+log_up=將條目上移
+log_down=下移條目
+
+delete_err=刪除動作失敗
+delete_enone=未選擇
+
+check_epostfix=在您的Postfix配置中未啟用Procmail。配置文件<tt>$2</tt>必須將<tt>$1</tt>選項設置為<tt>$3</tt>。
+check_esendmail=未將Sendmail設置為使用Procmail進行本地傳遞。可以在Webmin的<a href='$1'>Sendmail郵件服務器</a>模塊中進行配置。

@@ -1,0 +1,16 @@
+index_digest2=Özet şifreleme modül yapılandırmasında etkinleştirilir, ancak bunun için gereken $1 komutu veya $2 Perl modülü yüklenmez.
+index_delete=Seçili Dizinlerin Korunmasını Kaldırma
+index_remove=Dosyaların Korumasını Kaldırma ve Kaldırma
+
+dir_header2=Kullanıcı senkronizasyon seçenekleri
+dir_ecannotcreate=Hangi dizinlerin korunduğunu yapılandırmanıza izin verilmiyor
+dir_delete=Un-Koru
+dir_delete2=Dosyaların Korumasını Kaldır ve Kaldır
+dir_delete3=Korumayı Kaldır ve Dosyayı Kaldır
+dir_apache=Apache Seçeneklerini Düzenle
+dir_efiledir='$1' bir dizin ve bu nedenle kullanıcı dosyası olarak kullanılamaz
+dir_egfiledir='$1' bir dizin ve bu nedenle bir grup dosyası olarak kullanılamaz
+
+acl_uonly=Korumalı dizin ekleyebilir ve değiştirebilir mi?
+
+log_delete_dirs=$1 dizin silindi

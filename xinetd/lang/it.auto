@@ -1,0 +1,15 @@
+index_none=Nessun servizio di rete è stato ancora definito.
+index_estart=Il comando per avviare Xinetd $1 non esiste. Forse non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
+index_noport=Sconosciuto
+index_enable=Abilita selezionati
+index_disable=Disabilita Selezionato
+
+restart_epid=Non più in esecuzione
+
+log_enable=Servizi $1 abilitati
+log_disable=Servizi $1 disabilitati
+log_enable_l=Servizi abilitati $1 
+log_disable_l=Servizi per disabili $1 
+
+config_dirdef=File di configurazione di Xinetd
+config_dirto=Nuovo file nella directory

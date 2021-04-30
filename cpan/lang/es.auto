@@ -1,0 +1,25 @@
+index_forcecpan=Instale siempre la última versión de la fuente
+index_delete=Desinstalar módulos
+index_upgrade=Módulos de actualización
+index_recs=Los siguientes módulos Perl se recomiendan para la instalación de Webmin :
+index_user=$1 (utilizado por $2)
+index_recsok=Instalar módulos seleccionados
+index_recsgot=Se instalan todos los siguientes módulos Perl recomendados por Webmin : $1 
+index_ezone=Parece que Perl se comparte con la zona global, por lo que los módulos no se pueden instalar aquí. Deben instalarse en la zona global en su lugar.
+index_none=No se encontraron módulos Perl instalados en su sistema.
+index_tabmods=Módulos existentes
+index_tabinstall=Instalar módulo
+index_tabsuggest=Módulos sugeridos
+index_allmods2=Faltan módulos utilizados por Webmin
+index_wantmods=Módulos para instalar
+
+download_ecpangz=La URL $1 no es la lista de módulos de CPAN. Verifique la configuración del módulo.
+download_yum=Instalación del módulo Perl $1 desde el paquete $2 ..
+download_missingok=Módulos que faltan en CPAN
+download_fallback=Algunos módulos no se pudieron instalar desde los paquetes, en su lugar intentaron la instalación desde el origen.
+
+uninstalls_title=Desinstalar módulos
+uninstalls_err=Error al desinstalar módulos
+uninstalls_enone=Ninguna seleccionada
+uninstalls_emod=$1 falló : $2 
+uninstalls_rusure=¿Está seguro de que desea desinstalar los módulos seleccionados $1 ? Se eliminarán $2 submódulos y $3 archivos.

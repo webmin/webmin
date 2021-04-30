@@ -1,0 +1,57 @@
+index_title=Acțiuni NFS
+index_add=Începeți să partajați un nou director.
+index_dir=Director
+index_clients=Clienți
+index_everyone=Toata lumea
+index_delete=Șterge Acțiuni selectate
+index_none=În prezent nu sunt exportate directoare în acest sistem.
+index_apply=Aplica schimbarile
+index_applydesc=Faceți clic pe acest buton pentru a aplica configurația curentă de partajare a fișierelor. Acest lucru va face ca toate directoarele enumerate mai sus să fie disponibile cu opțiunile specificate.
+index_return=lista acțiunilor
+
+edit_title1=Editați Partajare
+edit_title2=Creați Partajare
+edit_header1=Distribuie detalii
+edit_dir=Director
+edit_desc=Descriere
+edit_ro=Acces numai în citire
+edit_rw=Acces citit-scriere
+edit_root=Acces rădăcină
+edit_none=Nici unul
+edit_all=Toate gazdele
+edit_listed=Gazde enumerate ..
+edit_header2=Opțiuni de partajare
+edit_nosub=Permiteți montarea subdiretoarelor?
+edit_nosuid=Permiteți fișierele setuid?
+edit_des=Clienții trebuie să utilizeze DES?
+edit_kerberos=Clienții trebuie să folosească kerberos?
+edit_anon=Utilizator anonim
+edit_anon0=Nu este setat
+edit_anon1=Fără acces
+edit_aclok=Permiteți ACL-uri?
+edit_public=Partajare WebNFS?
+edit_index=Fișier index WebNFS
+
+save_err=Nu a reușit salvarea partajării
+save_edirectory=„$1” nu este un nume de director valid
+save_edirectory2=Directorul „$1” nu există
+save_erw=Nu ați listat nicio gazdă cu care să partajați citire-scriere
+save_ero=Nu ați listat nicio gazdă cu care să partajați doar în citire
+save_eroot=Nu ați listat nicio gazdă cu care să partajați root
+save_ealready=Directorul „$1” este deja partajat
+save_ehost=Gazda „$1” nu există
+
+log_modify=Ponderea modificată NFS $1 
+log_rename=Cota schimbată NFS $1 la $2 
+log_create=% Share NFS creat $1 
+log_delete=Partajare NFS ștersă $1 
+log_apply=Modificări aplicate
+
+acl_view=Poate edita acțiuni NFS?
+
+ecannot=Nu aveți voie să gestionați acțiuni NFS
+
+delete_err=Nu a reușit să ștergeți acțiunile
+delete_enone=Nimic selectat
+
+restart_err=Eroare la aplicarea modificărilor

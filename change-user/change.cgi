@@ -32,9 +32,11 @@ if ($access{'pass'} && &can_change_pass($user) && !$in{'pass_def'}) {
 if ($access{'lang'}) {
 	if ($in{'lang_def'}) {
 		$user->{'lang'} = undef;
+		$user->{'langauto'} = undef;
 		}
 	else {
 		$user->{'lang'} = $in{'lang'};
+		$user->{'langauto'} = $in{'langauto'} ? 1 : 0;
 		}
 	}
 

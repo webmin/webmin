@@ -1,0 +1,52 @@
+index_title=Esportazioni NFS
+index_add=Aggiungi una nuova esportazione.
+index_dirs=Elenchi
+index_clients=clienti
+index_everyone=Tutti
+index_none=Non sono state ancora definite esportazioni.
+index_delete=Elimina le esportazioni selezionate
+index_apply=Applica i cambiamenti
+index_applydesc=Fare clic su questo pulsante per applicare la configurazione di esportazione del file corrente. Ciò renderà tutte le directory sopra elencate disponibili con le opzioni specificate.
+index_return=lista delle esportazioni
+index_echeck=Il server NFS non può essere utilizzato su questo sistema : $1 
+
+check_ecmd=Il comando server NFS $1 non è installato
+
+delete_err=Impossibile eliminare le esportazioni
+delete_enone=Nessuno selezionato
+
+edit_title1=Modifica esportazione
+edit_title2=Crea esportazione
+edit_header1=Opzioni di esportazione
+edit_dirs=Directory da esportare
+edit_alldirs=Esporta sottodirectory?
+edit_ro=Sola lettura?
+edit_kerb=Usa Kerberos?
+edit_header2=Mappatura utente remota
+edit_maproot=Mappare l'utente root su
+edit_mapusers=Mappa tutti gli utenti a
+edit_unpriv=Utente non privilegiato
+edit_uid=Utente / UID
+edit_gids=E gruppi / GID
+edit_mapall=Mappa tutti gli utenti a
+edit_header3=Clienti per questa esportazione
+edit_clients=clienti
+edit_hosts=Host / netgroup
+edit_network=Rete
+edit_mask=Maschera
+
+save_err=Impossibile salvare l'esportazione
+save_edir='$1' non è una directory o non esiste
+save_enone=È necessario inserire almeno una directory per esportare
+save_esub=È possibile assegnare una sola directory se viene scelta l'opzione <b>esportazione sottodirectory</b>
+save_eroot=Quando si utilizza l'opzione <b>esportazione sottodirectory</b>, la directory esportata deve essere la radice di un file system <i>locale</i>
+save_euser='$1' non è un utente o UID valido
+save_egroup='$1' non è un gruppo o GID valido
+save_ekerb=Gli utenti root mappa, mappa tutti gli utenti e le opzioni Kerberos si escludono a vicenda
+save_ehosts=Devi inserire almeno un host in cui esportare
+save_enetwork='$1' non è una rete valida
+save_enetmask='$1' non è una maschera di rete valida
+save_esame1=La directory <tt>$1</tt> è già stata esportata in <tt>$2</tt>. Il tuo sistema operativo non consente alle directory sullo stesso filesystem <i>locale</i> di essere esportate separatamente sullo stesso host
+save_esame2=La directory <tt>$1</tt> è già stata esportata in <tt>$2</tt>. Il tuo sistema operativo non consente alle directory sullo stesso filesystem <i>locale</i> di essere esportate separatamente sulla stessa rete
+
+restart_err=Impossibile applicare le modifiche

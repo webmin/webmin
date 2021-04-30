@@ -1,0 +1,46 @@
+index_errors=Chyby
+index_status=Postavení
+index_size=Použitelná velikost
+
+create_missing=Zahrnout aktuálně chybějící disk?
+create_assume=Přeskočit inicializaci zařízení?
+create_group=Člen náhradní skupiny
+create_nogroup=Žádné (používejte pouze vlastní náhradní díly)
+create_oldgroup=Existující skupina
+create_newgroup=Nová skupina
+create_enewgroup=Chybějící nebo nealfanumerický název náhradní skupiny
+create_n2_layout=2 V blízkosti kopií
+create_f2_layout=2 vzdálené kopie
+create_o2_layout=2 Ofsetové kopie
+create_n3_layout=3 V blízkosti kopií
+create_f3_layout=3 vzdálené kopie
+create_o3_layout=3 ofsetové kopie
+
+view_uuid=UUID
+view_iscsi=Používá sdílené zařízení iSCSI $1 
+view_delayed=Čekání na jiném zařízení
+view_remove_det=Odpojit
+view_remove_detdesc=Odeberte oddíly, které jsou již fyzicky odpojeny od systému.
+view_replace=Nahradit oddíl:
+view_replacedesc=Vyberte oddíl, který má být nahrazen. (Hot Replace)
+view_grow=Grow RAID:
+view_growdesc=Rozšiřte pole (převeďte horké náhradní díly na aktivní členy)
+view_convert_to_raid6=Převést na RAID6
+
+view_convert_to_raid6desc=Převeďte úroveň RAID na RAID6 přidáním jedné nebo více jednotek.
+view_convert_to_raid5=Převést na RAID5
+view_convert_to_raid5desc=Převeďte úroveň RAID na RAID5 odebráním jednotky.
+view_sparegroup=Náhradní skupina
+
+emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
+emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
+
+log_replace=Nahrazený oddíl $2 v zařízení RAID $1 náhradním oddílem $3 
+log_grow=Vytvořil RAID zařízení $1 na celkem $2 disků
+log_convert_to_raid6=Převedeno zařízení RAID5 $1 na zařízení RAID6
+log_convert_to_raid5=Převedeno zařízení RAID6 $1 na zařízení RAID5
+
+remove_title=Odebrat oddíl z pole RAID
+remove_rusure=Opravdu chcete odebrat oddíl $2 pole RAID $1 ?
+remove_ok=Ano, odeberte jej
+remove_eidx=Nebylo vybráno žádné pole RAID!

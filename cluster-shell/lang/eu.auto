@@ -1,0 +1,22 @@
+index_title=Cluster Shell Komandoak
+index_cmd=Exekutatzeko agindua
+index_old=edo
+index_server=Exekutatu zerbitzarietan
+index_run=Exekutatu komandoa orain
+index_return=moduluaren aurkibidea
+index_this=zerbitzari hau
+index_all=&lt;Ostalari guztiak&gt;
+index_group=$1 eko kideak
+index_clear=Historia garbi
+index_edit=Editatu Aurrekoa
+
+run_title=Exekutatu komandoa
+run_err=Ezin izan da exekutatu komandoa
+run_ecmd=Ez da komandorik sartu
+run_failed=Ezin izan da exekutatu $1 : $2 an
+run_success=$1 -eko irteera.
+run_enone=Ez da hautatutako zerbitzaririk exekutatuko
+
+log_clear=Komandoen historia garbitu
+log_run=Ran $1 $2 zerbitzarietan
+log_run_l=Ran $1 $2 an

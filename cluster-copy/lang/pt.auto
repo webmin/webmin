@@ -1,0 +1,67 @@
+index_title=Arquivos de cópia de cluster
+index_add=Crie uma nova cópia de arquivo agendada.
+index_none=Nenhuma cópia de arquivo agendada foi definida.
+index_servers=Copiar para servidores
+index_return=lista de cópias de cluster
+index_more=mais $1 ..
+index_run=Corra agora ..
+index_files=Arquivos para copiar
+index_sched=Programado?
+index_when=Sim, $1 
+index_act=Açao
+index_exec=Executar
+index_delete=Excluir cópias selecionadas
+
+edit_title=Editar cópia de cluster
+create_title=Criar cópia de cluster
+edit_header=Detalhes da cópia de cluster
+edit_files=Arquivos para copiar
+edit_dest=Diretório de destino
+edit_cmd=Comando para executar após copiar
+edit_before=Comando para executar antes de copiar
+edit_remote=Em servidores remotos
+edit_dmode0=Copiar caminhos completos no diretório
+edit_dmode1=Copie para este diretório
+edit_servers=Copiar para servidores
+edit_group=Membros de $1 
+edit_this=este servidor
+edit_all=&lt;Todos os hosts&gt;
+edit_sched=Copiar no horário?
+edit_schedyes=Sim, nos horários selecionados abaixo ..
+edit_run=Copie agora
+edit_return=cópia de cluster
+edit_email=Enviar por e-mail para
+edit_none=Ninguém
+
+save_err=Falha ao salvar o trabalho agendado do cluster
+save_efiles=Nenhum arquivo para copiar inserido
+save_edest=Diretório de destino ausente
+save_eservers=Nenhum servidor para copiar para o inserido
+save_efile=O arquivo para copiar '$1' não é um caminho absoluto
+save_eemail=Endereço de e-mail ausente ou inválido
+
+exec_title=Copiando arquivos
+exec_files1=Copiando $1 arquivos para servidores selecionados $2 ..
+exec_files2=Copiando $1 para servidores selecionados $2 ..
+exec_under=(no diretório $1)
+exec_failed=Falha ao copiar para $1 : $2 
+exec_success=Copiou os seguintes arquivos para $1  :
+exec_made=Criou os seguintes diretórios em $1  :
+exec_nohosts=Nenhum host selecionado para execução ou grupos selecionados não contêm nenhum host utilizável.
+exec_nothing=Nenhum arquivo foi copiado com sucesso para $1.
+exec_not=Falha ao copiar os seguintes arquivos para $1  :
+exec_cmd=Saída do comando pós-cópia em $1  :
+exec_before=Saída do comando antes da cópia em $1  :
+exec_on=Falha ao executar no $1 : $2 
+
+log_create=Cópia criada para $1 a $2 servidores
+log_modify=Cópia modificada para $1 a $2 servidores
+log_delete=Cópia excluída para $1 a $2 servidores
+log_exec=$1 a $2 servidores copiados
+log_deletes=$1 cópias excluídas
+
+email_subject_succeeded=A cópia de cluster de $1 foi bem-sucedida
+email_subject_failed=Falha na cópia do cluster de $1 
+
+delete_err=Falha ao excluir cópias
+delete_enone=Nenhum selecionado

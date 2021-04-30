@@ -1,0 +1,129 @@
+index_title=„Procmail“ pašto filtras
+index_procmail=„Procmail“ pašto filtras
+index_desc_other=Žemiau $1 esantys „procmail“ veiksmai bus taikomi <b>visiems</b> el. Laiškams, pristatomiems jūsų sistemos vartotojams. Tačiau jie bus naudojami tik įdiegus „Procmail“ ir jūsų pašto serveris sukonfigūruotas jį naudoti.
+index_mserr=Įspėjimas - nebus naudojamos jokios žemiau apibrėžtos taisyklės : $1 
+index_action=Veiksmai, kurių reikia imtis
+index_conds=Sąlygos
+index_move=Judėk
+index_ba=Papildyti
+index_act6=Nustatykite kintamąjį $1 
+index_act5=Vykdykite sąlyginį bloką
+index_act4=Kanalas programai $1 
+index_act3=Pirmyn į $1 
+index_act2=Rašykite $1 maildir
+index_act1=Parašykite į $1 aplanką MH
+index_act0=Pridėti prie failo $1 
+index_noconds=Visada atlikite veiksmus
+index_re=Atitikti $1 pakartotinį scenarijų
+index_nre=Neatitikite $1 pakartojimo
+index_shell=Įvertinkite komandą $1 
+index_exit=Išėjimo iš komandos $1 būsena
+index_lt=Dydis yra < $1 
+index_gt=Dydis yra> $1 
+index_add=Pridėkite naują filtro veiksmą.
+index_eadd=Pridėkite naują kintamojo nustatymą.
+index_badd=Pridėkite naują sąlyginį bloką.
+index_iadd=Pridėkite naują įtraukimo failą.
+index_none=Dar nebuvo sukonfigūruoti jokie „Procmail“ veiksmai.
+index_return=veiksmų sąrašas
+index_env=Nustatykite kintamąjį $1 iki $2 
+index_include=Procesas apima failą $1 
+index_man=Rankiniu būdu redaguoti konfigūraciją
+index_mandesc=Tiesiogiai redaguokite pirminį „Procmail“ konfigūracijos failą, kad sukurtumėte savo taisykles, kintamuosius ir blokus.
+index_ecmd=„Procmail“ programa $1 nerasta jūsų sistemoje. Arba jis neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_delete=Ištrinti pasirinktus veiksmus
+
+edit_title2=Redaguoti veiksmą
+edit_title1=Sukurti veiksmą
+edit_header1=Išsami pristatymo veiksmo informacija
+edit_header2=Veiksmo sąlygos
+edit_action=Pristatymo režimas
+edit_block=„Procmail“ kodas vykdomas
+edit_amode_0=Pridėkite prie bylos
+edit_amode_1=Parašykite į MH aplanką
+edit_amode_2=Rašykite maildir
+edit_amode_3=Pirmyn į adresą
+edit_amode_4=Pateikti į programą
+edit_amode_6=Nustatyti kintamąjį
+edit_flag_H=Taikykite sąlygas antraštėms
+edit_flag_B=Taikykite kūno sąlygas
+edit_flag_D=Didžiųjų ir mažųjų raidžių atitikimas
+edit_flag_h=Tiekkite antraštes į paskirties vietą
+edit_flag_b=Maitinkite kūną į paskirties vietą
+edit_flag_c=Tęskite apdorojimą, net jei sąlygos sutampa
+edit_flag_w=Palaukite, kol baigsis veiksmų programa, ir patikrinkite rezultatą
+edit_flag_W=Palaukite, kol baigsis veiksmų programa, bet nepaisykite rezultato
+edit_flag_i=Nepaisykite pristatymo klaidų
+edit_flag_r=Išrašykite paštą neapdorotu režimu
+edit_flag_f=Veiksmų programa yra filtras
+edit_lockfile=Pristatymo užrakto failas
+edit_cmode_re=Atitinka taisyklingą išraišką
+edit_cmode_nre=Neatitinka įprastos išraiškos
+edit_cmode_shell=Įvertinkite komandos išvestį
+edit_cmode_exit=Patikrinkite komandos išėjimo būseną
+edit_cmode_lt=Paštas yra mažesnis nei
+edit_cmode_gt=Paštas yra didesnis nei
+edit_conddesc=Norint atlikti aukščiau nurodytą veiksmą, visos toliau nurodytos sąlygos turi atitikti. Jei nėra sąlygų, veiksmas visada bus vykdomas.
+edit_none=Nė vienas
+edit_lock=Konkreti byla
+edit_ctype=Sąlygos tipas
+edit_cvalue=Reguliari išraiška ar komanda
+
+save_err=Nepavyko išsaugoti veiksmo
+save_eaction_0=Trūksta failo, kurį būtų galima pridėti
+save_eaction_1=Trūksta MH aplanko, į kurį būtų galima rašyti
+save_eaction_2=Trūksta maildiro, kuriam rašyti
+save_eaction_3=Trūksta adreso, kurį persiųsti
+save_eaction_4=Trūksta programos, į kurią patektų
+save_eaction_6=Trūksta nustatyto kintamojo
+save_eactionvar=Nustatomas kintamasis turi būti įvestas taip, kaip NAME = reikšmė
+save_elockfile=Trūksta užrakto failo pavadinimo
+save_esize=Trūksta arba netinkamas $1 būklės laiškas
+save_ere=Trūksta $1 sąlyginės išraiškos
+save_eshell=Trūksta komandos $1 sąlygai
+
+env_title1=Sukurti kintamąjį
+env_title2=Redaguoti kintamąjį
+env_header=Procmail aplinkos kintamasis
+env_name=Kintamasis vardas
+env_value=Vertė
+env_err=Nepavyko išsaugoti kintamojo
+env_ename=Trūksta arba netinkamas kintamojo vardas
+
+inc_title1=Pridėti įtraukimo failą
+inc_title2=Redaguoti įtraukimo failą
+inc_header=Įtrauktas procmail taisyklių failas
+inc_inc=Įtrauktas failas
+inc_einc=Neįtrauktas failas
+
+config_eline=Nežinoma eilutė $1 $2 : $3 
+
+manual_title=Redaguoti konfigūraciją
+manual_desc=Šis puslapis gali būti naudojamas rankiniu būdu redaguoti „Procmail“ konfigūracijos failą $1. Būkite atsargūs, nes sintaksės patikrinimas nebus atliekamas.
+manual_edata=Jūsų naršyklė nepateikė jokių duomenų!
+
+log_create_rec=Sukurtas $1 receptas
+log_delete_rec=Ištrintas receptas iš $1 
+log_modify_rec=Pakeistas receptas į $1 
+log_delete_recs=Ištrinti $1 receptai
+log_act5=vykdyti sąlyginį bloką
+log_act4=tiekti progam $1 
+log_act3=persiųsti $1 
+log_act2=rašyti $1 maildir
+log_act1=rašykite į $1 aplanką MH
+log_act0=pridėti failą $1 
+log_create_env=Sukurtas aplinkos kintamasis $1 
+log_modify_env=Modifikuotas aplinkos kintamasis $1 
+log_delete_env=Ištrintas aplinkos kintamasis $1 
+log_create_inc=Sukurtas failas $1 
+log_modify_inc=Modifikuotas apima failą $1 
+log_delete_inc=Ištrintas apima failą $1 
+log_manual=Rankiniu būdu redaguojama konfigūracija
+log_up=Perkėlė įrašą aukštyn
+log_down=Įrašas perkeltas žemyn
+
+delete_err=Nepavyko ištrinti veiksmų
+delete_enone=Nepasirinkta
+
+check_epostfix=„Procmail“ neįgalintas jūsų „Postfix“ konfigūracijoje. Konfigūracijos faile <tt>$2</tt> turi būti <tt>$1</tt> parinktis, nustatyta kaip <tt>$3</tt>.
+check_esendmail=„Sendmail“ nėra sukonfigūruotas naudoti „Procmail“ vietiniam pristatymui. Tai galima sukonfigūruoti „Webmin“ <a href='$1'> „Sendmail Mail Server“ modulyje.

@@ -1,0 +1,71 @@
+<header> TCP-wrappers </header>
+<h3> Patronen </h3> De taal voor toegangscontrole implementeert de volgende patronen: <ul>
+    <li> Een tekenreeks die begint met een &#39;.&#39; karakter. Een hostnaam komt overeen als de laatste componenten van de naam overeenkomen met het opgegeven patroon. Het patroon &#39;.tue.nl&#39; komt bijvoorbeeld overeen met de hostnaam &#39;wzv.win.tue.nl&#39;. </li>
+    <li> Een tekenreeks die eindigt op een &#39;.&#39; karakter. Een hostadres komt overeen als de eerste numerieke velden overeenkomen met de opgegeven tekenreeks. Bijvoorbeeld het patroon &#39;131.155&#39;. komt overeen met het adres van (bijna) elke host op het netwerk van de TU Eindhoven (131.155.xx). </li>
+    <li> Een tekenreeks die begint met een &#39;@&#39;-teken wordt behandeld als een NIS-netwerknaam (voorheen YP). Een hostnaam komt overeen als het een hostlid is van de opgegeven netgroep. Netgroepovereenkomsten worden niet ondersteund voor namen van daemon-processen of voor gebruikersnamen van clients. </li>
+    <li> Een uitdrukking met de vorm &#39;nnnn / mmmm&#39; wordt geïnterpreteerd als een &#39;net/mask&#39;-paar. Een IPv4-hostadres komt overeen als &#39;net&#39; gelijk is aan de bitsgewijze EN van het adres en het &#39;masker&#39;. Het net/maskerpatroon &#39;131.155.72.0/255.255.254.0&#39; komt bijvoorbeeld overeen met elk adres in het bereik &#39;131.155.72.0&#39; tot en met &#39;131.155.73.255&#39;. </li>
+    <li> Een uitdrukking met de vorm &#39;[n: n: n: n: n: n: n: n] / m&#39; wordt geïnterpreteerd als een &#39;[net]/prefixlen&#39;-paar. Een IPv6-hostadres komt overeen als &#39;prefixlen&#39;-bits van&#39; net &#39;gelijk zijn aan de&#39; prefixlen&#39;-bits van het adres. Het patroon [net]/prefixlen &#39;[3ffe: 505: 2: 1 ::]/64&#39; komt bijvoorbeeld overeen met elk adres in het bereik &#39;3ffe: 505: 2: 1:&#39;? door &#39;3ffe: 505: 2: 1: ffff: ffff: ffff: ffff&#39;. </li>
+    <li> Een tekenreeks die begint met een &#39;/&#39; teken, wordt behandeld als een bestandsnaam. Een hostnaam of adres komt overeen als het overeenkomt met een hostnaam of adrespatroon in het genoemde bestand. Het bestandsformaat is nul of meer regels met nul of meer hostnaam- of adrespatronen gescheiden door witruimte. Een bestandsnaampatroon kan overal worden gebruikt waar een hostnaam of adrespatroon kan worden gebruikt. </li>
+    <li> Wildcards &#39;*&#39; en &#39;?&#39; kan worden gebruikt om hostnamen of IP-adressen te matchen. Deze methode van matchen kan niet worden gebruikt in combinatie met &#39;net/mask&#39;-matching, hostnaam-matching beginnend met&#39;. &#39; of IP-adresovereenkomst die eindigt op &#39;.&#39;. </li>
+</ul>
+<h3> Wildcards </h3> De taal voor toegangscontrole ondersteunt expliciete jokertekens: <table border>
+    <tr>
+        <td> <b>ALLEMAAL</b> </td>
+        <td> De universele wildcard, komt altijd overeen. </td>
+    </tr>
+    <tr>
+        <td> <b>LOKAAL</b> </td>
+        <td> Komt overeen met elke host wiens naam geen puntteken bevat. </td>
+    </tr>
+    <tr>
+        <td> <b>ONBEKEND</b> </td>
+        <td> Komt overeen met elke gebruiker wiens naam onbekend is, en komt overeen met elke host wiens naam of adres onbekend is. Dit patroon moet met zorg worden gebruikt: hostnamen zijn mogelijk niet beschikbaar vanwege tijdelijke naamserverproblemen. Een netwerkadres is niet beschikbaar wanneer de software niet kan achterhalen met welk type netwerk het communiceert. </td>
+    </tr>
+    <tr>
+        <td> <b>BEKEND</b> </td>
+        <td> Komt overeen met elke gebruiker wiens naam bekend is, en komt overeen met elke host wiens naam en adres bekend zijn. Dit patroon moet met zorg worden gebruikt: hostnamen zijn mogelijk niet beschikbaar vanwege tijdelijke naamserverproblemen. Een netwerkadres is niet beschikbaar wanneer de software niet kan achterhalen met welk type netwerk het communiceert. </td>
+    </tr>
+    <tr>
+        <td> <b>PARANOÏDE</b> </td>
+        <td> Komt overeen met elke host wiens naam niet overeenkomt met zijn adres. Wanneer tcpd is gebouwd met -DPARANOID (standaardmodus), worden verzoeken van dergelijke clients verwijderd, zelfs voordat naar de toegangscontroletabellen wordt gekeken. Bouw zonder -DPARANOID als u meer controle wilt over dergelijke verzoeken. </td>
+    </tr>
+</table>
+<h3> Exploitanten </h3> <b>BEHALVE</b> Beoogd gebruik heeft de vorm: &#39;lijst_1 BEHALVE lijst_2&#39;; deze constructie komt overeen met alles dat overeenkomt met list_1, tenzij het overeenkomt met list_2. De BEHALVE-operator kan worden gebruikt in daemon_lists en in client_lists. De operator BEHALVE kan worden genest: als de controletaal het gebruik van haakjes toestaat, zou &#39;a BEHALVE b BEHALVE c&#39; worden geparseerd als &#39;(a BEHALVE (b BEHALVE c))&#39;. <h3> Shell-opdrachten </h3> Als de eerst overeenkomende regel voor toegangsbeheer een shell-opdracht bevat, wordt die opdracht onderworpen aan% <letter> vervangingen (zie volgende sectie). Het resultaat wordt uitgevoerd door een /bin/sh-kindproces met standaardinvoer, uitvoer en fout verbonden met /dev/null. Geef aan het einde van de opdracht een &#39;&amp;&#39; op als u niet wilt wachten totdat deze is voltooid. <p> Shell-opdrachten mogen niet afhankelijk zijn van de PATH-instelling van de inetd. In plaats daarvan moeten ze absolute padnamen gebruiken, of ze moeten beginnen met een expliciete PATH = what- ever-statement. <h3> % Uitbreidingen </h3> De volgende uitbreidingen zijn beschikbaar binnen shell-opdrachten: <table>
+            <tr>
+                <td> %a (%A) </td>
+                <td> Het client (server) hostadres. </td>
+            </tr>
+            <tr>
+                <td> %c </td>
+                <td> Klantinformatie: gebruiker @ host, gebruiker @ adres, een hostnaam of alleen een adres, afhankelijk van hoeveel informatie er beschikbaar is. </td>
+            </tr>
+            <tr>
+                <td> %d </td>
+                <td> De daemon procesnaam (argv[0] waarde). </td>
+            </tr>
+            <tr>
+                <td> %h (%H) </td>
+                <td> De hostnaam of het adres van de client (server), als de hostnaam niet beschikbaar is. </td>
+            </tr>
+            <tr>
+                <td> %n (%N) </td>
+                <td> De client (server) hostnaam (of &quot;onbekend&quot; of &quot;paranoïde&quot;). </td>
+            </tr>
+            <tr>
+                <td> %p </td>
+                <td> De daemon-proces-id. </td>
+            </tr>
+            <tr>
+                <td> %s </td>
+                <td> Serverinformatie: daemon@host, daemon @ -adres of alleen een daemon-naam, afhankelijk van hoeveel informatie beschikbaar is. </td>
+            </tr>
+            <tr>
+                <td> %u </td>
+                <td> De gebruikersnaam van de klant (of &quot;onbekend&quot;). </td>
+            </tr>
+            <tr>
+                <td> %% </td>
+                <td> Breidt uit tot één &#39;%? karakter. </td>
+            </tr>
+        </table> Tekens in%uitbreidingen die de shell kunnen verwarren, worden vervangen door onderstrepingstekens.
+        <hr />

@@ -1,0 +1,2 @@
+name_es=Cortafuegos
+longdesc_es=Configure un firewall de Linux usando iptables. Permite la edición de todas las tablas, cadenas, reglas y opciones.

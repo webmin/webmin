@@ -1,0 +1,3 @@
+name_zh=隧道
+longdesc_zh=通过Webmin服务器通过隧道连接到另一个HTTP服务器。
+desc_zh=HTTP隧道

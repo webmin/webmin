@@ -1,0 +1,14 @@
+index_nosearch=Nessun server corrisponde alla tua ricerca.
+index_search=Mostra corrispondenza server:
+index_ok=Ricerca
+
+edit_portnone=Nessuno impostato
+edit_checkssl=Controlla il certificato SSL remoto?
+
+save_eport2=È necessario fornire una porta se si seleziona un tipo di collegamento con un accesso
+
+find_already2=Trovato host server noto su $1 
+
+delete_title=Elimina server
+delete_rusure=Sei sicuro di voler rimuovere i $1 server selezionati?
+delete_confirm=Cancella ora

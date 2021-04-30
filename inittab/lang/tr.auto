@@ -1,0 +1,8 @@
+inittab_kbrequest=Özel tuş kombinasyonu
+index_delete=Seçilen İşlemleri Sil
+inittab_none2=Sisteminizde hiçbir önyükleme işlemi bulunamadı. Bu muhtemelen SysV init yapılandırma dosyasını kullanmadığını gösterir.
+
+log_deletes=$1 başlatma işlemi silindi
+
+delete_err=İşlemler silinemedi
+delete_enone=Hiçbiri seçilmedi

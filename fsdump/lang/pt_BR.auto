@@ -1,0 +1,8 @@
+dump_fok2=Relatar falha se o comando falhar
+dump_aok=Comando Ignorar mesmo se o backup falhar
+dump_gzip3=Sim, com XZ
+dump_ignoreread=Ignorar erros de leitura nos arquivos?
+
+edit_title3=Backup de clone
+edit_when=Quando fazer backup
+edit_clone=Clone

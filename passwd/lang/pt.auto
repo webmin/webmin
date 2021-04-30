@@ -1,0 +1,46 @@
+index_title=Alterar senhas
+index_header=Selecione um usuário para alterar sua senha
+index_return=Lista de usuários
+index_user=Altere a senha do usuário:
+index_euseradmin=Este módulo não pode ser usado porque o módulo Usuários e Grupos não está instalado ou não é suportado no seu sistema.
+index_toomany=Existem muitos usuários para exibir no seu sistema. Digite abaixo o nome do usuário cuja senha você deseja alterar.
+index_none=Você não tem acesso a nenhum usuário para alterar suas senhas.
+
+passwd_title=Mudar senha
+passwd_header=Alterando a senha do usuário Unix
+passwd_for=Alterando a senha para
+passwd_old=Senha Antiga
+passwd_new=Nova senha
+passwd_repeat=Nova senha (novamente)
+passwd_expire=Forçar o usuário a alterar a senha no próximo login?
+passwd_others=Alterar senha em outros módulos?
+passwd_change=mudança
+passwd_reset=Forma limpa
+passwd_err=Falha ao alterar a senha
+passwd_ecannot=Você não tem permissão para alterar a senha deste usuário
+passwd_euser=Usuário não existe
+passwd_eold=Senha antiga incorreta
+passwd_erepeat=Novas senhas não são as mesmas
+passwd_ecmd=$1 falhou : $2 
+passwd_ok=A senha do usuário $1 foi alterada com sucesso. Se este for seu usuário atual do Webmin, você poderá ser forçado a fazer login novamente.
+passwd_ok2=A senha do usuário $1 foi alterada com sucesso.
+
+log_passwd=Senha alterada para o usuário $1 
+
+acl_repeat=Precisa digitar a nova senha novamente?
+acl_self=Sempre permitir que a própria senha seja alterada?
+acl_old=É necessário inserir a senha antiga?
+acl_old_this=Somente para outros usuários
+acl_others=Alterar senha em outros módulos?
+acl_opt=Opcional
+acl_users=Usuários cujas senhas podem ser alteradas
+acl_mode0=Todos os usuários
+acl_mode1=Somente usuários
+acl_mode2=Todos, exceto usuários
+acl_mode3=Somente este usuário
+acl_mode4=Usuários com UID no intervalo
+acl_mode5=Usuários com grupo principal
+acl_mode6=Usuários correspondentes
+acl_expire=Pode forçar os usuários a alterar a senha no próximo login?
+acl_sec=Incluir grupos secundários?
+acl_notusers=Exceto para usuários

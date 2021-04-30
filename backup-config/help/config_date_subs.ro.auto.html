@@ -1,0 +1,126 @@
+<header> Înlocuiește strftime destinații de rezervă? </header> Dacă această opțiune este setată pe <b>Da</b> , coduri precum%d,%m,%Y și%u pot fi utilizate în numele fișierului destinație de rezervă. Acestea vor fi înlocuite cu ziua, luna anului și ziua săptămânii, respectiv când se efectuează backup-ul. Acest lucru este util dacă doriți să salvați o copie de rezervă diferită în fiecare zi, astfel încât să puteți reveni un sistem la o dată anterioară. <p> Unele dintre celelalte coduri care pot fi utilizate sunt: <br><pre> <font size=-1>
+ %a Numele săptămânii prescurtate în funcție de cur
+        închiriere local.
+
+ %A Numele complet al săptămânii în funcție de curent
+        localizare.
+
+ %b Numele lunii prescurtate în funcție de curent
+        localizare.
+
+ %B Numele lunii complete în funcție de curent
+        localizare.
+
+ %c Data și ora preferată pentru reprezentarea
+        localizare curentă
+
+ %C Numărul secolului (an / 100) ca număr întreg de 2 cifre.
+
+ %d Ziua lunii ca număr zecimal (interval 01
+        la 31).
+
+ %e Ca%d, ziua lunii ca număr zecimal,
+        dar un zero conducător este înlocuit cu un spațiu.
+
+ %E modificator: utilizați un format alternativ, a se vedea mai jos.
+
+ %G ISO 8601 anul cu secolul ca număr zecimal.
+        Anul format din 4 cifre corespunzător săptămânii ISO numer
+        ber (vezi%V). Acesta are același format și aceeași valoare
+        ca%y, cu excepția cazului în care numărul săptămânii ISO aparține
+        față de anul precedent sau următorul, se folosește anul respectiv
+        in schimb.
+
+ %g Ca%G, dar fără secol, adică cu două cifre
+        anul (00-99).
+
+ %h Echivalent cu%b.
+
+ %H Ora ca număr zecimal folosind un ceas de 24 de ore
+        (intervalul 00-23).
+
+ %I Ora ca număr zecimal folosind un ceas de 12 ore
+        (intervalul 01-12).
+
+ %j Ziua anului ca număr zecimal (interval 001
+        la 366).
+
+ %k Ora (ceas de 24 de ore) ca număr zecimal (interval
+        0 la 23); cifrele unice sunt precedate de un blank.
+        (Vezi și%H.)
+
+ %l Ora (ceas de 12 ore) ca număr zecimal (interval
+        1 până la 12); cifrele unice sunt precedate de un blank.
+        (Vezi și%I.)
+
+ %m Luna ca număr zecimal (intervalul 01-12).
+
+ %M Minutul ca număr zecimal (între 00 și 59).
+
+ %n Un caracter newline.
+
+ %O modificator: utilizați un format alternativ, a se vedea mai jos.
+
+ %p Fie „AM”, fie „PM” în funcție de timpul dat
+        valoare sau șirurile corespunzătoare pentru curent
+        localizare. După-amiaza este tratat ca `pm &#39;și ca miezul nopții
+        `Sunt“.
+
+ %P Ca%p, dar cu litere mici: `am &#39;sau` pm&#39; sau o corecție
+        șir de spondare pentru localul curent.
+
+ %r Timpul în notare am sau pm. În POSIX
+        locale este echivalent cu `%I:%M:%S%p &#39;.
+
+ %R Timpul în notare de 24 de ore (%H:%M). Pentru o
+        versiunea incluzând secundele, a se vedea%T mai jos.
+
+ %s Numărul de secunde de la Epoch, adică de la
+        1970-01-01 00:00:00 UTC.
+
+ %S Al doilea ca număr zecimal (intervalul 00 - 61).
+
+ %t Un caracter tab.
+
+ %T Timpul în notare de 24 de ore (%H:%M:%S).
+
+ %u Ziua săptămânii sub formă de zecimală, în intervalul 1 până la 7,
+        Luni fiind 1. A se vedea, de asemenea,%w.
+
+ %U Numărul săptămânii anului curent ca zecimal
+        numărul, intervalul 00-53, începând cu primul
+        Duminică ca prima zi a săptămânii 01. A se vedea, de asemenea,%V și
+        %W.
+
+ %V Numărul ISO 8601: 1988 din anul curent
+        ca număr zecimal, între 01 și 53, în cazul în care săptămâna 1
+        este prima săptămână care are cel puțin 4 zile în
+        anul curent, și luni, ca primă zi din
+        saptamana. A se vedea, de asemenea,%U și%W.
+
+ %w Ziua săptămânii sub formă de zecimală, între 0 și 6,
+        Duminică fiind 0. Vezi și%u.
+
+ %W Numărul săptămânii anului curent ca zecimal
+        numărul, intervalul 00-53, începând cu primul
+        Luni ca prima zi a săptămânii 01.
+
+ %x Reprezentarea datei preferate pentru curent
+        locale fără timp.
+
+ %X Reprezentarea timpului preferat pentru curent
+        locale fără data.
+
+ %y Anul ca număr zecimal fără un secol
+        (intervalul 00-99).
+
+ %Y Anul ca număr zecimal, inclusiv secolul.
+
+ %z Fus orar ca o oră compensată de GMT. Obligat să
+        emite date conforme cu RFC822 (folosind „%a,%d%b%Y
+        %H:%M:%S%z &quot;).
+
+ %Z Fus orar, nume sau prescurtare.
+
+ %%Un caracter literal „%”.
+</font> </pre><footer>

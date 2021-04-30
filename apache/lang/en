@@ -81,6 +81,7 @@ auth_return=access control
 default_serv=default server
 bytes=bytes
 eafter=Configuration verification failed : $1 Changes have not been saved.
+enewline=Invalid character in value
 
 global_ecannot=You are not allowed to edit global options
 global_mime=Global MIME types list
@@ -100,6 +101,7 @@ mime_err=Failed to save MIME type
 mime_etype='$1' is not a valid MIME type
 
 virt_ecannot=You cannot edit this virtual server
+virt_eprotocol=You must select at least one usable SSL/TLS protocol version
 virt_title=Virtual Server Options
 virt_header=For $1
 virt_opts=Virtual Server Details

@@ -14,7 +14,7 @@ local $ucproduct = ucfirst($product);
 
 if ($init_mode eq "osx") {
 	# Remove from hostconfig file
-	open(LOCAL, $config{'hostconfig'});
+	open(LOCAL, "<".$config{'hostconfig'});
 	@local = <LOCAL>;
 	close(LOCAL);
 	$start = "WEBMIN=-";
@@ -32,7 +32,7 @@ if ($init_mode eq "osx") {
 	}
 elsif ($init_mode eq "local") {
 	# Remove from boot time rc script
-	open(LOCAL, $config{'local_script'});
+	open(LOCAL, "<".$config{'local_script'});
 	@local = <LOCAL>;
 	close(LOCAL);
 	$start = "$config_directory/start";

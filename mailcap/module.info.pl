@@ -1,2 +1,2 @@
-desc_pl=Typy programów MIME
-longdesc_pl=Edytuj plik /etc/mailcap, który zawiera mapê typów MIME i programów do ich obs³ugi
+desc_pl=Typy programÃ³w MIME
+longdesc_pl=Edytuj plik /etc/mailcap, ktÃ³ry zawiera mapÄ™ typÃ³w MIME i programÃ³w do ich obsÅ‚ugi

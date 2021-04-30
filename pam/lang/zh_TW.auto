@@ -1,0 +1,53 @@
+desc_su-l=切換用戶（登錄）
+desc_usermin=Usermin Web服務器
+desc_cupsys=CUPS打印
+desc_libcupsys2=CUPS打印
+desc_ssh=SSH登錄
+desc_proftpd=ProFTPd文件傳輸服務器
+desc_qpopper=POP郵件服務器
+desc_dovecot=POP / IMAP郵件服務器
+desc_cron=預定命令守護程序
+desc_runuser=以用戶身份運行命令
+desc_runuser-l=以用戶身份運行命令（登錄）
+desc_postgresql=PostgreSQL數據庫
+desc_crond=Cron守護程序
+desc_smtp=SMTP驗證
+desc_smtp.postfix=Postfix SMTP驗證
+desc_smtp.sendmail=Sendmail SMTP驗證
+desc_config-util=配置實用程序
+desc_newrole=SELinux的新角色
+desc_radius=RADIUS撥號登錄
+desc_pptpconfig=點對點隧道協議
+desc_atd=預定命令守護程序
+desc_kcheckpass=KDE密碼檢查器
+desc_common-account=普通賬戶驗證
+desc_common-auth=普通認證
+desc_common-password=普通密碼修改
+desc_common-session=普通會話設置
+
+edit_file=配置文件
+edit_addinc=添加包含的服務
+edit_inc=包括服務 $1
+edit_iheader=隨附的PAM服務
+
+pam_foreground.so=控制台設定
+
+unix_nullok_secure=在安全的TTY上接受空密碼嗎？
+unix_min=最小密碼長度
+unix_nomin=沒有
+unix_max=最大密碼長度
+unix_nomax=沒有限制
+unix_obscure=禁止使用簡單密碼？
+unix_emin=最小密碼長度缺失或無效
+unix_emax=最大密碼長度丟失或無效
+
+log_inc_create=已為服務 $2添加包含 $1
+log_inc_modify=已為服務 $2修改包含 $1
+log_inc_delete=已刪除服務 $2的包含 $1
+log_incs=更新了服務 $1的包含項
+
+inc_edit=編輯包含的服務
+inc_create=創建包含的服務
+inc_header=隨附的PAM服務詳細信息
+inc_inc=隨附的PAM服務
+inc_err=無法保存包含的服務

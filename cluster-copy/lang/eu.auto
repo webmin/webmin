@@ -1,0 +1,67 @@
+index_title=Klusterra kopiatu fitxategiak
+index_add=Sortu fitxategi programatuaren kopia berria.
+index_none=Ez da fitxategiaren kopiarik zehaztu.
+index_servers=Kopiatu zerbitzarietan
+index_return=kluster kopien zerrenda
+index_more=$1 gehiago ..
+index_run=Korrika orain ..
+index_files=Kopiatzeko fitxategiak
+index_sched=Programatutako?
+index_when=Bai, $1 
+index_act=Ekintza
+index_exec=Exekuzio
+index_delete=Ezabatu hautatutako kopiak
+
+edit_title=Editatu Kluster kopia
+create_title=Sortu Kluster kopia
+edit_header=Klusterraren kopia xehetasunak
+edit_files=Kopiatzeko fitxategiak
+edit_dest=Helmuga direktorioa
+edit_cmd=Kopiatu ondoren exekutatzeko agindua
+edit_before=Kopiatu aurretik exekutatzeko agindua
+edit_remote=Urruneko zerbitzarietan
+edit_dmode0=Kopiatu bide osoa direktorioaren azpian
+edit_dmode1=Kopiatu direktorio honetara
+edit_servers=Kopiatu zerbitzarietan
+edit_group=$1 eko kideak
+edit_this=zerbitzari hau
+edit_all=&lt;Ostalari guztiak&gt;
+edit_sched=Egitaraua kopiatu?
+edit_schedyes=Bai, behean hautatutako uneetan ..
+edit_run=Kopiatu orain
+edit_return=kluster kopia
+edit_email=Posta elektronikoko irteera
+edit_none=Inork
+
+save_err=Ezin izan da cluster cron lana gordetzean
+save_efiles=Ez da sartu kopiatzeko fitxategirik
+save_edest=Helmuga direktorio falta
+save_eservers=Ez da sartuko kopiatzeko zerbitzaririk
+save_efile="$1" kopiatzeko fitxategia ez da bide absolutua
+save_eemail=Helbide elektroniko falta edo baliogabea
+
+exec_title=Fitxategiak kopiatzea
+exec_files1=$1 fitxategiak hautatutako $2 zerbitzarietan kopiatzea.
+exec_files2=$1 hautatutako zerbitzarietan $2 kopiatzea.
+exec_under=($1 direktorio azpian)
+exec_failed=Ezin izan da $1 : $2 kopiatu
+exec_success=Kopiatu hurrengo fitxategiak $1 -en :
+exec_made=Direktorio hauek sortu ditu $1 -en :
+exec_nohosts=Ez dago exekutatzeko hautatutako ostalarik, edo hautatutako taldeek ez dute ostalari erabilgarririk.
+exec_nothing=Ez da fitxategirik kopiatu $1 era.
+exec_not=Ezin izan da fitxategi hauek kopiatu $1 -en :
+exec_cmd=Kopiatu osteko komandoaren irteera $1 -en :
+exec_before=Kopiatu aurretik, $1 komandoaren irteera :
+exec_on=Ezin izan da exekutatu $1 : $2 an
+
+log_create=Kopia sortu da $1 eta $2 zerbitzarientzako
+log_modify=Kopiatu aldatu $1 eta $2 zerbitzarientzako
+log_delete=Kopiatu da $1 eta $2 zerbitzarien kopia
+log_exec=$1 eta $2 zerbitzariak kopiatu dira
+log_deletes=$1 ale ezabatu dira
+
+email_subject_succeeded=$1 eko kluster kopiak arrakasta du
+email_subject_failed=$1 eko kluster kopiak huts egin du
+
+delete_err=Ezin izan dira kopiak ezabatu
+delete_enone=Ez da hautatu

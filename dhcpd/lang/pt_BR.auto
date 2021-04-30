@@ -1,0 +1,10 @@
+listl_err=Falha ao excluir concessões
+listl_enone=Nenhum selecionado
+
+listl_refresh=Atualizar lista
+
+eopt_domsearch=Domínios DNS a serem pesquisados
+
+acl_zones=Pode editar zonas DNS dinâmicas?
+
+zone_ecannot=Você não tem permissão para editar zonas DNS

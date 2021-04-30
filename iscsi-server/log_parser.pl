@@ -1,7 +1,7 @@
 # log_parser.pl
 # Functions for parsing this module's logs
 
-do 'iscsi-server-lib.pl';
+require 'iscsi-server-lib.pl';
 
 # parse_webmin_log(user, script, action, type, object, &params)
 # Converts logged information from this module into human-readable form

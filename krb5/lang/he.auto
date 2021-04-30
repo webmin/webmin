@@ -1,0 +1,17 @@
+index_title=תצורת Kerberos5
+index_econf=קובץ התצורה Kerberos5 $1 לא נמצא במערכת שלך. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שגויה.
+
+logging=קבצי יומן
+default_log=קובץ יומן ברירת מחדל
+kdc_log=קובץ יומן KDC
+admin_log=קובץ יומן שרת מנהל
+
+libdefaults=תצורת ברירת מחדל
+dns_kdc=השתמש ב- DNS כדי לחפש KDC
+default_realm=תחום
+domain=שם דומיין
+default_kdc=KDC
+default_admin=שרת מנהל
+default_domain=שם ברירת המחדל של ברירת המחדל
+
+save=עדכן את התצורה

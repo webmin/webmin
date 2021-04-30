@@ -1,0 +1,3 @@
+desc_zh=受保护的网络目录
+name_zh=HTAccess文件
+longdesc_zh=创建.htaccess和htpasswd文件以保护Web可用目录。

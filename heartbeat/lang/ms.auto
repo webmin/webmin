@@ -1,0 +1,103 @@
+index_title=Monitor jantung
+index_return=monitor denyutan jantung
+index_edir=Direktori konfigurasi denyutan jantung $1 tidak wujud. Mungkin Heartbeat tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
+index_start=Mula Memantau Rak Jantung
+index_startmsg=Klik butang ini untuk memulakan proses pemantauan Heartbeat. Ini akan membolehkan failover perkhidmatan automatik pada sistem anda dengan konfigurasi semasa.
+index_apply=Terapkan Perubahan
+index_applymsg=Klik butang ini untuk memaksa menjalankan proses pemantauan Heartbeat untuk memuatkan semula konfigurasi semasa.
+index_eha_cf=Fail konfigurasi jantung $1 tidak ditemukan pada sistem anda. Mungkin ia belum disalin ke tempatnya, atau konfigurasi modul <a href='$2'></a> tidak betul.
+index_eharesources=Fail sumber $1 tidak ditemui pada sistem anda. Mungkin ia belum disalin ke tempatnya, atau konfigurasi modul <a href='$2'></a> tidak betul.
+index_eauthkeys=Fail kekunci pengesahan $1 tidak dijumpai pada sistem anda. Mungkin ia belum disalin ke tempatnya, atau konfigurasi modul <a href='$2'></a> tidak betul.
+index_ereq_resource_cmd=Skrip untuk meminta sumber dari nod lain ($1) tidak dijumpai pada sistem anda. Mungkin ia belum disalin ke tempatnya, atau konfigurasi modul <a href='$2'></a> tidak betul.
+index_version=Versi degupan jantung $1 
+index_noversion=Amaran - Versi Heartbeat yang dipasang pada sistem anda tidak dapat dikesan secara automatik. Anda harus menetapkannya pada halaman konfigurasi <a href='$1'></a>.
+index_status=Status degupan jantung
+
+conf_title=Pilihan Konfigurasi
+conf_header=Pilihan konfigurasi jantung
+conf_serials=Pelabuhan denyutan jantung serial
+conf_baud=Baud rate untuk port siri
+conf_bcasts=Antara muka degupan jantung Ethernet
+conf_none=Tiada
+conf_udpport=UDP denyutan jantung
+conf_mcast=Peranti denyutan jantung pelbagai
+conf_mcastv=Peranti $1, kumpulan $2, port $3, TTL $4, gelung balik $5 
+conf_enabled=Dihidupkan
+conf_disabled=Dinyahdayakan
+conf_keepalive=Masa antara degupan jantung
+conf_nice_failback=Kelakuan gagal semula yang baik
+conf_secs=detik
+conf_deadtime=Masa sebelum nod dianggap mati
+conf_watchdog=Fail peranti pemantau
+conf_node=Hos dalam kelompok
+conf_logfile=Fail log jantung
+conf_logfacility=Kemudahan log Syslog
+conf_initdead=Masa mati awal
+conf_ok=Simpan Pilihan
+conf_err=Gagal menyimpan pilihan
+conf_ebaud=Kadar baud yang hilang atau tidak sah
+conf_ebcast=Tiada antara muka siaran denyutan jantung yang dimasukkan
+conf_ebcastif='$1' bukan antara muka siaran yang sah
+conf_eudpport=Pelabuhan denyutan jantung yang hilang atau tidak sah
+conf_ekeepalive=Masa yang hilang atau tidak sah antara degupan jantung
+conf_edeadtime=Masa tewas atau tidak sah
+conf_ewatchdog=Fail peranti pemantau hilang atau tidak wujud
+conf_enonode=Tiada tuan rumah kluster yang masuk
+conf_ethisnode=Tuan rumah $1 ini bukan pada senarai tuan rumah kumpulan
+conf_elogfile=Nama fail log hilang atau tidak sah
+conf_einitdead=Masa mati awal yang hilang atau tidak sah
+conf_einitdead2=Masa mati awal mestilah sekurang-kurangnya dua kali sebelum nod dianggap mati
+conf_emcast_dev=Peranti multicast yang hilang atau tidak sah
+conf_emcast_ip=Alamat kumpulan multicast yang hilang atau tidak sah
+conf_emcast_port=Nombor port multicast yang hilang atau tidak sah
+conf_emcast_ttl=Kehilangan atau tidak sah multicast masa untuk hidup
+conf_auto_on=$ {conf_enabled}
+conf_auto_off=$ {conf_disabled}
+conf_auto_legacy=Mod warisan
+conf_auto_=$ {default}
+
+res_title=Sumber Kluster
+res_node=Node Primer
+res_ips=Alamat IP
+res_servs=Perkhidmatan Node
+res_none=Tiada
+res_nores=Tiada sumber kluster yang ditakrifkan pada sistem anda.
+res_add=Tambah sumber kluster
+res_return=senarai sumber
+res_active=Status Sumber
+res_getserv=Dapatkan Sumber
+res_hbdown=Sentuhan jantung
+res_up=UP
+res_down=DOWN
+
+node_create=Tambah Sumber Kluster
+node_edit=Edit Sumber Kelompok
+node_header=Butiran sumber kluster
+node_node=Nod utama untuk sumber
+node_ips=Alamat IP untuk sumber
+node_ip=alamat IP
+node_cidr=Netmask CIDR
+node_broad=Alamat penyiaran
+node_servs=Perkhidmatan untuk sumber
+node_serv=Perkhidmatan
+node_args=Hujahan tambahan
+node_err=Gagal menyimpan sumber kluster
+node_enone=Nod utama yang hilang atau tidak sah
+node_eip='$1' bukan alamat IP yang sah
+node_ecidr='$1' bukan CIDR yang sah
+node_ebroad='$1' bukan alamat siaran yang sah
+
+auth_title=Kunci Pengesahan
+auth_header=Pengesahan nod kelompok
+auth_mode=Mod pengesahan
+auth_crc=CRC (Tiada keselamatan)
+auth_sha1=SHA1 dengan kata laluan
+auth_md5=MD5 dengan kata laluan
+auth_err=Gagal menyimpan kekunci pengesahan
+auth_emd5=Kata laluan MD5 hilang atau tidak sah
+auth_esha1=Kata laluan SHA1 yang hilang atau tidak sah
+
+start_err=Gagal memulakan degupan jantung
+
+apply_err=Gagal menggunakan perubahan
+apply_epid=Proses tidak lagi berjalan

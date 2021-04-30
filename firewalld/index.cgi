@@ -56,7 +56,6 @@ print "<b>$text{'index_zone'}</b> ",
 			   $_->{'name'}.($_->{'default'} ? ' (default)' : '') ]}
 		       @zones ], 1, 0, 0, 0,
 		 "onChange='form.submit()'")," ",
-      &ui_submit($text{'index_zoneok'})," &nbsp; ",
       &ui_submit($text{'index_zonedef'}, "defzone")," ",
       &ui_submit($text{'index_zonedel'}, "delzone")," &nbsp; ",
       &ui_submit($text{'index_zoneadd'}, "addzone")," ",

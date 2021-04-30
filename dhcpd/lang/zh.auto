@@ -1,0 +1,163 @@
+index_key=编辑TSIG密钥（用于验证DNS服务器的更新）
+index_dhcpdver2=DHCP服务器<tt>$1</tt>似乎不是正确的版本。 Webmin仅支持ISC DHCPD版本 $2到 $3。
+index_desc=描述
+index_buttekey=编辑TSIG密钥
+index_stop=停止服务器
+index_stopdesc=单击此按钮可停止系统上正在运行的DHCP服务器。停止后，DHCP客户端将无法请求IP地址。
+index_buttiface=编辑网络接口
+index_iface=设置启动时DHCP服务器侦听的网络接口。
+index_subtoomany=子网太多，无法显示。
+index_shatoomany=共享网络太多，无法显示。
+index_sublook2=使用地址编辑子网：
+index_shalook2=编辑共享的网络：
+index_hsttoomany=主机太多，无法显示。
+index_grptoomany=显示的群组过多。
+index_hstlook2=编辑名为：
+index_grplook2=编辑名为：
+index_gdom=组 $1
+index_match0=等于
+index_match1=包含
+index_match2=火柴
+index_dhcpd=ISC DHCPd
+index_delete=删除所选
+
+butt_leases=列表租赁
+
+esub_desc=子网描述
+esub_fopeer=故障转移对等
+
+esh_pools=共享网络的地址池
+esh_desc=共享网络说明
+
+ehost_desc=主机说明
+
+egroup_desc=团体简介
+
+listl_network=在网络 $1 / $2中
+listl_lfnotcont2=DHCPd租约文件<tt>$1</tt>不包含当前处于活动状态的任何租约。
+listl_unknown=未知
+listl_allocs=$1的IP地址可用，已分配 $2（$3％）
+listl_mode=显示模式 ：
+listl_mode_0=DHCP租约
+listl_mode_1=子网和用法
+listl_size=IP总数
+listl_used=已分配
+listl_pc=百分比
+listl_err=删除租约失败
+listl_enone=未选择
+
+listl_refresh=刷新清单
+
+restart_conftext=$2中 $1附近的行：
+
+sopt_edname='$1'不是有效的选项名称
+sopt_ednum='$1'不是有效的选项号
+sopt_edtype='$1'不是有效的选项类型
+sopt_ecval=自定义选项“$1”的值缺失
+sopt_ecip=自定义选项'$1'的值必须是IP地址
+
+ssub_invalidfopeer=不是有效的故障转移对等方
+
+plib_toffset=时间偏移
+plib_serverid=DHCP服务器标识符
+plib_unclients=允许未知的客户？
+plib_allow=允许
+plib_deny=拒绝
+plib_ignore=忽视
+plib_eexpr=DHCP配置的此部分包含表达式指令 $1，Webmin不能对其进行安全编辑。
+plib_auth_subnet=服务器对该子网具有权威性？
+plib_auth_shared-network=服务器对此共享网络具有权威性？
+plib_auth_global=服务器对所有子网都具有权威性？
+
+eopt_domsearch=要搜索的DNS域
+eopt_toffset=时间偏移
+eopt_cname=名称
+eopt_def=选项定义
+eopt_dname=选项名称
+eopt_dnum=数
+eopt_dtype=类型
+eopt_slpa=SLP目录代理IP
+eopt_slpaips=仅这些IP？
+eopt_slps=SLP服务范围
+eopt_slpsonly=仅此范围？
+
+log_stop=停止的DHCP服务器
+log_delete_subnets=已删除 $1子网和共享网络
+log_delete_hosts=已删除 $1主机和主机组
+
+keys_edit=编辑TSIG密钥
+keys_create=创建的TSIG密钥
+keys_title=DNS密钥
+keys_id=密钥ID
+keys_alg=算法
+keys_secret=秘密串
+keys_ecannot=您无权编辑DNS密钥
+keys_err=无法保存DNS密钥
+keys_ekey='$1'不是有效的密钥ID
+keys_esecret=密钥 $1的base-64编码机密丢失或无效
+
+eacl_uniqh=创建具有重复硬件地址的主机
+eacl_uniqi=创建具有重复IP地址的主机
+
+acl_zones=可以编辑动态DNS区域吗？
+acl_per_grp_acls=启用每组ACL？
+acl_per_sha_acls=启用按共享网络的ACL？
+
+iface_title=网络接口
+iface_desc=DHCP服务器只能在连接到以下所选接口之一的网络上分配IP地址。必须包括所有已定义子网的网络接口。如果未选择任何一项，则DHCP服务器将尝试自动查找一个。
+iface_listen=监听界面
+
+lookup_ehost=不存在名称，IP地址或MAC地址 $1的主机
+lookup_ehostname=没有输入主机名，IP地址或MAC地址
+lookup_egroup=不存在名称或域名为 $1的组
+lookup_egroupname=没有输入组名或域名
+lookup_esubnet=不存在具有地址或地址/网络掩码 $1的子网
+lookup_esubnetname=没有输入子网地址或地址/网络掩码
+lookup_eshared=不存在名称为 $1的共享网络
+lookup_esharedname=没有输入共享的网络名称
+
+zone_key=DNS区域
+index_addzone=添加一个新的DNS区域。
+index_zone=区
+index_nozones=尚未定义DNS区域。
+zone_crheader=创建区域
+zone_eheader=编辑区
+zone_tabhdr=区域详细
+zone_desc=区域描述（可选）
+zone_name=区域名称
+zone_primary=主要NS的IP
+zone_return=主菜单
+zone_faildel=删除区域失败
+zone_failsave=保存区域失败
+zone_tsigkey=TSIG密钥
+zone_ecannot=您无权编辑DNS区域
+
+plib_clientupdates=客户可以更新自己的记录吗？
+
+text_title=dhcpd.conf
+text_editor=文本编辑器
+text_return=主菜单
+text_undo=撤消
+text_ecannot=您无权编辑配置文件
+
+index_buttetext=手动编辑配置
+index_text=手动编辑配置文件文本
+
+stop_err=无法停止DHCP服务器
+stop_ekill=没有运行！
+
+sdelete_err=删除子网和共享网络失败
+sdelete_enone=未选择
+sdelete_title=删除子网和共享网络
+sdelete_rusure1=您确定要删除 $1所选子网和 $2共享网络吗？网络中的任何其他子网或其他对象也将丢失。
+sdelete_rusure2=您确定要删除 $1个选定的子网吗？子网中的任何其他对象也将丢失。
+sdelete_rusure3=您确定要删除 $2选定的共享网络吗？网络中的任何子网或其他对象也将丢失。
+sdelete_ok=立即删除
+
+hdelete_err=删除主机和组失败
+hdelete_enone=未选择
+hdelete_title=删除主机和组
+hdelete_rusure1=您确定要删除 $1个所选主机和 $2组吗？组中的任何其他主机也将丢失。
+hdelete_rusure2=您确定要删除 $1个选定主机吗？
+hdelete_rusure3=您确定要删除 $2选定的组吗？组中的任何主机也将丢失。
+hdelete_ok=立即删除

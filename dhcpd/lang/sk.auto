@@ -1,0 +1,288 @@
+index_key=Úprava kľúčov TSIG (používa sa na autentifikáciu aktualizácií serverov DNS)
+index_dhcpdnotfound=Server DHCP <tt>$1</tt> sa vo vašom systéme nenašiel. Možno nie je nainštalovaný alebo je vaša <a href="$2">konfigurácia modulu DHCP</a> nesprávna.
+index_return=index
+index_dhcpdver2=Server DHCP <tt>$1</tt> sa nezdá byť správnou verziou. Webmin podporuje iba verzie ISC DHCPD $2 až $3.
+index_subtitle=Podsiete a zdieľané siete
+index_nosubdef=Neboli definované žiadne podsiete ani zdieľané siete.
+index_nomemb=Žiadni členovia
+index_1memb=1 člen
+index_234memb=$1 členov
+index_memb=$1 členov
+index_hst=Hostitelia a skupiny hostiteľov
+index_nohst=Neboli definovaní žiadni hostitelia ani skupiny.
+index_hostgroup=Host/Group
+index_parent=rodič
+index_nameip=Názov hostiteľa alebo IP
+index_buttego=Upravte možnosti klienta
+index_ego=Upravte možnosti klienta DHCP, ktoré sa vzťahujú na všetky podsiete, zdieľané siete, hostiteľov a skupiny
+index_buttlal=Zoznam aktívnych nájmov
+index_lal=Zoznam lízingov, ktoré tento server DHCP v súčasnosti vydáva pre dynamicky pridelené adresy IP.
+index_apply=Kliknutím na toto tlačidlo sa aktuálna konfigurácia použije na bežiaci server DHCP jeho zastavením a reštartovaním.
+index_start=Kliknutím na toto tlačidlo spustíte server DHCP vo vašom systéme pomocou aktuálnej konfigurácie.
+index_stopdesc=Kliknutím na toto tlačidlo zastavíte bežiaci server DHCP vo vašom systéme. Po zastavení klienti DHCP nebudú môcť požadovať adresy IP.
+index_hdisplay=Zobraziť hostiteľov a skupiny podľa:
+index_horder0=prideľovanie
+index_horder1=Štruktúra súboru
+index_ndisplay=Zobraziť siete a podsiete podľa:
+index_norder0=prideľovanie
+index_norder1=Štruktúra súboru
+index_norder2=Meno/IP adresa
+index_version=ISC DHCPd verzia $1 
+index_buttiface=Upraviť sieťové rozhranie
+index_iface=Nastavte sieťové rozhrania, na ktorých server DHCP pri spustení počúva.
+index_subtoomany=Existuje príliš veľa podsietí na zobrazenie.
+index_shatoomany=Existuje príliš veľa zdieľaných sietí na zobrazenie.
+index_sublook2=Upravte podsiete pomocou adresy:
+index_shalook2=Upraviť zdieľanú sieť:
+index_hsttoomany=Existuje príliš veľa hostiteľov na zobrazenie.
+index_grptoomany=Existuje príliš veľa skupín na zobrazenie.
+index_hstlook2=Upravte meno hostiteľa:
+index_grplook2=Upravte skupinu s názvom:
+index_gdom=Skupina pre $1 
+index_match0=rovní
+index_match2=zápasy
+index_delete=Zmaž označené
+
+butt_eco=Upravte možnosti klienta
+butt_vco=Zobraziť možnosti klienta
+
+esub_tabhdr=Podrobnosti podsiete
+esub_arange=Rozsahy adries
+esub_dbooptpq=Dynamický BOOTP?
+esub_hosts=Hostitelia priamo v tejto podsiete
+esub_groups=Zoskupuje sa priamo do tejto podsiete
+esub_pools=Bazény adries pre podsiete
+esub_pool=Pool $1 
+esub_poolnone=Nie sú definované žiadne skupiny adries
+
+esub_pooladd=Pridajte oblasť adries.
+esub_none=nikto
+esub_fopeer=Failover Peer
+
+esh_hosts=Hostitelia priamo v tejto zdieľanej sieti
+esh_groups=Skupiny priamo v tejto zdieľanej sieti
+esh_subn=Podsiete v tejto zdieľanej sieti
+esh_pools=Adresné fondy pre zdieľanú sieť
+
+ehost_nojavascr=Zdá sa, že váš prehliadač nepodporuje javascript. Teraz musíte vybrať správnu pozíciu z nižšie uvedeného zoznamu.
+ehost_assign=Hostiteľ priradený k
+ehost_toplevel=toplevel
+ehost_subnet=V podsieti $1 / $2 
+ehost_shared=V zdieľanej sieti $1 
+
+egroup_crheader=Vytvorte skupinu hostiteľov
+egroup_eheader=Upraviť skupinu hostiteľov
+egroup_assign=Skupina pridelená
+egroup_hosts=Hostitelia v tejto skupine
+egroup_nchoice=Použiť meno ako názov hostiteľa klienta?
+
+secs=secs
+none=nikto
+listl_network=V sieti $1 / $2 
+listl_lfnotexist=Nájomný súbor DHCPd <tt>$1</tt> neexistuje.
+listl_lfnotcont=Nájomný súbor DHCPd <tt>$1</tt> neobsahuje žiadne nájmy.
+listl_lfnotcont2=Nájomný súbor DHCPd <tt>$1</tt> neobsahuje žiadne nájmy, ktoré sú aktívne v aktuálnom čase.
+listl_active=aktívny
+listl_start=Dátum začiatku
+listl_end=Dátum ukončenia
+listl_return=zoznam sietí a hostiteľov
+listl_all=Zoznam všetkých aktívnych a vypršaných lízingov
+listl_delete=Odstrániť vybrané nájmy
+listl_unknown=nevedno
+listl_allocs=Dostupné adresy IP: $1, pridelené $2 ($3 %)
+listl_mode=Režim zobrazenia  :
+listl_mode_0=Prenájom DHCP
+listl_mode_1=Podsieť a použitie
+listl_size=Celkový počet IP
+listl_used=pridelené
+listl_pc=percento
+listl_err=Nepodarilo sa odstrániť nájmy
+listl_enone=Žiadne vybraté
+listl_refresh=Obnoviť zoznam
+
+restart_errmsg1=Nepodarilo sa reštartovať program dhcpd
+restart_errmsg2=Nepodarilo sa signalizovať proces
+restart_conftext=Riadky okolo $1 v $2  :
+
+sgroup_faildel=Nepodarilo sa odstrániť skupinu
+sgroup_failsave=Uloženie skupiny zlyhalo
+sgroup_invassign=skupina priradená k nesprávnej časti
+sgroup_echanged=Obsah konfiguračného súboru sa zmenil. Skúste to znova.
+
+shost_faildel=Nepodarilo sa odstrániť hostiteľa
+shost_failsave=Uloženie hostiteľa zlyhalo
+shost_invalidhn=nie je platné meno hostiteľa
+shost_invalidhwa='$1' nie je platná adresa $2 
+shost_invalidaddr=$1 obsahuje neplatný názov hostiteľa alebo IP adresu
+shost_invassign=hostiteľ priradený k nesprávnej sekcii
+
+sopt_failsave=Nepodarilo sa uložiť možnosti klienta
+sopt_invalidip=nie je platná adresa IP
+sopt_invalidint=nie je celé číslo
+sopt_invalidipp=nie je platný pár adries IP (napríklad 1.2.3.4,5.6.7.8)
+sopt_edname=$1 nie je platný názov voľby
+sopt_ednum='$1' nie je platné číslo voľby
+sopt_edtype=$1 nie je platný typ voľby
+sopt_ecval=Chýba hodnota pre vlastnú možnosť „$1“
+sopt_ecip=Hodnota pre vlastnú možnosť „$1“ musí byť adresa IP
+
+sshared_faildel=Zdieľanú sieť sa nepodarilo odstrániť
+sshared_failsave=Uloženie zdieľanej siete zlyhalo
+sshared_invalidsname=Chýba alebo je neplatný názov zdieľanej siete.
+sshared_nosubnet=Zdieľaná sieť '$1' neobsahuje žiadnu podsieť.
+
+plib_deflt=Predvolený čas prenájmu
+plib_bfname=Boot filename
+plib_maxlt=Maximálna doba prenájmu
+plib_bfserv=Spúšťací súborový server
+plib_servname=Názov servera
+plib_llbc=Dĺžka prenájmu pre klientov BOOTP
+plib_forever=navždy
+plib_lebc=Nájomné miesto pre klientov BOOTP
+plib_never=nikdy
+plib_invalidlt=nie je platný čas nájmu
+plib_invalidsn=nie je platný názov servera
+plib_invaliddom=$1 nie je platný názov domény
+plib_leformat=Dátum ukončenia nájmu musí byť vo formáte W RRRR/MM/DD HH: MM: SS
+plib_copt=Možnosti klienta
+plib_chname=Názov hostiteľa klienta
+plib_defrouters=Predvolené smerovače
+plib_snmask=Masku podsiete
+plib_babbr=Vysielacia adresa
+plib_rdpath=Cesta koreňového disku
+plib_statrouters=Statické trasy
+plib_nbns=Názvové servery NetBIOS
+plib_nbscope=Rozsah NetBIOS
+plib_nbntype=Typ uzla NetBIOS
+plib_toffset=Časový posun
+plib_serverid=Identifikátor servera DHCP
+plib_ddnsdom=Dynamický názov domény DNS
+plib_ddnsrevdom=Dynamická reverzná doména DNS
+plib_ddnsup=Dynamický DNS povolený?
+plib_ddnshost=Dynamický názov hostiteľa DNS
+plib_ddnshost_def=Od klienta
+plib_ddnsupstyle=Dynamický štýl aktualizácie DNS
+plib_adhoc=Ad-hoc
+plib_interim=dočasnej
+plib_none=nikto
+plib_unclients=Povoliť neznámych klientov?
+plib_allow=dovoliť
+plib_deny=poprieť
+plib_ignore=Ignorovať
+plib_eexpr=Táto časť konfigurácie DHCP obsahuje direktívu výrazov $1, ktorú nemôže webmin bezpečne editovať.
+plib_auth_subnet=Server je pre túto podsieť autoritatívny?
+plib_auth_shared-network=Je server autorizovaný pre túto zdieľanú sieť?
+plib_auth_global=Server je autoritatívny pre všetky podsiete?
+
+eopt_header=Možnosti klienta
+eopt_subtitle=Pre podsiete $1 
+eopt_snettitle=Pre zdieľanú sieť $1 
+eopt_hosttitle=Pre hostiteľa $1 
+eopt_grouptitle=Pre $1 členskú skupinu
+eopt_alltitle=Pre všetky siete, hostiteľov a skupiny
+eopt_returnindex=zoznam sietí a hostiteľov
+eopt_tabhdr=Možnosti klienta
+eopt_domsearch=Domény DNS na vyhľadávanie
+eopt_rdpath=Cesta koreňového disku
+eopt_statrouters=Statické trasy
+eopt_nbns=Názvové servery NetBIOS
+eopt_nbs=Rozsah NetBIOS
+eopt_nbntype=Typ uzla NetBIOS
+eopt_toffset=Časový posun
+eopt_custom=Vlastná možnosť
+eopt_cname=názov
+eopt_def=Definícia možnosti
+eopt_dname=Názov možnosti
+eopt_slpa=Adresy IP agentov SLP
+eopt_slpaips=Iba tieto adresy IP?
+eopt_slps=Rozsah služieb SLP
+eopt_slpsonly=Iba tento rozsah?
+
+log_apply=Použité zmeny
+log_create_subnet=Vytvorená podsiete $1 
+log_delete_subnet=Vymazaná podsiete $1 
+log_modify_subnet=Upravená podsiete $1 
+log_options_subnet=Upravené možnosti pre podsiete $1 
+log_create_shared=Vytvorená zdieľaná sieť $1 
+log_delete_shared=Odstránená zdieľaná sieť $1 
+log_modify_shared=Upravená zdieľaná sieť $1 
+log_options_shared=Upravené možnosti zdieľanej siete $1 
+log_create_host=Vytvorený hostiteľ $1 
+log_delete_host=Vymazaný hostiteľ $1 
+log_modify_host=Upravený hostiteľ $1 
+log_options_host=Upravené možnosti pre hostiteľa $1 
+log_create_group=Vytvorená skupina hostiteľov $1 
+log_delete_group=Odstránená skupina hostiteľov $1 
+log_modify_group=Upravená skupina hostiteľov $1 
+log_options_group=Upravené možnosti pre skupinu hostiteľov $1 
+log_delete_lease=Odstránený nájom za $1 
+log_delete_subnets=Odstránené $1 podsiete a zdieľané siete
+log_delete_hosts=Odstránili sa $1 hostitelia a skupiny hostiteľov
+
+keys_title=Kľúče DNS
+keys_secret=Tajný reťazec
+keys_ecannot=Nemáte oprávnenie upravovať kľúče DNS
+keys_err=Uloženie kľúčov DNS zlyhalo
+keys_ekey=$1 nie je platné ID kľúča
+keys_esecret=Chýbajúci alebo neplatný tajný kód pre kód $1 s kódom base-64
+
+pool_edit=Upraviť fond adries
+pool_create=Vytvorený fond adries
+pool_header=Možnosti oblasti adries
+pool_allow=Klienti to môžu povoliť
+pool_deny=Klienti poprieť
+
+cdel_txt=Odstránením $1 „$2“ sa odstráni aj jeho obsah:
+cdel_confirm=Naozaj chcete odstrániť toto $1 ?
+cdel_return=zoznam hostiteľov a sietí
+
+eacl_aviol=Porušenie kontroly prístupu
+eacl_uniqh=vytvárať hostiteľov s duplicitnými hardvérovými adresami
+eacl_uniqi=vytvárať hostiteľov s duplikátnymi IP adresami
+
+acl_zones=Môžete upravovať dynamické zóny DNS?
+acl_uniq_hst=Unikátne názvy hostiteľov?
+acl_uniq_sub=IP adresy podsiete Uniq?
+acl_uniq_sha=Názvy zdieľaných sietí Uniq?
+acl_seclevel=Použiť úroveň zabezpečenia:
+acl_per_hst_acls=Povoliť zoznamy prístupových práv podľa hostiteľa?
+acl_per_grp_acls=Povoliť ACL pre skupinu?
+acl_per_sub_acls=Povoliť zoznamy prístupových práv podľa podsiete?
+acl_per_sha_acls=Povoliť ACL na zdieľanú sieť?
+acl_per_obj_acls=Zoznamy prístupových práv pre jednotlivé objekty. ..
+acl_ernow=Ak chcete povoliť prístup na zápis v globálnych zoznamoch prístupových práv pre určitý typ objektu, musíte tiež povoliť prístup na čítanie pre tento typ objektu.
+
+iface_desc=Server DHCP môže prideľovať adresy IP iba v sieťach pripojených k jednému z nižšie uvedených rozhraní. Musí sa zahrnúť sieťové rozhranie pre všetky definované podsiete. Ak nie je vybraté, server DHCP sa pokúsi server nájsť.
+
+lookup_ehost=Neexistuje žiadny hostiteľ s menom, IP adresou alebo MAC adresou $1 
+lookup_ehostname=Nie je zadaný názov hostiteľa, adresa IP ani adresa MAC
+lookup_egroup=Neexistuje žiadna skupina s názvom alebo názvom domény $1 
+lookup_egroupname=Nebol zadaný žiadny názov skupiny ani názov domény
+lookup_esubnet=Neexistuje žiadna podsiete s adresou alebo adresou/sieťovou maskou $1 
+lookup_esubnetname=Nebola zadaná žiadna adresa podsiete alebo adresa/maska siete
+lookup_eshared=Neexistuje zdieľaná sieť s názvom $1 
+lookup_esharedname=Nezadal sa žiadny zdieľaný názov siete
+
+index_nozones=Zatiaľ neboli definované žiadne zóny DNS.
+zone_ecannot=Nemáte oprávnenie upravovať zóny DNS
+
+plib_clientupdates=Môžu klienti aktualizovať svoje vlastné záznamy?
+
+index_buttetext=Ručné úpravy konfigurácie
+index_text=Ručné úpravy konfiguračného súboru
+
+sdelete_err=Odstránenie podsiete a zdieľaných sietí zlyhalo
+sdelete_enone=Žiadne vybraté
+sdelete_title=Odstráňte podsiete a zdieľané siete
+sdelete_rusure1=Naozaj chcete odstrániť vybrané podsiete $1 a zdieľané siete $2 ? Stratia sa aj všetky ďalšie podsiete alebo iné objekty v rámci sietí.
+sdelete_rusure2=Naozaj chcete odstrániť vybrané podsiete $1 ? Stratia sa aj všetky ostatné objekty v rámci podsiete.
+sdelete_rusure3=Naozaj chcete odstrániť zdieľané siete $2 ? Stratia sa aj všetky podsiete alebo iné objekty v rámci sietí.
+sdelete_ok=Odstrániť teraz
+
+hdelete_err=Nepodarilo sa odstrániť hostiteľov a skupiny
+hdelete_enone=Žiadne vybraté
+hdelete_title=Odstrániť hostiteľov a skupiny
+hdelete_rusure1=Naozaj chcete odstrániť $1 vybraných hostiteľov a $2 skupiny? Stratia sa aj ostatní hostitelia v rámci skupín.
+hdelete_rusure2=Naozaj chcete odstrániť vybratých hostiteľov $1 ?
+hdelete_rusure3=Naozaj chcete odstrániť $2 vybrané skupiny? Stratia sa aj hostitelia v rámci skupín.
+hdelete_ok=Odstrániť teraz

@@ -1,0 +1,316 @@
+index_title=مدیریت چاپگر
+index_header=چاپگرهای موجود
+index_name=چاپگر
+index_desc=شرح
+index_to=چاپ به
+index_driver=راننده
+index_enabled=فعال شده است؟
+index_accepting=پذیرش؟
+index_jobs=شغل ها
+index_none=هیچ چاپگری روی این سیستم نصب نشده است.
+index_list=لیست ..
+index_jlist=شغل ها ..
+index_jcount=$1 شغل ..
+index_add=چاپگر جدید اضافه کنید.
+index_stop=زمانبند را متوقف کنید
+index_stopmsg=برای متوقف کردن روند برنامه ریزی چاپ در حال اجرا ، روی این دکمه کلیک کنید. این مانع از چاپ هر کاربر محلی یا از راه دور روی سیستم شما می شود.
+index_start=زمانبندی را شروع کنید
+index_startmsg=برای شروع فرآیند زمانبندی چاپ ، روی این دکمه کلیک کنید. این کار به کاربران محلی و از راه دور امکان چاپ روی سیستم شما را می دهد.
+index_restart=زمانبند را مجدداً راه اندازی کنید
+index_restartmsg=برای راه اندازی مجدد فرآیند برنامه ریزی چاپ ، روی این دکمه کلیک کنید. با این کار پیکربندی چاپ فعلی مجبور به اعمال می شود.
+index_return=لیست چاپگر
+index_esystem=نرم افزار سیستم چاپ مورد نظر خود را نصب کنید یا از تنظیمات ماژول <a href='$1'></a> برای تغییر آن استفاده کنید.
+index_style=سیستم چاپ:$1
+index_cluster=سرورهای خوشه ای
+index_clusterdesc=با کلیک بر روی این دکمه برای تنظیم سرورهای Webmin اضافی که بر روی آنها چاپگر ایجاد شده ، به روز شده و حذف خواهد شد.
+index_delete=چاپگرهای منتخب را حذف کنید
+
+style_solaris=سولاریس
+style_linux=لینوکس LPR
+style_freebsd=FreeBSD LPR
+style_hpux=HPUX
+style_lprng=LPRng
+style_unixware=UnixWare
+style_cups=فنجان ها
+style_irix=IRIX
+style_aix=AIX
+
+edit_eedit=شما مجاز به ویرایش این چاپگر نیستید
+edit_eadd=شما مجاز به چاپگر نیستید
+edit_add=چاپگر ایجاد کنید
+edit_edit=چاپگر را ویرایش کنید
+edit_conf=پیکربندی چاپگر
+edit_name=نام
+edit_acc=قبول درخواست ها؟
+edit_why=نه - چرا نه
+edit_desc=شرح
+edit_ena=چاپ فعال شد؟
+edit_acl=کنترل دسترسی
+edit_allow=به همه اجازه دهید
+edit_deny=همه را انکار کنید
+edit_allowu=مجاز به کاربران لیست شده ..
+edit_denyu=کاربران ذکر شده را رد کنید ..
+edit_banner=چاپ بنر؟
+edit_opt=اختیاری
+edit_default=چاپگر پیش فرض؟
+edit_already=چاپگر پیش فرض قبلاً
+edit_max=اندازه کار چاپ حداکثر
+edit_unlimited=نامحدود
+edit_dacc=راننده قبول می کند
+edit_dtext=متن
+edit_dpost=ارسال نامه
+edit_dother=دیگر
+edit_alt=نام های چاپگر جایگزین
+edit_dest=مقصد را چاپ کنید
+edit_dev=دستگاه محلی
+edit_file=پرونده محلی
+edit_remote=سرور یونیکس از راه دور
+edit_rqueue=چاپگر
+edit_type=تایپ کنید
+edit_smb=سرور ویندوز از راه دور
+edit_share=چاپگر
+edit_user=کاربر
+edit_pass=کلمه عبور
+edit_wgroup=کارگروه
+edit_hpnp=سرور HPNP از راه دور
+edit_port=بندر
+edit_direct=اتصال مستقیم TCP
+edit_dport=بندر
+edit_driver=درایور چاپگر
+edit_check=بررسی کنید سرور از راه دور فعال است؟
+
+blocks=بلوک
+
+save_err=ذخیره چاپگر انجام نشد
+save_eadd=شما مجاز به چاپگر نیستید
+save_eedit=شما مجاز به ویرایش این چاپگر نیستید
+save_ename="$1" نام چاپگر معتبری نیست
+save_edup=چاپگری به نام "$1" از قبل موجود است
+save_eallow=هیچ کاربری مجاز نیست وارد شود
+save_edeny=هیچ کاربری برای انکار وارد نشده است
+save_euser=کاربر "$1" وجود ندارد
+save_etype=شما باید حداقل یک نوع را انتخاب کنید تا این راننده بپذیرد
+save_emax=حداکثر اندازه کار چاپ باید عدد صحیحی باشد
+save_efile="$1" وجود ندارد
+save_erhost=میزبان از راه دور "$1" وجود ندارد
+save_erport=پورت از راه دور "$1" معتبر نیست
+save_erqueue="$1" یک نام از راه دور معتبر نیست
+save_eremote=رانندگان را نمی توان با چاپگرهای از راه دور یونیکس استفاده کرد
+save_edhost=میزبان مستقیم "$1" وجود ندارد
+save_edport=پورت مستقیم وجود ندارد یا نامعتبر است
+save_evalid=سیستم چاپ اجازه چاپگر را نداد
+save_errslave=چاپگر در این سیستم OK ایجاد کرد ، اما خطاهای زیر روی سیستم های خوشه ای رخ داده است :$1
+save_egone=هیچ چاپگری به نام "$1" یافت نشد
+save_errdelslave=چاپگر در این سیستم OK را حذف کرد ، اما خطاهای زیر روی سیستم های خوشه ای رخ داده است :$1
+
+jobs_title=چاپ مشاغل
+jobs_header=کارها را با$1 چاپ کنید
+jobs_id=شناسه کار
+jobs_size=اندازه
+jobs_by=ارسال شده توسط
+jobs_when=ارسال شده در
+jobs_file=نام فایل
+jobs_cancel=برای لغو ، روی شناسه کار از لیست بالا کلیک کنید.
+jobs_cancelview=برای لغو بر روی شناسه کار کلیک کنید ، یا برای مشاهده آن روی اندازه کار کلیک کنید.
+jobs_none=چاپگر$1 هیچ کار معلق ندارد.
+jobs_all=همه کارهای چاپ را لغو کنید
+jobs_bytes=بایت
+jobs_test=چاپ صفحه تست
+jobs_cancelsel=مشاغل منتخب را لغو کنید
+jobs_on=در چاپگر$1
+jobs_return=لیست کارهای چاپ
+
+cancel_ecannot=شما مجاز به لغو کارهای چاپی نیستید
+cancel_err=کار چاپی لغو نشد
+cancel_egone=کار چاپ$1 دیگر وجود ندارد
+
+view_ecannot=شما نمی توانید این کار چاپ را مشاهده کنید
+view_egone=این کار چاپ دیگر وجود ندارد
+
+start_ecannot=شما مجاز به شروع برنامه ریزی نیستید
+start_err=زمانبندی شروع نشد
+
+stop_ecannot=شما مجاز به متوقف کردن برنامه زمانبندی نیستید
+stop_err=زمانبندی متوقف نشد
+
+restart_ecannot=شما مجاز به شروع مجدد برنامه زمانبندی نیستید
+restart_err=برنامه زمان بندی مجدد انجام نشد
+
+webmin_none=هیچ یک
+webmin_nonemsg=چاپگر متن یا چاپگر متن
+webmin_remotemsg=چاپگر از راه دور
+webmin_model=مدل
+webmin_prog=برنامه
+webmin_driver=درایور وبمین
+webmin_uniprint=درایور Uniprint
+webmin_edrivers=نتوانست از$1 رانندگان را بدست آورد. درایورهای چاپگر وبمین که از Ghostscript استفاده می کنند در دسترس نیستند
+webmin_egs=دستور$1 یافت نشد. درایورهای چاپگر وبمین که از Ghostscript استفاده می کنند در دسترس نیستند
+webmin_edriver="$1" وجود ندارد
+
+caldera_none=هیچ یک
+caldera_nonemsg=چاپگر از راه دور یا خام
+caldera_prog=برنامه
+caldera_coas=راننده COAS
+caldera_printer=چاپگر و وضوح
+caldera_eof=ارسال EOF؟
+caldera_paper=اندازه کاغذ
+caldera_double=چاپ دو طرفه؟
+caldera_gsopts=گزینه های اضافی GS
+caldera_uniprint=درایور Uniprint
+caldera_eprog="$1" وجود ندارد
+caldera_edriver=هیچ درایور چاپگر انتخاب نشده است
+caldera_eres=هیچ رزولوشن انتخاب نشده است
+
+redhat_none=هیچ یک
+redhat_nonemsg=چاپگر متن یا چاپگر متن
+redhat_prog=برنامه
+redhat_driver=راننده ردات
+redhat_printer=چاپگر و وضوح
+redhat_eof=ارسال EOF؟
+redhat_paper=اندازه کاغذ
+redhat_pages=صفحات در هر صفحه خروجی
+redhat_gsopts=گزینه های اضافی GS
+redhat_hmargin=حاشیه راست/چپ
+redhat_vmargin=حاشیه بالا/پایین
+redhat_crlf=متن پله پله را برطرف کنید؟
+redhat_eprog="$1" وجود ندارد
+redhat_edriver=هیچ درایور چاپگر انتخاب نشده است
+redhat_ehmargin=حاشیه سمت راست/چپ وجود ندارد یا نامعتبر است
+redhat_evmargin=حاشیه بالا/پایین موجود نیست یا نامعتبر است
+redhat_eres=هیچ رزولوشن انتخاب نشده است
+redhat_printer2=مدل چاپگر و درایور
+
+suse_none=هیچ یک
+suse_nonemsg=چاپگر متن یا چاپگر متن
+suse_prog=برنامه
+suse_driver=درایور APSfilter
+suse_printer=نوع چاپگر
+suse_res=قطعنامه در DPI
+suse_colour=چاپگر رنگی؟
+suse_paper=اندازه کاغذ
+suse_method=روش فیلتر
+suse_auto=خودکار
+suse_ascii=ASCII
+suse_raw=خام
+suse_extra=گزینه های اضافی Ghostscript
+suse_yast2=درایور YAST2
+suse_edriver=هیچ نوع چاپگری انتخاب نشده است
+suse_eres=قطعنامه نامعتبر یا نامعتبر است
+
+estop=متوقف نشد lpd :$1
+
+acl_printers=چاپگرهای این کاربر می تواند پیکربندی کند
+acl_add=آیا می توانید چاپگرهای جدیدی اضافه کنید؟
+acl_cancel=آیا می توانید کارهای چاپی را لغو کنید؟
+acl_stop=آیا می توان برنامه ریز را متوقف یا شروع کرد؟
+acl_restart=فقط راه اندازی مجدد
+acl_listed=فقط در چاپگرهای انتخاب شده ..
+acl_pall=همه چاپگرها
+acl_psel=انتخاب شد ..
+acl_view=چاپگرهای غیر قابل تنظیم را نشان می دهید؟
+acl_test=آیا می توانید صفحات آزمون چاپ کنید؟
+acl_user=کارهای چاپی را که متعلق به آنهاست ، مدیریت کنید
+acl_user_all=تمام کاربران
+acl_user_this=کاربر فعلی وبمین
+acl_delete=آیا می توان چاپگرها را حذف کرد؟
+acl_cluster=آیا می توانید خوشه چاپگر را مدیریت کنید؟
+
+log_stop=برنامه ریز چاپ متوقف شد
+log_start=برنامه ريزي چاپ شروع شد
+log_restart=برنامه ریزی چاپ مجدداً راه اندازی شد
+log_cancel_job=کار چاپ$2 در$1 لغو شد
+log_cancel_all=همه کارهای چاپ را در$1 لغو کرد
+log_cancel_sel=$2 کار چاپ را در$1 لغو کرد
+log_create=چاپگر$1 را با$2 ایجاد کرد
+log_modify=چاپگر$1 در$2 اصلاح شد
+log_delete=چاپگر$1 در$2 حذف شد
+log_create_l=چاپگر$3 $1 را در$2 ایجاد کرد
+log_modify_l=چاپگر$3 چاپ$1 در$2
+log_delete_l=چاپگر$3 چاپ$1 در$2 حذف شد
+
+linux_paralel=پورت موازی$1
+linux_serial=پورت سریال$1 (COM$1)
+linux_null=دستگاه تهی
+linux_usb=چاپگر USB$1
+linux_ecmd=دستور$1 در سیستم شما یافت نشد ، این نشان می دهد که سیستم چاپ لینوکس نصب نشده است.
+linux_espool=فهرست اسفنج$1 در سیستم شما وجود ندارد ، این نشان می دهد که سیستم چاپ لینوکس نصب نشده است.
+
+freebsd_paralel=درگاه موازی
+freebsd_serial=پورت سریال$1 (COM$1)
+freebsd_ecmd=فرمان$1 در سیستم شما یافت نشد ، این نشان می دهد که سیستم چاپ FreeBSD نصب نشده است.
+freebsd_espool=فهرست اسفنج$1 در سیستم شما وجود ندارد ، این نشان می دهد که سیستم چاپ FreeBSD نصب نشده است.
+
+openbsd_paralel=درگاه موازی
+openbsd_serial=پورت سریال$1 (COM$1)
+
+unixware_paralel=پورت موازی$1
+unixware_serial=پورت سریال$1
+unixware_null=دستگاه تهی
+unixware_ecmd=دستور$1 در سیستم شما یافت نشد ، این نشان می دهد که سیستم چاپ UnixWare نصب نشده است.
+
+hpux_paralel=موازی$1
+hpux_serial=سریال$1
+hpux_null=دستگاه تهی
+hpux_ecmd=دستور$1 در سیستم شما یافت نشد ، این نشان می دهد که سیستم چاپ HPUX نصب نشده است.
+hpux_eiface=دایرکتوری اسکریپت $1 در سیستم شما وجود ندارد ، این نشان می دهد که سیستم چاپ HPUX نصب نشده است.
+
+lprng_paralel=پورت موازی$1
+lprng_serial=پورت سریال$1 (COM$1)
+lprng_null=دستگاه تهی
+lprng_ecmd=دستور$1 در سیستم شما یافت نشد ، این نشان می دهد که سیستم چاپ LPRng نصب نشده است.
+lprng_espool=دایرکتوری حلقه$1 در سیستم شما وجود ندارد ، این نشان می دهد که سیستم چاپ LPRng نصب نشده است.
+
+solaris_paralel=درگاه موازی
+solaris_uparalel=پورت موازی فوق العاده 5/10
+solaris_serial=پورت سریال$1
+solaris_null=دستگاه تهی
+solaris_ecmd=دستور$1 در سیستم شما یافت نشد ، این نشان می دهد که سیستم چاپ Solaris نصب نشده است.
+
+test_title=چاپ صفحه تست
+test_ecannot=شما مجاز به چاپ صفحات آزمون نیستید
+test_desc=این فرم به شما امکان چاپ صفحه آزمایش برای چاپگر$1 را می دهد. نوع صفحه ای را که می خواهید چاپ کنید انتخاب کنید :
+test_0=صفحه سیاه و سفید ارسال نامه
+test_1=صفحه ارسال رنگی
+test_2=متن ساده ASCII
+test_3=هر پرونده بارگذاری شده
+test_print=صفحه چاپ
+test_exec=صفحه چاپ نسخه با دستور$1 ..
+test_failed=.. فرمان انجام نشد!
+test_ok=.. فرمان کامل است.
+
+cups_none=هیچ یک
+cups_nonemsg=چاپگر از راه دور یا خام
+cups_prog=برنامه
+cups_driver=درایور CUPS
+cups_eprog='$1' یک برنامه معتبر نیست
+cups_opts=گزینه های$1
+cups_ecmd=دستور$1 در سیستم شما یافت نشد ، این نشان می دهد که سیستم چاپ CUPS نصب نشده است.
+
+irix_ecmd=دستور$1 در سیستم شما یافت نشد ، این نشان می دهد که سیستم چاپ IRIX نصب نشده است.
+irix_eiface=دایرکتوری اسکریپت $1 در سیستم شما وجود ندارد ، این نشان می دهد که سیستم چاپ IRIX نصب نشده است.
+
+aix_port=درگاه چاپگر$1
+aix_edesc=توضیحات نامعتبر - فقط حروف و اعداد مجاز هستند ، و هیچ فضا وجود ندارد
+aix_ecmd=سرور چاپگر AIX $1 یافت نشد. شاید نصب نشده باشد یا سیستم چاپ دیگری در حال استفاده باشد.
+
+cluster_title=سرورهای چاپگر خوشه ای
+cluster_none=هنوز هیچ سرور به خوشه چاپگر اضافه نشده است.
+cluster_host=نام میزبان
+cluster_desc=شرح
+cluster_os=سیستم عامل
+cluster_add=اضافه کردن سرور
+cluster_gadd=سرورها را به صورت گروه اضافه کنید
+cluster_need=قبل از اینکه در اینجا مدیریت شود باید سرورهایی را با ورود به سیستم و رمز عبور در ماژول Webmin Servers Index اضافه کنید.
+cluster_return=سرورهای خوشه
+cluster_delete=حذف انتخاب شده
+cluster_ecannot=شما مجاز به مدیریت سرورهای چاپگر خوشه ای نیستید
+
+add_title=اضافه کردن سرورها
+add_msg=افزودن$1 ..
+add_gmsg=افزودن سرورها به گروه$1 ..
+add_err=اضافه کردن سرور انجام نشد
+add_gerr=افزودن گروه انجام نشد
+add_echeck=سرور$1 ماژول مدیریت چاپگر را ندارد
+add_ediff=سرور$1 از این سیستم چاپی مختلف ($2) به این سرور استفاده می کند
+add_ediff2=سرور$1 از درایور چاپ متفاوت ($2) برای این سرور استفاده می کند
+add_ok=$1 با چاپگر$2 اضافه شد.

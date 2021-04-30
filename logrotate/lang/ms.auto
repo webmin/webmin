@@ -1,0 +1,115 @@
+index_title=Log File Rotation
+index_econf=Fail konfigurasi pemotongan log $1 tidak terdapat pada sistem anda. Mungkin logrotate tidak dipasang, atau konfigurasi modul <a href='$2'></a> tidak betul.
+index_ecmd=Program pemotongan log $1 tidak dijumpai pada sistem anda. Mungkin ia tidak dipasang, atau konfigurasi modul <a href='$2'></a> tidak betul.
+index_eversion=Gagal mendapatkan versi logrotate dengan arahan $1 : $2 
+index_version=Versi logrotate $1 
+index_add=Tambah fail log baru untuk berputar.
+index_file=Fail log
+index_period=Tempoh pusingan
+index_post=Perintah pasca putaran
+index_none=Tiada fail log lagi ditakrifkan.
+index_global=Edit Pilihan Global
+index_globaldesc=Klik butang ini untuk mengedit tetapan yang terpakai untuk semua fail log, dan mentakrifkan lalai untuk log.
+index_sched=Edit Jadual
+index_scheddesc=Klik butang ini untuk mengedit jadual yang mana logrotate dijalankan oleh Cron, atau membolehkan atau mematikannya.
+index_nocmd=Tiada
+index_notset=Tidak ditetapkan
+index_return=senarai fail log
+index_force=Putaran Log Pasukan
+index_forcedesc=Paksikan giliran segera semua fail log, walaupun belum lagi masa.
+index_logrotate=Logrotate
+index_delete=Padam Rotasi Log Terpilih
+
+period_daily=Harian
+period_weekly=Setiap minggu
+period_monthly=Bulanan
+period_never=Tidak pernah
+period_bytes=bait
+
+edit_title1=Edit Fail Log
+edit_title2=Buat Fail Log
+edit_header=Butiran fail log diputar
+edit_file=Laluan fail log
+edit_sched=Jadual putaran
+edit_rotate=Bilangan log lama untuk disimpan
+edit_compress=Memampatkan fail log lama?
+edit_delaycompress=Mampatan mampatan sehingga kitaran seterusnya?
+edit_copytruncate=Memasukkan fail log di tempat?
+edit_ifempty=Putar walaupun file log kosong?
+edit_missingok=Abaikan fail log jika tiada?
+edit_size=Saiz maksimum sebelum berputar
+edit_always=Diabaikan
+edit_minsize=Saiz minimum untuk berputar
+edit_nominsize=Sentiasa
+edit_ext=Pelanjutan untuk nama fail diputar
+edit_dateext=Gunakan sambungan tarikh untuk fail putar
+edit_mail=Fail log e-mel sebelum memadam?
+edit_mailto=Ya, untuk alamat
+edit_mailno=Tidak, jangan e-mel
+edit_mailfl=Log fail ke e-mel
+edit_mailfirst=Terbaru yang baru diputar
+edit_maillast=Paling lama yang akan dihapuskan
+edit_create=Buat semula fail log selepas putaran?
+edit_createas=Ya, dengan mod $1 dan dimiliki pengguna $2 dan kumpulan $3 
+edit_createno=Tidak, jangan buat semula
+edit_createsame=Ya, dengan kebenaran lama
+edit_olddir=Simpan log putar lama dalam
+edit_olddirto=Direktori
+edit_olddirsame=Direktori yang sama seperti fail log
+edit_errors=Mesej ralat e-mel kepada
+edit_errorsno=Tiada siapa
+edit_errorsto=Alamat atau pengguna
+edit_post=Perintah untuk dijalankan selepas putaran
+edit_pre=Perintah untuk dijalankan sebelum putaran
+edit_default=Lalai ($1)
+edit_sharedscripts=Hanya jalankan skrip sekali untuk semua fail?
+edit_now=Putar Sekarang
+
+global_title=Pilihan Global
+global_header=Pilihan lalai untuk semua fail log
+
+save_err=Gagal menyimpan log
+save_efile=Nama fail log hilang atau tidak sah
+save_esize=Saiz maksimum yang tiada atau tidak sah
+save_eminsize=Saiz minimum yang hilang atau tidak sah
+save_erotate=Jumlah log lama yang hilang atau tidak sah untuk disimpan
+save_ecreatemode=Mod penciptaan ok atau 3 digit 4 digit yang hilang atau tidak sah
+save_ecreateuser=Pengguna penciptaan yang hilang atau tidak sah
+save_ecreategroup=Kumpulan penciptaan yang hilang atau tidak sah
+save_emust1=Anda mesti memasukkan mod penciptaan apabila memasuki pengguna penciptaan
+save_emust2=Anda mesti memasukkan pengguna penciptaan apabila memasuki kumpulan penciptaan
+save_eolddirto=Direktori yang hilang atau tidak sah untuk log yang diputar lama
+save_eext=Pelanjutan yang hilang untuk nama fail log diputar
+save_emailto=Alamat e-mel yang hilang untuk log diputar
+save_eerrors=Alamat e-mel yang hilang untuk mesej ralat
+save_epre=Skrip pra-putaran tidak boleh mengandungi baris <tt>endrip</tt> atau <tt>endrotate</tt>
+save_epost=Skrip pasang putaran tidak boleh mengandungi baris <tt>endrip</tt> atau <tt>endrotate</tt>
+save_enofiles=Tiada fail untuk putar yang dimasukkan
+
+log_modify_sched=Kerja cron rotasi log berubah
+log_create_sched=Kerja cron rotasi log yang dibuat
+log_delete_sched=Kerja cron rotasi log yang dipadamkan
+log_global=Pilihan global yang diubahsuaikan
+log_create=Ditambah putaran untuk fail log $1 
+log_modify=Putaran diubah untuk fail log $1 
+log_delete=Putaran dipadamkan untuk fail log $1 
+log_delete_logs=Pusingan dipadamkan untuk $1 fail log
+
+sched_title=Jadual Putaran Log
+sched_desc=Untuk putaran log yang dikonfigurasi dengan menggunakan modul ini untuk dilakukan, perintah $1 mesti dijalankan pada jadual biasa (biasanya setiap hari) oleh Cron.
+sched_runparts=Pada masa ini, perintah putaran log sedang dijalankan dari skrip $1 $2, dan tidak dapat dilaraskan.
+sched_sched=Log pusingan kerja cron
+sched_disabled=Dinyahdayakan
+sched_enabled=Dihidupkan, kadang-kadang di bawah ..
+sched_save=Kemas kini Cron Job
+sched_err=Gagal menyimpan jadual putaran
+sched_when=Masa untuk berlari
+
+force_title=Putaran Log Pasukan
+force_doing=Memaksa giliran segera semua fail log ..
+force_doingone=Memaksa giliran segera satu fail log ..
+force_done=.. selesai.
+force_failed=.. gagal! Lihat output di atas atas alasan mengapa.
+
+delete_err=Gagal memadam log
+delete_enone=Tiada yang dipilih
