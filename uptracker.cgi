@@ -84,7 +84,7 @@ while(1) {
 		$last_time = $now;
 		}
 
-	$pc = int(100 * $size / $totalsize) / 2;
+	$pc = $totalsize ? int(100 * $size / $totalsize) / 2 : 100;
 	next if (defined($lastpc) && $pc == $lastpc);
 	print "<script>\n";
 	print "document.forms[0].file.value = \"".
