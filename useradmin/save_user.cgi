@@ -46,6 +46,7 @@ $in{'gid'} =~ s/\r|\n//g;
 $in{'uid'} =~ s/\r|\n//g;
 $in{'uid'} = int($in{'uid'});
 $in{'othersh'} =~ s/\r|\n//g;
+$in{'sshkey'} =~ s/\r|\n//g;
 
 # Validate username
 $user{'user'} = $in{'user'};
@@ -597,6 +598,25 @@ else {
 	if ($in{'copy_files'} && $in{'makehome'}) {
 		local $uf = &get_skel_directory(\%user, $in{'gid'});
 		&copy_skel_files($uf, $real_home, $user{'uid'}, $user{'gid'});
+		}
+
+	# Grant access from the given SSH key
+	if ($in{'sshkey'} =~ /\S/ && -d $real_home) {
+		my $sshdir = $real_home."/.ssh";
+		if (!-e $sshdir) {
+			&make_dir($sshdir, 0700);
+			&set_ownership_permissions(
+				$user{'uid'}, $user{'gid'}, 0700, $sshdir);
+			}
+		my $sshfile = $sshdir."/authorized_keys";
+		my $ex = -e $sshfile;
+		&open_tempfile(SSHFILE, ">>$sshfile");
+		&print_tempfile(SSHFILE, $in{'sshkey'},"\n");
+		&close_tempfile(SSHFILE);
+		if (!$ex) {
+			&set_ownership_permissions(
+				$user{'uid'}, $user{'gid'}, 0700, $sshfile);
+			}
 		}
 	}
 

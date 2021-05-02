@@ -77,6 +77,7 @@ nologin=No login allowed
 encrypted=Pre-encrypted password
 nochange=Leave unchanged
 clear=Normal password
+sshkey=SSH public key
 home=Home directory
 uedit_auto=Automatic
 uedit_manual=Directory

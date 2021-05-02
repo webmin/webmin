@@ -218,6 +218,12 @@ print &ui_table_row(&hlink($text{'pass'}, "pass"),
 				$text{'uedit_disabled'}, $disabled) : "")
 	  );
 
+# Show SSH public key field, for new users
+if ($n eq '') {
+	print &ui_table_row(&hlink($text{'sshkey'}, "sshkey"),
+		&ui_textarea("sshkey", undef, 3, 60), 3);
+	}
+
 print &ui_table_end();
 
 $pft = &passfiles_type();
