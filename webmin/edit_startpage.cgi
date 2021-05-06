@@ -35,7 +35,8 @@ print &ui_table_row($text{'startpage_gotomodule'},
 	&ui_select("gotomodule", $gconfig{'gotomodule'},
 		[ [ "", $text{'startpage_gotonone'} ],
 		  map { [ $_->{'dir'}, $_->{'desc'} ] }
-		      sort { $a->{'desc'} cmp $b->{'desc'} } @modules ]));
+		      sort { $a->{'desc'} cmp $b->{'desc'} } 
+		        grep { !$_->{'hidden'} && !$_->{'webmin_hidden'} } @modules ]));
 
 print &ui_table_row($text{'startpage_webminup'},
 	&ui_yesno_radio("webminup", !$gconfig{'nowebminup'}));
