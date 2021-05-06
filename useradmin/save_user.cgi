@@ -615,7 +615,7 @@ else {
 		&close_tempfile(SSHFILE);
 		if (!$ex) {
 			&set_ownership_permissions(
-				$user{'uid'}, $user{'gid'}, 0700, $sshfile);
+				$user{'uid'}, $user{'gid'}, 0600, $sshfile);
 			}
 		}
 	}
