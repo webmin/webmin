@@ -146,7 +146,7 @@ my $comp = $config{'compress'} eq '' ? "" :
 		" --compress-algo $config{'compress'}";
 &clean_language();
 my $cmd = "$gpgpath --output $dstfile $rcpt $ascii $comp --encrypt $srcfile";
-my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+my ($fh, $fpid) = &proc::pty_process_exec($cmd);
 while(1) {
 	my $rv = &wait_for($fh, "anyway");
 	if ($rv == 0) {
@@ -181,7 +181,7 @@ my $dstfile = &transname();
 &clean_language();
 my $cmd = "$gpgpath --output ".quotemeta($dstfile).
 	  " --decrypt ".quotemeta($srcfile);
-my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+my ($fh, $fpid) = &proc::pty_process_exec($cmd);
 my ($error, $seen_pass, $pass, $key, $keyid);
 while(1) {
 	my $rv = &wait_for($fh, "passphrase:", "key,\\s+ID\\s+(\\S+),", "failed.*\\n", "error.*\\n", "invalid.*\\n", "signal caught.*\\n");
@@ -233,27 +233,28 @@ else {
 # mode 1 = ascii signature at end, mode 2 = ascii signature only
 sub sign_data
 {
+my ($data, $out, $key, $mode) = @_;
 my $srcfile = &transname();
-&write_file_contents($srcfile, $_[0]);
+&write_file_contents($srcfile, $data);
 my $dstfile = &transname();
 my $cmd;
-if ($_[3] == 0) {
-	$cmd = "$gpgpath --output ".quotemeta($dstfile)." --default-key $_[2]->{'key'} --sign ".quotemeta($srcfile);
+if ($mode == 0) {
+	$cmd = "$gpgpath --output ".quotemeta($dstfile)." --default-key $key->{'key'} --sign ".quotemeta($srcfile);
 	}
-elsif ($_[3] == 1) {
-	$cmd = "$gpgpath --output ".quotemeta($dstfile)." --default-key $_[2]->{'key'} --clearsign ".quotemeta($srcfile);
+elsif ($mode == 1) {
+	$cmd = "$gpgpath --output ".quotemeta($dstfile)." --default-key $key->{'key'} --clearsign ".quotemeta($srcfile);
 	}
-elsif ($_[3] == 2) {
-	$cmd = "$gpgpath --armor --output ".quotemeta($dstfile)." --default-key $_[2]->{'key'} --detach-sig ".quotemeta($srcfile);
+elsif ($mode == 2) {
+	$cmd = "$gpgpath --armor --output ".quotemeta($dstfile)." --default-key $key->{'key'} --detach-sig ".quotemeta($srcfile);
 	}
 &clean_language();
-my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+my ($fh, $fpid) = &proc::pty_process_exec($cmd);
 &reset_environment();
 my ($error, $seen_pass);
-my $pass = &get_passphrase($_[2]);
+my $pass = &get_passphrase($key);
 if (!defined($pass)) {
 	return $text{'gnupg_esignpass'}.". ".
-	    &text('gnupg_canset', "/gnupg/edit_key.cgi?key=$_[2]->{'key'}").".";
+	    &text('gnupg_canset', "/gnupg/edit_key.cgi?key=$key->{'key'}").".";
 	}
 while(1) {
 	my $rv = &wait_for($fh, "passphrase:", "failed", "error");
@@ -275,10 +276,10 @@ unlink($srcfile);
 my $dst = &read_file_contents($dstfile);
 unlink($dstfile);
 if ($error || $seen_pass > 1) {
-	return "<pre>$wait_for_input</pre>";
+	return "<pre>".&html_escape($wait_for_input)."</pre>";
 	}
 else {
-	${$_[1]} = $dst;
+	$$out = $dst;
 	return undef;
 	}
 }
@@ -304,7 +305,7 @@ else {
 	&write_file_contents($sigfile, $_[1]);
 	$cmd = "$gpgpath --verify ".quotemeta($sigfile)." ".quotemeta($datafile);
 	}
-#local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+#local ($fh, $fpid) = &proc::pty_process_exec($cmd);
 #&wait_for($fh);
 #close($fh);
 #local $out = $wait_for_input;
@@ -339,7 +340,7 @@ sub get_trust_level
 {
 &clean_language();
 my $cmd = "$gpgpath --edit-key ".quotemeta($_[0]->{'name'}->[0]);
-my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+my ($fh, $fpid) = &proc::pty_process_exec($cmd);
 my $rv = &wait_for($fh, "trust:\\s+(.)", "command>");
 my $tr;
 if ($rv == 0) {
@@ -364,7 +365,7 @@ if ($key->{'secret'}) {
 	&clean_language();
 	my $cmd = "$gpgpath --delete-secret-key ".
 		  quotemeta($key->{'name'}->[0]);
-	my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+	my ($fh, $fpid) = &proc::pty_process_exec($cmd);
 	&wait_for($fh, "\\?");
 	syswrite($fh, "y\n");
 	&wait_for($fh, "\\?");
@@ -375,7 +376,7 @@ if ($key->{'secret'}) {
 	}
 &clean_language();
 my $cmd = "$gpgpath --delete-key ".quotemeta($key->{'name'}->[0]);
-my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+my ($fh, $fpid) = &proc::pty_process_exec($cmd);
 &wait_for($fh, "\\?");
 syswrite($fh, "y\n");
 sleep(1);
@@ -434,7 +435,7 @@ sub search_gpg_keys
 my ($word) = @_;
 my $cmd = "$gpgpath --keyserver ".quotemeta($config{'keyserver'}).
 	     " --search-keys ".quotemeta($word);
-my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+my ($fh, $fpid) = &proc::pty_process_exec($cmd);
 my @rv;
 while(1) {
 	$wait_for_input = undef;
