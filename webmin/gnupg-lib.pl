@@ -136,16 +136,18 @@ chmod(0700, "$user_module_config_directory/pass.$_[1]->{'key'}");
 # returns an error message or undef on failure
 sub encrypt_data
 {
+my ($data, $out, $keys, $ascii) = @_;
 my $srcfile = &transname();
-my @keys = ref($_[2]) eq 'ARRAY' ? @{$_[2]} : ( $_[2] );
+my @keys = ref($keys) eq 'ARRAY' ? @$keys : ( $keys );
 my $rcpt = join(" ", map { "--recipient ".quotemeta($_->{'name'}->[0]) } @keys);
-&write_file_contents($srcfile, $_[0]);
+&write_file_contents($srcfile, $data);
 my $dstfile = &transname();
-my $ascii = $_[3] ? "--armor" : "";
+my $asciiflag = $ascii ? "--armor" : "";
 my $comp = $config{'compress'} eq '' ? "" :
-		" --compress-algo $config{'compress'}";
+		" --compress-algo ".quotemeta($config{'compress'});
 &clean_language();
-my $cmd = "$gpgpath --output $dstfile $rcpt $ascii $comp --encrypt $srcfile";
+my $cmd = "$gpgpath --output ".quotemeta($dstfile).
+	  " $rcpt $asciiflag $comp --encrypt ".quotemeta($srcfile);
 my ($fh, $fpid) = &proc::pty_process_exec($cmd);
 while(1) {
 	my $rv = &wait_for($fh, "anyway");
@@ -162,7 +164,7 @@ unlink($srcfile);
 my $dst = &read_file_contents($dstfile);
 unlink($dstfile);
 if ($dst) {
-	${$_[1]} = $dst;
+	$$out = $dst;
 	return undef;
 	}
 else {
@@ -175,8 +177,9 @@ else {
 # into &result. Returns an error message or undef on success.
 sub decrypt_data
 {
+my ($data, $out) = @_;
 my $srcfile = &transname();
-&write_file_contents($srcfile, $_[0]);
+&write_file_contents($srcfile, $data);
 my $dstfile = &transname();
 &clean_language();
 my $cmd = "$gpgpath --output ".quotemeta($dstfile).
@@ -223,7 +226,7 @@ elsif ($error || $seen_pass > 1) {
 	return "<pre>$wait_for_input</pre>";
 	}
 else {
-	${$_[1]} = $dst;
+	$$out = $dst;
 	return undef;
 	}
 }
@@ -293,16 +296,17 @@ else {
 # code 4 = verification totally failed, message contains reason
 sub verify_data
 {
+my ($data, $sig) = @_;
 my $datafile = &transname();
-&write_file_contents($datafile, $_[0]);
+&write_file_contents($datafile, $data);
 my $cmd;
 my $sigfile;
-if (!$_[1]) {
+if (!$sig) {
 	$cmd = "$gpgpath --verify ".quotemeta($datafile);
 	}
 else {
 	$sigfile = &transname();
-	&write_file_contents($sigfile, $_[1]);
+	&write_file_contents($sigfile, $sig);
 	$cmd = "$gpgpath --verify ".quotemeta($sigfile)." ".quotemeta($datafile);
 	}
 #local ($fh, $fpid) = &proc::pty_process_exec($cmd);
@@ -338,8 +342,9 @@ else {
 # Returns the trust level of a key
 sub get_trust_level
 {
+my ($key) = @_;
 &clean_language();
-my $cmd = "$gpgpath --edit-key ".quotemeta($_[0]->{'name'}->[0]);
+my $cmd = "$gpgpath --edit-key ".quotemeta($key->{'name'}->[0]);
 my ($fh, $fpid) = &proc::pty_process_exec($cmd);
 my $rv = &wait_for($fh, "trust:\\s+(.)", "command>");
 my $tr;
