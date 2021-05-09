@@ -49,7 +49,7 @@ $ipvx_todestpattern='^([0-9\.]+)(\-([0-9\.]+))?(:(\d+)(\-(\d+))?)?$';
 # IP V4 only functions
 sub check_ipmask
 {
-foreach my $w (split(/\s+/, $_[0])) {
+foreach my $w (split(/[ \t\r\n,]+/, $_[0])) {
 	my $ok = &to_ipaddress($w) ||
 		$w =~ /^([0-9\.]+)\/([0-9\.]+)$/ &&
 			&to_ipaddress("$1") &&
