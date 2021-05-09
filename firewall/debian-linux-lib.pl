@@ -1,11 +1,14 @@
 # debians-linux-lib.pl
 # Deal with debian's iptables save file and startup script
 
+&foreign_require("init");
+
 if ($gconfig{'os_version'} >= 3.1 &&
     !-r "/etc/init.d/ip${ipvx}tables" &&
     !-r "/etc/init.d/webmin-ip${ipvx}tables" &&
     !$config{'force_init'} &&
-    !-d "/etc/netplan") {
+    !-d "/etc/netplan" &&
+    !-d "/etc/iptables") {
 	# In newer Debians, IPtable is started by the network init script, 
 	# unless netplan is in use
 	$has_new_debian_iptables = 1;
@@ -15,7 +18,7 @@ if ($gconfig{'os_version'} >= 3.1 &&
 	}
 elsif (-d "/etc/iptables") {
 	# Ubuntu 20 uses files in /etc/iptables if iptables-persistent is
-	# installed
+	# installed. However, on Debian 10 there is no init script!
 	$ip6tables_save_file = "/etc/iptables/rules.v6";
 	$iptables_save_file = "/etc/iptables/rules.v4";
 	$debian_init_script = $ipvx == 4 ? "iptables" : "ip6tables";
@@ -34,12 +37,16 @@ else {
 		}
 	}
 
+if (!&init::action_status($debian_init_script)) {
+	# Expected script doesn't exist!
+	$debian_init_script = undef;
+	}
+
 # apply_iptables()
 # Applies the current iptables configuration from the save file
 sub apply_iptables
 {
 if ($debian_init_script) {
-	&foreign_require("init");
 	my ($ok, $err) = &init::restart_action($debian_init_script);
 	return $ok ? undef : &html_escape($err);
 	}
@@ -65,7 +72,6 @@ else {
 # started_at_boot()
 sub started_at_boot
 {
-&foreign_require("init");
 if ($debian_init_script) {
 	# Check Debian init script
 	return &init::action_status($debian_init_script) == 2;
@@ -91,7 +97,6 @@ else {
 
 sub enable_at_boot
 {
-&foreign_require("init");
 if ($debian_init_script) {
 	# Enable the init script (assumes it exists)
 	&init::action_status($debian_init_script) > 0 ||
@@ -116,7 +121,6 @@ else {
 
 sub disable_at_boot
 {
-&foreign_require("init");
 if ($debian_init_script) {
 	# Turn off the init script
 	&init::disable_at_boot($debian_init_script);
@@ -138,7 +142,7 @@ else {
 
 sub get_primary_network_interface
 {
-&foreign_require("net", "net-lib.pl");
+&foreign_require("net");
 local @boot = sort { $a->{'fullname'} cmp $b->{'fullname'} }
 		   &net::boot_interfaces();
 local $pri;
