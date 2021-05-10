@@ -191,6 +191,13 @@ my $dstfile = &transname();
 &clean_language();
 my $pflag = "";
 my $pass;
+if (!$key) {
+	# No key was given, but if we have only one try it
+	my @keys = &list_secret_keys();
+	if (@keys == 1) {
+		$key = $keys[0];
+		}
+	}
 if ($key) {
 	# Key was given, use it's passphrase
 	$pass = &get_passphrase($key);
@@ -253,7 +260,7 @@ elsif (!defined($pass)) {
 	    &text('gnupg_canset', "/gnupg/edit_key.cgi?key=$key->{'key'}").".";
 	}
 elsif ($error || $seen_pass > 1) {
-	return "<pre>$wait_for_input</pre>";
+	return "<pre>".&html_escape($wait_for_input)."</pre>";
 	}
 else {
 	$$out = $dst;
