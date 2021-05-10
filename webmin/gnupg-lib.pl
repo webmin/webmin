@@ -30,13 +30,12 @@ while(<GPG>) {
 	if (/^pub\s+([a-z0-9]+)(\s+)([\d]{4}-[\d]{2}-[\d]{2})/ ||
 	    /^pub\s+(\S+)\/(\S+)\s+(\S+)\s+(.*)\s+<(\S+)>/ ||
 	    /^pub\s+(\S+)\/(\S+)\s+(\S+)\s+(.*)/) {
-
-		my $k = {'size' => $1,
-			     'key' => $2,
-			     'date' => $3,
-			     'name' => $4 ? [ $4 ] : [ ],
-			     'email' => $5 ? [ $5 ] : $4 ? [ "" ] : [ ],
-			     'index' => scalar(@rv) };
+		my $k = { 'size' => $1,
+			  'key' => $2,
+			  'date' => $3,
+			  'name' => $4 ? [ $4 ] : [ ],
+			  'email' => $5 ? [ $5 ] : $4 ? [ "" ] : [ ],
+			  'index' => scalar(@rv) };
 		if ($k->{'name'}->[0] &&
 		    $k->{'name'}->[0] =~ /\[(expires|expired):\s+(\S+)\]/) {
 			# Expiry date, the actual name
@@ -111,14 +110,22 @@ return $fp;
 }
 
 # get_passphrase(&key)
+# Returns the passphrase for a key, or undef if we don't have one
 sub get_passphrase
 {
-open(PASS, "<$user_module_config_directory/pass.$_[0]->{'key'}") ||
+my ($key) = @_;
+open(PASS, "<$user_module_config_directory/pass.$key->{'key'}") ||
   open(PASS, "<$user_module_config_directory/pass") || return undef;
 my $pass = <PASS>;
 close(PASS);
 chop($pass);
 return $pass;
+}
+
+sub get_passphrase_file
+{
+my ($key) = @_;
+return "$user_module_config_directory/pass.$key->{'key'}";
 }
 
 # put_passphrase(pass, &key)
@@ -172,32 +179,55 @@ else {
 	}
 }
 
-# decrypt_data(data, &result)
+# decrypt_data(data, &result, [&key])
 # Decrypts some data encrypted for the current GnuPG user, and puts the results
 # into &result. Returns an error message or undef on success.
 sub decrypt_data
 {
-my ($data, $out) = @_;
+my ($data, $out, $key) = @_;
 my $srcfile = &transname();
 &write_file_contents($srcfile, $data);
 my $dstfile = &transname();
 &clean_language();
-my $cmd = "$gpgpath --output ".quotemeta($dstfile).
+my $pflag = "";
+my $pass;
+if ($key) {
+	# Key was given, use it's passphrase
+	$pass = &get_passphrase($key);
+	return $text{'gnupg_esignpass'} if (!$key);
+	$pflag = "--batch --passphrase-file ".
+		 quotemeta(&get_passphrase_file($key));
+	}
+my $cmd = "$gpgpath $pflag --output ".quotemeta($dstfile).
 	  " --decrypt ".quotemeta($srcfile);
 my ($fh, $fpid) = &proc::pty_process_exec($cmd);
-my ($error, $seen_pass, $pass, $key, $keyid);
+my ($error, $seen_pass, $keyid);
+$wait_for_debug = 1;
 while(1) {
 	my $rv = &wait_for($fh, "passphrase:", "key,\\s+ID\\s+(\\S+),", "failed.*\\n", "error.*\\n", "invalid.*\\n", "signal caught.*\\n");
 	if ($rv == 0) {
+		# Only needed if caller didn't supply a key with passphrase
 		last if ($seen_pass++);
 		sleep(1);
 		syswrite($fh, "$pass\n", length("$pass\n"));
 		}
 	elsif ($rv == 1) {
+		# Only needed if caller didn't supply a key
 		$keyid = $matches[1];
-		($key) = grep { &indexof($matches[1], @{$_->{'key2'}}) >= 0 }
+		my $rkey;
+		($rkey) = grep { &indexof($matches[1], @{$_->{'key2'}}) >= 0 ||
+				$_->{'key'} eq $matches[1] }
 			      &list_secret_keys();
-		$pass = &get_passphrase($key) if ($key);
+		if ($rkey && $key) {
+			# Does discovered key match?
+			return &text('gnupg_ecryptkey2', "<tt>$keyid</tt>")
+				if ($rkey->{'key'} ne $key->{'key'});
+			}
+		elsif ($rkey && !$key) {
+			# Discovered the key to use
+			$pass = &get_passphrase($rkey);
+			$key = $rkey;
+			}
 		}
 	elsif ($rv > 1) {
 		$error++;
@@ -212,7 +242,7 @@ close($fh);
 unlink($srcfile);
 my $dst = &read_file_contents($dstfile);
 unlink($dstfile);
-if (!$keyid) {
+if (!$keyid && !$key) {
 	return $text{'gnupg_ecryptid'};
 	}
 elsif (!$key) {
@@ -240,28 +270,31 @@ my ($data, $out, $key, $mode) = @_;
 my $srcfile = &transname();
 &write_file_contents($srcfile, $data);
 my $dstfile = &transname();
-my $cmd;
-if ($mode == 0) {
-	$cmd = "$gpgpath --output ".quotemeta($dstfile)." --default-key $key->{'key'} --sign ".quotemeta($srcfile);
-	}
-elsif ($mode == 1) {
-	$cmd = "$gpgpath --output ".quotemeta($dstfile)." --default-key $key->{'key'} --clearsign ".quotemeta($srcfile);
-	}
-elsif ($mode == 2) {
-	$cmd = "$gpgpath --armor --output ".quotemeta($dstfile)." --default-key $key->{'key'} --detach-sig ".quotemeta($srcfile);
-	}
-&clean_language();
-my ($fh, $fpid) = &proc::pty_process_exec($cmd);
-&reset_environment();
-my ($error, $seen_pass);
 my $pass = &get_passphrase($key);
 if (!defined($pass)) {
 	return $text{'gnupg_esignpass'}.". ".
 	    &text('gnupg_canset', "/gnupg/edit_key.cgi?key=$key->{'key'}").".";
 	}
+my $pflag = "--batch --passphrase-file ".quotemeta(&get_passphrase_file($key));
+my $cmd;
+if ($mode == 0) {
+	$cmd = "$gpgpath $pflag --output ".quotemeta($dstfile)." --default-key $key->{'key'} --sign ".quotemeta($srcfile);
+	}
+elsif ($mode == 1) {
+	$cmd = "$gpgpath $pflag --output ".quotemeta($dstfile)." --default-key $key->{'key'} --clearsign ".quotemeta($srcfile);
+	}
+elsif ($mode == 2) {
+	$cmd = "$gpgpath $pflag --armor --output ".quotemeta($dstfile)." --default-key $key->{'key'} --detach-sig ".quotemeta($srcfile);
+	}
+&clean_language();
+my ($fh, $fpid) = &proc::pty_process_exec($cmd);
+&reset_environment();
+my ($error, $seen_pass);
 while(1) {
 	my $rv = &wait_for($fh, "passphrase:", "failed", "error");
 	if ($rv == 0) {
+		# This should never happen since we supply the passphrase
+		# on the command line already
 		last if ($seen_pass++);
 		sleep(1);
 		syswrite($fh, "$pass\n", length("$pass\n"));
