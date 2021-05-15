@@ -256,6 +256,7 @@ while(<FDISK>) {
 		# New disk section
 		if ($m3) {
 			# Parted format
+			# Disk /dev/sda: 121601cyl
 			$disk = { 'device' => $1,
 				  'prefix' => $1,
 				  'cylinders' => $2 };
