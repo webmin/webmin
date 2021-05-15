@@ -411,15 +411,16 @@ while ($bd =~ /\./) {
 return ( );
 }
 
+# get_certbot_major_version(cmd)
 # Returns Let's Encrypt client major version, such as 1.11 or 0.40
 sub get_certbot_major_version
 {
 my ($cmd) = @_;
-my $out = &backquote_command("$cmd --version");
+my $out = &backquote_command("$cmd --version 2>&1");
 if ($out && $out =~ /\s*(\d+\.\d+)\s*/) {
 	return $1;
 	}
-	return 0;
+return undef;
 }
 
 1;
