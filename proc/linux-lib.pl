@@ -514,38 +514,45 @@ if (&has_command("sensors")) {
                                     'temp' => $1 });
                         }
                 else {
-                    # New line - new device (disallow, if no either fan or voltage data)
-                    $aa = 0 if (/^\s*$/);
-                    # Device has either fan or voltage data (sign of CPU)
-                    $aa = 1 if (/fan[\d+]:\s+[0-9]+\s+RPM/i ||
-                                /in[\d+]:\s+[\+\-0-9\.]+\s+V/i);
-                    # Get odd output like in #1253
-                    if ($aa && /temp(\d+):\s+([\+\-][0-9\.]+)\s+.*?[=+].*?\)/) {
-                            # Adjust to start from `0` as all other outputs
-                            push(@rvx, { 'core' => (int($1) - 1),
-                                         'temp' => $2 });
-                            }
-                    
-                    # New line - new device
-                    $ab = 0 if (/^\s*$/);
-                    # Check for CPU
-                    $ab = 1 if (/cpu_thermal-virtual-[\d]+/i);
-                    # Get odd output like in #1280
-                    if ($ab && /temp(\d+):\s+([\+\-][0-9\.]+)/) {
-                        push(@rvx, { 'core' => $1,
-                                     'temp' => $2 });
-                        }
+			# New line - new device (disallow, if no either fan or
+			# voltage data)
+			$aa = 0 if (/^\s*$/);
 
-                    # AMD Ryzen oddness
-                    $ac = 0 if (/^\s*$/);
-                    # Check for CPU
-                    $ac = 1 if (/[\d]+temp-pci/i);
-                    # Get odd output like in #discussion/600155
-                    if ($ac && /Tdie:\s+([\+\-][0-9\.]+)/) {
-                        push(@rvx, { 'core' => 0,
-                                     'temp' => $1 });
-                        }
-                    }
+			# Device has either fan or voltage data (sign of CPU)
+			$aa = 1 if (/fan[\d+]:\s+[0-9]+\s+RPM/i ||
+				    /in[\d+]:\s+[\+\-0-9\.]+\s+V/i);
+
+			# Get odd output like in #1253
+			if ($aa && /temp(\d+):\s+([\+\-][0-9\.]+)\s+.*?[=+].*?\)/) {
+				# Adjust to start from `0` as all other outputs
+				push(@rvx, { 'core' => (int($1) - 1),
+					     'temp' => $2 });
+				}
+                    
+			# New line - new device
+			$ab = 0 if (/^\s*$/);
+
+			# Check for CPU
+			$ab = 1 if (/cpu_thermal-virtual-[\d]+/i);
+
+			# Get odd output like in #1280
+			if ($ab && /temp(\d+):\s+([\+\-][0-9\.]+)/) {
+				push(@rvx, { 'core' => $1,
+					     'temp' => $2 });
+				}
+
+			# AMD Ryzen oddness
+			$ac = 0 if (/^\s*$/);
+
+			# Check for CPU
+			$ac = 1 if (/[\d]+temp-pci/i);
+
+			# Get odd output like in #discussion/600155
+			if ($ac && /Tdie:\s+([\+\-][0-9\.]+)/) {
+				push(@rvx, { 'core' => 0,
+					     'temp' => $1 });
+				}
+			}
                 }
         close($fh);
         }
