@@ -170,7 +170,7 @@ twofactor_enrolllink=<a href='$1'>Webmin Users</a>モジュールで2要素認�
 twofactor_url=$1の詳細については、Webサイト<a href='$2' target=_blank>$2</a>をご覧ください。
 twofactor_etotpmodule=2要素認証に必要なPerlモジュール<tt>$1</tt>はインストールされていません。 Webminの<a href='$2'>Perlモジュール</a>ページを使用してインストールします。
 twofactor_qrcode=Google認証システムアプリでシークレットコード$1を入力するか、以下のQRコードをスキャンします。
-twofactor_etotpid=無効なTOPT base32エンコードシークレット
+twofactor_etotpid=無効なTOTP base32エンコードシークレット
 twofactor_esecret=秘密鍵は正確に16文字の長さで、文字と数字のみを含む必要があります
 twofactor_esession=セッションベース認証がアクティブでない限り、二要素認証は使用できません
 

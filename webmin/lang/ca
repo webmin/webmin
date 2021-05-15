@@ -1104,7 +1104,7 @@ twofactor_enrolllink=Ara pots assignar l'autenticació de dos factors al mòdul 
 twofactor_url=Per saber més sobre $1, visita el lloc web a <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=El mòdul Perl <tt>$1</tt> necessari per a l'autenticació de dos factors no està instal·lat. Utilitza la pàgina de <a href='$2'>Mòduls Perl</a> de Webmin per instal·lar-lo.
 twofactor_qrcode=Introdueix el codi secret $1 a l'aplicació de Google Authenticator, o bé escaneja el codi QR de sota.
-twofactor_etotpid=La clau secreta codificada amb base 32 TOPT és invàlida
+twofactor_etotpid=La clau secreta codificada amb base 32 TOTP és invàlida
 twofactor_etotptoken=El testimoni de Google Authenticator ha de ser un número
 twofactor_etotpmodule2=Hi falta el mòdul Perl $1
 twofactor_etotpmatch=El codi OTP és incorrecte

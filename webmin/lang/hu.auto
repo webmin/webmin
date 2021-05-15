@@ -1030,7 +1030,7 @@ twofactor_enrolllink=Most regisztrálhat kétfaktoros hitelesítésre a <a href=
 twofactor_url=Ha többet szeretne megtudni a $1 -ról, tekintse meg webhelyét a <a href='$2' target=_blank>$2</a> webhelyen.
 twofactor_etotpmodule=A két tényezőhitelesítéshez szükséges <tt>$1</tt> Perl modul nincs telepítve. A Webmin <a href='$2'>Perl-modulok</a> oldalával telepítse.
 twofactor_qrcode=Írja be a $1 titkos kódot a Google Authenticator alkalmazásba, vagy szkennelje be az alábbi QR-kódot.
-twofactor_etotpid=Érvénytelen TOPT base32-kódolású titok
+twofactor_etotpid=Érvénytelen TOTP base32-kódolású titok
 twofactor_etotptoken=A Google Authenticator tokennek számnak kell lennie
 twofactor_etotpmodule2=Hiányzó Perl modul $1
 twofactor_etotpmatch=Helytelen OTP kód

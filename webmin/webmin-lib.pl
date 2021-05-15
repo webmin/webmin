@@ -2612,7 +2612,7 @@ else {
 }
 
 # validate_twofactor_apikey_totp()
-# Checks that the needed Perl module for TOPT is installed.
+# Checks that the needed Perl module for TOTP is installed.
 sub validate_twofactor_apikey_totp
 {
 my ($miniserv, $in) = @_;

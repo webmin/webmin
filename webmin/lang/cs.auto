@@ -373,7 +373,7 @@ twofactor_enrolllink=Nyní se můžete přihlásit k dvoufaktorové autentizaci 
 twofactor_url=Další informace o $1 naleznete na webových stránkách <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Modul Perl <tt>$1</tt> potřebný pro dvoufaktorovou autentizaci není nainstalován. Chcete-li ji nainstalovat, použijte <a href='$2'>Perl moduly</a> ve Webminu.
 twofactor_qrcode=Do aplikace Google Authenticator zadejte tajný kód $1 nebo naskenujte níže uvedený QR kód.
-twofactor_etotpid=Neplatné tajné kódování TOPT base32
+twofactor_etotpid=Neplatné tajné kódování TOTP base32
 twofactor_etotptoken=Token Google Authenticator musí být číslo
 twofactor_etotpmodule2=Chybí modul Perl $1
 twofactor_etotpmatch=Nesprávný kód OTP

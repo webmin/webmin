@@ -1127,7 +1127,7 @@ twofactor_enrolllink=Bây giờ bạn có thể đăng ký xác thực hai yếu
 twofactor_url=Để tìm hiểu thêm về $1, hãy xem trang web của nó tại <a href='$2' target=etric>$2</a>.
 twofactor_etotpmodule=Mô-đun Perl <tt>$1</tt> cần thiết cho xác thực hai yếu tố không được cài đặt. Sử dụng trang <a href='$2'>Mô-đun Perl</a> trong Webmin để cài đặt nó.
 twofactor_qrcode=Nhập mã bí mật $1 trong ứng dụng Google Authenticator hoặc quét mã QR bên dưới.
-twofactor_etotpid=Bí mật được mã hóa TOPT base32 không hợp lệ
+twofactor_etotpid=Bí mật được mã hóa TOTP base32 không hợp lệ
 twofactor_etotptoken=Mã thông báo Google Authenticator phải là một số
 twofactor_etotpmodule2=Thiếu mô-đun Perl $1
 twofactor_etotpmatch=Mã OTP không chính xác

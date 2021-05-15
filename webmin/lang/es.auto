@@ -565,7 +565,7 @@ twofactor_enrolllink=Ahora puede inscribirse para la autenticación de dos facto
 twofactor_url=Para obtener más información sobre $1, consulte su sitio web en <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=El módulo Perl <tt>$1</tt> necesario para la autenticación de dos factores no está instalado. Use la página <a href='$2'>Módulos Perl</a> en Webmin para instalarlo.
 twofactor_qrcode=Ingrese el código secreto $1 en la aplicación Google Authenticator, o escanee el código QR a continuación.
-twofactor_etotpid=Secreto codificado en base32 TOPT no válido
+twofactor_etotpid=Secreto codificado en base32 TOTP no válido
 twofactor_etotptoken=El token de Google Authenticator debe ser un número
 twofactor_etotpmodule2=Módulo Perl perdido $1
 twofactor_etotpmatch=Código OTP incorrecto

@@ -1127,7 +1127,7 @@ twofactor_enrolllink=Du kan nu tilmelde dig tofaktorautentisering i <a href='$1'
 twofactor_url=For at lære mere om $1, se dets websted på <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Perl-modulet <tt>$1</tt> nødvendigt til tofaktorautentisering er ikke installeret. Brug siden <a href='$2'>Perl Modules</a> i Webmin til at installere den.
 twofactor_qrcode=Indtast den hemmelige kode $1 i Google Authenticator-appen, eller scannér QR-koden nedenfor.
-twofactor_etotpid=Ugyldig TOPT base32-kodet hemmelighed
+twofactor_etotpid=Ugyldig TOTP base32-kodet hemmelighed
 twofactor_etotptoken=Google Authenticator-token skal være et nummer
 twofactor_etotpmodule2=Manglende Perl-modul $1
 twofactor_etotpmatch=Forkert OTP-kode

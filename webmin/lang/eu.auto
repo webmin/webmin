@@ -1127,7 +1127,7 @@ twofactor_enrolllink=Bi faktoreren autentikazioan izena eman dezakezu <a href='$
 twofactor_url=$1 buruz gehiago jakiteko, ikusi <a href='$2' target=_blank>$2</a> webgunean.
 twofactor_etotpmodule=Ez da instalatu bi faktoreen autentikaziorako behar den <tt>$1</tt>. Erabili <a href='$2'>Perl moduluak</a> orria Webmin-en instalatzeko.
 twofactor_qrcode=Sartu $1 kode sekretua Google Authenticator aplikazioan edo eskaneatu beheko QR kodea.
-twofactor_etotpid=TOPT base32 kodetutako sekretu baliogabea
+twofactor_etotpid=TOTP base32 kodetutako sekretu baliogabea
 twofactor_etotptoken=Google Authenticator token zenbakia izan behar da
 twofactor_etotpmodule2=Perl modulua falta da $1
 twofactor_etotpmatch=OTP kode okerra

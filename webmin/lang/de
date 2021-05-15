@@ -1111,7 +1111,7 @@ twofactor_enrolllink=Sie können jetzt für die 2-Faktor-Authentifizierung in de
 twofactor_url=Um mehr über $1 zu erfahren, besuche Webseite unter <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Das Perl-Modul <tt>$1</tt>, welches für die 2-Faktor-Authentifizierung erforderlich ist, ist nicht installiert. Verwenden Sie die <a href='$2'>Perl Module</a> Seite in Webmin um es zu installieren.
 twofactor_qrcode=Geben Sie den Geheimcode $1 in der Google Authenticator App ein, oder scannen Sie den QR-Code unten.
-twofactor_etotpid=Ungültiger TOPT base32-enkodierter Schlüssel
+twofactor_etotpid=Ungültiger TOTP base32-enkodierter Schlüssel
 twofactor_etotptoken=Google Authenticator Token muss eine Zahl sein
 twofactor_etotpmodule2=Fehlendes Perl-Modul $1
 twofactor_etotpmatch=Falscher OTP-Code
