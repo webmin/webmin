@@ -76,7 +76,7 @@ $ver = &get_usermin_version();
 	   "edit_defacl.cgi",
 	   "edit_logout.cgi",
 	   "edit_dav.cgi",
-	   $miniserv{'session'} ? ( "list_sessions.cgi" ) : ( ),
+	   $miniserv{'session'} ? ( "list_sessions.cgi", "edit_twofactor.cgi" ) : ( ),
 	   "edit_blocked.cgi",
 	   "edit_mobile.cgi",
 	   "edit_advanced.cgi" );
