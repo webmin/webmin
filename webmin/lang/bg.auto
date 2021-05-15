@@ -1127,7 +1127,7 @@ twofactor_enrolllink=Вече можете да се регистрирате з
 twofactor_url=За да научите повече за $1, вижте неговия уебсайт на <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Модулът Perl <tt>$1</tt>, необходим за двуфакторно удостоверяване, не е инсталиран. Използвайте страницата <a href='$2'>Perl Modules</a> в Webmin, за да я инсталирате.
 twofactor_qrcode=Въведете секретен код $1 в приложението Google Authenticator или сканирайте QR кода по-долу.
-twofactor_etotpid=Невалидна тайна, кодирана от базата TOPT
+twofactor_etotpid=Невалидна тайна, кодирана от базата TOTP
 twofactor_etotptoken=Маркерът на Google Authenticator трябва да е номер
 twofactor_etotpmodule2=Липсва модул на Perl $1
 twofactor_etotpmatch=Неправилен OTP код

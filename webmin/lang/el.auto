@@ -1127,7 +1127,7 @@ twofactor_enrolllink=Τώρα μπορείτε να εγγραφείτε για 
 twofactor_url=Για να μάθετε περισσότερα σχετικά με το $1, ανατρέξτε στον ιστότοπό του στο <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Δεν απαιτείται η υπομονάδα Perl <tt>$1</tt> που απαιτείται για τον έλεγχο ταυτότητας δύο παραγόντων. Χρησιμοποιήστε τη σελίδα <a href='$2'>Perl Modules</a> στο Webmin για να την εγκαταστήσετε.
 twofactor_qrcode=Εισαγάγετε τον μυστικό κώδικα $1 στην εφαρμογή Επαληθευτής Google ή σαρώστε τον παρακάτω κωδικό QR.
-twofactor_etotpid=Μη έγκυρο μυστικό κωδικοποίησης βασικής βάσης 32 TOPT
+twofactor_etotpid=Μη έγκυρο μυστικό κωδικοποίησης βασικής βάσης 32 TOTP
 twofactor_etotptoken=Το διακριτικό του Google Authenticator πρέπει να είναι ένας αριθμός
 twofactor_etotpmodule2=Λείπει το στοιχείο Perl $1
 twofactor_etotpmatch=Λανθασμένος κώδικας OTP

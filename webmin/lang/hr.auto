@@ -1127,7 +1127,7 @@ twofactor_enrolllink=Sada se možete prijaviti za dvofaktornu provjeru autentič
 twofactor_url=Da biste saznali više o $1, pogledajte web stranicu na <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Perl modul <tt>$1</tt> potreban za dvofaktorsku provjeru identiteta nije instaliran. Upotrijebite stranicu <a href='$2'>Perl moduli</a> u Webminu kako biste je instalirali.
 twofactor_qrcode=Unesite tajni kôd $1 u aplikaciju Google Authenticator ili skenirajte QR kôd u nastavku.
-twofactor_etotpid=Nevaljana tajna TOPT kodirana na bazi32
+twofactor_etotpid=Nevaljana tajna TOTP kodirana na bazi32
 twofactor_etotptoken=Token Google Autentifikator mora biti broj
 twofactor_etotpmodule2=Nedostaje Perl modul $1
 twofactor_etotpmatch=Neispravan OTP kôd

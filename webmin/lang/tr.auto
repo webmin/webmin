@@ -635,7 +635,7 @@ twofactor_enrolllink=Artık <a href='$1'>Webmin Users</a> modülüne iki öğeli
 twofactor_url=$1 hakkında daha fazla bilgi edinmek için <a href='$2' target=_blank>$2</a> adresindeki web sitesine bakın.
 twofactor_etotpmodule=İki faktörlü kimlik doğrulaması için gereken Pertt modülü <tt>$1</tt> kurulu değil. Yüklemek için Webmin'deki <a href='$2'>Perl Modülleri</a> sayfasını kullanın.
 twofactor_qrcode=Google Şifrematik uygulamasına gizli kodu $1 girin veya aşağıdaki QR kodunu tarayın.
-twofactor_etotpid=TOPT base32 kodlu gizli geçersiz
+twofactor_etotpid=TOTP base32 kodlu gizli geçersiz
 twofactor_etotptoken=Google Şifrematik jetonu bir sayı olmalıdır
 twofactor_etotpmodule2=Perl modülü eksik $1
 twofactor_etotpmatch=Yanlış OTP kodu

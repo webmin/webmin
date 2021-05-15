@@ -1127,7 +1127,7 @@ twofactor_enrolllink=Voit nyt ilmoittautua kaksifaktoriseen todennukseen <a href
 twofactor_url=Lisätietoja $1 on verkkosivustolla osoitteessa <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Kaksitekijäiseen todennukseen tarvittavaa Perl-moduulia <tt>$1</tt> ei ole asennettu. Asenna se Webminin <a href='$2'>Perl-moduulit</a> -sivulla.
 twofactor_qrcode=Kirjoita salainen koodi $1 Google Authenticator -sovellukseen tai skannaa alla oleva QR-koodi.
-twofactor_etotpid=Virheellinen TOPT base32-koodattu salaisuus
+twofactor_etotpid=Virheellinen TOTP base32-koodattu salaisuus
 twofactor_etotptoken=Google Authenticator -tunnuksen on oltava numero
 twofactor_etotpmodule2=Puuttuu Perl-moduuli $1
 twofactor_etotpmatch=Väärä OTP-koodi

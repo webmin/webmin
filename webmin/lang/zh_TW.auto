@@ -669,7 +669,7 @@ twofactor_enrolllink=現在，您可以在<a href='$1'>Webmin用戶</a>模塊中
 twofactor_url=要了解有關$1的更多信息，請參見其網站，網址為<a href='$2' target=_blank>$2</a>。
 twofactor_etotpmodule=未安裝兩因素身份驗證所需的Perl模塊<tt>$1</tt>。使用Webmin中的<a href='$2'>Perl模塊</a>頁進行安裝。
 twofactor_qrcode=在Google Authenticator應用程序中輸入密碼$1，或掃描下面的QR碼。
-twofactor_etotpid=無效的TOPT base32編碼的機密
+twofactor_etotpid=無效的TOTP base32編碼的機密
 twofactor_etotptoken=Google Authenticator令牌必須是數字
 twofactor_etotpmodule2=缺少Perl模塊$1
 twofactor_etotpmatch=錯誤的OTP碼

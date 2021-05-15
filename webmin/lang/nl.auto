@@ -192,7 +192,7 @@ twofactor_enrolllink=U kunt zich nu aanmelden voor tweefactorauthenticatie in de
 twofactor_url=Ga voor meer informatie over $1 naar de website op <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=De Perl-module <tt>$1</tt> die nodig is voor tweefactorauthenticatie is niet geïnstalleerd. Gebruik de pagina <a href='$2'>Perl-modules</a> in Webmin om deze te installeren.
 twofactor_qrcode=Voer de geheime code $1 in de Google Authenticator-app in of scan de QR-code hieronder.
-twofactor_etotpid=Ongeldig TOPT base32-gecodeerd geheim
+twofactor_etotpid=Ongeldig TOTP base32-gecodeerd geheim
 twofactor_etotptoken=Google Authenticator-token moet een nummer zijn
 twofactor_etotpmodule2=Ontbrekende Perl-module $1
 twofactor_etotpmatch=Onjuiste OTP-code

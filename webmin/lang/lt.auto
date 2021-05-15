@@ -1127,7 +1127,7 @@ twofactor_enrolllink=Dabar galite užsiregistruoti dviejų veiksnių autentifika
 twofactor_url=Norėdami sužinoti daugiau apie $1, apsilankykite jos svetainėje adresu <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=„Perl“ modulis <tt>$1</tt>, reikalingas dviejų faktorių autentifikavimui, neįdiegtas. Norėdami ją įdiegti, naudokite „Webmin“ puslapį <a href='$2'>„Perl“ moduliai</a>.
 twofactor_qrcode=Įveskite slaptą kodą $1 „Google Authenticator“ programoje arba nuskaitykite toliau esantį QR kodą.
-twofactor_etotpid=Netinkama „TOPT base32“ užkoduota paslaptis
+twofactor_etotpid=Netinkama „TOTP base32“ užkoduota paslaptis
 twofactor_etotptoken=„Google Authenticator“ prieigos raktas turi būti numeris
 twofactor_etotpmodule2=Trūksta „Perl“ modulio $1
 twofactor_etotpmatch=Neteisingas OTP kodas

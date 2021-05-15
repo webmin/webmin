@@ -365,7 +365,7 @@ twofactor_enrolllink=<a href='$1'>Webmin Users</a> 모듈에서 2 단계 인증�
 twofactor_url=$1에 대한 자세한 내용은 웹 사이트 <a href='$2' target=_blank>$2</a>를 참조하십시오.
 twofactor_etotpmodule=이중 인증에 필요한 Perl 모듈 <tt>$1</tt>이 설치되지 않았습니다. Webmin의 <a href='$2'>Perl Modules</a> 페이지를 사용하여 설치하십시오.
 twofactor_qrcode=Google OTP 앱에 비밀 코드 $1를 입력하거나 아래 QR 코드를 스캔하십시오.
-twofactor_etotpid=잘못된 TOPT base32로 인코딩 된 비밀
+twofactor_etotpid=잘못된 TOTP base32로 인코딩 된 비밀
 twofactor_etotptoken=Google OTP 토큰은 숫자 여야합니다
 twofactor_etotpmodule2=누락 된 Perl 모듈 $1
 twofactor_etotpmatch=잘못된 OTP 코드

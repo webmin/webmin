@@ -1127,7 +1127,7 @@ twofactor_enrolllink=Issa tista 'tirreġistra għal awtentikazzjoni b'żewġ fat
 twofactor_url=Biex titgħallem aktar dwar $1, ara l-websajt tagħha fuq <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Il-modulu Perl <tt>$1</tt> meħtieġ għall-awtentikazzjoni b'żewġ fatturi mhuwiex installat. Uża l-paġna <a href='$2'>Moduli Perl</a> fil-Webmin biex tinstallaha.
 twofactor_qrcode=Daħħal il-kodiċi sigriet $1 fl-app Google Authenticator, jew skennja l-kodiċi QR hawn taħt.
-twofactor_etotpid=Sigriet TOPT mhux validu tal-bażi32-ikkodifikat
+twofactor_etotpid=Sigriet TOTP mhux validu tal-bażi32-ikkodifikat
 twofactor_etotptoken=It-token tal-Google Authenticator għandu jkun numru
 twofactor_etotpmodule2=Modulu Perl Nieqes $1
 twofactor_etotpmatch=Kodiċi OTP mhux korrett

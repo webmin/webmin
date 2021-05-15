@@ -805,7 +805,7 @@ twofactor_enrolllink=现在，您可以在 <a href='$1'>Webmin 用户</a> 模块
 twofactor_url=要了解有关 $1 的更多信息，请参见其网站，网址为 <a href='$2' target=_blank>$2</a>。
 twofactor_etotpmodule=未安装双因素身份验证所需的 Perl 模块 <tt>$1</tt>。使用 Webmin 中的 <a href='$2'>Perl 模块</a> 页面进行安装。
 twofactor_qrcode=在 Google Authenticator 应用程序中输入密码 $1，或扫描下面的二维码。
-twofactor_etotpid=无效的 TOPT base32 编码令牌
+twofactor_etotpid=无效的 TOTP base32 编码令牌
 twofactor_etotptoken=Google Authenticator 令牌必须是数字
 twofactor_etotpmodule2=未设定 Perl 模块 $1
 twofactor_etotpmatch=错误的 OTP 码

@@ -1127,7 +1127,7 @@ twofactor_enrolllink=Tagad jūs varat reģistrēties divu faktoru autentifikāci
 twofactor_url=Lai uzzinātu vairāk par $1, skatiet tās vietni vietnē <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Perl modulis <tt>$1</tt>, kas nepieciešams divu faktoru autentifikācijai, nav instalēts. Lai to instalētu, izmantojiet Webmin lapu <a href='$2'>Perl Modules</a>.
 twofactor_qrcode=Google autentifikatora lietotnē ievadiet slepeno kodu $1 vai skenējiet zemāk redzamo QR kodu.
-twofactor_etotpid=Nederīgs TOPT base32 kodēts noslēpums
+twofactor_etotpid=Nederīgs TOTP base32 kodēts noslēpums
 twofactor_etotptoken=Google autentifikatora marķierim jābūt skaitlim
 twofactor_etotpmodule2=Trūkst Perla moduļa $1
 twofactor_etotpmatch=Nepareizs OTP kods
