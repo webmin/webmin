@@ -1851,8 +1851,8 @@ if ($config{'userfile'}) {
 				}
 			}
 		else {
-			# Trim username to remove leading and trailing spaces to 
-			# be able to login, if username copy/paste from somewhere
+			# Trim username to remove leading and trailing spaces to
+			# be able to login, if username pastes from somewhere
 			$in{'user'} =~ s/^\s+|\s+$//g;
 
 			# Validate the user
@@ -1873,11 +1873,11 @@ if ($config{'userfile'}) {
 				&validate_user($in{'user'}, $in{'pass'}, $host,
 					       $acptip, $port);
 			if ($vu && $wvu) {
-				my $uinfo = &get_user_details($wvu);
+				my $uinfo = &get_user_details($wvu, $vu);
 				if ($uinfo && $uinfo->{'twofactor_provider'}) {
 					# Check two-factor token ID
 					$err = &validate_twofactor(
-						$wvu, $in{'twofactor'});
+						$wvu, $in{'twofactor'}, $vu);
 					if ($err) {
 						&run_failed_script(
 							$vu, 'twofactor',
@@ -2183,7 +2183,7 @@ if ($config{'userfile'}) {
 		return 0;
 		}
 	}
-$uinfo = &get_user_details($baseauthuser);
+$uinfo = &get_user_details($baseauthuser, $authuser);
 
 # Validate the path, and convert to canonical form
 rerun:
@@ -3602,7 +3602,7 @@ elsif ($canmode == 0) {
 	}
 elsif ($canmode == 1) {
 	# Attempt Webmin authentication
-	my $uinfo = &get_user_details($webminuser);
+	my $uinfo = &get_user_details($webminuser, $canuser);
 	if ($uinfo &&
 	    &password_crypt($pass, $uinfo->{'pass'}) eq $uinfo->{'pass'}) {
 		# Password is valid .. but check for expiry
@@ -4837,6 +4837,17 @@ if ($config{'userfile'}) {
 		}
 	close(USERS);
 	}
+if ($config{'twofactorfile'}) {
+	open(TWO, $config{'twofactorfile'});
+	while(<TWO>) {
+		s/\r|\n//g;
+                local @two = split(/:/, $_, -1);
+		$twofactor{$two[0]} = { 'provider' => $two[1],
+					'id' => $two[2],
+					'apikey' => $two[3], };
+		}
+	close(TWO);
+	}
 
 # Test user DB, if configured
 if ($config{'userdb'}) {
@@ -4850,13 +4861,14 @@ if ($config{'userdb'}) {
 	}
 }
 
-# get_user_details(username)
+# get_user_details(username, [original-username])
 # Returns a hash ref of user details, either from config files or the user DB
 sub get_user_details
 {
-my ($username) = @_;
+my ($username, $origusername) = @_;
 if (exists($users{$username})) {
 	# In local files
+	my $two = $twofactor{$origusername} || $twofactor{$username};
 	return { 'name' => $username,
 		 'pass' => $users{$username},
 		 'certs' => $certs{$username},
@@ -4868,9 +4880,9 @@ if (exists($users{$username})) {
 		 'nochange' => $nochange{$username},
 		 'temppass' => $temppass{$username},
 		 'preroot' => $config{'preroot_'.$username},
-		 'twofactor_provider' => $twofactor{$username}->{'provider'},
-		 'twofactor_id' => $twofactor{$username}->{'id'},
-		 'twofactor_apikey' => $twofactor{$username}->{'apikey'},
+		 'twofactor_provider' => $two->{'provider'},
+		 'twofactor_id' => $two->{'id'},
+		 'twofactor_apikey' => $two->{'apikey'},
 	       };
 	}
 if ($config{'userdb'}) {
@@ -6310,18 +6322,19 @@ $tmp =~ s/<[^>]*>//g;
 return $tmp;
 }
 
-# validate_twofactor(username, token)
+# validate_twofactor(username, token, orig-username)
 # Checks if a user's two-factor token is valid or not. Returns undef on success
 # or the error message on failure.
 sub validate_twofactor
 {
-my ($user, $token) = @_;
-local $uinfo = &get_user_details($user);
+my ($user, $token, $origuser) = @_;
+local $uinfo = &get_user_details($user, $origuser);
 $token =~ s/^\s+//;
 $token =~ s/\s+$//;
 $token || return "No two-factor token entered";
 $uinfo->{'twofactor_provider'} || return undef;
 pipe(TOKENr, TOKENw);
+print STDERR join(" ", $config{'twofactor_wrapper'}, $user, $uinfo->{'twofactor_provider'}, $uinfo->{'twofactor_id'}, $token, $uinfo->{'twofactor_apikey'}),"\n";
 my $pid = &execute_webmin_command($config{'twofactor_wrapper'},
 	[ $user, $uinfo->{'twofactor_provider'}, $uinfo->{'twofactor_id'},
 	  $token, $uinfo->{'twofactor_apikey'} ],
