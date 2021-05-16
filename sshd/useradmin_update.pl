@@ -19,7 +19,7 @@ if ($config{'sync_create'} && &has_command($config{'keygen_path'}) &&
 	else {
 		$cmd = "$config{'keygen_path'} $type -P \"\"";
 		}
-	&system_logged("echo '' | ".&command_as_user($uinfo->{'user'}, $cmd).
+	&system_logged("echo '' | ".&command_as_user($uinfo->{'user'}, 0, $cmd).
 		       " >/dev/null 2>&1");
 	if ($config{'sync_auth'}) {
 		my $akeys = "$uinfo->{'home'}/.ssh/authorized_keys";
