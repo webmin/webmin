@@ -1240,6 +1240,7 @@ close(CONF);
 \$ENV{'PERLLIB'} = "\$root";
 \$ENV{'WEBMIN_CONFIG'} = "$ENV{'WEBMIN_CONFIG'}";
 \$ENV{'WEBMIN_VAR'} = "$ENV{'WEBMIN_VAR'}";
+delete(\$ENV{'MINISERV_CONFIG'});
 EOF
 	);
 if ($gconfig{'os_type'} eq 'windows') {
