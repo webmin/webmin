@@ -5,6 +5,7 @@ require './usermin-lib.pl';
 &ReadParse();
 &error_setup($text{'twofactor_err'});
 &get_usermin_miniserv_config(\%miniserv);
+&foreign_require("cron");
 
 # Validate inputs
 if ($in{'twofactor_provider'}) {
@@ -20,6 +21,8 @@ if ($in{'twofactor_provider'}) {
 &lock_file($usermin_miniserv_config);
 $miniserv{'twofactor_provider'} = $in{'twofactor_provider'};
 $miniserv{'twofactorfile'} ||= "$config{'usermin_dir'}/twofactor";
+$miniserv{'twofactor_wrapper'} = $module_config_directory."/twofactor.pl";
+&cron::create_wrapper($miniserv{'twofactor_wrapper'}, "acl", "twofactor.pl");
 &put_usermin_miniserv_config(\%miniserv);
 &unlock_file($usermin_miniserv_config);
 &restart_usermin_miniserv();

@@ -991,7 +991,7 @@ my %miniserv;
 &get_usermin_miniserv_config(\%miniserv);
 return 0 if (!$miniserv{'twofactorfile'});
 &lock_file($miniserv{'twofactorfile'});
-my $lref = &read_file_lines($miniserv{'twofactorfile'}, 1);
+my $lref = &read_file_lines($miniserv{'twofactorfile'});
 my $found = 0;
 my $i = 0;
 foreach my $l (@$lref) {
