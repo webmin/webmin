@@ -5,32 +5,35 @@ do 'sshd-lib.pl';
 # Setup SSH and GNUPG for new users
 sub useradmin_create_user
 {
+my ($uinfo) = @_;
 if ($config{'sync_create'} && &has_command($config{'keygen_path'}) &&
-    -d $_[0]->{'home'} && !-d "$_[0]->{'home'}/.ssh") {
+    -d $uinfo->{'home'} && !-d "$uinfo->{'home'}/.ssh") {
 	local $cmd;
 	local $type = $config{'sync_type'} ? "-t $config{'sync_type'}" :
 		      $version{'type'} eq 'openssh' &&
 		       $version{'number'} >= 3.2 ? "-t rsa1" : "";
-	if ($config{'sync_pass'} && $_[0]->{'passmode'} == 3) {
-		$cmd = "$config{'keygen_path'} $type -P \"$_[0]->{'plainpass'}\"";
+	if ($config{'sync_pass'} && $uinfo->{'passmode'} == 3) {
+		$cmd = "$config{'keygen_path'} $type -P ".
+		       quotemeta($uinfo->{'plainpass'});
 		}
 	else {
 		$cmd = "$config{'keygen_path'} $type -P \"\"";
 		}
-	&system_logged("echo '' | su $_[0]->{'user'} -c '$cmd' >/dev/null 2>&1");
+	&system_logged("echo '' | ".&command_as_user($uinfo->{'user'}, $cmd).
+		       " >/dev/null 2>&1");
 	if ($config{'sync_auth'}) {
-		my $akeys = "$_[0]->{'home'}/.ssh/authorized_keys";
+		my $akeys = "$uinfo->{'home'}/.ssh/authorized_keys";
 		&lock_file($akeys);
-		if (-r "$_[0]->{'home'}/.ssh/identity.pub") {
-			&copy_source_dest("$_[0]->{'home'}/.ssh/identity.pub", $akeys);
+		if (-r "$uinfo->{'home'}/.ssh/identity.pub") {
+			&copy_source_dest("$uinfo->{'home'}/.ssh/identity.pub", $akeys);
 			}
-		elsif (-r "$_[0]->{'home'}/.ssh/id_rsa.pub") {
-			&copy_source_dest("$_[0]->{'home'}/.ssh/id_rsa.pub", $akeys);
+		elsif (-r "$uinfo->{'home'}/.ssh/id_rsa.pub") {
+			&copy_source_dest("$uinfo->{'home'}/.ssh/id_rsa.pub", $akeys);
 			}
 		else {
-			&copy_source_dest("$_[0]->{'home'}/.ssh/id_dsa.pub", $akeys);
+			&copy_source_dest("$uinfo->{'home'}/.ssh/id_dsa.pub", $akeys);
 			}
-		&set_ownership_permissions($_[0]->{'uid'}, $_[0]->{'gid'}, undef, $akeys);
+		&set_ownership_permissions($uinfo->{'uid'}, $uinfo->{'gid'}, undef, $akeys);
 		&unlock_file($akeys);
 		}
 	}
