@@ -523,7 +523,10 @@ if (&has_command("sensors")) {
 				    /in[\d+]:\s+[\+\-0-9\.]+\s+V/i);
 
 			# Get odd output like in #1253
-			if ($aa && /temp(\d+):\s+([\+\-][0-9\.]+)\s+.*?[=+].*?\)/) {
+			if ($aa && (
+				/temp(\d+):\s+([\+\-][0-9\.]+)\s+.*?[=+].*?\)/ ||
+				/temp(\d+):\s+([\+\-][0-9\.]+).*?°[Cc]\s+.*?[=+].*?\)/
+			)) {
 				# Adjust to start from `0` as all other outputs
 				push(@rvx, { 'core' => (int($1) - 1),
 					     'temp' => $2 });
