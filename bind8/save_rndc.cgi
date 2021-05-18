@@ -33,6 +33,8 @@ if ($options) {
 	$port = &find_value("default-port", $options->{'members'});
 	}
 $port ||= 953;
+my $algorithm = &find("algorithm", $rconf);
+$algorithm ||= "hmac-md5";
 
 # Add the key to named.conf
 &lock_file($cfile);
@@ -49,7 +51,7 @@ if (!$key) {
 	push(@keys, $key);
 	}
 &save_directive($key, "algorithm", [ { 'name' => 'algorithm',
-			'values' => [ "hmac-md5" ] } ], 1, 1);
+			'values' => [ $algorithm ] } ], 1, 1);
 &save_directive($key, "secret", [ { 'name' => 'secret',
 			'values' => [ $secret ] } ], 1, 1);
 &save_directive($parent, 'key', \@keys, 0);
