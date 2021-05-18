@@ -271,7 +271,7 @@ if (&is_user($in{'user'})) {
 	print $spacer;
 	}
 
-print "<input type=submit value=\"$text{'view_print'}\" name=print>";
+print "<input type=submit value=\"$text{'view_print'}\" name=print onclick='window.print();return false;'>";
 print $spacer;
 
 if (&is_user($in{'user'})) {

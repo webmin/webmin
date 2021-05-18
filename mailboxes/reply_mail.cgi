@@ -102,16 +102,6 @@ else {
 			  "&dom=$in{'dom'}");
 		exit;
 		}
-	elsif ($in{'print'}) {
-		# Show email for printing
-		&decode_and_sub();
-                &ui_print_header(undef, &decode_mimewords(
-                                        $mail->{'header'}->{'subject'}));
-                &show_mail_printable($mail, $body, $textbody, $htmlbody);
-                print "<script>window.print();</script>\n";
-                &ui_print_footer();
-		exit;
-		}
 	elsif ($in{'mark1'} || $in{'mark2'}) {
 		# Just mark the message
 		$mode = $in{'mark1'} ? $in{'mode1'} : $in{'mode2'};
