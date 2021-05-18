@@ -498,3 +498,5 @@ mobile_title=移动设备选项
 copycert_err=无法从Webmin复制SSL设置
 copycert_essl=未启用SSL
 copycert_ekeyfile=Webmin中未设置私钥文件
+
+twofactor_desc=两因素身份验证允许Usermin用户在登录时启用其他身份验证设备的使用，例如一次性密码生成器。在此页面上启用选定的身份验证提供程序后，用户必须分别向其注册。

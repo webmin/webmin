@@ -498,3 +498,5 @@ mobile_title=Opções de dispositivos móveis
 copycert_err=Falha ao copiar configurações SSL do Webmin
 copycert_essl=SSL não está ativado
 copycert_ekeyfile=Nenhum arquivo de chave privada está definido no Webmin
+
+twofactor_desc=A autenticação de dois fatores permite que os usuários do Usermin habilitem o uso de um dispositivo de autenticação adicional ao efetuar login, como um gerador de senha única. Os usuários devem se inscrever individualmente no provedor de autenticação selecionado depois de habilitado nesta página.

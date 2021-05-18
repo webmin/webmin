@@ -498,3 +498,5 @@ mobile_title=Mobil Cihaz Seçenekleri
 copycert_err=SSL ayarları Webmin'den kopyalanamadı
 copycert_essl=SSL etkin değil
 copycert_ekeyfile=Webmin'de özel anahtar dosyası ayarlanmadı
+
+twofactor_desc=İki faktörlü kimlik doğrulama, Usermin kullanıcılarının oturum açarken tek seferlik parola oluşturucu gibi ek bir kimlik doğrulama cihazının kullanımını etkinleştirmesine olanak tanır. Kullanıcılar, bu sayfada etkinleştirildikten sonra seçilen kimlik doğrulama sağlayıcısına bireysel olarak kaydolmalıdır.

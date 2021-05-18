@@ -498,3 +498,5 @@ mobile_title=Mobiliojo įrenginio parinktys
 copycert_err=Nepavyko nukopijuoti SSL nustatymų iš „Webmin“
 copycert_essl=SSL neįgalintas
 copycert_ekeyfile=„Webmin“ nėra nustatytas joks asmeninio rakto failas
+
+twofactor_desc=Dviejų veiksnių autentifikavimas leidžia „Usermin“ vartotojams prisijungiant įgalinti naudoti papildomą autentifikavimo įrenginį, pvz., Vienkartinį slaptažodžių generatorių. Vartotojai turi individualiai užsiregistruoti pas pasirinktą autentifikavimo paslaugų teikėją, kai jis įgalinamas šiame puslapyje.

@@ -498,3 +498,5 @@ mobile_title=Indstillinger for mobilenhed
 copycert_err=Kunne ikke kopiere SSL-indstillinger fra Webmin
 copycert_essl=SSL er ikke aktiveret
 copycert_ekeyfile=Ingen privat nøglefil er indstillet i Webmin
+
+twofactor_desc=To-faktor-godkendelse giver Usermin-brugere mulighed for at muliggøre brug af en ekstra godkendelsesenhed, når de logger ind, såsom en engangs-adgangskodegenerator. Brugere skal individuelt tilmelde sig den valgte godkendelsesudbyder, når den er aktiveret på denne side.

@@ -492,3 +492,5 @@ mobile_title=Pilihan Peranti Mudah Alih
 copycert_err=Gagal menyalin tetapan SSL dari Webmin
 copycert_essl=SSL tidak didayakan
 copycert_ekeyfile=Tiada fail kunci peribadi ditetapkan di Webmin
+
+twofactor_desc=Pengesahan dua faktor membolehkan pengguna Usermin mengaktifkan penggunaan peranti pengesahan tambahan semasa log masuk, seperti penjana kod laluan sekali sahaja. Pengguna mesti mendaftar secara individu dengan penyedia pengesahan yang dipilih setelah diaktifkan di halaman ini.
