@@ -8,7 +8,7 @@ no warnings 'redefine';
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
-our (%text, %config, %gconfig, $module_var_directory);
+our (%text, %config, %gconfig, $module_name, $module_var_directory, $module_config_file, $module_config_directory);
 
 my $dnssec_tools_minver = 1.13;
 my $have_dnssec_tools = eval "require Net::DNS::SEC::Tools::dnssectools;";
@@ -33,9 +33,6 @@ my @extra_forward = split(/\s+/, $config{'extra_forward'} || '');
 my @extra_reverse = split(/\s+/, $config{'extra_reverse'} || '');
 our %is_extra = map { $_, 1 } (@extra_forward, @extra_reverse);
 our %access = &get_module_acl();
-our $module_config_file;
-our $module_config_directory;
-our $module_name;
 my $zone_names_cache = "$module_config_directory/zone-names";
 my $zone_names_version = 3;
 my @list_zone_names_cache;
