@@ -2014,6 +2014,16 @@ if ($config{'userfile'}) {
 					}
 				}
 			}
+		if ($authuser) {
+			# We got a session .. but does the user still exist?
+			my $auser = &get_user_details($authuser);
+			if (!$auser) {
+				print STDERR "Session $session_id is for user ",
+					     "$authuser who does not exist\n";
+				$validated = 0;
+				$already_authuser = $authuser = undef;
+				}
+			}
 		}
 
 	# Check for local authentication
