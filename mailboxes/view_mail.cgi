@@ -166,7 +166,7 @@ if ($body && $body->{'data'} =~ /\S/) {
 			"detach.cgi?user=$uuser&idx=$in{'idx'}&folder=$in{'folder'}$subs");
 		if ($textbody) {
 			push(@bodyright,
-			    "<a href='$hbase&body=1'>$text{'view_ashtml'}</a>");
+			    "<a href='$hbase&body=1'>$text{'view_astext'}</a>");
 			}
 		}
 	}
@@ -271,7 +271,7 @@ if (&is_user($in{'user'})) {
 	print $spacer;
 	}
 
-print "<input type=submit value=\"$text{'view_print'}\" name=print>";
+print "<input type=submit value=\"$text{'view_print'}\" name=print onclick='window.print();return false;'>";
 print $spacer;
 
 if (&is_user($in{'user'})) {

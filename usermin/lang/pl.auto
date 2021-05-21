@@ -1,1 +1,3 @@
 session_authmode=Metoda Uwierzytelnienia
+
+twofactor_desc=Uwierzytelnianie dwuskładnikowe umożliwia użytkownikom Usermina korzystanie z dodatkowego urządzenia uwierzytelniającego podczas logowania, takiego jak generator kodów jednorazowych. Użytkownicy muszą indywidualnie zarejestrować się u wybranego dostawcy uwierzytelniania po jego włączeniu na tej stronie.

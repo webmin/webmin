@@ -1,0 +1,1 @@
+twofactor_desc=L'autenticació de dos factors permet als usuaris d'Usermin habilitar l'ús d'un dispositiu d'autenticació addicional en iniciar la sessió, com ara un generador de codis d'accés únic. Els usuaris s’han d’inscriure individualment al proveïdor d’autenticació seleccionat després d’haver-lo activat en aquesta pàgina.

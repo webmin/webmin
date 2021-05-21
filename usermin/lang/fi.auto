@@ -498,3 +498,5 @@ mobile_title=Mobiililaitteen asetukset
 copycert_err=SSL-asetusten kopiointi epäonnistui Webministä
 copycert_essl=SSL ei ole käytössä
 copycert_ekeyfile=Webminissä ei ole asetettu yksityistä avaintiedostoa
+
+twofactor_desc=Kahden tekijän todennuksen avulla Usermin-käyttäjät voivat sallia ylimääräisen todennuslaitteen käytön kirjautumisen yhteydessä, kuten kertaluonteisen salasanageneraattorin. Käyttäjien on ilmoittauduttava erikseen valitulle todennustarjoajalle, kun se on otettu käyttöön tällä sivulla.

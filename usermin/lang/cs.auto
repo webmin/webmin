@@ -16,3 +16,5 @@ log_copycert=Zkopírováno nastavení SSL z Webmin
 copycert_err=Nastavení protokolu SSL z Webmin se nezdařilo
 copycert_essl=SSL není povoleno
 copycert_ekeyfile=Ve Webminu není nastaven žádný soubor soukromého klíče
+
+twofactor_desc=Dvoufaktorové ověřování umožňuje uživatelům Usermin povolit při přihlášení použití dalšího ověřovacího zařízení, například generátoru jednorázového hesla. Po povolení na této stránce se uživatelé musí individuálně zaregistrovat u vybraného poskytovatele ověřování.

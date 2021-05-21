@@ -498,3 +498,5 @@ mobile_title=Alternativ för mobila enheter
 copycert_err=Det gick inte att kopiera SSL-inställningar från Webmin
 copycert_essl=SSL är inte aktiverat
 copycert_ekeyfile=Ingen privat nyckelfil är inställd i Webmin
+
+twofactor_desc=Tvåfaktorautentisering gör det möjligt för Usermin-användare att möjliggöra användning av ytterligare en autentiseringsenhet vid inloggning, till exempel en engångskodgenerator. Användare måste registrera sig individuellt hos den valda autentiseringsleverantören efter att den har aktiverats på den här sidan.

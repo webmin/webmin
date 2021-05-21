@@ -498,3 +498,5 @@ mobile_title=모바일 장치 옵션
 copycert_err=Webmin에서 SSL 설정을 복사하지 못했습니다.
 copycert_essl=SSL을 사용할 수 없습니다
 copycert_ekeyfile=Webmin에 개인 키 파일이 설정되어 있지 않습니다
+
+twofactor_desc=2 단계 인증을 통해 Usermin 사용자는 로그인시 일회용 암호 생성기와 같은 추가 인증 장치를 사용할 수 있습니다. 사용자는이 페이지에서 활성화 된 후 선택한 인증 공급자에 개별적으로 등록해야합니다.

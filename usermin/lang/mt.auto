@@ -498,3 +498,5 @@ mobile_title=Għażliet ta 'Apparat Mobbli
 copycert_err=Ma rnexxiex tikkopja l-issettjar SSL minn Webmin
 copycert_essl=SSL mhux attivat
 copycert_ekeyfile=L-ebda fajl ewlieni privat ma huwa stabbilit fil-Webmin
+
+twofactor_desc=Awtentikazzjoni b'żewġ fatturi tippermetti lill-utenti tal-Usermin biex jippermettu l-użu ta 'apparat ta' awtentikazzjoni addizzjonali meta jilloggjaw, bħal ġeneratur ta 'passcode ta' darba. L-utenti għandhom jirreġistraw individwalment mal-fornitur tal-awtentikazzjoni magħżul wara li tkun attivata f'din il-paġna.

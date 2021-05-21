@@ -498,3 +498,5 @@ mobile_title=Opsies vir mobiele toestelle
 copycert_err=Kon nie SSL-instellings vanaf Webmin kopieer nie
 copycert_essl=SSL is nie geaktiveer nie
 copycert_ekeyfile=Geen privaat sleutellêer is in Webmin opgestel nie
+
+twofactor_desc=Tweefaktor-verifikasie stel Usermin-gebruikers in staat om die gebruik van 'n bykomende verifikasietoestel tydens aanmelding moontlik te maak, soos 'n eenmalige wagkode-opleier. Gebruikers moet individueel by die geselekteerde verifikasieverskaffer inskryf nadat dit op hierdie bladsy geaktiveer is.

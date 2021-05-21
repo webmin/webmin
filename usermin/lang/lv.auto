@@ -498,3 +498,5 @@ mobile_title=Mobilās ierīces opcijas
 copycert_err=Neizdevās nokopēt SSL iestatījumus no Webmin
 copycert_essl=SSL nav iespējots
 copycert_ekeyfile=Webmin nav iestatīts privātas atslēgas fails
+
+twofactor_desc=Divu faktoru autentifikācija ļauj Usermin lietotājiem reģistrējoties iespējot papildu autentifikācijas ierīces izmantošanu, piemēram, vienreizēju piekļuves kodu ģeneratoru. Kad tas ir iespējots šajā lapā, lietotājiem individuāli jāreģistrējas izvēlētajā autentifikācijas nodrošinātājā.
