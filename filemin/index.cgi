@@ -26,8 +26,8 @@ unless (opendir ( DIR, $cwd )) {
         for $path (@allowed_paths) {
             my $slashed = $path;
             $slashed .= "/" if ($slashed !~ /\/$/);
-            push @tmp_list, grep { $slashed =~ /^$_\// ||
-				   $_ =~ /$slashed/ } @list;
+            push @tmp_list, grep { $slashed =~ /^\Q$_\E\// ||
+				   $_ =~ /\Q$slashed\E/ } @list;
         }
         # Remove duplicates
         my %hash = map { $_, 1 } @tmp_list;
