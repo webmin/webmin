@@ -2016,7 +2016,9 @@ if ($config{'userfile'}) {
 			}
 		if ($authuser) {
 			# We got a session .. but does the user still exist?
-			my $auser = &get_user_details($authuser);
+			my @can = &can_user_login($authuser, undef, $host);
+			$baseauthuser = $can[3] || $authuser;
+			my $auser = &get_user_details($baseauthuser, $authuser);
 			if (!$auser) {
 				print STDERR "Session $session_id is for user ",
 					     "$authuser who does not exist\n";
@@ -2162,8 +2164,10 @@ if ($config{'userfile'}) {
 		}
 	else {
 		# Get the real Webmin username
-		local @can = &can_user_login($authuser, undef, $host);
-		$baseauthuser = $can[3] || $authuser;
+		if (!$baseauthuser) {
+			local @can = &can_user_login($authuser, undef, $host);
+			$baseauthuser = $can[3] || $authuser;
+			}
 
 		if ($config{'remoteuser'} && !$< && $validated) {
 			# Switch to the UID of the remote user (if he exists)
@@ -6344,7 +6348,6 @@ $token =~ s/\s+$//;
 $token || return "No two-factor token entered";
 $uinfo->{'twofactor_provider'} || return undef;
 pipe(TOKENr, TOKENw);
-print STDERR join(" ", $config{'twofactor_wrapper'}, $user, $uinfo->{'twofactor_provider'}, $uinfo->{'twofactor_id'}, $token, $uinfo->{'twofactor_apikey'}),"\n";
 my $pid = &execute_webmin_command($config{'twofactor_wrapper'},
 	[ $user, $uinfo->{'twofactor_provider'}, $uinfo->{'twofactor_id'},
 	  $token, $uinfo->{'twofactor_apikey'} ],
