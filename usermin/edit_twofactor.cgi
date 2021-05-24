@@ -7,6 +7,10 @@ get_usermin_miniserv_config(\%miniserv);
 $miniserv{'session'} || &error($text{'twofactor_esession'});
 
 print "$text{'twofactor_desc'}<p>\n";
+$root = &get_usermin_root_directory();
+if (!-r $root."/twofactor") {
+	&ui_print_endpage("<b>$text{'twofactor_eversion'}</b>");
+	}
 
 print <<EOF;
 <style>

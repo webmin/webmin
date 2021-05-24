@@ -144,6 +144,18 @@ sub put_usermin_config
 &write_file($usermin_config, \%usermin_config_cache);
 }
 
+=head2 get_usermin_root_directory
+
+Returns the Usermin install root directory.
+
+=cut
+sub get_usermin_root_directory
+{
+my %miniserv;
+&get_usermin_miniserv_config(\%miniserv);
+return $miniserv{'root'};
+}
+
 =head2 list_themes
 
 Returns an array of all usermin themes. The format is the same as the 
@@ -1015,6 +1027,51 @@ if (!$found && $prov) {
 	}
 &flush_file_lines($miniserv{'twofactorfile'});
 &unlock_file($miniserv{'twofactorfile'});
+}
+
+=head2 create_cron_wrapper(wrapper-path, module, script)
+
+Creates a wrapper script which calls a script in some module's directory
+with the proper usermin environment variables set.
+
+The parameters are :
+
+=item wrapper-path - Full path to the wrapper to create, like /etc/usermin/yourmodule/foo.pl
+
+=item module - Module containing the real script to call.
+
+=item script - Program within that module for the wrapper to run.
+
+=cut
+sub create_cron_wrapper
+{
+my ($wrapper, $mod, $script) = @_;
+my $perl_path = &get_perl_path();
+&open_tempfile(CMD, ">$wrapper");
+&print_tempfile(CMD, <<EOF
+#!$perl_path
+open(CONF, "<$usermin_miniserv_config") || die "Failed to open $usermin_miniserv_config : \$!";
+while(<CONF>) {
+        \$root = \$1 if (/^root=(.*)/);
+        }
+close(CONF);
+\$root || die "No root= line found in $usermin_miniserv_config";
+\$ENV{'PERLLIB'} = "\$root";
+\$ENV{'WEBMIN_CONFIG'} = "$config{'usermin_dir'}";
+\$ENV{'WEBMIN_VAR'} = "$ENV{'WEBMIN_VAR'}";
+delete(\$ENV{'MINISERV_CONFIG'});
+EOF
+	);
+if ($mod) {
+	&print_tempfile(CMD, "chdir(\"\$root/$mod\");\n");
+	&print_tempfile(CMD, "exec(\"\$root/$mod/$script\", \@ARGV) || die \"Failed to run \$root/$mod/$script : \$!\";\n");
+	}
+else {
+	&print_tempfile(CMD, "chdir(\"\$root\");\n");
+	&print_tempfile(CMD, "exec(\"\$root/$script\", \@ARGV) || die \"Failed to run \$root/$script : \$!\";\n");
+	}
+&close_tempfile(CMD);
+chmod(0755, $wrapper);
 }
 
 1;
