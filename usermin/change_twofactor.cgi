@@ -20,9 +20,11 @@ if ($in{'twofactor_provider'}) {
 # Save settings
 &lock_file($usermin_miniserv_config);
 $miniserv{'twofactor_provider'} = $in{'twofactor_provider'};
-$miniserv{'twofactorfile'} ||= "$config{'usermin_dir'}/twofactor";
-$miniserv{'twofactor_wrapper'} = $module_config_directory."/twofactor.pl";
-&cron::create_wrapper($miniserv{'twofactor_wrapper'}, "acl", "twofactor.pl");
+$miniserv{'twofactorfile'} ||= "$config{'usermin_dir'}/twofactor-users";
+$miniserv{'twofactor_wrapper'} =
+	"$config{'usermin_dir'}/twofactor/twofactor.pl";
+&create_cron_wrapper($miniserv{'twofactor_wrapper'},
+			       "twofactor", "twofactor.pl");
 &put_usermin_miniserv_config(\%miniserv);
 &unlock_file($usermin_miniserv_config);
 &restart_usermin_miniserv();

@@ -259,4 +259,4 @@ foreach my $t ($now - 30, $now, $now + 30) {
 return $text{'twofactor_etotpmatch'};
 }
 
-
+1;
