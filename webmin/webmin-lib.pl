@@ -16,7 +16,7 @@ our ($module_root_directory, %text, %gconfig, $root_directory, %config,
      $module_var_directory);
 do "$module_root_directory/gnupg-lib.pl";
 do "$module_root_directory/letsencrypt-lib.pl";
-do "$module_root_directory/twofactor-lib.pl";
+do "$module_root_directory/twofactor-funcs-lib.pl";
 use Socket;
 
 our @cs_codes = ( 'cs_page', 'cs_text', 'cs_table', 'cs_header', 'cs_link' );
