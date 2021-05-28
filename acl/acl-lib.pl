@@ -1385,6 +1385,23 @@ foreach my $s (keys %sessiondb) {
 dbmclose(%sessiondb);
 }
 
+=head2 create_session_user(\%miniserv, user)
+
+Creates a new session ID that's already logged in as the given user
+
+=cut
+sub create_session_user
+{
+my ($miniserv, $username) = @_;
+return undef if (&is_readonly_mode());
+&open_session_db($miniserv);
+my $sid = &generate_random_session_id();
+return undef if (!$sid);
+my $t = time();
+$sessiondb{$sid} = "$username $t 127.0.0.1";
+dbmclose(%sessiondb);
+}
+
 =head2 update_members(&allusers, &allgroups, &modules, &members)
 
 Update the modules for members users and groups of some group. The parameters
@@ -2182,6 +2199,40 @@ my $mdir = &module_root_directory($m);
 my %rv;
 &read_file_cached("$mdir/safeacl", \%rv) || return undef;
 return \%rv;
+}
+
+=head2 generate_random_session_id()
+
+Returns a session ID in the same format as miniserv
+
+=cut
+sub generate_random_session_id
+{
+my $sid;
+
+# Try /dev/urandom, but with a timeout
+$SIG{ALRM} = sub { close(RANDOM) };
+alarm(5);
+if (open(RANDOM, "/dev/urandom")) {
+	my $tmpsid;
+	if (read(RANDOM, $tmpsid, 16) == 16) {
+		$sid = lc(unpack('h*',$tmpsid));
+		if ($sid !~ /^[0-9a-fA-F]{32}$/) {
+			$sid = 'bad';
+			}
+		}
+	close(RANDOM);
+	}
+alarm(0);
+
+# Fall back to perl random
+if (!$sid) {
+	my $offset = int(rand(2048));
+	my @charset = ('0' ..'9', 'a' .. 'f');
+	$sid = join('', map { $charset[rand(@charset)] } 1 .. 4096);
+	$sid = substr($sid, $offset, 32);
+	}
+return $sid eq 'bad' ? undef : $sid;
 }
 
 1;
