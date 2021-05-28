@@ -976,59 +976,6 @@ $port ||= $config{'port'} || $miniserv{'port'};
 return ($cookie, ($ssl ? "https://" : "http://").$host.":".$port."/");
 }
 
-# get_user_twofactor(username)
-# Returns the twofactor provider, ID and API key for a user
-sub get_user_twofactor
-{
-my ($user) = @_;
-my %miniserv;
-&get_usermin_miniserv_config(\%miniserv);
-return () if (!$miniserv{'twofactorfile'});
-my $lref = &read_file_lines($miniserv{'twofactorfile'}, 1);
-foreach my $l (@$lref) {
-	my @two = split(/:/, $l, -1);
-	if ($two[0] eq $user) {
-		return ($two[1], $two[2], $two[3]);
-		}
-	}
-return ();
-}
-
-# save_user_twofactor(user, [provider, id, api-key])
-# Updates or removes the twofactor provider for a user
-sub save_user_twofactor
-{
-my ($user, $prov, $id, $key) = @_;
-my %miniserv;
-&get_usermin_miniserv_config(\%miniserv);
-return 0 if (!$miniserv{'twofactorfile'});
-&lock_file($miniserv{'twofactorfile'});
-my $lref = &read_file_lines($miniserv{'twofactorfile'});
-my $found = 0;
-my $i = 0;
-foreach my $l (@$lref) {
-	my @two = split(/:/, $l, -1);
-	if ($two[0] eq $user) {
-		# Found the line to update or remove
-		if ($prov) {
-			$lref->[$i] = join(":", $user, $prov, $id, $key);
-			}
-		else {
-			splice(@$lref, $i, 1);
-			}
-		$found++;
-		last;
-		}
-	$i++;
-	}
-if (!$found && $prov) {
-	# Need to add the user
-	push(@$lref, join(":", $user, $prov, $id, $key));
-	}
-&flush_file_lines($miniserv{'twofactorfile'});
-&unlock_file($miniserv{'twofactorfile'});
-}
-
 =head2 create_cron_wrapper(wrapper-path, module, script)
 
 Creates a wrapper script which calls a script in some module's directory
