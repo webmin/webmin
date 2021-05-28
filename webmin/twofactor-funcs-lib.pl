@@ -5,9 +5,9 @@
 # containing an ID, name and URL for more info
 sub list_twofactor_providers
 {
-return ( [ 'totp', $text{'twofactor_totp'},
+return ( [ 'totp', 'Google Authenticator',
 	   'http://en.wikipedia.org/wiki/Google_Authenticator' ],
-	 [ 'authy', $text{'twofactor_authy'},
+	 [ 'authy', 'Authy',
 	   'http://www.authy.com/' ] );
 }
 
