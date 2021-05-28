@@ -62,6 +62,12 @@ sub run_command {
     # Figure out the Webmin root directory
     my $root = root($optref->{'config'});
 
+    my (@commands) = list_commands($optref);
+    if (! grep( /^$subcmd$/, @commands ) ) {
+        say RED, "Error: ", RESET, "Command \`$subcmd\` doesn't exist", RESET;
+        exit 1;
+    }
+
     my $command_path = get_command_path($root, $subcmd);
     
     # Merge the options
@@ -74,7 +80,8 @@ sub run_command {
     # Try to exit with the passed through exit code (rarely used, but 
     # why not?)
     if ($? == -1) {
-        die RED, "Failed to execute $command_path: $!", RESET;
+        say RED, "Error: ", RESET, "Failed to execute \`$command_path\`: $!";
+        exit 1;
     } else {
         exit $? >> 8;
     }
@@ -126,6 +133,8 @@ sub list_commands {
     my ($optref) = @_;
 
     my $root = root($optref->{'config'});
+    my @commands;
+
     # Find and list global commands
     for my $command (glob ("$root/bin/*")) {
         my ($bin, $path) = fileparse($command);
@@ -140,10 +149,15 @@ sub list_commands {
                        -input => $command,
                        -exitval => "NOEXIT");
         } else {
-            # Just list the names
-            say "$bin";
+            if (wantarray) {
+                push(@commands, $bin);
+            } else {
+                # Just list the names
+                say "$bin";
+            }
         }
-    } 
+    }
+
     my @modules;
     # Find all module directories with something in bin
     for my $command (glob ("$root/*/bin/*")) {
@@ -157,9 +171,17 @@ sub list_commands {
                        -input => $command,
                        -exitval => "NOEXIT");
         } else {
-            # Just list the names
-            say "$module-$bin";
+            if (wantarray) {
+                push(@modules, "$module-$bin");
+            } else {
+                # Just list the names
+                say "$module-$bin";
+            }
         }
+    }
+
+    if (wantarray) {
+        return (@commands, @modules);
     }
 }
 
