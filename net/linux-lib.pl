@@ -226,7 +226,8 @@ my ($old) = grep { $_->{'fullname'} eq $a->{'fullname'} } &active_interfaces();
 # by ifup.
 if(($a->{'vlan'} == 1) && !(($gconfig{'os_type'} eq 'debian-linux') && ($gconfig{'os_version'} >= 5))) {
 	local $vconfigCMD = "vconfig add " .
-			    $a->{'physical'} . " " . $a->{'vlanid'};
+			    quotemeta($a->{'physical'})." ".
+			    quotemeta($a->{'vlanid'});
 	local $vconfigout = &backquote_logged("$vconfigCMD 2>&1");
 	if ($?) { &error($vonconfigout); }
 	}
@@ -235,13 +236,13 @@ if (!&has_command("ifconfig") && &has_command("ip")) {
 	# For a real interface, activate or de-activate the link
 	if ($a->{'virtual'} eq '' && $a->{'up'} && (!$old || !$old->{'up'})) {
 		# Bring up
-		my $cmd = "ip link set dev ".$a->{'name'}." up";
+		my $cmd = "ip link set dev ".quotemeta($a->{'name'})." up";
 		my $out = &backquote_logged("$cmd 2>&1");
 		&error("Failed to bring up link : $out") if ($?);
 		}
 	elsif ($a->{'virtual'} eq '' && !$a->{'up'} && $old && $old->{'up'}) {
 		# Take down
-		my $cmd = "ip link set dev ".$a->{'name'}." down";
+		my $cmd = "ip link set dev ".quotemeta($a->{'name'})." down";
 		my $out = &backquote_logged("$cmd 2>&1");
 		&error("Failed to bring down link : $out") if ($?);
 		}
@@ -255,41 +256,54 @@ if (&use_ifup_command($a)) {
 		# we need to ifup using physical and vlanid. 
 		if ($a->{'up'}) {
 			if(($a->{'mtu'}) && (($gconfig{'os_type'} eq 'redhat-linux') && ($gconfig{'os_version'} >= 13))) {
-                        	my $cmd2;
-                        	$cmd2 .= "ifconfig $a->{'physical'} mtu $a->{'mtu'}";
+                        	my $cmd2 = "ifconfig ".quotemeta($a->{'physical'})." mtu ".quotemeta($a->{'mtu'});
                         	my $out = &backquote_logged("$cmd2 2>&1");
                         	if ($?) { &error($out); }
                         	}
-			$cmd .= "ifup $a->{'physical'}" . "." . $a->{'vlanid'};
+			$cmd .= "ifup ".quotemeta($a->{'physical'}).".".
+				quotemeta($a->{'vlanid'});
 			}
 	        else {
-			$cmd .= "ifdown $a->{'physical'}.".$a->{'vlanid'};
+			$cmd .= "ifdown ".quotemeta($a->{'physical'}).".".
+				quotemeta($a->{'vlanid'});
 			}
 		}
 	elsif ($a->{'up'}) {
-		$cmd .= "ifdown $a->{'fullname'}\; ifup $a->{'fullname'}";
+		$cmd .= "ifdown ".quotemeta($a->{'fullname'}).
+			"; ifup ".quotemeta($a->{'fullname'});
 		}
         else {
-		$cmd .= "ifdown $a->{'fullname'}";
+		$cmd .= "ifdown ".quotemeta($a->{'fullname'});
 		}
 	}
 elsif (&has_command("ifconfig")) {
 	# Build ifconfig command manually
 	if($a->{'vlan'} == 1) {
-		$cmd .= "ifconfig $a->{'physical'}.$a->{'vlanid'}";
+		$cmd .= "ifconfig ".quotemeta($a->{'physical'}).".".
+			quotemeta($a->{'vlanid'});
 		}
 	else {
-		$cmd .= "ifconfig $a->{'name'}";
+		$cmd .= "ifconfig ".quotemeta($a->{'name'});
 		if ($a->{'virtual'} ne "") {
-			$cmd .= ":$a->{'virtual'}";
+			$cmd .= ":".quotemeta($a->{'virtual'});
 			}
 		}
-	$cmd .= " $a->{'address'}";
-	if ($a->{'netmask'}) { $cmd .= " netmask $a->{'netmask'}"; }
-	if ($a->{'broadcast'}) { $cmd .= " broadcast $a->{'broadcast'}"; }
-	if ($a->{'mtu'} && $a->{'virtual'} eq "") { $cmd .= " mtu $a->{'mtu'}";}
-	if ($a->{'up'}) { $cmd .= " up"; }
-	else { $cmd .= " down"; }
+	$cmd .= " ".quotemeta($a->{'address'});
+	if ($a->{'netmask'}) {
+		$cmd .= " netmask ".quotemeta($a->{'netmask'});
+		}
+	if ($a->{'broadcast'}) {
+		$cmd .= " broadcast ".quotemeta($a->{'broadcast'});
+		}
+	if ($a->{'mtu'} && $a->{'virtual'} eq "") {
+		$cmd .= " mtu ".quotemeta($a->{'mtu'});
+		}
+	if ($a->{'up'}) {
+		$cmd .= " up";
+		}
+	else {
+		$cmd .= " down";
+		}
 	}
 elsif (&has_command("ip")) {
 	# If the IP is changing, first remove it then re-add
@@ -297,9 +311,9 @@ elsif (&has_command("ip")) {
 	if ($old && $old->{'address'}) {
 		if ($old->{'address'} ne $a->{'address'} ||
 		    $old->{'netmask'} ne $a->{'netmask'}) {
-			my $rcmd = "ip addr del ".$old->{'address'}."/".
-				   &mask_to_prefix($old->{'netmask'}).
-				   " dev ".$a->{'name'};
+			my $rcmd = "ip addr del ".quotemeta($old->{'address'}).
+				   "/".&mask_to_prefix($old->{'netmask'}).
+				   " dev ".quotemeta($a->{'name'});
 			&system_logged("$rcmd >/dev/null 2>&1");
 			$readd = 1;
 			}
@@ -310,18 +324,19 @@ elsif (&has_command("ip")) {
 
 	# Build ip command to add the new IP
 	if ($readd) {
-		$cmd .= "ip addr add ".$a->{'address'};
+		$cmd .= "ip addr add ".quotemeta($a->{'address'});
 		if ($a->{'netmask'}) {
 			$cmd .= "/".&mask_to_prefix($a->{'netmask'});
 			}
 		if ($a->{'broadcast'}) {
-			$cmd .= " broadcast $a->{'broadcast'}";
+			$cmd .= " broadcast ".quotemeta($a->{'broadcast'});
 			}
 		if($a->{'vlan'} == 1) {
-			$cmd .= " dev $a->{'physical'}.$a->{'vlanid'}";
+			$cmd .= " dev ".quotemeta($a->{'physical'}).".".
+				quotemeta($a->{'vlanid'});
 			}
 		else {
-			$cmd .= " dev $a->{'name'}";
+			$cmd .= " dev ".quotemeta($a->{'name'});
 			}
 		}
 	}
@@ -334,38 +349,41 @@ if ($?) { &error($out); }
 # Apply ethernet address
 if ($a->{'ether'} && !&use_ifup_command($a) && &has_command("ifconfig")) {
 	# With ifconfig command
-	$out = &backquote_logged(
-		"ifconfig $a->{'name'} hw ether $a->{'ether'} 2>&1");
+	$out = &backquote_logged("ifconfig ".quotemeta($a->{'name'}).
+				 " hw ether ".quotemeta($a->{'ether'})." 2>&1");
 	if ($?) { &error($out); }
 	}
 elsif ($a->{'ether'} && !&use_ifup_command($a) && &has_command("ip")) {
 	# With ip link command
-	$out = &backquote_logged(
-	    "ip link set dev ".$a->{'name'}." address ".$a->{'ether'}." 2>&1");
+	$out = &backquote_logged("ip link set dev ".quotemeta($a->{'name'}).
+				 " address ".quotemeta($a->{'ether'})." 2>&1");
 	if ($?) { &error($out); }
 	}
 
 # Apply MTU
 if ($a->{'mtu'} && !&use_ifup_command($a) && &has_command("ip")) {
 	$out = &backquote_logged(
-	    "ip link set dev ".$a->{'name'}." mtu ".$a->{'mtu'}." 2>&1");
+		"ip link set dev ".quotemeta($a->{'name'})." mtu ".
+		quotemeta($a->{'mtu'})." 2>&1");
 	if ($?) { &error($out); }
 	}
 
 if ($a->{'virtual'} eq '' && &has_command("ifconfig")) {
 	# Remove old IPv6 addresses
-	local $l = &backquote_command("ifconfig $a->{'name'}");
+	local $l = &backquote_command("ifconfig ".quotemeta($a->{'name'}));
 	while($l =~ s/inet6 addr:\s*(\S+)\/(\d+)\s+Scope:(\S+)// ||
 	      $l =~ s/inet6\s+(\S+)\s+prefixlen\s+(\d+)\s+scopeid\s+\S+//) {
-		my $cmd = "ifconfig $a->{'name'} inet6 del $1/$2 2>&1";
+		my $cmd = "ifconfig ".quotemeta($a->{'name'})." inet6 del ".
+			  quotemeta("$1/$2")." 2>&1";
 		$out = &backquote_logged($cmd);
 		&error("Failed to remove old IPv6 address : $out") if ($?);
 		}
 
 	# Add IPv6 addresses
 	for(my $i=0; $i<@{$a->{'address6'}}; $i++) {
-		my $cmd = "ifconfig $a->{'name'} inet6 add ".
-		     $a->{'address6'}->[$i]."/".$a->{'netmask6'}->[$i]." 2>&1";
+		my $cmd = "ifconfig ".quotemeta($a->{'name'})." inet6 add ".
+			  quotemeta($a->{'address6'}->[$i])."/".
+			  quotemeta($a->{'netmask6'}->[$i])." 2>&1";
 		$out = &backquote_logged($cmd);
 		&error("Failed to add IPv6 address : $out") if ($?);
 		}
@@ -375,9 +393,9 @@ elsif ($a->{'virtual'} eq '' && &has_command("ip")) {
 	if ($old) {
 		for(my $i=0; $i<@{$old->{'address6'}}; $i++) {
 			my $cmd = "ip -6 addr del ".
-				  $old->{'address6'}->[$i]."/".
-				  $old->{'netmask6'}->[$i]." dev ".
-				  $a->{'name'};
+				  quotemeta($old->{'address6'}->[$i])."/".
+				  quotemeta($old->{'netmask6'}->[$i])." dev ".
+				  quotemeta($a->{'name'});
 			$out = &backquote_logged("$cmd 2>&1");
 			&error("Failed to remove old IPv6 address : $out") if ($?);
 			}
@@ -386,9 +404,9 @@ elsif ($a->{'virtual'} eq '' && &has_command("ip")) {
 	# Add IPv6 addresses
 	for(my $i=0; $i<@{$a->{'address6'}}; $i++) {
 		my $cmd = "ip -6 addr add ".
-			  $a->{'address6'}->[$i]."/".
-			  $a->{'netmask6'}->[$i]." dev ".
-			  $a->{'name'};
+			  quotemeta($a->{'address6'}->[$i])."/".
+			  quotemeta($a->{'netmask6'}->[$i])." dev ".
+			  quotemeta($a->{'name'});
 		$out = &backquote_logged("$cmd 2>&1");
 		&error("Failed to add IPv6 address : $out") if ($?);
 		}
@@ -415,8 +433,9 @@ if (&has_command("ifconfig")) {
 		}
 	# Delete all v6 addresses
 	for(my $i=0; $i<@{$a->{'address6'}}; $i++) {
-		my $cmd = "ifconfig $a->{'name'} inet6 del ".
-			     $a->{'address6'}->[$i]."/".$a->{'netmask6'}->[$i];
+		my $cmd = "ifconfig ".quotemeta($a->{'name'})." inet6 del ".
+			  quotemeta($a->{'address6'}->[$i])."/".
+			  quotemeta($a->{'netmask6'}->[$i]);
 		&backquote_logged("$cmd 2>&1");
 		}
 
@@ -426,10 +445,12 @@ if (&has_command("ifconfig")) {
 		# Old version of ifconfig or non-virtual interface.. down it
 		my $out;
 		if (&use_ifup_command($a)) {
-			$out = &backquote_logged("ifdown $name 2>&1");
+			$out = &backquote_logged(
+				"ifdown ".quotemeta($name)." 2>&1");
 			}
 		else {
-			$out = &backquote_logged("ifconfig $name down 2>&1");
+			$out = &backquote_logged(
+				"ifconfig ".quotemeta($name)." down 2>&1");
 			}
 		my ($still) = grep { $_->{'fullname'} eq $name }
 			      &active_interfaces();
@@ -439,7 +460,8 @@ if (&has_command("ifconfig")) {
 				      "being shut down");
 			}
 		if (&iface_type($name) =~ /^(.*) (VLAN)$/) {
-			$out = &backquote_logged("vconfig rem $name 2>&1");
+			$out = &backquote_logged(
+				"vconfig rem ".quotemeta($name)." 2>&1");
 			}
 		}
 	}
@@ -455,13 +477,14 @@ elsif (&has_command("ip")) {
 			   $a->{'netmask6'}->[$i]);
 		}
 	foreach my $d (@del) {
-		my $cmd = "ip addr del ".$d." dev ".$a->{'name'};
+		my $cmd = "ip addr del ".quotemeta($d)." dev ".
+			  quotemeta($a->{'name'});
 		my $out = &backquote_logged("$cmd 2>&1");
 		&error("Failed to remove old address : $out") if ($?);
 		}
 
 	if ($a->{'virtual'} eq '') {
-		my $cmd = "ip link set dev ".$a->{'name'}." down";
+		my $cmd = "ip link set dev ".quotemeta($a->{'name'})." down";
 		my $out = &backquote_logged("$cmd 2>&1");
 		&error("<pre>".&html_escape($out)."</pre>") if ($?);
 		}
@@ -579,42 +602,50 @@ sub load_module
 local $a = $_[0];
 local $cmd = "modprobe bonding";
 
-if($a->{'mode'}) {$cmd .= " mode=" . $a->{'mode'};}
-if($a->{'miimon'}) {$cmd .= " miimon=" . $a->{'miimon'};}
-if($a->{'downdelay'}) {$cmd .= " downdelay=" . $a->{'downdelay'};}
-if($a->{'updelay'}) {$cmd .= " updelay=" . $a->{'updelay'};}
+if ($a->{'mode'}) {
+	$cmd .= " mode=".quotemeta($a->{'mode'});
+	}
+if ($a->{'miimon'}) {
+	$cmd .= " miimon=".quotemeta($a->{'miimon'});
+	}
+if ($a->{'downdelay'}) {
+	$cmd .= " downdelay=".quotemeta($a->{'downdelay'});
+	}
+if ($a->{'updelay'}) {
+	$cmd .= " updelay=".quotemeta($a->{'updelay'});
+	}
 
 local $out = &backquote_logged("$cmd 2>&1");
-if ($?) { &error($out); }
+&error($out) if ($?);
 }
 
 # Tries to unload the module
 # unload_module(name)
 sub unload_module
 {
-	my ($name) = @_;
-	my $cmd = "modprobe -r bonding";
-	local $out = &backquote_logged("$cmd 2>&1");
-	if($?) { &error($out);}
+my ($name) = @_;
+my $cmd = "modprobe -r bonding";
+local $out = &backquote_logged("$cmd 2>&1");
+&error($out) if ($?);
 }
 
 # list_interfaces()
-# return a list of interfaces
+# Returns a list of active interface names
 sub list_interfaces
 {
-	my @ret;
-	$cmd = "ifconfig -a";
-	local $out = &backquote_logged("$cmd 2>&1");
-	if ($?) { &error($out); }
-	
-	@lines = split("\n", $out);
-	foreach $line(@lines) {
-		$line =~ /^([\w|.]*)/m;
-		if(($1)) {
-			push(@ret, $1);
+my @ret;
+$cmd = "ifconfig -a";
+local $out = &backquote_logged("$cmd 2>&1");
+&error($out) if ($?);
+
+my @lines = split("\n", $out);
+foreach my $line (@lines) {
+	$line =~ /^([\w|.]*)/m;
+	if ($1) {
+		push(@ret, $1);
 		}
 	}
-	return @ret;
+return @ret;
 }
 
 # delete_route(&route)
@@ -635,22 +666,22 @@ if (&has_command("route")) {
 			$cmd .= " default";
 		}
 	elsif ($route->{'netmask'} eq '255.255.255.255') {
-		$cmd .= " -host $route->{'dest'}";
+		$cmd .= " -host ".quotemeta($route->{'dest'});
 		}
 	elsif (!&check_ip6address($route->{'dest'})) {
-		$cmd .= " -net $route->{'dest'}";
+		$cmd .= " -net ".quotemeta($route->{'dest'});
 		if ($route->{'netmask'} && $route->{'netmask'} ne '0.0.0.0') {
-			$cmd .= " netmask $route->{'netmask'}";
+			$cmd .= " netmask ".quotemeta($route->{'netmask'});
 			}
 		}
 	else {
-		$cmd .= "$route->{'dest'}/$route->{'netmask'}";
+		$cmd .= quotemeta("$route->{'dest'}/$route->{'netmask'}");
 		}
 	if ($route->{'gateway'}) {
-		$cmd .= " gw $route->{'gateway'}";
+		$cmd .= " gw ".quotemeta($route->{'gateway'});
 		}
 	elsif ($route->{'iface'}) {
-		$cmd .= " dev $route->{'iface'}";
+		$cmd .= " dev ".quotemeta($route->{'iface'});
 		}
 	}
 elsif (&has_command("ip")) {
@@ -661,11 +692,11 @@ elsif (&has_command("ip")) {
                 $cmd .= " default";
                 }
 	else {
-		$cmd .= " ".$route->{'dest'};
+		$cmd .= " ".quotemeta($route->{'dest'});
 		if ($route->{'netmask'} && $route->{'netmask'} ne '0.0.0.0' &&
 		    $route->{'netmask'} != 32) {
 			if ($route->{'netmask'} =~ /^\d+$/) {
-				$cmd .= "/".$route->{'netmask'};
+				$cmd .= "/".quotemeta($route->{'netmask'});
 				}
 			else {
 				$cmd .= "/".&mask_to_prefix($route->{'netmask'});
@@ -696,22 +727,22 @@ if (&has_command("route")) {
 		$cmd .= " default";
 		}
 	elsif ($route->{'netmask'} eq '255.255.255.255') {
-		$cmd .= " -host $route->{'dest'}";
+		$cmd .= " -host ".quotemeta($route->{'dest'});
 		}
 	elsif (!&check_ip6address($route->{'dest'})) {
-		$cmd .= " -net $route->{'dest'}";
+		$cmd .= " -net ".quotemeta($route->{'dest'});
 		if ($route->{'netmask'} && $route->{'netmask'} ne '0.0.0.0') {
-			$cmd .= " netmask $route->{'netmask'}";
+			$cmd .= " netmask ".quotemeta($route->{'netmask'});
 			}
 		}
 	else {
-		$cmd .= "$route->{'dest'}/$route->{'netmask'}";
+		$cmd .= quotemeta("$route->{'dest'}/$route->{'netmask'}");
 		}
 	if ($route->{'gateway'}) {
-		$cmd .= " gw $route->{'gateway'}";
+		$cmd .= " gw ".quotemeta($route->{'gateway'});
 		}
 	elsif ($route->{'iface'}) {
-		$cmd .= " dev $route->{'iface'}";
+		$cmd .= " dev ".quotemeta($route->{'iface'});
 		}
 	}
 elsif (&has_command("ip")) {
@@ -722,11 +753,11 @@ elsif (&has_command("ip")) {
                 $cmd .= " default";
                 }
 	else {
-		$cmd .= " ".$route->{'dest'};
+		$cmd .= " ".quotemeta($route->{'dest'});
 		if ($route->{'netmask'} && $route->{'netmask'} ne '0.0.0.0' &&
 		    $route->{'netmask'} != 32) {
 			if ($route->{'netmask'} =~ /^\d+$/) {
-				$cmd .= "/".$route->{'netmask'};
+				$cmd .= "/".quotemeta($route->{'netmask'});
 				}
 			else {
 				$cmd .= "/".&mask_to_prefix($route->{'netmask'});
@@ -734,10 +765,10 @@ elsif (&has_command("ip")) {
 			}
 		}
 	if ($route->{'gateway'}) {
-		$cmd .= " via $route->{'gateway'}";
+		$cmd .= " via ".quotemeta($route->{'gateway'});
 		}
 	if ($route->{'iface'}) {
-		$cmd .= " dev $route->{'iface'}";
+		$cmd .= " dev ".quotemeta($route->{'iface'});
 		}
 	}
 else {
