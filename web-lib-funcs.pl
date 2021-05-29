@@ -11473,7 +11473,7 @@ return $referer;
 
 =head2 get_webmin_email_url([module], [cgi], [force-default], [force-host])
 
-Returns the base URL for accessing this Webmin system, for use in URLs. 
+Returns the base URL for accessing this Webmin system, for use in emails.
 
 =cut
 sub get_webmin_email_url

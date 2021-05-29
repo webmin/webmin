@@ -976,6 +976,44 @@ $port ||= $config{'port'} || $miniserv{'port'};
 return ($cookie, ($ssl ? "https://" : "http://").$host.":".$port."/");
 }
 
+=head2 get_usermin_email_url([module], [cgi], [force-default], [force-host])
+
+Returns the base URL for accessing Usermin on this system, for use in emails.
+
+=cut
+sub get_usermin_email_url
+{
+my ($mod, $cgi, $def, $forcehost) = @_;
+
+# Work out the base URL
+my $url;
+if (!$def && $config{'usermin_email_url'}) {
+	$url = $config{'usermin_email_url'};
+	}
+else {
+	my %miniserv;
+	&get_usermin_miniserv_config(\%miniserv);
+	my $proto = $miniserv{'ssl'} ? 'https' : 'http';
+	my $port = $miniserv{'port'};
+	my $host = $forcehost || &get_system_hostname();
+	my $defport = $proto eq 'https' ? 443 : 80;
+	$url = $proto."://".$host.($port == $defport ? "" : ":".$port);
+	}
+
+# Append module if needed
+$url =~ s/\/$//;
+if ($mod && $cgi) {
+	$url .= "/".$mod."/".$cgi;
+	}
+elsif ($mod) {
+	$url .= "/".$mod."/";
+	}
+elsif ($cgi) {
+	$url .= "/".$cgi;
+	}
+return $url;
+}
+
 =head2 create_cron_wrapper(wrapper-path, module, script)
 
 Creates a wrapper script which calls a script in some module's directory

@@ -1850,6 +1850,25 @@ if ($config{'userfile'}) {
 				&write_logout_utmp($louser, $actphost);
 				}
 			}
+		elsif ($in{'session'}) {
+			# Session ID given .. put it in the cookie if valid
+			local $sid = $in{'session'};
+			if ($sid =~ /\r|\n|\s/) {
+				&http_error(500, "Invalid session",
+				    "Session ID contains invalid characters");
+				}
+			print $PASSINw "verify $sid 0 $acptip\n";
+			<$PASSOUTr> =~ /(\d+)\s+(\S+)/;
+			if ($1 != 2) {
+				&http_error(500, "Invalid session",
+				    "Session ID is not valid");
+				}
+			local $vu = $2;
+			local $hrv = &handle_login(
+					$vu, $vu ? 1 : 0,
+				      	0, 0, undef, 1, 0);
+			return $hrv if (defined($hrv));
+			}
 		else {
 			# Trim username to remove leading and trailing spaces to
 			# be able to login, if username pastes from somewhere

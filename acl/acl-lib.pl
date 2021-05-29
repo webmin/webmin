@@ -1400,6 +1400,7 @@ return undef if (!$sid);
 my $t = time();
 $sessiondb{$sid} = "$username $t 127.0.0.1";
 dbmclose(%sessiondb);
+return $sid;
 }
 
 =head2 update_members(&allusers, &allgroups, &modules, &members)
