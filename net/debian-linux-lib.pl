@@ -547,6 +547,7 @@ return &check_ipaddress_any($_[0]);
 }
 
 # get_hostname()
+# Returns the saved hostname
 sub get_hostname
 {
 local $hn = &read_file_contents("/etc/hostname");
@@ -558,14 +559,15 @@ return &get_system_hostname();
 }
 
 # save_hostname(name)
+# Update the system's saved and live hostname
 sub save_hostname
 {
-local (%conf, $f);
-&system_logged("hostname $_[0] >/dev/null 2>&1");
-foreach $f ("/etc/hostname", "/etc/HOSTNAME", "/etc/mailname") {
+my ($hostname) = @_;
+&system_logged("hostname ".quotemeta($hostname)." >/dev/null 2>&1");
+foreach my $f ("/etc/hostname", "/etc/HOSTNAME", "/etc/mailname") {
 	if (-r $f) {
 		&open_lock_tempfile(HOST, ">$f");
-		&print_tempfile(HOST, $_[0],"\n");
+		&print_tempfile(HOST, $hostname,"\n");
 		&close_tempfile(HOST);
 		}
 	}
@@ -584,8 +586,8 @@ return $d;
 # save_domainname(domain)
 sub save_domainname
 {
-local %conf;
-&execute_command("domainname ".quotemeta($_[0]));
+my ($domain) = @_;
+&execute_command("domainname ".quotemeta($domain));
 }
 
 sub routing_config_files

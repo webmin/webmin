@@ -61,12 +61,12 @@ do 'linux-lib.pl';
 # Returns a list of interfaces brought up at boot time
 sub boot_interfaces
 {
-local (@rv, $f);
-local %bridge_map;
-local @active;
+my (@rv, $f);
+my %bridge_map;
+my @active;
 opendir(CONF, &translate_filename($net_scripts_dir));
 while($f = readdir(CONF)) {
-	local (%conf, $b);
+	my (%conf, $b);
 	if ($f =~ /^ifcfg-([a-z0-9:\.]+)\-range([a-z0-9\.\_]+)$/) {
 		# A range of addresses
 		&read_env_file("$net_scripts_dir/$f", \%conf);
@@ -164,7 +164,7 @@ while($f = readdir(CONF)) {
 		$b->{'ether'} = $conf{'MACADDR'};
 		$b->{'dhcp'} = ($conf{'BOOTPROTO'} eq 'dhcp');
 		$b->{'bootp'} = ($conf{'BOOTPROTO'} eq 'bootp');
-		local @ip6s;
+		my @ip6s;
 		push(@ip6s, [ split(/\//, $conf{'IPV6ADDR'}) ])
 			if ($conf{'IPV6ADDR'});
 		push(@ip6s, map { [ split(/\//, $_) ] }
@@ -305,7 +305,7 @@ else {
 				     $b->{'dhcp'} ? "dhcp" : "none";
 		delete($conf{'IPV6ADDR'});
 		delete($conf{'IPV6ADDR_SECONDARIES'});
-		local @ip6s;
+		my @ip6s;
 		for(my $i=0; $i<@{$b->{'address6'}}; $i++) {
 			push(@ip6s, $b->{'address6'}->[$i]."/".
 				    $b->{'netmask6'}->[$i]);
@@ -357,7 +357,7 @@ else {
 	# If this is a bridge, set BRIDGE in real interface
 	if ($b->{'bridge'}) {
 		foreach my $efile (glob("$net_scripts_dir/ifcfg-e*")) {
-			local %bconf;
+			my %bconf;
 			&lock_file($efile);
 			&read_env_file($efile, \%bconf);
 			if ($bconf{'DEVICE'} eq $b->{'bridgeto'} &&
@@ -384,7 +384,7 @@ else {
 
 	# Make sure IPv6 is enabled globally
 	if (@{$b->{'address6'}}) {
-		local %conf;
+		my %conf;
 		&lock_file($network_config);
 		&read_env_file($network_config, \%conf);
 		if (lc($conf{'NETWORKING_IPV6'}) ne 'yes') {
@@ -461,7 +461,7 @@ return &check_ipaddress($_[0]);
 # get_hostname()
 sub get_hostname
 {
-local %conf;
+my %conf;
 &read_env_file($network_config, \%conf);
 if ($conf{'HOSTNAME'}) {
 	return $conf{'HOSTNAME'};
@@ -472,8 +472,8 @@ return &get_system_hostname();
 # save_hostname(name)
 sub save_hostname
 {
-local $old = &get_hostname();
-local %conf;
+my $old = &get_hostname();
+my %conf;
 &system_logged("hostname ".quotemeta($_[0])." >/dev/null 2>&1");
 &open_lock_tempfile(HOST, ">/etc/HOSTNAME");
 &print_tempfile(HOST, $_[0],"\n");
@@ -486,7 +486,7 @@ $conf{'HOSTNAME'} = $_[0];
 
 # If any ifcfg-XXX files have the old hostname in DHCP_HOSTNAME, fix it
 foreach my $b (&boot_interfaces()) {
-	local %ifc;
+	my %ifc;
 	&read_env_file($b->{'file'}, \%ifc);
 	if ($ifc{'DHCP_HOSTNAME'} eq $old) {
 		$ifc{'DHCP_HOSTNAME'} = $_[0];
@@ -515,7 +515,7 @@ undef(@main::get_system_hostname);	# clear cache
 # get_domainname()
 sub get_domainname
 {
-local $d;
+my $d;
 &execute_command("domainname", undef, \$d, undef);
 chop($d);
 return $d;
@@ -524,7 +524,7 @@ return $d;
 # save_domainname(domain)
 sub save_domainname
 {
-local %conf;
+my %conf;
 &execute_command("domainname ".quotemeta($_[0]));
 &read_env_file($network_config, \%conf);
 if ($_[0]) {
@@ -538,7 +538,7 @@ else {
 
 sub routing_config_files
 {
-local @rv = ( $network_config, $sysctl_config );
+my @rv = ( $network_config, $sysctl_config );
 if (!$supports_dev_routes) {
 	push(@rv, $static_route_config);
 	}
@@ -564,7 +564,7 @@ return ( "/etc/HOSTNAME", $network_config );
 
 sub routing_input
 {
-local (%conf, @st, @hr, %sysctl);
+my (%conf, @st, @hr, %sysctl);
 &read_env_file($network_config, \%conf);
 if (!$supports_dev_gateway) {
 	# show default router and device
@@ -579,7 +579,7 @@ if (!$supports_dev_gateway) {
 else {
 	# multiple default routers can exist, one per interface
 	my @table;
-	local $r = 0;
+	my $r = 0;
 	if ($conf{'GATEWAY'} || $conf{'IPV6_DEFAULTGW'}) {
 		push(@table, [
 		    &interface_sel("gatewaydev$r",
@@ -590,7 +590,7 @@ else {
 		    ]);
 		$r++;
 		}
-	local @boot = &boot_interfaces();
+	my @boot = &boot_interfaces();
 	foreach $b (grep { $_->{'gateway'} && $_->{'virtual'} eq '' } @boot) {
 		push(@table, [ &interface_sel("gatewaydev$r", $b->{'name'}),
 			       &ui_textbox("gateway$r", $b->{'gateway'}, 15),
@@ -642,13 +642,13 @@ if (!$supports_dev_routes) {
 	}
 else {
 	# get static routes from per-interface files
-	local $f;
+	my $f;
 	opendir(DIR, &translate_filename($route_files_dir));
 	while($f = readdir(DIR)) {
 		if ($f =~ /^([a-z]+\d*(\.\d+)?(:\d+)?)\.route$/ ||
 		    $f =~ /^route\-([a-z]+\d*(\.\d+)?(:\d+)?)$/) {
-			local $dev = $1;
-			local (%rfile, $i);
+			my $dev = $1;
+			my (%rfile, $i);
 			&read_env_file("$route_files_dir/$f", \%rfile);
 			for($i=0; defined($rfile{"ADDRESS$i"}); $i++) {
 				if ($rfile{"GATEWAY$i"}) {
@@ -670,7 +670,7 @@ else {
 # Show static network routes
 my @table;
 for($i=0; $i<=@st; $i++) {
-	local $st = $st[$i];
+	my $st = $st[$i];
 	push(@table, [ &ui_textbox("dev_$i", $st->[0], 6),
 		       &ui_textbox("net_$i", $st->[1], 15),
 		       &ui_textbox("netmask_$i", $st->[2], 15),
@@ -684,7 +684,7 @@ print &ui_table_row($text{'routes_static'},
 # Show static host routes
 my @table;
 for($i=0; $i<=@hr; $i++) {
-	local $st = $hr[$i];
+	my $st = $hr[$i];
 	push(@table, [ &ui_textbox("ldev_$i", $st->[0], 6),
 		       &ui_textbox("lnet_$i", $st->[1], 15),
 		       &ui_textbox("lnetmask_$i", $st->[2], 15) ]);
@@ -697,7 +697,7 @@ print &ui_table_row($text{'routes_local'},
 
 sub parse_routing
 {
-local (%conf, @st, %sysctl, %st, @boot);
+my (%conf, @st, %sysctl, %st, @boot);
 &lock_file($network_config);
 &read_env_file($network_config, \%conf);
 if (!$supports_dev_gateway) {
@@ -716,7 +716,7 @@ if (!$supports_dev_gateway) {
 	}
 else {
 	# Multiple defaults can be specified!
-	local ($r, $b);
+	my ($r, $b);
 	@boot = grep { $->{'virtual'} eq '' } &boot_interfaces();
 	foreach $b (@boot) {
 		delete($b->{'gateway'});
@@ -740,7 +740,7 @@ else {
 			}
 		else {
 			# For a specific interface
-			local ($b) = grep { $_->{'fullname'} eq
+			my ($b) = grep { $_->{'fullname'} eq
 					    $in{"gatewaydev$r"} } @boot;
 			$b->{'gateway'} && &error(&text('routes_eclash2',
 							&html_escape($in{"gatewaydev$r"})));
@@ -760,7 +760,7 @@ else {
 	$sysctl{'net.ipv4.ip_forward'} = $in{'forward'};
 	}
 
-# Parse static and local routes
+# Parse static and my routes
 for($i=0; defined($dev = $in{"dev_$i"}); $i++) {
 	next if (!$dev);
 	$net = $in{"net_$i"}; $netmask = $in{"netmask_$i"}; $gw = $in{"gw_$i"};
@@ -800,7 +800,7 @@ if (!$supports_dev_routes) {
 	}
 else {
 	# Write to one file per interface (delete old, then save new/updated)
-	local $f;
+	my $f;
 	opendir(DIR, &translate_filename($route_files_dir));
 	while($f = readdir(DIR)) {
 		if (($f =~ /^([a-z]+\d*(\.\d+)?(:\d+)?)\.route$/ ||
@@ -812,7 +812,7 @@ else {
 	closedir(DIR);
 	foreach $dev (keys %st) {
 		$f = $supports_route_dev ? "route-$dev" : "$dev.route";
-		local (%rfile, $i);
+		my (%rfile, $i);
 		for($i=0; $i<@{$st{$dev}}; $i++) {
 			$rfile{"ADDRESS$i"} = $st{$dev}->[$i]->[0];
 			$rfile{"NETMASK$i"} = $st{$dev}->[$i]->[1];
@@ -836,7 +836,7 @@ if (%sysctl) {
 	&unlock_file($sysctl_config);
 	}
 if (@boot) {
-	local $b;
+	my $b;
 	foreach $b (@boot) {
 		&save_interface($b);
 		}
@@ -847,8 +847,8 @@ if (@boot) {
 # Returns a menu for all boot-time interfaces
 sub interface_sel
 {
-local ($name, $value) = @_;
-local @opts = ( [ "", "&nbsp;" ],
+my ($name, $value) = @_;
+my @opts = ( [ "", "&nbsp;" ],
 		[ "*", $text{'routes_any'} ] );
 @boot_interfaces_cache = sort { $a->{'fullname'} cmp $b->{'fullname'} }
 	&boot_interfaces() if (!@boot_interfaces_cache);
@@ -902,7 +902,9 @@ return $? || $out =~ /error/i ? $out : undef;
 # Calls an OS-specific function to make a boot-time interface inactive
 #sub unapply_interface
 #{
-#local $out = &backquote_logged("cd / ; ifdown '$_[0]->{'fullname'}' 2>&1 </dev/null");
+#my ($i) = @_;
+#my $out = &backquote_logged(
+#	"cd / ; ifdown ".quotemeta($i->{'fullname'})." 2>&1 </dev/null");
 #return $? ? $out : undef;
 #}
 
@@ -911,10 +913,10 @@ return $? || $out =~ /error/i ? $out : undef;
 # settings.
 sub get_default_gateway
 {
-local %conf;
+my %conf;
 &read_env_file($network_config, \%conf);
-local @boot = &boot_interfaces();
-local ($gifc) = grep { $_->{'gateway'} && $_->{'virtual'} eq '' } @boot;
+my @boot = &boot_interfaces();
+my ($gifc) = grep { $_->{'gateway'} && $_->{'virtual'} eq '' } @boot;
 return ( $gifc->{'gateway'}, $gifc->{'fullname'} ) if ($gifc);
 return $conf{'GATEWAY'} ? ( $conf{'GATEWAY'}, $conf{'GATEWAYDEV'} ) : ( );
 }
@@ -941,7 +943,7 @@ if (!$supports_dev_gateway) {
 	}
 else {
 	# Set the gateway in the specified interface file, and clear the rest
-	local @boot = grep { $->{'virtual'} eq '' } &boot_interfaces();
+	my @boot = grep { $->{'virtual'} eq '' } &boot_interfaces();
 	foreach $b (@boot) {
 		delete($b->{'gateway'});
 		if ($gw && $b->{'fullname'} eq $gwdev) {
@@ -961,10 +963,10 @@ else {
 # boot time settings.
 sub get_default_ipv6_gateway
 {
-local %conf;
+my %conf;
 &read_env_file($network_config, \%conf);
-local @boot = &boot_interfaces();
-local ($gifc) = grep { $_->{'gateway6'} && $_->{'virtual'} eq '' } @boot;
+my @boot = &boot_interfaces();
+my ($gifc) = grep { $_->{'gateway6'} && $_->{'virtual'} eq '' } @boot;
 return ( $gifc->{'gateway6'}, $gifc->{'fullname'} ) if ($gifc);
 return $conf{'IPV6_DEFAULTGW'} ? ( $conf{'IPV6_DEFAULTGW'},
 				   $conf{'IPV6_DEFAULTDEV'} ) : ( );
@@ -977,7 +979,7 @@ sub set_default_ipv6_gateway
 {
 &lock_file($network_config);
 &read_env_file($network_config, \%conf);
-local @boot = grep { $->{'virtual'} eq '' } &boot_interfaces();
+my @boot = grep { $->{'virtual'} eq '' } &boot_interfaces();
 foreach $b (@boot) {
 	delete($b->{'gateway6'});
 	if ($_[0] && $b->{'fullname'} eq $_[1]) {
@@ -1022,7 +1024,7 @@ return $gconfig{'os_type'} eq 'redhat-linux' &&
 # Print HTML for a IP range interface
 sub range_input
 {
-local $new = !$_[0];
+my $new = !$_[0];
 
 # Range description
 print &ui_table_row($text{'ifcs_desc'},
@@ -1061,7 +1063,7 @@ print &ui_table_row($text{'range_num'},
 # parse_range(&range, &in)
 sub parse_range
 {
-local %in = %{$_[1]};
+my %in = %{$_[1]};
 if ($in{'new'}) {
 	$_[0]->{'name'} = $in{'iface'};
 	$in{'range'} =~ /^[a-z0-9\.\_]+$/ || &error($text{'range_ename'});
@@ -1076,8 +1078,8 @@ $_[0]->{'start'} = $in{'start'};
 &check_ipaddress($in{'end'}) || &error($text{'range_eend'});
 $_[0]->{'end'} = $in{'end'};
 
-local @sip = split(/\./, $in{'start'});
-local @eip = split(/\./, $in{'end'});
+my @sip = split(/\./, $in{'start'});
+my @eip = split(/\./, $in{'end'});
 $sip[0] == $eip[0] && $sip[1] == $eip[1] && $sip[2] == $eip[2] ||
 	&error($text{'range_eclass'});
 $sip[3] <= $eip[3] || &error($text{'range_ebefore'});
@@ -1093,10 +1095,10 @@ sub get_dhcp_hostname
 {
 return -1 if ($gconfig{'os_type'} ne 'redhat-linux' ||
 	      $gconfig{'os_version'} < 11);
-local @boot = &boot_interfaces();
-local ($eth) = grep { $_->{'fullname'} =~ /^(eth|em)\d+$/ } @boot;
+my @boot = &boot_interfaces();
+my ($eth) = grep { $_->{'fullname'} =~ /^(eth|em)\d+$/ } @boot;
 return -1 if (!$eth);
-local %eth;
+my %eth;
 &read_env_file($eth->{'file'}, \%eth);
 return $eth{'DHCP_HOSTNAME'} ne &get_system_hostname();
 }
@@ -1112,10 +1114,10 @@ sub save_dhcp_hostname
 # Gets the teamingpartners of a configured bond interface
 sub get_teaming_partner
 {
-local ($g, $return);
+my ($g, $return);
 opendir(CONF2, &translate_filename($net_scripts_dir));
 while($g = readdir(CONF2)) {
-        local %conf2;
+        my %conf2;
         if ($g !~ /\.(bak|old)$/i && $g =~ /^ifcfg-([a-z0-9:\.]+)$/) {
                 &read_env_file("$net_scripts_dir/$g", \%conf2);
                 if ($conf2{'MASTER'} eq "$_[0]") {
@@ -1135,7 +1137,7 @@ return $_[0] =~ /^(eth|em)/;
 # Returns 1 if managing IPv6 interfaces is supported
 sub supports_address6
 {
-local ($iface) = @_;
+my ($iface) = @_;
 return !$iface || $iface->{'virtual'} eq '';
 }
 
@@ -1156,9 +1158,9 @@ return 1;
 # Updates DNSx lines in all network-scripts files that have them
 sub os_save_dns_config
 {
-local ($conf) = @_;
+my ($conf) = @_;
 foreach my $b (&boot_interfaces()) {
-	local %ifc;
+	my %ifc;
 	&read_env_file($b->{'file'}, \%ifc);
 	next if (!defined($ifc{'DNS1'}));
 	&lock_file($b->{'file'});
@@ -1166,7 +1168,7 @@ foreach my $b (&boot_interfaces()) {
 		delete($ifc{$k}) if ($k =~ /^DNS\d+$/);
 		}
 	&write_env_file($b->{'file'}, \%ifc);
-	local $i = 1;
+	my $i = 1;
 	foreach my $ns (@{$conf->{'nameserver'}}) {
 		$ifc{'DNS'.$i} = $ns;
 		$i++;
