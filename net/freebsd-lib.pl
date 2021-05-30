@@ -8,9 +8,9 @@ $virtual_netmask = "255.255.255.255";	# Netmask for virtual interfaces
 sub active_interfaces
 {
 local(@rv, @lines, $l);
-local @boot = &boot_interfaces();
-local %boot = map { $_->{'address'}, $_ } @boot;
-local %bootname = map { $_->{'fullname'}, $_ } @boot;
+my @boot = &boot_interfaces();
+my %boot = map { $_->{'address'}, $_ } @boot;
+my %bootname = map { $_->{'fullname'}, $_ } @boot;
 &open_execute_command(IFC, "ifconfig -a", 1, 1);
 while(<IFC>) {
 	s/\r|\n//g;
@@ -19,12 +19,12 @@ while(<IFC>) {
 	}
 close(IFC);
 foreach $l (@lines) {
-	local %ifc;
+	my %ifc;
 	$l =~ /^([^:\s]+):/;
 	$ifc{'name'} = $ifc{'fullname'} = $1;
 	if ($l =~ /^(\S+):(\d+):\s/) { $ifc{'virtual'} = $2; }
-	local $bootiface = $bootname{$ifc{'fullname'}};
-	local $bootip = $bootiface ? $bootiface->{'address'} : undef;
+	my $bootiface = $bootname{$ifc{'fullname'}};
+	my $bootip = $bootiface ? $bootiface->{'address'} : undef;
 	if ($l =~ s/inet\s+($bootip)\s+netmask\s+(\S+)\s+broadcast\s+(\S+)// ||
 	    $l =~ s/inet\s+(\S+)\s+netmask\s+(\S+)\s+broadcast\s+(\S+)//) {
 		$ifc{'address'} = $1;
@@ -49,7 +49,7 @@ foreach $l (@lines) {
 	push(@rv, \%ifc);
 
 	# Add v6 addresses
-	local (@address6, @netmask6, @scope6);
+	my (@address6, @netmask6, @scope6);
 	while($l =~ s/inet6\s+([0-9a-f:]+)(%\S+)?\s+prefixlen\s+(\d+)(\s+scopeid\s+(\S+))?//) {
 		push(@address6, $1);
 		push(@netmask6, $3);
@@ -61,17 +61,17 @@ foreach $l (@lines) {
 
 	# Add aliases as virtual interfaces. Try to match boot-time interface
 	# numbers where possible
-	local %vtaken = map { $_->{'virtual'}, 1 }
+	my %vtaken = map { $_->{'virtual'}, 1 }
 			    grep { $_->{'name'} eq $vifc{'name'} &&
 				   $_->{'virtual'} ne "" } @boot;
 	while($l =~ s/inet\s+(\S+)\s+netmask\s+(\S+)(\s+broadcast\s+(\S+))?//) {
-		local %vifc = %ifc;
+		my %vifc = %ifc;
 		$vifc{'address'} = $1;
 		$vifc{'netmask'} = &parse_hex($2);
 		$vifc{'broadcast'} = $4;
 		$vifc{'up'} = 1;
 		$vifc{'edit'} = $ifc{'edit'};
-		local $boot = $boot{$vifc{'address'}};
+		my $boot = $boot{$vifc{'address'}};
 		if ($boot) {
 			$vifc{'virtual'} = $boot->{'virtual'};
 			}
@@ -92,25 +92,26 @@ return @rv;
 # Create or modify an interface
 sub activate_interface
 {
-local %act = map { $_->{'fullname'}, $_ } &active_interfaces();
-local $old = $act{$_[0]->{'fullname'}};
-$act{$_[0]->{'fullname'}} = $_[0];
-&interface_sync(\%act, $_[0]->{'name'}, $_[0]->{'fullname'});
+my ($iface) = @_;
+my %act = map { $_->{'fullname'}, $_ } &active_interfaces();
+my $old = $act{$iface->{'fullname'}};
+$act{$iface->{'fullname'}} = $iface;
+&interface_sync(\%act, $iface->{'name'}, $iface->{'fullname'});
 
-if ($_[0]->{'virtual'} eq '') {
+if ($iface->{'virtual'} eq '') {
 	# Remove old IPv6 addresses
-	local $l = &backquote_command("ifconfig $_[0]->{'name'}");
+	my $l = &backquote_command("ifconfig ".quotemeta($iface->{'name'}));
 	while($l =~ s/inet6\s*(\S+)\s+prefixlen\s+(\d+)//) {
-		local $cmd = "ifconfig $_[0]->{'name'} inet6 $1 -alias 2>&1";
+		my $cmd = "ifconfig $iface->{'name'} inet6 $1 -alias 2>&1";
 		$out = &backquote_logged($cmd);
 		&error("Failed to remove old IPv6 address : $out") if ($?);
 		}
 
 	# Add IPv6 addresses
-	for(my $i=0; $i<@{$_[0]->{'address6'}}; $i++) {
-		local $cmd = "ifconfig $_[0]->{'name'} inet6 ".
-			     $_[0]->{'address6'}->[$i].
-			     " prefixlen ".$_[0]->{'netmask6'}->[$i]." 2>&1";
+	for(my $i=0; $i<@{$iface->{'address6'}}; $i++) {
+		my $cmd = "ifconfig $iface->{'name'} inet6 ".
+			     $iface->{'address6'}->[$i].
+			     " prefixlen ".$iface->{'netmask6'}->[$i]." 2>&1";
 		$out = &backquote_logged($cmd);
 		&error("Failed to add IPv6 address : $out") if ($?);
 		}
@@ -121,16 +122,16 @@ if ($_[0]->{'virtual'} eq '') {
 # Deactive an interface
 sub deactivate_interface
 {
-local %act;
-local @act = &active_interfaces();
-if ($_[0]->{'virtual'} eq '') {
-	@act = grep { $_->{'name'} ne $_[0]->{'name'} } @act;
+my ($iface) = @_;
+my @act = &active_interfaces();
+if ($iface->{'virtual'} eq '') {
+	@act = grep { $_->{'name'} ne $iface->{'name'} } @act;
 	}
 else {
-	@act = grep { $_->{'fullname'} ne $_[0]->{'fullname'} } @act;
+	@act = grep { $_->{'fullname'} ne $iface->{'fullname'} } @act;
 	}
-map { $act{$_->{'fullname'}} = $_ } @act;
-&interface_sync(\%act, $_[0]->{'name'}, $_[0]->{'fullname'});
+my %act = map { $_->{'fullname'}, $_ } @act;
+&interface_sync(\%act, $iface->{'name'}, $iface->{'fullname'});
 }
 
 # interface_sync(&interfaces-hash, name, changee)
@@ -139,23 +140,25 @@ map { $act{$_->{'fullname'}} = $_ } @act;
 # rather than separate eth0:N interfaces like on Linux.
 sub interface_sync
 {
+my ($act, $name, $change) = @_;
+
 # Remove all IP addresses except for the primary one (unless it is being edited)
-local $pri = $_[0]->{$_[1]};
-local $ifconfig = &has_command("ifconfig");
+my $pri = $act->{$name};
+my $ifconfig = &has_command("ifconfig");
 while(1) {
-	local $out;
-	&execute_command("$ifconfig $_[1]", undef, \$out);
+	my $out;
+	&execute_command("$ifconfig ".quotemeta($name), undef, \$out);
 	last if ($out !~ /([\000-\377]*)\s+inet\s+(\d+\.\d+\.\d+\.\d+)/);
-	last if ($2 eq $pri->{'address'} && $_[2] ne $pri->{'fullname'});
-	&system_logged("$ifconfig $_[1] delete $2 >/dev/null 2>&1");
+	last if ($2 eq $pri->{'address'} && $change ne $pri->{'fullname'});
+	&system_logged("$ifconfig ".quotemeta($name)." delete $2 >/dev/null 2>&1");
 	}
 
 # Add them back again, except for the primary unless it is being changed
 foreach $a (sort { $a->{'fullname'} cmp $b->{'fullname'} }
-		 grep { $_->{'name'} eq $_[1] } values(%{$_[0]})) {
+		 grep { $_->{'name'} eq $name } values(%$act)) {
 	next if ($a->{'fullname'} eq $pri->{'fullname'} &&
-		 $_[2] ne $pri->{'fullname'});
-	local $cmd = "$ifconfig $a->{'name'}";
+		 $change ne $pri->{'fullname'});
+	my $cmd = "$ifconfig ".quotemeta($a->{'name'});
 	if ($a->{'virtual'} ne '') {
 		$cmd .= " alias $a->{'address'}";
 		}
@@ -165,14 +168,17 @@ foreach $a (sort { $a->{'fullname'} cmp $b->{'fullname'} }
 	if ($a->{'netmask'}) { $cmd .= " netmask $a->{'netmask'}"; }
 	if ($a->{'broadcast'}) { $cmd .= " broadcast $a->{'broadcast'}"; }
 	if ($a->{'mtu'}) { $cmd .= " mtu $a->{'mtu'}"; }
-	local $out = &backquote_logged("$cmd 2>&1");
-	#if ($? && $out !~ /file exists/i) {
-	if ($?) {
-		&error($out);
-		}
+	my $out = &backquote_logged("$cmd 2>&1");
+	&error($out) if ($?);
 	if ($a->{'virtual'} eq '') {
-		if ($a->{'up'}) { $out = &backquote_logged("$ifconfig $a->{'name'} up 2>&1"); }
-		else { $out = &backquote_logged("$ifconfig $a->{'name'} down 2>&1"); }
+		if ($a->{'up'}) {
+			$out = &backquote_logged(
+				"$ifconfig ".quotemeta($a->{'name'})." up 2>&1");
+			}
+		else {
+			$out = &backquote_logged(
+				"$ifconfig ".quotemeta($a->{'name'})." down 2>&1");
+			}
 		&error($out) if ($?);
 		}
 	}
@@ -183,11 +189,11 @@ foreach $a (sort { $a->{'fullname'} cmp $b->{'fullname'} }
 # Returns a list of interfaces brought up at boot time
 sub boot_interfaces
 {
-local %rc = &get_rc_conf();
-local @rv;
+my %rc = &get_rc_conf();
+my @rv;
 foreach my $r (keys %rc) {
-	local $v = $rc{$r};
-	local %ifc;
+	my $v = $rc{$r};
+	my %ifc;
 	if ($r =~ /^ifconfig_([a-z0-9]+)$/) {
 		# Non-virtual interface
 		%ifc = ( 'name' => $1,
@@ -207,7 +213,7 @@ foreach my $r (keys %rc) {
 	elsif ($v eq 'DHCP') {
 		$ifc{'dhcp'} = 1;
 		}
-	local @a = split(/\./, $ifc{'address'});
+	my @a = split(/\./, $ifc{'address'});
 	if ($v =~ /netmask\s+(0x\S+)/) {
 		$ifc{'netmask'} = &parse_hex($1);
 		}
@@ -226,7 +232,7 @@ foreach my $r (keys %rc) {
 		$ifc{'broadcast'} = $1;
 		}
 	else {
-		local @n = split(/\./, $ifc{'netmask'});
+		my @n = split(/\./, $ifc{'netmask'});
 		$ifc{'broadcast'} = sprintf "%d.%d.%d.%d",
 					($a[0] | ~int($n[0]))&0xff,
 					($a[1] | ~int($n[1]))&0xff,
@@ -240,7 +246,7 @@ foreach my $r (keys %rc) {
 	$ifc{'file'} = "/etc/rc.conf";
 
 	# Check for IPv6 params
-	local $v6 = $rc{'ipv6_ifconfig_'.$ifc{'fullname'}};
+	my $v6 = $rc{'ipv6_ifconfig_'.$ifc{'fullname'}};
 	if ($v6 =~ /^inet6\s+(\S+)/ || $v6 =~ /^([0-9a-f:]+)/) {
 		$ifc{'address6'} = [ $1 ];
 		}
@@ -255,7 +261,7 @@ foreach my $r (keys %rc) {
 	foreach my $rr (sort { $a cmp $b } keys %rc) {
 		if ($rr =~ /^ipv6_ifconfig_(\S+)_alias\d+$/ &&
 		    $1 eq $ifc{'fullname'}) {
-			local $v6 = $rc{$rr};
+			my $v6 = $rc{$rr};
 			if ($v6 =~ /^inet6\s+(\S+)/ || $v6 =~ /^([0-9a-f:]+)/) {
 				push(@{$ifc{'address6'}}, $1);
 				}
@@ -274,7 +280,7 @@ return @rv;
 # Create or update a boot-time interface
 sub save_interface
 {
-local $str;
+my $str;
 if ($_[0]->{'dhcp'}) {
 	$str = "DHCP";
 	}
@@ -288,11 +294,11 @@ if ($_[0]->{'virtual'} eq '') {
 	&save_rc_conf('ifconfig_'.$_[0]->{'name'}, $str);
 	}
 else {
-	local @boot = &boot_interfaces();
-	local ($old) = grep { $_->{'fullname'} eq $_[0]->{'fullname'} } @boot;
+	my @boot = &boot_interfaces();
+	my ($old) = grep { $_->{'fullname'} eq $_[0]->{'fullname'} } @boot;
 	if (!$old && $_[0]->{'virtual'} ne '') {
 		# A new virtual interface .. pick a virtual number automaticlly
-		local $b;
+		my $b;
 		$_[0]->{'virtual'} = 0;
 		foreach $b (&boot_interfaces()) {
 			if ($b->{'name'} eq $_[0]->{'name'} &&
@@ -309,8 +315,8 @@ else {
 
 # Update IPv6 settings
 if ($_[0]->{'virtual'} eq '') {
-	local @a = @{$_[0]->{'address6'}};
-	local @n = @{$_[0]->{'netmask6'}};
+	my @a = @{$_[0]->{'address6'}};
+	my @n = @{$_[0]->{'netmask6'}};
 	if (@a || $_[0]->{'auto6'}) {
 		&save_rc_conf('ipv6_enable', 'YES');
 		}
@@ -323,7 +329,7 @@ if ($_[0]->{'virtual'} eq '') {
 		}
 
 	# Delete any IPv6 aliases
-	local %rc = &get_rc_conf();
+	my %rc = &get_rc_conf();
 	foreach my $r (keys %rc) {
 		if ($r =~ /^ipv6_ifconfig_(\S+)_alias\d+$/ &&
 		    $1 eq $_[0]->{'fullname'}) {
@@ -359,7 +365,7 @@ else {
 	# Remove a virtual interface, and shift down all aliases above it
 	&save_rc_conf('ifconfig_'.$_[0]->{'name'}.'_alias'.$_[0]->{'virtual'});
 	if (!$_[1]) {
-		local ($b, %lastb);
+		my ($b, %lastb);
 		foreach $b (&boot_interfaces()) {
 			if ($b->{'name'} eq $_[0]->{'name'} &&
 			    $b->{'virtual'} ne '' &&
@@ -421,7 +427,7 @@ return &check_ipaddress($_[0]);
 # Returns a hashtable containing keys nameserver, domain, search & order
 sub get_dns_config
 {
-local $dns;
+my $dns;
 &open_readfile(RESOLV, "/etc/resolv.conf");
 while(<RESOLV>) {
 	s/\r|\n//g;
@@ -438,8 +444,8 @@ while(<RESOLV>) {
 	}
 close(RESOLV);
 
-local @order;
-local $orderfile;
+my @order;
+my $orderfile;
 if (-r "/etc/nsswitch.conf") {
 	# FreeBSD 5.0 and later use nsswitch.conf
 	$orderfile = "/etc/nsswitch.conf";
@@ -474,7 +480,7 @@ sub save_dns_config
 {
 &lock_file("/etc/resolv.conf");
 &open_readfile(RESOLV, "/etc/resolv.conf");
-local @resolv = <RESOLV>;
+my @resolv = <RESOLV>;
 close(RESOLV);
 &open_tempfile(RESOLV, ">/etc/resolv.conf");
 foreach (@{$_[0]->{'nameserver'}}) {
@@ -498,7 +504,7 @@ if (-r "/etc/nsswitch.conf") {
 	# Save to new nsswitch.conf, for FreeBSD 5.0 and later
 	&lock_file("/etc/nsswitch.conf");
 	&open_readfile(SWITCH, "/etc/nsswitch.conf");
-	local @switch = <SWITCH>;
+	my @switch = <SWITCH>;
 	close(SWITCH);
 	&open_tempfile(SWITCH, ">/etc/nsswitch.conf");
 	foreach (@switch) {
@@ -536,7 +542,7 @@ if (-r "/etc/nsswitch.conf") {
 	}
 else {
 	# Older FreeBSD's have fewer options
-	local $dnsopt = $_[0]->{'order'} =~ /dns/ ? 'dns' : 'bind';
+	my $dnsopt = $_[0]->{'order'} =~ /dns/ ? 'dns' : 'bind';
 	return &common_order_input("order", $_[0]->{'order'},
 		[ [ "hosts", "Hosts" ], [ $dnsopt, "DNS" ], [ "nis", "NIS" ] ]);
 	}
@@ -562,7 +568,7 @@ else {
 # get_hostname()
 sub get_hostname
 {
-local %rc = &get_rc_conf();
+my %rc = &get_rc_conf();
 if ($rc{'hostname'}) {
 	return $rc{'hostname'};
 	}
@@ -572,8 +578,9 @@ return &get_system_hostname();
 # save_hostname(name)
 sub save_hostname
 {
+my ($hostname) = @_;
 &lock_file("/etc/rc.conf");
-&system_logged("hostname $_[0] >/dev/null 2>&1");
+&system_logged("hostname ".quotemeta($hostname)." >/dev/null 2>&1");
 &save_rc_conf('hostname', $_[0]);
 &unlock_file("/etc/rc.conf");
 undef(@main::get_system_hostname);      # clear cache
@@ -586,30 +593,30 @@ return ( "/etc/defaults/rc.conf", "/etc/rc.conf" );
 
 sub routing_input
 {
-local %rc = &get_rc_conf();
+my %rc = &get_rc_conf();
 
 # Default router
-local $defr = $rc{'defaultrouter'};
+my $defr = $rc{'defaultrouter'};
 print &ui_table_row($text{'routes_default'},
 	&ui_opt_textbox("defr", $defr eq 'NO' ? '' : $defr, 20,
 			$text{'routes_none'}));
 
 if (&supports_address6()) {
 	# IPv6 efault router
-	local $defr = $rc{'ipv6_defaultrouter'};
+	my $defr = $rc{'ipv6_defaultrouter'};
 	print &ui_table_row($text{'routes_default6'},
 		&ui_opt_textbox("defr6", $defr eq 'NO' ? '' : $defr, 20,
 				$text{'routes_none'}));
 	}
 
 # Act as router?
-local $gw = $rc{'gateway_enable'};
+my $gw = $rc{'gateway_enable'};
 print &ui_table_row($text{'routes_forward'},
 	&ui_radio("gw", $gw || 'NO', [ [ 'YES', $text{'yes'} ],
 				       [ 'NO', $text{'no'} ] ]));
 
 # Run route discovery
-local $rd = $rc{'router_enable'};
+my $rd = $rc{'router_enable'};
 print &ui_table_row($text{'routes_routed'},
 	&ui_radio("rd", $rd || 'NO', [ [ 'YES', $text{'yes'} ],
 				       [ 'NO', $text{'no'} ] ]));
@@ -635,9 +642,9 @@ if (&supports_address6()) {
 # save_rc_conf(name, value)
 sub save_rc_conf
 {
-local $found;
+my $found;
 &open_readfile(CONF, "/etc/rc.conf");
-local @conf = <CONF>;
+my @conf = <CONF>;
 close(CONF);
 &open_tempfile(CONF, ">/etc/rc.conf");
 foreach (@conf) {
@@ -658,7 +665,7 @@ if (!$found && @_ > 1) {
 # get_rc_conf()
 sub get_rc_conf
 {
-local ($file, %rv);
+my ($file, %rv);
 foreach $file ("/etc/defaults/rc.conf",
 	       glob("/etc/rc.conf.d/*"),
 	       "/etc/rc.conf") {
@@ -680,11 +687,11 @@ return %rv;
 # Apply the interface and routing settings
 sub apply_network
 {
-local $oldpwd = &get_current_dir();
+my $oldpwd = &get_current_dir();
 chdir("/");
 
 # Take down all active alias interfaces, and any that no longer exist
-local %boot = map { $_->{'fullname'}, $_ } &boot_interfaces();
+my %boot = map { $_->{'fullname'}, $_ } &boot_interfaces();
 foreach my $i (&active_interfaces()) {
 	if ($i->{'virtual'} ne '' || !$boot{$i->{'fullname'}}) {
 		&deactivate_interface($i);
@@ -699,7 +706,7 @@ chdir($oldpwd);
 # Returns 1 if managing IPv6 interfaces is supported
 sub supports_address6
 {
-local ($iface) = @_;
+my ($iface) = @_;
 return $gconfig{'os_version'} >= 8;
 }
 
@@ -707,7 +714,7 @@ return $gconfig{'os_version'} >= 8;
 # Returns a list of active routes
 sub list_routes
 {
-local @rv;
+my @rv;
 &open_execute_command(ROUTES, "netstat -rn", 1, 1);
 while(<ROUTES>) {
 	s/\s+$//;
@@ -741,7 +748,7 @@ return @rv;
 # settings.
 sub get_default_gateway
 {
-local %rc = &get_rc_conf();
+my %rc = &get_rc_conf();
 return ( $rc{'defaultrouter'} eq 'NO' ? undef : $rc{'defaultrouter'},
 	 undef );
 }
@@ -751,7 +758,7 @@ return ( $rc{'defaultrouter'} eq 'NO' ? undef : $rc{'defaultrouter'},
 # in the boot time settings.
 sub set_default_gateway
 {
-local ($gw, $gwdev) = @_;
+my ($gw, $gwdev) = @_;
 &lock_file("/etc/rc.conf");
 &save_rc_conf('defaultrouter', $gw || "NO");
 &unlock_file("/etc/rc.conf");

@@ -325,7 +325,7 @@ return $_[0] =~ /^(eth|em)/;
 # Returns 1 if managing IPv6 interfaces is supported
 sub supports_address6
 {
-local ($iface) = @_;
+my ($iface) = @_;
 return !$iface || $iface->{'virtual'} eq '';
 }
 
@@ -365,7 +365,7 @@ return &check_ipaddress_any($_[0]);
 # get_hostname()
 sub get_hostname
 {
-local $hn = &read_file_contents("/etc/hostname");
+my $hn = &read_file_contents("/etc/hostname");
 $hn =~ s/\r|\n//g;
 if ($hn) {
 	return $hn;
@@ -376,8 +376,9 @@ return &get_system_hostname();
 # save_hostname(name)
 sub save_hostname
 {
-local (%conf, $f);
-&system_logged("hostname $_[0] >/dev/null 2>&1");
+my ($hostname) = @_;
+my (%conf, $f);
+&system_logged("hostname ".quotemeta($hostname)." >/dev/null 2>&1");
 foreach $f ("/etc/hostname", "/etc/HOSTNAME", "/etc/mailname") {
 	if (-r $f) {
 		&open_lock_tempfile(HOST, ">$f");
@@ -391,7 +392,7 @@ undef(@main::get_system_hostname);      # clear cache
 # get_domainname()
 sub get_domainname
 {
-local $d;
+my $d;
 &execute_command("domainname", undef, \$d, undef);
 chop($d);
 return $d;
@@ -400,8 +401,8 @@ return $d;
 # save_domainname(domain)
 sub save_domainname
 {
-local %conf;
-&execute_command("domainname ".quotemeta($_[0]));
+my ($domain) = @_;
+&execute_command("domainname ".quotemeta($domain));
 }
 
 sub routing_config_files
@@ -436,7 +437,7 @@ print &ui_table_row($text{'routes_default6'},
 				[ map { $_->{'name'} } @ifaces ]) ] ]));
 
 # Act as router?
-local %sysctl;
+my %sysctl;
 &read_env_file($sysctl_config, \%sysctl);
 print &ui_table_row($text{'routes_forward'},
 	&ui_yesno_radio("forward",
@@ -468,7 +469,7 @@ if (!$in{'gateway6_def'}) {
 &set_default_ipv6_gateway($gw6, $dev6);
 
 # Save routing flag
-local %sysctl;
+my %sysctl;
 &lock_file($sysctl_config);
 &read_env_file($sysctl_config, \%sysctl);
 $sysctl{'net.ipv4.ip_forward'} = $in{'forward'};

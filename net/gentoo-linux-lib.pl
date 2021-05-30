@@ -9,9 +9,9 @@ $min_virtual_number = 1;
 # Parses the Gentoo net config file into an array of named sections
 sub parse_gentoo_net
 {
-local @rv;
-local $sect;
-local $lnum = 0;
+my @rv;
+my $sect;
+my $lnum = 0;
 open(CONF, "<".$gentoo_net_config);
 while(<CONF>) {
 	s/\r|\n//g;
@@ -21,7 +21,7 @@ while(<CONF>) {
 		$sect = { 'name' => $1,
 			  'line' => $lnum };
 		push(@rv, $sect);
-		local $v = $2;
+		my $v = $2;
 		if ($v =~ /^(.*)\)/) {
 			# Ends on same line
 			$sect->{'values'} = [ &split_gentoo_values("$1") ];
@@ -58,8 +58,8 @@ return @rv;
 # Update or create a Gentoo net config file section
 sub save_gentoo_net
 {
-local ($old, $new) = @_;
-local @lines;
+my ($old, $new) = @_;
+my @lines;
 if ($new) {
 	push(@lines, $new->{'name'}."=(");
 	foreach my $v (@{$new->{'values'}}) {
@@ -67,7 +67,7 @@ if ($new) {
 		}
 	push(@lines, ")");
 	}
-local $lref = &read_file_lines($gentoo_net_config);
+my $lref = &read_file_lines($gentoo_net_config);
 if ($old && $new) {
 	# Replace section
 	splice(@$lref, $old->{'line'}, $old->{'eline'}-$old->{'line'}+1,
@@ -91,8 +91,8 @@ elsif (!$old && $new) {
 # Splits a string like "foo bar" "smeg spod" into an array
 sub split_gentoo_values
 {
-local ($str) = @_;
-local @rv;
+my ($str) = @_;
+my @rv;
 while($str =~ /^\s*"([^"]+)",?(.*)/) {
 	push(@rv, $1);
 	$str = $2;
@@ -104,14 +104,14 @@ return @rv;
 # Returns a list of interfaces brought up at boot time
 sub boot_interfaces
 {
-local @rv;
+my @rv;
 foreach my $g (&parse_gentoo_net()) {
 	if ($g->{'name'} =~ /^config_(\S+)/) {
-		local $gn = $1;
-		local $n = 0;
+		my $gn = $1;
+		my $n = 0;
 		foreach my $v (@{$g->{'values'}}) {
 			# An interface definition
-			local $iface = { 'name' => $gn,
+			my $iface = { 'name' => $gn,
 					 'up' => 1,
 					 'edit' => 1,
 					 'index' => scalar(@rv) };
@@ -122,7 +122,7 @@ foreach my $g (&parse_gentoo_net()) {
 				$iface->{'fullname'} = $gn.":".$n;
 				$iface->{'virtual'} = $n;
 				}
-			local @w = split(/\s+/, $v);
+			my @w = split(/\s+/, $v);
 			if ($w[0] eq "dhcp") {
 				$iface->{'dhcp'} = 1;
 				}
@@ -160,8 +160,8 @@ foreach my $g (&parse_gentoo_net()) {
 		}
 	elsif ($g->{'name'} =~ /^routes_(\S+)/) {
 		# A route definition for an interface
-		local ($iface) = grep { $_->{'fullname'} eq $1 } @rv;
-		local $spec = $g->{'values'}->[0];
+		my ($iface) = grep { $_->{'fullname'} eq $1 } @rv;
+		my $spec = $g->{'values'}->[0];
 		if ($iface) {
 			if ($spec =~ /default\s+via\s+([0-9\.]+)/ ||
 			    $spec =~ /default\s+([0-9\.]+)/) {
@@ -179,11 +179,11 @@ return @rv;
 # Create or update a boot-time interface
 sub save_interface
 {
-local ($iface) = @_;
+my ($iface) = @_;
 &lock_file($gentoo_net_config);
 
 # Build the interface line
-local @w;
+my @w;
 if ($iface->{'dhcp'}) {
 	push(@w, "dhcp");
 	}
@@ -201,8 +201,8 @@ else {
 	}
 
 # Find the current block for this interface
-local @gentoo = &parse_gentoo_net();
-local ($g) = grep { $_->{'name'} eq 'config_'.$iface->{'name'} } @gentoo;
+my @gentoo = &parse_gentoo_net();
+my ($g) = grep { $_->{'name'} eq 'config_'.$iface->{'name'} } @gentoo;
 if ($g) {
 	# Found it .. append or replace
 	while (!$g->{'values'}->[$iface->{'virtual'}]) {
@@ -224,12 +224,12 @@ else {
 # Delete a boot-time interface
 sub delete_interface
 {
-local ($iface) = @_;
+my ($iface) = @_;
 
 # Find the current block for this interface
 &lock_file($gentoo_net_config);
-local @gentoo = &parse_gentoo_net();
-local ($g) = grep { $_->{'name'} eq 'config_'.$iface->{'name'} } @gentoo;
+my @gentoo = &parse_gentoo_net();
+my ($g) = grep { $_->{'name'} eq 'config_'.$iface->{'name'} } @gentoo;
 if ($g) {
 	# Found it .. take out the interface
 	if ($iface->{'virtual'} == scalar(@{$g->{'values'}})-1) {
@@ -266,7 +266,7 @@ return &check_ipaddress($_[0]);
 # get_hostname()
 sub get_hostname
 {
-local %host;
+my %host;
 &read_env_file("/etc/conf.d/hostname", \%host);
 if ($host{'HOSTNAME'}) {
 	return $host{'HOSTNAME'};
@@ -277,19 +277,20 @@ return &get_system_hostname();
 # save_hostname(name)
 sub save_hostname
 {
-local %host;
+my ($hostname) = @_;
+my %host;
 &read_env_file("/etc/conf.d/hostname", \%host);
-$host{'HOSTNAME'} = $_[0];
+$host{'HOSTNAME'} = $hostname;
 &write_env_file("/etc/conf.d/hostname", \%host);
-&system_logged("hostname $_[0] >/dev/null 2>&1");
+&system_logged("hostname ".quotemeta($hostname)." >/dev/null 2>&1");
 }
 
 # routing_input()
 # Prints HTML for editing routing settings
 sub routing_input
 {
-local ($gw, $dev) = &get_default_gateway();
-local @ifaces = grep { $_->{'virtual'} eq '' } &boot_interfaces();
+my ($gw, $dev) = &get_default_gateway();
+my @ifaces = grep { $_->{'virtual'} eq '' } &boot_interfaces();
 print &ui_table_row($text{'routes_def'},
       &ui_radio("route_def", $gw ? 0 : 1,
 		[ [ 1, $text{'routes_nogw'}."<br>" ],
@@ -331,8 +332,8 @@ closedir(DIR);
 # settings.
 sub get_default_gateway
 {
-local @ifaces = &boot_interfaces();
-local ($iface) = grep { $_->{'gateway'} } @ifaces;
+my @ifaces = &boot_interfaces();
+my ($iface) = grep { $_->{'gateway'} } @ifaces;
 if ($iface) {
 	return ( $iface->{'gateway'}, $iface->{'name'} );
 	}
@@ -346,10 +347,10 @@ else {
 # in the boot time settings.
 sub set_default_gateway
 {
-local ($gw, $dev) = @_;
+my ($gw, $dev) = @_;
 &lock_file($gentoo_net_config);
-local @ifaces = &boot_interfaces();
-local ($iface) = grep { $_->{'gateway'} } @ifaces;
+my @ifaces = &boot_interfaces();
+my ($iface) = grep { $_->{'gateway'} } @ifaces;
 if ($iface && $gw) {
 	# Change existing default route
 	$g = $iface->{'gentoogw'};
@@ -375,7 +376,7 @@ elsif (!$iface && $gw) {
 # Returns 1 if managing IPv6 interfaces is supported
 sub supports_address6
 {
-local ($iface) = @_;
+my ($iface) = @_;
 return 0;
 }
 
