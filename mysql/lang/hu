@@ -20,7 +20,7 @@ index_nouser=Az Ön Webmin belépője úgy lett bekonfigurálva, hogy a MySQL sz
 index_db=Adatbázis neve
 index_tables=Táblák
 index_elibrary=A MySQL kliens program $1 nem tud lefutni, mert nem találja a MySQL megosztott könyvtárait. Ellenőrizze a <a href='$2'>modul beállítások</a> és győződjön meg róla, hogy a <i>A MySQL megosztott könyvtárainak útvonala</i> be lett állítva.
-index_version=MíSQL verzió $1
+index_version=MySQL verzió $1
 index_nomod=Figyelem: A Perl modul $1 nem lett az Ön rendszerébe installálva, ezért a Webmin nem tud a MySQL adatbázishoz hozzáférni.
 index_nomods=Figyelem: A Perl modul $1 és $2 nem lett az Ön rendszerébe felinstallálva, ezért a Webmin nem tud hozzáférni a MySQL adatbázishoz. <a href='$3'>Kattintson ide</a> ha installálni szeretné most.
 index_mysqlver=A <tt>$i</tt> parancs visszatérési értéke:
