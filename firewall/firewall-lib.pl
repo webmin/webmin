@@ -249,15 +249,13 @@ return @rv;
 sub describe_rule
 {
 local (@c, $d);
-my $sd = &supports_conntrack() ? "ctstate" : "state";
 foreach $d ('p', 's', 'd', 'i', 'o', 'f', 'dport',
 	    'sport', 'tcp-flags', 'tcp-option',
 	    'icmp-type', 'icmpv6-type', 'mac-source', 'limit', 'limit-burst',
 	    'ports', 'uid-owner', 'gid-owner',
-	    'pid-owner', 'sid-owner', $sd, 'tos',
+	    'pid-owner', 'sid-owner', 'ctstate', 'state', 'tos',
 	    'dports', 'sports', 'physdev-in', 'physdev-out', 'args') {
 	if ($_[0]->{$d}) {
-
 		# get name and values
 		local ($n, @v) = @{$_[0]->{$d}};
 		# with additional args
