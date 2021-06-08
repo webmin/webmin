@@ -20,6 +20,7 @@ manual_edata=Yeni içerik girilmedi
 
 list_title=PHP Yapılandırmasını Yönet
 list_ecannot=Bu PHP yapılandırma dosyasını yönetmenize izin verilmiyor
+list_efile=Düzenlenecek dosya mutlak bir yol olmalıdır
 list_return=PHP yapılandırması
 list_format_ini=INI biçimi
 list_format_fpm=FPM biçimi

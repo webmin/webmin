@@ -20,6 +20,7 @@ manual_edata=Ez da eduki berririk sartu
 
 list_title=Kudeatu PHP konfigurazioa
 list_ecannot=Ezin duzu PHP konfigurazio fitxategi hau kudeatu
+list_efile=Editatzeko fitxategiak bide absolutua izan behar du
 list_return=PHP konfigurazioa
 list_format_ini=INI formatua
 list_format_fpm=FPM formatua

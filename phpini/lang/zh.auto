@@ -20,6 +20,7 @@ manual_edata=没有输入新内容
 
 list_title=管理PHP配置
 list_ecannot=您无权管理此PHP配置文件
+list_efile=要编辑的文件必须是绝对路径
 list_return=PHP配置
 list_format_ini=INI格式
 list_format_fpm=FPM格式

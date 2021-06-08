@@ -20,6 +20,7 @@ manual_edata=Geen nuwe inhoud ingevoer nie
 
 list_title=Bestuur PHP-konfigurasie
 list_ecannot=U mag nie hierdie PHP-konfigurasielêer bestuur nie
+list_efile=Lêer om te wysig moet 'n absolute pad wees
 list_return=PHP-konfigurasie
 list_format_ini=INI-formaat
 list_format_fpm=FPM-formaat

@@ -20,6 +20,7 @@ manual_edata=新しいコンテンツは入力されていません
 
 list_title=PHP構成の管理
 list_ecannot=このPHP構成ファイルを管理することは許可されていません
+list_efile=編集するファイルは絶対パスである必要があります
 list_return=PHPの構成
 list_format_ini=INI形式
 list_format_fpm=FPMフォーマット

@@ -20,6 +20,7 @@ manual_edata=Neįvestas naujas turinys
 
 list_title=Tvarkykite PHP konfigūraciją
 list_ecannot=Jums neleidžiama tvarkyti šio PHP konfigūracijos failo
+list_efile=Redaguojamas failas turi būti absoliutus kelias
 list_return=PHP konfigūracija
 list_format_ini=INI formatas
 list_format_fpm=FPM formatas

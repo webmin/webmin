@@ -1,5 +1,6 @@
 file_eread=$1 을 (를) 읽지 못했습니다  : $2 
 
+list_efile=편집 할 파일은 절대 경로 여야합니다.
 list_format_ini=INI 형식
 list_format_fpm=FPM 형식
 

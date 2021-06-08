@@ -20,6 +20,7 @@ manual_edata=Nove vsebine niso vnesene
 
 list_title=Upravljanje konfiguracije PHP
 list_ecannot=Te konfiguracijske datoteke PHP vam ni dovoljeno upravljati
+list_efile=Datoteka za urejanje mora biti absolutna pot
 list_return=Konfiguracija PHP
 list_format_ini=Oblika INI
 list_format_fpm=Format FPM

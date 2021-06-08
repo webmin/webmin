@@ -20,6 +20,7 @@ manual_edata=Δεν εισήχθησαν νέα περιεχόμενα
 
 list_title=Διαχειριστείτε τη διαμόρφωση PHP
 list_ecannot=Δεν επιτρέπεται να διαχειρίζεστε αυτό το αρχείο διαμόρφωσης PHP
+list_efile=Το αρχείο για επεξεργασία πρέπει να είναι μια απόλυτη διαδρομή
 list_return=Διαμόρφωση PHP
 list_format_ini=Μορφή INI
 list_format_fpm=Μορφή FPM

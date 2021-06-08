@@ -20,6 +20,7 @@ manual_edata=Inget nytt innehåll anges
 
 list_title=Hantera PHP-konfiguration
 list_ecannot=Du får inte hantera den här PHP-konfigurationsfilen
+list_efile=Filen som ska redigeras måste vara en absolut sökväg
 list_return=PHP-konfiguration
 list_format_ini=INI-format
 list_format_fpm=FPM-format

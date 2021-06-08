@@ -20,6 +20,7 @@ manual_edata=Nenhum conteúdo novo foi inserido
 
 list_title=Gerenciar configuração do PHP
 list_ecannot=Você não tem permissão para gerenciar este arquivo de configuração PHP
+list_efile=O arquivo a ser editado deve ser um caminho absoluto
 list_return=Configuração PHP
 list_format_ini=Formato INI
 list_format_fpm=Formato FPM

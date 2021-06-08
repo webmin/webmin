@@ -1,5 +1,6 @@
 file_eread=Nepodařilo se přečíst $1 : $2 
 
+list_efile=Soubor, který chcete upravit, musí být absolutní cesta
 list_format_ini=Formát INI
 list_format_fpm=Formát FPM
 

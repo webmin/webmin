@@ -20,6 +20,7 @@ manual_edata=לא הוזן תוכן חדש
 
 list_title=נהל את תצורת PHP
 list_ecannot=אינך רשאי לנהל קובץ תצורת PHP זה
+list_efile=קובץ לעריכה חייב להיות נתיב מוחלט
 list_return=תצורת PHP
 list_format_ini=פורמט INI
 list_format_fpm=פורמט FPM

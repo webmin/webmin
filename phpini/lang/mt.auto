@@ -20,6 +20,7 @@ manual_edata=L-ebda kontenut ġdid ma daħal
 
 list_title=Immaniġġja l-konfigurazzjoni PHP
 list_ecannot=M'għandekx permess timmaniġġja dan il-fajl ta 'konfigurazzjoni PHP
+list_efile=Fajl għall-editjar għandu jkun triq assoluta
 list_return=Konfigurazzjoni PHP
 list_format_ini=Format INI
 list_format_fpm=Format FPM

@@ -20,6 +20,7 @@ manual_edata=Intet nyt indhold indtastet
 
 list_title=Administrer PHP-konfiguration
 list_ecannot=Du har ikke tilladelse til at administrere denne PHP-konfigurationsfil
+list_efile=Fil, der skal redigeres, skal være en absolut sti
 list_return=PHP-konfiguration
 list_format_ini=INI-format
 list_format_fpm=FPM-format

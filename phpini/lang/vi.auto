@@ -20,6 +20,7 @@ manual_edata=Không có nội dung mới được nhập
 
 list_title=Quản lý cấu hình PHP
 list_ecannot=Bạn không được phép quản lý tệp cấu hình PHP này
+list_efile=Tệp để chỉnh sửa phải là một đường dẫn tuyệt đối
 list_return=Cấu hình PHP
 list_format_ini=Định dạng INI
 list_format_fpm=Định dạng FPM

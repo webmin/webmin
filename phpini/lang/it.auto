@@ -1,5 +1,6 @@
 file_eread=Impossibile leggere $1 : $2 
 
+list_efile=Il file da modificare deve essere un percorso assoluto
 list_format_ini=Formato INI
 list_format_fpm=Formato FPM
 

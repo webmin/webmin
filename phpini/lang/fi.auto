@@ -20,6 +20,7 @@ manual_edata=Uutta sisältöä ei ole annettu
 
 list_title=Hallitse PHP-määrityksiä
 list_ecannot=Et voi hallita tätä PHP-asetustiedostoa
+list_efile=Muokattavan tiedoston on oltava absoluuttinen polku
 list_return=PHP-määritykset
 list_format_ini=INI-muoto
 list_format_fpm=FPM-muoto

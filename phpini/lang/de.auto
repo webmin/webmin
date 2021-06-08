@@ -1,3 +1,5 @@
+list_efile=Die zu bearbeitende Datei muss ein absoluter Pfad sein
+
 session_eredis=Fehlende oder deaktivierte Redis-Erweiterung
 
 log_safe=Die Optionen für den abgesicherten Modus wurden in $1 geändert

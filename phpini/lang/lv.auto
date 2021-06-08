@@ -20,6 +20,7 @@ manual_edata=Nav ievadīts jauns saturs
 
 list_title=Pārvaldiet PHP konfigurāciju
 list_ecannot=Jums nav atļauts pārvaldīt šo PHP konfigurācijas failu
+list_efile=Rediģējamajam failam jābūt absolūtam ceļam
 list_return=PHP konfigurācija
 list_format_ini=INI formāts
 list_format_fpm=FPM formāts

@@ -20,6 +20,7 @@ manual_edata=Tiada kandungan baru yang dimasukkan
 
 list_title=Urus Konfigurasi PHP
 list_ecannot=Anda tidak dibenarkan untuk menguruskan fail konfigurasi PHP ini
+list_efile=Fail untuk diedit mestilah jalan mutlak
 list_return=Konfigurasi PHP
 list_format_ini=Format INI
 list_format_fpm=Format FPM

@@ -10,6 +10,7 @@ manual_err=A konfigurációs fájl szerkesztése nem sikerült
 manual_edata=Nincs új tartalom megadva
 
 list_ecannot=A PHP konfigurációs fájl kezelése nem engedélyezett
+list_efile=A szerkesztendő fájlnak abszolút elérési útnak kell lennie
 list_format_ini=INI formátum
 list_format_fpm=FPM formátum
 

@@ -20,6 +20,7 @@ manual_edata=Nebol zadaný žiadny nový obsah
 
 list_title=Spravujte konfiguráciu PHP
 list_ecannot=Nemáte povolenie spravovať tento konfiguračný súbor PHP
+list_efile=Súbor, ktorý chcete upraviť, musí byť absolútna cesta
 list_return=PHP konfigurácia
 list_format_ini=Formát INI
 list_format_fpm=Formát FPM

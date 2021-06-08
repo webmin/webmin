@@ -20,6 +20,7 @@ manual_edata=لم يتم إدخال محتويات جديدة
 
 list_title=إدارة تكوين PHP
 list_ecannot=غير مسموح لك بإدارة ملف التكوين PHP
+list_efile=يجب أن يكون الملف المراد تحريره مسارًا مطلقًا
 list_return=تكوين PHP
 list_format_ini=تنسيق INI
 list_format_fpm=تنسيق FPM

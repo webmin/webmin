@@ -20,6 +20,7 @@ manual_edata=هیچ محتوای جدید وارد نشده است
 
 list_title=پیکربندی PHP را مدیریت کنید
 list_ecannot=شما مجاز به مدیریت این پرونده پیکربندی PHP نیستید
+list_efile=پرونده برای ویرایش باید یک مسیر مطلق باشد
 list_return=پیکربندی پی اچ پی
 list_format_ini=فرمت INI
 list_format_fpm=فرمت FPM
