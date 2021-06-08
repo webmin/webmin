@@ -3,6 +3,7 @@
 
 require './phpini-lib.pl';
 &ReadParse();
+$in{'file'} =~ /^\// || &error($text{'list_efile'});
 &can_php_config($in{'file'}) || &error($text{'list_ecannot'});
 
 # Work out if we can just see one file
