@@ -377,7 +377,6 @@ webmincron_einterval=间隔必须大于零秒
 twofactor_provider=认证提供者
 twofactor_test=使用提供商的测试模式？
 twofactor_eprovider=无效的提供者！
-twofactor_authy=Authy
 twofactor_email=您的电子邮件地址
 twofactor_country=手机国家代码
 twofactor_phone=手机号码

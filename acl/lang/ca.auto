@@ -7,3 +7,12 @@ edit_safe1=Només mòduls segurs
 edit_unsafe=Restableix-lo a sense restriccions
 
 save_eunixname=El nom d'usuari '$1' no és un usuari Unix, per la qual cosa no es pot utilitzar en mode segur
+
+sync_modify=Canvieu el nom de l'usuari Webmin coincident quan es canvia el nom d'un usuari Unix.
+
+sql_nocache0=Connexions de memòria cau a la base de dades
+sql_nocache1=Obriu una connexió nova per a cada cerca
+sql_timeout_def=Utilitza el temps d'espera de connexió predeterminat (60 segons)
+sql_timeout_for=Tanqueu les connexions a la memòria cau després
+sql_timeout_secs=segons
+sql_etimeout=El temps d'espera de la connexió a la memòria cau ha de ser un número

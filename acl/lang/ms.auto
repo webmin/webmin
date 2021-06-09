@@ -10,6 +10,8 @@ save_eunixname=Nama pengguna '$1' bukan pengguna Unix, dan oleh itu tidak boleh 
 
 delete_eanonuser=Pengguna ini sedang digunakan untuk akses modul tanpa nama
 
+sync_modify=Ganti nama pengguna Webmin yang sepadan apabila pengguna Unix dinamakan semula.
+
 sessions_actions=Tindakan..
 sessions_logouts=Juga tunjukkan sesi log keluar..
 sessions_state=Negeri
@@ -21,5 +23,12 @@ sessions_kill=Putuskan sambungan..
 logins_title=Kemasukan Webmin terkini
 
 udeletes_jerr=Gagal menambah pengguna ke kumpulan
+
+sql_nocache0=Sambungan cache ke pangkalan data
+sql_nocache1=Buka sambungan baru untuk setiap carian
+sql_timeout_def=Gunakan masa tamat sambungan lalai (60 saat)
+sql_timeout_for=Tutup sambungan cache selepas itu
+sql_timeout_secs=saat
+sql_etimeout=Tamat masa sambungan cache mestilah nombor
 
 twofactor_ebutton=Tiada butang diklik!

@@ -10,6 +10,8 @@ save_eunixname=El nombre de usuario '$1' no es un usuario de Unix, por lo que no
 
 delete_eanonuser=Este usuario se está utilizando para acceder al módulo anónimo
 
+sync_modify=Cambie el nombre del usuario de Webmin coincidente cuando se cambie el nombre de un usuario de Unix.
+
 sessions_actions=Comportamiento..
 sessions_logouts=Mostrar también sesiones cerradas.
 sessions_state=Estado
@@ -21,3 +23,10 @@ sessions_kill=Desconectar..
 logins_title=Inicios de sesión recientes de Webmin
 
 udeletes_jerr=Error al agregar usuarios al grupo
+
+sql_nocache0=Caché de conexiones a la base de datos
+sql_nocache1=Abra una nueva conexión para cada búsqueda
+sql_timeout_def=Usar tiempo de espera de conexión predeterminado (60 segundos)
+sql_timeout_for=Cerrar las conexiones en caché después
+sql_timeout_secs=segundos
+sql_etimeout=El tiempo de espera de la conexión en caché debe ser un número

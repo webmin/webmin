@@ -54,6 +54,7 @@ convert_done= $1 převedení uživatelé, $2 neplatné, $3 již existuje, $4 vyl
 convert_users=Uživatelé převést
 
 sync_when=Kdy synchronizovat
+sync_modify=Při přejmenování uživatele Unixu přejmenujte odpovídajícího uživatele Webminu.
 
 unix_restrict2=Další omezení
 unix_header=Nastavení ověřování uživatelů Unixu
@@ -96,6 +97,8 @@ sql_ldap=Použijte server LDAP
 sql_prefix=Vytvořit pod DN
 sql_addto0=Přidejte nové uživatele do výše vybrané databáze
 sql_addto1=Přidání nových uživatelů do místních souborů
+sql_nocache0=Cache připojení k databázi
+sql_nocache1=Otevřete nové připojení pro každé vyhledávání
 sql_emod=Chybí požadovaný Perl modul <tt>$1</tt>
 sql_etable=Požadovaná tabulka $1:$2 
 sql_eldapdn=Základní LDAP DN $1 nebyl nalezen
@@ -116,6 +119,10 @@ sql_dnerr=Nastavení databáze uživatelů a skupin jsou platná, ale chybí DN 
 sql_dnerr2=Kliknutím na tlačítko <b>Vytvořit DN</b> níže jej vytvoříte automaticky, nebo jej ručně přidejte na server LDAP.
 sql_makedn=Vytvořte DN
 sql_schema=Stáhněte si schéma LDAP
+sql_timeout_def=Použít výchozí časový limit připojení (60 sekund)
+sql_timeout_for=Poté ukončete připojení v mezipaměti
+sql_timeout_secs=sekundy
+sql_etimeout=Časový limit připojení v mezipaměti musí být číslo
 
 make_title=Vytvořit tabulky uživatelů a skupin
 make_err=Nepodařilo se vytvořit tabulky uživatelů a skupin

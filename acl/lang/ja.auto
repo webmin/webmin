@@ -52,6 +52,7 @@ convert_done= $1 変換されたユーザー、 $2 無効、 $3 は既に存在�
 convert_users=変換するユーザー
 
 sync_when=同期するタイミング
+sync_modify=Unixユーザーの名前が変更されたときに、一致するWebminユーザーの名前を変更します。
 
 unix_restrict2=追加の制限
 unix_header=Unixユーザー認証設定
@@ -93,6 +94,8 @@ sql_ldap=LDAPサーバーを使用する
 sql_prefix=DNの下に作成
 sql_addto0=上で選択したデータベースに新しいユーザーを追加します
 sql_addto1=新しいユーザーをローカルファイルに追加する
+sql_nocache0=データベースへの接続をキャッシュする
+sql_nocache1=ルックアップごとに新しい接続を開きます
 sql_emod=必要なPerlモジュール<tt>$1</tt>がありません
 sql_etable=必要なテーブル $1 のクエリに失敗しました： $2 
 sql_eldapdn=ベースLDAP DN $1 が見つかりませんでした
@@ -113,6 +116,10 @@ sql_dnerr=ユーザーとグループのデータベース設定は有効です�
 sql_dnerr2=下の[<b>DNを作成</b>]ボタンをクリックして自動的に作成するか、LDAPサーバーに手動で追加します。
 sql_makedn=DNを作成
 sql_schema=LDAPスキーマをダウンロードする
+sql_timeout_def=デフォルトの接続タイムアウト（60秒）を使用する
+sql_timeout_for=後にキャッシュされた接続を閉じる
+sql_timeout_secs=秒
+sql_etimeout=キャッシュされた接続タイムアウトは数値である必要があります
 
 make_title=ユーザーテーブルとグループテーブルを作成する
 make_err=ユーザーテーブルとグループテーブルの作成に失敗しました

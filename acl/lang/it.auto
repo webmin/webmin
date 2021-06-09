@@ -30,6 +30,7 @@ convert_done=$1 utenti convertiti, $2 non validi, $3 esistono già, $4 escluso.
 convert_users=Utenti da convertire
 
 sync_when=Quando sincronizzare
+sync_modify=Rinomina l'utente Webmin corrispondente quando viene rinominato un utente Unix.
 
 unix_restrict2=Ulteriori restrizioni
 unix_header=Impostazioni di autenticazione utente Unix
@@ -46,6 +47,13 @@ sessions_kill=Scollegare..
 logins_title=Login Webmin recenti
 
 udeletes_jerr=Impossibile aggiungere utenti al gruppo
+
+sql_nocache0=Memorizza nella cache le connessioni al database
+sql_nocache1=Apri una nuova connessione per ogni ricerca
+sql_timeout_def=Usa timeout di connessione predefinito (60 secondi)
+sql_timeout_for=Chiudi le connessioni memorizzate nella cache dopo
+sql_timeout_secs=secondi
+sql_etimeout=Il timeout della connessione memorizzata nella cache deve essere un numero
 
 twofactor_err=Impossibile impostare l'autenticazione a due fattori
 twofactor_euser=Il tuo utente Webmin non è stato trovato!

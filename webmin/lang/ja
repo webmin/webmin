@@ -977,7 +977,6 @@ twofactor_provider=認証プロバイダ
 twofactor_none=無し
 twofactor_err=２段階認証の保存に失敗しました
 twofactor_eprovider=プロバイダが不正です！
-twofactor_totp=Google 認証
 twofactor_email=あなたの電子メールアドレス
 twofactor_country=携帯電話の国コード
 twofactor_phone=携帯電話番号

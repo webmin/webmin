@@ -52,6 +52,7 @@ convert_done= $1 användare konverterade, $2 ogiltig, $3 finns redan, $4 uteslut
 convert_users=Användare att konvertera
 
 sync_when=När du ska synkronisera
+sync_modify=Byt namn på matchande Webmin-användare när Unix-användare byter namn.
 
 unix_restrict2=Ytterligare begränsningar
 unix_header=Unix inställningar för användarautentisering
@@ -97,6 +98,8 @@ sql_ldap=Använd LDAP-server
 sql_prefix=Skapa under DN
 sql_addto0=Lägg till nya användare i den ovan valda databasen
 sql_addto1=Lägg till nya användare i lokala filer
+sql_nocache0=Cache-anslutningar till databasen
+sql_nocache1=Öppna en ny anslutning för varje sökning
 sql_emod=Saknas Perl-modul <tt>$1</tt>
 sql_etable=Det gick inte att fråga obligatorisk tabell $1:$2 
 sql_eldapdn=Bas LDAP DN $1 hittades inte
@@ -117,6 +120,10 @@ sql_dnerr=Användar- och gruppdatabasinställningar är giltiga, men LDAP DN som
 sql_dnerr2=Klicka på <b>Skapa DN</b> -knappen nedan för att skapa den automatiskt, eller lägg till den till din LDAP-server manuellt.
 sql_makedn=Skapa DN
 sql_schema=Ladda ner LDAP-schema
+sql_timeout_def=Använd standardanslutningstimeout (60 sekunder)
+sql_timeout_for=Stäng cachade anslutningar efter
+sql_timeout_secs=sekunder
+sql_etimeout=Tidsgräns för cachad anslutning måste vara ett nummer
 
 make_title=Skapa användar- och grupptabeller
 make_err=Det gick inte att skapa användar- och grupptabeller

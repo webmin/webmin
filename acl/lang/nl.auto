@@ -29,6 +29,7 @@ convert_action=Maatregelen die zijn genomen
 convert_users=Gebruikers om te zetten
 
 sync_when=Wanneer synchroniseren
+sync_modify=Hernoem de overeenkomende Webmin-gebruiker wanneer een Unix-gebruiker wordt hernoemd.
 
 unix_restrict2=Aanvullende beperkingen
 unix_header=Unix-instellingen voor gebruikersauthenticatie
@@ -45,6 +46,13 @@ sessions_kill=Verbinding verbreken..
 logins_title=Recente Webmin-aanmeldingen
 
 udeletes_jerr=Kan gebruikers niet toevoegen aan groep
+
+sql_nocache0=Cacheverbindingen met database
+sql_nocache1=Open een nieuwe verbinding voor elke zoekopdracht
+sql_timeout_def=Gebruik standaard verbinding time-out (60 seconden)
+sql_timeout_for=Sluit cacheverbindingen na
+sql_timeout_secs=seconden
+sql_etimeout=Time-out voor verbinding in cache moet een getal zijn
 
 twofactor_err=Kan tweefactorauthenticatie niet instellen
 twofactor_euser=Uw Webmin-gebruiker is niet gevonden!

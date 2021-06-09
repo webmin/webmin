@@ -123,6 +123,7 @@ convert_done= $1 用户已转换， $2 无效， $3 已经存在， $4 已排除
 convert_users=用户转换
 
 sync_when=何时同步
+sync_modify=重命名Unix用户时，重命名匹配的Webmin用户。
 sync_unix=为新用户设置用于Unix身份验证的密码。
 
 unix_err=保存Unix认证失败
@@ -253,6 +254,8 @@ sql_ldap=使用LDAP服务器
 sql_prefix=在DN下创建
 sql_addto0=将新用户添加到上面选择的数据库中
 sql_addto1=将新用户添加到本地文件
+sql_nocache0=缓存到数据库的连接
+sql_nocache1=为每次查找打开一个新连接
 sql_emod=缺少必需的Perl模块<tt>$1</tt>
 sql_etable=无法查询必需的表 $1:$2 
 sql_eldapdn=找不到基本LDAP DN $1 
@@ -273,6 +276,10 @@ sql_dnerr=用户和组数据库设置有效，但是Webmin所需的LDAP DN丢失
 sql_dnerr2=单击下面的<b>创建DN</b>按钮以使其自动创建，或手动将其添加到LDAP服务器。
 sql_makedn=创建DN
 sql_schema=下载LDAP模式
+sql_timeout_def=使用默认的连接超时（60秒）
+sql_timeout_for=之后关闭缓存的连接
+sql_timeout_secs=秒
+sql_etimeout=缓存的连接超时必须为数字
 
 make_title=创建用户和组表
 make_err=创建用户表和组表失败

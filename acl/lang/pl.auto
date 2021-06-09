@@ -8,6 +8,8 @@ edit_unsafe=Zresetuj do nieograniczonego
 
 save_eunixname=Nazwa użytkownika „$1” nie jest użytkownikiem systemu Unix, dlatego nie można jej używać w trybie awaryjnym
 
+sync_modify=Zmień nazwę pasującego użytkownika Webmin, gdy zmieniona zostanie nazwa użytkownika Uniksa.
+
 sessions_actions=Działania..
 sessions_logouts=Pokaż także wylogowane sesje.
 sessions_state=Stan
@@ -17,3 +19,10 @@ sessions_out=Wylogowano
 sessions_kill=Rozłączyć się..
 
 logins_title=Ostatnie logowanie Webmina
+
+sql_nocache0=Buforuj połączenia z bazą danych
+sql_nocache1=Otwórz nowe połączenie dla każdego wyszukiwania
+sql_timeout_def=Użyj domyślnego limitu czasu połączenia (60 sekund)
+sql_timeout_for=Zamknij połączenia z pamięci podręcznej po
+sql_timeout_secs=sekundy
+sql_etimeout=Limit czasu połączenia w pamięci podręcznej musi być liczbą

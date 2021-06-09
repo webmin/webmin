@@ -776,7 +776,6 @@ twofactor_desc=双要素身份验证使 Webmin 用户可以在登录时启用其
 twofactor_err=保存双因素认证失败
 twofactor_eusers=无法禁用双因素身份验证，因为当前正在注册以下用户：$1
 twofactor_eapikey=未设定或无效的 API 密钥
-twofactor_totp=Google 身份验证器
 twofactor_eemail=电子邮件地址未设定或无效，必须采用类似于 user@domain.com 的格式
 twofactor_ecountry=国家/地区代码未设定或无效，必须是数字，例如 65
 twofactor_ephone=电话号码未设定或无效，只能使用数字，破折号和空格

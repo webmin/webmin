@@ -76,6 +76,7 @@ convert_done=$2 érvénytelen, $3 már léteznek, $4 kizárt.
 convert_users=A felhasználók konvertálni
 
 sync_when=Mikor kell szinkronizálni
+sync_modify=Nevezze át a megfelelő Webmin felhasználót, amikor egy Unix felhasználót átnevez.
 
 unix_err=Nem sikerült menteni az Unix hitelesítést
 unix_restrict2=További korlátozások
@@ -149,6 +150,8 @@ sql_ldap=Használja az LDAP szervert
 sql_prefix=Készítsen DN alatt
 sql_addto0=Vegyen fel új felhasználókat a fent kiválasztott adatbázisba
 sql_addto1=Új felhasználók hozzáadása a helyi fájlokhoz
+sql_nocache0=Gyorsítótár-kapcsolatok az adatbázissal
+sql_nocache1=Nyisson meg új kapcsolatot minden kereséshez
 sql_emod=Hiányzik a szükséges Perl-modul <tt>$1</tt>
 sql_etable=Nem sikerült lekérdezni a szükséges táblát $1:$2 
 sql_eldapdn=Az alap LDAP DN $1 nem található
@@ -169,6 +172,10 @@ sql_dnerr=A felhasználói és a csoport adatbázis beállításai érvényesek,
 sql_dnerr2=Kattintson az alábbi <b>DN létrehozása</b> gombra, hogy automatikusan létrehozza, vagy kézzel adja hozzá az LDAP szerverhez.
 sql_makedn=Hozzon létre DN
 sql_schema=Töltse le az LDAP sémát
+sql_timeout_def=Alapértelmezett csatlakozási időtúllépés használata (60 másodperc)
+sql_timeout_for=Utána zárja be a gyorsítótárazott kapcsolatokat
+sql_timeout_secs=másodpercig
+sql_etimeout=A gyorsítótárazott kapcsolat időkorlátjának számnak kell lennie
 
 make_title=Hozzon létre felhasználói és csoporttáblákat
 make_err=Nem sikerült létrehozni felhasználói és csoport táblákat

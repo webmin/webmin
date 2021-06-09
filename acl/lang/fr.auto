@@ -47,6 +47,7 @@ convert_done= $1 utilisateurs convertis, $2 invalide, $3 existent déjà, $4 exc
 convert_users=Utilisateurs à convertir
 
 sync_when=Quand synchroniser
+sync_modify=Renommez l'utilisateur Webmin correspondant lorsqu'un utilisateur Unix est renommé.
 
 unix_err=Échec de l'enregistrement de l'authentification Unix
 unix_restrict2=Restrictions supplémentaires
@@ -90,6 +91,8 @@ sql_ldap=Utiliser le serveur LDAP
 sql_prefix=Créer sous DN
 sql_addto0=Ajouter de nouveaux utilisateurs à la base de données sélectionnée ci-dessus
 sql_addto1=Ajouter de nouveaux utilisateurs aux fichiers locaux
+sql_nocache0=Cache les connexions à la base de données
+sql_nocache1=Ouvrez une nouvelle connexion pour chaque recherche
 sql_emod=Module Perl requis manquant <tt>$1</tt>
 sql_etable=Impossible d'interroger la table requise $1:$2 
 sql_eldapdn=DN LDAP de base $1 est introuvable
@@ -108,6 +111,10 @@ sql_title3=Créer un DN manquant
 sql_dnerr=Les paramètres de base de données d'utilisateurs et de groupes sont valides, mais le DN LDAP requis par Webmin est manquant: $1 
 sql_dnerr2=Cliquez sur le bouton <b>Créer un DN</b> ci-dessous pour le créer automatiquement ou l'ajouter manuellement à votre serveur LDAP.
 sql_schema=Télécharger le schéma LDAP
+sql_timeout_def=Utiliser le délai de connexion par défaut (60 secondes)
+sql_timeout_for=Fermer les connexions mises en cache après
+sql_timeout_secs=secondes
+sql_etimeout=Le délai d'expiration de la connexion en cache doit être un nombre
 
 make_exec=Exécution de SQL $1..
 

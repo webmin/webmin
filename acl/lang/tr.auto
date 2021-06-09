@@ -97,6 +97,7 @@ convert_done= $1 kullanıcılar dönüştürüldü, $2 geçersiz, $3 zaten var, 
 convert_users=Dönüştürülecek kullanıcılar
 
 sync_when=Ne zaman senkronize edilir
+sync_modify=Bir Unix kullanıcısı yeniden adlandırıldığında eşleşen Webmin kullanıcısını yeniden adlandırın.
 
 unix_err=Unix kimlik doğrulaması kaydedilemedi
 unix_sel=Aşağıda listelenen Unix kullanıcılarının oturum açmasına izin ver..
@@ -203,6 +204,8 @@ sql_ldap=LDAP sunucusu kullan
 sql_prefix=DN altında oluştur
 sql_addto0=Yukarıda seçilen veritabanına yeni kullanıcılar ekleyin
 sql_addto1=Yerel dosyalara yeni kullanıcılar ekleyin
+sql_nocache0=Veritabanına önbellek bağlantıları
+sql_nocache1=Her arama için yeni bir bağlantı açın
 sql_emod=Gerekli Perl modülü eksik <tt>$1</tt>
 sql_etable=Gerekli tablo sorgulanamadı $1:$2 
 sql_eldapdn=Temel LDAP DN $1 bulunamadı
@@ -223,6 +226,10 @@ sql_dnerr=Kullanıcı ve grup veritabanı ayarları geçerli, ancak Webmin için
 sql_dnerr2=Otomatik olarak oluşturulması için aşağıdaki <b>DN Oluştur</b> düğmesini tıklayın veya LDAP sunucunuza manuel olarak ekleyin.
 sql_makedn=DN oluştur
 sql_schema=LDAP Şemasını İndirin
+sql_timeout_def=Varsayılan bağlantı zaman aşımını kullan (60 saniye)
+sql_timeout_for=Sonra önbelleğe alınmış bağlantıları kapatın
+sql_timeout_secs=saniye
+sql_etimeout=Önbelleğe alınan bağlantı zaman aşımı bir sayı olmalıdır
 
 make_title=Kullanıcı ve Grup Tabloları Oluşturma
 make_err=Kullanıcı ve grup tabloları oluşturulamadı

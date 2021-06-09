@@ -85,6 +85,7 @@ convert_done= $1 konvertovaní používatelia, $2 neplatné, $3 už existujú, $
 convert_users=Používatelia majú prevádzať
 
 sync_when=Kedy synchronizovať
+sync_modify=Pri premenovaní používateľa Unixu premenujte zodpovedajúceho používateľa Webmin.
 
 unix_err=Nepodarilo sa uložiť autentifikáciu Unix
 unix_sel=Povoliť používateľom Unixu uvedeným nižšie prihlásiť sa.
@@ -182,6 +183,8 @@ sql_ldap=Použite server LDAP
 sql_prefix=Vytvorte pod DN
 sql_addto0=Pridajte nových používateľov do databázy vybranej vyššie
 sql_addto1=Pridajte nových používateľov do miestnych súborov
+sql_nocache0=Cache pripojenie k databáze
+sql_nocache1=Pre každé vyhľadávanie otvorte nové pripojenie
 sql_emod=Chýba požadovaný modul Perl <tt>$1</tt>
 sql_etable=Nepodarilo sa vyhľadať požadovanú tabuľku $1:$2 
 sql_eldapdn=Základný LDAP DN $1 nebol nájdený
@@ -202,6 +205,10 @@ sql_dnerr=Nastavenia databázy používateľov a skupín sú platné, ale Webmin
 sql_dnerr2=Kliknutím na tlačidlo <b>Vytvoriť DN</b> nižšie ho vytvoríte automaticky, alebo ho pridajte na svoj server LDAP ručne.
 sql_makedn=Vytvorte DN
 sql_schema=Stiahnite si schému LDAP
+sql_timeout_def=Použiť predvolený časový limit pripojenia (60 sekúnd)
+sql_timeout_for=Po
+sql_timeout_secs=sekúnd
+sql_etimeout=Časový limit spojenia v pamäti musí byť číslo
 
 make_title=Vytvorte tabuľky používateľov a skupín
 make_err=Nepodarilo sa vytvoriť tabuľky používateľov a skupín

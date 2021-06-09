@@ -50,6 +50,7 @@ convert_done= $1 erabiltzaile bihurtu dira, $2 baliogabeak dira, $3 lehendik dau
 convert_users=Erabiltzaileak bihurtzeko
 
 sync_when=Noiz sinkronizatu
+sync_modify=Berrizendatu bat datorren Webmin erabiltzaileari Unix erabiltzaileari izena aldatzen zaionean.
 
 unix_restrict2=Murrizketa osagarriak
 unix_header=Unix erabiltzailearen autentifikazio ezarpenak
@@ -91,6 +92,8 @@ sql_ldap=Erabili LDAP zerbitzaria
 sql_prefix=Sortu DN azpian
 sql_addto0=Gehitu erabiltzaile berriak goiko hautatutako datu basean
 sql_addto1=Gehitu erabiltzaile berriak tokiko fitxategietan
+sql_nocache0=Cachea datu-baserako konexioak
+sql_nocache1=Ireki konexio berri bat bilaketa bakoitzerako
 sql_emod=Perl modulua falta da <tt>$1</tt>
 sql_etable=Ezin izan da kontsultatu beharrezko < $1 taula: $2 
 sql_eldapdn=Oinarria LDAP DN $1 ez da aurkitu
@@ -111,6 +114,10 @@ sql_dnerr=Erabiltzaileen eta taldeen datu-basearen ezarpenak baliozkoak dira, ba
 sql_dnerr2=Egin klik azpian <b>Sortu DN</b> botoian automatikoki sortzeko edo gehitzeko eskuz LDAP zerbitzarira.
 sql_makedn=Sortu DN
 sql_schema=Deskargatu LDAP eskema
+sql_timeout_def=Erabili konexioaren denbora-muga lehenetsia (60 segundo)
+sql_timeout_for=Itxi cacheko konexioak ondoren
+sql_timeout_secs=segundo
+sql_etimeout=Cachearen konexioaren denbora-mugak zenbaki bat izan behar du
 
 make_title=Sortu erabiltzaile eta talde taulak
 make_err=Ezin izan da erabiltzaile eta talde taulak sortu

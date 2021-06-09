@@ -156,7 +156,6 @@ twofactor_test=プロバイダーのテストモードを使用しますか？
 twofactor_desc=2要素認証により、Webminユーザーは、ログイン時に追加の認証デバイス（ワンタイムパスコードジェネレーターなど）を使用できるようになります。このページで有効にしたユーザーは、選択した認証プロバイダーに個別に登録する必要があります。
 twofactor_eusers=次のユーザーが現在登録されているため、二要素認証を無効にすることはできません：$1
 twofactor_eapikey=APIキーが見つからないか無効です
-twofactor_authy=真正
 twofactor_eemail=メールアドレスが見つからないか無効です-user@domain.comのような形式にする必要があります
 twofactor_ecountry=国コードがないか無効です-65などの数字である必要があります
 twofactor_ephone=電話番号がないか無効です-数字、ダッシュ、スペースのみ使用できます

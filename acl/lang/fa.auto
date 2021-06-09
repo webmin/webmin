@@ -89,6 +89,7 @@ convert_done=$1 users converted, $2 invalid, $3 already exist, $4 excluded.
 convert_users=کاربران برای تبدیل
 
 sync_when=چه موقع همگام سازی
+sync_modify=با تغییر نام کاربر یونیکس ، به کاربر مطابق وبمین تغییر نام دهید.
 
 unix_err=ذخیره احراز هویت یونیکس انجام نشد
 unix_sel=به کاربران Unix که در زیر ذکر شده اجازه دهید وارد شوید..
@@ -190,6 +191,8 @@ sql_ldap=از سرور LDAP استفاده کنید
 sql_prefix=زیر DN ایجاد کنید
 sql_addto0=کاربران جدید را به پایگاه داده انتخاب شده در بالا اضافه کنید
 sql_addto1=کاربران جدید را به پرونده های محلی اضافه کنید
+sql_nocache0=اتصالات حافظه نهان به پایگاه داده
+sql_nocache1=برای هر جستجوی اتصال جدیدی را باز کنید
 sql_emod=Missing required Perl module <tt>$1</tt>
 sql_etable=Failed to query required table $1 : $2
 sql_eldapdn=Base LDAP DN $1 was not found
@@ -210,6 +213,10 @@ sql_dnerr=User and group database settings are valid, but the LDAP DN needed by 
 sql_dnerr2=بر روی دکمه <b>ایجاد DN</b> زیر کلیک کنید تا به صورت خودکار ایجاد شود ، یا آن را به صورت دستی به سرور LDAP خود اضافه کنید.
 sql_makedn=ایجاد DN
 sql_schema=دانلود طرحواره LDAP
+sql_timeout_def=استفاده از زمان قطع پیش فرض اتصال (60 ثانیه)
+sql_timeout_for=اتصالات حافظه پنهان را بعد از آن ببندید
+sql_timeout_secs=ثانیه
+sql_etimeout=مهلت قطع اتصال پنهان باید یک عدد باشد
 
 make_title=جداول کاربری و گروهی ایجاد کنید
 make_err=جداول کاربر و گروه انجام نشد
