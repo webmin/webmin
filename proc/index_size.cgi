@@ -9,6 +9,7 @@ if (defined(&get_memory_info)) {
 	@m = &get_memory_info();
 	if (@m) {
 		$msg = $m[4] ? 'index_mem3' : 'index_mem2';
+		print "<p>";
 		print &text($msg, &nice_size($m[0]*1024),
 			    &nice_size($m[1]*1024),
 			    &nice_size($m[4]*1024)),"\n";
