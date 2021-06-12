@@ -1280,6 +1280,14 @@ elsif ($type eq "DMARC") {
 	$ruf =~ s/^mailto://;
 	print &ui_table_row($text{'value_dmarcruf'},
 	    &ui_opt_textbox("dmarcruf", $ruf, 50, $text{'value_dmarcnor'}), 3);
+
+	print &ui_table_row($text{'value_dmarcfo'},
+		&ui_select("dmarcfo", $dmarc->{'fo'},
+			   [ [ undef, $text{'default'} ],
+			     [ 0, $text{'value_dmarcfo0'} ], 
+			     [ 1, $text{'value_dmarcfo1'} ], 
+			     [ 'd', $text{'value_dmarcfod'} ], 
+			     [ 's', $text{'value_dmarcfos'} ] ]));
 	}
 elsif ($type eq "NSEC3PARAM") {
 	# NSEC records have a hash type, flags, number of interations, salt

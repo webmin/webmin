@@ -415,6 +415,13 @@ else {
 			$dmarc->{'ruf'} = $in{'dmarcruf'};
 			}
 
+		if ($in{'dmarcfo'} eq '') {
+			delete($dmarc->{'fo'});
+			}
+		else {
+			$dmarc->{'fo'} = $in{'dmarcfo'};
+			}
+
 		$vals = "\"".&join_dmarc($dmarc)."\"";
 		}
 	elsif ($in{'type'} eq 'NSEC3PARAM') {
