@@ -11,7 +11,7 @@ print &ui_table_start($text{'web_header'}, undef, 2);
 # Default content expiry time
 print &ui_table_row($text{'web_expires'},
 	&ui_opt_textbox("expires", $miniserv{'expires'}, 10,
-			$text{'web_expiresdef'}, $text{'web_expiressecs'}), undef, [ "valign=middle","valign=middle" ]);
+			$text{'web_expiresdef'}, $text{'web_expiressecs'}), undef);
 
 # Additional expiry times based on path
 my @expires_paths;
@@ -35,16 +35,16 @@ print &ui_table_row($text{'web_expirespaths'}, $etable);
 
 # Show call stack on error
 print &ui_table_row($text{'advanced_stack'},
-		    &ui_yesno_radio("stack", int($gconfig{'error_stack'})), undef, [ "valign=middle","valign=middle" ]);
+		    &ui_yesno_radio("stack", int($gconfig{'error_stack'})), undef);
 
 # Show CGI errors
 print &ui_table_row($text{'advanced_showstderr'},
-	    &ui_yesno_radio("showstderr", int(!$miniserv{'noshowstderr'})), undef, [ "valign=middle","valign=middle" ]);
+	    &ui_yesno_radio("showstderr", int(!$miniserv{'noshowstderr'})), undef);
 
 if (!$miniserv{'session'}) {
 	# Pass passwords to CGI programs
 	print &ui_table_row($text{'advanced_pass'},
-		    &ui_yesno_radio("pass", int($miniserv{'pass_password'})), undef, [ "valign=middle","valign=middle" ]);
+		    &ui_yesno_radio("pass", int($miniserv{'pass_password'})), undef);
 	}
 
 # Gzip static files?
@@ -52,13 +52,13 @@ print &ui_table_row($text{'advanced_gzip'},
 	&ui_radio("gzip", $miniserv{'gzip'},
 		  [ [ '', $text{'advanced_gzipauto'} ],
 		    [ 0, $text{'advanced_gzip0'} ],
-		    [ 1, $text{'advanced_gzip1'} ] ]), undef, [ "valign=middle","valign=middle" ]);
+		    [ 1, $text{'advanced_gzip1'} ] ]), undef);
 
 # Redirect type
 print &ui_table_row($text{'advanced_redir'},
 	&ui_radio("redir", $gconfig{'relative_redir'} ? 1 : 0,
 		  [ [ 1, $text{'advanced_redir1'} ],
-		    [ 0, $text{'advanced_redir0'} ] ]), undef, [ "valign=middle","valign=middle" ]);
+		    [ 0, $text{'advanced_redir0'} ] ]), undef);
 
 # Allow directory listing
 print &ui_table_row($text{'advanced_listdir'},
