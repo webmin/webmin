@@ -79,6 +79,7 @@ $ver = &get_usermin_version();
 	   $miniserv{'session'} ? ( "list_sessions.cgi", "edit_twofactor.cgi" ) : ( ),
 	   "edit_blocked.cgi",
 	   "edit_mobile.cgi",
+	   "edit_web.cgi",
 	   "edit_advanced.cgi" );
 @titles = map { /_(\S+).cgi/; $text{"${1}_title"} } @links;
 @icons = map { /_(\S+).cgi/; "images/$1.gif" } @links;

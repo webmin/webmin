@@ -502,4 +502,6 @@ copycert_ekeyfile=No private key file is set in Webmin
 twofactor_desc=Two-factor authentication allows Usermin users to enable use of an additional authentication device when logging in, such as a one-time passcode generator. Users must individually enroll with the selected authentication provider after it is enabled on this page.
 twofactor_eversion=The version of Usermin installed on your system does not support two-factor authentication.
 
+web_header=Options for Usermin's built-in webserver
+
 __norefs=1

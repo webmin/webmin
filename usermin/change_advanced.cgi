@@ -26,9 +26,6 @@ for($i=0; defined($tmod = $in{'tmod_'.$i}); $i++) {
 	}
 &webmin::save_tempdirs(\%uconfig, \@tdirs);
 
-# Save stack trace option
-$uconfig{'error_stack'} = $in{'stack'};
-
 # Save umask
 if ($in{'umask_def'}) {
 	delete($uconfig{'umask'});

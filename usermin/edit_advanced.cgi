@@ -31,10 +31,6 @@ foreach $d (&webmin::get_tempdirs(\%uconfig), [ ]) {
 $ttable .= &ui_columns_end();
 print &ui_table_row($text{'advanced_tempmods'}, $ttable);
 
-# Show call stack on error
-print &ui_table_row($text{'advanced_stack'},
-		    &ui_yesno_radio("stack", int($uconfig{'error_stack'})));
-
 # Pass passwords to CGI programs
 print &ui_table_row($text{'advanced_pass'},
 		    &ui_yesno_radio("pass", int($miniserv{'pass_password'})));
