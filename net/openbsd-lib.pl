@@ -86,34 +86,40 @@ sub deactivate_interface
 
 # interface_sync(interfaces, name)
 sub interface_sync
-  {
-      while(&backquote_command("ifconfig $_[1]") =~ /\s+inet\s+/) {
-	  &system_logged("ifconfig $_[1] delete >/dev/null 2>&1");
-      }
-      foreach $a (sort { $a->{'fullname'} cmp $b->{'fullname'} }
-		  grep { $_->{'name'} eq $_[1] } values(%{$_[0]})) {
-	  local $cmd = "ifconfig $a->{'name'}";
-	  if ($a->{'virtual'} ne '') {
-	      $cmd .= " alias $a->{'address'}";
-	  }
-	  else {
-	      $cmd .= " $a->{'address'}";
-	  }
-	  if ($a->{'netmask'}) { $cmd .= " netmask $a->{'netmask'}"; }
-	  if ($a->{'broadcast'}) { $cmd .= " broadcast $a->{'broadcast'}"; }
-	  if ($a->{'mtu'}) { $cmd .= " mtu $a->{'mtu'}"; }
-	  $msg .= "running $cmd<br>\n";
-	  local $out = &backquote_logged("$cmd 2>&1");
-	  if ($? && $out !~ /file exists/i) {
-	      &error($out);
-	  }
-	  if ($a->{'virtual'} eq '') {
-	      if ($a->{'up'}) { $out = &backquote_command("ifconfig $a->{'name'} up 2>&1"); }
-	      else { $out = &backquote_logged("ifconfig $a->{'name'} down 2>&1"); }
-	      &error($out) if ($?);
-	  }
-      }
-  }
+{
+my ($act, $name) = @_;
+while(&backquote_command("ifconfig ".quotemeta($name)) =~ /\s+inet\s+/) {
+	&system_logged("ifconfig ".quotemeta($name)." delete >/dev/null 2>&1");
+	}
+foreach $a (sort { $a->{'fullname'} cmp $b->{'fullname'} }
+	    grep { $_->{'name'} eq $_[1] } values(%{$_[0]})) {
+	my $cmd = "ifconfig ".quotemeta($a->{'name'});
+	if ($a->{'virtual'} ne '') {
+		$cmd .= " alias $a->{'address'}";
+		}
+	else {
+		$cmd .= " $a->{'address'}";
+		}
+	if ($a->{'netmask'}) { $cmd .= " netmask $a->{'netmask'}"; }
+	if ($a->{'broadcast'}) { $cmd .= " broadcast $a->{'broadcast'}"; }
+	if ($a->{'mtu'}) { $cmd .= " mtu $a->{'mtu'}"; }
+	my $out = &backquote_logged("$cmd 2>&1");
+	if ($? && $out !~ /file exists/i) {
+		&error($out);
+		}
+	if ($a->{'virtual'} eq '') {
+		if ($a->{'up'}) {
+			$out = &backquote_command(
+			    "ifconfig ".quotemeta($a->{'name'})." up 2>&1");
+			}
+		else {
+			$out = &backquote_logged(
+			    "ifconfig ".quotemeta($a->{'name'})." down 2>&1");
+			}
+		&error($out) if ($?);
+		}
+	}
+}
 
 
 # boot_interfaces()
@@ -405,13 +411,14 @@ return &get_system_hostname();
 
 # save_hostname(name)
 sub save_hostname
-  {
-      &system_logged("hostname $_[0] >/dev/null 2>&1");
-      &open_lock_tempfile(MYNAME, ">/etc/myname");
-      &print_tempfile(MYNAME, $_[0],"\n");
-      &close_tempfile(MYNAME);
-	undef(@main::get_system_hostname);      # clear cache
-  }
+{
+my ($hostname) = @_;
+&system_logged("hostname ".quotemeta($hostname)." >/dev/null 2>&1");
+&open_lock_tempfile(MYNAME, ">/etc/myname");
+&print_tempfile(MYNAME, $hostname,"\n");
+&close_tempfile(MYNAME);
+undef(@main::get_system_hostname);      # clear cache
+}
 
 sub set_line {
     local ($l, $lines, $found = 0);
