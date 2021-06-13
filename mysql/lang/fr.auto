@@ -1,3 +1,6 @@
+index_indexes=Index
+index_views=Vues
+
 syslog_desc2=Message d'erreur MySQL
 
 mysqlpass_err=Mode sans échec MySQL

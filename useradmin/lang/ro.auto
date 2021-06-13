@@ -77,6 +77,7 @@ nologin=Nu este permisă autentificarea
 encrypted=Parolă pre-criptată
 nochange=Lăsați neschimbate
 clear=Parola normală
+sshkey=Cheie publică SSH
 home=Director de acasă
 uedit_auto=Automat
 uedit_manual=Director

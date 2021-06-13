@@ -7,6 +7,15 @@ index_delete2=Ištrinti pasirinktas sąsajas
 index_delete3=Ištrinkite ir pritaikykite pasirinktas sąsajas
 index_apply2=Taikyti pasirinktas sąsajas
 index_vmin=„Virtualmin“
+index_mode=Tinklo konfigūracijos tipas: $1 
+index_mode_netplan=„Netplan“
+index_mode_cygwin=Cygwinas
+index_mode_freebsd=„FreeBSD“
+index_mode_macos=„MacOS“
+index_mode_netbsd=„NetBSD“
+index_mode_openbsd=„OpenBSD“
+index_mode_solaris=„Solaris“
+index_mode_windows=„Windows“
 
 ifcs_title=Tinklo sąsajos
 ifcs_now=Aktyvus Dabar

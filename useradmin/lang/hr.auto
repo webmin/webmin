@@ -77,6 +77,7 @@ nologin=Nije dopuštena prijava
 encrypted=Unaprijed šifrirana lozinka
 nochange=Ostavite nepromijenjeno
 clear=Normalna lozinka
+sshkey=SSH javni ključ
 home=Domaći direktorij
 uedit_auto=Automatski
 uedit_manual=Imenik

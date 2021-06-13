@@ -40,6 +40,7 @@ office=Kontor
 workph=Jobbtelefon
 homeph=Hemtelefon
 extra=Extra alternativ
+sshkey=SSH offentlig nyckel
 uedit_manual=Directory
 lastlogin=Senaste inloggning
 min_weeks=Minsta veckor

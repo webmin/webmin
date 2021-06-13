@@ -1013,6 +1013,8 @@ status_temp=Savāc piedziņas temperatūru?
 status_units=Temperatūras vienības
 status_celsius=Pēc Celsija
 status_fahrenheit=Farenheits
+status_err=Neizdevās saglabāt fona statusa kolekciju
+status_einterval=Vākšanas intervālam jābūt veselam skaitlim
 
 sendmail_title=Sūtīt e-pastu
 sendmail_desc=Šī lapa kontrolē to, kā Webmin sūta e-pastu, piemēram, no plānotajām dublējumkopijām vai fona uzraudzības. Tas ietekmē arī e-pastu, kas nosūtīts, izmantojot moduli Lasīt lietotāja pastu.

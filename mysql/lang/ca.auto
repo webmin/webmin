@@ -1,3 +1,6 @@
+index_indexes=Índexs
+index_views=Vistes
+
 table_delete=Suprimeix els camps seleccionats
 
 view_refresh=Actualització

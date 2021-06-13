@@ -555,6 +555,8 @@ status_temp=收集驅動器溫度？
 status_units=溫度單位
 status_celsius=攝氏溫度
 status_fahrenheit=華氏溫度
+status_err=無法保存後台狀態集合
+status_einterval=收集間隔必須是整數
 
 sendmail_title=發送郵件
 sendmail_desc=該頁面控制Webmin如何發送電子郵件，例如來自計劃的備份或後台監視。它還會影響使用“讀取用戶郵件”模塊發送的電子郵件。

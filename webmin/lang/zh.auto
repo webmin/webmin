@@ -335,6 +335,8 @@ status_mins=分钟
 status_pkgs=收集可用的软件包更新？
 status_temp=收集驱动器温度？
 status_units=温度单位
+status_err=无法保存后台状态集合
+status_einterval=收集间隔必须是整数
 
 sendmail_title=发送邮件
 sendmail_header=邮件发送选项

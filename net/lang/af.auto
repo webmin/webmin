@@ -7,6 +7,15 @@ index_delete2=Vee geselekteerde koppelvlakke uit
 index_delete3=Verwyder en pas geselekteerde koppelvlakke toe
 index_apply2=Pas geselekteerde raakvlakke toe
 index_vmin=Virtualmin
+index_mode=Netwerk-konfigurasietipe: $1 
+index_mode_netplan=Netplan
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=MacOS
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=Windows
 
 ifcs_title=Netwerk-koppelvlakke
 ifcs_now=Nou aktief

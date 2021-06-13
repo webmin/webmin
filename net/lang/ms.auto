@@ -7,6 +7,15 @@ index_delete2=Padam Interface yang Dipilih
 index_delete3=Padam dan Guna Antaramuka Terpilih
 index_apply2=Guna Antaramuka Terpilih
 index_vmin=Virtualmin
+index_mode=Jenis konfigurasi rangkaian: $1 
+index_mode_netplan=Pelan Net
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=MacOS
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=Tingkap
 
 ifcs_title=Antaramuka Rangkaian
 ifcs_now=Aktif sekarang

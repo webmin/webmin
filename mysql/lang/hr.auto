@@ -21,6 +21,8 @@ index_ever=Čini se da MySQL klijentski program $1 nije ispravna verzija. Webmin
 index_nouser=Vaš Webmin račun konfiguriran je za povezivanje s MySQL poslužiteljem kao korisnika $1, ali je tom korisniku onemogućen pristup.
 index_db=Naziv baze podataka
 index_tables=stolovi
+index_indexes=Kazala
+index_views=Pogledi
 index_elibrary=MySQL klijentski program $1 nije se mogao pokrenuti jer nije mogao pronaći MySQL biblioteke. Provjerite konfiguraciju <a href='$2'>modula</a> i provjerite je li <i>Put do MySQL zajedničke knjižnice postavljen</i>.
 index_version=Verzija 2 verzija $1 
 index_version2=Inačica $3 $1 na $2 

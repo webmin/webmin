@@ -214,7 +214,7 @@ ffile_ematch=Eksik maç
 ffile_eaction=Yönlendirme adresi eksik
 
 queue_title=Posta Sırası
-queue_count=%1 Mesajlar
+queue_count=$1 Mesajlar
 queue_none=Şu anda teslim edilecek posta iletisi yok
 queue_id=Posta Kimliği
 queue_date=Gönderilen

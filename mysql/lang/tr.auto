@@ -1,5 +1,7 @@
 index_eshow=$1 MySQL durum programı sisteminizde bulunamadı. Belki MySQL kurulu değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
 index_estart=$1 MySQL başlangıç komut dosyası sisteminizde bulunamadı. Belki MySQL kurulu değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
+index_indexes=dizinler
+index_views=Görüntüleme
 index_version2=$2 üzerinde $3 sürüm $1 
 index_eenvpass=$1 MySQL istemci programı, <tt>MYSQL_PWD</tt> ortam değişkeni kullanılarak iletilen şifreleri kabul etmez. Webmin'in MySQL ile tam olarak iletişim kurabilmesini sağlamak için, bu seçeneğin <a href='$2'>modül yapılandırması</a> sayfasında kapatılması gerekir. Alternatif olarak, <tt>root</tt> kullanıcısının <tt>.my.cnf</tt> dosyasında ayarlanan tüm şifreleri kaldırabilirsiniz.
 index_ecnf=$1 MySQL yapılandırma dosyası sisteminizde bulunamadı. Doğru yolu ayarlamak için <a href='$2'>modül yapılandırması</a> sayfasını kullanın.

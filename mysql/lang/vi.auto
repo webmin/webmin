@@ -21,6 +21,8 @@ index_ever=Chương trình máy khách MySQL $1 dường như không phải là 
 index_nouser=Tài khoản Webmin của bạn được định cấu hình để kết nối với máy chủ MySQL là người dùng $1, nhưng người dùng này đã bị từ chối truy cập.
 index_db=Tên cơ sở dữ liệu
 index_tables=Những cái bàn
+index_indexes=Chỉ mục
+index_views=Lượt xem
 index_elibrary=Không thể chạy chương trình máy khách MySQL $1 vì không thể tìm thấy các thư viện dùng chung của MySQL. Kiểm tra <a href='$2'>cấu hình mô-đun</a> và đảm bảo <i>Đường dẫn đến thư viện chia sẻ MySQL</i> được đặt.
 index_version=$2 phiên bản $1 
 index_version2=$3 phiên bản $1 trên $2 

@@ -1013,6 +1013,8 @@ status_temp=Thu thập nhiệt độ ổ đĩa?
 status_units=Đơn vị cho nhiệt độ
 status_celsius=Độ
 status_fahrenheit=độ F
+status_err=Không lưu được bộ sưu tập trạng thái nền
+status_einterval=Khoảng thời gian thu thập phải là một số nguyên
 
 sendmail_title=Gửi email
 sendmail_desc=Trang này kiểm soát cách Webmin gửi email, chẳng hạn như từ các bản sao lưu theo lịch hoặc theo dõi nền. Nó cũng ảnh hưởng đến email được gửi bằng mô-đun Đọc thư người dùng.

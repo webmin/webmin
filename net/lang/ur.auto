@@ -7,6 +7,15 @@ index_delete2=منتخب انٹرفیسز کو حذف کریں
 index_delete3=منتخب انٹرفیسز کو حذف کریں اور اس کا اطلاق کریں
 index_apply2=منتخب انٹرفیس کا اطلاق کریں
 index_vmin=ورچوئل مین
+index_mode=نیٹ ورک کی تشکیل کی قسم:$1
+index_mode_netplan=نیٹپلان
+index_mode_cygwin=سائگ وِین
+index_mode_freebsd=فری بی ایس ڈی
+index_mode_macos=میک او ایس
+index_mode_netbsd=نیٹ بی ایس ڈی
+index_mode_openbsd=اوپن بی ایس ڈی
+index_mode_solaris=سولیرس
+index_mode_windows=ونڈوز
 
 ifcs_title=نیٹ ورک انٹرفیس
 ifcs_now=اب متحرک

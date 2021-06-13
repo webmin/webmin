@@ -521,6 +521,8 @@ status_temp=Sürüş sıcaklıkları toplansın mı?
 status_units=Sıcaklık birimleri
 status_celsius=Selsius
 status_fahrenheit=fahrenhayt
+status_err=Arka plan durumu koleksiyonu kaydedilemedi
+status_einterval=Toplama aralığı bir tamsayı olmalıdır
 
 sendmail_title=E-mail göndermek
 sendmail_desc=Bu sayfa, Webmin'in zamanlanmış yedeklemeler veya arka plan izleme gibi e-postaları nasıl göndereceğini denetler. Ayrıca Kullanıcı Postalarını Oku modülü kullanılarak gönderilen e-postaları da etkiler.

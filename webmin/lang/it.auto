@@ -259,6 +259,8 @@ status_temp=Raccogliere le temperature dell'unità?
 status_units=Unità per le temperature
 status_celsius=Centigrado
 status_fahrenheit=Fahrenheit
+status_err=Impossibile salvare la raccolta dello stato in background
+status_einterval=L'intervallo di raccolta deve essere un numero intero
 
 sendmail_title=Invio di e-mail
 sendmail_desc=Questa pagina controlla il modo in cui Webmin invia e-mail, ad esempio da backup pianificati o monitoraggio in background. Inoltre, influisce sulla posta elettronica inviata utilizzando il modulo Leggi la posta dell'utente.

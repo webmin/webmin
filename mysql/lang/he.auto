@@ -21,6 +21,8 @@ index_ever=נראה כי תוכנית לקוח MySQL $1 אינה הגרסה הנ
 index_nouser=חשבון Webmin שלך מוגדר להתחבר לשרת MySQL כמשתמש $1, אך למשתמש זה נדחתה גישה.
 index_db=שם בסיס הנתונים
 index_tables=שולחנות
+index_indexes=אינדקסים
+index_views=צפיות
 index_elibrary=לא ניתן היה להפעיל את תוכנית לקוח MySQL $1 מכיוון שהיא לא הצליחה למצוא את הספריות המשותפות של MySQL. בדוק את <a href='$2'>תצורת המודול</a> וודא ש <i>הנתיב לספריות המשותפות MySQL</i> מוגדר.
 index_version=גרסת $2 $1 
 index_version2=גרסת $3 $1 על $2 

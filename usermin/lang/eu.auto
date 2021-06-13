@@ -500,3 +500,6 @@ copycert_essl=SSL ez dago gaituta
 copycert_ekeyfile=Ez da gako pribatuko fitxategirik ezarri Webmin-en
 
 twofactor_desc=Bi faktoreko autentifikazioak Usermin erabiltzaileei autentifikazio gailu gehigarri bat erabiltzea baimentzen die saioa hasten dutenean, hala nola, behin bakarrik pasakode sortzailea. Erabiltzaileek banan-banan erregistratu beharko dute hautatutako autentifikazio hornitzailearekin orri honetan gaitu ondoren.
+twofactor_eversion=Zure sisteman instalatutako Usermin bertsioak ez du bi faktoreren autentifikazioa onartzen.
+
+web_header=Usermin-en web zerbitzariarentzako aukerak

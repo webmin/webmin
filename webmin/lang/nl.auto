@@ -111,6 +111,8 @@ notif_rebootok=Herstart nu
 status_units=Eenheden voor temperaturen
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+status_err=Opslaan van achtergrondstatusverzameling mislukt
+status_einterval=Verzamelinterval moet een geheel getal zijn
 
 sendmail_port=SMTP-poort
 sendmail_portdef=Gebruik standaardpoort

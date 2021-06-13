@@ -85,6 +85,8 @@ advanced_ebufsize=Saiz penyangga rangkaian mestilah nombor yang lebih besar dari
 status_units=Unit untuk suhu
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+status_err=Gagal menyimpan koleksi status latar belakang
+status_einterval=Selang pengumpulan mestilah bilangan bulat
 
 sendmail_port=Pelabuhan SMTP
 sendmail_portdef=Gunakan port lalai

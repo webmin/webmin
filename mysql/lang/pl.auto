@@ -1,5 +1,7 @@
 index_eshow=Program stanu MySQL $1 nie został znaleziony w twoim systemie. Być może MySQL nie jest zainstalowany lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
 index_estart=Skrypt uruchamiania MySQL $1 nie został znaleziony w twoim systemie. Być może MySQL nie jest zainstalowany lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+index_indexes=Indeksy
+index_views=Wyświetlenia
 index_version2=Wersja $3 $1 na $2 
 index_nomod=Ostrzeżenie: moduł Perl $1 nie jest zainstalowany w twoim systemie, więc Webmin nie będzie mógł niezawodnie uzyskać dostępu do twojej bazy danych MySQL. <a href='$2'>Kliknij tutaj</a>, aby zainstalować teraz.
 index_nomods=Ostrzeżenie: moduły Perla $1 i $2 nie są zainstalowane w twoim systemie, więc Webmin nie będzie mógł niezawodnie uzyskać dostępu do twojej bazy danych MySQL. <a href='$3'>Kliknij tutaj</a>, aby je teraz zainstalować.

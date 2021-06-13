@@ -76,6 +76,7 @@ nologin=لا يسمح بتسجيل الدخول
 encrypted=كلمة المرور المشفرة مسبقًا
 nochange=ترك دون تغيير
 clear=كلمة المرور العادية
+sshkey=مفتاح SSH العمومي
 home=الدليل الرئيسي
 uedit_auto=تلقائي
 uedit_manual=الدليل

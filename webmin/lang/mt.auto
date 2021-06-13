@@ -1013,6 +1013,8 @@ status_temp=Iġbor it-temperaturi tas-sewqan?
 status_units=Unitajiet għat-temperaturi
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+status_err=Ma rnexxilekx issalva l-ġbir tal-istatus tal-isfond
+status_einterval=L-intervall tal-ġbir għandu jkun numru sħiħ
 
 sendmail_title=Ibgħat Email
 sendmail_desc=Din il-paġna tikkontrolla kif Webmin jibgħat imejl, bħal backups skedati jew monitoraġġ fl-isfond. Taffettwa wkoll l-imejl mibgħut bl-użu tal-modulu Aqra Mail tal-Utent.

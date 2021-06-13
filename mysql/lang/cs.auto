@@ -1,5 +1,7 @@
 index_eshow=Ve vašem systému nebyl nalezen stavový program MySQL $1. Možná není MySQL nainstalována nebo je vaše <a href='$2'>konfigurace modulu</a> nesprávná.
 index_estart=Spouštěcí skript MySQL $1 nebyl ve vašem systému nalezen. Možná není MySQL nainstalována nebo je vaše <a href='$2'>konfigurace modulu</a> nesprávná.
+index_indexes=Rejstříky
+index_views=Pohledy
 index_version2=$3 verze $1 na $2 
 index_eenvpass=Klientský program MySQL $1 nepřijímá hesla předaná pomocí proměnné prostředí <tt>MYSQL_PWD</tt>. Aby bylo zajištěno, že Webmin bude schopen plně komunikovat s MySQL, měla by být tato možnost vypnuta na stránce <a href='$2'>konfigurace modulu</a>. Alternativně můžete odebrat jakékoli heslo nastavené v souboru <tt>root</tt> uživatele <tt>.my.cnf</tt>.
 index_ecnf=Ve vašem systému nebyl nalezen konfigurační soubor MySQL $1. Pomocí stránky <a href='$2'>konfigurace modulu</a> nastavte správnou cestu.

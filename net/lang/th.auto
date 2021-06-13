@@ -7,6 +7,15 @@ index_delete2=ลบอินเทอร์เฟซที่เลือก
 index_delete3=ลบและใช้อินเทอร์เฟซที่เลือก
 index_apply2=ใช้อินเทอร์เฟซที่เลือก
 index_vmin=Virtualmin
+index_mode=ประเภทการกำหนดค่าเครือข่าย: $1
+index_mode_netplan=เน็ตแพลน
+index_mode_cygwin=ซิกวิน
+index_mode_freebsd=FreeBSD
+index_mode_macos=MacOS
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=Windows
 
 ifcs_title=การเชื่อมต่อเครือข่าย
 ifcs_now=ที่ใช้งานอยู่ในขณะนี้

@@ -64,6 +64,9 @@ advanced_sortconfigs=Zapisać pliki konfiguracyjne posortowane według kluczy?
 advanced_bufsize=Rozmiar bufora sieciowego w bajtach
 advanced_ebufsize=Rozmiar bufora sieciowego musi być liczbą większą niż zero
 
+status_err=Nie udało się zapisać kolekcji stanu w tle
+status_einterval=Interwał zbierania musi być liczbą całkowitą
+
 sendmail_port=Port SMTP
 sendmail_ssl0=Nigdy nie szyfruj
 sendmail_ssl1=Zawsze używaj TLS

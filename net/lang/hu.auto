@@ -1,3 +1,13 @@
+index_mode=Hálózati konfiguráció típusa: $1 
+index_mode_netplan=Netplan
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=Mac operációs rendszer
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=ablakok
+
 bifc_nobridge=&lt;Nincs&gt;
 bifc_ebridge=A híd interfésznek számnak kell lennie
 bifc_bridgestp=Átfogó fa protokoll

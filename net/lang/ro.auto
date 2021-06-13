@@ -7,6 +7,15 @@ index_delete2=Ștergeți interfețele selectate
 index_delete3=Ștergeți și aplicați interfețe selectate
 index_apply2=Aplicați interfețe selectate
 index_vmin=Virtualmin
+index_mode=Tipul de configurare a rețelei: $1 
+index_mode_netplan=Netplan
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=MacOS
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=Windows
 
 ifcs_title=Interfețe de rețea
 ifcs_now=Activ acum

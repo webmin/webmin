@@ -17,6 +17,7 @@ index_loginsuser=Sadece kullanıcı
 index_loginsdesc=SSH veya Usermin ile bağlanan bazı veya tüm Unix kullanıcılarından son oturum açma bilgilerini göster.
 index_whodesc=Şu anda SSH veya Usermin ile giriş yapmış kullanıcıları göster.
 
+sshkey=SSH ortak anahtarı
 uedit_manual=rehber
 uedit_allg=Tüm gruplar
 uedit_ing=Gruplarda

@@ -8,6 +8,7 @@ index_pft5=SCO /etc/passwd & /etc/shadow
 index_pft6=MacOS NetINFO
 index_pft7=MacOS DSCL
 
+sshkey=SSH openbare sleutel
 uedit_clone=Gebruiker klonen
 
 usave_epasswd_cmd=Wachtwoordvalidatieopdracht mislukt

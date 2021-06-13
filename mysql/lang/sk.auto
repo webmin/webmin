@@ -21,6 +21,8 @@ index_ever=Klientsky program MySQL $1 sa nejaví ako správna verzia. Webmin pod
 index_nouser=Váš účet Webmin je nakonfigurovaný na pripojenie k serveru MySQL ako používateľ $1, ale tomuto používateľovi bol zamietnutý prístup.
 index_db=Názov databázy
 index_tables=stoly
+index_indexes=Indexy
+index_views=Názory
 index_elibrary=Klientsky program MySQL $1 sa nedal spustiť, pretože nenašiel zdieľané knižnice MySQL. Skontrolujte <a href='$2'>konfiguráciu modulu</a> a uistite sa, že je nastavená <i>zdieľaná knižnica Cesta k MySQL</i>.
 index_version=Verzia $2 $1 
 index_version2=$3 verzia $1 na $2 

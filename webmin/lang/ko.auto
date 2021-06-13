@@ -251,6 +251,8 @@ status_temp=드라이브 온도를 수집 하시겠습니까?
 status_units=온도 단위
 status_celsius=섭씨
 status_fahrenheit=화씨
+status_err=백그라운드 상태 수집을 저장하지 못했습니다.
+status_einterval=수집 간격은 정수 여야합니다.
 
 sendmail_title=이메일 보내기
 sendmail_desc=이 페이지는 예약 된 백업 또는 백그라운드 모니터링과 같은 Webmin의 이메일 전송 방법을 제어합니다. 또한 사용자 메일 읽기 모듈을 사용하여 전송 된 이메일에 영향을줍니다.

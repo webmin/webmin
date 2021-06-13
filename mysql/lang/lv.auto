@@ -21,6 +21,8 @@ index_ever=MySQL klienta programma $1 nešķiet pareiza. Webmin atbalsta tikai M
 index_nouser=Jūsu Webmin konts ir konfigurēts, lai izveidotu savienojumu ar MySQL serveri kā lietotājs $1, taču šim lietotājam ir liegta pieeja.
 index_db=Datu bāzes nosaukums
 index_tables=Galdi
+index_indexes=Indeksi
+index_views=Skati
 index_elibrary=MySQL klienta programmu $1 nevarēja palaist, jo tā nevarēja atrast MySQL koplietotās bibliotēkas. Pārbaudiet <a href='$2'>moduļa konfigurāciju</a> un pārliecinieties, vai ir iestatīts <i>Ceļš uz MySQL koplietotajām bibliotēkām</i>.
 index_version=$2 versija $1 
 index_version2=$3 versija $1 $2 

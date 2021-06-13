@@ -21,6 +21,8 @@ index_ever=Odjemalec MySQL program $1 se zdi, da ni pravilna različica. Webmin 
 index_nouser=Vaš Webmin račun je konfiguriran za povezavo s strežnikom MySQL kot uporabnik $1, vendar je temu uporabniku onemogočen dostop.
 index_db=Ime baze podatkov
 index_tables=Mize
+index_indexes=Kazala
+index_views=Pogledi
 index_elibrary=Programskega odjemalca MySQL $1 ni bilo mogoče zagnati, ker ni mogel najti knjižnic v skupni rabi MySQL. Preverite konfiguracijo modula <a href='$2'></a> in se prepričajte, da je nastavljena <i>Pot v knjižnice v skupni rabi MySQL</i>.
 index_version=$2 različica $1 
 index_version2=Različica $3 $1 na $2 

@@ -5,6 +5,15 @@ index_delete2=Видалити вибрані інтерфейси
 index_delete3=Видалити та застосувати вибрані інтерфейси
 index_apply2=Застосувати вибрані інтерфейси
 index_vmin=Virtualmin
+index_mode=Тип конфігурації мережі: $1 
+index_mode_netplan=Нетплан
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=MacOS
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Соляріс
+index_mode_windows=Windows
 
 ifcs_activedesc=Інтерфейси, перелічені в цій таблиці, в даний час активні в системі. У більшості випадків слід редагувати їх на вкладці <b>Активовано при завантаженні</b>.
 ifcs_bootdesc=Інтерфейси, перелічені в цій таблиці, будуть активовані під час завантаження системи, і, як правило, будуть активні і зараз.

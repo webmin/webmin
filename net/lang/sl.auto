@@ -7,6 +7,15 @@ index_delete2=Izbrišite izbrane vmesnike
 index_delete3=Izbrišite in uporabite izbrane vmesnike
 index_apply2=Uporabi izbrane vmesnike
 index_vmin=Virtualmin
+index_mode=Vrsta omrežne konfiguracije: $1 
+index_mode_netplan=Netplan
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=MacOS
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=Windows
 
 ifcs_title=Omrežni vmesniki
 ifcs_now=Aktivno zdaj

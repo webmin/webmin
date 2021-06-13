@@ -1,5 +1,7 @@
 index_eshow=O programa de status do MySQL $1 não foi encontrado no seu sistema. Talvez o MySQL não esteja instalado ou a sua <a href='$2'>configuração do módulo</a> esteja incorreta.
 index_estart=O script de inicialização do MySQL $1 não foi encontrado no seu sistema. Talvez o MySQL não esteja instalado ou a sua <a href='$2'>configuração do módulo</a> esteja incorreta.
+index_indexes=Índices
+index_views=Visualizações
 index_version2=$3 versão $1 em $2 
 index_ecnf=O arquivo de configuração do MySQL $1 não foi encontrado no seu sistema. Use a página de configuração do módulo <a href='$2'></a> para definir o caminho correto.
 index_nodbs3=Nenhum banco de dados MySQL corresponde à sua pesquisa.

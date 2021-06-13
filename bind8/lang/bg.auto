@@ -11,6 +11,11 @@ edit_CAA=Сертифициращ орган
 
 recs_CAA=Сертифициращ орган
 
+value_dmarcfo=Режим на докладване за неуспех
+value_dmarcfo0=Отчетете, ако DKIM и SPF не са успели
+value_dmarcfo1=Отчетете, ако DKIM или SPF не са успели
+value_dmarcfod=Отчетете, ако оценката на подпис не е успешна
+value_dmarcfos=Отчетете, ако оценката на SPF не е успешна
 value_CAA1=Искате прилагане?
 value_CAA2=Тип на разрешение
 value_CAA3=Име на домейн на CA

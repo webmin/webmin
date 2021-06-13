@@ -500,3 +500,6 @@ copycert_essl=SSL ei ole käytössä
 copycert_ekeyfile=Webminissä ei ole asetettu yksityistä avaintiedostoa
 
 twofactor_desc=Kahden tekijän todennuksen avulla Usermin-käyttäjät voivat sallia ylimääräisen todennuslaitteen käytön kirjautumisen yhteydessä, kuten kertaluonteisen salasanageneraattorin. Käyttäjien on ilmoittauduttava erikseen valitulle todennustarjoajalle, kun se on otettu käyttöön tällä sivulla.
+twofactor_eversion=Järjestelmääsi asennettu Usermin-versio ei tue kaksivaiheista todennusta.
+
+web_header=Vaihtoehdot Userminin sisäiselle verkkopalvelimelle

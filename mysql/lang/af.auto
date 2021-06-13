@@ -21,6 +21,8 @@ index_ever=Die MySQL-klientprogram $1 blyk nie die regte weergawe te wees nie. W
 index_nouser=U Webmin-rekening is gekonfigureer om as gebruiker $1 aan die MySQL-bediener te koppel, maar hierdie gebruiker is toegang geweier.
 index_db=Databasisnaam
 index_tables=tafels
+index_indexes=Indekse
+index_views=Uitsigte
 index_elibrary=Die MySQL-kliëntprogram $1 kon nie uitgevoer word nie, omdat dit nie die gedeelde biblioteke van MySQL kon vind nie. Gaan die <a href='$2'>module-opstelling</a> na en maak seker dat die <i>Path to MySQL-gedeelde biblioteke</i> ingestel is.
 index_version=$2 weergawe $1 
 index_version2=$3 weergawe $1 op $2 

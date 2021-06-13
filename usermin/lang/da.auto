@@ -500,3 +500,6 @@ copycert_essl=SSL er ikke aktiveret
 copycert_ekeyfile=Ingen privat nøglefil er indstillet i Webmin
 
 twofactor_desc=To-faktor-godkendelse giver Usermin-brugere mulighed for at muliggøre brug af en ekstra godkendelsesenhed, når de logger ind, såsom en engangs-adgangskodegenerator. Brugere skal individuelt tilmelde sig den valgte godkendelsesudbyder, når den er aktiveret på denne side.
+twofactor_eversion=Den version af Usermin, der er installeret på dit system, understøtter ikke tofaktorautentificering.
+
+web_header=Indstillinger for Usermins indbyggede webserver

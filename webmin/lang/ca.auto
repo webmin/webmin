@@ -21,6 +21,9 @@ advanced_sortconfigs=Voleu desar els fitxers de configuració ordenats per les s
 advanced_bufsize=Mida de la memòria intermèdia de xarxa en bytes
 advanced_ebufsize=La mida del buffer de xarxa ha de ser un nombre superior a zero
 
+status_err=No s'ha pogut desar la col·lecció d'estat de fons
+status_einterval=L'interval de col·lecció ha de ser un nombre enter
+
 sendmail_port=Port SMTP
 sendmail_ssl0=Mai xifreu
 sendmail_ssl1=Utilitzeu sempre TLS

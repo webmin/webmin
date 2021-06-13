@@ -1,4 +1,13 @@
 index_vmin=Virtualmin
+index_mode=Typ konfigurace sítě: $1 
+index_mode_netplan=Netplan
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=Operační Systém Mac
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=Okna
 
 ifcs_ip6=IPv6 adresa
 ifcs_badd=Přidejte nový most.

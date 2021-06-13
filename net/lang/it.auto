@@ -5,6 +5,15 @@ index_delete2=Elimina le interfacce selezionate
 index_delete3=Elimina e applica le interfacce selezionate
 index_apply2=Applica interfacce selezionate
 index_vmin=virtualmin
+index_mode=Tipo di configurazione di rete: $1
+index_mode_netplan=Netplan
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=Mac OS
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=finestre
 
 ifcs_activedesc=Le interfacce elencate in questa tabella sono attualmente attive sul sistema. Nella maggior parte dei casi, è necessario modificarli nella scheda <b>Attivato all'avvio</b>.
 ifcs_bootdesc=Le interfacce elencate in questa tabella verranno attivate all'avvio del sistema e ora saranno generalmente attive anche.

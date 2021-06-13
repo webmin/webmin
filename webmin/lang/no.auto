@@ -8,6 +8,9 @@ bind_emaxconns_per_net=Maksimum samtidige tilkoblinger per nettverk må være et
 advanced_bufsize=Nettverksbufferstørrelse i byte
 advanced_ebufsize=Nettverksbufferstørrelse må være et tall som er større enn null
 
+status_err=Kunne ikke lagre samling av bakgrunnsstatus
+status_einterval=Samlingsintervallet må være et helt tall
+
 sendmail_url=Webmin URL for bruk i e-post
 sendmail_url_def=Standard ($1)
 sendmail_url_custom=Egendefinert nettadresse

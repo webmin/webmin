@@ -1,3 +1,13 @@
+index_mode=Netwerkconfiguratietype: $1
+index_mode_netplan=Netplan
+index_mode_cygwin=Cygwin
+index_mode_freebsd=GratisBSD
+index_mode_macos=MacOS
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=ramen
+
 bifc_nobridge=&lt;Geen&gt;
 bifc_ebridge=Bridge-interface moet een nummer zijn
 bifc_bridgestp=Spanning Tree Protocol

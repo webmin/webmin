@@ -21,6 +21,8 @@ index_ever=MySQL bezeroaren $1 programa ez dirudi bertsio zuzena denik. Webmin-e
 index_nouser=Zure Webmin kontua MySQL zerbitzarira konektatzeko $1 erabiltzaile gisa konfiguratuta dago, baina erabiltzaileari sarbidea ukatu zaio.
 index_db=Datu-basearen izena
 index_tables=Mahaiak
+index_indexes=Aurkibideak
+index_views=Ikuspegiak
 index_elibrary=MySQL bezeroaren $1 programa ezin izan da exekutatu MySQL partekatutako liburutegiak ezin dituelako aurkitu. Egiaztatu <a href='$2'>moduluaren konfigurazioa</a> eta ziurtatu <i>Path to MySQL partekatutako liburutegiak</i> ezarrita dagoela.
 index_version=$2 bertsioa $1 
 index_version2=$3 bertsioan $1 bertsioan $2 

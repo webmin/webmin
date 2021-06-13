@@ -1,3 +1,13 @@
+index_mode=Typ sieťovej konfigurácie: $1 
+index_mode_netplan=Netplan
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=MacOS
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=Windows
+
 ifcs_ip6=IPv6 adresa
 ifcs_badd=Pridajte nový most.
 ifcs_auto6=Od objavu IPv6

@@ -171,6 +171,8 @@ status_temp=Coletar temperaturas da unidade?
 status_units=Unidades para temperaturas
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+status_err=Falha ao salvar a coleção de status do plano de fundo
+status_einterval=O intervalo de coleta deve ser um número inteiro
 
 sendmail_title=Enviando email
 sendmail_desc=Esta página controla como o Webmin envia email, como backups agendados ou monitoramento em segundo plano. Ele também afeta o email enviado usando o módulo Read User Mail.

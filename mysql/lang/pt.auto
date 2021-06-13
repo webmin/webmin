@@ -21,6 +21,8 @@ index_ever=O programa do cliente MySQL $1 não parece ser a versão correta. O W
 index_nouser=Sua conta Webmin está configurada para se conectar ao servidor MySQL como usuário $1, mas este acesso foi negado.
 index_db=Nome do banco de dados
 index_tables=Tabelas
+index_indexes=Índices
+index_views=Visualizações
 index_elibrary=O programa cliente do MySQL $1 não pôde ser executado porque não foi possível encontrar as bibliotecas compartilhadas do MySQL. Verifique a <a href='$2'>configuração do módulo</a> e verifique se o <i>Caminho para as bibliotecas compartilhadas do MySQL</i> está definido.
 index_version=$2 versão $1 
 index_version2=$3 versão $1 em $2 

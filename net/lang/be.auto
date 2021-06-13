@@ -7,6 +7,15 @@ index_delete2=Выдаліць выбраныя інтэрфейсы
 index_delete3=Выдаліць і ўжыць абраныя інтэрфейсы
 index_apply2=Прымяніць выбраныя інтэрфейсы
 index_vmin=Virtualmin
+index_mode=Тып канфігурацыі сеткі: $1 
+index_mode_netplan=Netplan
+index_mode_cygwin=Цыгвін
+index_mode_freebsd=FreeBSD
+index_mode_macos=MacOS
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Салярыс
+index_mode_windows=Windows
 
 ifcs_title=Сеткавыя інтэрфейсы
 ifcs_now=Актыўна зараз

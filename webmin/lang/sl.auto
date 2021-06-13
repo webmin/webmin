@@ -1013,6 +1013,8 @@ status_temp=Zbirate pogonske temperature?
 status_units=Enote za temperature
 status_celsius=Celzija
 status_fahrenheit=Fahrenheit
+status_err=Zbirke stanja ozadja ni bilo mogoče shraniti
+status_einterval=Interval zbiranja mora biti celo število
 
 sendmail_title=Pošiljanje e-pošte
 sendmail_desc=Ta stran nadzoruje, kako Webmin pošilja e-pošto, na primer iz načrtovanih varnostnih kopij ali spremljanja ozadja. Vpliva tudi na e-pošto, poslano z modulom Preberite uporabniško pošto.

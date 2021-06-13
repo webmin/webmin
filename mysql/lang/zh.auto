@@ -1,5 +1,7 @@
 index_eshow=在您的系统上找不到MySQL状态程序 $1。也许未安装MySQL，或者您的<a href='$2'>模块配置</a>不正确。
 index_estart=在您的系统上找不到MySQL启动脚本 $1。也许未安装MySQL，或者您的<a href='$2'>模块配置</a>不正确。
+index_indexes=索引
+index_views=观看次数
 index_version2=$2的 $3版本 $1
 index_eenvpass=MySQL客户端程序 $1不接受使用<tt>MYSQL_PWD</tt>环境变量传递的密码。为确保Webmin能够与MySQL完全通信，应在<a href='$2'>模块配置</a>页面上关闭此选项。或者，您可以删除在<tt>root</tt>用户的<tt>.my.cnf</tt>文件中设置的所有密码。
 index_ecnf=在您的系统上找不到MySQL配置文件 $1。使用<a href='$2'>模块配置</a>页面设置正确的路径。

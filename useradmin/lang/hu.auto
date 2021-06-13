@@ -75,6 +75,7 @@ nologin=Nincs bejelentkezés
 encrypted=Előre titkosított jelszó
 nochange=Hagyja változatlanul
 clear=Normál jelszó
+sshkey=SSH nyilvános kulcs
 home=Kezdő könyvtár
 uedit_auto=Automatikus
 uedit_manual=Könyvtár

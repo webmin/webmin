@@ -16,6 +16,11 @@ edit_CAA=Autoritat de Certificació
 
 recs_CAA=Autoritat de Certificació
 
+value_dmarcfo=Mode d'informes d'errors
+value_dmarcfo0=Informeu si DKIM i SPF han fallat
+value_dmarcfo1=Informeu si DKIM o SPF han fallat
+value_dmarcfod=Informeu si l’avaluació de la signatura ha fallat
+value_dmarcfos=Informeu si l’avaluació SPF ha fallat
 value_CAA1=Necessiteu fer complir el compliment?
 value_CAA2=Tipus d'autorització
 value_CAA3=Nom de domini CA

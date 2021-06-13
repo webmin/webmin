@@ -21,6 +21,8 @@ index_ever=Il-programm tal-klijent MySQL $1 ma jidhirx li huwa l-verżjoni t-taj
 index_nouser=Il-kont Webmin tiegħek huwa kkonfigurat biex jaqbad mas-server MySQL bħala utent $1, iżda dan l-utent ma ngħatax aċċess għalih.
 index_db=Isem tad-database
 index_tables=Imwejjed
+index_indexes=Indiċijiet
+index_views=Veduti
 index_elibrary=Il-programm tal-klijent MySQL $1 ma setax jitħaddem għax ma setgħetx issib il-libreriji maqsuma tal-MySQL. Iċċekkja l- <a href='$2'>konfigurazzjoni tal-modulu</a> u kun żgur li l-<i>Path għal MySQL libreriji maqsuma</i> hija ssettjata.
 index_version=$2 verżjoni $1 
 index_version2=$3 verżjoni $1 fuq $2 

@@ -500,3 +500,6 @@ copycert_essl=SSL neįgalintas
 copycert_ekeyfile=„Webmin“ nėra nustatytas joks asmeninio rakto failas
 
 twofactor_desc=Dviejų veiksnių autentifikavimas leidžia „Usermin“ vartotojams prisijungiant įgalinti naudoti papildomą autentifikavimo įrenginį, pvz., Vienkartinį slaptažodžių generatorių. Vartotojai turi individualiai užsiregistruoti pas pasirinktą autentifikavimo paslaugų teikėją, kai jis įgalinamas šiame puslapyje.
+twofactor_eversion=Jūsų sistemoje įdiegta „Usermin“ versija nepalaiko dviejų veiksnių autentifikavimo.
+
+web_header=„Usermin“ integruoto tinklo serverio parinktys

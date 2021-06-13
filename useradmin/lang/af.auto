@@ -77,6 +77,7 @@ nologin=Geen aanmelding toegelaat nie
 encrypted=Voorgeënkripteerde wagwoord
 nochange=Laat onveranderd
 clear=Normale wagwoord
+sshkey=SSH publieke sleutel
 home=Tuisgids
 uedit_auto=outomatiese
 uedit_manual=Gids
