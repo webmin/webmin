@@ -9,13 +9,12 @@ elsif (-d "$ENV{'HOME'}/rpmbuild") {
 	}
 else {
 	$base_dir = "/usr/src/redhat";
+	$< && die "makerpm.pl must be run as root";
 	}
 $spec_dir = "$base_dir/SPECS";
 $source_dir = "$base_dir/SOURCES";
 $rpms_dir = "$base_dir/RPMS/noarch";
 $srpms_dir = "$base_dir/SRPMS";
-
-$< && die "makerpm.pl must be run as root";
 
 if ($ARGV[0] eq "--nosign" || $ARGV[0] eq "-nosign") {
 	$nosign = 1;
