@@ -29,7 +29,7 @@ if [ $? != "0" ]; then
 fi
 
 spaces_count_def=10
-verleneach=$(expr ${#ver} / 2)
+verleneach=$(expr $(echo $ver | awk '{ print length }') / 2)
 space_count=$(expr $spaces_count_def - $verleneach)
 space_count_cond="$(printf "%*s%s" $space_count)"
 echo "***********************************************************************"
