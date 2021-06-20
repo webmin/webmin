@@ -5013,13 +5013,13 @@ $current_theme = $current_themes[0];
 @theme_root_directories = map { "$root_directory/$_" } @current_themes;
 $theme_root_directory = $theme_root_directories[0];
 @theme_configs = ( );
-my $theme_tconfig = "$config_directory/$current_theme/config";
 foreach my $troot (@theme_root_directories) {
 	my %onetconfig;
 	&read_file_cached("$troot/config", \%onetconfig);
 	&read_file_cached("$troot/config", \%tconfig);
 	push(@theme_configs, \%onetconfig);
 	}
+my $theme_tconfig = "$config_directory/$current_theme/config";
 if (-r $theme_tconfig) {
 		&read_file_cached($theme_tconfig, \%tconfig);
 		}
