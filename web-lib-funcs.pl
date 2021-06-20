@@ -5018,11 +5018,11 @@ foreach my $troot (@theme_root_directories) {
 	my %onetconfig;
 	&read_file_cached("$troot/config", \%onetconfig);
 	&read_file_cached("$troot/config", \%tconfig);
-	if (-r $theme_tconfig) {
-		&read_file_cached($theme_tconfig, \%tconfig);
-		}
 	push(@theme_configs, \%onetconfig);
 	}
+if (-r $theme_tconfig) {
+		&read_file_cached($theme_tconfig, \%tconfig);
+		}
 $tb = defined($tconfig{'cs_header'}) ? "bgcolor=\"#$tconfig{'cs_header'}\"" :
       defined($gconfig{'cs_header'}) ? "bgcolor=\"#$gconfig{'cs_header'}\"" :
 				       "bgcolor=\"#9999ff\"";
