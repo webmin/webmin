@@ -686,6 +686,11 @@ sub translated_substitute
         # Print actual values with percent sign
         $translated =~ s/\([ ]+\$(\d+)[ ]*%\)/(\$$1 %)/gi;
 
+        # If translated $1 incorrectly replaced with %1
+        if ($original !~ /%\d+/ && $translated =~ /%\d+/) {
+            $translated =~ s/%(\d+)/\$$1/g;
+        }
+
         # The following, is abnormal way to make things work, around of the bugs produced by Google Translate API for (bg).
         if ($code eq 'bg') {
             if ($original =~ /\$(\d+)/ && $translated !~ /\$(\d+)/) {
