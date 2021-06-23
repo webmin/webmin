@@ -554,7 +554,7 @@ if (&has_command("sensors")) {
 			$ad = 0 if (/^\s*$/);
 			$ad = 1 if (/^k[\d]{2}temp-pci-[\d]{2}c[\d]+/i);
 			if ($ad && /temp(\d+):\s+([\+\-][0-9\.]+).*?[Cc]\s+.*?[=+].*?\)/) {
-				push(@rvx, { 'core' => $1,
+				push(@rvx, { 'core' => (int($1) - 1),
 					     'temp' => $2 });
 				}
 			}
