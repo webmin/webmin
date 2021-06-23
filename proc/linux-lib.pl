@@ -494,14 +494,14 @@ return $? ? $out : undef;
 sub get_current_cpu_temps
 {
 my @rv;
-my @rvx;
-my $rxx;
 if (&has_command("sensors")) {
-        my $fh = "SENSORS";
+	my @rvx;
+	my $rxx;
         my $aa;
         my $ab;
         my $ac;
         my $ad;
+        my $fh = "SENSORS";
         &open_execute_command($fh, "sensors </dev/null 2>/dev/null", 1);
         while(<$fh>) {
                 if (/Core\s+(\d+):\s+([\+\-][0-9\.]+)/) {
@@ -549,8 +549,7 @@ if (&has_command("sensors")) {
 				push(@rvx, { 'core' => 0,
 					     'temp' => $1 });
 				}
-			}
-
+			
 			# AMD Ryzen type #2 (Threadripper) #1484
 			$ad = 0 if (/^\s*$/);
 			$ad = 1 if (/^k[\d]{2}temp-pci-[\d]{2}c[\d]+/i);
@@ -561,13 +560,14 @@ if (&has_command("sensors")) {
 			}
                 }
         close($fh);
-        }
 
-# Add non standard output only if we haven't 
-# already grabbed standard output for CPU
-if (!$rxx) {
-    @rv = (@rv, @rvx);
-}
+	# Add non standard output only if we haven't 
+	# already grabbed standard output for CPU
+	if (!$rxx) {
+		@rv = (@rv, @rvx);
+		}
+	}
+
 return @rv;
 }
 
