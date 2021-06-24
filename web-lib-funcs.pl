@@ -4261,7 +4261,8 @@ if (defined(&theme_get_module_acl)) {
 
 # In case module's config expected to be user-based
 # only, we must not consider `noconfig` option at all.
-if (&get_module_preferences_acl($m, 'allowed') eq "*") {
+my $allowed = &get_module_preferences_acl($m, 'allowed');
+if ($allowed && $allowed eq "*") {
 	$rv{'noconfig'} = 0;
 	}
 return %rv;
