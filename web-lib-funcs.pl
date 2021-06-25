@@ -4502,10 +4502,22 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 	}
 
 if (!$foundindb) {
-	# Save ACL to local file
 	if (!-d "$config_directory/$m") {
 		mkdir("$config_directory/$m", 0755);
 		}
+
+	# Check if module custom user acls save func exists
+	my $call = 'acl_security_post_save_user';
+	my $mdir = &module_root_directory($m);
+	if (-r "$mdir/$call.pl") {
+		eval {
+			local $main::error_must_die = 1;
+			&foreign_require($m, "$call.pl");
+			&foreign_call($m, $call, ($m, $u, $_[0], $_[3]));
+			};
+		}
+
+	# Save ACL to local file
 	if ($_[0]) {
 		&write_file("$config_directory/$m/$u.acl", $_[0]);
 		}
@@ -4655,10 +4667,22 @@ if ($userdb) {
 	}
 
 if (!$foundindb) {
-	# Save ACL to local file
 	if (!-d "$config_directory/$m") {
 		mkdir("$config_directory/$m", 0755);
 		}
+
+	# Check if module custom group acls save func exists
+	my $call = 'acl_security_post_save_group';
+	my $mdir = &module_root_directory($m);
+	if (-r "$mdir/$call.pl") {
+		eval {
+			local $main::error_must_die = 1;
+			&foreign_require($m, "$call.pl");
+			&foreign_call($m, $call, ($m, $u, $_[0], $_[3]));
+			};
+		}
+
+	# Save ACL to local file
 	if ($_[0]) {
 		&write_file("$config_directory/$m/$g.gacl", $_[0]);
 		}

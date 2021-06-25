@@ -104,7 +104,7 @@ sub get_paths {
 
     # Work out max upload size
     if (&get_product_name() eq 'usermin') {
-	$upload_max = $config{'max'};
+	$upload_max = $access{'max'} || $config{'max'};
     } else {
 	$upload_max = $access{'max'};
     }

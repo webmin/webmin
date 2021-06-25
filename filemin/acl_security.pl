@@ -30,6 +30,13 @@ sub acl_security_form {
     print &ui_table_row($text{'acl_max'},
 	&ui_opt_textbox("max", $access->{'max'}, 10, $text{'acl_unlimited'}).
 	" ".$text{'acl_bytes'}, 3);
+
+    # Update for Usermin
+    if (&foreign_installed("usermin")) {
+        print &ui_table_hr();
+        print &ui_table_row($text{'acl_update_usermin'},
+            &ui_yesno_radio('save_usermin_acls', 0)."<br><br>");
+        }
 }
 
 sub acl_security_save {
