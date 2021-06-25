@@ -3,6 +3,15 @@ index_delete2=رابط های منتخب را حذف کنید
 index_delete3=رابط های منتخب را حذف و اعمال کنید
 index_apply2=رابط های منتخب را اعمال کنید
 index_vmin=مجازی
+index_mode=نوع پیکربندی شبکه:$1
+index_mode_netplan=نت پلان
+index_mode_cygwin=سایگوین
+index_mode_freebsd=FreeBSD
+index_mode_macos=سیستم عامل مک
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=سولاریس
+index_mode_windows=پنجره ها
 
 ifcs_activedesc=واسط های ذکر شده در این جدول در حال حاضر روی سیستم فعال هستند. در بیشتر موارد ، شما باید آنها را در زیر برگه <b>فعال شده در بوت</b> ویرایش کنید.
 ifcs_bootdesc=رابط های ذکر شده در این جدول با بوت شدن سیستم فعال می شوند و به طور کلی هم اکنون نیز فعال می شوند.

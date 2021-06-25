@@ -7,6 +7,15 @@ index_delete2=Ħassar l-Interfaces Magħżula
 index_delete3=Ħassar u Applika Interfaces Magħżula
 index_apply2=Applika Interfaces Magħżula
 index_vmin=Virtualmin
+index_mode=Tip ta 'konfigurazzjoni tan-netwerk: $1 
+index_mode_netplan=Netplan
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=MacOS
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=Windows
 
 ifcs_title=Interfaces tan-Netwerk
 ifcs_now=Attiv Issa

@@ -1,1 +1,11 @@
+index_mode=Netzwerkkonfigurationstyp: $1
+index_mode_netplan=Netzplan
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=Mac OS
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=Fenster
+
 acl_sysinfo=Verfügbare Netzwerkschnittstellen im Dashboard anzeigen

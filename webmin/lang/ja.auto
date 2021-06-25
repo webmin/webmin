@@ -132,6 +132,9 @@ notif_upgrade=Webminバージョン$1が利用可能になりましたが、バ�
 notif_updatemsg=Webminモジュールの更新に続く$1が利用可能になりました ..
 notif_reboot=最近のパッケージの更新（新しいカーネルバージョンなど）を完全に適用するには再起動が必要です。
 
+status_err=バックグラウンド ステータス コレクションの保存に失敗しました
+status_einterval=収集間隔は整数でなければなりません
+
 sendmail_desc=このページは、スケジュールされたバックアップやバックグラウンド監視などから、Webminが電子メールを送信する方法を制御します。また、Read User Mailモジュールを使用して送信される電子メールにも影響します。
 sendmail_port=SMTPポート
 sendmail_ssl0=暗号化しない

@@ -1,1 +1,4 @@
 twofactor_desc=Tofaktorautentisering tillater Usermin-brukere å aktivere bruk av en ekstra autentiseringsenhet når de logger på, for eksempel en engangskodekodegenerator. Brukere må registrere seg individuelt hos den valgte godkjenningsleverandøren etter at den er aktivert på denne siden.
+twofactor_eversion=Versjonen av Usermin installert på systemet ditt støtter ikke tofaktorautentisering.
+
+web_header=Alternativer for Usermins innebygde webserver

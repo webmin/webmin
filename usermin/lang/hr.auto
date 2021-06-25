@@ -500,3 +500,6 @@ copycert_essl=SSL nije omogućen
 copycert_ekeyfile=Nije postavljena datoteka privatnog ključa u Webminu
 
 twofactor_desc=Dvofaktorska provjera autentičnosti omogućuje korisnicima Usermin-a da omoguće upotrebu dodatnog uređaja za provjeru autentičnosti prilikom prijave, kao što je jednokratni generator zaporke. Korisnici se moraju pojedinačno prijaviti kod odabranog davatelja autentičnosti nakon što je omogućena na ovoj stranici.
+twofactor_eversion=Verzija Usermin instalirana na vašem sustavu ne podržava dvofaktorsku provjeru autentičnosti.
+
+web_header=Opcije za Userminov ugrađeni web poslužitelj

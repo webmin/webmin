@@ -451,6 +451,8 @@ status_temp=¿Recoger las temperaturas de manejo?
 status_units=Unidades para temperaturas
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+status_err=No se pudo guardar la recopilación de estados en segundo plano
+status_einterval=El intervalo de recopilación debe ser un número entero
 
 sendmail_title=Enviando correo electrónico
 sendmail_desc=Esta página controla cómo Webmin envía correos electrónicos, como las copias de seguridad programadas o la supervisión en segundo plano. También afecta el correo electrónico enviado usando el módulo Leer correo de usuario.

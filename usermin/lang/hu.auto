@@ -499,3 +499,6 @@ copycert_essl=Az SSL nem engedélyezett
 copycert_ekeyfile=Nincs beállítva privát kulcsfájl a Webminben
 
 twofactor_desc=A kétfaktoros hitelesítés lehetővé teszi az Usermin felhasználói számára, hogy a bejelentkezéskor engedélyezzenek egy további hitelesítő eszköz használatát, például egy egyszeri jelszógenerátor. A felhasználóknak egyedileg kell regisztrálniuk a kiválasztott hitelesítési szolgáltatóhoz, miután engedélyezték ezen az oldalon.
+twofactor_eversion=A rendszerre telepített Usermin verzió nem támogatja a kétfaktoros hitelesítést.
+
+web_header=Opciók a Usermin beépített webszerveréhez

@@ -1013,6 +1013,8 @@ status_temp=Indsamle drevtemperaturer?
 status_units=Enheder til temperaturer
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+status_err=Kunne ikke gemme baggrundsstatusindsamling
+status_einterval=Samlingsinterval skal være et heltal
 
 sendmail_title=Sender e-mail
 sendmail_desc=Denne side styrer, hvordan Webmin sender e-mail, f.eks. Fra planlagte sikkerhedskopier eller baggrundsmonitoring. Det påvirker også e-mail, der sendes vha. Modulet Read User Mail.

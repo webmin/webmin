@@ -21,6 +21,8 @@ index_ever=Program klien MySQL $1 tidak kelihatan sebagai versi yang betul. Webm
 index_nouser=Akaun Webmin anda dikonfigurasi untuk menyambung ke pelayan MySQL sebagai pengguna $1, tetapi pengguna ini telah ditolak akses.
 index_db=Nama pangkalan data
 index_tables=Jadual
+index_indexes=Indeks
+index_views=Pandangan
 index_elibrary=Program klien MySQL $1 tidak dapat dijalankan kerana ia tidak dapat mencari perpustakaan kongsi MySQL. Periksa konfigurasi modul <a href='$2'></a> dan pastikan <i>Path to MySQL shared library</i> ditetapkan.
 index_version=$2 versi $1 
 index_version2=$3 versi $1 pada $2 

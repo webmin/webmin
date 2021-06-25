@@ -916,6 +916,8 @@ status_temp=Összegyűjti a hajtási hőmérsékleteket?
 status_units=Hőmérsékleti egységek
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+status_err=Nem sikerült menteni a háttérállapot-gyűjteményt
+status_einterval=A gyűjtési intervallumnak egész számnak kell lennie
 
 sendmail_title=E-mail küldés
 sendmail_desc=Ez az oldal szabályozza, hogy a Webmin hogyan küldjön e-maileket, például az ütemezett biztonsági mentésekből vagy a háttérfigyelésből. Ez befolyásolja a Felhasználói levelek olvasása modul segítségével küldött e-maileket.

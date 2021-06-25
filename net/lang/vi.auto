@@ -7,6 +7,15 @@ index_delete2=Xóa các giao diện đã chọn
 index_delete3=Xóa và áp dụng các giao diện được chọn
 index_apply2=Áp dụng giao diện được chọn
 index_vmin=Virtualmin
+index_mode=Loại cấu hình mạng: $1 
+index_mode_netplan=Netplan
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=Hệ điều hành Mac
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=các cửa sổ
 
 ifcs_title=Giao diện mạng
 ifcs_now=Hoạt động ngay

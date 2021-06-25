@@ -8,6 +8,7 @@ index_pft5=SCO /etc/passwd & /etc/shadow
 index_pft6=MacOS NetINFO
 index_pft7=MacOS DSCL
 
+sshkey=Chave pública SSH
 uedit_egone=O usuário selecionado não existe mais!
 uedit_clone=Clonar usuário
 

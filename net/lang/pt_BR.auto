@@ -1,3 +1,13 @@
+index_mode=Tipo de configuração de rede: $1 
+index_mode_netplan=Netplan
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=Mac OS
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=janelas
+
 ifcs_ip6=Endereço IPv6
 ifcs_badd=Adicione uma nova ponte.
 ifcs_auto6=Da descoberta do IPv6

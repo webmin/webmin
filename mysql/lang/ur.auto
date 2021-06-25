@@ -21,6 +21,8 @@ index_ever=ایس کیو ایل کلائنٹ کا پروگرام$1 درست ور
 index_nouser=آپ کے ویب مین اکاؤنٹ کو ایس کیو ایل سرور سے$1 صارف کی حیثیت سے مربوط کرنے کے لئے تشکیل کیا گیا ہے ، لیکن اس صارف تک رسائی سے انکار کردیا گیا ہے۔
 index_db=ڈیٹا بیس کا نام
 index_tables=میزیں
+index_indexes=اشاریہ
+index_views=مناظر
 index_elibrary=The MySQL client program $1 could not be run because it could not find the MySQL shared libraries. Check the <a href='$2'>module configuration</a> and make sure the <i>Path to MySQL shared libraries</i> is set.
 index_version=$2 ورژن$1
 index_version2=$2 پر$3 ورژن$1

@@ -8,6 +8,9 @@ bind_emaxconns_per_net=Le nombre maximal de connexions simultanées par réseau 
 advanced_bufsize=Taille de la mémoire tampon du réseau en octets
 advanced_ebufsize=La taille de la mémoire tampon du réseau doit être un nombre supérieur à zéro
 
+status_err=Échec de l'enregistrement de la collection d'états en arrière-plan
+status_einterval=L'intervalle de collecte doit être un entier
+
 sendmail_url=URL Webmin à utiliser dans les e-mails
 sendmail_url_def=Par défaut ($1)
 sendmail_url_custom=URL personnalisée

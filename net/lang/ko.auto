@@ -5,6 +5,15 @@ index_delete2=선택된 인터페이스 삭제
 index_delete3=선택된 인터페이스 삭제 및 적용
 index_apply2=선택된 인터페이스 적용
 index_vmin=가상 민
+index_mode=네트워크 구성 유형 : $1 
+index_mode_netplan=넷 플랜
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=맥 OS
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=솔라리스
+index_mode_windows=윈도우
 
 ifcs_activedesc=이 표에 나열된 인터페이스는 현재 시스템에서 활성화되어 있습니다. 대부분의 경우 <b>부팅시 활성화</b> 탭에서 편집해야합니다.
 ifcs_bootdesc=이 표에 나열된 인터페이스는 시스템 부팅시 활성화되며 일반적으로 현재 활성화됩니다.

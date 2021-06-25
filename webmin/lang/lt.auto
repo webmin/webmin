@@ -1013,6 +1013,8 @@ status_temp=Surinkite važiavimo temperatūrą?
 status_units=Temperatūros vienetai
 status_celsius=Celsijaus
 status_fahrenheit=Farenheitas
+status_err=Nepavyko išsaugoti fono būsenos rinkinio
+status_einterval=Surinkimo intervalas turi būti sveikasis skaičius
 
 sendmail_title=Siunčiamas el. Paštas
 sendmail_desc=Šis puslapis kontroliuoja, kaip „Webmin“ siunčia el. Laiškus, pavyzdžiui, iš suplanuotų atsarginių kopijų ar foninio stebėjimo. Tai taip pat daro įtaką el. Laiškų, išsiųstų naudojant „Skaityti vartotojo el.

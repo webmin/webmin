@@ -1013,6 +1013,8 @@ status_temp=Versamel dryftemperature?
 status_units=Eenhede vir temperature
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+status_err=Kon nie agtergrondstatusversameling stoor nie
+status_einterval=Versamelinterval moet 'n heelgetal wees
 
 sendmail_title=Stuur e-pos
 sendmail_desc=Hierdie bladsy beheer hoe Webmin e-pos stuur, soos vanaf geskeduleerde rugsteun of agtergrondmonitering. Dit beïnvloed ook e-pos wat met die Read User Mail-module gestuur word.

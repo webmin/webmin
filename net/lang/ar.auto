@@ -7,6 +7,15 @@ index_delete2=حذف واجهات مختارة
 index_delete3=حذف وتطبيق واجهات مختارة
 index_apply2=تطبيق واجهات مختارة
 index_vmin=Virtualmin
+index_mode=نوع تكوين الشبكة:$1
+index_mode_netplan=نتبلان
+index_mode_cygwin=سيغوين
+index_mode_freebsd=فري بي إس دي
+index_mode_macos=ماك
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=سولاريس
+index_mode_windows=شبابيك
 
 ifcs_title=واجهات الشبكة
 ifcs_now=نشط الان

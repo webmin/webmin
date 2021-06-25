@@ -17,6 +17,7 @@ index_loginsuser=Seul utilisateur
 index_loginsdesc=Afficher les connexions récentes à un ou à tous les utilisateurs Unix qui se sont connectés via SSH ou Usermin.
 index_whodesc=Afficher les utilisateurs actuellement connectés via SSH ou Usermin.
 
+sshkey=Clé publique SSH
 uedit_manual=Annuaire
 uedit_allg=Tous les groupes
 uedit_ing=En groupes

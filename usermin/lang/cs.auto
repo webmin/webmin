@@ -18,3 +18,6 @@ copycert_essl=SSL není povoleno
 copycert_ekeyfile=Ve Webminu není nastaven žádný soubor soukromého klíče
 
 twofactor_desc=Dvoufaktorové ověřování umožňuje uživatelům Usermin povolit při přihlášení použití dalšího ověřovacího zařízení, například generátoru jednorázového hesla. Po povolení na této stránce se uživatelé musí individuálně zaregistrovat u vybraného poskytovatele ověřování.
+twofactor_eversion=Verze Usermin nainstalovaná ve vašem systému nepodporuje dvoufaktorové ověřování.
+
+web_header=Možnosti vestavěného webového serveru Usermin

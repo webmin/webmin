@@ -1,5 +1,7 @@
 index_eshow=MySQL-statusprogrammet $1 hittades inte på ditt system. Kanske är MySQL inte installerat, eller är din <a href='$2'>modulkonfiguration</a> felaktig.
 index_estart=MySQL-startskriptet $1 hittades inte på ditt system. Kanske är MySQL inte installerat, eller är din <a href='$2'>modulkonfiguration</a> felaktig.
+index_indexes=Index
+index_views=Visningar
 index_elibrary=MySQL-klientprogrammet $1 kunde inte köras eftersom det inte kunde hitta de delade MySQL-biblioteken. Kontrollera <a href='$2'>modulkonfigurationen</a> och se till att <i>Path to MySQL shared biblioties</i> är inställd.
 index_version=$2 version $1 
 index_version2=$3 version $1 på $2 

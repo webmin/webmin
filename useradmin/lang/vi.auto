@@ -77,6 +77,7 @@ nologin=Không cho phép đăng nhập
 encrypted=Mật khẩu được mã hóa trước
 nochange=Không thay đổi
 clear=Mật khẩu bình thường
+sshkey=Khóa công khai SSH
 home=Thư mục nhà
 uedit_auto=Tự động
 uedit_manual=Danh mục

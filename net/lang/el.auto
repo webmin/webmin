@@ -7,6 +7,15 @@ index_delete2=Διαγραφή επιλεγμένων διεπαφών
 index_delete3=Διαγραφή και εφαρμογή επιλεγμένων διεπαφών
 index_apply2=Εφαρμογή επιλεγμένων διεπαφών
 index_vmin=Virtualmin
+index_mode=Τύπος διαμόρφωσης δικτύου: $1 
+index_mode_netplan=Netplan
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=MacOS
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=Παράθυρα
 
 ifcs_title=Διασυνδέσεις δικτύου
 ifcs_now=Ενεργός τώρα

@@ -5020,6 +5020,10 @@ foreach my $troot (@theme_root_directories) {
 	&read_file_cached("$troot/config", \%tconfig);
 	push(@theme_configs, \%onetconfig);
 	}
+my $theme_tconfig = "$config_directory/$current_theme/config";
+if (-r $theme_tconfig) {
+		&read_file_cached($theme_tconfig, \%tconfig);
+		}
 $tb = defined($tconfig{'cs_header'}) ? "bgcolor=\"#$tconfig{'cs_header'}\"" :
       defined($gconfig{'cs_header'}) ? "bgcolor=\"#$gconfig{'cs_header'}\"" :
 				       "bgcolor=\"#9999ff\"";

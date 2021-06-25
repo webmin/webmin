@@ -77,6 +77,7 @@ nologin=Ez da saiorik onartzen
 encrypted=Aurrez enkriptatutako pasahitza
 nochange=Utzi aldatu gabe
 clear=Pasahitz normala
+sshkey=SSH gako publikoa
 home=Hasiera direktorio
 uedit_auto=automatikoa
 uedit_manual=Directory

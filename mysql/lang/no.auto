@@ -1,3 +1,6 @@
+index_indexes=Indekser
+index_views=Visninger
+
 syslog_desc2=MySQL feilmelding
 
 mysqlpass_err=MySQL sikker modus

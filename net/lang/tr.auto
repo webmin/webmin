@@ -3,6 +3,15 @@ index_delete2=Seçili Arayüzleri Sil
 index_delete3=Seçili Arayüzleri Sil ve Uygula
 index_apply2=Seçili Arayüzleri Uygula
 index_vmin=Virtualmin
+index_mode=Ağ yapılandırma türü: $1
+index_mode_netplan=ağ planı
+index_mode_cygwin=Cygwin
+index_mode_freebsd=ÜcretsizBSD
+index_mode_macos=Mac os işletim sistemi
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=pencereler
 
 ifcs_activedesc=Bu tabloda listelenen arabirimler şu anda sistemde etkindir. Çoğu durumda, bunları <b>Önyüklemede Etkinleştirildi</b> sekmesi altında düzenlemeniz gerekir.
 ifcs_bootdesc=Bu tabloda listelenen arabirimler, sistem önyükleme yaptığında etkinleştirilir ve genellikle de şimdi etkin olur.

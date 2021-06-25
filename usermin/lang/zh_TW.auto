@@ -289,3 +289,6 @@ copycert_essl=未啟用SSL
 copycert_ekeyfile=Webmin中未設置私鑰文件
 
 twofactor_desc=兩因素身份驗證允許Usermin用戶在登錄時啟用其他身份驗證設備的使用，例如一次性密碼生成器。在此頁面上啟用所選身份驗證提供程序後，用戶必須分別向其註冊。
+twofactor_eversion=您系統上安裝的 Usermin 版本不支持雙因素身份驗證。
+
+web_header=Usermin 內置網絡服務器的選項

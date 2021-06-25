@@ -18,3 +18,6 @@ copycert_essl=SSL non è abilitato
 copycert_ekeyfile=Nessun file di chiave privata è impostato in Webmin
 
 twofactor_desc=L'autenticazione a due fattori consente agli utenti di Usermin di abilitare l'uso di un dispositivo di autenticazione aggiuntivo durante l'accesso, come un generatore di passcode monouso. Gli utenti devono registrarsi individualmente con il provider di autenticazione selezionato dopo che è stato abilitato in questa pagina.
+twofactor_eversion=La versione di Usermin installata sul tuo sistema non supporta l'autenticazione a due fattori.
+
+web_header=Opzioni per il server web integrato di Usermin

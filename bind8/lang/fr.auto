@@ -1,0 +1,5 @@
+value_dmarcfo=Mode de rapport d'échec
+value_dmarcfo0=Signaler si DKIM et SPF ont échoué
+value_dmarcfo1=Signaler si DKIM ou SPF a échoué
+value_dmarcfod=Signaler si l'évaluation de la signature a échoué
+value_dmarcfos=Signaler si l'évaluation SPF a échoué

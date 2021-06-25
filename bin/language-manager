@@ -642,6 +642,12 @@ sub translate_substitute
         $value =~ s/<tt>/<tt translate="no">/gm;
         $value =~
 s/(?:(^(?<!<)(\/[\w+].*?),|^(?<!<)(\/[\w+].*?)\.|(?<!<)(\/[\w+].*?) |(?<!<)(\/[\w+].*?)$))/<span translate="no">"$1"<\/span>/g;
+        
+        # Wrap $1, $2 and etc into a tag with translate=no attr skipping already wrapped
+        $value =~ s/(?<!["])(\$\d+)(?!["'])/<span translate="no">$1<\/span>/g;
+
+        # Never translate email addresses, as translations to some languages break it
+        $value =~ s/([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,63})/<span translate="no">$1<\/span>/g;
     }
 
     return $value;
@@ -686,6 +692,11 @@ sub translated_substitute
         # Print actual values with percent sign
         $translated =~ s/\([ ]+\$(\d+)[ ]*%\)/(\$$1 %)/gi;
 
+        # If translated $1 incorrectly replaced with %1
+        if ($original !~ /%\d+/ && $translated =~ /%\d+/) {
+            $translated =~ s/%(\d+)/\$$1/g;
+        }
+
         # The following, is abnormal way to make things work, around of the bugs produced by Google Translate API for (bg).
         if ($code eq 'bg') {
             if ($original =~ /\$(\d+)/ && $translated !~ /\$(\d+)/) {
@@ -724,6 +735,8 @@ sub translated_substitute
         $translated =~ s/&#39;/'/gi;
 
         $translated =~ s/<tt translate="no">/<tt>/gm;
+
+        $translated =~ s/<span translate="no">(.*?)<\/span>/$1/gm;
     }
 
     # Restore destroyed tags
@@ -805,6 +818,17 @@ sub translated_substitute
         $translated =~ s/\$ \{/\${/g;
         $translated =~ s/\{\$ /{\$/g;
         $translated =~ s/\.\.\. /.../g;
+    }
+
+    # If original ends with `..` fix translator changing it to `.`
+    if ($original =~ /\.\.\s*$/) {
+        my ($spaces) = $original =~ /(\s*)\.\.\s*$/;
+        $translated =~ s/\s*[.]+$/$spaces../;
+    }
+
+    # If original doesn't end with `.` fix translator adding a dot
+    if ($original !~ /\.$/ && $translated =~ /\.$/) {
+        $translated =~ s/[.]+$//;
     }
 
     # If original value on template file contained escaped HTML entities, do the same on translated string

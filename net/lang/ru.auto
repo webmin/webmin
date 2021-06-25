@@ -1,3 +1,13 @@
+index_mode=Тип конфигурации сети: $1 
+index_mode_netplan=Netplan
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=MacOS
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Солярис
+index_mode_windows=Окна
+
 ifcs_ip6=Адрес IPv6
 ifcs_badd=Добавьте новый мост.
 ifcs_auto6=Из открытия IPv6

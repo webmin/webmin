@@ -500,3 +500,6 @@ copycert_essl=SSL ni omogočen
 copycert_ekeyfile=V programu Webmin ni nastavljena nobena datoteka zasebnega ključa
 
 twofactor_desc=Dvofaktorsko preverjanje pristnosti uporabnikom Usermin omogoča, da ob prijavi omogočijo uporabo dodatne naprave za preverjanje pristnosti, na primer generator enkratne gesla. Uporabniki se morajo posamezno prijaviti pri izbranem ponudniku overjanja, potem ko je ta omogočen na tej strani.
+twofactor_eversion=Različica Usermin, nameščena v vašem sistemu, ne podpira dvofaktorskega preverjanja pristnosti.
+
+web_header=Možnosti vgrajenega spletnega strežnika Usermin

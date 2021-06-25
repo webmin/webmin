@@ -77,6 +77,7 @@ nologin=Nessun accesso consentito
 encrypted=Password pre-crittografata
 nochange=Lascia invariato
 clear=Password normale
+sshkey=Chiave pubblica SSH
 home=Home directory
 uedit_auto=Automatico
 uedit_manual=elenco

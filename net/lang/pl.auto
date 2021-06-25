@@ -1,3 +1,13 @@
+index_mode=Typ konfiguracji sieci: $1 
+index_mode_netplan=Netplan
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=System operacyjny Mac
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=Okna
+
 ifcs_auto6=Od odkrycia IPv6
 
 bifc_bridgestp=Protokół drzewa opinającego

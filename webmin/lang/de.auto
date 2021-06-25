@@ -8,6 +8,9 @@ bind_emaxconns_per_net=Die maximale Anzahl gleichzeitiger Verbindungen pro Netzw
 advanced_bufsize=Netzwerkpuffergröße in Bytes
 advanced_ebufsize=Die Netzwerkpuffergröße muss eine Zahl größer als Null sein
 
+status_err=Fehler beim Speichern der Hintergrundstatussammlung
+status_einterval=Erfassungsintervall muss eine ganze Zahl sein
+
 sendmail_port=SMTP-Port
 sendmail_ssl0=Niemals verschlüsseln
 sendmail_ssl1=Verwenden Sie immer TLS

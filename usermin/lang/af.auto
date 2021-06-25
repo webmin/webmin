@@ -500,3 +500,6 @@ copycert_essl=SSL is nie geaktiveer nie
 copycert_ekeyfile=Geen privaat sleutellêer is in Webmin opgestel nie
 
 twofactor_desc=Tweefaktor-verifikasie stel Usermin-gebruikers in staat om die gebruik van 'n bykomende verifikasietoestel tydens aanmelding moontlik te maak, soos 'n eenmalige wagkode-opleier. Gebruikers moet individueel by die geselekteerde verifikasieverskaffer inskryf nadat dit op hierdie bladsy geaktiveer is.
+twofactor_eversion=Die weergawe van Usermin wat op u stelsel geïnstalleer is, ondersteun nie tweefaktor-verifikasie nie.
+
+web_header=Opsies vir die ingeboude webbediener van Usermin

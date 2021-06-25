@@ -1013,6 +1013,8 @@ status_temp=Prikupiti pogonske temperature?
 status_units=Jedinice za temperaturu
 status_celsius=Celzijus
 status_fahrenheit=Farenhajt
+status_err=Spremanje zbirke statusa u pozadini nije uspjelo
+status_einterval=Interval prikupljanja mora biti cijeli broj
 
 sendmail_title=Slanje e-pošte
 sendmail_desc=Ova stranica kontrolira kako Webmin šalje e-poštu, primjerice iz zakazanih sigurnosnih kopija ili nadzor pozadine. Također utječe na e-poštu poslanu putem modula Pročitaj korisničku poštu.

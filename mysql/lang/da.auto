@@ -21,6 +21,8 @@ index_ever=MySQL-klientprogrammet $1 ser ikke ud til at være den rigtige versio
 index_nouser=Din Webmin-konto er konfigureret til at oprette forbindelse til MySQL-serveren som bruger $1, men denne bruger er blevet nægtet adgang.
 index_db=Databasens navn
 index_tables=Borde
+index_indexes=Indekser
+index_views=Visninger
 index_elibrary=MySQL-klientprogrammet $1 kunne ikke køres, fordi det ikke kunne finde de delte MySQL-biblioteker. Kontroller <a href='$2'>modulkonfiguration</a>, og sørg for, at <i>Stien til MySQL delte biblioteker</i> er indstillet.
 index_version=$2 version $1 
 index_version2=$3 version $1 på $2 

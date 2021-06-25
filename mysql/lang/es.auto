@@ -1,5 +1,7 @@
 index_eshow=El programa de estado MySQL $1 no se encontró en su sistema. Tal vez MySQL no está instalado, o su <a href='$2'>configuración del módulo</a> es incorrecta.
 index_estart=El script de inicio de MySQL $1 no se encontró en su sistema. Tal vez MySQL no está instalado, o su <a href='$2'>configuración del módulo</a> es incorrecta.
+index_indexes=Índices
+index_views=Puntos de vista
 index_version2=$3 versión $1 en $2 
 index_eenvpass=El programa de cliente MySQL $1 no acepta contraseñas pasadas usando la variable de entorno <tt>MYSQL_PWD</tt>. Para garantizar que Webmin pueda comunicarse completamente con MySQL, esta opción debe desactivarse en la página <a href='$2'>configuración del módulo</a>. Alternativamente, puede eliminar cualquier contraseña establecida en el archivo <tt>root</tt> del usuario <tt>.my.cnf</tt>.
 index_ecnf=El archivo de configuración de MySQL $1 no se encontró en su sistema. Use la página <a href='$2'>configuración del módulo</a> para establecer la ruta correcta.

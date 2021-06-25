@@ -1013,6 +1013,8 @@ status_temp=Kerää käyttölämpötilat?
 status_units=Lämpötilayksiköt
 status_celsius=celsius
 status_fahrenheit=Fahrenheit
+status_err=Taustatilakokoelman tallentaminen epäonnistui
+status_einterval=Keräysvälin on oltava kokonaisluku
 
 sendmail_title=Lähetetään sähköpostia
 sendmail_desc=Tällä sivulla hallitaan, kuinka Webmin lähettää sähköpostia, kuten aikatauluneista varmuuskopioista tai taustavalvonnasta. Se vaikuttaa myös Lue käyttäjäposti -moduulilla lähetetyihin sähköposteihin.

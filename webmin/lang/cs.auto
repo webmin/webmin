@@ -259,6 +259,8 @@ status_temp=Sbírejte jízdní teploty?
 status_units=Jednotky pro teploty
 status_celsius=Celsia
 status_fahrenheit=Fahrenheita
+status_err=Uložení kolekce stavu pozadí se nezdařilo
+status_einterval=Interval shromažďování musí být celé číslo
 
 sendmail_title=Odesílání e-mailů
 sendmail_desc=Tato stránka určuje, jak Webmin odesílá e-maily, například z plánovaných záloh nebo monitorování na pozadí. Ovlivňuje také e-maily odesílané pomocí modulu Read User Mail.

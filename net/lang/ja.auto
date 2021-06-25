@@ -3,6 +3,15 @@ index_delete2=選択したインターフェイスを削除
 index_delete3=選択したインターフェイスを削除して適用する
 index_apply2=選択したインターフェイスを適用
 index_vmin=Virtualmin
+index_mode=ネットワーク構成タイプ: $1
+index_mode_netplan=ネットプラン
+index_mode_cygwin=Cygwin
+index_mode_freebsd=FreeBSD
+index_mode_macos=マックOS
+index_mode_netbsd=NetBSD
+index_mode_openbsd=OpenBSD
+index_mode_solaris=Solaris
+index_mode_windows=ウィンドウズ
 
 ifcs_activedesc=この表にリストされているインターフェースは、現在システムでアクティブです。ほとんどの場合、[<b>起動時にアクティブ化</b>]タブで編集する必要があります。
 ifcs_bootdesc=この表にリストされているインターフェイスは、システムの起動時にアクティブになり、通常は現在もアクティブになっています。

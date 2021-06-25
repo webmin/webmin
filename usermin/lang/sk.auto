@@ -500,3 +500,6 @@ copycert_essl=SSL nie je povolený
 copycert_ekeyfile=V aplikácii Webmin nie je nastavený žiadny súbor súkromného kľúča
 
 twofactor_desc=Dvojfaktorová autentifikácia umožňuje používateľom služby Usermin povoliť pri prihlásení použitie ďalšieho autentifikačného zariadenia, napríklad generátora jednorazového hesla. Po povolení na tejto stránke sa musia používatelia individuálne zaregistrovať u vybraného poskytovateľa autentifikácie.
+twofactor_eversion=Verzia aplikácie Usermin nainštalovaná vo vašom systéme nepodporuje dvojfaktorovú autentifikáciu.
+
+web_header=Možnosti zabudovaného webového servera spoločnosti Usermin

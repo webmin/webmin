@@ -33,6 +33,7 @@ search_gfound=找到$1匹配组 ..
 
 gid=组
 gidnum=组号
+sshkey=SSH 公钥
 uedit_manual=目录
 lastlogin=上次登录
 uedit_samg=与用户同名的新组

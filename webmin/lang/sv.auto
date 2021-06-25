@@ -747,6 +747,8 @@ status_temp=Samla körtemperaturer?
 status_units=Enheter för temperaturer
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+status_err=Det gick inte att spara samlingen av bakgrundsstatus
+status_einterval=Samlingsintervallet måste vara ett heltal
 
 sendmail_title=Skickar e-post
 sendmail_desc=Denna sida styr hur Webmin skickar e-post, till exempel från schemalagda säkerhetskopior eller övervakning av bakgrunden. Det påverkar också e-postmeddelanden som skickas med modulen Read User Mail.

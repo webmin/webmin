@@ -500,3 +500,6 @@ copycert_essl=SSL nu este activat
 copycert_ekeyfile=Nu este setat niciun fișier cu cheie privată în Webmin
 
 twofactor_desc=Autentificarea cu doi factori permite utilizatorilor Usermin să permită utilizarea unui dispozitiv de autentificare suplimentar la conectare, cum ar fi un generator de cod de acces unic. Utilizatorii trebuie să se înscrie individual la furnizorul de autentificare selectat după ce acesta este activat pe această pagină.
+twofactor_eversion=Versiunea de Usermin instalată pe sistemul dvs. nu acceptă autentificarea în doi factori.
+
+web_header=Opțiuni pentru serverul web încorporat al Usermin

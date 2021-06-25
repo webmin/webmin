@@ -21,6 +21,8 @@ index_ever=Programul client MySQL $1 nu pare a fi versiunea corectă. Webmin acc
 index_nouser=Contul dvs. Webmin este configurat pentru a se conecta la serverul MySQL ca utilizator $1, dar acestui utilizator i sa refuzat accesul.
 index_db=Numele bazei de date
 index_tables=Mese
+index_indexes=Indici
+index_views=Vizualizări
 index_elibrary=Programul client MySQL $1 nu a putut fi rulat deoarece nu a putut găsi bibliotecile partajate MySQL. Verificați configurația modulului <a href='$2'></a> și asigurați-vă că <i>Calea către bibliotecile partajate MySQL</i> este setată.
 index_version=$2 versiune $1 
 index_version2=$3 versiunea $1 pe $2 

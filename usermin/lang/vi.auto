@@ -500,3 +500,6 @@ copycert_essl=SSL không được kích hoạt
 copycert_ekeyfile=Không có tệp khóa riêng nào được đặt trong Webmin
 
 twofactor_desc=Xác thực hai yếu tố cho phép người dùng Usermin cho phép sử dụng thiết bị xác thực bổ sung khi đăng nhập, chẳng hạn như trình tạo mật mã dùng một lần. Người dùng phải đăng ký riêng với nhà cung cấp xác thực đã chọn sau khi nó được bật trên trang này.
+twofactor_eversion=Phiên bản Usermin được cài đặt trên hệ thống của bạn không hỗ trợ xác thực hai yếu tố.
+
+web_header=Các tùy chọn cho máy chủ web tích hợp của Usermin

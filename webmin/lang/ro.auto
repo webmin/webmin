@@ -1013,6 +1013,8 @@ status_temp=Adunați temperaturile de acționare?
 status_units=Unități pentru temperaturi
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+status_err=Salvarea colecției de stare de fundal nu a reușit
+status_einterval=Intervalul de colectare trebuie să fie un număr întreg
 
 sendmail_title=Se trimite un e-mail
 sendmail_desc=Această pagină controlează modul în care Webmin trimite un e-mail, cum ar fi de la backup-uri programate sau monitorizare de fundal. De asemenea, afectează e-mailurile trimise utilizând modulul Citire poșta utilizator.

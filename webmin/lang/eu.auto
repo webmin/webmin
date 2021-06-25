@@ -1013,6 +1013,8 @@ status_temp=Bildu diskoko tenperaturak?
 status_units=Tenperaturak egiteko unitateak
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+status_err=Ezin izan da atzeko planoko egoera bilduma gorde
+status_einterval=Bilketa tarteak zenbaki oso bat izan behar du
 
 sendmail_title=Posta elektronikoa bidaltzen
 sendmail_desc=Orrialde honek Webminak posta elektronikoa nola bidaltzen duen kontrolatzen du, hala nola, babeskopia programatuetatik edo atzeko planoko jarraipenetatik. Irakurri Erabiltzailearen posta modulua erabiliz bidalitako mezu elektronikoak ere eragina du.

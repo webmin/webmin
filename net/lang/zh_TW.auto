@@ -3,6 +3,15 @@ index_delete2=刪除所選接口
 index_delete3=刪除和應用所選接口
 index_apply2=應用選定的接口
 index_vmin=虛擬分鐘
+index_mode=網絡配置類型：$1
+index_mode_netplan=網絡計劃
+index_mode_cygwin=賽格溫
+index_mode_freebsd=FreeBSD
+index_mode_macos=蘋果系統
+index_mode_netbsd=NetBSD
+index_mode_openbsd=開放式BSD
+index_mode_solaris=索拉里斯
+index_mode_windows=視窗
 
 ifcs_activedesc=下表中列出的接口當前在系統上處於活動狀態。在大多數情況下，您應該在<b>啟動時激活</b>標籤下對其進行編輯。
 ifcs_bootdesc=該表中列出的接口將在系統啟動時被激活，並且通常現在也將處於活動狀態。

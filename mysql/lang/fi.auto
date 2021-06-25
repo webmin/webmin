@@ -21,6 +21,8 @@ index_ever=MySQL-asiakasohjelma $1 ei näytä olevan oikea versio. Webmin tukee 
 index_nouser=Webmin-tilisi on määritetty muodostamaan yhteys MySQL-palvelimeen käyttäjänä $1, mutta tälle käyttäjälle on evätty pääsy.
 index_db=Tietokannan nimi
 index_tables=taulukot
+index_indexes=Hakemistot
+index_views=Näkymät
 index_elibrary=MySQL-asiakasohjelmaa $1 ei voitu suorittaa, koska se ei löytänyt MySQL-jaettuja kirjastoja. Tarkista <a href='$2'>moduulin kokoonpano</a> ja varmista, että <i>Polku MySQL-jaettuihin kirjastoihin</i> on määritetty.
 index_version=$2 versio $1 
 index_version2=$3 versio $1 $2 : ssa

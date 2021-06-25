@@ -21,6 +21,8 @@ index_ever=برنامج عميل MySQL $1 لا يبدو أنه الإصدار ا
 index_nouser=تم تكوين حساب Webmin الخاص بك للاتصال بخادم MySQL كمستخدم$1 ، ولكن تم رفض وصول هذا المستخدم.
 index_db=اسم قاعدة البيانات
 index_tables=الجداول
+index_indexes=فهارس
+index_views=الآراء
 index_elibrary=تعذر تشغيل برنامج عميل MySQL $1 لأنه لم يتمكن من العثور على مكتبات MySQL المشتركة. تحقق من <a href='$2'>تكوين الوحدة</a> وتأكد من تعيين <i>المسار إلى مكتبات MySQL المشتركة</i>.
 index_version=$2 إصدار$1
 index_version2=$3 إصدار$1 على$2

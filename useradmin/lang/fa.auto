@@ -26,6 +26,7 @@ search_found=Found $1 matching users ..
 search_gfound=Found $1 matching groups ..
 
 gidnum=شناسه گروه
+sshkey=کلید عمومی SSH
 uedit_manual=فهرست راهنما
 uedit_allg=همه گروه ها
 uedit_ing=در گروه

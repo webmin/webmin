@@ -1,5 +1,7 @@
 index_eshow=A (z) $1 MySQL állapotprogram nem található a rendszerén. Lehet, hogy a MySQL nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
 index_estart=A (z) $1 MySQL indító szkript nem található a rendszerén. Lehet, hogy a MySQL nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+index_indexes=Indexek
+index_views=Nézetek
 index_version2=$3 verzió: $1 a $2 -en
 index_eenvpass=A $1 MySQL kliensprogram nem fogad el jelszavakat, amelyeket a <tt>MYSQL_PWD</tt> környezeti változóval adtak át. Annak biztosítása érdekében, hogy a Webmin teljes mértékben képes legyen kommunikálni a MySQL-vel, ezt az opciót ki kell kapcsolni a <a href='$2'>modulkonfiguráció</a> oldalon. Alternatív megoldásként eltávolíthatja a <tt>gyökér</tt> felhasználó <tt>.my.cnf</tt> fájljában beállított jelszavakat.
 index_ecnf=A (z) $1 MySQL konfigurációs fájl nem található a rendszerén. A helyes út beállításához használja a <a href='$2'>modulkonfiguráció</a> oldalt.
