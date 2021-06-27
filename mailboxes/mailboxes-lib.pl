@@ -1119,33 +1119,33 @@ foreach my $folder (&list_user_folders($user)) {
 		# Remove mbox index
 		local $ifile = &user_index_file($folder->{'file'});
 		if (-r $ifile) {
-			&unlink_logged($ifile);
+			&unlink_file($ifile);
 			}
 		else {
-			&unlink_logged(glob("$ifile.{dir,pag,db}"));
+			&unlink_file(glob("$ifile.{dir,pag,db}"));
 			}
-		&unlink_logged("$ifile.ids");
+		&unlink_file("$ifile.ids");
 		}
 	elsif ($folder->{'type'} == 1) {
 		# Remove Maildir files file
-		&unlink_logged(&get_maildir_cachefile($folder->{'file'}));
+		&unlink_file(&get_maildir_cachefile($folder->{'file'}));
 		}
 	# Remove sort index
 	local $ifile = &folder_new_sort_index_file($folder);
 	if (-r $ifile) {
-		&unlink_logged($ifile);
+		&unlink_file($ifile);
 		}
 	else {
-		&unlink_logged(glob("$ifile.{dir,pag,db}"));
+		&unlink_file(glob("$ifile.{dir,pag,db}"));
 		}
 	}
 # Remove read file
 local $read = &user_read_dbm_file($user);
 if (-r $read) {
-	&unlink_logged($read);
+	&unlink_file($read);
 	}
 else {
-	&unlink_logged(glob("$read.{dir,pag,db}"));
+	&unlink_file(glob("$read.{dir,pag,db}"));
 	}
 }
 
