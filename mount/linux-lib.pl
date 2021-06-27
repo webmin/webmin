@@ -448,7 +448,19 @@ sub list_mounted
 return @list_mounted_cache
 	if (@list_mounted_cache && $list_mounted_cache_mode == $_[0]);
 local(@rv, @p, @o, $mo, $_, %smbopts);
+
+# Do any filesystems use labels that we need to resolve?
 local @mounts = &list_mounts();
+local $anylabel = 0;
+local $anyuuid = 0;
+foreach my $m (@mounts) {
+	if ($m->[1] =~ /^LABEL=/) {
+		$anylabel++;
+		}
+	if ($m->[1] =~ /^UUID=/) {
+		$anyuuid++;
+		}
+	}
 
 &read_smbopts();
 open(MTAB, "</etc/mtab");
@@ -484,13 +496,13 @@ while(<MTAB>) {
 		# The source for proc mounts is always proc
 		$p[0] = "proc";
 		}
-	if (!$_[0]) {
+	if (!$_[0] && $anylabel) {
 		# Check for a label on this partition, and there is one
 		# and this filesystem is in fstab with the label, change
 		# the device.
 		local $label = &get_filesystem_label(@p);
 		if (defined($label)) {
-			foreach $m (@mounts) {
+			foreach my $m (@mounts) {
 				if ($m->[0] eq $p[1] &&
 				    $m->[1] eq "LABEL=$label") {
 					$p[0] = "LABEL=$label";
@@ -503,7 +515,7 @@ while(<MTAB>) {
 	# Check for a UUID on this partition, and if there is one
 	# and the filesystem is in fstab with the label, change
 	# the device.
-	if (!$_[0]) {
+	if (!$_[0] && $anyuuid) {
 		local $uuid = &device_to_uuid($p[0], \@mounts);
 		if ($uuid) {
 			$p[0] = "UUID=$uuid";
