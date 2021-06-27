@@ -1642,15 +1642,7 @@ if (!$ENV{'REQUEST_METHOD'}) {
 	print STDERR ($main::whatfailed ? "$main::whatfailed : " : ""),
 			&$error_output_right($msg),"\n";
 	print STDERR "-----\n";
-	if ($gconfig{'error_stack'}) {
-		# Show call stack
-		print STDERR $text{'error_stack'},"\n";
-		for(my $i=0; my @stack = caller($i); $i++) {
-			print STDERR &text('error_stackline',
-				$stack[1], $stack[2], $stack[3]),"\n";
-			}
-		}
-
+	&print_call_stack() if ($gconfig{'error_stack'});
 	}
 elsif (defined(&theme_error)) {
 	&theme_error(@_);
@@ -1721,6 +1713,20 @@ else {
 &unlock_all_files();
 &cleanup_tempnames();
 exit(1);
+}
+
+=head2 print_call_stack()
+
+Output the call stack of the current function to STDERR
+
+=cut
+sub print_call_stack
+{
+print STDERR $text{'error_stack'},"\n";
+for(my $i=0; my @stack = caller($i); $i++) {
+	print STDERR &text('error_stackline',
+		$stack[1], $stack[2], $stack[3]),"\n";
+	}
 }
 
 =head2 popup_error([message]+)
