@@ -426,7 +426,7 @@ return @rv;
 sub create_logical_volume
 {
 local ($lv) = @_;
-local $cmd = "lvcreate -n".quotemeta($lv->{'name'})." ";
+local $cmd = "lvcreate -y -n".quotemeta($lv->{'name'})." ";
 local $suffix;
 if ($lv->{'size_of'} eq 'VG' || $lv->{'size_of'} eq 'FREE' ||
     $lv->{'size_of'} eq 'ORIGIN') {
