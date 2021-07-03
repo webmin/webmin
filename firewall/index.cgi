@@ -15,25 +15,13 @@ else {
 	require './firewall4-lib.pl';
 	}
 
+$subhead = $text{"index_title_v${ipvx}"};
 if ($ipvx_save) {
-	$desc = &text('index_editing', "<tt>$ipvx_save</tt>");
+	$subhead .= ", ".&text('index_editing', "<tt>$ipvx_save</tt>");
 	}
-&ui_print_header($text{"index_title_v${ipvx}"}, $text{'index_title'}, undef,
+&ui_print_header($subhead, $text{'index_title'}, undef,
 		 "intro", 1, 1, 0,
 		 &help_search_link("ip${ipvx}tables", "man", "doc"));
-
-# Firewall protocol selector
-my @vlinks;
-push(@vlinks, $ipvx_version == 4 ? "<b>$text{'index_ipvx4'}</b>" :
-		&ui_link($ipv4_link, $text{'index_ipvx4'}));
-push(@vlinks, $ipvx_version == 6 ? "<b>$text{'index_ipvx6'}</b>" :
-		&ui_link($ipv6_link, $text{'index_ipvx6'}));
-print "<style>.panel-body b+.ui_link{background-color: lightgrey;} .panel-body b+a+b,",
-      ".panel-body b+b{background-color: antiquewhite; padding: .39em 1em .65em 1em; height: 2em; font-size: 1.1em}</style>";
-print "<b>$text{'index_ipvxmode'}</b>\n",
-      &ui_links_row(\@vlinks),"\n";
-
-print "<br><b>$desc</b><br>&nbsp;";
 
 # Check for iptables and iptables-restore commands
 if ($c = &missing_firewall_commands()) {
