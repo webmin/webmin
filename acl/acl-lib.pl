@@ -1677,6 +1677,7 @@ is not given, a salt will be selected randomly.
 sub encrypt_password
 {
 my ($pass, $salt) = @_;
+$salt ||= "";
 my $mode = $salt =~ /^\$1\$/ ? 1 :
 	   $salt =~ /^\$6\$/ ? 2 :
 	   length($salt) == 13 ? 0 : $gconfig{'md5pass'};
