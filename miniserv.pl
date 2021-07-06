@@ -7,6 +7,7 @@ use Socket;
 use POSIX;
 use Time::Local;
 eval "use Time::HiRes;";
+eval "use Socket6;";
 
 @itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 
@@ -398,6 +399,12 @@ if (!$config{'inetd'}) {
 			}
 		push(@INC, "$config{'root'}/$dir");
 		eval "package $mod; use $mod ()";
+		if ($@) {
+			print STDERR "Failed to pre-load $mod : $@\n";
+			}
+		}
+	foreach $mod (split(/\s+/, $config{'preuse'})) {
+		eval "use $mod;";
 		if ($@) {
 			print STDERR "Failed to pre-load $mod : $@\n";
 			}
