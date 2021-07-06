@@ -81,5 +81,5 @@ sub list_acl_yesno_fields
 {
 return ('create', 'delete', 'rename', 'acl', 'cert', 'others', 'chcert',
 	'lang', 'cats', 'theme', 'ips', 'perms', 'sync', 'unix', 'sessions',
-	'switch', 'times', 'pass', 'sql');
+	'switch', 'times', 'pass', 'sql', 'rbacenable', 'twofactor');
 }
