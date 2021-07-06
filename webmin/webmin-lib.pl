@@ -1209,12 +1209,20 @@ if (&foreign_check("acl")) {
 
 # New Webmin version is available, but only once per day
 my $now = time();
+my %raccess = &get_module_acl('root');
+my %rdisallow = map { $_, 1 } split(/\s+/, $raccess{'disallow'});
 my %access = &get_module_acl();
 my %disallow = map { $_, 1 } split(/\s+/, $access{'disallow'});
-if (&foreign_available($module_name) && !$noupdates &&
-    !$gconfig{'nowebminup'} && !$disallow{'upgrade'}) {
+my %allow = map { $_, 1 } split(/\s+/, $access{'allow'});
+my %role = map { $_, 1 } split(/\s+/, $access{'role'});
+if (&foreign_available($module_name) && !$gconfig{'nowebminup'} && !$noupdates &&
+    (
+        $allow{'upgrade'} || $role{'upgrader'} ||
+        (!$disallow{'upgrade'} && !$rdisallow{'upgrade'})
+    )
+) {
 	if (!$config{'last_version_check'} ||
-            $now - $config{'last_version_check'} > 24*60*60) {
+         $now - $config{'last_version_check'} > 24*60*60) {
 		# Cached last version has expired .. re-fetch
 		my ($ok, $version) = &get_latest_webmin_version();
 		if ($ok) {
