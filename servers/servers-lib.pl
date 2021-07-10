@@ -35,7 +35,9 @@ our @server_types = (
 		  [ 'centos', 'CentOS Linux', undef, 'CentOS' ],
 		  [ 'ubuntu', 'Ubuntu Linux', undef, 'Ubuntu' ],
 		  [ 'fedora', 'Fedora Linux', undef, 'Fedora' ],
+		  [ 'oracle', 'Oracle Linux', undef, 'Oracle' ],
 		  [ 'redflag', 'Red Flag Linux', undef, 'RedFlag' ],
+		  [ 'rocky', 'Linux Linux', undef, 'Rocky' ],
 		  [ 'amazon', 'Amazon Linux', undef, 'Amazon' ],
 		  [ 'pi', 'Raspbian Linux', undef, 'Raspbian' ],
 
