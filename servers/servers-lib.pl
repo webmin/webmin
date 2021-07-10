@@ -31,6 +31,7 @@ our @cluster_modules = ( "cluster-software" );
 our @server_types = (
 		  # Linux sub-types, which have to come first
 		  [ 'asianux', 'Asianux', undef, 'Asianux' ],
+		  [ 'alma', 'Alma Linux', undef, 'Alma' ],
 		  [ 'centos', 'CentOS Linux', undef, 'CentOS' ],
 		  [ 'ubuntu', 'Ubuntu Linux', undef, 'Ubuntu' ],
 		  [ 'fedora', 'Fedora Linux', undef, 'Fedora' ],
