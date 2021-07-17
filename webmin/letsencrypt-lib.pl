@@ -123,8 +123,9 @@ elsif ($mode eq "dns") {
 	&foreign_require("bind8");
 	foreach my $d (@doms) {
 		my $z = &get_bind_zone_for_domain($d);
-		$z || return (0, "Neither DNS zone $d or any of its ".
-				 "sub-domains exist on this system");
+		my $d = &get_virtualmin_for_domain($d);
+		$z || $d || return (0, "Neither DNS zone $d or any of its ".
+				       "sub-domains exist on this system");
 		}
 	}
 else {
@@ -409,6 +410,23 @@ while ($bd =~ /\./) {
 	$bd =~ s/^[^\.]+\.//;
 	}
 return ( );
+}
+
+# get_virtualmin_for_domain(domain-name)
+# If Virtualmin is installed, return the domain object that contains the given DNS domain
+sub get_virtualmin_for_domain
+{
+my ($bd) = @_;
+return undef if (!&foreign_check("virtual-server"));
+&foreign_require("virtual-server");
+while ($bd =~ /\./) {
+	my $d = &virtual_server::get_domain_by("dom", $bd);
+	if ($d && $d->{'dns'}) {
+		return $d;
+		}
+	$bd =~ s/^[^\.]+\.//;
+	}
+return undef;
 }
 
 # get_certbot_major_version(cmd)

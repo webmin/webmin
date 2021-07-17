@@ -19,22 +19,44 @@ my $dname = $ENV{'CERTBOT_DOMAIN'};
 $dname || die "Missing CERTBOT_DOMAIN environment variable";
 
 # Find the DNS domain and records
+my $d = &get_virtualmin_for_domain($dname);
 my ($zone, $zname) = &get_bind_zone_for_domain($dname);
-$zone || die "No zone named $dname found";
-$zone->{'file'} || die "Zone $dname does not have a records file";
-&lock_file(&bind8::make_chroot(&bind8::absolute_path($zone->{'file'})));
-my @recs = &bind8::read_zone_file($zone->{'file'}, $zname);
+my ($recs, $file);
+if ($zone) {
+	# Use BIND module API calls
+	$zone->{'file'} || die "Zone $dname does not have a records file";
+	&lock_file(&bind8::make_chroot(&bind8::absolute_path($zone->{'file'})));
+	$recs = [ &bind8::read_zone_file($zone->{'file'}, $zname) ];
+	$file = $zone->{'file'};
+	}
+elsif ($d) {
+	# Use Virtualmin API calls
+	&virtual_server::obtain_lock_dns($d);
+	($recs, $file) = &virtual_server::get_domain_dns_records_and_file($d);
+	}
+else {
+	die "No DNS zone named $dname found";
+	}
 
 # Find and remove the record. Does nothing if it doesn't exist so as not to
 # fail a repeated cleanup.
-my ($r) = grep { $_->{'name'} eq "_acme-challenge.".$dname."." } @recs;
+my ($r) = grep { $_->{'name'} eq "_acme-challenge.".$dname."." } @$recs;
 if ($r) {
-	&bind8::delete_record($zone->{'file'}, $r);
-	&bind8::sign_dnssec_zone_if_key($zone, \@recs);
-	&bind8::bump_soa_record($zone->{'file'}, \@recs);
+	&bind8::delete_record($file, $r);
 	}
-&unlock_file(&bind8::make_chroot(&bind8::absolute_path($zone->{'file'})));
 
-# Apply the change
-&bind8::restart_zone($zone->{'name'}, $zone->{'view'});
+if ($zone) {
+	# Apply using BIND API calls
+	&bind8::sign_dnssec_zone_if_key($zone, $recs);
+	&bind8::bump_soa_record($file, $recs);
+	&unlock_file(&bind8::make_chroot(&bind8::absolute_path($file)));
+	&bind8::restart_zone($zone->{'name'}, $zone->{'view'});
+	}
+else {
+	# Apply using Virtualmin API
+	&virtual_server::post_records_change($d, $recs, $file);
+	&virtual_server::release_lock_dns($d);
+	&virtual_server::reload_bind_records($d);
+	}
+
 &webmin_log("letsencryptcleanup", undef, $dname);
