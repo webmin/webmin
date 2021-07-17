@@ -5955,10 +5955,12 @@ to work OK. The parameters are :
 
 =item forcefile - Force the file to be considered as a real file and not a symlink for Webmin actions logging purposes.
 
+=item nodiff - Don't record the contents of the file for diffing, even if file change logging is enabled.
+
 =cut
 sub lock_file
 {
-my ($file, $readonly, $forcefile) = @_;
+my ($file, $readonly, $forcefile, $nodiff) = @_;
 if ($file =~ /\r|\n|\0/) {
 	&error("Lock filename contains invalid characters");
 	}
@@ -6013,7 +6015,7 @@ while(1) {
 		push(@main::temporary_files, $lockfile);
 		if (($gconfig{'logfiles'} || $gconfig{'logfullfiles'}) &&
 		    !&get_module_variable('$no_log_file_changes') &&
-		    !$readonly) {
+		    !$readonly && !$nodiff) {
 			# Grab a copy of this file for later diffing
 			my $lnk;
 			$main::locked_file_data{$realfile} = undef;
