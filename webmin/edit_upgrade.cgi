@@ -31,7 +31,7 @@ elsif ($mode eq "portage") {
 # Show tabs
 @tabs = map { [ $_, $text{'upgrade_tab'.$_}, "edit_upgrade.cgi?mode=$_" ] }
 	    ( $skip_upgrade ? ( ) : ( "upgrade" ),
-	      "grants", "update", "sched" );
+	      "grants", "update" );
 print ui_tabs_start(\@tabs, "mode", $in{'mode'} || $tabs[0]->[0], 1);
 
 if (!$skip_upgrade) {
@@ -136,69 +136,6 @@ print &ui_table_row($text{'update_pass'},
 
 print ui_table_end();
 print ui_form_end([ [ undef, $text{'update_ok'} ] ]);
-print ui_tabs_end_tab();
-
-# Display scheduled update form
-print ui_tabs_start_tab("mode", "sched");
-print "$text{'update_desc2'}<p>\n";
-print ui_form_start("update_sched.cgi", "post");
-print ui_table_start($text{'update_header2'}, undef, 2);
-
-print &ui_table_row($text{'update_enabled'},
-	&ui_yesno_radio("enabled", $config{'update'}));
-
-print &ui_table_row($text{'update_src'},
-	&ui_radio("source", $config{'upsource'} ? 1 : 0,
-		  [ [ 0, $text{'update_webmin'}."<br>" ],
-		    [ 1, $text{'update_other'} ] ])."<br>\n".
-	&ui_textarea("other", join("\n", split(/\t+/, $config{'upsource'})),
-		     2, 50));
-
-if ($config{'cron_mode'} == 0) {
-	$upmins = sprintf "%2.2d", $config{'upmins'};
-	print &ui_table_row("", 
-		&text('update_sched2',
-		      &ui_textbox("hour", $config{'uphour'}, 2),
-		      &ui_textbox("mins", $upmins, 2),
-		      &ui_textbox("days", $config{'updays'}, 3)));
-	}
-else {
-	&foreign_require("cron", "cron-lib.pl");
-	@jobs = &cron::list_cron_jobs();
-	$job = &find_cron_job(\@jobs);
-	$job ||= { 'mins' => 0,
-		   'hours' => $config{'uphour'},
-		   'days' => "*/$config{'updays'}",
-		   'months' => '*',
-		   'weekdays' => '*' };
-	print &cron::get_times_input($job, 1);
-	}
-
-print &ui_table_row($text{'update_opts'},
-	&ui_checkbox("show", 1, $text{'update_show'},
-		     $config{'upshow'}).
-	"<br>\n".
-	&ui_checkbox("missing", 1, $text{'update_missing'},
-	             $config{'upmissing'}).
-	"<br>\n".
-	&ui_checkbox("third", 1, $text{'update_third'},
-		     $config{'upthird'}).
-	"<br>\n".
-	&ui_checkbox("quiet", 1, $text{'update_quiet'},
-		     $config{'upquiet'}).
-	"<br>\n".
-	&ui_checkbox("checksig", 1, $text{'update_checksig'},
-		     $config{'upchecksig'}));
-
-print &ui_table_row($text{'update_email'},
-	&ui_textbox("upemail", $config{'upemail'}, 30));
-print &ui_table_row($text{'update_user'},
-	&ui_textbox("upuser", $config{'upuser'}, 30));
-print &ui_table_row($text{'update_pass'},
-	&ui_password("uppass", $config{'uppass'}, 30));
-
-print ui_table_end();
-print ui_form_end([ [ undef, $text{'update_apply'} ] ]);
 print ui_tabs_end_tab();
 
 print &ui_tabs_end(1);

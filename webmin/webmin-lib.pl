@@ -58,6 +58,7 @@ our $third_ssl = 0;
 
 our $default_key_size = "2048";
 
+# Obsolete, but still defined so it can be deleted
 our $cron_cmd = "$module_config_directory/update.pl";
 
 our $os_info_address = "os\@webmin.com";
@@ -983,8 +984,9 @@ as returned by cron::list_cron_jobs
 =cut
 sub find_cron_job
 {
+my ($jobs) = @_;
 my ($job) = grep { $_->{'user'} eq 'root' &&
-		   $_->{'command'} eq $cron_cmd } @{$_[0]};
+		   $_->{'command'} eq $cron_cmd } @$jobs;
 return $job;
 }
 

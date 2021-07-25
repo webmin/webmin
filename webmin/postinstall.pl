@@ -6,13 +6,13 @@ sub module_install
 # Update cache of which module's underlying servers are installed 
 &build_installed_modules();
 
-# Pick a random update time
-if (!defined($config{'uphour'}) ||
-    $config{'uphour'} == 3 && $config{'upmins'} == 0 && !$config{'update'}) {
-	&seed_random();
-	$config{'uphour'} = int(rand()*24);
-	$config{'upmins'} = int(rand()*60);
-	&save_module_config();
+# Remove the scheduled module update cron, which is now obsolete
+&foreign_require("cron");
+my @jobs = &cron::list_cron_jobs();
+my $job = &find_cron_job(\@jobs);
+if ($job) {
+	&cron::delete_cron_job($job);
+	&unlink_logged($cron_cmd);
 	}
 
 # Figure out the preferred cipher mode
