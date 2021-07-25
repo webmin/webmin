@@ -1256,68 +1256,6 @@ if (&foreign_available($module_name) && !$gconfig{'nowebminup'} && !$noupdates &
 		}
 	}
 
-# Webmin module updates
-if (&foreign_available($module_name) && !$noupdates &&
-    !$gconfig{'nomoduleup'} && !$disallow{'upgrade'}) {
-	my @st = stat($update_cache);
-	my $allupdates = [ ];
-	my @urls = $config{'upsource'} ?
-		split(/\t+/, $config{'upsource'}) : ( $update_url );
-	if (!@st || $now - $st[9] > 24*60*60) {
-		# Need to re-fetch cache
-		foreach my $url (@urls) {
-			my $checksig = $config{'upchecksig'} ? 2 :
-				       $url eq $update_url ? 2 : 1;
-			eval {
-				local $main::error_must_die = 1;
-				my ($updates) = &fetch_updates($url,
-					$config{'upuser'}, $config{'uppass'},
-					$checksig);
-				push(@$allupdates, @$updates);
-				};
-			}
-		my $fh = "CACHE";
-		&open_tempfile($fh, ">$update_cache", 1);
-		&print_tempfile($fh, &serialise_variable($allupdates));
-		&close_tempfile($fh);
-		}
-	else {
-		# Just use cache
-		my $cdata = &read_file_contents($update_cache);
-		$allupdates = &unserialise_variable($cdata);
-		}
-
-	# All a table of them, and a form to install
-	$allupdates = &filter_updates($allupdates);
-	if (@$allupdates) {
-		my $msg = &ui_form_start(
-			"$gconfig{'webprefix'}/webmin/update.cgi");
-		$msg .= &text('notif_updatemsg', scalar(@$allupdates))."<p>\n";
-		$msg .= &ui_columns_start(
-			[ $text{'notify_updatemod'},
-			  $text{'notify_updatever'},
-			  $text{'notify_updatedesc'} ]);
-		foreach my $u (@$allupdates) {
-			my %minfo = &get_module_info($u->[0]);
-			my %tinfo = &get_theme_info($u->[0]);
-			my %info = %minfo ? %minfo : %tinfo;
-			$msg .= &ui_columns_row([
-				$info{'desc'},
-				$u->[1],
-				$u->[4] ]);
-			}
-		$msg .= &ui_columns_end();
-		$msg .= &ui_hidden("source", 1);
-		$msg .= &ui_hidden("other", join("\n", @urls));
-		$msg .= &ui_hidden("upuser", $config{'upuser'});
-		$msg .= &ui_hidden("uppass", $config{'uppass'});
-		$msg .= &ui_hidden("third", $config{'upthird'});
-		$msg .= &ui_hidden("checksig", $config{'upchecksig'});
-		$msg .= &ui_form_end([ [ undef, $text{'notif_updateok'} ] ]);
-		push(@notifs, $msg);
-		}
-	}
-
 # Reboot needed
 if (&foreign_check("package-updates") && &foreign_available("init")) {
 	&foreign_require("package-updates");
