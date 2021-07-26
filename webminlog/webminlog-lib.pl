@@ -169,11 +169,7 @@ foreach my $file (@files) {
                 $type = $1; $object = $2;
                 }
 	if ($type eq "exec") {
-		open(INPUT, "<".$file.".input");
-		while(<INPUT>) {
-			$input .= $_;
-			}
-		close(INPUT);
+		$input = &read_file_contents($file.".input");
 		}
 	push(@rv, { 'type' => $type,
 		    'object' => $object,
