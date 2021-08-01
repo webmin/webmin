@@ -2,6 +2,7 @@
 # Change a user's password knowing the old one. For user only via anonymous
 # API calls.
 
+$trust_unknown_referers = 1;
 require './passwd-lib.pl';
 &ReadParse();
 print "Content-type: text/plain\n\n";
@@ -27,7 +28,7 @@ $user || &error_exit("User does not exist");
 &useradmin::validate_password($in{'old'}, $user->{'pass'}) ||
 	&error_exit("Incorrect password");
 my $err = &useradmin::check_password_restrictions(
-	$in{'pass'}, $in{'user'}, $user);
+	$in{'new'}, $in{'user'}, $user);
 &error_exit("Invalid password : $err") if ($err);
 
 # Do the change
@@ -35,7 +36,7 @@ my $err = &useradmin::check_password_restrictions(
 &clear_rate_limit($in{'user'});
 eval {
 	local $main::error_must_die = 1;
-	&change_password($user, $in{'pass'}, 1);
+	&change_password($user, $in{'new'}, 1);
 	};
 if ($@) {
 	&error_exit($@);

@@ -168,7 +168,7 @@ if ($rate{$key} > $rate_limit_max) {
 	$rv = "Too many failures for $key";
 	}
 else {
-	sleep($rate{$key} ** 2);
+	sleep(2 ** $rate{$key});
 	$rate{$key}++;
 	}
 &write_file($rate_limit_file, \%rate);
