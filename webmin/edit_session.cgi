@@ -49,11 +49,13 @@ else {
 	print ui_hidden('syslog', $miniserv{'syslog'});
 	}
 
-# Session authentication
-print &ui_table_row($text{'session_stype'},
-	&ui_radio("session", $miniserv{'session'} ? 1 : 0,
-		  [ [ 0, $text{'session_disable'}."<br>" ],
-		    [ 1, $text{'session_enable'} ] ]));
+# Session authentication (on by default)
+if (!$miniserv{'session'}) {
+	print &ui_table_row($text{'session_stype'},
+		&ui_radio("session", $miniserv{'session'} ? 1 : 0,
+			  [ [ 0, $text{'session_disable'}."<br>" ],
+			    [ 1, $text{'session_enable'} ] ]));
+	}
 
 # Session auth options
 print &ui_table_row($text{'session_sopts'},
@@ -134,7 +136,7 @@ if ($miniserv{'extauth'}) {
 print &ui_table_row($text{'session_md5'},
 	&ui_radio("md5pass", $gconfig{'md5pass'} || 0,
 		  [ [ 0, $text{'session_md5off'}."<br>" ],
-		    [ 1, $text{'session_md5on'} ],
+		    [ 1, $text{'session_md5on'}."<br>" ],
 		    [ 2, $text{'session_sha512'} ] ]));
 
 print ui_table_end();

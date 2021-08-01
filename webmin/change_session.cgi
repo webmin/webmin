@@ -43,7 +43,9 @@ if ($in{'session'} && $ENV{'HTTP_COOKIE'} !~ /sessiontest=1/i &&
     !$ENV{'HTTP_WEBMIN_SERVERS'}) {
 	&error($text{'session_ecookie'});
 	}
-$miniserv{'session'} = $in{'session'};
+if (defined($in{'session'})) {
+	$miniserv{'session'} = $in{'session'};
+	}
 if ($in{'logouttime_on'}) {
 	$in{'logouttime'} =~ /^\d+$/ && $in{'logouttime'} > 0 ||
 		&error($text{'session_elogouttime'});
