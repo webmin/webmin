@@ -14,6 +14,9 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 %access = &get_module_acl();
+$rate_limit_file = "$module_var_directory/rate-limit";
+$rate_limit_timeout = 10*60;	# 10 minutes
+$rate_limit_max = 10;
 
 =head2 can_edit_passwd(&user)
 
@@ -80,7 +83,6 @@ sub find_user
 local $mod;
 foreach $mod ([ "useradmin", "user-lib.pl" ],
 	      [ "ldap-useradmin", "ldap-useradmin-lib.pl" ],
-#             [ "nis", "nis-lib.pl" ],
 	     ) {
 	next if (!&foreign_installed($mod->[0], 1));
 	&foreign_require($mod->[0], $mod->[1]);
@@ -145,6 +147,50 @@ if ($others) {
 		      "useradmin_modify_user", $user);
 	}
 }
+
+# apply_rate_limit(key)
+# Delays for some amount of time based on the key, to prevent brute force attacks
+sub apply_rate_limit
+{
+my ($key) = @_;
+my $now = time();
+my %rate;
+&lock_file($rate_limit_file);
+&read_file($rate_limit_file, \%rate);
+$rate{$key."_last"} ||= $now;
+if ($now - $rate{$key."_last"} > $rate_limit_timeout) {
+	# Time since blocking for this key started as expired
+	delete($rate{$key});
+	delete($rate{$key."_last"});
+	}
+my $rv;
+if ($rate{$key} > $rate_limit_max) {
+	$rv = "Too many failures for $key";
+	}
+else {
+	sleep($rate{$key} ** 2);
+	$rate{$key}++;
+	}
+&write_file($rate_limit_file, \%rate);
+&unlock_file($rate_limit_file);
+return $rv;
+}
+
+# clear_rate_limit(key)
+# After a successful operation, clear any rate limits for the given key
+sub clear_rate_limit
+{
+my ($key) = @_;
+my %rate;
+&lock_file($rate_limit_file);
+&read_file($rate_limit_file, \%rate);
+delete($rate{$key});
+delete($rate{$key."_last"});
+&write_file($rate_limit_file, \%rate);
+&unlock_file($rate_limit_file);
+}
+
+
 
 1;
 

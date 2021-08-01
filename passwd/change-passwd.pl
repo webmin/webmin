@@ -29,10 +29,11 @@ $user || &errordie("User $ARGV[0] does not exist");
 $| = 1;
 if ($askold) {
 	# Ask for the old password
+	&foreign_require("useradmin");
 	print "(current) UNIX password: ";
 	$old = <STDIN>;
 	$old =~ s/\r|\n//g;
-	&unix_crypt($old, $user->{'pass'}) eq $user->{'pass'} ||
+	&useradmin::validate_password($old, $user->{'pass'}) ||
 		&errordie("Old password is incorrect");
 	}
 
