@@ -49,13 +49,15 @@ if ($in{'logouttime_on'}) {
 		&error($text{'session_elogouttime'});
 	}
 $miniserv{'logouttime'} = $in{'logouttime_on'} ? $in{'logouttime'} : undef;
-if ($in{'localauth'}) {
-	$lsof = &has_command("lsof");
-	&error($text{'session_elsof'}) if (!$lsof);
-	$miniserv{'localauth'} = $lsof;
-	}
-else {
-	delete($miniserv{'localauth'});
+if (defined($in{'localauth'})) {
+	if ($in{'localauth'}) {
+		$lsof = &has_command("lsof");
+		&error($text{'session_elsof'}) if (!$lsof);
+		$miniserv{'localauth'} = $lsof;
+		}
+	else {
+		delete($miniserv{'localauth'});
+		}
 	}
 $miniserv{'no_pam'} = $in{'no_pam'};
 if ($in{'passwd_file'}) {
@@ -84,13 +86,15 @@ else {
 		&error($text{'session_ecmd'});
 	$gconfig{'passwd_cmd'} = $in{'cmd'};
 	}
-if ($in{'extauth'}) {
-	$in{'extauth'} =~ /^(\S+)/ && -x $1 ||
-		&error($text{'session_eextauth'});
-	$miniserv{'extauth'} = $in{'extauth'};
-	}
-else {
-	delete($miniserv{'extauth'});
+if (defined($in{'extauth'})) {
+	if ($in{'extauth'}) {
+		$in{'extauth'} =~ /^(\S+)/ && -x $1 ||
+			&error($text{'session_eextauth'});
+		$miniserv{'extauth'} = $in{'extauth'};
+		}
+	else {
+		delete($miniserv{'extauth'});
+		}
 	}
 if (defined($in{'passwd_mode'})) {
 	$miniserv{'passwd_mode'} = $in{'passwd_mode'};

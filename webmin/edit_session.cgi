@@ -81,11 +81,13 @@ print &ui_table_row($text{'session_banner'},
 		    [ 0, $text{'session_banner0'} ] ]).
 	&ui_filebox("banner", $gconfig{'loginbanner'}, 50));
 
-# Local authentication
-print &ui_table_row($text{'session_local'},
-	&ui_radio("localauth", $miniserv{'localauth'} ? 1 : 0,
-		  [ [ 0, $text{'session_localoff'}."<br>" ],
-		    [ 1, $text{'session_localon'} ] ]));
+# Local authentication (deprecated)
+if ($miniserv{'localauth'}) {
+	print &ui_table_row($text{'session_local'},
+		&ui_radio("localauth", $miniserv{'localauth'} ? 1 : 0,
+			  [ [ 0, $text{'session_localoff'}."<br>" ],
+			    [ 1, $text{'session_localon'} ] ]));
+	}
 
 # Use PAM or shadow file?
 print &ui_table_row($text{'session_pam'},
@@ -122,9 +124,11 @@ print &ui_table_row($text{'session_pmodedesc3'},
 		    [ 1, $text{'session_pmode1'}."<br>" ],
 		    [ 2, $text{'session_pmode2'} ] ]));
 
-# Squid-style authentication program
-print &ui_table_row($text{'session_extauth'},
-	&ui_textbox("extauth", $miniserv{'extauth'}, 60));
+# Squid-style authentication program (deprecated)
+if ($miniserv{'extauth'}) {
+	print &ui_table_row($text{'session_extauth'},
+		&ui_textbox("extauth", $miniserv{'extauth'}, 60));
+	}
 
 # Password encryption format
 print &ui_table_row($text{'session_md5'},
