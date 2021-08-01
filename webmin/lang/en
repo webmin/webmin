@@ -656,6 +656,9 @@ session_sha512=Use SHA512 encryption
 session_emd5mod=MD5 encryption cannot be used, as Perl $1 module is not installed.
 session_esha512mod=SHA512 encryption cannot be used, as Perl $1 module is not installed.
 session_blocklock=Also lock users with failed logins
+session_passapi=Enable remote password change API?
+session_passapi0=API disabled
+session_passapi1=API enabled for Unix users
 
 assignment_title=Reassign Modules
 assignment_header=Module category assignments

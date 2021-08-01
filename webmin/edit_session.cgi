@@ -6,6 +6,7 @@ require './webmin-lib.pl';
 print "Set-Cookie: sessiontest=1; path=/\n";
 ui_print_header(undef, $text{'session_title'}, "");
 get_miniserv_config(\%miniserv);
+foreign_require("acl");
 
 print "$text{'session_desc1'}<p>\n";
 
@@ -138,6 +139,13 @@ print &ui_table_row($text{'session_md5'},
 		  [ [ 0, $text{'session_md5off'}."<br>" ],
 		    [ 1, $text{'session_md5on'}."<br>" ],
 		    [ 2, $text{'session_sha512'} ] ]));
+
+# Enable password change API?
+(undef, $found) = &acl::get_anonymous_access($password_change_path, \%miniserv);
+print &ui_table_row($text{'session_passapi'},
+	&ui_radio("passapi", $found >= 0 ? 1 : 0,
+		  [ [ 0, $text{'session_passapi0'}."<br>" ],
+		    [ 1, $text{'session_passapi1'} ] ]));
 
 print ui_table_end();
 print ui_form_end([ [ "save", $text{'save'} ] ]);

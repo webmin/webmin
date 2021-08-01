@@ -89,6 +89,9 @@ our $hidden_announce_file = "$module_config_directory/announce-hidden";
 
 our $postpone_reboot_required = "$module_var_directory/postpone-reboot-required";
 
+our $password_change_mod = "passwd";
+our $password_change_path = "/".$password_change_mod."/change_passwd.cgi";
+
 =head2 setup_ca
 
 Internal function to create all the configuration files needed for the Webmin

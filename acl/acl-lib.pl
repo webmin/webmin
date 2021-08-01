@@ -1933,7 +1933,7 @@ my $hash = &hash_session_id($sid);
 return $sessiondb{$hash} ? $hash : $sid;
 }
 
-=head2 setup_anonymous_access(path, module)
+=head2 setup_anonymous_access(path, module, [&miniserv])
 
 Grants anonymous access to some path. By default, the user for other anonymous
 access will be used, or if there is none, a user named 'anonymous' will be
@@ -1942,20 +1942,18 @@ created and granted access to the module.
 =cut
 sub setup_anonymous_access
 {
-my ($path, $mod) = @_;
+my ($path, $mod, $miniserv) = @_;
 
 # Find out what users and paths we grant access to currently
-my %miniserv;
-&get_miniserv_config(\%miniserv);
-my @anon = split(/\s+/, $miniserv{'anonymous'} || "");
-my $found = 0;
-my $user;
-foreach my $a (@anon) {
-        my ($p, $u) = split(/=/, $a);
-	$found++ if ($p eq $path);
-	$user = $u;
+my $needsave;
+if (!$miniserv) {
+	$miniserv = { };
+	&get_miniserv_config($miniserv);
+	$needsave = 1;
 	}
-return 1 if ($found);		# Already setup
+my @anon = split(/\s+/, $miniserv->{'anonymous'} || "");
+my ($user, $found) = &get_anonymous_access($path, $miniserv);
+return 1 if ($found >= 0);		# Already setup
 
 if (!$user) {
 	# Create a user if need be
@@ -1981,9 +1979,71 @@ else {
 
 # Grant access to the user and path
 push(@anon, "$path=$user");
-$miniserv{'anonymous'} = join(" ", @anon);
-&put_miniserv_config(\%miniserv);
-&reload_miniserv();
+$miniserv->{'anonymous'} = join(" ", @anon);
+if ($needsave) {
+	&put_miniserv_config($miniserv);
+	&reload_miniserv();
+	}
+}
+
+=head2 remove_anonymous_access(path, module, [&miniserv])
+
+Remove anon access to some path, taking it away from the anonymous user's modules if needed
+
+=cut
+sub remove_anonymous_access
+{
+my ($path, $mod, $miniserv) = @_;
+my $needsave;
+if (!$miniserv) {
+	$miniserv = { };
+	&get_miniserv_config($miniserv);
+	$needsave = 1;
+	}
+my @anon = split(/\s+/, $miniserv->{'anonymous'} || "");
+my ($user, $found) = &get_anonymous_access($path, $miniserv);
+return if ($found < 0);	# Already gone
+
+# Take away from the user
+my ($uinfo) = grep { $_->{'name'} eq $user } &list_users();
+if ($uinfo) {
+	my $m = &indexof($mod, @{$uinfo->{'modules'}});
+	if ($m >= 0) {
+		splice(@{$uinfo->{'modules'}}, $m, 1);
+		&modify_user($uinfo->{'name'}, $uinfo);
+		}
+	}
+
+# Take out of miniserv
+splice(@anon, $found, 1);
+$miniserv->{'anonymous'} = join(" ", @anon);
+if ($needsave) {
+	&put_miniserv_config($miniserv);
+	&reload_miniserv();
+	}
+}
+
+=head2 get_anonymous_access(path, [&miniserv])
+
+Returns the anonymous username and index into the anon config if access is setup to some path
+
+=cut
+sub get_anonymous_access
+{
+my ($path, $miniserv) = @_;
+if (!$miniserv) {
+	$miniserv = { };
+	&get_miniserv_config($miniserv);
+	}
+my $found = -1;
+my $user;
+my @anon = split(/\s+/, $miniserv->{'anonymous'} || "");
+for(my $i=0; $i<@anon; $i++) {
+        my ($p, $u) = split(/=/, $anon[$i]);
+	$found = $i if ($p eq $path);
+	$user = $u;
+	}
+return ($user, $found);
 }
 
 =head2 join_userdb_string(proto, user, pass, host, prefix, &args)
@@ -2176,15 +2236,17 @@ elsif ($str =~ /^postgresql:/) {
 	}
 }
 
-# used_for_anonymous(username)
+# used_for_anonymous(username, [&miniserv])
 # Returns a list of modules this user has an anonymous grant to
 sub used_for_anonymous
 {
-my ($user) = @_;
+my ($user, $miniserv) = @_;
 my @rv;
-my %miniserv;
-&get_miniserv_config(\%miniserv);
-foreach $a (split(/\s+/, $miniserv{'anonymous'})) {
+if (!$miniserv) {
+	$miniserv = { };
+	&get_miniserv_config($miniserv);
+	}
+foreach $a (split(/\s+/, $miniserv->{'anonymous'})) {
         if ($a =~ /^([^=]+)=(\S+)$/ && $2 eq $user) {
 		push(@rv, $1);
 		}
