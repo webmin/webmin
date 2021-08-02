@@ -2239,6 +2239,16 @@ sub acl_check
 {
 }
 
+=head2 get_miniserv_config_file
+
+Returns the full path to the Miniserv config file.
+
+=cut
+sub get_miniserv_config_file
+{
+return $ENV{'MINISERV_CONFIG'} || "$config_directory/miniserv.conf";
+}
+
 =head2 get_miniserv_config(&hash)
 
 Reads the Webmin webserver's (miniserv.pl) configuration file, usually located
@@ -2248,8 +2258,7 @@ hash reference.
 =cut
 sub get_miniserv_config
 {
-return &read_file_cached(
-	$ENV{'MINISERV_CONFIG'} || "$config_directory/miniserv.conf", $_[0]);
+return &read_file_cached(&get_miniserv_config_file(), $_[0]);
 }
 
 =head2 put_miniserv_config(&hash)
@@ -2266,8 +2275,7 @@ like so :
 =cut
 sub put_miniserv_config
 {
-&write_file($ENV{'MINISERV_CONFIG'} || "$config_directory/miniserv.conf",
-	    $_[0]);
+&write_file(&get_miniserv_config_file(), $_[0]);
 }
 
 =head2 restart_miniserv([nowait], [ignore-errors])
