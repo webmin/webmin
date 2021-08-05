@@ -141,11 +141,13 @@ print &ui_table_row($text{'session_md5'},
 		    [ 2, $text{'session_sha512'} ] ]));
 
 # Enable password change API?
+$url = &get_webmin_browser_url("passwd", "change_passwd.cgi");
 (undef, $found) = &acl::get_anonymous_access($password_change_path, \%miniserv);
 print &ui_table_row($text{'session_passapi'},
 	&ui_radio("passapi", $found >= 0 ? 1 : 0,
 		  [ [ 0, $text{'session_passapi0'}."<br>" ],
-		    [ 1, $text{'session_passapi1'} ] ]));
+		    [ 1, $text{'session_passapi1'} ] ])."<br>\n".
+	&text('session_passurl', "<tt>$url</tt>"));
 
 print ui_table_end();
 print ui_form_end([ [ "save", $text{'save'} ] ]);

@@ -1933,7 +1933,7 @@ my $hash = &hash_session_id($sid);
 return $sessiondb{$hash} ? $hash : $sid;
 }
 
-=head2 setup_anonymous_access(path, module, [&miniserv])
+=head2 setup_anonymous_access(path, module)
 
 Grants anonymous access to some path. By default, the user for other anonymous
 access will be used, or if there is none, a user named 'anonymous' will be
@@ -1942,18 +1942,21 @@ created and granted access to the module.
 =cut
 sub setup_anonymous_access
 {
-my ($path, $mod, $miniserv) = @_;
+my ($path, $mod) = @_;
 
 # Find out what users and paths we grant access to currently
-my $needsave;
-if (!$miniserv) {
-	$miniserv = { };
-	&get_miniserv_config($miniserv);
-	$needsave = 1;
-	}
+my $miniserv = { };
+&get_miniserv_config($miniserv);
 my @anon = split(/\s+/, $miniserv->{'anonymous'} || "");
 my ($user, $found) = &get_anonymous_access($path, $miniserv);
 return 1 if ($found >= 0);		# Already setup
+
+# Grant access to the user and path
+&lock_file(&get_miniserv_config_file());
+push(@anon, "$path=$user");
+$miniserv->{'anonymous'} = join(" ", @anon);
+&put_miniserv_config($miniserv);
+&unlock_file(&get_miniserv_config_file());
 
 if (!$user) {
 	# Create a user if need be
@@ -1977,32 +1980,31 @@ else {
 		}
 	}
 
-# Grant access to the user and path
-push(@anon, "$path=$user");
-$miniserv->{'anonymous'} = join(" ", @anon);
-if ($needsave) {
-	&put_miniserv_config($miniserv);
-	&reload_miniserv();
-	}
+&reload_miniserv();
 }
 
-=head2 remove_anonymous_access(path, module, [&miniserv])
+=head2 remove_anonymous_access(path, module)
 
 Remove anon access to some path, taking it away from the anonymous user's modules if needed
 
 =cut
 sub remove_anonymous_access
 {
-my ($path, $mod, $miniserv) = @_;
-my $needsave;
-if (!$miniserv) {
-	$miniserv = { };
-	&get_miniserv_config($miniserv);
-	$needsave = 1;
-	}
+my ($path, $mod) = @_;
+
+# Get current state
+my $miniserv = { };
+&get_miniserv_config($miniserv);
 my @anon = split(/\s+/, $miniserv->{'anonymous'} || "");
 my ($user, $found) = &get_anonymous_access($path, $miniserv);
 return if ($found < 0);	# Already gone
+
+# Take out of miniserv
+&lock_file(&get_miniserv_config_file());
+splice(@anon, $found, 1);
+$miniserv->{'anonymous'} = join(" ", @anon);
+&put_miniserv_config($miniserv);
+&unlock_file(&get_miniserv_config_file());
 
 # Take away from the user
 my ($uinfo) = grep { $_->{'name'} eq $user } &list_users();
@@ -2014,13 +2016,7 @@ if ($uinfo) {
 		}
 	}
 
-# Take out of miniserv
-splice(@anon, $found, 1);
-$miniserv->{'anonymous'} = join(" ", @anon);
-if ($needsave) {
-	&put_miniserv_config($miniserv);
-	&reload_miniserv();
-	}
+&reload_miniserv();
 }
 
 =head2 get_anonymous_access(path, [&miniserv])

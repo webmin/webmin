@@ -103,15 +103,18 @@ if (defined($in{'passwd_mode'})) {
 	}
 $miniserv{'utmp'} = $in{'utmp'};
 $miniserv{'session_ip'} = $in{'session_ip'};
-if ($in{'passapi'}) {
-	&acl::setup_anonymous_access($password_change_path, $password_change_mod, \%miniserv);
-	}
-else {
-	&acl::remove_anonymous_access($password_change_path, $password_change_mod, \%miniserv);
-	}
-$gconfig{'passapi'} = $in{'passapi'};
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
+
+if ($in{'passapi'}) {
+	&acl::setup_anonymous_access($password_change_path,
+				     $password_change_mod);
+	}
+else {
+	&acl::remove_anonymous_access($password_change_path,
+				      $password_change_mod);
+	}
+$gconfig{'passapi'} = $in{'passapi'};
 
 &lock_file("$config_directory/config");
 #$gconfig{'locking'} = $in{'locking'};

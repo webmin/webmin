@@ -659,6 +659,7 @@ session_blocklock=Also lock users with failed logins
 session_passapi=Enable remote password change API?
 session_passapi0=API disabled
 session_passapi1=API enabled for Unix users
+session_passurl=When enabled, user passwords can be changed via a POST request to $1
 
 assignment_title=Reassign Modules
 assignment_header=Module category assignments
