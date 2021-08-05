@@ -11531,6 +11531,45 @@ elsif ($cgi) {
 return $url;
 }
 
+=head2 get_webmin_browser_url([module], [cgi])
+
+Returns the URL for accessing this Webmin system, based on the current browser
+connection.
+
+=cut
+sub get_webmin_browser_url
+{
+my ($mod, $cgi) = @_;
+
+# Work out the base URL`
+my $host = $ENV{'HTTP_HOST'};
+if (!$host) {
+	# Fall back to non-browser mode
+	return &get_webmin_email_url(@_);
+	}
+my $port = $ENV{'SERVER_PORT'} || 80;
+if ($host =~ s/:(\d+)$//) {
+	$port = $1;
+	}
+my $proto = lc($ENV{'HTTPS'}) eq 'on' ? "https" : "http";
+my $defport = $proto eq 'https' ? 443 : 80;
+my $url = $proto."://".$host.($port == $defport ? "" : ":".$port);
+$url .= $gconfig{'webprefix'} if ($gconfig{'webprefix'});
+
+# Append module if needed
+$url =~ s/\/$//;
+if ($mod && $cgi) {
+	$url .= "/".$mod."/".$cgi;
+	}
+elsif ($mod) {
+	$url .= "/".$mod."/";
+	}
+elsif ($cgi) {
+	$url .= "/".$cgi;
+	}
+return $url;
+}
+
 =head2 trim(string, left_right_only)
 
 Trims the string
