@@ -8,6 +8,7 @@ require './passwd-lib.pl';
 print "Content-type: text/plain\n\n";
 
 # Validate inputs
+keys(%in) || &error_exit("Required parameters are 'user' (Unix username), 'old' (Old password) and 'new' (New password)");
 my $err = &apply_rate_limit($ENV{'REMOTE_ADDR'});
 &error_exit($err) if ($err);
 $in{'user'} || &error_exit("Missing user parameter");
