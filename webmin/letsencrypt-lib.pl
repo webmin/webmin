@@ -55,13 +55,13 @@ return &software::missing_install_link(
 }
 
 # request_letsencrypt_cert(domain|&domains, webroot, [email], [keysize],
-# 			   [request-mode], [use-staging])
+# 			   [request-mode], [use-staging], [account-email])
 # Attempt to request a cert using a generated key with the Let's Encrypt client
 # command, and write it to the given path. Returns a status flag, and either
 # an error message or the paths to cert, key and chain files.
 sub request_letsencrypt_cert
 {
-my ($dom, $webroot, $email, $size, $mode, $staging) = @_;
+my ($dom, $webroot, $email, $size, $mode, $staging, $account_email) = @_;
 my @doms = ref($dom) ? @$dom : ($dom);
 $email ||= "root\@$doms[0]";
 $mode ||= "web";
@@ -243,9 +243,13 @@ if ($letsencrypt_cmd) {
 	&set_ownership_permissions(undef, undef, 0600, $chain);
 	&cleanup_wellknown($wellknown_new, $challenge_new);
 
-	# Attempt to update the contact email on file with let's encrypt
-	&system_logged("$letsencrypt_cmd register --update-registration".
-	       " --email ".quotemeta($email)." >/dev/null 2>&1 </dev/null");
+	if ($account_email) {
+		# Attempt to update the contact email on file with let's encrypt
+		&system_logged(
+		    "$letsencrypt_cmd register --update-registration".
+		    " --email ".quotemeta($account_email).
+		    " >/dev/null 2>&1 </dev/null");
+		}
 
 	return (1, $cert, $key, $chain);
 	}
