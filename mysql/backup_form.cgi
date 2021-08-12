@@ -150,6 +150,11 @@ $q = $c{'backup_quick_'.$in{'db'}};
 print &ui_table_row($text{'backup_quick'},
 	&ui_yesno_radio("quick", $q ? 1 : 0));
 
+# Allow user to specify custom backup parameters
+$b = $c{'backup_parameters_'.$in{'db'}};
+print &ui_table_row($text{'backup_parameters'},
+	&ui_textbox("parameters", $b, 60));
+
 if ($cron) {
 	# Show before/after commands
 	$b = $c{'backup_before_'.$in{'db'}};
