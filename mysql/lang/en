@@ -621,6 +621,7 @@ backup_none=All rows
 backup_drop=Add <tt>drop table</tt> statements to backup?
 backup_single=Backup within a transaction?
 backup_quick=Dump rows one at a time?
+backup_parameters=Add custom parameters to backup command?
 backup_charset=Character set for backup
 backup_ok=Backup Now
 backup_ok1=Save and Backup Now

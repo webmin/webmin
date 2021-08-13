@@ -92,6 +92,7 @@ if ($module_info{'usermin'}) {
 	$userconfig{'backup_drop_'.$in{'db'}} = $in{'drop'};
 	$userconfig{'backup_single_'.$in{'db'}} = $in{'single'};
 	$userconfig{'backup_quick_'.$in{'db'}} = $in{'quick'};
+	$userconfig{'backup_parameters_'.$in{'db'}} = $in{'parameters'};
 	$userconfig{'backup_tables_'.$in{'db'}} = join(" ", @tables);
 	if ($in{'save'}) {
 		&save_user_module_config();
@@ -116,6 +117,7 @@ else {
 	$config{'backup_drop_'.$in{'db'}} = $in{'drop'};
 	$config{'backup_single_'.$in{'db'}} = $in{'single'};
 	$config{'backup_quick_'.$in{'db'}} = $in{'quick'};
+	$config{'backup_parameters_'.$in{'db'}} = $in{'parameters'};
 	$config{'backup_tables_'.$in{'db'}} = join(" ", @tables);
 	if ($in{'save'}) {
 		&save_module_config();
@@ -204,7 +206,7 @@ if (!$in{'save'}) {
 			$in{'drop'}, $in{'where_def'} ? undef : $in{'where'},
 			$in{'charset_def'} ? undef : $in{'charset'},
 			\@compat, \@tables, $access{'buser'}, $in{'single'},
-			$in{'quick'});
+			$in{'quick'}, $in{'parameters'});
 		if ($err) {
 			print &text('backup_ebackup',
 				"<pre>".&html_escape($err)."</pre>"),"<p>\n";
