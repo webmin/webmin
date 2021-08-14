@@ -203,9 +203,10 @@ sub get_default_php_ini
 local @inis = split(/\t+/, $config{'php_ini'});
 foreach my $ai (@inis) {
 	local ($f, $d) = split(/=/, $ai);
-	return $f if (-r $f);
+	local @f = glob($f);
+	return $f[0] if (@f && -r $f[0]);
 	}
-if (-r $config{'alt_php_ini'} && @inis) {
+if ($config{'alt_php_ini'} && -r $config{'alt_php_ini'} && @inis) {
 	# Fall back to default file
 	local ($f) = split(/=/, $inis[0]);
 	&copy_source_dest($config{'alt_php_ini'}, $f);
@@ -223,12 +224,16 @@ local @rv;
 if ($access{'global'}) {
 	foreach my $ai (split(/\t+/, $config{'php_ini'})) {
 		local ($f, $d) = split(/=/, $ai);
-		push(@rv, [ $f, $d || $text{'file_global'} ]);
+		foreach my $gf (glob($f)) {
+			push(@rv, [ $gf, $d || $text{'file_global'} ]);
+			}
 		}
 	}
 foreach my $ai (split(/\t+/, $access{'php_inis'})) {
 	local ($f, $d) = split(/=/, $ai);
-	push(@rv, [ $f, $d || $f ]);
+	foreach my $gf (glob($f)) {
+		push(@rv, [ $gf, $d || $gf ]);
+		}
 	}
 foreach my $i (@rv) {
 	if (-d $i->[0] && -r "$i->[0]/php.ini") {
