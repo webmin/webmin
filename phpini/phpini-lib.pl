@@ -224,15 +224,19 @@ local @rv;
 if ($access{'global'}) {
 	foreach my $ai (split(/\t+/, $config{'php_ini'})) {
 		local ($f, $d) = split(/=/, $ai);
-		foreach my $gf (glob($f)) {
-			push(@rv, [ $gf, $d || $text{'file_global'} ]);
+		foreach my $fp (split(/,/, $f)) {
+			foreach my $gf (glob($fp)) {
+				push(@rv, [ $gf, $d || $text{'file_global'} ]);
+				}
 			}
 		}
 	}
 foreach my $ai (split(/\t+/, $access{'php_inis'})) {
 	local ($f, $d) = split(/=/, $ai);
-	foreach my $gf (glob($f)) {
-		push(@rv, [ $gf, $d || $gf ]);
+	foreach my $fp (split(/,/, $f)) {
+		foreach my $gf (glob($fp)) {
+			push(@rv, [ $gf, $d || $gf ]);
+			}
 		}
 	}
 foreach my $i (@rv) {
