@@ -1037,7 +1037,8 @@ if ($user && $user ne "root") {
 	if ($init_mode eq "systemd") {
 		# Systemd natively supports running the command as a user
 		$opts ||= { };
-		$opts->{'user'} = $user;
+		$opts->{'opts'} ||= { };
+		$opts->{'opts'}->{'user'} = $user;
 		}
 	else {
 		# Other boot systems have to use 'su'
