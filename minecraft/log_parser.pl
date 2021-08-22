@@ -11,6 +11,9 @@ my ($user, $script, $action, $type, $object, $p) = @_;
 if ($object eq 'backup') {
 	return &text('log_'.$action.'_backup', $object);
 	}
+elsif ($action eq 'changeversion' || $action eq 'addversion') {
+	return &text('log_'.$action, "<tt>".&html_escape($object)."</tt>");
+	}
 else {
 	return $text{'log_'.$action};
 	}

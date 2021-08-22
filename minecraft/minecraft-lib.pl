@@ -11,7 +11,8 @@ use POSIX;
 &init_config();
 our ($module_root_directory, %text, %gconfig, $root_directory, %config,
      $module_name, $remote_user, $base_remote_user, $gpgpath,
-     $module_config_directory, @lang_order_list, @root_directories);
+     $module_config_directory, @lang_order_list, @root_directories,
+     $module_config_file);
 our $history_file = "$module_config_directory/history.txt";
 our $download_page_url = "https://www.minecraft.net/en-us/download/server/";
 our $playtime_dir = "$module_config_directory/playtime";
@@ -1173,6 +1174,50 @@ sub minecraft_server_type
 {
 my $jar = &get_minecraft_jar();
 return $jar =~ /bukkit-[0-9]/ ? 'bukkit' : 'default';
+}
+
+# list_installed_versions()
+# Returns a list of hash refs, one per available server version
+sub list_installed_versions
+{
+# Find all the jars
+my @files;
+my $dir = $config{'minecraft_dir'};
+my $cur = &get_minecraft_jar();
+opendir(DIR, $dir);
+foreach my $f (readdir(DIR)) {
+	push(@files, $dir."/".$f) if ($f =~ /\.jar$/);
+	}
+closedir(DIR);
+push(@files, $cur) if (&indexof($cur, @files) < 0);
+
+# Figure out what they are
+my @rv;
+foreach my $f (sort { $a cmp $b } @files) {
+	my $ver = { 'path' => $f };
+	$ver->{'file'} = $f =~ /^\Q$dir\E\/(.*)/ ? $1 : $f;
+	$ver->{'ver'} = $f =~ /([0-9\.]+)\.jar$/ ? $1 : "Unknown";
+	$ver->{'desc'} = $ver->{'ver'};
+	push(@rv, $ver);
+	}
+return @rv;
+}
+
+# save_minecraft_jar(file)
+# Update the server jar file
+sub save_minecraft_jar
+{
+my ($file) = @_;
+my $dir = $config{'minecraft_dir'};
+&lock_file($module_config_file);
+if ($file =~ /^\Q$dir\E\/(.*)$/) {
+	$config{'minecraft_jar'} = $1;
+	}
+else {
+	$config{'minecraft_jar'} = $file;
+	}
+&save_module_config(\%config);
+&unlock_file($module_config_file);
 }
 
 1;
