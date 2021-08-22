@@ -1196,7 +1196,7 @@ my @rv;
 foreach my $f (sort { $a cmp $b } @files) {
 	my $ver = { 'path' => $f };
 	$ver->{'file'} = $f =~ /^\Q$dir\E\/(.*)/ ? $1 : $f;
-	$ver->{'ver'} = $f =~ /([0-9\.]+)\.jar$/ ? $1 : "Unknown";
+	$ver->{'ver'} = $f =~ /([0-9][0-9\.]+)\.jar$/ ? $1 : "Unknown";
 	$ver->{'desc'} = $ver->{'ver'};
 	push(@rv, $ver);
 	}
