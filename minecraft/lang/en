@@ -380,3 +380,4 @@ versions_ejar2=JAR file does not have a filename
 versions_ever=Could not work out version from JAR filename
 versions_enewver=Version must be numeric
 versions_eclash=A server with the same filename already exists!
+versions_efmt=File is not a JAR

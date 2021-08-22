@@ -47,6 +47,8 @@ else {
 	$ver = $in{'newver'};
 	$dest = $dir."/"."minecraft_server.$in{'newver'}.jar";
 	}
+my $out = &backquote_command("file ".quotemeta($temp)." 2>&1");
+$out =~ /ZIP|JAR/i || &error($text{'versions_efmt'});
 
 # Check for a clash, and write the file
 -r $dest && &error($text{'versions_eclash'});
