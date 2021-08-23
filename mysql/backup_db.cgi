@@ -206,7 +206,7 @@ if (!$in{'save'}) {
 			$in{'drop'}, $in{'where_def'} ? undef : $in{'where'},
 			$in{'charset_def'} ? undef : $in{'charset'},
 			\@compat, \@tables, $access{'buser'}, $in{'single'},
-			$in{'quick'}, $in{'parameters'});
+			$in{'quick'}, 0, $in{'parameters'});
 		if ($err) {
 			print &text('backup_ebackup',
 				"<pre>".&html_escape($err)."</pre>"),"<p>\n";

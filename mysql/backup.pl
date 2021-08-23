@@ -98,6 +98,7 @@ foreach $db (@dbs) {
 				"root",
 				$config{'backup_single_'.$sf},
 				$config{'backup_quick_'.$sf},
+				0,
 				$config{'backup_parameters_'.$sf}
 			       );
 	if ($err) {
