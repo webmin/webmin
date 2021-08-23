@@ -69,11 +69,17 @@ print &ui_buttons_start();
 
 # Show start/stop/restart buttons
 my $pid = &is_minecraft_server_running();
+my ($anypid, $anyver) = &is_any_minecraft_server_running();
 if ($pid) {
 	print &ui_buttons_row("restart.cgi", $text{'index_restart'},
 			      $text{'index_restartdesc'});
 	print &ui_buttons_row("stop.cgi", $text{'index_stop'},
 			      $text{'index_stopdesc'});
+	}
+elsif ($anypid) {
+	print &ui_buttons_row("stop.cgi", $text{'index_stopany'},
+			      &text('index_stopanydesc', $anyver),
+			      [ [ "any", 1 ] ]);
 	}
 else {
 	print &ui_buttons_row("start.cgi", $text{'index_start'},

@@ -4,9 +4,10 @@
 use strict;
 use warnings;
 require './minecraft-lib.pl';
-our (%text);
+our (%text, %in);
+&ReadParse();
 &error_setup($text{'stop_err'});
-my $err = &stop_minecraft_server();
+my $err = &stop_minecraft_server($in{'any'});
 &error($err) if ($err);
 &webmin_log("stop");
 &redirect("");

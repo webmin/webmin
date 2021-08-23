@@ -87,6 +87,34 @@ foreach my $p (@procs) {
 return undef;
 }
 
+# is_any_minecraft_server_running()
+# If the server is runnign for ANY version of Minecraft, return the PID
+sub is_any_minecraft_server_running
+{
+&foreign_require("proc");
+my @procs = &proc::list_processes();
+my $dir = $config{'minecraft_dir'};
+my $jar = &get_minecraft_jar();
+
+# Prefer the default version
+foreach my $p (@procs) {
+	if ($p->{'args'} =~ /^\S*\Q$config{'java_cmd'}\E.*\Q$jar\E/) {
+		my $ver = $jar =~ /([0-9\.]+)\.jar$/ ? $1 : undef;
+		return wantarray ? ($p->{'pid'}, $ver, $jar) : $p->{'pid'};
+		}
+	}
+
+# Look for other versions
+foreach my $p (@procs) {
+	if ($p->{'args'} =~ /^\S*\Q$config{'java_cmd'}\E.*(\Q$dir\E\S+\.jar)/) {
+		my $jar = $1;
+		my $ver = $jar =~ /([0-9\.]+)\.jar$/ ? $1 : undef;
+		return wantarray ? ($p->{'pid'}, $ver, $jar) : $p->{'pid'};
+		}
+	}
+return wantarray ? ( ) : undef;
+}
+
 sub get_minecraft_config_file
 {
 return $config{'minecraft_dir'}."/server.properties";
@@ -233,32 +261,35 @@ my $fh = "PID";
 return undef;
 }
 
-# stop_minecraft_server()
+# stop_minecraft_server([other-version])
 # Kill the server, if running
 sub stop_minecraft_server
 {
-my $pid = &is_minecraft_server_running();
+my ($any) = @_;
+my $func = $any ? \&is_any_minecraft_server_running
+		: \&is_minecraft_server_running;
+my $pid = &$func();
 $pid || return "Not running!";
 
 # Try graceful shutdown
 &send_server_command("/save-all");
 &send_server_command("/stop");
 for(my $i=0; $i<10; $i++) {
-	last if (!&is_minecraft_server_running());
+	last if (!&$func());
 	sleep(1);
 	}
 
 # Clean kill
-if (&is_minecraft_server_running()) {
+if (&$func()) {
 	kill('TERM', $pid);
 	for(my $i=0; $i<10; $i++) {
-		last if (!&is_minecraft_server_running());
+		last if (!&$func());
 		sleep(1);
 		}
 	}
 
 # Fatal kill
-if (&is_minecraft_server_running()) {
+if (&$func()) {
 	kill('KILL', $pid);
 	}
 

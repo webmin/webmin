@@ -11,22 +11,30 @@ our (%in, %text, %config, $download_page_url);
 my @vers = &list_installed_versions();
 my $cur = &get_minecraft_jar();
 if (@vers) {
+	my @tds = ( "width=5" );
+	my ($pid, undef, $runjar) = &is_any_minecraft_server_running();
 	print &ui_form_start("change_version.cgi");
 	print &ui_columns_start([ "",
 				  $text{'versions_file'},
 				  $text{'versions_desc'},
-				  $text{'versions_size'} ], 100);
+				  $text{'versions_size'},
+				  $text{'versions_run'} ], 100, 0, \@tds);
 	foreach my $v (@vers) {
 		my @st = stat($v->{'path'});
 		print &ui_radio_columns_row([
 			$v->{'file'},
 			$v->{'desc'},
 			&nice_size($st[9]),
-			], undef, "ver", $v->{'file'},
+			$v->{'path'} eq $runjar ?
+				"<font color=green>$text{'yes'}</font>" :
+				"<font color=red>$text{'no'}</font>",
+			], \@tds, "ver", $v->{'file'},
 			&same_file($v->{'path'}, $cur));
 		}
 	print &ui_columns_end();
-	print &ui_form_end([ [ undef, $text{'versions_save'} ] ]);
+	print &ui_form_end([
+		[ undef, $text{'versions_save'} ],
+		$pid ? ( [ 'restart', $text{'versions_restart'} ] ) : ( ) ]);
 	}
 else {
 	print "<b>$text{'versions_none'}</b><p>\n";
