@@ -1439,13 +1439,13 @@ return $two eq "\037\213" ? 1 :
 
 # backup_database(db, dest-file, compress-mode, drop-flag, where-clause,
 #                 charset, &compatible, &only-tables, run-as-user,
-#                 single-transaction-flag, quick-flag, parameters, force-flag)
+#                 single-transaction-flag, quick-flag, force-flag, parameters)
 # Backs up a database to the given file, optionally with compression. Returns
 # undef on success, or an error message on failure.
 sub backup_database
 {
 local ($db, $file, $compress, $drop, $where, $charset, $compatible,
-       $tables, $user, $single, $quick, $parameters, $force) = @_;
+       $tables, $user, $single, $quick, $force, $parameters) = @_;
 if ($compress == 0) {
 	$writer = "cat >".quotemeta($file);
 	}
