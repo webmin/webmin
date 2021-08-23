@@ -4,7 +4,7 @@
 use strict;
 use warnings;
 require './minecraft-lib.pl';
-our (%in, %text, %config);
+our (%in, %text, %config, $download_page_url);
 
 &ui_print_header(undef, $text{'versions_title'}, "");
 
@@ -37,11 +37,17 @@ print &ui_hr();
 print &ui_form_start("add_version.cgi", "form-data");
 print &ui_table_start($text{'versions_header'}, undef, 2);
 
+# Source for new package
+my (undef, $ver) = &get_server_jar_url();
 print &ui_table_row($text{'versions_src'},
 	&ui_radio_table("mode", 0,
 		[ [ 0, $text{'versions_src0'}, &ui_textbox("url", undef, 60) ],
-		  [ 1, $text{'versions_src1'}, &ui_upload("jar") ] ]));
+		  [ 1, $text{'versions_src1'}, &ui_upload("jar") ],
+		  [ 2, &text('versions_src2', $ver,
+		     &ui_link($download_page_url, $download_page_url,
+			      undef, "target=_blank")) ] ]));
 
+# Version number
 print &ui_table_row($text{'versions_newver'},
 	&ui_opt_textbox("newver", undef, 10, $text{'versions_newsame'}));
 

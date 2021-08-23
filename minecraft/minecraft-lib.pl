@@ -1,6 +1,8 @@
 # Functions for editing the minecraft config
-# XXX bootup should check if version is valid
-# XXX running check should match other versions
+#
+# XXX remove old download buttons
+# XXX add button to add latest version
+# XXX remove check for latest version
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -14,7 +16,7 @@ our ($module_root_directory, %text, %gconfig, $root_directory, %config,
      $module_config_directory, @lang_order_list, @root_directories,
      $module_config_file);
 our $history_file = "$module_config_directory/history.txt";
-our $download_page_url = "https://www.minecraft.net/en-us/download/server/";
+our $download_page_url = "https://www.minecraft.net/en-us/download/server";
 our $playtime_dir = "$module_config_directory/playtime";
 our $uuid_cache_file = "$module_config_directory/uuids";
 
@@ -746,26 +748,24 @@ return $str;
 }
 
 # get_server_jar_url()
-# Returns the URL for downloading the server JAR file
+# Returns the URL for downloading the server JAR file, and optionally the
+# latest version number
 sub get_server_jar_url
 {
-my $ver = $config{'download_version'};
-if ($ver) {
-	# Always use a specific version from S3
-	return "https://launcher.mojang.com/v1/objects/3737db93722a9e39eeada7c27e7aca28b144ffa7/server.jar";
+my ($host, $port, $page, $ssl) = &parse_http_url($download_page_url);
+return undef if (!$host);
+my ($out, $err);
+&http_download($host, $port, $page, \$out, \$err, undef, $ssl,
+	       undef, undef, 5, 0, 1);
+return undef if ($err);
+$out =~ /"((http|https):[^"]+server\.jar)"/ ||
+	return undef;
+my $url = $1;
+my $ver;
+if ($out =~ /minecraft_server\.([0-9\.]+)\.jar/) {
+	$ver = $1;
 	}
-else {
-	# Get the URL from the download page
-	my ($host, $port, $page, $ssl) = &parse_http_url($download_page_url);
-	return undef if (!$host);
-	my ($out, $err);
-	&http_download($host, $port, $page, \$out, \$err, undef, $ssl,
-		       undef, undef, 10, 0, 1);
-	return undef if ($err);
-	$out =~ /"((http|https):[^"]+server\.jar)"/ ||
-		return undef;
-	return $1;
-	}
+return wantarray ? ($url, $ver) : $url;
 }
 
 # check_server_download_size()

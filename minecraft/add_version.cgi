@@ -4,7 +4,7 @@
 use strict;
 use warnings;
 require './minecraft-lib.pl';
-our (%in, %text, %config);
+our (%in, %text, %config, $download_page_url);
 &error_setup($text{'versions_err'});
 &ReadParseMime();
 
@@ -21,7 +21,7 @@ if ($in{'mode'} == 0) {
 	$err && &error($err);
 	$origfile = $page;
 	}
-else {
+elsif ($in{'mode'} == 1) {
 	# Use uploaded file
 	$in{'jar'} || &error($text{'versions_ejar'});
 	$in{'jar_filename'} || &error($text{'versions_ejar2'});
@@ -31,10 +31,25 @@ else {
 	&close_tempfile($fh);
 	$origfile = $in{'jar_filename'};
 	}
+elsif ($in{'mode'} == 2) {
+	# Download the latest version
+	my ($url, $uver) = &get_server_jar_url();
+	$url || &error(&text('versions_elatesturl',
+			     &ui_link($download_page_url, $download_page_url,
+				      undef, "target=_blank")));
+	my ($host, $port, $page, $ssl) = &parse_http_url($url);
+	my $err;
+	&http_download($host, $port, $page, $temp, \$err, undef, $ssl);
+	$err && &error($err);
+	$origfile = "minecraft_server.$uver.jar";
+	}
+else {
+	&error("Unknown mode");
+	}
 
 # Work out the filename to upload as
-my $dir = $config{'minecraft_dir'};
 my $ver;
+my $dir = $config{'minecraft_dir'};
 my $dest;
 if ($in{'newver_def'}) {
 	$origfile =~ s/^.*[\/\\]//;
