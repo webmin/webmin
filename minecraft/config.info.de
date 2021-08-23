@@ -6,4 +6,3 @@ unix_user=Führe Minecraft Server als Benutzer aus,5
 init_name=Name des initialen Skripts,0
 history_size=Befehlshistorie Größe,0
 port=Minecraft-Server-Port-Nummer,3,Standard (25565)
-download_version=Version von Minecraft zum herunterladen,3,Letzte

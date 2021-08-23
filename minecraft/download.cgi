@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# Download the latest JAR file
+# Download the latest JAR file during initial setup
 
 use strict;
 use warnings;

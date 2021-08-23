@@ -943,21 +943,6 @@ for(my $i=0; $i<@xpmap; $i+=2) {
 return undef;
 }
 
-# update_last_check()
-# If the last check time is too old OR the version has changed, check for the
-# latest version
-sub update_last_check
-{
-if (time() - $config{'last_check'} > 6*60*60 ||
-    $config{'download_version'} ne $config{'last_version'}) {
-	my $sz = &check_server_download_size();
-	$config{'last_check'} = time();
-	$config{'last_size'} = $sz;
-	$config{'last_version'} = $config{'download_version'};
-	&save_module_config();
-	}
-}
-
 # get_current_day_usage()
 # Returns a hash ref from usernames to total usage over the last day, and
 # usage that counts towards any limits
