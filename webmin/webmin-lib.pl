@@ -152,7 +152,7 @@ sub install_webmin_module
 {
 my ($file, $need_unlink, $nodeps, $grant) = @_;
 my (@mdescs, @mdirs, @msizes);
-my (@newmods, $m);
+my (@newmods, @newthemes, $m);
 my $install_root_directory = $gconfig{'install_root'} || $root_directory;
 
 # Uncompress the module file if needed
@@ -251,6 +251,7 @@ if ($type eq 'rpm' && $file =~ /\.rpm$/i &&
 		# Get the theme info
 		$mdescs[0] = $tinfo{'desc'};
 		$msizes[0] = &disk_usage_kb($mdirs[0]);
+		@newthemes = ( $name );
 		&webmin_log("tinstall", undef, $name,
 			    { 'desc' => $mdescs[0] });
 		}
@@ -400,6 +401,7 @@ else {
 			push(@mdescs, $tinfo{'desc'});
 			push(@mdirs, $pwd);
 			push(@msizes, &disk_usage_kb($pwd));
+			push(@newthemes, $moddir);
 			&webmin_log("tinstall", undef, $moddir,
 				    { 'desc' => $tinfo{'desc'} });
 			}
@@ -442,7 +444,7 @@ else {
 &flush_webmin_caches();
 
 # Run post-install scripts
-foreach $m (@newmods) {
+foreach $m (@newmods, @newthemes) {
 	next if (!-r &module_root_directory($m)."/postinstall.pl");
 	eval {
 		local $main::error_must_die = 1;
