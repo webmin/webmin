@@ -112,7 +112,7 @@ if (&has_command("ip")) {
 		my $i = 0;
 		my $bn = $ifc{'name'};
 		while($l =~ s/\sinet\s+([0-9\.]+)\/(\d+).*?\s\Q$bn\E:(\d+)// ||
-		      $l =~ s/\sinet\s+([0-9\.]+)\/(\d+).*?secondary.*?\s\Q$bn\E//) {
+		      $l =~ s/\sinet\s+([0-9\.]+)\/(\d+).*?(?:secondary|dynamic|global).*?\s\Q$bn\E//) {
 			my %vifc;
 			my $vn = defined($3) ? $3 : $i;
 			$vifc{'name'} = $ifc{'name'};
