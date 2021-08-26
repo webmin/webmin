@@ -1,0 +1,2 @@
+max=Dimensione massima per i file caricati,3,Illimitata
+config_portable_module_filemanager_editor_detect_encoding=Correzione per impedire il rilevamento della codifica se vietata,1,true-Sì,false-No
