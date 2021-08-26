@@ -4126,13 +4126,7 @@ if (!$get_webmin_version) {
 	$get_webmin_version = &read_file_contents("$root_directory/version");
 	$get_webmin_version =~ s/\r|\n//g;
 	}
-# Format dev version nicely
-if ($ui_format_dev && length($get_webmin_version) == 13) {
-	return substr($get_webmin_version, 0, 5) . "." . substr($get_webmin_version, 5, 5 - 1) . "." . substr($get_webmin_version, 5 * 2 - 1);
-	}
-else {
-	return $get_webmin_version;
-	}
+return $get_webmin_version;
 }
 
 =head2 get_webmin_version_release

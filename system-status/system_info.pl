@@ -49,7 +49,9 @@ if (&show_section('host')) {
 		     });
 
 	# Webmin version
-	my $webmin_version = &get_webmin_version(1);
+	my $webmin_version = &get_webmin_version();
+	my $rel = &get_webmin_version_release();
+	$webmin_version .= "-".$rel if ($rel);
 	push(@table, { 'desc' => $text{'right_webmin'},
 		       'value' => $webmin_version });
 	push(@raw, { 'webmin_version' => $webmin_version });

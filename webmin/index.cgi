@@ -6,7 +6,9 @@ use strict;
 use warnings;
 require './webmin-lib.pl';
 our (%in, %text, %gconfig, %config);
-my $ver = &get_webmin_version(1);
+my $ver = &get_webmin_version();
+my $rel = &get_webmin_version_release();
+$ver .= "-".$rel if ($rel);
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 	undef, undef, undef, &text('index_version', $ver));
 my %access = &get_module_acl();
