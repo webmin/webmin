@@ -4123,9 +4123,8 @@ sub get_webmin_version
 {
 my ($ui_format_dev) = @_;
 if (!$get_webmin_version) {
-	open(VERSION, "<$root_directory/version") || return 0;
-	($get_webmin_version = <VERSION>) =~ tr/\r|\n//d;
-	close(VERSION);
+	$get_webmin_version = &read_file_contents("$root_directory/version");
+	$get_webmin_version =~ s/\r|\n//g;
 	}
 # Format dev version nicely
 if ($ui_format_dev && length($get_webmin_version) == 13) {
@@ -4134,6 +4133,22 @@ if ($ui_format_dev && length($get_webmin_version) == 13) {
 else {
 	return $get_webmin_version;
 	}
+}
+
+=head2 get_webmin_version_release
+
+Returns the release version of Webmin currently being run, such as 2. Or an 
+empty string if there is no release.
+
+=cut
+sub get_webmin_version_release
+{
+if (!defined($get_webmin_version_release)) {
+	$get_webmin_version_release = &read_file_contents(
+					"$root_directory/release") || "";
+	$get_webmin_version_release =~ s/\r|\n//g;
+	}
+return $get_webmin_version_release;
 }
 
 =head2 get_module_acl([user], [module], [no-rbac], [no-default])
