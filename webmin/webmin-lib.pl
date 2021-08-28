@@ -1231,15 +1231,23 @@ if (&foreign_available($module_name) && !$gconfig{'nowebminup'} && !$noupdates &
 	if (!$config{'last_version_check'} ||
          $now - $config{'last_version_check'} > 24*60*60) {
 		# Cached last version has expired .. re-fetch
-		my ($ok, $version) = &get_latest_webmin_version();
+		my ($ok, $version, $release) = &get_latest_webmin_version();
 		if ($ok) {
 			$config{'last_version_check'} = $now;
 			$config{'last_version_number'} = $version;
+			$config{'last_version_release'} = $release;
+			$config{'last_version_full'} =
+				$version.($release ? "-".$release : "");
 			&save_module_config();
 			}
 		}
+	my $ver = &get_webmin_version();
+	my $rel = &get_webmin_version_release();
+	my $full = $ver.($rel ? "-".$rel : "");
 	if ($config{'last_version_number'} &&
-	    $config{'last_version_number'} > &get_webmin_version()) {
+	    ($config{'last_version_number'} > $ver ||
+	     $config{'last_version_number'} == $ver &&
+	     $config{'last_version_release'} > $rel)) {
 		# New version is out there .. offer to upgrade
 		my $mode = &get_install_type();
 		my $checksig = 0;
@@ -1255,8 +1263,8 @@ if (&foreign_available($module_name) && !$gconfig{'nowebminup'} && !$noupdates &
 		     &ui_hidden("source", 2).
 		     &ui_hidden("sig", $checksig).
 		     &ui_hidden("mode", $mode).
-		     &text('notif_upgrade', $config{'last_version_number'},
-			   &get_webmin_version())."<p>\n".
+		     &text('notif_upgrade', $config{'last_version_full'},
+			   $full)."<p>\n".
 		     &ui_form_end([ [ undef, $text{'notif_upgradeok'} ] ]));
 		}
 	}
