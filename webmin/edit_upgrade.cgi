@@ -47,7 +47,7 @@ if (!$skip_upgrade) {
 	@opts = ( [ 0, $text{'upgrade_local'},
 		    &ui_filebox("file", undef, 60) ],
 		  [ 1, $text{'upgrade_uploaded'},
-		    &ui_upload("file") ],
+		    &ui_upload("upload") ],
 		  [ 5, $text{'upgrade_url'},
 		    &ui_textbox("url", undef, 60) ] );
 	if ($mode eq "gentoo") {
