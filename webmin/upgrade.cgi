@@ -139,7 +139,8 @@ if ($in{'sig'}) {
 	if (!$ec) {
 		if ($in{'mode'} eq 'rpm') {
 			# Use rpm's gpg signature verification
-			my $out = `rpm --checksig $qfile 2>&1`;
+			my $out = &backquote_command(
+					"rpm --checksig $qfile 2>&1");
 			if ($?) {
 				$ec = 3;
 				$emsg = &text('upgrade_echecksig',
@@ -200,7 +201,7 @@ if ($in{'mode'} ne 'gentoo') {
 			&inst_error($text{'upgrade_egunzip'});
 			}
 		$newfile = &transname();
-		$out = `gunzip -c $qfile 2>&1 >$newfile`;
+		$out = &backquote_command("gunzip -c $qfile 2>&1 >$newfile");
 		if ($?) {
 			unlink($newfile);
 			&inst_error(&text('upgrade_egzip', "<tt>$out</tt>"));
@@ -219,7 +220,7 @@ if ($in{'mode'} eq 'rpm') {
 		chop($rpmname = <RPM>);
 		close(RPM);
 		}
-	$out = `rpm -qp $qfile`;
+	$out = &backquote_command("rpm -qp $qfile");
 	$out =~ /(^|\n)\Q$rpmname\E-(\d+\.\d+)/ ||
 		&inst_error($text{'upgrade_erpm'});
 	$version = $2;
@@ -256,7 +257,7 @@ elsif ($in{'mode'} eq 'deb') {
 		chop($debname = <RPM>);
 		close(RPM);
 		}
-	$out = `dpkg --info $qfile`;
+	$out = &backquote_command("dpkg --info $qfile");
 	$out =~ /Package:\s+(\S+)/ && $1 eq $debname ||
 		&inst_error($text{'upgrade_edeb'});
 	$out =~ /Version:\s+(\S+)/ ||
@@ -350,7 +351,7 @@ elsif ($in{'mode'} eq 'solaris-pkg' || $in{'mode'} eq 'sun-pkg') {
 	#   grep "miniserv.pl.*$pkg"
 	# and the first element includes the pathname.
 	#
-	$targ = `grep "miniserv.pl.*$pkg" /var/sadm/install/contents`;
+	$targ = &backquote_command("grep \"miniserv.pl.*$pkg\" /var/sadm/install/contents");
 	if ($targ =~ /^(.*)\/miniserv.pl.*$/) {
 		$dir = $1;
 		}
@@ -460,7 +461,7 @@ else {
 		# Extact top-level files like setup.sh and os_list.txt
 		$topfiles = join(" ", map { quotemeta($_) }
 					  grep { !$tardir{$_} } @topfiles);
-		$out = `cd $extract && tar xf $file $topfiles 2>&1 >/dev/null`;
+		$out = &backquote_command("cd $extract && tar xf $file $topfiles 2>&1 >/dev/null");
 		if ($?) {
 			&inst_error(&text('upgrade_euntar', "<tt>$out</tt>"));
 			}
@@ -482,14 +483,14 @@ else {
 		# Extract current modules and other directories
 		$mods = join(" ", map { quotemeta("webmin-$version/$_") }
 				      @mods);
-		$out = `cd $extract && tar xf $file $mods 2>&1 >/dev/null`;
+		$out = &backquote_command("cd $extract && tar xf $file $mods 2>&1 >/dev/null");
 		if ($?) {
 			&inst_error(&text('upgrade_euntar', "<tt>$out</tt>"));
 			}
 		}
 	else {
 		# Extract the whole file
-		$out = `cd $extract && tar xf $file 2>&1 >/dev/null`;
+		$out = &backquote_command("cd $extract && tar xf $file 2>&1 >/dev/null");
 		if ($?) {
 			&inst_error(&text('upgrade_euntar', "<tt>$out</tt>"));
 			}
