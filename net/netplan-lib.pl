@@ -116,6 +116,13 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 			$cfg->{'ether'} = $macaddress->{'value'};
 			}
 
+		# Static routes
+		my ($routes) = grep { $_->{'name'} eq 'routes' }
+                                    @{$e->{'members'}};
+		if ($routes) {
+			$cfg->{'routes'} = $routes;
+			}
+
 		# Add IPv4 alias interfaces
 		my $i = 0;
 		foreach my $aa (@addrs) {
@@ -210,10 +217,13 @@ else {
 	if ($iface->{'ether'}) {
 		push(@lines, $id."    "."macaddress: ".$iface->{'ether'});
 		}
+	if ($iface->{'routes'}) {
+		push(@lines, &yaml_lines($iface->{'routes'}, $id."    "));
+		}
 
 	# Add all extra YAML directives from the original config
-	my @poss = ( "optional", "dhcp4", "dhcp6", "addresses", "gateway4",
-		     "gateway6", "nameservers", "macaddress" );
+	my @poss = ("optional", "dhcp4", "dhcp6", "addresses", "gateway4",
+		    "gateway6", "nameservers", "macaddress", "routes");
 	if ($iface->{'yaml'}) {
 		foreach my $y (@{$iface->{'yaml'}->{'members'}}) {
 			next if (&indexof($y->{'name'}, @poss) >= 0);
