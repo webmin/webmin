@@ -1564,7 +1564,7 @@ sub decode_mimewords {
     $@ = '';           ### error-return
 
     ### Collapse boundaries between adjacent encoded words:
-    $encstr =~ s{(\?\=)\r?\n[ \t](\=\?)}{$1$2}gs;
+    $encstr =~ s{(\?\=)\r?\n?[ \t](\=\?)}{$1$2}gs;
     pos($encstr) = 0;
     ### print STDOUT "ENC = [", $encstr, "]\n";
 
