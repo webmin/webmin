@@ -1744,484 +1744,482 @@ if (!$davpath && ($method eq "SEARCH" || $method eq "PUT")) {
 	&http_error(400, "Bad Request method ".&html_strip($method));
 	}
 
-# Check for password if needed
-if ($config{'userfile'}) {
-	print DEBUG "handle_request: Need authentication\n";
-	$validated = 0;
-	$blocked = 0;
+# Check for some form of authentication
+print DEBUG "handle_request: Need authentication\n";
+$validated = 0;
+$blocked = 0;
 
-	# Session authentication is never used for connections by
-	# another webmin server, or for specified pages, or for DAV, or XMLRPC,
-	# or mobile browsers if requested.
-	if ($header{'user-agent'} =~ /webmin/i ||
-	    $header{'user-agent'} =~ /$config{'agents_nosession'}/i ||
-	    $sessiononly{$simple} || $davpath ||
-	    $simple eq "/xmlrpc.cgi" ||
-            $acptip eq $config{'host_nosession'} ||
-	    $mobile_device && $config{'mobile_nosession'}) {
-		print DEBUG "handle_request: Forcing HTTP authentication\n";
-		$config{'session'} = 0;
+# Session authentication is never used for connections by
+# another webmin server, or for specified pages, or for DAV, or XMLRPC,
+# or mobile browsers if requested.
+if ($header{'user-agent'} =~ /webmin/i ||
+    $header{'user-agent'} =~ /$config{'agents_nosession'}/i ||
+    $sessiononly{$simple} || $davpath ||
+    $simple eq "/xmlrpc.cgi" ||
+    $acptip eq $config{'host_nosession'} ||
+    $mobile_device && $config{'mobile_nosession'}) {
+	print DEBUG "handle_request: Forcing HTTP authentication\n";
+	$config{'session'} = 0;
+	}
+
+# Check for SSL authentication
+if ($use_ssl && $verified_client) {
+	$peername = Net::SSLeay::X509_NAME_oneline(
+			Net::SSLeay::X509_get_subject_name(
+				Net::SSLeay::get_peer_certificate(
+					$ssl_con)));
+	$u = &find_user_by_cert($peername);
+	if ($u) {
+		$authuser = $u;
+		$validated = 2;
 		}
-
-	# Check for SSL authentication
-	if ($use_ssl && $verified_client) {
-		$peername = Net::SSLeay::X509_NAME_oneline(
-				Net::SSLeay::X509_get_subject_name(
-					Net::SSLeay::get_peer_certificate(
-						$ssl_con)));
-		$u = &find_user_by_cert($peername);
-		if ($u) {
-			$authuser = $u;
-			$validated = 2;
-			}
-		if ($use_syslog && !$validated) {
-			syslog("crit", "%s",
-			       "Unknown SSL certificate $peername");
-			}
+	if ($use_syslog && !$validated) {
+		syslog("crit", "%s",
+		       "Unknown SSL certificate $peername");
 		}
+	}
 
-	if (!$validated && !$deny_authentication) {
-		# check for IP-based authentication
-		local $a;
-		foreach $a (keys %ipaccess) {
-			if ($acptip eq $a) {
-				# It does! Auth as the user
-				$validated = 3;
-				$baseauthuser = $authuser =
-					$ipaccess{$a};
-				}
+if (!$validated && !$deny_authentication) {
+	# check for IP-based authentication
+	local $a;
+	foreach $a (keys %ipaccess) {
+		if ($acptip eq $a) {
+			# It does! Auth as the user
+			$validated = 3;
+			$baseauthuser = $authuser =
+				$ipaccess{$a};
 			}
 		}
+	}
 
-	# Check for normal HTTP authentication
-	if (!$validated && !$deny_authentication && !$config{'session'} &&
-	    $header{authorization} =~ /^basic\s+(\S+)$/i) {
-		# authorization given..
-		($authuser, $authpass) = split(/:/, &b64decode($1), 2);
-		print DEBUG "handle_request: doing basic auth check authuser=$authuser authpass=$authpass\n";
-		local ($vu, $expired, $nonexist, $wvu) =
-			&validate_user($authuser, $authpass, $host,
-				       $acptip, $port);
-		print DEBUG "handle_request: vu=$vu expired=$expired nonexist=$nonexist\n";
-		if ($vu && (!$expired || $config{'passwd_mode'} == 1)) {
-			$authuser = $vu;
-			$validated = 1;
-			}
-		else {
-			$validated = 0;
-			}
-		if ($use_syslog && !$validated) {
-			syslog("crit", "%s",
-			       ($nonexist ? "Non-existent" :
-				$expired ? "Expired" : "Invalid").
-			       " login as $authuser from $acpthost");
-			}
-		if ($authuser =~ /\r|\n|\s/) {
-			&http_error(500, "Invalid username",
-				    "Username contains invalid characters");
-			}
-		if ($authpass =~ /\r|\n/) {
-			&http_error(500, "Invalid password",
-				    "Password contains invalid characters");
-			}
-
-		if ($config{'passdelay'} && !$config{'inetd'} && $authuser) {
-			# check with main process for delay
-			print DEBUG "handle_request: about to ask for password delay\n";
-			print $PASSINw "delay $authuser $acptip $validated\n";
-			<$PASSOUTr> =~ /(\d+) (\d+)/;
-			$blocked = $2;
-			print DEBUG "handle_request: password delay $1 $2\n";
-			sleep($1);
-			}
-		}
-
-	# Check for a visit to the special session login page
-	if ($config{'session'} && !$deny_authentication &&
-	    $page eq $config{'session_login'}) {
-		if ($in{'logout'} && $header{'cookie'} =~ /(^|\s|;)$sidname=([a-f0-9]+)/) {
-			# Logout clicked .. remove the session
-			local $sid = $2;
-			print $PASSINw "delete $sid\n";
-			local $louser = <$PASSOUTr>;
-			chop($louser);
-			$logout = 1;
-			$already_session_id = undef;
-			$authuser = $baseauthuser = undef;
-			if ($louser) {
-				if ($use_syslog) {
-					syslog("info", "%s", "Logout by $louser from $acpthost");
-					}
-				&run_logout_script($louser, $sid,
-						   $loghost, $localip);
-				&write_logout_utmp($louser, $actphost);
-				}
-			}
-		elsif ($in{'session'}) {
-			# Session ID given .. put it in the cookie if valid
-			local $sid = $in{'session'};
-			if ($sid =~ /\r|\n|\s/) {
-				&http_error(500, "Invalid session",
-				    "Session ID contains invalid characters");
-				}
-			print $PASSINw "verify $sid 0 $acptip\n";
-			<$PASSOUTr> =~ /(\d+)\s+(\S+)/;
-			if ($1 != 2) {
-				&http_error(500, "Invalid session",
-				    "Session ID is not valid");
-				}
-			local $vu = $2;
-			local $hrv = &handle_login(
-					$vu, $vu ? 1 : 0,
-				      	0, 0, undef, 1, 0);
-			return $hrv if (defined($hrv));
-			}
-		else {
-			# Trim username to remove leading and trailing spaces to
-			# be able to login, if username pastes from somewhere
-			$in{'user'} =~ s/^\s+|\s+$//g;
-
-			# Validate the user
-			if ($in{'user'} =~ /\r|\n|\s/) {
-				&run_failed_script($in{'user'}, 'baduser',
-						   $loghost, $localip);
-				&http_error(500, "Invalid username",
-				    "Username contains invalid characters");
-				}
-			if ($in{'pass'} =~ /\r|\n/) {
-				&run_failed_script($in{'user'}, 'badpass',
-						   $loghost, $localip);
-				&http_error(500, "Invalid password",
-				    "Password contains invalid characters");
-				}
-
-			local ($vu, $expired, $nonexist, $wvu) =
-				&validate_user($in{'user'}, $in{'pass'}, $host,
-					       $acptip, $port);
-			if ($vu && $wvu) {
-				my $uinfo = &get_user_details($wvu, $vu);
-				if ($uinfo && $uinfo->{'twofactor_provider'}) {
-					# Check two-factor token ID
-					$err = &validate_twofactor(
-						$wvu, $in{'twofactor'}, $vu);
-					if ($err) {
-						&run_failed_script(
-							$vu, 'twofactor',
-							$loghost, $localip);
-						$twofactor_msg = $err;
-						$twofactor_nolog = 'nolog' if (!$in{'twofactor'});
-						$vu = undef;
-						}
-					}
-				}
-			local $hrv = &handle_login(
-					$vu || $in{'user'}, $vu ? 1 : 0,
-				      	$expired, $nonexist, $in{'pass'},
-					$in{'notestingcookie'}, $twofactor_nolog);
-			return $hrv if (defined($hrv));
-			}
-		}
-
-	# Check for a visit to the special PAM login page
-	if ($config{'session'} && !$deny_authentication &&
-	    $use_pam && $config{'pam_conv'} && $page eq $config{'pam_login'} &&
-	    !$in{'restart'}) {
-		# A question has been entered .. submit it to the main process
-		print DEBUG "handle_request: Got call to $page ($in{'cid'})\n";
-		print DEBUG "handle_request: For PAM, authuser=$authuser\n";
-		if ($in{'answer'} =~ /\r|\n/ || $in{'cid'} =~ /\r|\n|\s/) {
-			&http_error(500, "Invalid response",
-			    "Response contains invalid characters");
-			}
-
-		if (!$in{'cid'}) {
-			# Start of a new conversation - answer must be username
-			$cid = &generate_random_id();
-			print $PASSINw "pamstart $cid $host $in{'answer'}\n";
-			}
-		else {
-			# A response to a previous question
-			$cid = $in{'cid'};
-			print $PASSINw "pamanswer $cid $in{'answer'}\n";
-			}
-
-		# Read back the response, and the next question (if any)
-		local $line = <$PASSOUTr>;
-		$line =~ s/\r|\n//g;
-		local ($rv, $question) = split(/\s+/, $line, 2);
-		if ($rv == 0) {
-			# Cannot login!
-			local $hrv = &handle_login(
-				!$in{'cid'} && $in{'answer'} ? $in{'answer'}
-							     : "unknown",
-				0, 0, 1, undef);
-			return $hrv if (defined($hrv));
-			}
-		elsif ($rv == 1 || $rv == 3) {
-			# Another question .. force use of PAM CGI
-			$validated = 1;
-			$method = "GET";
-			$querystring .= "&cid=$cid&question=".
-					&urlize($question);
-			$querystring .= "&password=1" if ($rv == 3);
-			$queryargs = "";
-			$page = $config{'pam_login'};
-			$miniserv_internal = 1;
-			$logged_code = 401;
-			}
-		elsif ($rv == 2) {
-			# Got back a final ok or failure
-			local ($user, $ok, $expired, $nonexist) =
-				split(/\s+/, $question);
-			local $hrv = &handle_login(
-				$user, $ok, $expired, $nonexist, undef,
-				$in{'notestingcookie'});
-			return $hrv if (defined($hrv));
-			}
-		elsif ($rv == 4) {
-			# A message from PAM .. tell the user
-			$validated = 1;
-			$method = "GET";
-			$querystring .= "&cid=$cid&message=".
-					&urlize($question);
-			$queryargs = "";
-			$page = $config{'pam_login'};
-			$miniserv_internal = 1;
-			$logged_code = 401;
-			}
-		}
-
-	# Check for a visit to the special password change page
-	if ($config{'session'} && !$deny_authentication &&
-	    $page eq $config{'password_change'} && !$validated) {
-		# Just let this slide ..
+# Check for normal HTTP authentication
+if (!$validated && !$deny_authentication && !$config{'session'} &&
+    $header{authorization} =~ /^basic\s+(\S+)$/i) {
+	# authorization given..
+	($authuser, $authpass) = split(/:/, &b64decode($1), 2);
+	print DEBUG "handle_request: doing basic auth check authuser=$authuser authpass=$authpass\n";
+	local ($vu, $expired, $nonexist, $wvu) =
+		&validate_user($authuser, $authpass, $host,
+			       $acptip, $port);
+	print DEBUG "handle_request: vu=$vu expired=$expired nonexist=$nonexist\n";
+	if ($vu && (!$expired || $config{'passwd_mode'} == 1)) {
+		$authuser = $vu;
 		$validated = 1;
-		$miniserv_internal = 3;
+		}
+	else {
+		$validated = 0;
+		}
+	if ($use_syslog && !$validated) {
+		syslog("crit", "%s",
+		       ($nonexist ? "Non-existent" :
+			$expired ? "Expired" : "Invalid").
+		       " login as $authuser from $acpthost");
+		}
+	if ($authuser =~ /\r|\n|\s/) {
+		&http_error(500, "Invalid username",
+			    "Username contains invalid characters");
+		}
+	if ($authpass =~ /\r|\n/) {
+		&http_error(500, "Invalid password",
+			    "Password contains invalid characters");
 		}
 
-	# Check for an existing session
-	if ($config{'session'} && !$validated) {
-		if ($already_session_id) {
-			$session_id = $already_session_id;
-			$authuser = $already_authuser;
-			$validated = 1;
+	if ($config{'passdelay'} && !$config{'inetd'} && $authuser) {
+		# check with main process for delay
+		print DEBUG "handle_request: about to ask for password delay\n";
+		print $PASSINw "delay $authuser $acptip $validated\n";
+		<$PASSOUTr> =~ /(\d+) (\d+)/;
+		$blocked = $2;
+		print DEBUG "handle_request: password delay $1 $2\n";
+		sleep($1);
+		}
+	}
+
+# Check for a visit to the special session login page
+if ($config{'session'} && !$deny_authentication &&
+    $page eq $config{'session_login'}) {
+	if ($in{'logout'} && $header{'cookie'} =~ /(^|\s|;)$sidname=([a-f0-9]+)/) {
+		# Logout clicked .. remove the session
+		local $sid = $2;
+		print $PASSINw "delete $sid\n";
+		local $louser = <$PASSOUTr>;
+		chop($louser);
+		$logout = 1;
+		$already_session_id = undef;
+		$authuser = $baseauthuser = undef;
+		if ($louser) {
+			if ($use_syslog) {
+				syslog("info", "%s", "Logout by $louser from $acpthost");
+				}
+			&run_logout_script($louser, $sid,
+					   $loghost, $localip);
+			&write_logout_utmp($louser, $actphost);
 			}
-		elsif (!$deny_authentication &&
-		       $header{'cookie'} =~ /(^|\s|;)$sidname=([a-f0-9]+)/) {
-			# Try all session cookies
-			local $cookie = $header{'cookie'};
-			while($cookie =~ s/(^|\s|;)$sidname=([a-f0-9]+)//) {
-				$session_id = $2;
-				local $notimeout =
-					$in{'webmin_notimeout'} ? 1 : 0;
-				print $PASSINw "verify $session_id $notimeout $acptip\n";
-				<$PASSOUTr> =~ /(\d+)\s+(\S+)/;
-				if ($1 == 2) {
-					# Valid session continuation
-					$validated = 1;
-					$authuser = $2;
-					$already_authuser = $authuser;
-					$timed_out = undef;
-					last;
-					}
-				elsif ($1 == 1) {
-					# Session timed out
-					$timed_out = $2;
-					}
-				elsif ($1 == 3) {
-					# Session is OK, but from the wrong IP
-					print STDERR "Session $session_id was ",
-					  "used from $acptip instead of ",
-					  "original IP $2\n";
-					}
-				else {
-					# Invalid session ID .. don't set
-					# verified flag
+		}
+	elsif ($in{'session'}) {
+		# Session ID given .. put it in the cookie if valid
+		local $sid = $in{'session'};
+		if ($sid =~ /\r|\n|\s/) {
+			&http_error(500, "Invalid session",
+			    "Session ID contains invalid characters");
+			}
+		print $PASSINw "verify $sid 0 $acptip\n";
+		<$PASSOUTr> =~ /(\d+)\s+(\S+)/;
+		if ($1 != 2) {
+			&http_error(500, "Invalid session",
+			    "Session ID is not valid");
+			}
+		local $vu = $2;
+		local $hrv = &handle_login(
+				$vu, $vu ? 1 : 0,
+				0, 0, undef, 1, 0);
+		return $hrv if (defined($hrv));
+		}
+	else {
+		# Trim username to remove leading and trailing spaces to
+		# be able to login, if username pastes from somewhere
+		$in{'user'} =~ s/^\s+|\s+$//g;
+
+		# Validate the user
+		if ($in{'user'} =~ /\r|\n|\s/) {
+			&run_failed_script($in{'user'}, 'baduser',
+					   $loghost, $localip);
+			&http_error(500, "Invalid username",
+			    "Username contains invalid characters");
+			}
+		if ($in{'pass'} =~ /\r|\n/) {
+			&run_failed_script($in{'user'}, 'badpass',
+					   $loghost, $localip);
+			&http_error(500, "Invalid password",
+			    "Password contains invalid characters");
+			}
+
+		local ($vu, $expired, $nonexist, $wvu) =
+			&validate_user($in{'user'}, $in{'pass'}, $host,
+				       $acptip, $port);
+		if ($vu && $wvu) {
+			my $uinfo = &get_user_details($wvu, $vu);
+			if ($uinfo && $uinfo->{'twofactor_provider'}) {
+				# Check two-factor token ID
+				$err = &validate_twofactor(
+					$wvu, $in{'twofactor'}, $vu);
+				if ($err) {
+					&run_failed_script(
+						$vu, 'twofactor',
+						$loghost, $localip);
+					$twofactor_msg = $err;
+					$twofactor_nolog = 'nolog' if (!$in{'twofactor'});
+					$vu = undef;
 					}
 				}
 			}
-		if ($authuser) {
-			# We got a session .. but does the user still exist?
-			my @can = &can_user_login($authuser, undef, $host);
-			$baseauthuser = $can[3] || $authuser;
-			my $auser = &get_user_details($baseauthuser, $authuser);
-			if (!$auser) {
-				print STDERR "Session $session_id is for user ",
-					     "$authuser who does not exist\n";
-				$validated = 0;
-				$already_authuser = $authuser = undef;
+		local $hrv = &handle_login(
+				$vu || $in{'user'}, $vu ? 1 : 0,
+				$expired, $nonexist, $in{'pass'},
+				$in{'notestingcookie'}, $twofactor_nolog);
+		return $hrv if (defined($hrv));
+		}
+	}
+
+# Check for a visit to the special PAM login page
+if ($config{'session'} && !$deny_authentication &&
+    $use_pam && $config{'pam_conv'} && $page eq $config{'pam_login'} &&
+    !$in{'restart'}) {
+	# A question has been entered .. submit it to the main process
+	print DEBUG "handle_request: Got call to $page ($in{'cid'})\n";
+	print DEBUG "handle_request: For PAM, authuser=$authuser\n";
+	if ($in{'answer'} =~ /\r|\n/ || $in{'cid'} =~ /\r|\n|\s/) {
+		&http_error(500, "Invalid response",
+		    "Response contains invalid characters");
+		}
+
+	if (!$in{'cid'}) {
+		# Start of a new conversation - answer must be username
+		$cid = &generate_random_id();
+		print $PASSINw "pamstart $cid $host $in{'answer'}\n";
+		}
+	else {
+		# A response to a previous question
+		$cid = $in{'cid'};
+		print $PASSINw "pamanswer $cid $in{'answer'}\n";
+		}
+
+	# Read back the response, and the next question (if any)
+	local $line = <$PASSOUTr>;
+	$line =~ s/\r|\n//g;
+	local ($rv, $question) = split(/\s+/, $line, 2);
+	if ($rv == 0) {
+		# Cannot login!
+		local $hrv = &handle_login(
+			!$in{'cid'} && $in{'answer'} ? $in{'answer'}
+						     : "unknown",
+			0, 0, 1, undef);
+		return $hrv if (defined($hrv));
+		}
+	elsif ($rv == 1 || $rv == 3) {
+		# Another question .. force use of PAM CGI
+		$validated = 1;
+		$method = "GET";
+		$querystring .= "&cid=$cid&question=".
+				&urlize($question);
+		$querystring .= "&password=1" if ($rv == 3);
+		$queryargs = "";
+		$page = $config{'pam_login'};
+		$miniserv_internal = 1;
+		$logged_code = 401;
+		}
+	elsif ($rv == 2) {
+		# Got back a final ok or failure
+		local ($user, $ok, $expired, $nonexist) =
+			split(/\s+/, $question);
+		local $hrv = &handle_login(
+			$user, $ok, $expired, $nonexist, undef,
+			$in{'notestingcookie'});
+		return $hrv if (defined($hrv));
+		}
+	elsif ($rv == 4) {
+		# A message from PAM .. tell the user
+		$validated = 1;
+		$method = "GET";
+		$querystring .= "&cid=$cid&message=".
+				&urlize($question);
+		$queryargs = "";
+		$page = $config{'pam_login'};
+		$miniserv_internal = 1;
+		$logged_code = 401;
+		}
+	}
+
+# Check for a visit to the special password change page
+if ($config{'session'} && !$deny_authentication &&
+    $page eq $config{'password_change'} && !$validated) {
+	# Just let this slide ..
+	$validated = 1;
+	$miniserv_internal = 3;
+	}
+
+# Check for an existing session
+if ($config{'session'} && !$validated) {
+	if ($already_session_id) {
+		$session_id = $already_session_id;
+		$authuser = $already_authuser;
+		$validated = 1;
+		}
+	elsif (!$deny_authentication &&
+	       $header{'cookie'} =~ /(^|\s|;)$sidname=([a-f0-9]+)/) {
+		# Try all session cookies
+		local $cookie = $header{'cookie'};
+		while($cookie =~ s/(^|\s|;)$sidname=([a-f0-9]+)//) {
+			$session_id = $2;
+			local $notimeout =
+				$in{'webmin_notimeout'} ? 1 : 0;
+			print $PASSINw "verify $session_id $notimeout $acptip\n";
+			<$PASSOUTr> =~ /(\d+)\s+(\S+)/;
+			if ($1 == 2) {
+				# Valid session continuation
+				$validated = 1;
+				$authuser = $2;
+				$already_authuser = $authuser;
+				$timed_out = undef;
+				last;
+				}
+			elsif ($1 == 1) {
+				# Session timed out
+				$timed_out = $2;
+				}
+			elsif ($1 == 3) {
+				# Session is OK, but from the wrong IP
+				print STDERR "Session $session_id was ",
+				  "used from $acptip instead of ",
+				  "original IP $2\n";
+				}
+			else {
+				# Invalid session ID .. don't set
+				# verified flag
 				}
 			}
 		}
+	if ($authuser) {
+		# We got a session .. but does the user still exist?
+		my @can = &can_user_login($authuser, undef, $host);
+		$baseauthuser = $can[3] || $authuser;
+		my $auser = &get_user_details($baseauthuser, $authuser);
+		if (!$auser) {
+			print STDERR "Session $session_id is for user ",
+				     "$authuser who does not exist\n";
+			$validated = 0;
+			$already_authuser = $authuser = undef;
+			}
+		}
+	}
 
-	# Check for local authentication
-	if ($localauth_user && !$header{'x-forwarded-for'} && !$header{'via'}) {
-		my $luser = &get_user_details($localauth_user);
-		if ($luser) {
-			# Local user exists in webmin users file
-			$validated = 1;
+# Check for local authentication
+if ($localauth_user && !$header{'x-forwarded-for'} && !$header{'via'}) {
+	my $luser = &get_user_details($localauth_user);
+	if ($luser) {
+		# Local user exists in webmin users file
+		$validated = 1;
+		$authuser = $localauth_user;
+		}
+	else {
+		# Check if local user is allowed by unixauth
+		local @can = &can_user_login($localauth_user,
+					     undef, $host);
+		if ($can[0]) {
+			$validated = 2;
 			$authuser = $localauth_user;
 			}
 		else {
-			# Check if local user is allowed by unixauth
-			local @can = &can_user_login($localauth_user,
-						     undef, $host);
-			if ($can[0]) {
-				$validated = 2;
-				$authuser = $localauth_user;
+			$localauth_user = undef;
+			}
+		}
+	}
+
+if (!$validated) {
+	# Check if this path allows anonymous access
+	local $a;
+	foreach $a (keys %anonymous) {
+		if (substr($simple, 0, length($a)) eq $a) {
+			# It does! Auth as the user, if IP access
+			# control allows him.
+			if (&check_user_ip($anonymous{$a}) &&
+			    &check_user_time($anonymous{$a})) {
+				$validated = 3;
+				$baseauthuser = $authuser =
+					$anonymous{$a};
+				}
+			}
+		}
+	}
+
+if (!$validated) {
+	# Check if this path allows unauthenticated access
+	local ($u, $unauth);
+	foreach $u (@unauth) {
+		$unauth++ if ($simple =~ /$u/);
+		}
+	if (!$bogus && $unauth) {
+		# Unauthenticated directory or file request - approve it
+		$validated = 4;
+		$baseauthuser = $authuser = undef;
+		}
+	}
+
+if (!$validated) {
+	if ($blocked == 0) {
+		# No password given.. ask
+		if ($config{'pam_conv'} && $use_pam) {
+			# Force CGI for PAM question, starting with
+			# the username which is always needed
+			$validated = 1;
+			$method = "GET";
+			$querystring .= "&initial=1&question=".
+					&urlize("Username");
+			$querystring .= "&failed=$failed_user" if ($failed_user);
+			$querystring .= "&timed_out=$timed_out" if ($timed_out);
+			$queryargs = "";
+			$page = $config{'pam_login'};
+			$miniserv_internal = 1;
+			$logged_code = 401;
+			}
+		elsif ($config{'session'}) {
+			# Force CGI for session login
+			$validated = 1;
+			if ($logout) {
+				$querystring .= "&logout=1&page=/";
 				}
 			else {
-				$localauth_user = undef;
-				}
-			}
-		}
-
-	if (!$validated) {
-		# Check if this path allows anonymous access
-		local $a;
-		foreach $a (keys %anonymous) {
-			if (substr($simple, 0, length($a)) eq $a) {
-				# It does! Auth as the user, if IP access
-				# control allows him.
-				if (&check_user_ip($anonymous{$a}) &&
-				    &check_user_time($anonymous{$a})) {
-					$validated = 3;
-					$baseauthuser = $authuser =
-						$anonymous{$a};
+				# Re-direct to current module only
+				local $rpage = $request_uri;
+				if (!$config{'loginkeeppage'}) {
+					$rpage =~ s/\?.*$//;
+					$rpage =~ s/[^\/]+$//
 					}
+				$querystring = "page=".&urlize($rpage);
 				}
+			$method = "GET";
+			$querystring .= "&failed=".&urlize($failed_user)
+				if ($failed_user);
+			if ($twofactor_msg) {
+				$querystring .= "&failed_save=".&urlize($failed_save);
+				$querystring .= "&failed_pass=".&urlize($failed_pass);
+				$querystring .= "&failed_twofactor_attempt=".&urlize($failed_twofactor_attempt);
+				$querystring .= "&twofactor_msg=".&urlize($twofactor_msg);
+				}
+			$querystring .= "&timed_out=$timed_out"
+				if ($timed_out);
+			$queryargs = "";
+			$page = $config{'session_login'};
+			$miniserv_internal = 1;
+			$logged_code = 401;
 			}
+		else {
+			# Ask for login with HTTP authentication
+			&write_data("HTTP/1.0 401 Unauthorized\r\n");
+			&write_data("Date: $datestr\r\n");
+			&write_data("Server: $config{'server'}\r\n");
+			&write_data("WWW-authenticate: Basic ".
+				   "realm=\"$config{'realm'}\"\r\n");
+			&write_keep_alive(0);
+			&write_data("Content-type: text/html; Charset=utf-8\r\n");
+			&write_data("\r\n");
+			&reset_byte_count();
+			&write_data("<html>\n");
+			&write_data("<head>".&embed_error_styles($roots[0])."<title>401 &mdash; Unauthorized</title></head>\n");
+			&write_data("<body><h2 class=\"err-head\">401 &mdash; Unauthorized</h2>\n");
+			&write_data("<p class=\"err-content\">A password is required to access this\n");
+			&write_data("web server. Please try again.</p> <p>\n");
+			&write_data("</body></html>\n");
+			&log_request($loghost, undef, $reqline, 401, &byte_count());
+			return 0;
+			}
+		}
+	elsif ($blocked == 1) {
+		# when the host has been blocked, give it an error
+		&http_error(403, "Access denied for $acptip. The host ".
+				 "has been blocked because of too ".
+				 "many authentication failures.");
+		}
+	elsif ($blocked == 2) {
+		# when the user has been blocked, give it an error
+		&http_error(403, "Access denied. The user ".
+				 "has been blocked because of too ".
+				 "many authentication failures.");
+		}
+	}
+else {
+	# Get the real Webmin username
+	if (!$baseauthuser) {
+		local @can = &can_user_login($authuser, undef, $host);
+		$baseauthuser = $can[3] || $authuser;
 		}
 
-	if (!$validated) {
-		# Check if this path allows unauthenticated access
-		local ($u, $unauth);
-		foreach $u (@unauth) {
-			$unauth++ if ($simple =~ /$u/);
+	if ($config{'remoteuser'} && !$< && $validated) {
+		# Switch to the UID of the remote user (if he exists)
+		local @u = getpwnam($authuser);
+		if (@u && $< != $u[2]) {
+			$( = $u[3]; $) = "$u[3] $u[3]";
+			($>, $<) = ($u[2], $u[2]);
 			}
-		if (!$bogus && $unauth) {
-			# Unauthenticated directory or file request - approve it
-			$validated = 4;
-			$baseauthuser = $authuser = undef;
+		else {
+			&http_error(500, "Unix user ".
+			  &html_strip($authuser)." does not exist");
+			return 0;
 			}
 		}
+	}
 
-	if (!$validated) {
-		if ($blocked == 0) {
-			# No password given.. ask
-			if ($config{'pam_conv'} && $use_pam) {
-				# Force CGI for PAM question, starting with
-				# the username which is always needed
-				$validated = 1;
-				$method = "GET";
-				$querystring .= "&initial=1&question=".
-						&urlize("Username");
-				$querystring .= "&failed=$failed_user" if ($failed_user);
-				$querystring .= "&timed_out=$timed_out" if ($timed_out);
-				$queryargs = "";
-				$page = $config{'pam_login'};
-				$miniserv_internal = 1;
-				$logged_code = 401;
-				}
-			elsif ($config{'session'}) {
-				# Force CGI for session login
-				$validated = 1;
-				if ($logout) {
-					$querystring .= "&logout=1&page=/";
-					}
-				else {
-					# Re-direct to current module only
-					local $rpage = $request_uri;
-					if (!$config{'loginkeeppage'}) {
-						$rpage =~ s/\?.*$//;
-						$rpage =~ s/[^\/]+$//
-						}
-					$querystring = "page=".&urlize($rpage);
-					}
-				$method = "GET";
-				$querystring .= "&failed=".&urlize($failed_user)
-					if ($failed_user);
-				if ($twofactor_msg) {
-					$querystring .= "&failed_save=".&urlize($failed_save);
-					$querystring .= "&failed_pass=".&urlize($failed_pass);
-					$querystring .= "&failed_twofactor_attempt=".&urlize($failed_twofactor_attempt);
-					$querystring .= "&twofactor_msg=".&urlize($twofactor_msg);
-					}
-				$querystring .= "&timed_out=$timed_out"
-					if ($timed_out);
-				$queryargs = "";
-				$page = $config{'session_login'};
-				$miniserv_internal = 1;
-				$logged_code = 401;
-				}
-			else {
-				# Ask for login with HTTP authentication
-				&write_data("HTTP/1.0 401 Unauthorized\r\n");
-				&write_data("Date: $datestr\r\n");
-				&write_data("Server: $config{'server'}\r\n");
-				&write_data("WWW-authenticate: Basic ".
-					   "realm=\"$config{'realm'}\"\r\n");
-				&write_keep_alive(0);
-				&write_data("Content-type: text/html; Charset=utf-8\r\n");
-				&write_data("\r\n");
-				&reset_byte_count();
-				&write_data("<html>\n");
-				&write_data("<head>".&embed_error_styles($roots[0])."<title>401 &mdash; Unauthorized</title></head>\n");
-				&write_data("<body><h2 class=\"err-head\">401 &mdash; Unauthorized</h2>\n");
-				&write_data("<p class=\"err-content\">A password is required to access this\n");
-				&write_data("web server. Please try again.</p> <p>\n");
-				&write_data("</body></html>\n");
-				&log_request($loghost, undef, $reqline, 401, &byte_count());
-				return 0;
-				}
-			}
-		elsif ($blocked == 1) {
-			# when the host has been blocked, give it an error
-			&http_error(403, "Access denied for $acptip. The host ".
-					 "has been blocked because of too ".
-					 "many authentication failures.");
-			}
-		elsif ($blocked == 2) {
-			# when the user has been blocked, give it an error
-			&http_error(403, "Access denied. The user ".
-					 "has been blocked because of too ".
-					 "many authentication failures.");
-			}
-		}
-	else {
-		# Get the real Webmin username
-		if (!$baseauthuser) {
-			local @can = &can_user_login($authuser, undef, $host);
-			$baseauthuser = $can[3] || $authuser;
-			}
+# Check per-user IP access control
+if (!&check_user_ip($baseauthuser)) {
+	&http_error(403, "Access denied for $acptip for ".
+			 &html_strip($baseauthuser));
+	return 0;
+	}
 
-		if ($config{'remoteuser'} && !$< && $validated) {
-			# Switch to the UID of the remote user (if he exists)
-			local @u = getpwnam($authuser);
-			if (@u && $< != $u[2]) {
-				$( = $u[3]; $) = "$u[3] $u[3]";
-				($>, $<) = ($u[2], $u[2]);
-				}
-			else {
-				&http_error(500, "Unix user ".
-				  &html_strip($authuser)." does not exist");
-				return 0;
-				}
-			}
-		}
-
-	# Check per-user IP access control
-	if (!&check_user_ip($baseauthuser)) {
-		&http_error(403, "Access denied for $acptip for ".
-				 &html_strip($baseauthuser));
-		return 0;
-		}
-
-	# Check per-user allowed times
-	if (!&check_user_time($baseauthuser)) {
-		&http_error(403, "Access denied at the current time");
-		return 0;
-		}
+# Check per-user allowed times
+if (!&check_user_time($baseauthuser)) {
+	&http_error(403, "Access denied at the current time");
+	return 0;
 	}
 $uinfo = &get_user_details($baseauthuser, $authuser);
 
