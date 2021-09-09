@@ -38,6 +38,7 @@ EOF
 open(OS, "os_list.txt");
 while(<OS>) {
 	chop;
+	next if (/^Generic\s+Linux/i);
 	if (/^([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+([^\t]+)\t*(.*)$/ && $5) {
 		$if = $count++ == 0 ? "if" : "elsif";
 		$oscheck .= "$if ($5) {\n".
