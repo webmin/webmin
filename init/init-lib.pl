@@ -2196,7 +2196,7 @@ foreach my $name (keys %info) {
 		    'stop' => $i->{'ExecStop'},
 		    'reload' => $i->{'ExecReload'},
 		    'pid' => $i->{'ExecMainPID'},
-		    'file' => $root."/".$name,
+		    'file' => $i->{'FragmentPath'} || $root."/".$name,
 		  });
 	}
 
