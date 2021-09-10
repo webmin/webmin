@@ -223,6 +223,7 @@ systemd_egone=Service no longer exists!
 systemd_elegacy=Not a systemd service!
 systemd_header=Systemd service details
 systemd_name=Service name
+systemd_file=Configuration file
 systemd_desc=Service description
 systemd_start=Commands to run on startup
 systemd_stop=Commands to run on shutdown

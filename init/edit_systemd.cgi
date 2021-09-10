@@ -48,7 +48,10 @@ else {
 	print &ui_table_row($text{'systemd_name'},
 			    "<tt>$in{'name'}</tt>");
 
-	# Config file
+	# Config file and contents
+	print &ui_table_row($text{'systemd_file'},
+			    "<tt>$u->{'file'}</tt>");
+
 	$conf = &read_file_contents($u->{'file'});
 	print &ui_table_row($text{'systemd_conf'},
 			    &ui_textarea("conf", $conf, 20, 80));
