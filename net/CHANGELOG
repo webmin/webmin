@@ -79,3 +79,5 @@ Added support for configuring intefaces with the "ip" command, as seen on RHEL 7
 On CentOS, Fedora and Redhat systems, the DNSn lines in ifcfg-* files are now updated in sync with resolv.conf.
 ---- Changes since 1.910 ----
 Added an option to disable (comment out) hosts file entries.
+---- Changes since 1.980 ----
+Added support for static routes in Netplan.

@@ -427,6 +427,7 @@ sub routing_input
 my ($addr, $router) = &get_default_gateway();
 my ($addr6, $router6) = &get_default_ipv6_gateway();
 my @ifaces = grep { $_->{'virtual'} eq '' } &boot_interfaces();
+my @inames = map { $_->{'name'} } @ifaces;
 
 # Show default gateway
 print &ui_table_row($text{'routes_default'},
@@ -434,8 +435,7 @@ print &ui_table_row($text{'routes_default'},
 		  [ [ 1, $text{'routes_none'} ],
 		    [ 0, $text{'routes_gateway'}." ".
 			 &ui_textbox("gateway", $addr, 15)." ".
-			 &ui_select("gatewaydev", $router,
-				[ map { $_->{'name'} } @ifaces ]) ] ]));
+			 &ui_select("gatewaydev", $router, \@inames) ] ]));
 
 # Show default IPv6 gateway
 print &ui_table_row($text{'routes_default6'},
@@ -443,8 +443,7 @@ print &ui_table_row($text{'routes_default6'},
 		  [ [ 1, $text{'routes_none'} ],
 		    [ 0, $text{'routes_gateway'}." ".
 			 &ui_textbox("gateway6", $addr6, 30)." ".
-			 &ui_select("gatewaydev6", $router6,
-				[ map { $_->{'name'} } @ifaces ]) ] ]));
+			 &ui_select("gatewaydev6", $router6, \@inames) ] ]));
 
 # Act as router?
 my %sysctl;
@@ -452,6 +451,36 @@ my %sysctl;
 print &ui_table_row($text{'routes_forward'},
 	&ui_yesno_radio("forward",
 			$sysctl{'net.ipv4.ip_forward'} ? 1 : 0));
+
+# Static routes
+my $rtable = &ui_columns_start([ $text{'routes_ifc'},
+			       $text{'routes_net'},
+			       $text{'routes_mask'},
+			       $text{'routes_gateway'} ]);
+my $i = 0;
+@inames = ( "", @inames );
+foreach my $b (@ifaces) {
+	next if (!$b->{'routes'});
+	foreach my $v (@{$b->{'routes'}->{'value'}}) {
+		my ($net, $mask) = split(/\//, $v->{'to'});
+		$mask = &prefix_to_mask($mask);
+		$rtable .= &ui_columns_row([
+		    &ui_select("dev_$i", $b->{'fullname'}, \@inames, 1, 0, 1),
+		    &ui_textbox("net_$i", $net, 15),
+		    &ui_textbox("mask_$i", $mask, 15),
+		    &ui_textbox("gw_$i", $v->{'via'}, 15),
+		    ]);
+		$i++;
+		}
+	}
+$rtable .= &ui_columns_row([
+	&ui_select("dev_$i", "", \@inames, 1, 0, 1),
+	&ui_textbox("net_$i", "", 15),
+	&ui_textbox("mask_$i", "", 15),
+	&ui_textbox("gw_$i", "", 15),
+	]);
+$rtable .= &ui_columns_end();
+print &ui_table_row($text{'routes_static'}, $rtable);
 }
 
 # parse_routing()
@@ -472,7 +501,7 @@ if (!$in{'gateway_def'}) {
 my ($dev6, $gw6);
 if (!$in{'gateway6_def'}) {
 	&check_ip6address($in{'gateway6'}) ||
-		&error(&text('routes_egateway6', &html_escape($in{'gateway6'})));
+		&error(&text('routes_egateway6',&html_escape($in{'gateway6'})));
 	$gw6 = $in{'gateway6'};
 	$dev6 = $in{'gatewaydev6'};
 	}
@@ -485,6 +514,33 @@ my %sysctl;
 $sysctl{'net.ipv4.ip_forward'} = $in{'forward'};
 &write_env_file($sysctl_config, \%sysctl);
 &unlock_file($sysctl_config);
+
+# Save static routes
+my @boot =  &boot_interfaces();
+foreach my $b (grep { $_->{'virtual'} eq '' } @boot) {
+	my @r;
+	for(my $i=0; defined($in{"dev_$i"}); $i++) {
+		if ($in{"dev_$i"} eq $b->{'fullname'}) {
+			&check_ipaddress($in{"net_$i"}) ||
+				&error(&text('routes_enet', $in{"net_$i"}));
+			&check_ipaddress($in{"mask_$i"}) ||
+				&error(&text('routes_emask', $in{"mask_$i"}));
+			my $to = $in{"net_$i"}."/".
+				 &mask_to_prefix($in{"mask_$i"});
+			&check_ipaddress($in{"gw_$i"}) ||
+				&error(&text('routes_egateway', $in{"gw_$i"}));
+			push(@r, { 'to' => $to, 'via' => $in{"gw_$i"} });
+			}
+		}
+	if (@r) {
+		$b->{'routes'} = { 'name' => 'routes',
+				   'value' => \@r };
+		}
+	else {
+		delete($b->{'routes'});
+		}
+	&save_interface($b, \@boot);
+	}
 }
 
 sub network_config_files
