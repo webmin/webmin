@@ -60,10 +60,11 @@ if (!defined($get_config_cache{$file})) {
 		while(<CONFIG>) {
 			s/\r|\n//g;
 			s/\s+$//;
-			if (/^(;?)php_admin_value\[(\S+)\]\s*=\s*(.*)/) {
+			if (/^(;?)(php_admin_value|php_value)\[(\S+)\]\s*=\s*(.*)/) {
 				# Found an FPM config that sets a PHP variable
-				push(@rv, { 'name' => $2,
-					    'value' => $3,
+				push(@rv, { 'name' => $3,
+					    'value' => $4,
+					    'admin' => $2 eq "php_admin_value" ? 1 : 0,
 					    'enabled' => !$1,
 					    'line' => $lnum,
 					    'file' => $file,
@@ -113,7 +114,8 @@ if ($fmt eq "ini") {
 		    $value =~ /"/ ? "'$value'" : "\"$value\"");
 	}
 else {
-	$newline = "php_admin_value[".$name."] = ".$value;
+	my $n = !$old || $old->{'admin'} ? "php_admin_value" : "php_value";
+	$newline = $n."[".$name."] = ".$value;
 	}
 if (defined($value) && $old) {
 	# Update existing value
