@@ -1254,34 +1254,49 @@ local %cache;
 &read_file_cached($httpd_info_cache, \%cache);
 if ($cache{'cmd'} eq $cmd && $cache{'time'} == $st[9]) {
 	# Cache looks up to date
-	return ($cache{'version'}, [ split(/\s+/, $cache{'mods'}) ]);
+	return ($cache{'version'}, [ split(/\s+/, $cache{'mods'}) ],
+		$cache{'fullversion'});
 	}
-local(@mods, $verstr, $ver, $minor);
+local(@mods, $verstr, $ver, $minor, $fullver);
 $verstr = &backquote_command(quotemeta($cmd)." -v 2>&1");
-if ($config{'httpd_version'}) {
-	$config{'httpd_version'} =~ /(\d+)\.([\d\.]+)/;
-	$ver = $1; $minor = $2; $minor =~ s/\.//g; $ver .= ".$minor";
+if ($config{'httpd_version'} =~ /(\d+)\.([\d\.]+)/) {
+	$fullver = $config{'httpd_version'};
+	$ver = $1;
+	$minor = $2;
+	$minor =~ s/\.//g;
+	$ver .= ".$minor";
 	}
 elsif ($verstr =~ /Apache(\S*)\/(\d+)\.([\d\.]+)/) {
 	# standard apache
-	$ver = $2; $minor = $3; $minor =~ s/\.//g; $ver .= ".$minor";
+	$fullver = "$2.$3";
+	$ver = $2;
+	$minor = $3;
+	$minor =~ s/\.//g;
+	$ver .= ".$minor";
 	}
 elsif ($verstr =~ /HP\s*Apache-based\s*Web\s*Server(\S*)\/(\d+)\.([\d\.]+)/) {
 	# HP's apache
-	$ver = $2; $minor = $3; $minor =~ s/\.//g; $ver .= ".$minor";
+	$fullver = "$2.$3";
+	$ver = $2;
+	$minor = $3;
+	$minor =~ s/\.//g;
+	$ver .= ".$minor";
 	}
 elsif ($verstr =~ /Red\s*Hat\s+Secure\/2\.0/i) {
 	# redhat secure server 2.0
-	$ver = 1.31;
+	$fullver = $ver = 1.31;
 	}
 elsif ($verstr =~ /Red\s*Hat\s+Secure\/3\.0/i) {
 	# redhat secure server 3.0
-	$ver = 1.39;
+	$fullver = $ver = 1.39;
 	}
 elsif (&has_command("rpm") &&
        &backquote_command("rpm -q apache 2>&1") =~ /^apache-(\d+)\.([\d\.]+)/) {
 	# got version from the RPM
-	$ver = $1; $minor = $2; $minor =~ s/\.//g; $ver .= ".$minor";
+	$fullver = $ver = $1;
+	$minor = $2;
+	$minor =~ s/\.//g;
+	$ver .= ".$minor";
 	}
 else {
 	# couldn't get version
@@ -1314,9 +1329,10 @@ else {
 $cache{'cmd'} = $cmd;
 $cache{'time'} = $st[9];
 $cache{'version'} = $ver;
+$cache{'fullversion'} = $fullver;
 $cache{'mods'} = join(" ", @mods);
 &write_file($httpd_info_cache, \%cache);
-return ($ver, \@mods);
+return ($ver, \@mods, $fullver);
 }
 
 # print_line(directive, text, indent, link)
