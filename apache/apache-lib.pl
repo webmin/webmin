@@ -34,7 +34,7 @@ if ($module_name ne 'htaccess') {
 	    $oldsite{'webmin'} != &get_webmin_version() ||
 	    $config{'auto_mods'} && $sst[9] < time()-5*60) {
 		# Need to build list of supported modules
-		local ($ver, $mods) = &httpd_info($httpd);
+		local ($ver, $mods, $fullver) = &httpd_info($httpd);
 		if ($ver) {
 			local @mods = map { "$_/$ver" } &configurable_modules();
 			foreach my $m (@mods) {
@@ -49,6 +49,8 @@ if ($module_name ne 'htaccess') {
 			local %site = ( 'size' => $st[7],
 					'path' => $httpd,
 					'modules' => join(' ', @mods),
+					'version' => $ver,
+					'fullversion' => $fullver,
 					'webmin' => &get_webmin_version() );
 			&lock_file($site_file);
 			&write_file($site_file, \%site);
