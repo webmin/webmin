@@ -14,7 +14,7 @@ my $job = &find_cron_job();
 
 # Validate inputs
 if ($in{'sched'}) {
-	$in{'mins'} =~ /^\d+$/ || &error($text{'auto_emins'});
+	$in{'mins'} =~ /^\d+$/ && $in{'mins'} > 0 || &error($text{'auto_emins'});
 	if ($in{'net_def'} == 1) {
 		$config{'auto_net'} = undef;
 		}
