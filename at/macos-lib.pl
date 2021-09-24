@@ -1,6 +1,7 @@
 # macos-lib.pl
 use strict;
 use warnings;
+no warnings "redefine";
 our %config;
 
 sub list_atjobs

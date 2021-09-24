@@ -1,6 +1,7 @@
 # solaris-lib.pl
 use strict;
 use warnings;
+no warnings "redefine";
 our %config;
 
 use POSIX;

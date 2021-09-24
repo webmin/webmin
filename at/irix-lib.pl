@@ -1,6 +1,7 @@
 # solaris-lib.pl
 
 use POSIX;
+no warnings "redefine";
 
 sub list_atjobs
 {

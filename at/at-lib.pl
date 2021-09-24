@@ -3,6 +3,7 @@
 
 use strict;
 use warnings "once";
+no warnings "redefine";
 our (%text, %config); 
 our $remote_user;
 
