@@ -11633,6 +11633,27 @@ my %miniserv;
 return $miniserv{'bufsize'} || 32768;
 }
 
+=head2 get_webprefix
+
+Returns ready to use webprefix
+
+=cut
+sub get_webprefix
+{
+my $webprefix = $gconfig{'webprefix'};
+my $parent_proxy_detected = 0;
+my $parent_proxy = $ENV{'HTTP_COMPLETE_WEBMIN_PATH'} || $ENV{'HTTP_WEBMIN_PATH'};
+if ($parent_proxy) {
+    my ($parent_proxy_link)   = $parent_proxy      =~ /(\S*?\/link\.cgi\/[\d]{8,16})/;
+    my ($parent_proxy_prefix) = $parent_proxy_link =~ /:\d+(\S*?\/link\.cgi\/\S*?\d+)/;
+    if ($parent_proxy_prefix) {
+    	$webprefix = $parent_proxy_prefix;
+    	$parent_proxy_detected = 1;
+    	}
+	}
+return wantarray ? ($webprefix, $parent_proxy_detected) : $webprefix;
+}
+
 $done_web_lib_funcs = 1;
 
 1;
