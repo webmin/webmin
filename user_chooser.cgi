@@ -42,10 +42,10 @@ if ($in{'multi'}) {
 		print "</script>\n";
 		print "<title>$text{'users_title1'}</title>\n";
 		print "<frameset cols='50%,50%'>\n";
-		print "<frame src=\"$gconfig{'webprefix'}/user_chooser.cgi?frame=1&multi=1\">\n";
+		print "<frame src=\"$gwebprefix/user_chooser.cgi?frame=1&multi=1\">\n";
 		print "<frameset rows='*,50' frameborder=no>\n";
-		print " <frame src=\"$gconfig{'webprefix'}/user_chooser.cgi?frame=2&multi=1\">\n";
-		print " <frame src=\"$gconfig{'webprefix'}/user_chooser.cgi?frame=3&multi=1\" scrolling=no>\n";
+		print " <frame src=\"$gwebprefix/user_chooser.cgi?frame=2&multi=1\">\n";
+		print " <frame src=\"$gwebprefix/user_chooser.cgi?frame=3&multi=1\" scrolling=no>\n";
 		print "</frameset>\n";
 		print "</frameset>\n";
 		}
@@ -78,7 +78,7 @@ if ($in{'multi'}) {
 			}
 		print "</table>\n";
         	if ( $cnt >= 10 ) {
-            		print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js?28112013'></script>";
+            		print "<script type='text/javascript' src='$gwebprefix/unauthenticated/filter_match.js?28112013'></script>";
             		print "<script type='text/javascript'>filter_match_box();</script>";
         	}
 		&popup_footer();
@@ -169,7 +169,7 @@ else {
 		}
 	print "</table>\n";
     	if ( $cnt >= 10 ) {
-        	print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js?28112013'></script>";
+        	print "<script type='text/javascript' src='$gwebprefix/unauthenticated/filter_match.js?28112013'></script>";
         	print "<script type='text/javascript'>filter_match_box();</script>";
     	}
 	&popup_footer();
