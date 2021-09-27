@@ -146,8 +146,8 @@ $url = &get_webmin_browser_url("passwd", "change_passwd.cgi");
 print &ui_table_row($text{'session_passapi'},
 	&ui_radio("passapi", $found >= 0 ? 1 : 0,
 		  [ [ 0, $text{'session_passapi0'}."<br>" ],
-		    [ 1, $text{'session_passapi1'} ] ])."<br>\n".
-	&text('session_passurl', "<tt>$url</tt>"));
+		    [ 1, $text{'session_passapi1'} . "&nbsp;" .
+		         &ui_help(&text('session_passurl', "<tt>$url</tt>")) ] ]));
 
 print ui_table_end();
 print ui_form_end([ [ "save", $text{'save'} ] ]);
