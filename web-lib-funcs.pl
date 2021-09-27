@@ -1107,11 +1107,11 @@ if (@_ > 1) {
 			      "$text{'main_logout'}</a><br>";
 			}
 		elsif ($gconfig{'gotoone'} && @avail == 1 && !$nolo) {
-			print "<a href=$gwebprefix/switch_user.cgi>",
+			print "<a href=$gconfig{'webprefix'}/switch_user.cgi>",
 			      "$text{'main_switch'}</a><br>";
 			}
 		elsif (!$gconfig{'gotoone'} || @avail > 1) {
-			print "<a href='$gwebprefix/?cat=",
+			print "<a href='$gconfig{'webprefix'}/?cat=",
 			      $this_module_info{'category'},
 			      "'>$text{'header_webmin'}</a><br>\n";
 			}
@@ -1120,7 +1120,7 @@ if (@_ > 1) {
 		my $idx = $this_module_info{'index_link'};
 		my $mi = $module_index_link || "/".&get_module_name()."/$idx";
 		my $mt = $module_index_name || $text{'header_module'};
-		print "<a href=\"$gwebprefix$mi\">$mt</a><br>\n";
+		print "<a href=\"$gconfig{'webprefix'}$mi\">$mt</a><br>\n";
 		}
 	if (ref($_[2]) eq "ARRAY" && !$ENV{'ANONYMOUS_USER'} &&
 	    !$tconfig{'nohelp'}) {
@@ -1136,7 +1136,7 @@ if (@_ > 1) {
 		if (!$access{'noconfig'} && !$config{'noprefs'}) {
 			my $cprog = $user_module_config_directory ?
 					"uconfig.cgi" : "config.cgi";
-			print "<a href=\"$gwebprefix/$cprog?",
+			print "<a href=\"$gconfig{'webprefix'}/$cprog?",
 			      &get_module_name()."\">",
 			      $text{'header_config'},"</a><br>\n";
 			}
@@ -1367,9 +1367,9 @@ for(my $i=0; $i+1<@_; $i+=2) {
 		elsif ($url =~ /^\?/ && &get_module_name()) {
 			$url = "/".&get_module_name()."/$url";
 			}
-		$url = "$gwebprefix$url" if ($url =~ /^\//);
+		$url = "$gconfig{'webprefix'}$url" if ($url =~ /^\//);
 		if ($i == 0) {
-			print "<a href=\"$url\"><img alt=\"<-\" align='middle' border='0' src='$gwebprefix/images/left.gif'></a>\n";
+			print "<a href=\"$url\"><img alt=\"<-\" align='middle' border='0' src='$gconfig{'webprefix'}/images/left.gif'></a>\n";
 			}
 		else {
 			print "&nbsp;|\n";
@@ -11507,7 +11507,7 @@ Should be used instead for redirects with submitted forms
 sub get_referer_relative
 {
 my $referer = $ENV{'HTTP_REFERER'};
-my $prefix = &get_webprefix();
+my $prefix = $gconfig{'webprefix'};
 $prefix = '/' if(!$prefix);
 $referer =~ s/http.*:\/\/.*?$prefix/\//;
 $referer =~ s/\/\//\//g;
