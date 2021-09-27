@@ -934,7 +934,7 @@ sub read_parse_mime_javascript
 {
 my ($id, $fields) = @_;
 return "" if ($gconfig{'no_upload_tracker'});
-my $opener = "window.open(\"$gwebprefix/uptracker.cgi?id=$id&uid=$<\", \"uptracker\", \"toolbar=no,menubar=no,scrollbars=no,width=500,height=128\");";
+my $opener = "window.open(\"$gconfig{'webprefix'}/uptracker.cgi?id=$id&uid=$<\", \"uptracker\", \"toolbar=no,menubar=no,scrollbars=no,width=500,height=128\");";
 if ($fields) {
 	my $if = join(" || ", map { "typeof($_) != \"undefined\" && $_.value != \"\"" } @$fields);
 	return "onSubmit='if ($if) { $opener }'";
@@ -2031,7 +2031,7 @@ my ($w, $h) = (400, 300);
 if ($gconfig{'db_sizefile'}) {
 	($w, $h) = split(/x/, $gconfig{'db_sizefile'});
 	}
-return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"$gwebprefix/chooser.cgi?add=$add&type=$_[1]&chroot=$chroot&file=\"+encodeURIComponent(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=no,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/chooser.cgi?add=$add&type=$_[1]&chroot=$chroot&file=\"+encodeURIComponent(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=no,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
 =head2 popup_window_button(url, width, height, scrollbars?, &field-mappings)
@@ -3668,7 +3668,7 @@ if (defined(&theme_hlink)) {
 my $mod = $_[2] ? $_[2] : &get_module_name();
 my $width = $_[3] || $tconfig{'help_width'} || $gconfig{'help_width'} || 600;
 my $height = $_[4] || $tconfig{'help_height'} || $gconfig{'help_height'} || 400;
-return "<a onClick='window.open(\"$gwebprefix/help.cgi/$mod/$_[1]\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=$width,height=$height,resizable=yes\"); return false' href=\"$gwebprefix/help.cgi/$mod/$_[1]\">$_[0]</a>";
+return "<a onClick='window.open(\"$gconfig{'webprefix'}/help.cgi/$mod/$_[1]\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=$width,height=$height,resizable=yes\"); return false' href=\"$gconfig{'webprefix'}/help.cgi/$mod/$_[1]\">$_[0]</a>";
 }
 
 =head2 user_chooser_button(field, multiple, [form])
@@ -3697,7 +3697,7 @@ if ($_[1] && $gconfig{'db_sizeusers'}) {
 elsif (!$_[1] && $gconfig{'db_sizeuser'}) {
 	($w, $h) = split(/x/, $gconfig{'db_sizeuser'});
 	}
-return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"$gwebprefix/user_chooser.cgi?multi=$_[1]&user=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/user_chooser.cgi?multi=$_[1]&user=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
 =head2 group_chooser_button(field, multiple, [form])
@@ -3726,7 +3726,7 @@ if ($_[1] && $gconfig{'db_sizeusers'}) {
 elsif (!$_[1] && $gconfig{'db_sizeuser'}) {
 	($w, $h) = split(/x/, $gconfig{'db_sizeuser'});
 	}
-return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"$gwebprefix/group_chooser.cgi?multi=$_[1]&group=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/group_chooser.cgi?multi=$_[1]&group=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
 =head2 foreign_check(module, [api-only])
@@ -4791,7 +4791,6 @@ $config_file = "$config_directory/config";
 %gconfig = ( );
 &read_file_cached($config_file, \%gconfig);
 $gconfig{'webprefix'} = '' if (!exists($gconfig{'webprefix'}));
-$gwebprefix = &get_webprefix();
 $null_file = $gconfig{'os_type'} eq 'windows' ? "NUL" : "/dev/null";
 $path_separator = $gconfig{'os_type'} eq 'windows' ? ';' : ':';
 
@@ -7762,7 +7761,7 @@ my ($w, $h) = (250, 225);
 if ($gconfig{'db_sizedate'}) {
 	($w, $h) = split(/x/, $gconfig{'db_sizedate'});
 	}
-return "<input type=button onClick='window.dfield = form.$_[0]; window.mfield = form.$_[1]; window.yfield = form.$_[2]; window.open(\"$gwebprefix/date_chooser.cgi?day=\"+escape(dfield.value)+\"&month=\"+escape(mfield.selectedIndex)+\"&year=\"+yfield.value, \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=$h\")' value=\"...\">\n";
+return "<input type=button onClick='window.dfield = form.$_[0]; window.mfield = form.$_[1]; window.yfield = form.$_[2]; window.open(\"$gconfig{'webprefix'}/date_chooser.cgi?day=\"+escape(dfield.value)+\"&month=\"+escape(mfield.selectedIndex)+\"&year=\"+yfield.value, \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=$h\")' value=\"...\">\n";
 }
 
 =head2 help_file(module, file)
@@ -7875,7 +7874,7 @@ sub help_search_link
 {
 if (&foreign_available("man") && !$tconfig{'nosearch'}) {
 	my $for = &urlize(shift(@_));
-	return "<a href='$gwebprefix/man/search.cgi?".
+	return "<a href='$gconfig{'webprefix'}/man/search.cgi?".
 	       join("&", map { "section=$_" } @_)."&".
 	       "for=$for&exact=1&check=".&get_module_name()."'>".
 	       $text{'helpsearch'}."</a>\n";
@@ -10133,7 +10132,7 @@ if ($_[1] && $gconfig{'db_sizemodules'}) {
 elsif (!$_[1] && $gconfig{'db_sizemodule'}) {
 	($w, $h) = split(/x/, $gconfig{'db_sizemodule'});
 	}
-return "<input type=button onClick='ifield = document.forms[$form].$_[0]; chooser = window.open(\"$gwebprefix/module_chooser.cgi?multi=$_[1]&module=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+return "<input type=button onClick='ifield = document.forms[$form].$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/module_chooser.cgi?multi=$_[1]&module=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
 =head2 substitute_template(text, &hash)

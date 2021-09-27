@@ -123,10 +123,10 @@ if ($in{'frame'} == 0) {
 		}
 	print "<frameset rows='*,50'>\n";
 	print "<frame marginwidth=5 marginheight=5 name=topframe ",
-	     "src=\"$gwebprefix/chooser.cgi?frame=1&file=".$ufile.
+	     "src=\"$gconfig{'webprefix'}/chooser.cgi?frame=1&file=".$ufile.
 	     "&chroot=".$uchroot."&type=".$utype."&add=$add\">\n";
 	print "<frame marginwidth=0 marginheight=0 name=bottomframe ",
-	      "src=\"$gwebprefix/chooser.cgi?frame=2&file=".$ufile.
+	      "src=\"$gconfig{'webprefix'}/chooser.cgi?frame=2&file=".$ufile.
 	      "&chroot=".$uchroot."&type=".$utype."&add=$add\" scrolling=no>\n";
 	print "</frameset>\n";
 	}
@@ -199,7 +199,7 @@ EOF
 			$link = "<a href=\"\" onClick='fileclick(\"".&quote_javascript("$dir$f")."\", $isdir); return false'>";
 			}
 		local @cols;
-		push(@cols, "$link<img border=0 src=$gwebprefix/images/$icon></a>");
+		push(@cols, "$link<img border=0 src=$gconfig{'webprefix'}/images/$icon></a>");
 		push(@cols, "$link".&html_escape($f)."</a>");
 		push(@cols, &nice_size($st[7]));
 		@tm = localtime($st[9]);
@@ -212,7 +212,7 @@ EOF
 	closedir(DIR);
 	print &ui_columns_end();
     if ( $cnt >= 10 ) {
-        print "<script type='text/javascript' src='$gwebprefix/unauthenticated/filter_match.js?28112013'></script>";
+        print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js?28112013'></script>";
         print "<script type='text/javascript'>filter_match_box();</script>";
     }
 	&popup_footer();

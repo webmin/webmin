@@ -39,7 +39,7 @@ foreach my $s (@serv) {
 	$down += scalar(grep { $_ == 0 } @ups);
 	my $desc = &html_escape($s->{'desc'});
 	if ($can) {
-		$desc = &ui_link("$gwebprefix/$module_name/edit_mon.cgi?id=".
+		$desc = &ui_link("/$module_name/edit_mon.cgi?id=".
 				 &urlize($s->{'id'}), $desc);
 		}
 	$table .= &ui_columns_row([
