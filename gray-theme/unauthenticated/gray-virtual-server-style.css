@@ -234,6 +234,7 @@ br[data-x-br] {
     content: attr(aria-label);
     pointer-events: none;
     word-wrap: initial;
+    word-break: break-all;
     max-width: 50vw;
     width: max-content;
     position: absolute;
