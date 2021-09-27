@@ -58,6 +58,7 @@ sub ui_help
 {
 return &theme_ui_help(@_) if (defined(&theme_ui_help));
 my ($title) = @_;
+$title = html_strip($title);
 return ("<sup class=\"ui_help\" aria-label=\"$title\" data-tooltip><samp>?</samp></sup>");
 }
 

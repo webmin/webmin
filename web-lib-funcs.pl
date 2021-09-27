@@ -258,6 +258,18 @@ $tmp =~ s/=/&#61;/g;
 return $tmp;
 }
 
+=head2 html_strip(string)
+
+Removes any HTML from a string
+
+=cut
+sub html_strip
+{
+my ($str) = @_;
+$str =~ s/<(?:[^>'"]*|(['"]).*?\1)*>//gs;
+return $str;
+}
+
 =head2 quote_escape(string, [only-quote])
 
 Converts ' and " characters in a string into HTML entities, and returns it.
