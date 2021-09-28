@@ -934,7 +934,7 @@ sub read_parse_mime_javascript
 {
 my ($id, $fields) = @_;
 return "" if ($gconfig{'no_upload_tracker'});
-my $opener = "window.open(\"$gconfig{'webprefix'}/uptracker.cgi?id=$id&uid=$<\", \"uptracker\", \"toolbar=no,menubar=no,scrollbars=no,width=500,height=128\");";
+my $opener = "window.open(\"@{[&get_webprefix()]}/uptracker.cgi?id=$id&uid=$<\", \"uptracker\", \"toolbar=no,menubar=no,scrollbars=no,width=500,height=128\");";
 if ($fields) {
 	my $if = join(" || ", map { "typeof($_) != \"undefined\" && $_.value != \"\"" } @$fields);
 	return "onSubmit='if ($if) { $opener }'";
@@ -1103,15 +1103,15 @@ if (@_ > 1) {
 			      $ENV{'HTTP_USER_AGENT'} =~ /webmin/i;
 		if ($gconfig{'gotoone'} && $main::session_id && @avail == 1 &&
 		    !$nolo) {
-			print "<a href='$gconfig{'webprefix'}/session_login.cgi?logout=1'>",
+			print "<a href='@{[&get_webprefix()]}/session_login.cgi?logout=1'>",
 			      "$text{'main_logout'}</a><br>";
 			}
 		elsif ($gconfig{'gotoone'} && @avail == 1 && !$nolo) {
-			print "<a href=$gconfig{'webprefix'}/switch_user.cgi>",
+			print "<a href=@{[&get_webprefix()]}/switch_user.cgi>",
 			      "$text{'main_switch'}</a><br>";
 			}
 		elsif (!$gconfig{'gotoone'} || @avail > 1) {
-			print "<a href='$gconfig{'webprefix'}/?cat=",
+			print "<a href='@{[&get_webprefix()]}/?cat=",
 			      $this_module_info{'category'},
 			      "'>$text{'header_webmin'}</a><br>\n";
 			}
@@ -1120,7 +1120,7 @@ if (@_ > 1) {
 		my $idx = $this_module_info{'index_link'};
 		my $mi = $module_index_link || "/".&get_module_name()."/$idx";
 		my $mt = $module_index_name || $text{'header_module'};
-		print "<a href=\"$gconfig{'webprefix'}$mi\">$mt</a><br>\n";
+		print "<a href=\"@{[&get_webprefix()]}$mi\">$mt</a><br>\n";
 		}
 	if (ref($_[2]) eq "ARRAY" && !$ENV{'ANONYMOUS_USER'} &&
 	    !$tconfig{'nohelp'}) {
@@ -1136,7 +1136,7 @@ if (@_ > 1) {
 		if (!$access{'noconfig'} && !$config{'noprefs'}) {
 			my $cprog = $user_module_config_directory ?
 					"uconfig.cgi" : "config.cgi";
-			print "<a href=\"$gconfig{'webprefix'}/$cprog?",
+			print "<a href=\"@{[&get_webprefix()]}/$cprog?",
 			      &get_module_name()."\">",
 			      $text{'header_config'},"</a><br>\n";
 			}
@@ -1367,9 +1367,9 @@ for(my $i=0; $i+1<@_; $i+=2) {
 		elsif ($url =~ /^\?/ && &get_module_name()) {
 			$url = "/".&get_module_name()."/$url";
 			}
-		$url = "$gconfig{'webprefix'}$url" if ($url =~ /^\//);
+		$url = "@{[&get_webprefix()]}$url" if ($url =~ /^\//);
 		if ($i == 0) {
-			print "<a href=\"$url\"><img alt=\"<-\" align='middle' border='0' src='$gconfig{'webprefix'}/images/left.gif'></a>\n";
+			print "<a href=\"$url\"><img alt=\"<-\" align='middle' border='0' src='@{[&get_webprefix()]}/images/left.gif'></a>\n";
 			}
 		else {
 			print "&nbsp;|\n";
@@ -1497,7 +1497,7 @@ my $redirssl = $miniserv{'redirect_ssl'} ne '' ? $miniserv{'redirect_ssl'} :
 my $port = $redirport == 443 && $redirssl ? "" :
 	   $redirport == 80 && !$redirssl ? "" : ":".$redirport;
 my $prot = $redirssl ? "https" : "http";
-my $wp = $gconfig{'webprefixnoredir'} ? undef : $gconfig{'webprefix'};
+my $wp = $gconfig{'webprefixnoredir'} ? undef : &get_webprefix();
 my $url;
 if ($_[0] =~ /^(http|https|ftp|gopher):/) {
 	# Absolute URL (like http://...)
@@ -2031,7 +2031,7 @@ my ($w, $h) = (400, 300);
 if ($gconfig{'db_sizefile'}) {
 	($w, $h) = split(/x/, $gconfig{'db_sizefile'});
 	}
-return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/chooser.cgi?add=$add&type=$_[1]&chroot=$chroot&file=\"+encodeURIComponent(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=no,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"@{[&get_webprefix()]}/chooser.cgi?add=$add&type=$_[1]&chroot=$chroot&file=\"+encodeURIComponent(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=no,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
 =head2 popup_window_button(url, width, height, scrollbars?, &field-mappings)
@@ -3668,7 +3668,7 @@ if (defined(&theme_hlink)) {
 my $mod = $_[2] ? $_[2] : &get_module_name();
 my $width = $_[3] || $tconfig{'help_width'} || $gconfig{'help_width'} || 600;
 my $height = $_[4] || $tconfig{'help_height'} || $gconfig{'help_height'} || 400;
-return "<a onClick='window.open(\"$gconfig{'webprefix'}/help.cgi/$mod/$_[1]\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=$width,height=$height,resizable=yes\"); return false' href=\"$gconfig{'webprefix'}/help.cgi/$mod/$_[1]\">$_[0]</a>";
+return "<a onClick='window.open(\"@{[&get_webprefix()]}/help.cgi/$mod/$_[1]\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=$width,height=$height,resizable=yes\"); return false' href=\"@{[&get_webprefix()]}/help.cgi/$mod/$_[1]\">$_[0]</a>";
 }
 
 =head2 user_chooser_button(field, multiple, [form])
@@ -3697,7 +3697,7 @@ if ($_[1] && $gconfig{'db_sizeusers'}) {
 elsif (!$_[1] && $gconfig{'db_sizeuser'}) {
 	($w, $h) = split(/x/, $gconfig{'db_sizeuser'});
 	}
-return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/user_chooser.cgi?multi=$_[1]&user=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"@{[&get_webprefix()]}/user_chooser.cgi?multi=$_[1]&user=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
 =head2 group_chooser_button(field, multiple, [form])
@@ -3726,7 +3726,7 @@ if ($_[1] && $gconfig{'db_sizeusers'}) {
 elsif (!$_[1] && $gconfig{'db_sizeuser'}) {
 	($w, $h) = split(/x/, $gconfig{'db_sizeuser'});
 	}
-return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/group_chooser.cgi?multi=$_[1]&group=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"@{[&get_webprefix()]}/group_chooser.cgi?multi=$_[1]&group=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
 =head2 foreign_check(module, [api-only])
@@ -4883,7 +4883,7 @@ if (defined($ENV{'FOREIGN_MODULE_NAME'}) && $ENV{'FOREIGN_ROOT_DIRECTORY'}) {
 	}
 elsif ($ENV{'SCRIPT_NAME'}) {
 	my $sn = $ENV{'SCRIPT_NAME'};
-	$sn =~ s/^$gconfig{'webprefix'}\//\//
+	$sn =~ s/^@{[&get_webprefix()]}\//\//
 		if (!$gconfig{'webprefixnoredir'});
 	if ($sn =~ /^\/([^\/]+)\//) {
 		# Get module name from CGI path
@@ -5231,14 +5231,14 @@ if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
 		    my %var;
 		    my $key  = 'goto';
 		    my $xnav = "xnavigation=1";
-		    my $url  = "$gconfig{'webprefix'}$ENV{'REQUEST_URI'}";
+		    my $url  = "@{[&get_webprefix()]}$ENV{'REQUEST_URI'}";
 		    my $salt = substr(encode_base64($main::session_id), 0, 16);
 		    $url =~ s/[?|&]$xnav//g;
 		    $salt =~ tr/A-Za-z0-9//cd;
 
 		    if (!$trust) {
 		        my @parent_dir = split('/', $url);
-		        $url = $gconfig{'webprefix'} ? $parent_dir[2] : $parent_dir[1];
+		        $url = &get_webprefix() ? $parent_dir[2] : $parent_dir[1];
 		        if ($url =~ /.cgi/) {
 		            $url = "/";
 		        	}
@@ -7761,7 +7761,7 @@ my ($w, $h) = (250, 225);
 if ($gconfig{'db_sizedate'}) {
 	($w, $h) = split(/x/, $gconfig{'db_sizedate'});
 	}
-return "<input type=button onClick='window.dfield = form.$_[0]; window.mfield = form.$_[1]; window.yfield = form.$_[2]; window.open(\"$gconfig{'webprefix'}/date_chooser.cgi?day=\"+escape(dfield.value)+\"&month=\"+escape(mfield.selectedIndex)+\"&year=\"+yfield.value, \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=$h\")' value=\"...\">\n";
+return "<input type=button onClick='window.dfield = form.$_[0]; window.mfield = form.$_[1]; window.yfield = form.$_[2]; window.open(\"@{[&get_webprefix()]}/date_chooser.cgi?day=\"+escape(dfield.value)+\"&month=\"+escape(mfield.selectedIndex)+\"&year=\"+yfield.value, \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=$h\")' value=\"...\">\n";
 }
 
 =head2 help_file(module, file)
@@ -7874,7 +7874,7 @@ sub help_search_link
 {
 if (&foreign_available("man") && !$tconfig{'nosearch'}) {
 	my $for = &urlize(shift(@_));
-	return "<a href='$gconfig{'webprefix'}/man/search.cgi?".
+	return "<a href='@{[&get_webprefix()]}/man/search.cgi?".
 	       join("&", map { "section=$_" } @_)."&".
 	       "for=$for&exact=1&check=".&get_module_name()."'>".
 	       $text{'helpsearch'}."</a>\n";
@@ -10132,7 +10132,7 @@ if ($_[1] && $gconfig{'db_sizemodules'}) {
 elsif (!$_[1] && $gconfig{'db_sizemodule'}) {
 	($w, $h) = split(/x/, $gconfig{'db_sizemodule'});
 	}
-return "<input type=button onClick='ifield = document.forms[$form].$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/module_chooser.cgi?multi=$_[1]&module=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+return "<input type=button onClick='ifield = document.forms[$form].$_[0]; chooser = window.open(\"@{[&get_webprefix()]}/module_chooser.cgi?multi=$_[1]&module=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
 =head2 substitute_template(text, &hash)
@@ -11656,7 +11656,7 @@ sub get_webprefix
 if (defined(&theme_get_webprefix)) {
 	return &theme_get_webprefix();
 	}
-return $gconfig{'webprefix'};
+return $gconfig{'webprefix'} || '';
 }
 
 $done_web_lib_funcs = 1;
