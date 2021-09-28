@@ -9,7 +9,7 @@ $access{'dialin'} || &error($text{'dialin_ecannot'});
 # Check for the mgetty login config file
 if (!-r $config{'login_config'}) {
 	print "<p>",&text('dialin_efile', "<tt>$config{'dialin_config'}</tt>",
-	    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+	    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("", $text{'index_return'});
 	exit;
 	}

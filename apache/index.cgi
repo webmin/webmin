@@ -10,7 +10,7 @@ require './apache-lib.pl';
 if (!($httpd = &find_httpd())) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 	print &text('index_eserver', "<tt>$config{'httpd_path'}</tt>",
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&foreign_require("software", "software-lib.pl");
 	$lnk = &software::missing_install_link("apache", $text{'index_apache'},
 			"../$module_name/", $text{'index_title'});
@@ -23,7 +23,7 @@ if (!($httpd = &find_httpd())) {
 if (!(-d $config{'httpd_dir'})) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 	print &text('index_eroot', "<tt>$config{'httpd_dir'}</tt>",
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
@@ -70,7 +70,7 @@ if (!$htconf) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 	print "<p>\n";
 	print &text('index_econf', "<tt>$htconfchecked</tt>",
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}

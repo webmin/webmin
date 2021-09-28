@@ -18,7 +18,7 @@ foreach $p ( [ $config{'mysqladmin'}, 'index_eadmin', 'index_mysqladmin' ],
 		&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 			&help_search_link("mysql", "man", "doc", "google"));
 		print &text($p->[1], "<tt>$p->[0]</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 
 		&foreign_require("software", "software-lib.pl");
 		$lnk = &software::missing_install_link(

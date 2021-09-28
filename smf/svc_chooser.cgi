@@ -49,9 +49,9 @@ if ($in{'frame'} == 0) {
 
 	print "<frameset rows='*,50'>\n";
 	print "<frame marginwidth=10 marginheight=10 name=topframe ",
-	    "src=\"$gconfig{'webprefix'}/svc_chooser.cgi?frame=1&fmri=$fmri&add=$add&type=$type\">\n";
+	    "src=\"@{[&get_webprefix()]}/svc_chooser.cgi?frame=1&fmri=$fmri&add=$add&type=$type\">\n";
 	print "<frame marginwidth=10 marginheight=10 name=bottomframe ",
-	    "src=\"$gconfig{'webprefix'}/svc_chooser.cgi?frame=2&add=$add&fmri=$fmri&type=$type\" ",
+	    "src=\"@{[&get_webprefix()]}/svc_chooser.cgi?frame=2&add=$add&fmri=$fmri&type=$type\" ",
 	    "scrolling=no>\n";
 	print "</frameset>\n";
 	}

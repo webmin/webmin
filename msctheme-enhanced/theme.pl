@@ -572,13 +572,13 @@ if (@_ > 1 && (!$_[5] || $ENV{'HTTP_WEBMIN_SERVERS'})) {
 	}
 	if ($notabs && !$_[5]) { 
 		&tab_start;
-		print "<a href='$gconfig{'webprefix'}/?cat=$module_info{'category'}'>$text{'header_webmin'}</a><br>\n";
+		print "<a href='@{[&get_webprefix()]}/?cat=$module_info{'category'}'>$text{'header_webmin'}</a><br>\n";
 		&tab_end;
 		}
 	if (!$_[4]) {
 		local $mi = $module_index_link ||
 			    $module_name ? "/$module_name/" : "/";
-		&tab_start; print "<a href=\"$gconfig{'webprefix'}$mi\">",
+		&tab_start; print "<a href=\"@{[&get_webprefix()]}$mi\">",
 			    "$text{'header_module'}</a>"; &tab_end;
 		}
 	if (ref($_[2]) eq "ARRAY" && !$ENV{'ANONYMOUS_USER'}) {

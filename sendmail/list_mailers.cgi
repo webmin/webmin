@@ -20,7 +20,7 @@ if (!$mdbm) {
 if (!-r $mfile) {
 	# Text file not found
 	print "<b>",&text('mailers_efile', "<tt>$mfile</tt>",
-	      "<tt>$mdbm</tt>", "$gconfig{'webprefix'}/config.cgi?$module_name"),"</b> <p>\n";
+	      "<tt>$mdbm</tt>", "@{[&get_webprefix()]}/config.cgi?$module_name"),"</b> <p>\n";
 	print "<b>",&text('virtusers_createfile',
 		    	  'create_file.cgi?mode=mailers'),"</b><p>\n";
 	&ui_print_footer("", $text{'index_return'});

@@ -33,7 +33,7 @@ elsif (&foreign_check("software")) {
 # Check if heartbeat is installed
 if (!-d $config{'ha_dir'}) {
 	print &text('index_edir', "<tt>$config{'ha_dir'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
@@ -44,7 +44,7 @@ if (!-r $ha_cf && -r $config{'alt_ha_cf'}) {
 	}
 if (!-r $ha_cf) {
 	print &text('index_eha_cf', "<tt>$ha_cf</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
@@ -54,7 +54,7 @@ if (!-r $haresources && -r $config{'alt_haresources'}) {
 	}
 if (!-r $haresources) {
 	print &text('index_eharesources', "<tt>$haresources</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
@@ -64,13 +64,13 @@ if (!-r $authkeys && -r $config{'alt_authkeys'}) {
 	}
 if (!-r $authkeys) {
 	print &text('index_eauthkeys', "<tt>$authkeys</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
 if (!-r $config{'req_resource_cmd'}) {
 	print &text('index_ereq_resource_cmd', "<tt>$config{'req_resource_cmd'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}

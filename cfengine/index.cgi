@@ -8,7 +8,7 @@ require './cfengine-lib.pl';
 if (!&has_command($config{'cfengine'})) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 	print &text('index_ecommand', "<tt>$config{'cfengine'}</tt>",
-		     "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		     "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
@@ -38,7 +38,7 @@ if ($ver !~ /^1\./) {
 # Check if config file exists
 if (!-r $cfengine_conf || -d $config{'cfengine_conf'}) {
 	print &text('index_econfig', "<tt>$cfengine_conf</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}

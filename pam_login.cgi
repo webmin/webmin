@@ -47,7 +47,7 @@ elsif ($in{'timed_out'}) {
 
 print "$text{'pam_prefix'}\n";
 
-print &ui_form_start("$gconfig{'webprefix'}/pam_login.cgi", "post");
+print &ui_form_start("@{[&get_webprefix()]}/pam_login.cgi", "post");
 print &ui_hidden("cid", $in{'cid'});
 
 print &ui_table_start($text{'pam_header'},

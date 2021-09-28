@@ -16,7 +16,7 @@ if (defined(&check_print_system)) {
 	if ($pserr) {
 		print $pserr,"\n";
 		print &text('index_esystem',
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 		&ui_print_footer("/", $text{'index'});
 		exit;
 		}

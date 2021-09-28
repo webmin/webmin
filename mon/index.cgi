@@ -8,7 +8,7 @@ require './mon-lib.pl';
 # Check if mon is installed
 if (!-r $mon_config_file) {
 	print "<p>",&text('err_nomonconf', "<tt>$mon_config_file</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}

@@ -13,7 +13,7 @@ $vers = &get_pppoe_version(\$out);
 if (!$vers) {
 	# Not installed
 	print "<p>",&text('index_eadsl', "<tt>$config{'pppoe_cmd'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	}
 elsif (!($conf = &get_config())) {
 	# Missing config file
@@ -21,7 +21,7 @@ elsif (!($conf = &get_config())) {
 		# Just give up
 		print "<p>",
 		      &text('index_econfig', "<tt>$config{'pppoe_conf'}</tt>",
-		      "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		      "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 		}
 	else {
 		# On redhat systems, the file needs to be created by this
@@ -37,7 +37,7 @@ elsif (&find("TYPE", $conf) =~ /modem/i) {
 	# For a modem on a redhat system
 	$config{'pppoe_conf'} =~ /^(.*)\//;
 	print "<p>",&text('index_emodem', "<tt>$1</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	}
 else {
 	# Show configuration form

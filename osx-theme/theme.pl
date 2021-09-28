@@ -93,7 +93,7 @@ if (@_ > 1) {
 		# Module index link
 		local $idx = $module_info{'index_link'};
 		local $mi = $module_index_link || "/$module_name/$idx";
-		push(@right, "<a href=\"$gconfig{'webprefix'}$mi\">".
+		push(@right, "<a href=\"@{[&get_webprefix()]}$mi\">".
 			     "$text{'header_module'}</a>");
 		}
 	if (ref($_[2]) eq "ARRAY" && !$ENV{'ANONYMOUS_USER'}) {
@@ -110,7 +110,7 @@ if (@_ > 1) {
 		if (!$access{'noconfig'} && !$config{'noprefs'}) {
 			local $cprog = $user_module_config_directory ?
 					"uconfig.cgi" : "config.cgi";
-			push(@right, "<a href=\"$gconfig{'webprefix'}/$cprog?$module_name\">$text{'header_config'}</a>");
+			push(@right, "<a href=\"@{[&get_webprefix()]}/$cprog?$module_name\">$text{'header_config'}</a>");
 			}
 		}
 	push(@right, split(/<br>/, $_[6]));

@@ -9,7 +9,7 @@ if (!&has_command($config{'pptpd'}) ||
     !($vers = &get_pptpd_version(\$out))) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1);
 	print "<p>",&text('index_epptpd', "<tt>$config{'pptpd'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	if ($out) {
 		print &text('index_ver', "$config{'pptpd'} -v"),"\n";
 		print "<pre>$out</pre>\n";
@@ -24,7 +24,7 @@ else {
 	if (!-r $config{'file'}) {
 		# Check for the config file
 		print "<p>",&text('index_econfig', "<tt>$config{'file'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 		}
 	elsif (!&has_command("pppd")) {
 		# Check for PPPd

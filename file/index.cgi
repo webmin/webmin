@@ -25,9 +25,9 @@ else {
 	$w = 100;
 	$h = 100;
 	if (!$tconfig{'inframe'}) {
-		$return = "<param name=return value=\"$gconfig{'webprefix'}/?cat=$module_info{'category'}\">";
+		$return = "<param name=return value=\"@{[&get_webprefix()]}/?cat=$module_info{'category'}\">";
 		$returnhtml = &text('index_index',
-				    "$gconfig{'webprefix'}/")."<p>";
+				    "@{[&get_webprefix()]}/")."<p>";
 		}
 	}
 
@@ -57,7 +57,7 @@ if ($main::session_id) {
 	$session = "<param name=session value=\"sid=$main::session_id\">";
 	}
 if (!$access{'noconfig'}) {
-	$config = "<param name=config value=\"$gconfig{'webprefix'}/config.cgi?$module_name\">";
+	$config = "<param name=config value=\"@{[&get_webprefix()]}/config.cgi?$module_name\">";
 	}
 $iconsize = int($config{'iconsize'});
 $root = join(" ", @allowed_roots);

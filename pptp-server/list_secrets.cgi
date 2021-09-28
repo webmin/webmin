@@ -8,7 +8,7 @@ $access{'secrets'} || &error($text{'secrets_ecannot'});
 
 if (!-r $config{'pap_file'}) {
 	print "<p>", &text('secrets_enopfile', $config{'pap_file'},
-			   "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			   "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'secrets_return'});
 	exit;
 	}

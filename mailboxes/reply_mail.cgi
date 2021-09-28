@@ -451,7 +451,7 @@ if ($html_edit) {
 		# Output HTML editor textarea
 		print <<EOF;
 	<script type="text/javascript">
-	  _editor_url = "$gconfig{'webprefix'}/$module_name/xinha/";
+	  _editor_url = "@{[&get_webprefix()]}/$module_name/xinha/";
 	  _editor_lang = "en";
 	</script>
 	<script type="text/javascript" src="xinha/XinhaCore.js"></script>

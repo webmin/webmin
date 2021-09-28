@@ -14,7 +14,7 @@ if (!&has_command($config{'portsentry'}) &&
 			  "<tt>$config{'portsentry'}</tt>",
 			  "<tt>$config{'hostsentry'}</tt>",
 			  "<tt>$config{'logcheck'}</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	}
 else {
 	# Show icons

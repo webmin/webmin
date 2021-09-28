@@ -526,7 +526,7 @@ else {
 sub external_firewall_message
    {
 	local $fwname="";
-	local $fwconfig="$gconfig{'webprefix'}/config.cgi?firewall";
+	local $fwconfig="@{[&get_webprefix()]}/config.cgi?firewall";
 
 	# detect external firewalls
 	local ($filter) = grep { $_->{'name'} eq 'filter' } @{$_[0]};
@@ -547,6 +547,6 @@ sub external_firewall_message
            }
         # alert about the detected firewall modules
         foreach my $word (split ' ', $fwname) {
-                print ui_alert_box(&text("index_$word", "$gconfig{'webprefix'}/$word/", $fwconfig), 'warn');
+                print ui_alert_box(&text("index_$word", "@{[&get_webprefix()]}/$word/", $fwconfig), 'warn');
                 }
    }

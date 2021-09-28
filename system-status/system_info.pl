@@ -73,7 +73,7 @@ if (&show_section('host')) {
 	# System time
 	my $tm = localtime(time());
 	if (&foreign_available("time")) {
-		$tm = &ui_link($gconfig{'webprefix'}.'/time/', $tm);
+		$tm = &ui_link(&get_webprefix().'/time/', $tm);
 		}
 	push(@table, { 'desc' => $text{'right_time'},
 		       'value' => $tm });
@@ -158,7 +158,7 @@ if (&show_section('load')) {
 		my @procs = &proc::list_processes();
 		my $pr = scalar(@procs);
 		if (&foreign_available("proc")) {
-			$pr = &ui_link($gconfig{'webprefix'}.'/proc/', $pr);
+			$pr = &ui_link(&get_webprefix().'/proc/', $pr);
 			}
 		push(@table, { 'desc' => $text{'right_procs'},
 			       'value' => $pr });
@@ -286,7 +286,7 @@ if ($info->{'poss'} && &show_section('poss')) {
 		$msg = $text{'right_upok'};
 		}
 	if (&foreign_available("package-updates")) {
-		$msg = &ui_link($gconfig{'webprefix'}."/package-updates/index.cgi?mode=updates", $msg);
+		$msg = &ui_link(&get_webprefix()."/package-updates/index.cgi?mode=updates", $msg);
 		}
 	push(@table, { 'desc' => $text{'right_updates'},
 		       'value' => $msg,

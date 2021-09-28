@@ -8,7 +8,7 @@ require './burner-lib.pl';
 
 if (!&has_command($config{'cdrecord'})) {
 	print "<p>",&text('index_ecdrecord', "<tt>$config{'cdrecord'}</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{"index"});
 	exit;
 	}

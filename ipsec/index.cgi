@@ -10,7 +10,7 @@ if (!&has_command($config{'ipsec'}) ||
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 		&help_search_link("freeswan", "doc", "google"));
 	print "<p>",&text('index_eipsec', "<tt>$config{'ipsec'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	if ($out) {
 		print &text('index_out',
 			    "<tt>$config{'ipsec'} --version</tt>"),"\n";
@@ -25,7 +25,7 @@ else {
 	# Make sure the config file exists
 	if (!-r $config{'file'}) {
 		print "<p>",&text('index_econfig', "<tt>$config{'file'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 		}
 	else {
 		# Check for the host secret
@@ -98,7 +98,7 @@ else {
 			&icons_table(\@links, \@titles, \@icons, 4);
 			if (!@policies && $got_policies) {
 				print "<b>",&text('index_nopol',
-					"$gconfig{'webprefix'}/config.cgi?$module_name"),"</b><p>\n";
+					"@{[&get_webprefix()]}/config.cgi?$module_name"),"</b><p>\n";
 				}
 
 			print &ui_hr();

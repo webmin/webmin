@@ -23,7 +23,7 @@ if ($in{'file'} ne '' && !&can_access($in{'file'})) {
 # Output HTMLarea init code
 print <<EOF;
 <script type="text/javascript">
-  _editor_url = "$gconfig{'webprefix'}/$module_name/xinha/";
+  _editor_url = "@{[&get_webprefix()]}/$module_name/xinha/";
   _editor_lang = "en";
 </script>
 <script type="text/javascript" src="xinha/XinhaCore.js"></script>

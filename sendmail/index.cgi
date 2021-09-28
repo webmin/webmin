@@ -10,7 +10,7 @@ if (!-x $config{'sendmail_path'}) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 		&help_search_link("sendmail", "man", "doc", "google"));
 	print &text('index_epath', "<tt>$config{'sendmail_path'}</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 
 	&foreign_require("software", "software-lib.pl");
 	$lnk = &software::missing_install_link(
@@ -30,7 +30,7 @@ if (!-s $config{'sendmail_cf'}) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 		&help_search_link("sendmail", "man", "doc", "google"));
 	print &text('index_econfig', "<tt>$config{'sendmail_cf'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 
 	&foreign_require("software", "software-lib.pl");
 	$lnk = &software::missing_install_link(

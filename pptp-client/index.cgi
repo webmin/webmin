@@ -18,7 +18,7 @@ if (!-r $config{'pptp_options'} && $config{'pptp_options'}) {
 if (!&has_command($config{'pptp'})) {
 	# The PPTP command is not installed
 	print "<p>",&text('index_epptp', "<tt>$config{'pptp'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	}
 elsif (!$vers) {
 	# The PPP daemon is not installed

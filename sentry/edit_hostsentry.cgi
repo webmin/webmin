@@ -9,7 +9,7 @@ require './sentry-lib.pl';
 if (!-r $config{'hostsentry'}) {
 	print "<p>",&text('hostsentry_ecommand',
 			  "<tt>$config{'hostsentry'}</tt>", 
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("", $text{'index_return'});
 	exit;
 	}

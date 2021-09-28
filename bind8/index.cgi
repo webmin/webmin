@@ -19,7 +19,7 @@ if (!-x $config{'named_path'}) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		&help_search_link("bind", "doc", "google"));
 	print "<p>",&text('index_enamed', "<tt>$config{'named_path'}</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 
 	&foreign_require("software", "software-lib.pl");
 	my $lnk = &software::missing_install_link("bind", $text{'index_bind'},

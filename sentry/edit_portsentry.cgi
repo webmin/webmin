@@ -9,7 +9,7 @@ if (!$path) {
 	&ui_print_header(undef, $text{'portsentry_title'}, "");
 	print "<p>",&text('portsentry_ecommand',
 			  "<tt>$config{'portsentry'}</tt>", 
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("", $text{'index_return'});
 	exit;
 	}
@@ -27,7 +27,7 @@ if ($st[7] != $portsentry{'size'} || $st[9] != $portsentry{'mtime'}) {
 		&ui_print_header(undef, $text{'portsentry_title'}, "");
 		print "<p>",&text('portsentry_eversion',
 				  "<tt>$config{'portsentry'}</tt>", 
-				  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+				  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 		&ui_print_footer("", $text{'index_return'});
 		exit;
 		}

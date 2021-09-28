@@ -18,7 +18,7 @@ if (!-x $config{'slpd'}) {
 	&ui_print_header(undef, $text{'index_title'}, "", "english", 1, 1, 0,
 		&help_search_link("openslp", "man", "doc", "google"));
 	print &text('index_eslpd', "<tt>$config{'slpd'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
@@ -33,7 +33,7 @@ $out =~ /version:\s+(\S+)/i;
 # Check if the config file exists
 if (!-r $config{'slpd_conf'}) {
 	print &text('index_econf', "<tt>$config{'slpd_conf'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}

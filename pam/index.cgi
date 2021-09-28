@@ -9,7 +9,7 @@ require './pam-lib.pl';
 @pams = sort { $a->{'name'} cmp $b->{'name'} } &get_pam_config();
 if (!@pams) {
 	print "<p>",&text('index_none', "<tt>$config{'pam_dir'}</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}

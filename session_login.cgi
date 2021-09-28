@@ -64,7 +64,7 @@ elsif ($in{'timed_out'}) {
 	}
 print "$text{'session_prefix'}\n";
 
-print &ui_form_start("$gconfig{'webprefix'}/session_login.cgi", "post");
+print &ui_form_start("@{[&get_webprefix()]}/session_login.cgi", "post");
 print &ui_hidden("page", $in{'page'});
 print &ui_table_start($text{'session_header'},
 		      "width=40% class='loginform'", 2);

@@ -40,7 +40,7 @@ if (!$in{'file'}) {
 	if (!-r $config{'login_config'}) {
 		print "<p>",&text('options_elogin',
 		    "<tt>$config{'login_config'}</tt>",
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 		&ui_print_footer("", $text{'index_return'});
 		exit;
 		}

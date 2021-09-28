@@ -9,13 +9,13 @@ require './grub-lib.pl';
 # Check that GRUB is installed
 if (!-r $config{'menu_file'}) {
 	print "<p>",&text('index_efile', "<tt>$config{'menu_file'}</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
 if (!&has_command($config{'grub_path'})) {
 	print "<p>",&text('index_epath', "<tt>$config{'grub_path'}</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}

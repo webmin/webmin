@@ -159,7 +159,7 @@ else {
 		if (!$reboot_before && &check_reboot_required(1) &&
 		    &foreign_check("init")) {
 			print &ui_form_start(
-				"$gconfig{'webprefix'}/init/reboot.cgi");
+				"@{[&get_webprefix()]}/init/reboot.cgi");
 			print &ui_hidden("confirm", 1);
 			print "<b>",$text{'update_rebootdesc'},"</b><p>\n";
 			print &ui_form_end(

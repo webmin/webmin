@@ -101,18 +101,18 @@ sub theme_prebody
 my $module_name = &get_module_name();
 if ($script_name =~ /session_login.cgi/) {
 	# Generate CSS link
-	print "<link rel='stylesheet' type='text/css' href='$gconfig{'webprefix'}/unauthenticated/style.css'>\n";
+	print "<link rel='stylesheet' type='text/css' href='@{[&get_webprefix()]}/unauthenticated/style.css'>\n";
 	}
 }
 
 sub theme_prehead
 {
-print "<link rel='stylesheet' type='text/css' href='$gconfig{'webprefix'}/unauthenticated/style.css' />\n";
-print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/toggleview.js'></script>\n";
+print "<link rel='stylesheet' type='text/css' href='@{[&get_webprefix()]}/unauthenticated/style.css' />\n";
+print "<script type='text/javascript' src='@{[&get_webprefix()]}/unauthenticated/toggleview.js'></script>\n";
 print "<script>\n";
 print "var rowsel = new Array();\n";
 print "</script>\n";
-print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/sorttable.js'></script>\n";
+print "<script type='text/javascript' src='@{[&get_webprefix()]}/unauthenticated/sorttable.js'></script>\n";
 }
 
 sub theme_popup_prehead
@@ -209,7 +209,7 @@ $rv .= "document.${name}_tabtitles = $tabtitles;\n";
 $rv .= "</script>\n";
 
 # Output the tabs
-my $imgdir = "$gconfig{'webprefix'}/images";
+my $imgdir = "@{[&get_webprefix()]}/images";
 $rv .= &ui_hidden($name, $sel)."\n";
 $rv .= "<table border=0 cellpadding=0 cellspacing=0 class='ui_tabs'>\n";
 $rv .= "<tr><td bgcolor=#ffffff colspan=".(scalar(@$tabs)*2+1).">";
@@ -407,7 +407,7 @@ $rv .= "<table class='ui_table' $tabletags>\n";
 if (defined($heading) || defined($rightheading)) {
 	$rv .= "<thead><tr class='ui_table_head'>";
 	if (defined($heading)) {
-		$rv .= "<td><a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\"><b><font color=#ffffff>$heading</font></b></a></td>";
+		$rv .= "<td><a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='@{[&get_webprefix()]}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\"><b><font color=#ffffff>$heading</font></b></a></td>";
 		}
         if (defined($rightheading)) {
                 $rv .= "<td align=right>$rightheading</td>";
@@ -544,11 +544,11 @@ my ($direction, $url, $disabled) = @_;
 my $alt = $direction eq "left" ? '<-' : '->';
 if ($disabled) {
   return "<img alt=\"$alt\" align=\"middle\""
-       . "src=\"$gconfig{'webprefix'}/images/$direction-grey.gif\">\n";
+       . "src=\"@{[&get_webprefix()]}/images/$direction-grey.gif\">\n";
   }
 else {
   return "<a href=\"$url\"><img alt=\"$alt\" align=\"top\""
-       . "src=\"$gconfig{'webprefix'}/images/$direction.gif\"></a>\n";
+       . "src=\"@{[&get_webprefix()]}/images/$direction.gif\"></a>\n";
   }
 }
 
@@ -572,7 +572,7 @@ for($i=0; $i+1<@_; $i+=2) {
 		elsif ($url =~ /^\?/ && $module_name) {
 			$url = "/$module_name/$url";
 			}
-		$url = "$gconfig{'webprefix'}$url" if ($url =~ /^\//);
+		$url = "@{[&get_webprefix()]}$url" if ($url =~ /^\//);
 		if ($count++ == 0) {
 			print theme_ui_nav_link("left", $url);
 			}
@@ -593,7 +593,7 @@ if (!$_[$i]) {
 sub theme_ui_hidden_javascript
 {
 my $rv;
-my $imgdir = "$gconfig{'webprefix'}/images";
+my $imgdir = "@{[&get_webprefix()]}/images";
 
 return <<EOF;
 <style>

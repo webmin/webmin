@@ -105,7 +105,7 @@ local ($d, $action) = @_;
 print "<script>\n";
 if ($action eq 'create') {
 	# Select the new domain
-	print "top.left.location = '$gconfig{'webprefix'}/left.cgi?dom=$d->{'id'}';\n";
+	print "top.left.location = '@{[&get_webprefix()]}/left.cgi?dom=$d->{'id'}';\n";
 	}
 else {
 	# Just refresh left
@@ -155,7 +155,7 @@ if (window.parent && window.parent.frames[0]) {
 			//	// Need to change value of selector
 			//	serversel.value = '$server->{'id'}';
 			//	}
-			window.parent.frames[0].location = '$gconfig{'webprefix'}/left.cgi?mode=vm2&sid=$server->{'id'}';
+			window.parent.frames[0].location = '@{[&get_webprefix()]}/left.cgi?mode=vm2&sid=$server->{'id'}';
 			}
 		}
 	}
@@ -179,7 +179,7 @@ if (window.parent && window.parent.frames[0]) {
 		if (domsel && domsel.value != '$d->{'id'}') {
 			// Need to change value
 			// domsel.value = '$d->{'id'}';
-			window.parent.frames[0].location = '$gconfig{'webprefix'}/left.cgi?mode=virtualmin&dom=$d->{'id'}';
+			window.parent.frames[0].location = '@{[&get_webprefix()]}/left.cgi?mode=virtualmin&dom=$d->{'id'}';
 			}
 		}
 	}
@@ -232,8 +232,8 @@ sub theme_prebody
 {
 if ($script_name =~ /session_login.cgi/) {
 	# Generate CSS link
-	print "<link rel='stylesheet' type='text/css' href='$gconfig{'webprefix'}/unauthenticated/gray-reset-fonts-grids-base.css'>\n";
-	print "<link rel='stylesheet' type='text/css' href='$gconfig{'webprefix'}/unauthenticated/gray-virtual-server-style.css'>\n";
+	print "<link rel='stylesheet' type='text/css' href='@{[&get_webprefix()]}/unauthenticated/gray-reset-fonts-grids-base.css'>\n";
+	print "<link rel='stylesheet' type='text/css' href='@{[&get_webprefix()]}/unauthenticated/gray-virtual-server-style.css'>\n";
 	print "<!--[if IE]>\n";
 	print "<style type=\"text/css\">\n";
 	print "table.formsection, table.ui_table, table.loginform { border-collapse: collapse; }\n";
@@ -244,8 +244,8 @@ if ($script_name =~ /session_login.cgi/) {
 
 sub theme_prehead
 {
-print "<link rel='stylesheet' type='text/css' href='$gconfig{'webprefix'}/unauthenticated/gray-reset-fonts-grids-base.css'>\n";
-print "<link rel='stylesheet' type='text/css' href='$gconfig{'webprefix'}/unauthenticated/gray-virtual-server-style.css' />\n";
+print "<link rel='stylesheet' type='text/css' href='@{[&get_webprefix()]}/unauthenticated/gray-reset-fonts-grids-base.css'>\n";
+print "<link rel='stylesheet' type='text/css' href='@{[&get_webprefix()]}/unauthenticated/gray-virtual-server-style.css' />\n";
 print "<!--[if IE]>\n";
 print "<style type=\"text/css\">\n";
 print "table.formsection, table.ui_table, table.loginform { border-collapse: collapse; }\n";
@@ -254,7 +254,7 @@ print "<![endif]-->\n";
 print "<script>\n";
 print "var rowsel = new Array();\n";
 print "</script>\n";
-print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/sorttable.js'></script>\n";
+print "<script type='text/javascript' src='@{[&get_webprefix()]}/unauthenticated/sorttable.js'></script>\n";
 if ($ENV{'HTTP_USER_AGENT'} =~ /Chrome/) {
 	print "<style type=\"text/css\">\n";
 	print "textarea,pre { font-size:120%; }\n";
@@ -391,7 +391,7 @@ $rv .= "document.${name}_tabtitles = $tabtitles;\n";
 $rv .= "</script>\n";
 
 # Output the tabs
-my $imgdir = "$gconfig{'webprefix'}/images";
+my $imgdir = "@{[&get_webprefix()]}/images";
 $rv .= &ui_hidden($name, $sel)."\n";
 $rv .= "<table border=0 cellpadding=0 cellspacing=0 class='ui_tabs'>\n";
 $rv .= "<tr><td bgcolor=#ffffff colspan=".(scalar(@$tabs)*2+1).">";
@@ -590,7 +590,7 @@ $rv .= "<table class='ui_table' $tabletags>\n";
 if (defined($heading) || defined($rightheading)) {
 	$rv .= "<thead><tr>";
 	if (defined($heading)) {
-		$rv .= "<td><a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\" class='ui-hidden-table-title'><b>$heading</b></a></td>";
+		$rv .= "<td><a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='@{[&get_webprefix()]}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\" class='ui-hidden-table-title'><b>$heading</b></a></td>";
 		}
         if (defined($rightheading)) {
                 $rv .= "<td align=right>$rightheading</td>";
@@ -727,11 +727,11 @@ my ($direction, $url, $disabled) = @_;
 my $alt = $direction eq "left" ? '<-' : '->';
 if ($disabled) {
   return "<img alt=\"$alt\" align=\"middle\""
-       . "src=\"$gconfig{'webprefix'}/images/$direction-grey.gif\">\n";
+       . "src=\"@{[&get_webprefix()]}/images/$direction-grey.gif\">\n";
   }
 else {
   return "<a href=\"$url\"><img alt=\"$alt\" align=\"top\""
-       . "src=\"$gconfig{'webprefix'}/images/$direction.gif\"></a>\n";
+       . "src=\"@{[&get_webprefix()]}/images/$direction.gif\"></a>\n";
   }
 }
 
@@ -755,7 +755,7 @@ for($i=0; $i+1<@_; $i+=2) {
 		elsif ($url =~ /^\?/ && get_module_name()) {
 			$url = "/".get_module_name()."/$url";
 			}
-		$url = "$gconfig{'webprefix'}$url" if ($url =~ /^\//);
+		$url = "@{[&get_webprefix()]}$url" if ($url =~ /^\//);
 		if ($count++ == 0) {
 			print theme_ui_nav_link("left", $url);
 			}
@@ -776,7 +776,7 @@ if (!$_[$i]) {
 sub theme_ui_hidden_javascript
 {
 my $rv;
-my $imgdir = "$gconfig{'webprefix'}/images";
+my $imgdir = "@{[&get_webprefix()]}/images";
 
 return <<EOF;
 <style>

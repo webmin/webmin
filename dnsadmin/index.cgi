@@ -10,7 +10,7 @@ print &ui_hr();
 if (!-x $config{'named_pathname'}) {
 	print "<p>The BIND 4 DNS server <i>$config{'named_pathname'}</i>\n";
 	print "could not be found on your system. Maybe it is not installed,\n";
-	print "or your <a href=\"$gconfig{'webprefix'}/config.cgi?$module_name\">BIND 4 module\n";
+	print "or your <a href=\"@{[&get_webprefix()]}/config.cgi?$module_name\">BIND 4 module\n";
 	print "configuration</a> is incorrect. <p>\n";
 	print &ui_hr();
 	&footer("/", "index");

@@ -454,14 +454,14 @@ local $conf=$_[0];
 # Check for the majordomo config file
 if (!-r $config{'majordomo_cf'}) {
 	print &text('index_econfig', "<tt>$config{'majordomo_cf'}</tt>",
-		 "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		 "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
 # Check for the programs dir
 if (!-d $config{'program_dir'}) {
 	print &text('index_eprograms', "<tt>$config{'program_dir'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
@@ -469,7 +469,7 @@ if (!-d $config{'program_dir'}) {
 if (!-r "$config{'program_dir'}/majordomo_version.pl") {
 	print &text('index_eversion2', "majordomo_version.pl",
 			  $config{'program_dir'},
-		 	  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		 	  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}

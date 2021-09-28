@@ -225,7 +225,7 @@ return ($_[0]->{'active'} ? "" : "#").$_[0]->{'dir'}."\t".join(" ", @htxt);
 sub file_chooser_button2
 {
     my $disabled = ($_[3] == 1) ? "disabled" : "";
-    return "<input type=button name=$_[2] onClick='ifield = document.forms[0].$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/chooser.cgi?type=$_[1]&chroot=/&file=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbar=no,width=400,height=300\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\" $disabled>\n";
+    return "<input type=button name=$_[2] onClick='ifield = document.forms[0].$_[0]; chooser = window.open(\"@{[&get_webprefix()]}/chooser.cgi?type=$_[1]&chroot=/&file=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbar=no,width=400,height=300\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\" $disabled>\n";
 }
 
 #------------------------------------------------------

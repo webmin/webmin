@@ -28,7 +28,7 @@ my $rv = WebminUI::Textbox::html($self);
 my $name = $self->get_name();
 my $multiple = $self->get_multiple();
 local $w = $multiple ? 500 : 300;
-$rv .= "&nbsp;<input type=button name=${name}_button onClick='ifield = form.$name; chooser = window.open(\"$gconfig{'webprefix'}/group_chooser.cgi?multi=$multiple&group=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=200\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+$rv .= "&nbsp;<input type=button name=${name}_button onClick='ifield = form.$name; chooser = window.open(\"@{[&get_webprefix()]}/group_chooser.cgi?multi=$multiple&group=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=200\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 return $rv;
 }
 

@@ -17,7 +17,7 @@ else {
 ($ver, $mods) = &httpd_info($httpd = &find_httpd());
 if (!$ver) {
 	print &text('reconfig_ever', "<tt>$httpd</tt>",
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}

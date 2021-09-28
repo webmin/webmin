@@ -12,7 +12,7 @@ $access{'calamaris'} || &error($text{'calamaris_ecannot'});
 # is calamaris installed?
 if (!&has_command($config{'calamaris'})) {
 	print &text('calamaris_eprog', "<tt>$config{'calamaris'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("", $text{'index_return'});
 	exit;
 	}
@@ -57,7 +57,7 @@ while(my $f = readdir($fh)) {
 closedir($fh);
 if (!@files) {
 	print &text('calamaris_elogs', "<tt>$ld</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("", $text{'index_return'});
 	exit;
 	}

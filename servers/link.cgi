@@ -25,7 +25,7 @@ elsif (@ARGV) {
 my $s = &get_server($id);
 &can_use_server($s) || &error($text{'link_ecannot'});
 $access{'links'} || &error($text{'link_ecannot'});
-my $url = "$gconfig{'webprefix'}/$module_name/link.cgi/$s->{'id'}";
+my $url = "@{[&get_webprefix()]}/$module_name/link.cgi/$s->{'id'}";
 $| = 1;
 my $meth = $ENV{'REQUEST_METHOD'};
 my %miniserv;
@@ -45,7 +45,7 @@ if ($s->{'autouser'}) {
 		print &text('login_desc', "<tt>$s->{'host'}</tt>"),"<p>\n";
 
 		print &ui_form_start(
-			"$gconfig{'webprefix'}/$module_name/login.cgi", "post");
+			"@{[&get_webprefix()]}/$module_name/login.cgi", "post");
 		print &ui_hidden("id", $id);
 
 		print &ui_table_start($text{'login_header'}, undef, 2);
@@ -106,12 +106,12 @@ my $http_prot = $ENV{'HTTPS'} eq "ON" ? "https" : "http";
 &write_http_connection($con, sprintf(
 			"Webmin-servers: %s://%s:%d%s/%s\n",
 			$http_prot, $http_host, $http_port,
-			$gconfig{'webprefix'},
+			@{[&get_webprefix()]},
 			$tconfig{'inframe'} ? "" : "$module_name/"));
 &write_http_connection($con, sprintf(
 			"Webmin-path: %s://%s:%d%s/%s/link.cgi%s\n",
 			$http_prot, $http_host, $http_port,
-			$gconfig{'webprefix'}, $module_name,
+			@{[&get_webprefix()]}, $module_name,
 			$ENV{'PATH_INFO'}));
 if ($ENV{'HTTP_WEBMIN_PATH'}) {
 	&write_http_connection($con, sprintf(
@@ -122,7 +122,7 @@ else {
 	&write_http_connection($con, sprintf(
 			"Complete-webmin-path: %s://%s:%d%s/%s/link.cgi%s\n",
 			$http_prot, $http_host, $http_port,
-			$gconfig{'webprefix'}, $module_name,
+			@{[&get_webprefix()]}, $module_name,
 			$ENV{'PATH_INFO'}));
 	}
 my $cl = $ENV{'CONTENT_LENGTH'};
@@ -171,7 +171,7 @@ elsif ($header{'www-authenticate'}) {
 	if ($s->{'autouser'}) {
 		print "Set-Cookie: $id=; path=/\n";
 		&error(&text('link_eautologin', $s->{'host'},
-		     "$gconfig{'webprefix'}/$module_name/link.cgi/$id/"));
+		     "@{[&get_webprefix()]}/$module_name/link.cgi/$id/"));
 		}
 	else {
 		&error(&text('link_elogin', $s->{'host'}, $user));

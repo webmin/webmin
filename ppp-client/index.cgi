@@ -11,7 +11,7 @@ if (!&has_command($config{'wvdial'}) ||
      /WvDial\s+([^: \n\r]+)/i) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 	print "<p>",&text('index_ewvdial', "<tt>$config{'wvdial'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	if ($out) {
 		print &text('index_ver', "$config{'wvdial'} --version"),"\n";
 		print "<pre>$out</pre>\n";

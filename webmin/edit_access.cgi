@@ -39,7 +39,7 @@ else {
 	$msg = &text('access_elibwrap', "<tt>Authen::Libwrap</tt>")."\n";
 	if (foreign_available("cpan")) {
 		$msg .= &text('access_libwrapcpan',
-			"$gconfig{'webprefix'}/cpan/download.cgi?source=3&cpan=Authen::Libwrap&".
+			"@{[&get_webprefix()]}/cpan/download.cgi?source=3&cpan=Authen::Libwrap&".
 			"mode=2&return=/$module_name/&returndesc=".
 			&urlize($text{'index_return'}));
 		}

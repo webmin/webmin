@@ -37,13 +37,13 @@ print &ui_checked_columns_row(["<b>Autodetect aliases file from mailer</b>", ucf
 $res=$ok;
 $tocheck=$aliases;
 if (!-r $tocheck) { $res=$fail; $tocheck = &text('index_esendmail', 'Sendmail alias file', $tocheck,
-                  "$gconfig{'webprefix'}/config.cgi?$module_name"); }
+                  "@{[&get_webprefix()]}/config.cgi?$module_name"); }
 print &ui_checked_columns_row(["<b>Aliases file used for majordomo</b>", $tocheck, $res],
 			 \@tds,undef, undef, 0,1);
 $res=$ok;
 $tocheck=$config{'majordomo_cf'};
 if (!-r $tocheck) { $res=$fail; $tocheck = &text('index_econfig', "<tt>$tocheck</tt>",
-                 "$gconfig{'webprefix'}/config.cgi?$module_name"); }
+                 "@{[&get_webprefix()]}/config.cgi?$module_name"); }
 print &ui_checked_columns_row(["<b>Majordomo configuration file</b>", $tocheck, $res],
 			 \@tds,undef, undef, 0,1);
 
@@ -54,7 +54,7 @@ if ( $res eq $ok) {
 	local $progdir, $progdirok;
 	$tocheck= $progdir = $config{'program_dir'};
 	if (!-d $tocheck ) { $res=$fail; $tocheck = &text('index_eprograms', "<tt>$tocheck</tt>",
-                  "$gconfig{'webprefix'}/config.cgi?$module_name"); }
+                  "@{[&get_webprefix()]}/config.cgi?$module_name"); }
 	print &ui_checked_columns_row(["<b>Majordomo programm dir</b>", $tocheck, $res],
 			 \@tds,undef, undef, 0,1);
 	if ($res eq $ok) {

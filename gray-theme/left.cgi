@@ -62,7 +62,7 @@ push(@leftmenu, &list_modules_webmin_menu());
 # Show module/help search form
 if ($gaccess{'webminsearch'}) {
 	push(@leftmenu, { 'type' => 'input',
-			  'cgi' => $gconfig{'webprefix'}.'/webmin_search.cgi',
+			  'cgi' => &get_webprefix().'/webmin_search.cgi',
 			  'name' => 'search',
 			  'desc' => $text{'left_search'},
 			  'size' => 15 });
@@ -228,6 +228,6 @@ foreach my $item (@$items) {
 sub add_webprefix
 {
 my ($link) = @_;
-return $link =~ /^\// ? $gconfig{'webprefix'}.$link : $link;
+return $link =~ /^\// ? &get_webprefix().$link : $link;
 }
 

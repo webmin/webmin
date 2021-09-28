@@ -20,7 +20,7 @@ if (!&has_command($config{'spamassassin'}) ||
 		}
 	else {
 		print &text('index_ecmd', "<tt>$config{'spamassassin'}</tt>",
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 
 		# Offer to install package
 		&foreign_require("software", "software-lib.pl");
