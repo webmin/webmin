@@ -11652,7 +11652,6 @@ Returns ready to use webprefix
 =cut
 sub get_webprefix
 {
-&load_theme_library();
 if (defined(&theme_get_webprefix)) {
 	return &theme_get_webprefix(@_);
 	}
