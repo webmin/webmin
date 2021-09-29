@@ -53,7 +53,7 @@ my $split = defined($_[4]) ? $_[4] : "=";
 my $realfile = &translate_filename($_[0]);
 &open_readfile(ARFILE, $_[0]) || return 0;
 while(<ARFILE>) {
-	chomp;
+	s/\r|\n//g;
 	my $hash = index($_, "#");
 	my $eq = index($_, $split);
 	if ($hash != 0 && $eq >= 0) {
