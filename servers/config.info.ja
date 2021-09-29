@@ -1,0 +1,17 @@
+line1=Configurable options,11
+resolve=Resolve found server addresses,1,1-Yes,0-No
+scan_time=Time to wait for scan responses,0,5
+listen=Scan for servers on UDP port,3,Same as this system
+display_mode=Show servers as,1,1-Table,0-Icons
+sort_mode=Sort servers by,4,4-IP Address,1-Hostname,2-Description,3-OS,5-Group,0-Order created
+show_status=Show status for servers,1,1-Yes,0-No
+show_ip=Always show address and port on main page?,1,1-Yes,0-No
+deflink=Default login mode,4,0-Normal link to server,1-Login via Webmin,2-Login when icon is clicked,3-Login with same username and password
+deffast=Default RPC mode,1,1-Fast,2-Automatic,0-Slow
+auto_type=Default system type,14,show_deftype
+skipips=IPs or hostnames of systems to not detect,9,50,5,\t
+skipifaces=Network interfaces to not detect,0
+max_servers=Show search form if number of servers exceeds,0
+line2=System configuration,11
+groups_dir=MSC cluster groups directory,0
+capath=File or directory for remote SSL CA certificates,0
