@@ -8,7 +8,7 @@ require './pserver-lib.pl';
 if (!$cvs_path) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 	print "<p>",&text('index_ecvs', "<tt>$config{'cvs'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
@@ -36,7 +36,7 @@ if (@avfeatures == 1 && !$access{'setup'}) {
 if (!-d "$config{'cvsroot'}/CVSROOT") {
 	# No CVS root .. offer to setup
 	print "<p>",&text('index_eroot',
-		"$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		"@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 
 	if ($access{'init'}) {
 		print &text('index_initdesc',

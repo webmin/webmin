@@ -7,7 +7,7 @@ require './usermin-lib.pl';
 if (!-r "$config{'usermin_dir'}/miniserv.conf") {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 	print "<p>",&text('index_econfig', "<tt>$config{'usermin_dir'}</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	if ($config{'usermin_dir'} eq $standard_usermin_dir) {
 		local $mode;
 		if (&foreign_check("software")) {
@@ -33,7 +33,7 @@ elsif (&same_file($config{'usermin_dir'}, $config_directory)) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
 	print &text('index_esame', "<tt>$config{'usermin_dir'}</tt>",
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 
 	&ui_print_footer("/", $text{'index'});
 	exit;

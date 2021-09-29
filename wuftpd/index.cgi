@@ -11,7 +11,7 @@ if (!-x $config{'ftpd_path'}) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 		&help_search_link("wu-ftpd", "man", "doc", "google"));
 	print &text('index_eftpd', "<tt>$config{'ftpd_path'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
@@ -21,7 +21,7 @@ if (!-r $config{'ftpaccess'}) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 		&help_search_link("wu-ftpd", "man", "doc", "google"));
 	print &text('index_eftpaccess', "<tt>$config{'ftpaccess'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
@@ -69,7 +69,7 @@ if ($ftpd{'size'} != $st[7] || $ftpd{'mtime'} != $st[9]) {
 			&help_search_link("wu-ftpd", "man", "doc", "google"));
 		print &text('index_eversion',
 			  "<tt>$config{'ftpd_path'}</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name",
+			  "@{[&get_webprefix()]}/config.cgi?$module_name",
 			  "<pre>$out</pre>"),"<p>\n";
 		&ui_print_footer("/", $text{'index'});
 		exit;

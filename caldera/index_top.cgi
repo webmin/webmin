@@ -103,7 +103,7 @@ foreach $m (@modules) {
 	local $img = -r "$theme_root_directory/$m->{'dir'}/images/icon.gif" ?
 				"/$m->{'dir'}/images/icon.gif" :
 				"/template.gif";
-	print "<TD width=1%><A TARGET=body HREF='$gconfig{'webprefix'}/$m->{'dir'}/$lnk'><IMG SRC='$gconfig{'webprefix'}$img' WIDTH=55 HEIGHT=24 BORDER=0></A></TD><TD WIDTH=32%><A TARGET=body HREF='$gconfig{'webprefix'}/$m->{'dir'}/$lnk' CLASS=bodyNav>$m->{'desc'}</A></TD>\n";
+	print "<TD width=1%><A TARGET=body HREF='@{[&get_webprefix()]}/$m->{'dir'}/$lnk'><IMG SRC='@{[&get_webprefix()]}$img' WIDTH=55 HEIGHT=24 BORDER=0></A></TD><TD WIDTH=32%><A TARGET=body HREF='@{[&get_webprefix()]}/$m->{'dir'}/$lnk' CLASS=bodyNav>$m->{'desc'}</A></TD>\n";
 	if ($pos++ % 3 == 2) { print "</tr>\n"; }
 	}
 

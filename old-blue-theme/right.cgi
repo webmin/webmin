@@ -29,7 +29,7 @@ my @links = grep { $_->{'type'} eq 'link' } @info;
 if (@links) {
 	my @linkshtml = map {
 		my $lnk = $_->{'link'};
-		$lnk = $gconfig{'webprefix'}.$lnk if ($lnk =~ /^\//);
+		$lnk = &get_webprefix().$lnk if ($lnk =~ /^\//);
 		&ui_link($lnk, $_->{'desc'}, undef,
 			 $_->{'target'} eq 'new' ? 'target=_blank' :
 			 $_->{'target'} eq 'window' ? 'target=_top' : '')

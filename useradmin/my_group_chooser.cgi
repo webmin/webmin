@@ -75,7 +75,7 @@ if ($in{'multi'}) {
 			}
 		print "</table>\n";
         if ( $cnt >= 10 ) {
-            print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js?28112013'></script>";
+            print "<script type='text/javascript' src='@{[&get_webprefix()]}/unauthenticated/filter_match.js?28112013'></script>";
             print "<script type='text/javascript'>filter_match_box();</script>";
         }
 		&popup_footer();
@@ -164,7 +164,7 @@ else {
 		}
 	print "</table>\n";
     	if ( $cnt >= 10 ) {
-        	print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js?28112013'></script>";
+        	print "<script type='text/javascript' src='@{[&get_webprefix()]}/unauthenticated/filter_match.js?28112013'></script>";
         	print "<script type='text/javascript'>filter_match_box();</script>";
     	}
 	&popup_footer();

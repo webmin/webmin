@@ -9,7 +9,7 @@ if (!-r $config{'jabber_config'}) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, undef,
 		&help_search_link("jabber", "man", "doc", "google"));
 	print &text('index_econfig', "<tt>$config{'jabber_config'}</tt>",
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{"index"});
 	exit;
 	}
@@ -19,7 +19,7 @@ if (!-d $config{'jabber_dir'}) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, undef,
 		&help_search_link("jabber", "man", "doc", "google"));
 	print &text('index_edir', "<tt>$config{'jabber_dir'}</tt>",
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{"index"});
 	exit;
 	}
@@ -31,7 +31,7 @@ if (!-x $jabberd) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, undef,
 		&help_search_link("jabber", "man", "doc", "google"));
 	print &text('index_ejabberd', "<tt>$jabberd</tt>",
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{"index"});
 	exit;
 	}

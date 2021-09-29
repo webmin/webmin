@@ -350,7 +350,7 @@ else {
 				if ($@) {
 					$err = &text('install_eperldep',
 					     "<tt>$m</tt>", "<tt>$dep</tt>",
-					     "$gconfig{'webprefix'}/cpan/download.cgi?source=3&cpan=$dep");
+					     "@{[&get_webprefix()]}/cpan/download.cgi?source=3&cpan=$dep");
 					}
 				}
 			}
@@ -1146,7 +1146,7 @@ if (($realos{'os_version'} ne $gconfig{'os_version'} ||
 
 	# Tell the user that OS version was updated
 	push(@notifs,
-	    &ui_form_start("$gconfig{'webprefix'}/webmin/fix_os.cgi").
+	    &ui_form_start("@{[&get_webprefix()]}/webmin/fix_os.cgi").
 	    &text('os_incorrect', $realos{'real_os_type'},
                               $realos{'real_os_version'})."<p>\n".
 	    &ui_form_end([ [ undef, $text{'os_fix'} ] ])
@@ -1189,7 +1189,7 @@ if (&foreign_check("acl")) {
 		my $daysold = (time() - $uinfo->{'lastchange'})/(24*60*60);
 		my $link = &foreign_available("change-user") ?
 			&text('notif_changenow',
-			     "$gconfig{'webprefix'}/change-user/")."<p>\n" : "";
+			     "@{[&get_webprefix()]}/change-user/")."<p>\n" : "";
 		if ($miniserv{'pass_maxdays'} &&
 		    $daysold > $miniserv{'pass_maxdays'}) {
 			# Already expired
@@ -1258,7 +1258,7 @@ if (&foreign_available($module_name) && !$gconfig{'nowebminup'} && !$noupdates &
 				}
 			}
 		push(@notifs,
-		     &ui_form_start("$gconfig{'webprefix'}/webmin/upgrade.cgi",
+		     &ui_form_start("@{[&get_webprefix()]}/webmin/upgrade.cgi",
 				    "form-data").
 		     &ui_hidden("source", 2).
 		     &ui_hidden("sig", $checksig).
@@ -1285,7 +1285,7 @@ if (&foreign_check("package-updates") && &foreign_available("init")) {
 		}
 	if (&package_updates::check_reboot_required() && $allow_reboot_required) {
 		push(@notifs,
-			&ui_form_start("$gconfig{'webprefix'}/init/reboot.cgi").
+			&ui_form_start("@{[&get_webprefix()]}/init/reboot.cgi").
 			$text{'notif_reboot'}."<p>\n".
 			&ui_form_end([ [ undef, $text{'notif_rebootok'} ],
 					[ 'removenotify', $text{'alert_hide'} ] ]));
@@ -2004,7 +2004,7 @@ my %aclconfig = &foreign_config('acl');
 my $cmd = &acl::get_ssleay();
 if (!$cmd) {
 	return &text('newkey_ecmd', "<tt>$aclconfig{'ssleay'}</tt>",
-		     "$gconfig{'webprefix'}/config.cgi?acl");
+		     "@{[&get_webprefix()]}/config.cgi?acl");
 	}
 
 # Run openssl and feed it key data
@@ -2085,7 +2085,7 @@ my %aclconfig = &foreign_config('acl');
 my $cmd = &acl::get_ssleay();
 if (!$cmd) {
 	return &text('newkey_ecmd', "<tt>$aclconfig{'ssleay'}</tt>",
-		     "$gconfig{'webprefix'}/config.cgi?acl");
+		     "@{[&get_webprefix()]}/config.cgi?acl");
 	}
 
 # Generate the key

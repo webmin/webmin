@@ -128,7 +128,7 @@ foreach my $a (@ann) {
 		     'desc' => $a->{'title'},
 		   };
 	my $hide = &ui_link_button(
-		"/$module_name/hide.cgi?id=".&urlize($a->{'file'}),
+		&get_webprefix()."/$module_name/hide.cgi?id=".&urlize($a->{'file'}),
 		$text{'announce_hide'});
 	if ($a->{'type'} eq 'warning') {
 		# A warning message
@@ -136,8 +136,11 @@ foreach my $a (@ann) {
 		$info->{'level'} = $a->{'level'} || 'info';
 		$info->{'warning'} = &html_escape($a->{'message'})."<p>\n";
 		for(my $b=0; defined($a->{'link'.$b}); $b++) {
+			my $link = $a->{'link'.$b};
+			$link = &get_webprefix().$link
+				if (&get_webprefix() && $link =~ /^\//);
 			$info->{'warning'} .= &ui_link_button(
-				$a->{'link'.$b}, $a->{'desc'.$b}, "_new")."\n";
+				$link, $a->{'desc'.$b}, "_new")."\n";
 			}
 		$info->{'warning'} .= $hide;
 		}
@@ -147,8 +150,11 @@ foreach my $a (@ann) {
 		$info->{'level'} = $a->{'level'};
 		$info->{'html'} = &html_escape($a->{'message'})."<p>\n";
 		for(my $b=0; defined($a->{'link'.$b}); $b++) {
+			my $link = $a->{'link'.$b};
+			$link = &get_webprefix().$link
+				if (&get_webprefix() && $link =~ /^\//);
 			$info->{'html'} .= &ui_link_button(
-				$a->{'link'.$b}, $a->{'desc'.$b}, "_new")."\n";
+				$link, $a->{'desc'.$b}, "_new")."\n";
 			}
 		$info->{'html'} .= $hide;
 		}

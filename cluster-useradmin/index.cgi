@@ -27,7 +27,7 @@ foreach $h (@hosts) {
 	push(@titles, $s->{'desc'} ? $s->{'desc'}
 				   : "$s->{'host'}:$s->{'port'}");
 	push(@links, $link);
-	push(@icons, $gconfig{'webprefix'}."/servers/images/".
+	push(@icons, &get_webprefix()."/servers/images/".
 		     $s->{'type'}.".gif");
 	push(@installed, @{$h->{'packages'}});
 	$gothost{$h->{'id'}}++;

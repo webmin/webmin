@@ -20,7 +20,7 @@ if (!$adbm) {
 if (!-r $afile) {
 	# Text file not found
 	print "<b>",&text('access_efile', "<tt>$afile</tt>",
-	      "<tt>$adbm</tt>", "$gconfig{'webprefix'}/config.cgi?$module_name"),"</b> <p>\n";
+	      "<tt>$adbm</tt>", "@{[&get_webprefix()]}/config.cgi?$module_name"),"</b> <p>\n";
 	print "<b>",&text('virtusers_createfile',
 		    	  'create_file.cgi?mode=access'),"</b><p>\n";
 	&ui_print_footer("", $text{'index_return'});

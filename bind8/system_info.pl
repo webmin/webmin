@@ -25,12 +25,12 @@ if (&foreign_available($module_name) && !$access{'noconfig'} &&
 		my $job = &get_dnssec_cron_job();
 		if (!$job) {
 			$msg .= &text('index_eexpired_conf',
-				      &ui_link("/$module_name/conf_dnssec.cgi",
+				      &ui_link(&get_webprefix()."/$module_name/conf_dnssec.cgi",
 					       $text{'dnssec_title'}));
 			}
 		else {
 			$msg .= &text('index_eexpired_mod',
-				      &ui_link("/$module_name/",
+				      &ui_link(&get_webprefix()."/$module_name/",
 					       $text{'index_title'}));
 			}
 		push(@rv, { 'type' => 'warning',

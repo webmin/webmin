@@ -9,7 +9,7 @@ if (!-x $config{'logcheck'}) {
 	&ui_print_header(undef, $text{'logcheck_title'}, "");
 	print "<p>",&text('logcheck_ecommand',
 		  "<tt>$config{'logcheck'}</tt>", 
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("", $text{'index_return'});
 	exit;
 	}

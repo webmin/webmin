@@ -9,7 +9,7 @@ require './samba-lib.pl';
 if (!-x $config{'samba_server'}) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		&help_search_link("samba", "man", "doc", "google"));
-	print &text('error_nosamba', $config{'samba_server'}, "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+	print &text('error_nosamba', $config{'samba_server'}, "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 
 	&foreign_require("software", "software-lib.pl");
 	$lnk = &software::missing_install_link("samba", $text{'index_samba'},
@@ -31,7 +31,7 @@ else {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		&help_search_link("samba", "man", "doc", "google"));
 	print &text('error_version', $config{'samba_server'},
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	print "<pre>$out</pre>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
@@ -47,7 +47,7 @@ if (!@empty && (-r $config{alt_smb_conf})) {
 	system("cp $config{alt_smb_conf} $config{smb_conf} >/dev/null 2>&1");
 	}
 if (!(-r $config{smb_conf})) {
-	print &text('error_config', $config{'smb_conf'}, "$gconfig{'webprefix'}/config.cgi?$module_name");
+	print &text('error_config', $config{'smb_conf'}, "@{[&get_webprefix()]}/config.cgi?$module_name");
 	print "<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;

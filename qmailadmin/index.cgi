@@ -10,13 +10,13 @@ require './qmail-lib.pl';
 # Check if qmail is installed
 if (!-d $config{'qmail_dir'}) {
 	print &text('index_edir', "<tt>$config{'qmail_dir'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
 if (!-d $qmail_alias_dir || !-d $qmail_bin_dir) {
 	print &text('index_edir2', "<tt>$config{'qmail_dir'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}

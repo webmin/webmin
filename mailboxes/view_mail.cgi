@@ -309,7 +309,7 @@ if (!@sub) {
 	if ($in{'idx'}) {
 		print "<a href='view_mail.cgi?idx=",
 		    $in{'idx'}-1,"&folder=$in{'folder'}&user=$uuser'>",
-		    "<img src=$gconfig{'webprefix'}/images/left.gif border=0 ",
+		    "<img src=@{[&get_webprefix()]}/images/left.gif border=0 ",
 		    "align=middle></a>\n";
 		}
 	print "<font size=+1>",&text('view_desc', $in{'idx'}+1,
@@ -317,7 +317,7 @@ if (!@sub) {
 	if ($in{'idx'} < @mail-1) {
 		print "<a href='view_mail.cgi?idx=",
 		    $in{'idx'}+1,"&folder=$in{'folder'}&user=$uuser'>",
-		    "<img src=$gconfig{'webprefix'}/images/right.gif border=0 ",
+		    "<img src=@{[&get_webprefix()]}/images/right.gif border=0 ",
 		    "align=middle></a>\n";
 		}
 	}

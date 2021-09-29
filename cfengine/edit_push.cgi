@@ -7,7 +7,7 @@ require './cfengine-lib.pl';
 
 if (!&has_command($config{'cfrun'})) {
 	print &text('push_ecmd', "<tt>$config{'cfrun'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}

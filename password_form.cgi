@@ -21,7 +21,7 @@ else {
 
 # Start of the form
 print "$text{'password_prefix'}\n";
-print &ui_form_start("$gconfig{'webprefix'}/password_change.cgi", "post");
+print &ui_form_start("@{[&get_webprefix()]}/password_change.cgi", "post");
 print &ui_hidden("user", $in{'user'});
 print &ui_hidden("pam", $in{'pam'});
 print &ui_hidden("expired", $in{'expired'});

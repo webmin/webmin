@@ -1763,7 +1763,7 @@ sub ui_hidden_javascript
 return &theme_ui_hidden_javascript(@_)
 	if (defined(&theme_ui_hidden_javascript));
 my $rv;
-my $imgdir = "$gconfig{'webprefix'}/images";
+my $imgdir = "@{[&get_webprefix()]}/images";
 my ($jscb, $jstb) = ($cb, $tb);
 $jscb =~ s/'/\\'/g;
 $jstb =~ s/'/\\'/g;
@@ -1860,7 +1860,7 @@ my $divid = "hiddendiv_$name";
 my $openerid = "hiddenopener_$name";
 my $defimg = $status ? "open.gif" : "closed.gif";
 my $defclass = $status ? 'opener_shown' : 'opener_hidden';
-$rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg' alt='*'></a>\n";
+$rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='@{[&get_webprefix()]}/images/$defimg' alt='*'></a>\n";
 $rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\">$title</a><br>\n";
 $rv .= "<div class='$defclass' id='$divid'>\n";
 return $rv;
@@ -1899,7 +1899,7 @@ my $openerid = "hiddenopener_$name";
 my $defimg = $status ? "open.gif" : "closed.gif";
 my $defclass = $status ? 'opener_shown' : 'opener_hidden';
 if ($title) {
-	$rrv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a>\n";
+	$rrv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='@{[&get_webprefix()]}/images/$defimg'></a>\n";
 	$rrv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\">$title</a><br>\n";
 	$rv .= &ui_table_row(undef, $rrv, $main::ui_table_cols);
 	}
@@ -1965,7 +1965,7 @@ my $colspan = 1;
 if (defined($heading) || defined($rightheading)) {
 	$rv .= "<tr".($tb ? " ".$tb : "")."><td>";
 	if (defined($heading)) {
-		$rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\"><b><font color='#$text'>$heading</font></b></a></td>";
+		$rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='@{[&get_webprefix()]}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\"><b><font color='#$text'>$heading</font></b></a></td>";
 		}
 	if (defined($rightheading)) {
                 $rv .= "<td align='right'>$rightheading</td>";
@@ -2041,7 +2041,7 @@ $rv .= "document.${name}_tabtitles = $tabtitles;\n";
 $rv .= "</script>\n";
 
 # Output the tabs
-my $imgdir = "$gconfig{'webprefix'}/images";
+my $imgdir = "@{[&get_webprefix()]}/images";
 $rv .= &ui_hidden($name, $sel)."\n";
 $rv .= "<table border='0' cellpadding='0' cellspacing='0' class='ui_tabs'>\n";
 $rv .= "<tr><td bgcolor='#ffffff' colspan='".(scalar(@$tabs)*2+1)."'>";
@@ -2113,7 +2113,7 @@ sub ui_tabs_end
 return &theme_ui_tabs_end(@_) if (defined(&theme_ui_tabs_end));
 my ($border) = @_;
 my $rv;
-my $imgdir = "$gconfig{'webprefix'}/images";
+my $imgdir = "@{[&get_webprefix()]}/images";
 if ($border) {
 	$rv .= "</td>\n";
 	$rv .= "<td".($cb ? " ".$cb : "")." width='2'><img src='$imgdir/1x1.gif'></td>\n";
@@ -2371,7 +2371,7 @@ sub ui_up_down_arrows
 return &theme_ui_up_down_arrows(@_) if (defined(&theme_ui_up_down_arrows));
 my ($uplink, $downlink, $upshow, $downshow, $upicon, $downicon) = @_;
 my $mover;
-my $imgdir = "$gconfig{'webprefix'}/images";
+my $imgdir = "@{[&get_webprefix()]}/images";
 $upicon ||= "$imgdir/moveup.gif";
 $downicon ||= "$imgdir/movedown.gif";
 if ($downshow) {
@@ -2417,11 +2417,11 @@ my ($direction, $url, $disabled) = @_;
 my $alt = $direction eq "left" ? '<-' : '->';
 if ($disabled) {
 	return "<img class='ui_nav_link' alt=\"$alt\" align=\"middle\""
-	     . "src=\"$gconfig{'webprefix'}/images/$direction-grey.gif\">\n";
+	     . "src=\"@{[&get_webprefix()]}/images/$direction-grey.gif\">\n";
 	}
 else {
 	return "<a class='ui_nav_link' href=\"$url\"><img class='ui_nav_link' alt=\"$alt\" align=\"middle\""
-	     . "src=\"$gconfig{'webprefix'}/images/$direction.gif\"></a>\n";
+	     . "src=\"@{[&get_webprefix()]}/images/$direction.gif\"></a>\n";
 	}
 }
 
@@ -2594,11 +2594,11 @@ $rv .= &ui_form_start($cgi) if ($cgi);
 if (@_ > 5) {
 	if ($farleft) {
 		$rv .= "<a href='$farleft'>".
-		       "<img src='$gconfig{'webprefix'}/images/first.gif' ".
+		       "<img src='@{[&get_webprefix()]}/images/first.gif' ".
 		       "border='0' align='middle'></a>\n";
 		}
 	else {
-		$rv .= "<img src='$gconfig{'webprefix'}/images/first-grey.gif' ".
+		$rv .= "<img src='@{[&get_webprefix()]}/images/first-grey.gif' ".
 		       "border='0' align='middle'></a>\n";
 		}
 	}
@@ -2606,11 +2606,11 @@ if (@_ > 5) {
 # Left link
 if ($left) {
 	$rv .= "<a href='$left'>".
-	       "<img src=$gconfig{'webprefix'}/images/left.gif ".
+	       "<img src=@{[&get_webprefix()]}/images/left.gif ".
 	       "border='0' align='middle'></a>\n";
 	}
 else {
-	$rv .= "<img src=$gconfig{'webprefix'}/images/left-grey.gif ".
+	$rv .= "<img src=@{[&get_webprefix()]}/images/left-grey.gif ".
 	       "border='0' align='middle'></a>\n";
 	}
 
@@ -2621,11 +2621,11 @@ $rv .= " ".$inputs if ($inputs);
 # Right link
 if ($right) {
 	$rv .= "<a href='$right'>".
-	       "<img src='$gconfig{'webprefix'}/images/right.gif' ".
+	       "<img src='@{[&get_webprefix()]}/images/right.gif' ".
 	       "border='0' align='middle'></a>\n";
 	}
 else {
-	$rv .= "<img src='$gconfig{'webprefix'}/images/right-grey.gif' ".
+	$rv .= "<img src='@{[&get_webprefix()]}/images/right-grey.gif' ".
 	       "border='0' align='middle'></a>\n";
 	}
 
@@ -2633,11 +2633,11 @@ else {
 if (@_ > 5) {
 	if ($farright) {
 		$rv .= "<a href='$farright'>".
-		       "<img src='$gconfig{'webprefix'}/images/last.gif' ".
+		       "<img src='@{[&get_webprefix()]}/images/last.gif' ".
 		       "border='0' align='middle'></a>\n";
 		}
 	else {
-		$rv .= "<img src='$gconfig{'webprefix'}/images/last-grey.gif' ".
+		$rv .= "<img src='@{[&get_webprefix()]}/images/last-grey.gif' ".
 		       "border='0' align='middle'></a>\n";
 		}
 	}
@@ -2680,7 +2680,7 @@ if (defined(&theme_js_redirect)) {
 $window ||= "window";
 if ($url =~ /^\//) {
 	# If the URL is like /foo , add webprefix
-	$url = $gconfig{'webprefix'}.$url;
+	$url = &get_webprefix().$url;
 	}
 return "<script type='text/javascript'>${window}.location = '".&quote_escape($url)."';</script>\n";
 }

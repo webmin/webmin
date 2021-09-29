@@ -22,8 +22,8 @@ if ($ENV{'QUERY_STRING'}) {
 elsif (@ARGV) {
 	$path .= '?'.join('+', @ARGV);
 	}
-my $linkurl = $gconfig{'webprefix'}."/$module_name/link.cgi/";
-my $url = $gconfig{'webprefix'}."/$module_name/link.cgi/$openurl";
+my $linkurl = &get_webprefix()."/$module_name/link.cgi/";
+my $url = &get_webprefix()."/$module_name/link.cgi/$openurl";
 $| = 1;
 my $meth = $ENV{'REQUEST_METHOD'};
 if ($config{'url'}) {
@@ -128,12 +128,12 @@ elsif ($header{'www-authenticate'}) {
 	elsif ($user) {
 		&error(&text('link_elogin', $host, $user)." ".
 		       &text('link_mconfig',
-			"$gconfig{'webprefix'}/config.cgi?$module_name"));
+			"@{[&get_webprefix()]}/config.cgi?$module_name"));
 		}
 	else {
 		&error(&text('link_enouser', $host)." ".
 		       &text('link_mconfig',
-			"$gconfig{'webprefix'}/config.cgi?$module_name"));
+			"@{[&get_webprefix()]}/config.cgi?$module_name"));
 		}
 	}
 else {

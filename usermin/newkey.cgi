@@ -22,7 +22,7 @@ $in{'days'} =~ /^\d+$/ || &error($text{'newkey_edays'});
 if (!($cmd = &acl::get_ssleay())) {
 	print "<p>",&text('newkey_ecmd',
 			"<tt>$aclconfig{'ssleay'}</tt>",
-			"$gconfig{'webprefix'}/config.cgi?acl"),"<p>\n";
+			"@{[&get_webprefix()]}/config.cgi?acl"),"<p>\n";
 	&ui_print_footer("", $text{'index_return'});
 	exit;
 	}

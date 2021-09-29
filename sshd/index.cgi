@@ -8,7 +8,7 @@ require './sshd-lib.pl';
 if (!-r $config{'sshd_config'}) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1);
 	print &text('index_econfig', "<tt>$config{'sshd_config'}</tt>",
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{"index"});
 	exit;
 	}
@@ -17,7 +17,7 @@ if (!-r $config{'sshd_config'}) {
 if (!&has_command($config{'sshd_path'})) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1);
 	print &text('index_esshd', "<tt>$config{'sshd_path'}</tt>",
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{"index"});
 	exit;
 	}
@@ -28,7 +28,7 @@ if (!%version) {
 	# Unknown version
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1);
 	print &text('index_eversion', "<tt>$config{'sshd_path'}</tt>",
-		    "$gconfig{'webprefix'}/config.cgi?$module_name",
+		    "@{[&get_webprefix()]}/config.cgi?$module_name",
 		    "<tt>$config{'sshd_path'} -h</tt>",
 		    "<pre>$out</pre>"),"<p>\n";
 	&ui_print_footer("/", $text{"index"});

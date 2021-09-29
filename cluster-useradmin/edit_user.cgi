@@ -408,8 +408,8 @@ foreach $h (@hosts) {
 	local ($ou) = grep { $_->{'user'} eq $in{'user'} } @{$h->{'users'}};
 	if ($ou) {
 		local ($s) = grep { $_->{'id'} == $h->{'id'} } @servers;
-		push(@icons, $gconfig{'webprefix'} ?
-			($gconfig{'webprefix'}."/servers/images/".$s->{'type'}.".gif") :
+		push(@icons, &get_webprefix() ?
+			(&get_webprefix()."/servers/images/".$s->{'type'}.".gif") :
 			("../servers/images/".$s->{'type'}.".gif"));
 		push(@links, "edit_host.cgi?id=$h->{'id'}");
 		push(@titles, $s->{'desc'} ? $s->{'desc'} : $s->{'host'});

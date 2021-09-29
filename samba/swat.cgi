@@ -79,7 +79,7 @@ if ($ENV{'PATH_INFO'} =~ /\.(gif|jpg|jpeg|png)$/i) {
 	}
 else {
 	# An HTML page .. fix up links
-	$url = "$gconfig{'webprefix'}/$module_name/swat.cgi";
+	$url = "@{[&get_webprefix()]}/$module_name/swat.cgi";
 	while(<OUTr>) {
 		s/src="(\/[^"]*)"/src="$url$1"/gi;
 		s/href="(\/[^"]*)"/href="$url$1"/gi;

@@ -10,7 +10,7 @@ if (!&has_command($config{'fetchmail_path'})) {
 		&help_search_link("fetchmail", "doc", "man", "google"));
 	print "<p>",&text('index_efetchmail',
 			  "<tt>$config{'fetchmail_path'}</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}

@@ -8,7 +8,7 @@ require './stunnel-lib.pl';
 if (!-x $config{'stunnel_path'}) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1);
 	print &text('index_estunnel', "<tt>$config{'stunnel_path'}</tt>",
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{"index"});
 	exit;
 	}

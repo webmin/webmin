@@ -29,7 +29,7 @@ if (!$got_net_ldap) {
 $ldap = &ldap_connect(1);
 if (!ref($ldap)) {
 	print &text('index_eldap', $ldap,
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
@@ -45,7 +45,7 @@ if (!$schema) {
 # Make sure the LDAP bases are set or available
 if (!&get_user_base() || !&get_group_base()) {
 	print &text('index_ebase',
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
@@ -68,7 +68,7 @@ if ($config{'imap_host'}) {
 	$imap = &imap_connect(1);
 	if (!ref($imap)) {
 		print &text('index_eimap', $imap,
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 		&ui_print_footer("/", $text{'index'});
 		exit;
 		}

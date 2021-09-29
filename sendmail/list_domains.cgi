@@ -19,7 +19,7 @@ if (!$ddbm) {
 if (!-r $dfile) {
 	# Text file not found
 	print "<b>",&text('domains_efile', "<tt>$dfile</tt>",
-	      "<tt>$ddbm</tt>", "$gconfig{'webprefix'}/config.cgi?$module_name"),"</b> <p>\n";
+	      "<tt>$ddbm</tt>", "@{[&get_webprefix()]}/config.cgi?$module_name"),"</b> <p>\n";
 	print "<b>",&text('virtusers_createfile',
 		    	  'create_file.cgi?mode=domains'),"</b><p>\n";
 	&ui_print_footer("", $text{'index_return'});

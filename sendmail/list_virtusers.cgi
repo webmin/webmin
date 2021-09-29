@@ -20,7 +20,7 @@ if (!$vdbm) {
 if (!-r $vfile) {
 	# Text file not found
 	print "<b>",&text('virtusers_efile', "<tt>$vfile</tt>",
-	      "<tt>$vdbm</tt>", "$gconfig{'webprefix'}/config.cgi?$module_name"),"</b><p>\n";
+	      "<tt>$vdbm</tt>", "@{[&get_webprefix()]}/config.cgi?$module_name"),"</b><p>\n";
 	print "<b>",&text('virtusers_createfile',
 		    	  'create_file.cgi?mode=virtusers'),"</b><p>\n";
 	&ui_print_footer("", $text{'index_return'});

@@ -38,7 +38,7 @@ else {
 	print &ui_columns_table(undef, 100, \@table);
 	}
     if ( $cnt >= 10 ) {
-        print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js?28112013'></script>";
+        print "<script type='text/javascript' src='@{[&get_webprefix()]}/unauthenticated/filter_match.js?28112013'></script>";
         print "<script type='text/javascript'>filter_match_box();</script>";
     }
 &ui_print_footer();

@@ -10,7 +10,7 @@ if (!-x $config{'psql'} || -d $config{'psql'}) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 		&help_search_link("postgresql", "man", "doc", "google"));
 	print &text('index_esql', "<tt>$config{'psql'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 
 	&foreign_require("software", "software-lib.pl");
 	$lnk = &software::missing_install_link(
@@ -49,7 +49,7 @@ if (!$hba_conf_file && &is_postgresql_local()) {
 	else {
 		# Config file wasn't found
 		print &text('index_ehba', "<tt>$hba_conf_file</tt>",
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 		}
 	&ui_print_footer("/", $text{'index'});
 	exit;
@@ -117,7 +117,7 @@ elsif ($r == -2) {
 	# Looks like a shared library problem
 	&main_header(1);
 	print &text('index_elibrary', "<tt>$config{'psql'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	print &text('index_ldpath', "<tt>$ENV{$gconfig{'ld_env'}}</tt>",
 		  "<tt>$config{'psql'}</tt>"),"<br>\n";
 	print "<pre>",&html_escape($out),"</pre>\n";
@@ -128,7 +128,7 @@ else {
 	$postgresql_version = &get_postgresql_version();
 	if (!$postgresql_version) {
 		&main_header(1);
-	        print &text('index_superuser',"$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+	        print &text('index_superuser',"@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 		&ui_print_footer("/", $text{'index'});
 		exit;
 		}

@@ -9,7 +9,7 @@ require './vgetty-lib.pl';
 # Check if vgetty is actually installed
 if (!&has_command($config{'vgetty_cmd'})) {
 	print "<p>",&text('index_ecmd', "<tt>$config{'vgetty_cmd'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
@@ -17,7 +17,7 @@ if (!&has_command($config{'vgetty_cmd'})) {
 # Check if config file exists
 if (!-r $config{'vgetty_config'}) {
 	print "<p>",&text('index_econfig', "<tt>$config{'vgetty_config'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}

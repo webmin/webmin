@@ -208,7 +208,7 @@ if ($charset) {
     print "<meta http-equiv=\"Content-Type\" ",
           "content=\"text/html; Charset=$charset\">\n";
     }
-print "<link rel='icon' href='$gconfig{'webprefix'}/images/webmin_icon.png' type='image/png'>\n";
+print "<link rel='icon' href='@{[&get_webprefix()]}/images/webmin_icon.png' type='image/png'>\n";
 if (@_ > 0) {
     local $title = &get_html_title($_[0]);
     print "<title>$title</title>\n";
@@ -239,26 +239,26 @@ if ($remote_user && @_ > 1) {
 	local $lowidth = $main::session_id ? 84 : 27;
 	local $lotext = $main::session_id ? $text{'main_logout'}
 					  : $text{'main_switch'};
-	print qq~<table width="100%" border="0" cellspacing="0" cellpadding="0" background="$gconfig{'webprefix'}/images/top_bar/bg.jpg" height="32">
+	print qq~<table width="100%" border="0" cellspacing="0" cellpadding="0" background="@{[&get_webprefix()]}/images/top_bar/bg.jpg" height="32">
 	  <tr>
-	    <td width="4" nowrap><img src="$gconfig{'webprefix'}/images/top_bar/left.jpg" width="4" height="32"></td>
-	    <td width="100%" nowrap><a href="http://www.webmin.com"><img src="$gconfig{'webprefix'}/images/top_bar/webmin_logo.jpg" width="99" height="32" border="0" alt="Webmin home page"></a></td>~;
+	    <td width="4" nowrap><img src="@{[&get_webprefix()]}/images/top_bar/left.jpg" width="4" height="32"></td>
+	    <td width="100%" nowrap><a href="http://www.webmin.com"><img src="@{[&get_webprefix()]}/images/top_bar/webmin_logo.jpg" width="99" height="32" border="0" alt="Webmin home page"></a></td>~;
 	if (!$ENV{'ANONYMOUS_USER'}) {
 		if ($gconfig{'nofeedbackcc'} != 2 && $gaccess{'feedback'} &&
 		    (!$module_name || $module_info{'longdesc'} || $module_info{'feedback'})) {
-			print qq~<td><a href='$gconfig{'webprefix'}/feedback_form.cgi?module=$module_name'><img src=$gconfig{'webprefix'}/images/top_bar/feedback.jpg width=97 height=32 alt="$text{'main_feedback'}" border=0></a></td>~;
+			print qq~<td><a href='@{[&get_webprefix()]}/feedback_form.cgi?module=$module_name'><img src=@{[&get_webprefix()]}/images/top_bar/feedback.jpg width=97 height=32 alt="$text{'main_feedback'}" border=0></a></td>~;
 			}
 		if (!$ENV{'SSL_USER'} && !$ENV{'LOCAL_USER'} &&
 		    !$ENV{'HTTP_WEBMIN_SERVERS'}) {
 			if ($gconfig{'nofeedbackcc'} != 2 &&
 			    $gaccess{'feedback'}) {
-				print qq~<td><img src=$gconfig{'webprefix'}/images/top_bar/top_sep.jpg width=12 height=32></td>~;
+				print qq~<td><img src=@{[&get_webprefix()]}/images/top_bar/top_sep.jpg width=12 height=32></td>~;
 				}
-			print qq~<td width="84" nowrap><a href='$gconfig{'webprefix'}$logout'><img src="$gconfig{'webprefix'}/images/top_bar/$loicon" height="31" width=$lowidth border="0" alt="$lotext"></a></td>~;
+			print qq~<td width="84" nowrap><a href='@{[&get_webprefix()]}$logout'><img src="@{[&get_webprefix()]}/images/top_bar/$loicon" height="31" width=$lowidth border="0" alt="$lotext"></a></td>~;
 			}
 		}
 	print qq~<td width="3" nowrap>
-	      <div align="right"><img src="$gconfig{'webprefix'}/images/top_bar/right.jpg" width="3" height="32"></div>
+	      <div align="right"><img src="@{[&get_webprefix()]}/images/top_bar/right.jpg" width="3" height="32"></div>
 	    </td>
 	  </tr>
 	</table>~;
@@ -271,7 +271,7 @@ if (@_ > 1 && !$one && $remote_user && !$notabs) {
     # Display module categories
     print qq~<table width="100%" border="0" cellspacing="0" cellpadding="0" height="7">
   <tr>
-    <td background="$gconfig{'webprefix'}/images/top_bar/shadow_bg.jpg" nowrap><img src="$gconfig{'webprefix'}/images/top_bar/shadow.jpg" width="8" height="7"></td>
+    <td background="@{[&get_webprefix()]}/images/top_bar/shadow_bg.jpg" nowrap><img src="@{[&get_webprefix()]}/images/top_bar/shadow.jpg" width="8" height="7"></td>
   </tr>
 </table>~;
 
@@ -299,9 +299,9 @@ if (@_ > 1 && !$one && $remote_user && !$notabs) {
     }
 
 #####Navigation Bar START#####
-    print qq~<table width="100%" border="0" cellspacing="0" cellpadding="0" height="57" background="$gconfig{'webprefix'}/images/nav/bg.jpg">
-  <tr background="$gconfig{'webprefix'}/images/nav/bg.jpg">
-    <td width="6" nowrap><img src="$gconfig{'webprefix'}/images/nav/left.jpg" width="3" height="57"></td>~;
+    print qq~<table width="100%" border="0" cellspacing="0" cellpadding="0" height="57" background="@{[&get_webprefix()]}/images/nav/bg.jpg">
+  <tr background="@{[&get_webprefix()]}/images/nav/bg.jpg">
+    <td width="6" nowrap><img src="@{[&get_webprefix()]}/images/nav/left.jpg" width="3" height="57"></td>~;
 
     foreach $c (@cats) {
         local $t = $cats{$c};
@@ -316,64 +316,64 @@ if (@_ > 1 && !$one && $remote_user && !$notabs) {
            if ($inlist eq "true") {
 
               if ($c eq "") {
-                print qq~<td nowrap><center><img src="$gconfig{'webprefix'}/images/cats_over/others.jpg" width="43" height="44" title="$catdesc"><br>~;
+                print qq~<td nowrap><center><img src="@{[&get_webprefix()]}/images/cats_over/others.jpg" width="43" height="44" title="$catdesc"><br>~;
             &chop_font;
 
                           print qq~</center></td>
-    <td width="17" nowrap><img src="$gconfig{'webprefix'}/images/nav/sep.jpg" width="17" height="57"></td>~; 
+    <td width="17" nowrap><img src="@{[&get_webprefix()]}/images/nav/sep.jpg" width="17" height="57"></td>~; 
               } elsif ($c eq "webmin") {
                if (@_ > 1) {
-               print qq~<td nowrap><center><a href=$gconfig{'webprefix'}/?cat=$c><img src="$gconfig{'webprefix'}/images/cats_over/$c.jpg" width="43" height="44" border=0 title="$catdesc"><br>~;
+               print qq~<td nowrap><center><a href=@{[&get_webprefix()]}/?cat=$c><img src="@{[&get_webprefix()]}/images/cats_over/$c.jpg" width="43" height="44" border=0 title="$catdesc"><br>~;
             &chop_font;
                           print qq~</a></center></td>
-    <td width="17" nowrap><img src="$gconfig{'webprefix'}/images/nav/sep.jpg" width="17" height="57"></td>~;
+    <td width="17" nowrap><img src="@{[&get_webprefix()]}/images/nav/sep.jpg" width="17" height="57"></td>~;
                 } else {
-               print qq~<td nowrap><center><img src="$gconfig{'webprefix'}/images/cats_over/$c.jpg" width="43" height="44" border=0 title="$catdesc"><br>~;            &chop_font;
+               print qq~<td nowrap><center><img src="@{[&get_webprefix()]}/images/cats_over/$c.jpg" width="43" height="44" border=0 title="$catdesc"><br>~;            &chop_font;
                           print qq~</center></td>
-    <td width="17" nowrap><img src="$gconfig{'webprefix'}/images/nav/sep.jpg" width="17" height="57"></td>~;
+    <td width="17" nowrap><img src="@{[&get_webprefix()]}/images/nav/sep.jpg" width="17" height="57"></td>~;
                 }
                } else {
-               print qq~<td nowrap><center><img src="$gconfig{'webprefix'}/images/cats_over/$c.jpg" width="43" height="44" title="$catdesc"><br>~;
+               print qq~<td nowrap><center><img src="@{[&get_webprefix()]}/images/cats_over/$c.jpg" width="43" height="44" title="$catdesc"><br>~;
 
             &chop_font;
 
                print qq~</center></td>
-    <td width="17" nowrap><img src="$gconfig{'webprefix'}/images/nav/sep.jpg" width="17" height="57"></td>~;
+    <td width="17" nowrap><img src="@{[&get_webprefix()]}/images/nav/sep.jpg" width="17" height="57"></td>~;
               }
 
         } else {
-            print qq~<td nowrap><center><img src="$gconfig{'webprefix'}/images/cats_over/unknown.jpg" width="43" height="44" title="$catdesc"><br>~;
+            print qq~<td nowrap><center><img src="@{[&get_webprefix()]}/images/cats_over/unknown.jpg" width="43" height="44" title="$catdesc"><br>~;
 
             &chop_font;
 
             print qq~</center></td>
-    <td width="17" nowrap><img src="$gconfig{'webprefix'}/images/nav/sep.jpg" width="17" height="57"></td>~;
+    <td width="17" nowrap><img src="@{[&get_webprefix()]}/images/nav/sep.jpg" width="17" height="57"></td>~;
            }
         }
         else {
             if ($inlist eq "true") {
               if ($c eq "") {
-                print qq~<td nowrap><center><a href=$gconfig{'webprefix'}/?cat=$c><img src="$gconfig{'webprefix'}/images/cats/others.jpg" width="43" height="44" border=0 alt="$t" title="$catdesc"><br>~;
+                print qq~<td nowrap><center><a href=@{[&get_webprefix()]}/?cat=$c><img src="@{[&get_webprefix()]}/images/cats/others.jpg" width="43" height="44" border=0 alt="$t" title="$catdesc"><br>~;
 
             &chop_font;
 
                 print qq~</a></center></td>
-    <td width="17" nowrap><img src="$gconfig{'webprefix'}/images/nav/sep.jpg" width="17" height="57"></td>~; 
+    <td width="17" nowrap><img src="@{[&get_webprefix()]}/images/nav/sep.jpg" width="17" height="57"></td>~; 
               } else {
-               print qq~<td nowrap><center><a href=$gconfig{'webprefix'}/?cat=$c><img src="$gconfig{'webprefix'}/images/cats/$c.jpg" width="43" height="44" border=0 alt="$t" title="$catdesc"><br>~;
+               print qq~<td nowrap><center><a href=@{[&get_webprefix()]}/?cat=$c><img src="@{[&get_webprefix()]}/images/cats/$c.jpg" width="43" height="44" border=0 alt="$t" title="$catdesc"><br>~;
 
             &chop_font;
 
                print qq~</a></center></td>
-    <td width="17" nowrap><img src="$gconfig{'webprefix'}/images/nav/sep.jpg" width="17" height="57"></td>~;
+    <td width="17" nowrap><img src="@{[&get_webprefix()]}/images/nav/sep.jpg" width="17" height="57"></td>~;
               }
         } else {
-            print qq~<td nowrap><center><a href=$gconfig{'webprefix'}/?cat=$c><img src="$gconfig{'webprefix'}/images/cats/unknown.jpg" width="43" height="44" border=0 alt="$t" title="$catdesc"><br>~;
+            print qq~<td nowrap><center><a href=@{[&get_webprefix()]}/?cat=$c><img src="@{[&get_webprefix()]}/images/cats/unknown.jpg" width="43" height="44" border=0 alt="$t" title="$catdesc"><br>~;
 
             &chop_font;
 
             print qq~</a></center></td>
-    <td width="17" nowrap><img src="$gconfig{'webprefix'}/images/nav/sep.jpg" width="17" height="57"></td>~;
+    <td width="17" nowrap><img src="@{[&get_webprefix()]}/images/nav/sep.jpg" width="17" height="57"></td>~;
         }
            
             }
@@ -383,16 +383,16 @@ if (@_ > 1 && !$one && $remote_user && !$notabs) {
     <td nowrap>&nbsp;</td>
   </tr>
 </table>~;
-    print qq~<table width="100%" border="0" cellspacing="0" cellpadding="0" background="$gconfig{'webprefix'}/images/nav/bottom_bg.jpg" height="4">
+    print qq~<table width="100%" border="0" cellspacing="0" cellpadding="0" background="@{[&get_webprefix()]}/images/nav/bottom_bg.jpg" height="4">
   <tr>
-    <td width="100%"><img src="$gconfig{'webprefix'}/images/nav/bottom_left.jpg" width="3" height="4"></td>
+    <td width="100%"><img src="@{[&get_webprefix()]}/images/nav/bottom_left.jpg" width="3" height="4"></td>
   </tr>
 </table>~;
    }
 
 if (@_ > 1 && (!$_[5] || $ENV{'HTTP_WEBMIN_SERVERS'})) {
    # Show tabs under module categories
-   print qq~<table width="100%" border="0" cellspacing="0" cellpadding="0" background="$gconfig{'webprefix'}/images/nav/bottom_shadow2.jpg"> <tr background="$gconfig{'webprefix'}/images/nav/bottom_shadow2.jpg">~;
+   print qq~<table width="100%" border="0" cellspacing="0" cellpadding="0" background="@{[&get_webprefix()]}/images/nav/bottom_shadow2.jpg"> <tr background="@{[&get_webprefix()]}/images/nav/bottom_shadow2.jpg">~;
 
    if ($gconfig{'sysinfo'} == 2 && $remote_user) {
 	&tab_start();
@@ -407,7 +407,7 @@ if (@_ > 1 && (!$_[5] || $ENV{'HTTP_WEBMIN_SERVERS'})) {
 	}
 	if ($notabs && !$_[5]) { 
 		&tab_start;
-		print "<a href='$gconfig{'webprefix'}/?cat=$module_info{'category'}'>$text{'header_webmin'}</a><br>\n";
+		print "<a href='@{[&get_webprefix()]}/?cat=$module_info{'category'}'>$text{'header_webmin'}</a><br>\n";
 		&tab_end;
 		}
 	if (!$_[4]) {
@@ -415,7 +415,7 @@ if (@_ > 1 && (!$_[5] || $ENV{'HTTP_WEBMIN_SERVERS'})) {
 		local $mi = $module_index_link ||
 			    $module_name ? "/$module_name/$idx" : "/";
 		local $mt = $module_index_name || $text{'header_module'};
-		&tab_start; print "<a href=\"$gconfig{'webprefix'}$mi\">",
+		&tab_start; print "<a href=\"@{[&get_webprefix()]}$mi\">",
 			    "$mt</a>"; &tab_end;
 		}
 	if (ref($_[2]) eq "ARRAY" && !$ENV{'ANONYMOUS_USER'}) {
@@ -426,7 +426,7 @@ if (@_ > 1 && (!$_[5] || $ENV{'HTTP_WEBMIN_SERVERS'})) {
 		}
 	if ($_[3]) {
 		if (!$access{'noconfig'}) {
-			&tab_start; print "<a href=\"$gconfig{'webprefix'}/config.cgi?$module_name\">",
+			&tab_start; print "<a href=\"@{[&get_webprefix()]}/config.cgi?$module_name\">",
 			      $text{'header_config'},"</a>"; &tab_end;
 			}
 		}
@@ -439,11 +439,11 @@ if (@_ > 1 && (!$_[5] || $ENV{'HTTP_WEBMIN_SERVERS'})) {
     }
 
 print qq~
-    <td nowrap width="100%" background="$gconfig{'webprefix'}/images/nav/bottom_shadow2.jpg" valign="top">
+    <td nowrap width="100%" background="@{[&get_webprefix()]}/images/nav/bottom_shadow2.jpg" valign="top">
 
-      <table width="100%" border="0" cellspacing="0" cellpadding="0" background="$gconfig{'webprefix'}/images/nav/bottom_shadow2.jpg">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" background="@{[&get_webprefix()]}/images/nav/bottom_shadow2.jpg">
         <tr>
-          <td><img src="$gconfig{'webprefix'}/unauthenticated/nav/bottom_shadow.jpg" width="43" height="9"></td>
+          <td><img src="@{[&get_webprefix()]}/unauthenticated/nav/bottom_shadow.jpg" width="43" height="9"></td>
         </tr>
       </table>
 
@@ -457,20 +457,20 @@ print qq~
 	    local $title = $_[0];
 	    print "<p><table border=0 cellpadding=0 cellspacing=0 width=95% align=center><tr><td><table border=0 cellpadding=0 cellspacing=0 height=20><tr>\n";
 	    print "<td bgcolor=#bae3ff valign=top>",
-	      "<img src=$gconfig{'webprefix'}/images/tabs/blue_left.jpg width=13 height=22 ",
+	      "<img src=@{[&get_webprefix()]}/images/tabs/blue_left.jpg width=13 height=22 ",
 	      "alt=\"\">","</td>\n";
 	    print "<td bgcolor=#bae3ff>&nbsp;<b>$title</b>&nbsp;</td>\n";
 	    print "<td bgcolor=#bae3ff valign=top>",
-	      "<img src=$gconfig{'webprefix'}/images/tabs/blue_right.jpg width=19 height=22 ",
+	      "<img src=@{[&get_webprefix()]}/images/tabs/blue_right.jpg width=19 height=22 ",
 	      "alt=\"\">","</td>\n";
 	    if ($_[9]) {
 		print "</tr></table></td> <td align=right><table border=0 cellpadding=0 cellspacing=0 height=20><tr>\n";
 		print "<td bgcolor=#bae3ff>",
-		      "<img src=$gconfig{'webprefix'}/images/tabs/blue_left.jpg width=13 height=22 ",
+		      "<img src=@{[&get_webprefix()]}/images/tabs/blue_left.jpg width=13 height=22 ",
 		      "alt=\"\">","</td>\n";
 		print "<td bgcolor=#bae3ff>&nbsp;<b>$_[9]</b>&nbsp;</td>\n";
 		print "<td bgcolor=#bae3ff>",
-		      "<img src=$gconfig{'webprefix'}/images/tabs/blue_right.jpg width=19 height=22",
+		      "<img src=@{[&get_webprefix()]}/images/tabs/blue_right.jpg width=19 height=22",
 		      " alt=\"\">","</td>\n";
 		}
 	    print "</tr></table></td></tr></table>"; 
@@ -478,9 +478,9 @@ print qq~
 	     &theme_prebody;
 	}
     } elsif (@_ > 1) {
-	    print qq~<table width="100%" border="0" cellspacing="0" cellpadding="0" background="$gconfig{'webprefix'}/unauthenticated/nav/bottom_shadow.jpg">
+	    print qq~<table width="100%" border="0" cellspacing="0" cellpadding="0" background="@{[&get_webprefix()]}/unauthenticated/nav/bottom_shadow.jpg">
 	  <tr>
-	    <td width="100%" nowrap><img src="$gconfig{'webprefix'}/unauthenticated/nav/bottom_shadow.jpg" width="43" height="9"></td>
+	    <td width="100%" nowrap><img src="@{[&get_webprefix()]}/unauthenticated/nav/bottom_shadow.jpg" width="43" height="9"></td>
 	  </tr>
 	</table><br>~;
     }
@@ -493,7 +493,7 @@ if ($theme_no_table) {
 	print "<ul>\n";
 	}
 else {
-	#print "<table border=0 width=95% align=center cellspacing=0 cellpadding=0><tr><td background=$gconfig{'webprefix'}/images/msctile2.jpg>\n";
+	#print "<table border=0 width=95% align=center cellspacing=0 cellpadding=0><tr><td background=@{[&get_webprefix()]}/images/msctile2.jpg>\n";
 	print "<table border=0 width=95% align=center cellspacing=0 cellpadding=0><tr><td bgcolor=#ffffff>\n";
 	print "<table border=0 width=95% align=center cellspacing=0 cellpadding=0><tr><td>\n";
 	}
@@ -525,9 +525,9 @@ for($i=0; $i+1<@_; $i+=2) {
     elsif ($url =~ /^\?/ && $module_name) {
         $url = "/$module_name/$url";
         }
-    $url = "$gconfig{'webprefix'}$url" if ($url =~ /^\//);
+    $url = "@{[&get_webprefix()]}$url" if ($url =~ /^\//);
     if ($i == 0) {
-        print "&nbsp;<a href=\"$url\"><img alt=\"<-\" align=middle border=0 src=$gconfig{'webprefix'}/images/arrow.jpg></a>\n";
+        print "&nbsp;<a href=\"$url\"><img alt=\"<-\" align=middle border=0 src=@{[&get_webprefix()]}/images/arrow.jpg></a>\n";
         }
     else {
         print "&nbsp;|\n";
@@ -555,20 +555,20 @@ sub tab_start {
     print qq~    <td nowrap>
       <table border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td background="$gconfig{'webprefix'}/images/tabs/bg.jpg"><img src="$gconfig{'webprefix'}/images/tabs/left.jpg" width="12" height="21" nowrap></td>
-          <td background="$gconfig{'webprefix'}/images/tabs/bg.jpg" nowrap>
+          <td background="@{[&get_webprefix()]}/images/tabs/bg.jpg"><img src="@{[&get_webprefix()]}/images/tabs/left.jpg" width="12" height="21" nowrap></td>
+          <td background="@{[&get_webprefix()]}/images/tabs/bg.jpg" nowrap>
           ~;
 }
 
 
 sub tab_end {
      print qq~</td>
-          <td background="$gconfig{'webprefix'}/images/tabs/bg.jpg" nowrap><img src="$gconfig{'webprefix'}/images/tabs/right.jpg" width="15" height="21"></td>
+          <td background="@{[&get_webprefix()]}/images/tabs/bg.jpg" nowrap><img src="@{[&get_webprefix()]}/images/tabs/right.jpg" width="15" height="21"></td>
         </tr>
         <tr>
-          <td nowrap><img src="$gconfig{'webprefix'}/images/tabs/right_bottom.jpg" width="12" height="4"></td>
-          <td background="$gconfig{'webprefix'}/images/tabs/bottom.jpg" nowrap><img src="$gconfig{'webprefix'}/images/tabs/bottom.jpg" width="17" height="4"></td>
-          <td nowrap><img src="$gconfig{'webprefix'}/images/tabs/left_bottom.jpg" width="15" height="4"></td>        </tr>
+          <td nowrap><img src="@{[&get_webprefix()]}/images/tabs/right_bottom.jpg" width="12" height="4"></td>
+          <td background="@{[&get_webprefix()]}/images/tabs/bottom.jpg" nowrap><img src="@{[&get_webprefix()]}/images/tabs/bottom.jpg" width="17" height="4"></td>
+          <td nowrap><img src="@{[&get_webprefix()]}/images/tabs/left_bottom.jpg" width="15" height="4"></td>        </tr>
       </table>
 
     </td>~;

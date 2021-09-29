@@ -13,7 +13,7 @@ if (!&has_command($config{'webalizer'})) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		&help_search_link("webalizer", "man", "doc", "google"));
 	print &text('index_ewebalizer', "<tt>$config{'webalizer'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 
 	&foreign_require("software", "software-lib.pl");
 	my $lnk = &software::missing_install_link(
@@ -50,7 +50,7 @@ if (&compare_version_numbers($webalizer_version, 2) < 0) {
 if (!-r $config{'webalizer_conf'}) {
 	&main_header();
 	print &text('index_econf', "<tt>$config{'webalizer_conf'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}

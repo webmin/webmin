@@ -20,7 +20,7 @@ else {
 &ui_print_header(undef, $text{'viewu_index'}, "");
 
 if (!&has_command($config{samba_status_program})) {
-	print &text('viewu_ecmd', $config{'samba_status_program'}, "$gconfig{'webprefix'}/config.cgi?$module_name");
+	print &text('viewu_ecmd', $config{'samba_status_program'}, "@{[&get_webprefix()]}/config.cgi?$module_name");
 	print "<p>\n";
 	&ui_print_footer("", $text{'index_sharelist'});
 	exit;

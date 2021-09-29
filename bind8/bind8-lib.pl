@@ -4210,8 +4210,8 @@ return undef if (!$en || $en !~ /yes/i);
 my $tkeys = &find("trusted-keys", $conf);
 return undef if (!$tkeys || !@{$tkeys->{'members'}});
 return &text('trusted_warning',
-	     $gconfig{'webprefix'}.'/bind8/conf_trusted.cgi')."<p>\n".
-       &ui_form_start($gconfig{'webprefix'}.'/bind8/fix_trusted.cgi')."\n".
+	     &get_webprefix().'/bind8/conf_trusted.cgi')."<p>\n".
+       &ui_form_start(&get_webprefix().'/bind8/fix_trusted.cgi')."\n".
        &ui_form_end([ [ undef, $text{'trusted_fix'} ] ]);
 }
 

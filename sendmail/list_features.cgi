@@ -75,14 +75,14 @@ else {
 	# Features file is not setup yet ..
 	if (!$config{'sendmail_mc'} || !$config{'sendmail_features'}) {
 		print "<p>",&text('features_econfig',
-				  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+				  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 		}
 	elsif (!-r $config{'sendmail_mc'}) {
-		print "<p>",&text('features_emc', "$gconfig{'webprefix'}/config.cgi?$module_name",
+		print "<p>",&text('features_emc', "@{[&get_webprefix()]}/config.cgi?$module_name",
 				  "<tt>$config{'sendmail_mc'}</tt>"),"<p>\n";
 		}
 	elsif (!-r "$config{'sendmail_features'}/feature") {
-		print "<p>",&text('features_efeatures', "$gconfig{'webprefix'}/config.cgi?$module_name",
+		print "<p>",&text('features_efeatures', "@{[&get_webprefix()]}/config.cgi?$module_name",
 				  "<tt>$config{'sendmail_features'}</tt>"),"<p>\n";
 		}
 	}

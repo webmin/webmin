@@ -18,19 +18,19 @@ else {
 
 if ($profile->{'type'} == 2 && !&has_command($config{'mkisofs'})) {
 	print "<p>",&text('edit_emkisofs', "<tt>$config{'mkisofs'}</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("", $text{"index_return"});
 	exit;
 	}
 if ($profile->{'type'} == 3 && !&has_command($config{'mpg123'})) {
 	print "<p>",&text('edit_empg123', "<tt>$config{'mpg123'}</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("", $text{"index_return"});
 	exit;
 	}
 if ($profile->{'type'} == 4 && !&has_command($config{'cdrdao'})) {
 	print "<p>",&text('edit_ecdrdao', "<tt>$config{'cdrdao'}</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("", $text{"index_return"});
 	exit;
 	}

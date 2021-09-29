@@ -7,7 +7,7 @@ require './shorewall6-lib.pl';
 if (!&has_command($config{'shorewall6'})) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 	print "<p>",&text('index_ecmd', "<tt>$config{'shorewall6'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	}
 else {
 	# Get the version
@@ -24,7 +24,7 @@ else {
 		# Config dir not found!
 		print "<p>",&text('index_edir',
 		      "<tt>$config{'config_dir'}</tt>",
-		      "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		      "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 		}
 	else {
 		# Just show the file icons

@@ -29,7 +29,7 @@ my $name = $self->get_name();
 my $directory = $self->get_directory();
 my $add = 0;
 my $chroot = $self->get_chroot();
-$rv .= "<input type=button name=${name}_button onClick='ifield = form.$name; chooser = window.open(\"$gconfig{'webprefix'}/chooser.cgi?add=$add&type=$directory&chroot=$chroot&file=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbar=no,width=400,height=300\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+$rv .= "<input type=button name=${name}_button onClick='ifield = form.$name; chooser = window.open(\"@{[&get_webprefix()]}/chooser.cgi?add=$add&type=$directory&chroot=$chroot&file=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbar=no,width=400,height=300\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 return $rv;
 }
 

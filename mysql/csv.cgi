@@ -72,7 +72,7 @@ if ($in{'dest'}) {
 				&nice_size($st[7])),"<p>\n";
 
 	&ui_print_footer(
-	   "$gconfig{'webprefix'}/$module_name/edit_dbase.cgi?db=$in{'db'}",
+	   "@{[&get_webprefix()]}/$module_name/edit_dbase.cgi?db=$in{'db'}",
 	   $text{'dbase_return'},
 	   &get_databases_return_link($in{'db'}), $text{'index_return'});
 	}

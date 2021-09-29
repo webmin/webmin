@@ -9,13 +9,13 @@ require './xinetd-lib.pl';
 # Check for config file
 if (!-r $config{'xinetd_conf'} && !$config{'allow_missing'}) {
 	print "<p>",&text('index_econf', "<tt>$config{'xinetd_conf'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
 if (!&get_start_binary()) {
 	print "<p>",&text('index_estart', "<tt>$config{'start_cmd'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}

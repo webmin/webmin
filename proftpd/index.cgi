@@ -10,7 +10,7 @@ if (!@st) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		&help_search_link("proftpd", "man", "doc", "google"));
 	print &text('index_eproftpd', "<tt>$config{'proftpd_path'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 
 	&foreign_require("software", "software-lib.pl");
 	$lnk = &software::missing_install_link("proftpd",$text{'index_proftpd'},
@@ -27,7 +27,7 @@ if (!@$conf) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		&help_search_link("proftpd", "man", "doc", "google"));
 	print &text('index_econf', "<tt>$config{'proftpd_conf'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
@@ -42,7 +42,7 @@ if ($site{'size'} != $st[7]) {
 			&help_search_link("proftpd", "man", "doc", "google"));
 		print &text('index_eproftpd2',
 			  "<tt>$config{'proftpd_path'}</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name",
+			  "@{[&get_webprefix()]}/config.cgi?$module_name",
 			  "<tt>$config{'proftpd_path'} -v</tt>",
 			  "<pre>$out</pre>"),"<p>\n";
 		&ui_print_footer("/", $text{'index'});
@@ -54,7 +54,7 @@ if ($site{'size'} != $st[7]) {
 			&help_search_link("proftpd", "man", "doc", "google"));
 		print &text('index_eversion',
 			  "<tt>$config{'proftpd_path'}</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 		&ui_print_footer("/", $text{'index'});
 		exit;
 		}

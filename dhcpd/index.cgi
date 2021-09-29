@@ -35,7 +35,7 @@ if (!-x $config{'dhcpd_path'}) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		&help_search_link("dhcpd", "man", "doc", "howto", "google"));
 	print &text('index_dhcpdnotfound', $config{'dhcpd_path'},
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		    "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 
 	&foreign_require("software", "software-lib.pl");
 	$lnk = &software::missing_install_link("dhcpd", $text{'index_dhcpd'},
