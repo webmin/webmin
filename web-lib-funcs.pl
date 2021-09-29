@@ -6536,6 +6536,37 @@ if ($gconfig{'logfiles'} && !&get_module_variable('$no_log_file_changes')) {
 	}
 }
 
+=head2 webmin_debug_var_dump(varname, objref)
+
+Write content of a variable or hash/array ref to a file. For internal use only.
+ Example :
+   webmin_debug_var_dump('HASH_NAME', \%hash_ref);
+   webmin_debug_var_dump('ARRAY_NAME', \@array_ref);
+   webmin_debug_var_dump('VALUE_NAME', '$var_name');
+
+  Calling as root user `webmin_debug_var_dump('ENV', \%ENV)` will write a file under
+  Webmin temporary directory with a file name `.debug_webmin_root_hash_ENV` dumping
+  its content nicely
+
+=cut
+sub webmin_debug_var_dump
+{
+my ($varname, $objref) = @_;
+my $file_name_prefix = '.debug_' . get_product_name() . '_' . $remote_user;
+$varname  =~ tr/A-Za-z0-9//cd;
+
+if (ref($objref) eq 'HASH') {
+	write_file(tempname($file_name_prefix . '_hash_' . $varname), $objref);
+	}
+elsif (ref($objref) eq 'ARRAY') {
+	my @array_list = map {"$_\n"} @{$objref};
+	write_file_contents(tempname($file_name_prefix . '_array_' . $varname), "@array_list");
+	}
+else {
+	write_file_contents(tempname($file_name_prefix . '_variable_' . $varname), "$objref");
+	}
+}
+
 =head2 webmin_debug_log(type, message)
 
 Write something to the Webmin debug log. For internal use only.
