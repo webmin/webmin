@@ -6559,7 +6559,8 @@ if (ref($objref) eq 'HASH') {
 	write_file(tempname($file_name_prefix . '__dump__hash___' . $varname), $objref);
 	}
 elsif (ref($objref) eq 'ARRAY') {
-	my @array_list = map {"$_\n"} @{$objref};
+	my $arrindex = 0;
+	my @array_list = map { "\n@{[$arrindex++]}: $_" } @{$objref};
 	write_file_contents(tempname($file_name_prefix . '__dump__arra___' . $varname), "@array_list");
 	}
 else {
