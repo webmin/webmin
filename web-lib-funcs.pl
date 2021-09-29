@@ -6556,14 +6556,14 @@ my $file_name_prefix = '.debug_' . get_product_name() . '_' . $remote_user;
 $varname  =~ tr/A-Za-z0-9//cd;
 
 if (ref($objref) eq 'HASH') {
-	write_file(tempname($file_name_prefix . '_hash_' . $varname), $objref);
+	write_file(tempname($file_name_prefix . '__dump__hash___' . $varname), $objref);
 	}
 elsif (ref($objref) eq 'ARRAY') {
 	my @array_list = map {"$_\n"} @{$objref};
-	write_file_contents(tempname($file_name_prefix . '_array_' . $varname), "@array_list");
+	write_file_contents(tempname($file_name_prefix . '__dump__arra___' . $varname), "@array_list");
 	}
 else {
-	write_file_contents(tempname($file_name_prefix . '_variable_' . $varname), "$objref");
+	write_file_contents(tempname($file_name_prefix . '__dump__varb___' . $varname), "$objref");
 	}
 }
 
