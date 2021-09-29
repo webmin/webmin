@@ -6542,7 +6542,7 @@ Write content of a variable or hash/array ref to a file. For internal use only.
  Example :
    webmin_debug_var_dump('HASH_NAME', \%hash_ref);
    webmin_debug_var_dump('ARRAY_NAME', \@array_ref);
-   webmin_debug_var_dump('VALUE_NAME', '$var_name');
+   webmin_debug_var_dump('VALUE_NAME', $var_name);
 
   Calling as root user `webmin_debug_var_dump('ENV', \%ENV)` will write a file under
   Webmin temporary directory with a file name `.debug_webmin_root_hash_ENV` dumping
