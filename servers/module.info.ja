@@ -1,1 +1,3 @@
-desc_ja=Webmin サーバの索引
+name_ja=サーバ
+desc_ja=Webmin サーバ 一覧
+longdesc_ja=他の Webmin サーバ を一覧表示して、簡単にリンクします。
