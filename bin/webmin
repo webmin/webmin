@@ -53,7 +53,7 @@ sub main {
         my $ver = read_file_contents($ver1) || read_file_contents($ver2);
         $ver = trim($ver);
         if ($ver) {
-            say CYAN, "Webmin: ", RESET, GREEN, $ver, RESET;
+            say CYAN, "Webmin: ", RESET, GREEN, $ver, RESET, RESET, DARK " [$root]", RESET;
         } else {
             say RED, "Error: ", RESET, "Cannot determine Webmin version";
             exit 1;
