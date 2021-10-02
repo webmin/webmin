@@ -56,6 +56,7 @@ sub main {
             say CYAN, "Webmin: ", RESET, GREEN, $ver, RESET;
         } else {
             say RED, "Error: ", RESET, "Cannot determine Webmin version";
+            exit 1;
         }
 
         # Get other Webmin themes/modules versions if available
