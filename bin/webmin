@@ -20,6 +20,7 @@ sub main {
         'list-commands|l' => \$opt{'list'},
         'describe|d' => \$opt{'describe'},
         'man|m' => \$opt{'man'},
+        'version|v' => \$opt{'version'},
         '<>' => sub {
             # Handle unrecognized options, inc. subcommands.
             my($arg) = @_;
@@ -40,6 +41,64 @@ sub main {
     # List commands?
     if ($opt{'list'}) {
         list_commands(\%opt);
+        exit 0;
+    } elsif ($opt{'version'}) {
+        # Load libs
+        my $root = root($opt{'config'});
+        require("$root/web-lib-funcs.pl");
+
+        # Get Webmin version installed
+        my $ver1 = "$root/version";
+        my $ver2 = "$opt{'config'}/version";
+        my $ver = read_file_contents($ver1) || read_file_contents($ver2);
+        $ver = trim($ver);
+        if ($ver) {
+            say CYAN, "Webmin: ", RESET, GREEN, $ver, RESET;
+        } else {
+            say RED, "Error: ", RESET, "Cannot determine Webmin version";
+        }
+
+        # Get other Webmin themes/modules versions if available
+        my @mods;
+        my @themes;
+        my $print_mod_vers = sub {
+            my ($t, @m) = @_;
+            my @info;
+            if (@m) {
+                my $head;
+                @m = sort(@m);
+                foreach my $mod (@m) {
+                    my %mod_info;
+                    read_file($mod, \%mod_info);
+                    my $mod_ver = $mod_info{'version'};
+                    my $mod_desc = $mod_info{'desc'};
+                    if ($mod_ver && $ver && $mod_ver ne $ver && $mod_desc) {
+                        say  CYAN, "  $t: ", RESET if (!$head++);
+                        my ($mod_dir) = $mod =~ m/$root\/(.*?)\//;
+                        push(@info, {'desc' => $mod_desc, 'ver' => $mod_ver, 'dir' => $mod_dir});
+                    }
+                }
+                @info =  sort { $a->{'desc'} cmp $b->{'desc'} } @info;
+                foreach my $mod (@info) {
+                    say "    $mod->{'desc'}: " . GREEN, $mod->{'ver'}, RESET, DARK " [$mod->{'dir'}]", RESET;
+                }
+            }
+        };
+        my $dir;
+        if (opendir($dir, "$root")) {
+            while (my $file = readdir($dir)) {
+                my $mod_info_file = "$root/$file/module.info";
+                push(@mods, $mod_info_file)
+                    if (-r $mod_info_file);
+
+                my $theme_info_file = "$root/$file/theme.info";
+                push(@themes, $theme_info_file)
+                    if (-r $theme_info_file);
+            }
+        }
+        closedir($dir);
+        &$print_mod_vers('Themes', @themes);
+        &$print_mod_vers('Modules', @mods);
         exit 0;
     } elsif ($opt{'man'} || $opt{'help'} || !defined($remain[0])) {
         # Show the full manual page
@@ -265,6 +324,10 @@ When listing commands, briefly describe what they do.
 
 Display the manual page for the given subcommand.
 
+=item --version, -v
+
+Returns Webmin and modules versions (for which version is available)
+
 =back
 
 =head1 EXIT CODES
@@ -275,6 +338,8 @@ non-0 on error
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2020 Jamie Cameron <jcameron@webmin.com>, Joe Cooper
-<joe@virtualmin.com>.
+Copyright 2021 
+        Jamie Cameron <jcameron@webmin.com>, 
+        Joe Cooper <joe@virtualmin.com>,
+        Ilia Rostovtsev <ilia@rostovtsev.io>.
 
