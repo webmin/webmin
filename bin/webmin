@@ -45,8 +45,17 @@ sub main {
     } elsif ($opt{'version'}) {
         # Load libs
         my $root = root($opt{'config'});
+        my $ver_checked = sub {
+            my ($ver_remote, $ver_curr) = @_;
+            if ($ver_remote && $ver_curr &&
+                compare_version_numbers($ver_remote, $ver_curr) > 0 ) {
+                return (BRIGHT_RED, $ver_curr, RESET, DARK, " (" . RESET, BRIGHT_GREEN, $ver_remote, RESET, DARK . " is available)", RESET);
+            } else {
+                return GREEN, $ver_curr, RESET;
+            }
+        };
         my $print_mod_vers = sub {
-            my ($module_type, $modules_list, $prod_root, $prod_ver) = @_;
+            my ($module_type, $modules_list, $prod_root, $prod_ver, $versions_remote_local) = @_;
             my @minfo;
             if (ref($modules_list)) {
                 my $head;
@@ -64,7 +73,7 @@ sub main {
                 }
                 @minfo =  sort { $a->{'desc'} cmp $b->{'desc'} } @minfo;
                 foreach my $mod (@minfo) {
-                    say "    $mod->{'desc'}: " . GREEN, $mod->{'ver'}, RESET, DARK " [$mod->{'dir'}]", RESET;
+                    say "    $mod->{'desc'}: " , &$ver_checked($versions_remote_local->{$mod->{'dir'}}, $mod->{'ver'}), DARK " [$mod->{'dir'}]", RESET;
                 }
             }
         };
@@ -72,13 +81,27 @@ sub main {
         if ($root && -d $root) {
             require("$root/web-lib-funcs.pl");
             
+            # Try to get remote versions first
+            my ($latest_known_versions_remote, $latest_known_versions_remote_error);
+            http_download("virtualmin.com", 443, '/latest-packages-versions.txt',
+                          \$latest_known_versions_remote, \$latest_known_versions_remote_error,
+                          undef, 1, undef, undef, 5);
+            my %versions_remote;
+            if ($latest_known_versions_remote &&
+                !$latest_known_versions_remote_error) {
+                %versions_remote = map{split /=/, $_}
+                                      (split(/\n/, $latest_known_versions_remote));
+            } elsif ($latest_known_versions_remote_error) {
+                say BRIGHT_YELLOW, "Warning: ", RESET, "Cannot fetch remote packages versions list - $latest_known_versions_remote_error";
+            }
+            
             # Get Webmin version installed
             my $ver1 = "$root/version";
             my $ver2 = "$opt{'config'}/version";
             my $ver = read_file_contents($ver1) || read_file_contents($ver2);
             $ver = trim($ver);
             if ($ver) {
-                say CYAN, "Webmin: ", RESET, GREEN, $ver, RESET, RESET, DARK " [$root]", RESET;
+                say CYAN, "Webmin: ", RESET, &$ver_checked($versions_remote{'webmin'}, $ver), DARK " [$root]", RESET;
             } else {
                 say RED, "Error: ", RESET, "Cannot determine Webmin version";
                 exit 1;
@@ -98,8 +121,8 @@ sub main {
                 }
             }
             closedir($dir);
-            &$print_mod_vers('Themes', \@themes, $root, $ver);
-            &$print_mod_vers('Modules', \@mods, $root, $ver);
+            &$print_mod_vers('Themes', \@themes, $root, $ver, \%versions_remote);
+            &$print_mod_vers('Modules', \@mods, $root, $ver, \%versions_remote);
 
         # Check for Usermin
         my $wmumconfig = "$opt{'config'}/usermin/config";
@@ -121,7 +144,7 @@ sub main {
                         my $uver = read_file_contents($uver1) || read_file_contents($uver2);
                         $uver = trim($uver);
                         if ($uver) {
-                            say CYAN, "Usermin: ", RESET, GREEN, $uver, RESET, RESET, DARK " [$uroot]", RESET;
+                            say CYAN, "Usermin: ", RESET, &$ver_checked($versions_remote{'usermin'}, $uver), DARK " [$uroot]", RESET;
                             my ($udir, @uthemes, @umods);
                             if (opendir($udir, "$uroot")) {
                                 while (my $file = readdir($udir)) {
@@ -136,8 +159,8 @@ sub main {
                                 }
                             }
                             closedir($udir);
-                            &$print_mod_vers('Themes', \@uthemes, $uroot, $uver);
-                            &$print_mod_vers('Modules', \@umods, $uroot, $uver);
+                            &$print_mod_vers('Themes', \@uthemes, $uroot, $uver, \%versions_remote);
+                            &$print_mod_vers('Modules', \@umods, $uroot, $uver, \%versions_remote);
                         }
                     }
                 }
