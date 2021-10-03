@@ -258,15 +258,16 @@ $tmp =~ s/=/&#61;/g;
 return $tmp;
 }
 
-=head2 html_strip(string)
+=head2 html_strip(string, replacement)
 
-Removes any HTML from a string
+Removes any HTML from a string, replacing with nothing or given chars
 
 =cut
 sub html_strip
 {
-my ($str) = @_;
-$str =~ s/<(?:[^>'"]*|(['"]).*?\1)*>//gs;
+my ($str, $replacement) = @_;
+$replacement ||= "";
+$str =~ s/<(?:[^>'"]*|(['"]).*?\1)*>/$replacement/gs;
 return $str;
 }
 
