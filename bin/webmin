@@ -45,61 +45,105 @@ sub main {
     } elsif ($opt{'version'}) {
         # Load libs
         my $root = root($opt{'config'});
-        require("$root/web-lib-funcs.pl");
-
-        # Get Webmin version installed
-        my $ver1 = "$root/version";
-        my $ver2 = "$opt{'config'}/version";
-        my $ver = read_file_contents($ver1) || read_file_contents($ver2);
-        $ver = trim($ver);
-        if ($ver) {
-            say CYAN, "Webmin: ", RESET, GREEN, $ver, RESET, RESET, DARK " [$root]", RESET;
-        } else {
-            say RED, "Error: ", RESET, "Cannot determine Webmin version";
-            exit 1;
-        }
-
-        # Get other Webmin themes/modules versions if available
-        my @mods;
-        my @themes;
         my $print_mod_vers = sub {
-            my ($t, @m) = @_;
-            my @info;
-            if (@m) {
+            my ($module_type, $modules_list, $prod_root, $prod_ver) = @_;
+            my @minfo;
+            if (ref($modules_list)) {
                 my $head;
-                @m = sort(@m);
-                foreach my $mod (@m) {
+                my @modules_list = sort(@{$modules_list});
+                foreach my $mod (@modules_list) {
                     my %mod_info;
                     read_file($mod, \%mod_info);
                     my $mod_ver = $mod_info{'version'};
                     my $mod_desc = $mod_info{'desc'};
-                    if ($mod_ver && $ver && $mod_ver ne $ver && $mod_desc) {
-                        say  CYAN, "  $t: ", RESET if (!$head++);
-                        my ($mod_dir) = $mod =~ m/$root\/(.*?)\//;
-                        push(@info, {'desc' => $mod_desc, 'ver' => $mod_ver, 'dir' => $mod_dir});
+                    if ($mod_ver && $prod_ver && $mod_desc && $mod_ver ne $prod_ver) {
+                        say  CYAN, "  $module_type: ", RESET if (!$head++);
+                        my ($mod_dir) = $mod =~ m/$prod_root\/(.*?)\//;
+                        push(@minfo, {'desc' => $mod_desc, 'ver' => $mod_ver, 'dir' => $mod_dir});
                     }
                 }
-                @info =  sort { $a->{'desc'} cmp $b->{'desc'} } @info;
-                foreach my $mod (@info) {
+                @minfo =  sort { $a->{'desc'} cmp $b->{'desc'} } @minfo;
+                foreach my $mod (@minfo) {
                     say "    $mod->{'desc'}: " . GREEN, $mod->{'ver'}, RESET, DARK " [$mod->{'dir'}]", RESET;
                 }
             }
         };
-        my $dir;
-        if (opendir($dir, "$root")) {
-            while (my $file = readdir($dir)) {
-                my $mod_info_file = "$root/$file/module.info";
-                push(@mods, $mod_info_file)
-                    if (-r $mod_info_file);
 
-                my $theme_info_file = "$root/$file/theme.info";
-                push(@themes, $theme_info_file)
-                    if (-r $theme_info_file);
+        if ($root && -d $root) {
+            require("$root/web-lib-funcs.pl");
+            
+            # Get Webmin version installed
+            my $ver1 = "$root/version";
+            my $ver2 = "$opt{'config'}/version";
+            my $ver = read_file_contents($ver1) || read_file_contents($ver2);
+            $ver = trim($ver);
+            if ($ver) {
+                say CYAN, "Webmin: ", RESET, GREEN, $ver, RESET, RESET, DARK " [$root]", RESET;
+            } else {
+                say RED, "Error: ", RESET, "Cannot determine Webmin version";
+                exit 1;
+            }
+            
+            # Get other Webmin themes/modules versions if available
+            my ($dir, @themes, @mods);
+            if (opendir($dir, $root)) {
+                while (my $file = readdir($dir)) {
+                    my $theme_info_file = "$root/$file/theme.info";
+                    push(@themes, $theme_info_file)
+                        if (-r $theme_info_file);
+
+                    my $mod_info_file = "$root/$file/module.info";
+                    push(@mods, $mod_info_file)
+                        if (-r $mod_info_file);
+                }
+            }
+            closedir($dir);
+            &$print_mod_vers('Themes', \@themes, $root, $ver);
+            &$print_mod_vers('Modules', \@mods, $root, $ver);
+
+        # Check for Usermin
+        my $wmumconfig = "$opt{'config'}/usermin/config";
+            if (-r $wmumconfig) {
+                my %wmumconfig;
+                read_file($wmumconfig, \%wmumconfig);
+
+                # Usermin config dir
+                $wmumconfig = $wmumconfig{'usermin_dir'};
+                if ($wmumconfig) {
+                    my %uminiserv;
+                    read_file("$wmumconfig/miniserv.conf", \%uminiserv);
+                    my $uroot = $uminiserv{'root'};
+
+                    # Get Usermin version installed
+                    if ($uroot && -d $uroot) {
+                        my $uver1 = "$uroot/version";
+                        my $uver2 = "$wmumconfig/version";
+                        my $uver = read_file_contents($uver1) || read_file_contents($uver2);
+                        $uver = trim($uver);
+                        if ($uver) {
+                            say CYAN, "Usermin: ", RESET, GREEN, $uver, RESET, RESET, DARK " [$uroot]", RESET;
+                            my ($udir, @uthemes, @umods);
+                            if (opendir($udir, "$uroot")) {
+                                while (my $file = readdir($udir)) {
+                                    my $theme_info_file = "$uroot/$file/theme.info";
+                                    push(@uthemes, $theme_info_file)
+                                        if (-r $theme_info_file);
+
+                                    my $mod_info_file = "$uroot/$file/module.info";
+                                    push(@umods, $mod_info_file)
+                                        if (-r $mod_info_file);
+
+                                }
+                            }
+                            closedir($udir);
+                            &$print_mod_vers('Themes', \@uthemes, $uroot, $uver);
+                            &$print_mod_vers('Modules', \@umods, $uroot, $uver);
+                        }
+                    }
+                }
             }
         }
-        closedir($dir);
-        &$print_mod_vers('Themes', @themes);
-        &$print_mod_vers('Modules', @mods);
+
         exit 0;
     } elsif ($opt{'man'} || $opt{'help'} || !defined($remain[0])) {
         # Show the full manual page
