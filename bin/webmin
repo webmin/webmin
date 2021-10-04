@@ -83,7 +83,7 @@ sub main {
             
             # Try to get remote versions first
             my ($latest_known_versions_remote, $latest_known_versions_remote_error);
-            http_download("virtualmin.com", 443, '/latest-packages-versions.txt',
+            http_download("virtualmin.com", 443, '/software-latest',
                           \$latest_known_versions_remote, \$latest_known_versions_remote_error,
                           undef, 1, undef, undef, 5);
             my %versions_remote;
