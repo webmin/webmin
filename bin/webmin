@@ -21,6 +21,7 @@ sub main {
         'describe|d' => \$opt{'describe'},
         'man|m' => \$opt{'man'},
         'version|v' => \$opt{'version'},
+        'versions' => \$opt{'versions'},
         '<>' => sub {
             # Handle unrecognized options, inc. subcommands.
             my($arg) = @_;
@@ -42,7 +43,7 @@ sub main {
     if ($opt{'list'}) {
         list_commands(\%opt);
         exit 0;
-    } elsif ($opt{'version'}) {
+    } elsif ($opt{'version'} || $opt{'versions'}) {
         # Load libs
         my $root = root($opt{'config'});
         my $ver_checked = sub {
@@ -63,7 +64,7 @@ sub main {
                 foreach my $mod (@modules_list) {
                     my %mod_info;
                     read_file($mod, \%mod_info);
-                    my $mod_ver = $mod_info{'version'};
+                    my $mod_ver = $mod_info{'version_actual'} || $mod_info{'version'};
                     my $mod_desc = $mod_info{'desc'};
                     if ($mod_ver && $prod_ver && $mod_desc && $mod_ver ne $prod_ver) {
                         say  CYAN, "  $module_type: ", RESET if (!$head++);
@@ -82,17 +83,19 @@ sub main {
             require("$root/web-lib-funcs.pl");
             
             # Try to get remote versions first
-            my ($latest_known_versions_remote, $latest_known_versions_remote_error);
-            http_download("virtualmin.com", 443, '/software-latest',
-                          \$latest_known_versions_remote, \$latest_known_versions_remote_error,
-                          undef, 1, undef, undef, 5);
             my %versions_remote;
-            if ($latest_known_versions_remote &&
-                !$latest_known_versions_remote_error) {
-                %versions_remote = map{split /=/, $_}
-                                      (split(/\n/, $latest_known_versions_remote));
-            } elsif ($latest_known_versions_remote_error) {
-                say BRIGHT_YELLOW, "Warning: ", RESET, "Cannot fetch remote packages versions list - $latest_known_versions_remote_error";
+            if ($opt{'versions'}) {
+                my ($latest_known_versions_remote, $latest_known_versions_remote_error);
+                http_download("virtualmin.com", 443, '/software-latest',
+                              \$latest_known_versions_remote, \$latest_known_versions_remote_error,
+                              undef, 1, undef, undef, 5);
+                if ($latest_known_versions_remote &&
+                    !$latest_known_versions_remote_error) {
+                    %versions_remote = map{split /=/, $_}
+                                          (split(/\n/, $latest_known_versions_remote));
+                } elsif ($latest_known_versions_remote_error) {
+                    say BRIGHT_YELLOW, "Warning: ", RESET, "Cannot fetch remote packages versions list - $latest_known_versions_remote_error";
+                }
             }
             
             # Get Webmin version installed
@@ -101,7 +104,12 @@ sub main {
             my $ver = read_file_contents($ver1) || read_file_contents($ver2);
             $ver = trim($ver);
             if ($ver) {
-                say CYAN, "Webmin: ", RESET, &$ver_checked($versions_remote{'webmin'}, $ver), DARK " [$root]", RESET;
+                if ($opt{'version'}) {
+                    say $ver;
+                    exit 0;
+                } else {
+                    say CYAN, "Webmin: ", RESET, &$ver_checked($versions_remote{'webmin'}, $ver), DARK " [$root]", RESET;
+                }
             } else {
                 say RED, "Error: ", RESET, "Cannot determine Webmin version";
                 exit 1;
@@ -394,7 +402,11 @@ Display the manual page for the given subcommand.
 
 =item --version, -v
 
-Returns Webmin and modules versions (for which version is available)
+Returns current Webmin version installed
+
+=item --versions
+
+Returns Webmin and other modules and themes versions installed (only those for which version is available)
 
 =back
 
