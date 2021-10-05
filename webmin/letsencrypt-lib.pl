@@ -13,7 +13,8 @@ else {
 $account_key = "$module_config_directory/letsencrypt.pem";
 
 $letsencrypt_chain_urls = [
-	"https://letsencrypt.org/certs/lets-encrypt-r3-cross-signed.pem",
+	"https://letsencrypt.org/certs/lets-encrypt-r3.pem",
+	"https://letsencrypt.org/certs/lets-encrypt-r4.pem",
 	];
 
 # check_letsencrypt()
