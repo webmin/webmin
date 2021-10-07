@@ -309,7 +309,7 @@ os_name=Kintamasis vardas
 os_value=Vertė
 os_eversion=Trūksta operacinės sistemos versijos
 os_eiversion=Trūksta vidinės operacinės sistemos versijos
-os_incorrect=Įspėjimas - jūsų sistemoje iš tikrųjų veikia $1 versija $2.
+os_incorrect=Operacinė sistema $1 buvo atnaujinta į $2 versiją
 os_fix=Atnaujinkite aptiktą operacinę sistemą
 os_usermin=Taip pat atnaujinkite „Usermin“ OS
 
@@ -656,6 +656,10 @@ session_sha512=Naudokite SHA512 šifravimą
 session_emd5mod=MD5 šifravimo naudoti negalima, nes „Perl $1 modulis neįdiegtas.
 session_esha512mod=SHA512 šifravimo negalima naudoti, nes „Perl $1 modulis neįdiegtas.
 session_blocklock=Taip pat užrakinkite vartotojus, kuriems nepavyko prisijungti
+session_passapi=Įgalinti nuotolinio slaptažodžio keitimo API?
+session_passapi0=API išjungta
+session_passapi1=API įgalinta „Unix“ vartotojams
+session_passurl=Įjungus vartotojo slaptažodžius per POST užklausą galima pakeisti į $1
 
 assignment_title=Perskirskite modulius
 assignment_header=Modulio kategorijų priskyrimai

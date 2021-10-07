@@ -309,7 +309,7 @@ os_name=Izena aldakorra
 os_value=Balio
 os_eversion=Sistema eragilearen bertsioa falta da
 os_eiversion=Barne sistema eragilearen bertsioa falta da
-os_incorrect=Abisua - Zure sistema $1 bertsioan dago $2.
+os_incorrect=$1 sistema eragilea $2 bertsiora eguneratu da
 os_fix=Eguneratu detektatutako sistema eragilea
 os_usermin=Era berean, eguneratu Usermin OS
 
@@ -656,6 +656,10 @@ session_sha512=Erabili SHA512 enkriptatzea
 session_emd5mod=MD5 enkriptatzea ezin da erabili, Perl $1 modulua ez dagoelako instalatuta.
 session_esha512mod=SHA512 enkriptatzea ezin da erabili, Perl $1 modulua ez dagoelako instalatuta.
 session_blocklock=Era berean, blokeatu erabiltzaileek huts egin duten saioak
+session_passapi=Urruneko pasahitza aldatzeko APIa gaitu nahi duzu?
+session_passapi0=APIa desgaituta dago
+session_passapi1=API gaituta dago Unix erabiltzaileentzat
+session_passurl=Gaituta dagoenean, erabiltzaileen pasahitzak POST eskaera baten bidez alda daitezke $1 
 
 assignment_title=Moduluak berriro esleitu
 assignment_header=Moduluen kategoriako esleipenak

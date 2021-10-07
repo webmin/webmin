@@ -303,7 +303,6 @@ os_name=Variablenname
 os_value=Wert
 os_eversion=Fehlende Betriebssystemversion
 os_eiversion=Fehlende interne Betriebssystemangabe
-os_incorrect=Warnung - Ihr System läuft aktuell mit $1 Version $2.
 os_fix=Aktualisiere erkanntes Betriebssystem
 os_usermin=Aktualisiere auch Usermin OS
 

@@ -309,7 +309,7 @@ os_name=Naziv varijable
 os_value=Vrijednost
 os_eversion=Nedostaje verzija operativnog sustava
 os_eiversion=Nedostaje inačica interne operativnog sustava
-os_incorrect=Upozorenje - Vaš sustav zapravo radi $1 $2.
+os_incorrect=Operacijski sustav $1 nadograđen je na verziju $2
 os_fix=Ažurirajte otkriveni operativni sustav
 os_usermin=Ažurirajte i Usermin OS
 
@@ -656,6 +656,10 @@ session_sha512=Koristite SHA512 enkripciju
 session_emd5mod=MD5 enkripcija se ne može koristiti, jer Perl $1 modul nije instaliran.
 session_esha512mod=SHA512 šifriranje se ne može koristiti, jer Perl $1 modul nije instaliran.
 session_blocklock=Zaključajte i korisnike s neuspjelim prijavama
+session_passapi=Omogućiti API za daljinsku promjenu lozinke?
+session_passapi0=API onemogućen
+session_passapi1=API omogućen za korisnike Unixa
+session_passurl=Kad je omogućeno, lozinke korisnika mogu se promijeniti putem POST zahtjeva na $1
 
 assignment_title=Ponovno dodijelite module
 assignment_header=Zadaci kategorije modula

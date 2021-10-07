@@ -5,6 +5,13 @@ bind_emaxconns=Die maximale Anzahl gleichzeitiger Verbindungen muss größer als
 bind_emaxconns_per_ip=Die maximale Anzahl gleichzeitiger Verbindungen pro IP muss größer als 1 sein
 bind_emaxconns_per_net=Die maximale Anzahl gleichzeitiger Verbindungen pro Netzwerk muss größer als 1 sein
 
+os_incorrect=Betriebssystem $1 wurde auf Version $2 aktualisiert
+
+session_passapi=API für die Remote-Passwortänderung aktivieren?
+session_passapi0=API deaktiviert
+session_passapi1=API für Unix-Benutzer aktiviert
+session_passurl=Wenn aktiviert, können Benutzerkennwörter über eine POST-Anfrage in $1. geändert werden
+
 advanced_bufsize=Netzwerkpuffergröße in Bytes
 advanced_ebufsize=Die Netzwerkpuffergröße muss eine Zahl größer als Null sein
 

@@ -309,7 +309,7 @@ os_name=Variabel navn
 os_value=Værdi
 os_eversion=Manglende version af operativsystemet
 os_eiversion=Manglende version af det interne operativsystem
-os_incorrect=Advarsel - Dit system kører faktisk $1 version $2.
+os_incorrect=Operativsystemet $1 er blevet opgraderet til version $2
 os_fix=Opdateret fundet operativsystem
 os_usermin=Opdater også Usermin OS
 
@@ -656,6 +656,10 @@ session_sha512=Brug SHA512-kryptering
 session_emd5mod=MD5-kryptering kan ikke bruges, da Perl $1 modul ikke er installeret.
 session_esha512mod=SHA512-kryptering kan ikke bruges, da Perl $1 modul ikke er installeret.
 session_blocklock=Lås også brugere med mislykkede login
+session_passapi=Vil du aktivere fjernadgangskode til ændring af adgangskode?
+session_passapi0=API deaktiveret
+session_passapi1=API aktiveret for Unix -brugere
+session_passurl=Når den er aktiveret, kan brugeradgangskoder ændres via en POST -anmodning til $1
 
 assignment_title=Tildel moduler igen
 assignment_header=Modulkategoriopgaver

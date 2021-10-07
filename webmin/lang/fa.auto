@@ -115,7 +115,7 @@ os_syspath=مسیر جستجوی خود سیستم را در نظر بگیرید
 os_perllib=مسیرهای کتابخانه اضافی Perl
 os_eversion=نسخه سیستم عامل موجود نیست
 os_eiversion=نسخه سیستم عامل داخلی وجود ندارد
-os_incorrect=Warning - Your system is actually running $1 version $2.
+os_incorrect=سیستم عامل$1 به نسخه$2 ارتقا یافته است
 os_fix=سیستم عامل شناسایی شده را به روز کنید
 os_usermin=همچنین سیستم عامل Usermin را به روز کنید
 
@@ -261,6 +261,10 @@ session_sha512=از رمزگذاری SHA512 استفاده کنید
 session_emd5mod=MD5 encryption cannot be used, as Perl $1 module is not installed.
 session_esha512mod=SHA512 encryption cannot be used, as Perl $1 module is not installed.
 session_blocklock=همچنین کاربران با ورود به سیستم شکست خورده را قفل کنید
+session_passapi=API تغییر رمز عبور از راه دور فعال شود؟
+session_passapi0=API غیرفعال شده است
+session_passapi1=API برای کاربران یونیکس فعال است
+session_passurl=در صورت فعال بودن ، گذرواژه های کاربر را می توان از طریق درخواست POST به$1 تغییر داد
 
 categories_lang=دسته بندی ها را به زبان ویرایش کنید:
 categories_langok=تغییر دادن

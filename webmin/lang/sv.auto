@@ -198,7 +198,7 @@ os_name=Variabelnamn
 os_value=Värde
 os_eversion=Saknas operativsystemversion
 os_eiversion=Saknas intern version av operativsystemet
-os_incorrect=Varning - Ditt system kör $1 version $2.
+os_incorrect=Operativsystemet $1 har uppgraderats till version $2
 os_fix=Uppdatera upptäckt operativsystem
 os_usermin=Uppdatera också Usermin OS
 
@@ -465,6 +465,10 @@ session_sha512=Använd SHA512-kryptering
 session_emd5mod=MD5-kryptering kan inte användas, eftersom Perl $1 -modulen inte är installerad.
 session_esha512mod=SHA512-kryptering kan inte användas, eftersom Perl $1 -modulen inte är installerad.
 session_blocklock=Lås också användare med misslyckade inloggningar
+session_passapi=Aktivera fjärranslutet lösenordsbyte -API?
+session_passapi0=API inaktiverat
+session_passapi1=API aktiverat för Unix -användare
+session_passurl=När det är aktiverat kan användarlösenord ändras via en POST -begäran till $1
 
 assignment_ok=Byt kategorier
 assignment_desc=Detta formulär låter dig konfigurera vilken kategori varje modul visas under på Webmin indexsida.

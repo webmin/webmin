@@ -21,6 +21,7 @@ ui_nice_size_type=Gebruik binaire maateenheden (KiB, MiB, GiB in plaats van KB, 
 
 mods_checksig=Controleer het handtekeningbestand voor gedownloade modules?
 
+os_incorrect=Besturingssysteem $1 is geüpgraded naar versie $2
 os_usermin=Update ook Usermin OS
 
 ssl_deny=Te weigeren SSL-protocolversies
@@ -78,6 +79,10 @@ session_banner=Pre-login banner
 session_md5=Webmin wachtwoord hashing-formaat
 session_sha512=Gebruik SHA512-codering
 session_esha512mod=SHA512-codering kan niet worden gebruikt, omdat de module Perl $1 niet is geïnstalleerd.
+session_passapi=API voor wachtwoordwijziging op afstand inschakelen?
+session_passapi0=API uitgeschakeld
+session_passapi1=API ingeschakeld voor Unix-gebruikers
+session_passurl=Indien ingeschakeld, kunnen gebruikerswachtwoorden worden gewijzigd via een POST-verzoek in $1
 
 categories_custom=Op maat
 

@@ -121,7 +121,7 @@ os_syspath=Incluir o próprio caminho de pesquisa do sistema?
 os_perllib=Caminhos extras da biblioteca Perl
 os_eversion=Versão do sistema operacional ausente
 os_eiversion=Versão do sistema operacional interno ausente
-os_incorrect=Aviso - Seu sistema está realmente executando $1 versão $2.
+os_incorrect=O sistema operacional $1 foi atualizado para a versão $2 
 os_fix=Atualização do sistema operacional detectado
 os_usermin=Atualize também o SO Usermin
 
@@ -274,6 +274,10 @@ session_sha512=Use criptografia SHA512
 session_emd5mod=A criptografia MD5 não pode ser usada, pois o módulo Perl $1 não está instalado.
 session_esha512mod=A criptografia SHA512 não pode ser usada, pois o módulo Perl $1 não está instalado.
 session_blocklock=Também bloqueia usuários com logins com falha
+session_passapi=Ativar API de alteração de senha remota?
+session_passapi0=API desativada
+session_passapi1=API habilitada para usuários Unix
+session_passurl=Quando habilitado, as senhas do usuário podem ser alteradas por meio de uma solicitação POST para $1 
 
 categories_lang=Edite categorias no idioma:
 categories_langok=mudança

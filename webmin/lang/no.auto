@@ -5,6 +5,13 @@ bind_emaxconns=Maksimum samtidige tilkoblinger må være et tall større enn 1
 bind_emaxconns_per_ip=Maksimum samtidige tilkoblinger per IP må være et tall større enn 1
 bind_emaxconns_per_net=Maksimum samtidige tilkoblinger per nettverk må være et tall større enn 1
 
+os_incorrect=Operativsystemet $1 er oppgradert til versjon $2
+
+session_passapi=Vil du aktivere eksternt passordendrings -API?
+session_passapi0=API deaktivert
+session_passapi1=API aktivert for Unix -brukere
+session_passurl=Når den er aktivert, kan brukerpassord endres via en POST -forespørsel til $1
+
 advanced_bufsize=Nettverksbufferstørrelse i byte
 advanced_ebufsize=Nettverksbufferstørrelse må være et tall som er større enn null
 

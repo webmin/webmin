@@ -126,7 +126,7 @@ os_syspath=Sistemin kendi arama yolu eklensin mi?
 os_perllib=Ekstra Perl kütüphane yolları
 os_eversion=İşletim sistemi sürümü eksik
 os_eiversion=Dahili işletim sistemi sürümü eksik
-os_incorrect=Uyarı - Sisteminizde aslında $1 sürüm $2 çalışıyor.
+os_incorrect=$1 işletim sistemi $2 sürümüne yükseltildi
 os_fix=Algılanan İşletim Sistemini Güncelle
 os_usermin=Ayrıca Usermin İşletim Sistemini de güncelleyin
 
@@ -283,6 +283,10 @@ session_sha512=SHA512 şifrelemesi kullanın
 session_emd5mod=MD5 şifrelemesi kullanılamaz, çünkü Perl $1 modülü kurulu değildir.
 session_esha512mod=SHA512 şifreleme kullanılamaz, çünkü Perl $1 modülü kurulu değildir.
 session_blocklock=Ayrıca oturum açma başarısız olan kullanıcıları da kilitle
+session_passapi=Uzaktan şifre değiştirme API'si etkinleştirilsin mi?
+session_passapi0=API devre dışı
+session_passapi1=Unix kullanıcıları için API etkinleştirildi
+session_passurl=Etkinleştirildiğinde, kullanıcı parolaları bir POST isteği aracılığıyla $1 olarak değiştirilebilir
 
 categories_lang=Kategorileri dilde düzenle:
 categories_langok=Değişiklik

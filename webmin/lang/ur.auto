@@ -309,7 +309,7 @@ os_name=متغیر نام
 os_value=قدر
 os_eversion=آپریٹنگ سسٹم کا ورژن غائب ہے
 os_eiversion=اندرونی آپریٹنگ سسٹم کا ورژن غائب ہے
-os_incorrect=Warning - Your system is actually running $1 version $2.
+os_incorrect=آپریٹنگ سسٹم$1 کو ورژن$2 میں اپ گریڈ کر دیا گیا ہے۔
 os_fix=آپریٹنگ سسٹم کا پتہ لگائیں
 os_usermin=یوزر مین OS کو بھی اپ ڈیٹ کریں
 
@@ -656,6 +656,10 @@ session_sha512=SHA512 خفیہ کاری کا استعمال کریں
 session_emd5mod=MD5 encryption cannot be used, as Perl $1 module is not installed.
 session_esha512mod=SHA512 encryption cannot be used, as Perl $1 module is not installed.
 session_blocklock=ناکام لاگ ان والے صارفین کو بھی لاک کریں
+session_passapi=ریموٹ پاس ورڈ چینج API کو فعال کریں؟
+session_passapi0=API غیر فعال
+session_passapi1=یونکس صارفین کے لیے API فعال۔
+session_passurl=فعال ہونے پر ، صارف کے پاس ورڈز کو POST درخواست کے ذریعے$1 میں تبدیل کیا جا سکتا ہے۔
 
 assignment_title=ماڈیول دوبارہ تفویض کریں
 assignment_header=ماڈیول زمرہ اسائنمنٹس

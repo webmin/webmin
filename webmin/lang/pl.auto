@@ -17,6 +17,8 @@ ui_nice_size_type=Użyj binarnych jednostek miary (KiB, MiB, GiB zamiast KB, MB,
 
 mods_checksig=Sprawdź plik podpisu dla pobranych modułów?
 
+os_incorrect=System operacyjny $1 został zaktualizowany do wersji $2 
+
 ssl_ekey2=Plik klucza prywatnego SSL $1 nie zawiera klucza formatu PEM
 ssl_ecert2=Plik certyfikatu SSL $1 nie zawiera certyfikatu formatu PEM
 ssl_edhparams=Nie udało się wygenerować pliku parametrów PFS DH : $1
@@ -49,6 +51,10 @@ ca_alt=Dodatkowe domeny
 
 session_sha512=Użyj szyfrowania SHA512
 session_esha512mod=Nie można użyć szyfrowania SHA512, ponieważ moduł Perl $1 nie jest zainstalowany.
+session_passapi=Włączyć interfejs API zdalnej zmiany hasła?
+session_passapi0=API wyłączone
+session_passapi1=API włączone dla użytkowników Uniksa
+session_passurl=Po włączeniu hasła użytkowników można zmienić za pomocą żądania POST do $1 
 
 log_letsencrypt=Zażądałem nowego certyfikatu SSL od Let's Encrypt
 log_letsencryptdns=Utworzono Let's Encrypt DNS record dla $1

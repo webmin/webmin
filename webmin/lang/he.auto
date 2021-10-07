@@ -309,7 +309,7 @@ os_name=שם משתנה
 os_value=ערך
 os_eversion=גרסת מערכת הפעלה חסרה
 os_eiversion=חסרה גרסת מערכת הפעלה פנימית
-os_incorrect=Warning - Your system is actually running $1 version $2.
+os_incorrect=מערכת ההפעלה $1 שודרגה לגרסה $2
 os_fix=עדכון מערכת ההפעלה שזוהה
 os_usermin=עדכן גם מערכת ההפעלה Usermin
 
@@ -656,6 +656,10 @@ session_sha512=השתמש בהצפנת SHA512
 session_emd5mod=MD5 encryption cannot be used, as Perl $1 module is not installed.
 session_esha512mod=SHA512 encryption cannot be used, as Perl $1 module is not installed.
 session_blocklock=נעל גם משתמשים עם כניסות כושלות
+session_passapi=לאפשר ממשק API לשינוי סיסמה מרחוק?
+session_passapi0=ה- API מושבת
+session_passapi1=ממשק API מופעל עבור משתמשי יוניקס
+session_passurl=כשהוא מופעל, ניתן לשנות סיסמאות משתמש באמצעות בקשת POST ל- $1
 
 assignment_title=הקצה מחדש מודולים
 assignment_header=מטלות קטגוריות מודול

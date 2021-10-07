@@ -309,7 +309,7 @@ os_name=Denumirea variabilă
 os_value=Valoare
 os_eversion=Versiunea sistemului de operare lipsă
 os_eiversion=Lipsește versiunea sistemului de operare intern
-os_incorrect=Avertisment - sistemul tău rulează de fapt $1 versiunea $2.
+os_incorrect=Sistemul de operare $1 a fost actualizat la versiunea $2 
 os_fix=Actualizați sistemul de operare detectat
 os_usermin=Actualizați, de asemenea, sistemul de operare Usermin
 
@@ -656,6 +656,10 @@ session_sha512=Utilizați criptarea SHA512
 session_emd5mod=Criptarea MD5 nu poate fi utilizată, deoarece modulul Perl $1 nu este instalat.
 session_esha512mod=Criptarea SHA512 nu poate fi utilizată, deoarece modulul Perl $1 nu este instalat.
 session_blocklock=De asemenea, blocați utilizatorii cu autentificări eșuate
+session_passapi=Activați API-ul de modificare a parolei la distanță?
+session_passapi0=API dezactivat
+session_passapi1=API activat pentru utilizatorii Unix
+session_passurl=Când este activată, parolele utilizatorului pot fi schimbate prin intermediul unei cereri POST la $1 
 
 assignment_title=Reasignarea modulelor
 assignment_header=Alocări de categorii de module

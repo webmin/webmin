@@ -309,7 +309,7 @@ os_name=Isem varjabbli
 os_value=Valur
 os_eversion=Verżjoni tas-sistema operattiva nieqsa
 os_eiversion=Nieqes il-verżjoni tas-sistema operattiva interna
-os_incorrect=Twissija - Is-sistema tiegħek attwalment qed taħdem $1 verżjoni $2.
+os_incorrect=Is-sistema operattiva $1 ġiet aġġornata għall-verżjoni $2 
 os_fix=Aġġornat Sistema Operattiva Maqbuda
 os_usermin=Aġġorna wkoll OS Usermin
 
@@ -656,6 +656,10 @@ session_sha512=Uża kriptaġġ SHA512
 session_emd5mod=L-encryption MD5 ma jistax jintuża, billi l-modulu Perl $1 mhuwiex installat.
 session_esha512mod=L-encryption SHA512 ma jistax jintuża, billi l-modulu Perl $1 mhuwiex installat.
 session_blocklock=Issakkar ukoll lill-utenti bi logins falluti
+session_passapi=Tippermetti l-API tal-bidla tal-password mill-bogħod?
+session_passapi0=API diżattivat
+session_passapi1=API attivata għal utenti Unix
+session_passurl=Meta tkun attivata, il-passwords tal-utent jistgħu jinbidlu permezz ta 'talba POST għal $1 
 
 assignment_title=Moduli mill-ġdid
 assignment_header=Assenjazzjonijiet tal-kategorija tal-moduli

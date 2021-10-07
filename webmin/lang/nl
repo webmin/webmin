@@ -291,7 +291,6 @@ os_name=Variabele naam
 os_value=Waarde
 os_eversion=Ontbrekende besturingssysteem versie
 os_eiversion=Ontbrekende interne besturingssysteem versie
-os_incorrect=Waarschuwing - Uw systeem werkt op dit moment met $1 versie $2.
 os_fix=Update Gedetecteerde Besturings Systeem
 
 lang_title=Taal

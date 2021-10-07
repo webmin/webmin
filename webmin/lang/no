@@ -303,7 +303,6 @@ os_name=Variabel navn
 os_value=Verdi
 os_eversion=Manglende operativsystem versjon
 os_eiversion=Manglende intern operativsystem versjon
-os_incorrect=Advarsel - Systemet ditt kjører faktisk $1 versjon $2.
 os_fix=Oppdater oppdaget operativsystem
 os_usermin=Oppdater også Usermin OS
 
