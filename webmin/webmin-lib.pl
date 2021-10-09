@@ -2160,13 +2160,8 @@ my ($cn) = @_;
 my @cns = ref($cn) ? @$cn : ( $cn );
 my $conf = &find_openssl_config_file();
 $conf || &error("No OpenSSL configuration file found on this system!");
-if (@cns <= 1) {
-	# No special handling needed
-	return $conf;
-	}
 my $temp = &transname();
 &copy_source_dest($conf, $temp);
-shift(@cns);	# First one is part of the CN=
 
 # Make sure subjectAltNames is set in .cnf file, in the right places
 my $lref = &read_file_lines($temp);
