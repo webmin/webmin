@@ -309,7 +309,7 @@ os_name=Variable name
 os_value=Value
 os_eversion=Missing operating system version
 os_eiversion=Missing internal operating system version
-os_incorrect=Warning - Your system is actually running $1 version $2.
+os_incorrect=Operating system $1 has been upgraded to version $2
 os_fix=Update Detected Operating System
 os_usermin=Also update Usermin OS
 
