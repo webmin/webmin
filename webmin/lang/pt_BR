@@ -281,7 +281,6 @@ os_name=Nome da variável
 os_value=Valor
 os_eversion=Versão do sistema operacional faltando
 os_eiversion=Versão interna do sistema operacional faltando
-os_incorrect=Aviso - Seu sistema está atualmente executando $1 versão $2.
 os_fix=Detectada Atualização do Sistema Operacional
 
 lang_title=Idioma

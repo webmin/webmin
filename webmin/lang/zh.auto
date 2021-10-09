@@ -95,6 +95,7 @@ os_syspath=包括系统自己的搜索路径？
 os_envs=其他环境变量
 os_name=变量名
 os_value=值
+os_incorrect=操作系统 $1 已升级到版本 $2
 os_fix=更新检测到的操作系统
 
 lang_accept=使用浏览器指定的语言？
@@ -193,6 +194,10 @@ session_pmode0=始终拒绝使用过期密码的用户
 session_pmode1=始终允许用户使用过期的密码
 session_pmode2=使用过期的密码提示用户输入新密码
 session_blocklock=同时锁定登录失败的用户
+session_passapi=启用远程密码更改 API？
+session_passapi0=API 已禁用
+session_passapi1=为 Unix 用户启用 API
+session_passurl=启用后，可以通过向 $1 的 POST 请求更改用户密码
 
 categories_code=ID
 categories_name=显示的描述

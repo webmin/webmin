@@ -5,6 +5,13 @@ bind_emaxconns=Le nombre maximal de connexions simultanées doit être supérieu
 bind_emaxconns_per_ip=Le nombre maximal de connexions simultanées par IP doit être supérieur à 1
 bind_emaxconns_per_net=Le nombre maximal de connexions simultanées par réseau doit être supérieur à 1
 
+os_incorrect=Le système d'exploitation $1 a été mis à niveau vers la version $2
+
+session_passapi=Activer l'API de changement de mot de passe à distance ?
+session_passapi0=API désactivée
+session_passapi1=API activée pour les utilisateurs Unix
+session_passurl=Lorsqu'il est activé, les mots de passe utilisateur peuvent être modifiés via une requête POST à $1
+
 advanced_bufsize=Taille de la mémoire tampon du réseau en octets
 advanced_ebufsize=La taille de la mémoire tampon du réseau doit être un nombre supérieur à zéro
 

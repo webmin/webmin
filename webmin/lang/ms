@@ -294,7 +294,6 @@ os_name=Nama pembolehubah
 os_value=Nilai
 os_eversion=Hilang sistem operasi
 os_eiversion=Hilang versi dalaman sistem operasi
-os_incorrect=Amaran - Sistem anda sebenarnya menjalankan $1 versi $2.
 os_fix=Kemaskini Sistem Operasi Dikesan
 os_usermin=Juga kemaskini OS Usermin
 

@@ -309,7 +309,7 @@ os_name=Veranderlike naam
 os_value=waarde
 os_eversion=Ontbreek van die bedryfstelselweergawe
 os_eiversion=Ontbrekende weergawe van die interne bedryfstelsel
-os_incorrect=Waarskuwing - u stelsel werk eintlik met $1 weergawe $2.
+os_incorrect=Bedryfstelsel $1 is opgegradeer na weergawe $2
 os_fix=Bestuurstelsel word opgespoor
 os_usermin=Werk ook Usermin OS op
 
@@ -656,6 +656,10 @@ session_sha512=Gebruik die SHA512-kodering
 session_emd5mod=MD5-kodering kan nie gebruik word nie, aangesien die Perl $1 module nie geïnstalleer is nie.
 session_esha512mod=SHA512-kodering kan nie gebruik word nie, aangesien die Perl $1 -module nie geïnstalleer is nie.
 session_blocklock=Sluit ook gebruikers met mislukte aanmeldings
+session_passapi=Aktiveer afstand -wagwoord -verandering -API vir afstandbeheer?
+session_passapi0=API gedeaktiveer
+session_passapi1=API is aangeskakel vir Unix -gebruikers
+session_passurl=As dit geaktiveer is, kan gebruikerswagwoorde via 'n POST -versoek na $1 verander word
 
 assignment_title=Modules herdeel
 assignment_header=Module-opdragte

@@ -9,11 +9,17 @@ ui_nice_size_type=Utilitzeu unitats de mesura binàries (KiB, MiB, GiB en lloc d
 
 delete_rusure=Esteu segur que voleu suprimir el mòdul (s) $2? $1 kB de fitxers s'esborraran per sempre.
 
+os_incorrect=El sistema operatiu $1 s'ha actualitzat a la versió $2 
+
 ssl_letsdoms=Noms d'amfitrió del certificat
 
 update_webmin=Actualització de www.webmin.com
 
 session_pmodedesc3=Política de caducitat de contrasenya
+session_passapi=Voleu activar l'API de canvi de contrasenya remota?
+session_passapi0=API desactivada
+session_passapi1=API habilitada per als usuaris d'Unix
+session_passurl=Quan està activat, les contrasenyes d'usuari es poden canviar mitjançant una sol·licitud POST a $1 
 
 ipkey_eip2="$1" no és una adreça IP o un nom d'amfitrió vàlids
 

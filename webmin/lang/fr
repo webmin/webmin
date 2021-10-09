@@ -303,7 +303,6 @@ os_name=Nom de variable
 os_value=Valeur
 os_eversion=Version du système d'exploitation manquante
 os_eiversion=Version du système d'exploitation interne manquante
-os_incorrect=Avertissement - Votre système exécute actuellement $1 version $2.
 os_fix=Mettre à jour le système d'exploitation détecté
 os_usermin=Mettez également à jour le système d'exploitation Usermin
 

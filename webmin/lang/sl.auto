@@ -309,7 +309,7 @@ os_name=Ime spremenljivke
 os_value=Vrednost
 os_eversion=Manjka različica operacijskega sistema
 os_eiversion=Manjka notranja različica operacijskega sistema
-os_incorrect=Opozorilo - vaš sistem dejansko izvaja $1 $2.
+os_incorrect=Operacijski sistem $1 je bil nadgrajen na različico $2
 os_fix=Posodobiti zaznani operacijski sistem
 os_usermin=Posodobite tudi Usermin OS
 
@@ -656,6 +656,10 @@ session_sha512=Uporabite šifriranje SHA512
 session_emd5mod=Šifriranja MD5 ni mogoče uporabiti, saj modul Perl $1 ni nameščen.
 session_esha512mod=Šifriranja SHA512 ni mogoče uporabiti, saj modul Perl $1 ni nameščen.
 session_blocklock=Zaklenite tudi uporabnike z neuspešno prijavo
+session_passapi=Omogočiti API za oddaljeno spreminjanje gesla?
+session_passapi0=API onemogočen
+session_passapi1=API omogočen za uporabnike Unixa
+session_passurl=Če je omogočeno, lahko uporabniška gesla prek zahteve POST spremenite v $1
 
 assignment_title=Ponovno dodelite module
 assignment_header=Naloge kategorije modulov

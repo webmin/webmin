@@ -309,7 +309,7 @@ os_name=Tên biến
 os_value=Giá trị
 os_eversion=Thiếu phiên bản hệ điều hành
 os_eiversion=Thiếu phiên bản hệ điều hành nội bộ
-os_incorrect=Cảnh báo - Hệ thống của bạn thực sự đang chạy $1 phiên bản $2.
+os_incorrect=Hệ điều hành $1 đã được nâng cấp lên phiên bản $2 
 os_fix=Cập nhật hệ điều hành được phát hiện
 os_usermin=Đồng thời cập nhật hệ điều hành Usermin
 
@@ -656,6 +656,10 @@ session_sha512=Sử dụng mã hóa SHA512
 session_emd5mod=Mã hóa MD5 không thể được sử dụng, vì mô-đun Perl $1 chưa được cài đặt.
 session_esha512mod=Mã hóa SHA512 không thể được sử dụng, vì mô-đun Perl $1 chưa được cài đặt.
 session_blocklock=Cũng khóa người dùng với thông tin đăng nhập thất bại
+session_passapi=Bật API thay đổi mật khẩu từ xa?
+session_passapi0=API bị vô hiệu hóa
+session_passapi1=API được bật cho người dùng Unix
+session_passurl=Khi được bật, mật khẩu người dùng có thể được thay đổi thông qua yêu cầu ĐĂNG lên $1 
 
 assignment_title=Tái chỉ định mô-đun
 assignment_header=Bài tập thể loại

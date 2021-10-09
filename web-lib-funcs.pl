@@ -11692,6 +11692,28 @@ if (defined(&theme_get_webprefix)) {
 return $gconfig{'webprefix'} || '';
 }
 
+=head2 get_sub_ref_name
+
+Returns a name of the subroutine name of a code reference
+
+=cut
+sub get_sub_ref_name
+{
+my ($sub_ref) = @_;
+eval "use B qw(svref_2object);";
+if (!$@) {
+	if (ref($sub_ref)) {
+		my $cv = svref_2object ( $sub_ref );
+		if ($cv->can(GV)) {
+			my $gv = $cv->GV;
+			if ($gv->can(NAME)) {
+				return $gv->NAME;
+				}
+			}
+		}
+	}
+}
+
 $done_web_lib_funcs = 1;
 
 1;

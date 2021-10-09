@@ -309,7 +309,7 @@ os_name=Muuttujan nimi
 os_value=Arvo
 os_eversion=Puuttuu käyttöjärjestelmäversio
 os_eiversion=Puuttuu sisäinen käyttöjärjestelmäversio
-os_incorrect=Varoitus - Järjestelmäsi käyttää tosiasiallisesti $1 versiota $2.
+os_incorrect=Käyttöjärjestelmä $1 on päivitetty versioon $2
 os_fix=Päivitä havaittu käyttöjärjestelmä
 os_usermin=Päivitä myös Usermin OS
 
@@ -656,6 +656,10 @@ session_sha512=Käytä SHA512-salausta
 session_emd5mod=MD5-salausta ei voida käyttää, koska Perl $1 -moduulia ei ole asennettu.
 session_esha512mod=SHA512-salausta ei voida käyttää, koska Perl $1 -moduulia ei ole asennettu.
 session_blocklock=Lukitse myös käyttäjät, joilla epäonnistuneet kirjautumiset
+session_passapi=Otetaanko salasanan etäkäyttöliittymä käyttöön?
+session_passapi0=API poistettu käytöstä
+session_passapi1=API on käytössä Unix -käyttäjille
+session_passurl=Kun tämä on käytössä, käyttäjän salasanat voidaan vaihtaa POST -pyynnön kautta tilaan $1
 
 assignment_title=Määritä moduulit uudelleen
 assignment_header=Moduuliluokka

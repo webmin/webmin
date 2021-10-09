@@ -37,6 +37,7 @@ ui_ehostnamedisplay=Nome host di visualizzazione mancante o non valido
 mods_checksig=Controlla il file della firma per i moduli scaricati?
 
 os_perllib=Percorsi di libreria Perl extra
+os_incorrect=Il sistema operativo $1èstato aggiornato alla versione $2
 os_usermin=Aggiorna anche il sistema operativo Usermin
 
 ssl_deny=Versioni del protocollo SSL da rifiutare
@@ -132,6 +133,10 @@ session_sha512=Usa la crittografia SHA512
 session_emd5mod=La crittografia MD5 non può essere utilizzata, poiché il modulo Perl $1 non è installato.
 session_esha512mod=La crittografia SHA512 non può essere utilizzata, poiché il modulo Perl $1 non è installato.
 session_blocklock=Blocca anche gli utenti con accessi non riusciti
+session_passapi=Abilitare l'API per la modifica della password remota?
+session_passapi0=API disabilitata
+session_passapi1=API abilitata per utenti Unix
+session_passurl=Quando abilitato, le password utente possono essere modificate tramite una richiesta POST a $1
 
 categories_custom=costume
 

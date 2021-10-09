@@ -32,6 +32,7 @@ ui_ehostnamedisplay=Nome de host de exibição ausente ou inválido
 
 mods_checksig=Verifique o arquivo de assinatura para obter os módulos baixados?
 
+os_incorrect=O sistema operacional $1 foi atualizado para a versão $2 
 os_usermin=Atualize também o SO Usermin
 
 ssl_deny=Versões do protocolo SSL a serem rejeitadas
@@ -114,6 +115,10 @@ session_banner=Banner de pré-login
 session_md5=Formato de hash de senha do Webmin
 session_sha512=Use criptografia SHA512
 session_esha512mod=A criptografia SHA512 não pode ser usada, pois o módulo Perl $1 não está instalado.
+session_passapi=Ativar API de alteração de senha remota?
+session_passapi0=API desativada
+session_passapi1=API habilitada para usuários Unix
+session_passurl=Quando habilitado, as senhas do usuário podem ser alteradas por meio de uma solicitação POST para $1 
 
 categories_custom=personalizadas
 

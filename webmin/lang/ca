@@ -301,7 +301,6 @@ os_name=Nom de la variable
 os_value=Valor
 os_eversion=Hi falta la versió del sistema operatiu
 os_eiversion=Hi falta la versió interna del sistema operatiu
-os_incorrect=Atenció - Actualment el sistema està executant $1 versió $2.
 os_fix=Actualitza el Sistema Operatiu Detectat
 os_usermin=Actualitza també el SO d'Usermin
 

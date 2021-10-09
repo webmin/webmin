@@ -140,7 +140,7 @@ os_syspath=包括系統自己的搜索路徑？
 os_perllib=額外的Perl庫路徑
 os_eversion=缺少操作系統版本
 os_eiversion=缺少內部操作系統版本
-os_incorrect=警告-您的系統實際上正在運行$1版本$2。
+os_incorrect=操作系統 $1 已升級到版本 $2
 os_fix=更新檢測到的操作系統
 os_usermin=同時更新Usermin OS
 
@@ -316,6 +316,10 @@ session_sha512=使用SHA512加密
 session_emd5mod=無法使用MD5加密，因為未安裝Perl $1模塊。
 session_esha512mod=由於未安裝Perl $1模塊，因此無法使用SHA512加密。
 session_blocklock=同時鎖定登錄失敗的用戶
+session_passapi=啟用遠程密碼更改 API？
+session_passapi0=API 已禁用
+session_passapi1=為 Unix 用戶啟用 API
+session_passurl=啟用後，可以通過對 $1 的 POST 請求更改用戶密碼
 
 categories_lang=編輯語言類別：
 categories_langok=更改

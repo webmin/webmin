@@ -215,7 +215,7 @@ os_name=اسم المتغير
 os_value=القيمة
 os_eversion=نسخة نظام التشغيل مفقودة
 os_eiversion=مفقود إصدار نظام التشغيل الداخلي
-os_incorrect=Warning - Your system is actually running $1 version $2.
+os_incorrect=تمت ترقية نظام التشغيل$1 إلى الإصدار$2
 os_fix=تحديث نظام التشغيل المكتشف
 os_usermin=أيضا تحديث Usermin OS
 
@@ -559,6 +559,10 @@ session_sha512=استخدم تشفير SHA512
 session_emd5mod=MD5 encryption cannot be used, as Perl $1 module is not installed.
 session_esha512mod=SHA512 encryption cannot be used, as Perl $1 module is not installed.
 session_blocklock=قفل المستخدمين أيضًا بتسجيل الدخول الفاشل
+session_passapi=تمكين API تغيير كلمة المرور عن بعد؟
+session_passapi0=API تعطيل
+session_passapi1=تم تمكين API لمستخدمي Unix
+session_passurl=عند التمكين ، يمكن تغيير كلمات مرور المستخدم عبر طلب POST إلى$1
 
 assignment_title=إعادة تعيين الوحدات النمطية
 assignment_header=تعيينات فئة الوحدة النمطية

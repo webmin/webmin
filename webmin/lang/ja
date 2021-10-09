@@ -284,7 +284,6 @@ os_name=変数名
 os_value=値
 os_eversion=オペレーティングシステムバージョンが指定されていません
 os_eiversion=内部OSバージョンが指定されていません
-os_incorrect=Warning - Your system is actually running $1 version $2.
 os_fix=検出されたオペレーティングシステムを更新します
 os_usermin=Usermin OS も更新
 

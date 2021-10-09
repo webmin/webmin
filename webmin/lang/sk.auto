@@ -66,7 +66,7 @@ os_webmin=Operačný systém podľa Webmin
 os_update=Aktualizujte Webmin, aby používal detekovaný OS
 os_syspath=Zahrnúť vlastnú vyhľadávaciu cestu systému?
 os_perllib=Ďalšie cesty knižnice Perl
-os_incorrect=Varovanie - Váš systém v skutočnosti beží $1 verzia $2.
+os_incorrect=Operačný systém $1 bol aktualizovaný na verziu $2
 os_fix=Aktualizácia zisteného operačného systému
 os_usermin=Aktualizujte tiež Usermin OS
 
@@ -179,6 +179,10 @@ session_sha512=Použite šifrovanie SHA512
 session_emd5mod=Nie je možné použiť šifrovanie MD5, pretože nie je nainštalovaný modul Perl $1.
 session_esha512mod=Šifrovanie SHA512 nemožno použiť, pretože nie je nainštalovaný modul Perl $1.
 session_blocklock=Zamknite tiež používateľov, ktorým sa nepodarilo prihlásiť
+session_passapi=Povoliť API na vzdialenú zmenu hesla?
+session_passapi0=API zakázané
+session_passapi1=API povolené pre používateľov Unixu
+session_passurl=Ak je táto možnosť povolená, používateľské heslá je možné zmeniť pomocou požiadavky POST na $1
 
 categories_custom=zvyk
 

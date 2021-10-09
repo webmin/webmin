@@ -277,7 +277,6 @@ os_name=Název proměnné
 os_value=Hodnota
 os_eversion=Chybející verze operačního systému
 os_eiversion=Chybějící interní verze operačního systému
-os_incorrect=Pozor - Váš systém momentálně běží $1 verze $2.
 os_fix=Aktualizovat zjištěný oparační systém
 
 lang_title=Jazyk

@@ -37,6 +37,7 @@ ui_ehostnamedisplay=표시 호스트 이름이 없거나 잘못되었습니다
 mods_checksig=다운로드 한 모듈의 서명 파일을 확인 하시겠습니까?
 
 os_perllib=추가 Perl 라이브러리 경로
+os_incorrect=운영 체제 $1이(가) 버전 $2(으)로 업그레이드되었습니다
 os_usermin=Usermin OS도 업데이트
 
 ssl_deny=거부 할 SSL 프로토콜 버전
@@ -130,6 +131,10 @@ session_banner=사전 로그인 배너
 session_md5=Webmin 비밀번호 해싱 형식
 session_sha512=SHA512 암호화 사용
 session_esha512mod=Perl $1 모듈이 설치되지 않았으므로 SHA512 암호화를 사용할 수 없습니다.
+session_passapi=원격 비밀번호 변경 API를 사용하시겠습니까?
+session_passapi0=API 사용 중지됨
+session_passapi1=Unix 사용자를 위해 활성화된 API
+session_passurl=활성화되면 $1에 대한 POST 요청을 통해 사용자 암호를 변경할 수 있습니다
 
 categories_custom=커스텀
 

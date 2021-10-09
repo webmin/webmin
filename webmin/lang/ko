@@ -277,7 +277,6 @@ os_name=변수 이름
 os_value=값
 os_eversion=운영체제 버전을 알 수 없음
 os_eiversion=내부 운영체제 버전을 알 수 없음
-os_incorrect=경고 - 이 시스템은 실제 $1 버전 $2(이)가 실행중입니다.
 os_fix=감지된 운영체제 업데이트
 
 lang_title=언어

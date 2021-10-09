@@ -220,7 +220,6 @@ os_ld_path=库搜索路径
 os_perllib=额外的 Perl 库路径
 os_eversion=未设定操作系统版本
 os_eiversion=未设定内部操作系统版本
-os_incorrect=警告：您的系统实际上正在运行 $1 版本 $2。
 os_usermin=同时更新 Usermin OS
 
 lang_title=语言

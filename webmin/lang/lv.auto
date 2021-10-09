@@ -309,7 +309,7 @@ os_name=Mainīgais nosaukums
 os_value=Vērtība
 os_eversion=Trūkst operētājsistēmas versijas
 os_eiversion=Trūkst iekšējās operētājsistēmas versijas
-os_incorrect=Brīdinājums - jūsu sistēmā faktiski darbojas $1 versija $2.
+os_incorrect=Operētājsistēma $1 ir jaunināta uz versiju $2
 os_fix=Atjauniniet noteikto operētājsistēmu
 os_usermin=Atjauniniet arī Usermin OS
 
@@ -656,6 +656,10 @@ session_sha512=Izmantojiet SHA512 šifrēšanu
 session_emd5mod=MD5 šifrēšanu nevar izmantot, jo Perl $1 modulis nav instalēts.
 session_esha512mod=SHA512 šifrēšanu nevar izmantot, jo Perl $1 modulis nav instalēts.
 session_blocklock=Bloķēt arī lietotājus ar neveiksmīgiem pieteikumiem
+session_passapi=Vai iespējot paroles maiņas attālo API?
+session_passapi0=API ir atspējota
+session_passapi1=Unix lietotājiem ir iespējota API
+session_passurl=Ja tas ir iespējots, lietotāja paroles, izmantojot POST pieprasījumu, var mainīt uz $1
 
 assignment_title=Pārdaliet moduļus
 assignment_header=Moduļu kategoriju piešķiršana

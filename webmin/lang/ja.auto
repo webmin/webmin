@@ -29,6 +29,8 @@ ui_showhost=ページタイトルにホスト名を追加しますか？
 
 mods_checksig=ダウンロードしたモジュールの署名ファイルを確認しますか？
 
+os_incorrect=オペレーティングシステム $1がバージョン $2にアップグレードされました
+
 ssl_honorcipherorder=サーバー定義の暗号順序の使用を強制しますか？
 ssl_extracasnone=このIPアドレスにはなし
 ssl_ekey2=SSL秘密鍵ファイル$1にはPEM形式の鍵が含まれていません
@@ -81,6 +83,10 @@ session_ip=セッションを同じクライアントIPアドレスに制限し�
 session_pamend=PAMステータスを他のモジュールに渡しますか？
 session_sha512=SHA512暗号化を使用する
 session_esha512mod=Perl $1モジュールがインストールされていないため、SHA512暗号化は使用できません。
+session_passapi=リモートパスワード変更APIを有効にしますか？
+session_passapi0=APIが無効になっています
+session_passapi1=Unixユーザー向けにAPIが有効
+session_passurl=有効にすると、POSTリクエストを介してユーザーパスワードを $1に変更できます。
 
 categories_custom=カスタム
 

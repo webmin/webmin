@@ -37,6 +37,7 @@ ui_ehostnamedisplay=Chybí nebo je neplatný zobrazovaný název hostitele
 mods_checksig=Zkontrolovat podpisový soubor pro stažené moduly?
 
 os_perllib=Další cesty knihovny Perl
+os_incorrect=Operační systém $1 byl upgradován na verzi $2
 os_usermin=Aktualizujte také Usermin OS
 
 ssl_deny=Verze protokolu SSL k odmítnutí
@@ -132,6 +133,10 @@ session_sha512=Použijte šifrování SHA512
 session_emd5mod=Nelze použít šifrování MD5, protože není nainstalován modul Perl $1.
 session_esha512mod=Šifrování SHA512 nelze použít, protože není nainstalován modul Perl $1.
 session_blocklock=Zamkněte také uživatele pomocí neúspěšných přihlášení
+session_passapi=Povolit vzdálenou změnu hesla API?
+session_passapi0=API deaktivováno
+session_passapi1=API povoleno pro uživatele Unixu
+session_passurl=Je -li tato možnost povolena, lze hesla uživatele změnit pomocí požadavku POST na $1
 
 categories_custom=Zvyk
 
