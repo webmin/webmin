@@ -6554,7 +6554,7 @@ sub webmin_debug_var_dump
 {
 my ($varname, $objref) = @_;
 my $file_name_prefix = '.debug_' . get_product_name() . '_' . $remote_user;
-$varname  =~ tr/A-Za-z0-9_-//cd;
+$varname  =~ tr/A-Za-z0-9_\-//cd;
 
 if (ref($objref) eq 'HASH') {
 	write_file(tempname($file_name_prefix . '__dump__hash___' . $varname), $objref);
