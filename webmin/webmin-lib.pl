@@ -389,6 +389,10 @@ else {
 		my $pwd = &module_root_directory($moddir);
 		if ($hasfile{$moddir,"module.info"}) {
 			my %minfo = &get_module_info($moddir);
+			if (!$minfo{'desc'}) {
+				my $minfo_file = "$root_directory/$moddir/module.info";
+				&read_file($minfo_file, \%minfo) if (-r $minfo_file);
+				}
 			push(@mdescs, $minfo{'desc'});
 			push(@mdirs, $pwd);
 			push(@msizes, &disk_usage_kb($pwd));
