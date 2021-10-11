@@ -6554,18 +6554,18 @@ sub webmin_debug_var_dump
 {
 my ($varname, $objref) = @_;
 my $file_name_prefix = '.debug_' . get_product_name() . '_' . $remote_user;
-$varname  =~ tr/A-Za-z0-9//cd;
+$varname  =~ tr/A-Za-z0-9\_\-//cd;
 
 if (ref($objref) eq 'HASH') {
-	write_file(tempname($file_name_prefix . '__dump__hash___' . $varname), $objref);
+	write_file(tempname($file_name_prefix . '__dump__' . $$ . '__hash___' . $varname), $objref);
 	}
 elsif (ref($objref) eq 'ARRAY') {
 	my $arrindex = 0;
 	my @array_list = map { "\n@{[$arrindex++]}: $_" } @{$objref};
-	write_file_contents(tempname($file_name_prefix . '__dump__arra___' . $varname), "@array_list");
+	write_file_contents(tempname($file_name_prefix . '__dump__' . $$ . '__arr___' . $varname), "@array_list");
 	}
 else {
-	write_file_contents(tempname($file_name_prefix . '__dump__varb___' . $varname), "$objref");
+	write_file_contents(tempname($file_name_prefix . '__dump__' . $$ . '__var___' . $varname), "$objref");
 	}
 }
 
