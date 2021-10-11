@@ -383,16 +383,13 @@ else {
 		return &text('install_eextract', $out);
 		}
 	if ($need_unlink) { unlink($file); }
+	&flush_webmin_caches();
 	my $perl = &get_perl_path();
 	my @st = stat("$module_root_directory/index.cgi");
 	foreach my $moddir (keys %mods) {
 		my $pwd = &module_root_directory($moddir);
 		if ($hasfile{$moddir,"module.info"}) {
 			my %minfo = &get_module_info($moddir);
-			if (!$minfo{'desc'}) {
-				my $minfo_file = "$root_directory/$moddir/module.info";
-				&read_file($minfo_file, \%minfo) if (-r $minfo_file);
-				}
 			push(@mdescs, $minfo{'desc'});
 			push(@mdirs, $pwd);
 			push(@msizes, &disk_usage_kb($pwd));
