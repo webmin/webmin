@@ -222,6 +222,8 @@ ping_wait=Time to wait for response
 ping_ehost=Missing or invalid hostname
 ping_ewait=Missing or invalid wait time
 ping_econfig=No ping command has been set in Module Config
+ping_timeout=Timeout after $1 seconds
+ping_resolv=Failed to resolve hostname
 
 proc_pid=Running with PIDs $1
 proc_cmd=Command to check for

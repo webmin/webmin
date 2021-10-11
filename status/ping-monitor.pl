@@ -6,18 +6,19 @@ use Socket;
 
 sub get_ping_status
 {
-local $wait = defined($_[0]->{'wait'}) ? $_[0]->{'wait'} : 5;
-local $ip = &to_ipaddress($_[0]->{'host'}) ||
-	    &to_ip6address($_[0]->{'host'});
+my ($m) = @_;
+my $wait = defined($m->{'wait'}) ? $m->{'wait'} : 5;
+my $ip = &to_ipaddress($m->{'host'}) ||
+	 &to_ip6address($m->{'host'});
 return { 'up' => 0 } if (!$ip);
-local $ipv6 = &check_ip6address($_[0]->{'host'}) ||
-	      &to_ip6address($_[0]->{'host'}) &&
-	      !&to_ipaddress($_[0]->{'host'});
+my $ipv6 = &check_ip6address($m->{'host'}) ||
+	      &to_ip6address($m->{'host'}) &&
+	      !&to_ipaddress($m->{'host'});
 if ($config{'pinger'} || $ipv6) {
 	# Call a ping command if configured, or if using IPv6 since the built-
 	# in code doesn't support it yet
-	local $cmd;
-	local $auto_pinger = $config{'pinger'} eq "linux" || !$config{'pinger'};
+	my $cmd;
+	my $auto_pinger = $config{'pinger'} eq "linux" || !$config{'pinger'};
 	if ($auto_pinger && $gconfig{'os_type'} =~ /-linux$/) {
 		# Use linux command
 		$cmd = ($ipv6 ? "ping6" : "ping")." -c 1 -w $wait";
@@ -33,46 +34,60 @@ if ($config{'pinger'} || $ipv6) {
 	else {
 		$cmd = $config{'pinger'};
 		}
-	local $rv;
+	my $rv;
+	my $out;
 	eval {
 		local $sig{'ALRM'} = sub { die "timeout" };
 		alarm($wait + 1);
-		$rv = system("$cmd ".quotemeta($_[0]->{'host'}).
-			     " >/dev/null 2>&1 </dev/null");
+		$out = &backquote_command("$cmd ".quotemeta($m->{'host'}).
+					  " 2>&1 </dev/null");
+		$rv = $?;
 		alarm(0);
 		};
-	if ($@) {
-		return { 'up' => 0 };
+	if ($@ =~ /timeout/) {
+		return { 'up' => 0, 'desc' => &text('ping_timeout', $wait) };
+		}
+	elsif ($@) {
+		return { 'up' => 0, 'desc' => "$@" };
+		}
+	elsif ($rv) {
+		my @l = split(/\r?\n/, $out);
+		return { 'up' => 0, 'desc' => &html_escape($l[$#l]) };
 		}
 	else {
-		return { 'up' => $rv ? 0 : 1 };
+		return { 'up' => 1 };
 		}
 	}
 else {
 	# Use builtin code
-	local $rv = &ping_icmp(inet_aton($ip), $wait);
+	if (!&to_ipaddress($ip)) {
+		return { 'up' => 0, 'desc' => $text{'ping_resolv'} };
+		}
+	my $rv = &ping_icmp(inet_aton($ip), $wait);
 	return { 'up' => $rv ? 1 : 0 };
 	}
 }
 
 sub show_ping_dialog
 {
+my ($m) = @_;
 print &ui_table_row($text{'ping_host'},
-	&ui_textbox("host", $_[0]->{'host'}, 50), 3);
+	&ui_textbox("host", $m->{'host'}, 50), 3);
 
 print &ui_table_row($text{'ping_wait'},
-	&ui_textbox("wait", defined($_[0]->{'wait'}) ? $_[0]->{'wait'} : 5, 6).
+	&ui_textbox("wait", defined($m->{'wait'}) ? $m->{'wait'} : 5, 6).
 	" ".$text{'oldfile_secs'});
 }
 
 sub parse_ping_dialog
 {
+my ($m) = @_;
 #$config{'ping_cmd'} || &error($text{'ping_econfig'});
 &to_ipaddress($in{'host'}) || &to_ip6address($in{'host'}) ||
 	&error($text{'ping_ehost'});
 $in{'wait'} =~ /^(\d*\.)?\d+$/ || &error($text{'ping_ewait'});
-$_[0]->{'host'} = $in{'host'};
-$_[0]->{'wait'} = $in{'wait'};
+$m->{'host'} = $in{'host'};
+$m->{'wait'} = $in{'wait'};
 }
 
 sub ping_icmp
