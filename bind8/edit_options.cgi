@@ -30,6 +30,7 @@ print &choice_input($text{'master_check'}, "check-names", $zconf,
 		    $text{'ignore'}, "ignore", $text{'default'}, undef);
 print &choice_input($text{'master_notify'}, "notify", $zconf,
 		    $text{'yes'}, "yes", $text{'no'}, "no",
+		    $text{'explicit'}, "explicit",
 		    $text{'default'}, undef);
 
 print &address_input($text{'master_update'}, "allow-update", $zconf);

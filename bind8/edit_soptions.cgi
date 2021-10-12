@@ -49,6 +49,7 @@ print &choice_input($text{'slave_check'}, "check-names", $zconf,
 		    $text{'ignore'}, "ignore", $text{'default'}, undef);
 print &choice_input($text{'slave_notify'}, "notify", $zconf,
 		    $text{'yes'}, "yes", $text{'no'}, "no",
+		    $text{'explicit'}, "explicit",
 		    $text{'default'}, undef);
 
 print &addr_match_input($text{'slave_update'}, "allow-update", $zconf);

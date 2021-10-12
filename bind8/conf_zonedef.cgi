@@ -133,6 +133,7 @@ print &ignore_warn_fail($text{'zonedef_cresponse'}, 'response',
 			$check{'response'});
 print &choice_input($text{'zonedef_notify'}, "notify", $mems,
 		    $text{'yes'}, "yes", $text{'no'}, "no",
+		    $text{'explicit'}, "explicit",
 		    $text{'default'}, undef);
 
 print &ui_table_end();
