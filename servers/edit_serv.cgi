@@ -147,7 +147,7 @@ if ($s->{'user'} && $config{'show_status'}) {
 	eval {
 		$SIG{'ALRM'} = sub { die "alarm\n" };
 		alarm(10);
-		&remote_foreign_require($s->{'host'}, "webmin","webmin-lib.pl");
+		&remote_foreign_require($s, "webmin","webmin-lib.pl");
 		if ($status_error_msg) {
 			# Failed to connect
 			$msg = $status_error_msg;
@@ -155,7 +155,7 @@ if ($s->{'user'} && $config{'show_status'}) {
 		else {
 			# Connected - get status
 			$msg = &text('edit_version',
-				&remote_foreign_call($s->{'host'}, "webmin",
+				&remote_foreign_call($s, "webmin",
 						     "get_webmin_version"));
 			}
 		alarm(0);
