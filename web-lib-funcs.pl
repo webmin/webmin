@@ -8644,6 +8644,7 @@ Clears all in-memory and on-disk caches used by Webmin.
 sub flush_webmin_caches
 {
 undef(%main::read_file_cache);
+undef(%main::read_file_missing);
 undef(%main::acl_hash_cache);
 undef(%main::acl_array_cache);
 undef(%main::has_command_cache);
