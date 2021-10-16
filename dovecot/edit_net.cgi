@@ -20,7 +20,9 @@ print &ui_table_row($text{'net_protocols'},
 $sslopt = &find("ssl_disable", $conf, 2) ? "ssl_disable" : "ssl";
 $dis = &find_value($sslopt, $conf);
 if ($sslopt eq "ssl") {
-	@opts = ( [ "yes", $text{'yes'} ], [ "no", $text{'no'} ] );
+	@opts = ( [ "yes", $text{'yes'} ],
+		  [ "required", $text{'net_ssl_required'} ],
+		  [ "no", $text{'no'} ] );
 	}
 else {
 	@opts = ( [ "no", $text{'yes'} ], [ "yes", $text{'no'} ] );
