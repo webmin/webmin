@@ -38,7 +38,9 @@ sub list_rules {
 	} else {
 	    my @cmtlines = split(/\n/, $cmt);
 	    $cmt = undef;
+	    $line =~ s/\\:/\0/g;
 	    my ($service, $host, $cmd) = split /:/, $line, 3;
+	    $host =~ s/\0/:/g;
 	    $service =~ s/^\s*//; $service =~ s/\s*$//;
 	    $host =~ s/^\s*//; $host =~ s/\s*$//;
 	    
@@ -98,7 +100,9 @@ sub create_rule {
     my ($file, $rule) = @_;
 
     my $lref = &read_file_lines($file);
-    my $newline = $rule->{'service'}.' : '.$rule->{'host'}.($rule->{'cmd'} ? ' : '.$rule->{'cmd'} : '');
+    my $host = $rule->{'host'};
+    $host =~ s/:/\\:/g;
+    my $newline = $rule->{'service'}.' : '.$host.($rule->{'cmd'} ? ' : '.$rule->{'cmd'} : '');
     push(@$lref, $newline);
     &flush_file_lines($file);
 }
@@ -108,7 +112,9 @@ sub create_rule {
 sub modify_rule {
     my ($filename, $oldrule, $newrule) = @_;
 
-    my @newline = ($newrule->{'service'}.' : '.$newrule->{'host'}.($newrule->{'cmd'} ? ' : '.$newrule->{'cmd'} : ''));
+    my $host = $newrule->{'host'};
+    $host =~ s/:/\\:/g;
+    my @newline = ($newrule->{'service'}.' : '.$host.($newrule->{'cmd'} ? ' : '.$newrule->{'cmd'} : ''));
 
     my $lref = &read_file_lines($filename);
     my $len = $oldrule->{'eline'} - $oldrule->{'line'} + 1;
