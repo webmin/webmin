@@ -3224,8 +3224,8 @@ return $bind_major > 9 ? 2 :
 sub dnssec_size_range
 {
 my ($alg) = @_;
-return $alg eq 'RSAMD5' || $alg eq 'RSASHA1' ||
-	$alg eq 'RSASHA256' ? ( 512, 2048 ) :
+return $alg eq 'RSASHA256' ? ( 2048, 4096 ) :
+       $alg eq 'RSAMD5' || $alg eq 'RSASHA1' ? ( 512, 2048 ) :
        $alg eq 'DH' ? ( 128, 4096 ) :
        $alg eq 'DSA' ? ( 512, 1024, 64 ) :
        $alg eq 'HMAC-MD5' ? ( 1, 512 ) :
