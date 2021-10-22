@@ -138,18 +138,19 @@ elsif ($in{'save'}) {
 					}
 				}
 			local $ij = $in{"${j}_$t[$i]"};
+			local $ijnull = $in{"${j}_$t[$i]_null"};
 			local $ijdef = $in{"${j}_$t[$i]_def"};
 			next if ($ijdef || !defined($ij));
 			if (!$displayconfig{'blob_mode'} || !&is_blob($str[$i])) {
 				$ij =~ s/\r//g;
 				}
 			push(@set, &quotestr($t[$i])." = ?");
-			push(@params, $ij eq '' ? undef : $ij);
+			push(@params, $ijnull ? undef : $ij);
 			}
 		&execute_sql_logged($in{'db'},
-				    "update ".&quote_table($in{'table'})." set ".
-				    join(" , ", @set)." where ".
-				    join(" and ", @where), @params);
+			    "update ".&quote_table($in{'table'})." set ".
+			    join(" , ", @set)." where ".
+			    join(" and ", @where), @params);
 		$count++;
 		}
 	&webmin_log("modify", "data", $count, \%in);
@@ -163,7 +164,7 @@ elsif ($in{'savenew'}) {
 		if (!$displayconfig{'blob_mode'} || !&is_blob($str[$j])) {
 			$in{$j} =~ s/\r//g;
 			}
-		push(@set, $in{$j} eq '' ? undef : $in{$j});
+		push(@set, $in{$j."_null"} ? undef : $in{$j});
 		}
 	&execute_sql_logged($in{'db'}, "insert into ".&quote_table($in{'table'}).
 		    " values (".join(" , ", map { "?" } @set).")", @set);
@@ -323,6 +324,11 @@ if ($total || $in{'new'}) {
 					# Show as fixed-size text
 					$et .= &ui_textbox($nm, $d[$j], 30);
 					}
+				if ($str[$j]->{'null'} eq 'YES') {
+					# Checkbox for null value, if allowed
+					$et .= "&nbsp;".&ui_checkbox($nm."_null", 1,
+						"NULL?", $i != $realrows && !defined($d[$j]));
+					}
 				$et .= "</td></tr>\n";
 				}
 			$et .= "</table>";
@@ -336,35 +342,39 @@ if ($total || $in{'new'}) {
 				local $l = $d[$j] =~ tr/\n/\n/;
 				local $nm = $i == $realrows ? $j :
 						"${i}_$d->{'titles'}->[$j]";
+				local $ui;
 				if ($displayconfig{'blob_mode'} &&
 				    &is_blob($str[$j])) {
 					# Cannot edit this blob
-					push(@cols, undef);
+					$ui = "";
 					}
 				elsif ($str[$j]->{'type'} =~ /^enum\((.*)\)$/) {
 					# Show as enum list
-					push(@cols, &ui_select($nm, $d[$j],
+					$ui = &ui_select($nm, $d[$j],
 					    [ [ "", "&nbsp;" ],
 					      map { [ $_ ] } &split_enum($1) ],
-					    1, 0, 1));
+					    1, 0, 1);
 					}
 				elsif ($str[$j]->{'type'} =~ /\((\d+)\)/) {
 					# Show as known-size text
 					local $nw = $1 > 70 ? 70 : $1;
-					push(@cols,
-					     &ui_textbox($nm, $d[$j], $nw));
+					$ui = &ui_textbox($nm, $d[$j], $nw);
 					}
 				elsif ($l) {
 					# Show as multiline text
 					$l++;
-					push(@cols,
-					     &ui_textarea($nm, $d[$j], $l, $w));
+					$ui = &ui_textarea($nm, $d[$j], $l, $w);
 					}
 				else {
 					# Show as known size text
-					push(@cols,
-					     &ui_textbox($nm, $d[$j], $w));
+					$ui = &ui_textbox($nm, $d[$j], $w);
 					}
+				if ($ui && $str[$j]->{'null'} eq 'YES') {
+					# Checkbox for null value, if allowed
+					$ui .= "&nbsp;".&ui_checkbox($nm."_null", 1,
+						"NULL?", $i != $realrows && !defined($d[$j]));
+					}
+				push(@cols, $ui);
 				}
 			print &ui_columns_row([ $check ? ( "" ) : ( ), @cols ],
 					      \@tds);
@@ -374,8 +384,12 @@ if ($total || $in{'new'}) {
 			local @cols;
 			local $j = 0;
 			foreach $c (@d) {
-				if ($displayconfig{'blob_mode'} &&
-				    &is_blob($str[$j]) && $c ne '') {
+				if (!defined($c)) {
+					# Show as null
+					push(@cols, "<i>NULL</i>");
+					}
+				elsif ($displayconfig{'blob_mode'} &&
+				       &is_blob($str[$j]) && $c ne '') {
 					# Show download link for blob
 					push(@cols, &ui_link("download.cgi?db=$in{'db'}&table=$in{'table'}&start=$in{'start'}".$searchargs.$sortargs."&row=$i&col=$j",$text{'view_download'}));
 					}
