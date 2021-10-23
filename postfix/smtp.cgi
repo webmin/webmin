@@ -55,7 +55,7 @@ if (&compare_version_numbers($postfix_version, 2) <= 0) {
 # TLS enforcement options
 if (&compare_version_numbers($postfix_version, 2.3) >= 0) {
 	$level = &get_current_value("smtp_tls_security_level");
-	print &ui_table_row($text{'opts_smtp_use_tls'},
+	print &ui_table_row($text{'opts_smtp_tls_security_level'},
 		&ui_select("smtp_tls_security_level", $level, 
 			   [ [ "", $text{'default'} ],
 			     [ "none", $text{'sasl_level_none'} ],
