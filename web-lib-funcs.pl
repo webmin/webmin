@@ -11354,6 +11354,7 @@ use where a system info block has a form that submits to itself.
 sub list_combined_system_info
 {
 my ($data, $in) = @_;
+&load_theme_library();
 foreach my $m (&get_all_module_infos()) {
 	my $dir = &module_root_directory($m->{'dir'});
 	my $mfile = "$dir/system_info.pl";
