@@ -56,6 +56,13 @@ foreach $o (@lang_order_list) {
 	&read_file("$file.$o.auto", \%info, \@info_order)
 		if ($auto && -r "$file.$o.auto");
 	}
+
+# Call any config pre-load function
+if (&foreign_func_exists($module, 'config_pre_load')) {
+	&foreign_call($module, "config_pre_load", \%info, \@info_order)
+	&foreign_call($module, "config_pre_load", \%einfo)
+	}
+
 @info_order = &unique(@info_order);
 
 if ($section) {
