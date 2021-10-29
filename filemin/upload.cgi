@@ -49,10 +49,25 @@ MAINLOOP: while(index($line,"$boundary--") == -1) {
 		}
     
 	if (defined($file)) {
+		my @st = stat($cwd);
+		# If we have a dir, parse it and create a sub-tree first
+		if ($file =~ /\//) {
+			my ($dir) = $file =~ /^(.*)\/[^\/]+$/;
+			if ($dir) {
+				my @dirs = split('/', $dir);
+				$dir = '/';
+				foreach my $updir (@dirs) {
+					$dir .= "$updir/";
+					if (!-e "$cwd$dir") {
+						mkdir("$cwd$dir");
+						&set_ownership_permissions($st[4], $st[5], undef, "$cwd$dir");
+						}
+					}
+				}
+			}
 		# OK, we have a file, let`s save it
 		my $full = "$cwd/$file";
 		my $newfile = !-e $full;
-		my @st = stat($cwd);
 		if (!open(OUTFILE, ">$full")) {
 			push @errors, "$text{'error_opening_file_for_writing'} $path/$file - $!";
 			next;        

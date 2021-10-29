@@ -165,3 +165,4 @@ ownership=Owner
 acls=Access Control List
 file_detect_encoding=Automatically detect file encoding
 index_return=file listing
+upload_dirs=Directory Upload

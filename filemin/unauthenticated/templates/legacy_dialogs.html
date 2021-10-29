@@ -106,8 +106,11 @@
     <form id='upload-form' method='post' action='upload.cgi?path=$urlized_path&id=$upid' enctype='multipart/form-data' onsubmit='window.open("@{[&get_webprefix()]}/uptracker.cgi?id=$upid&uid=$uid", "uptracker", "toolbar=no, menubar=no, scrollbars=no, location=no, resizable=no, width=screen.width, height=screen.height")'>
         <input type='file' id='upfiles' name='upfiles' multiple onchange='countUploads(this)'>
         <input type='hidden' name='path' value='$quote_escaped_path'>
+        <br>
+        <br>
+        <input type="checkbox" id="filetype" onchange="this.parentElement.querySelector('#upfiles').toggleAttribute('webkitdirectory')"><label for="filetype"> $text{'upload_dirs'}</label>
     </form>
-    <div id="readyForUploadList" class="well">
+    <div id="readyForUploadList" class="well" style="max-height: 180px;">
     </div>
 </div>
 
