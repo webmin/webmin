@@ -169,11 +169,11 @@ sub print_interface {
     $bookmarks = get_bookmarks();
     @allowed_for_edit = split(/\s+/, $access{'allowed_for_edit'});
     %allowed_for_edit = map { $_ => 1} @allowed_for_edit;
+    my %tinfo = &get_theme_info($current_theme);
 
-    # Set things up according to currently used theme
-    if ($current_theme eq 'authentic-theme' or $current_theme eq 'bootstrap') {
+    # Interface for Bootstrap powered themes
+    if ($tinfo{'bootstrap'}) {
 
-        # Interface for Bootstrap 3 powered themes
         # Set icons variables
         $edit_icon = "<i class='fa fa-edit' alt='$text{'edit'}'></i>";
         $rename_icon = "<i class='fa fa-font' title='$text{'rename'}'></i>";
@@ -205,17 +205,17 @@ sub print_interface {
         }
         print "</ol>";
 
-        # And toolbar
-        if($userconfig{'menu_style'} || $current_theme eq 'authentic-theme') {
-            print_template("unauthenticated/templates/menu.html");
-        } else {
-            print_template("unauthenticated/templates/quicks.html");
-        }
         $page = 1;
         $pagelimit = 4294967295; # The number of maximum files in a directory for EXT4. 9000+ is way to little
+        
+        # And toolbar
+        print_template("unauthenticated/templates/menu.html");
         print_template("unauthenticated/templates/dialogs.html");
-    } else {
-        # Interface for legacy themes
+    }
+
+    # Interface for legacy themes
+    else {
+        
         # Set icons variables
         $edit_icon = "<img src='images/icons/quick/edit.png' alt='$text{'edit'}' />";
         $rename_icon = "<img src='images/icons/quick/rename.png' alt='$text{'rename'}' />";
@@ -275,7 +275,7 @@ sub print_interface {
         # And toolbar
         print_template("unauthenticated/templates/legacy_quicks.html");
         print_template("unauthenticated/templates/legacy_dialogs.html");
-    }
+        }
     my $info_total;
     my $info_files = scalar @files;
     my $info_folders = scalar @folders;

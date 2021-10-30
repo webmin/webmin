@@ -1,5 +1,7 @@
 acl_allowed_paths_explain=Wenn für einen Root-fähigen Benutzer das zulässige Verzeichnis nur auf $HOME festgelegt ist, entspricht es / (vollständiger Festplattenzugriff).
+config_per_page=Elemente, die pro Seite angezeigt werden
 
 acls=Zugriffskontrollliste
 file_detect_encoding=Dateicodierung automatisch erkennen
 index_return=Dateiliste
+upload_dirs=Verzeichnis-Upload

@@ -59,7 +59,7 @@
           <label>$text{'user_name'}</label><br>
           <input name="owner" type="text"><br>
           <label>$text{'group_name'}</label><br>
-          <input name="group" type="text"><br>
+          <input name="group" type="text"><br><br>
           <label>$text{'dialog_recursive'}</label>
           <input id="chown-recursive" type="checkbox" name="recursive">
       </div>
@@ -70,7 +70,7 @@
   <form id="chattrForm">
       <div class="form-group">
           <label>$text{'attr_label'}</label><br>
-          <input name="label" type="text"><br>
+          <input name="label" type="text"><br><br>
           <label>$text{'dialog_recursive'}</label>
           <input id="chattr-recursive" type="checkbox" name="recursive">
       </div>
@@ -81,7 +81,7 @@
   <form id="chconForm">
       <div class="form-group">
           <label>$text{'context_label'}</label><br>
-          <input name="label" type="text"><br>
+          <input name="label" type="text"><br><br>
           <label>$text{'dialog_recursive'}</label>
           <input id="chcon-recursive" type="checkbox" name="recursive">
       </div>
@@ -180,7 +180,7 @@
   <form id="searchForm" action="search.cgi" method="post">
       <div class="form-group">
           <label>$text{'search_label'}</label>
-          <input id="query" name="query" type="text" title="$text{'provide_search_query'}"><br>
+          <input id="query" name="query" type="text" title="$text{'provide_search_query'}"><br><br>
           <input id="caseins" name="caseins" type="checkbox" checked="checked"> $text{'search_insensitive'}
           <input type='hidden' name='path' value='$quote_escaped_path'>
       </div>
