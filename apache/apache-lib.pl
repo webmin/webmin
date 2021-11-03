@@ -2124,5 +2124,90 @@ if (@cst && @rst && $cst[9] > $rst[9]) {
 return 0;
 }
 
+# format_config(conf-lines-ref, [indent])
+# Formats Apache config lines with default
+# four spaces of indent for each block
+sub format_config
+{
+my ($conf_lref, $indent) = @_;
+
+# Default single indent equals 4 spaces
+$indent ||= 4;
+$indent = " " x $indent;
+
+# At first check if Apache blocks are ballanced
+my $conf_block_opening;
+my $conf_block_closing;
+foreach my $l (@{$conf_lref}) {
+
+    # If line doesn't start with # disregard of trailing spaces
+    if ($l !~ /^\s*#/) {
+
+        # This is a new block, count it
+        if ($l =~ /(<[a-zA-Z]+).*>/) {
+            $conf_block_opening++;
+            }
+
+        # This is a new closing block, count it
+        if ($l =~ /(<\/[a-zA-Z]+).*>/) {
+            $conf_block_closing++;
+            }
+        }
+    }
+
+# If the number of closing and opening blocks
+# is the same then generate proper indents
+if ($conf_block_opening == $conf_block_closing) {
+
+    my $conf_lvl = 0;
+    foreach my $l (@{$conf_lref}) {
+        my $indent_current = $indent x $conf_lvl;
+
+        # If line doesn't start with # disregard of trailing spaces
+        if ($l !~ /^\s*#/) {
+
+            # Indent up next line if a new block
+            if ($l =~ /(<[a-zA-Z]+).*>/) {
+                $conf_lvl++;
+                }
+
+            # Indent down next line if a closing block
+            if ($l =~ /(<\/[a-zA-Z]+).*>/) {
+                $conf_lvl--;
+
+                # Change current indent right now as it is a closing block
+                $indent_current = $indent x $conf_lvl;
+                }
+            }
+
+        # Replace beginning spaces with needed indent (which we could make configurable)
+        $l =~ s/^\s*/$indent_current/
+            if($l);
+        }
+    }
+}
+
+# format_config(filename, [indent])
+# Formats Apache config given file
+sub format_config_file
+{
+my ($file, $indent) = @_;
+
+# Lock file
+&lock_file($file);
+
+# Open file
+my $conf_lref = &read_file_lines($file);
+
+# Format
+&format_config($conf_lref, $indent);
+
+# Write file
+&flush_file_lines($file);
+
+# Unlock file
+&unlock_file($file);
+}
+
 1;
 

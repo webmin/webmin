@@ -27,6 +27,7 @@ if ($config{'test_manual'}) {
 		}
 	}
 unlink($temp);
+&format_config_file($in{'file'}) if ($config{'format_config'});
 &webmin_log("manual", undef, undef, { 'file' => $in{'file'} });
 &redirect("index.cgi?mode=global");
 

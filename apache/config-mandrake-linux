@@ -13,3 +13,4 @@ defines_mods=/usr/lib/apache	/usr/lib/apache2	/usr/lib/apache-extramodules	/usr/
 auto_mods=1
 show_names=0
 allow_virtualmin=0
+format_config=1

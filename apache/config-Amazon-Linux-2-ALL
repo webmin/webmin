@@ -16,3 +16,4 @@ auto_mods=1
 show_names=0
 allow_virtualmin=0
 pid_file=/run/httpd/httpd.pid
+format_config=1

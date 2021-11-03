@@ -89,8 +89,15 @@ if (!defined($start)) {
 	$end = @$lref - 1;
 	}
 for($i=$start; $i<=$end; $i++) {
-	$buf .= $lref->[$i]."\n";
+	push(@buf, $lref->[$i]);
 	}
+
+# Display nicely too
+if ($config{'format_config'}) {
+	&format_config(\@buf);
+}
+$buf = join("\n", @buf);
+
 print &ui_textarea("directives", $buf, 15, 80, undef, undef,
 		   "style='width:100%'"),"<br>\n";
 print &ui_submit($text{'save'});

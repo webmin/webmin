@@ -5,6 +5,7 @@ max_servers=Maximum number of servers to display,0,5
 virt_file=File or directory to add virtual servers to,3,httpd.conf
 virt_name=Filename pattern for virtual servers,3,Default ($DOM.conf)
 link_dir=Directory to create links in for new virtual servers,3,None
+format_config=Format indents for config file when editing manually?,1,1-Yes,0-No
 test_config=Test config file before applying changes?,1,1-Yes,0-No
 test_manual=Test config file after manual changes?,1,1-Yes,0-No
 test_always=Test config file after other changes?,1,1-Yes,0-No
