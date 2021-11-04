@@ -2263,6 +2263,9 @@ my ($file, $indent) = @_;
 # Prevent formatting if not allowed in config
 return if (!&format_config_allowed());
 
+# If file was deleted prevent recreating an empty file
+return if (!-r $file);
+
 # Lock file
 &lock_file($file);
 
