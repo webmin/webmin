@@ -36,6 +36,7 @@ else {
 	}
 &flush_file_lines();
 &unlock_file($d->{'file'});
+&format_config_file($d->{'file'});
 &update_last_config_change();
 &after_changing();
 

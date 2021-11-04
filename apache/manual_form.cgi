@@ -93,9 +93,7 @@ for($i=$start; $i<=$end; $i++) {
 	}
 
 # Display nicely too
-if ($config{'format_config'} ne '0') {
-	&format_config(\@buf);
-}
+&format_config(\@buf);
 $buf = join("\n", @buf);
 
 print &ui_textarea("directives", $buf, 15, 80, undef, undef,

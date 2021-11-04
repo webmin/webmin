@@ -139,6 +139,7 @@ else {
 	&flush_file_lines();
 	&after_changing();
 	&unlock_file($vconf->{'file'});
+	&format_config_file($vconf->{'file'});
 	&webmin_log("virt", "save", &virtual_name($vconf, 1), \%in);
 	&redirect("");
 	}

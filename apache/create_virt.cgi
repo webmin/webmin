@@ -246,6 +246,7 @@ foreach my $m (@{$dirsect->{'members'}}) {
 &save_directive_struct(undef, $virt, $conf, $conf);
 &flush_file_lines();
 &unlock_file($f);
+&format_config_file($f);
 &update_last_config_change();
 &unlock_apache_files();
 

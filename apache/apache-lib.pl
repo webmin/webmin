@@ -964,6 +964,7 @@ for($i=0; $i<@chname; $i++) {
 &flush_file_lines();
 &unlock_apache_files();
 &after_changing();
+&format_modifed_config_files();
 }
 
 # opt_input(value, name, default, size)
@@ -2135,6 +2136,9 @@ sub format_config
 {
 my ($conf_lref, $indent) = @_;
 
+# Prevent formatting if not allowed in config
+return if (!&format_config_allowed());
+
 # Default single indent equals 4 spaces
 $indent ||= 4;
 $indent = " " x $indent;
@@ -2197,6 +2201,9 @@ sub format_config_file
 {
 my ($file, $indent) = @_;
 
+# Prevent formatting if not allowed in config
+return if (!&format_config_allowed());
+
 # Lock file
 &lock_file($file);
 
@@ -2213,16 +2220,16 @@ my $conf_lref = &read_file_lines($file);
 &unlock_file($file);
 }
 
-# format_modifed_configs([no-config-test])
+# format_modifed_configs([test-config])
 # Formats all modifed Apache configs during the call
 sub format_modifed_config_files
 {
-my ($conf_already_tested) = @_;
+my ($force_config_test) = @_;
 if($saved_conf_files) {
-	if ($config{'format_config'} ne '0') {
+	if (&format_config_allowed()) {
 		# Test config first if not already
 		# tested and don't format on error
-		if (!$conf_already_tested) {
+		if ($force_config_test) {
 			if ($config{'test_manual'} ||
 			    $config{'test_always'}) {
 				my $conf_err = &test_config();
@@ -2237,6 +2244,13 @@ if($saved_conf_files) {
 			}
 		}
 	}
+}
+
+# format_config_allowed()
+# Checks if formatting config is allowed
+sub format_config_allowed
+{
+return $config{'format_config'} ne '0';
 }
 
 1;
