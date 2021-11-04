@@ -2233,7 +2233,10 @@ if ($conf_block_opening == $conf_block_closing) {
                         # we want to take a break before and after match
                         if (grep {$conf_curr_line =~ /^$_/} @confs_separate &&
                             grep {$conf_prev_line !~ /^$_/} @confs_separate) {
-                            $l = "\n$l";
+                        	# If not the first directive in VirtualHost
+                        	if($conf_prev_line !~ /(^<VirtualHost).*>/) {
+                            	$l = "\n$l"
+                        		}
                             }
                         # If current is opening block
                         elsif ($conf_curr_line =~ /(^<[a-zA-Z]+).*>/) {
