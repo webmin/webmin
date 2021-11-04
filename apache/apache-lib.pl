@@ -2233,9 +2233,7 @@ if($saved_conf_files) {
 			}
 		# Format indents for each file individually
 		foreach my $saved_conf_file (&unique(@{$saved_conf_files})) {
-				&format_config_file($saved_conf_file,
-				                    $config{'format_config_indent'},
-				                    $conf_already_tested);
+				&format_config_file($saved_conf_file, $config{'format_config_indent'});
 			}
 		}
 	}
