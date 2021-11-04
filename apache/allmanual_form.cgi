@@ -26,7 +26,7 @@ print &ui_form_start("allmanual_save.cgi", "form-data");
 print &ui_hidden("file", $in{'file'}),"\n";
 
 # Display nicely too
-if ($config{'format_config'}) {
+if ($config{'format_config'} ne '0') {
 	$data = &read_file_lines($in{'file'}, 1);
 	&format_config($data);
 	$data = join("\n", @{$data});

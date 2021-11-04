@@ -2219,7 +2219,7 @@ sub format_modifed_config_files
 {
 my ($conf_already_tested) = @_;
 if($saved_conf_files) {
-	if ($config{'format_config'}) {
+	if ($config{'format_config'} ne '0') {
 		# Test config first if not already
 		# tested and don't format on error
 		if (!$conf_already_tested) {
