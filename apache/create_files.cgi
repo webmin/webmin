@@ -33,9 +33,10 @@ else {
 &flush_file_lines();
 &update_last_config_change();
 &unlock_file($in{'file'});
-&format_config_file($in{'file'});
 
 &after_changing();
+&format_config_file($in{'file'});
+
 &webmin_log("files", "create", "$in{'file'}:$in{'path'}", \%in);
 &redirect("htaccess_index.cgi?file=".&urlize($in{'file'}));
 

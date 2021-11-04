@@ -39,9 +39,10 @@ else {
 &flush_file_lines();
 &update_last_config_change();
 &unlock_file($vconf->[0]->{'file'});
-&format_config_file($vconf->[0]->{'file'});
 
 &after_changing();
+&format_config_file($vconf->[0]->{'file'});
+
 &webmin_log("dir", "create", &virtual_name($v, 1).":$in{'path'}", \%in);
 &redirect("virt_index.cgi?virt=$in{'virt'}");
 
