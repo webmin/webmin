@@ -2213,7 +2213,7 @@ my $conf_lref = &read_file_lines($file);
 &unlock_file($file);
 }
 
-# format_modifed_configs()
+# format_modifed_configs([no-config-test])
 # Formats all modifed Apache configs during the call
 sub format_modifed_config_files
 {
