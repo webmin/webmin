@@ -2246,10 +2246,6 @@ if ($conf_block_opening == $conf_block_closing) {
                     }
                 }
             }
-
-
-
-
         }
     }
 }
