@@ -2168,6 +2168,22 @@ foreach my $l (@{$conf_lref}) {
 if ($conf_block_opening == $conf_block_closing) {
 
     my $conf_lvl = 0;
+    my $conf_prev_line;
+    my $conf_curr_line;
+    my $conf_virthost;
+    my @confs_separate =
+           (
+           	'SuexecUserGroup',
+           	'ServerName',
+           	'ScriptAlias',
+           	'DocumentRoot',
+           	'ErrorLog',
+           	'DirectoryIndex',
+           	'Alias',
+           	'RewriteEngine',
+           	'Fcgid',
+           	'SSL',
+           );
     foreach my $l (@{$conf_lref}) {
         my $indent_current = $indent x $conf_lvl;
 
@@ -2177,20 +2193,60 @@ if ($conf_block_opening == $conf_block_closing) {
             # Indent up next line if a new block
             if ($l =~ /(<[a-zA-Z]+).*>/) {
                 $conf_lvl++;
+                if ($l =~ /(<VirtualHost).*>/) {
+                	$conf_virthost++;
+                	}
                 }
 
             # Indent down next line if a closing block
             if ($l =~ /(<\/[a-zA-Z]+).*>/) {
                 $conf_lvl--;
 
+                if ($l =~ /(<\/VirtualHost).*>/) {
+                	$conf_virthost--;
+                	}
+
                 # Change current indent right now as it is a closing block
                 $indent_current = $indent x $conf_lvl;
                 }
             }
 
-        # Replace beginning spaces with needed indent (which we could make configurable)
+        # Store previous and current lines
+        $conf_prev_line = &trim($conf_curr_line);
+        $conf_curr_line = &trim($l);
+
+        # Replace beginning spaces with needed indent
         $l =~ s/^\s*/$indent_current/
             if($l);
+        
+
+        # Check if current line needs to be prepended
+        # with a new line for better readability
+        if (!$config{'format_config_lines'}) {
+            # Allow new line insertion only inside of VirtualHost block
+            if ($conf_virthost) {
+                # If current line is not part of a commented block
+                if ($conf_curr_line !~ /^\s*#/) {
+                    # If previous line is not already an empty line
+                    if (length($conf_prev_line)) {
+                        # If the previous line was something 
+                        # we want to take a break before and after match
+                        if (grep {$conf_curr_line =~ /^$_/} @confs_separate &&
+                            grep {$conf_prev_line !~ /^$_/} @confs_separate) {
+                            $l = "\n$l";
+                            }
+                        # If current is opening block
+                        elsif ($conf_curr_line =~ /(^<[a-zA-Z]+).*>/) {
+                            $l = "\n$l";
+                            }
+                        }
+                    }
+                }
+            }
+
+
+
+
         }
     }
 }
