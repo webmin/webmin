@@ -5,6 +5,8 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 $directive_type_count = 20;
 
+our ($saved_conf_files);
+
 if ($module_name ne 'htaccess') {
 	&init_config();
 	%access = &get_module_acl();
@@ -615,7 +617,9 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 		}
 	}
 &update_last_config_change();
-return &unique(@files);
+@files = &unique(@files);
+push(@{$saved_conf_files}, @files);
+return @files;
 }
 
 # save_directive_struct(&old-directive, &directive, &parent-directives,
@@ -2207,6 +2211,34 @@ my $conf_lref = &read_file_lines($file);
 
 # Unlock file
 &unlock_file($file);
+}
+
+# format_modifed_configs()
+# Formats all modifed Apache configs during the call
+sub format_modifed_config_files
+{
+my ($conf_already_tested) = @_;
+if($saved_conf_files) {
+	if ($config{'format_config'}) {
+		# Test config first if not already
+		# tested and don't format on error
+		if (!$conf_already_tested) {
+			if ($config{'test_manual'} ||
+			    $config{'test_always'}) {
+				my $conf_err = &test_config();
+				if ($conf_err) {
+					return;
+					}
+				}
+			}
+		# Format indents for each file individually
+		foreach my $saved_conf_file (&unique(@{$saved_conf_files})) {
+				&format_config_file($saved_conf_file,
+				                    $config{'format_config_indent'},
+				                    $conf_already_tested);
+			}
+		}
+	}
 }
 
 1;
