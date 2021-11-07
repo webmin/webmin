@@ -164,3 +164,5 @@ acls=Lista kontroli dostępu
 file_detect_encoding=Automatycznie wykrywaj kodowanie plików
 index_return=lista plików
 upload_dirs=Przesyłanie katalogu
+extract_uploaded=Wyciąg skompresowany
+extract_cmd_not_avail=Nie można wyodrębnić pliku $1, ponieważ brakuje polecenia $2 

@@ -164,3 +164,5 @@ acls=Popis kontrole pristupa
 file_detect_encoding=Automatski otkrij kodiranje datoteka
 index_return=popis datoteka
 upload_dirs=Prijenos imenika
+extract_uploaded=Ekstrakt komprimiran
+extract_cmd_not_avail=Nije moguće izdvojiti datoteku $1 jer nedostaje naredba $2

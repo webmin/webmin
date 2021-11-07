@@ -5,3 +5,5 @@ acls=قائمة نظام الدخول
 file_detect_encoding=كشف ملف ترميز تلقائيا
 index_return=قائمة الملفات
 upload_dirs=تحميل الدليل
+extract_uploaded=استخراج مضغوط
+extract_cmd_not_avail=تعذر استخراج ملف$1 لأن الأمر$2 مفقود

@@ -164,3 +164,5 @@ acls=Seznam řízení přístupu
 file_detect_encoding=Automaticky detekovat kódování souborů
 index_return=seznam souborů
 upload_dirs=Nahrání adresáře
+extract_uploaded=Extrakt komprimovaný
+extract_cmd_not_avail=Nelze extrahovat soubor $1, protože chybí příkaz $2

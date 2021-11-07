@@ -164,3 +164,5 @@ acls=액세스 제어 목록
 file_detect_encoding=파일 인코딩 자동 감지
 index_return=파일 목록
 upload_dirs=디렉토리 업로드
+extract_uploaded=압축해제
+extract_cmd_not_avail=$2 명령이 없기 때문에 $1 파일을 추출할 수 없습니다

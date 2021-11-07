@@ -103,12 +103,14 @@
 </div>
 
 <div id="readyForUploadDialog" class="modal">
-    <form id='upload-form' method='post' action='upload.cgi?path=$urlized_path&id=$upid' enctype='multipart/form-data' onsubmit='window.open("@{[&get_webprefix()]}/uptracker.cgi?id=$upid&uid=$uid", "uptracker", "toolbar=no, menubar=no, scrollbars=no, location=no, resizable=no, width=screen.width, height=screen.height")'>
+    <form id='upload-form' method='post' onsubmit="this.extract_upload.checked=false" action='upload.cgi?path=$urlized_path&id=$upid' enctype='multipart/form-data' onsubmit='window.open("@{[&get_webprefix()]}/uptracker.cgi?id=$upid&uid=$uid", "uptracker", "toolbar=no, menubar=no, scrollbars=no, location=no, resizable=no, width=screen.width, height=screen.height")'>
         <input type='file' id='upfiles' name='upfiles' multiple onchange='countUploads(this)'>
         <input type='hidden' name='path' value='$quote_escaped_path'>
         <br>
         <br>
         <input type="checkbox" id="filetype" onchange="this.parentElement.querySelector('#upfiles').toggleAttribute('webkitdirectory')"><label for="filetype"> $text{'upload_dirs'}</label>
+        <br>
+        <input type="checkbox" id="extract_upload" onchange="t=document.querySelector('#upload-form'),v=t.getAttribute('action'),x='&extract_uploaded=1',this.checked?t.setAttribute('action', t.getAttribute('action') + x):t.setAttribute('action',t.getAttribute('action').replace(x,''))"><label for="extract_upload"> $text{'extract_uploaded'}</label>
     </form>
     <div id="readyForUploadList" class="well" style="max-height: 180px;">
     </div>

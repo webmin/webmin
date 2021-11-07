@@ -164,3 +164,5 @@ acls=Senarai Kawalan Akses
 file_detect_encoding=Mengesan pengekodan fail secara automatik
 index_return=senarai fail
 upload_dirs=Muat Naik Direktori
+extract_uploaded=Ekstrak Mampat
+extract_cmd_not_avail=Tidak dapat mengekstrak $1 fail kerana arahan $2 tiada

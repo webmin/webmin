@@ -164,3 +164,5 @@ acls=Lista de control de acceso
 file_detect_encoding=Detecta automáticamente la codificación de archivos
 index_return=listado de archivos
 upload_dirs=Carga de directorio
+extract_uploaded=Extraer comprimido
+extract_cmd_not_avail=No se pudo extraer el archivo $1 porque falta el comando $2 

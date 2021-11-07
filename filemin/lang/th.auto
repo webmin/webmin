@@ -164,3 +164,5 @@ acls=รายการควบคุมการเข้าถึง
 file_detect_encoding=ตรวจจับการเข้ารหัสไฟล์โดยอัตโนมัติ
 index_return=รายชื่อไฟล์
 upload_dirs=อัพโหลดไดเร็กทอรี
+extract_uploaded=สารสกัดที่บีบอัด
+extract_cmd_not_avail=ไม่สามารถแตกไฟล์ $1 ได้เนื่องจากคำสั่ง $2 หายไป

@@ -164,3 +164,5 @@ acls=Piekļuves kontroles saraksts
 file_detect_encoding=Automātiski noteikt failu kodējumu
 index_return=failu saraksts
 upload_dirs=Direktorija augšupielāde
+extract_uploaded=Ekstrakts saspiests
+extract_cmd_not_avail=Nevarēja izvilkt $1 failu, jo trūkst komandas $2

@@ -164,3 +164,5 @@ acls=访问控制列表
 file_detect_encoding=自动检测文件编码
 index_return=文件清单
 upload_dirs=目录上传
+extract_uploaded=提取压缩
+extract_cmd_not_avail=无法提取 $1 文件，因为缺少 $2 命令

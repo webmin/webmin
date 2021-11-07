@@ -164,3 +164,5 @@ acls=Prieigos kontrolės sąrašas
 file_detect_encoding=Automatiškai aptikti failų kodavimą
 index_return=failų sąrašas
 upload_dirs=Katalogo įkėlimas
+extract_uploaded=Ištrauka suspausta
+extract_cmd_not_avail=Nepavyko išskleisti failo $1, nes trūksta komandos $2

@@ -164,3 +164,5 @@ acls=Sarbide Kontrol Zerrenda
 file_detect_encoding=Automatikoki detektatu fitxategien kodeketa
 index_return=fitxategi zerrenda
 upload_dirs=Direktorioa igotzea
+extract_uploaded=Atera konprimitua
+extract_cmd_not_avail=Ezin izan da $1 fitxategia atera, $2 komandoa falta baita

@@ -472,4 +472,113 @@ if (@allowed_paths == 1 && $allowed_paths[0] eq '/') {
 return 1;
 }
 
+sub extract_files
+{
+my ($files_to_extract, $delete) = @_;
+my @errors;
+foreach my $fref (@{$files_to_extract}) {
+    my $status = -1;
+
+    my $cwd = $fref->{'path'};
+    my $name = $fref->{'file'};
+
+    my $extract_to = "$cwd/" . fileparse("$cwd/$name", qr/\.[^.]*/);
+    if (-e $extract_to) {
+        $extract_to .= "_" . int(rand(1000)) . $$;
+    }
+    mkdir($extract_to);
+    
+    my $archive_type = mimetype($cwd . '/' . $name);
+
+    if ($archive_type =~ /x-tar/ || $archive_type =~ /x-compressed-tar/) {
+        my $tar_cmd = has_command('tar');
+        if (!$tar_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>tar</tt>'));
+        } else {
+            $status = system("$tar_cmd xpf " . quotemeta("$cwd/$name") . " -C " . quotemeta($extract_to));
+        }
+    } elsif ($archive_type =~ /x-bzip/) {
+        my $tar_cmd = has_command('tar');
+        if (!$tar_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>tar</tt>'));
+        } else {
+            $status = system("$tar_cmd xjfp " . quotemeta("$cwd/$name") . " -C " . quotemeta($extract_to));
+        }
+    } elsif ($archive_type =~ /\/gzip/) {
+        my $gz_cmd = has_command('gunzip') || has_command('gzip');
+        if (!$gz_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>gzip/gunzip</tt>'));
+        } else {
+            $status = system("$gz_cmd -d -f -k " . quotemeta("$cwd/$name"));
+        }
+    } elsif ($archive_type =~ /x-xz/) {
+        my $xz_cmd = has_command('xz');
+        if (!$xz_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>xz</tt>'));
+        } else {
+            $status = system("$xz_cmd -d -f -k " . quotemeta("$cwd/$name"));
+        }
+    } elsif ($archive_type =~ /x-7z/) {
+        my $x7z_cmd = has_command('7z');
+        if (!$x7z_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>7z</tt>'));
+        } else {
+            $status = system("$x7z_cmd x -aoa " . quotemeta("$cwd/$name") . " -o" . quotemeta($extract_to));
+        }
+    } elsif ($archive_type =~ /\/zip/) {
+        my $unzip_cmd = has_command('unzip');
+        if (!$unzip_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>unzip</tt>'));
+        } else {
+            my $unzip_out = `unzip --help`;
+            my $uu        = ($unzip_out =~ /-UU/ ? '-UU' : undef);
+            $status = system("$unzip_cmd $uu -q -o " . quotemeta("$cwd/$name") . " -d " . quotemeta($extract_to));
+        }
+    } elsif ($archive_type =~ /\/x-rar|\/vnd\.rar/) {
+        my $unrar_cmd = has_command('unar') || has_command('unrar');
+        if (!$unrar_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>unrar/unar</tt>'));
+        } else {
+            if ($unrar_cmd =~ /unar$/) {
+                $status = system("$unrar_cmd " . quotemeta("$cwd/$name") . " -o " . quotemeta($extract_to));
+            } else {    
+                $status = system("$unrar_cmd x -r -y -o+ " . quotemeta("$cwd/$name") . " " . quotemeta($extract_to));
+            }
+        }
+    } elsif ($archive_type =~ /\/x-rpm/) {
+        my $rpm2cpio_cmd = has_command('rpm2cpio');
+        my $cpio_cmd     = has_command('cpio');
+        if (!$rpm2cpio_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>rpm2cpio</tt>'));
+
+        } elsif (!$cpio_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>cpio</tt>'));
+        } else {
+            $status = system("($rpm2cpio_cmd " . quotemeta("$cwd/$name") . " | (cd " . quotemeta($extract_to) . "; $cpio_cmd -idmv))");
+        }
+
+    } elsif ($archive_type =~ /\/x-deb|debian\.binary-package/) {
+        my $dpkg_cmd = has_command('dpkg');
+        if (!$dpkg_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>dpkg</tt>'));
+        } else {
+            $status = system("$dpkg_cmd -x " . quotemeta("$cwd/$name") . " " . quotemeta($extract_to));
+        }
+    }
+
+    # Set permissions for all extracted files
+    my @perms = stat("$cwd/$name");
+    system("chown -R $perms[4]:$perms[5] " . quotemeta($extract_to));
+
+    # Delete empty extraction
+    rmdir($extract_to);
+    
+    # Delete if no error
+    if ($delete && $status == 0) {
+        unlink_file("$cwd/$name");
+    }
+}
+return @errors;
+}
+
 1;
