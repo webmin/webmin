@@ -371,7 +371,11 @@ sub print_interface {
                 $actions = "$actions<a class='action-link' href='edit_file.cgi?file=".&urlize($link)."&path=".&urlize($path)."' title='$text{'edit'}' data-container='body'>$edit_icon</a>";
             }
             if ((index($type, "application-zip") != -1             && has_command('unzip')) ||
-              (index($type, "application-x-7z-compressed") != -1 && has_command('7z'))    ||
+              (
+                ( index($type, "application-x-7z-compressed") != -1 ||
+                  index($type, "x-raw-disk-image") != -1 ||
+                  index($type, "x-cd-image") != -1
+                ) && has_command('7z'))    ||
               ((index($type, "application-x-rar") != -1 || index($type, "application-vnd.rar") != -1) && has_command('unrar')) ||
               (index($type, "application-x-rpm") != -1 && has_command('rpm2cpio') && has_command('cpio')) ||
               (index($type, "application-x-deb") != -1 && has_command('dpkg'))
@@ -518,7 +522,9 @@ foreach my $fref (@{$files_to_extract}) {
         } else {
             $status = system("$xz_cmd -d -f -k " . quotemeta("$cwd/$name"));
         }
-    } elsif ($archive_type =~ /x-7z/) {
+    } elsif ($archive_type =~ /x-7z/ ||
+             $archive_type =~ /x-raw-disk-image/ ||
+             $archive_type =~ /x-cd-image/) {
         my $x7z_cmd = has_command('7z');
         if (!$x7z_cmd) {
             push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>7z</tt>'));
