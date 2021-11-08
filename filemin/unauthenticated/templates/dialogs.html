@@ -335,8 +335,8 @@
         </form>
           <div id="readyForUploadList" class="well">
           </div>
-          <input type="checkbox" onchange="document.querySelector('#upload-form > #upfiles').toggleAttribute('webkitdirectory')"> $text{'upload_dirs'}
-          <input type="checkbox" onchange="t=document.querySelector('#upload-form'),v=t.getAttribute('action'),x='&extract_uploaded=1',this.checked?t.setAttribute('action', t.getAttribute('action') + x):t.setAttribute('action',t.getAttribute('action').replace(x,''))"> $text{'extract_uploaded'}
+          <input type="checkbox" data-id="webkitdirectory" onchange="document.querySelector('#upload-form > #upfiles').toggleAttribute('webkitdirectory')"> $text{'upload_dirs'}
+          <input type="checkbox" data-id="extract_upload" onchange="t=document.querySelector('#upload-form'),v=t.getAttribute('action'),x='&extract_uploaded=1',this.checked?t.setAttribute('action', t.getAttribute('action') + x):t.setAttribute('action',t.getAttribute('action').replace(x,''))"> $text{'extract_uploaded'}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" onclick="uploadFiles()">$text{'upload_files'}</button>
