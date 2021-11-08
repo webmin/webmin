@@ -955,9 +955,11 @@ my $cookie = "$sidname=$sid; path=/$sec";
 # Work out redirect host
 my @sockets = &webmin::get_miniserv_sockets(\%miniserv);
 my ($host, $port);
-if ($config{'host'}) {
+my %uconfig;
+&get_usermin_config(\%uconfig);
+if ($uconfig{'host'}) {
 	# Specific hostname set
-	$host = $config{'host'};
+	$host = $uconfig{'host'};
 	}
 else {
 	if ($sockets[0]->[0] ne "*") {
@@ -971,7 +973,7 @@ else {
 		$host =~ s/:.*//;
 		}
 	}
-$port ||= $config{'port'} || $miniserv{'port'};
+$port ||= $uconfig{'port'} || $miniserv{'port'};
 
 return ($cookie, ($ssl ? "https://" : "http://").$host.":".$port."/");
 }
