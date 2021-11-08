@@ -490,7 +490,7 @@ foreach my $fref (@{$files_to_extract}) {
     
     my $archive_type = mimetype($cwd . '/' . $name);
 
-    if ($archive_type =~ /x-tar/ || $archive_type =~ /x-compressed-tar/) {
+    if ($archive_type =~ /x-tar/ || $archive_type =~ /-compressed-tar/) {
         my $tar_cmd = has_command('tar');
         if (!$tar_cmd) {
             push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>tar</tt>'));
