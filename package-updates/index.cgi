@@ -25,7 +25,7 @@ $in{'mode'} ||= 'updates';
 # Show mode selector (all, updates only, updates and new)
 @grid = ( );
 foreach $m ('current', 'updates', 'new',
-	    $sec ? ( 'security' ) : ( )) {
+	    $sec || $in{'mode'} eq 'security' ? ( 'security' ) : ( )) {
 	$mmsg = $text{'index_mode_'.$m};
 	if ($in{'mode'} eq $m) {
 		push(@mlinks, "<b>$mmsg</b>");
