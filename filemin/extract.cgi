@@ -16,7 +16,9 @@ elsif ($archive_type =~ /x-tar|\/gzip|x-xz|x-compressed-tar/) {
 	$cmd = "tar xfp ".quotemeta("$cwd/$in{'file'}").
 	       " -C ".quotemeta($cwd);
 	}
-elsif ($archive_type =~ /x-7z/) {
+elsif ($archive_type =~ /x-7z/ ||
+	   $archive_type =~ /x-raw-disk-image/ ||
+	   $archive_type =~ /x-cd-image/) {
 	$cmd = "7z x ".quotemeta("$cwd/$in{'file'}")." -o" .quotemeta($cwd);
 	}
 elsif ($archive_type =~ /\/zip/) {

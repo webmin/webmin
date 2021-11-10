@@ -59,7 +59,7 @@
           <label>$text{'user_name'}</label><br>
           <input name="owner" type="text"><br>
           <label>$text{'group_name'}</label><br>
-          <input name="group" type="text"><br>
+          <input name="group" type="text"><br><br>
           <label>$text{'dialog_recursive'}</label>
           <input id="chown-recursive" type="checkbox" name="recursive">
       </div>
@@ -70,7 +70,7 @@
   <form id="chattrForm">
       <div class="form-group">
           <label>$text{'attr_label'}</label><br>
-          <input name="label" type="text"><br>
+          <input name="label" type="text"><br><br>
           <label>$text{'dialog_recursive'}</label>
           <input id="chattr-recursive" type="checkbox" name="recursive">
       </div>
@@ -81,7 +81,7 @@
   <form id="chconForm">
       <div class="form-group">
           <label>$text{'context_label'}</label><br>
-          <input name="label" type="text"><br>
+          <input name="label" type="text"><br><br>
           <label>$text{'dialog_recursive'}</label>
           <input id="chcon-recursive" type="checkbox" name="recursive">
       </div>
@@ -103,11 +103,16 @@
 </div>
 
 <div id="readyForUploadDialog" class="modal">
-    <form id='upload-form' method='post' action='upload.cgi?path=$urlized_path&id=$upid' enctype='multipart/form-data' onsubmit='window.open("@{[&get_webprefix()]}/uptracker.cgi?id=$upid&uid=$uid", "uptracker", "toolbar=no, menubar=no, scrollbars=no, location=no, resizable=no, width=screen.width, height=screen.height")'>
+    <form id='upload-form' method='post' onsubmit="this.extract_upload.checked=false" action='upload.cgi?path=$urlized_path&id=$upid' enctype='multipart/form-data' onsubmit='window.open("@{[&get_webprefix()]}/uptracker.cgi?id=$upid&uid=$uid", "uptracker", "toolbar=no, menubar=no, scrollbars=no, location=no, resizable=no, width=screen.width, height=screen.height")'>
         <input type='file' id='upfiles' name='upfiles' multiple onchange='countUploads(this)'>
         <input type='hidden' name='path' value='$quote_escaped_path'>
+        <br>
+        <br>
+        <input type="checkbox" id="filetype" onchange="this.parentElement.querySelector('#upfiles').toggleAttribute('webkitdirectory')"><label for="filetype"> $text{'upload_dirs'}</label>
+        <br>
+        <input type="checkbox" id="extract_upload" onchange="t=document.querySelector('#upload-form'),v=t.getAttribute('action'),x='&extract_uploaded=1',this.checked?t.setAttribute('action', t.getAttribute('action') + x):t.setAttribute('action',t.getAttribute('action').replace(x,''))"><label for="extract_upload"> $text{'extract_uploaded'}</label>
     </form>
-    <div id="readyForUploadList" class="well">
+    <div id="readyForUploadList" class="well" style="max-height: 180px;">
     </div>
 </div>
 
@@ -177,7 +182,7 @@
   <form id="searchForm" action="search.cgi" method="post">
       <div class="form-group">
           <label>$text{'search_label'}</label>
-          <input id="query" name="query" type="text" title="$text{'provide_search_query'}"><br>
+          <input id="query" name="query" type="text" title="$text{'provide_search_query'}"><br><br>
           <input id="caseins" name="caseins" type="checkbox" checked="checked"> $text{'search_insensitive'}
           <input type='hidden' name='path' value='$quote_escaped_path'>
       </div>

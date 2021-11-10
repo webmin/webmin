@@ -5,6 +5,8 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 $directive_type_count = 20;
 
+our ($saved_conf_files);
+
 if ($module_name ne 'htaccess') {
 	&init_config();
 	%access = &get_module_acl();
@@ -615,7 +617,9 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 		}
 	}
 &update_last_config_change();
-return &unique(@files);
+@files = &unique(@files);
+push(@{$saved_conf_files}, @files);
+return @files;
 }
 
 # save_directive_struct(&old-directive, &directive, &parent-directives,
@@ -960,6 +964,7 @@ for($i=0; $i<@chname; $i++) {
 &flush_file_lines();
 &unlock_apache_files();
 &after_changing();
+&format_modifed_config_files();
 }
 
 # opt_input(value, name, default, size)
@@ -2122,6 +2127,188 @@ if (@cst && @rst && $cst[9] > $rst[9]) {
 	return 1;
 	}
 return 0;
+}
+
+# format_config(conf-lines-ref, [indent])
+# Formats Apache config lines with default
+# four spaces of indent for each block
+sub format_config
+{
+my ($conf_lref, $indent) = @_;
+
+# Prevent formatting if not allowed in config
+return if (!&format_config_allowed());
+
+# Default single indent equals 4 spaces
+$indent ||= 4;
+$indent = " " x $indent;
+
+# At first check if Apache blocks are ballanced
+my $conf_block_opening;
+my $conf_block_closing;
+foreach my $l (@{$conf_lref}) {
+
+    # If line doesn't start with # disregard of trailing spaces
+    if ($l !~ /^\s*#/) {
+
+        # This is a new block, count it
+        if ($l =~ /(<[a-zA-Z]+).*>/) {
+            $conf_block_opening++;
+            }
+
+        # This is a new closing block, count it
+        if ($l =~ /(<\/[a-zA-Z]+).*>/) {
+            $conf_block_closing++;
+            }
+        }
+    }
+
+# If the number of closing and opening blocks
+# is the same then generate proper indents
+if ($conf_block_opening == $conf_block_closing) {
+
+    my $conf_lvl = 0;
+    my $conf_prev_line;
+    my $conf_curr_line;
+    my $conf_virthost;
+    my @confs_separate =
+           (
+           	'SuexecUserGroup',
+           	'ServerName',
+           	'ScriptAlias',
+           	'DocumentRoot',
+           	'ErrorLog',
+           	'DirectoryIndex',
+           	'Alias',
+           	'RewriteEngine',
+           	'Fcgid',
+           	'SSL',
+           );
+    foreach my $l (@{$conf_lref}) {
+        my $indent_current = $indent x $conf_lvl;
+
+        # If line doesn't start with # disregard of trailing spaces
+        if ($l !~ /^\s*#/) {
+
+            # Indent up next line if a new block
+            if ($l =~ /(<[a-zA-Z]+).*>/) {
+                $conf_lvl++;
+                if ($l =~ /(<VirtualHost).*>/) {
+                	$conf_virthost++;
+                	}
+                }
+
+            # Indent down next line if a closing block
+            if ($l =~ /(<\/[a-zA-Z]+).*>/) {
+                $conf_lvl--;
+
+                if ($l =~ /(<\/VirtualHost).*>/) {
+                	$conf_virthost--;
+                	}
+
+                # Change current indent right now as it is a closing block
+                $indent_current = $indent x $conf_lvl;
+                }
+            }
+
+        # Store previous and current lines
+        $conf_prev_line = &trim($conf_curr_line);
+        $conf_curr_line = &trim($l);
+
+        # Replace beginning spaces with needed indent
+        $l =~ s/^\s*/$indent_current/
+            if($l);
+        
+
+        # Check if current line needs to be prepended
+        # with a new line for better readability
+        if (!$config{'format_config_lines'}) {
+            # Allow new line insertion only inside of VirtualHost block
+            if ($conf_virthost) {
+                # If current line is not part of a commented block
+                if ($conf_curr_line !~ /^\s*#/) {
+                    # If previous line is not already an empty line
+                    if (length($conf_prev_line)) {
+                        # If the previous line was something 
+                        # we want to take a break before and after match
+                        if (grep {$conf_curr_line =~ /^$_/} @confs_separate &&
+                            grep {$conf_prev_line !~ /^$_/} @confs_separate) {
+                        	# If not the first directive in VirtualHost
+                        	if($conf_prev_line !~ /(^<VirtualHost).*>/) {
+                            	$l = "\n$l"
+                        		}
+                            }
+                        # If current is opening block
+                        elsif ($conf_curr_line =~ /(^<[a-zA-Z]+).*>/) {
+                            $l = "\n$l";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+# format_config(filename, [indent])
+# Formats Apache config given file
+sub format_config_file
+{
+my ($file, $indent) = @_;
+
+# Prevent formatting if not allowed in config
+return if (!&format_config_allowed());
+
+# If file was deleted prevent recreating an empty file
+return if (!-r $file);
+
+# Lock file
+&lock_file($file);
+
+# Open file
+my $conf_lref = &read_file_lines($file);
+
+# Format
+&format_config($conf_lref, $indent);
+
+# Write file
+&flush_file_lines($file);
+
+# Unlock file
+&unlock_file($file);
+}
+
+# format_modifed_configs([test-config])
+# Formats all modifed Apache configs during the call
+sub format_modifed_config_files
+{
+my ($force_config_test) = @_;
+if($saved_conf_files) {
+	if (&format_config_allowed()) {
+		# Test config first if not already
+		# tested and don't format on error
+		if ($force_config_test) {
+			if ($config{'test_manual'} ||
+			    $config{'test_always'}) {
+				my $conf_err = &test_config();
+				if ($conf_err) {
+					return;
+					}
+				}
+			}
+		# Format indents for each file individually
+		foreach my $saved_conf_file (&unique(@{$saved_conf_files})) {
+				&format_config_file($saved_conf_file, $config{'format_config_indent'});
+			}
+		}
+	}
+}
+
+# format_config_allowed()
+# Checks if formatting config is allowed
+sub format_config_allowed
+{
+return $config{'format_config'} ne '0';
 }
 
 1;

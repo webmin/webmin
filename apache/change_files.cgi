@@ -37,7 +37,9 @@ else {
 &flush_file_lines();
 &unlock_file($d->{'file'});
 &update_last_config_change();
+
 &after_changing();
+&format_config_file($d->{'file'});
 
 &webmin_log("files", $in{'delete'} ? 'delete' : 'save',
 	    "$in{'file'}:$d->{'words'}->[0]", \%in);

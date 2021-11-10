@@ -3761,6 +3761,25 @@ my $mdir = &module_root_directory($_[0]);
 return -r "$mdir/module.info";
 }
 
+=head2 foreign_func_exists(module, func)
+
+Checks if module exists and if the 
+given module's function is defined
+
+=cut
+sub foreign_func_exists
+{
+my ($mod, $func) = @_;
+if (&foreign_exists($mod)) {
+	$mod =~ s/-/_/g;
+	$func = "${mod}::${func}";
+	if (defined(&$func)) {
+		return 1;
+		}
+	}
+return 0;
+}
+
 =head2 foreign_available(module)
 
 Returns 1 if some module is installed, and acessible to the current user. The
@@ -11354,6 +11373,7 @@ use where a system info block has a form that submits to itself.
 sub list_combined_system_info
 {
 my ($data, $in) = @_;
+&load_theme_library();
 foreach my $m (&get_all_module_infos()) {
 	my $dir = &module_root_directory($m->{'dir'});
 	my $mfile = "$dir/system_info.pl";

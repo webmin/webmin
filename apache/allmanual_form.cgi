@@ -24,7 +24,17 @@ $found || &error($text{'manual_efile'});
 
 print &ui_form_start("allmanual_save.cgi", "form-data");
 print &ui_hidden("file", $in{'file'}),"\n";
-$data = &read_file_contents($in{'file'});
+
+# Display nicely too
+ if (&format_config_allowed()) {
+	$data = &read_file_lines($in{'file'}, 1);
+	&format_config($data);
+	$data = join("\n", @{$data});
+	}
+else {
+	$data = &read_file_contents($in{'file'});
+	}
+
 print &ui_textarea("data", $data, 20, 80, undef, undef,
 		   "style='width:100%'"),"<br>\n";
 print &ui_form_end([ [ "save", $text{'save'} ] ]);

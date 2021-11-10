@@ -169,11 +169,11 @@ sub print_interface {
     $bookmarks = get_bookmarks();
     @allowed_for_edit = split(/\s+/, $access{'allowed_for_edit'});
     %allowed_for_edit = map { $_ => 1} @allowed_for_edit;
+    my %tinfo = &get_theme_info($current_theme);
 
-    # Set things up according to currently used theme
-    if ($current_theme eq 'authentic-theme' or $current_theme eq 'bootstrap') {
+    # Interface for Bootstrap powered themes
+    if ($tinfo{'bootstrap'}) {
 
-        # Interface for Bootstrap 3 powered themes
         # Set icons variables
         $edit_icon = "<i class='fa fa-edit' alt='$text{'edit'}'></i>";
         $rename_icon = "<i class='fa fa-font' title='$text{'rename'}'></i>";
@@ -205,17 +205,17 @@ sub print_interface {
         }
         print "</ol>";
 
-        # And toolbar
-        if($userconfig{'menu_style'} || $current_theme eq 'authentic-theme') {
-            print_template("unauthenticated/templates/menu.html");
-        } else {
-            print_template("unauthenticated/templates/quicks.html");
-        }
         $page = 1;
         $pagelimit = 4294967295; # The number of maximum files in a directory for EXT4. 9000+ is way to little
+        
+        # And toolbar
+        print_template("unauthenticated/templates/menu.html");
         print_template("unauthenticated/templates/dialogs.html");
-    } else {
-        # Interface for legacy themes
+    }
+
+    # Interface for legacy themes
+    else {
+        
         # Set icons variables
         $edit_icon = "<img src='images/icons/quick/edit.png' alt='$text{'edit'}' />";
         $rename_icon = "<img src='images/icons/quick/rename.png' alt='$text{'rename'}' />";
@@ -275,7 +275,7 @@ sub print_interface {
         # And toolbar
         print_template("unauthenticated/templates/legacy_quicks.html");
         print_template("unauthenticated/templates/legacy_dialogs.html");
-    }
+        }
     my $info_total;
     my $info_files = scalar @files;
     my $info_folders = scalar @folders;
@@ -371,7 +371,11 @@ sub print_interface {
                 $actions = "$actions<a class='action-link' href='edit_file.cgi?file=".&urlize($link)."&path=".&urlize($path)."' title='$text{'edit'}' data-container='body'>$edit_icon</a>";
             }
             if ((index($type, "application-zip") != -1             && has_command('unzip')) ||
-              (index($type, "application-x-7z-compressed") != -1 && has_command('7z'))    ||
+              (
+                ( index($type, "application-x-7z-compressed") != -1 ||
+                  index($type, "x-raw-disk-image") != -1 ||
+                  index($type, "x-cd-image") != -1
+                ) && has_command('7z'))    ||
               ((index($type, "application-x-rar") != -1 || index($type, "application-vnd.rar") != -1) && has_command('unrar')) ||
               (index($type, "application-x-rpm") != -1 && has_command('rpm2cpio') && has_command('cpio')) ||
               (index($type, "application-x-deb") != -1 && has_command('dpkg'))
@@ -470,6 +474,117 @@ if (@allowed_paths == 1 && $allowed_paths[0] eq '/') {
 	return 0;
 	}
 return 1;
+}
+
+sub extract_files
+{
+my ($files_to_extract, $delete) = @_;
+my @errors;
+foreach my $fref (@{$files_to_extract}) {
+    my $status = -1;
+
+    my $cwd = $fref->{'path'};
+    my $name = $fref->{'file'};
+
+    my $extract_to = "$cwd/" . fileparse("$cwd/$name", qr/\.[^.]*/);
+    if (-e $extract_to) {
+        $extract_to .= "_" . int(rand(1000)) . $$;
+    }
+    mkdir($extract_to);
+    
+    my $archive_type = mimetype($cwd . '/' . $name);
+
+    if ($archive_type =~ /x-tar/ || $archive_type =~ /-compressed-tar/) {
+        my $tar_cmd = has_command('tar');
+        if (!$tar_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>tar</tt>'));
+        } else {
+            $status = system("$tar_cmd xpf " . quotemeta("$cwd/$name") . " -C " . quotemeta($extract_to));
+        }
+    } elsif ($archive_type =~ /x-bzip/) {
+        my $tar_cmd = has_command('tar');
+        if (!$tar_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>tar</tt>'));
+        } else {
+            $status = system("$tar_cmd xjfp " . quotemeta("$cwd/$name") . " -C " . quotemeta($extract_to));
+        }
+    } elsif ($archive_type =~ /\/gzip/) {
+        my $gz_cmd = has_command('gunzip') || has_command('gzip');
+        if (!$gz_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>gzip/gunzip</tt>'));
+        } else {
+            $status = system("$gz_cmd -d -f -k " . quotemeta("$cwd/$name"));
+        }
+    } elsif ($archive_type =~ /x-xz/) {
+        my $xz_cmd = has_command('xz');
+        if (!$xz_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>xz</tt>'));
+        } else {
+            $status = system("$xz_cmd -d -f -k " . quotemeta("$cwd/$name"));
+        }
+    } elsif ($archive_type =~ /x-7z/ ||
+             $archive_type =~ /x-raw-disk-image/ ||
+             $archive_type =~ /x-cd-image/) {
+        my $x7z_cmd = has_command('7z');
+        if (!$x7z_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>7z</tt>'));
+        } else {
+            $status = system("$x7z_cmd x -aoa " . quotemeta("$cwd/$name") . " -o" . quotemeta($extract_to));
+        }
+    } elsif ($archive_type =~ /\/zip/) {
+        my $unzip_cmd = has_command('unzip');
+        if (!$unzip_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>unzip</tt>'));
+        } else {
+            my $unzip_out = `unzip --help`;
+            my $uu        = ($unzip_out =~ /-UU/ ? '-UU' : undef);
+            $status = system("$unzip_cmd $uu -q -o " . quotemeta("$cwd/$name") . " -d " . quotemeta($extract_to));
+        }
+    } elsif ($archive_type =~ /\/x-rar|\/vnd\.rar/) {
+        my $unrar_cmd = has_command('unar') || has_command('unrar');
+        if (!$unrar_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>unrar/unar</tt>'));
+        } else {
+            if ($unrar_cmd =~ /unar$/) {
+                $status = system("$unrar_cmd " . quotemeta("$cwd/$name") . " -o " . quotemeta($extract_to));
+            } else {    
+                $status = system("$unrar_cmd x -r -y -o+ " . quotemeta("$cwd/$name") . " " . quotemeta($extract_to));
+            }
+        }
+    } elsif ($archive_type =~ /\/x-rpm/) {
+        my $rpm2cpio_cmd = has_command('rpm2cpio');
+        my $cpio_cmd     = has_command('cpio');
+        if (!$rpm2cpio_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>rpm2cpio</tt>'));
+
+        } elsif (!$cpio_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>cpio</tt>'));
+        } else {
+            $status = system("($rpm2cpio_cmd " . quotemeta("$cwd/$name") . " | (cd " . quotemeta($extract_to) . "; $cpio_cmd -idmv))");
+        }
+
+    } elsif ($archive_type =~ /\/x-deb|debian\.binary-package/) {
+        my $dpkg_cmd = has_command('dpkg');
+        if (!$dpkg_cmd) {
+            push(@errors, &text('extract_cmd_not_avail', "<tt>" . &html_escape($name) . "</tt>", '<tt>dpkg</tt>'));
+        } else {
+            $status = system("$dpkg_cmd -x " . quotemeta("$cwd/$name") . " " . quotemeta($extract_to));
+        }
+    }
+
+    # Set permissions for all extracted files
+    my @perms = stat("$cwd/$name");
+    system("chown -R $perms[4]:$perms[5] " . quotemeta($extract_to));
+
+    # Delete empty extraction
+    rmdir($extract_to);
+    
+    # Delete if no error
+    if ($delete && $status == 0) {
+        unlink_file("$cwd/$name");
+    }
+}
+return @errors;
 }
 
 1;

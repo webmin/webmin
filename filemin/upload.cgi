@@ -8,6 +8,7 @@ use Cwd 'abs_path';
 get_paths();
 
 my @errors;
+my @uploaded_files;
 $line = "";
 
 # Use Webmin's callback function to track progress
@@ -49,10 +50,25 @@ MAINLOOP: while(index($line,"$boundary--") == -1) {
 		}
     
 	if (defined($file)) {
+		my @st = stat($cwd);
+		# If we have a dir, parse it and create a sub-tree first
+		if ($file =~ /\//) {
+			my ($dir) = $file =~ /^(.*)\/[^\/]+$/;
+			if ($dir) {
+				my @dirs = split('/', $dir);
+				$dir = '/';
+				foreach my $updir (@dirs) {
+					$dir .= "$updir/";
+					if (!-e "$cwd$dir") {
+						mkdir("$cwd$dir");
+						&set_ownership_permissions($st[4], $st[5], undef, "$cwd$dir");
+						}
+					}
+				}
+			}
 		# OK, we have a file, let`s save it
 		my $full = "$cwd/$file";
 		my $newfile = !-e $full;
-		my @st = stat($cwd);
 		if (!open(OUTFILE, ">$full")) {
 			push @errors, "$text{'error_opening_file_for_writing'} $path/$file - $!";
 			next;        
@@ -61,7 +77,7 @@ MAINLOOP: while(index($line,"$boundary--") == -1) {
 			binmode(OUTFILE);
 			if ($newfile) {
 				# Copy ownership from parent dir
-				&set_ownership_permissions($st[4], $st[5], undef,$full);
+				&set_ownership_permissions($st[4], $st[5], undef, $full);
 				}
 			# Skip "content-type" as we work in binmode anyway and
 			# skip empty line
@@ -98,8 +114,19 @@ MAINLOOP: while(index($line,"$boundary--") == -1) {
 					$prevline = $line;
 					}
 				}
+
           		# File saved, let`s go further
           		close(OUTFILE);
+
+          		# Store which file were uploaded
+          		my $fpath = $cwd;
+          		my $ffile = $file;
+          		my @subdirs = split('/', $ffile);
+          		if (@subdirs > 1) {
+          			$ffile = pop(@subdirs);
+          			$fpath .= ("/" . join('/', @subdirs));
+          			}
+          		push(@uploaded_files, {'path' => $fpath, 'file' => $ffile});
       			}
 		}
 	else {
@@ -109,6 +136,13 @@ MAINLOOP: while(index($line,"$boundary--") == -1) {
 			$line = <STDIN>;
 			}        
 		}
+	}
+
+# Extract and delete uploaded files
+if ($in{'extract_uploaded'}) {
+	my @eerrors = &extract_files(\@uploaded_files, 1);
+	@errors = (@eerrors, @errors)
+		if (@eerrors);
 	}
 
 # Everything finished, inform progress tracker

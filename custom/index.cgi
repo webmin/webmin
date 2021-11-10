@@ -52,26 +52,19 @@ elsif ($config{'display_mode'} == 0) {
 				}
 			}
 		$html .= &ui_hidden("id", $c->{'id'});
-		$w = $config{'columns'} == 2 ? 2 : 4;
-		$html .= &ui_table_start(undef, undef, $w,
-		   $config{'columns'} == 1 ? [ "width=20%", "width=30%" ]
-					   : [ "width=30%" ]);
+		$html .= &ui_table_start(undef, undef, 2, [ "width=30%" ]);
 		($got_submit) = grep { $_->{'type'} == 16 } @a;
 		if (!$got_submit) {
 			$html .= &ui_table_row(undef,
-					&ui_submit($c->{'desc'}), $w, []);
+					&ui_submit($c->{'desc'}), 2, []);
 			}
 		if ($c->{'html'}) {
 			$html .= &ui_table_row(undef,
-				&filter_javascript($c->{'html'}), $w, []);
+				&filter_javascript($c->{'html'}), 2, []);
 			}
 		foreach $a (@a) {
 			$html .= &ui_table_row(&html_escape($a->{'desc'}),
 					&show_parameter_input($a, $formno));
-			}
-		if (scalar(@a)%2 && $w == 4) {
-			# Hack to make spacing nicer
-			$html .= &ui_table_row(" ", " ");
 			}
 		if ($access{'edit'}) {
 			if ($c->{'edit'}) {
@@ -84,15 +77,14 @@ elsif ($config{'display_mode'} == 0) {
 				$link = &ui_link("edit_cmd.cgi?id=$c->{'id'}",$text{'index_edit'});
 				}
 			$html .= &ui_table_row(undef,
-					&ui_links_row([ $link ]), $w);
+					&ui_links_row([ $link ]), 2);
 			}
 		$html .= &ui_table_end();
 		$html .= &ui_form_end();
 		push(@grid, $html);
 		$form++;
 		}
-	print &ui_grid_table(\@grid, $config{'columns'} || 1, 100,
-	     $config{'columns'} == 2 ? [ "width=50%", "width=50%" ] : [ ]);
+	print &ui_grid_table(\@grid, 2, 100, [ "width=50%", "width=50%" ]);
 	}
 else {
 	# Just show table of commands

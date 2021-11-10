@@ -21,13 +21,12 @@ else {
 	print &ui_form_start("sql.cgi");
 	}
 print &ui_hidden("id", $cmd->{'id'});
-print &ui_table_start(&html_escape($cmd->{'desc'}), "width=100%", 4,
+print &ui_table_start($cmd->{'html'} || $cmd->{'desc'}, "width=100%", 4,
 		      [ "width=20%", "width=30%", "width=20%", "width=30%" ]);
-print &ui_table_row(undef, $cmd->{'html'}, 4);
 
 foreach $a (@{$cmd->{'args'}}) {
 	print &ui_table_row(&html_escape($a->{'desc'}),
-		&show_parameter_input($a, 0));
+		&show_parameter_input($a, 0), 2);
 	}
 
 print &ui_table_end();

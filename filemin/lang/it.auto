@@ -1,0 +1,5 @@
+config_per_page=Elementi da visualizzare per pagina
+
+upload_dirs=Caricamento directory
+extract_uploaded=Estrai compresso
+extract_cmd_not_avail=Impossibile estrarre il file $1 perché manca il comando $2

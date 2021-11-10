@@ -22,3 +22,4 @@ apachectl_path=/usr/sbin/apache2ctl
 show_names=0
 apply_cmd=/usr/sbin/apache2ctl graceful
 allow_virtualmin=0
+format_config=1

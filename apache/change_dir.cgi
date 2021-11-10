@@ -42,7 +42,9 @@ else {
 &flush_file_lines();
 &unlock_file($d->{'file'});
 &update_last_config_change();
+
 &after_changing();
+&format_config_file($d->{'file'});
 
 &webmin_log("dir", $in{'delete'} ? 'delete' : 'save',
 	    &virtual_name($v, 1).":".$d->{'words'}->[0], \%in);

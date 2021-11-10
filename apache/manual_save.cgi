@@ -64,6 +64,7 @@ if (!defined($start)) {
 	$end = @$lref - 1;
 	}
 splice(@$lref, $start, $end-$start+1, @dirs);
+&format_config($lref);
 &flush_file_lines();
 if ($config{'test_manual'}) {
 	$err = &test_config();

@@ -1,6 +1,7 @@
 #!/usr/local/bin/perl
 
 require './filemin-lib.pl';
+require '../config-lib.pl';
 &ReadParse();
 
 get_paths();
@@ -11,8 +12,6 @@ $columns =~ s/\0/,/g;
 %config = (
     'columns' => $columns,
     'per_page' => $in{'per_page'},
-    'disable_pagination' => $in{'disable_pagination'},
-    'menu_style' => $in{'menu_style'},
     'config_portable_module_filemanager_editor_detect_encoding' => $in{'config_portable_module_filemanager_editor_detect_encoding'},
 );
 my $max_allowed = $in{'max_allowed'};
@@ -21,6 +20,7 @@ if($max_allowed) {
 }
 
 &write_file("$confdir/.config", \%config);
+&save_module_preferences($module_name, \%config);
 
 $bookmarks = $in{'bookmarks'};
 $bookmarks =~ s/\r\n/\n/g;

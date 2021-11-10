@@ -29,13 +29,12 @@ else {
 	print &ui_form_start("run.cgi");
 	}
 print &ui_hidden("id", $cmd->{'id'});
-print &ui_table_start(&html_escape($cmd->{'desc'}), "width=100%", 4,
+print &ui_table_start($cmd->{'html'} || $cmd->{'desc'}, "width=100%", 4,
 		      [ "width=20%", "width=30%", "width=20%", "width=30%" ]);
-print &ui_table_row(undef, $cmd->{'html'}, 4) if ($cmd->{'html'});
 
 foreach $a (@{$cmd->{'args'}}) {
 	print &ui_table_row(&html_escape($a->{'desc'}),
-			    &show_parameter_input($a, 0), 1,
+			    &show_parameter_input($a, 0), 2,
 			    [ "valign=top", "valign=top" ]);
 	$got_submit++ if ($a->{'type'} == 16);
 	}

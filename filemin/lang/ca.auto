@@ -1,5 +1,9 @@
 acl_allowed_paths_explain=Per a usuaris capaços d'arrel, si el directori permès només s'estableix a $HOME, serà equivalent a / (accés complet al disc)
+config_per_page=Elements per mostrar per pàgina
 
 acls=Llista de control d’accés
 file_detect_encoding=Detecta automàticament la codificació de fitxers
 index_return=llistat de fitxers
+upload_dirs=Càrrega del directori
+extract_uploaded=Extracte comprimit
+extract_cmd_not_avail=No s'ha pogut extreure el fitxer $1 perquè falta l'ordre $2

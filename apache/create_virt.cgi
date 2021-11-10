@@ -272,6 +272,7 @@ if (!$found) {
 	}
 
 &after_changing();
+&format_config_file($f);
 &webmin_log("virt", "create", ($in{'name_def'} ? $addr : $in{'name'}).$port,
 	    \%in);
 

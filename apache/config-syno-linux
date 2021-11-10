@@ -13,3 +13,4 @@ test_config=1
 show_list=0
 httpd_path=/opt/sbin/httpd
 max_servers=100
+format_config=1
