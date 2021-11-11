@@ -106,7 +106,7 @@ if (-r "$config_directory/config") {
 
 # We can now load the main Webmin library
 $ENV{'WEBMIN_CONFIG'} = $config_directory;
-$ENV{'WEBMIN_VAR'} = "/var/webmin";	# not really used
+$ENV{'WEBMIN_VAR'} = "/var/webmin";	# Only used for initial load of web-lib
 require "$srcdir/web-lib-funcs.pl";
 
 # Check if upgrading from an old version
@@ -199,6 +199,7 @@ else {
 		mkdir($var_dir, 0755) ||
 			&errorexit("Failed to create directory $var_dir");
 		}
+	$ENV{'WEBMIN_VAR'} = $var_dir;
 	print "\n";
 
 	# No need to ask where Perl is, because we already have it!
