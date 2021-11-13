@@ -2308,7 +2308,7 @@ if($saved_conf_files) {
 # Checks if formatting config is allowed
 sub format_config_allowed
 {
-return $config{'format_config'} ne '0';
+return $config{'format_config'};
 }
 
 1;
