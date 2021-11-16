@@ -91,6 +91,12 @@ if [ -r "$srcdir/setup-pre.sh" ]; then
 	. "$srcdir/setup-pre.sh"
 fi
 
+# Work out the hostname
+host=`hostname 2>/dev/null`
+if [ "$host" = "" ]; then
+	host=`uname -n 2>/dev/null`
+fi
+
 # Ask for webmin config directory
 echo "***********************************************************************"
 echo "Webmin uses separate directories for configuration files and log files."
@@ -545,7 +551,6 @@ else
 	openssl version >/dev/null 2>&1
 	if [ "$?" = "0" ]; then
 		# We can generate a new SSL key for this host
-		host=`hostname`
 		openssl req -newkey rsa:2048 -x509 -nodes -out $tempdir/cert -keyout $tempdir/key -days 1825 -sha256 >/dev/null 2>&1 <<EOF
 .
 .
@@ -864,7 +869,6 @@ if [ "$nostart" = "" ]; then
 	echo "Webmin has been installed and started successfully. Use your web"
 	echo "browser to go to"
 	echo ""
-	host=`hostname`
 	if [ "$ssl" = "1" ]; then
 		echo "  https://$host:$port/"
 	else
