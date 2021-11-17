@@ -489,86 +489,133 @@ local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
 
-# get_current_cpu_temps()
+# get_current_cpu_data()
 # Returns a list of hash refs containing CPU temperatures
-sub get_current_cpu_temps
+sub get_current_cpu_data
 {
-my @rv;
+my @cpu;
+my @fans;
 if (&has_command("sensors")) {
-	my @rvx;
-	my $rxx;
-        my $aa;
-        my $ab;
-        my $ac;
-        my $ad;
-        my $fh = "SENSORS";
-        &open_execute_command($fh, "sensors </dev/null 2>/dev/null", 1);
-        while(<$fh>) {
-                if (/Core\s+(\d+):\s+([\+\-][0-9\.]+)/) {
-                        $rxx++;
-                        push(@rv, { 'core' => $1,
-                                    'temp' => $2 });
-                        }
-                elsif (/CPU:\s+([\+\-][0-9\.]+)/) {
-                        $rxx++;
-                        push(@rv, { 'core' => 0,
-                                    'temp' => $1 });
-                        }
-                else {
-			# New line - new device (disallow, if no either fan or
-			# voltage data)
-			$aa = 0 if (/^\s*$/);
+	my ($cpu, $cpu_package, $cpu_broadcom, $cpu_amd);
+	my $fh = "SENSORS";
 
-			# Device has either fan or voltage data (sign of CPU)
-			$aa = 1 if (/fan[\d+]:\s+[0-9]+\s+RPM/i ||
-				    /in[\d+]:\s+[\+\-0-9\.]+\s+V/i);
+	# Examples https://gist.github.com/547451c9ca376b2d18f9bb8d3748276c
+	&open_execute_command($fh, "sensors </dev/null 2>/dev/null", 1);
+	while (<$fh>) {
 
-			# Get odd output like in #1253
-			if ($aa && /temp(\d+):\s+([\+\-][0-9\.]+)\s+.*?[=+].*?\)/) {
-				# Adjust to start from `0` as all other outputs
-				push(@rvx, { 'core' => (int($1) - 1),
-					     'temp' => $2 });
-				}
-                    
-			# New line - new device
-			$ab = 0 if (/^\s*$/);
+	    # CPU full output must have either voltage or fan data
+	    my ($cpu_volt) = $_ =~ /in[\d+]:\s+([\+\-0-9\.]+)\s+V/i;
+	    my ($cpu_fan_num, $cpu_fan_rpm) = $_ =~ /(?|fan([\d+]):\s+([0-9]+)\s+rpm|cpu(\s)fan:\s+([0-9]+)\s+rpm)/i;
+	    $cpu++ if ($cpu_volt || $cpu_fan_num);
 
-			# Check for CPU
-			$ab = 1 if (/cpu_thermal-virtual-[\d]+/i);
+	    # CPU package
+	    ($cpu_package) = $_ =~ /(package\s+id\s+[\d]+)/i
+	      if (!$cpu_package);
 
-			# Get odd output like in #1280
-			if ($ab && /temp(\d+):\s+([\+\-][0-9\.]+)/) {
-				push(@rvx, { 'core' => $1,
-					     'temp' => $2 });
-				}
+	    # Standard outputs
+	    if ($cpu_package) {
 
-			# AMD Ryzen type #1
-			$ac = 0 if (/^\s*$/);
-			$ac = 1 if (/[\d]+temp-pci/i);
-			if ($ac && /Tdie:\s+([\+\-][0-9\.]+)/) {
-				push(@rvx, { 'core' => 0,
-					     'temp' => $1 });
-				}
-			
-			# AMD Ryzen type #2 (Threadripper) #1484
-			$ad = 0 if (/^\s*$/);
-			$ad = 1 if (/^k[\d]{2}temp-pci-[\d]{2}c[\d]+/i);
-			if ($ad && /temp(\d+):\s+([\+\-][0-9\.]+).*?[Cc]\s+.*?[=+].*?\)/) {
-				push(@rvx, { 'core' => (int($1) - 1),
-					     'temp' => $2 });
-				}
-			}
-                }
-        close($fh);
+	        # Common CPU multi
+	        if (/Core\s+(\d+):\s+([\+\-][0-9\.]+)/) {
+	            push(@cpu,
+	                 {  'core' => $1,
+	                    'temp' => int($2)
+	                 });
+	            }
 
-	# Add non standard output only if we haven't 
-	# already grabbed standard output for CPU
-	if (!$rxx) {
-		@rv = (@rv, @rvx);
-		}
+	        # Common CPU single
+	        elsif (/CPU:\s+([\+\-][0-9\.]+)/) {
+	            push(@cpu,
+	                 {  'core' => 0,
+	                    'temp' => int($1)
+	                 });
+	            }
+	        }
+
+	    # Non-standard outputs
+	    else {
+
+	        # CPU types
+	        ($cpu_broadcom) = $_ =~ /cpu_thermal-virtual-[\d]+/i if (!$cpu_broadcom);
+	        ($cpu_amd)      = $_ =~ /\w[\d]{2}temp-pci/i         if (!$cpu_amd);
+
+	        # First just store fan data for any device if any
+	        push(@fans,
+	             {  'fan' => &trim($cpu_fan_num),
+	                'rpm' => $cpu_fan_rpm
+	             }
+	        ) if ($cpu_fan_num);
+
+	        # Full CPU output #1253
+	        if ($cpu) {
+
+	            # Standard output
+	            if (/temp(\d+):\s+([\+][0-9\.]+).*?[Cc]\s+.*?[=+].*?\)/) {
+	                push(@cpu,
+	                     {  'core' => (int($1) - 1),
+	                        'temp' => int($2)
+	                     });
+	                }
+
+	            # Approx from motherboard sensor as last resort
+	            elsif (/(cputin|cpu\stemp):\s+([\+][0-9\.]+).*?[Cc]\s+.*?[=+].*?\)/i) {
+	                push(@cpu,
+	                     {  'core' => 0,
+	                        'temp' => int($2)
+	                     });
+	                }
+	            }
+
+	        # Broadcom
+	        elsif ($cpu_broadcom) {
+	            if (/temp(\d+):\s+([\+\-][0-9\.]+)/) {
+	                push(@cpu,
+	                     {  'core' => $1,
+	                        'temp' => int($2)
+	                     });
+	                }
+	            }
+
+	        # AMD
+	        elsif ($cpu_amd) {
+
+	            # Like in sourceforge.net/p/webadmin/discussion/600155/thread/a9d8fe19c0
+	            if (/Tdie:\s+([\+\-][0-9\.]+)/) {
+	                push(@cpu,
+	                     {  'core' => 0,
+	                        'temp' => int($1),
+	                     });
+	                }
+
+	            # Like in #1481 #1484
+	            elsif (/temp(\d+):\s+([\+\-][0-9\.]+).*?[Cc]\s+.*?[=+].*?\)/) {
+	                push(@cpu,
+	                     {  'core' => (int($1) - 1),
+	                        'temp' => int($2),
+	                     });
+	                }
+	            }
+
+	        # New line - new device, return data or reset and continue
+	        if (/^\s*$/ && !$cpu_package) {
+
+	            # Do we have CPU data already, if so,
+	            # add fan output if any and exit
+	            last if (@cpu);
+
+	            # Reset cpu and fans and continue
+	            @cpu  = ();
+	            @fans = ();
+
+	            $cpu          = 0;
+	            $cpu_broadcom = 0;
+	            $cpu_amd      = 0;
+	            }
+	        }
+	    }
+	close($fh);
 	}
-
-return @rv;
+return (\@cpu, \@fans);
 }
 
 # get_cpu_io_usage()
