@@ -27,6 +27,7 @@ net_pop3s=POP3 (SSL)
 net_imaps=IMAP (SSL)
 net_lmtp=LMTP
 net_ssl_disable=Aanvaar SSL-verbindings?
+net_ssl_required=Aanvaar slegs SSL
 net_imap_listen=Koppelvlakke vir IMAP-verbindings
 net_pop3_listen=Koppelvlakke vir POP3-verbindings
 net_imaps_listen=Koppelvlakke vir IMAP SSL-verbindings

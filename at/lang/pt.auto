@@ -55,6 +55,7 @@ acl_this=Usuário atual do Webmin
 acl_only=Somente usuários
 acl_except=Todos, exceto usuários
 acl_allow=Edição permitida para usuários?
+acl_stop=Pode parar e iniciar <tt>atd</tt>?
 
 run_title=Comando em Execução
 run_output=Saída do comando agendado ..
@@ -79,3 +80,6 @@ log_bootdown=Servidor de comandos programados desativado na inicialização
 
 stop_err=Falha ao parar o servidor
 start_err=Falha ao iniciar o servidor
+stop_ecannot=Você não tem permissão para parar o servidor
+start_ecannot=Você não tem permissão para iniciar o servidor
+bootup_ecannot=Você não tem permissão para habilitar o servidor na inicialização

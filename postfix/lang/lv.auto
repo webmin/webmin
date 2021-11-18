@@ -315,6 +315,7 @@ opts_smtp_data_done_timeout=Taimauts, gaidot atbildi, lai beigtu "".
 opts_smtp_quit_timeout=Noildzis, gaidot atbildi uz QUIT
 opts_smtp_use_tls=SMTP savienojumiem izmantojiet TLS
 opts_smtp_sasl_security_options=SASL drošības iespējas
+opts_smtp_tls_security_level=SMTP TLS klienta drošības līmenis
 
 rate_title=Piegādes cenas
 rate_ecannot=Jums nav atļauts rediģēt piegādes tarifu opcijas

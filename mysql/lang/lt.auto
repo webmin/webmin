@@ -621,6 +621,7 @@ backup_none=Visos eilutės
 backup_drop=Pridėti atsarginę kopiją <tt>lentelės</tt> teiginiai?
 backup_single=Atsarginė operacijos dalis?
 backup_quick=Atmesti eilutes vienu kartu?
+backup_parameters=Pridėti pasirinktinius parametrus prie atsarginės kopijos komandos?
 backup_charset=Simbolių rinkinys atsarginei kopijai
 backup_ok=Atsarginė kopija dabar
 backup_ok1=Išsaugoti ir sukurti atsarginę kopiją dabar

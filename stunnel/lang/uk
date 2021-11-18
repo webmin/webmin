@@ -16,6 +16,7 @@ index_cmd=Виконати команду $1
 index_remote=З'єднатися з портом $1
 index_rport=З'єднатися з портом $1
 index_version=Версія STunnel $1
+
 edit_title=Зміна SSL-тунелю
 create_title=Створення SSL-тунелю
 edit_header1=Настроювання джерела тунелю
@@ -42,6 +43,7 @@ edit_tcpw=Назва TCP-wrappers
 edit_auto=Автоматично
 edit_iface=Вихідний адреса джерела
 edit_type=Запускати з
+
 save_err=Не удалося зберегти SSL-тунель
 save_enclash=Служба з ім'ям $2 уже використовується на порту $1.
 save_einetd=Служба inetd з ім'ям $1 вже існує.
@@ -56,6 +58,7 @@ save_etcpw=Ім'я TCP-wrappers чи не зазначене зазначено 
 save_eiface=Вихідний адреса джерела чи не зазначений зазначений невірно
 save_exinetd=Служба xinetd з ім'ям $1 вже існує
 save_export=Порт $1 уже використовується службою xinetd $2
+
 log_apply=Застосовані зміни
 log_create=Створений SSL-тунель $1
 log_delete=SSL-тунель $1 вилучен

@@ -29,10 +29,10 @@ host_name=Naziv hosta
 host_type=Tip poslužitelja
 host_delete=Ukloni S Liste Upravljanja
 host_refresh=Obnovi Korisnike i Grupe
+host_return=detalji poslužitelja
 host_users=Broj korisnika
 host_groups=Broj grupa
 
-host_return=detalji poslužitelja
 refresh_title=Obnovljeni Korisnici i Grupe
 refresh_header=Ponovno zatražene liste korisnika i grupa sa svih servera .. 
 refresh_header5=Ponovno zatražene liste korisnika i grupa od  $2 ..

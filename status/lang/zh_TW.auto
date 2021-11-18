@@ -83,6 +83,9 @@ http_eregexp=沒有用於匹配頁面的正則表達式
 http_none2=不匹配
 http_ehead=檢查正則表達式時，無法使用HEAD請求方法
 
+ping_timeout=$1 秒後超時
+ping_resolv=無法解析主機名
+
 proc_asuser=以用戶身份運行
 proc_anyuser=任何使用者
 proc_easuser=進程運行用戶不存在

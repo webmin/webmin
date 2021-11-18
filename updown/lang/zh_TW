@@ -25,6 +25,7 @@ index_upto=$1上傳到$2
 index_done=下載完成
 index_imm=立刻
 index_asuser=使用者為
+
 upload_title=上傳檔案
 upload_err=上傳檔案失敗
 upload_edir=未輸入上傳目錄
@@ -38,6 +39,7 @@ upload_eaccess=您不被允許上傳檔案到$1
 upload_ecannot=您不被允許上傳檔案到任何地方
 upload_eucannot=您不被允許以使用者$1上傳檔案
 upload_egcannot=取的群組沒有包含選取的使用者
+
 download_err=儲存下載失敗
 download_eurl='$1' 不是個有效的網址
 download_edate=錯誤的日期或時間
@@ -48,9 +50,11 @@ download_failed=下載失敗 : $1
 download_eaccess=您不被允許下載檔案到$1
 download_eucannot=您不被允許以使用者$1下載檔案
 download_egcannot=選取的群組沒有包含選取的使用者
+
 cancel_err=取消下載失敗
 cancel_enone=未選取
 cancel_ecannot=您不被允許取消使用者$1的下載
+
 log_cancel=取消$1的下載
 log_upload_l= 已上傳檔案$1
 log_upload= 已上傳檔案$1
@@ -58,6 +62,7 @@ log_download_l= 已下載網址$1
 log_download= 已下載網址$1
 log_sdownload_l=已排程網址$1的下載
 log_sdownload=已排程網址$1的下載
+
 acl_users=可以以個別使用者名義上傳和下載檔案
 acl_all=所有使用者
 acl_this=目前Webmin使用者

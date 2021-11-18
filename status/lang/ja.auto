@@ -30,6 +30,9 @@ sched_subject1=アラートテキスト（本文を空のままにします）
 sched_subject2=カスタムテキスト
 sched_esubject=SMSメッセージの件名がありません
 
+ping_timeout=$1秒後のタイムアウト
+ping_resolv=ホスト名を解決できませんでした
+
 proc_asuser=ユーザーとして実行
 proc_anyuser=すべてのユーザー
 proc_easuser=実行するプロセスのユーザーが存在しません

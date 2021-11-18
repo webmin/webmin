@@ -234,6 +234,7 @@ backup_path=服務器上的路徑
 backup_mkdir=創建目標目錄？
 backup_single=在交易中備份？
 backup_quick=一次轉儲一行？
+backup_parameters=向備份命令添加自定義參數？
 backup_charset=備份字符集
 backup_efile2=備份目錄丟失或無效
 backup_echarset=缺少字符集

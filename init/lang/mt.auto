@@ -223,6 +223,7 @@ systemd_egone=Servizz m'għadux jeżisti!
 systemd_elegacy=Mhux servizz systemd!
 systemd_header=Dettalji tas-servizz Systemd
 systemd_name=Isem tas-servizz
+systemd_file=Fajl ta' konfigurazzjoni
 systemd_desc=Deskrizzjoni tas-Servizz
 systemd_start=Kmandi biex titħaddem fuq l-istartjar
 systemd_stop=Kmandi biex jimxu fuq għeluq

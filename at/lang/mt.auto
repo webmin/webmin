@@ -55,6 +55,7 @@ acl_this=Utent Webmin attwali
 acl_only=Utenti biss
 acl_except=Kollha minbarra l-utenti
 acl_allow=Tista 'teditja l-permess Fuq l-utenti?
+acl_stop=Jista' jieqaf u jibda <tt>atd</tt>?
 
 run_title=Imexxi Kmand
 run_output=Ħruġ minn kmand skedat ..
@@ -79,3 +80,6 @@ log_bootdown=Server tal-kmand skedat b'diżabilità fil-but
 
 stop_err=Naqas milli twaqqaf is-server
 start_err=Ma rnexxilux jibda s-server
+stop_ecannot=M'intix permess li twaqqaf is-server
+start_ecannot=M'intix permess li tibda s-server
+bootup_ecannot=M'intix permess li tattiva s-server fil-boot

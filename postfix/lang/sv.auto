@@ -126,6 +126,7 @@ smtpd_map2=Begränsningar i avsändarens adresser
 
 opts_smtp_use_tls=Använd TLS för SMTP-anslutningar
 opts_smtp_sasl_security_options=SASL-säkerhetsalternativ
+opts_smtp_tls_security_level=SMTP TLS klient säkerhetsnivå
 
 debug_version=Postfix-modul för Webmin - version $1
 opts_edebug=Saknad eller ogiltig verbos loggningsnivå - måste vara ett nummer större än noll

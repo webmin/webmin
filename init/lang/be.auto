@@ -223,6 +223,7 @@ systemd_egone=Сэрвіс ужо не існуе!
 systemd_elegacy=Не сістэмны сэрвіс!
 systemd_header=Даныя аб сістэмным абслугоўванні
 systemd_name=Назва службы
+systemd_file=Файл канфігурацыі
 systemd_desc=Апісанне паслугі
 systemd_start=Каманды для запуску пры запуску
 systemd_stop=Каманды для запуску пры адключэнні

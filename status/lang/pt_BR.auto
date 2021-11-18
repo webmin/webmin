@@ -222,6 +222,8 @@ ping_wait=Hora de esperar pela resposta
 ping_ehost=Nome de host ausente ou inválido
 ping_ewait=Tempo de espera ausente ou inválido
 ping_econfig=Nenhum comando ping foi definido no Module Config
+ping_timeout=Tempo limite após $1 segundos
+ping_resolv=Falha ao resolver o nome do host
 
 proc_pid=Executando com PIDs $1 
 proc_cmd=Comando para verificar se há

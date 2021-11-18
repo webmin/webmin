@@ -27,6 +27,7 @@ net_pop3s=POP3 (SSL)
 net_imaps=IMAP (SSL)
 net_lmtp=ЛМТП
 net_ssl_disable=Прымаць злучэнні SSL?
+net_ssl_required=Прымаць толькі SSL
 net_imap_listen=Інтэрфейсы для падлучэння IMAP
 net_pop3_listen=Інтэрфейсы для падлучэння POP3
 net_imaps_listen=Інтэрфейсы для IMAP-злучэнняў SSL

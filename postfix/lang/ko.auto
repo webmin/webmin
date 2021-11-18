@@ -124,6 +124,7 @@ smtpd_map2=발신자 주소에 대한 제한
 
 opts_smtp_use_tls=SMTP 연결에 TLS 사용
 opts_smtp_sasl_security_options=SASL 보안 옵션
+opts_smtp_tls_security_level=SMTP TLS 클라이언트 보안 수준
 
 opts_edebug=상세하지 않은 상세 로깅 레벨-0보다 큰 숫자 여야합니다.
 

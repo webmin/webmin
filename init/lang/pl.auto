@@ -6,6 +6,7 @@ log_condrestart=Warunkowo wznowione działanie $1
 
 upstart_fork=Serwer rozwidla się w tle?
 
+systemd_file=Plik konfiguracyjny
 systemd_status3=Nieznany!
 
 syslog_journalctl=Dzienniki SystemD

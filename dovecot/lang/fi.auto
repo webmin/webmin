@@ -27,6 +27,7 @@ net_pop3s=POP3 (SSL)
 net_imaps=IMAP (SSL)
 net_lmtp=LMTP
 net_ssl_disable=Hyväksytkö SSL-yhteydet?
+net_ssl_required=Hyväksy vain SSL
 net_imap_listen=Rajapinnat IMAP-yhteyksille
 net_pop3_listen=Rajapinnat POP3-yhteyksille
 net_imaps_listen=Rajapinnat IMAP SSL -yhteydet

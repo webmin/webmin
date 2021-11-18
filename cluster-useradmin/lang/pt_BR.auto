@@ -34,10 +34,12 @@ host_name=Nome de anfitrião
 host_type=Tipo de servidor
 host_delete=Remover da lista gerenciada
 host_refresh=Atualizar usuários e grupos
+host_userscount=Número de usuários
+host_groupscount=Número de grupos
+host_return=detalhes do servidor
 host_users=Número de usuários
 host_groups=Número de grupos
 
-host_return=detalhes do servidor
 refresh_title=Atualizar usuários e grupos
 refresh_header=Solicitando novamente listas de usuários e grupos de todos os servidores.
 refresh_header5=Solicitando novamente listas de usuários e grupos de $2 ..

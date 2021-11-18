@@ -13,6 +13,9 @@ sched_subject1=Waarschuwingstekst (laat het lichaam leeg)
 sched_subject2=Aangepaste tekst
 sched_esubject=Onderwerp van sms-bericht ontbreekt
 
+ping_timeout=Time-out na $1 seconden
+ping_resolv=Kan hostnaam niet omzetten
+
 exec_mode=Statuscontrole afsluiten
 exec_mode0=Monitor mislukken als opdracht mislukt
 exec_mode1=Monitor mislukken als opdracht slaagt

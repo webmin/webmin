@@ -19,6 +19,7 @@ net_pop3s=POP3 (SSL)
 net_imaps=IMAP (SSL)
 net_lmtp=LMTP
 net_ssl_disable=Prihvaćate SSL veze?
+net_ssl_required=Prihvatite samo SSL
 net_imap_listen=Sučelja za IMAP veze
 net_pop3_listen=Sučelja za POP3 veze
 net_imaps_listen=Sučelja za IMAP SSL veze

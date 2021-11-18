@@ -223,6 +223,7 @@ systemd_egone=Aptarnavimas nebeegzistuoja!
 systemd_elegacy=Ne sisteminė paslauga!
 systemd_header=Informacija apie sistemines paslaugas
 systemd_name=Paslaugos pavadinimas
+systemd_file=Konfigūracijos failas
 systemd_desc=Aptarnavimo Aprašymas
 systemd_start=Komandos paleisti paleidžiant
 systemd_stop=Komandos vykdomos išjungiant

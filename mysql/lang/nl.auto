@@ -64,6 +64,7 @@ backup_eprefix=Het voorvoegsel van de bestandsnaam mag geen / bevatten
 backup_noprefix=Geen
 backup_download=Downloaden in browser
 backup_path=Pad op server
+backup_parameters=Aangepaste parameters toevoegen aan back-upopdracht?
 backup_eisdir=Back-upbestemming $1 is een directory
 backup_edownloadall=Er kan slechts één databaseback-up worden gedownload
 backup_edownloadsave=De downloadmodus kan niet worden gebruikt voor geplande back-ups

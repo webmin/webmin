@@ -223,6 +223,7 @@ systemd_egone=Služba už neexistuje!
 systemd_elegacy=Nie je to služba systému!
 systemd_header=Podrobnosti o službe Systemd
 systemd_name=Názov služby
+systemd_file=Konfiguračný súbor
 systemd_desc=Popis služby
 systemd_start=Príkazy na spustenie pri štarte
 systemd_stop=Príkazy na spustenie po vypnutí

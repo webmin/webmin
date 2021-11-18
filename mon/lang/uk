@@ -6,6 +6,7 @@ mon_conf_title=Загальне настроювання
 mon_status_title=Стан
 hostgroups_title=Настроювання MON - групи вузлів
 services_title=Групи спостереження - визначення служб
+
 head_hostgroups=Групи вузлів і служби
 head_groups=Назва групи вузлів
 head_members=Члени групи вузлів
@@ -17,6 +18,7 @@ head_monauth=Надавати аутентифікацію для MONCMD
 head_usr=Ім'я користувача
 head_pass=Пароль
 head_mand=( Параметри, виділені "ЧЕРВОНИМ КОЛЬОРОМ", є обов'язковими )
+
 err_nomon=Пакет 'mon' у вашій системі не встановлений
 err_nomonconf=Файл конфігурації MON $1 у вашій системі не виявлений. Можливо MON не встановлений, чи невірна <a href='$2'>конфігурація модуля</a>.
 err_nowatch=Не обрані групи спостереження. Виберіть хоча б одну групу.
@@ -28,6 +30,7 @@ stop_epid=Не запущений
 start_err=Не удалося запустити MON
 restart_err=Не удалося запустити знову MON
 restart_epid=Не удалося одержати PID
+
 other=Інше (через пробіл)
 next=Далі
 mon_stat=Стан MON
@@ -43,6 +46,7 @@ save_apply=Зберегти і застосувати
 watch=Група спостереження
 members=Члени
 def_perargs=wd {Суб-Нед}
+
 def_desc=description
 def_inter=interval
 def_mon=monitor
@@ -58,15 +62,18 @@ def_trapdur=trapduration
 def_rand=randskew
 def_exclhost=exclude_hosts
 def_exclper=exclude_period
+
 groups_title=Групи вузлів
 groups_group=Назва групи
 groups_members=Вузли-члени
+
 watches_title=Список спостереження
 watches_group=Група спостереження
 watches_services= служби, ЩоВідслідковуються
 watches_sadd=Додати службу..
 watches_add=Додати список спостереження в групу :
 watches_return=списку спостереження
+
 global_title=Загальне настроювання
 global_header=Загальне настроювання MON
 global_maxprocs=Максимальна кількість процесів MON
@@ -84,6 +91,7 @@ global_ehistlength=Довжина журналу подій чи не зазна
 global_ealertdir=Каталог попереджуючих програм чи не зазначений зазначений невірно
 global_emondir=Каталог програм, що стежать, чи не зазначений зазначений невірно
 global_euserfile=Файл користувачів MON відсутній
+
 watch_title=Зміна списку спостереження
 watch_header=Настроювання спостереження для групи вузлів
 watch_group= група вузлів, ЩоВідслідковується
@@ -92,6 +100,7 @@ watch_service=Назва служби
 watch_monitor=Використовуваний монітор
 watch_interval=Перевіряти кожні
 watch_periods=Періоди спостереження
+
 service_title=Додавання служби
 service_title2=Зміна служби
 service_header=Настроювання служби, що відслідковується
@@ -144,15 +153,18 @@ service_epstr=Не зазначений період
 service_known0=Рядок <tt>Time::Period</tt>
 service_known1=Зазначені дні і годинник
 service_known2=Визначений період
+
 status_title=Стан MON
 status_ecgi=Програма CGI стану MON $1 не існує. Можливо, вона не встановлена, чи невірна <a href='$2'>конфігурація модуля</a>.
 status_eperl=Програма CGI стану MON вимагає наявності модуля $1 perl. <a href='$2'>Клацніть тут</a> щоб установити його через CPAN.
+
 users_title=Користувачі MON
 users_etype=Список користувачів MON не може бути змінений, тому що MON у даний момент не набудований для аутентифікації. Див. <a href='$1'>Загальне настроювання</a>.
 users_header=Дозволені в $1 користувачі MON
 users_nousers=У $1 не визначено жодного користувача MON.
 users_add=Додати нового користувача
 users_return=Список користувачів MON
+
 user_create=Додавання користувача MON
 user_edit=Зміна користувача MON
 user_header=Настроювання користувача MON
@@ -162,6 +174,7 @@ user_leave=Залишити без змін
 user_err=Не удалося зберегти користувача
 user_euser=Ім'я користувача чи не зазначене зазначено невірно
 user_esame=Користувач з цим ім'ям вже існує
+
 auth_title=Команди клієнта
 auth_desc=Ви можете настроїти якими користувачами які команди MON можуть бути запущені при використанні програм клієнта.
 auth_cmd=Команда MON
@@ -171,6 +184,7 @@ auth_all=Усі
 auth_sel=Тільки користувачі
 auth_err=Не удалося зберегти команди клієнта
 auth_eusers=Для команди $1 не зазначено жодного клієнта
+
 periods_title=Визначені періоди
 periods_period=Назва періоду
 periods_times=Дні і годинник

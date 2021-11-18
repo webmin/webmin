@@ -621,6 +621,7 @@ backup_none=Toate rândurile
 backup_drop=Adăugați <tt>drop table</tt> în copie de rezervă?
 backup_single=Backup în cadrul unei tranzacții?
 backup_quick=Aruncați rândurile pe rând?
+backup_parameters=Adăugați parametri personalizați la comanda de rezervă?
 backup_charset=Set de caractere pentru backup
 backup_ok=Backup acum
 backup_ok1=Salvați și faceți backup acum

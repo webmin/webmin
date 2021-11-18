@@ -34,10 +34,10 @@ host_name=Nazwa hosta
 host_type=Typ serwera
 host_delete=Usuń z listy zarządzanych
 host_refresh=Odśwież użytkowników i grup
+host_return=szczegóły serwera
 host_users=Liczba użytkowników
 host_groups=Liczba grup
 
-host_return=szczegóły serwera
 refresh_title=Odświeżanie użytkowników i grup
 refresh_header=Odświeżanie list użytkowników na wszystkich serwerach ..
 refresh_header5=Odświeżanie list użytkowników na $2 ..

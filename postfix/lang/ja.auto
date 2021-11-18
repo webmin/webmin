@@ -15,6 +15,7 @@ smtpd_map2=送信者アドレスの制限
 
 opts_smtp_use_tls=SMTP接続にTLSを使用する
 opts_smtp_sasl_security_options=SASLセキュリティオプション
+opts_smtp_tls_security_level=SMTPTLSクライアントのセキュリティレベル
 
 opts_edebug=詳細ログレベルが欠落しているか無効です-ゼロより大きい数値である必要があります
 

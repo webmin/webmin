@@ -6,6 +6,8 @@ index_startdesc=Starten Sie den Hintergrundserverprozess <tt>atd</tt>, der gepla
 index_boot=Server beim Booten starten?
 index_bootdesc=Ändern Sie diese Einstellung, um das Starten des Servers für geplante Befehle beim Systemstart zu aktivieren oder zu deaktivieren.
 
+acl_stop=Kann <tt>atd</tt> stoppen und starten?
+
 log_stop=Geplante Befehlsserver gestoppt
 log_start=Geplanter Befehlsserver gestartet
 log_bootup=Server für geplante Befehle beim Booten aktiviert
@@ -13,3 +15,6 @@ log_bootdown=Server für geplante Befehle beim Booten deaktiviert
 
 stop_err=Server konnte nicht gestoppt werden
 start_err=Server konnte nicht gestartet werden
+stop_ecannot=Sie dürfen den Server nicht stoppen
+start_ecannot=Sie dürfen den Server nicht starten
+bootup_ecannot=Sie dürfen den Server beim Booten nicht aktivieren

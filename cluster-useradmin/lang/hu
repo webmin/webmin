@@ -34,10 +34,10 @@ host_name=Host name
 host_type=Server type
 host_delete=Remove From Managed List
 host_refresh=Refresh Users and Groups
+host_return=server details
 host_users=Number of users
 host_groups=Number of groups
 
-host_return=server details
 refresh_title=Refresh Users and Groups
 refresh_header=Re-requesting user and group lists from all servers ..
 refresh_header5=Re-requesting user and group lists from $2 ..

@@ -621,6 +621,7 @@ backup_none=Vse vrstice
 backup_drop=Ali želite v varnostno kopijo dodati <tt>spustno tabelo</tt> stavke?
 backup_single=Varnostno kopijo v transakciji?
 backup_quick=Odstavite vrstice eno na drugo?
+backup_parameters=Želite dodati parametre po meri ukazu za varnostno kopiranje?
 backup_charset=Nabor znakov za varnostno kopiranje
 backup_ok=Rezervno zdaj
 backup_ok1=Shrani in varnostno kopirajte zdaj

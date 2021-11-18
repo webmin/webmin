@@ -9,6 +9,7 @@ index_rpc=RPC programok
 index_newrpc=Új RPC program bekonfigurálása
 index_apply=Változtatások életbe léptetése
 index_applymsg=Ezt a gombot megnyomva egy SIGHUP jelzést küldhetsz az <tt>inetd</tt> programnak, aminek következtében az imént beállított konfiguráció azonnal életbe lép. Ellenkező esetben csak a következő rendszerindítástól lesz csak hatása változtatásoknak.
+
 error_restart=Nem sikerült az <tt>inetd</tt>-t újraindítani
 error_saverpc=Nem sikerült bekonfigurálni az új RPC programot
 error_invalidprgname=A '$1' programnév rossz
@@ -34,6 +35,7 @@ error_childnum=Ha a percenkénti korlátot megadtad, akkor limitálno kell a gye
 error_serviceexist=A $1. $2 porton már van egy szolgáltatás
 error_nameexist=Már van egy $1 nevű szolgáltatás $2 protokollal
 error_inetservice=Már van egy $1 nevű szolgáltatás $2 protokollal
+
 editrpc_title1=Új RPC program bekonfigurálása
 editrpc_title2=RPC program módosítása
 editrpc_detail=Az RPC szolgáltatás azonosítása
@@ -56,6 +58,7 @@ editrpc_execasuser=Mely felhasználó<br> nevében fusson?
 editrpc_max=Percenként lefutások<br>maximális száma?
 editrpc_default=Szokásos
 editrpc_execasgrp=Mely csoport<br> nevében fusson?
+
 editserv_title1=Új IP szolgáltatás megadása
 editserv_title2=Internet szolgáltatás módosítása
 editserv_detail=Internet szolgáltatás azonosítása
@@ -67,6 +70,7 @@ editserv_maxchild=Gyerekek<br> maximális száma
 editserv_execlogin=Felhasználói osztály
 editserv_wrapper=TCP Wrapper
 editserv_inetd=Az <tt>inetd</tt> beépített szolgáltatása
+
 log_apply=Változások életbe léptetése
 log_create_serv=A $1 szolgáltatás létrehozása
 log_modify_serv=A $1 szolgáltatás módosítása
@@ -80,6 +84,7 @@ log_delete_serv_l=A $1 szolgáltatás törlése a $2. porton
 log_create_prog_l=A $3 program által nyújtott $1 szolgáltatás létrehozása a $2. porton
 log_modify_prog_l=A $3 program által nyújtott $1 szolgáltatás módosítása a $2. porton
 log_delete_prog_l=A $3 program által nyújtott $1 szolgáltatás törlése a $2. porton
+
 log_create_rpc=A $1 RPC szolgáltatás létrehozása
 log_modify_rpc=A $1 RPC szolgáltatás módosítása
 log_delete_rpc=A $1 RPC szolgáltatás törlése

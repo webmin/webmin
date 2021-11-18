@@ -34,10 +34,12 @@ host_name=Ostalariaren izena
 host_type=Zerbitzari mota
 host_delete=Kendu kudeatutako zerrendatik
 host_refresh=Erabiltzaileak eta taldeak freskatu
+host_userscount=Erabiltzaile kopurua
+host_groupscount=Talde kopurua
+host_return=zerbitzariaren xehetasunak
 host_users=Erabiltzaile kopurua
 host_groups=Talde kopurua
 
-host_return=zerbitzariaren xehetasunak
 refresh_title=Erabiltzaileak eta taldeak freskatu
 refresh_header=Zerbitzari guztietatik erabiltzaile eta talde zerrendak berriro eskatzea ..
 refresh_header5=Erabiltzaileen eta taldeen zerrendak berriro eskatzea $2 tik ..

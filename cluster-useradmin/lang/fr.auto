@@ -1,3 +1,6 @@
+host_userscount=nombre d'utilisateurs
+host_groupscount=Nombre de groupes
+
 refresh_header5=Nouvelle demande de listes d'utilisateurs et de groupes à partir de $2 ..
 refresh_header4=Nouvelle demande de listes d'utilisateurs et de groupes aux membres de $2 ..
 

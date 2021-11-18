@@ -1,6 +1,7 @@
 start_eprotos=No hay protocolos seleccionados en la página <b>Redes y protocolos</b>
 
 net_lmtp=LMTP
+net_ssl_required=Solo acepta SSL
 net_listen=Interfaces para conexiones no SSL
 net_ssl_listen=Interfaces para conexiones SSL
 net_elisten=Dirección IP no válida para conexiones no SSL

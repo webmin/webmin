@@ -35,6 +35,9 @@ sched_subject1=Varovný text (nechte tělo prázdné)
 sched_subject2=Vlastní text
 sched_esubject=Chybí předmět zprávy SMS
 
+ping_timeout=Časový limit po $1 sekundách
+ping_resolv=Nepodařilo se vyřešit název hostitele
+
 proc_asuser=Běží jako uživatel
 proc_anyuser=Každý uživatel
 proc_easuser=Uživatel pro proces spustit jako neexistuje

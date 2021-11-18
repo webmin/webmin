@@ -31,6 +31,9 @@ sched_subject1=경고 텍스트 (본문은 비워 둡니다)
 sched_subject2=맞춤 텍스트
 sched_esubject=SMS 메시지 제목 누락
 
+ping_timeout=$1초 후 시간 초과
+ping_resolv=호스트 이름을 확인하지 못했습니다
+
 proc_thresh=모니터가 실행중인 것으로 간주하기 위해 존재해야하는 프로세스 수
 proc_asuser=사용자로 실행
 proc_anyuser=모든 사용자

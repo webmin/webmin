@@ -621,6 +621,7 @@ backup_none=כל השורות
 backup_drop=להוסיף <tt>טבלת ירידה</strong> לגיבויים?
 backup_single=גיבוי במסגרת עסקה?
 backup_quick=שורות זבל אחת בכל פעם?
+backup_parameters=להוסיף פרמטרים מותאמים אישית לפקודת הגיבוי?
 backup_charset=ערכת תווים לגיבוי
 backup_ok=גיבוי עכשיו
 backup_ok1=שמור וגיבוי עכשיו

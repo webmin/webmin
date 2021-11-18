@@ -34,10 +34,12 @@ host_name=Isäntänimi
 host_type=Palvelintyyppi
 host_delete=Poista hallinnoidusta luettelosta
 host_refresh=Päivitä käyttäjät ja ryhmät
+host_userscount=käyttäjien lukumäärä
+host_groupscount=Ryhmien lukumäärä
+host_return=palvelimen yksityiskohdat
 host_users=käyttäjien lukumäärä
 host_groups=Ryhmien lukumäärä
 
-host_return=palvelimen yksityiskohdat
 refresh_title=Päivitä käyttäjät ja ryhmät
 refresh_header=Käyttäjä- ja ryhmäluetteloiden uudelleenpyyntö kaikilta palvelimilta ..
 refresh_header5=$2 -käyttäjä- ja ryhmäluetteloiden uudelleenpyyntö.

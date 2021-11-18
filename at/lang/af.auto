@@ -55,6 +55,7 @@ acl_this=Huidige Webmin-gebruiker
 acl_only=Slegs gebruikers
 acl_except=Almal behalwe gebruikers
 acl_allow=Kan redigering by gebruikers toegelaat word?
+acl_stop=Kan jy stop en <tt>atd</tt> begin?
 
 run_title=Begin opdrag
 run_output=Afvoer vanaf geskeduleerde opdrag ..
@@ -79,3 +80,6 @@ log_bootdown=Gedeaktiveerde bediener vir geskeduleerde opdragte tydens die opsta
 
 stop_err=Kon nie bediener stop nie
 start_err=Kon nie bediener begin nie
+stop_ecannot=Jy word nie toegelaat om die bediener te stop nie
+start_ecannot=Jy word nie toegelaat om die bediener te begin nie
+bootup_ecannot=Jy word nie toegelaat om die bediener tydens selflaai te aktiveer nie

@@ -34,10 +34,12 @@ host_name=Resursdatora nosaukums
 host_type=Servera tips
 host_delete=Noņemt no pārvaldīto saraksta
 host_refresh=Atsvaidziniet lietotājus un grupas
+host_userscount=Lietotāju skaits
+host_groupscount=Grupu skaits
+host_return=informācija par serveri
 host_users=Lietotāju skaits
 host_groups=Grupu skaits
 
-host_return=informācija par serveri
 refresh_title=Atsvaidziniet lietotājus un grupas
 refresh_header=Lietotāju un grupu sarakstu atkārtota pieprasīšana no visiem serveriem.
 refresh_header5=Lietotāju un grupu sarakstu atkārtota pieprasīšana no $2.

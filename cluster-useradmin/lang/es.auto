@@ -3,3 +3,6 @@ index_tdesc=Descripción
 index_tucount=Los usuarios
 index_tgcount=Grupos
 index_ttype=Tipo de sistema operativo
+
+host_userscount=Número de usuarios
+host_groupscount=Numero de grupos

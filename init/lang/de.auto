@@ -1,1 +1,3 @@
+systemd_file=Konfigurationsdatei
+
 syslog_journalctl=SystemD-Protokolle

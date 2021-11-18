@@ -239,6 +239,7 @@ backup_path=Ruta en el servidor
 backup_mkdir=Crear directorio de destino?
 backup_single=Copia de seguridad dentro de una transacción?
 backup_quick=¿Volcar las filas una a la vez?
+backup_parameters=¿Agregar parámetros personalizados al comando de respaldo?
 backup_charset=Conjunto de caracteres para copia de seguridad
 backup_efile2=Directorio de copia de seguridad faltante o no válido
 backup_echarset=Falta el conjunto de caracteres

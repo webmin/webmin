@@ -315,6 +315,7 @@ opts_smtp_data_done_timeout=Time-out om te wag vir antwoord tot einde "."
 opts_smtp_quit_timeout=Uittreksel wag vir antwoord op QUIT
 opts_smtp_use_tls=Gebruik TLS vir SMTP-verbindings
 opts_smtp_sasl_security_options=SASL sekuriteitsopsies
+opts_smtp_tls_security_level=SMTP TLS kliënt sekuriteit vlak
 
 rate_title=Afleweringstariewe
 rate_ecannot=U mag die opsies vir afleweringskoerse nie verander nie

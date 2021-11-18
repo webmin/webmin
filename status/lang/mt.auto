@@ -222,6 +222,8 @@ ping_wait=Ħin biex tistenna risposta
 ping_ehost=Name host nieqes jew invalidu
 ping_ewait=Ħin ta 'stennija nieqes jew invalidu
 ping_econfig=L-ebda kmand ping ma ġie stabbilit fil-Modulu Config
+ping_timeout=Timeout wara $1 sekonda
+ping_resolv=Naqas milli jsolvi l-isem tal-host
 
 proc_pid=It-tmexxija bl-PIDs $1 
 proc_cmd=Kmand biex tiċċekkja għal

@@ -117,6 +117,7 @@ backup_download=ブラウザでダウンロード
 backup_path=サーバー上のパス
 backup_single=トランザクション内でバックアップしますか？
 backup_quick=行を1つずつダンプしますか？
+backup_parameters=バックアップコマンドにカスタムパラメータを追加しますか？
 backup_eisdir=バックアップ先 $1はディレクトリです
 backup_email=にバックアップステータスメールを送信
 backup_notify=のメールを送信

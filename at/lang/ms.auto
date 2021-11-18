@@ -6,6 +6,8 @@ index_startdesc=Mulakan proses pelayan latar belakang <tt>atd</tt> yang menjalan
 index_boot=Mulakan Pelayan Semasa Boot?
 index_bootdesc=Ubah tetapan ini untuk mengaktifkan atau melumpuhkan memulakan pelayan perintah yang dijadualkan pada waktu boot sistem.
 
+acl_stop=Bolehkah berhenti dan mula <tt>atd</tt>?
+
 log_stop=Pelayan arahan berjadual dihentikan
 log_start=Memulakan pelayan arahan berjadual
 log_bootup=Diaktifkan pelayan arahan berjadual semasa boot
@@ -13,3 +15,6 @@ log_bootdown=Pelayan perintah berjadual dilumpuhkan semasa boot
 
 stop_err=Gagal menghentikan pelayan
 start_err=Gagal memulakan pelayan
+stop_ecannot=Anda tidak dibenarkan menghentikan pelayan
+start_ecannot=Anda tidak dibenarkan untuk memulakan pelayan
+bootup_ecannot=Anda tidak dibenarkan mendayakan pelayan semasa but

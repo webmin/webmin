@@ -1,4 +1,5 @@
 net_lmtp=LMTP
+net_ssl_required=Přijměte pouze SSL
 
 ssl_ca=Soubor certifikátů CA klienta SSL
 ssl_pass=Heslo pro soubor klíče

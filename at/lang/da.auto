@@ -55,6 +55,7 @@ acl_this=Nuværende Webmin-bruger
 acl_only=Kun brugere
 acl_except=Alle undtagen brugere
 acl_allow=Kan redigering være tilladt hos brugere?
+acl_stop=Kan du stoppe og starte <tt>atd</tt>?
 
 run_title=Kører kommando
 run_output=Output fra planlagt kommando ..
@@ -79,3 +80,6 @@ log_bootdown=Deaktiveret planlagt kommandoserver ved opstart
 
 stop_err=Serveren kunne ikke stoppes
 start_err=Serveren kunne ikke startes
+stop_ecannot=Du må ikke stoppe serveren
+start_ecannot=Du må ikke starte serveren
+bootup_ecannot=Du har ikke tilladelse til at aktivere serveren ved opstart

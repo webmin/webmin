@@ -315,6 +315,7 @@ opts_smtp_data_done_timeout=Aikakatkaisu odotettaessa vastausta "" loppuun.
 opts_smtp_quit_timeout=Aikakatkaisu odotettaessa vastausta QUIT
 opts_smtp_use_tls=Käytä TLS: tä SMTP-yhteyksiin
 opts_smtp_sasl_security_options=SASL-tietoturvavaihtoehdot
+opts_smtp_tls_security_level=SMTP TLS -asiakassuojaustaso
 
 rate_title=Toimitushinnat
 rate_ecannot=Et voi muokata toimitushintoja

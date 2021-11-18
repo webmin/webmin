@@ -22,6 +22,9 @@ sched_subject1=Figyelmeztető szöveg (hagyja a testet üresen)
 sched_subject2=Egyéni szöveg
 sched_esubject=Hiányzik az SMS üzenet tárgya
 
+ping_timeout=Időtúllépés $1 másodperc után
+ping_resolv=Nem sikerült feloldani a gazdagép nevét
+
 exec_mode=Kilépés az állapot ellenőrzéséből
 exec_mode0=Figyelés meghiúsulása, ha a parancs sikertelen
 exec_mode1=Hiba figyelése, ha a parancs sikeres

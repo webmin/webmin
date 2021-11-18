@@ -79,6 +79,7 @@ backup_noprefix=Nenhum
 backup_download=Download no navegador
 backup_path=Caminho no servidor
 backup_quick=Despejar linhas uma de cada vez?
+backup_parameters=Adicionar parâmetros personalizados ao comando de backup?
 backup_eisdir=O destino de backup $1 é um diretório
 backup_email=Enviar email de status de backup para
 backup_notify=Enviar email para

@@ -16,12 +16,14 @@ index_d1=$1
 index_dlang=мова, на якому відображаються модулі
 index_dtheme=тема, що контролює зовнішній вигляд Webmin
 index_dpass=пароль використовуваний для реєстрації
+
 change_title=Змінюю настроювання
 change_user=Змінюю настроювання облікового запису Webmin ..
 change_done=.. готово
 change_restart=Перезапускаю Webmin ..
 change_redirect=Перехід у головне меню ..
 change_ecolon=Ваш пароль не може містити символ :
+
 acl_lang=Може змінювати мова?
 acl_theme=Може змінювати тему?
 acl_pass=Може змінювати пароль (коли зазначений у Webmin)?

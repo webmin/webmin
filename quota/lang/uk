@@ -1,4 +1,5 @@
 quota_unlimited=Не обмежено
+
 acl_fss=Файлові системи, квоти яких може змінювати цей користувач
 acl_fall=Усі файлові системи
 acl_fsel=Обрані..
@@ -21,9 +22,11 @@ acl_uuid=Користувачі з UID у діапазоні
 acl_maxblocks=Максимально можлива квота блоків
 acl_maxfiles=Максимально можлива квота файлів
 acl_unlimited=Не обмежено
+
 activate_eallow=У вас недостатньо правий для чи включення відключення використання квот для цієї файлової системи
 activate_eon=Не удалося уключити використання квот
 activate_eoff=Не удалося відключити використання квот
+
 check_title=Перевірка квот
 check_return=Список $1
 check_ecannot=У вас недостатньо правий для перевірки квот цієї файлової системи
@@ -31,11 +34,13 @@ check_running=Для перевірки використання блоків і
 check_done=... Виконано. 
 check_rgroup=група
 check_ruser=користувач
+
 cgroup_efail=Не удалося скопіювати квоти
 cgroup_ecannot=Ви не можете копіювати квоти
 cgroup_egallow=У вас недостатньо прав для копіювання квот цієї групи
 cgroup_enogroup=Не зазначено груп для копіювання
 cgroup_eallowto=У вас недостатньо правий для копіювання квот на '$1'
+
 cgform_title=Копіювання квот
 cgform_return=квотам групи
 cgform_ecannot=Ви не можете копіювати квоти
@@ -45,11 +50,13 @@ cgform_all=Усі групи вашої системи
 cgform_select=Обрані групи
 cgform_contain=Групи, що містять користувачів
 cgform_doit=Скопіювати
+
 cuser_efail=Не удалося скопіювати квоти
 cuser_ecannot=Ви не можете копіювати квоти
 cuser_euallow=У вас недостатньо прав для копіювання квот цього користувача
 cuser_enouser=Користувачі не зазначені
 cuser_eallowto=У вас недостатньо правий для копіювання квот на '$1'
+
 cuform_title=Копіювання квот
 cuform_return=квотам користувачів
 cuform_ecannot=Ви не можете копіювати квоти
@@ -59,6 +66,7 @@ cuform_all=Усіх користувачів
 cuform_select=Обраних користувачів
 cuform_members=Членів обраних груп
 cuform_doit=Скопіювати
+
 egroup_title=Зміна квот
 egroup_freturn=списку файлових систем
 egroup_greturn=списку груп
@@ -73,6 +81,7 @@ egroup_sflimit=Ліміт файлів
 egroup_hflimit=Строгий ліміт файлів
 egroup_update=Обновити
 egroup_listall=Показати всі квоти
+
 euser_title=Зміна квоти
 euser_freturn=списку файлових систем
 euser_ureturn=списку користувачів
@@ -89,6 +98,7 @@ euser_sflimit=Ліміт файлів
 euser_hflimit=Строгий ліміт файлів
 euser_update=Обновити
 euser_listall=Показати всі квоти
+
 gfilesys_title=Квоти груп
 gfilesys_return=списку файлових систем
 gfilesys_ecannot=Ви не можете змінювати квоти для '$1'
@@ -102,6 +112,7 @@ gfilesys_hard=Строгий ліміт
 gfilesys_nogquota=Група <tt>$1</tt> не має квот для цієї файлової системи
 gfilesys_edit=Змінити квоту для:
 gfilesys_copy=Скопіювати квоти
+
 ggracef_title=Відстрочки
 ggracef_return=списку груп
 ggracef_ecannot=Ви не можете змінювати час відстрочки для цієї файлової системи
@@ -110,9 +121,11 @@ ggracef_graces=Час відстрочки обмежень для групи <t
 ggracef_block=Для квоти блоків
 ggracef_file=Для квоти файлів
 ggracef_update=Обновити
+
 ggraces_esave=Не удалося зберегти час відстрочки
 ggraces_eedit=У вас недостатньо правий для зміни часу відстрочки для цієї файлової системи
 ggraces_enumber='$1' не є числом
+
 index_quser=Квоти користувачів
 index_qgroup=Квоти груп
 index_qboth=Квоти користувачів і груп
@@ -131,6 +144,7 @@ index_return=меню
 index_euser=Змінити квоти користувачів:
 index_egroup=Змінити квоти дисків:
 index_nosupport=Не виявлено локальних файлових систем, що підтримують квоти
+
 lgroups_failed=Не удалося вивести список груп
 lgroups_eallow=У вас недостатньо правий для зміни квот для цієї файлової системи
 lgroups_title=Квоти файлової системи
@@ -147,13 +161,17 @@ lgroups_noquota=Жодна з груп не має квот для <tt>$1</tt>
 lgroups_equota=Змінити квоту для:
 lgroups_grace=Змінити час відстрочки
 lgroups_check=Перевірити квоти
+
 sgroup_egroup=У вас недостатньо прав для зміни квот для зміни квот цієї групи
 sgroup_efs=У вас недостатньо правий для зміни квот для цієї файлової системи
+
 ssync_ecannot=У вас недостатньо правий для завдання квоти за замовчуванням для цієї файлової системи
+
 suser_euser=У вас недостатньо правий для зміни квот цього користувача
 suser_efs=У вас недостатньо прав для завдання квоти для цієї файлової системи
 suser_emaxblocks=У вас недостатньо правий для надання лімітів, що перевищують $1
 suser_emaxfiles=У вас недостатньо прав для надання лімітів, що перевищують $1
+
 ufilesys_title=Квоти користувача
 ufilesys_return=списку файлових систем
 ufilesys_ecannot=Ви не можете змінювати квоти для '$1'
@@ -167,6 +185,7 @@ ufilesys_hard=Строгий ліміт
 ufilesys_nouquota=Користувач <tt>$1</tt> не має квот на жодній файловій системі
 ufilesys_edit=Змінити квоту для:
 ufilesys_copy=Скопіювати квоти
+
 ugracef_title=Час відстрочки
 ugracef_return=списку користувачів
 ugracef_ecannot=У вас недостатньо прав для зміни часу відстрочки для цієї файлової системи
@@ -175,9 +194,11 @@ ugracef_graces=Час відстрочки обмежень для <tt>$1</tt>
 ugracef_block=Для квоти блоків
 ugracef_file=Для квоти файлів
 ugracef_update=Обновити
+
 ugraces_esave=Не удалося зберегти час відстрочки
 ugraces_eedit=У вас недостатньо прав для зміни часу відстрочки для цієї файлової системи
 ugraces_enumber='$1' не є числом
+
 lusers_failed=Не удалося вивести список користувачів
 lusers_eallow=У вас недостатньо правий для зміни квот для цієї файлової системи
 lusers_title=Квоти файлової системи
@@ -202,12 +223,14 @@ lusers_hblimit=Строгий ліміт блоків
 lusers_sflimit=Ліміт файлів
 lusers_hflimit=Строгий ліміт файлів
 lusers_apply=Застосувати
+
 grace_seconds=Секунд
 grace_minutes=Хвилин
 grace_hours=Годин
 grace_days=Днів
 grace_weeks=Тижнів
 grace_months=Місяців
+
 log_activate_u=Включені квоти користувачів для $1
 log_activate_g=Включені квоти груп для $1
 log_activate_ug=Включені квоти користувачів і груп для $1

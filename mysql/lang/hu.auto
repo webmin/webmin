@@ -183,6 +183,7 @@ backup_path=Útvonal a kiszolgálón
 backup_mkdir=Hozzon létre célkönyvtárat?
 backup_single=Biztonsági mentés egy tranzakción belül?
 backup_quick=Sorok dobása egyenként?
+backup_parameters=Hozzáadja az egyéni paramétereket a biztonsági mentési parancshoz?
 backup_charset=Karakterkészlet a biztonsági mentéshez
 backup_echarset=Hiányzó karakterkészlet
 backup_ebefore=A biztonsági mentés előtti parancs sikertelen!

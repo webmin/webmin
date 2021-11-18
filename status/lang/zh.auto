@@ -99,6 +99,9 @@ http_eregexp=没有用于匹配页面的正则表达式
 http_none2=不匹配
 http_ehead=检查正则表达式时，无法使用HEAD请求方法
 
+ping_timeout=$1 秒后超时
+ping_resolv=无法解析主机名
+
 proc_not=如果过程是失败的
 proc_not0=没有运行
 proc_not1=跑步

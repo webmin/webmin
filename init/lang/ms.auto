@@ -223,6 +223,7 @@ systemd_egone=Perkhidmatan tidak lagi wujud!
 systemd_elegacy=Bukan perkhidmatan sistem!
 systemd_header=Butiran perkhidmatan sistem
 systemd_name=Nama perkhidmatan
+systemd_file=Fail konfigurasi
 systemd_desc=Penerangan perkhidmatan
 systemd_start=Perintah untuk berjalan pada permulaan
 systemd_stop=Perintah untuk dijalankan pada penutupan

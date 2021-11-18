@@ -20,6 +20,7 @@ edit_showfull=Komut dosyasının tamamını göster.
 create_eallow=Belirtilen kullanıcının zamanlanmış komutları çalıştırmasına izin verilmiyor
 
 acl_allow=Kullanıcılara düzenlemeye izin verilebilir mi?
+acl_stop=<tt>atd</tt>'i durdurup başlatabilir mi?
 
 allow_err=İzin verilen kullanıcılar kaydedilemedi
 allow_ecannot=İzin verilen kullanıcıları yönetme izniniz yok
@@ -40,3 +41,6 @@ log_bootdown=Önyüklemede devre dışı bırakılan zamanlanmış komut sunucus
 
 stop_err=Sunucu durdurulamadı
 start_err=Sunucu başlatılamadı
+stop_ecannot=Sunucuyu durdurma izniniz yok
+start_ecannot=sunucuyu başlatma izniniz yok
+bootup_ecannot=Açılışta sunucuyu etkinleştirmenize izin verilmiyor

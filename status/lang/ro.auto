@@ -222,6 +222,8 @@ ping_wait=E timpul să aștepți răspuns
 ping_ehost=Numele de gazdă lipsă sau nevalid
 ping_ewait=Timp de așteptare lipsă sau nevalid
 ping_econfig=Nici o comandă ping nu a fost setată în Modul Config
+ping_timeout=Timeout după $1 secunde
+ping_resolv=Nu s-a rezolvat numele de gazdă
 
 proc_pid=Se rulează cu PID-uri $1 
 proc_cmd=Comanda de a verifica

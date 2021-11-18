@@ -123,6 +123,7 @@ smtpd_map2=Restrições nos endereços dos remetentes
 
 opts_smtp_use_tls=Use TLS para conexões SMTP
 opts_smtp_sasl_security_options=Opções de segurança SASL
+opts_smtp_tls_security_level=Nível de segurança do cliente SMTP TLS
 
 opts_edebug=Nível de registro detalhado ausente ou inválido - deve ser um número maior que zero
 

@@ -621,6 +621,7 @@ backup_none=Alle rækker
 backup_drop=Vil du tilføje <tt>drop tabel</tt> udsagn til sikkerhedskopi?
 backup_single=Sikkerhedskopi inden for en transaktion?
 backup_quick=Dump rækker en ad gangen?
+backup_parameters=Tilføj brugerdefinerede parametre til backup-kommando?
 backup_charset=Tegn indstillet til sikkerhedskopiering
 backup_ok=Backup nu
 backup_ok1=Gem og sikkerhedskopier nu

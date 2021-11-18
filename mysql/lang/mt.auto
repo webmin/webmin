@@ -621,6 +621,7 @@ backup_none=Ir-ringieli kollha
 backup_drop=Żid <tt>drop table</tt> dikjarazzjonijiet għall-backup?
 backup_single=Backup fi tranżazzjoni?
 backup_quick=Jarmu r-ringieli waħda kull darba?
+backup_parameters=Żid parametri tad-dwana mal-kmand tal-backup?
 backup_charset=Sett ta 'karattri għall-backup
 backup_ok=Backup Issa
 backup_ok1=Issejvja u Backup Issa

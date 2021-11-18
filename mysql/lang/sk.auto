@@ -621,6 +621,7 @@ backup_none=Všetky riadky
 backup_drop=Pridajte do zálohy príkazy <tt>drop table</tt>?
 backup_single=Zálohovanie v rámci transakcie?
 backup_quick=Vypísať riadky po jednom?
+backup_parameters=Pridať vlastné parametre do príkazu na zálohovanie?
 backup_charset=Znaková sada pre zálohovanie
 backup_ok=Zálohovať teraz
 backup_ok1=Uložte a zálohujte

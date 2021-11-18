@@ -55,6 +55,7 @@ acl_this=Nykyinen Webmin-käyttäjä
 acl_only=Vain käyttäjät
 acl_except=Kaikki paitsi käyttäjät
 acl_allow=Voiko muokata sallittua käyttäjille?
+acl_stop=Voiko lopettaa ja aloittaa <tt>atd</tt>?
 
 run_title=Käynnissä komento
 run_output=Tulos ajoitetusta komennosta ..
@@ -79,3 +80,6 @@ log_bootdown=Poistettu ajoitetut komentopalvelimet käynnistyksen yhteydessä
 
 stop_err=Palvelimen pysäyttäminen epäonnistui
 start_err=Palvelimen käynnistäminen epäonnistui
+stop_ecannot=Sinulla ei ole lupaa pysäyttää palvelinta
+start_ecannot=Sinulla ei ole lupaa käynnistää palvelinta
+bootup_ecannot=Sinulla ei ole oikeutta ottaa palvelinta käyttöön käynnistyksen yhteydessä

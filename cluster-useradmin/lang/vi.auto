@@ -34,10 +34,12 @@ host_name=Tên máy chủ
 host_type=Loại máy chủ
 host_delete=Xóa khỏi danh sách được quản lý
 host_refresh=Làm mới người dùng và nhóm
+host_userscount=Số lượng người dùng
+host_groupscount=Số lượng nhóm
+host_return=chi tiết máy chủ
 host_users=Số lượng người dùng
 host_groups=Số lượng nhóm
 
-host_return=chi tiết máy chủ
 refresh_title=Làm mới người dùng và nhóm
 refresh_header=Yêu cầu lại danh sách người dùng và nhóm từ tất cả các máy chủ ..
 refresh_header5=Yêu cầu lại danh sách người dùng và nhóm từ $2 ..

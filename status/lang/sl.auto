@@ -222,6 +222,8 @@ ping_wait=Čas za čakanje na odgovor
 ping_ehost=Manjkajoče ali neveljavno ime gostitelja
 ping_ewait=Manjkajoči ali neveljavni čakalni čas
 ping_econfig=V modulu Config ni nastavljen ukaz ping
+ping_timeout=Časovna omejitev po $1 sekundah
+ping_resolv=Ime gostitelja ni bilo mogoče razrešiti
 
 proc_pid=Teče s PID-ji $1 
 proc_cmd=Ukaz za preverjanje

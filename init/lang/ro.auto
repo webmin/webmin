@@ -223,6 +223,7 @@ systemd_egone=Serviciul nu mai există!
 systemd_elegacy=Nu este un serviciu de sistem!
 systemd_header=Detalii despre serviciul Systemd
 systemd_name=Numele serviciului
+systemd_file=Fișier de configurare
 systemd_desc=Descrierea serviciului
 systemd_start=Comenzi pentru a rula la pornire
 systemd_stop=Comenzi pentru a rula la oprire

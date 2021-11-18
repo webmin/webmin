@@ -1,6 +1,8 @@
 index_indexes=Index
 index_views=Vues
 
+backup_parameters=Ajouter des paramètres personnalisés à la commande de sauvegarde ?
+
 syslog_desc2=Message d'erreur MySQL
 
 mysqlpass_err=Mode sans échec MySQL

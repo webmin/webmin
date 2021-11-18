@@ -223,6 +223,7 @@ systemd_egone=Pakalpojums vairs nepastāv!
 systemd_elegacy=Nav sistemātisks pakalpojums!
 systemd_header=Sistēmas pakalpojuma informācija
 systemd_name=Pakalpojuma nosaukums
+systemd_file=Konfigurācijas fails
 systemd_desc=Pakalpojuma apraksts
 systemd_start=Komandas palaist startējot
 systemd_stop=Komandas, kas darbojas izslēgšanas gadījumā

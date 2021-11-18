@@ -117,6 +117,7 @@ systemd_egone=服务不再存在！
 systemd_elegacy=不是系统服务！
 systemd_header=系统服务详情
 systemd_name=服务名称
+systemd_file=配置文件
 systemd_desc=服务说明
 systemd_start=启动时运行的命令
 systemd_stop=在关机时运行的命令

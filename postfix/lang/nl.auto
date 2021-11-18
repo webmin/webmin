@@ -7,6 +7,7 @@ smtpd_map2=Beperkingen op afzenderadressen
 
 opts_smtp_use_tls=Gebruik TLS voor SMTP-verbindingen
 opts_smtp_sasl_security_options=SASL beveiligingsopties
+opts_smtp_tls_security_level=Beveiligingsniveau SMTP TLS-client
 
 mapping_toomany=Er zijn $1 kaartvermeldingen, die boven de weergavelimiet van $2 liggen.
 mapping_find=Overeenkomende toewijzingen weergeven:

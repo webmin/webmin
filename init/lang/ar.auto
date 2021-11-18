@@ -221,6 +221,7 @@ systemd_egone=الخدمة لم تعد موجودة!
 systemd_elegacy=ليست خدمة systemd!
 systemd_header=تفاصيل خدمة Systemd
 systemd_name=اسم الخدمة
+systemd_file=ملف الضبط
 systemd_desc=وصف الخدمة
 systemd_start=أوامر للتشغيل عند بدء التشغيل
 systemd_stop=أوامر للتشغيل عند إيقاف التشغيل

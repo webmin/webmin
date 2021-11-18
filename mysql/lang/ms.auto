@@ -621,6 +621,7 @@ backup_none=Semua baris
 backup_drop=Tambah <tt>drop table</tt> untuk membuat sandaran?
 backup_single=Backup dalam transaksi?
 backup_quick=Barisan buang satu demi satu?
+backup_parameters=Tambahkan parameter tersuai pada arahan sandaran?
 backup_charset=Watak ditetapkan untuk sandaran
 backup_ok=Backup Now
 backup_ok1=Simpan dan Cadangan Sekarang

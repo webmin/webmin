@@ -294,6 +294,7 @@ backup_path=Sökväg på servern
 backup_mkdir=Skapa destinationskatalog?
 backup_single=Säkerhetskopia inom en transaktion?
 backup_quick=Dumpa raderna åt gången?
+backup_parameters=Lägg till anpassade parametrar till backupkommandot?
 backup_charset=Teckenuppsättning för säkerhetskopiering
 backup_ok1=Spara och säkerhetskopiera nu
 backup_ok2=Spara

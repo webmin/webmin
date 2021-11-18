@@ -222,6 +222,8 @@ ping_wait=Erantzuna itxaroteko denbora
 ping_ehost=Ostalari-izen falta edo baliogabea
 ping_ewait=Itxarote denbora falta da edo baliogabea
 ping_econfig=Modulu konfigurazioan ez da ping komandoik ezarri
+ping_timeout=$1 segundo igaro ondoren
+ping_resolv=Ezin izan da ostalari-izena ebatzi
 
 proc_pid=PID $1 ekin exekutatzen
 proc_cmd=Egiaztatzeko komandoa

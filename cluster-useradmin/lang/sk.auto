@@ -34,10 +34,12 @@ host_name=Meno hosťa
 host_type=Typ servera
 host_delete=Odstrániť zo spravovaného zoznamu
 host_refresh=Obnovte používateľov a skupiny
+host_userscount=Počet používateľov
+host_groupscount=Počet skupín
+host_return=podrobnosti servera
 host_users=Počet používateľov
 host_groups=Počet skupín
 
-host_return=podrobnosti servera
 refresh_title=Obnovte používateľov a skupiny
 refresh_header=Opätovné vyžiadanie zoznamov používateľov a skupín zo všetkých serverov.
 refresh_header5=Opätovné vyžiadanie zoznamov používateľov a skupín od $2 ..

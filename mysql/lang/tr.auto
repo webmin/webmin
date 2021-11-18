@@ -225,6 +225,7 @@ backup_path=Sunucu yolu
 backup_mkdir=Hedef dizin oluşturulsun mu?
 backup_single=Bir işlem içinde yedekleme?
 backup_quick=Satırları birer birer dökümü?
+backup_parameters=Yedekleme komutuna özel parametreler eklensin mi?
 backup_charset=Yedekleme için karakter seti
 backup_echarset=Karakter kümesi eksik
 backup_ebefore=Yedekleme öncesi komutu başarısız oldu!

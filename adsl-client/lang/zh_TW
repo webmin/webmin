@@ -14,6 +14,7 @@ index_esetup=在您的系統上找不到 Redhat ADSL 組態檔 $1，不過，按
 index_setup=設定組態檔
 index_cancel=取消連線
 index_canceldesc=ADSL客戶端目前正在嘗試連線，按此按鈕以指令$1來取消。
+
 index_header=ADSL客戶端組態選項
 index_desc=下方設定是在您系統上用於啟用所有新的ADSL連線，如果您更改此處，連線必須停用和重新啟用，修改項目才會生效。
 index_eth=乙太網路介面
@@ -34,11 +35,13 @@ index_fw_standalone=用於單一主機
 index_fw_masquerade=用於NAT gateway
 index_connect=嘗試連線時間
 index_forever=持續
+
 start_err=啟用ADSL連線失敗
 start_title=啟用ADSL
 start_ip=ADSL已經以IP位置$1連線。
 start_demand=因為連線要求已啟用,您的ADSL連線只會在需要時起用。
 start_bg=ADSL連線在20未成功連線，ADSL客戶端會在背景持續嘗試連線直到成功為止。
+
 save_err=儲存ADSL組態檔失敗
 save_eeth=錯誤或無效的乙太網路介面
 save_etimeout=錯誤或無效的要求時間
@@ -47,10 +50,12 @@ save_econnect=錯誤或無效的連線逾時時間
 save_emss=錯誤或無效的最大封包大小
 save_title=儲存組態
 save_desc=ADSL客戶端組態已經成功儲存，不過此組態不會在下次重新連線前生效。
+
 stop_err=停用ADSL連線失敗
 stop_title=停用ADSL
 stop_ok=ADSL連線已成功停用
 stop_failed=ADSL連線因為某些理由持續連線!
+
 log_save=儲存客戶端組態
 log_stop=停用ADSL
 log_start=啟用ADSL

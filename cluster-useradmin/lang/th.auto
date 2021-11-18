@@ -34,10 +34,12 @@ host_name=ชื่อโฮสต์
 host_type=ประเภทเซิร์ฟเวอร์
 host_delete=ลบออกจากรายการที่จัดการ
 host_refresh=รีเฟรชผู้ใช้และกลุ่ม
+host_userscount=จำนวนผู้ใช้
+host_groupscount=จำนวนกลุ่ม
+host_return=รายละเอียดเซิร์ฟเวอร์
 host_users=จำนวนผู้ใช้
 host_groups=จำนวนกลุ่ม
 
-host_return=รายละเอียดเซิร์ฟเวอร์
 refresh_title=รีเฟรชผู้ใช้และกลุ่ม
 refresh_header=ขอรายชื่อผู้ใช้และกลุ่มจากเซิร์ฟเวอร์ทั้งหมดอีกครั้ง
 refresh_header5=ขอผู้ใช้และรายชื่อกลุ่มจาก $2 อีกครั้ง

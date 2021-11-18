@@ -34,10 +34,10 @@ host_name=Jméno hostitele
 host_type=Typ serveru
 host_delete=Odstranit z seznamu řízených
 host_refresh=Obnovit uživate a skupiny
+host_return=detaily serveru
 host_users=Počet uživatelů
 host_groups=Členem skupin
 
-host_return=detaily serveru
 refresh_title=Obnovit uživatele a skupiny
 refresh_header=Znovu žádám seznamy uživatelů a skupin od všech serverů ..
 refresh_header5=Znovu žádám seznamy uživatelů a skupin od $2 ..

@@ -34,10 +34,12 @@ host_name=Numele gazdei
 host_type=Tipul de server
 host_delete=Eliminați din lista gestionată
 host_refresh=Actualizați utilizatorii și grupurile
+host_userscount=număr de utilizatori
+host_groupscount=Numărul de grupuri
+host_return=detalii server
 host_users=număr de utilizatori
 host_groups=Număr de grupuri
 
-host_return=detalii server
 refresh_title=Actualizați utilizatorii și grupurile
 refresh_header=Se solicită din nou listele utilizatorilor și grupurilor de pe toate serverele ..
 refresh_header5=Se solicită din nou listele utilizatorilor și grupurilor de la $2.

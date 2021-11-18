@@ -138,6 +138,8 @@ http_ehead=Metoden HEAD-begäran kan inte användas när du söker efter ett reg
 
 ping_wait=Dags att vänta på svar
 ping_ewait=Saknad eller ogiltig väntetid
+ping_timeout=Timeout efter $1 sekunder
+ping_resolv=Det gick inte att lösa värdnamnet
 
 proc_not=Misslyckas om processen är
 proc_not0=Springer inte

@@ -621,6 +621,7 @@ backup_none=Svi redovi
 backup_drop=Dodati <tt>padajuću tablicu</tt> izjave u sigurnosne kopije?
 backup_single=Izrada sigurnosne kopije u transakciji?
 backup_quick=Izbaci redove jedan po jedan?
+backup_parameters=Dodati prilagođene parametre naredbi za sigurnosno kopiranje?
 backup_charset=Skup znakova za izradu sigurnosnih kopija
 backup_ok=Rezervno sada
 backup_ok1=Spremi i sigurnosno kopiraj sada

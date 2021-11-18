@@ -10,6 +10,8 @@ user_locked=Bloquejat
 
 tprivs_drusure=Esteu segur que voleu suprimir els permisos de la taula MySQL seleccionats $1 ?
 
+backup_parameters=Vols afegir paràmetres personalitzats a l'ordre de còpia de seguretat?
+
 cnf_table_open_cache=Taules per a la memòria cau
 
 syslog_desc2=Missatge d'error MySQL

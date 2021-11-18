@@ -34,10 +34,12 @@ host_name=Pagrindinio kompiuterio vardas
 host_type=Serverio tipas
 host_delete=Pašalinti iš valdomų sąrašų
 host_refresh=Atnaujinkite vartotojus ir grupes
+host_userscount=Vartotojų skaičius
+host_groupscount=Grupių skaičius
+host_return=serverio duomenys
 host_users=Vartotojų skaičius
 host_groups=Grupių skaičius
 
-host_return=serverio duomenys
 refresh_title=Atnaujinkite vartotojus ir grupes
 refresh_header=Iš visų serverių iš naujo pateikiamos vartotojų ir grupių sąrašų užklausos.
 refresh_header5=Iš naujo pateikite $2 vartotojų ir grupių sąrašų užklausą.

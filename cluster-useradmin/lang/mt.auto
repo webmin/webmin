@@ -34,10 +34,12 @@ host_name=L-isem tal-host
 host_type=Tip ta 'server
 host_delete=Neħħi mil-Lista Ġestita
 host_refresh=Actualizza l-Utenti u l-Gruppi
+host_userscount=Numru ta' utenti
+host_groupscount=Numru ta' gruppi
+host_return=dettalji tas-server
 host_users=Numru ta 'utenti
 host_groups=Numru ta 'gruppi
 
-host_return=dettalji tas-server
 refresh_title=Actualizza l-Utenti u l-Gruppi
 refresh_header=Li jerġgħu jitolbu listi tal-utenti u tal-gruppi mis-servers kollha ..
 refresh_header5=Li jerġgħu jitolbu listi tal-utenti u tal-gruppi minn $2 ..

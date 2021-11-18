@@ -55,6 +55,7 @@ acl_this=現在のWebminユーザー
 acl_only=ユーザーのみ
 acl_except=ユーザーを除くすべて
 acl_allow=許可されたAtユーザーを編集できますか？
+acl_stop=<tt>atd</tt>を停止および開始できますか？
 
 run_title=実行中のコマンド
 run_output=スケジュールされたコマンドからの出力 ..
@@ -79,3 +80,6 @@ log_bootdown=起動時にスケジュールされたコマンドサーバーを�
 
 stop_err=サーバーの停止に失敗しました
 start_err=サーバーの起動に失敗しました
+stop_ecannot=サーバーを停止することは許可されていません
+start_ecannot=サーバーを起動することは許可されていません
+bootup_ecannot=起動時にサーバーを有効にすることは許可されていません

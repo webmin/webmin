@@ -148,5 +148,3 @@ repos_enone=Nessuno selezionato
 repos_title=Elimina repository
 repos_rusure=Sei sicuro di voler eliminare i $1 repository dei pacchetti selezionati? I pacchetti installati da questi repository saranno ancora disponibili, ma potrebbero non essere aggiornabili.
 repos_ok=Elimina ora
-
-__norefs=1

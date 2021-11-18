@@ -13,6 +13,7 @@ index_ftp=По URL ftp чи http
 index_installok=Установити
 index_return=списку модулів
 index_pversion=Perl версії $1
+
 download_err=Не удалося установити модуль
 download_elocal=Не зазначений локальний файл
 download_elocal2='$1' не існує
@@ -40,6 +41,7 @@ download_envs=Перемінні оточення <tt>Makefile.PL</tt>
 download_name=Ім'я
 download_value=Значення
 download_emodname=Не зазначений модуль для установки
+
 install_title=Установка модуля
 install_untar=Розпакування файлу модуля
 install_make=Зборка модуля
@@ -54,11 +56,13 @@ install_err=При установці $1 відбулася помилка. Ви
 install_err2=Крім того, можна установити модель з CPAN командою $1
 install_exec=Виконання $1 ..
 install_efile=Файл модуля $1 більш не існує
+
 cpan_sel=Модулі в $1 ..
 cpan_title=Вибір модуля Perl
 cpan_search=Знайти модулі з назвою
 cpan_match=Модулі, що збігаються з $1 ..
 cpan_none=Збігів не виявлено.
+
 edit_title=Інформація про модуль
 edit_header=Інформація про модуль
 edit_mod=Назва модуля
@@ -70,6 +74,7 @@ edit_file=Файл модуля
 edit_none=Немає
 edit_return=інформації про модуль
 edit_uninstall=Видалити модель і підмодулі
+
 uninstall_title=Видалення модуля
 uninstall_rusure=Видалити модуль Perl $1 ? Будуть вилучені наступні файли :
 uninstall_rusure2=Видалити модуль Perl $1 і підмодулі $2 ?<br>Будуть вилучені наступні файли :

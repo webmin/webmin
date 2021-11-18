@@ -54,6 +54,9 @@ http_regexp=Strona musi pasować do wyrażenia regularnego
 http_eregexp=Nie wprowadzono wyrażenia regularnego dla pasującej strony
 http_ehead=Nie można użyć metody żądania HEAD podczas sprawdzania wyrażenia regularnego
 
+ping_timeout=Limit czasu po $1 sekundach
+ping_resolv=Nie udało się rozpoznać nazwy hosta
+
 proc_thresh=Liczba procesów, które muszą istnieć, aby monitor mógł uznać je za uruchomione
 proc_ethresh=Brakująca lub nieprawidłowa liczba procesów
 proc_easuser=Użytkownik dla procesu do uruchomienia, ponieważ nie istnieje

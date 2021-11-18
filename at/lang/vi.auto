@@ -55,6 +55,7 @@ acl_this=Người dùng Webmin hiện tại
 acl_only=Chỉ người dùng
 acl_except=Tất cả ngoại trừ người dùng
 acl_allow=Có thể chỉnh sửa cho phép Tại người dùng?
+acl_stop=Có thể dừng và bắt đầu <tt>atd</tt> không?
 
 run_title=Chạy lệnh
 run_output=Đầu ra từ lệnh theo lịch trình ..
@@ -79,3 +80,6 @@ log_bootdown=Đã tắt máy chủ lệnh đã lên lịch khi khởi động
 
 stop_err=Không dừng được máy chủ
 start_err=Không khởi động được máy chủ
+stop_ecannot=Bạn không được phép dừng máy chủ
+start_ecannot=Bạn không được phép khởi động máy chủ
+bootup_ecannot=Bạn không được phép bật máy chủ khi khởi động

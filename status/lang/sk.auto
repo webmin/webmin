@@ -77,6 +77,9 @@ http_eregexp=Nebol zadaný žiadny regulárny výraz pre stránku, ktorá by sa 
 http_none2=Nezhodujú sa
 http_ehead=Metódu žiadosti HEAD nemožno použiť pri kontrole regulárneho výrazu
 
+ping_timeout=Časový limit po $1 sekundách
+ping_resolv=Nepodarilo sa vyriešiť názov hostiteľa
+
 proc_asuser=Beží ako užívateľ
 proc_anyuser=Každý užívateľ
 proc_easuser=Používateľ, ktorý má proces spustiť, neexistuje

@@ -621,6 +621,7 @@ backup_none=Alle rye
 backup_drop=Voeg <tt>drop Table</tt> stellings by die rugsteun?
 backup_single=Rugsteun binne 'n transaksie?
 backup_quick=Rye afval een vir een?
+backup_parameters=Voeg pasgemaakte parameters by rugsteunopdrag?
 backup_charset=Karakterset vir rugsteun
 backup_ok=Maak nou 'n rugsteun
 backup_ok1=Stoor en rugsteun nou

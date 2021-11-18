@@ -315,6 +315,7 @@ opts_smtp_data_done_timeout=It-timeout meta tistenna risposta biex jintemm "."
 opts_smtp_quit_timeout=It-timeout meta tistenna tweġiba għal Nieqaf
 opts_smtp_use_tls=Uża TLS għal konnessjonijiet SMTP
 opts_smtp_sasl_security_options=Għażliet ta 'sigurtà SASL
+opts_smtp_tls_security_level=Livell ta' sigurtà tal-klijent SMTP TLS
 
 rate_title=Rati ta 'kunsinna
 rate_ecannot=M'għandekx permess tibdel l-għażliet tar-rati tal-kunsinna

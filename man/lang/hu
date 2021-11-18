@@ -4,6 +4,7 @@ index_for=Keresendő szöveg
 index_reset=Törlés
 index_search=Keresés
 index_return=a kereséshez
+
 search_efor=Nem adtad, hogy mit kell keresni
 search_title=A keresés eredménye
 search_desc=Egysoros magyarázat

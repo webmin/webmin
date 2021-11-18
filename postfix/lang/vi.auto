@@ -315,6 +315,7 @@ opts_smtp_data_done_timeout=Hết thời gian chờ đợi câu trả lời kế
 opts_smtp_quit_timeout=Hết thời gian chờ đợi câu trả lời cho QUIT
 opts_smtp_use_tls=Sử dụng TLS cho các kết nối SMTP
 opts_smtp_sasl_security_options=Tùy chọn bảo mật SASL
+opts_smtp_tls_security_level=Mức độ bảo mật của máy khách SMTP TLS
 
 rate_title=Giá giao hàng
 rate_ecannot=Bạn không được phép chỉnh sửa các tùy chọn giá giao hàng

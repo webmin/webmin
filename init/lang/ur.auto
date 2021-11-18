@@ -223,6 +223,7 @@ systemd_egone=اب سروس موجود نہیں ہے!
 systemd_elegacy=سسٹم سروس نہیں!
 systemd_header=سسٹم سروس کی تفصیلات
 systemd_name=سروس کا نام
+systemd_file=کنفیگریشن فائل
 systemd_desc=خدمت کی تفصیل
 systemd_start=آغاز پر چلانے کے احکامات
 systemd_stop=شٹ ڈاؤن پر چلانے کے احکامات

@@ -11,6 +11,8 @@ index_bootdesc=Promijenite ovu postavku da biste omogućili ili onemogućili pok
 edit_shortcmd=Naredba za izvršenje
 edit_showfull=Prikaži cijelu skriptu.
 
+acl_stop=Može li se zaustaviti i pokrenuti <tt>atd</tt>?
+
 log_allow=Promijenjeni dopušteni korisnici
 log_create_job=Napravljena je zakazana naredba za $1 
 log_delete_job=Otkazana zakazana naredba za $1 
@@ -23,3 +25,6 @@ log_bootdown=Onemogućen poslužitelj zakazanih naredbi prilikom pokretanja
 
 stop_err=Zaustavljanje poslužitelja nije uspjelo
 start_err=Pokretanje poslužitelja nije uspjelo
+stop_ecannot=Nije vam dopušteno zaustaviti poslužitelj
+start_ecannot=Nije vam dopušteno pokrenuti poslužitelj
+bootup_ecannot=Nije vam dopušteno omogućiti poslužitelj pri pokretanju

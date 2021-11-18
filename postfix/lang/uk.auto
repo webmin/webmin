@@ -124,6 +124,7 @@ smtpd_map2=Обмеження щодо адрес відправника
 
 opts_smtp_use_tls=Використовуйте TLS для з'єднань SMTP
 opts_smtp_sasl_security_options=Параметри безпеки SASL
+opts_smtp_tls_security_level=Рівень безпеки клієнта SMTP TLS
 
 opts_edebug=Відсутній або недійсний рівень вхідного журналу - повинен бути числом більше нуля
 

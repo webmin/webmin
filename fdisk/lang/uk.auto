@@ -27,6 +27,7 @@ select_ppart=Обіцяйте диск RAID $1 розділ $2
 select_nvme=NVME SSD $1 привід $2 
 select_nvmepart=NVME SSD $1 диск $2 розділ $3 
 
+edit_of=з
 edit_mountiscsi=iSCSI спільний пристрій $1 
 edit_name=Назва розділу
 edit_volid=Ідентифікатор тома
