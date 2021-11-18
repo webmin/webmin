@@ -519,7 +519,6 @@ value_dmarcadkim=Exiger un alignement DKIM strict
 value_dmarcnor=N'envoyez pas
 value_CAA1=Exiger l'application?
 value_CAA2=Type d'autorisation
-value_CAA3=Nom de domaine CA
 value_caa_issue=CERT de domaine unique
 value_caa_issuewild=Certificat générique
 value_caa_iodef=URL de violation des règles

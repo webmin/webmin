@@ -3,3 +3,4 @@ value_dmarcfo0=Rapporter om DKIM og SPF mislyktes
 value_dmarcfo1=Rapporter om enten DKIM eller SPF mislyktes
 value_dmarcfod=Rapporter om signaturevaluering mislyktes
 value_dmarcfos=Rapporter om SPF-evaluering mislyktes
+value_CAA0=Krever håndheving?
