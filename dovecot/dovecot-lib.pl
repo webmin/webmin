@@ -352,6 +352,7 @@ splice(@$lref, $section->{'line'}, 0, @newlines);
 &renumber($conf, $section->{'eline'}, $section->{'file'},
 	  scalar(@newlines)-$oldlen);
 $section->{'eline'} = $section->{'line'} + scalar(@newlines) - 1;
+$section->{'file'} = $file;
 my $i = 1;
 foreach my $m (@{$section->{'members'}}) {
 	$m->{'line'} = $m->{'eline'} = $section->{'line'} + $i++;
