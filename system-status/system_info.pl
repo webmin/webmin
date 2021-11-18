@@ -107,8 +107,19 @@ if ($info->{'cputemps'} && &show_section('temp')) {
 			     &convert_temp_units($t->{'temp'}));
 		}
 	push(@table, { 'desc' => $text{'right_cputemps'},
-		       'value' => join(" ", @temps),
-		       'wide' => 1 });
+	               'value' => join("&nbsp;&nbsp;", @temps),
+	               'wide' => 1 });
+	if ($info->{'cpufans'}) {
+		my @fans;
+		foreach my $f (@{$info->{'cpufans'}}) {
+			my $fan_id = $f->{'fan'} ? " $f->{'fan'}" : "";
+			push(@fans, ($text{'right_cpufans_fan'}.$fan_id).": ".
+			            $f->{'rpm'}." $text{'right_cpufans_rpm'}");
+			}
+		push(@table, { 'desc' => $text{'right_cpufans'},
+		               'value' => join("&nbsp;&nbsp;", @fans),
+		               'wide' => 1 });
+		}
 	}
 if ($info->{'drivetemps'} && &show_section('temp')) {
 	my @temps;
