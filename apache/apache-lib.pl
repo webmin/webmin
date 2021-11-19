@@ -2173,6 +2173,7 @@ if ($conf_block_opening == $conf_block_closing) {
     my $conf_virthost;
     my @confs_separate =
            (
+           	'Protocols',
            	'SuexecUserGroup',
            	'ServerName',
            	'ScriptAlias',
