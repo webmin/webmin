@@ -223,6 +223,7 @@ systemd_egone=Dịch vụ không còn tồn tại!
 systemd_elegacy=Không phải là một dịch vụ systemd!
 systemd_header=Chi tiết dịch vụ Systemd
 systemd_name=Tên dịch vụ
+systemd_file=Tập tin cấu hình
 systemd_desc=Dịch vụ Mô tả
 systemd_start=Các lệnh để chạy khi khởi động
 systemd_stop=Các lệnh để chạy khi tắt máy

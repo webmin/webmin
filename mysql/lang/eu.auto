@@ -621,6 +621,7 @@ backup_none=Ilara guztiak
 backup_drop=Gehitu <tt>beheko taula</tt> adierazpenak babes kopian?
 backup_single=Babeskopiak transakzio baten barruan?
 backup_quick=Errenkadak bota aldi berean?
+backup_parameters=Parametro pertsonalizatuak gehitu nahi dituzu babeskopia komandoari?
 backup_charset=Babes kopiarako ezaugarriak
 backup_ok=Backup Orain
 backup_ok1=Gorde eta babeskopia egin orain

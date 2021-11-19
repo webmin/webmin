@@ -146,6 +146,7 @@ systemd_egone=Tjänsten finns inte längre!
 systemd_elegacy=Inte en systemdjänst!
 systemd_header=Systemd servicedetaljer
 systemd_name=Service namn
+systemd_file=Konfigurationsfil
 systemd_desc=Service beskrivning
 systemd_start=Kommandon som ska köras vid start
 systemd_stop=Kommandon att köra vid avstängning

@@ -55,6 +55,7 @@ acl_this=Utilizator curent Webmin
 acl_only=Numai utilizatorii
 acl_except=Toate cu excepția utilizatorilor
 acl_allow=Se poate edita permisul la utilizatori?
+acl_stop=Se poate opri și porni <tt>atd</tt>?
 
 run_title=Executarea comenzii
 run_output=Ieșire din comanda programată ..
@@ -79,3 +80,6 @@ log_bootdown=Server de comenzi programate dezactivate la pornire
 
 stop_err=Nu s-a putut opri serverul
 start_err=Nu a putut porni serverul
+stop_ecannot=Nu aveți voie să opriți serverul
+start_ecannot=Nu aveți voie să porniți serverul
+bootup_ecannot=Nu aveți voie să activați serverul la pornire

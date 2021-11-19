@@ -34,10 +34,10 @@ host_name=Vertsnavn
 host_type=Tjenertype
 host_delete=Fjern fra administrert liste
 host_refresh=Oppfrisk Brukere og grupper
+host_return=tjenerdetaljer
 host_users=Antall brukere
 host_groups=Antall grupper
 
-host_return=tjenerdetaljer
 refresh_title=Oppfrisk brukere og grupper
 refresh_header=Spør på nytt om bruker og gruppelister fra alle tjenere ..
 refresh_header5=Spør på nytt om bruker og gruppelister fra $2 ..

@@ -223,6 +223,7 @@ systemd_egone=Service findes ikke længere!
 systemd_elegacy=Ikke en systemd service!
 systemd_header=Systemd serviceoplysninger
 systemd_name=Servicenavn
+systemd_file=Konfigurationsfil
 systemd_desc=Servicebeskrivelse
 systemd_start=Kommandoer, der skal køres ved opstart
 systemd_stop=Kommandoer, der skal køres ved nedlukning

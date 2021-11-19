@@ -1,3 +1,5 @@
+opts_smtp_tls_security_level=SMTP TLS ниво на сигурност на клиента
+
 mapping_toomany=Има $1 записи на картата, което е над ограничението за показване на $2.
 mapping_find=Показване на съвпадения:
 mapping_search=Търсене

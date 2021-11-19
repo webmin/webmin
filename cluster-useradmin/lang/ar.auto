@@ -34,10 +34,12 @@ host_name=اسم المضيف
 host_type=نوع الخادم
 host_delete=إزالة من القائمة المدارة
 host_refresh=قم بتحديث المستخدمين والمجموعات
+host_userscount=عدد المستخدمين
+host_groupscount=عدد المجموعات
+host_return=تفاصيل الخادم
 host_users=عدد المستخدمين
 host_groups=عدد المجموعات
 
-host_return=تفاصيل الخادم
 refresh_title=قم بتحديث المستخدمين والمجموعات
 refresh_header=إعادة طلب قوائم المستخدمين والمجموعات من كافة الخوادم ..
 refresh_header5=جاري إعادة طلب قوائم المستخدمين والمجموعات من$2 ..

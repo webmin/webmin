@@ -55,6 +55,7 @@ acl_this=משתמש נוכחי Webmin
 acl_only=רק משתמשים
 acl_except=כולם למעט משתמשים
 acl_allow=האם ניתן לערוך מותר למשתמשים?
+acl_stop=האם ניתן לעצור ולהתחיל את <tt>atd</tt>?
 
 run_title=הפיקוד
 run_output=פלט מפקודה מתוזמנת ..
@@ -79,3 +80,6 @@ log_bootdown=הושבת שרת פקודות מתוזמן בעת האתחול
 
 stop_err=עצירת השרת נכשלה
 start_err=הפעלת השרת נכשלה
+stop_ecannot=אסור לך לעצור את השרת
+start_ecannot=אינך רשאי להפעיל את השרת
+bootup_ecannot=אינך רשאי להפעיל את השרת בעת האתחול

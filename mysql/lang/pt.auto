@@ -621,6 +621,7 @@ backup_none=Todas as linhas
 backup_drop=Adicionar instruções <tt>drop table</tt> ao backup?
 backup_single=Backup dentro de uma transação?
 backup_quick=Despejar linhas uma de cada vez?
+backup_parameters=Adicionar parâmetros personalizados ao comando de backup?
 backup_charset=Conjunto de caracteres para backup
 backup_ok=Faça backup agora
 backup_ok1=Salvar e fazer backup agora

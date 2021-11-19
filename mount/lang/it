@@ -8,6 +8,7 @@ index_add=Aggiungi mount
 index_auto=Tipo sconosciuto
 index_swap=Memoria virtuale
 index_return=lista filesystems
+
 edit_title=Modifica mount
 create_title=Crea Mount
 edit_err=Errore modificando il mount
@@ -38,6 +39,7 @@ edit_perm=Rendi permanente
 edit_del_umount=Smonta e cancella
 edit_ecannot=Non sei autorizzato a modificare questo filesystem
 edit_ecannot2=Non sei autorizzato ad aggiungere nuovi filesystems
+
 save_err=Errore salvando il mount
 save_edir='$1' non è una directory
 save_edirname='$1' non è un nome di directory valido
@@ -52,8 +54,10 @@ save_perm=I cambiamenti al mount su $1 non possono essere applicati, in quanto i
 save_apply=Applica alla lista permanente
 save_eremount=Rimontaggio fallito : $1
 save_enone=Non hai scelto di salvare o montare
+
 swap_err=Errore creando il file di swap
 swap_esize='$1' non è una misura valida
+
 nfs_server=Choose NFS Server..
 nfs_select=Select an NFS server to mount from..
 nfs_ip=IP Address
@@ -64,6 +68,7 @@ nfs_failed=Failed to retrieve NFS exports from $1 : $2 Maybe there is no NFS ser
 nfs_seldir=Select an NFS directory to mount..
 nfs_dir=Directory
 nfs_clients=Clients
+
 smb_choose=Choose SMB Server..
 smb_elist=Failed to retrieve server list from $1. Maybe the server does not allow browsing
 smb_ehost=The server $1 does not exist
@@ -78,6 +83,7 @@ smb_sel2=Select a share to mount..
 smb_share=Share
 smb_comment=Comment
 smb_noshares=There are no available file shares on the server $1
+
 solaris_scsidev=SCSI controller $1 target $2 unit $3 partition $4
 solaris_mddev=RAID device $1
 solaris_ecacheexists=The directory $1 already exists. Delete it.
@@ -209,6 +215,7 @@ solaris_efstyp2=Failed to check filesystem type : $1
 solaris_ecachedir='$1' is not a valid cache directory
 solaris_efmode='$1' is not a valid octal file mode
 solaris_edmode='$1' is not a valid octal directory mode
+
 linux_eamd=AMD fllito
 linux_eauto=Auto montaggio fallito : $1
 linux_esmbconn=Errore nella connessione al server
@@ -319,6 +326,7 @@ linux_noenforce=Si, ma non forzare
 linux_df=Includi blocchi riservati nella grandezza del filesystem?
 linux_ecname=Nome netbios del cliente invalido o mancante
 linux_emname=Nome server o IP invalido o mancante
+
 log_mount=Mounted $3
 log_mount_l=Mounted $2 $1 on $3
 log_umount=Unmounted $3
@@ -331,5 +339,6 @@ log_modify=Modified mount $3
 log_modify_l=Modified $2 mount $1 on $3
 log_delete=Deleted mount $3
 log_delete_l=Deleted $2 mount $1 on $3
+
 unmount_err=Errore smontando $1
 mount_err=Errore montando $1

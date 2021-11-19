@@ -34,10 +34,12 @@ host_name=שם מארח
 host_type=סוג השרת
 host_delete=הסר מהרשימה המנוהלת
 host_refresh=רענן משתמשים וקבוצות
+host_userscount=מספר משתמשים
+host_groupscount=מספר קבוצות
+host_return=פרטי שרת
 host_users=מספר משתמשים
 host_groups=מספר הקבוצות
 
-host_return=פרטי שרת
 refresh_title=רענן משתמשים וקבוצות
 refresh_header=מבקש מחדש רשימות משתמשים וקבוצות מכל השרתים ..
 refresh_header5=מבקש מחדש רשימות משתמשים וקבוצות מ- $2.

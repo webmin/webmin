@@ -34,10 +34,12 @@ host_name=Ime gostitelja
 host_type=Vrsta strežnika
 host_delete=Odstrani z upravljanega seznama
 host_refresh=Osvežite uporabnike in skupine
+host_userscount=Število uporabnikov
+host_groupscount=Število skupin
+host_return=podrobnosti o strežniku
 host_users=Število uporabnikov
 host_groups=Število skupin
 
-host_return=podrobnosti o strežniku
 refresh_title=Osvežite uporabnike in skupine
 refresh_header=Ponovna zahteva za sezname uporabnikov in skupin z vseh strežnikov ..
 refresh_header5=Ponovna zahteva za sezname uporabnikov in skupin od $2 ..

@@ -55,6 +55,7 @@ acl_this=Trenutni uporabnik Webmin-a
 acl_only=Samo uporabniki
 acl_except=Vsi razen uporabnikov
 acl_allow=Ali je dovoljeno urejanje pri uporabnikih?
+acl_stop=Ali se lahko ustavi in začne <tt>atd</tt>?
 
 run_title=Teče ukaz
 run_output=Izhod iz načrtovanega ukaza ..
@@ -79,3 +80,6 @@ log_bootdown=Onemogočen strežnik načrtovanih ukazov ob zagonu
 
 stop_err=Strežnika ni bilo mogoče ustaviti
 start_err=Strežnika ni bilo mogoče zagnati
+stop_ecannot=Strežnika ni dovoljeno ustaviti
+start_ecannot=Ni vam dovoljeno zagnati strežnika
+bootup_ecannot=Strežnika ne smete omogočiti ob zagonu

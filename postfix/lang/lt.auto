@@ -315,6 +315,7 @@ opts_smtp_data_done_timeout=Laikas, per kurį laukiama atsakymo pabaigos.
 opts_smtp_quit_timeout=Laikas, per kurį laukiama atsakymo į QUIT
 opts_smtp_use_tls=SMTP ryšiams naudokite TLS
 opts_smtp_sasl_security_options=SASL saugos galimybės
+opts_smtp_tls_security_level=SMTP TLS kliento saugos lygis
 
 rate_title=Pristatymo kainos
 rate_ecannot=Jums neleidžiama redaguoti pristatymo kainų parinkčių

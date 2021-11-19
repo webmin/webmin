@@ -8,6 +8,8 @@ index_startdesc=Spusťte proces serveru na pozadí <tt>atd</tt>, který spoušt�
 index_boot=Spustit server při spuštění?
 index_bootdesc=Toto nastavení změňte, abyste povolili nebo zakázali spouštění serveru naplánovaných příkazů v době spuštění systému.
 
+acl_stop=Lze zastavit a spustit <tt>atd</tt>?
+
 log_allow=Změnili povolení uživatelé
 log_create_job=Byl vytvořen naplánovaný příkaz pro $1 
 log_delete_job=Zrušený naplánovaný příkaz pro $1 
@@ -20,3 +22,6 @@ log_bootdown=Zakázáno server naplánovaných příkazů při spuštění
 
 stop_err=Server se nepodařilo zastavit
 start_err=Server se nepodařilo spustit
+stop_ecannot=Nemáte povoleno zastavit server
+start_ecannot=Nemáte povoleno spustit server
+bootup_ecannot=Nemáte povoleno povolit server při spouštění

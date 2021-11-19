@@ -223,6 +223,7 @@ systemd_egone=Diens bestaan nie meer nie!
 systemd_elegacy=Nie 'n stelseldiens nie!
 systemd_header=Systemd diensbesonderhede
 systemd_name=Diensnaam
+systemd_file=Konfigurasie lêer
 systemd_desc=Diensbeskrywing
 systemd_start=Opdragte om tydens opstart uit te voer
 systemd_stop=Opdragte om af te skakel

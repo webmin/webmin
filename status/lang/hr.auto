@@ -222,6 +222,8 @@ ping_wait=Vrijeme je za pričekati odgovor
 ping_ehost=Nedostaje ili nevaljano ime računala
 ping_ewait=Nedostaje ili nije valjano vrijeme čekanja
 ping_econfig=U modulu Config nije postavljena naredba ping
+ping_timeout=Isteklo je nakon $1 sekundi
+ping_resolv=Nije uspjelo riješiti ime hosta
 
 proc_pid=Trčanje s PID-ovima $1 
 proc_cmd=Naredba za provjeru

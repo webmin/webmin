@@ -222,6 +222,8 @@ ping_wait=Tid til at vente på svar
 ping_ehost=Manglende eller ugyldigt værtsnavn
 ping_ewait=Manglende eller ugyldig ventetid
 ping_econfig=Der er ikke indstillet nogen ping-kommando i Module Config
+ping_timeout=Timeout efter $1 sekunder
+ping_resolv=Det lykkedes ikke at løse værtsnavnet
 
 proc_pid=Kører med PIDs $1 
 proc_cmd=Kommando at kontrollere for

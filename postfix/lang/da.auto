@@ -315,6 +315,7 @@ opts_smtp_data_done_timeout=Timeout for at vente på svar til slutning "."
 opts_smtp_quit_timeout=Timeout for at vente på svar på QUIT
 opts_smtp_use_tls=Brug TLS til SMTP-forbindelser
 opts_smtp_sasl_security_options=SASL sikkerhedsindstillinger
+opts_smtp_tls_security_level=SMTP TLS klient sikkerhedsniveau
 
 rate_title=Leveringspriser
 rate_ecannot=Du har ikke tilladelse til at redigere indstillingerne for leveringspriser

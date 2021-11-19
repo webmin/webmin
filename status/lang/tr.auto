@@ -76,6 +76,9 @@ http_eregexp=Sayfanın eşleşmesi için normal ifade girilmedi
 http_none2=Eşleşmiyor
 http_ehead=HEAD istek yöntemi, normal bir ifade kontrol edilirken kullanılamaz
 
+ping_timeout=$1 saniye sonra zaman aşımı
+ping_resolv=Sunucu adı çözümlenemedi
+
 proc_asuser=Kullanıcı olarak çalışıyor
 proc_anyuser=Herhangi bir kullanıcı
 proc_easuser=İşlemin gerçekleştirileceği kullanıcı yok

@@ -2,6 +2,9 @@ mon_virtualmin=Warnung! Dieser Monitor ist der Virtualmin-Domäne $1 zugeordnet 
 
 sched_warn3=Solange der Service läuft
 
+ping_timeout=Zeitüberschreitung nach $1 Sekunden
+ping_resolv=Hostname konnte nicht aufgelöst werden
+
 monitor_sub_isup=$1 auf $2 
 monitor_pager_isup=$1 : "$2" ist um $3 gestiegen
 monitor_snmp_isup=$1:$2 

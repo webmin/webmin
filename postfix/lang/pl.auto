@@ -85,6 +85,7 @@ smtpd_map2=Ograniczenia adresów nadawców
 
 opts_smtp_use_tls=Użyj TLS do połączeń SMTP
 opts_smtp_sasl_security_options=Opcje bezpieczeństwa SASL
+opts_smtp_tls_security_level=Poziom bezpieczeństwa klienta SMTP TLS
 
 opts_edebug=Brakujący lub nieprawidłowy poziom rejestrowania pełnego - musi być liczbą większą od zera
 

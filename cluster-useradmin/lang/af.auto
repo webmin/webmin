@@ -34,10 +34,12 @@ host_name=Gasheernaam
 host_type=Bedienertipe
 host_delete=Verwyder van die bestuurde lys
 host_refresh=Verfris gebruikers en groepe
+host_userscount=Aantal gebruikers
+host_groupscount=Aantal groepe
+host_return=bediener besonderhede
 host_users=Aantal gebruikers
 host_groups=Aantal groepe
 
-host_return=bediener besonderhede
 refresh_title=Verfris gebruikers en groepe
 refresh_header=Versoek gebruikers- en groeplyste van alle bedieners weer.
 refresh_header5=Versoek gebruikers- en groeplyste weer van $2. af.

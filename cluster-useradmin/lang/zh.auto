@@ -34,10 +34,12 @@ host_name=主机名
 host_type=服务器类型
 host_delete=从托管列表中删除
 host_refresh=刷新用户和组
+host_userscount=用户数
+host_groupscount=组数
+host_return=服务器详细信息
 host_users=用户数
 host_groups=组数
 
-host_return=服务器详细信息
 refresh_title=刷新用户和组
 refresh_header=从所有服务器重新请求用户和组列表。
 refresh_header5=从 $2..重新请求用户和组列表

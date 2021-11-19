@@ -1,5 +1,7 @@
 opts_delay_warning_time_default2=Per defecte del correfoc
 
+opts_smtp_tls_security_level=Nivell de seguretat del client SMTP TLS
+
 mapping_toomany=Hi ha $1 entrades de mapa, que es troba per sobre del límit de visualització de $2.
 mapping_find=Mostra els mapatges que coincideixen:
 mapping_search=Cerca

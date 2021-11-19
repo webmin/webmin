@@ -222,6 +222,8 @@ ping_wait=حان وقت انتظار الرد
 ping_ehost=اسم مضيف مفقود أو غير صالح
 ping_ewait=وقت الانتظار مفقود أو غير صالح
 ping_econfig=لم يتم تعيين أمر ping في تكوين الوحدة النمطية
+ping_timeout=المهلة بعد$1 ثانية
+ping_resolv=فشل حل اسم المضيف
 
 proc_pid=يعمل مع PIDs$1
 proc_cmd=الأمر للتحقق من

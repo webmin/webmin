@@ -60,6 +60,9 @@ http_eregexp=No se ingresó ninguna expresión regular para que la página coinc
 http_none2=No coinciden
 http_ehead=El método de solicitud HEAD no se puede usar al verificar una expresión regular
 
+ping_timeout=Tiempo de espera después de $1 segundos
+ping_resolv=No se pudo resolver el nombre de host
+
 proc_asuser=Ejecutando como usuario
 proc_anyuser=Cualquier usuario
 proc_easuser=Usuario para que el proceso se ejecute ya que no existe

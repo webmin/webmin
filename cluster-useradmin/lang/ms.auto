@@ -34,10 +34,12 @@ host_name=Nama hos
 host_type=Jenis pelayan
 host_delete=Keluarkan Daripada Senarai Terurus
 host_refresh=Muat semula Pengguna dan Kumpulan
+host_userscount=Bilangan pengguna
+host_groupscount=Bilangan kumpulan
+host_return=butiran pelayan
 host_users=Bilangan pengguna
 host_groups=Bilangan kumpulan
 
-host_return=butiran pelayan
 refresh_title=Muat semula Pengguna dan Kumpulan
 refresh_header=Minta permintaan pengguna dan senarai kumpulan dari semua pelayan ..
 refresh_header5=Minta semula pengguna dan senarai kumpulan dari $2 ..

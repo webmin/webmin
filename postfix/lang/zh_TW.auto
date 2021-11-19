@@ -124,6 +124,7 @@ smtpd_map2=發件人地址限制
 
 opts_smtp_use_tls=使用TLS進行SMTP連接
 opts_smtp_sasl_security_options=SASL安全選項
+opts_smtp_tls_security_level=SMTP TLS 客戶端安全級別
 
 opts_edebug=詳細記錄級別缺失或無效-必須是大於零的數字
 

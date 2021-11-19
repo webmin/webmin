@@ -12,6 +12,8 @@ index_bootdesc=Cambie esta configuración para habilitar o deshabilitar el inici
 edit_shortcmd=Comando para ejecutar
 edit_showfull=Mostrar guión completo.
 
+acl_stop=¿Puede detener e iniciar <tt>atd</tt>?
+
 deletes_err=Error al cancelar comandos
 deletes_enone=Ninguna seleccionada
 
@@ -27,3 +29,6 @@ log_bootdown=Servidor de comandos programados deshabilitado en el arranque
 
 stop_err=No se pudo detener el servidor
 start_err=No se pudo iniciar el servidor
+stop_ecannot=No tiene permitido detener el servidor
+start_ecannot=No se le permite iniciar el servidor
+bootup_ecannot=No se le permite habilitar el servidor en el arranque

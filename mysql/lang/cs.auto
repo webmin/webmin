@@ -125,6 +125,7 @@ backup_download=Stáhnout v prohlížeči
 backup_path=Cesta na serveru
 backup_single=Zálohování v rámci transakce?
 backup_quick=Vypsat řádky po jednom?
+backup_parameters=Přidat vlastní parametry do příkazu zálohování?
 backup_eisdir=Cíl zálohy $1 je adresář
 backup_email=Pošlete e-mail se stavem zálohy na adresu
 backup_notify=Odeslat e-mail pro

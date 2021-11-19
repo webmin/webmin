@@ -150,6 +150,7 @@ backup_download=Scarica nel browser
 backup_path=Percorso sul server
 backup_single=Backup all'interno di una transazione?
 backup_quick=Scaricare le file una alla volta?
+backup_parameters=Aggiungi parametri personalizzati al comando di backup?
 backup_eisdir=La destinazione di backup $1 è una directory
 backup_gzip=gzip
 backup_bzip2=bzip2

@@ -170,6 +170,7 @@ systemd_egone=Il servizio non esiste più!
 systemd_elegacy=Non un servizio systemd!
 systemd_header=Dettagli del servizio Systemd
 systemd_name=Nome di Servizio
+systemd_file=File di configurazione
 systemd_desc=Descrizione del servizio
 systemd_start=Comandi da eseguire all'avvio
 systemd_stop=Comandi da eseguire allo spegnimento

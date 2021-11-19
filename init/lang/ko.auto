@@ -65,6 +65,7 @@ systemd_egone=더 이상 서비스가 존재하지 않습니다!
 systemd_elegacy=체계적인 서비스가 아닙니다!
 systemd_header=체계적인 서비스 세부 사항
 systemd_name=서비스 이름
+systemd_file=구성 파일
 systemd_desc=서비스 설명
 systemd_start=시작시 실행할 명령
 systemd_stop=종료시 실행할 명령

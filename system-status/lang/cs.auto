@@ -1,3 +1,6 @@
+right_cpufans=ventilátory CPU
+right_cpufans_fan=Chladič
+right_cpufans_rpm=RPM
 right_used3=Použité $2, $3 v mezipaměti, $1 celkem
 right_fsfull=Varování! Souborový systém $2 připojený na $1 nemá volné místo na disku!
 right_fsnearly=Varování! Souborový systém $2 připojený na $1 má pouze $3 volného místa na disku

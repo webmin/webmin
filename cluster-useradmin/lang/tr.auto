@@ -34,10 +34,12 @@ host_name=Ana bilgisayar adı
 host_type=Sunucu tipi
 host_delete=Yönetilenler Listesinden Kaldır
 host_refresh=Kullanıcıları ve Grupları Yenile
+host_userscount=kullanıcı sayısı
+host_groupscount=Grup sayısı
+host_return=sunucu ayrıntıları
 host_users=kullanıcı sayısı
 host_groups=Grup sayısı
 
-host_return=sunucu ayrıntıları
 refresh_title=Kullanıcıları ve Grupları Yenile
 refresh_header=Tüm sunuculardan kullanıcı ve grup listelerini yeniden isteme ..
 refresh_header5=$2 'den kullanıcı ve grup listelerini yeniden isteme ..

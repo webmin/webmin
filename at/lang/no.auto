@@ -1,0 +1,5 @@
+acl_stop=Kan stoppe og starte <tt>atd</tt>?
+
+stop_ecannot=Du har ikke lov til å stoppe serveren
+start_ecannot=Du har ikke lov til å starte serveren
+bootup_ecannot=Du har ikke lov til å aktivere serveren ved oppstart

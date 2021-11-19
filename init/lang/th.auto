@@ -223,6 +223,7 @@ systemd_egone=ไม่มีบริการอีกต่อไป!
 systemd_elegacy=ไม่ใช่บริการ systemd!
 systemd_header=รายละเอียดบริการ systemd
 systemd_name=ชื่อบริการ
+systemd_file=ไฟล์กำหนดค่า
 systemd_desc=รายละเอียดการบริการ
 systemd_start=คำสั่งให้ทำงานเมื่อเริ่มต้น
 systemd_stop=คำสั่งให้ทำงานเมื่อปิดเครื่อง

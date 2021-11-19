@@ -9,6 +9,7 @@ smtpd_map2=A feladó címeire vonatkozó korlátozások
 
 opts_smtp_use_tls=Használja a TLS-t az SMTP-kapcsolatokhoz
 opts_smtp_sasl_security_options=SASL biztonsági lehetőségek
+opts_smtp_tls_security_level=SMTP TLS kliens biztonsági szint
 
 mapping_toomany=Vannak $1 térképbejegyzések, ami meghaladja a $2 megjelenítési korlátot.
 mapping_find=Megfelelő leképezések megjelenítése:

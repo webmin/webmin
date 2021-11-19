@@ -222,6 +222,8 @@ ping_wait=Laiks gaidīt atbildi
 ping_ehost=Trūkst vai nav derīgs resursdatora nosaukums
 ping_ewait=Trūkst vai nav derīgs gaidīšanas laiks
 ping_econfig=Modulī Config nav iestatīta ping komanda
+ping_timeout=Taimauts pēc $1 sekundes
+ping_resolv=Neizdevās noteikt saimniekdatora nosaukumu
 
 proc_pid=Darbojas ar PID $1 
 proc_cmd=Komanda pārbaudīt

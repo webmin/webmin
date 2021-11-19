@@ -1,4 +1,5 @@
 net_lmtp=LMTP
+net_ssl_required=只接受 SSL
 
 ssl_ca=SSL客戶端CA證書文件
 ssl_pass=密鑰文件密碼

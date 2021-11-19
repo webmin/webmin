@@ -6,6 +6,8 @@ view_go=Gehen
 
 user_locked=Gesperrt
 
+backup_parameters=Benutzerdefinierte Parameter zum Sicherungsbefehl hinzufügen?
+
 cnf_table_open_cache=Tabellen zum Zwischenspeichern
 
 syslog_desc2=MySQL-Fehlermeldung

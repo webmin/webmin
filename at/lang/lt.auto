@@ -55,6 +55,7 @@ acl_this=Dabartinis „Webmin“ vartotojas
 acl_only=Tik vartotojai
 acl_except=Visi, išskyrus vartotojus
 acl_allow=Ar galima redaguoti vartotojams?
+acl_stop=Ar galite sustoti ir pradėti <tt>atd</tt>?
 
 run_title=Bėgimo komanda
 run_output=Išėjimas iš suplanuotos komandos ..
@@ -79,3 +80,6 @@ log_bootdown=Įkrovimo metu išjungtas suplanuotų komandų serveris
 
 stop_err=Nepavyko sustabdyti serverio
 start_err=Nepavyko paleisti serverio
+stop_ecannot=Jums neleidžiama sustabdyti serverio
+start_ecannot=Jums neleidžiama paleisti serverio
+bootup_ecannot=Jums neleidžiama įjungti serverio paleidžiant

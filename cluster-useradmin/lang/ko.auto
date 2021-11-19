@@ -34,10 +34,12 @@ host_name=호스트 이름
 host_type=서버 유형
 host_delete=관리 목록에서 제거
 host_refresh=사용자 및 그룹 새로 고침
+host_userscount=사용자 수
+host_groupscount=그룹 수
+host_return=서버 세부 사항
 host_users=사용자 수
 host_groups=그룹 수
 
-host_return=서버 세부 사항
 refresh_title=사용자 및 그룹 새로 고침
 refresh_header=모든 서버에서 사용자 및 그룹 목록 요청
 refresh_header5=$2 에서 사용자 및 그룹 목록을 다시 요청합니다.

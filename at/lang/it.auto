@@ -6,6 +6,8 @@ index_startdesc=Avvia il processo del server in background <tt>atd</tt> che eseg
 index_boot=Avviare il server all'avvio?
 index_bootdesc=Modificare questa impostazione per abilitare o disabilitare l'avvio del server dei comandi pianificati all'avvio del sistema.
 
+acl_stop=Può interrompere e avviare <tt>atd</tt>?
+
 log_stop=Server dei comandi pianificati arrestato
 log_start=Avviato il server dei comandi pianificati
 log_bootup=Abilitato il server dei comandi pianificati all'avvio
@@ -13,3 +15,6 @@ log_bootdown=Server dei comandi pianificati disabilitato all'avvio
 
 stop_err=Impossibile arrestare il server
 start_err=Impossibile avviare il server
+stop_ecannot=Non sei autorizzato a fermare il server
+start_ecannot=Non sei autorizzato ad avviare il server
+bootup_ecannot=Non sei autorizzato ad abilitare il server all'avvio

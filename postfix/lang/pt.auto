@@ -315,6 +315,7 @@ opts_smtp_data_done_timeout=Tempo limite ao aguardar resposta para o final de ".
 opts_smtp_quit_timeout=Tempo limite em espera de resposta para QUIT
 opts_smtp_use_tls=Use TLS para conexões SMTP
 opts_smtp_sasl_security_options=Opções de segurança SASL
+opts_smtp_tls_security_level=Nível de segurança do cliente SMTP TLS
 
 rate_title=Taxas de entrega
 rate_ecannot=Você não tem permissão para editar as opções de taxas de entrega

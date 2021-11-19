@@ -27,6 +27,7 @@ index_imm=Негайно
 index_asuser=Як користувач
 index_zip=Витягти з ZIP чи TAR файлів?
 index_zipyes=Так, потім видалити
+
 upload_title=Зберегти файли
 upload_err=Не удалося зберегти файли
 upload_edir=~~33536 каталог для збереження
@@ -45,6 +46,7 @@ upload_eextract=, що не можуть бути витягнуті : $1
 upload_extracted=, і витягнуті файли ..
 upload_deleted=, і витягнуті файли перед видаленням архіву
 upload_notcomp=Не ZIP чи TAR файл
+
 download_err=Не удалося зберегти завантаження
 download_eurl='$1' не дійсний URL
 download_edate=Неправильна чи дата час
@@ -55,9 +57,11 @@ download_failed=Завантаження не удалося : $1
 download_eaccess=Ви не можете завантажувати файли в $1
 download_eucannot=Ви не можете завантажувати файли як користувач $1
 download_egcannot=Обрана група не містить обраного користувача
+
 cancel_err=Не удалося скасувати завантаження
 cancel_enone=Нічого не обрано
 cancel_ecannot=Ви не можете скасувати завантаження для користувача $1
+
 log_cancel=Скасовані $1 завантажень
 log_upload_l=Збережені файл(ы) $1
 log_upload=Збережено $1 файл(ів)
@@ -65,6 +69,7 @@ log_download_l=Завантажені URL(ы) $1
 log_download=Завантажені $1 URL(ы)
 log_sdownload_l=Занесена в розклад завантаження URL(ів) $1
 log_sdownload=Занесена в розклад завантаження $1 URL(ів)
+
 acl_users=Можуть завантажувати і зберігати файли як користувачі
 acl_all=Усі користувачі
 acl_this=Поточний користувач Webmin

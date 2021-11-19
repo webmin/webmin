@@ -223,6 +223,7 @@ systemd_egone=Palvelua ei enää ole!
 systemd_elegacy=Ei järjestelmällinen palvelu!
 systemd_header=Järjestelmällisen palvelun yksityiskohdat
 systemd_name=Palvelun nimi
+systemd_file=Asetustiedosto
 systemd_desc=Palvelun kuvaus
 systemd_start=Komennot suorittaa käynnistyksen yhteydessä
 systemd_stop=Komennot ajaa sammutettaessa

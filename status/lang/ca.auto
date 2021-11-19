@@ -4,6 +4,9 @@ mon_virtualmin=Atenció! Aquest monitor està associat amb el domini Virtualmin 
 
 sched_warn3=Sempre que el servei estigui activat
 
+ping_timeout=Temps d'espera després de $1 segons
+ping_resolv=No s'ha pogut resoldre el nom d'amfitrió
+
 init_action=Acció de comprovar
 init_eaction=No s'ha seleccionat cap acció
 

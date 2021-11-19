@@ -27,6 +27,7 @@ net_pop3s=POP3 (SSL)
 net_imaps=IMAP (SSL)
 net_lmtp=ایل ایم ٹی پی
 net_ssl_disable=SSL کنکشن قبول کریں؟
+net_ssl_required=صرف SSL قبول کریں۔
 net_imap_listen=IMAP رابطوں کے لئے انٹرفیس
 net_pop3_listen=POP3 کنکشن کے لئے انٹرفیس
 net_imaps_listen=IMAP SSL رابطوں کے لئے انٹرفیس

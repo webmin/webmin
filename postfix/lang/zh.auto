@@ -126,6 +126,7 @@ smtpd_map2=发件人地址限制
 
 opts_smtp_use_tls=使用TLS进行SMTP连接
 opts_smtp_sasl_security_options=SASL安全选项
+opts_smtp_tls_security_level=SMTP TLS 客户端安全级别
 
 debug_version=Webmin的Postfix模块-版本$1
 opts_edebug=详细记录级别缺失或无效-必须是大于零的数字

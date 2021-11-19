@@ -222,6 +222,8 @@ ping_wait=זמן לחכות לתגובה
 ping_ehost=שם מארח חסר או לא חוקי
 ping_ewait=זמן המתנה חסר או לא תקף
 ping_econfig=שום פקודת ping לא הוגדרה ב- Config Module
+ping_timeout=פסק זמן לאחר $1 שניות
+ping_resolv=זיהוי שם המארח נכשל
 
 proc_pid=פועל עם PIDs $1 
 proc_cmd=פקודה לבדוק

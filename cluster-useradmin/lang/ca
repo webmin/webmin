@@ -34,10 +34,10 @@ host_name=Nom de host
 host_type=Tipus de servidor
 host_delete=Treu-lo de la Llista Gestionada
 host_refresh=Refresca els Usuaris i els Grups
+host_return=als detalls del servidor
 host_users=Nombre d'usuaris
 host_groups=Nombre de grups
 
-host_return=als detalls del servidor
 refresh_title=Refresc d'Usuaris i Grups
 refresh_header=S'estan tornant a demanar les llistes de grups i usuaris de tots els servidors...
 refresh_header5=S'estan tornant a demanar les llistes de grups i usuaris de $2...

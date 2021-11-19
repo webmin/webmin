@@ -128,6 +128,7 @@ smtpd_map2=Omezení adres odesílatele
 
 opts_smtp_use_tls=Pro připojení SMTP použijte TLS
 opts_smtp_sasl_security_options=Možnosti zabezpečení SASL
+opts_smtp_tls_security_level=Úroveň zabezpečení klienta SMTP TLS
 
 opts_edebug=Chybějící nebo neplatná úroveň podrobného protokolování - musí být číslo větší než nula
 

@@ -292,6 +292,7 @@ backup_path=서버의 경로
 backup_mkdir=대상 디렉토리를 만드시겠습니까?
 backup_single=거래 내 백업?
 backup_quick=한 번에 하나씩 행을 덤프 하시겠습니까?
+backup_parameters=백업 명령에 사용자 정의 매개변수를 추가하시겠습니까?
 backup_charset=백업을위한 문자 세트
 backup_ok1=지금 저장 및 백업
 backup_ok2=저장

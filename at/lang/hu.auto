@@ -12,6 +12,8 @@ index_bootdesc=Módosítsa ezt a beállítást, hogy engedélyezze vagy letiltsa
 edit_shortcmd=Végrehajtási parancs
 edit_showfull=A teljes szkript megjelenítése.
 
+acl_stop=Megállíthatja és elindíthatja az <tt>atd</tt>-t?
+
 deletes_err=A parancsok megszakítása nem sikerült
 deletes_enone=Egy sincs kiválasztva
 
@@ -27,3 +29,6 @@ log_bootdown=Az ütemezett parancskiszolgáló letiltva indításkor
 
 stop_err=Nem sikerült leállítani a szervert
 start_err=Nem sikerült elindítani a szervert
+stop_ecannot=A szerver leállítása tilos
+start_ecannot=Nem indíthatja el a szervert
+bootup_ecannot=Nem engedélyezheti a szervert rendszerindításkor

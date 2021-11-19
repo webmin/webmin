@@ -5,6 +5,7 @@ edit_reloadnow2=Lees het configuratiebestand opnieuw
 
 mode_launchd=LaunchD
 
+systemd_file=Configuratiebestand
 systemd_status3=Onbekend!
 
 launchd_title1=Start Launchd Agent

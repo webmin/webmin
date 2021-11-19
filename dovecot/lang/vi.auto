@@ -27,6 +27,7 @@ net_pop3s=POP3 (SSL)
 net_imaps=IMAP (SSL)
 net_lmtp=LMTP
 net_ssl_disable=Chấp nhận kết nối SSL?
+net_ssl_required=Chỉ chấp nhận SSL
 net_imap_listen=Giao diện cho các kết nối IMAP
 net_pop3_listen=Giao diện cho các kết nối POP3
 net_imaps_listen=Giao diện cho các kết nối SSL IMAP

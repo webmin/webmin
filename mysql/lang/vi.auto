@@ -621,6 +621,7 @@ backup_none=Tất cả các hàng
 backup_drop=Thêm câu lệnh <tt>thả bảng</tt> để sao lưu?
 backup_single=Sao lưu trong một giao dịch?
 backup_quick=Đổ hàng một lúc?
+backup_parameters=Thêm thông số tùy chỉnh vào lệnh sao lưu?
 backup_charset=Bộ ký tự để sao lưu
 backup_ok=Sao lưu ngay
 backup_ok1=Lưu và sao lưu ngay

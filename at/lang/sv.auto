@@ -7,6 +7,8 @@ index_startdesc=Starta <tt>atd</tt> bakgrundsserverprocessen som kör schemalagd
 index_boot=Starta server vid start?
 index_bootdesc=Ändra denna inställning för att aktivera eller inaktivera start av den schemalagda kommandoservern vid systemstarttid.
 
+acl_stop=Kan du stoppa och starta <tt>atd</tt>?
+
 log_allow=Ändrade tillåtna användare
 log_create_job=Skapat schemalagd kommando för $1 
 log_delete_job=Avbruten schemalagd kommando för $1 
@@ -19,3 +21,6 @@ log_bootdown=Inaktiverad schemalagd kommandoserver vid start
 
 stop_err=Det gick inte att stoppa servern
 start_err=Det gick inte att starta servern
+stop_ecannot=Du får inte stoppa servern
+start_ecannot=Du får inte starta servern
+bootup_ecannot=Du får inte aktivera servern vid uppstart

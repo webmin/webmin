@@ -222,6 +222,8 @@ ping_wait=Tyd om te wag vir reaksie
 ping_ehost=Ontbrekende of ongeldige gasheernaam
 ping_ewait=Wagtyd ontbreek of ongeldig
 ping_econfig=Geen ping-opdrag is opgestel in Module Config nie
+ping_timeout=Uitteltyd na $1 sekondes
+ping_resolv=Kon nie gasheernaam oplos nie
 
 proc_pid=Hardloop met PID's $1 
 proc_cmd=Opdrag om na te gaan

@@ -29,10 +29,10 @@ host_name=Nombre de máquina
 host_type=Tipo de servidor
 host_delete=Quitar de lista gestionada
 host_refresh=Refrescar Usuarios y Grupos
+host_return=detalles de servidor
 host_users=Número de usuarios
 host_groups=Número de grupos
 
-host_return=detalles de servidor
 refresh_title=Refrescar usuarios y Grupos
 refresh_header=Volver a requerir listas de usuario y grupo de todos los servidores...
 refresh_header5=Volviendo a requerir las listas de usuario y grupo de $2 ..

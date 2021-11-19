@@ -7,6 +7,8 @@ index_startdesc=Démarrez le processus du serveur d'arrière-plan <tt>atd</tt> q
 index_boot=Démarrer le serveur au démarrage?
 index_bootdesc=Modifiez ce paramètre pour activer ou désactiver le démarrage du serveur de commandes planifiées au moment du démarrage du système.
 
+acl_stop=Peut-on arrêter et démarrer <tt>atd</tt> ?
+
 log_allow=Utilisateurs autorisés modifiés
 log_create_job=Commande planifiée créée pour $1 
 log_delete_job=Commande planifiée annulée pour $1 
@@ -19,3 +21,6 @@ log_bootdown=Serveur de commandes planifiées désactivé au démarrage
 
 stop_err=Échec de l'arrêt du serveur
 start_err=Échec du démarrage du serveur
+stop_ecannot=Vous n'êtes pas autorisé à arrêter le serveur
+start_ecannot=Vous n'êtes pas autorisé à démarrer le serveur
+bootup_ecannot=Vous n'êtes pas autorisé à activer le serveur au démarrage

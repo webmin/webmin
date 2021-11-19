@@ -223,6 +223,7 @@ systemd_egone=Услугата вече не съществува!
 systemd_elegacy=Не е системна услуга!
 systemd_header=Данни за системни услуги
 systemd_name=Име на услугата
+systemd_file=Конфигурационен файл
 systemd_desc=Описание на услугата
 systemd_start=Команди за стартиране
 systemd_stop=Команди за изпълнение при изключване

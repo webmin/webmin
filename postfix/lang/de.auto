@@ -1,3 +1,5 @@
+opts_smtp_tls_security_level=Sicherheitsstufe des SMTP-TLS-Clients
+
 sni_title=Zertifikatzuordnung
 sni_ecannot=Sie dürfen die Konfiguration der Zertifikatszuordnung nicht bearbeiten
 opts_sni_maps=Nachschlagetabellen für die Zertifikatszuordnung

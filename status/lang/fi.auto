@@ -222,6 +222,8 @@ ping_wait=Aika odottaa vastausta
 ping_ehost=Puuttuva tai virheellinen isäntänimi
 ping_ewait=Puuttuva tai virheellinen odotusaika
 ping_econfig=Ping-komentoa ei ole määritetty moduulin kokoonpanossa
+ping_timeout=Aikakatkaisu $1 sekunnin kuluttua
+ping_resolv=Palvelimen nimeä ei saatu selville
 
 proc_pid=Ajo PID: llä $1 
 proc_cmd=Komento tarkistaa

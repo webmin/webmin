@@ -223,6 +223,7 @@ systemd_egone=Storitev ne obstaja več!
 systemd_elegacy=Ni sistemska storitev!
 systemd_header=Podrobnosti o sistemskih storitvah
 systemd_name=Ime storitve
+systemd_file=Konfiguracijska datoteka
 systemd_desc=Opis storitve
 systemd_start=Ukazi za zagon
 systemd_stop=Ukazi za zagon ob izklopu

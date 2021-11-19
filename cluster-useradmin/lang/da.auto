@@ -34,10 +34,12 @@ host_name=Værtsnavn
 host_type=Servertype
 host_delete=Fjern fra administreret liste
 host_refresh=Opdater brugere og grupper
+host_userscount=Antal brugere
+host_groupscount=Antal grupper
+host_return=serverdetaljer
 host_users=Antal brugere
 host_groups=Antal grupper
 
-host_return=serverdetaljer
 refresh_title=Opdater brugere og grupper
 refresh_header=Genanmodning om bruger- og gruppelister fra alle servere ..
 refresh_header5=Genanmodning om bruger- og gruppelister fra $2.

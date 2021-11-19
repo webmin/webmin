@@ -315,6 +315,7 @@ opts_smtp_data_done_timeout=Час чакання чакання адказу с
 opts_smtp_quit_timeout=Час чакання адказу на пытанне QUIT
 opts_smtp_use_tls=Выкарыстоўвайце TLS для падлучэння SMTP
 opts_smtp_sasl_security_options=Варыянты бяспекі SASL
+opts_smtp_tls_security_level=Узровень бяспекі кліента SMTP TLS
 
 rate_title=Стаўкі дастаўкі
 rate_ecannot=Вам не дазволена рэдагаваць параметры тарыфаў дастаўкі

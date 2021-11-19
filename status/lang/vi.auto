@@ -222,6 +222,8 @@ ping_wait=Thời gian chờ phản hồi
 ping_ehost=Tên máy chủ bị thiếu hoặc không hợp lệ
 ping_ewait=Thời gian chờ thiếu hoặc không hợp lệ
 ping_econfig=Không có lệnh ping nào được đặt trong Module Config
+ping_timeout=Hết thời gian chờ sau $1 giây
+ping_resolv=Không phân giải được tên máy chủ
 
 proc_pid=Chạy với PID $1 
 proc_cmd=Lệnh kiểm tra

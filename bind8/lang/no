@@ -519,7 +519,6 @@ value_dmarcadkim=Krev streng DKIM justering
 value_dmarcnor=Ikke send
 value_CAA1=Krev håndhevelse?
 value_CAA2=Autorisasjonstype
-value_CAA3=CA domenenavn
 value_caa_issue=Enkelt-domene sert
 value_caa_issuewild=Wildcard sert
 value_caa_iodef=URL ved brudd på retningslinjer

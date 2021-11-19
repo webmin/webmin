@@ -9,6 +9,7 @@ user_locked=Заключен
 backup_prefix=Префикс за име на файл
 backup_eprefix=Префиксът за име на файл не може да съдържа /
 backup_noprefix=Нито един
+backup_parameters=Добавяне на персонализирани параметри към командата за архивиране?
 
 cnf_table_open_cache=Таблици за кеш
 cnf_ilt=Времето за заключване на InnoDB (в секунди)

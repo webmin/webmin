@@ -6,6 +6,8 @@ index_startdesc=Start het <tt>atd</tt> -achtergrondserverproces dat geplande opd
 index_boot=Server starten bij opstarten?
 index_bootdesc=Wijzig deze instelling om het starten van de server met geplande opdrachten tijdens het opstarten van het systeem in of uit te schakelen.
 
+acl_stop=Kan stoppen en starten <tt>atd</tt>?
+
 log_stop=Geplande commandoserver gestopt
 log_start=Gestart geplande commandoserver
 log_bootup=Ingeschakelde server met geplande opdrachten bij opstarten
@@ -13,3 +15,6 @@ log_bootdown=Uitgeschakelde server met geplande opdrachten bij opstarten
 
 stop_err=De server kan niet worden gestopt
 start_err=Kan server niet starten
+stop_ecannot=U mag de server niet stoppen
+start_ecannot=U mag de server niet starten
+bootup_ecannot=U mag de server niet inschakelen bij het opstarten

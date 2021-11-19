@@ -223,6 +223,7 @@ systemd_egone=השירות כבר לא קיים!
 systemd_elegacy=לא שירות מערכת!
 systemd_header=פרטי שירות מערכת
 systemd_name=שם השירות
+systemd_file=קובץ תצורה
 systemd_desc=תיאור השירות
 systemd_start=פקודות להפעלה בהפעלה
 systemd_stop=פקודות להפעלת כיבוי

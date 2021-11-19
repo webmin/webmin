@@ -193,6 +193,8 @@ ping_wait=Masa untuk menunggu maklum balas
 ping_ehost=Nama tuan rumah yang hilang atau tidak sah
 ping_ewait=Masa tunggu atau tidak sah
 ping_econfig=Tiada arahan ping telah ditetapkan dalam Modul Config
+ping_timeout=Tamat masa selepas $1 saat
+ping_resolv=Gagal menyelesaikan nama hos
 
 proc_pid=Berjalan dengan PIDs $1 
 proc_cmd=Perintah untuk memeriksa

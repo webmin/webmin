@@ -222,6 +222,8 @@ ping_wait=Laikas laukti atsakymo
 ping_ehost=Trūksta arba netinkamas pagrindinio kompiuterio vardas
 ping_ewait=Trūksta arba netinkamas laukimo laikas
 ping_econfig=„Modulio konfigūracijoje“ nenustatyta „ping“ komandos
+ping_timeout=Laikas pasibaigė po $1 sek
+ping_resolv=Nepavyko nustatyti pagrindinio kompiuterio pavadinimo
 
 proc_pid=Bėgimas su PID $1 
 proc_cmd=Komanda patikrinti

@@ -596,6 +596,7 @@ backup_none=Kaikki rivit
 backup_drop=Lisää <tt>pudota taulukko</tt> lauseita varmuuskopiointiin?
 backup_single=Varmuuskopio tapahtumassa?
 backup_quick=Hylkää rivit yksi kerrallaan?
+backup_parameters=Lisätäänkö varmuuskopiointikomentoon mukautettuja parametreja?
 backup_charset=Merkistö asetettu varmuuskopiolle
 backup_ok=Varmuuskopioi nyt
 backup_ok1=Tallenna ja varmuuskopioi nyt

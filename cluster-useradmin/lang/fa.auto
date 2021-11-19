@@ -34,10 +34,12 @@ host_name=نام میزبان
 host_type=نوع سرور
 host_delete=حذف از لیست مدیریت شده
 host_refresh=کاربران و گروه ها را تازه کنید
+host_userscount=تعداد کاربران
+host_groupscount=تعداد گروه ها
+host_return=جزئیات سرور
 host_users=تعداد کاربران
 host_groups=تعداد گروه ها
 
-host_return=جزئیات سرور
 refresh_title=کاربران و گروه ها را تازه کنید
 refresh_header=درخواست مجدد لیست کاربر و گروه از کلیه سرورها ..
 refresh_header5=درخواست مجدد لیست های کاربر و گروه از$2 ..

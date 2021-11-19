@@ -315,6 +315,7 @@ opts_smtp_data_done_timeout="" İle biten cevabı beklerken zaman aşımı
 opts_smtp_quit_timeout=QUIT yanıtını beklerken zaman aşımı
 opts_smtp_use_tls=SMTP bağlantıları için TLS kullanma
 opts_smtp_sasl_security_options=SASL güvenlik seçenekleri
+opts_smtp_tls_security_level=SMTP TLS istemci güvenlik düzeyi
 
 rate_title=Yayınlanma oranları
 rate_ecannot=Dağıtım ücretleri seçeneklerini düzenleme izniniz yok

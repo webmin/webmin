@@ -6,6 +6,8 @@ index_startdesc=Inicieu el procés del servidor de fons <tt>atd</tt> que executa
 index_boot=Voleu iniciar el servidor a l'arrencada?
 index_bootdesc=Canvieu aquest paràmetre per habilitar o desactivar l'inici del servidor d'ordres programades en arrencar el sistema.
 
+acl_stop=Es pot aturar i començar <tt>atd</tt>?
+
 log_stop=S'ha aturat el servidor d'ordres programades
 log_start=S'ha iniciat el servidor d'ordres programades
 log_bootup=S'ha activat el servidor d'ordres programades a l'arrencada
@@ -13,3 +15,6 @@ log_bootdown=S'ha desactivat el servidor d'ordres programades a l'arrencada
 
 stop_err=No s'ha pogut aturar el servidor
 start_err=No s'ha pogut iniciar el servidor
+stop_ecannot=No teniu permís per aturar el servidor
+start_ecannot=No teniu permís per iniciar el servidor
+bootup_ecannot=No teniu permís per habilitar el servidor a l'arrencada

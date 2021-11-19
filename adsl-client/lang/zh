@@ -14,6 +14,7 @@ index_esetup=在您的系统上不存在 Redhat ADSL 配置文件 $1，不过，
 index_setup=设定配置文件
 index_cancel=取消连接
 index_canceldesc=ADSL客户端目前正在尝试连接，按此按钮可以使用 $1 命令来取消。
+
 index_header=ADSL客户端配置选项
 index_desc=下面的设定是用于在您系统上启动所有新的ADSL连接，如果您更改这里，连接必须先断开，然后再重新连接，修改内容才会生效。
 index_eth=以太网接口
@@ -34,11 +35,13 @@ index_fw_standalone=用于单一主机
 index_fw_masquerade=用于NAT gateway
 index_connect=尝试连接时间
 index_forever=永久连接
+
 start_err=启动ADSL连接失败
 start_title=启动ADSL
 start_ip=ADSL已经连接，IP地址是 $1。
 start_demand=因为连接请求模式已打开, 您的ADSL连接会在需要时自动进行连接。
 start_bg=ADSL在20内没有连接成功，ADSL客户端会在后台持续尝试连接直到成功为止。
+
 save_err=保存ADSL配置文件失败
 save_eeth=错误或无效的以太网络接口
 save_etimeout=错误或无效的连接超时
@@ -47,10 +50,12 @@ save_econnect=错误或无效的连接超时时间
 save_emss=错误或无效的最大封包大小
 save_title=保存配置
 save_desc=ADSL客户端配置已经成功保存，不过此配置会在下次重新连接时启用。
+
 stop_err=断开ADSL连接失败
 stop_title=断开ADSL
 stop_ok=你的ADSL连接已成功断开
 stop_failed=因为一些原因你的ADSL连接一直在连接状态!
+
 log_save=已保存客户端配置
 log_stop=断开ADSL
 log_start=启动ADSL

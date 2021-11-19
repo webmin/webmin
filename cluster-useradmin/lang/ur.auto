@@ -34,10 +34,12 @@ host_name=میزبان کا نام
 host_type=سرور کی قسم
 host_delete=منظم فہرست سے ہٹائیں
 host_refresh=صارفین اور گروپوں کو تازہ دم کریں
+host_userscount=صارفین کی تعداد
+host_groupscount=گروپوں کی تعداد
+host_return=سرور کی تفصیلات
 host_users=صارفین کی تعداد
 host_groups=گروپوں کی تعداد
 
-host_return=سرور کی تفصیلات
 refresh_title=صارفین اور گروپوں کو تازہ دم کریں
 refresh_header=سب سرورز سے صارف اور گروپ کی فہرستوں کی دوبارہ درخواست کریں ..
 refresh_header5=$2 سے صارف اور گروپ کی فہرستوں کی دوبارہ درخواست کریں۔

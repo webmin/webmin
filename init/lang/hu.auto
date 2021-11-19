@@ -14,6 +14,7 @@ systemd_egone=A szolgáltatás már nem létezik!
 systemd_elegacy=Nem rendszeres szolgáltatás!
 systemd_header=Rendszeres szolgáltatás részletei
 systemd_name=Szolgáltatás neve
+systemd_file=Konfigurációs fájl
 systemd_desc=Szolgáltatás leírása
 systemd_start=Parancsok az induláskor történő futtatáshoz
 systemd_stop=Leállítási parancsok

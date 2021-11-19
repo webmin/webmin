@@ -123,6 +123,7 @@ backup_eprefix=Prefiks nazwy pliku nie może zawierać /
 backup_noprefix=Żaden
 backup_download=Pobierz w przeglądarce
 backup_path=Ścieżka na serwerze
+backup_parameters=Dodać niestandardowe parametry do polecenia kopii zapasowej?
 backup_eisdir=Miejsce docelowe kopii zapasowej $1 to katalog
 backup_ucron=Aktualizacja zaplanowanej ścieżki tworzenia kopii zapasowych, opcji i godzin dla bazy danych.
 backup_edownloadall=Można pobrać tylko jedną kopię zapasową bazy danych

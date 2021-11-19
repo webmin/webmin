@@ -30,6 +30,7 @@ index_other_google=У системі пошуку Google
 index_other_kde=Документації KDE
 index_and=Повний збіг
 index_or=Збіг кожної з частин
+
 search_efor=Не зазначена шукана сторінка керівництва
 search_title=Результати пошуку
 search_desc=Опис
@@ -46,21 +47,27 @@ search_custom=Додаткова документація
 search_none=Документа, що відповідає $1 не знайдено.
 search_for=$1
 search_google=Результат пошуку в Google
+
 howto_title=Документ HOWTO
 howto_header=Файл документа HOWTO $1
 howto_epath=Невірний шлях до документів HOWTO
+
 doc_title=Документація пакета
 doc_header=Файл документації пакета $1
 doc_epath=Невірний шлях до документації пакетів
+
 man_title=Сторінка керівництва
 man_header=Сторінка посібника з $1($2)
 man_noentry=Сторінки посібника з $1 не існує!
+
 kernel_title=Документація ядра
 kernel_header=Файл документації ядра $1
 kernel_epath=Невірний шлях до документації ядра
+
 kde_title=Документація KDE
 kde_header=Файл документації KDE $1
 kde_epath=Невірний шлях до документації KDE
+
 perl_title=Модуль Perl
 perl_header=Документація до модуля $1 Perl
 perl_emod=Невірне ім'я модуля Perl

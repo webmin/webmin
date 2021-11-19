@@ -239,6 +239,7 @@ backup_path=服务器上的路径
 backup_mkdir=创建目标目录？
 backup_single=在交易中备份？
 backup_quick=一次转储一行？
+backup_parameters=向备份命令添加自定义参数？
 backup_charset=备份字符集
 backup_efile2=备份目录丢失或无效
 backup_echarset=缺少字符集

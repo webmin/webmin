@@ -34,10 +34,10 @@ host_name=Host naam
 host_type=Server type
 host_delete=Verwijder Van Beheer Lijst
 host_refresh=Ververs Gebruikers en Groepen
+host_return=server details
 host_users=Aantal gebruikers
 host_groups=Aantal Groepen
 
-host_return=server details
 refresh_title=Ververs Gebruikers en Groepen
 refresh_header=Her-aanvraag van gebruikers en groepen lijst van alle servers ..
 refresh_header5=Her-aanvraag van gebruikers en groepen lijst van $2 ..

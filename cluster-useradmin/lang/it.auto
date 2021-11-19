@@ -34,10 +34,12 @@ host_name=Nome host
 host_type=Tipo di server
 host_delete=Rimuovi dall'elenco gestito
 host_refresh=Aggiorna utenti e gruppi
+host_userscount=numero di utenti
+host_groupscount=Numero di gruppi
+host_return=dettagli del server
 host_users=numero di utenti
 host_groups=Numero di gruppi
 
-host_return=dettagli del server
 refresh_title=Aggiorna utenti e gruppi
 refresh_header=Richiedere gli elenchi di utenti e gruppi da tutti i server.
 refresh_header5=Richiedere gli elenchi di utenti e gruppi da $2 ..

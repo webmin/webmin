@@ -102,6 +102,7 @@ systemd_egone=خدمات دیگر وجود ندارد!
 systemd_elegacy=یک سرویس سیستمی نیست!
 systemd_header=جزئیات خدمات سیستمی
 systemd_name=نام سرویس
+systemd_file=فایل پیکربندی
 systemd_desc=شرح خدمات
 systemd_start=دستورات اجرا در هنگام راه اندازی
 systemd_stop=دستورات خاموش کردن را اجرا کنید

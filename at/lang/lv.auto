@@ -55,6 +55,7 @@ acl_this=Pašreizējais Webmin lietotājs
 acl_only=Tikai lietotāji
 acl_except=Visi, izņemot lietotājus
 acl_allow=Vai lietotāji var rediģēt?
+acl_stop=Vai var apstāties un sākt <tt>atd</tt>?
 
 run_title=Darbojošā komanda
 run_output=Izeja no plānotās komandas ..
@@ -79,3 +80,6 @@ log_bootdown=Sāknēšanas laikā atspējots ieplānoto komandu serveris
 
 stop_err=Neizdevās apturēt serveri
 start_err=Neizdevās palaist serveri
+stop_ecannot=Jums nav atļauts apturēt serveri
+start_ecannot=Jums nav atļauts startēt serveri
+bootup_ecannot=Jums nav atļauts iespējot serveri sāknēšanas laikā

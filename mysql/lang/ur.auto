@@ -621,6 +621,7 @@ backup_none=تمام قطاریں
 backup_drop=Add <tt>drop table</tt> statements to backup?
 backup_single=کسی سودے میں بیک اپ؟
 backup_quick=ایک وقت میں قطاریں اکھڑ دیں؟
+backup_parameters=بیک اپ کمانڈ میں کسٹم پیرامیٹرز شامل کریں؟
 backup_charset=بیک اپ کے لئے کیریکٹر سیٹ
 backup_ok=ابھی بیک اپ
 backup_ok1=ابھی محفوظ کریں اور بیک اپ کریں

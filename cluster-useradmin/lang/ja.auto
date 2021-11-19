@@ -34,10 +34,12 @@ host_name=ホスト名
 host_type=サーバーの種類
 host_delete=管理リストから削除
 host_refresh=ユーザーとグループを更新する
+host_userscount=ユーザー数
+host_groupscount=グループ数
+host_return=サーバーの詳細
 host_users=ユーザー数
 host_groups=グループ数
 
-host_return=サーバーの詳細
 refresh_title=ユーザーとグループを更新する
 refresh_header=すべてのサーバーからのユーザーおよびグループリストの再要求 ..
 refresh_header5=$2からのユーザーおよびグループリストの再要求 ..

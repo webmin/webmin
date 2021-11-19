@@ -55,6 +55,7 @@ acl_this=Uneko Webmin erabiltzailea
 acl_only=Erabiltzaileak bakarrik
 acl_except=Guztiak erabiltzaileak izan ezik
 acl_allow=Editatzeko baimendua erabiltzaileei?
+acl_stop=Gelditu eta hasi al daiteke <tt>atd</tt>?
 
 run_title=Komandoa exekutatzen
 run_output=Programatutako komandoaren irteera ..
@@ -79,3 +80,6 @@ log_bootdown=Desgaituta dago programatutako komandoen zerbitzaria abioan
 
 stop_err=Ezin izan da zerbitzaria gelditu
 start_err=Ezin izan da zerbitzaria abiarazi
+stop_ecannot=Ez duzu zerbitzaria gelditzeko baimenik
+start_ecannot=Ez duzu zerbitzaria abiarazteko baimenik
+bootup_ecannot=Ez duzu baimenik zerbitzaria abiaraztean gaitzeko

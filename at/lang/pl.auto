@@ -6,6 +6,8 @@ index_startdesc=Uruchom proces serwera w tle <tt>atd</tt>, który wykonuje zapla
 index_boot=Uruchomić serwer podczas rozruchu?
 index_bootdesc=Zmień to ustawienie, aby włączyć lub wyłączyć uruchamianie zaplanowanego serwera poleceń podczas rozruchu systemu.
 
+acl_stop=Czy można zatrzymać i rozpocząć <tt>atd</tt>?
+
 log_stop=Zatrzymano serwer poleceń zaplanowanych
 log_start=Uruchomiono serwer poleceń zaplanowanych
 log_bootup=Włączono serwer poleceń zaplanowanych podczas rozruchu
@@ -13,3 +15,6 @@ log_bootdown=Wyłączono serwer poleceń zaplanowanych podczas rozruchu
 
 stop_err=Nie udało się zatrzymać serwera
 start_err=Nie udało się uruchomić serwera
+stop_ecannot=Nie możesz zatrzymać serwera
+start_ecannot=Nie możesz uruchomić serwera
+bootup_ecannot=Nie możesz włączyć serwera podczas rozruchu

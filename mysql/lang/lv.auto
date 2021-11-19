@@ -621,6 +621,7 @@ backup_none=Visas rindas
 backup_drop=Vai dublējumkopijai pievienot <tt>pilienu tabulu</tt> paziņojumus?
 backup_single=Rezerves darījumā?
 backup_quick=Atmest rindas pa vienam?
+backup_parameters=Vai pievienot pielāgotus parametrus dublēšanas komandai?
 backup_charset=Rakstzīmju kopa dublēšanai
 backup_ok=Dublēt tūlīt
 backup_ok1=Saglabāt un dublēt tūlīt

@@ -157,6 +157,7 @@ systemd_egone=Hizmet artık mevcut değil!
 systemd_elegacy=Bir sistem hizmeti değil!
 systemd_header=Systemd hizmet ayrıntıları
 systemd_name=Hizmet adı
+systemd_file=Yapılandırma dosyası
 systemd_desc=Servis açıklaması
 systemd_start=Başlangıçta çalıştırılacak komutlar
 systemd_stop=Kapatma sırasında çalıştırılacak komutlar

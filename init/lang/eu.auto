@@ -61,6 +61,7 @@ systemd_egone=Zerbitzua ez dago jada!
 systemd_elegacy=Ez da systemd zerbitzua!
 systemd_header=Systemd zerbitzuaren xehetasunak
 systemd_name=Zerbitzuaren izena
+systemd_file=Konfigurazio fitxategia
 systemd_desc=Zerbitzuaren deskribapena
 systemd_start=Abiarazteko aginduak
 systemd_stop=Itzaltzeko exekutatzeko komandoak

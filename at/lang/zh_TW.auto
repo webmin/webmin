@@ -21,6 +21,7 @@ edit_showfull=顯示完整腳本。
 create_eallow=指定的用戶不允許運行計劃的命令
 
 acl_allow=可以編輯允許的At用戶嗎？
+acl_stop=可以停止和啟動 <tt>atd</tt> 嗎？
 
 run_title=運行命令
 run_output=計劃命令的輸出 ..
@@ -45,3 +46,6 @@ log_bootdown=引導時禁用調度的命令服務器
 
 stop_err=無法停止服務器
 start_err=無法啟動服務器
+stop_ecannot=您無權停止服務器
+start_ecannot=您無權啟動服務器
+bootup_ecannot=不允許在啟動時啟用服務器

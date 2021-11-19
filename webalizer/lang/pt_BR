@@ -26,6 +26,7 @@ index_when=Sim, $1
 index_webalizer=Webalizer
 index_enable=Agendamento Selecionado
 index_disable=Agendamento Desselecionado
+
 edit_title1=Adicionar Arquivo de Log
 edit_title2=Editar Arquivo de Log
 edit_header=Opções de relatório do arquivo de Log
@@ -49,12 +50,14 @@ edit_cmode0=Use as opções globais
 edit_cmode1=Opções personalizadas
 edit_cmode2=Outros arquivos config ..
 edit_clear=Limpar arquivo de log(s), após relatório programado?
+
 gen_title=Gerar relatório
 gen_header=Executar Webalizer para gerar o relatório a partir de $1 ..
 gen_done=.. feito
 gen_failed=.. Webalizer falhou! Veja o resultado acima para mais detalhes.
 gen_nothing=.. Webalizer terminado, mas nenhum relatório foi gerado. Veja o resultado acima para mais detalhes.
 gen_view=Ver relatório concluído.
+
 save_err=Falha ao salvar arquivo de log
 save_efile=Arquivo de log não foi inscrito ou não existe
 save_ecfile=Arquivo de configuração faltando ou inexistente
@@ -64,12 +67,14 @@ save_ewuser=Não existe nenhum usuário Unix chamado $1
 save_ehost=Website ausente ou nome de host do sistema inválido 
 save_etitle=Título do relatório ausente
 save_ecannot=Você só é permitido para gerar relatórios para logs de $1
+
 view_epath=PATH_INFO inválido
 view_efile=Nome de arquivo relatório inválido 
 view_elog=Arquivo de log inválido
 view_ecannot=Você não tem permissão para ver este relatório
 view_eopen=Falha ao abrir o arquivo de relatório
 view_title=Exibir Relatório
+
 global_title=Opções globais Webalizer
 global_title2=Opções de Relatórios Webalizer
 global_for=Para arquivo de log $1
@@ -130,6 +135,7 @@ global_includesite=Clientes não ignorar
 global_includereferrer=Referers não ignorar
 global_includeuser=Usuários não ignorar
 global_includeagent=Navegadores não ignorar
+
 global_err=Falha ao salvar opções Webalizer
 global_ereport=Prefixo de título ausente no relatório
 global_ehost=Nome do host ausente ou inválido
@@ -139,6 +145,7 @@ global_etable=Tamanho para '$1' da tabela ausente ou inválido
 global_ehistory=Nome do arquivo de histórico ausente ou inválido 
 global_ecurrent=Nome do arquivo incremental ausente ou inválido 
 global_ecache=Nome do arquivo de cache DNS ausente ou inválido 
+
 log_create_log=Relatórios criados por $1
 log_modify_log=Relatório modificado por $1
 log_delete_log=Relatórios excluídos por $1
@@ -147,6 +154,7 @@ log_global=Modificado opções globais Webalizer
 log_global2=Modificado opções Webalizer por $1
 log_enable_logs=Relatórios programados em $1 registros
 log_disable_logs=Relatórios desprogramados sobre $1 registros
+
 acl_view=Só pode exibir os relatórios existentes?
 acl_global=Pode editar as opções webalizer global?
 acl_dir=Só permitir a visualização e edição de relatórios para logs em
