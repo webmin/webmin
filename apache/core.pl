@@ -5,6 +5,7 @@
 # Returns ar array of references to associative arrays, each containing
 # information about some directive. The keys of each array are:
 #  name -	The name of this directive
+#  multiple -	Can this directive appear multiple times
 #  type -	What kind of directive this in. Possible values are
 #		0 - Processes and limits
 #		1 - Networking and addresses
@@ -27,7 +28,6 @@
 #		18- Filters
 #		19- Character Sets
 #		20- Image maps
-#  multiple -	Can this directive appear multiple times
 #  global -	Can be used in the global server context
 #  virtual -	Can be used in a VirtualHost section or in the global section
 #  directory -	Can be used in a Directory section context
@@ -72,6 +72,7 @@ $rv = [	[ 'AccessFileName', 0, 5, 'virtual', undef, 5 ],
 	[ 'NameVirtualHost', 1, 1, 'global', '1.3-2.4', 5 ],
 	[ 'Options', 0, 5, 'virtual directory htaccess', undef, 3 ],
 	[ 'PidFile', 0, 9, 'global', -2.0 ],
+	[ 'Protocols', 0, 1, 'virtual', 2.4 ],
 	[ 'require', 0, 4, 'directory htaccess', undef, 6 ],
 	[ 'RLimitCPU', 0, 0, 'virtual', 1.2 ],
 	[ 'RLimitMEM', 0, 0, 'virtual', 1.2 ],
@@ -613,6 +614,32 @@ foreach $nv (@nv) {
 	}
 if (@nv) { return ( \@nv ); }
 else { return ( [ ] ); }
+}
+
+sub edit_Protocols
+{
+my %p = map { $_, 1 } @{$_[0]->{'words'}};
+my @popts = ( "http/1.1", "h2", "h2c" );
+my @psel = map { &ui_checkbox("protocols", $_, $text{'core_protocols_'.$_} || $_, $p{$_}) } @popts;
+return (1,
+        $text{'core_protocols'},
+	&ui_radio("protocols_def", %p ? 0 : 1,
+		  [ [ 1, $text{'default'}.
+		      " (".$text{'core_protocols_http/1.1'}.")<br>" ],
+		    [ 0, $text{'core_protocols_sel'} ] ])." ".
+	join(" ", @psel),
+	);
+}
+sub save_Protocols
+{
+if ($in{'protocols_def'}) {
+	return ( [ ] );
+	}
+else {
+	my @prots = split(/\0/, $in{'protocols'});
+	@prots || &error($text{'core_eprotocols'});
+	return ( [ join(" ", @prots) ] );
+	}
 }
 
 #########################################################################
