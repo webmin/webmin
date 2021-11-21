@@ -619,7 +619,7 @@ else { return ( [ ] ); }
 sub edit_Protocols
 {
 my %p = map { $_, 1 } @{$_[0]->{'words'}};
-my @popts = ( "http/1.1", "h2", "h2c" );
+my @popts = ( "h2", "h2c", "http/1.1" );
 my @psel = map { &ui_checkbox("protocols", $_, $text{'core_protocols_'.$_} || $_, $p{$_}) } @popts;
 return (1,
         $text{'core_protocols'},
