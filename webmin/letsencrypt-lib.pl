@@ -145,6 +145,15 @@ if ($mode eq "dns") {
 			      "letsencrypt-cleanup.pl");
 	}
 
+# Run the before command
+if ($config{'letsencrypt_before'}) {
+	my $out = &backquote_logged("$config{'letsencrypt_before'} 2>&1 </dev/null");
+	if ($?) {
+		return (0, "Pre-request command failed : $out");
+		}
+	}
+
+my @rv;
 if ($letsencrypt_cmd) {
 	# Call the native Let's Encrypt client
 	my $temp = &transname();
@@ -204,12 +213,12 @@ if ($letsencrypt_cmd) {
 		&reset_environment();
 		}
 	else {
-		&cleanup_wellknown($wellknown_new, $challenge_new);
-		return (0, "Bad mode $mode");
+		@rv = (0, "Bad mode $mode");
+		goto FAILED;
 		}
 	if ($?) {
-		&cleanup_wellknown($wellknown_new, $challenge_new);
-		return (0, "<pre>".&html_escape($out || "No output from $letsencrypt_cmd")."</pre>");
+		@rv = (0, "<pre>".&html_escape($out || "No output from $letsencrypt_cmd")."</pre>");
+		goto FAILED;
 		}
 	my ($full, $cert, $key, $chain);
 	if ($out =~ /(\/etc\/letsencrypt\/(?:live|archive)\/[a-zA-Z0-9\.\_\-\/\r\n\* ]*\.pem)/) {
@@ -228,22 +237,30 @@ if ($letsencrypt_cmd) {
 			$full = pop(@fulls);
 			}
 		else {
-			&cleanup_wellknown($wellknown_new, $challenge_new);
-			&error("Output did not contain a PEM path!");
+			@rv = (0, "Output did not contain a PEM path!");
+			goto FAILED;
 			}
 		}
-	-r $full && -s $full || return (0, &text('letsencrypt_efull', $full));
+	if (!-r $full || !-s $full) {
+		@rv = (0, &text('letsencrypt_efull', $full));
+		goto FAILED;
+		}
 	$full =~ s/\/[^\/]+$//;
 	$cert = $full."/cert.pem";
-	-r $cert && -s $cert || return (0, &text('letsencrypt_ecert', $cert));
+	if (!-r $cert || !-s $cert) {
+		@rv = (0, &text('letsencrypt_ecert', $cert));
+		goto FAILED;
+		}
 	$key = $full."/privkey.pem";
-	-r $key && -s $key || return (0, &text('letsencrypt_ekey', $key));
+	if (!-r $key || !-s $key) {
+		@rv = (0, &text('letsencrypt_ekey', $key));
+		goto FAILED;
+		}
 	$chain = $full."/chain.pem";
 	$chain = undef if (!-r $chain);
 	&set_ownership_permissions(undef, undef, 0600, $cert);
 	&set_ownership_permissions(undef, undef, 0600, $key);
 	&set_ownership_permissions(undef, undef, 0600, $chain);
-	&cleanup_wellknown($wellknown_new, $challenge_new);
 
 	if ($account_email) {
 		# Attempt to update the contact email on file with let's encrypt
@@ -253,11 +270,11 @@ if ($letsencrypt_cmd) {
 		    " >/dev/null 2>&1 </dev/null");
 		}
 
-	return (1, $cert, $key, $chain);
+	@rv = (1, $cert, $key, $chain);
 	}
 elsif ($mode eq "dns") {
 	# Python client doesn't support DNS
-	return (0, $text{'letsencrypt_eacmedns'});
+	@rv = (0, $text{'letsencrypt_eacmedns'});
 	}
 else {
 	# Fall back to local Python client
@@ -268,9 +285,9 @@ else {
 		my $out = &backquote_logged(
 			"openssl genrsa 4096 2>&1 >$account_key");
 		if ($?) {
-			&cleanup_wellknown($wellknown_new, $challenge_new);
-			return (0, &text('letsencrypt_eaccountkey',
-					 &html_escape($out)));
+			@rv = (0, &text('letsencrypt_eaccountkey',
+					&html_escape($out)));
+			goto FAILED;
 			}
 		}
 
@@ -278,8 +295,8 @@ else {
 	my $key = &transname();
 	my $out = &backquote_logged("openssl genrsa $size 2>&1 >$key");
 	if ($?) {
-		&cleanup_wellknown($wellknown_new, $challenge_new);
-		return (0, &text('letsencrypt_ekeygen', &html_escape($out)));
+		@rv = (0, &text('letsencrypt_ekeygen', &html_escape($out)));
+		goto FAILED;
 		}
 
 	# Generate a CSR
@@ -287,8 +304,8 @@ else {
 	my ($ok, $csr) = &generate_ssl_csr($key, undef, undef, undef,
 					   undef, undef, \@doms, undef);
 	if (!$ok) {
-		&cleanup_wellknown($wellknown_new, $challenge_new);
-		return &text('letsencrypt_ecsr', $csr);
+		@rv = &text('letsencrypt_ecsr', $csr);
+		goto FAILED;
 		}
 	&copy_source_dest($csr, "/tmp/lets.csr", 1);
 
@@ -323,11 +340,14 @@ else {
 			@lines = @lines[0 .. $trace-1];
 			$out = join("\n", @lines);
 			}
-		&cleanup_wellknown($wellknown_new, $challenge_new);
-		return (0, &text('letsencrypt_etiny',
-				 "<pre>".&html_escape($out))."</pre>");
+		@rv = (0, &text('letsencrypt_etiny',
+				"<pre>".&html_escape($out))."</pre>");
+		goto FAILED;
 		}
-	-r $cert && -s $cert || return (0, &text('letsencrypt_ecert', $cert));
+	if (!-r $cert || !-s $cert) {
+		@rv = (0, &text('letsencrypt_ecert', $cert));
+		goto FAILED;
+		}
 
 	# Check if the returned cert contains a CA cert as well
 	my $chain = &transname();
@@ -356,14 +376,12 @@ else {
 			&http_download($host, $port, $page, \$cout, \$err,
 				       undef, $ssl);
 			if ($err) {
-				&cleanup_wellknown($wellknown_new,
-						   $challenge_new);
-				return (0, &text('letsencrypt_echain', $err));
+				@rv = (0, &text('letsencrypt_echain', $err));
+				goto FAILED;
 				}
 			if ($cout !~ /\S/ && !-r $chain) {
-				&cleanup_wellknown($wellknown_new,
-						   $challenge_new);
-				return (0, &text('letsencrypt_echain2', $url));
+				@rv = (0, &text('letsencrypt_echain2', $url));
+				goto FAILED;
 				}
 			my $fh = "CHAIN";
 			&open_tempfile($fh, ">>$chain");
@@ -386,9 +404,19 @@ else {
 	&unlink_file($key);
 	&unlink_file($chain);
 
-	&cleanup_wellknown($wellknown_new, $challenge_new);
-	return (1, $certfinal, $keyfinal, $chainfinal);
+	@rv = (1, $certfinal, $keyfinal, $chainfinal);
 	}
+
+# Run the after command
+FAILED:
+if ($wellknown_new) {
+	&cleanup_wellknown($wellknown_new, $challenge_new);
+	}
+if ($config{'letsencrypt_after'}) {
+	&backquote_logged("$config{'letsencrypt_after'} 2>&1 </dev/null");
+	}
+
+return @rv;
 }
 
 # cleanup_wellknown(wellknown, challenge)
