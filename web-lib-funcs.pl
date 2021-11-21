@@ -7078,6 +7078,12 @@ if ($gconfig{'os_type'} eq 'windows') {
 		$err = $out;
 		}
 	}
+elsif (-l $src && !$copylink) {
+	# A link .. re-create
+	my $linkdst = readlink($src);
+	$ok = &symlink_logged($linkdst, $dst);
+	$err = $ok ? undef : $!;
+	}
 elsif (-d $src) {
 	# A directory .. need to copy with tar command
 	my @st = stat($src);
@@ -7089,12 +7095,6 @@ elsif (-d $src) {
 		$ok = 0;
 		$err = $out;
 		}
-	}
-elsif (-l $src && !$copylink) {
-	# A link .. re-create
-	my $linkdst = readlink($src);
-	$ok = &symlink_logged($linkdst, $dst);
-	$err = $ok ? undef : $!;
 	}
 else {
 	# Can just copy with cp
