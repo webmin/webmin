@@ -638,6 +638,7 @@ if ($in{'protocols_def'}) {
 else {
 	my @prots = split(/\0/, $in{'protocols'});
 	@prots || &error($text{'core_eprotocols'});
+	@prots = sort @prots;
 	return ( [ join(" ", @prots) ] );
 	}
 }
