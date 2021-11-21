@@ -147,3 +147,5 @@ Announcements to all Webmin users can now be displayed on the System Information
 The host, port and SSL mode for redirects can now be customized via miniserv.conf options.
 ---- Changes since 1.960 ----
 Added options on the Ports and Addresses page to control the number of concurrent connections per IP, network and in total.
+---- Changes since 1.970 ----
+Added an option on the Authentication Options page to enable a password change API for use by other programs.
