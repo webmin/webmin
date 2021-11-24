@@ -1,1 +1,9 @@
 virt_eprotocol=Sie müssen mindestens eine verwendbare SSL/TLS-Protokollversion auswählen
+
+core_protocols=Zu verwendende HTTP-Protokolle
+core_protocols_sel=Ausgewählte Protokolle:
+core_protocols_http/1.1=HTTP/1.1
+core_protocols_http/2=HTTP/2
+core_protocols_h2=HTTP/2 verschlüsselt
+core_protocols_h2c=HTTP/2 unverschlüsselt
+core_eprotcols=Keine Protokolle ausgewählt!

@@ -19,6 +19,13 @@ htaccess_err=Nepodařilo se vytvořit soubor voleb
 core_portname=Protokol
 core_protoany=&lt;Any&gt;
 core_eduplisten=Adresa pro poslech $1 je uvedena dvakrát
+core_protocols=HTTP protokoly k použití
+core_protocols_sel=Vybrané protokoly:
+core_protocols_http/1.1=HTTP/1.1
+core_protocols_http/2=HTTP/2
+core_protocols_h2=HTTP/2 šifrováno
+core_protocols_h2c=HTTP/2 nešifrované
+core_eprotcols=Nejsou vybrány žádné protokoly!
 core_minor=Pouze menší verze
 
 mod_alias_alias2=alias dokumentu

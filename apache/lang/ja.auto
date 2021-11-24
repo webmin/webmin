@@ -17,6 +17,13 @@ htaccess_err=オプションファイルを作成できませんでした
 core_portname=プロトコル
 core_protoany=&lt;任意&gt;
 core_eduplisten=リスンアドレス$1が2回リストされています
+core_protocols=使用するHTTPプロトコル
+core_protocols_sel=選択したプロトコル：
+core_protocols_http/1.1=HTTP/1.1
+core_protocols_http/2=HTTP/2
+core_protocols_h2=HTTP/2暗号化
+core_protocols_h2c=HTTP/2暗号化されていない
+core_eprotcols=プロトコルが選択されていません！
 core_minor=マイナーバージョンのみ
 
 mod_proxy_seconds=秒

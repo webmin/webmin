@@ -17,6 +17,13 @@ htaccess_err=Nije uspjelo stvaranje datoteke opcija
 core_portname=Protokol
 core_protoany=&lt;Bilo&gt;
 core_eduplisten=Adresa za slušanje $1 navedena je dva puta
+core_protocols=HTTP protokoli za korištenje
+core_protocols_sel=Odabrani protokoli:
+core_protocols_http/1.1=HTTP/1.1
+core_protocols_http/2=HTTP/2
+core_protocols_h2=HTTP/2 šifrirano
+core_protocols_h2c=HTTP/2 nešifriran
+core_eprotcols=Nema odabranih protokola!
 core_minor=Samo manja verzija
 
 mod_proxy_seconds=sekundi

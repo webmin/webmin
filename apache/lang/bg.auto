@@ -1,3 +1,11 @@
 enewline=Невалиден знак в стойност
 
 virt_eprotocol=Трябва да изберете поне една използваема версия на SSL/TLS протокол
+
+core_protocols=HTTP протоколи за използване
+core_protocols_sel=Избрани протоколи:
+core_protocols_http/1.1=HTTP/1.1
+core_protocols_http/2=HTTP/2
+core_protocols_h2=HTTP/2 криптиран
+core_protocols_h2c=HTTP/2 нешифрован
+core_eprotcols=Няма избрани протоколи!

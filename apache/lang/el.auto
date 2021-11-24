@@ -1,3 +1,11 @@
 enewline=Μη έγκυρος χαρακτήρας σε αξία
 
 virt_eprotocol=Πρέπει να επιλέξετε τουλάχιστον μία χρησιμοποιήσιμη έκδοση πρωτοκόλλου SSL/TLS
+
+core_protocols=Πρωτόκολλα HTTP προς χρήση
+core_protocols_sel=Επιλεγμένα πρωτόκολλα:
+core_protocols_http/1.1=HTTP/1.1
+core_protocols_http/2=HTTP/2
+core_protocols_h2=HTTP/2 κρυπτογραφημένο
+core_protocols_h2c=HTTP/2 μη κρυπτογραφημένο
+core_eprotcols=Δεν επιλέχθηκαν πρωτόκολλα!

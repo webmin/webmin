@@ -1,0 +1,7 @@
+core_protocols=HTTP-protokoller å bruke
+core_protocols_sel=Utvalgte protokoller:
+core_protocols_http/1.1=HTTP/1.1
+core_protocols_http/2=HTTP/2
+core_protocols_h2=HTTP/2 kryptert
+core_protocols_h2c=HTTP/2 ukryptert
+core_eprotcols=Ingen protokoller valgt!

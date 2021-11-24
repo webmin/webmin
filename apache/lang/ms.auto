@@ -42,6 +42,13 @@ restart_eunknown=Sebab tidak diketahui
 core_portname=Protokol
 core_protoany=&lt;Any&gt;
 core_eduplisten=Dengar alamat $1 disenaraikan dua kali
+core_protocols=protokol HTTP untuk digunakan
+core_protocols_sel=Protokol yang dipilih:
+core_protocols_http/1.1=HTTP/1.1
+core_protocols_http/2=HTTP/2
+core_protocols_h2=HTTP/2 disulitkan
+core_protocols_h2c=HTTP/2 tidak disulitkan
+core_eprotcols=Tiada protokol dipilih!
 
 mod_negotiation_cache=Dokumen-dokumen yang dirundingkan kandungan cache?
 mod_negotiation_pri=Keutamaan bahasa untuk pelbagai tontonan

@@ -15,6 +15,13 @@ htaccess_err=Falha ao criar arquivo de opções
 core_portname=Protocolo
 core_protoany=&lt;Qualquer
 core_eduplisten=O endereço de escuta $1 é listado duas vezes
+core_protocols=Protocolos HTTP para usar
+core_protocols_sel=Protocolos selecionados:
+core_protocols_http/1.1=HTTP/1.1
+core_protocols_http/2=HTTP/2
+core_protocols_h2=HTTP/2 criptografado
+core_protocols_h2c=HTTP/2 não criptografado
+core_eprotcols=Nenhum protocolo selecionado!
 core_minor=Apenas versão secundária
 
 mod_proxy_seconds=segundos

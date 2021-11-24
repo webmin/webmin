@@ -19,6 +19,13 @@ restart_ecannot=Вы не можете применять изменения
 
 core_protoany=&lt;Any&gt;
 core_eduplisten=Прослушиваемый адрес $1 указан дважды
+core_protocols=Протоколы HTTP для использования
+core_protocols_sel=Избранные протоколы:
+core_protocols_http/1.1=HTTP/1.1
+core_protocols_http/2=HTTP/2
+core_protocols_h2=HTTP/2 зашифрованный
+core_protocols_h2c=HTTP/2 незашифрованный
+core_eprotcols=Протоколы не выбраны!
 core_ecandoc=Вы не можете использовать корневой каталог документа «$1»
 core_fileowner=Владелец файла соответствует
 core_filegroup=Совпадения владельца группы
