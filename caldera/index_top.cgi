@@ -39,10 +39,11 @@ elsif (!$cats{$in{'cat'}}) {
 # Display title and categories
 &PrintHeader();
 print <<EOF;
-<!doctype html public \"-//W3C//DTD HTML 3.2 Final//EN\">
+<!doctype html public "-//W3C//DTD HTML 3.2 Final//EN">
 <HTML>
 
 <HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 <LINK REL="stylesheet" TYPE="text/css" HREF="style.css">
 </HEAD>
 
