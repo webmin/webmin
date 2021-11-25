@@ -31,7 +31,7 @@ if ($gconfig{'showlogin'}) {
 	}
 &PrintHeader();
 print "<!doctype html public \"-//W3C//DTD HTML 3.2 Final//EN\">\n";
-print "<html><head><title>$title</title></head>\n";
+print "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><title>$title</title></head>\n";
 print "<frameset rows='$rows,*' border=0>\n";
 $goto = &get_goto_module();
 if ($goto) {
