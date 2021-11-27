@@ -90,7 +90,7 @@ my %hmap;
 if (@recs) {
 	@recs = &sort_records(@recs);
 	foreach my $v (sort { $a cmp $b } keys %text) {
-		if ($v =~ /^value_([A-Z0-9]+)(\d+)/) {
+		if ($v =~ /^value_([A-Z0-9]+)(\d+)$/) {
 			$hmap{$1}->[$2-1] = $text{$v};
 			}
 		}

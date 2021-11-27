@@ -1310,16 +1310,16 @@ elsif ($type eq "NSEC3PARAM") {
 	}
 elsif ($type eq "CAA") {
 	# CAA records have a flag, tag and issuer domain
-	print &ui_table_row($text{'value_CAA0'},
+	print &ui_table_row($text{'value_CAA1'},
 		&ui_yesno_radio("value0", $v[0] || 0));
 
-	print &ui_table_row($text{'value_CAA1'},
+	print &ui_table_row($text{'value_CAA2'},
 		&ui_select("value1", $v[1],
 			   [ [ "issue", $text{'value_caa_issue'} ],
 			     [ "issuewild", $text{'value_caa_issuewild'} ],
 			     [ "iodef", $text{'value_caa_iodef'} ] ]));
 
-	print &ui_table_row($text{'value_CAA2'},
+	print &ui_table_row($text{'value_CAA3'},
 		&ui_textbox("value2", $v[2], 40));
 	}
 else {
