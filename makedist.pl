@@ -9,11 +9,14 @@ if ($ARGV[0] eq "-minimal" || $ARGV[0] eq "--minimal") {
 	$min++;
 	shift(@ARGV);
 	}
-$vers = $ARGV[0];
-$vers =~ /^[0-9\.]+$/ || usage();
+$fullvers = $ARGV[0];
+$fullvers =~ /^([0-9\.]+)(\-(\d+))?$/ || usage();
+$vers = $1;
+$release = $3;
 $tardir = $min ? "minimal" : "tarballs";
-$vfile = $min ? "$vers-minimal" : $vers;
+$vfile = $min ? "$fullvers-minimal" : $fullvers;
 $zipdir = "zips";
+$vers || usage();
 
 @files = ("config.cgi", "config-*-linux",
 	  "config-solaris", "images", "index.cgi", "mime.types",
@@ -64,90 +67,102 @@ else {
 @dirlist = ( "WebminUI", "JSON" );
 
 $dir = "webmin-$vers";
-system("rm -rf $tardir/$dir");
-mkdir("$tardir/$dir", 0755);
+if (!$release || !-d "$tardir/$dir") {
+	# Copy files into the directory for tarring up, unless this is a minor
+	# release or a new version
+	system("rm -rf $tardir/$dir");
+	mkdir("$tardir/$dir", 0755);
 
-# Copy top-level files to directory
-print "Adding top-level files\n";
-$flist = join(" ", @files);
-system("cp -r -L $flist $tardir/$dir");
-system("touch $tardir/$dir/install-type");
-system("echo $vers > $tardir/$dir/version");
-if ($min) {
-	system("touch $tardir/$dir/minimal-install");
-	}
+	# Copy top-level files to directory
+	print "Adding top-level files\n";
+	$flist = join(" ", @files);
+	system("cp -r -L $flist $tardir/$dir");
+	system("touch $tardir/$dir/install-type");
+	system("echo $vers > $tardir/$dir/version");
+	if ($min) {
+		system("touch $tardir/$dir/minimal-install");
+		}
 
-# Add module files
-foreach $m (@mlist) {
-	print "Adding module $m\n";
-	mkdir("$tardir/$dir/$m", 0755);
-	$flist = "";
-	opendir(DIR, $m);
-	foreach $f (readdir(DIR)) {
-		next if ($f =~ /^\./ || $f =~ /\.git$/ ||
-		         $f =~ /\.(tar|wbm|wbt)\.gz$/ ||
-			 $f eq "README.md" || $f =~ /^makemodule.*\.pl$/ ||
-			 $f eq "linux.sh" || $f eq "freebsd.sh" || 
-			 $f eq "LICENCE" || $f eq "version");
-		$flist .= " $m/$f";
+	# Add module files
+	foreach $m (@mlist) {
+		print "Adding module $m\n";
+		mkdir("$tardir/$dir/$m", 0755);
+		$flist = "";
+		opendir(DIR, $m);
+		foreach $f (readdir(DIR)) {
+			next if ($f =~ /^\./ || $f =~ /\.git$/ ||
+				 $f =~ /\.(tar|wbm|wbt)\.gz$/ ||
+				 $f eq "README.md" || $f =~ /^makemodule.*\.pl$/ ||
+				 $f eq "linux.sh" || $f eq "freebsd.sh" || 
+				 $f eq "LICENCE" || $f eq "version");
+			$flist .= " $m/$f";
+			}
+		closedir(DIR);
+		system("cp -r -L $flist $tardir/$dir/$m");
+		}
+
+	# Remove files that shouldn't be publicly available
+	system("rm -rf $tardir/$dir/status/mailserver*");
+	system("rm -rf $tardir/$dir/file/plugin.jar");
+	system("rm -rf $tardir/$dir/authentic-theme/update");
+
+	# Clear out minified JS
+	if (-d "$tardir/$dir/authentic-theme/extensions") {
+		system("cat /dev/null >$tardir/$dir/authentic-theme/extensions/csf.min.js");
+		}
+
+	# Remove theme settings files
+	if (-d "$tardir/$dir/authentic-theme") {
+		system("find $tardir/$dir/authentic-theme -name 'settings_*.js' | xargs rm");
+		}
+
+	# Add other directories
+	foreach $d (@dirlist) {
+		print "Adding directory $d\n";
+		system("cp -r $d $tardir/$dir");
+		}
+
+	# Update module.info and theme.info files with depends and version
+	opendir(DIR, "$tardir/$dir");
+	while($d = readdir(DIR)) {
+		# set depends in module.info to this version
+		next if ($d eq "authentic-theme");	# Theme version matters
+		local $minfo = "$tardir/$dir/$d/module.info";
+		local $tinfo = "$tardir/$dir/$d/theme.info";
+		if (-r $minfo) {
+			local %minfo;
+			&read_file($minfo, \%minfo);
+			$minfo{'depends'} = join(" ", split(/\s+/, $minfo{'depends'}),
+						      $vers);
+			$minfo{'version'} = $vers;
+			&write_file($minfo, \%minfo);
+			}
+		elsif (-r $tinfo) {
+			local %tinfo;
+			&read_file($tinfo, \%tinfo);
+			$tinfo{'depends'} = join(" ", split(/\s+/, $tinfo{'depends'}),
+						      $vers);
+			$tinfo{'version'} = $vers;
+			&write_file($tinfo, \%tinfo);
+			}
 		}
 	closedir(DIR);
-	system("cp -r -L $flist $tardir/$dir/$m");
-	}
 
-# Remove files that shouldn't be publicly available
-system("rm -rf $tardir/$dir/status/mailserver*");
-system("rm -rf $tardir/$dir/file/plugin.jar");
-system("rm -rf $tardir/$dir/authentic-theme/update");
-
-# Clear out minified JS
-if (-d "$tardir/$dir/authentic-theme/extensions") {
-	system("cat /dev/null >$tardir/$dir/authentic-theme/extensions/csf.min.js");
-	}
-
-# Remove theme settings files
-if (-d "$tardir/$dir/authentic-theme") {
-	system("find $tardir/$dir/authentic-theme -name 'settings_*.js' | xargs rm");
-	}
-
-# Add other directories
-foreach $d (@dirlist) {
-	print "Adding directory $d\n";
-	system("cp -r $d $tardir/$dir");
-	}
-
-# Update module.info and theme.info files with depends and version
-opendir(DIR, "$tardir/$dir");
-while($d = readdir(DIR)) {
-	# set depends in module.info to this version
-	next if ($d eq "authentic-theme");	# Theme version matters
-	local $minfo = "$tardir/$dir/$d/module.info";
-	local $tinfo = "$tardir/$dir/$d/theme.info";
-	if (-r $minfo) {
-		local %minfo;
-		&read_file($minfo, \%minfo);
-		$minfo{'depends'} = join(" ", split(/\s+/, $minfo{'depends'}),
-					      $vers);
-		$minfo{'version'} = $vers;
-		&write_file($minfo, \%minfo);
-		}
-	elsif (-r $tinfo) {
-		local %tinfo;
-		&read_file($tinfo, \%tinfo);
-		$tinfo{'depends'} = join(" ", split(/\s+/, $tinfo{'depends'}),
-					      $vers);
-		$tinfo{'version'} = $vers;
-		&write_file($tinfo, \%tinfo);
+	# Make blue-theme a symlink instead of a copy
+	if (!$min && -r "$tardir/$dir/gray-theme") {
+		system("cd $tardir/$dir && ln -s gray-theme blue-theme");
 		}
 	}
-closedir(DIR);
 
-# Make blue-theme a symlink instead of a copy
-if (!$min && -r "$tardir/$dir/gray-theme") {
-	system("cd $tardir/$dir && ln -s gray-theme blue-theme");
+# Store release version, if set
+if ($release) {
+	system("echo $release > $tardir/$dir/release");
+	}
+else {
+	unlink("$tardir/$dir/release");
 	}
 
-# Remove useless .bak, test and other files, and create the tar.gz file
+# Create the tar.gz file
 print "Creating webmin-$vfile.tar.gz\n";
 system("cd $tardir ; tar cvf - $dir 2>/dev/null | gzip -c >webmin-$vfile.tar.gz");
 
@@ -195,7 +210,7 @@ if (-d "sigs") {
 	}
 
 # Create a change log for this version
-if (-d "/home/jcameron/webmin.com") {
+if (-d "/home/jcameron/webmin.com" && !$release) {
 	$lastvers = sprintf("%.2f0", $vers - 0.005);	# round down to last stable
 	if ($lastvers == $vers) {
 		# this is a new full version, so round down to the previous full version
@@ -204,7 +219,7 @@ if (-d "/home/jcameron/webmin.com") {
 	system("./showchangelog.pl --html $lastvers >/home/jcameron/webmin.com/changes-$vers.html");
 	}
 
-if ($min) {
+if ($min && !$release) {
 	# Delete the tarball directory
 	system("rm -rf $tardir/$dir");
 	}
