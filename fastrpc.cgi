@@ -21,10 +21,17 @@ if ($access{'rpc'} == 0 || $access{'rpc'} == 2 &&
 	exit;
 	}
 
-# Find a free port
+# Will IPv6 work?
 &get_miniserv_config(\%miniserv);
+$use_ipv6 = 0;
+if ($miniserv{'ipv6'}) {
+	eval "use Socket6";
+	$use_ipv6 = 1 if (!$@);
+	}
+
+# Find a free port
 $port = $miniserv{'port'} || 10000;
-$aerr = &allocate_socket(MAIN, \$port);
+$aerr = &allocate_socket(MAIN, $use_ipv6 ? MAIN6 : undef, \$port);
 if ($aerr) {
 	print "0 $aerr\n";
 	exit;
@@ -55,13 +62,24 @@ untie(*STDOUT);
 # Accept the TCP connection
 local $rmask;
 vec($rmask, fileno(MAIN), 1) = 1;
+if ($use_ipv6) {
+	vec($rmask, fileno(MAIN6), 1) = 1;
+	}
 $sel = select($rmask, undef, undef, 60);
 if ($sel <= 0) {
 	print STDERR "fastrpc: accept timed out\n"
 		if ($gconfig{'rpcdebug'});
 	exit;
 	}
-$acptaddr = accept(SOCK, MAIN);
+if (vec($rmask, fileno(MAIN), 1)) {
+	$acptaddr = accept(SOCK, MAIN);
+	}
+elsif ($use_ipv6 && vec($rmask, fileno(MAIN6), 1)) {
+	$acptaddr = accept(SOCK, MAIN6);
+	}
+else {
+	die "No connection on any socket!";
+	}
 die "accept failed : $!" if (!$acptaddr);
 $oldsel = select(SOCK);
 $| = 1;
@@ -308,20 +326,36 @@ while(1) {
 	$rcount++;
 	}
 
-# allocate_socket(handle, &port)
+# allocate_socket(handle, ipv6-handle, &port)
 sub allocate_socket
 {
-local ($fh, $port) = @_;
+local ($fh, $fh6, $port) = @_;
 local $proto = getprotobyname('tcp');
 if (!socket($fh, PF_INET, SOCK_STREAM, $proto)) {
 	return "socket failed : $!";
 	}
 setsockopt($fh, SOL_SOCKET, SO_REUSEADDR, pack("l", 1));
+if ($fh6) {
+	if (!socket($fh6, PF_INET6(), SOCK_STREAM, $proto)) {
+		return "socket6 failed : $!";
+		}
+	setsockopt($fh6, SOL_SOCKET, SO_REUSEADDR, pack("l", 1));
+	setsockopt($fh6, 41, 26, pack("l", 1));	# IPv6 only
+	}
 while(1) {
 	$$port++;
-	last if (bind($fh, sockaddr_in($$port, INADDR_ANY)));
+	$pack = pack_sockaddr_in($$port, INADDR_ANY);
+	next if (!bind($fh, $pack));
+	if ($fh6) {
+		$pack6 = pack_sockaddr_in6($$port, in6addr_any());
+		next if (!bind($fh6, $pack6));
+		}
+	last;
 	}
-listen($fh, SOMAXCONN) || return "listed failed : $!";
+listen($fh, SOMAXCONN) || return "listen failed : $!";
+if ($fh6) {
+	listen($fh6, SOMAXCONN) || return "listen6 failed : $!";
+	}
 return undef;
 }
 
