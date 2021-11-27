@@ -7478,6 +7478,7 @@ if ($serv->{'fast'} || !$sn) {
 				}
 			delete($ENV{'FOREIGN_MODULE_NAME'});
 			delete($ENV{'FOREIGN_ROOT_DIRECTORY'});
+			delete($ENV{'FASTRPC_RUN_LOCAL'});
 			$ENV{'DISABLE_REFERERS_CHECK'} = 1;
 			chdir($root_directory);
 			if (!exec("$root_directory/fastrpc.cgi")) {
