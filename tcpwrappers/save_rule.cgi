@@ -60,12 +60,10 @@ for (my $i = 0; $i <= $in{'cmd_count'}; $i++) {
     $cmd .= $in{'cmd_'.$i};
 }
 
-
 my %newrule = ( 'service' => $service,
 		'host' => $host,
 		'cmd' => $cmd
 		);
-webmin_debug_var_dump(\%newrule, 'save_rule');
 
 # Save to file
 if ($in{'new'}) {
