@@ -24,9 +24,9 @@ if ($in{'delete'}) {
     &error($text{'save_eservice'}) if ($in{'service_except_custom'} && $in{'service_except_custom'} !~ /^[\w\d\s\-\/\.,]+$/);
 
     &error($text{'save_ehost'})
-        if ($in{'host_text_def'} == 0 && $in{'host_text'} !~ /^[\w\d\s\-\/\@\.,]+$/ && $in{'host_text'} !~ /^\[[:\d]+\]/);
+        if ($in{'host_text_def'} == 0 && $in{'host_text'} !~ /^[\w\d\s\-\/\@\.,]+$/ && $in{'host_text'} !~ /^\[[:\da-f]+\]/);
     &error($text{'save_ehost'})
-        if ($in{'host_except'} && $in{'host_except'} !~ /^[\w\d\s\-\/\@\.,]+$/ && $in{'host_except'} !~ /^\[[:\d]+\]/);
+        if ($in{'host_except'} && $in{'host_except'} !~ /^[\w\d\s\-\/\@\.,]+$/ && $in{'host_except'} !~ /^\[[:\da-f]+\]/);
 
     for (my $i = 0; $i <= $in{'cmd_count'}; $i++) {
 	&error($text{'save_ecmd'}) if ($in{'cmd_'.$i} && $in{'cmd_'.$i} !~ /^[\w\d\s\-\/\@\%\|\(\)\'\"\&\.,]+$/);

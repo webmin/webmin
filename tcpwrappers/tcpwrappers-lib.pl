@@ -44,7 +44,7 @@ sub list_rules {
         my $ipv6_enc;
 
         # Match ipv6 with or without range
-        if ($line =~ /(?|(\[[:\d]+\]\/\d+)|(\[[:\d]+\]))/) {
+        if ($line =~ /(?|(\[[:\da-f]+\]\/\d+)|(\[[:\da-f]+\]))/) {
             $ipv6 = $1;
             $ipv6_enc = &encode_base64($ipv6);
             $line =~ s/\Q$ipv6\E/$ipv6_enc/;
