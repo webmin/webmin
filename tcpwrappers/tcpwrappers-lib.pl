@@ -38,11 +38,20 @@ sub list_rules {
 	} else {
 	    my @cmtlines = split(/\n/, $cmt);
 	    $cmt = undef;
-	    $line =~ s/\\:/\0/g;
-	    my ($service, $host, $cmd) = split /:/, $line, 3;
-	    $host =~ s/\0/:/g;
+
+        # Fix further splitting on : to work with ipv6
+        my $ipv6;
+        my $ipv6_enc;
+
+        # Match ipv6 with or without range
+        if ($line =~ /(?|(\[[:\d]+\]\/\d+)|(\[[:\d]+\]))/) {
+            $ipv6 = $1;
+            $ipv6_enc = &encode_base64($ipv6);
+            $line =~ s/\Q$ipv6\E/$ipv6_enc/;
+        }
+        my ($service, $host, $cmd) = split /:/, $line, 3;
 	    $service =~ s/^\s*//; $service =~ s/\s*$//;
-	    $host =~ s/^\s*//; $host =~ s/\s*$//;
+	    $host =~ s/^\s*\Q$ipv6_enc\E/$ipv6/; $host =~ s/\s*$//;
 	    
 	    push @ret, { 'id' => $id++,
 			 'service' => $service,
@@ -100,9 +109,7 @@ sub create_rule {
     my ($file, $rule) = @_;
 
     my $lref = &read_file_lines($file);
-    my $host = $rule->{'host'};
-    $host =~ s/:/\\:/g;
-    my $newline = $rule->{'service'}.' : '.$host.($rule->{'cmd'} ? ' : '.$rule->{'cmd'} : '');
+    my $newline = $rule->{'service'}.' : '.$rule->{'host'}.($rule->{'cmd'} ? ' : '.$rule->{'cmd'} : '');
     push(@$lref, $newline);
     &flush_file_lines($file);
 }
@@ -112,9 +119,7 @@ sub create_rule {
 sub modify_rule {
     my ($filename, $oldrule, $newrule) = @_;
 
-    my $host = $newrule->{'host'};
-    $host =~ s/:/\\:/g;
-    my @newline = ($newrule->{'service'}.' : '.$host.($newrule->{'cmd'} ? ' : '.$newrule->{'cmd'} : ''));
+    my @newline = ($newrule->{'service'}.' : '.$newrule->{'host'}.($newrule->{'cmd'} ? ' : '.$newrule->{'cmd'} : ''));
 
     my $lref = &read_file_lines($filename);
     my $len = $oldrule->{'eline'} - $oldrule->{'line'} + 1;

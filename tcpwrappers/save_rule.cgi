@@ -23,8 +23,10 @@ if ($in{'delete'}) {
     &error($text{'save_eservice'}) if ($in{'service_custom'} && $in{'service_custom'} !~ /^[\w\d\s\-\/\.,]+$/);
     &error($text{'save_eservice'}) if ($in{'service_except_custom'} && $in{'service_except_custom'} !~ /^[\w\d\s\-\/\.,]+$/);
 
-    &error($text{'save_ehost'}) if ($in{'host_text_def'} == 0 && $in{'host_text'} !~ /^[\w\d\s\-\/\@\.,]+$/);
-    &error($text{'save_ehost'}) if ($in{'host_except'} && $in{'host_except'} !~ /^[\w\d\s\-\/\@\.,]+$/);
+    &error($text{'save_ehost'})
+        if ($in{'host_text_def'} == 0 && $in{'host_text'} !~ /^[\w\d\s\-\/\@\.,]+$/ && $in{'host_text'} !~ /^\[[:\d]+\]/);
+    &error($text{'save_ehost'})
+        if ($in{'host_except'} && $in{'host_except'} !~ /^[\w\d\s\-\/\@\.,]+$/ && $in{'host_except'} !~ /^\[[:\d]+\]/);
 
     for (my $i = 0; $i <= $in{'cmd_count'}; $i++) {
 	&error($text{'save_ecmd'}) if ($in{'cmd_'.$i} && $in{'cmd_'.$i} !~ /^[\w\d\s\-\/\@\%\|\(\)\'\"\&\.,]+$/);
@@ -58,10 +60,12 @@ for (my $i = 0; $i <= $in{'cmd_count'}; $i++) {
     $cmd .= $in{'cmd_'.$i};
 }
 
+
 my %newrule = ( 'service' => $service,
 		'host' => $host,
 		'cmd' => $cmd
 		);
+webmin_debug_var_dump(\%newrule, 'save_rule');
 
 # Save to file
 if ($in{'new'}) {
