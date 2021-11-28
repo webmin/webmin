@@ -496,125 +496,136 @@ sub get_current_cpu_data
 my @cpu;
 my @fans;
 if (&has_command("sensors")) {
-	my ($cpu, $cpu_package, $cpu_broadcom, $cpu_amd);
-	my $fh = "SENSORS";
+    my ($cpu, $cpu_aux, $cpu_package, $cpu_broadcom, $cpu_amd);
+    my $fh = "SENSORS";
 
-	# Examples https://gist.github.com/547451c9ca376b2d18f9bb8d3748276c
-	&open_execute_command($fh, "sensors </dev/null 2>/dev/null", 1);
-	while (<$fh>) {
+    # Examples https://gist.github.com/547451c9ca376b2d18f9bb8d3748276c
+    &open_execute_command($fh, "sensors </dev/null 2>/dev/null", 1);
 
-	    # CPU full output must have either voltage or fan data
-	    my ($cpu_volt) = $_ =~ /in[\d+]:\s+([\+\-0-9\.]+)\s+V/i;
-	    my ($cpu_fan_num, $cpu_fan_rpm) = $_ =~ /(?|fan([\d+]):\s+([0-9]+)\s+rpm|cpu(\s)fan:\s+([0-9]+)\s+rpm)/i;
-	    $cpu++ if ($cpu_volt || $cpu_fan_num);
+    while (<$fh>) {
 
-	    # CPU package
-	    ($cpu_package) = $_ =~ /(package\s+id\s+[\d]+)/i
-	      if (!$cpu_package);
+        # CPU full output must have either voltage or fan data
+        my ($cpu_volt) = $_ =~ /in[\d+]:\s+([\+\-0-9\.]+)\s+V/i;
+        my ($cpu_fan_num, $cpu_fan_rpm) = $_ =~ /(?|fan([\d+]):\s+([0-9]+)\s+rpm|cpu(\s)fan:\s+([0-9]+)\s+rpm)/i;
+        $cpu++ if ($cpu_volt || $cpu_fan_num);
 
-	    # Standard outputs
-	    if ($cpu_package) {
+        # CPU package
+        ($cpu_package) = $_ =~ /(package\s+id\s+[\d]+)/i
+          if (!$cpu_package);
 
-	        # Common CPU multi
-	        if (/Core\s+(\d+):\s+([\+\-][0-9\.]+)/) {
-	            push(@cpu,
-	                 {  'core' => $1,
-	                    'temp' => int($2)
-	                 });
-	            }
+        # Standard outputs
+        if ($cpu_package) {
 
-	        # Common CPU single
-	        elsif (/CPU:\s+([\+\-][0-9\.]+)/) {
-	            push(@cpu,
-	                 {  'core' => 0,
-	                    'temp' => int($1)
-	                 });
-	            }
-	        }
+            # Common CPU multi
+            if (/Core\s+(\d+):\s+([\+\-][0-9\.]+)/) {
 
-	    # Non-standard outputs
-	    else {
+            	# Prioritise package core temperature
+            	# data over motherboard but keep fans
+                @cpu = (), $cpu_aux++
+                    if ($cpu_aux & 1 && grep { $_->{'core'} eq $1 } @cpu);
+                push(@cpu,
+                     {  'core' => $1,
+                        'temp' => int($2)
+                     });
+                }
 
-	        # CPU types
-	        ($cpu_broadcom) = $_ =~ /cpu_thermal-virtual-[\d]+/i if (!$cpu_broadcom);
-	        ($cpu_amd)      = $_ =~ /\w[\d]{2}temp-pci/i         if (!$cpu_amd);
+            # Common CPU single
+            elsif (/CPU:\s+([\+\-][0-9\.]+)/) {
+                push(@cpu,
+                     {  'core' => 0,
+                        'temp' => int($1)
+                     });
+                }
+            }
 
-	        # First just store fan data for any device if any
-	        push(@fans,
-	             {  'fan' => &trim($cpu_fan_num),
-	                'rpm' => $cpu_fan_rpm
-	             }
-	        ) if ($cpu_fan_num);
+        # Non-standard outputs
+        else {
 
-	        # Full CPU output #1253
-	        if ($cpu) {
+        	# Auxiliary CPU temperature and fans were already captured
+            next if ($cpu_aux);
 
-	            # Standard output
-	            if (/temp(\d+):\s+([\+][0-9\.]+).*?[Cc]\s+.*?[=+].*?\)/) {
-	                push(@cpu,
-	                     {  'core' => (int($1) - 1),
-	                        'temp' => int($2)
-	                     });
-	                }
+            # CPU types
+            ($cpu_broadcom) = $_ =~ /cpu_thermal-virtual-[\d]+/i if (!$cpu_broadcom);
+            ($cpu_amd)      = $_ =~ /\w[\d]{2}temp-pci/i         if (!$cpu_amd);
 
-	            # Approx from motherboard sensor as last resort
-	            elsif (/(cputin|cpu\stemp):\s+([\+][0-9\.]+).*?[Cc]\s+.*?[=+].*?\)/i) {
-	                push(@cpu,
-	                     {  'core' => 0,
-	                        'temp' => int($2)
-	                     });
-	                }
-	            }
+            # First just store fan data for any device if any
+            push(@fans,
+                 {  'fan' => &trim($cpu_fan_num),
+                    'rpm' => $cpu_fan_rpm
+                 }
+            ) if ($cpu_fan_num);
 
-	        # Broadcom
-	        elsif ($cpu_broadcom) {
-	            if (/temp(\d+):\s+([\+\-][0-9\.]+)/) {
-	                push(@cpu,
-	                     {  'core' => $1,
-	                        'temp' => int($2)
-	                     });
-	                }
-	            }
+            # Full CPU output #1253
+            if ($cpu) {
 
-	        # AMD
-	        elsif ($cpu_amd) {
+                # Standard output
+                if (/temp(\d+):\s+([\+][0-9\.]+).*?[Cc]\s+.*?[=+].*?\)/) {
+                    push(@cpu,
+                         {  'core' => (int($1) - 1),
+                            'temp' => int($2)
+                         });
+                    }
 
-	            # Like in sourceforge.net/p/webadmin/discussion/600155/thread/a9d8fe19c0
-	            if (/Tdie:\s+([\+\-][0-9\.]+)/) {
-	                push(@cpu,
-	                     {  'core' => 0,
-	                        'temp' => int($1),
-	                     });
-	                }
+                # Approx from motherboard sensor as last resort
+                elsif (/(cputin|cpu\stemp):\s+([\+][0-9\.]+).*?[Cc]\s+.*?[=+].*?\)/i) {
+                    push(@cpu,
+                         {  'core' => 0,
+                            'temp' => int($2)
+                         });
+                    }
+                }
 
-	            # Like in #1481 #1484
-	            elsif (/temp(\d+):\s+([\+\-][0-9\.]+).*?[Cc]\s+.*?[=+].*?\)/) {
-	                push(@cpu,
-	                     {  'core' => (int($1) - 1),
-	                        'temp' => int($2),
-	                     });
-	                }
-	            }
+            # Broadcom
+            elsif ($cpu_broadcom) {
+                if (/temp(\d+):\s+([\+\-][0-9\.]+)/) {
+                    push(@cpu,
+                         {  'core' => $1,
+                            'temp' => int($2)
+                         });
+                    }
+                }
 
-	        # New line - new device, return data or reset and continue
-	        if (/^\s*$/ && !$cpu_package) {
+            # AMD
+            elsif ($cpu_amd) {
 
-	            # Do we have CPU data already, if so,
-	            # add fan output if any and exit
-	            last if (@cpu);
+                # Like in sourceforge.net/p/webadmin/discussion/600155/thread/a9d8fe19c0
+                if (/Tdie:\s+([\+\-][0-9\.]+)/) {
+                    push(@cpu,
+                         {  'core' => 0,
+                            'temp' => int($1),
+                         });
+                    }
 
-	            # Reset cpu and fans and continue
-	            @cpu  = ();
-	            @fans = ();
+                # Like in #1481 #1484
+                elsif (/temp(\d+):\s+([\+\-][0-9\.]+).*?[Cc]\s+.*?[=+].*?\)/) {
+                    push(@cpu,
+                         {  'core' => (int($1) - 1),
+                            'temp' => int($2),
+                         });
+                    }
+                }
 
-	            $cpu          = 0;
-	            $cpu_broadcom = 0;
-	            $cpu_amd      = 0;
-	            }
-	        }
-	    }
-	close($fh);
-	}
+            # New line represents another device
+            if (/^\s*$/) {
+
+                # Do we have CPU data already, if so add fans
+                # output, if any, and continue checking for
+                # priority package id core temperature data
+                $cpu_aux++ if (@cpu);
+                next if ($cpu_aux);
+
+                # Reset cpu and fans and continue
+                @cpu  = ();
+                @fans = ();
+
+                $cpu          = 0;
+                $cpu_broadcom = 0;
+                $cpu_amd      = 0;
+                }
+            }
+        }
+    close($fh);
+    }
 return (\@cpu, \@fans);
 }
 
