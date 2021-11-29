@@ -505,8 +505,8 @@ if (&has_command("sensors")) {
     while (<$fh>) {
 
         # CPU full output must have either voltage or fan data
-        my ($cpu_volt) = $_ =~ /in[\d+]:\s+([\+\-0-9\.]+)\s+V/i;
-        my ($cpu_fan_num, $cpu_fan_rpm) = $_ =~ /(?|fan([\d+]):\s+([0-9]+)\s+rpm|cpu(\s)fan:\s+([0-9]+)\s+rpm)/i;
+        my ($cpu_volt) = $_ =~ /(?|in[\d+]\s*:\s+([\+\-0-9\.]+)\s+V|cpu\s+core\s+voltage\s*:\s+([0-9\.]+)\s+V)/i;
+        my ($cpu_fan_num, $cpu_fan_rpm) = $_ =~ /(?|fan([\d+])\s*:\s+([0-9]+)\s+rpm|cpu(\s)fan\s*:\s+([0-9]+)\s+rpm|cpu\s+fan\s*:\s+([0-9]+)\s+rpm)/i;
         $cpu++ if ($cpu_volt || $cpu_fan_num);
 
         # CPU package
@@ -519,8 +519,8 @@ if (&has_command("sensors")) {
             # Common CPU multi
             if (/Core\s+(\d+):\s+([\+\-][0-9\.]+)/) {
 
-            	# Prioritise package core temperature
-            	# data over motherboard but keep fans
+                # Prioritise package core temperature
+                # data over motherboard but keep fans
                 @cpu = (), $cpu_aux++
                     if ($cpu_aux & 1 && grep { $_->{'core'} eq $1 } @cpu);
                 push(@cpu,
@@ -567,7 +567,8 @@ if (&has_command("sensors")) {
                     }
 
                 # Approx from motherboard sensor as last resort
-                elsif (/(cputin|cpu\stemp):\s+([\+][0-9\.]+).*?[Cc]\s+.*?[=+].*?\)/i) {
+                elsif (/(cputin|cpu\s+temp)\s*:\s+([\+][0-9\.]+).*?[Cc]\s+.*?[=+].*?\)/i ||
+                       /(cpu\s+temperature)\s*:\s+([\+][0-9\.]+).*?[Cc]/i) {
                     push(@cpu,
                          {  'core' => 0,
                             'temp' => int($2)
