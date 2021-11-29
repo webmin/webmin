@@ -72,7 +72,8 @@ if (!scalar(@get_sensors_cache)) {
 	while(<SENS>) {
 		if (/^([^:]+):\s+([0-9\.\+\-]+)\s*(\S+)\s+\(min\s+=\s+([0-9\.\+\-]+)\s*(\S+),\s+max\s+=\s+([0-9\.\+\-]+)/) {
 			# Value with min and max
-			push(@rv, { 'name' => $1,
+			push(@rv, {
+				    'name' => $1,
 				    'value' => $2,
 				    'units' => $3,
 				    'min' => $4,
@@ -81,7 +82,8 @@ if (!scalar(@get_sensors_cache)) {
 			}
 		elsif (/^([^:]+):\s+([0-9\.\+\-]+)\s*(\S+)\s+\(min\s+=\s+([0-9\.\+\-]+)\s*(\S+),\s+div\s+=\s+([0-9\.\+\-]+)/) {
 			# Value with min and div
-			push(@rv, { 'name' => $1,
+			push(@rv, {
+				    'name' => $1,
 				    'value' => $2,
 				    'units' => $3,
 				    'min' => $4,
@@ -90,15 +92,17 @@ if (!scalar(@get_sensors_cache)) {
 			}
 		elsif (/^([^:]+):\s+([0-9\.\+\-]+)\s*(\S+)\s+\(min\s+=\s+([0-9\.\+\-]+)\s*(\S+)/) {
 			# Value with min only
-			push(@rv, { 'name' => $1,
+			push(@rv, {
+				    'name' => $1,
 				    'value' => $2,
 				    'units' => $3,
 				    'min' => $4 });
 			$rv[$#rv]->{'alarm'} = 1 if (/ALARM/);
 			}
-		elsif (/^([^:]+):\s+([0-9\.\+\-]+)\s*(\S+)\s+\((limit|high)\s+=\s+([0-9\.\+\-]+)\s*(\S+)/) {
+		elsif (/^([^:]+):\s+([0-9\.\+\-]+)\s*(\S+)\s+\((limit|high|crit)\s+=\s+([0-9\.\+\-]+)\s*(\S+)/) {
 			# Value with max only
-			push(@rv, { 'name' => $1,
+			push(@rv, {
+				    'name' => $1,
 				    'value' => $2,
 				    'units' => $3,
 				    'max' => $5 });
@@ -106,11 +110,28 @@ if (!scalar(@get_sensors_cache)) {
 			}
 		elsif (/^([^:]+):\s+([0-9\.\+\-]+)\s*(\S+)\s+\(low\s+=\s+([0-9\.\+\-]+)\s*(\S+)\s*,\s+high\s+=\s+([0-9\.\+\-]+)/) {
 			# Value with low and high
-			push(@rv, { 'name' => $1,
+			push(@rv, {
+				    'name' => $1,
 				    'value' => $2,
 				    'units' => $3,
 				    'min' => $4,
 				    'max' => $6 });
+			$rv[$#rv]->{'alarm'} = 1 if (/ALARM/);
+			}
+		elsif (/^([^:]+):\s+([0-9]+)\s*(rpm)/i) {
+			# Capture various fans
+			push(@rv, {
+				    'name' => $1,
+				    'value' => $2,
+				    'units' => $3 });
+			$rv[$#rv]->{'alarm'} = 1 if (/ALARM/);
+			}
+		elsif (/^([^:]+):\s+([0-9\+\-]+).*?([°Cc]+)/i) {
+			# Temps without min/max/limit/crit
+			push(@rv, {
+				    'name' => $1,
+				    'value' => $2,
+				    'units' => $3 });
 			$rv[$#rv]->{'alarm'} = 1 if (/ALARM/);
 			}
 		}
