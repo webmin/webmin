@@ -361,6 +361,7 @@ if ($gconfig{'os_type'} eq 'windows' || $tmp_dir =~ /^[a-z]:/i) {
 else {
 	# On Unix systems, need to make sure temp dir is valid
 	my $tries = 0;
+	my $mkdirerr;
 	while($tries++ < 10) {
 		my @st = lstat($tmp_dir);
 		last if ($st[4] == $< && (-d _) && ($st[2] & 0777) == 0755);
@@ -368,13 +369,17 @@ else {
 			unlink($tmp_dir) || rmdir($tmp_dir) ||
 				system("/bin/rm -rf ".quotemeta($tmp_dir));
 			}
-		mkdir($tmp_dir, 0755) || next;
+		mkdir($tmp_dir, 0755) || (($mkdirerr = $!), next);
 		chown($<, $(, $tmp_dir);
 		chmod(0755, $tmp_dir);
 		}
 	if ($tries >= 10) {
 		my @st = lstat($tmp_dir);
-		&error("Failed to create temp directory $tmp_dir");
+		if (!$mkdirerr ||
+			($mkdirerr && $mkdirerr !~ /no\s+space\s+left/i)) {
+			my $mkdirerrtxt = $mkdirerr ? " : $mkdirerr" : "";
+			&error("Failed to create temp directory $tmp_dir$mkdirerrtxt");
+			}
 		}
 	# If running as root, check parent dir (usually /tmp) to make sure it's
 	# world-writable and owned by root
@@ -1633,6 +1638,7 @@ by the message setup using that function.
 sub error
 {
 $main::no_miniserv_userdb = 1;
+return if $main::ignore_errors;
 my $msg = join("", @_);
 $msg =~ s/<[^>]*>//g;
 my $error_details = (($ENV{'WEBMIN_DEBUG'} || $gconfig{'debug_enabled'}) ? "" : "\n");
@@ -5272,9 +5278,11 @@ if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
 
 		    # Write follow URL only once
 		    if (!$main::redirect_built) {
-		    	write_file(tempname('.theme_' . $salt . '_' . $url_salt . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
+		    	$main::ignore_errors = 1;
+		    	&write_file(tempname('.theme_' . $salt . '_' . $url_salt . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
+		    	$main::ignore_errors = 0;
 		    	}
-		    $main::redirect_built++
+		    $main::redirect_built++;
 		}
   &redirect("/");
 	}
