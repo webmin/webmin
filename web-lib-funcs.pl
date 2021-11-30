@@ -375,11 +375,8 @@ else {
 		}
 	if ($tries >= 10) {
 		my @st = lstat($tmp_dir);
-		if (!$mkdirerr ||
-			($mkdirerr && $mkdirerr !~ /no\s+space\s+left/i)) {
-			my $mkdirerrtxt = $mkdirerr ? " : $mkdirerr" : "";
-			&error("Failed to create temp directory $tmp_dir$mkdirerrtxt");
-			}
+		$mkdirerr = $mkdirerr ? " : $mkdirerr" : "";
+		&error("Failed to create temp directory $tmp_dir$mkdirerr");
 		}
 	# If running as root, check parent dir (usually /tmp) to make sure it's
 	# world-writable and owned by root
