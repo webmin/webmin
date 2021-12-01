@@ -1953,6 +1953,7 @@ return 1 if ($found >= 0);		# Already setup
 
 # Grant access to the user and path
 &lock_file(&get_miniserv_config_file());
+$user ||= '';
 push(@anon, "$path=$user");
 $miniserv->{'anonymous'} = join(" ", @anon);
 &put_miniserv_config($miniserv);
