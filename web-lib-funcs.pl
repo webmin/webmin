@@ -5505,7 +5505,7 @@ $rv =~ s/\$(\d+)/$1 < @_ ? $_[$1] : '$'.$1/ge;
 return $rv;
 }
 
-=head2 encode_base64(string)
+=head2 encode_base64(string, noeol)
 
 Encodes a string into base64 format, for use in MIME email or HTTP
 authorization headers.
@@ -5515,12 +5515,12 @@ sub encode_base64
 {
 eval "use MIME::Base64 ()";
 if (!$@) {
-	return MIME::Base64::encode($_[0]);
+	return MIME::Base64::encode($_[0], $_[1] eq 'noeol' ? "" : undef);
 	}
 my $res;
 pos($_[0]) = 0;                          # ensure start at the beginning
 while ($_[0] =~ /(.{1,57})/gs) {
-	$res .= substr(pack('u57', $1), 1)."\n";
+	$res .= substr(pack('u57', $1), 1).($_[1] eq 'noeol' ? "" : "\n");
 	chop($res);
 	}
 $res =~ tr|\` -_|AA-Za-z0-9+/|;
