@@ -3,6 +3,8 @@ master_inview=$1 im Blick $2
 delete_vwarn=Diese Zone ist der Virtualmin-Domäne $1 zugeordnet und sollte daher hier nicht gelöscht werden!
 
 delete_vwarn2=Diese Zone ist mit den Virtualmin-Domänen $1 und $2 anderer verknüpft und sollte daher hier nicht gelöscht werden!
+
+value_dmarcadkim=Erfordert eine strikte DKIM-Ausrichtung
 value_dmarcfo=Fehlermeldemodus
 value_dmarcfo0=Melden, wenn DKIM und SPF fehlgeschlagen sind
 value_dmarcfo1=Melden, wenn entweder DKIM oder SPF fehlgeschlagen sind
@@ -11,6 +13,7 @@ value_dmarcfos=Melden, wenn die SPF-Bewertung fehlgeschlagen ist
 value_CAA1=Durchsetzung erforderlich?
 value_CAA2=Berechtigungstyp
 value_CAA3=CA-Domänenname
+value_caa_iodef=URL für Richtlinienverstoß
 
 log_forward=Vorwärtszone $1 erstellt
 log_delegation=Erstellen Sie eine Nur-Delegierungszone $1
@@ -20,3 +23,5 @@ log_dnssec=Ändern Sie die Neuunterzeichnung des DNSSEC-Schlüssels
 
 massdelete_vwarn=Einige Zonen sind der Virtualmin-Domäne $1 zugeordnet und sollten daher hier nicht gelöscht werden!
 massdelete_vwarn2=Einige Zonen sind der Virtualmin-Domäne $1 und $2 zugeordnet, andere sollten daher hier nicht gelöscht werden!
+
+dt_zone_enable=DNSSEC-Automatisierung
