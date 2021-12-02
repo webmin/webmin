@@ -5251,12 +5251,12 @@ if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
     $ENV{'REQUEST_URI'} =~ /xnavigation=1/) {
 	my $urlbase = &get_webprefix();
     # Store request URI, if safe
-    if ($main::session_id && $remote_user) {
+    if ($main::session_id && $remote_user && !$main::redirect_built++) {
         my %var;
         my $key  = 'goto';
         my $xnav = "xnavigation=1";
         my $url  = "$urlbase$ENV{'REQUEST_URI'}";
-        my $salt = substr(encode_base64($main::session_id), 0, 6);
+        my $salt = substr(&encode_base64($main::session_id), 0, 6);
         $url =~ s/[?|&]$xnav//g;
         $salt =~ tr/A-Za-z0-9//cd;
 
@@ -5272,15 +5272,18 @@ if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
                 $url = "/" . $url . "/";
                 }
             }
-        # Append random string to stored file name, to process multiple, simultaneous requests
         $var{$key} = $url;
+        
+        # Store unique file name
+        my $url_to_filename = &encode_base64(($url . time()), 'noeol');
+        $url_to_filename =~ s/[^A-Za-z0-9\-_]//g;
+        $url_to_filename = substr($url_to_filename, -128)
+            if (length($url_to_filename) > 128);
 
         # Write URL for the theme to read and open
-        if (!$main::redirect_built++) {
-            $main::ignore_errors = 1;
-            &write_file(tempname('.theme_' . $salt . '_' . int(rand() * 10000) . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
-            $main::ignore_errors = 0;
-            }
+        $main::ignore_errors = 1;
+        &write_file(&tempname('.theme_' . $salt . '_' . $url_to_filename . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
+        $main::ignore_errors = 0;
         }
     &redirect("$urlbase/");
 	}
