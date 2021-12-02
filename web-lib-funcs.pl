@@ -5256,7 +5256,7 @@ if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
         my $key  = 'goto';
         my $xnav = "xnavigation=1";
         my $url  = "$urlbase$ENV{'REQUEST_URI'}";
-        my $salt = substr(encode_base64($main::session_id), 0, 16);
+        my $salt = substr(encode_base64($main::session_id), 0, 6);
         $url =~ s/[?|&]$xnav//g;
         $salt =~ tr/A-Za-z0-9//cd;
 
@@ -5273,13 +5273,12 @@ if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
                 }
             }
         # Append random string to stored file name, to process multiple, simultaneous requests
-        my $url_salt  = int(rand() * 10000000);
         $var{$key} = $url;
 
         # Write URL for the theme to read and open
         if (!$main::redirect_built++) {
             $main::ignore_errors = 1;
-            &write_file(tempname('.theme_' . $salt . '_' . $url_salt . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
+            &write_file(tempname('.theme_' . $salt . '_' . int(rand() * 10000) . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
             $main::ignore_errors = 0;
             }
         }
