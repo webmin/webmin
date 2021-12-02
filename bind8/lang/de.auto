@@ -8,7 +8,9 @@ value_dmarcfo0=Melden, wenn DKIM und SPF fehlgeschlagen sind
 value_dmarcfo1=Melden, wenn entweder DKIM oder SPF fehlgeschlagen sind
 value_dmarcfod=Melden, wenn die Signaturauswertung fehlgeschlagen ist
 value_dmarcfos=Melden, wenn die SPF-Bewertung fehlgeschlagen ist
-value_CAA0=Durchsetzung erforderlich?
+value_CAA1=Durchsetzung erforderlich?
+value_CAA2=Berechtigungstyp
+value_CAA3=CA-Domänenname
 
 log_forward=Vorwärtszone $1 erstellt
 log_delegation=Erstellen Sie eine Nur-Delegierungszone $1

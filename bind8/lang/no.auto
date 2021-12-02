@@ -3,4 +3,6 @@ value_dmarcfo0=Rapporter om DKIM og SPF mislyktes
 value_dmarcfo1=Rapporter om enten DKIM eller SPF mislyktes
 value_dmarcfod=Rapporter om signaturevaluering mislyktes
 value_dmarcfos=Rapporter om SPF-evaluering mislyktes
-value_CAA0=Krever håndheving?
+value_CAA1=Krever håndheving?
+value_CAA2=Autorisasjonstype
+value_CAA3=CA-domenenavn
