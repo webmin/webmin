@@ -20,7 +20,7 @@ print &ui_table_row($text{'referers_list'},
 	(!$gconfig{'referers_none'} ?
 		&ui_checkbox("referers_none", 1,
 			     $text{'referers_none'}."<br>".
-			       $text{'referers_none2'},
+			       &ui_text_color($text{'referers_none2'}, 'warn'),
 			     !$gconfig{'referers_none'}) : ""));
 
 print &ui_table_end();
