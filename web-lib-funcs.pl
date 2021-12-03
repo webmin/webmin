@@ -5247,15 +5247,15 @@ else {
 if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
     $ENV{'REQUEST_URI'} !~ /xhr/  &&
     $ENV{'REQUEST_URI'} !~ /pjax/ &&
-    $ENV{'REQUEST_URI'} !~ /link.cgi\/\d+/ &&
+    $ENV{'REQUEST_URI'} !~ /link\.cgi\/\d+/ &&
     $ENV{'REQUEST_URI'} =~ /xnavigation=1/) {
-	my $urlbase = &get_webprefix();
+
     # Store request URI, if safe
     if ($main::session_id && $remote_user && !$main::redirect_built++) {
         my %var;
         my $key  = 'goto';
         my $xnav = "xnavigation=1";
-        my $url  = "$urlbase$ENV{'REQUEST_URI'}";
+        my $url  = "@{[&get_webprefix()]}$ENV{'REQUEST_URI'}";
         my $salt = substr(&encode_base64($main::session_id), 0, 6);
         $url =~ s/[?|&]$xnav//g;
         $salt =~ tr/A-Za-z0-9//cd;
@@ -5285,7 +5285,7 @@ if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
         &write_file(&tempname('.theme_' . $salt . '_' . $url_to_filename . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
         $main::ignore_errors = 0;
         }
-    &redirect("$urlbase/");
+    &redirect("/");
 	}
 if (!$trust) {
 	# Looks like a link from elsewhere .. show an error
