@@ -121,13 +121,13 @@ function Menu(caller, options){
 				case 37: // left arrow 
 					if (menuType == 'flyout') {
 						$(event.target).trigger('mouseout');
-						if ($('.'+options.flyOutOnState).size() > 0) { $('.'+options.flyOutOnState).trigger('mouseover'); };
+						if ($('.'+options.flyOutOnState).length > 0) { $('.'+options.flyOutOnState).trigger('mouseover'); };
 					};
 					
 					if (menuType == 'ipod') {
 						$(event.target).trigger('mouseout');
-						if ($('.fg-menu-footer').find('a').size() > 0) { $('.fg-menu-footer').find('a').trigger('click'); };
-						if ($('.fg-menu-header').find('a').size() > 0) { $('.fg-menu-current-crumb').prev().find('a').trigger('click'); };
+						if ($('.fg-menu-footer').find('a').length > 0) { $('.fg-menu-footer').find('a').trigger('click'); };
+						if ($('.fg-menu-header').find('a').length > 0) { $('.fg-menu-current-crumb').prev().find('a').trigger('click'); };
 						if ($('.fg-menu-current').prev().is('.fg-menu-indicator')) {
 							$('.fg-menu-current').prev().trigger('mouseover');							
 						};						
@@ -138,7 +138,7 @@ function Menu(caller, options){
 				case 38: // up arrow 
 					if ($(event.target).is('.' + options.linkHover)) {	
 						var prevLink = $(event.target).parent().prev().find('a:eq(0)');						
-						if (prevLink.size() > 0) {
+						if (prevLink.length > 0) {
 							$(event.target).trigger('mouseout');
 							prevLink.trigger('mouseover');
 						};						
@@ -165,7 +165,7 @@ function Menu(caller, options){
 				case 40: // down arrow 
 					if ($(event.target).is('.' + options.linkHover)) {
 						var nextLink = $(event.target).parent().next().find('a:eq(0)');						
-						if (nextLink.size() > 0) {							
+						if (nextLink.length > 0) {							
 							$(event.target).trigger('mouseout');
 							nextLink.trigger('mouseover');
 						};				
@@ -190,7 +190,7 @@ function Menu(caller, options){
 		});
 	};
 	
-	this.create = function(){	
+	this.create = function() {
 		container.css({ width: options.width }).appendTo('body').find('ul:first').not('.fg-menu-breadcrumb').addClass('fg-menu');
 		container.find('ul, li a').addClass('ui-corner-all');
 		
@@ -201,7 +201,7 @@ function Menu(caller, options){
 		container.find('a').attr('tabindex', '-1');
 		
 		// when there are multiple levels of hierarchy, create flyout or drilldown menu
-		if (container.find('ul').size() > 1) {
+		if (container.find('ul').length > 1) {
 			if (options.flyOut) { menu.flyout(container, options); }
 			else { menu.drilldown(container, options); }	
 		}
@@ -239,6 +239,9 @@ function Menu(caller, options){
 		
 		menu.setPosition(container, caller, options);
 		menu.menuExists = true;
+
+		// Hide empty
+		container.find('a:empty').parent('li').hide()
 	};
 	
 	this.chooseItem = function(item){
@@ -386,7 +389,7 @@ Menu.prototype.drilldown = function(container, options) {
 		
 					// initialize "back" link
 					if (options.backLink) {
-						if (footer.find('a').size() == 0) {
+						if (footer.find('a').length == 0) {
 							footer.show();
 							$('<a href="#"><span class="ui-icon ui-icon-triangle-1-w"></span> <span>Back</span></a>')
 								.appendTo(footer)
@@ -402,7 +405,7 @@ Menu.prototype.drilldown = function(container, options) {
 					}
 					// or initialize top breadcrumb
 		    		else { 
-		    			if (breadcrumb.find('li').size() == 1){				
+		    			if (breadcrumb.find('li').length == 1){				
 							breadcrumb.empty().append(firstCrumb);
 							firstCrumb.find('a').click(function(){
 								menu.resetDrilldownMenu();
@@ -419,7 +422,7 @@ Menu.prototype.drilldown = function(container, options) {
 									menu.chooseItem(this);
 								}
 								else {
-									var newLeftVal = - ($('.fg-menu-current').parents('ul').size() - 1) * 180;
+									var newLeftVal = - ($('.fg-menu-current').parents('ul').length - 1) * 180;
 									topList.animate({ left: newLeftVal }, options.crossSpeed, function(){
 										setPrevMenu();
 									});
