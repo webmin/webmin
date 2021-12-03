@@ -510,7 +510,7 @@ if (&has_command("sensors")) {
         $cpu++ if ($cpu_volt || $cpu_fan_num);
 
         # CPU package
-        ($cpu_package) = $_ =~ /(package\s+id\s+[\d]+)/i
+        ($cpu_package) = $_ =~ /(?|(package\s+id\s+[\d]+)|(coretemp-[a-z]+-[\d]+))/i
           if (!$cpu_package);
 
         # Standard outputs
