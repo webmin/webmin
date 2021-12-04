@@ -7264,7 +7264,7 @@ my $rv = &remote_rpc_call($host, { 'action' => 'tcpwrite',
 				   'file' => $remotefile,
 				   'name' => $remotebase } );
 my $error;
-my $serv = ref($host) ? $host->{'host'} : $host;
+my $serv = !ref($host) ? $host : ($host->{'ip'} || $host->{'host'});
 &open_socket($serv || "localhost", $rv->[1], TWRITE, \$error);
 return &$main::remote_error_handler("Failed to transfer file : $error")
 	if ($error);
@@ -7302,7 +7302,7 @@ if (!$rv->[0]) {
 	return &$main::remote_error_handler("Failed to transfer file : $rv->[1]");
 	}
 my $error;
-my $serv = ref($host) ? $host->{'host'} : $host;
+my $serv = !ref($host) ? $host : ($host->{'ip'} || $host->{'host'});
 &open_socket($serv || "localhost", $rv->[1], TREAD, \$error);
 return &$main::remote_error_handler("Failed to transfer file : $error")
 	if ($error);
