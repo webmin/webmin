@@ -26,9 +26,9 @@ sub list_disks_partitions
 my @rv;
 
 # Iterate over disk devices
-foreach my $dev (glob("/dev/ada[0-9]"),
-		 glob("/dev/ad[0-9]"),
-		 glob("/dev/da[0-9]")) {
+foreach my $dev (glob("/dev/ada[0-9]"), glob("/dev/ada[0-9][0-9]"),
+		 glob("/dev/ad[0-9]"), glob("/dev/ad[0-9][0-9]"),
+		 glob("/dev/da[0-9]"), glob("/dev/da[0-9][0-9]")) {
 	next if (!-r $dev || -l $dev);
 	my $disk = { 'device' => $dev,
 		     'prefix' => $dev,
