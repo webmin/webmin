@@ -153,16 +153,25 @@ while(1) {
 					       &tempname();
 		print STDERR "fastrpc: tcpwrite $file\n" if ($gconfig{'rpcdebug'});
 		local $tsock = time().$$;
+		local $tsock6 = time().$$."v6";
 		local $tport = $port + 1;
-		&allocate_socket($tsock, \$tport);
+		&allocate_socket($tsock, $tsock6, \$tport);
 		if (!fork()) {
 			# Accept connection in separate process
 			print STDERR "fastrpc: tcpwrite $file port $tport\n" if ($gconfig{'rpcdebug'});
 			local $rmask;
 			vec($rmask, fileno($tsock), 1) = 1;
+			if ($use_ipv6) {
+				vec($rmask, fileno($tsock6), 1) = 1;
+				}
 			local $sel = select($rmask, undef, undef, 30);
 			exit if ($sel <= 0);
-			accept(TRANS, $tsock) || exit;
+			if (vec($rmask, fileno($tsock), 1)) {
+				accept(TRANS, $tsock) || exit;
+				}
+			elsif ($use_ipv6 && vec($rmask, fileno($tsock6), 1)) {
+				accept(TRANS, $tsock6) || exit;
+				}
 			print STDERR "fastrpc: tcpwrite $file accepted\n" if ($gconfig{'rpcdebug'});
 			local $buf;
 			local $err;
@@ -189,6 +198,7 @@ while(1) {
 			exit;
 			}
 		close($tsock);
+		close($tsock6);
 		print STDERR "fastrpc: tcpwrite $file done\n" if ($gconfig{'rpcdebug'});
 		$rawrv = &serialise_variable(
 			{ 'status' => 1, 'rv' => [ $file, $tport ] } );
@@ -221,15 +231,24 @@ while(1) {
 		else {
 			binmode(FILE);
 			local $tsock = time().$$;
+			local $tsock6 = time().$$."v6";
 			local $tport = $port + 1;
-			&allocate_socket($tsock, \$tport);
+			&allocate_socket($tsock, $tsock6, \$tport);
 			if (!fork()) {
 				# Accept connection in separate process
 				local $rmask;
 				vec($rmask, fileno($tsock), 1) = 1;
+				if ($use_ipv6) {
+					vec($rmask, fileno($tsock6), 1) = 1;
+					}
 				local $sel = select($rmask, undef, undef, 30);
 				exit if ($sel <= 0);
-				accept(TRANS, $tsock) || exit;
+				if (vec($rmask, fileno($tsock), 1)) {
+					accept(TRANS, $tsock) || exit;
+					}
+				elsif (vec($rmask, fileno($tsock6), 1)) {
+					accept(TRANS, $tsock6) || exit;
+					}
 				local $buf;
 				while(read(FILE, $buf, 1024) > 0) {
 					print TRANS $buf;
@@ -240,6 +259,7 @@ while(1) {
 				}
 			close(FILE);
 			close($tsock);
+			close($tsock6);
 			print STDERR "fastrpc: tcpread $arg->{'file'} done\n" if ($gconfig{'rpcdebug'});
 			$rawrv = &serialise_variable(
 				{ 'status' => 1, 'rv' => [ $arg->{'file'}, $tport ] } );
