@@ -8,6 +8,7 @@ BEGIN { push(@INC, "."); };
 use WebminCore;
 use POSIX;
 use Socket;
+use Socket6;
 $force_lang = $default_lang;
 &init_config();
 print "Content-type: text/plain\n\n";
