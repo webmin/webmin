@@ -475,4 +475,22 @@ if ($out && $out =~ /\s*(\d+\.\d+)\s*/) {
 return undef;
 }
 
+# cleanup_letsencrypt_files(domain)
+# Delete all temporary files under /etc/letsencrypt for a domain name
+sub cleanup_letsencrypt_files
+{
+my ($dname) = @_;
+foreach my $base ("/etc/letsencrypt", "/usr/local/etc/letsencrypt") {
+	next if (!-d $base);
+	foreach my $f ("$base/live/$dname",
+		       glob("$base/live/$dname-[0-9][0-9][0-9][0-9]"),
+		       "$base/archive/$dname",
+                       glob("$base/archive/$dname-[0-9][0-9][0-9][0-9]"),
+		       "$base/renewal/$dname.conf",
+		       glob("$base/renewal/$dname-[0-9][0-9][0-9][0-9].conf")) {
+		&unlink_file($f) if (-e $f);
+		}
+	}
+}
+
 1;
