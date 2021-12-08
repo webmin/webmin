@@ -153,7 +153,7 @@ while(1) {
 					       &tempname();
 		print STDERR "fastrpc: tcpwrite $file\n" if ($gconfig{'rpcdebug'});
 		local $tsock = time().$$;
-		local $tsock6 = time().$$."v6";
+		local $tsock6 = $use_ipv6 ? time().$$."v6" : undef;
 		local $tport = $port + 1;
 		&allocate_socket($tsock, $tsock6, \$tport);
 		if (!fork()) {
@@ -231,7 +231,7 @@ while(1) {
 		else {
 			binmode(FILE);
 			local $tsock = time().$$;
-			local $tsock6 = time().$$."v6";
+			local $tsock6 = $use_ipv6 ? time().$$."v6" : undef;
 			local $tport = $port + 1;
 			&allocate_socket($tsock, $tsock6, \$tport);
 			if (!fork()) {
