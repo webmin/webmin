@@ -97,7 +97,12 @@ if (&compare_version_numbers($mysql_version, "5.6") >= 0) {
 else {
 	@mysql_number_variables = ( "table_cache", "max_connections" );
 	}
-@mysql_byte_variables = ( "query_cache_size", "max_allowed_packet" );
+@mysql_byte_variables = ( "max_allowed_packet" );
+my $mysql8_optout = &compare_version_numbers($mysql_version, "8.0") >= 0 && $mysql_version !~ /maria/i;
+if (!$mysql8_optout) {
+	# Removed options in MySQL 8 #1561
+	push(@mysql_byte_variables, "query_cache_size");
+	}
 if (&compare_version_numbers($mysql_version, "5") >= 0) {
 	push(@mysql_byte_variables, "myisam_sort_buffer_size");
 	}
