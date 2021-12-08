@@ -7,7 +7,6 @@ use Socket;
 use POSIX;
 use Time::Local;
 eval "use Time::HiRes;";
-eval "use Socket6;";
 
 @itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 
