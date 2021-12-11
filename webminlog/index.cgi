@@ -21,13 +21,13 @@ print &ui_table_start($text{'index_header'}, undef, 2);
 
 my @ulist = sort { $a->{'name'} cmp $b->{'name'} } &acl::list_users();
 my @canulist = grep { &can_user($_->{'name'}) } @ulist;
+my @unames = grep { &can_user($_) } map { $_->{'name'} } @ulist;
 if (@canulist == 1) {
 	# Can only show one user, so skip this field
 	print &ui_hidden("uall", 1),"\n";
 	}
 else {
 	# Show user selectors
-	my @unames = grep { &can_user($_) } map { $_->{'name'} } @ulist;
 	my @opts = ( [ 1, $text{'index_uall'}."<br>" ],
 		     [ 0, $text{'index_user'}." ".
 		       &ui_select("user", undef, \@unames)."<br>" ] );
@@ -57,7 +57,7 @@ my @opts = ( [ 1, $text{'index_mall'}."<br>" ],
 	     [ 0, $text{'index_module'}." ".
 	       &ui_select("module", $in{'module'}, \@mods) ] );
 print &ui_table_row($text{'index_smods'},
-		    &ui_radio("mall", 1, \@opts), undef, [ "valign=top","valign=top" ] );
+		    &ui_radio("mall", 1, \@opts));
 
 # Dates to search
 print &ui_table_row($text{'index_stimes'},
@@ -66,12 +66,13 @@ print &ui_table_row($text{'index_stimes'},
 			  [ 2, $text{'index_today'}."<br>" ],
 			  [ 3, $text{'index_yesterday'}."<br>" ],
 			  [ 4, $text{'index_week'}."<br>" ],
-			  [ 0, "<span class='ui_data'>".&text('index_time', &time_input('from'),
-						   &time_input('to'))."</span>" ] ]), undef, [ "valign=top","valign=middle" ] );
+			  [ 0, "<span class='ui_data'>".
+			       &text('index_time', &time_input('from'),
+				     &time_input('to'))."</span>" ] ]));
 
 # Action description to match
 print &ui_table_row($text{'index_sdesc'},
-		    &ui_textbox("desc", undef, 40), undef, [ "valign=middle","valign=middle" ]);
+		    &ui_textbox("desc", undef, 40));
 
 # Search modified files and diff contents
 if ($gconfig{'logfiles'}) {
@@ -79,13 +80,13 @@ if ($gconfig{'logfiles'}) {
 		&ui_radio("fall", 1,
 			  [ [ 1, $text{'index_fall'}."<br>" ],
 			    [ 0, $text{'index_file'}." ".
-				 &ui_textbox("file", undef, 40) ] ]), undef, [ "valign=top","valign=top" ]);
+				 &ui_textbox("file", undef, 40) ] ]));
 
 	print &ui_table_row($text{'index_sdiff'},
 		&ui_radio("dall", 1,
 			  [ [ 1, $text{'index_dall'}."<br>" ],
 			    [ 0, $text{'index_diff'}." ".
-				 &ui_textbox("diff", undef, 40) ] ]), undef, [ "valign=top","valign=top" ]);
+				 &ui_textbox("diff", undef, 40) ] ]));
 	}
 
 # Remote host
@@ -94,15 +95,47 @@ if ($config{'host_search'}) {
 		&ui_radio("wall", 1,
 			  [ [ 1, $text{'index_wall'}."<br>" ],
 			    [ 0, $text{'index_whost'}." ".
-				 &ui_textbox("webmin", undef, 30) ] ]), undef, [ "valign=top","valign=top" ]);
+				 &ui_textbox("webmin", undef, 30) ] ]));
 	}
 
 # Show full descriptions?
 print &ui_table_row($text{'index_long'},
-	&ui_yesno_radio("long", 0), undef, [ "valign=middle","valign=middle" ]);
+	&ui_yesno_radio("long", 0));
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'index_search'} ] ]);
+
+print &ui_hr();
+
+print &ui_form_start("save_notify.cgi", "post");
+print &ui_table_start($text{'index_header'}, undef, 2);
+
+# Notifications enabled?
+print &ui_table_row($text{'index_notify'},
+	&ui_yesno_radio("notify", $gconfig{'webminlog_notify'}));
+
+# Notify for which modules
+my @msel = split(/\s+/, $gconfig{'webminlog_notify_mods'});
+print &ui_table_row($text{'index_notify_mods'},
+	&ui_radio("mods_all", @msel ? 0 : 1,
+		  [ [ 1, $text{'index_mall'} ],
+		    [ 0, $text{'index_modules'}."<br>".
+			 &ui_select("mods", \@msel, \@mods, 10, 1) ] ]));
+
+# Notify for which users
+my @usel = split(/\s+/, $gconfig{'webminlog_notify_users'});
+print &ui_table_row($text{'index_notify_users'},
+	&ui_radio("users_all", @usel ? 0 : 1,
+		  [ [ 1, $text{'index_uall'} ],
+		    [ 0, $text{'index_users'}."<br>".
+			 &ui_select("mods", \@usel, \@unames, 10, 1) ] ]));
+
+# Send notification to
+print &ui_table_row($text{'index_notify_email'},
+	&ui_textbox("email", $gconfig{'webminlog_notify_email'}, 60));
+
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("/", $text{'index'});
 
