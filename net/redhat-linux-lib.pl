@@ -1154,15 +1154,25 @@ sub supports_bridges
 return 1;
 }
 
+# supports_dns_interface(&iface)
+# Returns 1 if DNS servers can be set in interface config files
+sub supports_dns_interface
+{
+my ($ifc) = @_;
+return $ifc->{'DNS1'} || $gconfig{'os_version'} >= 15 &&
+		         &iface_type($ifc->{'DEVICE'}) =~ /Ethernet/i;
+}
+
 # os_save_dns_config(&config)
 # Updates DNSx lines in all network-scripts files that have them
 sub os_save_dns_config
 {
 my ($conf) = @_;
-foreach my $b (&boot_interfaces()) {
+my @boot = &boot_interfaces();
+foreach my $b (@boot) {
 	my %ifc;
 	&read_env_file($b->{'file'}, \%ifc);
-	next if (!defined($ifc{'DNS1'}));
+	next if (!&supports_dns_interface(\%ifc));
 	&lock_file($b->{'file'});
 	foreach my $k (keys %ifc) {
 		delete($ifc{$k}) if ($k =~ /^DNS\d+$/);
