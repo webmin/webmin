@@ -137,5 +137,11 @@ rollback_deleted=Deleted file $1.
 rollback_nodeleted=Skipped non-existant file $1.
 rollback_enone=No files selected
 
+notify_err=Failed to save notification options
+notify_ecannot=You are not allowed to configure notifications
+notify_emods=No modules selected
+notify_eusers=No users selected
+notify_eemail=No email address entered
+
 log_rollback=Rolled back action $1 in module $2
 __norefs=1

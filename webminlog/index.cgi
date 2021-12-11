@@ -5,7 +5,7 @@
 use strict;
 use warnings;
 require './webminlog-lib.pl';
-our (%text, %gconfig, %access_users, %in, %config);
+our (%text, %gconfig, %access_users, %in, %config, %access);
 &foreign_require("acl", "acl-lib.pl");
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
@@ -129,7 +129,7 @@ if ($access{'notify'}) {
 		&ui_radio("users_all", @usel ? 0 : 1,
 		  [ [ 1, $text{'index_uall'} ],
 		    [ 0, $text{'index_users'}."<br>".
-			 &ui_select("mods", \@usel, \@unames, 10, 1) ] ]));
+			 &ui_select("users", \@usel, \@unames, 10, 1) ] ]));
 
 	# Send notification to
 	print &ui_table_row($text{'index_notify_email'},
