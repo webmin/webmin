@@ -36,6 +36,10 @@ print &ui_table_row($text{'acl_users'},
 # Rollback
 print &ui_table_row($text{'acl_rollback'},
 	&ui_yesno_radio("rollback", $o->{'rollback'}));
+
+# Setup notifications
+print &ui_table_row($text{'acl_notify'},
+	&ui_yesno_radio("notify", $o->{'notify'}));
 }
 
 # acl_security_save(&options)
@@ -48,5 +52,6 @@ $o->{'users'} = $in{'users_def'} == 1 ? "*" :
 		$in{'users_def'} == 2 ? "x" :
 			join(" ", split(/\0/,$in{'users'}));
 $o->{'rollback'} = $in{'rollback'};
+$o->{'notify'} = $in{'notify'};
 }
 

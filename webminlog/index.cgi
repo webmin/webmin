@@ -105,37 +105,39 @@ print &ui_table_row($text{'index_long'},
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'index_search'} ] ]);
 
-print &ui_hr();
+if ($access{'notify'}) {
+	print &ui_hr();
 
-print &ui_form_start("save_notify.cgi", "post");
-print &ui_table_start($text{'index_header'}, undef, 2);
+	print &ui_form_start("save_notify.cgi", "post");
+	print &ui_table_start($text{'index_header'}, undef, 2);
 
-# Notifications enabled?
-print &ui_table_row($text{'index_notify'},
-	&ui_yesno_radio("notify", $gconfig{'webminlog_notify'}));
+	# Notifications enabled?
+	print &ui_table_row($text{'index_notify'},
+		&ui_yesno_radio("notify", $gconfig{'webminlog_notify'}));
 
-# Notify for which modules
-my @msel = split(/\s+/, $gconfig{'webminlog_notify_mods'});
-print &ui_table_row($text{'index_notify_mods'},
-	&ui_radio("mods_all", @msel ? 0 : 1,
+	# Notify for which modules
+	my @msel = split(/\s+/, $gconfig{'webminlog_notify_mods'});
+	print &ui_table_row($text{'index_notify_mods'},
+		&ui_radio("mods_all", @msel ? 0 : 1,
 		  [ [ 1, $text{'index_mall'} ],
 		    [ 0, $text{'index_modules'}."<br>".
 			 &ui_select("mods", \@msel, \@mods, 10, 1) ] ]));
 
-# Notify for which users
-my @usel = split(/\s+/, $gconfig{'webminlog_notify_users'});
-print &ui_table_row($text{'index_notify_users'},
-	&ui_radio("users_all", @usel ? 0 : 1,
+	# Notify for which users
+	my @usel = split(/\s+/, $gconfig{'webminlog_notify_users'});
+	print &ui_table_row($text{'index_notify_users'},
+		&ui_radio("users_all", @usel ? 0 : 1,
 		  [ [ 1, $text{'index_uall'} ],
 		    [ 0, $text{'index_users'}."<br>".
 			 &ui_select("mods", \@usel, \@unames, 10, 1) ] ]));
 
-# Send notification to
-print &ui_table_row($text{'index_notify_email'},
-	&ui_textbox("email", $gconfig{'webminlog_notify_email'}, 60));
+	# Send notification to
+	print &ui_table_row($text{'index_notify_email'},
+		&ui_textbox("email", $gconfig{'webminlog_notify_email'}, 60));
 
-print &ui_table_end();
-print &ui_form_end([ [ undef, $text{'save'} ] ]);
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'save'} ] ]);
+	}
 
 &ui_print_footer("/", $text{'index'});
 

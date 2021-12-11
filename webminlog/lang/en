@@ -112,6 +112,7 @@ acl_sel=Selected below ..
 acl_self=Only self
 acl_users=Can view actions by users
 acl_rollback=Can roll back actions?
+acl_notify=Can configure email notifications?
 
 rollback_title=Rollback Action
 rollback_rusure=Are you sure you want to revert all of the files listed below to their contents before this action was taken? Any data that they currently contain will be overwritten by the following changes :
