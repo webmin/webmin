@@ -6488,12 +6488,17 @@ foreach my $k (keys %{$_[3]}) {
 	}
 
 # Construct description if one is needed
-my $logemail = $gconfig{'logemail'} &&
-	       (!$gconfig{'logmodulesemail'} ||
-	        &indexof($m, split(/\s+/, $gconfig{'logmodulesemail'})) >= 0) &&
-	       &foreign_check("mailboxes");
+my $lm = $m || "global";
+my $lu = $base_remote_user || $remote_user;
+my $logemail =
+       $gconfig{'logemail'} &&
+       (!$gconfig{'logmodulesemail'} ||
+	&indexof($lm, split(/\s+/, $gconfig{'logmodulesemail'})) >= 0) &&
+       (!$gconfig{'logusersemail'} ||
+	&indexof($lu, split(/\s+/, $gconfig{'logusersemail'})) >= 0) &&
+       &foreign_check("mailboxes");
 my $msg = undef;
-my %minfo = &get_module_info($m);
+my %minfo = $lm eq "global" ? { 'desc' => 'None' } : &get_module_info($m);
 if ($logemail || $gconfig{'logsyslog'}) {
 	my $mod = &get_module_name();
 	my $mdir = module_root_directory($mod);
@@ -6521,11 +6526,13 @@ if ($logemail) {
 	# Construct an email message
 	&foreign_require("mailboxes");
 	my $mdesc;
-	if ($m && $m ne "global") {
-		$mdesc = $minfo{'desc'} || $m;
+	if ($lm ne "global") {
+		$mdesc = $minfo{'desc'} || $lm;
 		}
 	my $body = $text{'log_email_desc'}."\n\n";
-	$body .= &text('log_email_mod', $m || "global")."\n";
+	if ($lm ne "global") {
+		$body .= &text('log_email_mod', $lm)."\n";
+		}
 	if ($mdesc) {
 		$body .= &text('log_email_moddesc', $mdesc)."\n";
 		}

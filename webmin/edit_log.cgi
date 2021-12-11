@@ -93,20 +93,6 @@ if (!$@) {
 		&ui_yesno_radio("logsyslog", int($gconfig{'logsyslog'})));
 	}
 
-# Log via email?
-print &ui_table_row($text{'log_email'},
-	&ui_opt_textbox("email", $gconfig{'logemail'}, 40,
-		        $text{'log_emailnone'}));
-
-# Modules for email log
-print &ui_table_row($text{'log_inmodsemail'},
-	&ui_radio("mallemail", $gconfig{'logmodulesemail'} ? 0 : 1,
-		  [ [ 1, $text{'log_mall'} ], [ 0, $text{'log_modules'} ] ]).
-	"<br>\n".
-	&ui_select("modulesemail",
-		   [ split(/\s+/, $gconfig{'logmodulesemail'}) ],
-		   \@logmods, 5, 1));
-
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
