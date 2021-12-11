@@ -144,4 +144,5 @@ notify_eusers=No users selected
 notify_eemail=No email address entered
 
 log_rollback=Rolled back action $1 in module $2
+log_notify=Saved email notifications options
 __norefs=1

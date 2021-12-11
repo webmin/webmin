@@ -113,10 +113,14 @@ if ($access{'notify'}) {
 
 	# Notifications enabled?
 	print &ui_table_row($text{'index_notify'},
-		&ui_yesno_radio("notify", $gconfig{'webminlog_notify'}));
+		&ui_yesno_radio("notify", $gconfig{'logemail'} ? 1 : 0));
+
+	# Send notification to
+	print &ui_table_row($text{'index_notify_email'},
+		&ui_textbox("email", $gconfig{'logemail'}, 60));
 
 	# Notify for which modules
-	my @msel = split(/\s+/, $gconfig{'webminlog_notify_mods'});
+	my @msel = split(/\s+/, $gconfig{'logmodulesemail'});
 	print &ui_table_row($text{'index_notify_mods'},
 		&ui_radio("mods_all", @msel ? 0 : 1,
 		  [ [ 1, $text{'index_mall'} ],
@@ -124,16 +128,12 @@ if ($access{'notify'}) {
 			 &ui_select("mods", \@msel, \@mods, 10, 1) ] ]));
 
 	# Notify for which users
-	my @usel = split(/\s+/, $gconfig{'webminlog_notify_users'});
+	my @usel = split(/\s+/, $gconfig{'logusersemail'});
 	print &ui_table_row($text{'index_notify_users'},
 		&ui_radio("users_all", @usel ? 0 : 1,
 		  [ [ 1, $text{'index_uall'} ],
 		    [ 0, $text{'index_users'}."<br>".
 			 &ui_select("users", \@usel, \@unames, 10, 1) ] ]));
-
-	# Send notification to
-	print &ui_table_row($text{'index_notify_email'},
-		&ui_textbox("email", $gconfig{'webminlog_notify_email'}, 60));
 
 	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'save'} ] ]);

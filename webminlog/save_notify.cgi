@@ -9,23 +9,27 @@ our (%text, %gconfig, %access, %in, $config_file);
 &error_setup($text{'notify_err'});
 $access{'notify'} || &error($text{'notify_ecannot'});
 
-$gconfig{'webminlog_notify'} = $in{'notify'};
+if ($in{'notify'}) {
+	$in{'email'} =~ /\S/ || &error($text{'notify_eemail'});
+	$gconfig{'logemail'} = $in{'email'};
+	}
+else {
+	delete($gconfig{'logemail'});
+	}
 if ($in{'mods_all'}) {
-	delete($gconfig{'webminlog_notify_mods'});
+	delete($gconfig{'logmodulesemail'});
 	}
 else {
 	$in{'mods'} || &error($text{'notify_emods'});
-	$gconfig{'webminlog_notify_mods'} = join(" ", split(/\0/, $in{'mods'}));
+	$gconfig{'logmodulesemail'} = join(" ", split(/\0/, $in{'mods'}));
 	}
 if ($in{'users_all'}) {
-	delete($gconfig{'webminlog_notify_users'});
+	delete($gconfig{'logusersemail'});
 	}
 else {
 	$in{'users'} || &error($text{'notify_eusers'});
-	$gconfig{'webminlog_notify_users'} = join(" ", split(/\0/, $in{'users'}));
+	$gconfig{'logusersemail'} = join(" ", split(/\0/, $in{'users'}));
 	}
-!$in{'notify'} || $in{'email'} =~ /\S/ || &error($text{'notify_eemail'});
-$gconfig{'webminlog_notify_email'} = $in{'email'};
 &lock_file($config_file);
 &save_module_config(\%gconfig, "");
 &unlock_file($config_file);

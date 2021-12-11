@@ -12,6 +12,9 @@ if ($action eq 'rollback') {
 	return &text('log_rollback', "<i>".$p->{'desc'}."</i>",
 				     "<i>".$p->{'mdesc'}."</i>");
 	}
+elsif ($action eq 'notify') {
+	return $text{'log_notify'};
+	}
 return undef;
 }
 
