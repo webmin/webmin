@@ -187,6 +187,7 @@ session_ptimeout=密码超时
 session_stype=认证方式
 session_sopts=验证选项
 session_local=本地认证
+session_utmp=在 <tt>utmp</tt> 中记录登录和注销？
 session_pam=密码来源
 session_popts=密码选项
 session_cmddef0=使用以下命令更改密码：

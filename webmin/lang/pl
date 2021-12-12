@@ -582,7 +582,6 @@ session_elsof=Autoryzacja lokalna wymaga programu <tt>lsof</tt>
 session_remember=Proponować trwałe zapamiętanie hasła?
 session_ip=Ograniczyć sesje dla tego samego adresu IP klienta?
 session_hostname=Pokazywać nazwę komputera na ekranie logowania?
-session_utmp=Rejestrować logowania i wylogowania w Utmp?
 session_realname=Pokazywać rzeczywistą nazwę komputera zamiast nazwy z URL?
 session_pam=Źródło hasła
 session_pamon=Używaj PAM dla autentykacji Unix, jeśli dostępne

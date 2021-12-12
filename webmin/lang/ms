@@ -572,7 +572,6 @@ session_ecookie=Pelayar anda tidak menyokong kuki, dimana diperlukan bagi penges
 session_elsof=Pengesahan setempat memerlukan progran <tt>lsof</tt>
 session_remember=Tawarkan untuk ingat log masuk secara kekal?
 session_hostname=Paparkan nama hos pada skrin log masuk?
-session_utmp=Rekodkan log masuk dan keluar ke dalam Utmp?
 session_realname=Paparkan nama hos sebenar dan bukannya nama dari URL?
 session_pamon=Gunakan PAM untuk pengesahan Unix, jika ada
 session_pamoff=Jangan sekali-kali menggunakan PAM untuk pengesahan Unix

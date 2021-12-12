@@ -412,7 +412,6 @@ session_ecookie=Su navegador no soporta cookies, los cuales son requeridos para 
 session_elsof=La autenticación local requiere el programa <tt>lsof</tt>
 session_remember=¿Ofrezco recordar el login permanéntemente?
 session_hostname=¿Mostrar nombre de máquina en pantalla de login?
-session_utmp=¿Grabar logins y logouts en Utmp?
 session_realname=¿Mostrar el verdadero nombre de máquina en lugar del nombre de la URL?
 session_pamon=Uso PAM para autenticación Unix, si está disponible
 session_pamoff=Nunca usar PAM para autenticación Unix

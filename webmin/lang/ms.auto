@@ -60,6 +60,7 @@ session_stype=Jenis pengesahan
 session_sopts=Pilihan pengesahan
 session_local=Pengesahan tempatan
 session_ip=Hadkan sesi ke alamat IP pelanggan yang sama?
+session_utmp=Rekod log masuk dan log keluar dalam <tt>utmp</tt>?
 session_pam=Sumber kata laluan
 session_popts=Pilihan kata laluan
 session_cmddef=Perubahan kata laluan yang telah tamat tempoh

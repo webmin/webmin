@@ -1,5 +1,6 @@
 index_title=Záznam akcií Webminu
 index_header=Vyhľadať v záznamoch Webminu akciu..
+
 index_uall=Kýmkoľvek
 index_user=Užívateľom
 index_nuser=Každým užívateľom okrem
@@ -16,7 +17,6 @@ index_fall=Ktorý modifikuje ktorýkoľvek súbor
 index_file=Tento modifikovaný súbor
 index_wall=Z ktoréhokoľvek serveru Webmina
 index_whost=Zo serveru
-
 search_title=Výsledky vyhľadávania
 search_date=Dátum
 search_time=Čas

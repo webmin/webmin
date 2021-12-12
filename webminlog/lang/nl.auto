@@ -1,3 +1,12 @@
+index_users=Door gebruiker ..
+index_modules=Bij modules ..
+index_notify=E-mail verzenden voor Webmin-acties?
+index_notify_mods=Voor acties in modules
+index_notify_users=Voor acties door gebruikers
+index_notify_email=Stuur een email naar
+index_notify_usub=Gebruikersnaam opnemen in e-mailonderwerp?
+index_notify_msub=Actie opnemen in e-mailonderwerp?
+
 search_global_failed=Aanmelden bij Webmin is mislukt : $1 
 search_global_expiredpass=Wachtwoord is verlopen
 search_global_wronguser=Ongeldige gebruiker
@@ -7,3 +16,12 @@ search_global_badpass=Slecht wachtwoord
 search_global_twofactor=Ongeldig token voor twee factoren
 
 acl_self=Alleen ik
+acl_notify=Kan e-mailmeldingen configureren?
+
+notify_err=Kan meldingsopties niet opslaan
+notify_ecannot=U mag geen meldingen configureren
+notify_emods=Geen modules geselecteerd
+notify_eusers=Geen gebruikers geselecteerd
+notify_eemail=Geen e-mailadres ingevuld
+
+log_notify=Opties voor opgeslagen e-mailmeldingen

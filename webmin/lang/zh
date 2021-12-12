@@ -452,7 +452,6 @@ session_elsof=本地验证需要 <tt>lsof</tt> 程序
 session_remember=提供永久记忆登录的功能？
 session_ip=将会话限制为相同的客户端 IP 地址？
 session_hostname=在登录屏上显示主机名称？
-session_utmp=在 Utmp 中记录登录和注销？
 session_realname=显示真实的主机名而不是 URL 的名称？
 session_pamon=若有此功能，请使用 Unix 验证的 PAM
 session_pamoff=禁用 Unix 验证的 PAM

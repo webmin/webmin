@@ -2,10 +2,12 @@ index_title=Ġurnal tal-Azzjonijiet Webmin
 index_header=Fittex fil-ġurnal tal-Webmin għal azzjonijiet ..
 index_uall=Minn kull utent
 index_user=Minn utent
+index_users=Mill-utent ..
 index_nuser=Minn kull utent minbarra
 index_ouser=Minn utent mhux Webmin
 index_mall=Fi kwalunkwe modulu
 index_module=Fil-modulu
+index_modules=F'moduli ..
 index_tall=Fi kwalunkwe ħin
 index_today=Għal-lum biss
 index_yesterday=Għall-bieraħ biss
@@ -30,6 +32,12 @@ index_sdesc=Deskrizzjoni tal-azzjoni fiha
 index_shost=Sors tal-Webmin Sors
 index_long=Uri deskrizzjonijiet ta 'azzjoni sħiħa?
 index_global=&lt;Mhux fl-ebda modulu&gt;
+index_notify=Ibgħat email għal azzjonijiet Webmin?
+index_notify_mods=Għal azzjonijiet f'moduli
+index_notify_users=Għal azzjonijiet mill-utenti
+index_notify_email=Ibgħat email lil
+index_notify_usub=Inkludi l-isem tal-utent fis-suġġett tal-email?
+index_notify_msub=Inkludi azzjoni fis-suġġett tal-email?
 
 search_title=Riżultati tat-Tiftix
 search_date=Data
@@ -105,6 +113,7 @@ acl_sel=Magħżula hawn taħt ..
 acl_self=Awto biss
 acl_users=Jista 'jara azzjonijiet mill-utenti
 acl_rollback=Jistgħu jerġgħu jmexxu azzjonijiet?
+acl_notify=Tista' tikkonfigura notifiki bl-email?
 
 rollback_title=Azzjoni Rollback
 rollback_rusure=Int żgur li trid terġa 'ddaħħal il-fajls kollha elenkati hawn taħt għall-kontenut tagħhom qabel ma ttieħdet din l-azzjoni? Kwalunkwe data li jkun fiha bħalissa għandha tinkiteb mill-bidliet li ġejjin :
@@ -129,4 +138,11 @@ rollback_deleted=Fajl imħassar $1.
 rollback_nodeleted=Fajl li ma jeżistix $1.
 rollback_enone=L-ebda fajls magħżula
 
+notify_err=Naqset milli tissejvja l-għażliet tan-notifika
+notify_ecannot=M'intix permess li tikkonfigura notifiki
+notify_emods=Ebda moduli magħżula
+notify_eusers=Ebda utent magħżul
+notify_eemail=L-ebda indirizz elettroniku mdaħħal
+
 log_rollback=Azzjoni roll-back $1 fil-modulu $2 
+log_notify=Għażliet ta' notifiki bl-email salvati

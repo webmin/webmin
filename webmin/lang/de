@@ -616,7 +616,6 @@ session_elsof=Für die lokale Anmeldung wird das Programm <tt>lsof</tt> benötig
 session_remember="Kennung speichern" ermöglichen?
 session_ip=Limitiere Sitzungen mit derselben Client IP-Adresse?
 session_hostname=Zeige Hostnamen auf Anmeldebildschirm?
-session_utmp=Speichere Ein- und Ausloggen in Utmp?
 session_realname=Zeige den echten Hostnamen anstelle eines Virtuellen Servernamens in der URL?
 session_pam=Passwort-Quelle
 session_pamon=Benutze PAM für die Unix-Authentifizierung, wenn verfügbar

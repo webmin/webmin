@@ -1,5 +1,6 @@
 index_title=Registre d'Accions de Webmin
 index_header=Cerca accions al registre de Webmin...
+
 index_uall=Per a qualsevol usuari
 index_user=Per a l'usuari
 index_nuser=per qualsevol usuari excepte
@@ -30,7 +31,6 @@ index_sdesc=La descripció de l'acció conté
 index_shost=Servidor Webmin origen
 index_long=Mostra les descripcions llargues de les accions
 index_global=&lt;A cap mòdul&gt;
-
 search_title=Resultats de la Recerca
 search_date=Data
 search_time=Hora

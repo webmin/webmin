@@ -1,5 +1,7 @@
+index_users=由用户 ..
 index_nuser=除以下任何用户
 index_ouser=由非Webmin用户
+index_modules=在模块 ..
 index_yesterday=仅昨天
 index_week=在最后一周
 index_nolog=<b>注意</b>-<a href='$1'>登录Webmin</a>当前未启用，因此在操作日志中进行搜索可能不会产生任何结果。
@@ -19,6 +21,12 @@ index_sdesc=动作说明包含
 index_shost=源Webmin服务器
 index_long=显示完整的动作说明？
 index_global=&lt;不在任何模块中&gt;
+index_notify=为 Webmin 操作发送电子邮件？
+index_notify_mods=对于模块中的操作
+index_notify_users=对于用户的操作
+index_notify_email=发送电子邮件至
+index_notify_usub=在电子邮件主题中包含用户名？
+index_notify_msub=在电子邮件主题中包含操作？
 
 search_webmin=Webmin服务器
 search_none2=没有动作符合您对动作的搜索
@@ -56,6 +64,7 @@ acl_sel=在下面选择 ..
 acl_self=只有自我
 acl_users=可以查看用户的操作
 acl_rollback=可以回滚动作吗？
+acl_notify=可以配置邮件通知吗？
 
 rollback_title=回滚动作
 rollback_rusure=您确定要在执行此操作之前将下面列出的所有文件还原为它们的内容吗？它们当前包含的任何数据将被以下更改覆盖：
@@ -80,4 +89,11 @@ rollback_deleted=已删除文件 $1。
 rollback_nodeleted=跳过的不存在的文件 $1。
 rollback_enone=未选择文件
 
+notify_err=未能保存通知选项
+notify_ecannot=您无权配置通知
+notify_emods=未选择任何模块
+notify_eusers=未选择任何用户
+notify_eemail=未输入电子邮件地址
+
 log_rollback=在模块 $2中回滚了操作 $1
+log_notify=已保存的电子邮件通知选项

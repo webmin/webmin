@@ -1,4 +1,6 @@
+index_users=Per utente ..
 index_ouser=Per utente non Webmin
+index_modules=Nei moduli ..
 index_yesterday=Solo per ieri
 index_week=Durante l'ultima settimana
 index_fall=Che ha modificato qualsiasi file
@@ -16,6 +18,12 @@ index_sdesc=La descrizione dell'azione contiene
 index_shost=Server Webmin di origine
 index_long=Mostra le descrizioni delle azioni complete?
 index_global=&lt;Non presente in alcun modulo&gt;
+index_notify=Inviare email per azioni Webmin?
+index_notify_mods=Per le azioni nei moduli
+index_notify_users=Per le azioni degli utenti
+index_notify_email=Invia email a
+index_notify_usub=Includere il nome utente nell'oggetto dell'email?
+index_notify_msub=Includere un'azione nell'oggetto dell'e-mail?
 
 search_webmin=Webmin Server
 search_none2=Nessuna azione corrisponde alla tua ricerca di azioni
@@ -50,6 +58,7 @@ acl_sel=Selezionato sotto. ..
 acl_self=Solo io
 acl_users=Può visualizzare le azioni degli utenti
 acl_rollback=È possibile ripristinare le azioni?
+acl_notify=Può configurare le notifiche e-mail?
 
 rollback_title=Azione di rollback
 rollback_rusure=Sei sicuro di voler ripristinare tutti i file elencati di seguito al loro contenuto prima di intraprendere questa azione? Tutti i dati che contengono attualmente verranno sovrascritti dalle seguenti modifiche :
@@ -74,4 +83,11 @@ rollback_deleted=File eliminato $1.
 rollback_nodeleted=File inesistente $1 saltato.
 rollback_enone=Nessun file selezionato
 
+notify_err=Impossibile salvare le opzioni di notifica
+notify_ecannot=Non sei autorizzato a configurare le notifiche
+notify_emods=Nessun modulo selezionato
+notify_eusers=Nessun utente selezionato
+notify_eemail=Nessun indirizzo email inserito
+
 log_rollback=Azione di rollback $1 nel modulo $2 
+log_notify=Opzioni di notifica e-mail salvate

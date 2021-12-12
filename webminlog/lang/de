@@ -1,5 +1,6 @@
 index_title=Webmin-Ereignisanzeige
 index_header=Das Webmin-Protokoll nach Ereignissen durchsuchen ...
+
 index_uall=Von jedem Benutzer
 index_user=Von Benutzer
 index_nuser=Von jedem Benutzer außer
@@ -30,7 +31,6 @@ index_sdesc=Aktionsbeschreibung beinhaltet
 index_shost=Quell Webmin Server
 index_long=Zeige volle Aktionsbeschreibungen?
 index_global=&lt;Nicht in einem Modul&gt;
-
 search_title=Suchergebnisse
 search_date=Datum
 search_time=Zeit

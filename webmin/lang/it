@@ -515,7 +515,6 @@ session_ecookie=Il tuo browser non è impostato per accettare i cookie o non li 
 session_elsof=L'autenticazione locale richiede il programma <tt>lsof</tt>
 session_remember=Chiedere di mantenere la connessione in maniera permanente?
 session_hostname=Mostrare il nome host nella schermata di accesso?
-session_utmp=Registrare i login e i logout in Utmp?
 session_realname=Mostrare il nome host reale invece del nome dall'URL?
 session_pamon=Una l'autenticazione PAM per Unix, se disponibile
 session_pamoff=Non usare mai l'autenticazione PAM per Unix

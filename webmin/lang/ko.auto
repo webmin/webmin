@@ -120,6 +120,7 @@ session_sopts=인증 옵션
 session_local=로컬 인증
 session_logouttime=$1 분 동안 활동이 없으면 자동 로그 아웃
 session_ip=세션을 동일한 클라이언트 IP 주소로 제한 하시겠습니까?
+session_utmp=<tt>utmp</tt>에 로그인 및 로그아웃을 기록하시겠습니까?
 session_pam=비밀번호 소스
 session_popts=비밀번호 옵션
 session_pamend=다른 모듈로 PAM 상태를 전달 하시겠습니까?

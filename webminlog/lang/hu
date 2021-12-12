@@ -1,5 +1,6 @@
 index_title=Webmin napló
 index_header=Események keresése a naplóállományban
+
 index_uall=Bárkire vonatkozóan
 index_user=Erre a felhasználóra vonatkozóan:
 index_nuser=Minden felhasználó kivéve
@@ -16,7 +17,6 @@ index_fall=Ki módosíthatja a fájlokat
 index_file=Azok a módosított fájlok
 index_wall=Bármelyik Webmin szerver
 index_whost=Adott szerverről
-
 search_title=A keresés eredménye
 search_date=Dátum
 search_time=Idő

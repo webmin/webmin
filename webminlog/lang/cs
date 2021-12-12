@@ -1,5 +1,6 @@
 index_title=Webmin log akcí
 index_header=Vyhledat Webmin log pro akce ..
+
 index_uall=Od kteréhokoliv uživatele
 index_user=Od uživatele
 index_nuser=Od kteréhokoliv uživatele kromě
@@ -26,7 +27,6 @@ index_dall=Nějaká změna
 index_diff=Změny obsahující
 index_stimes=Akce v období
 index_shost=Server, obsahující Webmin
-
 search_title=Výsledky hledání
 search_date=Datum
 search_time=Čas

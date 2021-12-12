@@ -2,10 +2,12 @@ index_title=Log de ações do Webmin
 index_header=Pesquise no log do Webmin por ações.
 index_uall=Por qualquer usuário
 index_user=Por usuário
+index_users=Por usuário ..
 index_nuser=Por qualquer usuário, exceto
 index_ouser=Por usuário não Webmin
 index_mall=Em qualquer módulo
 index_module=No módulo
+index_modules=Em módulos ..
 index_tall=A qualquer momento
 index_today=Somente por hoje
 index_yesterday=Somente ontem
@@ -30,6 +32,12 @@ index_sdesc=A descrição da ação contém
 index_shost=Servidor Webmin de origem
 index_long=Mostrar descrições de ação completas?
 index_global=&lt;Não existe em nenhum módulo&gt;
+index_notify=Enviar e-mail para ações do Webmin?
+index_notify_mods=Para ações em módulos
+index_notify_users=Para ações de usuários
+index_notify_email=Enviar um email a
+index_notify_usub=Incluir nome de usuário no assunto do e-mail?
+index_notify_msub=Incluir ação no assunto do email?
 
 search_title=Procurar Resultados
 search_date=Encontro
@@ -105,6 +113,7 @@ acl_sel=Selecionado abaixo ..
 acl_self=Somente eu
 acl_users=Pode visualizar ações dos usuários
 acl_rollback=Pode reverter ações?
+acl_notify=Pode configurar notificações por e-mail?
 
 rollback_title=Ação de reversão
 rollback_rusure=Tem certeza de que deseja reverter todos os arquivos listados abaixo para o conteúdo antes de executar esta ação? Todos os dados que eles contêm atualmente serão substituídos pelas seguintes alterações :
@@ -129,4 +138,11 @@ rollback_deleted=Arquivo excluído $1.
 rollback_nodeleted=Arquivo inexistente ignorado $1.
 rollback_enone=Nenhum arquivo selecionado
 
+notify_err=Falha ao salvar opções de notificação
+notify_ecannot=Você não tem permissão para configurar notificações
+notify_emods=Nenhum módulo selecionado
+notify_eusers=Nenhum usuário selecionado
+notify_eemail=Nenhum endereço de e-mail inserido
+
 log_rollback=Ação revertida $1 no módulo $2 
+log_notify=Opções de notificações de e-mail salvas

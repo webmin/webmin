@@ -120,6 +120,7 @@ session_sopts=Opzioni di autenticazione
 session_local=Autenticazione locale
 session_logouttime=Disconnessione automatica dopo $1 minuti di inattività
 session_ip=Limitare le sessioni allo stesso indirizzo IP client?
+session_utmp=Registrare accessi e disconnessioni in <tt>utmp</tt>?
 session_pam=Fonte password
 session_popts=Opzioni password
 session_pamend=Passare lo stato PAM ad altri moduli?

@@ -1,5 +1,6 @@
 index_title=Loggning av Webmin-aktivitet
 index_header=Sök i Webmin-loggen efter aktivitet ...
+
 index_uall=från alla användare
 index_user=från användare
 index_mall=i alla moduler
@@ -11,7 +12,6 @@ index_search=Sök
 index_return=sökformulär
 index_nolog=<b>Obs</b> - <a href='$1'>Loggning i Webmin</a> är för tillfället inte aktiverat, så sökningar i loggen kommer inte att ge några resultat.
 index_nologfiles=<b>Obs</b> - <a href='$1'>Loggning av filändringar</a> är för tillfället inte aktiverat, så ändrade filer och utförda kommandon kommer inte att komma med bland de loggade händelserna.
-
 search_title=Sökresultat
 search_date=Datum
 search_time=Tid

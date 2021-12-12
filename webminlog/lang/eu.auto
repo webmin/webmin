@@ -2,10 +2,12 @@ index_title=Webmin Ekintzak erregistroa
 index_header=Bilatu webminen erregistroko ekintzak ..
 index_uall=Erabiltzaileren batek
 index_user=Erabiltzailearen arabera
+index_users=Erabiltzailearen arabera ..
 index_nuser=Erabiltzaileren batek izan ezik
 index_ouser=Webmin ez duen erabiltzaileak
 index_mall=Edozein modutan
 index_module=Moduluan
+index_modules=Moduluetan ..
 index_tall=Edonoiz
 index_today=Gaur egun bakarrik
 index_yesterday=Atzo bakarrik
@@ -30,6 +32,12 @@ index_sdesc=Ekintzaren deskribapenak dauka
 index_shost=Iturri Webmin zerbitzaria
 index_long=Erakutsi ekintzaren deskribapen osoa?
 index_global=&lt;Ez da inongo modutan&gt;
+index_notify=Webmin ekintzetarako mezu elektronikoa bidali nahi duzu?
+index_notify_mods=Moduluetako ekintzetarako
+index_notify_users=Erabiltzaileen ekintzetarako
+index_notify_email=Bidali mezu elektronikoa hona
+index_notify_usub=Erabiltzaile izena gehitu mezu elektronikoaren gaian?
+index_notify_msub=Ekintza sartu mezu elektronikoaren gaian?
 
 search_title=Bilaketaren emaitzak
 search_date=data
@@ -105,6 +113,7 @@ acl_sel=Jarraian hautatua ..
 acl_self=Norbera bakarrik
 acl_users=Erabiltzaileek ekintzak ikusi ditzakete
 acl_rollback=Ekintzak atzera bota ditzake?
+acl_notify=Konfiguratu al daitezke posta elektroniko bidezko jakinarazpenak?
 
 rollback_title=Rollback Ekintza
 rollback_rusure=Ziur al zaude azpian agertzen diren fitxategi guztiak berriro edukira itzuli nahi dituzula ekintza hau gauzatu aurretik? Gaur egun dituzten datuak honako aldaketa hauek gainidazten dira :
@@ -129,4 +138,11 @@ rollback_deleted=$1 fitxategia ezabatu da
 rollback_nodeleted=$1 fitxategi salto egin gabe dago.
 rollback_enone=Ez da fitxategirik hautatu
 
+notify_err=Ezin izan dira gorde jakinarazpen-aukerak
+notify_ecannot=Ez duzu jakinarazpenak konfiguratzeko baimenik
+notify_emods=Ez da modulurik hautatu
+notify_eusers=Ez dago erabiltzailerik hautatu
+notify_eemail=Ez da helbide elektronikorik sartu
+
 log_rollback=Atzera egindako ekintza $1 moduluan $2 
+log_notify=Gordetako posta elektronikoko jakinarazpenen aukerak

@@ -616,7 +616,6 @@ session_elsof=L'authentification locale nécessite le programme <tt>lsof</tt>
 session_remember=Offrez de se rappeler connexion permanente?
 session_ip=Limiter les sessions à la même adresse IP client?
 session_hostname=Afficher le nom d'hôte sur l'écran de connexion?
-session_utmp=Enregistrer les connexions et déconnexions dans Utmp?
 session_realname=Afficher le vrai nom d'hôte au lieu du nom de l'URL?
 session_pam=Source du mot de passe
 session_pamon=Utiliser PAM pour l'authentification Unix, si disponible

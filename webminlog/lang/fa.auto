@@ -2,10 +2,12 @@ index_title=ورود به سیستم اقدامات وبمین
 index_header=برای انجام اقدامات وب وارد شوید.
 index_uall=توسط هر کاربر
 index_user=توسط کاربر
+index_users=توسط کاربر ..
 index_nuser=توسط هر کاربر به جز
 index_ouser=توسط کاربر غیر وبمین
 index_mall=در هر ماژول
 index_module=در ماژول
+index_modules=در ماژول ها ..
 index_tall=هروقت
 index_today=فقط امروز
 index_yesterday=فقط برای دیروز
@@ -30,6 +32,12 @@ index_sdesc=شرح عمل شامل
 index_shost=منبع سرور وبمین
 index_long=نمایش توضیحات کامل عمل؟
 index_global=&lt;در هر ماژول&gt;
+index_notify=برای اقدامات وبمین ایمیل ارسال شود؟
+index_notify_mods=برای اقدامات در ماژول ها
+index_notify_users=برای اقدامات کاربران
+index_notify_email=ارسال ایمیل به
+index_notify_usub=نام کاربری در موضوع ایمیل لحاظ شود؟
+index_notify_msub=اقدام در موضوع ایمیل لحاظ شود؟
 
 search_title=نتایج جستجو
 search_date=تاریخ
@@ -105,6 +113,7 @@ acl_sel=انتخاب شده در زیر ..
 acl_self=فقط خود
 acl_users=می تواند اقدامات کاربران را مشاهده کند
 acl_rollback=آیا می توان اقدامات را عقب انداخت؟
+acl_notify=آیا می توان اعلان های ایمیل را پیکربندی کرد؟
 
 rollback_title=عملکرد برگشتی
 rollback_rusure=آیا مطمئن هستید که قبل از این اقدام می توانید کلیه پرونده های ذکر شده در زیر را به محتوای آنها برگردانید؟ هرگونه اطلاعاتی که در حال حاضر در آنها وجود دارد با تغییرات زیر رونویسی می شود :
@@ -129,4 +138,11 @@ rollback_deleted=پرونده$1 حذف شد.
 rollback_nodeleted=پرونده غیر موجود$1 رد شد.
 rollback_enone=هیچ پرونده ای انتخاب نشده است
 
+notify_err=گزینه های اعلان ذخیره نشد
+notify_ecannot=شما مجاز به پیکربندی اعلان ها نیستید
+notify_emods=هیچ ماژولی انتخاب نشده است
+notify_eusers=هیچ کاربری انتخاب نشده است
+notify_eemail=هیچ آدرس ایمیلی وارد نشده است
+
 log_rollback=عملکرد برگشت $1 در ماژول$2
+log_notify=گزینه های اعلان های ایمیل ذخیره شده

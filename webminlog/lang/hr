@@ -1,5 +1,6 @@
 index_title=Webmin akcijski zapisi
 index_header=Pretraži Webmin zapise za akcije
+
 index_uall=Bilo koji korisnik
 index_user=Korisnik
 index_nuser=Svaki korisnik osim
@@ -17,7 +18,6 @@ index_fall=Koji mjenja bilo koju datoteku
 index_file=Modificirana datoteka
 index_wall=Od bilo kojeg Webmin servera
 index_whost=Od servera
-
 search_title=Rezultat pretrage
 search_date=Datum
 search_time=Vrijeme

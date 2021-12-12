@@ -7,6 +7,7 @@ bind_emaxconns_per_net=Le nombre maximal de connexions simultanées par réseau 
 
 os_incorrect=Le système d'exploitation $1 a été mis à niveau vers la version $2
 
+session_utmp=Enregistrer les connexions et les déconnexions dans <tt>utmp</tt> ?
 session_passapi=Activer l'API de changement de mot de passe à distance ?
 session_passapi0=API désactivée
 session_passapi1=API activée pour les utilisateurs Unix

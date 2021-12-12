@@ -1,4 +1,6 @@
+index_users=Podľa užívateľa ..
 index_ouser=Od iného používateľa ako Webmin
+index_modules=V moduloch ..
 index_yesterday=Iba včera
 index_week=Počas posledného týždňa
 index_susers=Akcie používateľov Webminu
@@ -12,6 +14,12 @@ index_sdesc=Popis akcie obsahuje
 index_shost=Zdrojový webový server
 index_long=Zobraziť úplné popisy akcií?
 index_global=&lt;Nie v žiadnom module&gt;
+index_notify=Chcete poslať e-mail na akcie Webmin?
+index_notify_mods=Pre akcie v moduloch
+index_notify_users=Pre akcie používateľov
+index_notify_email=Poslať email na
+index_notify_usub=Zahrnúť používateľské meno do predmetu e-mailu?
+index_notify_msub=Zahrnúť akciu do predmetu e-mailu?
 
 search_none2=Vyhľadávaniu akcií nezodpovedajú žiadne akcie
 search_critd=kde popis obsahuje <tt>$1</tt>
@@ -36,7 +44,15 @@ view_rawname=Názov parametra
 view_rawvalue=Hodnota parametra
 
 acl_self=Iba ja
+acl_notify=Je možné nakonfigurovať e-mailové upozornenia?
 
 rollback_enone=Neboli vybrané žiadne súbory
 
+notify_err=Nepodarilo sa uložiť možnosti upozornení
+notify_ecannot=Nemáte povolené konfigurovať upozornenia
+notify_emods=Nie sú vybraté žiadne moduly
+notify_eusers=Nie sú vybratí žiadni používatelia
+notify_eemail=Nie je zadaná žiadna e-mailová adresa
+
 log_rollback=Vrátenie akcie $1 v module $2 
+log_notify=Uložené možnosti e-mailových upozornení

@@ -1,0 +1,18 @@
+index_users=ユーザーによる ..
+index_modules=モジュールで ..
+index_notify=Webminアクションの電子メールを送信しますか？
+index_notify_mods=モジュール内のアクションの場合
+index_notify_users=ユーザーによるアクションの場合
+index_notify_email=にメールを送信
+index_notify_usub=メールの件名にユーザー名を含めますか？
+index_notify_msub=メールの件名にアクションを含めますか？
+
+acl_notify=電子メール通知を構成できますか？
+
+notify_err=通知オプションの保存に失敗しました
+notify_ecannot=通知を構成することは許可されていません
+notify_emods=モジュールが選択されていません
+notify_eusers=ユーザーが選択されていません
+notify_eemail=メールアドレスが入力されていません
+
+log_notify=保存された電子メール通知オプション

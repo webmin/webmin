@@ -623,7 +623,6 @@ session_elsof=ローカル認証を使用するには <tt>lsof</tt> プログラ
 session_remember=ログイン情報を記憶する機能を提供する
 session_ip=同一のクライアント IP アドレスにセッションを制限する
 session_hostname=ログイン時にホスト名を表示する
-session_utmp=Utmp にログインとログアウトを記録する
 session_realname=URL からホスト名を取得せず実際のホスト名を表示
 session_pam=パスワードの参照元
 session_pamon=可能であれば Unix 認証に PAM を使用する

@@ -1,4 +1,6 @@
+index_users=kullanıcı tarafından ..
 index_ouser=Webmin kullanıcısı olmayan tarafından
+index_modules=modüllerde ..
 index_yesterday=Sadece dün için
 index_week=Geçen hafta boyunca
 index_susers=Webmin kullanıcılarının eylemleri
@@ -12,6 +14,12 @@ index_sdesc=İşlem açıklaması şunları içerir
 index_shost=Kaynak Webmin sunucusu
 index_long=Tüm eylem açıklamaları gösterilsin mi?
 index_global=&lt;Hiçbir modülde yok&gt;
+index_notify=Webmin eylemleri için e-posta gönderilsin mi?
+index_notify_mods=Modüllerdeki eylemler için
+index_notify_users=Kullanıcıların eylemleri için
+index_notify_email=Email gönder
+index_notify_usub=Kullanıcı adı e-posta konusuna dahil edilsin mi?
+index_notify_msub=Eylem e-posta konusuna dahil edilsin mi?
 
 search_none2=İşlem aramanızla eşleşen işlem yok
 search_critd=burada açıklama <tt>$1</tt>
@@ -39,6 +47,7 @@ view_rawvalue=Parametre değeri
 
 acl_self=Sadece benlik
 acl_rollback=Eylemleri geri alabilir mi?
+acl_notify=E-posta bildirimlerini yapılandırabilir mi?
 
 rollback_title=Geri Alma İşlemi
 rollback_rusure=Bu işlem gerçekleştirilmeden önce, aşağıda listelenen tüm dosyaları içeriklerine geri döndürmek istediğinizden emin misiniz? Şu anda içerdikleri tüm verilerin üzerine aşağıdaki değişiklikler yazılır :
@@ -63,4 +72,11 @@ rollback_deleted=$1 dosyası silindi.
 rollback_nodeleted=Var olmayan dosya $1 atlandı.
 rollback_enone=Hiçbir dosya seçilmedi
 
+notify_err=Bildirim seçenekleri kaydedilemedi
+notify_ecannot=Bildirimleri yapılandırma izniniz yok
+notify_emods=Modül seçilmedi
+notify_eusers=Kullanıcı seçilmedi
+notify_eemail=E-posta adresi girilmedi
+
 log_rollback=$2 modülünde $1 geri alma işlemi
+log_notify=Kaydedilmiş e-posta bildirimleri seçenekleri

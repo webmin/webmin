@@ -616,7 +616,6 @@ session_elsof=Lokal autentisering krever <tt>lsof</tt> programmet
 session_remember=Tilby å huske login data permanent??
 session_ip=Begrens sesjoner til sammer klient IP adresse?
 session_hostname=Vis vertsnavn i loginbildet??
-session_utmp=Loggfør inn- og utlogginger i Utmp?
 session_realname=Vis virkelig vertsnavn i stedet for navn fra URL?
 session_pam=Passord-kilde
 session_pamon=Bruk PAM for Unix autentisering, hvis tilgjengelig
