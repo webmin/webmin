@@ -32,6 +32,7 @@ index_sdesc=Περιγράφει την ενέργεια
 index_shost=Πηγή διακομιστή Webmin
 index_long=Εμφάνιση πλήρων περιγραφών ενέργειας;
 index_global=&lt;Δεν υπάρχει σε καμία ενότητα&gt;
+index_header2=Επιλογές email ειδοποίησης
 index_notify=Αποστολή email για ενέργειες Webmin;
 index_notify_mods=Για ενέργειες σε ενότητες
 index_notify_users=Για ενέργειες από χρήστες

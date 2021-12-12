@@ -32,6 +32,7 @@ index_sdesc=شرح عمل شامل
 index_shost=منبع سرور وبمین
 index_long=نمایش توضیحات کامل عمل؟
 index_global=&lt;در هر ماژول&gt;
+index_header2=گزینه های ایمیل اعلان
 index_notify=برای اقدامات وبمین ایمیل ارسال شود؟
 index_notify_mods=برای اقدامات در ماژول ها
 index_notify_users=برای اقدامات کاربران

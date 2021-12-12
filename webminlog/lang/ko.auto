@@ -4,6 +4,7 @@ index_modules=모듈에서 ..
 index_sdesc=활동 설명
 index_long=전체 작업 설명을 표시 하시겠습니까?
 index_global=&lt;어떤 모듈에도 없음&gt;
+index_header2=알림 이메일 옵션
 index_notify=Webmin 작업을 위해 이메일을 보내시겠습니까?
 index_notify_mods=모듈의 작업
 index_notify_users=사용자의 작업에 대해

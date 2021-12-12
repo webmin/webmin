@@ -1,6 +1,5 @@
 index_title=Przeglądanie logów Webmina
 index_header=Szukaj w logu Webmina ..
-
 index_uall=Dowolnego użytkownika
 index_user=Użytkownika
 index_nuser=Dowolnego użytkownika oprócz
@@ -31,6 +30,7 @@ index_sdesc=Opis działania zawiera
 index_shost=Źródłowy serwer Webmina
 index_long=Pokazywać pełne opisy zdarzeń?
 index_global=&lt;W żadnym module&gt;
+
 search_title=Wyniki poszukiwania
 search_date=Data
 search_time=Czas

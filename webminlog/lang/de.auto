@@ -1,5 +1,6 @@
 index_users=Vom Nutzer ..
 index_modules=In Modulen ..
+index_header2=E-Mail-Optionen für Benachrichtigungen
 index_notify=E-Mail für Webmin-Aktionen senden?
 index_notify_mods=Für Aktionen in Modulen
 index_notify_users=Für Aktionen von Benutzern

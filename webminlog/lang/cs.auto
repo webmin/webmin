@@ -4,6 +4,7 @@ index_modules=V modulech ..
 index_sdesc=Popis akce obsahuje
 index_long=Zobrazit úplné popisy akcí?
 index_global=&lt;Ne v žádném modulu&gt;
+index_header2=Možnosti upozornění e-mailem
 index_notify=Odeslat e-mail pro akce Webmin?
 index_notify_mods=Pro akce v modulech
 index_notify_users=Pro akce uživatelů

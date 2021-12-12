@@ -21,6 +21,7 @@ index_sdesc=动作说明包含
 index_shost=源Webmin服务器
 index_long=显示完整的动作说明？
 index_global=&lt;不在任何模块中&gt;
+index_header2=通知电子邮件选项
 index_notify=为 Webmin 操作发送电子邮件？
 index_notify_mods=对于模块中的操作
 index_notify_users=对于用户的操作

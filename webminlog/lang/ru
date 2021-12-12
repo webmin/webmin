@@ -1,6 +1,5 @@
 index_title=Журнал действий Webmin
 index_header=Искать в журнале Webmin действия ..
-
 index_uall=Любого пользователя
 index_user=Указанного пользователя
 index_nuser=Любого пользователя, кроме указанного
@@ -29,6 +28,7 @@ index_diff=Изменения содержащие
 index_stimes=Действия в указанное время
 index_shost=Сервер Webmin источник
 index_global=&lt;Никаком&gt;
+
 search_title=Результаты поиска
 search_date=Дата
 search_time=Время

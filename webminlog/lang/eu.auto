@@ -32,6 +32,7 @@ index_sdesc=Ekintzaren deskribapenak dauka
 index_shost=Iturri Webmin zerbitzaria
 index_long=Erakutsi ekintzaren deskribapen osoa?
 index_global=&lt;Ez da inongo modutan&gt;
+index_header2=Jakinarazpen-posta elektronikoaren aukerak
 index_notify=Webmin ekintzetarako mezu elektronikoa bidali nahi duzu?
 index_notify_mods=Moduluetako ekintzetarako
 index_notify_users=Erabiltzaileen ekintzetarako

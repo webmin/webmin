@@ -14,6 +14,7 @@ index_sdesc=Popis akcie obsahuje
 index_shost=Zdrojový webový server
 index_long=Zobraziť úplné popisy akcií?
 index_global=&lt;Nie v žiadnom module&gt;
+index_header2=Možnosti notifikačného e-mailu
 index_notify=Chcete poslať e-mail na akcie Webmin?
 index_notify_mods=Pre akcie v moduloch
 index_notify_users=Pre akcie používateľov

@@ -1,6 +1,5 @@
 index_title=سجل إجراءات Webmin
 index_header=البحث في سجل Webmin عن إجراءات ..
-
 index_uall=بواسطة أي مستخدم
 index_user=حسب المستخدم
 index_nuser=بواسطة أي مستخدم باستثناء
@@ -31,6 +30,7 @@ index_sdesc=وصف العمل يحتوي على
 index_shost=خادم Webmin المصدر
 index_long=عرض أوصاف الفعل الكامل؟
 index_global=&lt;ليس في أي وحدة&gt;
+
 search_title=نتائج البحث
 search_date=تاريخ
 search_time=الوقت

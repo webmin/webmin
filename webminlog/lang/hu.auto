@@ -14,6 +14,7 @@ index_sdesc=A művelet leírása tartalmazza
 index_shost=Forrás Webmin szerver
 index_long=Megmutatja a teljes műveleti leírást?
 index_global=&lt;Egyetlen modulban sem&gt;
+index_header2=Értesítési e-mail opciók
 index_notify=E-mailt küld a Webmin műveletekhez?
 index_notify_mods=Modulokban végzett műveletekhez
 index_notify_users=A felhasználók műveleteihez

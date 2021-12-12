@@ -1,6 +1,5 @@
 index_title=Webmin handlings logg
 index_header=Søk i Webmin loggen for handlinger ..
-
 index_uall=Av alle brukere
 index_user=Av bruker
 index_nuser=Av alle brukere unntagen
@@ -31,6 +30,7 @@ index_sdesc=Handlingsbeskrivelse inneholder
 index_shost=Kilde Webmin tjener
 index_long=Vis fulle beskrivelser for handlinger?
 index_global=&lt;Ikke i noen modul&gt;
+
 search_title=Søke resultat
 search_date=Dato
 search_time=Tid

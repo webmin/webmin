@@ -14,6 +14,7 @@ index_sdesc=La description de l'action contient
 index_shost=Serveur Webmin source
 index_long=Afficher les descriptions d'actions complètes?
 index_global=&lt;Pas dans aucun module&gt;
+index_header2=Options d'e-mail de notification
 index_notify=Envoyer un e-mail pour les actions Webmin ?
 index_notify_mods=Pour les actions dans les modules
 index_notify_users=Pour les actions des utilisateurs

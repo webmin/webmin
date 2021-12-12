@@ -13,6 +13,7 @@ index_sdesc=Opis akcije sadrži
 index_shost=Izvorni Webmin poslužitelj
 index_long=Prikaži cjelovite opise radnji?
 index_global=&lt;Ne u bilo kojem modulu&gt;
+index_header2=Mogućnosti obavijesti putem e-pošte
 index_notify=Poslati e-poštu za radnje Webmina?
 index_notify_mods=Za radnje u modulima
 index_notify_users=Za radnje korisnika

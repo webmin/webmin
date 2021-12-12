@@ -1,6 +1,5 @@
 index_title=Webmin アクション ログ
 index_header=Webmin ログからアクションを検索
-
 index_uall=すべてのユーザ
 index_user=ユーザ 
 index_nuser=次のユーザ以外 
@@ -31,6 +30,7 @@ index_sdesc=アクションの内容
 index_shost=対象の Webmin server
 index_long=アクションの内容を詳細に表示する
 index_global=&lt;このリストにないモジュール&gt;
+
 search_title=検索結果
 search_date=日付
 search_time=時刻

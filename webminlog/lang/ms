@@ -1,6 +1,5 @@
 index_title=Log Tindakan Webmin
 index_header=Cari log Webmin untuk tindakan ..
-
 index_uall=Oleh sebarang pengguna
 index_user=Oleh pengguna
 index_nuser=Oleh sebarang kecuali
@@ -31,6 +30,7 @@ index_sdesc=Penerangan tindakan mengandungi
 index_shost=Sumber Pelayan Webmin
 index_long=Paparkan penerangan penuh tindakan?
 index_global=&lt;Tiada dalam modul&gt;
+
 search_title=Keputusan Carian
 search_date=Tarikh
 search_time=Masa

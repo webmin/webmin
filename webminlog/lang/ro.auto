@@ -32,6 +32,7 @@ index_sdesc=Descrierea acțiunii conține
 index_shost=Server Webmin sursă
 index_long=Arată descrieri complete de acțiune?
 index_global=&lt;Nu în niciun modul&gt;
+index_header2=Opțiuni de notificare prin e-mail
 index_notify=Trimiteți e-mail pentru acțiunile Webmin?
 index_notify_mods=Pentru acțiuni în module
 index_notify_users=Pentru acțiunile utilizatorilor

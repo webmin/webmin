@@ -1,5 +1,6 @@
 index_users=Av bruker ..
 index_modules=I moduler ..
+index_header2=Alternativer for e-postvarsling
 index_notify=Vil du sende e-post for Webmin-handlinger?
 index_notify_mods=For handlinger i moduler
 index_notify_users=For handlinger fra brukere

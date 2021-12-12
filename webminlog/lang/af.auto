@@ -32,6 +32,7 @@ index_sdesc=Aksie beskrywing bevat
 index_shost=Bron Webmin-bediener
 index_long=Wys volledige aksiebeskrywings?
 index_global=&lt;Nie in enige module nie
+index_header2=Kennisgewing e-pos opsies
 index_notify=Stuur e-pos vir Webmin-aksies?
 index_notify_mods=Vir aksies in modules
 index_notify_users=Vir optrede deur gebruikers

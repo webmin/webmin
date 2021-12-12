@@ -32,6 +32,7 @@ index_sdesc=Апісанне дзеяння змяшчае
 index_shost=Крыніца сервера Webmin
 index_long=Паказаць поўныя апісанні дзеянняў?
 index_global=&lt;Ні ў якім модулі&gt;
+index_header2=Параметры апавяшчэнняў па электроннай пошце
 index_notify=Адправіць электронную пошту для дзеянняў Webmin?
 index_notify_mods=Для дзеянняў у модулях
 index_notify_users=За дзеянні карыстальнікаў

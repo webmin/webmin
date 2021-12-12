@@ -1,6 +1,5 @@
 index_title=Webmin Kayıtları
 index_header=Webmin kayıtlarını ara ..
-
 index_uall=Her kullanıcı için
 index_user=Bu kullanıcı için :
 index_nuser=Bu kullanıcının dışındakiler için :
@@ -17,6 +16,7 @@ index_fall=Değiştirilen her dosya için
 index_file=Değiştirilen bu dosya için : 
 index_wall=Herhangi bir Webmin sunucudan
 index_whost=Bu sunucudan
+
 search_title=Arama Sonuçları
 search_date=Zaman
 search_time=Saat

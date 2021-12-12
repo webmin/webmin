@@ -32,6 +32,7 @@ index_sdesc=کارروائی کی تفصیل پر مشتمل ہے
 index_shost=ماخذ ویبمین سرور
 index_long=کارروائی کی مکمل تفصیلات دکھائیں؟
 index_global=&lt;کسی ماڈیول میں نہیں&gt;
+index_header2=اطلاعی ای میل کے اختیارات
 index_notify=Webmin ایکشنز کے لیے ای میل بھیجیں؟
 index_notify_mods=ماڈیولز میں کارروائیوں کے لیے
 index_notify_users=صارفین کے اعمال کے لیے

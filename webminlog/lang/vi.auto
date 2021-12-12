@@ -32,6 +32,7 @@ index_sdesc=Mô tả hành động chứa
 index_shost=Nguồn máy chủ Webmin
 index_long=Hiển thị mô tả hành động đầy đủ?
 index_global=&lt;Không có trong bất kỳ mô-đun nào&gt;
+index_header2=Tùy chọn email thông báo
 index_notify=Gửi email cho các hành động Webmin?
 index_notify_mods=Đối với các hành động trong mô-đun
 index_notify_users=Đối với các hành động của người dùng

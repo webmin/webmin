@@ -32,6 +32,7 @@ index_sdesc=Veiksmo aprašyme yra
 index_shost=Šaltinis „Webmin“ serveris
 index_long=Rodyti visus veiksmų aprašymus?
 index_global=&lt;Nei viename modulyje&gt;
+index_header2=Pranešimų el. pašto parinktys
 index_notify=Siųsti el. laišką dėl Webmin veiksmų?
 index_notify_mods=Veiksmams moduliuose
 index_notify_users=Už vartotojų veiksmus

@@ -14,6 +14,7 @@ index_sdesc=İşlem açıklaması şunları içerir
 index_shost=Kaynak Webmin sunucusu
 index_long=Tüm eylem açıklamaları gösterilsin mi?
 index_global=&lt;Hiçbir modülde yok&gt;
+index_header2=Bildirim e-posta seçenekleri
 index_notify=Webmin eylemleri için e-posta gönderilsin mi?
 index_notify_mods=Modüllerdeki eylemler için
 index_notify_users=Kullanıcıların eylemleri için

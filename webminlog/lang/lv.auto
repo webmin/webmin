@@ -32,6 +32,7 @@ index_sdesc=Darbības aprakstā ir
 index_shost=Avots Webmin serveris
 index_long=Rādīt pilnus darbību aprakstus?
 index_global=&lt;Nav nevienā modulī&gt;
+index_header2=Paziņojumu e-pasta iespējas
 index_notify=Vai nosūtīt e-pastu Webmin darbībām?
 index_notify_mods=Darbībām moduļos
 index_notify_users=Par lietotāju darbībām

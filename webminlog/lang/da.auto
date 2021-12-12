@@ -32,6 +32,7 @@ index_sdesc=Handlingsbeskrivelse indeholder
 index_shost=Kilde Webmin-server
 index_long=Vis fulde handlingsbeskrivelser?
 index_global=&lt;Ikke i noget modul&gt;
+index_header2=Indstillinger for e-mailbeskeder
 index_notify=Send e-mail til Webmin-handlinger?
 index_notify_mods=Til handlinger i moduler
 index_notify_users=Til handlinger fra brugere

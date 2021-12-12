@@ -1,6 +1,5 @@
 index_title=Journal des actions de Webmin
 index_header=Recherche dans les journaux les actions de Webmin
-
 index_uall=De n'importe quel utilisateur
 index_user=De l'utilisateur
 index_nuser=De tout utilisateur sauf
@@ -17,6 +16,7 @@ index_fall=Qui ont modifié n'importe quel fichier
 index_file=Ce fichier modifié
 index_wall=À partir de n'importe quel serveur Webmin
 index_whost=À partir du serveur
+
 search_title=Résultats d'une recherche
 search_date=Date
 search_time=Heure

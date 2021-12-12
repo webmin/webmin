@@ -18,6 +18,7 @@ index_sdesc=Опис дії містить
 index_shost=Вихідний сервер Webmin
 index_long=Показати повні описи дій?
 index_global=&lt;Ні в якому модулі&gt;
+index_header2=Параметри сповіщень електронною поштою
 index_notify=Надіслати електронний лист для дій Webmin?
 index_notify_mods=Для дій у модулях
 index_notify_users=За дії користувачів

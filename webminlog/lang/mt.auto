@@ -32,6 +32,7 @@ index_sdesc=Deskrizzjoni tal-azzjoni fiha
 index_shost=Sors tal-Webmin Sors
 index_long=Uri deskrizzjonijiet ta 'azzjoni sħiħa?
 index_global=&lt;Mhux fl-ebda modulu&gt;
+index_header2=Għażliet ta' email ta' notifika
 index_notify=Ibgħat email għal azzjonijiet Webmin?
 index_notify_mods=Għal azzjonijiet f'moduli
 index_notify_users=Għal azzjonijiet mill-utenti

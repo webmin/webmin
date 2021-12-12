@@ -32,6 +32,7 @@ index_sdesc=Toiminnan kuvaus sisältää
 index_shost=Lähde Webmin -palvelin
 index_long=Näytä kaikki toimintakuvaukset?
 index_global=&lt;Ei missään moduulissa&gt;
+index_header2=Sähköposti-ilmoitusvaihtoehdot
 index_notify=Lähetetäänkö sähköpostia Webmin-toimintoihin?
 index_notify_mods=Moduulien toimiin
 index_notify_users=Käyttäjien toimiin

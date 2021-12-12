@@ -1,5 +1,6 @@
 index_users=Per usuari ..
 index_modules=En mòduls ..
+index_header2=Opcions de correu electrònic de notificació
 index_notify=Vols enviar un correu electrònic per a accions de Webmin?
 index_notify_mods=Per a accions en mòduls
 index_notify_users=Per a accions dels usuaris

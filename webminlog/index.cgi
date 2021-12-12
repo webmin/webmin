@@ -109,7 +109,7 @@ if ($access{'notify'}) {
 	print &ui_hr();
 
 	print &ui_form_start("save_notify.cgi", "post");
-	print &ui_table_start($text{'index_header'}, undef, 2);
+	print &ui_table_start($text{'index_header2'}, undef, 2);
 
 	# Notifications enabled?
 	print &ui_table_row($text{'index_notify'},

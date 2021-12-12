@@ -1,5 +1,6 @@
 index_users=Door gebruiker ..
 index_modules=Bij modules ..
+index_header2=Opties voor e-mailmeldingen
 index_notify=E-mail verzenden voor Webmin-acties?
 index_notify_mods=Voor acties in modules
 index_notify_users=Voor acties door gebruikers

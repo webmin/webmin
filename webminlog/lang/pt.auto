@@ -32,6 +32,7 @@ index_sdesc=A descrição da ação contém
 index_shost=Servidor Webmin de origem
 index_long=Mostrar descrições de ação completas?
 index_global=&lt;Não existe em nenhum módulo&gt;
+index_header2=Opções de e-mail de notificação
 index_notify=Enviar e-mail para ações do Webmin?
 index_notify_mods=Para ações em módulos
 index_notify_users=Para ações de usuários

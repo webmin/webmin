@@ -1,6 +1,5 @@
 index_title=Webmin Actie Log
 index_header=Doorzoek het Webmin log voor acties..
-
 index_uall=Door iedereen
 index_user=Alleen door gebruiker:
 index_nuser=Door iedereen behalve:
@@ -31,6 +30,7 @@ index_sdesc=Actie omschrijving bevat
 index_shost=Bron Webmin server
 index_long=Toon de volledige actie omschrijvingen?
 index_global=&lt;In geen enkele module&gt;
+
 search_title=Zoek Resultaten
 search_date=Datum
 search_time=Tijd

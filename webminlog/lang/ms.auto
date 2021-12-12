@@ -1,5 +1,6 @@
 index_users=Oleh pengguna ..
 index_modules=Dalam modul ..
+index_header2=Pilihan e-mel pemberitahuan
 index_notify=Hantar e-mel untuk tindakan Webmin?
 index_notify_mods=Untuk tindakan dalam modul
 index_notify_users=Untuk tindakan oleh pengguna

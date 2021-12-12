@@ -32,6 +32,7 @@ index_sdesc=תיאור הפעולה מכיל
 index_shost=שרת Webmin המקור
 index_long=להציג תיאורי פעולה מלאים?
 index_global=&lt;לא בשום מודול&gt;
+index_header2=אפשרויות אימייל של התראות
 index_notify=לשלוח אימייל לפעולות Webmin?
 index_notify_mods=לפעולות במודולים
 index_notify_users=לפעולות של משתמשים

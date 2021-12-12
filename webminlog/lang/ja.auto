@@ -1,5 +1,6 @@
 index_users=ユーザーによる ..
 index_modules=モジュールで ..
+index_header2=通知メールオプション
 index_notify=Webminアクションの電子メールを送信しますか？
 index_notify_mods=モジュール内のアクションの場合
 index_notify_users=ユーザーによるアクションの場合
