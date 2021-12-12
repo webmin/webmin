@@ -119,6 +119,12 @@ if ($access{'notify'}) {
 	print &ui_table_row($text{'index_notify_email'},
 		&ui_textbox("email", $gconfig{'logemail'}, 60));
 
+	# Message subject options
+	print &ui_table_row($text{'index_notify_usub'},
+		&ui_yesno_radio("usub", $gconfig{'logemailusub'}));
+	print &ui_table_row($text{'index_notify_msub'},
+		&ui_yesno_radio("msub", $gconfig{'logemailmsub'}));
+
 	# Notify for which modules
 	my @msel = split(/\s+/, $gconfig{'logmodulesemail'});
 	print &ui_table_row($text{'index_notify_mods'},

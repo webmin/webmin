@@ -37,6 +37,8 @@ index_notify=Send email for Webmin actions?
 index_notify_mods=For actions in modules
 index_notify_users=For actions by users
 index_notify_email=Send email to
+index_notify_usub=Include username in email subject?
+index_notify_msub=Include action in email subject?
 
 search_title=Search Results
 search_date=Date

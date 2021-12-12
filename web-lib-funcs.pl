@@ -6546,12 +6546,19 @@ if ($logemail) {
 		}
 	$body .= "\n";
 	$body .= $msg."\n";
+	my $subj = $mdesc ? &text('log_email_subject', $mdesc)
+		          : $text{'log_email_global'};
+	if ($gconfig{'logemailusub'}) {
+		$subj = &text('log_email_by', $subj, $remote_user);
+		}
+	if ($gconfig{'logemailmsub'}) {
+		$subj .= " : ".$msg;
+		}
 	&mailboxes::send_text_mail(
 		&mailboxes::get_from_address(),
 		$gconfig{'logemail'},
 		undef,
-		$mdesc ? &text('log_email_subject', $mdesc)
-		       : $text{'log_email_global'},
+		$subj,
 		$body);
 	}
 }

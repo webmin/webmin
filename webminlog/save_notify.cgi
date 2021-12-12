@@ -30,6 +30,8 @@ else {
 	$in{'users'} || &error($text{'notify_eusers'});
 	$gconfig{'logusersemail'} = join(" ", split(/\0/, $in{'users'}));
 	}
+$gconfig{'logemailusub'} = $in{'usub'};
+$gconfig{'logemailmsub'} = $in{'msub'};
 &lock_file($config_file);
 &save_module_config(\%gconfig, "");
 &unlock_file($config_file);
