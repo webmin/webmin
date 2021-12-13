@@ -2,10 +2,12 @@ index_title=Webmin Handlingslog
 index_header=Søg i Webmin-loggen efter handlinger ..
 index_uall=Af enhver bruger
 index_user=Af bruger
+index_users=Af bruger ..
 index_nuser=Af enhver bruger undtagen
 index_ouser=Af ikke-Webmin bruger
 index_mall=I ethvert modul
 index_module=I modul
+index_modules=I moduler ..
 index_tall=Når som helst
 index_today=Kun i dag
 index_yesterday=Kun i går
@@ -30,6 +32,13 @@ index_sdesc=Handlingsbeskrivelse indeholder
 index_shost=Kilde Webmin-server
 index_long=Vis fulde handlingsbeskrivelser?
 index_global=&lt;Ikke i noget modul&gt;
+index_header2=Indstillinger for e-mailbeskeder
+index_notify=Send e-mail til Webmin-handlinger?
+index_notify_mods=Til handlinger i moduler
+index_notify_users=Til handlinger fra brugere
+index_notify_email=Send e-mail til
+index_notify_usub=Vil du inkludere brugernavn i e-mail-emnet?
+index_notify_msub=Vil du inkludere handling i e-mail-emnet?
 
 search_title=Søgeresultater
 search_date=Dato
@@ -105,6 +114,7 @@ acl_sel=Valgt nedenfor ..
 acl_self=Kun mig selv
 acl_users=Kan se handlinger fra brugere
 acl_rollback=Kan rulle handlinger tilbage?
+acl_notify=Kan konfigurere e-mail-meddelelser?
 
 rollback_title=Rollback Action
 rollback_rusure=Er du sikker på, at du vil vende alle de filer, der er anført nedenfor til deres indhold, før denne handling blev udført? Alle data, som de i øjeblikket indeholder, vil blive overskrevet af følgende ændringer :
@@ -129,4 +139,11 @@ rollback_deleted=Slettet fil $1.
 rollback_nodeleted=Springet ikke-eksisterende fil $1.
 rollback_enone=Ingen filer valgt
 
+notify_err=Kunne ikke gemme underretningsindstillinger
+notify_ecannot=Du har ikke tilladelse til at konfigurere notifikationer
+notify_emods=Ingen moduler valgt
+notify_eusers=Ingen brugere valgt
+notify_eemail=Ingen e-mailadresse indtastet
+
 log_rollback=Rullet tilbage $1 i modul $2 
+log_notify=Gemte muligheder for e-mail-notifikationer

@@ -2,10 +2,12 @@ index_title=Nhật ký hành động Webmin
 index_header=Tìm kiếm nhật ký Webmin cho các hành động ..
 index_uall=Bởi bất kỳ người dùng nào
 index_user=Bởi người dùng
+index_users=Bởi người dùng ..
 index_nuser=Bởi bất kỳ người dùng nào ngoại trừ
 index_ouser=Bởi người dùng không phải là Webmin
 index_mall=Trong bất kỳ mô-đun
 index_module=Trong mô-đun
+index_modules=Trong các mô-đun ..
 index_tall=Bất cứ lúc nào
 index_today=Chỉ hôm nay thôi
 index_yesterday=Chỉ dành cho ngày hôm qua
@@ -30,6 +32,13 @@ index_sdesc=Mô tả hành động chứa
 index_shost=Nguồn máy chủ Webmin
 index_long=Hiển thị mô tả hành động đầy đủ?
 index_global=&lt;Không có trong bất kỳ mô-đun nào&gt;
+index_header2=Tùy chọn email thông báo
+index_notify=Gửi email cho các hành động Webmin?
+index_notify_mods=Đối với các hành động trong mô-đun
+index_notify_users=Đối với các hành động của người dùng
+index_notify_email=Gửi email đến
+index_notify_usub=Bao gồm tên người dùng trong chủ đề email?
+index_notify_msub=Bao gồm hành động trong chủ đề email?
 
 search_title=kết quả tìm kiếm
 search_date=Ngày
@@ -105,6 +114,7 @@ acl_sel=Chọn bên dưới ..
 acl_self=Chỉ có bản thân
 acl_users=Có thể xem hành động của người dùng
 acl_rollback=Có thể quay lại hành động?
+acl_notify=Có thể định cấu hình thông báo qua email không?
 
 rollback_title=Hành động quay lại
 rollback_rusure=Bạn có chắc chắn muốn hoàn nguyên tất cả các tệp được liệt kê bên dưới về nội dung của chúng trước khi thực hiện hành động này không? Bất kỳ dữ liệu nào hiện tại chúng sẽ được ghi đè bằng các thay đổi sau :
@@ -129,4 +139,11 @@ rollback_deleted=Đã xóa tệp $1.
 rollback_nodeleted=Bỏ qua tệp không tồn tại $1.
 rollback_enone=Không có tập tin nào được chọn
 
+notify_err=Không lưu được các tùy chọn thông báo
+notify_ecannot=Bạn không được phép định cấu hình thông báo
+notify_emods=Không có mô-đun nào được chọn
+notify_eusers=Không có người dùng nào được chọn
+notify_eemail=Không có địa chỉ email nào được nhập
+
 log_rollback=Hành động quay lại $1 trong mô đun $2 
+log_notify=Tùy chọn thông báo email đã lưu

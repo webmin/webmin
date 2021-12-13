@@ -1,0 +1,19 @@
+index_users=Vom Nutzer ..
+index_modules=In Modulen ..
+index_header2=E-Mail-Optionen für Benachrichtigungen
+index_notify=E-Mail für Webmin-Aktionen senden?
+index_notify_mods=Für Aktionen in Modulen
+index_notify_users=Für Aktionen von Benutzern
+index_notify_email=Schicke eine Email an
+index_notify_usub=Benutzername in E-Mail-Betreff einfügen?
+index_notify_msub=Aktion in E-Mail-Betreff einfügen?
+
+acl_notify=Können E-Mail-Benachrichtigungen konfiguriert werden?
+
+notify_err=Benachrichtigungsoptionen konnten nicht gespeichert werden
+notify_ecannot=Sie dürfen keine Benachrichtigungen konfigurieren
+notify_emods=Keine Module ausgewählt
+notify_eusers=Keine Benutzer ausgewählt
+notify_eemail=Keine E-Mail-Adresse eingegeben
+
+log_notify=Optionen für gespeicherte E-Mail-Benachrichtigungen

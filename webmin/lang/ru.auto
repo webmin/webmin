@@ -120,6 +120,7 @@ session_stype=Тип аутентификации
 session_sopts=Варианты аутентификации
 session_local=Локальная аутентификация
 session_ip=Ограничить сеансы одним и тем же клиентским IP-адресом?
+session_utmp=Записывать входы и выходы в <tt>utmp</tt>?
 session_pam=Источник пароля
 session_popts=Параметры пароля
 session_pamconv=Поддерживаете полные разговоры PAM?

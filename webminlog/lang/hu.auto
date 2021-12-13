@@ -1,4 +1,6 @@
+index_users=felhasználó által ..
 index_ouser=Nem Webmin felhasználó által
+index_modules=Modulokban ..
 index_yesterday=Csak tegnapra
 index_week=Az elmúlt héten
 index_susers=A Webmin felhasználók intézkedései
@@ -12,6 +14,13 @@ index_sdesc=A művelet leírása tartalmazza
 index_shost=Forrás Webmin szerver
 index_long=Megmutatja a teljes műveleti leírást?
 index_global=&lt;Egyetlen modulban sem&gt;
+index_header2=Értesítési e-mail opciók
+index_notify=E-mailt küld a Webmin műveletekhez?
+index_notify_mods=Modulokban végzett műveletekhez
+index_notify_users=A felhasználók műveleteihez
+index_notify_email=E-mail küldése a címre
+index_notify_usub=Felveszi a felhasználónevet az e-mail tárgyába?
+index_notify_msub=Beleírja a műveletet az e-mail tárgyába?
 
 search_none2=Egyik művelet sem felelt meg a keresett műveleteknek
 search_critd=ahol a leírás <tt>$1</tt>
@@ -36,7 +45,15 @@ view_rawname=Paraméter neve
 view_rawvalue=Paraméter értéke
 
 acl_self=Csak én
+acl_notify=Beállíthatja az e-mail értesítéseket?
 
 rollback_enone=Nincs kiválasztva fájl
 
+notify_err=Nem sikerült menteni az értesítési beállításokat
+notify_ecannot=Nem konfigurálhatja az értesítéseket
+notify_emods=Nincsenek kiválasztva modulok
+notify_eusers=Nincs kiválasztott felhasználó
+notify_eemail=Nincs megadva e-mail cím
+
 log_rollback=A (z) $1 modul $1 visszalépése
+log_notify=Mentett e-mail értesítési beállítások

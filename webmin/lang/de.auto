@@ -7,6 +7,7 @@ bind_emaxconns_per_net=Die maximale Anzahl gleichzeitiger Verbindungen pro Netzw
 
 os_incorrect=Betriebssystem $1 wurde auf Version $2 aktualisiert
 
+session_utmp=Anmeldungen und Abmeldungen in <tt>utmp</tt> aufzeichnen?
 session_passapi=API für die Remote-Passwortänderung aktivieren?
 session_passapi0=API deaktiviert
 session_passapi1=API für Unix-Benutzer aktiviert

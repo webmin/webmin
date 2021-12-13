@@ -2,10 +2,12 @@ index_title=Webmin darbību žurnāls
 index_header=Veiciet darbības Webmin žurnālā.
 index_uall=Jebkurš lietotājs
 index_user=Pēc lietotāja
+index_users=Pēc lietotāja ..
 index_nuser=Jebkurš lietotājs, izņemot
 index_ouser=Lietotājs, kas nav Webmin
 index_mall=Jebkurā modulī
 index_module=Modulī
+index_modules=Moduļos ..
 index_tall=Jebkurā laikā
 index_today=Tikai šodienai
 index_yesterday=Tikai vakardienai
@@ -30,6 +32,13 @@ index_sdesc=Darbības aprakstā ir
 index_shost=Avots Webmin serveris
 index_long=Rādīt pilnus darbību aprakstus?
 index_global=&lt;Nav nevienā modulī&gt;
+index_header2=Paziņojumu e-pasta iespējas
+index_notify=Vai nosūtīt e-pastu Webmin darbībām?
+index_notify_mods=Darbībām moduļos
+index_notify_users=Par lietotāju darbībām
+index_notify_email=Sūtīt e-pastu uz
+index_notify_usub=Vai iekļaut lietotājvārdu e-pasta tēmā?
+index_notify_msub=Vai e-pasta tēmā iekļaut darbību?
 
 search_title=Meklēšanas rezultāti
 search_date=Datums
@@ -105,6 +114,7 @@ acl_sel=Atlasīts zemāk ..
 acl_self=Tikai es pats
 acl_users=Var skatīt lietotāju veiktās darbības
 acl_rollback=Vai var atcelt darbības?
+acl_notify=Vai var konfigurēt e-pasta paziņojumus?
 
 rollback_title=Atcelšanas darbība
 rollback_rusure=Vai tiešām pirms šo darbību veikšanas vēlaties atjaunot visu zemāk uzskaitīto failu saturu? Visus tajos esošos datus pārrakstīs ar šādām izmaiņām :
@@ -129,4 +139,11 @@ rollback_deleted=Izdzēsts fails $1.
 rollback_nodeleted=Izlaists neesošs fails $1.
 rollback_enone=Nav atlasīts neviens fails
 
+notify_err=Neizdevās saglabāt paziņojumu opcijas
+notify_ecannot=Jums nav atļauts konfigurēt paziņojumus
+notify_emods=Nav atlasīts neviens modulis
+notify_eusers=Nav atlasīts neviens lietotājs
+notify_eemail=Nav ievadīta e-pasta adrese
+
 log_rollback=$1 mainītā darbība $2 modulī
+log_notify=Saglabātās e-pasta paziņojumu opcijas

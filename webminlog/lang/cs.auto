@@ -1,7 +1,16 @@
+index_users=Podle uživatele ..
 index_ouser=Od jiných uživatelů než Webmin
+index_modules=V modulech ..
 index_sdesc=Popis akce obsahuje
 index_long=Zobrazit úplné popisy akcí?
 index_global=&lt;Ne v žádném modulu&gt;
+index_header2=Možnosti upozornění e-mailem
+index_notify=Odeslat e-mail pro akce Webmin?
+index_notify_mods=Pro akce v modulech
+index_notify_users=Pro akce uživatelů
+index_notify_email=Odeslat email na
+index_notify_usub=Zahrnout uživatelské jméno do předmětu e-mailu?
+index_notify_msub=Zahrnout akci do předmětu e-mailu?
 
 search_critd=kde popis obsahuje <tt>$1</tt>
 search_global=Žádný
@@ -23,3 +32,12 @@ view_rawname=Název parametru
 view_rawvalue=Hodnota parametru
 
 acl_self=Pouze já
+acl_notify=Lze nakonfigurovat e-mailová upozornění?
+
+notify_err=Nepodařilo se uložit možnosti oznámení
+notify_ecannot=Nemáte oprávnění konfigurovat oznámení
+notify_emods=Nejsou vybrány žádné moduly
+notify_eusers=Nejsou vybráni žádní uživatelé
+notify_eemail=Nebyla zadána žádná e-mailová adresa
+
+log_notify=Uložené možnosti e-mailových upozornění

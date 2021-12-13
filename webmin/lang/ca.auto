@@ -15,6 +15,7 @@ ssl_letsdoms=Noms d'amfitrió del certificat
 
 update_webmin=Actualització de www.webmin.com
 
+session_utmp=Enregistrar els inicis de sessió i tancaments de sessió a <tt>utmp</tt>?
 session_pmodedesc3=Política de caducitat de contrasenya
 session_passapi=Voleu activar l'API de canvi de contrasenya remota?
 session_passapi0=API desactivada

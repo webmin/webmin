@@ -1,1 +1,20 @@
+index_users=Per usuari ..
+index_modules=En mòduls ..
+index_header2=Opcions de correu electrònic de notificació
+index_notify=Vols enviar un correu electrònic per a accions de Webmin?
+index_notify_mods=Per a accions en mòduls
+index_notify_users=Per a accions dels usuaris
+index_notify_email=Enviar correu electrònic a
+index_notify_usub=Inclou el nom d'usuari a l'assumpte del correu electrònic?
+index_notify_msub=Inclou l'acció a l'assumpte del correu electrònic?
+
 acl_self=Només jo
+acl_notify=Es poden configurar les notificacions per correu electrònic?
+
+notify_err=No s'han pogut desar les opcions de notificació
+notify_ecannot=No teniu permís per configurar les notificacions
+notify_emods=No s'ha seleccionat cap mòdul
+notify_eusers=No s'ha seleccionat cap usuari
+notify_eemail=No s'ha introduït cap adreça de correu electrònic
+
+log_notify=Opcions de notificacions per correu electrònic desades

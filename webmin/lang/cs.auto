@@ -120,6 +120,7 @@ session_sopts=Možnosti ověřování
 session_local=Lokální autentizace
 session_logouttime=Automatické odhlášení po $1 minutách nečinnosti
 session_ip=Omezit relace na stejnou IP adresu klienta?
+session_utmp=Zaznamenat přihlášení a odhlášení v <tt>utmp</tt>?
 session_pam=Zdroj hesla
 session_popts=Možnosti hesla
 session_pamend=Předat stav PAM dalším modulům?

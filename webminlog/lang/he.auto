@@ -2,10 +2,12 @@ index_title=יומן פעולות Webmin
 index_header=חפש ביומן Webmin אחר פעולות ..
 index_uall=על ידי כל משתמש
 index_user=לפי משתמש
+index_users=לפי משתמש ..
 index_nuser=על ידי כל משתמש למעט
 index_ouser=על ידי משתמש שאינו Webmin
 index_mall=בכל מודול
 index_module=במודול
+index_modules=במודולים ..
 index_tall=בכל זמן
 index_today=להיום בלבד
 index_yesterday=רק אתמול
@@ -30,6 +32,13 @@ index_sdesc=תיאור הפעולה מכיל
 index_shost=שרת Webmin המקור
 index_long=להציג תיאורי פעולה מלאים?
 index_global=&lt;לא בשום מודול&gt;
+index_header2=אפשרויות אימייל של התראות
+index_notify=לשלוח אימייל לפעולות Webmin?
+index_notify_mods=לפעולות במודולים
+index_notify_users=לפעולות של משתמשים
+index_notify_email=שלח אימייל ל
+index_notify_usub=האם לכלול שם משתמש בנושא האימייל?
+index_notify_msub=האם לכלול פעולה בנושא האימייל?
 
 search_title=תוצאות חיפוש
 search_date=תאריך
@@ -105,6 +114,7 @@ acl_sel=נבחר למטה ..
 acl_self=רק עצמי
 acl_users=יכול להציג פעולות על ידי משתמשים
 acl_rollback=האם ניתן להחזיר פעולות?
+acl_notify=האם ניתן להגדיר התראות באימייל?
 
 rollback_title=פעולה חזרה
 rollback_rusure=האם אתה בטוח שברצונך להחזיר את כל הקבצים הרשומים למטה לתוכן שלהם לפני שננקטה פעולה זו? כל הנתונים שהם מכילים כרגע יוחלפו על ידי השינויים הבאים :
@@ -129,4 +139,11 @@ rollback_deleted=הקובץ $1 נמחק.
 rollback_nodeleted=דילג על הקובץ $1 שאינו קיים.
 rollback_enone=לא נבחרו קבצים
 
+notify_err=שמירת אפשרויות ההתראה נכשלה
+notify_ecannot=אינך רשאי להגדיר התראות
+notify_emods=לא נבחרו מודולים
+notify_eusers=לא נבחרו משתמשים
+notify_eemail=לא הוזנה כתובת אימייל
+
 log_rollback=הפעולה חזרה $1 במודול $2
+log_notify=אפשרויות הודעות דוא"ל שמורות

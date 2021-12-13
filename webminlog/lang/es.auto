@@ -1,4 +1,6 @@
+index_users=Por usuario. ..
 index_ouser=Por usuario que no es de Webmin
+index_modules=En módulos ..
 index_yesterday=Solo para ayer
 index_week=Durante la semana pasada
 index_susers=Acciones de usuarios de Webmin
@@ -12,6 +14,13 @@ index_sdesc=La descripción de la acción contiene
 index_shost=Servidor Webmin de origen
 index_long=¿Mostrar descripciones de acción completas?
 index_global=&lt;No en ningún módulo&gt;
+index_header2=Opciones de correo electrónico de notificación
+index_notify=¿Enviar correo electrónico para acciones de Webmin?
+index_notify_mods=Para acciones en módulos
+index_notify_users=Para acciones de los usuarios
+index_notify_email=Enviar el email a
+index_notify_usub=¿Incluir nombre de usuario en el asunto del correo electrónico?
+index_notify_msub=¿Incluir acción en el asunto del correo electrónico?
 
 search_none2=Ninguna acción coincidió con su búsqueda de acciones.
 search_critd=donde la descripción contiene <tt>$1</tt>
@@ -36,7 +45,15 @@ view_rawname=Nombre del parámetro
 view_rawvalue=Valor del parámetro
 
 acl_self=Solo yo
+acl_notify=¿Se pueden configurar las notificaciones por correo electrónico?
 
 rollback_enone=No hay archivos seleccionados
 
+notify_err=No se pudieron guardar las opciones de notificación
+notify_ecannot=No tienes permiso para configurar notificaciones
+notify_emods=No se seleccionaron módulos
+notify_eusers=Ningún usuario seleccionado
+notify_eemail=No se ingresó ninguna dirección de correo electrónico
+
 log_rollback=Acción revertida $1 en el módulo $2 
+log_notify=Opciones de notificaciones de correo electrónico guardadas

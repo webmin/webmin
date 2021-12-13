@@ -224,6 +224,7 @@ session_logouttime=Cerrar sesión automáticamente después de $1 minutos de ina
 session_eblockuser_time=Tiempo de bloqueo de usuario faltante o no válido
 session_eblockuser_failures=Usuario faltante o no válido bloqueando inicios de sesión
 session_ip=¿Limitar sesiones a la misma dirección IP del cliente?
+session_utmp=¿Registra los inicios y cierres de sesión en <tt>utmp</tt>?
 session_pam=Fuente de contraseña
 session_popts=Opciones de contraseña
 session_pamend=¿Pasar el estado de PAM a otros módulos?

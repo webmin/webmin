@@ -107,6 +107,7 @@ session_stype=Tipo de Autenticação
 session_sopts=Opções de autenticação
 session_local=Autenticação local
 session_ip=Limitar sessões ao mesmo endereço IP do cliente?
+session_utmp=Registrar logins e logouts em <tt>utmp</tt>?
 session_pam=Origem da senha
 session_popts=Opções de senha
 session_pamend=Passar o status do PAM para outros módulos?

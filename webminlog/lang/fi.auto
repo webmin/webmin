@@ -2,10 +2,12 @@ index_title=Webmin-toimintoloki
 index_header=Etsi Webmin-lokista toimia ..
 index_uall=Kuka tahansa käyttäjä
 index_user=Käyttäjältä
+index_users=käyttäjän toimesta ..
 index_nuser=Kuka tahansa käyttäjä paitsi
 index_ouser=Muun kuin Webmin-käyttäjän
 index_mall=Missä tahansa moduulissa
 index_module=Moduulissa
+index_modules=Moduuleissa ..
 index_tall=Milloin vain
 index_today=Vain tänään
 index_yesterday=Vain eilen
@@ -30,6 +32,13 @@ index_sdesc=Toiminnan kuvaus sisältää
 index_shost=Lähde Webmin -palvelin
 index_long=Näytä kaikki toimintakuvaukset?
 index_global=&lt;Ei missään moduulissa&gt;
+index_header2=Sähköposti-ilmoitusvaihtoehdot
+index_notify=Lähetetäänkö sähköpostia Webmin-toimintoihin?
+index_notify_mods=Moduulien toimiin
+index_notify_users=Käyttäjien toimiin
+index_notify_email=Lähetä sähköpostia osoitteeseen
+index_notify_usub=Sisällytetäänkö sähköpostin aiheeseen käyttäjätunnus?
+index_notify_msub=Sisällytetäänkö toiminto sähköpostin aiheeseen?
 
 search_title=Hakutulokset
 search_date=Päivämäärä
@@ -105,6 +114,7 @@ acl_sel=Valittu alla ..
 acl_self=Vain minä
 acl_users=Voi tarkastella käyttäjien toimia
 acl_rollback=Voiko toimia peruuttaa?
+acl_notify=Voiko sähköposti-ilmoitukset määrittää?
 
 rollback_title=Palautustoiminto
 rollback_rusure=Haluatko varmasti palauttaa kaikkien alla lueteltujen tiedostojen sisältö ennen tämän toimenpiteen toteuttamista? Seuraavat muutokset korvaavat kaikki ne tiedot, jotka ne tällä hetkellä sisältävät :
@@ -129,4 +139,11 @@ rollback_deleted=Poistettu tiedosto $1.
 rollback_nodeleted=Ohitettu olematon tiedosto $1.
 rollback_enone=Ei tiedostoja valittu
 
+notify_err=Ilmoitusvaihtoehtojen tallentaminen epäonnistui
+notify_ecannot=Sinulla ei ole oikeutta määrittää ilmoituksia
+notify_emods=Ei valittuja moduuleja
+notify_eusers=Käyttäjiä ei ole valittu
+notify_eemail=Sähköpostiosoitetta ei ole annettu
+
 log_rollback=Kierrätystoiminto $1 moduulissa $2 
+log_notify=Tallennetut sähköposti-ilmoitusasetukset

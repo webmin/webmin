@@ -2,10 +2,12 @@ index_title=„Webmin“ veiksmų žurnalas
 index_header=Ieškokite veiksmų „Webmin“ žurnale.
 index_uall=Bet kuris vartotojas
 index_user=Pagal vartotoją
+index_users=Pagal vartotoj� ..
 index_nuser=Bet kuris vartotojas, išskyrus
 index_ouser=Ne Webmin vartotojo
 index_mall=Bet kuriame modulyje
 index_module=Modulyje
+index_modules=Modulyje ..
 index_tall=Bet kada
 index_today=Tik šiandiena
 index_yesterday=Tik vakar
@@ -30,6 +32,13 @@ index_sdesc=Veiksmo aprašyme yra
 index_shost=Šaltinis „Webmin“ serveris
 index_long=Rodyti visus veiksmų aprašymus?
 index_global=&lt;Nei viename modulyje&gt;
+index_header2=Pranešimų el. pašto parinktys
+index_notify=Siųsti el. laišką dėl Webmin veiksmų?
+index_notify_mods=Veiksmams moduliuose
+index_notify_users=Už vartotojų veiksmus
+index_notify_email=Siųsti el
+index_notify_usub=Į el. pašto temą įtraukti vartotojo vardą?
+index_notify_msub=Į el. pašto temą įtraukti veiksmą?
 
 search_title=Paieškos rezultatai
 search_date=Data
@@ -105,6 +114,7 @@ acl_sel=Pasirinkta žemiau ..
 acl_self=Tik aš pats
 acl_users=Gali peržiūrėti vartotojų veiksmus
 acl_rollback=Ar galima atsisakyti veiksmų?
+acl_notify=Ar galite konfigūruoti el. pašto pranešimus?
 
 rollback_title=Atšaukimo veiksmas
 rollback_rusure=Ar tikrai norite grąžinti visų toliau išvardytų failų turinį prieš imantis šio veiksmo? Visi duomenys, kuriuos jie turi šiuo metu, bus pakeisti šiais pakeitimais :
@@ -129,4 +139,11 @@ rollback_deleted=Ištrintas failas $1.
 rollback_nodeleted=Praleistas neegzistuojantis failas $1.
 rollback_enone=Nepasirinktas nė vienas failas
 
+notify_err=Nepavyko išsaugoti pranešimų parinkčių
+notify_ecannot=Jums neleidžiama konfigūruoti pranešimų
+notify_emods=Nepasirinkta jokių modulių
+notify_eusers=Nepasirinkta jokių vartotojų
+notify_eemail=El. pašto adresas neįvestas
+
 log_rollback=Atgal veiksmas $1 modulyje $2 
+log_notify=Išsaugotos el. pašto pranešimų parinktys

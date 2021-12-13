@@ -72,6 +72,7 @@ session_stype=Verificatietype
 session_sopts=Verificatie opties
 session_local=Lokale authenticatie
 session_ip=Sessies beperken tot hetzelfde client-IP-adres?
+session_utmp=Aan- en afmeldingen registreren in <tt>utmp</tt>?
 session_pam=Wachtwoord bron
 session_popts=Wachtwoord opties
 session_cmddef=Verlopen wachtwoordwijziging

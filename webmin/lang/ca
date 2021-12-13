@@ -612,7 +612,6 @@ session_elsof=L'autenticació local requereix el programa <tt>lsof</tt>
 session_remember=Ofereix-te a recordar la contrasenya de forma permanent
 session_ip=Limita les sessions a la mateixa adreça IP client
 session_hostname=Mostra el nom de host a la pantalla de connexió
-session_utmp=Registra les entrades i sortides a Utmp
 session_realname=Mostra el nom de host real en lloc del nom de l'URL
 session_pam=Origen de les contrasenyes
 session_pamon=Utilitza PAM per a autenticació Unix, si està disponible

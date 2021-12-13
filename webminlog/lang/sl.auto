@@ -2,10 +2,12 @@ index_title=Dnevnik dejanj Webmin
 index_header=Poiščite dejanja v dnevniku Webmin ..
 index_uall=Vsak uporabnik
 index_user=Po uporabniku
+index_users=Po uporabniku ..
 index_nuser=Vsak uporabnik razen
 index_ouser=Uporabnik, ki ni Webmin
 index_mall=V katerem koli modulu
 index_module=V modulu
+index_modules=V modulih ..
 index_tall=Kadarkoli
 index_today=Samo za danes
 index_yesterday=Samo za včeraj
@@ -30,6 +32,13 @@ index_sdesc=Opis akcije vsebuje
 index_shost=Izvorni strežnik Webmin
 index_long=Prikaži popolne opise dejanj?
 index_global=&lt;Ni v nobenem modulu&gt;
+index_header2=Možnosti obveščanja po e-pošti
+index_notify=Želite poslati e-pošto za dejanja Webmin?
+index_notify_mods=Za dejanja v modulih
+index_notify_users=Za dejanja uporabnikov
+index_notify_email=Pošlji e-pošto na
+index_notify_usub=Želite vključiti uporabniško ime v zadevo e-pošte?
+index_notify_msub=Ali želite v zadevo e-pošte vključiti dejanje?
 
 search_title=Rezultati iskanja
 search_date=Datum
@@ -105,6 +114,7 @@ acl_sel=Izbrano spodaj ..
 acl_self=Samo jaz
 acl_users=Uporabniki si lahko ogledajo dejanja
 acl_rollback=Ali lahko vrnete dejanja?
+acl_notify=Ali lahko konfigurirate e-poštna obvestila?
 
 rollback_title=Povratna akcija
 rollback_rusure=Ali ste prepričani, da želite vrniti vse spodaj naštete datoteke na njihovo vsebino, preden ste izvedli to dejanje? Vsi podatki, ki jih trenutno vsebujejo, bodo prepisani z naslednjimi spremembami :
@@ -129,4 +139,11 @@ rollback_deleted=Izbrisana datoteka $1.
 rollback_nodeleted=Preskočena neobstoječa datoteka $1.
 rollback_enone=Nobene datoteke niso izbrane
 
+notify_err=Možnosti obvestila ni bilo mogoče shraniti
+notify_ecannot=Ni vam dovoljeno konfigurirati obvestil
+notify_emods=Izbran ni noben modul
+notify_eusers=Izbran ni noben uporabnik
+notify_eemail=E-poštni naslov ni vnesen
+
 log_rollback=Vzvratna akcija $1 v modulu $2 
+log_notify=Možnosti shranjenih e-poštnih obvestil

@@ -49,6 +49,7 @@ newkey_ecns=Nie wprowadzono nazw serwerów
 
 ca_alt=Dodatkowe domeny
 
+session_utmp=Zapisywać loginy i wylogowania w <tt>utmp</tt>?
 session_sha512=Użyj szyfrowania SHA512
 session_esha512mod=Nie można użyć szyfrowania SHA512, ponieważ moduł Perl $1 nie jest zainstalowany.
 session_passapi=Włączyć interfejs API zdalnej zmiany hasła?

@@ -1,5 +1,7 @@
+index_users=Av användare ..
 index_nuser=Av alla användare utom
 index_ouser=Av användare som inte är Webmin
+index_modules=I moduler ..
 index_yesterday=Endast för igår
 index_week=Under den senaste veckan
 index_fall=Som ändrade vilken fil som helst
@@ -17,6 +19,13 @@ index_sdesc=Åtgärdsbeskrivningen innehåller
 index_shost=Källa Webmin-server
 index_long=Visa fullständiga åtgärdsbeskrivningar?
 index_global=&lt;Inte i någon modul&gt;
+index_header2=Alternativ för e-postmeddelanden
+index_notify=Skicka e-post för Webmin-åtgärder?
+index_notify_mods=För åtgärder i moduler
+index_notify_users=För handlingar av användare
+index_notify_email=Skicka e-post till
+index_notify_usub=Inkludera användarnamn i e-postämnet?
+index_notify_msub=Inkludera åtgärder i e-postämnet?
 
 search_webmin=Webmin Server
 search_none2=Inga åtgärder matchade din sökning efter åtgärder
@@ -54,6 +63,7 @@ acl_sel=Valt nedan ..
 acl_self=Bara jaget
 acl_users=Kan visa åtgärder från användare
 acl_rollback=Kan rulla tillbaka åtgärder?
+acl_notify=Kan konfigurera e-postmeddelanden?
 
 rollback_title=Återuppspelning
 rollback_rusure=Är du säker på att du vill återställa alla filerna nedan till deras innehåll innan den här åtgärden gjordes? All information som de för närvarande innehåller kommer att skrivas över av följande ändringar :
@@ -78,4 +88,11 @@ rollback_deleted=Raderad fil $1.
 rollback_nodeleted=Hoppade obefintlig fil $1.
 rollback_enone=Inga filer valda
 
+notify_err=Det gick inte att spara aviseringsalternativ
+notify_ecannot=Du får inte konfigurera aviseringar
+notify_emods=Inga moduler har valts
+notify_eusers=Inga användare har valts
+notify_eemail=Ingen e-postadress har angetts
+
 log_rollback=Återuppspelning $1 i modul $2 
+log_notify=Sparade alternativ för e-postmeddelanden

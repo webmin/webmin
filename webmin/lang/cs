@@ -515,7 +515,6 @@ session_ecookie=Váš prohlížeč nepodporuje cookies, které jsou potřeba př
 session_elsof=Lokální autentikace potřebuje <tt>lsof</tt> program
 session_remember=Nabízet permanetní pamatování přihlášení?
 session_hostname=Ukázat jméno hosta na obrazovce s přihlášením?
-session_utmp=Nahrát přihlášení a odhlášení do Utmp?
 session_realname=Zobrazit skutečná jména hostů namísto jména z URL?
 session_pamon=Použít PAM pro Unix autentifikaci, je-li to možné
 session_pamoff=Nikdy nepoužívat PAM pro Unix autentifikaci

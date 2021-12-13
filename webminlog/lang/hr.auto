@@ -1,4 +1,6 @@
+index_users=Po korisniku ..
 index_ouser=Korisnik koji nije Webmin
+index_modules=U modulima ..
 index_week=Tijekom posljednjeg tjedna
 index_susers=Akcije korisnika Webmin-a
 index_smods=Akcije u modulu
@@ -11,6 +13,13 @@ index_sdesc=Opis akcije sadrži
 index_shost=Izvorni Webmin poslužitelj
 index_long=Prikaži cjelovite opise radnji?
 index_global=&lt;Ne u bilo kojem modulu&gt;
+index_header2=Mogućnosti obavijesti putem e-pošte
+index_notify=Poslati e-poštu za radnje Webmina?
+index_notify_mods=Za radnje u modulima
+index_notify_users=Za radnje korisnika
+index_notify_email=Pošaljite email na
+index_notify_usub=Uključiti korisničko ime u predmet e-pošte?
+index_notify_msub=Uključiti radnju u predmet e-pošte?
 
 search_none2=Nijedna radnja ne odgovara vašoj potrazi za radnjama
 search_critd=gdje opis sadrži <tt>$1</tt>
@@ -35,7 +44,15 @@ view_rawname=Naziv parametra
 view_rawvalue=Vrijednost parametra
 
 acl_self=Samo ja
+acl_notify=Može li se konfigurirati obavijesti putem e-pošte?
 
 rollback_enone=Nije odabrana nijedna datoteka
 
+notify_err=Spremanje opcija obavijesti nije uspjelo
+notify_ecannot=Nije vam dopušteno konfigurirati obavijesti
+notify_emods=Nije odabran nijedan modul
+notify_eusers=Nije odabran nijedan korisnik
+notify_eemail=Nema unesene adrese e-pošte
+
 log_rollback=Vratna akcija natrag $1 u modulu $2 
+log_notify=Opcije spremljenih obavijesti e-poštom
