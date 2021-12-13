@@ -6299,64 +6299,73 @@ parameters are :
 sub webmin_log
 {
 return if (!$gconfig{'log'} || &is_readonly_mode());
-my $m = $_[4] ? $_[4] : &get_module_name();
+my ($param_action,
+    $param_type,
+    $param_object,
+    $params_hash,
+    $param_module,
+    $param_host,
+    $param_script_on_host,
+    $param_client_ip) = @_;
+
+my $m = $param_module ? $param_module : &get_module_name();
 
 if ($gconfig{'logclear'}) {
-	# check if it is time to clear the log
-	my @st = stat("$webmin_logfile.time");
-	my $write_logtime = 0;
-	if (@st) {
-		if ($st[9]+$gconfig{'logtime'}*60*60 < time()) {
-			# clear logfile and all diff files
-			&unlink_file("$ENV{'WEBMIN_VAR'}/diffs");
-			&unlink_file("$ENV{'WEBMIN_VAR'}/files");
-			&unlink_file("$ENV{'WEBMIN_VAR'}/annotations");
-			unlink($webmin_logfile);
-			$write_logtime = 1;
-			}
-		}
-	else {
-		$write_logtime = 1;
-		}
-	if ($write_logtime) {
-		open(LOGTIME, ">$webmin_logfile.time");
-		print LOGTIME time(),"\n";
-		close(LOGTIME);
-		}
-	}
+    # check if it is time to clear the log
+    my @st = stat("$webmin_logfile.time");
+    my $write_logtime = 0;
+    if (@st) {
+        if ($st[9]+$gconfig{'logtime'}*60*60 < time()) {
+            # clear logfile and all diff files
+            &unlink_file("$ENV{'WEBMIN_VAR'}/diffs");
+            &unlink_file("$ENV{'WEBMIN_VAR'}/files");
+            &unlink_file("$ENV{'WEBMIN_VAR'}/annotations");
+            unlink($webmin_logfile);
+            $write_logtime = 1;
+            }
+        }
+    else {
+        $write_logtime = 1;
+        }
+    if ($write_logtime) {
+        open(LOGTIME, ">$webmin_logfile.time");
+        print LOGTIME time(),"\n";
+        close(LOGTIME);
+        }
+    }
 
 # If an action script directory is defined, call the appropriate scripts
 if ($gconfig{'action_script_dir'}) {
-	my ($action, $type, $object) = ($_[0], $_[1], $_[2]);
-	my ($basedir) = $gconfig{'action_script_dir'};
-	for my $dir ("$basedir/$type/$action", "$basedir/$type", $basedir) {
-		next if (!-d $dir);
-		my ($file);
-		opendir(DIR, $dir) or die "Can't open $dir: $!";
-		while (defined($file = readdir(DIR))) {
-			next if ($file =~ /^\.\.?$/); # skip . and ..
-			next if (!-x "$dir/$file");
-			my %OLDENV = %ENV;
-			$ENV{'ACTION_MODULE'} = &get_module_name();
-			$ENV{'ACTION_ACTION'} = $_[0];
-			$ENV{'ACTION_TYPE'} = $_[1];
-			$ENV{'ACTION_OBJECT'} = $_[2];
-			$ENV{'ACTION_SCRIPT'} = $script_name;
-			foreach my $p (keys %param) {
-			    $ENV{'ACTION_PARAM_'.uc($p)} = $param{$p};
-			    }
-			system("$dir/$file", @_,
-			   "<$null_file", ">$null_file", "2>&1");
-			%ENV = %OLDENV;
-			}
-		}
-	}
+    my ($action, $type, $object) = ($param_action, $param_type, $param_object);
+    my ($basedir) = $gconfig{'action_script_dir'};
+    for my $dir ("$basedir/$type/$action", "$basedir/$type", $basedir) {
+        next if (!-d $dir);
+        my ($file);
+        opendir(DIR, $dir) or die "Can't open $dir: $!";
+        while (defined($file = readdir(DIR))) {
+            next if ($file =~ /^\.\.?$/); # skip . and ..
+            next if (!-x "$dir/$file");
+            my %OLDENV = %ENV;
+            $ENV{'ACTION_MODULE'} = &get_module_name();
+            $ENV{'ACTION_ACTION'} = $param_action;
+            $ENV{'ACTION_TYPE'} = $param_type;
+            $ENV{'ACTION_OBJECT'} = $param_object;
+            $ENV{'ACTION_SCRIPT'} = $script_name;
+            foreach my $p (keys %param) {
+                $ENV{'ACTION_PARAM_'.uc($p)} = $param{$p};
+                }
+            system("$dir/$file", @_,
+               "<$null_file", ">$null_file", "2>&1");
+            %ENV = %OLDENV;
+            }
+        }
+    }
 
 # should logging be done at all?
 return if ($gconfig{'logusers'} && &indexof($base_remote_user,
-	   split(/\s+/, $gconfig{'logusers'})) < 0);
+       split(/\s+/, $gconfig{'logusers'})) < 0);
 return if ($gconfig{'logmodules'} && &indexof($m,
-	   split(/\s+/, $gconfig{'logmodules'})) < 0);
+       split(/\s+/, $gconfig{'logmodules'})) < 0);
 
 # log the action
 my $now = time();
@@ -6366,126 +6375,127 @@ my $id = sprintf "%d.%d.%d", $now, $$, $main::action_id_count;
 my $idprefix = substr($now, 0, 5);
 $main::action_id_count++;
 my $line = sprintf "%s [%2.2d/%s/%4.4d %2.2d:%2.2d:%2.2d] %s %s %s %s %s \"%s\" \"%s\" \"%s\"",
-	$id, $tm[3], ucfirst($number_to_month_map{$tm[4]}), $tm[5]+1900,
-	$tm[2], $tm[1], $tm[0],
-	$remote_user || '-',
-	$main::session_id || '-',
-	$_[7] || $ENV{'REMOTE_HOST'} || '-',
-	$m, $_[5] ? "$_[5]:$_[6]" : $script_name,
-	$_[0], $_[1] ne '' ? $_[1] : '-', $_[2] ne '' ? $_[2] : '-';
+    $id, $tm[3], ucfirst($number_to_month_map{$tm[4]}), $tm[5]+1900,
+    $tm[2], $tm[1], $tm[0],
+    $remote_user || '-',
+    $main::session_id || '-',
+    $param_client_ip || $ENV{'REMOTE_HOST'} || '-',
+    $m, $param_host ? "$param_host:$param_script_on_host" : $script_name,
+    $param_action, $param_type ne '' ? $param_type : '-', $param_object ne '' ? $param_object : '-';
 my %param;
-foreach my $k (sort { $a cmp $b } keys %{$_[3]}) {
-	my $v = $_[3]->{$k};
-	my @pv;
-	if ($v eq '') {
-		$line .= " $k=''";
-		@rv = ( "" );
-		}
-	elsif (ref($v) eq 'ARRAY') {
-		foreach $vv (@$v) {
-			next if (ref($vv));
-			push(@pv, $vv);
-			$vv =~ s/(['"\\\r\n\t\%])/sprintf("%%%2.2X",ord($1))/ge;
-			$line .= " $k='$vv'";
-			}
-		}
-	elsif (!ref($v)) {
-		foreach $vv (split(/\0/, $v)) {
-			push(@pv, $vv);
-			$vv =~ s/(['"\\\r\n\t\%])/sprintf("%%%2.2X",ord($1))/ge;
-			$line .= " $k='$vv'";
-			}
-		}
-	$param{$k} = join(" ", @pv);
-	}
+$params_hash ||= {};
+foreach my $k (sort { $a cmp $b } keys %{$params_hash}) {
+    my $v = $params_hash->{$k};
+    my @pv;
+    if ($v eq '') {
+        $line .= " $k=''";
+        @rv = ( "" );
+        }
+    elsif (ref($v) eq 'ARRAY') {
+        foreach $vv (@$v) {
+            next if (ref($vv));
+            push(@pv, $vv);
+            $vv =~ s/(['"\\\r\n\t\%])/sprintf("%%%2.2X",ord($1))/ge;
+            $line .= " $k='$vv'";
+            }
+        }
+    elsif (!ref($v)) {
+        foreach $vv (split(/\0/, $v)) {
+            push(@pv, $vv);
+            $vv =~ s/(['"\\\r\n\t\%])/sprintf("%%%2.2X",ord($1))/ge;
+            $line .= " $k='$vv'";
+            }
+        }
+    $param{$k} = join(" ", @pv);
+    }
 open(WEBMINLOG, ">>$webmin_logfile");
 print WEBMINLOG $line,"\n";
 close(WEBMINLOG);
 if ($gconfig{'logperms'}) {
-	chmod(oct($gconfig{'logperms'}), $webmin_logfile);
-	}
+    chmod(oct($gconfig{'logperms'}), $webmin_logfile);
+    }
 else {
-	chmod(0600, $webmin_logfile);
-	}
+    chmod(0600, $webmin_logfile);
+    }
 
 if ($gconfig{'logfiles'} && !&get_module_variable('$no_log_file_changes')) {
-	# Find and record the changes made to any locked files, or commands run
-	my $i = 0;
-	mkdir("$ENV{'WEBMIN_VAR'}/diffs", 0700);
-	foreach my $d (@main::locked_file_diff) {
-		mkdir("$ENV{'WEBMIN_VAR'}/diffs/$idprefix", 0700);
-		mkdir("$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$id", 0700);
-		open(DIFFLOG, ">$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$id/$i");
-		print DIFFLOG "$d->{'type'} $d->{'object'}\n";
-		print DIFFLOG $d->{'data'};
-		close(DIFFLOG);
-		if ($d->{'input'}) {
-			open(DIFFLOG,
-			  ">$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$id/$i.input");
-			print DIFFLOG $d->{'input'};
-			close(DIFFLOG);
-			}
-		if ($gconfig{'logperms'}) {
-			chmod(oct($gconfig{'logperms'}),
-			     "$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$id/$i",
-			     "$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$id/$i.input");
-			}
-		$i++;
-		}
-	@main::locked_file_diff = undef;
-	}
+    # Find and record the changes made to any locked files, or commands run
+    my $i = 0;
+    mkdir("$ENV{'WEBMIN_VAR'}/diffs", 0700);
+    foreach my $d (@main::locked_file_diff) {
+        mkdir("$ENV{'WEBMIN_VAR'}/diffs/$idprefix", 0700);
+        mkdir("$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$id", 0700);
+        open(DIFFLOG, ">$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$id/$i");
+        print DIFFLOG "$d->{'type'} $d->{'object'}\n";
+        print DIFFLOG $d->{'data'};
+        close(DIFFLOG);
+        if ($d->{'input'}) {
+            open(DIFFLOG,
+              ">$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$id/$i.input");
+            print DIFFLOG $d->{'input'};
+            close(DIFFLOG);
+            }
+        if ($gconfig{'logperms'}) {
+            chmod(oct($gconfig{'logperms'}),
+                 "$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$id/$i",
+                 "$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$id/$i.input");
+            }
+        $i++;
+        }
+    @main::locked_file_diff = undef;
+    }
 
 if ($gconfig{'logfullfiles'}) {
-	# Save the original contents of any modified files
-	my $i = 0;
-	mkdir("$ENV{'WEBMIN_VAR'}/files", 0700);
-	foreach my $f (keys %main::orig_file_data) {
-		mkdir("$ENV{'WEBMIN_VAR'}/files/$idprefix", 0700);
-		mkdir("$ENV{'WEBMIN_VAR'}/files/$idprefix/$id", 0700);
-		open(ORIGLOG, ">$ENV{'WEBMIN_VAR'}/files/$idprefix/$id/$i");
-		if (!defined($main::orig_file_type{$f})) {
-			print ORIGLOG -1," ",$f,"\n";
-			}
-		else {
-			print ORIGLOG $main::orig_file_type{$f}," ",$f,"\n";
-			}
-		print ORIGLOG $main::orig_file_data{$f};
-		close(ORIGLOG);
-		if ($gconfig{'logperms'}) {
-			chmod(oct($gconfig{'logperms'}),
-			      "$ENV{'WEBMIN_VAR'}/files/$idprefix/$id.$i");
-			}
-		$i++;
-		}
-	%main::orig_file_data = undef;
-	%main::orig_file_type = undef;
-	}
+    # Save the original contents of any modified files
+    my $i = 0;
+    mkdir("$ENV{'WEBMIN_VAR'}/files", 0700);
+    foreach my $f (keys %main::orig_file_data) {
+        mkdir("$ENV{'WEBMIN_VAR'}/files/$idprefix", 0700);
+        mkdir("$ENV{'WEBMIN_VAR'}/files/$idprefix/$id", 0700);
+        open(ORIGLOG, ">$ENV{'WEBMIN_VAR'}/files/$idprefix/$id/$i");
+        if (!defined($main::orig_file_type{$f})) {
+            print ORIGLOG -1," ",$f,"\n";
+            }
+        else {
+            print ORIGLOG $main::orig_file_type{$f}," ",$f,"\n";
+            }
+        print ORIGLOG $main::orig_file_data{$f};
+        close(ORIGLOG);
+        if ($gconfig{'logperms'}) {
+            chmod(oct($gconfig{'logperms'}),
+                  "$ENV{'WEBMIN_VAR'}/files/$idprefix/$id.$i");
+            }
+        $i++;
+        }
+    %main::orig_file_data = undef;
+    %main::orig_file_type = undef;
+    }
 
 if ($miniserv::page_capture_out) {
-	# Save the whole page output
-	mkdir("$ENV{'WEBMIN_VAR'}/output", 0700);
-	mkdir("$ENV{'WEBMIN_VAR'}/output/$idprefix", 0700);
-	open(PAGEOUT, ">$ENV{'WEBMIN_VAR'}/output/$idprefix/$id");
-	print PAGEOUT $miniserv::page_capture_out;
-	close(PAGEOUT);
-	if ($gconfig{'logperms'}) {
-		chmod(oct($gconfig{'logperms'}),
-		      "$ENV{'WEBMIN_VAR'}/output/$idprefix/$id");
-		}
-	$miniserv::page_capture_out = undef;
-	}
+    # Save the whole page output
+    mkdir("$ENV{'WEBMIN_VAR'}/output", 0700);
+    mkdir("$ENV{'WEBMIN_VAR'}/output/$idprefix", 0700);
+    open(PAGEOUT, ">$ENV{'WEBMIN_VAR'}/output/$idprefix/$id");
+    print PAGEOUT $miniserv::page_capture_out;
+    close(PAGEOUT);
+    if ($gconfig{'logperms'}) {
+        chmod(oct($gconfig{'logperms'}),
+              "$ENV{'WEBMIN_VAR'}/output/$idprefix/$id");
+        }
+    $miniserv::page_capture_out = undef;
+    }
 
 # Convert params to a format usable by parse_webmin_log
 my %params;
-foreach my $k (keys %{$_[3]}) {
-	my $v = $_[3]->{$k};
-	if (ref($v) eq 'ARRAY') {
-		$params{$k} = join("\0", @$v);
-		}
-	else {
-		$params{$k} = $v;
-		}
-	}
+foreach my $k (keys %{$params_hash}) {
+    my $v = $params_hash->{$k};
+    if (ref($v) eq 'ARRAY') {
+        $params{$k} = join("\0", @$v);
+        }
+    else {
+        $params{$k} = $v;
+        }
+    }
 
 # Construct description if one is needed
 my $lm = $m || "global";
@@ -6493,75 +6503,75 @@ my $lu = $base_remote_user || $remote_user;
 my $logemail =
        $gconfig{'logemail'} &&
        (!$gconfig{'logmodulesemail'} ||
-	&indexof($lm, split(/\s+/, $gconfig{'logmodulesemail'})) >= 0) &&
+    &indexof($lm, split(/\s+/, $gconfig{'logmodulesemail'})) >= 0) &&
        (!$gconfig{'logusersemail'} ||
-	&indexof($lu, split(/\s+/, $gconfig{'logusersemail'})) >= 0) &&
+    &indexof($lu, split(/\s+/, $gconfig{'logusersemail'})) >= 0) &&
        &foreign_check("mailboxes");
 my $msg = undef;
 my %minfo = $lm eq "global" ? { 'desc' => 'None' } : &get_module_info($m);
 if ($logemail || $gconfig{'logsyslog'}) {
-	my $mod = &get_module_name();
-	my $mdir = module_root_directory($mod);
-	if (&foreign_check("webminlog")) {
-		&foreign_require("webminlog");
-		my $act = &webminlog::parse_logline($line);
-		$msg = &webminlog::get_action_description($act, 0);
-		$msg =~ s/<[^>]*>//g;	# Remove tags
-		}
-	$msg ||= "$_[0] $_[1] $_[2]";
-	}
+    my $mod = &get_module_name();
+    my $mdir = module_root_directory($mod);
+    if (&foreign_check("webminlog")) {
+        &foreign_require("webminlog");
+        my $act = &webminlog::parse_logline($line);
+        $msg = &webminlog::get_action_description($act, 0);
+        $msg =~ s/<[^>]*>//g;   # Remove tags
+        }
+    $msg ||= "$param_action $param_type $param_object";
+    }
 
 # Log to syslog too
 if ($gconfig{'logsyslog'}) {
-	eval 'use Sys::Syslog qw(:DEFAULT setlogsock);
-	      openlog(&get_product_name(), "cons,pid,ndelay", "daemon");
-	      setlogsock("inet");';
-	if (!$@) {
-		eval { syslog("info", "%s", "[$minfo{'desc'}] $msg"); };
-		}
-	}
+    eval 'use Sys::Syslog qw(:DEFAULT setlogsock);
+          openlog(&get_product_name(), "cons,pid,ndelay", "daemon");
+          setlogsock("inet");';
+    if (!$@) {
+        eval { syslog("info", "%s", "[$minfo{'desc'}] $msg"); };
+        }
+    }
 
 # Log to email, if enabled and for this module
 if ($logemail) {
-	# Construct an email message
-	&foreign_require("mailboxes");
-	my $mdesc;
-	if ($lm ne "global") {
-		$mdesc = $minfo{'desc'} || $lm;
-		}
-	my $body = $text{'log_email_desc'}."\n\n";
-	if ($lm ne "global") {
-		$body .= &text('log_email_mod', $lm)."\n";
-		}
-	if ($mdesc) {
-		$body .= &text('log_email_moddesc', $mdesc)."\n";
-		}
-	$main::theme_prevent_make_date = 1;
-	$body .= &text('log_email_time', &make_date(time()))."\n";
-	$body .= &text('log_email_system', &get_display_hostname())."\n";
-	$body .= &text('log_email_user', $remote_user)."\n";
-	$body .= &text('log_email_remote', $_[7] || $ENV{'REMOTE_HOST'})."\n";
-	$body .= &text('log_email_script', $script_name)."\n";
-	if ($main::session_id) {
-		$body .= &text('log_email_session', $main::session_id)."\n";
-		}
-	$body .= "\n";
-	$body .= $msg."\n";
-	my $subj = $mdesc ? &text('log_email_subject', $mdesc)
-		          : $text{'log_email_global'};
-	if ($gconfig{'logemailusub'}) {
-		$subj = &text('log_email_by', $subj, $remote_user);
-		}
-	if ($gconfig{'logemailmsub'}) {
-		$subj .= " : ".$msg;
-		}
-	&mailboxes::send_text_mail(
-		&mailboxes::get_from_address(),
-		$gconfig{'logemail'},
-		undef,
-		$subj,
-		$body);
-	}
+    # Construct an email message
+    &foreign_require("mailboxes");
+    my $mdesc;
+    if ($lm ne "global") {
+        $mdesc = $minfo{'desc'} || $lm;
+        }
+    my $body = $text{'log_email_desc'}."\n\n";
+    if ($lm ne "global") {
+        $body .= &text('log_email_mod', $lm)."\n";
+        }
+    if ($mdesc) {
+        $body .= &text('log_email_moddesc', $mdesc)."\n";
+        }
+    $main::theme_prevent_make_date = 1;
+    $body .= &text('log_email_time', &make_date(time()))."\n";
+    $body .= &text('log_email_system', &get_display_hostname())."\n";
+    $body .= &text('log_email_user', $remote_user)."\n";
+    $body .= &text('log_email_remote', $param_client_ip || $ENV{'REMOTE_HOST'})."\n";
+    $body .= &text('log_email_script', $script_name)."\n";
+    if ($main::session_id) {
+        $body .= &text('log_email_session', $main::session_id)."\n";
+        }
+    $body .= "\n";
+    $body .= $msg."\n";
+    my $subj = $mdesc ? &text('log_email_subject', $mdesc)
+                  : $text{'log_email_global'};
+    if ($gconfig{'logemailusub'}) {
+        $subj = &text('log_email_by', $subj, $remote_user);
+        }
+    if ($gconfig{'logemailmsub'}) {
+        $subj .= " : ".$msg;
+        }
+    &mailboxes::send_text_mail(
+        &mailboxes::get_from_address(),
+        $gconfig{'logemail'},
+        undef,
+        $subj,
+        $body);
+    }
 }
 
 =head2 additional_log(type, object, data, [input])
