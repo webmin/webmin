@@ -5,15 +5,27 @@
 use strict;
 use warnings;
 require './webminlog-lib.pl';
-our (%text, %gconfig, %access_users, %in, %config, %access);
+our (%text, %gconfig, %access_users, %in, %config, %access, %in);
+&ReadParse();
 &foreign_require("acl", "acl-lib.pl");
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
+
+my @tabs = ( [ 'search', $text{'index_search'} ] );
+if ($access{'notify'}) {
+	push(@tabs, [ 'notify', $text{'index_notify'} ]);
+	}
+print &ui_tabs_start(\@tabs, 'mode', $in{'mode'} || 'search', 1);
+
+print &ui_tabs_start_tab('mode', 'search');
 
 if (!$gconfig{'log'}) {
 	print &text('index_nolog', '/webmin/edit_log.cgi'),"<p>\n";
 	}
 elsif (!$gconfig{'logfiles'}) {
 	print &text('index_nologfiles', '/webmin/edit_log.cgi'),"<p>\n";
+	}
+else {
+	print $text{'index_searchdesc'},"<p>\n";
 	}
 
 print &ui_form_start("search.cgi");
@@ -104,12 +116,15 @@ print &ui_table_row($text{'index_long'},
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'index_search'} ] ]);
+print &ui_tabs_end_tab('mode', 'search');
 
 if ($access{'notify'}) {
-	print &ui_hr();
+	print &ui_tabs_start_tab('mode', 'notify');
+
+	print $text{'index_notifydesc'},"<p>\n";
 
 	print &ui_form_start("save_notify.cgi", "post");
-	print &ui_table_start($text{'index_header'}, undef, 2);
+	print &ui_table_start($text{'index_header2'}, undef, 2);
 
 	# Notifications enabled?
 	print &ui_table_row($text{'index_notify'},
@@ -143,7 +158,11 @@ if ($access{'notify'}) {
 
 	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'save'} ] ]);
+
+	print &ui_tabs_end_tab('mode', 'notify');
 	}
+
+print &ui_tabs_end(1);
 
 &ui_print_footer("/", $text{'index'});
 
