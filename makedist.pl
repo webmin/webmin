@@ -45,8 +45,8 @@ $vers || usage();
 	  "module_chooser.cgi", "config-windows", "xmlrpc.cgi",
 	  "uptracker.cgi", "create-module.pl", "webmin_search.cgi",
 	  "webmin-search-lib.pl", "WebminCore.pm",
-	  "record-login.pl", "record-logout.pl", "robots.txt",
-	  "unauthenticated", "bin",
+	  "record-login.pl", "record-logout.pl", "record-failed.pl",
+	  "robots.txt", "unauthenticated", "bin",
 	 );
 if ($min) {
 	# Only those required by others
