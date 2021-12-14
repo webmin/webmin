@@ -7,6 +7,8 @@ index_notify_users=Untuk tindakan oleh pengguna
 index_notify_email=Hantar e-mel ke
 index_notify_usub=Sertakan nama pengguna dalam subjek e-mel?
 index_notify_msub=Sertakan tindakan dalam subjek e-mel?
+index_searchdesc=Borang ini boleh digunakan untuk mencari tindakan Webmin mengikut pengguna, modul, julat tarikh dan fail yang dilaksanakan.
+index_notifydesc=Gunakan borang ini untuk mengkonfigurasi pemberitahuan e-mel apabila tindakan Webmin dilakukan oleh pengguna terpilih atau dalam modul yang dipilih.
 
 search_global_failed=Masuk ke Webmin gagal : $1 
 search_global_expiredpass=Kata laluan tamat tempoh
