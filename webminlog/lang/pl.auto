@@ -7,6 +7,8 @@ index_notify_users=Za działania użytkowników
 index_notify_email=Wyślij email do
 index_notify_usub=Dołączyć nazwę użytkownika do tematu wiadomości e-mail?
 index_notify_msub=Zamieścić akcję w temacie e-maila?
+index_searchdesc=Ten formularz może być używany do wyszukiwania działań Webmina według użytkownika, modułu, zakresu dat i plików, których dokonano.
+index_notifydesc=Użyj tego formularza, aby skonfigurować powiadomienia e-mail, gdy akcje Webmin są wykonywane przez wybranych użytkowników lub w wybranych modułach.
 
 search_global_failed=Logowanie do Webmina nie powiodło się : $1 
 search_global_expiredpass=Hasło wygasło
