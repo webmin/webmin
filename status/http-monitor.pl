@@ -1,6 +1,11 @@
 # http-monitor.pl
 # Monitor a remote HTTP server
 
+sub default_http_codes
+{
+return (200, 301, 302, 303, 307, 308);
+}
+
 sub get_http_status
 {
 local ($o) = @_;
@@ -31,7 +36,15 @@ eval {
 		}
 	&write_http_connection($con, "\r\n");
 	local $line = &read_http_connection($con);
-	$up = $line =~ /^HTTP\/1\..\s+(200|301|302|303|307|308)\s+/ ? 1 : 0;
+	local @codes = $o->{'codes'} ? split(/\s+/, $o->{'codes'})
+				     : &default_http_codes();
+	local $cre = join("|", @codes);
+	if ($line =~ /^HTTP\/1\..\s+($cre)\s+/) {
+		$up = 1;
+		}
+	else {
+		$desc = "Bad HTTP status line : $line";
+		}
 	if ($re && $up) {
 		# Read the headers
 		local %header;
@@ -56,9 +69,6 @@ eval {
 					}
 				};
 			};
-		}
-	elsif (!$up) {
-		$desc = $line;
 		}
 
 	&close_http_connection($con);
@@ -116,6 +126,10 @@ print &ui_table_row($text{'http_login'},
 print &ui_table_row($text{'http_regexp'},
 	&ui_opt_textbox("regexp", $o->{'regexp'}, 50, $text{'http_none2'}),
 	3);
+
+print &ui_table_row($text{'http_codes'},
+	&ui_opt_textbox("codes", $o->{'codes'}, 50,
+		&text('http_codes_def', join(' ', &default_http_codes()))), 3);
 }
 
 sub parse_http_dialog
@@ -159,6 +173,18 @@ else {
 	$in{'regexp'} || &error($text{'http_eregexp'});
 	$o->{'regexp'} = $in{'regexp'};
 	$in{'method'} eq 'HEAD' && &error($text{'http_ehead'});
+	}
+
+if ($in{'codes_def'}) {
+	delete($o->{'codes'});
+	}
+else {
+	my @codes = split(/\s+/, $in{'codes'});
+	@codes || &error($text{'http_ecodes'});
+	foreach my $c (@codes) {
+		$c =~ /^[0-9]{3}$/ || &error($text{'http_ecodes3'});
+		}
+	$o->{'codes'} = join(" ", @codes);
 	}
 }
 
