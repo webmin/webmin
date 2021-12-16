@@ -38,7 +38,7 @@ if (&has_command("ip")) {
 			$ifc{'fullname'} = $1;
 			$ifc{'name'} = $ifc{'fullname'}
 			}
-		elsif ($l =~ /^\d:\s+([^ \t\r\n\@]+\d+)@([^ \t\r\n\@]+\d+):/) {
+		elsif ($l =~ /^\d+:\s+([^ \t\r\n\@]+\d+)@([^ \t\r\n\@]+\d+):/) {
 			# Line like :
 			# 3: eth0@if0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
 			$ifc{'fullname'} = $1;
