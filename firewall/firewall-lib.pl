@@ -175,25 +175,9 @@ foreach $d (keys %{$_[0]->{'defaults'}}) {
 	push(@lines, ":$d $_[0]->{'defaults'}->{$d} [0:0]");
 	}
 foreach $r (@{$_[0]->{'rules'}}) {
-	local $line;
+	local $line = "";
 	$line = "# $r->{'cmt'}\n" if ($r->{'cmt'});
-	$line .= "-A $r->{'chain'}";
-	foreach $a (@known_args) {
-		local ($aa = $a); $aa =~ s/^-+//;
-		if ($r->{$aa}) {
-			local @al = ref($r->{$aa}->[0]) ?
-					@{$r->{$aa}} : ( $r->{$aa} );
-			foreach $ag (@al) {
-				local $n = shift(@$ag);
-				local @w = ( $n ? ( $n ) : (), $a, @$ag );
-				@w = map { $_ =~ /'/ ? "\"$_\"" :
-					   $_ =~ /"/ ? "'".$_."'" :
-					   $_ =~ /\s/ ? "\"$_\"" : $_ } @w;
-				$line .= " ".join(" ", @w);
-				}
-			}
-		}
-	$line .= " $r->{'args'}" if ($r->{'args'} =~ /\S/);
+	$line .= &make_rule_command($r);
 	push(@lines, $line);
 	}
 push(@lines, "COMMIT");
@@ -216,6 +200,31 @@ else {
 	# Just save the file
 	&flush_file_lines();
 	}
+}
+
+# make_rule_command(&rule)
+# Returns the flags needed to create a rule
+sub make_rule_command
+{
+my ($r) = @_;
+my $line = "-A $r->{'chain'}";
+foreach my $a (@known_args) {
+	my $aa = $a;
+	$aa =~ s/^-+//;
+	if ($r->{$aa}) {
+		my @al = ref($r->{$aa}->[0]) ?  @{$r->{$aa}} : ( $r->{$aa} );
+		foreach my $ag (@al) {
+			my $n = shift(@$ag);
+			my @w = ( $n ? ( $n ) : (), $a, @$ag );
+			@w = map { $_ =~ /'/ ? "\"$_\"" :
+				   $_ =~ /"/ ? "'".$_."'" :
+				   $_ =~ /\s/ ? "\"$_\"" : $_ } @w;
+			$line .= " ".join(" ", @w);
+			}
+		}
+	}
+$line .= " $r->{'args'}" if ($r->{'args'} =~ /\S/);
+return $line;
 }
 
 # get_ipsets_active()
@@ -486,13 +495,41 @@ return undef;
 sub merge_fail2ban_rules
 {
 local ($oldlive, $newlive) = @_;
-local ($oldchain) = grep { $_->{'name'} eq 'f2b-default' } @$oldlive;
-local ($newchain) = grep { $_->{'name'} eq 'f2b-default' } @$newlive;
-return if (!$oldchain);		# fail2ban was never used
-local ($oldinput) = grep { $_->{'name'} eq 'INPUT' } @$oldlive;
-return if (!$oldinput);
-local $oldrule;
-# XXX not complete yet
+
+# Get old and new filter table
+local ($oldfilter) = grep { $_->{'name'} eq 'filter' } @$oldlive;
+local ($newfilter) = grep { $_->{'name'} eq 'filter' } @$newlive;
+return if (!$oldfilter || !$newfilter);
+local $oldrules = $oldfilter->{'rules'};
+local $newrules = $newfilter->{'rules'};
+
+# Get all old fail2ban chain rules and inputs that jump to them
+local @oldrules = grep { $_->{'chain'} =~ /^f2b-/ } @$oldrules;
+return if (!@oldrules);
+local @oldjumps = grep { $_->{'chain'} eq 'INPUT' &&
+			 $_->{'j'}->[1] =~ /^f2b-/ } @$oldrules;
+
+# Get all new fail2ban chain rules and inputs that jump to them
+local @newrules = grep { $_->{'chain'} =~ /^f2b-/ } @$newrules;
+local @newjumps = grep { $_->{'chain'} eq 'INPUT' &&
+			 $_->{'j'}->[1] =~ /^f2b-/ } @newrules;
+
+# Re-create the chains
+my @oldchains = &unique(map { $_->{'chain'} } @oldrules);
+foreach my $c (@oldchains) {
+	&system_logged("ip${ipvx}tables -t filter -N $c 2>&1");
+	}
+
+# Re-create any missing old rules
+foreach my $r (@oldrules) {
+	&create_active_rule($newfilter, $r, 0);
+	}
+foreach my $j (@oldjumps) {
+	my ($nj) = grep { $_->{'j'}->[1] eq $j->{'j'}->[1] } @newjumps;
+	if (!$nj) {
+		&create_active_rule($newfilter, $j, 1);
+		}
+	}
 }
 
 # list_cluster_servers()
@@ -598,6 +635,18 @@ if (!defined($supports_conntrack_cache)) {
 	$supports_conntrack_cache = $out =~ /^[3-9]\./ ? 1 : 0;
 	}
 return $supports_conntrack_cache;
+}
+
+# create_active_rule(&table, &rule, insert?)
+# Execute the commands to create one rule
+sub create_active_rule
+{
+my ($table, $rule, $insert) = @_;
+my $flags = &make_rule_command($rule);
+$flags =~ s/^-A /-I / if ($insert);
+my $cmd = "ip${ipvx}tables -t ".$table->{'name'}." ".$flags;
+my $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
 }
 
 1;
