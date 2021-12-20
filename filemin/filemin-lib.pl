@@ -487,7 +487,7 @@ foreach my $fref (@{$files_to_extract}) {
     my $name = $fref->{'file'};
 
     my $extract_to = "$cwd/" . fileparse("$cwd/$name", qr/\.[^.]*/);
-    if (-e $extract_to) {
+    if (-e $extract_to && !$in{'overwrite_existing'}) {
         $extract_to .= "_" . int(rand(1000)) . $$;
     }
     mkdir($extract_to);

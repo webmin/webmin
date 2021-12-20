@@ -111,6 +111,8 @@
         <input type="checkbox" id="filetype" onchange="this.parentElement.querySelector('#upfiles').toggleAttribute('webkitdirectory')"><label for="filetype"> $text{'upload_dirs'}</label>
         <br>
         <input type="checkbox" id="extract_upload" onchange="t=document.querySelector('#upload-form'),v=t.getAttribute('action'),x='&extract_uploaded=1',this.checked?t.setAttribute('action', t.getAttribute('action') + x):t.setAttribute('action',t.getAttribute('action').replace(x,''))"><label for="extract_upload"> $text{'extract_uploaded'}</label>
+        <br>
+        <input type="checkbox" id="overwrite_existing" onchange="t=document.querySelector('#upload-form'),v=t.getAttribute('action'),x='&overwrite_existing=1',this.checked?t.setAttribute('action', t.getAttribute('action') + x):t.setAttribute('action',t.getAttribute('action').replace(x,''))"><label for="overwrite_existing"> $text{'overwrite_existing'}</label>
     </form>
     <div id="readyForUploadList" class="well" style="max-height: 180px;">
     </div>

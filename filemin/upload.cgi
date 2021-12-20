@@ -9,6 +9,7 @@ get_paths();
 
 my @errors;
 my @uploaded_files;
+my $uploaded_dir;
 $line = "";
 
 # Use Webmin's callback function to track progress
@@ -57,6 +58,18 @@ MAINLOOP: while(index($line,"$boundary--") == -1) {
 			if ($dir) {
 				my @dirs = split('/', $dir);
 				$dir = '/';
+				# If overwriting is not allowed check for dupes
+				if (!$in{'overwrite_existing'}) {
+					if ($dirs[0] && -e "$cwd/$dirs[0]") {
+						# As only one directory upload at a time allowed
+						# check if parent exists and if it does add a suffix
+						if (!$uploaded_dir) {
+							$uploaded_dir = $dirs[0] . "_" . int(rand(1000)) . $$;
+						}
+						$file =~ s/^(\Q$dirs[0]\E)/$uploaded_dir/;
+						$dirs[0] = $uploaded_dir;
+					}
+				}
 				foreach my $updir (@dirs) {
 					$dir .= "$updir/";
 					if (!-e "$cwd$dir") {
@@ -66,6 +79,15 @@ MAINLOOP: while(index($line,"$boundary--") == -1) {
 					}
 				}
 			}
+		# In case of a regular file check for dupes
+		if (!$in{'overwrite_existing'}) {
+			if ($file && -e "$cwd/$file") {
+				# If file exists add a suffix
+				my ($file_name, $file_extension) = $file =~ /(?|(.*)\.([^.]+$)|(.*))/;
+				$file = $file_name . "_" . int(rand(1000)) . $$ . ($file_extension ? ".$file_extension" : "");
+			}
+		}
+
 		# OK, we have a file, let`s save it
 		my $full = "$cwd/$file";
 		my $newfile = !-e $full;
