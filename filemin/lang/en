@@ -166,3 +166,4 @@ index_return=file listing
 upload_dirs=Directory Upload
 extract_uploaded=Extract Compressed
 extract_cmd_not_avail=Could not extract $1 file as $2 command is missing
+overwrite_existing=Overwrite Existing
