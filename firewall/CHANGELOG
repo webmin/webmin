@@ -40,3 +40,5 @@ Added support for physdev module options, for matching based on the bridged inte
 Added the open-ports.pl command which can be run from the shell to open ports on the firewall.
 ---- Changes since 1.630 ----
 Updated all screens to use Webmin's new user interface library, for a more consistent look.
+---- Changes since 1.980 ----
+Fail2ban rules are preserved when applying the IPtables configuration file.
