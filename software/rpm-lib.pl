@@ -109,7 +109,7 @@ if (-d $real) {
 	}
 elsif ($_[0] =~ /\*|\?/) {
 	local @rv;
-	&open_execute_command(RPM, "rpm -q -p $_[0] --queryformat \"%{NAME} %{SUMMARY}\\n\" 2>&1", 1);
+	&open_execute_command(RPM, "rpm -q -p $qm --queryformat \"%{NAME} %{SUMMARY}\\n\" 2>&1", 1);
 	while(<RPM>) {
 		chop;
 		push(@rv, $_) if (!/does not appear|query of.*failed|warning:/);
