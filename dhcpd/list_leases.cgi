@@ -23,8 +23,21 @@ print "Refresh: $config{'lease_refresh'}\r\n"
 %ranges = ( );
 $conf = &get_config();
 @subnets = &find("subnet", $conf);
-foreach $shared (&find("shared-network", $conf)) {
+@shareds = &find("shared-network", $conf);
+foreach $shared (@shareds) {
 	push(@subnets, &find("subnet", $shared->{'members'}));
+	@ranges = &find("range", $shared->{'members'});
+	foreach $pool (&find("pool", $shared->{'members'})) {
+		push(@ranges, &find("range", $pool->{'members'}));
+		}
+	foreach $range (@ranges) {
+		local @rv = @{$range->{'values'}};
+		shift(@rv) if ($rv[0] eq "dynamic-bootp");
+		foreach $ip (&expand_ip_range($rv[0], $rv[1])) {
+			$ranges{$ip} = $shared;
+			$shared->{'ips'}++;
+			}
+		}
 	}
 foreach $subnet (@subnets) {
 	if ($in{'network'}) {
@@ -111,7 +124,7 @@ else {
 		}
 
 	if ($in{'bysubnet'}) {
-		# Show table of subnets, with lease usage
+		# Show table of subnets and shared nets, with lease usage
 		print &ui_columns_start([
 			$text{'index_net'}, $text{'index_desc'},
 			$text{'listl_size'}, $text{'listl_used'}, 
@@ -132,6 +145,25 @@ else {
 				$used,
 				$subnet->{'ips'} ?
 					int(100*$used / $subnet->{'ips'})."%" :
+					"",
+				]);
+			}
+		foreach $shared (grep { $_->{'ips'} } @shareds) {
+			%used = ( );
+			foreach $lease (@leases) {
+				$r = $ranges{$lease->{'values'}->[0]};
+				if ($r eq $shared && !$lease->{'expired'}) {
+					$used{$lease->{'values'}->[0]}++;
+					}
+				}
+			$used = scalar(keys %used);
+			print &ui_columns_row([
+				$shared->{'values'}->[0],
+				&html_escape($shared->{'comment'}),
+				$shared->{'ips'},
+				$used,
+				$shared->{'ips'} ?
+					int(100*$used / $shared->{'ips'})."%" :
 					"",
 				]);
 			}
