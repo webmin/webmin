@@ -179,7 +179,7 @@ else {
             }
         }
     }
-&close_tempfile(ARFILE);
+&close_tempfile(ARFILE, %{$data_hash} ? 1 : 0);
 if (defined($main::read_file_cache{$realfile})) {
     %{$main::read_file_cache{$realfile}} = %{$data_hash};
     }
@@ -9589,7 +9589,7 @@ else {
 	}
 }
 
-=head2 close_tempfile(file|handle)
+=head2 close_tempfile(file|handle, [fail-if-empty])
 
 Copies a temp file to the actual file, assuming that all writes were
 successful. The handle must have been one passed to open_tempfile.
@@ -9599,6 +9599,7 @@ sub close_tempfile
 {
 my $file;
 my $fh = &callers_package($_[0]);
+my $notempty = $_[1];
 
 if (defined($file = $main::open_temphandles{$fh})) {
 	# Closing a handle
@@ -9622,6 +9623,10 @@ elsif (defined($main::open_tempfiles{$_[0]})) {
 		       " >/dev/null 2>&1");
 		}
 	my @old_attributes = &get_clear_file_attributes($_[0]);
+	if ($notempty && -z $main::open_tempfiles{$_[0]}) {
+		if ($noerror) { return 0; }
+		else { &error("Temporary file @{[html_escape($main::open_tempfiles{$_[0]})]} is empty!"); }
+		}
 	if (!rename($main::open_tempfiles{$_[0]}, $_[0])) {
 		if ($noerror) { return 0; }
 		else { &error("Failed to replace @{[html_escape($_[0])]} with @{[html_escape($main::open_tempfiles{$_[0]})]} : $!"); }
