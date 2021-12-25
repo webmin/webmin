@@ -5,7 +5,7 @@
 use strict;
 use warnings;
 require './webminlog-lib.pl';
-our (%text, %gconfig, %access_users, %in, %config, %access, %in);
+our (%text, %gconfig, %access_users, %in, %config, %access);
 &ReadParse();
 &foreign_require("acl", "acl-lib.pl");
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
