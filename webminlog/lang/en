@@ -39,8 +39,8 @@ index_notify_users=For actions by users
 index_notify_email=Send email to
 index_notify_usub=Include username in email subject?
 index_notify_msub=Include action in email subject?
-index_search=Search logs
-index_notify=Email notification
+index_searchtab=Search logs
+index_notifytab=Email notification
 index_searchdesc=This form can be used to search for Webmin actions by user, module, date range and files effected.
 index_notifydesc=Use this form to configure email notifications when Webmin actions are peformed by selected users or in chosen modules.
 
