@@ -10336,6 +10336,150 @@ $rv =~ s/\$\{[A-Z]+\}//g;
 return $rv;
 }
 
+=head2 substitute_pattern(regex-pattern, [&params])
+
+Given regular expression generates a string based on the pattern. Hash reference
+with params can be used to control default pattern length, results filtering and
+replacement, date/time substitution and manipulate resulted string with callback
+
+This function must be save to be used with patterns defined by a user to generate
+strings with desired pattern, like usernames
+
+Examples:
+
+    Generate random MAC address
+      - call   : substitute_pattern('[a-f0-9]{2}:[a-f0-9]{2}:[a-f0-9]{2}:[a-f0-9]{2}:[a-f0-9]{2}:[a-f0-9]{2}');
+      - result : d3:18:2d:24:97:a7
+
+    Generate random HEX string with 40 characters
+      - call   : substitute_pattern('[a-f0-9]{40}');
+      - result : b020475196675a88810321341f2578d32c634049
+
+    Generate a username based on the pattern set by a user
+      - call   : substitute_pattern('u-"[\d]{4}"-g[\d]', {'length' => 2, filter => '[^A-Za-z0-9\\-_]'})
+      - result : u-6451-g98
+      - desc   : even though a user sets a pattern for a username as 'u-"[\d]{4}"-g[\d]', the filter will
+                 make sure that double quotes will be removed and a second matching group for a numerical
+                 string will be set to length of two digits (default is one)
+
+    Generate a username based on the pattern set by a user, checking if it exists using callback
+      - call   : my $callback = sub {
+                   my $user = shift;
+                   if (user_exists($user)) {
+                      return error("Error: User $user already exists!");
+                   }
+                   return $user;
+                 };
+                 my $pattern = 'user-[\d]{4}';
+                 my $params = {'filter' => '[^A-Za-z0-9\\-_]', 'callback' => $callback};
+                 substitute_pattern($pattern, $params);
+      - result : user-4263 or error if user exists
+
+    Generate filename substituting datetime template strings
+      - call   : my $params = {'filter' => '[^A-Za-z0-9\\-_:]', 'substitute' => 'datetime'};
+                 my $pattern = 'file-[\d]{4}--${year}-${month}-${day}_${hours}:${minute}:${seconds}';
+                 substitute_pattern($pattern, $params); 
+      - result : file-7385--2021-12-25_14:00:00
+      - desc   : a `filter` param will make sure that in case the pattern is comming from the user all
+                 disallowed characters will be discarded, and `substitute` datetime param will make sure
+                 that the pattern variables such as `${year}` or `${days}` will be replaced accordingly
+
+=cut
+
+sub substitute_pattern
+{
+my ($pattern, $params) = @_;
+my $string;
+my $_param = sub {
+    my $param = shift;
+    if (ref($params) && $params->{$param}) {
+        return $params->{$param};
+    }
+};
+my $_shuffle = sub {
+    my $a = shift;
+    my $c;
+    for ($c = @{$a}; --$c;) {
+        my $b = int(rand($c + 1));
+        next if $c == $b;
+        @{$a}[$c, $b] = @{$a}[$b, $c];
+    }
+};
+
+# Parse passed pattern to build a string based on it
+while ($pattern =~
+    /(?|\[([^]]*)\]\{(.*?)\}|\[(.*?)\](.*?)|([\_\-\.]+)(.*?)|([a-zA-Z0-9\-\_\.\:\+\!\@\#\$\%\^\&\*\(\)\=\~\<\>\"\'\{\}\/\\]+)(.*?))/g)
+{
+    my $match  = $1;
+    my $length = (int($2) || int(&$_param('length') || 1)) - 1;
+
+    # Matches replacements
+    $match = 'A-Za-z0-9' if ($match eq '\w');
+    $match = '0-9'       if ($match eq '\d');
+
+    my (%ranges) = $match =~ /([a-zA-Z0-9])-([a-zA-Z0-9])/g;
+    my @ranges_ = ();
+    if (%ranges) {
+        foreach my $range (keys %ranges) {
+            my $a = $range;
+            my $b = $ranges{$range};
+            if (($a =~ /^[a-z]$/ && $b =~ /^[a-z]$/) ||
+                ($a =~ /^[A-Z]$/ && $b =~ /^[A-Z]$/) ||
+                ($a =~ /^[0-9]$/ && $b =~ /^[0-9]$/))
+            {
+                push(@ranges_, ($a .. $b));
+
+                # Ballance to satisfy needed length
+                if (scalar(@ranges_) < $length) {
+                    @ranges_ =
+                      (@ranges_) x ceil($length / scalar(@ranges_));
+                    }
+                &$_shuffle(\@ranges_) if (!&$_param('no-shuffle'));
+                }
+            }
+        }
+
+    # Use given length number to generate a pattern from a range
+    if (@ranges_ && $length =~ /^[0-9]+$/) {
+        $string .= join('', @ranges_[0 .. $length]);
+        }
+
+    # Use part of the pattern as literal
+    else {
+        $string .= $match;
+    	}
+    }
+
+# Apply date/time substitutions if any
+my $params_substitute = &$_param('substitute') eq 'datetime';
+if ($params_substitute) {
+	my (@t, %tt) = (localtime(time()));
+    $tt{'year'} = $t[5] + 1900;
+    $tt{'month'} = sprintf("%2.2d", $t[4] + 1);
+    $tt{'day'} = sprintf("%2.2d", $t[3]);
+    $tt{'hour'} = sprintf("%2.2d", $t[2]);
+    $tt{'minute'} = sprintf("%2.2d", $t[1]);
+    $tt{'second'} = sprintf("%2.2d", $t[0]);
+    foreach my $t (keys %tt) {
+    	$string =~ s/\{$t(?:(s))?\}/$tt{$t}/g;
+        }
+    }
+
+# Apply string filter
+my $params_filter = &$_param('filter');
+if ($params_filter) {
+    my $params_replace = &$_param('replace');
+    $string =~ s/$params_filter/$params_replace/g;
+    }
+
+# Apply string callback
+my $params_callback = &$_param('callback');
+if ($params_callback) {
+    $string = &$params_callback($string);
+    }
+return $string;
+}
+
 =head2 running_in_zone
 
 Returns 1 if the current Webmin instance is running in a Solaris zone. Used to
