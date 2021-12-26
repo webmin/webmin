@@ -10376,13 +10376,21 @@ Examples:
       - result : user-4263 or error if user exists
 
     Generate filename substituting datetime template strings
-      - call   : my $params = {'filter' => '[^A-Za-z0-9\\-_:]', 'substitute' => 'datetime'};
+      - call   : my $params = {'filter' => '[^A-Za-z0-9\\-_:]', 'substitute-datetime' => 1};
                  my $pattern = 'file-[\d]{4}--${year}-${month}-${day}_${hours}:${minute}:${seconds}';
                  substitute_pattern($pattern, $params); 
       - result : file-7385--2021-12-25_14:00:00
       - desc   : a `filter` param will make sure that in case the pattern is comming from the user all
-                 disallowed characters will be discarded, and `substitute` datetime param will make sure
+                 disallowed characters will be discarded, and `substitute-datetime` param will make sure
                  that the pattern variables such as `${year}` or `${days}` will be replaced accordingly
+
+    Generate filename with substituting template strings
+      - call   : my $params = {'substitute-template' => 1,
+                               'substitute-func' => 'virtual_server::substitute_domain_template',
+                               'substitute-hash' => {'dom' => 'mydom.com'}};
+                 my $pattern = 'file-[\d]{4}--$DOM';
+                 substitute_pattern($pattern, $params); 
+      - result : file-4089--mydom.com
 
 =cut
 
@@ -10447,12 +10455,11 @@ while ($pattern =~
     # Use part of the pattern as literal
     else {
         $string .= $match;
-    	}
+        }
     }
 
 # Apply date/time substitutions if any
-my $params_substitute = &$_param('substitute') eq 'datetime';
-if ($params_substitute) {
+if (&$_param('substitute-datetime')) {
 	my (@t, %tt) = (localtime(time()));
     $tt{'year'} = $t[5] + 1900;
     $tt{'month'} = sprintf("%2.2d", $t[4] + 1);
@@ -10461,7 +10468,31 @@ if ($params_substitute) {
     $tt{'minute'} = sprintf("%2.2d", $t[1]);
     $tt{'second'} = sprintf("%2.2d", $t[0]);
     foreach my $t (keys %tt) {
-    	$string =~ s/\{$t(?:(s))?\}/$tt{$t}/g;
+        $string =~ s/\$\{$t(?:(s))?\}/$tt{$t}/g;
+        }
+    }
+
+# Apply template substitutions
+if(&$_param('substitute-template') && ref(&$_param('substitute-hash')) eq 'HASH') {
+    my ($substitute_hash, $substitute_func) =
+         (&$_param('substitute-hash'), &$_param('substitute-func'));
+    if ($substitute_func) {
+        if ($substitute_func =~ /([\w]+)::([\w]+)/) {
+            if (!defined(&$substitute_func)) {
+                my $mmod = "$1";
+                $mmod =~ s/_/-/g;
+                &foreign_exists($mmod) && &foreign_require($mmod);
+                }
+            }
+        if (!defined(&$substitute_func)) {
+            $string = &substitute_template($string, $substitute_hash);
+            }
+        else {
+            $string = &$substitute_func($string, $substitute_hash);
+            }
+        }
+    else {
+        $string = &substitute_template($string, $substitute_hash);
         }
     }
 
