@@ -145,8 +145,8 @@ else {
 	if (!$config{"direct${ipvx}"}) {
 		my $err = &validate_iptables_config();
 		if ($err) {
-			print "<b>",&text('index_evalid',
-					  &html_escape($err)),"</b><p>\n";
+			print "<b><font color=red>",&text('index_evalid',
+				  &html_escape($err)),"</font></b><p>\n";
 			}
 		}
 
