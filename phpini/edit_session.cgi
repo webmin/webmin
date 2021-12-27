@@ -19,7 +19,8 @@ print &ui_table_row($text{'session_handler'},
 		   [ [ "files", $text{'session_files'} ],
 		     [ "mm", $text{'session_mm'} ],
 		     [ "users", $text{'session_users'} ],
-		     [ "redis", $text{'session_redis'} ] ]));
+		     [ "redis", $text{'session_redis'} ],
+		     [ "memcache", $text{'session_memcache'} ] ]));
 
 # Where to save session files
 print &ui_table_row($text{'session_path'},

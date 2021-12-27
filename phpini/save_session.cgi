@@ -16,13 +16,8 @@ if ($in{"session.save_path_def"}) {
 	&save_directive($conf, "session.save_path", undef);
 	}
 else {
-	if($in{"session.save_handler"} == "redis") {
-		my @hasRedis = `php -m | grep redis` == "redis";
-		if(!@hasRedis) {
-			&error($text{'session_eredis'});
-			}
-		}
-	else {
+	if ($in{"session.save_handler"} ne "redis" &&
+	    $in{"session.save_handler"} ne "memcache") {
 		# file path must not be checked with other handlers (e.g. redis)
 		-d $in{"session.save_path"} || &error($text{'session_epath'});
 		}
