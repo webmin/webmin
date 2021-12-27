@@ -231,22 +231,19 @@ return $line;
 # return a list of active ipsets
 sub get_ipsets_active
 {
-local (@rv, $name, $set={});
+my (@rv, $name, $set);
 open(FILE, "ipset list -t 2>/dev/null |");
-LINE:
 while(<FILE>) {
-      # remove newlines, get arg and value
+	# remove newlines, get arg and value
         s/\r|\n//g;
-      local ($n, $v) = split(/: /, $_);
-      ($n) = $n =~ /(\S+)/;
-      # get values from name to number
-      $name=$v if ($n eq "Name");
-      $set->{$n}=$v;
-      if ($n eq "Number") {
-               push(@rv, $set);
-               $set={};
-              }
-      }
+	my ($n, $v) = split(/: /, $_);
+	$n =~ s/^(\S+).*/$1/;
+	if ($n eq "Name") {
+		$set = { };
+		push(@rv, $set);
+		}
+	$set->{$n} = $v;
+	}
 return @rv;
 }
 
