@@ -281,6 +281,9 @@ foreach $d ('p', 's', 'd', 'i', 'o', 'f', 'dport',
 			if ($d eq 's' || $d eq 'd' );
 		# compose desc_$n$d to get myized message, provide values
 		# as $1, ..., $n
+		if ($d eq 'match-set') {
+			$v[1] = $text{'desc_'.$d.'_'.$v[1]} || $v[1];
+			}
 		my $txt = &text("desc_$d$n", map { "<b>$_</b>" } @v);
 		push(@c, $txt) if ($txt);
 		}

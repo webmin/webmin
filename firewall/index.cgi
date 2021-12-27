@@ -435,34 +435,34 @@ else {
         # may need to check if they are used by firewall rules
 	@ipsets = &get_ipsets_active();
 	if (@ipsets) {	
-	    print &ui_hr();
-	    print "<b>$text{'index_ipset_title'}</b>";
+		print &ui_hr();
+		print "<b>$text{'index_ipset_title'}</b>";
 
-	    # Generate the header
-	    @hcols = ( $text{'index_ipset'},
-		       $text{'index_ipset_name'},
-		       $text{'index_ipset_type'},
-		       $text{'index_ipset_elem'},
-		       $text{'index_ipset_maxe'},
-		       $text{'index_ipset_size'} );
-	    print &ui_columns_start(\@hcols, 100, 0);
+		# Generate the header
+		@hcols = ( $text{'index_ipset'},
+			   $text{'index_ipset_name'},
+			   $text{'index_ipset_type'},
+			   $text{'index_ipset_elem'},
+			   $text{'index_ipset_maxe'},
+			   $text{'index_ipset_size'} );
+		print &ui_columns_start(\@hcols, 100, 0);
 
-	    # Generate a row for each rule
-	    foreach $s (@ipsets) {
-		my @h = split(/ /, $s->{'Header'});
-		# print matching pínet version
-		if ($h[1] =~ /inet${ipvx}$/) {
-			my @cols = ( "$h[0] $h[1]",
-				     $s->{'Name'},
-				     $s->{'Type'},
-				     $s->{'Number'} || 0,
-				     $h[5],
-				     $s->{'Size'} );
-			print &ui_columns_row(\@cols);
+		# Generate a row for each rule
+		foreach $s (@ipsets) {
+			my @h = split(/ /, $s->{'Header'});
+			# print matching pínet version
+			if ($h[1] =~ /inet${ipvx}$/) {
+				my @cols = ( "$h[0] $h[1]",
+					     $s->{'Name'},
+					     $s->{'Type'},
+					     $s->{'Number'} || 0,
+					     $h[5],
+					     $s->{'Size'} );
+				print &ui_columns_row(\@cols);
+				}
 			}
-                }
-	    print &ui_columns_end();
-	    }
+		print &ui_columns_end();
+		}
 
 	# Display buttons for applying and un-applying the configuration,
 	# and for creating an init script if possible
