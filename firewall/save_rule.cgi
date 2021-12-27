@@ -362,6 +362,13 @@ else {
 		push(@mods, "physdev");
 		}
 
+	# Parse IPset
+	if (&parse_mode("matchset", $rule, "match-set")) {
+		$rule->{'match-set'}->[1] = $in{'matchset'};
+		$rule->{'match-set'}->[2] = $in{'matchset2'};
+		push(@mods, "set");
+		}
+
 	# Add custom parameters and modules
 	$rule->{'args'} = $in{'args'};
 	push(@mods, split(/\s+/, $in{'mods'}));

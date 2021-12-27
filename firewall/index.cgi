@@ -433,7 +433,7 @@ else {
 
 	# Show ipset overview if ipsets are availibe
         # may need to check if they are used by firewall rules
-	@ipsets  = &get_ipsets_active();
+	@ipsets = &get_ipsets_active();
 	if (@ipsets) {	
 	    print &ui_hr();
 	    print "<b>$text{'index_ipset_title'}</b>";

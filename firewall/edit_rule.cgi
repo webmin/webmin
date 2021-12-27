@@ -345,10 +345,20 @@ print &ui_table_row($text{'edit_physdevisbridged'},
 	&print_mode("physdevisbridged", $rule->{'physdev-is-bridged'},
 		    $text{'yes'}, $text{'no'}));
 
+# IPset to match
+print &ui_table_row($text{'edit_matchset'},
+	&print_mode("matchset", $rule->{'match-set'})." ".
+	&ui_select("matchset", $rule->{'match-set'}->[1],
+		   [ map { $_->{'Name'} } &get_ipsets_active() ])." ".
+	&ui_select("matchset2", $rule->{'match-set'}->[2],
+		   [ [ "src", $text{'edit_matchsetsrc'} ],
+		     [ "dst", $text{'edit_matchsetdst'} ] ], 1, 0,
+		   $rule->{'match-set'}->[2] ? 1 : 0));
+
 print &ui_table_hr();
 
 # Show unknown modules
-@mods = grep { !/^(tcp|udp|icmp${ipvx_icmp}|multiport|mac|limit|owner|state|conntrack|tos|comment|physdev)$/ } map { $_->[1] } @{$rule->{'m'}};
+@mods = grep { !/^(tcp|udp|icmp${ipvx_icmp}|multiport|mac|limit|owner|state|conntrack|tos|comment|physdev|set)$/ } map { $_->[1] } @{$rule->{'m'}};
 print &ui_table_row($text{'edit_mods'},
 	&ui_textbox("mods", join(" ", @mods), 60));
 
