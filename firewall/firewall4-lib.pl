@@ -27,7 +27,7 @@ else {
 		 '--ports', '--uid-owner', '--gid-owner',
 		 '--pid-owner', '--sid-owner', '--state', '--ctstate', '--tos',
 		 '-j', '--to-ports', '--to-destination', '--to-source',
-		 '--reject-with', '--dports', '--sports',
+		 '--reject-with', '--dports', '--sports', '--match-set',
 		 '--comment',
 		 '--physdev-is-bridged',
 		 '--physdev-is-in',

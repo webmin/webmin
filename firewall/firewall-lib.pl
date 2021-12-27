@@ -255,35 +255,40 @@ return @rv;
 # Returns a human-readable description of some rule conditions
 sub describe_rule
 {
-local (@c, $d);
+my ($rule) = @_;
+my (@c, $d);
 foreach $d ('p', 's', 'd', 'i', 'o', 'f', 'dport',
 	    'sport', 'tcp-flags', 'tcp-option',
 	    'icmp-type', 'icmpv6-type', 'mac-source', 'limit', 'limit-burst',
 	    'ports', 'uid-owner', 'gid-owner',
 	    'pid-owner', 'sid-owner', 'ctstate', 'state', 'tos',
-	    'dports', 'sports', 'physdev-in', 'physdev-out', 'args') {
-	if ($_[0]->{$d}) {
+	    'dports', 'sports', 'physdev-in', 'physdev-out', 'match-set',
+	    'args') {
+	if ($rule->{$d}) {
 		# get name and values
-		local ($n, @v) = @{$_[0]->{$d}};
+		my ($n, @v) = @{$rule->{$d}};
 		# with additional args
 		if ($d eq 'args') {
 			# get args
-			@v = grep {/\S/} split(/ / , $_[0]->{$d});
+			@v = grep {/\S/} split(/ / , $rule->{$d});
 			# first arg is name, next are values
 			$n=shift(@v);
 			# translate src and dest parameter for ipset
-			push(@v, &text("desc_". pop(@v))) if ($n eq "--match-set");
+			push(@v, &text("desc_".pop(@v)))
+				if ($n eq "--match-set");
 			} 
 		# uppercase for p
 		@v = map { uc($_) } @v if ($d eq 'p');
 		# merge all in one for s and d
-		@v = map { join(", ", split(/,/, $_)) } @v if ($d eq 's' || $d eq 'd' );
-		# compose desc_$n$d to get localized message, provide values as $1, ..., $n
-		local $txt = &text("desc_$d$n", map { "<strong>$_</strong>" } @v);
+		@v = map { join(", ", split(/,/, $_)) } @v
+			if ($d eq 's' || $d eq 'd' );
+		# compose desc_$n$d to get myized message, provide values
+		# as $1, ..., $n
+		my $txt = &text("desc_$d$n", map { "<b>$_</b>" } @v);
 		push(@c, $txt) if ($txt);
 		}
 	}
-local $rv;
+my $rv;
 if (@c) {
 	$rv = &text('desc_conds', join(" $text{'desc_and'} ", @c));
 	}
