@@ -34,7 +34,7 @@ index_econfigcheck=Cron jobs cannot be managed on your system, as the module con
 index_stop=Stop Cron Daemon
 index_stopdesc=Shut down the <tt>crond</tt> background server process that runs scheduled cron jobs. This will prevent commands from executing at their specified times.
 index_start=Start Cron Daemon
-index_startdesc=Start up the <tt>crond</tt> background server process that runs scheduled cron jobs. This is required for commands to execute at their specified times.
+index_startdesc=Start up the <tt>crond</tt> background server process that runs scheduled cron jobs. <font color=red><b>This is required for commands to execute at their specified times.</b></font>
 index_boot=Start Cron Daemon Boot?
 index_bootdesc=Change this setting to enable or disable starting the scheduled cron jobs daemon at system boot time.
 
