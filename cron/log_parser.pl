@@ -37,11 +37,8 @@ elsif ($action eq 'exec' || $action eq 'kill') {
 		     "<tt>$object</tt>",
 		     "<tt>".&html_escape($p->{'command'})."</tt>");
 	}
-elsif ($action eq 'allow') {
-	return $text{'log_allow'};
-	}
 else {
-	return undef;
+	return $text{'log_'.$action};
 	}
 }
 

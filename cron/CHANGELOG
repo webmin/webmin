@@ -45,3 +45,5 @@ Added buttons to move cron jobs to the top and bottom of the list.
 Added a page for manually editing cron jobs.
 ---- Changes since 1.900 ----
 The next run time of each cron job can be displayed by enable a new config option.
+---- Changes since 1.980 ----
+Added buttons to stop and start crond on the main page.

@@ -286,5 +286,34 @@ else {
 	print &ui_links_row(\@crlinks);
 	}
 
+# If there is an init script that runs crond, show status
+&foreign_require("init");
+my $init = $config{'init_name'};
+my $atboot;
+if ($access{'stop'} && $init && ($atboot = &init::action_status($init))) {
+	print &ui_hr();
+	print &ui_buttons_start();
+
+	# Running now?
+	my $r = &init::status_action($init);
+	if ($r == 1) {
+		print &ui_buttons_row("stop.cgi", $text{'index_stop'},
+				      $text{'index_stopdesc'});
+		}
+	elsif ($r == 0) {
+		print &ui_buttons_row("start.cgi", $text{'index_start'},
+				      $text{'index_startdesc'});
+		}
+
+	# Start at boot?
+	print &ui_buttons_row("bootup.cgi", $text{'index_boot'},
+			      $text{'index_bootdesc'}, undef,
+			      &ui_radio("boot", $atboot == 2 ? 1 : 0,
+					[ [ 1, $text{'yes'} ],
+					  [ 0, $text{'no'} ] ]));
+
+	print &ui_buttons_end();
+	}
+
 &ui_print_footer("/", $text{'index'});
 

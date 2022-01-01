@@ -25,3 +25,4 @@ system_crontab=Path to Vixie-Cron system crontab file,0
 single_file=Path to single user crontab file,0
 cronfiles_dir=Path to extra cron files directory,3,None
 run_parts=run-parts command,0
+init_name=Cron daemon bootup action name,3,None exists

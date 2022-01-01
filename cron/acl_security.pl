@@ -56,6 +56,10 @@ print &ui_table_row($text{'acl_hourly'},
 	&ui_radio("hourly", $_[0]->{'hourly'},
 		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ],
 		  [ 2, $text{'acl_hourlydef'} ] ]), 3);
+
+print &ui_table_row($text{'acl_stop'},
+	&ui_radio("stop", $_[0]->{'stop'},
+		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 }
 
 # acl_security_save(&options)
@@ -77,5 +81,6 @@ $_[0]->{'delete'} = $in{'delete'};
 $_[0]->{'move'} = $in{'move'};
 $_[0]->{'kill'} = $in{'kill'};
 $_[0]->{'hourly'} = $in{'hourly'};
+$_[0]->{'stop'} = $in{'stop'};
 }
 
