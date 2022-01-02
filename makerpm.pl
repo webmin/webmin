@@ -227,7 +227,7 @@ cd /usr/libexec/webmin
 config_dir=/etc/webmin
 var_dir=/var/webmin
 perl=/usr/bin/perl
-autoos=3
+autoos=1
 if [ "\$WEBMIN_PORT\" != \"\" ]; then
 	port=\$WEBMIN_PORT
 else

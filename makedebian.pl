@@ -296,7 +296,7 @@ cd /usr/share/$baseproduct
 config_dir=/etc/$baseproduct
 var_dir=/var/$baseproduct
 perl=/usr/bin/perl
-autoos=3
+autoos=1
 if [ "\$WEBMIN_PORT\" != \"\" ]; then
 	port=\$WEBMIN_PORT
 else
