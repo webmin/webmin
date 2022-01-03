@@ -47,21 +47,21 @@ elsif ($in{'source'} == 2) {
 	close(FILE);
 	unlink($file);
 	if ($in{'mode'} eq 'rpm') {
-		$progress_callback_url = "http://$usermin::update_host/download/rpm/usermin-$site_version-1.noarch.rpm";
+		$progress_callback_url = "http://$usermin::update_host/download/rpm/usermin-${site_version}-1.noarch.rpm";
 		&http_download($usermin::update_host, $usermin::update_port,
-		  "/download/rpm/usermin-$site_version-1.noarch.rpm", $file,
+		  "/download/rpm/usermin-${site_version}-1.noarch.rpm", $file,
 		  \$error, \&progress_callback);
 		}
 	elsif ($in{'mode'} eq 'deb') {
-		$progress_callback_url = "http://$usermin::update_host/download/deb/usermin_$site_version.deb";
+		$progress_callback_url = "http://$usermin::update_host/download/deb/usermin_${site_version}_all.deb";
 		&http_download($usermin::update_host, $usermin::update_port,
-		  "/download/deb/usermin_$site_version.deb", $file,
+		  "/download/deb/usermin_${site_version}_all.deb", $file,
 		  \$error, \&progress_callback);
 		}
 	else {
-		$progress_callback_url = "http://$usermin::update_host/download/usermin-$site_version.tar.gz";
+		$progress_callback_url = "http://$usermin::update_host/download/usermin-${site_version}.tar.gz";
 		&http_download($usermin::update_host, $usermin::update_port,
-		  "/download/usermin-$site_version.tar.gz", $file,
+		  "/download/usermin-${site_version}.tar.gz", $file,
 		  \$error, \&progress_callback);
 		}
 	$error && &inst_error($error);
