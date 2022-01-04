@@ -95,10 +95,11 @@ if (`rpm -qp $file 2>&1` =~ /(^|\n)usermin-(\d+\.\d+)/) {
 	$mode = "rpm";
 	$version = $2;
 	}
-elsif (`dpkg --info $file 2>&1` =~ /Package:\s+usermin-(\d+\.\d+)/) {
+elsif (`dpkg --info $file 2>&1` =~ /Package:\s+usermin/) {
         # Looks like a Usermin Debian package
         $mode = "deb";
-        $version = $2;
+        `dpkg --info $file 2>&1` =~ /Version:\s+(\S+)/;
+        $version = $1;
         }
 else {
         # Check if it is a usermin tar.gz file
