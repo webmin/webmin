@@ -95,7 +95,7 @@ if (`rpm -qp $file 2>&1` =~ /(^|\n)usermin-(\d+\.\d+)/) {
 	$mode = "rpm";
 	$version = $2;
 	}
-elsif (`dpkg --info $file 2>&1` =~ /Package:\s+usermin-(\d+\.\d+)/) {
+elsif (`dpkg --info $file 2>&1` =~ /Package:\s+usermin\n\s*Version:\s+(\d+\.\d+)/) {
         # Looks like a Usermin Debian package
         $mode = "deb";
         $version = $2;
