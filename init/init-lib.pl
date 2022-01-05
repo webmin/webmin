@@ -2109,6 +2109,9 @@ systemd automatically includes init scripts).
 sub list_systemd_services
 {
 my ($noinit) = @_;
+if (@list_systemd_services_cache && !$noinit) {
+	return @list_systemd_services_cache;
+	}
 
 # Get all systemd unit names
 my $out = &backquote_command("systemctl list-units --full --all -t service --no-legend");
@@ -2225,7 +2228,10 @@ if (!$noinit) {
 		}
 	}
 
-return sort { $a->{'name'} cmp $b->{'name'} } @rv;
+# Return actions sorted by name
+@rv = sort { $a->{'name'} cmp $b->{'name'} } @rv;
+@list_systemd_services_cache = @rv if (!$noinit);
+return @rv;
 }
 
 =head2 start_systemd_service(name)
