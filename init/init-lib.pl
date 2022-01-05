@@ -2098,7 +2098,7 @@ my $ifile = "/etc/init.d/$name";
 &unlink_logged($cfile, $ifile);
 }
 
-=head2 list_systemd_services
+=head2 list_systemd_services(skip-init)
 
 Returns a list of all known systemd services, each of which is a hash ref
 with 'name', 'desc', 'boot', 'status' and 'pid' keys. Also includes init.d
@@ -2108,6 +2108,8 @@ systemd automatically includes init scripts).
 =cut
 sub list_systemd_services
 {
+my ($noinit) = @_;
+
 # Get all systemd unit names
 my $out = &backquote_command("systemctl list-units --full --all -t service --no-legend");
 my $ex = $?;
@@ -2201,24 +2203,26 @@ foreach my $name (keys %info) {
 	}
 
 # Also add legacy init scripts
-my @rls = &get_inittab_runlevel();
-foreach my $a (&list_actions()) {
-	$a =~ s/\s+\d+$//;
-	my $f = &action_filename($a);
-	my $s = { 'name' => $a,
-		  'legacy' => 1 };
-	$s->{'boot'} = 0;
-	foreach my $rl (@rls) {
-		my $l = glob("/etc/rc$rl.d/S*$a");
-		$s->{'boot'} = 1 if ($l);
+if (!$noinit) {
+	my @rls = &get_inittab_runlevel();
+	foreach my $a (&list_actions()) {
+		$a =~ s/\s+\d+$//;
+		my $f = &action_filename($a);
+		my $s = { 'name' => $a,
+			  'legacy' => 1 };
+		$s->{'boot'} = 0;
+		foreach my $rl (@rls) {
+			my $l = glob("/etc/rc$rl.d/S*$a");
+			$s->{'boot'} = 1 if ($l);
+			}
+		$s->{'desc'} = &init_description($f);
+		my $hasarg = &get_action_args($f);
+		if ($hasarg->{'status'}) {
+			my $r = &action_running($f);
+			$s->{'status'} = $r;
+			}
+		push(@rv, $s);
 		}
-	$s->{'desc'} = &init_description($f);
-	my $hasarg = &get_action_args($f);
-	if ($hasarg->{'status'}) {
-		my $r = &action_running($f);
-		$s->{'status'} = $r;
-		}
-	push(@rv, $s);
 	}
 
 return sort { $a->{'name'} cmp $b->{'name'} } @rv;
@@ -2366,7 +2370,7 @@ Returns 1 if some service is managed by systemd
 sub is_systemd_service
 {
 my ($name) = @_;
-foreach my $s (&list_systemd_services()) {
+foreach my $s (&list_systemd_services(1)) {
 	if ($s->{'name'} eq $name && !$s->{'legacy'}) {
 		return 1;
 		}
