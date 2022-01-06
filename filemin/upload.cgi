@@ -62,13 +62,24 @@ MAINLOOP: while(index($line,"$boundary--") == -1) {
 				if (!$in{'overwrite_existing'}) {
 					if ($dirs[0] && -e "$cwd/$dirs[0]") {
 						# As only one directory upload at a time allowed
-						# check if parent exists and if it does add a suffix
+						# check if parent exists and if it does add
+						# predictable suffix, like `dir(1)` or `dir(2)`
 						if (!$uploaded_dir) {
-							$uploaded_dir = $dirs[0] . "_" . int(rand(1000)) . $$;
+							my $__ = 1;
+							for (;;) {
+							    my $new_dir_name = "$dirs[0](" . $__++ . ")";
+							    if (!-e "$cwd/$new_dir_name") {
+									$uploaded_dir = $new_dir_name;
+							        last;
+							    	}
+								}
+							}
 						}
-						$file =~ s/^(\Q$dirs[0]\E)/$uploaded_dir/;
-						$dirs[0] = $uploaded_dir;
-					}
+					else {
+						$uploaded_dir = $dirs[0];
+						}
+					$file =~ s/^(\Q$dirs[0]\E)/$uploaded_dir/;
+					$dirs[0] = $uploaded_dir;
 				}
 				foreach my $updir (@dirs) {
 					$dir .= "$updir/";
@@ -82,11 +93,19 @@ MAINLOOP: while(index($line,"$boundary--") == -1) {
 		# In case of a regular file check for dupes
 		if (!$in{'overwrite_existing'}) {
 			if ($file && -e "$cwd/$file") {
-				# If file exists add a suffix
-				my ($file_name, $file_extension) = $file =~ /(?|(.*)\.([^.]+$)|(.*))/;
-				$file = $file_name . "_" . int(rand(1000)) . $$ . ($file_extension ? ".$file_extension" : "");
+				# If file exists add predictable suffix, like `file(1)` or `file(2)`
+				my ($file_name, $file_extension) = $file =~ /(?|(.*)\.((?|tar|wbm|wbt)\..*)|(.*)\.([a-zA-Z]+\.(?|gpg|pgp))|(.*)\.(?=(.*))|(.*)())/;
+				$file_extension  = ".$file_extension" if ($file_extension);
+				my $__ = 1;
+				for (;;) {
+					my $new_file_name = "$file_name(" . $__++ . ")";
+					if (!-e "$cwd/$new_file_name$file_extension") {
+						$file = "$new_file_name$file_extension";
+						last;
+						}
+					}
+				}
 			}
-		}
 
 		# OK, we have a file, let`s save it
 		my $full = "$cwd/$file";

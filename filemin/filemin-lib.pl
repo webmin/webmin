@@ -486,11 +486,23 @@ foreach my $fref (@{$files_to_extract}) {
     my $cwd = $fref->{'path'};
     my $name = $fref->{'file'};
 
-    my $extract_to = "$cwd/" . fileparse("$cwd/$name", qr/\.[^.]*/);
-    if (-e $extract_to && !$in{'overwrite_existing'}) {
-        $extract_to .= "_" . int(rand(1000)) . $$;
+    my $extract_to = $cwd;
+    if (!$in{'overwrite_existing'}) {
+        my ($file_name) = $name =~ /(?|(.*)\.((?|tar|wbm|wbt)\..*)|(.*)\.([a-zA-Z]+\.(?|gpg|pgp))|(.*)\.(?=(.*))|(.*)())/;
+        if (!-e "$cwd/$file_name") {
+            $extract_to = "$cwd/$file_name";
+        } else {
+            my $__ = 1;
+            for (;;) {
+                my $new_dir_name = "$file_name(" . $__++ . ")";
+                if (!-e "$cwd/$new_dir_name") {
+                    $extract_to = "$cwd/$new_dir_name";
+                    last;
+                }
+            }
+        }
     }
-    mkdir($extract_to);
+    mkdir("$extract_to");
     
     my $archive_type = mimetype($cwd . '/' . $name);
 
