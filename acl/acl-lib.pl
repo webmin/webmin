@@ -651,7 +651,7 @@ else {
 	my $deny = $user->{'deny'};
 	$deny =~ s/:/;/g if ($deny);
 	foreach my $l (@pwfile) {
-		if ($l =~ /^([^:]+):([^:]*)/ && $1 eq $username) {
+		if ($l =~ /^([^:]+):([^:\r\n]*)/ && $1 eq $username) {
 			&add_old_password($user, "$2", \%miniserv);
 			&print_tempfile($fh,
 				$user->{'name'},":",
