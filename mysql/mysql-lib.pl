@@ -1493,7 +1493,7 @@ if (&shell_is_bash()) {
 	$cmd = "set -o pipefail ; $cmd";
 	}
 local $out = &backquote_logged("($cmd) 2>&1");
-if ($? || !-s $file) {
+if ($? || !-s $file || $out =~ /Aborted\s+connection|max_allowed_packet/i) {
 	return $out;
 	}
 return undef;
