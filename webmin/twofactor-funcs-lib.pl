@@ -176,7 +176,8 @@ sub show_twofactor_form_totp
 {
 my ($user) = @_;
 my $secret = $user->{'twofactor_id'};
-$secret = undef if ($secret !~ /^[A-Z0-9=]{16}$/i);
+$secret = undef if ($secret !~ /^[A-Z0-9=]+$/i ||
+		    (length($secret) != 16 && length($secret) != 26 && length($secret) != 32));
 my $rv;
 $rv .= &ui_table_row($text{'twofactor_secret'},
 	&ui_opt_textbox("totp_secret", $secret, 20, $text{'twofactor_secret1'},
