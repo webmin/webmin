@@ -863,7 +863,7 @@ if ($txt =~ /^v=dmarc1/i) {
 	my $dmarc = { };
 	foreach my $w (@w) {
 		$w = lc($w);
-		if ($w =~ /^(v|pct|ruf|rua|p|sp|adkim|aspf|fo)=(\S+)$/i) {
+		if ($w =~ /^(v|pct|ruf|rua|p|sp|adkim|aspf|fo|rf|ri)=(\S+)$/i) {
 			$dmarc->{$1} = $2;
 			}
 		else {
@@ -883,7 +883,7 @@ sub join_dmarc
 {
 my ($dmarc) = @_;
 my @rv = ( "v=DMARC1" );
-foreach my $s ("p", "pct", "ruf", "rua", "sp", "adkim", "aspf", "fo") {
+foreach my $s ("p", "pct", "ruf", "rua", "sp", "adkim", "aspf", "fo", "rf", "ri") {
 	if ($dmarc->{$s} && $dmarc->{$s} ne '') {
 		push(@rv, $s."=".$dmarc->{$s});
 		}

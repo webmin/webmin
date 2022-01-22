@@ -1281,6 +1281,14 @@ elsif ($type eq "DMARC") {
 	print &ui_table_row($text{'value_dmarcruf'},
 	    &ui_opt_textbox("dmarcruf", $ruf, 50, $text{'value_dmarcnor'}), 3);
 
+	print &ui_table_row($text{'value_dmarcrf'},
+		&ui_select("dmarcrf", $dmarc->{'rf'},
+			   [ [ undef, $text{'default'} ],
+			     [ 'afrf', $text{'value_dmarcafrf'} ] ]));
+
+	print &ui_table_row($text{'value_dmarcri'},
+		&ui_textbox("dmarcri", $dmarc->{'ri'}, 5)."s");
+
 	print &ui_table_row($text{'value_dmarcfo'},
 		&ui_select("dmarcfo", $dmarc->{'fo'},
 			   [ [ undef, $text{'default'} ],
