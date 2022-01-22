@@ -422,6 +422,20 @@ else {
 			$dmarc->{'fo'} = $in{'dmarcfo'};
 			}
 
+		if ($in{'dmarcrf'} eq '') {
+			delete($dmarc->{'rf'});
+			}
+		else {
+			$dmarc->{'rf'} = $in{'dmarcrf'};
+			}
+
+		if ($in{'dmarcri'} eq '') {
+			delete($dmarc->{'ri'});
+			}
+		else {
+			$dmarc->{'ri'} = $in{'dmarcri'};
+			}
+
 		$vals = "\"".&join_dmarc($dmarc)."\"";
 		}
 	elsif ($in{'type'} eq 'NSEC3PARAM') {
