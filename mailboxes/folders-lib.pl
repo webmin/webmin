@@ -2190,29 +2190,48 @@ close($_[0]);
 return @rv;
 }
 
-# lock_folder(&folder)
+# folder_lock_file(&folder)
+# Returns the file that can be used to lock a folder, which is typically
+# the older itself.
+sub folder_lock_file
+{
+my ($folder) = @_;
+if ($folder->{'type'} == 5 || $folder->{'type'} == 6 || $folder->{'remote'}) {
+	# For Virtual, POP3 and IMAP folders, use the ID file
+	if ($module_info{'usermin'}) {
+		return "$user_module_config_directory/remote.$folder->{'id'}";
+		}
+	return undef;
+	}
+my $f = $folder->{'file'} ? $folder->{'file'} :
+	$folder->{'type'} == 0 ? &user_mail_file($remote_user) :
+				 $qmail_maildir;
+if ($f =~ /^\/var\// && $< != 0) {
+	# Cannot lock if in /var/mail
+	$f =~ s/\//_/g;
+	$f = "/tmp/$f";
+	}
+return $f;
+}
+
+# lock_folder(&folder, [&action-hash])
 sub lock_folder
 {
-return if ($_[0]->{'remote'} || $_[0]->{'type'} == 5 || $_[0]->{'type'} == 6);
-local $f = $_[0]->{'file'} ? $_[0]->{'file'} :
-	   $_[0]->{'type'} == 0 ? &user_mail_file($remote_user) :
-				  $qmail_maildir;
+my ($folder, $action) = @_;
+
+# Lock the folder, or some file in /tmp
+my $f = &folder_lock_file($folder);
+return if (!$f);
+my $af = $f.".lock-action";
 if (&lock_file($f)) {
-	$_[0]->{'lock'} = $f;
-	}
-else {
-	# Cannot lock if in /var/mail
-	local $ff = $f;
-	$ff =~ s/\//_/g;
-	$ff = "/tmp/$ff";
-	$_[0]->{'lock'} = $ff;
-	&lock_file($ff);
+	$folder->{'lock'} = $f;
+	&write_file($af, $action) if ($action);
 	}
 
 # Also, check for a .filename.pop3 file
 if ($config{'pop_locks'} && $f =~ /^(\S+)\/([^\/]+)$/) {
-	local $poplf = "$1/.$2.pop";
-	local $count = 0;
+	my $poplf = "$1/.$2.pop";
+	my $count = 0;
 	while(-r $poplf) {
 		sleep(1);
 		if ($count++ > 5*60) {
@@ -2226,8 +2245,35 @@ if ($config{'pop_locks'} && $f =~ /^(\S+)\/([^\/]+)$/) {
 # unlock_folder(&folder)
 sub unlock_folder
 {
-return if ($_[0]->{'remote'});
-&unlock_file($_[0]->{'lock'});
+my ($folder) = @_;
+if (!$folder->{'remote'}) {
+	&unlock_file($folder->{'lock'});
+	my $af = $folder->{'lock'}.".lock-action";
+	&unlink_file($af) if (-f $af);
+	}
+}
+
+# test_lock_folder(&folder)
+# Returns the PID with a lock on a folder, and in an array context any action hash saved with the lock
+sub test_lock_folder
+{
+my ($folder) = @_;
+my $f = &folder_lock_file($folder);
+my @rv;
+if (!$f) {
+	@rv = (0, undef);
+	}
+else {
+	$rv[0] = &test_lock($f);
+	my $af = $f.".lock-action";
+	my $act;
+	if (-f $af) {
+		$act = { };
+		&read_file($af, $act);
+		}
+	$rv[1] = $act;
+	}
+return wantarray ? @rv : $rv[0];
 }
 
 # folder_file(&folder)
