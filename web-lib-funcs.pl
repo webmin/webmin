@@ -11971,7 +11971,7 @@ if (!$@) {
 	}
 }
 
-=head2 globals(action-type, variable-name, [set-variable-value;[get|delete]-scope-name], [set-scope-name])
+=head2 globals(action-type, variable-name, [[set-variable-value]|[set-scope-name]], [set-scope-name])
 
 Provides access to handle global variables all in one place internally allowing to differentiate the scope if needed
 
