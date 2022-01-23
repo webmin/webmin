@@ -15,6 +15,7 @@ Example code:
 ##use warnings;
 use Socket;
 use POSIX;
+use feature 'state';
 eval "use Socket6";
 $ipv6_module_error = $@;
 our $error_handler_funcs = [ ];
@@ -11968,6 +11969,92 @@ if (!$@) {
 			}
 		}
 	}
+}
+
+=head2 globals(action-type, variable-name, [[set-variable-value]|[set-scope-name]], [set-scope-name])
+
+Provides access to handle global variables all in one place internally allowing to differentiate the scope if needed
+
+Examples:
+
+    Set variable in default "main" scope
+      - globals('set', 'var-1', 'val-1');
+
+    Get variable value previously set on default "main" scope
+      - globals('get', 'var-1');
+
+    Delete variable in default "main" scope
+      - globals('delete', 'var-1');
+
+    Set variable in given "virtual-server" scope
+      - globals('set', 'var-1', 'val-1', 'virtual-server');
+
+    Get variable value previously set on given "virtual-server" scope
+      - globals('get', 'var-1', 'virtual-server');
+
+    Delete variable in "main" scope
+      - globals('delete', 'var-1');
+
+    Delete variable in given "virtual-server" scope
+      - globals('delete', 'var-1', 'virtual-server');
+
+    Delete all variables in "main" scope
+      - globals('delete', '*');
+
+    Delete all variables in given "virtual-server" scope
+      - globals('delete', '*', 'virtual-server');
+
+    Delete all variables in all scopes
+      - globals('delete');
+
+=cut
+sub globals
+{
+my ($action, $variable, $value, $scope) = @_;
+state $globals;
+$scope = $value || 'main'
+	if ($action =~ /get|delete/ && defined($variable) && defined($value) && !$scope);
+$scope ||= 'main';
+
+if ($action eq 'set') {
+	$globals->{$scope}->{$variable} = $value
+		if (defined($variable) && defined($value));
+	}
+elsif ($action eq 'get') {
+	if (defined($variable)) {
+		# Return single global variable in given scope
+		if (defined($globals->{$scope}) &&
+		    defined($globals->{$scope}->{$variable})) {
+			return $globals->{$scope}->{$variable};
+			}
+		else {
+			return;
+			}
+		}
+	}
+elsif ($action eq 'delete') {
+	if (defined($variable)) {
+		if ($variable eq '*') {
+			delete $globals->{$scope};
+		}
+		else {
+			# Remove single global variable in scope
+			delete $globals->{$scope}->{$variable};
+			if (!keys %{$globals->{$scope}}) {
+				delete $globals->{$scope};
+				}
+			}
+		}
+	else {
+		# Delete all registered globals
+		foreach (keys %{$globals}) {
+			delete $globals->{$_};
+			}
+		}
+	}
+
+# Always return all registered globals
+return $globals;
 }
 
 $done_web_lib_funcs = 1;
