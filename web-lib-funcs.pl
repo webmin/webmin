@@ -12024,7 +12024,7 @@ elsif ($action eq 'get') {
 	if (defined($variable)) {
 		# Return single global variable in given scope
 		if (defined($globals->{$scope}) &&
-			defined($globals->{$scope}->{$variable})) {
+		    defined($globals->{$scope}->{$variable})) {
 			return $globals->{$scope}->{$variable};
 			}
 		else {
