@@ -28,6 +28,6 @@ my $desc = &text('edit_header', &zone_subhead($zone));
 &ui_print_footer("", $text{'index_return'},
 	"edit_$type.cgi?zone=$in{'zone'}&view=$in{'view'}",
 	$text{'recs_return'},
-	"edit_recs.cgi?zone=$in{'zone'}&type=$in{'type'}",
+	"edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}",
 	$text{'edit_return'});
 
