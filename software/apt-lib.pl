@@ -43,7 +43,7 @@ foreach (0..100) {
 
 # Run the command
 &clean_language();
-&open_execute_command(CMD, "$cmd <'$yesfile'", 2);
+&open_execute_command(CMD, "$cmd <".quotemeta($yesfile), 2);
 while(<CMD>) {
 	if (/setting\s+up\s+(\S+)/i && !/as\s+MDA/i) {
 		push(@rv, $1);
