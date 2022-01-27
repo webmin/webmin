@@ -179,15 +179,15 @@ if ($in{'csv'}) {
 elsif (@match) {
 	# Show search results in table
 	if ($in{'sid'}) {
-		print "<b>",&text('search_sid', "<tt>$match[0]->{'user'}</tt>",
+		print "<b data-search-action='sid'>",&text('search_sid', "<tt>$match[0]->{'user'}</tt>",
 				  "<tt>$in{'sid'}</tt>")," ..</b><p>\n";
 		}
 	elsif ($in{'uall'} == 1 && $in{'mall'} && $in{'tall'}) {
-		print "<b>$text{'search_critall'} ..</b><p>\n";
+		print "<b data-search-action='critall'>$text{'search_critall'} ..</b><p>\n";
 		}
 	else {
 		my %minfo = &get_module_info($in{'module'}) if (!$in{'mall'});
-		print "<b>$text{'search_crit'} $searchmsg ...</b><p>\n";
+		print "<b data-search-action='crit'>$text{'search_crit'} $searchmsg ...</b><p>\n";
 		}
 	print &ui_columns_start(
 		[ $text{'search_action'},
