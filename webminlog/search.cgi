@@ -240,7 +240,7 @@ else {
 	print "<p><b>$text{'search_none2'} $searchmsg.</b><p>\n";
 	}
 
-if (!$in{'csv'}) {
+if (!$in{'csv'} && !$in{'no_return'}) {
 	# Show page footer
 	if ($in{'return'}) {
 		&ui_print_footer($in{'return'}, $in{'returndesc'});
