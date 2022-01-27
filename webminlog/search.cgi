@@ -63,7 +63,7 @@ if ($in{'csv'}) {
 	&PrintHeader(undef, "text/csv");
 	}
 else {
-	&ui_print_header(undef, &html_escape($in{'search_title'} || $text{'search_title'}), "");
+	&ui_print_header(undef, &html_escape($in{'search_title'} || $text{'search_title'}), "", undef, undef, $in{'no_return'});
 	}
 
 # Perform initial search in index
