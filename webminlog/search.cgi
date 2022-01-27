@@ -216,6 +216,7 @@ elsif (@match) {
 		push(@cols, &ui_link("view.cgi?id=$act->{'id'}".
 		      "&return=".&urlize($in{'return'} || "").
 		      "&returndesc=".&urlize($in{'returndesc'} || "").
+		      "&no_return=".&urlize($in{'no_return'} || "").
 		      "&file=".($in{'fall'} ? "" : &urlize($in{'file'})).
 		      "&search=".&urlize($in || ""),
 		      &filter_javascript($desc)) );

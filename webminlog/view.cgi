@@ -166,9 +166,8 @@ if (@files && $rbcount) {
 else {
 	print &ui_form_end();
 	}
-
-&ui_print_footer("search.cgi?search=".&urlize($in{'search'}),
-			$text{'search_return'},
-		 "", $text{'index_return'});
+my @return_index = $in{'no_return'} ? ( ) : ("", $text{'index_return'});
+&ui_print_footer("search.cgi?search=".&urlize($in{'search'}), $text{'search_return'},
+                 @return_index);
 
 
