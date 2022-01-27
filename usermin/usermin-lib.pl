@@ -954,7 +954,7 @@ my $cookie = "$sidname=$sid; path=/$sec";
 
 # Work out redirect host
 my @sockets = &webmin::get_miniserv_sockets(\%miniserv);
-my ($host, $port);
+my ($host, $port, $url);
 my %uconfig;
 &get_usermin_config(\%uconfig);
 if ($uconfig{'host'}) {
@@ -974,8 +974,10 @@ else {
 		}
 	}
 $port ||= $uconfig{'port'} || $miniserv{'port'};
-
-return ($cookie, ($ssl ? "https://" : "http://").$host.":".$port."/");
+$url = ($ssl ? "https://" : "http://").$host.":".$port."/";
+$url = $miniserv{'redirect_url'}
+    if ($miniserv{'redirect_url'});
+return ($cookie, $url);
 }
 
 =head2 get_usermin_email_url([module], [cgi], [force-default], [force-host])
