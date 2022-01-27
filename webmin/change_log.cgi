@@ -8,6 +8,7 @@ require './webmin-lib.pl';
 
 &lock_file($ENV{'MINISERV_CONFIG'});
 &get_miniserv_config(\%miniserv);
+my ($miniserv_log, $in_log) = ($miniserv{'log'}, $in{'log'});
 $miniserv{'log'} = $in{'log'};
 $miniserv{'loghost'} = $in{'loghost'};
 $miniserv{'logclf'} = $in{'logclf'};
@@ -60,6 +61,14 @@ $gconfig{'logsyslog'} = $in{'logsyslog'} if (defined($in{'logsyslog'}));
 &lock_file("$config_directory/config");
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");
+
+# Clear links in Virtualmin module if installed
+if ($miniserv_log != $in_log) {
+	if (&foreign_available('virtual-server')) {
+		&foreign_require("virtual-server");
+		&virtual_server::clear_links_cache();
+		}
+	}
 
 &show_restart_page();
 &webmin_log("log", undef, undef, \%in);
