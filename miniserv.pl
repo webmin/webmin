@@ -2858,6 +2858,7 @@ else {
 	if ($reqline);
 &log_error($msg, $body ? " : $body" : "") if (!$noerr);
 shutdown(SOCK, 1);
+close(SOCK);
 exit if (!$noexit);
 }
 
