@@ -63,7 +63,7 @@ if ($in{'csv'}) {
 	&PrintHeader(undef, "text/csv");
 	}
 else {
-	&ui_print_header(undef, $text{'search_title'}, "");
+	&ui_print_header(undef, &html_escape($in{'search_title'} || $text{'search_title'}), "", undef, undef, $in{'no_return'});
 	}
 
 # Perform initial search in index
@@ -179,15 +179,15 @@ if ($in{'csv'}) {
 elsif (@match) {
 	# Show search results in table
 	if ($in{'sid'}) {
-		print "<b>",&text('search_sid', "<tt>$match[0]->{'user'}</tt>",
+		print "<b data-search-action='sid'>",&text('search_sid', "<tt>$match[0]->{'user'}</tt>",
 				  "<tt>$in{'sid'}</tt>")," ..</b><p>\n";
 		}
 	elsif ($in{'uall'} == 1 && $in{'mall'} && $in{'tall'}) {
-		print "<b>$text{'search_critall'} ..</b><p>\n";
+		print "<b data-search-action='critall'>$text{'search_critall'} ..</b><p>\n";
 		}
 	else {
 		my %minfo = &get_module_info($in{'module'}) if (!$in{'mall'});
-		print "<b>$text{'search_crit'} $searchmsg ...</b><p>\n";
+		print "<b data-search-action='crit'>$text{'search_crit'} $searchmsg ...</b><p>\n";
 		}
 	print &ui_columns_start(
 		[ $text{'search_action'},
@@ -216,6 +216,7 @@ elsif (@match) {
 		push(@cols, &ui_link("view.cgi?id=$act->{'id'}".
 		      "&return=".&urlize($in{'return'} || "").
 		      "&returndesc=".&urlize($in{'returndesc'} || "").
+		      "&no_return=".&urlize($in{'no_return'} || "").
 		      "&file=".($in{'fall'} ? "" : &urlize($in{'file'})).
 		      "&search=".&urlize($in || ""),
 		      &filter_javascript($desc)) );
@@ -240,7 +241,7 @@ else {
 	print "<p><b>$text{'search_none2'} $searchmsg.</b><p>\n";
 	}
 
-if (!$in{'csv'}) {
+if (!$in{'csv'} && !$in{'no_return'}) {
 	# Show page footer
 	if ($in{'return'}) {
 		&ui_print_footer($in{'return'}, $in{'returndesc'});

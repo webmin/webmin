@@ -14,7 +14,7 @@ my $act = &get_action($in{'id'});
 &can_mod($act->{'module'}) || &error($text{'view_ecannot'});
 
 # display info about the action
-&ui_print_header(undef, $text{'view_title'}, "");
+&ui_print_header(undef, $text{'view_title'}, "", undef, undef, $in{'no_return'});
 
 my @files = &list_files($act);
 print &ui_form_start("rollback.cgi");
@@ -166,9 +166,8 @@ if (@files && $rbcount) {
 else {
 	print &ui_form_end();
 	}
-
-&ui_print_footer("search.cgi?search=".&urlize($in{'search'}),
-			$text{'search_return'},
-		 "", $text{'index_return'});
+my @return_index = $in{'no_return'} ? ( ) : ("", $text{'index_return'});
+&ui_print_footer("search.cgi?search=".&urlize($in{'search'}), $text{'search_return'},
+                 @return_index);
 
 

@@ -322,7 +322,7 @@ else {
 		($mode eq "web" ? "--acme-dir ".quotemeta($challenge)." "
 				: "--dns-hook $dns_hook ".
 				  "--cleanup-hook $cleanup_hook ").
-		($staging ? "--ca https://acme-staging.api.letsencrypt.org "
+		($staging ? "--ca https://acme-staging-v02.api.letsencrypt.org "
 			  : "--disable-check ").
 		"--quiet ".
 		"2>&1 >".quotemeta($cert));

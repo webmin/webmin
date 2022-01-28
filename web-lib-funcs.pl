@@ -1636,7 +1636,9 @@ by the message setup using that function.
 sub error
 {
 $main::no_miniserv_userdb = 1;
+&globals('set', 'error-fatal-ignored', 1);
 return if $main::ignore_errors;
+&globals('set', 'error-fatal', 1);
 my $msg = join("", @_);
 $msg =~ s/<[^>]*>//g;
 my $error_details = (($ENV{'WEBMIN_DEBUG'} || $gconfig{'debug_enabled'}) ? "" : "\n");
