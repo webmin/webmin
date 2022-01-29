@@ -16,7 +16,7 @@ sub execute_pkgin_sql
 {
 my ($sql) = @_;
 my $errtemp = &transname();
-my $cmd = "sqlite3 -header $pkgin_sqlite_db ".quotemeta($sql)." 2>$errtemp";
+my $cmd = "sqlite3 -header $pkgin_sqlite_db ".quotemeta($sql)." 2>".quotemeta($errtemp);
 &open_execute_command(SQL, $cmd, 1, 1);
 my $headline = <SQL>;
 $headline =~ s/\r|\n//g;

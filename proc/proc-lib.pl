@@ -123,7 +123,7 @@ if ($gconfig{'os_type'} eq 'windows') {
 	open(TEMP, ">$temp");
 	print TEMP $_[4];
 	close(TEMP);
-	&open_execute_command(OUT, "$_[0] <$temp 2>&1", 1);
+	&open_execute_command(OUT, "$_[0] <".quotemeta($temp)." 2>&1", 1);
 	local $fh = $_[3];
 	while(<OUT>) {
 		if ($_[5]) {

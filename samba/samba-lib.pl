@@ -184,7 +184,7 @@ else {
 	&open_tempfile(TEMP, ">$temp", 0, 1);
 	&print_tempfile(TEMP, $v);
 	&close_tempfile(TEMP);
-	my $out = &backquote_command("iconv -f iso-8859-1 -t UTF-8 <$temp");
+	my $out = &backquote_command("iconv -f iso-8859-1 -t UTF-8 <".quotemeta($temp));
 	&unlink_file($temp);
 	return $? || $out eq '' ? $v : $out;
 	}
@@ -203,7 +203,7 @@ else {
 	&open_tempfile(TEMP, ">$temp", 0, 1);
 	&print_tempfile(TEMP, $v);
 	&close_tempfile(TEMP);
-	my $out = &backquote_command("iconv -f UTF-8 -t iso-8859-1 <$temp");
+	my $out = &backquote_command("iconv -f UTF-8 -t iso-8859-1 <".quotemeta($temp));
 	&unlink_file($temp);
 	return $? || $out eq '' ? $v : $out;
 	}

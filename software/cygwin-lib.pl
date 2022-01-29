@@ -273,7 +273,7 @@ if ($file =~ /\/[^\s]+[_\-]src[_\-]\d[^\s]*\.tar\.bz2$/) {
     $rv = install_cygwin_pkg($file, $temp, $in->{'root'}, $run_scripts,
 			     $in->{'replacepkgs'}, $in->{'upgrade'});
 } else {
-    $rv = &system_logged("rpm -i $opts ".quotemeta($file)." >$temp 2>&1");
+    $rv = &system_logged("rpm -i $opts ".quotemeta($file)." >".quotemeta($temp)." 2>&1");
 }
 local $out = "";
 if (! open(FILE, "<$temp")) {

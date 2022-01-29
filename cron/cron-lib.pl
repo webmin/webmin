@@ -310,7 +310,7 @@ elsif ($fcron) {
 	}
 else {
 	system("cp ".&translate_filename("$config{'cron_dir'}/$_[0]->{'user'}").
-	       " $cron_temp_file 2>/dev/null");
+	       " ".quotemeta($cron_temp_file)." 2>/dev/null");
 	}
 }
 
@@ -378,7 +378,7 @@ else {
 	$_[0]->{'line'} = 0;
 	splice(@$lref, 0, 0, &cron_job_line($_[0]));
 	&flush_file_lines();
-	system("chown $_[0]->{'user'} $cron_temp_file");
+	&set_ownership_permissions($_[0]->{'user'}, undef, undef, $cron_temp_file);
 	&copy_crontab($_[0]->{'user'});
 	$_[0]->{'file'} = "$config{'cron_dir'}/$_[0]->{'user'}";
 	$_[0]->{'index'} = scalar(@cron_jobs_cache);
@@ -497,8 +497,8 @@ if (&read_file_contents($cron_temp_file) =~ /\S/) {
 	local $rv;
 	if (!&has_crontab_cmd()) {
 		# We have no crontab command .. emulate by copying to user file
-		$rv = system("cat $cron_temp_file".
-			" >$config{'cron_dir'}/$_[0] 2>/dev/null");
+		$rv = system("cat ".quotemeta($cron_temp_file).
+			" >".quotemeta("$config{'cron_dir'}/$_[0]")." 2>/dev/null");
 		&set_ownership_permissions($_[0], undef, 0600,
 			"$config{'cron_dir'}/$_[0]");
 		}

@@ -129,7 +129,7 @@ elsif ($in{'razor'} || $in{'ham'}) {
 		}
 
 	# Call reporting command on them
-	&open_execute_command(OUT, "$cmd <$temp 2>&1", 1);
+	&open_execute_command(OUT, "$cmd <".quotemeta($temp)." 2>&1", 1);
 	local $error;
 	while(<OUT>) {
 		print &html_escape($_);

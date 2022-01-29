@@ -6743,7 +6743,7 @@ sub backquote_with_timeout
 {
 my $realcmd = &translate_command($_[0]);
 my $out;
-my $pid = &open_execute_command(OUT, "($realcmd) <$null_file", 1, $_[2]);
+my $pid = &open_execute_command(OUT, "($realcmd) <".quotemeta($null_file), 1, $_[2]);
 my $start = time();
 my $timed_out = 0;
 my $linecount = 0;
