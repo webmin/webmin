@@ -63,7 +63,7 @@ if ($in{'csv'}) {
 	&PrintHeader(undef, "text/csv");
 	}
 else {
-	&ui_print_header(undef, &html_escape($in{'search_title'} || $text{'search_title'}), "", undef, undef, $in{'no_return'});
+	&ui_print_header($in{'search_sub_title'} || undef, &html_escape($in{'search_title'} || $text{'search_title'}), "", undef, undef, $in{'no_return'});
 	}
 
 # Perform initial search in index
@@ -217,6 +217,7 @@ elsif (@match) {
 		      "&return=".&urlize($in{'return'} || "").
 		      "&returndesc=".&urlize($in{'returndesc'} || "").
 		      "&no_return=".&urlize($in{'no_return'} || "").
+		      "&search_sub_title=".&urlize($in{'search_sub_title'} || "").
 		      "&file=".($in{'fall'} ? "" : &urlize($in{'file'})).
 		      "&search=".&urlize($in || ""),
 		      &filter_javascript($desc)) );
