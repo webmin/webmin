@@ -454,6 +454,23 @@ else {
 		$vals = join(" ", $in{'value0'}, $in{'value1'},
 				  "\"$in{'value2'}\"");
 		}
+	elsif ($in{'type'} eq 'NAPTR') {
+		my $flags = join("", split(/\0/, $in{'value2'}));
+		$in{'value0'} =~ /^\d+$/ ||
+			&error($text{'edit_enaptrvalue0'});
+		$in{'value1'} =~ /^\d+$/ ||
+			&error($text{'edit_enaptrvalue1'});
+		$in{'value3'} =~ /^\S+$/ ||
+			&error($text{'edit_enaptrvalue3'});
+		if (!$in{'value4_def'} && !$in{'value5_def'}) {
+			&error($text{'edit_enaptrvalue4'});
+			}
+		$vals = join(" ", $in{'value0'}, $in{'value1'},
+			  "\"$flags\"",
+			  "\"$in{'value3'}\"",
+			  $in{'value4_def'} ? "\"\"" : "\"$in{'value4'}\"",
+			  $in{'value5_def'} ? "." : "\"$in{'value5'}\"");
+		}
 	else {
 		# For other record types, just save the lines
 		$in{'values'} =~ s/\r//g;

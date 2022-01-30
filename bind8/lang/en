@@ -313,6 +313,10 @@ edit_edmarcpct=Percentage of messages must be an integer between 0 and 100
 edit_edmarcrua=Missing aggregate feedback address
 edit_edmarcruf=Missing forensic information address
 edit_ecaavalue2=Missing or invalid-looking domain name
+edit_enaptrvalue0=Record order must be a number
+edit_enaptrvalue1=Record preference must be a number
+edit_enaptrvalue3=Missing services field
+edit_enaptrvalue4=Only one of the regexp and replacement fields can be set
 
 text_title=Edit Records File
 text_title2=View Records File
@@ -403,6 +407,7 @@ type_SRV=Service Address
 type_ALL=All Record Types
 type_KEY=Public Key
 type_CAA=Certificate Authority
+type_NAPTR=Name Authority Pointer
 
 edit_A=Address
 edit_AAAA=IPv6 Address
@@ -423,6 +428,7 @@ edit_NSEC3PARAM=DNSSEC Parameters
 edit_TLSA=SSL Certificate
 edit_SSHFP=SSH Public Key
 edit_CAA=Certificate Authority
+edit_NAPTR=Name Authority Pointer
 
 recs_defttl=Default TTL
 recs_A=Address
@@ -445,6 +451,7 @@ recs_NSEC3PARAM=DNSSEC Parameters
 recs_TLSA=SSL Certificate
 recs_SSHFP=SSH Public Key
 recs_CAA=Certificate Authority
+recs_NAPTR=Name Authority
 recs_delete=Delete Selected
 
 value_A1=Address
@@ -531,6 +538,18 @@ value_caa_iodef=Policy violation URL
 +value_dmarcri=Reporting interval
 +value_dmarcrf=Report format
 +value_dmarcafrf=Authentication Failure Reporting Format
+value_NAPTR1=Order
+value_NAPTR2=Preference
+value_NAPTR3=Flags
+value_NAPTR4=Services
+value_NAPTR5=Regexp
+value_NAPTR5_def=None (use replacement)
+value_NAPTR6=Replacement
+value_NAPTR6_def=None (use regexp)
+value_NAPTR3_S=Lookup SRV record next
+value_NAPTR3_A=Lookup A or AAAA record next
+value_NAPTR3_U=Use regexp output next
+value_NAPTR3_P=Protocol-specific action
 
 tlsa_usage0=Certificate authority
 tlsa_usage1=End entity

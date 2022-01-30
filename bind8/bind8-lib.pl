@@ -1330,6 +1330,30 @@ elsif ($type eq "CAA") {
 	print &ui_table_row($text{'value_CAA3'},
 		&ui_textbox("value2", $v[2], 40));
 	}
+elsif ($type eq "NAPTR") {
+	# NAPTR records have order, preference, flags, services and regexp
+	print &ui_table_row($text{'value_NAPTR1'},
+		&ui_textbox("value0", $v[0], 5));
+
+	print &ui_table_row($text{'value_NAPTR2'},
+		&ui_textbox("value1", $v[1], 5));
+
+	my %flags = map { $_, 1 } split(//, $v[2]);
+	my @fopts = ("S", "A", "U", "P");
+	print &ui_table_row($text{'value_NAPTR3'},
+		join(" ", map { &ui_checkbox("value2", $_, $text{'value_NAPTR3_'.$_}, $flags{$_})."<br>" } @fopts));
+
+	print &ui_table_row($text{'value_NAPTR4'},
+		&ui_textbox("value3", $v[3], 40), 3);
+
+	print &ui_table_row($text{'value_NAPTR5'},
+		&ui_opt_textbox("value4", $v[4], 50,
+				$text{'value_NAPTR5_def'}), 3);
+
+	print &ui_table_row($text{'value_NAPTR6'},
+		&ui_opt_textbox("value5", $v[5] eq "." ? "" : $v[5], 50,
+				$text{'value_NAPTR6_def'}), 3);
+	}
 else {
 	# All other types just have a text box
 	print &ui_table_row($text{'value_other'},
@@ -2991,7 +3015,7 @@ $slave_error = $_[0];
 
 sub get_forward_record_types
 {
-return ("A", "NS", "CNAME", "MX", "HINFO", "TXT", "SPF", "DMARC", "WKS", "RP", "PTR", "LOC", "SRV", "KEY", "TLSA", "SSHFP", "CAA", "NSEC3PARAM", $config{'support_aaaa'} ? ( "AAAA" ) : ( ), @extra_forward);
+return ("A", "NS", "CNAME", "MX", "HINFO", "TXT", "SPF", "DMARC", "WKS", "RP", "PTR", "LOC", "SRV", "KEY", "TLSA", "SSHFP", "CAA", "NAPTR", "NSEC3PARAM", $config{'support_aaaa'} ? ( "AAAA" ) : ( ), @extra_forward);
 }
 
 sub get_reverse_record_types
