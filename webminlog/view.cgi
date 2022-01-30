@@ -14,7 +14,7 @@ my $act = &get_action($in{'id'});
 &can_mod($act->{'module'}) || &error($text{'view_ecannot'});
 
 # display info about the action
-&ui_print_header(undef, $text{'view_title'}, "", undef, undef, $in{'no_return'});
+&ui_print_header($in{'search_sub_title'} || undef, $text{'view_title'}, "", undef, undef, $in{'no_return'});
 
 my @files = &list_files($act);
 print &ui_form_start("rollback.cgi");
