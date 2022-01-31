@@ -518,12 +518,12 @@ if (&read_file_contents($cron_temp_file) =~ /\S/) {
 		chdir("/");
 		if ($single_user) {
 			$rv = system($config{'cron_user_edit_command'}.
-				     " >$temp 2>&1 <$notemp");
+				     " >".quotemeta($temp)." 2>&1 <".quotemeta($notemp));
 			}
 		else {
 			$rv = system(
 				&user_sub($config{'cron_edit_command'},$_[0]).
-				" >$temp 2>&1 <$notemp");
+				" >".quotemeta($temp)." 2>&1 <".quotemeta($notemp));
 			}
 		unlink($notemp);
 		chdir($oldpwd);
@@ -533,12 +533,12 @@ if (&read_file_contents($cron_temp_file) =~ /\S/) {
 		if ($single_user) {
 			$rv = &execute_command(
 				$config{'cron_user_copy_command'},
-				$cron_temp_file, $temp, $temp);
+				quotemeta($cron_temp_file), quotemeta($temp), quotemeta($temp));
 			}
 		else {
 			$rv = &execute_command(
 				&user_sub($config{'cron_copy_command'}, $_[0]),
-				$cron_temp_file, $temp, $temp);
+				quotemeta($cron_temp_file), quotemeta($temp), quotemeta($temp));
 			}
 	}
 	local $out = &read_file_contents($temp);
