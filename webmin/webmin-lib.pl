@@ -2232,7 +2232,7 @@ my $subject = &build_ssl_subject($country, $state, $city, $org, $orgunit, $cn,$e
 my $conf = &build_ssl_config($cn);
 my $ctypeflag = $ctype eq "sha2" ? "-sha256" : "";
 my $out = &backquote_command(
-	"$cmd req -new -key $ktemp -out $ctemp $ctypeflag ".
+	"$cmd req -new -key ".quotemeta($ktemp)." -out $ctemp $ctypeflag ".
 	"-subj ".quotemeta($subject)." -config $conf -reqexts v3_req ".
 	"-utf8 2>&1");
 if (!-r $ctemp || $?) {
