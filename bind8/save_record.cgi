@@ -469,7 +469,7 @@ else {
 			  "\"$flags\"",
 			  "\"$in{'value3'}\"",
 			  $in{'value4_def'} ? "\"\"" : "\"$in{'value4'}\"",
-			  $in{'value5_def'} ? "." : "\"$in{'value5'}\"");
+			  $in{'value5_def'} ? "." : $in{'value5'});
 		}
 	else {
 		# For other record types, just save the lines
