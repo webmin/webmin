@@ -183,7 +183,7 @@ if ($letsencrypt_cmd) {
 			"$old_flags".
 			" --non-interactive".
 			" --agree-tos".
-			" --config $temp".
+			" --config ".quotemeta($temp)."".
 			" --rsa-key-size $size".
 			" --cert-name ".quotemeta($doms[0]).
 			($staging ? " --test-cert" : "").
@@ -205,7 +205,7 @@ if ($letsencrypt_cmd) {
 			"$old_flags".
 			" --non-interactive".
 			" --agree-tos".
-			" --config $temp".
+			" --config ".quotemeta($temp)."".
 			" --rsa-key-size $size".
 			" --cert-name ".quotemeta($doms[0]).
 			($staging ? " --test-cert" : "").
@@ -293,7 +293,7 @@ else {
 
 	# Generate a key for the domain
 	my $key = &transname();
-	my $out = &backquote_logged("openssl genrsa $size 2>&1 >$key");
+	my $out = &backquote_logged("openssl genrsa $size 2>&1 >".quotemeta($key)."");
 	if ($?) {
 		@rv = (0, &text('letsencrypt_ekeygen', &html_escape($out)));
 		goto FAILED;
