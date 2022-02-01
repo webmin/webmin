@@ -2021,9 +2021,9 @@ my $subject = &build_ssl_subject($in{'countryName'},
 				 $in{'emailAddress'});
 my $conf = &build_ssl_config(\@cns);
 my $out = &backquote_logged(
-	"$cmd req -newkey rsa:$size -x509 -sha256 -nodes -out $ctemp -keyout $ktemp ".
+	"$cmd req -newkey rsa:$size -x509 -sha256 -nodes -out ".quotemeta($ctemp)." -keyout ".quotemeta($ktemp)." ".
 	"-days ".quotemeta($in{'days'})." -subj ".quotemeta($subject)." ".
-	"-config $conf -reqexts v3_req -utf8 2>&1");
+	"-config ".quotemeta($conf)." -reqexts v3_req -utf8 2>&1");
 if (!-r $ctemp || !-r $ktemp || $?) {
 	return $text{'newkey_essl'}."<br>"."<pre>".&html_escape($out)."</pre>";
 	}
