@@ -32,7 +32,7 @@ $ctemp = &transname();
 $ktemp = &transname();
 $outtemp = &transname();
 $size = $in{'size_def'} ? $default_key_size : $in{'size'};
-&open_execute_command(CA, "$cmd req -newkey rsa:$size -x509 -nodes -out $ctemp -keyout $ktemp -days $in{'days'} >$outtemp 2>&1", 0);
+&open_execute_command(CA, "$cmd req -newkey rsa:$size -x509 -nodes -out ".quotemeta($ctemp)." -keyout ".quotemeta($ktemp)." -days $in{'days'} >".quotemeta($outtemp)." 2>&1", 0);
 print CA ($in{'countryName'} || "."),"\n";
 print CA ($in{'stateOrProvinceName'} || "."),"\n";
 print CA ($in{'cityName'} || "."),"\n";
@@ -42,7 +42,8 @@ print CA ($in{'commonName_def'} ? "*" : $in{'commonName'}),"\n";
 print CA ($in{'emailAddress'} || "."),"\n";
 close(CA);
 $rv = $?;
-$out = `cat $outtemp`;
+$qouttemp = quotemeta($outtemp);
+$out = `cat $qouttemp`;
 &unlink_file($outtemp);
 if (!-r $ctemp || !-r $ktemp || $?) {
 	print "<p>$text{'newkey_essl'}<br>\n";
@@ -51,7 +52,7 @@ if (!-r $ctemp || !-r $ktemp || $?) {
 	exit;
 	}
 &lock_file($in{'newfile'});
-&execute_command("cat $ctemp $ktemp 2>&1 >'$in{'newfile'}'", undef, \$catout);
+&execute_command("cat ".quotemeta($ctemp)." ".quotemeta($ktemp)." 2>&1 >'$in{'newfile'}'", undef, \$catout);
 &unlink_file($ctemp);
 &unlink_file($ktemp);
 if ($catout || $?) {
