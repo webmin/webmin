@@ -121,8 +121,12 @@ local $port = defined($_[3]) ? $_[3] : $config{'port'};
 local $sock = defined($_[4]) ? $_[4] : $config{'sock'};
 local $unix = $_[5];
 if (&supports_env_pass($unix)) {
-	$ENV{'MYSQL_PWD'} = $pass;
+	$make_authstr_pass = $pass;
 	}
+else {
+	$make_authstr_pass = undef;
+	}
+&set_authstr_env();
 return ($sock ? " -S $sock" : "").
        ($host ? " -h $host" : "").
        ($port ? " -P $port" : "").
@@ -131,6 +135,18 @@ return ($sock ? " -S $sock" : "").
         $pass && &compare_version_numbers($mysql_version, "4.1") >= 0 ?
 	" --password=".quotemeta($pass) :
         $pass ? " -p".quotemeta($pass) : "");
+}
+
+# set_authstr_env()
+# Set any environment variables that make_authstr requires
+sub set_authstr_env
+{
+if (defined($make_authstr_pass)) {
+	$ENV{'MYSQL_PWD'} = $make_authstr_pass;
+	}
+else {
+	delete($ENV{'MYSQL_PWD'});
+	}
 }
 
 # is_mysql_running()
@@ -352,6 +368,7 @@ else {
 		}
 	print TEMP $sql,"\n";
 	close(TEMP);
+	&set_authstr_env();
 	open(DBS, "\"$config{'mysql'}\" $authstr -E -t ".quotemeta($_[0])." <$temp 2>&1 |");
 	local $t = &parse_mysql_vertical(DBS);
 	close(DBS);
@@ -1005,6 +1022,7 @@ local $temp = &transname();
 &print_tempfile(TEMP, "source ".$file.";\n");
 &close_tempfile(TEMP);
 &set_ownership_permissions(undef, undef, 0644, $temp);
+&set_authstr_env();
 local $cmd = "$config{'mysql'} $authstr -t ".quotemeta($db)." ".$cs.
 	     " <".quotemeta($temp);
 -r $file || return (1, "$file does not exist");
@@ -1488,6 +1506,7 @@ if ($user && $user ne "root") {
 	# Actual writing of output is done as another user
 	$writer = &command_as_user($user, 0, $writer);
 	}
+&set_authstr_env();
 local $cmd = "$config{'mysqldump'} $authstr $dropsql $singlesql $forcesql $quicksql $parameterssql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql $eventssql $gtidsql | $writer";
 if (&shell_is_bash()) {
 	$cmd = "set -o pipefail ; $cmd";
