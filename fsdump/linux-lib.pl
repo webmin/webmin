@@ -553,7 +553,7 @@ if ($_[0] eq 'tar') {
 		      3, $tds);
 
 	# Password option for SSH
-	print &ui_table_row(&hlink($text{'dump_pass2'},"passs"),
+	print &ui_table_row(&hlink($text{'dump_pass2'},"pass2"),
 		      &ui_password("pass", $_[1]->{'pass'}, 20),
 		      3, $tds);
 
@@ -622,7 +622,7 @@ else {
 		      3, $tds);
 
 	# Password option for SSH
-	print &ui_table_row(&hlink($text{'dump_pass2'},"passs"),
+	print &ui_table_row(&hlink($text{'dump_pass2'},"pass2"),
 		      &ui_password("pass", $_[1]->{'pass'}, 20),
 		      3, $tds);
 
