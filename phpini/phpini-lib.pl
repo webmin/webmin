@@ -292,9 +292,17 @@ if ($file && &get_config_fmt($file) eq "fpm" &&
 	# Looks like FPM format ... maybe a pool restart is needed
 	&foreign_require("virtual-server");
 	if (defined(&virtual_server::restart_php_fpm_server)) {
+		my $conf;
+		if (-r $file) {
+			my @conf;
+			@conf = grep { $file =~ /$_->{'dir'}/ }
+				&virtual_server::list_php_fpm_configs();
+			$conf =
+				&virtual_server::get_php_fpm_config($conf[0]->{'shortversion'});
+			}
 		&virtual_server::push_all_print();
 		&virtual_server::set_all_null_print();
-		&virtual_server::restart_php_fpm_server();
+		&virtual_server::restart_php_fpm_server($conf);
 		&virtual_server::pop_all_print();
 		}
 	}
