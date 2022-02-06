@@ -2377,7 +2377,8 @@ sub is_systemd_service
 {
 my ($name) = @_;
 foreach my $s (&list_systemd_services(1)) {
-	if ($s->{'name'} eq $name && !$s->{'legacy'}) {
+	if (($s->{'name'} eq $name ||
+	     $s->{'name'} eq "$name.service") && !$s->{'legacy'}) {
 		return 1;
 		}
 	}
