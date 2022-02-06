@@ -295,7 +295,7 @@ if ($file && &get_config_fmt($file) eq "fpm" &&
 		my $conf;
 		if (-r $file) {
 			my @conf;
-			@conf = grep { $file =~ /$_->{'dir'}/ }
+			@conf = grep { $file =~ /\Q$_->{'dir'}\E/ }
 				&virtual_server::list_php_fpm_configs();
 			$conf =
 				&virtual_server::get_php_fpm_config($conf[0]->{'shortversion'});
