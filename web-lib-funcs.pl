@@ -11985,6 +11985,9 @@ Examples:
     Get variable value previously set on default "main" scope
       - globals('get', 'var-1');
 
+    Extract variable value previously set on default "main" scope and delete immediately
+      - globals('got', 'var-1');
+
     Delete variable in default "main" scope
       - globals('delete', 'var-1');
 
@@ -11993,6 +11996,9 @@ Examples:
 
     Get variable value previously set on given "virtual-server" scope
       - globals('get', 'var-1', 'virtual-server');
+
+    Extract variable value previously set on given "virtual-server" scope and delete immediately
+      - globals('got', 'var-1', 'virtual-server');
 
     Delete variable in "main" scope
       - globals('delete', 'var-1');
@@ -12022,11 +12028,14 @@ if ($action eq 'set') {
 	$globals->{$scope}->{$variable} = $value
 		if (defined($variable) && defined($value));
 	}
-elsif ($action eq 'get') {
+elsif ($action eq 'get' ||
+       $action eq 'got') {
 	if (defined($variable)) {
 		# Return single global variable in given scope
 		if (defined($globals->{$scope}) &&
 		    defined($globals->{$scope}->{$variable})) {
+			globals('delete', $variable, $value, $scope)
+				if ($action eq 'got');
 			return $globals->{$scope}->{$variable};
 			}
 		else {
