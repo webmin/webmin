@@ -1636,9 +1636,9 @@ by the message setup using that function.
 sub error
 {
 $main::no_miniserv_userdb = 1;
-&globals('set', 'error-fatal-ignored', 1);
+&setvar('error-fatal-ignored', 1);
 return if $main::ignore_errors;
-&globals('set', 'error-fatal', 1);
+&setvar('error-fatal', 1);
 my $msg = join("", @_);
 $msg =~ s/<[^>]*>//g;
 my $error_details = (($ENV{'WEBMIN_DEBUG'} || $gconfig{'debug_enabled'}) ? "" : "\n");
@@ -11973,47 +11973,10 @@ if (!$@) {
 	}
 }
 
-=head2 globals(action-type, variable-name, [[set-variable-value]|[set-scope-name]], [set-scope-name])
+=head2 globals(action-type, variable-name, [[set-variable-value]|[get-scope-name]], [set-scope-name])
 
-Provides access to handle global variables all in one place internally allowing to differentiate the scope if needed
-
-Examples:
-
-    Set variable in default "main" scope
-      - globals('set', 'var-1', 'val-1');
-
-    Get variable value previously set on default "main" scope
-      - globals('get', 'var-1');
-
-    Extract variable value previously set on default "main" scope and delete immediately
-      - globals('got', 'var-1');
-
-    Delete variable in default "main" scope
-      - globals('delete', 'var-1');
-
-    Set variable in given "virtual-server" scope
-      - globals('set', 'var-1', 'val-1', 'virtual-server');
-
-    Get variable value previously set on given "virtual-server" scope
-      - globals('get', 'var-1', 'virtual-server');
-
-    Extract variable value previously set on given "virtual-server" scope and delete immediately
-      - globals('got', 'var-1', 'virtual-server');
-
-    Delete variable in "main" scope
-      - globals('delete', 'var-1');
-
-    Delete variable in given "virtual-server" scope
-      - globals('delete', 'var-1', 'virtual-server');
-
-    Delete all variables in "main" scope
-      - globals('delete', '*');
-
-    Delete all variables in given "virtual-server" scope
-      - globals('delete', '*', 'virtual-server');
-
-    Delete all variables in all scopes
-      - globals('delete');
+Provides access to handle global variables all in one place internally allowing to
+differentiate the scope if needed. Must not be used directly. For internal use only
 
 =cut
 sub globals
@@ -12065,8 +12028,76 @@ elsif ($action eq 'delete') {
 		}
 	}
 
-# Always return all registered globals
+# Always return a reference with all registered globals
 return $globals;
+}
+
+
+=head2 setvar(variable-name, variable-value, [scope-name])
+
+A wrapper function to set global variables using `globals` sub
+
+Examples:
+
+    Set variable in default "main" scope
+      - setvar('var-1', 'val-1');
+    Set variable in given "virtual-server" scope
+      - setvar('var-1', 'val-1', 'virtual-server');
+
+=cut
+sub setvar
+{
+my ($variable, $value, $scope) = @_;
+return &globals('set', $variable, $value, $scope);
+}
+
+=head2 getvar(variable-name, [scope-name], [get-and-unset])
+
+A wrapper function to get global variables using `globals` sub
+
+Examples:
+
+    Get variable value previously set on default "main" scope
+      - getvar('var-1');
+    Get variable value previously set on given "virtual-server" scope
+      - getvar('var-1', 'virtual-server');
+    Get and unset variable previously set on given "virtual-server" scope and delete immediately
+      - getvar('var-1', 'virtual-server', 'unset');
+
+=cut
+sub getvar
+{
+my ($variable, $scope, $unset) = @_;
+return &globals(($unset ? 'got' : 'get'), $variable, $scope);
+}
+
+=head2 delvar(variable-name, [scope-name])
+
+A wrapper function to delete global variables using `globals` sub
+
+Examples:
+    
+    Delete variable in default "main" scope
+      - delvar('var-1');
+
+    Delete variable in given "virtual-server" scope
+      - delvar('var-1', 'virtual-server');
+
+    Delete all variables in "main" scope
+      - delvar('*');
+
+    Delete all variables in given "virtual-server" scope
+      - delvar('*', 'virtual-server');
+
+    Delete all variables in all scopes
+      - delvar();
+
+
+=cut
+sub delvar
+{
+my ($variable, $scope) = @_;
+return &globals('delete', $variable, $scope);
 }
 
 $done_web_lib_funcs = 1;
