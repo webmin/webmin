@@ -12034,9 +12034,10 @@ elsif ($action eq 'get' ||
 		# Return single global variable in given scope
 		if (defined($globals->{$scope}) &&
 		    defined($globals->{$scope}->{$variable})) {
+			my $__ = $globals->{$scope}->{$variable};
 			globals('delete', $variable, $value, $scope)
 				if ($action eq 'got');
-			return $globals->{$scope}->{$variable};
+			return $__;
 			}
 		else {
 			return;
