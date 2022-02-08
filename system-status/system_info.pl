@@ -242,6 +242,7 @@ if ($info->{'disk_fs'} && &show_section('disk')) {
 					"<tt>$fs->{'dir'}</tt>",
 					&nice_size($fs->{'total'}));
 			push(@rv, { 'type' => 'warning',
+				    'id' => 'sysinfo',
 				    'level' => 'danger',
 				    'warning' => $msg });
 			}
@@ -251,6 +252,7 @@ if ($info->{'disk_fs'} && &show_section('disk')) {
 					&nice_size($fs->{'total'}),
 					&nice_size($fs->{'free'}));
 			push(@rv, { 'type' => 'warning',
+				    'id' => 'sysinfo',
 				    'level' => 'warn',
 				    'warning' => $msg });
 			}
@@ -260,6 +262,7 @@ if ($info->{'disk_fs'} && &show_section('disk')) {
 					"<tt>$fs->{'dir'}</tt>",
 					$fs->{'itotal'});
 			push(@rv, { 'type' => 'warning',
+				    'id' => 'sysinfo',
 				    'level' => 'danger',
 				    'warning' => $msg });
 			}
@@ -269,6 +272,7 @@ if ($info->{'disk_fs'} && &show_section('disk')) {
 					$fs->{'itotal'},
 					$fs->{'ifree'});
 			push(@rv, { 'type' => 'warning',
+				    'id' => 'sysinfo',
 				    'level' => 'warn',
 				    'warning' => $msg });
 			}
