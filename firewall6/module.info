@@ -3,3 +3,4 @@ category=net
 longdesc=Configure a Linux firewall using ip6tables. Allows the editing of all tables, chains, rules and options.
 name=Firewall6
 os_support=*-linux
+library=firewall-lib.pl
