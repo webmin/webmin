@@ -142,7 +142,9 @@ else {
 		}
 
 	&main_header(&get_remote_mysql_variant());
-	print &ui_subheading($text{'index_dbs'}) if ($access{'perms'});
+	print &ui_subheading($text{'index_dbs'})
+	    if ($access{'perms'} &&
+	        $displayconfig{'style'} != 1);
 	if ($in{'search'}) {
 		# Limit to those matching search
 		@titles = grep { /\Q$in{'search'}\E/i } @titles;
