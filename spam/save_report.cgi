@@ -43,7 +43,7 @@ else {
 &parse_yes_no($conf, "fold_headers");
 &parse_yes_no($conf, "detailed_phrase_score")
 	if (defined($in{'detailed_phrase_score'}));
-&parse_yes_no($conf, "defang_mime");
+&parse_yes_no($conf, "defang_mime") if (defined($in{'defang_mime'}));
 &parse_option($conf, "report_safe") if (defined($in{'report_safe'}));
 
 if (&version_atleast(2.6)) {

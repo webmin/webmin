@@ -69,10 +69,12 @@ $char = &find("spam_level_char", $conf);
 print &ui_table_row($text{'report_char'},
 	&opt_field("spam_level_char", $char, 2, "*"));
 
-# Remove MIME blocks
-$defang = &find("defang_mime", $conf);
-print &ui_table_row($text{'report_defang'},
-	&yes_no_field("defang_mime", $defang, 1));
+if (!&version_atleast(2.6)) {
+	# Remove MIME blocks
+	$defang = &find("defang_mime", $conf);
+	print &ui_table_row($text{'report_defang'},
+		&yes_no_field("defang_mime", $defang, 1));
+	}
 
 if (&version_atleast(2.6)) {
 	$safe = &find("report_safe", $conf);
