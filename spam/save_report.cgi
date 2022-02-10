@@ -41,7 +41,8 @@ else {
 	&parse_opt($conf, "spam_level_char", \&char_check);
 	}
 &parse_yes_no($conf, "fold_headers");
-&parse_yes_no($conf, "detailed_phrase_score");
+&parse_yes_no($conf, "detailed_phrase_score")
+	if (defined($in{'detailed_phrase_score'}));
 &parse_yes_no($conf, "defang_mime");
 &parse_option($conf, "report_safe") if (defined($in{'report_safe'}));
 
