@@ -39,6 +39,12 @@ else {
 		}
 	}
 
+# Check if config is from Virtualmin
+@conf = &get_procmailrc();
+if (&check_virtualmin_config(\@conf)) {
+	print "<b>",$text{'index_virtualmin'},"</b><p>\n";
+	}
+
 # Build links for adding things
 @links = ( &ui_link("edit_recipe.cgi?new=1",$text{'index_add'}),
 	   &ui_link("edit_recipe.cgi?new=1&block=1",$text{'index_badd'}),
@@ -46,7 +52,6 @@ else {
 push(@links, &ui_link("edit_inc.cgi?new=1",$text{'index_iadd'}))
 	if (!$includes);
 
-@conf = &get_procmailrc();
 if (@conf) {
 	@tds = ( "width=5" );
 	print &ui_form_start("delete_recipes.cgi", "post");

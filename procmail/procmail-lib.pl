@@ -365,6 +365,23 @@ elsif ($ms eq "sendmail") {
 return ($ms, $err);
 }
 
+# check_virtualmin_config(&config)
+# Returns 1 if Virtualmin created this procmail config
+sub check_virtualmin_config
+{
+my ($conf) = @_;
+return 0 if (!&foreign_check("virtual-server"));
+&foreign_require("virtual-server");
+my $gotvirt = 0;
+foreach my $r (@$conf) {
+        if ($r->{'type'} eq '=' &&
+            $r->{'action'} =~ /^VIRTUALMIN=/) {
+                $gotvirt++;
+                }
+	}
+return $gotvirt;
+}
+
 @known_flags = ('H', 'B', 'D', 'h', 'b', 'c', 'w', 'W', 'i', 'r', 'f');
 
 1;
