@@ -478,8 +478,12 @@ sub make_record
 my ($name, $ttl, $cls, $type, $values, $cmt) = @_;
 $type = $type eq "SPF" && !$config{'spf_record'} ? "TXT" :
         $type eq "DMARC" ? "TXT" : $type;
-return $name.($ttl ne "" ? "\t".$ttl : "")."\t".$cls."\t".$type."\t".
-       $values.($cmt ne "" ? "\t;$cmt" : "");
+return $name.
+       (defined($ttl) && $ttl ne "" ? "\t".$ttl : "").
+       "\t".$cls.
+       "\t".$type.
+       "\t".$values.
+       (defined($cmt) && $cmt ne "" ? "\t;$cmt" : "");
 }
 
 # bump_soa_record(file, &records)
