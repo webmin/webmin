@@ -217,15 +217,17 @@ push(@mems, @cmems);
 
 if ($in{'adddir'} && $in{'root'}) {
 	# Add a <Directory> section for the root
+	my @dmems;
+	if ($httpd_modules{'core'} < 2.4) {
+		push(@dmems, { 'name' => 'allow',
+			       'value' => 'from all' });
+		}
+	push(@dmems, { 'name' => 'Options',
+		       'value' => 'None' });
 	$dirsect = { 'name' => 'Directory',
 		     'value' => "\"$in{'root'}\"",
 		     'type' => 1,
-		     'members' => [
-			{ 'name' => 'allow',
-			  'value' => 'from all' },
-			{ 'name' => 'Options',
-			  'value' => 'None' },
-			],
+		     'members' => \@dmems,
 		   };
 	if ($httpd_modules{'core'} >= 2.4) {
 		# Apache 2.4+ needs a 'Require all granted' line
