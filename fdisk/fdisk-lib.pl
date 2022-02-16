@@ -226,6 +226,7 @@ if (!-d "/proc/ide") {
 
 # Get Linux disk ID mapping
 local %id_map;
+local %all_id_map;
 local $id_dir = "/dev/disk/by-id";
 opendir(IDS, $id_dir);
 foreach my $id (readdir(IDS)) {
@@ -233,6 +234,8 @@ foreach my $id (readdir(IDS)) {
 	if ($id_link) {
 		local $id_real = &simplify_path(&resolve_links("$id_dir/$id"));
 		$id_map{$id_real} = $id;
+		$all_id_map{$id_real} ||= [];
+		push(@{$all_id_map{$id_real}}, $id);
 		}
 	}
 closedir(IDS);
@@ -440,6 +443,8 @@ while(<FDISK>) {
 
 		$disk->{'id'} = $id_map{$disk->{'device'}} ||
 				$id_map{"/dev/$short"};
+		$disk->{'ids'} = $all_id_map{$disk->{'device'}} ||
+				 $all_id_map{"/dev/$short"};
 
 		push(@disks, $disk);
 		}
