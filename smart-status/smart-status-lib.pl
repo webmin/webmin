@@ -89,6 +89,7 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 				    'subtype' => '3ware',
 				    'subdisk' => substr($sd, 1),
 				    'id' => $d->{'id'},
+				    'ids' => $d->{'ids'},
 				  });
 			$i++;
 			}
@@ -107,6 +108,7 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 				    'subtype' => 'sat+megaraid',
 				    'subdisk' => $i->[0],
 				    'id' => $d->{'id'},
+				    'ids' => $d->{'ids'},
 				  });
 			}
 		}
@@ -121,6 +123,7 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 				    'subtype' => 'cciss',
 				    'subdisk' => $i,
 				    'id' => $d->{'id'},
+				    'ids' => $d->{'ids'},
 				  });
 			}
 		}
