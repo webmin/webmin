@@ -39,16 +39,13 @@ if ($config{'max_users'} && @ulist > $config{'max_users'}) {
 	}
 else {
 	# Show as table of users
-	print &ui_table_start($passwd::text{'index_header'}, "width=100%");
+	my @grid;
 	for($i=0; $i<@ulist; $i++) {
-		if ($i%4 == 0) { print "<tr>\n"; }
-		print "<td width=25%><a href=\"edit_passwd.cgi?",
-		      "user=$ulist[$i]->{'user'}\">",
-		      &html_escape($ulist[$i]->{'user'})."</a></td>\n";
-		if ($i%4 == 3) { print "</tr>\n"; }
+		push(@grid, &ui_link("edit_passwd.cgiuser=$ulist[$i]->{'user'}",
+				     &html_escape($ulist[$i]->{'user'})));
 		}
-	while($i++ % 4) { print "<td width=25%></td>\n"; }
-	print &ui_table_end();
+	print &ui_grid_table(\@grid, 4, 100, undef, undef,
+			     $passwd::text{'index_header'});
 	}
 
 &ui_print_footer("/", $text{'index'});
