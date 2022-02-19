@@ -1,5 +1,5 @@
 index_title=Change Passwords
-index_header=Select a user to change his or her password
+index_header=Select a user to change their password
 index_return=user list
 index_user=Change password for user:
 index_euseradmin=This module cannot be used because the Users and Groups module is not installed or not supported on your system.
