@@ -52,23 +52,19 @@ print &ui_buttons_end();
 
 # Show users and groups
 print &ui_hr();
-print &ui_table_start($text{'host_users'}, undef, 2);
 my @ugrid;
 foreach my $u (@{$host->{'users'}}) {
 	push(@ugrid, &ui_link("edit_user.cgi?user=".&urlize($u->{'user'}).
 			      "&host=".&urlize($server->{'id'}), $u->{'user'}));
 	}
-print &ui_table_row(undef, &ui_grid_table(\@ugrid, 4), 2);
-print &ui_table_end();
+print &ui_grid_table(\@ugrid, 4, 100, undef, undef, $text{'host_users'});
 
-print &ui_table_start($text{'host_groups'}, undef, 2);
 my @ggrid;
 foreach $g (@{$host->{'groups'}}) {
 	push(@ggrid, &ui_link("edit_group.cgi?group=".&urlize($g->{'group'}).
 			     "&host=".&urlize($server->{'id'}), $g->{'group'}));
 	}
-print &ui_table_row(undef, &ui_grid_table(\@ggrid, 4), 2);
-print &ui_table_end();
+print &ui_grid_table(\@ggrid, 4, 100, undef, undef, $text{'host_groups'});
 
 &ui_print_footer("", $text{'index_return'});
 
