@@ -23,6 +23,7 @@ index_radd=创建一个新动作。
 index_unknown=未知
 index_uname=服务名称
 index_udesc=服务说明
+index_ucstatus=服务状态
 index_uboot=从启动开始？
 index_ustatus=现在跑步？
 index_uadd=创建一个新的新贵服务。

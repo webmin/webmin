@@ -45,6 +45,7 @@ index_radd=Δημιουργήστε μια νέα ενέργεια.
 index_unknown=Αγνωστος
 index_uname=Ονομα Υπηρεσίας
 index_udesc=Περιγραφή υπηρεσίας
+index_ucstatus=Κατάσταση υπηρεσίας
 index_uboot=Ξεκινήστε από την εκκίνηση;
 index_ustatus=Τρέχοντας τώρα;
 index_uadd=Δημιουργήστε μια νέα υπηρεσία εκκίνησης.

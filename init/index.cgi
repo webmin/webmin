@@ -128,8 +128,7 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 			foreach $s (@{$actsb[$i]}) {
 				if ($s->[2]) {
 					$boot = 1;
-					push(@levels,
-					  "<font color=#ff0000>$s->[0]</font>");
+					push(@levels, &ui_text_color($s->[0], 'danger'));
 					}
 				else {
 					push(@levels, $s->[0]);
@@ -145,8 +144,8 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 				push(@cols, join(" ", @levels));
 				}
 			else {
-				push(@cols,$boot ? $text{'yes'} :
-				      "<font color=#ff0000>$text{'no'}</font>");
+				push(@cols,$boot ? &ui_text_color("$text{'yes'}", 'success') :
+				      &ui_text_color("$text{'no'}", 'danger'));
 				}
 			if ($config{'order'}) {
 				push(@cols, $order);
@@ -155,12 +154,10 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 				if ($actsl[$i] =~ /^0/ && $has{'status'}) {
 					local $r = &action_running($actsf[$i]);
 					if ($r == 0) {
-						push(@cols,
-							"<font color=#ff0000>".
-							"$text{'no'}</font>");
+						push(@cols, &ui_text_color("$text{'no'}", 'danger'));
 						}
 					elsif ($r == 1) {
-						push(@cols, $text{'yes'});
+						push(@cols, &ui_text_color("$text{'yes'}", 'success'));
 						}
 					else {
 						push(@cols, undef);
@@ -273,9 +270,9 @@ elsif ($init_mode eq "rc" && $access{'bootup'}) {
 			&ui_checkbox("d", $rc->{'name'}, undef),
 			&ui_link("edit_rc.cgi?name=".&urlize($rc->{'name'}), $rc->{'name'}),
 			$rc->{'desc'},
-			$rc->{'enabled'} == 1 ? $text{'yes'} :
+			$rc->{'enabled'} == 1 ? &ui_text_color("$text{'yes'}", 'success') :
 			$rc->{'enabled'} == 2 ? "<i>$text{'index_unknown'}</i>":
-				"<font color=#ff0000>$text{'no'}</font>",
+				&ui_text_color("$text{'no'}", 'danger'),
 			]);
 		}
 	print &ui_columns_end();
@@ -312,13 +309,13 @@ elsif ($init_mode eq "upstart" && $access{'bootup'}) {
 			&ui_checkbox("d", $u->{'name'}, undef, 0),
             &ui_link($l, $u->{'name'}),
 			$u->{'desc'},
-			$u->{'boot'} eq 'start' ? $text{'yes'} :
+			$u->{'boot'} eq 'start' ? &ui_text_color("$text{'yes'}", 'success') :
 			  $u->{'boot'} eq 'stop' ?
-			  "<font color=#ff0000>$text{'no'}</font>" :
+			  &ui_text_color("$text{'no'}", 'danger') :
 			  "<i>$text{'index_unknown'}</i>",
-			$u->{'status'} eq 'running' ? $text{'yes'} :
+			$u->{'status'} eq 'running' ? &ui_text_color("$text{'yes'}", 'success') :
 			  $u->{'status'} eq 'waiting' ?
-			  "<font color=#ff0000>$text{'no'}</font>" :
+			  &ui_text_color("$text{'no'}", 'danger') :
 			  "<i>$text{'index_unknown'}</i>",
 			]);
 		}
@@ -345,6 +342,7 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 	print &ui_links_row(\@links);
 	print &ui_columns_start([ "", $text{'index_uname'},
 				  $text{'index_udesc'},
+				  $text{'index_ucstatus'},
 				  $text{'index_uboot'},
 				  $text{'index_ustatus'}, ]);
 	foreach $u (&list_systemd_services()) {
@@ -358,12 +356,13 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 			&ui_checkbox("d", $u->{'name'}, undef),
 			&ui_link($l, $u->{'name'}),
 			$u->{'desc'},
-			$u->{'boot'} == 1 ? $text{'yes'} :
+			$u->{'fullstatus'} || "<i>$text{'index_unknown'}</i>",
+			$u->{'boot'} == 1 ? &ui_text_color("$text{'yes'}", 'success') :
 			  $u->{'boot'} == 2 ? $text{'index_always'} :
-			  "<font color=#ff0000>$text{'no'}</font>",
-			$u->{'status'} == 1 ? $text{'yes'} :
+			  &ui_text_color("$text{'no'}", 'danger'),
+			$u->{'status'} == 1 ? &ui_text_color("$text{'yes'}", 'success') :
 			  $u->{'status'} == 0 ?
-			  "<font color=#ff0000>$text{'no'}</font>" :
+			  &ui_text_color("$text{'no'}", 'danger') :
 			  "<i>$text{'index_unknown'}</i>",
 			]);
 		}
@@ -396,10 +395,10 @@ elsif ($init_mode eq "launchd" && $access{'bootup'}) {
 		print &ui_columns_row([
 			&ui_checkbox("d", $u->{'name'}, undef),
 			&ui_link($l, $u->{'name'}),
-			$u->{'boot'} ? $text{'yes'} :
-			  "<font color=#ff0000>$text{'no'}</font>",
-			$u->{'status'} ? $text{'yes'} :
-			  "<font color=#ff0000>$text{'no'}</font>",
+			$u->{'boot'} ? &ui_text_color("$text{'yes'}", 'success') :
+			  &ui_text_color("$text{'no'}", 'danger'),
+			$u->{'status'} ? &ui_text_color("$text{'yes'}", 'success') :
+			  &ui_text_color("$text{'no'}", 'danger'),
 			]);
 		}
 	print &ui_columns_end();

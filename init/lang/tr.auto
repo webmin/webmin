@@ -34,6 +34,7 @@ index_radd=Yeni bir eylem oluşturun.
 index_unknown=Bilinmeyen
 index_uname=Hizmet adı
 index_udesc=Servis açıklaması
+index_ucstatus=Servis durumu
 index_uboot=Önyüklemeden başla?
 index_ustatus=Şimdi mi koşuyorsunuz?
 index_uadd=Yeni bir başlangıç hizmeti oluşturun.

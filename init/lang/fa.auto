@@ -17,6 +17,7 @@ index_radd=یک اقدام جدید ایجاد کنید.
 index_unknown=ناشناخته
 index_uname=نام سرویس
 index_udesc=شرح خدمات
+index_ucstatus=وضعیت سرویس
 index_uboot=شروع کنید؟
 index_ustatus=الان دویدن؟
 index_uadd=یک سرویس upstart جدید ایجاد کنید.

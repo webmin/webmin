@@ -1,3 +1,5 @@
+index_ucstatus=Estat del servei
+
 systemd_file=Fitxer de configuració
 
 syslog_journalctl=Registres SystemD

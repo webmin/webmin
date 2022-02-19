@@ -45,6 +45,7 @@ index_radd=Стварыце новае дзеянне.
 index_unknown=Невядома
 index_uname=Назва службы
 index_udesc=Апісанне паслугі
+index_ucstatus=Стан абслугоўвання
 index_uboot=Пачаць з загрузкі?
 index_ustatus=Цяпер працуе?
 index_uadd=Стварыце новую паслугу для запуску.

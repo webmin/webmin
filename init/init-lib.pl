@@ -2199,6 +2199,10 @@ foreach my $name (keys %info) {
 		    'boot' => $i->{'UnitFileState'} eq 'enabled' ? 1 :
 			      $i->{'UnitFileState'} eq 'static' ? 2 : 0,
 		    'status' => $i->{'ActiveState'} eq 'active' ? 1 : 0,
+		    'substatus' => $i->{'SubState'},
+		    'fullstatus' => $i->{'SubState'} ?
+		        "@{[ucfirst($i->{'ActiveState'})]} ($i->{'SubState'})" :
+		         ucfirst($i->{'ActiveState'}),
 		    'start' => $i->{'ExecStart'},
 		    'stop' => $i->{'ExecStop'},
 		    'reload' => $i->{'ExecReload'},

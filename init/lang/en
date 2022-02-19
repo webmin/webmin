@@ -45,6 +45,7 @@ index_radd=Create a new action.
 index_unknown=Unknown
 index_uname=Service name
 index_udesc=Service description
+index_ucstatus=Service status
 index_uboot=Start at boot?
 index_ustatus=Running now?
 index_uadd=Create a new upstart service.

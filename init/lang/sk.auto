@@ -45,6 +45,7 @@ index_radd=Vytvorte novú akciu.
 index_unknown=nevedno
 index_uname=Názov služby
 index_udesc=Popis služby
+index_ucstatus=Stav služby
 index_uboot=Začať pri štarte?
 index_ustatus=Bežíte teraz?
 index_uadd=Vytvorte novú službu upstart.

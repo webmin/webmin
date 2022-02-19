@@ -45,6 +45,7 @@ index_radd=Ustvari novo dejanje.
 index_unknown=Neznano
 index_uname=Ime storitve
 index_udesc=Opis storitve
+index_ucstatus=Stanje storitve
 index_uboot=Začeti ob zagonu?
 index_ustatus=Teče zdaj?
 index_uadd=Ustvari novo storitev za zagon.

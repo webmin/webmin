@@ -45,6 +45,7 @@ index_radd=Buat tindakan baru.
 index_unknown=Tidak diketahui
 index_uname=Nama perkhidmatan
 index_udesc=Penerangan perkhidmatan
+index_ucstatus=Status perkhidmatan
 index_uboot=Mula boot?
 index_ustatus=Berlari sekarang?
 index_uadd=Buat perkhidmatan upstart baru.

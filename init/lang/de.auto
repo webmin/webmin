@@ -1,3 +1,5 @@
+index_ucstatus=Service Status
+
 systemd_file=Konfigurationsdatei
 
 syslog_journalctl=SystemD-Protokolle

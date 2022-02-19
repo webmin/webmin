@@ -45,6 +45,7 @@ index_radd=Luo uusi toiminto.
 index_unknown=Tuntematon
 index_uname=Palvelun nimi
 index_udesc=Palvelun kuvaus
+index_ucstatus=Palvelun tila
 index_uboot=Aloita käynnistyessä?
 index_ustatus=Juoksutko nyt?
 index_uadd=Luo uusi käynnistyspalvelu.

@@ -45,6 +45,7 @@ index_radd=צור פעולה חדשה.
 index_unknown=לא ידוע
 index_uname=שם השירות
 index_udesc=תיאור השירות
+index_ucstatus=סטטוס שרות
 index_uboot=מתחילים באתחול?
 index_ustatus=רץ עכשיו?
 index_uadd=צור שירות עליון חדש.

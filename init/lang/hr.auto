@@ -45,6 +45,7 @@ index_radd=Stvorite novu radnju.
 index_unknown=Nepoznata
 index_uname=Naziv usluge
 index_udesc=Opis usluge
+index_ucstatus=Status usluge
 index_uboot=Započeti pri pokretanju?
 index_ustatus=Sada trčite?
 index_uadd=Stvorite novu uslugu upstart.

@@ -33,6 +33,7 @@ index_radd=Skapa en ny åtgärd.
 index_unknown=Okänd
 index_uname=Service namn
 index_udesc=Service beskrivning
+index_ucstatus=Servicestatus
 index_uboot=Börja vid start?
 index_ustatus=Kör nu?
 index_uadd=Skapa en ny upstart-tjänst.

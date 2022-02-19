@@ -1,6 +1,7 @@
 index_mode=Загрузочная система : $1 
 index_uname=Наименование услуги
 index_udesc=Описание услуг
+index_ucstatus=Статус услуги
 index_uboot=Начать при загрузке?
 index_ustatus=Бегом сейчас?
 index_uadd=Создать новый сервис выскочки.

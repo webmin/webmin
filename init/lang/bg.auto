@@ -45,6 +45,7 @@ index_radd=Създайте ново действие.
 index_unknown=неизвестен
 index_uname=Име на услугата
 index_udesc=Описание на услугата
+index_ucstatus=Състояние на услугата
 index_uboot=Започнете от зареждане?
 index_ustatus=Сега тече?
 index_uadd=Създайте нова услуга за стартиране.

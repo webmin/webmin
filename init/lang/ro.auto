@@ -45,6 +45,7 @@ index_radd=Creați o acțiune nouă.
 index_unknown=Necunoscut
 index_uname=Numele serviciului
 index_udesc=Descrierea serviciului
+index_ucstatus=Starea serviciului
 index_uboot=Începeți la pornire?
 index_ustatus=Alerga acum?
 index_uadd=Creați un nou serviciu de actualizare.

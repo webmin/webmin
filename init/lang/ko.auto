@@ -1,6 +1,7 @@
 index_mode=부팅 시스템  : $1 
 index_uname=서비스 이름
 index_udesc=서비스 설명
+index_ucstatus=서비스 상태
 index_uboot=부팅 할 때 시작 하시겠습니까?
 index_ustatus=지금 달려?
 index_uadd=새로운 시작 서비스를 작성하십시오.
