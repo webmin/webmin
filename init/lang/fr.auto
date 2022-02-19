@@ -10,6 +10,7 @@ index_radd=Créez une nouvelle action.
 index_unknown=Inconnue
 index_uname=Nom du service
 index_udesc=Description du service
+index_ucstatus=État du service
 index_uboot=Commencez au démarrage?
 index_ustatus=Vous courez maintenant?
 index_uadd=Créez un nouveau service parvenu.

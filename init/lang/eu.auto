@@ -2,6 +2,7 @@ index_title=Abiarazi eta itzali
 index_mode=Abiapuntu sistema : $1 
 index_uname=Zerbitzuaren izena
 index_udesc=Zerbitzuaren deskribapena
+index_ucstatus=Zerbitzuaren egoera
 index_uboot=Hasi abiarazi?
 index_ustatus=Orain exekutatzen ari zara?
 index_uadd=Sortu martxan dagoen zerbitzu berria.

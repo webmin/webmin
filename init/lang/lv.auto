@@ -45,6 +45,7 @@ index_radd=Izveidojiet jaunu darbību.
 index_unknown=Nezināms
 index_uname=Pakalpojuma nosaukums
 index_udesc=Pakalpojuma apraksts
+index_ucstatus=Pakalpojuma statuss
 index_uboot=Sākt no sāknēšanas?
 index_ustatus=Darbojas tagad?
 index_uadd=Izveidojiet jaunu sākotnējo pakalpojumu.

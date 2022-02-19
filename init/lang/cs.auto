@@ -1,6 +1,7 @@
 index_mode=Zaváděcí systém : $1 
 index_uname=Název služby
 index_udesc=Popis služby
+index_ucstatus=Stav služby
 index_uboot=Začít při spuštění?
 index_ustatus=Běží nyní?
 index_uadd=Vytvořte novou službu upstart.

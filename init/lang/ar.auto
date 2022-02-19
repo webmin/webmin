@@ -43,6 +43,7 @@ index_radd=قم بإنشاء إجراء جديد.
 index_unknown=مجهول
 index_uname=اسم الخدمة
 index_udesc=وصف الخدمة
+index_ucstatus=حالة الخدمة
 index_uboot=هل تريد البدء في التمهيد؟
 index_ustatus=تعمل الآن؟
 index_uadd=إنشاء خدمة مبتدئة جديدة.

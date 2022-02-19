@@ -45,6 +45,7 @@ index_radd=Skep 'n nuwe aksie.
 index_unknown=onbekend
 index_uname=Diensnaam
 index_udesc=Diensbeskrywing
+index_ucstatus=Diensstatus
 index_uboot=Begin met die boot?
 index_ustatus=Nou hardloop?
 index_uadd=Skep 'n nuwe suksesvolle diens.

@@ -45,6 +45,7 @@ index_radd=Opret en ny handling.
 index_unknown=Ukendt
 index_uname=Servicenavn
 index_udesc=Servicebeskrivelse
+index_ucstatus=Servicestatus
 index_uboot=Start ved opstart?
 index_ustatus=Kører nu?
 index_uadd=Opret en ny upstart-tjeneste.

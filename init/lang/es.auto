@@ -17,6 +17,7 @@ index_radd=Crea una nueva acción.
 index_unknown=Desconocido
 index_uname=Nombre del Servicio
 index_udesc=Descripción del servicio
+index_ucstatus=Estado del servicio
 index_uboot=Comience en el arranque?
 index_ustatus=Corriendo ahora?
 index_uadd=Crea un nuevo servicio advenedizo.

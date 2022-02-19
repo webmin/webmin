@@ -45,6 +45,7 @@ index_radd=Tạo một hành động mới.
 index_unknown=không xác định
 index_uname=Tên dịch vụ
 index_udesc=Dịch vụ Mô tả
+index_ucstatus=Tình trạng dịch vụ
 index_uboot=Bắt đầu lúc khởi động?
 index_ustatus=Chạy ngay bây giờ?
 index_uadd=Tạo một dịch vụ mới bắt đầu.

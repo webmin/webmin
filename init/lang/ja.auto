@@ -1,4 +1,5 @@
 index_mode=ブートシステム： $1
+index_ucstatus=サービスステータス
 index_uadd=新しいupstartサービスを作成します。
 index_sadd=新しいsystemdサービスを作成します。
 index_ladd=新しいlaunchdエージェントを作成します。

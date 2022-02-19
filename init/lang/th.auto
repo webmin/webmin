@@ -45,6 +45,7 @@ index_radd=สร้างการกระทำใหม่
 index_unknown=ไม่ทราบ
 index_uname=ชื่อบริการ
 index_udesc=รายละเอียดการบริการ
+index_ucstatus=สถานะการให้บริการ
 index_uboot=เริ่มตอนบูทเหรอ?
 index_ustatus=วิ่งตอนนี้เหรอ?
 index_uadd=สร้างบริการพุ่งพรวดใหม่
