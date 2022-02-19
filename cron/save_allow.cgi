@@ -4,6 +4,7 @@
 
 require './cron-lib.pl';
 &ReadParse();
+$access{'allow'} || &error($text{'allow_ecannot'});
 
 &lock_file($config{cron_allow_file});
 &lock_file($config{cron_deny_file});
