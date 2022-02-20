@@ -41,6 +41,9 @@ index_efrom=Invalid starting date and time
 index_eto=Invalid ending date and time
 index_err=Failed to generate report
 index_usage=Network traffic <font color=#ff0000>downloaded</font> and <font color=#0000ff>uploaded</font>
+index_in=Download
+index_out=Upload
+index_total=Total
 index_hhour=Hour
 index_hhost=Host
 index_hday=Day

@@ -124,54 +124,47 @@ elsif ($missingrule || !$sysconf) {
 if (@hours) {
 	# Show reporting form
 	print &ui_form_start("index.cgi");
-	print "<table>\n";
+	print &ui_table_start(undef, undef, 2);
 
-	print "<tr> <td><b>$text{'index_by'}</b></td>\n";
-	print "<td>",&ui_select("by", $in{'by'},
-		[ [ 'hour', $text{'index_hour'} ],
-		  [ 'day', $text{'index_day'} ],
-		  [ 'host', $text{'index_host'} ],
-		  [ 'proto', $text{'index_proto'} ],
-		  [ 'iport', $text{'index_iport'} ],
-		  [ 'oport', $text{'index_oport'} ],
-		  [ 'port', $text{'index_port'} ] ]),"</td>\n";
+	print &ui_table_row($text{'index_by'},
+		&ui_select("by", $in{'by'},
+			[ [ 'hour', $text{'index_hour'} ],
+			  [ 'day', $text{'index_day'} ],
+			  [ 'host', $text{'index_host'} ],
+			  [ 'proto', $text{'index_proto'} ],
+			  [ 'iport', $text{'index_iport'} ],
+			  [ 'oport', $text{'index_oport'} ],
+			  [ 'port', $text{'index_port'} ] ]));
 
-	print "<td><b>$text{'index_for'}</b></td>\n";
-	print "<td>",&ui_select("for", $in{'for'},
-		[ [ '', $text{'index_all'} ],
-		  [ 'host', $text{'index_forhost'} ],
-		  [ 'proto', $text{'index_forproto'} ],
-		  [ 'iport', $text{'index_foriport'} ],
-		  [ 'oport', $text{'index_foroport'} ] ]),"\n";
-	print &ui_textbox("what", $in{'for'} ? $in{'what'} : "", 20),
-	      "</td> </tr>\n";
+	print &ui_table_row($text{'index_for'},
+		&ui_select("for", $in{'for'},
+			[ [ '', $text{'index_all'} ],
+			  [ 'host', $text{'index_forhost'} ],
+			  [ 'proto', $text{'index_forproto'} ],
+			  [ 'iport', $text{'index_foriport'} ],
+			  [ 'oport', $text{'index_foroport'} ] ])." ".
+		&ui_textbox("what", $in{'for'} ? $in{'what'} : "", 20));
 
-	print "<tr> <td><b>$text{'index_from'}</b></td>\n";
-	print "<td colspan=4>",
+	print &ui_table_row($text{'index_from'},
 		&date_input($in{'from_day'}, $in{'from_month'},
-			    $in{'from_year'}, "from"),
-		&hourmin_input($in{'from_hour'}, "00", "from"),"</td> </tr>\n";
+			    $in{'from_year'}, "from").
+		&hourmin_input($in{'from_hour'}, "00", "from"));
 
-	print "<tr> <td><b>$text{'index_to'}</b></td>\n";
-	print "<td colspan=4>",
+	print &ui_table_row($text{'index_to'},
 		&date_input($in{'to_day'}, $in{'to_month'},
-			    $in{'to_year'}, "to"),
-		&hourmin_input($in{'to_hour'}, "00", "to"),"</td> </tr>\n";
+			    $in{'to_year'}, "to").
+		&hourmin_input($in{'to_hour'}, "00", "to"));
 
 	if (!%in) {
 		# Enable by default
 		$in{'low'} = 1;
 		}
-	print "<tr> <td></td> <td colspan=4>\n";
-	print &ui_checkbox("low", 1, $text{'index_low'}, $in{'low'});
-	print &ui_checkbox("resolv", 1, $text{'index_resolv'}, $in{'resolv'});
-	print "</td> </tr>\n";
+	print &ui_table_row("",
+		&ui_checkbox("low", 1, $text{'index_low'}, $in{'low'}).
+		&ui_checkbox("resolv", 1, $text{'index_resolv'}, $in{'resolv'}));
 
-	print "<tr> <td colspan=4>",
-		&ui_submit($text{'index_search'}),"</td> </td>\n";
-
-	print "</table>\n";
-	print &ui_form_end();
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'index_search'} ] ]);
 	}
 elsif (!$missingrule && $sysconf) {
 	print "<b>$text{'index_none'}</b><p>\n";
@@ -344,37 +337,45 @@ if ($in{'by'}) {
 		@order = grep { $count{$_} } @order;
 		}
 	if (@order) {
-		print "<table width=100% cellpadding=0 cellspacing=0>\n";
-		print "<tr>\n";
-		print "<td><b>",$text{'index_h'.$in{'by'}},"</b></td>\n";
-		print "<td colspan=2><b>$text{'index_usage'}</b></td>\n";
-		print "</tr>\n";
-		$total = 0;
+		print &ui_columns_start([ $text{'index_h'.$in{'by'}},
+					  $text{'index_usage'},
+					  $text{'index_in'},
+					  $text{'index_out'},
+					  $text{'index_total'} ], 100, 0);
+		$itotal = $ototal = $total = 0;
 		foreach $k (@order) {
-			print "<tr>\n";
+			my @cols;
 			if ($in{'by'} eq 'hour') {
-				print "<td>",&make_date($k*60*60),"</td>\n";
+				push(@cols, &make_date($k*60*60));
 				}
 			elsif ($in{'by'} eq 'day') {
 				$date = &make_date_day($k*60*60);
-				print "<td>$date</td>\n";
+				push(@cols, $date);
 				}
 			else {
-				print "<td>$k</td>\n";
+				push(@cols, $k);
 				}
-			print "<td>";
-			printf "<img src=images/red.gif width=%d height=10>",
+			my $bar = sprintf
+				"<img src=images/red.gif width=%d height=10>",
 				$max ? int($width * $icount{$k}/$max)+1 : 1;
-			printf "<img src=images/blue.gif width=%d height=10>",
+			$bar .= sprintf
+				"<img src=images/blue.gif width=%d height=10>",
 				$max ? int($width * $ocount{$k}/$max)+1 : 1;
-			print "</td>";
-			print "<td>",&nice_size($count{$k}),"</td>\n";
+			push(@cols, $bar);
+			push(@cols, &nice_size($icount{$k}),
+				    &nice_size($ocount{$k}),
+				    &nice_size($count{$k}));
 			$total += $count{$k};
+			$itotal += $icount{$k};
+			$ototal += $ocount{$k};
 			print "</tr>\n";
+			print &ui_columns_row(\@cols);
 			}
-		print "<tr> <td colspan=2></td> <td><b>",
-		&nice_size($total),"</td> </tr>\n";
-		print "</table>\n";
+		print &ui_columns_row([ undef, undef,
+					&nice_size($itotal),
+					&nice_size($ototal),
+					&nice_size($total) ]);
+		print &ui_columns_end();
 		}
 	else {
 		print "<b>$text{'index_nomatch'}</b><p>\n";
