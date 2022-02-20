@@ -4324,7 +4324,11 @@ if (defined(&theme_get_module_acl)) {
 # only, we must not consider `noconfig` option at all.
 my $allowed = &get_module_preferences_acl($m, 'allowed');
 if ($allowed && $allowed eq "*") {
-	$rv{'noconfig'} = 0;
+
+	# This option has to be deleted completely, as some callers, like
+	# acl/save_user.cgi expects it to be empty, on safe user creation
+	delete $rv{'noconfig'}
+		if (defined($rv{'noconfig'}));
 	}
 return %rv;
 }
