@@ -8,12 +8,12 @@
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
-if (&foreign_installed("syslog-ng")) {
-	&foreign_require("syslog-ng", "syslog-ng-lib.pl");
+if (&foreign_installed("syslog-ng", 1) == 2) {
+	&foreign_require("syslog-ng");
 	$syslog_module = "syslog-ng";
 	}
 elsif (&foreign_installed("syslog")) {
-	&foreign_require("syslog", "syslog-lib.pl");
+	&foreign_require("syslog");
 	$syslog_module = "syslog";
 	}
 else {
