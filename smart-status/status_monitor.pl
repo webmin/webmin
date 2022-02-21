@@ -22,7 +22,7 @@ local ($type, $mon, $ui) = @_;
 
 local @drives = &list_smart_disks_partitions();
 local ($d) = grep { ($_->{'device'} eq $mon->{'drive'} ||
-		     $_->{'id'} eq $mon->{'drive'}) &&
+		     &indexof($mon->{'drive'}, @{$_->{'ids'}}) >= 0) &&
 		    $_->{'subdisk'} eq $mon->{'subdisk'} } @drives;
 if (!$d) {
 	# Not in list?!
@@ -103,16 +103,23 @@ sub status_monitor_dialog
 local ($type, $mon) = @_;
 local $rv;
 local @drives = &list_smart_disks_partitions();
-local ($inlist) = grep { ($_->{'device'} eq $mon->{'drive'} ||
-			  $_->{'id'} eq $mon->{'drive'}) &&
-		         $_->{'subdisk'} eq $mon->{'subdisk'} } @drives;
+local ($inlist, $invalue);
+foreach my $d (@drives) {
+	if ($d->{'device'} eq $mon->{'drive'} &&
+	    $d->{'subdisk'} eq $mon->{'subdisk'}) {
+		$inlist = 1;
+		$invalue = $mon->{'drive'}.":".$mon->{'subdisk'};
+		}
+	elsif (&indexof($mon->{'drive'}, @{$d->{'ids'}}) >= 0 &&
+	       $d->{'subdisk'} eq $mon->{'subdisk'}) {
+		$inlist = 1;
+		$invalue = $d->{'id'}.":".$mon->{'subdisk'};
+		}
+	}
 $inlist = 1 if (!$mon->{'drive'});
 $rv .= &ui_table_row($text{'monitor_drive'},
       &ui_select("drive",
-		 !$mon->{'drive'} ? $drives[0]->{'device'} :
-		 $inlist ? ($inlist->{'id'} || $inlist->{'device'}).':'.
-			     $inlist->{'subdisk'} :
-			   undef,
+		 !$mon->{'drive'} ? $drives[0]->{'device'} : $invalue,
 		 [ (map { [ ($_->{'id'} || $_->{'device'}).':'.$_->{'subdisk'},
 			   $_->{'desc'}.($_->{'model'} ?
 				" ($_->{'model'})" : "") ] } @drives),
