@@ -73,7 +73,7 @@ elsif ($in{'view'}) {
 	print "Refresh: $config{'refresh'}\r\n"
 		if ($config{'refresh'});
 	&ui_print_header("<tt>".&html_escape($file || $cmd)."</tt>",
-			 $text{'view_title'}, "");
+			 $in{'linktitle'} || $text{'view_title'}, "", undef, undef, $in{'nonavlinks'});
 
 	$lines = $in{'lines'} ? int($in{'lines'}) : int($config{'lines'});
 	$filter = $in{'filter'} ? quotemeta($in{'filter'}) : "";
@@ -164,7 +164,7 @@ elsif ($in{'view'}) {
 	print "<i>$text{'view_empty'}</i>\n" if (!$got);
 	print "</pre>\n";
 	&filter_form();
-	&ui_print_footer(
+	$in{'nonavlinks'} ? &ui_print_footer() : &ui_print_footer(
 		$access{'noedit'} || $other || $in{'file'} || $in{'extra'} ?
 		() : ( "edit_log.cgi?idx=$in{'idx'}", $text{'edit_return'} ),
 		"", $text{'index_return'});
@@ -273,6 +273,8 @@ else {
 sub filter_form
 {
 print &ui_form_start("save_log.cgi");
+print &ui_hidden("nonavlinks", $in{'nonavlinks'} ? 1 : 0),"\n";
+print &ui_hidden("linktitle", $in{'linktitle'}),"\n";
 print &ui_hidden("oidx", $in{'oidx'}),"\n";
 print &ui_hidden("omod", $in{'omod'}),"\n";
 print &ui_hidden("file", $in{'file'}),"\n";
@@ -315,9 +317,9 @@ else {
 	print &ui_hidden("idx", $in{'idx'}),"\n";
 	}
 
-print &text('view_header', &ui_textbox("lines", $lines, 3), $sel),"\n";
-print "&nbsp;&nbsp;\n";
-print &text('view_filter', &ui_textbox("filter", $in{'filter'}, 25)),"\n";
+print &text('view_header', "&nbsp;" . &ui_textbox("lines", $lines, 3), $sel),"\n";
+print "&nbsp;&nbsp;&nbsp;&nbsp;\n";
+print &text('view_filter', "&nbsp;" . &ui_textbox("filter", $in{'filter'}, 25)),"\n";
 print "&nbsp;&nbsp;\n";
 print &ui_submit($text{'view_refresh'});
 print &ui_form_end(),"<br>\n";
