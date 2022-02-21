@@ -64,6 +64,7 @@ log_letsencryptcleanup=Usunięto Let's Encrypt DNS record dla $1
 ipkey_ips2=Adresy IP i nazwy hostów
 ipkey_eip2=„$1” nie jest prawidłowym adresem IP ani nazwą hosta
 
+advanced_etempallowed=Katalog plików tymczasowych $1 jest katalogiem systemowym
 advanced_listdir=Wyświetlać katalogi bez pliku indeksu?
 advanced_headers=Dodatkowe nagłówki HTTP
 advanced_eheader=Nagłówki muszą być sformatowane jak <tt>Header: Value</tt>

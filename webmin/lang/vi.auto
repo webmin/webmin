@@ -876,6 +876,7 @@ advanced_eprecache=Thiếu danh sách các mẫu shell vào bộ đệm trước
 advanced_err=Không thể lưu các tùy chọn nâng cao
 advanced_etemp=Thư mục tập tin tạm thời bị thiếu hoặc không tồn tại
 advanced_etdir=Thư mục tệp tạm thời bị thiếu hoặc không tồn tại cho $1
+advanced_etempallowed=Thư mục tệp tạm thời $1 là thư mục hệ thống
 advanced_pass=Cung cấp mật khẩu cho các chương trình Webmin? <br><font size=-1> (Không hoạt động khi bật xác thực phiên) </font>
 advanced_tempmods=Thư mục tạm thời mỗi mô-đun
 advanced_tmod=Mô-đun

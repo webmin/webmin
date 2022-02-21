@@ -876,6 +876,7 @@ advanced_eprecache=רשימה חסרה של דפוסי פגז לקובץ המט�
 advanced_err=שמירת אפשרויות מתקדמות נכשלה
 advanced_etemp=ספריית קבצים זמניים חסרה או שאינה קיימת
 advanced_etdir=Missing or non-existant temporary files directory for $1
+advanced_etempallowed=ספריית הקבצים הזמניים $1 היא ספריית מערכת
 advanced_pass=Make password available to Webmin programs?<br><font size=-1>(Does not work when session authentication is enabled)</font>
 advanced_tempmods=ספריות זמניות למודול
 advanced_tmod=מודול

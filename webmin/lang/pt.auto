@@ -373,6 +373,7 @@ advanced_eprecache=Lista ausente de padrões de shell para pré-cache
 advanced_err=Falha ao salvar opções avançadas
 advanced_etemp=Diretório de arquivos temporários ausente ou inexistente
 advanced_etdir=Diretório de arquivos temporários ausente ou inexistente para $1
+advanced_etempallowed=A pasta de ficheiros temporários $1 éuma pasta do sistema
 advanced_pass=Tornar a senha disponível para os programas Webmin? <br><font size=-1> (Não funciona quando a autenticação de sessão está ativada) </font>
 advanced_tempmods=Diretórios temporários por módulo
 advanced_tmod=Módulo

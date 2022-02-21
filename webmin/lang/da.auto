@@ -876,6 +876,7 @@ advanced_eprecache=Manglende liste over shell-mønstre til for-cache
 advanced_err=Kunne ikke gemme avancerede indstillinger
 advanced_etemp=Manglende eller ikke-eksisterende mappe for midlertidige filer
 advanced_etdir=Manglende eller ikke-eksisterende mappe for midlertidige filer til $1
+advanced_etempallowed=Mappen til midlertidige filer $1 er en systemmappe
 advanced_pass=Gør adgangskode tilgængeligt for Webmin-programmer? <br><font size=-1> (Virker ikke, når sessiongodkendelse er aktiveret) </font>
 advanced_tempmods=Midlertidige biblioteker pr. Modul
 advanced_tmod=Modul

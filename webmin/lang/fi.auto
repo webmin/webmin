@@ -876,6 +876,7 @@ advanced_eprecache=Puheluluettelosta puuttuu välimuisti
 advanced_err=Lisäasetuksien tallentaminen epäonnistui
 advanced_etemp=Puuttuvat tai olemattomat väliaikaiset tiedostohakemistot
 advanced_etdir=Puuttuva tai puuttuva väliaikainen tiedostohakemisto $1
+advanced_etempallowed=Väliaikaisten tiedostojen hakemisto $1 on järjestelmähakemisto
 advanced_pass=Asetetaanko salasana Webmin-ohjelmien käyttöön? <br><font size=-1> (Ei toimi, kun istunnon todennus on käytössä) </font>
 advanced_tempmods=Moduulien väliaikaiset hakemistot
 advanced_tmod=Moduuli

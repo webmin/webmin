@@ -384,6 +384,7 @@ advanced_eprecache=Önbellek için kabuk kalıplarının eksik listesi
 advanced_err=Gelişmiş seçenekler kaydedilemedi
 advanced_etemp=Eksik veya var olmayan geçici dosyalar dizini
 advanced_etdir=$1 için eksik veya var olmayan geçici dosyalar dizini
+advanced_etempallowed=Geçici dosyalar dizini $1 bir sistem dizini
 advanced_pass=Webmin programları için şifre kullanılabilir mi? <br><font size=-1> (Oturum kimlik doğrulaması etkinleştirildiğinde çalışmaz) </font>
 advanced_tempmods=Modül başına geçici dizinler
 advanced_tmod=modül

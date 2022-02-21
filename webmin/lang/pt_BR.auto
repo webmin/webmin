@@ -152,6 +152,7 @@ advanced_precache0=Nenhum
 advanced_precache1=Arquivos de texto em inglês
 advanced_precache2=Arquivos que correspondem aos padrões de shell $1
 advanced_eprecache=Lista ausente de padrões de shell para pré-cache
+advanced_etempallowed=A pasta de ficheiros temporários $1 éuma pasta do sistema
 advanced_gzip=Gzip comprimir arquivos estáticos?
 advanced_gzipauto=Somente se o arquivo.gz pré-compactado existir
 advanced_gzip0=Nunca

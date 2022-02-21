@@ -181,6 +181,7 @@ advanced_precache0=없음
 advanced_precache1=영어 텍스트 파일
 advanced_precache2=쉘 패턴과 일치하는 파일 $1
 advanced_eprecache=사전 캐시 할 셸 패턴 목록이 없습니다.
+advanced_etempallowed=임시파일디렉토리 $1 은시스템디렉토리입니다
 advanced_chattr=불변 파일의 수정을 허용합니까?
 advanced_sclass=예정된 작업을위한 IO 클래스
 advanced_sprio=스케줄 된 작업의 IO 우선 순위

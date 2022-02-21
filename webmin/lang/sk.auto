@@ -242,6 +242,7 @@ advanced_precache0=nikto
 advanced_precache1=Textové súbory v anglickom jazyku
 advanced_precache2=Súbory zodpovedajúce vzorom shellu $1
 advanced_eprecache=Chýba zoznam vzorov shellu na predbežné vyrovnávanie
+advanced_etempallowed=Adresár dočasných súborov $1 je systémový adresár
 advanced_tempmods=Dočasné adresáre pre jednotlivé moduly
 advanced_umask=Umask (zrušené bity povolení) pre vytvorené súbory
 advanced_gzip=Komprimovať statické súbory gzip?

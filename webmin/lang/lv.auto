@@ -876,6 +876,7 @@ advanced_eprecache=Trūkst čaulu modeļu saraksta, kas paredzēts sākotnējai 
 advanced_err=Neizdevās saglabāt papildu opcijas
 advanced_etemp=Trūkst vai nav vispārējo pagaidu failu direktorija
 advanced_etdir=Trūkst vai nav eksistē pagaidu failu direktorijs vietnei $1
+advanced_etempallowed=Pagaidu failu direktorijs $1 ir sistēmas direktorijs
 advanced_pass=Vai padarīt paroli pieejamu Webmin programmām? <br><font size=-1> (nedarbojas, ja sesijas autentifikācija ir iespējota) </font>
 advanced_tempmods=Pagaidu direktoriji par moduļiem
 advanced_tmod=Modulis

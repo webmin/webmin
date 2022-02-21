@@ -876,6 +876,7 @@ advanced_eprecache=Ontbrekende lys van doppatrone om vooraf te kas
 advanced_err=Kon nie gevorderde opsies stoor nie
 advanced_etemp=Tydelike lêersgids ontbreek of bestaan nie
 advanced_etdir=Tydelike lêergids ontbreek of bestaan nie vir $1
+advanced_etempallowed=Tydelike lêergids $1 is 'n stelselgids
 advanced_pass=Maak wagwoord beskikbaar vir Webmin-programme? <br><font size=-1> (Werk nie wanneer sessieverifikasie aangeskakel is nie) </font>
 advanced_tempmods=Tydelike kaarte per module
 advanced_tmod=module

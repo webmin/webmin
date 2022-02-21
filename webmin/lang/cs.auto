@@ -185,6 +185,7 @@ advanced_precache0=Žádný
 advanced_precache1=Textové soubory v anglickém jazyce
 advanced_precache2=Soubory odpovídající vzorům prostředí $1
 advanced_eprecache=Chybějící seznam vzorů prostředí pro předběžnou vyrovnávací paměť
+advanced_etempallowed=Adresář dočasných souborů $1 je systémový adresář
 advanced_chattr=Povolit úpravu neměnných souborů?
 advanced_sclass=Třída IO pro naplánované úlohy
 advanced_sprio=IO priorita pro naplánované úlohy

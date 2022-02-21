@@ -418,6 +418,7 @@ advanced_eprecache=缺少要預緩存的外殼模式列表
 advanced_err=保存高級選項失敗
 advanced_etemp=臨時文件目錄缺失或不存在
 advanced_etdir=$1的臨時文件目錄丟失或不存在
+advanced_etempallowed=臨時文件目錄 $1 是系統目錄
 advanced_pass=使密碼可用於Webmin程序嗎？<br><font size=-1>（啟用會話身份驗證後不起作用）</font>
 advanced_tempmods=每個模塊的臨時目錄
 advanced_tmod=模組

@@ -876,6 +876,7 @@ advanced_eprecache=Nedostaje popis obrazaca školjki za predmemoriranje
 advanced_err=Napredno spremanje naprednih opcija nije uspjelo
 advanced_etemp=Nedostaje ili ne postoji direktorij privremenih datoteka
 advanced_etdir=Nedostaje ili nepostojeća privremena datoteka za $1
+advanced_etempallowed=Direktorij privremenih datoteka $1 je direktorij sustava
 advanced_pass=Učiniti lozinku dostupnom za webminme? <br><font size=-1> (Ne radi ako je omogućena provjera autentičnosti sesije) </font>
 advanced_tempmods=Privremene mape po modulima
 advanced_tmod=Modul
