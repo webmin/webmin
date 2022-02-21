@@ -361,23 +361,28 @@ if ($gconfig{'os_type'} eq 'windows' || $tmp_dir =~ /^[a-z]:/i) {
 	}
 else {
 	# On Unix systems, need to make sure temp dir is valid
-	my $tries = 0;
-	my $mkdirerr;
-	while($tries++ < 10) {
-		my @st = lstat($tmp_dir);
-		last if ($st[4] == $< && (-d _) && ($st[2] & 0777) == 0755);
-		if (@st) {
-			unlink($tmp_dir) || rmdir($tmp_dir) ||
-				system("/bin/rm -rf ".quotemeta($tmp_dir));
+	if ($tmp_dir ne "/tmp") {
+		my $tries = 0;
+		my $mkdirerr;
+		while($tries++ < 10) {
+			my @st = lstat($tmp_dir);
+			last if ($st[4] == $< && (-d _) &&
+				 ($st[2] & 0777) == 0755);
+			if (@st) {
+				unlink($tmp_dir) || rmdir($tmp_dir) ||
+					system("/bin/rm -rf ".
+					       quotemeta($tmp_dir));
+				}
+			mkdir($tmp_dir, 0755) || (($mkdirerr = $!), next);
+			chown($<, $(, $tmp_dir);
+			chmod(0755, $tmp_dir);
 			}
-		mkdir($tmp_dir, 0755) || (($mkdirerr = $!), next);
-		chown($<, $(, $tmp_dir);
-		chmod(0755, $tmp_dir);
-		}
-	if ($tries >= 10) {
-		my @st = lstat($tmp_dir);
-		$mkdirerr = $mkdirerr ? " : $mkdirerr" : "";
-		&error("Failed to create temp directory $tmp_dir$mkdirerr");
+		if ($tries >= 10) {
+			my @st = lstat($tmp_dir);
+			$mkdirerr = $mkdirerr ? " : $mkdirerr" : "";
+			&error("Failed to create temp directory ".
+			       $tmp_dir.$mkdirerr);
+			}
 		}
 	# If running as root, check parent dir (usually /tmp) to make sure it's
 	# world-writable and owned by root
