@@ -109,7 +109,10 @@ elsif ($uconfig{'home_style'} == 3) {
 sub server_name
 {
 my ($server) = @_;
-return $server->{'desc'} || $server->{'host'};
+my @w;
+push(@w, $server->{'host'} || &get_system_hostname());
+push(@w, "(".$server->{'desc'}.")") if ($server->{'desc'});
+return join(" ", @w);
 }
 
 # supports_gothers(&server)

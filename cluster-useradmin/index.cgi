@@ -24,8 +24,7 @@ foreach $h (@hosts) {
 	local ($s) = grep { $_->{'id'} == $h->{'id'} } @servers;
 	next if (!$s);
 	local ($link) = $config{'conf_host_links'} ? "edit_host.cgi?id=$h->{'id'}" : "#";
-	push(@titles, $s->{'desc'} ? $s->{'desc'}
-				   : "$s->{'host'}:$s->{'port'}");
+	push(@titles, &server_name($s));
 	push(@links, $link);
 	push(@icons, &get_webprefix()."/servers/images/".
 		     $s->{'type'}.".gif");
@@ -151,6 +150,8 @@ if (@hosts) {
 			&ui_textbox("what", undef, 15));
 		}
 
+	print &ui_buttons_hr();
+
 	if ($config{'conf_add_user'}) {
 		print &ui_buttons_row("user_form.cgi",
 				      $text{'index_newuser'},
@@ -164,6 +165,8 @@ if (@hosts) {
 				      undef,
 				      [ [ "new", 1 ] ]);
 		}
+
+	print &ui_buttons_hr();
 
 	if ($config{'conf_allow_refresh'}) {
 		print &ui_buttons_row("refresh.cgi",
