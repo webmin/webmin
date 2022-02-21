@@ -12,6 +12,8 @@ if ($in{'tempdir_def'}) {
 	}
 else {
 	-d $in{'tempdir'} || &error($text{'advanced_etemp'});
+	&allowed_temp_dir($in{'tempdir'}) ||
+		&error(&text('advanced_etempallowed', $in{'tempdir'}));
 	$gconfig{'tempdir'} = $in{'tempdir'};
 	}
 
@@ -32,6 +34,8 @@ for($i=0; defined($tmod = $in{'tmod_'.$i}); $i++) {
 	$tdir = $in{'tdir_'.$i};
 	%minfo = &get_module_info($tmod);
 	-d $tdir || &error(&text('advanced_etdir', $minfo{'desc'}));
+	&allowed_temp_dir($tdir) ||
+		&error(&text('advanced_etempallowed', $in{'tempdir'}));
 	push(@tdirs, [ $tmod, $tdir ]);
 	}
 &save_tempdirs(\%gconfig, \@tdirs);
@@ -121,3 +125,9 @@ else {
 &show_restart_page();
 &webmin_log("advanced");
 
+
+sub allowed_temp_dir
+{
+my ($t) = @_;
+return $t eq "/tmp" || $t eq "/var" || $t eq "/" ? 0 : 1;
+}

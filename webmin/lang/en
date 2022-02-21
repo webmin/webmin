@@ -876,6 +876,7 @@ advanced_eprecache=Missing list of shell patterns to pre-cache
 advanced_err=Failed to save advanced options
 advanced_etemp=Missing or non-existant temporary files directory
 advanced_etdir=Missing or non-existant temporary files directory for $1
+advanced_etempallowed=Temporary files directory $1 is a system directory
 advanced_pass=Make password available to Webmin programs?<br><font size=-1>(Does not work when session authentication is enabled)</font>
 advanced_tempmods=Per-module temporary directories
 advanced_tmod=Module
