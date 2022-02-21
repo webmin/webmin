@@ -1001,6 +1001,7 @@ if ($z->{'members'}) {
 else {
 	$fn = $z->{'file'};
 	}
+return undef if (!$fn);
 if ($abs) {
 	$fn = &absolute_path($fn);
 	}
