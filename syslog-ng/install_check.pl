@@ -10,6 +10,7 @@ sub is_installed
 {
 return 0 if (!&get_syslog_ng_version());
 return 0 if (!-r $config{'syslogng_conf'});
-return $_[0] ? 2 : 1;
+return 1 if ($_[0]);
+return &is_syslog_ng_running() ? 2 : 1;
 }
 
