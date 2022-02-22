@@ -129,5 +129,5 @@ else {
 sub allowed_temp_dir
 {
 my ($t) = @_;
-return $t eq "/tmp" || $t eq "/var" || $t eq "/" ? 0 : 1;
+return $t eq "/" || $t =~ /^\/[^\/]+\/?$/ ? 0 : 1;
 }
