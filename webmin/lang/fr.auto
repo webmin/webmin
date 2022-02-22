@@ -13,6 +13,7 @@ session_passapi0=API désactivée
 session_passapi1=API activée pour les utilisateurs Unix
 session_passurl=Lorsqu'il est activé, les mots de passe utilisateur peuvent être modifiés via une requête POST à $1
 
+advanced_etempallowed=Le répertoire des fichiers temporaires $1 est un répertoire système
 advanced_bufsize=Taille de la mémoire tampon du réseau en octets
 advanced_ebufsize=La taille de la mémoire tampon du réseau doit être un nombre supérieur à zéro
 

@@ -24,6 +24,7 @@ session_passurl=Quan està activat, les contrasenyes d'usuari es poden canviar m
 
 ipkey_eip2="$1" no és una adreça IP o un nom d'amfitrió vàlids
 
+advanced_etempallowed=El directori de fitxers temporals $1 és un directori del sistema
 advanced_sortconfigs=Voleu desar els fitxers de configuració ordenats per les seves claus?
 advanced_bufsize=Mida de la memòria intermèdia de xarxa en bytes
 advanced_ebufsize=La mida del buffer de xarxa ha de ser un nombre superior a zero

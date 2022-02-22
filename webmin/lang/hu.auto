@@ -779,6 +779,7 @@ advanced_eprecache=Hiányzik a gyorsítótár előtti héjminták listája
 advanced_err=A speciális beállítások mentése nem sikerült
 advanced_etemp=Hiányzó vagy nem létező ideiglenes fájlok könyvtára
 advanced_etdir=Hiányzó vagy nem létező ideiglenes fájlok könyvtár a $1 számára
+advanced_etempallowed=Az ideiglenes fájlok $1 könyvtára egy rendszerkönyvtár
 advanced_pass=A jelszót elérhetővé teszi a Webmin programok számára? <br><font size=-1> (Nem működik, ha a munkamenet hitelesítés engedélyezve van.) </font>
 advanced_tempmods=Modulonkénti ideiglenes könyvtárak
 advanced_tmod=modul

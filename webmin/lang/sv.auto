@@ -617,6 +617,7 @@ advanced_preload=Förbelasta Webmin-funktionsbiblioteket?
 advanced_precache=Textfiler till förcache?
 advanced_precache2=Filer som matchar skalmönster $1
 advanced_eprecache=Saknad lista över skalmönster för förcache
+advanced_etempallowed=Katalogen för temporära filer $1 är en systemkatalog
 advanced_pass=Gör lösenord tillgängligt för Webmin-program? <br><font size=-1> (Fungerar inte när sessionens autentisering är aktiverad) </font>
 advanced_tempmods=Tillfälliga kataloger per modul
 advanced_tmod=Modul

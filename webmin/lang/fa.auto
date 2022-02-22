@@ -355,6 +355,7 @@ advanced_eprecache=لیست الگوهای پوسته قبل از حافظه پ�
 advanced_err=گزینه های پیشرفته ذخیره نشد
 advanced_etemp=فهرست پرونده های موقت موجود یا غیر وجود دارد
 advanced_etdir=Missing or non-existant temporary files directory for $1
+advanced_etempallowed=دایرکتوری فایل های موقت $1 یک دایرکتوری سیستم است
 advanced_pass=Make password available to Webmin programs?<br><font size=-1>(Does not work when session authentication is enabled)</font>
 advanced_tempmods=دایرکتوری های موقت هر ماژول
 advanced_tmod=مدول

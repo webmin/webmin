@@ -876,6 +876,7 @@ advanced_eprecache=Manjka seznam vzorcev lupin za predpomnilnik
 advanced_err=Naprednih možnosti ni bilo mogoče shraniti
 advanced_etemp=Manjkajoči ali neobstoječi imenik začasnih datotek
 advanced_etdir=Manjkajoči ali neobstoječi imenik začasnih datotek za $1
+advanced_etempallowed=Imenik začasnih datotek $1 je sistemski imenik
 advanced_pass=Ali geslo omogočite programom Webmin? <br><font size=-1> (Ne deluje, če je avtentikacija seje omogočena) </font>
 advanced_tempmods=Začasni imeniki na modulih
 advanced_tmod=Modul

@@ -13,6 +13,7 @@ session_passapi0=API deaktivert
 session_passapi1=API aktivert for Unix -brukere
 session_passurl=Når den er aktivert, kan brukerpassord endres via en POST -forespørsel til $1
 
+advanced_etempallowed=Katalog for midlertidige filer $1 er en systemkatalog
 advanced_bufsize=Nettverksbufferstørrelse i byte
 advanced_ebufsize=Nettverksbufferstørrelse må være et tall som er større enn null
 

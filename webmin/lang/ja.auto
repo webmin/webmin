@@ -1,1 +1,3 @@
 session_utmp=ログインとログアウトを<tt>utmp</tt>に記録しますか？
+
+advanced_etempallowed=一時ファイルディレクトリ $1はシステムディレクトリです

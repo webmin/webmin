@@ -876,6 +876,7 @@ advanced_eprecache=پری کیشے میں شیل کے نمونوں کی گمشد
 advanced_err=جدید اختیارات کو بچانے میں ناکام
 advanced_etemp=غائب یا غیر عارضی عارضی فائلوں کی ڈائرکٹری
 advanced_etdir=Missing or non-existant temporary files directory for $1
+advanced_etempallowed=عارضی فائلوں کی ڈائرکٹری $1 ایک سسٹم ڈائرکٹری ہے۔
 advanced_pass=Make password available to Webmin programs?<br><font size=-1>(Does not work when session authentication is enabled)</font>
 advanced_tempmods=فی ماڈیول عارضی ڈائریکٹریز
 advanced_tmod=ماڈیول

@@ -185,6 +185,7 @@ advanced_precache0=Nessuna
 advanced_precache1=File di testo in lingua inglese
 advanced_precache2=File corrispondenti ai modelli di shell $1
 advanced_eprecache=Elenco mancante di modelli di shell da pre-cache
+advanced_etempallowed=La directory dei file temporanei $1 è una directory di sistema
 advanced_chattr=Consentire la modifica di file immutabili?
 advanced_sclass=Classe IO per lavori programmati
 advanced_sprio=Priorità di I/O per i lavori programmati

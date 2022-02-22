@@ -876,6 +876,7 @@ advanced_eprecache=Aurrez cacheari shell ereduen zerrenda falta da
 advanced_err=Ezin izan da aukera aurreratuak gorde
 advanced_etemp=Falta diren edo ez dauden aldi baterako fitxategien direktorio
 advanced_etdir=Falta diren edo ez dauden aldi baterako fitxategien direktorio $1
+advanced_etempallowed=Aldi baterako fitxategien direktorioa sistemaren direktorio bat da
 advanced_pass=Pasahitza eskuragarri jarri Webmin programetarako? <br><font size=-1> (Ez du funtzionatzen saioa autentifikazioa gaituta dagoenean) </font>
 advanced_tempmods=Modulu bakoitzeko aldi baterako direktorioak
 advanced_tmod=modulua

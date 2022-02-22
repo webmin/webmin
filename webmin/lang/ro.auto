@@ -876,6 +876,7 @@ advanced_eprecache=Lipsește lista de modele de shell în pre-cache
 advanced_err=Nu a reușit să salvați opțiunile avansate
 advanced_etemp=Directorul de fișiere temporare lipsit sau inexistent
 advanced_etdir=Director lipsit sau lipsit de fișiere temporare pentru $1
+advanced_etempallowed=Directorul de fișiere temporare $1 este un director de sistem
 advanced_pass=Pune la dispoziție parola pentru programele Webmin? <br><font size=-1> (Nu funcționează când autentificarea sesiunii este activată) </font>
 advanced_tempmods=Directoare temporare pe module
 advanced_tmod=Modul

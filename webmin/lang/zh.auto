@@ -270,6 +270,7 @@ advanced_nodelete=无限
 advanced_days=天
 advanced_precache1=英文文本文件
 advanced_err=保存高级选项失败
+advanced_etempallowed=临时文件目录 $1 是系统目录
 advanced_tempmods=每个模块的临时目录
 advanced_tdir=目录
 advanced_stack=显示堆栈跟踪以获取错误消息？

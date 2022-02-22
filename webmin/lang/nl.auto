@@ -101,6 +101,7 @@ referers_none2=WAARSCHUWING: Dit stelt uw systeem open voor XSS-aanvallen!
 ipkey_ips2=Voor IP-adressen en hostnamen
 ipkey_eip2='$1' is geen geldig IP-adres of hostnaam
 
+advanced_etempallowed=Tijdelijke bestanden directory $1 is een systeemdirectory
 advanced_redir=URL-indeling voor omleidingen
 advanced_redir1=Alleen pad
 advanced_redir0=Protocol, host, poort en pad

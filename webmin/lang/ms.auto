@@ -82,6 +82,7 @@ referers_none2=AMARAN: Ini membuka sistem anda sehingga serangan XSS!
 ipkey_ips2=Untuk alamat IP dan nama host
 ipkey_eip2='$1' bukan alamat IP atau nama hos yang sah
 
+advanced_etempallowed=Direktori fail sementara $1 ialah direktori sistem
 advanced_listdir=Senarai direktori tanpa fail indeks?
 advanced_headers=Tajuk tambahan HTTP
 advanced_eheader=Tajuk mesti diformat seperti <tt>Tajuk: Nilai</tt>

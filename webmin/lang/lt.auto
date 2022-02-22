@@ -876,6 +876,7 @@ advanced_eprecache=Trūksta išankstinės talpyklos apvalkalų modelių sąrašo
 advanced_err=Nepavyko išsaugoti išplėstinių parinkčių
 advanced_etemp=Nėra laikinų failų katalogo arba jo nėra
 advanced_etdir=Trūksta arba neegzistuoja $1 laikinų failų katalogas
+advanced_etempallowed=Laikinųjų failų katalogas $1 yra sistemos katalogas
 advanced_pass=Padaryti slaptažodį prieinamą „Webmin“ programoms? <br><font size=-1> (neveikia, kai įjungta seanso autentifikacija) </font>
 advanced_tempmods=Laikini katalogai pagal modulį
 advanced_tmod=Modulis

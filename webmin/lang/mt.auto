@@ -876,6 +876,7 @@ advanced_eprecache=Lista nieqsa ta 'mudelli ta' qoxra għal pre-cache
 advanced_err=Ma rnexxielux isalva għażliet avvanzati
 advanced_etemp=Direttorju tal-fajls temporanji nieqsa jew ineżistenti
 advanced_etdir=Direttorju tal-fajls temporanji nieqes jew ineżistenti għal $1
+advanced_etempallowed=Id-direttorju tal-fajls temporanji $1 huwa direttorju tas-sistema
 advanced_pass=Qiegħed il-password disponibbli għall-programmi ta 'Webmin? <br><font size=-1> (Ma jaħdimx meta l-awtentikazzjoni tas-sessjoni hija attivata) </font>
 advanced_tempmods=Direttorji temporanji għal kull modulu
 advanced_tmod=Modulu

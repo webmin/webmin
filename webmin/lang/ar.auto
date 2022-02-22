@@ -767,6 +767,7 @@ advanced_tempdelete=الحد الأقصى لسن الملفات المؤقتة
 advanced_preload=قبل تحميل مكتبة وظائف Webmin؟
 advanced_precache=ملفات نصية إلى ذاكرة التخزين المؤقت قبل؟
 advanced_precache2=Files matching shell patterns $1
+advanced_etempallowed=دليل الملفات المؤقتة$1 هو دليل نظام
 advanced_pass=Make password available to Webmin programs?<br><font size=-1>(Does not work when session authentication is enabled)</font>
 advanced_tempmods=لكل وحدة الدلائل المؤقتة
 advanced_tmod=وحدة

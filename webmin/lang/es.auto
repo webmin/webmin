@@ -315,6 +315,7 @@ advanced_precache1=Archivos de texto en inglés
 advanced_precache2=Archivos que coinciden con patrones de shell $1
 advanced_eprecache=Falta la lista de patrones de shell para pre-cachear
 advanced_etdir=Directorio de archivos temporales faltantes o inexistentes para $1
+advanced_etempallowed=El directorio de archivos temporales $1 es un directorio del sistema
 advanced_pass=¿Hacer que la contraseña esté disponible para los programas de Webmin? <br><font size=-1> (No funciona cuando la autenticación de sesión está habilitada) </font>
 advanced_tempmods=Directorios temporales por módulo
 advanced_tmod=Módulo

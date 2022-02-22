@@ -13,6 +13,7 @@ session_passapi0=API deaktiviert
 session_passapi1=API für Unix-Benutzer aktiviert
 session_passurl=Wenn aktiviert, können Benutzerkennwörter über eine POST-Anfrage in $1. geändert werden
 
+advanced_etempallowed=Verzeichnis für temporäre Dateien $1 ist ein Systemverzeichnis
 advanced_bufsize=Netzwerkpuffergröße in Bytes
 advanced_ebufsize=Die Netzwerkpuffergröße muss eine Zahl größer als Null sein
 
