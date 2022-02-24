@@ -3365,6 +3365,7 @@ if (!$single) {
 
 # Add the new DNSKEY record(s) to the zone
 my $chrootfn = &get_zone_file($z);
+$chrootfn || return "Could not work out records file!";
 my @recs = &read_zone_file($chrootfn, $dom);
 for(my $i=$#recs; $i>=0; $i--) {
 	if ($recs[$i]->{'type'} eq 'DNSKEY') {
