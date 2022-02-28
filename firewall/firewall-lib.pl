@@ -316,7 +316,7 @@ else {
 # Create (if necessary) the Webmin iptables init script
 sub create_webmin_init
 {
-local $res = &has_command("ip${ipvx}tables-restore");
+local $res = &iptable_restore_command();
 local $ipt = &has_command("ip${ipvx}tables");
 local $out = &backquote_command("$res -h 2>&1 </dev/null");
 if ($out =~ /\s+-w\s+/) {
@@ -392,12 +392,17 @@ foreach $c ("ip${ipvx}tables", "ip${ipvx}tables-restore", "ip${ipvx}tables-save"
 return undef;
 }
 
+sub iptables_restore_command
+{
+return &has_command("ip${ipvx}tables-legacy-restore") ||
+       &has_command("ip${ipvx}tables-restore");
+}
+
 # iptables_restore()
 # Activates the current firewall rules, and returns any error
 sub iptables_restore
 {
-local $rcmd = &has_command("ip${ipvx}tables-legacy-restore") ||
-	      "ip${ipvx}tables-restore";
+local $rcmd = &iptables_restore_command();
 local $out = &backquote_logged("cd / && $rcmd <$ipvx_save 2>&1");
 return $? ? "<pre>$out</pre>" : undef;
 }
