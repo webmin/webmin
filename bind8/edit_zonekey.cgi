@@ -55,6 +55,10 @@ if (@keyrecs) {
 			"off", 0, "readonly style='width:90%'"),"<br>\n";
 		print &text('zonekey_privatefile',
 			    "<tt>$key->{'privatefile'}</tt>"),"<br>\n";
+		if ($key->{'algorithm'}) {
+			print &text('zonekey_algorithm',
+				    "<tt>$key->{'algorithm'}</tt>"),"<br>\n";
+			}
 		print &ui_hidden_end();
 		}
 
