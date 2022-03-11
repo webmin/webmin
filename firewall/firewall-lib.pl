@@ -316,7 +316,7 @@ else {
 # Create (if necessary) the Webmin iptables init script
 sub create_webmin_init
 {
-local $res = &iptable_restore_command();
+local $res = &iptables_restore_command();
 local $ipt = &has_command("ip${ipvx}tables");
 local $out = &backquote_command("$res -h 2>&1 </dev/null");
 if ($out =~ /\s+-w\s+/) {
