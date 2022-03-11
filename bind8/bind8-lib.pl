@@ -3520,7 +3520,7 @@ while($tries++ < 10) {
 	$out = &backquote_logged(
 		"cd ".quotemeta($dir)." && ".
 		"$config{'signzone'} -o ".quotemeta($dom).
-		($alg =~ /^(NSEC3|RSASHA256|RSASHA512|ECCGOST|ECDSAP256SHA256|ECDSAP384SHA384)/ ? " -3 -" : "").
+		($alg =~ /^(NSEC3|RSASHA256|RSASHA512|ECCGOST|ECDSAP256SHA256|ECDSAP384SHA384)/ ? " -3 - -u" : "").
 		" -f ".quotemeta($signed)." ".
 		quotemeta($chrootfn)." 2>&1");
 	last if (!$?);
