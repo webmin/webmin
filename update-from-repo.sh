@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #############################################################################
 # Update webmin/usermin to the latest develop version  from GitHub repo
-# inspired by authentic-theme/theme-update.sh script, thanks @rostovtsev
+# inspired by authentic-theme/theme-update.sh script, thanks @iliajie
 #
 VERS="1.6.9, 2020-06-18"
 #
@@ -117,8 +117,8 @@ Examples:
     ${IAM} -force   OR   ${IAM} -yes
         same but without asking,
 
-    ${IAM} -force -repo:rostovtsev/webmin
-        update from rostovtsev's repository without asking
+    ${IAM} -force -repo:webmin/webmin
+        update from webmin's repository without asking
 
     ${IAM} -file module/module.info
         pull module.info for given module
@@ -132,8 +132,8 @@ Examples:
     ${IAM} -file module/lang/
         pull all files in lang/ dir of a module
 
-    ${IAM} -fore -repo:rostovtsev/webmin -file */lang/
-        pull lang files for all existing */lang/ dirs from rostovtsev
+    ${IAM} -fore -repo:webmin/webmin -file */lang/
+        pull lang files for all existing */lang/ dirs from webmin
         repository without asking
 
 Exit codes:

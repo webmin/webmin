@@ -133,7 +133,7 @@ select, input[type="button"][onclick], button.btn-default.file_chooser_button, b
 a:hover {
  cursor:pointer;
 }
-/* by https://github.com/rostovtsev */
+/* by https://github.com/iliajie */
 #list_form tbody tr.checked:not(.m-active-o):not(.m-not-active):hover,
 #list_form tbody tr:hover:not(.m-active-o):not(.m-not-active) {
     background: #d3e4f4 !important;

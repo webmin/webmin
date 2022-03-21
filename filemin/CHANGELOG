@@ -1,7 +1,7 @@
 -- Version 0.9.6 --
  - Fixed `Undefined subroutine &filemin::ceil
    Caused on some systems by not including POSIX package in filemin-lib.pl.
- - Major Authentic interface improvement by Ilia Rostovtsev
+ - Major Authentic interface improvement by @iliajie
     1. Working sorting files by size (with next Authentic Theme - perfectly, now just alright).
        This fix will also prevent fatal code breaks despite of user settings
     2. Store user chose on columns sorting upon page refresh
@@ -14,7 +14,7 @@
 
   #42 fixed:
  - Fixing conflict with Authentic Theme codeMirror
-   By Ilia.
+   by @iliajie
 
   #46 fixed:
  - Module is now installable from Usermin.
@@ -29,7 +29,7 @@
 -- Version 0.9.5 --
  - Made top level menu items translatable.
  - Added https://github.com/Real-Gecko/filemin/pull/29
-   Selected rows also highlight on hover + color tweaks, by https://github.com/rostovtsev
+   Selected rows also highlight on hover + color tweaks, by https://github.com/iliajie
  - Some code cleanup, got rid of Regexp::Common and URI dependencies.
    Thanks to Jamie Cameron.
  - Added error message if file saving fails.
@@ -64,7 +64,7 @@
 
   #21 fixed:
  - Added Codemirror to module for syntax highlighting, thanks to https://github.com/pabloko for solution.
- - Under Authentic 14.01 now works too, thanks to https://github.com/rostovtsev for fix.
+ - Under Authentic 14.01 now works too, thanks to https://github.com/iliajie for fix.
 
   #24 fixed:
  - Added zip compression method, user now can select between 'zip' and 'tar' compression methods.
@@ -169,7 +169,7 @@ Mielstone reached:
 
 #1 fixed:
  - After long discussion upper-left toolbar finally looks good in modern interface
- - Thanks to https://github.com/Goeny for his brilliant solution and https://github.com/rostovtsev for debugging
+ - Thanks to https://github.com/Goeny for his brilliant solution and https://github.com/iliajie for debugging
 
 #3 fixed:
  - Some misspellings fixed
