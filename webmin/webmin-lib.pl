@@ -664,14 +664,12 @@ foreach my $k (@keys) {
 		return (0);
 		}
 	# Key been imported before but contact changed, delete first
-	elsif ($k->{'email'}->[0] ne $email) {
-		my $key = $finger;
-		$key =~ s/\s+//g;
-		if ($k->{'key'} eq $key) {
-			my $out = &backquote_logged("$gpgpath --batch --delete-key $k->{'key'} 2>&1");
-			if ($?) {
-				return (2, $out);
-				}
+	elsif ($k->{'email'}->[0] ne $email && $fp && $fp eq $finger) {
+		my $finger_ = $finger;
+		$finger_ =~ s/\s+//g;
+		my $out = &backquote_logged("$gpgpath --batch --delete-key $finger_ 2>&1");
+		if ($?) {
+			return (2, $out);
 			}
 		}
 	}
