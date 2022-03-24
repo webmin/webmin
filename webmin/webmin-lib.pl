@@ -42,8 +42,7 @@ our $primary_port = 80;
 our $webmin_key_email = "jcameron\@webmin.com";
 our $webmin_key_fingerprint = "1719 003A CE3E 5A41 E2DE  70DF D97A 3AE9 11F6 3C51";
 
-our $authentic_key_email = "ilia\@rostovtsev.io";
-our $authentic_key_email_old = "ilia\@rostovtsev.ru";
+our $authentic_key_email = "gpg\@ilia.engineer";
 our $authentic_key_fingerprint = "EC60 F3DA 9CB7 9ADC CF56  0D1F 121E 166D D9C8 21AB";
 
 our $standard_host = $primary_host;
@@ -639,8 +638,7 @@ my ($ok, $err) = &import_gnupg_key(
 return ($ok, $err) if ($ok);
 
 ($ok, $err) = &import_gnupg_key(
-	$authentic_key_email."|".$authentic_key_email_old,
-	$authentic_key_fingerprint,
+	$authentic_key_email, $authentic_key_fingerprint,
 	"$root_directory/authentic-theme/THEME.pgp");
 return ($ok, $err) if ($ok);
 
@@ -661,13 +659,24 @@ return (0) if (!-r $path);
 my @keys = &list_keys();
 foreach my $k (@keys) {
 	my $fp = &key_fingerprint($k);
-	return ( 0 ) if ($k->{'email'}->[0] =~ /^$email$/ &&
-		         $fp && $fp eq $finger);
+	# Key already been imported with correct contact
+	if ($k->{'email'}->[0] eq $email && $fp && $fp eq $finger) {
+		return (0);
+		}
+	# Key been imported before but contact changed, delete first
+	elsif ($k->{'email'}->[0] ne $email && $fp && $fp eq $finger) {
+		my $lfinger = $finger;
+		$lfinger =~ s/\s+//g;
+		my $out = &backquote_logged("$gpgpath --batch --delete-key ".quotemeta($lfinger)." 2>&1");
+		if ($?) {
+			return (2, $out);
+			}
+		}
 	}
 
 # Import it if not
 &list_keys();
-my $out = &backquote_logged("$gpgpath --import $path 2>&1");
+my $out = &backquote_logged("$gpgpath --import ".quotemeta($path)." 2>&1");
 if ($?) {
 	return (2, $out);
 	}

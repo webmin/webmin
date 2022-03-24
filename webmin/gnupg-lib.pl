@@ -100,7 +100,7 @@ local $_;
 &clean_language();
 open(GPG, "$gpgpath --fingerprint ".quotemeta($_[0]->{'name'}->[0])." 2>/dev/null |");
 while(<GPG>) {
-	if (/fingerprint\s+=\s+(.*)/) {
+	if (/([0-9A-F]{4}\s+[0-9A-F]{4}\s+[0-9A-F]{4}\s+[0-9A-F]{4}\s+[0-9A-F]{4}\s+[0-9A-F]{4}\s+[0-9A-F]{4}\s+[0-9A-F]{4}\s+[0-9A-F]{4}\s+[0-9A-F]{4})/i) {
 		$fp = $1;
 		}
 	}
