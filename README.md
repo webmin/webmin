@@ -44,7 +44,7 @@ Complete set of documentation for Webmin and all of its modules can be found at 
 ### Contributors
 
 * [Joe Cooper](https://github.com/swelljoe)
-* [Ilia Ross](https://github.com/iliajie)
+* [Ilia Rostovtsev](https://github.com/iliajie)
 * [Kay Marquardt](https://github.com/gnadelwartz)
 * [Nawawi Jamili](https://github.com/nawawi) + [57 more..](https://github.com/webmin/webmin/graphs/contributors)
 
