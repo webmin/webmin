@@ -16,7 +16,7 @@ if ($in{'mode'} == 0) {
 elsif ($in{'mode'} == 1) {
 	$mconfig{'send_mode'} = '127.0.0.1';
 	delete($mconfig{'smtp_port'});
-	$mconfig{'smtp_ssl'} = 0;
+	$mconfig{'smtp_ssl'} = $in{'ssl'};
 	}
 else {
 	&to_ipaddress($in{'smtp'}) || &to_ip6address($in{'smtp'}) ||
