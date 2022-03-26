@@ -2,14 +2,35 @@ index_eshow=MySQLステータスプログラム $1がシステムで見つかり
 index_estart=MySQL起動スクリプト $1がシステムで見つかりませんでした。 MySQLがインストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
 index_indexes=インデックス
 index_views=ビュー
+index_version=$2バージョン $1
 index_version2=$2の $3バージョン $1
 index_eenvpass=MySQLクライアントプログラム $1は、<tt>MYSQL_PWD</tt>環境変数を使用して渡されたパスワードを受け入れません。 WebminがMySQLと完全に通信できるようにするには、<a href='$2'>モジュール設定</a>ページでこのオプションをオフにする必要があります。または、<tt>root</tt>ユーザーの<tt>.my.cnf</tt>ファイルに設定されているパスワードを削除することもできます。
 index_ecnf=MySQL構成ファイル $1がシステムで見つかりませんでした。 <a href='$2'>モジュール構成</a>ページを使用して、正しいパスを設定します。
+index_nodbs2=システムにMySQLデータベースが見つかりませんでした。
 index_nodbs3=検索に一致するMySQLデータベースはありません。
+index_backupmsg=このボタンをクリックして、すべてのMySQLデータベースのバックアップを、すぐに、または構成されたスケジュールでセットアップします。
+index_mysqladmin=MySQL管理プログラム
+index_mysql=MySQLクライアントプログラム
+index_mysqlshow=MySQLステータスプログラム
 index_mysqlstatus=MySQL起動スクリプト
+index_toomany=表示するにはデータベースが多すぎます。一致するデータベースを検索します。
+index_search=検索
+index_showing=$1に一致するデータベースを表示しています。
+index_emsg=完全なMySQLエラーメッセージは次のとおりです： $1
+index_jump=またはデータベースを編集します。
+index_jumpok=開ける
 
+dbase_header=データベーステーブル、インデックス、ビュー
 dbase_empty=空のデータベース
+dbase_none2=検索に一致するテーブルはありません。
 dbase_name=名前
+dbase_delete=選択したテーブルを削除する
+dbase_showing=$1に一致するテーブルを表示しています。
+dbase_toomany=テーブルが多すぎて表示できません。一致するテーブルを検索します。
+dbase_index=索引
+dbase_view=意見
+dbase_addview=ビューの作成
+dbase_jump=テーブルの編集：
 dbase_vjump=編集ビュー：
 dbase_ijump=インデックスを編集：
 dbase_type=タイプ
@@ -20,17 +41,50 @@ dbase_typeview=見る
 ddrop_rusure2=データベース $1を空にしてもよろしいですか？ $3行のデータを含む $2テーブルが削除されます。
 ddrop_empty2=すべてのテーブルを削除
 
+ddrops_err=データベースの削除に失敗しました
+ddrops_title=データベースの削除
+ddrops_rusure=選択した $1データベースを削除してもよろしいですか？ $3行のデータを含む $2テーブルが削除されます。
+ddrops_rusure2=選択した $1データベースを削除してもよろしいですか？
+ddrops_mysql=マスターデータベースが選択されているため、マスターデータベースを削除すると、MySQLサーバーが使用できなくなる可能性があります。
+ddrops_ok=データベースの削除
+ddrops_enone=データベースが選択されていません
+ddrops_ecannotdb=データベース $1を削除することは許可されていません
+
+table_copy2=データベースからフィールドをコピーする
+table_copy2t=とテーブル
+table_type_=ディフォルト
+table_type_heap=ヒープ
+table_type_merge=マージ
+
+tdrops_enone=ドロップするテーブルが選択されていません
+tdrops_err=テーブルの削除に失敗しました
+tdrops_ok=落とす
+tdrops_title=選択したドロップ
+tdrops_rusure=選択した $1個のテーブルをデータベース $2にドロップしてもよろしいですか？ $3行のデータが削除されます。
+tdrops_rusure2=選択した $1個のテーブルをデータベース $2にドロップしてもよろしいですか？
+
+field_current=現在の時刻
+field_defval=価値
 field_defdef=MySQLのデフォルト
+field_defnone=デフォルトなし
 field_defempty=空の文字列
+field_defleave=変更しないでください
 
 view_refresh=リフレッシュ
 view_match4=より大きい
 view_match5=未満
 view_searchheadnot=フィールド $2の $1ではないための検索結果 ..
+view_searchhead2=$1フィールドの高度な検索結果 ..
+view_sorthead1=$1で並べ替え、降順
+view_sorthead2=$1で並べ替え、昇順
+view_sortreset=並べ替えをリセット
 view_go=行く
+view_adv=高度な検索
 view_sqlrun=SQLクエリによって生成された結果： $1
 
 users_syncwhen=同期するタイミング
+users_derr=ユーザーの削除に失敗しました
+users_enone=ユーザーが選択されていません
 users_ssl=証明書
 users_dtitle=ユーザー権限を削除する
 users_drusure=選択した $1のMySQLユーザー権限を削除してもよろしいですか？
@@ -85,40 +139,112 @@ user_emax_connections=1時間あたりの最大接続数は数値である必要
 user_emax_updates=1時間あたりの最大更新数は数値である必要があります
 user_emax_questions=1時間あたりの最大クエリ数は数値である必要があります
 
+dbs_derr=データベース権限の削除に失敗しました
+dbs_enone=データベースが選択されていません
 dbs_dtitle=データベース権限を削除する
 dbs_drusure=$1の選択されたMySQLデータベース権限を削除してもよろしいですか？
 dbs_dok=権限を削除
 
+hosts_derr=ホスト権限の削除に失敗しました
+hosts_enone=ホストが選択されていません
 hosts_dtitle=ホスト権限を削除
 hosts_drusure=選択した $1のMySQLホスト権限を削除してもよろしいですか？
 hosts_dok=権限を削除
 hosts_return=ホスト権限
 
-newdb_collation=照合順序
+host_sel=選択済み
+host_otherdb=マッチングパターン
 
+newdb_charset=キャラクターセット
+newdb_collation=照合順序
+newdb_ecannot2=これ以上データベースを作成することはできません
+
+exec_edit=前の編集
+exec_format=ファイル形式
+exec_ecompress=SQLファイルは圧縮されていますが、解凍に必要なプログラム $1がインストールされていません。
+exec_ecompress2=解凍に失敗しました： $1
+exec_tabexec=SQLを実行する
+exec_tabfile=ファイルからSQLを実行する
+exec_tabimport=テキストファイルをインポートする
+exec_isource=テキストファイルソース
+exec_iheader=テキストファイルのインポートオプション
+exec_created=$1個のテーブルが作成されました。
+exec_inserted=$1レコードが挿入されました。
 exec_cs=データの文字セット
 
+tprivs_derr=テーブル権限の削除に失敗しました
+tprivs_enone=テーブルが選択されていません
 tprivs_dtitle=テーブルのアクセス許可を削除する
 tprivs_drusure=$1の選択したMySQLテーブルのアクセス許可を削除してもよろしいですか？
 tprivs_dok=権限を削除
 
+tpriv_edb=データベース名が欠落しているか無効です
+
+cprivs_derr=フィールド権限の削除に失敗しました
+cprivs_enone=フィールドが選択されていません
 cprivs_dtitle=列のアクセス許可を削除する
 cprivs_drusure=$1で選択したMySQL列のアクセス許可を削除してもよろしいですか？
 cprivs_dok=権限を削除
 
+cpriv_edb=データベース名が欠落しているか無効です
+
+acl_indexes=インデックスを表示および管理できますか？
+acl_views=ビューを表示および管理できますか？
 acl_files=ローカルファイルからSQLを実行できますか？
 
+log_cnf=MySQLサーバー構成を変更しました
+log_kill=$1データベース接続を強制終了しました
+log_vars=変更された $1システム変数
+log_dbs_delete=ドロップされた $1データベース
+log_dbprivs_delete=$1データベース権限を削除しました
+log_tprivs_delete=$1テーブル権限を削除しました
+log_cprivs_delete=$1フィールド権限を削除しました
+log_users_delete=$1ユーザーを削除
+log_index_create=データベース $2にインデックス $1を作成しました
+log_index_delete=データベース $2からインデックス $1を削除しました
+log_index_modify=データベース $2の変更されたインデックス $1
+log_view_create=データベース $2にビュー $1を作成しました
+log_view_delete=データベース $2からビュー $1を削除しました
+log_view_modify=データベース $2の変更されたビュー $1
+log_tables_delete=データベース $2から $1オブジェクトを削除しました
+log_backup_all=すべてのデータベースをバックアップしました
+log_backup_all_l=すべてのデータベースをファイル $2にバックアップしました
+log_set=$1MySQL変数を変更しました
+log_root=管理パスワードを変更しました
 log_manual=手動で編集された構成ファイル
 
+backup_title2=すべてのデータベースをバックアップする
+backup_desc3=このフォームを使用すると、すべてのデータベースをSQLステートメントのファイルとしてバックアップできます。バックアップを復元するには、[SQLの実行]フォームを使用して、ファイルの1つでコマンドを実行できます。
+backup_header1=バックアップ先
+backup_header2=その他のバックアップオプション
+backup_header3=バックアップスケジュール
+backup_file2=ディレクトリへのバックアップ
 backup_prefix=ファイル名のプレフィックス
 backup_eprefix=ファイル名のプレフィックスに/を含めることはできません
 backup_noprefix=なし
 backup_download=ブラウザでダウンロード
 backup_path=サーバー上のパス
+backup_mkdir=宛先ディレクトリを作成しますか？
 backup_single=トランザクション内でバックアップしますか？
 backup_quick=行を1つずつダンプしますか？
 backup_parameters=バックアップコマンドにカスタムパラメータを追加しますか？
+backup_efile2=バックアップディレクトリがないか無効です
+backup_echarset=欠落している文字セット
+backup_ebefore=バックアップ前のコマンドが失敗しました！
 backup_eisdir=バックアップ先 $1はディレクトリです
+backup_cmode=コマンドを実行するタイミング
+backup_cmode1=すべてのデータベースの前後
+backup_cmode0=各データベースの前後
+backup_tables=バックアップするテーブル
+backup_alltables=すべてのテーブル
+backup_seltables=選択したテーブル ..
+backup_etables=バックアップするテーブルが選択されていません
+backup_compatible=バックアップ互換性フォーマット
+backup_compwith=データベース $1の場合
+backup_options=除外する構造情報
+backup_compress=圧縮形式
+backup_cnone=なし
+backup_eccmd=選択した圧縮形式には、コマンド $1が必要です
 backup_email=にバックアップステータスメールを送信
 backup_notify=のメールを送信
 backup_notify0=すべてのバックアップ
@@ -138,14 +264,67 @@ backup_bodyall=すべて
 backup_edownloadall=単一のデータベースバックアップのみをダウンロードできます
 backup_edownloadsave=ダウンロードモードは、スケジュールされたバックアップには使用できません
 
+adv_title=高度な検索
+adv_and=すべての基準に一致するレコードを検索します。
+adv_or=任意の基準に一致するレコードを検索します。
+adv_ok=検索中
+
+csv_title=CSVファイルのエクスポート
+csv_header=CSVエクスポートオプション
+csv_dest=エクスポート先
+csv_browser=ブラウザで表示
+csv_file=ファイルに保存 ..
+csv_where=エクスポートする行のSQL<tt>where</tt>句
+csv_all=すべての行をエクスポート
+csv_ok=今すぐエクスポート
+csv_format=ファイル形式
+csv_format0=引用符付きのCSV
+csv_format1=引用符なしのCSV
+csv_format2=タブ分離
+cvs_err=CSVエクスポートに失敗しました
+csv_efile=宛先ファイルがないか無効です
+csv_ebuser=ファイルへのエクスポートは許可されていません
+csv_ewhere=<tt>where</tt>句がありません
+csv_done=$1へのCSVエクスポートが完了しました。結果のファイルサイズは $2です。
+csv_headers=CSVに列名を含めますか？
+csv_cols=CSVに含める列
+csv_ecols=列が選択されていません
+
+cnf_header=MySQLサーバーオプション
+cnf_port=MySQLサーバーポート
+cnf_bind=MySQLサーバーのリスニングアドレス
+cnf_all=どれでも
+cnf_socket=MySQLUnixソケット
+cnf_datadir=データベースファイルディレクトリ
 cnf_stor=デフォルトのテーブルストレージエンジン
+cnf_big-tables=大きなテーブルを許可しますか？
+cnf_emysqld=my.cnfに[mysqld]セクションが見つかりませんでした
+cnf_err=MySQLサーバーオプションの保存に失敗しました
+cnf_eport=ポート番号がないか無効です
+cnf_ebind=リッスンするIPアドレスがないか無効です
+cnf_esocket=Unixソケットファイル名がありません
+cnf_edatadir=データベースファイルディレクトリがないか無効です
+cnf_key_buffer=キーバッファサイズ
 cnf_key_buffer_size=キーバッファサイズ
+cnf_max_allowed_packet=最大パケットサイズ
+cnf_max_connections=接続の最大数
 cnf_query_cache_size=バイト単位のクエリキャッシュサイズ
 cnf_equery_cache_size=無効なクエリキャッシュサイズ
+cnf_table_cache=キャッシュするテーブル
 cnf_table_open_cache=キャッシュするテーブル
+cnf_sort_buffer=ソートバッファサイズ
 cnf_sort_buffer_size=ソートバッファサイズ
+cnf_net_buffer_length=ネットワークバッファサイズ
+cnf_myisam_sort_buffer_size=MyISAMソートバッファサイズ
+cnf_ekey_buffer=キーバッファサイズがないか無効です
 cnf_ekey_buffer_size=キーバッファサイズがないか、無効です
+cnf_emax_allowed_packet=最大パケットサイズが欠落しているか無効です
+cnf_etable_cache=キャッシュするテーブルがないか無効です
+cnf_esort_buffer=ソートバッファサイズがないか無効です
 cnf_esort_buffer_size=ソートバッファサイズがないか、無効です
+cnf_enet_buffer_length=ネットワークバッファサイズがないか無効です
+cnf_emyisam_sort_buffer_size=MyISAMソートバッファサイズがないか無効です
+cnf_emax_connections=接続の最大数が欠落しているか無効です
 cnf_restart=MySQLを保存して再起動する
 cnf_fpt=InnoDBテーブルごとに個別のファイルですか？
 cnf_ilt=InnoDBロックタイムアウト（秒）
@@ -157,9 +336,74 @@ manual_ok=OK
 manual_efile=無効な構成ファイル！
 manual_err=構成ファイルを保存できませんでした
 
+index_title1=インデックスの作成
+index_header1=インデックスオプション
+index_name=インデックス名
+index_fields=インデックスのフィールド
+index_type=インデックスタイプ
+index_unique=個性的
+index_fulltext=全文
+index_spatial=空間的な
+index_err=インデックスの作成に失敗しました
+index_ename=インデックス名がないか無効です
+index_eclash=同じ名前のインデックスがすでに存在します
+index_ecols=フィールドが選択されていません
+index_title2=インデックスの編集
+index_header=データベース $2のインデックス $1
+index_ecannot=インデックスの管理は許可されていません
+
+syslog_desc=MySQLエラーメッセージ
 syslog_desc2=MySQLエラーメッセージ
+syslog_logdesc=MySQLクエリ
+
+fdrop_err=フィールドの削除に失敗しました
+fdrop_enone=何も選択されていません
+fdrop_eall=テーブルからすべてのフィールドを削除することはできません。
+
+view_title1=ビューの作成
+view_title2=ビューの編集
+view_header1=詳細を見る
+view_name=名前を表示
+view_query=SQL選択クエリ
+view_algorithm=ビュー処理アルゴリズム
+view_undefined=自動
+view_merge=SQLをマージする
+view_temptable=一時テーブルを使用する
+view_definer=所有者を表示
+view_security=実行権限を表示する
+view_sdefiner=オーナーから
+view_sinvoker=ユーザーから
+view_auto=自動
+view_below=以下に入力します。
+view_err=ビューの保存に失敗しました
+view_ename=ビュー名がないか無効です
+view_eclash=同じ名前のビューがすでに存在します
+view_eclash2=同じ名前のテーブルがすでに存在します
+view_equery=SQLクエリがありません
+view_check=挿入チェック
+view_cascaded=根底にある見解
+view_local=このビューのみ
+view_nocheck=なし
+view_ecannot=ビューを管理することは許可されていません
+
+procs_ecannot=データベース接続を表示することは許可されていません
+
+kill_err=データベース接続の強制終了に失敗しました
+kill_ecannot=データベース接続を管理することは許可されていません
+kill_enone=何も選択されていません
 
 vars_desc=警告-このページで設定された変数は、MySQLの再起動時にデフォルト値にリセットされます。 <a href='$1'>MySQLサーバーの構成</a>ページで永続的な設定を行う必要があります。
+vars_ecannot=システム変数を編集することは許可されていません
+vars_none=システム変数が見つかりませんでした！
+
+compat_no_key_options=主なオプション
+compat_no_table_options=テーブルオプション
+compat_no_field_options=フィールドオプション
+
+config_echarset=欠落しているか無効に見える文字セット
+
+root_none=パスワードなし！
+root_auto=自動（通常は<tt>root</tt>）
 
 mysqlpass_err=MySQLセーフモード
 mysqlpass_esafecmd=認証を無効にしてMySQLを起動するために必要なコマンド $1が見つかりませんでした
