@@ -232,8 +232,7 @@ return $conf1 ne $conf2;
 # Returns the syslog PID file
 sub get_syslog_pid
 {
-local $pid;
-($pid) = &find_byname("syslogd");
+my ($pid) = &find_byname("syslogd");
 ($pid) = &find_byname("rsyslogd") if (!$pid);
 if (!$pid && $config{'pid_file'}) {
 	foreach my $pfile (map { glob($_) } split(/\s+/, $config{'pid_file'})) {
