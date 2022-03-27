@@ -233,7 +233,9 @@ return $conf1 ne $conf2;
 sub get_syslog_pid
 {
 local $pid;
-if ($config{'pid_file'}) {
+($pid) = &find_byname("syslogd");
+($pid) = &find_byname("rsyslogd") if (!$pid);
+if (!$pid && $config{'pid_file'}) {
 	foreach my $pfile (map { glob($_) } split(/\s+/, $config{'pid_file'})) {
 		my $poss = &check_pid_file($pfile);
 		if ($poss) {
@@ -241,10 +243,6 @@ if ($config{'pid_file'}) {
 			last;
 			}
 		}
-	}
-else {
-	($pid) = &find_byname("syslogd");
-	($pid) = &find_byname("rsyslogd") if (!$pid);
 	}
 return $pid;
 }
