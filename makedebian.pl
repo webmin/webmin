@@ -322,7 +322,7 @@ tempdir=/tmp/.webmin
 if [ ! -d \$tempdir ]; then
 	tempdir=/tmp
 fi
-./setup.sh >$tempdir/$product-setup.out 2>&1
+./setup.sh >\$tempdir/$product-setup.out 2>&1
 if [ "$product" = "webmin" ]; then
 	grep sudo= /etc/$product/miniserv.conf >/dev/null 2>&1
 	if [ "\$?" = 1 ]; then
