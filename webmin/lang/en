@@ -1080,6 +1080,16 @@ web_expirespaths=Client-side cache times based on URL path
 web_expirespath=Path regular expression
 web_expirestime=Cache time in seconds
 web_eexpires2=Missing or non-numeric client side cache time in row $1
+web_rediruurl=Post-login switch redirect URL
+web_redirdesc=Internal redirect URL overrides
+web_eredirurl='$1' contains spaces and is not a valid URL
+web_redirhost=Redirect host
+web_eredirhost='$1' is not a valid hostname
+web_redirport=Redirect port
+web_redirpref=Redirect prefix
+web_eredirpref=Prefix must start with forward slash
+web_eredirpref2=Prefix must not contain spaces
+web_redirssl=Redirect SSL
 
 webmincron_title=Webmin Scheduled Functions
 webmincron_emodule=The Webmin Cron Jobs module is not installed!
