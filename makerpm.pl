@@ -256,6 +256,7 @@ export config_dir var_dir perl autoos port login crypt host ssl nochown autothir
 ./setup.sh >\$tempdir/webmin-setup.out 2>&1
 chmod 600 \$tempdir/webmin-setup.out
 rm -f /var/lock/subsys/webmin
+systemctl daemon-reload >/dev/null 2>&1
 if [ "\$inetd" != "1" -a "\$startafter" = "1" ]; then
 	/etc/init.d/webmin stop >/dev/null 2>&1 </dev/null
 	/etc/init.d/webmin start >/dev/null 2>&1 </dev/null
