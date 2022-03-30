@@ -34,6 +34,26 @@ for(my $i=0; $i<@expires_paths; $i++) {
 $etable .= &ui_columns_end();
 print &ui_table_row($text{'web_expirespaths'}, $etable);
 
+# Display redirects
+my $rtable = &ui_columns_start([ $text{'web_redirhost'},
+			         $text{'web_redirport'},
+			         $text{'web_redirpref'},
+			         $text{'web_redirssl'} ], 'auto');
+$rtable .= &ui_columns_row([
+	&ui_textbox('redirect_host', $miniserv{'redirect_host'}, 30),
+	&ui_textbox('redirect_port', $miniserv{'redirect_port'}, 5),
+	&ui_textbox('redirect_prefix', $miniserv{'redirect_prefix'}, 10),
+	&ui_checkbox("redirect_ssl", 1, $text{'redirect_ssl'},
+			               $miniserv{'redirect_ssl'}),
+	], ['', '', '', ' style="text-align: center"']);
+$rtable .= &ui_columns_end();
+print &ui_table_row($text{'web_redirdesc'}, $rtable);
+
+# Display switch redirect to Usermin URL
+print &ui_table_row($text{'web_rediruurl'},
+	&ui_opt_textbox("redirect_url", $miniserv{'redirect_url'}, 40, $text{'default'}));
+
+
 # Show call stack on error
 print &ui_table_row($text{'advanced_stack'},
 		    &ui_yesno_radio("stack", int($uconfig{'error_stack'})), undef);
