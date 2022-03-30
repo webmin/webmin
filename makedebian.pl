@@ -331,6 +331,7 @@ if [ "$product" = "webmin" ]; then
 	fi
 fi
 rm -f /var/lock/subsys/$baseproduct
+systemctl daemon-reload >/dev/null 2>&1
 if [ "$inetd" != "1" ]; then
 	if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
 		invoke-rc.d $baseproduct stop >/dev/null 2>&1 </dev/null
