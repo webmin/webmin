@@ -104,7 +104,9 @@ if ($body) {
 if (@attach) {
 	print &ui_columns_start([ $text{'view_afile'}, $text{'view_atype'},
 				  $text{'view_asize'} ], 100, 0);
+	my $attachment_id;
 	foreach $a (@attach) {
+		$attachment_id++;
 		if ($a->{'type'} eq 'message/rfc822') {
 			print &ui_columns_row([
 				&ui_link("view_mailq.cgi?file=$qfile$subs&sub=$a->{'idx'}",$text{'view_sub'}),
@@ -114,7 +116,7 @@ if (@attach) {
 			}
 		else {
 			print &ui_columns_row([
-				&ui_link("qdetach.cgi/$a->{'filename'}?file=$qfile&attach=$a->{'idx'}$subs","$a->{'filename'}"),
+				&ui_link("qdetach.cgi/$a->{'filename'}?file=$qfile&attach=$a->{'idx'}$subs","$a->{'filename'}" || $text{'view_aname'}.' #'.$attachment_id),
 				$a->{'type'},
 				&nice_size(length($a->{'data'})),
 				]);

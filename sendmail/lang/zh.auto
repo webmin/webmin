@@ -123,6 +123,7 @@ view_mark=将消息标记为：
 view_egone=该消息不再存在
 view_afile=附件名称
 view_atype=附件类型
+view_aname=附件
 view_asize=文件大小
 
 enew_title=编辑电邮

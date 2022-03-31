@@ -533,6 +533,7 @@ view_sub=Укладзены ліст
 view_body=Тэкст паведамлення
 view_afile=Назва ўкладання
 view_atype=Тып укладання
+view_aname=Прыкладанне
 view_asize=Памер файла
 
 compose_title=Напісаць электронную пошту

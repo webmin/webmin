@@ -533,6 +533,7 @@ view_sub=Priložena e-pošta
 view_body=Tekst poruke
 view_afile=Naziv privitka
 view_atype=Vrsta privitka
+view_aname=Privitak
 view_asize=Veličina datoteke
 
 compose_title=Sastavite e-poštu

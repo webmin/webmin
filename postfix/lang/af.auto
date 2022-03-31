@@ -533,6 +533,7 @@ view_sub=Aangehegde e-posadres
 view_body=Boodskap teks
 view_afile=Aanhegselnaam
 view_atype=Aanhangsel tipe
+view_aname=Aanhegsel
 view_asize=Lêergrootte
 
 compose_title=Skryf e-pos

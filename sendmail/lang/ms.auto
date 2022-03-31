@@ -540,6 +540,7 @@ view_sub=Melampirkan E-mel
 view_egone=Mesej ini tidak lagi wujud
 view_afile=Nama lampiran
 view_atype=Jenis lampiran
+view_aname=Lampiran
 view_asize=Saiz fail
 
 compose_title=Tulis E-mel

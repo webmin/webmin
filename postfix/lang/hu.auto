@@ -25,6 +25,8 @@ sni_certs=Tanúsítványfájlok
 
 acl_sni=Szerkesztheti a tanúsítványokat?
 
+view_aname=Melléklet
+
 mailq_deleteall=Törölje a levél sorát
 mailq_deletealldesc=Kattintson erre a gombra az összes üzenet törléséhez a levél sorban.
 

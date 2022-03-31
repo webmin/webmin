@@ -116,6 +116,7 @@ view_print=Распечатать
 view_egone=Это сообщение больше не существует
 view_afile=Имя вложения
 view_atype=Тип вложения
+view_aname=Вложение
 view_asize=Размер файла
 
 reply_body=Текстовое сообщение

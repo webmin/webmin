@@ -533,6 +533,7 @@ view_sub=E-mail anexo
 view_body=Mensagem de texto
 view_afile=Nome do anexo
 view_atype=Tipo de anexo
+view_aname=Acessório
 view_asize=Tamanho do arquivo
 
 compose_title=Escrever um email

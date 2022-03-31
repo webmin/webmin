@@ -540,6 +540,7 @@ view_sub=אימייל מצורף
 view_egone=הודעה זו כבר לא קיימת
 view_afile=שם קובץ מצורף
 view_atype=סוג קובץ מצורף
+view_aname=הִתקַשְׁרוּת
 view_asize=גודל הקובץ
 
 compose_title=כתוב מייל אלקטרוני

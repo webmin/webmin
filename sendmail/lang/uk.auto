@@ -116,6 +116,7 @@ view_print=Друк
 view_egone=Це повідомлення більше не існує
 view_afile=Назва вкладеного файлу
 view_atype=Тип вкладення
+view_aname=Вкладення
 view_asize=Розмір файлу
 
 reply_body=Текст повідомлення

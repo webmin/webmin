@@ -158,6 +158,7 @@ view_sub=Dołączony e-mail
 view_egone=Ta wiadomość już nie istnieje
 view_afile=Nazwa załącznika
 view_atype=Typ załącznika
+view_aname=Załącznik
 view_asize=Rozmiar pliku
 
 enew_title=Edytuj adres e-mail

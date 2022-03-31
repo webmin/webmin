@@ -540,6 +540,7 @@ view_sub=البريد الالكتروني المرفق
 view_egone=هذه الرسالة لم تعد موجودة
 view_afile=اسم المرفق
 view_atype=نوع المرفق
+view_aname=مرفق
 view_asize=حجم الملف
 
 compose_title=إنشاء بريد إلكتروني

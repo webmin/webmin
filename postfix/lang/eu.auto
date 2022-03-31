@@ -533,6 +533,7 @@ view_sub=Erantsitako posta elektronikoa
 view_body=Mezuaren testua
 view_afile=Eranskinaren izena
 view_atype=Eranskin mota
+view_aname=Eranskina
 view_asize=Fitxategiaren tamaina
 
 compose_title=Idatzi posta elektronikoa

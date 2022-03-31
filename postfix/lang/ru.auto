@@ -185,6 +185,7 @@ view_flush=Румянец
 view_body=Текстовое сообщение
 view_afile=Имя вложения
 view_atype=Тип вложения
+view_aname=Вложение
 view_asize=Размер файла
 
 search_efield=Вы должны выбрать тип поиска.

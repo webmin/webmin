@@ -533,6 +533,7 @@ view_sub=البريد الالكتروني المرفق
 view_body=رسالة نصية
 view_afile=اسم المرفق
 view_atype=نوع المرفق
+view_aname=مرفق
 view_asize=حجم الملف
 
 compose_title=يؤلف البريد الإلكتروني

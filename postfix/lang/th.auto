@@ -533,6 +533,7 @@ view_sub=อีเมลที่แนบมา
 view_body=ข้อความข้อความ
 view_afile=ชื่อไฟล์แนบ
 view_atype=ประเภทไฟล์แนบ
+view_aname=เอกสารแนบ
 view_asize=ขนาดไฟล์
 
 compose_title=เขียนอีเมล

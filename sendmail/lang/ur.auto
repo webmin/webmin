@@ -540,6 +540,7 @@ view_sub=منسلک ای میل
 view_egone=اب یہ پیغام موجود نہیں ہے
 view_afile=منسلکہ نام
 view_atype=منسلکہ کی قسم
+view_aname=منسلکہ
 view_asize=فائل کا ناپ
 
 compose_title=ای میل لکھیں

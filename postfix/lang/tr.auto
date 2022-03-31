@@ -533,6 +533,7 @@ view_sub=Ekli mail
 view_body=Mesaj metni
 view_afile=Ek adı
 view_atype=Ek tipi
+view_aname=Ek dosya
 view_asize=Dosya boyutu
 
 compose_title=E-posta oluştur

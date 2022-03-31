@@ -540,6 +540,7 @@ view_sub=Attached Email
 view_egone=This message no longer exists
 view_afile=Attachment name
 view_atype=Attachment type
+view_aname=Attachment
 view_asize=File size
 
 compose_title=Compose Email

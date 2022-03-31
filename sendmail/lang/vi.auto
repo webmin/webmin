@@ -540,6 +540,7 @@ view_sub=Email đính kèm
 view_egone=Tin nhắn này không còn tồn tại
 view_afile=Tên tập tin đính kèm
 view_atype=Kiểu đính kèm
+view_aname=Tập tin đính kèm
 view_asize=Kích thước tập tin
 
 compose_title=Soạn email

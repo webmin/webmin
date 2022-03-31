@@ -533,6 +533,7 @@ view_sub=Mehmuż Email
 view_body=Test tal-messaġġ
 view_afile=Isem Mehmuż
 view_atype=Tip ta 'żjieda
+view_aname=Sekwestru
 view_asize=Daqs tal-fajl
 
 compose_title=Ikteb Email

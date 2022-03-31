@@ -3,6 +3,7 @@ mailq_refreshdesc=Recarregue esta página para mostrar o estado atual da fila de
 
 view_afile=Nome do anexo
 view_atype=Tipo de anexo
+view_aname=Acessório
 view_asize=Tamanho do arquivo
 
 file_ealias=Formato inválido para a linha do arquivo de alias : $1 

@@ -540,6 +540,7 @@ view_sub=Liitetty sähköposti
 view_egone=Tätä viestiä ei enää ole
 view_afile=Liitteen nimi
 view_atype=Liitetyyppi
+view_aname=Liite
 view_asize=Tiedoston koko
 
 compose_title=Kirjoita sähköposti

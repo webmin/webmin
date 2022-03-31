@@ -206,6 +206,7 @@ view_sub=Ekli mail
 view_egone=Bu mesaj artık mevcut değil
 view_afile=Ek adı
 view_atype=Ek tipi
+view_aname=Ek dosya
 view_asize=Dosya boyutu
 
 enew_title=E-postayı Düzenle

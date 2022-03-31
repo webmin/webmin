@@ -540,6 +540,7 @@ view_sub=Priložena e-pošta
 view_egone=To sporočilo ne obstaja več
 view_afile=Ime priloge
 view_atype=Vrsta priloge
+view_aname=Priponka
 view_asize=Velikost datoteke
 
 compose_title=Sestavi e-pošto

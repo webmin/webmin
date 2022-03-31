@@ -38,6 +38,7 @@ acl_client=SMTPクライアントの制限を編集できますか？
 view_body=メッセージ本文
 view_afile=添付ファイル名
 view_atype=添付ファイルの種類
+view_aname=アタッチメント
 view_asize=ファイルサイズ
 
 mailq_refresh=メールキューを更新

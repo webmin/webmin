@@ -211,6 +211,7 @@ view_return=e-mail d'origine
 view_body=Texte du message
 view_afile=Nom de la pièce jointe
 view_atype=Type de pièce jointe
+view_aname=Attachement
 view_asize=Taille du fichier
 
 compose_title=Écrire un email

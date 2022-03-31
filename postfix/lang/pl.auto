@@ -206,6 +206,7 @@ view_sub=Dołączony e-mail
 view_body=Wiadomość tekstowa
 view_afile=Nazwa załącznika
 view_atype=Typ załącznika
+view_aname=Załącznik
 view_asize=Rozmiar pliku
 
 compose_title=Komponować wiadomość e-mail

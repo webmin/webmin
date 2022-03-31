@@ -540,6 +540,7 @@ view_sub=Vedhæftet e-mail
 view_egone=Denne meddelelse findes ikke længere
 view_afile=Navn på vedhæftet fil
 view_atype=Vedhæftetype
+view_aname=Vedhæftet fil
 view_asize=Filstørrelse
 
 compose_title=Skriv e-mail

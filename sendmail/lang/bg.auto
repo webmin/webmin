@@ -540,6 +540,7 @@ view_sub=Прикачен имейл
 view_egone=Това съобщение вече не съществува
 view_afile=Име на прикачен файл
 view_atype=Тип прикачен файл
+view_aname=Прикачен файл
 view_asize=Размер на файла
 
 compose_title=Състави имейл

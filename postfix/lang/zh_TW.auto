@@ -185,6 +185,7 @@ view_flush=沖洗
 view_body=訊息文字
 view_afile=附件名稱
 view_atype=附件類型
+view_aname=附件
 view_asize=文件大小
 
 search_efield=您必須選擇搜索類型。

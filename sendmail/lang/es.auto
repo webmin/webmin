@@ -122,6 +122,7 @@ view_print=Impresión
 view_egone=Este mensaje ya no existe.
 view_afile=Nombre del archivo adjunto
 view_atype=Tipo de archivo adjunto
+view_aname=Adjunto archivo
 view_asize=Tamaño del archivo
 
 enew_title=Editar correo electrónico
