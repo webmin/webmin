@@ -331,14 +331,14 @@ if [ "$product" = "webmin" ]; then
 	fi
 fi
 rm -f /var/lock/subsys/$baseproduct
-systemctl daemon-reload >/dev/null 2>&1
+which systemctl >/dev/null 2>&1 && systemctl daemon-reload
 if [ "$inetd" != "1" ]; then
 	if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
-		invoke-rc.d $baseproduct stop >/dev/null 2>&1 </dev/null
-		invoke-rc.d $baseproduct start >/dev/null 2>&1 </dev/null
+		invoke-rc.d $baseproduct stop
+		invoke-rc.d $baseproduct start
 	else
-		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
-		/etc/$baseproduct/start >/dev/null 2>&1 </dev/null
+		/etc/$baseproduct/stop
+		/etc/$baseproduct/start
 	fi
 fi
 if [ "$product" = "usermin" ]; then
