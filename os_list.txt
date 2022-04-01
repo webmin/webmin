@@ -122,14 +122,15 @@ Ubuntu Linux			$1	debian-linux	11.0	$os_release =~ /Ubuntu\s+(20\.[0-9\.]+)/ || 
 Ubuntu Linux			$1	debian-linux	12.0	$os_release =~ /Ubuntu\s+(21\.[0-9\.]+)/ || $etc_issue =~ /Ubuntu.*\s(21\.[0-9\.]+)\s/i || $etc_issue =~ /Ubuntu\s+(hirsute|impish)/i
 Ubuntu Linux			$1	debian-linux	13.0	$os_release =~ /Ubuntu\s+(22\.[0-9\.]+)/ || $etc_issue =~ /Ubuntu.*\s(22\.[0-9\.]+)\s/i || $etc_issue =~ /Ubuntu\s+jammy/i
 Ubuntu Linux			$1	debian-linux	3.1	$etc_issue =~ /Ubuntu.*\s([0-9\.]+)\s/i
-Mepis Linux			$1	debian-linux	$1	$etc_issue =~ /MEPIS/ && `cat /etc/debian_version 2>/dev/null` =~ /([0-9\.]+)/
-Mepis Linux			$1	debian-linux	4.0	$etc_issue =~ /MEPIS/ && `cat /etc/debian_version 2>/dev/null` =~ /(stable)/
-Devuan Linux		$1	debian-linux	8.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(jessie)/i
-Devuan Linux		$1	debian-linux	9.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(ascii)/i
-Devuan Linux		$1	debian-linux	10.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(beowulf)/i
-Devuan Linux		$1	debian-linux	10.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(ceres)/i
-Raspbian Linux		$1	debian-linux	$1	`cat /etc/os-release 2>/dev/null` =~ /Raspbian\s+GNU\/Linux\s+(\S+)/
-Kali GNU/Linux Rolling		$1	debian-linux	$1	$etc_issue =~ /Kali/ && `cat /etc/os-release 2>/dev/null` =~ /VERSION=\"([0-9\.]+)\"/
+Mepis Linux				$1	debian-linux	$1	$etc_issue =~ /MEPIS/ && `cat /etc/debian_version 2>/dev/null` =~ /([0-9\.]+)/
+Mepis Linux				$1	debian-linux	4.0	$etc_issue =~ /MEPIS/ && `cat /etc/debian_version 2>/dev/null` =~ /(stable)/
+Devuan Linux			$1	debian-linux	8.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(jessie)/i
+Devuan Linux			$1	debian-linux	9.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(ascii)/i
+Devuan Linux			$1	debian-linux	10.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(beowulf)/i
+Devuan Linux			$1	debian-linux	10.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(ceres)/i
+Raspbian Linux			$1	debian-linux	$1	`cat /etc/os-release 2>/dev/null` =~ /Raspbian\s+GNU\/Linux\s+(\S+)/
+Kali GNU/Linux Rolling	$1	debian-linux	$1	$etc_issue =~ /Kali/ && `cat /etc/os-release 2>/dev/null` =~ /VERSION=\"([0-9\.]+)\"/
+Parrot OS				$1  debian-linux    $1  $etc_issue =~ /Parrot/ && `cat /etc/os-release 2>/dev/null` =~ /VERSION=\"([0-9\.]+).*\"/
 
 # Linux Mint (Mint should be before Debian to avoid false-positive)
 Linux Mint			6	debian-linux	5.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 6 Felicia"/
