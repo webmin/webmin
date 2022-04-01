@@ -124,7 +124,7 @@ foreach my $d (&get_httpd_defines()) {
 		}
 	}
 while($line = <$fh>) {
-	chop;
+	$line =~ s/\r|\n//g;
 	$line =~ s/^\s*#.*$//g;
 	if ($line =~ /^\s*<\/(\S+)\s*(.*)>/) {
 		# end of a container directive. This can only happen in a
@@ -144,6 +144,11 @@ while($line = <$fh>) {
 		$altmod =~ s/^(\S+)_module$/mod_$1/g;
 		local $mpmmod = $mod;
 		$mpmmod =~ s/^mpm_//; $mpmmod =~ s/_module$//;
+		if ($mod eq "prefork") {
+			# Special case for all the prefork aliases
+			($mod, $altmod, $mpmmod) = ("mod_".$mod."_module",
+						    "mod_mpm_".$mod, $mod);
+			}
 		if (!$not && $httpd_modules{$mod} ||
 		    $not && !$httpd_modules{$mod} ||
 		    !$not && $httpd_modules{$altmod} ||
