@@ -289,6 +289,7 @@ view_sub=附件电子邮件
 view_body=讯息文字
 view_afile=附件名称
 view_atype=附件类型
+view_aname=附件
 view_asize=文件大小
 
 compose_title=编写邮件

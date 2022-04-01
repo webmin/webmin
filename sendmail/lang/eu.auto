@@ -540,6 +540,7 @@ view_sub=Erantsitako posta elektronikoa
 view_egone=Mezu hau ez dago jada
 view_afile=Eranskinaren izena
 view_atype=Eranskin mota
+view_aname=Eranskina
 view_asize=Fitxategiaren tamaina
 
 compose_title=Idatzi posta elektronikoa

@@ -225,6 +225,7 @@ view_sub=附件電子郵件
 view_egone=該消息不再存在
 view_afile=附件名稱
 view_atype=附件類型
+view_aname=附件
 view_asize=文件大小
 
 enew_title=編輯電郵

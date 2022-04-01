@@ -540,6 +540,7 @@ view_sub=Укладзены ліст
 view_egone=Гэта паведамленне больш не існуе
 view_afile=Назва ўкладання
 view_atype=Тып укладання
+view_aname=Прыкладанне
 view_asize=Памер файла
 
 compose_title=Напісаць электронную пошту

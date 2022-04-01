@@ -533,6 +533,7 @@ view_sub=Επισυναπτόμενο Email
 view_body=Κείμενο μηνύματος
 view_afile=Όνομα συνημμένου
 view_atype=Τύπος συνημμένου
+view_aname=Συνημμένο
 view_asize=Μέγεθος αρχείου
 
 compose_title=Σύνταξη μηνυμάτων ηλεκτρονικού ταχυδρομείου

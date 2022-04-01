@@ -533,6 +533,7 @@ view_sub=Liitetty sähköposti
 view_body=Viestin teksti
 view_afile=Liitteen nimi
 view_atype=Liitetyyppi
+view_aname=Liite
 view_asize=Tiedoston koko
 
 compose_title=Kirjoita sähköposti

@@ -192,6 +192,7 @@ view_sub=添付メール
 view_egone=このメッセージはもう存在しません
 view_afile=添付ファイル名
 view_atype=添付ファイルの種類
+view_aname=アタッチメント
 view_asize=ファイルサイズ
 
 enew_title=メールを編集

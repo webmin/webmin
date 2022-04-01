@@ -270,6 +270,7 @@ view_sub=첨부 된 이메일
 view_body=메시지 텍스트
 view_afile=첨부 파일 이름
 view_atype=첨부 파일 유형
+view_aname=부착
 view_asize=파일 크기
 
 compose_title=이메일을 쓰다

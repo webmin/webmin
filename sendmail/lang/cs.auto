@@ -5,6 +5,7 @@ mailq_refreshdesc=Znovu načtěte tuto stránku, aby se zobrazil aktuální stav
 
 view_afile=Název přílohy
 view_atype=Typ přílohy
+view_aname=Příloha
 view_asize=Velikost souboru
 
 file_ealias=Neplatný formát pro řádek souboru aliasu : $1 

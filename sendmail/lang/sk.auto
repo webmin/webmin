@@ -540,6 +540,7 @@ view_sub=Priložený e-mail
 view_egone=Táto správa už neexistuje
 view_afile=Názov prílohy
 view_atype=Typ prílohy
+view_aname=Príloha
 view_asize=Veľkosť súboru
 
 compose_title=Napíšte e-mail

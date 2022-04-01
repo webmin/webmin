@@ -16,6 +16,8 @@ sni_certs=Fitxers de certificats
 
 acl_sni=Es poden editar certificats?
 
+view_aname=Adjunt
+
 after_err=Error de configuració de correcció posterior : $1
 
 log_sni=Canvieu les opcions de mapatge de certificats

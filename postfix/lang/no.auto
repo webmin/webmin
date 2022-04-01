@@ -1,1 +1,3 @@
 opts_smtp_tls_security_level=SMTP TLS klient sikkerhetsnivå
+
+view_aname=Vedlegg

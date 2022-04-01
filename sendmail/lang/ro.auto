@@ -540,6 +540,7 @@ view_sub=E-mail atașat
 view_egone=Acest mesaj nu mai există
 view_afile=Numele atașamentului
 view_atype=Tip atașament
+view_aname=Atașament
 view_asize=Mărime fișier
 
 compose_title=Scrie un email

@@ -540,6 +540,7 @@ view_sub=Email allegata
 view_egone=Questo messaggio non esiste più
 view_afile=Nome dell'allegato
 view_atype=Tipo di allegato
+view_aname=Allegato
 view_asize=Dimensione del file
 
 compose_title=Componi email

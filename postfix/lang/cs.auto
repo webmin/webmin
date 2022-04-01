@@ -189,6 +189,7 @@ view_flush=Vyplachování
 view_body=Text zprávy
 view_afile=Název přílohy
 view_atype=Typ přílohy
+view_aname=Příloha
 view_asize=Velikost souboru
 
 search_efield=Musíte vybrat typ vyhledávání.

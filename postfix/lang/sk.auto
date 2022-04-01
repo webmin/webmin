@@ -533,6 +533,7 @@ view_sub=Priložený e-mail
 view_body=Text správy
 view_afile=Názov prílohy
 view_atype=Typ prílohy
+view_aname=Príloha
 view_asize=Veľkosť súboru
 
 compose_title=Napíšte e-mail

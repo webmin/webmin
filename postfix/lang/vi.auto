@@ -533,6 +533,7 @@ view_sub=Email đính kèm
 view_body=Tin nhắn văn bản
 view_afile=Tên tập tin đính kèm
 view_atype=Kiểu đính kèm
+view_aname=Tập tin đính kèm
 view_asize=Kích thước tập tin
 
 compose_title=Soạn email

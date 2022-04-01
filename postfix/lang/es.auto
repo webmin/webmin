@@ -255,6 +255,7 @@ view_sub=Correo adjunto
 view_body=Mensaje de texto
 view_afile=Nombre del archivo adjunto
 view_atype=Tipo de archivo adjunto
+view_aname=Adjunto archivo
 view_asize=Tamaño del archivo
 
 compose_title=Escribir correo

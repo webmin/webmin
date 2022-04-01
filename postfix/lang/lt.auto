@@ -533,6 +533,7 @@ view_sub=Pridedamas el. Paštas
 view_body=Pranešimo tekstas
 view_afile=Priedo pavadinimas
 view_atype=Priedo tipas
+view_aname=Priedas
 view_asize=Failo dydis
 
 compose_title=Sukurti el. Laišką

@@ -538,6 +538,7 @@ view_sub=Attached Email
 view_body=Message text
 view_afile=Attachment name
 view_atype=Attachment type
+view_aname=Attachment
 view_asize=File size
 
 compose_title=Compose Email

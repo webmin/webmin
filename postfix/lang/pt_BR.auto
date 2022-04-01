@@ -178,6 +178,7 @@ view_flush=Rubor
 view_body=Mensagem de texto
 view_afile=Nome do anexo
 view_atype=Tipo de anexo
+view_aname=Acessório
 view_asize=Tamanho do arquivo
 
 search_efield=Você deve selecionar um tipo de pesquisa.

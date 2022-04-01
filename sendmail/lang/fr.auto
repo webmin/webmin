@@ -74,6 +74,7 @@ delq_confirm=Supprimer les messages
 view_flush=Affleurer
 view_afile=Nom de la pièce jointe
 view_atype=Type de pièce jointe
+view_aname=Attachement
 view_asize=Taille du fichier
 
 file_ealias=Format non valide pour la ligne du fichier d'alias : $1 

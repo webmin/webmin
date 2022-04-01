@@ -533,6 +533,7 @@ view_sub=E-mail atașat
 view_body=Mesaj text
 view_afile=Numele atașamentului
 view_atype=Tip atașament
+view_aname=Atașament
 view_asize=Mărime fișier
 
 compose_title=Scrie un email

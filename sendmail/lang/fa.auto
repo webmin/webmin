@@ -540,6 +540,7 @@ view_sub=ایمیل پیوست شده
 view_egone=این پیام دیگر وجود ندارد
 view_afile=نام پیوست
 view_atype=نوع پیوست
+view_aname=پیوست
 view_asize=حجم فایل
 
 compose_title=نوشتن ایمیل

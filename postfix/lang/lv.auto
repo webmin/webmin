@@ -533,6 +533,7 @@ view_sub=Pievienots e-pasts
 view_body=Ziņojuma teksts
 view_afile=Pielikuma nosaukums
 view_atype=Pielikuma tips
+view_aname=Pielikums
 view_asize=Faila lielums
 
 compose_title=Sastādīt e-pastu

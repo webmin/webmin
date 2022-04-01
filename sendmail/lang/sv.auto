@@ -196,6 +196,7 @@ view_sub=Bifogad e-post
 view_egone=Det här meddelandet finns inte längre
 view_afile=Bilaga namn
 view_atype=Tillbehörstyp
+view_aname=Anknytning
 view_asize=Filstorlek
 
 enew_title=Redigera e-post

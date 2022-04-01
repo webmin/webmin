@@ -23,6 +23,8 @@ sni_certs=Certificaatbestanden
 
 acl_sni=Kan certificaten bewerken?
 
+view_aname=Bijlage
+
 mailq_deleteall=E-mailwachtrij wissen
 mailq_deletealldesc=Klik op deze knop om alle berichten in de e-mailwachtrij te verwijderen.
 

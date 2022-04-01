@@ -9,6 +9,8 @@ sni_certs=Zertifikatdateien
 
 acl_sni=Kann Zertifikate bearbeiten?
 
+view_aname=Anhang
+
 log_opts=Adressumschreibung und Maskierung geändert
 log_aliases=Aliase-Optionen geändert
 log_canonical=Kanonische Mapping-Optionen ändern

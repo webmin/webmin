@@ -4,6 +4,8 @@ vform_err_unavailable=No disponible
 vform_err_tempfail=Fracàs temporal
 vform_err_protocol=Error de protocol
 
+view_aname=Adjunt
+
 search_results2=$1 missatges de correu que coincideixen amb $2.
 
 acl_vtypes=Tipus de mapes d'adreces que aquest usuari pot editar

@@ -540,6 +540,7 @@ view_sub=Pridedamas el. Paštas
 view_egone=Ši žinutė nebeegzistuoja
 view_afile=Priedo pavadinimas
 view_atype=Priedo tipas
+view_aname=Priedas
 view_asize=Failo dydis
 
 compose_title=Sukurti el. Laišką

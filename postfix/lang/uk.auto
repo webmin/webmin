@@ -185,6 +185,7 @@ view_flush=Промийте
 view_body=Текст повідомлення
 view_afile=Назва вкладеного файлу
 view_atype=Тип вкладення
+view_aname=Вкладення
 view_asize=Розмір файлу
 
 search_efield=Ви повинні вибрати тип пошуку.
