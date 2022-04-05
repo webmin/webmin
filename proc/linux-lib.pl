@@ -35,6 +35,7 @@ if ($ver && $ver < 2) {
 		$plist[$i]->{"ppid"} = $4;
 		$plist[$i]->{"user"} = getpwuid($2);
 		$plist[$i]->{"size"} = "$7 kB";
+		$plist[$i]->{"bytes"} = $7*1024;
 		$plist[$i]->{"cpu"} = "Unknown";
 		$plist[$i]->{"time"} = $12;
 		$plist[$i]->{"nice"} = $6;
@@ -65,7 +66,7 @@ else {
 		# Use width format character if allowed
 		$width = ":80";
 		}
-	open(PS, "ps --cols 2048 -eo user$width,ruser$width,group$width,rgroup$width,pid,ppid,pgid,pcpu,vsz,nice,etime,time,stime,tty,args 2>/dev/null |");
+	open(PS, "ps --cols 2048 -eo user$width,ruser$width,group$width,rgroup$width,pid,ppid,pgid,pcpu,rss,nice,etime,time,stime,tty,args 2>/dev/null |");
 	$dummy = <PS>;
 	my @now = localtime(time());
 	for($i=0; $line=<PS>; $i++) {
