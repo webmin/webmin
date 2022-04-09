@@ -99,7 +99,7 @@ if (@{$zone->{'services'}} || @{$zone->{'ports'}}) {
 		print &ui_checked_columns_row([
 			&ui_link($url, $text{'index_tport'}),
 			&ui_link($url, $port),
-			&ui_link($url, uc($proto)),
+			uc($proto),
 			], \@tds, "d", "port/".$p);
 		}
 	foreach my $f (@{$zone->{'forward-ports'}}) {
