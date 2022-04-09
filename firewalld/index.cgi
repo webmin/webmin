@@ -82,10 +82,14 @@ if (@{$zone->{'services'}} || @{$zone->{'ports'}}) {
 	foreach my $s (@{$zone->{'services'}}) {
 		my $url = "edit_serv.cgi?id=".&urlize($s).
 			  "&zone=".&urlize($zone->{'name'});
+		my $sportsprotos = &list_firewalld_service_desc($s);
+		my $sport = $sportsprotos->{'ports'};
+		my $sprotocols = $sportsprotos->{'protocols'};
+		$sport = " ($sport)" if ($sport);
 		print &ui_checked_columns_row([
 			&ui_link($url, $text{'index_tservice'}),
-			&ui_link($url, $s),
-			"",
+			&ui_link($url, "$s$sport"),
+			$sprotocols || "",
 			], \@tds, "d", "service/".$s);
 		}
 	foreach my $p (@{$zone->{'ports'}}) {
@@ -95,7 +99,7 @@ if (@{$zone->{'services'}} || @{$zone->{'ports'}}) {
 		print &ui_checked_columns_row([
 			&ui_link($url, $text{'index_tport'}),
 			&ui_link($url, $port),
-			&ui_link($url, uc($proto)),
+			uc($proto),
 			], \@tds, "d", "port/".$p);
 		}
 	foreach my $f (@{$zone->{'forward-ports'}}) {
