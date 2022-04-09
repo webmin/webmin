@@ -670,7 +670,7 @@ if ($filter->{'defaults'}->{'shorewall'}) {
 	push(@fwname, 'shorewall');
 	}
 if ($filter->{'defaults'}->{'INPUT_ZONES'}) {
-	push(@fwname, firewalld');
+	push(@fwname, 'firewalld');
 	}
 if ($filter->{'defaults'} =~ /^f2b-|^fail2ban-/ && !$config{'filter_chain'} ) {
 	push(@fwname, 'fail2ban');
