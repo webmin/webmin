@@ -50,7 +50,7 @@ eval {
 
 # Show zone selector
 print &ui_form_start("index.cgi");
-print "<b>$text{'index_zone'}</b> ",
+print "$text{'index_zone'}&nbsp; ",
       &ui_select("zone", $zone->{'name'},
 		 [ map { [ $_->{'name'},
 			   $_->{'name'}.($_->{'default'} ? ' (default)' : '') ]}
@@ -115,7 +115,7 @@ if (@{$zone->{'services'}} || @{$zone->{'ports'}}) {
 	print &ui_form_end([ [ undef, $text{'index_delete'} ] ]);
 	}
 else {
-	print "<b>$text{'index_none'}</b> <p>\n";
+	print "$text{'index_none'}<p>\n";
 	print &ui_links_row(\@links);
 	}
 
@@ -123,7 +123,7 @@ if ($azone) {
 	# Show interfaces for this zone
 	print &ui_form_start("save_ifaces.cgi");
 	print &ui_hidden("zone", $zone->{'name'});
-	print "<b>$text{'index_ifaces'}</b>\n";
+	print "<br>$text{'index_ifaces'}&nbsp;\n";
 	my %zifcs = map { $_, 1 } &unique(@{$azone->{'interfaces'}},
 					  @{$zone->{'interfaces'}});
 	foreach my $i (&list_system_interfaces()) {
