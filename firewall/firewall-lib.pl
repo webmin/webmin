@@ -659,5 +659,24 @@ my $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
 
+# external_firewall_list(&tables)
+# Returns a list of all external firewalls detected
+sub external_firewall_list
+{
+my ($tables) = @_;
+my @fwname;
+my ($filter) = grep { $_->{'name'} eq 'filter' } @$tables;
+if ($filter->{'defaults'}->{'shorewall'}) {
+	push(@fwname, 'shorewall');
+	}
+if ($filter->{'defaults'}->{'INPUT_ZONES'}) {
+	push(@fwname, firewalld');
+	}
+if ($filter->{'defaults'} =~ /^f2b-|^fail2ban-/ && !$config{'filter_chain'} ) {
+	push(@fwname, 'fail2ban');
+	}
+return @fwname;
+}
+
 1;
 

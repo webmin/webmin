@@ -530,30 +530,22 @@ else {
 
 &ui_print_footer("/", $text{'index'});
 
+# external_firewall_message(&tables)
 sub external_firewall_message
 {
-my $fwname = "";
-my $fwconfig="@{[&get_webprefix()]}/config.cgi?firewall";
+my ($tables) = @_;
+my $fwconfig = "@{[&get_webprefix()]}/config.cgi?firewall";
+my @fwname = &external_firewall_list($tables);
 
-# detect external firewalls
-local ($filter) = grep { $_->{'name'} eq 'filter' } @{$_[0]};
-if ($filter->{'defaults'}->{'shorewall'}) {
-	$fwname.='shorewall ';
-	}
-if ($filter->{'defaults'}->{'INPUT_ZONES'}) {
-	$fwname.='firewalld ';
-	}
-if ($filter->{'defaults'} =~ /^f2b-|^fail2ban-/ && !$config{'filter_chain'} ) {
-	$fwname.='fail2ban ';
-	}
-# warning about not using direct
-if($fwname && !$config{"direct${ipvx}"}) {
+# Warning about not using direct
+if(@fwname && !$config{"direct${ipvx}"}) {
 	print "<b><center>",
 		&text('index_filter_nodirect', $fwconfig),
 		"</b></center><p>\n";
 	}
-# alert about the detected firewall modules
-foreach my $word (split ' ', $fwname) {
+
+# Alert about the detected firewall modules
+foreach my $word (@fwname) {
 	print ui_alert_box(&text("index_$word", "@{[&get_webprefix()]}/$word/", $fwconfig), 'warn');
 	}
 }
