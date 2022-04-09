@@ -29,6 +29,7 @@ if (!$in{'confirm'} && $config{'confirm_rec'}) {
 		[ [ 'zone', $in{'zone'} ],
 		  [ 'view', $in{'view'} ],
 		  [ 'rev', $in{'rev'} ],
+		  [ 'type', $in{'type'} ],
 		  map { [ 'd', $_ ] } @d ],
 		[ [ 'confirm', $text{'drecs_ok'} ] ],
 		);
