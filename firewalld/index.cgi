@@ -85,7 +85,7 @@ if (@{$zone->{'services'}} || @{$zone->{'ports'}}) {
 		my $sportsprotos = &list_firewalld_service_desc($s);
 		my $sport = $sportsprotos->{'ports'};
 		my $sprotocols = $sportsprotos->{'protocols'};
-		$sport = "<span>:$sport</span>" if ($sport);
+		$sport = " ($sport)" if ($sport);
 		print &ui_checked_columns_row([
 			&ui_link($url, $text{'index_tservice'}),
 			&ui_link($url, "$s$sport"),

@@ -103,7 +103,7 @@ if (-r $service_file) {
 	}
 @ports = &unique(@ports);
 @protos = &unique(@protos);
-return {'ports' => join(":", @ports), 'protocols' => uc(join('/', @protos))};
+return {'ports' => join(", ", @ports), 'protocols' => uc(join('/', @protos))};
 }
 
 # list_firewalld_services_with_ports()
@@ -124,7 +124,6 @@ foreach my $s (&list_firewalld_services()) {
 		my $sports = $sportsprotos->{'ports'};
 		my $sprotocols = $sportsprotos->{'protocols'};
 		my $sdesc;
-		$sports =~ s/:/, /g;
 		$sdesc = " ($sports $sprotocols)" if ($sports);
 		push(@rv, [ $s, "$s$sdesc" ]);
 		}
