@@ -29,7 +29,9 @@ index_delete=Delete Selected Rules
 index_return=list of zones
 index_ezones=No FirewallD zones found!
 index_none=This zone does not have any allowed ports or services yet.
-index_ifaces=Apply rules to interfaces:
+index_ifaces=Apply rules to
+index_ifaces_def=All interfaces
+index_ifaces_sel=Selected interfaces:
 
 port_edit=Edit Port
 port_create=Add Port

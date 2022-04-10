@@ -130,6 +130,9 @@ if ($azone) {
 	print "<br>$text{'index_ifaces'}&nbsp;\n";
 	my %zifcs = map { $_, 1 } &unique(@{$azone->{'interfaces'}},
 					  @{$zone->{'interfaces'}});
+	print &ui_radio("iface_def", %zifcs ? 0 : 1,
+			[ [ 1, $text{'index_ifaces_def'} ],
+			  [ 0, $text{'index_ifaces_sel'} ] ]),"\n";
 	foreach my $i (&list_system_interfaces()) {
 		print &ui_checkbox("iface", $i, $i, $zifcs{$i}),"\n";
 		}

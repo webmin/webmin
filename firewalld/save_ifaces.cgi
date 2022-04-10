@@ -14,7 +14,8 @@ my ($zone) = grep { $_->{'name'} eq $in{'zone'} } @zones;
 $zone || &error($text{'port_ezone'});
 
 # Update the interfaces list 
-my $err = &update_zone_interfaces($zone, [ split(/\0/, $in{'iface'}) ]);
+my @ifaces = $in{'iface_def'} ? ( ) : split(/\0/, $in{'iface'});
+my $err = &update_zone_interfaces($zone, \@ifaces);
 &error($err) if ($err);
 
 &webmin_log("ifaces", "zone", $zone->{'name'});
