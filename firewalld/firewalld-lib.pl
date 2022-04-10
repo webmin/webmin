@@ -94,7 +94,7 @@ my @protos;
 if (-r $service_file) {
 	my $lref = &read_file_lines($service_file, 1);
 	foreach my $l (@{$lref}) {
-		$l =~ /<port\s+protocol=["'](?<proto>\S+)["']\s+port=["'](?<port>\d+)["']\/>/;
+		$l =~ /<port\s+protocol=["'](?<proto>\S+)["']\s+port=["'](?<port>[\d-]+)["']\/>/;
 		my $port = "$+{port}";
 		my $proto = "$+{proto}";
 		push(@ports, $port) if ($port);
