@@ -353,4 +353,73 @@ else {
 	}
 }
 
+
+# add_ip_ban(ip, [zone])
+# Ban given IP address in given or default zone
+sub add_ip_ban
+{
+my ($ip, $zone) = @_;
+return create_rich_rule('add', $ip, $zone);
+}
+
+# remove_ip_ban(ip, [zone])
+# Un-ban given IP address in given or default zone 
+sub remove_ip_ban
+{
+my ($ip, $zone) = @_;
+return create_rich_rule('remove', $ip, $zone);
+}
+
+# create_rich_rule(action, ip, [zone], [opts])
+# Add or remove rich rule for given IP in given or default zone 
+sub create_rich_rule
+{
+my ($action, $ip, $zone, $opts) = @_;
+my $ip_validate = sub {
+	return &check_ipaddress($_[0]) || &check_ip6address($_[0]);
+	};
+
+# Default action for permanent ban is 'drop'
+my $action_type = "drop";
+
+# Override defaults
+if (ref($opts)) {
+	
+	# Override default action
+	$action_type = lc($opts->{'action'})
+		if ($opts->{'action'} &&
+		    $opts->{'action'} =~ /^accept|reject|drop|mark$/);
+}
+
+# Default zone
+if (!$zone) {
+	my @zones = &list_firewalld_zones();
+	($zone) = grep { $_->{'default'} } @zones;
+	}
+my $zone_name = $zone->{'name'};
+$zone_name =~ tr/A-Za-z0-9\-\_//cd;
+
+# Validate action
+$action eq 'add' || $action eq 'remove' || &error($text{'richrule_actionerr'});
+
+# Validate IP
+&$ip_validate($ip) || &error($text{'richrule_iperr'});
+
+# Set family
+my $family = $ip =~ /:/ ? 'ipv6' : 'ipv4';
+
+# Apply block (you cannot quotemeta IP address and
+# other params, i.e. must be validated manually)
+my $get_cmd = sub {
+	my ($rtype) = @_;
+	my $type;
+	$type = " --permanent" if ($rtype eq 'permanent');
+	return "$config{'firewall_cmd'} --zone=".$zone_name."$type --$action-rich-rule=\"rule family='$family' source address='$ip' $action_type\"";
+	};
+my $out = &backquote_logged(&$get_cmd()." 2>&1 </dev/null");
+return $out if ($?);
+$out = &backquote_logged(&$get_cmd('permanent')." 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
 1;
