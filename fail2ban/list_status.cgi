@@ -47,7 +47,7 @@ if (@jails) {
 						$val = "<br>" if ($val);
 						$val .= join('<br>', @ips);
 						$val .= "<br><br>" if ($val);
-						$val .= "&mdash;", $noval++ if (!$val);
+						$val .= "&ndash;", $noval++ if (!$val);
 						}
 					push(@body, $val);
 					}
