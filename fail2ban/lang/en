@@ -170,6 +170,18 @@ manual_efile=Selected file is not part of the Fail2Ban configuration!
 manual_err=Failed to edit config file
 manual_edata=No config file contents entered
 
+status_title=Jails Status And Actions
+status_title2=Jails Status
+status_head_jail_name=Jail name
+status_head_currently_failed=Currently failed
+status_head_total_failed=Total failed
+status_head_currently_banned=Currently banned
+status_head_total_banned=Total banned
+status_head_banned_ip_list=Banned IP list
+status_jail_unblock=Unblock All IPs for Selected Jails
+status_jail_block=Permanently Block All IPs in Banned List for Selected Jails
+status_jail_noactive=There are no active jails enabled yet.
+
 syslog_logtarget=Fail2Ban action log
 
 __norefs=1
