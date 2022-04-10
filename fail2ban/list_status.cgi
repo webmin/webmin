@@ -24,6 +24,7 @@ if (@jails) {
 		my @head = (undef, $text{"status_head_jail_name"});
 		my @body = (&ui_link("edit_jail.cgi?name=".urlize($jail), "&nbsp;<tt>".&html_escape($jail)."</tt>"));
 		my $jips;
+		my $noval;
 		&open_execute_command($fh, $jcmd, 1);
 		while(<$fh>) {
 			if (/-\s+(.*):\s*(.*)/) {
@@ -45,6 +46,7 @@ if (@jails) {
 						$val = "<br>" if ($val);
 						$val .= join('<br>', @ips);
 						$val .= "<br><br>" if ($val);
+						$val .= "&mdash;", $noval++ if (!$val);
 						}
 					push(@body, $val);
 					}
@@ -56,7 +58,7 @@ if (@jails) {
 			print &ui_links_row(\@links);
 			print &ui_columns_start(\@head);
 			}
-		print &ui_checked_columns_row(\@body, ['width=5', undef, $tdc, $tdc, $tdc, $tdc], "jail", $jail);
+		print &ui_checked_columns_row(\@body, ['width=5', undef, $tdc, $tdc, $tdc, $tdc, $noval ? $tdc : undef ], "jail", $jail);
 		push(@jipsall, ["$jail" => $jips]);
 	}
 	if ($head) {
