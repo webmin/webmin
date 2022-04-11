@@ -27,6 +27,22 @@ if (@jails) {
 		my $jcmd = "$cmd 2>&1 </dev/null";
 		my @head = (undef, $text{"status_head_jail_name"});
 		my @body = (&ui_link("edit_jail.cgi?name=".urlize($jail), "&nbsp;".&html_escape($jail)));
+		my $br = '<br>';
+		my $nbsp = '&nbsp;';
+		my $ipslimit = sub {
+			my ($ips, $limit) = @_;
+			$limit ||= 15;
+			# Limit sanity check
+			$limit = 1 if ($limit < 1);
+			my $ipscount = () = $ips =~ /$br/g;
+			if ($ipscount > $limit) {
+				my @ips = split($br, $ips);
+				@ips = @ips[0 .. $limit];
+				$ips = join($br, @ips);
+				$ips .= "<small>$br$nbsp".&text('list_rules_plus_more', $ipscount-$limit)."</small>";
+				}
+			return $ips;
+		};
 		my $jips;
 		my $noval;
 		&open_execute_command($fh, $jcmd, 1);
@@ -51,6 +67,7 @@ if (@jails) {
 							        ) : undef) . "</label>" } @ips;
 						$val = "<br>" if ($val);
 						$val .= join('<br>', @ips);
+						$val = &$ipslimit($val);
 						$val .= "<br><br>" if ($val);
 						$val .= "&ndash;", $noval++ if (!$val);
 						}

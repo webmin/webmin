@@ -58,7 +58,8 @@ while(<$fh>) {
 		
 		# Print start
 		if (!$head++) {
-			print &ui_form_start("delete_rules.cgi", "post");
+			print &ui_form_start("save_rules.cgi", "post");
+			print &ui_hidden("zone", $dzone);
 			print &ui_links_row(\@links);
 			print &ui_columns_start(\@head);
 			}
@@ -74,21 +75,58 @@ my $dcmd = "$config{'firewall_cmd'} --direct --get-all-rules";
 while(<$fh2>) {
 	my @body;
 	if ($_ =~ /\S+/) {
+		my $ndash = "&ndash;";
+		my $br = "<br>";
+		my $nbsp = "&nbsp;";
+		my $ips = $ndash;
+		my $candelete = 1;
+		my $ipslimit = sub {
+			my ($ips, $limit) = @_;
+			$limit ||= 5;
+			# Limit sanity check and adjustment
+			$limit = 1 if ($limit < 1);
+			$limit -= 1;
+			my $ipscount = () = $ips =~ /$br/g;
+			if ($ipscount > $limit) {
+				my @ips = split($br, $ips);
+				@ips = @ips[0 .. $limit];
+				$ips = join($br, @ips);
+				$ips .= "<small>$br$nbsp".&text('list_rules_plus_more', $ipscount-$limit)."</small>";
+				}
+			return $ips;
+		};
+		# Extract IPs from match sets
 		if (/set\s+\-\-match-set\s+(.*?)\s+/) {
 			my $ipset_name = $1;
-			my $ips = "&ndash;";
-			my $ipset_cmd = &has_command('ipset');
+			my $ipset_cmd = &has_command($config{'firewall_ipset'} || 'ipset');
 			my $ipset_cmd_out = &backquote_logged("$ipset_cmd list ".quotemeta($ipset_name)." 2>&1 </dev/null");
 			if (!$?) {
 				if ($ipset_cmd_out =~ /number\s+of\s+entries:\s+(\d)+/i) {
 					if ($1 > 0) {
 						my @ipset_cmd_out_lines = split(/\n/, $ipset_cmd_out);
-						my @ips = map { $_ =~ /^([0-9\.\:a-f]+)/i } @ipset_cmd_out_lines;
-						$ips = join("&nbsp;&nbsp;<br>", @ips);
+						my @ips = map { $_ =~ /^([0-9\.\:a-f\/]+)/i } @ipset_cmd_out_lines;
+						$ips = join("$nbsp$nbsp$br", @ips);
 						}
 					}
 				}
+				# Rules with match sets must not be controlled here
+				$candelete = 0;
+			}
 
+			# Standard direct rules
+			else {
+				# Extract IPs from the rule,
+				# considering comma separated
+				my @ips = ($_ =~ /-[sd]\s+([0-9\.\:a-f,\/]+)/gi);
+				$ips = join("$nbsp$nbsp$br", @ips);
+				$ips =~ s/\s*,\s*/$nbsp$nbsp$br/g;
+				$ips ||= $ndash;
+				}
+
+			# Trim the number of IPs to allow at max 10
+			$ips = &$ipslimit($ips);
+
+			# Add type name
 			push(@body, $text{'list_rules_type_direct'});
 
 			# Get protocol
@@ -121,12 +159,12 @@ while(<$fh2>) {
 			
 			# Print start
 			if (!$head++) {
-				print &ui_form_start("delete_rules.cgi", "post");
+				print &ui_form_start("save_rules.cgi", "post");
+				print &ui_hidden("zone", $dzone);
 				print &ui_links_row(\@links);
 				print &ui_columns_start(\@head);
 				}
-			print &ui_checked_columns_row(\@body, [ 'width=5', $tdc, $tdc, undef, $tdc, $tdc, undef ], "rules", $_);
-			}
+			print &ui_checked_columns_row(\@body, [ 'width=5', $tdc, $tdc, undef, $tdc, $tdc, undef ], "rules", $_, undef, !$candelete);
 		}
 	}
 close($fh2);
@@ -141,4 +179,4 @@ else {
 	print "There are no existing direct or rich firewall rules to display."
 	}
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("index.cgi?zone=".&urlize($dzone), $text{'index_return'});

@@ -108,6 +108,8 @@ list_rules_ip=IP
 list_rules_origin=Origin
 list_rules_action=Action
 list_rules_rule=Rule
+list_rules_plus_more=+ $1 more
+log_save_rules=Deleted $1 rules
 
 restart_err=Failed to apply configuration
 stop_err=Failed to stop FirewallD
