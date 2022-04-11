@@ -94,6 +94,8 @@ delzone_rusure=Ziur al zaude $2 ataka eta $3 zerbitzu biltzen dituen $1 zona eza
 defzone_err=Ezin izan da eremua lehenetsi
 
 index_listrules=Zerrendatu FirewallD Arauak
+index_restart_firewalld=Berriz kargatu FirewallD
+index_restart_firewallddesc=Berriz kargatu FirewallD zerbitzaria eta aplikatu betirako sortu ziren arauak.
 index_listrules_restartdesc=Zerrendatu lehendik dauden FirewallD arau aberats eta zuzenei buruzko xehetasunak $1 zonan.
 list_rule_iperr=IP helbide baliogabea
 list_rule_actionerr=Ekintza baliogabea
@@ -108,6 +110,8 @@ list_rules_ip=IP
 list_rules_origin=Jatorria
 list_rules_action=Ekintza
 list_rules_rule=Arau
+list_rules_plus_more=+ $1 gehiago
+log_save_rules=$1 arauak ezabatu dira
 
 restart_err=Ezin izan da konfigurazioa aplikatu
 

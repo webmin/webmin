@@ -94,6 +94,8 @@ delzone_rusure=Είστε βέβαιοι ότι θέλετε να διαγράψ
 defzone_err=Η προεπιλεγμένη ζώνη απέτυχε
 
 index_listrules=Λίστα Κανόνων FirewallD
+index_restart_firewalld=Επανάληψη φόρτωσης FirewallD
+index_restart_firewallddesc=Φορτώστε ξανά τον διακομιστή FirewallD και εφαρμόστε τους κανόνες που δημιουργήθηκαν μόνιμα.
 index_listrules_restartdesc=Παραθέστε λεπτομέρειες σχετικά με τους υπάρχοντες εμπλουτισμένους και άμεσους κανόνες FirewallD στη ζώνη $1.
 list_rule_iperr=Μη έγκυρη διεύθυνση IP
 list_rule_actionerr=Μη έγκυρη ενέργεια
@@ -108,6 +110,8 @@ list_rules_ip=IP
 list_rules_origin=Προέλευση
 list_rules_action=Δράση
 list_rules_rule=Κανόνας
+list_rules_plus_more=+ $1 ακόμη
+log_save_rules=Διαγράφηκαν κανόνες $1
 
 restart_err=Αποτυχία εφαρμογής διαμόρφωσης
 

@@ -94,6 +94,8 @@ delzone_rusure=Naozaj chcete odstrániť zónu $1, ktorá obsahuje $2 porty a sl
 defzone_err=Zónu sa nepodarilo nastaviť ako predvolenú
 
 index_listrules=Zoznam pravidiel FirewallD
+index_restart_firewalld=Znova načítajte FirewallD
+index_restart_firewallddesc=Znova načítajte server FirewallD a použite pravidlá, ktoré boli natrvalo vytvorené.
 index_listrules_restartdesc=Uveďte podrobnosti o existujúcich bohatých a priamych pravidlách brány FirewallD v zóne $1.
 list_rule_iperr=Neplatná adresa IP
 list_rule_actionerr=Neplatná akcia
@@ -108,6 +110,8 @@ list_rules_ip=IP
 list_rules_origin=Pôvod
 list_rules_action=Akcia
 list_rules_rule=Pravidlo
+list_rules_plus_more=+ $1 ďalších
+log_save_rules=Odstránené $1 pravidiel
 
 restart_err=Nepodarilo sa použiť konfiguráciu
 

@@ -94,6 +94,8 @@ delzone_rusure=Сигурни ли сте, че искате да изтриет
 defzone_err=Неуспешно извършване на зона по подразбиране
 
 index_listrules=Избройте правилата на FirewallD
+index_restart_firewalld=Презаредете FirewallD
+index_restart_firewallddesc=Презаредете сървъра на FirewallD и приложете правилата, които са били създадени за постоянно.
 index_listrules_restartdesc=Избройте подробности за съществуващите богати и директни правила на FirewallD в зона $1.
 list_rule_iperr=Невалиден IP адрес
 list_rule_actionerr=Невалидно действие
@@ -108,6 +110,8 @@ list_rules_ip=IP
 list_rules_origin=Произход
 list_rules_action=Действие
 list_rules_rule=Правило
+list_rules_plus_more=+ още $1
+log_save_rules=Изтрити $1 правила
 
 restart_err=Конфигурацията не се прилага
 

@@ -94,6 +94,8 @@ delzone_rusure=Jeste li sigurni da želite izbrisati zonu $1 koja sadrži $2 pri
 defzone_err=Nije uspjelo napraviti zonu zadanu
 
 index_listrules=Navedite pravila FirewallD
+index_restart_firewalld=Ponovno učitajte FirewallD
+index_restart_firewallddesc=Ponovno učitajte FirewallD poslužitelj i primijenite pravila koja su trajno stvorena.
 index_listrules_restartdesc=Navedite pojedinosti o postojećim bogatim i izravnim FirewallD pravilima u zoni $1.
 list_rule_iperr=Nevažeća IP adresa
 list_rule_actionerr=Nevažeća radnja
@@ -108,6 +110,8 @@ list_rules_ip=IP
 list_rules_origin=Podrijetlo
 list_rules_action=Akcijski
 list_rules_rule=Pravilo
+list_rules_plus_more=+ još $1
+log_save_rules=Izbrisano je $1 pravila
 
 restart_err=Konfiguracija nije primijenjena
 

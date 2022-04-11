@@ -94,6 +94,8 @@ delzone_rusure=Bạn có chắc chắn muốn xóa vùng $1, chứa $2 cổng v�
 defzone_err=Không thể tạo vùng mặc định
 
 index_listrules=Liệt kê các quy tắc FirewallD
+index_restart_firewalld=Tải lại tường lửaD
+index_restart_firewallddesc=Tải lại máy chủ FirewallD và áp dụng các quy tắc đã được tạo vĩnh viễn.
 index_listrules_restartdesc=Liệt kê chi tiết về các quy tắc FirewallD trực tiếp và phong phú hiện có trong vùng $1.
 list_rule_iperr=địa chỉ IP không hợp lệ
 list_rule_actionerr=Hành động không hợp lệ
@@ -108,6 +110,8 @@ list_rules_ip=IP
 list_rules_origin=Nguồn gốc
 list_rules_action=Hoạt động
 list_rules_rule=Luật lệ
+list_rules_plus_more=+ $1 khác
+log_save_rules=Đã xóa $1 quy tắc
 
 restart_err=Không thể áp dụng cấu hình
 

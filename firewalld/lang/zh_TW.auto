@@ -94,6 +94,8 @@ delzone_rusure=您確定要刪除包含 $2端口和 $3服務的 $1區域嗎？
 defzone_err=無法將區域設為默認區域
 
 index_listrules=列出 FirewallD 規則
+index_restart_firewalld=重新加載防火牆D
+index_restart_firewallddesc=重新加載 FirewallD 服務器並應用永久創建的規則。
 index_listrules_restartdesc=列出有關 $1 區域中現有豐富和直接 FirewallD 規則的詳細信息。
 list_rule_iperr=IP 地址無效
 list_rule_actionerr=無效操作
@@ -108,6 +110,8 @@ list_rules_ip=知識產權
 list_rules_origin=起源
 list_rules_action=行動
 list_rules_rule=規則
+list_rules_plus_more=+ $1 更多
+log_save_rules=已刪除 $1 條規則
 
 restart_err=應用配置失敗
 

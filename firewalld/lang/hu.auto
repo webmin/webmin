@@ -94,6 +94,8 @@ delzone_rusure=Biztosan törli a $1 zónát, amely $2 portokat és $3 szolgálta
 defzone_err=Nem sikerült a zónát alapértelmezetté tenni
 
 index_listrules=Sorolja fel a FirewallD szabályokat
+index_restart_firewalld=Töltse újra a FirewallD-t
+index_restart_firewallddesc=Töltse be újra a FirewallD-kiszolgálót, és alkalmazza a véglegesen létrehozott szabályokat.
 index_listrules_restartdesc=Részletek a(z) $1 zónában meglévő gazdag és közvetlen FirewallD szabályokról.
 list_rule_iperr=Érvénytelen IP-cím
 list_rule_actionerr=Érvénytelen művelet
@@ -108,6 +110,8 @@ list_rules_ip=IP
 list_rules_origin=Eredet
 list_rules_action=Akció
 list_rules_rule=Szabály
+list_rules_plus_more=+ további $1
+log_save_rules=$1 szabály törölve
 
 restart_err=A konfiguráció alkalmazása nem sikerült
 

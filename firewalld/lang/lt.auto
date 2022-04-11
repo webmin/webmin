@@ -94,6 +94,8 @@ delzone_rusure=Ar tikrai norite ištrinti zoną $1, kurioje yra $2 prievadai ir 
 defzone_err=Nepavyko zonos padaryti numatytąja
 
 index_listrules=Išvardykite FirewallD taisykles
+index_restart_firewalld=Iš naujo įkelti FirewallD
+index_restart_firewallddesc=Iš naujo įkelkite FirewallD serverį ir pritaikykite taisykles, kurios buvo sukurtos visam laikui.
 index_listrules_restartdesc=Išsamią informaciją apie esamas išsamias ir tiesiogines ugniasienės taisykles $1 zonoje.
 list_rule_iperr=Neteisingas IP adresas
 list_rule_actionerr=Netinkamas veiksmas
@@ -108,6 +110,8 @@ list_rules_ip=IP
 list_rules_origin=Kilmė
 list_rules_action=Veiksmas
 list_rules_rule=Taisyklė
+list_rules_plus_more=+ dar $1
+log_save_rules=Ištrinta $1 taisyklė
 
 restart_err=Nepavyko pritaikyti konfigūracijos
 

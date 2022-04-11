@@ -94,6 +94,8 @@ delzone_rusure=Är du säker på att du vill ta bort zonen $1, som innehåller $
 defzone_err=Det gick inte att göra zon som standard
 
 index_listrules=Lista FirewallD-regler
+index_restart_firewalld=Ladda om FirewallD
+index_restart_firewallddesc=Ladda om FirewallD-servern och tillämpa reglerna som skapades permanent.
 index_listrules_restartdesc=Lista detaljer om befintliga rika och direkta FirewallD-regler i $1-zonen.
 list_rule_iperr=Ogiltig IP-adress
 list_rule_actionerr=Ogiltig åtgärd
@@ -108,6 +110,8 @@ list_rules_ip=IP
 list_rules_origin=Ursprung
 list_rules_action=Handling
 list_rules_rule=Regel
+list_rules_plus_more=+ $1 till
+log_save_rules=Raderade $1-regler
 
 restart_err=Det gick inte att tillämpa konfigurationen
 

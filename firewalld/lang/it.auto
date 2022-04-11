@@ -94,6 +94,8 @@ delzone_rusure=Sei sicuro di voler eliminare la zona $1, che contiene $2 porte e
 defzone_err=Impossibile rendere la zona predefinita
 
 index_listrules=Elenca le regole di FirewallD
+index_restart_firewalld=Ricarica FirewallD
+index_restart_firewallddesc=Ricaricare il server FirewallD e applicare le regole che sono state create in modo permanente.
 index_listrules_restartdesc=Elenca i dettagli sulle regole FirewallD avanzate e dirette esistenti nella zona $1.
 list_rule_iperr=Indirizzo IP non valido
 list_rule_actionerr=Azione non valida
@@ -108,6 +110,8 @@ list_rules_ip=IP
 list_rules_origin=Origine
 list_rules_action=Azione
 list_rules_rule=Regola
+list_rules_plus_more=+ $1 in più
+log_save_rules=$1 regole eliminate
 
 restart_err=Impossibile applicare la configurazione
 

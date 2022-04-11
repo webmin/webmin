@@ -94,6 +94,8 @@ delzone_rusure=Haluatko varmasti poistaa vyöhykkeen $1, joka sisältää $2 por
 defzone_err=Alueesta ei oletusarvoinen
 
 index_listrules=Luettele FirewallD-säännöt
+index_restart_firewalld=Lataa FirewallD uudelleen
+index_restart_firewallddesc=Lataa FirewallD-palvelin uudelleen ja käytä pysyvästi luotuja sääntöjä.
 index_listrules_restartdesc=Luettele tiedot olemassa olevista monipuolisista ja suorista FirewallD-säännöistä $1 vyöhykkeellä.
 list_rule_iperr=Virheellinen IP-osoite
 list_rule_actionerr=Virheellinen toiminto
@@ -108,6 +110,8 @@ list_rules_ip=IP
 list_rules_origin=Alkuperä
 list_rules_action=Toiminta
 list_rules_rule=Sääntö
+list_rules_plus_more=+ $1 lisää
+log_save_rules=Poistettu $1 sääntöä
 
 restart_err=Asetusten määrittäminen epäonnistui
 

@@ -94,6 +94,8 @@ delzone_rusure=Adakah anda pasti mahu memadamkan zon $1, yang mengandungi $2 por
 defzone_err=Gagal menjadikan zon lalai
 
 index_listrules=Senaraikan Peraturan FirewallD
+index_restart_firewalld=Muat semula FirewallD
+index_restart_firewallddesc=Muat semula pelayan FirewallD dan gunakan peraturan yang telah dibuat secara kekal.
 index_listrules_restartdesc=Senaraikan butiran tentang peraturan FirewallD yang kaya dan langsung dalam $1 zon.
 list_rule_iperr=Alamat IP tidak sah
 list_rule_actionerr=Tindakan tidak sah
@@ -108,6 +110,8 @@ list_rules_ip=IP
 list_rules_origin=asal usul
 list_rules_action=Tindakan
 list_rules_rule=peraturan
+list_rules_plus_more=+ $1 lagi
+log_save_rules=$1 peraturan dipadamkan
 
 restart_err=Gagal menggunakan konfigurasi
 

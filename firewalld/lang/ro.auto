@@ -94,6 +94,8 @@ delzone_rusure=Sigur doriți să ștergeți zona $1, care conține $2 porturi ș
 defzone_err=Nu a reușit să facă zona implicită
 
 index_listrules=Listează regulile FirewallD
+index_restart_firewalld=Reîncărcați FirewallD
+index_restart_firewallddesc=Reîncărcați serverul FirewallD și aplicați regulile care au fost create permanent.
 index_listrules_restartdesc=Listați detalii despre regulile FirewallD bogate și directe existente în zona $1.
 list_rule_iperr=Adresă IP nevalidă
 list_rule_actionerr=Acțiune nevalidă
@@ -108,6 +110,8 @@ list_rules_ip=IP
 list_rules_origin=Origine
 list_rules_action=Acțiune
 list_rules_rule=Regulă
+list_rules_plus_more=+ $1 încă
+log_save_rules=Au fost șterse $1 reguli
 
 restart_err=Eroare la aplicarea configurației
 

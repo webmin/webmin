@@ -94,6 +94,8 @@ delzone_rusure=Vai tiešām vēlaties izdzēst zonu $1, kurā ir $2 porti un $3 
 defzone_err=Neizdevās padarīt zonu par noklusējuma
 
 index_listrules=Uzskaitiet FirewallD noteikumus
+index_restart_firewalld=Pārlādēt FirewallD
+index_restart_firewallddesc=Atkārtoti ielādējiet FirewallD serveri un lietojiet neatgriezeniski izveidotos noteikumus.
 index_listrules_restartdesc=Norādiet detalizētu informāciju par esošajiem bagātinātajiem un tiešajiem FirewallD noteikumiem zonā $1.
 list_rule_iperr=Nederīga IP adrese
 list_rule_actionerr=Nederīga darbība
@@ -108,6 +110,8 @@ list_rules_ip=IP
 list_rules_origin=Izcelsme
 list_rules_action=Darbība
 list_rules_rule=Noteikums
+list_rules_plus_more=+ vēl $1
+log_save_rules=Izdzēsti $1 noteikumi
 
 restart_err=Neizdevās piemērot konfigurāciju
 

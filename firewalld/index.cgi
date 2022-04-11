@@ -153,8 +153,8 @@ if ($ok) {
 		      &text("index_listrules_restartdesc",
 		            "<tt>".$zone->{'name'}."</tt>"),
 		      [ [ "zone", $zone->{'name'} ] ]);
-	print &ui_buttons_row("restart.cgi", $text{'index_restart'},
-			      $text{'index_restartdesc'},
+	print &ui_buttons_row("restart.cgi", $text{'index_restart_firewalld'},
+			      $text{'index_restart_firewallddesc'},
 			      [ [ "zone", $zone->{'name'} ] ]);
 	print &ui_buttons_row("stop.cgi", $text{'index_stop'},
 			      $text{'index_stopdesc'},

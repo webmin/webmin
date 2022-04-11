@@ -94,6 +94,8 @@ delzone_rusure=Tem certeza de que deseja excluir a zona $1, que contém $2 porta
 defzone_err=Falha ao tornar a zona o padrão
 
 index_listrules=Listar regras do FirewallD
+index_restart_firewalld=Recarregar FirewallD
+index_restart_firewallddesc=Recarregue o servidor FirewallD e aplique as regras que foram criadas permanentemente.
 index_listrules_restartdesc=Liste detalhes sobre regras de FirewallD avançadas e diretas existentes na zona $1.
 list_rule_iperr=Endereço IP inválido
 list_rule_actionerr=Ação inválida
@@ -108,6 +110,8 @@ list_rules_ip=IP
 list_rules_origin=Origem
 list_rules_action=Açao
 list_rules_rule=Regra
+list_rules_plus_more=+ $1 mais
+log_save_rules=$1 regras excluídas
 
 restart_err=Falha ao aplicar a configuração
 

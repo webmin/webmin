@@ -94,6 +94,8 @@ delzone_rusure=$2 bağlantı noktası ve $3 hizmetini içeren $1 bölgesini silm
 defzone_err=Bölge varsayılan olarak ayarlanamadı
 
 index_listrules=FirewallD Kurallarını Listeleme
+index_restart_firewalld=Güvenlik Duvarını Yeniden YükleD
+index_restart_firewallddesc=FirewallD sunucusunu yeniden yükleyin ve kalıcı olarak oluşturulmuş kuralları uygulayın.
 index_listrules_restartdesc=$1 bölgesindeki mevcut zengin ve doğrudan FirewallD kurallarıyla ilgili ayrıntıları listeleyin.
 list_rule_iperr=Geçersiz IP adresi
 list_rule_actionerr=Geçersiz eylem
@@ -108,6 +110,8 @@ list_rules_ip=IP
 list_rules_origin=Menşei
 list_rules_action=Aksiyon
 list_rules_rule=Kural
+list_rules_plus_more=+ $1 daha
+log_save_rules=$1 kuralı silindi
 
 restart_err=Yapılandırma uygulanamadı
 

@@ -20,6 +20,8 @@ forward_edstaddr=Nieprawidłowy adres docelowy IPv4
 forward_eneither=Należy podać adres docelowy lub port albo oba te adresy
 
 index_listrules=Wyświetlanie listy reguł FirewallD
+index_restart_firewalld=Załaduj ponownie zaporę D
+index_restart_firewallddesc=Załaduj ponownie serwer FirewallD i zastosuj reguły, które zostały utworzone na stałe.
 index_listrules_restartdesc=Wyświetl szczegółowe informacje o istniejących rozbudowanych i bezpośrednich regułach FirewallD w strefie $1.
 list_rule_iperr=Nieprawidłowy adres IP
 list_rule_actionerr=Nieprawidłowa czynność
@@ -34,6 +36,8 @@ list_rules_ip=IP
 list_rules_origin=Pochodzenie
 list_rules_action=Akcja
 list_rules_rule=Reguła
+list_rules_plus_more=+ $1 więcej
+log_save_rules=Usunięto $1 reguł
 
 log_create_forward=Dodano do przodu $1 
 log_delete_forward=Usunięto do przodu $1 

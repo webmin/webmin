@@ -94,6 +94,8 @@ delzone_rusure=Is u seker dat u die zone $1, wat $2 -poorte en $3 -dienste bevat
 defzone_err=Kon nie zone die verstek maak nie
 
 index_listrules=Lys FirewallD-reëls
+index_restart_firewalld=Herlaai FirewallD
+index_restart_firewallddesc=Herlaai die FirewallD-bediener en pas die reëls toe wat permanent geskep is.
 index_listrules_restartdesc=Lys besonderhede oor bestaande ryk en direkte FirewallD-reëls in $1-sone.
 list_rule_iperr=Ongeldige IP-adres
 list_rule_actionerr=Ongeldige handeling
@@ -108,6 +110,8 @@ list_rules_ip=IP
 list_rules_origin=Oorsprong
 list_rules_action=Aksie
 list_rules_rule=Reël
+list_rules_plus_more=+ $1 meer
+log_save_rules=Het $1 reëls uitgevee
 
 restart_err=Kon nie konfigurasie toepas nie
 
