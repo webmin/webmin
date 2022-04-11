@@ -5,9 +5,13 @@ use strict;
 use warnings;
 require './firewalld-lib.pl';
 our (%in, %text, %config);
-
-my $dzone = &get_default_zone();
-&ui_print_header(&text('richrules_title_sub', "<tt>".&html_escape($dzone->{'name'})."</tt>"), $text{'richrules_title'}, "");
+&ReadParse();
+my $dzone = $in{'zone'};
+if (!$dzone) {
+	my $zone = &get_default_zone();
+	$dzone = $zone->{'name'};
+	}
+&ui_print_header(&text('richrules_title_sub', "<tt>".&html_escape($dzone)."</tt>"), $text{'richrules_title'}, "");
 
 my $head;
 my @head = (undef, "Type");
@@ -17,7 +21,7 @@ my @links = ( &select_all_link("rules"),
 
 # Check rich rules first
 my $fh = 'rrules';
-my $rcmd = "$config{'firewall_cmd'} --list-rich-rules --zone=$dzone->{'name'}";
+my $rcmd = "$config{'firewall_cmd'} --list-rich-rules --zone=$dzone";
 &open_execute_command($fh, "$rcmd 2>&1 </dev/null", 1);
 while(<$fh>) {
 	my @body;
