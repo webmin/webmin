@@ -353,6 +353,15 @@ else {
 	}
 }
 
+# get_default_zone
+# Returns default zone
+sub get_default_zone
+{
+my @zones = &list_firewalld_zones();
+my ($zone) = grep { $_->{'default'} } @zones;
+return $zone;
+}
+
 # add_ip_ban(ip, [zone])
 # Ban given IP address in given or default zone
 sub add_ip_ban
@@ -392,8 +401,7 @@ if (ref($opts)) {
 
 # Default zone
 if (!$zone) {
-	my @zones = &list_firewalld_zones();
-	($zone) = grep { $_->{'default'} } @zones;
+	($zone) = get_default_zone();
 	}
 my $zone_name = $zone->{'name'};
 $zone_name =~ tr/A-Za-z0-9\-\_//cd;

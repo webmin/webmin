@@ -95,6 +95,9 @@ defzone_err=Failed to make zone the default
 
 richrule_iperr=Invalid IP address
 richrule_actionerr=Invalid action
+richrules_title=FirewallD Rules
+richrules_title_sub=in zone $1
+richrules_delete=Delete Selected Rules
 
 restart_err=Failed to apply configuration
 stop_err=Failed to stop FirewallD
