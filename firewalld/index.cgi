@@ -144,6 +144,10 @@ if ($azone) {
 print &ui_hr();
 print &ui_buttons_start();
 my $ok = &is_firewalld_running();
+print &ui_buttons_row("list_rules.cgi", $text{'index_listrules'},
+			      &text("index_listrules_restartdesc",
+			            "<tt>".$zone->{'name'}."</tt>"),
+			      [ [ "zone", $zone->{'name'} ] ]);
 if ($ok) {
 	print &ui_buttons_row("restart.cgi", $text{'index_restart'},
 			      $text{'index_restartdesc'},

@@ -98,6 +98,8 @@ richrule_actionerr=Invalid action
 richrules_title=FirewallD Rules
 richrules_title_sub=in zone $1
 richrules_delete=Delete Selected Rules
+index_listrules=List FirewallD Rules
+index_listrules_restartdesc=List details about existing rich and direct FirewallD rules in $1 zone.
 
 restart_err=Failed to apply configuration
 stop_err=Failed to stop FirewallD
