@@ -76,7 +76,7 @@ if (@jails) {
 		print &ui_form_end([ [ 'unblock', $text{'status_jail_unblock'} ],
 		                     $is_firewalld ?
 		                       [ 'permblock', $text{'status_jail_block'} ] : undef ]);
-	};
+		}
 }
 else {
 	print $text{'status_jail_noactive'};
