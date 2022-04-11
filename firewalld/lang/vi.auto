@@ -7,13 +7,13 @@ index_applydesc=Nhấp vào nút này để làm cho cấu hình tường lửa 
 index_restart=Áp dụng cấu hình
 index_restartdesc=Kích hoạt tất cả các dịch vụ và cổng được phép được liệt kê ở trên, trong tất cả các vùng. Bất kỳ quy tắc hoạt động nào không được tạo vĩnh viễn sẽ được thay thế.
 index_start=Bắt đầu Tường lửa
-index_startdesc=Khởi động máy chủ FirewallD và áp dụng các quy tắc được liệt kê ở trên.
+
 index_stop=Dừng tường lửa
 index_stopdesc=Tắt máy chủ FirewallD và xóa tất cả các quy tắc được liệt kê ở trên.
 index_cerr=Không thể sử dụng mô-đun FirewallD : $1 
 index_zone=Hiển thị quy tắc trong khu vực:
 index_zoneok=Thay đổi
-index_zoneadd=Thêm vùng ..
+
 index_zonedel=Xóa vùng
 index_zonedef=Làm mặc định
 index_type=Loại quy tắc
@@ -95,6 +95,11 @@ defzone_err=Không thể tạo vùng mặc định
 
 richrule_iperr=địa chỉ IP không hợp lệ
 richrule_actionerr=Hành động không hợp lệ
+richrules_title=Quy tắc FirewallD
+richrules_title_sub=trong vùng $1 
+richrules_delete=Xóa các quy tắc đã chọn
+index_listrules=Liệt kê các quy tắc FirewallD
+index_listrules_restartdesc=Liệt kê chi tiết về các quy tắc FirewallD trực tiếp và phong phú hiện có trong vùng $1.
 
 restart_err=Không thể áp dụng cấu hình
 

@@ -7,13 +7,13 @@ index_applydesc=Noklikšķiniet uz šīs pogas, lai aktivizētu iepriekš uzskai
 index_restart=Lietot konfigurāciju
 index_restartdesc=Aktivizējiet visus iepriekš uzskaitītos atļautos pakalpojumus un ostas visās zonās. Visi aktīvie noteikumi, kas netika izveidoti neatgriezeniski, tiks aizstāti.
 index_start=Startējiet FirewallD
-index_startdesc=Palaidiet FirewallD serveri un piemērojiet iepriekš uzskaitītos noteikumus.
+
 index_stop=Apturēt FirewallD
 index_stopdesc=Izslēdziet FirewallD serveri un noņemiet visus iepriekš uzskaitītos noteikumus.
 index_cerr=FirewallD moduli nevar izmantot : $1 
 index_zone=Rādīt noteikumus zonā:
 index_zoneok=Pārmaiņas
-index_zoneadd=Pievienot zonu ..
+
 index_zonedel=Dzēst zonu
 index_zonedef=Padarīt noklusējumu
 index_type=Noteikumu tips
@@ -95,6 +95,11 @@ defzone_err=Neizdevās padarīt zonu par noklusējuma
 
 richrule_iperr=Nederīga IP adrese
 richrule_actionerr=Nederīga darbība
+richrules_title=FirewallD noteikumi
+richrules_title_sub=zonā $1
+richrules_delete=Dzēst atlasītos noteikumus
+index_listrules=Uzskaitiet FirewallD noteikumus
+index_listrules_restartdesc=Norādiet detalizētu informāciju par esošajiem bagātinātajiem un tiešajiem FirewallD noteikumiem zonā $1.
 
 restart_err=Neizdevās piemērot konfigurāciju
 

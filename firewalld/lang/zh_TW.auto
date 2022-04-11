@@ -7,13 +7,13 @@ index_applydesc=單擊此按鈕可激活上面列出的防火牆配置。當前�
 index_restart=應用配置
 index_restartdesc=在所有區域中激活上面列出的所有允許的服務和端口。任何不是永久創建的活動規則都將被替換。
 index_start=啟動防火牆D
-index_startdesc=啟動FirewallD服務器並應用上面列出的規則。
+
 index_stop=停止防火牆D
 index_stopdesc=關閉FirewallD服務器並刪除上面列出的所有規則。
 index_cerr=無法使用FirewallD模塊： $1
 index_zone=在區域中顯示規則：
 index_zoneok=更改
-index_zoneadd=添加區域
+
 index_zonedel=刪除區域
 index_zonedef=使默認
 index_type=規則類型
@@ -95,6 +95,11 @@ defzone_err=無法將區域設為默認區域
 
 richrule_iperr=IP 地址無效
 richrule_actionerr=無效操作
+richrules_title=防火牆規則
+richrules_title_sub=在區域 $1
+richrules_delete=刪除選定的規則
+index_listrules=列出 FirewallD 規則
+index_listrules_restartdesc=列出有關 $1 區域中現有豐富和直接 FirewallD 規則的詳細信息。
 
 restart_err=應用配置失敗
 

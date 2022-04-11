@@ -7,13 +7,13 @@ index_applydesc=Spustelėkite šį mygtuką, kad pirmiau išvardytos ugniasienė
 index_restart=Taikyti konfigūraciją
 index_restartdesc=Suaktyvinkite visas aukščiau išvardytas leidžiamas paslaugas ir prievadus visose zonose. Visos aktyvios taisyklės, kurios nebuvo sukurtos visam laikui, bus pakeistos.
 index_start=Paleiskite „FirewallD“
-index_startdesc=Paleiskite „FirewallD“ serverį ir pritaikykite aukščiau išvardytas taisykles.
+
 index_stop=Sustabdykite „FirewallD“
 index_stopdesc=Išjunkite „FirewallD“ serverį ir pašalinkite visas aukščiau išvardytas taisykles.
 index_cerr=„FirewallD“ modulio naudoti negalima : $1 
 index_zone=Rodyti taisykles zonoje:
 index_zoneok=Keisti
-index_zoneadd=Pridėti zoną ..
+
 index_zonedel=Ištrinti zoną
 index_zonedef=Padaryti numatytuoju
 index_type=Taisyklės tipas
@@ -95,6 +95,11 @@ defzone_err=Nepavyko zonos padaryti numatytąja
 
 richrule_iperr=Neteisingas IP adresas
 richrule_actionerr=Netinkamas veiksmas
+richrules_title=FirewallD taisyklės
+richrules_title_sub=zonoje $1
+richrules_delete=Ištrinkite pasirinktas taisykles
+index_listrules=Išvardykite FirewallD taisykles
+index_listrules_restartdesc=Išsamią informaciją apie esamas išsamias ir tiesiogines ugniasienės taisykles $1 zonoje.
 
 restart_err=Nepavyko pritaikyti konfigūracijos
 

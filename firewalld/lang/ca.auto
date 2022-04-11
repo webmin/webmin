@@ -3,3 +3,8 @@ index_ifaces_sel=Interfícies seleccionades:
 
 richrule_iperr=Adreça IP no vàlida
 richrule_actionerr=Acció no vàlida
+richrules_title=Regles del tallafocD
+richrules_title_sub=a la zona $1
+richrules_delete=Suprimeix les regles seleccionades
+index_listrules=Llista les regles del tallafocD
+index_listrules_restartdesc=Llista els detalls sobre les regles de FirewallD riques i directes existents a la zona $1.

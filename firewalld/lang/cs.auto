@@ -7,13 +7,13 @@ index_applydesc=Klepnutím na toto tlačítko aktivujete výše uvedenou konfigu
 index_restart=Použít konfiguraci
 index_restartdesc=Aktivujte všechny výše uvedené povolené služby a porty ve všech zónách. Všechna aktivní pravidla, která nebyla trvale vytvořena, budou nahrazena.
 index_start=Spusťte FirewallD
-index_startdesc=Spusťte server FirewallD a použijte výše uvedená pravidla.
+
 index_stop=Zastavte FirewallD
 index_stopdesc=Vypněte server FirewallD a odeberte všechna výše uvedená pravidla.
 index_cerr=Nelze použít modul FirewallD : $1 
 index_zone=Zobrazit pravidla v zóně:
 index_zoneok=Změna
-index_zoneadd=Přidat zónu ..
+
 index_zonedel=Smazat zónu
 index_zonedef=Nastavit jako výchozí
 index_type=Typ pravidla
@@ -95,6 +95,11 @@ defzone_err=Nepodařilo se nastavit zónu jako výchozí
 
 richrule_iperr=Neplatná IP adresa
 richrule_actionerr=Neplatná akce
+richrules_title=Pravidla FirewallD
+richrules_title_sub=v zóně $1
+richrules_delete=Smazat vybraná pravidla
+index_listrules=Seznam pravidel FirewallD
+index_listrules_restartdesc=Vypsat podrobnosti o existujících rozšířených a přímých pravidlech FirewallD v zóně $1.
 
 restart_err=Nepodařilo se použít konfiguraci
 

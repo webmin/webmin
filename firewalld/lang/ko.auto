@@ -7,13 +7,13 @@ index_applydesc=위에 나열된 방화벽 구성을 활성화하려면이 버�
 index_restart=구성 적용
 index_restartdesc=모든 영역에서 위에 나열된 모든 허용 된 서비스 및 포트를 활성화하십시오. 영구적으로 생성되지 않은 활성 규칙이 교체됩니다.
 index_start=FirewallD 시작
-index_startdesc=FirewallD 서버를 시작하고 위에 나열된 규칙을 적용하십시오.
+
 index_stop=방화벽 중지
 index_stopdesc=FirewallD 서버를 종료하고 위에 나열된 모든 규칙을 제거하십시오.
 index_cerr=FirewallD 모듈을 사용할 수 없습니다  : $1 
 index_zone=영역에 규칙 표시 :
 index_zoneok=변화
-index_zoneadd=구역 추가 ..
+
 index_zonedel=영역 삭제
 index_zonedef=기본값으로 설정
 index_type=규칙 유형
@@ -95,6 +95,11 @@ defzone_err=영역을 기본값으로 설정하지 못했습니다
 
 richrule_iperr=잘못된 IP 주소
 richrule_actionerr=잘못된 작업
+richrules_title=FirewallD 규칙
+richrules_title_sub=영역 $1 에서
+richrules_delete=선택한 규칙 삭제
+index_listrules=FirewallD 규칙 나열
+index_listrules_restartdesc=$1 영역의 기존 풍부하고 직접적인 FirewallD 규칙에 대한 세부 정보를 나열합니다.
 
 restart_err=구성을 적용하지 못했습니다
 

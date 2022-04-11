@@ -7,13 +7,13 @@ index_applydesc=Klicka på den här knappen för att aktivera brandväggskonfigu
 index_restart=Använd konfigurering
 index_restartdesc=Aktivera alla tillåtna tjänster och portar som listas ovan i alla zoner. Alla aktiva regler som inte skapades permanent kommer att ersättas.
 index_start=Starta brandväggD
-index_startdesc=Starta FirewallD-servern och tillämpa reglerna ovan.
+
 index_stop=Sluta brandväggenD
 index_stopdesc=Stäng av FirewallD-servern och ta bort alla regler som anges ovan.
 index_cerr=FirewallD-modulen kan inte användas : $1 
 index_zone=Visa regler i zon:
 index_zoneok=Förändra
-index_zoneadd=Lägg till zon ..
+
 index_zonedel=Radera zon
 index_zonedef=Göra default
 index_type=Regeltyp
@@ -95,6 +95,11 @@ defzone_err=Det gick inte att göra zon som standard
 
 richrule_iperr=Ogiltig IP-adress
 richrule_actionerr=Ogiltig åtgärd
+richrules_title=FirewallD-regler
+richrules_title_sub=i zon $1
+richrules_delete=Ta bort valda regler
+index_listrules=Lista FirewallD-regler
+index_listrules_restartdesc=Lista detaljer om befintliga rika och direkta FirewallD-regler i $1-zonen.
 
 restart_err=Det gick inte att tillämpa konfigurationen
 

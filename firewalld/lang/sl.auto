@@ -7,13 +7,13 @@ index_applydesc=Kliknite ta gumb, da aktivirate zgoraj navedeno konfiguracijo po
 index_restart=Uporabi konfiguracijo
 index_restartdesc=V vseh območjih aktivirajte vse zgoraj naštete dovoljene storitve in vrata. Vsa aktivna pravila, ki niso bila ustvarjena trajno, bodo nadomeščena.
 index_start=Zaženite FirewallD
-index_startdesc=Zaženite strežnik FirewallD in uporabite zgoraj navedena pravila.
+
 index_stop=Ustavite FirewallD
 index_stopdesc=Izklopite strežnik FirewallD in odstranite vsa zgoraj navedena pravila.
 index_cerr=Modula FirewallD ni mogoče uporabiti : $1 
 index_zone=Prikaži pravila v coni:
 index_zoneok=Spremeni se
-index_zoneadd=Dodaj cono ..
+
 index_zonedel=Zbriši cono
 index_zonedef=Nastavi kot privzeto
 index_type=Vrsta pravila
@@ -95,6 +95,11 @@ defzone_err=Območje ni postalo privzeto
 
 richrule_iperr=Neveljaven naslov IP
 richrule_actionerr=Neveljavno dejanje
+richrules_title=Pravila požarnega ziduD
+richrules_title_sub=v coni $1
+richrules_delete=Izbriši izbrana pravila
+index_listrules=Seznam pravil FirewallD
+index_listrules_restartdesc=Navedite podrobnosti o obstoječih obogatenih in neposrednih pravilih FirewallD v območju $1.
 
 restart_err=Konfiguracije ni bilo mogoče uporabiti
 

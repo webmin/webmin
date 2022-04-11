@@ -7,13 +7,13 @@ index_applydesc=このボタンをクリックして、上記のファイアウ�
 index_restart=設定を適用
 index_restartdesc=すべてのゾーンで、上記のすべての許可されたサービスとポートをアクティブにします。永続的に作成されなかったアクティブなルールはすべて置き換えられます。
 index_start=FirewallDを起動します
-index_startdesc=FirewallDサーバーを起動し、上記のルールを適用します。
+
 index_stop=FirewallDを停止します
 index_stopdesc=FirewallDサーバーをシャットダウンし、上記のすべてのルールを削除します。
 index_cerr=FirewallDモジュールは使用できません： $1
 index_zone=ゾーンにルールを表示：
 index_zoneok=変化する
-index_zoneadd=ゾーンを追加 ..
+
 index_zonedel=ゾーンを削除
 index_zonedef=デフォルトにする
 index_type=ルールの種類
@@ -95,6 +95,11 @@ defzone_err=ゾーンをデフォルトにできませんでした
 
 richrule_iperr=無効なIPアドレス
 richrule_actionerr=無効なアクション
+richrules_title=FirewallDルール
+richrules_title_sub=ゾーン $1
+richrules_delete=選択したルールを削除する
+index_listrules=FirewallDルールを一覧表示
+index_listrules_restartdesc=$1ゾーンにある既存のリッチおよびダイレクトFirewallDルールに関する詳細を一覧表示します。
 
 restart_err=構成を適用できませんでした
 

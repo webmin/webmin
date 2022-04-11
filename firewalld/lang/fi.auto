@@ -7,13 +7,13 @@ index_applydesc=Napsauta tätä painiketta, jos haluat aktivoida yllä mainitut 
 index_restart=Käytä määritystä
 index_restartdesc=Aktivoi kaikki yllä luetellut sallitut palvelut ja portit kaikissa vyöhykkeissä. Kaikki aktiiviset säännöt, joita ei luotu pysyvästi, korvataan.
 index_start=Käynnistä FirewallD
-index_startdesc=Käynnistä FirewallD-palvelin ja noudata yllä lueteltuja sääntöjä.
+
 index_stop=Pysäytä palomuuri
 index_stopdesc=Sammuta FirewallD-palvelin ja poista kaikki yllä olevat säännöt.
 index_cerr=FirewallD-moduulia ei voi käyttää : $1 
 index_zone=Näytä säännöt vyöhykkeellä:
 index_zoneok=Muuttaa
-index_zoneadd=Lisää vyöhyke ..
+
 index_zonedel=Poista vyöhyke
 index_zonedef=Laita oletusarvoksi
 index_type=Sääntötyyppi
@@ -95,6 +95,11 @@ defzone_err=Alueesta ei oletusarvoinen
 
 richrule_iperr=Virheellinen IP-osoite
 richrule_actionerr=Virheellinen toiminto
+richrules_title=FirewallD-säännöt
+richrules_title_sub=vyöhykkeellä $1
+richrules_delete=Poista valitut säännöt
+index_listrules=Luettele FirewallD-säännöt
+index_listrules_restartdesc=Luettele tiedot olemassa olevista monipuolisista ja suorista FirewallD-säännöistä $1 vyöhykkeellä.
 
 restart_err=Asetusten määrittäminen epäonnistui
 

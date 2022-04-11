@@ -7,13 +7,13 @@ index_applydesc=Klik på denne knap for at aktivere firewall-konfigurationen, de
 index_restart=Anvend konfiguration
 index_restartdesc=Aktivér alle de tilladte tjenester og porte, der er anført ovenfor, i alle zoner. Alle aktive regler, der ikke blev oprettet permanent, erstattes.
 index_start=Start FirewallD
-index_startdesc=Start FirewallD-serveren, og anvend reglerne ovenfor.
+
 index_stop=Stop FirewallD
 index_stopdesc=Luk FirewallD-serveren, og fjern alle ovenstående regler.
 index_cerr=FirewallD-modulet kan ikke bruges : $1 
 index_zone=Vis regler i zone:
 index_zoneok=Lave om
-index_zoneadd=Tilføj zone ..
+
 index_zonedel=Slet zone
 index_zonedef=Lav standard
 index_type=Regeltype
@@ -95,6 +95,11 @@ defzone_err=Kunne ikke gøre zone som standard
 
 richrule_iperr=Ugyldig IP-adresse
 richrule_actionerr=Ugyldig handling
+richrules_title=FirewallD regler
+richrules_title_sub=i zone $1
+richrules_delete=Slet valgte regler
+index_listrules=Liste FirewallD-regler
+index_listrules_restartdesc=Vis detaljer om eksisterende righoldige og direkte FirewallD-regler i $1 zone.
 
 restart_err=Kunne ikke anvende konfiguration
 

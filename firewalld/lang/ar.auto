@@ -7,13 +7,13 @@ index_applydesc=انقر فوق هذا الزر لتنشيط تكوين جدار
 index_restart=تطبيق التكوين
 index_restartdesc=تنشيط جميع الخدمات والمنافذ المسموح بها المذكورة أعلاه في جميع المناطق. سيتم استبدال أي قواعد نشطة لم يتم إنشاؤها بشكل دائم.
 index_start=قم بتشغيل FirewallD
-index_startdesc=قم بتشغيل خادم FirewallD وتطبيق القواعد المذكورة أعلاه.
+
 index_stop=أوقف جدار الحماية
 index_stopdesc=أوقف تشغيل خادم FirewallD وأزل جميع القواعد المذكورة أعلاه.
 index_cerr=لا يمكن استخدام الوحدة النمطية لجدار الحماية :$1
 index_zone=إظهار القواعد في المنطقة:
 index_zoneok=يتغيرون
-index_zoneadd=إضافة منطقة ..
+
 index_zonedel=حذف المنطقة
 index_zonedef=جعل الافتراضي
 index_type=نوع القاعدة
@@ -95,6 +95,11 @@ defzone_err=فشل في جعل المنطقة الافتراضية
 
 richrule_iperr=عنوان إب غير صالح
 richrule_actionerr=عمل غير صالح
+richrules_title=قواعد جدار الحماية د
+richrules_title_sub=في المنطقة$1
+richrules_delete=حذف القواعد المحددة
+index_listrules=سرد قواعد جدار الحماية
+index_listrules_restartdesc=سرد تفاصيل حول قواعد جدار الحماية الغنية والمباشرة الموجودة في منطقة$1.
 
 restart_err=فشل في تطبيق التكوين
 

@@ -7,13 +7,13 @@ index_applydesc=Klik op deze knop om de hierboven vermelde firewallconfiguratie 
 index_restart=Configuratie toepassen
 index_restartdesc=Activeer alle toegestane services en poorten hierboven vermeld, in alle zones. Alle actieve regels die niet permanent zijn gemaakt, worden vervangen.
 index_start=Start FirewallD
-index_startdesc=Start de FirewallD-server en pas de bovenstaande regels toe.
+
 index_stop=Stop FirewallD
 index_stopdesc=Sluit de FirewallD-server af en verwijder alle bovenstaande regels.
 index_cerr=De FirewallD-module kan niet worden gebruikt : $1 
 index_zone=Toon regels in zone:
 index_zoneok=Verandering
-index_zoneadd=Zone toevoegen. ..
+
 index_zonedel=Zone verwijderen
 index_zonedef=Maak standaard
 index_type=Regeltype
@@ -95,6 +95,11 @@ defzone_err=Kan zone niet als standaard instellen
 
 richrule_iperr=Ongeldig IP-adres
 richrule_actionerr=Ongeldige actie
+richrules_title=FirewallD-regels
+richrules_title_sub=in zone $1
+richrules_delete=Geselecteerde regels verwijderen
+index_listrules=FirewallD-regels weergeven
+index_listrules_restartdesc=Vermeld details over bestaande uitgebreide en directe FirewallD-regels in zone $1.
 
 restart_err=Configuratie mislukt
 

@@ -7,13 +7,13 @@ index_applydesc=Cliquez sur ce bouton pour activer la configuration du pare-feu 
 index_restart=Appliquer la configuration
 index_restartdesc=Activez tous les services et ports autorisés répertoriés ci-dessus, dans toutes les zones. Toutes les règles actives qui n'ont pas été créées de manière permanente seront remplacées.
 index_start=Démarrez FirewallD
-index_startdesc=Démarrez le serveur FirewallD et appliquez les règles répertoriées ci-dessus.
+
 index_stop=Arrêter le pare-feuD
 index_stopdesc=Arrêtez le serveur FirewallD et supprimez toutes les règles répertoriées ci-dessus.
 index_cerr=Le module FirewallD ne peut pas être utilisé : $1 
 index_zone=Afficher les règles dans la zone:
 index_zoneok=Changement
-index_zoneadd=Ajouter une zone ..
+
 index_zonedel=Supprimer la zone
 index_zonedef=Faire défaut
 index_type=Type de règle
@@ -95,6 +95,11 @@ defzone_err=Impossible de définir la zone par défaut
 
 richrule_iperr=Adresse IP invalide
 richrule_actionerr=Action invalide
+richrules_title=Règles FirewallD
+richrules_title_sub=dans la zone $1
+richrules_delete=Supprimer les règles sélectionnées
+index_listrules=Répertorier les règles FirewallD
+index_listrules_restartdesc=Répertorier les détails des règles FirewallD enrichies et directes existantes dans la zone $1.
 
 restart_err=Impossible d'appliquer la configuration
 

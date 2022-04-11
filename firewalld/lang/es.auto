@@ -7,13 +7,13 @@ index_applydesc=Haga clic en este botón para activar la configuración del fire
 index_restart=Aplicar configuración
 index_restartdesc=Active todos los servicios y puertos permitidos enumerados anteriormente, en todas las zonas. Cualquier regla activa que no se haya creado permanentemente será reemplazada.
 index_start=Iniciar FirewallD
-index_startdesc=Inicie el servidor FirewallD y aplique las reglas enumeradas anteriormente.
+
 index_stop=Stop FirewallD
 index_stopdesc=Cierre el servidor FirewallD y elimine todas las reglas enumeradas anteriormente.
 index_cerr=El módulo FirewallD no se puede usar : $1 
 index_zone=Mostrar reglas en zona:
 index_zoneok=Cambio
-index_zoneadd=Añadir zona ..
+
 index_zonedel=Eliminar zona
 index_zonedef=Hacer por defecto
 index_type=Tipo de regla
@@ -95,6 +95,11 @@ defzone_err=Error al establecer la zona como predeterminada
 
 richrule_iperr=Dirección IP inválida
 richrule_actionerr=Acción no válida
+richrules_title=Reglas de FirewallD
+richrules_title_sub=en la zona $1
+richrules_delete=Eliminar reglas seleccionadas
+index_listrules=Lista de reglas de FirewallD
+index_listrules_restartdesc=Enumere los detalles sobre las reglas FirewallD enriquecidas y directas existentes en la zona $1.
 
 restart_err=Error al aplicar la configuración
 

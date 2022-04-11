@@ -19,6 +19,11 @@ forward_eneither=Należy podać adres docelowy lub port albo oba te adresy
 
 richrule_iperr=Nieprawidłowy adres IP
 richrule_actionerr=Nieprawidłowa czynność
+richrules_title=Zasady zapory ogniowej
+richrules_title_sub=w strefie $1 
+richrules_delete=Usuń wybrane reguły
+index_listrules=Wyświetlanie listy reguł FirewallD
+index_listrules_restartdesc=Wyświetl szczegółowe informacje o istniejących rozbudowanych i bezpośrednich regułach FirewallD w strefie $1.
 
 log_create_forward=Dodano do przodu $1 
 log_delete_forward=Usunięto do przodu $1 

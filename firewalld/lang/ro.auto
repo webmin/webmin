@@ -7,13 +7,13 @@ index_applydesc=Faceți clic pe acest buton pentru a face activă configurația 
 index_restart=Aplicați configurare
 index_restartdesc=Activați toate serviciile și porturile permise enumerate mai sus, în toate zonele. Orice reguli active care nu au fost create permanent vor fi înlocuite.
 index_start=Porniți FirewallD
-index_startdesc=Porniți serverul FirewallD și aplicați regulile enumerate mai sus.
+
 index_stop=Stop FirewallD
 index_stopdesc=Opriți serverul FirewallD și eliminați toate regulile enumerate mai sus.
 index_cerr=Modulul FirewallD nu poate fi utilizat : $1 
 index_zone=Afișați reguli în zonă:
 index_zoneok=Schimbare
-index_zoneadd=Adaugă zona ..
+
 index_zonedel=Ștergeți Zona
 index_zonedef=Face implicit
 index_type=Tip de regulă
@@ -95,6 +95,11 @@ defzone_err=Nu a reușit să facă zona implicită
 
 richrule_iperr=Adresă IP nevalidă
 richrule_actionerr=Acțiune nevalidă
+richrules_title=Reguli FirewallD
+richrules_title_sub=în zona $1
+richrules_delete=Ștergeți regulile selectate
+index_listrules=Listează regulile FirewallD
+index_listrules_restartdesc=Listați detalii despre regulile FirewallD bogate și directe existente în zona $1.
 
 restart_err=Eroare la aplicarea configurației
 

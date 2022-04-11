@@ -3,6 +3,11 @@ index_ifaces_sel=Ausgewählte Schnittstellen:
 
 richrule_iperr=ungültige IP-Adresse
 richrule_actionerr=Ungültige Aktion
+richrules_title=FirewallD-Regeln
+richrules_title_sub=im Bereich $1
+richrules_delete=Ausgewählte Regeln löschen
+index_listrules=FirewallD-Regeln auflisten
+index_listrules_restartdesc=Details zu vorhandenen umfassenden und direkten FirewallD-Regeln in Zone $1 auflisten.
 
 log_create_forward=Vorwärts $1 hinzugefügt
 log_delete_forward=Vorwärts $1 entfernt
