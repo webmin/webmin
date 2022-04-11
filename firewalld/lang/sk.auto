@@ -7,13 +7,13 @@ index_applydesc=Kliknutím na toto tlačidlo aktivujete vyššie uvedenú konfig
 index_restart=Použiť konfiguráciu
 index_restartdesc=Aktivujte všetky vyššie uvedené povolené služby a porty vo všetkých zónach. Všetky aktívne pravidlá, ktoré neboli trvalo vytvorené, budú nahradené.
 index_start=Spustite FirewallD
-
+index_startdesc=Spustite server FirewallD.
 index_stop=Zastavte FirewallD
 index_stopdesc=Vypnite server FirewallD a odstráňte všetky pravidlá uvedené vyššie.
 index_cerr=Modul FirewallD nemožno použiť : $1 
 index_zone=Zobraziť pravidlá v zóne:
 index_zoneok=zmena
-
+index_zoneadd=Pridať zónu
 index_zonedel=Odstrániť zónu
 index_zonedef=Nastaviť ako predvolené
 index_type=Typ pravidla
@@ -93,13 +93,21 @@ delzone_rusure=Naozaj chcete odstrániť zónu $1, ktorá obsahuje $2 porty a sl
 
 defzone_err=Zónu sa nepodarilo nastaviť ako predvolenú
 
-richrule_iperr=Neplatná adresa IP
-richrule_actionerr=Neplatná akcia
-richrules_title=Pravidlá brány firewall
-richrules_title_sub=v zóne $1
-richrules_delete=Odstrániť vybrané pravidlá
 index_listrules=Zoznam pravidiel FirewallD
 index_listrules_restartdesc=Uveďte podrobnosti o existujúcich bohatých a priamych pravidlách brány FirewallD v zóne $1.
+list_rule_iperr=Neplatná adresa IP
+list_rule_actionerr=Neplatná akcia
+list_rules_title=Pravidlá brány firewallD
+list_rules_title_sub=v zóne $1
+list_rules_delete=Odstrániť vybrané pravidlá
+list_rules_type=Typ
+list_rules_type_rich=Bohatý
+list_rules_type_direct=Priamy
+list_rules_protocol=Protokol
+list_rules_ip=IP
+list_rules_origin=Pôvod
+list_rules_action=Akcia
+list_rules_rule=Pravidlo
 
 restart_err=Nepodarilo sa použiť konfiguráciu
 

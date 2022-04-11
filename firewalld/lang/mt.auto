@@ -7,13 +7,13 @@ index_applydesc=Ikklikkja din il-buttuna biex tagħmel il-konfigurazzjoni tal-fi
 index_restart=Applika Konfigurazzjoni
 index_restartdesc=Attiva s-servizzi u l-portijiet kollha permessi elenkati hawn fuq, fiż-żoni kollha. Kull regola attiva li ma ġietx maħluqa b’mod permanenti se tinbidel.
 index_start=Ibda FirewallD
-
+index_startdesc=Ibda s-server FirewallD.
 index_stop=Waqqaf FirewallD
 index_stopdesc=Itfi s-server FirewallD u neħħi r-regoli kollha elenkati hawn fuq.
 index_cerr=Il-modulu FirewallD ma jistax jintuża : $1 
 index_zone=Uri r-regoli fiż-żona:
 index_zoneok=Ibdel
-
+index_zoneadd=Żid Żona
 index_zonedel=Ħassar Żona
 index_zonedef=Agħmel nuqqas
 index_type=Tip ta ’regola
@@ -93,13 +93,21 @@ delzone_rusure=Int żgur li trid tħassar iż-żona $1, li fiha $2 portijiet u s
 
 defzone_err=Naqset milli tagħmel iż-żona default
 
-richrule_iperr=Indirizz IP invalidu
-richrule_actionerr=Azzjoni invalida
-richrules_title=FirewallD Regoli
-richrules_title_sub=fiż-żona $1
-richrules_delete=Ħassar ir-Regoli Magħżula
 index_listrules=Lista tar-regoli FirewallD
 index_listrules_restartdesc=Elenka d-dettalji dwar ir-regoli FirewallD sinjuri u diretti eżistenti fiż-żona $1.
+list_rule_iperr=Indirizz IP invalidu
+list_rule_actionerr=Azzjoni invalida
+list_rules_title=FirewallD Regoli
+list_rules_title_sub=fiż-żona $1
+list_rules_delete=Ħassar ir-Regoli Magħżula
+list_rules_type=Tip
+list_rules_type_rich=Sinjur
+list_rules_type_direct=Dirett
+list_rules_protocol=Protokoll
+list_rules_ip=IP
+list_rules_origin=Oriġini
+list_rules_action=Azzjoni
+list_rules_rule=Regola
 
 restart_err=Ma rnexxielux japplika l-konfigurazzjoni
 

@@ -7,13 +7,13 @@ index_applydesc=Yukarıda listelenen güvenlik duvarı yapılandırmasını etki
 index_restart=Yapılandırmayı Uygula
 index_restartdesc=Yukarıda listelenen tüm izin verilen hizmetleri ve bağlantı noktalarını tüm bölgelerde etkinleştirin. Kalıcı olarak oluşturulmamış etkin kurallar değiştirilecektir.
 index_start=Güvenlik Duvarını BaşlatD
-
+index_startdesc=FirewallD sunucusunu başlatın.
 index_stop=Güvenlik Duvarını DurdurD
 index_stopdesc=FirewallD sunucusunu kapatın ve yukarıda listelenen tüm kuralları kaldırın.
 index_cerr=FirewallD modülü kullanılamaz : $1 
 index_zone=Bölgedeki kuralları göster:
 index_zoneok=Değişiklik
-
+index_zoneadd=Bölge Ekle
 index_zonedel=Bölgeyi Sil
 index_zonedef=Varsayılan Yap
 index_type=Kural türü
@@ -93,13 +93,21 @@ delzone_rusure=$2 bağlantı noktası ve $3 hizmetini içeren $1 bölgesini silm
 
 defzone_err=Bölge varsayılan olarak ayarlanamadı
 
-richrule_iperr=Geçersiz IP adresi
-richrule_actionerr=Geçersiz eylem
-richrules_title=Güvenlik DuvarıD Kuralları
-richrules_title_sub=$1 bölgesinde
-richrules_delete=Seçili Kuralları Sil
 index_listrules=FirewallD Kurallarını Listeleme
 index_listrules_restartdesc=$1 bölgesindeki mevcut zengin ve doğrudan FirewallD kurallarıyla ilgili ayrıntıları listeleyin.
+list_rule_iperr=Geçersiz IP adresi
+list_rule_actionerr=Geçersiz eylem
+list_rules_title=Güvenlik DuvarıD Kuralları
+list_rules_title_sub=$1 bölgesinde
+list_rules_delete=Seçili Kuralları Sil
+list_rules_type=Tip
+list_rules_type_rich=Zengin
+list_rules_type_direct=doğrudan
+list_rules_protocol=Protokol
+list_rules_ip=IP
+list_rules_origin=Menşei
+list_rules_action=Aksiyon
+list_rules_rule=Kural
 
 restart_err=Yapılandırma uygulanamadı
 

@@ -7,13 +7,13 @@ index_applydesc=Klik på denne knap for at aktivere firewall-konfigurationen, de
 index_restart=Anvend konfiguration
 index_restartdesc=Aktivér alle de tilladte tjenester og porte, der er anført ovenfor, i alle zoner. Alle aktive regler, der ikke blev oprettet permanent, erstattes.
 index_start=Start FirewallD
-
+index_startdesc=Start FirewallD-serveren.
 index_stop=Stop FirewallD
 index_stopdesc=Luk FirewallD-serveren, og fjern alle ovenstående regler.
 index_cerr=FirewallD-modulet kan ikke bruges : $1 
 index_zone=Vis regler i zone:
 index_zoneok=Lave om
-
+index_zoneadd=Tilføj zone
 index_zonedel=Slet zone
 index_zonedef=Lav standard
 index_type=Regeltype
@@ -93,13 +93,21 @@ delzone_rusure=Er du sikker på, at du vil slette zonen $1, der indeholder $2 -p
 
 defzone_err=Kunne ikke gøre zone som standard
 
-richrule_iperr=Ugyldig IP-adresse
-richrule_actionerr=Ugyldig handling
-richrules_title=FirewallD regler
-richrules_title_sub=i zone $1
-richrules_delete=Slet valgte regler
 index_listrules=Liste FirewallD-regler
 index_listrules_restartdesc=Vis detaljer om eksisterende righoldige og direkte FirewallD-regler i $1 zone.
+list_rule_iperr=Ugyldig IP-adresse
+list_rule_actionerr=Ugyldig handling
+list_rules_title=FirewallD regler
+list_rules_title_sub=i zone $1
+list_rules_delete=Slet valgte regler
+list_rules_type=Type
+list_rules_type_rich=Rig
+list_rules_type_direct=Direkte
+list_rules_protocol=Protokol
+list_rules_ip=IP
+list_rules_origin=Oprindelse
+list_rules_action=Handling
+list_rules_rule=Herske
 
 restart_err=Kunne ikke anvende konfiguration
 

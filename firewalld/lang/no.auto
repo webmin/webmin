@@ -1,10 +1,20 @@
+index_startdesc=Start FirewallD-serveren.
+index_zoneadd=Legg til sone
 index_ifaces_def=Alle grensesnitt
 index_ifaces_sel=Valgte grensesnitt:
 
-richrule_iperr=Ugyldig IP-adresse
-richrule_actionerr=Ugyldig handling
-richrules_title=FirewallD-regler
-richrules_title_sub=i sone $1
-richrules_delete=Slett valgte regler
 index_listrules=Liste FirewallD-regler
 index_listrules_restartdesc=Vis detaljer om eksisterende rike og direkte FirewallD-regler i $1-sonen.
+list_rule_iperr=Ugyldig IP-adresse
+list_rule_actionerr=Ugyldig handling
+list_rules_title=FirewallD-regler
+list_rules_title_sub=i sone $1
+list_rules_delete=Slett valgte regler
+list_rules_type=Type
+list_rules_type_rich=Rik
+list_rules_type_direct=Direkte
+list_rules_protocol=Protokoll
+list_rules_ip=IP
+list_rules_origin=Opprinnelse
+list_rules_action=Handling
+list_rules_rule=Regel

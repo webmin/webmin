@@ -7,13 +7,13 @@ index_applydesc=Κάντε κλικ σε αυτό το κουμπί για να 
 index_restart=Εφαρμογή διαμόρφωσης
 index_restartdesc=Ενεργοποιήστε όλες τις επιτρεπόμενες υπηρεσίες και θύρες που αναφέρονται παραπάνω σε όλες τις ζώνες. Οποιοσδήποτε ενεργός κανόνας που δεν δημιουργήθηκε μόνιμα θα αντικατασταθεί.
 index_start=Ξεκινήστε το FirewallD
-
+index_startdesc=Εκκινήστε τον διακομιστή FirewallD.
 index_stop=Διακοπή του FirewallD
 index_stopdesc=Απενεργοποιήστε το διακομιστή FirewallD και καταργήστε όλους τους κανόνες που αναφέρονται παραπάνω.
 index_cerr=Δεν είναι δυνατή η χρήση της ενότητας FirewallD : $1 
 index_zone=Εμφάνιση κανόνων στη ζώνη:
 index_zoneok=Αλλαγή
-
+index_zoneadd=Προσθήκη ζώνης
 index_zonedel=Διαγραφή Ζώνης
 index_zonedef=Κάντε προεπιλογή
 index_type=Τύπος κανόνα
@@ -93,13 +93,21 @@ delzone_rusure=Είστε βέβαιοι ότι θέλετε να διαγράψ
 
 defzone_err=Η προεπιλεγμένη ζώνη απέτυχε
 
-richrule_iperr=Μη έγκυρη διεύθυνση IP
-richrule_actionerr=Μη έγκυρη ενέργεια
-richrules_title=Κανόνες FirewallD
-richrules_title_sub=στη ζώνη $1
-richrules_delete=Διαγραφή επιλεγμένων κανόνων
 index_listrules=Λίστα Κανόνων FirewallD
 index_listrules_restartdesc=Παραθέστε λεπτομέρειες σχετικά με τους υπάρχοντες εμπλουτισμένους και άμεσους κανόνες FirewallD στη ζώνη $1.
+list_rule_iperr=Μη έγκυρη διεύθυνση IP
+list_rule_actionerr=Μη έγκυρη ενέργεια
+list_rules_title=Κανόνες FirewallD
+list_rules_title_sub=στη ζώνη $1
+list_rules_delete=Διαγραφή επιλεγμένων κανόνων
+list_rules_type=Τύπος
+list_rules_type_rich=Πλούσιος
+list_rules_type_direct=Απευθείας
+list_rules_protocol=Πρωτόκολλο
+list_rules_ip=IP
+list_rules_origin=Προέλευση
+list_rules_action=Δράση
+list_rules_rule=Κανόνας
 
 restart_err=Αποτυχία εφαρμογής διαμόρφωσης
 

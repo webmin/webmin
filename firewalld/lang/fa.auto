@@ -7,13 +7,13 @@ index_applydesc=برای فعال کردن تنظیمات فایروال ذکر 
 index_restart=پیکربندی را اعمال کنید
 index_restartdesc=کلیه خدمات و پورتهای مجاز ذکر شده در بالا ، در همه مناطق را فعال کنید. هر قانون فعال که به طور دائم ایجاد نشده است جایگزین خواهد شد.
 index_start=FirewallD را شروع کنید
-
+index_startdesc=سرور FirewallD را راه اندازی کنید.
 index_stop=FirewallD را متوقف کنید
 index_stopdesc=سرور FirewallD را خاموش کنید و کلیه قوانین ذکر شده در بالا را حذف کنید.
 index_cerr=ماژول FirewallD قابل استفاده نیست :$1
 index_zone=نمایش قوانین در منطقه:
 index_zoneok=تغییر دادن
-
+index_zoneadd=اضافه کردن منطقه
 index_zonedel=منطقه را حذف کنید
 index_zonedef=پیش فرض کنید
 index_type=نوع قانون
@@ -93,13 +93,21 @@ delzone_rusure=آیا مطمئن هستید که می خواهید منطقه$1 
 
 defzone_err=منطقه به طور پیش فرض انجام نشد
 
-richrule_iperr=آدرس IP نامعتبر است
-richrule_actionerr=اقدام نامعتبر
-richrules_title=قوانین فایروالD
-richrules_title_sub=در منطقه $1 
-richrules_delete=قوانین انتخاب شده را حذف کنید
 index_listrules=قوانین FirewallD را فهرست کنید
 index_listrules_restartdesc=جزئیات مربوط به قوانین فایروالD غنی و مستقیم موجود را در منطقه $1 فهرست کنید.
+list_rule_iperr=آدرس IP نامعتبر است
+list_rule_actionerr=اقدام نامعتبر
+list_rules_title=قوانین فایروالD
+list_rules_title_sub=در منطقه $1 
+list_rules_delete=قوانین انتخاب شده را حذف کنید
+list_rules_type=تایپ کنید
+list_rules_type_rich=ثروتمند
+list_rules_type_direct=مستقیم
+list_rules_protocol=پروتکل
+list_rules_ip=IP
+list_rules_origin=اصل و نسب
+list_rules_action=عمل
+list_rules_rule=قانون
 
 restart_err=پیکربندی انجام نشد
 

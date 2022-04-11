@@ -7,13 +7,13 @@ index_applydesc=Klik butang ini untuk membuat konfigurasi firewall disenaraikan 
 index_restart=Terapkan Konfigurasi
 index_restartdesc=Aktifkan semua perkhidmatan dan pelabuhan yang dibenarkan di atas, dalam semua zon. Sebarang peraturan aktif yang tidak dibuat secara kekal akan diganti.
 index_start=Mula FirewallD
-
+index_startdesc=Mulakan pelayan FirewallD.
 index_stop=Hentikan FirewallD
 index_stopdesc=Matikan pelayan FirewallD dan keluarkan semua peraturan yang disenaraikan di atas.
 index_cerr=Modul FirewallD tidak boleh digunakan : $1 
 index_zone=Tunjukkan peraturan dalam zon:
 index_zoneok=Ubah
-
+index_zoneadd=Tambah Zon
 index_zonedel=Padamkan Zon
 index_zonedef=Buat yang asal
 index_type=Jenis peraturan
@@ -93,13 +93,21 @@ delzone_rusure=Adakah anda pasti mahu memadamkan zon $1, yang mengandungi $2 por
 
 defzone_err=Gagal menjadikan zon lalai
 
-richrule_iperr=Alamat IP tidak sah
-richrule_actionerr=Tindakan tidak sah
-richrules_title=Peraturan FirewallD
-richrules_title_sub=dalam zon $1 
-richrules_delete=Padamkan Peraturan yang Dipilih
 index_listrules=Senaraikan Peraturan FirewallD
 index_listrules_restartdesc=Senaraikan butiran tentang peraturan FirewallD yang kaya dan langsung dalam $1 zon.
+list_rule_iperr=Alamat IP tidak sah
+list_rule_actionerr=Tindakan tidak sah
+list_rules_title=Peraturan FirewallD
+list_rules_title_sub=dalam zon $1 
+list_rules_delete=Padamkan Peraturan yang Dipilih
+list_rules_type=taip
+list_rules_type_rich=Kaya
+list_rules_type_direct=Langsung
+list_rules_protocol=Protokol
+list_rules_ip=IP
+list_rules_origin=asal usul
+list_rules_action=Tindakan
+list_rules_rule=peraturan
 
 restart_err=Gagal menggunakan konfigurasi
 

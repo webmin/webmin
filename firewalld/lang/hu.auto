@@ -7,13 +7,13 @@ index_applydesc=Kattintson erre a gombra a fenti tűzfalkonfiguráció aktívvá
 index_restart=Alkalmazza a konfigurációt
 index_restartdesc=Aktiválja a fent felsorolt összes engedélyezett szolgáltatást és portot, minden zónában. A nem véglegesen létrehozott aktív szabályok helyébe lépnek.
 index_start=Indítsa el a FirewallD-t
-
+index_startdesc=Indítsa el a FirewallD szervert.
 index_stop=Állítsa le a FirewallD-t
 index_stopdesc=Kapcsolja ki a FirewallD szervert, és távolítsa el az összes fent felsorolt szabályt.
 index_cerr=A FirewallD modul nem használható : $1 
 index_zone=Mutassa meg a szabályokat a zónában:
 index_zoneok=változás
-
+index_zoneadd=Zóna hozzáadása
 index_zonedel=Törölje a zónát
 index_zonedef=Tedd alapértelmezetté
 index_type=Szabály típusa
@@ -93,13 +93,21 @@ delzone_rusure=Biztosan törli a $1 zónát, amely $2 portokat és $3 szolgálta
 
 defzone_err=Nem sikerült a zónát alapértelmezetté tenni
 
-richrule_iperr=Érvénytelen IP-cím
-richrule_actionerr=Érvénytelen művelet
-richrules_title=FirewallD szabályok
-richrules_title_sub=a $1 zónában
-richrules_delete=Törölje a kiválasztott szabályokat
 index_listrules=Sorolja fel a FirewallD szabályokat
 index_listrules_restartdesc=Részletek a(z) $1 zónában meglévő gazdag és közvetlen FirewallD szabályokról.
+list_rule_iperr=Érvénytelen IP-cím
+list_rule_actionerr=Érvénytelen művelet
+list_rules_title=FirewallD szabályok
+list_rules_title_sub=a $1 zónában
+list_rules_delete=Törölje a kiválasztott szabályokat
+list_rules_type=típus
+list_rules_type_rich=Gazdag
+list_rules_type_direct=Közvetlen
+list_rules_protocol=Jegyzőkönyv
+list_rules_ip=IP
+list_rules_origin=Eredet
+list_rules_action=Akció
+list_rules_rule=Szabály
 
 restart_err=A konfiguráció alkalmazása nem sikerült
 

@@ -1,10 +1,20 @@
+index_startdesc=Inicieu el servidor FirewallD.
+index_zoneadd=Afegeix una zona
 index_ifaces_def=Totes les interfícies
 index_ifaces_sel=Interfícies seleccionades:
 
-richrule_iperr=Adreça IP no vàlida
-richrule_actionerr=Acció no vàlida
-richrules_title=Regles del tallafocD
-richrules_title_sub=a la zona $1
-richrules_delete=Suprimeix les regles seleccionades
 index_listrules=Llista les regles del tallafocD
 index_listrules_restartdesc=Llista els detalls sobre les regles de FirewallD riques i directes existents a la zona $1.
+list_rule_iperr=Adreça IP no vàlida
+list_rule_actionerr=Acció no vàlida
+list_rules_title=Regles del tallafocD
+list_rules_title_sub=a la zona $1
+list_rules_delete=Suprimeix les regles seleccionades
+list_rules_type=Tipus
+list_rules_type_rich=Ric
+list_rules_type_direct=Directe
+list_rules_protocol=Protocol
+list_rules_ip=IP
+list_rules_origin=Origen
+list_rules_action=Acció
+list_rules_rule=Regla

@@ -7,13 +7,13 @@ index_applydesc=Napsauta tätä painiketta, jos haluat aktivoida yllä mainitut 
 index_restart=Käytä määritystä
 index_restartdesc=Aktivoi kaikki yllä luetellut sallitut palvelut ja portit kaikissa vyöhykkeissä. Kaikki aktiiviset säännöt, joita ei luotu pysyvästi, korvataan.
 index_start=Käynnistä FirewallD
-
+index_startdesc=Käynnistä FirewallD-palvelin.
 index_stop=Pysäytä palomuuri
 index_stopdesc=Sammuta FirewallD-palvelin ja poista kaikki yllä olevat säännöt.
 index_cerr=FirewallD-moduulia ei voi käyttää : $1 
 index_zone=Näytä säännöt vyöhykkeellä:
 index_zoneok=Muuttaa
-
+index_zoneadd=Lisää vyöhyke
 index_zonedel=Poista vyöhyke
 index_zonedef=Laita oletusarvoksi
 index_type=Sääntötyyppi
@@ -93,13 +93,21 @@ delzone_rusure=Haluatko varmasti poistaa vyöhykkeen $1, joka sisältää $2 por
 
 defzone_err=Alueesta ei oletusarvoinen
 
-richrule_iperr=Virheellinen IP-osoite
-richrule_actionerr=Virheellinen toiminto
-richrules_title=FirewallD-säännöt
-richrules_title_sub=vyöhykkeellä $1
-richrules_delete=Poista valitut säännöt
 index_listrules=Luettele FirewallD-säännöt
 index_listrules_restartdesc=Luettele tiedot olemassa olevista monipuolisista ja suorista FirewallD-säännöistä $1 vyöhykkeellä.
+list_rule_iperr=Virheellinen IP-osoite
+list_rule_actionerr=Virheellinen toiminto
+list_rules_title=FirewallD-säännöt
+list_rules_title_sub=vyöhykkeellä $1
+list_rules_delete=Poista valitut säännöt
+list_rules_type=Tyyppi
+list_rules_type_rich=Rikas
+list_rules_type_direct=Suoraan
+list_rules_protocol=pöytäkirja
+list_rules_ip=IP
+list_rules_origin=Alkuperä
+list_rules_action=Toiminta
+list_rules_rule=Sääntö
 
 restart_err=Asetusten määrittäminen epäonnistui
 

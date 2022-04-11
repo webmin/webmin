@@ -7,13 +7,13 @@ index_applydesc=Egin klik botoi honetan goian zerrendatutako suebakiaren konfigu
 index_restart=Aplikatu konfigurazioa
 index_restartdesc=Aktibatu goian azaldutako baimendutako zerbitzu eta portu guztiak, gune guztietan. Betirako sortu ez ziren arau aktiboak ordezkatuko dira.
 index_start=FirewallD abiarazi
-
+index_startdesc=Hasi FirewallD zerbitzaria.
 index_stop=FirewallD Gelditu
 index_stopdesc=Itxi FirewallD zerbitzaria eta kendu goiko zerrendako arau guztiak.
 index_cerr=FirewallD modulua ezin da erabili : $1 
 index_zone=Erakutsi arauak zonaldean:
 index_zoneok=Aldaketa
-
+index_zoneadd=Gehitu Zona
 index_zonedel=Ezabatu zona
 index_zonedef=Lehenetsi
 index_type=Arau mota
@@ -93,13 +93,21 @@ delzone_rusure=Ziur al zaude $2 ataka eta $3 zerbitzu biltzen dituen $1 zona eza
 
 defzone_err=Ezin izan da eremua lehenetsi
 
-richrule_iperr=IP helbide baliogabea
-richrule_actionerr=Ekintza baliogabea
-richrules_title=FirewallD Arauak
-richrules_title_sub=$1 eremuan
-richrules_delete=Ezabatu Hautatutako Arauak
 index_listrules=Zerrendatu FirewallD Arauak
 index_listrules_restartdesc=Zerrendatu lehendik dauden FirewallD arau aberats eta zuzenei buruzko xehetasunak $1 zonan.
+list_rule_iperr=IP helbide baliogabea
+list_rule_actionerr=Ekintza baliogabea
+list_rules_title=FirewallD Arauak
+list_rules_title_sub=$1 eremuan
+list_rules_delete=Ezabatu Hautatutako Arauak
+list_rules_type=Mota
+list_rules_type_rich=Aberatsa
+list_rules_type_direct=Zuzena
+list_rules_protocol=Protokoloa
+list_rules_ip=IP
+list_rules_origin=Jatorria
+list_rules_action=Ekintza
+list_rules_rule=Arau
 
 restart_err=Ezin izan da konfigurazioa aplikatu
 

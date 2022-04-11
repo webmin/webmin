@@ -7,13 +7,13 @@ index_applydesc=Fare clic su questo pulsante per rendere attiva la configurazion
 index_restart=Applica configurazione
 index_restartdesc=Attiva tutti i servizi e le porte consentiti sopra elencati, in tutte le zone. Eventuali regole attive che non sono state create in modo permanente verranno sostituite.
 index_start=Avvia FirewallD
-
+index_startdesc=Avvia il server FirewallD.
 index_stop=Ferma FirewallD
 index_stopdesc=Arrestare il server FirewallD e rimuovere tutte le regole sopra elencate.
 index_cerr=Il modulo FirewallD non può essere utilizzato : $1 
 index_zone=Mostra regole nella zona:
 index_zoneok=Modificare
-
+index_zoneadd=Aggiungi zona
 index_zonedel=Elimina zona
 index_zonedef=Rendere predefinito
 index_type=Tipo di regola
@@ -93,13 +93,21 @@ delzone_rusure=Sei sicuro di voler eliminare la zona $1, che contiene $2 porte e
 
 defzone_err=Impossibile rendere la zona predefinita
 
-richrule_iperr=Indirizzo IP non valido
-richrule_actionerr=Azione non valida
-richrules_title=Regole FirewallD
-richrules_title_sub=nella zona $1
-richrules_delete=Elimina le regole selezionate
 index_listrules=Elenca le regole di FirewallD
 index_listrules_restartdesc=Elenca i dettagli sulle regole FirewallD avanzate e dirette esistenti nella zona $1.
+list_rule_iperr=Indirizzo IP non valido
+list_rule_actionerr=Azione non valida
+list_rules_title=Regole FirewallD
+list_rules_title_sub=nella zona $1
+list_rules_delete=Elimina le regole selezionate
+list_rules_type=Tipo
+list_rules_type_rich=Ricco
+list_rules_type_direct=Diretto
+list_rules_protocol=Protocollo
+list_rules_ip=IP
+list_rules_origin=Origine
+list_rules_action=Azione
+list_rules_rule=Regola
 
 restart_err=Impossibile applicare la configurazione
 

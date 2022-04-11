@@ -407,10 +407,10 @@ my $zone_name = $zone->{'name'};
 $zone_name =~ tr/A-Za-z0-9\-\_//cd;
 
 # Validate action
-$action eq 'add' || $action eq 'remove' || &error($text{'richrule_actionerr'});
+$action eq 'add' || $action eq 'remove' || &error($text{'list_rule_actionerr'});
 
 # Validate IP
-&$ip_validate($ip) || &error($text{'richrule_iperr'});
+&$ip_validate($ip) || &error($text{'list_rule_iperr'});
 
 # Set family
 my $family = $ip =~ /:/ ? 'ipv6' : 'ipv4';

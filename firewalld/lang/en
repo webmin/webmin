@@ -93,13 +93,21 @@ delzone_rusure=Are you sure you want to delete the zone $1, which contains $2 po
 
 defzone_err=Failed to make zone the default
 
-richrule_iperr=Invalid IP address
-richrule_actionerr=Invalid action
-richrules_title=FirewallD Rules
-richrules_title_sub=in zone $1
-richrules_delete=Delete Selected Rules
 index_listrules=List FirewallD Rules
 index_listrules_restartdesc=List details about existing rich and direct FirewallD rules in $1 zone.
+list_rule_iperr=Invalid IP address
+list_rule_actionerr=Invalid action
+list_rules_title=FirewallD Rules
+list_rules_title_sub=in zone $1
+list_rules_delete=Delete Selected Rules
+list_rules_type=Type
+list_rules_type_rich=Rich
+list_rules_type_direct=Direct
+list_rules_protocol=Protocol
+list_rules_ip=IP
+list_rules_origin=Origin
+list_rules_action=Action
+list_rules_rule=Rule
 
 restart_err=Failed to apply configuration
 stop_err=Failed to stop FirewallD

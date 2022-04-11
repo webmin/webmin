@@ -11,10 +11,10 @@ if (!$dzone) {
 	my $zone = &get_default_zone();
 	$dzone = $zone->{'name'};
 	}
-&ui_print_header(&text('richrules_title_sub', "<tt>".&html_escape($dzone)."</tt>"), $text{'richrules_title'}, "");
+&ui_print_header(&text('list_rules_title_sub', "<tt>".&html_escape($dzone)."</tt>"), $text{'list_rules_title'}, "");
 
 my $head;
-my @head = (undef, "Type");
+my @head = (undef, $text{'list_rules_type'});
 my $tdc = "style=\"text-align: center\"";
 my @links = ( &select_all_link("rules"),
               &select_invert_link("rules") );
@@ -26,34 +26,34 @@ my $rcmd = "$config{'firewall_cmd'} --list-rich-rules --zone=$dzone";
 while(<$fh>) {
 	my @body;
 	if ($_ =~ /\S+/) {
-		push(@body, 'Rich');
+		push(@body, $text{'list_rules_type_rich'});
 
 		# Get protocol
 		if (/family=["'](ipv\d)["']/) {
-			push(@head, "Protocol");
+			push(@head, $text{'list_rules_protocol'});
 			push(@body, $1 =~ /ipv6/i ? "IPv6" : "IPv4");
 			}
 		
 		# Get address
 		if (/address=["'](.*?)["']/) {
-			push(@head, "IP");
+			push(@head, $text{'list_rules_ip'});
 			push(@body, "$1&nbsp;&nbsp;");
 			}
 
 		# Get origin
 		if (/\s+(source|destination)\s+/) {
-			push(@head, "Origin");
+			push(@head, $text{'list_rules_origin'});
 			push(@body, $1 eq 'source' ? 'Input' : 'Output');
 			}
 
 		# Get action
 		if (/(accept|reject|drop|mark$)/i) {
-			push(@head, "Action");
+			push(@head, $text{'list_rules_action'});
 			push(@body, ucfirst($1));
 			}
 
 		# Add full rule
-		push(@head, "Rule");
+		push(@head, $text{'list_rules_rule'});
 		push(@body, "<tt>$_</tt>");
 		
 		# Print start
@@ -89,34 +89,34 @@ while(<$fh2>) {
 					}
 				}
 
-			push(@body, 'Direct');
+			push(@body, $text{'list_rules_type_direct'});
 
 			# Get protocol
 			if (/(ipv\d)/) {
-				push(@head, "Protocol");
+				push(@head, $text{'list_rules_protocol'});
 				push(@body, $1 =~ /ipv6/i ? "IPv6" : "IPv4");
 				}
 			
 			# Get address
 			if (/address=["'](.*?)["']/) {
 				}
-				push(@head, "IP");
+				push(@head, $text{'list_rules_ip'});
 				push(@body, $ips);
 
 			# Get origin
 			if (/(INPUT|OUTPUT)/) {
-				push(@head, "Origin");
+				push(@head, $text{'list_rules_origin'});
 				push(@body, ucfirst(lc($1)));
 				}
 
 			# Get action
 			if (/(ACCEPT|REJECT|DROP|MARK$)/) {
-				push(@head, "Action");
+				push(@head, $text{'list_rules_action'});
 				push(@body, ucfirst(lc($1)));
 				}
 
 			# Add full rule
-			push(@head, "Rule");
+			push(@head, $text{'list_rules_rule'});
 			push(@body, "<tt>$_</tt>");
 			
 			# Print start
@@ -135,7 +135,7 @@ close($fh2);
 if ($head) {
 	print &ui_columns_end();
 	print &ui_links_row(\@links);
-	print &ui_form_end([ [ 'remove', $text{'richrules_delete'} ] ] );
+	print &ui_form_end([ [ 'remove', $text{'list_rules_delete'} ] ] );
 	}
 else {
 	print "There are no existing direct or rich firewall rules to display."
