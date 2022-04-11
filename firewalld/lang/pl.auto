@@ -1,7 +1,14 @@
+index_startdesc=Uruchom serwer FirewallD.
+index_zoneadd=Dodaj strefę
 index_tforward=Naprzód
 index_fadd=Dodaj port do przodu.
 index_ifaces_def=Wszystkie interfejsy
 index_ifaces_sel=Wybrane interfejsy:
+index_ifaces_apply=Stosować
+index_listrules=Wyświetlanie listy reguł FirewallD
+index_restart_firewalld=Załaduj ponownie zaporę D
+index_restart_firewallddesc=Załaduj ponownie serwer FirewallD i zastosuj reguły, które zostały utworzone na stałe.
+index_listrules_restartdesc=Wyświetl szczegółowe informacje o istniejących rozbudowanych i bezpośrednich regułach FirewallD w strefie $1.
 
 port_mode2=Taki sam jak oryginalny port
 
@@ -17,8 +24,21 @@ forward_dstlocal=Ten system
 forward_edstaddr=Nieprawidłowy adres docelowy IPv4
 forward_eneither=Należy podać adres docelowy lub port albo oba te adresy
 
-richrule_iperr=Nieprawidłowy adres IP
-richrule_actionerr=Nieprawidłowa czynność
+list_rule_iperr=Nieprawidłowy adres IP
+list_rule_actionerr=Nieprawidłowa czynność
+list_rules_title=Zasady zapory ogniowej
+list_rules_title_sub=w strefie $1 
+list_rules_delete=Usuń wybrane reguły
+list_rules_type=Rodzaj
+list_rules_type_rich=Bogaty
+list_rules_type_direct=Bezpośredni
+list_rules_protocol=Protokół
+list_rules_ip=IP
+list_rules_origin=Pochodzenie
+list_rules_action=Akcja
+list_rules_rule=Reguła
+list_rules_plus_more=+ $1 więcej
+log_save_rules=Usunięto $1 reguł
 
 log_create_forward=Dodano do przodu $1 
 log_delete_forward=Usunięto do przodu $1 

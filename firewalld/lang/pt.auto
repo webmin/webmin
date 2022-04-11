@@ -7,13 +7,13 @@ index_applydesc=Clique neste botão para ativar a configuração do firewall lis
 index_restart=Aplicar configuração
 index_restartdesc=Ative todos os serviços e portas permitidos listados acima, em todas as zonas. Quaisquer regras ativas que não foram criadas permanentemente serão substituídas.
 index_start=Iniciar o FirewallD
-index_startdesc=Inicie o servidor FirewallD e aplique as regras listadas acima.
+index_startdesc=Inicie o servidor FirewallD.
 index_stop=Pare o FirewallD
 index_stopdesc=Desligue o servidor FirewallD e remova todas as regras listadas acima.
 index_cerr=O módulo FirewallD não pode ser usado : $1 
 index_zone=Mostrar regras na zona:
 index_zoneok=mudança
-index_zoneadd=Adicionar zona ..
+index_zoneadd=Adicionar zona
 index_zonedel=Excluir zona
 index_zonedef=Tornar padrão
 index_type=Tipo de regra
@@ -32,6 +32,11 @@ index_none=Esta zona ainda não possui portas ou serviços permitidos.
 index_ifaces=Aplique regras às interfaces:
 index_ifaces_def=Todas as interfaces
 index_ifaces_sel=Interfaces selecionadas:
+index_ifaces_apply=Aplicar
+index_listrules=Listar regras do FirewallD
+index_restart_firewalld=Recarregar FirewallD
+index_restart_firewallddesc=Recarregue o servidor FirewallD e aplique as regras que foram criadas permanentemente.
+index_listrules_restartdesc=Liste detalhes sobre regras de FirewallD avançadas e diretas existentes na zona $1.
 
 port_edit=Editar porta
 port_create=Adicionar porta
@@ -93,8 +98,21 @@ delzone_rusure=Tem certeza de que deseja excluir a zona $1, que contém $2 porta
 
 defzone_err=Falha ao tornar a zona o padrão
 
-richrule_iperr=Endereço IP inválido
-richrule_actionerr=Ação inválida
+list_rule_iperr=Endereço IP inválido
+list_rule_actionerr=Ação inválida
+list_rules_title=Regras do FirewallD
+list_rules_title_sub=na zona $1 
+list_rules_delete=Excluir regras selecionadas
+list_rules_type=Tipo
+list_rules_type_rich=Rico
+list_rules_type_direct=Direto
+list_rules_protocol=Protocolo
+list_rules_ip=IP
+list_rules_origin=Origem
+list_rules_action=Açao
+list_rules_rule=Regra
+list_rules_plus_more=+ $1 mais
+log_save_rules=$1 regras excluídas
 
 restart_err=Falha ao aplicar a configuração
 

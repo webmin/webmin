@@ -7,13 +7,13 @@ index_applydesc=Klepnutím na toto tlačítko aktivujete výše uvedenou konfigu
 index_restart=Použít konfiguraci
 index_restartdesc=Aktivujte všechny výše uvedené povolené služby a porty ve všech zónách. Všechna aktivní pravidla, která nebyla trvale vytvořena, budou nahrazena.
 index_start=Spusťte FirewallD
-index_startdesc=Spusťte server FirewallD a použijte výše uvedená pravidla.
+index_startdesc=Spusťte server FirewallD.
 index_stop=Zastavte FirewallD
 index_stopdesc=Vypněte server FirewallD a odeberte všechna výše uvedená pravidla.
 index_cerr=Nelze použít modul FirewallD : $1 
 index_zone=Zobrazit pravidla v zóně:
 index_zoneok=Změna
-index_zoneadd=Přidat zónu ..
+index_zoneadd=Přidat zónu
 index_zonedel=Smazat zónu
 index_zonedef=Nastavit jako výchozí
 index_type=Typ pravidla
@@ -32,6 +32,11 @@ index_none=Tato zóna zatím nemá žádné povolené porty nebo služby.
 index_ifaces=Použít pravidla na rozhraní:
 index_ifaces_def=Všechna rozhraní
 index_ifaces_sel=Vybraná rozhraní:
+index_ifaces_apply=Aplikovat
+index_listrules=Seznam pravidel FirewallD
+index_restart_firewalld=Znovu načtěte FirewallD
+index_restart_firewallddesc=Znovu načtěte server FirewallD a použijte pravidla, která byla trvale vytvořena.
+index_listrules_restartdesc=Vypsat podrobnosti o existujících rozšířených a přímých pravidlech FirewallD v zóně $1.
 
 port_edit=Upravit port
 port_create=Přidat port
@@ -93,8 +98,21 @@ delzone_rusure=Opravdu chcete odstranit zónu $1, která obsahuje $2 porty a slu
 
 defzone_err=Nepodařilo se nastavit zónu jako výchozí
 
-richrule_iperr=Neplatná IP adresa
-richrule_actionerr=Neplatná akce
+list_rule_iperr=Neplatná IP adresa
+list_rule_actionerr=Neplatná akce
+list_rules_title=Pravidla FirewallD
+list_rules_title_sub=v zóně $1
+list_rules_delete=Smazat vybraná pravidla
+list_rules_type=Typ
+list_rules_type_rich=Bohatý
+list_rules_type_direct=Přímo
+list_rules_protocol=Protokol
+list_rules_ip=IP
+list_rules_origin=Původ
+list_rules_action=Akce
+list_rules_rule=Pravidlo
+list_rules_plus_more=+ $1 dalšího
+log_save_rules=Smazaná pravidla $1
 
 restart_err=Nepodařilo se použít konfiguraci
 

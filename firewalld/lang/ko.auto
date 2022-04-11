@@ -7,13 +7,13 @@ index_applydesc=위에 나열된 방화벽 구성을 활성화하려면이 버�
 index_restart=구성 적용
 index_restartdesc=모든 영역에서 위에 나열된 모든 허용 된 서비스 및 포트를 활성화하십시오. 영구적으로 생성되지 않은 활성 규칙이 교체됩니다.
 index_start=FirewallD 시작
-index_startdesc=FirewallD 서버를 시작하고 위에 나열된 규칙을 적용하십시오.
+index_startdesc=FirewallD 서버를 시작합니다.
 index_stop=방화벽 중지
 index_stopdesc=FirewallD 서버를 종료하고 위에 나열된 모든 규칙을 제거하십시오.
 index_cerr=FirewallD 모듈을 사용할 수 없습니다  : $1 
 index_zone=영역에 규칙 표시 :
 index_zoneok=변화
-index_zoneadd=구역 추가 ..
+index_zoneadd=영역 추가
 index_zonedel=영역 삭제
 index_zonedef=기본값으로 설정
 index_type=규칙 유형
@@ -32,6 +32,11 @@ index_none=이 영역에는 아직 허용 된 포트 나 서비스가 없습니�
 index_ifaces=인터페이스에 규칙을 적용하십시오.
 index_ifaces_def=모든 인터페이스
 index_ifaces_sel=선택한 인터페이스:
+index_ifaces_apply=적용하다
+index_listrules=FirewallD 규칙 나열
+index_restart_firewalld=방화벽 새로고침D
+index_restart_firewallddesc=FirewallD 서버를 다시 로드하고 영구적으로 생성된 규칙을 적용합니다.
+index_listrules_restartdesc=$1 영역의 기존 풍부하고 직접적인 FirewallD 규칙에 대한 세부 정보를 나열합니다.
 
 port_edit=포트 편집
 port_create=포트 추가
@@ -93,8 +98,21 @@ delzone_rusure=$2 포트와 $3 서비스가 포함 된 $1 영역을 삭제 하�
 
 defzone_err=영역을 기본값으로 설정하지 못했습니다
 
-richrule_iperr=잘못된 IP 주소
-richrule_actionerr=잘못된 작업
+list_rule_iperr=잘못된 IP 주소
+list_rule_actionerr=잘못된 작업
+list_rules_title=FirewallD 규칙
+list_rules_title_sub=영역 $1 에서
+list_rules_delete=선택한 규칙 삭제
+list_rules_type=유형
+list_rules_type_rich=부자
+list_rules_type_direct=직접
+list_rules_protocol=규약
+list_rules_ip=IP
+list_rules_origin=기원
+list_rules_action=행동
+list_rules_rule=규칙
+list_rules_plus_more=+ $1개 더
+log_save_rules=삭제된 $1 규칙
 
 restart_err=구성을 적용하지 못했습니다
 

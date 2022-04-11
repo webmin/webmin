@@ -7,13 +7,13 @@ index_applydesc=Kliknite ovaj gumb da biste aktivirali gore navedenu konfiguraci
 index_restart=Primijeni konfiguraciju
 index_restartdesc=Aktivirajte sve dozvoljene usluge i priključke naprijed navedene u svim zonama. Sva aktivna pravila koja nisu trajno stvorena bit će zamijenjena.
 index_start=Pokrenite FirewallD
-index_startdesc=Pokrenite FirewallD poslužitelj i primijenite gore navedena pravila.
+index_startdesc=Pokrenite FirewallD poslužitelj.
 index_stop=Zaustavi firewallD
 index_stopdesc=Isključite FirewallD poslužitelj i uklonite sva pravila navedena gore.
 index_cerr=Modul FirewallD ne može se koristiti : $1 
 index_zone=Prikaži pravila u zoni:
 index_zoneok=Promijeniti
-index_zoneadd=Dodajte zonu ..
+index_zoneadd=Dodaj zonu
 index_zonedel=Izbriši zonu
 index_zonedef=Napraviti zadani
 index_type=Vrsta pravila
@@ -32,6 +32,11 @@ index_none=U ovoj zoni još nema dozvoljenih ulaza ili usluga.
 index_ifaces=Primjena pravila na sučelja:
 index_ifaces_def=Sva sučelja
 index_ifaces_sel=Odabrana sučelja:
+index_ifaces_apply=Prijavite se
+index_listrules=Navedite pravila FirewallD
+index_restart_firewalld=Ponovno učitajte FirewallD
+index_restart_firewallddesc=Ponovno učitajte FirewallD poslužitelj i primijenite pravila koja su trajno stvorena.
+index_listrules_restartdesc=Navedite pojedinosti o postojećim bogatim i izravnim FirewallD pravilima u zoni $1.
 
 port_edit=Uredi port
 port_create=Dodajte port
@@ -93,8 +98,21 @@ delzone_rusure=Jeste li sigurni da želite izbrisati zonu $1 koja sadrži $2 pri
 
 defzone_err=Nije uspjelo napraviti zonu zadanu
 
-richrule_iperr=Nevažeća IP adresa
-richrule_actionerr=Nevažeća radnja
+list_rule_iperr=Nevažeća IP adresa
+list_rule_actionerr=Nevažeća radnja
+list_rules_title=FirewallD pravila
+list_rules_title_sub=u zoni $1
+list_rules_delete=Izbrišite odabrana pravila
+list_rules_type=Tip
+list_rules_type_rich=Bogati
+list_rules_type_direct=Direktno
+list_rules_protocol=Protokol
+list_rules_ip=IP
+list_rules_origin=Podrijetlo
+list_rules_action=Akcijski
+list_rules_rule=Pravilo
+list_rules_plus_more=+ još $1
+log_save_rules=Izbrisano je $1 pravila
 
 restart_err=Konfiguracija nije primijenjena
 

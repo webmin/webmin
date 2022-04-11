@@ -7,13 +7,13 @@ index_applydesc=Klik op hierdie knoppie om die firewall-konfigurasie hierbo gely
 index_restart=Pas konfigurasie toe
 index_restartdesc=Aktiveer al die toegelate dienste en hawens hierbo gelys, in alle sones. Enige aktiewe reëls wat nie permanent geskep is nie, sal vervang word.
 index_start=Begin FirewallD
-index_startdesc=Begin die FirewallD-bediener en pas die bogenoemde reëls toe.
+index_startdesc=Begin die FirewallD-bediener.
 index_stop=Stop FirewallD
 index_stopdesc=Sluit die FirewallD-bediener uit en verwyder al die bogenoemde reëls.
 index_cerr=Die FirewallD-module kan nie gebruik word nie : $1 
 index_zone=Wys reëls in sone:
 index_zoneok=verandering
-index_zoneadd=Voeg sone by ..
+index_zoneadd=Voeg sone by
 index_zonedel=Vee sone uit
 index_zonedef=Maak dit die terugval-opsie
 index_type=Reël tipe
@@ -32,6 +32,11 @@ index_none=Hierdie sone het nog geen toegelate hawens of dienste nie.
 index_ifaces=Pas reëls toe op koppelvlakke:
 index_ifaces_def=Alle koppelvlakke
 index_ifaces_sel=Geselekteerde koppelvlakke:
+index_ifaces_apply=Doen aansoek
+index_listrules=Lys FirewallD-reëls
+index_restart_firewalld=Herlaai FirewallD
+index_restart_firewallddesc=Herlaai die FirewallD-bediener en pas die reëls toe wat permanent geskep is.
+index_listrules_restartdesc=Lys besonderhede oor bestaande ryk en direkte FirewallD-reëls in $1-sone.
 
 port_edit=Wysig hawe
 port_create=Voeg hawe by
@@ -93,8 +98,21 @@ delzone_rusure=Is u seker dat u die zone $1, wat $2 -poorte en $3 -dienste bevat
 
 defzone_err=Kon nie zone die verstek maak nie
 
-richrule_iperr=Ongeldige IP-adres
-richrule_actionerr=Ongeldige handeling
+list_rule_iperr=Ongeldige IP-adres
+list_rule_actionerr=Ongeldige handeling
+list_rules_title=FirewallD-reëls
+list_rules_title_sub=in sone $1
+list_rules_delete=Vee geselekteerde reëls uit
+list_rules_type=Tik
+list_rules_type_rich=Ryk
+list_rules_type_direct=Direkte
+list_rules_protocol=Protokol
+list_rules_ip=IP
+list_rules_origin=Oorsprong
+list_rules_action=Aksie
+list_rules_rule=Reël
+list_rules_plus_more=+ $1 meer
+log_save_rules=Het $1 reëls uitgevee
 
 restart_err=Kon nie konfigurasie toepas nie
 

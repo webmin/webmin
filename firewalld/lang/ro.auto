@@ -7,13 +7,13 @@ index_applydesc=Faceți clic pe acest buton pentru a face activă configurația 
 index_restart=Aplicați configurare
 index_restartdesc=Activați toate serviciile și porturile permise enumerate mai sus, în toate zonele. Orice reguli active care nu au fost create permanent vor fi înlocuite.
 index_start=Porniți FirewallD
-index_startdesc=Porniți serverul FirewallD și aplicați regulile enumerate mai sus.
+index_startdesc=Porniți serverul FirewallD.
 index_stop=Stop FirewallD
 index_stopdesc=Opriți serverul FirewallD și eliminați toate regulile enumerate mai sus.
 index_cerr=Modulul FirewallD nu poate fi utilizat : $1 
 index_zone=Afișați reguli în zonă:
 index_zoneok=Schimbare
-index_zoneadd=Adaugă zona ..
+index_zoneadd=Adăugați o zonă
 index_zonedel=Ștergeți Zona
 index_zonedef=Face implicit
 index_type=Tip de regulă
@@ -32,6 +32,11 @@ index_none=Această zonă nu are încă porturi sau servicii permise.
 index_ifaces=Aplicați reguli interfețelor:
 index_ifaces_def=Toate interfețele
 index_ifaces_sel=Interfețe selectate:
+index_ifaces_apply=aplica
+index_listrules=Listează regulile FirewallD
+index_restart_firewalld=Reîncărcați FirewallD
+index_restart_firewallddesc=Reîncărcați serverul FirewallD și aplicați regulile care au fost create permanent.
+index_listrules_restartdesc=Listați detalii despre regulile FirewallD bogate și directe existente în zona $1.
 
 port_edit=Editare port
 port_create=Adăugați port
@@ -93,8 +98,21 @@ delzone_rusure=Sigur doriți să ștergeți zona $1, care conține $2 porturi ș
 
 defzone_err=Nu a reușit să facă zona implicită
 
-richrule_iperr=Adresă IP nevalidă
-richrule_actionerr=Acțiune nevalidă
+list_rule_iperr=Adresă IP nevalidă
+list_rule_actionerr=Acțiune nevalidă
+list_rules_title=Reguli FirewallD
+list_rules_title_sub=în zona $1
+list_rules_delete=Ștergeți regulile selectate
+list_rules_type=Tip
+list_rules_type_rich=Bogat
+list_rules_type_direct=Direct
+list_rules_protocol=Protocol
+list_rules_ip=IP
+list_rules_origin=Origine
+list_rules_action=Acțiune
+list_rules_rule=Regulă
+list_rules_plus_more=+ $1 încă
+log_save_rules=Au fost șterse $1 reguli
 
 restart_err=Eroare la aplicarea configurației
 

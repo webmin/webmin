@@ -7,13 +7,13 @@ index_applydesc=Cliquez sur ce bouton pour activer la configuration du pare-feu 
 index_restart=Appliquer la configuration
 index_restartdesc=Activez tous les services et ports autorisés répertoriés ci-dessus, dans toutes les zones. Toutes les règles actives qui n'ont pas été créées de manière permanente seront remplacées.
 index_start=Démarrez FirewallD
-index_startdesc=Démarrez le serveur FirewallD et appliquez les règles répertoriées ci-dessus.
+index_startdesc=Démarrez le serveur FirewallD.
 index_stop=Arrêter le pare-feuD
 index_stopdesc=Arrêtez le serveur FirewallD et supprimez toutes les règles répertoriées ci-dessus.
 index_cerr=Le module FirewallD ne peut pas être utilisé : $1 
 index_zone=Afficher les règles dans la zone:
 index_zoneok=Changement
-index_zoneadd=Ajouter une zone ..
+index_zoneadd=Ajouter une zone
 index_zonedel=Supprimer la zone
 index_zonedef=Faire défaut
 index_type=Type de règle
@@ -32,6 +32,11 @@ index_none=Cette zone n'a pas encore de ports ou de services autorisés.
 index_ifaces=Appliquer des règles aux interfaces:
 index_ifaces_def=Toutes les interfaces
 index_ifaces_sel=Interfaces sélectionnées :
+index_ifaces_apply=Appliquer
+index_listrules=Répertorier les règles FirewallD
+index_restart_firewalld=Recharger le pare-feuD
+index_restart_firewallddesc=Rechargez le serveur FirewallD et appliquez les règles créées définitivement.
+index_listrules_restartdesc=Répertorier les détails des règles FirewallD enrichies et directes existantes dans la zone $1.
 
 port_edit=Modifier le port
 port_create=Ajouter un port
@@ -93,8 +98,21 @@ delzone_rusure=Voulez-vous vraiment supprimer la zone $1, qui contient $2 ports 
 
 defzone_err=Impossible de définir la zone par défaut
 
-richrule_iperr=Adresse IP invalide
-richrule_actionerr=Action invalide
+list_rule_iperr=Adresse IP invalide
+list_rule_actionerr=Action invalide
+list_rules_title=Règles FirewallD
+list_rules_title_sub=dans la zone $1
+list_rules_delete=Supprimer les règles sélectionnées
+list_rules_type=Taper
+list_rules_type_rich=Riche
+list_rules_type_direct=Direct
+list_rules_protocol=Protocole
+list_rules_ip=IP
+list_rules_origin=Origine
+list_rules_action=Action
+list_rules_rule=Règle
+list_rules_plus_more=+ $1 de plus
+log_save_rules=$1 règles supprimées
 
 restart_err=Impossible d'appliquer la configuration
 

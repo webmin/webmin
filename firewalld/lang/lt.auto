@@ -7,13 +7,13 @@ index_applydesc=Spustelėkite šį mygtuką, kad pirmiau išvardytos ugniasienė
 index_restart=Taikyti konfigūraciją
 index_restartdesc=Suaktyvinkite visas aukščiau išvardytas leidžiamas paslaugas ir prievadus visose zonose. Visos aktyvios taisyklės, kurios nebuvo sukurtos visam laikui, bus pakeistos.
 index_start=Paleiskite „FirewallD“
-index_startdesc=Paleiskite „FirewallD“ serverį ir pritaikykite aukščiau išvardytas taisykles.
+index_startdesc=Paleiskite FirewallD serverį.
 index_stop=Sustabdykite „FirewallD“
 index_stopdesc=Išjunkite „FirewallD“ serverį ir pašalinkite visas aukščiau išvardytas taisykles.
 index_cerr=„FirewallD“ modulio naudoti negalima : $1 
 index_zone=Rodyti taisykles zonoje:
 index_zoneok=Keisti
-index_zoneadd=Pridėti zoną ..
+index_zoneadd=Pridėti zoną
 index_zonedel=Ištrinti zoną
 index_zonedef=Padaryti numatytuoju
 index_type=Taisyklės tipas
@@ -32,6 +32,11 @@ index_none=Šioje zonoje dar nėra leidžiamų uostų ar paslaugų.
 index_ifaces=Taikykite sąsajų taisykles:
 index_ifaces_def=Visos sąsajos
 index_ifaces_sel=Pasirinktos sąsajos:
+index_ifaces_apply=Taikyti
+index_listrules=Išvardykite FirewallD taisykles
+index_restart_firewalld=Iš naujo įkelti FirewallD
+index_restart_firewallddesc=Iš naujo įkelkite FirewallD serverį ir pritaikykite taisykles, kurios buvo sukurtos visam laikui.
+index_listrules_restartdesc=Išsamią informaciją apie esamas išsamias ir tiesiogines ugniasienės taisykles $1 zonoje.
 
 port_edit=Redaguoti uostą
 port_create=Pridėti prievadą
@@ -93,8 +98,21 @@ delzone_rusure=Ar tikrai norite ištrinti zoną $1, kurioje yra $2 prievadai ir 
 
 defzone_err=Nepavyko zonos padaryti numatytąja
 
-richrule_iperr=Neteisingas IP adresas
-richrule_actionerr=Netinkamas veiksmas
+list_rule_iperr=Neteisingas IP adresas
+list_rule_actionerr=Netinkamas veiksmas
+list_rules_title=FirewallD taisyklės
+list_rules_title_sub=zonoje $1
+list_rules_delete=Ištrinkite pasirinktas taisykles
+list_rules_type=Tipas
+list_rules_type_rich=Turtingas
+list_rules_type_direct=Tiesioginis
+list_rules_protocol=protokolas
+list_rules_ip=IP
+list_rules_origin=Kilmė
+list_rules_action=Veiksmas
+list_rules_rule=Taisyklė
+list_rules_plus_more=+ dar $1
+log_save_rules=Ištrinta $1 taisyklė
 
 restart_err=Nepavyko pritaikyti konfigūracijos
 

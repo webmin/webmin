@@ -7,7 +7,7 @@ index_applydesc=單擊此按鈕可激活上面列出的防火牆配置。當前�
 index_restart=應用配置
 index_restartdesc=在所有區域中激活上面列出的所有允許的服務和端口。任何不是永久創建的活動規則都將被替換。
 index_start=啟動防火牆D
-index_startdesc=啟動FirewallD服務器並應用上面列出的規則。
+index_startdesc=啟動 FirewallD 服務器。
 index_stop=停止防火牆D
 index_stopdesc=關閉FirewallD服務器並刪除上面列出的所有規則。
 index_cerr=無法使用FirewallD模塊： $1
@@ -32,6 +32,11 @@ index_none=此區域尚無任何允許的端口或服務。
 index_ifaces=將規則應用於接口：
 index_ifaces_def=所有接口
 index_ifaces_sel=選擇的接口：
+index_ifaces_apply=申請
+index_listrules=列出 FirewallD 規則
+index_restart_firewalld=重新加載防火牆D
+index_restart_firewallddesc=重新加載 FirewallD 服務器並應用永久創建的規則。
+index_listrules_restartdesc=列出有關 $1 區域中現有豐富和直接 FirewallD 規則的詳細信息。
 
 port_edit=編輯端口
 port_create=添加端口
@@ -93,8 +98,21 @@ delzone_rusure=您確定要刪除包含 $2端口和 $3服務的 $1區域嗎？
 
 defzone_err=無法將區域設為默認區域
 
-richrule_iperr=IP 地址無效
-richrule_actionerr=無效操作
+list_rule_iperr=IP 地址無效
+list_rule_actionerr=無效操作
+list_rules_title=防火牆規則
+list_rules_title_sub=在區域 $1
+list_rules_delete=刪除選定的規則
+list_rules_type=類型
+list_rules_type_rich=富有的
+list_rules_type_direct=直接的
+list_rules_protocol=協議
+list_rules_ip=知識產權
+list_rules_origin=起源
+list_rules_action=行動
+list_rules_rule=規則
+list_rules_plus_more=+ $1 更多
+log_save_rules=已刪除 $1 條規則
 
 restart_err=應用配置失敗
 

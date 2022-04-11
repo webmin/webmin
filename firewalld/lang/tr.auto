@@ -7,13 +7,13 @@ index_applydesc=Yukarıda listelenen güvenlik duvarı yapılandırmasını etki
 index_restart=Yapılandırmayı Uygula
 index_restartdesc=Yukarıda listelenen tüm izin verilen hizmetleri ve bağlantı noktalarını tüm bölgelerde etkinleştirin. Kalıcı olarak oluşturulmamış etkin kurallar değiştirilecektir.
 index_start=Güvenlik Duvarını BaşlatD
-index_startdesc=FirewallD sunucusunu başlatın ve yukarıda listelenen kuralları uygulayın.
+index_startdesc=FirewallD sunucusunu başlatın.
 index_stop=Güvenlik Duvarını DurdurD
 index_stopdesc=FirewallD sunucusunu kapatın ve yukarıda listelenen tüm kuralları kaldırın.
 index_cerr=FirewallD modülü kullanılamaz : $1 
 index_zone=Bölgedeki kuralları göster:
 index_zoneok=Değişiklik
-index_zoneadd=Bölge Ekle ..
+index_zoneadd=Bölge Ekle
 index_zonedel=Bölgeyi Sil
 index_zonedef=Varsayılan Yap
 index_type=Kural türü
@@ -32,6 +32,11 @@ index_none=Bu bölgede henüz izin verilen bağlantı noktası veya hizmet yok.
 index_ifaces=Arabirimlere kurallar uygulayın:
 index_ifaces_def=Tüm arayüzler
 index_ifaces_sel=Seçilen arayüzler:
+index_ifaces_apply=Uygulamak
+index_listrules=FirewallD Kurallarını Listeleme
+index_restart_firewalld=Güvenlik Duvarını Yeniden YükleD
+index_restart_firewallddesc=FirewallD sunucusunu yeniden yükleyin ve kalıcı olarak oluşturulmuş kuralları uygulayın.
+index_listrules_restartdesc=$1 bölgesindeki mevcut zengin ve doğrudan FirewallD kurallarıyla ilgili ayrıntıları listeleyin.
 
 port_edit=Bağlantı Noktasını Düzenle
 port_create=Bağlantı Noktası Ekle
@@ -93,8 +98,21 @@ delzone_rusure=$2 bağlantı noktası ve $3 hizmetini içeren $1 bölgesini silm
 
 defzone_err=Bölge varsayılan olarak ayarlanamadı
 
-richrule_iperr=Geçersiz IP adresi
-richrule_actionerr=Geçersiz eylem
+list_rule_iperr=Geçersiz IP adresi
+list_rule_actionerr=Geçersiz eylem
+list_rules_title=Güvenlik DuvarıD Kuralları
+list_rules_title_sub=$1 bölgesinde
+list_rules_delete=Seçili Kuralları Sil
+list_rules_type=Tip
+list_rules_type_rich=Zengin
+list_rules_type_direct=doğrudan
+list_rules_protocol=Protokol
+list_rules_ip=IP
+list_rules_origin=Menşei
+list_rules_action=Aksiyon
+list_rules_rule=Kural
+list_rules_plus_more=+ $1 daha
+log_save_rules=$1 kuralı silindi
 
 restart_err=Yapılandırma uygulanamadı
 

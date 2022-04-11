@@ -7,13 +7,13 @@ index_applydesc=לחץ על כפתור זה כדי להפעיל את תצורת 
 index_restart=החל תצורה
 index_restartdesc=הפעל את כל השירותים והיציאות המותרים הרשומים לעיל, בכל האזורים. כללים פעילים שלא נוצרו לצמיתות יוחלפו.
 index_start=התחל את חומת האש D
-index_startdesc=הפעל את שרת FirewallD והחל את הכללים המפורטים לעיל.
+index_startdesc=הפעל את שרת FirewallD.
 index_stop=עצור את חומת האש
 index_stopdesc=כבה את שרת ה- FirewallD והסר את כל הכללים המפורטים לעיל.
 index_cerr=לא ניתן להשתמש במודול ה- FirewallD : $1 
 index_zone=הצג כללים באזור:
 index_zoneok=שינוי
-index_zoneadd=הוסף אזור ..
+index_zoneadd=הוסף אזור
 index_zonedel=מחק אזור
 index_zonedef=הגדר ברירת מחדל
 index_type=סוג כלל
@@ -32,6 +32,11 @@ index_none=לאזור זה אין עדיין יציאות ושירותים המ�
 index_ifaces=החלת כללים על ממשקים:
 index_ifaces_def=כל הממשקים
 index_ifaces_sel=ממשקים נבחרים:
+index_ifaces_apply=להגיש מועמדות
+index_listrules=רשום את חוקי FirewallD
+index_restart_firewalld=טען מחדש את חומת האשD
+index_restart_firewallddesc=טען מחדש את שרת FirewallD והחל את הכללים שנוצרו לצמיתות.
+index_listrules_restartdesc=רשום פרטים על כללי FirewallD עשירים וישירים באזור $1.
 
 port_edit=ערוך נמל
 port_create=הוסף נמל
@@ -93,8 +98,21 @@ delzone_rusure=האם אתה בטוח שברצונך למחוק את האזור 
 
 defzone_err=הפיכת אזור לברירת המחדל נכשלה
 
-richrule_iperr=כתובת IP לא חוקית
-richrule_actionerr=פעולה לא חוקית
+list_rule_iperr=כתובת IP לא חוקית
+list_rule_actionerr=פעולה לא חוקית
+list_rules_title=כללי FirewallD
+list_rules_title_sub=באזור $1 
+list_rules_delete=מחק כללים נבחרים
+list_rules_type=סוּג
+list_rules_type_rich=עָשִׁיר
+list_rules_type_direct=ישיר
+list_rules_protocol=נוהל
+list_rules_ip=IP
+list_rules_origin=מָקוֹר
+list_rules_action=פעולה
+list_rules_rule=כְּלָל
+list_rules_plus_more=+ $1 נוספים
+log_save_rules=כללים $1 נמחקו
 
 restart_err=החלת התצורה נכשלה
 

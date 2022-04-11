@@ -7,13 +7,13 @@ index_applydesc=このボタンをクリックして、上記のファイアウ�
 index_restart=設定を適用
 index_restartdesc=すべてのゾーンで、上記のすべての許可されたサービスとポートをアクティブにします。永続的に作成されなかったアクティブなルールはすべて置き換えられます。
 index_start=FirewallDを起動します
-index_startdesc=FirewallDサーバーを起動し、上記のルールを適用します。
+index_startdesc=FirewallDサーバーを起動します。
 index_stop=FirewallDを停止します
 index_stopdesc=FirewallDサーバーをシャットダウンし、上記のすべてのルールを削除します。
 index_cerr=FirewallDモジュールは使用できません： $1
 index_zone=ゾーンにルールを表示：
 index_zoneok=変化する
-index_zoneadd=ゾーンを追加 ..
+index_zoneadd=ゾーンの追加
 index_zonedel=ゾーンを削除
 index_zonedef=デフォルトにする
 index_type=ルールの種類
@@ -32,6 +32,11 @@ index_none=このゾーンには、許可されたポートまたはサービス
 index_ifaces=インターフェイスにルールを適用します。
 index_ifaces_def=すべてのインターフェース
 index_ifaces_sel=選択したインターフェース：
+index_ifaces_apply=申し込み
+index_listrules=FirewallDルールを一覧表示
+index_restart_firewalld=FirewallDをリロード
+index_restart_firewallddesc=FirewallDサーバーをリロードし、永続的に作成されたルールを適用します。
+index_listrules_restartdesc=$1ゾーンにある既存のリッチおよびダイレクトFirewallDルールに関する詳細を一覧表示します。
 
 port_edit=ポートを編集
 port_create=ポートを追加
@@ -93,8 +98,21 @@ delzone_rusure=$2ポートと $3サービスを含むゾーン $1を削除して
 
 defzone_err=ゾーンをデフォルトにできませんでした
 
-richrule_iperr=無効なIPアドレス
-richrule_actionerr=無効なアクション
+list_rule_iperr=無効なIPアドレス
+list_rule_actionerr=無効なアクション
+list_rules_title=FirewallDルール
+list_rules_title_sub=ゾーン $1
+list_rules_delete=選択したルールを削除する
+list_rules_type=タイプ
+list_rules_type_rich=リッチ
+list_rules_type_direct=直接
+list_rules_protocol=プロトコル
+list_rules_ip=IP
+list_rules_origin=元
+list_rules_action=アクション
+list_rules_rule=ルール
+list_rules_plus_more=+ $1 more
+log_save_rules=$1ルールを削除
 
 restart_err=構成を適用できませんでした
 

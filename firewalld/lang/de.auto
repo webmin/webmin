@@ -1,8 +1,28 @@
+index_startdesc=Starten Sie den FirewallD-Server.
+index_zoneadd=Zone hinzufügen
 index_ifaces_def=Alle Schnittstellen
 index_ifaces_sel=Ausgewählte Schnittstellen:
+index_ifaces_apply=Anwenden
+index_listrules=FirewallD-Regeln auflisten
+index_restart_firewalld=Laden Sie FirewallD neu
+index_restart_firewallddesc=Laden Sie den FirewallD-Server neu und wenden Sie die dauerhaft erstellten Regeln an.
+index_listrules_restartdesc=Details zu vorhandenen umfassenden und direkten FirewallD-Regeln in Zone $1 auflisten.
 
-richrule_iperr=ungültige IP-Adresse
-richrule_actionerr=Ungültige Aktion
+list_rule_iperr=ungültige IP-Adresse
+list_rule_actionerr=Ungültige Aktion
+list_rules_title=FirewallD-Regeln
+list_rules_title_sub=im Bereich $1
+list_rules_delete=Ausgewählte Regeln löschen
+list_rules_type=Typ
+list_rules_type_rich=Reich
+list_rules_type_direct=Direkte
+list_rules_protocol=Protokoll
+list_rules_ip=IP
+list_rules_origin=Herkunft
+list_rules_action=Handlung
+list_rules_rule=Regel
+list_rules_plus_more=+ $1 mehr
+log_save_rules=$1 Regeln gelöscht
 
 log_create_forward=Vorwärts $1 hinzugefügt
 log_delete_forward=Vorwärts $1 entfernt

@@ -7,13 +7,13 @@ index_applydesc=Klicka på den här knappen för att aktivera brandväggskonfigu
 index_restart=Använd konfigurering
 index_restartdesc=Aktivera alla tillåtna tjänster och portar som listas ovan i alla zoner. Alla aktiva regler som inte skapades permanent kommer att ersättas.
 index_start=Starta brandväggD
-index_startdesc=Starta FirewallD-servern och tillämpa reglerna ovan.
+index_startdesc=Starta FirewallD-servern.
 index_stop=Sluta brandväggenD
 index_stopdesc=Stäng av FirewallD-servern och ta bort alla regler som anges ovan.
 index_cerr=FirewallD-modulen kan inte användas : $1 
 index_zone=Visa regler i zon:
 index_zoneok=Förändra
-index_zoneadd=Lägg till zon ..
+index_zoneadd=Lägg till zon
 index_zonedel=Radera zon
 index_zonedef=Göra default
 index_type=Regeltyp
@@ -32,6 +32,11 @@ index_none=Den här zonen har inga tillåtna portar eller tjänster än.
 index_ifaces=Tillämpa regler på gränssnitt:
 index_ifaces_def=Alla gränssnitt
 index_ifaces_sel=Valda gränssnitt:
+index_ifaces_apply=Tillämpa
+index_listrules=Lista FirewallD-regler
+index_restart_firewalld=Ladda om FirewallD
+index_restart_firewallddesc=Ladda om FirewallD-servern och tillämpa reglerna som skapades permanent.
+index_listrules_restartdesc=Lista detaljer om befintliga rika och direkta FirewallD-regler i $1-zonen.
 
 port_edit=Redigera port
 port_create=Lägg till port
@@ -93,8 +98,21 @@ delzone_rusure=Är du säker på att du vill ta bort zonen $1, som innehåller $
 
 defzone_err=Det gick inte att göra zon som standard
 
-richrule_iperr=Ogiltig IP-adress
-richrule_actionerr=Ogiltig åtgärd
+list_rule_iperr=Ogiltig IP-adress
+list_rule_actionerr=Ogiltig åtgärd
+list_rules_title=FirewallD-regler
+list_rules_title_sub=i zon $1
+list_rules_delete=Ta bort valda regler
+list_rules_type=Typ
+list_rules_type_rich=Rik
+list_rules_type_direct=Direkt
+list_rules_protocol=Protokoll
+list_rules_ip=IP
+list_rules_origin=Ursprung
+list_rules_action=Handling
+list_rules_rule=Regel
+list_rules_plus_more=+ $1 till
+log_save_rules=Raderade $1-regler
 
 restart_err=Det gick inte att tillämpa konfigurationen
 
