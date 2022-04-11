@@ -76,6 +76,12 @@ print &ui_table_row($text{'bind_maxconns_per_net'},
     &ui_opt_textbox("maxconns_per_net", $miniserv{'maxconns_per_net'}, 5,
 		    $text{'default'}." (35)"));
 
+# Max subprocess lifetime
+print &ui_table_row($text{'bind_maxlifetime'},
+    &ui_opt_textbox("maxlifetime", $miniserv{'maxlifetime'}, 5,
+		    $text{'bind_maxlifetime_def'})." ".
+    $text{'bind_maxlifetime_secs'});
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 

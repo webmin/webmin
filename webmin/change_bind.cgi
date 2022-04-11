@@ -122,6 +122,14 @@ else {
 		&error($text{'bind_emaxconns_per_net'});
 	$miniserv{'maxconns_per_net'} = $in{'maxconns_per_net'};
 	}
+if ($in{'maxlifetime_def'}) {
+	delete($miniserv{'maxlifetime'});
+	}
+else {
+	$in{'maxlifetime'} =~ /^\d+$/ && $in{'maxlifetime'} > 60 ||
+		&error($text{'bind_emaxlifetime'});
+	$miniserv{'maxlifetime'} = $in{'maxlifetime'};
+	}
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
 
