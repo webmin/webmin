@@ -2,6 +2,7 @@ index_title=מסנן דואר של Procmail
 index_procmail=מסנן דואר של Procmail
 index_desc_other=פעולות ה- procmail מתחת ל- $1 יחולו על <b>כל</b> הדוא"ל שנמסר למשתמשים במערכת שלך. עם זאת, הם ישמשו רק אם Procmail מותקן ושרת הדואר שלך מוגדר להשתמש בו.
 index_mserr=אזהרה - לא ייעשה שימוש בכללים המוגדרים להלן : $1 
+index_virtualmin=אזהרה - תצורת ה-procmail של המערכת שלך נוצרה על ידי Virtualmin כדי לאפשר סינון דואר זבל ווירוסים לכל דומיין. שינוי זה כאן עלול להפריע לפונקציונליות של Virtualmin.
 index_action=פעולה לנקוט
 index_conds=תנאים
 index_move=מהלך \ לזוז \ לעבור

@@ -166,3 +166,4 @@ index_return=popis datoteka
 upload_dirs=Prijenos imenika
 extract_uploaded=Ekstrakt komprimiran
 extract_cmd_not_avail=Nije moguće izdvojiti datoteku $1 jer nedostaje naredba $2
+overwrite_existing=Prepiši postojeće

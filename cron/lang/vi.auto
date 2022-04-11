@@ -31,6 +31,12 @@ index_ok=Tìm kiếm
 index_searchres=Công việc định kỳ khớp với $1 ..
 index_reset=Đặt lại tìm kiếm.
 index_econfigcheck=Các công việc định kỳ không thể được quản lý trên hệ thống của bạn, vì cấu hình mô-đun không hợp lệ : $1 
+index_stop=Dừng Cron Daemon
+index_stopdesc=Tắt quá trình máy chủ nền <tt>crond</tt> đang chạy các công việc cron đã lên lịch. Điều này sẽ ngăn không cho các lệnh thực thi vào những thời điểm cụ thể của chúng.
+index_start=Khởi động Cron Daemon
+index_startdesc=Khởi động quy trình máy chủ nền <tt>crond</tt> chạy các công việc cron đã lên lịch. <font color=red><b> Đây là điều bắt buộc để các lệnh thực thi vào những thời điểm cụ thể của chúng.</font> </font>
+index_boot=Khởi động Cron Daemon Boot?
+index_bootdesc=Thay đổi cài đặt này để bật hoặc tắt khởi động trình nền công việc cron đã lên lịch tại thời điểm khởi động hệ thống.
 
 edit_title=Chỉnh sửa công việc định kỳ
 create_title=Tạo công việc định kỳ
@@ -128,6 +134,7 @@ acl_move=Có thể di chuyển công việc Cron?
 acl_kill=Có thể chấm dứt công việc Cron?
 acl_hourly=Giới hạn việc làm nhiều nhất là hàng giờ?
 acl_hourlydef=Như được đặt trong Module Config
+acl_stop=Có thể dừng và khởi động trình nền Cron không?
 
 log_modify=Công việc Cron đã sửa đổi cho $1 
 log_modify_l=Công việc Cron đã sửa đổi "$2" cho $1 
@@ -146,6 +153,10 @@ log_move=Đã chuyển công việc Cron cho $1
 log_crons_delete=Đã xóa $1 công việc định kỳ
 log_crons_disable=Công việc $1 Cron bị vô hiệu hóa
 log_crons_enable=Đã bật $1 công việc định kỳ
+log_stop=Daemon cron bị dừng
+log_start=Đã khởi động daemon cron
+log_bootup=Đã bật cron daemon khi khởi động
+log_bootdown=Daemon cron bị vô hiệu hóa khi khởi động
 
 ecopy=Đã phát hiện lỗi trong cấu hình Cron mới: $1 $2 
 
@@ -194,3 +205,9 @@ manual_ok=Biên tập
 manual_editing=Sử dụng hộp văn bản bên dưới để chỉnh sửa các công việc Cron trong $1. Hãy cẩn thận, vì sẽ không có xác nhận nào được thực hiện bởi Webmin!
 manual_efile=Tập tin được chọn không hợp lệ!
 manual_ecannot=Bạn không được phép chỉnh sửa thủ công cron
+
+stop_err=Không dừng được daemon
+start_err=Không khởi động được daemon
+stop_ecannot=Bạn không được phép dừng daemon
+start_ecannot=Bạn không được phép khởi động daemon
+bootup_ecannot=Bạn không được phép kích hoạt daemon khi khởi động

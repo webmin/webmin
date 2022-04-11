@@ -41,6 +41,9 @@ index_efrom=Несапраўдная дата і час пачатку
 index_eto=Дата і час канца несапраўдныя
 index_err=Не атрымалася стварыць справаздачу
 index_usage=Сеткавы трафік <font color=#ff0000>загружаны</font> і <font color=#0000ff>загружаны</font>
+index_in=Спампаваць
+index_out=Загрузіць
+index_total=Усяго
 index_hhour=Гадзіна
 index_hhost=Гаспадар
 index_hday=Дзень

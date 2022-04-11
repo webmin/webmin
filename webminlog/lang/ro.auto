@@ -39,6 +39,8 @@ index_notify_users=Pentru acțiunile utilizatorilor
 index_notify_email=Trimite e-mail la
 index_notify_usub=Includeți numele de utilizator în subiectul e-mailului?
 index_notify_msub=Includeți acțiunea în subiectul e-mailului?
+index_searchtab=Căutați jurnalele
+index_notifytab=Notificare prin e-mail
 index_searchdesc=Acest formular poate fi folosit pentru a căuta acțiuni Webmin în funcție de utilizator, modul, interval de date și fișiere efectuate.
 index_notifydesc=Utilizați acest formular pentru a configura notificările prin e-mail atunci când acțiunile Webmin sunt efectuate de utilizatori selectați sau în modulele alese.
 

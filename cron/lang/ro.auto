@@ -31,6 +31,12 @@ index_ok=Căutare
 index_searchres=Joburi Cron potrivite cu $1 ..
 index_reset=Resetează căutarea.
 index_econfigcheck=Joburile Cron nu pot fi gestionate pe sistemul dvs., deoarece configurația modulului nu este valabilă : $1 
+index_stop=Oprește pe Cron Daemon
+index_stopdesc=Închideți procesul de server de fundal <tt>crond</tt> care rulează joburi cron programate. Acest lucru va împiedica executarea comenzilor la orele specificate.
+index_start=Porniți Cron Daemon
+index_startdesc=Porniți procesul de server de fundal <tt>crond</tt> care rulează joburi cron programate. <font color=red><b>Acest lucru este necesar pentru ca comenzile să se execute la orele specificate.</font></font>
+index_boot=Porniți Cron Daemon Boot?
+index_bootdesc=Modificați această setare pentru a activa sau dezactiva pornirea demonului de joburi cron programat la momentul pornirii sistemului.
 
 edit_title=Editați Job Cron
 create_title=Creați job Cron
@@ -128,6 +134,7 @@ acl_move=Poți muta locuri de muncă Cron?
 acl_kill=Poate înceta lucrările Cron?
 acl_hourly=Limitați lucrările la cel mult o oră?
 acl_hourlydef=Așa cum este setat în Modul Config
+acl_stop=Se poate opri și porni demonul Cron?
 
 log_modify=Lucrare Cron modificată pentru $1 
 log_modify_l=Job modificat Cron „$2” pentru $1 
@@ -146,6 +153,10 @@ log_move=Locație Cron mutată pentru $1
 log_crons_delete=Lucrări șterse de $1 Cron
 log_crons_disable=Lucrări dezactivate $1 Cron
 log_crons_enable=Activări $1 Cron joburi
+log_stop=Demonul cron oprit
+log_start=A pornit demonul cron
+log_bootup=Daemonul cron activat la pornire
+log_bootdown=Daemonul cron dezactivat la pornire
 
 ecopy=În noua configurație Cron a fost detectată o eroare: $1 $2 
 
@@ -194,3 +205,9 @@ manual_ok=Editați | ×
 manual_editing=Utilizați caseta de text de mai jos pentru a edita lucrările Cron în $1. Aveți grijă, deoarece Webmin nu va face nicio validare!
 manual_efile=Fișierul selectat nu este valid!
 manual_ecannot=Nu aveți voie să editați manual joburile cron
+
+stop_err=Demonul nu a putut fi oprit
+start_err=Nu s-a pornit demonul
+stop_ecannot=Nu aveți voie să opriți demonul
+start_ecannot=Nu aveți voie să porniți demonul
+bootup_ecannot=Nu aveți voie să activați demonul la pornire

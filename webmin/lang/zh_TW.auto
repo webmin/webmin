@@ -622,6 +622,16 @@ web_expirespaths=基於URL路徑的客戶端緩存時間
 web_expirespath=路徑正則表達式
 web_expirestime=緩存時間（以秒為單位）
 web_eexpires2=$1行中缺少或非數字的客戶端高速緩存時間
+web_rediruurl=登錄後切換重定向 URL
+web_redirdesc=內部重定向 URL 覆蓋
+web_eredirurl=“$1”包含空格，不是有效的 URL
+web_redirhost=重定向主機
+web_eredirhost=“$1”不是有效的主機名
+web_redirport=重定向端口
+web_redirpref=重定向前綴
+web_eredirpref=前綴必須以正斜杠開頭
+web_eredirpref2=前綴不能包含空格
+web_redirssl=重定向 SSL
 
 webmincron_title=Webmin預定功能
 webmincron_emodule=未安裝Webmin Cron Jobs模塊！

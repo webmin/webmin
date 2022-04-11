@@ -7,3 +7,4 @@ index_return=filoppføring
 upload_dirs=Katalogopplasting
 extract_uploaded=Ekstrakt komprimert
 extract_cmd_not_avail=Kunne ikke pakke ut $1-filen siden $2-kommandoen mangler
+overwrite_existing=Overskriv eksisterende

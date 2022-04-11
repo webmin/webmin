@@ -41,6 +41,17 @@ sendmail_url_def=Predeterminat ($1)
 sendmail_url_custom=URL personalitzat
 sendmail_eurl=Falta un URL personalitzat o no és vàlid
 
+web_rediruurl=URL de redirecció del canvi després de l'inici de sessió
+web_redirdesc=Substitucions d'URL de redirecció interna
+web_eredirurl="$1" conté espais i no és un URL vàlid
+web_redirhost=Redirigeix l'amfitrió
+web_eredirhost='$1' no és un nom d'amfitrió vàlid
+web_redirport=Port de redirecció
+web_redirpref=Prefix de redirecció
+web_eredirpref=El prefix ha de començar amb una barra inclinada
+web_eredirpref2=El prefix no ha de contenir espais
+web_redirssl=Redirigeix SSL
+
 letsencrypt_certbot=Certbot
 letsencrypt_eacmedns=Només el client Let's Encrypt oficial és compatible amb la validació basada en DNS
 

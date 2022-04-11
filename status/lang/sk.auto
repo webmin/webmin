@@ -76,6 +76,10 @@ http_regexp=Stránka sa musí zhodovať s regexp
 http_eregexp=Nebol zadaný žiadny regulárny výraz pre stránku, ktorá by sa zhodovala
 http_none2=Nezhodujú sa
 http_ehead=Metódu žiadosti HEAD nemožno použiť pri kontrole regulárneho výrazu
+http_codes=Prijateľné stavové kódy HTTP
+http_codes_def=Predvolené ($1)
+http_ecodes=Nie sú zadané žiadne kódy HTTP na prijatie
+http_ecodes3=HTTP kód musí byť trojmiestne číslo
 
 ping_timeout=Časový limit po $1 sekundách
 ping_resolv=Nepodarilo sa vyriešiť názov hostiteľa

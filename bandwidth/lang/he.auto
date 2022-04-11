@@ -41,6 +41,9 @@ index_efrom=תאריך ושעה התחלה לא חוקיים
 index_eto=תאריך ושעת סיום לא חוקיים
 index_err=יצירת הדוח נכשלה
 index_usage=תעבורת רשת <font color=#ff0000>שהורדה</font> ו <font color=#0000ff>הועלה</font>
+index_in=הורד
+index_out=העלה
+index_total=סך הכל
 index_hhour=שעה
 index_hhost=מנחה
 index_hday=יום

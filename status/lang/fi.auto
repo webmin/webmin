@@ -216,6 +216,10 @@ http_regexp=Sivun on vastattava säädöksiä
 http_eregexp=Sivulle ei annettu säännöllistä lauseketta
 http_none2=Älä vastaa
 http_ehead=HEAD-pyyntömenetelmää ei voida käyttää säännöllisen lausekkeen tarkistamisessa
+http_codes=Hyväksytyt HTTP-tilakoodit
+http_codes_def=Oletus ($1)
+http_ecodes=Ei hyväksyttyjä HTTP-koodeja annettu
+http_ecodes3=HTTP-koodin on oltava kolminumeroinen numero
 
 ping_host=Isäntä pingille
 ping_wait=Aika odottaa vastausta

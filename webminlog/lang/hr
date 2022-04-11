@@ -10,7 +10,6 @@ index_today=Samo za danas
 index_yesterday=Samo za jučer
 index_time=Između $1 i $2
 index_search=Pretraži
-
 index_return=formaza pretragu
 index_nolog=<b>Napomena</b> - <a href='$1'>Logiranje u Webmin</a> je trenutno isključeno, tako da neće biti rezultata pretrage.
 index_nologfiles=<b>Napomena</b> - <a href='$1'>Logiranje u Webmin</a> je trenutno isključeno, tako da naredbe nece biti zabilježene.
@@ -18,6 +17,7 @@ index_fall=Koji mjenja bilo koju datoteku
 index_file=Modificirana datoteka
 index_wall=Od bilo kojeg Webmin servera
 index_whost=Od servera
+
 search_title=Rezultat pretrage
 search_date=Datum
 search_time=Vrijeme

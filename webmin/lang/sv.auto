@@ -814,6 +814,16 @@ web_expirespaths=Cachetider på klientsidan baserat på URL-sökväg
 web_expirespath=Sökväg regelbundet uttryck
 web_expirestime=Cache-tid i sekunder
 web_eexpires2=Saknad cache-cache-tid i sak $1
+web_rediruurl=Omdirigeringsadress för switch efter inloggning
+web_redirdesc=Intern omdirigeringsadress åsidosätter
+web_eredirurl='$1' innehåller mellanslag och är inte en giltig URL
+web_redirhost=Omdirigera värd
+web_eredirhost='$1' är inte ett giltigt värdnamn
+web_redirport=Omdirigera port
+web_redirpref=Omdirigera prefix
+web_eredirpref=Prefix måste börja med snedstreck
+web_eredirpref2=Prefix får inte innehålla mellanslag
+web_redirssl=Omdirigera SSL
 
 webmincron_title=Webmin schemalagda funktioner
 webmincron_emodule=Webmin Cron Jobs-modulen är inte installerad!

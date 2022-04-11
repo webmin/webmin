@@ -41,6 +41,9 @@ index_efrom=Ongeldige begindatum en tyd
 index_eto=Ongeldige einddatum en tyd
 index_err=Verslag kon nie gegenereer word nie
 index_usage=Netwerkverkeer <font color=#ff0000>afgelaai</font> en <font color=#0000ff>opgelaai</font>
+index_in=Aflaai
+index_out=Laai op
+index_total=Totaal
 index_hhour=Uur
 index_hhost=host
 index_hday=dag

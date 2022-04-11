@@ -1,3 +1,14 @@
 session_utmp=ログインとログアウトを<tt>utmp</tt>に記録しますか？
 
 advanced_etempallowed=一時ファイルディレクトリ $1はシステムディレクトリです
+
+web_rediruurl=ログイン後の切り替えリダイレクトURL
+web_redirdesc=内部リダイレクトURLのオーバーライド
+web_eredirurl=「$1」にはスペースが含まれており、有効なURLではありません
+web_redirhost=ホストをリダイレクトする
+web_eredirhost=「$1」は有効なホスト名ではありません
+web_redirport=リダイレクトポート
+web_redirpref=プレフィックスをリダイレクトする
+web_eredirpref=プレフィックスはスラッシュで始まる必要があります
+web_eredirpref2=プレフィックスにスペースを含めることはできません
+web_redirssl=SSLをリダイレクトする

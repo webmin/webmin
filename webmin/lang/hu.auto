@@ -983,6 +983,16 @@ web_expirespaths=Ügyféloldali gyorsítótáridők az URL-út alapján
 web_expirespath=A reguláris kifejezés elérési útja
 web_expirestime=Gyorsítótár idő másodpercben
 web_eexpires2=Hiányzó vagy nem numerikus ügyféloldali gyorsítótár-idő a $1 sorban
+web_rediruurl=A bejelentkezés utáni kapcsoló átirányítási URL-je
+web_redirdesc=Belső átirányítási URL felülbírálása
+web_eredirurl=A „$1” szóközöket tartalmaz, és nem érvényes URL
+web_redirhost=Gazda átirányítása
+web_eredirhost=A '$1' nem érvényes gazdagépnév
+web_redirport=Port átirányítása
+web_redirpref=Átirányítási előtag
+web_eredirpref=Az előtagnak perjellel kell kezdődnie
+web_eredirpref2=Az előtag nem tartalmazhat szóközt
+web_redirssl=SSL átirányítása
 
 webmincron_title=Webmin ütemezett funkciók
 webmincron_emodule=A Webmin Cron Jobs modul nincs telepítve!

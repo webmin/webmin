@@ -2,6 +2,7 @@ index_title=Procmail-posfilter
 index_procmail=Procmail-posfilter
 index_desc_other=Die procmail-aksies van $1 hieronder sal van toepassing wees op <b>alle</b> e-pos wat aan gebruikers op u stelsel afgelewer word. Dit sal egter slegs gebruik word as Procmail geïnstalleer is en u e-posbediener opgestel is om dit te gebruik.
 index_mserr=Waarskuwing - enige onderstaande reëls word nie gebruik nie : $1 
+index_virtualmin=Waarskuwing - jou stelsel se procmail-konfigurasie is deur Virtualmin geskep om per-domein strooipos en virusfiltrering toe te laat. As u dit hier verander, kan dit met Virtualmin se funksionaliteit inmeng.
 index_action=Om te doen
 index_conds=voorwaardes
 index_move=skuif

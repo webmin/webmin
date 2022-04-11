@@ -2,6 +2,7 @@ index_title=پروک میل میل فلٹر
 index_procmail=پروک میل میل فلٹر
 index_desc_other=The procmail actions below from $1 will apply to <b>all</b> email delivered to users on your system. However, they will only be used if Procmail is installed and your mail server is configured to use it.
 index_mserr=انتباہ - ذیل میں بیان کردہ کوئی قواعد استعمال نہیں کیے جائیں گے :$1
+index_virtualmin=وارننگ - آپ کے سسٹم کی پروکمیل کنفیگریشن ورچوئل مین نے فی ڈومین سپیم اور وائرس فلٹرنگ کی اجازت دینے کے لیے بنائی تھی۔ اسے یہاں تبدیل کرنے سے Virtualmin کی فعالیت میں خلل پڑ سکتا ہے۔
 index_action=کرنے کی کارروائی
 index_conds=شرائط
 index_move=اقدام

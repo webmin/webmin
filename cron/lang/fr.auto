@@ -1,8 +1,28 @@
 index_next=Prochaine course
 index_nunknown=Inconnue
 index_ecrondir_create=Essayez de créer le répertoire des travaux $1 ?
+index_stop=Arrêter le démon Cron
+index_stopdesc=Arrêtez le processus de serveur d'arrière-plan <tt>crond</tt> qui exécute les tâches cron planifiées. Cela empêchera les commandes de s'exécuter aux heures spécifiées.
+index_start=Démarrer le démon Cron
+index_startdesc=Démarrez le processus de serveur d'arrière-plan <tt>crond</tt> qui exécute les tâches cron planifiées. <font color=red><b>Ceci est nécessaire pour que les commandes s'exécutent aux heures spécifiées.</font></font>
+index_boot=Démarrer le démarrage du démon Cron ?
+index_bootdesc=Modifiez ce paramètre pour activer ou désactiver le démarrage du démon de tâches cron planifiées au démarrage du système.
 
 edit_next=Prochaine exécution
 
+acl_stop=Peut arrêter et démarrer le démon Cron ?
+
+log_stop=Démon cron arrêté
+log_start=Démon cron démarré
+log_bootup=Démon cron activé au démarrage
+log_bootdown=Démon cron désactivé au démarrage
+
 when_boot=au moment du démarrage
+
 ucwhen_boot=Au moment du démarrage
+
+stop_err=Échec de l'arrêt du démon
+start_err=Impossible de démarrer le démon
+stop_ecannot=Vous n'êtes pas autorisé à arrêter le démon
+start_ecannot=Vous n'êtes pas autorisé à démarrer le démon
+bootup_ecannot=Vous n'êtes pas autorisé à activer le démon au démarrage

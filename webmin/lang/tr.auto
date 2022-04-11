@@ -588,6 +588,16 @@ web_expirespaths=URL yolunu temel alan istemci tarafı önbellek süreleri
 web_expirespath=Yol düzenli ifadesi
 web_expirestime=Saniye cinsinden önbellek süresi
 web_eexpires2=$1 satırında eksik veya sayısal olmayan istemci tarafı önbellek süresi
+web_rediruurl=Giriş sonrası geçiş yönlendirme URL'si
+web_redirdesc=Dahili yönlendirme URL'si geçersiz kılmaları
+web_eredirurl='$1' boşluk içeriyor ve geçerli bir URL değil
+web_redirhost=Ana bilgisayarı yeniden yönlendir
+web_eredirhost='$1' geçerli bir ana bilgisayar adı değil
+web_redirport=Yönlendirme bağlantı noktası
+web_redirpref=Yönlendirme öneki
+web_eredirpref=Önek, eğik çizgi ile başlamalıdır
+web_eredirpref2=Ön ek boşluk içermemelidir
+web_redirssl=SSL'yi yeniden yönlendir
 
 webmincron_title=Webmin Zamanlanmış İşlevleri
 webmincron_emodule=Webmin Cron Jobs modülü kurulu değil!

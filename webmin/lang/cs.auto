@@ -328,6 +328,16 @@ web_expirespaths=Časy mezipaměti na straně klienta založené na cestě URL
 web_expirespath=Cesta regulární výraz
 web_expirestime=Čas mezipaměti v sekundách
 web_eexpires2=Chybějící nebo nečíselný čas mezipaměti na straně klienta v řádku $1
+web_rediruurl=Adresa URL přesměrování přepínače po přihlášení
+web_redirdesc=Přepsání adresy URL interního přesměrování
+web_eredirurl='$1' obsahuje mezery a není platnou adresou URL
+web_redirhost=Přesměrovat hostitele
+web_eredirhost='$1' není platný název hostitele
+web_redirport=Port přesměrování
+web_redirpref=Předpona přesměrování
+web_eredirpref=Předpona musí začínat lomítkem
+web_eredirpref2=Předpona nesmí obsahovat mezery
+web_redirssl=Přesměrování SSL
 
 webmincron_title=Webmin naplánované funkce
 webmincron_emodule=Modul Webmin Cron Jobs není nainstalován!

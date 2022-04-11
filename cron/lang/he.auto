@@ -31,6 +31,12 @@ index_ok=לחפש
 index_searchres=משרות Cron התואמות $1 ..
 index_reset=אפס חיפוש.
 index_econfigcheck=לא ניתן לנהל עבודות Cron במערכת שלך, מכיוון שתצורת המודול אינה תקפה : $1 
+index_stop=עצור את קרון דיימון
+index_stopdesc=כבה את תהליך שרת הרקע של <tt>crond</tt> המריץ משימות cron מתוזמנות. זה ימנע הפעלת פקודות בזמנים שצוינו.
+index_start=התחל את Cron Daemon
+index_startdesc=הפעל את תהליך שרת הרקע <tt>crond</tt> המריץ עבודות cron מתוזמנות. <font color=red><b>זה נדרש לביצוע פקודות בזמנים שצוינו.</font></font>
+index_boot=להתחיל אתחול של Cron Daemon?
+index_bootdesc=שנה הגדרה זו כדי להפעיל או להשבית את הפעלת הדמון של משימות cron המתוזמנות בזמן אתחול המערכת.
 
 edit_title=ערוך את Cron Job
 create_title=צור Cron Job
@@ -128,6 +134,7 @@ acl_move=האם ניתן להעביר משרות בקרון?
 acl_kill=האם ניתן לסיים משרות בקרון?
 acl_hourly=להגביל משרות לכל היותר לפי שעה?
 acl_hourlydef=כפי שנקבע ב- Config Module
+acl_stop=האם ניתן לעצור ולהפעיל את דמון הקרון?
 
 log_modify=משימת Cron שונה עבור $1 
 log_modify_l=משימת Cron שונה "$2" עבור $1 
@@ -146,6 +153,10 @@ log_move=העביר את עבודת Cron עבור $1
 log_crons_delete=נמחקו $1 משרות של Cron
 log_crons_disable=נכים $1 משרות קרון
 log_crons_enable=מופעל $1 משרות Cron
+log_stop=עצר דמון הקרון
+log_start=התחיל cron daemon
+log_bootup=הפעלת cron daemon בעת האתחול
+log_bootdown=השבתת cron daemon בעת האתחול
 
 ecopy=אירעה שגיאה בתצורת Cron החדשה: $1 $2 
 
@@ -194,3 +205,9 @@ manual_ok=ערוך
 manual_editing=השתמש בתיבת הטקסט למטה כדי לערוך עבודות Cron ב- $1. היזהר, מכיוון שלא תעשה אימות על ידי Webmin!
 manual_efile=הקובץ שנבחר אינו תקף!
 manual_ecannot=אינך מורשה לערוך ידנית עבודות cron
+
+stop_err=לא הצליח לעצור את הדמון
+start_err=הפעלת הדמון נכשלה
+stop_ecannot=אסור לך לעצור את הדמון
+start_ecannot=אינך רשאי להפעיל את הדמון
+bootup_ecannot=אינך רשאי להפעיל את הדמון בעת האתחול

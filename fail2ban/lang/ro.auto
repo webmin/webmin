@@ -170,4 +170,23 @@ manual_efile=Fișierul selectat nu face parte din configurația Fail2Ban!
 manual_err=Eroare la editarea fișierului de configurare
 manual_edata=Nu a fost introdus conținutul fișierului de configurare
 
+status_title=Statutul și acțiunile închisorilor
+status_title2=Statutul închisorilor
+status_head_jail_name=Numele închisorii
+status_head_currently_failed=Momentan eșuat
+status_head_total_failed=Total eșuat
+status_head_currently_banned=Momentan interzis
+status_head_total_banned=Total interzis
+status_head_banned_ip_list=Lista IP interzisă
+status_jail_unblock_ip=Eliminați $1 din lista interzisă
+status_jail_permblock_ip=Blocați definitiv acest IP
+status_jail_unblock=Deblocați toate IP-urile pentru închisorile selectate
+status_jail_block=Blocați IP-urile interzise în închisori selectate
+status_jail_noactive=Încă nu există închisori active activate.
+status_err_set=Acțiune de setare eșuată
+status_err_unblock=Acțiunea nu s-a deblocat
+status_err_nojail=Nu au fost selectate închisori
+status_err_unban=Nu se poate dezactiva adresa IP $1
+status_err_ban=Nu se poate interzice $1 adresa IP
+
 syslog_logtarget=Jurnalul de acțiuni Fail2Ban

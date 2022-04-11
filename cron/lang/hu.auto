@@ -1,0 +1,19 @@
+index_stop=Állítsd meg a Cron Daemont
+index_stopdesc=Állítsa le a <tt>crond</tt> háttérkiszolgáló folyamatot, amely ütemezett cron-feladatokat futtat. Ez megakadályozza, hogy a parancsok a megadott időpontokban végrehajtódjanak.
+index_start=Indítsa el a Cron Daemont
+index_startdesc=Indítsa el a <tt>crond</tt> háttérkiszolgáló folyamatot, amely ütemezett cron feladatokat futtat. <font color=red><b>Erre a parancsok meghatározott időpontokban történő végrehajtásához van szükség.</font></font>
+index_boot=Indítsa el a Cron Daemon Bootot?
+index_bootdesc=Módosítsa ezt a beállítást az ütemezett cron jobs démon indításának engedélyezéséhez vagy letiltásához a rendszerindításkor.
+
+acl_stop=Meg tudja állítani és elindítani a Cron démont?
+
+log_stop=Leállított cron démon
+log_start=Elindította a cron démont
+log_bootup=Cron démon engedélyezve rendszerindításkor
+log_bootdown=A cron démon letiltva indításkor
+
+stop_err=Nem sikerült leállítani a démont
+start_err=Nem sikerült elindítani a démont
+stop_ecannot=Nem szabad megállítani a démont
+start_ecannot=Nem indíthatja el a démont
+bootup_ecannot=Nem engedélyezheti a démont rendszerindításkor

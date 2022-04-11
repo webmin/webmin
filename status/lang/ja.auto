@@ -30,6 +30,11 @@ sched_subject1=アラートテキスト（本文を空のままにします）
 sched_subject2=カスタムテキスト
 sched_esubject=SMSメッセージの件名がありません
 
+http_codes=許容可能なHTTPステータスコード
+http_codes_def=デフォルト（$1）
+http_ecodes=入力を受け入れるHTTPコードがありません
+http_ecodes3=HTTPコードは3桁の数字である必要があります
+
 ping_timeout=$1秒後のタイムアウト
 ping_resolv=ホスト名を解決できませんでした
 

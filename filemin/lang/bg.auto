@@ -166,3 +166,4 @@ index_return=списък с файлове
 upload_dirs=Качване на директория
 extract_uploaded=Екстракт компресиран
 extract_cmd_not_avail=Не можа да се извлече $1 файл, тъй като липсва команда $2
+overwrite_existing=Презаписване на съществуващи

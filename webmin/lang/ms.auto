@@ -109,6 +109,17 @@ sendmail_url_def=Lalai ($1)
 sendmail_url_custom=URL tersuai
 sendmail_eurl=URL tersuai tidak ada atau tidak sah
 
+web_rediruurl=URL ubah hala suis selepas log masuk
+web_redirdesc=URL ubah hala dalaman menimpa
+web_eredirurl='$1' mengandungi ruang dan bukan URL yang sah
+web_redirhost=Ubah hala hos
+web_eredirhost='$1' bukan nama hos yang sah
+web_redirport=Ubah hala pelabuhan
+web_redirpref=Awalan ubah hala
+web_eredirpref=Awalan mesti bermula dengan garis miring ke hadapan
+web_eredirpref2=Awalan tidak boleh mengandungi ruang
+web_redirssl=Ubah hala SSL
+
 twofactor_eusers=Pengesahan dua faktor tidak boleh dilumpuhkan, kerana pengguna berikut kini mendaftar : $1
 
 letsencrypt_title=Let's Encrypt Request Certificate

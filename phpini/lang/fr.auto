@@ -1,1 +1,4 @@
 list_efile=Le fichier à modifier doit être un chemin absolu
+
+session_redis=Redis
+session_memcache=MemcacheD

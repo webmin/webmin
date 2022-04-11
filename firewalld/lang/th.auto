@@ -30,6 +30,8 @@ index_return=รายการของโซน
 index_ezones=ไม่พบโซน FirewallD!
 index_none=โซนนี้ยังไม่มีพอร์ตหรือบริการที่อนุญาต
 index_ifaces=ใช้กฎกับอินเตอร์เฟส:
+index_ifaces_def=อินเทอร์เฟซทั้งหมด
+index_ifaces_sel=อินเทอร์เฟซที่เลือก:
 
 port_edit=แก้ไขพอร์ต
 port_create=เพิ่มพอร์ต
@@ -90,6 +92,9 @@ delzone_edefault=ไม่สามารถลบโซนเริ่มต้
 delzone_rusure=คุณแน่ใจหรือไม่ว่าต้องการลบโซน $1 ซึ่งมีพอร์ต $2 และบริการ $3 อยู่
 
 defzone_err=ไม่สามารถทำให้โซนเป็นค่าเริ่มต้น
+
+richrule_iperr=ที่อยู่ IP ไม่ถูกต้อง
+richrule_actionerr=การกระทำที่ไม่ถูกต้อง
 
 restart_err=ไม่สามารถใช้การกำหนดค่า
 

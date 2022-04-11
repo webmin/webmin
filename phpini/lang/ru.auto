@@ -2,6 +2,7 @@ list_efile=Файл для редактирования должен иметь 
 list_format_ini=Формат INI
 list_format_fpm=Формат FPM
 
-session_eredis=Отсутствует или отключено расширение Redis
+session_redis=Редис
+session_memcache=MemcacheD
 
 misc_charset=Набор символов по умолчанию

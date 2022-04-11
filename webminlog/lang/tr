@@ -9,7 +9,6 @@ index_tall=Herzaman
 index_today=Sadece bugün
 index_time=$1 ve $2 arasında
 index_search=Ara
-
 index_return=arama formu
 index_nolog=<b>Not</b> - <a href='$1'>Webmin Kayıtları</a> şu an aktif değil, yani kayıtlarda arama yaptığınızda herhangi bir sonuç alamayabilirsiniz.
 index_nologfiles=<b>Not</b> - <a href='$1'>Dosya değişikliklerinin kayıtlarının tutulması</a> şu an aktif değil, yani kayıt tutulan eylemlerin ayrıntıları dosya değişikliklerini ya da çalıştırılan komutları içermeyecektir.
@@ -17,6 +16,7 @@ index_fall=Değiştirilen her dosya için
 index_file=Değiştirilen bu dosya için : 
 index_wall=Herhangi bir Webmin sunucudan
 index_whost=Bu sunucudan
+
 search_title=Arama Sonuçları
 search_date=Zaman
 search_time=Saat

@@ -1080,6 +1080,16 @@ web_expirespaths=Kliento talpyklos laikai, pagrįsti URL keliu
 web_expirespath=Kelio taisyklinga išraiška
 web_expirestime=Talpyklos laikas sekundėmis
 web_eexpires2=Trūksta arba neskaitinė kliento talpyklos talpyklos laikas eilutėje $1
+web_rediruurl=Peradresavimo URL po prisijungimo jungiklio
+web_redirdesc=Vidinio peradresavimo URL nepaisymas
+web_eredirurl=„$1“ yra tarpų ir nėra galiojantis URL
+web_redirhost=Peradresuoti prieglobą
+web_eredirhost=„$1“ nėra tinkamas pagrindinio kompiuterio pavadinimas
+web_redirport=Peradresuoti prievadą
+web_redirpref=Peradresavimo priešdėlis
+web_eredirpref=Priešdėlis turi prasidėti pasviruoju brūkšniu
+web_eredirpref2=Priešdėlyje negali būti tarpų
+web_redirssl=Peradresuoti SSL
 
 webmincron_title=„Webmin“ suplanuotos funkcijos
 webmincron_emodule=„Webmin Cron Jobs“ modulis neįdiegtas!

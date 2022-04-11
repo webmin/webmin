@@ -7,6 +7,8 @@ index_notify_users=Für Aktionen von Benutzern
 index_notify_email=Schicke eine Email an
 index_notify_usub=Benutzername in E-Mail-Betreff einfügen?
 index_notify_msub=Aktion in E-Mail-Betreff einfügen?
+index_searchtab=Protokolle durchsuchen
+index_notifytab=Email Benachrichtigung
 index_searchdesc=Dieses Formular kann verwendet werden, um Webmin-Aktionen nach Benutzer, Modul, Datumsbereich und durchgeführten Dateien zu suchen.
 index_notifydesc=Verwenden Sie dieses Formular, um E-Mail-Benachrichtigungen zu konfigurieren, wenn Webmin-Aktionen von ausgewählten Benutzern oder in ausgewählten Modulen ausgeführt werden.
 

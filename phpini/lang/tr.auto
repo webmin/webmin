@@ -71,6 +71,8 @@ session_handler=Oturum depolama mekanizması
 session_files=Dosyalar
 session_mm=Bellekte
 session_users=Kullanıcı tanımlı
+session_redis=redis
+session_memcache=MemcacheD
 session_path=Oturum dosyaları dizini
 session_cookies=Oturum izleme için çerezlerin kullanılmasına izin verilsin mi?
 session_only_cookies=Oturum izleme için çerezler her zaman kullanılsın mı?
@@ -80,7 +82,6 @@ session_maxlife=Maksimum oturum ömrü
 session_epath=Oturum dosyaları için eksik veya geçersiz dizin
 session_elife=Eksik veya geçersiz çerez ömrü
 session_emaxlife=Eksik veya geçersiz maksimum oturum ömrü
-session_eredis=Eksik veya devre dışı bırakılmış yeniden dağıtım uzantısı
 
 safe_title=Güvenli Mod Seçenekleri
 safe_header=Güvenli dosya erişim modu seçenekleri

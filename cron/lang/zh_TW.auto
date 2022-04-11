@@ -23,6 +23,12 @@ index_ok=搜索
 index_searchres=與 $1..相匹配的Cron作業
 index_reset=重置搜索。
 index_econfigcheck=Cron作業無法在您的系統上管理，因為模塊配置無效： $1
+index_stop=停止 Cron 守護進程
+index_stopdesc=關閉運行計劃 cron 作業的 <tt>crond</tt> 後台服務器進程。這將阻止命令在指定時間執行。
+index_start=啟動 Cron 守護進程
+index_startdesc=啟動運行計劃 cron 作業的 <tt>crond</tt> 後台服務器進程。 <font color=red><b>這是在指定時間執行命令所必需的。</font></font>
+index_boot=啟動 Cron 守護進程啟動？
+index_bootdesc=更改此設置以啟用或禁用在系統引導時啟動計劃的 cron 作業守護程序。
 
 edit_next=下次運行時間
 edit_comment=描述
@@ -72,6 +78,7 @@ acl_move=可以移動Cron職位嗎？
 acl_kill=可以終止Cron工作嗎？
 acl_hourly=將工作限制在每小時以下？
 acl_hourlydef=如在模塊配置中設置
+acl_stop=可以停止和啟動 Cron 守護進程嗎？
 
 log_kill=$1的Cron作業已終止
 log_kill_l=已終止 $1的Cron作業“$2”
@@ -82,6 +89,10 @@ log_move=已將Cron作業移至 $1
 log_crons_delete=已刪除 $1個Cron作業
 log_crons_disable=已停用 $1個Cron作業
 log_crons_enable=已啟用 $1個Cron作業
+log_stop=停止 cron 守護進程
+log_start=啟動 cron 守護進程
+log_bootup=在啟動時啟用 cron 守護進程
+log_bootdown=啟動時禁用 cron 守護進程
 
 ecopy=在新的Cron配置中檢測到錯誤： $1 $2
 
@@ -130,3 +141,9 @@ manual_ok=編輯
 manual_editing=使用下面的文本框編輯 $1中的Cron作業。注意，因為Webmin不會進行任何驗證！
 manual_efile=所選文件無效！
 manual_ecannot=您無權手動編輯Cron作業
+
+stop_err=無法停止守護進程
+start_err=啟動守護進程失敗
+stop_ecannot=你不能停止守護進程
+start_ecannot=不允許您啟動守護進程
+bootup_ecannot=您不允許在啟動時啟用守護程序

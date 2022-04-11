@@ -71,6 +71,8 @@ session_handler=Mecanismo de almacenamiento de sesiones
 session_files=Archivos
 session_mm=En memoria
 session_users=Usuario definido
+session_redis=redis
+session_memcache=MemcacheD
 session_path=Directorio para archivos de sesión
 session_cookies=¿Permitir el uso de cookies para el seguimiento de la sesión?
 session_only_cookies=¿Siempre utiliza cookies para el seguimiento de la sesión?
@@ -80,7 +82,6 @@ session_maxlife=Duración máxima de la sesión
 session_epath=Directorio faltante o no válido para archivos de sesión
 session_elife=Duración de la cookie faltante o inválida
 session_emaxlife=Duración máxima de sesión faltante o inválida
-session_eredis=Extensión redis faltante o deshabilitada
 
 safe_title=Opciones de modo seguro
 safe_header=Opciones de modo de acceso seguro a archivos

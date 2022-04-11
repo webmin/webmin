@@ -12,7 +12,6 @@ index_yesterday=Bare for gårsdagen
 index_week=I løpet av siste uke
 index_time=Mellom $1 og $2
 index_search=Søk
-
 index_return=Søke skjema
 index_nolog=<b>NB</b> - <a href='$1'>Logging i Webmin</a> er ikke satt opp, så det er sannsynelig at søket i Handlings loggen ikke finner noen resultater.
 index_nologfiles=<b>NB</b> - <a href='$1'>Logging av fil endringer</a> er ikke satt opp, så detaljene for handlings loggen vil ikke inneholde fil endringer eller kommandoer som er utført.
@@ -31,6 +30,7 @@ index_sdesc=Handlingsbeskrivelse inneholder
 index_shost=Kilde Webmin tjener
 index_long=Vis fulle beskrivelser for handlinger?
 index_global=&lt;Ikke i noen modul&gt;
+
 search_title=Søke resultat
 search_date=Dato
 search_time=Tid

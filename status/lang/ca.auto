@@ -4,6 +4,11 @@ mon_virtualmin=Atenció! Aquest monitor està associat amb el domini Virtualmin 
 
 sched_warn3=Sempre que el servei estigui activat
 
+http_codes=Codis d'estat HTTP acceptables
+http_codes_def=Per defecte ($1)
+http_ecodes=No s'han introduït codis HTTP per acceptar
+http_ecodes3=El codi HTTP ha de ser un número de tres dígits
+
 ping_timeout=Temps d'espera després de $1 segons
 ping_resolv=No s'ha pogut resoldre el nom d'amfitrió
 

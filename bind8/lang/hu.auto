@@ -34,6 +34,10 @@ edit_edmarcpct=Az üzenetek százalékának 0 és 100 közötti egész számnak 
 edit_edmarcrua=Hiányzik az összesített visszajelzési cím
 edit_edmarcruf=Hiányzó igazságügyi információs cím
 edit_ecaavalue2=Hiányzó vagy érvénytelen megjelenésű domain név
+edit_enaptrvalue0=A rekord sorrendjének számnak kell lennie
+edit_enaptrvalue1=A rekord preferenciája egy szám lehet
+edit_enaptrvalue3=Hiányzó szolgáltatások mező
+edit_enaptrvalue4=A reguláris kifejezés és a helyettesítő mezők közül csak egy állítható be
 
 text_rawformat=Ez a zóna nyers bináris formátumban van, így nem jeleníthető meg szövegként.
 
@@ -42,18 +46,21 @@ type_TLSA=SSL tanúsítvány
 type_SSHFP=SSH nyilvános kulcs
 type_DMARC=DMARC
 type_CAA=Tanúsító hatóság
+type_NAPTR=Névhatósági mutató
 
 edit_DMARC=DMARC
 edit_NSEC3PARAM=DNSSEC paraméterek
 edit_TLSA=SSL tanúsítvány
 edit_SSHFP=SSH nyilvános kulcs
 edit_CAA=Tanúsító hatóság
+edit_NAPTR=Névhatósági mutató
 
 recs_DMARC=DMARC
 recs_NSEC3PARAM=DNSSEC paraméterek
 recs_TLSA=SSL tanúsítvány
 recs_SSHFP=SSH nyilvános kulcs
 recs_CAA=Tanúsító hatóság
+recs_NAPTR=Név Hatóság
 
 value_TLSA1=Tanúsítvány használata
 value_TLSA2=Tanúsítványválasztó
@@ -92,6 +99,21 @@ value_CAA3=CA domain név
 value_caa_issue=Egy domain tanúsítvány
 value_caa_issuewild=Helyettesítő karakter
 value_caa_iodef=Az irányelv megsértésének URL-je
++value_dmarcri=Jelentési intervallum
++value_dmarcrf=Jelentés formátuma
++value_dmarcafrf=Hitelesítési hiba jelentési formátuma
+value_NAPTR1=Rendelés
+value_NAPTR2=Preferencia
+value_NAPTR3=Zászlók
+value_NAPTR4=Szolgáltatások
+value_NAPTR5=Regexp
+value_NAPTR5_def=Nincs (használjon cserét)
+value_NAPTR6=Csere
+value_NAPTR6_def=Nincs (használjon reguláris kifejezést)
+value_NAPTR3_S=Ezután keresse meg az SRV rekordot
+value_NAPTR3_A=Ezután keresse meg az A vagy AAAA rekordot
+value_NAPTR3_U=Ezután használja a reguláris kifejezés kimenetét
+value_NAPTR3_P=Protokollspecifikus művelet
 
 tlsa_usage0=Tanúsító hatóság
 tlsa_usage1=Vége entitás
@@ -204,6 +226,7 @@ dt_status_unsigned=Aláírás nélküli
 
 zonekey_publicfile=Nyilvános kulcsfájl : $1
 zonekey_privatefile=Privát kulcsfájl : $1
+zonekey_algorithm=DNSSEC algoritmus : $1
 zonekey_ds=A szülői zóna DS rekordja :
 zonekey_eprivate=A zónához társított privát kulcs nem olvasható : $1
 

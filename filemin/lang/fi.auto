@@ -166,3 +166,4 @@ index_return=tiedostoluettelo
 upload_dirs=Hakemiston lataus
 extract_uploaded=Ote pakattu
 extract_cmd_not_avail=Tiedostoa $1 ei voitu purkaa, koska komento $2 puuttuu
+overwrite_existing=Korvaa olemassa oleva

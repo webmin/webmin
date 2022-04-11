@@ -23,6 +23,12 @@ index_ok=Sök
 index_searchres=Cron jobb matchar $1 ..
 index_reset=Återställ sökningen.
 index_econfigcheck=Cron-jobb kan inte hanteras på ditt system, eftersom modulkonfigurationen inte är giltig : $1 
+index_stop=Stoppa Cron Daemon
+index_stopdesc=Stäng av <tt>crond</tt> bakgrundsserverprocessen som kör schemalagda cron-jobb. Detta kommer att förhindra att kommandon körs vid de angivna tidpunkterna.
+index_start=Starta Cron Daemon
+index_startdesc=Starta <tt>crond</tt> bakgrundsserverprocessen som kör schemalagda cron-jobb. <font color=red><b>Detta krävs för att kommandon ska köras vid de angivna tidpunkterna.</font></font>
+index_boot=Starta Cron Daemon Boot?
+index_bootdesc=Ändra den här inställningen för att aktivera eller inaktivera start av demonen för schemalagda cron-jobb vid systemstart.
 
 edit_next=Nästa körtid
 edit_comment=Beskrivning
@@ -74,6 +80,7 @@ acl_move=Kan flytta Cron jobb?
 acl_kill=Kan säga upp Cron-jobb?
 acl_hourly=Begränsa jobb till högst varje timme?
 acl_hourlydef=Som anges i modulkonfig
+acl_stop=Kan du stoppa och starta Cron-demonen?
 
 log_modify=Modifierat Cron-jobb för $1 
 log_modify_l=Modifierat Cron-jobb "$2" för $1 
@@ -92,6 +99,10 @@ log_move=Flyttade Cron-jobb för $1
 log_crons_delete=Raderade $1 Cron-jobb
 log_crons_disable=Disabled $1 Cron jobb
 log_crons_enable=Aktiverat $1 Cron-jobb
+log_stop=Stoppad cron daemon
+log_start=Startade cron daemon
+log_bootup=Aktiverade cron-demonen vid uppstart
+log_bootdown=Inaktiverad cron-demon vid uppstart
 
 ecopy=Ett fel upptäcktes i den nya Cron-konfigurationen: $1 $2 
 
@@ -140,3 +151,9 @@ manual_ok=Redigera
 manual_editing=Använd textrutan nedan för att redigera Cron-jobb i $1. Var försiktig, eftersom ingen validering görs av Webmin!
 manual_efile=Den valda filen är inte giltig!
 manual_ecannot=Du får inte redigera cron-jobb manuellt
+
+stop_err=Det gick inte att stoppa demonen
+start_err=Det gick inte att starta demonen
+stop_ecannot=Du får inte stoppa demonen
+start_ecannot=Du får inte starta demonen
+bootup_ecannot=Du får inte aktivera demonen vid uppstart

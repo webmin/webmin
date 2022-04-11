@@ -2,6 +2,7 @@ index_title=Penapis Mail Procmail
 index_procmail=Penapis mel Procmail
 index_desc_other=Tindakan procmail di bawah dari $1 akan diterapkan ke e-mel <b>semua</b> yang dihantar kepada pengguna pada sistem anda. Walau bagaimanapun, mereka hanya akan digunakan jika Procmail dipasang dan pelayan mel anda dikonfigurasikan untuk menggunakannya.
 index_mserr=Amaran - sebarang peraturan yang ditakrifkan di bawah tidak akan digunakan : $1 
+index_virtualmin=Amaran - konfigurasi procmail sistem anda telah dicipta oleh Virtualmin untuk membenarkan spam setiap domain dan penapisan virus. Menukarnya di sini mungkin mengganggu fungsi Virtualmin.
 index_action=Tindakan untuk diambil
 index_conds=Syarat-syarat
 index_move=Pindah

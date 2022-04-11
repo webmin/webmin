@@ -12,7 +12,6 @@ index_yesterday=Alleen voor gisteren
 index_week=Gedurende de laatste week
 index_time=Tussen $1 en $2
 index_search=Zoeken
-
 index_return=zoek formulier
 index_nolog=<b>Note:</b> - <a href='$1'>In Webmin inloggen</a> staat op dit moment niet aan, Dus zoekopdrachten in de Actie-log zal geen resultaten geven.
 index_nologfiles=<b>Note:</b> - <a href='$1'>Het Loggen van file's die veranderen</a> staat op dit moment niet aan, hierdoor zult u in het Actie-log niets terug vinden van gewijzigde files of uitgevoerde opdrachten.
@@ -31,6 +30,7 @@ index_sdesc=Actie omschrijving bevat
 index_shost=Bron Webmin server
 index_long=Toon de volledige actie omschrijvingen?
 index_global=&lt;In geen enkele module&gt;
+
 search_title=Zoek Resultaten
 search_date=Datum
 search_time=Tijd

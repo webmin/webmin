@@ -17,6 +17,12 @@ index_ok=Arama
 index_searchres=$1 ile eşleşen Cron işleri
 index_reset=Aramayı sıfırla.
 index_econfigcheck=Modül yapılandırması geçerli olmadığı için Cron işleri sisteminizde yönetilemiyor : $1 
+index_stop=Cron Daemon'u Durdur
+index_stopdesc=Zamanlanmış cron işlerini çalıştıran <tt>crond</tt> arka plan sunucusu işlemini kapatın. Bu, komutların belirtilen zamanlarda yürütülmesini önleyecektir.
+index_start=Cron Daemon'u başlatın
+index_startdesc=Zamanlanmış cron işlerini çalıştıran <tt>crond</tt> arka plan sunucusu işlemini başlatın. <font color=red><b>Bu, komutların belirtilen zamanlarda yürütülmesi için gereklidir.</font></font>
+index_boot=Cron Daemon Boot Başlatılsın mı?
+index_bootdesc=Sistem önyükleme zamanında programlanmış cron işleri arka plan programının başlatılmasını etkinleştirmek veya devre dışı bırakmak için bu ayarı değiştirin.
 
 edit_next=Sonraki çalışma süresi
 edit_comment=Açıklama
@@ -28,12 +34,17 @@ save_eidx=Cron işi başarıyla kaydedildi, ancak bulunamadığı için çalış
 
 acl_hourly=İşleri en fazla saatlik olarak sınırlamak istiyor musunuz?
 acl_hourlydef=Modül Yapılandırmasında ayarlandığı gibi
+acl_stop=Cron arka plan programını durdurabilir ve başlatabilir mi?
 
 log_kill=$1 için sonlandırılmış Cron işi
 log_kill_l=$1 için "$2" Cron işi sonlandırıldı
 log_crons_delete=$1 Cron iş silindi
 log_crons_disable=$1 Cron işini devre dışı bıraktı
 log_crons_enable=$1 Cron işini etkinleştirdi
+log_stop=Durdurulmuş cron arka plan programı
+log_start=Başlatılan cron arka plan programı
+log_bootup=Önyüklemede etkin cron arka plan programı
+log_bootdown=Önyüklemede devre dışı bırakılmış cron arka plan programı
 
 when_interval=$1 saniyede bir
 when_boot=başlangıçta
@@ -58,3 +69,9 @@ manual_ok=Düzenle
 manual_editing=$1 içindeki Cron işlerini düzenlemek için aşağıdaki metin kutusunu kullanın. Webmin tarafından hiçbir doğrulama yapılmayacağından dikkatli olun!
 manual_efile=Seçilen dosya geçerli değil!
 manual_ecannot=Cron işlerini manuel olarak düzenleme izniniz yok
+
+stop_err=Daemon durdurulamadı
+start_err=Daemon başlatılamadı
+stop_ecannot=Daemon'u durdurma izniniz yok
+start_ecannot=Daemon'u başlatmanıza izin verilmiyor
+bootup_ecannot=Önyükleme sırasında arka plan programını etkinleştirmenize izin verilmiyor

@@ -216,6 +216,10 @@ http_regexp=Paġna trid taqbel ma 'regexp
 http_eregexp=L-ebda espressjoni regolari għall-paġna ma tiddaħħal
 http_none2=Ma taqbilx
 http_ehead=Il-metodu tat-talba HEAD ma jistax jintuża meta tkun qed tivverifika espressjoni regolari
+http_codes=Kodiċi tal-istatus HTTP aċċettabbli
+http_codes_def=Default ($1)
+http_ecodes=L-ebda kodiċi HTTP li taċċetta mdaħħla
+http_ecodes3=Il-kodiċi HTTP għandu jkun numru bi tliet ċifri
 
 ping_host=Ospitanti biex ping
 ping_wait=Ħin biex tistenna risposta

@@ -1,1 +1,4 @@
 list_efile=Filen som skal redigeres må være en absolutt bane
+
+session_redis=Redis
+session_memcache=MemcacheD

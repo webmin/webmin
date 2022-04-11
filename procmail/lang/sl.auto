@@ -2,6 +2,7 @@ index_title=Procmail Mail Filter
 index_procmail=Procmail mail filter
 index_desc_other=Spodaj navedena dejanja procmala od $1 bodo veljala za <b>vse</b> e-pošto, ki se pošlje uporabnikom v vašem sistemu. Uporabljeni pa bodo le, če je nameščen Procmail in je vaš poštni strežnik konfiguriran za njegovo uporabo.
 index_mserr=Opozorilo - nobena pravila, določena spodaj, ne bodo uporabljena : $1 
+index_virtualmin=Opozorilo – konfiguracijo procmaila vašega sistema je ustvaril Virtualmin, da omogoči filtriranje neželene pošte in virusov po domeni. Če ga spremenite tukaj, lahko moti funkcionalnost Virtualmina.
 index_action=Ukrep, ki ga je treba izvesti
 index_conds=Pogoji
 index_move=Premakni se

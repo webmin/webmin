@@ -166,3 +166,4 @@ index_return=failų sąrašas
 upload_dirs=Katalogo įkėlimas
 extract_uploaded=Ištrauka suspausta
 extract_cmd_not_avail=Nepavyko išskleisti failo $1, nes trūksta komandos $2
+overwrite_existing=Perrašyti esamą

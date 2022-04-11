@@ -39,6 +39,8 @@ index_notify_users=Đối với các hành động của người dùng
 index_notify_email=Gửi email đến
 index_notify_usub=Bao gồm tên người dùng trong chủ đề email?
 index_notify_msub=Bao gồm hành động trong chủ đề email?
+index_searchtab=Tìm kiếm nhật ký
+index_notifytab=Thông báo có email
 index_searchdesc=Biểu mẫu này có thể được sử dụng để tìm kiếm các hành động Webmin theo người dùng, mô-đun, phạm vi ngày và các tệp được thực hiện.
 index_notifydesc=Sử dụng biểu mẫu này để định cấu hình thông báo qua email khi các hành động Webmin được thực hiện bởi những người dùng được chọn hoặc trong các mô-đun đã chọn.
 

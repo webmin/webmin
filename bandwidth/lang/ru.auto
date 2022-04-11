@@ -41,6 +41,9 @@ index_efrom=Неверная дата и время начала
 index_eto=Неправильная дата и время окончания
 index_err=Не удалось сгенерировать отчет
 index_usage=Сетевой трафик <font color=#ff0000>загружен</font> и <font color=#0000ff>загружен</font>
+index_in=Скачать
+index_out=Загрузить
+index_total=Общее
 index_hhour=Час
 index_hhost=хозяин
 index_hday=День

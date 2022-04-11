@@ -2,6 +2,7 @@ index_title=Procmail-sähköpostisuodatin
 index_procmail=Procmail-sähköpostisuodatin
 index_desc_other=$1 : n alla olevat procmail-toiminnot koskevat <b>kaikkia</b> sähköposteja, jotka toimitetaan järjestelmän käyttäjille. Niitä käytetään kuitenkin vain, jos Procmail on asennettu ja sähköpostipalvelimesi on määritetty käyttämään sitä.
 index_mserr=Varoitus - mitään alla määriteltyjä sääntöjä ei käytetä : $1 
+index_virtualmin=Varoitus - Virtualmin loi järjestelmäsi procmail-määritykset sallimaan verkkotunnuskohtaisen roskapostin ja virusten suodatuksen. Sen muuttaminen tässä saattaa häiritä Virtualminin toimintaa.
 index_action=Suoritettavat toimet
 index_conds=olosuhteet
 index_move=Liikkua

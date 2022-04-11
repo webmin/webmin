@@ -75,6 +75,10 @@ http_regexp=Sayfa normal ifadeyle eşleşmelidir
 http_eregexp=Sayfanın eşleşmesi için normal ifade girilmedi
 http_none2=Eşleşmiyor
 http_ehead=HEAD istek yöntemi, normal bir ifade kontrol edilirken kullanılamaz
+http_codes=Kabul edilebilir HTTP durum kodları
+http_codes_def=Varsayılan ($1)
+http_ecodes=Girilen kabul edilecek HTTP kodu yok
+http_ecodes3=HTTP kodu üç basamaklı bir sayı olmalıdır
 
 ping_timeout=$1 saniye sonra zaman aşımı
 ping_resolv=Sunucu adı çözümlenemedi

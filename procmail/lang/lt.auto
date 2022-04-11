@@ -2,6 +2,7 @@ index_title=„Procmail“ pašto filtras
 index_procmail=„Procmail“ pašto filtras
 index_desc_other=Žemiau $1 esantys „procmail“ veiksmai bus taikomi <b>visiems</b> el. Laiškams, pristatomiems jūsų sistemos vartotojams. Tačiau jie bus naudojami tik įdiegus „Procmail“ ir jūsų pašto serveris sukonfigūruotas jį naudoti.
 index_mserr=Įspėjimas - nebus naudojamos jokios žemiau apibrėžtos taisyklės : $1 
+index_virtualmin=Įspėjimas – jūsų sistemos procmail konfigūraciją sukūrė „Virtualmin“, kad būtų galima filtruoti pagal domeną šlamštą ir virusus. Jį pakeitus čia gali sutrikti Virtualmin funkcionalumas.
 index_action=Veiksmai, kurių reikia imtis
 index_conds=Sąlygos
 index_move=Judėk

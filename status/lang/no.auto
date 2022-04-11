@@ -1,5 +1,10 @@
 sched_warn3=Så lenge tjenesten er oppe
 
+http_codes=Akseptable HTTP-statuskoder
+http_codes_def=Standard ($1)
+http_ecodes=Ingen HTTP-koder å godta angitt
+http_ecodes3=HTTP-koden må være et tresifret tall
+
 ping_timeout=Tidsavbrudd etter $1 sekunder
 ping_resolv=Kunne ikke løse vertsnavnet
 

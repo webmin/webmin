@@ -166,3 +166,4 @@ index_return=فائل کی فہرست
 upload_dirs=ڈائرکٹری اپ لوڈ
 extract_uploaded=ایکسٹریکٹ کمپریسڈ
 extract_cmd_not_avail=$1 فائل کو نہیں نکالا جا سکا کیونکہ $2 کمانڈ غائب ہے۔
+overwrite_existing=موجودہ کو اوور رائٹ کریں۔

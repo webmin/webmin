@@ -1,6 +1,7 @@
 index_procmail=Filtro de correo de Procmail
 index_desc_other=Las siguientes acciones de procmail de $1 se aplicarán a <b>todos</b> correos electrónicos entregados a los usuarios en su sistema. Sin embargo, solo se usarán si Procmail está instalado y su servidor de correo está configurado para usarlo.
 index_mserr=Advertencia: las reglas definidas a continuación no se utilizarán : $1 
+index_virtualmin=Advertencia: la configuración de procmail de su sistema fue creada por Virtualmin para permitir el filtrado de spam y virus por dominio. Cambiarlo aquí puede interferir con la funcionalidad de Virtualmin.
 index_ba=Añadir
 index_act6=Establecer variable $1 
 index_iadd=Agregue un nuevo archivo de inclusión.

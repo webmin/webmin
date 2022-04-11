@@ -82,6 +82,10 @@ http_regexp=頁面必須與正則表達式匹配
 http_eregexp=沒有用於匹配頁面的正則表達式
 http_none2=不匹配
 http_ehead=檢查正則表達式時，無法使用HEAD請求方法
+http_codes=可接受的 HTTP 狀態代碼
+http_codes_def=默認 ($1)
+http_ecodes=沒有接受輸入的 HTTP 代碼
+http_ecodes3=HTTP 代碼必須是三位數字
 
 ping_timeout=$1 秒後超時
 ping_resolv=無法解析主機名

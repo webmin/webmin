@@ -216,6 +216,10 @@ http_regexp=หน้าจะต้องตรงกับ regexp
 http_eregexp=ไม่มีนิพจน์ทั่วไปสำหรับการจับคู่หน้า
 http_none2=ไม่ตรงกัน
 http_ehead=ไม่สามารถใช้วิธีการร้องขอ HEAD เมื่อตรวจสอบนิพจน์ทั่วไป
+http_codes=รหัสสถานะ HTTP ที่ยอมรับได้
+http_codes_def=ค่าเริ่มต้น ($1)
+http_ecodes=ไม่มีรหัส HTTP ที่จะยอมรับการป้อน
+http_ecodes3=รหัส HTTP ต้องเป็นตัวเลขสามหลัก
 
 ping_host=โฮสต์การ ping
 ping_wait=ได้เวลารอคำตอบ

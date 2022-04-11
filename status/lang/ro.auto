@@ -216,6 +216,10 @@ http_regexp=Pagina trebuie să se potrivească cu regexp
 http_eregexp=Nu a fost introdusă nicio expresie regulată pentru pagina care să se potrivească
 http_none2=Nu se potrivesc
 http_ehead=Metoda solicitării HEAD nu poate fi utilizată la verificarea unei expresii regulate
+http_codes=Codurile de stare HTTP acceptabile
+http_codes_def=Implicit ($1)
+http_ecodes=Nu au fost introduse coduri HTTP de acceptat
+http_ecodes3=Codul HTTP trebuie să fie un număr din trei cifre
 
 ping_host=Gazdă la ping
 ping_wait=E timpul să aștepți răspuns

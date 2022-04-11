@@ -11,7 +11,6 @@ index_yesterday=Pouze včera
 index_week=Během minulého týdne
 index_time=Mezi $1 a $2
 index_search=Hledat
-
 index_return=vyhledávací formulář
 index_nolog=<b>Poznámka</b> - <a href='$1'>Logging ve Webminu</a> není prozatím povolen, takže jakékoliv vyhledávání v akcích nepovede k žádným výsledkům.
 index_nologfiles=<b>Poznámka</b> - <a href='$1'>Logging změn souborů</a> není prozatím povoleno, takže detaily loggovaných akcí nebudou obsahovat jména změněných souborů nebo spuštěných příkazů.
@@ -27,6 +26,7 @@ index_dall=Nějaká změna
 index_diff=Změny obsahující
 index_stimes=Akce v období
 index_shost=Server, obsahující Webmin
+
 search_title=Výsledky hledání
 search_date=Datum
 search_time=Čas

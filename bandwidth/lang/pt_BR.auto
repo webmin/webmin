@@ -41,6 +41,9 @@ index_efrom=Data e hora de início inválidas
 index_eto=Data e hora de término inválidas
 index_err=Falha ao gerar o relatório
 index_usage=Tráfego de rede <font color=#ff0000>baixado</font> e <font color=#0000ff>carregado</font>
+index_in=Download
+index_out=Carregar
+index_total=Total
 index_hhour=Hora
 index_hhost=Hospedeiro
 index_hday=Dia

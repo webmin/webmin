@@ -1080,6 +1080,16 @@ web_expirespaths=Časi predpomnilnika na strani odjemalca na podlagi poti do URL
 web_expirespath=Pot rednega izražanja
 web_expirestime=Čas predpomnilnika v sekundah
 web_eexpires2=Manjkajoči ali neštevilčni čas predpomnilnika na strani odjemalca v vrstici $1
+web_rediruurl=URL za preusmeritev stikala po prijavi
+web_redirdesc=Interni URL za preusmeritev preglasi
+web_eredirurl=»$1« vsebuje presledke in ni veljaven URL
+web_redirhost=Preusmeri gostitelja
+web_eredirhost='$1' ni veljavno ime gostitelja
+web_redirport=Preusmeritvena vrata
+web_redirpref=Predpona za preusmeritev
+web_eredirpref=Predpona se mora začeti s poševnico naprej
+web_eredirpref2=Predpona ne sme vsebovati presledkov
+web_redirssl=Preusmeri SSL
 
 webmincron_title=Funkcije, razporejene po spletu
 webmincron_emodule=Modul Webmin Cron Jobs ni nameščen!

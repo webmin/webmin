@@ -2,6 +2,7 @@ index_title=Procmail Posta Filtresi
 index_procmail=Procmail posta filtresi
 index_desc_other=$1 'den sonraki procmail işlemleri, sisteminizdeki kullanıcılara gönderilen <b>tümü</b> e-postalarına uygulanacaktır. Ancak, yalnızca Procmail yüklüyse ve posta sunucunuz bunu kullanmak üzere yapılandırıldıysa kullanılır.
 index_mserr=Uyarı - aşağıda tanımlanan kurallar kullanılmayacaktır : $1 
+index_virtualmin=Uyarı - sisteminizin procmail yapılandırması, etki alanı başına spam ve virüs filtrelemesine izin vermek için Virtualmin tarafından oluşturuldu. Burada değiştirmek Virtualmin'in işlevselliğini etkileyebilir.
 index_action=Yapılacak eylem
 index_conds=Koşullar
 index_move=Hareket

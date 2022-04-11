@@ -216,6 +216,10 @@ http_regexp=Stranica mora odgovarati regexp
 http_eregexp=Nije unesen uobičajeni izraz za podudaranje stranice
 http_none2=Ne podudaraj se
 http_ehead=Metoda zahtjeva HEAD ne može se koristiti pri provjeri regularnog izraza
+http_codes=Prihvatljivi HTTP statusni kodovi
+http_codes_def=Zadano ($1)
+http_ecodes=Nisu uneseni HTTP kodovi za prihvaćanje
+http_ecodes3=HTTP kod mora biti troznamenkasti broj
 
 ping_host=Domaćin pinga
 ping_wait=Vrijeme je za pričekati odgovor

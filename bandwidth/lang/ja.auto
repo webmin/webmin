@@ -41,6 +41,9 @@ index_efrom=無効な開始日時
 index_eto=無効な終了日時
 index_err=レポートを生成できませんでした
 index_usage=ネットワークトラフィック<font color=＃ff0000>ダウンロード済み</font>および<font color=＃0000ff>アップロード済み</font>
+index_in=ダウンロード
+index_out=アップロード
+index_total=合計
 index_hhour=時
 index_hhost=ホスト
 index_hday=日

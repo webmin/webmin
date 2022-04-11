@@ -12,7 +12,6 @@ index_yesterday=للأمس فقط
 index_week=خلال الأسبوع الماضي
 index_time=بين $1 و $2
 index_search=البحث
-
 index_return=نموذج البحث
 index_nolog=<b>ملاحظة</b> - <a href='$1'>التسجيل في Webmin</a> غير مُمكَّن حاليًا ، لذا فمن المحتمل ألا تؤدي عمليات البحث في سجل الإجراءات إلى أي نتائج.
 index_nologfiles=<b>ملاحظة</b> - <a href='$1'>تسجيل تغييرات الملف</a> غير ممكّنة حاليًا ، لذا لن تتضمن تفاصيل الإجراءات المسجلة ملفات أو الأوامر التي تم تغييرها.
@@ -31,6 +30,7 @@ index_sdesc=وصف العمل يحتوي على
 index_shost=خادم Webmin المصدر
 index_long=عرض أوصاف الفعل الكامل؟
 index_global=&lt;ليس في أي وحدة&gt;
+
 search_title=نتائج البحث
 search_date=تاريخ
 search_time=الوقت

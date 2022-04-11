@@ -31,6 +31,12 @@ index_ok=Paieška
 index_searchres=„Cron“ darbai, atitinkantys $1 ..
 index_reset=Iš naujo nustatyti paiešką.
 index_econfigcheck=„Cron“ užduočių negalima valdyti jūsų sistemoje, nes modulio konfigūracija negalioja : $1 
+index_stop=Sustabdykite Cron demoną
+index_stopdesc=Išjunkite <tt>crond</tt> fono serverio procesą, kuris vykdo suplanuotas cron užduotis. Tai neleis komandoms vykdyti nurodytu laiku.
+index_start=Paleiskite „Cron Daemon“
+index_startdesc=Paleiskite <tt>crond</tt> fono serverio procesą, kuris vykdo suplanuotas cron užduotis. <font color=red><b>Tai reikalinga, kad komandos būtų vykdomos nurodytu laiku.</font></font>
+index_boot=Paleisti „Cron Daemon Boot“?
+index_bootdesc=Pakeiskite šį parametrą, kad įjungtumėte arba išjungtumėte suplanuotų cron užduočių demono paleidimą sistemos įkrovos metu.
 
 edit_title=Redaguoti Cron Job
 create_title=Sukurkite „Cron Job“
@@ -128,6 +134,7 @@ acl_move=Ar gali perkelti „Cron“ darbus?
 acl_kill=Ar gali nutraukti „Cron“ darbus?
 acl_hourly=Apriboti darbus ne daugiau kaip per valandą?
 acl_hourlydef=Kaip nustatyta modulio konfigūracijoje
+acl_stop=Ar galima sustabdyti ir paleisti Cron demoną?
 
 log_modify=Modifikuotas $1 „Cron“ darbas
 log_modify_l=Modifikuotas Cron darbas „$2“ $1 
@@ -146,6 +153,10 @@ log_move=Perkeltas „Cron“ darbas $1
 log_crons_delete=Ištrinta $1 „Cron“ darbo vietų
 log_crons_disable=Neįgalūs $1 „Cron“ darbai
 log_crons_enable=Įgalinti $1 „Cron“ darbai
+log_stop=Sustabdytas cron demonas
+log_start=Paleido cron demoną
+log_bootup=Įjungtas cron demonas paleidžiant
+log_bootdown=Išjungtas cron demonas įkrovos metu
 
 ecopy=Aptikta klaida naujoje „Cron“ konfigūracijoje: $1 $2 
 
@@ -194,3 +205,9 @@ manual_ok=Redaguoti
 manual_editing=Norėdami redaguoti „Cron“ užduotis $1, naudokite žemiau esantį teksto lauką. Būkite atsargūs, nes „Webmin“ nepatvirtins!
 manual_efile=Pasirinktas failas negalioja!
 manual_ecannot=Jums neleidžiama rankiniu būdu redaguoti „cron“ darbų
+
+stop_err=Nepavyko sustabdyti demono
+start_err=Nepavyko paleisti demono
+stop_ecannot=Jums neleidžiama sustabdyti demono
+start_ecannot=Jums neleidžiama paleisti demono
+bootup_ecannot=Jums neleidžiama įjungti demono įkrovos metu

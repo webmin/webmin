@@ -29,6 +29,12 @@ index_ok=Vyhľadávanie
 index_searchres=Cron pracovných miest zodpovedá $1 ..
 index_reset=Obnoviť vyhľadávanie.
 index_econfigcheck=Vo vašom systéme nie je možné spravovať úlohy Cron, pretože konfigurácia modulu nie je platná : $1 
+index_stop=Zastavte Cron Daemona
+index_stopdesc=Vypnite proces servera <tt>crond</tt> na pozadí, ktorý spúšťa plánované úlohy cronu. Toto zabráni vykonávaniu príkazov v určených časoch.
+index_start=Spustite Cron Daemon
+index_startdesc=Spustite proces servera <tt>crond</tt> na pozadí, ktorý spúšťa plánované úlohy cronu. <font color=red><b>Vyžaduje sa to, aby sa príkazy spustili v určenom čase.</font></font>
+index_boot=Spustiť Cron Daemon Boot?
+index_bootdesc=Zmenou tohto nastavenia povolíte alebo zakážete spúšťanie démona naplánovaných úloh cron v čase zavádzania systému.
 
 edit_title=Upraviť úlohu Cron
 edit_ecannot=Pre tohto používateľa nemáte povolenie upravovať úlohy cron
@@ -114,6 +120,7 @@ acl_move=Dokážete presunúť úlohy spoločnosti Cron?
 acl_kill=Môžu ukončiť úlohy spoločnosti Cron?
 acl_hourly=Obmedziť počet pracovných miest najviac na hodinové?
 acl_hourlydef=Podľa nastavenia v module Config
+acl_stop=Dokážete zastaviť a spustiť démona Cron?
 
 log_modify=Upravená úloha Cron pre $1 
 log_modify_l=Upravená úloha Cron „$2“ pre $1 
@@ -132,6 +139,10 @@ log_move=Úloha Cron bola presunutá o $1
 log_crons_delete=Počet odstránených pracovných miest: $1 Cron
 log_crons_disable=Zakázané $1 úlohy Cron
 log_crons_enable=Povolené úlohy $1 Cron
+log_stop=Zastavený démon cron
+log_start=Spustený cron démon
+log_bootup=Povolený démon cron pri zavádzaní
+log_bootdown=Deaktivovaný démon cron pri zavádzaní
 
 ecopy=V novej konfigurácii Cron bola zistená chyba: $1 $2 
 
@@ -180,3 +191,9 @@ manual_ok=editovať
 manual_editing=Pomocou textového poľa nižšie upravte úlohy Cron v $1. Buďte opatrní, pretože Webmin nebude mať žiadnu validáciu!
 manual_efile=Vybraný súbor nie je platný!
 manual_ecannot=Nemáte oprávnenie manuálne upravovať úlohy cron
+
+stop_err=Nepodarilo sa zastaviť démona
+start_err=Nepodarilo sa spustiť démona
+stop_ecannot=Nemáte dovolené zastaviť démona
+start_ecannot=Nemáte povolené spustiť démona
+bootup_ecannot=Nemáte povolené povoliť démona pri zavádzaní systému

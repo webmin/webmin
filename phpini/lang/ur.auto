@@ -71,6 +71,8 @@ session_handler=سیشن اسٹوریج میکانزم
 session_files=فائلوں
 session_mm=یاد میں
 session_users=صارف کی وضاحت
+session_redis=ریڈیس
+session_memcache=MemcacheD
 session_path=سیشن فائلوں کے لئے ڈائرکٹری
 session_cookies=سیشن سے باخبر رہنے کیلئے کوکیز کے استعمال کی اجازت دیں؟
 session_only_cookies=سیشن سے باخبر رہنے کے لئے ہمیشہ کوکیز کا استعمال کریں؟
@@ -80,7 +82,6 @@ session_maxlife=زیادہ سے زیادہ سیشن زندگی
 session_epath=سیشن فائلوں کے لئے گم شدہ یا غلط ڈائریکٹری
 session_elife=زندگی بھر غائب یا کوکی
 session_emaxlife=لاپتہ یا غیر موزوں زیادہ سے زیادہ سیشن زندگی بھر
-session_eredis=دوبارہ توسیع غائب یا غیر فعال ہوگئی
 
 safe_title=سیف موڈ کے اختیارات
 safe_header=محفوظ فائل تک رسائی کے اختیارات

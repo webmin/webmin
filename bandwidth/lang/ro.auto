@@ -41,6 +41,9 @@ index_efrom=Data și ora de începere nevalide
 index_eto=Data și ora de încheiere nevalide
 index_err=Eroare la generarea raportului
 index_usage=Traficul de rețea <font color=#ff0000>descărcat</font> și <font color=#0000ff>încărcat</font>
+index_in=Descarca
+index_out=Încărcați
+index_total=Total
 index_hhour=Ora
 index_hhost=Gazdă
 index_hday=Zi

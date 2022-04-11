@@ -39,6 +39,8 @@ index_notify_users=לפעולות של משתמשים
 index_notify_email=שלח אימייל ל
 index_notify_usub=האם לכלול שם משתמש בנושא האימייל?
 index_notify_msub=האם לכלול פעולה בנושא האימייל?
+index_searchtab=חפש ביומנים
+index_notifytab=הודעה באימייל
 index_searchdesc=ניתן להשתמש בטופס זה כדי לחפש פעולות Webmin לפי משתמש, מודול, טווח תאריכים וקבצים שבוצעו.
 index_notifydesc=השתמש בטופס זה כדי להגדיר הודעות דוא"ל כאשר פעולות Webmin מבוצעות על ידי משתמשים נבחרים או במודולים שנבחרו.
 

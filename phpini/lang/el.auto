@@ -71,6 +71,8 @@ session_handler=Μηχανισμός αποθήκευσης συνεδριών
 session_files=Αρχεία
 session_mm=Εις μνήμην
 session_users=Ορισμένο από τον χρήστη
+session_redis=Redis
+session_memcache=MemcacheD
 session_path=Κατάλογος αρχείων συνεδριών
 session_cookies=Να επιτρέπεται η χρήση cookie για την παρακολούθηση περιόδου σύνδεσης;
 session_only_cookies=Να χρησιμοποιείτε πάντοτε cookies για την παρακολούθηση συνεδριών;
@@ -80,7 +82,6 @@ session_maxlife=Μέγιστη διάρκεια ζωής της περιόδου
 session_epath=Έλλειψη ή μη έγκυρος κατάλογος για αρχεία συνεδριών
 session_elife=Έλλειψη ή μη έγκυρη διάρκεια ζωής του cookie
 session_emaxlife=Λείπει ή μη έγκυρη μέγιστη διάρκεια ζωής της περιόδου σύνδεσης
-session_eredis=Λείπει ή απενεργοποιήθηκε η επέκταση επανάκλησης
 
 safe_title=Επιλογές ασφαλούς λειτουργίας
 safe_header=Επιλογές τρόπου πρόσβασης ασφαλούς αρχείου

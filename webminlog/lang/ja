@@ -12,7 +12,6 @@ index_yesterday=昨日
 index_week=過去7日間
 index_time=$1 から $2 まで
 index_search=検索
-
 index_return=検索条件
 index_nolog=<b>注意</b> - <a href='$1'>Webmin へのログ</a> は現在無効なため、アクション ログでの検索結果が表示されません。
 index_nologfiles=<b>注意<b> - <a href='$1'>ファイル変更のログ</a> は現在無効なため、ログのアクションの詳細は変更したファイルまたは実行されたコマンドを含みません。
@@ -31,6 +30,7 @@ index_sdesc=アクションの内容
 index_shost=対象の Webmin server
 index_long=アクションの内容を詳細に表示する
 index_global=&lt;このリストにないモジュール&gt;
+
 search_title=検索結果
 search_date=日付
 search_time=時刻

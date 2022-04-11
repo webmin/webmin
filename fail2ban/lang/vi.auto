@@ -170,4 +170,23 @@ manual_efile=Tệp được chọn không phải là một phần của cấu h�
 manual_err=Không thể chỉnh sửa tập tin cấu hình
 manual_edata=Không có nội dung tập tin cấu hình được nhập
 
+status_title=Tình trạng và Hành động của Nhà tù
+status_title2=Tình trạng nhà tù
+status_head_jail_name=Tên tù
+status_head_currently_failed=Hiện không thành công
+status_head_total_failed=Tổng số không thành công
+status_head_currently_banned=Hiện đang bị cấm
+status_head_total_banned=Tổng số bị cấm
+status_head_banned_ip_list=Danh sách IP bị cấm
+status_jail_unblock_ip=Xóa $1 khỏi danh sách bị cấm
+status_jail_permblock_ip=Chặn vĩnh viễn IP này
+status_jail_unblock=Bỏ chặn tất cả các IP cho các tù đã chọn
+status_jail_block=Chặn các IP bị cấm trong các nhà tù đã chọn
+status_jail_noactive=Không có nhà tù đang hoạt động nào được kích hoạt.
+status_err_set=Không đặt được hành động
+status_err_unblock=Không thể bỏ chặn hành động
+status_err_nojail=Không có nhà tù nào được chọn
+status_err_unban=Không thể bỏ cấm $1 địa chỉ IP
+status_err_ban=Không thể cấm địa chỉ IP $1 
+
 syslog_logtarget=Nhật ký hành động Fail2Ban

@@ -41,6 +41,9 @@ index_efrom=Недійсна дата і час початку
 index_eto=Недійсна дата та час закінчення
 index_err=Не вдалося створити звіт
 index_usage=Мережевий трафік <font color=#ff0000>завантажений</font> та <font color=#0000ff>завантажений</font>
+index_in=Завантажити
+index_out=Завантажити
+index_total=Всього
 index_hhour=Година
 index_hhost=Господар
 index_hday=День

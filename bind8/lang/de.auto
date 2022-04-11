@@ -4,6 +4,17 @@ delete_vwarn=Diese Zone ist der Virtualmin-Domäne $1 zugeordnet und sollte dahe
 
 delete_vwarn2=Diese Zone ist mit den Virtualmin-Domänen $1 und $2 anderer verknüpft und sollte daher hier nicht gelöscht werden!
 
+edit_enaptrvalue0=Die Datensatzreihenfolge muss eine Zahl sein
+edit_enaptrvalue1=Datensatzpräferenz muss eine Zahl sein
+edit_enaptrvalue3=Fehlendes Dienstleistungsfeld
+edit_enaptrvalue4=Es kann nur eines der Regexp- und Ersetzungsfelder festgelegt werden
+
+type_NAPTR=Namensautoritätszeiger
+
+edit_NAPTR=Namensautoritätszeiger
+
+recs_NAPTR=Namensbehörde
+
 value_dmarcadkim=Erfordert eine strikte DKIM-Ausrichtung
 value_dmarcfo=Fehlermeldemodus
 value_dmarcfo0=Melden, wenn DKIM und SPF fehlgeschlagen sind
@@ -14,6 +25,21 @@ value_CAA1=Durchsetzung erforderlich?
 value_CAA2=Berechtigungstyp
 value_CAA3=CA-Domänenname
 value_caa_iodef=URL für Richtlinienverstoß
++value_dmarcri=Berichtsintervall
++value_dmarcrf=Berichtsformat
++value_dmarcafrf=Berichtsformat für Authentifizierungsfehler
+value_NAPTR1=Befehl
+value_NAPTR2=Präferenz
+value_NAPTR3=Flaggen
+value_NAPTR4=Dienstleistungen
+value_NAPTR5=Regexp
+value_NAPTR5_def=Keine (Ersatz verwenden)
+value_NAPTR6=Ersatz
+value_NAPTR6_def=Keine (regexp verwenden)
+value_NAPTR3_S=Suchen Sie als Nächstes den SRV-Eintrag
+value_NAPTR3_A=Suchen Sie als Nächstes den A- oder AAAA-Eintrag
+value_NAPTR3_U=Verwenden Sie als Nächstes die Regexp-Ausgabe
+value_NAPTR3_P=Protokollspezifische Aktion
 
 log_forward=Vorwärtszone $1 erstellt
 log_delegation=Erstellen Sie eine Nur-Delegierungszone $1
@@ -25,3 +51,5 @@ massdelete_vwarn=Einige Zonen sind der Virtualmin-Domäne $1 zugeordnet und soll
 massdelete_vwarn2=Einige Zonen sind der Virtualmin-Domäne $1 und $2 zugeordnet, andere sollten daher hier nicht gelöscht werden!
 
 dt_zone_enable=DNSSEC-Automatisierung
+
+zonekey_algorithm=DNSSEC-Algorithmus : $1

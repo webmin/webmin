@@ -39,6 +39,8 @@ index_notify_users=Erabiltzaileen ekintzetarako
 index_notify_email=Bidali mezu elektronikoa hona
 index_notify_usub=Erabiltzaile izena gehitu mezu elektronikoaren gaian?
 index_notify_msub=Ekintza sartu mezu elektronikoaren gaian?
+index_searchtab=Bilatu erregistroak
+index_notifytab=Posta elektronikoaren jakinarazpena
 index_searchdesc=Inprimaki hau Webmin ekintzak bilatzeko erabil daiteke erabiltzaile, modulu, data-tarte eta egindako fitxategien arabera.
 index_notifydesc=Erabili inprimaki hau posta elektronikoko jakinarazpenak konfiguratzeko, hautatutako erabiltzaileek edo aukeratutako moduluetan Webmin ekintzak egiten dituztenean.
 

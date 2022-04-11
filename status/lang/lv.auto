@@ -216,6 +216,10 @@ http_regexp=Lapai jāatbilst regexp
 http_eregexp=Ievadītajai lapai nav regulāras izteiksmes
 http_none2=Neatbilst
 http_ehead=HEAD pieprasījuma metodi nevar izmantot, pārbaudot regulāro izteiksmi
+http_codes=Pieņemami HTTP statusa kodi
+http_codes_def=Noklusējums ($1)
+http_ecodes=Nav ievadīts neviens HTTP kods, ko pieņemt
+http_ecodes3=HTTP kodam ir jābūt trīsciparu skaitlim
 
 ping_host=Saimnieks ping
 ping_wait=Laiks gaidīt atbildi

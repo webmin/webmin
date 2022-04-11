@@ -12,7 +12,6 @@ index_yesterday=Només per ahir
 index_week=Durant la darrera setmana
 index_time=Entre $1 i $2
 index_search=Cerca
-
 index_return=al formulari de recerca
 index_nolog=<b>Nota</b> - Actualment, el <a href='$1'>Registre de Webmin</a> està desactivat, així que les recerques al registre d'accions segurament no produiran cap resultat.
 index_nologfiles=<b>Nota</b> - Actualment, el <a href='$1'>Registre de canvis de fitxers</a> no està activat, així que els detalls de les operacions enregistrades no inclouran els fitxers canviats ni les ordres executades.
@@ -31,6 +30,7 @@ index_sdesc=La descripció de l'acció conté
 index_shost=Servidor Webmin origen
 index_long=Mostra les descripcions llargues de les accions
 index_global=&lt;A cap mòdul&gt;
+
 search_title=Resultats de la Recerca
 search_date=Data
 search_time=Hora

@@ -170,4 +170,23 @@ manual_efile=پرونده انتخاب شده بخشی از پیکربندی Fai
 manual_err=ویرایش پرونده پیکربندی انجام نشد
 manual_edata=هیچ محتوای پیکربندی وارد نشده است
 
+status_title=وضعیت زندان و اقدامات
+status_title2=وضعیت زندان
+status_head_jail_name=نام زندان
+status_head_currently_failed=در حال حاضر شکست خورده است
+status_head_total_failed=مجموع ناموفق بود
+status_head_currently_banned=در حال حاضر ممنوع است
+status_head_total_banned=توتال ممنوع شد
+status_head_banned_ip_list=لیست IP ممنوعه
+status_jail_unblock_ip=$1 را از لیست ممنوعه حذف کنید
+status_jail_permblock_ip=این IP را برای همیشه مسدود کنید
+status_jail_unblock=رفع انسداد همه IP ها برای زندان های منتخب
+status_jail_block=مسدود کردن IP های ممنوعه در زندان های منتخب
+status_jail_noactive=هنوز هیچ زندان فعالی فعال نشده است.
+status_err_set=عملکرد تنظیم ناموفق
+status_err_unblock=عمل رفع انسداد انجام نشد
+status_err_nojail=هیچ زندانی انتخاب نشده است
+status_err_unban=آدرس IP $1 را نمی توان لغو ممنوع کرد
+status_err_ban=آدرس IP $1 را نمی توان ممنوع کرد
+
 syslog_logtarget=ورود به سیستم اقدام Fail2Ban

@@ -11,6 +11,8 @@ index_notify_users=Pro akce uživatelů
 index_notify_email=Odeslat email na
 index_notify_usub=Zahrnout uživatelské jméno do předmětu e-mailu?
 index_notify_msub=Zahrnout akci do předmětu e-mailu?
+index_searchtab=Prohledejte protokoly
+index_notifytab=Email upozornění
 index_searchdesc=Tento formulář lze použít k vyhledání akcí Webminu podle uživatele, modulu, období a provedených souborů.
 index_notifydesc=Tento formulář použijte ke konfiguraci e-mailových upozornění, když jsou akce Webminu prováděny vybranými uživateli nebo ve vybraných modulech.
 

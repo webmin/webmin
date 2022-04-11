@@ -216,6 +216,10 @@ http_regexp=Siden skal svare til regexp
 http_eregexp=Intet regulært udtryk for indtastet side, der skal matche
 http_none2=Ikke match
 http_ehead=Metoden HEAD-anmodning kan ikke bruges, når der kontrolleres for et regelmæssigt udtryk
+http_codes=Acceptable HTTP-statuskoder
+http_codes_def=Standard ($1)
+http_ecodes=Der er ikke indtastet nogen HTTP-koder at acceptere
+http_ecodes3=HTTP-koden skal være et trecifret tal
 
 ping_host=Vært for ping
 ping_wait=Tid til at vente på svar

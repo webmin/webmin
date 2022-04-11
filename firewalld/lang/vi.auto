@@ -30,6 +30,8 @@ index_return=danh sách các khu
 index_ezones=Không tìm thấy vùng FirewallD!
 index_none=Khu vực này chưa có bất kỳ cổng hoặc dịch vụ được phép nào.
 index_ifaces=Áp dụng quy tắc cho giao diện:
+index_ifaces_def=Tất cả các giao diện
+index_ifaces_sel=Các giao diện đã chọn:
 
 port_edit=Chỉnh sửa cổng
 port_create=Thêm cổng
@@ -90,6 +92,9 @@ delzone_edefault=Vùng mặc định không thể xóa
 delzone_rusure=Bạn có chắc chắn muốn xóa vùng $1, chứa $2 cổng và $3 dịch vụ không?
 
 defzone_err=Không thể tạo vùng mặc định
+
+richrule_iperr=địa chỉ IP không hợp lệ
+richrule_actionerr=Hành động không hợp lệ
 
 restart_err=Không thể áp dụng cấu hình
 

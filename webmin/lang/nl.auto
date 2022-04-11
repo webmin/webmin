@@ -148,6 +148,17 @@ testmail_sending=Bericht verzenden van $1 naar $2 ..
 testmail_done=.. bericht verzonden. Controleer de mailbox van het bestemmingsadres om te controleren of het daadwerkelijk is afgeleverd.
 testmail_failed=.. verzenden mislukt : $1
 
+web_rediruurl=Omleidings-URL na inloggen overschakelen
+web_redirdesc=Interne omleidings-URL overschrijft
+web_eredirurl='$1' bevat spaties en is geen geldige URL
+web_redirhost=Host omleiden
+web_eredirhost='$1' is geen geldige hostnaam
+web_redirport=Omleidingspoort
+web_redirpref=Omleidingsvoorvoegsel
+web_eredirpref=Voorvoegsel moet beginnen met slash
+web_eredirpref2=Voorvoegsel mag geen spaties bevatten
+web_redirssl=SSL omleiden
+
 webmincron_title=Geplande Webmin-functies
 webmincron_emodule=De Webmin Cron Jobs-module is niet geïnstalleerd!
 webmincron_module=Webmin-module

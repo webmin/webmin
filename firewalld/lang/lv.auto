@@ -30,6 +30,8 @@ index_return=zonu saraksts
 index_ezones=Neviena FirewallD zona nav atrasta.
 index_none=Šajā zonā vēl nav nevienas atļautas ostas vai pakalpojuma.
 index_ifaces=Pielietojiet noteikumus saskarnēm:
+index_ifaces_def=Visas saskarnes
+index_ifaces_sel=Atlasītās saskarnes:
 
 port_edit=Rediģēt ostu
 port_create=Pievienot ostu
@@ -90,6 +92,9 @@ delzone_edefault=Noklusējuma zonu nevar noņemt
 delzone_rusure=Vai tiešām vēlaties izdzēst zonu $1, kurā ir $2 porti un $3 pakalpojumi?
 
 defzone_err=Neizdevās padarīt zonu par noklusējuma
+
+richrule_iperr=Nederīga IP adrese
+richrule_actionerr=Nederīga darbība
 
 restart_err=Neizdevās piemērot konfigurāciju
 

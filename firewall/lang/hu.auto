@@ -23,6 +23,10 @@ desc_icmpv6-type=Az ICMP típusa $1
 desc_icmpv6-type!=Az ICMP típusa nem $1 
 desc_ctstate=a kapcsolat állapota $1 
 desc_ctstate!=a kapcsolat állapota nem $1 
+desc_match-set=$2 megfelel a $1 IP-készletnek
+desc_match-set!=$2 nem egyezik a $1 IP-készlettel
+desc_match-set_src=bejövő forgalom
+desc_match-set_dst=kimenő forgalom
 desc_args--match-set=A $2 a $1 IP-készletben található
 desc_src=forrás
 desc_dest=cél
@@ -31,5 +35,8 @@ redhat_einstalled=Nem található <tt>iptables (6)</tt> indítási művelet, ame
 
 edit_state_snat=Forrás NATd
 edit_state_dnat=NATd rendeltetési hely
+edit_matchset=Egyező IPset
+edit_matchsetsrc=a bejövő forgalomra
+edit_matchsetdst=a kimenő forgalomban
 
 add_enone=Nincs kiválasztott szerver!

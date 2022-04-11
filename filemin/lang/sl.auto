@@ -166,3 +166,4 @@ index_return=seznam datotek
 upload_dirs=Nalaganje imenika
 extract_uploaded=Ekstrakt stisnjen
 extract_cmd_not_avail=Datoteke $1 ni bilo mogoče ekstrahirati, ker manjka ukaz $2
+overwrite_existing=Prepiši obstoječe

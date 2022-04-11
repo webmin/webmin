@@ -166,3 +166,4 @@ index_return=danh sách hồ sơ
 upload_dirs=Tải lên thư mục
 extract_uploaded=Giải nén nén
 extract_cmd_not_avail=Không thể giải nén tệp $1 vì lệnh $2 bị thiếu
+overwrite_existing=Ghi đè Hiện có

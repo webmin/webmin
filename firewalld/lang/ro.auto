@@ -30,6 +30,8 @@ index_return=lista zonelor
 index_ezones=Nu au fost găsite zone FirewallD!
 index_none=Această zonă nu are încă porturi sau servicii permise.
 index_ifaces=Aplicați reguli interfețelor:
+index_ifaces_def=Toate interfețele
+index_ifaces_sel=Interfețe selectate:
 
 port_edit=Editare port
 port_create=Adăugați port
@@ -90,6 +92,9 @@ delzone_edefault=Zona implicită nu poate fi eliminată
 delzone_rusure=Sigur doriți să ștergeți zona $1, care conține $2 porturi și servicii $3 ?
 
 defzone_err=Nu a reușit să facă zona implicită
+
+richrule_iperr=Adresă IP nevalidă
+richrule_actionerr=Acțiune nevalidă
 
 restart_err=Eroare la aplicarea configurației
 

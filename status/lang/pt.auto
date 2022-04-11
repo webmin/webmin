@@ -216,6 +216,10 @@ http_regexp=A página deve corresponder à regexp
 http_eregexp=Nenhuma expressão regular para a página corresponder inserida
 http_none2=Não corresponde
 http_ehead=O método de solicitação HEAD não pode ser usado ao verificar uma expressão regular
+http_codes=Códigos de status HTTP aceitáveis
+http_codes_def=Padrão ($1)
+http_ecodes=Nenhum código HTTP para aceitar inserido
+http_ecodes3=O código HTTP deve ser um número de três dígitos
 
 ping_host=Host para executar ping
 ping_wait=Hora de esperar pela resposta

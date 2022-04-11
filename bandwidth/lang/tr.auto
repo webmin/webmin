@@ -41,6 +41,9 @@ index_efrom=Geçersiz başlangıç tarihi ve saati
 index_eto=Geçersiz bitiş tarihi ve saati
 index_err=Rapor oluşturulamadı
 index_usage=Ağ trafiği <font color=#ff0000>indirildi</font> ve <font color=#0000ff>yüklendi</font>
+index_in=İndirmek
+index_out=Yüklemek
+index_total=Toplam
 index_hhour=Saat
 index_hhost=evsahibi
 index_hday=Gün

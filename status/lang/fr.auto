@@ -1,3 +1,8 @@
+http_codes=Codes d'état HTTP acceptables
+http_codes_def=Par défaut ($1)
+http_ecodes=Aucun code HTTP à accepter saisi
+http_ecodes3=Le code HTTP doit être un nombre à trois chiffres
+
 ping_timeout=Délai d'attente après $1 secondes
 ping_resolv=Échec de la résolution du nom d'hôte
 

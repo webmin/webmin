@@ -71,6 +71,8 @@ session_handler=Cơ chế lưu trữ phiên
 session_files=Các tập tin
 session_mm=Trong trí nhớ
 session_users=Đã xác định người dùng
+session_redis=Redis
+session_memcache=MemcacheD
 session_path=Thư mục cho các tập tin phiên
 session_cookies=Cho phép sử dụng cookie để theo dõi phiên?
 session_only_cookies=Luôn sử dụng cookie để theo dõi phiên?
@@ -80,7 +82,6 @@ session_maxlife=Tuổi thọ phiên tối đa
 session_epath=Thư mục bị thiếu hoặc không hợp lệ cho các tệp phiên
 session_elife=Tuổi thọ cookie bị thiếu hoặc không hợp lệ
 session_emaxlife=Thiếu phiên tối đa hoặc không hợp lệ trọn đời
-session_eredis=Thiếu hoặc mở rộng redis mở rộng
 
 safe_title=Tùy chọn chế độ an toàn
 safe_header=Tùy chọn chế độ truy cập tệp an toàn

@@ -71,6 +71,8 @@ session_handler=Sesiju glabāšanas mehānisms
 session_files=Datnes
 session_mm=Atmiņā
 session_users=Lietotājs definēts
+session_redis=Redis
+session_memcache=MemcacheD
 session_path=Sesiju failu direktorijs
 session_cookies=Vai atļaut sesiju izsekošanai izmantot sīkfailus?
 session_only_cookies=Vai sesijas izsekošanai vienmēr izmantojat sīkfailus?
@@ -80,7 +82,6 @@ session_maxlife=Maksimālais sesijas ilgums
 session_epath=Trūkst vai nav derīgs sesiju failu direktorijs
 session_elife=Trūkst vai nav derīgs sīkfailu darbības laiks
 session_emaxlife=Trūkst vai nav derīgs sesijas ilgums
-session_eredis=Trūkst vai ir atspējots atkārtotās paplašināšanas paplašinājums
 
 safe_title=Drošā režīma opcijas
 safe_header=Drošas piekļuves failiem režīmi

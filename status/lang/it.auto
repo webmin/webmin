@@ -157,6 +157,10 @@ tcp_ealarm=Timeout di connessione mancante o non valido
 
 http_url=URL da richiedere
 http_ehead=Il metodo di richiesta HEAD non può essere utilizzato quando si verifica un'espressione regolare
+http_codes=Codici di stato HTTP accettabili
+http_codes_def=Predefinito ($1)
+http_ecodes=Nessun codice HTTP da accettare inserito
+http_ecodes3=Il codice HTTP deve essere un numero di tre cifre
 
 ping_host=Host per il ping
 ping_wait=È tempo di aspettare una risposta

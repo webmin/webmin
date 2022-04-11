@@ -166,3 +166,4 @@ index_return=ファイルリスト
 upload_dirs=ディレクトリのアップロード
 extract_uploaded=圧縮された抽出
 extract_cmd_not_avail=$2コマンドがないため、 $1ファイルを抽出できませんでした
+overwrite_existing=既存のものを上書きする

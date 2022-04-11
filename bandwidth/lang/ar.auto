@@ -41,6 +41,9 @@ index_efrom=تاريخ ووقت البدء غير صالحين
 index_eto=تاريخ ووقت انتهاء غير صالحين
 index_err=فشل في إنشاء التقرير
 index_usage=تم تنزيل حركة مرور الشبكة <font color=#ff0000></font> و <font color=#0000ff>التي تم تحميلها</font>
+index_in=تحميل
+index_out=تحميل
+index_total=المجموع
 index_hhour=ساعة
 index_hhost=مضيف
 index_hday=يوم

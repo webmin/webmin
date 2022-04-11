@@ -39,6 +39,8 @@ index_notify_users=Vir optrede deur gebruikers
 index_notify_email=Stuur e-pos aan
 index_notify_usub=Sluit gebruikersnaam by e-posonderwerp in?
 index_notify_msub=Sluit handeling by e-posonderwerp in?
+index_searchtab=Soek logs
+index_notifytab=E-pos kennisgewing
 index_searchdesc=Hierdie vorm kan gebruik word om te soek vir Webmin-aksies volgens gebruiker, module, datumreeks en lêers wat uitgevoer is.
 index_notifydesc=Gebruik hierdie vorm om e-poskennisgewings op te stel wanneer Webmin-aksies deur geselekteerde gebruikers of in gekose modules uitgevoer word.
 

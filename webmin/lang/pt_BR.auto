@@ -240,6 +240,16 @@ web_expirespaths=Tempos de cache do lado do cliente com base no caminho da URL
 web_expirespath=Expressão regular do caminho
 web_expirestime=Tempo de cache em segundos
 web_eexpires2=Tempo de cache do lado do cliente ausente ou não numérico na linha $1
+web_rediruurl=URL de redirecionamento do switch pós-login
+web_redirdesc=Substituições de URL de redirecionamento interno
+web_eredirurl='$1' contém espaços e não é um URL válido
+web_redirhost=Redireccionar anfitrião
+web_eredirhost='$1' não é um nome de host válido
+web_redirport=Porta de redirecionamento
+web_redirpref=Prefixo de redirecionamento
+web_eredirpref=O prefixo deve começar com uma barra
+web_eredirpref2=O prefixo não deve conter espaços
+web_redirssl=Redirecionar SSL
 
 webmincron_title=Funções agendadas do Webmin
 webmincron_emodule=O módulo Trabalhos Webmin Cron não está instalado!

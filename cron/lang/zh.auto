@@ -22,6 +22,12 @@ index_ok=搜索
 index_searchres=与 $1..相匹配的Cron作业
 index_reset=重置搜索。
 index_econfigcheck=Cron作业无法在您的系统上管理，因为模块配置无效： $1
+index_stop=停止 Cron 守护进程
+index_stopdesc=关闭运行计划 cron 作业的 <tt>crond</tt> 后台服务器进程。这将阻止命令在指定时间执行。
+index_start=启动 Cron 守护进程
+index_startdesc=启动运行计划 cron 作业的 <tt>crond</tt> 后台服务器进程。 <font color=red><b>这是在指定时间执行命令所必需的。</font></font>
+index_boot=启动 Cron 守护进程启动？
+index_bootdesc=更改此设置以启用或禁用在系统引导时启动计划的 cron 作业守护程序。
 
 edit_next=下次运行时间
 edit_comment=描述
@@ -60,6 +66,7 @@ acl_move=可以移动Cron职位吗？
 acl_kill=可以终止Cron工作吗？
 acl_hourly=将工作限制在每小时以下？
 acl_hourlydef=如在模块配置中设置
+acl_stop=可以停止和启动 Cron 守护进程吗？
 
 log_kill=$1的Cron作业已终止
 log_kill_l=已终止 $1的Cron作业“$2”
@@ -70,6 +77,10 @@ log_move=已将Cron作业移至 $1
 log_crons_delete=已删除 $1个Cron作业
 log_crons_disable=已停用 $1个Cron作业
 log_crons_enable=已启用 $1个Cron作业
+log_stop=停止 cron 守护进程
+log_start=启动 cron 守护进程
+log_bootup=在启动时启用 cron 守护进程
+log_bootdown=启动时禁用 cron 守护进程
 
 when_min=每一分钟
 when_hour=每小时每小时 $1
@@ -116,3 +127,9 @@ manual_ok=编辑
 manual_editing=使用下面的文本框编辑 $1中的Cron作业。注意，因为Webmin不会进行任何验证！
 manual_efile=所选文件无效！
 manual_ecannot=您无权手动编辑Cron作业
+
+stop_err=无法停止守护进程
+start_err=启动守护进程失败
+stop_ecannot=你不能停止守护进程
+start_ecannot=不允许您启动守护进程
+bootup_ecannot=您不允许在启动时启用守护程序

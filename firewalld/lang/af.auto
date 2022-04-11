@@ -30,6 +30,8 @@ index_return=lys van sones
 index_ezones=Geen FirewallD-sones gevind nie!
 index_none=Hierdie sone het nog geen toegelate hawens of dienste nie.
 index_ifaces=Pas reëls toe op koppelvlakke:
+index_ifaces_def=Alle koppelvlakke
+index_ifaces_sel=Geselekteerde koppelvlakke:
 
 port_edit=Wysig hawe
 port_create=Voeg hawe by
@@ -90,6 +92,9 @@ delzone_edefault=Die versteksone kan nie verwyder word nie
 delzone_rusure=Is u seker dat u die zone $1, wat $2 -poorte en $3 -dienste bevat, wil uitvee?
 
 defzone_err=Kon nie zone die verstek maak nie
+
+richrule_iperr=Ongeldige IP-adres
+richrule_actionerr=Ongeldige handeling
 
 restart_err=Kon nie konfigurasie toepas nie
 

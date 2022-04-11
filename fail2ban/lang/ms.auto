@@ -109,4 +109,23 @@ manual_efile=Fail terpilih bukan sebahagian daripada konfigurasi Fail2Ban!
 manual_err=Gagal mengedit fail konfigurasi
 manual_edata=Tiada kandungan fail konfigurasi yang dimasukkan
 
+status_title=Status Penjara Dan Tindakan
+status_title2=Status Penjara
+status_head_jail_name=nama penjara
+status_head_currently_failed=Pada masa ini gagal
+status_head_total_failed=Jumlah gagal
+status_head_currently_banned=Pada masa ini diharamkan
+status_head_total_banned=Jumlah dilarang
+status_head_banned_ip_list=Senarai IP yang diharamkan
+status_jail_unblock_ip=Alih keluar $1 daripada senarai yang dilarang
+status_jail_permblock_ip=Sekat IP ini secara kekal
+status_jail_unblock=Nyahsekat Semua IP untuk Penjara Terpilih
+status_jail_block=Sekat IP Diharamkan di Penjara Terpilih
+status_jail_noactive=Tiada penjara aktif didayakan lagi.
+status_err_set=Gagal menetapkan tindakan
+status_err_unblock=Gagal menyahsekat tindakan
+status_err_nojail=Tiada penjara telah dipilih
+status_err_unban=Tidak boleh menyahlarang $1 alamat IP
+status_err_ban=Tidak boleh melarang $1 alamat IP
+
 syslog_logtarget=Log tindakan Fail2Ban

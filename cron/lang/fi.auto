@@ -31,6 +31,12 @@ index_ok=Hae
 index_searchres=Cron-työt, jotka vastaavat $1 ..
 index_reset=Nollaa haku.
 index_econfigcheck=Cron-töitä ei voida hallita järjestelmässäsi, koska moduulin kokoonpano ei ole kelvollinen : $1 
+index_stop=Pysäytä Cron Daemon
+index_stopdesc=Sulje <tt>crond</tt>-taustapalvelinprosessi, joka suorittaa ajoitetut cron-työt. Tämä estää komentojen suorittamisen määritettyinä aikoina.
+index_start=Käynnistä Cron Daemon
+index_startdesc=Käynnistä <tt>crond</tt>-taustapalvelinprosessi, joka suorittaa ajoitetut cron-työt. <font color=red><b>Tätä tarvitaan, jotta komennot voidaan suorittaa määritettyinä aikoina.</font></font>
+index_boot=Aloitetaanko Cron Daemon Boot?
+index_bootdesc=Muuta tätä asetusta ottaaksesi käyttöön tai poistaaksesi ajoitetun cron-työdemonin käynnistämisen järjestelmän käynnistyksen yhteydessä.
 
 edit_title=Muokkaa Cron Job
 create_title=Luo Cron Job
@@ -128,6 +134,7 @@ acl_move=Voiko Cron siirtää työpaikkoja?
 acl_kill=Voiko lopettaa Cronin työpaikat?
 acl_hourly=Rajoita työpaikkoja korkeintaan tunti?
 acl_hourlydef=Kuten moduulin kokoonpanossa asetettu
+acl_stop=Voiko Cron-daemonin pysäyttää ja käynnistää?
 
 log_modify=Muokattu Cron-työ $1 : lle
 log_modify_l=Muokattu Cron-työ "$2" $1 : lle
@@ -146,6 +153,10 @@ log_move=Siirrettiin Cron-työpaikka $1 : lle
 log_crons_delete=Poistettu $1 Cron työpaikat
 log_crons_disable=Vammaiset $1 Cron -työt
 log_crons_enable=Käytössä $1 Cron -työt
+log_stop=Cron-daemon pysäytetty
+log_start=Aloitti cron-daemonin
+log_bootup=Cron daemon käytössä käynnistyksen yhteydessä
+log_bootdown=Cron-daemon poistettu käytöstä käynnistyksen yhteydessä
 
 ecopy=Uudessa Cron-kokoonpanossa havaittiin virhe: $1 $2 
 
@@ -194,3 +205,9 @@ manual_ok=Muokata
 manual_editing=Käytä alla olevaa tekstikenttää muokataksesi Cron-töitä $1 : ssä. Ole varovainen, koska Webmin ei tee validointia!
 manual_efile=Valittu tiedosto ei kelpaa!
 manual_ecannot=Et voi muokata cron-töitä manuaalisesti
+
+stop_err=Demonin pysäyttäminen epäonnistui
+start_err=Daemonin käynnistäminen epäonnistui
+stop_ecannot=Sinulla ei ole lupaa pysäyttää demonia
+start_ecannot=Et saa käynnistää demonia
+bootup_ecannot=Et voi ottaa demonia käyttöön käynnistyksen yhteydessä

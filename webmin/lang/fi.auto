@@ -1080,6 +1080,16 @@ web_expirespaths=Asiakaspuolen välimuistiajat URL-polun perusteella
 web_expirespath=Polku säännöllinen lauseke
 web_expirestime=Välimuistiaika sekunteina
 web_eexpires2=Puuttuva tai ei-numeerinen asiakaspuolen välimuistin aika rivillä $1
+web_rediruurl=Kirjautumisen jälkeinen kytkimen uudelleenohjauksen URL-osoite
+web_redirdesc=Sisäisen uudelleenohjauksen URL-osoitteen ohitukset
+web_eredirurl=$1 sisältää välilyöntejä, eikä se ole kelvollinen URL-osoite
+web_redirhost=Uudelleenohjaa isäntä
+web_eredirhost='$1' ei ole kelvollinen isäntänimi
+web_redirport=Uudelleenohjaa portti
+web_redirpref=Uudelleenohjauksen etuliite
+web_eredirpref=Etuliitteen tulee alkaa vinoviivalla
+web_eredirpref2=Etuliite ei saa sisältää välilyöntejä
+web_redirssl=Uudelleenohjaa SSL
 
 webmincron_title=Webminin ajoitetut toiminnot
 webmincron_emodule=Webmin Cron Jobs -moduulia ei ole asennettu!

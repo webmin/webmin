@@ -31,6 +31,11 @@ sched_subject1=경고 텍스트 (본문은 비워 둡니다)
 sched_subject2=맞춤 텍스트
 sched_esubject=SMS 메시지 제목 누락
 
+http_codes=허용되는 HTTP 상태 코드
+http_codes_def=기본값($1)
+http_ecodes=수락할 HTTP 코드가 입력되지 않았습니다
+http_ecodes3=HTTP 코드는 3자리 숫자여야 합니다
+
 ping_timeout=$1초 후 시간 초과
 ping_resolv=호스트 이름을 확인하지 못했습니다
 

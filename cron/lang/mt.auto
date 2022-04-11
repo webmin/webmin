@@ -31,6 +31,12 @@ index_ok=Fittex
 index_searchres=Impjiegi Cron li jaqblu ma ' $1 ..
 index_reset=Irrisettja t-tfittxija.
 index_econfigcheck=L-impjiegi Cron ma jistgħux jiġu amministrati fis-sistema tiegħek billi l-konfigurazzjoni tal-modulu mhix valida : $1 
+index_stop=Waqqaf Cron Daemon
+index_stopdesc=Itfi l-proċess tas-server ta' l-isfond <tt>crond</tt> li jmexxi impjiegi cron skedati. Dan jipprevjeni l-kmandi milli jitwettqu fil-ħinijiet speċifikati tagħhom.
+index_start=Ibda Cron Daemon
+index_startdesc=Ibda l-proċess tas-server ta' l-isfond <tt>crond</tt> li jmexxi impjiegi cron skedati. <font color=red><b>Dan huwa meħtieġ biex il-kmandi jiġu eżegwiti fil-ħinijiet speċifikati tagħhom.</font></font>
+index_boot=Ibda Cron Daemon Boot?
+index_bootdesc=Ibdel dan l-issettjar biex tippermetti jew tiddiżattiva l-bidu tad-daemon tal-impjiegi cron skedat fil-ħin tal-ibbutjar tas-sistema.
 
 edit_title=Editja Cron Job
 create_title=Oħloq Cron Job
@@ -128,6 +134,7 @@ acl_move=Tista 'tiċċaqlaq impjieg Cron?
 acl_kill=Tista 'ttemm l-impjiegi ta' Cron?
 acl_hourly=Tillimita l-impjiegi għal mhux aktar minn siegħa?
 acl_hourlydef=Kif issettjat fil-Modulu Config
+acl_stop=Jista 'jieqaf u jibda d-daemon Cron?
 
 log_modify=Impjieg Cron modifikat għal $1 
 log_modify_l=Xogħol Cron modifikat "$2" għal $1 
@@ -146,6 +153,10 @@ log_move=Xogħol Cron imċaqlaq għal $1
 log_crons_delete=Impjiegi imħassra $1 Cron
 log_crons_disable=Impjiegi b'diżabilità $1 Cron
 log_crons_enable=Impjegat impjiegi $1 Cron
+log_stop=Cron daemon waqaf
+log_start=Bdiet cron daemon
+log_bootup=Ippermettiet cron daemon fil-boot
+log_bootdown=Cron daemon diżattivat fil-boot
 
 ecopy=Ġie skopert żball fil-konfigurazzjoni Cron il-ġdida: $1 $2 
 
@@ -194,3 +205,9 @@ manual_ok=Editja
 manual_editing=Uża l-kaxxa tat-test hawn taħt biex teditja l-impjiegi ta 'Cron fi $1. Oqgħod attent, peress li l-ebda validazzjoni ma ssir mill-Webmin!
 manual_efile=Fajl magħżul mhux validu!
 manual_ecannot=M'għandekx permess teditja manwalment l-impjiegi cron
+
+stop_err=Naqas milli jwaqqaf id-daemon
+start_err=Naqas milli jibda d-daemon
+stop_ecannot=M'intix permess li twaqqaf id-daemon
+start_ecannot=M'intix permess li tibda d-daemon
+bootup_ecannot=M'intix permess li tattiva d-daemon at boot

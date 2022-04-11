@@ -29,6 +29,17 @@ sendmail_url_def=Standard ($1)
 sendmail_url_custom=eigene URL
 sendmail_eurl=Fehlende oder ungültige benutzerdefinierte URL
 
+web_rediruurl=Umleitungs-URL für Post-Login-Schalter
+web_redirdesc=Interne Umleitungs-URL-Überschreibungen
+web_eredirurl=„$1“ enthält Leerzeichen und ist keine gültige URL
+web_redirhost=Host umleiten
+web_eredirhost='$1' ist kein gültiger Hostname
+web_redirport=Port umleiten
+web_redirpref=Umleitungspräfix
+web_eredirpref=Präfix muss mit Schrägstrich beginnen
+web_eredirpref2=Präfix darf keine Leerzeichen enthalten
+web_redirssl=SSL umleiten
+
 letsencrypt_eacmedns=Nur der offizielle Let's Encrypt-Client unterstützt die DNS-basierte Validierung
 
 alert_hide=Warnung ausblenden

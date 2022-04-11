@@ -31,6 +31,10 @@ edit_edmarcpct=Percentage berichten moet een geheel getal tussen 0 en 100 zijn
 edit_edmarcrua=Totaal geaggregeerd feedback-adres ontbreekt
 edit_edmarcruf=Forensisch informatieadres ontbreekt
 edit_ecaavalue2=Ontbrekende of ongeldig ogende domeinnaam
+edit_enaptrvalue0=Recordvolgorde moet een nummer zijn
+edit_enaptrvalue1=Recordvoorkeur moet een getal zijn
+edit_enaptrvalue3=Ontbrekend veld voor services
+edit_enaptrvalue4=Slechts één van de regexp en vervangende velden kan worden ingesteld
 
 text_rawformat=Deze zone heeft een ruwe binaire indeling en kan dus niet als tekst worden weergegeven.
 
@@ -39,18 +43,21 @@ type_TLSA=SSL-certificaat
 type_SSHFP=SSH openbare sleutel
 type_DMARC=DMARC
 type_CAA=Certificeringsinstantie
+type_NAPTR=Naam Autoriteit Pointer
 
 edit_DMARC=DMARC
 edit_NSEC3PARAM=DNSSEC-parameters
 edit_TLSA=SSL-certificaat
 edit_SSHFP=SSH openbare sleutel
 edit_CAA=Certificeringsinstantie
+edit_NAPTR=Naam Autoriteit Pointer
 
 recs_DMARC=DMARC
 recs_NSEC3PARAM=DNSSEC-parameters
 recs_TLSA=SSL-certificaat
 recs_SSHFP=SSH openbare sleutel
 recs_CAA=Certificeringsinstantie
+recs_NAPTR=Naam Autoriteit
 
 value_TLSA1=Certificaat gebruik
 value_TLSA2=Certificaatselector
@@ -89,6 +96,21 @@ value_CAA3=CA-domeinnaam
 value_caa_issue=Enkel domein cert
 value_caa_issuewild=Wildcard cert
 value_caa_iodef=URL van beleidsschending
++value_dmarcri=Rapportage-interval
++value_dmarcrf=Rapportformaat
++value_dmarcafrf=Verificatiefoutrapportageformaat
+value_NAPTR1=Volgorde
+value_NAPTR2=Voorkeur
+value_NAPTR3=vlaggen
+value_NAPTR4=Diensten
+value_NAPTR5=Regexp
+value_NAPTR5_def=Geen (gebruik vervanging)
+value_NAPTR6=Vervanging
+value_NAPTR6_def=Geen (gebruik regexp)
+value_NAPTR3_S=SRV-record opzoeken volgende
+value_NAPTR3_A=Zoek A of AAAA record volgende op
+value_NAPTR3_U=Gebruik regexp-uitvoer volgende
+value_NAPTR3_P=Protocolspecifieke actie
 
 tlsa_usage0=Certificaat autoriteit
 tlsa_usage1=Einde entiteit
@@ -129,6 +151,7 @@ dnssec_secs=seconden
 
 zonekey_publicfile=Bestand met openbare sleutel : $1
 zonekey_privatefile=Privésleutelbestand : $1
+zonekey_algorithm=DNSSEC-algoritme : $1
 zonekey_ds=DS record voor bovenliggende zone :
 zonekey_eprivate=De privésleutel die aan deze zone is gekoppeld, kon niet worden gelezen : $1
 

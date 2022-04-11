@@ -21,6 +21,8 @@ index_notify_users=Pre akcie používateľov
 index_notify_email=Poslať email na
 index_notify_usub=Zahrnúť používateľské meno do predmetu e-mailu?
 index_notify_msub=Zahrnúť akciu do predmetu e-mailu?
+index_searchtab=Hľadanie denníkov
+index_notifytab=Upozornenie e-mailom
 index_searchdesc=Tento formulár možno použiť na vyhľadávanie akcií Webmin podľa používateľa, modulu, rozsahu dátumov a vykonaných súborov.
 index_notifydesc=Tento formulár použite na konfiguráciu e-mailových upozornení, keď sú akcie Webminu vykonávané vybranými používateľmi alebo vo vybraných moduloch.
 

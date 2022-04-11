@@ -39,6 +39,8 @@ index_notify_users=Til handlinger fra brugere
 index_notify_email=Send e-mail til
 index_notify_usub=Vil du inkludere brugernavn i e-mail-emnet?
 index_notify_msub=Vil du inkludere handling i e-mail-emnet?
+index_searchtab=Søg i logs
+index_notifytab=E-mail notifikation
 index_searchdesc=Denne formular kan bruges til at søge efter Webmin-handlinger efter bruger, modul, datointerval og udførte filer.
 index_notifydesc=Brug denne formular til at konfigurere e-mail-meddelelser, når Webmin-handlinger udføres af udvalgte brugere eller i valgte moduler.
 

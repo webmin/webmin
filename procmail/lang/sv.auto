@@ -2,6 +2,7 @@ index_title=Procmail-postfilter
 index_procmail=Procmail-postfilter
 index_desc_other=Procmail-åtgärderna nedan från $1 gäller för <b>all</b> e-post som levereras till användare på ditt system. De kommer emellertid endast att användas om Procmail är installerat och din e-postserver är konfigurerad för att använda den.
 index_mserr=Varning - alla regler som definieras nedan kommer inte att användas : $1 
+index_virtualmin=Varning - ditt systems procmail-konfiguration skapades av Virtualmin för att tillåta skräppost- och virusfiltrering per domän. Att ändra det här kan störa Virtualmins funktionalitet.
 index_action=Åtgärd att vidta
 index_conds=Betingelser
 index_move=Flytta

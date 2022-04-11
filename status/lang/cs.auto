@@ -35,6 +35,11 @@ sched_subject1=Varovný text (nechte tělo prázdné)
 sched_subject2=Vlastní text
 sched_esubject=Chybí předmět zprávy SMS
 
+http_codes=Přijatelné stavové kódy HTTP
+http_codes_def=Výchozí ($1)
+http_ecodes=Nebyly zadány žádné kódy HTTP k přijetí
+http_ecodes3=HTTP kód musí být třímístné číslo
+
 ping_timeout=Časový limit po $1 sekundách
 ping_resolv=Nepodařilo se vyřešit název hostitele
 

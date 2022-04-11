@@ -41,6 +41,9 @@ index_efrom=Ugyldig startdato og tid
 index_eto=Ugyldig slutdato og tid
 index_err=Rapporten blev ikke genereret
 index_usage=Netværkstrafik <font color=#ff0000>downloadet</font> og <font color=#0000ff>uploadet</font>
+index_in=Hent
+index_out=Upload
+index_total=i alt
 index_hhour=Time
 index_hhost=Vært
 index_hday=Dag

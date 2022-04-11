@@ -166,3 +166,4 @@ index_return=fillista
 upload_dirs=Kataloguppladdning
 extract_uploaded=Extrahera komprimerat
 extract_cmd_not_avail=Det gick inte att extrahera filen $1 eftersom kommandot $2 saknas
+overwrite_existing=Skriv över befintlig

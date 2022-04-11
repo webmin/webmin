@@ -41,6 +41,9 @@ index_efrom=Невалидна начална дата и час
 index_eto=Невалидна крайна дата и час
 index_err=Неуспешно генериране на отчет
 index_usage=Мрежов трафик <font color=#ff0000>изтеглен</font> и <font color=#0000ff>качен</font>
+index_in=Изтегли
+index_out=Качване
+index_total=Обща сума
 index_hhour=час
 index_hhost=домакин
 index_hday=ден

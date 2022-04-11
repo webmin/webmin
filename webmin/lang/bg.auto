@@ -1080,6 +1080,16 @@ web_expirespaths=Време на кеш от страна на клиента в
 web_expirespath=Път редовно изразяване
 web_expirestime=Време за кеширане в секунди
 web_eexpires2=Липсващо или нечестотно време на кеширане от страна на клиента в ред $1
+web_rediruurl=URL за пренасочване на превключвател след влизане
+web_redirdesc=URL адресът за вътрешно пренасочване отменя
+web_eredirurl=„$1“ съдържа интервали и не е валиден URL
+web_redirhost=Пренасочване на хост
+web_eredirhost=„$1“ не е валидно име на хост
+web_redirport=Пренасочване на порт
+web_redirpref=Префикс за пренасочване
+web_eredirpref=Префиксът трябва да започва с наклонена черта
+web_eredirpref2=Префиксът не трябва да съдържа интервали
+web_redirssl=Пренасочване на SSL
 
 webmincron_title=Планирани функции на Webmin
 webmincron_emodule=Модулът Webmin Cron Jobs не е инсталиран!

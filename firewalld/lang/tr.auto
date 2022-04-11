@@ -30,6 +30,8 @@ index_return=bölge listesi
 index_ezones=FirewallD bölgesi bulunamadı!
 index_none=Bu bölgede henüz izin verilen bağlantı noktası veya hizmet yok.
 index_ifaces=Arabirimlere kurallar uygulayın:
+index_ifaces_def=Tüm arayüzler
+index_ifaces_sel=Seçilen arayüzler:
 
 port_edit=Bağlantı Noktasını Düzenle
 port_create=Bağlantı Noktası Ekle
@@ -90,6 +92,9 @@ delzone_edefault=Varsayılan bölge kaldırılamaz
 delzone_rusure=$2 bağlantı noktası ve $3 hizmetini içeren $1 bölgesini silmek istediğinizden emin misiniz?
 
 defzone_err=Bölge varsayılan olarak ayarlanamadı
+
+richrule_iperr=Geçersiz IP adresi
+richrule_actionerr=Geçersiz eylem
 
 restart_err=Yapılandırma uygulanamadı
 

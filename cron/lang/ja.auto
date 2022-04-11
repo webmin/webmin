@@ -19,6 +19,12 @@ index_ok=探す
 index_searchres=$1に一致するCronジョブ ..
 index_reset=検索をリセットします。
 index_econfigcheck=モジュール構成が無効であるため、cronジョブをシステムで管理できません： $1
+index_stop=cronデーモンを停止します
+index_stopdesc=スケジュールされたcronジョブを実行する<tt>crond</tt>バックグラウンドサーバープロセスをシャットダウンします。これにより、コマンドが指定された時間に実行されなくなります。
+index_start=cronデーモンを起動します
+index_startdesc=スケジュールされたcronジョブを実行する<tt>crond</tt>バックグラウンドサーバープロセスを起動します。 <font color=red><b>これは、コマンドを指定された時間に実行するために必要です。</font> </font>
+index_boot=cronデーモンブートを開始しますか？
+index_bootdesc=この設定を変更して、システムの起動時にスケジュールされたcronジョブデーモンの開始を有効または無効にします。
 
 edit_next=次回の実行
 edit_comment=説明
@@ -47,12 +53,17 @@ acl_move=Cronジョブを移動できますか？
 acl_kill=Cronジョブを終了できますか？
 acl_hourly=ジョブを最大1時間に制限しますか？
 acl_hourlydef=Module Configで設定されたとおり
+acl_stop=Cronデーモンを停止および開始できますか？
 
 log_kill=$1のCronジョブを終了しました
 log_kill_l=$1のCronジョブ「$2」を終了しました
 log_crons_delete=$1 Cronジョブを削除しました
 log_crons_disable=$1 Cronジョブを無効にしました
 log_crons_enable=$1 Cronジョブを有効にしました
+log_stop=cronデーモンを停止しました
+log_start=cronデーモンを開始しました
+log_bootup=起動時にcronデーモンを有効にしました
+log_bootdown=起動時にcronデーモンを無効にしました
 
 when_interval=$1秒ごと
 when_boot=起動時
@@ -90,3 +101,9 @@ manual_ok=編集
 manual_editing=以下のテキストボックスを使用して、 $1のCronジョブを編集します。 Webminによる検証は行われないため、注意してください！
 manual_efile=選択したファイルは無効です！
 manual_ecannot=cronジョブを手動で編集することはできません
+
+stop_err=デーモンの停止に失敗しました
+start_err=デーモンの起動に失敗しました
+stop_ecannot=デーモンを停止することは許可されていません
+start_ecannot=デーモンを起動することは許可されていません
+bootup_ecannot=起動時にデーモンを有効にすることは許可されていません

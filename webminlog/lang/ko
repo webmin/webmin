@@ -11,7 +11,6 @@ index_yesterday=어제만
 index_week=지난 일주일 간
 index_time=$1 및 $2 사이
 index_search=검색
-
 index_return=검색 양식
 index_nolog=<b>참고</b> - <a href='$1'>Webmin에 로깅</a>이 현재 사용 불능으로 설정되어 있으므로 동작 로그를 검색해도 결과가 생성되지 않습니다.
 index_nologfiles=<b>참고</b> - <a href='$1'>파일 변경 내용 로그</a>가 현재 사용 불능으로 설정되어 있으므로 로그된 동작의 정보에는 변경된 파일이나 실행된 명령이 포함되지 않습니다.
@@ -27,6 +26,7 @@ index_dall=모든 변경 사항
 index_diff=다음이 포함된 변경
 index_stimes=동작 기간
 index_shost=Webmin 서버 소스
+
 search_title=검색 결과
 search_date=날짜
 search_time=시간

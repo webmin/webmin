@@ -31,6 +31,12 @@ index_ok=Search
 index_searchres=$1 datozen Cron lanak.
 index_reset=Bilaketa berrezarri.
 index_econfigcheck=Cron lanak ezin dira zure sisteman kudeatu, moduluaren konfigurazioa ez baita baliozkoa : $1 
+index_stop=Gelditu Cron Daemon
+index_stopdesc=Itzali programatutako cron lanak exekutatzen dituen <tt>crond</tt> atzeko zerbitzariaren prozesua. Honek aginduak zehaztutako orduetan exekutatzea eragotziko du.
+index_start=Hasi Cron Daemon
+index_startdesc=Hasi programatutako cron lanak exekutatzen dituen <tt>crond</tt> atzeko planoko zerbitzariaren prozesua. <font color=red><b>Hau beharrezkoa da komandoak zehaztutako unean exekutatzeko.</font></font>
+index_boot=Hasi Cron Daemon Boot?
+index_bootdesc=Aldatu ezarpen hau sistemaren abiaraztean programatutako cron jobs daemon abiaraztea gaitzeko edo desgaitzeko.
 
 edit_title=Editatu Cron lana
 create_title=Sortu Cron lana
@@ -128,6 +134,7 @@ acl_move=Cron lanpostuak mugi ditzake?
 acl_kill=Cron lanak amaitu al ditzake?
 acl_hourly=Lanpostuak ordu gehienez mugatu?
 acl_hourlydef=Moduluen konfigurazioan ezartzen den bezala
+acl_stop=Cron deabrua gelditu eta abiarazi al daiteke?
 
 log_modify=$1 erako Cron lana aldatu da
 log_modify_l=Cron lana "$2" aldatua $1 erako
@@ -146,6 +153,10 @@ log_move=Cron lana $1 mugitu da
 log_crons_delete=$1 Cron lanak ezabatu dira
 log_crons_disable=$1 Cron lan ezgaitu
 log_crons_enable=$1 Cron lan gaituta daude
+log_stop=Cron deabrua gelditu da
+log_start=Cron deabrua hasi da
+log_bootup=Abioan cron daemon gaituta dago
+log_bootdown=Abioan cron daemon desgaituta dago
 
 ecopy=Errore bat antzeman da Cron konfigurazio berrian: $1 $2 
 
@@ -194,3 +205,9 @@ manual_ok=Editatu
 manual_editing=Erabili beheko testu koadroa Cron lanak $1 editatzeko. Kontuz ibili, ez baitu balioztapenik egingo Webmin-ek!
 manual_efile=Hautatutako fitxategia ez da baliozkoa!
 manual_ecannot=Ez duzu baimendu cron lanak eskuz editatzea
+
+stop_err=Ezin izan da deabrua gelditu
+start_err=Ezin izan da abiarazi deabrua
+stop_ecannot=Ezin duzu deabrua gelditzeko baimenik
+start_ecannot=Ez duzu baimenik deabrua abiarazteko
+bootup_ecannot=Ez duzu baimenik deabrua abiaraztean gaitzeko

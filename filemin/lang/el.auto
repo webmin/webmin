@@ -166,3 +166,4 @@ index_return=λίστα αρχείων
 upload_dirs=Μεταφόρτωση καταλόγου
 extract_uploaded=Εκχύλισμα Συμπιεσμένο
 extract_cmd_not_avail=Δεν ήταν δυνατή η εξαγωγή του αρχείου $1 καθώς η εντολή $2 λείπει
+overwrite_existing=Αντικατάσταση υπάρχοντος

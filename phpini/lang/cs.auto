@@ -4,7 +4,8 @@ list_efile=Soubor, který chcete upravit, musí být absolutní cesta
 list_format_ini=Formát INI
 list_format_fpm=Formát FPM
 
-session_eredis=Chybějící nebo deaktivované rozšíření redis
+session_redis=Redis
+session_memcache=MemcacheD
 
 misc_include=Povolit otevření dálkového Zahrnuje?
 misc_path=Informace o opravné cestě CGI?

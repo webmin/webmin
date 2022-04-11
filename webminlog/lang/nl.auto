@@ -7,6 +7,8 @@ index_notify_users=Voor acties door gebruikers
 index_notify_email=Stuur een email naar
 index_notify_usub=Gebruikersnaam opnemen in e-mailonderwerp?
 index_notify_msub=Actie opnemen in e-mailonderwerp?
+index_searchtab=Logboeken zoeken
+index_notifytab=E-mail notificatie
 index_searchdesc=Dit formulier kan worden gebruikt om te zoeken naar Webmin-acties op gebruiker, module, datumbereik en uitgevoerde bestanden.
 index_notifydesc=Gebruik dit formulier om e-mailmeldingen te configureren wanneer Webmin-acties worden uitgevoerd door geselecteerde gebruikers of in gekozen modules.
 

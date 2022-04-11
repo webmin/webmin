@@ -39,6 +39,8 @@ index_notify_users=Za dejanja uporabnikov
 index_notify_email=Pošlji e-pošto na
 index_notify_usub=Želite vključiti uporabniško ime v zadevo e-pošte?
 index_notify_msub=Ali želite v zadevo e-pošte vključiti dejanje?
+index_searchtab=Išči dnevnike
+index_notifytab=E-poštno obvestilo
 index_searchdesc=Ta obrazec se lahko uporablja za iskanje dejanj Webmin po uporabniku, modulu, časovnem obdobju in izvedenih datotekah.
 index_notifydesc=Uporabite ta obrazec za konfiguriranje e-poštnih obvestil, ko dejanja Webmin izvajajo izbrani uporabniki ali v izbranih modulih.
 

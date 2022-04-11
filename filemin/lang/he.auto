@@ -166,3 +166,4 @@ index_return=רישום קבצים
 upload_dirs=העלאת ספריה
 extract_uploaded=תמצית דחוסה
 extract_cmd_not_avail=לא ניתן היה לחלץ קובץ $1 מכיוון שהפקודה $2 חסרה
+overwrite_existing=החלף קיים

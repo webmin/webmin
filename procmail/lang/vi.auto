@@ -2,6 +2,7 @@ index_title=Bộ lọc thư Procmail
 index_procmail=Bộ lọc thư Procmail
 index_desc_other=Các hành động procmail bên dưới từ $1 sẽ áp dụng cho <b>tất cả</b> email được gửi cho người dùng trên hệ thống của bạn. Tuy nhiên, chúng sẽ chỉ được sử dụng nếu Procmail được cài đặt và máy chủ thư của bạn được cấu hình để sử dụng nó.
 index_mserr=Cảnh báo - mọi quy tắc được xác định bên dưới sẽ không được sử dụng : $1 
+index_virtualmin=Cảnh báo - cấu hình procmail của hệ thống của bạn được tạo bởi Virtualmin để cho phép lọc vi-rút và thư rác trên mỗi miền. Thay đổi nó ở đây có thể ảnh hưởng đến chức năng của Virtualmin.
 index_action=Hành động để lấy
 index_conds=Điều kiện
 index_move=Di chuyển
