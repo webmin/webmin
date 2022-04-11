@@ -33,10 +33,6 @@ index_ifaces=Pas regels toe op interfaces:
 index_ifaces_def=Alle interfaces
 index_ifaces_sel=Geselecteerde interfaces:
 index_ifaces_apply=Toepassen
-index_listrules=FirewallD-regels weergeven
-index_restart_firewalld=Herlaad FirewallD
-index_restart_firewallddesc=Laad de FirewallD-server opnieuw en pas de regels toe die permanent zijn gemaakt.
-index_listrules_restartdesc=Vermeld details over bestaande uitgebreide en directe FirewallD-regels in zone $1.
 
 port_edit=Poort bewerken
 port_create=Poort toevoegen
@@ -98,6 +94,10 @@ delzone_rusure=Weet u zeker dat u zone $1 wilt verwijderen, die $2 poorten en $3
 
 defzone_err=Kan zone niet als standaard instellen
 
+index_listrules=FirewallD-regels weergeven
+index_restart_firewalld=Herlaad FirewallD
+index_restart_firewallddesc=Laad de FirewallD-server opnieuw en pas de regels toe die permanent zijn gemaakt.
+index_listrules_restartdesc=Vermeld details over bestaande uitgebreide en directe FirewallD-regels in zone $1.
 list_rule_iperr=Ongeldig IP-adres
 list_rule_actionerr=Ongeldige actie
 list_rules_title=FirewallD-regels

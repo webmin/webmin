@@ -33,10 +33,6 @@ index_ifaces=Aplikatu arauak interfazeei:
 index_ifaces_def=Interfaze guztiak
 index_ifaces_sel=Hautatutako interfazeak:
 index_ifaces_apply=Aplikatu
-index_listrules=Zerrendatu FirewallD Arauak
-index_restart_firewalld=Berriz kargatu FirewallD
-index_restart_firewallddesc=Berriz kargatu FirewallD zerbitzaria eta aplikatu betirako sortu ziren arauak.
-index_listrules_restartdesc=Zerrendatu lehendik dauden FirewallD arau aberats eta zuzenei buruzko xehetasunak $1 zonan.
 
 port_edit=Editatu Portua
 port_create=Gehitu portua
@@ -98,6 +94,10 @@ delzone_rusure=Ziur al zaude $2 ataka eta $3 zerbitzu biltzen dituen $1 zona eza
 
 defzone_err=Ezin izan da eremua lehenetsi
 
+index_listrules=Zerrendatu FirewallD Arauak
+index_restart_firewalld=Berriz kargatu FirewallD
+index_restart_firewallddesc=Berriz kargatu FirewallD zerbitzaria eta aplikatu betirako sortu ziren arauak.
+index_listrules_restartdesc=Zerrendatu lehendik dauden FirewallD arau aberats eta zuzenei buruzko xehetasunak $1 zonan.
 list_rule_iperr=IP helbide baliogabea
 list_rule_actionerr=Ekintza baliogabea
 list_rules_title=FirewallD Arauak

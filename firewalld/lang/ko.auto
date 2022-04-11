@@ -33,10 +33,6 @@ index_ifaces=인터페이스에 규칙을 적용하십시오.
 index_ifaces_def=모든 인터페이스
 index_ifaces_sel=선택한 인터페이스:
 index_ifaces_apply=적용하다
-index_listrules=FirewallD 규칙 나열
-index_restart_firewalld=방화벽 새로고침D
-index_restart_firewallddesc=FirewallD 서버를 다시 로드하고 영구적으로 생성된 규칙을 적용합니다.
-index_listrules_restartdesc=$1 영역의 기존 풍부하고 직접적인 FirewallD 규칙에 대한 세부 정보를 나열합니다.
 
 port_edit=포트 편집
 port_create=포트 추가
@@ -98,6 +94,10 @@ delzone_rusure=$2 포트와 $3 서비스가 포함 된 $1 영역을 삭제 하�
 
 defzone_err=영역을 기본값으로 설정하지 못했습니다
 
+index_listrules=FirewallD 규칙 나열
+index_restart_firewalld=방화벽 새로고침D
+index_restart_firewallddesc=FirewallD 서버를 다시 로드하고 영구적으로 생성된 규칙을 적용합니다.
+index_listrules_restartdesc=$1 영역의 기존 풍부하고 직접적인 FirewallD 규칙에 대한 세부 정보를 나열합니다.
 list_rule_iperr=잘못된 IP 주소
 list_rule_actionerr=잘못된 작업
 list_rules_title=FirewallD 규칙

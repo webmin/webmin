@@ -33,10 +33,6 @@ index_ifaces=Pas reëls toe op koppelvlakke:
 index_ifaces_def=Alle koppelvlakke
 index_ifaces_sel=Geselekteerde koppelvlakke:
 index_ifaces_apply=Doen aansoek
-index_listrules=Lys FirewallD-reëls
-index_restart_firewalld=Herlaai FirewallD
-index_restart_firewallddesc=Herlaai die FirewallD-bediener en pas die reëls toe wat permanent geskep is.
-index_listrules_restartdesc=Lys besonderhede oor bestaande ryk en direkte FirewallD-reëls in $1-sone.
 
 port_edit=Wysig hawe
 port_create=Voeg hawe by
@@ -98,6 +94,10 @@ delzone_rusure=Is u seker dat u die zone $1, wat $2 -poorte en $3 -dienste bevat
 
 defzone_err=Kon nie zone die verstek maak nie
 
+index_listrules=Lys FirewallD-reëls
+index_restart_firewalld=Herlaai FirewallD
+index_restart_firewallddesc=Herlaai die FirewallD-bediener en pas die reëls toe wat permanent geskep is.
+index_listrules_restartdesc=Lys besonderhede oor bestaande ryk en direkte FirewallD-reëls in $1-sone.
 list_rule_iperr=Ongeldige IP-adres
 list_rule_actionerr=Ongeldige handeling
 list_rules_title=FirewallD-reëls

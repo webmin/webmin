@@ -3,11 +3,11 @@ index_zoneadd=Legg til sone
 index_ifaces_def=Alle grensesnitt
 index_ifaces_sel=Valgte grensesnitt:
 index_ifaces_apply=Søke om
+
 index_listrules=Liste FirewallD-regler
 index_restart_firewalld=Last inn FirewallD på nytt
 index_restart_firewallddesc=Last inn FirewallD-serveren på nytt og bruk reglene som ble opprettet permanent.
 index_listrules_restartdesc=Vis detaljer om eksisterende rike og direkte FirewallD-regler i $1-sonen.
-
 list_rule_iperr=Ugyldig IP-adresse
 list_rule_actionerr=Ugyldig handling
 list_rules_title=FirewallD-regler

@@ -33,10 +33,6 @@ index_ifaces=Примените правила к интерфейсам:
 index_ifaces_def=Все интерфейсы
 index_ifaces_sel=Выбранные интерфейсы:
 index_ifaces_apply=Применять
-index_listrules=Получение списка правил FirewallD
-index_restart_firewalld=Перезагрузить брандмауэрD
-index_restart_firewallddesc=Перезагрузите сервер FirewallD и примените правила, которые были созданы навсегда.
-index_listrules_restartdesc=Список сведений о существующих полнофункциональных и прямых правилах FirewallD в зоне $1.
 
 port_edit=Изменить порт
 port_create=Добавить порт
@@ -98,6 +94,10 @@ delzone_rusure=Вы уверены, что хотите удалить зону 
 
 defzone_err=Не удалось сделать зону по умолчанию
 
+index_listrules=Получение списка правил FirewallD
+index_restart_firewalld=Перезагрузить брандмауэрD
+index_restart_firewallddesc=Перезагрузите сервер FirewallD и примените правила, которые были созданы навсегда.
+index_listrules_restartdesc=Список сведений о существующих полнофункциональных и прямых правилах FirewallD в зоне $1.
 list_rule_iperr=Неверный IP-адрес
 list_rule_actionerr=Недопустимое действие
 list_rules_title=Правила брандмауэра

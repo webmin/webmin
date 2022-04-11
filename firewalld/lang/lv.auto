@@ -33,10 +33,6 @@ index_ifaces=Pielietojiet noteikumus saskarnēm:
 index_ifaces_def=Visas saskarnes
 index_ifaces_sel=Atlasītās saskarnes:
 index_ifaces_apply=Pieteikties
-index_listrules=Uzskaitiet FirewallD noteikumus
-index_restart_firewalld=Pārlādēt FirewallD
-index_restart_firewallddesc=Atkārtoti ielādējiet FirewallD serveri un lietojiet neatgriezeniski izveidotos noteikumus.
-index_listrules_restartdesc=Norādiet detalizētu informāciju par esošajiem bagātinātajiem un tiešajiem FirewallD noteikumiem zonā $1.
 
 port_edit=Rediģēt ostu
 port_create=Pievienot ostu
@@ -98,6 +94,10 @@ delzone_rusure=Vai tiešām vēlaties izdzēst zonu $1, kurā ir $2 porti un $3 
 
 defzone_err=Neizdevās padarīt zonu par noklusējuma
 
+index_listrules=Uzskaitiet FirewallD noteikumus
+index_restart_firewalld=Pārlādēt FirewallD
+index_restart_firewallddesc=Atkārtoti ielādējiet FirewallD serveri un lietojiet neatgriezeniski izveidotos noteikumus.
+index_listrules_restartdesc=Norādiet detalizētu informāciju par esošajiem bagātinātajiem un tiešajiem FirewallD noteikumiem zonā $1.
 list_rule_iperr=Nederīga IP adrese
 list_rule_actionerr=Nederīga darbība
 list_rules_title=FirewallD noteikumi
