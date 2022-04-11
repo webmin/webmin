@@ -353,7 +353,6 @@ else {
 	}
 }
 
-
 # add_ip_ban(ip, [zone])
 # Ban given IP address in given or default zone
 sub add_ip_ban
