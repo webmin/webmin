@@ -1,0 +1,19 @@
+status_title=Jails-Status und Aktionen
+status_title2=Gefängnisstatus
+status_head_jail_name=Name des Gefängnisses
+
+status_head_currently_failed=Aktuell fehlgeschlagen
+status_head_total_failed=Total gescheitert
+status_head_currently_banned=Derzeit verboten
+status_head_total_banned=Total gesperrt
+status_head_banned_ip_list=Verbotene IP-Liste
+status_jail_unblock_ip=Entfernen Sie $1 von der Sperrliste
+status_jail_permblock_ip=Sperren Sie diese IP dauerhaft
+status_jail_unblock=Entsperren Sie alle IPs für ausgewählte Jails
+status_jail_block=Blockieren Sie dauerhaft alle IPs in der Sperrliste für ausgewählte Jails
+status_jail_noactive=Es sind noch keine aktiven Jails aktiviert.
+status_err_set=Festgelegte Aktion fehlgeschlagen
+status_err_unblock=Die Aktion konnte nicht entsperrt werden
+status_err_nojail=Es wurden keine Gefängnisse ausgewählt
+status_err_unban=Sperrung von $1 IP-Adresse kann nicht aufgehoben werden
+status_err_ban=$1 IP-Adresse kann nicht gesperrt werden
