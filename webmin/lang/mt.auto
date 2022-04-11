@@ -1080,6 +1080,16 @@ web_expirespaths=Drabi tal-cache tal-ġenb tal-klijent ibbażati fuq it-triq tal
 web_expirespath=Espressjoni regolari tal-passaġġ
 web_expirestime=Ħin tal-cache f'sekondi
 web_eexpires2=Ħin tal-cache tal-ġenb nieqes jew mhux numeriku fil-filliera $1
+web_rediruurl=URL ta' direzzjoni mill-ġdid tal-iswiċċ ta' wara l-login
+web_redirdesc=L-URL ta' redirect intern jinvalida
+web_eredirurl='$1' fih spazji u mhux URL validu
+web_redirhost=Redirect host
+web_eredirhost='$1' mhuwiex hostname validu
+web_redirport=Redirect port
+web_redirpref=Prefiss ta' direzzjoni mill-ġdid
+web_eredirpref=Il-prefiss irid jibda bi mmejla 'l quddiem
+web_eredirpref2=Il-prefiss m'għandux ikun fih spazji
+web_redirssl=Ridirezzjona SSL
 
 webmincron_title=Funzjonijiet Skedati Webmin
 webmincron_emodule=Il-modulu Webmin Cron Jobs mhuwiex installat.

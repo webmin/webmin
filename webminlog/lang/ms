@@ -12,7 +12,6 @@ index_yesterday=Untuk semalam sahaja
 index_week=Pada minggu yang lalu
 index_time=Antara $1 dan $2
 index_search=Cari
-
 index_return=borang carian
 index_nolog=<b>Nota</b> - <a href='$1'>Meng-log dalam Webmin</a> tidak diaktifkan, oleh itu carian dalam log tindakan tidak akan menghasilkan sebarang keputusan.
 index_nologfiles=<b>Nota</b> - <a href='$1'>Meng-log perubahan fail</a> tidak diaktifkan, oleh itu butiran tindakan yang telah dilog tidak dimasukkan dalam perubahan fail atau arahan yang telah dilaksana.
@@ -31,6 +30,7 @@ index_sdesc=Penerangan tindakan mengandungi
 index_shost=Sumber Pelayan Webmin
 index_long=Paparkan penerangan penuh tindakan?
 index_global=&lt;Tiada dalam modul&gt;
+
 search_title=Keputusan Carian
 search_date=Tarikh
 search_time=Masa

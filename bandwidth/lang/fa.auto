@@ -41,6 +41,9 @@ index_efrom=تاریخ و زمان شروع نامعتبر است
 index_eto=تاریخ و زمان پایان نامعتبر
 index_err=گزارش ایجاد نشد
 index_usage=ترافیک شبکه <font color=#ff0000>بارگیری شده</font> و <font color=#0000ff>بارگذاری شد</font>
+index_in=دانلود
+index_out=بارگذاری
+index_total=جمع
 index_hhour=ساعت
 index_hhost=میزبان
 index_hday=روز

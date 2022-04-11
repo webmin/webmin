@@ -10,6 +10,12 @@ index_ok=traži
 index_searchres=Cron poslovi koji odgovaraju $1 ..
 index_reset=Poništi pretraživanje.
 index_econfigcheck=Cron poslovi ne mogu se upravljati u vašem sustavu, jer konfiguracija modula nije valjana : $1 
+index_stop=Zaustavite Cron Daemona
+index_stopdesc=Isključite <tt>crond</tt> proces pozadinskog poslužitelja koji izvodi zakazane cron poslove. To će spriječiti izvršavanje naredbi u određeno vrijeme.
+index_start=Pokrenite Cron Daemon
+index_startdesc=Pokrenite <tt>crond</tt> proces pozadinskog poslužitelja koji izvodi zakazane cron poslove. <font color=red><b>Ovo je potrebno za izvršavanje naredbi u određeno vrijeme.</font></font>
+index_boot=Pokrenuti Cron Daemon Boot?
+index_bootdesc=Promijenite ovu postavku da omogućite ili onemogućite pokretanje zakazanog demona cron poslova u vrijeme pokretanja sustava.
 
 edit_next=Sljedeće vrijeme izvođenja
 edit_saverun=Spremi i pokreni sada
@@ -18,6 +24,12 @@ save_eidx=Cron posao uspješno je spremljen, ali ga nije moguće pokrenuti jer n
 
 acl_hourly=Ograničiti posao na najviše sat vremena?
 acl_hourlydef=Kao što je postavljeno u modulu Config
+acl_stop=Može li se zaustaviti i pokrenuti Cron demon?
+
+log_stop=Zaustavljen cron demon
+log_start=Pokrenut cron daemon
+log_bootup=Omogućen cron demon pri pokretanju
+log_bootdown=Onemogućen cron daemon pri pokretanju
 
 when_interval=svaki $1 sekunda
 when_boot=u vrijeme pokretanja
@@ -31,3 +43,9 @@ manual_ok=Uredi
 manual_editing=Upotrijebite donji tekstni okvir da biste uredili Cron zadatke u $1. Budite oprezni jer Webmin neće izvršiti provjeru valjanosti!
 manual_efile=Odabrana datoteka nije valjana!
 manual_ecannot=Nije vam dopušteno ručno uređivanje poslova cron
+
+stop_err=Zaustavljanje demona nije uspjelo
+start_err=Pokretanje demona nije uspjelo
+stop_ecannot=Nije vam dopušteno zaustaviti demona
+start_ecannot=Nije vam dopušteno pokrenuti demon
+bootup_ecannot=Nije vam dopušteno omogućiti demon pri pokretanju

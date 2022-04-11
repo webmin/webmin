@@ -30,6 +30,8 @@ index_return=lista de zonas
 index_ezones=Nenhuma zona FirewallD encontrada!
 index_none=Esta zona ainda não possui portas ou serviços permitidos.
 index_ifaces=Aplique regras às interfaces:
+index_ifaces_def=Todas as interfaces
+index_ifaces_sel=Interfaces selecionadas:
 
 port_edit=Editar porta
 port_create=Adicionar porta
@@ -90,6 +92,9 @@ delzone_edefault=A zona padrão não pode ser removida
 delzone_rusure=Tem certeza de que deseja excluir a zona $1, que contém $2 portas e $3 serviços?
 
 defzone_err=Falha ao tornar a zona o padrão
+
+richrule_iperr=Endereço IP inválido
+richrule_actionerr=Ação inválida
 
 restart_err=Falha ao aplicar a configuração
 

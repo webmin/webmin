@@ -41,6 +41,9 @@ index_efrom=Μη έγκυρη ημερομηνία και ώρα έναρξης
 index_eto=Μη έγκυρη ημερομηνία και ώρα λήξης
 index_err=Αποτυχία δημιουργίας αναφοράς
 index_usage=Η διακίνηση δικτύου <font color=#ff0000>κατέβασμα</font> και <font color=#0000ff>ανέβηκε</font>
+index_in=Κατεβάστε
+index_out=Μεταφόρτωση
+index_total=Σύνολο
 index_hhour=Ωρα
 index_hhost=Πλήθος
 index_hday=Ημέρα

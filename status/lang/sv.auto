@@ -135,6 +135,10 @@ http_regexp=Sidan måste matcha regexp
 http_eregexp=Inget regelbundet uttryck för inmatad sida
 http_none2=Stämmer inte
 http_ehead=Metoden HEAD-begäran kan inte användas när du söker efter ett reguljärt uttryck
+http_codes=Godkända HTTP-statuskoder
+http_codes_def=Standard ($1)
+http_ecodes=Inga HTTP-koder att acceptera angivna
+http_ecodes3=HTTP-koden måste vara ett tresiffrigt nummer
 
 ping_wait=Dags att vänta på svar
 ping_ewait=Saknad eller ogiltig väntetid

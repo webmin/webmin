@@ -166,3 +166,4 @@ index_return=fájl felsorolása
 upload_dirs=Címtár feltöltése
 extract_uploaded=Kivonat tömörítve
 extract_cmd_not_avail=Nem sikerült kibontani a(z) $1 fájlt, mivel a $2 parancs hiányzik
+overwrite_existing=Meglévő felülírása

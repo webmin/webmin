@@ -166,3 +166,4 @@ index_return=спіс файлаў
 upload_dirs=Загрузка каталога
 extract_uploaded=Экстракт сціснуты
 extract_cmd_not_avail=Немагчыма распачаць файл $1, бо адсутнічае каманда $2
+overwrite_existing=Перазапісаць існуючы

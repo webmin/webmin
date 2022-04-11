@@ -9,7 +9,6 @@ index_tall=Bármely időpontban
 index_today=Csak a mai napra vonatkozóan
 index_time=$1 és $2 között
 index_search=Keresés
-
 index_return=a keresőoldalra
 index_nolog=<b>Megjegyzés</b> - <a href='$1'>Webmin naplózás</a> nincs jelenleg engedélyezve, ezért a keresés az események között nem fog semmilyen eredményt produkálni.
 index_nologfiles=<b>Megjegyzés</b> - <a href='$1'>A fájlok változásának naplózása</a> nincs jelenleg engedélyezve, ezért a részletes naplózott események között nem lesz naplózva a fájlok változása vagy a parancsok futtatása.
@@ -17,6 +16,7 @@ index_fall=Ki módosíthatja a fájlokat
 index_file=Azok a módosított fájlok
 index_wall=Bármelyik Webmin szerver
 index_whost=Adott szerverről
+
 search_title=A keresés eredménye
 search_date=Dátum
 search_time=Idő

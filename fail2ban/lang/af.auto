@@ -170,4 +170,23 @@ manual_efile=Die geselekteerde lêer is nie deel van die Fail2Ban-konfigurasie n
 manual_err=Konfiglêer kon nie gewysig word nie
 manual_edata=Geen config-lêerinhoud ingevoer nie
 
+status_title=Tronkstatus en aksies
+status_title2=Tronkstatus
+status_head_jail_name=Tronk naam
+status_head_currently_failed=Tans misluk
+status_head_total_failed=Totaal het misluk
+status_head_currently_banned=Tans verban
+status_head_total_banned=Totaal verban
+status_head_banned_ip_list=Verbode IP-lys
+status_jail_unblock_ip=Verwyder $1 van verbode lys
+status_jail_permblock_ip=Blokkeer hierdie IP permanent
+status_jail_unblock=Deblokkeer alle IP's vir geselekteerde tronke
+status_jail_block=Blokkeer verbode IP's in geselekteerde tronke
+status_jail_noactive=Daar is nog geen aktiewe tronke geaktiveer nie.
+status_err_set=Kon nie stel handeling nie
+status_err_unblock=Kon nie handeling deblokkeer nie
+status_err_nojail=Geen tronke is gekies nie
+status_err_unban=Kan nie $1 IP-adres ontban nie
+status_err_ban=Kan nie $1 IP-adres verban nie
+
 syslog_logtarget=Fail2Ban aksie log

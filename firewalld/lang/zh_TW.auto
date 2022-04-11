@@ -30,6 +30,8 @@ index_return=區域列表
 index_ezones=找不到FirewallD區域！
 index_none=此區域尚無任何允許的端口或服務。
 index_ifaces=將規則應用於接口：
+index_ifaces_def=所有接口
+index_ifaces_sel=選擇的接口：
 
 port_edit=編輯端口
 port_create=添加端口
@@ -90,6 +92,9 @@ delzone_edefault=默認區域無法刪除
 delzone_rusure=您確定要刪除包含 $2端口和 $3服務的 $1區域嗎？
 
 defzone_err=無法將區域設為默認區域
+
+richrule_iperr=IP 地址無效
+richrule_actionerr=無效操作
 
 restart_err=應用配置失敗
 

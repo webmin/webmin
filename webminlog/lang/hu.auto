@@ -21,6 +21,8 @@ index_notify_users=A felhasználók műveleteihez
 index_notify_email=E-mail küldése a címre
 index_notify_usub=Felveszi a felhasználónevet az e-mail tárgyába?
 index_notify_msub=Beleírja a műveletet az e-mail tárgyába?
+index_searchtab=Keresés a naplókban
+index_notifytab=Email értesítés
 index_searchdesc=Ez az űrlap használható Webmin műveletek keresésére felhasználó, modul, dátumtartomány és végrehajtott fájlok szerint.
 index_notifydesc=Ezzel az űrlappal konfigurálhatja az e-mail értesítéseket, amikor a Webmin műveleteket kiválasztott felhasználók vagy kiválasztott modulokban hajtják végre.
 

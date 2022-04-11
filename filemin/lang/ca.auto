@@ -7,3 +7,4 @@ index_return=llistat de fitxers
 upload_dirs=Càrrega del directori
 extract_uploaded=Extracte comprimit
 extract_cmd_not_avail=No s'ha pogut extreure el fitxer $1 perquè falta l'ordre $2
+overwrite_existing=Sobreescriu l'existent

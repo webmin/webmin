@@ -1,5 +1,6 @@
 index_desc_other=Poniższe akcje procmail z $1 będą miały zastosowanie do <b>wszystkich</b> wiadomości e-mail dostarczonych użytkownikom w twoim systemie. Będą one jednak używane tylko wtedy, gdy Procmail jest zainstalowany, a Twój serwer pocztowy jest skonfigurowany do korzystania z niego.
 index_mserr=Ostrzeżenie - nie zostaną użyte żadne reguły zdefiniowane poniżej : $1 
+index_virtualmin=Ostrzeżenie - konfiguracja procmail twojego systemu została stworzona przez Virtualmin, aby umożliwić filtrowanie spamu i wirusów dla poszczególnych domen. Zmiana tego tutaj może zakłócić działanie Virtualmin.
 index_act6=Ustaw zmienną $1 
 index_act5=Wykonaj blok warunkowy
 index_act4=Kanał do programu $1 

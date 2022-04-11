@@ -30,6 +30,8 @@ index_return=lista över zoner
 index_ezones=Inga FirewallD-zoner hittades!
 index_none=Den här zonen har inga tillåtna portar eller tjänster än.
 index_ifaces=Tillämpa regler på gränssnitt:
+index_ifaces_def=Alla gränssnitt
+index_ifaces_sel=Valda gränssnitt:
 
 port_edit=Redigera port
 port_create=Lägg till port
@@ -90,6 +92,9 @@ delzone_edefault=Standardzonen kan inte tas bort
 delzone_rusure=Är du säker på att du vill ta bort zonen $1, som innehåller $2 -portar och $3 -tjänster?
 
 defzone_err=Det gick inte att göra zon som standard
+
+richrule_iperr=Ogiltig IP-adress
+richrule_actionerr=Ogiltig åtgärd
 
 restart_err=Det gick inte att tillämpa konfigurationen
 

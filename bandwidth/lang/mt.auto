@@ -41,6 +41,9 @@ index_efrom=Data u ħin tal-bidu mhux validi
 index_eto=Data u ħin li jispiċċaw mhux validi
 index_err=Naqas milli jiġġenera rapport
 index_usage=It-traffiku tan-netwerk <font color=#ff0000>jitniżżel</font> u <font color=#0000ff>imtella '</font>
+index_in=Niżżel
+index_out=Upload
+index_total=Total
 index_hhour=Siegħa
 index_hhost=Ospitanti
 index_hday=Jum

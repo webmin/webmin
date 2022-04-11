@@ -9,10 +9,10 @@ index_tall=A qualquer hora
 index_today=Por hoje somente
 index_time=Entre $1 e $2
 index_search=Procurar
-
 index_return=formulário de procura
 index_nolog=<b>Nota</b> - <a href='$1'>Log no Webmin</a> não está habilitado no momento, portanto é provável que as buscas no log de ações não produzam resultado algum.
 index_nologfiles=<b>Nota</b> - <a href='$1'>Log de mudanças em arquivos</a> não está habilitado no momento, portanto é provável que os detalhes de ações logadas não incluam arquivos modificados ou comandos executados.
+
 search_title=Resultados da Busca
 search_date=Data
 search_time=Hora

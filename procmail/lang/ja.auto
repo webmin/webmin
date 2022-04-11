@@ -2,6 +2,7 @@ index_title=Procmailメールフィルター
 index_procmail=Procmailメールフィルター
 index_desc_other=以下の $1のprocmailアクションは、システム上のユーザーに配信される<b>すべて</b>のメールに適用されます。ただし、Procmailがインストールされ、メールサーバーがそれを使用するように構成されている場合にのみ使用されます。
 index_mserr=警告-以下で定義されているルールは使用されません： $1
+index_virtualmin=警告-システムのprocmail構成は、ドメインごとのスパムとウイルスのフィルタリングを可能にするためにVirtualminによって作成されました。ここで変更すると、Virtualminの機能が妨げられる可能性があります。
 index_action=取るべき行動
 index_conds=条件
 index_move=移動する

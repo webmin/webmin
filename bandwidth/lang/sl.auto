@@ -41,6 +41,9 @@ index_efrom=Neveljaven začetni datum in ura
 index_eto=Neveljaven datum in čas zaključka
 index_err=Poročila ni bilo mogoče ustvariti
 index_usage=Omrežni promet <font color=#ff0000>prenesen</font> in <font color=#0000ff>naložen</font>
+index_in=Prenesi
+index_out=Naloži
+index_total=Skupaj
 index_hhour=Ura
 index_hhost=Gostitelj
 index_hday=Dan

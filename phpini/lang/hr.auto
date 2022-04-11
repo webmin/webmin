@@ -71,6 +71,8 @@ session_handler=Mehanizam za pohranu sesija
 session_files=datoteke
 session_mm=U sjećanju
 session_users=Korisnik definiran
+session_redis=Redis
+session_memcache=MemcacheD
 session_path=Imenik za datoteke sesija
 session_cookies=Dopuštate upotrebu kolačića za praćenje sesija?
 session_only_cookies=Uvijek koristite kolačiće za praćenje sesije?
@@ -80,7 +82,6 @@ session_maxlife=Maksimalni životni vijek sesije
 session_epath=Nedostaje ili nije važeći direktorij za datoteke sa sesijama
 session_elife=Nedostaje ili nije valjan vijek kolačića
 session_emaxlife=Manjkajući ili nevažeći maksimalni vijek trajanja sesije
-session_eredis=Nedostaje ili onemogućuje se nastavak Redis
 
 safe_title=Opcije sigurnog načina rada
 safe_header=Opcije načina sigurnog pristupa datoteci

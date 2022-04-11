@@ -39,6 +39,8 @@ index_notify_users=Par lietotāju darbībām
 index_notify_email=Sūtīt e-pastu uz
 index_notify_usub=Vai iekļaut lietotājvārdu e-pasta tēmā?
 index_notify_msub=Vai e-pasta tēmā iekļaut darbību?
+index_searchtab=Meklēšanas žurnāli
+index_notifytab=E-pasta paziņojums
 index_searchdesc=Šo veidlapu var izmantot, lai meklētu Webmin darbības pēc lietotāja, moduļa, datumu diapazona un veiktajiem failiem.
 index_notifydesc=Izmantojiet šo veidlapu, lai konfigurētu e-pasta paziņojumus, kad Webmin darbības veic atlasītie lietotāji vai izvēlētajos moduļos.
 

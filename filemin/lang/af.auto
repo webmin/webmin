@@ -166,3 +166,4 @@ index_return=lêerlys
 upload_dirs=Gids oplaai
 extract_uploaded=Uittreksel saamgepers
 extract_cmd_not_avail=Kon nie $1 lêer onttrek nie aangesien $2 opdrag ontbreek
+overwrite_existing=Oorskryf bestaande

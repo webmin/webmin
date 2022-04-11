@@ -23,6 +23,12 @@ index_ok=검색
 index_searchres=$1 과 (와) 일치하는 Cron 작업
 index_reset=검색을 재설정하십시오.
 index_econfigcheck=모듈 구성이 유효하지 않으므로 시스템에서 Cron 작업을 관리 할 수 없습니다  : $1 
+index_stop=크론 데몬 중지
+index_stopdesc=예약된 cron 작업을 실행하는 <tt>crond</tt> 백그라운드 서버 프로세스를 종료합니다. 이렇게 하면 명령이 지정된 시간에 실행되지 않습니다.
+index_start=크론 데몬 시작
+index_startdesc=예약된 cron 작업을 실행하는 <tt>crond</tt> 백그라운드 서버 프로세스를 시작합니다. <font color=red><b>명령이 지정된 시간에 실행되는 데 필요합니다.</font></font>
+index_boot=Cron 데몬 부팅을 시작하시겠습니까?
+index_bootdesc=시스템 부팅 시 예약된 cron 작업 데몬 시작을 활성화하거나 비활성화하려면 이 설정을 변경합니다.
 
 edit_next=다음 런타임
 edit_comment=기술
@@ -74,6 +80,7 @@ acl_move=Cron 작업을 이동할 수 있습니까?
 acl_kill=Cron 작업을 종료 할 수 있습니까?
 acl_hourly=최대 시간당 작업을 제한 하시겠습니까?
 acl_hourlydef=모듈 구성에서 설정 한대로
+acl_stop=Cron 데몬을 중지하고 시작할 수 있습니까?
 
 log_kill=$1 에 대한 종료 된 Cron 작업
 log_kill_l=$1 에 대해 종료 된 Cron 작업 "$2"
@@ -84,6 +91,10 @@ log_move=$1 의 Cron 작업을 이동했습니다
 log_crons_delete=$1 Cron 작업을 삭제했습니다.
 log_crons_disable=비활성화 된 $1 Cron 작업
 log_crons_enable=활성화 된 $1 Cron 작업
+log_stop=중지된 cron 데몬
+log_start=cron 데몬 시작
+log_bootup=부팅 시 활성화된 cron 데몬
+log_bootdown=부팅 시 비활성화된 cron 데몬
 
 ecopy=새 Cron 구성에서 오류가 발견되었습니다 : $1 $2 
 
@@ -132,3 +143,9 @@ manual_ok=편집하다
 manual_editing=아래 텍스트 상자를 사용하여 $1 에서 Cron 작업을 편집하십시오. Webmin은 유효성 검사를 수행하지 않으므로주의하십시오!
 manual_efile=선택한 파일이 유효하지 않습니다!
 manual_ecannot=크론 작업을 수동으로 편집 할 수 없습니다
+
+stop_err=데몬을 중지하지 못했습니다
+start_err=데몬을 시작하지 못했습니다
+stop_ecannot=데몬을 중지할 수 없습니다
+start_ecannot=데몬을 시작할 권한이 없습니다
+bootup_ecannot=부팅 시 데몬을 활성화할 수 없습니다

@@ -14,7 +14,8 @@ vars_long=Creare matrici vecchio stile come <tt>HTTP_GET_VARS</tt>?
 dirs_eincs=Nessuna directory di ricerca inclusa inserita
 
 session_handler=Meccanismo di archiviazione della sessione
-session_eredis=Estensione redis mancante o disabilitata
+session_redis=Redis
+session_memcache=Memcache D
 
 safe_header=Opzioni della modalità di accesso sicuro ai file
 safe_on=Abilitare la modalità provvisoria?

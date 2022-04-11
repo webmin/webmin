@@ -166,3 +166,4 @@ index_return=elenkar tal-fajl
 upload_dirs=Direttorju Upload
 extract_uploaded=Estratt Kompressat
 extract_cmd_not_avail=Ma setax estratt $1 fajl peress li $2 kmand huwa nieqes
+overwrite_existing=Overwrite Eżistenti

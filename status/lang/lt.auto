@@ -216,6 +216,10 @@ http_regexp=Puslapis turi atitikti atnaujinimo tipą
 http_eregexp=Nėra įvestos įprastos puslapio atitikties išraiškos
 http_none2=Nesutampa
 http_ehead=HEAD užklausos metodas negali būti naudojamas tikrinant reguliariąją išraišką
+http_codes=Priimtini HTTP būsenos kodai
+http_codes_def=Numatytasis ($1)
+http_ecodes=Neįvesta jokių priimtinų HTTP kodų
+http_ecodes3=HTTP kodas turi būti trijų skaitmenų skaičius
 
 ping_host=Priimančioji „ping“
 ping_wait=Laikas laukti atsakymo

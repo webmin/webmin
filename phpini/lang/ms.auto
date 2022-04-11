@@ -71,6 +71,8 @@ session_handler=Mekanisme penyimpanan sesi
 session_files=Fail
 session_mm=Dalam kenangan
 session_users=Pengguna ditakrifkan
+session_redis=Redis
+session_memcache=MemcacheD
 session_path=Direktori fail sesi
 session_cookies=Benarkan penggunaan cookies untuk penjejakan sesi?
 session_only_cookies=Sentiasa gunakan cookies untuk penjejakan sesi?
@@ -80,7 +82,6 @@ session_maxlife=Hayat sesi maksimum
 session_epath=Direktori yang hilang atau tidak sah untuk fail sesi
 session_elife=Kehidupan kuki yang hilang atau tidak sah
 session_emaxlife=Tempoh hayat sesi maksimum atau tidak sah
-session_eredis=Sambungan redis tidak ada atau dilumpuhkan
 
 safe_title=Pilihan Mod Selamat
 safe_header=Pilihan mod akses fail selamat

@@ -2,6 +2,7 @@ index_title=Procmail Mail Filter
 index_procmail=Procmail filter za poštu
 index_desc_other=Radnje procmaila ispod $1 primjenjivat će se na <b>sve</b> e-poštu isporučen korisnicima u vašem sustavu. Međutim, oni će se koristiti samo ako je Procmail instaliran i vaš poslužitelj e-pošte konfiguriran za njegovo korištenje.
 index_mserr=Upozorenje - bilo koja pravila definirana u nastavku neće se koristiti : $1 
+index_virtualmin=Upozorenje - konfiguraciju procmaila vašeg sustava kreirao je Virtualmin kako bi se omogućilo filtriranje neželjene pošte i virusa po domeni. Promjena ovdje može ometati funkcionalnost Virtualmina.
 index_action=Radnja koju treba poduzeti
 index_conds=Uvjeti
 index_move=Pomicati

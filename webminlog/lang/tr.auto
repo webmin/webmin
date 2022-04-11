@@ -21,6 +21,8 @@ index_notify_users=Kullanıcıların eylemleri için
 index_notify_email=Email gönder
 index_notify_usub=Kullanıcı adı e-posta konusuna dahil edilsin mi?
 index_notify_msub=Eylem e-posta konusuna dahil edilsin mi?
+index_searchtab=Arama günlükleri
+index_notifytab=Eposta bildirimi
 index_searchdesc=Bu form, kullanıcı, modül, tarih aralığı ve gerçekleştirilen dosyalara göre Webmin eylemlerini aramak için kullanılabilir.
 index_notifydesc=Webmin eylemleri seçilen kullanıcılar veya seçilen modüller tarafından gerçekleştirildiğinde e-posta bildirimlerini yapılandırmak için bu formu kullanın.
 

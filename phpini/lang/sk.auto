@@ -71,6 +71,8 @@ session_handler=Mechanizmus ukladania relácií
 session_files=súbory
 session_mm=V pamäti
 session_users=Definované užívateľom
+session_redis=Redis
+session_memcache=MemcacheD
 session_path=Adresár pre súbory relácie
 session_cookies=Povoliť používanie súborov cookie na sledovanie relácií?
 session_only_cookies=Na sledovanie relácií vždy používate súbory cookie?
@@ -80,7 +82,6 @@ session_maxlife=Maximálna životnosť relácie
 session_epath=Chýbajúci alebo neplatný adresár pre súbory relácie
 session_elife=Chýbajúca alebo neplatná životnosť súborov cookie
 session_emaxlife=Chýbajúca alebo neplatná maximálna životnosť relácie
-session_eredis=Chýbajúce alebo deaktivované rozšírenie Redis
 
 safe_title=Možnosti núdzového režimu
 safe_header=Možnosti režimu bezpečného prístupu k súboru

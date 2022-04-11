@@ -24,3 +24,14 @@ sendmail_url=URL Webmin à utiliser dans les e-mails
 sendmail_url_def=Par défaut ($1)
 sendmail_url_custom=URL personnalisée
 sendmail_eurl=URL personnalisée manquante ou non valide
+
+web_rediruurl=URL de redirection du commutateur post-connexion
+web_redirdesc=Remplacements d'URL de redirection interne
+web_eredirurl='$1' contient des espaces et n'est pas une URL valide
+web_redirhost=Rediriger l'hôte
+web_eredirhost='$1' n'est pas un nom d'hôte valide
+web_redirport=Rediriger le port
+web_redirpref=Préfixe de redirection
+web_eredirpref=Le préfixe doit commencer par une barre oblique
+web_eredirpref2=Le préfixe ne doit pas contenir d'espaces
+web_redirssl=Rediriger SSL

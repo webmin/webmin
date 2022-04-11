@@ -71,6 +71,8 @@ session_handler=กลไกการจัดเก็บเซสชัน
 session_files=ไฟล์
 session_mm=ในความทรงจำ
 session_users=ผู้ใช้กำหนด
+session_redis=Redis
+session_memcache=MemcacheD
 session_path=ไดเร็กทอรีสำหรับไฟล์เซสชัน
 session_cookies=อนุญาตให้ใช้คุกกี้เพื่อติดตามเซสชันหรือไม่
 session_only_cookies=ใช้คุกกี้เพื่อติดตามเซสชันเสมอหรือไม่
@@ -80,7 +82,6 @@ session_maxlife=อายุการใช้งานสูงสุด
 session_epath=ไดเรกทอรีที่ขาดหายไปหรือไม่ถูกต้องสำหรับไฟล์เซสชัน
 session_elife=อายุการใช้งานคุกกี้ที่ขาดหายไปหรือไม่ถูกต้อง
 session_emaxlife=อายุการใช้งานเซสชันสูงสุดที่ขาดหายไปหรือไม่ถูกต้อง
-session_eredis=ส่วนขยาย Redis ที่ขาดหายไปหรือปิดใช้งาน
 
 safe_title=ตัวเลือกเซฟโหมด
 safe_header=ตัวเลือกโหมดการเข้าถึงไฟล์อย่างปลอดภัย

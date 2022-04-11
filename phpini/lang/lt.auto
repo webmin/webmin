@@ -71,6 +71,8 @@ session_handler=Sesijos saugojimo mechanizmas
 session_files=Failai
 session_mm=Atmintyje
 session_users=Apibrėžta vartotojo
+session_redis=Redis
+session_memcache=AtmintinėD
 session_path=Sesijos failų katalogas
 session_cookies=Leisti naudoti slapukus sesijos stebėjimui?
 session_only_cookies=Visada naudokite slapukus sesijos stebėjimui?
@@ -80,7 +82,6 @@ session_maxlife=Maksimalus sesijos laikas
 session_epath=Trūksta arba netinkamas seansų failų katalogas
 session_elife=Trūksta arba netinkamas slapuko galiojimo laikas
 session_emaxlife=Trūksta arba netinkama maksimali sesijos trukmė
-session_eredis=Trūksta arba neleidžiama pakartotinio atnaujinimo plėtinio
 
 safe_title=Saugaus režimo parinktys
 safe_header=Saugaus failų prieigos režimo parinktys

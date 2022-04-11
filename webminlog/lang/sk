@@ -9,7 +9,6 @@ index_tall=Kedykoľvek
 index_today=Len dnes
 index_time=Medzi $1 a $2
 index_search=Hľadaj
-
 index_return=vyhľadávací formulár
 index_nolog=<b>Poznámka</b> - <a href='$1'>Ukladanie záznamov Webminu</a> nie je práve povolené, takže je možné, že vyhľadávanie v záznamoch akcií nezobrazí žiadne výsledky.
 index_nologfiles=<b>Poznámka</b> - <a href='$1'>Ukladanie záznamov o zmenách súborov</a> nie je práve povolené, takže je možné, že vyhľadávanie v záznamoch nezobrazí žiadne výsledky.
@@ -17,6 +16,7 @@ index_fall=Ktorý modifikuje ktorýkoľvek súbor
 index_file=Tento modifikovaný súbor
 index_wall=Z ktoréhokoľvek serveru Webmina
 index_whost=Zo serveru
+
 search_title=Výsledky vyhľadávania
 search_date=Dátum
 search_time=Čas

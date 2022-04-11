@@ -30,6 +30,8 @@ index_return=רשימת אזורים
 index_ezones=לא נמצאו אזורי FirewallD!
 index_none=לאזור זה אין עדיין יציאות ושירותים המותרים.
 index_ifaces=החלת כללים על ממשקים:
+index_ifaces_def=כל הממשקים
+index_ifaces_sel=ממשקים נבחרים:
 
 port_edit=ערוך נמל
 port_create=הוסף נמל
@@ -90,6 +92,9 @@ delzone_edefault=לא ניתן להסיר את אזור ברירת המחדל
 delzone_rusure=האם אתה בטוח שברצונך למחוק את האזור $1 המכיל $2 יציאות ושירותי $3 ?
 
 defzone_err=הפיכת אזור לברירת המחדל נכשלה
+
+richrule_iperr=כתובת IP לא חוקית
+richrule_actionerr=פעולה לא חוקית
 
 restart_err=החלת התצורה נכשלה
 

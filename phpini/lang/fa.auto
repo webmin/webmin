@@ -71,6 +71,8 @@ session_handler=مکانیسم ذخیره سازی جلسه
 session_files=فایل ها
 session_mm=در حافظه
 session_users=تعریف شده توسط کاربر
+session_redis=ردیس
+session_memcache=MemcacheD
 session_path=دایرکتوری پرونده های جلسه
 session_cookies=استفاده از کوکی ها برای ردیابی جلسه مجاز است؟
 session_only_cookies=همیشه از کوکی ها برای ردیابی جلسه استفاده می کنید؟
@@ -80,7 +82,6 @@ session_maxlife=حداکثر طول جلسه
 session_epath=دایرکتوری موجود یا نامعتبر برای پرونده های جلسه
 session_elife=طول عمر کوکی وجود ندارد یا نامعتبر است
 session_emaxlife=حداکثر طول عمر نامعتبر یا نامعتبر است
-session_eredis=برنامه افزودنی دوباره فعال نشده یا غیرفعال است
 
 safe_title=گزینه های حالت ایمن
 safe_header=گزینه های دسترسی به پرونده امن

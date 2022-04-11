@@ -1,1 +1,10 @@
 index_no_comment=
+
+desc_match-set=$2 coincideix amb l'IPset $1
+desc_match-set!=$2 no coincideix amb l'IPset $1
+desc_match-set_src=trànsit entrant
+desc_match-set_dst=trànsit de sortida
+
+edit_matchset=IPset coincident
+edit_matchsetsrc=sobre el trànsit entrant
+edit_matchsetdst=al trànsit de sortida

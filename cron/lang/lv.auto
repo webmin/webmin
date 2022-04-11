@@ -31,6 +31,12 @@ index_ok=Meklēt
 index_searchres=Krona darbi, kas atbilst $1.
 index_reset=Atiestatīt meklēšanu.
 index_econfigcheck=Krona darbus nevar pārvaldīt jūsu sistēmā, jo moduļa konfigurācija nav derīga : $1 
+index_stop=Apturiet Krona dēmonu
+index_stopdesc=Izslēdziet <tt>crond</tt> fona servera procesu, kas izpilda ieplānotos cron darbus. Tas novērsīs komandu izpildi noteiktajā laikā.
+index_start=Palaidiet Cron Daemon
+index_startdesc=Sāciet <tt>crond</tt> fona servera procesu, kas izpilda ieplānotos cron darbus. <font color=red><b>Tas ir nepieciešams, lai komandas izpildītu noteiktajā laikā.</font></font>
+index_boot=Vai sākt Cron Daemon Boot?
+index_bootdesc=Mainiet šo iestatījumu, lai iespējotu vai atspējotu ieplānotā cron darbu dēmona palaišanu sistēmas sāknēšanas laikā.
 
 edit_title=Rediģēt Kronu Darbu
 create_title=Izveidot Krona darbu
@@ -128,6 +134,7 @@ acl_move=Vai var pārvietot Cron darbus?
 acl_kill=Vai var izbeigt Cron darbus?
 acl_hourly=Ierobežot darbu skaitu ne vairāk kā stundā?
 acl_hourlydef=Kā noteikts moduļa konfigurācijā
+acl_stop=Vai var apturēt un palaist Cron dēmonu?
 
 log_modify=Modificēts Krona darbs $1 
 log_modify_l=Pārveidots Krona darbs “$2” $1 
@@ -146,6 +153,10 @@ log_move=Pārvietots Krona darbs $1
 log_crons_delete=Dzēsti $1 Cron darbi
 log_crons_disable=Atspējoti $1 Cron darbi
 log_crons_enable=Iespējoti $1 Cron darbi
+log_stop=Apturēts cron dēmons
+log_start=Sākts cron dēmons
+log_bootup=Iespējots cron dēmons sāknēšanas laikā
+log_bootdown=Sāknēšanas laikā atspējots cron dēmons
 
 ecopy=Jaunajā Krona konfigurācijā tika atklāta kļūda: $1 $2 
 
@@ -194,3 +205,9 @@ manual_ok=Rediģēt
 manual_editing=Izmantojiet zemāk esošo lodziņu, lai rediģētu Krona darbus $1. Esiet piesardzīgs, jo Webmin neveic apstiprināšanu!
 manual_efile=Atlasītais fails nav derīgs.
 manual_ecannot=Jums nav atļauts manuāli rediģēt cron darbus
+
+stop_err=Neizdevās apturēt dēmonu
+start_err=Neizdevās palaist dēmonu
+stop_ecannot=Jums nav atļauts apturēt dēmonu
+start_ecannot=Jums nav atļauts palaist dēmonu
+bootup_ecannot=Jums nav atļauts iespējot dēmonu sāknēšanas laikā

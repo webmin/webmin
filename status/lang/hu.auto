@@ -22,6 +22,11 @@ sched_subject1=Figyelmeztető szöveg (hagyja a testet üresen)
 sched_subject2=Egyéni szöveg
 sched_esubject=Hiányzik az SMS üzenet tárgya
 
+http_codes=Elfogadható HTTP állapotkódok
+http_codes_def=Alapértelmezett ($1)
+http_ecodes=Nincsenek elfogadandó HTTP-kódok
+http_ecodes3=A HTTP-kódnak háromjegyű számnak kell lennie
+
 ping_timeout=Időtúllépés $1 másodperc után
 ping_resolv=Nem sikerült feloldani a gazdagép nevét
 

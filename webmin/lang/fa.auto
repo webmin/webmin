@@ -559,6 +559,16 @@ web_expirespaths=بار حافظه پنهان حافظه نهان بر اساس 
 web_expirespath=بیان منظم مسیر
 web_expirestime=زمان حافظه پنهان در ثانیه
 web_eexpires2=Missing or non-numeric client side cache time in row $1
+web_rediruurl=URL تغییر مسیر سوئیچ پس از ورود به سیستم
+web_redirdesc=URL تغییر مسیر داخلی لغو می شود
+web_eredirurl="$1" حاوی فاصله است و یک URL معتبر نیست
+web_redirhost=تغییر مسیر میزبان
+web_eredirhost="$1" یک نام میزبان معتبر نیست
+web_redirport=پورت تغییر مسیر
+web_redirpref=پیشوند تغییر مسیر
+web_eredirpref=پیشوند باید با اسلش رو به جلو شروع شود
+web_eredirpref2=پیشوند نباید دارای فاصله باشد
+web_redirssl=تغییر مسیر SSL
 
 webmincron_title=توابع برنامه ریزی شده وبمین
 webmincron_emodule=ماژول Webmin Cron Jobs نصب نشده است!

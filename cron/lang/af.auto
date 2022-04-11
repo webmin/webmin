@@ -31,6 +31,12 @@ index_ok=Soek
 index_searchres=Cron-poste wat ooreenstem met $1.
 index_reset=Stel soek terug.
 index_econfigcheck=Cron-bane kan nie op u stelsel bestuur word nie, aangesien die module-opstelling nie geldig is nie : $1 
+index_stop=Stop Cron Daemon
+index_stopdesc=Skakel die <tt>crond</tt> agtergrondbedienerproses af wat geskeduleerde cron-take laat loop. Dit sal verhoed dat opdragte op hul gespesifiseerde tye uitgevoer word.
+index_start=Begin Cron Daemon
+index_startdesc=Begin die <tt>crond</tt> agtergrondbedienerproses wat geskeduleerde cron-take laat loop. <font color=red><b>Dit word vereis vir opdragte om op hul gespesifiseerde tye uit te voer.</font></font>
+index_boot=Begin Cron Daemon Boot?
+index_bootdesc=Verander hierdie instelling om die aanvang van die geskeduleerde cron jobs daemon te aktiveer of te deaktiveer tydens stelselselflaaityd.
 
 edit_title=Redigeer Cron Job
 create_title=Skep Cron Job
@@ -128,6 +134,7 @@ acl_move=Kan Cron poste verskuif?
 acl_kill=Kan Cron-poste beëindig?
 acl_hourly=Beperk werkgeleenthede tot hoogstens uurliks?
 acl_hourlydef=Soos uiteengesit in Module Config
+acl_stop=Kan die Cron-demoon stop en begin?
 
 log_modify=Gewysigde Cron-pos vir $1 
 log_modify_l=Gewysigde Cron-baan "$2" vir $1 
@@ -146,6 +153,10 @@ log_move=Cron-baan vir $1 geskuif
 log_crons_delete=$1 Cron-poste uitgevee
 log_crons_disable=Gestremd $1 Cron-poste
 log_crons_enable=Geaktiveer $1 Cron-take
+log_stop=Gestop cron daemon
+log_start=Het cron daemon begin
+log_bootup=Geaktiveer cron daemon by opstart
+log_bootdown=Gedeaktiveerde cron daemon by opstart
 
 ecopy='N Fout is opgespoor in die nuwe Cron-opstelling: $1 $2 
 
@@ -194,3 +205,9 @@ manual_ok=wysig
 manual_editing=Gebruik die tekskassie hieronder om Cron-take in $1 te wysig. Wees versigtig, want geen validering sal deur Webmin gedoen word nie!
 manual_efile=Die geselekteerde lêer is nie geldig nie!
 manual_ecannot=U mag nie cron-bane met die hand wysig nie
+
+stop_err=Kon nie daemoon stop nie
+start_err=Kon nie daemon begin nie
+stop_ecannot=Jy mag nie die daemon stop nie
+start_ecannot=Jy mag nie die daemon begin nie
+bootup_ecannot=Jy word nie toegelaat om die daemon tydens selflaai te aktiveer nie

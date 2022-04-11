@@ -1,0 +1,19 @@
+index_stop=Stopp Cron Daemon
+index_stopdesc=Slå av <tt>crond</tt> bakgrunnsserverprosessen som kjører planlagte cron-jobber. Dette vil forhindre at kommandoer kjøres på de angitte tidspunktene.
+index_start=Start Cron Daemon
+index_startdesc=Start opp <tt>crond</tt> bakgrunnsserverprosessen som kjører planlagte cron-jobber. <font color=red><b>Dette er nødvendig for at kommandoer skal utføres på de angitte tidspunktene.</font></font>
+index_boot=Starte Cron Daemon Boot?
+index_bootdesc=Endre denne innstillingen for å aktivere eller deaktivere start av den planlagte cron-jobbdemonen ved systemoppstart.
+
+acl_stop=Kan stoppe og starte Cron-demonen?
+
+log_stop=Stoppet cron daemon
+log_start=Startet cron daemon
+log_bootup=Aktivert cron-demon ved oppstart
+log_bootdown=Deaktivert cron-demon ved oppstart
+
+stop_err=Kunne ikke stoppe demonen
+start_err=Kunne ikke starte daemon
+stop_ecannot=Du har ikke lov til å stoppe demonen
+start_ecannot=Du har ikke lov til å starte demonen
+bootup_ecannot=Du har ikke lov til å aktivere demonen ved oppstart

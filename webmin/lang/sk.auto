@@ -404,6 +404,16 @@ web_expirespaths=Časy vyrovnávacej pamäte na strane klienta založené na ces
 web_expirespath=Cesta regulárny výraz
 web_expirestime=Čas vyrovnávacej pamäte v sekundách
 web_eexpires2=Chýbajúci alebo nečíselný čas vyrovnávacej pamäte na strane klienta v riadku $1
+web_rediruurl=Adresa URL presmerovania prepnutia po prihlásení
+web_redirdesc=Prepíše adresy URL interného presmerovania
+web_eredirurl=„$1“ obsahuje medzery a nie je platnou adresou URL
+web_redirhost=Presmerovať hostiteľa
+web_eredirhost='$1' nie je platný názov hostiteľa
+web_redirport=Port presmerovania
+web_redirpref=Predpona presmerovania
+web_eredirpref=Predpona musí začínať lomkou
+web_eredirpref2=Predpona nesmie obsahovať medzery
+web_redirssl=Presmerovanie SSL
 
 webmincron_title=Webmin Scheduled Functions
 webmincron_emodule=Modul Webmin Cron Jobs nie je nainštalovaný!

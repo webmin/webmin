@@ -30,6 +30,8 @@ index_return=popis zona
 index_ezones=Nisu pronađene FirewallD zone!
 index_none=U ovoj zoni još nema dozvoljenih ulaza ili usluga.
 index_ifaces=Primjena pravila na sučelja:
+index_ifaces_def=Sva sučelja
+index_ifaces_sel=Odabrana sučelja:
 
 port_edit=Uredi port
 port_create=Dodajte port
@@ -90,6 +92,9 @@ delzone_edefault=Zadana zona ne može se ukloniti
 delzone_rusure=Jeste li sigurni da želite izbrisati zonu $1 koja sadrži $2 priključka i $3 usluge?
 
 defzone_err=Nije uspjelo napraviti zonu zadanu
+
+richrule_iperr=Nevažeća IP adresa
+richrule_actionerr=Nevažeća radnja
 
 restart_err=Konfiguracija nije primijenjena
 

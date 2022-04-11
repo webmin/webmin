@@ -31,6 +31,12 @@ index_ok=بحث
 index_searchres=وظائف Cron مطابقة$1 ..
 index_reset=إعادة ضبط البحث.
 index_econfigcheck=لا يمكن إدارة مهام Cron على نظامك ، لأن تكوين الوحدة غير صالح :$1
+index_stop=أوقف Cron Daemon
+index_stopdesc=قم بإيقاف تشغيل عملية خادم الخلفية <tt>crond</tt> التي تشغل وظائف cron المجدولة. سيمنع هذا الأوامر من التنفيذ في أوقاتها المحددة.
+index_start=ابدأ تشغيل Cron Daemon
+index_startdesc=ابدأ عملية خادم الخلفية <tt>crond</tt> التي تشغل وظائف cron المجدولة. <font color=red><b> هذا مطلوب حتى يتم تنفيذ الأوامر في أوقاتها المحددة.</font> </font>
+index_boot=بدء تشغيل Cron Daemon Boot؟
+index_bootdesc=غيّر هذا الإعداد لتمكين أو تعطيل بدء البرنامج الخفي لمهام cron المجدولة في وقت تمهيد النظام.
 
 edit_title=تحرير كرون الوظيفة
 create_title=خلق كرون الوظيفة
@@ -128,6 +134,7 @@ acl_move=يمكن نقل وظائف كرون؟
 acl_kill=يمكن إنهاء وظائف كرون؟
 acl_hourly=الحد من الوظائف على الأكثر في كل ساعة؟
 acl_hourlydef=كما هو محدد في الوحدة النمطية التكوين
+acl_stop=هل يمكن إيقاف وبدء برنامج Cron الخفي؟
 
 log_modify=وظيفة Cron المعدلة لـ$1
 log_modify_l=وظيفة Cron المعدلة "$2" لـ$1
@@ -146,6 +153,10 @@ log_move=وظيفة Cron المنقولة لـ$1
 log_crons_delete=تم حذف وظائف$1 Cron
 log_crons_disable=معطل$1 وظائف كرون
 log_crons_enable=تم تمكين وظائف$1 Cron
+log_stop=توقف عفريت كرون
+log_start=بدأ البرنامج الخفي كرون
+log_bootup=تمكين عفريت كرون في التمهيد
+log_bootdown=تعطيل البرنامج الخفي كرون في التمهيد
 
 ecopy=تم اكتشاف خطأ في تكوين Cron الجديد:$1 $2
 
@@ -194,3 +205,9 @@ manual_ok=تعديل
 manual_editing=استخدم مربع النص أدناه لتحرير وظائف Cron في$1. كن حذرًا ، حيث لن يتم إجراء أي تحقق بواسطة Webmin!
 manual_efile=الملف المحدد غير صالح!
 manual_ecannot=غير مسموح لك بتحرير وظائف cron يدويًا
+
+stop_err=فشل في إيقاف البرنامج الخفي
+start_err=فشل بدء البرنامج الخفي
+stop_ecannot=لا يسمح لك بإيقاف البرنامج الخفي
+start_ecannot=لا يسمح لك ببدء البرنامج الخفي
+bootup_ecannot=لا يُسمح لك بتمكين البرنامج الخفي عند التمهيد

@@ -41,6 +41,9 @@ index_efrom=Neplatný dátum a čas začiatku
 index_eto=Neplatný dátum a čas ukončenia
 index_err=Nepodarilo sa vygenerovať prehľad
 index_usage=Sieťový prenos <font color=#ff0000>stiahnutý</font> a <font color=#0000ff>uploaded</font>
+index_in=Stiahnuť ▼
+index_out=Nahrať
+index_total=Celkom
 index_hhour=hodina
 index_hhost=Hostiteľ
 index_hday=deň

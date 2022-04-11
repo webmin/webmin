@@ -39,6 +39,8 @@ index_notify_users=Už vartotojų veiksmus
 index_notify_email=Siųsti el
 index_notify_usub=Į el. pašto temą įtraukti vartotojo vardą?
 index_notify_msub=Į el. pašto temą įtraukti veiksmą?
+index_searchtab=Paieškos žurnalai
+index_notifytab=Pranešimas el. paštu
 index_searchdesc=Ši forma gali būti naudojama ieškant Webmin veiksmų pagal vartotoją, modulį, dienų seką ir atliktus failus.
 index_notifydesc=Naudokite šią formą norėdami sukonfigūruoti el. pašto pranešimus, kai Webmin veiksmus atlieka pasirinkti vartotojai arba pasirinktuose moduliuose.
 

@@ -41,6 +41,9 @@ index_efrom=Ngày và giờ bắt đầu không hợp lệ
 index_eto=Ngày và thời gian kết thúc không hợp lệ
 index_err=Không thể tạo báo cáo
 index_usage=Lưu lượng truy cập mạng <font color=#ff0000>đã tải xuống</font> và <font color=#0000ff>đã tải lên</font>
+index_in=Tải xuống
+index_out=Tải lên
+index_total=Toàn bộ
 index_hhour=Giờ
 index_hhost=Tổ chức
 index_hday=ngày

@@ -1080,6 +1080,16 @@ web_expirespaths=Cachetider på klientsiden baseret på URL-sti
 web_expirespath=Sti regelmæssigt udtryk
 web_expirestime=Cache-tid i sekunder
 web_eexpires2=Manglende eller ikke-numerisk klientsiden cache tid i række $1
+web_rediruurl=Post-login switch omdirigerings-URL
+web_redirdesc=Intern omdirigerings-URL tilsidesætter
+web_eredirurl='$1' indeholder mellemrum og er ikke en gyldig URL
+web_redirhost=Omdiriger vært
+web_eredirhost='$1' er ikke et gyldigt værtsnavn
+web_redirport=Omdiriger port
+web_redirpref=Omdirigeringspræfiks
+web_eredirpref=Præfikset skal starte med skråstreg
+web_eredirpref2=Præfikset må ikke indeholde mellemrum
+web_redirssl=Omdiriger SSL
 
 webmincron_title=Webmin planlagte funktioner
 webmincron_emodule=Webmin Cron Jobs-modulet er ikke installeret!

@@ -1,3 +1,9 @@
+index_ifaces_def=Alle Schnittstellen
+index_ifaces_sel=Ausgewählte Schnittstellen:
+
+richrule_iperr=ungültige IP-Adresse
+richrule_actionerr=Ungültige Aktion
+
 log_create_forward=Vorwärts $1 hinzugefügt
 log_delete_forward=Vorwärts $1 entfernt
 log_update_forward=Vorwärts $1 aktualisiert

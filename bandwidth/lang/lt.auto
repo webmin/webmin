@@ -41,6 +41,9 @@ index_efrom=Netinkama pradžios data ir laikas
 index_eto=Netinkama pabaigos data ir laikas
 index_err=Nepavyko sugeneruoti ataskaitos
 index_usage=Tinklo srautas <font color=#ff0000>atsisiųstas</font> ir <font color=#0000ff>įkeltas</font>
+index_in=parsisiųsti
+index_out=Įkelti
+index_total=Iš viso
 index_hhour=Valanda
 index_hhost=Priimančioji
 index_hday=Diena

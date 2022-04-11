@@ -166,3 +166,4 @@ index_return=filoversigt
 upload_dirs=Directory upload
 extract_uploaded=Uddrag komprimeret
 extract_cmd_not_avail=Kunne ikke udpakke $1 fil, da kommandoen $2 mangler
+overwrite_existing=Overskriv eksisterende

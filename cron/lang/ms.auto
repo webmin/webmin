@@ -2,8 +2,21 @@ index_manual=Sukar kerja cron secara manual.
 index_next=Jalankan seterusnya
 index_nunknown=Tidak diketahui
 index_ecrondir_create=Cuba buat direktori pekerjaan $1 ?
+index_stop=Hentikan Cron Daemon
+index_stopdesc=Matikan proses pelayan latar belakang <tt>crond</tt> yang menjalankan tugas cron berjadual. Ini akan menghalang arahan daripada melaksanakan pada masa yang ditetapkan.
+index_start=Mulakan Cron Daemon
+index_startdesc=Mulakan proses pelayan latar belakang <tt>crond</tt> yang menjalankan tugas cron berjadual. <font color=red><b>Ini diperlukan untuk perintah dilaksanakan pada masa yang ditetapkan.</font></font>
+index_boot=Mulakan But Cron Daemon?
+index_bootdesc=Tukar tetapan ini untuk mendayakan atau melumpuhkan memulakan daemon tugas cron yang dijadualkan pada masa but sistem.
 
 edit_next=Masa lari seterusnya
+
+acl_stop=Bolehkah berhenti dan memulakan daemon Cron?
+
+log_stop=Daemon cron dihentikan
+log_start=Memulakan daemon cron
+log_bootup=Mendayakan daemon cron semasa but
+log_bootdown=Daemon cron dilumpuhkan semasa but
 
 when_boot=pada masa permulaan
 
@@ -15,3 +28,9 @@ manual_ok=Edit
 manual_editing=Gunakan kotak teks di bawah untuk mengedit pekerjaan Cron dalam $1. Berhati-hati, kerana tiada pengesahan akan dilakukan oleh Webmin!
 manual_efile=Fail terpilih tidak sah!
 manual_ecannot=Anda tidak dibenarkan mengedit cron secara manual
+
+stop_err=Gagal menghentikan daemon
+start_err=Gagal memulakan daemon
+stop_ecannot=Anda tidak dibenarkan untuk menghentikan daemon
+start_ecannot=Anda tidak dibenarkan memulakan daemon
+bootup_ecannot=Anda tidak dibenarkan mendayakan daemon semasa boot

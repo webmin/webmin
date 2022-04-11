@@ -170,4 +170,23 @@ manual_efile=Fajl magħżul mhux parti mill-konfigurazzjoni Fail2Ban!
 manual_err=Ma rnexxielux jeditja l-fajl konfigurazzjoni
 manual_edata=L-ebda kontenut ta 'fajl konfigurat ma daħal
 
+status_title=Status U Azzjonijiet tal-Ħabs
+status_title2=Status tal-ħabsijiet
+status_head_jail_name=Isem il-ħabs
+status_head_currently_failed=Bħalissa falla
+status_head_total_failed=Total falla
+status_head_currently_banned=Bħalissa pprojbit
+status_head_total_banned=Totali pprojbiti
+status_head_banned_ip_list=Lista IP pprojbiti
+status_jail_unblock_ip=Neħħi $1 mil-lista pprojbita
+status_jail_permblock_ip=Imblokka b'mod permanenti dan l-IP
+status_jail_unblock=Żblokka l-IPs Kollha għall-Ħabsijiet Magħżula
+status_jail_block=Imblokka IPs Ipprojbiti f'Ħabsijiet Magħżula
+status_jail_noactive=S'issa m'hemm l-ebda ħabsijiet attivi attivati.
+status_err_set=Azzjoni stabbilita falliet
+status_err_unblock=Naqas milli tiżblokka l-azzjoni
+status_err_nojail=L-ebda ħabsijiet ma ġew magħżula
+status_err_unban=Ma tistax tneħħi $1 indirizz IP
+status_err_ban=Ma tistax tipprojbixxi $1 indirizz IP
+
 syslog_logtarget=Ġurnal tal-azzjoni Fail2Ban

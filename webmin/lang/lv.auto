@@ -1080,6 +1080,16 @@ web_expirespaths=Klienta puses kešatmiņas laiki, pamatojoties uz URL ceļu
 web_expirespath=Ceļa regulārā izteiksme
 web_expirestime=Kešatmiņas laiks sekundēs
 web_eexpires2=Trūkst vai nav skaitliskas klienta puses kešatmiņas laika rindā $1
+web_rediruurl=Pēc pieteikšanās slēdža novirzīšanas URL
+web_redirdesc=Iekšējās novirzīšanas URL ignorēšana
+web_eredirurl='$1' satur atstarpes, un tas nav derīgs URL
+web_redirhost=Novirzīt saimniekdatoru
+web_eredirhost='$1' nav derīgs saimniekdatora nosaukums
+web_redirport=Pāradresācijas ports
+web_redirpref=Pāradresācijas prefikss
+web_eredirpref=Prefiksam jāsākas ar slīpsvītru
+web_eredirpref2=Prefiksā nedrīkst būt atstarpes
+web_redirssl=Novirzīt SSL
 
 webmincron_title=Webmin plānotās funkcijas
 webmincron_emodule=Webmin Cron Jobs modulis nav instalēts!

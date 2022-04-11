@@ -2,6 +2,7 @@ index_title=Procmail Mail-filter
 index_procmail=Procmail mail-filter
 index_desc_other=Procmail-handlingerne nedenfor fra $1 gælder for <b>al</b> e-mail, der er leveret til brugere på dit system. De bruges dog kun, hvis Procmail er installeret, og din mailserver er konfigureret til at bruge den.
 index_mserr=Advarsel - eventuelle regler defineret nedenfor vil ikke blive brugt : $1 
+index_virtualmin=Advarsel - dit systems procmail-konfiguration blev oprettet af Virtualmin for at tillade spam- og virusfiltrering pr. domæne. Ændring her kan forstyrre Virtualmins funktionalitet.
 index_action=Handling at tage
 index_conds=Betingelser
 index_move=Bevæge sig

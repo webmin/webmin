@@ -1080,6 +1080,16 @@ web_expirespaths=Cache-tye van kliënt-kant gebaseer op URL-pad
 web_expirespath=Pad gereelde uitdrukking
 web_expirestime=Kas tyd in sekondes
 web_eexpires2=Ontbrekende of nie-numeriese kasgeheertyd in die ry $1
+web_rediruurl=Na-aanmelding skakelaar herlei URL
+web_redirdesc=Interne herleiding-URL ignoreer
+web_eredirurl='$1' bevat spasies en is nie 'n geldige URL nie
+web_redirhost=Herlei gasheer
+web_eredirhost='$1' is nie 'n geldige gasheernaam nie
+web_redirport=Herlei poort
+web_redirpref=Herlei voorvoegsel
+web_eredirpref=Voorvoegsel moet met voorwaartse skuinsstreep begin
+web_eredirpref2=Voorvoegsel moet nie spasies bevat nie
+web_redirssl=Herlei SSL
 
 webmincron_title=Webmin geskeduleerde funksies
 webmincron_emodule=Die Webmin Cron Jobs-module is nie geïnstalleer nie!

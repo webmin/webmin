@@ -1080,6 +1080,16 @@ web_expirespaths=เวลาแคชฝั่งไคลเอ็นต์อ
 web_expirespath=เส้นทางการแสดงออกปกติ
 web_expirestime=เวลาแคชเป็นวินาที
 web_eexpires2=เวลาแคชฝั่งไคลเอ็นต์ที่หายไปหรือไม่ใช่ตัวเลขในแถว $1
+web_rediruurl=URL เปลี่ยนเส้นทางหลังการเข้าสู่ระบบ
+web_redirdesc=การแทนที่ URL เปลี่ยนเส้นทางภายใน
+web_eredirurl='$1' มีช่องว่างและไม่ใช่ URL ที่ถูกต้อง
+web_redirhost=เปลี่ยนเส้นทางโฮสต์
+web_eredirhost='$1' ไม่ใช่ชื่อโฮสต์ที่ถูกต้อง
+web_redirport=เปลี่ยนเส้นทางพอร์ต
+web_redirpref=คำนำหน้าเปลี่ยนเส้นทาง
+web_eredirpref=คำนำหน้าต้องขึ้นต้นด้วยเครื่องหมายทับ
+web_eredirpref2=คำนำหน้าต้องไม่มีช่องว่าง
+web_redirssl=เปลี่ยนเส้นทาง SSL
 
 webmincron_title=ฟังก์ชั่นที่กำหนดไว้ Webmin
 webmincron_emodule=ไม่ได้ติดตั้งโมดูล Webmin Cron Jobs!

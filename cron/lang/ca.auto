@@ -1,0 +1,19 @@
+index_stop=Atureu Cron Daemon
+index_stopdesc=Tanqueu el procés del servidor de fons <tt>crond</tt> que executa treballs cron programats. Això evitarà que les ordres s'executin a les hores especificades.
+index_start=Inicieu Cron Daemon
+index_startdesc=Inicieu el procés del servidor de fons <tt>crond</tt> que executa treballs cron programats. <font color=red><b>Això és necessari perquè les ordres s'executin a les hores especificades.</font></font>
+index_boot=Inicieu l'arrencada de Cron Daemon?
+index_bootdesc=Canvieu aquesta configuració per habilitar o desactivar l'inici del dimoni de tasques cron programades en el moment de l'arrencada del sistema.
+
+acl_stop=Es pot aturar i iniciar el dimoni Cron?
+
+log_stop=S'ha aturat el dimoni cron
+log_start=S'ha iniciat el dimoni cron
+log_bootup=S'ha habilitat el dimoni cron a l'arrencada
+log_bootdown=S'ha desactivat el dimoni cron a l'arrencada
+
+stop_err=No s'ha pogut aturar el dimoni
+start_err=No s'ha pogut iniciar el dimoni
+stop_ecannot=No teniu permís per aturar el dimoni
+start_ecannot=No teniu permís per iniciar el dimoni
+bootup_ecannot=No teniu permís per habilitar el dimoni a l'arrencada

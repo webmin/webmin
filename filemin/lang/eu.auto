@@ -166,3 +166,4 @@ index_return=fitxategi zerrenda
 upload_dirs=Direktorioa igotzea
 extract_uploaded=Atera konprimitua
 extract_cmd_not_avail=Ezin izan da $1 fitxategia atera, $2 komandoa falta baita
+overwrite_existing=Gainidatzi Lehendik dagoen

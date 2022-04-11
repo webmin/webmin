@@ -1,3 +1,23 @@
 log_update_filter=Filtre modificat $1 
 log_update_action=Acció modificada $1 
 log_update_jail=Presó modificada $1 
+
+status_title=Estat i accions de les presons
+status_title2=Estat de les presons
+status_head_jail_name=Nom de la presó
+
+status_head_currently_failed=Actualment fallat
+status_head_total_failed=Total fallit
+status_head_currently_banned=Prohibit actualment
+status_head_total_banned=Total prohibit
+status_head_banned_ip_list=Llista d'IP prohibides
+status_jail_unblock_ip=Elimina $1 de la llista prohibida
+status_jail_permblock_ip=Bloqueja permanentment aquesta IP
+status_jail_unblock=Desbloquegeu totes les IP de les presons seleccionades
+status_jail_block=Bloqueja les IP prohibides a les presons seleccionades
+status_jail_noactive=Encara no hi ha presons actives activades.
+status_err_set=No s'ha pogut establir l'acció
+status_err_unblock=No s'ha pogut desbloquejar l'acció
+status_err_nojail=No s'ha seleccionat cap presó
+status_err_unban=No es pot desbloquejar l'adreça IP de $1
+status_err_ban=No es pot prohibir l'adreça IP de $1

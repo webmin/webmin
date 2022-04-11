@@ -41,6 +41,9 @@ index_efrom=Hasierako data eta ordua baliogabeak
 index_eto=Amaiera data eta ordua baliogabea
 index_err=Ezin izan da txostena sortu
 index_usage=Sareko trafikoa <font color=#ff0000>deskargatu</font> eta <font color=#0000ff>kargatuta</font>
+index_in=Deskargatu
+index_out=Kargatu
+index_total=Guztira
 index_hhour=Ordua
 index_hhost=ostalaria
 index_hday=eguna

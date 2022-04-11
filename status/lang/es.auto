@@ -59,6 +59,10 @@ http_regexp=La página debe coincidir con regexp
 http_eregexp=No se ingresó ninguna expresión regular para que la página coincida
 http_none2=No coinciden
 http_ehead=El método de solicitud HEAD no se puede usar al verificar una expresión regular
+http_codes=Códigos de estado HTTP aceptables
+http_codes_def=Predeterminado ($1)
+http_ecodes=No se ingresaron códigos HTTP para aceptar
+http_ecodes3=El código HTTP debe ser un número de tres dígitos
 
 ping_timeout=Tiempo de espera después de $1 segundos
 ping_resolv=No se pudo resolver el nombre de host

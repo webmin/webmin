@@ -1080,6 +1080,16 @@ web_expirespaths=URL کے راستے پر مبنی کلائنٹ سائیڈ کی�
 web_expirespath=راستہ باقاعدہ اظہار
 web_expirestime=سیکنڈ میں کیش وقت
 web_eexpires2=Missing or non-numeric client side cache time in row $1
+web_rediruurl=پوسٹ لاگ ان سوئچ ری ڈائریکٹ URL
+web_redirdesc=اندرونی ری ڈائریکٹ URL کو اوور رائیڈ کرتا ہے۔
+web_eredirurl='$1' خالی جگہوں پر مشتمل ہے اور یہ درست URL نہیں ہے۔
+web_redirhost=میزبان کو ری ڈائریکٹ کریں۔
+web_eredirhost='$1' ایک درست میزبان نام نہیں ہے۔
+web_redirport=ری ڈائریکٹ پورٹ
+web_redirpref=ری ڈائریکٹ سابقہ
+web_eredirpref=سابقہ فارورڈ سلیش سے شروع ہونا چاہیے۔
+web_eredirpref2=پریفکس میں خالی جگہیں نہیں ہونی چاہئیں
+web_redirssl=SSL کو ری ڈائریکٹ کریں۔
 
 webmincron_title=ویبمین کے شیڈول کردہ افعال
 webmincron_emodule=ویبمین کرون جابس ماڈیول انسٹال نہیں ہوا ہے!

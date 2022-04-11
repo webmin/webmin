@@ -166,3 +166,4 @@ index_return=lista de arquivos
 upload_dirs=Upload de diretório
 extract_uploaded=Extrair compactado
 extract_cmd_not_avail=Não foi possível extrair o arquivo $1 porque o comando $2 está faltando
+overwrite_existing=Sobrescrever existente

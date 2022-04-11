@@ -1080,6 +1080,16 @@ web_expirespaths=Timpurile de cache din partea clientului, bazate pe calea URL
 web_expirespath=Expresie regulată a căii
 web_expirestime=Timpul de cache în câteva secunde
 web_eexpires2=Timpul de cache al clientului care lipsește sau nu este numeric în rândul $1
+web_rediruurl=Adresa URL de redirecționare a comutatorului după conectare
+web_redirdesc=Adresa URL de redirecționare internă se înlocuiește
+web_eredirurl=„$1” conține spații și nu este o adresă URL validă
+web_redirhost=Redirecționează gazda
+web_eredirhost=„$1” nu este un nume de gazdă valid
+web_redirport=Port de redirecționare
+web_redirpref=Prefix de redirecționare
+web_eredirpref=Prefixul trebuie să înceapă cu o oblică
+web_eredirpref2=Prefixul nu trebuie să conțină spații
+web_redirssl=Redirecționează SSL
 
 webmincron_title=Funcții programate pentru Webmin
 webmincron_emodule=Modulul Webmin Cron Jobs nu este instalat!

@@ -320,6 +320,16 @@ web_expirespaths=URL 경로에 따른 클라이언트 측 캐시 시간
 web_expirespath=경로 정규식
 web_expirestime=캐시 시간 (초)
 web_eexpires2=$1 행에 없거나 숫자가 아닌 클라이언트 측 캐시 시간
+web_rediruurl=로그인 후 전환 리디렉션 URL
+web_redirdesc=내부 리디렉션 URL 재정의
+web_eredirurl='$1'에 공백이 포함되어 있으며 유효한 URL이 아닙니다
+web_redirhost=호스트 리디렉션
+web_eredirhost='$1'은(는) 유효한 호스트 이름이 아닙니다
+web_redirport=리디렉션 포트
+web_redirpref=리디렉션 접두사
+web_eredirpref=접두사는 슬래시로 시작해야 합니다
+web_eredirpref2=접두사는 공백을 포함할 수 없습니다
+web_redirssl=SSL 리디렉션
 
 webmincron_title=Webmin 예약 기능
 webmincron_emodule=Webmin Cron Jobs 모듈이 설치되지 않았습니다!

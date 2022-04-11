@@ -216,6 +216,10 @@ http_regexp=Die bladsy moet ooreenstem met regexp
 http_eregexp=Geen gereelde uitdrukking vir bladsy om by te pas nie
 http_none2=Moenie ooreenstem nie
 http_ehead=Die HEAD-aanvraagmetode kan nie gebruik word as daar na 'n reëlmatige uitdrukking gekyk word nie
+http_codes=Aanvaarbare HTTP-statuskodes
+http_codes_def=Verstek ($1)
+http_ecodes=Geen HTTP-kodes om te aanvaar is ingevoer nie
+http_ecodes3=HTTP-kode moet 'n driesyfergetal wees
 
 ping_host=Gasheer vir ping
 ping_wait=Tyd om te wag vir reaksie

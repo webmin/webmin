@@ -23,6 +23,12 @@ index_ok=Procurar
 index_searchres=Trabalhos Cron correspondentes a $1 ..
 index_reset=Redefinir pesquisa.
 index_econfigcheck=Trabalhos Cron não podem ser gerenciados no seu sistema, pois a configuração do módulo não é válida : $1 
+index_stop=Parar Cron Daemon
+index_stopdesc=Encerre o processo do servidor em segundo plano <tt>crond</tt> que executa tarefas cron agendadas. Isso impedirá que os comandos sejam executados em seus horários especificados.
+index_start=Iniciar Cron Daemon
+index_startdesc=Inicie o processo do servidor em segundo plano <tt>crond</tt> que executa tarefas cron agendadas. <font color=red><b>Isso é necessário para que os comandos sejam executados nos horários especificados.</font></font>
+index_boot=Iniciar inicialização do Cron Daemon?
+index_bootdesc=Altere esta configuração para habilitar ou desabilitar a inicialização do daemon de tarefas cron agendadas no momento da inicialização do sistema.
 
 edit_next=Próximo tempo de execução
 edit_comment=Descrição
@@ -77,6 +83,7 @@ acl_move=Pode mover trabalhos do Cron?
 acl_kill=Pode terminar trabalhos Cron?
 acl_hourly=Limitar trabalhos a no máximo por hora?
 acl_hourlydef=Conforme definido em Configuração do módulo
+acl_stop=Pode parar e iniciar o daemon Cron?
 
 log_modify=Trabalho Cron modificado para $1 
 log_modify_l=Trabalho Cron modificado "$2" para $1 
@@ -95,6 +102,10 @@ log_move=Trabalho Cron movido para $1
 log_crons_delete=$1 Cron empregos excluídos
 log_crons_disable=$1 Cron empregos desativados
 log_crons_enable=Trabalhos $1 Cron ativados
+log_stop=daemon cron parado
+log_start=daemon cron iniciado
+log_bootup=daemon cron ativado na inicialização
+log_bootdown=daemon cron desabilitado na inicialização
 
 ecopy=Foi detectado um erro na nova configuração do Cron: $1 $2 
 
@@ -143,3 +154,9 @@ manual_ok=Editar
 manual_editing=Use a caixa de texto abaixo para editar tarefas Cron em $1. Tenha cuidado, pois nenhuma validação será feita pelo Webmin!
 manual_efile=O arquivo selecionado não é válido!
 manual_ecannot=Você não tem permissão para editar manualmente tarefas cron
+
+stop_err=Falha ao parar o daemon
+start_err=Falha ao iniciar o daemon
+stop_ecannot=Você não tem permissão para parar o daemon
+start_ecannot=Você não tem permissão para iniciar o daemon
+bootup_ecannot=Você não tem permissão para habilitar o daemon na inicialização

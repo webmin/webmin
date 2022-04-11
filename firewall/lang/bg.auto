@@ -1,1 +1,10 @@
 index_no_comment=
+
+desc_match-set=$2 съответства на IPset $1
+desc_match-set!=$2 не съответства на IPset $1
+desc_match-set_src=входящ трафик
+desc_match-set_dst=изходящ трафик
+
+edit_matchset=Съвпадение на IPset
+edit_matchsetsrc=върху входящия трафик
+edit_matchsetdst=на изходящ трафик

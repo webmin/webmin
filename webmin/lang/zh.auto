@@ -373,6 +373,16 @@ web_expires=客户端的静态文件缓存时间
 web_expiressecs=时间（以秒为单位）
 web_expirespath=路径正则表达式
 web_expirestime=缓存时间（以秒为单位）
+web_rediruurl=登录后切换重定向 URL
+web_redirdesc=内部重定向 URL 覆盖
+web_eredirurl=“$1”包含空格，不是有效的 URL
+web_redirhost=重定向主机
+web_eredirhost=“$1”不是有效的主机名
+web_redirport=重定向端口
+web_redirpref=重定向前缀
+web_eredirpref=前缀必须以正斜杠开头
+web_eredirpref2=前缀不能包含空格
+web_redirssl=重定向 SSL
 
 webmincron_when=运行于
 webmincron_enone=未选择

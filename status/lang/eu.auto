@@ -216,6 +216,10 @@ http_regexp=Orriak regexp-ekin bat egin behar du
 http_eregexp=Ez da sartu adierazpenarekin bat datorren orrialderako adierazpen erregularrik
 http_none2=Ez datoz bat
 http_ehead=HEAD eskaera metodoa ezin da erabili adierazpen arruntak egiaztatzean
+http_codes=HTTP egoera-kode onargarriak
+http_codes_def=Lehenetsia ($1)
+http_ecodes=Ez da onartu beharreko HTTP koderik sartu
+http_ecodes3=HTTP kodeak hiru zifrako zenbakia izan behar du
 
 ping_host=Ostalaria ping-era
 ping_wait=Erantzuna itxaroteko denbora

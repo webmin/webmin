@@ -30,6 +30,8 @@ index_return=lista taż-żoni
 index_ezones=L-ebda żoni FirewallD ma nstabu!
 index_none=Din iż-żona għad m'għandha l-ebda port jew servizzi permessi.
 index_ifaces=Applika r-regoli għall-interfaces:
+index_ifaces_def=L-interfaces kollha
+index_ifaces_sel=Interfaces magħżula:
 
 port_edit=Editja l-Port
 port_create=Żid Port
@@ -90,6 +92,9 @@ delzone_edefault=Iż-żona default ma tistax titneħħa
 delzone_rusure=Int żgur li trid tħassar iż-żona $1, li fiha $2 portijiet u servizzi $3 ?
 
 defzone_err=Naqset milli tagħmel iż-żona default
+
+richrule_iperr=Indirizz IP invalidu
+richrule_actionerr=Azzjoni invalida
 
 restart_err=Ma rnexxielux japplika l-konfigurazzjoni
 

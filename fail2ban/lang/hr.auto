@@ -170,4 +170,23 @@ manual_efile=Odabrana datoteka nije dio konfiguracije Fail2Ban!
 manual_err=Nije uspjelo uređivanje konfiguracijske datoteke
 manual_edata=Nije unesen sadržaj konfiguracijske datoteke
 
+status_title=Status i radnje zatvora
+status_title2=Status zatvora
+status_head_jail_name=Ime zatvora
+status_head_currently_failed=Trenutno nije uspjelo
+status_head_total_failed=Ukupno nije uspjelo
+status_head_currently_banned=Trenutno zabranjeno
+status_head_total_banned=Totalno zabranjeno
+status_head_banned_ip_list=Popis zabranjenih IP-a
+status_jail_unblock_ip=Ukloni $1 s popisa zabranjenih
+status_jail_permblock_ip=Trajno blokirajte ovaj IP
+status_jail_unblock=Deblokirajte sve IP adrese za odabrane zatvore
+status_jail_block=Blokirajte zabranjene IP adrese u odabranim zatvorima
+status_jail_noactive=Još nema omogućenih aktivnih zatvora.
+status_err_set=Radnja postavljanja nije uspjela
+status_err_unblock=Deblokiranje radnje nije uspjelo
+status_err_nojail=Nisu odabrani zatvori
+status_err_unban=Nije moguće poništiti zabranu IP adrese $1
+status_err_ban=Nije moguće zabraniti $1 IP adresu
+
 syslog_logtarget=Dnevnik akcija Fail2Ban

@@ -51,6 +51,8 @@ session_header=A PHP munkamenet követésének lehetőségei
 session_handler=Munkamenet-tároló mechanizmus
 session_mm=Emlékül
 session_users=Felhasználó által meghatározott
+session_redis=Redis
+session_memcache=MemcacheD
 session_path=Munkamenet fájlok könyvtára
 session_cookies=Engedélyezi a sütik használatát a munkamenet nyomon követésére?
 session_only_cookies=Mindig használ sütiket a munkamenet nyomon követéséhez?
@@ -59,7 +61,6 @@ session_maxlife=A munkamenet maximális élettartama
 session_epath=Hiányzó vagy érvénytelen könyvtár a munkamenet fájlokhoz
 session_elife=Hiányzó vagy érvénytelen süti élettartama
 session_emaxlife=Hiányzik vagy érvénytelen a munkamenet maximális élettartama
-session_eredis=Hiányzó vagy letiltott újbóli kiterjesztés
 
 safe_header=Biztonságos fájlhozzáférési mód opciók
 safe_on=Engedélyezi a biztonságos módot?

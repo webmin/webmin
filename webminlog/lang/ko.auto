@@ -11,6 +11,8 @@ index_notify_users=사용자의 작업에 대해
 index_notify_email=이메일 보내기
 index_notify_usub=이메일 제목에 사용자 이름을 포함하시겠습니까?
 index_notify_msub=이메일 제목에 작업을 포함하시겠습니까?
+index_searchtab=로그 검색
+index_notifytab=이메일 알림
 index_searchdesc=이 양식은 사용자, 모듈, 날짜 범위 및 영향을 받는 파일별로 Webmin 작업을 검색하는 데 사용할 수 있습니다.
 index_notifydesc=선택한 사용자 또는 선택한 모듈에서 Webmin 작업을 수행할 때 이 양식을 사용하여 이메일 알림을 구성합니다.
 

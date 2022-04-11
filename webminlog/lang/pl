@@ -12,7 +12,6 @@ index_yesterday=Tylko wczoraj
 index_week=Ostatniego tygodnia
 index_time=Pomiędzy $1 a $2
 index_search=Szukaj
-
 index_return=formularza szukania
 index_nolog=<b>Uwaga</b> - <a href='$1'>Logowanie w Webminie</a> nie jest aktualnie włączone, więc prawdopodobnie przeszukiwanie logu nie da żadnych wyników.
 index_nologfiles=<b>Uwaga</b> - <a href='$1'>Logowanie zmian w plikach</a> nie jest aktualnie włączone, więc informacje o zarejestrowanych zdarzeniach nie będą zawierać zmian w plikach ani uruchomionych poleceń.
@@ -31,6 +30,7 @@ index_sdesc=Opis działania zawiera
 index_shost=Źródłowy serwer Webmina
 index_long=Pokazywać pełne opisy zdarzeń?
 index_global=&lt;W żadnym module&gt;
+
 search_title=Wyniki poszukiwania
 search_date=Data
 search_time=Czas

@@ -41,6 +41,9 @@ index_efrom=Nederīgs sākuma datums un laiks
 index_eto=Nederīgs beigu datums un laiks
 index_err=Neizdevās ģenerēt pārskatu
 index_usage=Tīkla trafiks <font color=#ff0000>lejupielādēts</font> un <font color=#0000ff>augšupielādēts</font>
+index_in=Lejupielādēt
+index_out=Augšupielādēt
+index_total=Kopā
 index_hhour=Stunda
 index_hhost=Saimnieks
 index_hday=Diena

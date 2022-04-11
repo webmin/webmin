@@ -31,6 +31,12 @@ index_ok=تلاش کریں
 index_searchres=کرون ملازمتیں $1 سے مماثل ہیں۔
 index_reset=تلاش کو دوبارہ ترتیب دیں۔
 index_econfigcheck=آپ کے سسٹم پر کرون ملازمتوں کا انتظام نہیں کیا جاسکتا ، کیونکہ ماڈیول ترتیب درست نہیں ہے :$1
+index_stop=کرون ڈیمون کو روکیں۔
+index_stopdesc=Shut down the <tt>crond</tt> background server process that runs scheduled cron jobs. This will prevent commands from executing at their specified times.
+index_start=کرون ڈیمون شروع کریں۔
+index_startdesc=Start up the <tt>crond</tt> background server process that runs scheduled cron jobs. <font color=red><b>This is required for commands to execute at their specified times.</b></font>
+index_boot=کرون ڈیمون بوٹ شروع کریں؟
+index_bootdesc=سسٹم بوٹ ٹائم پر شیڈول کرون جابز ڈیمون کو شروع کرنے کو فعال یا غیر فعال کرنے کے لیے اس ترتیب کو تبدیل کریں۔
 
 edit_title=کرون جاب میں ترمیم کریں
 create_title=کرون جاب بنائیں
@@ -128,6 +134,7 @@ acl_move=کیا کرون کی ملازمتیں منتقل ہوسکتی ہیں؟
 acl_kill=کیا کرون کی نوکریوں کو ختم کیا جاسکتا ہے؟
 acl_hourly=ملازمتوں کو زیادہ سے زیادہ فی گھنٹہ تک محدود رکھیں؟
 acl_hourlydef=جیسا کہ ماڈیول تشکیل میں سیٹ کیا گیا ہے
+acl_stop=کرون ڈیمون کو روک کر شروع کر سکتے ہیں؟
 
 log_modify=$1 کے لئے ترمیم شدہ کرون ملازمت
 log_modify_l=$1 کے لئے ترمیم شدہ کرون ملازمت "$2"
@@ -146,6 +153,10 @@ log_move=کرون کی نوکری کو$1 کیلئے منتقل کردیا گیا
 log_crons_delete=حذف شدہ$1 کرون کی نوکریاں
 log_crons_disable=غیر فعال$1 کرون ملازمتیں
 log_crons_enable=$1 کرون ملازمتوں کو قابل بنایا
+log_stop=کرون ڈیمون کو روکا گیا۔
+log_start=کرون ڈیمون شروع کیا۔
+log_bootup=بوٹ پر فعال کرون ڈیمون
+log_bootdown=بوٹ پر کرون ڈیمون کو غیر فعال کر دیا گیا۔
 
 ecopy=نئی کرون کنفیگریشن میں ایک خرابی پائی گئی:$1 $2
 
@@ -194,3 +205,9 @@ manual_ok=ترمیم
 manual_editing=کرون ملازمتوں کو$1 میں ترمیم کرنے کے لئے نیچے ٹیکسٹ باکس کا استعمال کریں۔ ہوشیار رہو ، کیونکہ ویب مین کے ذریعہ کوئی توثیق نہیں کی جائے گی!
 manual_efile=منتخب فائل درست نہیں ہے!
 manual_ecannot=آپ کو کرون ملازمتوں کو دستی طور پر ترمیم کرنے کی اجازت نہیں ہے
+
+stop_err=ڈیمون کو روکنے میں ناکام
+start_err=ڈیمون شروع کرنے میں ناکام
+stop_ecannot=آپ کو ڈیمون کو روکنے کی اجازت نہیں ہے۔
+start_ecannot=آپ کو ڈیمون شروع کرنے کی اجازت نہیں ہے۔
+bootup_ecannot=آپ کو بوٹ پر ڈیمون کو فعال کرنے کی اجازت نہیں ہے۔

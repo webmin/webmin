@@ -2,6 +2,11 @@ mon_virtualmin=Warnung! Dieser Monitor ist der Virtualmin-Domäne $1 zugeordnet 
 
 sched_warn3=Solange der Service läuft
 
+http_codes=Akzeptable HTTP-Statuscodes
+http_codes_def=Standard ($1)
+http_ecodes=Keine zu akzeptierenden HTTP-Codes eingegeben
+http_ecodes3=Der HTTP-Code muss eine dreistellige Zahl sein
+
 ping_timeout=Zeitüberschreitung nach $1 Sekunden
 ping_resolv=Hostname konnte nicht aufgelöst werden
 

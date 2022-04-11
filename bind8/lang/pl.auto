@@ -17,18 +17,25 @@ edit_efp=„$1” nie jest prawidłowym typem odcisku palca certyfikatu
 edit_esshfp=Brakujące lub nieprawidłowe dane klucza publicznego zakodowane w standardzie 64
 edit_edmarcruf=Brakuje adresu informacji sądowej
 edit_ecaavalue2=Brakująca lub niepoprawnie wyglądająca nazwa domeny
+edit_enaptrvalue0=Kolejność rekordów musi być liczbą
+edit_enaptrvalue1=Preferencja zapisu musi być liczbą
+edit_enaptrvalue3=Brak pola usług
+edit_enaptrvalue4=Można ustawić tylko jedno z pól wyrażenia regularnego i zastępczego
 
 type_TLSA=Certyfikat SSL
 type_SSHFP=Klucz publiczny SSH
 type_CAA=Urząd certyfikacji
+type_NAPTR=Wskaźnik organu nazwy
 
 edit_TLSA=Certyfikat SSL
 edit_SSHFP=Klucz publiczny SSH
 edit_CAA=Urząd certyfikacji
+edit_NAPTR=Wskaźnik organu nazwy
 
 recs_TLSA=Certyfikat SSL
 recs_SSHFP=Klucz publiczny SSH
 recs_CAA=Urząd certyfikacji
+recs_NAPTR=Nazwisko Organ
 
 value_TLSA1=Wykorzystanie certyfikatu
 value_TLSA2=Selektor certyfikatów
@@ -49,6 +56,21 @@ value_CAA3=Nazwa domeny CA
 value_caa_issue=Certyfikat jednej domeny
 value_caa_issuewild=Wildcard cert
 value_caa_iodef=URL naruszenia zasad
++value_dmarcri=Interwał raportowania
++value_dmarcrf=Format raportu
++value_dmarcafrf=Format zgłaszania niepowodzeń uwierzytelniania
+value_NAPTR1=Zamówienie
+value_NAPTR2=Pierwszeństwo
+value_NAPTR3=Flagi
+value_NAPTR4=Usługi
+value_NAPTR5=Wyrażenie regularne
+value_NAPTR5_def=Brak (użyj zamiennika)
+value_NAPTR6=Zastąpienie
+value_NAPTR6_def=Brak (użyj wyrażenia regularnego)
+value_NAPTR3_S=Wyszukaj następny rekord SRV
+value_NAPTR3_A=Wyszukaj następny rekord A lub AAAA
+value_NAPTR3_U=Użyj wyjścia wyrażenia regularnego dalej
+value_NAPTR3_P=Działanie specyficzne dla protokołu
 
 tlsa_usage0=Urząd certyfikacji
 tlsa_usage1=Jednostka końcowa
@@ -80,6 +102,7 @@ dnssec_secs=sekundy
 dt_zone_zskrolldesc=Wymuś najazd klucza podpisującego strefę
 dt_zone_kskrolldesc=Wymuś najazd klucza podpisującego klucz strefy
 
+zonekey_algorithm=Algorytm DNSSEC : $1 
 zonekey_eprivate=Nie można odczytać klucza prywatnego powiązanego z tą strefą : $1
 
 trusted_auto=Tak (tryb automatyczny)

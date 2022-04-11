@@ -9,7 +9,6 @@ index_tall=Todos
 index_today=Sólo para hoy
 index_time=Entre $1 y $2
 index_search=Buscar
-
 index_return=formulario de búsqueda
 index_nolog=<b>Nota</b> - <a href='$1'>el histórico de Webmin</a> no está activado actualmente, así que es probable que las búsquedas en el histórico de acciones no produzcan resultados.
 index_nologfiles=<b>Nota</b> - <a href='$1'>El histórico de cambio de archivos</a> no está activado en este momento, por ello los detalles de las acciones almacenadas en los históricos no incluirán los archivos cambiados o los comandos ejecutados.
@@ -17,6 +16,7 @@ index_fall=Que modificó cualquier archivo
 index_file=Que modificó archivo
 index_wall=De cualquier servidor Webmin
 index_whost=Del servidor
+
 search_title=Resultados de la Búsqueda
 search_date=Fecha
 search_time=Hora

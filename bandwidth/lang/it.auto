@@ -41,6 +41,9 @@ index_efrom=Data e ora di inizio non valide
 index_eto=Data e ora di fine non valide
 index_err=Generazione del rapporto non riuscita
 index_usage=Traffico di rete <font color=#ff0000>scaricato</font> e <font color=#0000ff>caricato</font>
+index_in=Scarica
+index_out=Caricamento
+index_total=Totale
 index_hhour=Ora
 index_hhost=Ospite
 index_hday=Giorno

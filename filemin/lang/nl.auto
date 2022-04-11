@@ -166,3 +166,4 @@ index_return=bestandslijst
 upload_dirs=Directory uploaden
 extract_uploaded=Gecomprimeerd uitpakken
 extract_cmd_not_avail=Kon $1-bestand niet uitpakken omdat de opdracht $2 ontbreekt
+overwrite_existing=Overschrijf bestaande

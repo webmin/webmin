@@ -2,6 +2,7 @@ index_title=Procmail Mail iragazkia
 index_procmail=Procmail posta iragazkia
 index_desc_other=$1 etik beherako procmail ekintzak <b>guztiei</b> mezu elektronikoan aplikatuko zaizkie erabiltzaileei emandako sisteman. Hala ere, Procmail instalatuta badago eta zure posta zerbitzaria konfiguratuta badago bakarrik erabiliko dira.
 index_mserr=Abisua: jarraian zehazten diren arauak ez dira erabiliko : $1 
+index_virtualmin=Abisua - zure sistemaren procmail konfigurazioa Virtualmin-ek sortu du domeinu bakoitzeko spam eta birusen iragazketa ahalbidetzeko. Hemen aldatzeak Virtualmin-en funtzionaltasuna oztopatu dezake.
 index_action=Egiteko neurriak
 index_conds=Baldintza
 index_move=Mugitu

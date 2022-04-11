@@ -31,6 +31,12 @@ index_ok=Søg
 index_searchres=Cron job matchende $1 ..
 index_reset=Nulstil søgning.
 index_econfigcheck=Cron-job kan ikke administreres på dit system, da modulkonfigurationen ikke er gyldig : $1 
+index_stop=Stop Cron Daemon
+index_stopdesc=Luk <tt>crond</tt>-baggrundsserverprocessen, der kører planlagte cron-job. Dette vil forhindre kommandoer i at udføre på deres angivne tidspunkter.
+index_start=Start Cron Daemon
+index_startdesc=Start <tt>crond</tt> baggrundsserverprocessen, der kører planlagte cron-job. <font color=red><b>Dette er nødvendigt for, at kommandoer kan udføres på de angivne tidspunkter.</font></font>
+index_boot=Starte Cron Daemon Boot?
+index_bootdesc=Skift denne indstilling for at aktivere eller deaktivere start af den planlagte cron job-dæmon ved systemets opstartstid.
 
 edit_title=Rediger Cron Job
 create_title=Opret Cron Job
@@ -128,6 +134,7 @@ acl_move=Kan flytte Cron job?
 acl_kill=Kan opsige Cron-job?
 acl_hourly=Begrænse job til højst hver time?
 acl_hourlydef=Som angivet i modulkonfig
+acl_stop=Kan du stoppe og starte Cron-dæmonen?
 
 log_modify=Ændret Cron-job for $1 
 log_modify_l=Ændret Cron-job "$2" for $1 
@@ -146,6 +153,10 @@ log_move=Flyttede Cron-job for $1
 log_crons_delete=Slet $1 Cron-job
 log_crons_disable=Deaktiveret $1 Cron-job
 log_crons_enable=Aktiveret $1 Cron-job
+log_stop=Stoppet cron daemon
+log_start=Startede cron daemon
+log_bootup=Aktiveret cron-dæmon ved opstart
+log_bootdown=Deaktiveret cron-dæmon ved opstart
 
 ecopy=Der blev fundet en fejl i den nye Cron-konfiguration: $1 $2 
 
@@ -194,3 +205,9 @@ manual_ok=Redigere
 manual_editing=Brug tekstboksen nedenfor til at redigere Cron-job i $1. Vær forsigtig, da der ikke foretages nogen validering af Webmin!
 manual_efile=Den valgte fil er ikke gyldig!
 manual_ecannot=Du har ikke tilladelse til manuelt at redigere cron-job
+
+stop_err=Det lykkedes ikke at stoppe dæmonen
+start_err=Kunne ikke starte daemon
+stop_ecannot=Du har ikke lov til at stoppe dæmonen
+start_ecannot=Du har ikke lov til at starte dæmonen
+bootup_ecannot=Du har ikke tilladelse til at aktivere dæmonen ved opstart

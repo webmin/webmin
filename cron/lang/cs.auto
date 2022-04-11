@@ -2,11 +2,24 @@ index_manual=Ručně upravte úlohy cronu.
 index_next=Další běh
 index_nunknown=Neznámý
 index_ecrondir_create=Zkuste vytvořit adresář úloh $1 ?
+index_stop=Zastavte démona Crona
+index_stopdesc=Vypněte proces serveru <tt>crond</tt> na pozadí, který spouští plánované úlohy cronu. To zabrání provádění příkazů v určených časech.
+index_start=Spusťte Cron Daemon
+index_startdesc=Spusťte proces serveru <tt>crond</tt> na pozadí, který spouští naplánované úlohy cronu. <font color=red><b>Toto je vyžadováno, aby se příkazy spouštěly v určený čas.</font></font>
+index_boot=Spustit Cron Daemon Boot?
+index_bootdesc=Změňte toto nastavení, chcete-li povolit nebo zakázat spouštění démona naplánovaných úloh cron při spouštění systému.
 
 edit_next=Čas příštího běhu
 edit_saverun=Uložit a spustit hned
 
 save_eidx=Úloha Cron byla úspěšně uložena, ale nelze ji spustit, protože nebyla nalezena!
+
+acl_stop=Dokážete zastavit a spustit démona Cron?
+
+log_stop=Zastaven cron démon
+log_start=Spuštěný démon cron
+log_bootup=Při spouštění povolen démon cron
+log_bootdown=Deaktivovaný cron démon při bootování
 
 when_interval=každých $1 sekund
 when_boot=v době spuštění
@@ -20,3 +33,9 @@ manual_ok=Upravit
 manual_editing=Pomocí textového pole níže upravte úlohy Cronu v $1. Buďte opatrní, protože Webmin nebude provádět žádné ověření!
 manual_efile=Vybraný soubor není platný!
 manual_ecannot=Není dovoleno manuálně upravovat úlohy cron
+
+stop_err=Nepodařilo se zastavit démona
+start_err=Spuštění démona se nezdařilo
+stop_ecannot=Nemáte dovoleno démona zastavit
+start_ecannot=Nemáte povoleno spustit démona
+bootup_ecannot=Nemáte povoleno povolit démona při spouštění

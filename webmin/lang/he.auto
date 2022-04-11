@@ -1080,6 +1080,16 @@ web_expirespaths=זמני מטמון בצד הלקוח על בסיס נתיב UR
 web_expirespath=נתיב ביטוי רגיל
 web_expirestime=זמן המטמון בשניות
 web_eexpires2=Missing or non-numeric client side cache time in row $1
+web_rediruurl=כתובת אתר להפניה מחדש של מתג לאחר התחברות
+web_redirdesc=עקיפות של כתובת אתר להפניה מחדש
+web_eredirurl='$1' מכיל רווחים ואינו כתובת אתר חוקית
+web_redirhost=מארח הפניה מחדש
+web_eredirhost='$1' אינו שם מארח חוקי
+web_redirport=יציאה מחדש
+web_redirpref=קידומת הפניה מחדש
+web_eredirpref=הקידומת חייבת להתחיל עם לוכסן קדימה
+web_eredirpref2=הקידומת לא יכולה להכיל רווחים
+web_redirssl=הפניה מחדש של SSL
 
 webmincron_title=פונקציות מתוזמנות של Webmin
 webmincron_emodule=מודול Webmin Cron Jobs אינו מותקן!

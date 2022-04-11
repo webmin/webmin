@@ -30,6 +30,8 @@ index_return=senarai zon
 index_ezones=Tiada Zon FirewallD dijumpai!
 index_none=Zon ini tidak mempunyai sebarang pelabuhan atau perkhidmatan yang dibenarkan.
 index_ifaces=Memohon peraturan untuk antara muka:
+index_ifaces_def=Semua antara muka
+index_ifaces_sel=Antara muka yang dipilih:
 
 port_edit=Edit Port
 port_create=Tambah Pelabuhan
@@ -90,6 +92,9 @@ delzone_edefault=Zon lalai tidak boleh dialih keluar
 delzone_rusure=Adakah anda pasti mahu memadamkan zon $1, yang mengandungi $2 port dan perkhidmatan $3 ?
 
 defzone_err=Gagal menjadikan zon lalai
+
+richrule_iperr=Alamat IP tidak sah
+richrule_actionerr=Tindakan tidak sah
 
 restart_err=Gagal menggunakan konfigurasi
 

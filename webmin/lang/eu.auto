@@ -1080,6 +1080,16 @@ web_expirespaths=Bezeroaren alboko katxeko aldiz URL bidean oinarritutakoak
 web_expirespath=Bidea adierazpen erregularra
 web_expirestime=Cache denbora segundo batzuetan
 web_eexpires2=Bezeroaren alboko cache-denbora edo ez-zenbaki bat falta da errenkadan $1
+web_rediruurl=Saioa hasi osteko etengailua birbideratzeko URLa
+web_redirdesc=Barne-birbideratze-URLak gainidazten ditu
+web_eredirurl='$1'-ek zuriuneak ditu eta ez da baliozko URL bat
+web_redirhost=Birbideratu ostalaria
+web_eredirhost='$1' ez da baliozko ostalari-izena
+web_redirport=Birbideratu ataka
+web_redirpref=Birbideratu aurrizkia
+web_eredirpref=Aurrizkiak barra-barrarekin hasi behar du
+web_eredirpref2=Aurrizkiak ez du zuriunerik izan behar
+web_redirssl=SSL birbideratu
 
 webmincron_title=Webmin programatutako funtzioak
 webmincron_emodule=Webmin Cron Jobs modulua ez dago instalatuta!

@@ -28,6 +28,8 @@ index_notify_users=对于用户的操作
 index_notify_email=发送电子邮件至
 index_notify_usub=在电子邮件主题中包含用户名？
 index_notify_msub=在电子邮件主题中包含操作？
+index_searchtab=搜索日志
+index_notifytab=电子邮件通知
 index_searchdesc=此表单可用于按用户、模块、日期范围和受影响的文件搜索 Webmin 操作。
 index_notifydesc=使用此表单在选定用户或所选模块中配置WebMin操作时配置电子邮件通知。
 

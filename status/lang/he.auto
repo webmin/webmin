@@ -216,6 +216,10 @@ http_regexp=על הדף להתאים לחישוב רגיל
 http_eregexp=לא הוזן ביטוי רגיל לדף להתאמה
 http_none2=אל תתאים
 http_ehead=לא ניתן להשתמש בשיטת בקשת HEAD בבדיקת ביטוי רגיל
+http_codes=קודי מצב HTTP מקובלים
+http_codes_def=ברירת מחדל ($1)
+http_ecodes=לא הוזנו קודי HTTP לאישור
+http_ecodes3=קוד HTTP חייב להיות מספר בן שלוש ספרות
 
 ping_host=מארח לפינג
 ping_wait=זמן לחכות לתגובה

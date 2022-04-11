@@ -1,5 +1,6 @@
 index_desc_other=Le azioni procmail di seguito da $1 si applicheranno a <b>tutte</b> le email inviate agli utenti sul tuo sistema. Tuttavia, verranno utilizzati solo se Procmail è installato e il tuo server di posta è configurato per usarlo.
 index_mserr=Avviso: non verranno utilizzate le regole definite di seguito : $1 
+index_virtualmin=Avviso: la configurazione di procmail del tuo sistema è stata creata da Virtualmin per consentire il filtraggio di virus e spam per dominio. La modifica qui potrebbe interferire con la funzionalità di Virtualmin.
 index_action=Azione da intraprendere
 index_man=Modifica manualmente la configurazione
 index_mandesc=Modifica direttamente il file di configurazione principale di Procmail, per creare regole, variabili e blocchi personalizzati.

@@ -10,6 +10,12 @@ index_ok=Ricerca
 index_searchres=Cron lavori corrispondenti a $1 ..
 index_reset=Reimposta ricerca.
 index_econfigcheck=I lavori Cron non possono essere gestiti sul sistema in quanto la configurazione del modulo non è valida : $1 
+index_stop=Ferma il demone Cron
+index_stopdesc=Arresta il processo del server in background <tt>crond</tt> che esegue i processi cron pianificati. Ciò impedirà l'esecuzione dei comandi negli orari specificati.
+index_start=Avvia Demone Cron
+index_startdesc=Avvia il processo del server in background <tt>crond</tt> che esegue i lavori cron pianificati. <font color=red><b>È necessario per eseguire i comandi all'ora specificata.</font></font>
+index_boot=Avviare Cron Daemon Boot?
+index_bootdesc=Modificare questa impostazione per abilitare o disabilitare l'avvio del demone dei lavori cron pianificati all'avvio del sistema.
 
 edit_next=Tempo di esecuzione successivo
 edit_saverun=Salva ed esegui ora
@@ -18,6 +24,12 @@ save_eidx=Cron job è stato salvato con successo, ma non può essere eseguito pe
 
 acl_hourly=Limitare i lavori al massimo ogni ora?
 acl_hourlydef=Come impostato in Module Config
+acl_stop=Può fermare e avviare il demone Cron?
+
+log_stop=Demone cron interrotto
+log_start=Demone cron avviato
+log_bootup=Demone cron abilitato all'avvio
+log_bootdown=Demone cron disabilitato all'avvio
 
 when_interval=ogni $1 secondi
 when_boot=al momento dell'avvio
@@ -31,3 +43,9 @@ manual_ok=modificare
 manual_editing=Utilizzare la casella di testo seguente per modificare i lavori Cron in $1. Fai attenzione, poiché Webmin non eseguirà alcuna convalida!
 manual_efile=Il file selezionato non è valido!
 manual_ecannot=Non è consentito modificare manualmente i lavori cron
+
+stop_err=Impossibile arrestare il demone
+start_err=Impossibile avviare il demone
+stop_ecannot=Non sei autorizzato a fermare il demone
+start_ecannot=Non sei autorizzato ad avviare il demone
+bootup_ecannot=Non sei autorizzato ad abilitare il demone all'avvio

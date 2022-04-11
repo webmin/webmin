@@ -1,1 +1,2 @@
+index_virtualmin=Avís: Virtualmin ha creat la configuració de procmail del vostre sistema per permetre el filtratge de virus i correu brossa per domini. Canviar-lo aquí pot interferir amb la funcionalitat de Virtualmin.
 index_man=Edita manualment la configuració

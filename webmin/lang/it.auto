@@ -328,6 +328,16 @@ web_expirespaths=Tempi cache lato client in base al percorso URL
 web_expirespath=Espressione regolare del percorso
 web_expirestime=Tempo di cache in secondi
 web_eexpires2=Tempo cache lato client mancante o non numerico nella riga $1
+web_rediruurl=URL di reindirizzamento dell'interruttore dopo l'accesso
+web_redirdesc=Sostituzioni URL di reindirizzamento interno
+web_eredirurl='$1' contiene spazi e non è un URL valido
+web_redirhost=Reindirizzamento host
+web_eredirhost='$1' non è un nome host valido
+web_redirport=Porta di reindirizzamento
+web_redirpref=Prefisso di reindirizzamento
+web_eredirpref=Il prefisso deve iniziare con una barra
+web_eredirpref2=Il prefisso non deve contenere spazi
+web_redirssl=Reindirizza SSL
 
 webmincron_title=Funzioni pianificate di Webmin
 webmincron_emodule=Il modulo Webmin Cron Jobs non è installato!

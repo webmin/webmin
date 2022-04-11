@@ -1,0 +1,19 @@
+index_stop=Stoppen Sie den Cron-Daemon
+index_stopdesc=Beenden Sie den Hintergrund-Serverprozess <tt>crond</tt>, der geplante Cron-Jobs ausführt. Dadurch wird verhindert, dass Befehle zu den angegebenen Zeiten ausgeführt werden.
+index_start=Starten Sie den Cron-Daemon
+index_startdesc=Starten Sie den Serverprozess <tt>crond</tt> im Hintergrund, der geplante Cron-Jobs ausführt. <font color=red><b>Dies ist erforderlich, damit Befehle zu den angegebenen Zeiten ausgeführt werden.</font></font>
+index_boot=Cron Daemon Boot starten?
+index_bootdesc=Ändern Sie diese Einstellung, um das Starten des Daemons für geplante Cron-Jobs beim Systemstart zu aktivieren oder zu deaktivieren.
+
+acl_stop=Kann der Cron-Daemon gestoppt und gestartet werden?
+
+log_stop=Cron-Daemon gestoppt
+log_start=Cron-Daemon gestartet
+log_bootup=Cron-Daemon beim Booten aktiviert
+log_bootdown=Cron-Daemon beim Booten deaktiviert
+
+stop_err=Daemon konnte nicht gestoppt werden
+start_err=Daemon konnte nicht gestartet werden
+stop_ecannot=Sie dürfen den Daemon nicht stoppen
+start_ecannot=Sie dürfen den Daemon nicht starten
+bootup_ecannot=Sie dürfen den Daemon nicht beim Booten aktivieren

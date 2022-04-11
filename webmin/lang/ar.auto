@@ -960,6 +960,16 @@ web_expirespaths=أوقات التخزين المؤقت من جانب العمي
 web_expirespath=مسار التعبير العادي
 web_expirestime=الوقت مخبأ في ثوان
 web_eexpires2=Missing or non-numeric client side cache time in row $1
+web_rediruurl=عنوان URL لإعادة توجيه التحويل بعد تسجيل الدخول
+web_redirdesc=يتجاوز عنوان URL لإعادة التوجيه الداخلية
+web_eredirurl=يحتوي "$1" على مسافات وليس عنوان URL صالحًا
+web_redirhost=إعادة توجيه المضيف
+web_eredirhost="$1" ليس اسم مضيف صالحًا
+web_redirport=إعادة توجيه المنفذ
+web_redirpref=إعادة توجيه البادئة
+web_eredirpref=يجب أن تبدأ البادئة بشرطة مائلة للأمام
+web_eredirpref2=يجب ألا تحتوي البادئة على مسافات
+web_redirssl=إعادة توجيه SSL
 
 webmincron_title=Webmin وظائف مجدولة
 webmincron_emodule=لم يتم تثبيت الوحدة النمطية Webmin Cron Jobs!

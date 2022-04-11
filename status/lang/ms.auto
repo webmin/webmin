@@ -187,6 +187,10 @@ http_regexp=Halaman mestilah sepadan dengan regexp
 http_eregexp=Tiada ungkapan biasa untuk halaman yang sepadan dengan yang dimasukkan
 http_none2=Jangan sepadan
 http_ehead=Kaedah permintaan HEAD tidak boleh digunakan semasa menyemak ungkapan biasa
+http_codes=Kod status HTTP yang boleh diterima
+http_codes_def=Lalai ($1)
+http_ecodes=Tiada kod HTTP untuk diterima dimasukkan
+http_ecodes3=Kod HTTP mestilah nombor tiga digit
 
 ping_host=Hos untuk ping
 ping_wait=Masa untuk menunggu maklum balas

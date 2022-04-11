@@ -41,6 +41,9 @@ index_efrom=유효하지 않은 시작 날짜 및 시간
 index_eto=유효하지 않은 종료 날짜 및 시간
 index_err=보고서를 생성하지 못했습니다
 index_usage=네트워크 트래픽 <font color=#ff0000>다운로드</font> 및 <font color=#0000ff>업로드</font>
+index_in=다운로드
+index_out=업로드
+index_total=총
 index_hhour=시
 index_hhost=주최자
 index_hday=일

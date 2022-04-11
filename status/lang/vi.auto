@@ -216,6 +216,10 @@ http_regexp=Trang phải phù hợp với regrec
 http_eregexp=Không có biểu thức chính quy cho trang để khớp
 http_none2=Không khớp
 http_ehead=Phương thức yêu cầu CHÍNH không thể được sử dụng khi kiểm tra biểu thức chính quy
+http_codes=Mã trạng thái HTTP được chấp nhận
+http_codes_def=Mặc định ($1)
+http_ecodes=Không có mã HTTP nào để chấp nhận đã nhập
+http_ecodes3=Mã HTTP phải là một số có ba chữ số
 
 ping_host=Lưu trữ để ping
 ping_wait=Thời gian chờ phản hồi

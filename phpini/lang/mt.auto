@@ -71,6 +71,8 @@ session_handler=Mekkaniżmu għall-ħażna tas-sessjoni
 session_files=Fajls
 session_mm=Fil-memorja
 session_users=L-utent definit
+session_redis=Redis
+session_memcache=MemcacheD
 session_path=Direttorju għall-fajls tas-sessjoni
 session_cookies=Ħalli tuża l-cookies għat-traċċar tas-sessjoni?
 session_only_cookies=Dejjem tuża cookies għat-traċċar tas-sessjoni?
@@ -80,7 +82,6 @@ session_maxlife=Sena massima tul il-ħajja
 session_epath=Direttur nieqes jew invalidu għall-fajls tas-sessjoni
 session_elife=Cookie nieqes jew ħajja invalida
 session_emaxlife=Nieqes jew invalidu tul il-ħajja massima tas-sessjoni
-session_eredis=Estensjoni ta 'redis mill-ġdid nieqsa jew b'diżabilità
 
 safe_title=Għażliet tal-Modalità Salv
 safe_header=Għażliet ta 'modalità ta' aċċess għal fajl sikur

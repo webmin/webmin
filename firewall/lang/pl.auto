@@ -20,11 +20,18 @@ desc_icmpv6-type=Typ ICMP to $1
 desc_icmpv6-type!=Typ ICMP nie jest $1 
 desc_ctstate=stan połączenia to $1 
 desc_ctstate!=stan połączenia to nie $1 
+desc_match-set=$2 pasuje do zestawu IP $1 
+desc_match-set!=$2 nie pasuje do zestawu IP $1 
+desc_match-set_src=ruch przychodzący
+desc_match-set_dst=ruch wychodzący
 desc_args--match-set=$2 jest zawarty w zestawie IP $1 
 desc_src=źródło
 desc_dest=Miejsce docelowe
 
 edit_state_snat=Źródło NATd
 edit_state_dnat=Miejsce docelowe NATd
+edit_matchset=Pasujące IPset
+edit_matchsetsrc=w ruchu przychodzącym
+edit_matchsetdst=w ruchu wychodzącym
 
 add_enone=Brak wybranych serwerów do dodania!

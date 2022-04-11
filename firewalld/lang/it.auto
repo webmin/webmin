@@ -30,6 +30,8 @@ index_return=elenco di zone
 index_ezones=Nessuna zona FirewallD trovata!
 index_none=Questa zona non ha ancora porte o servizi consentiti.
 index_ifaces=Applica regole alle interfacce:
+index_ifaces_def=Tutte le interfacce
+index_ifaces_sel=Interfacce selezionate:
 
 port_edit=Modifica porta
 port_create=Aggiungi porta
@@ -90,6 +92,9 @@ delzone_edefault=La zona predefinita non può essere rimossa
 delzone_rusure=Sei sicuro di voler eliminare la zona $1, che contiene $2 porte e $3 servizi?
 
 defzone_err=Impossibile rendere la zona predefinita
+
+richrule_iperr=Indirizzo IP non valido
+richrule_actionerr=Azione non valida
 
 restart_err=Impossibile applicare la configurazione
 

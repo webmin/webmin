@@ -24,3 +24,14 @@ sendmail_url=Webmin URL for bruk i e-post
 sendmail_url_def=Standard ($1)
 sendmail_url_custom=Egendefinert nettadresse
 sendmail_eurl=Manglende eller ugyldig tilpasset URL
+
+web_rediruurl=Redirect URL etter pålogging
+web_redirdesc=Intern viderekoblingsadresse overstyrer
+web_eredirurl='$1' inneholder mellomrom og er ikke en gyldig URL
+web_redirhost=Omdiriger vert
+web_eredirhost='$1' er ikke et gyldig vertsnavn
+web_redirport=Omdiriger port
+web_redirpref=Omdirigeringsprefiks
+web_eredirpref=Prefikset må starte med skråstrek
+web_eredirpref2=Prefiks må ikke inneholde mellomrom
+web_redirssl=Omdiriger SSL

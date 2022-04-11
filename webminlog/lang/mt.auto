@@ -39,6 +39,8 @@ index_notify_users=Għal azzjonijiet mill-utenti
 index_notify_email=Ibgħat email lil
 index_notify_usub=Inkludi l-isem tal-utent fis-suġġett tal-email?
 index_notify_msub=Inkludi azzjoni fis-suġġett tal-email?
+index_searchtab=Fittex zkuk
+index_notifytab=Notifika bil-posta elettronika
 index_searchdesc=Din il-formola tista' tintuża biex tfittex azzjonijiet Webmin skont l-utent, il-modulu, il-firxa tad-data u l-fajls effettwati.
 index_notifydesc=Uża din il-formola biex tikkonfigura notifiki bl-email meta l-azzjonijiet Webmin jitwettqu minn utenti magħżula jew f'moduli magħżula.
 

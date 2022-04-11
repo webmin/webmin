@@ -4,7 +4,8 @@ list_efile=편집 할 파일은 절대 경로 여야합니다.
 list_format_ini=INI 형식
 list_format_fpm=FPM 형식
 
-session_eredis=Redis 확장이 없거나 비활성화되었습니다
+session_redis=레디스
+session_memcache=멤캐시D
 
 misc_include=원격 포함을 열 수 있습니까?
 misc_path=CGI 수정 경로 정보?

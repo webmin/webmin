@@ -166,3 +166,4 @@ index_return=список файлів
 upload_dirs=Завантаження каталогу
 extract_uploaded=Екстракт стиснутий
 extract_cmd_not_avail=Не вдалося витягти файл $1, оскільки команда $2 відсутня
+overwrite_existing=Перезаписати існуючий

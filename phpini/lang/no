@@ -79,7 +79,6 @@ session_maxlife=Maks. levetid for sesjon
 session_epath=Manglende eller ugyldig katalog for sesjonsfiler
 session_elife=Manglende eller ugyldig levetid for informasjonskapsel
 session_emaxlife=Manglende eller ugyldig maks. levetid for sesjon
-session_eredis=Manglende eller deaktivert redis utvidelse
 
 safe_title=Innstillinger for sikker modus
 safe_header=Innstillinger for sikker fil-tilgangs modus

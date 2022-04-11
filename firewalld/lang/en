@@ -93,6 +93,9 @@ delzone_rusure=Are you sure you want to delete the zone $1, which contains $2 po
 
 defzone_err=Failed to make zone the default
 
+richrule_iperr=Invalid IP address
+richrule_actionerr=Invalid action
+
 restart_err=Failed to apply configuration
 stop_err=Failed to stop FirewallD
 start_err=Failed to start FirewallD

@@ -30,6 +30,8 @@ index_return=لیست مناطق
 index_ezones=هیچ منطقه FirewallD یافت نشد!
 index_none=این منطقه هنوز هیچ درگاه یا خدمات مجاز ندارد.
 index_ifaces=قوانین رابط رابط اعمال کنید:
+index_ifaces_def=همه اینترفیس ها
+index_ifaces_sel=رابط های انتخاب شده:
 
 port_edit=ویرایش بندر
 port_create=بندر را اضافه کنید
@@ -90,6 +92,9 @@ delzone_edefault=منطقه پیش فرض قابل حذف نیست
 delzone_rusure=آیا مطمئن هستید که می خواهید منطقه$1 را که حاوی$2 پورت و$3 خدمات است حذف کنید؟
 
 defzone_err=منطقه به طور پیش فرض انجام نشد
+
+richrule_iperr=آدرس IP نامعتبر است
+richrule_actionerr=اقدام نامعتبر
 
 restart_err=پیکربندی انجام نشد
 

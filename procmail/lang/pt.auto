@@ -2,6 +2,7 @@ index_title=Filtro de email Procmail
 index_procmail=Filtro de email Procmail
 index_desc_other=As ações do procmail abaixo de $1 serão aplicadas a <b>todos</b> emails entregues aos usuários em seu sistema. No entanto, eles serão usados apenas se o Procmail estiver instalado e o seu servidor de email estiver configurado para usá-lo.
 index_mserr=Aviso - as regras definidas abaixo não serão usadas : $1 
+index_virtualmin=Atenção - a configuração do procmail do seu sistema foi criada pelo Virtualmin para permitir filtragem de spam e vírus por domínio. Alterá-lo aqui pode interferir na funcionalidade do Virtualmin.
 index_action=Ação a ser tomada
 index_conds=Condições
 index_move=Mover

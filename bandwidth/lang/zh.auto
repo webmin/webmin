@@ -41,6 +41,9 @@ index_efrom=无效的开始日期和时间
 index_eto=无效的结束日期和时间
 index_err=未能生成报告
 index_usage=网络流量<font color=＃ff0000>已下载</font>和<font color=＃0000ff>已上传</font>
+index_in=下载
+index_out=上传
+index_total=全部的
 index_hhour=小时
 index_hhost=主办
 index_hday=天

@@ -30,6 +30,8 @@ index_return=seznam območij
 index_ezones=Ni najdenih con FirewallD!
 index_none=To območje še nima dovoljenih vrat ali storitev.
 index_ifaces=Uporabi pravila za vmesnike:
+index_ifaces_def=Vsi vmesniki
+index_ifaces_sel=Izbrani vmesniki:
 
 port_edit=Uredi vrata
 port_create=Dodaj vrata
@@ -90,6 +92,9 @@ delzone_edefault=Privzetega območja ni mogoče odstraniti
 delzone_rusure=Ali ste prepričani, da želite izbrisati cono $1, ki vsebuje $2 vrata in $3 storitve?
 
 defzone_err=Območje ni postalo privzeto
+
+richrule_iperr=Neveljaven naslov IP
+richrule_actionerr=Neveljavno dejanje
 
 restart_err=Konfiguracije ni bilo mogoče uporabiti
 

@@ -71,6 +71,8 @@ session_handler=Session lagringsmekanism
 session_files=filer
 session_mm=I minne
 session_users=Användardefinierad
+session_redis=Redis
+session_memcache=MemcacheD
 session_path=Katalog för sessionfiler
 session_cookies=Vill du använda cookies för sessionspårning?
 session_only_cookies=Använder du alltid kakor för sessionspårning?
@@ -80,7 +82,6 @@ session_maxlife=Maximal sessionens livslängd
 session_epath=Saknad eller ogiltig katalog för sessionfiler
 session_elife=Saknad eller ogiltig cookie livstid
 session_emaxlife=Saknad eller ogiltig maximal sessionstid
-session_eredis=Saknas eller inaktiverad återförlängning
 
 safe_title=Säkerhetsalternativ
 safe_header=Alternativ för säker filåtkomstläge

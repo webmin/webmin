@@ -41,6 +41,9 @@ index_efrom=Virheellinen aloituspäivä ja -aika
 index_eto=Virheellinen lopetuspäivämäärä ja -aika
 index_err=Raportin luonti epäonnistui
 index_usage=Verkkoliikenne <font color=#ff0000>ladattu</font> ja <font color=#0000ff>ladattu</font>
+index_in=ladata
+index_out=Lataa
+index_total=Kaikki yhteensä
 index_hhour=Tunnin
 index_hhost=isäntä
 index_hday=Päivä

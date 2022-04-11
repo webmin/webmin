@@ -13,6 +13,11 @@ sched_subject1=Waarschuwingstekst (laat het lichaam leeg)
 sched_subject2=Aangepaste tekst
 sched_esubject=Onderwerp van sms-bericht ontbreekt
 
+http_codes=Aanvaardbare HTTP-statuscodes
+http_codes_def=Standaard ($1)
+http_ecodes=Geen ingevoerde HTTP-codes om te accepteren
+http_ecodes3=HTTP-code moet een driecijferig nummer zijn
+
 ping_timeout=Time-out na $1 seconden
 ping_resolv=Kan hostnaam niet omzetten
 

@@ -71,6 +71,8 @@ session_handler=Saioak gordetzeko mekanismoa
 session_files=Fitxategiak
 session_mm=Oroimenean
 session_users=Erabiltzaileak definituta
+session_redis=Redis
+session_memcache=MemcacheD
 session_path=Saioko fitxategien direktorio
 session_cookies=Cookieen erabilera baimendu saioen jarraipena egiteko?
 session_only_cookies=Beti erabili cookieak saioen jarraipena egiteko?
@@ -80,7 +82,6 @@ session_maxlife=Gehienezko saioaren bizitza
 session_epath=Saio fitxategien direktorio falta edo baliogabea
 session_elife=Cookieen bizitza osoa falta da edo baliogabea
 session_emaxlife=Gehienezko saioaren iraupena galdu edo baliogabea
-session_eredis=Falta edo desgaituta birbideratzeko luzapena
 
 safe_title=Modu seguruaren aukerak
 safe_header=Fitxategiak sartzeko modu seguruak

@@ -53,6 +53,10 @@ http_method=Metoda żądania HTTP
 http_regexp=Strona musi pasować do wyrażenia regularnego
 http_eregexp=Nie wprowadzono wyrażenia regularnego dla pasującej strony
 http_ehead=Nie można użyć metody żądania HEAD podczas sprawdzania wyrażenia regularnego
+http_codes=Dopuszczalne kody statusu HTTP
+http_codes_def=Domyślny ($1)
+http_ecodes=Nie wprowadzono kodów HTTP do zaakceptowania
+http_ecodes3=Kod HTTP musi być liczbą trzycyfrową
 
 ping_timeout=Limit czasu po $1 sekundach
 ping_resolv=Nie udało się rozpoznać nazwy hosta

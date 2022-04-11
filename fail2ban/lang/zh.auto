@@ -170,4 +170,23 @@ manual_efile=所选文件不属于Fail2Ban配置！
 manual_err=编辑配置文件失败
 manual_edata=没有输入配置文件内容
 
+status_title=监狱状态和行动
+status_title2=监狱状况
+status_head_jail_name=监狱名称
+status_head_currently_failed=当前失败
+status_head_total_failed=总失败
+status_head_currently_banned=目前被禁止
+status_head_total_banned=总禁止
+status_head_banned_ip_list=禁止IP列表
+status_jail_unblock_ip=从禁止列表中删除 $1
+status_jail_permblock_ip=永久屏蔽此IP
+status_jail_unblock=取消阻止选定监狱的所有 IP
+status_jail_block=在选定的监狱中阻止被禁止的 IP
+status_jail_noactive=尚未启用活动的监狱。
+status_err_set=设置动作失败
+status_err_unblock=未能取消阻止操作
+status_err_nojail=没有选择监狱
+status_err_unban=无法取消禁止 $1 IP 地址
+status_err_ban=无法禁止 $1 IP 地址
+
 syslog_logtarget=Fail2Ban操作日志

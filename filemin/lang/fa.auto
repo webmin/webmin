@@ -166,3 +166,4 @@ index_return=لیست پرونده
 upload_dirs=آپلود دایرکتوری
 extract_uploaded=استخراج فشرده
 extract_cmd_not_avail=نمی توان فایل $1 را استخراج کرد زیرا فرمان $2 وجود ندارد
+overwrite_existing=رونویسی موجود

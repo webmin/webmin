@@ -1,5 +1,14 @@
 index_no_comment=
 
+desc_match-set=$2 stimmt mit IPset $1 überein
+desc_match-set!=$2 stimmt nicht mit IPset $1 überein
+desc_match-set_src=eingehender Verkehr
+desc_match-set_dst=ausgehender Datenverkehr
+
+edit_matchset=Passendes IPset
+edit_matchsetsrc=auf eingehenden Verkehr
+edit_matchsetdst=auf ausgehenden Datenverkehr
+
 log_create_rule=Regel zu Kette $1 in Tabelle $2 hinzugefügt
 log_modify_rule=Geänderte Regel in Kette $1 in Tabelle $2 
 log_delete_rule=Gelöschte Regel in Kette $1 in Tabelle $2 

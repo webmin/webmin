@@ -98,6 +98,10 @@ http_regexp=页面必须与正则表达式匹配
 http_eregexp=没有用于匹配页面的正则表达式
 http_none2=不匹配
 http_ehead=检查正则表达式时，无法使用HEAD请求方法
+http_codes=可接受的 HTTP 状态代码
+http_codes_def=默认 ($1)
+http_ecodes=没有接受输入的 HTTP 代码
+http_ecodes3=HTTP 代码必须是三位数字
 
 ping_timeout=$1 秒后超时
 ping_resolv=无法解析主机名

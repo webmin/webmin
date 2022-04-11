@@ -23,6 +23,10 @@ desc_icmpv6-type=ICMP-type is $1
 desc_icmpv6-type!=ICMP-type is niet $1 
 desc_ctstate=staat van verbinding is $1 
 desc_ctstate!=verbindingsstatus is niet $1 
+desc_match-set=$2 komt overeen met IP-set $1
+desc_match-set!=$2 komt niet overeen met IP-set $1
+desc_match-set_src=inkomend verkeer
+desc_match-set_dst=uitgaand verkeer
 desc_args--match-set=$2 zit in IP-set $1 
 desc_src=bron
 desc_dest=bestemming
@@ -31,5 +35,8 @@ redhat_einstalled=Er is geen opstartactie <tt>iptables (6)</tt> gevonden, wat aa
 
 edit_state_snat=Bron NATd
 edit_state_dnat=Bestemming NATd
+edit_matchset=Overeenkomende IP-set
+edit_matchsetsrc=op inkomend verkeer
+edit_matchsetdst=op uitgaand verkeer
 
 add_enone=Geen servers om toe te voegen geselecteerd!

@@ -30,6 +30,8 @@ index_return=zónák listája
 index_ezones=Nem található FirewallD zóna!
 index_none=Ennek a zónának még nincs engedélyezett portja vagy szolgáltatása.
 index_ifaces=Szabályok alkalmazása az interfészekre:
+index_ifaces_def=Minden interfész
+index_ifaces_sel=Kiválasztott interfészek:
 
 port_edit=Port szerkesztése
 port_create=Add Port
@@ -90,6 +92,9 @@ delzone_edefault=Az alapértelmezett zónát nem lehet eltávolítani
 delzone_rusure=Biztosan törli a $1 zónát, amely $2 portokat és $3 szolgáltatásokat tartalmaz?
 
 defzone_err=Nem sikerült a zónát alapértelmezetté tenni
+
+richrule_iperr=Érvénytelen IP-cím
+richrule_actionerr=Érvénytelen művelet
 
 restart_err=A konfiguráció alkalmazása nem sikerült
 

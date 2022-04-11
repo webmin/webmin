@@ -2,6 +2,7 @@ index_title=Procmail pasta filtrs
 index_procmail=Procmail pasta filtrs
 index_desc_other=Tālāk norādītās procmail darbības no $1 tiks piemērotas <b>visiem</b> e-pastam, kas piegādāts lietotājiem jūsu sistēmā. Tomēr tie tiks izmantoti tikai tad, ja ir instalēta Procmail un jūsu pasta serveris ir konfigurēts tā lietošanai.
 index_mserr=Brīdinājums - netiks izmantoti visi turpmāk definētie noteikumi : $1 
+index_virtualmin=Brīdinājums — jūsu sistēmas procmail konfigurāciju izveidoja Virtualmin, lai atļautu surogātpasta un vīrusu filtrēšanu katrā domēnā. Mainot to šeit, var tikt traucēta Virtualmin funkcionalitāte.
 index_action=Veicamā darbība
 index_conds=Nosacījumi
 index_move=Kustēties

@@ -41,6 +41,9 @@ index_efrom=غلط آغاز اور تاریخ
 index_eto=غلط ختم ہونے کی تاریخ اور وقت
 index_err=رپورٹ تیار کرنے میں ناکام
 index_usage=Network traffic <font color=#ff0000>downloaded</font> and <font color=#0000ff>uploaded</font>
+index_in=ڈاؤن لوڈ کریں
+index_out=اپ لوڈ کریں۔
+index_total=کل
 index_hhour=قیامت
 index_hhost=میزبان
 index_hday=دن

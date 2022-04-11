@@ -2,6 +2,7 @@ index_title=Procmail Mail Filter
 index_procmail=Procmail filtru tal-posta
 index_desc_other=L-azzjonijiet procmail hawn taħt minn $1 japplikaw għal <b>il-posta elettronika kollha</b> kkonsenjata lill-utenti fis-sistema tiegħek. Madankollu, dawn jintużaw biss jekk Procmail ikun installat u s-server tal-posta tiegħek ikun ikkonfigurat biex jużah.
 index_mserr=Twissija - kwalunkwe regola definita hawn taħt ma tintużax : $1 
+index_virtualmin=Twissija - il-konfigurazzjoni tal-procmail tas-sistema tiegħek inħoloq minn Virtualmin biex tippermetti l-ispam għal kull dominju u l-filtrazzjoni tal-virus. Li tinbidel hawn tista' tinterferixxi mal-funzjonalità ta' Virtualmin.
 index_action=Azzjoni li trid tieħu
 index_conds=Kundizzjonijiet
 index_move=Tmexxi

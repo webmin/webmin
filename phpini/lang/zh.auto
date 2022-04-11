@@ -71,6 +71,8 @@ session_handler=会话存储机制
 session_files=档案
 session_mm=在记忆中
 session_users=用户自定义
+session_redis=雷迪斯
+session_memcache=内存缓存D
 session_path=会话文件目录
 session_cookies=允许使用Cookie进行会话跟踪？
 session_only_cookies=始终使用Cookie进行会话跟踪？
@@ -80,7 +82,6 @@ session_maxlife=最大会话寿命
 session_epath=会话文件目录丢失或无效
 session_elife=Cookie生命周期丢失或无效
 session_emaxlife=最大会话生存期丢失或无效
-session_eredis=缺少或禁用Redis扩展
 
 safe_title=安全模式选项
 safe_header=安全文件访问模式选项

@@ -31,6 +31,12 @@ index_ok=Iskanje
 index_searchres=Cron opravila ustrezajo $1 ..
 index_reset=Ponastavi iskanje.
 index_econfigcheck=Cron opravil ni mogoče upravljati v vašem sistemu, saj konfiguracija modula ni veljavna : $1 
+index_stop=Ustavi Cron Daemon
+index_stopdesc=Zaustavite proces strežnika <tt>crond</tt> v ozadju, ki izvaja načrtovana opravila cron. To bo preprečilo izvajanje ukazov ob določenem času.
+index_start=Zaženite Cron Daemon
+index_startdesc=Zaženite proces strežnika <tt>crond</tt> v ozadju, ki izvaja načrtovana opravila cron. <font color=red><b>To je potrebno, da se ukazi izvajajo ob določenem času.</font></font>
+index_boot=Zaženite Cron Daemon Boot?
+index_bootdesc=Spremenite to nastavitev, da omogočite ali onemogočite zagon načrtovanega demona cron opravil ob zagonu sistema.
 
 edit_title=Uredi Cron Job
 create_title=Ustvari Cron Job
@@ -128,6 +134,7 @@ acl_move=Ali lahko Cron premaknete delovna mesta?
 acl_kill=Ali lahko Cron prekine delovna mesta?
 acl_hourly=Omejite delovna mesta na največ uro?
 acl_hourlydef=Kot je nastavljeno v modulu Config
+acl_stop=Ali lahko ustavite in zaženete demon Cron?
 
 log_modify=Spremenjena naloga Cron za $1 
 log_modify_l=Spremenjeno delo Cron "$2" za $1 
@@ -146,6 +153,10 @@ log_move=Naloga Cron premaknjena za $1
 log_crons_delete=Izbrisana $1 Cron opravila
 log_crons_disable=Onemogočena opravila $1 Cron
 log_crons_enable=Omogočena $1 Cron opravila
+log_stop=Ustavljen cron demon
+log_start=Zagnal cron demon
+log_bootup=Omogočen cron demon ob zagonu
+log_bootdown=Onemogočen cron demon ob zagonu
 
 ecopy=V novi konfiguraciji Cron je bila odkrita napaka: $1 $2 
 
@@ -194,3 +205,9 @@ manual_ok=Uredi
 manual_editing=Uporabite spodnje besedilno polje za urejanje Cron opravil v $1. Bodite previdni, saj Webmin nobenega potrjevanja ne bo opravil!
 manual_efile=Izbrana datoteka ni veljavna!
 manual_ecannot=Ročno urejanje opravil cron vam ni dovoljeno
+
+stop_err=Demona ni bilo mogoče ustaviti
+start_err=Demona ni bilo mogoče zagnati
+stop_ecannot=Demona ne smete ustaviti
+start_ecannot=Ni vam dovoljeno zagnati demona
+bootup_ecannot=Demona ob zagonu ni dovoljeno omogočiti

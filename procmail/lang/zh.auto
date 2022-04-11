@@ -2,6 +2,7 @@ index_title=Procmail邮件过滤器
 index_procmail=Procmail邮件过滤器
 index_desc_other=以下来自 $1的procmail操作将适用于传送给系统上用户的<b>all</b>电子邮件。但是，仅当安装了Procmail并且您的邮件服务器配置为使用它们时，才使用它们。
 index_mserr=警告-以下定义的任何规则都不会使用： $1
+index_virtualmin=警告 - 您系统的 procmail 配置是由 Virtualmin 创建的，以允许按域进行垃圾邮件和病毒过滤。在此处更改它可能会干扰 Virtualmin 的功能。
 index_action=采取的行动
 index_conds=条件
 index_move=移动

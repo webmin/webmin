@@ -216,6 +216,10 @@ http_regexp=Stran se mora ujemati z regexp
 http_eregexp=Vstavljen ni noben regularni izraz za ujemanje strani
 http_none2=Ne ujemaj se
 http_ehead=Metode zahteve HEAD ni mogoče uporabiti pri preverjanju pravilnega izraza
+http_codes=Sprejemljive kode stanja HTTP
+http_codes_def=Privzeto ($1)
+http_ecodes=Vnesena ni nobena koda HTTP za sprejem
+http_ecodes3=Koda HTTP mora biti trimestna številka
 
 ping_host=Gostitelj pinga
 ping_wait=Čas za čakanje na odgovor

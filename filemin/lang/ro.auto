@@ -166,3 +166,4 @@ index_return=listarea fișierelor
 upload_dirs=Încărcare director
 extract_uploaded=Extract comprimat
 extract_cmd_not_avail=Nu s-a putut extrage fișierul $1 deoarece comanda $2 lipsește
+overwrite_existing=Suprascrierea existentă

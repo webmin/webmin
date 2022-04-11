@@ -2,6 +2,7 @@ index_title=Filter pošty Procmail
 index_procmail=Filter pošty Procmail
 index_desc_other=Akcie procmail uvedené nižšie od $1 sa budú vzťahovať na <b>všetok</b> e-mail doručený používateľom vo vašom systéme. Použijú sa však iba vtedy, ak je nainštalovaný program Procmail a váš poštový server je nakonfigurovaný na jeho používanie.
 index_mserr=Varovanie - nepoužijú sa žiadne pravidlá definované nižšie : $1 
+index_virtualmin=Upozornenie – konfiguráciu procmail vášho systému vytvoril Virtualmin tak, aby umožňovala filtrovanie spamu a vírusov v jednotlivých doménach. Ak ho tu zmeníte, môže to narušiť funkčnosť Virtualminu.
 index_action=Kroky, ktoré treba vykonať
 index_conds=podmienky
 index_move=sťahovať

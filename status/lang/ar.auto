@@ -216,6 +216,10 @@ http_regexp=يجب أن تتطابق الصفحة مع regexp
 http_eregexp=لم يتم إدخال تعبير عادي للصفحة المراد مطابقتها
 http_none2=لا تتطابق
 http_ehead=لا يمكن استخدام طريقة طلب الرأس عند التحقق من وجود تعبير عادي
+http_codes=رموز حالة HTTP المقبولة
+http_codes_def=افتراضي ($1)
+http_ecodes=لم يتم إدخال رموز HTTP لقبولها
+http_ecodes3=يجب أن يتكون رمز HTTP من ثلاثة أرقام
 
 ping_host=استضافة بينغ
 ping_wait=حان وقت انتظار الرد

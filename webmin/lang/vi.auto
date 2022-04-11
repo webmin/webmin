@@ -1080,6 +1080,16 @@ web_expirespaths=Thời gian bộ đệm phía máy khách dựa trên đường
 web_expirespath=Đường dẫn biểu thức chính quy
 web_expirestime=Thời gian lưu trữ tính bằng giây
 web_eexpires2=Thời gian bộ đệm phía máy khách bị thiếu hoặc không phải là số trong hàng $1
+web_rediruurl=URL chuyển hướng chuyển hướng sau đăng nhập
+web_redirdesc=Ghi đè URL chuyển hướng nội bộ
+web_eredirurl='$1' chứa khoảng trắng và không phải là URL hợp lệ
+web_redirhost=Máy chủ chuyển hướng
+web_eredirhost='$1' không phải là tên máy chủ hợp lệ
+web_redirport=Chuyển hướng cổng
+web_redirpref=Tiền tố chuyển hướng
+web_eredirpref=Tiền tố phải bắt đầu bằng dấu gạch chéo
+web_eredirpref2=Tiền tố không được chứa khoảng trắng
+web_redirssl=SSL chuyển hướng
 
 webmincron_title=Các chức năng được lên lịch của Webmin
 webmincron_emodule=Mô-đun Công việc Webmin Cron chưa được cài đặt!

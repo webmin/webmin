@@ -9,7 +9,6 @@ index_tall=N'importe quand
 index_today=D'aujourd'hui seulement
 index_time=Effectuées entre le $1 et le $2
 index_search=Chercher
-
 index_return=au formulaire de recherche
 index_nolog=<b>Remarque</b> : comme la <a href='$1'>journalisation</a> de Webmin n'est pas activée actuellement, il est probable qu'une recherche ne produira aucun résultat.
 index_nologfiles=<b>Remarque</b> : comme la <a href='$1'>journalisation</a> des modifications des fichiers n'est pas activée actuellement, le détail des actions journalisées ne mentionnera pas les fichiers modifiés ou les commandes exécutées.
@@ -17,6 +16,7 @@ index_fall=Qui ont modifié n'importe quel fichier
 index_file=Ce fichier modifié
 index_wall=À partir de n'importe quel serveur Webmin
 index_whost=À partir du serveur
+
 search_title=Résultats d'une recherche
 search_date=Date
 search_time=Heure

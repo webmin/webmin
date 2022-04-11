@@ -26,6 +26,8 @@ index_notify_users=För handlingar av användare
 index_notify_email=Skicka e-post till
 index_notify_usub=Inkludera användarnamn i e-postämnet?
 index_notify_msub=Inkludera åtgärder i e-postämnet?
+index_searchtab=Sök i loggar
+index_notifytab=E-postmeddelande
 index_searchdesc=Det här formuläret kan användas för att söka efter Webmin-åtgärder efter användare, modul, datumintervall och utförda filer.
 index_notifydesc=Använd det här formuläret för att konfigurera e-postmeddelanden när Webmin-åtgärder utförs av valda användare eller i valda moduler.
 
