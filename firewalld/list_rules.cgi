@@ -82,7 +82,7 @@ while(<$fh2>) {
 		my $candelete = 1;
 		my $ipslimit = sub {
 			my ($ips, $limit) = @_;
-			$limit ||= 5;
+			$limit ||= 15;
 			# Limit sanity check and adjustment
 			$limit = 1 if ($limit < 1);
 			$limit -= 1;
