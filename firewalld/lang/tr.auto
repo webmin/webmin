@@ -33,6 +33,10 @@ index_ifaces=Arabirimlere kurallar uygulayın:
 index_ifaces_def=Tüm arayüzler
 index_ifaces_sel=Seçilen arayüzler:
 index_ifaces_apply=Uygulamak
+index_listrules=FirewallD Kurallarını Listeleme
+index_restart_firewalld=Güvenlik Duvarını Yeniden YükleD
+index_restart_firewallddesc=FirewallD sunucusunu yeniden yükleyin ve kalıcı olarak oluşturulmuş kuralları uygulayın.
+index_listrules_restartdesc=$1 bölgesindeki mevcut zengin ve doğrudan FirewallD kurallarıyla ilgili ayrıntıları listeleyin.
 
 port_edit=Bağlantı Noktasını Düzenle
 port_create=Bağlantı Noktası Ekle
@@ -94,10 +98,6 @@ delzone_rusure=$2 bağlantı noktası ve $3 hizmetini içeren $1 bölgesini silm
 
 defzone_err=Bölge varsayılan olarak ayarlanamadı
 
-index_listrules=FirewallD Kurallarını Listeleme
-index_restart_firewalld=Güvenlik Duvarını Yeniden YükleD
-index_restart_firewallddesc=FirewallD sunucusunu yeniden yükleyin ve kalıcı olarak oluşturulmuş kuralları uygulayın.
-index_listrules_restartdesc=$1 bölgesindeki mevcut zengin ve doğrudan FirewallD kurallarıyla ilgili ayrıntıları listeleyin.
 list_rule_iperr=Geçersiz IP adresi
 list_rule_actionerr=Geçersiz eylem
 list_rules_title=Güvenlik DuvarıD Kuralları

@@ -33,6 +33,10 @@ index_ifaces=將規則應用於接口：
 index_ifaces_def=所有接口
 index_ifaces_sel=選擇的接口：
 index_ifaces_apply=申請
+index_listrules=列出 FirewallD 規則
+index_restart_firewalld=重新加載防火牆D
+index_restart_firewallddesc=重新加載 FirewallD 服務器並應用永久創建的規則。
+index_listrules_restartdesc=列出有關 $1 區域中現有豐富和直接 FirewallD 規則的詳細信息。
 
 port_edit=編輯端口
 port_create=添加端口
@@ -94,10 +98,6 @@ delzone_rusure=您確定要刪除包含 $2端口和 $3服務的 $1區域嗎？
 
 defzone_err=無法將區域設為默認區域
 
-index_listrules=列出 FirewallD 規則
-index_restart_firewalld=重新加載防火牆D
-index_restart_firewallddesc=重新加載 FirewallD 服務器並應用永久創建的規則。
-index_listrules_restartdesc=列出有關 $1 區域中現有豐富和直接 FirewallD 規則的詳細信息。
 list_rule_iperr=IP 地址無效
 list_rule_actionerr=無效操作
 list_rules_title=防火牆規則

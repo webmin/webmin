@@ -3,11 +3,11 @@ index_zoneadd=Zone hinzufügen
 index_ifaces_def=Alle Schnittstellen
 index_ifaces_sel=Ausgewählte Schnittstellen:
 index_ifaces_apply=Anwenden
-
 index_listrules=FirewallD-Regeln auflisten
 index_restart_firewalld=Laden Sie FirewallD neu
 index_restart_firewallddesc=Laden Sie den FirewallD-Server neu und wenden Sie die dauerhaft erstellten Regeln an.
 index_listrules_restartdesc=Details zu vorhandenen umfassenden und direkten FirewallD-Regeln in Zone $1 auflisten.
+
 list_rule_iperr=ungültige IP-Adresse
 list_rule_actionerr=Ungültige Aktion
 list_rules_title=FirewallD-Regeln

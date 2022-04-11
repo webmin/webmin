@@ -33,6 +33,10 @@ index_ifaces=Apply rules to
 index_ifaces_def=All interfaces
 index_ifaces_sel=Selected interfaces:
 index_ifaces_apply=Apply
+index_listrules=List FirewallD Rules
+index_restart_firewalld=Reload FirewallD
+index_restart_firewallddesc=Reload the FirewallD server and apply the rules that were permanently created.
+index_listrules_restartdesc=List details about existing rich and direct FirewallD rules in $1 zone.
 
 port_edit=Edit Port
 port_create=Add Port
@@ -94,10 +98,6 @@ delzone_rusure=Are you sure you want to delete the zone $1, which contains $2 po
 
 defzone_err=Failed to make zone the default
 
-index_listrules=List FirewallD Rules
-index_restart_firewalld=Reload FirewallD
-index_restart_firewallddesc=Reload the FirewallD server and apply the rules that were permanently created.
-index_listrules_restartdesc=List details about existing rich and direct FirewallD rules in $1 zone.
 list_rule_iperr=Invalid IP address
 list_rule_actionerr=Invalid action
 list_rules_title=FirewallD Rules

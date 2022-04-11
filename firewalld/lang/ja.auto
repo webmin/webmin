@@ -33,6 +33,10 @@ index_ifaces=インターフェイスにルールを適用します。
 index_ifaces_def=すべてのインターフェース
 index_ifaces_sel=選択したインターフェース：
 index_ifaces_apply=申し込み
+index_listrules=FirewallDルールを一覧表示
+index_restart_firewalld=FirewallDをリロード
+index_restart_firewallddesc=FirewallDサーバーをリロードし、永続的に作成されたルールを適用します。
+index_listrules_restartdesc=$1ゾーンにある既存のリッチおよびダイレクトFirewallDルールに関する詳細を一覧表示します。
 
 port_edit=ポートを編集
 port_create=ポートを追加
@@ -94,10 +98,6 @@ delzone_rusure=$2ポートと $3サービスを含むゾーン $1を削除して
 
 defzone_err=ゾーンをデフォルトにできませんでした
 
-index_listrules=FirewallDルールを一覧表示
-index_restart_firewalld=FirewallDをリロード
-index_restart_firewallddesc=FirewallDサーバーをリロードし、永続的に作成されたルールを適用します。
-index_listrules_restartdesc=$1ゾーンにある既存のリッチおよびダイレクトFirewallDルールに関する詳細を一覧表示します。
 list_rule_iperr=無効なIPアドレス
 list_rule_actionerr=無効なアクション
 list_rules_title=FirewallDルール

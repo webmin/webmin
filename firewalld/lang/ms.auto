@@ -33,6 +33,10 @@ index_ifaces=Memohon peraturan untuk antara muka:
 index_ifaces_def=Semua antara muka
 index_ifaces_sel=Antara muka yang dipilih:
 index_ifaces_apply=Mohon
+index_listrules=Senaraikan Peraturan FirewallD
+index_restart_firewalld=Muat semula FirewallD
+index_restart_firewallddesc=Muat semula pelayan FirewallD dan gunakan peraturan yang telah dibuat secara kekal.
+index_listrules_restartdesc=Senaraikan butiran tentang peraturan FirewallD yang kaya dan langsung dalam $1 zon.
 
 port_edit=Edit Port
 port_create=Tambah Pelabuhan
@@ -94,10 +98,6 @@ delzone_rusure=Adakah anda pasti mahu memadamkan zon $1, yang mengandungi $2 por
 
 defzone_err=Gagal menjadikan zon lalai
 
-index_listrules=Senaraikan Peraturan FirewallD
-index_restart_firewalld=Muat semula FirewallD
-index_restart_firewallddesc=Muat semula pelayan FirewallD dan gunakan peraturan yang telah dibuat secara kekal.
-index_listrules_restartdesc=Senaraikan butiran tentang peraturan FirewallD yang kaya dan langsung dalam $1 zon.
 list_rule_iperr=Alamat IP tidak sah
 list_rule_actionerr=Tindakan tidak sah
 list_rules_title=Peraturan FirewallD

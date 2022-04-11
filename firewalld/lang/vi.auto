@@ -33,6 +33,10 @@ index_ifaces=Áp dụng quy tắc cho giao diện:
 index_ifaces_def=Tất cả các giao diện
 index_ifaces_sel=Các giao diện đã chọn:
 index_ifaces_apply=Nộp đơn
+index_listrules=Liệt kê các quy tắc FirewallD
+index_restart_firewalld=Tải lại tường lửaD
+index_restart_firewallddesc=Tải lại máy chủ FirewallD và áp dụng các quy tắc đã được tạo vĩnh viễn.
+index_listrules_restartdesc=Liệt kê chi tiết về các quy tắc FirewallD trực tiếp và phong phú hiện có trong vùng $1.
 
 port_edit=Chỉnh sửa cổng
 port_create=Thêm cổng
@@ -94,10 +98,6 @@ delzone_rusure=Bạn có chắc chắn muốn xóa vùng $1, chứa $2 cổng v�
 
 defzone_err=Không thể tạo vùng mặc định
 
-index_listrules=Liệt kê các quy tắc FirewallD
-index_restart_firewalld=Tải lại tường lửaD
-index_restart_firewallddesc=Tải lại máy chủ FirewallD và áp dụng các quy tắc đã được tạo vĩnh viễn.
-index_listrules_restartdesc=Liệt kê chi tiết về các quy tắc FirewallD trực tiếp và phong phú hiện có trong vùng $1.
 list_rule_iperr=địa chỉ IP không hợp lệ
 list_rule_actionerr=Hành động không hợp lệ
 list_rules_title=Quy tắc FirewallD

@@ -33,6 +33,10 @@ index_ifaces=Aplicar reglas a las interfaces:
 index_ifaces_def=Todas las interfaces
 index_ifaces_sel=Interfaces seleccionadas:
 index_ifaces_apply=Aplicar
+index_listrules=Lista de reglas de FirewallD
+index_restart_firewalld=Recargar FirewallD
+index_restart_firewallddesc=Vuelva a cargar el servidor FirewallD y aplique las reglas que se crearon de forma permanente.
+index_listrules_restartdesc=Enumere los detalles sobre las reglas FirewallD enriquecidas y directas existentes en la zona $1.
 
 port_edit=Editar puerto
 port_create=Agregar puerto
@@ -94,10 +98,6 @@ delzone_rusure=¿Está seguro de que desea eliminar la zona $1, que contiene $2 
 
 defzone_err=Error al establecer la zona como predeterminada
 
-index_listrules=Lista de reglas de FirewallD
-index_restart_firewalld=Recargar FirewallD
-index_restart_firewallddesc=Vuelva a cargar el servidor FirewallD y aplique las reglas que se crearon de forma permanente.
-index_listrules_restartdesc=Enumere los detalles sobre las reglas FirewallD enriquecidas y directas existentes en la zona $1.
 list_rule_iperr=Dirección IP inválida
 list_rule_actionerr=Acción no válida
 list_rules_title=Reglas de FirewallD

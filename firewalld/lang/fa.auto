@@ -33,6 +33,10 @@ index_ifaces=قوانین رابط رابط اعمال کنید:
 index_ifaces_def=همه اینترفیس ها
 index_ifaces_sel=رابط های انتخاب شده:
 index_ifaces_apply=درخواست دادن
+index_listrules=قوانین FirewallD را فهرست کنید
+index_restart_firewalld=فایروالD را دوباره بارگذاری کنید
+index_restart_firewallddesc=سرور FirewallD را دوباره بارگیری کنید و قوانینی را که به طور دائم ایجاد شده اند اعمال کنید.
+index_listrules_restartdesc=جزئیات مربوط به قوانین فایروالD غنی و مستقیم موجود را در منطقه $1 فهرست کنید.
 
 port_edit=ویرایش بندر
 port_create=بندر را اضافه کنید
@@ -94,10 +98,6 @@ delzone_rusure=آیا مطمئن هستید که می خواهید منطقه$1 
 
 defzone_err=منطقه به طور پیش فرض انجام نشد
 
-index_listrules=قوانین FirewallD را فهرست کنید
-index_restart_firewalld=فایروالD را دوباره بارگذاری کنید
-index_restart_firewallddesc=سرور FirewallD را دوباره بارگیری کنید و قوانینی را که به طور دائم ایجاد شده اند اعمال کنید.
-index_listrules_restartdesc=جزئیات مربوط به قوانین فایروالD غنی و مستقیم موجود را در منطقه $1 فهرست کنید.
 list_rule_iperr=آدرس IP نامعتبر است
 list_rule_actionerr=اقدام نامعتبر
 list_rules_title=قوانین فایروالD
