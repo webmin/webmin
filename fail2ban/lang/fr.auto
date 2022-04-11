@@ -170,4 +170,23 @@ manual_efile=Le fichier sélectionné ne fait pas partie de la configuration Fai
 manual_err=Impossible de modifier le fichier de configuration
 manual_edata=Aucun contenu de fichier de configuration entré
 
+status_title=Statut et actions des prisons
+status_title2=Statut des prisons
+status_head_jail_name=Nom de la prison
+status_head_currently_failed=Échec actuel
+status_head_total_failed=Échec total
+status_head_currently_banned=Actuellement interdit
+status_head_total_banned=Total interdit
+status_head_banned_ip_list=Liste d'adresses IP interdites
+status_jail_unblock_ip=Supprimer $1 de la liste des bannis
+status_jail_permblock_ip=Bloquer définitivement cette IP
+status_jail_unblock=Débloquer toutes les IP pour les prisons sélectionnées
+status_jail_block=Bloquer définitivement toutes les adresses IP dans la liste interdite pour les prisons sélectionnées
+status_jail_noactive=Il n'y a pas encore de prisons actives activées.
+status_err_set=Échec de l'action définie
+status_err_unblock=Impossible de débloquer l'action
+status_err_nojail=Aucune prison n'a été sélectionnée
+status_err_unban=Impossible de dé-bannir l'adresse IP $1
+status_err_ban=Impossible d'interdire $1 adresse IP
+
 syslog_logtarget=Journal des actions Fail2Ban

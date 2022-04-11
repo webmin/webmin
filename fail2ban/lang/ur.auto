@@ -170,4 +170,23 @@ manual_efile=منتخب فائل Fail2Ban تشکیل کا حصہ نہیں ہے!
 manual_err=کنفگ فائل میں ترمیم کرنے میں ناکام
 manual_edata=کوئی تشکیل فائل کا مواد داخل نہیں کیا گیا
 
+status_title=جیلوں کی حیثیت اور اعمال
+status_title2=جیلوں کی حالت
+status_head_jail_name=جیل کا نام
+status_head_currently_failed=فی الحال ناکام
+status_head_total_failed=مکمل ناکام
+status_head_currently_banned=فی الحال پابندی ہے۔
+status_head_total_banned=مکمل پابندی
+status_head_banned_ip_list=ممنوعہ IP فہرست
+status_jail_unblock_ip=ممنوعہ فہرست سے $1 کو ہٹا دیں۔
+status_jail_permblock_ip=اس آئی پی کو مستقل طور پر بلاک کر دیں۔
+status_jail_unblock=منتخب جیلوں کے لیے تمام آئی پیز کو غیر مسدود کریں۔
+status_jail_block=منتخب جیلوں کے لیے ممنوعہ فہرست میں تمام آئی پیز کو مستقل طور پر بلاک کریں۔
+status_jail_noactive=ابھی تک کوئی فعال جیلیں فعال نہیں ہیں۔
+status_err_set=ناکام سیٹ کارروائی
+status_err_unblock=کارروائی کو غیر مسدود کرنے میں ناکام
+status_err_nojail=کسی جیل کا انتخاب نہیں کیا گیا ہے۔
+status_err_unban=$1 آئی پی ایڈریس پر پابندی نہیں لگائی جا سکتی
+status_err_ban=$1 IP ایڈریس پر پابندی نہیں لگائی جا سکتی
+
 syslog_logtarget=فیل 2 بین کارروائی لاگ

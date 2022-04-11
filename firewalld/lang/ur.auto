@@ -30,6 +30,8 @@ index_return=زون کی فہرست
 index_ezones=کوئی فائر وال زون نہیں ملا!
 index_none=اس زون میں ابھی تک کوئی اجازت شدہ بندرگاہیں یا خدمات موجود نہیں ہیں۔
 index_ifaces=انٹرفیس پر قواعد لگائیں:
+index_ifaces_def=تمام انٹرفیس
+index_ifaces_sel=منتخب انٹرفیس:
 
 port_edit=پورٹ میں ترمیم کریں
 port_create=پورٹ شامل کریں
@@ -90,6 +92,9 @@ delzone_edefault=پہلے سے طے شدہ زون نہیں ہٹایا جاسکت
 delzone_rusure=کیا آپ واقعی$1 زون کو حذف کرنا چاہتے ہیں ، جس میں $2 بندرگاہیں اور$3 خدمات شامل ہیں؟
 
 defzone_err=زون کو ڈیفالٹ بنانے میں ناکام
+
+richrule_iperr=غلط IP پتہ
+richrule_actionerr=غلط کارروائی
 
 restart_err=تشکیل دینے میں ناکام
 

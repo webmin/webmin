@@ -30,6 +30,8 @@ index_return=seznam zón
 index_ezones=Nebyly nalezeny žádné zóny FirewallD!
 index_none=Tato zóna zatím nemá žádné povolené porty nebo služby.
 index_ifaces=Použít pravidla na rozhraní:
+index_ifaces_def=Všechna rozhraní
+index_ifaces_sel=Vybraná rozhraní:
 
 port_edit=Upravit port
 port_create=Přidat port
@@ -90,6 +92,9 @@ delzone_edefault=Výchozí zónu nelze odstranit
 delzone_rusure=Opravdu chcete odstranit zónu $1, která obsahuje $2 porty a služby $3 ?
 
 defzone_err=Nepodařilo se nastavit zónu jako výchozí
+
+richrule_iperr=Neplatná IP adresa
+richrule_actionerr=Neplatná akce
 
 restart_err=Nepodařilo se použít konfiguraci
 

@@ -170,4 +170,23 @@ manual_efile=Seçilen dosya Fail2Ban yapılandırmasının bir parçası değil!
 manual_err=Yapılandırma dosyası düzenlenemedi
 manual_edata=Hiçbir yapılandırma dosyası içeriği girilmedi
 
+status_title=Hapishane Durumu ve Eylemleri
+status_title2=Hapishane Durumu
+status_head_jail_name=hapishane adı
+status_head_currently_failed=Şu anda başarısız
+status_head_total_failed=Toplam başarısız
+status_head_currently_banned=Şu anda yasaklı
+status_head_total_banned=Toplam yasak
+status_head_banned_ip_list=Yasaklanmış IP listesi
+status_jail_unblock_ip=$1'i yasaklı listeden kaldır
+status_jail_permblock_ip=Bu IP'yi kalıcı olarak engelle
+status_jail_unblock=Seçilmiş Hapishaneler İçin Tüm IP'lerin Engelini Kaldırın
+status_jail_block=Seçili Hapishaneler İçin Yasaklılar Listesindeki Tüm IP'leri Kalıcı Olarak Engelleyin
+status_jail_noactive=Henüz etkinleştirilmiş bir hapishane yok.
+status_err_set=Başarısız ayar eylemi
+status_err_unblock=İşlemin engellemesi kaldırılamadı
+status_err_nojail=Hiçbir hapishane seçilmedi
+status_err_unban=$1 IP adresinin yasağı kaldırılamıyor
+status_err_ban=$1 IP adresi yasaklanamıyor
+
 syslog_logtarget=Fail2Ban eylem günlüğü

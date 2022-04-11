@@ -170,4 +170,23 @@ manual_efile=Valittu tiedosto ei ole osa Fail2Ban-määritystä!
 manual_err=Konfiguraatiotiedoston muokkaaminen epäonnistui
 manual_edata=Konfigurointitiedoston sisältöä ei ole annettu
 
+status_title=Vankiloiden tila ja toimet
+status_title2=Vankiloiden tila
+status_head_jail_name=Vankilan nimi
+status_head_currently_failed=Tällä hetkellä epäonnistunut
+status_head_total_failed=Yhteensä epäonnistui
+status_head_currently_banned=Tällä hetkellä kielletty
+status_head_total_banned=Täysin kielletty
+status_head_banned_ip_list=Kielletty IP-luettelo
+status_jail_unblock_ip=Poista $1 kiellettyjen luettelosta
+status_jail_permblock_ip=Estä tämä IP pysyvästi
+status_jail_unblock=Poista kaikkien IP-osoitteiden esto valituista vankiloista
+status_jail_block=Estä pysyvästi kaikki IP-osoitteet kiellettyjen luettelossa valittujen vankiloiden osalta
+status_jail_noactive=Aktiivisia vankiloita ei ole vielä otettu käyttöön.
+status_err_set=Asetustoiminto epäonnistui
+status_err_unblock=Toiminnon eston kumoaminen epäonnistui
+status_err_nojail=Vankiloita ei ole valittu
+status_err_unban=$1 IP-osoitteen estoa ei voi poistaa
+status_err_ban=$1 IP-osoitetta ei voi kieltää
+
 syslog_logtarget=Fail2Ban-toimintaloki

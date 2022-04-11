@@ -30,6 +30,8 @@ index_return=liste over zoner
 index_ezones=Der blev ikke fundet nogen FirewallD-zoner!
 index_none=Denne zone har endnu ikke tilladte porte eller tjenester.
 index_ifaces=Anvend regler på grænseflader:
+index_ifaces_def=Alle grænseflader
+index_ifaces_sel=Udvalgte grænseflader:
 
 port_edit=Rediger port
 port_create=Tilføj port
@@ -90,6 +92,9 @@ delzone_edefault=Standardzonen kan ikke fjernes
 delzone_rusure=Er du sikker på, at du vil slette zonen $1, der indeholder $2 -porte og $3 -tjenester?
 
 defzone_err=Kunne ikke gøre zone som standard
+
+richrule_iperr=Ugyldig IP-adresse
+richrule_actionerr=Ugyldig handling
 
 restart_err=Kunne ikke anvende konfiguration
 

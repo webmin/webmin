@@ -170,4 +170,23 @@ manual_efile=A kiválasztott fájl nem része a Fail2Ban konfigurációnak!
 manual_err=A konfigurációs fájl szerkesztése nem sikerült
 manual_edata=Nincs megadva konfigurációs fájl tartalma
 
+status_title=A börtönök állapota és a műveletek
+status_title2=Börtönök állapota
+status_head_jail_name=Börtön neve
+status_head_currently_failed=Jelenleg nem sikerült
+status_head_total_failed=Total sikertelen
+status_head_currently_banned=Jelenleg betiltva
+status_head_total_banned=Teljesen kitiltva
+status_head_banned_ip_list=Tiltott IP lista
+status_jail_unblock_ip=$1 eltávolítása a tiltott listáról
+status_jail_permblock_ip=Véglegesen blokkolja ezt az IP-t
+status_jail_unblock=Oldja fel az összes IP blokkolását a kiválasztott börtönökben
+status_jail_block=Véglegesen blokkolja az összes IP-címet a tiltott listán a kiválasztott börtönöknél
+status_jail_noactive=Még nincsenek engedélyezve aktív börtönök.
+status_err_set=Sikertelen beállítási művelet
+status_err_unblock=Nem sikerült feloldani a tiltást
+status_err_nojail=Nem választottak ki börtönt
+status_err_unban=$1 IP-cím kitiltása nem törölhető
+status_err_ban=$1 IP-cím nem tiltható
+
 syslog_logtarget=Fail2Ban cselekvési napló

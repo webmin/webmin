@@ -30,6 +30,8 @@ index_return=lijst van zones
 index_ezones=Geen FirewallD-zones gevonden!
 index_none=Deze zone heeft nog geen toegestane poorten of services.
 index_ifaces=Pas regels toe op interfaces:
+index_ifaces_def=Alle interfaces
+index_ifaces_sel=Geselecteerde interfaces:
 
 port_edit=Poort bewerken
 port_create=Poort toevoegen
@@ -90,6 +92,9 @@ delzone_edefault=De standaardzone kan niet worden verwijderd
 delzone_rusure=Weet u zeker dat u zone $1 wilt verwijderen, die $2 poorten en $3 services bevat?
 
 defzone_err=Kan zone niet als standaard instellen
+
+richrule_iperr=Ongeldig IP-adres
+richrule_actionerr=Ongeldige actie
 
 restart_err=Configuratie mislukt
 

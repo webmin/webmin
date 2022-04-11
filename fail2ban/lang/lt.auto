@@ -170,4 +170,23 @@ manual_efile=Pasirinktas failas nėra „Fail2Ban“ konfigūracijos dalis!
 manual_err=Nepavyko redaguoti konfigūracijos failo
 manual_edata=Neįvestas konfigūracijos failo turinys
 
+status_title=Kalėjimų būsena ir veiksmai
+status_title2=Kalėjimų būsena
+status_head_jail_name=Kalėjimo pavadinimas
+status_head_currently_failed=Šiuo metu nepavyko
+status_head_total_failed=Visiškai nepavyko
+status_head_currently_banned=Šiuo metu uždrausta
+status_head_total_banned=Visiškai uždrausta
+status_head_banned_ip_list=Uždraustų IP sąrašas
+status_jail_unblock_ip=Pašalinti $1 iš uždraustųjų sąrašo
+status_jail_permblock_ip=Užblokuoti šį IP visam laikui
+status_jail_unblock=Atblokuokite visus IP pasirinktuose kalėjimuose
+status_jail_block=Visam laikui užblokuokite visus pasirinktų kalėjimų uždraustųjų sąraše esančius IP
+status_jail_noactive=Dar nėra aktyvių kalėjimų.
+status_err_set=Nepavyko nustatyti veiksmo
+status_err_unblock=Nepavyko atblokuoti veiksmo
+status_err_nojail=Kalėjimų nepasirinko
+status_err_unban=Nepavyko panaikinti $1 IP adreso blokavimo
+status_err_ban=Neįmanoma uždrausti $1 IP adreso
+
 syslog_logtarget=„Fail2Ban“ veiksmų žurnalas

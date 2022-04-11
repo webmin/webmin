@@ -170,4 +170,23 @@ manual_efile=הקובץ שנבחר אינו חלק מתצורת Fail2Ban!
 manual_err=עריכת קובץ התצורה נכשלה
 manual_edata=לא הוזן תוכן קובץ config
 
+status_title=מצב הכלא ופעולות
+status_title2=מצב כלא
+status_head_jail_name=שם הכלא
+status_head_currently_failed=כרגע נכשל
+status_head_total_failed=סך הכל נכשל
+status_head_currently_banned=כרגע אסור
+status_head_total_banned=נאסר לחלוטין
+status_head_banned_ip_list=רשימת IP אסורה
+status_jail_unblock_ip=הסר את $1 מהרשימה החסומה
+status_jail_permblock_ip=חסום את ה-IP הזה לצמיתות
+status_jail_unblock=בטל את חסימת כל כתובות ה-IP עבור בתי כלא נבחרים
+status_jail_block=חסום לצמיתות את כל כתובות ה-IP ברשימת החסומים עבור בתי כלא נבחרים
+status_jail_noactive=עדיין אין בתי כלא פעילים מופעלים.
+status_err_set=הגדרת הפעולה נכשלה
+status_err_unblock=ביטול החסימה של הפעולה נכשל
+status_err_nojail=לא נבחרו בתי כלא
+status_err_unban=לא ניתן לבטל את החסימה של $1 כתובת IP
+status_err_ban=לא ניתן לחסום את $1 כתובת IP
+
 syslog_logtarget=יומן הפעולות Fail2Ban

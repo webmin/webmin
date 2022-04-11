@@ -170,4 +170,23 @@ manual_efile=الملف المحدد ليس جزءًا من تكوين Fail2Ban!
 manual_err=فشل في تحرير ملف التكوين
 manual_edata=لم يتم إدخال محتويات ملف التكوين
 
+status_title=حالة السجون والإجراءات
+status_title2=حالة السجون
+status_head_jail_name=اسم السجن
+status_head_currently_failed=فشل حاليا
+status_head_total_failed=مجموع فشل
+status_head_currently_banned=محظور حاليا
+status_head_total_banned=مجموع المحظورة
+status_head_banned_ip_list=قائمة IP المحظورة
+status_jail_unblock_ip=قم بإزالة$1 من القائمة المحظورة
+status_jail_permblock_ip=حظر عنوان IP هذا بشكل دائم
+status_jail_unblock=قم بإلغاء حظر جميع عناوين IP للسجون المختارة
+status_jail_block=حظر جميع عناوين IP بشكل دائم في قائمة المحظورة للسجون المختارة
+status_jail_noactive=لا توجد سجون نشطة ممكّنة حتى الآن.
+status_err_set=فشل تعيين الإجراء
+status_err_unblock=فشل في إلغاء حظر الإجراء
+status_err_nojail=لم يتم اختيار أي سجون
+status_err_unban=لا يمكن إلغاء حظر عنوان IP لـ$1
+status_err_ban=لا يمكن حظر عنوان IP لـ$1
+
 syslog_logtarget=سجل العمل Fail2Ban

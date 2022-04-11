@@ -170,4 +170,23 @@ manual_efile=Hautatutako fitxategia ez da Fail2Ban konfigurazioaren barruan!
 manual_err=Ezin izan da konfigurazio fitxategia editatu
 manual_edata=Ez da konfiguratutako fitxategiaren edukia sartu
 
+status_title=Espetxeen Egoera Eta Ekintzak
+status_title2=Espetxeen egoera
+status_head_jail_name=Kartzelako izena
+status_head_currently_failed=Une honetan huts egin du
+status_head_total_failed=Guztira huts egin du
+status_head_currently_banned=Gaur egun debekatuta dago
+status_head_total_banned=Guztiz debekatuta
+status_head_banned_ip_list=Debekatutako IP zerrenda
+status_jail_unblock_ip=Kendu $1 debekatuta dagoen zerrendatik
+status_jail_permblock_ip=Blokeatu betirako IP hau
+status_jail_unblock=Desblokeatu IP guztiak hautatutako espetxeetarako
+status_jail_block=Behin betiko blokeatu hautatutako espetxeetarako debekatuen zerrendako IP guztiak
+status_jail_noactive=Oraindik ez dago kartzela aktiborik gaituta.
+status_err_set=Ezin izan da ezarri ekintza
+status_err_unblock=Ezin izan da ekintza desblokeatu
+status_err_nojail=Ez da kartzelarik hautatu
+status_err_unban=Ezin da debekatu $1 IP helbidea
+status_err_ban=Ezin da $1 IP helbidea debekatu
+
 syslog_logtarget=Fail2Ban ekintzaren erregistroa

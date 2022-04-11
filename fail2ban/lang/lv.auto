@@ -170,4 +170,23 @@ manual_efile=Atlasītais fails neietilpst Fail2Ban konfigurācijā!
 manual_err=Neizdevās rediģēt konfigurācijas failu
 manual_edata=Nav ievadīts konfigurācijas faila saturs
 
+status_title=Cietumu statuss un darbības
+status_title2=Cietuma statuss
+status_head_jail_name=Cietuma nosaukums
+status_head_currently_failed=Pašlaik neizdevās
+status_head_total_failed=Kopā neizdevās
+status_head_currently_banned=Šobrīd aizliegts
+status_head_total_banned=Pilnīgi aizliegts
+status_head_banned_ip_list=Aizliegto IP saraksts
+status_jail_unblock_ip=Noņemt $1 no aizliegto personu saraksta
+status_jail_permblock_ip=Neatgriezeniski bloķēt šo IP
+status_jail_unblock=Atbloķējiet visus IP atlasītajiem cietumiem
+status_jail_block=Neatgriezeniski bloķēt visas IP aizliegto vietu sarakstā atlasītajiem cietumiem
+status_jail_noactive=Vēl nav iespējots neviens aktīvs cietums.
+status_err_set=Iestatīšanas darbība neizdevās
+status_err_unblock=Neizdevās atbloķēt darbību
+status_err_nojail=Neviens cietums nav izvēlēts
+status_err_unban=Nevar atcelt $1 IP adreses aizliegumu
+status_err_ban=Nevar aizliegt $1 IP adresi
+
 syslog_logtarget=Fail2Ban darbību žurnāls

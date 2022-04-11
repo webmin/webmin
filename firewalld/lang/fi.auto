@@ -30,6 +30,8 @@ index_return=luettelo vyöhykkeistä
 index_ezones=FirewallD-vyöhykkeitä ei löytynyt!
 index_none=Tällä vyöhykkeellä ei ole vielä sallittuja satamia tai palveluita.
 index_ifaces=Käytä sääntöjä rajapintoihin:
+index_ifaces_def=Kaikki käyttöliittymät
+index_ifaces_sel=Valitut käyttöliittymät:
 
 port_edit=Muokkaa porttia
 port_create=Lisää portti
@@ -90,6 +92,9 @@ delzone_edefault=Oletusvyöhykettä ei voi poistaa
 delzone_rusure=Haluatko varmasti poistaa vyöhykkeen $1, joka sisältää $2 portit ja $3 palvelut?
 
 defzone_err=Alueesta ei oletusarvoinen
+
+richrule_iperr=Virheellinen IP-osoite
+richrule_actionerr=Virheellinen toiminto
 
 restart_err=Asetusten määrittäminen epäonnistui
 

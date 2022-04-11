@@ -154,4 +154,23 @@ manual_efile=Выбранный файл не является частью ко
 manual_err=Не удалось отредактировать файл конфигурации
 manual_edata=Не введено содержимое файла конфигурации
 
+status_title=Статус тюрьмы и действия
+status_title2=Статус тюрьмы
+status_head_jail_name=Название тюрьмы
+status_head_currently_failed=В настоящее время не удалось
+status_head_total_failed=Всего неудачно
+status_head_currently_banned=В настоящее время запрещен
+status_head_total_banned=Всего забанено
+status_head_banned_ip_list=Список запрещенных IP-адресов
+status_jail_unblock_ip=Удалить $1 из списка запрещенных
+status_jail_permblock_ip=Навсегда заблокировать этот IP
+status_jail_unblock=Разблокировать все IP для выбранных джейлов
+status_jail_block=Навсегда заблокировать все IP-адреса в списке запрещенных для выбранных тюрем
+status_jail_noactive=Активных джейлов пока нет.
+status_err_set=Не удалось задать действие
+status_err_unblock=Не удалось разблокировать действие
+status_err_nojail=Тюрьмы не выбраны
+status_err_unban=Не удается разблокировать $1 IP-адрес
+status_err_ban=Невозможно заблокировать $1 IP-адрес
+
 syslog_logtarget=Журнал действий Fail2Ban

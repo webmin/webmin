@@ -1,5 +1,7 @@
 index_tforward=Naprzód
 index_fadd=Dodaj port do przodu.
+index_ifaces_def=Wszystkie interfejsy
+index_ifaces_sel=Wybrane interfejsy:
 
 port_mode2=Taki sam jak oryginalny port
 
@@ -14,6 +16,9 @@ forward_dstaddr=Adres przeznaczenia
 forward_dstlocal=Ten system
 forward_edstaddr=Nieprawidłowy adres docelowy IPv4
 forward_eneither=Należy podać adres docelowy lub port albo oba te adresy
+
+richrule_iperr=Nieprawidłowy adres IP
+richrule_actionerr=Nieprawidłowa czynność
 
 log_create_forward=Dodano do przodu $1 
 log_delete_forward=Usunięto do przodu $1 

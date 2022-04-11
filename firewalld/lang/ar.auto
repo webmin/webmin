@@ -30,6 +30,8 @@ index_return=قائمة المناطق
 index_ezones=لم يتم العثور على مناطق جدار حماية!
 index_none=لا تحتوي هذه المنطقة على أي منافذ أو خدمات مسموح بها حتى الآن.
 index_ifaces=تطبيق القواعد على الواجهات:
+index_ifaces_def=جميع الواجهات
+index_ifaces_sel=واجهات مختارة:
 
 port_edit=تحرير المنفذ
 port_create=إضافة منفذ
@@ -90,6 +92,9 @@ delzone_edefault=لا يمكن إزالة المنطقة الافتراضية
 delzone_rusure=هل تريد بالتأكيد حذف المنطقة$1 التي تحتوي على$2 منافذ وخدمات$3؟
 
 defzone_err=فشل في جعل المنطقة الافتراضية
+
+richrule_iperr=عنوان إب غير صالح
+richrule_actionerr=عمل غير صالح
 
 restart_err=فشل في تطبيق التكوين
 

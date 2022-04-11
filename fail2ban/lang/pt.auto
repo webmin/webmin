@@ -170,4 +170,23 @@ manual_efile=O arquivo selecionado não faz parte da configuração do Fail2Ban!
 manual_err=Falha ao editar o arquivo de configuração
 manual_edata=Nenhum conteúdo do arquivo de configuração inserido
 
+status_title=Status e ações das prisões
+status_title2=Status das prisões
+status_head_jail_name=Nome da prisão
+status_head_currently_failed=Falha no momento
+status_head_total_failed=Falha total
+status_head_currently_banned=Atualmente banido
+status_head_total_banned=Totalmente banido
+status_head_banned_ip_list=Lista de IPs banidos
+status_jail_unblock_ip=Remover $1 da lista de banidos
+status_jail_permblock_ip=Bloquear permanentemente este IP
+status_jail_unblock=Desbloquear todos os IPs para prisões selecionadas
+status_jail_block=Bloquear permanentemente todos os IPs na lista de banidos para prisões selecionadas
+status_jail_noactive=Ainda não há jails ativas habilitadas.
+status_err_set=Falha ao definir ação
+status_err_unblock=Falha ao desbloquear a ação
+status_err_nojail=Nenhuma prisão foi selecionada
+status_err_unban=Não é possível cancelar o banimento do endereço IP $1
+status_err_ban=Não é possível banir o endereço IP $1
+
 syslog_logtarget=Log de ações Fail2Ban

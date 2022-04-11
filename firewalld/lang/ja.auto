@@ -30,6 +30,8 @@ index_return=ゾーンのリスト
 index_ezones=FirewallDゾーンが見つかりません！
 index_none=このゾーンには、許可されたポートまたはサービスがまだありません。
 index_ifaces=インターフェイスにルールを適用します。
+index_ifaces_def=すべてのインターフェース
+index_ifaces_sel=選択したインターフェース：
 
 port_edit=ポートを編集
 port_create=ポートを追加
@@ -90,6 +92,9 @@ delzone_edefault=デフォルトゾーンは削除できません
 delzone_rusure=$2ポートと $3サービスを含むゾーン $1を削除してもよろしいですか？
 
 defzone_err=ゾーンをデフォルトにできませんでした
+
+richrule_iperr=無効なIPアドレス
+richrule_actionerr=無効なアクション
 
 restart_err=構成を適用できませんでした
 
