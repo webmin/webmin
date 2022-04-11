@@ -782,6 +782,19 @@ while(1) {
 		}
 	local $time_now = time();
 
+	# Clean up processes that have been idle for too long, if configured
+	if ($config{'maxlifetime'}) {
+		foreach my $c (@childpids) {
+			my $age = time() - $childstarts{$c};
+			if ($childstarts{$c} &&
+			    $age > $config{'maxlifetime'}) {
+				kill(9, $c);
+				print STDERR "Killing long-running process $c after $age sconds\n";
+				delete($childstarts{$c});
+				}
+			}
+		}
+
 	# Clean up finished processes
 	local $pid;
 	do {	$pid = waitpid(-1, WNOHANG);
@@ -789,6 +802,9 @@ while(1) {
 		} while($pid != 0 && $pid != -1);
 	@childpids = grep { kill(0, $_) } @childpids;
 	my %childpids = map { $_, 1 } @childpids;
+	foreach my $s (keys %childstarts) {
+		delete($childstarts{$s}) if (!$childpids{$s});
+		}
 
 	# Clean up connection counts from IPs that are no longer in use
 	foreach my $ip (keys %ipconnmap) {
@@ -1015,6 +1031,7 @@ while(1) {
 				exit;
 				}
 			push(@childpids, $handpid);
+			$childstarts{$handpid} = time();
 			push(@$ipconns, $handpid);
 			push(@$netconns, $handpid);
 			if ($need_pipes) {
