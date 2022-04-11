@@ -6603,54 +6603,63 @@ if ($gconfig{'logfiles'} && !&get_module_variable('$no_log_file_changes')) {
 	}
 }
 
-=head2 webmin_debug_var_dump(objref, [varname], [use-pid], [use-no-dumper])
+=head2 var_dump(objref, [filename|no-html], [pid-to-filename])
 
-Write content of a variable or hash/array ref to a file. For internal debug use only.
- Example :
-   webmin_debug_var_dump(\%hash_ref);
-   webmin_debug_var_dump(\@array_ref);
-   webmin_debug_var_dump($var_name);
+Prints to UI or dumps to a file content of array/hash
+ref or variable. For internal debug use only.
 
-  Calling `webmin_debug_var_dump(\%ENV, 'env')` will write a file under Webmin temporary
-  directory with a name `.debug_webmin__data_dumper___env` dumping its content nicely
+ Examples to print output to UI:
+   var_dump(\@array_ref, 0); # No HTML, standard output
+   var_dump(\%hash_ref);     # HTML output (newlines and spaces replaced with <br> and &nbsp;)
+
+ Examples to dump content to a file (under Webmin tempdir):
+   var_dump(\@array_ref, 'array_ref_name', 'add-process-pid-to-filename');
+   var_dump(\%hash_ref, 'hash_ref_name');
 
 =cut
-sub webmin_debug_var_dump
+sub var_dump
 {
-my ($objref, $varname, $usepid, $nodumper) = @_;
+my ($objref, $filename, $pidtofilename) = @_;
 my $pid;
-$pid = "__" . $$ if ($usepid);
-$varname ||= lc(ref($objref) || 'var') ;
-$varname  =~ tr/A-Za-z0-9\_\-//cd;
-$varname = "___$varname";
+$pid = "--" . $$ if ($pidtofilename);
+my $filename_ = '.debug_' . get_product_name() . "__var_dump$pid";
 
-my $file_name = '.debug_' . get_product_name() . $pid;
+if ($filename) {
+	$filename  =~ tr/A-Za-z0-9\_\-//cd;
+	$filename = "--$filename";
+	}
 
-if ($nodumper) {
-	if (ref($objref) eq 'HASH') {
-		write_file(tempname("${file_name}__hash__dump$varname"), $objref);
+eval 'use Data::Dumper';
+if (!$@) {
+	$Data::Dumper::Indent = 1;
+	$Data::Dumper::Terse = 1;
+	$Data::Dumper::Varname = 'this';
+	$Data::Dumper::Sortkeys = 1;
+
+	# Write file
+	if ($filename) {
+		write_file_contents(tempname("${filename_}$filename"), Dumper($objref));
 		}
-	elsif (ref($objref) eq 'ARRAY') {
-		my $arrindex = 0;
-		my @array_list = map { "\n@{[$arrindex++]}: $_" } @{$objref};
-		write_file_contents(tempname("${file_name}__array__dump$varname"), "@array_list");
-		}
+	# Print on screen
 	else {
-		write_file_contents(tempname("${file_name}__var__dump$varname"), "$objref");
+		my $dumped_data = Dumper($objref);
+		if ($filename ne '0') {
+			$dumped_data = &html_escape($dumped_data);
+			$dumped_data =~ s/\n/<br>/g;
+			$dumped_data =~ s/\s/&nbsp;/g;
+			}
+		print $dumped_data;
 		}
 	}
 else {
-	eval 'use Data::Dumper';
-	if (!$@) {
-		$Data::Dumper::Indent = 1;
-		$Data::Dumper::Terse = 1;
-		$Data::Dumper::Varname = 'this';
-		$Data::Dumper::Sortkeys = 1;
-		write_file_contents(tempname("${file_name}__data_dumper$varname"), Dumper($objref));
+	my $dumpererr = "Error: The Data::Dumper Perl module is not available on your system";
+	# Write file
+	if ($filename) {
+		write_file_contents(tempname("${filename_}_error"), $dumpererr);
 		}
+	# Print on screen
 	else {
-		write_file_contents(tempname("${file_name}__data_dumper_error"),
-			"Error: The Data::Dumper Perl module is not available on your system");
+		print Dumper($dumpererr);
 		}
 	}
 }
