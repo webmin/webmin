@@ -26,7 +26,7 @@ if (@jails) {
 		my $cmd = "$config{'client_cmd'} status ".quotemeta($jail);
 		my $jcmd = "$cmd 2>&1 </dev/null";
 		my @head = (undef, $text{"status_head_jail_name"});
-		my @body = (&ui_link("edit_jail.cgi?name=".urlize($jail), "&nbsp;<tt>".&html_escape($jail)."</tt>"));
+		my @body = (&ui_link("edit_jail.cgi?name=".urlize($jail), "&nbsp;".&html_escape($jail)));
 		my $jips;
 		my $noval;
 		&open_execute_command($fh, $jcmd, 1);
