@@ -32,6 +32,11 @@ index_none=To območje še nima dovoljenih vrat ali storitev.
 index_ifaces=Uporabi pravila za vmesnike:
 index_ifaces_def=Vsi vmesniki
 index_ifaces_sel=Izbrani vmesniki:
+index_ifaces_apply=Prijavite se
+index_listrules=Seznam pravil FirewallD
+index_restart_firewalld=Ponovno naložite FirewallD
+index_restart_firewallddesc=Ponovno naložite strežnik FirewallD in uporabite pravila, ki so bila trajno ustvarjena.
+index_listrules_restartdesc=Navedite podrobnosti o obstoječih obogatenih in neposrednih pravilih FirewallD v območju $1.
 
 port_edit=Uredi vrata
 port_create=Dodaj vrata
@@ -93,10 +98,6 @@ delzone_rusure=Ali ste prepričani, da želite izbrisati cono $1, ki vsebuje $2 
 
 defzone_err=Območje ni postalo privzeto
 
-index_listrules=Seznam pravil FirewallD
-index_restart_firewalld=Ponovno naložite FirewallD
-index_restart_firewallddesc=Ponovno naložite strežnik FirewallD in uporabite pravila, ki so bila trajno ustvarjena.
-index_listrules_restartdesc=Navedite podrobnosti o obstoječih obogatenih in neposrednih pravilih FirewallD v območju $1.
 list_rule_iperr=Neveljaven naslov IP
 list_rule_actionerr=Neveljavno dejanje
 list_rules_title=Pravila požarnega ziduD

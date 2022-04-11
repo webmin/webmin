@@ -32,6 +32,11 @@ index_none=اس زون میں ابھی تک کوئی اجازت شدہ بندر�
 index_ifaces=انٹرفیس پر قواعد لگائیں:
 index_ifaces_def=تمام انٹرفیس
 index_ifaces_sel=منتخب انٹرفیس:
+index_ifaces_apply=درخواست دیں
+index_listrules=FirewallD کے قواعد کی فہرست بنائیں
+index_restart_firewalld=فائر وال ڈی کو دوبارہ لوڈ کریں۔
+index_restart_firewallddesc=FirewallD سرور کو دوبارہ لوڈ کریں اور ان قوانین کو لاگو کریں جو مستقل طور پر بنائے گئے تھے۔
+index_listrules_restartdesc=$1 زون میں موجودہ امیر اور براہ راست فائر وال ڈی قوانین کے بارے میں تفصیلات درج کریں۔
 
 port_edit=پورٹ میں ترمیم کریں
 port_create=پورٹ شامل کریں
@@ -93,10 +98,6 @@ delzone_rusure=کیا آپ واقعی$1 زون کو حذف کرنا چاہتے �
 
 defzone_err=زون کو ڈیفالٹ بنانے میں ناکام
 
-index_listrules=FirewallD کے قواعد کی فہرست بنائیں
-index_restart_firewalld=فائر وال ڈی کو دوبارہ لوڈ کریں۔
-index_restart_firewallddesc=FirewallD سرور کو دوبارہ لوڈ کریں اور ان قوانین کو لاگو کریں جو مستقل طور پر بنائے گئے تھے۔
-index_listrules_restartdesc=$1 زون میں موجودہ امیر اور براہ راست فائر وال ڈی قوانین کے بارے میں تفصیلات درج کریں۔
 list_rule_iperr=غلط IP پتہ
 list_rule_actionerr=غلط کارروائی
 list_rules_title=فائر وال ڈی رولز

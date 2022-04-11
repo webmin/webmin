@@ -32,6 +32,11 @@ index_none=לאזור זה אין עדיין יציאות ושירותים המ�
 index_ifaces=החלת כללים על ממשקים:
 index_ifaces_def=כל הממשקים
 index_ifaces_sel=ממשקים נבחרים:
+index_ifaces_apply=להגיש מועמדות
+index_listrules=רשום את חוקי FirewallD
+index_restart_firewalld=טען מחדש את חומת האשD
+index_restart_firewallddesc=טען מחדש את שרת FirewallD והחל את הכללים שנוצרו לצמיתות.
+index_listrules_restartdesc=רשום פרטים על כללי FirewallD עשירים וישירים באזור $1.
 
 port_edit=ערוך נמל
 port_create=הוסף נמל
@@ -93,10 +98,6 @@ delzone_rusure=האם אתה בטוח שברצונך למחוק את האזור 
 
 defzone_err=הפיכת אזור לברירת המחדל נכשלה
 
-index_listrules=רשום את חוקי FirewallD
-index_restart_firewalld=טען מחדש את חומת האשD
-index_restart_firewallddesc=טען מחדש את שרת FirewallD והחל את הכללים שנוצרו לצמיתות.
-index_listrules_restartdesc=רשום פרטים על כללי FirewallD עשירים וישירים באזור $1.
 list_rule_iperr=כתובת IP לא חוקית
 list_rule_actionerr=פעולה לא חוקית
 list_rules_title=כללי FirewallD

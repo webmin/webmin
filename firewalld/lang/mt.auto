@@ -32,6 +32,11 @@ index_none=Din iż-żona għad m'għandha l-ebda port jew servizzi permessi.
 index_ifaces=Applika r-regoli għall-interfaces:
 index_ifaces_def=L-interfaces kollha
 index_ifaces_sel=Interfaces magħżula:
+index_ifaces_apply=Applika
+index_listrules=Lista tar-regoli FirewallD
+index_restart_firewalld=Reload FirewallD
+index_restart_firewallddesc=Reload the FirewallD server u applika r-regoli li nħolqu b'mod permanenti.
+index_listrules_restartdesc=Elenka d-dettalji dwar ir-regoli FirewallD sinjuri u diretti eżistenti fiż-żona $1.
 
 port_edit=Editja l-Port
 port_create=Żid Port
@@ -93,10 +98,6 @@ delzone_rusure=Int żgur li trid tħassar iż-żona $1, li fiha $2 portijiet u s
 
 defzone_err=Naqset milli tagħmel iż-żona default
 
-index_listrules=Lista tar-regoli FirewallD
-index_restart_firewalld=Reload FirewallD
-index_restart_firewallddesc=Reload the FirewallD server u applika r-regoli li nħolqu b'mod permanenti.
-index_listrules_restartdesc=Elenka d-dettalji dwar ir-regoli FirewallD sinjuri u diretti eżistenti fiż-żona $1.
 list_rule_iperr=Indirizz IP invalidu
 list_rule_actionerr=Azzjoni invalida
 list_rules_title=FirewallD Regoli

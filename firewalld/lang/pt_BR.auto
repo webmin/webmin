@@ -32,6 +32,11 @@ index_none=Esta zona ainda não possui portas ou serviços permitidos.
 index_ifaces=Aplique regras às interfaces:
 index_ifaces_def=Todas as interfaces
 index_ifaces_sel=Interfaces selecionadas:
+index_ifaces_apply=Aplicar
+index_listrules=Listar regras do FirewallD
+index_restart_firewalld=Recarregar FirewallD
+index_restart_firewallddesc=Recarregue o servidor FirewallD e aplique as regras que foram criadas permanentemente.
+index_listrules_restartdesc=Liste detalhes sobre regras de FirewallD avançadas e diretas existentes na zona $1.
 
 port_edit=Editar porta
 port_create=Adicionar porta
@@ -93,10 +98,6 @@ delzone_rusure=Tem certeza de que deseja excluir a zona $1, que contém $2 porta
 
 defzone_err=Falha ao tornar a zona o padrão
 
-index_listrules=Listar regras do FirewallD
-index_restart_firewalld=Recarregar FirewallD
-index_restart_firewallddesc=Recarregue o servidor FirewallD e aplique as regras que foram criadas permanentemente.
-index_listrules_restartdesc=Liste detalhes sobre regras de FirewallD avançadas e diretas existentes na zona $1.
 list_rule_iperr=Endereço IP inválido
 list_rule_actionerr=Ação inválida
 list_rules_title=Regras do FirewallD

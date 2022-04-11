@@ -141,7 +141,7 @@ if ($ok) {
 		foreach my $i (&list_system_interfaces()) {
 			print &ui_checkbox("iface", $i, $i, $zifcs{$i}),"\n";
 			}
-		print &ui_submit($text{'save'});
+		print &ui_submit($text{'index_ifaces_apply'});
 		print &ui_form_end();
 		}
 

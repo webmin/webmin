@@ -32,6 +32,11 @@ index_none=Αυτή η ζώνη δεν έχει ακόμη επιτρεπόμε�
 index_ifaces=Εφαρμογή κανόνων σε διεπαφές:
 index_ifaces_def=Όλες οι διεπαφές
 index_ifaces_sel=Επιλεγμένες διεπαφές:
+index_ifaces_apply=Ισχύουν
+index_listrules=Λίστα Κανόνων FirewallD
+index_restart_firewalld=Επανάληψη φόρτωσης FirewallD
+index_restart_firewallddesc=Φορτώστε ξανά τον διακομιστή FirewallD και εφαρμόστε τους κανόνες που δημιουργήθηκαν μόνιμα.
+index_listrules_restartdesc=Παραθέστε λεπτομέρειες σχετικά με τους υπάρχοντες εμπλουτισμένους και άμεσους κανόνες FirewallD στη ζώνη $1.
 
 port_edit=Επεξεργασία θύρας
 port_create=Προσθήκη θύρας
@@ -93,10 +98,6 @@ delzone_rusure=Είστε βέβαιοι ότι θέλετε να διαγράψ
 
 defzone_err=Η προεπιλεγμένη ζώνη απέτυχε
 
-index_listrules=Λίστα Κανόνων FirewallD
-index_restart_firewalld=Επανάληψη φόρτωσης FirewallD
-index_restart_firewallddesc=Φορτώστε ξανά τον διακομιστή FirewallD και εφαρμόστε τους κανόνες που δημιουργήθηκαν μόνιμα.
-index_listrules_restartdesc=Παραθέστε λεπτομέρειες σχετικά με τους υπάρχοντες εμπλουτισμένους και άμεσους κανόνες FirewallD στη ζώνη $1.
 list_rule_iperr=Μη έγκυρη διεύθυνση IP
 list_rule_actionerr=Μη έγκυρη ενέργεια
 list_rules_title=Κανόνες FirewallD

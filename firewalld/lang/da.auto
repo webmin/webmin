@@ -32,6 +32,11 @@ index_none=Denne zone har endnu ikke tilladte porte eller tjenester.
 index_ifaces=Anvend regler på grænseflader:
 index_ifaces_def=Alle grænseflader
 index_ifaces_sel=Udvalgte grænseflader:
+index_ifaces_apply=ansøge
+index_listrules=Liste FirewallD-regler
+index_restart_firewalld=Genindlæs FirewallD
+index_restart_firewallddesc=Genindlæs FirewallD-serveren, og anvend de regler, der blev oprettet permanent.
+index_listrules_restartdesc=Vis detaljer om eksisterende righoldige og direkte FirewallD-regler i $1 zone.
 
 port_edit=Rediger port
 port_create=Tilføj port
@@ -93,10 +98,6 @@ delzone_rusure=Er du sikker på, at du vil slette zonen $1, der indeholder $2 -p
 
 defzone_err=Kunne ikke gøre zone som standard
 
-index_listrules=Liste FirewallD-regler
-index_restart_firewalld=Genindlæs FirewallD
-index_restart_firewallddesc=Genindlæs FirewallD-serveren, og anvend de regler, der blev oprettet permanent.
-index_listrules_restartdesc=Vis detaljer om eksisterende righoldige og direkte FirewallD-regler i $1 zone.
 list_rule_iperr=Ugyldig IP-adresse
 list_rule_actionerr=Ugyldig handling
 list_rules_title=FirewallD regler

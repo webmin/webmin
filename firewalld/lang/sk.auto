@@ -32,6 +32,11 @@ index_none=Táto zóna zatiaľ nemá povolené prístavy ani služby.
 index_ifaces=Použiť pravidlá na rozhrania:
 index_ifaces_def=Všetky rozhrania
 index_ifaces_sel=Vybrané rozhrania:
+index_ifaces_apply=Použiť
+index_listrules=Zoznam pravidiel FirewallD
+index_restart_firewalld=Znova načítajte FirewallD
+index_restart_firewallddesc=Znova načítajte server FirewallD a použite pravidlá, ktoré boli natrvalo vytvorené.
+index_listrules_restartdesc=Uveďte podrobnosti o existujúcich bohatých a priamych pravidlách brány FirewallD v zóne $1.
 
 port_edit=Upraviť port
 port_create=Pridať port
@@ -93,10 +98,6 @@ delzone_rusure=Naozaj chcete odstrániť zónu $1, ktorá obsahuje $2 porty a sl
 
 defzone_err=Zónu sa nepodarilo nastaviť ako predvolenú
 
-index_listrules=Zoznam pravidiel FirewallD
-index_restart_firewalld=Znova načítajte FirewallD
-index_restart_firewallddesc=Znova načítajte server FirewallD a použite pravidlá, ktoré boli natrvalo vytvorené.
-index_listrules_restartdesc=Uveďte podrobnosti o existujúcich bohatých a priamych pravidlách brány FirewallD v zóne $1.
 list_rule_iperr=Neplatná adresa IP
 list_rule_actionerr=Neplatná akcia
 list_rules_title=Pravidlá brány firewallD
