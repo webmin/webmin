@@ -230,8 +230,9 @@ return ($w{'port'}, $w{'proto'}, $w{'toport'}, $w{'toaddr'});
 # Make the current saved config active
 sub apply_firewalld
 {
-my $out = &backquote_logged("$config{'firewall_cmd'} --reload 2>&1");
-return $? ? $out : undef;
+&foreign_require("init");
+my ($ok, $err) = &init::restart_action($config{'init_name'});
+return $ok ? undef : $err;
 }
 
 # stop_firewalld()
