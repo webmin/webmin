@@ -37,18 +37,18 @@ if (@jails) {
 				$col = lc($col);
 				$col =~ s/\s/_/g;
 				if ($col !~ /journal_matches/) {
-					push(@head, $text{"status_head_$col"});
+					push(@head, "<div $tdc>$text{\"status_head_$col\"}</div>");
 					if ($col =~ /banned_ip_list/) {
 						$jips = $val;
 						my @ips = split(/\s+/, $val);
-						@ips = map {
+						@ips = map { "<label style=\"white-space: nowrap\">" .
 							&ui_link("unblock_jail.cgi?unblock=1&jips-@{[&urlize($jail)]}=@{[&urlize($_)]}&jail=@{[&urlize($jail)]}", $_, undef,
 							         "title=\"@{[&text('status_jail_unblock_ip', &quote_escape($_))]}\" onmouseover=\"this.style.textDecoration='line-through'\" onmouseout=\"this.style.textDecoration='none'\""
 							        ) . 
-							($is_firewalld ? "&nbsp;&nbsp; " .
+							($is_firewalld ? "&nbsp; &nbsp; " .
 							&ui_link("unblock_jail.cgi?permblock=1&jips-@{[&urlize($jail)]}=@{[&urlize($_)]}&jail=@{[&urlize($jail)]}", "&empty;", undef,
-							         "title=\"@{[&text('status_jail_permblock_ip', &quote_escape($_))]}\" onmouseover=\"this.style.opacity='1';this.style.filter='grayscale(0)'\" onmouseout=\"this.style.opacity='0.25';this.style.filter='grayscale(100%)'\" style=\"font-size: 125%; float: right; filter: grayscale(100%); opacity: .25\""
-							        ) : undef) } @ips;
+							         "title=\"@{[&text('status_jail_permblock_ip', &quote_escape($_))]}\" onmouseover=\"this.style.opacity='1';this.style.filter='grayscale(0)'\" onmouseout=\"this.style.opacity='0.25';this.style.filter='grayscale(100%)'\" style=\"font-size: 125%; margin-right:10px; filter: grayscale(100%); opacity: .25\""
+							        ) : undef) . "</label>" } @ips;
 						$val = "<br>" if ($val);
 						$val .= join('<br>', @ips);
 						$val .= "<br><br>" if ($val);
@@ -64,7 +64,7 @@ if (@jails) {
 			print &ui_links_row(\@links);
 			print &ui_columns_start(\@head);
 			}
-		print &ui_checked_columns_row(\@body, ['width=5', undef, $tdc, $tdc, $tdc, $tdc, $noval ? $tdc : undef ], "jail", $jail);
+		print &ui_checked_columns_row(\@body, [ 'width=5', undef, $tdc, $tdc, $tdc, $tdc, $noval ? $tdc : undef ], "jail", $jail);
 		push(@jipsall, ["$jail" => $jips]);
 	}
 	if ($head) {
