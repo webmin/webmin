@@ -230,8 +230,9 @@ return ($w{'port'}, $w{'proto'}, $w{'toport'}, $w{'toaddr'});
 # Make the current saved config active
 sub apply_firewalld
 {
-my $out = &backquote_logged("$config{'firewall_cmd'} --reload 2>&1");
-return $? ? $out : undef;
+&foreign_require("init");
+my ($ok, $err) = &init::restart_action($config{'init_name'});
+return $ok ? undef : $err;
 }
 
 # stop_firewalld()
@@ -351,6 +352,149 @@ else {
 	# No port chosen
 	return undef;
 	}
+}
+
+# get_default_zone
+# Returns default zone
+sub get_default_zone
+{
+my @zones = &list_firewalld_zones();
+my ($zone) = grep { $_->{'default'} } @zones;
+return $zone;
+}
+
+# add_ip_ban(ip, [zone])
+# Ban given IP address in given or default zone
+sub add_ip_ban
+{
+my ($ip, $zone) = @_;
+return create_rich_rule('add', $ip, $zone);
+}
+
+# remove_ip_ban(ip, [zone])
+# Un-ban given IP address in given or default zone 
+sub remove_ip_ban
+{
+my ($ip, $zone) = @_;
+return create_rich_rule('remove', $ip, $zone);
+}
+
+# create_rich_rule(action, ip, [\zone], [opts])
+# Add or remove rich rule for given IP in given or default zone 
+sub create_rich_rule
+{
+my ($action, $ip, $zone, $opts) = @_;
+my $ip_validate = sub {
+	return &check_ipaddress($_[0]) || &check_ip6address($_[0]);
+	};
+
+# Default action for permanent ban is 'drop'
+my $action_type = "drop";
+
+# Override defaults
+if (ref($opts)) {
+	
+	# Override default action
+	$action_type = lc($opts->{'action'})
+		if ($opts->{'action'} &&
+		    $opts->{'action'} =~ /^accept|reject|drop|mark$/);
+}
+
+# Zone name
+if (!$zone) {
+	($zone) = get_default_zone();
+	}
+$zone = &sanitize_zone_name($zone->{'name'});
+
+# Validate action
+$action eq 'add' || $action eq 'remove' || &error($text{'list_rule_actionerr'});
+
+# Validate IP
+&$ip_validate($ip) || &error($text{'list_rule_iperr'});
+
+# Set family
+my $family = $ip =~ /:/ ? 'ipv6' : 'ipv4';
+
+# Apply block
+# (quotemeta doesn't work for params)
+my $get_cmd = sub {
+	my ($rtype) = @_;
+	my $type;
+	$type = " --permanent" if ($rtype eq 'permanent');
+	return "$config{'firewall_cmd'} --zone=".$zone."$type --$action-rich-rule=\"rule family='$family' source address='$ip' $action_type\"";
+	};
+my $out = &backquote_logged(&$get_cmd()." 2>&1 </dev/null");
+return $out if ($?);
+$out = &backquote_logged(&$get_cmd('permanent')." 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+# remove_rich_rule(rule, [\zone])
+# Remove rich rule in given or default zone 
+sub remove_rich_rule
+{
+my ($rule, $zone) = @_;
+
+# Zone name
+if (!$zone) {
+	($zone) = get_default_zone();
+	}
+$zone = &sanitize_zone_name($zone->{'name'});
+
+# Sanitize rule
+$rule = &sanitize_rule_name($rule);
+
+# Remove rule command
+# (quotemeta doesn't work for params)
+my $get_cmd = sub {
+	my ($rtype) = @_;
+	my $type;
+	$type = " --permanent" if ($rtype eq 'permanent');
+	return "$config{'firewall_cmd'} --zone=${zone}${type} --remove-rich-rule '${rule}'";
+	};
+
+my $out = &backquote_logged(&$get_cmd()." 2>&1 </dev/null");
+return $out if ($?);
+$out = &backquote_logged(&$get_cmd('permanent')." 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+# remove_direct_rule(rule)
+# Remove given direct rule
+sub remove_direct_rule
+{
+my ($rule) = @_;
+
+# Sanitize rule
+$rule = &sanitize_rule_name($rule);
+
+# Remove rule command
+# (quotemeta doesn't work for params)
+my $get_cmd = sub {
+	my ($rtype) = @_;
+	my $type;
+	$type = " --permanent" if ($rtype eq 'permanent');
+	return "$config{'firewall_cmd'}${type} --direct --remove-rule $rule";
+	};
+
+my $out = &backquote_logged(&$get_cmd()." 2>&1 </dev/null");
+return $out if ($?);
+$out = &backquote_logged(&$get_cmd('permanent')." 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+sub sanitize_zone_name
+{
+my ($zone) = @_;
+$zone =~ tr/A-Za-z0-9\-\_//cd;
+return $zone;
+}
+
+sub sanitize_rule_name
+{
+my ($rule) = @_;
+$rule =~ tr/A-Za-z0-9\-\_\=\"\:\.\,\/ //cd;
+return $rule;
 }
 
 1;
