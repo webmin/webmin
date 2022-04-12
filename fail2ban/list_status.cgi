@@ -36,7 +36,7 @@ if (@jails) {
 				my @ips = split($br, $ips);
 				@ips = @ips[0 .. $limit];
 				$ips = join($br, @ips);
-				$ips .= "<small style='cursor: default;'>$br$nbsp".&text('status_rules_plus_more', $ipscount-$limit)."</small>";
+				$ips .= "<small style='cursor: default;'>$br".&text('status_rules_plus_more', $ipscount-$limit)."</small>";
 				}
 			return $ips;
 		};
@@ -53,9 +53,9 @@ if (@jails) {
 					if ($col =~ /banned_ip_list/) {
 						$jips = $val;
 						my @ips = split(/\s+/, $val);
-						@ips = map { "<small $tal><tt>" . &ui_link("unblock_jail.cgi?unblock=1&jips-@{[&urlize($jail)]}=@{[&urlize($_)]}&jail=@{[&urlize($jail)]}", $_, undef,
+						@ips = map { "<small $tal><label>" . &ui_link("unblock_jail.cgi?unblock=1&jips-@{[&urlize($jail)]}=@{[&urlize($_)]}&jail=@{[&urlize($jail)]}", $_, undef,
 							         "title=\"@{[&text('status_jail_unblock_ip', &quote_escape($_))]}\" onmouseover=\"this.style.textDecoration='line-through'\" onmouseout=\"this.style.textDecoration='none'\""
-							        ) . "</tt></small>" } @ips;
+							        ) . "</label></small>" } @ips;
 						$val = "<br>" if ($val);
 						$val .= join('<br>', @ips);
 						$val = &$ipslimit($val);
