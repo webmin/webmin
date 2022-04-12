@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# Delete multiple ports or services
+# Save rich and direct rules
 
 use strict;
 use warnings;
