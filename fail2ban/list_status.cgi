@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# Show a list of all defined actions
+# Show a status of all active jails
 
 use strict;
 use warnings;
