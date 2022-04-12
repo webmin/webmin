@@ -546,4 +546,15 @@ my $out = &backquote_command("$config{'client_cmd'} -V 2>/dev/null </dev/null");
 return !$? && $out =~ /v([0-9\.]+)/ ? $1 : undef;
 }
 
+# Unblock given IP in given jail
+sub unblock_jailed_ip
+{
+my ($jail, $ip) = @_;
+my $cmd = "$config{'client_cmd'} set ".quotemeta($jail)." unbanip ".quotemeta($ip)." 2>&1 </dev/null";
+my $out = &backquote_logged($cmd);
+if ($?) {
+	&error(&text('status_err_unban', &html_escape($ip)) . " : $out");
+	}
+}
+
 1;

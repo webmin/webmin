@@ -8,15 +8,12 @@ our (%in, %text, %config);
 
 &ui_print_header(undef, $text{'status_title2'}, "");
 
-# Check if firewalld is used
-&foreign_require('firewalld', 'install_check.pl');
-my $is_firewalld = &firewalld::is_installed();
-
 my $out = &backquote_logged("$config{'client_cmd'} status 2>&1 </dev/null");
 my ($jail_list) = $out =~ /jail\s+list:\s*(.*)/im;
 my @jails = split(/,\s*/, $jail_list);
 if (@jails) {
-	my $tdc = "style=\"text-align: center\"";
+	my $tdc = 'style="text-align: center;"';
+	my $tal = 'style="text-align: left;"';
 	my @links = ( &select_all_link("jail"),
 	              &select_invert_link("jail") );
 	my $head;
@@ -39,12 +36,11 @@ if (@jails) {
 				my @ips = split($br, $ips);
 				@ips = @ips[0 .. $limit];
 				$ips = join($br, @ips);
-				$ips .= "<small>$br$nbsp".&text('list_rules_plus_more', $ipscount-$limit)."</small>";
+				$ips .= "<small style='cursor: default;'>$br$nbsp".&text('status_rules_plus_more', $ipscount-$limit)."</small>";
 				}
 			return $ips;
 		};
 		my $jips;
-		my $noval;
 		&open_execute_command($fh, $jcmd, 1);
 		while(<$fh>) {
 			if (/-\s+(.*):\s*(.*)/) {
@@ -57,19 +53,14 @@ if (@jails) {
 					if ($col =~ /banned_ip_list/) {
 						$jips = $val;
 						my @ips = split(/\s+/, $val);
-						@ips = map { "<label style=\"white-space: nowrap\">" .
-							&ui_link("unblock_jail.cgi?unblock=1&jips-@{[&urlize($jail)]}=@{[&urlize($_)]}&jail=@{[&urlize($jail)]}", $_, undef,
+						@ips = map { "<small $tal><tt>" . &ui_link("unblock_jail.cgi?unblock=1&jips-@{[&urlize($jail)]}=@{[&urlize($_)]}&jail=@{[&urlize($jail)]}", $_, undef,
 							         "title=\"@{[&text('status_jail_unblock_ip', &quote_escape($_))]}\" onmouseover=\"this.style.textDecoration='line-through'\" onmouseout=\"this.style.textDecoration='none'\""
-							        ) . 
-							($is_firewalld ? "&nbsp; &nbsp; " .
-							&ui_link("unblock_jail.cgi?permblock=1&jips-@{[&urlize($jail)]}=@{[&urlize($_)]}&jail=@{[&urlize($jail)]}", "&empty;", undef,
-							         "title=\"@{[&text('status_jail_permblock_ip', &quote_escape($_))]}\" onmouseover=\"this.style.opacity='1';this.style.filter='grayscale(0)'\" onmouseout=\"this.style.opacity='0.25';this.style.filter='grayscale(100%)'\" style=\"font-size: 125%; margin-right:10px; filter: grayscale(100%); opacity: .25\""
-							        ) : undef) . "</label>" } @ips;
+							        ) . "</tt></small>" } @ips;
 						$val = "<br>" if ($val);
 						$val .= join('<br>', @ips);
 						$val = &$ipslimit($val);
 						$val .= "<br><br>" if ($val);
-						$val .= "&ndash;", $noval++ if (!$val);
+						$val .= "&ndash;" if (!$val);
 						}
 					push(@body, $val);
 					}
@@ -81,7 +72,7 @@ if (@jails) {
 			print &ui_links_row(\@links);
 			print &ui_columns_start(\@head);
 			}
-		print &ui_checked_columns_row(\@body, [ 'width=5', undef, $tdc, $tdc, $tdc, $tdc, $noval ? $tdc : undef ], "jail", $jail);
+		print &ui_checked_columns_row(\@body, [ 'width=5', undef, $tdc, $tdc, $tdc, $tdc, $tdc ], "jail", $jail);
 		push(@jipsall, ["$jail" => $jips]);
 	}
 	if ($head) {
@@ -90,9 +81,7 @@ if (@jails) {
 		foreach my $j (@jipsall) {
 			print &ui_hidden("jips-$j->[0]", "$j->[1]");
 		}
-		print &ui_form_end([ [ 'unblock', $text{'status_jail_unblock'} ],
-		                     $is_firewalld ?
-		                       [ 'permblock', $text{'status_jail_block'} ] : undef ]);
+		print &ui_form_end([ [ 'unblock', $text{'status_jail_unblock'} ] ]);
 		}
 }
 else {
