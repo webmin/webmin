@@ -404,7 +404,7 @@ if (ref($opts)) {
 if (!$zone) {
 	($zone) = get_default_zone();
 	}
-$zone = &sanitize_zone_name($zone->{'name'});
+$zone = $zone->{'name'};
 
 # Validate action
 $action eq 'add' || $action eq 'remove' || &error($text{'list_rule_actionerr'});
@@ -415,13 +415,12 @@ $action eq 'add' || $action eq 'remove' || &error($text{'list_rule_actionerr'});
 # Set family
 my $family = $ip =~ /:/ ? 'ipv6' : 'ipv4';
 
-# Apply block
-# (quotemeta doesn't work for params)
+# Add/remove rich rule
 my $get_cmd = sub {
 	my ($rtype) = @_;
 	my $type;
 	$type = " --permanent" if ($rtype eq 'permanent');
-	return "$config{'firewall_cmd'} --zone=".$zone."$type --$action-rich-rule=\"rule family='$family' source address='$ip' $action_type\"";
+	return "$config{'firewall_cmd'} --zone=".quotemeta($zone)."$type --".quotemeta($action)."-rich-rule=\"rule family=".quotemeta($family)." source address=".quotemeta($ip)." ".quotemeta($action_type)."\"";
 	};
 my $out = &backquote_logged(&$get_cmd()." 2>&1 </dev/null");
 return $out if ($?);
@@ -439,18 +438,14 @@ my ($rule, $zone) = @_;
 if (!$zone) {
 	($zone) = get_default_zone();
 	}
-$zone = &sanitize_zone_name($zone->{'name'});
-
-# Sanitize rule
-$rule = &sanitize_rule_name($rule);
+$zone = $zone->{'name'};
 
 # Remove rule command
-# (quotemeta doesn't work for params)
 my $get_cmd = sub {
 	my ($rtype) = @_;
 	my $type;
 	$type = " --permanent" if ($rtype eq 'permanent');
-	return "$config{'firewall_cmd'} --zone=${zone}${type} --remove-rich-rule '${rule}'";
+	return "$config{'firewall_cmd'} --zone=".quotemeta($zone)."$type --remove-rich-rule ".quotemeta(&trim($rule))."";
 	};
 
 my $out = &backquote_logged(&$get_cmd()." 2>&1 </dev/null");
@@ -465,36 +460,21 @@ sub remove_direct_rule
 {
 my ($rule) = @_;
 
-# Sanitize rule
-$rule = &sanitize_rule_name($rule);
+# Sanitize rule manually (couldn't make it work with quotemeta)
+$rule =~ tr/A-Za-z0-9\-\_\=\"\:\.\,\/ //cd;
 
 # Remove rule command
-# (quotemeta doesn't work for params)
 my $get_cmd = sub {
 	my ($rtype) = @_;
 	my $type;
 	$type = " --permanent" if ($rtype eq 'permanent');
-	return "$config{'firewall_cmd'}${type} --direct --remove-rule $rule";
+	return "$config{'firewall_cmd'}${type} --direct --remove-rule ".&trim($rule)."";
 	};
 
 my $out = &backquote_logged(&$get_cmd()." 2>&1 </dev/null");
 return $out if ($?);
 $out = &backquote_logged(&$get_cmd('permanent')." 2>&1 </dev/null");
 return $? ? $out : undef;
-}
-
-sub sanitize_zone_name
-{
-my ($zone) = @_;
-$zone =~ tr/A-Za-z0-9\-\_//cd;
-return $zone;
-}
-
-sub sanitize_rule_name
-{
-my ($rule) = @_;
-$rule =~ tr/A-Za-z0-9\-\_\=\"\:\.\,\/ //cd;
-return $rule;
 }
 
 1;

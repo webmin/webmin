@@ -21,7 +21,7 @@ my @links = ( &select_all_link("rules"),
 
 # Check rich rules first
 my $fh = 'rrules';
-my $rcmd = "$config{'firewall_cmd'} --list-rich-rules --zone=$dzone";
+my $rcmd = "$config{'firewall_cmd'} --list-rich-rules --zone=".quotemeta($dzone)."";
 &open_execute_command($fh, "$rcmd 2>&1 </dev/null", 1);
 while(<$fh>) {
 	my @body;
