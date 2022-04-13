@@ -38,7 +38,7 @@ elsif ($config{'interfaces_type'} eq 'debian') {
 	if (-r "/etc/default/isc-dhcp-server") {
 		# Debian 6+ uses a new environment file
 		&read_env_file("/etc/default/isc-dhcp-server", \%dhcpd);
-		$iface = $dhcpd{'INTERFACES'};
+		$iface = $dhcpd{'INTERFACES'} || $dhcpd{'INTERFACESv4'};
 		}
 	elsif (-r "/etc/default/dhcp") {
 		# New debian uses an environment file

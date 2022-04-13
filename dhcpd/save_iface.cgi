@@ -57,7 +57,12 @@ elsif ($config{'interfaces_type'} eq 'debian') {
 	if (-r "/etc/default/isc-dhcp-server") {
 		# Write to Debian 6.0 environment file
 		&read_env_file("/etc/default/isc-dhcp-server", \%dhcpd);
-		$dhcpd{'INTERFACES'} = $iface;
+		if (defined($dhcpd{'INTERFACESv4'})) {
+			$dhcpd{'INTERFACESv4'} = $iface;
+			}
+		else {
+			$dhcpd{'INTERFACES'} = $iface;
+			}
 		&write_env_file("/etc/default/isc-dhcp-server", \%dhcpd);
 		}
 	elsif (-r "/etc/default/dhcp") {
