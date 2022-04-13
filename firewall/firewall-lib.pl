@@ -675,7 +675,13 @@ if ($filter->{'defaults'}->{'INPUT_ZONES'}) {
 if ($filter->{'defaults'} =~ /^f2b-|^fail2ban-/ && !$config{'filter_chain'} ) {
 	push(@fwname, 'fail2ban');
 	}
-return @fwname;
+if (&indexof('firewalld', @fwname) < 0 && &foreign_installed("firewalld", 1)) {
+	push(@fwname, 'firewalld');
+	}
+if (&indexof('shorewall', @fwname) < 0 && &foreign_installed("shorewall", 1)) {
+	push(@fwname, 'shorewall');
+	}
+return &unique(@fwname);
 }
 
 1;
