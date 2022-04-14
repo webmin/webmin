@@ -68,5 +68,6 @@ $out =~ /ZIP|JAR/i || &error($text{'versions_efmt'});
 # Check for a clash, and write the file
 -r $dest && &error($text{'versions_eclash'});
 &copy_source_dest($temp, $dest);
+&set_ownership_permissions(undef, undef, 0755, $dest);
 &webmin_log("addversion", undef, $ver);
 &redirect("list_versions.cgi");
