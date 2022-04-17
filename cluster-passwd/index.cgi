@@ -41,7 +41,7 @@ else {
 	# Show as table of users
 	my @grid;
 	for($i=0; $i<@ulist; $i++) {
-		push(@grid, &ui_link("edit_passwd.cgiuser=$ulist[$i]->{'user'}",
+		push(@grid, &ui_link("edit_passwd.cgi?user=$ulist[$i]->{'user'}",
 				     &html_escape($ulist[$i]->{'user'})));
 		}
 	print &ui_grid_table(\@grid, 4, 100, undef, undef,
