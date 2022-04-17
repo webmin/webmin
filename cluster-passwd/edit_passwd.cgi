@@ -39,8 +39,8 @@ if ($access{'repeat'}) {
 	}
 
 if ($access{'others'} == 2) {
-	print &ui_table_row(undef,
-	    &ui_checkbox("others", 1, $passwd::text{'passwd_others'}, 1), 2);
+	print &ui_table_row(" ",
+	    &ui_checkbox("others", 1, $passwd::text{'passwd_others'}, 1));
 	}
 
 print &ui_table_end();
