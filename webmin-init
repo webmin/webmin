@@ -69,7 +69,11 @@ restart)
 	$STOP ; $START
 	RETVAL=$?
 	;;
-reload|force-reload)
+force-reload)
+	$STOP --kill ; $START
+	RETVAL=$?
+	;;
+reload)
 	$RELOAD
 	RETVAL=$?
 	;;
