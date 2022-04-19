@@ -164,7 +164,6 @@ if [ ! -r /etc/webmin/config ]; then
 		echo Unable to identify operating system
 		exit 2
 	fi
-	echo Operating system is \$oscheck
 	if [ "\$WEBMIN_PORT\" != \"\" ]; then
 		port=\$WEBMIN_PORT
 	else
@@ -196,7 +195,6 @@ startafter=0
 if [ -d /etc/webmin ]; then
 	cat >/etc/webmin/stop 2>/dev/null <<'EOD'
 #!/bin/sh
-echo Stopping Webmin server in /usr/libexec/webmin
 pidfile=`grep "^pidfile=" /etc/webmin/miniserv.conf | sed -e 's/pidfile=//g'`
 pid=`cat \$pidfile`
 if [ "\$pid" != "" ]; then
@@ -267,9 +265,9 @@ printf "Are you sure you want to uninstall Webmin? (y/n) : "
 read answer
 printf "\\n"
 if [ "\\\$answer" = "y" ]; then
-	echo "Removing webmin RPM .."
+	echo "Removing Webmin RPM package.."
 	rpm -e --nodeps webmin
-	echo "Done!"
+	echo ".. done"
 fi
 EOFF
 chmod +x /etc/webmin/uninstall.sh
@@ -288,11 +286,11 @@ if [ "$musthost" != "" ]; then
 fi
 if [ "\$1" == 1 ]; then
 	if [ "\$sslmode" = "1" ]; then
-		echo "Webmin install complete. You can now login to https://\$host:\$port/"
+		echo "Webmin install complete. You can now login to https://\$host:\$port/" >>\$tempdir/webmin-setup.out 2>&1
 	else
-		echo "Webmin install complete. You can now login to http://\$host:\$port/"
+		echo "Webmin install complete. You can now login to http://\$host:\$port/" >>\$tempdir/webmin-setup.out 2>&1
 	fi
-	echo "as root with your root password."
+	echo "as root with your root password." >>\$tempdir/webmin-setup.out 2>&1
 fi
 /bin/true
 
@@ -302,8 +300,7 @@ if [ "\$1" = 0 ]; then
 	if [ "\$?" = 0 ]; then
 		# RPM is being removed, and no new version of webmin
 		# has taken it's place. Run uninstalls and stop the server
-		echo "Running uninstall scripts .."
-		(cd /usr/libexec/webmin ; WEBMIN_CONFIG=/etc/webmin WEBMIN_VAR=/var/webmin LANG= /usr/libexec/webmin/run-uninstalls.pl)
+		(cd /usr/libexec/webmin ; WEBMIN_CONFIG=/etc/webmin WEBMIN_VAR=/var/webmin LANG= /usr/libexec/webmin/run-uninstalls.pl) >/dev/null 2>&1 </dev/null
 		/etc/init.d/webmin stop >/dev/null 2>&1 </dev/null
 		/etc/webmin/stop >/dev/null 2>&1 </dev/null
 	fi
@@ -325,11 +322,9 @@ fi
 
 %triggerpostun -- webmin
 if [ ! -d /var/webmin -a "\$1" = 2 ]; then
-	echo Re-creating /var/webmin directory
 	mkdir /var/webmin
 fi
 if [ ! -r /etc/webmin/miniserv.conf -a -d /etc/.webmin-backup -a "\$1" = 2 ]; then
-	echo Recovering /etc/webmin directory
 	rm -rf /etc/.webmin-broken
 	mv /etc/webmin /etc/.webmin-broken
 	mv /etc/.webmin-backup /etc/webmin

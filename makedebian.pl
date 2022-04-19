@@ -351,8 +351,8 @@ read answer
 printf "\\n"
 if [ "\\\$answer" = "y" ]; then
 	echo "Removing $ucproduct package .."
-	dpkg --remove $product
-	echo "Done!"
+	dpkg --remove --force-depends $product
+	echo ".. done"
 fi
 EOFF
 chmod +x /etc/$baseproduct/uninstall.sh
@@ -366,15 +366,15 @@ if [ "\$?" = "0" ]; then
 	fi
 fi
 if [ "\$sslmode" = "1" ]; then
-	echo "$ucproduct install complete. You can now login to https://\$host:\$port/"
+	echo "$ucproduct install complete. You can now login to https://\$host:\$port/" >>\$tempdir/$product-setup.out 2>&1
 else
-	echo "$ucproduct install complete. You can now login to http://\$host:\$port/"
+	echo "$ucproduct install complete. You can now login to http://\$host:\$port/" >>\$tempdir/$product-setup.out 2>&1
 fi
 if [ "$product" = "webmin" ]; then
-	echo "as root with your root password, or as any user who can use sudo"
-	echo "to run commands as root."
+	echo "as root with your root password, or as any user who can use sudo" >>\$tempdir/$product-setup.out 2>&1
+	echo "to run commands as root." >>\$tempdir/$product-setup.out 2>&1
 else
-	echo "as any user on the system."
+	echo "as any user on the system." >>\$tempdir/$product-setup.out 2>&1
 fi
 EOF
 close(SCRIPT);
@@ -390,8 +390,7 @@ if [ "\$1" != "upgrade" -a "\$1" != "abort-upgrade" ]; then
 		# Package is being removed, and no new version of webmin
 		# has taken it's place. Run uninstalls and stop the server
 		if [ "$product" = "webmin" ]; then
-			echo "Running uninstall scripts .."
-			(cd /usr/share/$baseproduct ; WEBMIN_CONFIG=/etc/$baseproduct WEBMIN_VAR=/var/$baseproduct LANG= /usr/share/$baseproduct/run-uninstalls.pl)
+			(cd /usr/share/$baseproduct ; WEBMIN_CONFIG=/etc/$baseproduct WEBMIN_VAR=/var/$baseproduct LANG= /usr/share/$baseproduct/run-uninstalls.pl) >/dev/null 2>&1 </dev/null
 		fi
 		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
 		/bin/true

@@ -466,6 +466,7 @@ else
 	fi
 
 	# Copy files to target directory
+	echo ""
 	echo "***********************************************************************"
 	if [ "$wadir" != "$srcdir" ]; then
 		echo "Copying files to $wadir .."
