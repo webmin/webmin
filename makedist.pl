@@ -106,11 +106,6 @@ if (!$release || !-d "$tardir/$dir") {
 	system("rm -rf $tardir/$dir/file/plugin.jar");
 	system("rm -rf $tardir/$dir/authentic-theme/update");
 
-	# Clear out minified JS
-	if (-d "$tardir/$dir/authentic-theme/extensions") {
-		system("cat /dev/null >$tardir/$dir/authentic-theme/extensions/csf.min.js");
-		}
-
 	# Remove theme settings files
 	if (-d "$tardir/$dir/authentic-theme") {
 		system("find $tardir/$dir/authentic-theme -name 'settings_*.js' | xargs rm");
