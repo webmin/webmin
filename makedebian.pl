@@ -269,15 +269,10 @@ print SCRIPT <<EOF;
 if [ -d /etc/webmin ]; then
 	cat >/etc/webmin/stop 2>/dev/null <<'EOD'
 #!/bin/sh
-echo Stopping Webmin server in /usr/libexec/webmin
 pidfile=`grep "^pidfile=" /etc/webmin/miniserv.conf | sed -e 's/pidfile=//g'`
 pid=`cat \$pidfile`
 if [ "\$pid" != "" ]; then
   kill \$pid || exit 1
-  if [ "\$1" = "--kill" ]; then
-    sleep 1
-    (kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null
-  fi
   exit 0
 else
   exit 1
@@ -331,7 +326,9 @@ if [ "$product" = "webmin" ]; then
 	fi
 fi
 rm -f /var/lock/subsys/$baseproduct
-which systemctl >/dev/null 2>&1 && systemctl daemon-reload
+if command -v systemctl >/dev/null 2>&1; then
+	systemctl daemon-reload >/dev/null 2>&1
+fi
 if [ "$inetd" != "1" ]; then
 	if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
 		invoke-rc.d $baseproduct stop

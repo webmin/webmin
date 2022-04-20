@@ -199,10 +199,6 @@ pidfile=`grep "^pidfile=" /etc/webmin/miniserv.conf | sed -e 's/pidfile=//g'`
 pid=`cat \$pidfile`
 if [ "\$pid" != "" ]; then
   kill \$pid || exit 1
-  if [ "\$1" = "--kill" ]; then
-    sleep 1
-    (kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null
-  fi
   exit 0
 else
   exit 1
@@ -254,10 +250,17 @@ export config_dir var_dir perl autoos port login crypt host ssl nochown autothir
 ./setup.sh >\$tempdir/webmin-setup.out 2>&1
 chmod 600 \$tempdir/webmin-setup.out
 rm -f /var/lock/subsys/webmin
-which systemctl >/dev/null 2>&1 && systemctl daemon-reload
+if command -v systemctl >/dev/null 2>&1; then
+	systemctl daemon-reload >/dev/null 2>&1
+fi
 if [ "\$inetd" != "1" -a "\$startafter" = "1" ]; then
-	/etc/init.d/webmin stop  >/dev/null 2>&1 </dev/null
-	/etc/init.d/webmin start >/dev/null 2>&1 </dev/null
+	if command -v systemctl >/dev/null 2>&1; then
+		/etc/webmin/stop >/dev/null 2>&1 </dev/null
+		/etc/webmin/start >/dev/null 2>&1 </dev/null
+	else
+		/etc/init.d/webmin stop  >/dev/null 2>&1 </dev/null
+		/etc/init.d/webmin start >/dev/null 2>&1 </dev/null
+	fi
 fi
 cat >/etc/webmin/uninstall.sh <<EOFF
 #!/bin/sh
@@ -328,8 +331,13 @@ if [ ! -r /etc/webmin/miniserv.conf -a -d /etc/.webmin-backup -a "\$1" = 2 ]; th
 	rm -rf /etc/.webmin-broken
 	mv /etc/webmin /etc/.webmin-broken
 	mv /etc/.webmin-backup /etc/webmin
-	/etc/init.d/webmin stop >/dev/null 2>&1 </dev/null
-	/etc/init.d/webmin start >/dev/null 2>&1 </dev/null
+	if command -v systemctl >/dev/null 2>&1; then
+		/etc/webmin/stop >/dev/null 2>&1 </dev/null
+		/etc/webmin/start >/dev/null 2>&1 </dev/null
+	else
+		/etc/init.d/webmin stop  >/dev/null 2>&1 </dev/null
+		/etc/init.d/webmin start >/dev/null 2>&1 </dev/null
+	fi
 else
 	rm -rf /etc/.webmin-backup
 fi

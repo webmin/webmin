@@ -602,52 +602,95 @@ if [ "$noperlpath" = "" ]; then
 	echo ""
 fi
 
-echo "Creating start and stop scripts.."
-rm -f $config_dir/stop $config_dir/start $config_dir/restart $config_dir/reload
-echo "#!/bin/sh" >>$config_dir/start
-echo "echo Starting Webmin server in $wadir" >>$config_dir/start
-echo "trap '' 1" >>$config_dir/start
-echo "LANG=" >>$config_dir/start
-echo "export LANG" >>$config_dir/start
-echo "#PERLIO=:raw" >>$config_dir/start
-echo "unset PERLIO" >>$config_dir/start
-echo "export PERLIO" >>$config_dir/start
-echo "PERLLIB=$PERLLIB" >>$config_dir/start
-echo "export PERLLIB" >>$config_dir/start
+# Re-generating main
+rm -f $config_dir/stop-init $config_dir/start-init $config_dir/restart-init $config_dir/force-reload-init $config_dir/reload-init
+echo "Creating start and stop init scripts.."
+# Start main
+echo "#!/bin/sh" >>$config_dir/start-init
+echo "echo Starting Webmin server in $wadir" >>$config_dir/start-init
+echo "trap '' 1" >>$config_dir/start-init
+echo "LANG=" >>$config_dir/start-init
+echo "export LANG" >>$config_dir/start-init
+echo "#PERLIO=:raw" >>$config_dir/start-init
+echo "unset PERLIO" >>$config_dir/start-init
+echo "export PERLIO" >>$config_dir/start-init
+echo "PERLLIB=$PERLLIB" >>$config_dir/start-init
+echo "export PERLLIB" >>$config_dir/start-init
 uname -a | grep -i 'HP/*UX' >/dev/null
 if [ $? = "0" ]; then
-	echo "exec '$wadir/miniserv.pl' \$* $config_dir/miniserv.conf &" >>$config_dir/start
+	echo "exec '$wadir/miniserv.pl' \$* $config_dir/miniserv.conf &" >>$config_dir/start-init
 else
-	echo "exec '$wadir/miniserv.pl' \$* $config_dir/miniserv.conf" >>$config_dir/start
+	echo "exec '$wadir/miniserv.pl' \$* $config_dir/miniserv.conf" >>$config_dir/start-init
 fi
+# Stop main
+echo "#!/bin/sh" >>$config_dir/stop-init
+echo "echo Stopping Webmin server in $wadir" >>$config_dir/stop-init
+echo "pidfile=\`grep \"^pidfile=\" $config_dir/miniserv.conf | sed -e 's/pidfile=//g'\`" >>$config_dir/stop-init
+echo "pid=\`cat \$pidfile\`" >>$config_dir/stop-init
+echo "if [ \"\$pid\" != \"\" ]; then" >>$config_dir/stop-init
+echo "  kill \$pid || exit 1" >>$config_dir/stop-init
+echo "  touch $var_dir/stop-flag" >>$config_dir/stop-init
+echo "  if [ \"\$1\" = \"--kill\" ]; then" >>$config_dir/stop-init
+echo "    sleep 2" >>$config_dir/stop-init
+echo "    (kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null" >>$config_dir/stop-init
+echo "  fi" >>$config_dir/stop-init
+echo "  exit 0" >>$config_dir/stop-init
+echo "else" >>$config_dir/stop-init
+echo "  exit 1" >>$config_dir/stop-init
+echo "fi" >>$config_dir/stop-init
+# Restart main
+echo "#!/bin/sh" >>$config_dir/restart-init
+echo "$config_dir/stop-init" >>$config_dir/restart-init
+echo "$config_dir/start-init" >>$config_dir/restart-init
+# Force reload main
+echo "#!/bin/sh" >>$config_dir/force-reload-init
+echo "$config_dir/stop-init --kill" >>$config_dir/force-reload-init
+echo "$config_dir/start-init" >>$config_dir/force-reload-init
+# Reload main
+echo "#!/bin/sh" >>$config_dir/reload-init
+echo "echo Reloading Webmin server in $wadir" >>$config_dir/reload-init
+echo "pidfile=\`grep \"^pidfile=\" $config_dir/miniserv.conf | sed -e 's/pidfile=//g'\`" >>$config_dir/reload-init
+echo "kill -USR1 \`cat \$pidfile\`" >>$config_dir/reload-init
 
-echo "#!/bin/sh" >>$config_dir/stop
-echo "echo Stopping Webmin server in $wadir" >>$config_dir/stop
-echo "pidfile=\`grep \"^pidfile=\" $config_dir/miniserv.conf | sed -e 's/pidfile=//g'\`" >>$config_dir/stop
-echo "pid=\`cat \$pidfile\`" >>$config_dir/stop
-echo "if [ \"\$pid\" != \"\" ]; then" >>$config_dir/stop
-echo "  kill \$pid || exit 1" >>$config_dir/stop
-echo "  touch $var_dir/stop-flag" >>$config_dir/stop
-echo "  if [ \"\$1\" = \"--kill\" ]; then" >>$config_dir/stop
-echo "    sleep 2" >>$config_dir/stop
-echo "    (kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null" >>$config_dir/stop
-echo "  fi" >>$config_dir/stop
-echo "  exit 0" >>$config_dir/stop
-echo "else" >>$config_dir/stop
-echo "  exit 1" >>$config_dir/stop
-echo "fi" >>$config_dir/stop
-
-echo "#!/bin/sh" >>$config_dir/restart
-echo "$config_dir/stop --kill && $config_dir/start" >>$config_dir/restart
-
-echo "#!/bin/sh" >>$config_dir/reload
-echo "echo Reloading Webmin server in $wadir" >>$config_dir/reload
-echo "pidfile=\`grep \"^pidfile=\" $config_dir/miniserv.conf | sed -e 's/pidfile=//g'\`" >>$config_dir/reload
-echo "kill -USR1 \`cat \$pidfile\`" >>$config_dir/reload
-
-chmod 755 $config_dir/start $config_dir/stop $config_dir/restart $config_dir/reload
+chmod 755 $config_dir/stop-init $config_dir/start-init $config_dir/restart-init $config_dir/force-reload-init $config_dir/reload-init
 echo "..done"
 echo ""
+
+# Re-generating supplementary
+rm -f $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
+if command -v systemctl >/dev/null 2>&1; then
+	systemctlcmd=`which systemctl`
+	echo "Creating start and stop scripts (systemd).."
+	# Start systemd
+	echo "#!/bin/sh" >>$config_dir/start
+	echo "$config_dir/stop" >>$config_dir/start
+	echo "$systemctlcmd start webmin" >>$config_dir/start
+	# Stop systemd
+	echo "#!/bin/sh" >>$config_dir/stop
+	echo "$systemctlcmd stop webmin" >>$config_dir/stop
+	echo "$config_dir/stop-init >/dev/null 2>&1" >>$config_dir/stop
+	# Restart systemd
+	echo "#!/bin/sh" >>$config_dir/restart
+	echo "$config_dir/stop" >>$config_dir/restart
+	echo "$systemctlcmd start webmin" >>$config_dir/restart
+	# Force reload systemd
+	echo "#!/bin/sh" >>$config_dir/force-reload
+	echo "$config_dir/stop-init --kill >/dev/null 2>&1" >>$config_dir/force-reload
+	echo "$systemctlcmd stop webmin" >>$config_dir/force-reload
+	echo "$systemctlcmd start webmin" >>$config_dir/force-reload
+	# Reload systemd
+	echo "#!/bin/sh" >>$config_dir/reload
+	echo "$config_dir/reload-init >/dev/null 2>&1" >>$config_dir/reload
+	
+	chmod 755 $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
+else
+	echo "Creating start and stop init scripts (symlinks for old systems).."
+	ln -s $config_dir/start-init $config_dir/start
+	ln -s $config_dir/stop-init $config_dir/stop
+	ln -s $config_dir/restart-init $config_dir/restart
+	ln -s $config_dir/force-reload-init $config_dir/force-reload
+	ln -s $config_dir/reload-init $config_dir/reload
+fi
 
 if [ "$upgrading" = 1 -a "$inetd" != "1" ]; then
 	# Stop old version, with updated stop script
@@ -856,6 +899,9 @@ fi
 if [ "$nostart" = "" ]; then
 	if [ "$inetd" != "1" ]; then
 		echo "Attempting to start Webmin mini web server.."
+		if command -v systemctl >/dev/null 2>&1; then
+			systemctl daemon-reload
+		fi
 		$config_dir/start
 		if [ $? != "0" ]; then
 			echo "ERROR: Failed to start web server!"
