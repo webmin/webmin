@@ -250,14 +250,14 @@ if [ -x "\$(command -v systemctl)" >/dev/null 2>&1 ] && [ -d "/etc/systemd" ]; t
 	rmdir /etc/rc.d/rc1.d >/dev/null 2>&1
 	rmdir /etc/rc.d/rc6.d >/dev/null 2>&1
 
-	mkdir /etc/systemd/system
-	cp -p webmin-systemd /etc/systemd/system/webmin.service
+	mkdir /etc/systemd/system >/dev/null 2>&1
+	cp -p webmin-systemd /etc/systemd/system/webmin.service >/dev/null 2>&1
 	systemctl daemon-reload >/dev/null 2>&1
 else
-	mkdir -p /etc/sysconfig/daemons
-	cp -p webmin-daemon /etc/sysconfig/daemons/webmin
+	mkdir -p /etc/sysconfig/daemons >/dev/null 2>&1
+	cp -p webmin-daemon /etc/sysconfig/daemons/webmin >/dev/null 2>&1
 
-	cp -p webmin-init /etc/init.d/webmin
+	cp -p webmin-init /etc/init.d/webmin >/dev/null 2>&1
 
 	mkdir -p /etc/rc.d/{rc0.d,rc1.d,rc2.d,rc3.d,rc5.d,rc6.d} >/dev/null 2>&1
 	ln -s /etc/init.d/webmin /etc/rc.d/rc2.d/S99webmin >/dev/null 2>&1
@@ -328,6 +328,27 @@ if [ "\$1" = 0 ]; then
 		rm -rf /etc/webmin.rpmsave
 		mv /etc/webmin /etc/webmin.rpmsave
 		rm -rf /var/webmin
+
+		rm -f /etc/sysconfig/daemons/webmin >/dev/null 2>&1
+		rmdir /etc/sysconfig/daemons >/dev/null 2>&1
+		rm -f /etc/init.d/webmin >/dev/null 2>&1
+		rm -f /etc/rc.d/rc2.d/S99webmin >/dev/null 2>&1
+		rm -f /etc/rc.d/rc3.d/S99webmin >/dev/null 2>&1
+		rm -f /etc/rc.d/rc5.d/S99webmin >/dev/null 2>&1
+		rm -f /etc/rc.d/rc0.d/K10webmin >/dev/null 2>&1
+		rm -f /etc/rc.d/rc1.d/K10webmin >/dev/null 2>&1
+		rm -f /etc/rc.d/rc6.d/K10webmin >/dev/null 2>&1
+		rmdir /etc/rc.d/rc2.d >/dev/null 2>&1
+		rmdir /etc/rc.d/rc3.d >/dev/null 2>&1
+		rmdir /etc/rc.d/rc5.d >/dev/null 2>&1
+		rmdir /etc/rc.d/rc0.d >/dev/null 2>&1
+		rmdir /etc/rc.d/rc1.d >/dev/null 2>&1
+		rmdir /etc/rc.d/rc6.d >/dev/null 2>&1
+
+		rm -f /etc/systemd/system/webmin.service >/dev/null 2>&1
+		if [ -x "\$(command -v systemctl)" >/dev/null 2>&1 ]; then
+			systemctl daemon-reload >/dev/null 2>&1
+		fi
 	fi
 fi
 /bin/true
