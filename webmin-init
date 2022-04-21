@@ -26,111 +26,56 @@ FORCERELOAD=/etc/webmin/force-reload-init
 LOCKFILE=/var/lock/subsys/webmin
 CONFFILE=/etc/webmin/miniserv.conf
 
-# Check if run directly, i.e. /etc/init.d/webmin start
-# This is critical to have it resolved correctly
-if [ "$BASH_SUBSHELL" = 0 ] &&
-   [ "$EUID" = 0 ] &&
-   [ -n "$HOME" ]; then
-	# Check for systemd system
-	if command -v systemctl >/dev/null 2>&1; then
-		STARTSYSD=/etc/webmin/start
-		STOPSYSD=/etc/webmin/stop
-		RESTARTSYSD=/etc/webmin/restart
-		RELOADSYSD=/etc/webmin/reload
-		FORCERELOADSYSD=/etc/webmin/force-reload
-		WARNSYSD="WARN : [webmin] You are using traditional 'webmin' init script. It is advised to use \`systemctl $1 webmin\` directly."
-	fi
-fi
-
 case "$1" in
 start)
-	if [ -n "$STARTSYSD" ]; then
-		echo $WARNSYSD
-		echo "Starting $NAME (via systemctl)"
-		$STARTSYSD
-		RETVAL=$?
-	else
-		$START
-		RETVAL=$?
-		if [ "$RETVAL" = "0" ]; then
-			touch $LOCKFILE >/dev/null 2>&1
-		fi
+	$START
+	RETVAL=$?
+	if [ "$RETVAL" = "0" ]; then
+		touch $LOCKFILE >/dev/null 2>&1
 	fi
 	;;
 stop)
-	if [ -n "$STOPSYSD" ]; then
-		echo $WARNSYSD
-		echo "Stopping $NAME (via systemctl)"
-		$STOPSYSD
-		RETVAL=$?
-	else
-		$STOP
-		RETVAL=$?
-		if [ "$RETVAL" = "0" ]; then
-			rm -f $LOCKFILE
-			pidfile=`grep "^pidfile=" $CONFFILE | sed -e 's/pidfile=//g'`
-			if [ "$pidfile" = "" ]; then
-				pidfile=$PIDFILE
-			fi
-			rm -f $pidfile
-		fi
-	fi
-	;;
-status)
-	if [ -n "$STARTSYSD" ]; then
-		echo $WARNSYSD
-		echo "$NAME status (via systemctl)"
-		systemctl status webmin
-		RETVAL=$?
-	else
+	$STOP
+	RETVAL=$?
+	if [ "$RETVAL" = "0" ]; then
+		rm -f $LOCKFILE
 		pidfile=`grep "^pidfile=" $CONFFILE | sed -e 's/pidfile=//g'`
 		if [ "$pidfile" = "" ]; then
 			pidfile=$PIDFILE
 		fi
-		if [ -s $pidfile ]; then
-			pid=`cat $pidfile`
-			kill -0 $pid >/dev/null 2>&1
-			if [ "$?" = "0" ]; then
-				echo "$NAME (pid $pid) is running"
-				RETVAL=0
-			else
-				echo "$NAME is stopped"
-				RETVAL=1
-			fi
+		rm -f $pidfile
+	fi
+	;;
+status)
+	pidfile=`grep "^pidfile=" $CONFFILE | sed -e 's/pidfile=//g'`
+	if [ "$pidfile" = "" ]; then
+		pidfile=$PIDFILE
+	fi
+	if [ -s $pidfile ]; then
+		pid=`cat $pidfile`
+		kill -0 $pid >/dev/null 2>&1
+		if [ "$?" = "0" ]; then
+			echo "$NAME (pid $pid) is running"
+			RETVAL=0
 		else
 			echo "$NAME is stopped"
 			RETVAL=1
 		fi
+	else
+		echo "$NAME is stopped"
+		RETVAL=1
 	fi
 	;;
 restart)
-	if [ -n "$RESTARTSYSD" ]; then
-		echo $WARNSYSD
-		echo "Restarting $NAME (via systemctl)"
-		$RESTARTSYSD
-	else
-		$STOP ; $START
-	fi
+	$STOP ; $START
 	RETVAL=$?
 	;;
 force-reload)
-	if [ -n "$FORCERELOADSYSD" ]; then
-		echo $WARNSYSD
-		echo "Force restarting $NAME (via systemctl)"
-		$FORCERELOADSYSD
-	else
-		$FORCERELOAD
-	fi
+	$FORCERELOAD
 	RETVAL=$?
 	;;
 reload)
-	if [ -n "$RELOADSYSD" ]; then
-		echo $WARNSYSD
-		echo "Reloading $NAME configuration (via systemctl)"
-		$RELOADSYSD
-	else
-		$RELOAD
-	fi
+	$RELOAD
 	RETVAL=$?
 	;;
 *)

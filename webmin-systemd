@@ -1,0 +1,16 @@
+[Unit]
+Description=Webmin server daemon
+After=syslog.target
+StartLimitIntervalSec=3
+StartLimitBurst=2
+
+[Service]
+Type=forking
+PIDFile=/var/webmin/miniserv.pid
+ExecStart=/etc/webmin/start-init
+ExecStop=/etc/webmin/stop-init
+KillMode=none
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

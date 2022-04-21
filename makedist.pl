@@ -29,7 +29,7 @@ $vers || usage();
 	  "group_chooser.cgi", "config-irix", "config-osf1", "thirdparty.pl",
 	  "oschooser.pl", "config-unixware",
 	  "config-openserver", "switch_user.cgi", "lang", "lang_list.txt",
-	  "webmin-init", "webmin-daemon",
+	  "webmin-systemd", "webmin-init", "webmin-daemon",
 	  "config-openbsd",
 	  "config-macos", "LICENCE",
 	  "session_login.cgi", "acl_security.pl",

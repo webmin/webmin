@@ -37,12 +37,17 @@ system("find . -print | grep -v \"^prototype\" | pkgproto >>prototype");
 open(PROTO, ">> prototype");
 print PROTO "i postinstall=./postinstall\n";
 print PROTO "i preremove=./preremove\n";
-print PROTO "f none /etc/init.d/webmin=webmin-init 0755 root sys\n";
-print PROTO "l none /etc/rc3.d/S99webmin=/etc/init.d/webmin\n";
-print PROTO "l none /etc/rc0.d/K10webmin=/etc/init.d/webmin\n";
-print PROTO "l none /etc/rc1.d/K10webmin=/etc/init.d/webmin\n";
-print PROTO "l none /etc/rc2.d/K10webmin=/etc/init.d/webmin\n";
-print PROTO "l none /etc/rcS.d/K10webmin=/etc/init.d/webmin\n";
+if (-x "/usr/bin/systemctl") {
+	print PROTO "f none /etc/systemd/system/webmin.service=webmin-systemd 0755 root root\n";
+	}
+else {
+	print PROTO "f none /etc/init.d/webmin=webmin-init 0755 root sys\n";
+	print PROTO "l none /etc/rc3.d/S99webmin=/etc/init.d/webmin\n";
+	print PROTO "l none /etc/rc0.d/K10webmin=/etc/init.d/webmin\n";
+	print PROTO "l none /etc/rc1.d/K10webmin=/etc/init.d/webmin\n";
+	print PROTO "l none /etc/rc2.d/K10webmin=/etc/init.d/webmin\n";
+	print PROTO "l none /etc/rcS.d/K10webmin=/etc/init.d/webmin\n";
+	}
 close(PROTO);
 print ".. done\n\n";
 

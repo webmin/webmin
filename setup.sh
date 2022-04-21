@@ -663,16 +663,13 @@ if command -v systemctl >/dev/null 2>&1; then
 	echo "Creating start and stop scripts (systemd).."
 	# Start systemd
 	echo "#!/bin/sh" >>$config_dir/start
-	echo "$config_dir/stop" >>$config_dir/start
 	echo "$systemctlcmd start webmin" >>$config_dir/start
 	# Stop systemd
 	echo "#!/bin/sh" >>$config_dir/stop
 	echo "$systemctlcmd stop webmin" >>$config_dir/stop
-	echo "$config_dir/stop-init >/dev/null 2>&1" >>$config_dir/stop
 	# Restart systemd
 	echo "#!/bin/sh" >>$config_dir/restart
-	echo "$config_dir/stop" >>$config_dir/restart
-	echo "$systemctlcmd start webmin" >>$config_dir/restart
+	echo "$systemctlcmd restart webmin" >>$config_dir/restart
 	# Force reload systemd
 	echo "#!/bin/sh" >>$config_dir/force-reload
 	echo "$config_dir/stop-init --kill >/dev/null 2>&1" >>$config_dir/force-reload

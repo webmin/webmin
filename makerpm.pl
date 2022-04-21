@@ -105,45 +105,80 @@ chmod -R og-w .
 
 %install
 mkdir -p %{buildroot}/usr/libexec/webmin
-mkdir -p %{buildroot}/etc/sysconfig/daemons
-mkdir -p %{buildroot}/etc/rc.d/{rc0.d,rc1.d,rc2.d,rc3.d,rc5.d,rc6.d}
-mkdir -p %{buildroot}/etc/init.d
+if command -v systemctl >/dev/null 2>&1; then
+	mkdir -p %{buildroot}/etc/systemd/system/
+else
+	mkdir -p %{buildroot}/etc/sysconfig/daemons
+	mkdir -p %{buildroot}/etc/rc.d/{rc0.d,rc1.d,rc2.d,rc3.d,rc5.d,rc6.d}
+	mkdir -p %{buildroot}/etc/init.d
+fi
 mkdir -p %{buildroot}/etc/pam.d
 mkdir -p %{buildroot}/usr/bin
 cp -rp * %{buildroot}/usr/libexec/webmin
 rm %{buildroot}/usr/libexec/webmin/blue-theme
 cp -rp %{buildroot}/usr/libexec/webmin/gray-theme %{buildroot}/usr/libexec/webmin/blue-theme
-cp webmin-daemon %{buildroot}/etc/sysconfig/daemons/webmin
-cp webmin-init %{buildroot}/etc/init.d/webmin
-cp webmin-pam %{buildroot}/etc/pam.d/webmin
-ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc2.d/S99webmin
-ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc3.d/S99webmin
-ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc5.d/S99webmin
-ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc0.d/K10webmin
-ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc1.d/K10webmin
-ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc6.d/K10webmin
+if command -v systemctl >/dev/null 2>&1; then
+	cp webmin-systemd %{buildroot}/etc/systemd/system/webmin.service
+else
+	cp webmin-daemon %{buildroot}/etc/sysconfig/daemons/webmin
+	cp webmin-init %{buildroot}/etc/init.d/webmin
+	ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc2.d/S99webmin
+	ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc3.d/S99webmin
+	ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc5.d/S99webmin
+	ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc0.d/K10webmin
+	ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc1.d/K10webmin
+	ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc6.d/K10webmin
+fi
 ln -s /usr/libexec/webmin/bin/webmin %{buildroot}/usr/bin
+cp webmin-pam %{buildroot}/etc/pam.d/webmin
 echo rpm >%{buildroot}/usr/libexec/webmin/install-type
+
+EXTRA_FILES=""
+if command -v systemctl >/dev/null 2>&1; then
+  echo /etc/systemd/system/webmin.service > %{EXTRA_FILES}
+else
+	echo %config /etc/sysconfig/daemons/webmin > %{EXTRA_FILES}
+	echo /etc/init.d/webmin >> %{EXTRA_FILES}
+	echo /etc/rc.d/rc2.d/S99webmin >> %{EXTRA_FILES}
+	echo /etc/rc.d/rc3.d/S99webmin >> %{EXTRA_FILES}
+	echo /etc/rc.d/rc5.d/S99webmin >> %{EXTRA_FILES}
+	echo /etc/rc.d/rc0.d/K10webmin >> %{EXTRA_FILES}
+	echo /etc/rc.d/rc1.d/K10webmin >> %{EXTRA_FILES}
+	echo /etc/rc.d/rc6.d/K10webmin >> %{EXTRA_FILES}
+fi
 
 %clean
 #%{rmDESTDIR}
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
-%files
+%files -f %{EXTRA_FILES}
 %defattr(-,root,root)
 /usr/libexec/webmin
 /usr/bin/webmin
-%config /etc/sysconfig/daemons/webmin
-/etc/init.d/webmin
-/etc/rc.d/rc2.d/S99webmin
-/etc/rc.d/rc3.d/S99webmin
-/etc/rc.d/rc5.d/S99webmin
-/etc/rc.d/rc0.d/K10webmin
-/etc/rc.d/rc1.d/K10webmin
-/etc/rc.d/rc6.d/K10webmin
 %config /etc/pam.d/webmin
 
 %pre
+rm -f %{EXTRA_FILES}
+if command -v systemctl >/dev/null 2>&1; then
+	rm -f %{buildroot}/etc/sysconfig/daemons/webmin >/dev/null 2>&1 </dev/null
+	rmdir %{buildroot}/etc/sysconfig/daemons >/dev/null 2>&1 </dev/null
+	rm -f %{buildroot}/etc/init.d/webmin >/dev/null 2>&1 </dev/null
+	rm -f %{buildroot}/etc/rc.d/rc2.d/S99webmin >/dev/null 2>&1 </dev/null
+	rm -f %{buildroot}/etc/rc.d/rc3.d/S99webmin >/dev/null 2>&1 </dev/null
+	rm -f %{buildroot}/etc/rc.d/rc5.d/S99webmin >/dev/null 2>&1 </dev/null
+	rm -f %{buildroot}/etc/rc.d/rc0.d/K10webmin >/dev/null 2>&1 </dev/null
+	rm -f %{buildroot}/etc/rc.d/rc1.d/K10webmin >/dev/null 2>&1 </dev/null
+	rm -f %{buildroot}/etc/rc.d/rc6.d/K10webmin >/dev/null 2>&1 </dev/null
+	rmdir %{buildroot}/etc/rc.d/rc2.d >/dev/null 2>&1 </dev/null
+	rmdir %{buildroot}/etc/rc.d/rc3.d >/dev/null 2>&1 </dev/null
+	rmdir %{buildroot}/etc/rc.d/rc5.d >/dev/null 2>&1 </dev/null
+	rmdir %{buildroot}/etc/rc.d/rc0.d >/dev/null 2>&1 </dev/null
+	rmdir %{buildroot}/etc/rc.d/rc1.d >/dev/null 2>&1 </dev/null
+	rmdir %{buildroot}/etc/rc.d/rc6.d >/dev/null 2>&1 </dev/null
+else
+	rm -f %{buildroot}/etc/systemd/system/webmin.service >/dev/null 2>&1 </dev/null
+fi
+
 perl <<EOD;
 $maketemp
 EOD
@@ -213,7 +248,7 @@ if [ "\$1" != 1 ]; then
 		if [ "\$?" = 0 ]; then
 		  startafter=1
 		fi
-		/etc/init.d/webmin stop >/dev/null 2>&1 </dev/null
+		/etc/webmin/stop >/dev/null 2>&1 </dev/null
 	fi
 else
   startafter=1
@@ -254,13 +289,8 @@ if command -v systemctl >/dev/null 2>&1; then
 	systemctl daemon-reload >/dev/null 2>&1
 fi
 if [ "\$inetd" != "1" -a "\$startafter" = "1" ]; then
-	if command -v systemctl >/dev/null 2>&1; then
-		/etc/webmin/stop >/dev/null 2>&1 </dev/null
-		/etc/webmin/start >/dev/null 2>&1 </dev/null
-	else
-		/etc/init.d/webmin stop  >/dev/null 2>&1 </dev/null
-		/etc/init.d/webmin start >/dev/null 2>&1 </dev/null
-	fi
+	/etc/webmin/stop >/dev/null 2>&1 </dev/null
+	/etc/webmin/start >/dev/null 2>&1 </dev/null
 fi
 cat >/etc/webmin/uninstall.sh <<EOFF
 #!/bin/sh
@@ -304,8 +334,8 @@ if [ "\$1" = 0 ]; then
 		# RPM is being removed, and no new version of webmin
 		# has taken it's place. Run uninstalls and stop the server
 		(cd /usr/libexec/webmin ; WEBMIN_CONFIG=/etc/webmin WEBMIN_VAR=/var/webmin LANG= /usr/libexec/webmin/run-uninstalls.pl) >/dev/null 2>&1 </dev/null
-		/etc/init.d/webmin stop >/dev/null 2>&1 </dev/null
 		/etc/webmin/stop >/dev/null 2>&1 </dev/null
+		/etc/webmin/stop-init --kill >/dev/null 2>&1 </dev/null
 	fi
 fi
 /bin/true
@@ -331,13 +361,8 @@ if [ ! -r /etc/webmin/miniserv.conf -a -d /etc/.webmin-backup -a "\$1" = 2 ]; th
 	rm -rf /etc/.webmin-broken
 	mv /etc/webmin /etc/.webmin-broken
 	mv /etc/.webmin-backup /etc/webmin
-	if command -v systemctl >/dev/null 2>&1; then
-		/etc/webmin/stop >/dev/null 2>&1 </dev/null
-		/etc/webmin/start >/dev/null 2>&1 </dev/null
-	else
-		/etc/init.d/webmin stop  >/dev/null 2>&1 </dev/null
-		/etc/init.d/webmin start >/dev/null 2>&1 </dev/null
-	fi
+	/etc/webmin/stop >/dev/null 2>&1 </dev/null
+	/etc/webmin/start >/dev/null 2>&1 </dev/null
 else
 	rm -rf /etc/.webmin-backup
 fi
