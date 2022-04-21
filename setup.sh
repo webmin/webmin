@@ -681,12 +681,24 @@ if command -v systemctl >/dev/null 2>&1; then
 	
 	chmod 755 $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
 else
-	echo "Creating start and stop init scripts (symlinks for old systems).."
-	ln -s $config_dir/start-init $config_dir/start
-	ln -s $config_dir/stop-init $config_dir/stop
-	ln -s $config_dir/restart-init $config_dir/restart
-	ln -s $config_dir/force-reload-init $config_dir/force-reload
-	ln -s $config_dir/reload-init $config_dir/reload
+	echo "Creating start and stop init scripts (init.d for older systems).."
+	# Start init.d
+	echo "#!/bin/sh" >>$config_dir/start
+	echo "/etc/init.d/webmin start" >>$config_dir/start
+	# Stop init.d
+	echo "#!/bin/sh" >>$config_dir/stop
+	echo "/etc/init.d/webmin stop" >>$config_dir/stop
+	# Restart init.d
+	echo "#!/bin/sh" >>$config_dir/restart
+	echo "/etc/init.d/webmin restart" >>$config_dir/restart
+	# Force reload init.d
+	echo "#!/bin/sh" >>$config_dir/force-reload
+	echo "$config_dir/stop-init --kill >/dev/null 2>&1" >>$config_dir/force-reload
+	echo "/etc/init.d/webmin stop" >>$config_dir/force-reload
+	echo "/etc/init.d/webmin start" >>$config_dir/force-reload
+	# Reload init.d
+	echo "#!/bin/sh" >>$config_dir/reload
+	echo "/etc/init.d/webmin reload >/dev/null 2>&1" >>$config_dir/reload
 fi
 
 if [ "$upgrading" = 1 -a "$inetd" != "1" ]; then

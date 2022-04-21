@@ -105,80 +105,26 @@ chmod -R og-w .
 
 %install
 mkdir -p %{buildroot}/usr/libexec/webmin
-if command -v systemctl >/dev/null 2>&1; then
-	mkdir -p %{buildroot}/etc/systemd/system/
-else
-	mkdir -p %{buildroot}/etc/sysconfig/daemons
-	mkdir -p %{buildroot}/etc/rc.d/{rc0.d,rc1.d,rc2.d,rc3.d,rc5.d,rc6.d}
-	mkdir -p %{buildroot}/etc/init.d
-fi
 mkdir -p %{buildroot}/etc/pam.d
 mkdir -p %{buildroot}/usr/bin
 cp -rp * %{buildroot}/usr/libexec/webmin
+cp webmin-pam %{buildroot}/etc/pam.d/webmin
+ln -s /usr/libexec/webmin/bin/webmin %{buildroot}/usr/bin
 rm %{buildroot}/usr/libexec/webmin/blue-theme
 cp -rp %{buildroot}/usr/libexec/webmin/gray-theme %{buildroot}/usr/libexec/webmin/blue-theme
-if command -v systemctl >/dev/null 2>&1; then
-	cp webmin-systemd %{buildroot}/etc/systemd/system/webmin.service
-else
-	cp webmin-daemon %{buildroot}/etc/sysconfig/daemons/webmin
-	cp webmin-init %{buildroot}/etc/init.d/webmin
-	ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc2.d/S99webmin
-	ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc3.d/S99webmin
-	ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc5.d/S99webmin
-	ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc0.d/K10webmin
-	ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc1.d/K10webmin
-	ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc6.d/K10webmin
-fi
-ln -s /usr/libexec/webmin/bin/webmin %{buildroot}/usr/bin
-cp webmin-pam %{buildroot}/etc/pam.d/webmin
 echo rpm >%{buildroot}/usr/libexec/webmin/install-type
-
-EXTRA_FILES=""
-if command -v systemctl >/dev/null 2>&1; then
-  echo /etc/systemd/system/webmin.service > %{EXTRA_FILES}
-else
-	echo %config /etc/sysconfig/daemons/webmin > %{EXTRA_FILES}
-	echo /etc/init.d/webmin >> %{EXTRA_FILES}
-	echo /etc/rc.d/rc2.d/S99webmin >> %{EXTRA_FILES}
-	echo /etc/rc.d/rc3.d/S99webmin >> %{EXTRA_FILES}
-	echo /etc/rc.d/rc5.d/S99webmin >> %{EXTRA_FILES}
-	echo /etc/rc.d/rc0.d/K10webmin >> %{EXTRA_FILES}
-	echo /etc/rc.d/rc1.d/K10webmin >> %{EXTRA_FILES}
-	echo /etc/rc.d/rc6.d/K10webmin >> %{EXTRA_FILES}
-fi
 
 %clean
 #%{rmDESTDIR}
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
-%files -f %{EXTRA_FILES}
+%files
 %defattr(-,root,root)
 /usr/libexec/webmin
 /usr/bin/webmin
 %config /etc/pam.d/webmin
 
 %pre
-rm -f %{EXTRA_FILES}
-if command -v systemctl >/dev/null 2>&1; then
-	rm -f %{buildroot}/etc/sysconfig/daemons/webmin >/dev/null 2>&1 </dev/null
-	rmdir %{buildroot}/etc/sysconfig/daemons >/dev/null 2>&1 </dev/null
-	rm -f %{buildroot}/etc/init.d/webmin >/dev/null 2>&1 </dev/null
-	rm -f %{buildroot}/etc/rc.d/rc2.d/S99webmin >/dev/null 2>&1 </dev/null
-	rm -f %{buildroot}/etc/rc.d/rc3.d/S99webmin >/dev/null 2>&1 </dev/null
-	rm -f %{buildroot}/etc/rc.d/rc5.d/S99webmin >/dev/null 2>&1 </dev/null
-	rm -f %{buildroot}/etc/rc.d/rc0.d/K10webmin >/dev/null 2>&1 </dev/null
-	rm -f %{buildroot}/etc/rc.d/rc1.d/K10webmin >/dev/null 2>&1 </dev/null
-	rm -f %{buildroot}/etc/rc.d/rc6.d/K10webmin >/dev/null 2>&1 </dev/null
-	rmdir %{buildroot}/etc/rc.d/rc2.d >/dev/null 2>&1 </dev/null
-	rmdir %{buildroot}/etc/rc.d/rc3.d >/dev/null 2>&1 </dev/null
-	rmdir %{buildroot}/etc/rc.d/rc5.d >/dev/null 2>&1 </dev/null
-	rmdir %{buildroot}/etc/rc.d/rc0.d >/dev/null 2>&1 </dev/null
-	rmdir %{buildroot}/etc/rc.d/rc1.d >/dev/null 2>&1 </dev/null
-	rmdir %{buildroot}/etc/rc.d/rc6.d >/dev/null 2>&1 </dev/null
-else
-	rm -f %{buildroot}/etc/systemd/system/webmin.service >/dev/null 2>&1 </dev/null
-fi
-
 perl <<EOD;
 $maketemp
 EOD
@@ -285,8 +231,41 @@ export config_dir var_dir perl autoos port login crypt host ssl nochown autothir
 ./setup.sh >\$tempdir/webmin-setup.out 2>&1
 chmod 600 \$tempdir/webmin-setup.out
 rm -f /var/lock/subsys/webmin
-if command -v systemctl >/dev/null 2>&1; then
+cd /usr/libexec/webmin
+if [ -x "\$(command -v systemctl)" >/dev/null 2>&1 ] && [ -d "/etc/systemd" ]; then
+
+	rm -f /etc/sysconfig/daemons/webmin >/dev/null 2>&1
+	rmdir /etc/sysconfig/daemons >/dev/null 2>&1
+	rm -f /etc/init.d/webmin >/dev/null 2>&1
+	rm -f /etc/rc.d/rc2.d/S99webmin >/dev/null 2>&1
+	rm -f /etc/rc.d/rc3.d/S99webmin >/dev/null 2>&1
+	rm -f /etc/rc.d/rc5.d/S99webmin >/dev/null 2>&1
+	rm -f /etc/rc.d/rc0.d/K10webmin >/dev/null 2>&1
+	rm -f /etc/rc.d/rc1.d/K10webmin >/dev/null 2>&1
+	rm -f /etc/rc.d/rc6.d/K10webmin >/dev/null 2>&1
+	rmdir /etc/rc.d/rc2.d >/dev/null 2>&1
+	rmdir /etc/rc.d/rc3.d >/dev/null 2>&1
+	rmdir /etc/rc.d/rc5.d >/dev/null 2>&1
+	rmdir /etc/rc.d/rc0.d >/dev/null 2>&1
+	rmdir /etc/rc.d/rc1.d >/dev/null 2>&1
+	rmdir /etc/rc.d/rc6.d >/dev/null 2>&1
+
+	mkdir /etc/systemd/system
+	cp -p webmin-systemd /etc/systemd/system/webmin.service
 	systemctl daemon-reload >/dev/null 2>&1
+else
+	mkdir -p /etc/sysconfig/daemons
+	cp -p webmin-daemon /etc/sysconfig/daemons/webmin
+
+	cp -p webmin-init /etc/init.d/webmin
+
+	mkdir -p /etc/rc.d/{rc0.d,rc1.d,rc2.d,rc3.d,rc5.d,rc6.d} >/dev/null 2>&1
+	ln -s /etc/init.d/webmin /etc/rc.d/rc2.d/S99webmin >/dev/null 2>&1
+	ln -s /etc/init.d/webmin /etc/rc.d/rc3.d/S99webmin >/dev/null 2>&1
+	ln -s /etc/init.d/webmin /etc/rc.d/rc5.d/S99webmin >/dev/null 2>&1
+	ln -s /etc/init.d/webmin /etc/rc.d/rc0.d/K10webmin >/dev/null 2>&1
+	ln -s /etc/init.d/webmin /etc/rc.d/rc1.d/K10webmin >/dev/null 2>&1
+	ln -s /etc/init.d/webmin /etc/rc.d/rc6.d/K10webmin >/dev/null 2>&1
 fi
 if [ "\$inetd" != "1" -a "\$startafter" = "1" ]; then
 	/etc/webmin/stop >/dev/null 2>&1 </dev/null
