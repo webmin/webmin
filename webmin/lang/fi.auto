@@ -69,6 +69,10 @@ bind_maxconns_per_net=Suurin mahdollinen samanaikainen yhteys verkkoa kohti
 bind_emaxconns=Suurimpien samanaikaisten yhteyksien on oltava suurempi kuin 1
 bind_emaxconns_per_ip=IP-yhteyksien maksimimäärän on oltava suurempi kuin 1
 bind_emaxconns_per_net=Samanaikaisia yhteyksiä saa olla enintään yhtä verkkoa kohti
+bind_maxlifetime=Webmin-prosessin enimmäiskesto
+bind_maxlifetime_def=Rajoittamaton
+bind_maxlifetime_secs=sekuntia
+bind_emaxlifetime=Prosessin enimmäiskeston on oltava suurempi kuin 60 sekuntia
 
 log_title=hakkuu
 log_desc=Webmin voidaan määrittää kirjoittamaan lokipalvelin Web-palvelimen osumia tavallisessa CLF-lokitiedostomuodossa. Jos kirjaaminen on käytössä, voit myös valita, tallennetaanko IP-osoitteet vai isäntänimet ja kuinka usein lokitiedosto tyhjennetään. Kun tämä on käytössä, lokit kirjoitetaan tiedostoon $1.

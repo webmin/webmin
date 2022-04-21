@@ -69,6 +69,10 @@ bind_maxconns_per_net=Conexiuni maxime simultane pe rețea
 bind_emaxconns=Conexiunile simultane maxime trebuie să fie mai mari decât 1
 bind_emaxconns_per_ip=Conexiunile simultane maxime pe IP trebuie să fie mai mari decât 1
 bind_emaxconns_per_net=Conexiunile simultane maxime pe rețea trebuie să fie mai mari decât 1
+bind_maxlifetime=Durata maximă de viață a procesului Webmin
+bind_maxlifetime_def=Nelimitat
+bind_maxlifetime_secs=secunde
+bind_emaxlifetime=Durata maximă de viață a procesului trebuie să fie un număr mai mare de 60 de secunde
 
 log_title=Logare
 log_desc=Webmin poate fi configurat pentru a scrie un jurnal de accesări pe serverul web, în formatul standard al fișierului jurnal CLF. Dacă logarea este activată, puteți alege, de asemenea, dacă sunt înregistrate adrese IP sau nume de gazdă și cât de des este șters fișierul jurnal. Când este activat, jurnalele sunt scrise în fișierul $1.

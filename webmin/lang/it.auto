@@ -22,6 +22,10 @@ bind_maxconns_per_net=Numero massimo di connessioni simultanee per rete
 bind_emaxconns=Il numero massimo di connessioni simultanee deve essere un numero maggiore di 1
 bind_emaxconns_per_ip=Il numero massimo di connessioni simultanee per IP deve essere un numero maggiore di 1
 bind_emaxconns_per_net=Il numero massimo di connessioni simultanee per rete deve essere un numero maggiore di 1
+bind_maxlifetime=Durata massima del processo Webmin
+bind_maxlifetime_def=Illimitato
+bind_maxlifetime_secs=secondi
+bind_emaxlifetime=La durata massima del processo deve essere un numero maggiore di 60 secondi
 
 log_global=&lt;Azioni globali&gt;
 log_sched=Registra le funzioni pianificate?

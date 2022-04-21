@@ -24,6 +24,10 @@ bind_maxconns_per_net=Ağ başına maksimum eşzamanlı bağlantı
 bind_emaxconns=Maksimum eşzamanlı bağlantı sayısı 1'den büyük olmalıdır
 bind_emaxconns_per_ip=IP başına maksimum eşzamanlı bağlantı sayısı 1'den büyük olmalıdır
 bind_emaxconns_per_net=Ağ başına maksimum eşzamanlı bağlantı sayısı 1'den büyük olmalıdır
+bind_maxlifetime=Maksimum Webmin işlem ömrü
+bind_maxlifetime_def=Sınırsız
+bind_maxlifetime_secs=saniye
+bind_emaxlifetime=Maksimum işlem ömrü 60 saniyeden büyük bir sayı olmalıdır
 
 log_status=Günlük kaydı etkin mi?
 log_clear2=Günlük dosyaları periyodik olarak temizlensin mi?

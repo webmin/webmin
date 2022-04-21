@@ -32,6 +32,10 @@ bind_maxconns_per_net=每個網絡的最大並發連接數
 bind_emaxconns=最大並發連接數必須大於1
 bind_emaxconns_per_ip=每個IP的最大並發連接數必須大於1
 bind_emaxconns_per_net=每個網絡的最大並發連接數必須大於1
+bind_maxlifetime=最長 Webmin 進程生命週期
+bind_maxlifetime_def=無限
+bind_maxlifetime_secs=秒
+bind_emaxlifetime=最大進程生命週期必須是大於 60 秒的數字
 
 log_status=正在記錄活動？
 log_clear2=定期清除日誌文件？

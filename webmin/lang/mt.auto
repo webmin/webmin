@@ -69,6 +69,10 @@ bind_maxconns_per_net=Konnessjonijiet massimi simultanji għal kull netwerk
 bind_emaxconns=Konnessjonijiet massimi simultanji għandhom ikunu numru akbar minn 1
 bind_emaxconns_per_ip=Konnessjonijiet massimi simultanji għal kull IP għandhom ikunu numru akbar minn 1
 bind_emaxconns_per_net=Konnessjonijiet massimi konkorrenti għal kull netwerk għandhom ikunu numru akbar minn 1
+bind_maxlifetime=Ħajja massima tal-proċess Webmin
+bind_maxlifetime_def=Illimitat
+bind_maxlifetime_secs=sekondi
+bind_emaxlifetime=Il-ħajja massima tal-proċess għandha tkun numru akbar minn 60 sekonda
 
 log_title=Qtugħ
 log_desc=Webmin jista 'jiġi kkonfigurat biex jikteb log ta' hits tas-server tal-web, fil-format standard tal-fajl log CLF. Jekk l-illoggjar huwa attivat, tista 'wkoll tagħżel jekk l-indirizzi IP jew il-hostnames huma rreġistrati, u kemm-il darba l-fajl tal-ġurnal jitneħħa. Meta jkun attivat, iz-zkuk huma miktuba fuq il-fajl $1.

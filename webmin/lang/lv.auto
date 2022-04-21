@@ -69,6 +69,10 @@ bind_maxconns_per_net=Maksimālais vienlaicīgais savienojums vienā tīklā
 bind_emaxconns=Maksimālajam vienlaicīgajam savienojumam jābūt skaitlim, kas lielāks par 1
 bind_emaxconns_per_ip=Maksimālajam vienlaicīgajam savienojumam vienam IP jābūt skaitlim, kas lielāks par 1
 bind_emaxconns_per_net=Maksimālajam vienlaicīgajam savienojumam vienā tīklā jābūt skaitlim, kas lielāks par 1
+bind_maxlifetime=Maksimālais Webmin procesa ilgums
+bind_maxlifetime_def=Neierobežots
+bind_maxlifetime_secs=sekundes
+bind_emaxlifetime=Maksimālajam procesa ilgumam ir jābūt lielākam par 60 sekundēm
 
 log_title=Mežizstrāde
 log_desc=Webmin var konfigurēt rakstīt tīmekļa servera triecienu žurnālu standarta CLF žurnāla faila formātā. Ja reģistrēšana ir iespējota, varat arī izvēlēties, vai tiek ierakstītas IP adreses vai resursdatoru nosaukumi un cik bieži žurnāla fails tiek notīrīts. Pēc ieslēgšanas žurnāli tiek ierakstīti failā $1.

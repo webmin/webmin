@@ -69,6 +69,10 @@ bind_maxconns_per_net=Maksimum gelyktydige verbindings per netwerk
 bind_emaxconns=Maksimum gelyktydige verbindings moet 'n getal groter as 1 wees
 bind_emaxconns_per_ip=Maksimum gelyktydige verbindings per IP moet 'n getal groter as 1 wees
 bind_emaxconns_per_net=Maksimum gelyktydige verbindings per netwerk moet 'n getal groter as 1 wees
+bind_maxlifetime=Maksimum Webmin-prosesleeftyd
+bind_maxlifetime_def=Onbeperk
+bind_maxlifetime_secs=sekondes
+bind_emaxlifetime=Maksimum prosesleeftyd moet 'n getal groter as 60 sekondes wees
 
 log_title=meld
 log_desc=Webmin kan gekonfigureer word om 'n logboek van treffers op die webbediener te skryf, in die standaard CLF-loglêerformaat. As aanmelding aangeskakel is, kan u ook kies of IP-adresse of gasheername opgeneem word, en hoe gereeld die loglêer verwyder word. As dit geaktiveer is, word logs na die lêer $1 geskryf.

@@ -4,6 +4,10 @@ bind_maxconns_per_net=الحد الأقصى من الاتصالات المتزا
 bind_emaxconns=يجب أن يكون الحد الأقصى للاتصالات المتزامنة رقمًا أكبر من 1
 bind_emaxconns_per_ip=يجب أن يكون الحد الأقصى للاتصالات المتزامنة لكل IP رقمًا أكبر من 1
 bind_emaxconns_per_net=يجب أن يكون الحد الأقصى للاتصالات المتزامنة لكل شبكة رقمًا أكبر من 1
+bind_maxlifetime=أقصى عمر لعملية Webmin
+bind_maxlifetime_def=غير محدود
+bind_maxlifetime_secs=ثواني
+bind_emaxlifetime=يجب أن يكون الحد الأقصى لعمر العملية رقمًا أكبر من 60 ثانية
 
 log_sched=تسجيل وظائف المقرر؟
 

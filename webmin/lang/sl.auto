@@ -69,6 +69,10 @@ bind_maxconns_per_net=Največ sočasnih povezav na omrežje
 bind_emaxconns=Največ sočasnih povezav mora biti število, večje od 1
 bind_emaxconns_per_ip=Največ sočasnih povezav na IP mora biti število, večje od 1
 bind_emaxconns_per_net=Največje število sočasnih povezav na omrežje mora biti število, večje od 1
+bind_maxlifetime=Najdaljša življenjska doba procesa Webmin
+bind_maxlifetime_def=Neomejeno
+bind_maxlifetime_secs=sekundah
+bind_emaxlifetime=Najdaljša življenjska doba postopka mora biti več kot 60 sekund
 
 log_title=Zapisovanje dnevnikov
 log_desc=Webmin je mogoče konfigurirati za pisanje dnevnika zadetkov spletnega strežnika v standardni datotečni datoteki CLF. Če je beleženje omogočeno, lahko izberete tudi, ali so zapisani naslovi IP ali imena gostiteljev in kako pogosto se briše datoteka dnevnika. Ko je omogočeno, se dnevniki zapišejo v datoteko $1.

@@ -69,6 +69,10 @@ bind_maxconns_per_net=Maksimum samtidige forbindelser pr. Netværk
 bind_emaxconns=Maksimum samtidige forbindelser skal være et tal større end 1
 bind_emaxconns_per_ip=Maksimum samtidige forbindelser pr. IP skal være et tal større end 1
 bind_emaxconns_per_net=Maksimum samtidige forbindelser pr. Netværk skal være et tal større end 1
+bind_maxlifetime=Maksimal Webmin-proceslevetid
+bind_maxlifetime_def=Ubegrænset
+bind_maxlifetime_secs=sekunder
+bind_emaxlifetime=Maksimal proceslevetid skal være et tal større end 60 sekunder
 
 log_title=Logning
 log_desc=Webmin kan konfigureres til at skrive en log over webserverhits i standard CLF logfilformat. Hvis logning er aktiveret, kan du også vælge, om IP-adresser eller hostnavne skal optages, og hvor ofte logfilen ryddes. Når det er aktiveret, skrives logfiler til filen $1.

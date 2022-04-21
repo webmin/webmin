@@ -7,6 +7,10 @@ bind_maxconns_per_net=Sambungan serentak maksimum setiap rangkaian
 bind_emaxconns=Sambungan serentak maksimum mestilah nombor lebih besar daripada 1
 bind_emaxconns_per_ip=Sambungan serentak maksimum per IP mestilah bilangan yang lebih besar daripada 1
 bind_emaxconns_per_net=Sambungan serentak maksimum setiap rangkaian mestilah nombor yang lebih besar daripada 1
+bind_maxlifetime=Proses Webmin maksimum sepanjang hayat
+bind_maxlifetime_def=Tidak terhad
+bind_maxlifetime_secs=detik
+bind_emaxlifetime=Jangka hayat proses maksimum mestilah nombor yang lebih besar daripada 60 saat
 
 log_global=&lt;Tindakan global&gt;
 log_sched=Fungsi berjadual log?

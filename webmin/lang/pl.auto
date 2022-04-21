@@ -6,6 +6,10 @@ bind_maxconns_per_net=Maksymalna liczba jednoczesnych połączeń na sieć
 bind_emaxconns=Maksymalna liczba jednoczesnych połączeń musi być większa niż 1
 bind_emaxconns_per_ip=Maksymalna liczba jednoczesnych połączeń na adres IP musi być większa niż 1
 bind_emaxconns_per_net=Maksymalna liczba jednoczesnych połączeń na sieć musi być większa niż 1
+bind_maxlifetime=Maksymalny czas życia procesu Webmin
+bind_maxlifetime_def=Nieograniczony
+bind_maxlifetime_secs=sekundy
+bind_emaxlifetime=Maksymalny czas życia procesu musi być liczbą większą niż 60 sekund
 
 log_global=&lt;Działania globalne&gt;
 log_sched=Zalogować zaplanowane funkcje?

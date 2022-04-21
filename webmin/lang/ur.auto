@@ -69,6 +69,10 @@ bind_maxconns_per_net=فی نیٹ ورک میں زیادہ سے زیادہ سم�
 bind_emaxconns=زیادہ سے زیادہ سمورتی کنکشن 1 سے زیادہ تعداد میں ہونا چاہئے
 bind_emaxconns_per_ip=فی IP میں زیادہ سے زیادہ سمورتی کنیکشن 1 سے زیادہ تعداد میں ہونا چاہئے
 bind_emaxconns_per_net=ہر نیٹ ورک میں زیادہ سے زیادہ سمورتی کنیکشن 1 سے زیادہ ہونی چاہئے
+bind_maxlifetime=زیادہ سے زیادہ Webmin عمل زندگی بھر
+bind_maxlifetime_def=لا محدود
+bind_maxlifetime_secs=سیکنڈ
+bind_emaxlifetime=عمل کی زیادہ سے زیادہ عمر 60 سیکنڈ سے زیادہ ہونی چاہیے۔
 
 log_title=لاگنگ
 log_desc=Webmin can be configured to write a log of web server hits, in the standard CLF log file format. If logging is enabled, you can also choose whether IP addresses or hostnames are recorded, and how often the log file is cleared. When enabled, logs are written to the file $1.

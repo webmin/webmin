@@ -22,6 +22,10 @@ bind_maxconns_per_net=네트워크 당 최대 동시 연결
 bind_emaxconns=최대 동시 연결 수는 1보다 커야합니다.
 bind_emaxconns_per_ip=IP 당 최대 동시 연결 수는 1보다 커야합니다.
 bind_emaxconns_per_net=네트워크 당 최대 동시 연결 수는 1보다 커야합니다.
+bind_maxlifetime=최대 Webmin 프로세스 수명
+bind_maxlifetime_def=제한 없는
+bind_maxlifetime_secs=초
+bind_emaxlifetime=최대 프로세스 수명은 60초보다 큰 숫자여야 합니다
 
 log_global=&lt;글로벌 액션&gt;
 log_sched=예약 된 기능을 기록 하시겠습니까?
