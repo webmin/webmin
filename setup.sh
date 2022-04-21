@@ -677,9 +677,7 @@ if command -v systemctl >/dev/null 2>&1; then
 	echo "$systemctlcmd start webmin" >>$config_dir/force-reload
 	# Reload systemd
 	echo "#!/bin/sh" >>$config_dir/reload
-	echo "$config_dir/reload-init >/dev/null 2>&1" >>$config_dir/reload
-	
-	chmod 755 $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
+	echo "$config_dir/reload-init >/dev/null 2>&1" >>$config_dir/reload	
 else
 	echo "Creating start and stop init scripts (init.d for older systems).."
 	# Start init.d
@@ -700,6 +698,7 @@ else
 	echo "#!/bin/sh" >>$config_dir/reload
 	echo "/etc/init.d/webmin reload >/dev/null 2>&1" >>$config_dir/reload
 fi
+chmod 755 $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
 
 if [ "$upgrading" = 1 -a "$inetd" != "1" ]; then
 	# Stop old version, with updated stop script
