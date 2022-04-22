@@ -2407,8 +2407,8 @@ if ($name) {
 		if (-r "$p/$name.service" || -r "$p/$name") {
 			return $p;
 			}
-			}
 		}
+	}
 if (-d "/etc/systemd/system") {
 	return "/etc/systemd/system";
 	}
