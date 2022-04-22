@@ -605,12 +605,6 @@ fi
 # Get current product
 currprod=`grep "^product=" /etc/webmin/config | sed -e 's/product=//g'`
 
-# Test if transitioning from init.d to systemd, and
-# re-enable service afterwards if was enabled before
-if [ "$upgrading" = 1 ] && [ ! -f "$config_dir/stop-init" ]; then
-	(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/isboot.pl")
-fi
-
 # Return back to root
 cd "$wadir"
 
@@ -713,6 +707,12 @@ if command -v systemctl >/dev/null 2>&1; then
 	mkdir -p "/etc/systemd/system" >/dev/null 2>&1
 	cp -p "$wadir/webmin-systemd" "/etc/systemd/system/webmin.service" >/dev/null 2>&1
 	systemctl daemon-reload >/dev/null 2>&1
+
+	# Test if transitioning from init.d to systemd, and
+	# re-enable service afterwards if was enabled before
+	if [ "$upgrading" = 1 ] && [ ! -f "$config_dir/stop-init" ]; then
+		(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/isboot.pl")
+	fi
 else
 	echo "Creating start and stop init scripts (init.d for older systems).."
 	# Start init.d
