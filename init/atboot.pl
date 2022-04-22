@@ -117,8 +117,22 @@ elsif ($init_mode eq "win32") {
 	$perl_path = &get_perl_path();
 	&enable_at_boot($product, $ucproduct, $perl_path." ".&quote_path("$root_directory/miniserv.pl")." ".&quote_path("$config_directory/miniserv.conf"));
 	}
-elsif ($init_mode eq "rc" || $init_mode eq "upstart" ||
-       $init_mode eq "systemd") {
+elsif ($init_mode eq "systemd") {
+	# Create systemd
+	&enable_at_boot(
+	     $product,
+	     "$ucproduct server daemon",
+	     "$config_directory/start-init",
+	     "$config_directory/stop-init",
+	     undef,
+	       { 'pidfile'  => $var_directory."/miniserv.pid",
+	         'opts' => {
+	         'type'    => 'forking',
+	         'killmode'   => 'none'
+	       }},
+	     );
+	}
+elsif ($init_mode eq "rc" || $init_mode eq "upstart") {
 	# Create RC or upstart script
 	&enable_at_boot($product, $ucproduct, "$config_directory/start",
 			"$config_directory/stop",
