@@ -10,7 +10,6 @@ PIDFile=/var/webmin/miniserv.pid
 ExecStart=/etc/webmin/start-init
 ExecStop=/etc/webmin/stop-init
 KillMode=none
-Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
