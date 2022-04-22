@@ -31,7 +31,7 @@ $copyright_file = "$doc_dir/copyright";
 $usr_dir = "$tmp_dir/usr/share/$baseproduct";
 $bin_dir = "$tmp_dir/usr/bin";
 $pam_dir = "$tmp_dir/etc/pam.d";
-$init_dir = "$tmp_dir/etc/init.d";
+# $init_dir = "$tmp_dir/etc/init.d";
 $pam_file = "$pam_dir/$baseproduct";
 $preinstall_file = "$debian_dir/preinst";
 $postinstall_file = "$debian_dir/postinst";
@@ -61,7 +61,7 @@ mkdir($tmp_dir, 0755);
 chmod(0755, $tmp_dir);
 mkdir($debian_dir, 0755);
 system("mkdir -p $pam_dir");
-system("mkdir -p $init_dir");
+# system("mkdir -p $init_dir");
 system("mkdir -p $usr_dir");
 system("mkdir -p $doc_dir");
 system("mkdir -p $bin_dir");
@@ -83,8 +83,8 @@ if ($product eq "webmin") {
 	}
 
 # Create init script
-system("mv $usr_dir/$baseproduct-init $init_dir/$baseproduct");
-chmod(0755, "$init_dir/$baseproduct");
+# system("mv $usr_dir/$baseproduct-init $init_dir/$baseproduct");
+# chmod(0755, "$init_dir/$baseproduct");
 system("echo deb >$usr_dir/install-type");
 system("echo $product >$usr_dir/deb-name");
 system("cd $usr_dir && chmod -R og-w .");
@@ -328,6 +328,7 @@ fi
 rm -f /var/lock/subsys/$baseproduct
 if [ -x "\$(command -v systemctl)" >/dev/null 2>&1 ] && [ -d "/etc/systemd" ]; then
 	systemctl daemon-reload >/dev/null 2>&1
+	
 fi
 if [ "$inetd" != "1" ]; then
 	if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
