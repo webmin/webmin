@@ -265,8 +265,9 @@ open(SCRIPT, ">$postinstall_file");
 print SCRIPT <<EOF;
 #!/bin/sh
 
-# Fix old versions of Webmin that might kill the UI process on upgrade
-if [ -d /etc/webmin ]; then
+# Fix old versions of Webmin that might kill the UI
+# process on upgrade, unless it's already fixed version
+if [ -d /etc/webmin ] && [ ! -f "/etc/webmin/stop-init" ]; then
 	cat >/etc/webmin/stop 2>/dev/null <<'EOD'
 #!/bin/sh
 pidfile=`grep "^pidfile=" /etc/webmin/miniserv.conf | sed -e 's/pidfile=//g'`
@@ -282,7 +283,7 @@ fi
 
 inetd=`grep "^inetd=" /etc/$baseproduct/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
 if [ "\$1" = "upgrade" -a "\$1" != "abort-upgrade" ]; then
-	# Upgrading the package, so stop the old webmin properly
+	# Upgrading the package, so stop the old Webmin properly
 	if [ "\$inetd" != "1" ]; then
 		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
 	fi
@@ -328,7 +329,7 @@ fi
 rm -f /var/lock/subsys/$baseproduct
 if [ -x "\$(command -v systemctl)" >/dev/null 2>&1 ] && [ -d "/etc/systemd" ]; then
 	systemctl daemon-reload >/dev/null 2>&1
-	
+
 fi
 if [ "$inetd" != "1" ]; then
 	if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
