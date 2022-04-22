@@ -1,5 +1,6 @@
 [Unit]
 Description=Webmin server daemon
+After=syslog.target
 
 [Service]
 ExecStart=/etc/webmin/start-init
