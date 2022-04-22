@@ -326,7 +326,7 @@ if [ "$product" = "webmin" ]; then
 	fi
 fi
 rm -f /var/lock/subsys/$baseproduct
-if command -v systemctl >/dev/null 2>&1; then
+if [ -x "\$(command -v systemctl)" >/dev/null 2>&1 ] && [ -d "/etc/systemd" ]; then
 	systemctl daemon-reload >/dev/null 2>&1
 fi
 if [ "$inetd" != "1" ]; then
