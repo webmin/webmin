@@ -608,7 +608,7 @@ currprod=`grep "^product=" /etc/webmin/config | sed -e 's/product=//g'`
 # Test if transitioning from init.d to systemd, and
 # re-enable service afterwards if was enabled before
 if [ "$upgrading" = 1 ] && [ ! -f "$config_dir/stop-init" ]; then
-	upgatboot=`(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/isboot.pl")`
+	(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/isboot.pl")
 fi
 
 # Return back to root
