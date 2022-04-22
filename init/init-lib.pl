@@ -2400,12 +2400,17 @@ sub get_systemd_root
 {
 my ($name) = @_;
 if ($name) {
-	foreach my $p ("/etc/systemd/system", "/usr/lib/systemd/system",
-		       "/lib/systemd/system") {
+	foreach my $p (
+		"/etc/systemd/system",
+		"/usr/lib/systemd/system",
+		"/lib/systemd/system") {
 		if (-r "$p/$name.service" || -r "$p/$name") {
 			return $p;
 			}
+			}
 		}
+if (-d "/etc/systemd/system") {
+	return "/etc/systemd/system";
 	}
 if (-d "/usr/lib/systemd/system") {
 	return "/usr/lib/systemd/system";
