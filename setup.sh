@@ -609,9 +609,6 @@ currprod=`grep "^product=" /etc/webmin/config | sed -e 's/product=//g'`
 # re-enable service afterwards if was enabled before
 if [ "$upgrading" = 1 ] && [ ! -f "$config_dir/stop-init" ]; then
 	upgatboot=`(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/isboot.pl")`
-	if [ "$upgatboot" = 1 ]; then
-		makeboot=1
-	fi
 fi
 
 # Return back to root

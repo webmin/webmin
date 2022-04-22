@@ -5,8 +5,8 @@
 $no_acl_check++;
 require './init-lib.pl';
 $product = $ARGV[0] || "webmin";
-if (&action_status($product) == 2) {
-	print 1;
-	exit;
+# Is enabled and system supports systemd
+if (&action_status($product) == 2 &&
+    $init_mode eq "systemd") {
+	&enable_at_boot($product);
 	};
-print 0;
