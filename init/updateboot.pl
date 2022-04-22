@@ -6,16 +6,21 @@ $no_acl_check++;
 require './init-lib.pl';
 $product = $ARGV[0];
 
+$< == 0 || die "updateboot.pl must be run as root";
+
 # Update boot script
-if ($init_mode eq "systemd") {
-	my $systemd_root = &get_systemd_root($product);
-	if (-r "$systemd_root/webmin.service") {
-		unlink("$systemd_root/webmin.service");
-		copy_source_dest("../webmin-systemd", "$systemd_root/webmin.service");
-		}
-	elsif (-r "$systemd_root/webmin") {
-		unlink("$systemd_root/webmin");
-		copy_source_dest("../webmin-systemd", "$systemd_root/webmin");
-		}
-	system("systemctl --system daemon-reload >/dev/null 2>&1");
-	};
+if ($product) {
+	if ($init_mode eq "systemd") {
+		# Delete all possible service files
+		my $systemd_root = &get_systemd_root();
+		foreach my $p (
+			"/etc/systemd/system",
+			"/usr/lib/systemd/system",
+			"/lib/systemd/system") {
+			unlink("$p/$product.service");
+			unlink("$p/$product");
+			}
+		copy_source_dest("../webmin-systemd", "$systemd_root/$product.service");
+		system("systemctl --system daemon-reload >/dev/null 2>&1");
+		};
+	}
