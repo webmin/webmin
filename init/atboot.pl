@@ -7,6 +7,8 @@ require './init-lib.pl';
 $product = $ARGV[0] || "webmin";
 $ucproduct = ucfirst($product);
 
+$< == 0 || die "updateboot.pl must be run as root";
+
 if ($init_mode eq "osx") {
 	# Darwin System
 	&enable_at_boot("webmin", "Webmin administration server",
