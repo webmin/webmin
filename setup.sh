@@ -658,6 +658,7 @@ echo ""
 
 # Re-generating supplementary
 rm -f $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
+# For systemd
 if command -v systemctl >/dev/null 2>&1; then
 	systemctlcmd=`which systemctl`
 	echo "Creating start and stop scripts (systemd).."
@@ -678,6 +679,9 @@ if command -v systemctl >/dev/null 2>&1; then
 	# Reload systemd
 	echo "#!/bin/sh" >>$config_dir/reload
 	echo "$config_dir/reload-init >/dev/null 2>&1" >>$config_dir/reload
+
+	# Fix existing systemd webmin.service file to update start and stop commands
+	(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/updateboot.pl" "webmin")
 else
 	echo "Creating start and stop init scripts (init.d for older systems).."
 	# Start init.d
