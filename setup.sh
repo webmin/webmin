@@ -602,6 +602,21 @@ if [ "$noperlpath" = "" ]; then
 	echo ""
 fi
 
+# Get current product
+currprod=`grep "^product=" /etc/webmin/config | sed -e 's/product=//g'`
+
+# Test if transitioning from init.d to systemd, and
+# re-enable service afterwards if was enabled before
+if [ "$upgrading" = 1 ] && [ ! -f "$config_dir/stop-init" ]; then
+	upgatboot=`(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/isboot.pl")`
+	if [ "$upgatboot" = 1 ]; then
+		makeboot=1
+	fi
+fi
+
+# Return back to root
+cd "$wadir"
+
 # Re-generating main
 rm -f $config_dir/stop-init $config_dir/start-init $config_dir/restart-init $config_dir/force-reload-init $config_dir/reload-init
 echo "Creating start and stop init scripts.."
@@ -656,6 +671,24 @@ chmod 755 $config_dir/stop-init $config_dir/start-init $config_dir/restart-init 
 echo "..done"
 echo ""
 
+# Clear old installs
+rm -f "/etc/sysconfig/daemons/webmin" >/dev/null 2>&1
+rmdir "/etc/sysconfig/daemons" >/dev/null 2>&1
+rm -f "/etc/init.d/webmin" >/dev/null 2>&1
+rm -f "/etc/rc.d/rc2.d/S99webmin" >/dev/null 2>&1
+rm -f "/etc/rc.d/rc3.d/S99webmin" >/dev/null 2>&1
+rm -f "/etc/rc.d/rc5.d/S99webmin" >/dev/null 2>&1
+rm -f "/etc/rc.d/rc0.d/K10webmin" >/dev/null 2>&1
+rm -f "/etc/rc.d/rc1.d/K10webmin" >/dev/null 2>&1
+rm -f "/etc/rc.d/rc6.d/K10webmin" >/dev/null 2>&1
+rmdir "/etc/rc.d/rc2.d" >/dev/null 2>&1
+rmdir "/etc/rc.d/rc3.d" >/dev/null 2>&1
+rmdir "/etc/rc.d/rc5.d" >/dev/null 2>&1
+rmdir "/etc/rc.d/rc0.d" >/dev/null 2>&1
+rmdir "/etc/rc.d/rc1.d" >/dev/null 2>&1
+rmdir "/etc/rc.d/rc6.d" >/dev/null 2>&1
+rm -f "/etc/systemd/system/$currprod.service" >/dev/null 2>&1
+
 # Re-generating supplementary
 rm -f $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
 if command -v systemctl >/dev/null 2>&1; then
@@ -677,7 +710,12 @@ if command -v systemctl >/dev/null 2>&1; then
 	echo "$systemctlcmd start webmin" >>$config_dir/force-reload
 	# Reload systemd
 	echo "#!/bin/sh" >>$config_dir/reload
-	echo "$config_dir/reload-init >/dev/null 2>&1" >>$config_dir/reload	
+	echo "$config_dir/reload-init >/dev/null 2>&1" >>$config_dir/reload
+
+	# Copy systemd webmin.service and reload daemon
+	mkdir -p "/etc/systemd/system" >/dev/null 2>&1
+	cp -p "$wadir/webmin-systemd" "/etc/systemd/system/webmin.service" >/dev/null 2>&1
+	systemctl daemon-reload >/dev/null 2>&1
 else
 	echo "Creating start and stop init scripts (init.d for older systems).."
 	# Start init.d
@@ -697,6 +735,9 @@ else
 	# Reload init.d
 	echo "#!/bin/sh" >>$config_dir/reload
 	echo "/etc/init.d/webmin reload >/dev/null 2>&1" >>$config_dir/reload
+
+	# Copy init.d webmin script
+	cp -p "$wadir/webmin-init" "/etc/init.d/webmin" >/dev/null 2>&1
 fi
 chmod 755 $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
 
@@ -907,9 +948,6 @@ fi
 if [ "$nostart" = "" ]; then
 	if [ "$inetd" != "1" ]; then
 		echo "Attempting to start Webmin mini web server.."
-		if command -v systemctl >/dev/null 2>&1; then
-			systemctl daemon-reload
-		fi
 		$config_dir/start
 		if [ $? != "0" ]; then
 			echo "ERROR: Failed to start web server!"

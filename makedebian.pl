@@ -327,22 +327,12 @@ if [ "$product" = "webmin" ]; then
 	fi
 fi
 rm -f /var/lock/subsys/$baseproduct
-if [ -x "\$(command -v systemctl)" >/dev/null 2>&1 ] && [ -d "/etc/systemd" ]; then
-	systemctl daemon-reload >/dev/null 2>&1
 
-fi
 if [ "$inetd" != "1" ]; then
-	if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
-		invoke-rc.d $baseproduct stop
-		invoke-rc.d $baseproduct start
-	else
-		/etc/$baseproduct/stop
-		/etc/$baseproduct/start
-	fi
+	/etc/$baseproduct/stop
+	/etc/$baseproduct/start
 fi
-if [ "$product" = "usermin" ]; then
-	(insserv $baseproduct || update-rc.d $baseproduct defaults) >/dev/null 2>&1
-fi
+
 cat >/etc/$baseproduct/uninstall.sh <<EOFF
 #!/bin/sh
 printf "Are you sure you want to uninstall $ucproduct? (y/n) : "
