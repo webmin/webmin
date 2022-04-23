@@ -2841,7 +2841,10 @@ foreach my $slave (@slaves) {
 				      grep { $_ ne $slave } @slaves;
 		}
 	if ($config{'extra_slaves'}) {
-		push(@otherslaves, split(/\s+/, $config{'extra_slaves'}));
+		push(@otherslaves,
+		     grep { $_ ne '' } 
+                          map { &to_ipaddress($_)
+			      split(/\s+/, $config{'extra_slaves'}));
 		}
 	if ($moreslaves) {
 		push(@otherslaves, @$moreslaves);
@@ -4132,7 +4135,7 @@ sub dt_genkrf
 }
 
 
-# dt_delete_dnssec_state()
+# dt_delete_dnssec_state(&zone)
 # Delete all DNSSEC-Tools meta-data for a given zone 
 sub dt_delete_dnssec_state
 {
