@@ -21,6 +21,6 @@ if ($product) {
 			unlink("$p/$product");
 			}
 		copy_source_dest("../webmin-systemd", "$systemd_root/$product.service");
-		system("systemctl --system daemon-reload >/dev/null 2>&1");
+		system("systemctl daemon-reload >/dev/null 2>&1");
 		};
 	}
