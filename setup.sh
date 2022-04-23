@@ -624,19 +624,25 @@ else
 fi
 # Stop main
 echo "#!/bin/sh" >>$config_dir/stop-init
-echo "echo Stopping Webmin server in $wadir" >>$config_dir/stop-init
+echo "if [ \"\$1\" = \"--kill\" ]; then" >>$config_dir/stop-init
+echo "  echo Force stopping Webmin server in $wadir" >>$config_dir/stop-init
+echo "else" >>$config_dir/stop-init
+echo "  echo Stopping Webmin server in $wadir" >>$config_dir/stop-init
+echo "fi" >>$config_dir/stop-init
 echo "pidfile=\`grep \"^pidfile=\" $config_dir/miniserv.conf | sed -e 's/pidfile=//g'\`" >>$config_dir/stop-init
-echo "pid=\`cat \$pidfile\`" >>$config_dir/stop-init
+echo "pid=\`cat \$pidfile\` 2>/dev/null" >>$config_dir/stop-init
 echo "if [ \"\$pid\" != \"\" ]; then" >>$config_dir/stop-init
 echo "  kill \$pid || exit 1" >>$config_dir/stop-init
 echo "  touch $var_dir/stop-flag" >>$config_dir/stop-init
 echo "  if [ \"\$1\" = \"--kill\" ]; then" >>$config_dir/stop-init
-echo "    sleep 2" >>$config_dir/stop-init
-echo "    (kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null" >>$config_dir/stop-init
+echo "    sleep 1" >>$config_dir/stop-init
+echo "    ((ps axf | grep \"webmin\/miniserv\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) || kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null" >>$config_dir/stop-init
 echo "  fi" >>$config_dir/stop-init
 echo "  exit 0" >>$config_dir/stop-init
 echo "else" >>$config_dir/stop-init
-echo "  exit 1" >>$config_dir/stop-init
+echo "  if [ \"\$1\" = \"--kill\" ]; then" >>$config_dir/stop-init
+echo "    (ps axf | grep \"webmin\/miniserv\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) 2>/dev/null" >>$config_dir/stop-init
+echo "  fi" >>$config_dir/stop-init
 echo "fi" >>$config_dir/stop-init
 # Restart main
 echo "#!/bin/sh" >>$config_dir/restart-init
