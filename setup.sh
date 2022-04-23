@@ -611,7 +611,6 @@ echo "echo Starting Webmin server in $wadir" >>$config_dir/start-init
 echo "trap '' 1" >>$config_dir/start-init
 echo "LANG=" >>$config_dir/start-init
 echo "export LANG" >>$config_dir/start-init
-echo "#PERLIO=:raw" >>$config_dir/start-init
 echo "unset PERLIO" >>$config_dir/start-init
 echo "export PERLIO" >>$config_dir/start-init
 echo "PERLLIB=$PERLLIB" >>$config_dir/start-init
@@ -663,9 +662,30 @@ echo "..done"
 echo ""
 
 # Re-generating supplementary
-rm -f $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
-# For systemd
-if command -v systemctl >/dev/null 2>&1; then
+
+# Clear existing
+csupp () {
+	rm -f $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
+}
+csupp
+
+# Creating symlinks
+echo "Creating start and stop init symlinks to scripts .."
+# Start init.d
+ln -s $config_dir/start-init $config_dir/start >/dev/null 2>&1
+# Stop init.d
+ln -s $config_dir/stop-init $config_dir/stop >/dev/null 2>&1
+# Restart init.d
+ln -s $config_dir/restart-init $config_dir/restart >/dev/null 2>&1
+# Force reload init.d
+ln -s $config_dir/force-reload-init $config_dir/force-reload >/dev/null 2>&1
+# Reload init.d
+ln -s $config_dir/reload-init $config_dir/reload >/dev/null 2>&1
+
+# For systemd create different start/stop scripts
+if [ -x "$(command -v systemctl)" >/dev/null 2>&1 ]; then
+	csupp
+
 	systemctlcmd=`which systemctl`
 	echo "Creating start and stop scripts (systemd).."
 	# Start systemd
@@ -688,27 +708,9 @@ if command -v systemctl >/dev/null 2>&1; then
 
 	# Fix existing systemd webmin.service file to update start and stop commands
 	(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/updateboot.pl" "webmin")
-else
-	echo "Creating start and stop init scripts (init.d for older systems).."
-	# Start init.d
-	echo "#!/bin/sh" >>$config_dir/start
-	echo "/etc/init.d/webmin start" >>$config_dir/start
-	# Stop init.d
-	echo "#!/bin/sh" >>$config_dir/stop
-	echo "/etc/init.d/webmin stop" >>$config_dir/stop
-	# Restart init.d
-	echo "#!/bin/sh" >>$config_dir/restart
-	echo "/etc/init.d/webmin restart" >>$config_dir/restart
-	# Force reload init.d
-	echo "#!/bin/sh" >>$config_dir/force-reload
-	echo "$config_dir/stop-init --kill >/dev/null 2>&1" >>$config_dir/force-reload
-	echo "/etc/init.d/webmin stop" >>$config_dir/force-reload
-	echo "/etc/init.d/webmin start" >>$config_dir/force-reload
-	# Reload init.d
-	echo "#!/bin/sh" >>$config_dir/reload
-	echo "/etc/init.d/webmin reload >/dev/null 2>&1" >>$config_dir/reload
+	
+	chmod 755 $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
 fi
-chmod 755 $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
 
 if [ "$upgrading" = 1 -a "$inetd" != "1" ]; then
 	# Stop old version, with updated stop script
