@@ -238,7 +238,7 @@ if [ "\$inetd" != "1" -a "\$startafter" = "1" ]; then
 	/etc/webmin/stop >/dev/null 2>&1 </dev/null
 	/etc/webmin/start >/dev/null 2>&1 </dev/null
 	if [ "\$?" != "0" ]; then
-		echo "ERROR : [webmin] Webmin server cannot be restarted. It is advised to restart it\nmanually by running \\"/etc/webmin/force-reload\\" when upgrade process is finished"
+		echo "WARN : [webmin] Webmin server cannot be restarted. It is advised to restart it\nmanually by running \\"/etc/webmin/force-reload\\" when upgrade process is finished"
 	fi
 fi
 
@@ -314,7 +314,7 @@ if [ ! -r /etc/webmin/miniserv.conf -a -d /etc/.webmin-backup -a "\$1" = 2 ]; th
 	/etc/webmin/stop >/dev/null 2>&1 </dev/null
 	/etc/webmin/start >/dev/null 2>&1 </dev/null
 	if [ "\$?" != "0" ]; then
-		echo "ERROR : [webmin] Webmin server cannot be restarted. It is advised to restart it\nmanually by running \\"/etc/webmin/force-reload\\" when upgrade process is finished"
+		echo "WARN : [webmin] Webmin server cannot be restarted. It is advised to restart it\nmanually by running \\"/etc/webmin/force-reload\\" when upgrade process is finished"
 	fi
 else
 	rm -rf /etc/.webmin-backup
