@@ -2420,10 +2420,14 @@ Tell the systemd daemon to re-read its config
 =cut
 sub restart_systemd
 {
-my @pids = &find_byname("systemd");
-if (@pids) {
-	&kill_logged('HUP', @pids);
-	&system_logged("systemctl --system daemon-reload >/dev/null 2>&1");
+if (&has_command("systemctl")) {
+	&system_logged("systemctl daemon-reload >/dev/null 2>&1");
+	}
+else {
+	my @pids = &find_byname("systemd");
+	if (@pids) {
+		&kill_logged('HUP', @pids);
+		}
 	}
 }
 
