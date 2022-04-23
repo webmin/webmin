@@ -234,8 +234,8 @@ export config_dir var_dir perl autoos port login crypt host ssl nochown autothir
 chmod 600 \$tempdir/webmin-setup.out
 rm -f /var/lock/subsys/webmin
 cd /usr/libexec/webmin
-# Fix to just always clear old mess for systemd
-if [ -x "\$(command -v systemctl)" >/dev/null 2>&1 ] && [ -d "/etc/systemd" ]; then
+# Fix to always clear old mess for systemd systems
+if [ -x "\$(command -v systemctl)" >/dev/null 2>&1 ]; then
 	rm -f /etc/sysconfig/daemons/webmin >/dev/null 2>&1 </dev/null
 	rmdir /etc/sysconfig/daemons >/dev/null 2>&1 </dev/null
 	rm -f /etc/init.d/webmin >/dev/null 2>&1 </dev/null
