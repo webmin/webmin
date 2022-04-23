@@ -325,8 +325,11 @@ fi
 rm -f /var/lock/subsys/$baseproduct
 
 if [ "$inetd" != "1" ]; then
-	/etc/$baseproduct/stop
-	/etc/$baseproduct/start
+	/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
+	/etc/$baseproduct/start >/dev/null 2>&1 </dev/null
+	if [ "\$?" != "0" ]; then
+		echo "ERROR : [$product] $ucproduct server cannot be restarted. It is advised to restart it\nmanually by running \\"/etc/webmin/force-reload\\" when upgrade process is finished"
+	fi
 fi
 
 cat >/etc/$baseproduct/uninstall.sh <<EOFF
@@ -392,8 +395,8 @@ print SCRIPT <<EOF;
 if [ "\$1" != "upgrade" -a "\$1" != "abort-upgrade" ]; then
 	grep root=/usr/share/$baseproduct /etc/$baseproduct/miniserv.conf >/dev/null 2>&1
 	if [ "\$?" = 0 ]; then
-		# Package is being removed, and no new version of webmin
-		# has taken it's place. Delete the config files
+		# Package is being removed, and no new version of Webmin
+		# has taken its place. Delete the config files
 		rm -rf /etc/$baseproduct /var/$baseproduct
 		rm -f /etc/pam.d/$baseproduct
 	fi
