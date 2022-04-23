@@ -69,6 +69,10 @@ bind_maxconns_per_net=Các kết nối đồng thời tối đa trên mỗi mạ
 bind_emaxconns=Các kết nối đồng thời tối đa phải là một số lớn hơn 1
 bind_emaxconns_per_ip=Các kết nối đồng thời tối đa trên mỗi IP phải là một số lớn hơn 1
 bind_emaxconns_per_net=Các kết nối đồng thời tối đa trên mỗi mạng phải là một số lớn hơn 1
+bind_maxlifetime=Thời gian tồn tại của quy trình Webmin tối đa
+bind_maxlifetime_def=Vô hạn
+bind_maxlifetime_secs=giây
+bind_emaxlifetime=Thời gian tồn tại của quy trình tối đa phải là một số lớn hơn 60 giây
 
 log_title=Ghi nhật ký
 log_desc=Webmin có thể được cấu hình để viết nhật ký các lần truy cập máy chủ web, ở định dạng tệp nhật ký CLF tiêu chuẩn. Nếu đăng nhập được bật, bạn cũng có thể chọn xem địa chỉ IP hoặc tên máy chủ được ghi lại và tần suất xóa tệp nhật ký. Khi được bật, nhật ký được ghi vào tệp $1.

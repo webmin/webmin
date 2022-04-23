@@ -69,6 +69,10 @@ bind_maxconns_per_net=Maksimalni istodobni priključci po mreži
 bind_emaxconns=Maksimalni broj istodobnih veza mora biti broj veći od 1
 bind_emaxconns_per_ip=Maksimalni broj istodobnih veza po IP-u mora biti broj veći od 1
 bind_emaxconns_per_net=Maksimalni broj istodobnih veza po mreži mora biti broj veći od 1
+bind_maxlifetime=Maksimalni vijek trajanja Webmin procesa
+bind_maxlifetime_def=Neograničen
+bind_maxlifetime_secs=sekundi
+bind_emaxlifetime=Maksimalni životni vijek procesa mora biti broj veći od 60 sekundi
 
 log_title=sječa drveta
 log_desc=Webmin se može konfigurirati za pisanje dnevnika učitavanja web poslužitelja, u standardnom formatu datoteke CLF zapisa. Ako je prijava omogućena, također možete odabrati jesu li zapisane IP adrese ili imena računala i koliko često se briše datoteka zapisa. Kad je omogućeno, zapisnici se zapisuju u datoteku $1.

@@ -4,6 +4,10 @@ bind_maxconns_per_net=Connexions simultànies màximes per xarxa
 bind_emaxconns=Les connexions simultànies màximes han de ser un nombre superior a 1
 bind_emaxconns_per_ip=Les connexions simultànies màximes per IP han de ser un nombre superior a 1
 bind_emaxconns_per_net=Les connexions simultànies màximes per xarxa han de ser un nombre superior a 1
+bind_maxlifetime=Vida màxima del procés de Webmin
+bind_maxlifetime_def=Il·limitat
+bind_maxlifetime_secs=segons
+bind_emaxlifetime=La vida útil màxima del procés ha de ser un nombre superior a 60 segons
 
 ui_nice_size_type=Utilitzeu unitats de mesura binàries (KiB, MiB, GiB en lloc de KB, MB, GB)
 

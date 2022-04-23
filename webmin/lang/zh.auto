@@ -10,6 +10,10 @@ bind_sport0=与第一个相同
 bind_sport1=特定端口 ..
 bind_maxconns=最大并发连接总数
 bind_maxconns_per_net=每个网络的最大并发连接数
+bind_maxlifetime=最长 Webmin 进程生命周期
+bind_maxlifetime_def=无限
+bind_maxlifetime_secs=秒
+bind_emaxlifetime=最大进程生命周期必须是大于 60 秒的数字
 
 log_clear2=定期清除日志文件？
 log_sched=记录预定功能？

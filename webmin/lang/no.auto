@@ -4,6 +4,10 @@ bind_maxconns_per_net=Maksimum samtidige tilkoblinger per nettverk
 bind_emaxconns=Maksimum samtidige tilkoblinger må være et tall større enn 1
 bind_emaxconns_per_ip=Maksimum samtidige tilkoblinger per IP må være et tall større enn 1
 bind_emaxconns_per_net=Maksimum samtidige tilkoblinger per nettverk må være et tall større enn 1
+bind_maxlifetime=Maksimal levetid for Webmin-prosessen
+bind_maxlifetime_def=Ubegrenset
+bind_maxlifetime_secs=sekunder
+bind_emaxlifetime=Maksimal prosesslevetid må være et tall større enn 60 sekunder
 
 os_incorrect=Operativsystemet $1 er oppgradert til versjon $2
 

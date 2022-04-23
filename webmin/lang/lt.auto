@@ -69,6 +69,10 @@ bind_maxconns_per_net=Didžiausias vienu metu esančių ryšių skaičius tinkle
 bind_emaxconns=Didžiausias lygiagrečių ryšių skaičius turi būti didesnis nei 1
 bind_emaxconns_per_ip=Didžiausias vienu metu esančių IP ryšių skaičius turi būti didesnis nei 1
 bind_emaxconns_per_net=Didžiausias vienu metu esančių tinklų ryšių skaičius turi būti didesnis nei 1
+bind_maxlifetime=Maksimali Webmin proceso trukmė
+bind_maxlifetime_def=Neribota
+bind_maxlifetime_secs=sekundžių
+bind_emaxlifetime=Maksimali proceso trukmė turi būti ilgesnė nei 60 sekundžių
 
 log_title=Medienos ruoša
 log_desc=„Webmin“ gali būti sukonfigūruotas rašyti žiniatinklio serverio įvykių žurnalą standartiniu CLF žurnalo failo formatu. Jei įgalinta registracija, taip pat galite pasirinkti, ar įrašomi IP adresai, ar pagrindiniai vardai, ir kaip dažnai žurnalas yra išvalomas. Kai įjungta, žurnalai įrašomi į failą $1.

@@ -51,6 +51,10 @@ bind_maxconns_per_net=Maximális egyidejű kapcsolat hálózatonként
 bind_emaxconns=Az egyidejű kapcsolatok maximális számának nagyobbnak kell lennie, mint 1
 bind_emaxconns_per_ip=Az IP-nkénti maximális egyidejű kapcsolatnak 1-nél nagyobb számnak kell lennie
 bind_emaxconns_per_net=A hálózatonkénti maximális egyidejű kapcsolatnak 1-nél nagyobb számnak kell lennie
+bind_maxlifetime=A Webmin folyamat maximális élettartama
+bind_maxlifetime_def=Korlátlan
+bind_maxlifetime_secs=másodpercig
+bind_emaxlifetime=A folyamat maximális élettartamának 60 másodpercnél nagyobbnak kell lennie
 
 log_desc2=Ha a naplózás engedélyezve van, a Webmin a $1 fájlba részletesebb felhasználói tevékenységi naplót is ír. Ez a napló megnézhető és elemezhető a Webmin Műveletek Napló moduljával, hogy pontosan megnézze, hogy az egyes Webmin felhasználók mit csináltak.
 log_status=A naplózás aktív?

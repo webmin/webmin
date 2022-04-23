@@ -10,6 +10,10 @@ bind_maxconns_per_net=Maximaal aantal gelijktijdige verbindingen per netwerk
 bind_emaxconns=Het maximum aantal gelijktijdige verbindingen moet een getal zijn dat groter is dan 1
 bind_emaxconns_per_ip=Het maximum aantal gelijktijdige verbindingen per IP moet een getal zijn dat groter is dan 1
 bind_emaxconns_per_net=Het maximum aantal gelijktijdige verbindingen per netwerk moet een getal zijn dat groter is dan 1
+bind_maxlifetime=Maximale levensduur van het Webmin-proces
+bind_maxlifetime_def=Onbeperkt
+bind_maxlifetime_secs=seconden
+bind_emaxlifetime=Maximale proceslevensduur moet groter zijn dan 60 seconden
 
 log_global=&lt;Wereldwijde acties&gt;
 log_sched=Geplande functies loggen?

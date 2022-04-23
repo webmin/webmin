@@ -24,6 +24,10 @@ bind_maxconns_per_net=Número máximo de conexiones simultáneas por red
 bind_emaxconns=El número máximo de conexiones simultáneas debe ser mayor que 1
 bind_emaxconns_per_ip=El número máximo de conexiones simultáneas por IP debe ser mayor que 1
 bind_emaxconns_per_net=El número máximo de conexiones simultáneas por red debe ser superior a 1
+bind_maxlifetime=Vida útil máxima del proceso de Webmin
+bind_maxlifetime_def=Ilimitado
+bind_maxlifetime_secs=segundos
+bind_emaxlifetime=La vida útil máxima del proceso debe ser un número superior a 60 segundos
 
 log_status=¿Registro activo?
 log_clear2=Periódicamente borrar archivos de registro?

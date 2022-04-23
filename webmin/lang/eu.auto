@@ -69,6 +69,10 @@ bind_maxconns_per_net=Sare bakoitzeko gehieneko aldi bereko konexioak
 bind_emaxconns=Aldibereko gehieneko konexioak 1 baino handiagoa izan behar du
 bind_emaxconns_per_ip=IP bakoitzeko gehieneko konexio simultaneoak 1 baino handiagoa izan behar du
 bind_emaxconns_per_net=Sareko gehieneko aldi bereko konexioak 1 baino handiagoa izan behar du
+bind_maxlifetime=Gehienezko Webmin prozesuaren iraupena
+bind_maxlifetime_def=Mugagabea
+bind_maxlifetime_secs=segundoak
+bind_emaxlifetime=Prozesuaren gehieneko iraupenak 60 segundo baino handiagoa izan behar du
 
 log_title=Saio
 log_desc=Webmin konfigura daiteke web zerbitzari hitsen erregistroa idazteko, CLF erregistro formatu estandarrean. Logging gaituta badago, IP helbideak edo ostalariaren izenak erregistratzen diren ala ez eta erregistro fitxategia zenbat aldiz garbitzen den aukeratu dezakezu. Gaituta dagoenean, erregistroak $1 fitxategian idazten dira.

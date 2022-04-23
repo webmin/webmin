@@ -69,6 +69,10 @@ bind_maxconns_per_net=מקסימום חיבורים מקבילים לכל רשת
 bind_emaxconns=חיבורים מרביים במקביל חייבים להיות מספר גדול מ- 1
 bind_emaxconns_per_ip=חיבורים מרביים בו זמנית לכל IP חייבים להיות מספר גדול מ- 1
 bind_emaxconns_per_net=חיבורים מרביים בו זמנית לכל רשת חייבים להיות מספר גדול מ -1
+bind_maxlifetime=חיי תהליך Webmin מקסימלי
+bind_maxlifetime_def=ללא הגבלה
+bind_maxlifetime_secs=שניות
+bind_emaxlifetime=משך חיי התהליך המרבי חייב להיות מספר גדול מ-60 שניות
 
 log_title=רישום
 log_desc=Webmin can be configured to write a log of web server hits, in the standard CLF log file format. If logging is enabled, you can also choose whether IP addresses or hostnames are recorded, and how often the log file is cleared. When enabled, logs are written to the file $1.

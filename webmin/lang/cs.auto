@@ -22,6 +22,10 @@ bind_maxconns_per_net=Maximální počet souběžných připojení na síť
 bind_emaxconns=Maximální počet souběžných připojení musí být číslo větší než 1
 bind_emaxconns_per_ip=Maximální počet souběžných připojení na IP musí být číslo větší než 1
 bind_emaxconns_per_net=Maximální počet souběžných připojení v síti musí být číslo větší než 1
+bind_maxlifetime=Maximální životnost procesu Webmin
+bind_maxlifetime_def=Neomezený
+bind_maxlifetime_secs=sekundy
+bind_emaxlifetime=Maximální životnost procesu musí být číslo větší než 60 sekund
 
 log_global=&lt;Globální akce&gt;
 log_sched=Protokolovat naplánované funkce?

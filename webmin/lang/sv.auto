@@ -48,6 +48,10 @@ bind_maxconns_per_net=Maximala samtidiga anslutningar per nätverk
 bind_emaxconns=Maximala samtidiga anslutningar måste vara ett tal större än 1
 bind_emaxconns_per_ip=Maximala samtidiga anslutningar per IP måste vara ett tal större än 1
 bind_emaxconns_per_net=Maximala samtidiga anslutningar per nätverk måste vara ett nummer större än 1
+bind_maxlifetime=Maximal Webmin-processlivslängd
+bind_maxlifetime_def=Obegränsat
+bind_maxlifetime_secs=sekunder
+bind_emaxlifetime=Maximal processlivslängd måste vara ett antal större än 60 sekunder
 
 log_status=Loggar aktivt?
 log_clf=Använd kombinerat loggformat (inklusive referent och användaragent)?
