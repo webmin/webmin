@@ -516,7 +516,11 @@ if ($os_type eq "windows") {
 	close(STOP);
 	}
 else {
-	open(START, ">$config_directory/start");
+	
+	# Re-generating main	
+	
+	# Start main
+	open(START, ">$config_directory/start-init");
 	print START "#!/bin/sh\n";
 	print START "echo Starting Webmin server in $wadir\n";
 	print START "trap '' 1\n";
@@ -533,23 +537,132 @@ else {
 		print START "exec '$wadir/miniserv.pl' $config_directory/miniserv.conf\n";
 		}
 	close(START);
-	$start_cmd = "$config_directory/start";
+	$start_cmd = "$config_directory/start-init";
 
-	open(STOP, ">$config_directory/stop");
+	# Stop main
+	open(STOP, ">$config_directory/stop-init");
 	print STOP "#!/bin/sh\n";
-	print STOP "echo Stopping Webmin server in $wadir\n";
+	print STOP "if [ \"\$1\" = \"--kill\" ]; then\n";
+	print STOP "  echo Force stopping Webmin server in $wadir\n";
+	print STOP "else\n";
+	print STOP "  echo Stopping Webmin server in $wadir\n";
+	print STOP "fi\n";
 	print STOP "pidfile=\`grep \"^pidfile=\" $config_directory/miniserv.conf | sed -e 's/pidfile=//g'\`\n";
-	print STOP "kill \`cat \$pidfile\`\n";
+	print STOP "pid=\`cat \$pidfile\` 2>/dev/null\n";
+	print STOP "if [ \"\$pid\" != \"\" ]; then\n";
+	print STOP "  kill \$pid || exit 1\n";
+	print STOP "  touch $var_dir/stop-flag\n";
+	print STOP "  if [ \"\$1\" = \"--kill\" ]; then\n";
+	print STOP "    sleep 1\n";
+	print STOP "    ((ps axf | grep \"webmin\\\/miniserv\\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) || kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null\n";
+	print STOP "  fi\n";
+	print STOP "  exit 0\n";
+	print STOP "else\n";
+	print STOP "  if [ \"\$1\" = \"--kill\" ]; then\n";
+	print STOP "    (ps axf | grep \"webmin\\\/miniserv\\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) 2>/dev/null\n";
+	print STOP "  fi\n";
+	print STOP "fi\n";
 	close(STOP);
 
-	open(RESTART, ">$config_directory/restart");
+	# Restart main
+	open(RESTART, ">$config_directory/restart-init");
 	print RESTART "#!/bin/sh\n";
-	print RESTART "$config_directory/stop && $config_directory/start\n";
+	print RESTART "$config_directory/stop-init\n";
+	print RESTART "$config_directory/start-init\n";
 	close(RESTART);
+	
+	# Force reload main
+	open(FRELOAD, ">$config_directory/force-reload-init");
+	print FRELOAD "#!/bin/sh\n";
+	print FRELOAD "$config_directory/stop-init --kill\n";
+	print FRELOAD "$config_directory/start-init\n";
+	close(FRELOAD);
 
-	chmod(0755, "$config_directory/start", "$config_directory/stop",
-		    "$config_directory/restart");
+	# Reload main
+	open(RELOAD, ">$config_directory/reload-init");
+	print RELOAD "#!/bin/sh\n";
+	print RELOAD "echo Reloading Webmin server in $wadir\n";
+	print RELOAD "pidfile=\`grep \"^pidfile=\" $config_directory/miniserv.conf | sed -e 's/pidfile=//g'\`\n";
+	print RELOAD "kill -USR1 \`cat \$pidfile\`\n";
+	close(RELOAD);
+
+	chmod(0755, "$config_directory/start-init");
+	chmod(0755, "$config_directory/stop-init");
+	chmod(0755, "$config_directory/restart-init");
+	chmod(0755, "$config_directory/force-reload-init");
+	chmod(0755, "$config_directory/reload-init");
+
+	# Re-generating supplementary
+
+	# Clear existing
+	my $csupp = sub {
+		unlink("$config_directory/start");
+		unlink("$config_directory/stop");
+		unlink("$config_directory/restart");
+		unlink("$config_directory/force-reload");
+		unlink("$config_directory/reload");
+	};
+	&$csupp();
+
+	# Create symlinks
+	# Start init.d
+	symlink("$config_directory/start-init", "$config_directory/start");
+	# Stop init.d
+	symlink("$config_directory/stop-init", "$config_directory/stop");
+	# Restart init.d
+	symlink("$config_directory/restart-init", "$config_directory/restart");
+	# Force reload init.d
+	symlink("$config_directory/force-reload-init", "$config_directory/force-reload");
+	# Reload init.d
+	symlink("$config_directory/reload-init", "$config_directory/reload");
+
+	# For systemd
+	my $systemctlcmd = `sh -c 'command -v systemctl'`;
+	if ($systemctlcmd) {
+		$systemctlcmd =~ s/\s+$//;
+
+		# Clear existing
+		&$csupp();
+		
+		# Start systemd
+		open(STARTD, ">$config_directory/start");
+		print STARTD "$systemctlcmd start webmin\n";
+		close(STARTD);
+		
+		# Stop systemd
+		open(STOPD, ">$config_directory/stop");
+		print STOPD "$systemctlcmd stop webmin\n";
+		close(STOPD);
+
+		# Restart systemd
+		open(RESTARTD, ">$config_directory/restart");
+		print RESTARTD "$systemctlcmd restart webmin\n";
+		close(RESTARTD);
+
+		# Force reload systemd
+		open(FRELOADD, ">$config_directory/force-reload");
+		print FRELOADD "$config_directory/stop-init --kill >/dev/null 2>&1\n";
+		print FRELOADD "$systemctlcmd stop webmin\n";
+		print FRELOADD "$systemctlcmd start webmin\n";
+		close(FRELOADD);
+
+		# Reload systemd
+		open(RELOADD, ">$config_directory/reload");
+		print RELOADD "$config_directory/reload-init >/dev/null 2>&1\n";
+		close(RELOADD);
+
+		chmod(0755, "$config_directory/start");
+		chmod(0755, "$config_directory/stop");
+		chmod(0755, "$config_directory/restart");
+		chmod(0755, "$config_directory/force-reload");
+		chmod(0755, "$config_directory/reload");
+
+		# Fix existing systemd webmin.service file to update start and stop commands
+		my $perl = &get_perl_path();
+		chdir("$wadir/init");
+		system("$perl ".&quote_path("$wadir/init/updateboot.pl")." webmin");
 	}
+}
 print "..done\n";
 print "\n";
 
@@ -642,7 +755,7 @@ printf "\n"
 if [ "\$answer" = "y" ]; then
 	$config_directory/stop
 	echo "Running uninstall scripts .."
-	(cd "$wadir" ; WEBMIN_CONFIG=$config_directory WEBMIN_VAR=$var_dir LANG= "$wadir/run-uninstalls.pl")
+	(cd "$wadir" ; WEBMIN_CONFIG=$config_directory WEBMIN_VAR=$var_dir LANG= "$wadir/run-uninstalls.pl") >/dev/null 2>&1 </dev/null
 	echo "Deleting $wadir .."
 	rm -rf "$wadir"
 	echo "Deleting $config_directory .."
