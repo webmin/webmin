@@ -321,27 +321,6 @@ if [ "\$1" = 0 ]; then
 		rm -rf /etc/webmin.rpmsave
 		mv /etc/webmin /etc/webmin.rpmsave
 		rm -rf /var/webmin
-
-		rm -f /etc/sysconfig/daemons/webmin >/dev/null 2>&1
-		rmdir /etc/sysconfig/daemons >/dev/null 2>&1
-		rm -f /etc/init.d/webmin >/dev/null 2>&1
-		rm -f /etc/rc.d/rc2.d/S99webmin >/dev/null 2>&1
-		rm -f /etc/rc.d/rc3.d/S99webmin >/dev/null 2>&1
-		rm -f /etc/rc.d/rc5.d/S99webmin >/dev/null 2>&1
-		rm -f /etc/rc.d/rc0.d/K10webmin >/dev/null 2>&1
-		rm -f /etc/rc.d/rc1.d/K10webmin >/dev/null 2>&1
-		rm -f /etc/rc.d/rc6.d/K10webmin >/dev/null 2>&1
-		rmdir /etc/rc.d/rc2.d >/dev/null 2>&1
-		rmdir /etc/rc.d/rc3.d >/dev/null 2>&1
-		rmdir /etc/rc.d/rc5.d >/dev/null 2>&1
-		rmdir /etc/rc.d/rc0.d >/dev/null 2>&1
-		rmdir /etc/rc.d/rc1.d >/dev/null 2>&1
-		rmdir /etc/rc.d/rc6.d >/dev/null 2>&1
-
-		rm -f /etc/systemd/system/webmin.service >/dev/null 2>&1
-		if [ -x "\$(command -v systemctl)" >/dev/null 2>&1 ]; then
-			systemctl daemon-reload >/dev/null 2>&1
-		fi
 	fi
 fi
 /bin/true
