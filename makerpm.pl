@@ -234,24 +234,6 @@ export config_dir var_dir perl autoos port login crypt host ssl nochown autothir
 chmod 600 \$tempdir/webmin-setup.out
 rm -f /var/lock/subsys/webmin
 cd /usr/libexec/webmin
-# Fix to always clear old mess for systemd systems
-if [ -x "\$(command -v systemctl)" >/dev/null 2>&1 ]; then
-	rm -f /etc/sysconfig/daemons/webmin >/dev/null 2>&1 </dev/null
-	rmdir /etc/sysconfig/daemons >/dev/null 2>&1 </dev/null
-	rm -f /etc/init.d/webmin >/dev/null 2>&1 </dev/null
-	rm -f /etc/rc.d/rc0.d/K10webmin >/dev/null 2>&1 </dev/null
-	rm -f /etc/rc.d/rc1.d/K10webmin >/dev/null 2>&1 </dev/null
-	rm -f /etc/rc.d/rc2.d/S99webmin >/dev/null 2>&1 </dev/null
-	rm -f /etc/rc.d/rc3.d/S99webmin >/dev/null 2>&1 </dev/null
-	rm -f /etc/rc.d/rc5.d/S99webmin >/dev/null 2>&1 </dev/null
-	rm -f /etc/rc.d/rc6.d/K10webmin >/dev/null 2>&1 </dev/null
-	rmdir /etc/rc.d/rc0.d >/dev/null 2>&1 </dev/null
-	rmdir /etc/rc.d/rc1.d >/dev/null 2>&1 </dev/null
-	rmdir /etc/rc.d/rc2.d >/dev/null 2>&1 </dev/null
-	rmdir /etc/rc.d/rc3.d >/dev/null 2>&1 </dev/null
-	rmdir /etc/rc.d/rc5.d >/dev/null 2>&1 </dev/null
-	rmdir /etc/rc.d/rc6.d >/dev/null 2>&1 </dev/null
-fi
 if [ "\$inetd" != "1" -a "\$startafter" = "1" ]; then
 	/etc/webmin/stop >/dev/null 2>&1 </dev/null
 	/etc/webmin/start >/dev/null 2>&1 </dev/null
