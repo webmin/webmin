@@ -395,6 +395,7 @@ if [ "\$1" != "upgrade" -a "\$1" != "abort-upgrade" ]; then
 		# Package is being removed, and no new version of webmin
 		# has taken it's place. Delete the config files
 		rm -rf /etc/$baseproduct /var/$baseproduct
+		rm -f /etc/pam.d/$baseproduct
 	fi
 fi
 EOF
