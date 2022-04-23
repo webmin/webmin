@@ -2317,7 +2317,8 @@ sub file_map_type
 {
 local ($type) = @_;
 return 1 if ($type eq 'hash' || $type eq 'regexp' || $type eq 'pcre' ||
-	     $type eq 'btree' || $type eq 'dbm' || $type eq 'cidr');
+	     $type eq 'btree' || $type eq 'dbm' || $type eq 'cidr' ||
+	     $type eq 'lmdb');
 }
 
 # in_props(&props, name)
