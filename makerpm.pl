@@ -220,6 +220,7 @@ fi
 host=`hostname`
 ssl=1
 atboot=1
+makeboot=1
 nochown=1
 autothird=1
 noperlpath=1
@@ -228,36 +229,28 @@ nostart=1
 if [ "\$tempdir" = "" ]; then
 	tempdir=/tmp/.webmin
 fi
-export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot
+export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot makeboot
 ./setup.sh >\$tempdir/webmin-setup.out 2>&1
 chmod 600 \$tempdir/webmin-setup.out
 rm -f /var/lock/subsys/webmin
 cd /usr/libexec/webmin
+# Fix to just always clear old mess for systemd
 if [ -x "\$(command -v systemctl)" >/dev/null 2>&1 ] && [ -d "/etc/systemd" ]; then
-
-	rm -f /etc/sysconfig/daemons/webmin >/dev/null 2>&1
-	rmdir /etc/sysconfig/daemons >/dev/null 2>&1
-	rm -f /etc/init.d/webmin >/dev/null 2>&1
-	rm -f /etc/rc.d/rc2.d/S99webmin >/dev/null 2>&1
-	rm -f /etc/rc.d/rc3.d/S99webmin >/dev/null 2>&1
-	rm -f /etc/rc.d/rc5.d/S99webmin >/dev/null 2>&1
-	rm -f /etc/rc.d/rc0.d/K10webmin >/dev/null 2>&1
-	rm -f /etc/rc.d/rc1.d/K10webmin >/dev/null 2>&1
-	rm -f /etc/rc.d/rc6.d/K10webmin >/dev/null 2>&1
-
-	mkdir /etc/systemd/system >/dev/null 2>&1
-	cp -p webmin-systemd /etc/systemd/system/webmin.service >/dev/null 2>&1
-	systemctl daemon-reload >/dev/null 2>&1
-else
-	cp -p webmin-init /etc/init.d/webmin >/dev/null 2>&1
-
-	mkdir -p /etc/rc.d/{rc0.d,rc1.d,rc2.d,rc3.d,rc5.d,rc6.d} >/dev/null 2>&1
-	ln -s /etc/init.d/webmin /etc/rc.d/rc2.d/S99webmin >/dev/null 2>&1
-	ln -s /etc/init.d/webmin /etc/rc.d/rc3.d/S99webmin >/dev/null 2>&1
-	ln -s /etc/init.d/webmin /etc/rc.d/rc5.d/S99webmin >/dev/null 2>&1
-	ln -s /etc/init.d/webmin /etc/rc.d/rc0.d/K10webmin >/dev/null 2>&1
-	ln -s /etc/init.d/webmin /etc/rc.d/rc1.d/K10webmin >/dev/null 2>&1
-	ln -s /etc/init.d/webmin /etc/rc.d/rc6.d/K10webmin >/dev/null 2>&1
+	rm -f /etc/sysconfig/daemons/webmin >/dev/null 2>&1 </dev/null
+	rmdir /etc/sysconfig/daemons >/dev/null 2>&1 </dev/null
+	rm -f /etc/init.d/webmin >/dev/null 2>&1 </dev/null
+	rm -f /etc/rc.d/rc0.d/K10webmin >/dev/null 2>&1 </dev/null
+	rm -f /etc/rc.d/rc1.d/K10webmin >/dev/null 2>&1 </dev/null
+	rm -f /etc/rc.d/rc2.d/S99webmin >/dev/null 2>&1 </dev/null
+	rm -f /etc/rc.d/rc3.d/S99webmin >/dev/null 2>&1 </dev/null
+	rm -f /etc/rc.d/rc5.d/S99webmin >/dev/null 2>&1 </dev/null
+	rm -f /etc/rc.d/rc6.d/K10webmin >/dev/null 2>&1 </dev/null
+	rmdir /etc/rc.d/rc0.d >/dev/null 2>&1 </dev/null
+	rmdir /etc/rc.d/rc1.d >/dev/null 2>&1 </dev/null
+	rmdir /etc/rc.d/rc2.d >/dev/null 2>&1 </dev/null
+	rmdir /etc/rc.d/rc3.d >/dev/null 2>&1 </dev/null
+	rmdir /etc/rc.d/rc5.d >/dev/null 2>&1 </dev/null
+	rmdir /etc/rc.d/rc6.d >/dev/null 2>&1 </dev/null
 fi
 if [ "\$inetd" != "1" -a "\$startafter" = "1" ]; then
 	/etc/webmin/stop >/dev/null 2>&1 </dev/null
