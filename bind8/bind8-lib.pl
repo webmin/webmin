@@ -4224,6 +4224,11 @@ sub dt_delete_dnssec_state
 
 		&dt_rollerd_restart(); 
 		&restart_bind();
+	} else {
+		# Just delete the dsset- file
+		my $z_dir = $z_chroot;
+		$z_dir =~ s/\/[^\/]+$//;
+		&unlink_file($z_dir."/dsset-".$dom.".");
 	}
 
 	return undef;
