@@ -171,6 +171,7 @@ fi
 %post
 inetd=`grep "^inetd=" /etc/webmin/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
 startafter=0
+
 if [ "\$1" != 1 ]; then
 	# Upgrading the RPM, so stop the old Webmin properly
 	if [ "\$inetd" != "1" ]; then
