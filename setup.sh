@@ -669,8 +669,6 @@ csupp () {
 }
 csupp
 
-# Creating symlinks
-echo "Creating start and stop init symlinks to scripts .."
 # Start init.d
 ln -s $config_dir/start-init $config_dir/start >/dev/null 2>&1
 # Stop init.d
@@ -710,7 +708,12 @@ if [ -x "$(command -v systemctl)" >/dev/null 2>&1 ]; then
 	(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/updateboot.pl" "webmin")
 	
 	chmod 755 $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
+else
+	# Creating symlinks
+	echo "Creating start and stop init symlinks to scripts .."
 fi
+echo "..done"
+echo ""
 
 if [ "$upgrading" = 1 -a "$inetd" != "1" ]; then
 	# Stop old version, with updated stop script
