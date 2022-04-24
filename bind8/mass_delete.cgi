@@ -93,7 +93,7 @@ else {
 			}
 
 		# delete any keys
-		&delete_dnssec_key($zconf);
+		&delete_dnssec_key($zconf, 0);
 
 		# remove the zone directive
 		&lock_file(&make_chroot($zconf->{'file'}));

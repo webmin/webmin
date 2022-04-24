@@ -126,7 +126,7 @@ if ($f && $type ne 'hint') {
 	}
 
 # delete any keys
-&delete_dnssec_key($zconf);
+&delete_dnssec_key($zconf, 0);
 
 # delete all dnssec-tools related state
 &dt_delete_dnssec_state($zconf);

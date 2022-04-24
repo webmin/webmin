@@ -2843,7 +2843,7 @@ foreach my $slave (@slaves) {
 	if ($config{'extra_slaves'}) {
 		push(@otherslaves,
 		     grep { $_ ne '' } 
-                          map { &to_ipaddress($_)
+                          map { &to_ipaddress($_) }
 			      split(/\s+/, $config{'extra_slaves'}));
 		}
 	if ($moreslaves) {
@@ -3330,29 +3330,48 @@ else {
 	$zonesize = $size;
 	}
 
-# Create the zone key
-my $out = &backquote_logged(
-	"cd ".quotemeta($fn)." && ".
-	"$config{'keygen'} -a ".quotemeta($alg)." -b ".quotemeta($zonesize).
-	" -n ZONE $rand_flag $dom 2>&1");
-if ($?) {
-	kill('KILL', $pid) if ($pid);
-	return $out;
-	}
-
-# Create the key signing key, if needed
-if (!$single) {
-	$out = &backquote_logged(
-		"cd ".quotemeta($fn)." && ".
-		"$config{'keygen'} -a ".quotemeta($alg)." -b ".quotemeta($size).
-		" -n ZONE -f KSK $rand_flag $dom 2>&1");
-	kill('KILL', $pid) if ($pid);
-	if ($?) {
-		return $out;
+# Check if there are saved keys, and if so use them
+my @savedkeys = grep { $_->{'saved'} } &get_dnssec_key($z, 1);
+my $out;
+if (@savedkeys) {
+	# Rename back the saved key files
+	foreach my $key (@savedkeys) {
+		foreach my $f ('publicfile', 'privatefile') {
+			if (ref($key) && $key->{$f} && $key->{'saved'}) {
+				my $origfile = $key->{$f};
+				$origfile =~ s/\.saved$//;
+				&rename_file($key->{$f}, $origfile);
+				}
+			}
 		}
 	}
 else {
-	kill('KILL', $pid) if ($pid);
+	# Create the zone key
+	$out = &backquote_logged(
+		"cd ".quotemeta($fn)." && ".
+		"$config{'keygen'} -a ".quotemeta($alg).
+		" -b ".quotemeta($zonesize).
+		" -n ZONE $rand_flag $dom 2>&1");
+	if ($?) {
+		kill('KILL', $pid) if ($pid);
+		return $out;
+		}
+
+	# Create the key signing key, if needed
+	if (!$single) {
+		$out = &backquote_logged(
+			"cd ".quotemeta($fn)." && ".
+			"$config{'keygen'} -a ".quotemeta($alg).
+			" -b ".quotemeta($size).
+			" -n ZONE -f KSK $rand_flag $dom 2>&1");
+		kill('KILL', $pid) if ($pid);
+		if ($?) {
+			return $out;
+			}
+		}
+	else {
+		kill('KILL', $pid) if ($pid);
+		}
 	}
 
 # Get the new keys
@@ -3458,20 +3477,27 @@ return "Re-signing failed : $err" if ($err);
 return undef;
 }
 
-# delete_dnssec_key(&zone|&zone-name)
+# delete_dnssec_key(&zone|&zone-name, [save-key])
 # Deletes the key for a zone, and all DNSSEC records
 sub delete_dnssec_key
 {
-my ($z) = @_;
+my ($z, $savekey) = @_;
 my $fn = &get_zone_file($z);
 $fn || return "Could not work out records file!";
 my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 
 # Remove the key
-my @keys = &get_dnssec_key($z);
+my @keys = &get_dnssec_key($z, 1);
 foreach my $key (@keys) {
 	foreach my $f ('publicfile', 'privatefile') {
-		&unlink_file($key->{$f}) if (ref($key) && $key->{$f});
+		if (ref($key) && $key->{$f}) {
+			if ($savekey && !$key->{'saved'}) {
+				&rename_file($key->{$f}, $key->{$f}.".saved");
+				}
+			else {
+				&unlink_file($key->{$f});
+				}
+			}
 		}
 	}
 
@@ -3616,19 +3642,20 @@ if ($keyrec) {
 	}
 }
 
-# get_dnssec_key(&zone|&zone-name)
+# get_dnssec_key(&zone|&zone-name, [include-saved])
 # Returns a list of hashes containing details of a zone's keys, or an error
 # message. The KSK is always returned first.
 sub get_dnssec_key
 {
-my ($z) = @_;
+my ($z, $saved) = @_;
 my $dir = &get_keys_dir($z);
 my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 my %keymap;
 opendir(ZONEDIR, $dir);
 foreach my $f (readdir(ZONEDIR)) {
-	if ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.key$/) {
+	if ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.key(\.saved)?$/) {
 		# Found the public key file .. read it
+		next if ($3 && !$saved);
 		$keymap{$2} ||= { };
 		my $rv = $keymap{$2};
 		$rv->{'publicfile'} = "$dir/$f";
@@ -3649,9 +3676,11 @@ foreach my $f (readdir(ZONEDIR)) {
 		$rv->{'publictext'} = &read_file_contents("$dir/$f");
 		while($rv->{'publictext'} =~ s/^;.*\r?\n//) { };
 		$rv->{'publictext'} = format_dnssec_public_key($rv->{'publictext'});
+		$rv->{'saved'} = $3 ? 1 : 0;
 		}
-	elsif ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.private$/) {
+	elsif ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.private(\.saved)?$/) {
 		# Found the private key file
+		next if ($3 && !$saved);
 		$keymap{$2} ||= { };
 		my $rv = $keymap{$2};
 		$rv->{'privatefile'} = "$dir/$f";

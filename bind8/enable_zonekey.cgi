@@ -15,7 +15,7 @@ my $desc = &ip6int_to_net(&arpa_to_ip($dom));
 
 # Validate inputs and compute size
 my ($ok, $size) = &compute_dnssec_key_size($in{'alg'}, $in{'size_def'},
-					$in{'size'});
+					   $in{'size'});
 &error($size) if (!$ok);
 
 &ui_print_unbuffered_header($desc, $text{'zonekey_title'}, "",

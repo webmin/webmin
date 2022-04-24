@@ -22,7 +22,7 @@ if ($key) {
 foreach my $k (@keyfiles) {
 	&lock_file($k);
 	}
-&delete_dnssec_key($zone);
+&delete_dnssec_key($zone, 1);
 foreach my $k (@keyfiles) {
 	&unlock_file($k);
 	}
