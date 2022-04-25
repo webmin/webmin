@@ -564,7 +564,7 @@ sub inst_error
 {
 unlink($file) if ($need_unlink);
 unlink($updatestemp);
-print "<b>$main::whatfailed : $_[0]</b> <p>\n";
+print "$main::whatfailed : $_[0] <p>\n";
 &ui_print_footer("", $text{'index_return'});
 exit;
 }
