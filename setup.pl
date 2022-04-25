@@ -595,14 +595,11 @@ else {
 	# Re-generating supplementary
 
 	# Clear existing
-	my $csupp = sub {
-		unlink("$config_directory/start");
-		unlink("$config_directory/stop");
-		unlink("$config_directory/restart");
-		unlink("$config_directory/force-reload");
-		unlink("$config_directory/reload");
-	};
-	&$csupp();
+	unlink("$config_directory/start");
+	unlink("$config_directory/stop");
+	unlink("$config_directory/restart");
+	unlink("$config_directory/force-reload");
+	unlink("$config_directory/reload");
 
 	# Create symlinks
 	# Start init.d
@@ -617,12 +614,16 @@ else {
 	symlink("$config_directory/reload-init", "$config_directory/reload");
 
 	# For systemd
-	my $systemctlcmd = `sh -c 'command -v systemctl'`;
-	if ($systemctlcmd) {
-		$systemctlcmd =~ s/\s+$//;
+	my $systemctlcmd = `which systemctl`;
+	$systemctlcmd =~ s/\s+$//;
+	if (-x $systemctlcmd) {
 
 		# Clear existing
-		&$csupp();
+		unlink("$config_directory/start");
+		unlink("$config_directory/stop");
+		unlink("$config_directory/restart");
+		unlink("$config_directory/force-reload");
+		unlink("$config_directory/reload");
 		
 		# Start systemd
 		open(STARTD, ">$config_directory/start");

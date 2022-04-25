@@ -664,10 +664,7 @@ echo ""
 # Re-generating supplementary
 
 # Clear existing
-csupp () {
-	rm -f $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
-}
-csupp
+rm -f $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
 
 # Start init.d
 ln -s $config_dir/start-init $config_dir/start >/dev/null 2>&1
@@ -681,10 +678,10 @@ ln -s $config_dir/force-reload-init $config_dir/force-reload >/dev/null 2>&1
 ln -s $config_dir/reload-init $config_dir/reload >/dev/null 2>&1
 
 # For systemd create different start/stop scripts
-if [ -x "$(command -v systemctl)" >/dev/null 2>&1 ]; then
-	csupp
+systemctlcmd=`which systemctl` >/dev/null 2>&1
+if [ -x "$systemctlcmd" ]; then
+	rm -f $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
 
-	systemctlcmd=`which systemctl`
 	echo "Creating start and stop scripts (systemd).."
 	# Start systemd
 	echo "#!/bin/sh" >>$config_dir/start
