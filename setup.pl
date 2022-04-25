@@ -520,7 +520,7 @@ else {
 	# Re-generating main	
 	
 	# Start main
-	open(START, ">$config_directory/start-init");
+	open(START, ">$config_directory/.start-init");
 	print START "#!/bin/sh\n";
 	print START "echo Starting Webmin server in $wadir\n";
 	print START "trap '' 1\n";
@@ -537,10 +537,10 @@ else {
 		print START "exec '$wadir/miniserv.pl' $config_directory/miniserv.conf\n";
 		}
 	close(START);
-	$start_cmd = "$config_directory/start-init";
+	$start_cmd = "$config_directory/start";
 
 	# Stop main
-	open(STOP, ">$config_directory/stop-init");
+	open(STOP, ">$config_directory/.stop-init");
 	print STOP "#!/bin/sh\n";
 	print STOP "if [ \"\$1\" = \"--kill\" ]; then\n";
 	print STOP "  echo Force stopping Webmin server in $wadir\n";
@@ -565,32 +565,32 @@ else {
 	close(STOP);
 
 	# Restart main
-	open(RESTART, ">$config_directory/restart-init");
+	open(RESTART, ">$config_directory/.restart-init");
 	print RESTART "#!/bin/sh\n";
-	print RESTART "$config_directory/stop-init\n";
-	print RESTART "$config_directory/start-init\n";
+	print RESTART "$config_directory/.stop-init\n";
+	print RESTART "$config_directory/.start-init\n";
 	close(RESTART);
 	
 	# Force reload main
-	open(FRELOAD, ">$config_directory/restart-by-force-kill-init");
+	open(FRELOAD, ">$config_directory/.restart-by-force-kill-init");
 	print FRELOAD "#!/bin/sh\n";
-	print FRELOAD "$config_directory/stop-init --kill\n";
-	print FRELOAD "$config_directory/start-init\n";
+	print FRELOAD "$config_directory/.stop-init --kill\n";
+	print FRELOAD "$config_directory/.start-init\n";
 	close(FRELOAD);
 
 	# Reload main
-	open(RELOAD, ">$config_directory/reload-init");
+	open(RELOAD, ">$config_directory/.reload-init");
 	print RELOAD "#!/bin/sh\n";
 	print RELOAD "echo Reloading Webmin server in $wadir\n";
 	print RELOAD "pidfile=\`grep \"^pidfile=\" $config_directory/miniserv.conf | sed -e 's/pidfile=//g'\`\n";
 	print RELOAD "kill -USR1 \`cat \$pidfile\`\n";
 	close(RELOAD);
 
-	chmod(0755, "$config_directory/start-init");
-	chmod(0755, "$config_directory/stop-init");
-	chmod(0755, "$config_directory/restart-init");
-	chmod(0755, "$config_directory/restart-by-force-kill-init");
-	chmod(0755, "$config_directory/reload-init");
+	chmod(0755, "$config_directory/.start-init");
+	chmod(0755, "$config_directory/.stop-init");
+	chmod(0755, "$config_directory/.restart-init");
+	chmod(0755, "$config_directory/.restart-by-force-kill-init");
+	chmod(0755, "$config_directory/.reload-init");
 
 	# Re-generating supplementary
 
@@ -603,15 +603,15 @@ else {
 
 	# Create symlinks
 	# Start init.d
-	symlink("$config_directory/start-init", "$config_directory/start");
+	symlink("$config_directory/.start-init", "$config_directory/start");
 	# Stop init.d
-	symlink("$config_directory/stop-init", "$config_directory/stop");
+	symlink("$config_directory/.stop-init", "$config_directory/stop");
 	# Restart init.d
-	symlink("$config_directory/restart-init", "$config_directory/restart");
+	symlink("$config_directory/.restart-init", "$config_directory/restart");
 	# Force reload init.d
-	symlink("$config_directory/restart-by-force-kill-init", "$config_directory/restart-by-force-kill");
+	symlink("$config_directory/.restart-by-force-kill-init", "$config_directory/restart-by-force-kill");
 	# Reload init.d
-	symlink("$config_directory/reload-init", "$config_directory/reload");
+	symlink("$config_directory/.reload-init", "$config_directory/reload");
 
 	# For systemd
 	my $systemctlcmd = `which systemctl`;
@@ -642,14 +642,14 @@ else {
 
 		# Force reload systemd
 		open(FRELOADD, ">$config_directory/restart-by-force-kill");
-		print FRELOADD "$config_directory/stop-init --kill >/dev/null 2>&1\n";
+		print FRELOADD "$config_directory/.stop-init --kill >/dev/null 2>&1\n";
 		print FRELOADD "$systemctlcmd stop webmin\n";
 		print FRELOADD "$systemctlcmd start webmin\n";
 		close(FRELOADD);
 
 		# Reload systemd
 		open(RELOADD, ">$config_directory/reload");
-		print RELOADD "$config_directory/reload-init >/dev/null 2>&1\n";
+		print RELOADD "$config_directory/.reload-init >/dev/null 2>&1\n";
 		close(RELOADD);
 
 		chmod(0755, "$config_directory/start");

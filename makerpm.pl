@@ -269,7 +269,7 @@ if [ "\$1" = 0 ]; then
 		# has taken it's place. Run uninstalls and stop the server
 		(cd /usr/libexec/webmin ; WEBMIN_CONFIG=/etc/webmin WEBMIN_VAR=/var/webmin LANG= /usr/libexec/webmin/run-uninstalls.pl) >/dev/null 2>&1 </dev/null
 		/etc/webmin/stop >/dev/null 2>&1 </dev/null
-		/etc/webmin/stop-init --kill >/dev/null 2>&1 </dev/null
+		/etc/webmin/.stop-init --kill >/dev/null 2>&1 </dev/null
 	fi
 fi
 /bin/true

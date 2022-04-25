@@ -12,14 +12,14 @@ $< == 0 || die "atboot.pl must be run as root";
 if ($init_mode eq "osx") {
 	# Darwin System
 	&enable_at_boot("webmin", "Webmin administration server",
-			"$config_directory/start >/dev/null 2>&1 </dev/null",
-			"$config_directory/stop");
+			"$config_directory/.start-init >/dev/null 2>&1 </dev/null",
+			"$config_directory/.stop-init");
 	}
 elsif ($init_mode eq "local") {
 	# Add to the boot time rc script
 	$lref = &read_file_lines($config{'local_script'});
 	for($i=0; $i<@$lref && $lref->[$i] !~ /^exit\s/; $i++) { }
-	splice(@$lref, $i, 0, "$config_directory/start >/dev/null 2>&1 </dev/null # Start $ucproduct");
+	splice(@$lref, $i, 0, "$config_directory/.start-init >/dev/null 2>&1 </dev/null # Start $ucproduct");
 	&flush_file_lines();
 	}
 elsif ($init_mode eq "init") {
@@ -58,7 +58,7 @@ elsif ($init_mode eq "init") {
 		&print_tempfile(ACTION, "case \"\$1\" in\n");
 
 		&print_tempfile(ACTION, "'start')\n");
-		&print_tempfile(ACTION, "\t$config_directory/start >/dev/null 2>&1 </dev/null\n");
+		&print_tempfile(ACTION, "\t$config_directory/.start-init >/dev/null 2>&1 </dev/null\n");
 		&print_tempfile(ACTION, "\tRETVAL=\$?\n");
 		if ($config{'subsys'}) {
 			&print_tempfile(ACTION, "\tif [ \"\$RETVAL\" = \"0\" ]; then\n");
@@ -68,7 +68,7 @@ elsif ($init_mode eq "init") {
 		&print_tempfile(ACTION, "\t;;\n");
 
 		&print_tempfile(ACTION, "'stop')\n");
-		&print_tempfile(ACTION, "\t$config_directory/stop\n");
+		&print_tempfile(ACTION, "\t$config_directory/.stop-init\n");
 		&print_tempfile(ACTION, "\tRETVAL=\$?\n");
 		if ($config{'subsys'}) {
 			&print_tempfile(ACTION, "\tif [ \"\$RETVAL\" = \"0\" ]; then\n");
@@ -96,7 +96,7 @@ elsif ($init_mode eq "init") {
 		&print_tempfile(ACTION, "\t;;\n");
 
 		&print_tempfile(ACTION, "'restart')\n");
-		&print_tempfile(ACTION, "\t$config_directory/stop ; $config_directory/start\n");
+		&print_tempfile(ACTION, "\t$config_directory/.stop-init ; $config_directory/.start-init\n");
 		&print_tempfile(ACTION, "\tRETVAL=\$?\n");
 		&print_tempfile(ACTION, "\t;;\n");
 
@@ -124,8 +124,8 @@ elsif ($init_mode eq "systemd") {
 	&enable_at_boot(
 	     $product,
 	     "$ucproduct server daemon",
-	     "$config_directory/start-init",
-	     "$config_directory/stop-init",
+	     "$config_directory/.start-init",
+	     "$config_directory/.stop-init",
 	     undef,
 	       { 'pidfile'  => $var_directory."/miniserv.pid",
 	         'opts' => {
@@ -136,16 +136,17 @@ elsif ($init_mode eq "systemd") {
 	}
 elsif ($init_mode eq "rc" || $init_mode eq "upstart") {
 	# Create RC or upstart script
-	&enable_at_boot($product, $ucproduct, "$config_directory/start",
-			"$config_directory/stop",
-			undef,
-			{ 'fork' => 1,
-			  'pidfile' => $var_directory."/miniserv.pid" });
+	&enable_at_boot($product, $ucproduct,
+	     "$config_directory/.start-init",
+	     "$config_directory/.stop-init",
+	     undef,
+	     { 'fork' => 1,
+	       'pidfile' => $var_directory."/miniserv.pid" });
 	}
 elsif ($init_mode eq "launchd") {
 	# Create launchd script
 	&create_launchd_agent(&launchd_name($product),
-		"$config_directory/start --nofork", 1);
+		"$config_directory/.start-init --nofork", 1);
 	}
 
 $config{'atboot_product'} = $product;

@@ -19,10 +19,10 @@ DESC="web-based administration interface for Unix systems"
 NAME=Webmin
 PIDFILE=/var/webmin/miniserv.pid
 SCRIPTNAME=/etc/init.d/webmin
-START=/etc/webmin/start-init
-STOP=/etc/webmin/stop-init
-RELOAD=/etc/webmin/reload-init
-FORCERELOAD=/etc/webmin/restart-by-force-kill-init
+START=/etc/webmin/.start-init
+STOP=/etc/webmin/.stop-init
+FORCERESTART=/etc/webmin/.restart-by-force-kill-init
+RELOAD=/etc/webmin/.reload-init
 LOCKFILE=/var/lock/subsys/webmin
 CONFFILE=/etc/webmin/miniserv.conf
 
@@ -71,7 +71,7 @@ restart)
 	RETVAL=$?
 	;;
 restart-by-force-kill)
-	$FORCERELOAD
+	$FORCERESTART
 	RETVAL=$?
 	;;
 reload|force-reload)
