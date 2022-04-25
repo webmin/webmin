@@ -22,7 +22,7 @@ SCRIPTNAME=/etc/init.d/webmin
 START=/etc/webmin/start-init
 STOP=/etc/webmin/stop-init
 RELOAD=/etc/webmin/reload-init
-FORCERELOAD=/etc/webmin/force-reload-init
+FORCERELOAD=/etc/webmin/restart-by-force-kill-init
 LOCKFILE=/var/lock/subsys/webmin
 CONFFILE=/etc/webmin/miniserv.conf
 
@@ -70,16 +70,16 @@ restart)
 	$STOP ; $START
 	RETVAL=$?
 	;;
-force-reload)
+restart-by-force-kill)
 	$FORCERELOAD
 	RETVAL=$?
 	;;
-reload)
+reload|force-reload)
 	$RELOAD
 	RETVAL=$?
 	;;
 *)
-	echo "Usage: $0 {start|stop|restart|reload|force-reload|status}" >&2
+	echo "Usage: $0 {start|stop|restart|restart-by-force-kill|reload|force-reload|status}" >&2
 	RETVAL=1
 	;;
 esac

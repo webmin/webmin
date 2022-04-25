@@ -311,7 +311,7 @@ if [ "$inetd" != "1" ]; then
 	/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
 	/etc/$baseproduct/start >/dev/null 2>&1 </dev/null
 	if [ "\$?" != "0" ]; then
-		echo "W: $ucproduct server cannot be restarted. It is advised to restart it manually\nby running \\"/etc/webmin/force-reload\\" when upgrade process is finished"
+		echo "W: $ucproduct server cannot be restarted. It is advised to restart it manually by\nrunning \\"/etc/webmin/restart-by-force-kill\\" when upgrade process is finished"
 	fi
 fi
 

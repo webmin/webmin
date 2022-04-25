@@ -572,7 +572,7 @@ else {
 	close(RESTART);
 	
 	# Force reload main
-	open(FRELOAD, ">$config_directory/force-reload-init");
+	open(FRELOAD, ">$config_directory/restart-by-force-kill-init");
 	print FRELOAD "#!/bin/sh\n";
 	print FRELOAD "$config_directory/stop-init --kill\n";
 	print FRELOAD "$config_directory/start-init\n";
@@ -589,7 +589,7 @@ else {
 	chmod(0755, "$config_directory/start-init");
 	chmod(0755, "$config_directory/stop-init");
 	chmod(0755, "$config_directory/restart-init");
-	chmod(0755, "$config_directory/force-reload-init");
+	chmod(0755, "$config_directory/restart-by-force-kill-init");
 	chmod(0755, "$config_directory/reload-init");
 
 	# Re-generating supplementary
@@ -598,7 +598,7 @@ else {
 	unlink("$config_directory/start");
 	unlink("$config_directory/stop");
 	unlink("$config_directory/restart");
-	unlink("$config_directory/force-reload");
+	unlink("$config_directory/restart-by-force-kill");
 	unlink("$config_directory/reload");
 
 	# Create symlinks
@@ -609,7 +609,7 @@ else {
 	# Restart init.d
 	symlink("$config_directory/restart-init", "$config_directory/restart");
 	# Force reload init.d
-	symlink("$config_directory/force-reload-init", "$config_directory/force-reload");
+	symlink("$config_directory/restart-by-force-kill-init", "$config_directory/restart-by-force-kill");
 	# Reload init.d
 	symlink("$config_directory/reload-init", "$config_directory/reload");
 
@@ -622,7 +622,7 @@ else {
 		unlink("$config_directory/start");
 		unlink("$config_directory/stop");
 		unlink("$config_directory/restart");
-		unlink("$config_directory/force-reload");
+		unlink("$config_directory/restart-by-force-kill");
 		unlink("$config_directory/reload");
 		
 		# Start systemd
@@ -641,7 +641,7 @@ else {
 		close(RESTARTD);
 
 		# Force reload systemd
-		open(FRELOADD, ">$config_directory/force-reload");
+		open(FRELOADD, ">$config_directory/restart-by-force-kill");
 		print FRELOADD "$config_directory/stop-init --kill >/dev/null 2>&1\n";
 		print FRELOADD "$systemctlcmd stop webmin\n";
 		print FRELOADD "$systemctlcmd start webmin\n";
@@ -655,7 +655,7 @@ else {
 		chmod(0755, "$config_directory/start");
 		chmod(0755, "$config_directory/stop");
 		chmod(0755, "$config_directory/restart");
-		chmod(0755, "$config_directory/force-reload");
+		chmod(0755, "$config_directory/restart-by-force-kill");
 		chmod(0755, "$config_directory/reload");
 
 		# Fix existing systemd webmin.service file to update start and stop commands

@@ -603,7 +603,7 @@ if [ "$noperlpath" = "" ]; then
 fi
 
 # Re-generating main
-rm -f $config_dir/stop-init $config_dir/start-init $config_dir/restart-init $config_dir/force-reload-init $config_dir/reload-init
+rm -f $config_dir/stop-init $config_dir/start-init $config_dir/restart-init $config_dir/restart-by-force-kill-init $config_dir/reload-init
 echo "Creating start and stop init scripts.."
 # Start main
 echo "#!/bin/sh" >>$config_dir/start-init
@@ -648,23 +648,23 @@ echo "#!/bin/sh" >>$config_dir/restart-init
 echo "$config_dir/stop-init" >>$config_dir/restart-init
 echo "$config_dir/start-init" >>$config_dir/restart-init
 # Force reload main
-echo "#!/bin/sh" >>$config_dir/force-reload-init
-echo "$config_dir/stop-init --kill" >>$config_dir/force-reload-init
-echo "$config_dir/start-init" >>$config_dir/force-reload-init
+echo "#!/bin/sh" >>$config_dir/restart-by-force-kill-init
+echo "$config_dir/stop-init --kill" >>$config_dir/restart-by-force-kill-init
+echo "$config_dir/start-init" >>$config_dir/restart-by-force-kill-init
 # Reload main
 echo "#!/bin/sh" >>$config_dir/reload-init
 echo "echo Reloading Webmin server in $wadir" >>$config_dir/reload-init
 echo "pidfile=\`grep \"^pidfile=\" $config_dir/miniserv.conf | sed -e 's/pidfile=//g'\`" >>$config_dir/reload-init
 echo "kill -USR1 \`cat \$pidfile\`" >>$config_dir/reload-init
 
-chmod 755 $config_dir/stop-init $config_dir/start-init $config_dir/restart-init $config_dir/force-reload-init $config_dir/reload-init
+chmod 755 $config_dir/stop-init $config_dir/start-init $config_dir/restart-init $config_dir/restart-by-force-kill-init $config_dir/reload-init
 echo "..done"
 echo ""
 
 # Re-generating supplementary
 
 # Clear existing
-rm -f $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
+rm -f $config_dir/stop $config_dir/start $config_dir/restart $config_dir/restart-by-force-kill $config_dir/reload
 
 # Start init.d
 ln -s $config_dir/start-init $config_dir/start >/dev/null 2>&1
@@ -673,14 +673,14 @@ ln -s $config_dir/stop-init $config_dir/stop >/dev/null 2>&1
 # Restart init.d
 ln -s $config_dir/restart-init $config_dir/restart >/dev/null 2>&1
 # Force reload init.d
-ln -s $config_dir/force-reload-init $config_dir/force-reload >/dev/null 2>&1
+ln -s $config_dir/restart-by-force-kill-init $config_dir/restart-by-force-kill >/dev/null 2>&1
 # Reload init.d
 ln -s $config_dir/reload-init $config_dir/reload >/dev/null 2>&1
 
 # For systemd create different start/stop scripts
 systemctlcmd=`which systemctl` >/dev/null 2>&1
 if [ -x "$systemctlcmd" ]; then
-	rm -f $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
+	rm -f $config_dir/stop $config_dir/start $config_dir/restart $config_dir/restart-by-force-kill $config_dir/reload
 
 	echo "Creating start and stop scripts (systemd).."
 	# Start systemd
@@ -693,10 +693,10 @@ if [ -x "$systemctlcmd" ]; then
 	echo "#!/bin/sh" >>$config_dir/restart
 	echo "$systemctlcmd restart webmin" >>$config_dir/restart
 	# Force reload systemd
-	echo "#!/bin/sh" >>$config_dir/force-reload
-	echo "$config_dir/stop-init --kill >/dev/null 2>&1" >>$config_dir/force-reload
-	echo "$systemctlcmd stop webmin" >>$config_dir/force-reload
-	echo "$systemctlcmd start webmin" >>$config_dir/force-reload
+	echo "#!/bin/sh" >>$config_dir/restart-by-force-kill
+	echo "$config_dir/stop-init --kill >/dev/null 2>&1" >>$config_dir/restart-by-force-kill
+	echo "$systemctlcmd stop webmin" >>$config_dir/restart-by-force-kill
+	echo "$systemctlcmd start webmin" >>$config_dir/restart-by-force-kill
 	# Reload systemd
 	echo "#!/bin/sh" >>$config_dir/reload
 	echo "$config_dir/reload-init >/dev/null 2>&1" >>$config_dir/reload
@@ -704,7 +704,7 @@ if [ -x "$systemctlcmd" ]; then
 	# Fix existing systemd webmin.service file to update start and stop commands
 	(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/updateboot.pl" "webmin")
 	
-	chmod 755 $config_dir/stop $config_dir/start $config_dir/restart $config_dir/force-reload $config_dir/reload
+	chmod 755 $config_dir/stop $config_dir/start $config_dir/restart $config_dir/restart-by-force-kill $config_dir/reload
 else
 	# Creating symlinks
 	echo "Creating start and stop init symlinks to scripts .."
