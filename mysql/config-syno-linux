@@ -19,6 +19,6 @@ max_dbs=50
 start_cmd=/etc/rc.d/S21mysql.sh start
 mysqldump=/usr/syno/mysql/bin/mysqldump
 pass=hulli01
-style=0
+style=1
 max_text=1000
 access=*: *

@@ -1,7 +1,7 @@
 soa_style=0
 named_path=/server/bind/sbin/named
 named_conf=/server/bind/etc/named.conf
-show_list=0
+show_list=1
 records_order=0
 start_cmd=/etc/rc.d/bin/bind start
 stop_cmd=/etc/rc.d/bin/bind stop
