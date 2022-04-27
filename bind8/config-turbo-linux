@@ -1,7 +1,7 @@
 soa_style=1
 named_path=/usr/sbin/named
 named_conf=/etc/named.conf
-show_list=0
+show_list=1
 records_order=1
 max_zones=50
 rev_def=0
