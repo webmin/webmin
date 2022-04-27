@@ -1,4 +1,4 @@
-soa_style=0
+soa_style=1
 named_path=c:/windows/system32/dns/bin/named.exe
 named_conf=c:/windows/system32/dns/etc/named.conf
 show_list=1

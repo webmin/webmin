@@ -1,4 +1,4 @@
-soa_style=0
+soa_style=1
 named_path=/usr/sbin/named
 named_conf=/etc/bind/named.conf
 show_list=1
