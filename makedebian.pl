@@ -31,7 +31,6 @@ $copyright_file = "$doc_dir/copyright";
 $usr_dir = "$tmp_dir/usr/share/$baseproduct";
 $bin_dir = "$tmp_dir/usr/bin";
 $pam_dir = "$tmp_dir/etc/pam.d";
-$init_dir = "$tmp_dir/etc/init.d";
 $pam_file = "$pam_dir/$baseproduct";
 $preinstall_file = "$debian_dir/preinst";
 $postinstall_file = "$debian_dir/postinst";
@@ -61,7 +60,6 @@ mkdir($tmp_dir, 0755);
 chmod(0755, $tmp_dir);
 mkdir($debian_dir, 0755);
 system("mkdir -p $pam_dir");
-system("mkdir -p $init_dir");
 system("mkdir -p $usr_dir");
 system("mkdir -p $doc_dir");
 system("mkdir -p $bin_dir");
@@ -82,9 +80,7 @@ if ($product eq "webmin") {
 	system("cd $usr_dir && rm -rf acl/Authen-SolarisRBAC-0.1*");
 	}
 
-# Create init script
-system("mv $usr_dir/$baseproduct-init $init_dir/$baseproduct");
-chmod(0755, "$init_dir/$baseproduct");
+# Set install type
 system("echo deb >$usr_dir/install-type");
 system("echo $product >$usr_dir/deb-name");
 system("cd $usr_dir && chmod -R og-w .");
@@ -266,7 +262,7 @@ print SCRIPT <<EOF;
 #!/bin/sh
 inetd=`grep "^inetd=" /etc/$baseproduct/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
 if [ "\$1" = "upgrade" -a "\$1" != "abort-upgrade" ]; then
-	# Upgrading the package, so stop the old webmin properly
+	# Upgrading the package, so stop the old Webmin properly
 	if [ "\$inetd" != "1" ]; then
 		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
 	fi
@@ -310,19 +306,15 @@ if [ "$product" = "webmin" ]; then
 	fi
 fi
 rm -f /var/lock/subsys/$baseproduct
-which systemctl >/dev/null 2>&1 && systemctl daemon-reload
+
 if [ "$inetd" != "1" ]; then
-	if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
-		invoke-rc.d $baseproduct stop
-		invoke-rc.d $baseproduct start
-	else
-		/etc/$baseproduct/stop
-		/etc/$baseproduct/start
+	/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
+	/etc/$baseproduct/start >/dev/null 2>&1 </dev/null
+	if [ "\$?" != "0" ]; then
+		echo "W: $ucproduct server cannot be restarted. It is advised to restart it manually by\nrunning \\"/etc/webmin/restart-by-force-kill\\" when upgrade process is finished"
 	fi
 fi
-if [ "$product" = "usermin" ]; then
-	(insserv $baseproduct || update-rc.d $baseproduct defaults) >/dev/null 2>&1
-fi
+
 cat >/etc/$baseproduct/uninstall.sh <<EOFF
 #!/bin/sh
 printf "Are you sure you want to uninstall $ucproduct? (y/n) : "
@@ -330,8 +322,8 @@ read answer
 printf "\\n"
 if [ "\\\$answer" = "y" ]; then
 	echo "Removing $ucproduct package .."
-	dpkg --remove $product
-	echo "Done!"
+	dpkg --remove --force-depends $product
+	echo ".. done"
 fi
 EOFF
 chmod +x /etc/$baseproduct/uninstall.sh
@@ -345,15 +337,15 @@ if [ "\$?" = "0" ]; then
 	fi
 fi
 if [ "\$sslmode" = "1" ]; then
-	echo "$ucproduct install complete. You can now login to https://\$host:\$port/"
+	echo "$ucproduct install complete. You can now login to https://\$host:\$port/" >>\$tempdir/$product-setup.out 2>&1
 else
-	echo "$ucproduct install complete. You can now login to http://\$host:\$port/"
+	echo "$ucproduct install complete. You can now login to http://\$host:\$port/" >>\$tempdir/$product-setup.out 2>&1
 fi
 if [ "$product" = "webmin" ]; then
-	echo "as root with your root password, or as any user who can use sudo"
-	echo "to run commands as root."
+	echo "as root with your root password, or as any user who can use sudo" >>\$tempdir/$product-setup.out 2>&1
+	echo "to run commands as root." >>\$tempdir/$product-setup.out 2>&1
 else
-	echo "as any user on the system."
+	echo "as any user on the system." >>\$tempdir/$product-setup.out 2>&1
 fi
 EOF
 close(SCRIPT);
@@ -369,8 +361,7 @@ if [ "\$1" != "upgrade" -a "\$1" != "abort-upgrade" ]; then
 		# Package is being removed, and no new version of webmin
 		# has taken it's place. Run uninstalls and stop the server
 		if [ "$product" = "webmin" ]; then
-			echo "Running uninstall scripts .."
-			(cd /usr/share/$baseproduct ; WEBMIN_CONFIG=/etc/$baseproduct WEBMIN_VAR=/var/$baseproduct LANG= /usr/share/$baseproduct/run-uninstalls.pl)
+			(cd /usr/share/$baseproduct ; WEBMIN_CONFIG=/etc/$baseproduct WEBMIN_VAR=/var/$baseproduct LANG= /usr/share/$baseproduct/run-uninstalls.pl) >/dev/null 2>&1 </dev/null
 		fi
 		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
 		/bin/true
@@ -387,9 +378,10 @@ print SCRIPT <<EOF;
 if [ "\$1" != "upgrade" -a "\$1" != "abort-upgrade" ]; then
 	grep root=/usr/share/$baseproduct /etc/$baseproduct/miniserv.conf >/dev/null 2>&1
 	if [ "\$?" = 0 ]; then
-		# Package is being removed, and no new version of webmin
-		# has taken it's place. Delete the config files
+		# Package is being removed, and no new version of Webmin
+		# has taken its place. Delete the config files
 		rm -rf /etc/$baseproduct /var/$baseproduct
+		rm -f /etc/pam.d/$baseproduct
 	fi
 fi
 EOF
