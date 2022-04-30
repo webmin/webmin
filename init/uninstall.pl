@@ -59,6 +59,10 @@ elsif ($init_mode eq "win32") {
 	# Delete win32 service
 	&delete_win32_service($product);
 	}
+elsif ($init_mode eq "systemd") {
+	# Delete systemd service
+	&delete_systemd_service($product);
+	}
 }
 
 1;

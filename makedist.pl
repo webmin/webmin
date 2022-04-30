@@ -29,7 +29,7 @@ $vers || usage();
 	  "group_chooser.cgi", "config-irix", "config-osf1", "thirdparty.pl",
 	  "oschooser.pl", "config-unixware",
 	  "config-openserver", "switch_user.cgi", "lang", "lang_list.txt",
-	  "webmin-init", "webmin-daemon",
+	  "webmin-systemd", "webmin-init", "webmin-daemon",
 	  "config-openbsd",
 	  "config-macos", "LICENCE",
 	  "session_login.cgi", "acl_security.pl",
@@ -105,11 +105,6 @@ if (!$release || !-d "$tardir/$dir") {
 	system("rm -rf $tardir/$dir/status/mailserver*");
 	system("rm -rf $tardir/$dir/file/plugin.jar");
 	system("rm -rf $tardir/$dir/authentic-theme/update");
-
-	# Clear out minified JS
-	if (-d "$tardir/$dir/authentic-theme/extensions") {
-		system("cat /dev/null >$tardir/$dir/authentic-theme/extensions/csf.min.js");
-		}
 
 	# Remove theme settings files
 	if (-d "$tardir/$dir/authentic-theme") {

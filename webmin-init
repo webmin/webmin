@@ -18,16 +18,17 @@ PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC="web-based administration interface for Unix systems"
 NAME=Webmin
 PIDFILE=/var/webmin/miniserv.pid
-SCRIPTNAME=/etc/init.d/$NAME
-START=/etc/webmin/start
-STOP=/etc/webmin/stop
-RELOAD=/etc/webmin/reload
+SCRIPTNAME=/etc/init.d/webmin
+START=/etc/webmin/.start-init
+STOP=/etc/webmin/.stop-init
+FORCERESTART=/etc/webmin/.restart-by-force-kill-init
+RELOAD=/etc/webmin/.reload-init
 LOCKFILE=/var/lock/subsys/webmin
 CONFFILE=/etc/webmin/miniserv.conf
 
 case "$1" in
 start)
-	$START >/dev/null 2>&1 </dev/null
+	$START
 	RETVAL=$?
 	if [ "$RETVAL" = "0" ]; then
 		touch $LOCKFILE >/dev/null 2>&1
@@ -69,12 +70,16 @@ restart)
 	$STOP ; $START
 	RETVAL=$?
 	;;
+restart-by-force-kill)
+	$FORCERESTART
+	RETVAL=$?
+	;;
 reload|force-reload)
 	$RELOAD
 	RETVAL=$?
 	;;
 *)
-	echo "Usage: $0 {start|stop|restart|reload|force-reload|status}" >&2
+	echo "Usage: $0 {start|stop|restart|restart-by-force-kill|reload|force-reload|status}" >&2
 	RETVAL=1
 	;;
 esac
