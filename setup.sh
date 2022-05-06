@@ -678,7 +678,7 @@ ln -s $config_dir/.restart-by-force-kill-init $config_dir/restart-by-force-kill 
 ln -s $config_dir/.reload-init $config_dir/reload >/dev/null 2>&1
 
 # For systemd create different start/stop scripts
-systemctlcmd=`which systemctl >/dev/null 2>&1`
+systemctlcmd=`which systemctl 2>/dev/null`
 if [ -x "$systemctlcmd" ]; then
 	rm -f $config_dir/stop $config_dir/start $config_dir/restart $config_dir/restart-by-force-kill $config_dir/reload
 
