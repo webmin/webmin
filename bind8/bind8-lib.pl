@@ -2226,17 +2226,13 @@ my ($dom, $view) = @_;
 my ($out, $ex);
 if ($view) {
 	# Reload a zone in a view
-	&try_cmd("freeze ".quotemeta($dom)." IN ".quotemeta($view));
 	$out = &try_cmd("reload ".quotemeta($dom)." IN ".quotemeta($view));
 	$ex = $?;
-	&try_cmd("thaw ".quotemeta($dom)." IN ".quotemeta($view));
 	}
 else {
 	# Just reload one top-level zone
-	&try_cmd("freeze ".quotemeta($dom));
 	$out = &try_cmd("reload ".quotemeta($dom));
 	$ex = $?;
-	&try_cmd("thaw ".quotemeta($dom));
 	}
 if ($out =~ /not found/i) {
 	# Zone is not known to BIND yet - do a total reload
