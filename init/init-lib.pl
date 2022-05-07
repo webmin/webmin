@@ -692,8 +692,8 @@ if ($init_mode eq "systemd" && (!-r "$config{'init_dir'}/$action" ||
 				&is_systemd_service($unit))) {
 	# Create systemd unit if missing, as long as this isn't an old-style
 	# init script
-	my $cfile = &get_systemd_root($action)."/".$unit;
-	if (!-r $cfile) {
+	my $st = &action_status($action);
+	if ($st == 0) {
 		# Need to create config
 		$start || &error("Systemd service $action does not exist");
 		&create_systemd_service($unit, $desc, $start, $stop, undef,
