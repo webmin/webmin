@@ -510,6 +510,13 @@ if (&has_command("sensors")) {
         my ($cpu_fan_num, $cpu_fan_rpm) = $_ =~ /(?|fan([\d+])\s*:\s+([0-9]+)\s+rpm|cpu(\s)fan\s*:\s+([0-9]+)\s+rpm|cpu\s+fan\s*:\s+([0-9]+)\s+rpm)/i;
         $cpu++ if ($cpu_volt || $cpu_fan_num);
 
+        # First just store fan data for any device if any
+        push(@fans,
+                {  'fan' => &trim($cpu_fan_num),
+                   'rpm' => $cpu_fan_rpm
+                }
+        ) if ($cpu_fan_num);
+
         # CPU package
         ($cpu_package) = $_ =~ /(?|(package\s+id\s+[\d]+)|(coretemp-[a-z]+-[\d]+))/i
           if (!$cpu_package);
@@ -548,13 +555,6 @@ if (&has_command("sensors")) {
             # CPU types
             ($cpu_broadcom) = $_ =~ /cpu_thermal-virtual-[\d]+/i if (!$cpu_broadcom);
             ($cpu_amd)      = $_ =~ /\w[\d]{2}temp-pci/i         if (!$cpu_amd);
-
-            # First just store fan data for any device if any
-            push(@fans,
-                 {  'fan' => &trim($cpu_fan_num),
-                    'rpm' => $cpu_fan_rpm
-                 }
-            ) if ($cpu_fan_num);
 
             # Full CPU output #1253
             if ($cpu) {
