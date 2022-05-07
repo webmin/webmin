@@ -678,8 +678,7 @@ if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$action" ||
 		}
 	else {
 		# Need to create config
-		$start || &error("Upstart service $action cannot be created ".
-				"unless a command is given");
+		$start || &error("Upstart service $action does not exist");
 		&create_upstart_service($action, $desc, $start, undef,
 					$opts->{'fork'});
 		if (&has_command("insserv")) {
@@ -696,8 +695,7 @@ if ($init_mode eq "systemd" && (!-r "$config{'init_dir'}/$action" ||
 	my $cfile = &get_systemd_root($action)."/".$unit;
 	if (!-r $cfile) {
 		# Need to create config
-		$start || &error("Systemd service $action cannot be created ".
-				"unless a command is given");
+		$start || &error("Systemd service $action does not exist");
 		&create_systemd_service($unit, $desc, $start, $stop, undef,
 					$opts->{'fork'}, $opts->{'pidfile'},
 					$opts->{'exit'}, $opts->{'opts'});
@@ -749,6 +747,7 @@ if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart" ||
 		}
 	elsif ($desc) {
 		# Need to create the init script
+		$start || $stop || &error("Init script $action does not exist");
 		&lock_file($fn);
 		&open_tempfile(ACTION, ">$fn");
 		&print_tempfile(ACTION, "#!/bin/sh\n");
