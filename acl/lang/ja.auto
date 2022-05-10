@@ -59,6 +59,7 @@ unix_header=Unixユーザー認証設定
 unix_utable=許可されたUnixユーザー
 
 sessions_actions=行動..
+sessions_all=すべてのセッション。
 sessions_logouts=ログアウトしたセッションも表示します。
 sessions_state=状態
 sessions_this=このログイン

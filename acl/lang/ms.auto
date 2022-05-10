@@ -13,6 +13,7 @@ delete_eanonuser=Pengguna ini sedang digunakan untuk akses modul tanpa nama
 sync_modify=Ganti nama pengguna Webmin yang sepadan apabila pengguna Unix dinamakan semula.
 
 sessions_actions=Tindakan..
+sessions_all=Semua sesi..
 sessions_logouts=Juga tunjukkan sesi log keluar..
 sessions_state=Negeri
 sessions_this=Log masuk ini

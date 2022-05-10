@@ -104,6 +104,7 @@ unix_header=Nastavenia overovania používateľov systému Unix
 unix_utable=Povolení používatelia Unixu
 
 sessions_actions=Akcia..
+sessions_all=Všetky relácie..
 sessions_logouts=Zobraziť aj odhlásené relácie.
 sessions_state=Štát
 sessions_this=Toto prihlásenie

@@ -36,6 +36,7 @@ unix_header=Unix-instellingen voor gebruikersauthenticatie
 unix_utable=Toegestane Unix-gebruikers
 
 sessions_actions=Acties..
+sessions_all=Alle sessies..
 sessions_logouts=Toon ook uitgelogde sessies..
 sessions_state=Staat
 sessions_this=Deze login

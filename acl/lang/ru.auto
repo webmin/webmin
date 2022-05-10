@@ -59,6 +59,7 @@ unix_header=Настройки аутентификации пользовате
 unix_utable=Разрешенные пользователи Unix
 
 sessions_actions=Действия..
+sessions_all=Все сеансы..
 sessions_logouts=Также показать сеансы выхода из системы.
 sessions_state=состояние
 sessions_this=Этот логин

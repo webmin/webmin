@@ -57,7 +57,10 @@ if (@logins) {
 		             		$text{'sessions_lview'}) : undef) .
 		             ($candel ? (!$haslog ? $nbsp : undef) .
 		             	&ui_link("@{[&get_webprefix()]}/acl/delete_session.cgi?id=$l->[3]&redirect_ref=1",
-		             		$text{'sessions_kill'}) : undef),
+		             		$text{'sessions_kill'}) : undef) .
+		             ((!$haslog && !$candel ? $nbsp : undef) .
+		             	&ui_link("@{[&get_webprefix()]}/acl/list_sessions.cgi",
+		             		$text{'sessions_all'}, undef, "title=\"$text{'sessions_title'}\"")),
 
 					   &make_date($l->[1]),
 					   $state ]);

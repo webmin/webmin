@@ -351,6 +351,7 @@ sessions_login=ใช้งานล่าสุดเวลา
 sessions_host=ที่อยู่ IP
 sessions_lview=ดูบันทึก..
 sessions_actions=การดำเนินการ..
+sessions_all=ทุกวาระ..
 sessions_logouts=แสดงเซสชันการออกจากระบบด้วย..
 sessions_state=สถานะ
 sessions_this=เข้าสู่ระบบนี้

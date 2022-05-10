@@ -55,6 +55,7 @@ unix_header=Configurações de autenticação de usuário Unix
 unix_utable=Usuários Unix permitidos
 
 sessions_actions=Ações..
+sessions_all=Todas as sessões..
 sessions_logouts=Mostrar também sessões desconectadas.
 sessions_state=Estado
 sessions_this=Este login

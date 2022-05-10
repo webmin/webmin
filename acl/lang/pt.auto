@@ -327,6 +327,7 @@ sessions_login=Ativo pela última vez às
 sessions_host=endereço de IP
 sessions_lview=Ver registros..
 sessions_actions=Ações..
+sessions_all=Todas as sessões..
 sessions_logouts=Mostrar também sessões desconectadas.
 sessions_state=Estado
 sessions_this=Este login

@@ -13,6 +13,7 @@ delete_eanonuser=Este usuario se está utilizando para acceder al módulo anóni
 sync_modify=Cambie el nombre del usuario de Webmin coincidente cuando se cambie el nombre de un usuario de Unix.
 
 sessions_actions=Comportamiento..
+sessions_all=Todas las sesiones..
 sessions_logouts=Mostrar también sesiones cerradas.
 sessions_state=Estado
 sessions_this=Este inicio de sesión

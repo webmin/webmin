@@ -11,6 +11,7 @@ save_eunixname=Nazwa użytkownika „$1” nie jest użytkownikiem systemu Unix,
 sync_modify=Zmień nazwę pasującego użytkownika Webmin, gdy zmieniona zostanie nazwa użytkownika Uniksa.
 
 sessions_actions=Działania..
+sessions_all=Wszystkie sesje...
 sessions_logouts=Pokaż także wylogowane sesje.
 sessions_state=Stan
 sessions_this=Ten login

@@ -351,6 +351,7 @@ sessions_login=Laaste aktief om
 sessions_host=IP adres
 sessions_lview=Bekyk logboeke..
 sessions_actions=Optrede..
+sessions_all=Alle sessies..
 sessions_logouts=Toon ook afgemelde sessies..
 sessions_state=staat
 sessions_this=Hierdie aanmelding

@@ -239,6 +239,7 @@ sessions_login=آخر نشاط في
 sessions_host=عنوان IP
 sessions_lview=عرض السجلات..
 sessions_actions=أجراءات..
+sessions_all=كل الجلسات..
 sessions_logouts=اعرض أيضًا جلسات تسجيل الخروج..
 sessions_state=حالة
 sessions_this=هذا تسجيل الدخول

@@ -351,6 +351,7 @@ sessions_login=Pēdējo reizi aktīvs plkst
 sessions_host=IP adrese
 sessions_lview=Skatīt žurnālus..
 sessions_actions=Darbības..
+sessions_all=Visas sesijas..
 sessions_logouts=Rādīt arī atteikšanās sesijas..
 sessions_state=Valsts
 sessions_this=Šī pieteikšanās

@@ -1,5 +1,7 @@
 sync_modify=Gi nytt navn til den samsvarende Webmin-brukeren når en Unix-bruker får nytt navn.
 
+sessions_all=Alle økter..
+
 sql_nocache0=Cache-tilkoblinger til databasen
 sql_nocache1=Åpne en ny forbindelse for hvert oppslag
 sql_timeout_def=Bruk standard tilkoblingstimeout (60 sekunder)

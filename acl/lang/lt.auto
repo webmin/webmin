@@ -351,6 +351,7 @@ sessions_login=Paskutinį kartą aktyvus
 sessions_host=IP adresas
 sessions_lview=Žiūrėti žurnalus..
 sessions_actions=Veiksmai..
+sessions_all=Visi užsiėmimai..
 sessions_logouts=Taip pat rodyti atsijungusius seansus..
 sessions_state=Valstybė
 sessions_this=Šis prisijungimas

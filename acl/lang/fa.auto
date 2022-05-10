@@ -112,6 +112,7 @@ unix_utable=کاربران مجاز Unix
 
 sessions_host=آدرس آی پی
 sessions_actions=اقدامات..
+sessions_all=تمام جلسات..
 sessions_logouts=همچنین جلسات ورود به سیستم را نشان دهید..
 sessions_state=دولت
 sessions_this=این ورود

@@ -57,6 +57,7 @@ unix_header=Unix erabiltzailearen autentifikazio ezarpenak
 unix_utable=Onartutako Unix erabiltzaileak
 
 sessions_actions=Ekintzak..
+sessions_all=Saio guztiak..
 sessions_logouts=Erakutsi itxitako saioak ere..
 sessions_state=Estatu
 sessions_this=Saioa hasiera

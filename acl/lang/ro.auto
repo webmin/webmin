@@ -351,6 +351,7 @@ sessions_login=Ultima activitate la
 sessions_host=adresa IP
 sessions_lview=Vizualizați jurnalele..
 sessions_actions=Acțiuni..
+sessions_all=Toate sesiunile..
 sessions_logouts=Arată, de asemenea, sesiuni deconectate..
 sessions_state=Stat
 sessions_this=Această autentificare
