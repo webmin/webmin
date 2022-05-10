@@ -13,5 +13,6 @@ my %miniserv;
 &get_miniserv_config(\%miniserv);
 &delete_session_id(\%miniserv, $in{'id'});
 &restart_miniserv();
-&redirect("list_sessions.cgi");
+&redirect($in{'redirect_ref'} ?
+    &get_referer_relative() : "list_sessions.cgi");
 
