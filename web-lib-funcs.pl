@@ -7451,8 +7451,7 @@ if ($serv->{'fast'} || !$sn) {
 		# Need to open the connection
 		my $reqs;
 		if ($serv->{'checkssl'}) {
-			$reqs = { 'host' => 1,
-				  'checkhost' => $serv->{'host'},
+			$reqs = { 'host' => $serv->{'host'},
 				  'self' => 1 };
 			my %sconfig = &foreign_config("servers");
 			if ($sconfig{'capath'}) {
