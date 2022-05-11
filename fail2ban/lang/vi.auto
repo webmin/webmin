@@ -175,6 +175,7 @@ status_title2=Tình trạng nhà tù
 status_head_jail_name=Tên tù
 status_head_currently_failed=Hiện không thành công
 status_head_total_failed=Tổng số không thành công
+status_head_file_list=Danh sách tệp
 status_head_currently_banned=Hiện đang bị cấm
 status_head_total_banned=Tổng số bị cấm
 status_head_banned_ip_list=Danh sách IP bị cấm
@@ -186,6 +187,5 @@ status_err_set=Không đặt được hành động
 status_err_unblock=Không thể bỏ chặn hành động
 status_err_nojail=Không có nhà tù nào được chọn
 status_err_unban=Không thể bỏ cấm $1 địa chỉ IP
-status_err_ban=Không thể cấm địa chỉ IP $1 
 
 syslog_logtarget=Nhật ký hành động Fail2Ban

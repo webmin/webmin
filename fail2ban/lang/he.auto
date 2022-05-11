@@ -175,6 +175,7 @@ status_title2=מצב כלא
 status_head_jail_name=שם הכלא
 status_head_currently_failed=כרגע נכשל
 status_head_total_failed=סך הכל נכשל
+status_head_file_list=רשימת קבצים
 status_head_currently_banned=כרגע אסור
 status_head_total_banned=נאסר לחלוטין
 status_head_banned_ip_list=רשימת IP אסורה
@@ -186,6 +187,5 @@ status_err_set=הגדרת הפעולה נכשלה
 status_err_unblock=ביטול החסימה של הפעולה נכשל
 status_err_nojail=לא נבחרו בתי כלא
 status_err_unban=לא ניתן לבטל את החסימה של $1 כתובת IP
-status_err_ban=לא ניתן לחסום את $1 כתובת IP
 
 syslog_logtarget=יומן הפעולות Fail2Ban

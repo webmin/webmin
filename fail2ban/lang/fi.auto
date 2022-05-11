@@ -175,6 +175,7 @@ status_title2=Vankiloiden tila
 status_head_jail_name=Vankilan nimi
 status_head_currently_failed=Tällä hetkellä epäonnistunut
 status_head_total_failed=Yhteensä epäonnistui
+status_head_file_list=Tiedostoluettelo
 status_head_currently_banned=Tällä hetkellä kielletty
 status_head_total_banned=Täysin kielletty
 status_head_banned_ip_list=Kielletty IP-luettelo
@@ -186,6 +187,5 @@ status_err_set=Asetustoiminto epäonnistui
 status_err_unblock=Toiminnon eston kumoaminen epäonnistui
 status_err_nojail=Vankiloita ei ole valittu
 status_err_unban=$1 IP-osoitteen estoa ei voi poistaa
-status_err_ban=$1 IP-osoitetta ei voi kieltää
 
 syslog_logtarget=Fail2Ban-toimintaloki

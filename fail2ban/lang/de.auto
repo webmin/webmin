@@ -4,6 +4,7 @@ status_head_jail_name=Name des Gefängnisses
 
 status_head_currently_failed=Aktuell fehlgeschlagen
 status_head_total_failed=Total gescheitert
+status_head_file_list=Dateiliste
 status_head_currently_banned=Derzeit verboten
 status_head_total_banned=Total gesperrt
 status_head_banned_ip_list=Verbotene IP-Liste
@@ -15,4 +16,3 @@ status_err_set=Festgelegte Aktion fehlgeschlagen
 status_err_unblock=Die Aktion konnte nicht entsperrt werden
 status_err_nojail=Es wurden keine Gefängnisse ausgewählt
 status_err_unban=Sperrung von $1 IP-Adresse kann nicht aufgehoben werden
-status_err_ban=$1 IP-Adresse kann nicht gesperrt werden

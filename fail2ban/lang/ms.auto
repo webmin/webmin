@@ -114,6 +114,7 @@ status_title2=Status Penjara
 status_head_jail_name=nama penjara
 status_head_currently_failed=Pada masa ini gagal
 status_head_total_failed=Jumlah gagal
+status_head_file_list=Senarai fail
 status_head_currently_banned=Pada masa ini diharamkan
 status_head_total_banned=Jumlah dilarang
 status_head_banned_ip_list=Senarai IP yang diharamkan
@@ -125,6 +126,5 @@ status_err_set=Gagal menetapkan tindakan
 status_err_unblock=Gagal menyahsekat tindakan
 status_err_nojail=Tiada penjara telah dipilih
 status_err_unban=Tidak boleh menyahlarang $1 alamat IP
-status_err_ban=Tidak boleh melarang $1 alamat IP
 
 syslog_logtarget=Log tindakan Fail2Ban

@@ -175,6 +175,7 @@ status_title2=Κατάσταση φυλακών
 status_head_jail_name=Όνομα φυλακής
 status_head_currently_failed=Αυτήν τη στιγμή απέτυχε
 status_head_total_failed=Συνολικά απέτυχε
+status_head_file_list=Λίστα αρχείων
 status_head_currently_banned=Επί του παρόντος απαγορεύεται
 status_head_total_banned=Πλήρης απαγόρευση
 status_head_banned_ip_list=Απαγορευμένη λίστα IP
@@ -186,6 +187,5 @@ status_err_set=Η ενέργεια ρύθμισης απέτυχε
 status_err_unblock=Αποτυχία κατάργησης αποκλεισμού της ενέργειας
 status_err_nojail=Δεν έχουν επιλεγεί φυλακές
 status_err_unban=Δεν είναι δυνατή η απαγόρευση της διεύθυνσης IP $1
-status_err_ban=Δεν είναι δυνατή η απαγόρευση της διεύθυνσης IP $1
 
 syslog_logtarget=Αρχείο καταγραφής ενέργειας Fail2Ban

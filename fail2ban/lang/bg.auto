@@ -175,6 +175,7 @@ status_title2=Статус на затворите
 status_head_jail_name=Име на затвора
 status_head_currently_failed=В момента неуспешно
 status_head_total_failed=Общо неуспешно
+status_head_file_list=Списък с файлове
 status_head_currently_banned=В момента е забранено
 status_head_total_banned=Тотално забранено
 status_head_banned_ip_list=Списък с забранени IP адреси
@@ -186,6 +187,5 @@ status_err_set=Неуспешно зададено действие
 status_err_unblock=Деблокирането на действието не бе успешно
 status_err_nojail=Не са избрани затвори
 status_err_unban=Не може да се отмени забрана на $1 IP адрес
-status_err_ban=Не може да се забрани $1 IP адрес
 
 syslog_logtarget=Fail2Ban дневник на действията

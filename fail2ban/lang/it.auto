@@ -175,6 +175,7 @@ status_title2=Stato delle carceri
 status_head_jail_name=Nome della prigione
 status_head_currently_failed=Attualmente fallito
 status_head_total_failed=Totale fallito
+status_head_file_list=Elenco di file
 status_head_currently_banned=Attualmente bandito
 status_head_total_banned=Bannato totale
 status_head_banned_ip_list=Elenco di IP vietati
@@ -186,6 +187,5 @@ status_err_set=Azione impostata non riuscita
 status_err_unblock=Impossibile sbloccare l'azione
 status_err_nojail=Non sono state selezionate prigioni
 status_err_unban=Impossibile annullare l'esclusione dell'indirizzo IP $1
-status_err_ban=Impossibile escludere $1 indirizzo IP
 
 syslog_logtarget=Registro azioni Fail2Ban

@@ -175,6 +175,7 @@ status_title2=Статус в'язниці
 status_head_jail_name=Назва в'язниці
 status_head_currently_failed=Наразі не вдалося
 status_head_total_failed=Всього не вдалося
+status_head_file_list=Список файлів
 status_head_currently_banned=Наразі заборонено
 status_head_total_banned=Повністю заборонено
 status_head_banned_ip_list=Список заборонених IP-адрес
@@ -186,6 +187,5 @@ status_err_set=Не вдалося встановити дію
 status_err_unblock=Не вдалося розблокувати дію
 status_err_nojail=Жодних в'язниць не обрано
 status_err_unban=Неможливо розблокувати $1 IP-адресу
-status_err_ban=Неможливо заблокувати $1 IP-адресу
 
 syslog_logtarget=Журнал дій Fail2Ban

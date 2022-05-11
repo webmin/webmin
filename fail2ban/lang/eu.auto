@@ -175,6 +175,7 @@ status_title2=Espetxeen egoera
 status_head_jail_name=Kartzelako izena
 status_head_currently_failed=Une honetan huts egin du
 status_head_total_failed=Guztira huts egin du
+status_head_file_list=Fitxategien zerrenda
 status_head_currently_banned=Gaur egun debekatuta dago
 status_head_total_banned=Guztiz debekatuta
 status_head_banned_ip_list=Debekatutako IP zerrenda
@@ -186,6 +187,5 @@ status_err_set=Ezin izan da ezarri ekintza
 status_err_unblock=Ezin izan da ekintza desblokeatu
 status_err_nojail=Ez da kartzelarik hautatu
 status_err_unban=Ezin da debekatu $1 IP helbidea
-status_err_ban=Ezin da $1 IP helbidea debekatu
 
 syslog_logtarget=Fail2Ban ekintzaren erregistroa

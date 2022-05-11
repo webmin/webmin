@@ -159,6 +159,7 @@ status_title2=Статус тюрьмы
 status_head_jail_name=Название тюрьмы
 status_head_currently_failed=В настоящее время не удалось
 status_head_total_failed=Всего неудачно
+status_head_file_list=Список файлов
 status_head_currently_banned=В настоящее время запрещен
 status_head_total_banned=Всего забанено
 status_head_banned_ip_list=Список запрещенных IP-адресов
@@ -170,6 +171,5 @@ status_err_set=Не удалось задать действие
 status_err_unblock=Не удалось разблокировать действие
 status_err_nojail=Тюрьмы не выбраны
 status_err_unban=Не удается разблокировать $1 IP-адрес
-status_err_ban=Невозможно заблокировать $1 IP-адрес
 
 syslog_logtarget=Журнал действий Fail2Ban

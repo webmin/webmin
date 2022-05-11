@@ -175,6 +175,7 @@ status_title2=감옥 상태
 status_head_jail_name=감옥 이름
 status_head_currently_failed=현재 실패
 status_head_total_failed=총 실패
+status_head_file_list=파일 목록
 status_head_currently_banned=현재 금지됨
 status_head_total_banned=총 금지
 status_head_banned_ip_list=금지된 IP 목록
@@ -186,6 +187,5 @@ status_err_set=실패한 설정 작업
 status_err_unblock=작업 차단을 해제하지 못했습니다
 status_err_nojail=선택된 감옥이 없습니다
 status_err_unban=$1 IP 주소의 차단을 해제할 수 없습니다
-status_err_ban=$1 IP 주소를 금지할 수 없습니다
 
 syslog_logtarget=금지 조치 로그

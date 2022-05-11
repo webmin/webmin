@@ -175,6 +175,7 @@ status_title2=Status för fängelser
 status_head_jail_name=Fängelsenamn
 status_head_currently_failed=Misslyckades för närvarande
 status_head_total_failed=Totalt misslyckades
+status_head_file_list=Fil-lista
 status_head_currently_banned=För närvarande förbjudet
 status_head_total_banned=Totalt förbjudna
 status_head_banned_ip_list=Förbjudna IP-lista
@@ -186,6 +187,5 @@ status_err_set=Det gick inte att ange åtgärd
 status_err_unblock=Det gick inte att avblockera åtgärden
 status_err_nojail=Inga fängelser har valts ut
 status_err_unban=Det går inte att avbanna $1 IP-adress
-status_err_ban=Kan inte blockera $1 IP-adress
 
 syslog_logtarget=Handlingslogg Fail2Ban

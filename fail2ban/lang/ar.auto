@@ -175,6 +175,7 @@ status_title2=حالة السجون
 status_head_jail_name=اسم السجن
 status_head_currently_failed=فشل حاليا
 status_head_total_failed=مجموع فشل
+status_head_file_list=قائمة الملفات
 status_head_currently_banned=محظور حاليا
 status_head_total_banned=مجموع المحظورة
 status_head_banned_ip_list=قائمة IP المحظورة
@@ -186,6 +187,5 @@ status_err_set=فشل تعيين الإجراء
 status_err_unblock=فشل في إلغاء حظر الإجراء
 status_err_nojail=لم يتم اختيار أي سجون
 status_err_unban=لا يمكن إلغاء حظر عنوان IP لـ$1
-status_err_ban=لا يمكن حظر عنوان IP لـ$1
 
 syslog_logtarget=سجل العمل Fail2Ban
