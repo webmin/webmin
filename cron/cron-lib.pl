@@ -1693,6 +1693,13 @@ elsif ($job->{'special'} eq 'weekly') {
 		 'months' => '*',
 		 'weekdays' => 0 };
 	}
+elsif ($job->{'special'} eq 'monthly') {
+	$job = { 'mins' => 0,
+		 'hours' => 0,
+		 'days' => '1',
+		 'months' => '*',
+		 'weekdays' => '*' };
+	}
 elsif ($job->{'special'} eq 'yearly') {
 	$job = { 'mins' => 0,
 		 'hours' => 0,
