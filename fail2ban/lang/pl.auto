@@ -6,6 +6,7 @@ status_head_jail_name=Nazwa więzienia
 
 status_head_currently_failed=Obecnie nie powiodło się
 status_head_total_failed=Razem nie powiodło się
+status_head_file_list=Lista plików
 status_head_currently_banned=Obecnie zbanowany
 status_head_total_banned=Całkowicie zbanowany
 status_head_banned_ip_list=Lista zablokowanych adresów IP
@@ -17,4 +18,3 @@ status_err_set=Nieudane ustawienie działania
 status_err_unblock=Nie udało się odblokować akcji
 status_err_nojail=Nie wybrano żadnych więzień
 status_err_unban=Nie można odblokować $1 adresu IP
-status_err_ban=Nie można zablokować $1 adresu IP

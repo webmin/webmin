@@ -351,6 +351,7 @@ sessions_login=L-aħħar attiv fi
 sessions_host=Indirizz IP
 sessions_lview=Ara zkuk..
 sessions_actions=Azzjonijiet..
+sessions_all=Is-sessjonijiet kollha..
 sessions_logouts=Uri wkoll sessjonijiet illoggjati..
 sessions_state=Stat
 sessions_this=Dan id-dħul

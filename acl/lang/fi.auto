@@ -351,6 +351,7 @@ sessions_login=Viimeksi aktiivinen klo
 sessions_host=IP-osoite
 sessions_lview=Näytä lokit..
 sessions_actions=Toiminnot..
+sessions_all=Kaikki istunnot..
 sessions_logouts=Näytä myös kirjautuneet istunnot..
 sessions_state=Osavaltio
 sessions_this=Tämä kirjautuminen

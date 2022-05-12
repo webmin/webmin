@@ -175,6 +175,7 @@ status_title2=Börtönök állapota
 status_head_jail_name=Börtön neve
 status_head_currently_failed=Jelenleg nem sikerült
 status_head_total_failed=Total sikertelen
+status_head_file_list=Fájllista
 status_head_currently_banned=Jelenleg betiltva
 status_head_total_banned=Teljesen kitiltva
 status_head_banned_ip_list=Tiltott IP lista
@@ -186,6 +187,5 @@ status_err_set=Sikertelen beállítási művelet
 status_err_unblock=Nem sikerült feloldani a tiltást
 status_err_nojail=Nem választottak ki börtönt
 status_err_unban=$1 IP-cím kitiltása nem törölhető
-status_err_ban=$1 IP-cím nem tiltható
 
 syslog_logtarget=Fail2Ban cselekvési napló

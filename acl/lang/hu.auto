@@ -88,6 +88,7 @@ unix_header=Unix felhasználói hitelesítési beállítások
 unix_utable=Engedélyezett Unix felhasználók
 
 sessions_actions=Hozzászólások..
+sessions_all=Minden ülés..
 sessions_logouts=A kijelentkezett munkamenetek megjelenítése is
 sessions_state=Állapot
 sessions_this=Ez a bejelentkezés

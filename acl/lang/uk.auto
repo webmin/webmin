@@ -346,6 +346,7 @@ sessions_login=Останній активний о
 sessions_host=IP-адреса
 sessions_lview=Переглянути журнали..
 sessions_actions=Дії..
+sessions_all=Всі сеанси..
 sessions_logouts=Показати також сеанси виходу з системи..
 sessions_state=Держава
 sessions_this=Це логін

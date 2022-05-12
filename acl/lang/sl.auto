@@ -351,6 +351,7 @@ sessions_login=Nazadnje aktivno ob
 sessions_host=IP naslov
 sessions_lview=Prikaži dnevnike..
 sessions_actions=Ukrepi..
+sessions_all=Vse seje..
 sessions_logouts=Prikaži tudi odjavne seje.
 sessions_state=Država
 sessions_this=Ta prijava

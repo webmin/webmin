@@ -62,6 +62,7 @@ unix_header=Unix postavke provjere autentičnosti korisnika
 unix_utable=Dopušteni Unix korisnici
 
 sessions_actions=Akcije..
+sessions_all=Sve sesije..
 sessions_logouts=Prikaži i odjavljene sesije..
 sessions_state=država
 sessions_this=Ova prijava

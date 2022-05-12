@@ -1,5 +1,7 @@
 sync_modify=Benennen Sie den passenden Webmin-Benutzer um, wenn ein Unix-Benutzer umbenannt wird.
 
+sessions_all=Alle Sitzungen..
+
 sql_nocache0=Cache-Verbindungen zur Datenbank
 sql_nocache1=Öffnen Sie für jede Suche eine neue Verbindung
 sql_timeout_def=Standard-Verbindungszeitlimit verwenden (60 Sekunden)

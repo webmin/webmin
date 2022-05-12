@@ -61,6 +61,7 @@ unix_header=Nastavení ověřování uživatelů Unixu
 unix_utable=Povolení uživatelé Unixu
 
 sessions_actions=Akce..
+sessions_all=Všechny relace..
 sessions_logouts=Zobrazit také odhlášené relace.
 sessions_state=Stát
 sessions_this=Toto přihlášení

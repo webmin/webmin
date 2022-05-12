@@ -175,6 +175,7 @@ status_title2=Fængselsstatus
 status_head_jail_name=Navn på fængsel
 status_head_currently_failed=I øjeblikket mislykkedes
 status_head_total_failed=Total mislykkedes
+status_head_file_list=Filliste
 status_head_currently_banned=I øjeblikket forbudt
 status_head_total_banned=Totalt forbudt
 status_head_banned_ip_list=Liste over forbudte IP-adresser
@@ -186,6 +187,5 @@ status_err_set=Handlingen kunne ikke indstilles
 status_err_unblock=Kunne ikke fjerne blokeringen af handlingen
 status_err_nojail=Ingen fængsler er blevet valgt
 status_err_unban=Kan ikke ophæve udelukkelse af $1 IP-adresse
-status_err_ban=Kan ikke udelukke $1 IP-adresse
 
 syslog_logtarget=Fail2Ban handling log

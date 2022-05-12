@@ -120,6 +120,7 @@ unix_utable=İzin verilen Unix kullanıcıları
 
 sessions_host=IP adresi
 sessions_actions=Hareketler..
+sessions_all=Tüm oturumlar..
 sessions_logouts=Oturumu kapatılmış oturumları da göster..
 sessions_state=Durum
 sessions_this=Bu giriş

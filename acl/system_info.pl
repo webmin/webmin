@@ -11,6 +11,7 @@ sub list_system_info
 my ($data, $in) = @_;
 my @rv;
 my %miniserv;
+my $haslog = &foreign_available("webminlog");
 &get_miniserv_config(\%miniserv);
 &open_session_db(\%miniserv);
 my @logins;
@@ -32,6 +33,8 @@ if (@logins) {
 	my $open = 0;
 	foreach my $l (@logins) {
 		my $state;
+		my $candel = 0;
+		my $nbsp = "&nbsp;&nbsp;";
 		if ($l->[0] =~ /^\!/) {
 			$state = $text{'sessions_out'};
 			}
@@ -41,13 +44,24 @@ if (@logins) {
 			}
 		else {
 			$state = $text{'sessions_in'};
+			$candel = 1;
 			if ($l->[2] ne $ENV{'REMOTE_HOST'}) {
 				$open++;
 				$state = "<font color=orange>$state</font>";
 				}
 			}
 		$main::theme_allow_make_date = 1;
-		$html .= &ui_columns_row([ $l->[2],
+		$html .= &ui_columns_row([ $l->[2] . 
+		             ($haslog ?
+		             	$nbsp . &ui_link("@{[&get_webprefix()]}/webminlog/search.cgi?uall=1&mall=1&tall=1&wall=1&fall=1&sid=$l->[3]",
+		             		$text{'sessions_lview'}) : undef) .
+		             ($candel ? (!$haslog ? $nbsp : undef) .
+		             	&ui_link("@{[&get_webprefix()]}/acl/delete_session.cgi?id=$l->[3]&redirect_ref=1",
+		             		$text{'sessions_kill'}) : undef) .
+		             ((!$haslog && !$candel ? $nbsp : undef) .
+		             	&ui_link("@{[&get_webprefix()]}/acl/list_sessions.cgi",
+		             		$text{'sessions_all'}, undef, "title=\"$text{'sessions_title'}\"")),
+
 					   &make_date($l->[1]),
 					   $state ]);
 		}

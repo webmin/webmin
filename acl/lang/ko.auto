@@ -59,6 +59,7 @@ unix_header=유닉스 사용자 인증 설정
 unix_utable=허용 된 유닉스 사용자
 
 sessions_actions=행위..
+sessions_all=모든 세션..
 sessions_logouts=로그 아웃 된 세션도 표시하십시오.
 sessions_state=상태
 sessions_this=이 로그인

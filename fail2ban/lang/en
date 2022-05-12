@@ -175,6 +175,7 @@ status_title2=Jails Status
 status_head_jail_name=Jail name
 status_head_currently_failed=Currently failed
 status_head_total_failed=Total failed
+status_head_file_list=File list
 status_head_currently_banned=Currently banned
 status_head_total_banned=Total banned
 status_head_banned_ip_list=Banned IP list

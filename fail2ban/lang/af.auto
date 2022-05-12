@@ -175,6 +175,7 @@ status_title2=Tronkstatus
 status_head_jail_name=Tronk naam
 status_head_currently_failed=Tans misluk
 status_head_total_failed=Totaal het misluk
+status_head_file_list=Lêer lys
 status_head_currently_banned=Tans verban
 status_head_total_banned=Totaal verban
 status_head_banned_ip_list=Verbode IP-lys
@@ -186,6 +187,5 @@ status_err_set=Kon nie stel handeling nie
 status_err_unblock=Kon nie handeling deblokkeer nie
 status_err_nojail=Geen tronke is gekies nie
 status_err_unban=Kan nie $1 IP-adres ontban nie
-status_err_ban=Kan nie $1 IP-adres verban nie
 
 syslog_logtarget=Fail2Ban aksie log

@@ -351,6 +351,7 @@ sessions_login=Апошні раз быў у
 sessions_host=IP-адрас
 sessions_lview=Прагляд часопісаў..
 sessions_actions=Дзеянні..
+sessions_all=Усе сеансы..
 sessions_logouts=Таксама паказаць выходныя сесіі.
 sessions_state=Дзярж
 sessions_this=Гэта ўваход

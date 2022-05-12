@@ -175,6 +175,7 @@ status_title2=Статус турмы
 status_head_jail_name=Назва турмы
 status_head_currently_failed=У цяперашні час не атрымалася
 status_head_total_failed=Усяго не атрымалася
+status_head_file_list=Спіс файлаў
 status_head_currently_banned=У цяперашні час забаронены
 status_head_total_banned=Поўная забарона
 status_head_banned_ip_list=Спіс забароненых IP
@@ -186,6 +187,5 @@ status_err_set=Не атрымалася ўсталяваць дзеянне
 status_err_unblock=Не ўдалося разблакіраваць дзеянне
 status_err_nojail=СІЗА не выбрана
 status_err_unban=Немагчыма разбаніць $1 IP-адрас
-status_err_ban=Немагчыма забараніць $1 IP-адрас
 
 syslog_logtarget=Журнал дзеянняў Fail2Ban

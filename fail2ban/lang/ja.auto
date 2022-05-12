@@ -175,6 +175,7 @@ status_title2=刑務所のステータス
 status_head_jail_name=刑務所名
 status_head_currently_failed=現在失敗しました
 status_head_total_failed=合計失敗
+status_head_file_list=ファイルリスト
 status_head_currently_banned=現在禁止されています
 status_head_total_banned=禁止された合計
 status_head_banned_ip_list=禁止IPリスト
@@ -186,6 +187,5 @@ status_err_set=失敗したセットアクション
 status_err_unblock=アクションのブロックを解除できませんでした
 status_err_nojail=刑務所は選択されていません
 status_err_unban=$1IPアドレスの禁止を解除できません
-status_err_ban=$1IPアドレスを禁止することはできません
 
 syslog_logtarget=Fail2Banアクションログ

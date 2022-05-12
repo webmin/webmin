@@ -175,6 +175,7 @@ status_title2=Stav väzenia
 status_head_jail_name=Názov väznice
 status_head_currently_failed=Aktuálne neúspešné
 status_head_total_failed=Celkom zlyhalo
+status_head_file_list=Zoznam súborov
 status_head_currently_banned=V súčasnosti zakázané
 status_head_total_banned=Úplne zakázané
 status_head_banned_ip_list=Zoznam zakázaných IP adries
@@ -186,6 +187,5 @@ status_err_set=Akcia nastavenia zlyhala
 status_err_unblock=Akciu sa nepodarilo odblokovať
 status_err_nojail=Neboli vybraté žiadne väznice
 status_err_unban=Nie je možné zrušiť zákaz adresy IP $1
-status_err_ban=Nie je možné zakázať adresu IP $1
 
 syslog_logtarget=Protokol akcie Fail2Ban

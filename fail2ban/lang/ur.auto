@@ -175,6 +175,7 @@ status_title2=جیلوں کی حالت
 status_head_jail_name=جیل کا نام
 status_head_currently_failed=فی الحال ناکام
 status_head_total_failed=مکمل ناکام
+status_head_file_list=فائل کی فہرست
 status_head_currently_banned=فی الحال پابندی ہے۔
 status_head_total_banned=مکمل پابندی
 status_head_banned_ip_list=ممنوعہ IP فہرست
@@ -186,6 +187,5 @@ status_err_set=ناکام سیٹ کارروائی
 status_err_unblock=کارروائی کو غیر مسدود کرنے میں ناکام
 status_err_nojail=کسی جیل کا انتخاب نہیں کیا گیا ہے۔
 status_err_unban=$1 آئی پی ایڈریس پر پابندی نہیں لگائی جا سکتی
-status_err_ban=$1 IP ایڈریس پر پابندی نہیں لگائی جا سکتی
 
 syslog_logtarget=فیل 2 بین کارروائی لاگ

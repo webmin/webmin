@@ -175,6 +175,7 @@ status_title2=Statutul închisorilor
 status_head_jail_name=Numele închisorii
 status_head_currently_failed=Momentan eșuat
 status_head_total_failed=Total eșuat
+status_head_file_list=Lista de fișiere
 status_head_currently_banned=Momentan interzis
 status_head_total_banned=Total interzis
 status_head_banned_ip_list=Lista IP interzisă
@@ -186,6 +187,5 @@ status_err_set=Acțiune de setare eșuată
 status_err_unblock=Acțiunea nu s-a deblocat
 status_err_nojail=Nu au fost selectate închisori
 status_err_unban=Nu se poate dezactiva adresa IP $1
-status_err_ban=Nu se poate interzice $1 adresa IP
 
 syslog_logtarget=Jurnalul de acțiuni Fail2Ban

@@ -175,6 +175,7 @@ status_title2=Status tal-ħabsijiet
 status_head_jail_name=Isem il-ħabs
 status_head_currently_failed=Bħalissa falla
 status_head_total_failed=Total falla
+status_head_file_list=Lista tal-fajls
 status_head_currently_banned=Bħalissa pprojbit
 status_head_total_banned=Totali pprojbiti
 status_head_banned_ip_list=Lista IP pprojbiti
@@ -186,6 +187,5 @@ status_err_set=Azzjoni stabbilita falliet
 status_err_unblock=Naqas milli tiżblokka l-azzjoni
 status_err_nojail=L-ebda ħabsijiet ma ġew magħżula
 status_err_unban=Ma tistax tneħħi $1 indirizz IP
-status_err_ban=Ma tistax tipprojbixxi $1 indirizz IP
 
 syslog_logtarget=Ġurnal tal-azzjoni Fail2Ban

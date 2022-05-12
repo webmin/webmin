@@ -351,6 +351,7 @@ sessions_login=פעיל לאחרונה בשעה
 sessions_host=כתובת ה - IP
 sessions_lview=הצגת יומנים..
 sessions_actions=פעולות..
+sessions_all=כל המפגשים..
 sessions_logouts=הראה גם הפעלות לא מחוברות..
 sessions_state=מדינה
 sessions_this=כניסה זו

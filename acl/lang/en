@@ -351,6 +351,7 @@ sessions_login=Last active at
 sessions_host=IP address
 sessions_lview=View logs..
 sessions_actions=Actions..
+sessions_all=All sessions..
 sessions_logouts=Also show logged-out sessions..
 sessions_state=State
 sessions_this=This login

@@ -175,6 +175,7 @@ status_title2=Hapishane Durumu
 status_head_jail_name=hapishane adı
 status_head_currently_failed=Şu anda başarısız
 status_head_total_failed=Toplam başarısız
+status_head_file_list=dosya listesi
 status_head_currently_banned=Şu anda yasaklı
 status_head_total_banned=Toplam yasak
 status_head_banned_ip_list=Yasaklanmış IP listesi
@@ -186,6 +187,5 @@ status_err_set=Başarısız ayar eylemi
 status_err_unblock=İşlemin engellemesi kaldırılamadı
 status_err_nojail=Hiçbir hapishane seçilmedi
 status_err_unban=$1 IP adresinin yasağı kaldırılamıyor
-status_err_ban=$1 IP adresi yasaklanamıyor
 
 syslog_logtarget=Fail2Ban eylem günlüğü

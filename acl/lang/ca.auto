@@ -10,6 +10,8 @@ save_eunixname=El nom d'usuari '$1' no és un usuari Unix, per la qual cosa no e
 
 sync_modify=Canvieu el nom de l'usuari Webmin coincident quan es canvia el nom d'un usuari Unix.
 
+sessions_all=Totes les sessions..
+
 sql_nocache0=Connexions de memòria cau a la base de dades
 sql_nocache1=Obriu una connexió nova per a cada cerca
 sql_timeout_def=Utilitza el temps d'espera de connexió predeterminat (60 segons)

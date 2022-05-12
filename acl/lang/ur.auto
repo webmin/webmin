@@ -351,6 +351,7 @@ sessions_login=آخری فعال
 sessions_host=IP پتہ
 sessions_lview=نوشتہ جات دیکھیں..
 sessions_actions=عمل..
+sessions_all=تمام سیشنز..
 sessions_logouts=لاگ آؤٹ سیشن بھی دکھائیں..
 sessions_state=حالت
 sessions_this=یہ لاگ ان

@@ -175,6 +175,7 @@ status_title2=وضعیت زندان
 status_head_jail_name=نام زندان
 status_head_currently_failed=در حال حاضر شکست خورده است
 status_head_total_failed=مجموع ناموفق بود
+status_head_file_list=لیست فایل
 status_head_currently_banned=در حال حاضر ممنوع است
 status_head_total_banned=توتال ممنوع شد
 status_head_banned_ip_list=لیست IP ممنوعه
@@ -186,6 +187,5 @@ status_err_set=عملکرد تنظیم ناموفق
 status_err_unblock=عمل رفع انسداد انجام نشد
 status_err_nojail=هیچ زندانی انتخاب نشده است
 status_err_unban=آدرس IP $1 را نمی توان لغو ممنوع کرد
-status_err_ban=آدرس IP $1 را نمی توان ممنوع کرد
 
 syslog_logtarget=ورود به سیستم اقدام Fail2Ban

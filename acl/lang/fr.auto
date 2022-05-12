@@ -56,6 +56,8 @@ unix_esudomod=Le module Perl $1 nécessaire à l'authentification <tt>sudo</tt> 
 unix_header=Paramètres d'authentification utilisateur Unix
 unix_utable=Utilisateurs Unix autorisés
 
+sessions_all=Toutes les séances..
+
 udeletes_jerr=Échec de l'ajout d'utilisateurs au groupe
 
 pass_header=Options d'application de mot de passe Webmin

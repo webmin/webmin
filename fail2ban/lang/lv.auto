@@ -175,6 +175,7 @@ status_title2=Cietuma statuss
 status_head_jail_name=Cietuma nosaukums
 status_head_currently_failed=Pašlaik neizdevās
 status_head_total_failed=Kopā neizdevās
+status_head_file_list=Failu saraksts
 status_head_currently_banned=Šobrīd aizliegts
 status_head_total_banned=Pilnīgi aizliegts
 status_head_banned_ip_list=Aizliegto IP saraksts
@@ -186,6 +187,5 @@ status_err_set=Iestatīšanas darbība neizdevās
 status_err_unblock=Neizdevās atbloķēt darbību
 status_err_nojail=Neviens cietums nav izvēlēts
 status_err_unban=Nevar atcelt $1 IP adreses aizliegumu
-status_err_ban=Nevar aizliegt $1 IP adresi
 
 syslog_logtarget=Fail2Ban darbību žurnāls

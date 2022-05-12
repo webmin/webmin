@@ -160,6 +160,7 @@ sessions_login=上次活动时间：
 sessions_host=IP地址
 sessions_lview=查看日志
 sessions_actions=动作..
+sessions_all=所有会议..
 sessions_logouts=同时显示注销的会话。
 sessions_state=州
 sessions_this=此登录名

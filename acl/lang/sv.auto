@@ -59,6 +59,7 @@ unix_header=Unix inställningar för användarautentisering
 unix_utable=Tillåtna Unix-användare
 
 sessions_actions=Handlingar..
+sessions_all=Alla sessioner..
 sessions_logouts=Visa även utloggade sessioner..
 sessions_state=stat
 sessions_this=Den här inloggningen
