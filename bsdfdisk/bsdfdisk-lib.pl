@@ -46,7 +46,7 @@ foreach my $dev (glob("/dev/ada[0-9]"), glob("/dev/ada[0-9][0-9]"),
 	push(@rv, $disk);
 
 	# Get size and slices
-	my $out = &backquote_command("fdisk $dev");
+	my $out = &backquote_command("fdisk ".quotemeta($dev));
 	my @lines = split(/\r?\n/, $out);
 	my $slice;
 	for(my $i=0; $i<@lines; $i++) {
