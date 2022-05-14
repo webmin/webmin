@@ -54,6 +54,7 @@ if ($r) {
 		      "TXT",
 		      $val);
 
+my $err;
 if ($zone) {
 	# Apply using BIND API calls
 	&bind8::bump_soa_record($file, $recs);
@@ -63,10 +64,11 @@ if ($zone) {
 	}
 else {
 	# Apply using Virtualmin API
-	&virtual_server::post_records_change($d, $recs, $file);
+	$err = &virtual_server::post_records_change($d, $recs, $file);
 	&virtual_server::release_lock_dns($d);
 	&virtual_server::reload_bind_records($d);
 	}
+die $err if ($err);
 sleep($config{'letsencrypt_dns_wait'} || 10);	# Wait for DNS propagation
 &webmin_log("letsencryptdns", undef, $dname);
 exit(0);
