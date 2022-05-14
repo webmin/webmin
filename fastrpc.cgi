@@ -13,10 +13,7 @@ $force_lang = $default_lang;
 print "Content-type: text/plain\n\n";
 
 # Can this user make remote calls?
-%access = &get_module_acl();
-if ($access{'rpc'} == 0 || $access{'rpc'} == 2 &&
-    $base_remote_user ne 'admin' && $base_remote_user ne 'root' &&
-    $base_remote_user ne 'sysadm') {
+if (!&webmin_user_is_admin()) {
 	print "0 Invalid user for RPC\n";
 	exit;
 	}
