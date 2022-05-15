@@ -6621,12 +6621,12 @@ sub var_dump
 {
 my ($objref, $filename, $pidtofilename) = @_;
 my $pid;
-$pid = "--" . $$ if ($pidtofilename);
-my $filename_ = '.debug_' . get_product_name() . "__var_dump$pid";
+$pid = "-" . $$ if ($pidtofilename);
+my $filename_ = "var_dump$pid";
 
 if ($filename) {
 	$filename  =~ tr/A-Za-z0-9\_\-//cd;
-	$filename = "--$filename";
+	$filename = "$filename--";
 	}
 
 eval 'use Data::Dumper';
@@ -6638,7 +6638,7 @@ if (!$@) {
 
 	# Write file
 	if ($filename) {
-		write_file_contents(tempname("${filename_}$filename"), Dumper($objref));
+		write_file_contents(tempname("${filename}${filename_}"), Dumper($objref));
 		}
 	# Print on screen
 	else {
