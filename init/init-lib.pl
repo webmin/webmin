@@ -2398,23 +2398,31 @@ Returns the base directory for systemd unit config files
 sub get_systemd_root
 {
 my ($name) = @_;
+# 
+my $systemd_local_conf = "/etc/systemd/system";
+my $systemd_unit_dir1 = "/usr/lib/systemd/system";
+my $systemd_unit_dir2 = "/lib/systemd/system";
 if ($name) {
 	foreach my $p (
-		"/etc/systemd/system",
-		"/usr/lib/systemd/system",
-		"/lib/systemd/system") {
+		$systemd_local_conf,
+		$systemd_unit_dir1,
+		$systemd_unit_dir2) {
 		if (-r "$p/$name.service" || -r "$p/$name") {
 			return $p;
 			}
 		}
 	}
-if (-d "/etc/systemd/system") {
-	return "/etc/systemd/system";
+# Debian prefers /lib/systemd/system
+if ($gconfig{'os_type'} eq 'debian-linux' &&
+    -d $systemd_unit_dir2) {
+	return $systemd_unit_dir2;
 	}
-if (-d "/usr/lib/systemd/system") {
-	return "/usr/lib/systemd/system";
+# RHEL and other systems /usr/lib/systemd/system
+if (-d $systemd_unit_dir1) {
+	return $systemd_unit_dir1;
 	}
-return "/lib/systemd/system";
+# Fallback path for other systems
+return $systemd_unit_dir2;
 }
 
 =head2 restart_systemd()
