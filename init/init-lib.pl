@@ -2398,7 +2398,7 @@ Returns the base directory for systemd unit config files
 sub get_systemd_root
 {
 my ($name) = @_;
-# 
+# Default systemd paths 
 my $systemd_local_conf = "/etc/systemd/system";
 my $systemd_unit_dir1 = "/usr/lib/systemd/system";
 my $systemd_unit_dir2 = "/lib/systemd/system";
