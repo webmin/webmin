@@ -10,6 +10,7 @@ bind_maxlifetime_secs=secondes
 bind_emaxlifetime=La durée de vie maximale du processus doit être supérieure à 60 secondes
 
 os_incorrect=Le système d'exploitation $1 a été mis à niveau vers la version $2
+os_release_notes=Notes de version
 
 session_utmp=Enregistrer les connexions et les déconnexions dans <tt>utmp</tt> ?
 session_passapi=Activer l'API de changement de mot de passe à distance ?

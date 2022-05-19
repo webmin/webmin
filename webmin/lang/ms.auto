@@ -23,6 +23,7 @@ ui_nice_size_type=Gunakan unit pengukuran binari (KiB, MiB, GiB daripada KB, MB,
 mods_checksig=Periksa fail tandatangan untuk modul yang dimuat turun?
 
 os_incorrect=Sistem operasi $1 telah ditingkatkan ke versi $2 
+os_release_notes=Nota keluaran
 
 ssl_deny=Versi protokol SSL untuk menolak
 ssl_ekey2=Fail kunci peribadi SSL $1 tidak mengandungi kekunci format PEM

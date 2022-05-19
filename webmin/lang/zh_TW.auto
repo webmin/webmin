@@ -145,6 +145,7 @@ os_perllib=額外的Perl庫路徑
 os_eversion=缺少操作系統版本
 os_eiversion=缺少內部操作系統版本
 os_incorrect=操作系統 $1 已升級到版本 $2
+os_release_notes=發行說明
 os_fix=更新檢測到的操作系統
 os_usermin=同時更新Usermin OS
 

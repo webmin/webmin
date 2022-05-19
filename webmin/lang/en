@@ -314,6 +314,7 @@ os_value=Value
 os_eversion=Missing operating system version
 os_eiversion=Missing internal operating system version
 os_incorrect=Operating system $1 has been upgraded to version $2
+os_release_notes=Release notes
 os_fix=Update Detected Operating System
 os_usermin=Also update Usermin OS
 

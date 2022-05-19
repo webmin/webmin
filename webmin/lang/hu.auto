@@ -231,6 +231,7 @@ os_value=Érték
 os_eversion=Hiányzik az operációs rendszer verziója
 os_eiversion=Hiányzik a belső operációs rendszer verziója
 os_incorrect=A (z) $1 operációs rendszer frissítve a (z) $2 verzióra
+os_release_notes=Kiadási megjegyzések
 os_fix=Frissítse a felismert operációs rendszert
 os_usermin=Frissítse a Usermin operációs rendszert is
 

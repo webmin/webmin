@@ -314,6 +314,7 @@ os_value=Vrednost
 os_eversion=Manjka različica operacijskega sistema
 os_eiversion=Manjka notranja različica operacijskega sistema
 os_incorrect=Operacijski sistem $1 je bil nadgrajen na različico $2
+os_release_notes=Opombe ob izdaji
 os_fix=Posodobiti zaznani operacijski sistem
 os_usermin=Posodobite tudi Usermin OS
 

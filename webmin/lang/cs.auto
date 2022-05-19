@@ -42,6 +42,7 @@ mods_checksig=Zkontrolovat podpisový soubor pro stažené moduly?
 
 os_perllib=Další cesty knihovny Perl
 os_incorrect=Operační systém $1 byl upgradován na verzi $2
+os_release_notes=Poznámky k vydání
 os_usermin=Aktualizujte také Usermin OS
 
 ssl_deny=Verze protokolu SSL k odmítnutí

@@ -220,6 +220,7 @@ os_value=القيمة
 os_eversion=نسخة نظام التشغيل مفقودة
 os_eiversion=مفقود إصدار نظام التشغيل الداخلي
 os_incorrect=تمت ترقية نظام التشغيل$1 إلى الإصدار$2
+os_release_notes=ملاحظات الإصدار
 os_fix=تحديث نظام التشغيل المكتشف
 os_usermin=أيضا تحديث Usermin OS
 

@@ -42,6 +42,7 @@ mods_checksig=다운로드 한 모듈의 서명 파일을 확인 하시겠습니
 
 os_perllib=추가 Perl 라이브러리 경로
 os_incorrect=운영 체제 $1이(가) 버전 $2(으)로 업그레이드되었습니다
+os_release_notes=릴리즈 노트
 os_usermin=Usermin OS도 업데이트
 
 ssl_deny=거부 할 SSL 프로토콜 버전

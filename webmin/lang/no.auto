@@ -10,6 +10,7 @@ bind_maxlifetime_secs=sekunder
 bind_emaxlifetime=Maksimal prosesslevetid må være et tall større enn 60 sekunder
 
 os_incorrect=Operativsystemet $1 er oppgradert til versjon $2
+os_release_notes=Utgivelsesnotater
 
 session_utmp=Registrere pålogginger og utlogginger i <tt>utmp</tt>?
 session_passapi=Vil du aktivere eksternt passordendrings -API?

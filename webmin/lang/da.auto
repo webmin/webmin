@@ -314,6 +314,7 @@ os_value=Værdi
 os_eversion=Manglende version af operativsystemet
 os_eiversion=Manglende version af det interne operativsystem
 os_incorrect=Operativsystemet $1 er blevet opgraderet til version $2
+os_release_notes=Udgivelses noter
 os_fix=Opdateret fundet operativsystem
 os_usermin=Opdater også Usermin OS
 

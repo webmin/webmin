@@ -314,6 +314,7 @@ os_value=Valoare
 os_eversion=Versiunea sistemului de operare lipsă
 os_eiversion=Lipsește versiunea sistemului de operare intern
 os_incorrect=Sistemul de operare $1 a fost actualizat la versiunea $2 
+os_release_notes=Note de lansare
 os_fix=Actualizați sistemul de operare detectat
 os_usermin=Actualizați, de asemenea, sistemul de operare Usermin
 

@@ -1158,7 +1158,9 @@ if (($realos{'os_version'} ne $gconfig{'os_version'} ||
 	push(@notifs,
 	    &ui_form_start("@{[&get_webprefix()]}/webmin/fix_os.cgi").
 	    &text('os_incorrect', $realos{'real_os_type'},
-                              $realos{'real_os_version'})."<p>\n".
+	                          $realos{'real_os_version'}).
+	                            &show_os_release_notes($realos{'real_os_version'}).
+	                            ".<p>\n".
 	    &ui_form_end([ [ undef, $text{'os_fix'} ] ])
 	    );
 	}
@@ -2585,6 +2587,38 @@ foreach my $p ($vconfig{'openssl_cnf'},		# Virtualmin module config
 	return $p if ($p && -r $p);
 	}
 return undef;
+}
+
+# show_os_release_notes()
+# Returns a link with `Release notes` after OS
+# upgrade, within alert displayed on the Dashboard
+sub show_os_release_notes
+{
+my ($ver) = @_;
+my $link;
+my $os = $gconfig{'real_os_type'};
+my $link_tag = 'target="_blank" data-link-external="after"';
+# Ubuntu release notes
+if ($os =~ /ubuntu/i && $ver >= 18) {
+	my $code_name = $ver =~ /^18/ ? 'BionicBeaver' :
+	                $ver =~ /^20/ ? 'FocalFossa' :
+	                $ver =~ /^22/ ? 'JammyJellyfish' : undef;
+	$link = &ui_link("https://wiki.ubuntu.com/".
+	                    "$code_name/ReleaseNotes/ChangeSummary/$ver",
+	                 $text{'os_release_notes'}, undef, $link_tag)
+		if($code_name);
+	}
+# AlmaLinux release notes
+if ($os =~ /alma/i && $ver >= 8) {
+	$link = &ui_link("https://wiki.almalinux.org/release-notes/$ver.html",
+	                 $text{'os_release_notes'}, undef, $link_tag);
+	}
+# Rocky linux release notes
+if ($os =~ /rocky/i && $ver >= 8) {
+	$link = &ui_link("https://docs.rockylinux.org/release_notes/$ver",
+	                 $text{'os_release_notes'}, undef, $link_tag);
+	}
+return ". $link" if ($link);
 }
 
 1;
