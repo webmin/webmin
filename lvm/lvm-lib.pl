@@ -962,5 +962,44 @@ local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
 
+# create_raid_volume(&lv)
+# Create a logical volume that uses RAID across multiple PVs
+sub create_raid_volume
+{
+local ($lv) = @_;
+local $cmd = "lvcreate -y -n".quotemeta($lv->{'name'})." ";
+$cmd .= " --type ".quotemeta($lv->{'raid'});
+if ($rv->{'raid'} eq 'raid1') {
+	$cmd .= " --mirrors ".$lv->{'mirrors'};
+	}
+else {
+	$cmd .= " --stripes ".$lv->{'stripes'};
+	}
+local $suffix;
+if ($lv->{'size_of'} eq 'VG' || $lv->{'size_of'} eq 'FREE' ||
+    $lv->{'size_of'} eq 'ORIGIN') {
+	$cmd .= "-l ".quotemeta("$lv->{'size'}%$lv->{'size_of'}");
+	}
+elsif ($lv->{'size_of'}) {
+	$cmd .= "-l $lv->{'size'}%PVS";
+	$suffix = " ".quotemeta("/dev/".$lv->{'size_of'});
+	}
+else {
+	$cmd .= "-L".$lv->{'size'}."k";
+	}
+$cmd .= " -p ".quotemeta($lv->{'perm'});
+$cmd .= " -r ".quotemeta($lv->{'readahead'})
+	if ($lv->{'readahead'} && $lv->{'readahead'} ne "auto");
+$cmd .= " -i ".quotemeta($lv->{'stripe'})
+	if ($lv->{'stripe'});
+$cmd .= " -I ".quotemeta($lv->{'stripesize'})
+	if ($lv->{'stripesize'} && $lv->{'stripe'});
+$cmd .= " ".quotemeta($lv->{'vg'});
+$cmd .= $suffix;
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+
+}
+
 1;
 
