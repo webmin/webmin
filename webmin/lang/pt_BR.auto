@@ -37,6 +37,7 @@ ui_ehostnamedisplay=Nome de host de exibição ausente ou inválido
 mods_checksig=Verifique o arquivo de assinatura para obter os módulos baixados?
 
 os_incorrect=O sistema operacional $1 foi atualizado para a versão $2 
+os_release_notes=Notas de lançamento
 os_usermin=Atualize também o SO Usermin
 
 ssl_deny=Versões do protocolo SSL a serem rejeitadas

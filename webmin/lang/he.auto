@@ -314,6 +314,7 @@ os_value=ערך
 os_eversion=גרסת מערכת הפעלה חסרה
 os_eiversion=חסרה גרסת מערכת הפעלה פנימית
 os_incorrect=מערכת ההפעלה $1 שודרגה לגרסה $2
+os_release_notes=מכתבי שחרור
 os_fix=עדכון מערכת ההפעלה שזוהה
 os_usermin=עדכן גם מערכת ההפעלה Usermin
 

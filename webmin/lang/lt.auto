@@ -314,6 +314,7 @@ os_value=Vertė
 os_eversion=Trūksta operacinės sistemos versijos
 os_eiversion=Trūksta vidinės operacinės sistemos versijos
 os_incorrect=Operacinė sistema $1 buvo atnaujinta į $2 versiją
+os_release_notes=Išleidimo pastabos
 os_fix=Atnaujinkite aptiktą operacinę sistemą
 os_usermin=Taip pat atnaujinkite „Usermin“ OS
 

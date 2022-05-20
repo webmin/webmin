@@ -314,6 +314,7 @@ os_value=waarde
 os_eversion=Ontbreek van die bedryfstelselweergawe
 os_eiversion=Ontbrekende weergawe van die interne bedryfstelsel
 os_incorrect=Bedryfstelsel $1 is opgegradeer na weergawe $2
+os_release_notes=Vrystellings notas
 os_fix=Bestuurstelsel word opgespoor
 os_usermin=Werk ook Usermin OS op
 

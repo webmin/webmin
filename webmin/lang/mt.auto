@@ -314,6 +314,7 @@ os_value=Valur
 os_eversion=Verżjoni tas-sistema operattiva nieqsa
 os_eiversion=Nieqes il-verżjoni tas-sistema operattiva interna
 os_incorrect=Is-sistema operattiva $1 ġiet aġġornata għall-verżjoni $2 
+os_release_notes=Noti tar-rilaxx
 os_fix=Aġġornat Sistema Operattiva Maqbuda
 os_usermin=Aġġorna wkoll OS Usermin
 

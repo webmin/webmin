@@ -34,7 +34,7 @@ if (@logins) {
 	foreach my $l (@logins) {
 		my $state;
 		my $candel = 0;
-		my $nbsp = "&nbsp;&nbsp;";
+		my $nbsp = "&nbsp;&nbsp;&nbsp;";
 		if ($l->[0] =~ /^\!/) {
 			$state = $text{'sessions_out'};
 			}

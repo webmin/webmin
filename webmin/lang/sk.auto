@@ -71,6 +71,7 @@ os_update=Aktualizujte Webmin, aby používal detekovaný OS
 os_syspath=Zahrnúť vlastnú vyhľadávaciu cestu systému?
 os_perllib=Ďalšie cesty knižnice Perl
 os_incorrect=Operačný systém $1 bol aktualizovaný na verziu $2
+os_release_notes=Poznámky k vydaniu
 os_fix=Aktualizácia zisteného operačného systému
 os_usermin=Aktualizujte tiež Usermin OS
 

@@ -131,6 +131,7 @@ os_perllib=Ekstra Perl kütüphane yolları
 os_eversion=İşletim sistemi sürümü eksik
 os_eiversion=Dahili işletim sistemi sürümü eksik
 os_incorrect=$1 işletim sistemi $2 sürümüne yükseltildi
+os_release_notes=Sürüm notları
 os_fix=Algılanan İşletim Sistemini Güncelle
 os_usermin=Ayrıca Usermin İşletim Sistemini de güncelleyin
 

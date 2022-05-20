@@ -314,6 +314,7 @@ os_value=Vērtība
 os_eversion=Trūkst operētājsistēmas versijas
 os_eiversion=Trūkst iekšējās operētājsistēmas versijas
 os_incorrect=Operētājsistēma $1 ir jaunināta uz versiju $2
+os_release_notes=Izlaiduma piezīmes
 os_fix=Atjauniniet noteikto operētājsistēmu
 os_usermin=Atjauniniet arī Usermin OS
 

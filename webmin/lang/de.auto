@@ -10,6 +10,7 @@ bind_maxlifetime_secs=Sekunden
 bind_emaxlifetime=Die maximale Prozesslebensdauer muss eine Zahl größer als 60 Sekunden sein
 
 os_incorrect=Betriebssystem $1 wurde auf Version $2 aktualisiert
+os_release_notes=Versionshinweise
 
 session_utmp=Anmeldungen und Abmeldungen in <tt>utmp</tt> aufzeichnen?
 session_passapi=API für die Remote-Passwortänderung aktivieren?

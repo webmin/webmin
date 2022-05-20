@@ -314,6 +314,7 @@ os_value=Giá trị
 os_eversion=Thiếu phiên bản hệ điều hành
 os_eiversion=Thiếu phiên bản hệ điều hành nội bộ
 os_incorrect=Hệ điều hành $1 đã được nâng cấp lên phiên bản $2 
+os_release_notes=Ghi chú phát hành
 os_fix=Cập nhật hệ điều hành được phát hiện
 os_usermin=Đồng thời cập nhật hệ điều hành Usermin
 

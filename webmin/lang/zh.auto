@@ -100,6 +100,7 @@ os_envs=其他环境变量
 os_name=变量名
 os_value=值
 os_incorrect=操作系统 $1 已升级到版本 $2
+os_release_notes=发行说明
 os_fix=更新检测到的操作系统
 
 lang_accept=使用浏览器指定的语言？
