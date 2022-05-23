@@ -12125,8 +12125,8 @@ sub webmin_user_is_admin
 my ($user) = @_;
 $user ||= $base_remote_user;
 my %access = &get_module_acl($user, "");
-return 1 if ($access{'rpc'} == 0);	# Can make arbitary RPC calls
-return 0 if ($access{'rpc'} == 1);	# Cannot make RPCs
+return 1 if ($access{'rpc'} == 1);	# Can make arbitary RPC calls
+return 0 if ($access{'rpc'} == 0);	# Cannot make RPCs
 
 # Assume that standard admin usernames are root-capable as a fallback
 return $user eq 'admin' || $user eq 'root' || $user eq 'sysadm';
