@@ -13,7 +13,7 @@ $force_lang = $default_lang;
 print "Content-type: text/plain\n\n";
 
 # Can this user make remote calls?
-if (!&webmin_user_is_admin()) {
+if (!&webmin_user_can_rpc()) {
 	print "0 Invalid user for RPC\n";
 	exit;
 	}

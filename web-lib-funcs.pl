@@ -12118,18 +12118,61 @@ my ($variable, $scope) = @_;
 return &globals('delete', $variable, $scope);
 }
 
-# webmin_user_is_admin([username])
-# Returns 1 if the given user should be considered fully trusted
-sub webmin_user_is_admin
+# webmin_user_can_rpc()
+# Returns 1 if the given user can make remote calls
+sub webmin_user_can_rpc
 {
-my ($user) = @_;
-$user ||= $base_remote_user;
-my %access = &get_module_acl($user, "");
+my %access = &get_module_acl($base_remote_user, "");
 return 1 if ($access{'rpc'} == 1);	# Can make arbitary RPC calls
 return 0 if ($access{'rpc'} == 0);	# Cannot make RPCs
+}
 
-# Assume that standard admin usernames are root-capable as a fallback
-return $user eq 'admin' || $user eq 'root' || $user eq 'sysadm';
+# webmin_user_login_mode()
+# Returns currently logged in user mode
+sub webmin_user_login_mode
+{
+# Default mode
+my $mode = 'root';
+my $prod = &get_product_name();
+
+# Check for foreign modules
+my $foreign_virtual_server
+    = &foreign_available("virtual-server");
+&foreign_require("virtual-server")
+    if ($foreign_virtual_server);
+my $foreign_server_manager
+    = &foreign_available("server-manager");
+&foreign_require("server-manager")
+    if ($foreign_server_manager);
+
+# Get current user and base user global permissions
+my %uaccess = &get_module_acl($remote_user, "");
+my %access = &get_module_acl($base_remote_user, "");
+
+# Check if mode must be restricted
+if ($uaccess{'_safe'} == 1 || $access{'_safe'} == 1 ||
+    $uaccess{'rpc'} == 0 || $access{'rpc'} == 0 ||
+    $prod ne "webmin") {
+        $mode = 'user';
+    }
+if ($foreign_server_manager) {
+    $mode = 'cloud-owner'
+        if ($server_manager::access{'owner'});
+    }
+elsif ($foreign_virtual_server) {
+    $mode =
+      &virtual_server::reseller_admin() ?
+        'virtual-reseller' : 'virtual-owner'
+            if (!&virtual_server::master_admin());
+    }
+return $mode;
+}
+
+# webmin_user_is_admin()
+# Returns 1 if currently logged in user is an admin
+sub webmin_user_is_admin
+{
+return &webmin_user_login_mode() eq 'root';
 }
 
 $done_web_lib_funcs = 1;
