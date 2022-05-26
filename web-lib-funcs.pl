@@ -12122,9 +12122,16 @@ return &globals('delete', $variable, $scope);
 # Returns 1 if the given user can make remote calls
 sub webmin_user_can_rpc
 {
-my %access = &get_module_acl($base_remote_user, "");
+my $u = $base_remote_user;
+my %access = &get_module_acl($u, "");
 return 1 if ($access{'rpc'} == 1);	# Can make arbitary RPC calls
 return 0 if ($access{'rpc'} == 0);	# Cannot make RPCs
+
+# Assume that standard admin usernames
+# are root-capable as a fallback
+return $u eq 'admin' ||
+       $u eq 'root' ||
+       $u eq 'sysadm';
 }
 
 # webmin_user_login_mode()
@@ -12191,7 +12198,7 @@ my ($user_type) = @_;
 
 # Is user root/admin
 return &webmin_user_login_mode() eq 'root'
-	if ($user_type =~ /^(root|admin|adm|sysadm)$/);
+	if ($user_type =~ /^(root|admin|sysadm)$/);
 
 return &webmin_user_login_mode() eq 'safe-user'
 	if ($user_type =~ /^(safe|user|safe-user)$/);
