@@ -12133,7 +12133,6 @@ sub webmin_user_login_mode
 {
 # Default mode
 my $mode = 'root';
-my $prod = &get_product_name();
 
 # Check for foreign modules
 my $foreign_virtual_server
@@ -12151,17 +12150,23 @@ my %access = &get_module_acl($base_remote_user, "");
 
 # Check if mode must be restricted
 if ($uaccess{'_safe'} == 1 || $access{'_safe'} == 1 ||
-    $uaccess{'rpc'} == 0 || $access{'rpc'} == 0 ||
-    $prod ne "webmin") {
-        $mode = 'user';
+    $uaccess{'rpc'} == 0 || $access{'rpc'} == 0) {
+		# Safe Webmin user
+        $mode = 'safe-user';
+    }
+if (&get_product_name() eq "usermin") {
+	# Usermin user
+    $mode = 'mail-user';
     }
 if ($foreign_server_manager) {
+	# Cloudmin machine owner
     $mode = 'cloud-owner'
         if ($server_manager::access{'owner'});
     }
 elsif ($foreign_virtual_server) {
     $mode =
       &virtual_server::reseller_admin() ?
+      	# Virtualmin reseller or owner
         'virtual-reseller' : 'virtual-owner'
             if (!&virtual_server::master_admin());
     }
@@ -12173,6 +12178,35 @@ return $mode;
 sub webmin_user_is_admin
 {
 return &webmin_user_login_mode() eq 'root';
+}
+
+# webmin_user_is()
+# Returns 1 if currently logged in user belongs to one
+# of the requested types: root, safe-user, mail-user,
+# cloud-owner, virtual-reseller, virtual-reseller
+# Simply a convenience wrapper function
+sub webmin_user_is
+{
+my ($user_type) = @_;
+
+# Is user root/admin
+return &webmin_user_login_mode() eq 'root'
+	if ($user_type =~ /^(root|admin|adm|sysadm)$/);
+
+return &webmin_user_login_mode() eq 'safe-user'
+	if ($user_type =~ /^(safe|user|safe-user)$/);
+
+return &webmin_user_login_mode() eq 'mail-user'
+	if ($user_type =~ /^(mail|mail-user|usermin)$/);
+
+return &webmin_user_login_mode() eq 'cloud-owner'
+	if ($user_type =~ /^(cloud(?:(min|))-owner)$/);
+
+return &webmin_user_login_mode() eq 'virtual-reseller'
+	if ($user_type =~ /^(virtual(?:(min|))-reseller)$/);
+
+return &webmin_user_login_mode() eq 'virtual-owner'
+	if ($user_type =~ /^(virtual(?:(min|))-owner)$/);
 }
 
 $done_web_lib_funcs = 1;
