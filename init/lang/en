@@ -265,5 +265,6 @@ launchd_econf=No launchd configuration entered
 launchd_estart=Missing server command
 
 syslog_journalctl=SystemD logs
+syslog_expla_journalctl=SystemD logs with message explanations
 
 __norefs=1

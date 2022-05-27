@@ -383,5 +383,46 @@ foreach my $fd (split(/\t+/, $config{'extras'}), split(/\t+/, $access{'extras'})
 return @rv;
 }
 
+# config_pre_load(mod-info-refdd, [mod-order-ref])
+# Check if some config options are conditional,
+# and if not allowed, remove them from listing
+sub config_pre_load
+{
+my ($modconf_info, $modconf_order) = @_;
+my $norsyslog_with_journalctl =
+       &has_command('journalctl') &&
+       !-r $config{'syslog_conf'};
+
+if ($norsyslog_with_journalctl) {
+	# Do not show rsylog options on SystemD log systems only
+	push(@forbidden_keys,
+		'line2',
+		'syslog_conf',
+		'm4_conf',
+		'm4_path',
+		'sync',
+		'pipe',
+		'socket',
+		'pri_dir',
+		'pri_all',
+		'tags',
+		'pid_file',
+		'syslogd',
+		'facilities',
+		'start_cmd',
+		'restart_cmd',
+		'signal_cmd',
+		'tail_cmd',
+		);
+	}
+
+# Remove forbidden from display
+foreach my $fkey (@forbidden_keys) {
+	delete($modconf_info->{$fkey});
+	@{$modconf_order} = grep { $_ ne $fkey } @{$modconf_order}
+		if ($modconf_order);
+	}
+}
+
 1;
 

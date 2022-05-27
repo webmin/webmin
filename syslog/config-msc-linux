@@ -23,4 +23,4 @@ start_cmd=/etc/init.d/syslogd start
 restart_cmd=/etc/init.d/syslogd reload
 compressed=1
 others=1
-reverse=0
+reverse=1

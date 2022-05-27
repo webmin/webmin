@@ -3,8 +3,13 @@
 # Display syslog rules
 
 require './syslog-lib.pl';
+my $norsyslog_with_journalctl =
+       &has_command('journalctl') &&
+       !-r $config{'syslog_conf'};
+
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
-	&help_search_link("syslog", "man", "doc"));
+	&help_search_link($norsyslog_with_journalctl ?
+	    "systemd-journal journalctl" : "syslog", "man", "doc"));
 
 if ($config{'m4_conf'}) {
 	# Does the config file need to be passed through m4?
@@ -21,14 +26,16 @@ if ($config{'m4_conf'}) {
 		}
 	}
 
-if (!-r $config{'syslog_conf'}) {
+if (!-r $config{'syslog_conf'} &&
+    !&has_command('journalctl')) {
 	# Not installed (maybe using syslog-ng)
 	&ui_print_endpage(&text('index_econf', "<tt>$config{'syslog_conf'}</tt>", "../config.cgi?$module_name"));
 	}
 
 # Display syslog rules
 @links = ( );
-if ($access{'syslog'}) {
+if ($access{'syslog'} &&
+   !$norsyslog_with_journalctl) {
 	$conf = &get_config();
 	push(@links, &ui_link("edit_log.cgi?new=1", $text{'index_add'}) ) if (!$access{'noedit'});
 	}
@@ -108,7 +115,7 @@ if (@others) {
 		next if (!&can_edit_log($o));
 		local @cols;
 		if ($o->{'file'}) {
-			push(@cols, &text('index_file',$o->{'file'}));
+			push(@cols, &text('index_file',"<tt>$o->{'file'}</tt>"));
 			}
 		else {
 			push(@cols, &text('index_cmd', "<tt>".$o->{'cmd'}."</tt>"));
@@ -147,7 +154,7 @@ if ($access{'any'}) {
 	# Can view any log (under allowed dirs)
 	print &ui_form_start("save_log.cgi");
 	print &ui_hidden("view", 1),"\n";
-	print "<b>$text{'index_viewfile'}</b>\n",
+	print "$text{'index_viewfile'}&nbsp;&nbsp;\n",
 	      &ui_textbox("file", undef, 50),"\n",
 	      &file_chooser_button("file", 0, 1),"\n",
 	      &ui_submit($text{'index_viewok'}),"\n";
@@ -155,7 +162,8 @@ if ($access{'any'}) {
 	}
 
 # Buttons to restart/start syslogd
-if (!$access{'noedit'}) {
+if (!$access{'noedit'} &&
+    !$norsyslog_with_journalctl) {
 	print &ui_hr();
 	$pid = &get_syslog_pid();
 	print &ui_buttons_start();

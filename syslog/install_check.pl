@@ -8,7 +8,7 @@ do 'syslog-lib.pl';
 # For mode 0, returns 1 if installed, 0 if not
 sub is_installed
 {
-return 0 if (!-r $config{'syslog_conf'});
+return 0 if (!-r $config{'syslog_conf'} && !&has_command('journalctl'));
 return $_[0] ? 2 : 1;
 }
 
