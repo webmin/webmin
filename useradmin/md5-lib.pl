@@ -270,6 +270,12 @@ if (!&check_sha512()) {
 	return 1 if ($shash && $shash eq $hash);
 	}
 
+# yescrypt
+if (!&check_yescrypt()) {
+	my $shash = &encrypt_yescrypt($passwd, $hash);
+	return 1 if ($shash && $shash eq $hash);
+	}
+
 # Some other hashing, maybe supported by crypt
 my $ohash = eval { crypt($passwd, $hash) };
 return 1 if ($ohash && $ohash eq $hash);
