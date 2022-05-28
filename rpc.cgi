@@ -27,7 +27,7 @@ $| = 1;
 print "Content-type: text/plain\n\n";
 
 # Can this user make remote calls?
-if (!&webmin_user_is_admin()) {
+if (!&webmin_user_can_rpc()) {
 	print &serialise_variable( { 'status' => 0 } );
 	exit;
 	}
