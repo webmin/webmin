@@ -39,6 +39,9 @@ if ($access{'syslog'} &&
 	$conf = &get_config();
 	push(@links, &ui_link("edit_log.cgi?new=1", $text{'index_add'}) ) if (!$access{'noedit'});
 	}
+my @col1;
+my @col2;
+my @col3;
 print &ui_links_row(\@links);
 print &ui_columns_start([
 	$text{'index_to'},
@@ -101,7 +104,7 @@ if ($access{'syslog'}) {
 		else {
 			push(@cols, "");
 			}
-		print &ui_columns_row(\@cols);
+		push(@col1, \@cols);
 		}
 	}
 
@@ -128,7 +131,7 @@ if (@others) {
 		push(@cols, $o->{'desc'});
 		push(@cols, &ui_link("save_log.cgi?oidx=$o->{'mindex'}".
 			   "&omod=$o->{'mod'}&view=1", $text{'index_view'}) );
-		print &ui_columns_row(\@cols);
+		push(@col2, \@cols);
 		}
 	}
 
@@ -143,9 +146,15 @@ foreach $e (&extra_log_files()) {
 	push(@cols, $text{'yes'});
 	push(@cols, $e->{'desc'});
 	push(@cols, &ui_link("save_log.cgi?extra=$e->{'file'}&view=1", $text{'index_view'}) );
-	print &ui_columns_row(\@cols);
+	push(@col3, \@cols);
 	}
-
+my @acols = (@col1, @col2, @col3);
+if (@acols) {
+	@acols = sort { $a->[0] cmp $b->[0] } @acols;
+	foreach my $col (@acols) {
+		print &ui_columns_row($col);
+		}
+	}
 print &ui_columns_end();
 print &ui_links_row(\@links);
 print "<p>\n";
