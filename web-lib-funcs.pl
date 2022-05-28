@@ -12138,8 +12138,12 @@ return $u eq 'root' ||
 # Returns currently logged in user mode
 sub webmin_user_login_mode
 {
-# Default mode
-my $mode = 'root';
+
+# Cache and store mode
+state $mode;
+return $mode
+    if ($mode);
+$mode = 'root';
 
 # Check for foreign modules
 my $foreign_virtual_server
