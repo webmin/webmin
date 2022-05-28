@@ -12202,24 +12202,8 @@ sub webmin_user_is
 {
 my ($user_type) = @_;
 
-# Is user an administrator
-return &webmin_user_login_mode() eq 'root'
-	if ($user_type =~ /^(root|admin|sysadm)$/);
-# Is user a safe Webmin user
-return &webmin_user_login_mode() eq 'safe-user'
-	if ($user_type =~ /^(safe|user|safe-user)$/);
-# Is user mail user/Usermin user
-return &webmin_user_login_mode() eq 'mail-user'
-	if ($user_type =~ /^(mail|mail-user|usermin)$/);
-# Is user a Cloudmin owner
-return &webmin_user_login_mode() eq 'cloud-owner'
-	if ($user_type =~ /^(cloud(?:(min|))-owner)$/);
-# Is user a Virtualmin reseller
-return &webmin_user_login_mode() eq 'virtual-reseller'
-	if ($user_type =~ /^(virtual(?:(min|))-reseller)$/);
-# Is user a Virtualmin owner
-return &webmin_user_login_mode() eq 'virtual-owner'
-	if ($user_type =~ /^(virtual(?:(min|))-owner)$/);
+# Test mode
+return &webmin_user_login_mode() eq $user_type;
 }
 
 $done_web_lib_funcs = 1;
