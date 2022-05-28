@@ -11,10 +11,22 @@ if (&has_command("journalctl")) {
 	my %syslog_lang = &load_language('syslog');
 	my $lines = $syslog_config{'lines'} || 1000;
 	my @logs = (
-		{ 'cmd' => "journalctl -n $lines",
+		{ 'cmd' => "journalctl --lines $lines -p 0..3",
+		  'desc' => $text{'syslog_journalctl_err_emerg'},
+		  'active' => 1, },
+		{ 'cmd' => "journalctl --lines $lines -p 4..5",
+		  'desc' => $text{'syslog_journalctl_notice_warning'},
+		  'active' => 1, },
+		{ 'cmd' => "journalctl --lines $lines -p 6..7",
+		  'desc' => $text{'syslog_journalctl_debug_info'},
+		  'active' => 1, },
+		{ 'cmd' => "journalctl --lines $lines -k ",
+		  'desc' => $text{'syslog_journalctl_dmesg'},
+		  'active' => 1, },
+		{ 'cmd' => "journalctl --lines $lines",
 		  'desc' => $text{'syslog_journalctl'},
 		  'active' => 1, },
-		{ 'cmd' => "journalctl -x -n $lines",
+		{ 'cmd' => "journalctl --lines $lines -x ",
 		  'desc' => $text{'syslog_expla_journalctl'},
 		  'active' => 1, } );
 	my $norsyslog = ! -r $syslog_config{'syslog_conf'};
@@ -29,7 +41,7 @@ if (&has_command("journalctl")) {
 					}
 				}
 			}
-	return sort { $a->{'file'} cmp $b->{'file'} } @logs;
+	return @logs;
 	}
 else {
 	return ( );

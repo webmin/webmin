@@ -7,9 +7,16 @@ require 'proc-lib.pl';
 sub syslog_getlogs
 {
 if ($gconfig{'os_type'} =~ /-linux$/) {
-	return ( { 'cmd' => "dmesg",
-		   'desc' => $text{'syslog_dmesg'},
-		   'active' => 1, } );
+	my %syslog_config = &foreign_config('syslog');
+	if (!(&has_command('journalctl') &&
+	      ! -r $syslog_config{'syslog_conf'})) {
+		return ( { 'cmd' => "dmesg",
+			   'desc' => $text{'syslog_dmesg'},
+			   'active' => 1, } );
+		}
+	else {
+		return ( );
+		}
 	}
 else {
 	return ( );

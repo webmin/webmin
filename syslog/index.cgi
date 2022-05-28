@@ -46,7 +46,7 @@ print &ui_links_row(\@links);
 print &ui_columns_start([
 	$text{'index_to'},
 	$config{'tags'} ? ( $text{'index_tag'} ) : ( ),
-	$text{'index_active'},
+	$norsyslog_with_journalctl ? ( ) : $text{'index_active'},
 	$text{'index_rule'}, "" ], 100);
 if ($access{'syslog'}) {
 	foreach $c (@$conf) {
@@ -94,7 +94,8 @@ if ($access{'syslog'}) {
 				      $text{'all'} : $c->{'section'}->{'tag'});
 			}
 		push(@cols, $c->{'active'} ? $text{'yes'} :
-				"<font color=#ff0000>$text{'no'}</font>");
+				"<font color=#ff0000>$text{'no'}</font>")
+				    if (!$norsyslog_with_journalctl);
 		push(@cols, join("&nbsp;;&nbsp;",
 			   map { &html_escape($_) } @{$c->{'sel'}}));
 		if ($c->{'file'} && -f $c->{'file'}) {
@@ -127,7 +128,8 @@ if (@others) {
 			push(@cols, "");
 			}
 		push(@cols, $o->{'active'} ? $text{'yes'} :
-				    "<font color=#ff0000>$text{'no'}</font>");
+				    "<font color=#ff0000>$text{'no'}</font>")
+				        if (!$norsyslog_with_journalctl);
 		push(@cols, $o->{'desc'});
 		push(@cols, &ui_link("save_log.cgi?oidx=$o->{'mindex'}".
 			   "&omod=$o->{'mod'}&view=1", $text{'index_view'}) );
@@ -143,7 +145,8 @@ foreach $e (&extra_log_files()) {
 	if ($config{'tags'}) {
 		push(@cols, "");
 		}
-	push(@cols, $text{'yes'});
+	push(@cols, $text{'yes'})
+		if (!$norsyslog_with_journalctl);
 	push(@cols, $e->{'desc'});
 	push(@cols, &ui_link("save_log.cgi?extra=$e->{'file'}&view=1", $text{'index_view'}) );
 	push(@col3, \@cols);
