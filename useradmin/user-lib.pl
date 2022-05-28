@@ -1815,6 +1815,10 @@ elsif ($config{'md5'} == 4) {
 	# Always use SHA512
 	$format = 3;
 	}
+elsif ($config{'md5'} == 5) {
+	# Always use yescrypt
+	$format = 4;
+	}
 elsif ($config{'md5'} == 1 && !$config{'skip_md5'}) {
 	# Up to system
 	$format = &use_md5() if (defined(&use_md5));
@@ -1829,7 +1833,7 @@ elsif ($format == 1) {
 	local $err = &check_md5();
 	if ($err) {
 		&error(&text('usave_edigestmd5',
-		    "/config.cgi?$module_name",
+		    "/config.cgi?module=$module_name&section=line2",
 		    "/cpan/download.cgi?source=3&cpan=$err", $err));
 		}
 	return &encrypt_md5($pass, $salt);
@@ -1839,7 +1843,7 @@ elsif ($format == 2) {
 	local $err = &check_blowfish();
 	if ($err) {
 		&error(&text('usave_edigestblowfish',
-		    "/config.cgi?$module_name",
+		    "/config.cgi?module=$module_name&section=line2",
 		    "/cpan/download.cgi?source=3&cpan=$err", $err));
 		}
 	return &encrypt_blowfish($pass, $salt);
@@ -1848,9 +1852,19 @@ elsif ($format == 3) {
 	# SHA512 is selected .. use it
 	local $err = &check_sha512();
 	if ($err) {
-		&error($text{'usave_edigestsha512'});
+		&error(&text('usave_edigestsha512',
+		       "/config.cgi?module=$module_name&section=line2"));
 		}
 	return &encrypt_sha512($pass, $salt);
+	}
+elsif ($format == 4) {
+	# yescrypt is selected .. use it
+	local $err = &check_yescrypt();
+	if ($err) {
+		&error(&text('usave_edigestyescrypt',
+		       "/config.cgi?module=$module_name&section=line2"));
+		}
+	return &encrypt_yescrypt($pass, $salt);
 	}
 else {
 	# Just do old-style crypt() DES encryption

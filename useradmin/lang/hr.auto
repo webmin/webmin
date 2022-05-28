@@ -179,9 +179,10 @@ usave_echmod=Ne možete chmod početni direktorij : $1
 usave_eoffice=Office ne može sadržavati: znak
 usave_eworkph=Radni telefon ne može sadržavati: znak
 usave_ehomeph=Kućni telefon ne može sadržavati: znak
-usave_edigestmd5=Vaš sustav ima omogućene zaporke MD5, ali modul Perl <tt>$3</tt> nije instaliran. <p>Da biste prisilili upotrebu uobičajenih šifriranih lozinki, podesite svoj<a href='$1'> konfiguracija modula </a>.<p> Ili treba Webmin <a href='$2'>preuzeti i instalirati</a> <tt>$3</tt> modul za vas.
-usave_edigestblowfish=Vaš sustav ima omogućene lozinke Blowfish, ali Perl <tt>$3</tt> modul nije instaliran. <p>Da biste prisilili upotrebu uobičajenih šifriranih lozinki, podesite svoj<a href='$1'> konfiguracija modula </a>.<p> Ili treba Webmin <a href='$2'>preuzeti i instalirati</a> the <tt>$3</tt> modul za vas.
-usave_edigestsha512=Vaš sustav ima omogućene lozinke Blowfish, ali funkcija <tt>kriptovaluta</tt> ne podržava ovaj format.
+usave_edigestmd5=Vaš sustav ima omogućene MD5 lozinke, ali Perl <tt>$3</tt> modul nije instaliran. Kako biste prisilili korištenje normalnih šifriranih lozinki, prilagodite <a href='$1'>konfiguraciju modula</a> ili neka Webmin <a href='$2'>preuzme i instalira</a> modul od <tt>$3</tt> umjesto vas.
+usave_edigestsha512=Vaš sustav ima omogućene SHA512 lozinke, ali funkcija <tt>crypt</tt> ne podržava ovaj format. Da biste prisilili upotrebu normalnih šifriranih zaporki, prilagodite <a href='$1'>konfiguraciju modula</a>.
+usave_edigestblowfish=Vaš sustav ima omogućene lozinke Blowfish, ali Perl <tt>$3</tt> modul nije instaliran. Kako biste prisilili korištenje normalnih šifriranih lozinki, prilagodite <a href='$1'>konfiguraciju modula</a> ili neka Webmin <a href='$2'>preuzme i instalira</a> modul od <tt>$3</tt> umjesto vas.
+usave_edigestyescrypt=Vaš sustav ima omogućene lozinke yescrypt, ali funkcija <tt>crypt</tt> ne podržava ovaj format. Da biste prisilili upotrebu normalnih šifriranih zaporki, prilagodite <a href='$1'>konfiguraciju modula</a>.
 usave_emaking=Prije nego što naredba ažuriranja nije uspjela : $1
 usave_epasswd_min=Zaporka mora biti duga najmanje $1 slova
 usave_epasswd_re=Lozinka se ne podudara s regexp $1

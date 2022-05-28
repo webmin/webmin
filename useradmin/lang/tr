@@ -153,7 +153,6 @@ usave_echmod=ev dizinininin haklarının değiştirilmesinde hata : $1
 usave_eoffice=ofis : karakterini içeremez
 usave_eworkph=iş telefonu : karakterini içeremez
 usave_ehomeph=ev telefonu : karakterini içeremez
-usave_edigestmd5=Sisteminizde MD5 parolaları aktif durumda, ama MD5 ya da Digest::MD5 perl modülleri kurulu değil. <p>Normal şifrelenmiş parolaları kullanmasını istiyorsanız <a href='$1'>modül yapılandırmasında</a> değişiklik yapmalısınız. Ya da Webmin'i kullanarak Digest::MD5 modülünü <a href='$2'>indirip kurabilirsiniz</a>.
 usave_emaking=Güncellemeden önceki komutta hata oluştu : $1
 usave_epasswd_min=Parola en az $1 karakter uzunluğunda olmalıdır
 usave_epasswd_re=Parola regexp $1 ile eşleşmiyor

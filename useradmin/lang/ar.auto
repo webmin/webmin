@@ -178,9 +178,10 @@ usave_echmod=Couldn't chmod home directory : $1
 usave_eoffice=لا يمكن أن يحتوي Office على: حرف
 usave_eworkph=لا يمكن أن يحتوي هاتف العمل على: حرف
 usave_ehomeph=لا يمكن أن يحتوي هاتف المنزل على:
-usave_edigestmd5=Your system has MD5 passwords enabled, but the Perl <tt>$3</tt> module is not installed.<p>To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a>.<p>Or have Webmin <a href='$2'>download and install</a> the <tt>$3</tt> module for you.
-usave_edigestblowfish=Your system has Blowfish passwords enabled, but the Perl <tt>$3</tt> module is not installed.<p>To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a>.<p>Or have Webmin <a href='$2'>download and install</a> the <tt>$3</tt> module for you.
-usave_edigestsha512=Your system has Blowfish passwords enabled, but the <tt>crypt</tt> function does not support this format.
+usave_edigestmd5=تم تمكين كلمات مرور MD5 في نظامك ، ولكن لم يتم تثبيت وحدة Perl <tt>$3</tt>. لفرض استخدام كلمات المرور المشفرة العادية ، اضبط <a href='$1'>تكوين الوحدة</a> أو <a href='$2'>قم بتنزيل Webmin وتثبيت</a> الوحدة النمطية <tt>$3</tt> نيابة عنك.
+usave_edigestsha512=تم تمكين كلمات مرور SHA512 في نظامك ، ولكن وظيفة <tt>التشفير</tt> لا تدعم هذا التنسيق. لفرض استخدام كلمات المرور المشفرة العادية ، اضبط <a href='$1'>تهيئة الوحدة النمطية</a>.
+usave_edigestblowfish=تم تمكين كلمات مرور Blowfish في نظامك ، ولكن لم يتم تثبيت وحدة Perl <tt>$3</tt>. لفرض استخدام كلمات المرور المشفرة العادية ، اضبط <a href='$1'>تكوين الوحدة</a> أو <a href='$2'>قم بتنزيل Webmin وتثبيت</a> الوحدة النمطية <tt>$3</tt> نيابة عنك.
+usave_edigestyescrypt=تم تمكين كلمات مرور yescrypt في نظامك ، ولكن وظيفة <tt>crypt</tt> لا تدعم هذا التنسيق. لفرض استخدام كلمات المرور المشفرة العادية ، اضبط <a href='$1'>تهيئة الوحدة النمطية</a>.
 usave_emaking=Before update command failed : $1
 usave_epasswd_min=Password must be at least $1 letters long
 usave_epasswd_re=Password does not match regexp $1

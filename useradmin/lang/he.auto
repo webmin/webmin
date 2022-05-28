@@ -179,9 +179,10 @@ usave_echmod=Couldn't chmod home directory : $1
 usave_eoffice=Office אינו יכול להכיל תו:
 usave_eworkph=טלפון עבודה אינו יכול להכיל תו:
 usave_ehomeph=טלפון ביתי אינו יכול להכיל תו:
-usave_edigestmd5=Your system has MD5 passwords enabled, but the Perl <tt>$3</tt> module is not installed.<p>To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a>.<p>Or have Webmin <a href='$2'>download and install</a> the <tt>$3</tt> module for you.
-usave_edigestblowfish=Your system has Blowfish passwords enabled, but the Perl <tt>$3</tt> module is not installed.<p>To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a>.<p>Or have Webmin <a href='$2'>download and install</a> the <tt>$3</tt> module for you.
-usave_edigestsha512=Your system has Blowfish passwords enabled, but the <tt>crypt</tt> function does not support this format.
+usave_edigestmd5=למערכת שלך מופעלות סיסמאות MD5, אך מודול Perl <tt>$3</tt> אינו מותקן. כדי לאלץ את השימוש בסיסמאות מוצפנות רגילות, התאם את <a href='$1'>תצורת המודול</a> שלך או בקש מ-Webmin <a href='$2'>להוריד ולהתקין</a> עבורך את המודול <tt>$3</tt>.
+usave_edigestsha512=למערכת שלך מופעלות סיסמאות SHA512, אך הפונקציה <tt>crypt</tt> אינה תומכת בפורמט זה. כדי לאלץ את השימוש בסיסמאות מוצפנות רגילות, שנה את <a href='$1'>תצורת המודול</a> שלך.
+usave_edigestblowfish=המערכת שלך מופעלת סיסמאות Blowfish, אך מודול Perl <tt>$3</tt> אינו מותקן. כדי לאלץ את השימוש בסיסמאות מוצפנות רגילות, התאם את <a href='$1'>תצורת המודול</a> שלך או בקש מ-Webmin <a href='$2'>להוריד ולהתקין</a> עבורך את המודול <tt>$3</tt>.
+usave_edigestyescrypt=המערכת שלך מופעלת סיסמאות yescrypt, אך הפונקציה <tt>crypt</tt> אינה תומכת בפורמט זה. כדי לכפות שימוש בסיסמאות מוצפנות רגילות, שנה את <a href='$1'>תצורת המודול</a> שלך.
 usave_emaking=Before update command failed : $1
 usave_epasswd_min=Password must be at least $1 letters long
 usave_epasswd_re=Password does not match regexp $1

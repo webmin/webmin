@@ -179,9 +179,10 @@ usave_echmod=Tidak boleh chmod direktori rumah : $1
 usave_eoffice=Pejabat tidak boleh mengandungi: aksara
 usave_eworkph=Telefon kerja tidak boleh mengandungi: watak
 usave_ehomeph=Telefon rumah tidak boleh mengandungi: watak
-usave_edigestmd5=Sistem anda mempunyai kata laluan MD5 yang didayakan, tetapi mod Perl <tt>$3</tt> tidak dipasang. <P>Untuk memaksa penggunaan kata laluan yang disulitkan normal, laraskan</P> konfigurasi modul </a>.<P> Atau hapus Webinar </P>dan pasangkan</a> <tt>$3</tt> modul untuk anda.
-usave_edigestblowfish=Your system has Blowfish passwords enabled, but the Perl <tt>$3</tt> module is not installed.<p>To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a>.<p>Or have Webmin <a href='$2'>download and install</a> the <tt>$3</tt> module for you.
-usave_edigestsha512=Sistem anda mempunyai kata laluan Blowfish yang didayakan, tetapi fungsi <tt>crypt</tt> tidak menyokong format ini.
+usave_edigestmd5=Sistem anda mendayakan kata laluan MD5, tetapi modul Perl <tt>$3</tt> tidak dipasang. Untuk memaksa penggunaan kata laluan yang disulitkan biasa, laraskan <a href='$1'>konfigurasi modul</a> anda atau minta Webmin <a href='$2'>memuat turun dan memasang</a> modul <tt>$3</tt> untuk anda.
+usave_edigestsha512=Sistem anda telah mendayakan kata laluan SHA512, tetapi fungsi <tt>crypt</tt> tidak menyokong format ini. Untuk memaksa penggunaan kata laluan yang disulitkan biasa, laraskan <a href='$1'>konfigurasi modul</a> anda.
+usave_edigestblowfish=Sistem anda telah mendayakan kata laluan Blowfish, tetapi modul Perl <tt>$3</tt> tidak dipasang. Untuk memaksa penggunaan kata laluan yang disulitkan biasa, laraskan <a href='$1'>konfigurasi modul</a> anda atau minta Webmin <a href='$2'>memuat turun dan memasang</a> modul <tt>$3</tt> untuk anda.
+usave_edigestyescrypt=Sistem anda telah mendayakan kata laluan yescrypt, tetapi fungsi <tt>crypt</tt> tidak menyokong format ini. Untuk memaksa penggunaan kata laluan yang disulitkan biasa, laraskan <a href='$1'>konfigurasi modul</a> anda.
 usave_emaking=Sebelum arahan kemas kini gagal : $1
 usave_epasswd_min=Kata laluan mesti sekurang-kurangnya $1 huruf panjang
 usave_epasswd_re=Kata laluan tidak sepadan dengan regexp $1

@@ -26,8 +26,10 @@ uedit_grename=Renommer le groupe si le nom d'utilisateur change?
 uedit_sys=Défaut du système
 uedit_clone=Utilisateur clone
 
-usave_edigestblowfish=Votre système a activé les mots de passe Blowfish, mais le module Perl <tt>$3</tt> n'est pas installé. <p>Pour forcer l'utilisation de mots de passe chiffrés normaux, ajustez votre<a href='$1'> configuration du module </a>.<p> Ou demandez à Webmin <a href='$2'>de télécharger et d'installer</a> la <tt>$3</tt> module pour vous.
-usave_edigestsha512=Votre système a activé les mots de passe Blowfish, mais la fonction <tt>crypt</tt> ne prend pas en charge ce format.
+usave_edigestmd5=Votre système a activé les mots de passe MD5, mais le module Perl <tt>$3</tt> n'est pas installé. Pour forcer l'utilisation de mots de passe cryptés normaux, ajustez la <a href='$1'>configuration de votre module</a> ou demandez à Webmin de <a href='$2'>télécharger et d'installer</a> le module <tt>$3</tt> pour vous.
+usave_edigestsha512=Votre système a activé les mots de passe SHA512, mais la fonction <tt>crypt</tt> ne prend pas en charge ce format. Pour forcer l'utilisation de mots de passe cryptés normaux, ajustez la <a href='$1'>configuration du module</a>.
+usave_edigestblowfish=Votre système a activé les mots de passe Blowfish, mais le module Perl <tt>$3</tt> n'est pas installé. Pour forcer l'utilisation de mots de passe cryptés normaux, ajustez la <a href='$1'>configuration de votre module</a> ou demandez à Webmin de <a href='$2'>télécharger et d'installer</a> le module <tt>$3</tt> pour vous.
+usave_edigestyescrypt=Votre système a activé les mots de passe yescrypt, mais la fonction <tt>crypt</tt> ne prend pas en charge ce format. Pour forcer l'utilisation de mots de passe cryptés normaux, ajustez la <a href='$1'>configuration du module</a>.
 usave_epasswd_mindays=Le mot de passe a été modifié il y a moins de $1 jours
 usave_epasswd_cmd=La commande de validation du mot de passe a échoué
 

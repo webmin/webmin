@@ -1,1 +1,6 @@
 sshkey=SSH offentlig nøkkel
+
+usave_edigestmd5=Systemet ditt har MD5-passord aktivert, men Perl <tt>$3</tt> -modulen er ikke installert. For å tvinge frem bruken av vanlige krypterte passord, juster <a href='$1'>modulkonfigurasjonen</a> eller få Webmin til å <a href='$2'>laste ned og installere</a> <tt>$3</tt> -modulen for deg.
+usave_edigestsha512=Systemet ditt har SHA512-passord aktivert, men <tt>krypt</tt>-funksjonen støtter ikke dette formatet. For å tvinge frem bruken av vanlige krypterte passord, juster <a href='$1'>modulkonfigurasjonen</a>.
+usave_edigestblowfish=Systemet ditt har Blowfish-passord aktivert, men Perl <tt>$3</tt> -modulen er ikke installert. For å tvinge frem bruken av vanlige krypterte passord, juster <a href='$1'>modulkonfigurasjonen</a> eller få Webmin til å <a href='$2'>laste ned og installere</a> <tt>$3</tt> -modulen for deg.
+usave_edigestyescrypt=Systemet ditt har yescrypt-passord aktivert, men <tt>krypt</tt>-funksjonen støtter ikke dette formatet. For å tvinge frem bruken av vanlige krypterte passord, juster <a href='$1'>modulkonfigurasjonen</a>.

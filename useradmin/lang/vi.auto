@@ -179,9 +179,10 @@ usave_echmod=Không thể chmod thư mục chính : $1
 usave_eoffice=Văn phòng không thể chứa một: ký tự
 usave_eworkph=Điện thoại cơ quan không thể chứa một: ký tự
 usave_ehomeph=Điện thoại nhà không thể chứa một: ký tự
-usave_edigestmd5=Hệ thống của bạn đã bật mật khẩu MD5, nhưng mô-đun Perl <tt>$3</tt> chưa được cài đặt. <P>Để buộc sử dụng mật khẩu được mã hóa thông thường, hãy điều chỉnh</P> cấu hình mô-đun </a>.<P> Hoặc có Webmin </P>tải xuống và cài đặt</a> <tt>$3</tt> mô-đun cho bạn.
-usave_edigestblowfish=Your system has Blowfish passwords enabled, but the Perl <tt>$3</tt> module is not installed.<p>To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a>.<p>Or have Webmin <a href='$2'>download and install</a> the <tt>$3</tt> module for you.
-usave_edigestsha512=Hệ thống của bạn đã bật mật khẩu Blowfish, nhưng chức năng <tt>crypt</tt> không hỗ trợ định dạng này.
+usave_edigestmd5=Hệ thống của bạn đã bật mật khẩu MD5, nhưng mô-đun Perl <tt>$3</tt> chưa được cài đặt. Để buộc sử dụng mật khẩu được mã hóa thông thường, hãy điều chỉnh <a href='$1'>cấu hình mô-đun</a> của bạn hoặc <a href='$2'>tải xuống Webmin và cài đặt</a> mô-đun <tt>$3</tt> cho bạn.
+usave_edigestsha512=Hệ thống của bạn đã bật mật khẩu SHA512, nhưng hàm <tt>crypt</tt> không hỗ trợ định dạng này. Để buộc sử dụng mật khẩu được mã hóa thông thường, hãy điều chỉnh <a href='$1'>cấu hình mô-đun</a> của bạn.
+usave_edigestblowfish=Hệ thống của bạn đã bật mật khẩu Blowfish, nhưng mô-đun Perl <tt>$3</tt> chưa được cài đặt. Để buộc sử dụng mật khẩu được mã hóa thông thường, hãy điều chỉnh <a href='$1'>cấu hình mô-đun</a> của bạn hoặc <a href='$2'>tải xuống Webmin và cài đặt</a> mô-đun <tt>$3</tt> cho bạn.
+usave_edigestyescrypt=Hệ thống của bạn đã bật mật khẩu yescrypt, nhưng hàm <tt>crypt</tt> không hỗ trợ định dạng này. Để buộc sử dụng mật khẩu được mã hóa thông thường, hãy điều chỉnh <a href='$1'>cấu hình mô-đun</a> của bạn.
 usave_emaking=Trước khi cập nhật lệnh không thành công : $1
 usave_epasswd_min=Mật khẩu phải có ít nhất $1 chữ cái dài
 usave_epasswd_re=Mật khẩu không khớp với regrec $1

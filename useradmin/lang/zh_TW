@@ -126,7 +126,6 @@ usave_echmod=無法變更家目錄權限: $1
 usave_eoffice=辦公室不可以包含 : 字元
 usave_eworkph=工作電話不可以包含 : 字元
 usave_ehomeph=住宅電話不可以包含 : 字元
-usave_edigestmd5=您的系統啟用了 MD5 密碼，可是並未安裝 Perl 的 MD5 或 Digest::MD5 模組。<p>若要強行使用正常編碼的密碼，請調整您的<a href='$1'>模組組態</a>。也可以叫 Webmin 為您<a  href='$2'>下載及安裝</a> Digest::MD5 模組。
 usave_emaking=更新前指令失敗：$1
 
 gedit_title=編輯群組

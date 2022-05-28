@@ -179,9 +179,10 @@ usave_echmod=Ma setgħetx chmod id-direttorju tad-dar : $1
 usave_eoffice=L-Uffiċċju ma jistax ikollu: karattru
 usave_eworkph=It-telefon tax-xogħol ma jistax ikollu: karattru
 usave_ehomeph=It-telefon tad-dar ma jistax ikun fih: karattru
-usave_edigestmd5=Is-sistema tiegħek għandha l-passwords MD5 attivati, iżda l-modulu Pertt <tt>$3</tt> mhuwiex installat. = '$1'> konfigurazzjoni tal-modulu </a>.<p> Jew għandek Webmin <a href='$2'>tniżżel u tinstalla</a> l <tt>$3</tt> tt> modulu għalik.
-usave_edigestblowfish=Your system has Blowfish passwords enabled, but the Perl <tt>$3</tt> module is not installed.<p>To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a>.<p>Or have Webmin <a href='$2'>download and install</a> the <tt>$3</tt> module for you.
-usave_edigestsha512=Is-sistema tiegħek għandha l-passwords tal-Blowfish attivati, iżda l-funzjoni <tt>crypt</tt> ma tappoġġjax dan il-format.
+usave_edigestmd5=Is-sistema tiegħek għandha passwords MD5 attivati, iżda l-modulu Perl <tt>$3</tt> mhuwiex installat. Biex iġġiegħel l-użu ta 'passwords kriptati normali, aġġusta l- <a href='$1'>konfigurazzjoni tal-modulu</a> tiegħek jew agħmel Webmin <a href='$2'>tniżżel u tinstalla</a> l-modulu <tt>$3</tt> għalik.
+usave_edigestsha512=Is-sistema tiegħek għandha l-passwords SHA512 attivati, iżda l-funzjoni <tt>kripto</tt> ma tappoġġjax dan il-format. Biex tisforza l-użu ta' passwords kriptati normali, aġġusta l-<a href='$1'>konfigurazzjoni tal-modulu</a> tiegħek.
+usave_edigestblowfish=Is-sistema tiegħek għandha passwords Blowfish attivati, iżda l-modulu Perl <tt>$3</tt> mhuwiex installat. Biex iġġiegħel l-użu ta 'passwords kriptati normali, aġġusta l- <a href='$1'>konfigurazzjoni tal-modulu</a> tiegħek jew agħmel Webmin <a href='$2'>tniżżel u tinstalla</a> l-modulu <tt>$3</tt> għalik.
+usave_edigestyescrypt=Is-sistema tiegħek għandha passwords yescrypt attivati, iżda l-funzjoni <tt>crypt</tt> ma tappoġġjax dan il-format. Biex tisforza l-użu ta' passwords kriptati normali, aġġusta l-<a href='$1'>konfigurazzjoni tal-modulu</a> tiegħek.
 usave_emaking=Qabel ma naqas il-kmand tal-aġġornament : $1
 usave_epasswd_min=Il-password trid tkun tal-inqas $1 ittri twal
 usave_epasswd_re=Il-password ma taqbilx ma 'regexp $1

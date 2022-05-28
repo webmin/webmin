@@ -54,8 +54,10 @@ usave_elength=用戶名不能超過$1個字母
 usave_ere=用戶名與regexp $1不匹配
 usave_ealluid=所有允許的UID已分配
 usave_esgname='$1'不是有效的輔助組名稱
-usave_edigestblowfish=您的系統已啟用Blowfish密碼，但未安裝Perl <tt>$3</tt>模塊。<p>要強制使用常規的加密密碼，請調整您的<a href='$1'>模塊配置</a>。<p>或者讓Webmin <a href='$2'>下載並安裝</a> <tt>$3</tt> tt>為您提供模塊。
-usave_edigestsha512=您的系統已啟用Blowfish密碼，但是<tt>crypt</tt>功能不支持此格式。
+usave_edigestmd5=您的系統啟用了 MD5 密碼，但沒有安裝 Perl <tt>$3</tt>模塊。要強制使用普通加密密碼，請調整您的<a href='$1'>模塊配置</a>或讓 Webmin 為您<a href='$2'>下載並安裝</a><tt>$3</tt>模塊。
+usave_edigestsha512=您的系統啟用了 SHA512 密碼，但 <tt>crypt</tt> 功能不支持此格式。要強制使用普通加密密碼，請調整您的<a href='$1'>模塊配置</a>。
+usave_edigestblowfish=您的系統啟用了 Blowfish 密碼，但未安裝 Perl <tt>$3</tt>模塊。要強制使用普通加密密碼，請調整您的<a href='$1'>模塊配置</a>或讓 Webmin 為您<a href='$2'>下載並安裝</a><tt>$3</tt>模塊。
+usave_edigestyescrypt=您的系統啟用了 yescrypt 密碼，但 <tt>crypt</tt> 功能不支持此格式。要強制使用普通加密密碼，請調整您的<a href='$1'>模塊配置</a>。
 usave_epasswd_min=密碼長度至少為$1個字母
 usave_epasswd_re=密碼與regexp $1不匹配
 usave_epasswd_dict=密碼是字典詞

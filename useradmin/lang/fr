@@ -153,7 +153,6 @@ usave_echmod=impossible de changer les droits d'accès du répertoire personnel 
 usave_eoffice=le numéro de téléphone du bureau ne peut pas contenir de caractère « : »
 usave_eworkph=le numéro de téléphone professionnel ne peut pas contenir de caractère « : »
 usave_ehomeph=le numéro de téléphone personnel ne peut pas contenir de caractère « : »
-usave_edigestmd5=Les mots de passe MD5 sont activés sur votre système, mais ni le module Perl MD5 ni le module Digest::MD5 ne sont installés.<p>Pour forcer l'utilisation des mots de passe chiffrés normalement, ajustez votre <a href='$1'>configuration du module</a>.<p>Sinon, demandez à Webmin de <a href='$2'>télécharger et installer</a> le module Digest::MD5 pour vous.
 usave_emaking=La commande avant la mise à jour a échoué : $1
 usave_epasswd_min=Le mot de passe doit avoir une longueur d'au moins $1 lettres
 usave_epasswd_re=Le mot de passe ne correspondre pas à l'expression régulière $1

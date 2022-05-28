@@ -36,8 +36,10 @@ uedit_sys=پیش فرض سیستم
 uedit_clone=کاربر کلون
 
 usave_esgname='$1' is not a valid secondary group name
-usave_edigestblowfish=Your system has Blowfish passwords enabled, but the Perl <tt>$3</tt> module is not installed.<p>To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a>.<p>Or have Webmin <a href='$2'>download and install</a> the <tt>$3</tt> module for you.
-usave_edigestsha512=Your system has Blowfish passwords enabled, but the <tt>crypt</tt> function does not support this format.
+usave_edigestmd5=سیستم شما دارای رمزهای عبور MD5 فعال است، اما ماژول Perl <tt>$3</tt> نصب نشده است. برای استفاده اجباری از رمزهای عبور رمزگذاری شده معمولی، <a href='$1'>پیکربندی ماژول</a> خود را تنظیم کنید یا از Webmin بخواهید ماژول <tt>$3</tt> را برای شما <a href='$2'>دانلود و نصب</a> کند.
+usave_edigestsha512=سیستم شما دارای رمزهای عبور SHA512 فعال است، اما عملکرد <tt>crypt</tt> از این قالب پشتیبانی نمی کند. برای استفاده اجباری از رمزهای عبور رمزگذاری شده معمولی، <a href='$1'>پیکربندی ماژول</a> خود را تنظیم کنید.
+usave_edigestblowfish=سیستم شما رمزهای عبور Blowfish را فعال کرده است، اما ماژول Perl <tt>$3</tt> نصب نشده است. برای استفاده اجباری از رمزهای عبور رمزگذاری شده معمولی، <a href='$1'>پیکربندی ماژول</a> خود را تنظیم کنید یا از Webmin بخواهید ماژول <tt>$3</tt> را برای شما <a href='$2'>دانلود و نصب</a> کند.
+usave_edigestyescrypt=سیستم شما رمزهای عبور yescrypt را فعال کرده است، اما عملکرد <tt>crypt</tt> از این قالب پشتیبانی نمی کند. برای استفاده اجباری از رمزهای عبور رمزگذاری شده معمولی، <a href='$1'>پیکربندی ماژول</a> خود را تنظیم کنید.
 usave_epasswd_mindays=Password was changed less than $1 days ago
 usave_epasswd_cmd=فرمان تأیید رمز عبور انجام نشد
 

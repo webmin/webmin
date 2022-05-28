@@ -205,11 +205,36 @@ return &unix_crypt_supports_sha512() ? undef : 'Crypt::SHA';
 }
 
 # encrypt_sha512(password, [salt])
-# Hashes a password, possibly with the give salt, with SHA512
+# Hashes a password, possibly with the given salt, with SHA512
 sub encrypt_sha512
 {
 my ($passwd, $salt) = @_;
 $salt ||= '$6$'.substr(time(), -8).'$';
+return crypt($passwd, $salt);
+}
+
+# unix_crypt_supports_yescrypt()
+# Returns 1 if the built-in crypt() function can already do yescrypt
+sub unix_crypt_supports_yescrypt
+{
+my $hash = '$y$j9T$waHytoaqP/CEnKFroGn0S/$fxd5mVc2mBPUc3vv.cpqDckpwrWTyIm2iD4JfnVBi26';
+my $newhash = eval { crypt('test', $hash) };
+return $newhash eq $hash;
+}
+
+# check_yescrypt()
+# Returns undef if yescrypt hashing is supported, or an error message if not
+sub check_yescrypt
+{
+return &unix_crypt_supports_yescrypt() ? undef : 'Crypt::NaCl::Sodium';
+}
+
+# encrypt_yescrypt(password, [salt])
+# Hashes a password, possibly with the given salt, with yescrypt
+sub encrypt_yescrypt
+{
+my ($passwd, $salt) = @_;
+$salt ||= &substitute_pattern('$y$j9T$[A-Z]{4}.[a-zA-Z0-9]{16}.$[a-zA-Z0-9]{14}.[a-zA-Z0-9]{7}/[a-zA-Z0-9]{15}/[a-zA-Z0-9]{4}');
 return crypt($passwd, $salt);
 }
 

@@ -25,8 +25,10 @@ uedit_egone=選択したユーザーは存在しません！
 uedit_sys=システムのデフォルト
 uedit_clone=ユーザーのクローン
 
-usave_edigestblowfish=システムではBlowfishパスワードが有効になっていますが、Perl <tt>$3</tt>モジュールはインストールされていません。<p>通常の暗号化されたパスワードの使用を強制するには、<a href='$1'>モジュール設定</a>。<p>またはWebminに<tt>$3</tt>ダウンロードしてインストール</a>させるtt>モジュール。
-usave_edigestsha512=システムではBlowfishパスワードが有効になっていますが、<tt>crypt</tt>関数はこの形式をサポートしていません。
+usave_edigestmd5=システムでMD5パスワードが有効になっていますが、Perl <tt>$3</tt>モジュールがインストールされていません。通常の暗号化されたパスワードの使用を強制するには、<a href='$1'>モジュール構成</a>を調整するか、Webminに<tt>$3</tt>モジュールを<a href='$2'>ダウンロードしてインストール</a>してもらいます。
+usave_edigestsha512=システムでSHA512パスワードが有効になっていますが、<tt>crypt</tt>機能はこの形式をサポートしていません。通常の暗号化されたパスワードの使用を強制するには、<ahref='$1'>モジュール構成</ahref>を調整します。
+usave_edigestblowfish=システムでBlowfishパスワードが有効になっていますが、Perl <tt>$3</tt>モジュールがインストールされていません。通常の暗号化されたパスワードの使用を強制するには、<a href='$1'>モジュール構成</a>を調整するか、Webminに<tt>$3</tt>モジュールを<a href='$2'>ダウンロードしてインストール</a>してもらいます。
+usave_edigestyescrypt=システムでyescryptパスワードが有効になっていますが、<tt>crypt</tt>関数はこの形式をサポートしていません。通常の暗号化されたパスワードの使用を強制するには、<ahref='$1'>モジュール構成</ahref>を調整します。
 usave_epasswd_mindays=パスワードが$1日前に変更された
 usave_epasswd_cmd=パスワード検証コマンドが失敗しました
 

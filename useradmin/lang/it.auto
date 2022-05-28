@@ -179,9 +179,10 @@ usave_echmod=Impossibile trovare la home directory di chmod : $1
 usave_eoffice=Office non può contenere un carattere:
 usave_eworkph=Il telefono di lavoro non può contenere un carattere:
 usave_ehomeph=Il telefono di casa non può contenere un carattere:
-usave_edigestmd5=Nel tuo sistema sono abilitate le password MD5, ma il modulo Perl <tt>$3</tt> non è installato. <p>Per forzare l'uso delle normali password crittografate, regola<a href='$1'> configurazione del modulo </a>.<p> Oppure fai in modo che Webmin <a href='$2'>scarichi e installi</a> il <tt>$3</tt> module per te.
-usave_edigestblowfish=Nel tuo sistema sono abilitate le password Blowfish, ma il modulo Perl <tt>$3</tt> non è installato. <p>Per forzare l'uso delle normali password crittografate, regola<a href='$1'> configurazione del modulo </a>.<p> Oppure fai in modo che Webmin <a href='$2'>scarichi e installi</a> il <tt>$3</tt> module per te.
-usave_edigestsha512=Nel tuo sistema sono abilitate le password Blowfish, ma la funzione <tt>crypt</tt> non supporta questo formato.
+usave_edigestmd5=Il tuo sistema ha le password MD5 abilitate, ma il modulo Perl <tt>$3</tt> non è installato. Per forzare l'uso di normali password crittografate, modifica la <a href='$1'>configurazione del tuo modulo</a> o chiedi a Webmin di <a href='$2'>scaricare e installare</a> il modulo <tt>$3</tt> per te.
+usave_edigestsha512=Il tuo sistema ha le password SHA512 abilitate, ma la funzione <tt>crypt</tt> non supporta questo formato. Per forzare l'uso di normali password crittografate, modifica la tua <a href='$1'>configurazione del modulo</a>.
+usave_edigestblowfish=Il tuo sistema ha le password Blowfish abilitate, ma il modulo Perl <tt>$3</tt> non è installato. Per forzare l'uso di normali password crittografate, modifica la <a href='$1'>configurazione del tuo modulo</a> o chiedi a Webmin di <a href='$2'>scaricare e installare</a> il modulo <tt>$3</tt> per te.
+usave_edigestyescrypt=Il tuo sistema ha le password yescrypt abilitate, ma la funzione <tt>crypt</tt> non supporta questo formato. Per forzare l'uso di normali password crittografate, modifica la tua <a href='$1'>configurazione del modulo</a>.
 usave_emaking=Prima che il comando di aggiornamento fallisse : $1
 usave_epasswd_min=La password deve essere lunga almeno $1
 usave_epasswd_re=La password non corrisponde a regexp $1

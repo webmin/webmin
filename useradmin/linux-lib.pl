@@ -111,6 +111,9 @@ if (&foreign_check("pam")) {
 			if ($m->{'args'} =~ /md5/) {
 				$md5 = 1;
 				}
+			elsif ($m->{'args'} =~ /yescrypt/) {
+				$md5 = 4;
+				}
 			elsif ($m->{'args'} =~ /sha512/) {
 				$md5 = 3;
 				}
@@ -147,6 +150,7 @@ if (!$md5 && &open_readfile(PAM, "/etc/pam.d/passwd")) {
 		if (/^password.*md5/) { $md5 = 1; }
 		elsif (/^password.*blowfish/) { $md5 = 2; }
 		elsif (/^password.*sha512/) { $md5 = 3; }
+		elsif (/^password.*yescrypt/) { $md5 = 4; }
 		}
 	close(PAM);
 	}
@@ -158,6 +162,7 @@ if (!$md5 && (&open_readfile(PAM, "/etc/pam.d/common-password") ||
 		if (/^password.*md5/) { $md5 = 1; }
 		elsif (/^password.*blowfish/) { $md5 = 2; }
 		elsif (/^password.*sha512/) { $md5 = 3; }
+		elsif (/^password.*yescrypt/) { $md5 = 4; }
 		}
 	close(PAM);
 	}

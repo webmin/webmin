@@ -11,6 +11,10 @@ index_pft7=MacOS DSCL
 sshkey=SSH openbare sleutel
 uedit_clone=Gebruiker klonen
 
+usave_edigestmd5=Uw systeem heeft MD5-wachtwoorden ingeschakeld, maar de Perl <tt>$3</tt> -module is niet geïnstalleerd. Om het gebruik van normale versleutelde wachtwoorden te forceren, past u uw <a href='$1'>moduleconfiguratie</a> aan of laat u Webmin de <tt>$3</tt> -module voor u <a href='$2'>downloaden en installeren</a>.
+usave_edigestsha512=Uw systeem heeft SHA512-wachtwoorden ingeschakeld, maar de functie <tt>crypt</tt> ondersteunt deze indeling niet. Pas uw <a href='$1'>moduleconfiguratie</a> aan om het gebruik van normaal versleutelde wachtwoorden te forceren.
+usave_edigestblowfish=Uw systeem heeft Blowfish-wachtwoorden ingeschakeld, maar de Perl <tt>$3</tt> -module is niet geïnstalleerd. Om het gebruik van normale versleutelde wachtwoorden te forceren, past u uw <a href='$1'>moduleconfiguratie</a> aan of laat u Webmin de <tt>$3</tt> -module voor u <a href='$2'>downloaden en installeren</a>.
+usave_edigestyescrypt=Uw systeem heeft yescrypt-wachtwoorden ingeschakeld, maar de functie <tt>crypt</tt> ondersteunt dit formaat niet. Pas uw <a href='$1'>moduleconfiguratie</a> aan om het gebruik van normaal versleutelde wachtwoorden te forceren.
 usave_epasswd_cmd=Wachtwoordvalidatieopdracht mislukt
 
 gedit_clone=Clone Group

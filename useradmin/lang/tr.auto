@@ -26,8 +26,10 @@ uedit_grename=Kullanıcı adı değişirse grup yeniden adlandırılsın mı?
 uedit_sys=Sistem varsayılanı
 uedit_clone=Kullanıcıyı Klonla
 
-usave_edigestblowfish=Sisteminizde Blowfish şifreleri etkin, ancak Perl <tt>$3</tt> modülü kurulu değil. <p>Normal şifreli parolaların kullanımını zorlamak için<a href='$1'> modül yapılandırması </a>.<p> Veya Webmin <a href='$2'>indirip yükleyin</a> <tt>$3</tt> modülü.
-usave_edigestsha512=Sisteminizde Blowfish şifreleri etkin, ancak <tt>crypt</tt> işlevi bu biçimi desteklemiyor.
+usave_edigestmd5=Sisteminizde MD5 parolaları etkin, ancak Perl <tt>$3</tt> modülü kurulu değil. Normal şifreli parolaların kullanımını zorlamak için <a href='$1'>modül yapılandırmanızı</a> ayarlayın veya Webmin'in sizin için <tt>$3</tt> modülünü <a href='$2'>indirip kurmasını</a> sağlayın.
+usave_edigestsha512=Sisteminizde SHA512 parolaları etkin, ancak <tt>crypt</tt> işlevi bu biçimi desteklemiyor. Normal şifreli parolaların kullanımını zorlamak için <a href='$1'>modül yapılandırmanızı</a> ayarlayın.
+usave_edigestblowfish=Sisteminizde Blowfish parolaları etkin, ancak Perl <tt>$3</tt> modülü kurulu değil. Normal şifreli parolaların kullanımını zorlamak için <a href='$1'>modül yapılandırmanızı</a> ayarlayın veya Webmin'in sizin için <tt>$3</tt> modülünü <a href='$2'>indirip kurmasını</a> sağlayın.
+usave_edigestyescrypt=Sisteminizde yescrypt parolaları etkin, ancak <tt>crypt</tt> işlevi bu biçimi desteklemiyor. Normal şifreli parolaların kullanımını zorlamak için <a href='$1'>modül yapılandırmanızı</a> ayarlayın.
 usave_epasswd_mindays=Şifre $1 günden daha kısa bir süre önce değiştirildi
 usave_epasswd_cmd=Şifre doğrulama komutu başarısız oldu
 

@@ -1,1 +1,6 @@
 sshkey=Öffentlicher SSH-Schlüssel
+
+usave_edigestmd5=Ihr System hat MD5-Passwörter aktiviert, aber das Perl <tt>$3</tt> -Modul ist nicht installiert. Um die Verwendung normaler verschlüsselter Passwörter zu erzwingen, passen Sie Ihre <a href='$1'>Modulkonfiguration</a> an oder lassen Sie Webmin das <tt>$3</tt> -Modul für Sie <a href='$2'>herunterladen und installieren</a>.
+usave_edigestsha512=Ihr System hat SHA512-Passwörter aktiviert, aber die Funktion <tt>crypt</tt> unterstützt dieses Format nicht. Um die Verwendung normal verschlüsselter Passwörter zu erzwingen, passen Sie Ihre <a href='$1'>Modulkonfiguration</a> an.
+usave_edigestblowfish=Auf Ihrem System sind Blowfish-Passwörter aktiviert, aber das Perl- <tt>$3</tt> -Modul ist nicht installiert. Um die Verwendung normaler verschlüsselter Passwörter zu erzwingen, passen Sie Ihre <a href='$1'>Modulkonfiguration</a> an oder lassen Sie Webmin das <tt>$3</tt> -Modul für Sie <a href='$2'>herunterladen und installieren</a>.
+usave_edigestyescrypt=Ihr System hat yescrypt-Passwörter aktiviert, aber die <tt>crypt</tt>-Funktion unterstützt dieses Format nicht. Um die Verwendung normal verschlüsselter Passwörter zu erzwingen, passen Sie Ihre <a href='$1'>Modulkonfiguration</a> an.
