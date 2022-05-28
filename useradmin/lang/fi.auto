@@ -179,10 +179,8 @@ usave_echmod=Kotihakemistoa ei voitu chmod : $1
 usave_eoffice=Office ei voi sisältää: merkkiä
 usave_eworkph=Työpuhelin ei voi sisältää: merkkiä
 usave_ehomeph=Kotipuhelin ei voi sisältää: merkkiä
-usave_edigestmd5=Järjestelmässäsi on MD5-salasanat käytössä, mutta Perl <tt>$3</tt> -moduulia ei ole asennettu. Jos haluat pakottaa käyttämään tavallisia salattuja salasanoja, säädä <a href='$1'>moduulin asetuksia</a> tai pyydä Webminiä <a href='$2'>lataamaan ja asentamaan</a> <tt>$3</tt> moduuli puolestasi.
-usave_edigestsha512=Järjestelmässäsi on käytössä SHA512-salasanat, mutta <tt>crypt</tt>-toiminto ei tue tätä muotoa. Jos haluat pakottaa käyttämään tavallisia salattuja salasanoja, säädä <a href='$1'>moduuliasetuksiasi</a>.
-usave_edigestblowfish=Järjestelmässäsi on Blowfish-salasanat käytössä, mutta Perl <tt>$3</tt> -moduulia ei ole asennettu. Jos haluat pakottaa käyttämään tavallisia salattuja salasanoja, säädä <a href='$1'>moduulin asetuksia</a> tai pyydä Webminiä <a href='$2'>lataamaan ja asentamaan</a> <tt>$3</tt> moduuli puolestasi.
-usave_edigestyescrypt=Järjestelmässäsi on yescrypt-salasanat käytössä, mutta <tt>crypt</tt>-toiminto ei tue tätä muotoa. Jos haluat pakottaa käyttämään tavallisia salattuja salasanoja, säädä <a href='$1'>moduuliasetuksiasi</a>.
+usave_edigestmod=Järjestelmässäsi on käytössä $4 salasanat, mutta Perl <tt>$3</tt> -moduulia ei ole asennettu. Jos haluat pakottaa käyttämään tavallisia salattuja salasanoja, säädä <a href='$1'>moduulin asetuksia</a> tai pyydä Webminiä yrittämään <a href='$2'>ladata ja asentaa</a> <tt>$3</tt> moduuli puolestasi.
+usave_edigestcrypt=Järjestelmässäsi on $4 salasanaa käytössä, mutta <tt>crypt</tt>-toiminto ei tue tätä muotoa. Jos haluat pakottaa käyttämään tavallisia salattuja salasanoja, säädä <a href='$1'>moduuliasetuksiasi</a>.
 usave_emaking=Ennen päivityskomentoa epäonnistui : $1
 usave_epasswd_min=Salasanan on oltava vähintään $1 kirjainta pitkä
 usave_epasswd_re=Salasana ei vastaa regexp $1

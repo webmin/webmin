@@ -2,10 +2,8 @@ sshkey=Klucz publiczny SSH
 uedit_clone=Klonuj użytkownika
 
 usave_ealluid=Wszystkie dozwolone identyfikatory UID zostały przydzielone
-usave_edigestmd5=Twój system ma włączone hasła MD5, ale moduł Perl <tt>$3</tt> nie jest zainstalowany. Aby wymusić używanie normalnych zaszyfrowanych haseł, dostosuj <a href='$1'>konfigurację swojego modułu</a> lub poproś Webmina o <a href='$2'>pobranie i zainstalowanie</a> modułu <tt>$3</tt>.
-usave_edigestsha512=Twój system ma włączone hasła SHA512, ale funkcja <tt>crypt</tt> nie obsługuje tego formatu. Aby wymusić używanie normalnych zaszyfrowanych haseł, dostosuj <a href='$1'>konfigurację modułu</a>.
-usave_edigestblowfish=Twój system ma włączone hasła Blowfish, ale moduł Perl <tt>$3</tt> nie jest zainstalowany. Aby wymusić używanie normalnych zaszyfrowanych haseł, dostosuj <a href='$1'>konfigurację swojego modułu</a> lub poproś Webmina o <a href='$2'>pobranie i zainstalowanie</a> modułu <tt>$3</tt>.
-usave_edigestyescrypt=Twój system ma włączone hasła yescrypt, ale funkcja <tt>crypt</tt> nie obsługuje tego formatu. Aby wymusić używanie normalnych zaszyfrowanych haseł, dostosuj <a href='$1'>konfigurację modułu</a>.
+usave_edigestmod=Twój system ma włączone hasła $4, jednak moduł Perl <tt>$3</tt> nie jest zainstalowany. Aby wymusić użycie normalnych zaszyfrowanych haseł, dostosuj <a href='$1'>konfigurację swojego modułu</a> lub zleć Webminowi, aby spróbował <a href='$2'>pobrać i zainstalować</a> moduł <tt>$3</tt> za Ciebie.
+usave_edigestcrypt=Twój system ma włączone $4 haseł, ale funkcja <tt>crypt</tt> nie obsługuje tego formatu. Aby wymusić używanie normalnych zaszyfrowanych haseł, dostosuj <a href='$1'>konfigurację modułu</a>.
 
 gedit_clone=Grupa klonów
 

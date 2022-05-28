@@ -73,10 +73,8 @@ usave_egcreate=Du får inte skapa nya grupper för nya användare
 usave_eoffice=Office kan inte innehålla ett: -tecken
 usave_eworkph=Arbetstelefonen kan inte innehålla ett: -tecken
 usave_ehomeph=Hemtelefonen kan inte innehålla ett: -tecken
-usave_edigestmd5=Ditt system har MD5-lösenord aktiverade, men Perl <tt>$3</tt> modulen är inte installerad. För att tvinga fram vanliga krypterade lösenord, justera din <a href='$1'>modulkonfiguration</a> eller låt Webmin <a href='$2'>ladda ner och installera</a> <tt>$3</tt> modulen åt dig.
-usave_edigestsha512=Ditt system har SHA512-lösenord aktiverade, men funktionen <tt>kryptering</tt> stöder inte detta format. För att tvinga fram vanliga krypterade lösenord, justera din <a href='$1'>modulkonfiguration</a>.
-usave_edigestblowfish=Ditt system har Blowfish-lösenord aktiverade, men Perl <tt>$3</tt> modulen är inte installerad. För att tvinga fram vanliga krypterade lösenord, justera din <a href='$1'>modulkonfiguration</a> eller låt Webmin <a href='$2'>ladda ner och installera</a> <tt>$3</tt> modulen åt dig.
-usave_edigestyescrypt=Ditt system har yescrypt-lösenord aktiverade, men funktionen <tt>crypt</tt> stöder inte detta format. För att tvinga fram vanliga krypterade lösenord, justera din <a href='$1'>modulkonfiguration</a>.
+usave_edigestmod=Ditt system har $4 lösenord aktiverade, men Perl <tt>$3</tt> modulen är inte installerad. För att tvinga användningen av vanliga krypterade lösenord, justera din <a href='$1'>modulkonfiguration</a> eller be Webmin att försöka <a href='$2'>ladda ner och installera</a> <tt>$3</tt> modulen åt dig.
+usave_edigestcrypt=Ditt system har $4 lösenord aktiverade, men funktionen <tt>kryptering</tt> stöder inte detta format. För att tvinga fram vanliga krypterade lösenord, justera din <a href='$1'>modulkonfiguration</a>.
 usave_emaking=Innan uppdateringskommandot misslyckades : $1
 usave_epasswd_min=Lösenordet måste vara minst $1 bokstäver långt
 usave_epasswd_re=Lösenordet matchar inte regexp $1

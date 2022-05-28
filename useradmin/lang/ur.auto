@@ -179,10 +179,8 @@ usave_echmod=Couldn't chmod home directory : $1
 usave_eoffice=آفس میں ایک: کردار نہیں ہوسکتا ہے
 usave_eworkph=ورک فون میں ایک: کیریکٹر نہیں ہوسکتا ہے
 usave_ehomeph=ہوم فون میں ایک: کیریکٹر نہیں ہوسکتا ہے
-usave_edigestmd5=Your system has MD5 passwords enabled, but the Perl <tt>$3</tt> module is not installed. To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a> or have Webmin <a href='$2'>download and install</a> the <tt>$3</tt> module for you.
-usave_edigestsha512=Your system has SHA512 passwords enabled, but the <tt>crypt</tt> function does not support this format. To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a>.
-usave_edigestblowfish=Your system has Blowfish passwords enabled, but the Perl <tt>$3</tt> module is not installed. To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a> or have Webmin <a href='$2'>download and install</a> the <tt>$3</tt> module for you.
-usave_edigestyescrypt=Your system has yescrypt passwords enabled, but the <tt>crypt</tt> function does not support this format. To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a>.
+usave_edigestmod=Your system has $4 passwords enabled, however the Perl <tt>$3</tt> module is not installed. To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a> or have Webmin to try to <a href='$2'>download and install</a> the <tt>$3</tt> module for you.
+usave_edigestcrypt=Your system has $4 passwords enabled, but the <tt>crypt</tt> function does not support this format. To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a>.
 usave_emaking=Before update command failed : $1
 usave_epasswd_min=Password must be at least $1 letters long
 usave_epasswd_re=Password does not match regexp $1

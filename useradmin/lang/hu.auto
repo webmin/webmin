@@ -177,10 +177,8 @@ usave_echmod=Nem sikerült a chmod otthoni könyvtára : $1
 usave_eoffice=Az Office nem tartalmazhat: karaktert
 usave_eworkph=A munkatelefon nem tartalmazhat: karaktert
 usave_ehomeph=Az otthoni telefon nem tartalmazhat: karaktert
-usave_edigestmd5=A rendszeren engedélyezve vannak az MD5 jelszavak, de a Perl <tt>$3</tt> modul nincs telepítve. A normál titkosított jelszavak használatának kényszerítéséhez módosítsa a <a href='$1'>modul konfigurációját</a>, vagy kérje meg a Webmin <a href='$2'>letöltését és telepítését</a> a <tt>$3</tt> modulban.
-usave_edigestsha512=A rendszeren engedélyezve vannak az SHA512 jelszavak, de a <tt>crypt</tt> funkció nem támogatja ezt a formátumot. A normál titkosított jelszavak használatának kényszerítéséhez módosítsa <a href='$1'>modulkonfigurációját</a>.
-usave_edigestblowfish=A rendszeren engedélyezve vannak a Blowfish jelszavak, de a Perl <tt>$3</tt> modul nincs telepítve. A normál titkosított jelszavak használatának kényszerítéséhez módosítsa a <a href='$1'>modul konfigurációját</a>, vagy kérje meg a Webmin <a href='$2'>letöltését és telepítését</a> a <tt>$3</tt> modulban.
-usave_edigestyescrypt=A rendszeren engedélyezve vannak a yescrypt jelszavak, de a <tt>crypt</tt> funkció nem támogatja ezt a formátumot. A normál titkosított jelszavak használatának kényszerítéséhez módosítsa <a href='$1'>modulkonfigurációját</a>.
+usave_edigestmod=A rendszeren $4 jelszavak engedélyezettek, de a Perl <tt>$3</tt> modul nincs telepítve. A normál titkosított jelszavak használatának kényszerítéséhez állítsa be a <a href='$1'>modul konfigurációját</a>, vagy kérje meg a Webmint, hogy próbálja meg <a href='$2'>letölteni és telepíteni</a> a <tt>$3</tt> modult.
+usave_edigestcrypt=A rendszeren $4 jelszó engedélyezett, de a <tt>crypt</tt> funkció nem támogatja ezt a formátumot. A normál titkosított jelszavak használatának kényszerítéséhez módosítsa <a href='$1'>modulkonfigurációját</a>.
 usave_emaking=Mielőtt a frissítés nem sikerült : $1
 usave_epasswd_min=A jelszónak legalább $1 betű hosszúnak kell lennie
 usave_epasswd_re=A jelszó nem egyezik a regexp $1 értékkel

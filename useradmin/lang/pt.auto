@@ -87,10 +87,8 @@ usave_esgname='$1' não é um nome de grupo secundário válido
 usave_eoffice=O Office não pode conter um caractere:
 usave_eworkph=O telefone comercial não pode conter um caractere:
 usave_ehomeph=O telefone residencial não pode conter um caractere:
-usave_edigestmd5=Seu sistema tem senhas MD5 habilitadas, mas o módulo Perl <tt>$3</tt> não está instalado. Para forçar o uso de senhas criptografadas normais, ajuste a <a href='$1'>configuração do seu módulo</a> ou faça o <a href='$2'>download do Webmin e instale</a> o módulo de <tt>$3</tt> para você.
-usave_edigestsha512=Seu sistema tem senhas SHA512 habilitadas, mas a função <tt>crypt</tt> não suporta este formato. Para forçar o uso de senhas criptografadas normais, ajuste a <a href='$1'>configuração do módulo</a>.
-usave_edigestblowfish=Seu sistema tem senhas Blowfish habilitadas, mas o módulo Perl <tt>$3</tt> não está instalado. Para forçar o uso de senhas criptografadas normais, ajuste a <a href='$1'>configuração do seu módulo</a> ou faça o <a href='$2'>download do Webmin e instale</a> o módulo de <tt>$3</tt> para você.
-usave_edigestyescrypt=Seu sistema tem senhas yescrypt habilitadas, mas a função <tt>crypt</tt> não suporta este formato. Para forçar o uso de senhas criptografadas normais, ajuste a <a href='$1'>configuração do módulo</a>.
+usave_edigestmod=Seu sistema tem senhas $4 habilitadas, porém o módulo Perl <tt>$3</tt> não está instalado. Para forçar o uso de senhas criptografadas normais, ajuste a <a href='$1'>configuração do seu módulo</a> ou faça com que o Webmin tente <a href='$2'>baixar e instalar</a> o módulo <tt>$3</tt> para você.
+usave_edigestcrypt=Seu sistema tem $4 senhas habilitadas, mas a função <tt>crypt</tt> não suporta este formato. Para forçar o uso de senhas criptografadas normais, ajuste a <a href='$1'>configuração do módulo</a>.
 usave_emaking=Antes do comando update falhar : $1
 usave_epasswd_min=A senha deve ter pelo menos $1 letras
 usave_epasswd_re=A senha não corresponde a regexp $1

@@ -179,10 +179,8 @@ usave_echmod=Ezin izan da chmod etxeko direktorioa : $1
 usave_eoffice=Bulegoak ezin du: karaktere bat eduki
 usave_eworkph=Laneko telefonoak ezin du: karaktere bat izan
 usave_ehomeph=Etxeko telefonoak ezin du: karaktere bat izan
-usave_edigestmd5=Zure sistemak MD5 pasahitzak gaituta ditu, baina Perl <tt>$3</tt> modulua ez dago instalatuta. Enkriptatutako pasahitz arruntak erabiltzera behartzeko, egokitu zure <a href='$1'>moduluaren konfigurazioa</a> edo Webmin-ek <a href='$2'>deskargatu eta instalatu</a> <tt>$3</tt> modulua zuretzat.
-usave_edigestsha512=Zure sistemak SHA512 pasahitzak gaituta ditu, baina <tt>crypt</tt> funtzioak ez du formatu hau onartzen. Enkriptatutako pasahitz arruntak erabiltzera behartzeko, egokitu <a href='$1'>moduluaren konfigurazioa</a>.
-usave_edigestblowfish=Zure sistemak Blowfish pasahitzak gaituta ditu, baina Perl <tt>$3</tt> modulua ez dago instalatuta. Enkriptatutako pasahitz arruntak erabiltzera behartzeko, egokitu zure <a href='$1'>moduluaren konfigurazioa</a> edo Webmin-ek <a href='$2'>deskargatu eta instalatu</a> <tt>$3</tt> modulua zuretzat.
-usave_edigestyescrypt=Zure sistemak yescrypt pasahitzak gaituta ditu, baina <tt>crypt</tt> funtzioak ez du formatu hau onartzen. Enkriptatutako pasahitz arruntak erabiltzera behartzeko, egokitu <a href='$1'>moduluaren konfigurazioa</a>.
+usave_edigestmod=Zure sistemak $4 pasahitzak gaituta ditu, hala ere Perl <tt>$3</tt> modulua ez dago instalatuta. Enkriptatutako pasahitz arruntak erabiltzera behartzeko, egokitu zure <a href='$1'>moduluaren konfigurazioa</a> edo eskatu Webmin-i <tt>$3</tt> modulua <a href='$2'>deskargatzen eta instalatzen</a> saiatzeko.
+usave_edigestcrypt=Zure sistemak $4 pasahitzak gaituta ditu, baina <tt>crypt</tt> funtzioak ez du formatu hau onartzen. Enkriptatutako pasahitz arruntak erabiltzera behartzeko, egokitu <a href='$1'>moduluaren konfigurazioa</a>.
 usave_emaking=Eguneratze komandoa huts egin aurretik : $1
 usave_epasswd_min=Pasahitzak gutxienez $1 letrak luze izan behar ditu
 usave_epasswd_re=Pasahitza ez dator bat regexp $1

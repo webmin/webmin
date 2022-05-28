@@ -1,6 +1,4 @@
 sshkey=Clau pública SSH
 
-usave_edigestmd5=El vostre sistema té les contrasenyes MD5 habilitades, però el mòdul Perl <tt>$3</tt> no està instal·lat. Per forçar l'ús de contrasenyes xifrades normals, ajusteu la <a href='$1'>configuració del vostre mòdul</a> o feu que Webmin <a href='$2'>baixi i instal·leu</a> el mòdul de <tt>$3</tt>.
-usave_edigestsha512=El vostre sistema té les contrasenyes SHA512 habilitades, però la funció <tt>crypt</tt> no admet aquest format. Per forçar l'ús de contrasenyes xifrades normals, ajusteu la <a href='$1'>configuració del mòdul</a>.
-usave_edigestblowfish=El vostre sistema té les contrasenyes Blowfish habilitades, però el mòdul Perl <tt>$3</tt> no està instal·lat. Per forçar l'ús de contrasenyes xifrades normals, ajusteu la <a href='$1'>configuració del vostre mòdul</a> o feu que Webmin <a href='$2'>baixi i instal·leu</a> el mòdul de <tt>$3</tt>.
-usave_edigestyescrypt=El vostre sistema té les contrasenyes yescrypt habilitades, però la funció <tt>crypt</tt> no admet aquest format. Per forçar l'ús de contrasenyes xifrades normals, ajusteu la <a href='$1'>configuració del mòdul</a>.
+usave_edigestmod=El vostre sistema té les contrasenyes $4 activades, però el mòdul Perl <tt>$3</tt> no està instal·lat. Per forçar l'ús de contrasenyes xifrades normals, ajusteu la <a href='$1'>configuració del vostre mòdul</a> o feu que Webmin intenti <a href='$2'>descarregar i instal·lar</a> el mòdul de <tt>$3</tt>.
+usave_edigestcrypt=El vostre sistema té $4 contrasenyes habilitats, però la funció <tt>crypt</tt> no admet aquest format. Per forçar l'ús de contrasenyes xifrades normals, ajusteu la <a href='$1'>configuració del mòdul</a>.

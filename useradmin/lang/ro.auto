@@ -179,10 +179,8 @@ usave_echmod=Nu a putut fi chmod home directory : $1
 usave_eoffice=Office nu poate conține un caracter:
 usave_eworkph=Telefonul de lucru nu poate conține un caracter:
 usave_ehomeph=Telefonul de acasă nu poate conține un caracter:
-usave_edigestmd5=Sistemul dumneavoastră are parolele MD5 activate, dar modulul Perl <tt>$3</tt> nu este instalat. Pentru a forța utilizarea parolelor criptate normale, ajustați <a href='$1'>configurația modulului</a> sau solicitați ca Webmin să <a href='$2'>descarce și să instaleze</a> modulul <tt>$3</tt> pentru dvs.
-usave_edigestsha512=Sistemul dvs. are parole SHA512 activate, dar funcția <tt>crypt</tt> nu acceptă acest format. Pentru a forța utilizarea parolelor criptate normale, ajustați <a href='$1'>configurația modulului</a>.
-usave_edigestblowfish=Sistemul dumneavoastră are parolele Blowfish activate, dar modulul Perl <tt>$3</tt> nu este instalat. Pentru a forța utilizarea parolelor criptate normale, ajustați <a href='$1'>configurația modulului</a> sau solicitați ca Webmin să <a href='$2'>descarce și să instaleze</a> modulul <tt>$3</tt> pentru dvs.
-usave_edigestyescrypt=Sistemul dvs. are parolele yescrypt activate, dar funcția <tt>crypt</tt> nu acceptă acest format. Pentru a forța utilizarea parolelor criptate normale, ajustați <a href='$1'>configurația modulului</a>.
+usave_edigestmod=Sistemul dvs. are parole $4 activate, totuși modulul Perl <tt>$3</tt> nu este instalat. Pentru a forța utilizarea parolelor criptate normale, ajustați <a href='$1'>configurația modulului</a> sau solicitați ca Webmin să încerce să <a href='$2'>descarce și să instaleze</a> modulul <tt>$3</tt> pentru dvs.
+usave_edigestcrypt=Sistemul dumneavoastră are $4 parole activate, dar funcția <tt>crypt</tt> nu acceptă acest format. Pentru a forța utilizarea parolelor criptate normale, ajustați <a href='$1'>configurația modulului</a>.
 usave_emaking=Comanda înainte de actualizare a eșuat : $1
 usave_epasswd_min=Parola trebuie să aibă cel puțin $1 scrisori lungi
 usave_epasswd_re=Parola nu se potrivește cu regexp $1

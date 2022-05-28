@@ -1780,6 +1780,12 @@ sub encrypt_password
 {
 local ($pass, $salt) = @_;
 local $format = 0;
+my $format_error = sub {
+	my ($type, $format, $err) = @_;
+	&error(&text($type,
+	    "@{[&get_webprefix()]}/config.cgi?module=$module_name&section=line2",
+	    "@{[&get_webprefix()]}/cpan/download.cgi?source=3&cpan=$err", $err, $format));
+	};
 if ($gconfig{'os_type'} eq 'macos' && &passfiles_type() == 7) {
 	# New OSX directory service uses SHA1 for passwords!
 	$salt ||= chr(int(rand(26))+65).chr(int(rand(26))+65). 
@@ -1832,9 +1838,7 @@ elsif ($format == 1) {
 	# MD5 encryption is selected .. use it if possible
 	local $err = &check_md5();
 	if ($err) {
-		&error(&text('usave_edigestmd5',
-		    "/config.cgi?module=$module_name&section=line2",
-		    "/cpan/download.cgi?source=3&cpan=$err", $err));
+		&$format_error('usave_edigestmod', 'MD5', $err);
 		}
 	return &encrypt_md5($pass, $salt);
 	}
@@ -1842,9 +1846,7 @@ elsif ($format == 2) {
 	# Blowfish is selected .. use it if possible
 	local $err = &check_blowfish();
 	if ($err) {
-		&error(&text('usave_edigestblowfish',
-		    "/config.cgi?module=$module_name&section=line2",
-		    "/cpan/download.cgi?source=3&cpan=$err", $err));
+		&$format_error('usave_edigestmod', 'Blowfish', $err);
 		}
 	return &encrypt_blowfish($pass, $salt);
 	}
@@ -1852,8 +1854,7 @@ elsif ($format == 3) {
 	# SHA512 is selected .. use it
 	local $err = &check_sha512();
 	if ($err) {
-		&error(&text('usave_edigestsha512',
-		       "/config.cgi?module=$module_name&section=line2"));
+		&$format_error('usave_edigestcrypt', 'SHA512');
 		}
 	return &encrypt_sha512($pass, $salt);
 	}
@@ -1861,8 +1862,7 @@ elsif ($format == 4) {
 	# yescrypt is selected .. use it
 	local $err = &check_yescrypt();
 	if ($err) {
-		&error(&text('usave_edigestyescrypt',
-		       "/config.cgi?module=$module_name&section=line2"));
+		&$format_error('usave_edigestcrypt', 'yescrypt');
 		}
 	return &encrypt_yescrypt($pass, $salt);
 	}

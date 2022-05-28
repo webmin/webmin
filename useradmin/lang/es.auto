@@ -29,10 +29,8 @@ uedit_sys=Sistema por defecto
 uedit_clone=Clonar usuario
 
 usave_esgname='$1' no es un nombre de grupo secundario válido
-usave_edigestmd5=Su sistema tiene habilitadas las contraseñas MD5, pero el módulo Perl <tt>$3</tt> no está instalado. Para forzar el uso de contraseñas encriptadas normales, ajuste la <a href='$1'>configuración de su módulo</a> o haga que Webmin <a href='$2'>descargue e instale</a> el módulo de <tt>$3</tt> por usted.
-usave_edigestsha512=Su sistema tiene habilitadas las contraseñas SHA512, pero la función <tt>crypt</tt> no admite este formato. Para forzar el uso de contraseñas cifradas normales, ajuste la <a href='$1'>configuración del módulo</a>.
-usave_edigestblowfish=Su sistema tiene habilitadas las contraseñas de Blowfish, pero el módulo Perl <tt>$3</tt> no está instalado. Para forzar el uso de contraseñas encriptadas normales, ajuste la <a href='$1'>configuración de su módulo</a> o haga que Webmin <a href='$2'>descargue e instale</a> el módulo de <tt>$3</tt> por usted.
-usave_edigestyescrypt=Su sistema tiene habilitadas las contraseñas de yescrypt, pero la función <tt>crypt</tt> no es compatible con este formato. Para forzar el uso de contraseñas cifradas normales, ajuste la <a href='$1'>configuración del módulo</a>.
+usave_edigestmod=Su sistema tiene contraseñas $4 habilitadas, sin embargo, el módulo Perl <tt>$3</tt> no está instalado. Para forzar el uso de contraseñas encriptadas normales, ajuste la <a href='$1'>configuración de su módulo</a> o haga que Webmin intente <a href='$2'>descargar e instalar</a> el módulo de <tt>$3</tt> por usted.
+usave_edigestcrypt=Su sistema tiene $4 contraseñas habilitadas, pero la función <tt>crypt</tt> no admite este formato. Para forzar el uso de contraseñas cifradas normales, ajuste la <a href='$1'>configuración del módulo</a>.
 usave_epasswd_mindays=La contraseña se cambió hace menos de $1 días atrás
 usave_epasswd_cmd=El comando de validación de contraseña falló
 

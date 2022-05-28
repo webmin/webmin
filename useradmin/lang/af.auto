@@ -179,10 +179,8 @@ usave_echmod=Kon die tuisgids van chmod nie : $1
 usave_eoffice=Office kan nie 'n: karakter bevat nie
 usave_eworkph=Werktelefoon kan nie 'n: karakter bevat nie
 usave_ehomeph=Huistelefoon kan nie 'n: karakter bevat nie
-usave_edigestmd5=Jou stelsel het MD5-wagwoorde geaktiveer, maar die Perl <tt>$3</tt> -module is nie geïnstalleer nie. Om die gebruik van normale geënkripteerde wagwoorde af te dwing, pas jou <a href='$1'>module-opstelling</a> aan of laat Webmin die <tt>$3</tt> -module vir jou <a href='$2'>aflaai en installeer</a>.
-usave_edigestsha512=Jou stelsel het SHA512-wagwoorde geaktiveer, maar die <tt>crypt</tt>-funksie ondersteun nie hierdie formaat nie. Om die gebruik van normale geënkripteerde wagwoorde af te dwing, pas jou <a href='$1'>module-opstelling</a> aan.
-usave_edigestblowfish=Jou stelsel het Blowfish-wagwoorde geaktiveer, maar die Perl <tt>$3</tt> -module is nie geïnstalleer nie. Om die gebruik van normale geënkripteerde wagwoorde af te dwing, pas jou <a href='$1'>module-opstelling</a> aan of laat Webmin die <tt>$3</tt> -module vir jou <a href='$2'>aflaai en installeer</a>.
-usave_edigestyescrypt=Jou stelsel het yescrypt-wagwoorde geaktiveer, maar die <tt>crypt</tt>-funksie ondersteun nie hierdie formaat nie. Om die gebruik van normale geënkripteerde wagwoorde af te dwing, pas jou <a href='$1'>module-opstelling</a> aan.
+usave_edigestmod=Jou stelsel het $4 -wagwoorde geaktiveer, maar die Perl <tt>$3</tt> -module is nie geïnstalleer nie. Om die gebruik van normale geënkripteerde wagwoorde af te dwing, pas jou <a href='$1'>module-opstelling</a> aan of laat Webmin probeer om die <tt>$3</tt> -module vir jou af te <a href='$2'>laai en te installeer</a>.
+usave_edigestcrypt=Jou stelsel het $4 wagwoorde geaktiveer, maar die <tt>crypt</tt> funksie ondersteun nie hierdie formaat nie. Om die gebruik van normale geënkripteerde wagwoorde af te dwing, pas jou <a href='$1'>module-opstelling</a> aan.
 usave_emaking=Voordat opdateringsopdrag misluk : $1
 usave_epasswd_min=Wagwoord moet ten minste $1 letters lank wees
 usave_epasswd_re=Wagwoord stem nie ooreen met regexp $1
