@@ -2724,4 +2724,20 @@ foreach (1 .. 15) {
 return $rv;
 }
 
+# config_pre_load(mod-info-refdd, [mod-order-ref])
+# Check if some config options are conditional,
+# and if not allowed, remove them from listing
+sub config_pre_load
+{
+my ($modconf_info, $modconf_order) = @_;
+my $unix_crypt_supports_yescrypt =
+		unix_crypt_supports_yescrypt();
+
+# Tweak available formats on the config if yescrypt
+# not available and cannot be used on given system
+if (!$unix_crypt_supports_yescrypt) {
+	$modconf_info->{'md5'} =~ s/,5-<tt>yescrypt<\/tt>//;
+	}
+}
+
 1;
