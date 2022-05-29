@@ -264,7 +264,7 @@ if (!&check_blowfish()) {
 	return 1 if ($mhash eq $hash);
 	}
 
-# SHA1
+# SHA512
 if (!&check_sha512()) {
 	my $shash = &encrypt_sha512($passwd, $hash);
 	return 1 if ($shash && $shash eq $hash);
