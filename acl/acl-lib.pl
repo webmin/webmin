@@ -1690,10 +1690,17 @@ elsif ($mode == 2) {
 	return &encrypt_sha512($pass, $salt);
 	}
 else {
-	# Use Unix DES
-	&seed_random();
-	$salt ||= chr(int(rand(26))+65).chr(int(rand(26))+65);
-	return &unix_crypt($pass, $salt);
+	# Try detecting system default first
+	if (&foreign_available('useradmin')) {
+		&foreign_require('useradmin');
+		return &useradmin::encrypt_password($pass, $salt);
+		}
+	else {
+		# Use Unix DES
+		&seed_random();
+		$salt ||= chr(int(rand(26))+65).chr(int(rand(26))+65);
+		return &unix_crypt($pass, $salt);
+		}
 	}
 }
 
