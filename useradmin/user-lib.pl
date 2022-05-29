@@ -1767,7 +1767,7 @@ foreach $e (keys %ENV) {
 	}
 }
 
-=head2 encrypt_password(password, [salt])
+=head2 encrypt_password(password, [salt], [ignore-config-force-system-default])
 
 Encrypts a password using the encryption format configured for this system.
 If the salt parameter is given, it will be used for hashing the password -
@@ -1778,7 +1778,7 @@ will be randomly generated.
 =cut
 sub encrypt_password
 {
-local ($pass, $salt) = @_;
+local ($pass, $salt, $force_system_default) = @_;
 local $format = 0;
 my $format_error = sub {
 	my ($type, $format, $err) = @_;
@@ -1809,25 +1809,31 @@ if ($gconfig{'os_type'} eq 'macos' && &passfiles_type() == 7) {
 		&error("Either the Digest::SHA1 Perl module or openssl command is needed to hash passwords");
 		}
 	}
-elsif ($config{'md5'} == 2) {
+else {
+	my $config_md5 = $config{'md5'};
+	$config_md5 = 1
+		if ($force_system_default);
+
 	# Always use MD5
-	$format = 1;
-	}
-elsif ($config{'md5'} == 3) {
+	if ($config_md5 == 2) {
+		$format = 1;
+		}
 	# Always use blowfish
-	$format = 2;
-	}
-elsif ($config{'md5'} == 4) {
+	elsif ($config_md5 == 3) {
+		$format = 2;
+		}
 	# Always use SHA512
-	$format = 3;
-	}
-elsif ($config{'md5'} == 5) {
+	elsif ($config_md5 == 4) {
+		$format = 3;
+		}
 	# Always use yescrypt
-	$format = 4;
-	}
-elsif ($config{'md5'} == 1 && !$config{'skip_md5'}) {
+	elsif ($config_md5 == 5) {
+		$format = 4;
+		}
 	# Up to system
-	$format = &use_md5() if (defined(&use_md5));
+	elsif ($config_md5 == 1 && !$config{'skip_md5'}) {
+		$format = &use_md5() if (defined(&use_md5));
+		}
 	}
 
 if ($no_encrypt_password) {
