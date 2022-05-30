@@ -178,9 +178,6 @@ usave_echmod=kunne ikke kjøre chmod på hjemmekatalog : $1
 usave_eoffice=kontor kan ikke inneholde tegnet :
 usave_eworkph=tlf. arbeid kan ikke inneholde tegnet :
 usave_ehomeph=tlf. privat kan ikke inneholde tegnet :
-usave_edigestmd5=System ditt har MD5 passord aktivert, men hverke Perl MD5 eller Digest::MD5 modulen erinstallert.<p>For å tvinge gjennom bruk av normalt krypterte passord må du endre <a href='$1'>modulekonfigurasjonen</a>.<p>Eller la Webmin <a href='$2'>laste ned og installere</a> Digest::MD5 modulen for deg.
-usave_edigestblowfish=Systemet ditt har Blowfish passord aktivert, men Perl modulen <tt>$3</tt> er ikke installert.<p>For å tvinge gjennom bruk av normalt krypterte passord må du endre <a href='$1'>modulkonfigurasjonen</a>. Eller du kan la Webmin <a href='$2'>laste ned og installere</a> <tt>$3</tt> modulen for deg.
-usave_edigestsha512=Systemet ditt har Blowfish passord aktivert, men <tt>crypt</tt> funksjonen støtter ikke dette formatet.
 usave_emaking=Før-oppdatering kommando feilet : $1
 usave_epasswd_min=Passordet må være minst $1 tegn langt
 usave_epasswd_re=Passord stemmer ikke med regulært uttrykk $1

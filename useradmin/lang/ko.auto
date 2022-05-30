@@ -72,9 +72,8 @@ usave_esgname='$1'은 (는) 유효한 보조 그룹 이름이 아닙니다.
 usave_eoffice=사무실은 : 문자를 포함 할 수 없습니다
 usave_eworkph=직장 전화는 : 문자를 포함 할 수 없습니다
 usave_ehomeph=집 전화는 : 문자를 포함 할 수 없습니다
-usave_edigestmd5=시스템에 MD5 암호가 활성화되어 있지만 Perl <tt>$3</tt> 모듈이 설치되어 있지 않습니다. <p>일반적인 암호화 된 암호를 강제로 사용하려면<a href='$1'> 모듈 구성 </a>.<p> 또는 Webtt <a href='$2'>다운로드 및 설치</a> <tt>$3</tt> 모듈입니다.
-usave_edigestblowfish=시스템에 Blowfish 암호가 활성화되어 있지만 Perl <tt>$3</tt> 모듈이 설치되어 있지 않습니다. <p>일반적인 암호화 된 암호를 강제로 사용하려면<a href='$1'> 모듈 구성 </a>.<p> 또는 Webtt <a href='$2'>다운로드 및 설치</a> <tt>$3</tt> 모듈입니다.
-usave_edigestsha512=시스템에 Blowfish 암호가 활성화되어 있지만 <tt>crypt</tt> 기능은이 형식을 지원하지 않습니다.
+usave_edigestmod=시스템에 $4 암호가 활성화되어 있지만 Perl <tt>$3</tt> 모듈이 설치되어 있지 않습니다. 일반 암호화된 암호를 강제로 사용하려면 <a href='$1'>모듈 구성</a> 을 조정하거나 Webmin이 <tt>$3</tt> 모듈을 <a href='$2'>다운로드하여 설치</a> 하도록 하십시오.
+usave_edigestcrypt=시스템에 $4 암호가 활성화되어 있지만 <tt>crypt</tt> 기능은 이 형식을 지원하지 않습니다. 암호화된 일반 비밀번호를 강제로 사용하려면 <a href='$1'>모듈 구성</a>을 조정하세요.
 usave_emaking=업데이트 명령이 실패하기 전에  : $1
 usave_epasswd_min=비밀번호는 $1 자 이상이어야합니다.
 usave_epasswd_re=비밀번호가 정규 표현식 $1와 일치하지 않습니다

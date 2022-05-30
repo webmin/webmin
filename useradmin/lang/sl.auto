@@ -179,9 +179,8 @@ usave_echmod=Domačega imenika chmod ni bilo mogoče : $1
 usave_eoffice=Office ne more vsebovati: znaka
 usave_eworkph=Delovni telefon ne more vsebovati: znaka
 usave_ehomeph=Domači telefon ne more vsebovati: znaka
-usave_edigestmd5=Vaš sistem ima omogočena gesla MD5, vendar modul Perl <tt>$3</tt> ni nameščen. <p>Če želite uporabiti običajna šifrirana gesla, prilagodite<a href='$1'> konfiguracija modula </a>.<p> Ali pa lahko Webmin <a href='$2'>prenesete in namestite</a> <tt>$3</tt> modul za vas.
-usave_edigestblowfish=Vaš sistem ima omogočena gesla Blowfish, vendar modul Perl <tt>$3</tt> ni nameščen. <p>Da bi prisilili uporabo običajnih šifriranih gesel, prilagodite svoj<a href='$1'> konfiguracija modula </a>.<p> Ali pa naj Webmin <a href='$2'>prenese in namesti</a> <tt>$3</tt> modul za vas.
-usave_edigestsha512=Vaš sistem ima omogočena gesla Blowfish, vendar funkcija <tt>kriptovaluta</tt> ne podpira te oblike.
+usave_edigestmod=Vaš sistem ima omogočena gesla $4, vendar modul Perl <tt>$3</tt> ni nameščen. Če želite prisiliti uporabo običajnih šifriranih gesel, prilagodite <a href='$1'>konfiguracijo modula</a> ali naj Webmin poskusi <a href='$2'>prenesti in namestiti</a> modul <tt>$3</tt> namesto vas.
+usave_edigestcrypt=Vaš sistem ima omogočeno $4 gesel, vendar funkcija <tt>crypt</tt> ne podpira te oblike. Če želite vsiliti uporabo običajnih šifriranih gesel, prilagodite <a href='$1'>konfiguracijo modula</a>.
 usave_emaking=Preden ukaz za posodobitev ni uspel : $1
 usave_epasswd_min=Geslo mora biti dolgo vsaj $1 črk
 usave_epasswd_re=Geslo se ne ujema z regexp $1

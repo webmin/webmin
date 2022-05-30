@@ -178,9 +178,8 @@ usave_echmod=Couldn't chmod home directory : $1
 usave_eoffice=لا يمكن أن يحتوي Office على: حرف
 usave_eworkph=لا يمكن أن يحتوي هاتف العمل على: حرف
 usave_ehomeph=لا يمكن أن يحتوي هاتف المنزل على:
-usave_edigestmd5=Your system has MD5 passwords enabled, but the Perl <tt>$3</tt> module is not installed.<p>To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a>.<p>Or have Webmin <a href='$2'>download and install</a> the <tt>$3</tt> module for you.
-usave_edigestblowfish=Your system has Blowfish passwords enabled, but the Perl <tt>$3</tt> module is not installed.<p>To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a>.<p>Or have Webmin <a href='$2'>download and install</a> the <tt>$3</tt> module for you.
-usave_edigestsha512=Your system has Blowfish passwords enabled, but the <tt>crypt</tt> function does not support this format.
+usave_edigestmod=نظامك به كلمات مرور $4 ممكّنة ، ومع ذلك لم يتم تثبيت وحدة Perl <tt>$3</tt>. لفرض استخدام كلمات المرور المشفرة العادية ، اضبط <a href='$1'>تكوين الوحدة</a> أو اطلب من Webmin محاولة <a href='$2'>تنزيل</a> وحدة <tt>$3</tt> وتثبيتها نيابة عنك.
+usave_edigestcrypt=تم تمكين$4 كلمة مرور في نظامك ، لكن وظيفة <tt>تشفير</tt> لا تدعم هذا التنسيق. لفرض استخدام كلمات المرور المشفرة العادية ، اضبط <a href='$1'>تهيئة الوحدة النمطية</a>.
 usave_emaking=Before update command failed : $1
 usave_epasswd_min=Password must be at least $1 letters long
 usave_epasswd_re=Password does not match regexp $1

@@ -150,7 +150,6 @@ usave_echmod=kunne ikke chmod hjemmemappe : $1
 usave_eoffice=office kan ikke indeholde karakteren :
 usave_eworkph=arbejdstelefon kan ikke indeholde karakteren :
 usave_ehomeph=hjemmetelefon kan ikke indeholde karakteren :
-usave_edigestmd5=Dit system har aktiveret MD5 adgangskoder, men hverken perl MD5 modulet eller Digest::MD5 er installeret.<p>For at gennemtvinge brugen af normalt krypterede adgangskoder skal du justerre din <a href='$1'>modulkonfiguration</a>.<p>Eller få webmin til at<a href='$2'>downloade og installere</a> modulet Digest::MD5.
 usave_emaking=Inde update kommando fejlede : $1
 usave_epasswd_min=Adgangskode skal være mindst $1 bogstaver lang
 usave_epasswd_re=Adgangskode matcher ikke regexp $1

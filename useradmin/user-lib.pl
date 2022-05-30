@@ -1767,7 +1767,7 @@ foreach $e (keys %ENV) {
 	}
 }
 
-=head2 encrypt_password(password, [salt])
+=head2 encrypt_password(password, [salt], [ignore-config-force-system-default])
 
 Encrypts a password using the encryption format configured for this system.
 If the salt parameter is given, it will be used for hashing the password -
@@ -1778,8 +1778,14 @@ will be randomly generated.
 =cut
 sub encrypt_password
 {
-local ($pass, $salt) = @_;
+local ($pass, $salt, $force_system_default) = @_;
 local $format = 0;
+my $format_error = sub {
+	my ($type, $format, $err) = @_;
+	&error(&text($type,
+	    "@{[&get_webprefix()]}/config.cgi?module=$module_name&section=line2",
+	    "@{[&get_webprefix()]}/cpan/download.cgi?source=3&cpan=$err", $err, $format));
+	};
 if ($gconfig{'os_type'} eq 'macos' && &passfiles_type() == 7) {
 	# New OSX directory service uses SHA1 for passwords!
 	$salt ||= chr(int(rand(26))+65).chr(int(rand(26))+65). 
@@ -1803,21 +1809,31 @@ if ($gconfig{'os_type'} eq 'macos' && &passfiles_type() == 7) {
 		&error("Either the Digest::SHA1 Perl module or openssl command is needed to hash passwords");
 		}
 	}
-elsif ($config{'md5'} == 2) {
+else {
+	my $config_md5 = $config{'md5'};
+	$config_md5 = 1
+		if ($force_system_default);
+
 	# Always use MD5
-	$format = 1;
-	}
-elsif ($config{'md5'} == 3) {
+	if ($config_md5 == 2) {
+		$format = 1;
+		}
 	# Always use blowfish
-	$format = 2;
-	}
-elsif ($config{'md5'} == 4) {
+	elsif ($config_md5 == 3) {
+		$format = 2;
+		}
 	# Always use SHA512
-	$format = 3;
-	}
-elsif ($config{'md5'} == 1 && !$config{'skip_md5'}) {
+	elsif ($config_md5 == 4) {
+		$format = 3;
+		}
+	# Always use yescrypt
+	elsif ($config_md5 == 5) {
+		$format = 4;
+		}
 	# Up to system
-	$format = &use_md5() if (defined(&use_md5));
+	elsif ($config_md5 == 1 && !$config{'skip_md5'}) {
+		$format = &use_md5() if (defined(&use_md5));
+		}
 	}
 
 if ($no_encrypt_password) {
@@ -1828,9 +1844,7 @@ elsif ($format == 1) {
 	# MD5 encryption is selected .. use it if possible
 	local $err = &check_md5();
 	if ($err) {
-		&error(&text('usave_edigestmd5',
-		    "/config.cgi?$module_name",
-		    "/cpan/download.cgi?source=3&cpan=$err", $err));
+		&$format_error('usave_edigestmod', 'MD5', $err);
 		}
 	return &encrypt_md5($pass, $salt);
 	}
@@ -1838,9 +1852,7 @@ elsif ($format == 2) {
 	# Blowfish is selected .. use it if possible
 	local $err = &check_blowfish();
 	if ($err) {
-		&error(&text('usave_edigestblowfish',
-		    "/config.cgi?$module_name",
-		    "/cpan/download.cgi?source=3&cpan=$err", $err));
+		&$format_error('usave_edigestmod', 'Blowfish', $err);
 		}
 	return &encrypt_blowfish($pass, $salt);
 	}
@@ -1848,9 +1860,17 @@ elsif ($format == 3) {
 	# SHA512 is selected .. use it
 	local $err = &check_sha512();
 	if ($err) {
-		&error($text{'usave_edigestsha512'});
+		&$format_error('usave_edigestcrypt', 'SHA512');
 		}
 	return &encrypt_sha512($pass, $salt);
+	}
+elsif ($format == 4) {
+	# yescrypt is selected .. use it
+	local $err = &check_yescrypt();
+	if ($err) {
+		&$format_error('usave_edigestcrypt', 'yescrypt');
+		}
+	return &encrypt_yescrypt($pass, $salt);
 	}
 else {
 	# Just do old-style crypt() DES encryption

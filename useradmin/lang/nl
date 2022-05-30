@@ -168,9 +168,6 @@ usave_echmod=Kon chmod niet toepassen op home directory : $1
 usave_eoffice=Kantoor mag geen ' : ' teken bevatten
 usave_eworkph=Telefoon werk mag geen ' : ' teken bevatten
 usave_ehomeph=Telefoon thuis mag geen ' : ' teken bevatten
-usave_edigestmd5=Op uw systeem is MD5 wachtwoord versleutelen aangezet, maar de Perl <tt>$3</tt> module is niet geinstalleerd.<p>Om gebruik van normaal versleutelde wachtwoorden te forceren, wijzigt u de <a href='$1'>module configuratie</a>.<p>Of laat u Webmin de <tt>$3</tt> module <a href='$2'>downloaden en installeren</a> voor u.
-usave_edigestblowfish=Uw systeem heeft Blowfish wachtwoorden aanstaan, maar de Perl <tt>$3</tt> module is niet geinstalleerd.<p>Om het gebruik van normaal versleutelde wachtwoorden te forceren moet u de <a href='$1'>module configuratie</a> aanpassen.<p>Of u laat Webmin de  <tt>$3</tt> module <a href='$2'>downloaden en installeren</a> voor u.
-usave_edigestsha512=Uw systeem heeft Blowfish wachtwoord aanstaan, echter de <tt>crypt</tt> functie ondersteund dit formaat niet.
 usave_emaking=De update opdracht mislukte : $1
 usave_epasswd_min=Wachtwoord moet minimaal $1 letters hebben
 usave_epasswd_re=Wachtwoord komt niet overeen met regexp $1

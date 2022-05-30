@@ -29,8 +29,8 @@ uedit_sys=System standard
 uedit_clone=Klon bruger
 
 usave_esgname='$1' er ikke et gyldigt sekundært gruppenavn
-usave_edigestblowfish=Dit system har Blowfish-adgangskoder aktiveret, men Perl <tt>$3</tt> er ikke installeret. <p>For at tvinge brugen af normale krypterede adgangskoder skal du justere<a href='$1'> modulkonfiguration </a>.<p> Eller lad Webmin <a href='$2'>downloade og installere</a> <tt>$3</tt> modul til dig.
-usave_edigestsha512=Dit system har Blowfish-adgangskoder aktiveret, men <tt>krypt</tt> -funktionen understøtter ikke dette format.
+usave_edigestmod=Dit system har $4 -adgangskoder aktiveret, men Perl <tt>$3</tt> -modulet er ikke installeret. For at tvinge brugen af normale krypterede adgangskoder skal du justere din <a href='$1'>modulkonfiguration</a> eller få Webmin til at prøve at <a href='$2'>downloade og installere</a> <tt>$3</tt> -modulet for dig.
+usave_edigestcrypt=Dit system har $4 adgangskoder aktiveret, men <tt>krypt</tt>-funktionen understøtter ikke dette format. For at tvinge brugen af normale krypterede adgangskoder skal du justere din <a href='$1'>modulkonfiguration</a>.
 usave_epasswd_mindays=Adgangskoden blev ændret for mindre end $1 dage siden
 usave_epasswd_cmd=Adgangskode til validering af kodeord mislykkedes
 

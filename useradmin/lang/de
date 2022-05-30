@@ -178,9 +178,6 @@ usave_echmod=Fehler beim <tt>chmod</tt> des Stammverzeichnisses: $1
 usave_eoffice=Angaben zum Büro dürfen kein <tt>:</tt> enthalten
 usave_eworkph=Telefon (Arbeit) darf kein <tt>:</tt> enthalten
 usave_ehomeph=Telefon (privat) darf kein <tt>:</tt> enthalten
-usave_edigestmd5=Ihr System ist für MD5-Passworte konfiguriert, aber weder das <tt>MD5</tt>- noch das <tt>Digest::MD5-Perl-Modul</tt> ist installiert.<p>Um die Nutzung von normal verschlüsselten Passworten zu aktivieren, ändern Sie dies bitte in der <a href='$1'>Modulkonfiguration</a>.<p>Alternativ kann WebMin das Digest::MD5-Modul für Sie <a href='$2'>herunterladen und installieren</a>.
-usave_edigestblowfish=Ihr System hat Blowfish Passwörter aktiviert, aber das Perl <tt>$3</tt> Modul ist nicht installiert.<p>Um normal verschlüsselte Passwörter zu erzwingen, ändere die <a href='$1'>Modulkonfiguration</a>.<p>Oder lass Webmin das <tt>$3</tt> Modul <a href='$2'>herunterlanden und installieren</a>.
-usave_edigestsha512=Ihr System hat Blowfish Passwörter aktiviert, aber die <tt>crypt</tt> Funktion unterstützt dieses Format nicht.
 usave_emaking=Ein Befehl, der vor dem Update durchgeführt werden sollte, ist gescheitert : $1
 usave_epasswd_min=Das Passwort muss aus mindestens $1 Zeichen bestehen
 usave_epasswd_re=Das Passwort entspricht keiner "Regular Expression" $1 und wird abgewiesen

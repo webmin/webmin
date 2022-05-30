@@ -25,8 +25,8 @@ uedit_egone=Vybraný uživatel již neexistuje!
 uedit_sys=Výchozí systém
 uedit_clone=Klonovat uživatele
 
-usave_edigestblowfish=Váš systém má povolená hesla Blowfish, ale není nainstalován modul Pertt <tt>$3</tt>. <p>Chcete-li vynutit použití běžných šifrovaných hesel, upravte svůj<a href='$1'> konfigurace modulu </a>.<p> Nebo si nechte webmin <a href='$2'>stáhnout a nainstalovat</a> <tt>$3</tt> modul pro vás.
-usave_edigestsha512=Váš systém má povolená hesla Blowfish, ale funkce <tt>krypta</tt> tento formát nepodporuje.
+usave_edigestmod=Váš systém má povolena hesla $4, ale modul Perl <tt>$3</tt> není nainstalován. Chcete-li vynutit použití normálních šifrovaných hesel, upravte <a href='$1'>konfiguraci modulu</a> nebo požádejte Webmin, aby se pokusil <a href='$2'>stáhnout a nainstalovat</a> modul <tt>$3</tt> za vás.
+usave_edigestcrypt=Váš systém má povoleno $4 hesel, ale funkce <tt>crypt</tt> tento formát nepodporuje. Chcete-li vynutit používání normálních šifrovaných hesel, upravte <a href='$1'>konfiguraci modulu</a>.
 usave_epasswd_mindays=Heslo bylo změněno před méně než $1 dny
 usave_epasswd_cmd=Příkaz ověření hesla selhal
 

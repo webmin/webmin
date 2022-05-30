@@ -154,7 +154,6 @@ usave_echmod=ホームディレクトリのアクセス権を変更できませ�
 usave_eoffice=office cannot contain a : character
 usave_eworkph=work phone cannot contain a : character
 usave_ehomeph=home phone cannot contain a : character
-usave_edigestmd5=Your system has MD5 passwords enabled, but neither the perl MD5 or Digest::MD5 module is not installed.<p>To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a>.<p>Or have Webmin <a href='$2'>download and install</a> the Digest::MD5 module for you.
 usave_emaking=Before update command failed : $1
 usave_epasswd_min=Password must be at least $1 letters long
 usave_epasswd_re=Password does not match regexp $1

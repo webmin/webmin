@@ -154,7 +154,6 @@ usave_echmod=nepodařilo se nastavit chmod pro domovský adresář : $1
 usave_eoffice=kancelář nemůže obsahovat : znak
 usave_eworkph=telefon do práce nemůže obsahovat : znak
 usave_ehomeph=telefon domů nemůže obsahovat : znak
-usave_edigestmd5=Váš systém má zapnuta hesla MD5, ale nejsou nainstalovány moduly ani pro perl MD5 ani pro Digest::MD5.<p>TChcete-li využít kraptování normálních hesel, využijte vaši<a href='$1'>konfiguraci modulu</a>.<p>Popřípadě máte k dispozici Webmin <a href='$2'>stažení a instalaci</a> modulu Digest::MD5.
 usave_emaking=Příkaz předcházející aktualizaci je chybný : $1
 usave_epasswd_min=Heslo musí být tvořeno nejméně $1 znaky
 usave_epasswd_re=Heslo nevyhovuje regexp $1

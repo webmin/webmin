@@ -179,9 +179,8 @@ usave_echmod=Domovský adresár sa nepodarilo zmeniť : $1
 usave_eoffice=Úrad nemôže obsahovať znak:
 usave_eworkph=Pracovný telefón nemôže obsahovať znak:
 usave_ehomeph=Domáci telefón nemôže obsahovať znak:
-usave_edigestmd5=Váš systém má povolené heslá MD5, ale modul Perl <tt>$3</tt> nie je nainštalovaný. <p>Ak chcete vynútiť používanie bežných šifrovaných hesiel, upravte svoj<a href='$1'> konfigurácia modulu </a>.<p> Alebo si Webmin <a href='$2'>stiahnite a nainštalujte</a> <tt>$3</tt> modul pre vás.
-usave_edigestblowfish=Váš systém má povolené heslá Blowfish, ale nie je nainštalovaný modul Pertt <tt>$3</tt>. <p>Ak chcete vynútiť používanie bežných šifrovaných hesiel, upravte svoj<a href='$1'> konfigurácia modulu </a>.<p> Alebo si Webmin <a href='$2'>stiahnite a nainštalujte</a> <tt>$3</tt> modul pre vás.
-usave_edigestsha512=Váš systém má povolené heslá Blowfish, ale funkcia <tt>krypta</tt> tento formát nepodporuje.
+usave_edigestmod=Váš systém má povolené heslá $4, avšak modul Perl <tt>$3</tt> nie je nainštalovaný. Ak chcete vynútiť používanie normálnych šifrovaných hesiel, upravte <a href='$1'>konfiguráciu modulu</a> alebo požiadajte Webmin, aby sa pokúsil <a href='$2'>stiahnuť a nainštalovať</a> modul <tt>$3</tt> za vás.
+usave_edigestcrypt=Váš systém má povolených $4 hesiel, ale funkcia <tt>crypt</tt> nepodporuje tento formát. Ak chcete vynútiť používanie normálnych šifrovaných hesiel, upravte <a href='$1'>konfiguráciu modulu</a>.
 usave_emaking=Pred neúspešným príkazom na aktualizáciu : $1
 usave_epasswd_min=Heslo musí mať najmenej $1 písmen
 usave_epasswd_re=Heslo sa nezhoduje s regexp $1

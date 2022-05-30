@@ -179,9 +179,8 @@ usave_echmod=Nepavyko pakeisti chmod namų katalogo : $1
 usave_eoffice=„Office“ negali būti simbolis:
 usave_eworkph=Darbo telefone negali būti: simbolio
 usave_ehomeph=Namų telefone negali būti simbolio:
-usave_edigestmd5=Jūsų sistemoje įgalinti MD5 slaptažodžiai, tačiau „Perl <tt>$3</tt> modulis neįdiegtas. <p>Norėdami priversti naudoti įprastus šifruotus slaptažodžius, sureguliuokite savo<a href='$1'> modulio konfigūracija </a>.<p> Arba Webmin <a href='$2'>atsisiųskite ir įdiekite</a> <tt>$3</tt> modulis jums.
-usave_edigestblowfish=Jūsų sistemoje įjungti „Blowfish“ slaptažodžiai, tačiau „Perl“ <tt>$3</tt> modulis neįdiegtas. <p>Norėdami priversti naudoti įprastus šifruotus slaptažodžius, sureguliuokite savo<a href='$1'> modulio konfigūracija </a>.<p> Arba Webmin <a href='$2'>atsisiųskite ir įdiekite</a> <tt>$3</tt> modulis jums.
-usave_edigestsha512=Jūsų sistemoje įjungti „Blowfish“ slaptažodžiai, tačiau <tt>kripta</tt> funkcija nepalaiko šio formato.
+usave_edigestmod=Jūsų sistemoje įjungti $4 slaptažodžiai, tačiau Perl <tt>$3</tt> modulis neįdiegtas. Norėdami priversti naudoti įprastus šifruotus slaptažodžius, pakoreguokite <a href='$1'>modulio konfigūraciją</a> arba paprašykite Webmin pabandyti <a href='$2'>atsisiųsti ir įdiegti</a> <tt>$3</tt> modulį.
+usave_edigestcrypt=Jūsų sistemoje įjungti $4 slaptažodžiai, tačiau funkcija <tt>crypt</tt> nepalaiko šio formato. Norėdami priverstinai naudoti įprastus šifruotus slaptažodžius, pakoreguokite <a href='$1'>modulio konfigūraciją</a>.
 usave_emaking=Prieš atnaujinant komandą nepavyko : $1
 usave_epasswd_min=Slaptažodis turi būti ne mažesnis kaip $1 raidžių
 usave_epasswd_re=Slaptažodis neatitinka regexp $1

@@ -57,9 +57,8 @@ usave_esgname='$1'不是有效的辅助组名称
 usave_eoffice=Office不能包含：字符
 usave_eworkph=工作电话不能包含：字符
 usave_ehomeph=家用电话不能包含：字符
-usave_edigestmd5=您的系统已启用MD5密码，但是未安装Perl <tt>$3</tt>模块。<p>要强制使用常规的加密密码，请调整您的<a href='$1'>模块配置</a>。<p>或者让Webmin <a href='$2'>下载并安装</a> <tt>$3</tt> tt>为您提供模块。
-usave_edigestblowfish=您的系统已启用Blowfish密码，但未安装Perl <tt>$3</tt>模块。<p>要强制使用常规的加密密码，请调整您的<a href='$1'>模块配置</a>。<p>或者让Webmin <a href='$2'>下载并安装</a> <tt>$3</tt> tt>为您提供模块。
-usave_edigestsha512=您的系统已启用Blowfish密码，但是<tt>crypt</tt>功能不支持此格式。
+usave_edigestmod=您的系统启用了$4密码，但是没有安装 Perl <tt>$3</tt>模块。要强制使用普通加密密码，请调整您的<a href='$1'>模块配置</a>或让 Webmin 尝试为您<a href='$2'>下载并安装</a><tt>$3</tt>模块。
+usave_edigestcrypt=您的系统启用了 $4 个密码，但 <tt>crypt</tt> 功能不支持此格式。要强制使用普通加密密码，请调整您的<a href='$1'>模块配置</a>。
 usave_emaking=在更新命令失败之前：$1
 usave_epasswd_min=密码长度至少为$1个字母
 usave_epasswd_re=密码与regexp $1不匹配

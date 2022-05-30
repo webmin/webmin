@@ -167,8 +167,6 @@ usave_echmod=não consegui alterar as permissões do diretório inicial : $1
 usave_eoffice=escritório não pode conter um caractere :
 usave_eworkph=telefone de serviço não pode conter um caractere :
 usave_ehomeph=telefone residencial não pode conter um caractere :
-usave_edigestmd5=O seu sistema está com senhas MD5 habilitadas, mas o módulo Perl <tt>$3</tt> não está instalado.<p>Para forçar o uso de senhas com criptografia normal, ajuste suas <a href=$1'>configurações de módulo</a>.<p>Ou use o Webmin para <a href=$2'>baixar e instalar</a> o módulo <tt>$3</tt> para você.
-usave_edigestblowfish=O seu sistema está com senhas MD5 habilitadas, mas o módulo Perl <tt>$3</tt> não está instalado.<p>Para forçar o uso de senhas com criptografia normal, ajuste suas <a href=$1'>configurações de módulo</a>.<p>Ou use o Webmin para <a href=$2'>baixar e instalar</a> o módulo <tt>$3</tt> para você.
 usave_emaking=Falha em comando antes da atualização: $1
 usave_epasswd_min=Senha deve ter pelo menos $1 caracteres
 usave_epasswd_re=Senha não pode ter a expressão regular $1
