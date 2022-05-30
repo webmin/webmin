@@ -1,5 +1,5 @@
 index_title=System Logs Viewer
-index_elogs=No system logs were found to display
+index_elogs=No logs were found to display
 index_to=Log destination
 index_rule=Messages selected
 index_file=File $1

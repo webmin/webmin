@@ -24,11 +24,26 @@ if ($in{'view'}) {
 		}
 	if ($in{'idx'} ne '') {
 		# From systemctl commands
-		my @systemctl_cmds = &get_systemctl_cmds();
-		my ($log) = grep { $_->{'id'} eq $in{'idx'} } @systemctl_cmds;
-		&can_edit_log($log) && $access{'syslog'} ||
-			&error($text{'save_ecannot2'});
-		$cmd = $log->{'cmd'};
+		if ($in{'idx'} =~ /^journal-/) {
+			my @systemctl_cmds = &get_systemctl_cmds();
+			my ($log) = grep { $_->{'id'} eq $in{'idx'} } @systemctl_cmds;
+			&can_edit_log($log) && $access{'syslog'} ||
+				&error($text{'save_ecannot2'});
+			$cmd = $log->{'cmd'};
+			}
+		elsif ($in{'idx'} =~ /^syslog-/) {
+			if (&foreign_available('syslog') &&
+			    &foreign_installed('syslog')) {
+				&foreign_require('syslog');
+				my $conf = &syslog::get_config();
+				my $iid = $in{'idx'};
+				$iid =~ s/^syslog-//;
+				my $log = $conf->[$iid];
+				&can_edit_log($log) && $access{'syslog'} ||
+					&error($text{'save_ecannot2'});
+				$file = $log->{'file'};
+				}
+			}
 		}
 	elsif ($in{'oidx'} ne '') {
 		# From another module
@@ -180,6 +195,18 @@ if ($access{'syslog'}) {
 		next if (!&can_edit_log($c));
 		push(@logfiles, [ $c->{'id'}, "$c->{'desc'}" ]);
 		$found++ if ($c->{'id'} eq $in{'idx'});
+		}
+	if (&foreign_available('syslog') &&
+	    &foreign_installed('syslog')) {
+		&foreign_require('syslog');
+		my $conf = &syslog::get_config();
+		foreach $c (@$conf) {
+			next if ($c->{'tag'});
+			next if (!&can_edit_log($c));
+			next if (!$c->{'file'} || !-f $c->{'file'});
+			push(@logfiles, [ "syslog-$c->{'index'}", $c->{'file'} ]);
+			$found++ if ($c->{'file'} eq $file);
+			}
 		}
 	}
 if ($config{'others'} && $access{'others'}) {

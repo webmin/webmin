@@ -25,6 +25,30 @@ if ($access{'syslog'}) {
 		push(@cols, &ui_link("view_log.cgi?idx=$o->{'id'}&view=1", $text{'index_view'}) );
 		push(@col1, \@cols);
 		}
+
+	if (&foreign_available('syslog') &&
+	    &foreign_installed('syslog')) {
+		&foreign_require('syslog');
+		$conf = &syslog::get_config();
+		foreach $c (@$conf) {
+			next if ($c->{'tag'});
+			next if (!&can_edit_log($c));
+			local @cols;
+			local $name;
+			if ($c->{'file'}) {
+				$name = &text('index_file',
+					"<tt>".&html_escape($c->{'file'})."</tt>");
+				}
+			if ($c->{'file'} && -f $c->{'file'}) {
+				push(@cols, $name);
+				push(@cols, join("&nbsp;;&nbsp;",
+					   map { &html_escape($_) } @{$c->{'sel'}}));
+				push(@cols, &ui_link("view_log.cgi?idx=syslog-".$c->{'index'}."&".
+				      "view=1", $text{'index_view'}) );
+				push(@col1, \@cols);
+				}
+			}
+		}
 	}
 
 # Display logs from other modules
@@ -58,23 +82,20 @@ foreach $e (&extra_log_files()) {
 
 # Print sorted table with logs files and commands
 my @acols = (@col1, @col2, @col3);
+print &ui_columns_start( @acols ? [
+	$text{'index_to'},
+	$text{'index_rule'}, "" ] : [ ], 100);
 if (@acols) {
-	print &ui_columns_start([
-		$text{'index_to'},
-		$text{'index_rule'}, "" ], 100);
 	@acols = sort { $a->[2] cmp $b->[2] } @acols;
 	foreach my $col (@acols) {
 		print &ui_columns_row($col);
 		}
-	print &ui_columns_end();
-	print "<p>\n";
 	}
 else {
-	print &ui_columns_start([ ], 100);
-	print &ui_columns_row([$text{'index_elogs'}], [" style='text-align: center'"]);
-	print &ui_columns_end();
-	print "<p>\n";
+	print &ui_columns_row([$text{'index_elogs'}], [" colspan='3' style='text-align: center'"], 3);
 	}
+print &ui_columns_end();
+print "<p>\n";
 
 if ($access{'any'}) {
 	# Can view any log (under allowed dirs)
