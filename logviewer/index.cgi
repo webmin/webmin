@@ -62,7 +62,7 @@ if (@acols) {
 	print &ui_columns_start([
 		$text{'index_to'},
 		$text{'index_rule'}, "" ], 100);
-	@acols = sort { $a->[0] cmp $b->[0] } @acols;
+	@acols = sort { $a->[2] cmp $b->[2] } @acols;
 	foreach my $col (@acols) {
 		print &ui_columns_row($col);
 		}

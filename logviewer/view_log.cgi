@@ -172,12 +172,13 @@ print &ui_hidden("view", 1),"\n";
 # Create list of logs and selector
 my @logfiles;
 my $found = 0;
+my $text_view_header = 'view_header';
 if ($access{'syslog'}) {
 	# Logs from syslog
 	my @systemctl_cmds = &get_systemctl_cmds();
 	foreach $c (@systemctl_cmds) {
 		next if (!&can_edit_log($c));
-		push(@logfiles, [ $c->{'id'}, "$c->{'cmd'}" ]);
+		push(@logfiles, [ $c->{'id'}, "$c->{'desc'}" ]);
 		$found++ if ($c->{'id'} eq $in{'idx'});
 		}
 	}
@@ -199,11 +200,12 @@ if (@logfiles && $found) {
 			  [ @logfiles ], undef, undef, undef, undef, "onChange='form.submit()'");
 	}
 else {
+	$text_view_header = 'view_header2';
 	$sel = "<tt>".&html_escape($in{'file'})."</tt>";
 	print &ui_hidden("idx", $in{'idx'}),"\n";
 	}
 
-print &text('view_header', "&nbsp;" . &ui_textbox("lines", $lines, 3), "&nbsp;$sel"),"\n";
+print &text($text_view_header, "&nbsp;" . &ui_textbox("lines", $lines, 3), "&nbsp;$sel"),"\n";
 print "&nbsp;&nbsp;&nbsp;&nbsp;\n";
 print &text('view_filter', "&nbsp;" . &ui_textbox("filter", $in{'filter'}, 25)),"\n";
 print "&nbsp;&nbsp;\n";

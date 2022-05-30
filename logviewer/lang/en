@@ -9,15 +9,17 @@ index_view=View..
 index_viewfile=View log file:
 index_viewok=View
 
-journal_journalctl=All system logs
-journal_expla_journalctl=All system logs with message explanations
-journal_journalctl_dmesg=All system kernel messages
-journal_journalctl_debug_info=All system info and debug messages
-journal_journalctl_notice_warning=All system notice and warning messages
-journal_journalctl_err_emerg=All system error, critical, alert and emergency messages
+journal_journalctl=All messages
+journal_expla_journalctl=All messages with explanations
+journal_journalctl_dmesg=Kernel messages
+journal_journalctl_debug_info=Info and debug messages
+journal_journalctl_notice_warning=Notice and warning messages
+journal_journalctl_err_crit=Error and critical messages
+journal_journalctl_alert_emerg=Alert and emergency messages
 
 view_title=View Logfile
-view_header=Last $1 lines of $2 file
+view_header=Last $1 lines of $2
+view_header2=Last $1 lines of $2 file
 view_empty=Log file is empty
 view_refresh=Refresh
 view_filter=Filter lines with text $1

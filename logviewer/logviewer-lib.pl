@@ -33,24 +33,27 @@ sub get_systemctl_cmds
 {
 my $lines = $config{'lines'} || 1000;
 return !&has_command('journalctl') ? () : (
-	{ 'cmd' => "journalctl --lines $lines -p 0..3",
-	  'desc' => $text{'journal_journalctl_err_emerg'},
+	{ 'cmd' => "journalctl --lines $lines -p alert..emerg",
+	  'desc' => $text{'journal_journalctl_alert_emerg'},
 	  'id' => 1, },
-	{ 'cmd' => "journalctl --lines $lines -p 4..5",
-	  'desc' => $text{'journal_journalctl_notice_warning'},
+	{ 'cmd' => "journalctl --lines $lines -p err..crit",
+	  'desc' => $text{'journal_journalctl_err_crit'},
 	  'id' => 2, },
-	{ 'cmd' => "journalctl --lines $lines -p 6..7",
-	  'desc' => $text{'journal_journalctl_debug_info'},
+	{ 'cmd' => "journalctl --lines $lines -p notice..warning",
+	  'desc' => $text{'journal_journalctl_notice_warning'},
 	  'id' => 3, },
+	{ 'cmd' => "journalctl --lines $lines -p debug..info",
+	  'desc' => $text{'journal_journalctl_debug_info'},
+	  'id' => 4, },
 	{ 'cmd' => "journalctl --lines $lines -k ",
 	  'desc' => $text{'journal_journalctl_dmesg'},
-	  'id' => 4, },
-	{ 'cmd' => "journalctl --lines $lines",
-	  'desc' => $text{'journal_journalctl'},
 	  'id' => 5, },
 	{ 'cmd' => "journalctl --lines $lines -x ",
 	  'desc' => $text{'journal_expla_journalctl'},
-	  'id' => 6, } );
+	  'id' => 6, }, 
+	{ 'cmd' => "journalctl --lines $lines",
+	  'desc' => $text{'journal_journalctl'},
+	  'id' => 7, } );
 }
 
 # all_log_files(file)
