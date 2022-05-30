@@ -56,9 +56,9 @@ if (@vgs) {
 					  $text{'index_vgtotal2'} ], 100);
 		foreach $v (@vgs) {
 			print &ui_columns_row([
-			  "<a href='edit_vg.cgi?vg=".
-			    &urlize($v->{'name'})."'>".
-			    &html_escape($v->{'name'})."</a>",
+			  &ui_link(
+			    "edit_vg.cgi?vg=".&urlize($v->{'name'}),
+			    &html_escape($v->{'name'})),
 			  &nice_size($v->{'size'}*1024),
 			  &text('lv_petotals', $v->{'pe_alloc'},
 					       $v->{'pe_total'}),
@@ -92,8 +92,8 @@ if (@vgs) {
 	@allpvs = sort { $a->{'name'} cmp $b->{'name'} } @allpvs;
 	@links = ( );
 	foreach $v (@vgs) {
-		push(@links, "<a href='edit_pv.cgi?vg=".&urlize($v->{'name'}).
-			     "'>".&text('index_addpv2', $v->{'name'})."</a>");
+		push(@links, &ui_link("edit_pv.cgi?vg=".&urlize($v->{'name'}),
+				      &text('index_addpv2', $v->{'name'})));
 		}
 	if (!@allpvs) {
 		# None yet
@@ -110,8 +110,9 @@ if (@vgs) {
 		foreach $p (@allpvs) {
 			($v) = grep { $_->{'name'} eq $p->{'vg'} } @vgs;
 			print &ui_columns_row([
-			  "<a href='edit_pv.cgi?vg=".&urlize($v->{'name'}).
-		            "&pv=".&urlize($p->{'name'})."'>$p->{'name'}</a>",
+			  &ui_link(
+			    "edit_pv.cgi?vg=".&urlize($v->{'name'}).
+		            "&pv=".&urlize($p->{'name'}), $p->{'name'}),
 			  $v->{'name'},
 			  &nice_size($p->{'size'}*1024),
 			  &text('lv_petotals', $p->{'pe_alloc'},
@@ -148,18 +149,16 @@ if (@vgs) {
 	@alllvs = sort { $a->{'name'} cmp $b->{'name'} } @alllvs;
 	@links = ( );
 	foreach $v (@vgs) {
-		push(@links, "<a href='edit_lv.cgi?vg=".&urlize($v->{'name'}).
-			     "'>".&text('index_addlv2', $v->{'name'})."</a>");
+		push(@links, &ui_link("edit_lv.cgi?vg=".&urlize($v->{'name'}),
+				      &text('index_addlv2', $v->{'name'})));
 		@lvsin = grep { $_->{'vg'} eq $v->{'name'} } @alllvs;
 		if (@lvsin) {
-			push(@links,
-			  "<a href='edit_lv.cgi?vg=".&urlize($v->{'name'}).
-			  "&snap=1'>".&text('index_addlv2s', $v->{'name'}).
-			  "</a>");
-			push(@links,
-			  "<a href='thin_form.cgi?vg=".&urlize($v->{'name'}).
-			  "'>".&text('index_addlv3', $v->{'name'}).
-			  "</a>");
+			push(@links, &ui_link(
+			    "edit_lv.cgi?vg=".&urlize($v->{'name'})."&snap=1",
+			    &text('index_addlv2s', $v->{'name'})));
+			push(@links, &ui_link(
+			    "thin_form.cgi?vg=".&urlize($v->{'name'}),
+			    &text('index_addlv3', $v->{'name'})));
 			}
 		}
 	if (!@alllvs) {
@@ -201,8 +200,10 @@ if (@vgs) {
 					}
 				}
 			print &ui_columns_row([
-			  "<a href='edit_lv.cgi?vg=".&urlize($v->{'name'}).
-		            "&lv=".&urlize($l->{'name'})."'>$l->{'name'}</a>",
+			  &ui_link(
+			    "edit_lv.cgi?vg=".&urlize($v->{'name'}).
+		            "&lv=".&urlize($l->{'name'}),
+			    $l->{'name'}),
 			  $v->{'name'},
 			  &nice_size(($l->{'cow_size'} || $l->{'size'})*1024),
 			  $usedmsg,
