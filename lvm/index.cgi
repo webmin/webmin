@@ -160,6 +160,8 @@ if (@vgs) {
 			    "thin_form.cgi?vg=".&urlize($v->{'name'}),
 			    &text('index_addlv3', $v->{'name'})));
 			}
+		push(@links, &ui_link("raid_form.cgi?vg=".&urlize($v->{'name'}),
+				      &text('index_addlv4', $v->{'name'})));
 		}
 	if (!@alllvs) {
 		# None yet
