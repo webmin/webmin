@@ -26,10 +26,12 @@ if ($access{'syslog'}) {
 		push(@col1, \@cols);
 		}
 
+	# System logs from other modules
+	my @foreign_syslogs;
 	if (&foreign_available('syslog') &&
 	    &foreign_installed('syslog')) {
 		&foreign_require('syslog');
-		$conf = &syslog::get_config();
+		my $conf = &syslog::get_config();
 		foreach $c (@$conf) {
 			next if ($c->{'tag'});
 			next if (!&can_edit_log($c));
@@ -46,7 +48,33 @@ if ($access{'syslog'}) {
 				push(@cols, &ui_link("view_log.cgi?idx=syslog-".$c->{'index'}."&".
 				      "view=1", $text{'index_view'}) );
 				push(@col1, \@cols);
+				push(@foreign_syslogs, $c->{'file'});
 				}
+			}
+		}
+	if (&foreign_available('syslog-ng') &&
+	    &foreign_installed('syslog-ng')) {
+		&foreign_require('syslog-ng');
+		my $conf = &syslog_ng::get_config();
+		my @dests = &syslog_ng::find("destination", $conf);
+		foreach my $dest (@dests) {
+			my $file = &syslog_ng::find_value("file", $dest->{'members'});
+			my ($type, $typeid) = &syslog_ng::nice_destination_type($dest);
+			next if (grep(/^$file$/, @foreign_syslogs));
+			next if ($file !~ /^\//);
+			if ($typeid == 0 && -f $file) {
+				my @cols;
+				if ($file && -f $file) {
+					next if (!&can_edit_log({'file' => $file}));
+					push(@cols, &text('index_file',
+						"<tt>".&html_escape($file)."</tt>"));
+					push(@cols, "&nbsp;;&nbsp;$dest->{'value'}");
+					push(@cols, &ui_link("view_log.cgi?idx=syslog-ng-".$dest->{'index'}."&".
+					      "view=1", $text{'index_view'}) );
+					push(@col1, \@cols);
+					}
+				}
+			
 			}
 		}
 	}

@@ -31,6 +31,23 @@ if ($in{'view'}) {
 				&error($text{'save_ecannot2'});
 			$cmd = $log->{'cmd'};
 			}
+
+		# System logs from other modules
+		elsif ($in{'idx'} =~ /^syslog-ng-/) {
+			if (&foreign_available('syslog-ng') &&
+			    &foreign_installed('syslog-ng')) {
+				&foreign_require('syslog-ng');
+				my $conf = &syslog_ng::get_config();
+				my @dests = &syslog_ng::find("destination", $conf);
+				my $iid = $in{'idx'};
+				$iid =~ s/^syslog-ng-//;
+				my $log = $conf->[$iid];
+				my $dfile = &syslog_ng::find_value("file", $log->{'members'});
+				&can_edit_log({'file' => $dfile}) && $access{'syslog'} ||
+					&error($text{'save_ecannot2'});
+				$file = $dfile;
+				}
+			}
 		elsif ($in{'idx'} =~ /^syslog-/) {
 			if (&foreign_available('syslog') &&
 			    &foreign_installed('syslog')) {
@@ -196,6 +213,9 @@ if ($access{'syslog'}) {
 		push(@logfiles, [ $c->{'id'}, "$c->{'desc'}" ]);
 		$found++ if ($c->{'id'} eq $in{'idx'});
 		}
+
+	# System logs from other modules
+	my @foreign_syslogs;
 	if (&foreign_available('syslog') &&
 	    &foreign_installed('syslog')) {
 		&foreign_require('syslog');
@@ -206,6 +226,26 @@ if ($access{'syslog'}) {
 			next if (!$c->{'file'} || !-f $c->{'file'});
 			push(@logfiles, [ "syslog-$c->{'index'}", $c->{'file'} ]);
 			$found++ if ($c->{'file'} eq $file);
+			push(@foreign_syslogs, $c->{'file'});
+			}
+		}
+	if (&foreign_available('syslog-ng') &&
+	    &foreign_installed('syslog-ng')) {
+		&foreign_require('syslog-ng');
+		my $conf = &syslog_ng::get_config();
+		my @dests = &syslog_ng::find("destination", $conf);
+		foreach my $dest (@dests) {
+			my $dfile = &syslog_ng::find_value("file", $dest->{'members'});
+			my ($type, $typeid) = &syslog_ng::nice_destination_type($dest);
+			next if (grep(/^$dfile$/, @foreign_syslogs));
+			next if ($dfile !~ /^\//);
+			if ($typeid == 0 && -f $dfile) {
+				my @cols;
+				if ($dfile && -f $dfile) {
+					push(@logfiles, [ "syslog-ng-$dest->{'index'}", $dfile ]);
+					$found++ if ($dfile eq $file);
+					}
+				}
 			}
 		}
 	}
