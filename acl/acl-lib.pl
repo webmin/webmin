@@ -1693,7 +1693,7 @@ else {
 	# Try detecting system default first
 	if (&foreign_available('useradmin')) {
 		&foreign_require('useradmin');
-		return &useradmin::encrypt_password($pass, $salt, 'force_system_detection');
+		return &useradmin::encrypt_password($pass, $salt, 1);
 		}
 	else {
 		# Use Unix DES
