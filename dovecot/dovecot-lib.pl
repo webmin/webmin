@@ -422,6 +422,7 @@ return undef;
 # undef if successful
 sub stop_dovecot
 {
+&foreign_require("init");
 my ($ok, $err) = &init::stop_action('dovecot');
 return $ok ? undef : "<pre>$err</pre>";
 }
@@ -431,6 +432,7 @@ return $ok ? undef : "<pre>$err</pre>";
 # undef if successful
 sub start_dovecot
 {
+&foreign_require("init");
 my ($ok, $err) = &init::start_action('dovecot');
 return $ok ? undef : "<pre>$err</pre>";
 }
@@ -446,6 +448,7 @@ if (!$pid) {
 	}
 elsif ($restart) {
 	# Fully shut down and re-start
+	&foreign_require("init");
 	my ($ok, $err) = &init::restart_action('dovecot');
 	return $ok ? undef : "<pre>$err</pre>";
 	}
