@@ -37,7 +37,7 @@ our @server_types = (
 		  [ 'fedora', 'Fedora Linux', undef, 'Fedora' ],
 		  [ 'oracle', 'Oracle Linux', undef, 'Oracle' ],
 		  [ 'redflag', 'Red Flag Linux', undef, 'RedFlag' ],
-		  [ 'rocky', 'Linux Linux', undef, 'Rocky' ],
+		  [ 'rocky', 'Rocky Linux', undef, 'Rocky' ],
 		  [ 'amazon', 'Amazon Linux', undef, 'Amazon' ],
 		  [ 'pi', 'Raspbian Linux', undef, 'Raspbian' ],
 
