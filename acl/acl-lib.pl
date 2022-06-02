@@ -14,6 +14,7 @@ Library for editing webmin users, passwords and access rights.
 BEGIN { push(@INC, ".."); };
 use strict;
 use warnings;
+no warnings 'redefine';
 use WebminCore;
 &init_config();
 do 'md5-lib.pl';
