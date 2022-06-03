@@ -5,7 +5,7 @@
 use strict;
 use warnings;
 require './webmin-lib.pl';
-our (%in, %text, %gconfig, %config);
+our (%in, %text, %gconfig, %config, $config_directory);
 my $ver = &get_webmin_version();
 my $rel = &get_webmin_version_release();
 $ver .= "-".$rel if ($rel);
@@ -114,3 +114,11 @@ if ($in{'refresh'} && defined(&theme_post_change_modules)) {
 
 &ui_print_footer("/", $text{'index'});
 
+if (&webmin_user_is_admin() &&
+    $ENV{'HTTP_REFERER'} =~ /\/edit_bind\.cgi/) {
+	# In case of systemd kill service to be auto-restarted
+	# by systemd if coming from Ports and Addresses page.
+	if (&has_command('systemctl')) {
+		&system_logged("$config_directory/stop --force >/dev/null 2>&1 </dev/null");
+		}
+}

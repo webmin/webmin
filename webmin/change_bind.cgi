@@ -135,7 +135,7 @@ else {
 
 # Attempt to re-start miniserv
 $SIG{'TERM'} = 'ignore';
-&system_logged("$config_directory/stop >/dev/null 2>&1 </dev/null");
+&system_logged("$config_directory/stop --grace >/dev/null 2>&1 </dev/null");
 $temp = &transname();
 $rv = &system_logged("$config_directory/start >$temp 2>&1 </dev/null");
 $out = &read_file_contents($temp);
@@ -175,15 +175,19 @@ else { $url = $ENV{'SERVER_NAME'}; }
 if ($ENV{'HTTPS'} eq "ON") { $url = "https://$url"; }
 else { $url = "http://$url"; }
 
-if ($tconfig{'inframe'}) {
-	# Theme uses frames, so we need to redirect the whole frameset
+# Theme redirect if port changed
+if ($miniserv{'port'} ne $oldminiserv{'port'}) {
 	$url .= ":$miniserv{'port'}";
 	&ui_print_header(undef, $text{'bind_title'}, "");
 	print $text{'bind_redirecting'},"<p>\n";
 	print "<script>\n";
-	print "top.location = '$url';\n";
+	print "setTimeout(function(){top.location = '$url';}, 3000)\n";
 	print "</script>\n";
 	&ui_print_footer("", $text{'index_return'});
+	# In case of systemd kill service to be auto-restarted by systemd
+	if (&has_command('systemctl')) {
+		&system_logged("$config_directory/stop --force >/dev/null 2>&1 </dev/null");
+		}
 	}
 else {
 	$url .= ":$miniserv{'port'}/webmin/";
