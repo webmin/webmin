@@ -329,8 +329,7 @@ elsif ($in{'mode'} eq 'solaris-pkg' || $in{'mode'} eq 'sun-pkg') {
 	# package.  It would be interesting, however, if this were embedded in
 	# a remote script that could be nohup'd and it would restart the server.
 	chdir("/");
-	&proc::safe_process_exec_logged(
-		"$config_directory/stop --grace", 0, 0, STDOUT, undef, 1,1);
+	&restart_miniserv();
 
 	$in{'root'} = '/';
 	$in{'adminfile'} = '$module_root_directory/adminupgrade';

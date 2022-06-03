@@ -632,13 +632,7 @@ else {
 		
 		# Stop systemd
 		open(STOPD, ">$config_directory/stop");
-		print STOPD "if [ \"\$1\" = \"--grace\" ]; then\n";
-		print STOPD "  $systemctlcmd kill -s SIGHUP webmin\n";
-		print STOPD "elif [ \"\$1\" = \"--force\" ]; then\n";
-		print STOPD "  $systemctlcmd kill -s SIGKILL webmin\n";
-		print STOPD "else\n";
-		print STOPD "  $systemctlcmd stop webmin\n";
-		print STOPD "fi\n";
+		print STOPD "$systemctlcmd stop webmin\n";
 		close(STOPD);
 
 		# Restart systemd

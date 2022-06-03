@@ -688,13 +688,7 @@ if [ -x "$systemctlcmd" ]; then
 	echo "$systemctlcmd start webmin" >>$config_dir/start
 	# Stop systemd
 	echo "#!/bin/sh" >>$config_dir/stop
-	echo "if [ \"\$1\" = \"--grace\" ]; then" >>$config_dir/stop
-	echo "  $systemctlcmd kill -s SIGHUP webmin" >>$config_dir/stop
-	echo "elif [ \"\$1\" = \"--force\" ]; then" >>$config_dir/stop
-	echo "  $systemctlcmd kill -s SIGKILL webmin" >>$config_dir/stop
-	echo "else" >>$config_dir/stop
-	echo "  $systemctlcmd stop webmin" >>$config_dir/stop
-	echo "fi" >>$config_dir/stop
+	echo "$systemctlcmd stop webmin" >>$config_dir/stop
 	# Restart systemd
 	echo "#!/bin/sh" >>$config_dir/restart
 	echo "$systemctlcmd restart webmin" >>$config_dir/restart
