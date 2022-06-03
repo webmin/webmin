@@ -7,10 +7,12 @@ ExecStart=/etc/webmin/.start-init
 ExecStop=/etc/webmin/.stop-init
 PIDFile=/var/webmin/miniserv.pid
 Type=forking
-Restart=always
+Restart=on-failure
 RestartSec=3s
 StartLimitBurst=3
 StartLimitIntervalSec=3
+OOMPolicy=continue
+OOMScoreAdjust=-999
 
 [Install]
 WantedBy=multi-user.target
