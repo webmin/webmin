@@ -5,6 +5,7 @@ After=syslog.target
 [Service]
 ExecStart=/etc/webmin/.start-init
 ExecStop=/etc/webmin/.stop-init
+ExecReload=/etc/webmin/.reload-init
 PIDFile=/var/webmin/miniserv.pid
 Type=forking
 Restart=on-failure
