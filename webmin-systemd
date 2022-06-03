@@ -11,7 +11,7 @@ Restart=on-failure
 RestartSec=1s
 StartLimitBurst=3
 StartLimitIntervalSec=3
-OOMPolicy=continue
+OOMPolicy=kill
 OOMScoreAdjust=-999
 
 [Install]
