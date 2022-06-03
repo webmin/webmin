@@ -3,11 +3,12 @@ Description=Webmin server daemon
 After=syslog.target
 
 [Service]
-ExecStart=/etc/webmin/.start-init
-ExecStop=/etc/webmin/.stop-init
-ExecReload=/etc/webmin/.reload-init
-PIDFile=/var/webmin/miniserv.pid
+ExecStart=WEBMIN_CONFIG/.start-init
+ExecStop=WEBMIN_CONFIG/.stop-init
+ExecReload=WEBMIN_CONFIG/.reload-init
+PIDFile=WEBMIN_VAR/miniserv.pid
 Type=forking
+KillMode=control-group
 Restart=on-failure
 RestartSec=1s
 StartLimitBurst=3
