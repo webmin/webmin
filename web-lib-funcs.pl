@@ -6622,9 +6622,9 @@ sub var_dump
 my ($objref, $filename, $pidtofilename) = @_;
 my $pid;
 $pid = "-" . $$ if ($pidtofilename);
-my $filename_ = "$pid";
+my $filename_ = "var_dump$pid";
 
-if ($filename && $filename_) {
+if ($filename) {
 	$filename  =~ tr/A-Za-z0-9\_\-//cd;
 	$filename = "$filename--";
 	}
@@ -6633,7 +6633,7 @@ eval 'use Data::Dumper';
 if (!$@) {
 	$Data::Dumper::Indent = 1;
 	$Data::Dumper::Terse = 1;
-	$Data::Dumper::Deepcopy = 1;
+	$Data::Dumper::Varname = 'this';
 	$Data::Dumper::Sortkeys = 1;
 
 	# Write file
