@@ -1,6 +1,7 @@
 index_title=System Logs NG
 index_eprog=The system logging daemon $1 was not found on your system, or is not the syslog-ng program. Adjust the <a href='$2'>module configuration</a> to use the correct path.
 index_econf=The Syslog-NG configuration file $1 was not found on your system. Adjust the <a href='$2'>module configuration</a> to use the correct path.
+index_econf2=The <tt>systemd-journald</tt> service was detected on your system for collecting and storing logging data. It is recommended to use a new <a href='$2'>$1</a> module instead.
 index_apply=Apply Configuration
 index_applydesc=Click this button to activate the current Syslog-NG configuration.
 index_stop=Stop Syslog-NG
