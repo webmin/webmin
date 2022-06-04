@@ -18,6 +18,17 @@ foreach my $f (split(/\s+/, $config{'dovecot_config'})) {
 return undef;
 }
 
+# get_add_config_file()
+# Returns the full path to the first valid config file for new top-level
+# directives
+sub get_add_config_file
+{
+foreach my $f (split(/\s+/, $config{'add_config'})) {
+	return $f if (-r $f);
+	}
+return &get_config_file();
+}
+
 # get_config()
 # Returns a list of dovecot config entries
 sub get_config
@@ -280,12 +291,13 @@ elsif (!$dir && defined($value)) {
 		}
 	else {
 		# Need to put at end of main config
-		local $lref = &read_file_lines(&get_config_file());
+		local $file = &get_add_config_file();
+		local $lref = &read_file_lines($file);
 		push(@$lref, $newline);
 		push(@$conf, { 'name' => $name,
 			       'value' => $value,
 			       'enabled' => 1,
-			       'file' => &get_config_file(),
+			       'file' => $file,
 			       'line' => scalar(@$lref)-1,
 			       'eline' => scalar(@$lref)-1,
 			       'sectionname' => $sname,
