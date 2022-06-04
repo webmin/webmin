@@ -5,9 +5,16 @@ require './syslog-ng-lib.pl';
 
 # Make sure it is installed
 $ver = &get_syslog_ng_version();
+# Suggest using a new module
+my $index_econf2;
+if (&has_command('systemctl')) {
+	if (&foreign_available('logviewer')) {
+		$index_econf2 = &text('index_econf2', "System Logs Viewer", "@{[&get_webprefix()]}/logviewer") . "<p><br>";
+		}
+	}
 if (!$ver) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
-	&ui_print_endpage(&text('index_eprog', "<tt>$config{'syslogng_cmd'}</tt>", "../config.cgi?$module_name"));
+	&ui_print_endpage($index_econf2 . &text('index_eprog', "<tt>$config{'syslogng_cmd'}</tt>", "../config.cgi?$module_name"));
 	}
 if (!-r $config{'syslogng_conf'} && -r $config{'alt_syslogng_conf'}) {
 	# Copy original template config file
@@ -16,7 +23,7 @@ if (!-r $config{'syslogng_conf'} && -r $config{'alt_syslogng_conf'}) {
 	}
 if (!-r $config{'syslogng_conf'}) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
-	&ui_print_endpage(&text('index_econf', "<tt>$config{'syslogng_conf'}</tt>", "../config.cgi?$module_name"));
+	&ui_print_endpage($index_econf2 . &text('index_econf', "<tt>$config{'syslogng_conf'}</tt>", "../config.cgi?$module_name"));
 	}
 
 &ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,

@@ -1,0 +1,2 @@
+---- Changes since 1.000 ----
+Add support for viewing all system logs files, including systemd-journald

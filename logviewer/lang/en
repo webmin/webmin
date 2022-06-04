@@ -1,0 +1,41 @@
+index_title=System Logs Viewer
+index_elogs=No logs were found to display
+index_to=Log destination
+index_rule=Messages selected
+index_file=File $1
+index_cmd=Output from $1
+index_return=system logs viewer
+index_view=View..
+index_viewfile=View log file:
+index_viewok=View
+
+journal_journalctl=All messages
+journal_expla_journalctl=All messages with explanations
+journal_journalctl_dmesg=Kernel messages
+journal_journalctl_debug_info=Debug and info messages
+journal_journalctl_notice_warning=Notice and warning messages
+journal_journalctl_err_crit=Error and critical messages
+journal_journalctl_alert_emerg=Alert and emergency messages
+
+view_title=View Logfile
+view_header=Last $1 lines of $2
+view_header2=Last $1 lines of $2 file
+view_empty=Log file is empty
+view_refresh=Refresh
+view_filter=Filter lines with text $1
+
+save_efile='$1' is not a valid filename : $2
+save_ecannot2=You are not allowed to view this log
+save_ecannot6=You are not allowed to view arbitrary logs
+save_ecannot7=You are not allowed to view this extra log
+save_emissing=Missing log file to view
+
+acl_any=Can view any file as a log?
+acl_logs=Can view and configure log files
+acl_all=All logs
+acl_sel=Only listed files and those under listed directories ..
+acl_extra=Extra log files for this user
+acl_syslog=Can view logs from syslog?
+acl_others=Can view logs from other modules?
+
+__norefs=1

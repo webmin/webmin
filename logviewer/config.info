@@ -1,0 +1,6 @@
+line1=Configurable options,11
+lines=Default number of lines to display,0,6
+refresh=Seconds between log view refreshes,3,Never
+others=Show logs from other modules?,1,1-Yes,0-No
+extras=Extra log files to show,9,50,4,\t
+reverse=Log display order,1,1-Newest lines at top,0-Newest lines at bottom

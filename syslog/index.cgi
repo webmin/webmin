@@ -22,8 +22,15 @@ if ($config{'m4_conf'}) {
 	}
 
 if (!-r $config{'syslog_conf'}) {
+	# Suggest using a new module
+	my $index_econf2;
+	if (&has_command('systemctl')) {
+		if (&foreign_available('logviewer')) {
+			$index_econf2 = &text('index_econf2', "System Logs Viewer", "@{[&get_webprefix()]}/logviewer") . "<p><br>";
+			}
+		}
 	# Not installed (maybe using syslog-ng)
-	&ui_print_endpage(&text('index_econf', "<tt>$config{'syslog_conf'}</tt>", "../config.cgi?$module_name"));
+	&ui_print_endpage($index_econf2 . &text('index_econf', "<tt>$config{'syslog_conf'}</tt>", "../config.cgi?$module_name"));
 	}
 
 # Display syslog rules

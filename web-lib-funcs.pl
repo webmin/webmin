@@ -12202,6 +12202,18 @@ my ($user_type) = @_;
 return &webmin_user_login_mode() eq $user_type;
 }
 
+# get_current_theme_info_cached([no-cache])
+# Returns cached theme info
+sub get_current_theme_info_cached
+{
+my ($nocache) = @_;
+state %current_theme_info;
+if (!%current_theme_info || $nocache) {
+	%current_theme_info = &get_theme_info($current_theme);
+	}
+return \%current_theme_info;
+}
+
 $done_web_lib_funcs = 1;
 
 1;
