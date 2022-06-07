@@ -2,23 +2,25 @@
 # Icons copyright David Vignoni, all other theme elements copyright 2005-2007
 # Virtualmin, Inc.
 
-# Un-comment these when left.cgi is the same as in virtual-server-theme
-#$main::cloudmin_no_create_links = 1;
-#$main::cloudmin_no_edit_buttons = 1;
-#$main::cloudmin_no_global_links = 1;
+$main::cloudmin_no_create_links = 1;
+$main::cloudmin_no_edit_buttons = 1;
+$main::cloudmin_no_global_links = 1;
 
-#$main::mailbox_no_addressbook_button = 1;
-#$main::mailbox_no_folder_button = 1;
+$main::mailbox_no_addressbook_button = 1;
+$main::mailbox_no_folder_button = 1;
 
-#$main::basic_virtualmin_menu = 1;
-#$main::nocreate_virtualmin_menu = 1;
-#$main::nosingledomain_virtualmin_mode = 1;
+$main::basic_virtualmin_menu = 1;
+$main::basic_virtualmin_domain = 1;
+$main::nocreate_virtualmin_menu = 1;
+$main::nosingledomain_virtualmin_mode = 1;
+
+our $ui_formcount;
 
 # Global state for wrapper
 # if 0, wrapper isn't on, add one and open it, if 1 close it, if 2+, subtract
 # but don't close
 $main::WRAPPER_OPEN = 0;
-$main::COLUMNS_main::WRAPPER_OPEN = 0;
+$main::COLUMNS_WRAPPER_OPEN = 0;
 
 # theme_ui_post_header([subtext])
 # Returns HTML to appear directly after a standard header() call
@@ -47,6 +49,23 @@ sub theme_ui_print_footer
 {
 local @args = @_;
 print &ui_pre_footer();
+if ($ui_formcount) {
+  print <<EOL;
+  <script>
+    (function(){
+        var forms = document.forms || [];
+        for(var i = 0; i < forms.length; i++){
+            for(var j = 0; j < forms[i].length; j++){
+                if(!forms[i][j].readonly != undefined && forms[i][j].type != "hidden" && forms[i][j].disabled != true && forms[i][j].style.display != 'none'){
+                    forms[i][j].focus();
+                    return;
+                }
+            }
+        }
+    })();
+</script>
+EOL
+}
 &footer(@args);
 }
 
@@ -105,7 +124,7 @@ local ($d, $action) = @_;
 print "<script>\n";
 if ($action eq 'create') {
 	# Select the new domain
-	print "top.left.location = '@{[&get_webprefix()]}/left.cgi?dom=$d->{'id'}';\n";
+	print "top.left.location = '@{[&theme_get_webprefix_safe()]}/left.cgi?mode=virtual-server&dom=$d->{'id'}';\n";
 	}
 else {
 	# Just refresh left
@@ -155,7 +174,7 @@ if (window.parent && window.parent.frames[0]) {
 			//	// Need to change value of selector
 			//	serversel.value = '$server->{'id'}';
 			//	}
-			window.parent.frames[0].location = '@{[&get_webprefix()]}/left.cgi?mode=vm2&sid=$server->{'id'}';
+			window.parent.frames[0].location = '@{[&theme_get_webprefix_safe()]}/left.cgi?mode=server-manager&sid=$server->{'id'}';
 			}
 		}
 	}
@@ -179,7 +198,7 @@ if (window.parent && window.parent.frames[0]) {
 		if (domsel && domsel.value != '$d->{'id'}') {
 			// Need to change value
 			// domsel.value = '$d->{'id'}';
-			window.parent.frames[0].location = '@{[&get_webprefix()]}/left.cgi?mode=virtualmin&dom=$d->{'id'}';
+			window.parent.frames[0].location = '@{[&theme_get_webprefix_safe()]}/left.cgi?mode=virtual-server&dom=$d->{'id'}';
 			}
 		}
 	}
@@ -215,15 +234,11 @@ if ($ref) {
 sub theme_post_change_modules
 {
 print <<EOF;
-<script type='text/javascript'>
+<script>
 var url = '' + top.left.location;
-if ( url.match(/mode=.*/) ) {
-    if ( url.indexOf('mode=webmin') > 0) {
-        top.left.location = url;
-    }
-} else {
+if (url.indexOf('mode=modules') > 0) {
     top.left.location = url;
-}
+    }
 </script>
 EOF
 }
@@ -232,20 +247,24 @@ sub theme_prebody
 {
 if ($script_name =~ /session_login.cgi/) {
 	# Generate CSS link
-	print "<link rel='stylesheet' type='text/css' href='@{[&get_webprefix()]}/unauthenticated/gray-reset-fonts-grids-base.css'>\n";
-	print "<link rel='stylesheet' type='text/css' href='@{[&get_webprefix()]}/unauthenticated/gray-virtual-server-style.css'>\n";
+	print "<link rel='stylesheet' type='text/css' href='@{[&theme_get_webprefix_safe()]}/unauthenticated/reset-fonts-grids-base.css'>\n";
+	print "<link rel='stylesheet' type='text/css' href='@{[&theme_get_webprefix_safe()]}/unauthenticated/virtual-server-style.css'>\n";
 	print "<!--[if IE]>\n";
 	print "<style type=\"text/css\">\n";
 	print "table.formsection, table.ui_table, table.loginform { border-collapse: collapse; }\n";
 	print "</style>\n";
 	print "<![endif]-->\n";
 	}
+if (get_module_name() eq "virtual-server") {
+	# No need for Module Index link, as we have the left-side frame
+	$tconfig{'nomoduleindex'} = 1;
+	}
 }
 
 sub theme_prehead
 {
-print "<link rel='stylesheet' type='text/css' href='@{[&get_webprefix()]}/unauthenticated/gray-reset-fonts-grids-base.css'>\n";
-print "<link rel='stylesheet' type='text/css' href='@{[&get_webprefix()]}/unauthenticated/gray-virtual-server-style.css' />\n";
+print "<link rel='stylesheet' type='text/css' href='@{[&theme_get_webprefix_safe()]}/unauthenticated/reset-fonts-grids-base.css'>\n";
+print "<link rel='stylesheet' type='text/css' href='@{[&theme_get_webprefix_safe()]}/unauthenticated/virtual-server-style.css' />\n";
 print "<!--[if IE]>\n";
 print "<style type=\"text/css\">\n";
 print "table.formsection, table.ui_table, table.loginform { border-collapse: collapse; }\n";
@@ -254,7 +273,7 @@ print "<![endif]-->\n";
 print "<script>\n";
 print "var rowsel = new Array();\n";
 print "</script>\n";
-print "<script type='text/javascript' src='@{[&get_webprefix()]}/unauthenticated/sorttable.js'></script>\n";
+print "<script type='text/javascript' src='@{[&theme_get_webprefix_safe()]}/unauthenticated/sorttable.js'></script>\n";
 if ($ENV{'HTTP_USER_AGENT'} =~ /Chrome/) {
 	print "<style type=\"text/css\">\n";
 	print "textarea,pre { font-size:120%; }\n";
@@ -321,6 +340,8 @@ if ($main::ui_table_pos+$cols+1 > $main::ui_table_cols &&
     $main::ui_table_pos != 0) {
     # If the requested number of cols won't fit in the number
     # remaining, start a new row
+    my $leftover = $main::ui_table_cols - $main::ui_table_pos;
+    $rv .= "<td colspan=$leftover></td>\n";
     $rv .= "</tr>\n";
     $main::ui_table_pos = 0;
     }
@@ -339,6 +360,19 @@ if ($main::ui_table_pos%$main::ui_table_cols == 0) {
     $rv .= "</tr>\n";
     $main::ui_table_pos = 0;
     }
+return $rv;
+}
+
+sub theme_ui_table_hr
+{
+my $rv;
+if ($main::ui_table_pos) {
+	$rv .= "</tr>\n";
+	$main::ui_table_pos = 0;
+	}
+$rv .= "<tr class='ui_form_pair'>\n";
+$rv .= "<td class='ui_form_label' colspan=$main::ui_table_cols><hr></td>\n";
+$rv .= "</tr>\n";
 return $rv;
 }
 
@@ -391,7 +425,7 @@ $rv .= "document.${name}_tabtitles = $tabtitles;\n";
 $rv .= "</script>\n";
 
 # Output the tabs
-my $imgdir = "@{[&get_webprefix()]}/images";
+my $imgdir = "@{[&theme_get_webprefix_safe()]}/images";
 $rv .= &ui_hidden($name, $sel)."\n";
 $rv .= "<table border=0 cellpadding=0 cellspacing=0 class='ui_tabs'>\n";
 $rv .= "<tr><td bgcolor=#ffffff colspan=".(scalar(@$tabs)*2+1).">";
@@ -460,14 +494,14 @@ my ($heads, $width, $noborder, $tdtags, $title) = @_;
 my ($href) = grep { $_ =~ /<a\s+href/i } @$heads;
 my $rv;
 $theme_ui_columns_row_toggle = 0;
-if (!$noborder && !$main::COLUMNS_main::WRAPPER_OPEN) {
+if (!$noborder && !$main::COLUMNS_WRAPPER_OPEN) {
 	$rv .= "<table class='wrapper' width="
 	     . ($width ? $width : "100")
 	     . "%>\n";
 	$rv .= "<tr><td>\n";
 	}
 if (!$noborder) {
-	$main::COLUMNS_main::WRAPPER_OPEN++;
+	$main::COLUMNS_WRAPPER_OPEN++;
 	}
 my @classes;
 push(@classes, "ui_table") if (!$noborder);
@@ -514,10 +548,10 @@ sub theme_ui_columns_end
 {
 my $rv;
 $rv = "</tbody> </table>\n";
-if ($main::COLUMNS_main::WRAPPER_OPEN == 1) { # Last wrapper
+if ($main::COLUMNS_WRAPPER_OPEN == 1) { # Last wrapper
 	$rv .= "</td> </tr> </table>\n";
 	}
-$main::COLUMNS_main::WRAPPER_OPEN--;
+$main::COLUMNS_WRAPPER_OPEN--;
 return $rv;
 }
 
@@ -590,7 +624,7 @@ $rv .= "<table class='ui_table' $tabletags>\n";
 if (defined($heading) || defined($rightheading)) {
 	$rv .= "<thead><tr>";
 	if (defined($heading)) {
-		$rv .= "<td><a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='@{[&get_webprefix()]}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\" class='ui-hidden-table-title'><b>$heading</b></a></td>";
+		$rv .= "<td><a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='@{[&theme_get_webprefix_safe()]}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\" class='ui-hidden-table-title'><b>$heading</b></a></td>";
 		}
         if (defined($rightheading)) {
                 $rv .= "<td align=right>$rightheading</td>";
@@ -639,6 +673,33 @@ local ($field, $form, $text) = @_;
 $form = int($form);
 $text ||= $text{'ui_selinv'};
 return "<a class='select_invert' href='#' onClick='f = document.forms[$form]; ff = f.$field; ff.checked = !f.$field.checked; r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = ff.checked ? \"mainsel\" : \"mainbody\" }; for(i=0; i<f.$field.length; i++) { ff = f.${field}[i]; if (!ff.disabled) { ff.checked = !ff.checked; r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = ff.checked ? \"mainsel\" : \"mainbody row\"+((i+1)%2) } } } return false'>$text</a>";
+}
+
+# theme_select_status_link(name, form, &folder, &mails, start, end, status, label)
+# Adds support for row highlighting to read mail module selector
+# XXX can delete after Usermin 1.400
+sub theme_select_status_link
+{
+local ($name, $formno, $folder, $mail, $start, $end, $status, $label) = @_;
+$formno = int($formno);
+local @sel;
+for(my $i=$start; $i<=$end; $i++) {
+	local $read = &get_mail_read($folder, $mail->[$i]);
+	if ($status == 0) {
+		push(@sel, ($read&1) ? 0 : 1);
+		}
+	elsif ($status == 1) {
+		push(@sel, ($read&1) ? 1 : 0);
+		}
+	elsif ($status == 2) {
+		push(@sel, ($read&2) ? 1 : 0);
+		}
+	}
+my $js = "var sel = [ ".join(",", @sel)." ]; ";
+$js .= "var f = document.forms[$formno]; ";
+$js .= "for(var i=0; i<sel.length; i++) { document.forms[$formno].${name}[i].checked = sel[i]; var ff = f.${name}[i]; var r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = ff.checked ? \"mainsel\" : \"mainbody row\"+((i+1)%2) } }";
+$js .= "return false;";
+return "<a class='select_status' href='#' onClick='$js'>$label</a>";
 }
 
 sub theme_select_rows_link
@@ -727,11 +788,11 @@ my ($direction, $url, $disabled) = @_;
 my $alt = $direction eq "left" ? '<-' : '->';
 if ($disabled) {
   return "<img alt=\"$alt\" align=\"middle\""
-       . "src=\"@{[&get_webprefix()]}/images/$direction-grey.gif\">\n";
+       . "src=\"@{[&theme_get_webprefix_safe()]}/images/$direction-grey.gif\">\n";
   }
 else {
   return "<a href=\"$url\"><img alt=\"$alt\" align=\"top\""
-       . "src=\"@{[&get_webprefix()]}/images/$direction.gif\"></a>\n";
+       . "src=\"@{[&theme_get_webprefix_safe()]}/images/$direction.gif\"></a>\n";
   }
 }
 
@@ -748,6 +809,28 @@ for($i=0; $i+1<@_; $i+=2) {
 		if ($url eq '/') {
 			$url = "/?cat=$module_info{'category'}";
 			}
+		elsif ($url eq '' && get_module_name() eq 'virtual-server' ||
+		       $url eq '/virtual-server/') {
+			# Don't bother with virtualmin menu
+			next;
+			}
+		elsif ($url eq '' && get_module_name() eq 'server-manager' ||
+		       $url eq '/server-manager/') {
+			# Don't bother with Cloudmin menu
+			next;
+			}
+		#elsif ($url =~ /(view|edit)_domain.cgi/ &&
+		#       get_module_name() eq 'virtual-server' ||
+		#       $url =~ /^\/virtual-server\/(view|edit)_domain.cgi/) {
+		#	# Don't bother with link to domain details
+		#	next;
+		#	}
+		elsif ($url =~ /edit_serv.cgi/ &&
+		       get_module_name() eq 'server-manager' ||
+		       $url =~ /^\/virtual-server\/edit_serv.cgi/) {
+			# Don't bother with link to system details
+			next;
+			}
 		elsif ($url eq '' && get_module_name()) {
 			$url = "/".get_module_name()."/".
 			       $module_info{'index_link'};
@@ -755,7 +838,7 @@ for($i=0; $i+1<@_; $i+=2) {
 		elsif ($url =~ /^\?/ && get_module_name()) {
 			$url = "/".get_module_name()."/$url";
 			}
-		$url = "@{[&get_webprefix()]}$url" if ($url =~ /^\//);
+		$url = "@{[&theme_get_webprefix_safe()]}$url" if ($url =~ /^\//);
 		if ($count++ == 0) {
 			print theme_ui_nav_link("left", $url);
 			}
@@ -767,8 +850,44 @@ for($i=0; $i+1<@_; $i+=2) {
 	}
 print "<br>\n";
 if (!$_[$i]) {
+	my $postbody = $tconfig{'postbody'};
+	if ($postbody) {
+		my $hostname = &get_display_hostname();
+		my $version = &get_webmin_version();
+		my $os_type = $gconfig{'real_os_type'} ||
+			      $gconfig{'os_type'};
+		my $os_version = $gconfig{'real_os_version'} ||
+				 $gconfig{'os_version'};
+		$postbody =~ s/%HOSTNAME%/$hostname/g;
+		$postbody =~ s/%VERSION%/$version/g;
+		$postbody =~ s/%USER%/$remote_user/g;
+		$postbody =~ s/%OS%/$os_type $os_version/g;
+		print "$postbody\n";
+		}
+	if ($tconfig{'postbodyinclude'}) {
+		local $_;
+		open(INC, "$theme_root_directory/$tconfig{'postbodyinclude'}");
+		while(<INC>) {
+			print;
+			}
+		close(INC);
+		}
+	if (defined(&theme_postbody)) {
+		&theme_postbody(@_);
+		}
 	print "</body></html>\n";
 	}
+}
+
+# Don't show virtualmin menu
+sub theme_redirect
+{
+local ($orig, $url) = @_;
+if (get_module_name() eq "virtual-server" && $orig eq "" &&
+    $url =~ /^((http|https):\/\/([^\/]+))\//) {
+	$url = "$1/right.cgi";
+	}
+print "Location: $url\n\n";
 }
 
 # theme_ui_hidden_javascript()
@@ -776,7 +895,7 @@ if (!$_[$i]) {
 sub theme_ui_hidden_javascript
 {
 my $rv;
-my $imgdir = "@{[&get_webprefix()]}/images";
+my $imgdir = "@{[&theme_get_webprefix_safe()]}/images";
 
 return <<EOF;
 <style>
@@ -843,6 +962,128 @@ return false;
 EOF
 }
 
+# XXX Temporary until ui-lib.pl valign stuff gets cleaned up
+#
+# theme_ui_columns_table(&headings, width-percent, &data, &types, no-sort, title,
+#		   empty-msg)
+# Returns HTML for a complete table.
+# headings - An array ref of heading HTML
+# width-percent - Preferred total width
+# data - A 2x2 array ref of table contents. Each can either be a simple string,
+#        or a hash ref like :
+#          { 'type' => 'group', 'desc' => 'Some section title' }
+#          { 'type' => 'string', 'value' => 'Foo', 'colums' => 3,
+#	     'nowrap' => 1 }
+#          { 'type' => 'checkbox', 'name' => 'd', 'value' => 'foo',
+#            'label' => 'Yes', 'checked' => 1, 'disabled' => 1 }
+#          { 'type' => 'radio', 'name' => 'd', 'value' => 'foo', ... }
+# types - An array ref of data types, such as 'string', 'number', 'bytes'
+#         or 'date'
+# no-sort - Set to 1 to disable sorting by theme
+# title - Text to appear above the table
+# empty-msg - Message to display if no data
+sub theme_ui_columns_table
+{
+my ($heads, $width, $data, $types, $nosort, $title, $emptymsg) = @_;
+my $rv;
+
+# Just show empty message if no data
+if ($emptymsg && !@$data) {
+	$rv .= &ui_subheading($title) if ($title);
+	$rv .= "<b>$emptymsg</b><p>\n";
+	return $rv;
+	}
+
+# Are there any checkboxes in each column? If so, make those columns narrow
+my @tds;
+my $maxwidth = 0;
+foreach my $r (@$data) {
+	my $cc = 0;
+	foreach my $c (@$r) {
+		if (ref($c) &&
+		    ($c->{'type'} eq 'checkbox' || $c->{'type'} eq 'radio')) {
+			$tds[$cc] .= " width=5" if ($tds[$cc] !~ /width=/);
+			}
+		$cc++;
+		}
+	$maxwidth = $cc if ($cc > $maxwidth);
+	}
+$rv .= &ui_columns_start($heads, $width, 0, \@tds, $title);
+
+# Add the data rows
+foreach my $r (@$data) {
+	my $c0;
+	if (ref($r->[0]) && ($r->[0]->{'type'} eq 'checkbox' ||
+			     $r->[0]->{'type'} eq 'radio')) {
+		# First column is special
+		$c0 = $r->[0];
+		$r = [ @$r[1..(@$r-1)] ];
+		}
+	# Turn data into HTML
+	my @rtds = @tds;
+	my @cols;
+	my $cn = 0;
+	$cn++ if ($c0);
+	foreach my $c (@$r) {
+		if (!ref($c)) {
+			# Plain old string
+			push(@cols, $c);
+			}
+		elsif ($c->{'type'} eq 'checkbox') {
+			# Checkbox in non-first column
+			push(@cols, &ui_checkbox($c->{'name'}, $c->{'value'},
+					         $c->{'label'}, $c->{'checked'},
+						 $c->{'tags'},
+						 $c->{'disabled'}));
+			}
+		elsif ($c->{'type'} eq 'radio') {
+			# Radio button in non-first column
+			push(@cols, &ui_oneradio($c->{'name'}, $c->{'value'},
+					         $c->{'label'}, $c->{'checked'},
+						 $c->{'tags'},
+						 $c->{'disabled'}));
+			}
+		elsif ($c->{'type'} eq 'group') {
+			# Header row that spans whole table
+			$rv .= &ui_columns_header([ $c->{'desc'} ],
+						  [ "colspan=$width" ]);
+			next;
+			}
+		elsif ($c->{'type'} eq 'string') {
+			# A string, which might be special
+			push(@cols, $c->{'value'});
+			if ($c->{'columns'} > 1) {
+				splice(@rtds, $cn, $c->{'columns'},
+				       "colspan=".$c->{'columns'});
+				}
+			if ($c->{'nowrap'}) {
+				$rtds[$cn] .= " nowrap";
+				}
+			}
+		$cn++;
+		}
+	# Add the row
+	if (!$c0) {
+		$rv .= &ui_columns_row(\@cols, \@rtds);
+		}
+	elsif ($c0->{'type'} eq 'checkbox') {
+		$rv .= &ui_checked_columns_row(\@cols, \@rtds, $c0->{'name'},
+					       $c0->{'value'}, $c0->{'checked'},
+					       $c0->{'disabled'},
+					       $c0->{'tags'});
+		}
+	elsif ($c0->{'type'} eq 'radio') {
+		$rv .= &ui_radio_columns_row(\@cols, \@rtds, $c0->{'name'},
+					     $c0->{'value'}, $c0->{'checked'},
+					     $c0->{'disabled'},
+					     $c0->{'tags'});
+		}
+	}
+
+$rv .= &ui_columns_end();
+return $rv;
+}
+
 =yui
 
 Functions for generating YUI CSS grids markup.
@@ -878,6 +1119,15 @@ sub theme_ui_yui_grid_section_start {
 sub theme_ui_yui_grid_section_end {
 	my ($id) = @_;
 	return "</div> <!-- grid_$id -->\n";
+}
+
+# Get webprefix safely
+sub theme_get_webprefix_safe
+{
+if (defined(&get_webprefix)) {
+	return &get_webprefix();
+	}
+return $gconfig{'webprefix'};
 }
 
 1;

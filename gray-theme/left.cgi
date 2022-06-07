@@ -1,123 +1,132 @@
-#!/usr/bin/perl
-# Show the left-side menu of Webmin modules
-
-use strict;
+#!/usr/local/bin/perl
+# Show the left-side menu of Virtualmin domains, plus modules
 use warnings;
-require 'gray-theme/gray-theme-lib.pl';
-&ReadParse();
-our ($current_theme, $remote_user, %gconfig);
-our %text = &load_language($current_theme);
-my %gaccess = &get_module_acl(undef, "");
+use strict;
 
-&popup_header();
-print <<EOF;
-<link rel="stylesheet" type="text/css" href="gray-left.css" />
-<script>
-function toggleview (id1,id2) {
-		var obj1 = document.getElementById(id1);
-		var obj2 = document.getElementById(id2);
-		(obj1.className=="itemshown") ? obj1.className="itemhidden" : obj1.className="itemshown"; 
-		(obj1.className=="itemshown") ? obj2.innerHTML="<img border='0' src='images/gray-open.gif' alt='[&ndash;]'>" : obj2.innerHTML="<img border='0' src='images/gray-closed.gif' alt='[+]'>"; 
+# Globals
+our %in;
+our %text;
+our $base_remote_user;
+our %miniserv;
+our %gaccess;
+our $session_id;
+
+our $trust_unknown_referers = 1;
+require "gray-theme/gray-theme-lib.pl";
+require "gray-theme/theme.pl";
+ReadParse();
+
+popup_header("Virtualmin");
+print "<script type='text/javascript' src='@{[&theme_get_webprefix_safe()]}/unauthenticated/toggleview.js'></script>\n";
+
+my $is_master;
+# Is this user root?
+if (foreign_available("virtual-server")) {
+	foreign_require("virtual-server");
+	$is_master = virtual_server::master_admin();
+	}
+elsif (foreign_available("server-manager")) {
+	foreign_require("server-manager");
+	$is_master = server_manager::can_action(undef, "global");
 	}
 
-// Show the logs for the current module in the right
-function show_logs() {
-  var url = ''+window.parent.frames[1].location;
-  var sl1 = url.indexOf('//');
-  var mod = '';
-  if (sl1 > 0) {
-    var sl2 = url.indexOf('/', sl1+2);
-    if (sl2 > 0) {
-      var sl3 = url.indexOf('/', sl2+1);
-      if (sl3 > 0) {
-        mod = url.substring(sl2+1, sl3);
-      } else {
-        mod = url.substring(sl2+1);
-      }
-    }
-  }
-if (mod && mod.indexOf('.cgi') <= 0) {
-  // Show one module's logs
-  window.parent.frames[1].location = 'webminlog/search.cgi?tall=4&uall=1&fall=1&mall=0&module='+mod;
-  }
+# Find all left-side items from Webmin
+my $sects = get_right_frame_sections();
+my @leftitems = list_combined_webmin_menu($sects, \%in);
+my @lefttitles = grep { $_->{'type'} eq 'title' } @leftitems;
+
+# Work out what mode selector contains
+my @has = ( );
+my %modmenu;
+foreach my $title (@lefttitles) {
+	push(@has, { 'id' => $title->{'module'},
+		     'desc' => $title->{'desc'},
+		     'icon' => $title->{'icon'} });
+	$modmenu{$title->{'module'}}++;
+	}
+my $nw = $sects->{'nowebmin'} || 0;
+if ($nw == 0 || $nw == 2 && $is_master) {
+	my $p = get_product_name();
+	push(@has, { 'id' => 'modules',
+		     'desc' => $text{'has_'.$p},
+		     'icon' => '/images/'.$p.'-small.png' });
+	}
+
+# Default left-side mode
+my $mode = $in{'mode'} ? $in{'mode'} :
+	   $sects->{'tab'} =~ /vm2/ ? "server-manager" :
+	   $sects->{'tab'} =~ /virtualmin/ ? "virtual-server" :
+	   $sects->{'tab'} =~ /mail/ ? "mailboxes" :
+	   @leftitems ? $has[0]->{'id'} : "modules";
+
+# Show mode selector
+if (indexof($mode, (map { $_->{'id'} } @has)) < 0) {
+	$mode = $has[0]->{'id'};
+	}
+if (@has > 1) {
+	print "<div class='mode'>";
+	foreach my $m (@has) {
+		print "<b>";
+		if ($m->{'id'} ne $mode) {
+			print "<a href='left.cgi?mode=$m->{'id'}'>";
+			}
+		if ($m->{'icon'}) {
+			my $icon = add_webprefix($m->{'icon'});
+			print "<img src='$icon' alt='$m->{'id'}'> ";
+			}
+		print $m->{'desc'};
+		if ($m->{'id'} ne $mode) {
+			print "</a>\n";
+			}
+		print "</b>\n";
+		}
+	print "</div>";
+	}
+
+print "<div class='wrapper'>\n";
+print "<table id='main' width='100%'><tbody><tr><td>\n";
+
+my $selwidth = (get_left_frame_width() - 70)."px";
+if ($mode eq "modules") {
+	# Only showing Webmin modules
+	@leftitems = &list_modules_webmin_menu();
+	foreach my $l (@leftitems) {
+		$l->{'members'} = [ grep { !$modmenu{$_->{'id'}} } @{$l->{'members'}} ];
+		}
+	push(@leftitems, { 'type' => 'hr' });
+	}
 else {
-  // Show all logs
-  window.parent.frames[1].location = 'webminlog/search.cgi?tall=4&uall=1&fall=1&mall=0&mall=1'
-  }
-}
-</script>
-</head>
-<body>
-EOF
-
-# Show login
-my @leftmenu;
-push(@leftmenu, { 'type' => 'text',
-		  'desc' => &text('left_login', $remote_user) });
-push(@leftmenu, { 'type' => 'hr' });
-
-# Webmin modules
-push(@leftmenu, &list_modules_webmin_menu());
-
-# Show module/help search form
-if ($gaccess{'webminsearch'}) {
-	push(@leftmenu, { 'type' => 'input',
-			  'cgi' => &get_webprefix().'/webmin_search.cgi',
-			  'name' => 'search',
-			  'desc' => $text{'left_search'},
-			  'size' => 15 });
+	# Only show items under some title OR items that have no title
+	my ($lefttitle) = grep { $_->{'id'} eq $mode } @lefttitles;
+	my %titlemods = map { $_->{'module'}, $_ } @lefttitles;
+	@leftitems = grep { $_->{'module'} eq $mode ||
+			    !$titlemods{$_->{'module'}} } @leftitems;
 	}
 
-push(@leftmenu, { 'type' => 'hr' });
+# Show system information link
+push(@leftitems, { 'type' => 'item',
+		   'id' => 'home',
+		   'desc' => $text{'left_home'},
+		   'link' => '/right.cgi',
+		   'icon' => '/images/gohome.png' });
 
-# Show current module's log search, if logging
-if ($gconfig{'log'} && &foreign_available("webminlog")) {
-	push(@leftmenu, { 'type' => 'item',
-			  'desc' => $text{'left_logs'},
-			  'link' => '/webminlog/',
-			  'icon' => '/images/logs.gif',
-			  'onclick' => 'show_logs(); return false;' });
-	}
-
-# Show info link
-push(@leftmenu, { 'type' => 'item',
-		  'desc' => $text{'left_home'},
-		  'link' => '/right.cgi',
-		  'icon' => '/images/gohome.gif' });
-
-# Show feedback link, but only if a custom email is set
-%gaccess = &get_module_acl(undef, "");
-if (&get_product_name() eq 'webmin' &&		# For Webmin
-      !$ENV{'ANONYMOUS_USER'} &&
-      int($gconfig{'nofeedbackcc'} || 0) != 2 &&
-      $gaccess{'feedback'} &&
-      $gconfig{'feedback_to'} ||
-    &get_product_name() eq 'usermin' &&		# For Usermin
-      !$ENV{'ANONYMOUS_USER'} &&
-      $gconfig{'feedback'}
-    ) {
-	push(@leftmenu, { 'type' => 'item',
-			  'desc' => $text{'left_feedback'},
-			  'link' => '/feedback_form.cgi',
-			  'icon' => '/images/mail-small.gif' });
-	}
-
-# Show refesh modules link, for master admin
-if (&foreign_available("webmin")) {
-	push(@leftmenu, { 'type' => 'item',
-			  'desc' => $text{'main_refreshmods'},
-			  'link' => '/webmin/refresh_modules.cgi',
-			  'icon' => '/images/refresh-small.gif' });
+# Show refresh modules link
+if ($mode eq "modules" && foreign_available("webmin")) {
+	push(@leftitems, { 'type' => 'item',
+			   'id' => 'refresh',
+			   'desc' => $text{'main_refreshmods'},
+			   'link' => '/webmin/refresh_modules.cgi',
+			   'icon' => '/images/reload.png' });
 	}
 
 # Show logout link
-my %miniserv;
-&get_miniserv_config(\%miniserv);
+get_miniserv_config(\%miniserv);
 if ($miniserv{'logout'} && !$ENV{'SSL_USER'} && !$ENV{'LOCAL_USER'} &&
     $ENV{'HTTP_USER_AGENT'} !~ /webmin/i) {
 	my $logout = { 'type' => 'item',
-		       'icon' => '/images/stock_quit.gif',
-		       'target' => 'window' };
+		       'id' => 'logout',
+		       'target' => 'window',
+		       'icon' => '/images/stock_quit.png' };
 	if ($main::session_id) {
 		$logout->{'desc'} = $text{'main_logout'};
 		$logout->{'link'} = '/session_login.cgi?logout=1';
@@ -126,25 +135,33 @@ if ($miniserv{'logout'} && !$ENV{'SSL_USER'} && !$ENV{'LOCAL_USER'} &&
 		$logout->{'desc'} = $text{'main_switch'};
 		$logout->{'link'} = '/switch_user.cgi';
 		}
-	push(@leftmenu, $logout);
+	push(@leftitems, $logout);
 	}
 
 # Show link back to original Webmin server
 if ($ENV{'HTTP_WEBMIN_SERVERS'}) {
-	push(@leftmenu, { 'type' => 'item',
+	push(@leftitems, { 'type' => 'item',
 			  'desc' => $text{'header_servers'},
 			  'link' => $ENV{'HTTP_WEBMIN_SERVERS'},
 			  'icon' => '/images/webmin-small.gif',
 			  'target' => 'window' });
 	}
 
-# Actually output the menu
-print "<div class='wrapper'>\n";
-print "<table id='main' width='100%'><tbody><tr><td>\n";
-&show_menu_items_list(\@leftmenu, 0);
+# Show Webmin search form
+my $cansearch = ($gaccess{'webminsearch'} || '') ne '0' &&
+		!$sects->{'nosearch'};
+if ($mode eq "modules" && $cansearch) {
+	push(@leftitems, { 'type' => 'input',
+			   'desc' => $text{'left_search'},
+			   'name' => 'search',
+			   'cgi' => '/webmin_search.cgi', });
+	}
+
+show_menu_items_list(\@leftitems, 0);
+
 print "</td></tr></tbody></table>\n";
 print "</div>\n";
-&popup_footer();
+popup_footer();
 
 # show_menu_items_list(&list, indent)
 # Actually prints the HTML for menu items
@@ -154,21 +171,26 @@ my ($items, $indent) = @_;
 foreach my $item (@$items) {
 	if ($item->{'type'} eq 'item') {
 		# Link to some page
-		my $t = !$item->{'target'} ? 'right' :
-			$item->{'target'} eq 'new' ? '_blank' :
-			$item->{'target'} eq 'window' ? '_top' : 'right';
+		my $it = $item->{'target'} || '';
+		my $t = $it eq 'new' ? '_blank' :
+			$it eq 'window' ? '_top' : 'right';
+		my $link = add_webprefix($item->{'link'});
+		if ($item->{'link'} =~ /^(https?):\/\//) {
+			$t = '_blank';
+			$link = $item->{'link'};
+			}
 		if ($item->{'icon'}) {
 			my $icon = add_webprefix($item->{'icon'});
-			print "<div class='linkwithicon'>".
+			print "<div class='linkwithicon".
+			      ($item->{'inactive'} ? ' inactive' : '')."'>".
 			      "<img src='$icon' alt=''>\n";
 			}
 		my $cls = $item->{'icon'} ? 'aftericon' :
-		          $indent ? 'linkindented' : 'leftlink';
+		          $indent ? 'linkindented'.
+		                    ($item->{'inactive'} ? ' inactive' : '').
+		                    '' : 'leftlink';
 		print "<div class='$cls'>";
-		my $link = add_webprefix($item->{'link'});
-		my $tags = $item->{'onclick'} ?
-				"onClick='".$item->{'onclick'}."'" : "";
-		print "<a href='$link' target=$t $tags>".
+		print "<a href='$link' target=$t>".
 		      "$item->{'desc'}</a>";
 		print "</div>";
 		if ($item->{'icon'}) {
@@ -189,8 +211,12 @@ foreach my $item (@$items) {
 		      "<font color='#000000'>$item->{'desc'}</font></a></div>";
 		print "</div>\n";
 		print "<div class='itemhidden' id='cat$c'>\n";
-		&show_menu_items_list($item->{'members'}, $indent+1);
+		show_menu_items_list($item->{'members'}, $indent+1);
 		print "</div>\n";
+		}
+	elsif ($item->{'type'} eq 'html') {
+		# Some HTML block
+		print "<div class='leftlink'>",$item->{'html'},"</div>\n";
 		}
 	elsif ($item->{'type'} eq 'text') {
 		# A line of text
@@ -201,17 +227,36 @@ foreach my $item (@$items) {
 		# Separator line
 		print "<hr>\n";
 		}
-	elsif ($item->{'type'} eq 'input') {
+	elsif ($item->{'type'} eq 'menu' || $item->{'type'} eq 'input') {
 		# For with an input of some kind
-		my $cgi = add_webprefix($item->{'cgi'});
-		print "<form action='$cgi' target=right>\n";
+		if ($item->{'cgi'}) {
+			my $cgi = add_webprefix($item->{'cgi'});
+			print "<form action='$cgi' target=right>\n";
+			}
+		else {
+			print "<form>\n";
+			}
 		foreach my $h (@{$item->{'hidden'}}) {
 			print ui_hidden(@$h);
 			}
+		print ui_hidden("mode", $mode);
 		print "<div class='leftlink'>";
 		print $item->{'desc'},"\n";
-		print ui_textbox($item->{'name'}, $item->{'value'},
-				 $item->{'size'});
+		if ($item->{'type'} eq 'menu') {
+			my $sel = "";
+			if ($item->{'onchange'}) {
+				$sel = "window.parent.frames[1].location = ".
+				       "\"$item->{'onchange'}\" + this.value";
+				}
+			print ui_select($item->{'name'}, $item->{'value'},
+					 $item->{'menu'}, 1, 0, 0, 0,
+					 "onChange='form.submit(); $sel' ".
+					 "style='width:$selwidth'");
+			}
+		elsif ($item->{'type'} eq 'input') {
+			print ui_textbox($item->{'name'}, $item->{'value'},
+					  $item->{'size'});
+			}
 		if ($item->{'icon'}) {
 			my $icon = add_webprefix($item->{'icon'});
 			print "<input type=image src='$icon' ".
@@ -220,7 +265,21 @@ foreach my $item (@$items) {
 		print "</div>";
 		print "</form>\n";
 		}
+	elsif ($item->{'type'} eq 'title') {
+		# Nothing to print here, as it is used for the tab title
+		}
 	}
+}
+
+# module_to_menu_item(&module)
+# Converts a module to the hash ref format expected by show_menu_items_list
+sub module_to_menu_item
+{
+my ($minfo) = @_;
+return { 'type' => 'item',
+	 'id' => $minfo->{'dir'},
+	 'desc' => $minfo->{'desc'},
+	 'link' => '/'.$minfo->{'dir'}.'/' };
 }
 
 # add_webprefix(link)
@@ -228,6 +287,5 @@ foreach my $item (@$items) {
 sub add_webprefix
 {
 my ($link) = @_;
-return $link =~ /^\// ? &get_webprefix().$link : $link;
+return $link =~ /^\// ? &theme_get_webprefix_safe().$link : $link;
 }
-
