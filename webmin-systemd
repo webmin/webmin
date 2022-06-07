@@ -8,13 +8,10 @@ ExecStop=WEBMIN_CONFIG/.stop-init
 ExecReload=WEBMIN_CONFIG/.reload-init
 PIDFile=WEBMIN_VAR/miniserv.pid
 Type=forking
-KillMode=control-group
-Restart=on-failure
-RestartSec=1s
-StartLimitBurst=3
-StartLimitIntervalSec=3
+Restart=always
+RestartSec=2s
 OOMPolicy=kill
-OOMScoreAdjust=-999
+OOMScoreAdjust=-100
 
 [Install]
 WantedBy=multi-user.target
