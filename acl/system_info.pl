@@ -67,7 +67,7 @@ if (@logins) {
 			}
 		$html .= &ui_columns_row([
 		          $l->[2] .
-		            (@links ? "&nbsp;&nbsp;" . &ui_links_row(\@links) : undef),
+		            (@links ? "&nbsp;&nbsp;&nbsp;" . &ui_links_row(\@links) : undef),
 		          &make_date($l->[1]),
 		          $state ]);
 		}
