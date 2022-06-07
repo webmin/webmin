@@ -81,5 +81,3 @@ if (@logins) {
 	}
 return @rv;
 }
-v;
-}
