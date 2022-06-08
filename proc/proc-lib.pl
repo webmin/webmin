@@ -415,7 +415,8 @@ if ($has_lsof_command) {
 	open(LSOF, "$has_lsof_command -i tcp -i udp -n |");
 	while(<LSOF>) {
 		if (/^(\S+)\s+(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+).*(TCP|UDP)\s+(.*)/) {
-			local $n = { 'pid' => $2,
+			local $n = { 'cmd' => $1,
+				     'pid' => $2,
 				     'fd' => $4,
 				     'type' => $5,
 				     'proto' => $7 };
@@ -442,7 +443,6 @@ if ($has_lsof_command) {
 	close(LSOF);
 	}
 return @rv;
-
 }
 
 # find_process_sockets(pid)
