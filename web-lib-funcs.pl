@@ -2401,6 +2401,13 @@ sub reload_miniserv
 {
 my ($ignore) = @_;
 return undef if (&is_readonly_mode());
+if (&has_command('systemctl')) {
+	my $restart_target =
+		&get_product_name() eq 'usermin' ?
+			'usermin' : 'webmin';
+	&system_logged("systemctl reload $restart_target >/dev/null 2>&1 </dev/null");
+	return;
+	}
 my %miniserv;
 &get_miniserv_config(\%miniserv) || return;
 if ($main::webmin_script_type eq 'web' && !$ENV{"MINISERV_CONFIG"} &&

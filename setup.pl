@@ -642,8 +642,8 @@ else {
 
 		# Force reload systemd
 		open(FRELOADD, ">$config_directory/restart-by-force-kill");
-		print FRELOADD "$config_directory/.stop-init --kill >/dev/null 2>&1\n";
 		print FRELOADD "$systemctlcmd stop webmin\n";
+		print FRELOADD "$config_directory/.stop-init --kill >/dev/null 2>&1\n";
 		print FRELOADD "$systemctlcmd start webmin\n";
 		close(FRELOADD);
 

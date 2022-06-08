@@ -133,23 +133,8 @@ else {
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
 
-# Attempt to re-start miniserv
-$SIG{'TERM'} = 'ignore';
-&system_logged("$config_directory/stop >/dev/null 2>&1 </dev/null");
-$temp = &transname();
-$rv = &system_logged("$config_directory/start >$temp 2>&1 </dev/null");
-$out = &read_file_contents($temp);
-$out =~ s/^Starting Webmin server in.*\n//;
-$out =~ s/at.*line.*//;
-unlink($temp);
-if ($rv) {
-	# Failed! Roll back config and start again
-	&lock_file($ENV{'MINISERV_CONFIG'});
-	&put_miniserv_config(\%oldminiserv);
-	&unlock_file($ENV{'MINISERV_CONFIG'});
-	&system_logged("$config_directory/start >/dev/null 2>&1 </dev/null");
-	&error(&text('bind_erestart', $out));
-	}
+# Re-start miniserv
+&restart_miniserv(1);
 
 # If possible, open the new ports
 foreach my $mod ("firewall", "firewalld") {
@@ -175,18 +160,22 @@ else { $url = $ENV{'SERVER_NAME'}; }
 if ($ENV{'HTTPS'} eq "ON") { $url = "https://$url"; }
 else { $url = "http://$url"; }
 
-if ($tconfig{'inframe'}) {
-	# Theme uses frames, so we need to redirect the whole frameset
+# Theme redirect if port changed
+if ($miniserv{'port'} != $oldminiserv{'port'}) {
 	$url .= ":$miniserv{'port'}";
+	my %tinfo = &get_theme_info($current_theme);
+	if ($tinfo{'spa'} && $tinfo{'nomodcall'}) {
+		$url .= "@{[&get_webprefix()]}/webmin/?$tinfo{'nomodcall'}";
+		}
 	&ui_print_header(undef, $text{'bind_title'}, "");
-	print $text{'bind_redirecting'},"<p>\n";
+	print $text{'bind_redirecting'},"<br>\n";
 	print "<script>\n";
 	print "top.location = '$url';\n";
 	print "</script>\n";
 	&ui_print_footer("", $text{'index_return'});
 	}
 else {
-	$url .= ":$miniserv{'port'}/webmin/";
+	$url .= ":$miniserv{'port'}@{[&get_webprefix()]}/webmin/";
 	&redirect($url);
 	}
 
