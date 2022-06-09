@@ -77,7 +77,7 @@ foreach my $k (keys %oldconfig) {
 &write_file("$config_directory/config", \%gconfig);
 
 unlink("$config_directory/module.infos.cache");
-&restart_miniserv();
+&reload_miniserv();
 return undef;
 }
 

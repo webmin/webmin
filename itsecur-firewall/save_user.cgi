@@ -108,7 +108,7 @@ else {
 		}
 	&save_module_acl(\%uaccess, $in{'name'});
 	}
-&acl::restart_miniserv();
+&acl::reload_miniserv();
 &unlock_itsecur_files();
 &remote_webmin_log($in{'delete'} ? "delete" : $in{'new'} ? "create" : "update",
 	    "user", $user->{'name'}, $user);
