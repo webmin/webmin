@@ -61,11 +61,6 @@ if (@logins) {
 		         &ui_link("@{[&get_webprefix()]}/acl/delete_session.cgi?id=$l->[3]&redirect_ref=1",
 		         $text{'sessions_kill'}))
 			}
-		if (&foreign_available("acl")) {
-		      push(@links,
-		         &ui_link("@{[&get_webprefix()]}/acl/list_sessions.cgi",
-		         $text{'sessions_all'}, undef, "title=\"$text{'sessions_title'}\""))
-			}
 		$html .= &ui_columns_row([
 		          $l->[2],
 		          &make_date($l->[1]),
@@ -73,6 +68,11 @@ if (@logins) {
 			  &ui_links_row(\@links) ]);
 		}
 	$html .= &ui_columns_end();
+	if (&foreign_available("acl")) {
+		$html .= &ui_link("@{[&get_webprefix()]}/acl/list_sessions.cgi",
+				  $text{'sessions_all'}, undef,
+				  "title=\"$text{'sessions_title'}\"");
+		}
 	push(@rv, { 'type' => 'html',
 		    'desc' => $text{'logins_title'},
 		    'open' => $open,
