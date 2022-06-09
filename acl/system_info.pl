@@ -28,7 +28,8 @@ if (@logins) {
 		}
 	my $html = &ui_columns_start([ $text{'sessions_host'},
 				       $text{'sessions_login'},
-				       $text{'sessions_state'} ]);
+				       $text{'sessions_state'},
+				       $text{'sessions_action'} ]);
 	my $open = 0;
 	foreach my $l (@logins) {
 		my $state;
@@ -66,10 +67,10 @@ if (@logins) {
 		         $text{'sessions_all'}, undef, "title=\"$text{'sessions_title'}\""))
 			}
 		$html .= &ui_columns_row([
-		          $l->[2] .
-		            (@links ? "&nbsp;&nbsp;&nbsp;" . &ui_links_row(\@links) : undef),
+		          $l->[2],
 		          &make_date($l->[1]),
-		          $state ]);
+		          $state,
+			  &ui_links_row(\@links) ]);
 		}
 	$html .= &ui_columns_end();
 	push(@rv, { 'type' => 'html',
