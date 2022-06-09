@@ -545,6 +545,9 @@ if ($drive && defined($drive->{'subdisk'})) {
 elsif ($config{'ata'}) {
 	$extra_args .= " -d ata";
 	}
+else {
+	$extra_args .= " -d auto";
+	}
 return $extra_args;
 }
 
