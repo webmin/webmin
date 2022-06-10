@@ -119,7 +119,7 @@ foreach $host (@phosts) {
 		print "$text{'sync_restart'}<br>\n";
 		if (!$in{'test'}) {
 			&remote_foreign_call($serv->{'host'}, "acl",
-					     "restart_miniserv");
+					     "reload_miniserv");
 			}
 		print "$text{'refresh_done'}<p>\n";
 

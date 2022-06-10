@@ -135,7 +135,7 @@ foreach $w (@what) {
 			}
 		&unlock_file("$config_directory/miniserv.users");
 		&unlock_file("$config_directory/webmin.acl");
-		&restart_miniserv();
+		&reload_miniserv();
 		}
 	elsif ($w eq "searches") {
 		# Copy searches directory
