@@ -5,7 +5,7 @@
 use strict;
 use warnings;
 require './acl-lib.pl';
-our (%in, %text, %config, %access, $config_directory, $base_remote_user);
+our (%in, %text, %config, %access, $config_directory, $base_remote_user, $remote_user);
 &foreign_require("webmin", "webmin-lib.pl");
 
 &ReadParse();
@@ -434,7 +434,7 @@ if ($in{'user'}) {
 	if (&foreign_available("webminlog")) {
 		push(@buts, [ "but_log", $text{'edit_log'} ]);
 		}
-	if ($access{'switch'} && $main::session_id) {
+	if ($access{'switch'} && $main::session_id && $in{'user'} ne $remote_user) {
 		push(@buts, [ "but_switch", $text{'edit_switch'} ]);
 		}
 	if ($access{'delete'}) {
