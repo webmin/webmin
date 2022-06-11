@@ -297,11 +297,14 @@ if (&get_smart_version() > 5.0) {
 
 	# Check support
 	local $out = &backquote_command(
-			"$config{'smartctl'} $extra_args  -i $qd 2>&1");
+			"$config{'smartctl'} $extra_args -i $qd 2>&1");
 	if ($out =~ /SMART\s+support\s+is:\s+Available/i) {
 		$rv{'support'} = 1;
 		}
 	elsif ($out =~ /Device\s+supports\s+SMART/i) {
+		$rv{'support'} = 1;
+		}
+	elsif ($out =~ /NVMe\s+Version:/i) {
 		$rv{'support'} = 1;
 		}
 	else {
@@ -315,6 +318,9 @@ if (&get_smart_version() > 5.0) {
 		}
 	elsif ($out =~ /Device\s+supports\s+SMART\s+and\s+is\s+Enabled/i) {
 		# Added to match output from RHEL5
+		$rv{'enabled'} = 1;
+		}
+	elsif ($out =~ /NVMe\s+Version:/i) {
 		$rv{'enabled'} = 1;
 		}
 	else {
@@ -544,9 +550,6 @@ if ($drive && defined($drive->{'subdisk'})) {
 	}
 elsif ($config{'ata'}) {
 	$extra_args .= " -d ata";
-	}
-else {
-	$extra_args .= " -d auto";
 	}
 return $extra_args;
 }
