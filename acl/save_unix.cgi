@@ -76,7 +76,7 @@ $miniserv{'pamany'} = $in{'pamany'} ? $in{'pamany_user'} : undef;
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
 if ($oldsudo != $in{'sudo'}) {
-	&restart_miniserv();
+	&reload_miniserv();
 	}
 else {
 	&reload_miniserv();

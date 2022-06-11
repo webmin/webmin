@@ -138,32 +138,34 @@ if ($access{'allow'} && $config{'allow_file'}) {
 	}
 
 # If there is an init script that runs an atd server, show status
-&foreign_require("init");
-my $init = defined(&get_init_name) ? &get_init_name() : undef;
-if ($access{'stop'} && $init) {
-	print &ui_hr();
-	print &ui_buttons_start();
+if (&foreign_available("init")) {
+	&foreign_require("init");
+	my $init = defined(&get_init_name) ? &get_init_name() : undef;
+	if ($access{'stop'} && $init) {
+		print &ui_hr();
+		print &ui_buttons_start();
 
-	# Running now?
-	my $r = &init::status_action($init);
-	if ($r == 1) {
-		print &ui_buttons_row("stop.cgi", $text{'index_stop'},
-				      $text{'index_stopdesc'});
+		# Running now?
+		my $r = &init::status_action($init);
+		if ($r == 1) {
+			print &ui_buttons_row("stop.cgi", $text{'index_stop'},
+					      $text{'index_stopdesc'});
+			}
+		elsif ($r == 0) {
+			print &ui_buttons_row("start.cgi", $text{'index_start'},
+					      $text{'index_startdesc'});
+			}
+
+		# Start at boot?
+		my $atboot = &init::action_status($init);
+		print &ui_buttons_row("bootup.cgi", $text{'index_boot'},
+				      $text{'index_bootdesc'}, undef,
+				      &ui_radio("boot", $atboot == 2 ? 1 : 0,
+						[ [ 1, $text{'yes'} ],
+						  [ 0, $text{'no'} ] ]));
+
+		print &ui_buttons_end();
 		}
-	elsif ($r == 0) {
-		print &ui_buttons_row("start.cgi", $text{'index_start'},
-				      $text{'index_startdesc'});
-		}
-
-	# Start at boot?
-	my $atboot = &init::action_status($init);
-	print &ui_buttons_row("bootup.cgi", $text{'index_boot'},
-			      $text{'index_bootdesc'}, undef,
-			      &ui_radio("boot", $atboot == 2 ? 1 : 0,
-					[ [ 1, $text{'yes'} ],
-					  [ 0, $text{'no'} ] ]));
-
-	print &ui_buttons_end();
 	}
 
 &ui_print_footer("/", $text{'index'});
