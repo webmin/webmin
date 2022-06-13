@@ -2401,7 +2401,8 @@ sub reload_miniserv
 {
 my ($ignore) = @_;
 return undef if (&is_readonly_mode());
-if (&has_command('systemctl')) {
+if (&has_command('systemctl') &&
+    &foreign_available("init")) {
 	&foreign_require("init");
 	my $unit_target =
 		&get_product_name() eq 'usermin' ?
