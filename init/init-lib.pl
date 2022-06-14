@@ -2425,6 +2425,23 @@ if (-d $systemd_unit_dir1) {
 return $systemd_unit_dir2;
 }
 
+
+=head2 get_systemd_unit_pid([name])
+
+Returns pid of running systemd unit
+Returns 0 if unit stopped or missing
+
+=cut
+sub get_systemd_unit_pid
+{
+my ($unit) = @_;
+my $pid =
+  &backquote_command("systemctl show --property MainPID @{[quotemeta($unit)]}");
+$pid =~ s/MainPID=(\d+)/$1/;
+$pid = int($pid);
+return $pid;
+}
+
 =head2 restart_systemd()
 
 Tell the systemd daemon to re-read its config
