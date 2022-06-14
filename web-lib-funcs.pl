@@ -2401,20 +2401,6 @@ sub reload_miniserv
 {
 my ($ignore) = @_;
 return undef if (&is_readonly_mode());
-if (&has_command('systemctl') &&
-    &foreign_available("init")) {
-	&foreign_require("init");
-	my $unit_target =
-		&get_product_name() eq 'usermin' ?
-			'usermin' : 'webmin';
-	my $unit_path = &init::get_systemd_root($unit_target);
-	if (-r "$unit_path/$unit_target.service") {
-		my $rs = &system_logged("systemctl reload $unit_target >/dev/null 2>&1 </dev/null");
-		if (!$rs) {
-			return;
-			}
-		}
-	}
 my %miniserv;
 &get_miniserv_config(\%miniserv) || return;
 if ($main::webmin_script_type eq 'web' && !$ENV{"MINISERV_CONFIG"} &&
