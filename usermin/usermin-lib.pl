@@ -93,10 +93,11 @@ local($pid, %miniserv, $addr, $i);
 if (&has_command('systemctl') &&
     &foreign_available("init")) {
 	&foreign_require("init");
+	# Run native restart as SIGHUP on miniserv just kills Usermin process
 	my $unit_target = 'usermin';
 	my $unit_path = &init::get_systemd_root($unit_target);
 	if (-r "$unit_path/$unit_target.service") {
-		my $rs = &system_logged("systemctl reload $unit_target >/dev/null 2>&1 </dev/null");
+		my $rs = &system_logged("systemctl restart $unit_target >/dev/null 2>&1 </dev/null");
 		if (!$rs) {
 			return;
 			}
