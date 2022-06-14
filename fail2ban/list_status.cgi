@@ -13,7 +13,8 @@ my ($jail_list) = $out =~ /jail\s+list:\s*(.*)/im;
 my @jails = split(/,\s*/, $jail_list);
 if (@jails) {
 	my $tdc = 'style="text-align: center;"';
-	my $tal = 'style="text-align: left;"';
+	my $tal = 'style="text-align: right; font-size: 96%;"';
+	my $lwf = 'style="width: 100%; padding-right: 4px;"';
 	my @links = ( &select_all_link("jail"),
 	              &select_invert_link("jail") );
 	my $head;
@@ -43,7 +44,7 @@ if (@jails) {
 		my $jips;
 		&open_execute_command($fh, $jcmd, 1);
 		while(<$fh>) {
-			if (/-\s+(.*):\s*(.*)/) {
+			if (/-\s+(.*?):\s*(.*)/) {
 				my $col = $1;
 				my $val = $2;
 				$col = lc($col);
@@ -53,9 +54,9 @@ if (@jails) {
 					if ($col =~ /banned_ip_list/) {
 						$jips = $val;
 						my @ips = split(/\s+/, $val);
-						@ips = map { "<small $tal><label>" . &ui_link("unblock_jail.cgi?unblock=1&jips-@{[&urlize($jail)]}=@{[&urlize($_)]}&jail=@{[&urlize($jail)]}", $_, undef,
+						@ips = map { "<small $tal><tt><label $lwf>" . &ui_link("unblock_jail.cgi?unblock=1&jips-@{[&urlize($jail)]}=@{[&urlize($_)]}&jail=@{[&urlize($jail)]}", $_, undef,
 							         "title=\"@{[&text('status_jail_unblock_ip', &quote_escape($_))]}\" onmouseover=\"this.style.textDecoration='line-through'\" onmouseout=\"this.style.textDecoration='none'\""
-							        ) . "</label></small>" } @ips;
+							        ) . "</label></tt></small>" } @ips;
 						$val = "<br>" if ($val);
 						$val .= join('<br>', @ips);
 						$val = &$ipslimit($val);
