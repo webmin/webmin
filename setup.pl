@@ -57,6 +57,7 @@ else {
 
 # Work out perl library path
 $ENV{'PERLLIB'} = $wadir;
+$ENV{'WEBMIN_LIBDIR'} = $wadir;
 if ($ENV{'perllib'}) {
 	$ENV{'PERLLIB'} .= ":".$ENV{'perllib'};
 	}

@@ -72,10 +72,12 @@ cd "$wadir"
 
 # Work out perl library path
 PERLLIB=$wadir
+WEBMIN_LIBDIR=$wadir
 if [ "$perllib" != "" ]; then
 	PERLLIB="$PERLLIB:$perllib"
 fi
 export PERLLIB
+export WEBMIN_LIBDIR
 
 # Validate source directory
 allmods=`cd "$srcdir"; echo */module.info | sed -e 's/\/module.info//g'`

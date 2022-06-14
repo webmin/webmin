@@ -124,13 +124,18 @@ elsif ($init_mode eq "systemd") {
 	&enable_at_boot(
 	     $product,
 	     "$ucproduct server daemon",
-	     "$config_directory/.start-init",
-	     "$config_directory/.stop-init",
+	     "$root_directory/miniserv.pl $config_directory/miniserv.conf",
+	     '/usr/bin/kill $MAINPID',
 	     undef,
-	       { 'pidfile'  => $var_directory."/miniserv.pid",
-	         'opts' => {
-	         'type'    => 'forking',
-	         'killmode'   => 'none'
+	       { 'pidfile' => "$var_directory/miniserv.pid",
+	         'opts'    => {
+	         'env'        => '"PERLLIB=' . $root_directory . '"',
+	         'stop'       => '/usr/bin/kill $MAINPID',
+	         'reload'     => '/bin/bash -c \'/usr/bin/kill -HUP $MAINPID && while /usr/bin/kill -0 $MAINPID ; do /bin/sleep 0.5 ; done\'',
+	         'type'       => 'forking',
+	         'restart'    => 'always',
+	         'restartsec' => '2s',
+	         'timeout'    => '15s',
 	       }},
 	     );
 	}

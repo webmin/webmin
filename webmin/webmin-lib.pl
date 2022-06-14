@@ -1788,6 +1788,10 @@ Output a page with header and footer about Webmin needing to restart.
 =cut
 sub show_restart_page
 {
+if (&miniserv_systemd_sig('HUP')) {
+	&redirect("");
+	return;
+	}
 my ($title, $msg) = @_;
 $title ||= $text{'restart_title'};
 $msg ||= $text{'restart_done'};

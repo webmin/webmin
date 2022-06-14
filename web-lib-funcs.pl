@@ -2312,6 +2312,7 @@ sub restart_miniserv
 {
 my ($nowait, $ignore) = @_;
 return undef if (&is_readonly_mode());
+return if (&miniserv_systemd_sig('HUP'));
 my %miniserv;
 &get_miniserv_config(\%miniserv) || return;
 if ($main::webmin_script_type eq 'web' && !$ENV{"MINISERV_CONFIG"} &&
@@ -2401,6 +2402,7 @@ sub reload_miniserv
 {
 my ($ignore) = @_;
 return undef if (&is_readonly_mode());
+return if (&miniserv_systemd_sig('USR1'));
 my %miniserv;
 &get_miniserv_config(\%miniserv) || return;
 if ($main::webmin_script_type eq 'web' && !$ENV{"MINISERV_CONFIG"} &&
@@ -2450,6 +2452,41 @@ else {
 	open(TOUCH, ">$miniserv{'reloadflag'}");
 	close(TOUCH);
 	}
+}
+
+=head2 miniserv_systemd_sig(signal)
+
+Uses systemd to send given signal to existing miniserv process.
+Used to either fully restart it or just reload configuration
+
+=cut
+sub miniserv_systemd_sig
+{
+my ($sig) = @_;
+$sig =~ tr/A-Z0-9//cd;
+
+if (&has_command('systemctl')) {
+	my $unit_target = &get_product_name();
+	my ($upathr,
+		$upathd,
+		$ufile) =
+	   ("/usr/lib/systemd/system",
+	    "/lib/systemd/system",
+	    "$unit_target.service");
+	my $upathfile = -r "$upathr/$ufile" ? "$upathr/$ufile" :
+	                -r "$upathd/$ufile" ? "$upathd/$ufile" : undef;
+	if ($upathfile) {
+		my $cmd = $sig eq 'HUP' ?
+		            "systemctl reload" :
+		            "systemctl kill -s SIG$sig";
+		my $rs = &system_logged("$cmd $unit_target");
+		if (!$rs) {
+			return 1;
+			}
+		}
+	return 0;
+	}
+return 0;
 }
 
 =head2 check_os_support(&minfo, [os-type, os-version], [api-only])

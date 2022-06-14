@@ -24,7 +24,7 @@ if ($product) {
 		&copy_source_dest("$root_directory/webmin-systemd", "$temp");
 		my $lref = &read_file_lines($temp);
 		foreach my $l (@{$lref}) {
-			$l =~ s/(WEBMIN_[A-Z]+)/$ENV{$1}/;
+			$l =~ s/(WEBMIN_[A-Z]+)/$ENV{$1}/g;
 			}
 		&flush_file_lines($temp);
 		copy_source_dest($temp, "$systemd_root/$product.service");
