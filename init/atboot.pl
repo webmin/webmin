@@ -131,7 +131,7 @@ elsif ($init_mode eq "systemd") {
 	         'opts'    => {
 	         'env'        => '"PERLLIB=' . $root_directory . '"',
 	         'stop'       => '/usr/bin/kill $MAINPID',
-	         'reload'     => '/bin/bash -c \'/usr/bin/kill -HUP $MAINPID && while /usr/bin/kill -0 $MAINPID ; do /bin/sleep 0.5 ; done\'',
+	         'reload'     => '/bin/bash -c \'/usr/bin/kill -HUP $MAINPID && while /usr/bin/kill -0 $MAINPID >/dev/null 2>&1 ; do /bin/sleep 0.5 ; done\'',
 	         'type'       => 'forking',
 	         'restart'    => 'always',
 	         'restartsec' => '2s',
