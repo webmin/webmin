@@ -134,7 +134,7 @@ Configure the Webmin web server to be proxied through another web server, like A
 
 =head1 SYNOPSIS
 
-enable-proxy [options]
+webmin enable-proxy [options]
 
 =head1 OPTIONS
 
@@ -161,14 +161,7 @@ domain.tld)
 
 =back
 
-=head1 EXIT CODES
-
-0 on success
-
-non-0 on error
-
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2018 Jamie Cameron <jcameron@webmin.com>, Joe Cooper
-<joe@virtualmin.com>.
-
+ Copyright 2022 Jamie Cameron <jcameron@webmin.com>
+                Joe Cooper <joe@virtualmin.com>
