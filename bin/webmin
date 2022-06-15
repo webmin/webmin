@@ -346,7 +346,7 @@ sub man_command {
 sub root {
     my ($config) = @_;
     open(my $CONF, "<", "$config/miniserv.conf") || die RED,
-        "Failed to open $config/miniserv.conf", RESET;
+        "Failed to open $config/miniserv.conf", RESET , "\n";
     my $root;
     while (<$CONF>) {
         if (/^root=(.*)/) {
@@ -356,9 +356,9 @@ sub root {
     close($CONF);
     # Does the Webmin root exist?
     if ( $root ) {
-        die "$root is not a directory. Is --config correct?" unless (-d $root);
+        die "$root is not a directory. Is --config correct?\n" unless (-d $root);
     } else {
-        die "Unable to determine Webmin installation directory from $ENV{'WEBMIN_CONFIG'}";
+        die "Unable to determine Webmin installation directory from $ENV{'WEBMIN_CONFIG'}\n";
     }
 
     return $root;
