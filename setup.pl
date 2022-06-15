@@ -299,9 +299,14 @@ else {
 		$crypt = $ENV{'crypt'};
 		}
 	else {
+        system("stty -echo");
 		chop($password = <STDIN>);
-		print "Password again: ";
+        system("stty echo");
+		print "\nPassword again: ";
+        system("stty -echo");
 		chop($password2 = <STDIN>);
+        system("stty echo");
+        print "\n";
 		if ($password ne $password2) {
 			&errorexit("Passwords don't match");
 			}
