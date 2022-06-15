@@ -718,10 +718,8 @@ if (!defined($miniserv{'passwd_mode'})) {
 	$miniserv{'passwd_mode'} = 0;
 	}
 
-# If Perl crypt supports MD5, then make it the default
-if ($md5pass) {
-	$gconfig{'md5pass'} = 1;
-	}
+# Use system default for password hashing
+$gconfig{'md5pass'} = 0;
 
 # Set a special theme if none was set before
 if ($ENV{'theme'}) {
