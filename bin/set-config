@@ -136,7 +136,7 @@ Set a configuration directive in either C<miniserv.conf> (the core Webmin config
 
 =head1 SYNOPSIS
 
-set-config [options] [--module] --option <option-name> --value <value>
+webmin set-config [options] [--module] --option <option-name> --value <value>
 
 =head1 OPTIONS
 
@@ -180,6 +180,5 @@ already exist in the file, and was added)
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2018 Jamie Cameron <jcameron@webmin.com>, Joe Cooper
-<joe@virtualmin.com>.
-
+ Copyright 2022 Jamie Cameron <jcameron@webmin.com>
+                Joe Cooper <joe@virtualmin.com>
