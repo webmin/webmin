@@ -89,20 +89,8 @@ all configuration files.
 sub restart_usermin_miniserv
 {
 return undef if (&is_readonly_mode());
+return &miniserv_systemd_sig('HUP', 'usermin');
 local($pid, %miniserv, $addr, $i);
-if (&has_command('systemctl') &&
-    &foreign_available("init")) {
-	&foreign_require("init");
-	# Run native restart as SIGHUP on miniserv just kills Usermin process
-	my $unit_target = 'usermin';
-	my $unit_path = &init::get_systemd_root($unit_target);
-	if (-r "$unit_path/$unit_target.service") {
-		my $rs = &system_logged("systemctl restart $unit_target >/dev/null 2>&1 </dev/null");
-		if (!$rs) {
-			return;
-			}
-		}
-	}
 &get_usermin_miniserv_config(\%miniserv) || return;
 $miniserv{'inetd'} && return;
 open(PID, "<".$miniserv{'pidfile'}) || &error("Failed to open PID file");
