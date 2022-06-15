@@ -784,10 +784,8 @@ if [ "$?" != "0" ]; then
 	echo passwd_mode=0 >> $config_dir/miniserv.conf
 fi
 
-# If Perl crypt supports MD5, then make it the default
-if [ "$md5pass" = "1" ]; then
-	echo md5pass=1 >> $config_dir/config
-fi
+# Use system defaults for password hashing
+echo md5pass=0 >> $config_dir/config
 
 # Set a special theme if none was set before
 if [ "$theme" = "" ]; then
