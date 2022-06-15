@@ -418,21 +418,37 @@ else {
 		}
 	&put_miniserv_config(\%miniserv);
 
-	# Test MD5 password encryption
-	if (&unix_crypt("test", "\\$1\\$A9wB3O18\\$zaZgqrEmb9VNltWTL454R/") eq "\\$1\\$A9wB3O18\\$zaZgqrEmb9VNltWTL454R/") {
+	# Test availble hashing formats
+	if (&unix_crypt('test', '$y$j9T$waHytoaqP/CEnKFroGn0S/$fxd5mVc2mBPUc3vv.cpqDckpwrWTyIm2iD4JfnVBi26') eq '$y$j9T$waHytoaqP/CEnKFroGn0S/$fxd5mVc2mBPUc3vv.cpqDckpwrWTyIm2iD4JfnVBi26') {
+		$yescryptpass = 1;
+		}
+	if (&unix_crypt('test', '$6$Tk5o/GEE$zjvXhYf/dr5M7/jan3pgunkNrAsKmQO9r5O8sr/Cr1hFOLkWmsH4iE9hhqdmHwXd5Pzm4ubBWTEjtMeC.h5qv1') eq '$6$Tk5o/GEE$zjvXhYf/dr5M7/jan3pgunkNrAsKmQO9r5O8sr/Cr1hFOLkWmsH4iE9hhqdmHwXd5Pzm4ubBWTEjtMeC.h5qv1') {
+		$sha512pass = 1;
+		}
+	if (&unix_crypt('test', '$1$A9wB3O18$zaZgqrEmb9VNltWTL454R/') eq '$1$A9wB3O18$zaZgqrEmb9VNltWTL454R/') {
 		$md5pass = 1;
 		}
+
+	# Generate random
+	$salt8 = substr(time(), -8);
+	$salt2 = substr(time(), -2);
 
 	# Create users file
 	open(UFILE, ">$ufile");
 	if ($crypt) {
 		print UFILE "$login:$crypt:0\n";
 		}
+	elsif ($yescryptpass) {
+		print UFILE $login,":",&unix_crypt($password, "\$y\$j9T\$$salt8"),"\n";
+		}
+	elsif ($sha512pass) {
+		print UFILE $login,":",&unix_crypt($password, "\$6\$$salt8"),"\n";
+		}
 	elsif ($md5pass) {
-		print UFILE $login,":",&unix_crypt($password, "\$1\$XXXXXXXX"),"\n";
+		print UFILE $login,":",&unix_crypt($password, "\$1\$$salt8"),"\n";
 		}
 	else {
-		print UFILE $login,":",&unix_crypt($password, "XX"),"\n";
+		print UFILE $login,":",&unix_crypt($password, $salt2),"\n";
 		}
 	close(UFILE);
 	chmod(0600, $ufile);
