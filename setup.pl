@@ -650,7 +650,7 @@ else {
 
 		# Reload systemd
 		open(RELOADD, ">$config_directory/reload");
-		print RELOADD "$config_directory/.reload-init >/dev/null 2>&1\n";
+		print RELOADD "$systemctlcmd reload webmin\n";
 		close(RELOADD);
 
 		chmod(0755, "$config_directory/start");

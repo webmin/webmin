@@ -701,7 +701,7 @@ if [ -x "$systemctlcmd" ]; then
 	echo "$systemctlcmd start webmin" >>$config_dir/restart-by-force-kill
 	# Reload systemd
 	echo "#!/bin/sh" >>$config_dir/reload
-	echo "$config_dir/.reload-init >/dev/null 2>&1" >>$config_dir/reload
+	echo "$systemctlcmd reload webmin" >>$config_dir/reload
 
 	# Fix existing systemd webmin.service file to update start and stop commands
 	(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/updateboot.pl" "webmin")
