@@ -636,8 +636,7 @@ else {
 	symlink("$config_directory/.reload-init", "$config_directory/reload");
 
 	# For systemd
-	my $systemctlcmd = `which systemctl`;
-	$systemctlcmd =~ s/\s+$//;
+	my $systemctlcmd = &has_command('systemctl');
 	if (-x $systemctlcmd) {
 
 		# Clear existing
