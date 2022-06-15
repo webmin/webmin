@@ -535,16 +535,26 @@ else
 		cat "$wadir/miniserv-conf" >>$cfile
 	fi
 
+	# Test availble hashing formats
+	yescryptpass=`$perl -e 'print crypt("test", "\\$y\\$j9T\\$waHytoaqP/CEnKFroGn0S/\\$fxd5mVc2mBPUc3vv.cpqDckpwrWTyIm2iD4JfnVBi26") eq "\\$y\\$j9T\\$waHytoaqP/CEnKFroGn0S/\\$fxd5mVc2mBPUc3vv.cpqDckpwrWTyIm2iD4JfnVBi26" ? "1\n" : "0\n"'`
+	sha512pass=`$perl -e 'print crypt("test", "\\$6\\$Tk5o/GEE\\$zjvXhYf/dr5M7/jan3pgunkNrAsKmQO9r5O8sr/Cr1hFOLkWmsH4iE9hhqdmHwXd5Pzm4ubBWTEjtMeC.h5qv1") eq "\\$6\\$Tk5o/GEE\\$zjvXhYf/dr5M7/jan3pgunkNrAsKmQO9r5O8sr/Cr1hFOLkWmsH4iE9hhqdmHwXd5Pzm4ubBWTEjtMeC.h5qv1" ? "1\n" : "0\n"'`
 	md5pass=`$perl -e 'print crypt("test", "\\$1\\$A9wB3O18\\$zaZgqrEmb9VNltWTL454R/") eq "\\$1\\$A9wB3O18\\$zaZgqrEmb9VNltWTL454R/" ? "1\n" : "0\n"'`
+
+	salt8=`tr -dc A-Za-z0-9 </dev/urandom | head -c 8 ; echo ''`
+	salt2=`tr -dc A-Za-z0-9 </dev/urandom | head -c 2 ; echo ''`
 
 	ufile=$config_dir/miniserv.users
 	if [ "$crypt" != "" ]; then
 		echo "$login:$crypt:0" > $ufile
 	else
-		if [ "$md5pass" = "1" ]; then
-			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "\$1\$XXXXXXXX"),":0\n"' "$login" "$password" > $ufile
+		if [ "$yescryptpass" = "1" ]; then
+			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "\$y\$j9T\$'$salt8'"),":0\n"' "$login" "$password" > $ufile
+		elif [ "$sha512pass" = "1" ]; then
+			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "\$6\$'$salt8'"),":0\n"' "$login" "$password" > $ufile
+		elif [ "$md5pass" = "1" ]; then
+			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "\$1\$'$salt8'"),":0\n"' "$login" "$password" > $ufile
 		else
-			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "XX"),":0\n"' "$login" "$password" > $ufile
+			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "'$salt2'"),":0\n"' "$login" "$password" > $ufile
 		fi
 	fi
 	chmod 600 $ufile
