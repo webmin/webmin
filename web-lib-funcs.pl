@@ -11001,7 +11001,7 @@ string.
 sub unix_crypt
 {
 my ($pass, $salt) = @_;
-return "" if ($salt !~ /^[a-zA-Z0-9\.\/]{2}/);   # same as real crypt
+return "" if ($salt !~ /^[\$a-zA-Z0-9\.\/]{2}/);   # same as real crypt
 my $rv = eval "crypt(\$pass, \$salt)";
 my $err = $@;
 return $rv if ($rv && !$@);
