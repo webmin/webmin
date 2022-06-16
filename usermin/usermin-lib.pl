@@ -89,6 +89,7 @@ all configuration files.
 sub restart_usermin_miniserv
 {
 return undef if (&is_readonly_mode());
+return &miniserv_systemd_sig('HUP', 'usermin');
 local($pid, %miniserv, $addr, $i);
 &get_usermin_miniserv_config(\%miniserv) || return;
 $miniserv{'inetd'} && return;

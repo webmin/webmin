@@ -81,20 +81,13 @@ else {
 &unlock_file($usermin_miniserv_config);
 
 # Attempt to re-start miniserv
-$SIG{'TERM'} = 'ignore';
-&system_logged("$config{'usermin_dir'}/stop >/dev/null 2>&1 </dev/null");
-$temp = &transname();
-$rv = &system_logged("$config{'usermin_dir'}/start >$temp 2>&1 </dev/null");
-$out = &read_file_contents($temp);
-$out =~ s/^Starting Usermin server in.*\n//;
-$out =~ s/at.*line.*//;
-unlink($temp);
+$rv = &system_logged("$config{'usermin_dir'}/restart >/dev/null 2>&1 </dev/null");
 if ($rv) {
 	# Failed! Roll back config and start again
 	&lock_file($usermin_miniserv_config);
 	&put_usermin_miniserv_config(\%oldminiserv);
 	&unlock_file($usermin_miniserv_config);
-	&system_logged("$config{'usermin_dir'}/start >/dev/null 2>&1 </dev/null");
+	&system_logged("$config{'usermin_dir'}/restart >/dev/null 2>&1 </dev/null");
 	&error(&text('bind_erestart', $out));
 	}
 

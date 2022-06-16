@@ -165,7 +165,7 @@ List one or all configuration directives for C<miniserv.conf> or a module C<conf
 
 =head1 SYNOPSIS
 
-list-config [options]
+webmin list-config [options]
 
 =head1 OPTIONS
 
@@ -192,16 +192,11 @@ Specify a single option to display. By default, the entire configuration file wi
 
 Display the description of the option from the module C<config.info> file, instead of it's current value. This option is only available for modules, as miniserv.conf does not have a config.info.
 
+
+
 =back
-
-=head1 EXIT CODES
-
-0 on success
-
-non-0 on error
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2018 Jamie Cameron <jcameron@webmin.com>, Joe Cooper
-<joe@virtualmin.com>.
-
+ Copyright 2022 Jamie Cameron <jcameron@webmin.com>
+                Joe Cooper <joe@virtualmin.com>

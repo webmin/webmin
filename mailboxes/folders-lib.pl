@@ -2533,7 +2533,7 @@ foreach my $f (@$folders) {
 			}
 		}
 	push(@opts, [ $byid ? &folder_name($f) : $f->{'index'},
-		      $f->{'name'}.$umsg ]);
+		      &html_escape($f->{'name'}).$umsg ]);
 	}
 return &ui_select($name, $byid ? &folder_name($folder) : $folder->{'index'},
 		  \@opts, 1, 0, 0, 0, $auto ? "onChange='form.submit()'" : "");

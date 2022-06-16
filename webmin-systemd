@@ -1,17 +1,16 @@
 [Unit]
 Description=Webmin server daemon
-After=syslog.target
 
 [Service]
-ExecStart=WEBMIN_CONFIG/.start-init
-ExecStop=WEBMIN_CONFIG/.stop-init
-ExecReload=WEBMIN_CONFIG/.reload-init
+Environment="PERLLIB=WEBMIN_LIBDIR"
+ExecStart=WEBMIN_LIBDIR/miniserv.pl WEBMIN_CONFIG/miniserv.conf
+ExecStop=/usr/bin/kill $MAINPID
+ExecReload=/bin/bash -c '/usr/bin/kill -HUP $MAINPID && while /usr/bin/kill -0 $MAINPID >/dev/null 2>&1 ; do /bin/sleep 0.5 ; done'
 PIDFile=WEBMIN_VAR/miniserv.pid
 Type=forking
 Restart=always
 RestartSec=2s
-OOMPolicy=kill
-OOMScoreAdjust=-100
+TimeoutSec=15s
 
 [Install]
 WantedBy=multi-user.target
