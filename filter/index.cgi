@@ -160,10 +160,10 @@ else {
 	# Tell the user there are none
 	@pmrc = &procmail::get_procmailrc();
 	if (@pmrc) {
-		print &ui_alert_box($text{'index_none2'}, 'warn');
+		print &ui_alert_box($text{'index_none2'}, 'info');
 		}
 	else {
-		print &ui_alert_box($text{'index_none'}, 'warn');
+		print &ui_alert_box($text{'index_none'}, 'info');
 		}
 	print &ui_links_row(\@links);
 	}
