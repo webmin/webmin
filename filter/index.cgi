@@ -40,7 +40,7 @@ if ($alias) {
 # Check if /etc/procmailrc forces local delivery
 if (&no_user_procmailrc()) {
 	my $text_force = $text{'index_force'};
-	if (-d "/etc/webmin/virtual-servers") {
+	if (-d "/etc/webmin/virtual-server") {
 		$text_force .= " $text{'index_force_desc'}";
 		}
 	print &ui_alert_box($text_force, 'danger');
