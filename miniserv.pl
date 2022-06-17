@@ -3107,6 +3107,9 @@ close(SOCK);
 dbmclose(%sessiondb);
 kill('KILL', $logclearer) if ($logclearer);
 kill('KILL', $extauth) if ($extauth);
+if (&indexof("--nofork", @miniserv_argv) < 0) {
+	push(@miniserv_argv, "--nofork");
+	}
 exec($perl_path, $miniserv_path, @miniserv_argv);
 die "Failed to restart miniserv with $perl_path $miniserv_path";
 }
