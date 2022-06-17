@@ -1,0 +1,2 @@
+index_force=Systemet er konfigurert til å ikke behandle brukerdefinerte e-postfiltre. Filtre som er definert her vil ikke bli brukt.
+index_force_desc=Administrator kan imidlertid aktivere denne funksjonaliteten på Virtualmin-siden ved å bruke siden <tt>E-postinnstillinger Spam og Virusskanning</tt>.

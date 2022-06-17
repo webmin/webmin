@@ -34,7 +34,6 @@ index_return=Filter Liste
 index_warn=Warnung - Das Programm <tt>procmail</tt> zur Mailfilterung ist auf diesem System nicht installiert.  Alle definierten Filter werden nicht funktionieren.
 index_alias=Warnung - Das ist so konfiguriert, dass alle E-Mails in dein Postfach an folgende Destinationen geleitet werden. Filter welche hier definiert werden, werden nicht verwendet.
 index_aliasme=Hinweis - Das System ist so konfiguriert, dass alle E-Mails weitergeleitet werden an :
-index_force=Warnung - Das System ist so konfiguriert, dass benutzerdefinierte Mailfilter ignoriert werden. Alle definierten Filter werden nicht funktionieren.
 index_period=Minimum Zeit zwischen Autoantworten
 index_noperiod=Kein Minimum
 index_mins=Minuten

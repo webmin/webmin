@@ -1,3 +1,5 @@
+index_force=Het systeem is geconfigureerd om door de gebruiker gedefinieerde e-mailfilters niet te verwerken. Hier gedefinieerde filters worden niet gebruikt.
+index_force_desc=De beheerder kan deze functionaliteit echter aan de kant van Virtualmin inschakelen via de pagina <tt>E-mailinstellingen Spam en virusscannen</tt>.
 index_forever=Voor altijd
 index_ondate=Datum
 index_subject=Onderwerp bericht automatisch beantwoorden

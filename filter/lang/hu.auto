@@ -1,3 +1,5 @@
+index_force=A rendszer úgy van konfigurálva, hogy ne dolgozza fel a felhasználó által meghatározott levélszűrőket. Az itt meghatározott szűrők nem kerülnek felhasználásra.
+index_force_desc=A rendszergazda azonban engedélyezheti ezt a funkciót a Virtualmin oldalon az <tt>E-mail beállítások Spam és víruskeresés</tt> oldalon.
 index_forever=Örökké
 index_ondate=Dátum
 index_subject=Automatikus válasz üzenet tárgya

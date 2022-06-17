@@ -39,7 +39,11 @@ if ($alias) {
 
 # Check if /etc/procmailrc forces local delivery
 if (&no_user_procmailrc()) {
-	print "<b>",$text{'index_force'},"</b><p>\n";
+	my $text_force = $text{'index_force'};
+	if (-d "/etc/webmin/virtual-servers") {
+		$text_force .= " $text{'index_force_desc'}";
+		}
+	print &ui_alert_box($text_force, 'danger');
 	}
 
 @filters = &list_filters();
@@ -156,10 +160,10 @@ else {
 	# Tell the user there are none
 	@pmrc = &procmail::get_procmailrc();
 	if (@pmrc) {
-		print "<b>$text{'index_none2'}</b><p>\n";
+		print &ui_alert_box($text{'index_none2'}, 'warn');
 		}
 	else {
-		print "<b>$text{'index_none'}</b><p>\n";
+		print &ui_alert_box($text{'index_none'}, 'warn');
 		}
 	print &ui_links_row(\@links);
 	}
