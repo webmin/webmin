@@ -548,13 +548,13 @@ else
 		echo "$login:$crypt:0" > $ufile
 	else
 		if [ "$yescryptpass" = "1" ]; then
-			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "\$y\$j9T\$'$salt8'"),":0\n"' "$login" "$password" > $ufile
+			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "\$y\$j9T\$$ARGV[2]"),":0\n"' "$login" "$password" "$salt8" > $ufile
 		elif [ "$sha512pass" = "1" ]; then
-			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "\$6\$'$salt8'"),":0\n"' "$login" "$password" > $ufile
+			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "\$6\$$ARGV[2]"),":0\n"' "$login" "$password" "$salt8" > $ufile
 		elif [ "$md5pass" = "1" ]; then
-			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "\$1\$'$salt8'"),":0\n"' "$login" "$password" > $ufile
+			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "\$1\$$ARGV[2]"),":0\n"' "$login" "$password" "$salt8" > $ufile
 		else
-			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "'$salt2'"),":0\n"' "$login" "$password" > $ufile
+			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], $ARGV[2]),":0\n"' "$login" "$password" "$salt8" > $ufile
 		fi
 	fi
 	chmod 600 $ufile
