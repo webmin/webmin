@@ -1788,7 +1788,7 @@ Output a page with header and footer about Webmin needing to restart.
 =cut
 sub show_restart_page
 {
-if (&miniserv_systemd_sig('HUP')) {
+if (1) {
 	&redirect("");
 	return;
 	}
