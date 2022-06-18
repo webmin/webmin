@@ -3288,12 +3288,13 @@ else {
 	}
 }
 
-# create_dnssec_key(&zone|&zone-name, algorithm, size, single-key)
+# create_dnssec_key(&zone|&zone-name, algorithm, size, single-key,
+# 		    [force-regen])
 # Creates a new DNSSEC key for some zone, and places it in the same directory
 # as the zone file. Returns undef on success or an error message on failure.
 sub create_dnssec_key
 {
-my ($z, $alg, $size, $single) = @_;
+my ($z, $alg, $size, $single, $force) = @_;
 my $fn = &get_keys_dir($z);
 $fn || return "Could not work keys directory!";
 my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
@@ -3329,6 +3330,17 @@ else {
 # Check if there are saved keys, and if so use them
 my @savedkeys = grep { $_->{'saved'} } &get_dnssec_key($z, 1);
 my $out;
+if (@savedkeys && $force) {
+	# Delete any saved keys, to force re-generation
+	foreach my $key (@savedkeys) {
+		foreach my $f ('publicfile', 'privatefile') {
+			if (ref($key) && $key->{$f} && $key->{'saved'}) {
+				&unlink_file($key->{$f});
+				}
+			}
+		}
+	@savedkeys = ( );
+	}
 if (@savedkeys) {
 	# Rename back the saved key files
 	foreach my $key (@savedkeys) {
