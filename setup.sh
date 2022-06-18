@@ -554,7 +554,7 @@ else
 		elif [ "$md5pass" = "1" ]; then
 			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "\$1\$$ARGV[2]"),":0\n"' "$login" "$password" "$salt8" > $ufile
 		else
-			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], $ARGV[2]),":0\n"' "$login" "$password" "$salt8" > $ufile
+			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], $ARGV[2]),":0\n"' "$login" "$password" "$salt2" > $ufile
 		fi
 	fi
 	chmod 600 $ufile
