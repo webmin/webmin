@@ -21,7 +21,7 @@ if ($ARGV[0] eq "--systemd") {
 	shift(@ARGV);
 	}
 
-# Thorow error if start command is wrong
+# Throw an error if start command is wrong
 if (@ARGV != 1) {
 	die "Usage: miniserv.pl <config file>";
 	}
