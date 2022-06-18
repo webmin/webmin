@@ -11,14 +11,22 @@ eval "use Time::HiRes;";
 @itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 @miniserv_argv = @ARGV;
 
-# Find and read config file
+# Process internal params
 if ($ARGV[0] eq "--nofork") {
 	$nofork_argv = 1;
 	shift(@ARGV);
 	}
+if ($ARGV[0] eq "--systemd") {
+	$systemd_argv = 1;
+	shift(@ARGV);
+	}
+
+# Thorow error if start command is wrong
 if (@ARGV != 1) {
 	die "Usage: miniserv.pl <config file>";
 	}
+
+# Find and read config file
 if ($ARGV[0] =~ /^([a-z]:)?\//i) {
 	$config_file = $ARGV[0];
 	}
@@ -656,7 +664,7 @@ if ($config{'listen'}) {
 	}
 
 # Split from the controlling terminal, unless configured not to
-if (!$config{'nofork'} && !$nofork_argv) {
+if (!$config{'nofork'} && !$nofork_argv || $systemd_argv) {
 	if (fork()) { exit; }
 	}
 eval { setsid(); };	# may not work on Windows
@@ -3107,7 +3115,8 @@ close(SOCK);
 dbmclose(%sessiondb);
 kill('KILL', $logclearer) if ($logclearer);
 kill('KILL', $extauth) if ($extauth);
-if (&indexof("--nofork", @miniserv_argv) < 0) {
+if (&indexof("--nofork", @miniserv_argv) < 0 &&
+    &indexof("--systemd", @miniserv_argv) < 0) {
 	unshift(@miniserv_argv, "--nofork");
 	}
 exec($perl_path, $miniserv_path, @miniserv_argv);
