@@ -299,9 +299,14 @@ else {
 		$crypt = $ENV{'crypt'};
 		}
 	else {
+		system("stty -echo");
 		chop($password = <STDIN>);
-		print "Password again: ";
+		system("stty echo");
+		print "\nPassword again: ";
+		system("stty -echo");
 		chop($password2 = <STDIN>);
+		system("stty echo");
+		print "\n";
 		if ($password ne $password2) {
 			&errorexit("Passwords don't match");
 			}
@@ -418,21 +423,38 @@ else {
 		}
 	&put_miniserv_config(\%miniserv);
 
-	# Test MD5 password encryption
-	if (&unix_crypt("test", "\\$1\\$A9wB3O18\\$zaZgqrEmb9VNltWTL454R/") eq "\\$1\\$A9wB3O18\\$zaZgqrEmb9VNltWTL454R/") {
+	# Test availble hashing formats
+	if (&unix_crypt('test', '$y$j9T$waHytoaqP/CEnKFroGn0S/$fxd5mVc2mBPUc3vv.cpqDckpwrWTyIm2iD4JfnVBi26') eq '$y$j9T$waHytoaqP/CEnKFroGn0S/$fxd5mVc2mBPUc3vv.cpqDckpwrWTyIm2iD4JfnVBi26') {
+		$yescryptpass = 1;
+		}
+	if (&unix_crypt('test', '$6$Tk5o/GEE$zjvXhYf/dr5M7/jan3pgunkNrAsKmQO9r5O8sr/Cr1hFOLkWmsH4iE9hhqdmHwXd5Pzm4ubBWTEjtMeC.h5qv1') eq '$6$Tk5o/GEE$zjvXhYf/dr5M7/jan3pgunkNrAsKmQO9r5O8sr/Cr1hFOLkWmsH4iE9hhqdmHwXd5Pzm4ubBWTEjtMeC.h5qv1') {
+		$sha512pass = 1;
+		}
+	if (&unix_crypt('test', '$1$A9wB3O18$zaZgqrEmb9VNltWTL454R/') eq '$1$A9wB3O18$zaZgqrEmb9VNltWTL454R/') {
 		$md5pass = 1;
 		}
+
+	# Generate random
+	@saltbase = ('a'..'z', 'A'..'Z', '0'..'9');
+	$salt8 = join('', map ($saltbase[rand(@saltbase)], 1..8));
+	$salt2 = join('', map ($saltbase[rand(@saltbase)], 1..2));
 
 	# Create users file
 	open(UFILE, ">$ufile");
 	if ($crypt) {
 		print UFILE "$login:$crypt:0\n";
 		}
+	elsif ($yescryptpass) {
+		print UFILE $login,":",&unix_crypt($password, "\$y\$j9T\$$salt8"),"\n";
+		}
+	elsif ($sha512pass) {
+		print UFILE $login,":",&unix_crypt($password, "\$6\$$salt8"),"\n";
+		}
 	elsif ($md5pass) {
-		print UFILE $login,":",&unix_crypt($password, "\$1\$XXXXXXXX"),"\n";
+		print UFILE $login,":",&unix_crypt($password, "\$1\$$salt8"),"\n";
 		}
 	else {
-		print UFILE $login,":",&unix_crypt($password, "XX"),"\n";
+		print UFILE $login,":",&unix_crypt($password, $salt2),"\n";
 		}
 	close(UFILE);
 	chmod(0600, $ufile);
@@ -615,8 +637,7 @@ else {
 	symlink("$config_directory/.reload-init", "$config_directory/reload");
 
 	# For systemd
-	my $systemctlcmd = `which systemctl`;
-	$systemctlcmd =~ s/\s+$//;
+	my $systemctlcmd = &has_command('systemctl');
 	if (-x $systemctlcmd) {
 
 		# Clear existing
@@ -702,10 +723,8 @@ if (!defined($miniserv{'passwd_mode'})) {
 	$miniserv{'passwd_mode'} = 0;
 	}
 
-# If Perl crypt supports MD5, then make it the default
-if ($md5pass) {
-	$gconfig{'md5pass'} = 1;
-	}
+# Use system default for password hashing
+$gconfig{'md5pass'} = 0;
 
 # Set a special theme if none was set before
 if ($ENV{'theme'}) {

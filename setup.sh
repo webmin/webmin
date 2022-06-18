@@ -535,16 +535,26 @@ else
 		cat "$wadir/miniserv-conf" >>$cfile
 	fi
 
+	# Test availble hashing formats
+	yescryptpass=`$perl -e 'print crypt("test", "\\$y\\$j9T\\$waHytoaqP/CEnKFroGn0S/\\$fxd5mVc2mBPUc3vv.cpqDckpwrWTyIm2iD4JfnVBi26") eq "\\$y\\$j9T\\$waHytoaqP/CEnKFroGn0S/\\$fxd5mVc2mBPUc3vv.cpqDckpwrWTyIm2iD4JfnVBi26" ? "1\n" : "0\n"'`
+	sha512pass=`$perl -e 'print crypt("test", "\\$6\\$Tk5o/GEE\\$zjvXhYf/dr5M7/jan3pgunkNrAsKmQO9r5O8sr/Cr1hFOLkWmsH4iE9hhqdmHwXd5Pzm4ubBWTEjtMeC.h5qv1") eq "\\$6\\$Tk5o/GEE\\$zjvXhYf/dr5M7/jan3pgunkNrAsKmQO9r5O8sr/Cr1hFOLkWmsH4iE9hhqdmHwXd5Pzm4ubBWTEjtMeC.h5qv1" ? "1\n" : "0\n"'`
 	md5pass=`$perl -e 'print crypt("test", "\\$1\\$A9wB3O18\\$zaZgqrEmb9VNltWTL454R/") eq "\\$1\\$A9wB3O18\\$zaZgqrEmb9VNltWTL454R/" ? "1\n" : "0\n"'`
+
+	salt8=`tr -dc A-Za-z0-9 </dev/urandom | head -c 8 ; echo ''`
+	salt2=`tr -dc A-Za-z0-9 </dev/urandom | head -c 2 ; echo ''`
 
 	ufile=$config_dir/miniserv.users
 	if [ "$crypt" != "" ]; then
 		echo "$login:$crypt:0" > $ufile
 	else
-		if [ "$md5pass" = "1" ]; then
-			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "\$1\$XXXXXXXX"),":0\n"' "$login" "$password" > $ufile
+		if [ "$yescryptpass" = "1" ]; then
+			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "\$y\$j9T\$$ARGV[2]"),":0\n"' "$login" "$password" "$salt8" > $ufile
+		elif [ "$sha512pass" = "1" ]; then
+			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "\$6\$$ARGV[2]"),":0\n"' "$login" "$password" "$salt8" > $ufile
+		elif [ "$md5pass" = "1" ]; then
+			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "\$1\$$ARGV[2]"),":0\n"' "$login" "$password" "$salt8" > $ufile
 		else
-			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], "XX"),":0\n"' "$login" "$password" > $ufile
+			$perl -e 'print "$ARGV[0]:",crypt($ARGV[1], $ARGV[2]),":0\n"' "$login" "$password" "$salt2" > $ufile
 		fi
 	fi
 	chmod 600 $ufile
@@ -774,10 +784,8 @@ if [ "$?" != "0" ]; then
 	echo passwd_mode=0 >> $config_dir/miniserv.conf
 fi
 
-# If Perl crypt supports MD5, then make it the default
-if [ "$md5pass" = "1" ]; then
-	echo md5pass=1 >> $config_dir/config
-fi
+# Use system defaults for password hashing
+echo md5pass=0 >> $config_dir/config
 
 # Set a special theme if none was set before
 if [ "$theme" = "" ]; then

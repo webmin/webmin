@@ -10964,16 +10964,15 @@ string.
 sub unix_crypt
 {
 my ($pass, $salt) = @_;
-return "" if ($salt !~ /^[a-zA-Z0-9\.\/]{2}/);   # same as real crypt
-my $rv = eval "crypt(\$pass, \$salt)";
-my $err = $@;
-return $rv if ($rv && !$@);
+return "" if ($salt !~ /^[\$a-zA-Z0-9]{2}/);   # same as real crypt
+my $rv = eval { crypt($pass, $salt) };
+return $rv if (!$@);
 eval "use Crypt::UnixCrypt";
 if (!$@) {
 	return Crypt::UnixCrypt::crypt($pass, $salt);
 	}
 else {
-	&error("Failed to encrypt password : $err");
+	&error("Failed to encrypt password : $@");
 	}
 }
 
