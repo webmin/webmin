@@ -435,7 +435,7 @@ else {
 		}
 
 	# Generate random
-	@saltbase = ('a'..'z', 'A'..'Z', '0'..'9', split(//, time()));
+	@saltbase = ('a'..'z', 'A'..'Z', '0'..'9');
 	$salt8 = join('', map ($saltbase[rand(@saltbase)], 1..8));
 	$salt2 = join('', map ($saltbase[rand(@saltbase)], 1..2));
 
