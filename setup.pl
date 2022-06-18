@@ -435,8 +435,9 @@ else {
 		}
 
 	# Generate random
-	$salt8 = substr(time(), -8);
-	$salt2 = substr(time(), -2);
+	@saltbase = ('a'..'z', 'A'..'Z', '0'..'9', split(//, time()));
+	$salt8 = join('', map ($saltbase[rand(@saltbase)], 1..8));
+	$salt2 = join('', map ($saltbase[rand(@saltbase)], 1..2));
 
 	# Create users file
 	open(UFILE, ">$ufile");
