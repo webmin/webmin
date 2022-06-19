@@ -14,7 +14,7 @@ $fullvers =~ /^([0-9\.]+)(\-(\d+))?$/ || usage();
 $vers = $1;
 $release = $3;
 $tardir = $min ? "minimal" : "tarballs";
-$vfile = $min ? "$fullvers-minimal" : $fullvers;
+$vfile = $min ? "$vers-minimal" : $vers;
 $zipdir = "zips";
 $vers || usage();
 
@@ -150,7 +150,7 @@ if (!$release || !-d "$tardir/$dir") {
 	}
 
 # Store release version, if set
-if ($release) {
+if ($release && $release != 1) {
 	system("echo $release > $tardir/$dir/release");
 	}
 else {
@@ -205,7 +205,7 @@ if (-d "sigs") {
 	}
 
 # Create a change log for this version
-if (-d "/home/jcameron/webmin.com" && !$release) {
+if (-d "/home/jcameron/webmin.com" && (!$release || $release == 1)) {
 	$lastvers = sprintf("%.2f0", $vers - 0.005);	# round down to last stable
 	if ($lastvers == $vers) {
 		# this is a new full version, so round down to the previous full version

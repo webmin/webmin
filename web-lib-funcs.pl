@@ -2311,7 +2311,6 @@ it to restart. This will apply all configuration settings.
 sub restart_miniserv
 {
 return undef if (&is_readonly_mode());
-return if (&miniserv_systemd_sig('HUP'));
 my ($nowait, $ignore) = @_;
 my %miniserv;
 &get_miniserv_config(\%miniserv) || return;
@@ -2401,7 +2400,6 @@ IP addresses and ports to accept connections on.
 sub reload_miniserv
 {
 return undef if (&is_readonly_mode());
-return if (&miniserv_systemd_sig('USR1'));
 my ($ignore) = @_;
 my %miniserv;
 &get_miniserv_config(\%miniserv) || return;
@@ -2452,41 +2450,6 @@ else {
 	open(TOUCH, ">$miniserv{'reloadflag'}");
 	close(TOUCH);
 	}
-}
-
-=head2 miniserv_systemd_sig(signal, [product])
-
-Uses systemd to send given signal to existing miniserv process.
-Used to either fully restart it or just reload configuration
-
-=cut
-sub miniserv_systemd_sig
-{
-my ($sig, $product) = @_;
-$sig =~ tr/A-Z0-9//cd;
-
-if (&has_command('systemctl')) {
-	my $unit_target = $product || &get_product_name();
-	my ($upathr,
-		$upathd,
-		$ufile) =
-	   ("/usr/lib/systemd/system",
-	    "/lib/systemd/system",
-	    "$unit_target.service");
-	my $upathfile = -r "$upathr/$ufile" ? "$upathr/$ufile" :
-	                -r "$upathd/$ufile" ? "$upathd/$ufile" : undef;
-	if ($upathfile) {
-		my $cmd = $sig eq 'HUP' ?
-		            "systemctl reload" :
-		            "systemctl kill -s SIG$sig";
-		my $rs = &system_logged("$cmd $unit_target");
-		if (!$rs) {
-			return 1;
-			}
-		}
-	return 0;
-	}
-return 0;
 }
 
 =head2 check_os_support(&minfo, [os-type, os-version], [api-only])
@@ -11001,16 +10964,15 @@ string.
 sub unix_crypt
 {
 my ($pass, $salt) = @_;
-return "" if ($salt !~ /^[a-zA-Z0-9\.\/]{2}/);   # same as real crypt
-my $rv = eval "crypt(\$pass, \$salt)";
-my $err = $@;
-return $rv if ($rv && !$@);
+return "" if ($salt !~ /^[\$a-zA-Z0-9]{2}/);   # same as real crypt
+my $rv = eval { crypt($pass, $salt) };
+return $rv if (!$@);
 eval "use Crypt::UnixCrypt";
 if (!$@) {
 	return Crypt::UnixCrypt::crypt($pass, $salt);
 	}
 else {
-	&error("Failed to encrypt password : $err");
+	&error("Failed to encrypt password : $@");
 	}
 }
 
