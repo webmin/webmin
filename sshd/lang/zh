@@ -108,7 +108,7 @@ access_edenyh=任何主机均可进入
 
 misc_title=杂项选项
 misc_header=其他杂项 SSH 服务器选项
-misc_x11=允许 X11 连接转发吗？
+misc_x11=允许X11连接转发吗？
 misc_xoff=X11 显示偏移量
 misc_xauth=<tt>xauth</tt> 程序的完整路径
 misc_umask=SSH 服务器的文件保护掩码
