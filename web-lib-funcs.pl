@@ -919,7 +919,8 @@ if (!$main::read_parse_mime_callback_flushed) {
 my $upfile = "$vardir/upload.$id";
 if ($totalsize && $size >= 0) {
 	my $pc = int(100 * $size / $totalsize);
-	if ($pc <= $main::read_parse_mime_callback_pc{$upfile}) {
+	if (defined($main::read_parse_mime_callback_pc{$upfile}) &&
+	    $pc <= $main::read_parse_mime_callback_pc{$upfile}) {
 		return;
 		}
 	$main::read_parse_mime_callback_pc{$upfile} = $pc;
