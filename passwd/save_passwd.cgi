@@ -92,10 +92,10 @@ else {
 &ui_print_header(undef, $text{'passwd_title'}, "");
 if (($user->{'user'} eq $remote_user || $user->{'user'} eq $base_remote_user) &&
     !$main::session_id) {
-	print "<p>",&text('passwd_ok', "<tt>$user->{'user'}</tt>"),"<p>\n";
+	print &text('passwd_ok', "<tt>$user->{'user'}</tt>"),"\n";
 	}
 else {
-	print "<p>",&text('passwd_ok2', "<tt>$user->{'user'}</tt>"),"<p>\n";
+	print &text('passwd_ok2', "<tt>$user->{'user'}</tt>"),"\n";
 	}
 &ui_print_footer($in{'one'} ? ( "/", $text{'index'} )
 			    : ( "", $text{'index_return'} ));
