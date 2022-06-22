@@ -167,12 +167,12 @@ if ($miniserv{'port'} != $oldminiserv{'port'}) {
 	if ($tinfo{'spa'} && $tinfo{'nomodcall'}) {
 		$url .= "@{[&get_webprefix()]}/webmin/?$tinfo{'nomodcall'}";
 		}
-	&ui_print_header(undef, $text{'bind_title'}, "");
+	&ui_print_header(undef, $text{'bind_title'}, "", undef, undef, 1);
 	print $text{'bind_redirecting'},"<br>\n";
 	print "<script>\n";
 	print "top.location = '$url';\n";
 	print "</script>\n";
-	&ui_print_footer("", $text{'index_return'});
+	&ui_print_footer();
 	}
 else {
 	$url .= ":$miniserv{'port'}@{[&get_webprefix()]}/webmin/";
