@@ -1788,7 +1788,8 @@ Output a page with header and footer about Webmin needing to restart.
 =cut
 sub show_restart_page
 {
-if (1) {
+if (!$gconfig{'restart_async'}) {
+	&restart_miniserv();
 	&redirect("");
 	return;
 	}
