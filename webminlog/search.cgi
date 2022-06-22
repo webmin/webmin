@@ -239,7 +239,7 @@ elsif (@match) {
 	}
 else {
 	# Tell the user that nothing matches
-	print "<p><b>$text{'search_none2'}".(&trim($searchmsg) ? " $searchmsg" : "").".</b><p>\n";
+	print "<p><b>$text{'search_none2'}".(&trim($searchmsg) ? " @{[&trim($searchmsg, -1)]}" : "").".</b><p>\n";
 	}
 
 if (!$in{'csv'} && !$in{'no_return'}) {
