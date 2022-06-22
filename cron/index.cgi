@@ -230,21 +230,21 @@ if ($in{'search'}) {
 
 # Show search form
 print &ui_form_start("index.cgi");
-print "<b>$text{'index_search'}</b>\n";
+print "$text{'index_search'}:&nbsp;\n";
 print &ui_textbox("search", $in{'search'}, 20);
 print &ui_submit($text{'index_ok'});
 print &ui_form_end();
 
 # Check if we are over the display limit
 if ($max_jobs && @rows > $max_jobs && !$in{'search'}) {
-	print "<b>$text{'index_toomany2'}</b><p>\n";
+	print "$text{'index_toomany2'}<p>\n";
 	print &ui_links_row(\@crlinks);
 	}
 elsif (@rows) {
 	# Show jobs
 	if ($in{'search'}) {
-		print "<b>",&text('index_searchres',
-			"<i>".&html_escape($in{'search'})."</i>"),"</b><p>\n";
+		print &text('index_searchres',
+			"<i>".&html_escape($in{'search'})."</i>"),"<p>\n";
 		push(@links, &ui_link("index.cgi", $text{'index_reset'}) );
 		}
 	print &ui_form_start("delete_jobs.cgi", "post");
@@ -278,11 +278,11 @@ else {
 	if ($in{'search'}) {
 		push(@crlinks, &ui_link("index.cgi", $text{'index_reset'}) );
 		}
-	print $in{'search'} ? "<b>".&text('index_esearch',
-			"<i>".&html_escape($in{'search'})."</i>")."</b> <p>" :
-	      $module_info{'usermin'} ? "<b>$text{'index_none3'}</b> <p>\n" :
-	      $access{'mode'} ? "<b>$text{'index_none2'}</b> <p>\n"
-			      : "<b>$text{'index_none'}</b> <p>\n";
+	print $in{'search'} ? &text('index_esearch',
+			"<i>".&html_escape($in{'search'})."</i>")."<p>" :
+	      $module_info{'usermin'} ? "$text{'index_none3'} <p>\n" :
+	      $access{'mode'} ? "$text{'index_none2'} <p>\n"
+			      : "$text{'index_none'} <p>\n";
 	print &ui_links_row(\@crlinks);
 	}
 
