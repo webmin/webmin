@@ -1,6 +1,6 @@
 ## Changelog
 
-#### Upcoming
+#### 1.995 (June 23, 2022)
   * Add improvements to stability for `systemd` systems
   * Add native support to default to system default hashing format
   * Add support to `yescrypt` password hashing scheme
