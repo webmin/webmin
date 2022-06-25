@@ -59,7 +59,7 @@ foreach $h (@hosts) {
 
 		# Restart the remote webmin
 		print $wh &serialise_variable([ 1 ]);
-		&remote_foreign_call($s->{'host'}, "acl", "reload_miniserv");
+		&remote_foreign_call($s->{'host'}, "acl", "restart_miniserv");
 		exit;
 		}
 	close($wh);

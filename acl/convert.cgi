@@ -139,7 +139,7 @@ print &ui_columns_end();
 
 # Finish off
 &modify_group($group->{'name'}, $group);
-&reload_miniserv();
+&restart_miniserv();
 
 # Print summary
 print &text('convert_done', $converted, $invalid, $exists, $skipped),"<p>\n";

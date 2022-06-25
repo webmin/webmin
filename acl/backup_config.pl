@@ -98,7 +98,7 @@ foreach my $k (keys %aclbackup) {
 	}
 &put_miniserv_config(\%miniserv);
 
-&reload_miniserv();
+&restart_miniserv();
 return undef;
 }
 
