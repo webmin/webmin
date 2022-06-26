@@ -434,9 +434,20 @@ return undef;
 # undef if successful
 sub stop_dovecot
 {
-&foreign_require("init");
-my ($ok, $err) = &init::stop_action($config{'init_script'} || 'dovecot');
-return $ok ? undef : "<pre>$err</pre>";
+local $script = &get_initscript();
+if ($script) {
+	local $out = &backquote_logged("$script stop 2>&1 </dev/null");
+	return $? ? "<pre>$out</pre>" : undef;
+	}
+else {
+	local $pid = &is_dovecot_running();
+	if ($pid && kill('TERM', $pid)) {
+		return undef;
+		}
+	else {
+		return $text{'stop_erunning'};
+		}
+	}
 }
 
 # start_dovecot()
@@ -444,9 +455,14 @@ return $ok ? undef : "<pre>$err</pre>";
 # undef if successful
 sub start_dovecot
 {
-&foreign_require("init");
-my ($ok, $err) = &init::start_action($config{'init_script'} || 'dovecot');
-return $ok ? undef : "<pre>$err</pre>";
+local $script = &get_initscript();
+local $cmd = $script ? "$script start" : $config{'dovecot'};
+local $temp = &transname();
+&system_logged("$cmd >$temp 2>&1 </dev/null &");
+sleep(1);
+local $out = &read_file_contents($temp);
+&unlink_file($temp);
+return &is_dovecot_running() ? undef : "<pre>$out</pre>";
 }
 
 # apply_configration([full-restart])
@@ -460,9 +476,14 @@ if (!$pid) {
 	}
 elsif ($restart) {
 	# Fully shut down and re-start
-	&foreign_require("init");
-	my ($ok, $err) = &init::restart_action($config{'init_script'} || 'dovecot');
-	return $ok ? undef : "<pre>$err</pre>";
+	&stop_dovecot();
+	local $err;
+	for(my $i=0; $i<5; $i++) {
+		$err = &start_dovecot();
+		last if (!$err);
+		sleep(1);
+		}
+	return $err;
 	}
 else {
 	# Send the HUP signal
