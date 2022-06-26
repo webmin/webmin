@@ -435,7 +435,7 @@ return undef;
 sub stop_dovecot
 {
 &foreign_require("init");
-my ($ok, $err) = &init::stop_action('dovecot');
+my ($ok, $err) = &init::stop_action($config{'init_script'} || 'dovecot');
 return $ok ? undef : "<pre>$err</pre>";
 }
 
@@ -445,7 +445,7 @@ return $ok ? undef : "<pre>$err</pre>";
 sub start_dovecot
 {
 &foreign_require("init");
-my ($ok, $err) = &init::start_action('dovecot');
+my ($ok, $err) = &init::start_action($config{'init_script'} || 'dovecot');
 return $ok ? undef : "<pre>$err</pre>";
 }
 
@@ -461,7 +461,7 @@ if (!$pid) {
 elsif ($restart) {
 	# Fully shut down and re-start
 	&foreign_require("init");
-	my ($ok, $err) = &init::restart_action('dovecot');
+	my ($ok, $err) = &init::restart_action($config{'init_script'} || 'dovecot');
 	return $ok ? undef : "<pre>$err</pre>";
 	}
 else {
