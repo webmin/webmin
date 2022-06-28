@@ -1551,7 +1551,7 @@ if ($postfix_version >= 2.1 && $v =~ /\$/) {
 		return $out;
 		}
 	}
-$v =~ s/\$(\{([^\}]+)\}|([A-Za-z0-9\.\-\_]+))/get_real_value($2 || $3)/ge;
+$v =~ s/\$(\{([^\}]+)\}|([A-Za-z0-9\.\-\_]+))/get_real_value($2 || $3) || '$'.$1/ge;
 return $v;
 }
 
