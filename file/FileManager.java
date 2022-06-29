@@ -670,7 +670,7 @@ public class FileManager extends Applet
 			new PreviewWindow(this, f);
 		}
 	else if (b == refresh_b) {
-		// Refesh the selected directory (and thus any subdirs)
+		// Refresh the selected directory (and thus any subdirs)
 		if (d == null) return;
 		d.refresh();
 		show_files(d.file);

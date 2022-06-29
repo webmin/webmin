@@ -15,7 +15,7 @@ return $rv;
 }
 
 # get_client_config()
-# Returns a hash ref containg details of the client's NIS settings
+# Returns a hash ref containing details of the client's NIS settings
 sub get_client_config
 {
 local $nis;

@@ -74,7 +74,7 @@ $act{$_[0]->{'fullname'}} = $_[0];
 }
 
 # deactivate_interface(&details)
-# Deactive an interface
+# Deactivate an interface
 sub deactivate_interface
 {
 my %act;

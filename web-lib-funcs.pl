@@ -275,7 +275,7 @@ return $str;
 =head2 quote_escape(string, [only-quote])
 
 Converts ' and " characters in a string into HTML entities, and returns it.
-Useful for outputing HTML tag values.
+Useful for outputting HTML tag values.
 
 =cut
 sub quote_escape
@@ -425,7 +425,7 @@ return $rv;
 
 Behaves exactly like transname, but returns a filename with current timestamp
 
-=item filename - Optional filename prefix to preppend
+=item filename - Optional filename prefix to prepend
 
 =item extension - Optional extension for a filename to append
 
@@ -3794,7 +3794,7 @@ return 0;
 
 =head2 foreign_available(module)
 
-Returns 1 if some module is installed, and acessible to the current user. The
+Returns 1 if some module is installed, and accessible to the current user. The
 module parameter is the module directory name.
 
 =cut
@@ -5614,7 +5614,7 @@ return $_;
 
 =head2 get_module_info(module, [noclone], [forcache])
 
-Returns a hash containg details of the given module. Some useful keys are :
+Returns a hash containing details of the given module. Some useful keys are :
 
 =item dir - The module directory, like sendmail.
 
@@ -11366,7 +11366,7 @@ if ($force ||
     !$main::connect_userdb_cache{$str} ||
     time() - $main::connect_userdb_cache_time{$str} > $timeout) {
 	if ($str =~ /^(mysql|postgresql):/) {
-		# DBI disconnnect
+		# DBI disconnect
 		if (!$h->{'AutoCommit'}) {
 			$h->commit();
 			}
@@ -12124,7 +12124,7 @@ sub webmin_user_can_rpc
 {
 my $u = $base_remote_user;
 my %access = &get_module_acl($u, "");
-return 1 if ($access{'rpc'} == 1);	# Can make arbitary RPC calls
+return 1 if ($access{'rpc'} == 1);	# Can make arbitrary RPC calls
 return 0 if ($access{'rpc'} == 0);	# Cannot make RPCs
 
 # Assume that standard admin usernames

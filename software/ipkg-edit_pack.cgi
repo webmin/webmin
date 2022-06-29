@@ -31,7 +31,7 @@ if (!$pinfo[7]) {
 		&ui_hidden("version", $pinfo[4]).
 		&ui_hidden("search", $in{'search'}));
 	} else {
-# Show botton to install
+# Show button to install
 	print &ui_buttons_row("install_pack.cgi",
 		$text{'IPKG_install_package'},
 		$text{'IPKG_install_packagedesc'},

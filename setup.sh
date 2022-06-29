@@ -535,7 +535,7 @@ else
 		cat "$wadir/miniserv-conf" >>$cfile
 	fi
 
-	# Test availble hashing formats
+	# Test available hashing formats
 	yescryptpass=`$perl -e 'print crypt("test", "\\$y\\$j9T\\$waHytoaqP/CEnKFroGn0S/\\$fxd5mVc2mBPUc3vv.cpqDckpwrWTyIm2iD4JfnVBi26") eq "\\$y\\$j9T\\$waHytoaqP/CEnKFroGn0S/\\$fxd5mVc2mBPUc3vv.cpqDckpwrWTyIm2iD4JfnVBi26" ? "1\n" : "0\n"'`
 	sha512pass=`$perl -e 'print crypt("test", "\\$6\\$Tk5o/GEE\\$zjvXhYf/dr5M7/jan3pgunkNrAsKmQO9r5O8sr/Cr1hFOLkWmsH4iE9hhqdmHwXd5Pzm4ubBWTEjtMeC.h5qv1") eq "\\$6\\$Tk5o/GEE\\$zjvXhYf/dr5M7/jan3pgunkNrAsKmQO9r5O8sr/Cr1hFOLkWmsH4iE9hhqdmHwXd5Pzm4ubBWTEjtMeC.h5qv1" ? "1\n" : "0\n"'`
 	md5pass=`$perl -e 'print crypt("test", "\\$1\\$A9wB3O18\\$zaZgqrEmb9VNltWTL454R/") eq "\\$1\\$A9wB3O18\\$zaZgqrEmb9VNltWTL454R/" ? "1\n" : "0\n"'`

@@ -54,7 +54,7 @@ while(<CONF>) {
 		push(@rv, $str);
 		}
 	elsif (/^(\s*)(\S+)\s*(.*)$/) {
-		# Normal directive, possibly in a heirachy
+		# Normal directive, possibly in a hierarchy
 		local $str = { 'name' => $2,
 			       'values' => [ split(/\s+/, $3) ],
 			       'value' => $3,

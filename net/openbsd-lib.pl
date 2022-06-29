@@ -69,7 +69,7 @@ sub activate_interface
   }
 
 # deactivate_interface(&details)
-# Deactive an interface
+# Deactivate an interface
 sub deactivate_interface
   {
       local %act;

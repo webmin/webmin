@@ -25,7 +25,7 @@ while(<FSTAB>) {
 	$rv[$i]->[5] = "yes";
 	@o = split(/,/ , $p[3] eq "defaults" ? "" : $p[3]);
 	if (($j = &indexof("noauto", @o)) >= 0) {
-		# filesytem is not mounted at boot
+		# filesystem is not mounted at boot
 		splice(@o, $j, 1);
 		$rv[$i]->[5] = "no";
 		}

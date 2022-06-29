@@ -50,7 +50,7 @@ do {
 			$failed = 1;
 			}
 		elsif (/dependency\s+(\S+)\s+.*not up to date/i) {
-			# Needs a dependecy .. so we will need to re-run!
+			# Needs a dependency .. so we will need to re-run!
 			local $dep = $1;
 			$update = join(" ", &unique(
 					$dep, split(/\s+/, $update)));

@@ -102,7 +102,7 @@ Parameters:
         pull a released version, default: -release:latest
     -file
         pull only the given file(s) or dir(s)/ from repo
-        dir has to be specified with trailling '/'
+        dir has to be specified with trailing '/'
         file or dir/ must not start with a slash and
         must not contain '../'
     -h
@@ -384,7 +384,7 @@ fi
         fi
     else
         ##################
-        # pull specifed files only
+        # pull specified files only
         shift
         FILES="$*"
         for file in ${FILES}

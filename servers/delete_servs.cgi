@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# Delete serveral servers at once
+# Delete several servers at once
 
 use strict;
 use warnings;

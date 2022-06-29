@@ -518,7 +518,7 @@ if ($in{'new'}) {
 		my $rname = &make_reverse_name($in{'value0'}, $in{'type'},
 						  $revconf);
 		if ($revrec && $in{'rev'} == 2) {
-			# Upate the existing reverse for the domain
+			# Update the existing reverse for the domain
 			&lock_file(&make_chroot($revrec->{'file'}));
 			&modify_record($revrec->{'file'}, $revrec,
 				       $rname, $revrec->{'ttl'}, "IN", "PTR",

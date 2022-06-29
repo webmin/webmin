@@ -28,7 +28,7 @@ while(<FSTAB>) {
 	if ($p[2] eq "proc" || $p[2] eq "procfs") { $p[2] = $p[0] = "proc"; }
 	elsif ($p[2] eq "swap") { $p[1] = "swap"; }
 	elsif ($p[2] eq "smbfs") {
-		# Need to get nsmb.conf options, covert share and extract user
+		# Need to get nsmb.conf options, convert share and extract user
 		$p[0] = lc($p[0]);
 		local $noptions = &read_nsmb($p[0]);
 		local %options;
@@ -47,7 +47,7 @@ while(<FSTAB>) {
 	$rv[$i]->[5] = "yes";
 	@o = split(/,/ , $p[3] eq "defaults" ? "" : $p[3]);
 	if (($j = &indexof("noauto", @o)) >= 0) {
-		# filesytem is not mounted at boot
+		# filesystem is not mounted at boot
 		splice(@o, $j, 1);
 		$rv[$i]->[5] = "no";
 		}
@@ -182,7 +182,7 @@ while(<CMD>) {
 	if ($p[2] eq "procfs" || $p[1] eq "procfs") { $p[1] = $p[2] = "proc"; }
 	elsif ($p[2] eq "mfs") { $p[1] =~ s/:.*$//; }
 	elsif ($p[2] eq "smbfs") {
-		# Need to get nsmb.conf options, covert share and extract user
+		# Need to get nsmb.conf options, convert share and extract user
 		$p[1] = lc($p[1]);
 		local $noptions = &read_nsmb($p[1]);
 		local %options;

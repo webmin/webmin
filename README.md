@@ -30,7 +30,7 @@ Webmin can be installed in two different ways:
   <kbd>Note: It is highly recommended to [add repository](https://doxfer.webmin.com/Webmin/Installation) to your system for having automatic updates.</kbd>
 
  2. By downloading, extracting [source file](https://prdownloads.sourceforge.net/webadmin/webmin-1.995.tar.gz), and running [_setup.sh_](http://www.webmin.com/tgz.html) script, with no arguments, which will setup to run it directly from this directory, or with a command-line argument, such as targeted directory.
-  <kbd>Note: If you are installing Webmin [on Windows](http://www.webmin.com/windows.html) system, you must run the command `perl setup.pl` instead. The Windows version depends on several programs, and modules that may not be part of the standard distribution. You will need _process.exe_ commmand, _sc.exe_ command, and _Win32::Daemon_ Perl module.</kbd>
+  <kbd>Note: If you are installing Webmin [on Windows](http://www.webmin.com/windows.html) system, you must run the command `perl setup.pl` instead. The Windows version depends on several programs, and modules that may not be part of the standard distribution. You will need _process.exe_ command, _sc.exe_ command, and _Win32::Daemon_ Perl module.</kbd>
 
 ## Documentation
 Complete set of documentation for Webmin and all of its modules can be found at out [Wiki page](https://doxfer.webmin.com/Webmin/Main_Page).
