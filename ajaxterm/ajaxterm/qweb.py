@@ -1293,7 +1293,7 @@ class QWebWSGIServer(SocketServer.ThreadingMixIn, BaseHTTPServer.HTTPServer):
     """ QWebWSGIServer
         qweb_wsgi_autorun(wsgiapp,ip='127.0.0.1',port=8080,threaded=1)
         A WSGI HTTP server threaded or not and a function to automatically run your
-        app according to the environement (either standalone, CGI or FastCGI).
+        app according to the environment (either standalone, CGI or FastCGI).
 
         This feature is called QWeb autorun. If you want to  To use it on your
         application use the following lines at the end of the main application
@@ -1303,7 +1303,7 @@ class QWebWSGIServer(SocketServer.ThreadingMixIn, BaseHTTPServer.HTTPServer):
             qweb.qweb_wsgi_autorun(your_wsgi_app)
 
         this function will select the approriate running mode according to the
-        calling environement (http-server, FastCGI or CGI).
+        calling environment (http-server, FastCGI or CGI).
     """
     def __init__(self, wsgiapp, ip, port, threaded=1, log=1):
         BaseHTTPServer.HTTPServer.__init__(self, (ip, port), QWebWSGIHandler)

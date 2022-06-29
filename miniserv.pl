@@ -5221,7 +5221,7 @@ sub disconnect_userdb
 {
 my ($str, $h) = @_;
 if ($str =~ /^(mysql|postgresql):/) {
-	# DBI disconnnect
+	# DBI disconnect
 	$h->disconnect();
 	}
 elsif ($str =~ /^ldap:/) {

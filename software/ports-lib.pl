@@ -1,7 +1,7 @@
 # Functions for FreeBSD ports / package management
 
 # update_system_install([package], [&in])
-# Install a named package, by buiding the port
+# Install a named package, by building the port
 sub update_system_install
 {
 my ($update, $in) = @_;

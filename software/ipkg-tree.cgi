@@ -22,7 +22,7 @@ if ($in{'filter'}) {
     }
 }
 
-# prcoess openall / closeall actions
+# process openall / closeall actions
 if ( $in{'mode'} eq "closeall" ) {
   &save_heiropen([ ]);
 }

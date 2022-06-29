@@ -402,7 +402,7 @@ $self->{'name'} = $name;
 }
 
 =head2 get_name()
-Returns the name for indentifying this table in HTML
+Returns the name for identifying this table in HTML
 =cut
 sub get_name
 {
@@ -628,7 +628,7 @@ else {
 
 =head2 make_url(sortcol, sortdir, paging, page, [no-searchargs], [no-pagearg])
 Returns a link to this table's page, with the defaults for the various state
-fields overriden by the parameters (where defined)
+fields overridden by the parameters (where defined)
 =cut
 sub make_url
 {

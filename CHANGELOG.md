@@ -6,7 +6,7 @@
   * Add support to `yescrypt` password hashing scheme
   * Add new _System Logs Viewer_ (logviewer) module
   * Add new `webmin server` sub-command
-  * Add to set enviromental variables in Filesystem Backup module
+  * Add to set environmental variables in Filesystem Backup module
   * Fix upload tracker issues with large uploads
   * Fix NVMe drives status support
   * Fix AlmaLinux support

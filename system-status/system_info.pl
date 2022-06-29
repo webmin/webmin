@@ -232,7 +232,7 @@ if ($info->{'disk_total'} && &show_section('disk')) {
 		       'chart' => [ $total, $total-$free ] });
 	}
 
-# Warnings about filesytems running now on space
+# Warnings about filesystems running low on space
 if ($info->{'disk_fs'} && &show_section('disk')) {
 	foreach my $fs (@{$info->{'disk_fs'}}) {
 		next if (!$fs->{'total'});

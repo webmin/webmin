@@ -1,6 +1,6 @@
 // Hierarchy
-// An AWT component for displaying a tree-like heirachy, with each node
-// having an icon and a name. This heirachy can be expanded or contracted
+// An AWT component for displaying a tree-like hierarchy, with each node
+// having an icon and a name. This hierarchy can be expanded or contracted
 // by the user.
 import java.awt.*;
 import java.util.Vector;

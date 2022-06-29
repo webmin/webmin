@@ -454,7 +454,7 @@ if ($config{'after_cmd'}) {
 }
 
 # run_before_apply_command()
-# Runs the before-applying command, if any. If it failes, returns the error
+# Runs the before-applying command, if any. If it fails, returns the error
 # message output
 sub run_before_apply_command
 {

@@ -357,7 +357,7 @@ return undef;
 
 =head2 run_quotacheck(filesys, args)
 
-Runs the quotacheck command on some filesytem, and returns 1 on success or
+Runs the quotacheck command on some filesystem, and returns 1 on success or
 0 on failure. Mainly for internal use when enabling quotas.
 
 =cut

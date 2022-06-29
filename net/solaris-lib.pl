@@ -131,7 +131,7 @@ if ($a->{'ether'}) {
 }
 
 # deactivate_interface(&details)
-# Deactive an interface
+# Deactivate an interface
 sub deactivate_interface
 {
 local $a = $_[0];
@@ -764,7 +764,7 @@ foreach $b (&boot_interfaces()) {
 foreach $a (&active_interfaces()) {
 	next if ($a->{'name'} eq 'lo0');
 	if (!$done{$a->{'fullname'}} && !$a->{'zone'}) {
-		&deactive_interface($a);
+		&deactivate_interface($a);
 		}
 	}
 

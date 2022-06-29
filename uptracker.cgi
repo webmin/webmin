@@ -27,7 +27,7 @@ print "<td>",&ui_textbox("pc", undef, 50, 1, undef, $ff),"</td> </tr>\n";
 print "</table></center>\n";
 print "</form>\n";
 
-# Find the location of the user's upload progess file
+# Find the location of the user's upload progress file
 if ($in{'uid'}) {
 	@uinfo = getpwuid($in{'uid'});
 	$upfile = "$uinfo[7]/.tmp/upload.$id";

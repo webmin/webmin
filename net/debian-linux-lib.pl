@@ -340,7 +340,7 @@ if ($cfg->{'gateway6'}) {
 	push(@options6, [ "gateway", $cfg->{'gateway6'} ]);
 	}
 
-# Add, update or delete IPv6 inteface
+# Add, update or delete IPv6 interface
 my $method = $cfg->{'auto6'} ? "manual" : "static";
 if (!$found6 && @options6) {
 	# Need to add IPv6 block

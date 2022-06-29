@@ -405,7 +405,7 @@ if ($in{$_[0]."_def"} && !$_[2]) {
 	return 0;
 	}
 elsif ($_[1]) {
-	# Include units, and covert to blocks
+	# Include units, and convert to blocks
 	return int($in{$_[0]}*$in{$_[0]."_units"}/$_[1]);
 	}
 else {

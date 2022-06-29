@@ -102,7 +102,7 @@ if (&get_product_name() eq 'webmin' &&		# For Webmin
 			  'icon' => '/images/mail-small.gif' });
 	}
 
-# Show refesh modules link, for master admin
+# Show refresh modules link, for master admin
 if (&foreign_available("webmin")) {
 	push(@leftmenu, { 'type' => 'item',
 			  'desc' => $text{'main_refreshmods'},

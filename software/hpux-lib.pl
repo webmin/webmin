@@ -35,7 +35,7 @@ while(<SW>) {
 			}
                 $title_flag = "";
 		}
-# bundeled products
+# bundled products
 	if (/^contents\s+(.*)/) {
 		@contents = split(/\./, $1);
 		$packages{$i,'name'} = "$name.$contents[0]";

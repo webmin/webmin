@@ -423,7 +423,7 @@ else {
 		}
 	&put_miniserv_config(\%miniserv);
 
-	# Test availble hashing formats
+	# Test available hashing formats
 	if (&unix_crypt('test', '$y$j9T$waHytoaqP/CEnKFroGn0S/$fxd5mVc2mBPUc3vv.cpqDckpwrWTyIm2iD4JfnVBi26') eq '$y$j9T$waHytoaqP/CEnKFroGn0S/$fxd5mVc2mBPUc3vv.cpqDckpwrWTyIm2iD4JfnVBi26') {
 		$yescryptpass = 1;
 		}

@@ -1298,7 +1298,7 @@ elsif ($type eq "DMARC") {
 			     [ 's', $text{'value_dmarcfos'} ] ]));
 	}
 elsif ($type eq "NSEC3PARAM") {
-	# NSEC records have a hash type, flags, number of interations, salt
+	# NSEC records have a hash type, flags, number of iterations, salt
 	# length and salt
 	print &ui_table_row($text{'value_NSEC3PARAM1'},
 		&ui_select("value0", $v[0] || 1,
@@ -1689,7 +1689,7 @@ return $chroot.$_[0];
 }
 
 # has_ndc(exclude-mode)
-# Returns 2 if rndc is installed, 1 if ndc is instaled, or 0
+# Returns 2 if rndc is installed, 1 if ndc is installed, or 0
 # Mode 2 = try ndc only, 1 = try rndc only, 0 = both
 sub has_ndc
 {
@@ -3715,7 +3715,7 @@ return wantarray ? @rv : $rv[0];
 }
 
 # compute_dnssec_key_size(algorithm, def-mode, size)
-# Given an algorith and size mode (0=entered, 1=average, 2=big), returns either
+# Given an algorithm and size mode (0=entered, 1=average, 2=big), returns either
 # 0 and an error message or 1 and the corrected size
 sub compute_dnssec_key_size
 {
@@ -4055,7 +4055,7 @@ sub dt_resign_zone
 }
 
 # dt_zskroll_zone(zone-name)
-# Initates a zsk rollover operation for the zone 
+# Initiates a zsk rollover operation for the zone 
 sub dt_zskroll_zone
 {
 	my ($d) = @_;
@@ -4068,7 +4068,7 @@ sub dt_zskroll_zone
 }
 
 # dt_kskroll_zone(zone-name)
-# Initates a ksk rollover operation for the zone 
+# Initiates a ksk rollover operation for the zone 
 sub dt_kskroll_zone
 {
 	my ($d) = @_;

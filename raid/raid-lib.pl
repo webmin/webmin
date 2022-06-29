@@ -489,7 +489,7 @@ if ($raid_mode eq "mdadm") {
 }
 
 # convert_raid(&raid, oldcount, newcount, level)
-# Converts a RAID set to a defferent level RAID set
+# Converts a RAID set to a different level RAID set
 sub convert_raid
 {
 if ($raid_mode eq "mdadm") {
@@ -781,7 +781,7 @@ return 0;
 }
 
 # save_mdadm_monitoring(enabled)
-# Tries to enable or disable mdadm monitoring. Returns an error mesage
+# Tries to enable or disable mdadm monitoring. Returns an error message
 # if something goes wrong, undef on success
 sub save_mdadm_monitoring
 {
