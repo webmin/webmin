@@ -3,6 +3,8 @@
 # Display options for an existing slave or stub zone
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%access, %in, %text);
 our $scriptname;
 

@@ -4,6 +4,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our ($no_acl_check, %config);
 $no_acl_check++;
 require './webalizer-lib.pl';

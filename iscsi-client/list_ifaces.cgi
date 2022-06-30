@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './iscsi-client-lib.pl';
 our (%text);
 

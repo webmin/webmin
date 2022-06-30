@@ -3,6 +3,8 @@
 # Create an empty named.conf file and start the name server
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%text, %config, %in);
 
 require './bind8-lib.pl';

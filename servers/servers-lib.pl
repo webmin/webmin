@@ -19,6 +19,8 @@ for RPC operations. Example code :
 BEGIN { push(@INC, ".."); };
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 use WebminCore;
 use Socket;
 our (%text, %config, %gconfig, $module_config_directory);

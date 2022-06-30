@@ -3,8 +3,9 @@
 
 use strict;
 use warnings;
-use Time::Local;
 no warnings 'redefine';
+no warnings 'uninitialized';
+use Time::Local;
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;

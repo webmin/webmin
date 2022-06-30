@@ -2,6 +2,8 @@
 # Re-generate the zone key and re-sign a zone
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%text, %in);
 
 require './bind8-lib.pl';

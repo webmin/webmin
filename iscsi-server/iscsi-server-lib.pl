@@ -4,6 +4,8 @@
 BEGIN { push(@INC, ".."); };
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 use WebminCore;
 &init_config();
 &foreign_require("raid");

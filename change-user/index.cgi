@@ -4,6 +4,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './change-user-lib.pl';
 our (%text, %access, $base_remote_user, $default_lang, %gconfig);
 &ui_print_header(undef, $text{'index_title'}, "", undef, 0, 1);

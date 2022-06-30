@@ -2,6 +2,8 @@
 # Functions for parsing this module's logs
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our %text;
 
 do 'at-lib.pl';

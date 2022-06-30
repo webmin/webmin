@@ -1,6 +1,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%text, %access);
 do 'webalizer-lib.pl';
 

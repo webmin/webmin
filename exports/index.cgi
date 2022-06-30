@@ -4,6 +4,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './exports-lib.pl';
 our (%text);
 &ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,

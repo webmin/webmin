@@ -4,6 +4,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 # Globals from bind8-lib.pl
 our (%access, %text, %in, %config);
 # Globals from records-lib.pl

@@ -3,6 +3,8 @@
 # Create a new root zone
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 # Globals
 our (%access, %text, %in);
 our $module_root_directory;

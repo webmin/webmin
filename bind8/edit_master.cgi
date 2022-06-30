@@ -3,6 +3,8 @@
 # Display options and directives in an existing master zone
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%access, %text, %in, %config, %is_extra);
 
 require './bind8-lib.pl';

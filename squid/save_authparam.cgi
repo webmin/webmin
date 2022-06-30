@@ -4,6 +4,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%text, %in, %access, $squid_version, %config, $auth_program,
      $auth_database, $module_root_directory, $module_config_directory);
 require './squid-lib.pl';

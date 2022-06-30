@@ -2,6 +2,8 @@
 # Show a form to setup DNSSEC key rotation
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 # Globals
 our (%text, %access, %config);
 

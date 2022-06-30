@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './minecraft-lib.pl';
 our (%in, %text, %config, $module_name, $module_root_directory,
      $module_config_directory);

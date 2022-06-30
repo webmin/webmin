@@ -3,6 +3,8 @@
 # a URL that proxies to it
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
@@ -70,6 +72,8 @@ while(1) {
 close(TEST2);
 use strict "subs";
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 
 # Show the iframe
 print "<center>\n";

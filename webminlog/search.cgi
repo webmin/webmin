@@ -4,6 +4,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 use Time::Local;
 require './webminlog-lib.pl';
 our (%text, %config, %gconfig, $webmin_logfile, %in, $in);

@@ -3,6 +3,8 @@
 # Display the SOA for an existing master zone
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%access, %in, %text, %config);
 
 require './bind8-lib.pl';

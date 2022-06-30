@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './servers-lib.pl';
 our (%text, %config, %access, %in);
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);

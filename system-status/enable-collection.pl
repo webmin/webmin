@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%config);
 require './system-status-lib.pl';
 my $zero = @ARGV ? $ARGV[0] : '';

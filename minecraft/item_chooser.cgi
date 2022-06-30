@@ -4,6 +4,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './minecraft-lib.pl';
 our (%text, %in);
 &ReadParse(undef, undef, 2);

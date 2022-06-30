@@ -1,6 +1,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require 'system-status-lib.pl';
 our ($module_config_directory, $module_name);
 

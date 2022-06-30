@@ -2,6 +2,8 @@
 # Show a form to setup DNSSEC-Tools parameters
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 # Globals
 our (%access, %text, %config);
 

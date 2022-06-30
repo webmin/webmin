@@ -9,6 +9,8 @@ if ($ENV{'PATH_INFO'} =~ /^\/(\d+)\/([a-zA-Z0-9\-\/]+)\.(jar|class|gif|png)$/) {
 	}
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './servers-lib.pl';
 our (%text, %gconfig, %access, $module_name, %tconfig);
 $ENV{'PATH_INFO'} =~ /^\/(\d+)(.*)$/ ||

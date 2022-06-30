@@ -1,6 +1,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 do 'webmin-lib.pl';
 our ($module_var_directory, %gconfig, $hidden_announce_file, $module_name, %text);
 
