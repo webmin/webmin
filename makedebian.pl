@@ -260,11 +260,19 @@ system("chmod 755 $preinstall_file");
 open(SCRIPT, ">$postinstall_file");
 print SCRIPT <<EOF;
 #!/bin/sh
+justinstalled=1
+if [ -e "/etc/$baseproduct" ]; then
+	justinstalled=0
+fi
+supportupdprepost=0
 inetd=`grep "^inetd=" /etc/$baseproduct/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
-if [ "\$1" = "upgrade" -a "\$1" != "abort-upgrade" ]; then
+if [ "\$1" = "configure" ]; then
 	# Upgrading the package, so stop the old Webmin properly
 	if [ "\$inetd" != "1" ]; then
-		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
+		if [ -e "/etc/$baseproduct/.pre-install" ]; then
+			supportupdprepost=1
+			/etc/$baseproduct/.pre-install >/dev/null 2>&1 </dev/null
+		fi
 	fi
 fi
 cd /usr/share/$baseproduct
@@ -292,7 +300,8 @@ autothird=1
 noperlpath=1
 nouninstall=1
 nostart=1
-export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot makeboot
+nostop=1
+export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart nostop allow atboot makeboot
 tempdir=/tmp/.webmin
 if [ ! -d \$tempdir ]; then
 	tempdir=/tmp
@@ -308,10 +317,18 @@ fi
 rm -f /var/lock/subsys/$baseproduct
 
 if [ "$inetd" != "1" ]; then
-	/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
-	/etc/$baseproduct/start >/dev/null 2>&1 </dev/null
-	if [ "\$?" != "0" ]; then
-		echo "W: $ucproduct server cannot be restarted. It is advised to restart it manually by\nrunning \\"/etc/webmin/restart-by-force-kill\\" when upgrade process is finished"
+	if [ "\$justinstalled" = "1" ]; then
+		/etc/$baseproduct/start >/dev/null 2>&1 </dev/null
+		if [ "\$?" != "0" ]; then
+			echo "E: Webmin server cannot be started. It is advised to start it manually\n   by running \\"webmin force-restart\\" command"
+		fi
+	elif [ "\$supportupdprepost" = "1" ]; then
+			/etc/$baseproduct/.post-install >/dev/null 2>&1 </dev/null
+		if [ "\$?" != "0" ]; then
+			echo "W: Webmin server cannot be restarted. It is advised to restart it manually\n   by running \\"webmin force-restart\\" command when upgrade process is finished"
+		fi
+	else
+		echo "W: Webmin server will not be restarted. It is advised to restart it manually\n   by running \\"webmin force-restart\\" command when upgrade process is finished"
 	fi
 fi
 
@@ -360,10 +377,10 @@ if [ "\$1" != "upgrade" -a "\$1" != "abort-upgrade" ]; then
 	if [ "\$?" = 0 ]; then
 		# Package is being removed, and no new version of webmin
 		# has taken it's place. Run uninstalls and stop the server
+		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
 		if [ "$product" = "webmin" ]; then
 			(cd /usr/share/$baseproduct ; WEBMIN_CONFIG=/etc/$baseproduct WEBMIN_VAR=/var/$baseproduct LANG= /usr/share/$baseproduct/run-uninstalls.pl) >/dev/null 2>&1 </dev/null
 		fi
-		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
 		/bin/true
 	fi
 fi
