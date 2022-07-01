@@ -227,7 +227,7 @@ if [ "\$inetd" != "1" ]; then
 			echo "warning: Webmin server cannot be restarted. It is advised to restart it manually\n         by running \\"webmin force-restart\\" when upgrade process is finished"
 		fi
 	else
-			echo "warning: Webmin server will not be restarted. It is advised to restart it manually\n         by running \\"webmin force-restart\\" when upgrade process is finished"
+		echo "warning: Webmin server will not be restarted. It is advised to restart it manually\n         by running \\"webmin force-restart\\" when upgrade process is finished"
 	fi
 fi
 
