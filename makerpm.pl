@@ -216,7 +216,7 @@ chmod 600 \$tempdir/webmin-setup.out
 rm -f /var/lock/subsys/webmin
 cd /usr/libexec/webmin
 if [ "\$inetd" != "1" ]; then
-  if [ "\$1" == 1 ]; then
+	if [ "\$1" == 1 ]; then
 		/etc/webmin/start >/dev/null 2>&1 </dev/null
 		if [ "\$?" != "0" ]; then
 			echo "error: Webmin server cannot be started. It is advised to start it manually\n       by running \\"webmin force-restart\\" command"
@@ -300,7 +300,7 @@ if [ ! -r /etc/webmin/miniserv.conf -a -d /etc/.webmin-backup -a "\$1" = 2 ]; th
 	mv /etc/webmin /etc/.webmin-broken
 	mv /etc/.webmin-backup /etc/webmin
 	if [ -r /etc/webmin/.post-install ]; then
-			/etc/webmin/.post-install >/dev/null 2>&1 </dev/null
+		/etc/webmin/.post-install >/dev/null 2>&1 </dev/null
 	fi
 else
 	rm -rf /etc/.webmin-backup
