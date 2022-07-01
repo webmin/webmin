@@ -110,6 +110,8 @@ $ENV{'WEBMIN_CONFIG'} = $config_directory;
 $ENV{'WEBMIN_VAR'} = "/var/webmin";	# Only used for initial load of web-lib
 require "$srcdir/web-lib-funcs.pl";
 
+$supportprepost = 0;
+
 # Check if upgrading from an old version
 if ($upgrading) {
 	print "\n";
@@ -143,7 +145,10 @@ if ($upgrading) {
 			system("$config_directory/stop.bat >/dev/null 2>&1");
 			}
 		else {
-			system("$config_directory/stop >/dev/null 2>&1");
+			if (-r "$config_directory/.pre-install") {
+				$supportprepost = 1;
+				system("$config_directory/.pre-install >/dev/null 2>&1");
+				}
 			}
 		}
 
@@ -173,6 +178,8 @@ if ($upgrading) {
 	unlink("$config_directory/module.infos.cache");
 	}
 else {
+	$supportprepost = 1;
+
 	# Config directory exists .. make sure it is not in use
 	@files = grep { !/rpmsave/ } &files_in_dir($config_directory);
 	if (@files && $config_directory ne "/etc/webmin") {
@@ -540,7 +547,7 @@ if ($os_type eq "windows") {
 	}
 else {
 	
-	# Re-generating main	
+	# Re-generating main scripts
 	
 	# Start main
 	open(START, ">$config_directory/.start-init");
@@ -560,7 +567,14 @@ else {
 		print START "exec '$wadir/miniserv.pl' $config_directory/miniserv.conf\n";
 		}
 	close(START);
-	$start_cmd = "$config_directory/start";
+
+	# Define final start command
+	if ($upgrading) {
+		$start_cmd = "$config_directory/.post-install";
+		}
+	else {
+		$start_cmd = "$config_directory/start";
+		}
 
 	# Stop main
 	open(STOP, ">$config_directory/.stop-init");
@@ -609,11 +623,25 @@ else {
 	print RELOAD "kill -USR1 \`cat \$pidfile\`\n";
 	close(RELOAD);
 
+	# Pre install
+	open(PREINST, ">$config_directory/.pre-install");
+	print PREINST "#!/bin/sh\n";
+	print PREINST "$config_directory/.stop-init\n";
+	close(PREINST);
+
+	# # Post install
+	open(POSTINST, ">$config_directory/.post-install");
+	print POSTINST "#!/bin/sh\n";
+	print POSTINST "$config_directory/.start-init\n";
+	close(POSTINST);
+
 	chmod(0755, "$config_directory/.start-init");
 	chmod(0755, "$config_directory/.stop-init");
 	chmod(0755, "$config_directory/.restart-init");
 	chmod(0755, "$config_directory/.restart-by-force-kill-init");
 	chmod(0755, "$config_directory/.reload-init");
+	chmod(0755, "$config_directory/.pre-install");
+	chmod(0755, "$config_directory/.post-install");
 
 	# Re-generating supplementary
 
@@ -674,11 +702,26 @@ else {
 		print RELOADD "$systemctlcmd reload webmin\n";
 		close(RELOADD);
 
+		# Pre install
+		open(PREINSTT, ">$config_directory/.pre-install");
+		print PREINSTT "#!/bin/sh\n";
+		print PREINSTT "$systemctlcmd kill --signal=SIGSTOP --kill-who=main webmin\n";
+		close(PREINSTT);
+
+		# Post install
+		open(POSTINSTT, ">$config_directory/.post-install");
+		print POSTINSTT "#!/bin/sh\n";
+		print POSTINSTT "$systemctlcmd kill --signal=SIGCONT --kill-who=main webmin\n";
+		print POSTINSTT "$systemctlcmd kill --signal=SIGHUP --kill-who=main webmin\n";
+		close(POSTINSTT);
+
 		chmod(0755, "$config_directory/start");
 		chmod(0755, "$config_directory/stop");
 		chmod(0755, "$config_directory/restart");
 		chmod(0755, "$config_directory/restart-by-force-kill");
 		chmod(0755, "$config_directory/reload");
+		chmod(0755, "$config_directory/.pre-install");
+		chmod(0755, "$config_directory/.post-install");
 
 		# Fix existing systemd webmin.service file to update start and stop commands
 		my $perl = &get_perl_path();
@@ -841,12 +884,17 @@ if (-r "$srcdir/setup-post.pl") {
 
 if (!$ENV{'nostart'}) {
 	if (!$miniserv{'inetd'}) {
-		print "Attempting to start Webmin mini web server..\n";
-		$ex = system($start_cmd);
-		if ($ex) {
-			&errorexit("Failed to start web server!");
+		if ($supportprepost) {
+			print "Attempting to start Webmin web server..\n";
+			$ex = system($start_cmd);
+			if ($ex) {
+				&errorexit("Failed to start web server!");
+				}
+			print "..done\n";
 			}
-		print "..done\n";
+		else {
+			print "Warning! Webmin server must be restarted manually. It is advised to be restarted by\nrunning \"webmin force-restart\" command\n";
+			}
 		print "\n";
 		}
 
