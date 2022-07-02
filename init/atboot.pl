@@ -8,6 +8,7 @@ $product = $ARGV[0] || "webmin";
 $ucproduct = ucfirst($product);
 
 $< == 0 || die "atboot.pl must be run as root";
+my $kill = &has_command("kill");
 
 if ($init_mode eq "osx") {
 	# Darwin System
@@ -81,7 +82,7 @@ elsif ($init_mode eq "init") {
 		&print_tempfile(ACTION, "\tpidfile=`grep \"^pidfile=\" $config_directory/miniserv.conf | sed -e 's/pidfile=//g'`\n");
 		&print_tempfile(ACTION, "\tif [ -s \$pidfile ]; then\n");
 		&print_tempfile(ACTION, "\t\tpid=`cat \$pidfile`\n");
-		&print_tempfile(ACTION, "\t\tkill -0 \$pid >/dev/null 2>&1\n");
+		&print_tempfile(ACTION, "\t\t$kill -0 \$pid >/dev/null 2>&1\n");
 		&print_tempfile(ACTION, "\t\tif [ \"\$?\" = \"0\" ]; then\n");
 		&print_tempfile(ACTION, "\t\t\techo \"$product (pid \$pid) is running\"\n");
 		&print_tempfile(ACTION, "\t\t\tRETVAL=0\n");
@@ -125,13 +126,13 @@ elsif ($init_mode eq "systemd") {
 	     $product,
 	     "$ucproduct server daemon",
 	     "$root_directory/miniserv.pl $config_directory/miniserv.conf",
-	     '/usr/bin/kill $MAINPID',
+	     "$kill \$MAINPID",
 	     undef,
 	       { 'pidfile' => "$var_directory/miniserv.pid",
 	         'opts'    => {
 	         'env'        => '"PERLLIB=' . $root_directory . '"',
-	         'stop'       => '/usr/bin/kill $MAINPID',
-	         'reload'     => '/bin/bash -c \'/usr/bin/kill -HUP $MAINPID && while /usr/bin/kill -0 $MAINPID >/dev/null 2>&1 ; do /bin/sleep 0.5 ; done\'',
+	         'stop'       => "$kill \$MAINPID",
+	         'reload'     => "/bin/bash -c '$kill -HUP \$MAINPID && while $kill -0 \$MAINPID >/dev/null 2>&1 ; do /bin/sleep 0.5 ; done'",
 	         'type'       => 'forking',
 	         'restart'    => 'always',
 	         'restartsec' => '2s',
