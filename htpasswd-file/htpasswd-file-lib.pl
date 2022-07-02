@@ -4,6 +4,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 our (%access, $module_name, %config, %gconfig, %list_authusers_cache,

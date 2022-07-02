@@ -3,6 +3,8 @@
 # Create a Debian package for a webmin or usermin module or theme
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 use POSIX;
 use Term::ANSIColor qw(:constants);
 use 5.010;

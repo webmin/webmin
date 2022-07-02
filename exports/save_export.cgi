@@ -4,6 +4,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './exports-lib.pl';
 our (%text, %in, %config);
 &ReadParse();

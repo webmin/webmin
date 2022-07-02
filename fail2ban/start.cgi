@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './fail2ban-lib.pl';
 our (%text);
 &error_setup($text{'start_err'});

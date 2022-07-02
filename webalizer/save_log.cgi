@@ -4,6 +4,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%text, %config, %gconfig, %access, $module_name, %in, $remote_user,
      $cron_cmd, $custom_logs_file);
 require './webalizer-lib.pl';

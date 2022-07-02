@@ -50,6 +50,8 @@ BEGIN {
 use strict;
 use 5.006;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our(@ISA, @EXPORT, $VERSION, $Fileparse_fstype, $Fileparse_igncase);
 require Exporter;
 @ISA = qw(Exporter);

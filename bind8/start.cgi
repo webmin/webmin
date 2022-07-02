@@ -3,6 +3,8 @@
 # Start bind 8
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%access, %text, %in);
 
 require './bind8-lib.pl';

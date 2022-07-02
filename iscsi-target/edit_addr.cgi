@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './iscsi-target-lib.pl';
 our (%text);
 my $opts = &get_iscsi_options();

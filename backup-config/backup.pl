@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%text, %config, $no_acl_check);
 $no_acl_check++;
 require './backup-config-lib.pl';

@@ -3,6 +3,8 @@
 # Display options for creating a new view
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%access, %text);
 
 require './bind8-lib.pl';

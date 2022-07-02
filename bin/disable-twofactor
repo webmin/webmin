@@ -2,6 +2,8 @@
 # disable-twofactor - Disable two-factor authentication for a user. 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 BEGIN { $Pod::Usage::Formatter = 'Pod::Text::Color'; }
 use 5.010; # Version in CentOS 6
 

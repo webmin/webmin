@@ -1,6 +1,8 @@
 # freebsd-lib.pl
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 no warnings "redefine";
 our (%config);
 

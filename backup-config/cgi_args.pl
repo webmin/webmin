@@ -1,6 +1,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 do 'backup-config-lib.pl';
 
 sub cgi_args

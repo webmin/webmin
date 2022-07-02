@@ -3,6 +3,8 @@
 # Display options for other DNS servers
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 # Globals
 our (%access, %text);
 

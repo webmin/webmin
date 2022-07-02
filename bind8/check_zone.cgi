@@ -2,6 +2,8 @@
 # Check a zone's records and report problems
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 
 require './bind8-lib.pl';
 # Globals from bind8-lib.pl

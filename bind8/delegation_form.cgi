@@ -3,6 +3,8 @@
 # A form for creating a new delegation-only
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 # Globals
 our (%access, %text, %config);
 

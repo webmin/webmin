@@ -4,6 +4,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './servers-lib.pl';
 our (%in, %text, $module_name, $cron_cmd, @cluster_modules, %config, %access);
 $access{'auto'} || &error($text{'auto_ecannot'});

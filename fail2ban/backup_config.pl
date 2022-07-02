@@ -1,6 +1,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 do 'fail2ban-lib.pl';
 our ($config_directory, %gconfig);
 

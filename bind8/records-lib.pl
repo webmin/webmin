@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 no warnings 'redefine';
+no warnings 'uninitialized';
 
 # Globals from Webmin or bind8-lib.pl
 our (%config, %text, %in);

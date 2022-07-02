@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './acl-lib.pl';
 our (%in, %text, %gconfig, %access, $module_name, $module_root_directory);
 $access{'rbacenable'} || &error($text{'rbac_ecannot'});

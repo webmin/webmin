@@ -2,6 +2,8 @@
 # Display a list of domains, views, and icons for global options.
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%access, %text, %config, %gconfig, %in);
 our ($module_name, $module_config_directory);
 

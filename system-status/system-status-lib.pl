@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 no warnings 'redefine';
+no warnings 'uninitialized';
 BEGIN { push(@INC, ".."); };
 eval "use WebminCore;";
 &init_config();

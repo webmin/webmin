@@ -4,6 +4,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './change-user-lib.pl';
 our (%text, %in, %gconfig, $base_remote_user, %access);
 &ReadParse();

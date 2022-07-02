@@ -2,6 +2,8 @@
 # Show a form for setting up DNSSEC verification and trusted keys
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 # Globals
 our (%access, %text);
 our $dnssec_dlv_zone;

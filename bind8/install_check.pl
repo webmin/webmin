@@ -1,6 +1,8 @@
 # install_check.pl
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%config);
 
 do 'bind8-lib.pl';

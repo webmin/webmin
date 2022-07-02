@@ -4,6 +4,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 
 my %auth;
 open(my $fh, "<".$ARGV[0]);

@@ -2,6 +2,8 @@
 # Show a form for deleting a record in multiple zones
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%text, %in, %config);
 
 require './bind8-lib.pl';

@@ -1,5 +1,7 @@
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our %access;
 
 do 'at-lib.pl';

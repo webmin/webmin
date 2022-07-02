@@ -2,6 +2,8 @@
 # Show a page for manually editing named.conf
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 # Globals
 our (%access, %text, %in);
 

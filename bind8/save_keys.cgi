@@ -3,6 +3,8 @@
 # Update all the key directives
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';

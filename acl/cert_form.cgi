@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './acl-lib.pl';
 our (%in, %text, %config, %access);
 &ui_print_header(undef, $text{'cert_title'}, "", undef, undef, undef, undef,

@@ -2,6 +2,8 @@
 # Remove some zone from the open list
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 # Globals
 our (%in);
 

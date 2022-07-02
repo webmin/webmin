@@ -3,6 +3,8 @@
 BEGIN { push(@INC, ".."); };
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 use WebminCore;
 &init_config();
 our ($module_root_directory, %text, %config, %gconfig, $base_remote_user);

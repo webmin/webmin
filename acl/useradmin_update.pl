@@ -1,6 +1,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 if (!$main::done_foreign_require{"acl","acl-lib.pl"}) {
 	do "acl-lib.pl";
 	}

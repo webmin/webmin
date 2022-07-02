@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 use 5.010;
 
 use File::Basename;
@@ -22,7 +24,7 @@ sub main
     # If username passed as regular param
     my $cmd = scalar(@ARGV) == 1 && $ARGV[0];
     $cmd = $opt{'command'} if ($opt{'command'});
-    if ($cmd !~ /^(status|start|stop|restart|reload|force-restart|force-reload|kill)$/) {
+    if ($cmd !~ /^(status|start|stop|restart|reload|force-restart|kill)$/) {
         $cmd = undef;
     }
 
@@ -70,7 +72,7 @@ sub run
         my $rs = system("$o->{'config'}/$o->{'cmd'} $service");
         exit $rs;
     }
-    if ($o->{'cmd'} =~ /^(kill|force-kill)$/) {
+    if ($o->{'cmd'} =~ /^(kill)$/) {
         my $rs;
         if (-x $systemctlcmd) {
             $rs = system("$systemctlcmd stop $service");
@@ -79,7 +81,7 @@ sub run
         $rs = system("$o->{'config'}/.stop-init --kill >/dev/null 2>&1 $service");
         exit $rs;
     }
-    if ($o->{'cmd'} =~ /^(force-reload|force-restart)$/) {
+    if ($o->{'cmd'} =~ /^(force-restart)$/) {
         my $rs = system("$o->{'config'}/restart-by-force-kill $service");
         exit $rs;
     }
@@ -164,14 +166,9 @@ sub root
    - start
    - stop
    - restart
-   - reload
    - force-restart
-   - force-reload
+   - reload
    - kill
-
- Alias commands:
-   - force-restart | force-reload
-   - kill | force-kill
 
 =back
 
