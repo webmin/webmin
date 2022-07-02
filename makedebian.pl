@@ -264,13 +264,11 @@ justinstalled=1
 if [ -e "/etc/$baseproduct" ]; then
 	justinstalled=0
 fi
-supportupdprepost=0
 inetd=`grep "^inetd=" /etc/$baseproduct/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
 if [ "\$1" = "configure" ]; then
 	# Upgrading the package, so stop the old Webmin properly
 	if [ "\$inetd" != "1" ]; then
 		if [ -e "/etc/$baseproduct/.pre-install" ]; then
-			supportupdprepost=1
 			/etc/$baseproduct/.pre-install >/dev/null 2>&1 </dev/null
 		fi
 	fi
@@ -322,13 +320,11 @@ if [ "$inetd" != "1" ]; then
 		if [ "\$?" != "0" ]; then
 			echo "E: Webmin server cannot be started. It is advised to start it manually\n   by running \\"webmin force-restart\\" command"
 		fi
-	elif [ "\$supportupdprepost" = "1" ]; then
-			/etc/$baseproduct/.post-install >/dev/null 2>&1 </dev/null
+	else
+		/etc/$baseproduct/.post-install >/dev/null 2>&1 </dev/null
 		if [ "\$?" != "0" ]; then
 			echo "W: Webmin server cannot be restarted. It is advised to restart it manually\n   by running \\"webmin force-restart\\" command when upgrade process is finished"
 		fi
-	else
-		echo "W: Webmin server will not be restarted. It is advised to restart it manually\n   by running \\"webmin force-restart\\" command when upgrade process is finished"
 	fi
 fi
 
