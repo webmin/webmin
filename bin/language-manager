@@ -3,8 +3,7 @@
 
 use strict;
 use warnings;
-no warnings 'redefine';
-no warnings 'uninitialized';
+
 use 5.014;
 
 use File::Spec;

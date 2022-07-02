@@ -3,8 +3,7 @@
 # restart Webmin to apply the change.
 use strict;
 use warnings;
-no warnings 'redefine';
-no warnings 'uninitialized';
+
 BEGIN { $Pod::Usage::Formatter = 'Pod::Text::Color'; }
 use 5.010; # Version in CentOS 6
 
