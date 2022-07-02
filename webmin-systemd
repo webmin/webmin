@@ -4,8 +4,8 @@ Description=Webmin server daemon
 [Service]
 Environment="PERLLIB=WEBMIN_LIBDIR"
 ExecStart=WEBMIN_LIBDIR/miniserv.pl WEBMIN_CONFIG/miniserv.conf
-ExecStop=/usr/bin/kill $MAINPID
-ExecReload=/usr/bin/kill -USR1 $MAINPID
+ExecStop=/bin/kill $MAINPID
+ExecReload=/bin/kill -USR1 $MAINPID
 PIDFile=WEBMIN_VAR/miniserv.pid
 Type=forking
 Restart=always
