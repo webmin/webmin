@@ -217,12 +217,12 @@ if [ "\$inetd" != "1" ]; then
 	if [ "\$1" == 1 ]; then
 		/etc/webmin/start >/dev/null 2>&1 </dev/null
 		if [ "\$?" != "0" ]; then
-			echo "error: Webmin server cannot be started. It is advised to start it manually\n       by running \\"webmin force-restart\\" command"
+			echo "error: Webmin server cannot be started. It is advised to start it manually\n       by running \\"/etc/webmin/restart-by-force-kill\\" command"
 		fi
 	else
 		/etc/webmin/.post-install >/dev/null 2>&1 </dev/null
 		if [ "\$?" != "0" ]; then
-			echo "warning: Webmin server cannot be restarted. It is advised to restart it manually\n         by running \\"webmin force-restart\\" when upgrade process is finished"
+			echo "warning: Webmin server cannot be restarted. It is advised to restart it manually\n         by running \\"/etc/webmin/restart-by-force-kill\\" when upgrade process is finished"
 		fi
 	fi
 fi

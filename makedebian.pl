@@ -318,12 +318,12 @@ if [ "$inetd" != "1" ]; then
 	if [ "\$justinstalled" = "1" ]; then
 		/etc/$baseproduct/start >/dev/null 2>&1 </dev/null
 		if [ "\$?" != "0" ]; then
-			echo "E: Webmin server cannot be started. It is advised to start it manually\n   by running \\"webmin force-restart\\" command"
+			echo "E: Webmin server cannot be started. It is advised to start it manually\n   by running \\"/etc/webmin/restart-by-force-kill\\" command"
 		fi
 	else
 		/etc/$baseproduct/.post-install >/dev/null 2>&1 </dev/null
 		if [ "\$?" != "0" ]; then
-			echo "W: Webmin server cannot be restarted. It is advised to restart it manually\n   by running \\"webmin force-restart\\" command when upgrade process is finished"
+			echo "W: Webmin server cannot be restarted. It is advised to restart it manually\n   by running \\"/etc/webmin/restart-by-force-kill\\" command when upgrade process is finished"
 		fi
 	fi
 fi
