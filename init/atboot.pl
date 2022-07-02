@@ -8,7 +8,7 @@ $product = $ARGV[0] || "webmin";
 $ucproduct = ucfirst($product);
 
 $< == 0 || die "atboot.pl must be run as root";
-my $kill = &has_command("kill");
+my $kill = &has_command("kill") || '/bin/kill';
 
 if ($init_mode eq "osx") {
 	# Darwin System
