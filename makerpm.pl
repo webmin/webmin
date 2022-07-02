@@ -210,10 +210,11 @@ autothird=1
 noperlpath=1
 nouninstall=1
 nostart=1
+nostop=1
 if [ "\$tempdir" = "" ]; then
 	tempdir=/tmp/.webmin
 fi
-export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot makeboot
+export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot makeboot nostop
 ./setup.sh >\$tempdir/webmin-setup.out 2>&1
 chmod 600 \$tempdir/webmin-setup.out
 rm -f /var/lock/subsys/webmin

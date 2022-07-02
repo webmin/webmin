@@ -292,7 +292,8 @@ autothird=1
 noperlpath=1
 nouninstall=1
 nostart=1
-export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot makeboot
+nostop=1
+export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot makeboot nostop
 tempdir=/tmp/.webmin
 if [ ! -d \$tempdir ]; then
 	tempdir=/tmp
