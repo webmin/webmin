@@ -3421,6 +3421,7 @@ return $mode;
 
 sub term_handler
 {
+&log_error("Shutting down");
 kill('TERM', @childpids) if (@childpids);
 kill('KILL', $logclearer) if ($logclearer);
 kill('KILL', $extauth) if ($extauth);
