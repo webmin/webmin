@@ -465,7 +465,7 @@ else {
 		$host = &get_system_hostname();
 		$cert = &tempname();
 		$key = &tempname();
-		open(SSL, "| openssl req -newkey rsa:512 -x509 -nodes -out $cert -keyout $key -days 1825 >/dev/null 2>&1");
+		open(SSL, "| openssl req -newkey rsa:2048 -x509 -nodes -out $cert -keyout $key -days 1825 -sha256 >/dev/null 2>&1");
 		print SSL ".\n";
 		print SSL ".\n";
 		print SSL ".\n";
