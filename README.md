@@ -41,14 +41,12 @@ Complete set of documentation for Webmin and all of its modules can be found at 
 
 * [Jamie Cameron](http://www.webmin.com/about.html) [![](https://github.com/webmin-devel/webmin/blob/master/media/linkedin-15x15.png?raw=true)](https://www.linkedin.com/in/jamiecameron2)
 
-### Developers
-* [Ilia Rostovtsev](https://github.com/iliajie)
-* [Joe Cooper](https://github.com/swelljoe)
-
 ### Contributors
+
+* [Joe Cooper](https://github.com/swelljoe)
+* [Ilia Rostovtsev](https://github.com/iliajie)
 * [Kay Marquardt](https://github.com/gnadelwartz)
-* [Nawawi Jamili](https://github.com/nawawi)
-* [unknown10777] https://github.com/unknown10777 + [90 more..](https://github.com/webmin/webmin/graphs/contributors)
+* [Nawawi Jamili](https://github.com/nawawi) + [57 more..](https://github.com/webmin/webmin/graphs/contributors)
 
 ## License
 
