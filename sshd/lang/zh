@@ -1,18 +1,18 @@
 index_apply=应用变更
-index_applymsg=按下后，我会给正在运行的$1进程发送一个SIGHUP信号以应用当前的配置。
+index_applymsg=按下后，我会给正在运行的 $1 进程发送一个SIGHUP信号以应用当前的配置。
 index_applymsg2=按下后，我会执行 $1 命令以使当前配置生效。
 index_dsa=DSA (SSH v2)
-index_econfig=我没找到ssh服务端配置文件 $1。可能没有安装sshd，或者<a href='$2'>模块配置</a>可能有误。
-index_esshd=我没找到ssh服务端 $1。可能没有安装sshd，或者<a href='$2'>模块配置</a>可能有误。
+index_econfig=我没找到ssh服务端配置文件 $1 。可能没有安装sshd，或者<a href='$2'>模块配置</a>可能有误。
+index_esshd=我没找到ssh服务端 $1 。可能没有安装sshd，或者<a href='$2'>模块配置</a>可能有误。
 index_eversion=我无法从ssh服务端 $1 中获取版本号。<a href='$2'>模块配置</a>可能有误。
-index_eversion2=ssh服务端 $1 版本是 $2，但是我只支持版本是$1 的ssh服务端。
+index_eversion2=ssh服务端 $1 版本是 $2 ，但是我只支持版本是$1 的ssh服务端。
 index_return=模块索引
 index_rsa=RSA (SSH v2)
 index_rsa1=RSA (SSH v1)
 index_start=开！
-index_startmsg=按下后，我会启动sshd服务端。它启动完成之前是不会有人通过ssh登录的。
+index_startmsg=按下后，我会启动sshd服务。它启动完成没人可以通过ssh登录。
 index_stop=停！
-index_stopmsg=按下后，我会停止sshd服务端。它停止后是不会有人通过ssh登录的，但现有的连接不会关闭。
+index_stopmsg=按下后，我会停止sshd服务。停止后没人可以通过ssh登录，但现有的连接不会关闭。
 index_title=ssh服务端
 index_type=ssh密匙类型:
 index_version=$1
@@ -86,7 +86,7 @@ net_elisten=无效的监听IP地址
 net_eport=无效的端口号
 net_eidle=无效的无数据通信的等待时间
 net_egrace=无效的等待登录时间
-net_eprots=你必须至少选一个协议
+net_eprots=必须至少选一个协议
 
 access_title=访问控制
 access_header=网络和登录访问控制选项
@@ -116,7 +116,7 @@ misc_umask_def=保留原来的
 misc_syslog=系统日志功能
 misc_loglevel=日志级别
 misc_bits=服务器的密钥大小
-misc_quiet=记录最小的日志？
+misc_quiet=记录最少的日志吗？
 misc_regen=服务器密钥再生的时间间隔
 misc_regen_def=绝不
 misc_fascist=记录详细的日志吗？
@@ -149,7 +149,7 @@ host_hostname=要连接的真实主机名
 host_hostname_def=同上
 host_batch=如果需要则要求口令？
 host_port=要连接至的端口
-host_comp=压缩 SSH 通信量？
+host_comp=压缩ssh通信？
 host_escape=Escape 字符
 host_escape_none=无
-host_clevel=压缩级
+host_clevel=压缩等级
