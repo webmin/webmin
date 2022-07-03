@@ -719,10 +719,10 @@ if [ -x "$systemctlcmd" ]; then
 	echo "$systemctlcmd reload webmin" >>$config_dir/reload
 	# Pre-install on systemd
 	echo "#!/bin/sh" >$config_dir/.pre-install
-	# echo "$systemctlcmd kill --signal=SIGSTOP --kill-who=main webmin" >>$config_dir/.pre-install
+	echo "$systemctlcmd kill --signal=SIGSTOP --kill-who=main webmin" >>$config_dir/.pre-install
 	# Post-install on systemd
 	echo "#!/bin/sh" >$config_dir/.post-install
-	# echo "$systemctlcmd kill --signal=SIGCONT --kill-who=main webmin" >>$config_dir/.post-install
+	echo "$systemctlcmd kill --signal=SIGCONT --kill-who=main webmin" >>$config_dir/.post-install
 	echo "$systemctlcmd kill --signal=SIGHUP --kill-who=main webmin" >>$config_dir/.post-install
 
 	# Fix existing systemd webmin.service file to update start and stop commands
