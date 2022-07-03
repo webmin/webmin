@@ -260,11 +260,17 @@ system("chmod 755 $preinstall_file");
 open(SCRIPT, ">$postinstall_file");
 print SCRIPT <<EOF;
 #!/bin/sh
+justinstalled=1
+if [ -e "/etc/$baseproduct" ]; then
+	justinstalled=0
+fi
 inetd=`grep "^inetd=" /etc/$baseproduct/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
-if [ "\$1" = "upgrade" -a "\$1" != "abort-upgrade" ]; then
+if [ "\$1" = "configure" ]; then
 	# Upgrading the package, so stop the old Webmin properly
 	if [ "\$inetd" != "1" ]; then
-		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
+		if [ -e "/etc/$baseproduct/.pre-install" ]; then
+			/etc/$baseproduct/.pre-install >/dev/null 2>&1 </dev/null
+		fi
 	fi
 fi
 cd /usr/share/$baseproduct
@@ -309,10 +315,16 @@ fi
 rm -f /var/lock/subsys/$baseproduct
 
 if [ "$inetd" != "1" ]; then
-	/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
-	/etc/$baseproduct/start >/dev/null 2>&1 </dev/null
-	if [ "\$?" != "0" ]; then
-		echo "W: $ucproduct server cannot be restarted. It is advised to restart it manually by\nrunning \\"/etc/webmin/restart-by-force-kill\\" when upgrade process is finished"
+	if [ "\$justinstalled" = "1" ]; then
+		/etc/$baseproduct/start >/dev/null 2>&1 </dev/null
+		if [ "\$?" != "0" ]; then
+			echo "E: Webmin server cannot be started. It is advised to start it manually\n   by running \\"/etc/webmin/restart-by-force-kill\\" command"
+		fi
+	else
+		/etc/$baseproduct/.post-install >/dev/null 2>&1 </dev/null
+		if [ "\$?" != "0" ]; then
+			echo "W: Webmin server cannot be restarted. It is advised to restart it manually\n   by running \\"/etc/webmin/restart-by-force-kill\\" command when upgrade process is finished"
+		fi
 	fi
 fi
 
@@ -361,10 +373,10 @@ if [ "\$1" != "upgrade" -a "\$1" != "abort-upgrade" ]; then
 	if [ "\$?" = 0 ]; then
 		# Package is being removed, and no new version of webmin
 		# has taken it's place. Run uninstalls and stop the server
+		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
 		if [ "$product" = "webmin" ]; then
 			(cd /usr/share/$baseproduct ; WEBMIN_CONFIG=/etc/$baseproduct WEBMIN_VAR=/var/$baseproduct LANG= /usr/share/$baseproduct/run-uninstalls.pl) >/dev/null 2>&1 </dev/null
 		fi
-		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
 		/bin/true
 	fi
 fi
