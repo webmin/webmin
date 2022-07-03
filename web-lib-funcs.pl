@@ -4887,6 +4887,8 @@ if ($gconfig{'path'}) {
 	$ENV{'PATH'} = join($path_separator,
 			&unique(split($path_separator, $ENV{'PATH'})));
 	}
+$ENV{'PATH'} ||= join($path_separator, "/usr/local/sbin", "/usr/local/bin",
+		      "/usr/sbin", "/usr/bin", "/sbin", "/bin");
 $ENV{$gconfig{'ld_env'}} = $gconfig{'ld_path'} if ($gconfig{'ld_env'});
 
 # Set http_proxy and ftp_proxy environment variables, based on Webmin settings
