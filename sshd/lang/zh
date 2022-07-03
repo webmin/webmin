@@ -1,5 +1,5 @@
 index_apply=应用变更
-index_applymsg=按下后，会给正在运行的 $1 进程发送一个SIGHUP信号以应用当前配置。
+index_applymsg=按下后，会给正在运行的 $1 发送SIGHUP信号以应用当前配置。
 index_applymsg2=按下后，会执行 $1 命令以使当前配置生效。
 index_dsa=DSA (SSH v2)
 index_econfig=没找到SSH服务端配置文件 $1 。可能没有安装sshd，或者<a href='$2'>模块配置</a>可能有误。
@@ -12,12 +12,12 @@ index_rsa1=RSA (SSH v1)
 index_start=启动！
 index_startmsg=按下后，sshd服务会启动。它启动完成前不能通过SSH登录。
 index_stop=停！
-index_stopmsg=按下后，sshd服务会停止运行。停止后将不能通过SSH登录，现有的连接不会关闭。（可在“主机选项”更改）
+index_stopmsg=按下后，sshd服务会停止运行。停止后不能通过SSH登录，现有的连接不会关闭。（可在“主机选项”更改）
 index_title=SSH服务端
 index_type=SSH密匙类型:
 index_version=$1
 
-bits=bits
+bits=比特
 secs=秒
 
 users_auth=允许使用密码验证吗?
@@ -39,7 +39,7 @@ users_expire=账户过期的前几天警告用户？
 users_fcmd=仅用于命令
 users_header=登录与验证选项
 users_known=忽略用户的<tt>known_hosts</tt>文件吗？
-users_mail=提醒用户有新的邮件吗？
+users_mail=提醒用户有新邮件吗？
 users_maxauthtries=每连接尝试登录的最大次数
 users_motd=登录时显示<tt>/etc/motd</tt>吗？
 users_nopwd=仅RSA验证
