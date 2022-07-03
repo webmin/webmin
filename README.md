@@ -6,7 +6,7 @@
 * [Development](#development)
 * [License](#license)
 
-* [中文版](https://github.com/webmin/webmin/blob/master/README-zh-cn.md)
+* [中文版](https://github.com/webmin/webmin/blob/master/README-zh.md)
 
 ## About
 
