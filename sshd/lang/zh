@@ -1,20 +1,20 @@
 index_apply=应用变更
-index_applymsg=按下后，我会给正在运行的 $1 进程发送一个SIGHUP信号以应用当前的配置。
-index_applymsg2=按下后，我会执行 $1 命令以使当前配置生效。
+index_applymsg=按下后，会给正在运行的 $1 进程发送一个SIGHUP信号以应用当前配置。
+index_applymsg2=按下后，会执行 $1 命令以使当前配置生效。
 index_dsa=DSA (SSH v2)
-index_econfig=我没找到ssh服务端配置文件 $1 。可能没有安装sshd，或者<a href='$2'>模块配置</a>可能有误。
-index_esshd=我没找到ssh服务端 $1 。可能没有安装sshd，或者<a href='$2'>模块配置</a>可能有误。
-index_eversion=我无法从ssh服务端 $1 中获取版本号。<a href='$2'>模块配置</a>可能有误。
-index_eversion2=ssh服务端 $1 版本是 $2 ，但是我只支持版本是$1 的ssh服务端。
+index_econfig=没找到SSH服务端配置文件 $1 。可能没有安装sshd，或者<a href='$2'>模块配置</a>可能有误。
+index_esshd=没找到SSH服务端 $1 。可能没有安装sshd，或者<a href='$2'>模块配置</a>可能有误。
+index_eversion=无法从SSH服务端 $1 中获取版本号。<a href='$2'>模块配置</a>可能有误。
+index_eversion2=SSH服务端 $1 版本是 $2 ，但是我只支持版本$1 的SSH服务端。
 index_return=模块索引
 index_rsa=RSA (SSH v2)
 index_rsa1=RSA (SSH v1)
-index_start=开！
-index_startmsg=按下后，我会启动sshd服务。它启动完成没人可以通过ssh登录。
+index_start=启动！
+index_startmsg=按下后，sshd服务会启动。它启动完成前不能通过SSH登录。
 index_stop=停！
-index_stopmsg=按下后，我会停止sshd服务。停止后没人可以通过ssh登录，但现有的连接不会关闭。
-index_title=ssh服务端
-index_type=ssh密匙类型:
+index_stopmsg=按下后，sshd服务会停止运行。停止后将不能通过SSH登录，现有的连接不会关闭。（可在“主机选项”更改）
+index_title=SSH服务端
+index_type=SSH密匙类型:
 index_version=$1
 
 bits=bits
@@ -42,15 +42,15 @@ users_known=忽略用户的<tt>known_hosts</tt>文件吗？
 users_mail=提醒用户有新的邮件吗？
 users_maxauthtries=每连接尝试登录的最大次数
 users_motd=登录时显示<tt>/etc/motd</tt>吗？
-users_nopwd=只用RSA验证
+users_nopwd=仅RSA验证
 users_passwd=如果密码已过期，提示输入新的密码吗？
 users_pempty=允许空密码登录吗？
 users_pexpire_def=永不
 users_pexpire=密码过期的前几天警告用户？
 users_rhosts=忽略<tt>.rhosts</tt>文件吗？
-users_rhostsauth=允许只用<tt>hosts.equiv</tt>和<tt>.rhosts</tt>登录吗？
+users_rhostsauth=允许仅用<tt>hosts.equiv</tt>和<tt>.rhosts</tt>登录吗？
 users_rhostsrsa=检查 RSA 验证的<tt>hosts.equiv</tt>和<tt>.rhosts</tt>文件吗？
-users_root=允许上root号吗？
+users_root=允许以root登录吗？
 users_rrdef=和其他用户一样
 users_rrhosts=忽略root用户的<tt>.rhosts</tt>文件吗？
 users_rsa=允许RSA (SSH v1)验证吗？
@@ -72,7 +72,7 @@ net_idle_m=分
 net_idle_h=小时
 net_idle_d=天
 net_idle_w=周
-net_keep=如果客户机系统崩溃则断开连接？
+net_keep=如果客户端崩溃则断开连接？
 net_listen=监听地址
 net_listen_def=所有地址
 net_grace=等待登录的时间
@@ -90,8 +90,8 @@ net_eprots=必须至少选一个协议
 
 access_title=访问控制
 access_header=网络和登录访问控制选项
-access_allowu=只允许用户
-access_allowg=只允许群组中的成员
+access_allowu=仅允许用户
+access_allowg=仅允许群组中的成员
 access_all=所有人
 access_denyu=禁止用户
 access_denyg=禁止群组中的成员
@@ -107,16 +107,16 @@ access_eallowh=任何主机不许进入
 access_edenyh=任何主机均可进入
 
 misc_title=杂项选项
-misc_header=其他杂项 SSH 服务器选项
+misc_header=SSH 服务端杂项选项
 misc_x11=允许X11连接转发吗？
 misc_xoff=X11 显示偏移量
 misc_xauth=<tt>xauth</tt> 程序的完整路径
-misc_umask=SSH 服务器的文件保护掩码
+misc_umask=SSH 服务端的文件保护掩码
 misc_umask_def=保留原来的
 misc_syslog=系统日志功能
 misc_loglevel=日志级别
 misc_bits=服务器的密钥大小
-misc_quiet=记录最少的日志吗？
+misc_quiet=记录最少日志吗？
 misc_regen=服务器密钥再生的时间间隔
 misc_regen_def=绝不
 misc_fascist=记录详细的日志吗？
@@ -129,7 +129,7 @@ misc_ebits=为输入或无效的服务器密钥大小
 misc_eregen=未输入或无效的密钥再生的时间间隔
 misc_epid=未输入 PID 文件路径
 
-start_err=无法启动 SSH 服务器
+start_err=无法启动sshd服务
 
 hosts_title=客户端主机选项
 hosts_header=SSH 客户端主机
@@ -140,16 +140,16 @@ hosts_return=客户端主机列表
 
 host_create=添加主机选项
 host_edit=编辑主机选项
-host_header=用于 SSH 主机的客户端选项
+host_header=用于ssh主机的客户端选项
 host_name=主机的选项
-host_user=以用户的身份登录
+host_user=以用户身份登录
 host_user_def=当前登录
-host_keep=如果服务器系统崩溃，则断开连接？
+host_keep=sshd服务停了还保留已连接的会话吗？
 host_hostname=要连接的真实主机名
 host_hostname_def=同上
 host_batch=如果需要则要求口令？
-host_port=要连接至的端口
-host_comp=压缩ssh通信？
+host_port=端口
+host_comp=压缩SSH网络通信？
 host_escape=Escape 字符
 host_escape_none=无
 host_clevel=压缩等级
