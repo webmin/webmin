@@ -700,13 +700,13 @@ else {
 		# Pre install
 		open(PREINSTT, ">$config_directory/.pre-install");
 		print PREINSTT "#!/bin/sh\n";
-		print PREINSTT "$systemctlcmd kill --signal=SIGSTOP --kill-who=main webmin\n";
+		#print PREINSTT "$systemctlcmd kill --signal=SIGSTOP --kill-who=main webmin\n";
 		close(PREINSTT);
 
 		# Post install
 		open(POSTINSTT, ">$config_directory/.post-install");
 		print POSTINSTT "#!/bin/sh\n";
-		print POSTINSTT "$systemctlcmd kill --signal=SIGCONT --kill-who=main webmin\n";
+		#print POSTINSTT "$systemctlcmd kill --signal=SIGCONT --kill-who=main webmin\n";
 		print POSTINSTT "$systemctlcmd kill --signal=SIGHUP --kill-who=main webmin\n";
 		close(POSTINSTT);
 
