@@ -55,27 +55,27 @@ if ($in{'raid_mode'} eq 'raid0') {
 	$stripes = $in{'raid_stripe0'};
 	}
 elsif ($in{'raid_mode'} eq 'raid1') {
-	$in{'raid_mirror1'} =~ /^\d+$/ && $in{'raid_mirror1'} >= 2 ||
+	$in{'raid_mirror1'} =~ /^\d+$/ && $in{'raid_mirror1'} >= 1 ||
 		&error($text{'raid_emirror1'});
 	$mirrors = $in{'raid_mirror1'};
 	}
 elsif ($in{'raid_mode'} eq 'raid4') {
-	$in{'raid_stripe4'} =~ /^\d+$/ && $in{'raid_stripe4'} >= 3 ||
+	$in{'raid_stripe4'} =~ /^\d+$/ && $in{'raid_stripe4'} >= 2 ||
 		&error($text{'raid_estripe4'});
 	$stripes = $in{'raid_stripe4'};
 	}
 elsif ($in{'raid_mode'} eq 'raid5') {
-	$in{'raid_stripe5'} =~ /^\d+$/ && $in{'raid_stripe5'} >= 3 ||
+	$in{'raid_stripe5'} =~ /^\d+$/ && $in{'raid_stripe5'} >= 2 ||
 		&error($text{'raid_estripe5'});
 	$stripes = $in{'raid_stripe5'};
 	}
 elsif ($in{'raid_mode'} eq 'raid6') {
-	$in{'raid_stripe6'} =~ /^\d+$/ && $in{'raid_stripe6'} >= 3 ||
+	$in{'raid_stripe6'} =~ /^\d+$/ && $in{'raid_stripe6'} >= 2 ||
 		&error($text{'raid_estripe6'});
 	$stripes = $in{'raid_stripe6'};
 	}
 elsif ($in{'raid_mode'} eq 'raid10') {
-	$in{'raid_stripe10'} =~ /^\d+$/ && $in{'raid_stripe10'} >= 3 ||
+	$in{'raid_stripe10'} =~ /^\d+$/ && $in{'raid_stripe10'} >= 2 ||
 		&error($text{'raid_estripe10'});
 	$stripes = $in{'raid_stripe10'};
 	}
