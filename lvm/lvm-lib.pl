@@ -361,6 +361,9 @@ else {
 		elsif (/Stripes\s+(\d+)/) {
 			$lv->{'stripes'} = $1;
 			}
+		elsif (/Mirrored\s+volumes\s+(\d+)/) {
+			$lv->{'mirrors'} = $1;
+			}
 		elsif (/Stripe\s+size\s+(\S+)\s+(\S+)/) {
 			$lv->{'stripesize'} = &mult_units($1, $2);
 			}

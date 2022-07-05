@@ -15,6 +15,7 @@ for(my $i=0; defined($cron->{'arg'.$i}); $i++) {
 
 # Force webmin script type to be cron
 $main::webmin_script_type = 'cron';
+$main::webmin_script_webmincron = $cron->{'module'}."::".$cron->{'func'};
 
 # Require the module, call the function
 eval {

@@ -217,6 +217,10 @@ elsif (!$lv->{'is_snap'}) {
 		print &ui_table_row($text{'lv_stripesize'},
 			&nice_size($lv->{'stripesize'}*1024));
 		}
+
+	if ($lv->{'mirrors'}) {
+		print &ui_table_row($text{'lv_mirror'}, $lv->{'mirrors'});
+		}
 	}
 
 if (!$lv->{'is_snap'}) {
