@@ -968,7 +968,8 @@ sub create_raid_volume
 {
 local ($lv) = @_;
 local $cmd = "lvcreate -y -n".quotemeta($lv->{'name'})." ";
-$cmd .= " --type ".quotemeta($lv->{'raid'});
+$cmd .= " --type ".
+        quotemeta($lv->{'raid'} eq 'raid0' ? 'striped' : $lv->{'raid'});
 if ($lv->{'raid'} eq 'raid1') {
 	$cmd .= " --mirrors ".$lv->{'mirrors'};
 	}
