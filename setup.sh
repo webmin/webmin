@@ -736,7 +736,7 @@ fi
 echo "..done"
 echo ""
 
-if [ "$upgrading" = 1 -a "$inetd" != "1" -a "$nostop" == "" ]; then
+if [ "$upgrading" = 1 -a "$inetd" != "1" -a "$nostop" = "" ]; then
 	# Stop old version, with updated stop script
 	$config_dir/stop >/dev/null 2>&1
 fi
