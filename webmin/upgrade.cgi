@@ -329,7 +329,10 @@ elsif ($in{'mode'} eq 'solaris-pkg' || $in{'mode'} eq 'sun-pkg') {
 	# package.  It would be interesting, however, if this were embedded in
 	# a remote script that could be nohup'd and it would restart the server.
 	chdir("/");
-	&restart_miniserv();
+	my $pre_install_script = "$config_directory/.pre-install";
+	my $stop_script = -r $pre_install_script ? $pre_install_script : "$config_directory/stop";
+	&proc::safe_process_exec_logged(
+		$stop_script, 0, 0, STDOUT, undef, 1,1);
 
 	$in{'root'} = '/';
 	$in{'adminfile'} = '$module_root_directory/adminupgrade';
@@ -339,6 +342,8 @@ elsif ($in{'mode'} eq 'solaris-pkg' || $in{'mode'} eq 'sun-pkg') {
 	$ENV{'config_dir'} = $config_directory;
 	$ENV{'webmin_upgrade'} = 1;
 	$ENV{'autothird'} = 1;
+	$ENV{'nostop'} = 1;
+	$ENV{'nostart'} = 1;
 	$ENV{'tempdir'} = $gconfig{'tempdir'};
 	print "<p>",$text{'upgrade_setup'},"<p>\n";
 	print "<pre>";
@@ -361,7 +366,7 @@ elsif ($in{'mode'} eq 'solaris-pkg' || $in{'mode'} eq 'sun-pkg') {
 	&proc::safe_process_exec(
 		"cd $dir && ./setup.sh", 0, 0, STDOUT, undef, 1, 1);
 	&proc::safe_process_exec_logged(
-		"$config_directory/start", 0, 0, STDOUT, undef, 1,1);
+		"$config_directory/.post-install", 0, 0, STDOUT, undef, 1,1);
 	print "</pre>\n";
 	}
 elsif ($in{'mode'} eq 'gentoo') {
