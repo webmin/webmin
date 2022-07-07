@@ -738,7 +738,7 @@ echo ""
 
 if [ "$upgrading" = 1 -a "$inetd" != "1" -a "$nostop" = "" ]; then
 	# Stop old version, with updated stop script
-	$config_dir/stop >/dev/null 2>&1
+	$config_dir/.pre-install >/dev/null 2>&1
 fi
 
 if [ "$upgrading" = 1 ]; then
@@ -941,7 +941,7 @@ fi
 if [ "$nostart" = "" ]; then
 	if [ "$inetd" != "1" ]; then
 		echo "Attempting to start Webmin web server.."
-		$config_dir/start
+		$config_dir/.post-install
 		if [ $? != "0" ]; then
 			echo "ERROR: Failed to start web server!"
 			echo ""
