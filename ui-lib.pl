@@ -2755,6 +2755,38 @@ $rv .= "</details>";
 return $rv;
 }
 
+=head2 ui_hide_outside_of_viewport(elem)
+
+Prints element if not in viewport. Useful
+when printing top and bottom controls as
+printing bottom controls only if it's not
+in view already
+
+=cut
+sub ui_hide_outside_of_viewport
+{
+my ($elem_sel) = @_;
+$elem_sel ||= "[data-outside-of-viewport]";
+if (defined(&theme_ui_hide_outside_of_viewport)) {
+	return &theme_ui_hide_outside_of_viewport(@_);
+	}
+return <<EOF;
+<script type='text/javascript'>
+ try {
+     (function() {
+        var elems = document.querySelectorAll('$elem_sel'),
+            i;
+        for (i = 0; i < elems.length; i++) {
+          if (elems[i].offsetTop < window.innerHeight) {
+              elems[i].style.display = "none";
+          }
+        }
+    })();
+  } catch (e) {};
+</script>
+EOF
+}
+
 =head2 ui_read_file_contents_limit(\%data)
 
 Reads file content with options and

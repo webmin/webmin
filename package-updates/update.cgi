@@ -59,16 +59,24 @@ else {
 
 	if (@ops) {
 		# Ask first
-		print &ui_form_start("update.cgi", "post");
-		print &ui_hidden("mode", $in{'mode'});
-		print &ui_hidden("search", $in{'search'});
-		print &ui_hidden("redir", $in{'redir'});
-		print &ui_hidden("redirdesc", $in{'redirdesc'});
-		foreach $ps (@pkgs) {
-			print &ui_hidden("u", $ps);
-			}
-		print &text('update_rusure', scalar(@ops)),"<p>\n";
-		print &ui_form_end([ [ "confirm", $text{'update_confirm'} ] ]);
+		my $getconfform = sub {
+			my ($bottom) = @_;
+			my $bottom_sel;
+			$bottom_sel = 'data-outside-of-viewport'
+				if ($bottom);
+			my $confform = &ui_form_start("update.cgi", "post", undef, $bottom_sel);
+			$confform .= &ui_hidden("mode", $in{'mode'});
+			$confform .= &ui_hidden("search", $in{'search'});
+			$confform .= &ui_hidden("redir", $in{'redir'});
+			$confform .= &ui_hidden("redirdesc", $in{'redirdesc'});
+			foreach $ps (@pkgs) {
+				$confform .= &ui_hidden("u", $ps);
+				}
+			$confform .= &text('update_rusure', scalar(@ops)),"<p>\n"
+				if (!$bottom);
+			$confform .= &ui_form_end([ [ "confirm", $text{'update_confirm'} ] ]);
+			};
+		print &$getconfform();
 
 		# Show table of all depends
 		@current = &list_current(1);
@@ -96,6 +104,7 @@ else {
 				]);
 			}
 		print &ui_columns_end();
+		print &$getconfform(1), &ui_hide_outside_of_viewport();
 		}
 	else {
 		# Check if a reboot was required before
