@@ -1530,7 +1530,7 @@ return $noescape ? $rv : &html_escape($rv);
 # Simplifies and truncates a subject header for display in the mail list
 sub simplify_subject
 {
-return &convert_header_for_display($_[0], 80);
+return &convert_header_for_display($_[0], 320);
 }
 
 # quoted_decode(text)
