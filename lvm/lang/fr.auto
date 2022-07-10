@@ -1,0 +1,23 @@
+index_addlv4=Créez un volume RAID dans <tt>$1</tt>.
+
+lv_mirror=Nombre de miroirs
+
+raid_title=Créer un volume RAID
+raid_desc=Un volume RAID est un LV qui répartit les données sur plusieurs volumes physiques pour augmenter les performances, ajouter de la redondance pour se protéger contre les pannes de disque, ou les deux.
+raid_header=Détails du nouveau volume RAID
+raid_type=Type de volume RAID
+raid_mode0=RAID0 (striped) sur les PV
+raid_mode1=RAID1 (en miroir) sur les PV
+raid_mode4=RAID4 (parité disque unique) sur les PV
+raid_mode5=RAID5 (parité multi-disque) sur les PV
+raid_mode6=RAID6 (parité multi-disque) sur les PV
+raid_mode10=RAID10 (parité multi-disque) sur les PV
+raid_ok=Créer un volume RAID
+raid_err=Échec de la création du volume RAID
+raid_estripe0=Le nombre de PV à répartir doit être d'au moins 2
+raid_emirror1=Le nombre de PV à mettre en miroir doit être d'au moins 2
+raid_estripe4=Le nombre de PV dans un volume de parité doit être d'au moins 3
+raid_estripe5=Le nombre de PV dans un volume de parité multidisque doit être d'au moins 3
+raid_estripe6=Le nombre de PV dans un volume de parité multidisque doit être d'au moins 3
+raid_estripe10=Le nombre de PV dans un volume de parité multidisque doit être d'au moins 3
+raid_eeither=Il manque soit des miroirs soit des rayures !

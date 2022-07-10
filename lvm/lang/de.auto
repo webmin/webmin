@@ -1,0 +1,23 @@
+index_addlv4=Erstellen Sie ein RAID-Volume in <tt>$1</tt>.
+
+lv_mirror=Anzahl Spiegel
+
+raid_title=RAID-Volume erstellen
+raid_desc=Ein RAID-Volume ist ein LV, das Daten auf mehrere physische Volumes verteilt, um die Leistung zu steigern, Redundanz zum Schutz vor Festplattenausfällen hinzuzufügen oder beides.
+raid_header=Details zu neuen RAID-Volumes
+raid_type=Typ des RAID-Volumes
+raid_mode0=RAID0 (gestreift) über PVs hinweg
+raid_mode1=RAID1 (gespiegelt) über PVs hinweg
+raid_mode4=RAID4 (Einzellaufwerkparität) über PVs hinweg
+raid_mode5=RAID5 (Multi-Drive Parity) über PVs hinweg
+raid_mode6=RAID6 (Multi-Drive Parity) über PVs hinweg
+raid_mode10=RAID10 (Multi-Drive Parity) über PVs hinweg
+raid_ok=RAID-Volume erstellen
+raid_err=RAID-Volume konnte nicht erstellt werden
+raid_estripe0=Die Anzahl der PVs zum Strippen muss mindestens 2 betragen
+raid_emirror1=Die Anzahl der zu spiegelnden PVs muss mindestens 2 betragen
+raid_estripe4=Die Anzahl der PVs in einem Paritätsvolumen muss mindestens 3 betragen
+raid_estripe5=Die Anzahl der PVs in einem Paritätsvolumen mit mehreren Laufwerken muss mindestens 3 betragen
+raid_estripe6=Die Anzahl der PVs in einem Paritätsvolumen mit mehreren Laufwerken muss mindestens 3 betragen
+raid_estripe10=Die Anzahl der PVs in einem Paritätsvolumen mit mehreren Laufwerken muss mindestens 3 betragen
+raid_eeither=Es fehlen entweder Spiegel oder Streifen!
