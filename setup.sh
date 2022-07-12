@@ -227,7 +227,7 @@ else
 	fi
 	if [ "$var_dir" = "/" ]; then
 		echo "Log directory cannot be /"
-		exit ""
+		echo ""
 		exit 3
 	fi
 	if [ ! -d $var_dir ]; then
