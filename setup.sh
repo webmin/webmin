@@ -48,7 +48,7 @@ fi
 # Use the supplied destination directory, if any
 if [ "$1" != "" ]; then
 	wadir=$1
-	echo "Installing Webmin from $srcdir to $wadir ..."
+	echo "Installing Webmin from $srcdir to $wadir"
 	if [ ! -d "$wadir" ]; then
 		mkdir "$wadir"
 		if [ "$?" != "0" ]; then
@@ -66,7 +66,7 @@ if [ "$1" != "" ]; then
 		fi
 	fi
 else
-	echo "Installing Webmin in $wadir ..."
+	echo "Installing Webmin in $wadir"
 fi
 cd "$wadir"
 
@@ -127,8 +127,7 @@ if [ ! -d $config_dir ]; then
 	fi
 fi
 if [ -r "$config_dir/config" -a -r "$config_dir/var-path" -a -r "$config_dir/perl-path" ]; then
-	echo "Found existing Webmin configuration in $config_dir"
-	echo ""
+	echo ".. found"
 	upgrading=1
 fi
 
@@ -170,7 +169,7 @@ if [ "$upgrading" = 1 ]; then
 	if [ "$wadir" != "$srcdir" ]; then
 		echo "Copying files to $wadir .."
 		(cd "$srcdir" ; tar cf - . | (cd "$wadir" ; tar xf -))
-		echo "..done"
+		echo ".. done"
 		echo ""
 	fi
 
@@ -196,7 +195,7 @@ if [ "$upgrading" = 1 ]; then
 			autothird=1
 		fi
 		$perl "$wadir/thirdparty.pl" "$wadir" "$oldwadir" $autothird
-		echo "..done"
+		echo ".. done"
 		echo ""
 	fi
 
@@ -272,7 +271,7 @@ else
 	echo ""
 
 	# Test perl 
-	echo "Testing Perl ..."
+	echo "Testing Perl .."
 	if [ ! -x $perl ]; then
 		echo "ERROR: Failed to find perl at $perl"
 		echo ""
@@ -309,7 +308,7 @@ else
 		echo ""
 		exit 8
 	fi
-	echo "Perl seems to be installed ok"
+	echo ".. done"
 	echo ""
 
 	# Create temp files directory
@@ -473,14 +472,14 @@ else
 	if [ "$wadir" != "$srcdir" ]; then
 		echo "Copying files to $wadir .."
 		(cd "$srcdir" ; tar cf - . | (cd "$wadir" ; tar xf -))
-		echo "..done"
+		echo ".. done"
 		echo ""
 	fi
 
 	# Create webserver config file
 	echo $perl > $config_dir/perl-path
 	echo $var_dir > $config_dir/var-path
-	echo "Creating web server config files.."
+	echo "Creating web server config files .."
 	cfile=$config_dir/miniserv.conf
 	echo "port=$port" >> $cfile
 	echo "root=$wadir" >> $cfile
@@ -586,10 +585,10 @@ EOF
 	echo "keyfile=$config_dir/miniserv.pem" >> $cfile
 
 	chmod 600 $cfile
-	echo "..done"
+	echo ".. done"
 	echo ""
 
-	echo "Creating access control file.."
+	echo "Creating access control file .."
 	afile=$config_dir/webmin.acl
 	rm -f $afile
 	if [ "$defaultmods" = "" ]; then
@@ -598,7 +597,7 @@ EOF
 		echo "$login: $defaultmods" >> $afile
 	fi
 	chmod 600 $afile
-	echo "..done"
+	echo ".. done"
 	echo ""
 
 	if [ "$login" != "root" -a "$login" != "admin" ]; then
@@ -608,9 +607,9 @@ EOF
 fi
 
 if [ "$noperlpath" = "" ]; then
-	echo "Inserting path to perl into scripts.."
+	echo "Inserting path to perl into scripts .."
 	(find "$wadir" -name '*.cgi' -print ; find "$wadir" -name '*.pl' -print) | $perl "$wadir/perlpath.pl" $perl -
-	echo "..done"
+	echo ".. done"
 	echo ""
 fi
 
@@ -620,7 +619,7 @@ if [ ! -f "$config_dir/.pre-install" ]; then
 fi
 
 # Re-generating main scripts
-echo "Creating start and stop init scripts.."
+echo "Creating start and stop init scripts .."
 # Start main
 echo "#!/bin/sh" >$config_dir/.start-init
 echo "echo Starting Webmin server in $wadir" >>$config_dir/.start-init
@@ -680,7 +679,7 @@ echo "#!/bin/sh" >$config_dir/.post-install
 echo "$config_dir/.start-init" >>$config_dir/.post-install
 
 chmod 755 $config_dir/.stop-init $config_dir/.start-init $config_dir/.restart-init $config_dir/.restart-by-force-kill-init $config_dir/.reload-init $config_dir/.pre-install $config_dir/.post-install
-echo "..done"
+echo ".. done"
 echo ""
 
 # Re-generating supplementary
@@ -704,7 +703,7 @@ systemctlcmd=`which systemctl 2>/dev/null`
 if [ -x "$systemctlcmd" ]; then
 	rm -f $config_dir/stop $config_dir/start $config_dir/restart $config_dir/restart-by-force-kill $config_dir/reload
 
-	echo "Creating start and stop scripts (systemd).."
+	echo "Creating start and stop scripts (systemd) .."
 	# Start systemd
 	echo "#!/bin/sh" >$config_dir/start
 	echo "$systemctlcmd start webmin" >>$config_dir/start
@@ -738,7 +737,7 @@ else
 	# Creating symlinks
 	echo "Creating start and stop init symlinks to scripts .."
 fi
-echo "..done"
+echo ".. done"
 echo ""
 
 if [ "$upgrading" = 1 -a "$inetd" != "1" -a "$nostop" = "" ]; then
@@ -747,9 +746,9 @@ if [ "$upgrading" = 1 -a "$inetd" != "1" -a "$nostop" = "" ]; then
 fi
 
 if [ "$upgrading" = 1 ]; then
-	echo "Updating config files.."
+	echo "Updating config files .."
 else
-	echo "Copying config files.."
+	echo "Copying config files .."
 fi
 newmods=`$perl "$wadir/copyconfig.pl" "$os_type/$real_os_type" "$os_version/$real_os_version" "$wadir" $config_dir "" $allmods`
 if [ "$upgrading" != 1 ]; then
@@ -786,7 +785,7 @@ else
 	fi
 fi
 echo $ver > $config_dir/version
-echo "..done"
+echo ".. done"
 echo ""
 
 # Set passwd_ fields in miniserv.conf from global config
@@ -842,9 +841,9 @@ if [ "$?" != "0" ]; then
 fi
 
 if [ "$makeboot" = "1" ]; then
-	echo "Configuring Webmin to start at boot time.."
+	echo "Configuring Webmin to start at boot time .."
 	(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/atboot.pl" $bootscript)
-	echo "..done"
+	echo ".. done"
 	echo ""
 fi
 
@@ -873,7 +872,7 @@ if [ "\$answer" = "y" ]; then
 fi
 EOF
 	chmod +x $config_dir/uninstall.sh
-	echo "..done"
+	echo ".. done"
 	echo ""
 fi
 
@@ -913,7 +912,7 @@ for m in ldap-client ldap-server ldap-useradmin mailboxes mysql postgresql serve
 		chmod og-rw $config_dir/$m/config 2>/dev/null
 	fi
 done
-echo "..done"
+echo ".. done"
 echo ""
 
 # Save target directory if one was specified
@@ -926,7 +925,7 @@ fi
 if [ "$nopostinstall" = "" ]; then
 	echo "Running postinstall scripts .."
 	(cd "$wadir" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/run-postinstalls.pl")
-	echo "..done"
+	echo ".. done"
 	echo ""
 fi
 
@@ -934,7 +933,7 @@ fi
 if [ "$upgrading" != 1 -a -r $config_dir/system-status/enable-collection.pl ]; then
 	echo "Enabling background status collection .."
 	$config_dir/system-status/enable-collection.pl 5
-	echo "..done"
+	echo ".. done"
 	echo ""
 fi
 
@@ -949,7 +948,7 @@ if [ "$nostart" = "" ]; then
 		if [ "$upgrading" = "1" ]; then
 			action="restart"
 		fi
-		echo "Attempting to $action Webmin web server.."
+		echo "Attempting to $action Webmin web server .."
 		# If upgrading, restart
 		if [ "$upgrading" = "1" ]; then
 			if [ "$killmodenonesh" != "1" ]; then
@@ -967,7 +966,7 @@ if [ "$nostart" = "" ]; then
 			echo ""
 			exit 14
 		fi
-		echo "..done"
+		echo ".. done"
 		echo ""
 	fi
 

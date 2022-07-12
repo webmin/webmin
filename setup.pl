@@ -39,7 +39,7 @@ if ($< != 0) {
 if ($ARGV[0]) {
 	$wadir = $ARGV[0];
 	$wadir =~ s/\\/\//g;	# always use / separator on windows
-	print "Installing Webmin from $srcdir to $wadir ...\n";
+	print "Installing Webmin from $srcdir to $wadir\n";
 	if (!-d $wadir) {
 		mkdir($wadir, 0755) || &errorexit("Failed to create $wadir");
 		}
@@ -52,7 +52,7 @@ if ($ARGV[0]) {
 		}
 	}
 else {
-	print "Installing Webmin in $wadir ...\n"
+	print "Installing Webmin in $wadir\n"
 	}
 
 # Work out perl library path
@@ -100,9 +100,8 @@ if (!-d $config_directory) {
 		&errorexit("Failed to create directory $config_directory");
 	}
 if (-r "$config_directory/config") {
-	print "Found existing Webmin configuration in $config_directory\n";
-	print "\n";
-	$upgrading=1
+	print ".. found\n";
+	$upgrading = 1;
 	}
 
 # We can now load the main Webmin library
@@ -174,7 +173,7 @@ if ($upgrading) {
 			$autothird = 1;
 			}
 		system("$perl ".&quote_path("$wadir/thirdparty.pl")." ".&quote_path($wadir)." ".&quote_path($oldwadir)." $autothird");
-		print "..done\n";
+		print ".. done\n";
 		print "\n";
 		}
 
@@ -377,7 +376,7 @@ else {
 	print VAR $var_dir,"\n";
 	close(VAR);
 
-	print "Creating web server config files..";
+	print "Creating web server config files ..\n";
 	$ufile = "$config_directory/miniserv.users";
 	$kfile = "$config_directory/miniserv.pem";
 	%miniserv = (	'port' => $port,
@@ -504,10 +503,10 @@ else {
 		&copy_source_dest("$wadir/miniserv.pem", $kfile);
 		}
 	chmod(0600, $kfile);
-	print "..done\n";
+	print ".. done\n";
 	print "\n";
 
-	print "Creating access control file..\n";
+	print "Creating access control file ..\n";
 	$afile = "$config_directory/webmin.acl";
 	open(AFILE, ">$afile");
 	if ($ENV{'defaultmods'}) {
@@ -518,7 +517,7 @@ else {
 		}
 	close(AFILE);
 	chmod(0600, $afile);
-	print "..done\n";
+	print ".. done\n";
 	print "\n";
 
 	if ($login ne "root" && $login ne "admin") {
@@ -530,13 +529,13 @@ else {
 	}
 
 if (!$ENV{'noperlpath"'} && $os_type ne 'windows') {
-	print "Inserting path to perl into scripts..\n";
+	print "Inserting path to perl into scripts ..\n";
 	system("(find ".&quote_path($wadir)." -name '*.cgi' -print ; find ".&quote_path($wadir)." -name '*.pl' -print) | $perl ".&quote_path("$wadir/perlpath.pl")." $perl -");
-	print "..done\n";
+	print ".. done\n";
         print "\n";
 	}
 
-print "Creating start and stop scripts..\n";
+print "Creating start and stop scripts ..\n";
 if ($os_type eq "windows") {
 	open(START, ">>$config_directory/start.bat");
 	print START "$perl \"$wadir/miniserv.pl\" $config_directory/miniserv.conf\n";
@@ -572,7 +571,6 @@ else {
 
 	# Define final start command
 	if ($upgrading) {
-		$start_cmd = "$config_directory/.post-install";
 		if ($killmodenonepl == 1) {
 			$start_cmd = "$config_directory/.reload-init";
 			}
@@ -737,16 +735,16 @@ else {
 		system("$perl ".&quote_path("$wadir/init/updateboot.pl")." webmin");
 	}
 }
-print "..done\n";
+print ".. done\n";
 print "\n";
 
 if ($upgrading) {
-	print "Updating config files..\n";
+	print "Updating config files ..\n";
 	}
 else {
-	print "Copying config files..\n";
+	print "Copying config files ..\n";
 	}
-system("$perl ".&quote_path("$wadir/copyconfig.pl")." ".&quote_path("$os_type/$real_os_type")." ".&quote_path("$os_version/$real_os_version")." ".&quote_path($wadir)." ".$config_directory." \"\" ".$allmods);
+system("$perl ".&quote_path("$wadir/copyconfig.pl")." ".&quote_path("$os_type/$real_os_type")." ".&quote_path("$os_version/$real_os_version")." ".&quote_path($wadir)." ".$config_directory." \"\" ".$allmods . " >/dev/null 2>&1");
 if (!$upgrading) {
 	# Store the OS and version
 	&read_file("$config_directory/config", \%gconfig);
@@ -760,7 +758,7 @@ if (!$upgrading) {
 open(VER, ">$config_directory/version");
 print VER $ver,"\n";
 close(VER);
-print "..done\n";
+print ".. done\n";
 print "\n";
 
 # Set passwd_ fields in miniserv.conf from global config
@@ -794,10 +792,10 @@ if ($theme && -d "$wadir/$theme") {
 $gconfig{'product'} ||= "webmin";
 
 if ($makeboot) {
-	print "Configuring Webmin to start at boot time..\n";
+	print "Configuring Webmin to start at boot time ..\n";
 	chdir("$wadir/init");
 	system("$perl ".&quote_path("$wadir/init/atboot.pl")." ".$ENV{'bootscript'});
-	print "..done\n";
+	print ".. done\n";
 	print "\n";
 	}
 
@@ -836,7 +834,7 @@ if [ "\$answer" = "y" ]; then
 fi
 EOF
 	chmod(0755, "$config_directory/uninstall.sh");
-	print "..done\n";
+	print ".. done\n";
 	print "\n";
 	}
 
@@ -863,7 +861,7 @@ if ($os_type ne "windows") {
 		system("chgrp -R bin $var_dir");
 		system("chmod -R og-rwx $var_dir");
 		}
-	print "..done\n";
+	print ".. done\n";
         print "\n";
 	}
 
@@ -881,7 +879,7 @@ if (!$ENV{'nopostinstall'}) {
 	print "Running postinstall scripts ..\n";
 	chdir($wadir);
 	system("$perl ".&quote_path("$wadir/run-postinstalls.pl"));
-	print "..done\n";
+	print ".. done\n";
 	print "\n";
 	}
 
@@ -892,7 +890,6 @@ if (-r "$srcdir/setup-post.pl") {
 
 if (!$ENV{'nostart'}) {
 	if (!$miniserv{'inetd'}) {
-		print "Attempting to start Webmin web server..\n";
 		$action = 'start';
 		if ($upgrading) {
 			$action = 'restart';
@@ -902,7 +899,7 @@ if (!$ENV{'nostart'}) {
 		if ($ex) {
 			&errorexit("Failed to $action web server!");
 			}
-		print "..done\n";
+		print ".. done\n";
 		print "\n";
 		}
 
@@ -961,7 +958,7 @@ if ($wadir ne $srcdir) {
 		# Looks like Windows .. use xcopy command
 		system("xcopy \"$srcdir\" \"$wadir\" /Y /E /I /Q");
 		}
-	print "..done\n";
+	print ".. done\n";
 	print "\n";
 	}
 }
