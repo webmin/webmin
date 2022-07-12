@@ -344,7 +344,7 @@ else
 	echo "   web server already using this port."
 	echo " - The login name required to access the web server."
 	echo " - The password required to access the web server."
-	echo " - If the webserver should use SSL (if your system supports it)."
+	echo " - If the web server should use SSL (if your system supports it)."
 	echo " - Whether to start webmin at boot time."
 	echo ""
 	printf "Web server port (default 10000): "
@@ -567,7 +567,7 @@ else
 .
 .
 .
-Webmin Webserver on $host
+Webmin web server on $host
 .
 *
 root@$host
