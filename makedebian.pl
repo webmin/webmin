@@ -355,6 +355,7 @@ if [ "\\\$answer" = "y" ]; then
 	dpkg --remove --force-depends $product
 	systemctlcmd=\\\`which systemctl 2>/dev/null\\\`
 	if [ -x "\\\$systemctlcmd" ]; then
+		\\\$systemctlcmd stop $product >/dev/null 2>&1 </dev/null
 		rm -f /lib/systemd/system/$product.service
 		\\\$systemctlcmd daemon-reload
 	fi
