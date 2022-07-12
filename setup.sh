@@ -614,6 +614,11 @@ if [ "$noperlpath" = "" ]; then
 	echo ""
 fi
 
+killmodenonesh=0
+if [ ! -f "$config_dir/.pre-install" ]; then
+	killmodenonesh=1
+fi
+
 # Re-generating main scripts
 echo "Creating start and stop init scripts.."
 # Start main
@@ -940,10 +945,25 @@ fi
 
 if [ "$nostart" = "" ]; then
 	if [ "$inetd" != "1" ]; then
-		echo "Attempting to start Webmin web server.."
-		$config_dir/.post-install
+		action="start"
+		if [ "$upgrading" = "1" ]; then
+			action="restart"
+		fi
+		echo "Attempting to $action Webmin web server.."
+		# If upgrading, restart
+		if [ "$upgrading" = "1" ]; then
+			if [ "$killmodenonesh" != "1" ]; then
+				$config_dir/.post-install >/dev/null 2>&1
+			else
+				$config_dir/.reload-init >/dev/null 2>&1
+			fi
+		# If installing first time, start it
+		else
+			$config_dir/start >/dev/null 2>&1
+		fi
+
 		if [ $? != "0" ]; then
-			echo "ERROR: Failed to start web server!"
+			echo "ERROR: Failed to $action web server!"
 			echo ""
 			exit 14
 		fi

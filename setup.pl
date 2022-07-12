@@ -110,6 +110,10 @@ $ENV{'WEBMIN_CONFIG'} = $config_directory;
 $ENV{'WEBMIN_VAR'} = "/var/webmin";	# Only used for initial load of web-lib
 require "$srcdir/web-lib-funcs.pl";
 
+# Do we need to reload instead
+# Can be deleted with Webmin 2.0
+$killmodenonepl = 0;
+
 # Check if upgrading from an old version
 if ($upgrading) {
 	print "\n";
@@ -145,6 +149,9 @@ if ($upgrading) {
 		else {
 			if (-r "$config_directory/.pre-install") {
 				system("$config_directory/.pre-install >/dev/null 2>&1");
+				}
+			else {
+				$killmodenonepl = 1;
 				}
 			}
 		}
@@ -566,6 +573,12 @@ else {
 	# Define final start command
 	if ($upgrading) {
 		$start_cmd = "$config_directory/.post-install";
+		if ($killmodenonepl == 1) {
+			$start_cmd = "$config_directory/.reload-init";
+			}
+		else {
+			$start_cmd = "$config_directory/.post-install";
+			}
 		}
 	else {
 		$start_cmd = "$config_directory/start";
@@ -880,9 +893,14 @@ if (-r "$srcdir/setup-post.pl") {
 if (!$ENV{'nostart'}) {
 	if (!$miniserv{'inetd'}) {
 		print "Attempting to start Webmin web server..\n";
+		$action = 'start';
+		if ($upgrading) {
+			$action = 'restart';
+		}
+		print "Attempting to $action Webmin web server ..\n";
 		$ex = system($start_cmd);
 		if ($ex) {
-			&errorexit("Failed to start web server!");
+			&errorexit("Failed to $action web server!");
 			}
 		print "..done\n";
 		print "\n";

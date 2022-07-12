@@ -170,11 +170,14 @@ fi
 
 %post
 inetd=`grep "^inetd=" /etc/webmin/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
+killmodenone=0
 if [ "\$1" != 1 ]; then
 	# Upgrading the RPM, so stop the old Webmin properly
 	if [ "\$inetd" != "1" ]; then
-		if [ -e /etc/webmin/.pre-install ]; then
+		if [ -f /etc/webmin/.pre-install ]; then
 			/etc/webmin/.pre-install >/dev/null 2>&1 </dev/null
+		else
+			killmodenone=1
 		fi
 	fi
 fi
@@ -220,7 +223,11 @@ if [ "\$inetd" != "1" ]; then
 			echo "error: Webmin server cannot be started. It is advised to start it manually\n       by running \\"/etc/webmin/restart-by-force-kill\\" command"
 		fi
 	else
-		/etc/webmin/.post-install >/dev/null 2>&1 </dev/null
+		if [ "\$killmodenone" != "1" ]; then
+			/etc/webmin/.post-install >/dev/null 2>&1 </dev/null
+		else
+			/etc/webmin/.reload-init >/dev/null 2>&1 </dev/null
+		fi
 		if [ "\$?" != "0" ]; then
 			echo "warning: Webmin server cannot be restarted. It is advised to restart it manually\n         by running \\"/etc/webmin/restart-by-force-kill\\" when upgrade process is finished"
 		fi
