@@ -868,6 +868,8 @@ if [ "\$answer" = "y" ]; then
 	rm -rf "$wadir"
 	echo "Deleting $config_dir .."
 	rm -rf "$config_dir"
+	echo "Deleting $var_dir .."
+	rm -rf "$var_dir"
 	echo "Done!"
 fi
 EOF
