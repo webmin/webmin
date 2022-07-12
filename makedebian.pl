@@ -260,16 +260,19 @@ system("chmod 755 $preinstall_file");
 open(SCRIPT, ">$postinstall_file");
 print SCRIPT <<EOF;
 #!/bin/sh
+killmodenone=0
 justinstalled=1
-if [ -e "/etc/$baseproduct" ]; then
+if [ -d "/etc/$baseproduct" ]; then
 	justinstalled=0
 fi
 inetd=`grep "^inetd=" /etc/$baseproduct/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
 if [ "\$1" = "configure" ]; then
 	# Upgrading the package, so stop the old Webmin properly
 	if [ "\$inetd" != "1" ]; then
-		if [ -e "/etc/$baseproduct/.pre-install" ]; then
+		if [ -f "/etc/$baseproduct/.pre-install" ]; then
 			/etc/$baseproduct/.pre-install >/dev/null 2>&1 </dev/null
+		else
+			killmodenone=1
 		fi
 	fi
 fi
@@ -328,7 +331,11 @@ if [ "\$inetd" != "1" ]; then
 		fi
 	else
 		if [ "$product" = "webmin" ]; then
-			/etc/$baseproduct/.post-install >/dev/null 2>&1 </dev/null
+			if [ "\$killmodenone" != "1" ]; then
+				/etc/$baseproduct/.post-install >/dev/null 2>&1 </dev/null
+			else
+				/etc/$baseproduct/.reload-init >/dev/null 2>&1 </dev/null
+			fi
 		else
 			/etc/$baseproduct/restart >/dev/null 2>&1 </dev/null
 		fi
