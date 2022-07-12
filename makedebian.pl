@@ -54,7 +54,7 @@ if ($ARGV[1]) {
 -r "tarballs/$product-$ver.tar.gz" || die "tarballs/$product-$ver.tar.gz not found";
 
 # Create the base directories
-print "Creating Debian package of ",ucfirst($product)," ",$ver,$rel," ...\n";
+print "Creating Debian package of ",ucfirst($product)," ",$ver,$rel," ..\n";
 system("rm -rf $tmp_dir");
 mkdir($tmp_dir, 0755);
 chmod(0755, $tmp_dir);
@@ -353,6 +353,11 @@ printf "\\n"
 if [ "\\\$answer" = "y" ]; then
 	echo "Removing $ucproduct package .."
 	dpkg --remove --force-depends $product
+	systemctlcmd=\\\`which systemctl 2>/dev/null\\\`
+	if [ -x "\\\$systemctlcmd" ]; then
+		rm -f /lib/systemd/system/$product.service
+		\\\$systemctlcmd daemon-reload
+	fi
 	echo ".. done"
 fi
 EOFF
@@ -393,6 +398,13 @@ if [ "\$1" != "upgrade" -a "\$1" != "abort-upgrade" ]; then
 		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
 		if [ "$product" = "webmin" ]; then
 			(cd /usr/share/$baseproduct ; WEBMIN_CONFIG=/etc/$baseproduct WEBMIN_VAR=/var/$baseproduct LANG= /usr/share/$baseproduct/run-uninstalls.pl) >/dev/null 2>&1 </dev/null
+		else
+			systemctlcmd=\`which systemctl 2>/dev/null\`
+			if [ -x "\$systemctlcmd" ]; then
+				\$systemctlcmd stop $product >/dev/null 2>&1 </dev/null
+				rm -f /lib/systemd/system/$product.service
+				\$systemctlcmd daemon-reload
+			fi
 		fi
 		/bin/true
 	fi
