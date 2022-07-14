@@ -1,5 +1,13 @@
 ## Changelog
 
+#### 1.997 (July 12, 2022)
+* Add support for mirror and RAID volumes in LVM module
+* Add latest Authentic [theme update](https://github.com/webmin/authentic-theme/releases/tag/19.97) with nice new features in File Manager and other fixes
+* Fix more issues with restart when Webmin is upgraded from UI
+
+#### 1.996 (July 4, 2022)
+* Fix issues with `systemd` restarting Webmin on upgrade found in 1.995
+
 #### 1.995 (June 23, 2022)
   * Add improvements to stability for `systemd` systems
   * Add native support to default to system default hashing format
