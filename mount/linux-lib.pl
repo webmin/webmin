@@ -1689,31 +1689,6 @@ if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 			     $in{'nfs_host'}, "<pre>$dirlist</pre>"));
 		}
 
-	# Try a test mount to see if filesystem is available
-	$temp = &tempname();
-	&make_dir($temp, 0755);
-	&execute_command("mount -t $_[0] ".
-			 quotemeta("$in{nfs_host}:$in{nfs_dir}")." ".
-			 quotemeta($temp),
-			 undef, \$mout, \$mout);
-	if ($mout =~ /No such file or directory/i) {
-		&error(&text('linux_enfsdir', $in{'nfs_dir'},
-			     $in{'nfs_host'}, "<pre>$dirlist</pre>"));
-		}
-	elsif ($mout =~ /Permission denied/i) {
-		&error(&text('linux_enfsperm', $in{'nfs_dir'}, $in{'nfs_host'}));
-		}
-	elsif ($?) {
-		&error(&text('linux_enfsmount', "<tt>$mout</tt>"));
-		}
-	# It worked! unmount
-	local $umout;
-	&execute_command("umount ".quotemeta($temp), undef, \$umout, \$umout);
-	if ($?) {
-		&error(&text('linux_enfsmount', "<tt>$umout</tt>"));
-		}
-	rmdir(&translate_filename($temp));	# Don't delete mounted files!
-
 	return "$in{nfs_host}:$in{nfs_dir}";
 	}
 elsif ($_[0] eq "auto") {
