@@ -863,7 +863,9 @@ printf "\n"
 if [ "\$answer" = "y" ]; then
 	$config_dir/stop
 	echo "Running uninstall scripts .."
-	(cd "$wadir" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir LANG= "$wadir/run-uninstalls.pl") >/dev/null 2>&1 </dev/null
+	if [ -r "$wadir/run-uninstalls.pl" ]; then
+		(cd "$wadir" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir LANG= "$wadir/run-uninstalls.pl") >/dev/null 2>&1 </dev/null
+	fi
 	echo "Deleting $wadir .."
 	rm -rf "$wadir"
 	echo "Deleting $config_dir .."
