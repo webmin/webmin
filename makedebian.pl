@@ -350,6 +350,7 @@ read answer
 printf "\\n"
 if [ "\\\$answer" = "y" ]; then
 	echo "Removing $ucproduct package .."
+	rm -f /usr/share/$baseproduct/authentic-theme/manifest-*
 	dpkg --remove --force-depends $product
 	systemctlcmd=\\\`which systemctl 2>/dev/null\\\`
 	if [ -x "\\\$systemctlcmd" ]; then
@@ -398,6 +399,7 @@ if [ "\$1" != "upgrade" -a "\$1" != "abort-upgrade" ]; then
 		if [ "$product" = "webmin" ]; then
 			(cd /usr/share/$baseproduct ; WEBMIN_CONFIG=/etc/$baseproduct WEBMIN_VAR=/var/$baseproduct LANG= /usr/share/$baseproduct/run-uninstalls.pl) >/dev/null 2>&1 </dev/null
 		else
+			rm -f /usr/share/$baseproduct/authentic-theme/manifest-*
 			systemctlcmd=\`which systemctl 2>/dev/null\`
 			if [ -x "\$systemctlcmd" ]; then
 				\$systemctlcmd stop $product >/dev/null 2>&1 </dev/null
