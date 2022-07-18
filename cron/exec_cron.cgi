@@ -33,6 +33,7 @@ else {
 &clean_environment();
 
 # Set cron environment variables
+$ENV{'PATH'} = "/usr/bin:/bin"; 
 foreach $e (&read_envs($job->{'user'})) {
 	$ENV{$1} = $2 if ($e =~ /^(\S+)\s+(.*)$/);
 	}
