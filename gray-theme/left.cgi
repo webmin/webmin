@@ -3,8 +3,6 @@
 
 use strict;
 use warnings;
-no warnings 'redefine';
-no warnings 'uninitialized';
 require 'gray-theme/gray-theme-lib.pl';
 &ReadParse();
 our ($current_theme, $remote_user, %gconfig);
