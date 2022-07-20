@@ -1,5 +1,5 @@
-start_cmd=systemctl start mariadb.service
-stop_cmd=systemctl stop mariadb.service
+start_cmd=systemctl start mariadb
+stop_cmd=systemctl stop mariadb
 mysql=/usr/bin/mysql
 mysqldump=/usr/bin/mysqldump
 mysqlimport=/usr/bin/mysqlimport
@@ -20,3 +20,4 @@ my_cnf=/etc/my.cnf
 max_text=1000
 nopwd=0
 webmin_subs=0
+login=root
