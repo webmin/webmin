@@ -38,7 +38,7 @@ local @names = map { &append_architectures($_) } split(/\s+/, $update);
 if (@names == 1) {
 	@names = ( $update );
 	}
-$update = join(" ", @names);
+$update = join(" ", map { quotemeta($_) } @names);
 
 # Work out command to use - for DNF, upgrades need to use the update command
 local $cmd;
@@ -56,6 +56,7 @@ else {
 	}
 
 # Work out the command to run, which may enable some repos
+my $uicmd = "$yum_command $enable -y $cmd ".join(" ", @names);
 my $fullcmd = "$yum_command $enable -y $cmd $update";
 foreach my $u (@updates) {
 	my $repo = &update_system_repo($u);
@@ -64,7 +65,7 @@ foreach my $u (@updates) {
 		}
 	}
 
-print "<b>",&text('yum_install', "<tt>".&html_escape($fullcmd)."</tt>"),"</b><p>\n";
+print "<b>",&text('yum_install', "<tt>".&html_escape($uicmd)."</tt>"),"</b><p>\n";
 print "<pre>";
 &additional_log('exec', undef, $fullcmd);
 $SIG{'TERM'} = 'ignore';	# Installing webmin itself may kill this script

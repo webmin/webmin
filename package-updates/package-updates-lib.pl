@@ -666,7 +666,7 @@ unlink($available_cache_file.'1');
 }
 
 # list_for_mode(mode, nocache)
-# If not is 'updates' or 'security', return just updates. Othewise, return
+# If not is 'updates' or 'security', return just updates. Otherwise, return
 # all available packages.
 sub list_for_mode
 {

@@ -26,7 +26,6 @@ index_return=seznam filtrů
 index_warn=Upozornění - program procmail používaný k filtrování pošty není na tomto systému nainstalován. Některé níže definované filtry nebudou nejspíše pracovat.
 index_alias=Upozornění - systém je nakonfigurován na přeposlání všech e-mailů přicházejících do vaší e-mailové schránky k následujícím cílům. Zde definované filtry nebudou použity.
 index_aliasme=Poznámka - systém je také nakonfigurován předat celý e-mail k:
-index_force=Upozornění - systém je konfigurován nezpracovat uživatelsky definované poštovní filtry. Jakékoliv filtry definované níže pravděpodobně nebudou vykonány.
 index_period=Minimální čas mezi utomatickými odověďmi
 index_noperiod=Bez minima
 index_mins=minuty

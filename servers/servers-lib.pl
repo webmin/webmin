@@ -19,6 +19,8 @@ for RPC operations. Example code :
 BEGIN { push(@INC, ".."); };
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 use WebminCore;
 use Socket;
 our (%text, %config, %gconfig, $module_config_directory);
@@ -31,7 +33,7 @@ our @cluster_modules = ( "cluster-software" );
 our @server_types = (
 		  # Linux sub-types, which have to come first
 		  [ 'asianux', 'Asianux', undef, 'Asianux' ],
-		  [ 'alma', 'Alma Linux', undef, 'Alma' ],
+		  [ 'alma', 'AlmaLinux', undef, 'Alma' ],
 		  [ 'centos', 'CentOS Linux', undef, 'CentOS' ],
 		  [ 'ubuntu', 'Ubuntu Linux', undef, 'Ubuntu' ],
 		  [ 'fedora', 'Fedora Linux', undef, 'Fedora' ],

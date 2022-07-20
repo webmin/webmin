@@ -4,6 +4,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './webmin-lib.pl';
 our (%in, %text, %gconfig, %config);
 my $ver = &get_webmin_version();

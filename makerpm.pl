@@ -170,19 +170,16 @@ fi
 
 %post
 inetd=`grep "^inetd=" /etc/webmin/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
-startafter=0
-
+killmodenone=0
 if [ "\$1" != 1 ]; then
 	# Upgrading the RPM, so stop the old Webmin properly
 	if [ "\$inetd" != "1" ]; then
-		kill -0 `cat /var/webmin/miniserv.pid 2>/dev/null` 2>/dev/null
-		if [ "\$?" = 0 ]; then
-		  startafter=1
+		if [ -f /etc/webmin/.pre-install ]; then
+			/etc/webmin/.pre-install >/dev/null 2>&1 </dev/null
+		else
+			killmodenone=1
 		fi
-		/etc/webmin/stop >/dev/null 2>&1 </dev/null
 	fi
-else
-  startafter=1
 fi
 cd /usr/libexec/webmin
 config_dir=/etc/webmin
@@ -210,19 +207,30 @@ autothird=1
 noperlpath=1
 nouninstall=1
 nostart=1
+nostop=1
 if [ "\$tempdir" = "" ]; then
 	tempdir=/tmp/.webmin
 fi
-export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot makeboot
+export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot makeboot nostop
 ./setup.sh >\$tempdir/webmin-setup.out 2>&1
 chmod 600 \$tempdir/webmin-setup.out
 rm -f /var/lock/subsys/webmin
 cd /usr/libexec/webmin
-if [ "\$inetd" != "1" -a "\$startafter" = "1" ]; then
-	/etc/webmin/stop >/dev/null 2>&1 </dev/null
-	/etc/webmin/start >/dev/null 2>&1 </dev/null
-	if [ "\$?" != "0" ]; then
-		echo "warning: Webmin server cannot be restarted. It is advised to restart it manually by\nrunning \\"/etc/webmin/restart-by-force-kill\\" when upgrade process is finished"
+if [ "\$inetd" != "1" ]; then
+	if [ "\$1" == 1 ]; then
+		/etc/webmin/start >/dev/null 2>&1 </dev/null
+		if [ "\$?" != "0" ]; then
+			echo "error: Webmin server cannot be started. It is advised to start it manually\n       by running \\"/etc/webmin/restart-by-force-kill\\" command"
+		fi
+	else
+		if [ "\$killmodenone" != "1" ]; then
+			/etc/webmin/.post-install >/dev/null 2>&1 </dev/null
+		else
+			/etc/webmin/.reload-init >/dev/null 2>&1 </dev/null
+		fi
+		if [ "\$?" != "0" ]; then
+			echo "warning: Webmin server cannot be restarted. It is advised to restart it manually\n         by running \\"/etc/webmin/restart-by-force-kill\\" when upgrade process is finished"
+		fi
 	fi
 fi
 
@@ -267,9 +275,8 @@ if [ "\$1" = 0 ]; then
 	if [ "\$?" = 0 ]; then
 		# RPM is being removed, and no new version of webmin
 		# has taken it's place. Run uninstalls and stop the server
-		(cd /usr/libexec/webmin ; WEBMIN_CONFIG=/etc/webmin WEBMIN_VAR=/var/webmin LANG= /usr/libexec/webmin/run-uninstalls.pl) >/dev/null 2>&1 </dev/null
 		/etc/webmin/stop >/dev/null 2>&1 </dev/null
-		/etc/webmin/.stop-init --kill >/dev/null 2>&1 </dev/null
+		(cd /usr/libexec/webmin ; WEBMIN_CONFIG=/etc/webmin WEBMIN_VAR=/var/webmin LANG= /usr/libexec/webmin/run-uninstalls.pl) >/dev/null 2>&1 </dev/null
 	fi
 fi
 /bin/true
@@ -295,10 +302,8 @@ if [ ! -r /etc/webmin/miniserv.conf -a -d /etc/.webmin-backup -a "\$1" = 2 ]; th
 	rm -rf /etc/.webmin-broken
 	mv /etc/webmin /etc/.webmin-broken
 	mv /etc/.webmin-backup /etc/webmin
-	/etc/webmin/stop >/dev/null 2>&1 </dev/null
-	/etc/webmin/start >/dev/null 2>&1 </dev/null
-	if [ "\$?" != "0" ]; then
-		echo "warning: Webmin server cannot be restarted. It is advised to restart it manually by\nrunning \\"/etc/webmin/restart-by-force-kill\\" when upgrade process is finished"
+	if [ -r /etc/webmin/.post-install ]; then
+		/etc/webmin/.post-install >/dev/null 2>&1 </dev/null
 	fi
 else
 	rm -rf /etc/.webmin-backup

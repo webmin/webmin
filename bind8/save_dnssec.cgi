@@ -2,6 +2,8 @@
 # Turn on or off the DNSSEC key rotation cron job
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%access, %text, %in, %config);
 our $dnssec_cron_cmd;
 our $module_name;

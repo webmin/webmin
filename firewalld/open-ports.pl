@@ -9,6 +9,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our ($module_name, $no_acl_check);
 $no_acl_check++;
 $ENV{'WEBMIN_CONFIG'} = "/etc/webmin";

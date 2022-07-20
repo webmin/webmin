@@ -3,6 +3,8 @@
 # Display global forwarding and transfer options
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 # Globals
 our (%access, %text);
 

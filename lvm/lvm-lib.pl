@@ -361,6 +361,9 @@ else {
 		elsif (/Stripes\s+(\d+)/) {
 			$lv->{'stripes'} = $1;
 			}
+		elsif (/Mirrored\s+volumes\s+(\d+)/) {
+			$lv->{'mirrors'} = $1;
+			}
 		elsif (/Stripe\s+size\s+(\S+)\s+(\S+)/) {
 			$lv->{'stripesize'} = &mult_units($1, $2);
 			}
@@ -388,9 +391,10 @@ sub get_logical_volume_usage
 {
 local ($lv) = @_;
 local @rv;
+local @raids;
 if (&get_lvm_version() >= 2) {
 	# LVdisplay has new format in version 2
-	open(DISPLAY, "lvdisplay -m ".quotemeta($lv->{'device'})." 2>/dev/null |");
+	open(DISPLAY, "lvdisplay -a -m ".quotemeta($lv->{'device'})." 2>/dev/null |");
 	while(<DISPLAY>) {
 		if (/\s+Physical\s+volume\s+\/dev\/(\S+)/) {
 			push(@rv, [ $1, undef ]);
@@ -398,8 +402,21 @@ if (&get_lvm_version() >= 2) {
 		elsif (/\s+Physical\s+extents\s+(\d+)\s+to\s+(\d+)/ && @rv) {
 			$rv[$#rv]->[1] = $2-$1+1;
 			}
+		elsif (/\s+Logical\s+volume\s+([a-z0-9\_]+)/i) {
+			push(@raids, [ $1, undef ]);
+			}
+		elsif (/\s+Logical\s+extents\s+(\d+)\s+to\s+(\d+)/ && @rv) {
+			$raids[$#raid]->[1] = $2-$1+1;
+			}
 		}
 	close(DISPLAY);
+
+	# Lookup actual PVs for raid logical volumes
+	foreach my $r (@raids) {
+		my $rlv = { 'device' => '/dev/'.$lv->{'vg'}.'/'.$r->[0] };
+		my @pvs = &get_logical_volume_usage($rlv);
+		push(@rv, @pvs);
+		}
 	}
 else {
 	# Old version 1 format
@@ -968,7 +985,8 @@ sub create_raid_volume
 {
 local ($lv) = @_;
 local $cmd = "lvcreate -y -n".quotemeta($lv->{'name'})." ";
-$cmd .= " --type ".quotemeta($lv->{'raid'});
+$cmd .= " --type ".
+        quotemeta($lv->{'raid'} eq 'raid0' ? 'striped' : $lv->{'raid'});
 if ($lv->{'raid'} eq 'raid1') {
 	$cmd .= " --mirrors ".$lv->{'mirrors'};
 	}

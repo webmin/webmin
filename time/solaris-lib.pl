@@ -2,6 +2,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our $timezone_file = "/etc/TIMEZONE";
 our $timezones_dir = "/usr/share/lib/zoneinfo";
 our $rtc_config = "/etc/rtc_config";

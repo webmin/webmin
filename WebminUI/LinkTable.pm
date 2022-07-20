@@ -145,7 +145,7 @@ $self->{'name'} = $name;
 }
 
 =head2 get_name()
-Returns the name for indentifying this table in HTML
+Returns the name for identifying this table in HTML
 =cut
 sub get_name
 {

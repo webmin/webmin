@@ -9,6 +9,7 @@ use Time::Local;
 eval "use Time::HiRes;";
 
 @itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+@miniserv_argv = @ARGV;
 
 # Find and read config file
 if ($ARGV[0] eq "--nofork") {
@@ -113,7 +114,6 @@ if (!-x $perl_path) {
 if (-l $perl_path) {
 	$linked_perl_path = readlink($perl_path);
 	}
-@miniserv_argv = @ARGV;
 
 # Check vital config options
 &update_vital_config();
@@ -3107,6 +3107,9 @@ close(SOCK);
 dbmclose(%sessiondb);
 kill('KILL', $logclearer) if ($logclearer);
 kill('KILL', $extauth) if ($extauth);
+if (&indexof("--nofork", @miniserv_argv) < 0) {
+	unshift(@miniserv_argv, "--nofork");
+	}
 exec($perl_path, $miniserv_path, @miniserv_argv);
 die "Failed to restart miniserv with $perl_path $miniserv_path";
 }
@@ -3418,6 +3421,7 @@ return $mode;
 
 sub term_handler
 {
+&log_error("Shutting down");
 kill('TERM', @childpids) if (@childpids);
 kill('KILL', $logclearer) if ($logclearer);
 kill('KILL', $extauth) if ($extauth);
@@ -5218,7 +5222,7 @@ sub disconnect_userdb
 {
 my ($str, $h) = @_;
 if ($str =~ /^(mysql|postgresql):/) {
-	# DBI disconnnect
+	# DBI disconnect
 	$h->disconnect();
 	}
 elsif ($str =~ /^ldap:/) {

@@ -2,6 +2,8 @@
 # Called from cron to re-sign all zones that are too old
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our %config;
 
 my $no_acl_check++;

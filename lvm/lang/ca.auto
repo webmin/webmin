@@ -1,1 +1,24 @@
 i2ndex_addpv=Afegiu un volum físic al grup.
+index_addlv4=Creeu un volum RAID a <tt>$1</tt>.
+
+lv_mirror=Nombre de miralls
+
+raid_title=Crea un volum RAID
+raid_desc=Un volum RAID és un LV que distribueix dades entre diversos volums físics per augmentar el rendiment, afegir redudància per protegir-se de fallades del disc, o ambdues coses.
+raid_header=Nous detalls del volum RAID
+raid_type=Tipus de volum RAID
+raid_mode0=RAID0 (a ratlles) a través de PV
+raid_mode1=RAID1 (replicat) a través de PV
+raid_mode4=RAID4 (paritat d'una sola unitat) entre PV
+raid_mode5=RAID5 (paritat multi-unitat) entre PV
+raid_mode6=RAID6 (paritat multi-unitat) entre PV
+raid_mode10=RAID10 (paritat multi-unitat) entre PV
+raid_ok=Crea un volum RAID
+raid_err=No s'ha pogut crear el volum RAID
+raid_estripe0=El nombre de PV a travessar ha de ser com a mínim 2
+raid_emirror1=El nombre de PV per reflectir ha de ser almenys 2
+raid_estripe4=El nombre de PV en un volum de paritat ha de ser almenys 3
+raid_estripe5=El nombre de PV en un volum de paritat de múltiples unitats ha de ser almenys 3
+raid_estripe6=El nombre de PV en un volum de paritat de múltiples unitats ha de ser almenys 3
+raid_estripe10=El nombre de PV en un volum de paritat de múltiples unitats ha de ser almenys 3
+raid_eeither=Falten miralls o ratlles!

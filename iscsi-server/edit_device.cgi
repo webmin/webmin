@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './iscsi-server-lib.pl';
 our (%text, %in);
 my $conf = &get_iscsi_config();

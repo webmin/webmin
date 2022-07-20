@@ -82,6 +82,7 @@ lv_alloc=Allocation method
 lv_allocy=Contiguous
 lv_allocn=Non-contiguous
 lv_stripe=Volume striping
+lv_mirror=Number of mirrors
 lv_nostripe=Disabled (always allocate from start)
 lv_stripes=Stripe across $1 physical volumes
 lv_stripes2=Physical volumes to stripe across

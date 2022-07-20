@@ -12,6 +12,8 @@ use Term::ANSIColor qw(:constants);
 use File::Spec;
 use File::Basename;
 
+my $a0 = $ARGV[0];
+
 sub main {
     my ( %opt, $subcmd );
     GetOptions(
@@ -37,6 +39,7 @@ sub main {
     );
 
     $opt{'config'} ||= "/etc/webmin";
+    $opt{'commands'} = $a0;
 
     my @remain = @ARGV;
     # List commands?
@@ -203,7 +206,7 @@ sub run_command {
         exit 1;
     }
 
-    my $command_path = get_command_path($root, $subcmd);
+    my $command_path = get_command_path($root, $subcmd, $optref);
     
     # Merge the options
     # Only handling config, right now...
@@ -223,7 +226,7 @@ sub run_command {
 }
 
 sub get_command_path {
-    my ($root, $subcmd) = @_;
+    my ($root, $subcmd, $optref) = @_;
     # Check for a root-level command (in "$root/bin")
     my $command_path;
     if ($subcmd) {
@@ -256,11 +259,13 @@ sub get_command_path {
             }
         }
     }
-
-    if ($command) {
+    if ($optref->{'commands'} && 
+        $optref->{'commands'} =~ /^(status|start|stop|restart|reload|force-restart|force-reload|kill)$/) {
+        exit system("$0 server $optref->{'commands'}");
+    } elsif ($command) {
         return $command;
     } else {
-        die RED, "Unrecognized subcommand: $subcmd", RESET;
+        die RED, "Unrecognized subcommand: $subcmd", RESET , "\n";
     }
 }
 
@@ -325,7 +330,7 @@ sub man_command {
     my ($optref, $subcmd) = @_;
 
     my $root = root($optref->{'config'});
-    my $command_path = get_command_path($root, $subcmd);
+    my $command_path = get_command_path($root, $subcmd, $optref);
 
     $ENV{'PAGER'} ||= "more";
     open(my $PAGER, "|-", "$ENV{'PAGER'}");
@@ -341,7 +346,7 @@ sub man_command {
 sub root {
     my ($config) = @_;
     open(my $CONF, "<", "$config/miniserv.conf") || die RED,
-        "Failed to open $config/miniserv.conf", RESET;
+        "Failed to open $config/miniserv.conf", RESET , "\n";
     my $root;
     while (<$CONF>) {
         if (/^root=(.*)/) {
@@ -351,9 +356,9 @@ sub root {
     close($CONF);
     # Does the Webmin root exist?
     if ( $root ) {
-        die "$root is not a directory. Is --config correct?" unless (-d $root);
+        die "$root is not a directory. Is --config correct?\n" unless (-d $root);
     } else {
-        die "Unable to determine Webmin installation directory from $ENV{'WEBMIN_CONFIG'}";
+        die "Unable to determine Webmin installation directory from $ENV{'WEBMIN_CONFIG'}\n";
     }
 
     return $root;
@@ -412,14 +417,11 @@ Returns Webmin and other modules and themes versions installed (only those for w
 
 =head1 EXIT CODES
 
-0 on success
-
-non-0 on error
+0 on success ; non-0 on error
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2022 
-        Jamie Cameron <jamie@virtualmin.com>, 
-        Joe Cooper <joe@virtualmin.com>,
-        Ilia Rostovtsev <ilia@virtualmin.com>.
+ Copyright 2022 Jamie Cameron <jcameron@webmin.com>
+                Joe Cooper <joe@virtualmin.com>
+                Ilia Rostovtsev <ilia@virtualmin.com>
 

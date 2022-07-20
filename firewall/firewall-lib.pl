@@ -454,7 +454,7 @@ if ($config{'after_cmd'}) {
 }
 
 # run_before_apply_command()
-# Runs the before-applying command, if any. If it failes, returns the error
+# Runs the before-applying command, if any. If it fails, returns the error
 # message output
 sub run_before_apply_command
 {
@@ -675,10 +675,12 @@ if ($filter->{'defaults'}->{'INPUT_ZONES'}) {
 if ($filter->{'defaults'} =~ /^f2b-|^fail2ban-/ && !$config{'filter_chain'} ) {
 	push(@fwname, 'fail2ban');
 	}
-if (&indexof('firewalld', @fwname) < 0 && &foreign_installed("firewalld", 1)) {
+if (&indexof('firewalld', @fwname) < 0 &&
+    &foreign_installed("firewalld", 1) == 2) {
 	push(@fwname, 'firewalld');
 	}
-if (&indexof('shorewall', @fwname) < 0 && &foreign_installed("shorewall", 1)) {
+if (&indexof('shorewall', @fwname) < 0 &&
+    &foreign_installed("shorewall", 1) == 2) {
 	push(@fwname, 'shorewall');
 	}
 return &unique(@fwname);

@@ -1,2 +1,4 @@
+index_force=System jest skonfigurowany tak, aby nie przetwarzał filtrów poczty zdefiniowanych przez użytkownika. Zdefiniowane tutaj filtry nie będą używane.
+index_force_desc=Jednak administrator może włączyć tę funkcję po stronie Virtualmin za pomocą strony <tt>Ustawienia poczty e-mail, dotyczące spamu i skanowania antywirusowego</tt>.
 index_forever=Na zawsze
 index_ondate=Data

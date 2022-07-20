@@ -2,6 +2,8 @@
 # Check the whole BIND config and report problems
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 # Globals
 our (%access, %text, %config);
 

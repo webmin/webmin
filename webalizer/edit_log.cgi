@@ -5,6 +5,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%text, %config, %gconfig, %access, $module_name, %in, $remote_user);
 require './webalizer-lib.pl';
 &foreign_require("cron", "cron-lib.pl");

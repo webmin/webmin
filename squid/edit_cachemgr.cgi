@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'cachemgr'} || &error($text{'cachemgr_ecannot'});

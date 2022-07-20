@@ -3,6 +3,8 @@
 # Display $generate entries
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our(%access, %text, %in); 
 our $bind_version;
 

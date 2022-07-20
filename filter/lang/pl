@@ -34,7 +34,6 @@ index_return=listy filtrów
 index_warn=Ostrzeżenie - Program <tt>procmail</tt> używany do filtrowania e-maili nie jest zainstalowany. Ustawione tu filtry nie będą działać.
 index_alias=Ostrzeżenie - System jest skonfigurowany, aby przesyłać wszystkie e-maile do twojej skrzynki pocztowej. Ustawione tu filtry nie będą używane.
 index_aliasme=Informacja - System jest także skonfigurowany do przesyłania wszystkich e-maili do :
-index_force=Ostrzeżenie - System został skonfigurowany, aby nie przetwarzać filtrów ustawionych przez użytkownika. Ustawione tutaj filtry nie będą używane.
 index_period=Minimalny odstęp czasu pomiędzy auto odpowiedziami
 index_noperiod=Bez minimum
 index_mins=minut

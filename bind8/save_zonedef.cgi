@@ -3,6 +3,8 @@
 # Save zone defaults
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%access, %text, %in, %config);
 our $module_config_directory;
 

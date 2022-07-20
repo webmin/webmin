@@ -1,6 +1,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%text, $remote_user, %sessiondb, $module_name);
 do 'acl-lib.pl';
 
@@ -28,7 +30,8 @@ if (@logins) {
 		}
 	my $html = &ui_columns_start([ $text{'sessions_host'},
 				       $text{'sessions_login'},
-				       $text{'sessions_state'} ]);
+				       $text{'sessions_state'},
+				       $text{'sessions_action'} ]);
 	my $open = 0;
 	foreach my $l (@logins) {
 		my $state;
@@ -60,18 +63,18 @@ if (@logins) {
 		         &ui_link("@{[&get_webprefix()]}/acl/delete_session.cgi?id=$l->[3]&redirect_ref=1",
 		         $text{'sessions_kill'}))
 			}
-		if (&foreign_available("acl")) {
-		      push(@links,
-		         &ui_link("@{[&get_webprefix()]}/acl/list_sessions.cgi",
-		         $text{'sessions_all'}, undef, "title=\"$text{'sessions_title'}\""))
-			}
 		$html .= &ui_columns_row([
-		          $l->[2] .
-		            (@links ? "&nbsp;&nbsp;&nbsp;" . &ui_links_row(\@links) : undef),
+		          $l->[2],
 		          &make_date($l->[1]),
-		          $state ]);
+		          $state,
+			  &ui_links_row(\@links) ]);
 		}
 	$html .= &ui_columns_end();
+	if (&foreign_available("acl")) {
+		$html .= &ui_link("@{[&get_webprefix()]}/acl/list_sessions.cgi",
+				  $text{'sessions_all'}, undef,
+				  "title=\"$text{'sessions_title'}\"");
+		}
 	push(@rv, { 'type' => 'html',
 		    'desc' => $text{'logins_title'},
 		    'open' => $open,

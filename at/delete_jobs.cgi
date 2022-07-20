@@ -2,6 +2,8 @@
 # Delete multiple at jobs
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our(%access, %text, %in);
 
 require './at-lib.pl';

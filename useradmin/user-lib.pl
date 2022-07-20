@@ -2453,7 +2453,7 @@ foreach $g (@$groups) {
 	local $members = join(" ", split(/,/, $g->{'members'}));
 	local @cols;
 	if ($anyedit && ($g->{'noedit'} || !$access{'gdelete'})) {
-		# Need an explicity blank first column
+		# Need an explicitly blank first column
 		push(@cols, "");
 		}
 	push(@cols, &group_link($g));

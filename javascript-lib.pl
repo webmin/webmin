@@ -16,11 +16,11 @@
 # Available Functions                                                        #
 #    *jroll_over                                                             #
 #      -This gives you simple mouse over functions on graphics               #
-#       and includea a link.                                                 #
+#       and include a link.                                                  #
 #       -Usage = &jroll_over("url", "name", "border", "imgoff", "imgon");    #
 #    *jimg_preload                                                           #
 #      -Preloads any number of given images.                                 #
-#       -Usage = &jimg_preload("image/1.gif", "imgage/u.gif");               #
+#       -Usage = &jimg_preload("image/1.gif", "image/u.gif");               #
 #    *jimg_update                                                            #
 #      -Updates any image on your page that has a name                       #
 #       -Usage = &jimg_update("imgname", "image/toload.gif");                #
@@ -144,7 +144,7 @@ sub jalert {
    print "</SCRIPT>\n";
 }
 
-#opens a specified url in a seprate window
+#opens a specified url in a separate window
 sub jwindow {
    my ($url, $name, $width, $height) = @_;
    if (!$width)  { $width  = "300"; }

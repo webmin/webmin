@@ -1,5 +1,7 @@
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 
 do 'bind8-lib.pl';
 # Globals from bind8-lib.pl

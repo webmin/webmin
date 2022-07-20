@@ -35,7 +35,7 @@ restart_err=Failed to restart MON
 restart_epid=Failed to get PID
 
 LABLES:
-other=Other(space seperated)
+other=Other(space separated)
 next=Next
 mon_stat=MON Status
 mon_off=MON Services not Started

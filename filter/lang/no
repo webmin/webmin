@@ -34,7 +34,6 @@ index_return=filterliste
 index_warn=Advarsel - Programmet <tt>procmail</tt> som brukes til filtrering av e-post, er ikke installert på systemet ditt. Filterene definert nedenfor vil derfor mest sannsynlig ikke virke.
 index_alias=Advarsel - Systemet er konfigurert til å videresende all e-post til din postboks til følgende destinasjoner. Filtere definert her vil ikke bli brukt.
 index_aliasme=Merk - Systemet er også konfigurert til å videresende all e-post til :
-index_force=Advarsel - Systemet er konfigurert til ikke å behandle bruker-definerte e-post filtere. Filtere definert her vil ikke bli brukt.
 index_period=Minimumstid mellom autosvar
 index_noperiod=Ingen minimum
 index_mins=minutter

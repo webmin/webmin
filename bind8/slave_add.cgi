@@ -2,6 +2,8 @@
 # Add or update a server or group from the webmin servers module
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';

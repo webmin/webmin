@@ -8,6 +8,7 @@ BEGIN { push(@INC, ".."); };
 use strict;
 use warnings;
 no warnings 'redefine';
+no warnings 'uninitialized';
 use WebminCore;
 &init_config();
 our ($module_root_directory, %text, %gconfig, $root_directory, %config,
@@ -1259,6 +1260,7 @@ if (&foreign_available($module_name) && !$gconfig{'nowebminup'} && !$noupdates &
 	if ($config{'last_version_number'} &&
 	    ($config{'last_version_number'} > $ver ||
 	     $config{'last_version_number'} == $ver &&
+	     $config{'last_version_release'} &&
 	     $config{'last_version_release'} > $rel)) {
 		# New version is out there .. offer to upgrade
 		my $mode = &get_install_type();
@@ -1788,6 +1790,11 @@ Output a page with header and footer about Webmin needing to restart.
 =cut
 sub show_restart_page
 {
+if (!$gconfig{'restart_async'}) {
+	&restart_miniserv();
+	&redirect("");
+	return;
+	}
 my ($title, $msg) = @_;
 $title ||= $text{'restart_title'};
 $msg ||= $text{'restart_done'};

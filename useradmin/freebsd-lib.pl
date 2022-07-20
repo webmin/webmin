@@ -54,6 +54,9 @@ while(<CONF>) {
 	s/\r|\n//g;
 	s/#.*$//;
 	$md5 = 1 if (/passwd_format\s*=\s*md5/);
+	$md5 = 2 if (/passwd_format\s*=\s*blowfish/);
+	$md5 = 3 if (/passwd_format\s*=\s*sha512/);
+	$md5 = 4 if (/passwd_format\s*=\s*yescrypt/);
 	}
 close(CONF);
 &open_readfile(CONF, "/etc/auth.conf");
@@ -61,6 +64,9 @@ while(<CONF>) {
 	s/\r|\n//g;
 	s/#.*$//;
 	$md5 = 1 if (/crypt_default\s*=\s*md5/);
+	$md5 = 2 if (/crypt_default\s*=\s*blowfish/);
+	$md5 = 3 if (/crypt_default\s*=\s*sha512/);
+	$md5 = 4 if (/crypt_default\s*=\s*yescrypt/);
 	}
 close(CONF);
 return $md5;

@@ -39,7 +39,7 @@ if ($< != 0) {
 if ($ARGV[0]) {
 	$wadir = $ARGV[0];
 	$wadir =~ s/\\/\//g;	# always use / separator on windows
-	print "Installing Webmin from $srcdir to $wadir ...\n";
+	print "Installing Webmin from $srcdir to $wadir\n";
 	if (!-d $wadir) {
 		mkdir($wadir, 0755) || &errorexit("Failed to create $wadir");
 		}
@@ -52,11 +52,12 @@ if ($ARGV[0]) {
 		}
 	}
 else {
-	print "Installing Webmin in $wadir ...\n"
+	print "Installing Webmin in $wadir\n"
 	}
 
 # Work out perl library path
 $ENV{'PERLLIB'} = $wadir;
+$ENV{'WEBMIN_LIBDIR'} = $wadir;
 if ($ENV{'perllib'}) {
 	$ENV{'PERLLIB'} .= ":".$ENV{'perllib'};
 	}
@@ -99,15 +100,18 @@ if (!-d $config_directory) {
 		&errorexit("Failed to create directory $config_directory");
 	}
 if (-r "$config_directory/config") {
-	print "Found existing Webmin configuration in $config_directory\n";
-	print "\n";
-	$upgrading=1
+	print ".. found\n";
+	$upgrading = 1;
 	}
 
 # We can now load the main Webmin library
 $ENV{'WEBMIN_CONFIG'} = $config_directory;
 $ENV{'WEBMIN_VAR'} = "/var/webmin";	# Only used for initial load of web-lib
 require "$srcdir/web-lib-funcs.pl";
+
+# Do we need to reload instead
+# Can be deleted with Webmin 2.0
+$killmodenonepl = 0;
 
 # Check if upgrading from an old version
 if ($upgrading) {
@@ -142,7 +146,12 @@ if ($upgrading) {
 			system("$config_directory/stop.bat >/dev/null 2>&1");
 			}
 		else {
-			system("$config_directory/stop >/dev/null 2>&1");
+			if (-r "$config_directory/.pre-install") {
+				system("$config_directory/.pre-install >/dev/null 2>&1");
+				}
+			else {
+				$killmodenonepl = 1;
+				}
 			}
 		}
 
@@ -164,7 +173,7 @@ if ($upgrading) {
 			$autothird = 1;
 			}
 		system("$perl ".&quote_path("$wadir/thirdparty.pl")." ".&quote_path($wadir)." ".&quote_path($oldwadir)." $autothird");
-		print "..done\n";
+		print ".. done\n";
 		print "\n";
 		}
 
@@ -240,7 +249,7 @@ else {
 		if (!&has_command("process.exe")) {
 			&errorexit("The command process.exe must be installed to run Webmin on Windows");
 			}
-		if (eval "use Win32::Daemon; 1") {
+		if (!eval "use Win32::Daemon; 1") {
 			&errorexit("The Perl module Win32::Daemon must be installed to run Webmin on Windows");
 			}
 		}
@@ -298,9 +307,14 @@ else {
 		$crypt = $ENV{'crypt'};
 		}
 	else {
+		system("stty -echo");
 		chop($password = <STDIN>);
-		print "Password again: ";
+		system("stty echo");
+		print "\nPassword again: ";
+		system("stty -echo");
 		chop($password2 = <STDIN>);
+		system("stty echo");
+		print "\n";
 		if ($password ne $password2) {
 			&errorexit("Passwords don't match");
 			}
@@ -362,7 +376,7 @@ else {
 	print VAR $var_dir,"\n";
 	close(VAR);
 
-	print "Creating web server config files..";
+	print "Creating web server config files ..\n";
 	$ufile = "$config_directory/miniserv.users";
 	$kfile = "$config_directory/miniserv.pem";
 	%miniserv = (	'port' => $port,
@@ -417,21 +431,38 @@ else {
 		}
 	&put_miniserv_config(\%miniserv);
 
-	# Test MD5 password encryption
-	if (&unix_crypt("test", "\\$1\\$A9wB3O18\\$zaZgqrEmb9VNltWTL454R/") eq "\\$1\\$A9wB3O18\\$zaZgqrEmb9VNltWTL454R/") {
+	# Test available hashing formats
+	if (&unix_crypt('test', '$y$j9T$waHytoaqP/CEnKFroGn0S/$fxd5mVc2mBPUc3vv.cpqDckpwrWTyIm2iD4JfnVBi26') eq '$y$j9T$waHytoaqP/CEnKFroGn0S/$fxd5mVc2mBPUc3vv.cpqDckpwrWTyIm2iD4JfnVBi26') {
+		$yescryptpass = 1;
+		}
+	if (&unix_crypt('test', '$6$Tk5o/GEE$zjvXhYf/dr5M7/jan3pgunkNrAsKmQO9r5O8sr/Cr1hFOLkWmsH4iE9hhqdmHwXd5Pzm4ubBWTEjtMeC.h5qv1') eq '$6$Tk5o/GEE$zjvXhYf/dr5M7/jan3pgunkNrAsKmQO9r5O8sr/Cr1hFOLkWmsH4iE9hhqdmHwXd5Pzm4ubBWTEjtMeC.h5qv1') {
+		$sha512pass = 1;
+		}
+	if (&unix_crypt('test', '$1$A9wB3O18$zaZgqrEmb9VNltWTL454R/') eq '$1$A9wB3O18$zaZgqrEmb9VNltWTL454R/') {
 		$md5pass = 1;
 		}
+
+	# Generate random
+	@saltbase = ('a'..'z', 'A'..'Z', '0'..'9');
+	$salt8 = join('', map ($saltbase[rand(@saltbase)], 1..8));
+	$salt2 = join('', map ($saltbase[rand(@saltbase)], 1..2));
 
 	# Create users file
 	open(UFILE, ">$ufile");
 	if ($crypt) {
 		print UFILE "$login:$crypt:0\n";
 		}
+	elsif ($yescryptpass) {
+		print UFILE $login,":",&unix_crypt($password, "\$y\$j9T\$$salt8"),"\n";
+		}
+	elsif ($sha512pass) {
+		print UFILE $login,":",&unix_crypt($password, "\$6\$$salt8"),"\n";
+		}
 	elsif ($md5pass) {
-		print UFILE $login,":",&unix_crypt($password, "\$1\$XXXXXXXX"),"\n";
+		print UFILE $login,":",&unix_crypt($password, "\$1\$$salt8"),"\n";
 		}
 	else {
-		print UFILE $login,":",&unix_crypt($password, "XX"),"\n";
+		print UFILE $login,":",&unix_crypt($password, $salt2),"\n";
 		}
 	close(UFILE);
 	chmod(0600, $ufile);
@@ -442,7 +473,7 @@ else {
 		$host = &get_system_hostname();
 		$cert = &tempname();
 		$key = &tempname();
-		open(SSL, "| openssl req -newkey rsa:512 -x509 -nodes -out $cert -keyout $key -days 1825 >/dev/null 2>&1");
+		open(SSL, "| openssl req -newkey rsa:2048 -x509 -nodes -out $cert -keyout $key -days 1825 -sha256 >/dev/null 2>&1");
 		print SSL ".\n";
 		print SSL ".\n";
 		print SSL ".\n";
@@ -472,10 +503,10 @@ else {
 		&copy_source_dest("$wadir/miniserv.pem", $kfile);
 		}
 	chmod(0600, $kfile);
-	print "..done\n";
+	print ".. done\n";
 	print "\n";
 
-	print "Creating access control file..\n";
+	print "Creating access control file ..\n";
 	$afile = "$config_directory/webmin.acl";
 	open(AFILE, ">$afile");
 	if ($ENV{'defaultmods'}) {
@@ -486,7 +517,7 @@ else {
 		}
 	close(AFILE);
 	chmod(0600, $afile);
-	print "..done\n";
+	print ".. done\n";
 	print "\n";
 
 	if ($login ne "root" && $login ne "admin") {
@@ -498,13 +529,13 @@ else {
 	}
 
 if (!$ENV{'noperlpath"'} && $os_type ne 'windows') {
-	print "Inserting path to perl into scripts..\n";
+	print "Inserting path to perl into scripts ..\n";
 	system("(find ".&quote_path($wadir)." -name '*.cgi' -print ; find ".&quote_path($wadir)." -name '*.pl' -print) | $perl ".&quote_path("$wadir/perlpath.pl")." $perl -");
-	print "..done\n";
+	print ".. done\n";
         print "\n";
 	}
 
-print "Creating start and stop scripts..\n";
+print "Creating start and stop scripts ..\n";
 if ($os_type eq "windows") {
 	open(START, ">>$config_directory/start.bat");
 	print START "$perl \"$wadir/miniserv.pl\" $config_directory/miniserv.conf\n";
@@ -517,7 +548,7 @@ if ($os_type eq "windows") {
 	}
 else {
 	
-	# Re-generating main	
+	# Re-generating main scripts
 	
 	# Start main
 	open(START, ">$config_directory/.start-init");
@@ -537,7 +568,19 @@ else {
 		print START "exec '$wadir/miniserv.pl' $config_directory/miniserv.conf\n";
 		}
 	close(START);
-	$start_cmd = "$config_directory/start";
+
+	# Define final start command
+	if ($upgrading) {
+		if ($killmodenonepl == 1) {
+			$start_cmd = "$config_directory/.reload-init";
+			}
+		else {
+			$start_cmd = "$config_directory/.post-install";
+			}
+		}
+	else {
+		$start_cmd = "$config_directory/start";
+		}
 
 	# Stop main
 	open(STOP, ">$config_directory/.stop-init");
@@ -586,11 +629,25 @@ else {
 	print RELOAD "kill -USR1 \`cat \$pidfile\`\n";
 	close(RELOAD);
 
+	# Pre install
+	open(PREINST, ">$config_directory/.pre-install");
+	print PREINST "#!/bin/sh\n";
+	print PREINST "$config_directory/.stop-init\n";
+	close(PREINST);
+
+	# # Post install
+	open(POSTINST, ">$config_directory/.post-install");
+	print POSTINST "#!/bin/sh\n";
+	print POSTINST "$config_directory/.start-init\n";
+	close(POSTINST);
+
 	chmod(0755, "$config_directory/.start-init");
 	chmod(0755, "$config_directory/.stop-init");
 	chmod(0755, "$config_directory/.restart-init");
 	chmod(0755, "$config_directory/.restart-by-force-kill-init");
 	chmod(0755, "$config_directory/.reload-init");
+	chmod(0755, "$config_directory/.pre-install");
+	chmod(0755, "$config_directory/.post-install");
 
 	# Re-generating supplementary
 
@@ -614,8 +671,7 @@ else {
 	symlink("$config_directory/.reload-init", "$config_directory/reload");
 
 	# For systemd
-	my $systemctlcmd = `which systemctl`;
-	$systemctlcmd =~ s/\s+$//;
+	my $systemctlcmd = &has_command('systemctl');
 	if (-x $systemctlcmd) {
 
 		# Clear existing
@@ -642,21 +698,36 @@ else {
 
 		# Force reload systemd
 		open(FRELOADD, ">$config_directory/restart-by-force-kill");
-		print FRELOADD "$config_directory/.stop-init --kill >/dev/null 2>&1\n";
 		print FRELOADD "$systemctlcmd stop webmin\n";
+		print FRELOADD "$config_directory/.stop-init --kill >/dev/null 2>&1\n";
 		print FRELOADD "$systemctlcmd start webmin\n";
 		close(FRELOADD);
 
 		# Reload systemd
 		open(RELOADD, ">$config_directory/reload");
-		print RELOADD "$config_directory/.reload-init >/dev/null 2>&1\n";
+		print RELOADD "$systemctlcmd reload webmin\n";
 		close(RELOADD);
+
+		# Pre install
+		open(PREINSTT, ">$config_directory/.pre-install");
+		print PREINSTT "#!/bin/sh\n";
+		#print PREINSTT "$systemctlcmd kill --signal=SIGSTOP --kill-who=main webmin\n";
+		close(PREINSTT);
+
+		# Post install
+		open(POSTINSTT, ">$config_directory/.post-install");
+		print POSTINSTT "#!/bin/sh\n";
+		#print POSTINSTT "$systemctlcmd kill --signal=SIGCONT --kill-who=main webmin\n";
+		print POSTINSTT "$systemctlcmd kill --signal=SIGHUP --kill-who=main webmin\n";
+		close(POSTINSTT);
 
 		chmod(0755, "$config_directory/start");
 		chmod(0755, "$config_directory/stop");
 		chmod(0755, "$config_directory/restart");
 		chmod(0755, "$config_directory/restart-by-force-kill");
 		chmod(0755, "$config_directory/reload");
+		chmod(0755, "$config_directory/.pre-install");
+		chmod(0755, "$config_directory/.post-install");
 
 		# Fix existing systemd webmin.service file to update start and stop commands
 		my $perl = &get_perl_path();
@@ -664,16 +735,16 @@ else {
 		system("$perl ".&quote_path("$wadir/init/updateboot.pl")." webmin");
 	}
 }
-print "..done\n";
+print ".. done\n";
 print "\n";
 
 if ($upgrading) {
-	print "Updating config files..\n";
+	print "Updating config files ..\n";
 	}
 else {
-	print "Copying config files..\n";
+	print "Copying config files ..\n";
 	}
-system("$perl ".&quote_path("$wadir/copyconfig.pl")." ".&quote_path("$os_type/$real_os_type")." ".&quote_path("$os_version/$real_os_version")." ".&quote_path($wadir)." ".$config_directory." \"\" ".$allmods);
+system("$perl ".&quote_path("$wadir/copyconfig.pl")." ".&quote_path("$os_type/$real_os_type")." ".&quote_path("$os_version/$real_os_version")." ".&quote_path($wadir)." ".$config_directory." \"\" ".$allmods . " >/dev/null 2>&1");
 if (!$upgrading) {
 	# Store the OS and version
 	&read_file("$config_directory/config", \%gconfig);
@@ -687,7 +758,7 @@ if (!$upgrading) {
 open(VER, ">$config_directory/version");
 print VER $ver,"\n";
 close(VER);
-print "..done\n";
+print ".. done\n";
 print "\n";
 
 # Set passwd_ fields in miniserv.conf from global config
@@ -701,10 +772,8 @@ if (!defined($miniserv{'passwd_mode'})) {
 	$miniserv{'passwd_mode'} = 0;
 	}
 
-# If Perl crypt supports MD5, then make it the default
-if ($md5pass) {
-	$gconfig{'md5pass'} = 1;
-	}
+# Use system default for password hashing
+$gconfig{'md5pass'} = 0;
 
 # Set a special theme if none was set before
 if ($ENV{'theme'}) {
@@ -723,10 +792,10 @@ if ($theme && -d "$wadir/$theme") {
 $gconfig{'product'} ||= "webmin";
 
 if ($makeboot) {
-	print "Configuring Webmin to start at boot time..\n";
+	print "Configuring Webmin to start at boot time ..\n";
 	chdir("$wadir/init");
 	system("$perl ".&quote_path("$wadir/init/atboot.pl")." ".$ENV{'bootscript'});
-	print "..done\n";
+	print ".. done\n";
 	print "\n";
 	}
 
@@ -765,7 +834,7 @@ if [ "\$answer" = "y" ]; then
 fi
 EOF
 	chmod(0755, "$config_directory/uninstall.sh");
-	print "..done\n";
+	print ".. done\n";
 	print "\n";
 	}
 
@@ -792,7 +861,7 @@ if ($os_type ne "windows") {
 		system("chgrp -R bin $var_dir");
 		system("chmod -R og-rwx $var_dir");
 		}
-	print "..done\n";
+	print ".. done\n";
         print "\n";
 	}
 
@@ -810,7 +879,7 @@ if (!$ENV{'nopostinstall'}) {
 	print "Running postinstall scripts ..\n";
 	chdir($wadir);
 	system("$perl ".&quote_path("$wadir/run-postinstalls.pl"));
-	print "..done\n";
+	print ".. done\n";
 	print "\n";
 	}
 
@@ -821,12 +890,16 @@ if (-r "$srcdir/setup-post.pl") {
 
 if (!$ENV{'nostart'}) {
 	if (!$miniserv{'inetd'}) {
-		print "Attempting to start Webmin mini web server..\n";
+		$action = 'start';
+		if ($upgrading) {
+			$action = 'restart';
+		}
+		print "Attempting to $action Webmin web server ..\n";
 		$ex = system($start_cmd);
 		if ($ex) {
-			&errorexit("Failed to start web server!");
+			&errorexit("Failed to $action web server!");
 			}
-		print "..done\n";
+		print ".. done\n";
 		print "\n";
 		}
 
@@ -885,7 +958,7 @@ if ($wadir ne $srcdir) {
 		# Looks like Windows .. use xcopy command
 		system("xcopy \"$srcdir\" \"$wadir\" /Y /E /I /Q");
 		}
-	print "..done\n";
+	print ".. done\n";
 	print "\n";
 	}
 }

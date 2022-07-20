@@ -2,6 +2,8 @@
 # Update a manually edited config file
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%access, %text, %in);
 
 require './bind8-lib.pl';

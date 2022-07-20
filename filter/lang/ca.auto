@@ -1,0 +1,2 @@
+index_force=El sistema està configurat per no processar els filtres de correu definits per l'usuari. Els filtres definits aquí no s'utilitzaran.
+index_force_desc=Tanmateix, l'administrador pot activar aquesta funcionalitat al costat de Virtualmin mitjançant la pàgina <tt>Configuració de correu brossa i exploració de virus</tt>.

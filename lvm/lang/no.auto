@@ -1,0 +1,23 @@
+index_addlv4=Opprett et RAID-volum i <tt>$1</tt>.
+
+lv_mirror=Antall speil
+
+raid_title=Opprett RAID-volum
+raid_desc=Et RAID-volum er en LV som sprer data over flere fysiske volumer for å øke ytelsen, legge til redudans for å beskytte mot diskfeil, eller begge deler.
+raid_header=Nye RAID-volumdetaljer
+raid_type=RAID-volumtype
+raid_mode0=RAID0 (stripet) på tvers av PV-er
+raid_mode1=RAID1 (speilet) på tvers av PV-er
+raid_mode4=RAID4 (enkeltstasjonsparitet) på tvers av PV-er
+raid_mode5=RAID5 (multi-drive paritet) på tvers av PV-er
+raid_mode6=RAID6 (multi-drive paritet) på tvers av PV-er
+raid_mode10=RAID10 (multi-drive paritet) på tvers av PV-er
+raid_ok=Opprett RAID-volum
+raid_err=Kunne ikke opprette RAID-volum
+raid_estripe0=Antall PV-er som skal stripes over må være minst 2
+raid_emirror1=Antall PV-er som skal speiles over må være minst 2
+raid_estripe4=Antall PV-er i et paritetsvolum må være minst 3
+raid_estripe5=Antall PV-er i et paritetsvolum for flere stasjoner må være minst 3
+raid_estripe6=Antall PV-er i et paritetsvolum for flere stasjoner må være minst 3
+raid_estripe10=Antall PV-er i et paritetsvolum for flere stasjoner må være minst 3
+raid_eeither=Mangler enten speil eller striper!

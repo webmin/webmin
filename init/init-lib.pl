@@ -2343,6 +2343,8 @@ if (ref($opts)) {
 	&print_tempfile(CFILE, "Group=$opts->{'group'}\n") if ($opts->{'group'});
 	&print_tempfile(CFILE, "KillMode=$opts->{'killmode'}\n") if ($opts->{'killmode'});
 	&print_tempfile(CFILE, "WorkingDirectory=$opts->{'workdir'}\n") if ($opts->{'workdir'});
+	&print_tempfile(CFILE, "Restart=$opts->{'restart'}\n") if ($opts->{'restart'});
+	&print_tempfile(CFILE, "RestartSec=$opts->{'restartsec'}\n") if ($opts->{'restartsec'});
 	&print_tempfile(CFILE, "TimeoutSec=$opts->{'timeout'}\n") if ($opts->{'timeout'});
 	&print_tempfile(CFILE, "StandardOutput=file:$opts->{'logstd'}\n") if ($opts->{'logstd'});
 	&print_tempfile(CFILE, "StandardError=file:$opts->{'logerr'}\n") if ($opts->{'logerr'});
@@ -2423,6 +2425,23 @@ if (-d $systemd_unit_dir1) {
 	}
 # Fallback path for other systems
 return $systemd_unit_dir2;
+}
+
+
+=head2 get_systemd_unit_pid([name])
+
+Returns pid of running systemd unit
+Returns 0 if unit stopped or missing
+
+=cut
+sub get_systemd_unit_pid
+{
+my ($unit) = @_;
+my $pid =
+  &backquote_command("systemctl show --property MainPID @{[quotemeta($unit)]}");
+$pid =~ s/MainPID=(\d+)/$1/;
+$pid = int($pid);
+return $pid;
 }
 
 =head2 restart_systemd()

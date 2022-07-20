@@ -54,7 +54,7 @@ if ($ARGV[1]) {
 -r "tarballs/$product-$ver.tar.gz" || die "tarballs/$product-$ver.tar.gz not found";
 
 # Create the base directories
-print "Creating Debian package of ",ucfirst($product)," ",$ver,$rel," ...\n";
+print "Creating Debian package of ",ucfirst($product)," ",$ver,$rel," ..\n";
 system("rm -rf $tmp_dir");
 mkdir($tmp_dir, 0755);
 chmod(0755, $tmp_dir);
@@ -260,11 +260,20 @@ system("chmod 755 $preinstall_file");
 open(SCRIPT, ">$postinstall_file");
 print SCRIPT <<EOF;
 #!/bin/sh
+killmodenone=0
+justinstalled=1
+if [ -d "/etc/$baseproduct" ]; then
+	justinstalled=0
+fi
 inetd=`grep "^inetd=" /etc/$baseproduct/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
-if [ "\$1" = "upgrade" -a "\$1" != "abort-upgrade" ]; then
+if [ "\$1" = "configure" ]; then
 	# Upgrading the package, so stop the old Webmin properly
 	if [ "\$inetd" != "1" ]; then
-		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
+		if [ -f "/etc/$baseproduct/.pre-install" ]; then
+			/etc/$baseproduct/.pre-install >/dev/null 2>&1 </dev/null
+		else
+			killmodenone=1
+		fi
 	fi
 fi
 cd /usr/share/$baseproduct
@@ -292,7 +301,8 @@ autothird=1
 noperlpath=1
 nouninstall=1
 nostart=1
-export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot makeboot
+nostop=1
+export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot makeboot nostop
 tempdir=/tmp/.webmin
 if [ ! -d \$tempdir ]; then
 	tempdir=/tmp
@@ -307,11 +317,29 @@ if [ "$product" = "webmin" ]; then
 fi
 rm -f /var/lock/subsys/$baseproduct
 
-if [ "$inetd" != "1" ]; then
-	/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
-	/etc/$baseproduct/start >/dev/null 2>&1 </dev/null
-	if [ "\$?" != "0" ]; then
-		echo "W: $ucproduct server cannot be restarted. It is advised to restart it manually by\nrunning \\"/etc/webmin/restart-by-force-kill\\" when upgrade process is finished"
+if [ "\$inetd" != "1" ]; then
+	productucf=Webmin
+	if [ "$product" = "usermin" ]; then
+		productucf=Usermin
+	fi
+	if [ "\$justinstalled" = "1" ]; then
+		/etc/$baseproduct/start >/dev/null 2>&1 </dev/null
+		if [ "\$?" != "0" ]; then
+			echo "E: \${productucf} server cannot be started. It is advised to start it manually\n   by running \\"/etc/$baseproduct/restart-by-force-kill\\" command"
+		fi
+	else
+		if [ "$product" = "webmin" ]; then
+			if [ "\$killmodenone" != "1" ]; then
+				/etc/$baseproduct/.post-install >/dev/null 2>&1 </dev/null
+			else
+				/etc/$baseproduct/.reload-init >/dev/null 2>&1 </dev/null
+			fi
+		else
+			/etc/$baseproduct/restart >/dev/null 2>&1 </dev/null
+		fi
+		if [ "\$?" != "0" ]; then
+			echo "W: \${productucf} server cannot be restarted. It is advised to restart it manually\n   by running \\"/etc/$baseproduct/restart-by-force-kill\\" command when upgrade process is finished"
+		fi
 	fi
 fi
 
@@ -322,7 +350,14 @@ read answer
 printf "\\n"
 if [ "\\\$answer" = "y" ]; then
 	echo "Removing $ucproduct package .."
+	rm -f /usr/share/$baseproduct/authentic-theme/manifest-*
 	dpkg --remove --force-depends $product
+	systemctlcmd=\\\`which systemctl 2>/dev/null\\\`
+	if [ -x "\\\$systemctlcmd" ]; then
+		\\\$systemctlcmd stop $product >/dev/null 2>&1 </dev/null
+		rm -f /lib/systemd/system/$product.service
+		\\\$systemctlcmd daemon-reload
+	fi
 	echo ".. done"
 fi
 EOFF
@@ -360,10 +395,18 @@ if [ "\$1" != "upgrade" -a "\$1" != "abort-upgrade" ]; then
 	if [ "\$?" = 0 ]; then
 		# Package is being removed, and no new version of webmin
 		# has taken it's place. Run uninstalls and stop the server
+		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
 		if [ "$product" = "webmin" ]; then
 			(cd /usr/share/$baseproduct ; WEBMIN_CONFIG=/etc/$baseproduct WEBMIN_VAR=/var/$baseproduct LANG= /usr/share/$baseproduct/run-uninstalls.pl) >/dev/null 2>&1 </dev/null
+		else
+			rm -f /usr/share/$baseproduct/authentic-theme/manifest-*
+			systemctlcmd=\`which systemctl 2>/dev/null\`
+			if [ -x "\$systemctlcmd" ]; then
+				\$systemctlcmd stop $product >/dev/null 2>&1 </dev/null
+				rm -f /lib/systemd/system/$product.service
+				\$systemctlcmd daemon-reload
+			fi
 		fi
-		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
 		/bin/true
 	fi
 fi

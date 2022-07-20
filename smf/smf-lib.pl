@@ -553,7 +553,7 @@ if (($service_info{'template_common_name'} =~ /.+/) &&
 	\@find_replace_array);
 }
 
-# subfunction to add dependecy/dependent/exec method/propgroup/prop
+# subfunction to add dependency/dependent/exec method/propgroup/prop
 # information to manifest. if at service level, we look for sinst=service,
 # otherwise, look for matches to instance name
 #

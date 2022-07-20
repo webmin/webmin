@@ -5,7 +5,7 @@
 #
 # (c) https://github.com/gnadelwartz, 2020
 #
-# DISPLAY mising strings from one langfile:
+# DISPLAY missing strings from one langfile:
 #
 # ./compare_lang.sh module/lang/xx 
 #
@@ -36,7 +36,7 @@ while read message
 do
 	# skip empty lines
 	[ "$message" == "" ] && continue
-	# skip comments, __noref and log_* messsages
+	# skip comments, __noref and log_* messages
 	if [[ "$message" == "#"* ]] || [[ "$message" == "__norefs"* ]] || [[ "$message" == "log_"* ]]; then
 		echo "skip $message" 1>&2
 		continue

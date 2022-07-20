@@ -119,7 +119,7 @@ if ($iface->{'virtual'} eq '') {
 }
 
 # deactivate_interface(&details)
-# Deactive an interface
+# Deactivate an interface
 sub deactivate_interface
 {
 my ($iface) = @_;
@@ -297,7 +297,7 @@ else {
 	my @boot = &boot_interfaces();
 	my ($old) = grep { $_->{'fullname'} eq $_[0]->{'fullname'} } @boot;
 	if (!$old && $_[0]->{'virtual'} ne '') {
-		# A new virtual interface .. pick a virtual number automaticlly
+		# A new virtual interface .. pick a virtual number automatically
 		my $b;
 		$_[0]->{'virtual'} = 0;
 		foreach $b (&boot_interfaces()) {

@@ -20,7 +20,16 @@ if ($product) {
 			unlink("$p/$product.service");
 			unlink("$p/$product");
 			}
-		copy_source_dest("../webmin-systemd", "$systemd_root/$product.service");
+		my $temp = &transname();
+		my $killcmd = &has_command('kill');
+		$ENV{'WEBMIN_KILLCMD'} = $killcmd;
+		&copy_source_dest("$root_directory/webmin-systemd", "$temp");
+		my $lref = &read_file_lines($temp);
+		foreach my $l (@{$lref}) {
+			$l =~ s/(WEBMIN_[A-Z]+)/$ENV{$1}/g;
+			}
+		&flush_file_lines($temp);
+		copy_source_dest($temp, "$systemd_root/$product.service");
 		system("systemctl daemon-reload >/dev/null 2>&1");
 		};
 	}

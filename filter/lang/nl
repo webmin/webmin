@@ -34,7 +34,6 @@ index_return=filter lijst
 index_warn=Waarschuwing - Het programma <tt>procmail</tt> wat gebruikt word voor mail filteren is niet geinstalleerd op dit systeem. Alle gedefinieerde filters die hieronder staan zullen waarschijnlijk niet werken.
 index_alias=Waarschuwing - Dit systeem is zo geconfigureerd dat alle email voor uw mailbox naar de volgende bestemmingen gaat. Filters die hier gedefinieerd zijn worden niet gebruikt.
 index_aliasme=Let Op - Dit systeem is ook geconfigureerd om alle email door te sturen naar :
-index_force=Waarschuwing - Dit systeem is zo geconfigureerd dat het geen gebruiker-gedefinieerde filters gebruikt. Alle geconfigureerde filters die hieronder staan worden niet gebruikt.
 index_period=Minimum tijd tussen auto-antwoorden
 index_noperiod=Geen minimum
 index_mins=minuten

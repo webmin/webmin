@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 &ui_print_header(undef, $text{'iptables_title'}, "");

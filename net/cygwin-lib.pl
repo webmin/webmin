@@ -128,7 +128,7 @@ sub apply_interface
 }
 
 # deactivate_interface(&details)
-# Deactive an interface
+# Deactivate an interface
 sub deactivate_interface
 {
     #TODO2: determine how to deactivate an interface

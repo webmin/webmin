@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './firewalld-lib.pl';
 our (%text, %in);
 &ReadParse();

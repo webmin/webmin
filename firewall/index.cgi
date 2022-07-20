@@ -213,7 +213,7 @@ else {
                 if ($config{'filter_chain'}) {
                     foreach $filter (split(',', $config{'filter_chain'})) {
                         if($c =~ /^$filter$/) {
-				# not managed by firewall, do not dispaly or modify
+				# not managed by firewall, do not display or modify
                                 print "<em>".$text{'index_filter_chain'}."</em><br>\n";
                                 next CHAIN;
                             }

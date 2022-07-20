@@ -218,7 +218,7 @@ if ($action eq 'create' || $action eq 'delete' || $action eq 'modify') {
 	$ref = 1;
 	}
 else {
-	# Only refesh if showing unread count
+	# Only refresh if showing unread count
 	if (defined(&mailbox::should_show_unread) &&
 	    &mailbox::should_show_unread($folder)) {
 		$ref = 1;

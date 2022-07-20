@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './minecraft-lib.pl';
 &foreign_require("webmincron");
 our (%in, %text, %config);

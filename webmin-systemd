@@ -1,13 +1,16 @@
 [Unit]
 Description=Webmin server daemon
-After=syslog.target
 
 [Service]
-ExecStart=/etc/webmin/.start-init
-ExecStop=/etc/webmin/.stop-init
-PIDFile=/var/webmin/miniserv.pid
+Environment="PERLLIB=WEBMIN_LIBDIR"
+ExecStart=WEBMIN_LIBDIR/miniserv.pl WEBMIN_CONFIG/miniserv.conf
+ExecStop=WEBMIN_KILLCMD $MAINPID
+ExecReload=WEBMIN_KILLCMD -USR1 $MAINPID
+PIDFile=WEBMIN_VAR/miniserv.pid
 Type=forking
-KillMode=none
+Restart=always
+RestartSec=2s
+TimeoutSec=15s
 
 [Install]
 WantedBy=multi-user.target

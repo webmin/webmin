@@ -4,7 +4,7 @@ ECHO UNOFFICIAL helper script to guide less experienced users on Windows
 ECHO for information on installing webmin on Windows manually see:
 ECHO http://www.webmin.com/windows.html
 ECHO .
-ECHO NOTE: Webmin on Windows is community provided and not suppored officially!
+ECHO NOTE: Webmin on Windows is community provided and not supported officially!
 ECHO last reported working insallations was on Windows 8.1
 ECHO .
 
@@ -69,7 +69,7 @@ IF %ERRORLEVEL% NEQ 0 (
 	SET INSTALL=false
 )
 
-:: check if rescource kit is installed
+:: check if resource kit is installed
 WHERE sc >nul 2>&1
 IF %ERRORLEVEL% NEQ 0 (
 	ECHO Windows Resource Toolkit is not installed you may not able to run Webmin as a Service!
@@ -91,7 +91,7 @@ IF NOT EXIST %inst_dir% (
 
 
 IF EXIST %INSTALL% (
-    :: install perl module win::deamon if not installed
+    :: install perl module win::daemon if not installed
     IF NOT EXIST %perl_path%\site\lib\Win32\Daemon.pm (
 	ppm install Win32-Daemon
     )
@@ -101,7 +101,7 @@ IF EXIST %INSTALL% (
 	ECHO Webmin can not installed because of missing  prerequisites!
 	ECHO see http://www.webmin.com/windows.html for manual installation instructions
 	ECHO .
-	ECHO If you are able to improve/fix installtion on newer Windows Versions report them pls
+	ECHO If you are able to improve/fix installation on newer Windows Versions report them pls
 )
 ECHO .
 PAUSE

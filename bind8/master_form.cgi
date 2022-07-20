@@ -3,6 +3,8 @@
 # Form for creating a new master zone
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%access, %text, %config);
 
 require './bind8-lib.pl';

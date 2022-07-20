@@ -2,6 +2,7 @@
 # disable-proxy - Reverse/remove the configuration options set by enable-proxy.
 use strict;
 use warnings;
+
 BEGIN { $Pod::Usage::Formatter = 'Pod::Text::Color'; }
 use 5.010; # Version in CentOS 6
 
@@ -129,7 +130,7 @@ Disable proxy-related features in Webmin.
 
 =head1 SYNOPSIS
 
-disable-proxy [options]
+webmin disable-proxy [options]
 
 =head1 OPTIONS
 
@@ -146,14 +147,8 @@ C</etc/webmin>
 
 =back
 
-=head1 EXIT CODES
-
-0 on success
-
-non-0 on error
-
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2018 Jamie Cameron <jcameron@webmin.com>, Joe Cooper
-<joe@virtualmin.com>.
+ Copyright 2022 Jamie Cameron <jcameron@webmin.com>
+                Joe Cooper <joe@virtualmin.com>
 

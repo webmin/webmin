@@ -6,6 +6,8 @@
 * [Development](#development)
 * [License](#license)
 
+* [中文版](https://github.com/webmin/webmin/blob/master/README-zh.md)
+
 ## About
 
 **Webmin** is a web-based system administration tool for Unix-like servers, and services with over _1,000,000_ installations worldwide. Using it, it is possible to configure operating system internals, such as users, disk quotas, services or configuration files, as well as modify, and control open-source apps, such as BIND DNS Server, Apache HTTP Server, PHP, MySQL, and [many more](https://doxfer.webmin.com/Webmin/Introduction). 
@@ -26,11 +28,11 @@ Perl 5.10 or higher.
 ## Installation
 Webmin can be installed in two different ways:
 
- 1. By downloading a pre-built package, available for different distributions (CentOS, Fedora, SuSE, Mandriva, Debian, Ubuntu, Solaris and [other](http://www.webmin.com/support.html)) from our [download page](http://webmin.com/download.html);
+ 1. By downloading a pre-built package, available for different distributions (CentOS, Fedora, SuSE, Mandriva, Debian, Ubuntu, Solaris and [other](http://www.webmin.com/support.html)) under [latest release assets](https://github.com/webmin/webmin/releases/latest) or from our [download page](http://webmin.com/download.html);
   <kbd>Note: It is highly recommended to [add repository](https://doxfer.webmin.com/Webmin/Installation) to your system for having automatic updates.</kbd>
 
- 2. By downloading, extracting [source file](https://prdownloads.sourceforge.net/webadmin/webmin-1.994.tar.gz), and running [_setup.sh_](http://www.webmin.com/tgz.html) script, with no arguments, which will setup to run it directly from this directory, or with a command-line argument, such as targeted directory.
-  <kbd>Note: If you are installing Webmin [on Windows](http://www.webmin.com/windows.html) system, you must run the command `perl setup.pl` instead. The Windows version depends on several programs, and modules that may not be part of the standard distribution. You will need _process.exe_ commmand, _sc.exe_ command, and _Win32::Daemon_ Perl module.</kbd>
+ 2. By downloading, extracting [source file](https://prdownloads.sourceforge.net/webadmin/webmin-1.997.tar.gz), and running [_setup.sh_](http://www.webmin.com/tgz.html) script, with no arguments, which will setup to run it directly from this directory, or with a command-line argument, such as targeted directory.
+  <kbd>Note: If you are installing Webmin [on Windows](http://www.webmin.com/windows.html) system, you must run the command `perl setup.pl` instead. The Windows version depends on several programs, and modules that may not be part of the standard distribution. You will need _process.exe_ command, _sc.exe_ command, and _Win32::Daemon_ Perl module.</kbd>
 
 ## Documentation
 Complete set of documentation for Webmin and all of its modules can be found at out [Wiki page](https://doxfer.webmin.com/Webmin/Main_Page).
@@ -41,12 +43,14 @@ Complete set of documentation for Webmin and all of its modules can be found at 
 
 * [Jamie Cameron](http://www.webmin.com/about.html) [![](https://github.com/webmin-devel/webmin/blob/master/media/linkedin-15x15.png?raw=true)](https://www.linkedin.com/in/jamiecameron2)
 
-### Contributors
-
-* [Joe Cooper](https://github.com/swelljoe)
+### Developers
 * [Ilia Rostovtsev](https://github.com/iliajie)
+* [Joe Cooper](https://github.com/swelljoe)
+
+### Contributors
 * [Kay Marquardt](https://github.com/gnadelwartz)
-* [Nawawi Jamili](https://github.com/nawawi) + [57 more..](https://github.com/webmin/webmin/graphs/contributors)
+* [Nawawi Jamili](https://github.com/nawawi)
+* [unknown10777](https://github.com/unknown10777) + [90 more..](https://github.com/webmin/webmin/graphs/contributors)
 
 ## License
 

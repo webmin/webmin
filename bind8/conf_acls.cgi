@@ -3,6 +3,8 @@
 # Display global ACLs
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 # Globals
 our (%text, %access);
 

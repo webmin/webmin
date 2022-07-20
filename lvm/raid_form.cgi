@@ -42,15 +42,15 @@ print &ui_table_row($text{'raid_type'},
 		[ [ 'raid0', $text{'raid_mode0'},
 		    &ui_textbox('raid_stripe0', 2, 5) ],
 		  [ 'raid1', $text{'raid_mode1'},
-		    &ui_textbox('raid_mirror1', 2, 5) ],
+		    &ui_textbox('raid_mirror1', 1, 5) ],
 		  [ 'raid4', $text{'raid_mode4'},
-		    &ui_textbox('raid_stripe4', 3, 5) ],
+		    &ui_textbox('raid_stripe4', 2, 5) ],
 		  [ 'raid5', $text{'raid_mode5'},
-		    &ui_textbox('raid_stripe5', 3, 5) ],
+		    &ui_textbox('raid_stripe5', 2, 5) ],
 		  [ 'raid6', $text{'raid_mode6'},
-		    &ui_textbox('raid_stripe6', 3, 5) ],
+		    &ui_textbox('raid_stripe6', 2, 5) ],
 		  [ 'raid10', $text{'raid_mode10'},
-		    &ui_textbox('raid_stripe10', 3, 5) ] ]));
+		    &ui_textbox('raid_stripe10', 2, 5) ] ]));
 
 # Permissions
 print &ui_table_row($text{'lv_perm'},

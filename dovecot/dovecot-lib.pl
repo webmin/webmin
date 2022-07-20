@@ -416,27 +416,25 @@ local $base = &find_value("base_dir", &get_config(), 2);
 return &check_pid_file("$base/master.pid");
 }
 
-# get_initscript()
-# Returns the full path to the Dovecot init script
-sub get_initscript
-{
-if ($config{'init_script'}) {
-	&foreign_require("init");
-	if ($init::init_mode eq "init") {
-		return &init::action_filename($config{'init_script'});
-		}
-	}
-return undef;
-}
-
 # stop_dovecot()
 # Attempts to stop the dovecot server process, returning an error message or
 # undef if successful
 sub stop_dovecot
 {
-&foreign_require("init");
-my ($ok, $err) = &init::stop_action('dovecot');
-return $ok ? undef : "<pre>$err</pre>";
+if ($config{'init_script'}) {
+	&foreign_require("init");
+	my ($ok, $out) = &init::stop_action($config{'init_script'});
+	return $ok ? undef : "<pre>".&html_escape($out)."</pre>";
+	}
+else {
+	local $pid = &is_dovecot_running();
+	if ($pid && kill('TERM', $pid)) {
+		return undef;
+		}
+	else {
+		return $text{'stop_erunning'};
+		}
+	}
 }
 
 # start_dovecot()
@@ -444,9 +442,20 @@ return $ok ? undef : "<pre>$err</pre>";
 # undef if successful
 sub start_dovecot
 {
-&foreign_require("init");
-my ($ok, $err) = &init::start_action('dovecot');
-return $ok ? undef : "<pre>$err</pre>";
+if ($config{'init_script'}) { 
+        &foreign_require("init");
+        my ($ok, $out) = &init::start_action($config{'init_script'});
+        return $ok ? undef : "<pre>".&html_escape($out)."</pre>";
+        }
+else {
+	local $cmd = $config{'dovecot'};
+	local $temp = &transname();
+	&system_logged("$cmd >$temp 2>&1 </dev/null &");
+	sleep(1);
+	local $out = &read_file_contents($temp);
+	&unlink_file($temp);
+	return &is_dovecot_running() ? undef : "<pre>$out</pre>";
+	}
 }
 
 # apply_configration([full-restart])
@@ -460,9 +469,21 @@ if (!$pid) {
 	}
 elsif ($restart) {
 	# Fully shut down and re-start
-	&foreign_require("init");
-	my ($ok, $err) = &init::restart_action('dovecot');
-	return $ok ? undef : "<pre>$err</pre>";
+	if ($config{'init_script'}) {
+		&foreign_require("init");
+		my ($ok, $out) = &init::restart_action($config{'init_script'});
+		return $ok ? undef : "<pre>".&html_escape($out)."</pre>";
+		}
+	else {
+		&stop_dovecot();
+		local $err;
+		for(my $i=0; $i<5; $i++) {
+			$err = &start_dovecot();
+			last if (!$err);
+			sleep(1);
+			}
+		return $err;
+		}
 	}
 else {
 	# Send the HUP signal

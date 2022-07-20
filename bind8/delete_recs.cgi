@@ -2,6 +2,8 @@
 # Delete multiple records from a zone file
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 # Globals
 our (%access, %text, %in, %config);
 

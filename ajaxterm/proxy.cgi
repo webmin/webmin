@@ -2,6 +2,8 @@
 # Proxy an Ajaxterm request to the real port
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;

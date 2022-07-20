@@ -2,6 +2,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './time-lib.pl';
 our (%in, %text, %config, %access, $base_remote_user, $get_hardware_time_error);
 

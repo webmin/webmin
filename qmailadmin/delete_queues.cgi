@@ -1,6 +1,6 @@
 #!/usr/local/bin/perl
 # delete_queue.cgi
-# Delete multiple mail messsages from the queue
+# Delete multiple mail messages from the queue
 
 require './qmail-lib.pl';
 &ReadParse();

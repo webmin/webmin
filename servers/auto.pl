@@ -4,6 +4,8 @@
 $no_acl_check++;
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './servers-lib.pl';
 our (%config, %text, @cluster_modules);
 &foreign_require("mailboxes", "mailboxes-lib.pl");

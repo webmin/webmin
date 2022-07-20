@@ -4,11 +4,13 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%config, %text, %module_info, %in, %gconfig, $module_name);
 require './tunnel-lib.pl';
 
 $ENV{'PATH_INFO'} =~ /^\/(http|https):\/+([^:\/]+)(:(\d+))?(.*)$/ ||
-	&error("Bad PATH_INFO : $ENV{'PATH_INFO'}");
+	&error("Bad PATH_INFO : ".&html_escape($ENV{'PATH_INFO'}));
 my $protocol = $1;
 my $ssl = $protocol eq "https";
 my $host = $2;

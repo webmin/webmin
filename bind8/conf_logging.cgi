@@ -3,6 +3,8 @@
 # Display global logging options
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%access, %text, %in);
 our (@syslog_levels, @severities, @cat_list);
 

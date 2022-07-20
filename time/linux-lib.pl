@@ -2,6 +2,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our $timezones_file = "/usr/share/zoneinfo/zone.tab";
 our $currentzone_link = "/etc/localtime";
 our $currentzone_file = "/etc/timezone";

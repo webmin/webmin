@@ -3,8 +3,9 @@
 
 use strict;
 use warnings;
-use Time::Local;
 no warnings 'redefine';
+no warnings 'uninitialized';
+use Time::Local;
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
@@ -1298,7 +1299,7 @@ elsif ($type eq "DMARC") {
 			     [ 's', $text{'value_dmarcfos'} ] ]));
 	}
 elsif ($type eq "NSEC3PARAM") {
-	# NSEC records have a hash type, flags, number of interations, salt
+	# NSEC records have a hash type, flags, number of iterations, salt
 	# length and salt
 	print &ui_table_row($text{'value_NSEC3PARAM1'},
 		&ui_select("value0", $v[0] || 1,
@@ -1689,7 +1690,7 @@ return $chroot.$_[0];
 }
 
 # has_ndc(exclude-mode)
-# Returns 2 if rndc is installed, 1 if ndc is instaled, or 0
+# Returns 2 if rndc is installed, 1 if ndc is installed, or 0
 # Mode 2 = try ndc only, 1 = try rndc only, 0 = both
 sub has_ndc
 {
@@ -3288,12 +3289,13 @@ else {
 	}
 }
 
-# create_dnssec_key(&zone|&zone-name, algorithm, size, single-key)
+# create_dnssec_key(&zone|&zone-name, algorithm, size, single-key,
+# 		    [force-regen])
 # Creates a new DNSSEC key for some zone, and places it in the same directory
 # as the zone file. Returns undef on success or an error message on failure.
 sub create_dnssec_key
 {
-my ($z, $alg, $size, $single) = @_;
+my ($z, $alg, $size, $single, $force) = @_;
 my $fn = &get_keys_dir($z);
 $fn || return "Could not work keys directory!";
 my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
@@ -3329,6 +3331,17 @@ else {
 # Check if there are saved keys, and if so use them
 my @savedkeys = grep { $_->{'saved'} } &get_dnssec_key($z, 1);
 my $out;
+if (@savedkeys && $force) {
+	# Delete any saved keys, to force re-generation
+	foreach my $key (@savedkeys) {
+		foreach my $f ('publicfile', 'privatefile') {
+			if (ref($key) && $key->{$f} && $key->{'saved'}) {
+				&unlink_file($key->{$f});
+				}
+			}
+		}
+	@savedkeys = ( );
+	}
 if (@savedkeys) {
 	# Rename back the saved key files
 	foreach my $key (@savedkeys) {
@@ -3703,7 +3716,7 @@ return wantarray ? @rv : $rv[0];
 }
 
 # compute_dnssec_key_size(algorithm, def-mode, size)
-# Given an algorith and size mode (0=entered, 1=average, 2=big), returns either
+# Given an algorithm and size mode (0=entered, 1=average, 2=big), returns either
 # 0 and an error message or 1 and the corrected size
 sub compute_dnssec_key_size
 {
@@ -4043,7 +4056,7 @@ sub dt_resign_zone
 }
 
 # dt_zskroll_zone(zone-name)
-# Initates a zsk rollover operation for the zone 
+# Initiates a zsk rollover operation for the zone 
 sub dt_zskroll_zone
 {
 	my ($d) = @_;
@@ -4056,7 +4069,7 @@ sub dt_zskroll_zone
 }
 
 # dt_kskroll_zone(zone-name)
-# Initates a ksk rollover operation for the zone 
+# Initiates a ksk rollover operation for the zone 
 sub dt_kskroll_zone
 {
 	my ($d) = @_;

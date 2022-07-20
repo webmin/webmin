@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require './iscsi-server-lib.pl';
 our (%text);
 &error_setup($text{'stop_err'});

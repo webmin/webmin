@@ -2,6 +2,8 @@
 # Add some zone to the open list
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%in);
 
 require './bind8-lib.pl';

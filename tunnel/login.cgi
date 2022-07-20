@@ -4,6 +4,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%config, %text, %module_info, %in);
 require './tunnel-lib.pl';
 

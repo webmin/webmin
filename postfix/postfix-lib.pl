@@ -1516,7 +1516,7 @@ sub before_save
 {
 if ($config{'check_config'} && !defined($save_file)) {
 	$save_file = &transname();
-	&execute_command("cp $config{'postfix_config_file'} $save_file");
+	&copy_source_dest($config{'postfix_config_file'}, $save_file);
 	}
 }
 
@@ -1525,11 +1525,12 @@ sub after_save
 if (defined($save_file)) {
 	local $err = &check_postfix();
 	if ($err) {
-		&execute_command("mv $save_file $config{'postfix_config_file'}");
+		&copy_source_dest($save_file, $config{'postfix_config_file'});
+		&unlink_file($save_file);
 		&error(&text('after_err', "<pre>$err</pre>"));
 		}
 	else {
-		unlink($save_file);
+		&unlink_file($save_file);
 		$save_file = undef;
 		}
 	}
@@ -1550,7 +1551,7 @@ if ($postfix_version >= 2.1 && $v =~ /\$/) {
 		return $out;
 		}
 	}
-$v =~ s/\$(\{([^\}]+)\}|([A-Za-z0-9\.\-\_]+))/get_real_value($2 || $3)/ge;
+$v =~ s/\$(\{([^\}]+)\}|([A-Za-z0-9\.\-\_]+))/get_real_value($2 || $3) || '$'.$1/ge;
 return $v;
 }
 

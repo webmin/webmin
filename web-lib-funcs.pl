@@ -275,7 +275,7 @@ return $str;
 =head2 quote_escape(string, [only-quote])
 
 Converts ' and " characters in a string into HTML entities, and returns it.
-Useful for outputing HTML tag values.
+Useful for outputting HTML tag values.
 
 =cut
 sub quote_escape
@@ -425,7 +425,7 @@ return $rv;
 
 Behaves exactly like transname, but returns a filename with current timestamp
 
-=item filename - Optional filename prefix to preppend
+=item filename - Optional filename prefix to prepend
 
 =item extension - Optional extension for a filename to append
 
@@ -919,7 +919,8 @@ if (!$main::read_parse_mime_callback_flushed) {
 my $upfile = "$vardir/upload.$id";
 if ($totalsize && $size >= 0) {
 	my $pc = int(100 * $size / $totalsize);
-	if ($pc <= $main::read_parse_mime_callback_pc{$upfile}) {
+	if (defined($main::read_parse_mime_callback_pc{$upfile}) &&
+	    $pc <= $main::read_parse_mime_callback_pc{$upfile}) {
 		return;
 		}
 	$main::read_parse_mime_callback_pc{$upfile} = $pc;
@@ -2310,8 +2311,8 @@ it to restart. This will apply all configuration settings.
 =cut
 sub restart_miniserv
 {
-my ($nowait, $ignore) = @_;
 return undef if (&is_readonly_mode());
+my ($nowait, $ignore) = @_;
 my %miniserv;
 &get_miniserv_config(\%miniserv) || return;
 if ($main::webmin_script_type eq 'web' && !$ENV{"MINISERV_CONFIG"} &&
@@ -2399,8 +2400,8 @@ IP addresses and ports to accept connections on.
 =cut
 sub reload_miniserv
 {
-my ($ignore) = @_;
 return undef if (&is_readonly_mode());
+my ($ignore) = @_;
 my %miniserv;
 &get_miniserv_config(\%miniserv) || return;
 if ($main::webmin_script_type eq 'web' && !$ENV{"MINISERV_CONFIG"} &&
@@ -3793,7 +3794,7 @@ return 0;
 
 =head2 foreign_available(module)
 
-Returns 1 if some module is installed, and acessible to the current user. The
+Returns 1 if some module is installed, and accessible to the current user. The
 module parameter is the module directory name.
 
 =cut
@@ -4886,6 +4887,8 @@ if ($gconfig{'path'}) {
 	$ENV{'PATH'} = join($path_separator,
 			&unique(split($path_separator, $ENV{'PATH'})));
 	}
+$ENV{'PATH'} ||= join($path_separator, "/usr/local/sbin", "/usr/local/bin",
+		      "/usr/sbin", "/usr/bin", "/sbin", "/bin");
 $ENV{$gconfig{'ld_env'}} = $gconfig{'ld_path'} if ($gconfig{'ld_env'});
 
 # Set http_proxy and ftp_proxy environment variables, based on Webmin settings
@@ -5613,7 +5616,7 @@ return $_;
 
 =head2 get_module_info(module, [noclone], [forcache])
 
-Returns a hash containg details of the given module. Some useful keys are :
+Returns a hash containing details of the given module. Some useful keys are :
 
 =item dir - The module directory, like sendmail.
 
@@ -8643,8 +8646,8 @@ sub filter_javascript
 my ($rv) = @_;
 $rv =~ s/<\s*script[^>]*>([\000-\377]*?)<\s*\/script\s*>//gi;
 $rv =~ s/(on(Abort|BeforeUnload|Blur|Change|Click|ContextMenu|Copy|Cut|DblClick|Drag|DragEnd|DragEnter|DragLeave|DragOver|DragStart|DragDrop|Drop|Error|Focus|FocusIn|FocusOut|HashChange|Input|Invalid|KeyDown|KeyPress|KeyUp|Load|MouseDown|MouseEnter|MouseLeave|MouseMove|MouseOut|MouseOver|MouseUp|Move|Paste|PageShow|PageHide|Reset|Resize|Scroll|Search|Select|Submit|Toggle|Unload)=)/x$1/gi;
-$rv =~ s/(javascript:)/x$1/gi;
-$rv =~ s/(vbscript:)/x$1/gi;
+$rv =~ s/(javascript(:|&colon;|&#58;|&#x3A;))/x$1/gi;
+$rv =~ s/(vbscript(:|&colon;|&#58;|&#x3A;))/x$1/gi;
 $rv =~ s/<([^>]*\s|)(on\S+=)(.*)>/<$1x$2$3>/gi;
 return $rv;
 }
@@ -10964,16 +10967,15 @@ string.
 sub unix_crypt
 {
 my ($pass, $salt) = @_;
-return "" if ($salt !~ /^[a-zA-Z0-9\.\/]{2}/);   # same as real crypt
-my $rv = eval "crypt(\$pass, \$salt)";
-my $err = $@;
-return $rv if ($rv && !$@);
+return "" if ($salt !~ /^[\$a-zA-Z0-9]{2}/);   # same as real crypt
+my $rv = eval { crypt($pass, $salt) };
+return $rv if (!$@);
 eval "use Crypt::UnixCrypt";
 if (!$@) {
 	return Crypt::UnixCrypt::crypt($pass, $salt);
 	}
 else {
-	&error("Failed to encrypt password : $err");
+	&error("Failed to encrypt password : $@");
 	}
 }
 
@@ -11366,7 +11368,7 @@ if ($force ||
     !$main::connect_userdb_cache{$str} ||
     time() - $main::connect_userdb_cache_time{$str} > $timeout) {
 	if ($str =~ /^(mysql|postgresql):/) {
-		# DBI disconnnect
+		# DBI disconnect
 		if (!$h->{'AutoCommit'}) {
 			$h->commit();
 			}
@@ -12124,7 +12126,7 @@ sub webmin_user_can_rpc
 {
 my $u = $base_remote_user;
 my %access = &get_module_acl($u, "");
-return 1 if ($access{'rpc'} == 1);	# Can make arbitary RPC calls
+return 1 if ($access{'rpc'} == 1);	# Can make arbitrary RPC calls
 return 0 if ($access{'rpc'} == 0);	# Cannot make RPCs
 
 # Assume that standard admin usernames

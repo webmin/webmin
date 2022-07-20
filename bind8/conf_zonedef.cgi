@@ -3,6 +3,8 @@
 # Display defaults for master zones
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 # Globals
 our (%access, %text, %config);
 

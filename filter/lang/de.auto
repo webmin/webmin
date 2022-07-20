@@ -1,0 +1,2 @@
+index_force=Das System ist so konfiguriert, dass benutzerdefinierte Mailfilter nicht verarbeitet werden. Hier definierte Filter werden nicht verwendet.
+index_force_desc=Der Administrator kann diese Funktionalität jedoch auf Virtualmin-Seite über die Seite <tt>E-Mail-Einstellungen, Spam- und Virenprüfung</tt> aktivieren.

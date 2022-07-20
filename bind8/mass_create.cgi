@@ -2,6 +2,8 @@
 # Actually create multiple zones
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%access, %in, %text, %config);
 
 require './bind8-lib.pl';

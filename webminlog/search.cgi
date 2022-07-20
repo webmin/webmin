@@ -4,6 +4,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 use Time::Local;
 require './webminlog-lib.pl';
 our (%text, %config, %gconfig, $webmin_logfile, %in, $in);
@@ -239,7 +241,7 @@ elsif (@match) {
 	}
 else {
 	# Tell the user that nothing matches
-	print "<p><b>$text{'search_none2'} $searchmsg.</b><p>\n";
+	print "<p><b>$text{'search_none2'}".(&trim($searchmsg) ? " @{[&trim($searchmsg, -1)]}" : "").".</b><p>\n";
 	}
 
 if (!$in{'csv'} && !$in{'no_return'}) {

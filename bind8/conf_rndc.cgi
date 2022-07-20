@@ -3,6 +3,8 @@
 # XXX should check if already working!
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 # Globals
 our (%access, %text, %config);
 our $module_name;

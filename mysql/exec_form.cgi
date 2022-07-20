@@ -44,7 +44,7 @@ if (@old) {
 		"onClick='cmd.value = old.options[old.selectedIndex].value'"),
 	      " ",&ui_submit($text{'exec_clear'}, "clear"),"<br>\n";
 	}
-print "<b>$text{'exec_cs'}</b> ",$csel,"<br>\n";
+print "$text{'exec_cs'}&nbsp;&nbsp;",$csel,"<br>\n";
 print &ui_form_end([ [ undef, $text{'exec_exec'} ] ]);
 print &ui_tabs_end_tab();
 
@@ -58,7 +58,7 @@ print &ui_radio_table("mode", 0, [
 	[ 0, $text{'exec_file'}, &ui_textbox("file", undef, 50)." ".
 				 &file_chooser_button("file", 0, 1) ],
 	[ 1, $text{'exec_upload'}, &ui_upload("upload", 50) ] ]);
-print "<b>$text{'exec_cs'}</b> ",$csel,"<br>\n";
+print "$text{'exec_cs'}&nbsp;&nbsp;",$csel,"<br>\n";
 print &ui_form_end([ [ undef, $text{'exec_exec'} ] ]);
 print &ui_tabs_end_tab();
 

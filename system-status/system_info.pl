@@ -1,6 +1,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require 'system-status-lib.pl';
 our (%text, %gconfig, $module_name, %config);
 
@@ -232,7 +234,7 @@ if ($info->{'disk_total'} && &show_section('disk')) {
 		       'chart' => [ $total, $total-$free ] });
 	}
 
-# Warnings about filesytems running now on space
+# Warnings about filesystems running low on space
 if ($info->{'disk_fs'} && &show_section('disk')) {
 	foreach my $fs (@{$info->{'disk_fs'}}) {
 		next if (!$fs->{'total'});

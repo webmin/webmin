@@ -13,6 +13,8 @@ This module contains functions for parsing the Webmin actions log file.
 BEGIN { push(@INC, ".."); };
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 use WebminCore;
 &init_config();
 our %access = &get_module_acl();

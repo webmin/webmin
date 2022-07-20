@@ -3,6 +3,8 @@
 # Create an RPM for a webmin or usermin module or theme
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 use 5.010;
 
 # Colors!

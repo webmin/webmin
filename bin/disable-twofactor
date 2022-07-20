@@ -2,6 +2,7 @@
 # disable-twofactor - Disable two-factor authentication for a user. 
 use strict;
 use warnings;
+
 BEGIN { $Pod::Usage::Formatter = 'Pod::Text::Color'; }
 use 5.010; # Version in CentOS 6
 
@@ -87,7 +88,7 @@ second factor (e.g. phone or USB key) has been lost.
 
 =head1 SYNOPSIS
 
-disable-twofactor --user username
+webmin disable-twofactor --user username
 
 =head1 OPTIONS
 
@@ -106,16 +107,13 @@ C</etc/webmin>
 
 Name of the user to disable two-factor authentication for.
 
+
+
 =back
-
-=head1 EXIT CODES
-
-0 on successfully replacing configuration options
-
-non-0 on error
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2018 Jamie Cameron <jcameron@webmin.com>, Joe Cooper
-<joe@virtualmin.com>.
 
+ Copyright 2022 Jamie Cameron <jcameron@webmin.com>
+                Joe Cooper <joe@virtualmin.com>
+                Ilia Rostovtsev <ilia@virtualmin.com>

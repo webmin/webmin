@@ -4,6 +4,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%text, %in, %access, $squid_version, %config, $auth_program);
 require './squid-lib.pl';
 $access{'authparam'} || &error($text{'authparam_ecannot'});

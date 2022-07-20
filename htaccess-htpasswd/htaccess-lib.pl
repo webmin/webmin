@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 our (%config, %module_info, @remote_user_info, $user_module_config_directory,
      $remote_user, $module_config_directory);
 BEGIN { push(@INC, ".."); };
