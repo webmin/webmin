@@ -20,3 +20,4 @@ apachectl_path=/usr/sbin/apache2ctl
 show_names=0
 allow_virtualmin=0
 format_config=1
+show_list=1
