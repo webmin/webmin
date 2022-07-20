@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 # Show the left-side menu of Virtualmin domains, plus modules
-use warnings;
 use strict;
+use warnings;
 
 # Globals
 our %in;
