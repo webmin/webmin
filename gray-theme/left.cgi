@@ -230,4 +230,3 @@ sub add_webprefix
 my ($link) = @_;
 return $link =~ /^\// ? &get_webprefix().$link : $link;
 }
-
