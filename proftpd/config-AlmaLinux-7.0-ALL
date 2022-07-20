@@ -8,3 +8,4 @@ stop_cmd=systemctl stop proftpd
 start_cmd=systemctl start proftpd
 defines_file=/etc/sysconfig/proftpd
 defines_name=PROFTPD_OPTIONS
+pid_file=/run/proftpd/proftpd.pid
