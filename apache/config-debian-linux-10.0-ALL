@@ -1,4 +1,3 @@
-show_list=1
 httpd_dir=/etc/apache2
 httpd_path=/usr/sbin/apache2
 httpd_conf=/etc/apache2/apache2.conf
