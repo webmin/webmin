@@ -1,0 +1,1 @@
+php_ini=/etc/php*/cli/php.ini,/etc/php/*/cli/php.ini=Configuration for CLI	/etc/php*/fpm/php.ini,/etc/php/*/fpm/php.ini=Configuration for FPM	/etc/php*/cgi/php.ini,/etc/php/*/cgi/php.ini=Configuration for CGI	/etc/php*/apache2/php.ini,/etc/php/*/apache2/php.ini=Configuration for <tt>mod_php</tt>
