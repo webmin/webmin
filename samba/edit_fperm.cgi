@@ -42,6 +42,9 @@ print &ui_table_row($text{'fperm_forcegrp'},
 print &ui_table_row($text{'fperm_link'},
 	&yesno_input("wide links"));
 
+print &ui_table_row($text{'fperm_unix'},
+	&yesno_input("unix extensions"));
+
 print &ui_table_row($text{'fperm_delro'},
 	&yesno_input("delete readonly"));
 

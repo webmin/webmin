@@ -508,6 +508,7 @@ foreach $s (@synon) {
 			"socket options","TCP_NODELAY",
 			"strict locking","no",
 			"sync always","no",
+			"unix extensions","yes",
 			"unix password sync","no",
 			"user",undef,
 			"valid chars",undef,

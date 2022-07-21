@@ -241,6 +241,7 @@ fperm_notlist=Directories not to list
 fperm_forceuser=Force Unix user
 fperm_forcegrp=Force Unix group
 fperm_link=Allow symlinks outside share?
+fperm_unix=Allow use of Unix extensions?
 fperm_delro=Can delete readonly files?
 fperm_forcefile=Force Unix file mode
 fperm_forcedir=Force Unix directory mode

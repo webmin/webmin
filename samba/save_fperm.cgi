@@ -26,6 +26,7 @@ $in{create_mode} =~ /^0?[0-7]{3}$/ ||
 &setval("force user", $in{force_user});
 &setval("force group", $in{force_group});
 &setval("wide links", $in{wide_links});
+&setval("unix extensions", $in{unix_extensions});
 
 &modify_share($in{old_name}, $in{old_name});
 &unlock_file($config{'smb_conf'});
