@@ -1,1 +1,1 @@
-php_ini=/etc/php.ini
+php_ini=/etc/php.ini,/etc/*/*/php*/php.ini,/etc/*/*/*php*/php.ini=Configuration for CLI and CGI	/etc/php-fpm.conf,/etc/*/php*/php-fpm.conf,/etc/*/*/php*/php-fpm.conf=Configuration for FPM

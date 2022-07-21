@@ -1,4 +1,4 @@
-show_list=0
+show_list=1
 httpd_dir=/etc/httpd
 httpd_path=/usr/sbin/httpd
 mime_types=/etc/mime.types

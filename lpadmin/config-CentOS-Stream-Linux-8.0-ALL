@@ -1,0 +1,17 @@
+iface_perms=755
+gs_lib=
+iface_arg=
+gs_path=gs
+spool_dir=/var/spool/cups
+model_path=/usr/share/cups/model /etc/cups/ppd
+gs_fontpath=
+smbclient_path=smbclient
+print_style=cups
+show_status=0
+iface_owner=lp:lp
+sort_mode=0
+driver_style=cups
+stop_cmd=systemctl stop cups
+start_cmd=systemctl start cups
+display_mode=0
+show_jobs=0
