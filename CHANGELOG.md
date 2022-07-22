@@ -1,7 +1,6 @@
 ## Changelog
 
 #### 1.998-dev (July, 2022)
-
 * Fix Apache, BIND, MySQL, ProFTPd and other modules configs on newest distros for new installs
 * Fix to use Cron default path when run from UI
 * Fix post uninstall cleanups

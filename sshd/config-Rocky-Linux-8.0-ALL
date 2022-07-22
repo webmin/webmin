@@ -9,3 +9,4 @@ sync_create=0
 sync_auth=1
 sync_pass=0
 sync_gnupg=0
+restart_cmd=systemctl reload sshd
