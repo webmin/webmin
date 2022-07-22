@@ -9,12 +9,6 @@ require './fdisk-lib.pl';
 # Work out which disks are accessible
 @disks = &list_disks_partitions();
 @disks = grep { $access{'view'} || &can_edit_disk($_->{'device'}) } @disks;
-if (@disks == 1 && &can_edit_disk($disks[0]->{'device'})) {
-	# Just one .. go direct to it's page
-	&redirect("edit_disk.cgi?device=$disks[0]->{'device'}");
-	edit;
-	}
-
 $pdesc = $has_parted ? $text{'index_parted'} : $text{'index_fdisk'};
 &ui_print_header($pdesc, $module_info{'desc'}, "", undef, 1, 1, 0,
 	&help_search_link("fdisk", "man", "doc", "howto"));
