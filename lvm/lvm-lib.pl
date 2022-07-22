@@ -405,7 +405,7 @@ if (&get_lvm_version() >= 2) {
 		elsif (/\s+Logical\s+volume\s+([a-z0-9\_]+)/i) {
 			push(@raids, [ $1, undef ]);
 			}
-		elsif (/\s+Logical\s+extents\s+(\d+)\s+to\s+(\d+)/ && @rv) {
+		elsif (/\s+Logical\s+extents\s+(\d+)\s+to\s+(\d+)/ && @raids) {
 			$raids[$#raid]->[1] = $2-$1+1;
 			}
 		}
