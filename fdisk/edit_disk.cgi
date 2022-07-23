@@ -124,7 +124,8 @@ if (@parts) {
 	print &ui_columns_end();
 	}
 else {
-	print "$text{'disk_none'}<p>\n";
+	print "<p>$text{'disk_none'}</p>\n"
+		if (!$wantsparted);
 	}
 print &ui_links_row(\@edlinks);
 
