@@ -4,7 +4,6 @@
 require './fdisk-lib.pl';
 &ReadParse();
 &can_edit_disk($in{'device'}) || &error($text{'disk_ecannot'});
-$extwidth = 300;
 
 # Get the disk
 @disks = &list_disks_partitions();
@@ -84,16 +83,12 @@ if (@parts) {
 
 		# Create extent images
 		$ext = "";
-		$ext .= sprintf "<img src=images/gap.gif height=10 width=%d>",
-			$extwidth*($p->{'start'} - 1) /
-			$d->{'cylinders'};
-		$ext .= sprintf "<img src=images/%s.gif height=10 width=%d>",
-			$p->{'extended'} ? "ext" : "use",
-			$extwidth*($p->{'end'} - $p->{'start'}) /
-			$d->{'cylinders'};
-		$ext .= sprintf "<img src=images/gap.gif height=10 width=%d>",
-		  $extwidth*($d->{'cylinders'} - ($p->{'end'} - 1)) /
-			    $d->{'cylinders'};
+		$ext1 = int((($p->{'start'} - 1) / $d->{'cylinders'}) * 100) . "%";
+		$ext2 = int((($p->{'end'} - $p->{'start'}) / $d->{'cylinders'}) * 100) . "%";
+		$ext3 = int((($d->{'cylinders'} - ($p->{'end'} - 1)) / $d->{'cylinders'}) * 100) . "%";
+		$ext .= "<img src=images/gap.gif height=10 width='$ext1'>";
+		$ext .= sprintf "<img src=images/%s.gif height=10 width='$ext2'>", $p->{'extended'} ? "ext" : "use";
+		$ext .= "<img src=images/gap.gif height=10 width='$ext3'>";
 
 		# Work out usage
 		@stat = &device_status($p->{'device'});
@@ -116,7 +111,7 @@ if (@parts) {
 	print &ui_columns_end();
 	}
 else {
-	print "<b>$text{'disk_none'}</b><p>\n";
+	print "$text{'disk_none'}<p>\n";
 	}
 print &ui_links_row(\@edlinks);
 
