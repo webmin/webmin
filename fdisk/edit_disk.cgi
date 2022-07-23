@@ -12,6 +12,10 @@ $d || &error($text{'disk_egone'});
 @parts = @{$d->{'parts'}};
 &ui_print_header($d->{'desc'}, $text{'disk_title'}, "", undef,
 		 @disks == 1 ? 1 : 0, @disks == 1 ? 1 : 0);
+$caneditpart =
+		$d->{'table'} ne 'gpt' || 
+			($d->{'table'} eq 'gpt' &&
+				&has_command('parted'));
 
 # Work out links to add partitions
 foreach $p (@parts) {
@@ -28,17 +32,22 @@ foreach $p (@parts) {
 		$anyfree++;
 		}
 	}
-if ($regular < 4 || $disk->{'table'} ne 'msdos') {
-	push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=1\">".
-		       $text{'index_addpri'}."</a>");
+if ($caneditpart) {
+	if ($regular < 4 || $disk->{'table'} ne 'msdos') {
+		push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=1\">".
+			       $text{'index_addpri'}."</a>");
+		}
+	if ($extended) {
+		push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=2\">".
+			       $text{'index_addlog'}."</a>");
+		}
+	elsif ($regular < 4 && &supports_extended()) {
+		push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=3\">".
+				$text{'index_addext'}."</a>");
+		}
 	}
-if ($extended) {
-	push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=2\">".
-		       $text{'index_addlog'}."</a>");
-	}
-elsif ($regular < 4 && &supports_extended()) {
-	push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=3\">".
-			$text{'index_addext'}."</a>");
+else {
+	$wantsparted = 1;
 	}
 if ($d->{'table'} eq 'unknown') {
 	# Must create a partition table first
@@ -63,6 +72,10 @@ if ($d->{'table'}) {
 		}
 	}
 print &ui_links_row(\@info),"<p>\n";
+
+if ($wantsparted) {
+	print "<p>$text{'edit_edisk'}</p>\n";
+	}
 
 # Show table of partitions, if any
 if (@parts) {

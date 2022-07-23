@@ -121,7 +121,7 @@ if ($pinfo->{'extended'} || $in{'new'} == 3) {
 	# Extended, cannot change
 	print &ui_table_row($text{'edit_type'}, $text{'extended'});
 	}
-elsif (($pinfo->{'edittype'} || $in{'new'}) && !$mounted) {
+elsif (($pinfo->{'edittype'} == 1 || $in{'new'}) && !$mounted) {
 	# Can change
 	print &ui_table_row($text{'edit_type'},
 		&ui_select("type",
@@ -203,7 +203,7 @@ if (($has_e2label || $has_xfs_db) && &supports_label($pinfo) && !$in{'new'}) {
 	}
 
 # Show field for partition name
-if (&supports_name($dinfo) && !$mounted) {
+if (&supports_name($dinfo) && !$mounted && $pinfo->{'edittype'} != 2) {
 	print &ui_table_row($text{'edit_name'},
 			&ui_textbox("name", $pinfo->{'name'}, 20));
 	}
@@ -218,17 +218,18 @@ print &ui_table_end();
 if ($in{'new'}) {
 	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
-elsif (@stat && $stat[2]) {
+elsif (@stat && $stat[2] &&
+       $pinfo->{'edittype'} != 2) {
 	print &ui_form_end();
 	print "$text{'edit_inuse'}\n";
 	}
-else {
+elsif ($pinfo->{'edittype'} != 2) {
 	print &ui_form_end([ $pinfo->{'extended'} ? ( ) :
 				( [ undef, $text{'save'} ] ),
 			     [ 'delete', $text{'delete'} ] ]);
 	}
 
-if (!$in{'new'} && !$pinfo->{'extended'}) {
+if (!$in{'new'} && !$pinfo->{'extended'} && $pinfo->{'edittype'} != 2) {
 	my $ui_buttons_content;
 
 	if (!@stat || $stat[2] == 0) {
@@ -291,6 +292,9 @@ if (!$in{'new'} && !$pinfo->{'extended'}) {
 		print $ui_buttons_content;
 		print &ui_buttons_end();
 		}
+	} elsif (!$mounted &&
+	         $pinfo->{'edittype'} == 2) {
+		print "$text{'edit_eparted'}\n";
 	}
 
 &ui_print_footer("edit_disk.cgi?device=$dinfo->{'device'}",

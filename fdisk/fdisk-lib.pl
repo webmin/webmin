@@ -517,7 +517,7 @@ while(<FDISK>) {
 				'blocks' => "$+{blocks}",
 				'index' => scalar(@{$disk->{'parts'}}),
 				'dtable' => $disk->{'table'},
-			 	'edittype' => 1, };
+			 	'edittype' => 2, };
 		$part->{'desc'} = &partition_description($part->{'device'});
 		$part->{'size'} = ($part->{'end'} - $part->{'start'} + 1) *
 				  $disk->{'cylsize'};
