@@ -15,7 +15,7 @@ $d || &error($text{'disk_egone'});
 $caneditpart =
 		$d->{'table'} ne 'gpt' || 
 			($d->{'table'} eq 'gpt' &&
-				&has_command('parted'));
+				&has_command('parted') && $config{'mode'} ne 'fdisk');
 
 # Work out links to add partitions
 foreach $p (@parts) {
@@ -74,7 +74,9 @@ if ($d->{'table'}) {
 print &ui_links_row(\@info),"<p>\n";
 
 if ($wantsparted) {
-	print "<p>$text{'edit_edisk'}</p>\n";
+	my $label = $config{'mode'} eq 'fdisk' ?
+	              'edit_edisk2' : 'edit_edisk';
+	print "<p>$text{$label}</p>\n";
 	}
 
 # Show table of partitions, if any

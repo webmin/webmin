@@ -294,7 +294,9 @@ if (!$in{'new'} && !$pinfo->{'extended'} && $pinfo->{'edittype'} != 2) {
 		}
 	} elsif (!$mounted &&
 	         $pinfo->{'edittype'} == 2) {
-		print "$text{'edit_eparted'}\n";
+		my $label = $config{'mode'} eq 'fdisk' ?
+		              'edit_eparted2' : 'edit_eparted';
+		print "$text{$label}\n";
 	}
 
 &ui_print_footer("edit_disk.cgi?device=$dinfo->{'device'}",
