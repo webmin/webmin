@@ -245,8 +245,7 @@ local $devs = join(" ", @devs);
 local ($disk, $m2);
 if ($has_parted) {
 	open(FDISK, join(" ; ",
-		map { "parted $_ unit cyl print 2>/dev/null || ".
-		      "fdisk -l $_ 2>/dev/null" } @devs)." |");
+		map { "parted $_ unit cyl print 2>/dev/null" } @devs)." |");
 	}
 else {
 	open(FDISK, "fdisk -l -u=cylinders $devs 2>/dev/null || fdisk -l $devs 2>/dev/null |");
@@ -506,16 +505,19 @@ while(<FDISK>) {
 				  $disk->{'cylsize'};
 		push(@{$disk->{'parts'}}, $part);
 		}
-	elsif (/(\/dev\/\S+?(\d+))\s+(\d+)\s+(\d+)\s+(\d+)\s+([0-9\.]+[kMGTP])\s+(\S.*)/) {
+	elsif (/(?<dev>\/dev\/\S+?(?<num>\d+))\s+(?<start>\d+)\s+(?<end>\d+)\s+(?<blocks>\d+)\s+(?<size>[0-9\.]+[kMGTP])\s+(?<type>\S.*)/ ||
+	       /(?<dev>\/dev\/\S+?(?<num>\d+))\s+(?<start>\d+)\s+(?<end>\d+)\s+(?<size>[0-9\.]+[kMGTP])\s+(?<type>\S.*)/) {
 		# Partition within the current disk from fdisk (gpt format)
-		local $part = { 'number' => $2,
-                                'device' => $1,
-				'type' => $7,
-				'start' => $3,
-				'end' => $4,
-				'blocks' => $5,
+		local $part = {
+				'number' => "$+{num}",
+				'device' => "$+{dev}",
+				'type' => "$+{type}",
+				'start' => "$+{start}",
+				'end' => "$+{end}",
+				'blocks' => "$+{blocks}",
 				'index' => scalar(@{$disk->{'parts'}}),
-			 	'edittype' => 1, };
+				'dtable' => $disk->{'table'},
+			 	'edittype' => 2, };
 		$part->{'desc'} = &partition_description($part->{'device'});
 		$part->{'size'} = ($part->{'end'} - $part->{'start'} + 1) *
 				  $disk->{'cylsize'};
@@ -861,7 +863,12 @@ undef(@list_disks_partitions_cache);
 # Returns a list of known partition tag numbers
 sub list_tags
 {
-if ($has_parted) {
+my ($fdisk_gpt) = @_;
+if ($fdisk_gpt eq 'gpt') {
+	# fdisk gpt types
+	return sort { $a cmp $b } (keys %fdisk_gpt_tags);
+	}
+elsif ($has_parted) {
 	# Parted types
 	return sort { $a cmp $b } (keys %parted_tags);
 	}
@@ -875,7 +882,7 @@ else {
 # Returns a human-readable version of a tag
 sub tag_name
 {
-return $tags{$_[0]} || $parted_tags{$_[0]} || $hidden_tags{$_[0]};
+return $tags{$_[0]} || $parted_tags{$_[0]} || $fdisk_gpt_tags{$_[0]} || $hidden_tags{$_[0]};
 }
 
 sub default_tag
@@ -1561,6 +1568,14 @@ else { return " $_[2] $in{$_[0]}"; }
 %hidden_tags = (
 	 '5', 'Extended',
 	 'f', 'Windows extended LBA',
+	);
+
+%fdisk_gpt_tags = (
+	'', 'None',
+	'EFI System', 'EFI system partition',
+	'BIOS boot', 'BIOS boot partition',
+	'Linux filesystem', 'Linux filesystem',
+	'Linux LVM', 'Linux LVM',
 	);
 
 %parted_tags = (

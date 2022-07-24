@@ -4,7 +4,6 @@
 require './fdisk-lib.pl';
 &ReadParse();
 &can_edit_disk($in{'device'}) || &error($text{'disk_ecannot'});
-$extwidth = 300;
 
 # Get the disk
 @disks = &list_disks_partitions();
@@ -13,6 +12,10 @@ $d || &error($text{'disk_egone'});
 @parts = @{$d->{'parts'}};
 &ui_print_header($d->{'desc'}, $text{'disk_title'}, "", undef,
 		 @disks == 1 ? 1 : 0, @disks == 1 ? 1 : 0);
+$caneditpart =
+		$d->{'table'} ne 'gpt' || 
+			($d->{'table'} eq 'gpt' &&
+				&has_command('parted') && $config{'mode'} ne 'fdisk');
 
 # Work out links to add partitions
 foreach $p (@parts) {
@@ -29,17 +32,22 @@ foreach $p (@parts) {
 		$anyfree++;
 		}
 	}
-if ($regular < 4 || $disk->{'table'} ne 'msdos') {
-	push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=1\">".
-		       $text{'index_addpri'}."</a>");
+if ($caneditpart) {
+	if ($regular < 4 || $disk->{'table'} ne 'msdos') {
+		push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=1\">".
+			       $text{'index_addpri'}."</a>");
+		}
+	if ($extended) {
+		push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=2\">".
+			       $text{'index_addlog'}."</a>");
+		}
+	elsif ($regular < 4 && &supports_extended()) {
+		push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=3\">".
+				$text{'index_addext'}."</a>");
+		}
 	}
-if ($extended) {
-	push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=2\">".
-		       $text{'index_addlog'}."</a>");
-	}
-elsif ($regular < 4 && &supports_extended()) {
-	push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=3\">".
-			$text{'index_addext'}."</a>");
+else {
+	$wantsparted = 1;
 	}
 if ($d->{'table'} eq 'unknown') {
 	# Must create a partition table first
@@ -65,6 +73,12 @@ if ($d->{'table'}) {
 	}
 print &ui_links_row(\@info),"<p>\n";
 
+if ($wantsparted) {
+	my $label = $config{'mode'} eq 'fdisk' ?
+	              'edit_edisk2' : 'edit_edisk';
+	print "<p>$text{$label}</p>\n";
+	}
+
 # Show table of partitions, if any
 if (@parts) {
 	print &ui_links_row(\@edlinks);
@@ -84,16 +98,12 @@ if (@parts) {
 
 		# Create extent images
 		$ext = "";
-		$ext .= sprintf "<img src=images/gap.gif height=10 width=%d>",
-			$extwidth*($p->{'start'} - 1) /
-			$d->{'cylinders'};
-		$ext .= sprintf "<img src=images/%s.gif height=10 width=%d>",
-			$p->{'extended'} ? "ext" : "use",
-			$extwidth*($p->{'end'} - $p->{'start'}) /
-			$d->{'cylinders'};
-		$ext .= sprintf "<img src=images/gap.gif height=10 width=%d>",
-		  $extwidth*($d->{'cylinders'} - ($p->{'end'} - 1)) /
-			    $d->{'cylinders'};
+		$ext1 = int((($p->{'start'} - 1) / $d->{'cylinders'}) * 100) . "%";
+		$ext2 = int((($p->{'end'} - $p->{'start'}) / $d->{'cylinders'}) * 100) . "%";
+		$ext3 = int((($d->{'cylinders'} - ($p->{'end'} - 1)) / $d->{'cylinders'}) * 100) . "%";
+		$ext .= "<img src=images/gap.gif height=10 width='$ext1'>";
+		$ext .= sprintf "<img src=images/%s.gif height=10 width='$ext2'>", $p->{'extended'} ? "ext" : "use";
+		$ext .= "<img src=images/gap.gif height=10 width='$ext3'>";
 
 		# Work out usage
 		@stat = &device_status($p->{'device'});
@@ -116,38 +126,43 @@ if (@parts) {
 	print &ui_columns_end();
 	}
 else {
-	print "<b>$text{'disk_none'}</b><p>\n";
+	print "<p>$text{'disk_none'}</p>\n"
+		if (!$wantsparted);
 	}
 print &ui_links_row(\@edlinks);
 
 # Buttons for IDE params and SMART
-print &ui_hr();
-print &ui_buttons_start();
+my $ui_buttons_content;
 if (&supports_hdparm($d)) {
-	print &ui_buttons_row("edit_hdparm.cgi", $text{'index_hdparm'},
+	$ui_buttons_content = &ui_buttons_row("edit_hdparm.cgi", $text{'index_hdparm'},
 			      $text{'index_hdparmdesc'},
 			      &ui_hidden("disk", $d->{'index'}));
 	}
 if (&supports_smart($d)) {
-	print &ui_buttons_row("../smart-status/index.cgi", $text{'index_smart'},
+	$ui_buttons_content = &ui_buttons_row("../smart-status/index.cgi", $text{'index_smart'},
 			      $text{'index_smartdesc'},
 			      &ui_hidden("drive", $d->{'device'}));
 	}
 if (&supports_relabel($d)) {
 	if ($d->{'table'} eq 'unknown') {
-		print &ui_buttons_row(
+		$ui_buttons_content = &ui_buttons_row(
 			"edit_relabel.cgi", $text{'index_relabel2'},
 			$text{'index_relabeldesc2'},
 			&ui_hidden("device", $d->{'device'}));
 		}
 	else {
-		print &ui_buttons_row(
+		$ui_buttons_content = &ui_buttons_row(
 			"edit_relabel.cgi", $text{'index_relabel'},
 			$text{'index_relabeldesc'},
 			&ui_hidden("device", $d->{'device'}));
 		}
 	}
-print &ui_buttons_end();
+if ($ui_buttons_content) {
+	print &ui_hr();
+	print &ui_buttons_start();
+	print $ui_buttons_content;
+	print &ui_buttons_end();
+}
 
 &ui_print_footer("", $text{'index_return'});
 

@@ -111,19 +111,24 @@ $dev = $dinfo->{'prefix'} =~ /^\/dev\/mmcblk.*/ ?
 	$dinfo->{'prefix'}.$np;
 print &ui_table_row($text{'edit_device'}, $dev);
 
+if (!$in{'new'}) {
+	@stat = &device_status($dev);
+	$mounted = $stat[2];
+	}
+
 # Partition type
 if ($pinfo->{'extended'} || $in{'new'} == 3) {
 	# Extended, cannot change
 	print &ui_table_row($text{'edit_type'}, $text{'extended'});
 	}
-elsif ($pinfo->{'edittype'} || $in{'new'}) {
+elsif (($pinfo->{'edittype'} == 1 || $in{'new'}) && !$mounted) {
 	# Can change
 	print &ui_table_row($text{'edit_type'},
 		&ui_select("type",
 			   $in{'new'} ? &default_tag() : $pinfo->{'type'},
 			   [ map { [ $_, &tag_name($_) ] }
 				 (sort { &tag_name($a) cmp &tag_name($b) }
-				       &list_tags()) ]));
+				       &list_tags($pinfo->{'dtable'})) ]));
 	}
 else {
 	# Tool doesn't allow change
@@ -160,9 +165,8 @@ if ($pinfo->{'extended'}) {
 		}
 	}
 elsif (!$in{'new'}) {
-	@stat = &device_status($dev);
 	if (@stat) {
-		$msg = $stat[2] ? 'edit_mount' : 'edit_umount';
+		$msg = $mounted ? 'edit_mount' : 'edit_umount';
 		$msg .= 'vm' if ($stat[1] eq 'swap');
 		$msg .= 'raid' if ($stat[1] eq 'raid');
 		$msg .= 'lvm' if ($stat[1] eq 'lvm');
@@ -199,7 +203,7 @@ if (($has_e2label || $has_xfs_db) && &supports_label($pinfo) && !$in{'new'}) {
 	}
 
 # Show field for partition name
-if (&supports_name($dinfo)) {
+if (&supports_name($dinfo) && !$mounted && $pinfo->{'edittype'} != 2) {
 	print &ui_table_row($text{'edit_name'},
 			&ui_textbox("name", $pinfo->{'name'}, 20));
 	}
@@ -214,24 +218,24 @@ print &ui_table_end();
 if ($in{'new'}) {
 	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
-elsif (@stat && $stat[2]) {
+elsif (@stat && $stat[2] &&
+       $pinfo->{'edittype'} != 2) {
 	print &ui_form_end();
-	print "<b>$text{'edit_inuse'}</b><p>\n";
+	print "$text{'edit_inuse'}\n";
 	}
-else {
+elsif ($pinfo->{'edittype'} != 2) {
 	print &ui_form_end([ $pinfo->{'extended'} ? ( ) :
 				( [ undef, $text{'save'} ] ),
 			     [ 'delete', $text{'delete'} ] ]);
 	}
 
-if (!$in{'new'} && !$pinfo->{'extended'}) {
-	print &ui_hr();
-	print &ui_buttons_start();
+if (!$in{'new'} && !$pinfo->{'extended'} && $pinfo->{'edittype'} != 2) {
+	my $ui_buttons_content;
 
 	if (!@stat || $stat[2] == 0) {
 		# Show form for creating filesystem
 		local $rt = @stat ? $stat[1] : &conv_type($pinfo->{'type'});
-		print &ui_buttons_row("mkfs_form.cgi",
+		$ui_buttons_content = &ui_buttons_row("mkfs_form.cgi",
 			$text{'edit_mkfs2'}, $text{'edit_mkfsmsg2'},
 			&ui_hidden("dev", $dev),
 			&ui_select("type", $rt,
@@ -241,7 +245,7 @@ if (!$in{'new'} && !$pinfo->{'extended'}) {
 
 	if (!$in{'new'} && @stat && $stat[2] == 0 && &can_fsck($stat[1])) {
 		# Show form to fsck filesystem
-		print &ui_buttons_row("fsck_form.cgi",
+		$ui_buttons_content = &ui_buttons_row("fsck_form.cgi",
 			$text{'edit_fsck'},&text('edit_fsckmsg', "<tt>fsck</tt>"),
 			&ui_hidden("dev", $dev)." ".
 			&ui_hidden("type", $stat[1]));
@@ -249,7 +253,7 @@ if (!$in{'new'} && !$pinfo->{'extended'}) {
 
 	if (!$in{'new'} && @stat && $stat[2] == 0 && &can_tune($stat[1])) {
 		# Show form to tune filesystem
-		print &ui_buttons_row("tunefs_form.cgi",
+		$ui_buttons_content = &ui_buttons_row("tunefs_form.cgi",
 			$text{'edit_tune'}, $text{'edit_tunemsg'},
 			&ui_hidden("dev", $dev)." ".
 			&ui_hidden("type", $stat[1]));
@@ -260,7 +264,7 @@ if (!$in{'new'} && !$pinfo->{'extended'}) {
 		# Show form to mount filesystem
 		if ($types[0] eq "swap") {
 			# Swap partition
-			print &ui_buttons_row("../mount/edit_mount.cgi",
+			$ui_buttons_content = &ui_buttons_row("../mount/edit_mount.cgi",
 				$text{'edit_newmount2'},$text{'edit_mountmsg2'},
 				&ui_hidden("type", $types[0]).
 				&ui_hidden("newdev", $dev));
@@ -275,14 +279,24 @@ if (!$in{'new'} && !$pinfo->{'extended'}) {
 			else {
 				$dirsel .= &ui_hidden("type", $types[0]);
 				}
-			print &ui_buttons_row("../mount/edit_mount.cgi",
+			$ui_buttons_content = &ui_buttons_row("../mount/edit_mount.cgi",
 				$text{'edit_newmount'}, $text{'edit_mountmsg'},
 				&ui_hidden("newdev", $dev),
 				$dirsel);
 			}
 		}
 
-	print &ui_buttons_end();
+	if ($ui_buttons_content) {
+		print &ui_hr();
+		print &ui_buttons_start();
+		print $ui_buttons_content;
+		print &ui_buttons_end();
+		}
+	} elsif (!$mounted &&
+	         $pinfo->{'edittype'} == 2) {
+		my $label = $config{'mode'} eq 'fdisk' ?
+		              'edit_eparted2' : 'edit_eparted';
+		print "$text{$label}\n";
 	}
 
 &ui_print_footer("edit_disk.cgi?device=$dinfo->{'device'}",
