@@ -143,7 +143,7 @@ print &ui_table_row($text{'edit_mailfl'},
 						$text{'edit_mailfirst'} :
 						$text{'edit_maillast'}) ] ]));
 
-if (&get_logrotate_version() < 3.6) {
+if (&compare_version_numbers(&get_logrotate_version(), 3.6) < 0) {
 	$errors = &find_value("errors", $lconf);
 	print &ui_table_row($text{'edit_errors'},
 			    &ui_opt_textbox("errors", $errors, 30,
@@ -162,7 +162,7 @@ $post = &find_value("postrotate", $lconf);
 print &ui_table_row($text{'edit_post'},
 		    &ui_textarea("post", $post, 3, 60));
 
-if (&get_logrotate_version() >= 3.4) {
+if (&compare_version_numbers(&get_logrotate_version(), 3.4) >= 0) {
 	&yesno_option("sharedscripts", "nosharedscripts", $lconf);
 	}
 

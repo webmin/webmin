@@ -178,7 +178,7 @@ else {
 		&save_directive($log, "postrotate");
 		}
 
-	if (&get_logrotate_version() >= 3.4) {
+	if (defined($in{'sharedscripts'})) {
 		&parse_yesno("sharedscripts", "nosharedscripts", $log);
 		}
 
