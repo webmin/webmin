@@ -1,12 +1,14 @@
 ## Changelog
 
-#### 1.998-dev (July, 2022)
+#### 1.998 (July 25, 2022)
 * Fix Apache, BIND, MySQL, ProFTPd and other modules configs on newest distros for new installs
 * Fix to use Cron default path when run from UI
 * Fix post uninstall cleanups
+* Add improvements to Partitions on Local Disks module
 * Add better support for CentOS Stream Linux for new installs
 * Add improvements for searching and naming global PHP configs files
-* Add latest Authentic [theme update](https://github.com/webmin/authentic-theme/releases/tag/19.98-RC1) with various bug fixes and small improvements
+* Add support for unix extensions option for Samba module https://github.com/webmin/webmin/issues/1695
+* Add latest Authentic [theme update](https://github.com/webmin/authentic-theme/releases/tag/19.98) with various bug fixes and small improvements
 
 #### 1.997 (July 12, 2022)
 * Add support for mirror and RAID volumes in LVM module
