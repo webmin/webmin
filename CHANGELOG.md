@@ -4,6 +4,7 @@
 * Fix Apache, BIND, MySQL, ProFTPd and other modules configs on newest distros for new installs
 * Fix to use Cron default path when run from UI
 * Fix post uninstall cleanups
+* Fix version detection bug for Log File Rotation module
 * Add improvements to Partitions on Local Disks module
 * Add better support for CentOS Stream Linux for new installs
 * Add improvements for searching and naming global PHP configs files
