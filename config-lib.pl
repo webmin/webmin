@@ -355,7 +355,8 @@ if (&foreign_exists($module) &&
 	my %oldmoduleconf;
 	&read_file("$config_directory/$module/config", \%oldmoduleconf);
 	foreach my $o (@config_preserve) {
-		$config->{$o} = $oldmoduleconf{$o};
+		$config->{$o} = $oldmoduleconf{$o}
+		    if (defined($oldmoduleconf{$o}));
 		}
 	}
 }
