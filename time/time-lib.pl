@@ -213,11 +213,11 @@ my $format;
 if ($config{'seconds'} == 2) {
 	$format = $year.$month.$date.$hour.$minute.".".$second;
 	}
-elsif ($config{'seconds'} eq "0") {
-	$format = $month.$date.$hour.$minute.substr($year, -2);
+elsif ($config{'seconds'} == 1) {
+	$format = $month.$date.$hour.$minute.$year.".".$second;
 	}
 else {
-	$format = $month.$date.$hour.$minute.$year.".".$second;
+	$format = $month.$date.$hour.$minute.substr($year, -2);
 	}
 my $out = &backquote_logged("echo yes | date ".quotemeta($format)." 2>&1");
 if ($gconfig{'os_type'} eq 'freebsd' || $gconfig{'os_type'} eq 'netbsd') {
