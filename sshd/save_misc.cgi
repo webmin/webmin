@@ -87,7 +87,8 @@ if ($version{'type'} eq 'openssh' && $version{'number'} >= 2) {
 		}
 	}
 
-if ($version{'type'} eq 'openssh' && $version{'number'} >= 3.2) {
+if ($version{'type'} eq 'openssh' &&
+    $version{'number'} >= 3.2 && $version{'number'} < 7.5) {
 	&save_directive("UsePrivilegeSeparation", $conf,
 			$in{'separ'} ? 'yes' : 'no');
 	}

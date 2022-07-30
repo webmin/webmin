@@ -95,7 +95,8 @@ if ($version{'type'} eq 'openssh' && $version{'number'} >= 2) {
 		&ui_opt_textbox("pid", $pid, 60, $text{'default'}));
 	}
 
-if ($version{'type'} eq 'openssh' && $version{'number'} >= 3.2) {
+if ($version{'type'} eq 'openssh' &&
+    $version{'number'} >= 3.2 && $version{'number'} < 7.5) {
 	# Use separate users
 	$separ = &find_value("UsePrivilegeSeparation", $conf);
 	print &ui_table_row($text{'misc_separ'},
