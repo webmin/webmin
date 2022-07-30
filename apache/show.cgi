@@ -68,8 +68,8 @@ print "<table border><tr><td $cb><pre>\n\n";
 &show_directives($conf, 0);
 print "</pre></td></tr></table>\n";
 print "</td></tr>\n";
-
-if ($in{'virt'} || $in{'file'} || defined($in{'idx'})) {
+if ($access{'types'} eq '*' &&
+   ($in{'virt'} || $in{'file'} || defined($in{'idx'}))) {
 	print "<tr>\n";
 	print "<td><form action=manual_form.cgi>";
 	print "<input type=submit name=these value='$text{'show_these'}'>";
