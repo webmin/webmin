@@ -511,8 +511,8 @@ return $? ? $out : undef;
 sub list_all_config_files
 {
 my @rv;
-push(@rv, "$config{'config_dir'}/fail2ban.conf");
 push(@rv, "$config{'config_dir'}/fail2ban.local");
+push(@rv, "$config{'config_dir'}/fail2ban.conf");
 push(@rv, glob("$config{'config_dir'}/filter.d/*.conf"));
 push(@rv, glob("$config{'config_dir'}/filter.d/*.local"));
 push(@rv, glob("$config{'config_dir'}/action.d/*.conf"));
@@ -521,7 +521,7 @@ push(@rv, "$config{'config_dir'}/jail.conf");
 push(@rv, "$config{'config_dir'}/jail.local");
 push(@rv, glob("$config{'config_dir'}/jail.d/*.conf"));
 push(@rv, glob("$config{'config_dir'}/jail.d/*.local"));
-return grep { -r $_ } @rv;
+return grep { -r $_ || $_ =~ /fail2ban\.local$/ } @rv;
 }
 
 sub lock_all_config_files
