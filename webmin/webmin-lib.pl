@@ -2611,12 +2611,25 @@ my $os = $gconfig{'real_os_type'};
 return if (!$os);
 my $link_tag = 'target="_blank" data-link-external="after"';
 # Ubuntu release notes
-if ($os =~ /ubuntu/i && $basever >= 18) {
-	my $code_name = $basever =~ /^18/ ? 'BionicBeaver' :
-	                $basever =~ /^20/ ? 'FocalFossa' :
-	                $basever =~ /^22/ ? 'JammyJellyfish' : undef;
+if ($os =~ /ubuntu/i &&
+    $ver =~ /\d+\.04/ &&
+    $basever >= 18) {
+	my %codename_map = (
+		22 => 'JammyJellyfish',
+		20 => 'FocalFossa',
+		18 => 'BionicBeaver');
+	my @codename_map = sort keys %codename_map;
+	my $latestknown = $codename_map[-1] == $basever ? 1 : 0;
+	my $code_name = $codename_map{$basever};
+	my $minorver = $ver =~ /\d+\.\d+\.\d+/ ? 1 : 0;
+	my $minorverstr = $minorver ? "/ChangeSummary" : "";
+	my $minorvercombined = "$minorverstr/$ver";
+	if ($latestknown) {
+		$minorvercombined = $minorver ? "/ChangeSummary/$ver" : "";
+		}
 	$link = &ui_link("https://wiki.ubuntu.com/".
-	                    "$code_name/ReleaseNotes/ChangeSummary/$ver",
+	                    "$code_name/ReleaseNotes".
+	                    "$minorvercombined",
 	                 $text{'os_release_notes'}, undef, $link_tag)
 		if($code_name);
 	}
