@@ -350,8 +350,8 @@ foreach my $c (@info_order) {
 # prevent changing behaviour of a module
 if (&foreign_exists($module) &&
     &foreign_require($module) &&
-    &foreign_func_exists($module, 'config_preserve')) {
-	my @config_preserve = &foreign_call($module, "config_preserve");
+    &foreign_func_exists($module, 'config_pre_load')) {
+	my @config_preserve = &foreign_call($module, "config_pre_load");
 	my %oldmoduleconf;
 	&read_file("$config_directory/$module/config", \%oldmoduleconf);
 	foreach my $o (@config_preserve) {
