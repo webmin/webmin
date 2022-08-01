@@ -263,34 +263,27 @@ return &has_command("hwclock") &&
        !&running_in_openvz() && !&running_in_zone();
 }
 
-# config_preserve()
-# Returns a list of config options that
-# cannot be shown on the given system
-sub config_preserve
-{
-my @forbidden_keys;
-
-# Do not display timeformat for Linux systems
-push(@forbidden_keys, 'seconds')
-	if ($gconfig{'os_type'} =~ /linux$/);
-
-return @forbidden_keys;
-}
-
 # config_pre_load(mod-info-ref, [mod-order-ref])
 # Check if some config options are conditional,
 # and if not allowed, remove them from listing
 sub config_pre_load
 {
 my ($modconf_info, $modconf_order) = @_;
-my @forbidden_keys = &config_preserve();
+my @forbidden_keys;
+
+# Do not display timeformat for Linux systems
+push(@forbidden_keys, 'seconds')
+	if ($gconfig{'os_type'} =~ /linux$/);
 
 # Remove forbidden from display
-foreach my $fkey (@forbidden_keys) {
-	delete($modconf_info->{$fkey});
-	@{$modconf_order} = grep { $_ ne $fkey } @{$modconf_order}
-		if ($modconf_order);
+if ($modconf_info) {
+	foreach my $fkey (@forbidden_keys) {
+		delete($modconf_info->{$fkey});
+		@{$modconf_order} = grep { $_ ne $fkey } @{$modconf_order}
+			if ($modconf_order);
+		}
 	}
+return @forbidden_keys;
 }
 
 1;
