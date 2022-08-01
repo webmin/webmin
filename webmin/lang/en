@@ -1003,6 +1003,7 @@ notif_changenow=You can <a href='$1'>change your password now</a> in the Change 
 notif_unixwarn=Your Unix password was last changed on $1, and must be changed in $2 days.
 notif_unixexpired=Your Unix password has expired! You will be forced to change it at the next login.
 notif_upgrade=Webmin version $1 is now available, but you are running version $2.
+notif_upgrade2=Release notes for this version are available at $1.
 notif_upgradeok=Upgrade Webmin Now
 notif_updatemsg=The $1 following Webmin module updates are now available ..
 notify_updatemod=Module
