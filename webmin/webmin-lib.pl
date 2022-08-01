@@ -2602,26 +2602,30 @@ return undef;
 sub show_os_release_notes
 {
 my ($ver) = @_;
+return if (!$ver);
+my $basever = int($ver);
+return if (!$basever);
 my $link;
 my $os = $gconfig{'real_os_type'};
+return if (!$os);
 my $link_tag = 'target="_blank" data-link-external="after"';
 # Ubuntu release notes
-if ($os =~ /ubuntu/i && $ver >= 18) {
-	my $code_name = $ver =~ /^18/ ? 'BionicBeaver' :
-	                $ver =~ /^20/ ? 'FocalFossa' :
-	                $ver =~ /^22/ ? 'JammyJellyfish' : undef;
+if ($os =~ /ubuntu/i && $basever >= 18) {
+	my $code_name = $basever =~ /^18/ ? 'BionicBeaver' :
+	                $basever =~ /^20/ ? 'FocalFossa' :
+	                $basever =~ /^22/ ? 'JammyJellyfish' : undef;
 	$link = &ui_link("https://wiki.ubuntu.com/".
 	                    "$code_name/ReleaseNotes/ChangeSummary/$ver",
 	                 $text{'os_release_notes'}, undef, $link_tag)
 		if($code_name);
 	}
 # AlmaLinux release notes
-if ($os =~ /alma/i && $ver >= 8) {
+if ($os =~ /alma/i && $basever >= 8) {
 	$link = &ui_link("https://wiki.almalinux.org/release-notes/$ver.html",
 	                 $text{'os_release_notes'}, undef, $link_tag);
 	}
 # Rocky linux release notes
-if ($os =~ /rocky/i && $ver >= 8) {
+if ($os =~ /rocky/i && $basever >= 8) {
 	$link = &ui_link("https://docs.rockylinux.org/release_notes/$ver",
 	                 $text{'os_release_notes'}, undef, $link_tag);
 	}
