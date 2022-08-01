@@ -1,4 +1,4 @@
-homedir_perms=0755
+homedir_perms=0750
 display_max=400
 files_remove=dot
 user_files=/usr/share/skel

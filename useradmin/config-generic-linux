@@ -1,4 +1,4 @@
-homedir_perms=0755
+homedir_perms=0750
 display_max=400
 user_files=/etc/skel
 passwd_file=/etc/passwd
