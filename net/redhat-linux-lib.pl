@@ -83,7 +83,7 @@ while($f = readdir(CONF)) {
 		$b->{'file'} = "$net_scripts_dir/$f";
 		push(@rv, $b);
 		}
-	elsif ($f !~ /\.(bak|old)$/i && $f =~ /^ifcfg-([a-zA-Z_0-9:\.]+)$/) {
+	elsif ($f !~ /\.(bak|old)$/i && $f =~ /^ifcfg-([a-zA-Z_0-9:\.\-]+)$/) {
 		# Normal interface
 		my $fname = $1;
 		&read_env_file("$net_scripts_dir/$f", \%conf);
