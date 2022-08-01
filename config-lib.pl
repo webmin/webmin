@@ -276,6 +276,15 @@ if ($section) {
 	@info_order = &config_in_section($section, \@info_order, \%info);
 	}
 
+# If config fields are conditional (not displayed)
+# make sure to preserve system default values to
+# prevent changing behaviour of a module
+if (&foreign_exists($module) &&
+    &foreign_require($module) &&
+    &foreign_func_exists($module, 'config_pre_load')) {
+	&foreign_call($module, "config_pre_load", \%info, \@info_order);
+	}
+
 # Actually parse the inputs
 foreach my $c (@info_order) {
 	next if ($canconfig && !$canconfig->{$c});
@@ -342,21 +351,6 @@ foreach my $c (@info_order) {
 		&foreign_require($_[2], "config_info.pl");
 		$config->{$c} = &foreign_call($_[2], "parse_".$p[2],
 					    $config->{$c}, @p);
-		}
-	}
-
-# If config fields are conditional (not displayed)
-# make sure to preserve system default values to
-# prevent changing behaviour of a module
-if (&foreign_exists($module) &&
-    &foreign_require($module) &&
-    &foreign_func_exists($module, 'config_pre_load')) {
-	my @config_preserve = &foreign_call($module, "config_pre_load");
-	my %oldmoduleconf;
-	&read_file("$config_directory/$module/config", \%oldmoduleconf);
-	foreach my $o (@config_preserve) {
-		$config->{$o} = $oldmoduleconf{$o}
-		    if (defined($oldmoduleconf{$o}));
 		}
 	}
 }
