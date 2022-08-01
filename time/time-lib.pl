@@ -283,7 +283,6 @@ if ($modconf_info) {
 			if ($modconf_order);
 		}
 	}
-return @forbidden_keys;
 }
 
 1;
