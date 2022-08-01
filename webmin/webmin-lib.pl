@@ -1271,17 +1271,17 @@ if (&foreign_available($module_name) && !$gconfig{'nowebminup'} && !$noupdates &
 				$checksig = 1;
 				}
 			}
-		my $url = "https://github.com/webmin/webmin/releases/tag/".
-			  $ver;
 		push(@notifs,
 		     &ui_form_start("@{[&get_webprefix()]}/webmin/upgrade.cgi",
 				    "form-data").
 		     &ui_hidden("source", 2).
 		     &ui_hidden("sig", $checksig).
 		     &ui_hidden("mode", $mode).
-		     &text('notif_upgrade', $config{'last_version_full'},
-			   $full)."<p>\n".
-		     &text('notif_upgrade2', &ui_link($url, $url))."<p>\n".
+		     &text('notif_upgrade', $config{'last_version_full'}, $full).
+		     " ".&ui_link("https://github.com/webmin/webmin/releases/tag/".
+		     	  "$config{'last_version_full'}",
+	                 $text{'os_release_notes'}, undef,
+	                 'target="_blank" data-link-external="after"').".<p>\n".
 		     &ui_form_end([ [ undef, $text{'notif_upgradeok'} ] ]));
 		}
 	}
