@@ -108,7 +108,9 @@ elsif (@servers) {
 		@befores = map { &ui_checkbox("d", $_->{'id'}) } @servers;
 		}
 	my @titles = map { &make_iconname($_) } @servers;
-	my @icons = map { "images/$_->{'type'}.gif" } @servers;
+	my @icons = map { -r "images/$_->{'type'}.svg" ? 
+	                    "images/$_->{'type'}.svg" :
+	                    "images/$_->{'type'}.gif" } @servers;
 	my @links = map { !$access{'links'} ? undef :
 		       $_->{'user'} || $_->{'autouser'} ?
 			"link.cgi/$_->{'id'}/" : &make_url($_) } @servers;
