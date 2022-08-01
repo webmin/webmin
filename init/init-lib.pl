@@ -2333,7 +2333,7 @@ my $cfile = &get_systemd_root($name)."/".$name;
 
 # Opts
 if (ref($opts)) {
-	&print_tempfile(CFILE, "ExecStop=$kill -HUP \$MAINPID\n") if ($opts->{'stop'} eq '0');
+	&print_tempfile(CFILE, "ExecStop=$kill \$MAINPID\n") if ($opts->{'stop'} eq '0');
 	&print_tempfile(CFILE, "ExecReload=$kill -HUP \$MAINPID\n") if ($opts->{'reload'} eq '0');
 	&print_tempfile(CFILE, "ExecStop=$opts->{'stop'}\n") if ($opts->{'stop'});
 	&print_tempfile(CFILE, "ExecReload=$opts->{'reload'}\n") if ($opts->{'reload'});
