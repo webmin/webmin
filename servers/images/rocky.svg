@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg fill="none" version="1.1" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <title>Rocky Linux logo</title>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>Rocky Linux logo</dc:title>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <path d="m186.66 127.7c3.46-9.91 5.34-20.6 5.34-31.7 0-53-43-96-96-96s-96 43-96 96c0 26.2 10.5 50 27.6 67.3l97.4-97.4 61.7 61.7zm-17.5 30.5-44.2-44.2-69.2 69.2c12.2 5.65 25.8 8.8 40.2 8.8 29.3 0 55.5-13.1 73.1-33.8z" clip-rule="evenodd" fill="#10b981" fill-rule="evenodd"/>
+</svg>
