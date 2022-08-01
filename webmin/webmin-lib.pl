@@ -2603,7 +2603,8 @@ sub show_os_release_notes
 {
 my ($ver) = @_;
 return if (!$ver);
-my $basever = int($ver);
+my $basever = $ver;
+($basever) = $basever =~ /(\d+)/;
 return if (!$basever);
 my $link;
 my $os = $gconfig{'real_os_type'};
