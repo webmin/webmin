@@ -327,7 +327,9 @@ if ($use_syslog) {
 		$use_syslog = 0;
 		}
 	else {
-		local $msg = ucfirst($config{'pam'})." starting";
+		local $msg = ucfirst($config{'pam'});
+		$msg .= $ENV{'STARTED'}++ ?
+		    " reloaded configuration" : " starting";
 		eval { syslog("info", "%s", $msg); };
 		if ($@) {
 			eval {
