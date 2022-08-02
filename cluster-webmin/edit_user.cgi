@@ -211,7 +211,7 @@ print "</tr></table>\n";
 # Show hosts with the user
 print &ui_hr();
 print &ui_subheading($text{'user_hosts'});
-@icons = map { "/servers/images/$_->{'type'}.gif" } @got;
+@icons = map { "/servers/images/$_->{'type'}.svg" } @got;
 @links = map { "edit_host.cgi?id=$_->{'id'}" } @got;
 @titles = map { &server_name($_) } @got;
 &icons_table(\@links, \@titles, \@icons);

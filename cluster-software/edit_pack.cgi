@@ -84,7 +84,7 @@ print &ui_buttons_end();
 # Show hosts with the package
 print &ui_hr();
 print &ui_subheading($text{'edit_hosts'});
-@icons = map { "/servers/images/$_->{'type'}.gif" } @got;
+@icons = map { "/servers/images/$_->{'type'}.svg" } @got;
 @links = map { "edit_host.cgi?id=$_->{'id'}" } @got;
 @titles = map { ($_->{'desc'} ? $_->{'desc'} :
 		 $_->{'realhost'} ? "$_->{'realhost'}:$_->{'port'}" :

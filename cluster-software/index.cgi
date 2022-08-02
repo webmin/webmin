@@ -30,7 +30,7 @@ foreach $h (@hosts) {
 				     "$s->{'host'}:$s->{'port'}")."<br>".
 		      &text('index_count', $count));
 	push(@links, "edit_host.cgi?id=$h->{'id'}");
-	push(@icons, "@{[&get_webprefix()]}/servers/images/$s->{'type'}.gif");
+	push(@icons, "@{[&get_webprefix()]}/servers/images/$s->{'type'}.svg");
 	push(@installed, $count);
 	$gothost{$h->{'id'}}++;
 	}

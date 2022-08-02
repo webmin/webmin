@@ -94,8 +94,8 @@ foreach $h (@hosts) {
 	if ($og) {
 		local ($s) = grep { $_->{'id'} == $h->{'id'} } @servers;
 		push(@icons, &get_webprefix() ?
-			(&get_webprefix()."/servers/images/".$s->{'type'}.".gif") :
-			("../servers/images/".$s->{'type'}.".gif"));
+			(&get_webprefix()."/servers/images/".$s->{'type'}.".svg") :
+			("../servers/images/".$s->{'type'}.".svg"));
 		push(@links, "edit_host.cgi?id=$h->{'id'}");
 		push(@titles, $s->{'desc'} ? $s->{'desc'} : $s->{'host'});
 		}

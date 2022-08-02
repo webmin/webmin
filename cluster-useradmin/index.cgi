@@ -27,7 +27,7 @@ foreach $h (@hosts) {
 	push(@titles, &server_name($s));
 	push(@links, $link);
 	push(@icons, &get_webprefix()."/servers/images/".
-		     $s->{'type'}.".gif");
+		     $s->{'type'}.".svg");
 	push(@installed, @{$h->{'packages'}});
 	$gothost{$h->{'id'}}++;
 	}

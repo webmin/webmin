@@ -186,7 +186,7 @@ print "</tr></table>\n";
 # Show hosts with the module or theme
 print &ui_hr();
 print &ui_subheading($text{'edit_hosts'});
-@icons = map { "/servers/images/$_->{'type'}.gif" } @got;
+@icons = map { "/servers/images/$_->{'type'}.svg" } @got;
 @links = map { "edit_host.cgi?id=$_->{'id'}" } @got;
 @titles = map { &server_name($_).
 	        ($_->{'module'}->{'version'} ? " ($text{'host_version2'} $_->{'module'}->{'version'})" : "") } @got;

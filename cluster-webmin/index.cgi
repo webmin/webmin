@@ -27,7 +27,7 @@ foreach $h (@hosts) {
 	push(@titles, &server_name($s)."<br>".
 		      &text('index_version', $h->{'version'}));
 	push(@links, "edit_host.cgi?id=$h->{'id'}");
-	push(@icons, "@{[&get_webprefix()]}/servers/images/$s->{'type'}.gif");
+	push(@icons, "@{[&get_webprefix()]}/servers/images/$s->{'type'}.svg");
 	$gothost{$h->{'id'}}++;
 	}
 if (@links) {
