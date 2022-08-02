@@ -1279,7 +1279,7 @@ if (&foreign_available($module_name) && !$gconfig{'nowebminup'} && !$noupdates &
 		     &ui_hidden("mode", $mode).
 		     &text('notif_upgrade', $config{'last_version_full'}, $full).
 		     " ".&ui_link("https://github.com/webmin/webmin/releases/tag/".
-		     	  "$config{'last_version_full'}",
+		     	  "$config{'last_version_number'}",
 	                 $text{'os_release_notes'}, undef,
 	                 'target="_blank" data-link-external="after"').".<p>\n".
 		     &ui_form_end([ [ undef, $text{'notif_upgradeok'} ] ]));
