@@ -6,8 +6,9 @@
 * Fix icons in Servers Index module for newer distros (Alma and Rocky)
 * Fix to remove depricated option `UsePrivilegeSeparation` with OpenSSH 7.5+
 * Fix Oracle Linux support
-* Add Webmin release note message
 * Fix Ubuntu release notes links
+* Add Webmin release note message
+* Add latest Authentic [theme update](https://github.com/webmin/authentic-theme/releases/tag/19.99) with number of bug fixes
 
 #### 1.998 (July 25, 2022)
 * Fix Apache, BIND, MySQL, ProFTPd and other modules configs on newest distros for new installs
