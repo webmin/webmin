@@ -2841,7 +2841,7 @@ foreach my $slave (@slaves) {
 	if ($config{'extra_slaves'}) {
 		push(@otherslaves,
 		     grep { $_ ne '' } 
-                          map { &to_ipaddress($_) || &to_ipaddress($_) }
+                          map { &to_ipaddress($_) || &to_ip6address($_) }
 			      split(/\s+/, $config{'extra_slaves'}));
 		}
 	if ($moreslaves) {
