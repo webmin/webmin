@@ -676,7 +676,7 @@ echo "pidfile=\`grep \"^pidfile=\" $config_dir/miniserv.conf | sed -e 's/pidfile
 echo "kill -USR1 \`cat \$pidfile\`" >>$config_dir/.reload-init
 if [ -x "$systemctlcmd" ]; then
 	current_version=`cat "$config_dir/version" 2>/dev/null`
-	ancient_version=`echo $current_version 1.993 | awk '{if ($1 < $2) print 1; else print 0}'`
+	ancient_version=`echo $current_version 1.994 | awk '{if ($1 < $2) print 1; else print 0}'`
 	if [ "$ancient_version" = "1" ];then
 		echo "$config_dir/.stop-init" >>$config_dir/.reload-init
 		echo "$config_dir/start" >>$config_dir/.reload-init
