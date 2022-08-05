@@ -674,12 +674,17 @@ echo "#!/bin/sh" >$config_dir/.reload-init
 echo "echo Reloading Webmin server in $wadir" >>$config_dir/.reload-init
 echo "pidfile=\`grep \"^pidfile=\" $config_dir/miniserv.conf | sed -e 's/pidfile=//g'\`" >>$config_dir/.reload-init
 echo "kill -USR1 \`cat \$pidfile\`" >>$config_dir/.reload-init
-if [ -x "$systemctlcmd" ]; then
+if [ "$killmodenonesh" = "1" ] && [ -x "$systemctlcmd" ]; then
 	current_version=`cat "$config_dir/version" 2>/dev/null`
 	ancient_version=`echo $current_version 1.994 | awk '{if ($1 < $2) print 1; else print 0}'`
-	if [ "$ancient_version" = "1" ];then
+	if [ "$ancient_version" = "1" ]; then
 		echo "$config_dir/.stop-init" >>$config_dir/.reload-init
 		echo "$config_dir/start" >>$config_dir/.reload-init
+		# Reset this file after the call in setup.sh
+		echo "echo \"#!/bin/sh\" >$config_dir/.reload-init" >>$config_dir/.reload-init
+		echo "echo \"echo Reloading Webmin server in $wadir\" >>$config_dir/.reload-init" >>$config_dir/.reload-init
+		echo "echo \"pidfile=\\\`grep \\\"^pidfile=\\\" $config_dir/miniserv.conf | sed -e 's/pidfile=//g'\\\`\" >>$config_dir/.reload-init" >>$config_dir/.reload-init
+		echo "echo \"kill -USR1 \\\`cat \\\$pidfile\\\`\" >>$config_dir/.reload-init" >>$config_dir/.reload-init
 	fi
 fi
 # Pre install
