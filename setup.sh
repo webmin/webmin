@@ -680,11 +680,6 @@ if [ "$killmodenonesh" = "1" ] && [ -x "$systemctlcmd" ]; then
 	if [ "$ancient_version" = "1" ]; then
 		echo "$config_dir/.stop-init" >>$config_dir/.reload-init
 		echo "$config_dir/start" >>$config_dir/.reload-init
-		# Reset this file after the call in setup.sh
-		echo "echo \"#!/bin/sh\" >$config_dir/.reload-init" >>$config_dir/.reload-init
-		echo "echo \"echo Reloading Webmin server in $wadir\" >>$config_dir/.reload-init" >>$config_dir/.reload-init
-		echo "echo \"pidfile=\\\`grep \\\"^pidfile=\\\" $config_dir/miniserv.conf | sed -e 's/pidfile=//g'\\\`\" >>$config_dir/.reload-init" >>$config_dir/.reload-init
-		echo "echo \"kill -USR1 \\\`cat \\\$pidfile\\\`\" >>$config_dir/.reload-init" >>$config_dir/.reload-init
 	fi
 fi
 # Pre install
