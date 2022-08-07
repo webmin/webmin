@@ -908,7 +908,7 @@ if (!$ENV{'nostart'}) {
 		my $start_cmd_extra;
 		if ($upgrading && $killmodenonepl == 1) {
 			$start_cmd_extra = "$config_directory/.reload-init-systemd";
-			if (-r "$config_directory/.reload-init-systemd") {
+			if (-r $start_cmd_extra) {
 				$start_cmd .= " ; $start_cmd_extra";
 				$start_cmd_extra = -1;
 				}
