@@ -910,13 +910,12 @@ if (!$ENV{'nostart'}) {
 			$start_cmd_extra = "$config_directory/.reload-init-systemd";
 			if (-r $start_cmd_extra) {
 				$start_cmd .= " ; $start_cmd_extra";
-				$start_cmd_extra = -1;
 				}
 			}
 		print "Attempting to $action Webmin web server ..\n";
 		$ex = system($start_cmd);
 		unlink($start_cmd_extra)
-			if ($start_cmd_extra == -1);
+			if (-r $start_cmd_extra);
 		if ($ex) {
 			&errorexit("Failed to $action web server!");
 			}
