@@ -333,6 +333,10 @@ if [ "\$inetd" != "1" ]; then
 				/etc/$baseproduct/.post-install >/dev/null 2>&1 </dev/null
 			else
 				/etc/$baseproduct/.reload-init >/dev/null 2>&1 </dev/null
+				if [ -f /etc/$baseproduct/.reload-init-systemd ]; then
+					/etc/$baseproduct/.reload-init-systemd >/dev/null 2>&1 </dev/null
+					rm -f /etc/$baseproduct/.reload-init-systemd
+				fi
 			fi
 		else
 			/etc/$baseproduct/restart >/dev/null 2>&1 </dev/null

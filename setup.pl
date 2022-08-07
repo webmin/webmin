@@ -534,7 +534,7 @@ if (!$ENV{'noperlpath"'} && $os_type ne 'windows') {
 	print ".. done\n";
         print "\n";
 	}
-
+my $systemctlcmd = &has_command('systemctl');
 print "Creating start and stop scripts ..\n";
 if ($os_type eq "windows") {
 	open(START, ">>$config_directory/start.bat");
@@ -629,6 +629,18 @@ else {
 	print RELOAD "kill -USR1 \`cat \$pidfile\`\n";
 	close(RELOAD);
 
+	# Switch to systemd from init (intermediate)
+	if ($killmodenonepl == 1 && -x $systemctlcmd) {
+		if ($ver < 1.994) {
+			open(SDRELOAD, ">$config_directory/.reload-init-systemd");
+			print SDRELOAD "#!/bin/sh\n";
+			print SDRELOAD "$config_directory/.stop-init\n";
+			print SDRELOAD "$config_directory/start\n";
+			close(SDRELOAD);
+			chmod(0755, "$config_directory/.reload-init-systemd");
+			}
+		}
+
 	# Pre install
 	open(PREINST, ">$config_directory/.pre-install");
 	print PREINST "#!/bin/sh\n";
@@ -671,7 +683,6 @@ else {
 	symlink("$config_directory/.reload-init", "$config_directory/reload");
 
 	# For systemd
-	my $systemctlcmd = &has_command('systemctl');
 	if (-x $systemctlcmd) {
 
 		# Clear existing
@@ -894,8 +905,18 @@ if (!$ENV{'nostart'}) {
 		if ($upgrading) {
 			$action = 'restart';
 		}
+		my $start_cmd_extra;
+		if ($upgrading && $killmodenonepl == 1) {
+			$start_cmd_extra = "$config_directory/.reload-init-systemd";
+			if (-r "$config_directory/.reload-init-systemd") {
+				$start_cmd .= " ; $start_cmd_extra";
+				$start_cmd_extra = -1;
+				}
+			}
 		print "Attempting to $action Webmin web server ..\n";
 		$ex = system($start_cmd);
+		unlink($start_cmd_extra)
+			if ($start_cmd_extra == -1);
 		if ($ex) {
 			&errorexit("Failed to $action web server!");
 			}
