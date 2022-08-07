@@ -647,7 +647,7 @@ echo "else" >>$config_dir/.stop-init
 echo "  echo Stopping Webmin server in $wadir" >>$config_dir/.stop-init
 echo "fi" >>$config_dir/.stop-init
 echo "pidfile=\`grep \"^pidfile=\" $config_dir/miniserv.conf | sed -e 's/pidfile=//g'\`" >>$config_dir/.stop-init
-echo "pid=\`cat \$pidfile\` 2>/dev/null" >>$config_dir/.stop-init
+echo "pid=\`cat \$pidfile 2>/dev/null\`" >>$config_dir/.stop-init
 echo "if [ \"\$pid\" != \"\" ]; then" >>$config_dir/.stop-init
 echo "  kill \$pid || exit 1" >>$config_dir/.stop-init
 echo "  touch $var_dir/stop-flag" >>$config_dir/.stop-init

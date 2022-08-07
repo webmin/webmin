@@ -591,7 +591,7 @@ else {
 	print STOP "  echo Stopping Webmin server in $wadir\n";
 	print STOP "fi\n";
 	print STOP "pidfile=\`grep \"^pidfile=\" $config_directory/miniserv.conf | sed -e 's/pidfile=//g'\`\n";
-	print STOP "pid=\`cat \$pidfile\` 2>/dev/null\n";
+	print STOP "pid=\`cat \$pidfile 2>/dev/null\`\n";
 	print STOP "if [ \"\$pid\" != \"\" ]; then\n";
 	print STOP "  kill \$pid || exit 1\n";
 	print STOP "  touch $var_dir/stop-flag\n";
