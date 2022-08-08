@@ -51,11 +51,16 @@ elsif ($in{'source'} == 2) {
 	&error_setup($text{'upgrade_err3'});
 	($ok, $version, $release) = &get_latest_webmin_version();
 	$ok || &inst_error($version);
+	$full = $version.($release ? "-$release" : "");
 	if (!$in{'force'}) {
-		if ($version == &get_webmin_version()) {
+		# Is the new version and release actually newer
+		$curr_rel = &get_webmin_version_release();
+		$curr_full = &get_webmin_version().
+			     ($curr_rel ? "-".$curr_rel : "");
+		if (&compare_version_numbers($full, $curr_full) == 0) {
 			&inst_error(&text('upgrade_elatest', $version));
 			}
-		elsif ($version <= &get_webmin_version()) {
+		elsif (&compare_version_numbers($full, $curr_full) < 0) {
 			&inst_error(&text('upgrade_eversion', $version));
 			}
 		}
