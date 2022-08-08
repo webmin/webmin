@@ -1,6 +1,7 @@
 index_title=Webmin Configuration
 index_return=Webmin configuration
 index_version=Webmin $1
+index_version2=Webmin $1 release $2
 index_boot=Start at boot time
 index_bootmsg=Change this option to control whether Webmin is started at boot time or not. If it is not currently started at boot and Yes is chosen, a new init script will be created.
 index_inetd=Because Webmin is currently being run by <tt>inetd</tt>, you probably do not want to enable this option.
