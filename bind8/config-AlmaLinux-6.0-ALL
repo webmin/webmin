@@ -54,3 +54,5 @@ dnssec_info=1
 start_cmd=systemctl start named.service
 stop_cmd=systemctl stop named.service
 restart_cmd=systemctl reload named.service
+chroot=
+auto_chroot=
