@@ -60,6 +60,13 @@ $maketemp =~ s/\\/\\\\/g;
 $maketemp =~ s/`/\\`/g;
 $maketemp =~ s/\$/\\\$/g;
 
+if ($rel && $rel > 1) {
+	$makerel = "echo $rel >%{buildroot}/usr/libexec/webmin/release";
+	}
+else {
+	$makerel = "rm -f %{buildroot}/usr/libexec/webmin/release";
+	}
+
 system("cp tarballs/webmin-$ver.tar.gz $source_dir");
 open(SPEC, ">$spec_dir/webmin-$ver.spec");
 print SPEC <<EOF;
@@ -113,6 +120,7 @@ ln -s /usr/libexec/webmin/bin/webmin %{buildroot}/usr/bin
 rm %{buildroot}/usr/libexec/webmin/blue-theme
 cp -rp %{buildroot}/usr/libexec/webmin/gray-theme %{buildroot}/usr/libexec/webmin/blue-theme
 echo rpm >%{buildroot}/usr/libexec/webmin/install-type
+$makerel
 
 %clean
 #%{rmDESTDIR}
