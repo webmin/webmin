@@ -325,7 +325,7 @@ if [ "\$inetd" != "1" ]; then
 	if [ "\$justinstalled" = "1" ]; then
 		/etc/$baseproduct/start >/dev/null 2>&1 </dev/null
 		if [ "\$?" != "0" ]; then
-			echo "E: \${productucf} server cannot be started. It is advised to start it manually\n   by running \\"/etc/$baseproduct/restart-by-force-kill\\" command"
+			echo "E: \${productucf} server cannot be started. It is advised to start it manually by\n   running \\"/etc/$baseproduct/restart-by-force-kill\\" command"
 		fi
 	else
 		if [ "$product" = "webmin" ]; then
@@ -342,7 +342,7 @@ if [ "\$inetd" != "1" ]; then
 			/etc/$baseproduct/restart >/dev/null 2>&1 </dev/null
 		fi
 		if [ "\$?" != "0" ]; then
-			echo "W: \${productucf} server cannot be restarted. It is advised to restart it manually\n   by running \\"/etc/$baseproduct/restart-by-force-kill\\" command when upgrade process is finished"
+			echo "W: \${productucf} server cannot be restarted. It is advised to restart it manually by\n   running \\"/etc/$baseproduct/restart-by-force-kill\\" command when upgrade process is finished"
 		fi
 	fi
 fi
