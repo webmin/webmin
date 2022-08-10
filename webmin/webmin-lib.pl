@@ -1254,6 +1254,9 @@ if (&foreign_available($module_name) && !$gconfig{'nowebminup'} && !$noupdates &
 			&save_module_config();
 			}
 		}
+	my $minor_release =
+		$config{'last_version_release'} &&
+		$config{'last_version_release'} >= 2;
 	my $ver = &get_webmin_version();
 	my $rel = &get_webmin_version_release();
 	my $full = $ver.($rel ? "-".$rel : "");
@@ -1271,6 +1274,11 @@ if (&foreign_available($module_name) && !$gconfig{'nowebminup'} && !$noupdates &
 				$checksig = 1;
 				}
 			}
+		my $release_notes_link = " ". &ui_link("https://github.com/webmin/webmin/releases/tag/".
+		     	  "$config{'last_version_number'}",
+	                 $text{'os_release_notes'}, undef,
+	                 'target="_blank" data-link-external="after"') . ".";
+		$release_notes_link = "" if ($minor_release);
 		push(@notifs,
 		     &ui_form_start("@{[&get_webprefix()]}/webmin/upgrade.cgi",
 				    "form-data").
@@ -1278,10 +1286,7 @@ if (&foreign_available($module_name) && !$gconfig{'nowebminup'} && !$noupdates &
 		     &ui_hidden("sig", $checksig).
 		     &ui_hidden("mode", $mode).
 		     &text('notif_upgrade', $config{'last_version_full'}, $full).
-		     " ".&ui_link("https://github.com/webmin/webmin/releases/tag/".
-		     	  "$config{'last_version_number'}",
-	                 $text{'os_release_notes'}, undef,
-	                 'target="_blank" data-link-external="after"').".<p>\n".
+		     "$release_notes_link<p>\n".
 		     &ui_form_end([ [ undef, $text{'notif_upgradeok'} ] ]));
 		}
 	}
