@@ -226,14 +226,21 @@ if ($in{'mode'} eq 'rpm') {
 		close(RPM);
 		}
 	$out = &backquote_command("rpm -qp $qfile");
-	$out =~ /(^|\n)\Q$rpmname\E-(\d+\.\d+)/ ||
+	$out =~ /(^|\n)\Q$rpmname\E-(\d+\.\d+)-(\d+)/ ||
+	        /(^|\n)\Q$rpmname\E-(\d+\.\d+)/ ||
 		&inst_error($text{'upgrade_erpm'});
 	$version = $2;
+	$release = $3;
+	$full = $version.($release ? "-$release" : "");
 	if (!$in{'force'}) {
-		if ($version == &get_webmin_version()) {
+		# Is the new version and release actually newer
+		$curr_rel = &get_webmin_version_release();
+		$curr_full = &get_webmin_version().
+			     ($curr_rel ? "-".$curr_rel : "");
+		if (&compare_version_numbers($full, $curr_full) == 0) {
 			&inst_error(&text('upgrade_elatest', $version));
 			}
-		elsif ($version <= &get_webmin_version()) {
+		elsif (&compare_version_numbers($full, $curr_full) == -1) {
 			&inst_error(&text('upgrade_eversion', $version));
 			}
 		}
@@ -269,10 +276,10 @@ elsif ($in{'mode'} eq 'deb') {
 		&inst_error($text{'upgrade_edeb'});
 	$version = $1;
 	if (!$in{'force'}) {
-		if ($version == &get_webmin_version()) {
+		if (&compare_version_numbers($version, &get_webmin_version()) == 0) {
 			&inst_error(&text('upgrade_elatest', $version));
 			}
-		elsif ($version <= &get_webmin_version()) {
+		elsif (&compare_version_numbers($version, &get_webmin_version()) == -1) {
 			&inst_error(&text('upgrade_eversion', $version));
 			}
 		}
