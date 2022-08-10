@@ -240,7 +240,7 @@ if ($in{'mode'} eq 'rpm') {
 		if (&compare_version_numbers($full, $curr_full) == 0) {
 			&inst_error(&text('upgrade_elatest', $version));
 			}
-		elsif (&compare_version_numbers($full, $curr_full) == -1) {
+		elsif (&compare_version_numbers($full, $curr_full) < 0) {
 			&inst_error(&text('upgrade_eversion', $version));
 			}
 		}
@@ -279,7 +279,7 @@ elsif ($in{'mode'} eq 'deb') {
 		if (&compare_version_numbers($version, &get_webmin_version()) == 0) {
 			&inst_error(&text('upgrade_elatest', $version));
 			}
-		elsif (&compare_version_numbers($version, &get_webmin_version()) == -1) {
+		elsif (&compare_version_numbers($version, &get_webmin_version()) < 0) {
 			&inst_error(&text('upgrade_eversion', $version));
 			}
 		}
