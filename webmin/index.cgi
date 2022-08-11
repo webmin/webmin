@@ -10,10 +10,10 @@ require './webmin-lib.pl';
 our (%in, %text, %gconfig, %config);
 my $ver = &get_webmin_version();
 my $rel = &get_webmin_version_release();
-$ver .= "-".$rel if ($rel);
+$ver .= "-".$rel if ($rel && $rel > 1);
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 	undef, undef, undef,
-	&text($rel ? 'index_version2' : 'index_version', $ver, $rel));
+	&text('index_version', $ver));
 my %access = &get_module_acl();
 &ReadParse();
 
