@@ -57,26 +57,35 @@ sub put_usermin_miniserv_config
 &write_file($usermin_miniserv_config, \%usermin_miniserv_config_cache);
 }
 
-=head2 get_usermin_version
+=head2 get_usermin_version([format_dev_version], [include_release])
 
 Returns the version number of Usermin on this system.
 
 =cut
 sub get_usermin_version
 {
-my ($ui_format_dev) = @_;
+my ($ui_format_dev, $inc_release_version) = @_;
 local %miniserv;
 &get_usermin_miniserv_config(\%miniserv);
 open(VERSION, "<$miniserv{'root'}/version");
 local $version = <VERSION>;
 close(VERSION);
 $version =~ s/\r|\n//g;
+my $release_version = "";
+# Usermin minor version
+if ($inc_release_version) {
+	my $usermin_version_release = read_file_contents("$miniserv{'root'}/release") || "";
+	$usermin_version_release =~ s/\r|\n//g;
+	$release_version = "-".$usermin_version_release
+	    if ($usermin_version_release > 1);
+	}
+
 # Format dev version nicely
 if ($ui_format_dev && length($version) == 13) {
-	return substr($version, 0, 5) . "." . substr($version, 5, 5 - 1) . "." . substr($version, 5 * 2 - 1);
+	return substr($version, 0, 5) . "." . substr($version, 5, 5 - 1) . "." . substr($version, 5 * 2 - 1) . $release_version;
 	}
 else {
-	return $version;
+	return $version . $release_version;
 	}
 }
 
