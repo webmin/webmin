@@ -87,8 +87,8 @@ system("cd $usr_dir && chmod -R og-w .");
 if ($< == 0) {
 	system("cd $usr_dir && chown -R root:bin .");
 	}
-if ($rel && $rel > 1) {
-	system("echo $rel >$usr_dir/release");
+if ($ARGV[1] && $ARGV[1] > 1) {
+	system("echo $ARGV[1] >$usr_dir/release");
 	}
 else {
 	system("rm -f $usr_dir/release");
