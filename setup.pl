@@ -122,7 +122,16 @@ if ($upgrading) {
 	open(VAR, "$config_directory/var-path");
 	chop($var_dir = <VAR>);
 	$var_directory = $var_dir;
+	$ENV{'WEBMIN_VAR'} = $var_directory;
 	close(VAR);
+
+	# Get current bootscript name
+	if (-r "$config_directory/bootscript-name") {
+		open(BOOTVAR, "$config_directory/bootscript-name");
+		chop($bootscript = <BOOTVAR>);
+		close(BOOTVAR);
+		$bootscript ||= ($ENV{'bootscript'} || "webmin");
+		}
 
 	# Force creation if non-existant
 	mkdir($var_dir, 0755);
@@ -189,7 +198,8 @@ else {
 		}
 
 	# Ask for log directory
-	print "Log file directory [/var/webmin]: ";
+	my $envvardir = $ENV{'var_dir'} || "/var/webmin";
+	print "Log file directory [$envvardir]: ";
 	if ($ENV{'var_dir'}) {
 		$var_dir = $ENV{'var_dir'};
 		}
@@ -376,6 +386,9 @@ else {
 	open(VAR, ">$config_directory/var-path");
 	print VAR $var_dir,"\n";
 	close(VAR);
+	open(BOOTS, ">$config_directory/bootscript-name");
+	print BOOTS $bootscript,"\n";
+	close(BOOTS);
 
 	print "Creating web server config files ..\n";
 	$ufile = "$config_directory/miniserv.users";

@@ -143,6 +143,14 @@ if [ "$upgrading" = 1 ]; then
 	# Get current var path
 	var_dir=`cat $config_dir/var-path`
 
+	# Get current bootscript
+	if [ -r "$config_dir/bootscript-name" ]; then
+		bootscript=`cat $config_dir/bootscript-name`
+		if [ "$bootscript" = "" ]; then
+			bootscript="webmin"
+		fi
+	fi
+
 	# Force creation if non-existant
 	mkdir -p $var_dir >/dev/null 2>&1
 
@@ -216,7 +224,11 @@ else
 	fi
 
 	# Ask for log directory
-	printf "Log file directory [/var/webmin]: "
+	envvardir="$var_dir"
+	if [ "$envvardir" = "" ]; then
+		envvardir=/var/webmin
+	fi
+	printf "Log file directory [$envvardir]: "
 	if [ "$var_dir" = "" ]; then
 		read var_dir
 	fi
@@ -484,6 +496,7 @@ else
 	# Create webserver config file
 	echo $perl > $config_dir/perl-path
 	echo $var_dir > $config_dir/var-path
+	echo $bootscript > $config_dir/bootscript-name
 	echo "Creating web server config files .."
 	cfile=$config_dir/miniserv.conf
 	echo "port=$port" >> $cfile
