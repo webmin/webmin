@@ -388,7 +388,7 @@ else {
 			'logfile' => "$var_dir/miniserv.log",
 			'errorlog' => "$var_dir/miniserv.error",
 			'pidfile' => "$var_dir/miniserv.pid",
-			'bootscript' => "$bootscript",
+			'bootscript' => $bootscript,
 			'logtime' => 168,
 			'ppath' => $ppath,
 			'ssl' => $ssl,
