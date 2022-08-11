@@ -8,6 +8,11 @@ LANG=
 export LANG
 LANGUAGE=
 export LANGUAGE
+
+if [ "$bootscript" = "" ]; then
+	bootscript="webmin"
+fi
+
 cd `dirname $0`
 if [ -x /bin/pwd ]; then
 	wadir=`/bin/pwd`
@@ -489,6 +494,7 @@ else
 	echo "logfile=$var_dir/miniserv.log" >> $cfile
 	echo "errorlog=$var_dir/miniserv.error" >> $cfile
 	echo "pidfile=$var_dir/miniserv.pid" >> $cfile
+	echo "bootscript=$bootscript" >> $cfile
 	echo "logtime=168" >> $cfile
 	echo "ssl=$ssl" >> $cfile
 	echo "no_ssl2=1" >> $cfile
@@ -653,12 +659,12 @@ echo "  kill \$pid || exit 1" >>$config_dir/.stop-init
 echo "  touch $var_dir/stop-flag" >>$config_dir/.stop-init
 echo "  if [ \"\$1\" = \"--kill\" ]; then" >>$config_dir/.stop-init
 echo "    sleep 1" >>$config_dir/.stop-init
-echo "    ((ps axf | grep \"webmin\/miniserv\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) || kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null" >>$config_dir/.stop-init
+echo "    ((ps axf | grep \"$wadir\/miniserv\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) || kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null" >>$config_dir/.stop-init
 echo "  fi" >>$config_dir/.stop-init
 echo "  exit 0" >>$config_dir/.stop-init
 echo "else" >>$config_dir/.stop-init
 echo "  if [ \"\$1\" = \"--kill\" ]; then" >>$config_dir/.stop-init
-echo "    (ps axf | grep \"webmin\/miniserv\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) 2>/dev/null" >>$config_dir/.stop-init
+echo "    (ps axf | grep \"$wadir\/miniserv\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) 2>/dev/null" >>$config_dir/.stop-init
 echo "  fi" >>$config_dir/.stop-init
 echo "fi" >>$config_dir/.stop-init
 # Restart main
@@ -719,31 +725,31 @@ if [ -x "$systemctlcmd" ]; then
 	echo "Creating start and stop scripts (systemd) .."
 	# Start systemd
 	echo "#!/bin/sh" >$config_dir/start
-	echo "$systemctlcmd start webmin" >>$config_dir/start
+	echo "$systemctlcmd start $bootscript" >>$config_dir/start
 	# Stop systemd
 	echo "#!/bin/sh" >$config_dir/stop
-	echo "$systemctlcmd stop webmin" >>$config_dir/stop
+	echo "$systemctlcmd stop $bootscript" >>$config_dir/stop
 	# Restart systemd
 	echo "#!/bin/sh" >$config_dir/restart
-	echo "$systemctlcmd restart webmin" >>$config_dir/restart
+	echo "$systemctlcmd restart $bootscript" >>$config_dir/restart
 	# Force reload systemd
 	echo "#!/bin/sh" >$config_dir/restart-by-force-kill
-	echo "$systemctlcmd stop webmin" >>$config_dir/restart-by-force-kill
+	echo "$systemctlcmd stop $bootscript" >>$config_dir/restart-by-force-kill
 	echo "$config_dir/.stop-init --kill >/dev/null 2>&1" >>$config_dir/restart-by-force-kill
-	echo "$systemctlcmd start webmin" >>$config_dir/restart-by-force-kill
+	echo "$systemctlcmd start $bootscript" >>$config_dir/restart-by-force-kill
 	# Reload systemd
 	echo "#!/bin/sh" >$config_dir/reload
-	echo "$systemctlcmd reload webmin" >>$config_dir/reload
+	echo "$systemctlcmd reload $bootscript" >>$config_dir/reload
 	# Pre-install on systemd
 	echo "#!/bin/sh" >$config_dir/.pre-install
-	# echo "$systemctlcmd kill --signal=SIGSTOP --kill-who=main webmin" >>$config_dir/.pre-install
+	# echo "$systemctlcmd kill --signal=SIGSTOP --kill-who=main $bootscript" >>$config_dir/.pre-install
 	# Post-install on systemd
 	echo "#!/bin/sh" >$config_dir/.post-install
-	# echo "$systemctlcmd kill --signal=SIGCONT --kill-who=main webmin" >>$config_dir/.post-install
-	echo "$systemctlcmd kill --signal=SIGHUP --kill-who=main webmin" >>$config_dir/.post-install
+	# echo "$systemctlcmd kill --signal=SIGCONT --kill-who=main $bootscript" >>$config_dir/.post-install
+	echo "$systemctlcmd kill --signal=SIGHUP --kill-who=main $bootscript" >>$config_dir/.post-install
 
 	# Fix existing systemd webmin.service file to update start and stop commands
-	(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/updateboot.pl" "webmin")
+	(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/updateboot.pl" "$bootscript")
 	
 	chmod 755 $config_dir/stop $config_dir/start $config_dir/restart $config_dir/restart-by-force-kill $config_dir/reload $config_dir/.pre-install $config_dir/.post-install
 else

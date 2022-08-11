@@ -9,6 +9,7 @@ use Socket;
 # Find install directory
 $ENV{'LANG'} = '';
 $0 =~ s/\\/\//g;
+$bootscript = $ENV{'bootscript'} || "webmin";
 if ($0 =~ /^(.*)\//) {
 	chdir($1);
 	}
@@ -387,6 +388,7 @@ else {
 			'logfile' => "$var_dir/miniserv.log",
 			'errorlog' => "$var_dir/miniserv.error",
 			'pidfile' => "$var_dir/miniserv.pid",
+			'bootscript' => "$bootscript",
 			'logtime' => 168,
 			'ppath' => $ppath,
 			'ssl' => $ssl,
@@ -540,7 +542,7 @@ if ($os_type eq "windows") {
 	open(START, ">>$config_directory/start.bat");
 	print START "$perl \"$wadir/miniserv.pl\" $config_directory/miniserv.conf\n";
 	close(START);
-	$start_cmd = "sc start ".($ENV{'bootscript'} || "webmin");
+	$start_cmd = "sc start $bootscript";
 
 	open(STOP, ">>$config_directory/stop.bat");
 	print STOP "echo Not implemented\n";
@@ -597,12 +599,12 @@ else {
 	print STOP "  touch $var_dir/stop-flag\n";
 	print STOP "  if [ \"\$1\" = \"--kill\" ]; then\n";
 	print STOP "    sleep 1\n";
-	print STOP "    ((ps axf | grep \"webmin\\\/miniserv\\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) || kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null\n";
+	print STOP "    ((ps axf | grep \"$wadir\\\/miniserv\\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) || kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null\n";
 	print STOP "  fi\n";
 	print STOP "  exit 0\n";
 	print STOP "else\n";
 	print STOP "  if [ \"\$1\" = \"--kill\" ]; then\n";
-	print STOP "    (ps axf | grep \"webmin\\\/miniserv\\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) 2>/dev/null\n";
+	print STOP "    (ps axf | grep \"$wadir\\\/miniserv\\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) 2>/dev/null\n";
 	print STOP "  fi\n";
 	print STOP "fi\n";
 	close(STOP);
@@ -694,42 +696,42 @@ else {
 		
 		# Start systemd
 		open(STARTD, ">$config_directory/start");
-		print STARTD "$systemctlcmd start webmin\n";
+		print STARTD "$systemctlcmd start $bootscript\n";
 		close(STARTD);
 		
 		# Stop systemd
 		open(STOPD, ">$config_directory/stop");
-		print STOPD "$systemctlcmd stop webmin\n";
+		print STOPD "$systemctlcmd stop $bootscript\n";
 		close(STOPD);
 
 		# Restart systemd
 		open(RESTARTD, ">$config_directory/restart");
-		print RESTARTD "$systemctlcmd restart webmin\n";
+		print RESTARTD "$systemctlcmd restart $bootscript\n";
 		close(RESTARTD);
 
 		# Force reload systemd
 		open(FRELOADD, ">$config_directory/restart-by-force-kill");
-		print FRELOADD "$systemctlcmd stop webmin\n";
+		print FRELOADD "$systemctlcmd stop $bootscript\n";
 		print FRELOADD "$config_directory/.stop-init --kill >/dev/null 2>&1\n";
-		print FRELOADD "$systemctlcmd start webmin\n";
+		print FRELOADD "$systemctlcmd start $bootscript\n";
 		close(FRELOADD);
 
 		# Reload systemd
 		open(RELOADD, ">$config_directory/reload");
-		print RELOADD "$systemctlcmd reload webmin\n";
+		print RELOADD "$systemctlcmd reload $bootscript\n";
 		close(RELOADD);
 
 		# Pre install
 		open(PREINSTT, ">$config_directory/.pre-install");
 		print PREINSTT "#!/bin/sh\n";
-		#print PREINSTT "$systemctlcmd kill --signal=SIGSTOP --kill-who=main webmin\n";
+		#print PREINSTT "$systemctlcmd kill --signal=SIGSTOP --kill-who=main $bootscript\n";
 		close(PREINSTT);
 
 		# Post install
 		open(POSTINSTT, ">$config_directory/.post-install");
 		print POSTINSTT "#!/bin/sh\n";
-		#print POSTINSTT "$systemctlcmd kill --signal=SIGCONT --kill-who=main webmin\n";
-		print POSTINSTT "$systemctlcmd kill --signal=SIGHUP --kill-who=main webmin\n";
+		#print POSTINSTT "$systemctlcmd kill --signal=SIGCONT --kill-who=main $bootscript\n";
+		print POSTINSTT "$systemctlcmd kill --signal=SIGHUP --kill-who=main $bootscript\n";
 		close(POSTINSTT);
 
 		chmod(0755, "$config_directory/start");
@@ -743,7 +745,7 @@ else {
 		# Fix existing systemd webmin.service file to update start and stop commands
 		my $perl = &get_perl_path();
 		chdir("$wadir/init");
-		system("$perl ".&quote_path("$wadir/init/updateboot.pl")." webmin");
+		system("$perl ".&quote_path("$wadir/init/updateboot.pl")." $bootscript");
 	}
 }
 print ".. done\n";
@@ -805,7 +807,7 @@ $gconfig{'product'} ||= "webmin";
 if ($makeboot) {
 	print "Configuring Webmin to start at boot time ..\n";
 	chdir("$wadir/init");
-	system("$perl ".&quote_path("$wadir/init/atboot.pl")." ".$ENV{'bootscript'});
+	system("$perl ".&quote_path("$wadir/init/atboot.pl")." $bootscript");
 	print ".. done\n";
 	print "\n";
 	}

@@ -12,7 +12,7 @@ my $kill = &has_command("kill");
 
 if ($init_mode eq "osx") {
 	# Darwin System
-	&enable_at_boot("webmin", "Webmin administration server",
+	&enable_at_boot("$product", "Webmin administration server",
 			"$config_directory/.start-init >/dev/null 2>&1 </dev/null",
 			"$config_directory/.stop-init");
 	}
