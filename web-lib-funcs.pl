@@ -160,28 +160,31 @@ my $realfile = &translate_filename($file);
 &read_file($sorted_by || $file, \%old, \@order);
 &open_tempfile(ARFILE, ">$file");
 if ($sort || $gconfig{'sortconfigs'}) {
-    foreach $k (sort keys %{$data_hash}) {
-        (print ARFILE $k,$join,$data_hash->{$k},"\n") ||
-            &error(&text("efilewrite", $realfile, $!));
-        
-        }
-    }
+	# Always sort by keys
+	foreach $k (sort keys %{$data_hash}) {
+		(print ARFILE $k,$join,$data_hash->{$k},"\n") ||
+			&error(&text("efilewrite", $realfile, $!));
+		}
+	}
 else {
-    my %done;
-    foreach $k (@order) {
-        if (exists($data_hash->{$k}) && !$done{$k}++) {
-            (print ARFILE $k,$join,$data_hash->{$k},"\n") ||
-                &error(&text("efilewrite", $realfile, $!));
-            }
-        }
-    foreach $k (keys %{$data_hash}) {
-        if (!exists($old{$k}) && !$done{$k}++) {
-            (print ARFILE $k,$join,$data_hash->{$k},"\n") ||
-                &error(&text("efilewrite", $realfile, $!));
-            }
-        }
-    }
+	# Where possible, write out in the original order
+	my %done;
+	foreach $k (@order) {
+		if (exists($data_hash->{$k}) && !$done{$k}++) {
+			(print ARFILE $k,$join,$data_hash->{$k},"\n") ||
+				&error(&text("efilewrite", $realfile, $!));
+			}
+		}
+	foreach $k (keys %{$data_hash}) {
+		if (!exists($old{$k}) && !$done{$k}++) {
+			(print ARFILE $k,$join,$data_hash->{$k},"\n") ||
+				&error(&text("efilewrite", $realfile, $!));
+			}
+		}
+	}
 &close_tempfile(ARFILE, %{$data_hash} ? 1 : 0);
+
+# Update in-memory caches
 if (defined($main::read_file_cache{$realfile})) {
     %{$main::read_file_cache{$realfile}} = %{$data_hash};
     }
@@ -190,53 +193,53 @@ if (defined($main::read_file_missing{$realfile})) {
     }
 
 if ($sorted_by && $sorted_by_sectioning_preserved) {
-    my $target = read_file_contents($file);
-    my $model = read_file_contents($sorted_by);
+	my $target = read_file_contents($file);
+	my $model = read_file_contents($sorted_by);
 
-    # Extract version related comments for a block, e.g. #1.962
-    my %comments = reverse ($model =~ m/(#\s*[\d\.]+)[\n\s]+(.*?)=/gm);
+	# Extract version related comments for a block, e.g. #1.962
+	my %comments = reverse ($model =~ m/(#\s*[\d\.]+)[\n\s]+(.*?)=/gm);
 
-    # Build blocks of line's key separated with a new line break
-    my @lines = (($model =~ m/(.*?)$join|(^\s*$)/gm), undef, undef);
-    my @blocks;
-    my @block;
-    for (my $line = 0; $line < scalar(@lines) - 1; $line += 2) {
-        if ($lines[$line] =~ /\S+/) {
-            push(@block, $lines[$line]);
-            }
-        else {
-            push(@blocks, [@block]);
-            @block = ();
-            }
-        }
-    for (my $block = 0; $block <= scalar(@blocks) - 1; $block++) {
-        foreach my $line (@{$blocks[$block]}) {
-            # Add a comment to the first block element
-            if ($target =~ /(\Q$line\E)=(.*)/) {
-                foreach my $comment (keys %comments) {
-                    if (grep(/^\Q$comment\E$/, @{$blocks[$block]})) {
-                        $target =~ s/(\Q$line\E)=(.*)/$comments{$comment}\n$1=$2/;
-                        last;
-                        }
-                    }
-                last;
-                }
-            }
-        foreach my $line (reverse @{$blocks[$block]}) {
-            if (
-                # Go to another block immediately
-                # if new line already exists
-                $target =~ /(\Q$line\E)$join.*?(\r?\n|\r\n?)+$/m ||
+	# Build blocks of line's key separated with a new line break
+	my @lines = (($model =~ m/(.*?)$join|(^\s*$)/gm), undef, undef);
+	my @blocks;
+	my @block;
+	for (my $line = 0; $line < scalar(@lines) - 1; $line += 2) {
+		if ($lines[$line] =~ /\S+/) {
+			push(@block, $lines[$line]);
+			}
+		else {
+			push(@blocks, [@block]);
+			@block = ();
+			}
+		}
+	for (my $block = 0; $block <= scalar(@blocks) - 1; $block++) {
+		foreach my $line (@{$blocks[$block]}) {
+			# Add a comment to the first block element
+			if ($target =~ /(\Q$line\E)=(.*)/) {
+				foreach my $comment (keys %comments) {
+					if (grep(/^\Q$comment\E$/, @{$blocks[$block]})) {
+						$target =~ s/(\Q$line\E)=(.*)/$comments{$comment}\n$1=$2/;
+						last;
+					}
+				}
+			last;
+			}
+		}
+		foreach my $line (reverse @{$blocks[$block]}) {
+			if (
+			    # Go to another block immediately
+			    # if new line already exists
+			    $target =~ /(\Q$line\E)$join.*?(\r?\n|\r\n?)+$/m ||
 
-                # Add new line to the last element of
-                # the block and go to another block
-                $target =~ s/(\Q$line\E)$join(.*)/$1=$2\n/) {
-                last;
-                }
-            }
-        }
-    write_file_contents($file, $target);
-    }
+			    # Add new line to the last element of
+			    # the block and go to another block
+			    $target =~ s/(\Q$line\E)$join(.*)/$1=$2\n/) {
+				last;
+				}
+			}
+		}
+		&write_file_contents($file, $target);
+	}
 }
 
 =head2 html_escape(string)
