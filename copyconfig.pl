@@ -113,30 +113,51 @@ foreach $m (@mods) {
 	}
 print join(" ", @newmods),"\n";
 
-# read_file(file, array)
-# Fill an associative array with name=value pairs from a file
+# read_file(file, &hash, [&order], [lowercase], [split-char])
+# Fill the given hash reference with name=value pairs from a file.
 sub read_file
 {
-local($arr);
-$arr = $_[1];
-open(ARFILE, "<".$_[0]) || return 0;
+my ($file, $hash, $order, $lowercase, $split) = @_;
+$split = "=" if (!defined($split));
+open(ARFILE, $file) || return 0;
+local $_;
 while(<ARFILE>) {
 	s/\r|\n//g;
-        if (!/^#/ && /^([^=]+)=(.*)$/) { $$arr{$1} = $2; }
+	my $cmt = index($_, "#");
+	my $eq = index($_, $split);
+	if ($cmt != 0 && $eq >= 0) {
+		my $n = substr($_, 0, $eq);
+		my $v = substr($_, $eq+1);
+		chomp($v);
+		$hash->{$lowercase ? lc($n) : $n} = $v;
+		push(@$order, $n) if ($order);
+        	}
         }
 close(ARFILE);
 return 1;
 }
- 
-# write_file(file, array)
-# Write out the contents of an associative array as name=value lines
+
+# write_file(file, &data-hash, [join-char])
+# Write out the contents of a hash as name=value lines.
 sub write_file
 {
-local($arr);
-$arr = $_[1];
-open(ARFILE, ">".$_[0]);
-foreach $k (keys %$arr) {
-        print ARFILE "$k=$$arr{$k}\n";
-        }
+my ($file, $data_hash, $join_char) = @_;
+my (%old, @order);
+my $join = defined($join_char) ? $join_char : "=";
+&read_file($file, \%old, \@order);
+open(ARFILE, ">$file");
+my %done;
+foreach $k (@order) {
+	if (exists($data_hash->{$k}) && !$done{$k}++) {
+		(print ARFILE $k,$join,$data_hash->{$k},"\n") ||
+			die "write to $file failed : $!";
+		}
+	}
+foreach $k (keys %{$data_hash}) {
+	if (!exists($old{$k}) && !$done{$k}++) {
+		(print ARFILE $k,$join,$data_hash->{$k},"\n") ||
+			die "write to $file failed : $!";
+		}
+	}
 close(ARFILE);
 }
