@@ -49,26 +49,27 @@ parameters are :
 =cut
 sub read_file
 {
+my ($file, $hash, $order, $lowercase, $split) = @_;
+$split = "=" if (!defined($split));
+my $realfile = &translate_filename($file);
+&open_readfile(ARFILE, $file) || return 0;
 local $_;
-my $split = defined($_[4]) ? $_[4] : "=";
-my $realfile = &translate_filename($_[0]);
-&open_readfile(ARFILE, $_[0]) || return 0;
 while(<ARFILE>) {
 	s/\r|\n//g;
-	my $hash = index($_, "#");
+	my $cmt = index($_, "#");
 	my $eq = index($_, $split);
-	if ($hash != 0 && $eq >= 0) {
+	if ($cmt != 0 && $eq >= 0) {
 		my $n = substr($_, 0, $eq);
 		my $v = substr($_, $eq+1);
 		chomp($v);
-		$_[1]->{$_[3] ? lc($n) : $n} = $v;
-		push(@{$_[2]}, $n) if ($_[2]);
+		$hash->{$lowercase ? lc($n) : $n} = $v;
+		push(@$order, $n) if ($order);
         	}
         }
 close(ARFILE);
 $main::read_file_missing{$realfile} = 0;	# It exists now
 if (defined($main::read_file_cache{$realfile})) {
-	%{$main::read_file_cache{$realfile}} = %{$_[1]};
+	%{$main::read_file_cache{$realfile}} = %$hash;
 	}
 return 1;
 }
