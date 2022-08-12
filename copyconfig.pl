@@ -145,7 +145,7 @@ my ($file, $data_hash, $join_char) = @_;
 my (%old, @order);
 my $join = defined($join_char) ? $join_char : "=";
 &read_file($file, \%old, \@order);
-open(ARFILE, ">$file");
+open(ARFILE, ">$file") || die "open of $file failed : $!";
 my %done;
 foreach $k (@order) {
 	if (exists($data_hash->{$k}) && !$done{$k}++) {
