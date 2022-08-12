@@ -84,9 +84,13 @@ print "Webmin uses separate directories for configuration files and log files.\n
 print "Unless you want to run multiple versions of Webmin at the same time\n";
 print "you can just accept the defaults.\n";
 print "\n";
-print "Config file directory [/etc/webmin]: ";
+my $envetcdir = $ENV{'config_directory'} || "/etc/webmin";
+print "Config file directory [$envetcdir]: ";
 if ($ENV{'config_directory'}) {
 	$config_directory = $ENV{'config_directory'};
+	print "$envetcdir\n";
+	print ".. predefined\n";
+	$envetcdirexists = 1;
 	}
 else {
 	chop($config_directory = <STDIN>);
@@ -101,7 +105,7 @@ if (!-d $config_directory) {
 		&errorexit("Failed to create directory $config_directory");
 	}
 if (-r "$config_directory/config") {
-	print ".. found\n";
+	print ".. found\n" if (!$envetcdirexists);
 	$upgrading = 1;
 	}
 

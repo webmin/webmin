@@ -110,7 +110,12 @@ echo "Webmin uses separate directories for configuration files and log files."
 echo "Unless you want to run multiple versions of Webmin at the same time"
 echo "you can just accept the defaults."
 echo ""
-printf "Config file directory [/etc/webmin]: "
+envetcdir="$config_dir"
+if [ "$envetcdir" = "" ]; then
+	envetcdir=/etc/webmin
+	envetcdirnotfound=1
+fi
+printf "Config file directory [$envetcdir]: "
 if [ "$config_dir" = "" ]; then
 	read config_dir
 fi
@@ -132,8 +137,17 @@ if [ ! -d $config_dir ]; then
 	fi
 fi
 if [ -r "$config_dir/config" -a -r "$config_dir/var-path" -a -r "$config_dir/perl-path" ]; then
-	echo ".. found"
+	if [ "$envetcdirnotfound" = "" ]; then
+		echo "$envetcdir"
+		echo ".. predefined"
+	else
+		echo ".. found"
+	fi
 	upgrading=1
+else
+	if [ "$envetcdirnotfound" = "" ]; then
+		echo "$envetcdir"
+	fi
 fi
 
 # Check if upgrading from an old version
@@ -227,6 +241,7 @@ else
 	envvardir="$var_dir"
 	if [ "$envvardir" = "" ]; then
 		envvardir=/var/webmin
+		envvardirnotfound=1
 	fi
 	printf "Log file directory [$envvardir]: "
 	if [ "$var_dir" = "" ]; then
@@ -253,6 +268,9 @@ else
 			echo ""
 			exit 3
 		fi
+	fi
+	if [ "$upgrading" != 1 -a "$envetcdirnotfound" = "" ]; then
+		echo "$envvardir"
 	fi
 	echo ""
 
