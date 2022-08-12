@@ -129,11 +129,14 @@ if [ "$abspath" = "" ]; then
 	exit 2
 fi
 if [ ! -d $config_dir ]; then
-	mkdir $config_dir;
+	mkdir -p $config_dir;
 	if [ $? != 0 ]; then
-		echo "ERROR: Failed to create directory $config_dir"
-		echo ""
-		exit 2
+		mkdir $config_dir;
+		if [ $? != 0 ]; then
+			echo "ERROR: Failed to create directory $config_dir"
+			echo ""
+			exit 2
+		fi
 	fi
 fi
 if [ -r "$config_dir/config" -a -r "$config_dir/var-path" -a -r "$config_dir/perl-path" ]; then
@@ -262,11 +265,14 @@ else
 		exit 3
 	fi
 	if [ ! -d $var_dir ]; then
-		mkdir $var_dir
+		mkdir -p $var_dir
 		if [ $? != 0 ]; then
-			echo "ERROR: Failed to create directory $var_dir"
-			echo ""
-			exit 3
+			mkdir $var_dir
+			if [ $? != 0 ]; then
+				echo "ERROR: Failed to create directory $var_dir"
+				echo ""
+				exit 3
+			fi
 		fi
 	fi
 	if [ "$upgrading" != 1 -a "$envetcdirnotfound" = "" ]; then
