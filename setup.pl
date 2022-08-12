@@ -101,7 +101,7 @@ if ($config_directory !~ /^([a-z]:)?\//i) {
 	&errorexit("Config directory must be an absolute path");
 	}
 if (!-d $config_directory) {
-	mkdir($config_directory, 0755) ||
+	make_dir_recursive_local($config_directory, 0755) ||
 		&errorexit("Failed to create directory $config_directory");
 	}
 if (-r "$config_directory/config") {
@@ -220,7 +220,7 @@ else {
 		&errorexit("Log directory cannot be /");
 		}
 	if (!-d $var_dir) {
-		mkdir($var_dir, 0755) ||
+		make_dir_recursive_local($var_dir, 0755) ||
 			&errorexit("Failed to create directory $var_dir");
 		}
 	$ENV{'WEBMIN_VAR'} = $var_dir;
@@ -1010,3 +1010,19 @@ closedir(DIR);
 return @rv;
 }
 
+sub make_dir_recursive_local
+{
+my ($dir, $mod) = @_;
+my @folders = split /\//, $dir;
+map {
+    if ($_) {
+        if (mkdir $_) {
+            chmod($mod, $_) if ($mod && -d $_);
+            }
+        chdir $_;}
+    else {
+        chdir '/';
+        }
+} @folders;
+return -d $dir;
+}
