@@ -6987,6 +6987,35 @@ if (!$exists) {
 return 1;
 }
 
+=head2 make_dir_recursive(dir, [mod])
+
+Unless in read-only mode, creates a directory (recursively).
+Sets directory permissions for newly created directory,
+if called. This is pure Perl implementation.
+
+=cut
+sub make_dir_recursive
+{
+my ($dir, $mod) = @_;
+if (&is_readonly_mode()) {
+	print STDERR "Vetoing directory $dir\n";
+	return 1;
+	}
+$dir = &translate_filename($dir);
+my @folders = split /\//, $dir;
+map {
+    if ($_) {
+        if (mkdir $_) {
+            chmod($mod, $_) if ($mod && -d $_);
+            }
+        chdir $_;}
+    else {
+        chdir '/';
+        }
+} @folders;
+return -d $dir;
+}
+
 =head2 set_ownership_permissions(user, group, perms, file, ...)
 
 Sets the user, group owner and permissions on some files. The parameters are :
