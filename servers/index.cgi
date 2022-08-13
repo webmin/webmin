@@ -104,7 +104,16 @@ elsif (@servers) {
 	my (@afters, @befores);
 	if ($access{'edit'}) {
 		my $sep = length($text{'index_edit'}) > 10 ? "<br>" : " ";
-		@afters = map { $sep.&ui_link("edit_serv.cgi?id=".$_->{'id'}, "(".$text{'index_edit'}.")" ) } @servers;
+		my $logout = sub {
+			my ($l) = @_;
+			my $logout_link = "";
+			if (&logged_in($l)) {
+			 	$logout_link =
+			 		&ui_link("logout.cgi?id=$l->{'id'}", "(".$text{'index_logout'}.") ");
+			 	}
+			 return $logout_link;
+		};
+		@afters = map { $sep.&$logout($_).&ui_link("edit_serv.cgi?id=".$_->{'id'}, "(".$text{'index_edit'}.")" ) } @servers;
 		@befores = map { &ui_checkbox("d", $_->{'id'}) } @servers;
 		}
 	my @titles = map { &make_iconname($_) } @servers;
@@ -185,9 +194,6 @@ elsif ($_[0]->{'realhost'}) {
 	}
 else {
 	$rv = "$_[0]->{'host'}:$_[0]->{'port'}";
-	}
-if (&logged_in($_[0])) {
-	$rv .= "</a> <a href='logout.cgi?id=$_->{'id'}'>(".$text{'index_logout'}.")";
 	}
 return $rv;
 }
