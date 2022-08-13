@@ -1448,8 +1448,13 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 			# Tell user the correct URL
 			&http_error(200, "Document follows",
 				"This web server is running in SSL mode. ".
-				"Try the URL <a href='$url'>$url</a> ".
-				"instead.", 0, 1);
+				"Try the URL <a href='$url'>$url</a> instead.".
+				"<script>".
+				"if (location.protocol != 'https:') {".
+				"  location.protocol = 'https:';".
+				"}".
+				"</script>",
+				0, 1);
 		} else {
 			# Throw an error
 			&http_error(404, "Page not found",
