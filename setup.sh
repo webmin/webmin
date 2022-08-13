@@ -159,9 +159,9 @@ if [ "$upgrading" = 1 ]; then
 
 	# Get current bootscript
 	if [ -r "$config_dir/bootscript-name" ]; then
-		bootscript=`cat $config_dir/bootscript-name`
-		if [ "$bootscript" = "" ]; then
-			bootscript="webmin"
+		newbootscript=`cat $config_dir/bootscript-name`
+		if [ "$newbootscript" != "" ]; then
+			bootscript="$newbootscript"
 		fi
 	fi
 

@@ -132,9 +132,9 @@ if ($upgrading) {
 	# Get current bootscript name
 	if (-r "$config_directory/bootscript-name") {
 		open(BOOTVAR, "$config_directory/bootscript-name");
-		chop($bootscript = <BOOTVAR>);
+		chop($newbootscript = <BOOTVAR>);
 		close(BOOTVAR);
-		$bootscript ||= ($ENV{'bootscript'} || "webmin");
+		$bootscript = $newbootscript if ($newbootscript);
 		}
 
 	# Force creation if non-existant
