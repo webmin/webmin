@@ -525,7 +525,6 @@ else
 	echo "logfile=$var_dir/miniserv.log" >> $cfile
 	echo "errorlog=$var_dir/miniserv.error" >> $cfile
 	echo "pidfile=$var_dir/miniserv.pid" >> $cfile
-	echo "bootscript=$bootscript" >> $cfile
 	echo "logtime=168" >> $cfile
 	echo "ssl=$ssl" >> $cfile
 	echo "no_ssl2=1" >> $cfile
