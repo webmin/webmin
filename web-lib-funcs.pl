@@ -4192,6 +4192,18 @@ if (!defined($get_webmin_version_release)) {
 return $get_webmin_version_release;
 }
 
+=head2 get_webmin_full_version
+
+Returns the full version of Webmin currently being run, such as 1.450-3
+
+=cut
+sub get_webmin_full_version
+{
+my $ver = &get_webmin_version();
+my $rel = &get_webmin_version_release();
+return $ver.($rel ? "-".$rel : "");
+}
+
 =head2 get_module_acl([user], [module], [no-rbac], [no-default])
 
 Returns a hash containing access control options for the given user and module.
