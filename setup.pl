@@ -9,6 +9,7 @@ use Socket;
 # Find install directory
 $ENV{'LANG'} = '';
 $0 =~ s/\\/\//g;
+$bootscript = $ENV{'bootscript'} || "webmin";
 if ($0 =~ /^(.*)\//) {
 	chdir($1);
 	}
@@ -83,9 +84,13 @@ print "Webmin uses separate directories for configuration files and log files.\n
 print "Unless you want to run multiple versions of Webmin at the same time\n";
 print "you can just accept the defaults.\n";
 print "\n";
-print "Config file directory [/etc/webmin]: ";
+my $envetcdir = $ENV{'config_directory'} || "/etc/webmin";
+print "Config file directory [$envetcdir]: ";
 if ($ENV{'config_directory'}) {
 	$config_directory = $ENV{'config_directory'};
+	print "$envetcdir\n";
+	print ".. predefined\n";
+	$envetcdirexists = 1;
 	}
 else {
 	chop($config_directory = <STDIN>);
@@ -96,11 +101,11 @@ if ($config_directory !~ /^([a-z]:)?\//i) {
 	&errorexit("Config directory must be an absolute path");
 	}
 if (!-d $config_directory) {
-	mkdir($config_directory, 0755) ||
+	make_dir_recursive_local($config_directory, 0755) ||
 		&errorexit("Failed to create directory $config_directory");
 	}
 if (-r "$config_directory/config") {
-	print ".. found\n";
+	print ".. found\n" if (!$envetcdirexists);
 	$upgrading = 1;
 	}
 
@@ -121,7 +126,16 @@ if ($upgrading) {
 	open(VAR, "$config_directory/var-path");
 	chop($var_dir = <VAR>);
 	$var_directory = $var_dir;
+	$ENV{'WEBMIN_VAR'} = $var_directory;
 	close(VAR);
+
+	# Get current bootscript name
+	if (-r "$config_directory/bootscript-name") {
+		open(BOOTVAR, "$config_directory/bootscript-name");
+		chop($bootscript = <BOOTVAR>);
+		close(BOOTVAR);
+		$bootscript ||= ($ENV{'bootscript'} || "webmin");
+		}
 
 	# Force creation if non-existant
 	mkdir($var_dir, 0755);
@@ -188,7 +202,8 @@ else {
 		}
 
 	# Ask for log directory
-	print "Log file directory [/var/webmin]: ";
+	my $envvardir = $ENV{'var_dir'} || "/var/webmin";
+	print "Log file directory [$envvardir]: ";
 	if ($ENV{'var_dir'}) {
 		$var_dir = $ENV{'var_dir'};
 		}
@@ -205,7 +220,7 @@ else {
 		&errorexit("Log directory cannot be /");
 		}
 	if (!-d $var_dir) {
-		mkdir($var_dir, 0755) ||
+		make_dir_recursive_local($var_dir, 0755) ||
 			&errorexit("Failed to create directory $var_dir");
 		}
 	$ENV{'WEBMIN_VAR'} = $var_dir;
@@ -375,6 +390,9 @@ else {
 	open(VAR, ">$config_directory/var-path");
 	print VAR $var_dir,"\n";
 	close(VAR);
+	open(BOOTS, ">$config_directory/bootscript-name");
+	print BOOTS $bootscript,"\n";
+	close(BOOTS);
 
 	print "Creating web server config files ..\n";
 	$ufile = "$config_directory/miniserv.users";
@@ -540,7 +558,7 @@ if ($os_type eq "windows") {
 	open(START, ">>$config_directory/start.bat");
 	print START "$perl \"$wadir/miniserv.pl\" $config_directory/miniserv.conf\n";
 	close(START);
-	$start_cmd = "sc start ".($ENV{'bootscript'} || "webmin");
+	$start_cmd = "sc start $bootscript";
 
 	open(STOP, ">>$config_directory/stop.bat");
 	print STOP "echo Not implemented\n";
@@ -597,12 +615,12 @@ else {
 	print STOP "  touch $var_dir/stop-flag\n";
 	print STOP "  if [ \"\$1\" = \"--kill\" ]; then\n";
 	print STOP "    sleep 1\n";
-	print STOP "    ((ps axf | grep \"webmin\\\/miniserv\\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) || kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null\n";
+	print STOP "    ((ps axf | grep \"$wadir\\\/miniserv\\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) || kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null\n";
 	print STOP "  fi\n";
 	print STOP "  exit 0\n";
 	print STOP "else\n";
 	print STOP "  if [ \"\$1\" = \"--kill\" ]; then\n";
-	print STOP "    (ps axf | grep \"webmin\\\/miniserv\\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) 2>/dev/null\n";
+	print STOP "    (ps axf | grep \"$wadir\\\/miniserv\\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) 2>/dev/null\n";
 	print STOP "  fi\n";
 	print STOP "fi\n";
 	close(STOP);
@@ -694,42 +712,42 @@ else {
 		
 		# Start systemd
 		open(STARTD, ">$config_directory/start");
-		print STARTD "$systemctlcmd start webmin\n";
+		print STARTD "$systemctlcmd start $bootscript\n";
 		close(STARTD);
 		
 		# Stop systemd
 		open(STOPD, ">$config_directory/stop");
-		print STOPD "$systemctlcmd stop webmin\n";
+		print STOPD "$systemctlcmd stop $bootscript\n";
 		close(STOPD);
 
 		# Restart systemd
 		open(RESTARTD, ">$config_directory/restart");
-		print RESTARTD "$systemctlcmd restart webmin\n";
+		print RESTARTD "$systemctlcmd restart $bootscript\n";
 		close(RESTARTD);
 
 		# Force reload systemd
 		open(FRELOADD, ">$config_directory/restart-by-force-kill");
-		print FRELOADD "$systemctlcmd stop webmin\n";
+		print FRELOADD "$systemctlcmd stop $bootscript\n";
 		print FRELOADD "$config_directory/.stop-init --kill >/dev/null 2>&1\n";
-		print FRELOADD "$systemctlcmd start webmin\n";
+		print FRELOADD "$systemctlcmd start $bootscript\n";
 		close(FRELOADD);
 
 		# Reload systemd
 		open(RELOADD, ">$config_directory/reload");
-		print RELOADD "$systemctlcmd reload webmin\n";
+		print RELOADD "$systemctlcmd reload $bootscript\n";
 		close(RELOADD);
 
 		# Pre install
 		open(PREINSTT, ">$config_directory/.pre-install");
 		print PREINSTT "#!/bin/sh\n";
-		#print PREINSTT "$systemctlcmd kill --signal=SIGSTOP --kill-who=main webmin\n";
+		#print PREINSTT "$systemctlcmd kill --signal=SIGSTOP --kill-who=main $bootscript\n";
 		close(PREINSTT);
 
 		# Post install
 		open(POSTINSTT, ">$config_directory/.post-install");
 		print POSTINSTT "#!/bin/sh\n";
-		#print POSTINSTT "$systemctlcmd kill --signal=SIGCONT --kill-who=main webmin\n";
-		print POSTINSTT "$systemctlcmd kill --signal=SIGHUP --kill-who=main webmin\n";
+		#print POSTINSTT "$systemctlcmd kill --signal=SIGCONT --kill-who=main $bootscript\n";
+		print POSTINSTT "$systemctlcmd kill --signal=SIGHUP --kill-who=main $bootscript\n";
 		close(POSTINSTT);
 
 		chmod(0755, "$config_directory/start");
@@ -743,7 +761,7 @@ else {
 		# Fix existing systemd webmin.service file to update start and stop commands
 		my $perl = &get_perl_path();
 		chdir("$wadir/init");
-		system("$perl ".&quote_path("$wadir/init/updateboot.pl")." webmin");
+		system("$perl ".&quote_path("$wadir/init/updateboot.pl")." $bootscript");
 	}
 }
 print ".. done\n";
@@ -805,7 +823,7 @@ $gconfig{'product'} ||= "webmin";
 if ($makeboot) {
 	print "Configuring Webmin to start at boot time ..\n";
 	chdir("$wadir/init");
-	system("$perl ".&quote_path("$wadir/init/atboot.pl")." ".$ENV{'bootscript'});
+	system("$perl ".&quote_path("$wadir/init/atboot.pl")." $bootscript");
 	print ".. done\n";
 	print "\n";
 	}
@@ -991,3 +1009,18 @@ closedir(DIR);
 return @rv;
 }
 
+sub make_dir_recursive_local
+{
+my ($dir, $mod) = @_;
+my @folders = split(/\//, $dir);
+my $folder_created;
+foreach my $folder (@folders) {
+    next if (!$folder);
+    $folder_created .= "/$folder";
+    if (mkdir($folder_created)) {
+        chmod($mod, $folder_created)
+            if ($mod && -d $folder_created);
+        }
+    }
+return -d $dir;
+}

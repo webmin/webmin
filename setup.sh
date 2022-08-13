@@ -8,6 +8,11 @@ LANG=
 export LANG
 LANGUAGE=
 export LANGUAGE
+
+if [ "$bootscript" = "" ]; then
+	bootscript="webmin"
+fi
+
 cd `dirname $0`
 if [ -x /bin/pwd ]; then
 	wadir=`/bin/pwd`
@@ -105,7 +110,12 @@ echo "Webmin uses separate directories for configuration files and log files."
 echo "Unless you want to run multiple versions of Webmin at the same time"
 echo "you can just accept the defaults."
 echo ""
-printf "Config file directory [/etc/webmin]: "
+envetcdir="$config_dir"
+if [ "$envetcdir" = "" ]; then
+	envetcdir=/etc/webmin
+	envetcdirnotfound=1
+fi
+printf "Config file directory [$envetcdir]: "
 if [ "$config_dir" = "" ]; then
 	read config_dir
 fi
@@ -119,7 +129,7 @@ if [ "$abspath" = "" ]; then
 	exit 2
 fi
 if [ ! -d $config_dir ]; then
-	mkdir $config_dir;
+	mkdir -p $config_dir;
 	if [ $? != 0 ]; then
 		echo "ERROR: Failed to create directory $config_dir"
 		echo ""
@@ -127,8 +137,17 @@ if [ ! -d $config_dir ]; then
 	fi
 fi
 if [ -r "$config_dir/config" -a -r "$config_dir/var-path" -a -r "$config_dir/perl-path" ]; then
-	echo ".. found"
+	if [ "$envetcdirnotfound" = "" ]; then
+		echo "$envetcdir"
+		echo ".. predefined"
+	else
+		echo ".. found"
+	fi
 	upgrading=1
+else
+	if [ "$envetcdirnotfound" = "" ]; then
+		echo "$envetcdir"
+	fi
 fi
 
 # Check if upgrading from an old version
@@ -137,6 +156,14 @@ if [ "$upgrading" = 1 ]; then
 
 	# Get current var path
 	var_dir=`cat $config_dir/var-path`
+
+	# Get current bootscript
+	if [ -r "$config_dir/bootscript-name" ]; then
+		bootscript=`cat $config_dir/bootscript-name`
+		if [ "$bootscript" = "" ]; then
+			bootscript="webmin"
+		fi
+	fi
 
 	# Force creation if non-existant
 	mkdir -p $var_dir >/dev/null 2>&1
@@ -211,7 +238,12 @@ else
 	fi
 
 	# Ask for log directory
-	printf "Log file directory [/var/webmin]: "
+	envvardir="$var_dir"
+	if [ "$envvardir" = "" ]; then
+		envvardir=/var/webmin
+		envvardirnotfound=1
+	fi
+	printf "Log file directory [$envvardir]: "
 	if [ "$var_dir" = "" ]; then
 		read var_dir
 	fi
@@ -230,12 +262,15 @@ else
 		exit 3
 	fi
 	if [ ! -d $var_dir ]; then
-		mkdir $var_dir
+		mkdir -p $var_dir
 		if [ $? != 0 ]; then
 			echo "ERROR: Failed to create directory $var_dir"
 			echo ""
 			exit 3
 		fi
+	fi
+	if [ "$upgrading" != 1 -a "$envetcdirnotfound" = "" ]; then
+		echo "$envvardir"
 	fi
 	echo ""
 
@@ -479,6 +514,7 @@ else
 	# Create webserver config file
 	echo $perl > $config_dir/perl-path
 	echo $var_dir > $config_dir/var-path
+	echo $bootscript > $config_dir/bootscript-name
 	echo "Creating web server config files .."
 	cfile=$config_dir/miniserv.conf
 	echo "port=$port" >> $cfile
@@ -653,12 +689,12 @@ echo "  kill \$pid || exit 1" >>$config_dir/.stop-init
 echo "  touch $var_dir/stop-flag" >>$config_dir/.stop-init
 echo "  if [ \"\$1\" = \"--kill\" ]; then" >>$config_dir/.stop-init
 echo "    sleep 1" >>$config_dir/.stop-init
-echo "    ((ps axf | grep \"webmin\/miniserv\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) || kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null" >>$config_dir/.stop-init
+echo "    ((ps axf | grep \"$wadir\/miniserv\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) || kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null" >>$config_dir/.stop-init
 echo "  fi" >>$config_dir/.stop-init
 echo "  exit 0" >>$config_dir/.stop-init
 echo "else" >>$config_dir/.stop-init
 echo "  if [ \"\$1\" = \"--kill\" ]; then" >>$config_dir/.stop-init
-echo "    (ps axf | grep \"webmin\/miniserv\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) 2>/dev/null" >>$config_dir/.stop-init
+echo "    (ps axf | grep \"$wadir\/miniserv\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) 2>/dev/null" >>$config_dir/.stop-init
 echo "  fi" >>$config_dir/.stop-init
 echo "fi" >>$config_dir/.stop-init
 # Restart main
@@ -719,31 +755,31 @@ if [ -x "$systemctlcmd" ]; then
 	echo "Creating start and stop scripts (systemd) .."
 	# Start systemd
 	echo "#!/bin/sh" >$config_dir/start
-	echo "$systemctlcmd start webmin" >>$config_dir/start
+	echo "$systemctlcmd start $bootscript" >>$config_dir/start
 	# Stop systemd
 	echo "#!/bin/sh" >$config_dir/stop
-	echo "$systemctlcmd stop webmin" >>$config_dir/stop
+	echo "$systemctlcmd stop $bootscript" >>$config_dir/stop
 	# Restart systemd
 	echo "#!/bin/sh" >$config_dir/restart
-	echo "$systemctlcmd restart webmin" >>$config_dir/restart
+	echo "$systemctlcmd restart $bootscript" >>$config_dir/restart
 	# Force reload systemd
 	echo "#!/bin/sh" >$config_dir/restart-by-force-kill
-	echo "$systemctlcmd stop webmin" >>$config_dir/restart-by-force-kill
+	echo "$systemctlcmd stop $bootscript" >>$config_dir/restart-by-force-kill
 	echo "$config_dir/.stop-init --kill >/dev/null 2>&1" >>$config_dir/restart-by-force-kill
-	echo "$systemctlcmd start webmin" >>$config_dir/restart-by-force-kill
+	echo "$systemctlcmd start $bootscript" >>$config_dir/restart-by-force-kill
 	# Reload systemd
 	echo "#!/bin/sh" >$config_dir/reload
-	echo "$systemctlcmd reload webmin" >>$config_dir/reload
+	echo "$systemctlcmd reload $bootscript" >>$config_dir/reload
 	# Pre-install on systemd
 	echo "#!/bin/sh" >$config_dir/.pre-install
-	# echo "$systemctlcmd kill --signal=SIGSTOP --kill-who=main webmin" >>$config_dir/.pre-install
+	# echo "$systemctlcmd kill --signal=SIGSTOP --kill-who=main $bootscript" >>$config_dir/.pre-install
 	# Post-install on systemd
 	echo "#!/bin/sh" >$config_dir/.post-install
-	# echo "$systemctlcmd kill --signal=SIGCONT --kill-who=main webmin" >>$config_dir/.post-install
-	echo "$systemctlcmd kill --signal=SIGHUP --kill-who=main webmin" >>$config_dir/.post-install
+	# echo "$systemctlcmd kill --signal=SIGCONT --kill-who=main $bootscript" >>$config_dir/.post-install
+	echo "$systemctlcmd kill --signal=SIGHUP --kill-who=main $bootscript" >>$config_dir/.post-install
 
 	# Fix existing systemd webmin.service file to update start and stop commands
-	(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/updateboot.pl" "webmin")
+	(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/updateboot.pl" "$bootscript")
 	
 	chmod 755 $config_dir/stop $config_dir/start $config_dir/restart $config_dir/restart-by-force-kill $config_dir/reload $config_dir/.pre-install $config_dir/.post-install
 else
