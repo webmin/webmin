@@ -1012,16 +1012,15 @@ return @rv;
 sub make_dir_recursive_local
 {
 my ($dir, $mod) = @_;
-my @folders = split /\//, $dir;
-map {
-    if ($_) {
-        if (mkdir $_) {
-            chmod($mod, $_) if ($mod && -d $_);
-            }
-        chdir $_;}
-    else {
-        chdir '/';
+my @folders = split(/\//, $dir);
+my $folder_created;
+foreach my $folder (@folders) {
+    next if (!$folder);
+    $folder_created .= "/$folder";
+    if (mkdir($folder_created)) {
+        chmod($mod, $folder_created)
+            if ($mod && -d $folder_created);
         }
-} @folders;
+    }
 return -d $dir;
 }
