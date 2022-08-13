@@ -19,16 +19,13 @@ if ($in{'source'} == 0) {
 	&error_setup(&text('upgrade_err1', $in{'file'}));
 	$file = $in{'file'};
 	if (!-r $file) { &inst_error($text{'upgrade_efile'}); }
-	if ($file =~ /webmin-(\d+\.\d+)/) {
+	if ($file =~ /webmin-(\d+\.\d+)(\-(\d+))?/) {
 		$version = $1;
+		$release = $3;
+		$full = $version.($release ? "-$release" : "");
 		}
 	if (!$in{'force'}) {
-		if ($version == &get_webmin_version()) {
-			&inst_error(&text('upgrade_elatest', $version));
-			}
-		elsif ($version <= &get_webmin_version()) {
-			&inst_error(&text('upgrade_eversion', $version));
-			}
+		&check_inst_version($full);
 		}
 	}
 elsif ($in{'source'} == 1) {
@@ -42,8 +39,10 @@ elsif ($in{'source'} == 1) {
 	open(MOD, ">$file");
 	print MOD $in{'upload'};
 	close(MOD);
-	if ($in{'upload_filename'} =~ /webmin-(\d+\.\d+)/) {
+	if ($in{'upload_filename'} =~ /webmin-(\d+\.\d+)(\-(\d+))?/) {
 		$version = $1;
+		$release = $3;
+		$full = $version.($release ? "-$release" : "");
 		}
 	}
 elsif ($in{'source'} == 2) {
@@ -54,15 +53,7 @@ elsif ($in{'source'} == 2) {
 	$full = $version.($release ? "-$release" : "");
 	if (!$in{'force'}) {
 		# Is the new version and release actually newer
-		$curr_rel = &get_webmin_version_release();
-		$curr_full = &get_webmin_version().
-			     ($curr_rel ? "-".$curr_rel : "");
-		if (&compare_version_numbers($full, $curr_full) == 0) {
-			&inst_error(&text('upgrade_elatest', $version));
-			}
-		elsif (&compare_version_numbers($full, $curr_full) < 0) {
-			&inst_error(&text('upgrade_eversion', $version));
-			}
+		&check_inst_version($full);
 		}
 	if ($in{'mode'} eq 'rpm') {
 		# Downloading RPM
@@ -116,8 +107,10 @@ elsif ($in{'source'} == 5) {
 	else { &inst_error($text{'upgrade_eurl'}); }
 	$need_unlink = 1;
 	$error && &inst_error($error);
-	if ($in{'url'} =~ /webmin-(\d+\.\d+)/) {
+	if ($in{'url'} =~ /webmin-(\d+\.\d+)(\-(\d+))?/) {
 		$version = $1;
+		$release = $3;
+		$full = $version.($release ? "-$release" : "");
 		}
 	}
 elsif ($in{'source'} == 3) {
@@ -157,14 +150,14 @@ if ($in{'sig'}) {
 			if ($in{'source'} == 2) {
 				# Download the key for this tar.gz
 				my ($sigtemp, $sigerror);
-				&http_download($update_host, $update_port, "/download/sigs/webmin-$version.tar.gz-sig.asc", \$sigtemp, \$sigerror);
+				&http_download($update_host, $update_port, "/download/sigs/webmin-$full.tar.gz-sig.asc", \$sigtemp, \$sigerror);
 				if ($sigerror) {
 					$ec = 4;
 					$emsg = &text('upgrade_edownsig',
 						      $sigerror);
 					}
 				else {
-					my $data =&read_file_contents($file);
+					my $data = &read_file_contents($file);
 					my ($vc, $vmsg) =
 					    &verify_data($data, $sigtemp);
 					if ($vc > 1) {
@@ -234,15 +227,7 @@ if ($in{'mode'} eq 'rpm') {
 	$full = $version.($release ? "-$release" : "");
 	if (!$in{'force'}) {
 		# Is the new version and release actually newer
-		$curr_rel = &get_webmin_version_release();
-		$curr_full = &get_webmin_version().
-			     ($curr_rel ? "-".$curr_rel : "");
-		if (&compare_version_numbers($full, $curr_full) == 0) {
-			&inst_error(&text('upgrade_elatest', $version));
-			}
-		elsif (&compare_version_numbers($full, $curr_full) < 0) {
-			&inst_error(&text('upgrade_eversion', $version));
-			}
+		&check_inst_version($full);
 		}
 
 	# Install the RPM
@@ -274,14 +259,10 @@ elsif ($in{'mode'} eq 'deb') {
 		&inst_error($text{'upgrade_edeb'});
 	$out =~ /Version:\s+(\S+)/ ||
 		&inst_error($text{'upgrade_edeb'});
-	$version = $1;
+	$full = $1;
+	($version, $release) = split(/\-/, $full);
 	if (!$in{'force'}) {
-		if (&compare_version_numbers($version, &get_webmin_version()) == 0) {
-			&inst_error(&text('upgrade_elatest', $version));
-			}
-		elsif (&compare_version_numbers($version, &get_webmin_version()) < 0) {
-			&inst_error(&text('upgrade_eversion', $version));
-			}
+		&check_inst_version($full);
 		}
 
 	# Install the package
@@ -394,12 +375,7 @@ elsif ($in{'mode'} eq 'gentoo') {
 	close(EMERGE);
 	$version || &inst_error($text{'upgrade_egentoo'});
 	if (!$in{'force'}) {
-		if ($version == &get_webmin_version()) {
-			&inst_error(&text('upgrade_elatest', $version));
-			}
-		elsif ($version <= &get_webmin_version()) {
-			&inst_error(&text('upgrade_eversion', $version));
-			}
+		&check_inst_version($version);
 		}
 
 	# Install the Gentoo package
@@ -411,7 +387,7 @@ elsif ($in{'mode'} eq 'gentoo') {
 	}
 else {
 	# Check if it is a webmin tarfile
-	open(TAR, "tar tf $file 2>&1 |");
+	open(TAR, "tar tf $qfile 2>&1 |");
 	while(<TAR>) {
 		s/\r|\n//g;
 		if (/^webmin-([0-9\.]+)\//) {
@@ -451,12 +427,7 @@ else {
 			}
 		}
 	if (!$in{'force'}) {
-		if ($version == &get_webmin_version()) {
-			&inst_error(&text('upgrade_elatest', $version));
-			}
-		elsif ($version <= &get_webmin_version()) {
-			&inst_error(&text('upgrade_eversion', $version));
-			}
+		&check_inst_version($version);
 		}
 
 	# Work out where to extract
@@ -527,11 +498,11 @@ else {
 	if (!$?) {
 		if ($in{'delete'}) {
 			# Can delete the old root directory
-			system("rm -rf \"$root_directory\"");
+			system("rm -rf ".quotemeta($root_directory));
 			}
 		elsif ($in{'dir'}) {
 			# Can delete the temporary source directory
-			system("rm -rf \"$extract\"");
+			system("rm -rf ".quotemeta($extract));
 			}
 		&lock_file("$config_directory/config");
 		$gconfig{'upgrade_delete'} = $in{'delete'};
@@ -585,3 +556,16 @@ print "$main::whatfailed : $_[0] <p>\n";
 exit;
 }
 
+sub check_inst_version
+{
+my ($full) = @_;
+return if ($done_check_inst_version++);	  # Full version may have been checked
+					  # in a previous call
+my $curr_full = &get_webmin_full_version();
+if (&compare_version_numbers($full, $curr_full) == 0) {
+	&inst_error(&text('upgrade_elatest', $full));
+	}
+elsif (&compare_version_numbers($full, $curr_full) < 0) {
+	&inst_error(&text('upgrade_eversion', $full));
+	}
+}
