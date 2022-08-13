@@ -141,7 +141,7 @@ Write out the contents of a hash as name=value lines. The parameters are :
 
 =item sort - If given, passed hash reference will be sorted by its keys
 
-=item sorted-by - If given, hash reference that is being saved will be sorted by the keys of sorted-by hashref
+=item sorted-by - If given, passed as full path to a file, will use its content to sort the keys
 
 =item sorted-by-sectioning-preserved - If sorted-by is used, then preserve the sectioning (line-breaks), and section comment as in hash reference
 
@@ -7002,21 +7002,20 @@ sub make_dir_recursive
 {
 my ($dir, $mod) = @_;
 if (&is_readonly_mode()) {
-	print STDERR "Vetoing directory $dir\n";
-	return 1;
-	}
+    print STDERR "Vetoing directory $dir\n";
+    return 1;
+    }
 $dir = &translate_filename($dir);
-my @folders = split /\//, $dir;
-map {
-    if ($_) {
-        if (mkdir $_) {
-            chmod($mod, $_) if ($mod && -d $_);
-            }
-        chdir $_;}
-    else {
-        chdir '/';
+my @folders = split(/\//, $dir);
+my $folder_created;
+foreach my $folder (@folders) {
+    next if (!$folder);
+    $folder_created .= "/$folder";
+    if (mkdir($folder_created)) {
+        chmod($mod, $folder_created)
+            if ($mod && -d $folder_created);
         }
-} @folders;
+    }
 return -d $dir;
 }
 
