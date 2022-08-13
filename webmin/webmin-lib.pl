@@ -1257,14 +1257,9 @@ if (&foreign_available($module_name) && !$gconfig{'nowebminup'} && !$noupdates &
 	my $minor_release =
 		$config{'last_version_release'} &&
 		$config{'last_version_release'} >= 2;
-	my $ver = &get_webmin_version();
-	my $rel = &get_webmin_version_release();
-	my $full = $ver.($rel ? "-".$rel : "");
-	if ($config{'last_version_number'} &&
-	    ($config{'last_version_number'} > $ver ||
-	     $config{'last_version_number'} == $ver &&
-	     $config{'last_version_release'} &&
-	     $config{'last_version_release'} > $rel)) {
+	my $full = &get_webmin_full_version();
+	if ($config{'last_version_full'} &&
+	    &compare_version_numbers($config{'last_version_full'}, $full) > 0) {
 		# New version is out there .. offer to upgrade
 		my $mode = &get_install_type();
 		my $checksig = 0;
@@ -1274,10 +1269,11 @@ if (&foreign_available($module_name) && !$gconfig{'nowebminup'} && !$noupdates &
 				$checksig = 1;
 				}
 			}
-		my $release_notes_link = " ". &ui_link("https://github.com/webmin/webmin/releases/tag/".
-		     	  "$config{'last_version_number'}",
-	                 $text{'os_release_notes'}, undef,
-	                 'target="_blank" data-link-external="after"') . ".";
+		my $release_notes_link = " ".
+		   &ui_link("https://github.com/webmin/webmin/releases/tag/".
+		     	    "$config{'last_version_number'}",
+	                    $text{'os_release_notes'}, undef,
+	                    'target="_blank" data-link-external="after"').".";
 		$release_notes_link = "" if ($minor_release);
 		push(@notifs,
 		     &ui_form_start("@{[&get_webprefix()]}/webmin/upgrade.cgi",
