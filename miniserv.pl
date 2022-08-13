@@ -1447,16 +1447,14 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 		} elsif ($config{'hide_admin_url'} != 1) {
 			# Tell user the correct URL
 			&http_error(200, "Document follows",
-				"<noscript>".
-				"<h2 class=\"err-head\">Error — Document follows</h2>".
 				"This web server is running in SSL mode. ".
-				"Try the URL <a href='$url'>$url</a> instead.</noscript>".
+				"Try the URL <a href='$url'>$url</a> instead.".
 				"<script>".
 				"if (location.protocol != 'https:') {".
 				"  location.protocol = 'https:';".
 				"}".
 				"</script>",
-				0, 1, 1);
+				0, 1);
 		} else {
 			# Throw an error
 			&http_error(404, "Page not found",
@@ -2848,7 +2846,7 @@ return $rv;
 # Output an error message to the browser, and log it to the error log
 sub http_error
 {
-my ($code, $msg, $body, $noexit, $noerr, $nohead) = @_;
+my ($code, $msg, $body, $noexit, $noerr) = @_;
 local $eh = $error_handler_recurse ? undef :
 	    $config{"error_handler_".$code} ? $config{"error_handler_".$code} :
 	    $config{'error_handler'} ? $config{'error_handler'} : undef;
@@ -2874,9 +2872,7 @@ else {
 	&reset_byte_count();
 	&write_data("<html>\n");
 	&write_data("<head>".&embed_error_styles($roots[0])."<title>$code &mdash; $msg</title></head>\n");
-	my $errhead = "<h2 class=\"err-head\">Error &mdash; $msg</h2>";
-	$errhead = undef if ($nohead);
-	&write_data("<body class=\"err-body\">$errhead\n");
+	&write_data("<body class=\"err-body\"><h2 class=\"err-head\">Error &mdash; $msg</h2>\n");
 	if ($body) {
 		&write_data("<p class=\"err-content\">$body</p>\n");
 		}
