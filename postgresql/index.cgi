@@ -292,9 +292,9 @@ if (&foreign_available("cpan")) {
 	push(@needs, "DBD::Pg") if ($@);
 	if (@needs) {
 		$needs = &urlize(join(" ", @needs));
-		print "<center><b>",&text(@needs == 2 ? 'index_nomods' : 'index_nomod', @needs,
-			"/cpan/download.cgi?source=3&cpan=$needs&mode=2&return=/$module_name/&returndesc=".&urlize($text{'index_return'})),
-			"</b></center>\n";
+		print "<b>".&ui_text_color(&text(@needs == 2 ? 'index_nomods' : 'index_nomod', @needs,
+			"../cpan/download.cgi?source=3&cpan=$needs&mode=2&return=/$module_name/&returndesc=".
+			    &urlize($text{'index_return'})), 'warn')."</b>";
 		}
 	}
 
