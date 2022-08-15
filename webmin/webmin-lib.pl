@@ -1274,7 +1274,7 @@ if (&foreign_available($module_name) && !$gconfig{'nowebminup'} && !$noupdates &
 		     	    "$config{'last_version_number'}",
 	                    $text{'os_release_notes'}, undef,
 	                    'target="_blank" data-link-external="after"').".";
-		$release_notes_link = "" if ($minor_release);
+		# $release_notes_link = "" if ($minor_release);
 		push(@notifs,
 		     &ui_form_start("@{[&get_webprefix()]}/webmin/upgrade.cgi",
 				    "form-data").
