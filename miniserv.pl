@@ -1448,15 +1448,15 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 			# Tell user the correct URL
 			&http_error(200, "Document follows",
 				"<noscript>".
-				"<h2 class=\"err-head\">Error — Document follows</h2>".
-				"This web server is running in SSL mode. ".
-				"Try the URL <a href='$url'>$url</a> instead.</noscript>".
+				"<tt>This web server is running in SSL mode.<br>".
+				"Try the URL <a style=\"color: #f12b2b\" ".
+				"href='$url'>$url</a> instead.</tt></noscript>".
 				"<script>".
 				"var noscript = document.querySelector('noscript');".
 				"var redirect = '<tt>This web server is running in SSL mode.<br>".
 				"Redirecting to the URL ".
 				"<a style=\"color: #f12b2b\" href=\"https://".
-				"'+location.host+'\">https://'+location.host+'</a> instead ...</tt>';".
+				"'+location.host+'\">https://'+location.host+'</a> ...</tt>';".
 				"noscript.insertAdjacentHTML('afterend', redirect);".
 				"if (location.protocol != 'https:') {".
 				"  setTimeout(function(){location.protocol = 'https:'},4000);".
