@@ -1452,14 +1452,15 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 				"Try the URL <a style=\"color: #f12b2b\" ".
 				"href='$url'>$url</a> instead.</tt></noscript>".
 				"<script>".
-				"var noscript = document.querySelector('noscript');".
+				"var timeout = 4000;".
+				"try {var noscript = document.querySelector('noscript');".
 				"var redirect = '<tt>This web server is running in SSL mode.<br>".
 				"Redirecting to the URL ".
 				"<a style=\"color: #f12b2b\" href=\"https://".
 				"'+location.host+'\">https://'+location.host+'</a> ...</tt>';".
-				"noscript.insertAdjacentHTML('afterend', redirect);".
+				"noscript.insertAdjacentHTML('afterend', redirect);}catch(e){timeout = 0;}".
 				"if (location.protocol != 'https:') {".
-				"  setTimeout(function(){location.protocol = 'https:'},4000);".
+				"  setTimeout(function(){location.protocol = 'https:'},timeout);".
 				"}".
 				"</script>",
 				0, 1, 1);
