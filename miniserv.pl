@@ -4664,6 +4664,10 @@ if ($config{'ssl_honorcipherorder'}) {
 		&Net::SSLeay::OP_CIPHER_SERVER_PREFERENCE)';
 	}
 
+# Disable TLS renegotiation when possible, OpenSSL >= 1.1.0h
+eval 'Net::SSLeay::CTX_set_options($ssl_ctx,
+        &Net::SSLeay::OP_NO_RENEGOTIATION)';
+
 return { 'keyfile' => $keyfile,
 	 'keytime' => $kst[9],
 	 'certfile' => $certfile,
