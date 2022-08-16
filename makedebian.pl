@@ -272,6 +272,10 @@ if [ -d "/etc/$baseproduct" ]; then
 	justinstalled=0
 fi
 inetd=`grep "^inetd=" /etc/$baseproduct/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
+productpidfile=`grep "^pidfile=" /etc/$baseproduct/miniserv.conf 2>/dev/null | sed -e 's/pidfile=//g'`
+if [ -r "\$productpidfile" ]; then
+	productrunning=1
+fi
 if [ "\$1" = "configure" ]; then
 	# Upgrading the package, so stop the old Webmin properly
 	if [ "\$inetd" != "1" ]; then
@@ -345,7 +349,9 @@ if [ "\$inetd" != "1" ]; then
 				fi
 			fi
 		else
-			/etc/$baseproduct/restart >/dev/null 2>&1 </dev/null
+			if [ "\$productrunning" = "1" ]; then
+				/etc/$baseproduct/restart >/dev/null 2>&1 </dev/null
+			fi
 		fi
 		if [ "\$?" != "0" ]; then
 			echo "W: \${productucf} server cannot be restarted. It is advised to restart it manually by\n   running \\"/etc/$baseproduct/restart-by-force-kill\\" command when upgrade process is finished"
