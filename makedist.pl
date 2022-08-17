@@ -14,7 +14,7 @@ $fullvers =~ /^([0-9\.]+)(\-(\d+))?$/ || usage();
 $vers = $1;
 $release = $3;
 $tardir = $min ? "minimal" : "tarballs";
-$vfile = $min ? "$vers-minimal" : $vers;
+$vfile = $min ? "$fullvers-minimal" : $fullvers;
 $zipdir = "zips";
 $vers || usage();
 
