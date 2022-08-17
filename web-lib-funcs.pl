@@ -969,6 +969,11 @@ sub PrintHeader
 {
 my ($cs, $mt) = @_;
 $mt ||= "text/html";
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+if (!$gconfig{'no_strict_transport_security'} && $miniserv{'ssl'}) {
+	print "Strict-Transport-Security: max-age=31536000; includeSubDomains\n";
+	}
 if ($pragma_no_cache || $gconfig{'pragma_no_cache'}) {
 	print "pragma: no-cache\n";
 	print "Expires: Thu, 1 Jan 1970 00:00:00 GMT\n";
