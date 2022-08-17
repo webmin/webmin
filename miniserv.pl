@@ -1433,30 +1433,15 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 			}
 		local $url = $wantport == 443 ? "https://$urlhost/"
 					      : "https://$urlhost:$wantport/";
-		if ($config{'ssl_redirect'}) {
-			# Just re-direct to the correct URL
-			sleep(1);	# Give browser a change to finish
-					# sending its request
-			&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
-			&write_data("Date: $datestr\r\n");
-			&write_data("Server: $config{'server'}\r\n");
-			&write_data("Location: $url\r\n");
-			&write_keep_alive(0);
-			&write_data("\r\n");
-			return 0;
-			}
-		else {
-			# Tell user the correct URL
-			&http_error(200, "Document follows",
-				"This web server is running in SSL mode. ".
-				"Try the URL <a href='$url'>$url</a> instead.".
-				"<script>".
-				"if (location.protocol != 'https:') {".
-				"  location.protocol = 'https:';".
-				"}".
-				"</script>",
-				0, 1);
-			}
+		&http_error(200, "Document follows",
+			"This web server is running in SSL mode. ".
+			"Try the URL <a href='$url'>$url</a> instead.".
+			"<script>".
+			"if (location.protocol != 'https:') {".
+			"  location.protocol = 'https:';".
+			"}".
+			"</script>",
+			0, 1);
 		}
 	elsif (ord(substr($reqline, 0, 1)) == 128 && !$use_ssl) {
 		# This could be an https request when it should be http ..
@@ -1494,21 +1479,7 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 			local $url = $config{'musthost'} ?
 					"https://$config{'musthost'}:$port/" :
 					"https://$host:$port/";
-			if ($config{'ssl_redirect'}) {
-				# Just re-direct to the correct URL
-				sleep(1);	# Give browser a change to
-						# finish sending its request
-				&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
-				&write_data("Date: $datestr\r\n");
-				&write_data("Server: $config{'server'}\r\n");
-				&write_data("Location: $url\r\n");
-				&write_keep_alive(0);
-				&write_data("\r\n");
-				return 0;
-			else {
-				# Tell user the correct URL
-				&http_error(200, "Bad Request", "This web server is not running in SSL mode. Try the URL <a href='$url'>$url</a> instead.", 0, 1);
-			}
+			&http_error(200, "Bad Request", "This web server is not running in SSL mode. Try the URL <a href='$url'>$url</a> instead.", 0, 1);
 EOF
 		if ($@) {
 			&http_error(400, "Bad Request");
