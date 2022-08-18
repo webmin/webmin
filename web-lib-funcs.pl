@@ -969,9 +969,7 @@ sub PrintHeader
 {
 my ($cs, $mt) = @_;
 $mt ||= "text/html";
-my %miniserv;
-&get_miniserv_config(\%miniserv);
-if (!$gconfig{'no_strict_transport_security'} && $miniserv{'ssl'}) {
+if (!$gconfig{'no_strict_transport_security'} && uc($ENV{'HTTPS'}) eq "ON") {
 	print "Strict-Transport-Security: max-age=31536000; includeSubDomains\n";
 	}
 if ($pragma_no_cache || $gconfig{'pragma_no_cache'}) {
