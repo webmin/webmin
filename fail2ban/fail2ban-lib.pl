@@ -507,8 +507,8 @@ my $out;
 $out = &backquote_logged("$config{'client_cmd'} reload 2>&1 </dev/null")
 	if (!$force_restart);
 if ($? || $force_restart) {
-	&backquote_logged("$config{'client_cmd'} stop 2>&1 </dev/null");
-	$out = &backquote_logged("$config{'client_cmd'} start 2>&1 </dev/null");
+	&stop_fail2ban_server();
+	$out = &start_fail2ban_server();
 }
 return $? ? $out : undef;
 }
