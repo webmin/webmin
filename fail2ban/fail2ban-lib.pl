@@ -503,6 +503,10 @@ else {
 sub restart_fail2ban_server
 {
 my $out = &backquote_logged("$config{'client_cmd'} reload 2>&1 </dev/null");
+if ($?) {
+	&backquote_logged("$config{'client_cmd'} stop 2>&1 </dev/null");
+	$out = &backquote_logged("$config{'client_cmd'} start 2>&1 </dev/null");
+}
 return $? ? $out : undef;
 }
 
