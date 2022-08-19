@@ -69,7 +69,7 @@ sub main {
                     read_file($mod, \%mod_info);
                     my $mod_ver = $mod_info{'version_actual'} || $mod_info{'version'};
                     my $mod_desc = $mod_info{'desc'};
-                    if ($mod_ver && $prod_ver && $mod_desc && $mod_ver ne $prod_ver) {
+                    if ($mod_ver && $prod_ver && $mod_desc && $prod_ver !~ /^$mod_ver/) {
                         say  CYAN, "  $module_type: ", RESET if (!$head++);
                         my ($mod_dir) = $mod =~ m/$prod_root\/(.*?)\//;
                         push(@minfo, {'desc' => $mod_desc, 'ver' => $mod_ver, 'dir' => $mod_dir});
@@ -105,13 +105,18 @@ sub main {
             my $ver1 = "$root/version";
             my $ver2 = "$opt{'config'}/version";
             my $ver = read_file_contents($ver1) || read_file_contents($ver2);
+            my $verrel_file = "$root/release";
+            my $verrel = -r $verrel_file ? read_file_contents($verrel_file) : "";
+            if ($verrel) {
+                $verrel = ":@{[trim($verrel)]}";
+            }
             $ver = trim($ver);
             if ($ver) {
                 if ($opt{'version'}) {
-                    say $ver;
+                    say "$ver$verrel";
                     exit 0;
                 } else {
-                    say CYAN, "Webmin: ", RESET, &$ver_checked($versions_remote{'webmin'}, $ver), DARK " [$root]", RESET;
+                    say CYAN, "Webmin: ", RESET, &$ver_checked($versions_remote{'webmin'}, "$ver$verrel"), DARK " [$root]", RESET;
                 }
             } else {
                 say RED, "Error: ", RESET, "Cannot determine Webmin version";
@@ -153,7 +158,12 @@ sub main {
                         my $uver1 = "$uroot/version";
                         my $uver2 = "$wmumconfig/version";
                         my $uver = read_file_contents($uver1) || read_file_contents($uver2);
-                        $uver = trim($uver);
+                        my $uverrel_file = "$uroot/release";
+                        my $uverrel      = -r $uverrel_file ? read_file_contents($uverrel_file) : "";
+                        if ($uverrel) {
+                            $uverrel = ":@{[trim($uverrel)]}";
+                        }
+                        $uver = trim($uver) . $uverrel;
                         if ($uver) {
                             say CYAN, "Usermin: ", RESET, &$ver_checked($versions_remote{'usermin'}, $uver), DARK " [$uroot]", RESET;
                             my ($udir, @uthemes, @umods);

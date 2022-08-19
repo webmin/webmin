@@ -123,7 +123,7 @@ help_eexec= $1は失敗しました : $2
 referer_title= セキュリティ警告
 referer_warn= <b>警告！</b> Webminは、プログラム$2がURL $1からリンクされていることを検出しました。これはWebminサーバの外にあるようです。これは、危険なコマンドを実行するためにサーバーを騙そうとする試みかもしれません。
 referer_warn_unknown= <b>警告！</ b> Webminは、プログラム$ 1が未知のURLからリンクされていることを検出しました。これはWebminサーバの外にあるようです。これは、危険なコマンドを実行するためにサーバーを騙そうとする試みかもしれません。
-referer_fix1= <li><b> Webmin設定</b>モジュールに移動します。 <b>信頼できるウェブサイト</b>フィールドにホスト名$ 1を入力し、[<b>保存</b>]をクリックします。</ul>
+referer_fix1= <li><b> Webmin設定</b>モジュールに移動します。 <b>信頼できるウェブサイト</b>フィールドにホスト名$ 1を入力し、[<b>保存。</b>]をクリックします</ul>
 referer_fix2= または、<tt> root </tt>としてログインし、<tt> /etc /webmin /config </tt>ファイルを編集してWebminがコマンドラインからこのリンクを許可するように設定できます。 <li>最後に<tt> referers=$1</tt>行を追加するか、<tt> referers </tt>行が既に存在する場合は、<tt> $ 1 </tt>ファイルを保存します。</ul>
 referer_fix3u= Webminで確認できるように参照情報を送信するようにブラウザが設定されていることを確認してください。
 referer_fix2u= <ul> <li> <tt> root </tt>としてログインし、<tt> /etc/webmin/config </tt>ファイルを編集することで、未知のリファラーからのリンクを許可するようにWebminを設定することができます。 li> <tt> referers_none = 1 </tt>行を探し、<tt> referers_none = 0 </tt>に変更してください。<li>ファイルを保存してください。</ul> <p>反射XSS攻撃までシステムを開く効果があるので、お勧めしません！
