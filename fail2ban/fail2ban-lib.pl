@@ -502,8 +502,11 @@ else {
 # Force the fail2ban server to re-read its config
 sub restart_fail2ban_server
 {
-my $out = &backquote_logged("$config{'client_cmd'} reload 2>&1 </dev/null");
-if ($?) {
+my ($force_restart) = @_;
+my $out;
+$out = &backquote_logged("$config{'client_cmd'} reload 2>&1 </dev/null")
+	if (!$force_restart);
+if ($? || $force_restart) {
 	&backquote_logged("$config{'client_cmd'} stop 2>&1 </dev/null");
 	$out = &backquote_logged("$config{'client_cmd'} start 2>&1 </dev/null");
 }
