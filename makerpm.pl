@@ -67,7 +67,13 @@ else {
 	$makerel = "rm -f %{buildroot}/usr/libexec/webmin/release";
 	}
 
-system("cp tarballs/webmin-$ver.tar.gz $source_dir");
+if ($rel > 1 && -r "tarballs/webmin-$ver-$rel.tar.gz") {
+	$tarfile = "webmin-$ver-$rel.tar.gz";
+	}
+else {
+	$tarfile = "webmin-$ver.tar.gz";
+	}
+system("cp tarballs/$tarfile $source_dir");
 open(SPEC, ">$spec_dir/webmin-$ver.spec");
 print SPEC <<EOF;
 %global __perl_provides %{nil}
@@ -85,7 +91,7 @@ Requires: /bin/sh /usr/bin/perl /bin/rm perl(lib) perl(open) perl(Net::SSLeay) p
 AutoReq: 0
 License: BSD-3-clause
 Group: System/Tools
-Source: http://www.webmin.com/download/%{name}-%{version}.tar.gz
+Source: http://www.webmin.com/download/$tarfile
 Vendor: Jamie Cameron
 BuildRoot: /tmp/%{name}-%{version}
 BuildArchitectures: noarch

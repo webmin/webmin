@@ -51,7 +51,11 @@ $ver = $ARGV[0];
 if ($ARGV[1]) {
 	$rel = "-".$ARGV[1];
 	}
--r "tarballs/$product-$ver.tar.gz" || die "tarballs/$product-$ver.tar.gz not found";
+$tarfile = "tarballs/$product-$ver$rel.tar.gz";
+if (!-r $tarfile) {
+	$tarfile = "tarballs/$product-$ver.tar.gz";
+	}
+-r $tarfile || die "$tarfile not found";
 
 # Create the base directories
 print "Creating Debian package of ",ucfirst($product)," ",$ver,$rel," ..\n";
@@ -65,7 +69,7 @@ system("mkdir -p $doc_dir");
 system("mkdir -p $bin_dir");
 
 # Un-tar the package to the correct locations
-system("gunzip -c tarballs/$product-$ver.tar.gz | (cd $tmp_dir ; tar xf -)") &&
+system("gunzip -c $tarfile | (cd $tmp_dir ; tar xf -)") &&
 	die "un-tar failed!";
 system("mv $tmp_dir/$product-$ver/* $usr_dir");
 rmdir("$tmp_dir/$product-$ver");
@@ -452,9 +456,9 @@ system("fakeroot dpkg --build $tmp_dir deb/${product}_${ver}${rel}_all.deb") &&
 	die "dpkg failed";
 #system("rm -rf $tmp_dir");
 print "Wrote deb/${product}_${ver}${rel}_all.deb\n";
-$md5 = `md5sum tarballs/$product-$ver$rel.tar.gz`;
+$md5 = `md5sum $tarfile`;
 $md5 =~ s/\s+.*\n//g;
-@st = stat("tarballs/$product-$ver.tar.gz");
+@st = stat($tarfile);
 
 # Create the .diff file, which just contains the debian directory
 $diff_orig_dir = "$tmp_dir/$product-$ver-orig";
