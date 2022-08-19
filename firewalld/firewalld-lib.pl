@@ -234,6 +234,7 @@ sub apply_firewalld
 {
 &foreign_require("init");
 my ($ok, $err) = &init::restart_action($config{'init_name'});
+&restart_firewalld_dependent();
 return $ok ? undef : $err;
 }
 
@@ -252,7 +253,22 @@ sub start_firewalld
 {
 &foreign_require("init");
 my ($ok, $err) = &init::start_action($config{'init_name'});
+&restart_firewalld_dependent();
 return $ok ? undef : $err;
+}
+
+# restart_firewalld_dependent()
+# Restarts dependent services
+sub restart_firewalld_dependent
+{
+if (&foreign_exists("fail2ban")) {
+	&foreign_require("fail2ban");
+	if (&fail2ban::is_fail2ban_running()) {
+		my $err = &fail2ban::restart_fail2ban_server(1);
+		&error(&text('index_dependent', 'fail2ban'))
+			if ($err);
+		}
+	}
 }
 
 # list_system_interfaces()
