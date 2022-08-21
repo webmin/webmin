@@ -1573,6 +1573,8 @@ if (defined($header{'host'})) {
 $ssl = $config{'redirect_ssl'} ne '' ? $config{'redirect_ssl'} :
 	$use_ssl || $config{'inetd_ssl'};
 $redirport = $config{'redirect_port'} || $port;
+$redirport = $config{'redirect_port'}
+	if ($config{'redirect_host'});
 $portstr = $redirport == 80 && !$ssl ? "" :
 	   $redirport == 443 && $ssl ? "" : ":".$redirport;
 $redirhost = $config{'redirect_host'} || $host;
