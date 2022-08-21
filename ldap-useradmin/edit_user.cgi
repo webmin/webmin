@@ -101,9 +101,13 @@ if (!$in{'new'}) {
 	}
 
 # Show username input
+if ($in{'new'} && $config{'new_user_group'} && $access{'gcreate'}) {
+	$onch = "newgid.value = user.value";
+	}
 print &ui_table_row($text{'user'},
-	@users > 1 ? &ui_textarea("user", join("\n", @users), 2, 10)
-		   : &ui_textbox("user", $user, 20));
+	@users > 1 ? &ui_textarea("user", join("\n", @users), 2, 20)
+		   : &ui_textbox("user", $user, 20, 0, undef,
+				 "onchange='$onch'"));
 
 # Show UID input, filled in with a default for new users
 if ($in{'new'}) {
