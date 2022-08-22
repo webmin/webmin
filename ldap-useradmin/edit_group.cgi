@@ -102,46 +102,65 @@ print &ui_table_end();
 &extra_fields_input($config{'group_fields'}, $ginfo, \@tds);
 
 # Show capabilties section
-print &ui_table_start($text{'gedit_cap'}, "width=100%", 4, [ "width=30%" ]);
+if ($config{'samba_gclass'}) {
+	print &ui_table_start($text{'gedit_cap'}, "width=100%", 4, [ "width=30%" ]);
 
-# Samba group?
-print &ui_table_row($text{'gedit_samba'},
-	&ui_yesno_radio("samba", $oclass{$samba_group_class}));
-
-print &ui_table_end();
-
-# Show section for on-save or on-creation options
-if (!$in{'new'}) {
-	print &ui_table_start($text{'onsave'}, "width=100%", 2,
-			      [ "width=30%" ]);
-
-	# Change GID on save
-	print &ui_table_row($text{'chgid'},
-		&ui_radio("chgid", 0,
-		  [ [ 0, $text{'no'} ],
-		    [ 1, $text{'gedit_homedirs'} ],
-		    [ 2, $text{'gedit_allfiles'} ] ]));
-
-
-	# Update in other modules?
-	print &ui_table_row($text{'gedit_mothers'},
-		&ui_radio("others", $mconfig{'default_other'},
-			  [ [ 1, $text{'yes'} ],
-			    [ 0, $text{'no'} ] ]));
+	# Samba group?
+	print &ui_table_row($text{'gedit_samba'},
+		&ui_yesno_radio("samba", $oclass{$samba_group_class}));
 
 	print &ui_table_end();
 	}
+
+# Show section for on-save or on-creation options
+if (!$in{'new'}) {
+	if ($access{'chgid'} == 1 || $access{'mothers'} == 1) {
+		print &ui_table_start($text{'onsave'}, "width=100%", 2,
+				      [ "width=30%" ]);
+
+		# Change GID on save
+		if ($access{'chgid'} == 1) {
+			print &ui_table_row($text{'chgid'},
+				&ui_radio("chgid", 0,
+				  [ [ 0, $text{'no'} ],
+				    [ 1, $text{'gedit_homedirs'} ],
+				    [ 2, $text{'gedit_allfiles'} ] ]));
+			}
+
+		# Update in other modules?
+		if ($access{'mothers'} == 1) {
+			print &ui_table_row($text{'gedit_mothers'},
+				&ui_radio("others", $mconfig{'default_other'},
+					  [ [ 1, $text{'yes'} ],
+					    [ 0, $text{'no'} ] ]));
+			}
+
+		print &ui_table_end();
+		}
+
+	if ($access{'chgid'} == 0) {
+		print &ui_hidden("chgid", 1);
+		}
+	if ($access{'mothers'} == 0) {
+		print &ui_hidden("others", 1);
+		}
+	}
 else {
-	print &ui_table_start($text{'uedit_oncreate'}, "width=100%", 2,
-			      [ "width=30%" ]);
-
 	# Create in other modules?
-	print &ui_table_row($text{'gedit_cothers'},
-		&ui_radio("others", $mconfig{'default_other'},
-			  [ [ 1, $text{'yes'} ],
-			    [ 0, $text{'no'} ] ]));
+	if ($access{'cothers'} == 1) {
+		print &ui_table_start($text{'uedit_oncreate'}, "width=100%", 2,
+				      [ "width=30%" ]);
 
-	print &ui_table_end();
+		print &ui_table_row($text{'gedit_cothers'},
+			&ui_radio("others", $mconfig{'default_other'},
+				  [ [ 1, $text{'yes'} ],
+				    [ 0, $text{'no'} ] ]));
+
+		print &ui_table_end();
+		}
+	if ($access{'cothers'} == 0) {
+		print &ui_hidden("others", 1);
+		}
 	}
 
 # Save/delete/create buttons

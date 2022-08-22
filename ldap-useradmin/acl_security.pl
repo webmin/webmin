@@ -106,19 +106,9 @@ printf "<input type=radio name=gcreate value=0 %s> $text{'no'}</td> </tr>\n",
 }
 
 # acl_security_save(&options)
-# Parse the form for security options for the useradmin module
+# Parse the form for security options for the ldap-useradmin module
 sub acl_security_save
 {
-$_[0]->{'lowuid'} = $in{'lowuid'};
-$_[0]->{'hiuid'} = $in{'hiuid'};
-$_[0]->{'autouid'} = $in{'autouid'};
-$_[0]->{'autogid'} = $in{'autogid'};
-$_[0]->{'calcuid'} = $in{'calcuid'};
-$_[0]->{'calcgid'} = $in{'calcgid'};
-$_[0]->{'useruid'} = $in{'useruid'};
-$_[0]->{'usergid'} = $in{'usergid'};
-$_[0]->{'lowgid'} = $in{'lowgid'};
-$_[0]->{'higid'} = $in{'higid'};
 $_[0]->{'uedit_mode'} = $in{'uedit_mode'};
 $_[0]->{'uedit'} = $in{'uedit_mode'} == 2 ? $in{'uedit_can'} :
 		   $in{'uedit_mode'} == 3 ? $in{'uedit_cannot'} :
@@ -136,38 +126,10 @@ $_[0]->{'gedit'} = $in{'gedit_mode'} == 2 ? $in{'gedit_can'} :
 $_[0]->{'gedit2'} = $in{'gedit_mode'} == 4 ? $in{'gedit_gid2'} : undef;
 $_[0]->{'ucreate'} = $in{'ucreate'};
 $_[0]->{'gcreate'} = $in{'gcreate'};
-if ($in{'uedit_gmode'} == 0) {
-	delete($_[0]->{'uedit_gmode'});
-	$_[0]->{'ugroups'} = "*";
-	}
-elsif ($in{'uedit_gmode'} == 2) {
-	delete($_[0]->{'uedit_gmode'});
-	$_[0]->{'ugroups'} = $in{'uedit_gcan'};
-	}
-else {
-	$_[0]->{'uedit_gmode'} = $in{'uedit_gmode'};
-	$_[0]->{'ugroups'} = $in{'uedit_gmode'} == 3 ? $in{'uedit_gcannot'} :
-			     $in{'uedit_gmode'} == 4 ? $in{'uedit_gid'} : "";
-	}
-$_[0]->{'ugroups2'} = $in{'uedit_gmode'} == 4 ? $in{'uedit_gid2'} : undef;
 
-$_[0]->{'logins'} = $in{'logins_mode'} == 0 ? "" :
-		    $in{'logins_mode'} == 1 ? "*" : $in{'logins'};
-$_[0]->{'shells'} = $in{'shells_def'} ? "*"
-				      : join(" ", split(/\s+/, $in{'shells'}));
-$_[0]->{'peopt'} = $in{'peopt'};
 $_[0]->{'batch'} = $in{'batch'};
-$_[0]->{'export'} = $in{'export'};
 $_[0]->{'home'} = $in{'home'};
-$_[0]->{'delhome'} = $in{'delhome'};
 $_[0]->{'autohome'} = $in{'autohome'};
 $_[0]->{'umultiple'} = $in{'umultiple'};
-$_[0]->{'uuid'} = $in{'uuid'};
 $_[0]->{'gmultiple'} = $in{'gmultiple'};
-$_[0]->{'ggid'} = $in{'ggid'};
-foreach $o ('chuid', 'chgid', 'movehome', 'mothers',
-	    'makehome', 'copy', 'cothers', 'dothers') {
-	$_[0]->{$o} = $in{$o};
-	}
 }
-

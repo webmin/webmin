@@ -212,6 +212,9 @@ else {
 		defined($gid) || &error(&text('usave_egid', $in{'gid'}));
 		}
 	$grp = &all_getgrgid($gid);
+	if (&useradmin::can_use_group(\%access, $grp) == 0) {
+		&error(&text('usave_eprimary', $in{'gid'}));
+		}
 
 	# Compute and validate home directory
 	if ($access{'autohome'}) {

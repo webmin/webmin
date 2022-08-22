@@ -146,7 +146,7 @@ else {
 				if (defined($merr));
 
 			# Go ahead and do it!
-			if ($mconfig{'default_other'}) {
+			if ($in{'others'}) {
 				print "$text{'udel_other'}<br>\n";
 				local $error_must_die = 1;
 				eval { &other_modules("useradmin_delete_user",$user); };
@@ -257,10 +257,17 @@ else {
 			      &nice_size($size*1024)),
 			[ [ "confirmed", 1 ],
 			  map { [ "d", $_->{'user'} ] } @dlist ],
-			[ [ undef, $text{'umass_del1'} ],
-			  [ "delhome", $text{'umass_del2'} ] ],
-			&ui_checkbox("others", 1, $text{'udel_dothers'},
-                             	     $mconfig{'default_other'}),
+			$access{'delhome'} == 0
+				? [ [ undef, $text{'umass_del1'} ] ]
+				: $access{'delhome'} == 1
+					? [ [ "delhome", $text{'umass_del2'} ] ]
+					: [ [ undef, $text{'umass_del1'} ],
+					    [ "delhome", $text{'umass_del2'} ] ],
+			$access{'dothers'} == 0
+				? &ui_hidden("others", 1)
+				: $access{'dothers'} == 2 ? undef
+					: &ui_checkbox("others", 1, $text{'udel_dothers'},
+ 							$mconfig{'default_other'}),
 			$delete_sys && $delete_sys->{'user'} eq 'root' ?
 				"<font color=#ff0000>$text{'udel_root'}</font>"
 				: ""
