@@ -117,8 +117,10 @@ config_ewebmin=Parameter type 14 only works in Webmin
 help_err=Failed to display help
 help_epath=Missing or invalid help path
 help_efile=Failed to read help file $1
+help_efile2=Failed to read compressed help file $1
 help_eheader=Missing &lt;header&gt; section
-help_einclude=Failed to include $1
+help_einclude=Failed to include file $1
+help_einclude2=Failed to include compressed file $1
 help_eif=$1 failed : $2
 help_eexec=$1 failed : $2
 

@@ -20,10 +20,16 @@ if ($file =~ /\.(gif|jpg|jpeg|png)$/i) {
 
 # read the help file
 $path = &help_file($module, $file);
-@st = stat($path);
-open(HELP, "<$path") || &helperror(&text('help_efile', $path));
-read(HELP, $help, $st[7]);
-close(HELP);
+$gzpath = $path.".gz";
+if (-r $gzpath) {
+	$help = &backquote_command(
+		"gunzip -c ".quotemeta($gzpath)." 2>/dev/null");
+	$? || !$help && &helperror(&text('help_efile2', &html_escape($gzpath)));
+	}
+else {
+	$help = &read_file_contents($path);
+	$help || &helperror(&text('help_efile', &html_escape($path)));
+	}
 
 # find and replace the <header> section
 if ($help =~ s/<header>([^<]+)<\/header>//i) {
@@ -57,17 +63,19 @@ print $help;
 # inchelp(path)
 sub inchelp
 {
-if ($_[0] =~ /^\/(\S+)\/(\S+)$/) {
-	# including something from another module..
+my ($path) = @_;
+my $ipath = &help_file($module, $path);
+my $gzpath = $ipath.".gz";
+if (-r $gzpath) {
+	my $inc = &backquote_command(
+		"gunzip -c ".quotemeta($gzpath)." 2>/dev/null");
+	$? || !$inc ||
+		return "<i>".&text('help_einclude2', $gzpath)."</i><br>\n";
+	return $inc;
 	}
 else {
-	# including from this module
-	local $ipath = &help_file($module, $_[0]);
-	@st = stat($ipath);
-	open(INC, "<$ipath") ||
-		return "<i>".&text('help_einclude', $_[0])."</i><br>\n";
-	read(INC, $inc, $st[7]);
-	close(INC);
+	my $inc = &read_file_contents($ipath);
+	$inc || return "<i>".&text('help_einclude', $path)."</i><br>\n";
 	return $inc;
 	}
 }
@@ -75,10 +83,11 @@ else {
 # ifhelp(perl, text, [elsetext])
 sub ifhelp
 {
-local $rv = eval $_[0];
-if ($@) { return "<i>".&text('help_eif', $_[0], $@)."</i><br>\n"; }
-elsif ($rv) { return $_[1]; }
-else { return $_[2]; }
+my ($perl, $txt, $elsetxt) = @_;
+my $rv = eval $perl;
+if ($@) { return "<i>".&text('help_eif', $perl, $@)."</i><br>\n"; }
+elsif ($rv) { return $txt; }
+else { return $elsetxt; }
 }
 
 sub helperror
