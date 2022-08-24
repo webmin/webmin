@@ -93,7 +93,7 @@ print &ui_table_row($text{'session_pass'},
 if ($miniserv{'twofactor_provider'}) {
 	print &ui_table_row($text{'session_twofactor'},
 		&ui_textbox("twofactor", undef, 20, 0, undef,
-			    "autocomplete=off"));
+			    "autocomplete='one-time-code'"));
 	}
 
 # Remember session cookie?
