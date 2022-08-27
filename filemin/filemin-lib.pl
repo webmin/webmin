@@ -152,14 +152,15 @@ sub print_template {
 }
 
 sub print_errors {
-    my @errors = @_;
+    my (@errors) = @_;
     &ui_print_header(undef, $module_info{'name'}, "");
-    print $text{'errors_occured'};
-    print "<ul>";
+    print "<tt>$text{'errors_occured'}</tt><br>";
+    print "<ul class=\"err-body\">";
     foreach $error(@errors) {
-        print("<li>$error</li>");
+        print("<li><tt>$error</tt></li>");
     }
-    print "<ul>";
+    print "</ul>";
+    print "<script>if(typeof print_errors_post==='function'){print_errors_post('$module_name')}</script>";
     &ui_print_footer("index.cgi?path=".&urlize($path), $text{'previous_page'});
 }
 
