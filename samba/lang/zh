@@ -104,7 +104,7 @@ passwd_encrypt=使用加密口令？
 passwd_allownull=允许空口令？
 passwd_program=口令程序
 passwd_case=口令区分大小写
-passwd_chat=改变口令 chat
+passwd_chat=更改密码对话
 passwd_below=监听下面：
 passwd_waitfor=等待
 passwd_send=发送
@@ -333,9 +333,9 @@ savenet_maxxmit='$1' 不是有效的最大数据包大小
 
 savepass_fail=无法保存选项
 savepass_nopass=这个版本的samba不支持口令加密
-savepass_passwd=没有给定的改变口令的程序
+savepass_passwd=没有给定的更改密码的程序
 savepass_level='$1' 不是有效的区分大小写的口令
-savepass_chat=改变口令的对话序列是空的
+savepass_chat=更改密码的对话序列是空的
 
 savepopts_fail=无法保存打印机选项
 savepopts_number=最小的可用空间必须是个数字
