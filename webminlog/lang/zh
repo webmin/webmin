@@ -116,9 +116,9 @@ acl_mods=可以查看模块里的日志
 acl_all=所有
 acl_sel=下方选中的 ..
 acl_self=只有自己
-acl_users=Can view actions by users
+acl_users=可以查看用户的操作
 acl_rollback=可以回滚操作?
-acl_notify=可以配置电邮提醒?
+acl_notify=可以配置邮件提醒?
 
 rollback_title=回滚操作
 rollback_rusure=您确定要将下面列出的所有文件还原为执行此操作之前的内容吗? 任何现有的数据将会被以下变更重写 :
