@@ -11743,46 +11743,12 @@ if ($cmp) {
 	  if (!$cmp);
 	error("Comparison operator $cmp is unknown. Supported operators are: @cmps")
 	  if (!grep(/^$cmp$/, @cmps));
-	if ($cmp eq '==') {
-		if (&compare_version_numbers($ver1, $ver2) == 0) {
-			return 1;
-			}
-		else {
-			return 0;
-			}
-		}
-	elsif ($cmp eq '>=') {
-		if (&compare_version_numbers($ver1, $ver2) >= 0) {
-			return 1;
-			}
-		else {
-			return 0;
-			}
-		}
-	elsif ($cmp eq '<=') {
-		if (&compare_version_numbers($ver1, $ver2) <= 0) {
-			return 1;
-			}
-		else {
-			return 0;
-			}
-		}
-	elsif ($cmp eq '>') {
-		if (&compare_version_numbers($ver1, $ver2) > 0) {
-			return 1;
-			}
-		else {
-			return 0;
-			}
-		}
-	elsif ($cmp eq '<') {
-		if (&compare_version_numbers($ver1, $ver2) < 0) {
-			return 1;
-			}
-		else {
-			return 0;
-			}
-		}
+
+	return &compare_version_numbers($ver1, $ver2) == 0 if ($cmp eq '==');
+	return &compare_version_numbers($ver1, $ver2) >= 0 if ($cmp eq '>=');
+	return &compare_version_numbers($ver1, $ver2) <= 0 if ($cmp eq '<=');
+	return &compare_version_numbers($ver1, $ver2) > 0  if ($cmp eq '>');
+	return &compare_version_numbers($ver1, $ver2) < 0  if ($cmp eq '<');
 	}
 
 my @sp1 = split(/[\.\-\+\~\_]/, $ver1);
