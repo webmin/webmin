@@ -1,5 +1,8 @@
 ## Changelog
 
+#### 2.001 (September, 2022)
+* Fix missing origins and action for direct rules in FirewallD module
+
 #### 2.000 (August 21, 2022)
 * Add to enforce HTTP Strict Transport Security (HSTS) policy in SSL enabled mode
 * Add better `http` to `https` redirects when SSL is enabled
