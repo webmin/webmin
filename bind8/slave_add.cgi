@@ -88,18 +88,6 @@ foreach my $s (@add) {
 		next;
 		}
 
-	# Check for needed Webmin versions
-	my $rver = &remote_foreign_call($s, "bind8", "get_webmin_version");
-	if ($rver < 1.202) {
-		print &text('add_eversion', $s->{'host'}, 1.202),"<p>\n";
-		next;
-		}
-	if ($s->{'bind8_view'} && $s->{'bind8_view'} =~ /\s/ &&
-	    $rver < 1.422) {
-		print &text('add_eversion2', $s->{'host'}, 1.422),"<p>\n";
-		next;
-		}
-
 	# Check for non-IP name
 	if (&check_ipaddress($s->{'host'}) && $in{'name_def'}) {
 		print &text('add_eipaddr', $s->{'host'}),"<p>\n";

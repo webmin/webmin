@@ -11715,15 +11715,42 @@ if ($out =~ /GNU\s+bash/) {
 return 0;
 }
 
-=head2 compare_version_numbers(ver1, ver2)
+=head2 compare_version_numbers(ver1, ver2, [cmp])
 
-Compares to version "number" strings, and returns -1 if ver1 is older than ver2,
-0 if they are equal, or 1 if ver1 is newer than ver2.
+Compares two version "number" strings, and returns -1 if ver1 is
+older than ver2, 0 if they are equal, or 1 if ver1 is newer than
+ver2. If auxiliary cmp param is passed then comparison is done
+using friendly operators such as <, >, <=, >=, ==.
+
+Examples:
+	compare_version_numbers(4, "<=", 4);  # 1
+	compare_version_numbers(4, "<", 4);   # 0
+	compare_version_numbers(6, ">", 4);   # 1
+	compare_version_numbers(4, "==", 4);  # 1
 
 =cut
 sub compare_version_numbers
 {
-my ($ver1, $ver2) = @_;
+my ($ver1, $ver2, $cmp) = @_;
+
+if ($cmp) {
+	my $ver2_ = $cmp;
+	my $cmp_ = $ver2;
+	$ver2 = $ver2_;
+	$cmp = $cmp_;
+	my (@cmps) = ('<', '>', '<=', '>=', '==');
+	error("Comparison operator is not set. Supported operators are: @cmps")
+	  if (!$cmp);
+	error("Comparison operator $cmp is unknown. Supported operators are: @cmps")
+	  if (!grep(/^$cmp$/, @cmps));
+
+	return &compare_version_numbers($ver1, $ver2) == 0 if ($cmp eq '==');
+	return &compare_version_numbers($ver1, $ver2) >= 0 if ($cmp eq '>=');
+	return &compare_version_numbers($ver1, $ver2) <= 0 if ($cmp eq '<=');
+	return &compare_version_numbers($ver1, $ver2) > 0  if ($cmp eq '>');
+	return &compare_version_numbers($ver1, $ver2) < 0  if ($cmp eq '<');
+	}
+
 my @sp1 = split(/[\.\-\+\~\_]/, $ver1);
 my @sp2 = split(/[\.\-\+\~\_]/, $ver2);
 my $tmp;

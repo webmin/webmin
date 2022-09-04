@@ -138,19 +138,17 @@ while(<$fh2>) {
 				}
 			
 			# Get address
-			if (/address=["'](.*?)["']/) {
-				}
-				push(@head, $text{'list_rules_ip'});
-				push(@body, $ips);
+			push(@head, $text{'list_rules_ip'});
+			push(@body, $ips);
 
 			# Get origin
-			if (/(INPUT|OUTPUT)/) {
+			if (/(INPUT|OUTPUT|FORWARD|POSTROUTING)/) {
 				push(@head, $text{'list_rules_origin'});
 				push(@body, ucfirst(lc($1)));
 				}
 
 			# Get action
-			if (/(ACCEPT|REJECT|DROP|MARK$)/) {
+			if (/(ACCEPT|REJECT|DROP|MARK|MASQUERADE$)/) {
 				push(@head, $text{'list_rules_action'});
 				push(@body, ucfirst(lc($1)));
 				}

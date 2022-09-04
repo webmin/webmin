@@ -46,6 +46,7 @@ if (@servers) {
 	print &ui_columns_end();
 	print &ui_links_row(\@links);
 	print &ui_form_end([ [ "delete", $text{'slaves_delete'} ] ]);
+	print "<p>";
 	}
 else {
 	print "<b>$text{'slaves_none'}</b><p>\n";
