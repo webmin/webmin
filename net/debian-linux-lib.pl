@@ -856,7 +856,7 @@ local @rv;
 while(<CFGFILE>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//g;
-	if (/^\s*auto\s*(.*)/) {
+	if (/^\s*auto\s*(\S.*)/) {
 		push(@rv, split(/\s+/, $1));
 		}
 	}
