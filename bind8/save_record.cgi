@@ -158,6 +158,7 @@ else {
 			# Is this address already in use? Search all domains
 			# to find out..
 			foreach my $z (@zl) {
+				next if (ref($z) ne 'HASH');
 				next if ($z->{'type'} ne "master");
 				next if ($z->{'name'} =~ /in-addr\.arpa/i);
 				my $file = $z->{'file'};

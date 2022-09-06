@@ -4304,6 +4304,7 @@ my %cache;
 &read_file($dnssec_expiry_cache, \%cache);
 my $changed = 0;
 foreach my $z (&list_zone_names()) {
+	next if (ref($z) ne 'HASH');
 	next if ($z->{'type'} ne 'master');
 	my ($t, $e);
 	if ($cache{$z->{'name'}}) {

@@ -24,6 +24,7 @@ my @zones = &list_zone_names();
 my $errcount = 0;
 my $donecount = 0;
 foreach my $z (@zones) {
+	next if (ref($z) ne 'HASH');
 	# Get the key
 	next if ($z->{'type'} ne 'master');
 	my $zonefile = &get_zone_file($z);

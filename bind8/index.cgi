@@ -45,13 +45,16 @@ my $VERSION;
 
 # Get the list of zones
 my @allzones = &list_zone_names();
-my @zones = grep { $_->{'type'} ne 'view' &&
-		&can_edit_zone($_) &&
-		(!$access{'ro'} || $_->{'name'} ne '.') } @allzones;
-my @views = grep { $_->{'type'} eq 'view' } @allzones;
+my @zones = grep { ref($_) eq 'HASH' &&
+                   $_->{'type'} ne 'view' &&
+                   &can_edit_zone($_) &&
+                   (!$access{'ro'} || $_->{'name'} ne '.') } @allzones;
+my @views = grep { ref($_) eq 'HASH' &&
+                   $_->{'type'} eq 'view' } @allzones;
 @views = sort { $a->{'name'} cmp $b->{'name'} } @views;
-my @hashint = grep { $_->{'type'} ne 'view' &&
-		  $_->{'name'} eq '.' } @allzones;
+my @hashint = grep { ref($_) eq 'HASH' &&
+                     $_->{'type'} ne 'view' &&
+                     $_->{'name'} eq '.' } @allzones;
 
 if (@zones == 1 && $access{'zones'} ne '*' && !$access{'defaults'} &&
     !$access{'views'} && $access{'apply'} != 1 && !$access{'master'} &&

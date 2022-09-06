@@ -37,7 +37,8 @@ if (@servers && $access{'remote'}) {
 		 &to_ipaddress(&get_system_hostname()), 30));
 	}
 
-my @views = grep { $_->{'type'} eq 'view' && &can_edit_view($_) }
+my @views = grep { ref($_) eq 'HASH' &&
+                   $_->{'type'} eq 'view' && &can_edit_view($_) }
 	      &list_zone_names();
 if (@views) {
 	print &ui_table_row($text{'mass_view'},

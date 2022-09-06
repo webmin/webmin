@@ -21,6 +21,7 @@ my @zones = &list_zone_names();
 my (@zlinks, @ztitles, @zdels, @ztypes, @zstatus, @zicons);
 my $len;
 foreach my $z (@zones) {
+	next if (ref($z) ne 'HASH');
 	my $v = $z->{'name'};
 	next if ($z->{'type'} eq 'view' ||
 		 $v eq "." || !&can_edit_zone($z) ||
