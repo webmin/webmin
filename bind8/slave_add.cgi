@@ -98,9 +98,19 @@ foreach my $s (@add) {
 		next;
 		}
 
-	my @rzones = grep { $_->{'type'} ne 'view' }
-		       &remote_foreign_call($s, "bind8", "list_zone_names");
-	print &text('add_ok', $s->{'host'}, scalar(@rzones)),"<p>\n";
+	# Can we connect to remote
+	my @fzones = &remote_foreign_call($s, "bind8", "list_zone_names");
+	my @rzones = ( );
+	@rzones = grep { ref($_) eq 'HASH' && $_->{'type'} ne 'view' } @fzones;
+	if (@rzones) {
+		print &text('add_ok', $s->{'host'}, scalar(@rzones)),"<p>\n";
+		}
+	else {
+		print "$text{'add_gerr'} : @fzones" ,"<p>\n";
+		&ui_print_footer("list_slaves.cgi", $text{'slaves_return'});		
+		exit;
+		}
+
 	$s->{'sec'} = $in{'sec'};
 	$s->{'nsname'} = $in{'name_def'} ? undef : $in{'name'};
 	&add_slave_server($s);
