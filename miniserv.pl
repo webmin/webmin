@@ -270,43 +270,9 @@ elsif ($config{'certfile'} && !-r $config{'certfile'}) {
 	print STDERR "SSL cert file $config{'certfile'} does not exist\n";
 	$use_ssl = 0;
 	}
-@ipkeys = &get_ipkeys(\%config);
 if ($use_ssl) {
-	if ($config{'ssl_version'}) {
-		# Force an SSL version
-		$Net::SSLeay::version = $config{'ssl_version'};
-		$Net::SSLeay::ssl_version = $config{'ssl_version'};
-		}
-	$client_certs = 0 if (!-r $config{'ca'} || !%certs);
-	$ctx = &create_ssl_context($config{'keyfile'},
-				   $config{'certfile'},
-				   $config{'extracas'});
-	$ctx || die "Failed to create default SSL context";
-	$ssl_contexts{"*"} = $ctx;
-	foreach $ipkey (@ipkeys) {
-		$ctx = &create_ssl_context($ipkey->{'key'}, $ipkey->{'cert'},
-				   $ipkey->{'extracas'} || $config{'extracas'});
-		if ($ctx) {
-			foreach $ip (@{$ipkey->{'ips'}}) {
-				$ssl_contexts{$ip} = $ctx;
-				}
-			}
-		}
-
-	# Setup per-hostname SSL contexts on the main IP
-	if (defined(&Net::SSLeay::CTX_set_tlsext_servername_callback)) {
-		Net::SSLeay::CTX_set_tlsext_servername_callback(
-		    $ssl_contexts{"*"},
-		    sub {
-			my $ssl = shift;
-			my $h = Net::SSLeay::get_servername($ssl);
-			my $c = $ssl_contexts{$h} ||
-				$h =~ /^[^\.]+\.(.*)$/ && $ssl_contexts{"*.$1"};
-			if ($c) {
-				Net::SSLeay::set_SSL_CTX($ssl, $c);
-				}
-			});
-		}
+	$err = &setup_ssl_contexts();
+	die $err if ($err);
 	}
 
 # Load gzip library if enabled
@@ -4550,7 +4516,53 @@ foreach $k (keys %{$_[0]}) {
 return @rv;
 }
 
+# setup_ssl_contexts()
+# Setup all the per-IP and per-domain SSL contexts and the global context based
+# on the config
+sub setup_ssl_contexts
+{
+my @ipkeys = &get_ipkeys(\%config);
+if ($config{'ssl_version'}) {
+	# Force an SSL version
+	$Net::SSLeay::version = $config{'ssl_version'};
+	$Net::SSLeay::ssl_version = $config{'ssl_version'};
+	}
+$client_certs = 0 if (!-r $config{'ca'} || !%certs);
+my $ctx = &create_ssl_context($config{'keyfile'},
+			      $config{'certfile'},
+			      $config{'extracas'});
+$ctx || return "Failed to create default SSL context";
+$ssl_contexts{"*"} = $ctx;
+foreach my $ipkey (@ipkeys) {
+	my $ctx = &create_ssl_context($ipkey->{'key'}, $ipkey->{'cert'},
+			   $ipkey->{'extracas'} || $config{'extracas'});
+	if ($ctx) {
+		foreach $ip (@{$ipkey->{'ips'}}) {
+			$ssl_contexts{$ip} = $ctx;
+			}
+		}
+	}
+
+# Setup per-hostname SSL contexts on the main IP
+if (defined(&Net::SSLeay::CTX_set_tlsext_servername_callback)) {
+	Net::SSLeay::CTX_set_tlsext_servername_callback(
+	    $ssl_contexts{"*"},
+	    sub {
+		my $ssl = shift;
+		my $h = Net::SSLeay::get_servername($ssl);
+		my $c = $ssl_contexts{$h} ||
+			$h =~ /^[^\.]+\.(.*)$/ && $ssl_contexts{"*.$1"};
+		if ($c) {
+			Net::SSLeay::set_SSL_CTX($ssl, $c);
+			}
+		});
+	}
+return undef;
+}
+
 # create_ssl_context(keyfile, [certfile], [extracas])
+# Create and return one SSL context based on a key file and optional cert file
+# and CA cert
 sub create_ssl_context
 {
 local ($keyfile, $certfile, $extracas) = @_;
