@@ -22,17 +22,20 @@ $dname || die "Missing CERTBOT_DOMAIN environment variable";
 my $d = &get_virtualmin_for_domain($dname);
 my ($zone, $zname) = &get_bind_zone_for_domain($dname);
 my ($recs, $file);
+my $wapi;
 if ($zone) {
 	# Use BIND module API calls
 	$zone->{'file'} || die "Zone $dname does not have a records file";
 	&lock_file(&bind8::make_chroot(&bind8::absolute_path($zone->{'file'})));
 	$recs = [ &bind8::read_zone_file($zone->{'file'}, $zname) ];
 	$file = $zone->{'file'};
+	$wapi = 0;
 	}
 elsif ($d) {
 	# Use Virtualmin API calls
 	&virtual_server::obtain_lock_dns($d);
 	($recs, $file) = &virtual_server::get_domain_dns_records_and_file($d);
+	$wapi = 1;
 	}
 else {
 	die "No DNS zone named $dname found";
@@ -42,10 +45,15 @@ else {
 # fail a repeated cleanup.
 my ($r) = grep { $_->{'name'} eq "_acme-challenge.".$dname."." } @$recs;
 if ($r) {
-	&bind8::delete_record($file, $r);
+	if ($wapi) {
+		&virtual_server::delete_dns_record($recs, $file, $r);
+		}
+	else {
+		&bind8::delete_record($file, $r);
+		}
 	}
 
-if ($zone) {
+if (!$wapi) {
 	# Apply using BIND API calls
 	&bind8::sign_dnssec_zone_if_key($zone, $recs);
 	&bind8::bump_soa_record($file, $recs);
