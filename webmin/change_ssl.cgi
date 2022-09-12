@@ -70,7 +70,13 @@ $SIG{'TERM'} = 'IGNORE';	# stop process from being killed by restart
 &restart_miniserv();
 &webmin_log("ssl", undef, undef, \%in);
 
-$url = "$ENV{'SERVER_NAME'}:$miniserv{'port'}/webmin/";
-if ($in{'ssl'}) { &redirect("https://$url"); }
-else { &redirect("http://$url"); }
+$url = "$ENV{'SERVER_NAME'}:$miniserv{'port'}";
+if ($in{'ssl'}) {
+	&redirect("https://$url");
+	}
+else {
+	# Tell browser to unset HSTS policy to make non-SSL URL work 
+	print "Strict-Transport-Security: max-age=0; includeSubDomains\n";
+    &redirect("http://$url");
+	}
 
