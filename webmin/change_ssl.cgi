@@ -70,13 +70,20 @@ $SIG{'TERM'} = 'IGNORE';	# stop process from being killed by restart
 &restart_miniserv();
 &webmin_log("ssl", undef, undef, \%in);
 
-$url = "$ENV{'SERVER_NAME'}:$miniserv{'port'}";
-if ($in{'ssl'}) {
-	&redirect("https://$url");
-	}
-else {
+if (!$in{'ssl'}) {
 	# Tell browser to unset HSTS policy to make non-SSL URL work 
 	print "Strict-Transport-Security: max-age=0; includeSubDomains\n";
-    &redirect("http://$url");
 	}
 
+$url = ($in{'ssl'} ? "https://" : "http://") .
+            "$ENV{'SERVER_NAME'}:$miniserv{'port'}";
+%tinfo = &get_theme_info($current_theme);
+if ($tinfo{'spa'} && $tinfo{'nomodcall'}) {
+	$url .= "@{[&get_webprefix()]}/webmin/?$tinfo{'nomodcall'}";
+	}
+&ui_print_header(undef, $text{'ssl_title'}, "", undef, undef, 1);
+print $text{'bind_redirecting'},"<br>\n";
+print "<script>\n";
+print "top.location = '$url';\n";
+print "</script>\n";
+&ui_print_footer();
