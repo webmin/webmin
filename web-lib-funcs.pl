@@ -970,7 +970,7 @@ sub PrintHeader
 my ($cs, $mt) = @_;
 $mt ||= "text/html";
 if (!$gconfig{'no_strict_transport_security'} && uc($ENV{'HTTPS'}) eq "ON") {
-	print "Strict-Transport-Security: max-age=31536000; includeSubDomains\n";
+	print "Strict-Transport-Security: max-age=31536000;\n";
 	}
 if ($pragma_no_cache || $gconfig{'pragma_no_cache'}) {
 	print "pragma: no-cache\n";

@@ -72,7 +72,7 @@ $SIG{'TERM'} = 'IGNORE';	# stop process from being killed by restart
 
 if (!$in{'ssl'}) {
 	# Tell browser to unset HSTS policy to make non-SSL URL work 
-	print "Strict-Transport-Security: max-age=0; includeSubDomains\n";
+	print "Strict-Transport-Security: max-age=0;\n";
 	}
 
 $url = ($in{'ssl'} ? "https://" : "http://") .
