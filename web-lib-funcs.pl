@@ -972,6 +972,9 @@ $mt ||= "text/html";
 if (!$gconfig{'no_strict_transport_security'} && uc($ENV{'HTTPS'}) eq "ON") {
 	print "Strict-Transport-Security: max-age=31536000;\n";
 	}
+elsif (uc($ENV{'HTTPS'}) ne "ON") {
+	print "Strict-Transport-Security: max-age=0;\n";
+	}
 if ($pragma_no_cache || $gconfig{'pragma_no_cache'}) {
 	print "pragma: no-cache\n";
 	print "Expires: Thu, 1 Jan 1970 00:00:00 GMT\n";
