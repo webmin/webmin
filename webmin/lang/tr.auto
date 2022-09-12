@@ -138,6 +138,7 @@ os_usermin=Ayrıca Usermin İşletim Sistemini de güncelleyin
 ssl_deny=Reddedilecek SSL protokolü sürümleri
 ssl_compression=Sıkıştırılmış SSL bağlantılarına izin verilsin mi?
 ssl_honorcipherorder=Sunucu tanımlı şifre sırasını kullanmaya zorlanıyor musunuz?
+ssl_hsts=HSTS başlığıyla SSL'yi uygula
 ssl_extracasdef=Global SSL ayarlarıyla aynı
 ssl_extracasnone=Bu IP adresi için yok
 ssl_extracasbelow=Aşağıya girildi ..

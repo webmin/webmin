@@ -12,6 +12,8 @@ bind_emaxlifetime=Die maximale Prozesslebensdauer muss eine Zahl größer als 60
 os_incorrect=Betriebssystem $1 wurde auf Version $2 aktualisiert
 os_release_notes=Versionshinweise
 
+ssl_hsts=Erzwinge SSL mit HSTS-Header
+
 session_utmp=Anmeldungen und Abmeldungen in <tt>utmp</tt> aufzeichnen?
 session_passapi=API für die Remote-Passwortänderung aktivieren?
 session_passapi0=API deaktiviert

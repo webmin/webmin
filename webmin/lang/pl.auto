@@ -24,6 +24,7 @@ mods_checksig=Sprawdź plik podpisu dla pobranych modułów?
 os_incorrect=System operacyjny $1 został zaktualizowany do wersji $2 
 os_release_notes=Informacje o wydaniu
 
+ssl_hsts=Wymuszaj SSL za pomocą nagłówka HSTS
 ssl_ekey2=Plik klucza prywatnego SSL $1 nie zawiera klucza formatu PEM
 ssl_ecert2=Plik certyfikatu SSL $1 nie zawiera certyfikatu formatu PEM
 ssl_edhparams=Nie udało się wygenerować pliku parametrów PFS DH : $1

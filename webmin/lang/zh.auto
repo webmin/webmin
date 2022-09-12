@@ -114,6 +114,7 @@ ssl_cert_def=与私钥相同的文件
 ssl_cert_oth=单独的文件
 ssl_honorcipherorder=强制使用服务器定义的密码顺序？
 ssl_extracas=附加证书文件<br>（用于链接证书）
+ssl_hsts=使用 HSTS 标头强制 SSL
 ssl_extracasbelow=在下面输入
 ssl_cn=服务器名称
 ssl_newfile=将密钥写入文件

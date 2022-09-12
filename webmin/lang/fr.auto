@@ -12,6 +12,8 @@ bind_emaxlifetime=La durée de vie maximale du processus doit être supérieure 
 os_incorrect=Le système d'exploitation $1 a été mis à niveau vers la version $2
 os_release_notes=Notes de version
 
+ssl_hsts=Appliquer SSL avec l'en-tête HSTS
+
 session_utmp=Enregistrer les connexions et les déconnexions dans <tt>utmp</tt> ?
 session_passapi=Activer l'API de changement de mot de passe à distance ?
 session_passapi0=API désactivée

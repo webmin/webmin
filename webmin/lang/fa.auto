@@ -129,6 +129,7 @@ lang_charover=مجموعه کاراکتر نیرو
 ssl_deny=نسخه های پروتکل SSL را رد کنید
 ssl_compression=اتصال SSL فشرده شده مجاز است؟
 ssl_honorcipherorder=استفاده از سفارش رمزگذار تعریف شده توسط سرور؟
+ssl_hsts=SSL را با هدر HSTS اجرا کنید
 ssl_extracasdef=تنظیمات SSL جهانی
 ssl_extracasnone=هیچ یک برای این آدرس IP نیست
 ssl_extracasbelow=وارد زیر شد ..

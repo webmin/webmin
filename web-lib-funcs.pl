@@ -969,7 +969,7 @@ sub PrintHeader
 {
 my ($cs, $mt) = @_;
 $mt ||= "text/html";
-if (!$gconfig{'no_strict_transport_security'} && uc($ENV{'HTTPS'}) eq "ON") {
+if ($ENV{'SSL_HSTS'} == 1 && uc($ENV{'HTTPS'}) eq "ON") {
 	print "Strict-Transport-Security: max-age=31536000;\n";
 	}
 elsif (uc($ENV{'HTTPS'}) ne "ON") {

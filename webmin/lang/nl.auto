@@ -32,6 +32,7 @@ os_usermin=Update ook Usermin OS
 ssl_deny=Te weigeren SSL-protocolversies
 ssl_compression=Gecomprimeerde SSL-verbindingen toestaan?
 ssl_honorcipherorder=Gebruik van door de server gedefinieerde codeervolgorde forceren?
+ssl_hsts=SSL afdwingen met HSTS-header
 ssl_ekey2=Het SSL-sleutelbestand $1 bevat geen sleutel in PEM-indeling
 ssl_ecert2=Het SSL-certificaatbestand $1 bevat geen certificaat in PEM-formaat
 ssl_pfs=Alleen sterke cijfers met perfecte voorwaartse geheimhouding

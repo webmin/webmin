@@ -48,6 +48,7 @@ os_usermin=Aktualizujte také Usermin OS
 ssl_deny=Verze protokolu SSL k odmítnutí
 ssl_compression=Povolit komprimované připojení SSL?
 ssl_honorcipherorder=Vynutit použití serveru definované šifrové objednávky?
+ssl_hsts=Vynutit SSL s hlavičkou HSTS
 ssl_extracasdef=Stejné jako globální nastavení SSL
 ssl_extracasnone=Žádné pro tuto IP adresu
 ssl_extracasbelow=Zadáno níže ..

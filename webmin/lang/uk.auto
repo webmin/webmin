@@ -190,11 +190,12 @@ lang_echarset=Набір символів відсутнього або неді
 
 ssl_cpan=Крім того, ви можете мати Webmin <a href='$1'>завантажити та встановити</a> необхідний для вас модуль Net::SSLeay Perl.
 ssl_cert_oth=Окремий файл
-ssl_redirect=Перенаправити не-SSL запити на режим SSL?
 ssl_deny=Версії протоколу SSL відхилити
 ssl_compression=Дозволити стислі SSL-з'єднання?
 ssl_honorcipherorder=Примусово використовувати визначений сервером порядок шифрування?
 ssl_extracas=Додаткові файли сертифікатів <br> (для ланцюжкових сертифікатів)
+ssl_hsts=Застосуйте SSL із заголовком HSTS
+ssl_redirect=Перенаправити не-SSL запити на режим SSL?
 ssl_extracasdef=Те саме, що глобальні налаштування SSL
 ssl_extracasnone=Ні для цієї IP-адреси
 ssl_extracasbelow=Введено нижче ..

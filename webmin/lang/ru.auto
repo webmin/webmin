@@ -49,6 +49,7 @@ ssl_cpan=Кроме того, Webmin <a href='$1'>может загрузить 
 ssl_deny=Версии протокола SSL для отклонения
 ssl_compression=Разрешить сжатые SSL-соединения?
 ssl_honorcipherorder=Принудительно использовать серверный порядок шифров?
+ssl_hsts=Использовать SSL с заголовком HSTS
 ssl_extracasdef=То же, что глобальные настройки SSL
 ssl_extracasnone=Нет для этого IP-адреса
 ssl_extracasbelow=Введено ниже ..

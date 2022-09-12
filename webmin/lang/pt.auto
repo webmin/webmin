@@ -133,6 +133,7 @@ os_usermin=Atualize também o SO Usermin
 ssl_deny=Versões do protocolo SSL a serem rejeitadas
 ssl_compression=Permitir conexões SSL compactadas?
 ssl_honorcipherorder=Forçar o uso da ordem de cifra definida pelo servidor?
+ssl_hsts=Aplicar SSL com cabeçalho HSTS
 ssl_extracasdef=O mesmo que configurações SSL globais
 ssl_extracasnone=Nenhum para este endereço IP
 ssl_extracasbelow=Inserido abaixo ..

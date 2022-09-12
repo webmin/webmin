@@ -23,6 +23,9 @@ print &ui_table_start($text{'ssl_header'}, undef, 2);
 print &ui_table_row($text{'ssl_on'},
 	&ui_yesno_radio("ssl", $miniserv{'ssl'}));
 
+print ui_table_row($text{'ssl_hsts'},
+	ui_yesno_radio("ssl_hsts", $miniserv{'ssl_hsts'}));
+
 print &ui_table_row($text{'ssl_key'},
 	&ui_textbox("key", $miniserv{'keyfile'}, 40)." ".
 	&file_chooser_button("key"));

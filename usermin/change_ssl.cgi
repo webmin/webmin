@@ -8,7 +8,9 @@ require './usermin-lib.pl';
 
 &lock_file($usermin_miniserv_config);
 &get_usermin_miniserv_config(\%miniserv);
+$sslcurr = $miniserv{'ssl'};
 $miniserv{'ssl'} = $in{'ssl'};
+$miniserv{'ssl_hsts'} = ($in{'ssl'} && $in{'ssl_hsts'}) ? 1 : 0;
 &webmin::validate_key_cert($in{'key'}, $in{'cert_def'} ? undef : $in{'cert'});
 $miniserv{'keyfile'} = $in{'key'};
 $miniserv{'certfile'} = $in{'cert_def'} ? undef : $in{'cert'};

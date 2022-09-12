@@ -48,6 +48,7 @@ os_usermin=Usermin OS도 업데이트
 ssl_deny=거부 할 SSL 프로토콜 버전
 ssl_compression=압축 SSL 연결을 허용 하시겠습니까?
 ssl_honorcipherorder=서버 정의 암호 순서를 강제로 사용 하시겠습니까?
+ssl_hsts=HSTS 헤더로 SSL 시행
 ssl_extracasdef=글로벌 SSL 설정과 동일
 ssl_extracasnone=이 IP 주소에 대해서는 없음
 ssl_extracasbelow=아래에 입력 ..

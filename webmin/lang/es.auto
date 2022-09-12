@@ -111,6 +111,7 @@ os_usermin=También actualice Usermin OS
 ssl_deny=Versiones de protocolo SSL para rechazar
 ssl_compression=¿Permitir conexiones SSL comprimidas?
 ssl_honorcipherorder=¿Forzar el uso del orden de cifrado definido por el servidor?
+ssl_hsts=Hacer cumplir SSL con el encabezado HSTS
 ssl_extracasdef=Igual que la configuración global de SSL
 ssl_extracasnone=Ninguno para esta dirección IP
 ssl_extracasbelow=Entró a continuación ..

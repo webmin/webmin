@@ -2472,6 +2472,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	$ENV{"QUERY_STRING"} = $querystring;
 	$ENV{"MINISERV_CONFIG"} = $config_file;
 	$ENV{"HTTPS"} = $use_ssl || $config{'inetd_ssl'} ? "ON" : "";
+	$ENV{"SSL_HSTS"} = $config{"ssl_hsts"};
 	$ENV{"MINISERV_PID"} = $miniserv_main_pid;
 	$ENV{"SESSION_ID"} = $session_id if ($session_id);
 	$ENV{"LOCAL_USER"} = $localauth_user if ($localauth_user);
@@ -6445,6 +6446,7 @@ if (!$pid) {
 	$ENV{"DOCUMENT_REALROOT"} = $root0;
 	$ENV{"MINISERV_CONFIG"} = $config_file;
 	$ENV{"HTTPS"} = "ON" if ($use_ssl);
+	$ENV{"SSL_HSTS"} = $config{"ssl_hsts"};
 	$ENV{"MINISERV_PID"} = $miniserv_main_pid;
 	$ENV{"SCRIPT_FILENAME"} = $cmd;
 	if ($ENV{"SCRIPT_FILENAME"} =~ /^\Q$root0\E(\/.*)$/) {

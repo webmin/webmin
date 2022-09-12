@@ -5,6 +5,8 @@ bind_emaxlifetime=最大プロセス寿命は60秒を超える数値である必
 
 os_release_notes=リリースノート
 
+ssl_hsts=HSTS ヘッダーで SSL を強制する
+
 session_utmp=ログインとログアウトを<tt>utmp</tt>に記録しますか？
 
 advanced_etempallowed=一時ファイルディレクトリ $1はシステムディレクトリです

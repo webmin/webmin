@@ -155,6 +155,7 @@ ssl_deny=拒絕的SSL協議版本
 ssl_compression=允許壓縮的SSL連接？
 ssl_honorcipherorder=強制使用服務器定義的密碼順序？
 ssl_extracas=附加證書文件<br>（用於鏈接證書）
+ssl_hsts=使用 HSTS 標頭強制 SSL
 ssl_extracasdef=與全局SSL設置相同
 ssl_extracasnone=此IP地址無
 ssl_extracasbelow=在下面輸入
