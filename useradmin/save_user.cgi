@@ -225,6 +225,9 @@ elsif ($config{'home_base'} && $in{'home_base'}) {
 	}
 else {
 	# Manual home directory chosen
+	if ($in{'home'} =~ /\/$/ && $in{'home'} ne '/') {
+		&error(&text('usave_ehomeslash', $in{'home'}));
+		}
 	$user{'home'} = $in{'home'};
 	}
 $real_home ||= $user{'home'};
