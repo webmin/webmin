@@ -354,6 +354,7 @@ sessions_actions=Дзеянні..
 sessions_all=Усе сеансы..
 sessions_logouts=Таксама паказаць выходныя сесіі.
 sessions_state=Дзярж
+sessions_action=Дзеянні
 sessions_this=Гэта ўваход
 sessions_in=Ўвайшлі ў
 sessions_out=Выйшаў

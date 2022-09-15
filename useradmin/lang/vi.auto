@@ -158,6 +158,7 @@ usave_ereal='$1' không phải là tên thật hợp lệ
 usave_ehome='$1' không phải là thư mục chính hợp lệ
 usave_esgname='$1' không phải là tên nhóm phụ hợp lệ
 usave_ehomepath=Bạn không được phép tạo thư mục chính $1
+usave_ehomeslash=Thư mục chính $1 không được kết thúc bằng dấu /
 usave_eshell='$1' không phải là vỏ cho phép
 usave_egid='$1' không phải là nhóm hợp lệ
 usave_egcreate=Bạn không được phép tạo nhóm mới cho người dùng mới

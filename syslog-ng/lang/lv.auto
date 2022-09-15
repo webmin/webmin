@@ -1,6 +1,7 @@
 index_title=Sistēmas žurnāli NG
 index_eprog=Sistēmas reģistrēšanas dēmons $1 jūsu sistēmā netika atrasts, vai arī tā nav syslog-ng programma. Pielāgojiet <a href='$2'>moduļa konfigurāciju</a>, lai izmantotu pareizo ceļu.
 index_econf=Jūsu sistēmā nav atrasts Syslog-NG konfigurācijas fails $1. Pielāgojiet <a href='$2'>moduļa konfigurāciju</a>, lai izmantotu pareizo ceļu.
+index_econf2=Jūsu sistēmā tika konstatēts pakalpojums <tt>systemd-journald</tt> reģistrēšanas datu apkopošanai un glabāšanai. Tā vietā ieteicams izmantot jaunu <a href='$2'>$1</a> moduli.
 index_apply=Lietot konfigurāciju
 index_applydesc=Noklikšķiniet uz šīs pogas, lai aktivizētu pašreizējo Syslog-NG konfigurāciju.
 index_stop=Apturiet Syslog-NG

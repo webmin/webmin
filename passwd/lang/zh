@@ -10,7 +10,6 @@ passwd_header=改变Unix用户口令
 passwd_for=正在更改密码
 passwd_old=旧口令
 passwd_new=新口令
-passwd_repeat=确认新口令（再输入一次）
 passwd_change=改变
 passwd_reset=清除表格
 passwd_err=无法更改密码

@@ -158,6 +158,7 @@ usave_ereal=„$1” nu este un nume real valid
 usave_ehome=„$1” nu este un director de acasă valid
 usave_esgname=„$1” nu este un nume de grup secundar valid
 usave_ehomepath=Nu aveți voie să creați directorul de origine $1
+usave_ehomeslash=Directorul principal $1 nu se poate termina cu /
 usave_eshell=„$1” nu este un shell permis
 usave_egid=„$1” nu este un grup valid
 usave_egcreate=Nu aveți voie să creați grupuri noi pentru utilizatori noi

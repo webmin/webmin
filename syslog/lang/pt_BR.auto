@@ -2,6 +2,7 @@ index_title=Logs do sistema
 index_m4msg=O arquivo de configuração de log do sistema $1 parece conter diretivas <tt>m4</tt>. Antes de poder ser editado, o Webmin precisa passar o arquivo por <tt>m4</tt> para remover essas diretivas com segurança.
 index_m4=Remova as diretivas m4 do arquivo de configuração
 index_econf=O arquivo de configuração do syslog $1 não foi encontrado no seu sistema. Talvez o syslog não esteja instalado ou uma versão mais recente, como o syslog-ng, esteja em uso ou a <a href='$2'>configuração do módulo</a> esteja incorreta.
+index_econf2=O serviço <tt>systemd-journald</tt> foi detectado em seu sistema para coletar e armazenar dados de log. Recomenda-se usar um novo módulo <a href='$2'>$1</a>.
 index_active=Ativo?
 index_tag=Programa
 index_to=Destino do log

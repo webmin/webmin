@@ -1,0 +1,39 @@
+index_title=Prohlížeč systémových protokolů
+index_elogs=Nebyly nalezeny žádné protokoly k zobrazení
+index_to=Cíl protokolu
+index_rule=Zprávy vybrány
+index_file=Soubor $1
+index_cmd=Výstup z $1
+index_return=prohlížeč systémových protokolů
+index_view=Pohled..
+index_viewfile=Zobrazit soubor protokolu:
+index_viewok=Pohled
+
+journal_journalctl=Všechny zprávy
+journal_expla_journalctl=Všechny zprávy s vysvětlením
+journal_journalctl_dmesg=Zprávy jádra
+journal_journalctl_debug_info=Ladicí a informační zprávy
+journal_journalctl_notice_warning=Upozornění a varovné zprávy
+journal_journalctl_err_crit=Chybové a kritické zprávy
+journal_journalctl_alert_emerg=Výstražné a nouzové zprávy
+
+view_title=Zobrazit soubor protokolu
+view_header=Poslední řádky $1 z $2
+view_header2=Posledních $1 řádků souboru $2
+view_empty=Soubor protokolu je prázdný
+view_refresh=Obnovit
+view_filter=Filtrovat řádky s textem $1
+
+save_efile='$1' není platný název souboru : $2
+save_ecannot2=Nemáte oprávnění prohlížet tento protokol
+save_ecannot6=Nemáte povoleno prohlížet libovolné protokoly
+save_ecannot7=Nemáte oprávnění prohlížet tento extra protokol
+save_emissing=Chybí soubor protokolu k zobrazení
+
+acl_any=Lze zobrazit jakýkoli soubor jako protokol?
+acl_logs=Může prohlížet a konfigurovat soubory protokolu
+acl_all=Všechny protokoly
+acl_sel=Pouze uvedené soubory a soubory v uvedených adresářích ..
+acl_extra=Extra soubory protokolu pro tohoto uživatele
+acl_syslog=Lze zobrazit protokoly ze syslogu?
+acl_others=Lze prohlížet protokoly z jiných modulů?

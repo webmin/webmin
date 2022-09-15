@@ -1,0 +1,39 @@
+index_title=Sistemos žurnalų peržiūros priemonė
+index_elogs=Nerasta jokių rodytinų žurnalų
+index_to=Žurnalo paskirties vieta
+index_rule=Pasirinktos žinutės
+index_file=Failas $1
+index_cmd=Išvestis iš $1
+index_return=sistemos žurnalų peržiūros priemonė
+index_view=Žiūrėti...
+index_viewfile=Žiūrėti žurnalo failą:
+index_viewok=Žiūrėti
+
+journal_journalctl=Visi pranešimai
+journal_expla_journalctl=Visos žinutės su paaiškinimais
+journal_journalctl_dmesg=Branduolio pranešimai
+journal_journalctl_debug_info=Derinimo ir informaciniai pranešimai
+journal_journalctl_notice_warning=Įspėjimo ir įspėjimo pranešimai
+journal_journalctl_err_crit=Klaidos ir kritiniai pranešimai
+journal_journalctl_alert_emerg=Įspėjamieji ir avariniai pranešimai
+
+view_title=Peržiūrėti žurnalo failą
+view_header=Paskutinės $1 eilutės iš $2
+view_header2=Paskutinės $2 failo $1 eilutės
+view_empty=Žurnalo failas tuščias
+view_refresh=Atnaujinti
+view_filter=Filtruoti eilutes su tekstu $1
+
+save_efile=„$1“ nėra tinkamas failo pavadinimas : $2
+save_ecannot2=Jums neleidžiama peržiūrėti šio žurnalo
+save_ecannot6=Jums neleidžiama peržiūrėti savavališkų žurnalų
+save_ecannot7=Jums neleidžiama peržiūrėti šio papildomo žurnalo
+save_emissing=Trūksta peržiūros žurnalo failo
+
+acl_any=Ar galite peržiūrėti bet kurį failą kaip žurnalą?
+acl_logs=Gali peržiūrėti ir konfigūruoti žurnalo failus
+acl_all=Visi rąstai
+acl_sel=Tik išvardyti failai ir esantys kataloguose ..
+acl_extra=Papildomi žurnalo failai šiam vartotojui
+acl_syslog=Ar galima peržiūrėti žurnalus iš syslog?
+acl_others=Ar galima peržiūrėti žurnalus iš kitų modulių?

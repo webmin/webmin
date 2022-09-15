@@ -241,6 +241,7 @@ fperm_notlist=Каталогі не ў спісе
 fperm_forceuser=Карыстальнік прымусіць Unix
 fperm_forcegrp=Група Unix
 fperm_link=Дазволіць сімвалічныя спасылкі звонку?
+fperm_unix=Дазволіць выкарыстанне пашырэнняў Unix?
 fperm_delro=Ці можна выдаляць файлы, якія чытаюцца толькі?
 fperm_forcefile=Прымусіць рэжым файла Unix
 fperm_forcedir=Прымусіць рэжым каталога Unix

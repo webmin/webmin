@@ -163,6 +163,7 @@ sessions_actions=动作..
 sessions_all=所有会议..
 sessions_logouts=同时显示注销的会话。
 sessions_state=州
+sessions_action=行动
 sessions_this=此登录名
 sessions_in=登录
 sessions_out=登出

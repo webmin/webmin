@@ -2,6 +2,7 @@ index_title=سسٹم لاگز
 index_m4msg=آپ کے سسٹم لاگ کنفیگریشن فائل$1 میں <tt>m4</tt> ہدایت شامل ہے۔ ترمیم کرنے سے پہلے ، ویبمین کو ان ہدایات کو محفوظ طریقے سے ہٹانے کے لئے <tt>m4</tt> کے ذریعے فائل کو منتقل کرنے کی ضرورت ہے۔
 index_m4=تشکیل فائل سے m4 ہدایت نامہ ہٹائیں
 index_econf=آپ کے سسٹم پر سیسلاگ کنفیگریشن فائل$1 نہیں مل سکی۔ ہوسکتا ہے کہ سیسلاگ انسٹال نہ ہوا ہو ، یا نیا ورژن جیسے سیسلاگ این جی استعمال میں ہے ، یا <a href='$2'>ماڈیول کنفیگریشن</a> غلط ہے۔
+index_econf2=The <tt>systemd-journald</tt> service was detected on your system for collecting and storing logging data. It is recommended to use a new <a href='$2'>$1</a> module instead.
 index_active=فعال؟
 index_tag=پروگرام
 index_to=منزل مقصود

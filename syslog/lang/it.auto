@@ -1,0 +1,1 @@
+index_econf2=Il servizio <tt>systemd-journald</tt> è stato rilevato sul tuo sistema per la raccolta e la memorizzazione dei dati di registrazione. Si consiglia invece di utilizzare un nuovo modulo <a href='$2'>$1</a>.

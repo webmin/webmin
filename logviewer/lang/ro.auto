@@ -1,0 +1,39 @@
+index_title=Vizualizatorul jurnalelor de sistem
+index_elogs=Nu au fost găsite jurnalele de afișat
+index_to=Destinația jurnalului
+index_rule=Mesaje selectate
+index_file=Fișierul $1
+index_cmd=Ieșire de la $1
+index_return=vizualizator de jurnalele de sistem
+index_view=Vedere..
+index_viewfile=Vizualizați fișierul jurnal:
+index_viewok=Vedere
+
+journal_journalctl=Toate mesajele
+journal_expla_journalctl=Toate mesajele cu explicații
+journal_journalctl_dmesg=Mesaje kernel
+journal_journalctl_debug_info=Mesaje de depanare și informații
+journal_journalctl_notice_warning=Mesaje de avertizare și avertizare
+journal_journalctl_err_crit=Mesaje de eroare și critice
+journal_journalctl_alert_emerg=Mesaje de alertă și de urgență
+
+view_title=Vizualizați fișierul jurnal
+view_header=Ultimele $1 rânduri din $2
+view_header2=Ultimele $1 rânduri din fișierul $2
+view_empty=Fișierul jurnal este gol
+view_refresh=Reîmprospăta
+view_filter=Filtrați liniile cu textul $1
+
+save_efile=„$1” nu este un nume de fișier valid : $2
+save_ecannot2=Nu aveți voie să vizualizați acest jurnal
+save_ecannot6=Nu aveți voie să vizualizați jurnalele arbitrare
+save_ecannot7=Nu aveți voie să vizualizați acest jurnal suplimentar
+save_emissing=Lipsește fișierul jurnal de vizualizat
+
+acl_any=Poate vizualiza orice fișier ca jurnal?
+acl_logs=Poate vizualiza și configura fișierele jurnal
+acl_all=Toate jurnalele
+acl_sel=Doar fișierele listate și cele din directoarele listate ..
+acl_extra=Fișiere jurnal suplimentare pentru acest utilizator
+acl_syslog=Se pot vizualiza jurnalele din syslog?
+acl_others=Se pot vizualiza jurnalele de la alte module?

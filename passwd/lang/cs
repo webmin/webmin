@@ -11,7 +11,6 @@ passwd_header=Změna hesla uživatele
 passwd_for=Měním heslo pro
 passwd_old=Staré heslo
 passwd_new=Nové heslo
-passwd_repeat=Nové heslo (znovu)
 passwd_expire=Donutit uživatele ke změně hesla při příštím přihlášení?
 passwd_others=Změnit heslo v dalším modulech?
 passwd_change=Změnit

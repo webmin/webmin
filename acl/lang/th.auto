@@ -354,6 +354,7 @@ sessions_actions=การดำเนินการ..
 sessions_all=ทุกวาระ..
 sessions_logouts=แสดงเซสชันการออกจากระบบด้วย..
 sessions_state=สถานะ
+sessions_action=การกระทำ
 sessions_this=เข้าสู่ระบบนี้
 sessions_in=เข้าสู่ระบบ
 sessions_out=ออกจากระบบ

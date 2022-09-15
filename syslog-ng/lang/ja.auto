@@ -1,6 +1,7 @@
 index_title=システムログNG
 index_eprog=システムロギングデーモン $1がシステムで見つからなかったか、syslog-ngプログラムではありません。正しいパスを使用するように<a href='$2'>モジュール構成</a>を調整します。
 index_econf=Syslog-NG構成ファイル $1がシステムで見つかりませんでした。正しいパスを使用するように<a href='$2'>モジュール構成</a>を調整します。
+index_econf2=<tt>systemd-journald</tt> サービスが、ログ データを収集して保存するためにシステムで検出されました。代わりに、新しい <a href='$2'>$1</a> モジュールを使用することをお勧めします。
 index_apply=設定を適用
 index_applydesc=このボタンをクリックして、現在のSyslog-NG構成をアクティブにします。
 index_stop=Syslog-NGを停止します

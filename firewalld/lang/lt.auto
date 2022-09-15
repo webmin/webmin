@@ -37,6 +37,7 @@ index_listrules=Išvardykite FirewallD taisykles
 index_restart_firewalld=Iš naujo įkelti FirewallD
 index_restart_firewallddesc=Iš naujo įkelkite FirewallD serverį ir pritaikykite taisykles, kurios buvo sukurtos visam laikui.
 index_listrules_restartdesc=Išsamią informaciją apie esamas išsamias ir tiesiogines ugniasienės taisykles $1 zonoje.
+index_dependent=Nepavyko iš naujo paleisti $1 priklausomos paslaugos
 
 port_edit=Redaguoti uostą
 port_create=Pridėti prievadą

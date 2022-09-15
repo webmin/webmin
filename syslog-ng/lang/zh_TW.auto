@@ -1,6 +1,7 @@
 index_title=系統日誌異常
 index_eprog=在系統上找不到系統日誌記錄守護程序 $1，或者不是syslog-ng程序。調整<a href='$2'>模塊配置</a>以使用正確的路徑。
 index_econf=在系統上找不到Syslog-NG配置文件 $1。調整<a href='$2'>模塊配置</a>以使用正確的路徑。
+index_econf2=在您的系統上檢測到 <tt>systemd-journald</tt> 服務用於收集和存儲日誌數據。建議改用新的 <a href='$2'>$1</a> 模塊。
 index_apply=應用配置
 index_applydesc=單擊此按鈕激活當前的Syslog-NG配置。
 index_stop=停止Syslog-NG

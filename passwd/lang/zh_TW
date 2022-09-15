@@ -10,7 +10,6 @@ passwd_header=變更 Unix 使用者密碼
 passwd_for=正要變更密碼的使用者
 passwd_old=原先密碼
 passwd_new=新的密碼
-passwd_repeat=確認新密碼 (再輸入一次)
 passwd_change=變更
 passwd_reset=清除表單
 passwd_err=變更密碼失敗

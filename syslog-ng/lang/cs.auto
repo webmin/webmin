@@ -1,6 +1,7 @@
 index_title=Systémové protokoly NG
 index_eprog=Démon protokolování systému $1 nebyl ve vašem systému nalezen nebo není programem syslog-ng. Upravte konfiguraci modulu <a href='$2'></a> a použijte správnou cestu.
 index_econf=Ve vašem systému nebyl nalezen konfigurační soubor Syslog-NG $1. Upravte konfiguraci modulu <a href='$2'></a> a použijte správnou cestu.
+index_econf2=Ve vašem systému byla zjištěna služba <tt>systemd-journald</tt> pro shromažďování a ukládání protokolovaných dat. Místo toho se doporučuje použít nový modul <a href='$2'>$1</a>.
 index_apply=Použít konfiguraci
 index_applydesc=Klepnutím na toto tlačítko aktivujete aktuální konfiguraci Syslog-NG.
 index_stop=Zastavte Syslog-NG

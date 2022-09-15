@@ -16,6 +16,7 @@ sessions_actions=Comportamiento..
 sessions_all=Todas las sesiones..
 sessions_logouts=Mostrar también sesiones cerradas.
 sessions_state=Estado
+sessions_action=Comportamiento
 sessions_this=Este inicio de sesión
 sessions_in=Conectado
 sessions_out=Desconectado

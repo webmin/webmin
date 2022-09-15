@@ -38,6 +38,8 @@ euser_locked=帐户已被锁定
 fmisc_oplocks=启用oplock？
 fmisc_level2=只读oplock？
 
+fperm_unix=允许使用 Unix 扩展？
+
 share_create=自动创建目录？
 share_owner=与所有者创建
 share_createperms=具有权限创建

@@ -11,7 +11,6 @@ passwd_header=Unix wachtwoord wijzigen
 passwd_for=Verander het wachtwoord van :
 passwd_old=Huidige wachtwoord
 passwd_new=Nieuw wachtwoord
-passwd_repeat=Nieuw wachtwoord (opnieuw)
 passwd_expire=Bij volgende inlog dwingen dat de gebruiker zijn wachtwoord verandert?
 passwd_others=Verander wachtwoord in andere modules?
 passwd_change=Wijzigen

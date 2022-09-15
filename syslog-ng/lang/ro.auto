@@ -1,6 +1,7 @@
 index_title=Jurnalele de sistem NG
 index_eprog=Demonul de înregistrare a sistemului $1 nu a fost găsit în sistemul dvs. sau nu este programul syslog-ng. Reglați configurația modulului <a href='$2'></a> pentru a utiliza calea corectă.
 index_econf=Fișierul de configurare Syslog-NG $1 nu a fost găsit în sistemul dvs. Reglați configurația modulului <a href='$2'></a> pentru a utiliza calea corectă.
+index_econf2=Serviciul <tt>systemd-journald</tt> a fost detectat pe sistemul dumneavoastră pentru colectarea și stocarea datelor de înregistrare. Este recomandat să utilizați un nou modul <a href='$2'>$1</a>.
 index_apply=Aplicați configurare
 index_applydesc=Faceți clic pe acest buton pentru a activa configurația curentă Syslog-NG.
 index_stop=Opriți Syslog-NG

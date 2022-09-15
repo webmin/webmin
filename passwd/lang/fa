@@ -10,7 +10,6 @@ passwd_header= تغييراسم‌رمز کاربر يونيکس
 passwd_for= تغييراسم‌رمز براي 
 passwd_old= اسم‌رمز قبلي
 passwd_new= اسم‌رمز جديد
-passwd_repeat= اسم‌رمز جديد(تاييد)
 passwd_expire=مجبور کردن کاربر به تغيير اسم‌رمز در اولين ورود به سيستم
 passwd_others= تغييردادن اسم‌رمز در ساير پيمانه‌ها 
 passwd_change= تغييردادن 

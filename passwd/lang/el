@@ -11,7 +11,6 @@ passwd_header=Αλλαγή κωδικού Unix χρήστη
 passwd_for=Αλλαγή κωδικού για
 passwd_old=Παλιος κωδικός
 passwd_new=Νέος κωδικός
-passwd_repeat=Νέος κωδικός (ξανά)
 passwd_expire=Εξαναγκασμός χρήστη αλλαγής του κωδικού του, την επόμενη φορά που θα συνδεθεί;
 passwd_others=Αλλαγή κωδικού στα άλλα αρθρώματα;
 passwd_change=Αλλαγή

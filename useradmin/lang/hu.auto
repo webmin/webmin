@@ -156,6 +156,7 @@ usave_ereal=A '$1' nem érvényes valós név
 usave_ehome=A '$1' nem érvényes otthoni könyvtár
 usave_esgname=A '$1' nem érvényes másodlagos csoportnév
 usave_ehomepath=Nem hozhat létre $1 otthoni könyvtárat
+usave_ehomeslash=A $1 saját könyvtár nem végződhet a / jellel
 usave_eshell=A '$1' nem engedélyezett héj
 usave_egid=A '$1' nem érvényes csoport
 usave_egcreate=Nem hozhat létre új csoportokat az új felhasználók számára

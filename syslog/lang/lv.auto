@@ -2,6 +2,7 @@ index_title=Sistēmas žurnāli
 index_m4msg=Šķiet, ka jūsu sistēmas žurnāla konfigurācijas failā $1 ir <tt>m4</tt> direktīvas. Lai to varētu rediģēt, Webmin jāpāriet failam caur <tt>m4</tt>, lai droši noņemtu šīs direktīvas.
 index_m4=Noņemiet m4 direktīvas no konfigurācijas faila
 index_econf=Jūsu sistēmā nav atrasts syslog konfigurācijas fails $1. Varbūt syslog nav instalēts vai tiek izmantota jaunāka versija, piemēram, syslog-ng, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+index_econf2=Jūsu sistēmā tika konstatēts pakalpojums <tt>systemd-journald</tt> reģistrēšanas datu apkopošanai un glabāšanai. Tā vietā ieteicams izmantot jaunu <a href='$2'>$1</a> moduli.
 index_active=Aktīvs?
 index_tag=Programma
 index_to=Žurnāla galamērķis

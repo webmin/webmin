@@ -1,0 +1,39 @@
+index_title=システム ログ ビューア
+index_elogs=表示するログが見つかりませんでした
+index_to=ログの宛先
+index_rule=メッセージが選択されました
+index_file=ファイル $1
+index_cmd=$1 からの出力
+index_return=システム ログ ビューア
+index_view=意見..
+index_viewfile=ログファイルを表示:
+index_viewok=意見
+
+journal_journalctl=すべてのメッセージ
+journal_expla_journalctl=説明付きのすべてのメッセージ
+journal_journalctl_dmesg=カーネル メッセージ
+journal_journalctl_debug_info=デバッグおよび情報メッセージ
+journal_journalctl_notice_warning=通知および警告メッセージ
+journal_journalctl_err_crit=エラーと重大なメッセージ
+journal_journalctl_alert_emerg=アラートと緊急メッセージ
+
+view_title=ログファイルを表示
+view_header=$2 の最後の $1 行
+view_header2=$2 ファイルの最後の $1 行
+view_empty=ログファイルが空です
+view_refresh=リフレッシュ
+view_filter=テキスト $1 で行をフィルタ
+
+save_efile='$1' は有効なファイル名ではありません : $2
+save_ecannot2=このログの表示は許可されていません
+save_ecannot6=任意のログを表示することは許可されていません
+save_ecannot7=この追加ログの表示は許可されていません
+save_emissing=表示するログ ファイルがありません
+
+acl_any=任意のファイルをログとして表示できますか?
+acl_logs=ログファイルを表示および構成できます
+acl_all=すべてのログ
+acl_sel=リストされたファイルとリストされたディレクトリの下にあるファイルのみ ..
+acl_extra=このユーザーの追加のログ ファイル
+acl_syslog=syslog からログを表示できますか?
+acl_others=他のモジュールからのログを表示できますか?

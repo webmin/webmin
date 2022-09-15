@@ -11,7 +11,6 @@ passwd_header=Unix ユーザパスワードの変更
 passwd_for=パスワード変更中 >
 passwd_old=旧パスワード
 passwd_new=新パスワード
-passwd_repeat=新パスワード (確認)
 passwd_expire=次回のログインでユーザにパスワードの変更を強制?
 passwd_others=別のモジュールでパスワードを変更?
 passwd_change=変更

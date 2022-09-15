@@ -1,6 +1,7 @@
 sync_modify=Gi nytt navn til den samsvarende Webmin-brukeren når en Unix-bruker får nytt navn.
 
 sessions_all=Alle økter..
+sessions_action=Handlinger
 
 sql_nocache0=Cache-tilkoblinger til databasen
 sql_nocache1=Åpne en ny forbindelse for hvert oppslag

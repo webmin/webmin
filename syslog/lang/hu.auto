@@ -1,4 +1,5 @@
 index_econf=A (z) $1 syslog konfigurációs fájl nem található a rendszerén. Lehet, hogy a syslog nincs telepítve, vagy egy újabb verzió van használatban, például a syslog-ng, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+index_econf2=A rendszer a <tt>systemd-journald</tt> szolgáltatást észlelte a naplózási adatok gyűjtésére és tárolására. Javasoljuk, hogy helyette egy új <a href='$2'>$1</a> modult használjon.
 index_socket=$1 Unix socket fájl
 index_cmd=Teljesítmény $1 -től
 index_view=Kilátás ..

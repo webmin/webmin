@@ -1,6 +1,7 @@
 index_title=Registri di sistema NG
 index_eprog=Il demone di registrazione del sistema $1 non è stato trovato sul tuo sistema o non è il programma syslog-ng. Modifica la <a href='$2'>configurazione del modulo</a> per utilizzare il percorso corretto.
 index_econf=Il file di configurazione Syslog-NG $1 non è stato trovato sul tuo sistema. Modifica la <a href='$2'>configurazione del modulo</a> per utilizzare il percorso corretto.
+index_econf2=Il servizio <tt>systemd-journald</tt> è stato rilevato sul tuo sistema per la raccolta e la memorizzazione dei dati di registrazione. Si consiglia invece di utilizzare un nuovo modulo <a href='$2'>$1</a>.
 index_apply=Applica configurazione
 index_applydesc=Fare clic su questo pulsante per attivare la configurazione Syslog-NG corrente.
 index_stop=Ferma Syslog-NG

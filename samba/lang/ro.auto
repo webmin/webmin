@@ -241,6 +241,7 @@ fperm_notlist=Directoare care nu sunt listate
 fperm_forceuser=Forțează utilizatorul Unix
 fperm_forcegrp=Grupul Force Unix
 fperm_link=Permiteți simboluri în afara distribuției?
+fperm_unix=Permiteți utilizarea extensiilor Unix?
 fperm_delro=Puteți șterge fișierele cu citire?
 fperm_forcefile=Forțează modul fișier Unix
 fperm_forcedir=Forțați modul director Unix

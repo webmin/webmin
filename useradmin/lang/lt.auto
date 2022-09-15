@@ -158,6 +158,7 @@ usave_ereal=„$1“ nėra teisingas tikrasis vardas
 usave_ehome=„$1“ nėra galiojantis namų katalogas
 usave_esgname=„$1“ nėra teisingas antrinės grupės pavadinimas
 usave_ehomepath=Jums neleidžiama kurti namų katalogo $1
+usave_ehomeslash=Pagrindinis katalogas $1 negali baigtis raide /
 usave_eshell=„$1“ nėra leidžiamas apvalkalas
 usave_egid=„$1“ nėra tinkama grupė
 usave_egcreate=Jums neleidžiama kurti naujų grupių naujiems vartotojams

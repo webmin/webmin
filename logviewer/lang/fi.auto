@@ -1,0 +1,39 @@
+index_title=Järjestelmälokien katseluohjelma
+index_elogs=Näytettäviä lokeja ei löytynyt
+index_to=Loki kohde
+index_rule=Viestit valittu
+index_file=Tiedosto $1
+index_cmd=Tulostus kohteesta $1
+index_return=järjestelmälokien katseluohjelma
+index_view=Näytä...
+index_viewfile=Näytä lokitiedosto:
+index_viewok=Näytä
+
+journal_journalctl=Kaikki viestit
+journal_expla_journalctl=Kaikki viestit selityksineen
+journal_journalctl_dmesg=Ytimen viestit
+journal_journalctl_debug_info=Virheenkorjaus ja infoviestit
+journal_journalctl_notice_warning=Varoitus- ja varoitusviestit
+journal_journalctl_err_crit=Virheet ja kriittiset viestit
+journal_journalctl_alert_emerg=Hälytys- ja hätäviestit
+
+view_title=Näytä lokitiedosto
+view_header=Viimeiset $1 riviä $2:sta
+view_header2=Viimeiset $1 riviä tiedostosta $2
+view_empty=Lokitiedosto on tyhjä
+view_refresh=virkistää
+view_filter=Suodata rivit tekstillä $1
+
+save_efile='$1' ei ole kelvollinen tiedostonimi : $2
+save_ecannot2=Sinulla ei ole lupaa tarkastella tätä lokia
+save_ecannot6=Sinulla ei ole oikeutta tarkastella mielivaltaisia lokeja
+save_ecannot7=Sinulla ei ole lupaa tarkastella tätä ylimääräistä lokia
+save_emissing=Katselutiedosto puuttuu
+
+acl_any=Voiko mitä tahansa tiedostoa tarkastella lokina?
+acl_logs=Voi tarkastella ja määrittää lokitiedostoja
+acl_all=Kaikki lokit
+acl_sel=Vain luetellut tiedostot ja luetteloiduissa hakemistoissa olevat tiedostot ..
+acl_extra=Ylimääräiset lokitiedostot tälle käyttäjälle
+acl_syslog=Voiko lokeja tarkastella syslogista?
+acl_others=Voiko muiden moduulien lokeja tarkastella?

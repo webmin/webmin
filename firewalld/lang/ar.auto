@@ -37,6 +37,7 @@ index_listrules=سرد قواعد جدار الحماية
 index_restart_firewalld=إعادة تحميل جدار الحماية د
 index_restart_firewallddesc=أعد تحميل خادم FirewallD وقم بتطبيق القواعد التي تم إنشاؤها بشكل دائم.
 index_listrules_restartdesc=سرد تفاصيل حول قواعد جدار الحماية الغنية والمباشرة الموجودة في منطقة$1.
+index_dependent=فشل في إعادة تشغيل الخدمة التابعة$1
 
 port_edit=تحرير المنفذ
 port_create=إضافة منفذ

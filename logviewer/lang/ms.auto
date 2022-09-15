@@ -1,0 +1,39 @@
+index_title=Pemapar Log Sistem
+index_elogs=Tiada log ditemui untuk dipaparkan
+index_to=Log destinasi
+index_rule=Mesej dipilih
+index_file=Fail $1 
+index_cmd=Output daripada $1 
+index_return=pemapar log sistem
+index_view=Lihat..
+index_viewfile=Lihat fail log:
+index_viewok=Lihat
+
+journal_journalctl=Semua mesej
+journal_expla_journalctl=Semua mesej dengan penjelasan
+journal_journalctl_dmesg=Mesej kernel
+journal_journalctl_debug_info=Nyahpepijat dan mesej maklumat
+journal_journalctl_notice_warning=Notis dan mesej amaran
+journal_journalctl_err_crit=Ralat dan mesej kritikal
+journal_journalctl_alert_emerg=Makluman dan mesej kecemasan
+
+view_title=Lihat Fail Log
+view_header=$1 baris terakhir $2 
+view_header2=$1 baris terakhir $2 fail
+view_empty=Fail log kosong
+view_refresh=Segarkan semula
+view_filter=Tapis baris dengan teks $1 
+
+save_efile='$1' bukan nama fail yang sah  : $2
+save_ecannot2=Anda tidak dibenarkan melihat log ini
+save_ecannot6=Anda tidak dibenarkan melihat log sewenang-wenangnya
+save_ecannot7=Anda tidak dibenarkan melihat log tambahan ini
+save_emissing=Fail log tiada untuk dilihat
+
+acl_any=Bolehkah melihat mana-mana fail sebagai log?
+acl_logs=Boleh melihat dan mengkonfigurasi fail log
+acl_all=Semua log
+acl_sel=Hanya fail tersenarai dan yang berada di bawah direktori tersenarai ..
+acl_extra=Fail log tambahan untuk pengguna ini
+acl_syslog=Bolehkah melihat log dari syslog?
+acl_others=Bolehkah melihat log dari modul lain?

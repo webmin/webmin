@@ -37,6 +37,7 @@ index_listrules=Λίστα Κανόνων FirewallD
 index_restart_firewalld=Επανάληψη φόρτωσης FirewallD
 index_restart_firewallddesc=Φορτώστε ξανά τον διακομιστή FirewallD και εφαρμόστε τους κανόνες που δημιουργήθηκαν μόνιμα.
 index_listrules_restartdesc=Παραθέστε λεπτομέρειες σχετικά με τους υπάρχοντες εμπλουτισμένους και άμεσους κανόνες FirewallD στη ζώνη $1.
+index_dependent=Αποτυχία επανεκκίνησης $1 εξαρτώμενης υπηρεσίας
 
 port_edit=Επεξεργασία θύρας
 port_create=Προσθήκη θύρας

@@ -1,0 +1,39 @@
+index_title=Przeglądarka dzienników systemowych
+index_elogs=Nie znaleziono dzienników do wyświetlenia
+index_to=Miejsce docelowe dziennika
+index_rule=Wybrane wiadomości
+index_file=Plik $1 
+index_cmd=Wyjście z $1 
+index_return=przeglądarka dzienników systemowych
+index_view=Pogląd..
+index_viewfile=Wyświetl plik dziennika:
+index_viewok=Pogląd
+
+journal_journalctl=Wszystkie wiadomości
+journal_expla_journalctl=Wszystkie wiadomości z objaśnieniami
+journal_journalctl_dmesg=Wiadomości jądra
+journal_journalctl_debug_info=Komunikaty debugowania i informacyjne
+journal_journalctl_notice_warning=Komunikaty informacyjne i ostrzegawcze
+journal_journalctl_err_crit=Komunikaty o błędach i krytyczne
+journal_journalctl_alert_emerg=Komunikaty alarmowe i alarmowe
+
+view_title=Wyświetl plik dziennika
+view_header=Ostatnie $1 wierszy $2 
+view_header2=Ostatnie $1 wierszy pliku $2 
+view_empty=Plik dziennika jest pusty
+view_refresh=Odświeżać
+view_filter=Filtruj linie z tekstem $1 
+
+save_efile=„$1” nie jest prawidłową nazwą pliku : $2
+save_ecannot2=Nie masz uprawnień do przeglądania tego dziennika
+save_ecannot6=Nie możesz przeglądać dowolnych logów
+save_ecannot7=Nie masz uprawnień do przeglądania tego dodatkowego dziennika
+save_emissing=Brak pliku dziennika do wyświetlenia
+
+acl_any=Czy można wyświetlić dowolny plik jako dziennik?
+acl_logs=Może przeglądać i konfigurować pliki dziennika
+acl_all=Wszystkie dzienniki
+acl_sel=Tylko wymienione pliki i te w wymienionych katalogach ..
+acl_extra=Dodatkowe pliki dziennika dla tego użytkownika
+acl_syslog=Czy można przeglądać logi z syslog?
+acl_others=Czy można przeglądać logi z innych modułów?

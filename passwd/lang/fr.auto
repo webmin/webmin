@@ -1,3 +1,5 @@
+passwd_repeat=Répéter le mot de passe
+
 acl_self=Toujours autoriser le changement de mot de passe?
 acl_mode6=Utilisateurs correspondant
 acl_notusers=Sauf pour les utilisateurs

@@ -37,6 +37,7 @@ index_listrules=FirewallDルールを一覧表示
 index_restart_firewalld=FirewallDをリロード
 index_restart_firewallddesc=FirewallDサーバーをリロードし、永続的に作成されたルールを適用します。
 index_listrules_restartdesc=$1ゾーンにある既存のリッチおよびダイレクトFirewallDルールに関する詳細を一覧表示します。
+index_dependent=$1 依存サービスの再起動に失敗しました
 
 port_edit=ポートを編集
 port_create=ポートを追加

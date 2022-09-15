@@ -241,6 +241,7 @@ fperm_notlist=Gidse om nie te lys nie
 fperm_forceuser=Dwing Unix-gebruiker
 fperm_forcegrp=Dwing Unix-groep
 fperm_link=Laat symlinks buite deel toe?
+fperm_unix=Laat die gebruik van Unix-uitbreidings toe?
 fperm_delro=Kan leesalleen lêers uitgevee word?
 fperm_forcefile=Dwing Unix-lêer af
 fperm_forcedir=Dwing Unix-gidsmodus af

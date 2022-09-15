@@ -69,6 +69,7 @@ usave_euuid=Du får inte ändra användarnas UID
 usave_euidused2=UID används redan
 usave_ealluid=Alla tillåtna UID: er har tilldelats
 usave_esgname='$1' är inte ett giltigt sekundärt gruppnamn
+usave_ehomeslash=Hemkatalogen $1 kan inte sluta med en /
 usave_egcreate=Du får inte skapa nya grupper för nya användare
 usave_eoffice=Office kan inte innehålla ett: -tecken
 usave_eworkph=Arbetstelefonen kan inte innehålla ett: -tecken

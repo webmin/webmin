@@ -1,0 +1,39 @@
+index_title=ผู้ดูบันทึกระบบ
+index_elogs=ไม่พบบันทึกที่จะแสดง
+index_to=บันทึกปลายทาง
+index_rule=ข้อความที่เลือก
+index_file=ไฟล์ $1
+index_cmd=เอาต์พุตจาก $1
+index_return=โปรแกรมดูบันทึกของระบบ
+index_view=ดู..
+index_viewfile=ดูไฟล์บันทึก:
+index_viewok=ดู
+
+journal_journalctl=ข้อความทั้งหมด
+journal_expla_journalctl=ข้อความทั้งหมดพร้อมคำอธิบาย
+journal_journalctl_dmesg=ข้อความเคอร์เนล
+journal_journalctl_debug_info=ข้อความดีบักและข้อมูล
+journal_journalctl_notice_warning=ประกาศและข้อความเตือน
+journal_journalctl_err_crit=ข้อผิดพลาดและข้อความสำคัญ
+journal_journalctl_alert_emerg=ข้อความแจ้งเตือนและเหตุฉุกเฉิน
+
+view_title=ดูไฟล์บันทึก
+view_header=$1 บรรทัดสุดท้ายของ $2
+view_header2=$1 บรรทัดสุดท้ายของ $2 ไฟล์
+view_empty=ไฟล์บันทึกว่างเปล่า
+view_refresh=รีเฟรช
+view_filter=กรองบรรทัดที่มีข้อความ $1
+
+save_efile='$1' ไม่ใช่ชื่อไฟล์ที่ถูกต้อง  : $2
+save_ecannot2=คุณไม่ได้รับอนุญาตให้ดูบันทึกนี้
+save_ecannot6=คุณไม่ได้รับอนุญาตให้ดูบันทึกโดยพลการ
+save_ecannot7=คุณไม่ได้รับอนุญาตให้ดูบันทึกพิเศษนี้
+save_emissing=ไม่มีไฟล์บันทึกที่จะดู
+
+acl_any=สามารถดูไฟล์ใด ๆ เป็นบันทึกได้หรือไม่?
+acl_logs=สามารถดูและกำหนดค่าไฟล์บันทึก
+acl_all=บันทึกทั้งหมด
+acl_sel=เฉพาะไฟล์ที่อยู่ในรายการและที่อยู่ในไดเร็กทอรีที่แสดงรายการ ..
+acl_extra=ไฟล์บันทึกพิเศษสำหรับผู้ใช้รายนี้
+acl_syslog=สามารถดูบันทึกจาก syslog ได้หรือไม่
+acl_others=สามารถดูบันทึกจากโมดูลอื่นได้หรือไม่?

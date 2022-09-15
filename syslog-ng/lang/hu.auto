@@ -1,3 +1,5 @@
+index_econf2=A rendszer a <tt>systemd-journald</tt> szolgáltatást észlelte a naplózási adatok gyűjtésére és tárolására. Javasoljuk, hogy helyette egy új <a href='$2'>$1</a> modult használjon.
+
 sources_typenw=Syslog szerver
 
 source_transport=Hálózati protokoll

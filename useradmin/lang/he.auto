@@ -158,6 +158,7 @@ usave_ereal='$1' is not a valid real name
 usave_ehome='$1' is not a valid home directory
 usave_esgname='$1' is not a valid secondary group name
 usave_ehomepath=You are not allowed to create the home directory $1
+usave_ehomeslash=ספריית הבית $1 לא יכולה להסתיים עם /
 usave_eshell='$1' is not an allowable shell
 usave_egid='$1' is not a valid group
 usave_egcreate=אינך מורשה ליצור קבוצות חדשות למשתמשים חדשים

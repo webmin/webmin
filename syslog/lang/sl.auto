@@ -2,6 +2,7 @@ index_title=Sistemski dnevniki
 index_m4msg=Zdi se, da vaša konfiguracijska datoteka sistemskega dnevnika $1 vsebuje navodila <tt>m4</tt>. Preden ga lahko uredite, mora Webmin datoteko prenesti skozi <tt>m4</tt>, da varno odstrani te direktive.
 index_m4=Iz konfiguracijske datoteke odstranite direktive m4
 index_econf=Konfiguracijske datoteke syslog $1 v vašem sistemu ni bilo mogoče najti. Mogoče syslog ni nameščen ali je uporabljena novejša različica, kot je syslog-ng, ali je konfiguracija <a href='$2'>modula</a> napačna.
+index_econf2=Storitev <tt>systemd-journald</tt> je bila zaznana v vašem sistemu za zbiranje in shranjevanje podatkov beleženja. Priporočljivo je, da namesto tega uporabite nov modul <a href='$2'>$1</a>.
 index_active=Aktivno?
 index_tag=Program
 index_to=Prijava cilja

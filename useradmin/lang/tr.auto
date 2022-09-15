@@ -26,6 +26,7 @@ uedit_grename=Kullanıcı adı değişirse grup yeniden adlandırılsın mı?
 uedit_sys=Sistem varsayılanı
 uedit_clone=Kullanıcıyı Klonla
 
+usave_ehomeslash=$1 giriş dizini / ile bitemez
 usave_edigestmod=Sisteminizde $4 'lık parola etkin, ancak Perl <tt>$3</tt> modülü kurulu değil. Normal şifreli parolaların kullanımını zorlamak için <a href='$1'>modül yapılandırmanızı</a> ayarlayın veya Webmin'in <tt>$3</tt> modülünü sizin için <a href='$2'>indirip kurmasını</a> sağlayın.
 usave_edigestcrypt=Sisteminizde $4 parola etkinleştirildi, ancak <tt>crypt</tt> işlevi bu biçimi desteklemiyor. Normal şifreli parolaların kullanımını zorlamak için <a href='$1'>modül yapılandırmanızı</a> ayarlayın.
 usave_epasswd_mindays=Şifre $1 günden daha kısa bir süre önce değiştirildi

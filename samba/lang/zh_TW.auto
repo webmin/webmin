@@ -25,6 +25,8 @@ smb_ads=活動目錄
 euser_noexpire=密碼永不過期
 euser_locked=帳戶已被鎖定
 
+fperm_unix=允許使用 Unix 擴展？
+
 share_owner=與所有者創建
 share_createperms=具有權限創建
 share_group=與組一起創建

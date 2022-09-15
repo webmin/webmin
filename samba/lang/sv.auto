@@ -40,6 +40,8 @@ euser_locked=Kontot är låst
 fmisc_oplocks=Aktivera låsningar?
 fmisc_level2=Skyddsöppningar?
 
+fperm_unix=Tillåt användning av Unix-tillägg?
+
 share_create=Skapa katalog automatiskt?
 share_owner=Skapa med ägaren
 share_createperms=Skapa med behörigheter

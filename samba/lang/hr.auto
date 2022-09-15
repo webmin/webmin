@@ -241,6 +241,7 @@ fperm_notlist=Katalozi nisu na popisu
 fperm_forceuser=Korisnik Unix korisnika
 fperm_forcegrp=Force Unix grupa
 fperm_link=Želite li dopustiti simboličke veze izvan dijeljenja?
+fperm_unix=Dopustiti korištenje Unix proširenja?
 fperm_delro=Mogu li izbrisati datoteke samo za čitanje?
 fperm_forcefile=Prisilite Unix način rada datoteka
 fperm_forcedir=Prisilite način Unix kataloga

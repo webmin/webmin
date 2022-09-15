@@ -354,6 +354,7 @@ sessions_actions=Toiminnot..
 sessions_all=Kaikki istunnot..
 sessions_logouts=Näytä myös kirjautuneet istunnot..
 sessions_state=Osavaltio
+sessions_action=Toiminnot
 sessions_this=Tämä kirjautuminen
 sessions_in=Kirjautunut sisään
 sessions_out=Kirjautunut ulos

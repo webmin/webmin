@@ -141,6 +141,7 @@ sessions_actions=動作..
 sessions_all=所有會議..
 sessions_logouts=還顯示註銷的會話。
 sessions_state=州
+sessions_action=行動
 sessions_this=此登錄名
 sessions_in=登錄
 sessions_out=登出

@@ -18,6 +18,8 @@ smb_server=Heslo server
 euser_noexpire=Heslo Nikdy nevyprší
 euser_locked=Účet je uzamčen
 
+fperm_unix=Povolit použití rozšíření Unix?
+
 share_createperms=Vytvořit s oprávněními
 share_group=Vytvořit pomocí skupiny
 

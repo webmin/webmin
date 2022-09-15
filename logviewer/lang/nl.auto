@@ -1,0 +1,39 @@
+index_title=Systeemlogboeken-viewer
+index_elogs=Er zijn geen logboeken gevonden om weer te geven
+index_to=Log bestemming
+index_rule=Berichten geselecteerd
+index_file=Bestand $1
+index_cmd=Uitvoer van $1
+index_return=systeemlogboeken kijker
+index_view=Visie..
+index_viewfile=Logbestand bekijken:
+index_viewok=Visie
+
+journal_journalctl=Alle berichten
+journal_expla_journalctl=Alle berichten met uitleg
+journal_journalctl_dmesg=Kernelberichten
+journal_journalctl_debug_info=Foutopsporing en infoberichten
+journal_journalctl_notice_warning=Kennisgevingen en waarschuwingsberichten
+journal_journalctl_err_crit=Foutmeldingen en kritieke berichten
+journal_journalctl_alert_emerg=Waarschuwings- en noodberichten
+
+view_title=Logbestand bekijken
+view_header=Laatste $1 regels van $2
+view_header2=Laatste $1 regels van $2 bestand
+view_empty=Logbestand is leeg
+view_refresh=Vernieuwen
+view_filter=Filterregels met tekst $1
+
+save_efile='$1' is geen geldige bestandsnaam : $2
+save_ecannot2=U mag dit logboek niet bekijken
+save_ecannot6=Je mag geen willekeurige logs bekijken
+save_ecannot7=U mag dit extra logboek niet bekijken
+save_emissing=Ontbrekend logbestand om te bekijken
+
+acl_any=Kan elk bestand als een logboek worden bekeken?
+acl_logs=Kan logbestanden bekijken en configureren
+acl_all=Alle logboeken
+acl_sel=Alleen bestanden in de lijst en die onder vermelde mappen ..
+acl_extra=Extra logbestanden voor deze gebruiker
+acl_syslog=Kan logboeken van syslog bekijken?
+acl_others=Kan logs van andere modules bekijken?

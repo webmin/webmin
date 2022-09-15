@@ -37,6 +37,7 @@ index_listrules=Lista tar-regoli FirewallD
 index_restart_firewalld=Reload FirewallD
 index_restart_firewallddesc=Reload the FirewallD server u applika r-regoli li nħolqu b'mod permanenti.
 index_listrules_restartdesc=Elenka d-dettalji dwar ir-regoli FirewallD sinjuri u diretti eżistenti fiż-żona $1.
+index_dependent=Naqas milli jerġa' jibda $1 servizz dipendenti
 
 port_edit=Editja l-Port
 port_create=Żid Port

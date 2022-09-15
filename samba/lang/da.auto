@@ -221,6 +221,7 @@ fperm_notlist=Kataloger, der ikke skal liste
 fperm_forceuser=Tving Unix-bruger
 fperm_forcegrp=Tving Unix-gruppen
 fperm_link=Tillad symlink uden for deling?
+fperm_unix=Tillad brug af Unix-udvidelser?
 fperm_delro=Kan du slette readonly-filer?
 fperm_forcefile=Tving Unix-filtilstand
 fperm_forcedir=Tving Unix-katalogtilstand

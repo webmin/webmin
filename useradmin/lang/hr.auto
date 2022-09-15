@@ -158,6 +158,7 @@ usave_ereal='$1' nije valjano pravo ime
 usave_ehome='$1' nije važeći kućni imenik
 usave_esgname='$1' nije valjano ime sekundarne grupe
 usave_ehomepath=Nije vam dopušteno stvoriti kućni direktorij $1
+usave_ehomeslash=Početni direktorij $1 ne može završavati s /
 usave_eshell='$1' nije dopuštena ljuska
 usave_egid='$1' nije valjana grupa
 usave_egcreate=Nije vam dopušteno stvaranje novih grupa za nove korisnike

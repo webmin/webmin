@@ -1,6 +1,7 @@
 index_title=Nhật ký hệ thống NG
 index_eprog=Trình nền ghi nhật ký hệ thống $1 không được tìm thấy trên hệ thống của bạn hoặc không phải là chương trình syslog-ng. Điều chỉnh <a href='$2'>cấu hình mô-đun</a> để sử dụng đúng đường dẫn.
 index_econf=Không tìm thấy tệp cấu hình Syslog-NG $1 trên hệ thống của bạn. Điều chỉnh <a href='$2'>cấu hình mô-đun</a> để sử dụng đúng đường dẫn.
+index_econf2=Dịch vụ <tt>systemd-journald</tt> được phát hiện trên hệ thống của bạn để thu thập và lưu trữ dữ liệu ghi nhật ký. Bạn nên sử dụng mô-đun <a href='$2'>$1</a> mới để thay thế.
 index_apply=Áp dụng cấu hình
 index_applydesc=Nhấp vào nút này để kích hoạt cấu hình Syslog-NG hiện tại.
 index_stop=Dừng Syslog-NG

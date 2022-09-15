@@ -241,6 +241,7 @@ fperm_notlist=ไดเรกทอรีไม่แสดง
 fperm_forceuser=บังคับให้ผู้ใช้ Unix
 fperm_forcegrp=กลุ่มพลังยูนิกซ์
 fperm_link=อนุญาตการเชื่อมโยงภายนอกที่แชร์หรือไม่
+fperm_unix=อนุญาตให้ใช้ส่วนขยาย Unix หรือไม่
 fperm_delro=สามารถลบไฟล์แบบอ่านอย่างเดียวได้หรือไม่
 fperm_forcefile=บังคับโหมดไฟล์ Unix
 fperm_forcedir=บังคับโหมดไดเรกทอรี Unix

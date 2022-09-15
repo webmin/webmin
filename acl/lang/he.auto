@@ -354,6 +354,7 @@ sessions_actions=פעולות..
 sessions_all=כל המפגשים..
 sessions_logouts=הראה גם הפעלות לא מחוברות..
 sessions_state=מדינה
+sessions_action=פעולות
 sessions_this=כניסה זו
 sessions_in=מחובר
 sessions_out=התנתק

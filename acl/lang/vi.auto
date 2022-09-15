@@ -354,6 +354,7 @@ sessions_actions=Hành động..
 sessions_all=Tất cả các phiên..
 sessions_logouts=Cũng hiển thị các phiên đăng xuất..
 sessions_state=Tiểu bang
+sessions_action=Hành động
 sessions_this=Thông tin đăng nhập này
 sessions_in=Đăng nhập
 sessions_out=Đăng xuất

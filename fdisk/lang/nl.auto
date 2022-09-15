@@ -5,6 +5,10 @@ select_nvme=NVME SSD $1 schijf $2
 select_nvmepart=NVME SSD $1 schijf $2 partitie $3 
 
 edit_mountiscsi=iSCSI gedeeld apparaat $1 
+edit_eparted=Deze partitie kan niet worden gewijzigd tenzij de opdracht <tt>parted</tt> is geïnstalleerd.
+edit_eparted2=Deze partitie kan niet worden gewijzigd tenzij <tt>parted</tt> is ingesteld als beheeropdracht in moduleconfiguratie.
+edit_edisk=Deze schijf kan niet worden bewerkt tenzij de opdracht <tt>parted</tt> is geïnstalleerd.
+edit_edisk2=Deze schijf kan niet worden bewerkt tenzij <tt>parted</tt> is ingesteld als beheeropdracht in moduleconfiguratie.
 
 btrfs_l=Bladgrootte
 btrfs_n=Grootte van knooppunt

@@ -10,7 +10,6 @@ passwd_header=Mením heslo Unixového užívateľa
 passwd_for=Mením heslo pre
 passwd_old=Staré heslo
 passwd_new=Nové heslo
-passwd_repeat=Nove heslo (znovu)
 passwd_expire=Prinútiť užívateľa zmeniť si heslo pri ďaľšom prihlásení?
 passwd_others=Zmeniť heslo v ostatných moduloch?
 passwd_change=Zmeniť

@@ -1,6 +1,7 @@
 index_title=Sistemos žurnalai NG
 index_eprog=Sistemos registravimo demonas $1 nerastas jūsų sistemoje arba nėra „syslog-ng“ programa. Norėdami naudoti teisingą kelią, sureguliuokite <a href='$2'>modulio konfigūraciją</a>.
 index_econf=Jūsų sistemoje nerastas „Syslog-NG“ konfigūracijos failas $1. Norėdami naudoti teisingą kelią, sureguliuokite <a href='$2'>modulio konfigūraciją</a>.
+index_econf2=Jūsų sistemoje aptikta paslauga <tt>systemd-journald</tt>, skirta registravimo duomenims rinkti ir saugoti. Vietoje to rekomenduojama naudoti naują <a href='$2'>$1</a> modulį.
 index_apply=Taikyti konfigūraciją
 index_applydesc=Spustelėkite šį mygtuką, kad suaktyvintumėte dabartinę „Syslog-NG“ konfigūraciją.
 index_stop=Sustabdykite „Syslog-NG“

@@ -123,6 +123,7 @@ sessions_actions=Hareketler..
 sessions_all=Tüm oturumlar..
 sessions_logouts=Oturumu kapatılmış oturumları da göster..
 sessions_state=Durum
+sessions_action=Hareketler
 sessions_this=Bu giriş
 sessions_in=Giriş
 sessions_out=Çıkış yapıldı

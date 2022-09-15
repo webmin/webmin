@@ -1,0 +1,1 @@
+index_econf2=De service <tt>systemd-journald</tt> is op uw systeem gedetecteerd voor het verzamelen en opslaan van loggegevens. Het wordt aanbevolen om in plaats daarvan een nieuwe <a href='$2'>$1</a>-module te gebruiken.

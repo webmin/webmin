@@ -1,0 +1,39 @@
+index_title=Viewer för systemloggar
+index_elogs=Inga loggar hittades att visa
+index_to=Loggdestination
+index_rule=Meddelanden valda
+index_file=Fil $1
+index_cmd=Utdata från $1
+index_return=systemloggvisare
+index_view=Se..
+index_viewfile=Visa loggfil:
+index_viewok=Se
+
+journal_journalctl=Alla meddelanden
+journal_expla_journalctl=Alla meddelanden med förklaringar
+journal_journalctl_dmesg=Kärnmeddelanden
+journal_journalctl_debug_info=Felsökning och informationsmeddelanden
+journal_journalctl_notice_warning=Meddelande och varningsmeddelanden
+journal_journalctl_err_crit=Fel och kritiska meddelanden
+journal_journalctl_alert_emerg=Varnings- och nödmeddelanden
+
+view_title=Visa loggfil
+view_header=Sista $1 raderna av $2
+view_header2=Sista $1 raderna i filen $2
+view_empty=Loggfilen är tom
+view_refresh=Uppdatera
+view_filter=Filtrera rader med texten $1
+
+save_efile='$1' är inte ett giltigt filnamn : $2
+save_ecannot2=Du får inte se denna logg
+save_ecannot6=Du får inte se godtyckliga loggar
+save_ecannot7=Du får inte se denna extra logg
+save_emissing=Saknar loggfil att visa
+
+acl_any=Kan du se vilken fil som helst som en logg?
+acl_logs=Kan visa och konfigurera loggfiler
+acl_all=Alla loggar
+acl_sel=Endast listade filer och de under listade kataloger ..
+acl_extra=Extra loggfiler för denna användare
+acl_syslog=Kan du se loggar från syslog?
+acl_others=Kan du se loggar från andra moduler?

@@ -241,6 +241,7 @@ fperm_notlist=الدلائل ليست قائمة
 fperm_forceuser=فرض مستخدم Unix
 fperm_forcegrp=مجموعة Force Unix
 fperm_link=السماح بروابط رمزية خارج المشاركة؟
+fperm_unix=السماح باستخدام ملحقات يونكس؟
 fperm_delro=يمكن حذف الملفات للقراءة فقط؟
 fperm_forcefile=فرض وضع ملف Unix
 fperm_forcedir=فرض وضع دليل يونكس

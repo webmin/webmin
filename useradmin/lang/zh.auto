@@ -54,6 +54,7 @@ usave_elength=用户名不能超过$1个字母
 usave_ere=用户名与regexp $1不匹配
 usave_ealluid=所有允许的UID已分配
 usave_esgname='$1'不是有效的辅助组名称
+usave_ehomeslash=主目录 $1 不能以 / 结尾
 usave_eoffice=Office不能包含：字符
 usave_eworkph=工作电话不能包含：字符
 usave_ehomeph=家用电话不能包含：字符

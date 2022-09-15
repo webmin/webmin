@@ -2,6 +2,7 @@ index_title=Systemlogfiler
 index_m4msg=Din systemlogkonfigurationsfil $1 ser ud til at indeholde <tt>m4</tt> direktiver. Inden den kan redigeres, skal Webmin videregive filen gennem <tt>m4</tt> for at fjerne disse direktiver sikkert.
 index_m4=Fjern m4-direktiver fra konfigurationsfilen
 index_econf=Syslog-konfigurationsfilen $1 blev ikke fundet på dit system. Måske er syslog ikke installeret, eller en nyere version som syslog-ng er i brug, eller <a href='$2'>modulkonfiguration</a> er forkert.
+index_econf2=Tjenesten <tt>systemd-journald</tt> blev fundet på dit system til indsamling og lagring af logdata. Det anbefales at bruge et nyt <a href='$2'>$1</a>-modul i stedet.
 index_active=Aktiv?
 index_tag=Program
 index_to=Log destination

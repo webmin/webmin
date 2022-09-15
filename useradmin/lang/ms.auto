@@ -158,6 +158,7 @@ usave_ereal='$1' bukan nama sebenar yang sah
 usave_ehome='$1' bukan direktori rumah yang sah
 usave_esgname='$1' bukan nama kumpulan sekunder yang sah
 usave_ehomepath=Anda tidak dibenarkan membuat direktori rumah $1
+usave_ehomeslash=Direktori rumah $1 tidak boleh berakhir dengan /
 usave_eshell='$1' bukan shell yang dibenarkan
 usave_egid='$1' bukan kumpulan yang sah
 usave_egcreate=Anda tidak dibenarkan membuat kumpulan baru untuk pengguna baru

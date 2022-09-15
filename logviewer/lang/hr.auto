@@ -1,0 +1,39 @@
+index_title=Preglednik zapisnika sustava
+index_elogs=Nije pronađen nijedan zapisnik za prikaz
+index_to=Odredište zapisnika
+index_rule=Poruke odabrane
+index_file=Datoteka $1
+index_cmd=Izlaz iz $1
+index_return=preglednik zapisnika sustava
+index_view=Pogled..
+index_viewfile=Pogledaj datoteku dnevnika:
+index_viewok=Pogled
+
+journal_journalctl=Sve poruke
+journal_expla_journalctl=Sve poruke sa objašnjenjima
+journal_journalctl_dmesg=Poruke jezgre
+journal_journalctl_debug_info=Debug i info poruke
+journal_journalctl_notice_warning=Poruke obavijesti i upozorenja
+journal_journalctl_err_crit=Pogreške i kritične poruke
+journal_journalctl_alert_emerg=Poruke za upozorenja i hitne slučajeve
+
+view_title=Pogledaj datoteku dnevnika
+view_header=Zadnjih $1 redaka $2
+view_header2=Zadnjih $1 redaka datoteke $2
+view_empty=Dnevnik je prazan
+view_refresh=Osvježiti
+view_filter=Filtrirajte retke s tekstom $1
+
+save_efile='$1' nije valjan naziv datoteke : $2
+save_ecannot2=Nemate dopuštenje za pregled ovog dnevnika
+save_ecannot6=Nije vam dopušten pregled proizvoljnih zapisa
+save_ecannot7=Nije vam dopušteno vidjeti ovaj dodatni dnevnik
+save_emissing=Nedostaje datoteka zapisnika za prikaz
+
+acl_any=Može li se bilo koja datoteka vidjeti kao zapisnik?
+acl_logs=Može pregledavati i konfigurirati datoteke dnevnika
+acl_all=Svi dnevnici
+acl_sel=Samo navedene datoteke i one ispod navedenih direktorija ..
+acl_extra=Dodatne datoteke dnevnika za ovog korisnika
+acl_syslog=Mogu li vidjeti zapisnike iz syslog-a?
+acl_others=Mogu li vidjeti zapisnike iz drugih modula?

@@ -11,7 +11,6 @@ passwd_header=Passwort eines Unix-Benutzers ändern
 passwd_for=Ändere Passwort für
 passwd_old=Altes Passwort
 passwd_new=Neues Passwort
-passwd_repeat=Neues Passwort (bestätigen)
 passwd_expire=Der Benutzer muss sein Passwort bei der nächsten Anmeldung ändern?
 passwd_others=Das Passwort auch in anderen Modulen ändern?
 passwd_change=Ändern

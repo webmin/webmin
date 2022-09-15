@@ -1,0 +1,39 @@
+index_title=Stelsellogboekkyker
+index_elogs=Geen logs is gevind om te vertoon nie
+index_to=Log bestemming
+index_rule=Boodskappe gekies
+index_file=Lêer $1
+index_cmd=Uitvoer vanaf $1
+index_return=stelsel logs kyker
+index_view=Beskou..
+index_viewfile=Bekyk loglêer:
+index_viewok=Beskou
+
+journal_journalctl=Alle boodskappe
+journal_expla_journalctl=Alle boodskappe met verduidelikings
+journal_journalctl_dmesg=Kernboodskappe
+journal_journalctl_debug_info=Ontfout en inligting boodskappe
+journal_journalctl_notice_warning=Kennisgewing en waarskuwing boodskappe
+journal_journalctl_err_crit=Fout en kritieke boodskappe
+journal_journalctl_alert_emerg=Waarskuwing en noodboodskappe
+
+view_title=Bekyk loglêer
+view_header=Laaste $1 reëls van $2
+view_header2=Laaste $1 reëls van $2 lêer
+view_empty=Loglêer is leeg
+view_refresh=Verfris
+view_filter=Filter lyne met teks $1
+
+save_efile='$1' is nie 'n geldige lêernaam nie : $2
+save_ecannot2=Jy word nie toegelaat om hierdie log te sien nie
+save_ecannot6=Jy word nie toegelaat om arbitrêre logs te sien nie
+save_ecannot7=Jy word nie toegelaat om hierdie ekstra log te sien nie
+save_emissing=Ontbrekende loglêer om te bekyk
+
+acl_any=Kan enige lêer as 'n logboek bekyk?
+acl_logs=Kan loglêers bekyk en konfigureer
+acl_all=Alle logs
+acl_sel=Slegs gelyste lêers en dié onder gelyste dopgehou ..
+acl_extra=Ekstra loglêers vir hierdie gebruiker
+acl_syslog=Kan logs vanaf syslog bekyk?
+acl_others=Kan logboeke van ander modules bekyk word?

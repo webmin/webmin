@@ -241,6 +241,7 @@ fperm_notlist=Zerrendak ez zerrendatzeko
 fperm_forceuser=Behartu Unix erabiltzailea
 fperm_forcegrp=Force Unix taldea
 fperm_link=Sinbolak partekatzea baimendu nahi duzu?
+fperm_unix=Unix luzapenak erabiltzea baimendu?
 fperm_delro=Irakurri daitezke fitxategiak ezabatu?
 fperm_forcefile=Behartu Unix fitxategi modua
 fperm_forcedir=Force Unix direktorio moduan

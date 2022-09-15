@@ -1,0 +1,39 @@
+index_title=Visning av systemlogger
+index_elogs=Ingen logger ble funnet å vise
+index_to=Loggdestinasjon
+index_rule=Meldinger er valgt
+index_file=Fil $1
+index_cmd=Utdata fra $1
+index_return=systemloggvisning
+index_view=Utsikt..
+index_viewfile=Vis loggfil:
+index_viewok=Utsikt
+
+journal_journalctl=Alle meldinger
+journal_expla_journalctl=Alle meldinger med forklaringer
+journal_journalctl_dmesg=Kjernemeldinger
+journal_journalctl_debug_info=Feilsøkings- og infomeldinger
+journal_journalctl_notice_warning=Varsel- og advarselsmeldinger
+journal_journalctl_err_crit=Feil og kritiske meldinger
+journal_journalctl_alert_emerg=Alarm- og nødmeldinger
+
+view_title=Vis loggfil
+view_header=Siste $1 linjer av $2
+view_header2=Siste $1 linjer av $2 fil
+view_empty=Loggfilen er tom
+view_refresh=Forfriske
+view_filter=Filtrer linjer med tekst $1
+
+save_efile='$1' er ikke et gyldig filnavn : $2
+save_ecannot2=Du har ikke lov til å se denne loggen
+save_ecannot6=Du har ikke lov til å se vilkårlige logger
+save_ecannot7=Du har ikke lov til å se denne ekstra loggen
+save_emissing=Mangler loggfil å vise
+
+acl_any=Kan du se hvilken som helst fil som en logg?
+acl_logs=Kan vise og konfigurere loggfiler
+acl_all=Alle logger
+acl_sel=Bare listede filer og de under listede kataloger ..
+acl_extra=Ekstra loggfiler for denne brukeren
+acl_syslog=Kan du se logger fra syslog?
+acl_others=Kan du se logger fra andre moduler?

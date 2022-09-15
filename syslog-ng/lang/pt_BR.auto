@@ -1,6 +1,7 @@
 index_title=Logs do sistema NG
 index_eprog=O daemon de log do sistema $1 não foi encontrado no seu sistema ou não é o programa syslog-ng. Ajuste a <a href='$2'>configuração do módulo</a> para usar o caminho correto.
 index_econf=O arquivo de configuração Syslog-NG $1 não foi encontrado no seu sistema. Ajuste a <a href='$2'>configuração do módulo</a> para usar o caminho correto.
+index_econf2=O serviço <tt>systemd-journald</tt> foi detectado em seu sistema para coletar e armazenar dados de log. Recomenda-se usar um novo módulo <a href='$2'>$1</a>.
 index_apply=Aplicar configuração
 index_applydesc=Clique neste botão para ativar a configuração atual do Syslog-NG.
 index_stop=Parar Syslog-NG

@@ -158,6 +158,7 @@ usave_ereal='$1' nav derīgs īstais vārds
 usave_ehome='$1' nav derīgs mājas direktorijs
 usave_esgname='$1' nav derīgs sekundārās grupas nosaukums
 usave_ehomepath=Jums nav atļauts izveidot mājas direktoriju $1
+usave_ehomeslash=Mājas direktorija $1 nevar beigties ar /
 usave_eshell=“$1” nav pieļaujams apvalks
 usave_egid='$1' nav derīga grupa
 usave_egcreate=Jums nav atļauts izveidot jaunas grupas jauniem lietotājiem

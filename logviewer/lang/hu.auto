@@ -1,0 +1,39 @@
+index_title=Rendszernaplók Viewer
+index_elogs=Nem található megjeleníthető napló
+index_to=Napló célhely
+index_rule=Üzenetek kiválasztva
+index_file=Fájl $1
+index_cmd=Kimenet innen: $1
+index_return=rendszernapló-nézegető
+index_view=Kilátás..
+index_viewfile=Naplófájl megtekintése:
+index_viewok=Kilátás
+
+journal_journalctl=Minden üzenet
+journal_expla_journalctl=Minden üzenet magyarázattal
+journal_journalctl_dmesg=Kernel üzenetek
+journal_journalctl_debug_info=Hibakeresési és információs üzenetek
+journal_journalctl_notice_warning=Figyelmeztető és figyelmeztető üzenetek
+journal_journalctl_err_crit=Hiba és kritikus üzenetek
+journal_journalctl_alert_emerg=Figyelmeztető és vészhelyzeti üzenetek
+
+view_title=Naplófájl megtekintése
+view_header=$2 utolsó $1 sora
+view_header2=$2 fájl utolsó $1 sora
+view_empty=A naplófájl üres
+view_refresh=Frissítés
+view_filter=Szűrő sorok szöveggel $1
+
+save_efile=A '$1' nem érvényes fájlnév : $2
+save_ecannot2=Nem tekintheti meg ezt a naplót
+save_ecannot6=Nem tekinthet meg tetszőleges naplókat
+save_ecannot7=Nem tekintheti meg ezt az extra naplót
+save_emissing=Hiányzó naplófájl a megtekintéshez
+
+acl_any=Megtekinthet bármilyen fájlt naplóként?
+acl_logs=Megtekintheti és konfigurálhatja a naplófájlokat
+acl_all=Minden napló
+acl_sel=Csak a felsorolt fájlok és a felsorolt könyvtárak alatt lévők ..
+acl_extra=További naplófájlok ehhez a felhasználóhoz
+acl_syslog=Megtekinthetők a naplók a syslogból?
+acl_others=Megtekinthetők a naplók más modulokból?

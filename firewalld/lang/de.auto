@@ -7,6 +7,7 @@ index_listrules=FirewallD-Regeln auflisten
 index_restart_firewalld=Laden Sie FirewallD neu
 index_restart_firewallddesc=Laden Sie den FirewallD-Server neu und wenden Sie die dauerhaft erstellten Regeln an.
 index_listrules_restartdesc=Details zu vorhandenen umfassenden und direkten FirewallD-Regeln in Zone $1 auflisten.
+index_dependent=$1 abhängiger Dienst konnte nicht neu gestartet werden
 
 list_rule_iperr=ungültige IP-Adresse
 list_rule_actionerr=Ungültige Aktion

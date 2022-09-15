@@ -11,7 +11,6 @@ passwd_header=Unix jelszó megváltoztatása
 passwd_for=Felhasználó
 passwd_old=Régi jelszó
 passwd_new=Új jelszó
-passwd_repeat=Új jelszó (mégegyszer)
 passwd_expire=Utasítsam a felhasználót, hogy megváltoztassa a jelszavát a következő belépésnél?
 passwd_others=Módosítsam a jelszót más modulokban is?
 passwd_change=OK

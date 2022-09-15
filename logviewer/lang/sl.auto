@@ -1,0 +1,39 @@
+index_title=Pregledovalnik sistemskih dnevnikov
+index_elogs=Dnevnikov za prikaz ni bilo mogoče najti
+index_to=Cilj dnevnika
+index_rule=Sporočila izbrana
+index_file=Datoteka $1
+index_cmd=Izhod iz $1
+index_return=pregledovalnik sistemskih dnevnikov
+index_view=ogled...
+index_viewfile=Ogled dnevniške datoteke:
+index_viewok=Pogled
+
+journal_journalctl=Vsa sporočila
+journal_expla_journalctl=Vsa sporočila s pojasnili
+journal_journalctl_dmesg=Sporočila jedra
+journal_journalctl_debug_info=Sporočila o odpravljanju napak in informacijah
+journal_journalctl_notice_warning=Obvestila in opozorilna sporočila
+journal_journalctl_err_crit=Napake in kritična sporočila
+journal_journalctl_alert_emerg=Opozorila in sporočila v sili
+
+view_title=Oglejte si dnevniško datoteko
+view_header=Zadnja $1 vrstica $2
+view_header2=Zadnjih $1 vrstic datoteke $2
+view_empty=Dnevniška datoteka je prazna
+view_refresh=Osveži
+view_filter=Filtriraj vrstice z besedilom $1
+
+save_efile='$1' ni veljavno ime datoteke : $2
+save_ecannot2=Nimate dovoljenja za ogled tega dnevnika
+save_ecannot6=Nimate dovoljenja za ogled poljubnih dnevnikov
+save_ecannot7=Nimate dovoljenja za ogled tega dodatnega dnevnika
+save_emissing=Manjkajoča dnevniška datoteka za ogled
+
+acl_any=Ali si lahko katero koli datoteko ogledate kot dnevnik?
+acl_logs=Lahko si ogleda in konfigurira dnevniške datoteke
+acl_all=Vsi dnevniki
+acl_sel=Samo navedene datoteke in tiste pod navedenimi imeniki ..
+acl_extra=Dodatne dnevniške datoteke za tega uporabnika
+acl_syslog=Ali si lahko ogledate dnevnike iz sistemskega dnevnika?
+acl_others=Ali si lahko ogledate dnevnike iz drugih modulov?

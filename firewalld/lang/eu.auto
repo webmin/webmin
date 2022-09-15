@@ -37,6 +37,7 @@ index_listrules=Zerrendatu FirewallD Arauak
 index_restart_firewalld=Berriz kargatu FirewallD
 index_restart_firewallddesc=Berriz kargatu FirewallD zerbitzaria eta aplikatu betirako sortu ziren arauak.
 index_listrules_restartdesc=Zerrendatu lehendik dauden FirewallD arau aberats eta zuzenei buruzko xehetasunak $1 zonan.
+index_dependent=Ezin izan da $1 menpeko zerbitzua berrabiarazi
 
 port_edit=Editatu Portua
 port_create=Gehitu portua

@@ -1,0 +1,1 @@
+index_econf2=W Twoim systemie wykryto usługę <tt>systemd-journald</tt> służącą do zbierania i przechowywania danych logowania. Zalecane jest użycie nowego modułu <a href='$2'>$1</a>.

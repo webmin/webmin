@@ -1,6 +1,7 @@
 index_title=Systemloggar NG
 index_eprog=Systemloggningsdemonet $1 hittades inte i ditt system eller är inte syslog-ng-programmet. Justera <a href='$2'>modulkonfiguration</a> för att använda rätt sökväg.
 index_econf=Syslog-NG-konfigurationsfilen $1 hittades inte på ditt system. Justera <a href='$2'>modulkonfiguration</a> för att använda rätt sökväg.
+index_econf2=Tjänsten <tt>systemd-journald</tt> upptäcktes på ditt system för att samla in och lagra loggdata. Det rekommenderas att använda en ny <a href='$2'>$1</a>-modul istället.
 index_apply=Använd konfigurering
 index_applydesc=Klicka på den här knappen för att aktivera den aktuella Syslog-NG-konfigurationen.
 index_stop=Stoppa Syslog-NG

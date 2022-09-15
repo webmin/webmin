@@ -16,6 +16,8 @@ smb_server=Servidor de senhas
 
 euser_locked=A conta está bloqueada
 
+fperm_unix=Permitir o uso de extensões Unix?
+
 mkpass_added=Adicionado
 mkpass_user=Nome do usuário
 mkpass_action=Medida tomada

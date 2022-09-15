@@ -7,6 +7,7 @@ index_listrules=Llista les regles del tallafocD
 index_restart_firewalld=Torneu a carregar FirewallD
 index_restart_firewallddesc=Torneu a carregar el servidor FirewallD i apliqueu les regles que es van crear permanentment.
 index_listrules_restartdesc=Llista els detalls sobre les regles de FirewallD riques i directes existents a la zona $1.
+index_dependent=No s'ha pogut reiniciar el servei dependent de $1
 
 list_rule_iperr=Adreça IP no vàlida
 list_rule_actionerr=Acció no vàlida

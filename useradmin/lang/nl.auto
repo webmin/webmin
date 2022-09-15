@@ -11,6 +11,7 @@ index_pft7=MacOS DSCL
 sshkey=SSH openbare sleutel
 uedit_clone=Gebruiker klonen
 
+usave_ehomeslash=Thuismap $1 mag niet eindigen met een /
 usave_edigestmod=Uw systeem heeft $4 wachtwoorden ingeschakeld, maar de Perl <tt>$3</tt> module is niet geïnstalleerd. Om het gebruik van normale versleutelde wachtwoorden te forceren, past u uw <a href='$1'>moduleconfiguratie</a> aan of laat u Webmin proberen de <tt>$3</tt> -module voor u te <a href='$2'>downloaden en te installeren</a>.
 usave_edigestcrypt=Uw systeem heeft $4 wachtwoorden ingeschakeld, maar de functie <tt>crypt</tt> ondersteunt deze indeling niet. Pas uw <a href='$1'>moduleconfiguratie</a> aan om het gebruik van normaal versleutelde wachtwoorden te forceren.
 usave_epasswd_cmd=Wachtwoordvalidatieopdracht mislukt

@@ -2,6 +2,7 @@ index_title=Jurnalele de sistem
 index_m4msg=Fișierul dvs. de configurare a jurnalului de sistem $1 pare să conțină directive <tt>m4</tt>. Înainte de a putea fi editat, Webmin trebuie să treacă fișierul prin <tt>m4</tt> pentru a elimina în siguranță aceste directive.
 index_m4=Eliminați directivele m4 din fișierul de configurare
 index_econf=Fișierul de configurare syslog $1 nu a fost găsit în sistemul dvs. Poate că syslog nu este instalat sau este disponibilă o versiune mai nouă, precum syslog-ng, sau configurația modulului <a href='$2'></a> este incorectă.
+index_econf2=Serviciul <tt>systemd-journald</tt> a fost detectat pe sistemul dumneavoastră pentru colectarea și stocarea datelor de înregistrare. Este recomandat să utilizați un nou modul <a href='$2'>$1</a>.
 index_active=Activ?
 index_tag=Program
 index_to=Jurnal de destinație

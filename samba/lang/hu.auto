@@ -30,6 +30,8 @@ smbuser_cannot=A Samba felhasználókat nem lehet felsorolni
 euser_noexpire=Jelszó soha nem jár le
 euser_locked=A fiók zárolva van
 
+fperm_unix=Engedélyezi a Unix kiterjesztések használatát?
+
 share_create=Automatikusan hoz létre könyvtárat?
 share_owner=Készítsen a tulajdonosmal
 share_createperms=Készítsen engedélyekkel

@@ -241,6 +241,7 @@ fperm_notlist=Direktori tidak disenaraikan
 fperm_forceuser=Tentera pengguna Unix
 fperm_forcegrp=Pasukan Pasukan Unix
 fperm_link=Benarkan symlink di luar bahagian?
+fperm_unix=Benarkan penggunaan sambungan Unix?
 fperm_delro=Boleh memadam fail baca?
 fperm_forcefile=Mod fail Force Unix
 fperm_forcedir=Mod direktori Force Unix

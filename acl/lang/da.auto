@@ -11,6 +11,7 @@ save_eunixname=Brugernavnet '$1' er ikke en Unix-bruger, og kan derfor ikke brug
 sync_modify=Omdøb den matchende Webmin-bruger, når en Unix-bruger omdøbes.
 
 sessions_all=Alle sessioner..
+sessions_action=Handlinger
 
 sql_nocache0=Cache-forbindelser til databasen
 sql_nocache1=Åbn en ny forbindelse til hvert opslag

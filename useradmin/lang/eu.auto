@@ -158,6 +158,7 @@ usave_ereal='$1' ez da benetako izena
 usave_ehome='$1' ez da etxeko direktorio egokia
 usave_esgname='$1' ez da baliozko bigarren mailako izena
 usave_ehomepath=Ezin duzu $1 etxeko direktoriorik sortu
+usave_ehomeslash=$1 hasierako direktorioa ezin da / batekin amaitu
 usave_eshell='$1' ez da onartzen zilegi den shella
 usave_egid='$1' ez da baliozko taldea
 usave_egcreate=Ez duzu baimendu talde berririk erabiltzaile berrientzako

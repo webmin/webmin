@@ -57,6 +57,7 @@ unix_header=Paramètres d'authentification utilisateur Unix
 unix_utable=Utilisateurs Unix autorisés
 
 sessions_all=Toutes les séances..
+sessions_action=Actions
 
 udeletes_jerr=Échec de l'ajout d'utilisateurs au groupe
 

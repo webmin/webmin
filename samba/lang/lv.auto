@@ -241,6 +241,7 @@ fperm_notlist=Katalogi nav jāuzskaita
 fperm_forceuser=Piespiest Unix lietotāju
 fperm_forcegrp=Force Unix grupa
 fperm_link=Vai atļaut saiknes ārpus koplietošanas?
+fperm_unix=Vai atļaut izmantot Unix paplašinājumus?
 fperm_delro=Vai var izdzēst tikai lasāmus failus?
 fperm_forcefile=Piespiest Unix faila režīmu
 fperm_forcedir=Piespiest Unix direktorijas režīmu

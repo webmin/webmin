@@ -1,5 +1,6 @@
 index_none=Você não tem acesso a nenhum usuário para alterar suas senhas.
 
+passwd_repeat=Repita a senha
 passwd_expire=Forçar o usuário a alterar a senha no próximo login?
 passwd_others=Alterar senha em outros módulos?
 passwd_ok2=A senha do usuário $1 foi alterada com sucesso.

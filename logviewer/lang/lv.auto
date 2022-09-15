@@ -1,0 +1,39 @@
+index_title=Sistēmas žurnālu skatītājs
+index_elogs=Netika atrasts neviens žurnāls, ko parādīt
+index_to=Žurnāla galamērķis
+index_rule=Ziņojumi atlasīti
+index_file=Fails $1
+index_cmd=Izvade no $1
+index_return=sistēmas žurnālu skatītājs
+index_view=Skatīt...
+index_viewfile=Skatīt žurnālfailu:
+index_viewok=Skatīt
+
+journal_journalctl=Visas ziņas
+journal_expla_journalctl=Visas ziņas ar paskaidrojumiem
+journal_journalctl_dmesg=Kodola ziņojumi
+journal_journalctl_debug_info=Atkļūdošanas un informācijas ziņojumi
+journal_journalctl_notice_warning=Paziņojumi un brīdinājuma ziņojumi
+journal_journalctl_err_crit=Kļūdas un kritiski ziņojumi
+journal_journalctl_alert_emerg=Brīdinājuma un avārijas ziņojumi
+
+view_title=Skatīt žurnālfailu
+view_header=Pēdējās $1 rindiņas no $2
+view_header2=$2 faila pēdējās $1 rindas
+view_empty=Žurnāla fails ir tukšs
+view_refresh=atjaunot
+view_filter=Filtrēt rindas ar tekstu $1
+
+save_efile='$1' nav derīgs faila nosaukums : $2
+save_ecannot2=Jums nav atļauts skatīt šo žurnālu
+save_ecannot6=Jums nav atļauts skatīt patvaļīgus žurnālus
+save_ecannot7=Jums nav atļauts skatīt šo papildu žurnālu
+save_emissing=Trūkst apskatāmā žurnālfaila
+
+acl_any=Vai jebkuru failu var skatīt kā žurnālu?
+acl_logs=Var apskatīt un konfigurēt žurnālfailus
+acl_all=Visi žurnāli
+acl_sel=Tikai uzskaitītie faili un tie, kas atrodas uzskaitītajos direktorijos ..
+acl_extra=Papildu žurnālfaili šim lietotājam
+acl_syslog=Vai var skatīt žurnālus no syslog?
+acl_others=Vai var skatīt žurnālus no citiem moduļiem?

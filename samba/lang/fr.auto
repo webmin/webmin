@@ -16,6 +16,8 @@ smb_server=Serveur de mot de passe
 
 euser_locked=Le compte est verrouillé
 
+fperm_unix=Autoriser l'utilisation des extensions Unix ?
+
 mkpass_added=Ajoutée
 mkpass_user=Nom d'utilisateur
 mkpass_action=Action prise

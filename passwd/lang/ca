@@ -11,7 +11,6 @@ passwd_header=Canvi de la contrasenya de l'usuari Unix
 passwd_for=Canvi de la contrasenya de
 passwd_old=Contrasenya anterior
 passwd_new=Nova contrasenya
-passwd_repeat=Nova contrasenya (altre cop)
 passwd_expire=Força l'usuari a canviar la contrasenya a la pròxima entrada
 passwd_others=Canvia la contrasenya en els altres mòduls
 passwd_change=Canvia

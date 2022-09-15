@@ -241,6 +241,7 @@ fperm_notlist=ספריות לא לרשום
 fperm_forceuser=כפה את משתמש יוניקס
 fperm_forcegrp=כוח קבוצת יוניקס
 fperm_link=לאפשר קישורים sym sym לשתף בחוץ?
+fperm_unix=לאפשר שימוש בתוספי Unix?
 fperm_delro=האם ניתן למחוק קבצי קריאה?
 fperm_forcefile=כפה על מצב קובץ יוניקס
 fperm_forcedir=כפה על מצב מדריך יוניקס

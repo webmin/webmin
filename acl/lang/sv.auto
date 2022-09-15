@@ -62,6 +62,7 @@ sessions_actions=Handlingar..
 sessions_all=Alla sessioner..
 sessions_logouts=Visa även utloggade sessioner..
 sessions_state=stat
+sessions_action=Åtgärder
 sessions_this=Den här inloggningen
 sessions_in=Inloggad
 sessions_out=Utloggad

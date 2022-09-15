@@ -22,6 +22,8 @@ euser_uid=یونیکس UID
 euser_noexpire=رمز عبور هرگز منقضی نمی شود
 euser_locked=حساب قفل است
 
+fperm_unix=استفاده از پسوندهای یونیکس مجاز است؟
+
 share_createperms=با مجوزها ایجاد کنید
 share_group=با گروه ایجاد کنید
 

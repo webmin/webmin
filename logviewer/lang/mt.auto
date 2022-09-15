@@ -1,0 +1,39 @@
+index_title=System Logs Viewer
+index_elogs=L-ebda zkuk ma nstabu biex jintwerew
+index_to=Log destinazzjoni
+index_rule=Messaġġi magħżula
+index_file=Fajl $1 
+index_cmd=Output minn $1
+index_return=telespettatur tar-reġistri tas-sistema
+index_view=Ara..
+index_viewfile=Ara l-fajl tal-ġurnal:
+index_viewok=Ara
+
+journal_journalctl=Il-messaġġi kollha
+journal_expla_journalctl=Il-messaġġi kollha bi spjegazzjonijiet
+journal_journalctl_dmesg=Messaġġi tal-kernel
+journal_journalctl_debug_info=Messaġġi ta' debug u informazzjoni
+journal_journalctl_notice_warning=Avviż u messaġġi ta’ twissija
+journal_journalctl_err_crit=Messaġġi ta' żball u kritiċi
+journal_journalctl_alert_emerg=Messaġġi ta' twissija u ta' emerġenza
+
+view_title=Ara Logfile
+view_header=L-aħħar $1 linji ta’ $2
+view_header2=L-aħħar $1 linji tal-fajl $2
+view_empty=Log file huwa vojt
+view_refresh=Aġġorna
+view_filter=Iffiltra linji bit-test $1
+
+save_efile='$1' mhuwiex isem tal-fajl validu  : $2
+save_ecannot2=M'intix permess tara dan il-log
+save_ecannot6=M'intix permess tara zkuk arbitrarji
+save_ecannot7=M'intix permess tara dan ir-reġistru żejjed
+save_emissing=Log file nieqes biex tara
+
+acl_any=Tista' tara kwalunkwe fajl bħala log?
+acl_logs=Jista 'jara u kkonfigurat fajls log
+acl_all=Zkuk kollha
+acl_sel=Fajls elenkati biss u dawk taħt direttorji elenkati ..
+acl_extra=Log files żejda għal dan l-utent
+acl_syslog=Tista 'tara zkuk minn syslog?
+acl_others=Tista 'tara zkuk minn moduli oħra?

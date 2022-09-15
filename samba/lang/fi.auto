@@ -241,6 +241,7 @@ fperm_notlist=Hakemistot eivät ole luettelossa
 fperm_forceuser=Pakota Unix-käyttäjä
 fperm_forcegrp=Pakota Unix-ryhmä
 fperm_link=Sallitaanko linkit jaon ulkopuolelle?
+fperm_unix=Sallitaanko Unix-laajennusten käyttö?
 fperm_delro=Voinko poistaa vain luku-tiedostoja?
 fperm_forcefile=Pakota Unix-tiedostotila
 fperm_forcedir=Pakota Unix-hakemistotila

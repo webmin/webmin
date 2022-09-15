@@ -1,0 +1,1 @@
+index_econf2=Tjenesten <tt>systemd-journald</tt> ble oppdaget på systemet ditt for innsamling og lagring av loggdata. Det anbefales å bruke en ny <a href='$2'>$1</a>-modul i stedet.

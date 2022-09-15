@@ -349,6 +349,7 @@ sessions_actions=Дії..
 sessions_all=Всі сеанси..
 sessions_logouts=Показати також сеанси виходу з системи..
 sessions_state=Держава
+sessions_action=Дії
 sessions_this=Це логін
 sessions_in=Увійшли в
 sessions_out=Вийшли з системи

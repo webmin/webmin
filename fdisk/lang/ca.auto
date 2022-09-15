@@ -1,0 +1,4 @@
+edit_eparted=Aquesta partició no es pot canviar tret que s'instal·li l'ordre <tt>parted</tt>.
+edit_eparted2=Aquesta partició no es pot canviar tret que s'estableixi <tt>parted</tt> com a ordre de gestió a la configuració del mòdul.
+edit_edisk=Aquest disc no es pot editar tret que s'instal·li l'ordre <tt>parted</tt>.
+edit_edisk2=Aquest disc no es pot editar tret que s'estableixi <tt>parted</tt> com a ordre de gestió a la configuració del mòdul.

@@ -37,6 +37,7 @@ index_listrules=Listar regras do FirewallD
 index_restart_firewalld=Recarregar FirewallD
 index_restart_firewallddesc=Recarregue o servidor FirewallD e aplique as regras que foram criadas permanentemente.
 index_listrules_restartdesc=Liste detalhes sobre regras de FirewallD avançadas e diretas existentes na zona $1.
+index_dependent=Falha ao reiniciar $1 serviço dependente
 
 port_edit=Editar porta
 port_create=Adicionar porta

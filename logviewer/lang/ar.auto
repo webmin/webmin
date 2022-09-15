@@ -1,0 +1,39 @@
+index_title=عارض سجلات النظام
+index_elogs=لم يتم العثور على سجلات للعرض
+index_to=وجهة السجل
+index_rule=تم تحديد الرسائل
+index_file=ملف$1
+index_cmd=إخراج من$1
+index_return=عارض سجلات النظام
+index_view=رأي..
+index_viewfile=عرض ملف السجل:
+index_viewok=رأي
+
+journal_journalctl=جميع الرسائل
+journal_expla_journalctl=جميع الرسائل مع الشروحات
+journal_journalctl_dmesg=رسائل Kernel
+journal_journalctl_debug_info=رسائل التصحيح والمعلومات
+journal_journalctl_notice_warning=رسائل التنبيه والتحذير
+journal_journalctl_err_crit=رسائل الخطأ والحرجة
+journal_journalctl_alert_emerg=رسائل التنبيه والطوارئ
+
+view_title=مشاهدة ملف السجل
+view_header=آخر$1 سطر من$2
+view_header2=آخر$1 سطر من ملف$2
+view_empty=ملف السجل فارغ
+view_refresh=ينعش
+view_filter=تصفية الأسطر بالنص$1
+
+save_efile="$1" ليس اسم ملف صالحًا :$2
+save_ecannot2=لا يسمح لك لعرض هذا السجل
+save_ecannot6=لا يسمح لك لعرض السجلات التعسفية
+save_ecannot7=لا يسمح لك لعرض هذا السجل الإضافي
+save_emissing=ملف السجل مفقود لعرضه
+
+acl_any=يمكن عرض أي ملف كسجل؟
+acl_logs=يمكن عرض وتكوين ملفات السجل
+acl_all=كل السجلات
+acl_sel=فقط الملفات المدرجة وتلك الموجودة ضمن الأدلة المدرجة ..
+acl_extra=ملفات تسجيل إضافية لهذا المستخدم
+acl_syslog=هل يمكن عرض السجلات من سجل النظام؟
+acl_others=هل يمكن عرض السجلات من وحدات أخرى؟

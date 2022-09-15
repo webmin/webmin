@@ -1,6 +1,7 @@
 index_title=Sistem Günlükleri NG
 index_eprog=$1 sistem günlüğü arka plan programı sisteminizde bulunamadı veya sistem günlüğü programı değil. Doğru yolu kullanmak için <a href='$2'>modül yapılandırmasını</a> ayarlayın.
 index_econf=$1 Syslog-NG yapılandırma dosyası sisteminizde bulunamadı. Doğru yolu kullanmak için <a href='$2'>modül yapılandırmasını</a> ayarlayın.
+index_econf2=Sisteminizde, günlük verilerini toplamak ve depolamak için <tt>systemd-journald</tt> hizmeti algılandı. Bunun yerine yeni bir <a href='$2'>$1</a> modülünün kullanılması önerilir.
 index_apply=Yapılandırmayı Uygula
 index_applydesc=Mevcut Syslog-NG yapılandırmasını etkinleştirmek için bu düğmeyi tıklatın.
 index_stop=Syslog-NG Durdur

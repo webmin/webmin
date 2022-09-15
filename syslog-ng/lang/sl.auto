@@ -1,6 +1,7 @@
 index_title=Sistemski dnevniki NG
 index_eprog=Sistemskega beleženja sistema $1 v vašem sistemu ni bilo mogoče najti ali pa ni syslog-ng programa. Prilagodite konfiguracijo modula <a href='$2'></a> za uporabo pravilne poti.
 index_econf=Konfiguracijske datoteke Syslog-NG $1 v vašem sistemu ni bilo mogoče najti. Prilagodite konfiguracijo modula <a href='$2'></a> za uporabo pravilne poti.
+index_econf2=Storitev <tt>systemd-journald</tt> je bila zaznana v vašem sistemu za zbiranje in shranjevanje podatkov beleženja. Priporočljivo je, da namesto tega uporabite nov modul <a href='$2'>$1</a>.
 index_apply=Uporabi konfiguracijo
 index_applydesc=Kliknite ta gumb, da aktivirate trenutno konfiguracijo Syslog-NG.
 index_stop=Ustavite Syslog-NG

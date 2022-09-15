@@ -1,0 +1,39 @@
+index_title=Betrachter von Systemprotokollen
+index_elogs=Es wurden keine Protokolle zum Anzeigen gefunden
+index_to=Protokollziel
+index_rule=Nachrichten ausgewählt
+index_file=Datei $1
+index_cmd=Ausgabe von $1
+index_return=Betrachter von Systemprotokollen
+index_view=Aussicht..
+index_viewfile=Protokolldatei anzeigen:
+index_viewok=Aussicht
+
+journal_journalctl=Alle Nachrichten
+journal_expla_journalctl=Alle Meldungen mit Erläuterungen
+journal_journalctl_dmesg=Kernel-Meldungen
+journal_journalctl_debug_info=Debug- und Infomeldungen
+journal_journalctl_notice_warning=Hinweis- und Warnmeldungen
+journal_journalctl_err_crit=Fehler und kritische Meldungen
+journal_journalctl_alert_emerg=Alarm- und Notfallmeldungen
+
+view_title=Protokolldatei anzeigen
+view_header=Letzte $1 Zeilen von $2
+view_header2=Letzte $1 Zeilen von $2 Datei
+view_empty=Protokolldatei ist leer
+view_refresh=Aktualisierung
+view_filter=Zeilen mit Text $1 filtern
+
+save_efile='$1' ist kein gültiger Dateiname : $2
+save_ecannot2=Sie sind nicht berechtigt, dieses Protokoll anzuzeigen
+save_ecannot6=Sie dürfen keine beliebigen Protokolle anzeigen
+save_ecannot7=Sie sind nicht berechtigt, dieses zusätzliche Protokoll anzuzeigen
+save_emissing=Fehlende Protokolldatei zum Anzeigen
+
+acl_any=Kann jede Datei als Protokoll anzeigen?
+acl_logs=Kann Protokolldateien anzeigen und konfigurieren
+acl_all=Alle Protokolle
+acl_sel=Nur aufgelistete Dateien und solche unter aufgelisteten Verzeichnissen ..
+acl_extra=Zusätzliche Protokolldateien für diesen Benutzer
+acl_syslog=Kann Protokolle von Syslog anzeigen?
+acl_others=Kann Protokolle von anderen Modulen anzeigen?
