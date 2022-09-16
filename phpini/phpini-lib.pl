@@ -308,6 +308,15 @@ if ($file && &get_config_fmt($file) eq "fpm" &&
 		&virtual_server::pop_all_print();
 		}
 	}
+if ($file && &get_config_fmt($file) eq "ini" &&
+	&foreign_installed("virtual-server") && 
+	&foreign_installed("virtualmin-nginx")) {
+	&foreign_require("virtual-server");
+	&foreign_require("virtualmin-nginx", "virtual_feature.pl");
+	my @dom = grep { $file =~ /^$_->{'home'}\// } 
+	              &virtual_server::list_domains();
+	&virtualmin_nginx::feature_restart_web_php($dom[0]);
+	}
 }
 
 # get_config_as_user([file])
