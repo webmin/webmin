@@ -313,7 +313,7 @@ if ($file && &get_config_fmt($file) eq "ini" &&
 	&foreign_installed("virtualmin-nginx")) {
 	&foreign_require("virtual-server");
 	&foreign_require("virtualmin-nginx", "virtual_feature.pl");
-	my @dom = grep { $file =~ /^$_->{'home'}\// } 
+	my @dom = grep { &is_under_directory($_->{'home'}, $file) } 
 	              &virtual_server::list_domains();
 	&virtualmin_nginx::feature_restart_web_php($dom[0]);
 	}
