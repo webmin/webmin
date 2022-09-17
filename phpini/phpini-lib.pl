@@ -315,7 +315,8 @@ if ($file && &get_config_fmt($file) eq "ini" &&
 	&foreign_require("virtualmin-nginx", "virtual_feature.pl");
 	my @dom = grep { &is_under_directory($_->{'home'}, $file) } 
 	              &virtual_server::list_domains();
-	&virtualmin_nginx::feature_restart_web_php($dom[0]);
+	&virtualmin_nginx::feature_restart_web_php($dom[0])
+	    if (@dom);
 	}
 }
 
