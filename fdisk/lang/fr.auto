@@ -1,0 +1,4 @@
+edit_eparted=Cette partition ne peut être modifiée que si la commande <tt>parted</tt> est installée.
+edit_eparted2=Cette partition ne peut pas être modifiée à moins que <tt>parted</tt> ne soit défini comme commande de gestion dans la configuration du module.
+edit_edisk=Ce disque ne peut être modifié que si la commande <tt>parted</tt> est installée.
+edit_edisk2=Ce disque ne peut pas être modifié à moins que <tt>parted</tt> ne soit défini comme commande de gestion dans la configuration du module.

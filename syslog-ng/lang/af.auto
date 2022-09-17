@@ -1,6 +1,7 @@
 index_title=Stelsel logs NG
 index_eprog=Die stelsel-aanteken-demoon $1 is nie op u stelsel gevind nie, of is nie die syslog-ng-program nie. Pas die <a href='$2'>module-opstelling</a> aan om die regte pad te gebruik.
 index_econf=Die Syslog-NG-konfigurasielêer $1 is nie op u stelsel gevind nie. Pas die <a href='$2'>module-opstelling</a> aan om die regte pad te gebruik.
+index_econf2=Die <tt>systemd-journald</tt>-diens is op jou stelsel bespeur vir die insameling en berging van logdata. Dit word aanbeveel om eerder 'n nuwe <a href='$2'>$1</a> module te gebruik.
 index_apply=Pas konfigurasie toe
 index_applydesc=Klik op hierdie knoppie om die huidige Syslog-NG-konfigurasie te aktiveer.
 index_stop=Stop Syslog-NG

@@ -37,6 +37,7 @@ index_listrules=Liệt kê các quy tắc FirewallD
 index_restart_firewalld=Tải lại tường lửaD
 index_restart_firewallddesc=Tải lại máy chủ FirewallD và áp dụng các quy tắc đã được tạo vĩnh viễn.
 index_listrules_restartdesc=Liệt kê chi tiết về các quy tắc FirewallD trực tiếp và phong phú hiện có trong vùng $1.
+index_dependent=Không thể khởi động lại dịch vụ phụ thuộc $1 
 
 port_edit=Chỉnh sửa cổng
 port_create=Thêm cổng

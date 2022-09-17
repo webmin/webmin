@@ -16,6 +16,7 @@ sessions_actions=Tindakan..
 sessions_all=Semua sesi..
 sessions_logouts=Juga tunjukkan sesi log keluar..
 sessions_state=Negeri
+sessions_action=Tindakan
 sessions_this=Log masuk ini
 sessions_in=Log masuk
 sessions_out=Logged out

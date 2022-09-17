@@ -354,6 +354,7 @@ sessions_actions=Darbības..
 sessions_all=Visas sesijas..
 sessions_logouts=Rādīt arī atteikšanās sesijas..
 sessions_state=Valsts
+sessions_action=Darbības
 sessions_this=Šī pieteikšanās
 sessions_in=Pieteicies
 sessions_out=Izlogojies

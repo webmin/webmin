@@ -10,7 +10,6 @@ passwd_header=Cambiando contraseña de usuario Unix
 passwd_for=Cambiando contraseña para
 passwd_old=Contraseña anterior
 passwd_new=Contraseña nueva
-passwd_repeat=Contraseña nueva (de nuevo)
 passwd_expire=¿Forzar al usuario a cambiar su contraseña la próxima vez que ingrese?
 passwd_others=¿Cambiar contraseña en otros módulos?
 passwd_change=Cambiar

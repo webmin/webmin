@@ -37,6 +37,7 @@ index_listrules=Luettele FirewallD-säännöt
 index_restart_firewalld=Lataa FirewallD uudelleen
 index_restart_firewallddesc=Lataa FirewallD-palvelin uudelleen ja käytä pysyvästi luotuja sääntöjä.
 index_listrules_restartdesc=Luettele tiedot olemassa olevista monipuolisista ja suorista FirewallD-säännöistä $1 vyöhykkeellä.
+index_dependent=$1 riippuvaisen palvelun uudelleenkäynnistys epäonnistui
 
 port_edit=Muokkaa porttia
 port_create=Lisää portti

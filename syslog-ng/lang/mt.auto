@@ -1,6 +1,7 @@
 index_title=Zkuk tas-Sistema NG
 index_eprog=Id-daemon tad-daqq ta 'sistema $1 ma nstabx fis-sistema tiegħek, jew mhuwiex il-programm syslog-ng. Aġġusta l- <a href='$2'>konfigurazzjoni tal-modulu</a> biex tuża t-triq it-tajba.
 index_econf=Il-fajl tal-konfigurazzjoni Syslog-NG $1 ma nstabx fis-sistema tiegħek. Aġġusta l- <a href='$2'>konfigurazzjoni tal-modulu</a> biex tuża t-triq it-tajba.
+index_econf2=Is-servizz <tt>systemd-journald</tt> ġie skopert fis-sistema tiegħek għall-ġbir u l-ħażna tad-dejta tal-illoggjar. Huwa rakkomandat li tuża modulu ġdid <a href='$2'>$1</a> minflok.
 index_apply=Applika Konfigurazzjoni
 index_applydesc=Ikklikkja din il-buttuna biex tattiva l-konfigurazzjoni Syslog-NG attwali.
 index_stop=Waqqaf Syslog-NG

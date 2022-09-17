@@ -2,6 +2,7 @@ index_title=Zkuk tas-Sistema
 index_m4msg=Il-fajl tiegħek tal-konfigurazzjoni tal-ġurnal tas-sistema $1 jidher li fih direttivi <tt>m4</tt>. Qabel ma jkun jista 'jiġi editat, Webmin jeħtieġ li jgħaddi l-fajl permezz ta' <tt>m4</tt> biex ineħħi dawn id-direttivi b'mod sigur.
 index_m4=Neħħi d-direttivi m4 mill-fajl konfigurazzjoni
 index_econf=Il-fajl tal-konfigurazzjoni tas-syslog $1 ma nstabx fis-sistema tiegħek. Forsi syslog mhuwiex installat, jew verżjoni aktar ġdida bħal syslog-ng qed tintuża, jew il-<a href='$2'>konfigurazzjoni tal-modulu</a> mhix korretta.
+index_econf2=Is-servizz <tt>systemd-journald</tt> ġie skopert fis-sistema tiegħek għall-ġbir u l-ħażna tad-dejta tal-illoggjar. Huwa rakkomandat li tuża modulu ġdid <a href='$2'>$1</a> minflok.
 index_active=Attiv?
 index_tag=Programm
 index_to=Id-destinazzjoni tal-log

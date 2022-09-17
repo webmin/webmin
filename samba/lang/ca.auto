@@ -1,1 +1,3 @@
 index_restart_wb=Reinicieu els servidors Winbind
+
+fperm_unix=Permetre l'ús d'extensions Unix?

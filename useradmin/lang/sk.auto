@@ -158,6 +158,7 @@ usave_ereal=$1 nie je platné skutočné meno
 usave_ehome=$1 nie je platný domovský adresár
 usave_esgname=$1 nie je platný názov sekundárnej skupiny
 usave_ehomepath=Nemáte oprávnenie vytvárať domáci adresár $1
+usave_ehomeslash=Domovský adresár $1 nemôže končiť znakom /
 usave_eshell=$1 nie je povolený shell
 usave_egid=$1 nie je platná skupina
 usave_egcreate=Nemáte oprávnenie vytvárať nové skupiny pre nových používateľov

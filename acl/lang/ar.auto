@@ -242,6 +242,7 @@ sessions_actions=أجراءات..
 sessions_all=كل الجلسات..
 sessions_logouts=اعرض أيضًا جلسات تسجيل الخروج..
 sessions_state=حالة
+sessions_action=أجراءات
 sessions_this=هذا تسجيل الدخول
 sessions_in=تسجيل الدخول
 sessions_out=تسجيل الخروج

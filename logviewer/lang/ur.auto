@@ -1,0 +1,39 @@
+index_title=سسٹم لاگز دیکھنے والا
+index_elogs=ڈسپلے کرنے کے لیے کوئی لاگز نہیں ملے
+index_to=لاگ منزل
+index_rule=پیغامات منتخب کیے گئے۔
+index_file=فائل $1
+index_cmd=$1 سے آؤٹ پٹ
+index_return=سسٹم لاگز دیکھنے والا
+index_view=دیکھیں..
+index_viewfile=لاگ فائل دیکھیں:
+index_viewok=دیکھیں
+
+journal_journalctl=تمام پیغامات
+journal_expla_journalctl=تمام پیغامات وضاحت کے ساتھ
+journal_journalctl_dmesg=دانا کے پیغامات
+journal_journalctl_debug_info=ڈیبگ اور معلوماتی پیغامات
+journal_journalctl_notice_warning=نوٹس اور انتباہی پیغامات
+journal_journalctl_err_crit=غلطی اور تنقیدی پیغامات
+journal_journalctl_alert_emerg=الرٹ اور ہنگامی پیغامات
+
+view_title=لاگ فائل دیکھیں
+view_header=$2 کی آخری $1 لائنیں۔
+view_header2=$2 فائل کی آخری $1 لائنیں۔
+view_empty=لاگ فائل خالی ہے۔
+view_refresh=ریفریش کریں۔
+view_filter=متن $1 کے ساتھ لائنوں کو فلٹر کریں۔
+
+save_efile='$1' ایک درست فائل نام نہیں ہے  : $2
+save_ecannot2=آپ کو اس لاگ کو دیکھنے کی اجازت نہیں ہے۔
+save_ecannot6=آپ کو من مانی لاگز دیکھنے کی اجازت نہیں ہے۔
+save_ecannot7=آپ کو اس اضافی لاگ کو دیکھنے کی اجازت نہیں ہے۔
+save_emissing=دیکھنے کے لیے لاگ فائل غائب ہے۔
+
+acl_any=کسی بھی فائل کو بطور لاگ دیکھ سکتے ہیں؟
+acl_logs=لاگ فائلوں کو دیکھ اور ترتیب دے سکتے ہیں۔
+acl_all=تمام نوشتہ جات
+acl_sel=صرف درج فائلیں اور وہ جو درج فہرست ڈائریکٹریز کے تحت ہیں ..
+acl_extra=اس صارف کے لیے اضافی لاگ فائلیں۔
+acl_syslog=کیا syslog سے لاگز دیکھ سکتے ہیں؟
+acl_others=کیا دوسرے ماڈیولز سے لاگز دیکھ سکتے ہیں؟

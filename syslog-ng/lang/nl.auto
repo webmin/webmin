@@ -1,3 +1,5 @@
+index_econf2=De service <tt>systemd-journald</tt> is gedetecteerd op uw systeem voor het verzamelen en opslaan van loggegevens. Het wordt aanbevolen om in plaats daarvan een nieuwe <a href='$2'>$1</a>-module te gebruiken.
+
 sources_typenw=Syslog-server
 
 source_transport=Netwerkprotocol

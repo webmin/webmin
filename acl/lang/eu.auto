@@ -60,6 +60,7 @@ sessions_actions=Ekintzak..
 sessions_all=Saio guztiak..
 sessions_logouts=Erakutsi itxitako saioak ere..
 sessions_state=Estatu
+sessions_action=Ekintzak
 sessions_this=Saioa hasiera
 sessions_in=Saioa hasi
 sessions_out=Saioa amaitu

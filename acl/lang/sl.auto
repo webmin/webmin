@@ -354,6 +354,7 @@ sessions_actions=Ukrepi..
 sessions_all=Vse seje..
 sessions_logouts=Prikaži tudi odjavne seje.
 sessions_state=Država
+sessions_action=Dejanja
 sessions_this=Ta prijava
 sessions_in=Prijavljeni
 sessions_out=Odjavljeni

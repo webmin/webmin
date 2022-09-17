@@ -1,0 +1,4 @@
+edit_eparted=Diese Partition kann nicht geändert werden, es sei denn, der Befehl <tt>parted</tt> ist installiert.
+edit_eparted2=Diese Partition kann nicht geändert werden, es sei denn, <tt>parted</tt> ist als Verwaltungsbefehl in der Modulkonfiguration festgelegt.
+edit_edisk=Diese Festplatte kann nur bearbeitet werden, wenn der Befehl <tt>parted</tt> installiert ist.
+edit_edisk2=Diese Festplatte kann nicht bearbeitet werden, es sei denn, <tt>parted</tt> ist als Verwaltungsbefehl in der Modulkonfiguration festgelegt.

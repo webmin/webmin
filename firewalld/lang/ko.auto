@@ -37,6 +37,7 @@ index_listrules=FirewallD 규칙 나열
 index_restart_firewalld=방화벽 새로고침D
 index_restart_firewallddesc=FirewallD 서버를 다시 로드하고 영구적으로 생성된 규칙을 적용합니다.
 index_listrules_restartdesc=$1 영역의 기존 풍부하고 직접적인 FirewallD 규칙에 대한 세부 정보를 나열합니다.
+index_dependent=$1 종속 서비스를 다시 시작하지 못했습니다
 
 port_edit=포트 편집
 port_create=포트 추가

@@ -64,6 +64,7 @@ sessions_actions=Akce..
 sessions_all=Všechny relace..
 sessions_logouts=Zobrazit také odhlášené relace.
 sessions_state=Stát
+sessions_action=Akce
 sessions_this=Toto přihlášení
 sessions_in=Přihlášen
 sessions_out=Odhlásit

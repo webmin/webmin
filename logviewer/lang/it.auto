@@ -1,0 +1,39 @@
+index_title=Visualizzatore dei registri di sistema
+index_elogs=Nessun registro trovato da visualizzare
+index_to=Registra destinazione
+index_rule=Messaggi selezionati
+index_file=File $1
+index_cmd=Uscita da $1
+index_return=visualizzatore dei registri di sistema
+index_view=Visualizzazione..
+index_viewfile=Visualizza file di registro:
+index_viewok=Visualizzazione
+
+journal_journalctl=Tutti i messaggi
+journal_expla_journalctl=Tutti i messaggi con le spiegazioni
+journal_journalctl_dmesg=Messaggi del kernel
+journal_journalctl_debug_info=Messaggi di debug e informazioni
+journal_journalctl_notice_warning=Avviso e messaggi di avviso
+journal_journalctl_err_crit=Errori e messaggi critici
+journal_journalctl_alert_emerg=Messaggi di allerta e di emergenza
+
+view_title=Visualizza file di registro
+view_header=Ultime $1 righe di $2
+view_header2=Ultime $1 righe del file $2
+view_empty=Il file di registro è vuoto
+view_refresh=ricaricare
+view_filter=Filtra le righe con testo $1
+
+save_efile='$1' non è un nome file valido : $2
+save_ecannot2=Non sei autorizzato a visualizzare questo registro
+save_ecannot6=Non è consentito visualizzare registri arbitrari
+save_ecannot7=Non sei autorizzato a visualizzare questo registro aggiuntivo
+save_emissing=File di registro mancante da visualizzare
+
+acl_any=È possibile visualizzare qualsiasi file come registro?
+acl_logs=Può visualizzare e configurare i file di registro
+acl_all=Tutti i registri
+acl_sel=Solo i file elencati e quelli nelle directory elencate ..
+acl_extra=File di registro aggiuntivi per questo utente
+acl_syslog=È possibile visualizzare i registri da syslog?
+acl_others=È possibile visualizzare i registri da altri moduli?

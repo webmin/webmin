@@ -10,7 +10,6 @@ passwd_header=Verander Unixgebruiker se wagwoord
 passwd_for=Verander wagwoord vir
 passwd_old=Ou wagwoord
 passwd_new=Nuwe wagwoord
-passwd_repeat=Nuwe wagwoord (weer)
 passwd_change=Verander
 passwd_reset=Herset vorm
 passwd_err=Wagwoord kon nie verander word nie

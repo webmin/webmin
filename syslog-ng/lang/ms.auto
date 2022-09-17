@@ -1,6 +1,7 @@
 index_title=Sistem Log NG
 index_eprog=Daemon pembalakan sistem $1 tidak dijumpai pada sistem anda, atau bukan program syslog-ng. Laraskan konfigurasi modul <a href='$2'></a> untuk menggunakan laluan yang betul.
 index_econf=Fail konfigurasi Syslog-NG $1 tidak dijumpai pada sistem anda. Laraskan konfigurasi modul <a href='$2'></a> untuk menggunakan laluan yang betul.
+index_econf2=Perkhidmatan <tt>systemd-journald</tt> telah dikesan pada sistem anda untuk mengumpul dan menyimpan data pengelogan. Adalah disyorkan untuk menggunakan modul <a href='$2'>$1</a> baharu.
 index_apply=Terapkan Konfigurasi
 index_applydesc=Klik butang ini untuk mengaktifkan konfigurasi Syslog-NG semasa.
 index_stop=Berhenti Syslog-NG

@@ -1,5 +1,6 @@
 index_none=您無權訪問任何用戶來更改其密碼。
 
+passwd_repeat=重複輸入密碼
 passwd_expire=強制用戶在下次登錄時更改密碼？
 passwd_others=更改其他模塊的密碼？
 passwd_ok2=用戶 $1的密碼已成功更改。

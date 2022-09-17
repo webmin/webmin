@@ -69,6 +69,7 @@ usave_euuid=사용자의 UID를 변경할 수 없습니다
 usave_euidused2=UID는 이미 사용 중입니다
 usave_ealluid=허용 된 모든 UID가 할당되었습니다
 usave_esgname='$1'은 (는) 유효한 보조 그룹 이름이 아닙니다.
+usave_ehomeslash=홈디렉토리 $1 은/로끝날수없습니다
 usave_eoffice=사무실은 : 문자를 포함 할 수 없습니다
 usave_eworkph=직장 전화는 : 문자를 포함 할 수 없습니다
 usave_ehomeph=집 전화는 : 문자를 포함 할 수 없습니다

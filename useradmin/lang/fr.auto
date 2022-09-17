@@ -26,6 +26,7 @@ uedit_grename=Renommer le groupe si le nom d'utilisateur change?
 uedit_sys=Défaut du système
 uedit_clone=Utilisateur clone
 
+usave_ehomeslash=Le répertoire personnel $1 ne peut pas se terminer par un /
 usave_edigestmod=Votre système a activé les mots de passe $4, mais le module Perl <tt>$3</tt> n'est pas installé. Pour forcer l'utilisation de mots de passe cryptés normaux, ajustez la <a href='$1'>configuration de votre module</a> ou demandez à Webmin d'essayer de <a href='$2'>télécharger et d'installer</a> le module <tt>$3</tt> pour vous.
 usave_edigestcrypt=Votre système a $4 mots de passe activés, mais la fonction <tt>crypt</tt> ne prend pas en charge ce format. Pour forcer l'utilisation de mots de passe cryptés normaux, ajustez la <a href='$1'>configuration du module</a>.
 usave_epasswd_mindays=Le mot de passe a été modifié il y a moins de $1 jours

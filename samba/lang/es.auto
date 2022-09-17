@@ -35,6 +35,8 @@ smbuser_cannot=Los usuarios de Samba no pueden ser listados
 fmisc_oplocks=¿Habilitar bloqueos opcionales?
 fmisc_level2=Bloqueos de solo lectura?
 
+fperm_unix=¿Permitir el uso de extensiones de Unix?
+
 share_create=Crear automáticamente el directorio?
 share_owner=Crear con propietario
 share_createperms=Crear con permisos

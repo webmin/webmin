@@ -2,6 +2,7 @@ index_title=Sistemos žurnalai
 index_m4msg=Atrodo, kad jūsų sistemos žurnalo konfigūracijos faile $1 yra <tt>m4</tt> nurodymų. Kad galėtų redaguoti, „Webmin“ turi perduoti failą per <tt>m4</tt>, kad būtų galima saugiai pašalinti šias direktyvas.
 index_m4=Pašalinkite „M4“ direktyvas iš konfigūracijos failo
 index_econf=„Syslog“ konfigūracijos failas $1 nerastas jūsų sistemoje. Galbūt „syslog“ neįdiegtas arba naudojama naujesnė versija, pvz., „Syslog-ng“, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+index_econf2=Jūsų sistemoje aptikta paslauga <tt>systemd-journald</tt>, skirta registravimo duomenims rinkti ir saugoti. Vietoje to rekomenduojama naudoti naują <a href='$2'>$1</a> modulį.
 index_active=Aktyvus?
 index_tag=Programa
 index_to=Žurnalo paskirties vieta

@@ -1,6 +1,7 @@
 index_title=Journaux système NG
 index_eprog=Le démon de journalisation système $1 est introuvable sur votre système ou n'est pas le programme syslog-ng. Ajustez la <a href='$2'>configuration du module</a> pour utiliser le chemin correct.
 index_econf=Le fichier de configuration Syslog-NG $1 est introuvable sur votre système. Ajustez la <a href='$2'>configuration du module</a> pour utiliser le chemin correct.
+index_econf2=Le service <tt>systemd-journald</tt> a été détecté sur votre système pour la collecte et le stockage des données de journalisation. Il est recommandé d'utiliser un nouveau module <a href='$2'>$1</a> à la place.
 index_apply=Appliquer la configuration
 index_applydesc=Cliquez sur ce bouton pour activer la configuration actuelle de Syslog-NG.
 index_stop=Arrêter Syslog-NG

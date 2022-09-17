@@ -241,6 +241,7 @@ fperm_notlist=Οι κατάλογοι να μην αναφέρονται στη 
 fperm_forceuser=Force Unix χρήστη
 fperm_forcegrp=Δύναμη ομάδα Unix
 fperm_link=Να επιτρέπονται οι συμβολικές συνδέσεις εκτός κοινόχρηστου στοιχείου;
+fperm_unix=Να επιτρέπεται η χρήση επεκτάσεων Unix;
 fperm_delro=Μπορεί να διαγράψει τα αρχεία readonly;
 fperm_forcefile=Δυνατότητα λειτουργίας αρχείου Unix
 fperm_forcedir=Λειτουργία καταλόγου Force Unix

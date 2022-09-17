@@ -2,6 +2,7 @@ index_title=Järjestelmälokit
 index_m4msg=Järjestelmälokin määritystiedosto $1 näyttää sisältävän <tt>m4</tt> -direktiivit. Ennen kuin sitä voidaan muokata, Webmin on läpäistävä tiedosto <tt>m4</tt>: n läpi, jotta nämä direktiivit voidaan turvallisesti poistaa.
 index_m4=Poista m4-direktiivit konfiguraatiotiedostosta
 index_econf=Syslog-määritystiedostoa $1 ei löydy järjestelmästäsi. Ehkä syslogia ei ole asennettu, tai käytössä on uudempi versio, kuten syslog-ng, tai <a href='$2'>moduulin kokoonpano</a> on väärä.
+index_econf2=Järjestelmässäsi havaittiin <tt>systemd-journald</tt>-palvelu lokitietojen keräämistä ja tallentamista varten. On suositeltavaa käyttää sen sijaan uutta <a href='$2'>$1</a>-moduulia.
 index_active=Aktiivinen?
 index_tag=Ohjelmoida
 index_to=Lokikohde

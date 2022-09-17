@@ -1,0 +1,1 @@
+index_econf2=El servei <tt>systemd-journald</tt> s'ha detectat al vostre sistema per recollir i emmagatzemar dades de registre. Es recomana utilitzar un mòdul <a href='$2'>$1</a> nou.

@@ -158,6 +158,7 @@ usave_ereal='$1' ei ole oikea oikea nimi
 usave_ehome='$1' ei ole kelvollinen kotihakemisto
 usave_esgname='$1' ei ole kelvollinen toissijaisen ryhmän nimi
 usave_ehomepath=Et voi luoda kotihakemistoa $1
+usave_ehomeslash=Kotihakemisto $1 ei voi päättyä /
 usave_eshell='$1' ei ole sallittu kuori
 usave_egid='$1' ei ole kelvollinen ryhmä
 usave_egcreate=Et voi luoda uusia ryhmiä uusille käyttäjille

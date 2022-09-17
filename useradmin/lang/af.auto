@@ -158,6 +158,7 @@ usave_ereal='$1' is nie 'n geldige regte naam nie
 usave_ehome='$1' is nie 'n geldige tuisgids nie
 usave_esgname='$1' is nie 'n geldige sekondêre groepnaam nie
 usave_ehomepath=U mag nie die tuisgids $1 skep nie
+usave_ehomeslash=Tuisgids $1 kan nie eindig met 'n /
 usave_eshell='$1' is nie 'n toelaatbare skulp nie
 usave_egid='$1' is nie 'n geldige groep nie
 usave_egcreate=U mag nie nuwe groepe vir nuwe gebruikers skep nie

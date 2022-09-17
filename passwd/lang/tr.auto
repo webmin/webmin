@@ -1,4 +1,6 @@
 index_none=Şifrelerini değiştirmek için hiçbir kullanıcıya erişiminiz yok.
 
+passwd_repeat=Şifreyi tekrar girin
+
 acl_self=Kendi parolanızın değiştirilmesine her zaman izin verilsin mi?
 acl_notusers=Kullanıcılar hariç

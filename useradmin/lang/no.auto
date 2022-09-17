@@ -1,4 +1,5 @@
 sshkey=SSH offentlig nøkkel
 
+usave_ehomeslash=Hjemmekatalogen $1 kan ikke slutte med en /
 usave_edigestmod=Systemet ditt har $4 -passord aktivert, men Perl <tt>$3</tt> -modulen er ikke installert. For å tvinge frem bruken av vanlige krypterte passord, juster <a href='$1'>modulkonfigurasjonen</a> eller få Webmin til å prøve å <a href='$2'>laste ned og installere</a> <tt>$3</tt> -modulen for deg.
 usave_edigestcrypt=Systemet ditt har $4 passord aktivert, men <tt>krypt</tt>-funksjonen støtter ikke dette formatet. For å tvinge frem bruken av vanlige krypterte passord, juster <a href='$1'>modulkonfigurasjonen</a>.

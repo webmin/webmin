@@ -65,6 +65,7 @@ sessions_actions=Akcije..
 sessions_all=Sve sesije..
 sessions_logouts=Prikaži i odjavljene sesije..
 sessions_state=država
+sessions_action=Radnje
 sessions_this=Ova prijava
 sessions_in=Prijavljeni
 sessions_out=Odjavljen

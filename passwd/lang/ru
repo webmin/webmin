@@ -10,7 +10,6 @@ passwd_header=Изменение пароля пользователя Unix
 passwd_for=Будет изменен пароль для
 passwd_old=Старый пароль
 passwd_new=Новый пароль
-passwd_repeat=Новый пароль (подтверждение)
 passwd_change=Изменить
 passwd_reset=Очистить
 passwd_err=Не удалось изменить пароль

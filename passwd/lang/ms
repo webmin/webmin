@@ -11,7 +11,6 @@ passwd_header=Tukar kata laluan pengguna Unix
 passwd_for=Menukar kata laluan untuk
 passwd_old=Kata laluan lama
 passwd_new=kata laluan baharu
-passwd_repeat=Kata laluan baharu (sekali lagi)
 passwd_expire=Paksa penguna untuk menukar kata laluannya pada log masuk yang seterusnya?
 passwd_others=Tukar kata laluan pada modul lain?
 passwd_change=Tukar

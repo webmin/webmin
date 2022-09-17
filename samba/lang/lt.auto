@@ -241,6 +241,7 @@ fperm_notlist=Katalogai neįtraukti į sąrašą
 fperm_forceuser=Priverstinis „Unix“ vartotojas
 fperm_forcegrp=„Force Unix“ grupė
 fperm_link=Leisti saitus išorėje?
+fperm_unix=Leisti naudoti Unix plėtinius?
 fperm_delro=Ar galima ištrinti tik skaitomus failus?
 fperm_forcefile=Priverstinis „Unix“ failo režimas
 fperm_forcedir=Priverstinis „Unix“ katalogo režimas

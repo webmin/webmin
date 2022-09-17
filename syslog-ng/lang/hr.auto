@@ -1,6 +1,7 @@
 index_title=Dnevnici sustava NG
 index_eprog=Daemon $1 koji bilježi sustav nije pronađen u vašem sustavu ili nije syslog-ng program. Podesite <a href='$2'>konfiguraciju modula</a> da biste koristili ispravan put.
 index_econf=Konfiguracijska datoteka Syslog-NG $1 nije pronađena u vašem sustavu. Podesite <a href='$2'>konfiguraciju modula</a> da biste koristili ispravan put.
+index_econf2=Usluga <tt>systemd-journald</tt> otkrivena je na vašem sustavu za prikupljanje i pohranjivanje podataka zapisivanja. Umjesto toga preporučuje se korištenje novog modula <a href='$2'>$1</a>.
 index_apply=Primijeni konfiguraciju
 index_applydesc=Kliknite ovaj gumb kako biste aktivirali trenutnu konfiguraciju Syslog-NG.
 index_stop=Zaustavite Syslog-NG

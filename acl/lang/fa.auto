@@ -115,6 +115,7 @@ sessions_actions=اقدامات..
 sessions_all=تمام جلسات..
 sessions_logouts=همچنین جلسات ورود به سیستم را نشان دهید..
 sessions_state=دولت
+sessions_action=اقدامات
 sessions_this=این ورود
 sessions_in=وارد شده
 sessions_out=خارج شد

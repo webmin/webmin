@@ -37,6 +37,7 @@ index_listrules=FirewallD Kurallarını Listeleme
 index_restart_firewalld=Güvenlik Duvarını Yeniden YükleD
 index_restart_firewallddesc=FirewallD sunucusunu yeniden yükleyin ve kalıcı olarak oluşturulmuş kuralları uygulayın.
 index_listrules_restartdesc=$1 bölgesindeki mevcut zengin ve doğrudan FirewallD kurallarıyla ilgili ayrıntıları listeleyin.
+index_dependent=$1 bağımlı hizmet yeniden başlatılamadı
 
 port_edit=Bağlantı Noktasını Düzenle
 port_create=Bağlantı Noktası Ekle

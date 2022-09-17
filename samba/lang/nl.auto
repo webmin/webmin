@@ -1,5 +1,7 @@
 smb_server=Wachtwoordserver
 
+fperm_unix=Gebruik van Unix-extensies toestaan?
+
 savefshare_emkdir=Kan directory niet maken : $1 
 
 acl_bind=Heeft u toegang tot winbind-opties?

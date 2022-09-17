@@ -10,7 +10,6 @@ passwd_header=Zmiana hasła uniksowego
 passwd_for=Zmiana hasła dla
 passwd_old=Poprzednie hasło
 passwd_new=Nowe hasło
-passwd_repeat=Nowe hasło (ponownie)
 passwd_change=Zmień
 passwd_reset=Wyczyść formularz
 passwd_err=Nie udało się zmienić hasła

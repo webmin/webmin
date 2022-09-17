@@ -1,0 +1,39 @@
+index_title=시스템 로그 뷰어
+index_elogs=표시할 로그가 없습니다
+index_to=로그 대상
+index_rule=선택한 메시지
+index_file=파일 $1 
+index_cmd=$1의 출력
+index_return=시스템 로그 뷰어
+index_view=보다..
+index_viewfile=로그 파일 보기:
+index_viewok=보다
+
+journal_journalctl=모든 메시지
+journal_expla_journalctl=설명이 포함된 모든 메시지
+journal_journalctl_dmesg=커널 메시지
+journal_journalctl_debug_info=디버그 및 정보 메시지
+journal_journalctl_notice_warning=알림 및 경고 메시지
+journal_journalctl_err_crit=오류 및 중요한 메시지
+journal_journalctl_alert_emerg=경고 및 비상 메시지
+
+view_title=로그 파일 보기
+view_header=$2의 마지막 $1줄
+view_header2=$2 파일의 마지막 $1줄
+view_empty=로그 파일이 비어 있습니다
+view_refresh=새로 고치다
+view_filter=텍스트 $1 이있는줄필터링
+
+save_efile='$1'은(는) 유효한 파일 이름이 아닙니다 : $2
+save_ecannot2=이 로그를 볼 수 없습니다
+save_ecannot6=임의의 로그를 볼 수 없습니다
+save_ecannot7=이 추가 로그를 볼 수 없습니다
+save_emissing=볼 로그 파일이 없습니다
+
+acl_any=모든 파일을 로그로 볼 수 있습니까?
+acl_logs=로그 파일을 보고 구성할 수 있습니다
+acl_all=모든 로그
+acl_sel=나열된 파일과 나열된 디렉토리 아래에 있는 파일만 ..
+acl_extra=이 사용자에 대한 추가 로그 파일
+acl_syslog=syslog에서 로그를 볼 수 있습니까?
+acl_others=다른 모듈의 로그를 볼 수 있습니까?

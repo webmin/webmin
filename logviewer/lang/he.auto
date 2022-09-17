@@ -1,0 +1,39 @@
+index_title=מציג יומני מערכת
+index_elogs=לא נמצאו יומנים להצגה
+index_to=יעד יומן
+index_rule=נבחרו הודעות
+index_file=קובץ $1 
+index_cmd=פלט מ- $1 
+index_return=מציג יומני מערכת
+index_view=נוף..
+index_viewfile=הצג קובץ יומן:
+index_viewok=נוף
+
+journal_journalctl=כל ההודעות
+journal_expla_journalctl=כל ההודעות עם הסברים
+journal_journalctl_dmesg=הודעות ליבה
+journal_journalctl_debug_info=איתור באגים והודעות מידע
+journal_journalctl_notice_warning=הודעות הודעה ואזהרה
+journal_journalctl_err_crit=שגיאה והודעות קריטיות
+journal_journalctl_alert_emerg=הודעות התראה וחרום
+
+view_title=הצג קובץ יומן
+view_header=$1 שורות אחרונות של $2
+view_header2=$1 שורות אחרונות של קובץ $2
+view_empty=קובץ היומן ריק
+view_refresh=לְרַעֲנֵן
+view_filter=סנן שורות עם הטקסט $1 
+
+save_efile='$1' אינו שם קובץ חוקי : $2
+save_ecannot2=אינך רשאי לצפות ביומן זה
+save_ecannot6=אינך רשאי להציג יומנים שרירותיים
+save_ecannot7=אינך רשאי לצפות ביומן הנוסף הזה
+save_emissing=חסר קובץ יומן לצפייה
+
+acl_any=האם ניתן להציג כל קובץ בתור יומן?
+acl_logs=יכול להציג ולהגדיר קובצי יומן
+acl_all=כל היומנים
+acl_sel=רק קבצים רשומים ואלו תחת ספריות רשומות ..
+acl_extra=קבצי יומן נוספים עבור משתמש זה
+acl_syslog=האם ניתן להציג יומנים מ-syslog?
+acl_others=האם ניתן להציג יומנים ממודולים אחרים?

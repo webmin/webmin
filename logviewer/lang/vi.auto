@@ -1,0 +1,39 @@
+index_title=Trình xem nhật ký hệ thống
+index_elogs=Không tìm thấy nhật ký nào để hiển thị
+index_to=Nhật ký điểm đến
+index_rule=Tin nhắn đã chọn
+index_file=Tệp $1 
+index_cmd=Đầu ra từ $1 
+index_return=trình xem nhật ký hệ thống
+index_view=Lượt xem..
+index_viewfile=Xem tệp nhật ký:
+index_viewok=Lượt xem
+
+journal_journalctl=Tất cả các tin nhắn
+journal_expla_journalctl=Tất cả tin nhắn có giải thích
+journal_journalctl_dmesg=Thông báo hạt nhân
+journal_journalctl_debug_info=Gỡ lỗi và thông báo thông tin
+journal_journalctl_notice_warning=Thông báo và cảnh báo
+journal_journalctl_err_crit=Thông báo lỗi và quan trọng
+journal_journalctl_alert_emerg=Thông báo và tin nhắn khẩn cấp
+
+view_title=Xem tệp nhật ký
+view_header=$1 dòng cuối cùng của $2 
+view_header2=$1 dòng cuối cùng của tệp $2 
+view_empty=Tệp nhật ký trống
+view_refresh=Làm mới
+view_filter=Lọc các dòng có văn bản $1 
+
+save_efile='$1' không phải là tên tệp hợp lệ : $2 
+save_ecannot2=Bạn không được phép xem nhật ký này
+save_ecannot6=Bạn không được phép xem các bản ghi tùy ý
+save_ecannot7=Bạn không được phép xem nhật ký bổ sung này
+save_emissing=Thiếu tệp nhật ký để xem
+
+acl_any=Có thể xem bất kỳ tệp nào dưới dạng nhật ký?
+acl_logs=Có thể xem và định cấu hình các tệp nhật ký
+acl_all=Tất cả các bản ghi
+acl_sel=Chỉ các tệp được liệt kê và những tệp trong thư mục được liệt kê ..
+acl_extra=Các tệp nhật ký bổ sung cho người dùng này
+acl_syslog=Có thể xem nhật ký từ nhật ký hệ thống không?
+acl_others=Có thể xem nhật ký từ các mô-đun khác không?

@@ -37,6 +37,7 @@ index_listrules=Uzskaitiet FirewallD noteikumus
 index_restart_firewalld=Pārlādēt FirewallD
 index_restart_firewallddesc=Atkārtoti ielādējiet FirewallD serveri un lietojiet neatgriezeniski izveidotos noteikumus.
 index_listrules_restartdesc=Norādiet detalizētu informāciju par esošajiem bagātinātajiem un tiešajiem FirewallD noteikumiem zonā $1.
+index_dependent=Neizdevās restartēt $1 atkarīgo pakalpojumu
 
 port_edit=Rediģēt ostu
 port_create=Pievienot ostu

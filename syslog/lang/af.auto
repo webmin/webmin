@@ -2,6 +2,7 @@ index_title=Stelsellogboeke
 index_m4msg=Dit lyk asof u konfigurasielêer $1 van die stelsel log <tt>m4</tt> bevat. Voordat dit geredigeer kan word, moet Webmin die lêer deur <tt>m4</tt> deurgaan om hierdie riglyne veilig te verwyder.
 index_m4=Verwyder m4-riglyne uit die konfigurasie lêer
 index_econf=Die syslog-opstellinglêer $1 is nie op u stelsel gevind nie. Miskien is syslog nie geïnstalleer nie, of is 'n nuwer weergawe soos syslog-ng in gebruik, of is die <a href='$2'>module-opstelling</a> verkeerd.
+index_econf2=Die <tt>systemd-journald</tt>-diens is op jou stelsel bespeur vir die insameling en berging van logdata. Dit word aanbeveel om eerder 'n nuwe <a href='$2'>$1</a> module te gebruik.
 index_active=Aktief?
 index_tag=program
 index_to=Teken bestemming

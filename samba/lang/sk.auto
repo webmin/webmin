@@ -241,6 +241,7 @@ fperm_notlist=Adresáre neuvedené v zozname
 fperm_forceuser=Vynútiť používanie Unixu
 fperm_forcegrp=Vynútiť skupinu Unix
 fperm_link=Povoliť odkazy na zdieľanie mimo zdieľania?
+fperm_unix=Povoliť používanie rozšírení Unix?
 fperm_delro=Môžete odstrániť súbory iba na čítanie?
 fperm_forcefile=Vynútiť režim súborov Unix
 fperm_forcedir=Vynútiť režim adresára Unix

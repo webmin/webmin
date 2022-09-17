@@ -1,6 +1,7 @@
 index_title=Sistemaren erregistroak NG
 index_eprog=Ez da sisteman $1 daemon erregistroa zure sisteman aurkitu edo ez da syslog-ng programa. Doitu <a href='$2'>moduluaren konfigurazioa</a> bide egokia erabiltzeko.
 index_econf=$1 Syslog-NG konfigurazio fitxategia ez da zure sisteman aurkitu. Doitu <a href='$2'>moduluaren konfigurazioa</a> bide egokia erabiltzeko.
+index_econf2=<tt>systemd-journald</tt> zerbitzua zure sisteman hauteman da erregistroko datuak biltzeko eta gordetzeko. Horren ordez <a href='$2'>$1</a> modulu berri bat erabiltzea gomendatzen da.
 index_apply=Aplikatu konfigurazioa
 index_applydesc=Egin klik botoi honetan uneko Syslog-NG konfigurazioa aktibatzeko.
 index_stop=Gelditu Syslog-NG

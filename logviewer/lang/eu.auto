@@ -1,0 +1,39 @@
+index_title=Sistemaren erregistroen ikuslea
+index_elogs=Ez da aurkitu erregistrorik bistaratzeko
+index_to=Erregistroaren helmuga
+index_rule=Mezuak hautatuta
+index_file=$1 fitxategia
+index_cmd=Irteera $1-tik
+index_return=sistemaren erregistroen ikuslea
+index_view=Ikusi..
+index_viewfile=Ikusi erregistro-fitxategia:
+index_viewok=Ikusi
+
+journal_journalctl=Mezu guztiak
+journal_expla_journalctl=Mezu guztiak azalpenekin
+journal_journalctl_dmesg=Kernel mezuak
+journal_journalctl_debug_info=Araztu eta informazio mezuak
+journal_journalctl_notice_warning=Oharra eta abisu mezuak
+journal_journalctl_err_crit=Errore eta mezu kritikoak
+journal_journalctl_alert_emerg=Alerta eta larrialdi mezuak
+
+view_title=Ikusi erregistro-fitxategia
+view_header=$2ren azken $1 lerroak
+view_header2=$2 fitxategiaren azken $1 lerroak
+view_empty=Erregistro fitxategia hutsik dago
+view_refresh=Freskatu
+view_filter=Iragazi lerroak $1 testuarekin
+
+save_efile='$1' ez da baliozko fitxategi-izen bat : $2
+save_ecannot2=Ez duzu erregistro hau ikusteko baimenik
+save_ecannot6=Ez duzu erregistro arbitrarioak ikusteko baimenik
+save_ecannot7=Ez duzu erregistro gehigarri hau ikusteko baimenik
+save_emissing=Ikusteko erregistro-fitxategia falta da
+
+acl_any=Edozein fitxategi ikus al daiteke erregistro gisa?
+acl_logs=Erregistro fitxategiak ikusi eta konfigura ditzake
+acl_all=Erregistro guztiak
+acl_sel=Zerrendatutako fitxategiak eta zerrendatutako direktorioen azpian daudenak bakarrik ..
+acl_extra=Erabiltzaile honen erregistro-fitxategi gehigarriak
+acl_syslog=Syslog-eko erregistroak ikus al daitezke?
+acl_others=Ikus al daitezke beste moduluetako erregistroak?

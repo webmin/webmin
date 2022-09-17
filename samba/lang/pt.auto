@@ -241,6 +241,7 @@ fperm_notlist=Diretórios para não listar
 fperm_forceuser=Forçar usuário Unix
 fperm_forcegrp=Forçar grupo Unix
 fperm_link=Permitir links simbólicos fora do compartilhamento?
+fperm_unix=Permitir o uso de extensões Unix?
 fperm_delro=Pode excluir arquivos somente leitura?
 fperm_forcefile=Forçar modo de arquivo Unix
 fperm_forcedir=Forçar modo de diretório Unix

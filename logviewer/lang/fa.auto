@@ -1,0 +1,39 @@
+index_title=نمایشگر گزارش های سیستم
+index_elogs=هیچ گزارشی برای نمایش یافت نشد
+index_to=مقصد ورود به سیستم
+index_rule=Ù¾ÛØ§Ù‌ÙØ§ Ø§ÙØªØ®Ø§Ø¨ Ø´Ø¯ÙØ¯
+index_file=پرونده $1 
+index_cmd=خروجی از $1 
+index_return=نمایشگر لاگ های سیستم
+index_view=چشم انداز..
+index_viewfile=مشاهده فایل گزارش:
+index_viewok=چشم انداز
+
+journal_journalctl=همه پیام ها
+journal_expla_journalctl=همه پیام ها همراه با توضیحات
+journal_journalctl_dmesg=پیام های هسته
+journal_journalctl_debug_info=اشکال زدایی و پیام های اطلاعاتی
+journal_journalctl_notice_warning=پیام های اخطار و اخطار
+journal_journalctl_err_crit=خطا و پیام های مهم
+journal_journalctl_alert_emerg=پیام های هشدار و اضطراری
+
+view_title=مشاهده Logfile
+view_header=آخرین $1 خط $2 
+view_header2=آخرین $1 خط فایل $2 
+view_empty=فایل گزارش خالی است
+view_refresh=تازه کردن
+view_filter=خطوط با متن $1 را فیلتر کنید
+
+save_efile='$1' یک نام فایل معتبر نیست : $2
+save_ecannot2=شما اجازه دیدن این گزارش را ندارید
+save_ecannot6=شما اجازه دیدن گزارش های دلخواه را ندارید
+save_ecannot7=شما مجاز به مشاهده این گزارش اضافی نیستید
+save_emissing=فایل گزارش برای مشاهده وجود ندارد
+
+acl_any=آیا می توانید هر فایلی را به عنوان یک گزارش مشاهده کنید؟
+acl_logs=می تواند فایل های گزارش را مشاهده و پیکربندی کند
+acl_all=همه سیاههها
+acl_sel=فقط فایل های فهرست شده و آنهایی که در فهرست فهرست شده اند ..
+acl_extra=فایل های گزارش اضافی برای این کاربر
+acl_syslog=آیا می توانید گزارش ها را از syslog مشاهده کنید؟
+acl_others=آیا می توانید گزارش ها را از ماژول های دیگر مشاهده کنید؟

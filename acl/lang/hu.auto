@@ -91,6 +91,7 @@ sessions_actions=Hozzászólások..
 sessions_all=Minden ülés..
 sessions_logouts=A kijelentkezett munkamenetek megjelenítése is
 sessions_state=Állapot
+sessions_action=Akciók
 sessions_this=Ez a bejelentkezés
 sessions_in=Bejelentkezve
 sessions_out=Kilépett

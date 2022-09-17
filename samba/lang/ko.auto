@@ -40,6 +40,8 @@ euser_locked=계정이 잠겨 있습니다
 fmisc_oplocks=oplock을 사용 하시겠습니까?
 fmisc_level2=읽기 전용 oplock?
 
+fperm_unix=Unix 확장 사용을 허용하시겠습니까?
+
 share_create=디렉토리를 자동으로 생성 하시겠습니까?
 share_owner=소유자와 함께 작성
 share_createperms=권한으로 작성

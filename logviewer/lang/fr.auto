@@ -1,0 +1,39 @@
+index_title=Visionneuse de journaux système
+index_elogs=Aucun journal n'a été trouvé à afficher
+index_to=Destination du journal
+index_rule=Messages sélectionnés
+index_file=Fichier $1
+index_cmd=Sortie de $1
+index_return=visionneuse de journaux système
+index_view=Voir..
+index_viewfile=Afficher le fichier journal :
+index_viewok=Voir
+
+journal_journalctl=Tous les messages
+journal_expla_journalctl=Tous les messages avec explications
+journal_journalctl_dmesg=Messages du noyau
+journal_journalctl_debug_info=Messages de débogage et d'information
+journal_journalctl_notice_warning=Avis et messages d'avertissement
+journal_journalctl_err_crit=Messages d'erreur et critiques
+journal_journalctl_alert_emerg=Messages d'alerte et d'urgence
+
+view_title=Afficher le fichier journal
+view_header=Dernières $1 lignes de $2
+view_header2=Dernières $1 lignes du fichier $2
+view_empty=Le fichier journal est vide
+view_refresh=Rafraîchir
+view_filter=Filtrer les lignes avec le texte $1
+
+save_efile='$1' n'est pas un nom de fichier valide  : $2
+save_ecannot2=Vous n'êtes pas autorisé à afficher ce journal
+save_ecannot6=Vous n'êtes pas autorisé à afficher des journaux arbitraires
+save_ecannot7=Vous n'êtes pas autorisé à afficher ce journal supplémentaire
+save_emissing=Fichier journal manquant à afficher
+
+acl_any=Peut afficher n'importe quel fichier sous forme de journal ?
+acl_logs=Peut afficher et configurer les fichiers journaux
+acl_all=Tous les journaux
+acl_sel=Uniquement les fichiers listés et ceux sous les répertoires listés ..
+acl_extra=Fichiers journaux supplémentaires pour cet utilisateur
+acl_syslog=Peut afficher les journaux de syslog ?
+acl_others=Peut afficher les journaux d'autres modules ?

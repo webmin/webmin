@@ -37,6 +37,7 @@ index_listrules=Seznam pravidel FirewallD
 index_restart_firewalld=Znovu načtěte FirewallD
 index_restart_firewallddesc=Znovu načtěte server FirewallD a použijte pravidla, která byla trvale vytvořena.
 index_listrules_restartdesc=Vypsat podrobnosti o existujících rozšířených a přímých pravidlech FirewallD v zóně $1.
+index_dependent=Restartování závislé služby $1 se nezdařilo
 
 port_edit=Upravit port
 port_create=Přidat port

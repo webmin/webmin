@@ -354,6 +354,7 @@ sessions_actions=Veiksmai..
 sessions_all=Visi užsiėmimai..
 sessions_logouts=Taip pat rodyti atsijungusius seansus..
 sessions_state=Valstybė
+sessions_action=Veiksmai
 sessions_this=Šis prisijungimas
 sessions_in=Prisijungęs
 sessions_out=Atsijungęs

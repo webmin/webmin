@@ -10,7 +10,6 @@ passwd_header=Alterando senha do usuário unix
 passwd_for=Alterando senha para
 passwd_old=Senha antiga
 passwd_new=Nova senha
-passwd_repeat=Nova Senha (novamente)
 passwd_change=Alterar
 passwd_reset=Limpar o form
 passwd_err=Falhou para trocar a senha

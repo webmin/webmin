@@ -1,0 +1,39 @@
+index_title=Visor de registros del sistema
+index_elogs=No se encontraron registros para mostrar
+index_to=Destino de registro
+index_rule=Mensajes seleccionados
+index_file=Archivo $1
+index_cmd=Salida de $1
+index_return=visor de registros del sistema
+index_view=Vista..
+index_viewfile=Ver archivo de registro:
+index_viewok=Vista
+
+journal_journalctl=Todos los mensajes
+journal_expla_journalctl=Todos los mensajes con explicaciones
+journal_journalctl_dmesg=Mensajes del núcleo
+journal_journalctl_debug_info=Mensajes de depuración e información
+journal_journalctl_notice_warning=Avisos y mensajes de advertencia
+journal_journalctl_err_crit=Mensajes de error y críticos
+journal_journalctl_alert_emerg=Mensajes de alerta y emergencia
+
+view_title=Ver archivo de registro
+view_header=Últimas $1 líneas de $2
+view_header2=Últimas $1 líneas del archivo $2
+view_empty=El archivo de registro está vacío
+view_refresh=Actualizar
+view_filter=Filtrar líneas con texto $1
+
+save_efile='$1' no es un nombre de archivo válido : $2
+save_ecannot2=No tienes permiso para ver este registro
+save_ecannot6=No tienes permiso para ver registros arbitrarios
+save_ecannot7=No tienes permiso para ver este registro adicional
+save_emissing=Falta el archivo de registro para ver
+
+acl_any=¿Puede ver cualquier archivo como un registro?
+acl_logs=Puede ver y configurar archivos de registro
+acl_all=Todos los registros
+acl_sel=Solo los archivos enumerados y los que se encuentran en los directorios enumerados ..
+acl_extra=Archivos de registro adicionales para este usuario
+acl_syslog=¿Puede ver los registros de syslog?
+acl_others=¿Puede ver los registros de otros módulos?

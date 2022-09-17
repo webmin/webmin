@@ -2,6 +2,7 @@ index_title=Nhật ký hệ thống
 index_m4msg=Tệp cấu hình nhật ký hệ thống của bạn $1 dường như chứa các lệnh <tt>m4</tt>. Trước khi có thể chỉnh sửa, Webmin cần chuyển tệp qua <tt>m4</tt> để xóa các chỉ thị này một cách an toàn.
 index_m4=Xóa chỉ thị m4 khỏi tệp cấu hình
 index_econf=Không tìm thấy tệp cấu hình nhật ký hệ thống $1 trên hệ thống của bạn. Có thể syslog chưa được cài đặt hoặc phiên bản mới hơn như syslog-ng đang được sử dụng hoặc cấu hình mô-đun <a href='$2'></a> không chính xác.
+index_econf2=Dịch vụ <tt>systemd-journald</tt> được phát hiện trên hệ thống của bạn để thu thập và lưu trữ dữ liệu ghi nhật ký. Bạn nên sử dụng mô-đun <a href='$2'>$1</a> mới thay thế.
 index_active=Chủ động?
 index_tag=Chương trình
 index_to=Đăng nhập đích

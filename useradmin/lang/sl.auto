@@ -158,6 +158,7 @@ usave_ereal='$1' ni veljavno pravo ime
 usave_ehome='$1' ni veljaven domači imenik
 usave_esgname='$1' ni veljavno ime sekundarne skupine
 usave_ehomepath=Ni vam dovoljeno ustvariti domačega imenika $1
+usave_ehomeslash=Domači imenik $1 se ne more končati z /
 usave_eshell='$1' ni dovoljena lupina
 usave_egid='$1' ni veljavna skupina
 usave_egcreate=Ni vam dovoljeno ustvarjati novih skupin za nove uporabnike

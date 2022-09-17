@@ -2,6 +2,7 @@ index_title=Systémové denníky
 index_m4msg=Zdá sa, že váš konfiguračný súbor systémového denníka $1 obsahuje smernice <tt>m4</tt>. Predtým, ako bude môcť byť upravený, musí Webmin prejsť súbor cez <tt>m4</tt>, aby tieto smernice bezpečne odstránil.
 index_m4=Odstráňte príkazy m4 z konfiguračného súboru
 index_econf=Vo vašom systéme sa nenašiel konfiguračný súbor syslog $1. Možno nie je nainštalovaný syslog alebo sa používa novšia verzia, ako je syslog-ng, alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
+index_econf2=Vo vašom systéme bola zistená služba <tt>systemd-journald</tt> na zhromažďovanie a ukladanie protokolovaných údajov. Namiesto toho sa odporúča použiť nový modul <a href='$2'>$1</a>.
 index_active=Aktívne?
 index_tag=Program
 index_to=Cieľ protokolu

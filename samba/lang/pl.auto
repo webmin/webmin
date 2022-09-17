@@ -5,6 +5,8 @@ convert_ncdesc=Lista użytkowników, których nie można konwertować, może zaw
 
 smb_ads=Active Directory
 
+fperm_unix=Zezwolić na używanie rozszerzeń Uniksa?
+
 share_samedesc1=Uwaga - te ustawienia wpływają również na wartości domyślne dla wszystkich udziałów plików.
 share_samedesc2=Uwaga - te ustawienia wpływają również na wartości domyślne dla wszystkich udziałów drukarek.
 

@@ -1,4 +1,5 @@
 index_econf=在系统上找不到系统日志配置文件 $1。可能未安装syslog，或者正在使用较新的版本，例如syslog-ng，或者<a href='$2'>模块配置</a>不正确。
+index_econf2=在您的系统上检测到 <tt>systemd-journald</tt> 服务用于收集和存储日志数据。建议改用新的 <a href='$2'>$1</a> 模块。
 index_socket=Unix套接字文件 $1
 index_cmd=$1的输出
 index_viewfile=查看日志文件：

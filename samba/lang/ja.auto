@@ -25,6 +25,8 @@ smb_ads=アクティブディレクトリ
 euser_noexpire=パスワードは期限切れになることはありません
 euser_locked=アカウントはロックされています
 
+fperm_unix=Unix 拡張機能の使用を許可しますか?
+
 share_owner=所有者で作成
 share_createperms=権限で作成
 share_group=グループで作成

@@ -11,7 +11,6 @@ passwd_header=유닉스 유저 암호 변경
 passwd_for=암호 변경할 유저
 passwd_old=이전 암호
 passwd_new=새 암호
-passwd_repeat=새 암호 (다시)
 passwd_expire=다음 로그인시에 암호를 변경하도록 합니다.
 passwd_others=다른 모듈에서 암호 변경을 하겠습니까?
 passwd_change=변경

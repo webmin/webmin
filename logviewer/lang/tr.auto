@@ -1,0 +1,39 @@
+index_title=Sistem Günlükleri Görüntüleyici
+index_elogs=Görüntülenecek günlük bulunamadı
+index_to=Günlük hedefi
+index_rule=Mesajlar seçildi
+index_file=$1 dosyası
+index_cmd=$1'den çıktı
+index_return=sistem günlükleri görüntüleyici
+index_view=Görüş..
+index_viewfile=Günlük dosyasını görüntüle:
+index_viewok=görüş
+
+journal_journalctl=Tüm mesajlar
+journal_expla_journalctl=Açıklamalı tüm mesajlar
+journal_journalctl_dmesg=Çekirdek mesajları
+journal_journalctl_debug_info=Hata ayıklama ve bilgi mesajları
+journal_journalctl_notice_warning=Uyarı ve uyarı mesajları
+journal_journalctl_err_crit=Hata ve kritik mesajlar
+journal_journalctl_alert_emerg=Uyarı ve acil durum mesajları
+
+view_title=Günlük Dosyasını Görüntüle
+view_header=$2'nin son $1 satırı
+view_header2=$2 dosyasının son $1 satırı
+view_empty=Günlük dosyası boş
+view_refresh=Yenile
+view_filter=$1 metinli satırları filtrele
+
+save_efile='$1' geçerli bir dosya adı değil  : $2
+save_ecannot2=Bu günlüğü görüntüleme izniniz yok
+save_ecannot6=Rastgele günlükleri görüntüleme izniniz yok
+save_ecannot7=Bu ekstra günlüğü görüntüleme izniniz yok
+save_emissing=Görüntülenecek günlük dosyası eksik
+
+acl_any=Herhangi bir dosyayı günlük olarak görüntüleyebilir mi?
+acl_logs=Günlük dosyalarını görüntüleyebilir ve yapılandırabilir
+acl_all=Tüm günlükler
+acl_sel=Yalnızca listelenen dosyalar ve listelenen dizinlerin altındakiler ..
+acl_extra=Bu kullanıcı için ekstra günlük dosyaları
+acl_syslog=Sistem günlüğünden günlükleri görüntüleyebilir mi?
+acl_others=Diğer modüllerdeki günlükleri görüntüleyebilir mi?

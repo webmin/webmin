@@ -7,6 +7,7 @@ index_listrules=Liste FirewallD-regler
 index_restart_firewalld=Last inn FirewallD på nytt
 index_restart_firewallddesc=Last inn FirewallD-serveren på nytt og bruk reglene som ble opprettet permanent.
 index_listrules_restartdesc=Vis detaljer om eksisterende rike og direkte FirewallD-regler i $1-sonen.
+index_dependent=Kunne ikke starte $1 avhengig tjeneste på nytt
 
 list_rule_iperr=Ugyldig IP-adresse
 list_rule_actionerr=Ugyldig handling

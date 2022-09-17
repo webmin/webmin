@@ -241,6 +241,7 @@ fperm_notlist=Thư mục không liệt kê
 fperm_forceuser=Buộc người dùng Unix
 fperm_forcegrp=Buộc nhóm Unix
 fperm_link=Cho phép liên kết ngoài chia sẻ?
+fperm_unix=Cho phép sử dụng các tiện ích mở rộng Unix?
 fperm_delro=Có thể xóa các tập tin chỉ đọc?
 fperm_forcefile=Buộc chế độ tập tin Unix
 fperm_forcedir=Buộc chế độ thư mục Unix

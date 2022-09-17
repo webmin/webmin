@@ -1,0 +1,39 @@
+index_title=Prehliadač systémových protokolov
+index_elogs=Nenašli sa žiadne záznamy na zobrazenie
+index_to=Cieľ denníka
+index_rule=Vybraté správy
+index_file=Súbor $1
+index_cmd=Výstup z $1
+index_return=prehliadač systémových protokolov
+index_view=Vyhliadka..
+index_viewfile=Zobraziť súbor denníka:
+index_viewok=vyhliadka
+
+journal_journalctl=Všetky správy
+journal_expla_journalctl=Všetky správy s vysvetleniami
+journal_journalctl_dmesg=Správy jadra
+journal_journalctl_debug_info=Ladiace a informačné správy
+journal_journalctl_notice_warning=Oznamovacie a varovné správy
+journal_journalctl_err_crit=Chybové a kritické správy
+journal_journalctl_alert_emerg=Výstražné a núdzové správy
+
+view_title=Zobraziť Logfile
+view_header=Posledných $1 riadkov z $2
+view_header2=Posledných $1 riadkov zo súboru $2
+view_empty=Súbor denníka je prázdny
+view_refresh=Obnoviť
+view_filter=Filtrujte riadky s textom $1
+
+save_efile='$1' nie je platný názov súboru : $2
+save_ecannot2=Nemáte povolenie na zobrazenie tohto denníka
+save_ecannot6=Nemáte povolené prezerať ľubovoľné protokoly
+save_ecannot7=Nemáte povolenie prezerať si tento extra denník
+save_emissing=Chýba súbor denníka na zobrazenie
+
+acl_any=Môžete zobraziť akýkoľvek súbor ako denník?
+acl_logs=Môže prezerať a konfigurovať protokolové súbory
+acl_all=Všetky denníky
+acl_sel=Iba uvedené súbory a súbory v uvedených adresároch ..
+acl_extra=Extra súbory denníka pre tohto používateľa
+acl_syslog=Je možné zobraziť protokoly zo syslogu?
+acl_others=Je možné zobraziť protokoly z iných modulov?

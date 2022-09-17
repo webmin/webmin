@@ -1,0 +1,1 @@
+index_econf2=Ve vašem systému byla zjištěna služba <tt>systemd-journald</tt> pro shromažďování a ukládání protokolovaných dat. Místo toho se doporučuje použít nový modul <a href='$2'>$1</a>.

@@ -58,6 +58,7 @@ sessions_actions=Ações..
 sessions_all=Todas as sessões..
 sessions_logouts=Mostrar também sessões desconectadas.
 sessions_state=Estado
+sessions_action=Ações
 sessions_this=Este login
 sessions_in=Logado
 sessions_out=Desconectado

@@ -37,6 +37,7 @@ index_listrules=Sorolja fel a FirewallD szabályokat
 index_restart_firewalld=Töltse újra a FirewallD-t
 index_restart_firewallddesc=Töltse be újra a FirewallD-kiszolgálót, és alkalmazza a véglegesen létrehozott szabályokat.
 index_listrules_restartdesc=Részletek a(z) $1 zónában meglévő gazdag és közvetlen FirewallD szabályokról.
+index_dependent=Nem sikerült újraindítani a(z) $1 függő szolgáltatást
 
 port_edit=Port szerkesztése
 port_create=Add Port

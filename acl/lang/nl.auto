@@ -39,6 +39,7 @@ sessions_actions=Acties..
 sessions_all=Alle sessies..
 sessions_logouts=Toon ook uitgelogde sessies..
 sessions_state=Staat
+sessions_action=Acties
 sessions_this=Deze login
 sessions_in=Ingelogd
 sessions_out=Uitgelogd

@@ -241,6 +241,7 @@ fperm_notlist=Imenikov ni na seznamu
 fperm_forceuser=Prisilite uporabnika Unixa
 fperm_forcegrp=Force Unix skupina
 fperm_link=Dovoli simbolne povezave zunaj skupne rabe?
+fperm_unix=Ali dovolite uporabo razširitev Unix?
 fperm_delro=Ali lahko datoteke samo za branje izbrišete?
 fperm_forcefile=Prisilite način datoteke Unix
 fperm_forcedir=Prisilite način direktorija Unix

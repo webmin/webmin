@@ -10,7 +10,6 @@ passwd_header=Unix kullanıcı parolası değiştiriliyor
 passwd_for=Kullanıcı
 passwd_old=Eski parola
 passwd_new=Yeni parola
-passwd_repeat=Yeni parola (tekrar)
 passwd_expire=Kullanıcının sonraki girişinde parolasının değiştirilmesi için zorlansın mı?
 passwd_others=Diğer modüllerdeki parola da değiştirilsin mi?
 passwd_change=Değiştir

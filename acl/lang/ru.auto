@@ -62,6 +62,7 @@ sessions_actions=Действия..
 sessions_all=Все сеансы..
 sessions_logouts=Также показать сеансы выхода из системы.
 sessions_state=состояние
+sessions_action=Действия
 sessions_this=Этот логин
 sessions_in=Войти в систему
 sessions_out=Вышли из

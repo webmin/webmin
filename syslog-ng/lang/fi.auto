@@ -1,6 +1,7 @@
 index_title=Järjestelmälokit NG
 index_eprog=Järjestelmäloki daemonia $1 ei löydy järjestelmästäsi, tai se ei ole syslog-ng-ohjelma. Säädä <a href='$2'>moduulin kokoonpano</a> käyttääksesi oikeaa polkua.
 index_econf=Syslog-NG-määritystiedostoa $1 ei löydy järjestelmästäsi. Säädä <a href='$2'>moduulin kokoonpano</a> käyttääksesi oikeaa polkua.
+index_econf2=Järjestelmästäsi havaittiin <tt>systemd-journald</tt>-palvelu lokitietojen keräämistä ja tallentamista varten. On suositeltavaa käyttää sen sijaan uutta <a href='$2'>$1</a>-moduulia.
 index_apply=Käytä määritystä
 index_applydesc=Napsauta tätä painiketta aktivoidaksesi nykyisen Syslog-NG-kokoonpanon.
 index_stop=Lopeta Syslog-NG

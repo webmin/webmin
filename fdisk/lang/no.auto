@@ -1,0 +1,4 @@
+edit_eparted=Denne partisjonen kan ikke endres med mindre kommandoen <tt>parted</tt> er installert.
+edit_eparted2=Denne partisjonen kan ikke endres med mindre <tt>parted</tt> er satt som administrasjonskommando i modulkonfigurasjon.
+edit_edisk=Denne disken kan ikke redigeres med mindre kommandoen <tt>parted</tt> er installert.
+edit_edisk2=Denne disken kan ikke redigeres med mindre <tt>parted</tt> er satt som administrasjonskommando i modulkonfigurasjon.

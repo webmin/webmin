@@ -1,0 +1,39 @@
+index_title=Visualizador de registros do sistema
+index_elogs=Não foram encontrados registros para exibição
+index_to=Destino do registro
+index_rule=Mensagens selecionadas
+index_file=Arquivo $1
+index_cmd=Saída de $1 
+index_return=visualizador de logs do sistema
+index_view=Visão..
+index_viewfile=Visualizar arquivo de registro:
+index_viewok=Visão
+
+journal_journalctl=Todas as mensagens
+journal_expla_journalctl=Todas as mensagens com explicações
+journal_journalctl_dmesg=Mensagens do kernel
+journal_journalctl_debug_info=Mensagens de depuração e informações
+journal_journalctl_notice_warning=Avisos e mensagens de aviso
+journal_journalctl_err_crit=Mensagens de erro e críticas
+journal_journalctl_alert_emerg=Mensagens de alerta e emergência
+
+view_title=Ver arquivo de registro
+view_header=Últimas $1 linhas de $2
+view_header2=Últimas $1 linhas do arquivo $2
+view_empty=O arquivo de log está vazio
+view_refresh=Atualizar
+view_filter=Filtrar linhas com texto $1 
+
+save_efile='$1' não é um nome de arquivo válido : $2
+save_ecannot2=Você não tem permissão para ver este registro
+save_ecannot6=Você não tem permissão para visualizar logs arbitrários
+save_ecannot7=Você não tem permissão para ver este log extra
+save_emissing=Arquivo de log ausente para visualizar
+
+acl_any=Pode visualizar qualquer arquivo como um log?
+acl_logs=Pode visualizar e configurar arquivos de log
+acl_all=Todos os registros
+acl_sel=Somente arquivos listados e aqueles sob diretórios listados ..
+acl_extra=Arquivos de log extras para este usuário
+acl_syslog=Pode visualizar logs do syslog?
+acl_others=Pode visualizar logs de outros módulos?

@@ -107,6 +107,7 @@ sessions_actions=Akcia..
 sessions_all=Všetky relácie..
 sessions_logouts=Zobraziť aj odhlásené relácie.
 sessions_state=Štát
+sessions_action=Akcie
 sessions_this=Toto prihlásenie
 sessions_in=Prihlásený
 sessions_out=Odhlasený

@@ -354,6 +354,7 @@ sessions_actions=Acțiuni..
 sessions_all=Toate sesiunile..
 sessions_logouts=Arată, de asemenea, sesiuni deconectate..
 sessions_state=Stat
+sessions_action=Acțiuni
 sessions_this=Această autentificare
 sessions_in=Conectat
 sessions_out=Delogat

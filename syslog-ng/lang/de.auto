@@ -1,0 +1,1 @@
+index_econf2=Auf Ihrem System wurde der Dienst <tt>systemd-journald</tt> zum Sammeln und Speichern von Protokolldaten erkannt. Es wird empfohlen, stattdessen ein neues <a href='$2'>$1</a>-Modul zu verwenden.

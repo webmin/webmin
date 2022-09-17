@@ -27,6 +27,10 @@ select_nvmepart=NVME SSD $1 sürücü $2 bölüm $3
 edit_mountiscsi=iSCSI paylaşılan cihazı $1 
 edit_name=Bölüm adı
 edit_volid=Birim Kimliği
+edit_eparted=<tt>parted</tt> komutu yüklenmedikçe bu bölüm değiştirilemez.
+edit_eparted2=Modül yapılandırmasında <tt>parted</tt> yönetim komutu olarak ayarlanmadıkça bu bölüm değiştirilemez.
+edit_edisk=<tt>parted</tt> komutu yüklenmedikçe bu disk düzenlenemez.
+edit_edisk2=Modül yapılandırmasında <tt>parted</tt> yönetim komutu olarak ayarlanmadıkça bu disk düzenlenemez.
 edit_newmount2=Dağı Bölümü
 edit_mountmsg2=Kullanılabilir bellek miktarını artırmak için bu bölümü sisteminize sanal bellek olarak takın.
 

@@ -39,6 +39,8 @@ euser_locked=L'account è bloccato
 fmisc_oplocks=Abilitare gli oplock?
 fmisc_level2=Oplock di sola lettura?
 
+fperm_unix=Consenti l'uso di estensioni Unix?
+
 share_create=Creare automaticamente una directory?
 share_owner=Crea con il proprietario
 share_createperms=Crea con le autorizzazioni

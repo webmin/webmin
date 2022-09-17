@@ -84,6 +84,7 @@ usave_euuid=Você não tem permissão para alterar o UID dos usuários
 usave_euidused2=O UID já está em uso
 usave_ealluid=Todos os UIDs permitidos foram alocados
 usave_esgname='$1' não é um nome de grupo secundário válido
+usave_ehomeslash=O diretório inicial $1 não pode terminar com um /
 usave_eoffice=O Office não pode conter um caractere:
 usave_eworkph=O telefone comercial não pode conter um caractere:
 usave_ehomeph=O telefone residencial não pode conter um caractere:

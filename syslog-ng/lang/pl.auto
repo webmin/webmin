@@ -1,6 +1,7 @@
 index_title=Logi systemowe NG
 index_eprog=Systemowy demon rejestrujący $1 nie został znaleziony w twoim systemie lub nie jest programem syslog-ng. Dostosuj konfigurację modułu <a href='$2'></a>, aby użyć prawidłowej ścieżki.
 index_econf=Plik konfiguracyjny Syslog-NG $1 nie został znaleziony w twoim systemie. Dostosuj konfigurację modułu <a href='$2'></a>, aby użyć prawidłowej ścieżki.
+index_econf2=W Twoim systemie wykryto usługę <tt>systemd-journald</tt> służącą do zbierania i przechowywania danych logowania. Zalecane jest użycie nowego modułu <a href='$2'>$1</a>.
 index_apply=Zastosuj konfigurację
 index_applydesc=Kliknij ten przycisk, aby aktywować bieżącą konfigurację Syslog-NG.
 index_stop=Zatrzymaj Syslog-NG

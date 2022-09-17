@@ -18,6 +18,8 @@ smb_server=Şifre sunucusu
 euser_noexpire=Parolanın süresi asla dolmaz
 euser_locked=Hesap kilitlendi
 
+fperm_unix=Unix uzantılarının kullanımına izin verilsin mi?
+
 share_createperms=İzinlerle oluştur
 share_group=Grupla oluştur
 

@@ -354,6 +354,7 @@ sessions_actions=Optrede..
 sessions_all=Alle sessies..
 sessions_logouts=Toon ook afgemelde sessies..
 sessions_state=staat
+sessions_action=Aksies
 sessions_this=Hierdie aanmelding
 sessions_in=Aangemeld
 sessions_out=Uitgeteken

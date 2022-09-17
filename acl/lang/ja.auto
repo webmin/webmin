@@ -62,6 +62,7 @@ sessions_actions=行動..
 sessions_all=すべてのセッション。
 sessions_logouts=ログアウトしたセッションも表示します。
 sessions_state=状態
+sessions_action=行動
 sessions_this=このログイン
 sessions_in=ログイン済み
 sessions_out=ログアウトしました

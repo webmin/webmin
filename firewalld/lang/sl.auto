@@ -37,6 +37,7 @@ index_listrules=Seznam pravil FirewallD
 index_restart_firewalld=Ponovno naložite FirewallD
 index_restart_firewallddesc=Ponovno naložite strežnik FirewallD in uporabite pravila, ki so bila trajno ustvarjena.
 index_listrules_restartdesc=Navedite podrobnosti o obstoječih obogatenih in neposrednih pravilih FirewallD v območju $1.
+index_dependent=Ponovni zagon odvisne storitve $1 ni uspel
 
 port_edit=Uredi vrata
 port_create=Dodaj vrata

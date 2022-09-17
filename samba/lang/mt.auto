@@ -241,6 +241,7 @@ fperm_notlist=Direttorji biex ma jelenkawx
 fperm_forceuser=Forza l-utent Unix
 fperm_forcegrp=Grupp Forza Unix
 fperm_link=Ħalli s-simboli barra s-sehem?
+fperm_unix=Jippermetti l-użu ta 'estensjonijiet Unix?
 fperm_delro=Tista 'tħassar il-fajls mill-ewwel?
 fperm_forcefile=Forza mod tal-fajl Unix
 fperm_forcedir=Forza fil-modalità tad-direttorju Unix

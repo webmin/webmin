@@ -40,6 +40,7 @@ sessions_actions=Azioni..
 sessions_all=Tutte le sessioni..
 sessions_logouts=Mostra anche sessioni disconnesse.
 sessions_state=Stato
+sessions_action=Azioni
 sessions_this=Questo login
 sessions_in=Connesso
 sessions_out=Disconnesso

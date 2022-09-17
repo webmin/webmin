@@ -12,6 +12,10 @@ select_nvmepart=Jednotka NVME SSD $1 $2 partition $3
 
 edit_mountiscsi=Sdílené zařízení iSCSI $1 
 edit_name=Název oddílu
+edit_eparted=Tento oddíl nelze změnit, pokud není nainstalován příkaz <tt>parted</tt>.
+edit_eparted2=Tento oddíl nelze změnit, pokud není <tt>parted</tt> nastaveno jako příkaz pro správu v konfiguraci modulu.
+edit_edisk=Tento disk nelze upravovat, pokud není nainstalován příkaz <tt>parted</tt>.
+edit_edisk2=Tento disk nelze upravovat, pokud není <tt>parted</tt> nastaveno jako příkaz pro správu v konfiguraci modulu.
 
 btrfs_l=Velikost listu
 btrfs_n=Velikost uzlu

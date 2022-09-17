@@ -1,0 +1,39 @@
+index_title=Visualitzador de registres del sistema
+index_elogs=No s'han trobat registres per mostrar
+index_to=Destinació del registre
+index_rule=Missatges seleccionats
+index_file=Fitxer $1 
+index_cmd=Sortida de $1
+index_return=visor de registres del sistema
+index_view=Veure...
+index_viewfile=Veure fitxer de registre:
+index_viewok=Veure
+
+journal_journalctl=Tots els missatges
+journal_expla_journalctl=Tots els missatges amb explicacions
+journal_journalctl_dmesg=Missatges del nucli
+journal_journalctl_debug_info=Missatges de depuració i informació
+journal_journalctl_notice_warning=Missatges d'avís i advertència
+journal_journalctl_err_crit=Missatges d'error i crítics
+journal_journalctl_alert_emerg=Missatges d'alerta i emergència
+
+view_title=Veure fitxer de registre
+view_header=Les darreres $1 línies de $2
+view_header2=Les últimes $1 línies del fitxer $2
+view_empty=El fitxer de registre està buit
+view_refresh=Actualització
+view_filter=Filtra les línies amb el text $1 
+
+save_efile='$1' no és un nom de fitxer vàlid : $2
+save_ecannot2=No teniu permís per veure aquest registre
+save_ecannot6=No teniu permís per veure els registres arbitraris
+save_ecannot7=No teniu permís per veure aquest registre addicional
+save_emissing=Falta el fitxer de registre per veure'l
+
+acl_any=Pot veure qualsevol fitxer com a registre?
+acl_logs=Pot veure i configurar fitxers de registre
+acl_all=Tots els registres
+acl_sel=Només els fitxers llistats i els que hi ha a directoris llistats ..
+acl_extra=Fitxers de registre addicionals per a aquest usuari
+acl_syslog=Es poden veure els registres de Syslog?
+acl_others=Es poden veure els registres d'altres mòduls?
