@@ -1399,12 +1399,19 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 			}
 		local $url = $wantport == 443 ? "https://$urlhost/"
 					      : "https://$urlhost:$wantport/";
+		local $jsurl = $config{'musthost'} ?
+				                   $url :
+				                   "https://'+location.host+'";
+		local $jsredir = $config{'musthost'} ?
+				                   "location.href='$url'" :
+				                   "location.protocol='https:'";
 		&http_error(200, "Document follows",
 			"This web server is running in SSL mode. ".
-			"Try the URL <a href='$url'>$url</a> instead.".
+			"Trying to redirect to <a href='$url'>$url</a> instead ...".
 			"<script>".
 			"if (location.protocol != 'https:') {".
-			"  location.protocol = 'https:';".
+			"  document.querySelector('a').href='".$jsurl."';document.querySelector('a').innerText='".$jsurl."';".
+			"".$jsredir."".
 			"}".
 			"</script>",
 			0, 1);
