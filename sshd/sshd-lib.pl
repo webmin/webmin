@@ -377,5 +377,16 @@ return &ui_radio($name, lc($value) eq 'yes' ? 1 :
 		   [ 2, $text{'default'} ] ]);
 }
 
+sub get_preferred_key_type
+{
+if ($version{'type'} eq 'openssh' && $version{'number'} >= 6.5) {
+	return "ed25519";
+	}
+if ($version{'type'} eq 'openssh' && $version{'number'} >= 3.2) {
+	return "rsa1";
+	}
+return undef;
+}
+
 1;
 

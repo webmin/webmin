@@ -9,15 +9,14 @@ my ($uinfo) = @_;
 if ($config{'sync_create'} && &has_command($config{'keygen_path'}) &&
     -d $uinfo->{'home'} && !-d "$uinfo->{'home'}/.ssh") {
 	local $cmd;
-	local $type = $config{'sync_type'} ? "-t $config{'sync_type'}" :
-		      $version{'type'} eq 'openssh' &&
-		       $version{'number'} >= 3.2 ? "-t rsa1" : "";
+	local $type = $config{'sync_type'} || &get_preferred_key_type();
+	local $tflag = $type ? "-t $type" : "";
 	if ($config{'sync_pass'} && $uinfo->{'passmode'} == 3) {
-		$cmd = "$config{'keygen_path'} $type -P ".
+		$cmd = "$config{'keygen_path'} $tflag -P ".
 		       quotemeta($uinfo->{'plainpass'});
 		}
 	else {
-		$cmd = "$config{'keygen_path'} $type -P \"\"";
+		$cmd = "$config{'keygen_path'} $tflag -P \"\"";
 		}
 	&system_logged("echo '' | ".&command_as_user($uinfo->{'user'}, 0, $cmd).
 		       " >/dev/null 2>&1");
