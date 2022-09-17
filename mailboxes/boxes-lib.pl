@@ -420,8 +420,7 @@ sub parse_mail
 return if ($_[0]->{'parsed'}++);
 local $ct = $_[0]->{'header'}->{'content-type'};
 local (@attach, $h, $a);
-if ($ct =~ /multipart\/(\S+)/i && ($ct =~ /boundary="([^"]+)"/i ||
-				   $ct =~ /boundary=([^;\s]+)/i)) {
+if ($ct =~ /boundary="([^"]+)"/i || $ct =~ /boundary=([^;\s]+)/i) {
 	# Multipart MIME message
 	local $bound = "--".$1;
 	local @lines = $_[3] ? split(/\n/, $_[0]->{'body'})
@@ -455,6 +454,9 @@ if ($ct =~ /multipart\/(\S+)/i && ($ct =~ /boundary="([^"]+)"/i ||
 		if ($attach->{'header'}->{'content-type'} =~ /^([^;\s]+)/) {
 			$attach->{'type'} = lc($1);
 			}
+		elsif ($ct !~ /^multipart\/\S+/ && $ct =~ /^([^;\s]+)/) {
+                        $attach->{'type'} = lc($1);
+                        }
 		else {
 			$attach->{'type'} = 'text/plain';
 			}
