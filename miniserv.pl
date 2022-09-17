@@ -1407,7 +1407,7 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 				                   "location.protocol='https:'";
 		&http_error(200, "Document follows",
 			"This web server is running in SSL mode. ".
-			"Trying to redirect to <a href='$url'>$url</a> instead URL ...".
+			"Trying to redirect to <a href='$url'>$url</a> instead ...".
 			"<script>".
 			"if (location.protocol != 'https:') {".
 			"  document.querySelector('a').href='".$jsurl."';document.querySelector('a').innerText='".$jsurl."';".
