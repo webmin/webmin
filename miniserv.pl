@@ -270,43 +270,9 @@ elsif ($config{'certfile'} && !-r $config{'certfile'}) {
 	print STDERR "SSL cert file $config{'certfile'} does not exist\n";
 	$use_ssl = 0;
 	}
-@ipkeys = &get_ipkeys(\%config);
 if ($use_ssl) {
-	if ($config{'ssl_version'}) {
-		# Force an SSL version
-		$Net::SSLeay::version = $config{'ssl_version'};
-		$Net::SSLeay::ssl_version = $config{'ssl_version'};
-		}
-	$client_certs = 0 if (!-r $config{'ca'} || !%certs);
-	$ctx = &create_ssl_context($config{'keyfile'},
-				   $config{'certfile'},
-				   $config{'extracas'});
-	$ctx || die "Failed to create default SSL context";
-	$ssl_contexts{"*"} = $ctx;
-	foreach $ipkey (@ipkeys) {
-		$ctx = &create_ssl_context($ipkey->{'key'}, $ipkey->{'cert'},
-				   $ipkey->{'extracas'} || $config{'extracas'});
-		if ($ctx) {
-			foreach $ip (@{$ipkey->{'ips'}}) {
-				$ssl_contexts{$ip} = $ctx;
-				}
-			}
-		}
-
-	# Setup per-hostname SSL contexts on the main IP
-	if (defined(&Net::SSLeay::CTX_set_tlsext_servername_callback)) {
-		Net::SSLeay::CTX_set_tlsext_servername_callback(
-		    $ssl_contexts{"*"},
-		    sub {
-			my $ssl = shift;
-			my $h = Net::SSLeay::get_servername($ssl);
-			my $c = $ssl_contexts{$h} ||
-				$h =~ /^[^\.]+\.(.*)$/ && $ssl_contexts{"*.$1"};
-			if ($c) {
-				Net::SSLeay::set_SSL_CTX($ssl, $c);
-				}
-			});
-		}
+	$err = &setup_ssl_contexts();
+	die $err if ($err);
 	}
 
 # Load gzip library if enabled
@@ -1433,43 +1399,17 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 			}
 		local $url = $wantport == 443 ? "https://$urlhost/"
 					      : "https://$urlhost:$wantport/";
-		if ($config{'ssl_redirect'}) {
-			# Just re-direct to the correct URL
-			sleep(1);	# Give browser a change to finish
-					# sending its request
-			&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
-			&write_data("Date: $datestr\r\n");
-			&write_data("Server: $config{'server'}\r\n");
-			&write_data("Location: $url\r\n");
-			&write_keep_alive(0);
-			&write_data("\r\n");
-			return 0;
-		} elsif ($config{'hide_admin_url'} != 1) {
-			# Tell user the correct URL
-			&http_error(200, "Document follows",
-				"<noscript>".
-				"<tt>This web server is running in SSL mode.<br>".
-				"Try the URL <a style=\"color: #f12b2b\" ".
-				"href='$url'>$url</a> instead.</tt></noscript>".
-				"<script>".
-				"var timeout = 4000;".
-				"try {var noscript = document.querySelector('noscript');".
-				"var redirect = '<tt>This web server is running in SSL mode.<br>".
-				"Redirecting to the URL ".
-				"<a style=\"color: #f12b2b\" href=\"https://".
-				"'+location.host+'\">https://'+location.host+'</a> ...</tt>';".
-				"noscript.insertAdjacentHTML('afterend', redirect);}catch(e){timeout = 0;}".
-				"if (location.protocol != 'https:') {".
-				"  setTimeout(function(){location.protocol = 'https:'},timeout);".
-				"}".
-				"</script>",
-				0, 1, 1);
-		} else {
-			# Throw an error
-			&http_error(404, "Page not found",
-			    "The requested URL was not found on this server.")
+		&http_error(200, "Document follows",
+			"This web server is running in SSL mode. ".
+			"Try the URL <a href='$url'>$url</a> instead.".
+			"<script>".
+			"if (location.protocol != 'https:') {".
+			"  location.protocol = 'https:';".
+			"}".
+			"</script>",
+			0, 1);
 		}
-	} elsif (ord(substr($reqline, 0, 1)) == 128 && !$use_ssl) {
+	elsif (ord(substr($reqline, 0, 1)) == 128 && !$use_ssl) {
 		# This could be an https request when it should be http ..
 		# need to fake a HTTP response
 		eval <<'EOF';
@@ -1505,24 +1445,7 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 			local $url = $config{'musthost'} ?
 					"https://$config{'musthost'}:$port/" :
 					"https://$host:$port/";
-			if ($config{'ssl_redirect'}) {
-				# Just re-direct to the correct URL
-				sleep(1);	# Give browser a change to
-						# finish sending its request
-				&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
-				&write_data("Date: $datestr\r\n");
-				&write_data("Server: $config{'server'}\r\n");
-				&write_data("Location: $url\r\n");
-				&write_keep_alive(0);
-				&write_data("\r\n");
-				return 0;
-			} elsif ($config{'hide_admin_url'} != 1) {
-				# Tell user the correct URL
-				&http_error(200, "Bad Request", "This web server is not running in SSL mode. Try the URL <a href='$url'>$url</a> instead.", 0, 1);
-			} else {
-				&http_error(404, "Page not found",
-				    "The requested URL was not found on this server.");
-			}
+			&http_error(200, "Bad Request", "This web server is not running in SSL mode. Try the URL <a href='$url'>$url</a> instead.", 0, 1);
 EOF
 		if ($@) {
 			&http_error(400, "Bad Request");
@@ -1616,6 +1539,8 @@ if (defined($header{'host'})) {
 $ssl = $config{'redirect_ssl'} ne '' ? $config{'redirect_ssl'} :
 	$use_ssl || $config{'inetd_ssl'};
 $redirport = $config{'redirect_port'} || $port;
+$redirport = $config{'redirect_port'}
+	if ($config{'redirect_host'});
 $portstr = $redirport == 80 && !$ssl ? "" :
 	   $redirport == 443 && $ssl ? "" : ":".$redirport;
 $redirhost = $config{'redirect_host'} || $host;
@@ -2547,6 +2472,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	$ENV{"QUERY_STRING"} = $querystring;
 	$ENV{"MINISERV_CONFIG"} = $config_file;
 	$ENV{"HTTPS"} = $use_ssl || $config{'inetd_ssl'} ? "ON" : "";
+	$ENV{"SSL_HSTS"} = $config{"ssl_hsts"};
 	$ENV{"MINISERV_PID"} = $miniserv_main_pid;
 	$ENV{"SESSION_ID"} = $session_id if ($session_id);
 	$ENV{"LOCAL_USER"} = $localauth_user if ($localauth_user);
@@ -2855,7 +2781,7 @@ return $rv;
 # Output an error message to the browser, and log it to the error log
 sub http_error
 {
-my ($code, $msg, $body, $noexit, $noerr, $nohead) = @_;
+my ($code, $msg, $body, $noexit, $noerr) = @_;
 local $eh = $error_handler_recurse ? undef :
 	    $config{"error_handler_".$code} ? $config{"error_handler_".$code} :
 	    $config{'error_handler'} ? $config{'error_handler'} : undef;
@@ -2881,9 +2807,7 @@ else {
 	&reset_byte_count();
 	&write_data("<html>\n");
 	&write_data("<head>".&embed_error_styles($roots[0])."<title>$code &mdash; $msg</title></head>\n");
-	my $errhead = "<h2 class=\"err-head\">Error &mdash; $msg</h2>";
-	$errhead = undef if ($nohead);
-	&write_data("<body class=\"err-body\">$errhead\n");
+	&write_data("<body class=\"err-body\"><h2 class=\"err-head\">Error &mdash; $msg</h2>\n");
 	if ($body) {
 		&write_data("<p class=\"err-content\">$body</p>\n");
 		}
@@ -4593,7 +4517,53 @@ foreach $k (keys %{$_[0]}) {
 return @rv;
 }
 
+# setup_ssl_contexts()
+# Setup all the per-IP and per-domain SSL contexts and the global context based
+# on the config
+sub setup_ssl_contexts
+{
+my @ipkeys = &get_ipkeys(\%config);
+if ($config{'ssl_version'}) {
+	# Force an SSL version
+	$Net::SSLeay::version = $config{'ssl_version'};
+	$Net::SSLeay::ssl_version = $config{'ssl_version'};
+	}
+$client_certs = 0 if (!-r $config{'ca'} || !%certs);
+my $ctx = &create_ssl_context($config{'keyfile'},
+			      $config{'certfile'},
+			      $config{'extracas'});
+$ctx || return "Failed to create default SSL context";
+$ssl_contexts{"*"} = $ctx;
+foreach my $ipkey (@ipkeys) {
+	my $ctx = &create_ssl_context($ipkey->{'key'}, $ipkey->{'cert'},
+			   $ipkey->{'extracas'} || $config{'extracas'});
+	if ($ctx) {
+		foreach $ip (@{$ipkey->{'ips'}}) {
+			$ssl_contexts{$ip} = $ctx;
+			}
+		}
+	}
+
+# Setup per-hostname SSL contexts on the main IP
+if (defined(&Net::SSLeay::CTX_set_tlsext_servername_callback)) {
+	Net::SSLeay::CTX_set_tlsext_servername_callback(
+	    $ssl_contexts{"*"},
+	    sub {
+		my $ssl = shift;
+		my $h = Net::SSLeay::get_servername($ssl);
+		my $c = $ssl_contexts{$h} ||
+			$h =~ /^[^\.]+\.(.*)$/ && $ssl_contexts{"*.$1"};
+		if ($c) {
+			Net::SSLeay::set_SSL_CTX($ssl, $c);
+			}
+		});
+	}
+return undef;
+}
+
 # create_ssl_context(keyfile, [certfile], [extracas])
+# Create and return one SSL context based on a key file and optional cert file
+# and CA cert
 sub create_ssl_context
 {
 local ($keyfile, $certfile, $extracas) = @_;
@@ -6476,6 +6446,7 @@ if (!$pid) {
 	$ENV{"DOCUMENT_REALROOT"} = $root0;
 	$ENV{"MINISERV_CONFIG"} = $config_file;
 	$ENV{"HTTPS"} = "ON" if ($use_ssl);
+	$ENV{"SSL_HSTS"} = $config{"ssl_hsts"};
 	$ENV{"MINISERV_PID"} = $miniserv_main_pid;
 	$ENV{"SCRIPT_FILENAME"} = $cmd;
 	if ($ENV{"SCRIPT_FILENAME"} =~ /^\Q$root0\E(\/.*)$/) {
