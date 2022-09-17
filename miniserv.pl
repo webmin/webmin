@@ -4533,6 +4533,7 @@ my $ctx = &create_ssl_context($config{'keyfile'},
 			      $config{'certfile'},
 			      $config{'extracas'});
 $ctx || return "Failed to create default SSL context";
+%ssl_contexts = ( );
 $ssl_contexts{"*"} = $ctx;
 foreach my $ipkey (@ipkeys) {
 	my $ctx = &create_ssl_context($ipkey->{'key'}, $ipkey->{'cert'},
