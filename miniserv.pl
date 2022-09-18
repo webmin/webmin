@@ -271,6 +271,7 @@ elsif ($config{'certfile'} && !-r $config{'certfile'}) {
 	$use_ssl = 0;
 	}
 if ($use_ssl) {
+	$client_certs = 0 if (!-r $config{'ca'} || !%certs);
 	$err = &setup_ssl_contexts();
 	die $err if ($err);
 	}
@@ -4535,16 +4536,17 @@ if ($config{'ssl_version'}) {
 	$Net::SSLeay::version = $config{'ssl_version'};
 	$Net::SSLeay::ssl_version = $config{'ssl_version'};
 	}
-$client_certs = 0 if (!-r $config{'ca'} || !%certs);
 my $ctx = &create_ssl_context($config{'keyfile'},
 			      $config{'certfile'},
-			      $config{'extracas'});
+			      $config{'extracas'},
+			      $ssl_contexts{"*"});
 $ctx || return "Failed to create default SSL context";
-%ssl_contexts = ( );
 $ssl_contexts{"*"} = $ctx;
 foreach my $ipkey (@ipkeys) {
-	my $ctx = &create_ssl_context($ipkey->{'key'}, $ipkey->{'cert'},
-			   $ipkey->{'extracas'} || $config{'extracas'});
+	my $ctx = &create_ssl_context(
+		$ipkey->{'key'}, $ipkey->{'cert'},
+		$ipkey->{'extracas'} || $config{'extracas'},
+		$ssl_contexts{$ipkey->{'ips'}->[0]});
 	if ($ctx) {
 		foreach $ip (@{$ipkey->{'ips'}}) {
 			$ssl_contexts{$ip} = $ctx;
@@ -4555,30 +4557,41 @@ foreach my $ipkey (@ipkeys) {
 # Setup per-hostname SSL contexts on the main IP
 if (defined(&Net::SSLeay::CTX_set_tlsext_servername_callback)) {
 	Net::SSLeay::CTX_set_tlsext_servername_callback(
-	    $ssl_contexts{"*"},
+	    $ssl_contexts{"*"}->{'ctx'},
 	    sub {
 		my $ssl = shift;
 		my $h = Net::SSLeay::get_servername($ssl);
 		my $c = $ssl_contexts{$h} ||
 			$h =~ /^[^\.]+\.(.*)$/ && $ssl_contexts{"*.$1"};
+		print STDERR "h=$h c=$c\n";
 		if ($c) {
-			Net::SSLeay::set_SSL_CTX($ssl, $c);
+			Net::SSLeay::set_SSL_CTX($ssl, $c->{'ctx'});
 			}
 		});
 	}
 return undef;
 }
 
-# create_ssl_context(keyfile, [certfile], [extracas])
+# create_ssl_context(keyfile, [certfile], [extracas], [&existing-context])
 # Create and return one SSL context based on a key file and optional cert file
 # and CA cert
 sub create_ssl_context
 {
-local ($keyfile, $certfile, $extracas) = @_;
+local ($keyfile, $certfile, $extracas, $already) = @_;
+if ($already && $already->{'keyfile'} eq $keyfile &&
+		$already->{'certfile'} eq $certfile &&
+		$already->{'extracas'} eq $extracas) {
+	# Context we already have is valid
+	return $already;
+	}
+print STDERR "creating context from $keyfile $certfile $extracas\n";
 local $ssl_ctx;
 eval { $ssl_ctx = Net::SSLeay::new_x_ctx() };
 $ssl_ctx ||= Net::SSLeay::CTX_new();
-$ssl_ctx || die "Failed to create SSL context : $!";
+if (!$ssl_ctx) {
+	print STDERR "Failed to create SSL context : $!\n";
+	return undef;
+	}
 my @extracas = $extracas && $extracas ne "none" ? split(/\s+/, $extracas) : ();
 
 # Validate cert files
@@ -4670,7 +4683,10 @@ if ($config{'ssl_honorcipherorder'}) {
 		&Net::SSLeay::OP_CIPHER_SERVER_PREFERENCE)';
 	}
 
-return $ssl_ctx;
+return { 'keyfile' => $keyfile,
+	 'certfile' => $certfile,
+	 'extracas' => $extracas,
+	 'ctx' => $ssl_ctx };
 }
 
 # ssl_connection_for_ip(socket, ipv6-flag)
@@ -4685,7 +4701,7 @@ if (!$sn) {
 	}
 local (undef, $myip, undef) = &get_address_ip($sn, $ipv6);
 local $ssl_ctx = $ssl_contexts{$myip} || $ssl_contexts{"*"};
-local $ssl_con = Net::SSLeay::new($ssl_ctx);
+local $ssl_con = Net::SSLeay::new($ssl_ctx->{'ctx'});
 if ($config{'ssl_cipher_list'}) {
 	# Force use of ciphers
 	eval "Net::SSLeay::set_cipher_list(
