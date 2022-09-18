@@ -4541,6 +4541,7 @@ my $ctx = &create_ssl_context($config{'keyfile'},
 			      $config{'extracas'},
 			      $ssl_contexts{"*"});
 $ctx || return "Failed to create default SSL context";
+my @added = ( "*" );
 $ssl_contexts{"*"} = $ctx;
 foreach my $ipkey (@ipkeys) {
 	my $ctx = &create_ssl_context(
@@ -4550,7 +4551,13 @@ foreach my $ipkey (@ipkeys) {
 	if ($ctx) {
 		foreach $ip (@{$ipkey->{'ips'}}) {
 			$ssl_contexts{$ip} = $ctx;
+			push(@added, $ip);
 			}
+		}
+	}
+foreach my $ip (keys %ssl_contexts) {
+	if (&indexof($ip, @added) < 0) {
+		delete($ssl_contexts{$ip});
 		}
 	}
 
@@ -4563,7 +4570,6 @@ if (defined(&Net::SSLeay::CTX_set_tlsext_servername_callback)) {
 		my $h = Net::SSLeay::get_servername($ssl);
 		my $c = $ssl_contexts{$h} ||
 			$h =~ /^[^\.]+\.(.*)$/ && $ssl_contexts{"*.$1"};
-		print STDERR "h=$h c=$c\n";
 		if ($c) {
 			Net::SSLeay::set_SSL_CTX($ssl, $c->{'ctx'});
 			}
@@ -4578,13 +4584,16 @@ return undef;
 sub create_ssl_context
 {
 local ($keyfile, $certfile, $extracas, $already) = @_;
+local @kst = stat($keyfile);
+local @cst = stat($certfile);
 if ($already && $already->{'keyfile'} eq $keyfile &&
+		$already->{'keytime'} == $kst[9] &&
 		$already->{'certfile'} eq $certfile &&
+		$already->{'certtime'} == $cst[9] &&
 		$already->{'extracas'} eq $extracas) {
 	# Context we already have is valid
 	return $already;
 	}
-print STDERR "creating context from $keyfile $certfile $extracas\n";
 local $ssl_ctx;
 eval { $ssl_ctx = Net::SSLeay::new_x_ctx() };
 $ssl_ctx ||= Net::SSLeay::CTX_new();
@@ -4684,7 +4693,9 @@ if ($config{'ssl_honorcipherorder'}) {
 	}
 
 return { 'keyfile' => $keyfile,
+	 'keytime' => $kst[9],
 	 'certfile' => $certfile,
+	 'certtime' => $cst[9],
 	 'extracas' => $extracas,
 	 'ctx' => $ssl_ctx };
 }
@@ -4744,6 +4755,7 @@ sub reload_config_file
 &build_config_mappings();
 &read_webmin_crons();
 &precache_files();
+&setup_ssl_contexts();
 if ($config{'session'}) {
 	dbmclose(%sessiondb);
 	dbmopen(%sessiondb, $config{'sessiondb'}, 0700);
