@@ -2,6 +2,8 @@
 
 #### 2.001 (September, 2022)
 * Fix missing origins and action for direct rules in FirewallD module
+* Removed the need for a full restart when updating SSH keys
+* Improved the Javascript for redirects to HTTPS
 
 #### 2.000 (August 21, 2022)
 * Add to enforce HTTP Strict Transport Security (HSTS) policy in SSL enabled mode
