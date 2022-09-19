@@ -949,6 +949,13 @@ push(@sup, "swap");
 return @sup;
 }
 
+# preferred_fstype()
+# Returns the default filesystem type for this OS
+sub preferred_fstype
+{
+return $ext4_support ? "ext4" :
+       $ext3_support ? "ext3" : "ext2";
+}
 
 # fstype_name(type)
 # Given a short filesystem type, return a human-readable name for it

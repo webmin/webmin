@@ -5,6 +5,7 @@
 require './mount-lib.pl';
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 	&help_search_link("mount fstab vfstab", "man"));
+&ReadParse();
 
 # List filesystems from fstab and mtab
 @mounted = &list_mounted();
@@ -40,12 +41,23 @@ foreach $m (@all) {
 	$canedit = $can_edit{$minfo[2]} && !$mmodes[4] &&
             	   &can_edit_fs(@minfo);
 	next if (!$canedit && $access{'hide'});
+	next if (!$canedit && !$in{'show'});
 	push(@visible, $m);
 	}
 
 if (@visible) {
 	# Show table of all visible filesystems
-	&show_button();
+	if (!$access{'hide'}) {
+		if ($in{'show'}) {
+			$shower = &ui_link("index.cgi?show=0",
+					   $text{'index_show0'});
+			}
+		else {
+			$shower = &ui_link("index.cgi?show=1",
+					   $text{'index_show1'});
+			}
+		}
+	print &ui_links_row([ $shower ]) if ($shower);
 	print &ui_columns_start([ $text{'index_dir'},
 				$text{'index_type'},
 				$text{'index_dev'},
@@ -103,7 +115,9 @@ if (@visible) {
 		push(@cols, defined($midx) ? $yes : $no);
 		print &ui_columns_row(\@cols);
 		}
-	print &ui_columns_end(),"<br>\n";
+	print &ui_columns_end();
+	print &ui_links_row([ $shower ]) if ($shower);
+	print "<p>\n";
 	}
 else {
 	print "<b>$text{'index_none'}</b><p>\n";
@@ -117,8 +131,8 @@ sub simplify_mount_path
 if ($_[1] eq "swap") {
 	return "<i>$text{'index_swap'}</i>";
 	}
-elsif (length($_[0]) > 20) {
-	return &html_escape("... ".substr($_[0], length($_[0])-20));
+elsif (length($_[0]) > 40) {
+	return &html_escape("... ".substr($_[0], length($_[0])-40));
 	}
 elsif ($_[0] eq "/") {
 	return "/ (<i>$text{'index_root'}</i>)";
@@ -131,17 +145,19 @@ else {
 sub show_button
 {
 return if (!$access{'create'} || $access{'only'});
-local %donefs;
-print "<form action=\"edit_mount.cgi\">\n";
-print "<input type=submit value=\"$text{'index_add'}\"> $text{'index_type'}:\n";
-print "<select name=type>\n";
-local $fs;
-foreach $fs (sort { &fstype_name($a) cmp &fstype_name($b) } &list_fstypes()) {
-	local $nm = &fstype_name($fs);
+my %donefs;
+print &ui_form_start("edit_mount.cgi");
+print &ui_submit($text{'index_add'})," ",$text{'index_addtype'},"\n";
+my @opts;
+foreach my $fs (sort { &fstype_name($a) cmp &fstype_name($b) }
+		     &list_fstypes()) {
+	my $nm = &fstype_name($fs);
 	if (!$donefs{$nm}++ && &can_fstype($fs)) {
-		print "<option value=\"$fs\">$nm ($fs)</option>\n";
+		push(@opts, [ $fs, "$nm ($fs)" ]);
 		}
 	}
-print "</select></form>\n";
+my $def = defined(&preferred_fstype) ? &preferred_fstype() : undef;
+print &ui_select("type", $def, \@opts);
+print &ui_form_end();
 }
 

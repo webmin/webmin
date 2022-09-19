@@ -12,6 +12,9 @@ index_return=filesystems list
 index_none=You do not have access to any mounted filesystems.
 index_mount2=Mount with password:
 index_root=Root filesystem
+index_show1=Show all filesystems
+index_show0=Hide non-editable filesystems
+index_addtype=of type
 
 edit_title=Edit Mount
 create_title=Create Mount
