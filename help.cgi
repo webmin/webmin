@@ -19,17 +19,9 @@ if ($file =~ /\.(gif|jpg|jpeg|png)$/i) {
 }
 
 # read the help file
-$path = &help_file($module, $file);
-$gzpath = $path.".gz";
-if (-r $gzpath) {
-	$help = &backquote_command(
-		"gunzip -c ".quotemeta($gzpath)." 2>/dev/null");
-	$? || !$help && &helperror(&text('help_efile2', &html_escape($gzpath)));
-	}
-else {
-	$help = &read_file_contents($path);
-	$help || &helperror(&text('help_efile', &html_escape($path)));
-	}
+$help = &read_help_file($module, $file);
+$help || &helperror(&text('help_efile3',
+		&html_escape($file), &html_escape($module)));
 
 # find and replace the <header> section
 if ($help =~ s/<header>([^<]+)<\/header>//i) {
@@ -60,24 +52,42 @@ $help =~ s/<if\s+([^>]*)>([\000-\177]*?)<\/if>/ifhelp($1, $2)/ige;
 print $help;
 &popup_footer();
 
+# read_help_file(module, file)
+# Reads the contents of a help file, either unpacked or from a ZIP
+sub read_help_file
+{
+my ($module, $file) = @_;
+my $path = &help_file($module, $file);
+if (-r $path) {
+	return &read_file_contents($path);
+	}
+my $gzpath = $path.".gz";
+if (-r $gzpath) {
+	my $out = &backquote_command(
+		"gunzip -c ".quotemeta($gzpath)." 2>/dev/null");
+	return $? ? undef : $out;
+	}
+my $zip = $path;
+$zip =~ s/\/[^\/]+$/\/help.zip/;
+if (-r $zip) {
+	# XXX what about other languages?
+	my $out = &backquote_command(
+		"unzip -p ".quotemeta($zip)." ".
+		quotemeta($file.".html")." 2>/dev/null");
+	return $? ? undef : $out;
+	}
+return undef;
+}
+
 # inchelp(path)
 sub inchelp
 {
 my ($path) = @_;
-my $ipath = &help_file($module, $path);
-my $gzpath = $ipath.".gz";
-if (-r $gzpath) {
-	my $inc = &backquote_command(
-		"gunzip -c ".quotemeta($gzpath)." 2>/dev/null");
-	$? || !$inc ||
-		return "<i>".&text('help_einclude2', $gzpath)."</i><br>\n";
-	return $inc;
+my $inc = &read_help_file($module, $path);
+if (!$inc) {
+	return "<i>".&text('help_einclude3', &html_escape($path))."</i><br>\n";
 	}
-else {
-	my $inc = &read_file_contents($ipath);
-	$inc || return "<i>".&text('help_einclude', $path)."</i><br>\n";
-	return $inc;
-	}
+return $inc;
 }
 
 # ifhelp(perl, text, [elsetext])
