@@ -10,7 +10,7 @@ require './mount-lib.pl';
 @mounted = &list_mounted();
 $yes = $text{'yes'};
 $no = "<font color=#ff0000>$text{'no'}</a>";
-foreach (&list_fstypes()) { $can_edit{$_}++; }
+%can_edit = map { $_, 1 } &list_fstypes();
 $i = 0;
 foreach $m (&list_mounts()) {
 	$m->[0] = "swap" if ($m->[2] eq "swap");
@@ -36,7 +36,6 @@ elsif ($config{'sort_mode'} == 1) {
 foreach $m (@all) {
 	@minfo = @$m;
 	$p = &simplify_mount_path($minfo[0], $minfo[2]);
-	next if ($ignore{$minfo[2]});
 	@mmodes = &mount_modes($minfo[2], $minfo[0], $minfo[1]);
 	$canedit = $can_edit{$minfo[2]} && !$mmodes[4] &&
             	   &can_edit_fs(@minfo);
