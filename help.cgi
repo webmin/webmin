@@ -70,11 +70,20 @@ if (-r $gzpath) {
 my $zip = $path;
 $zip =~ s/\/[^\/]+$/\/help.zip/;
 if (-r $zip) {
-	# XXX what about other languages?
-	my $out = &backquote_command(
-		"unzip -p ".quotemeta($zip)." ".
-		quotemeta($file.".html")." 2>/dev/null");
-	return $? ? undef : $out;
+	my @files;
+	foreach my $o (@lang_order_list) {
+		next if ($o eq "en");
+		push(@files, $file.".".$o.".auto.html");
+		push(@files, $file.".".$o.".html");
+		}
+	push(@files, $file.".html");
+	foreach my $f (@files) {
+		my $out = &backquote_command(
+			"unzip -p ".quotemeta($zip)." ".
+			quotemeta($f)." 2>/dev/null");
+		return $out if ($out && !$?);
+		}
+	return undef;
 	}
 return undef;
 }
