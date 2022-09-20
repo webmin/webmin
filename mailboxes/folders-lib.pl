@@ -3440,6 +3440,7 @@ foreach my $a (@$attach) {
 		}
 	$fn =~ s/ /_/g;
 	$fn =~ s/\#/_/g;
+	$fn =~ s/\//_/g;
 	$fn = &urlize($fn);
 	local @a;
 	local $detachfile = $detachurl;
