@@ -147,6 +147,14 @@ if (!$release || !-d "$tardir/$dir") {
 	if (!$min && -r "$tardir/$dir/gray-theme") {
 		system("cd $tardir/$dir && ln -s gray-theme blue-theme");
 		}
+
+	# ZIP up all help pages
+	print "Zipping up help pages\n";
+	foreach $help (map { "$tardir/$dir/$_/help" } @mlist) {
+		if (-d $help) {
+			system("cd $help && zip help.zip *.html >/dev/null && rm -f *.html");
+			}
+		}
 	}
 
 # Store release version, if set
