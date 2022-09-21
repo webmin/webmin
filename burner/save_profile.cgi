@@ -130,6 +130,7 @@ if ($in{'burn'} || $in{'test'}) {
 		$iso = $config{'temp'} ? "$config{'temp'}/burner.iso"
 				       : &tempname("burner.iso");
 		local $cmd = "$config{'mkisofs'} -graft-points -o $iso";
+		$cmd .= " -iso-level 3";
 		$cmd .= " -J" if ($profile->{'joliet'});
 		$cmd .= " --netatalk" if ($profile->{'netatalk'});
 		$cmd .= " --cap" if ($profile->{'cap'});
