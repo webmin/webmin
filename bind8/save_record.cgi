@@ -158,7 +158,8 @@ else {
 			# Is this address already in use? Search all domains
 			# to find out..
 			foreach my $z (@zl) {
-				next if ($z->{'type'} ne "master");
+				next if ($z->{'type'} ne "master" &&
+					 $z->{'type'} ne "primary");
 				next if ($z->{'name'} =~ /in-addr\.arpa/i);
 				my $file = $z->{'file'};
 				my @frecs = &read_zone_file($file, $z->{'name'});
@@ -180,7 +181,8 @@ else {
 			# Is this address already in use? Search all domains
 			# to find out..
 			foreach my $z (@zl) {
-				next if ($z->{'type'} ne "master");
+				next if ($z->{'type'} ne "master" &&
+					 $z->{'type'} ne "primary");
 				next if ($z->{'name'} =~ /\.$ipv6revzone/i);
 				my $file = $z->{'file'};
 				my @frecs = &read_zone_file($file, $z->{'name'});

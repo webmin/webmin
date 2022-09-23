@@ -802,7 +802,8 @@ if ($ipv6) {
 		$rev = &net_to_ip6int($addr, 4*($i+1));
 		$rev =~ s/\.$//g;
 		foreach my $z (@zl) {
-			if (lc($z->{'name'}) eq $rev && $z->{'type'} eq 'master') {
+			if (lc($z->{'name'}) eq $rev &&
+			    ($z->{'type'} eq 'master' || $z->{'type'} eq 'primary')) {
 				# found the reverse master domain
 				$revconf = $z;
 				last DOMAIN;
@@ -822,7 +823,7 @@ else {
 			$zname =~ s/^(\d+)\/(\d+)\.//;
 			if ((lc($zname) eq $rev ||
 			     lc($zname) eq "$rev.") &&
-			    $z->{'type'} eq "master") {
+			    ($z->{'type'} eq "master" || $z->{'type'} eq "primary")) {
 				# found the reverse master domain
 				$revconf = $z;
 				last DOMAIN;
@@ -870,7 +871,7 @@ DOMAIN: for(my $i=1; $i<@parts; $i++) {
 		my $typed;
 		if ((lc($z->{'name'}) eq $fwd ||
 		     lc($z->{'name'}) eq "$fwd.") &&
-		    $z->{'type'} eq "master") {
+		    ($z->{'type'} eq "master" || $z->{'type'} eq "primary")) {
 			# Found the forward master!
 			$fwdconf = $z;
 			last DOMAIN;
@@ -4304,7 +4305,7 @@ my %cache;
 &read_file($dnssec_expiry_cache, \%cache);
 my $changed = 0;
 foreach my $z (&list_zone_names()) {
-	next if ($z->{'type'} ne 'master');
+	next if ($z->{'type'} ne 'master' && $z->{'type'} ne 'primary');
 	my ($t, $e);
 	if ($cache{$z->{'name'}}) {
 		($t, $e) = split(/\s+/, $cache{$z->{'name'}});
@@ -4380,6 +4381,22 @@ my @krvalues = split(/\s+/, $pubkey);
 my @kvalues = @krvalues[0..5];
 my $kvspace = " " x length("@kvalues");
 return join(" ", @kvalues) . " " . join("\n$kvspace ", splice(@krvalues, 6));
+}
+
+# redirect_url(type, [zone], [view])
+# Returns the URL of the appropriate edit_*.cgi page
+sub redirect_url
+{
+my ($type, $zone, $view) = @_;
+my $r = $type eq "master" || $type eq "primary" ? "edit_master.cgi" :
+	$type eq "forward" ? "edit_forward.cgi" : "edit_slave.cgi";
+if ($zone) {
+	$r .= "?zone=".&urlize($zone);
+	if ($view) {
+		$r .= "&view=".&urlize($view);
+		}
+	}
+return $r;
 }
 
 1;

@@ -17,7 +17,4 @@ my $err = &restart_zone($zone->{'name'}, $zone->{'view'});
 &error($err) if ($err);
 &webmin_log("apply", $zone->{'name'});
 
-my $tv = $zone->{'type'};
-my $redir_targ = ($tv eq "master" ? "edit_master.cgi" :
-		  $tv eq "forward" ? "edit_forward.cgi" : "edit_slave.cgi");
-&redirect($redir_targ . "?zone=$in{'zone'}&view=$in{'view'}");
+&redirect(&redirect_url($zone->{'type'}, $in{'zone'}, $in{'view'}));

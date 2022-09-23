@@ -34,6 +34,5 @@ print &ui_table_row(undef, &ui_checkbox("soa", $config{'updserial_on'},
 print &ui_table_end();
 print &ui_form_end($access{'ro'} ? [ ] : [ [ undef, $text{'save'} ] ]);
 
-&ui_print_footer(($tv eq "master" ? "edit_master.cgi" :
-	 $tv eq "forward" ? "edit_forward.cgi" : "edit_slave.cgi").
-	"?zone=$in{'zone'}&view=$in{'view'}", $text{'master_return'});
+&ui_print_footer(&redirect_url($tv, $in{'zone'}, $in{'view'}),
+		 $text{'master_return'});

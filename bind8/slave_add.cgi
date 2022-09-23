@@ -60,7 +60,7 @@ foreach my $v (@views) {
 	}
 foreach my $z (@zoneconfs) {
 	my $type = &find_value("type", $z->{'members'});
-	if ($type eq "master") {
+	if ($type eq "master" || $type eq "primary") {
 		$zmap{$z->{'value'}} = $z;
 		}
 	}

@@ -36,6 +36,5 @@ else {
 		}
 	}
 
-&ui_print_footer(($tv eq "master" ? "edit_master.cgi" :
-	 $tv eq "forward" ? "edit_forward.cgi" : "edit_slave.cgi").
-	"?zone=$in{'zone'}&view=$in{'view'}", $text{'master_return'});
+&ui_print_footer(&redirect_url($tv, $in{'zone'}, $in{'view'}),
+		 $text{'master_return'});

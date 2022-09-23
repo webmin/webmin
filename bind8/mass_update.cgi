@@ -63,7 +63,7 @@ elsif ($in{'type'} eq 'ttl') {
 
 foreach my $zi (@zones) {
 	print &text('umass_doing', "<tt>$zi->{'name'}</tt>"),"<br>\n";
-	if ($zi->{'type'} ne 'master') {
+	if ($zi->{'type'} ne 'master' && $zi->{'type'} ne 'primary') {
 		# Skip - not a master zone
 		print $text{'umass_notmaster'},"<p>\n";
 		next;

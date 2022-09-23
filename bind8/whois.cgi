@@ -34,7 +34,5 @@ print &ui_table_start(&text('whois_header', "<tt>".&html_escape($pcmd)."</tt>"),
 print &ui_table_row(undef, "<pre>".&html_escape($out)."</pre>", 2);
 print &ui_table_end();
 
-&ui_print_footer(($tv eq "master" ? "edit_master.cgi" :
-	 $tv eq "forward" ? "edit_forward.cgi" : "edit_slave.cgi").
-	"?zone=$in{'zone'}&view=$in{'view'}", $text{'master_return'});
-
+&ui_print_footer(&redirect_url($tv, $in{'zone'}, $in{'view'}),
+		 $text{'master_return'});

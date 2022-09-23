@@ -8,14 +8,6 @@ $access{'apply'} || &error($text{'stop_ecannot'});
 $err = &stop_bind();
 &error($err) if ($err);
 &webmin_log("stop");
-my $redir_targ = ($in{'type'} eq "master" ? "edit_master.cgi" :
-		  $in{'type'} eq "forward" ? "edit_forward.cgi" : "edit_slave.cgi");
-my $zone;
-if ($in{'zone'}) {
-	$zone = "?zone=$in{'zone'}";
-	if ($in{'view'}) {
-		$zone .= "&view=$in{'view'}";
-		}
-	}
-&redirect($zone && $in{'return'} ? "$redir_targ$zone" : "");
+&redirect($in{'zone'} && $in{'return'} ?
+	  &redirect_url($in{'type'}, $in{'zone'}, $in{'view'}) : "");
 
