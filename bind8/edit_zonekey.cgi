@@ -75,7 +75,8 @@ if (@keyrecs) {
 	print &ui_hr();
 	print &ui_buttons_start();
 	print &ui_buttons_row("disable_zonekey.cgi", $text{'zonekey_disable'},
-			      $text{'zonekey_disabledesc'},
+			      $text{'zonekey_disabledesc'}."<br>\n".
+			      &ui_checkbox("keep", 1, $text{'zonekey_keep'}, 1),
 			      &ui_hidden("view", $in{'view'}).
 			      &ui_hidden("zone", $in{'zone'}));
 
