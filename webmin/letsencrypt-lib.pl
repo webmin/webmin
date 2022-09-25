@@ -221,7 +221,7 @@ if ($letsencrypt_cmd) {
 		goto FAILED;
 		}
 	my ($full, $cert, $key, $chain);
-	if ($out =~ /(\/etc\/letsencrypt\/(?:live|archive)\/[a-zA-Z0-9\.\_\-\/\r\n\* ]*\.pem)/) {
+	if ($out =~ /((?:\/usr\/local)?\/etc\/letsencrypt\/(?:live|archive)\/[a-zA-Z0-9\.\_\-\/\r\n\* ]*\.pem)/) {
 		# Output contained the full path
 		$full = $1;
 		$full =~ s/\s//g;
