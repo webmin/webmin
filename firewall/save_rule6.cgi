@@ -95,9 +95,9 @@ else {
 		}
 	if ($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'POSTROUTING') {
 		if ($rule->{'j'}->[1] eq 'DNAT' && !$in{'dnatdef'}) {
-			!$in{'dipfrom'} || &check_ipaddress($in{'dipfrom'}) ||
+			!$in{'dipfrom'} || &check_ip6address($in{'dipfrom'}) ||
 				&error($text{'save_edipfrom'});
-			!$in{'dipto'} || &check_ipaddress($in{'dipto'}) ||
+			!$in{'dipto'} || &check_ip6address($in{'dipto'}) ||
 				&error($text{'save_edipto'});
 			local $v = "[".$in{'dipfrom'}."]";
 			$v .= "-[".$in{'dipto'}."]" if ($in{'dipto'});
@@ -123,9 +123,9 @@ else {
 	    $rule->{'chain'} ne 'OUTPUT') {
 		if ($rule->{'j'}->[1] eq 'SNAT' && !$in{'snatdef'}) {
 			(!$in{'sipfrom'} && !$in{'sipto'}) ||
-			    &check_ipaddress($in{'sipfrom'}) ||
+			    &check_ip6address($in{'sipfrom'}) ||
 				&error($text{'save_esipfrom'});
-			!$in{'sipto'} || &check_ipaddress($in{'sipto'}) ||
+			!$in{'sipto'} || &check_ip6address($in{'sipto'}) ||
 				&error($text{'save_esipto'});
 			local $v = $in{'sipfrom'};
 			$v .= "-".$in{'sipto'} if ($in{'sipto'});
