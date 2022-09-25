@@ -55,7 +55,7 @@ if (@servers && $config{'display_mode'}) {
 		my $table = "<table cellpadding=0 cellspacing=0 width=100%><tr>\n";
 		if (!$access{'links'} || !$s->{'port'}) {
 			$table .= "<td>\n";
-			$table .= ($s->{'realhost'} || $s->{'host'});
+			$table .= &html_escape($s->{'realhost'} ||$s->{'host'});
 			$table .= ":$s->{'port'}" if ($s->{'port'});
 			$table .= "</td>\n";
 			}
@@ -68,8 +68,9 @@ if (@servers && $config{'display_mode'}) {
 				$link = &make_url($s);
 				}
 		    	$table .= "<td>\n";
-			$table .= &ui_link($link, ($s->{'realhost'} || $s->{'host'} ).
-					   ":".$s->{'port'}, undef, "target=_top");
+			$table .= &ui_link($link,
+				&html_escape($s->{'realhost'} || $s->{'host'} ).
+				":".$s->{'port'}, undef, "target=_top");
 			$table .= "</td>\n";
 			}
 		$table .= "<td align=right>";
@@ -83,8 +84,8 @@ if (@servers && $config{'display_mode'}) {
 			}
 		$table .= "</td></tr></table>\n";
 		push(@cols, $table);
-		push(@cols, $s->{'desc'});
-		push(@cols, $s->{'group'} || $text{'index_none'});
+		push(@cols, &html_escape($s->{'desc'}));
+		push(@cols, &html_escape($s->{'group'}) || $text{'index_none'});
 		my ($type) = grep { $_->[0] eq $s->{'type'} }
 				  &get_server_types();
 		push(@cols, $type->[1]);
@@ -195,6 +196,6 @@ elsif ($_[0]->{'realhost'}) {
 else {
 	$rv = "$_[0]->{'host'}:$_[0]->{'port'}";
 	}
-return $rv;
+return &html_escape($rv);
 }
 
