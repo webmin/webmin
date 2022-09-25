@@ -43,10 +43,10 @@ if (&foreign_check("net") && !defined($in{'scan'})) {
 # Get and display responses
 &ui_print_unbuffered_header(undef, $text{'find_title'}, "");
 if (defined($in{'scan'})) {
-	print &text('find_scanning', "<tt>$in{'scan'}</tt>"),"<p>\n";
+	print &text('find_scanning', "<tt>".&html_escape($in{'scan'})."</tt>"),"<p>\n";
 	}
 else {
-	print &text('find_broading', join(" , ", map { "<tt>$_</tt>" } @broad)),"<p>\n";
+	print &text('find_broading', join(" , ", map { "<tt>".&html_escape($_)."</tt>" } @broad)),"<p>\n";
 	}
 &find_servers(\@broad, $limit, 0, $in{'defuser'}, $in{'defpass'}, undef, undef,
 	      0, $in{'port'});
