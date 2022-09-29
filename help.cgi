@@ -27,8 +27,7 @@ $help || &helperror(&text('help_efile3',
 if (&foreign_exists($module) &&
     &foreign_require($module) &&
     &foreign_func_exists($module, 'help_pre_load')) {
-	$help = 
-		&foreign_call($module, "help_pre_load", $help);
+	$help = &foreign_call($module, "help_pre_load", $help);
 	}
 
 # find and replace the <header> section
