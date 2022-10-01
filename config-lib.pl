@@ -59,8 +59,8 @@ foreach $o (@lang_order_list) {
 
 # Call any config pre-load function
 if (&foreign_defined($module, 'config_pre_load')) {
-	&foreign_call($module, "config_pre_load", \%info, \@info_order)
-	&foreign_call($module, "config_pre_load", \%einfo)
+	&foreign_call($module, "config_pre_load", \%info, \@info_order);
+	&foreign_call($module, "config_pre_load", \%einfo);
 	}
 
 @info_order = &unique(@info_order);
