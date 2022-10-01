@@ -3783,25 +3783,6 @@ my $mdir = &module_root_directory($_[0]);
 return -r "$mdir/module.info";
 }
 
-=head2 foreign_func_exists(module, func)
-
-Checks if module exists and if the 
-given module's function is defined
-
-=cut
-sub foreign_func_exists
-{
-my ($mod, $func) = @_;
-if (&foreign_exists($mod)) {
-	$mod =~ s/-/_/g;
-	$func = "${mod}::${func}";
-	if (defined(&$func)) {
-		return 1;
-		}
-	}
-return 0;
-}
-
 =head2 foreign_available(module)
 
 Returns 1 if some module is installed, and accessible to the current user. The
@@ -4032,9 +4013,9 @@ simpler to use the syntax &defined(module::function) instead.
 =cut
 sub foreign_defined
 {
-my ($pkg) = @_;
+my ($pkg, $sub) = @_;
 $pkg =~ s/[^A-Za-z0-9]/_/g;
-my $func = "${pkg}::$_[1]";
+my $func = "${pkg}::${sub}";
 return defined(&$func);
 }
 

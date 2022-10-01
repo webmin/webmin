@@ -58,7 +58,7 @@ foreach $o (@lang_order_list) {
 	}
 
 # Call any config pre-load function
-if (&foreign_func_exists($module, 'config_pre_load')) {
+if (&foreign_defined($module, 'config_pre_load')) {
 	&foreign_call($module, "config_pre_load", \%info, \@info_order);
 	&foreign_call($module, "config_pre_load", \%einfo);
 	}
@@ -281,7 +281,7 @@ if ($section) {
 # prevent changing behaviour of a module
 if (&foreign_exists($module) &&
     &foreign_require($module) &&
-    &foreign_func_exists($module, 'config_pre_load')) {
+    &foreign_defined($module, 'config_pre_load')) {
 	&foreign_call($module, "config_pre_load", \%info, \@info_order);
 	}
 

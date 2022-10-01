@@ -26,7 +26,7 @@ $help || &helperror(&text('help_efile3',
 # Modify help file based on module
 if (&foreign_exists($module) &&
     &foreign_require($module) &&
-    &foreign_func_exists($module, 'help_pre_load')) {
+    &foreign_defined($module, 'help_pre_load')) {
 	$help = &foreign_call($module, "help_pre_load", $help);
 	}
 
