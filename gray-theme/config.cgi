@@ -34,7 +34,7 @@ if ($current_lang && $default_lang &&
 
 # Call any config preload function
 if (&foreign_require($m) &&
-    &foreign_func_exists($m, 'config_pre_load')) {
+    &foreign_defined($m, 'config_pre_load')) {
     &foreign_call($m, "config_pre_load", \%info, \@info_order);
 }
 
