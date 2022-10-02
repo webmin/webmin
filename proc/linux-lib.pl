@@ -496,13 +496,11 @@ sub get_current_cpu_data
 {
 my @cpu;
 my @fans;
-my @cputhermisters;
 if (&has_command("sensors")) {
     my ($cpu, $cpu_aux, $cpu_package, $cpu_broadcom, $cpu_amd);
     my $fh = "SENSORS";
 
     # Examples https://gist.github.com/547451c9ca376b2d18f9bb8d3748276c
-    # &open_execute_command($fh, "cat /tmp/.webmin/sensors </dev/null 2>/dev/null", 1);
     &open_execute_command($fh, "sensors </dev/null 2>/dev/null", 1);
 
     while (<$fh>) {
@@ -518,15 +516,6 @@ if (&has_command("sensors")) {
                    'rpm' => $cpu_fan_rpm
                 }
         ) if ($cpu_fan_num);
-
-        # AMD CPU Thermisters #1714
-        if ($cpu && /thermistor\s+[\d]+:\s+[+-]([\d]+)/i) {
-            my $temp = int($1);
-            push(@cputhermisters,
-                 {  'core' => scalar(@cputhermisters) + 1,
-                    'temp' => $temp
-                 }) if ($temp);
-            }
 
         # CPU package
         ($cpu_package) = $_ =~ /(?|(package\s+id\s+[\d]+)|(coretemp-[a-z]+-[\d]+))/i
@@ -560,7 +549,7 @@ if (&has_command("sensors")) {
         # Non-standard outputs
         else {
 
-            # Auxiliary CPU temperature and fans were already captured
+        	# Auxiliary CPU temperature and fans were already captured
             next if ($cpu_aux);
 
             # CPU types
@@ -639,8 +628,11 @@ if (&has_command("sensors")) {
         }
     close($fh);
     }
-@cpu = @cputhermisters
-    if (!@cpu && @cputhermisters);
+# Fix to remove cannot detect 
+# package temperatures (178)
+if (@cpu) {
+	@cpu = grep {$_->{'temp'} != 178} @cpu;
+	}
 return (\@cpu, \@fans);
 }
 
