@@ -15,7 +15,6 @@ local_script=Local startup commands script,3
 local_down=Local shutdown commands script,3,None
 reboot_command=Command to reboot the system,0
 shutdown_command=Command to shutdown the system,0
-start_stop_msg=System supports bootup/shutdown messages,1,0-No,1-Yes
 inittab_id=inittab ID for bootup runlevel,0
 daemons_dir=Caldera daemons directory,3,None
 no_chkconfig=Use chkconfig command to enable actions?,1,0-Yes,1-No

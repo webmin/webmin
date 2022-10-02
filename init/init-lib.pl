@@ -75,6 +75,12 @@ elsif ($config{'local_script'}) {
 elsif ($gconfig{'os_type'} eq 'windows') {
 	$init_mode = "win32";
 	}
+if ($init_mode eq "init" && $gconfig{'os_type'} =~ /^(osf1|hpux)$/) {
+	$supports_start_stop_msg = 1;
+	}
+else {
+	$supports_start_stop_msg = 0;
+	}
 
 =head2 runlevel_actions(level, S|K)
 

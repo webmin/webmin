@@ -13,7 +13,6 @@ boot_levels=Niveaux de demarrage creent nouvelles actions dans,3,/etc/inittab
 local_script=Script local de démarrage,3
 reboot_command=Commande pour redémarrer le système,0
 shutdown_command=Commande pour arrêter le système,0
-start_stop_msg=Le système supporte les messages de démarrage et d'arrêt,1,0-Non,1-Oui
 inittab_id=Numéro du niveau d'exécution du démarrage,0
 daemons_dir=Repertoire des demons Caldera,3,Aucun
 startup_dirs=Repertoires des StartupItems Darwin,0

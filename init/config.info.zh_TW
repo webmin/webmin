@@ -8,7 +8,6 @@ order_digits=命令順序的位置,0
 local_script=本地端啟動指令稿,3
 reboot_command=重新開機的命令,0
 shutdown_command=關閉系統的命令,0
-start_stop_msg=系統是否支援 開機/關機 訊息,1,0-否,1-是
 inittab_id=開機執行階層在 inittab 中的編號,0
 daemons_dir=Caldera 守護器目錄,3,無
 startup_dirs=達爾文(Darwin)開機項目目錄,0

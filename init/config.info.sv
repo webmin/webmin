@@ -8,6 +8,5 @@ order_digits=Antal siffror i utförandeordning,0
 local_script=Lokalt startkommandoscript,3
 reboot_command=Kommando för att starta om systemet,0
 shutdown_command=Kommando för att stänga av systemet,0
-start_stop_msg=Systemet stödjer omstarts-/avstängningsmeddelanden,1,0-Nej,1-Ja
 inittab_id=inittab-ID för startkörnivå,0
 daemons_dir=Katalog för Caldera-demoner,3,Ingen

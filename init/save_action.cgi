@@ -196,7 +196,7 @@ else {
 			}
 		}
 	$data .= "\ncase \"\$1\" in\n";
-	if ($config{'start_stop_msg'}) {
+	if ($supports_start_stop_msg) {
 		$data .= "'start_msg')\n";
 		$data .= "\techo \"$in{'start_msg'}\"\n";
 		$data .= "\t;;\n";
@@ -222,7 +222,7 @@ else {
 		}
 	$data .= "\t;;\n";
 	$data .= "*)\n";
-	if ($config{'start_stop_msg'}) {
+	if ($supports_start_stop_msg) {
 		$data .= "\techo \"Usage: \$0 { start | stop | start_msg | stop_msg }\"\n";
 		}
 	else {

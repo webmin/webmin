@@ -62,7 +62,7 @@ if ($ty == 2) {
 	print &ui_table_row($text{'edit_desc'},
 		&ui_textarea("desc", undef, 2, 80));
 
-	if ($config{'start_stop_msg'}) {
+	if ($supports_start_stop_msg) {
 		print &ui_table_row($text{'edit_startmsg'},
 			&ui_textbox("start_msg", undef, 40));
 

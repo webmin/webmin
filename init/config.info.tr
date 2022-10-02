@@ -7,6 +7,5 @@ order_digits=İşlem sıralamasındaki rakam sayısı,0
 local_script=Yerel başlangıç komutları betiği,3
 reboot_command=Sistemi yeniden başlatma komutu,0
 shutdown_command=Sistemi kapatma komutu,0
-start_stop_msg=Sistem açılış/kapanış mesajlarını desteklesin,1,0-Hayır,1-Evet
 inittab_id=Açılış çalışma seviyesi için inittab ID ,0
 daemons_dir=Caldera daemon'ları dizini,3,Hiçbiri

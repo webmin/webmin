@@ -13,7 +13,6 @@ local_script=Lokalny skrypt poleceń startowych,3
 local_down=Lokalny skrypt poleceń wyłączania,3,Brak
 reboot_command=Polecenie restartujące system,0
 shutdown_command=Polecenie zamykające system,0
-start_stop_msg=System wspomaga komunikaty startowe/zamykające,1,0-Nie,1-Tak
 inittab_id=ID inicjalnego poziomu pracy w&nbsp;inittab-ie,0
 daemons_dir=Katalog demonów Caldery,3,Brak
 no_chkconfig=Użyć polecenie chkconfig do włączania akcji?,1,0-Tak,1-Nie

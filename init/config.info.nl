@@ -14,7 +14,6 @@ local_script=Lokaal Opstart opdrachten script,3
 local_down=Lokaal Uitschakel opdrachten script,3,Geen
 reboot_command=Opdracht om het systeem te rebooten,0
 shutdown_command=Opdracht om het systeem uit te zetten,0
-start_stop_msg=Systeem ondersteunende boot / uitschakel berichten,1,0-Nee,1-Ja
 inittab_id=inittab ID voor bootup runlevel,0
 daemons_dir=Caldera daemons directory,3,Geen
 no_chkconfig=Gebruik de chkconfig opdracht om acties aan te zetten?,1,0-Ja,1-Nee

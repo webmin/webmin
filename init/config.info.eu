@@ -14,7 +14,6 @@ local_script=Abiatze lokalerako scripten komandoak,3
 local_down=Itzalera lokalerako scripten komandoak3,Ezer ez
 reboot_command=Sistema berrabiarazteko komandoa,0
 shutdown_command=Sistema itzaltzeko komandoa,0
-start_stop_msg=Sistemak abiatze/itzaltze mezuak onartzen ditu1,0-Ez,1-Bai
 inittab_id=Abiatzeko unerako inittab-en ID-a exekuzio-mailarentzat
 daemons_dir=Caldera deabruen katalogoa,3,Ezer ez
 no_chkconfig=Ekintzak gaitzeko chkconfig komandoa erabili?,1,0-Bai,1-Ez

@@ -14,7 +14,6 @@ local_script=ローカルなスタートアップ用コマンドのスクリプ�
 local_down=ローカルなシャットダウン用コマンドのスクリプト,3,なし
 reboot_command=再起動コマンド,0
 shutdown_command=シャットダウンコマンド,0
-start_stop_msg=システムがbootup/shutdownメッセージをサポートしていますか?,1,0-いいえ,1-はい
 inittab_id=起動ランレベルのinittab ID,0
 daemons_dir=Caldera daemonのディレクトリ,3,無し
 no_chkconfig=Use chkconfig command to enable actions?,1,0-はい,1-いいえ

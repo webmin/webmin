@@ -14,7 +14,6 @@ local_script=Skript lokálních spouštěcích příkazů,3
 local_down=skript pro příkaz lokálního shození,3,Nic
 reboot_command=Příkaz pro rebootování systému,0
 shutdown_command=Příkaz pro shození systému,0
-start_stop_msg=Podporuje systém bootup/shutdown zprávy?,1,0-ne,1-ano
 inittab_id=ID inittabu pro bootovací úroveň běhu,0
 daemons_dir=Adresář Caldera démonů,3,Nic
 no_chkconfig=Použít příkaz chkconfig pro povolení akcí?,1,0-Ano,1-Ne

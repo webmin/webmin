@@ -14,7 +14,6 @@ local_script=Script de comandos de arranque local,3
 local_down=Script de comandos de apagado local,3,Ninguno
 reboot_command=Comando para rearrancar el sistema,0
 shutdown_command=Comando para apagar el sistema,0
-start_stop_msg=El sistema soporta mensajes de arranque/parada,1,0-No,1-Sí
 inittab_id=ID de inittab para nivel de ejecución en arranque,0
 daemons_dir=Directorio de demonios de Caldera,3,Ninguno
 startup_dirs=Directorios de Elementos de arranque de Darwin,0
