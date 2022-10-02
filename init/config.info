@@ -8,7 +8,6 @@ line2=System configuration,11
 init_mode=Boot system,4,-Detect automatically,init-SysV init,upstart-Upstart,systemd-Systemd,osx-MacOS,rc-FreeBSD RC scripts,win32-Windows services,local-Single boot script
 init_base=Directory in which runlevel directories are located,0
 init_dir=Directory containing master init scripts,0
-soft_links=Link type to use for runlevel files,1,0-Hard,1-Soft
 order_digits=Number of digits in action order,0
 boot_levels=Runlevels to create new actions in,3,From /etc/inittab
 local_script=Local startup commands script,3

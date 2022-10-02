@@ -7,7 +7,6 @@ sort_mode=Sortuj akcje według,1,1-Kolejności bootowania,0-Nazwy
 line2=Konfiguracja systemu,11
 init_base=Katalog zawierający podkatalogi poziomów pracy,0
 init_dir=Katalog zawierający nadrzędne skrypty startowe,0
-soft_links=Stosowany rodzaj dowiązań do plików poziomów pracy,1,0-Twarde,1-Miękkie
 order_digits=Liczba cyfr określających kolejność uruchamiania,0
 local_script=Lokalny skrypt poleceń startowych,3
 local_down=Lokalny skrypt poleceń wyłączania,3,Brak

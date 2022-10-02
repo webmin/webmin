@@ -7,7 +7,6 @@ sort_mode=Sorteer acties met,1,1-Boot volgorde,0-Naam
 line2=Systeem configuratie,11
 init_base=Directory waarin de runlevel directory's geplaatst zijn,0
 init_dir=Directory waarin de master init scripts geplaatst zijn,0
-soft_links=Link type om te gebruiken voor runlevel files,1,0-Hard,1-Zacht
 order_digits=Aantal cijfers in actie volgorde,0
 boot_levels=Runlevels waar nieuwe acties in gemaakt worden,3,Van /etc/inittab
 local_script=Lokaal Opstart opdrachten script,3

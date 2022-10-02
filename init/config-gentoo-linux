@@ -1,4 +1,3 @@
-soft_links=1
 show_opts=0
 reboot_command=shutdown -r now
 shutdown_command=shutdown -h now

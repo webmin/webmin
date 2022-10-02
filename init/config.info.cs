@@ -7,7 +7,6 @@ sort_mode=Setřídit akce podle,1,1-pořadí při bootování,0-názvu
 line2=Konfigurace systému,11
 init_base=Adresář obsahující podadresáře úrovní běhu,0
 init_dir=Adresář obsahující hlavní init skripty,0
-soft_links=Typ linku používané pro soubory úrovní běhu,1,0-Hard,1-Soft
 order_digits=Počet cifer v pořadí akcí,0
 boot_levels=Úrovně spuštění při vytvoření nové akce v,3,Z /etc/inittab
 local_script=Skript lokálních spouštěcích příkazů,3

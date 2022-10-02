@@ -1,4 +1,3 @@
-soft_links=1
 show_opts=0
 init_base=/etc
 init_dir=/etc/init.d

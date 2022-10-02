@@ -228,12 +228,7 @@ while(-r $file) {
 	else { $file = $file."_1"; }
 	}
 &lock_file($file);
-if ($config{soft_links}) {
-	&symlink_file(&action_filename($_[0]), $file);
-	}
-else {
-	&link_file(&action_filename($_[0]), $file);
-	}
+&symlink_file(&action_filename($_[0]), $file);
 &unlock_file($file);
 }
 

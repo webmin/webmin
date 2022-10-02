@@ -3,7 +3,6 @@ inittab_id=is
 expert=0
 reboot_command=reboot
 shutdown_command=init 0
-soft_links=1
 init_base=/sbin
 local_script=
 desc=0

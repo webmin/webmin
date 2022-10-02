@@ -7,7 +7,6 @@ sort_mode=동작 정렬,1,1-부트 순위,0-이름
 line2=시스템 설정,11
 init_base=실행 레벨 디렉토리가 위치할 디렉토리,0
 init_dir=주 init 스크립트가 위치할 디렉토리,0
-soft_links=실행레벨에서 사용할 링크 타입,1,0-Hard,1-Soft
 order_digits=동작 정렬 기준 레벨,0
 boot_levels=새 동작의 실행레벨,3,/etc/inittab 에서
 local_script=로컬 시작 명령 스크립트,3

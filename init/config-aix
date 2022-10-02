@@ -3,7 +3,6 @@ inittab_id=init
 expert=0
 reboot_command=reboot
 shutdown_command=shutdown -Fh
-soft_links=1
 init_base=
 order_digits=2
 desc=0

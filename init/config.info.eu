@@ -7,7 +7,6 @@ sort_mode=Ordenatu ekintzak,1,1-Karga ordenarekiko,0-Izenarekiko
 line2=Sistemaren konfigurazioa,11
 init_base=Exekuzio-mailen katalogoak kokatuta dauden katalogoa,0
 init_dir=Hasierako script nagusiak dituen katalogoa,0
-soft_links=Exekuzio-mailen fitxategiekin erabiltzeko lotura motak,1,0-Gogorrak,1-Leunak
 order_digits=Ekintzen ordenerako digitu kopurua,0
 boot_levels=Ekintza berriak sortuko diren exekuzio-mailak,3, /etc/inittab etik
 local_script=Abiatze lokalerako scripten komandoak,3

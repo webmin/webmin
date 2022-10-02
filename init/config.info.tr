@@ -2,7 +2,6 @@ expert=Kişisel çalışma seviyesinin seçimine izin verilsin,1,1-Evet,0-Hayır
 desc=İşlemleri açıklamaları ile görüntüle,1,1-Evet,0-Hayır
 init_base=Çalışma seviyelerinin olduğu dizin,0
 init_dir=Directory containing master init scripts,0
-soft_links=Açılış seviyeleri dosyası için kullanılacak link tipi,1,0-Hard,1-Soft
 order_digits=İşlem sıralamasındaki rakam sayısı,0
 local_script=Yerel başlangıç komutları betiği,3
 reboot_command=Sistemi yeniden başlatma komutu,0

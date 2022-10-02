@@ -7,7 +7,6 @@ sort_mode=Trier les actions par,1,1-Ordre de boot,0-Nom
 line2=Configuration du systeme,11
 init_base=Répertoire dans lequel les répertoires des niveaux d'exécution sont situés,0
 init_dir=Répertoire qui contient les scripts de démarrage,0
-soft_links=Type de liens utilisés pour les niveaux d'exécution,1,0-Dur,1-Symboliques
 order_digits=Nombre de chiffre dans l'ordre d'action,0
 boot_levels=Niveaux de demarrage creent nouvelles actions dans,3,/etc/inittab
 local_script=Script local de démarrage,3

@@ -7,7 +7,6 @@ sort_mode=Ordenar acciones por,1,1-Orden de Arranque,0-Nombre
 line2=Configuración de Sistema,11
 init_base=Directorio en el cual están localizados los directorios de nivel de ejecución,0
 init_dir=Directorio que contiene los script de inicio principales,0
-soft_links=Tipo de enlace a usar en los archivos de nivel de ejecución,1,0-Hard,1-Soft
 order_digits=Número de dígitos en el orden de acción,0
 boot_levels=Niveles de ejecución en los que se crearán las nuevas acciones,3,Desde /etc/inittab
 local_script=Script de comandos de arranque local,3

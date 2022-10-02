@@ -8,7 +8,6 @@ line2=System konfigurasjon,11
 init_mode=Oppstartssystem,4,-Oppdag automatisk,init-SysV init,upstart-Upstart,systemd-Systemd,osx-MacOS,rc-FreeBSD RC scripts,win32-Windows tjenester,local-Enkelt oppstartsscript
 init_base=Katalog hvor kjøretids-kataloger finnes,0
 init_dir=Katalog som inneholder master init scripts,0
-soft_links=Lenketype som brukes for kjørenivå filer,1,0-Hard,1-Myk
 order_digits=Antall sifre i handlingssortering,0
 boot_levels=Kjørenivåer som nye handlinger skal opprettes i,3,Fra /etc/inittab
 local_script=Lokalt script med oppstartskommandoer,3
