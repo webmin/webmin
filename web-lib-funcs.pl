@@ -7925,7 +7925,7 @@ if ($gconfig{'db_sizedate'}) {
 return "<input type=button onClick='window.dfield = form.$_[0]; window.mfield = form.$_[1]; window.yfield = form.$_[2]; window.open(\"@{[&get_webprefix()]}/date_chooser.cgi?day=\"+escape(dfield.value)+\"&month=\"+escape(mfield.selectedIndex)+\"&year=\"+yfield.value, \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=$h\")' value=\"...\">\n";
 }
 
-=head2 help_file(module, file)
+=head2 help_file(module, file, [force-help-directory])
 
 Returns the path to a module's help file of some name, typically under the
 help directory with a .html extension.
@@ -7933,18 +7933,18 @@ help directory with a .html extension.
 =cut
 sub help_file
 {
-my $mdir = &module_root_directory($_[0]);
-my $dir = "$mdir/help";
+my ($mod, $file, $forcedir) = @_;
+my $dir = $forcedir || &module_root_directory($mod)."/help";
 my $auto = load_language_auto();
 foreach my $o (@lang_order_list) {
-	my $lang = "$dir/$_[1].$o.html";
-	my $lang_auto = "$dir/$_[1].$o.auto.html";
+	my $lang = "$dir/$file.$o.html";
+	my $lang_auto = "$dir/$file.$o.auto.html";
 	if ($auto && !-r $lang && -r $lang_auto) {
 		return $lang_auto;
 		}
 	return $lang if (-r $lang);
 	}
-return "$dir/$_[1].html";
+return "$dir/$file.html";
 }
 
 =head2 seed_random
