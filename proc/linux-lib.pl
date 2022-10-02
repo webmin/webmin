@@ -641,6 +641,12 @@ if (&has_command("sensors")) {
     }
 @cpu = @cputhermisters
     if (!@cpu && @cputhermisters);
+
+# Fix to remove cannot detect 
+# package temperatures (178)
+if (@cpu) {
+	@cpu = grep {$_->{'temp'} != 178} @cpu;
+	}
 return (\@cpu, \@fans);
 }
 
