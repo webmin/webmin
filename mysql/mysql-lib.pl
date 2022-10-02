@@ -1917,5 +1917,30 @@ if ($mysql_version =~ /mariadb/i) {
 &write_file("$module_config_directory/module.info.override", \%overs);
 }
 
+sub config_pre_load
+{
+my ($modconf_info) = @_;
+my $mysql_module_version = &get_mysql_version();
+
+# Replace config labels for MySQL
+if ($mysql_module_version =~ /mariadb/i) {
+	foreach my $confline (keys %{$modconf_info}) {
+		$modconf_info->{$confline} =~ s/MySQL/MariaDB/g;
+		}
+	}
+}
+
+sub help_pre_load
+{
+my ($htext) = @_;
+my $mysql_module_version = &get_mysql_version();
+
+# Replace config labels for MySQL
+if ($mysql_module_version =~ /mariadb/i) {
+	$htext =~ s/MySQL/MariaDB/gm;
+	}
+return $htext;
+}
+
 1;
 

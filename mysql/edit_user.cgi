@@ -53,7 +53,7 @@ print &ui_table_start($text{'user_header'}, undef, 2);
 
 # Username field
 print &ui_table_row($text{'user_user'},
-	&ui_opt_textbox("mysqluser", $u->[1], $in{'new'} ? 30 : $sizes{'user'},
+	&ui_opt_textbox("mysqluser", $u->[1], 40,
 			$text{'user_all'}));
 
 # Password field

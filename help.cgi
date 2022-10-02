@@ -23,6 +23,13 @@ $help = &read_help_file($module, $file);
 $help || &helperror(&text('help_efile3',
 		&html_escape($file), &html_escape($module)));
 
+# Modify help file based on module
+if (&foreign_exists($module) &&
+    &foreign_require($module) &&
+    &foreign_defined($module, 'help_pre_load')) {
+	$help = &foreign_call($module, "help_pre_load", $help);
+	}
+
 # find and replace the <header> section
 if ($help =~ s/<header>([^<]+)<\/header>//i) {
 	&popup_header($1);
