@@ -8,4 +8,3 @@ local_script=本地启动命令脚本,3
 reboot_command=重启系统命令,0
 shutdown_command=关机命令,0
 inittab_id=引导级别的inittab ID,0
-daemons_dir=Caldera 守护进程目录,3,None

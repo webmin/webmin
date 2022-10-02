@@ -16,7 +16,6 @@ local_down=Script d'ordres de tancament local,3,Cap
 reboot_command=Ordre de reinici del sistema,0
 shutdown_command=Ordre de tancament del sistema,0
 inittab_id=ID d'inittab per al nivell d'engegada per omissió,0
-daemons_dir=Directori de dimonis de Caldera,3,Cap
 no_chkconfig=Utilitza l'ordre chkconfig per activar les accions,1,0-Sí,1-No
 rc_dir=Directori de scripts rc FreeBSD,3,Cap
 rc_conf=Fitxers de configuració FreeBSD,3,Cap

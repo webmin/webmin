@@ -15,7 +15,6 @@ local_down=로컬 셧다운 명령 스크립트,3,없음
 reboot_command=시스템 리부트 명령,0
 shutdown_command=시스템 셧다운 명령,0
 inittab_id=bootup 실행레벨의 inittab ID,0
-daemons_dir=칼데라 데몬 디렉토리,3,없음
 no_chkconfig=동작을 활성화 하기 위해 chkconfig 명령 사용,1,0-예,1-아니오
 rc_dir=FreeBSD rc 스크립트 디렉토리,3,없음
 rc_conf=FreeBSD 설정 파일

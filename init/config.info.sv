@@ -9,4 +9,3 @@ local_script=Lokalt startkommandoscript,3
 reboot_command=Kommando för att starta om systemet,0
 shutdown_command=Kommando för att stänga av systemet,0
 inittab_id=inittab-ID för startkörnivå,0
-daemons_dir=Katalog för Caldera-demoner,3,Ingen

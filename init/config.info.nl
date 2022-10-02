@@ -15,7 +15,6 @@ local_down=Lokaal Uitschakel opdrachten script,3,Geen
 reboot_command=Opdracht om het systeem te rebooten,0
 shutdown_command=Opdracht om het systeem uit te zetten,0
 inittab_id=inittab ID voor bootup runlevel,0
-daemons_dir=Caldera daemons directory,3,Geen
 no_chkconfig=Gebruik de chkconfig opdracht om acties aan te zetten?,1,0-Ja,1-Nee
 rc_dir=FreeBSD rc scripts directory's,3,Geen
 rc_conf=FreeBSD configuratie files,3,Geen

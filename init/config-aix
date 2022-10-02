@@ -8,7 +8,6 @@ init_base=
 order_digits=2
 desc=0
 init_dir=
-daemons_dir=
 local_script=/etc/rc
 local_down=/etc/rc.shutdown
 status_check=0

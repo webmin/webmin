@@ -9,7 +9,6 @@ local_script=本地端啟動指令稿,3
 reboot_command=重新開機的命令,0
 shutdown_command=關閉系統的命令,0
 inittab_id=開機執行階層在 inittab 中的編號,0
-daemons_dir=Caldera 守護器目錄,3,無
 startup_dirs=達爾文(Darwin)開機項目目錄,0
 darwin_setup=自定開機項目目錄,0
 hostconfig=達爾文(Darwin)主機位置設定檔,0

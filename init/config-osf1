@@ -1,4 +1,3 @@
-daemons_dir=
 show_opts=0
 inittab_id=is
 expert=0

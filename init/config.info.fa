@@ -15,7 +15,6 @@ local_down=دست نوشته فرمانهاي خاموش محلي,3,هيچ
 reboot_command=فرماني جهت بازآغازي سيستم,0
 shutdown_command=فرماني جهت خاموش کردن سيستم,0
 inittab_id=مقدار اوليه ID براي اجراي سطح1,0
-daemons_dir=فهرست راهنماي شبحهاي caldera,3,هيچ 
 startup_dirs=فهرست راهنما اقلام راه‌اندازي darwin,0
 darwin_setup=فهرست راهنما براي اقلام سفارشي راه‌اندازي,0 
 hostconfig=پرونده پيکربندي ميزبان darwin

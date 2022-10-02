@@ -16,7 +16,6 @@ local_down=Lokalt script med shutdown kommandoer,3,Ingen
 reboot_command=Kommando for å omstarte systemet,0
 shutdown_command=Kommando for å slå av systemet,0
 inittab_id=inittab ID for oppstarts kjørenivå,0
-daemons_dir=Caldera daemons katalog,3,Ingen
 no_chkconfig=Bruk chkconfig kommando for å aktivere handlinger?,1,0-Ja,1-Nei
 rc_dir=FreeCSD rc script kataloger,3,Ingen
 rc_conf=FreeBSD konfigurasjonsfiler,3,Ingen

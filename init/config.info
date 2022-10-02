@@ -16,7 +16,6 @@ local_down=Local shutdown commands script,3,None
 reboot_command=Command to reboot the system,0
 shutdown_command=Command to shutdown the system,0
 inittab_id=inittab ID for bootup runlevel,0
-daemons_dir=Caldera daemons directory,3,None
 no_chkconfig=Use chkconfig command to enable actions?,1,0-Yes,1-No
 rc_dir=FreeBSD rc scripts directories,3,None
 rc_conf=FreeBSD configuration files,3,None

@@ -8,4 +8,3 @@ local_script=Yerel başlangıç komutları betiği,3
 reboot_command=Sistemi yeniden başlatma komutu,0
 shutdown_command=Sistemi kapatma komutu,0
 inittab_id=Açılış çalışma seviyesi için inittab ID ,0
-daemons_dir=Caldera daemon'ları dizini,3,Hiçbiri

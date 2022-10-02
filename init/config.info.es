@@ -15,7 +15,6 @@ local_down=Script de comandos de apagado local,3,Ninguno
 reboot_command=Comando para rearrancar el sistema,0
 shutdown_command=Comando para apagar el sistema,0
 inittab_id=ID de inittab para nivel de ejecución en arranque,0
-daemons_dir=Directorio de demonios de Caldera,3,Ninguno
 startup_dirs=Directorios de Elementos de arranque de Darwin,0
 darwin_setup=Directorio para Elementos de Arranque de cliente,0
 hostconfig=Archivo de configuración de máquina de Darwin,0

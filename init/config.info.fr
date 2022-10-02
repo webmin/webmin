@@ -14,7 +14,6 @@ local_script=Script local de démarrage,3
 reboot_command=Commande pour redémarrer le système,0
 shutdown_command=Commande pour arrêter le système,0
 inittab_id=Numéro du niveau d'exécution du démarrage,0
-daemons_dir=Repertoire des demons Caldera,3,Aucun
 startup_dirs=Repertoires des StartupItems Darwin,0
 darwin_setup=Repertoire pour personnaliser StartupItems,0
 hostconfig=Fichier de configuration du poste Darwin,0

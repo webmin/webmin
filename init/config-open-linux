@@ -8,7 +8,6 @@ order_digits=2
 inittab_id=id
 desc=1
 expert=0
-daemons_dir=/etc/sysconfig/daemons
 status_check=0
 order=0
 sort_mode=0

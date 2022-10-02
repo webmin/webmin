@@ -11,7 +11,6 @@ local_script=Сценарій локальних команд завантаже
 reboot_command=Команда для перезавантаження системи,0
 shutdown_command=Команда для завершення роботи системи,0
 inittab_id=Ім'я процесу inittab&#44; режим роботи&#44; що задає,0
-daemons_dir=Каталог служб Caldera,3,Немає
 startup_dirs=Каталоги Darwin StartupItems,0
 darwin_setup=Каталоги StartupItems користувача,0
 hostconfig=Файл hostconfig Darwin,0
