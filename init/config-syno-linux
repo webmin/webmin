@@ -1,4 +1,3 @@
-show_opts=0
 shutdown_command=/sbin/poweroff
 init_base=/usr/syno/etc/rc.d
 init_dir=/usr/syno/etc/rc.d

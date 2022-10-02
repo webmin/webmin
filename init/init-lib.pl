@@ -115,7 +115,6 @@ local(@rv);
 opendir(DIR, $config{init_base});
 foreach (readdir(DIR)) {
 	if (/^rc([A-z0-9])\.d$/ || /^(boot)\.d$/) {
-		#if (!$config{show_opts} && $1 < 1) { next; }
 		push(@rv, $1);
 		}
 	}

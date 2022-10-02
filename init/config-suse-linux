@@ -1,4 +1,3 @@
-show_opts=0
 init_base=/sbin/init.d
 init_dir=/sbin/init.d
 reboot_command=reboot

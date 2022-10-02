@@ -1,4 +1,3 @@
-show_opts=0
 inittab_id=init
 expert=0
 reboot_command=reboot

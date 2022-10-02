@@ -1,4 +1,3 @@
-show_opts=0
 init_base=/etc/init.d
 init_dir=/etc/init.d
 reboot_command=reboot
