@@ -104,10 +104,6 @@ elsif (!$config{'expert'} || $access{'bootup'} == 2) {
 			local ($l, $p) = split(/\s+/, $s);
 			$boot = 1 if (&indexof($l, @boot) >= 0);
 			}
-		if ($boot && $config{'daemons_dir'} &&
-		    &read_env_file("$config{'daemons_dir'}/$ac", \%daemon)) {
-			$boot = lc($daemon{'ONBOOT'}) eq 'yes' ? 1 : 0;
-			}
 		print &ui_hidden("oldboot", $boot);
 		}
 	if ($access{'bootup'} == 1) {
@@ -136,13 +132,6 @@ elsif (!$config{'expert'} || $access{'bootup'} == 2) {
 	print &ui_table_end();
 	}
 else {
-	if ($config{'daemons_dir'} && $ac &&
-	    &read_env_file("$config{'daemons_dir'}/$ac", \%daemon)) {
-		# Display onboot flag from daemons file
-		$boot = lc($daemon{'ONBOOT'}) eq 'yes';
-		print &ui_table_row($text{'edit_boot'},
-			&ui_yesno_radio("boot", $boot ? 1 : 0));
-		}
 	print &ui_table_end();
 
 	# Display which runlevels the action is started/stopped in

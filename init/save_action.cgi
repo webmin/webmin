@@ -55,7 +55,6 @@ foreach $rl (&list_runlevels()) {
 
 if ($in{'old'} && $in{'type'} == 0) {
 	# Changing a 'sane' action
-	local $dd = $config{'daemons_dir'};
 	$in{data} =~ s/\r//g;
 	if ($in{old} ne $in{name}) {
 		# Need to rename the action..
@@ -63,15 +62,6 @@ if ($in{'old'} && $in{'type'} == 0) {
 			&error(&text('save_ealready', $in{name}));
 			}
 		&rename_action($in{old}, $in{name});
-		if ($dd) {
-			# Need to rename the caldera daemons file too
-			&rename_logged("$dd/$in{old}", "$dd/$in{name}");
-			&lock_file("$dd/$in{'name'}");
-			&read_env_file("$dd/$in{name}", \%daemon);
-			$daemon{'IDENT'} = $in{'name'}
-				if ($daemon{'IDENT'} eq $in{'old'});
-			&write_env_file("$dd/$in{name}", \%daemon);
-			}
 		}
 	&lock_file("$dd/$in{'name'}") if ($dd);
 	$file = &action_filename($in{name});
@@ -109,13 +99,6 @@ if ($in{'old'} && $in{'type'} == 0) {
 				&reorder_rl_action($in{name}, $rl,
 						   'K',$in{"pri_K$rl"});
 				}
-			}
-
-		if (defined($in{'boot'}) && $dd) {
-			# Update onboot flag in daemons file
-			&read_env_file("$dd/$in{'name'}", \%daemon);
-			$daemon{'ONBOOT'} = $in{'boot'} ? 'yes' : 'no';
-			&write_env_file("$dd/$in{'name'}", \%daemon);
 			}
 		}
 	else {

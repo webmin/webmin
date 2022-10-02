@@ -12,10 +12,6 @@ if ($config{'init_base'}) {
 		local @ac = split(/\s+/, $a);
 		push(@rv, $ac[0] =~ /^\// ? $ac[0]
 					  : "$config{'init_dir'}/$ac[0]");
-		if ($config{'daemons_dir'} &&
-		    -r "$config{'daemons_dir'}/$ac[0]") {
-			push(@rv, "$config{'daemons_dir'}/$ac[0]");
-			}
 		local $ufile = "/etc/init/$ac[0]";
 		if (-r $ufile) {
 			push(@rv, $ufile);

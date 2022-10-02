@@ -66,12 +66,6 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 		foreach $s (&action_levels('S', $acts[$i])) {
 			local ($l, $p) = split(/\s+/, $s);
 			local ($lvl) = (&indexof($l, @boot) >= 0);
-			local %daemon;
-			if ($lvl && $config{'daemons_dir'} &&
-			    &read_env_file("$config{'daemons_dir'}/$acts[$i]",
-					   \%daemon)) {
-				$lvl = lc($daemon{'ONBOOT'}) eq 'yes' ? 1 : 0;
-				}
 			push(@{$actsb[$i]}, [ $l, $p, $lvl ]);
 			}
 		@{$actsb[$i]} = sort { $b->[2] <=> $a->[2] } @{$actsb[$i]};

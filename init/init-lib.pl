@@ -438,15 +438,6 @@ if ($_[1]) {
 	}
 
 my $desc;
-if ($config{'daemons_dir'}) {
-	# First try the daemons file
-	my %daemon;
-	if ($_[0] =~ /\/([^\/]+)$/ &&
-	    &read_env_file("$config{'daemons_dir'}/$1", \%daemon) &&
-	    $daemon{'DESCRIPTIVE'}) {
-		return $daemon{'DESCRIPTIVE'};
-		}
-	}
 if ($config{'chkconfig'}) {
 	# Find the redhat-style description: section
 	foreach (@lines) {
@@ -574,10 +565,6 @@ if ($init_mode eq "init" || $init_mode eq "upstart" ||
 				$starting++ if (&indexof($l, @boot) >= 0);
 				}
 			}
-		}
-	if ($starting && $config{'daemons_dir'} &&
-	    &read_env_file("$config{'daemons_dir'}/$name", \%daemon)) {
-		$starting = lc($daemon{'ONBOOT'}) eq 'yes' ? 1 : 0;
 		}
 	return !$exists ? 0 : $starting ? 2 : 1;
 	}
@@ -715,10 +702,6 @@ if ($init_mode eq "systemd" && (!-r "$config{'init_dir'}/$action" ||
 if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart" ||
     $init_mode eq "systemd") {
 	# In these modes, we create a script to run
-	if ($config{'daemons_dir'} &&
-	    &read_env_file("$config{'daemons_dir'}/$action", \%daemon)) {
-		$daemon++;
-		}
 	my $fn;
 	if ($init_mode eq "init" || $init_mode eq "upstart" ||
             $init_mode eq "systemd") {
@@ -740,14 +723,7 @@ if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart" ||
 		}
 
 	my $need_links = 0;
-	if ($st == 1 && $daemon) {
-		# Just update daemons file
-		$daemon{'ONBOOT'} = 'yes';
-		&lock_file("$config{'daemons_dir'}/$action");
-		&write_env_file("$config{'daemons_dir'}/$action", \%daemon);
-		&unlock_file("$config{'daemons_dir'}/$action");
-		}
-	elsif ($st == 1) {
+	if ($st == 1) {
 		# Just need to create links (later)
 		$need_links++;
 		}
@@ -1106,19 +1082,10 @@ elsif ($init_mode eq "systemd") {
 if ($init_mode eq "init" || $init_mode eq "upstart" ||
     $init_mode eq "systemd") {
 	# Unlink or disable init script
-	my ($daemon, %daemon);
 	my $file = &action_filename($_[0]);
 	my @chk = &chkconfig_info($file);
 	my $data = &read_file_contents($file);
 
-	if ($config{'daemons_dir'} &&
-	    &read_env_file("$config{'daemons_dir'}/$_[0]", \%daemon)) {
-		# Update daemons file
-		$daemon{'ONBOOT'} = 'no';
-		&lock_file("$config{'daemons_dir'}/$_[0]");
-		&write_env_file("$config{'daemons_dir'}/$_[0]", \%daemon);
-		&unlock_file("$config{'daemons_dir'}/$_[0]");
-		}
 	elsif (&has_command("chkconfig") && !$config{'no_chkconfig'} && @chk) {
 		# Call chkconfig to remove the links
 		&system_logged("chkconfig ".quotemeta($_[0])." off");
