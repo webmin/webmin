@@ -71,6 +71,22 @@ foreach my $m (@mods) {
 	&$cbfunc() if ($cbfunc);
 	}
 
+# Extract zipped help files to temp dir
+my $helpbase = &transname();
+&make_dir($helpbase, 0700);
+my %helpmap;
+foreach my $m (@mods) {
+	my $helpzip = &module_root_directory($m)."/help/help.zip";
+	if (-r $helpzip) {
+		my $helpdir = $helpbase."/".$m->{'dir'};
+		&make_dir($helpdir, 0700);
+		&execute_command("cd ".quotemeta($helpdir)." && unzip ".quotemeta($helpzip));
+		if (!$?) {
+			$helpmap{$m->{'dir'}} = $helpdir;
+			}
+		}
+	}
+
 # Search module configs and their help pages
 foreach my $m (@mods) {
 	my %access = &get_module_acl(undef, $m);
@@ -84,6 +100,7 @@ foreach my $m (@mods) {
 		&read_file("$file.$o", \%info);
 		}
 	my $section = undef;
+	my $helpdir = $helpmap{$m->{'dir'}};
 	foreach my $c (@info_order) {
 		my @p = split(/,/, $info{$c});
 		if ($p[1] == 11) {
@@ -99,7 +116,7 @@ foreach my $m (@mods) {
 				    'text' => $p[0],
 				  });
 			}
-		my $hfl = &help_file($mod->{'dir'}, "config_".$c);
+		my $hfl = &help_file($mod->{'dir'}, "config_".$c, $helpdir);
 		my ($title, $help) = &help_file_match($hfl);
 		if ($help) {
 			# Config help matches
@@ -121,7 +138,8 @@ foreach my $m (@mods) {
 # Search other help pages
 my %lang_order_list = map { $_, 1 } @lang_order_list;
 foreach my $m (@mods) {
-	my $helpdir = &module_root_directory($m->{'dir'})."/help";
+	my $helpdir = $helpmap{$m->{'dir'}} ||
+		      &module_root_directory($m)."/help";
 	my %donepage = ( );
 	opendir(DIR, $helpdir);
 	foreach my $f (sort { length($b) <=> length($a) } readdir(DIR)) {
