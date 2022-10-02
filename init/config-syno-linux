@@ -10,5 +10,4 @@ inittab_id=id
 expert=0
 status_check=1
 boot_levels=2 3 5
-no_chkconfig=1
 desc=1

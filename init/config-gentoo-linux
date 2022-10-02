@@ -7,4 +7,3 @@ status_check=0
 order=0
 sort_mode=0
 local_script=/etc/conf.d/local.start
-no_chkconfig=0

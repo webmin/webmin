@@ -8,4 +8,3 @@ plist=StartupParameters.plist
 status_check=0
 order=0
 sort_mode=0
-no_chkconfig=0

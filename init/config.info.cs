@@ -14,7 +14,6 @@ local_down=skript pro příkaz lokálního shození,3,Nic
 reboot_command=Příkaz pro rebootování systému,0
 shutdown_command=Příkaz pro shození systému,0
 inittab_id=ID inittabu pro bootovací úroveň běhu,0
-no_chkconfig=Použít příkaz chkconfig pro povolení akcí?,1,0-Ano,1-Ne
 rc_dir=Adresáře pro FreeBSD rc skripty,3,Nic
 rc_conf=Soubory FreeBSD konfigurace,3,Nic
 line3=Konfigurace OSX systému,11

@@ -10,4 +10,3 @@ status_check=0
 inittab_rl_S=2
 order=0
 sort_mode=0
-no_chkconfig=0

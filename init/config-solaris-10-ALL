@@ -10,6 +10,5 @@ inittab_rl_3=3,2
 status_check=0
 order=0
 sort_mode=0
-no_chkconfig=0
 boot_levels=2
 inittab_extra=2

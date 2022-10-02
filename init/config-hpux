@@ -12,4 +12,3 @@ inittab_rl_3=3,2,1
 inittab_rl_2=2,1
 order=0
 sort_mode=0
-no_chkconfig=0

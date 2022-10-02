@@ -15,7 +15,6 @@ local_down=Lokales Shutdown&#45;Skript,3,Keines
 reboot_command=Kommando zum Neustart des Systems,0
 shutdown_command=Kommando zum Herunterfahren des Systems,0
 inittab_id=Inittab-ID für Bootup&#45;Runlevel,0
-no_chkconfig=Benutze chkconfig-Befehl&#44; um Aktionen zu aktivieren?,1,0-Ja,1-Nein
 rc_dir=FreeBSD rc Skripts Verzeichnisse,3,Keine
 rc_conf=FreeBSD Konfigurationsdateien,3,Keine
 line3=OSX Systemkonfiguration,11

@@ -14,7 +14,6 @@ local_down=Itzalera lokalerako scripten komandoak3,Ezer ez
 reboot_command=Sistema berrabiarazteko komandoa,0
 shutdown_command=Sistema itzaltzeko komandoa,0
 inittab_id=Abiatzeko unerako inittab-en ID-a exekuzio-mailarentzat
-no_chkconfig=Ekintzak gaitzeko chkconfig komandoa erabili?,1,0-Bai,1-Ez
 rc_dir=FreeBSD rc scripten katalogoa,3,Ezer ez
 rc_conf=FreeBSD konfigurazioa fitxategiak,3,Ezer ez
 line3=OSX sistemaren konfigurazioa,11

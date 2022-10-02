@@ -75,12 +75,18 @@ elsif ($config{'local_script'}) {
 elsif ($gconfig{'os_type'} eq 'windows') {
 	$init_mode = "win32";
 	}
+
+# Do init scripts support start and stop custom messages?
 if ($init_mode eq "init" && $gconfig{'os_type'} =~ /^(osf1|hpux)$/) {
 	$supports_start_stop_msg = 1;
 	}
 else {
 	$supports_start_stop_msg = 0;
 	}
+
+# Use the chkconfig command to enable actions?
+$use_chkconfig = &has_command("chkconfig") &&
+		 $gconfig{'os_type'} ne 'syno-linux';
 
 =head2 runlevel_actions(level, S|K)
 
@@ -804,7 +810,7 @@ if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart" ||
 			    $init_mode eq "systemd")) {
 		my $data = &read_file_contents($fn);
 		my $done = 0;
-		if (&has_command("chkconfig") && !$config{'no_chkconfig'} &&
+		if ($use_chkconfig &&
 		    (@chk && $chk[3] || $data =~ /Default-Start:/i)) {
 			# Call the chkconfig command to link up
 			&system_logged("chkconfig --add ".quotemeta($action));
@@ -814,8 +820,7 @@ if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart" ||
 				$done = 1;
 				}
 			}
-		elsif (&has_command("insserv") && !$config{'no_chkconfig'} &&
-		       $data =~ /Default-Start:/i) {
+		elsif (&has_command("insserv") && $data =~ /Default-Start:/i) {
 			# Call the insserv command to enable
 			my $ex = &system_logged("insserv ".quotemeta($action).
 				       " >/dev/null 2>&1");
@@ -1080,7 +1085,7 @@ if ($init_mode eq "init" || $init_mode eq "upstart" ||
 	my @chk = &chkconfig_info($file);
 	my $data = &read_file_contents($file);
 
-	elsif (&has_command("chkconfig") && !$config{'no_chkconfig'} && @chk) {
+	if ($use_chkconfig && @chk) {
 		# Call chkconfig to remove the links
 		&system_logged("chkconfig ".quotemeta($_[0])." off");
 		}

@@ -13,7 +13,6 @@ local_down=Lokalny skrypt poleceń wyłączania,3,Brak
 reboot_command=Polecenie restartujące system,0
 shutdown_command=Polecenie zamykające system,0
 inittab_id=ID inicjalnego poziomu pracy w&nbsp;inittab-ie,0
-no_chkconfig=Użyć polecenie chkconfig do włączania akcji?,1,0-Tak,1-Nie
 rc_dir=Katalogi skryptów rc FreeBSD,3,Brak
 rc_conf=Plik konfiguracyjny FreeBSD,3,Brak
 line3=Konfiguracja systemu OSX,11
