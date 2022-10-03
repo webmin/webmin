@@ -284,6 +284,9 @@ if ($config{'gzip'} eq '1') {
 		}
 	}
 
+# Read websockets configs
+&parse_websockets_config();
+
 # Setup syslog support if possible and if requested
 if ($use_syslog) {
 	open(ERRDUP, ">&STDERR");
@@ -2194,11 +2197,23 @@ $simple = &simplify_path($page, $bogus);
 print DEBUG "handle_request: page=$page simple=$simple\n";
 if ($bogus) {
 	&http_error(400, "Invalid path");
+	return 0;
 	}
 
 # Check for a DAV request
 if ($davpath) {
 	return &handle_dav_request($davpath);
+	}
+
+# Check for a websockets request
+if (lc($header{'connection'}) eq 'upgrade' &&
+    lc($header{'upgrade'}) eq 'websocket') {
+	my ($ws) = grep { $_->{'path'} eq $simple } @websocket_paths;
+	if (!$ws) {
+		&http_error(400, "Unknown websocket path");
+		return 0;
+		}
+	return &handle_websocket_request($ws);
 	}
 
 # Work out the active theme(s)
@@ -4729,6 +4744,23 @@ if (!Net::SSLeay::accept($ssl_con)) {
 return $ssl_con;
 }
 
+# parse_websockets_config()
+# Extract websockets proxies from the config hash
+sub parse_websockets_config
+{
+@websocket_paths = ( );
+foreach my $c (keys %config) {
+	if ($c =~ /^websockets_(\S+)$/) {
+		my $ws = { 'path' => $1 };
+		foreach my $kv (split(/\s+/, $config{$c})) {
+			my ($k, $v) = split(/=/, $kv, 2);
+			$ws->{$k} = $v;
+			}
+		push(@websocket_paths, $ws);
+		}
+	}
+}
+
 # login_redirect(username, password, host)
 # Calls the login redirect script (if configured), which may output a URL to
 # re-direct a user to after logging in.
@@ -4756,6 +4788,7 @@ sub reload_config_file
 &read_webmin_crons();
 &precache_files();
 &setup_ssl_contexts();
+&parse_websockets_config();
 if ($config{'session'}) {
 	dbmclose(%sessiondb);
 	dbmopen(%sessiondb, $config{'sessiondb'}, 0700);
@@ -5608,6 +5641,62 @@ if ($config{'dav_debug'}) {
 # Log it
 &log_request($loghost, $authuser, $reqline, $response->code(), 
 	     length($response->content()));
+return 0;
+}
+
+# handle_websocket_request(&wsconfig)
+# Handle a websockets connection, which may be a proxy to another host and port
+sub handle_websocket_request
+{
+my ($ws) = @_;
+my $key = $header{'sec-websocket-key'};
+if (!$key) {
+	&http_error(500, "Missing Sec-Websocket-Key header");
+	return 0;
+	}
+my @protos = split(/\s*,\s*/, $header{'sec-websocket-protocols'});
+
+# Connect to the configured backend
+my $fh = "WEBSOCKET";
+if ($ws->{'host'}) {
+	# Backend is a TCP port
+	my $err = &open_socket($ws->{'host'}, $ws->{'port'}, $fh);
+	&http_error(500, "Websockets connection failed : $err") if ($err);
+	}
+else {
+	&http_error(500, "Invalid Webmin websockets config");
+	}
+
+# Send successful connection headers
+&write_data("HTTP/1.1 101 Switching Protocols\r\n");
+&write_data("Upgrade: websocket\r\n");
+&write_data("Connection: Upgrade\r\n");
+&write_data("Sec-Websocket-Accept: $key\r\n");
+&write_data("Sec-Websocket-Protocol: $protos[0]\r\n");
+&write_data("\r\n");
+
+# Start forwarding data
+while(1) {
+	my $rmask = undef;
+	vec($rmask, fileno($fh), 1) = 1;
+	vec($rmask, fileno(SOCK), 1) = 1;
+	my $sel = select($rmask, undef, undef, 10);
+	my ($buf, $ok);
+	if (vec($rmask, fileno($fh), 1)) {
+		# Got something from the websockets backend
+		$ok = sysread($fh, $buf, 1024);
+		last if ($ok <= 0);	# Backend has closed
+		&write_data($buf);
+		}
+	if (vec($rmask, fileno(SOCK), 1)) {
+		# Got something from the browser
+		$buf = &read_data(1024);
+		last if (!defined($buf) || length($buf) == 0);
+		syswrite($fh, $buf, length($buf)) || last;
+		}
+	}
+
+return 0;
 }
 
 # get_system_hostname()
@@ -6598,3 +6687,73 @@ sub getenv
 my ($key) = @_;
 return $ENV{ uc($key) } || $ENV{ lc($key) };
 }
+
+# open_socket(host, port, filehandle)
+# Connect to a TCP port on some host. Returns undef on success, or an error
+# message on failure.
+sub open_socket
+{
+my ($host, $port, $fh) = @_;
+
+# Lookup all IPv4 and v6 addresses for the host
+my @ips = &to_ipaddress($host);
+push(@ips, &to_ip6address($host));
+if (!@ips) {
+	return "Failed to lookup IP address for $host";
+	}
+
+# Try each of the resolved IPs
+my $msg;
+my $proto = getprotobyname("tcp");
+foreach my $ip (@ips) {
+	$msg = undef;
+	if (&check_ipaddress($ip)) {
+		# Create IPv4 socket and connection
+		if (!socket($fh, PF_INET(), SOCK_STREAM, $proto)) {
+			$msg = "Failed to create socket : $!";
+			next;
+			}
+		my $addr = inet_aton($ip);
+		if ($gconfig{'bind_proxy'}) {
+			# BIND to outgoing IP
+			if (!bind($fh, pack_sockaddr_in(0, inet_aton($bindip)))) {
+				$msg = "Failed to bind to source address : $!";
+				next;
+				}
+			}
+		if (!connect($fh, pack_sockaddr_in($port, $addr))) {
+			$msg = "Failed to connect to $host:$port : $!";
+			next;
+			}
+		}
+	else {
+		# Create IPv6 socket and connection
+		if (!&supports_ipv6()) {
+			$msg = "IPv6 connections are not supported";
+			next;
+			}
+		if (!socket($fh, PF_INET6(), SOCK_STREAM, $proto)) {
+			$msg = "Failed to create IPv6 socket : $!";
+			next;
+			}
+		my $addr = inet_pton(AF_INET6(), $ip);
+		if (!connect($fh, pack_sockaddr_in6($port, $addr))) {
+			$msg = "Failed to IPv6 connect to $host:$port : $!";
+			next;
+			}
+		}
+	last;	# If we got this far, it worked
+	}
+if ($msg) {
+	# Last attempt failed
+	return $msg;
+	}
+
+# Disable buffering
+my $old = select($fh);
+$| = 1;
+select($old);
+return undef;
+}
+
+
