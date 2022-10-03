@@ -1056,6 +1056,33 @@ foreach my $u (keys %limit_lastlogin) {
 return (\%rv, \%limit_rv);
 }
 
+# get_past_days_usage(user)
+# Returns a list of array refs, each with day, playtime and enforced playtime
+sub get_past_day_usage
+{
+my ($u) = @_;
+my $ufile = "$playtime_dir/$u";
+my %days;
+&read_file($ufile, \%days);
+my @rv;
+foreach my $k (sort { $a cmp $b } (keys %days)) {
+	next if ($k !~ /^total_(\d+\-\d+\-\d+)$/);
+	my $day = $1;
+	push(@rv, $day, $days{"total_".$day}, $days{"limit_".$day});
+	}
+return @rv;
+}
+
+# list_playtime_users()
+# Returns a list of all users for which we have playtime stats
+sub list_playtime_users
+{
+opendir(DIR, $playtime_dir) || return ();
+my @users = grep { !/^\./ } readdir(DIR);
+closedir(DIR);
+return @users;
+}
+
 # nice_seconds(secs)
 # Converts a number of seconds into HH:MM format
 sub nice_seconds
