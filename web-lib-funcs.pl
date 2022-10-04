@@ -3549,22 +3549,22 @@ if (!$file) {
 	}
 my $realfile = &translate_filename($file);
 if (!$main::file_cache{$realfile}) {
-        my (@lines, $eol);
+	my (@lines, $eol);
 	local $_;
 	&webmin_debug_log('READ', $file) if ($gconfig{'debug_what_read'});
-        open(READFILE, "<".$realfile);
-        while(<READFILE>) {
+	open(READFILE, "<".$realfile);
+	while(<READFILE>) {
 		if (!$eol) {
 			$eol = /\r\n$/ ? "\r\n" : "\n";
 			}
-                tr/\r\n//d;
-                push(@lines, $_);
-                }
-        close(READFILE);
-        $main::file_cache{$realfile} = \@lines;
+		tr/\r\n//d;
+		push(@lines, $_);
+		}
+	close(READFILE);
+	$main::file_cache{$realfile} = \@lines;
 	$main::file_cache_noflush{$realfile} = $readonly;
 	$main::file_cache_eol{$realfile} = $eol || "\n";
-        }
+	}
 else {
 	# Make read-write if currently readonly
 	if (!$readonly) {
