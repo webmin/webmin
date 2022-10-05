@@ -131,7 +131,7 @@ my $file = $_[0] || $config{'named_conf'};
 if (!defined($get_config_parent_cache{$file})) {
 	my $conf = &get_config();
 	if (!defined($lines_count{$file})) {
-		my $lref = &read_file_lines($file);
+		my $lref = &read_file_lines($file, 1);
 		$lines_count{$file} = @$lref;
 		}
 	$get_config_parent_cache{$file} =
