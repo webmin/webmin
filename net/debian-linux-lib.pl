@@ -571,6 +571,13 @@ foreach my $f ("/etc/hostname", "/etc/HOSTNAME", "/etc/mailname") {
 		&close_tempfile(HOST);
 		}
 	}
+
+# Use the hostnamectl command as well
+if (&has_command("hostnamectl")) {
+	&system_logged("hostnamectl set-hostname ".quotemeta($hostname).
+		       " >/dev/null 2>&1");
+	}
+
 undef(@main::get_system_hostname);      # clear cache
 }
 
