@@ -3609,6 +3609,8 @@ foreach my $f (@files) {
 	my $eol = $eof || $main::file_cache_eol{$f} || "\n";
 	if (!$main::file_cache_noflush{$f}) {
 		no warnings; # XXX Bareword file handles should go away
+		my ($dir) = $f =~ /^(.*)\/.*$/;
+		&make_dir_recursive($dir) if ($dir && !-d $dir);
 		&open_tempfile(FLUSHFILE, ">$f");
 		foreach my $line (@{$main::file_cache{$f}}) {
 			(print FLUSHFILE $line,$eol) ||
