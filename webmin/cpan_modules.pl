@@ -3,7 +3,7 @@ require 'webmin-lib.pl';
 
 sub cpan_recommended
 {
-local @rv = ( "Authen::Libwrap", "Sys::Syslog" );
+local @rv = ( "Sys::Syslog" );
 if (&has_command("openssl")) {
 	push(@rv, "Net::SSLeay");
 	}

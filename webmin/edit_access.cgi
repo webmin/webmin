@@ -35,16 +35,6 @@ if (!$@) {
 	print &ui_table_row($text{'access_libwrap'},
 		&ui_yesno_radio("libwrap", int($miniserv{'libwrap'})));
 	}
-else {
-	$msg = &text('access_elibwrap', "<tt>Authen::Libwrap</tt>")."\n";
-	if (foreign_available("cpan")) {
-		$msg .= &text('access_libwrapcpan',
-			"@{[&get_webprefix()]}/cpan/download.cgi?source=3&cpan=Authen::Libwrap&".
-			"mode=2&return=/$module_name/&returndesc=".
-			&urlize($text{'index_return'}));
-		}
-	print &ui_table_row(" ", $msg);
-	}
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
