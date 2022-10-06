@@ -67,6 +67,14 @@ else {
 			      $r->{'type'}, $r->{'values'}->[0]);
 	}
 
+# Create via dynamic update for dynamic zones
+use Net::DNS;
+my $update = Net::DNS::Update->new( $dname );
+$update->push( update => rr_add('_acme-challenge.'.$dname.' 5 TXT "'.$val.'"') );
+my $resolver = Net::DNS::Resolver->new();
+$resolver->nameservers('127.0.0.1');
+my $reply = $resolver->send($update);
+
 my $err;
 if (!$wapi) {
 	# Apply using BIND API calls
