@@ -2010,13 +2010,19 @@ my %in = %$in;
 
 # Validate inputs
 my @cns;
-if (!$in{'commonName_def'}) {
+if ($in{'commonName_def'}) {
+	@cns = ( &get_system_hostname(0), 
+		 &get_system_hostname(1),
+		 "localhost" );
+	}
+else {
 	@cns = split(/\s+/, $in{'commonName'});
 	@cns || return $text{'newkey_ecns'};
 	foreach my $cn (@cns) {
 		$cn =~ /^[A-Za-z0-9\.\-\*]+$/ || return $text{'newkey_ecn'};
 		}
 	}
+@cns = &unique(@cns);
 $in{'size_def'} || $in{'size'} =~ /^\d+$/ || return $text{'newkey_esize'};
 $in{'days'} =~ /^\d+$/ || return $text{'newkey_edays'};
 $in{'countryName'} =~ /^\S\S$/ || return $text{'newkey_ecountry'};
