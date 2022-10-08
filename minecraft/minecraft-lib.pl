@@ -1,8 +1,5 @@
 # Functions for editing the minecraft config
-#
-# XXX remove old download buttons
-# XXX add button to add latest version
-# XXX remove check for latest version
+# XXX plugin manager
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -1068,7 +1065,7 @@ my @rv;
 foreach my $k (sort { $a cmp $b } (keys %days)) {
 	next if ($k !~ /^total_(\d+\-\d+\-\d+)$/);
 	my $day = $1;
-	push(@rv, $day, $days{"total_".$day}, $days{"limit_".$day});
+	push(@rv, [ $day, $days{"total_".$day}, $days{"limit_".$day} ]);
 	}
 return @rv;
 }

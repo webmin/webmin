@@ -7,13 +7,54 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 require './minecraft-lib.pl';
 our (%in, %text, %config);
+&ReadParse();
 
 &ui_print_header(undef, $text{'playtime_title'}, "");
 
 my ($playtime, $limit_playtime) = &get_current_day_usage();
 my @conns = &list_connected_players();
 
-if (keys %$playtime) {
+# Get all past play history
+my @players = &list_playtime_users();
+my %playtime_past;
+my %limittime_past;
+foreach my $u (@players) {
+	foreach my $p (&get_past_day_usage($u)) {
+		$playtime_past{$p->[0]}->{$u} = $p->[1];
+		$limittime_past{$p->[0]}->{$u} = $p->[2];
+		}
+	}
+my @days = sort { $b cmp $a } (keys %playtime_past);
+
+if (keys %$playtime || @players) {
+	# Show day selector
+	print &ui_form_start("list_playtime.cgi");
+	print "<b>$text{'playtime_date'}</b>\n";
+	my @opts = ( [ "", $text{'playtime_today'} ],
+		     [ "all", $text{'playtime_all'} ] );
+	push(@opts, @days);
+	print &ui_select("date", $in{'date'}, \@opts),"\n";
+	print &ui_submit($text{'playtime_ok'});
+	print &ui_form_end();
+
+	# Get the playtime to show
+	if ($in{'date'} eq "all") {
+		# Sum up all days
+		$playtime = { };
+		$limit_playtime = { };
+		foreach my $d (@days) {
+			foreach my $u (keys %{$playtime_past{$d}}) {
+				$playtime->{$u} += $playtime_past{$d}->{$u};
+				$limit_playtime->{$u} += $limittime_past{$d}->{$u};
+				}
+			}
+		}
+	elsif ($in{'date'} ne "") {
+		$playtime = $playtime_past{$in{'date'}};
+		$limit_playtime = $limittime_past{$in{'date'}};
+		}
+
+	# Show users with playtime, possibly from another day
 	print &ui_columns_start([ $text{'playtime_user'},
 				  $text{'playtime_time'},
 				  $text{'playtime_ltime'},

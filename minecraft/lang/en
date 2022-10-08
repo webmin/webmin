@@ -358,6 +358,10 @@ playtime_eusers=No users to limit entered
 playtime_edays=No days of the week selected
 playtime_eips=No IP addresses entered
 playtime_total=Total time
+playtime_date=Show play time on :
+playtime_ok=Show
+playtime_today=&lt;Today&gt;
+playtime_all=&lt;All days combined&gt;
 
 versions_title=Minecraft Versions
 versions_file=Filename
