@@ -33,7 +33,8 @@ if (keys %$playtime || @players) {
 	my @opts = ( [ "", $text{'playtime_today'} ],
 		     [ "all", $text{'playtime_all'} ] );
 	push(@opts, @days);
-	print &ui_select("date", $in{'date'}, \@opts),"\n";
+	print &ui_select("date", $in{'date'}, \@opts, 1, 0, 0, 0,
+			 "onChange='form.submit()'"),"\n";
 	print &ui_submit($text{'playtime_ok'});
 	print &ui_form_end();
 
