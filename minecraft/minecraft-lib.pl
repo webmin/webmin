@@ -987,6 +987,7 @@ my $pos = $st[7];
 open(LOGFILE, $logfile);
 my @tm = localtime(time());
 my $wantday = sprintf("%4.4d-%2.2d-%2.2d", $tm[5]+1900, $tm[4]+1, $tm[3]);
+my $lasttime;
 while(1) {
 	$pos -= 4096;
 	$pos = 0 if ($pos < 0);
@@ -994,10 +995,20 @@ while(1) {
 	last if ($pos == 0);
 	my $dummy = <LOGFILE>;	# Skip partial line
 	my $line = <LOGFILE>;
-	$line =~ /^((\d+)\-(\d+)\-(\d+))/ || next;
-	if ($1 ne $wantday) {
-		# Found a line for another day
-		last;
+	if ($line =~ /^((\d+)\-(\d+)\-(\d+))/) {
+		# Format with the date in it
+		if ($1 ne $wantday) {
+			# Found a line for another day
+			last;
+			}
+		}
+	elsif ($line =~ /^\[((\d+):(\d+):(\d+))\]/) {
+		# Format with the time only
+		if ($lasttime && ($1 cmp $lasttime) > 0) {
+			# Time has gone forwards, meaning its a new day
+			last;
+			}
+		$lasttime = $1;
 		}
 	}
 
