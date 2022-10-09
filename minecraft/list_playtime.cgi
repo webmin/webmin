@@ -109,11 +109,11 @@ print &ui_table_row($text{'playtime_users'},
 		        $text{'playtime_all'}, $text{'playtime_sel'}));
 
 # Days of the week
-my @days = split(/\s+/, $config{'playtime_days'});
-@days = (0 .. 6) if (!@days);
+my @wdays = split(/\s+/, $config{'playtime_days'});
+@wdays = (0 .. 6) if (!@wdays);
 print &ui_table_row($text{'playtime_days'},
 	join(" ", map { &ui_checkbox("days", $_, $text{'day_'.$_},
-				     &indexof($_, @days) >= 0) } (0 .. 6))); 
+				     &indexof($_, @wdays) >= 0) } (0 .. 6))); 
 
 # For connections from IPs
 print &ui_table_row($text{'playtime_ips'},
