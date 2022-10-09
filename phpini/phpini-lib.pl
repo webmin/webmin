@@ -5,6 +5,12 @@ use WebminCore;
 &init_config();
 %access = &get_module_acl();
 
+# Fix language strings that refer to MySQL
+if (&foreign_check("mysql")) {
+	&foreign_require("mysql");
+	&mysql::fix_mysql_text(\%text);
+	}
+
 # get_config_fmt(file)
 # Returns a format code for php.ini or FPM config files
 sub get_config_fmt

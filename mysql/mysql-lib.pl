@@ -77,11 +77,16 @@ EOF
 }
 
 # Fix text if we're running MariaDB
+sub fix_mysql_text
+{
+my ($text) = @_;
 if ($mysql_version =~ /mariadb/i) {
-	foreach my $t (keys %text) {
-		$text{$t} =~ s/MySQL/MariaDB/g;
+	foreach my $t (keys %$text) {
+		$text->{$t} =~ s/MySQL/MariaDB/g;
 		}
 	}
+}
+&fix_mysql_text(\%text);
 
 if (&compare_version_numbers($mysql_version, "5.5") >= 0) {
 	@mysql_set_variables = ( "key_buffer_size", "sort_buffer_size",
