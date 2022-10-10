@@ -491,7 +491,7 @@ else {
 		$host = &get_system_hostname();
 		$cert = &tempname();
 		$key = &tempname();
-		open(SSL, "| openssl req -newkey rsa:2048 -x509 -nodes -out $cert -keyout $key -days 1825 -sha256 -subj '/CN=$host/C=US/L=Santa Clara' -addext subjectAltName=DNS:$host,DNS:localhost >/dev/null 2>&1");
+		open(SSL, "| openssl req -newkey rsa:2048 -x509 -nodes -out $cert -keyout $key -days 1825 -sha256 -subj '/CN=$host/C=US/L=Santa Clara' -addext subjectAltName=DNS:$host,DNS:localhost -addext extendedKeyUsage=serverAuth >/dev/null 2>&1");
 		print SSL ".\n";
 		print SSL ".\n";
 		print SSL ".\n";

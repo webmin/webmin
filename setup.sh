@@ -599,7 +599,7 @@ else
 	openssl version >/dev/null 2>&1
 	if [ "$?" = "0" ]; then
 		# We can generate a new SSL key for this host
-		openssl req -newkey rsa:2048 -x509 -nodes -out $tempdir/cert -keyout $tempdir/key -days 1825 -sha256 -subj "/CN=$host/C=US/L=Santa Clara" -addext subjectAltName=DNS:$host,DNS:localhost >/dev/null 2>&1 <<EOF
+		openssl req -newkey rsa:2048 -x509 -nodes -out $tempdir/cert -keyout $tempdir/key -days 1825 -sha256 -subj "/CN=$host/C=US/L=Santa Clara" -addext subjectAltName=DNS:$host,DNS:localhost -addext extendedKeyUsage=serverAuth >/dev/null 2>&1 <<EOF
 .
 .
 .
