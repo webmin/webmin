@@ -491,11 +491,7 @@ else {
 		$host = &get_system_hostname();
 		$cert = &tempname();
 		$key = &tempname();
-		$san = &tempname();
-		open(SAN, ">$san");
-		print SAN "subjectAltName=DNS:$host,DNS:localhost\n";
-		close(SAN);
-		open(SSL, "| openssl req -newkey rsa:2048 -x509 -nodes -out $cert -keyout $key -days 1825 -sha256 -extfile $san >/dev/null 2>&1");
+		open(SSL, "| openssl req -newkey rsa:2048 -x509 -nodes -out $cert -keyout $key -days 1825 -sha256 -subj '/CN=$host/C=US/L=Santa Clara' -addext 'authorityKeyIdentifier=keyid,issuer' -addext 'basicConstraints=CA:FALSE' -addext keyUsage=digitalSignature,nonRepudiation,keyEncipherment,dataEncipherment -addext subjectAltName=DNS:$host,DNS:localhost >/dev/null 2>&1");
 		print SSL ".\n";
 		print SSL ".\n";
 		print SSL ".\n";
@@ -518,7 +514,7 @@ else {
 			close(KEYIN);
 			close(OUT);
 			}
-		unlink($cert, $key, $san);
+		unlink($cert, $key);
 		}
 	if (!-r $kfile) {
 		# Fall back to the built-in key

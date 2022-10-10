@@ -599,8 +599,7 @@ else
 	openssl version >/dev/null 2>&1
 	if [ "$?" = "0" ]; then
 		# We can generate a new SSL key for this host
-		echo "subjectAltName=DNS:$host,DNS:localhost" >$tempdir/san.txt
-		openssl req -newkey rsa:2048 -x509 -nodes -out $tempdir/cert -keyout $tempdir/key -days 1825 -sha256 -extfile $tempdir/san.txt >/dev/null 2>&1 <<EOF
+		openssl req -newkey rsa:2048 -x509 -nodes -out $tempdir/cert -keyout $tempdir/key -days 1825 -sha256 -subj "/CN=$host/C=US/L=Santa Clara" -addext 'authorityKeyIdentifier=keyid,issuer' -addext 'basicConstraints=CA:FALSE' -addext keyUsage=digitalSignature,nonRepudiation,keyEncipherment,dataEncipherment -addext subjectAltName=DNS:$host,DNS:localhost >/dev/null 2>&1 <<EOF
 .
 .
 .
@@ -612,7 +611,7 @@ EOF
 		if [ "$?" = "0" ]; then
 			cat $tempdir/cert $tempdir/key >$kfile
 		fi
-		rm -f $tempdir/cert $tempdir/key $tempdir/san.txt
+		rm -f $tempdir/cert $tempdir/key
 	fi
 	if [ ! -r $kfile ]; then
 		# Fall back to the built-in key
