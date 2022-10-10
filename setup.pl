@@ -491,7 +491,11 @@ else {
 		$host = &get_system_hostname();
 		$cert = &tempname();
 		$key = &tempname();
-		open(SSL, "| openssl req -newkey rsa:2048 -x509 -nodes -out $cert -keyout $key -days 1825 -sha256 >/dev/null 2>&1");
+		$san = &tempname();
+		open(SAN, ">$san");
+		print SAN "subjectAltName=DNS:$host,DNS:localhost\n";
+		close(SAN);
+		open(SSL, "| openssl req -newkey rsa:2048 -x509 -nodes -out $cert -keyout $key -days 1825 -sha256 -extfile $san >/dev/null 2>&1");
 		print SSL ".\n";
 		print SSL ".\n";
 		print SSL ".\n";
@@ -514,7 +518,7 @@ else {
 			close(KEYIN);
 			close(OUT);
 			}
-		unlink($cert, $key);
+		unlink($cert, $key, $san);
 		}
 	if (!-r $kfile) {
 		# Fall back to the built-in key
