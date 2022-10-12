@@ -83,19 +83,6 @@ session_epath=Director lipsă sau nevalid pentru fișierele de sesiune
 session_elife=Durata de viață a cookie-ului lipsă sau nevalidă
 session_emaxlife=Durata de viață maximă lipsă sau nevalidă
 
-safe_title=Opțiuni mod sigur
-safe_header=Opțiuni în modul de acces sigur la fișiere
-safe_on=Activați modul sigur?
-safe_gid=Trebuie să se potrivească doar ID-urile de grup?
-safe_include=Director permis pentru fișierele incluse
-safe_exec=Director permis pentru programe executate
-safe_none=Oriunde
-safe_basedir=Limitați operațiile de fișiere la director
-safe_err=Nu a reușit să salvați opțiunile de mod sigur
-safe_einclude=Directorul permis sau nevalid este permis pentru fișierele incluse
-safe_eexec=Directorul permis sau nevalid este permis pentru programele executate
-safe_ebasedir=Director lipsă sau nevalid pentru operațiunile cu fișiere
-
 limits_title=Limitele resurselor
 limits_header=Opțiuni limită de memorie și transfer
 limits_mem=Alocare maximă a memoriei

@@ -80,19 +80,6 @@ session_epath=Répertoire manquant ou non valide pour les fichiers de session
 session_elife=Durée de vie des cookies manquante ou invalide
 session_emaxlife=Durée de vie maximale de session manquante ou invalide
 
-safe_title=Options du mode sans échec
-safe_header=Options du mode d'accès sécurisé aux fichiers
-safe_on=Activer le mode sans échec?
-safe_gid=Ne nécessite que les identifiants de groupe pour correspondre?
-safe_include=Répertoire autorisé pour les fichiers inclus
-safe_exec=Répertoire autorisé pour les programmes exécutés
-safe_none=Nulle part
-safe_basedir=Limiter les opérations sur les fichiers au répertoire
-safe_err=Échec de l'enregistrement des options du mode sans échec
-safe_einclude=Répertoire autorisé manquant ou non valide pour les fichiers inclus
-safe_eexec=Répertoire autorisé manquant ou invalide pour les programmes exécutés
-safe_ebasedir=Répertoire manquant ou non valide pour les opérations sur les fichiers
-
 limits_title=Limites des ressources
 limits_header=Options de mémoire et de limite de transfert
 limits_mem=Allocation maximale de mémoire

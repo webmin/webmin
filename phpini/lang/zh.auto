@@ -83,19 +83,6 @@ session_epath=会话文件目录丢失或无效
 session_elife=Cookie生命周期丢失或无效
 session_emaxlife=最大会话生存期丢失或无效
 
-safe_title=安全模式选项
-safe_header=安全文件访问模式选项
-safe_on=启用安全模式？
-safe_gid=仅要求组ID匹配？
-safe_include=包含文件的允许目录
-safe_exec=允许目录执行程序
-safe_none=任何地方
-safe_basedir=将文件操作限制为目录
-safe_err=无法保存安全模式选项
-safe_einclude=包含文件的目录丢失或无效
-safe_eexec=所执行程序的目录缺少或无效
-safe_ebasedir=文件操作目录丢失或无效
-
 limits_title=资源限制
 limits_header=内存和传输限制选项
 limits_mem=最大内存分配

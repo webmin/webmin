@@ -62,18 +62,6 @@ session_epath=Hiányzó vagy érvénytelen könyvtár a munkamenet fájlokhoz
 session_elife=Hiányzó vagy érvénytelen süti élettartama
 session_emaxlife=Hiányzik vagy érvénytelen a munkamenet maximális élettartama
 
-safe_header=Biztonságos fájlhozzáférési mód opciók
-safe_on=Engedélyezi a biztonságos módot?
-safe_gid=Csak a csoport azonosítókat kell egyeznie?
-safe_include=Megengedett könyvtár a mellékelt fájlok számára
-safe_exec=A végrehajtott programok engedélyezett könyvtára
-safe_none=Bárhol
-safe_basedir=Korlátozza a fájlműveleteket a könyvtárba
-safe_err=A biztonságos mód opcióinak mentése nem sikerült
-safe_einclude=Hiányzik vagy érvénytelen engedélyezett könyvtár a mellékelt fájlokhoz
-safe_eexec=Hiányzik vagy érvénytelen engedélyezett könyvtár a végrehajtott programokhoz
-safe_ebasedir=Hiányzó vagy érvénytelen könyvtár a fájlműveletekhez
-
 limits_header=Memória és átviteli korlátozási lehetőségek
 limits_mem=A memória maximális elosztása
 limits_post=A HTTP POST maximális mérete

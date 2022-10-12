@@ -83,19 +83,6 @@ session_epath=Nedostaje ili nije važeći direktorij za datoteke sa sesijama
 session_elife=Nedostaje ili nije valjan vijek kolačića
 session_emaxlife=Manjkajući ili nevažeći maksimalni vijek trajanja sesije
 
-safe_title=Opcije sigurnog načina rada
-safe_header=Opcije načina sigurnog pristupa datoteci
-safe_on=Želite li omogućiti siguran način rada?
-safe_gid=Da se podudaraju samo ID-ovi grupe?
-safe_include=Dopušteni imenik za uključene datoteke
-safe_exec=Dopušteni direktorij za izvršene programe
-safe_none=bilo kuda
-safe_basedir=Ograničite datoteke u direktoriju
-safe_err=Spremanje opcija sigurnog načina nije uspjelo
-safe_einclude=Nedostaje ili nije važeći dopušteni direktorij za uključene datoteke
-safe_eexec=Nedostaje ili je nevažeća dopuštena mapa za izvršene programe
-safe_ebasedir=Nedostaje ili nije važeći direktorij za rad s datotekama
-
 limits_title=Ograničenja resursa
 limits_header=Opcije memorije i ograničenja prijenosa
 limits_mem=Maksimalna dodjela memorije

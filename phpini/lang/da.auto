@@ -83,19 +83,6 @@ session_epath=Manglende eller ugyldig mappe til sessionfiler
 session_elife=Manglende eller ugyldig cookie-levetid
 session_emaxlife=Manglende eller ugyldig maksimal sessionens levetid
 
-safe_title=Valg af sikker tilstand
-safe_header=Indstillinger for sikker filtilgangstilstand
-safe_on=Aktivér sikker tilstand?
-safe_gid=Kræver du kun gruppe-id'er for at matche?
-safe_include=Tilladt bibliotek til inkluderede filer
-safe_exec=Tilladt bibliotek til udførte programmer
-safe_none=Overalt
-safe_basedir=Begræns filoperationer til katalog
-safe_err=Kunne ikke gemme sikkerhedsindstillinger
-safe_einclude=Manglende eller ugyldig tilladt mappe til inkluderede filer
-safe_eexec=Manglende eller ugyldig tilladt mappe til udførte programmer
-safe_ebasedir=Manglende eller ugyldig mappe til filhandlinger
-
 limits_title=Ressourcegrænser
 limits_header=Indstillinger for hukommelse og overførselsgrænse
 limits_mem=Maksimal hukommelsestildeling

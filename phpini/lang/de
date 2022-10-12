@@ -80,19 +80,6 @@ session_epath=Missing or invalid directory for session files
 session_elife=Fehlende oder ungültige Cookie Lebensdauer
 session_emaxlife=Fehlende oder ungültige maximale Session Lebensdauer
 
-safe_title=Optionen des sicheren Modus
-safe_header=Sicherer Dateizugriff-Modus-Optionen
-safe_on=Aktiviere sicheren Modus?
-safe_gid=Benötige nur Gruppen-IPs für Übereinstimmungen?
-safe_include=Erlaube Verzeichnis für included Dateien
-safe_exec=Erlaubtes Verzeichnis für ausführbare Programme
-safe_none=Anywhere
-safe_basedir=Limitiere Dateioperationen in Verzeichnis
-safe_err=Fehler abgesicherten Modus Optionen zu speichern
-safe_einclude=Missing or invalid allowed directory for included files
-safe_eexec=Fehlendes oder ungültiges erlaubte Verzeichnis für auszuführende Programme
-safe_ebasedir=Fehlendes oder ungültiges Verzeichnis für Datei-Operationen
-
 limits_title=Ressourcenlimits
 limits_header=Speicher und Übertragungslimit Optionen
 limits_mem=Maximale Speicher Allokation

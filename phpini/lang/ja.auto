@@ -83,19 +83,6 @@ session_epath=セッションファイルのディレクトリが見つからな
 session_elife=Cookieの有効期間がないか、無効です
 session_emaxlife=最大セッション存続期間がないか、無効です
 
-safe_title=セーフモードオプション
-safe_header=安全なファイルアクセスモードオプション
-safe_on=セーフモードを有効にしますか？
-safe_gid=グループIDの一致のみが必要ですか？
-safe_include=含まれるファイルの許可されたディレクトリ
-safe_exec=実行されたプログラムの許可ディレクトリ
-safe_none=どこでも
-safe_basedir=ファイル操作をディレクトリに制限する
-safe_err=セーフモードオプションを保存できませんでした
-safe_einclude=インクルードファイルの許可されたディレクトリが見つからないか無効です
-safe_eexec=実行されたプログラムの許可されたディレクトリがないか、無効です
-safe_ebasedir=ファイル操作用のディレクトリが見つからないか無効です
-
 limits_title=リソース制限
 limits_header=メモリおよび転送制限オプション
 limits_mem=最大メモリ割り当て

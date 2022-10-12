@@ -83,19 +83,6 @@ session_epath=Manjkajoči ali neveljaven imenik za datoteke seje
 session_elife=Manjkajoča ali neveljavna življenjska doba piškotka
 session_emaxlife=Najmanjša ali neveljavna največja življenjska doba seje
 
-safe_title=Možnosti varnega načina
-safe_header=Možnosti varnega dostopa do datotek
-safe_on=Želite omogočiti varen način?
-safe_gid=Ali se zahtevajo samo ID-ji skupine?
-safe_include=Dovoljen imenik za vključene datoteke
-safe_exec=Dovoljen imenik za izvedene programe
-safe_none=Kjerkoli
-safe_basedir=Omejite datoteke v imeniku
-safe_err=Možnosti varnega načina ni bilo mogoče shraniti
-safe_einclude=Manjkajoči ali neveljaven dovoljeni imenik za vključene datoteke
-safe_eexec=Manjkajoči ali neveljaven dovoljeni imenik za izvedene programe
-safe_ebasedir=Manjkajoči ali neveljaven imenik za operacije datotek
-
 limits_title=Omejitve virov
 limits_header=Možnosti omejitve pomnilnika in prenosa
 limits_mem=Največja razporeditev pomnilnika

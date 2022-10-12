@@ -27,8 +27,6 @@ session_title=Session beállítások
 session_files=Fájlok
 session_forever=Örökké
 
-safe_title=Csökkentett mód beállításai
-
 limits_title=Erőforrások korlátozása
 
 errors_title=Hibanaplózás

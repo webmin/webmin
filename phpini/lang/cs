@@ -77,19 +77,6 @@ session_epath=Chybějící nebo neplatný adresář pri soubory relací
 session_elife=Chybějící nebo neplatný lifetime pro cookie
 session_emaxlife=Chybějící nebo neplatný maximální lifetime pro cookie
 
-safe_title=Volby pro zabezpečený mód
-safe_header=Volby pro mód zabezpečeného přístupu k souboru
-safe_on=Povolit zabezpečený mód?
-safe_gid=Pouze pro ty ID skupin, které vyhovují?
-safe_include=Přístupný adresář pro vkládání souborů
-safe_exec=Přístupný adresář pro spouštění programů
-safe_none=Kdekoliv
-safe_basedir=Limitovat operace se soubory pro adresář
-safe_err=Chyba při ukládání voleb zabezpečného módu
-safe_einclude=Chybějící nebo nepovolený přístup do adresáře pro vkládání souborů
-safe_eexec=Chybějící nebo nepovolený přístup do adresáře pro spouštění programů
-safe_ebasedir=Chybějící nebo neplatný adresář pro operace se soubory
-
 limits_title=Limity zdroje
 limits_header=Volby pro omezení paměti a přenosu
 limits_mem=Maximální velikost alokované paměti

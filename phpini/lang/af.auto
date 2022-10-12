@@ -83,19 +83,6 @@ session_epath=Ontbrekende of ongeldige gids vir sessielêers
 session_elife=Kookleeftyd ontbreek of ongeldig
 session_emaxlife=Maksimum leeftyd van die sessie ontbreek of ongeldig
 
-safe_title=Veilige modus-opsies
-safe_header=Opsies vir veilige lêertoegangsmodus
-safe_on=Aktiveer die veilige modus?
-safe_gid=Vereis slegs groep-ID's om te pas?
-safe_include=Toegelaat gids vir ingeslote lêers
-safe_exec=Toegestane gids vir uitgevoerde programme
-safe_none=oral
-safe_basedir=Beperk lêerbewerkings tot gids
-safe_err=Kon nie die veilige modus opslaan nie
-safe_einclude=Gids vir ontbrekende lêers ontbreek of ongeldig
-safe_eexec=Gids vir ontbrekende programme ontbreek of ongeldig
-safe_ebasedir=Ontbrekende of ongeldige gids vir lêerbewerkings
-
 limits_title=Hulpbronlimiete
 limits_header=Opsies vir geheue en oordraglimiete
 limits_mem=Maksimum toekenning van geheue

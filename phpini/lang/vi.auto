@@ -83,19 +83,6 @@ session_epath=Thư mục bị thiếu hoặc không hợp lệ cho các tệp ph
 session_elife=Tuổi thọ cookie bị thiếu hoặc không hợp lệ
 session_emaxlife=Thiếu phiên tối đa hoặc không hợp lệ trọn đời
 
-safe_title=Tùy chọn chế độ an toàn
-safe_header=Tùy chọn chế độ truy cập tệp an toàn
-safe_on=Cho phép chế độ an toàn?
-safe_gid=Chỉ yêu cầu ID nhóm để khớp?
-safe_include=Thư mục được phép cho các tập tin được bao gồm
-safe_exec=Thư mục được phép cho các chương trình đã thực hiện
-safe_none=Bất cứ nơi nào
-safe_basedir=Giới hạn hoạt động tập tin vào thư mục
-safe_err=Không thể lưu các tùy chọn chế độ an toàn
-safe_einclude=Thư mục bị thiếu hoặc không hợp lệ cho các tệp được bao gồm
-safe_eexec=Thư mục bị thiếu hoặc không hợp lệ cho các chương trình đã thực hiện
-safe_ebasedir=Thư mục bị thiếu hoặc không hợp lệ cho các hoạt động tập tin
-
 limits_title=Giới hạn tài nguyên
 limits_header=Tùy chọn giới hạn bộ nhớ và chuyển
 limits_mem=Cấp phát bộ nhớ tối đa
