@@ -491,11 +491,8 @@ else {
 		$host = &get_system_hostname();
 		$cert = &tempname();
 		$key = &tempname();
-		$san = &tempname();
-		open(SAN, ">$san");
-		print SAN "subjectAltName=DNS:$host,DNS:localhost\n";
-		close(SAN);
-		open(SSL, "| openssl req -newkey rsa:2048 -x509 -nodes -out $cert -keyout $key -days 1825 -sha256 -extfile $san >/dev/null 2>&1");
+		$addtextsup = &get_openssl_version() >= 1.1 ? "-addext subjectAltName=DNS:$host,DNS:localhost -addext extendedKeyUsage=serverAuth" : "";
+		open(SSL, "| openssl req -newkey rsa:2048 -x509 -nodes -out $cert -keyout $key -days 1825 -sha256 -subj '/CN=$host/C=US/L=Santa Clara' $addtextsup >/dev/null 2>&1");
 		print SSL ".\n";
 		print SSL ".\n";
 		print SSL ".\n";
@@ -518,7 +515,7 @@ else {
 			close(KEYIN);
 			close(OUT);
 			}
-		unlink($cert, $key, $san);
+		unlink($cert, $key);
 		}
 	if (!-r $kfile) {
 		# Fall back to the built-in key
@@ -1027,4 +1024,13 @@ foreach my $folder (@folders) {
         }
     }
 return -d $dir;
+}
+
+sub get_openssl_version
+{
+my $out = &backquote_command("openssl version 2>/dev/null");
+if ($out =~ /OpenSSL\s+(\d\.\d)/) {
+	return $1;
+	}
+return 0;
 }
