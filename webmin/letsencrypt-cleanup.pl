@@ -27,6 +27,7 @@ if ($zone) {
 	# Use BIND module API calls
 	$zone->{'file'} || die "Zone $dname does not have a records file";
 	&lock_file(&bind8::make_chroot(&bind8::absolute_path($zone->{'file'})));
+	&bind8::before_editing($zone);
 	$recs = [ &bind8::read_zone_file($zone->{'file'}, $zname) ];
 	$file = $zone->{'file'};
 	$wapi = 0;
@@ -34,6 +35,7 @@ if ($zone) {
 elsif ($d) {
 	# Use Virtualmin API calls
 	&virtual_server::obtain_lock_dns($d);
+	&pre_records_change($d);
 	($recs, $file) = &virtual_server::get_domain_dns_records_and_file($d);
 	$wapi = 1;
 	}
@@ -57,6 +59,7 @@ if (!$wapi) {
 	# Apply using BIND API calls
 	&bind8::sign_dnssec_zone_if_key($zone, $recs);
 	&bind8::bump_soa_record($file, $recs);
+	&bind8::after_editing($zone);
 	&unlock_file(&bind8::make_chroot(&bind8::absolute_path($file)));
 	&bind8::restart_zone($zone->{'name'}, $zone->{'view'});
 	}
