@@ -203,15 +203,35 @@ else {
 		$quota = $in{'quota'};
 		}
 	
-	#load main user group
-	if ($in{'gid'} =~ /^\d+$/) {
-		$gid = $in{'gid'};
+	# Validate new group
+	if ($in{'gidmode'} == 0) {
+		# An existing group
+		if ($in{'gid'} =~ /^\d+$/) {
+			$gid = $in{'gid'};
+			}
+		else {
+			$gid = &all_getgrnam($in{'gid'});
+			defined($gid) ||
+				&error(&text('usave_egid', $in{'gid'}));
+			}
+		$grp = &all_getgrgid($gid);
 		}
 	else {
-		$gid = &all_getgrnam($in{'gid'});
-		defined($gid) || &error(&text('usave_egid', $in{'gid'}));
+		# Creating a new group
+		if ($in{'gidmode'} == 2) {
+			# Same name as the user
+			$grp = $in{'user'};
+			}
+		else {
+			# Group name was entered
+			$in{'newgid'} =~ /^[^: \t]+$/ ||
+				&error(&text('gsave_ebadname', $in{'newgid'}));
+			$grp = $in{'newgid'};
+			}
+		# Check for a clash
+		&check_group_used($ldap, $grp) &&
+			&error(&text('usave_einuseg', $grp));
 		}
-	$grp = &all_getgrgid($gid);
 
 	# Compute and validate home directory
 	if ($access{'autohome'}) {
@@ -313,6 +333,26 @@ else {
 			chown($uid, $gid, $home) ||
 				&error(&text('usave_echown', $!));
 			&unlock_file($home);
+			}
+
+		# Create a new group
+		if ($in{'gidmode'}) {
+			my $base = &get_group_base();
+			my $newdn = "cn=$grp,$base";
+			my @classes = ( &def_group_obj_class() );
+			push(@classes, split(/\s+/, $config{'gother_class'}));
+			$gid = $mconfig{'base_gid'};
+			while(&check_gid_used($ldap, $gid)) {
+				$gid++;
+				}
+			$rv = $ldap->add($newdn, attr =>
+				 [ "cn" => $group,
+				   "gidNumber" => $gid,
+				   @props,
+				   "objectClass" => \@classes ] );
+			if ($rv->code) {
+				&error(&text('gsave_eadd', $rv->error));
+				}
 			}
 
 		# Get configured properties for new users

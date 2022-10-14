@@ -302,9 +302,22 @@ if (&in_schema($schema, "sambaPwdLastSet")) {
 print &ui_table_start($text{'uedit_gmem'}, "width=100%", 4, \@tds);
 
 # Primary group
-print &ui_table_row($text{'group'},
-	&ui_textbox("gid", $grp || $gid, 13).
-	" ".&group_chooser_button("gid"), 3);
+if ($in{'new'}) {
+	print &ui_table_row($text{'group'},
+		&ui_radio_table("gidmode",
+			$mconfig{'new_user_group'} ? 2 : $grp ? 1 : 0,
+			[ [ 2, $text{'uedit_samg'} ],
+			  [ 1, $text{'uedit_newg'},
+			       &ui_textbox("newgid", undef, 20) ],
+			  [ 0, $text{'uedit_oldg'},
+				&ui_textbox("gid", $grp || $gid, 20).
+				" ".&group_chooser_button("gid") ] ]), 3);
+	}
+else {
+	print &ui_table_row($text{'group'},
+		&ui_textbox("gid", $grp || $gid, 20)." ".
+		&group_chooser_button("gid"), 3);
+	}
 
 if ($config{'secmode'} != 1) {
 	# Work out which secondary groups the user is in
