@@ -385,4 +385,6 @@ file_truncated_message=fetched $1 of data, truncated $2 out of $3
 file_truncated_message_head=fetched beginning $1 of data, truncated $2 out of $3
 file_truncated_message_tail=fetched ending $1 of data, truncated $2 out of $3
 
+defcert_error=Default $1 bundled SSL certificate is being used. It is highly advised to update default <tt>$2</tt> certificate before proceeding with login.
+
 __norefs=1
