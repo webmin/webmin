@@ -65,7 +65,7 @@ if ($config{'ipv6'}) {
 	}
 
 # Check if the syslog module is available to log hacking attempts
-if ($config{'syslog'} && !$config{'inetd'}) {
+if ($config{'syslog'}) {
 	eval "use Sys::Syslog qw(:DEFAULT setlogsock)";
 	if (!$@) {
 		$use_syslog = 1;
@@ -129,8 +129,6 @@ if (open(PIDFILE, $config{'pidfile'})) {
 	}
 
 $sidname = $config{'sidname'};
-die "Session authentication cannot be used in inetd mode"
-	if ($config{'inetd'} && $config{'session'});
 
 # check if the PAM module is available to authenticate
 if ($config{'assume_pam'}) {
@@ -352,33 +350,31 @@ if ($config{'extauth'}) {
 	}
 
 # Pre-load any libraries
-if (!$config{'inetd'}) {
-	foreach $pl (split(/\s+/, $config{'preload'})) {
-		($pkg, $lib) = split(/=/, $pl);
-		$pkg =~ s/[^A-Za-z0-9]/_/g;
-		eval "package $pkg; do '$config{'root'}/$lib'";
-		if ($@) {
-			print STDERR "Failed to pre-load $lib in $pkg : $@\n";
-			}
+foreach $pl (split(/\s+/, $config{'preload'})) {
+	($pkg, $lib) = split(/=/, $pl);
+	$pkg =~ s/[^A-Za-z0-9]/_/g;
+	eval "package $pkg; do '$config{'root'}/$lib'";
+	if ($@) {
+		print STDERR "Failed to pre-load $lib in $pkg : $@\n";
 		}
-	foreach $pl (split(/\s+/, $config{'premodules'})) {
-		if ($pl =~ /\//) {
-			($dir, $mod) = split(/\//, $pl);
-			}
-		else {
-			($dir, $mod) = (undef, $pl);
-			}
-		push(@INC, "$config{'root'}/$dir");
-		eval "package $mod; use $mod ()";
-		if ($@) {
-			print STDERR "Failed to pre-load $mod : $@\n";
-			}
+	}
+foreach $pl (split(/\s+/, $config{'premodules'})) {
+	if ($pl =~ /\//) {
+		($dir, $mod) = split(/\//, $pl);
 		}
-	foreach $mod (split(/\s+/, $config{'preuse'})) {
-		eval "use $mod;";
-		if ($@) {
-			print STDERR "Failed to pre-load $mod : $@\n";
-			}
+	else {
+		($dir, $mod) = (undef, $pl);
+		}
+	push(@INC, "$config{'root'}/$dir");
+	eval "package $mod; use $mod ()";
+	if ($@) {
+		print STDERR "Failed to pre-load $mod : $@\n";
+		}
+	}
+foreach $mod (split(/\s+/, $config{'preuse'})) {
+	eval "use $mod;";
+	if ($@) {
+		print STDERR "Failed to pre-load $mod : $@\n";
 		}
 	}
 
@@ -405,71 +401,6 @@ if ($config{'debuglog'}) {
 unlink($config{'restartflag'}) if ($config{'restartflag'});
 unlink($config{'reloadflag'}) if ($config{'reloadflag'});
 unlink($config{'stopflag'}) if ($config{'stopflag'});
-
-if ($config{'inetd'}) {
-	# We are being run from inetd - go direct to handling the request
-	&redirect_stderr_to_log();
-	$SIG{'HUP'} = 'IGNORE';
-	$SIG{'TERM'} = 'DEFAULT';
-	$SIG{'PIPE'} = 'DEFAULT';
-	open(SOCK, "+>&STDIN");
-
-	# Check if it is time for the logfile to be cleared
-	if ($config{'logclear'}) {
-		local $write_logtime = 0;
-		local @st = stat("$config{'logfile'}.time");
-		if (@st) {
-			if ($st[9]+$config{'logtime'}*60*60 < time()){
-				# need to clear log
-				$write_logtime = 1;
-				unlink($config{'logfile'});
-				}
-			}
-		else { $write_logtime = 1; }
-		if ($write_logtime) {
-			open(LOGTIME, ">$config{'logfile'}.time");
-			print LOGTIME time(),"\n";
-			close(LOGTIME);
-			}
-		}
-
-	# Work out if IPv6 is being used locally
-	local $sn = getsockname(SOCK);
-	print DEBUG "sn=$sn\n";
-	print DEBUG "length=",length($sn),"\n";
-	$localipv6 = length($sn) > 16;
-	print DEBUG "localipv6=$localipv6\n";
-
-	# Initialize SSL for this connection
-	if ($use_ssl) {
-		$ssl_con = &ssl_connection_for_ip(SOCK, $localipv6);
-		$ssl_con || exit;
-		}
-
-	# Work out the hostname for this web server
-	$host = &get_socket_name(SOCK, $localipv6);
-	print DEBUG "host=$host\n";
-	$host || exit;
-	$port = $config{'port'};
-	$acptaddr = getpeername(SOCK);
-	print DEBUG "acptaddr=$acptaddr\n";
-	print DEBUG "length=",length($acptaddr),"\n";
-	$acptaddr || exit;
-
-	# Work out remote and local IPs
-	$ipv6 = length($acptaddr) > 16;
-	print DEBUG "ipv6=$ipv6\n";
-	(undef, $locala) = &get_socket_ip(SOCK, $localipv6);
-	print DEBUG "locala=$locala\n";
-	(undef, $peera, undef) = &get_address_ip($acptaddr, $ipv6);
-	print DEBUG "peera=$peera\n";
-
-	print DEBUG "main: Starting handle_request loop pid=$$\n";
-	while(&handle_request($peera, $locala, $ipv6)) { }
-	print DEBUG "main: Done handle_request loop pid=$$\n";
-	close(SOCK);
-	exit;
-	}
 
 # Build list of sockets to listen on
 @listening_on_ports = ();
@@ -1028,7 +959,7 @@ while(1) {
 		    (!@allow || &ip_match($fromip, $toip, @allow))) {
 			local $listenhost = &get_socket_name(LISTEN, 0);
 			send(LISTEN, "$listenhost:$config{'port'}:".
-				 ($use_ssl || $config{'inetd_ssl'} ? 1 : 0).":".
+				 ($use_ssl ? 1 : 0).":".
 				 ($config{'listenhost'} ?
 					&get_system_hostname() : ""),
 				 0, $from)
@@ -1549,8 +1480,7 @@ if (defined($header{'host'})) {
 	}
 
 # Create strings for use in redirects
-$ssl = $config{'redirect_ssl'} ne '' ? $config{'redirect_ssl'} :
-	$use_ssl || $config{'inetd_ssl'};
+$ssl = $config{'redirect_ssl'} ne '' ? $config{'redirect_ssl'} : $use_ssl;
 $redirport = $config{'redirect_port'} || $port;
 $redirport = $config{'redirect_port'}
 	if ($config{'redirect_host'});
@@ -1794,7 +1724,7 @@ if (!$validated && !$deny_authentication && !$config{'session'} &&
 			    "Password contains invalid characters");
 		}
 
-	if ($config{'passdelay'} && !$config{'inetd'} && $authuser) {
+	if ($config{'passdelay'} && $authuser) {
 		# check with main process for delay
 		print DEBUG "handle_request: about to ask for password delay\n";
 		print $PASSINw "delay $authuser $acptip $validated\n";
@@ -2497,7 +2427,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 		}
 	$ENV{"QUERY_STRING"} = $querystring;
 	$ENV{"MINISERV_CONFIG"} = $config_file;
-	$ENV{"HTTPS"} = $use_ssl || $config{'inetd_ssl'} ? "ON" : "";
+	$ENV{"HTTPS"} = $use_ssl ? "ON" : "";
 	$ENV{"SSL_HSTS"} = $config{"ssl_hsts"};
 	$ENV{"MINISERV_PID"} = $miniserv_main_pid;
 	$ENV{"SESSION_ID"} = $session_id if ($session_id);
