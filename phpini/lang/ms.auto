@@ -83,19 +83,6 @@ session_epath=Direktori yang hilang atau tidak sah untuk fail sesi
 session_elife=Kehidupan kuki yang hilang atau tidak sah
 session_emaxlife=Tempoh hayat sesi maksimum atau tidak sah
 
-safe_title=Pilihan Mod Selamat
-safe_header=Pilihan mod akses fail selamat
-safe_on=Dayakan mod selamat?
-safe_gid=Hanya memerlukan ID kumpulan untuk dipadankan?
-safe_include=Direktori yang dibenarkan untuk fail yang disertakan
-safe_exec=Direktori yang dibenarkan untuk program yang dilaksanakan
-safe_none=Di mana sahaja
-safe_basedir=Hadkan operasi fail ke direktori
-safe_err=Gagal menyimpan pilihan mod selamat
-safe_einclude=Direktori yang hilang atau tidak dibenarkan untuk fail yang disertakan
-safe_eexec=Direktori yang hilang atau tidak sah untuk program yang dilaksanakan
-safe_ebasedir=Direktori yang hilang atau tidak sah untuk operasi fail
-
 limits_title=Had Sumber
 limits_header=Pilihan had ingatan dan perpindahan
 limits_mem=Peruntukan memori maksima

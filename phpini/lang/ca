@@ -80,19 +80,6 @@ session_epath=Hi falta el directori dels fitxers de sessió o bé és invàlid
 session_elife=Hi falta el temps de vida de les galetes o bé és invàlid
 session_emaxlife=Hi falta el temps de vida màxim de la sessió o bé és invàlid
 
-safe_title=Opcions de Mode Segur
-safe_header=Opcions del mode d'accés segur de fitxers
-safe_on=Activa el mode segur
-safe_gid=Deman només que coincideixin els IDs de grup
-safe_include=Directori permès per als fitxers inclosos
-safe_exec=Directori permès per als programes executats
-safe_none=Qualsevol
-safe_basedir=Limita les operacions de fitxers al directori
-safe_err=No s'ha pogut desar les opcions del mode d'accés segur de fitxers
-safe_einclude=Hi falta el directori permès per als fitxers inclosos o bé és invàlid
-safe_eexec=Hi falta el directori permès per als programes executats o bé és invàlid
-safe_ebasedir=Hi falta el directori d'operacions de fitxers o bé és invàlid
-
 limits_title=Límits de Recursos
 limits_header=Opcions de limitació de memòria i transferències
 limits_mem=Allotjament màxim de memòria

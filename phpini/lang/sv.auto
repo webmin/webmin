@@ -83,19 +83,6 @@ session_epath=Saknad eller ogiltig katalog för sessionfiler
 session_elife=Saknad eller ogiltig cookie livstid
 session_emaxlife=Saknad eller ogiltig maximal sessionstid
 
-safe_title=Säkerhetsalternativ
-safe_header=Alternativ för säker filåtkomstläge
-safe_on=Aktivera säkert läge?
-safe_gid=Kräver du bara grupp-ID för att matcha?
-safe_include=Tillåten katalog för inkluderade filer
-safe_exec=Tillåten katalog för exekverade program
-safe_none=Var som helst
-safe_basedir=Begränsa filoperationerna till katalogen
-safe_err=Det gick inte att spara alternativ för säkert läge
-safe_einclude=Saknad eller ogiltig tillåten katalog för inkluderade filer
-safe_eexec=Saknad eller ogiltig tillåten katalog för exekverade program
-safe_ebasedir=Saknad eller ogiltig katalog för filoperationer
-
 limits_title=Resursgränser
 limits_header=Alternativ för minne och överföringsgräns
 limits_mem=Maximal allokering av minnet

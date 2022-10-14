@@ -83,19 +83,6 @@ session_epath=Puuttuva tai virheellinen istunto tiedostojen hakemisto
 session_elife=Puuttuva tai virheellinen evästeen käyttöikä
 session_emaxlife=Puuttuva tai virheellinen istunnon koko elinaika
 
-safe_title=Vikasietotilan asetukset
-safe_header=Turvalliset tiedostojen käyttötilan asetukset
-safe_on=Ota suojattu tila käyttöön?
-safe_gid=Vaaditaanko vain ryhmätunnusten yhteensopivuus?
-safe_include=Sallittu hakemisto mukana oleville tiedostoille
-safe_exec=Sallittu hakemisto suoritetuille ohjelmille
-safe_none=Missä tahansa
-safe_basedir=Rajoita tiedostotoiminnot hakemistoon
-safe_err=Vikasietotilan asetusten tallentaminen epäonnistui
-safe_einclude=Puuttuva tai virheellinen sallittu hakemisto mukana oleville tiedostoille
-safe_eexec=Puuttuva tai virheellinen sallittu hakemisto suoritetuille ohjelmille
-safe_ebasedir=Puuttuva tai virheellinen hakemisto tiedostotoiminnoista
-
 limits_title=Resurssien rajoitukset
 limits_header=Muisti- ja siirtorajan vaihtoehdot
 limits_mem=Suurin muistivaraus

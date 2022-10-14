@@ -75,19 +75,6 @@ session_epath=Brakujący lub nieprawidłowy katalog dla plików sesji
 session_elife=Brakujący lub błędny czas życia ciasteczka
 session_emaxlife=Brakujący lub nieprawidłowy maksymalny czas życia sesji
 
-safe_title=Opcje trybu bezpiecznego
-safe_header=Opcje trybu bezpiecznego dostępu pliku
-safe_on=Włączyć tryb bezpieczny?
-safe_gid=Wymaga tylko dopasowania ID grupy?
-safe_include=Dozwolony katalog dla dołączonych plików
-safe_exec=Dozwolony katalog dla wykonywanych programów
-safe_none=Gdziekolwiek
-safe_basedir=Ograniczenie operacji na plikach katalogu
-safe_err=Błąd zapisu opcji trybu bezpiecznego
-safe_einclude=Brakujący lub nieprawidłowy dozwolony katalog dołączonych plików
-safe_eexec=Brakujący lub nieprawidłowy katalog dla wykonywanych programów
-safe_ebasedir=Brakujące lub nieprawidłowe ograniczenie operacji na plikach katalogu
-
 limits_title=Ograniczenia zasobów
 limits_header=Opcje limitu pamięci i transferu
 limits_mem=Maksymalna alokacja pamięci

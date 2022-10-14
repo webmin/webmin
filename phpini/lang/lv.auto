@@ -83,19 +83,6 @@ session_epath=Trūkst vai nav derīgs sesiju failu direktorijs
 session_elife=Trūkst vai nav derīgs sīkfailu darbības laiks
 session_emaxlife=Trūkst vai nav derīgs sesijas ilgums
 
-safe_title=Drošā režīma opcijas
-safe_header=Drošas piekļuves failiem režīmi
-safe_on=Vai iespējot drošo režīmu?
-safe_gid=Nepieciešams, lai sakristu tikai grupas ID?
-safe_include=Atļautais iekļauto failu direktorijs
-safe_exec=Atļauts direktorijs izpildītajām programmām
-safe_none=Jebkurā vietā
-safe_basedir=Ierobežot failu operācijas direktorijā
-safe_err=Neizdevās saglabāt drošā režīma opcijas
-safe_einclude=Trūkst vai nav derīgs iekļauto failu direktorijs
-safe_eexec=Trūkst vai nav derīgs izpildīto programmu direktorijs
-safe_ebasedir=Trūkst vai nav derīgs failu operāciju katalogs
-
 limits_title=Resursu ierobežojumi
 limits_header=Atmiņas un pārsūtīšanas ierobežojuma iespējas
 limits_mem=Maksimālais atmiņas sadalījums

@@ -78,19 +78,6 @@ session_epath=Ontbrekende of ongeldige directory voor sessie files
 session_elife=Ontbrekende of ongeldige cookie levensduur
 session_emaxlife=Ontbrekende of ongeldige maximum sessie levensduur
 
-safe_title=Veilige Mode Opties
-safe_header=Opslaan van file toegang mode opties
-safe_on=Veilige mode aanzetten?
-safe_gid=Alleen groep ID's nodig om overeen te komen?
-safe_include=Toegestane directory voor inbegrepen files
-safe_exec=Toegestane directory voor uitvoerbare programma's
-safe_none=Overal
-safe_basedir=Limiteer file operaties naar directory's
-safe_err=Mislukt om veilige mode opties op te slaan
-safe_einclude=Ontbrekende of ongeldige toegestane directory voor inbegrepen files
-safe_eexec=Ontbrekende of ongeldige toegestane directory voor uitgevoerde programma's
-safe_ebasedir=Ontbrekende of ongeldige directory voor file operaties
-
 limits_title=Bron Limieten
 limits_header=Geheugen en verzend limiet opties
 limits_mem=Maximale geheugen toewijzing

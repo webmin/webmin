@@ -83,19 +83,6 @@ session_epath=Chýbajúci alebo neplatný adresár pre súbory relácie
 session_elife=Chýbajúca alebo neplatná životnosť súborov cookie
 session_emaxlife=Chýbajúca alebo neplatná maximálna životnosť relácie
 
-safe_title=Možnosti núdzového režimu
-safe_header=Možnosti režimu bezpečného prístupu k súboru
-safe_on=Povoliť bezpečný režim?
-safe_gid=Vyžadujú sa iba zhody ID skupín?
-safe_include=Povolený adresár pre zahrnuté súbory
-safe_exec=Povolený adresár pre spustené programy
-safe_none=kdekoľvek
-safe_basedir=Obmedzte operácie so súbormi na adresár
-safe_err=Možnosti núdzového režimu sa nepodarilo uložiť
-safe_einclude=Chýbajúci alebo neplatný povolený adresár pre zahrnuté súbory
-safe_eexec=Chýbajúci alebo neplatný povolený adresár pre spustené programy
-safe_ebasedir=Chýbajúci alebo neplatný adresár pre operácie so súbormi
-
 limits_title=Limity zdrojov
 limits_header=Možnosti obmedzenia pamäte a prenosu
 limits_mem=Maximálna alokácia pamäte

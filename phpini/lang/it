@@ -69,8 +69,6 @@ session_epath=Directory per i file di sessione mancante o non valida
 session_elife=Durata dei cookie mancante o non valida
 session_emaxlife=Durata massima della sessione mancante o non valida
 
-safe_title=Opzioni per la modalità sicura
-
 limits_title=Limiti alle risorse
 limits_upload=Dimensione massima dei file per l'invio
 limits_err=Salvataggio dei limiti alle risorse non riuscito

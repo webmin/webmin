@@ -47,6 +47,10 @@ if ($tconfig{'inframe'}) {
 	}
 
 print "<center>\n";
+if ($miniserv::defcert) {
+    print "<h3>",&text('defcert_error',
+    	ucfirst(&get_product_name()), $miniserv{'keyfile'}),"</h3><p></p>\n";
+	}
 if (defined($in{'failed'})) {
 	if ($in{'twofactor_msg'}) {
 		print "<h3>",&text('session_twofailed',

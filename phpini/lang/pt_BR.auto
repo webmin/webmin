@@ -83,19 +83,6 @@ session_epath=Diretório ausente ou inválido para arquivos de sessão
 session_elife=Duração do cookie ausente ou inválida
 session_emaxlife=Duração máxima da sessão ausente ou inválida
 
-safe_title=Opções do modo de segurança
-safe_header=Opções do modo de acesso seguro a arquivos
-safe_on=Ativar modo de segurança?
-safe_gid=Exigir apenas identificações de grupo para corresponder?
-safe_include=Diretório permitido para arquivos incluídos
-safe_exec=Diretório permitido para programas executados
-safe_none=Qualquer lugar
-safe_basedir=Limitar operações de arquivo ao diretório
-safe_err=Falha ao salvar as opções do modo de segurança
-safe_einclude=Diretório permitido ausente ou inválido para os arquivos incluídos
-safe_eexec=Diretório permitido ausente ou inválido para programas executados
-safe_ebasedir=Diretório ausente ou inválido para operações de arquivo
-
 limits_title=Limites de recursos
 limits_header=Opções de limite de memória e transferência
 limits_mem=Alocação máxima de memória

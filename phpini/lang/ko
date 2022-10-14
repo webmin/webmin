@@ -77,19 +77,6 @@ session_epath=세션 파일 저장 디렉토리가 설정되지 않았거나 올
 session_elife=쿠키 만료 시간이 설정되지 않았거나 올바르지 않습니다.
 session_emaxlife=최대 세션 만료 시간이 설정되지 않았거나 올바르지 않습니다.
 
-safe_title=안전 모드 옵션
-safe_header=안전모드 파일 접근 옵션
-safe_on=안전 모드 사용
-safe_gid=그룹 ID 일치
-safe_include=파일 include를 허가할 디렉토리
-safe_exec=프로그램 실행을 허가할 디렉토리
-safe_none=모든 곳
-safe_basedir=PHP가 실행될 디렉토리 제한
-safe_err=안전 모드 옵션 저장 실패
-safe_einclude=include 파일을 찾을 디렉토리가 설정되지 않았거나 올바르지 않습니다.
-safe_eexec=프로그램이 실행될 디렉토리가 설정이 되어 있지 않거나 올바르지 않습니다.
-safe_ebasedir=PHP가 실행될 디렉토리가 설정되지 않았거나 올바르지 않습니다.
-
 limits_title=리소스 제한
 limits_header=메모리/전송 제한 옵션
 limits_mem=최대 메모리 할당

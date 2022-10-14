@@ -535,7 +535,9 @@ if ($init_mode eq "upstart") {
 elsif ($init_mode eq "systemd") {
 	# Check systemd service status
 	my $unit = $name;
-	$unit .= ".service" if ($unit !~ /\.service$/);
+	$unit .= ".service"
+		if ($unit !~ /\.service$/ &&
+		    $unit !~ /\.timer$/);
 	my $out = &backquote_command("systemctl show ".
 					quotemeta($unit)." 2>&1");
 	if ($out =~ /UnitFileState=(\S+)/ &&
@@ -637,7 +639,9 @@ my $st = &action_status($action);
 return if ($st == 2);	# already exists and is enabled
 my ($daemon, %daemon);
 my $unit = $action;
-$unit .= ".service" if ($unit !~ /\.service$/);
+$unit .= ".service"
+	if ($unit !~ /\.service$/ &&
+	    $unit !~ /\.timer$/);
 
 if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$action" ||
 				-r "/etc/init/$action.conf")) {
@@ -1043,7 +1047,9 @@ my ($name) = @_;
 my $st = &action_status($_[0]);
 return if ($st == 0);	# does not exist
 my $unit = $_[0];
-$unit .= ".service" if ($unit !~ /\.service$/);
+$unit .= ".service"
+	if ($unit !~ /\.service$/ &&
+	    $unit !~ /\.timer$/);
 
 if ($init_mode eq "upstart") {
 	# Just use insserv to disable, and comment out start line in .conf file

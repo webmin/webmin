@@ -83,19 +83,6 @@ session_epath=Missing or invalid directory for session files
 session_elife=Missing or invalid cookie lifetime
 session_emaxlife=Missing or invalid maximum session lifetime
 
-safe_title=Safe Mode Options
-safe_header=Safe file access mode options
-safe_on=Enable safe mode?
-safe_gid=Only require group IDs to match?
-safe_include=Allowed directory for included files
-safe_exec=Allowed directory for executed programs
-safe_none=Anywhere
-safe_basedir=Limit file operations to directory
-safe_err=Failed to save safe mode options
-safe_einclude=Missing or invalid allowed directory for included files
-safe_eexec=Missing or invalid allowed directory for executed programs
-safe_ebasedir=Missing or invalid directory for file operations
-
 limits_title=Resource Limits
 limits_header=Memory and transfer limit options
 limits_mem=Maximum memory allocation

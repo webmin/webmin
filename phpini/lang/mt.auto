@@ -83,19 +83,6 @@ session_epath=Direttur nieqes jew invalidu għall-fajls tas-sessjoni
 session_elife=Cookie nieqes jew ħajja invalida
 session_emaxlife=Nieqes jew invalidu tul il-ħajja massima tas-sessjoni
 
-safe_title=Għażliet tal-Modalità Salv
-safe_header=Għażliet ta 'modalità ta' aċċess għal fajl sikur
-safe_on=Tippermetti modalità sikura?
-safe_gid=Jeħtieġu biss IDs tal-grupp biex jaqblu?
-safe_include=Direttorju permess għall-fajls inklużi
-safe_exec=Direttorju permess għal programmi esegwiti
-safe_none=Kullimkien
-safe_basedir=Limita l-operazzjonijiet tal-fajls għad-direttorju
-safe_err=Ma rnexxielux isalva l-għażliet tal-mod sigur
-safe_einclude=Direttorju permess nieqes jew invalidu għall-fajls inklużi
-safe_eexec=Direttorju permess nieqes jew invalidu għal programmi eżegwiti
-safe_ebasedir=Direttorju nieqes jew invalidu għal operazzjonijiet ta 'fajls
-
 limits_title=Limiti ta 'Riżorsi
 limits_header=Memorja u għażliet ta 'limitu tat-trasferiment
 limits_mem=Allokazzjoni massima tal-memorja

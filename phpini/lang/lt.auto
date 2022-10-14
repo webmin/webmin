@@ -83,19 +83,6 @@ session_epath=Trūksta arba netinkamas seansų failų katalogas
 session_elife=Trūksta arba netinkamas slapuko galiojimo laikas
 session_emaxlife=Trūksta arba netinkama maksimali sesijos trukmė
 
-safe_title=Saugaus režimo parinktys
-safe_header=Saugaus failų prieigos režimo parinktys
-safe_on=Įgalinti saugųjį režimą?
-safe_gid=Tik ar reikia, kad atitiktų grupės ID?
-safe_include=Leidžiamas įtrauktų failų katalogas
-safe_exec=Leidžiamas vykdytų programų katalogas
-safe_none=Bet kur
-safe_basedir=Apriboti failų operacijas aplanke
-safe_err=Nepavyko išsaugoti saugaus režimo parinkčių
-safe_einclude=Trūksta arba netinkamas leidžiamas įtrauktų failų katalogas
-safe_eexec=Trūksta arba netinkamas leidžiamas vykdomųjų programų katalogas
-safe_ebasedir=Trūksta arba netinkamas failo operacijų katalogas
-
 limits_title=Išteklių ribos
 limits_header=Atminties ir perdavimo apribojimų parinktys
 limits_mem=Maksimalus atminties paskirstymas

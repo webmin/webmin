@@ -80,19 +80,6 @@ session_epath=Manglende eller ugyldig katalog for sesjonsfiler
 session_elife=Manglende eller ugyldig levetid for informasjonskapsel
 session_emaxlife=Manglende eller ugyldig maks. levetid for sesjon
 
-safe_title=Innstillinger for sikker modus
-safe_header=Innstillinger for sikker fil-tilgangs modus
-safe_on=Ta i bruk sikker modus?
-safe_gid=Krev bare et gruppe IDer matcher?
-safe_include=Tillatt katalog for inkluderte filer
-safe_exec=Tillatt katalog for utførte programmer
-safe_none=Hvor som helst
-safe_basedir=Begrens filoperasjoner til katalog
-safe_err=Kunne ikke lagre innstillinger for sikker modus
-safe_einclude=Manglende eller ugyldig katalog for inkluderte filer
-safe_eexec=Manglende eller ugyldig katalog for utførte programmer
-safe_ebasedir=Manglende eller ugyldig katalog for filoperasjoner
-
 limits_title=Ressurs begrensinger
 limits_header=Innstillinger for minnebruk og overføring
 limits_mem=Maks. minnetildeling

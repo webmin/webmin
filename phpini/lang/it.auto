@@ -17,18 +17,6 @@ session_handler=Meccanismo di archiviazione della sessione
 session_redis=Redis
 session_memcache=Memcache D
 
-safe_header=Opzioni della modalità di accesso sicuro ai file
-safe_on=Abilitare la modalità provvisoria?
-safe_gid=Richiede solo che gli ID di gruppo corrispondano?
-safe_include=Directory consentita per i file inclusi
-safe_exec=Directory consentita per i programmi eseguiti
-safe_none=Dovunque
-safe_basedir=Limitare le operazioni sui file alla directory
-safe_err=Impossibile salvare le opzioni della modalità provvisoria
-safe_einclude=Directory consentita mancante o non valida per i file inclusi
-safe_eexec=Directory consentita mancante o non valida per i programmi eseguiti
-safe_ebasedir=Directory mancante o non valida per le operazioni sui file
-
 limits_header=Opzioni limite di memoria e trasferimento
 limits_mem=Allocazione massima della memoria
 limits_post=Dimensione HTTP POST massima

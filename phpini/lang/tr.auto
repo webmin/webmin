@@ -83,19 +83,6 @@ session_epath=Oturum dosyaları için eksik veya geçersiz dizin
 session_elife=Eksik veya geçersiz çerez ömrü
 session_emaxlife=Eksik veya geçersiz maksimum oturum ömrü
 
-safe_title=Güvenli Mod Seçenekleri
-safe_header=Güvenli dosya erişim modu seçenekleri
-safe_on=Güvenli mod etkinleştirilsin mi?
-safe_gid=Yalnızca grup kimliklerinin eşleşmesi mi gerekiyor?
-safe_include=Eklenen dosyalar için izin verilen dizin
-safe_exec=Yürütülen programlar için izin verilen dizin
-safe_none=Herhangi bir yer
-safe_basedir=Dosya işlemlerini dizine sınırla
-safe_err=Güvenli mod seçenekleri kaydedilemedi
-safe_einclude=Eklenen dosyalar için eksik veya geçersiz izin verilen dizin
-safe_eexec=Yürütülen programlar için eksik veya geçersiz izin verilen dizin
-safe_ebasedir=Dosya işlemleri için eksik veya geçersiz dizin
-
 limits_title=Kaynak Sınırları
 limits_header=Bellek ve aktarım sınırı seçenekleri
 limits_mem=Maksimum bellek ayırma
