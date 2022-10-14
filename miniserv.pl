@@ -2208,6 +2208,7 @@ if ($davpath) {
 # Check for a websockets request
 if (lc($header{'connection'}) eq 'upgrade' &&
     lc($header{'upgrade'}) eq 'websocket') {
+	print DEBUG "websockets request to $simple\n";
 	my ($ws) = grep { $_->{'path'} eq $simple } @websocket_paths;
 	if (!$ws) {
 		&http_error(400, "Unknown websocket path");
@@ -2920,6 +2921,23 @@ sub b64decode
         $res .= unpack("u", $len . $1 );
     }
     return $res;
+}
+
+# b64encode(string)
+# Encodes a string into base64 format
+sub b64encode
+{
+my ($str) = @_;
+my $res;
+pos($str) = 0;                          # ensure start at the beginning
+while($str =~ /(.{1,57})/gs) {
+	$res .= substr(pack('u57', $1), 1);
+	chop($res);
+	}
+$res =~ tr|\` -_|AA-Za-z0-9+/|;
+my $padding = (3 - length($str) % 3) % 3;
+$res =~ s/.{$padding}$/'=' x $padding/e if ($padding);
+return $res;
 }
 
 # ip_match(remoteip, localip, [match]+)
@@ -5654,7 +5672,8 @@ if (!$key) {
 	&http_error(500, "Missing Sec-Websocket-Key header");
 	return 0;
 	}
-my @protos = split(/\s*,\s*/, $header{'sec-websocket-protocols'});
+my @protos = split(/\s*,\s*/, $header{'sec-websocket-protocol'});
+print DEBUG "websockets protos ",join(" ", @protos),"\n";
 
 # Connect to the configured backend
 my $fh = "WEBSOCKET";
@@ -5662,20 +5681,33 @@ if ($ws->{'host'}) {
 	# Backend is a TCP port
 	my $err = &open_socket($ws->{'host'}, $ws->{'port'}, $fh);
 	&http_error(500, "Websockets connection failed : $err") if ($err);
+	print DEBUG "websockets host $ws->{'host'}:$ws->{'port'}\n";
 	}
 else {
 	&http_error(500, "Invalid Webmin websockets config");
 	}
 
 # Send successful connection headers
+eval "use Digest::SHA1";
+if ($@) {
+	&http_error(500, "Missing Digest::SHA1 perl module");
+	}
+my $rkey = $key."258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
+my $sha1 = Digest::SHA1->new;
+$sha1->add($rkey);
+my $digest = $sha1->digest;
+$digest = &b64encode($digest);
 &write_data("HTTP/1.1 101 Switching Protocols\r\n");
 &write_data("Upgrade: websocket\r\n");
 &write_data("Connection: Upgrade\r\n");
-&write_data("Sec-Websocket-Accept: $key\r\n");
-&write_data("Sec-Websocket-Protocol: $protos[0]\r\n");
+&write_data("Sec-Websocket-Accept: $digest\r\n");
+if (@protos) {
+	&write_data("Sec-Websocket-Protocol: $protos[0]\r\n");
+	}
 &write_data("\r\n");
 
 # Start forwarding data
+print DEBUG "in websockets loop\n";
 while(1) {
 	my $rmask = undef;
 	vec($rmask, fileno($fh), 1) = 1;
@@ -5685,16 +5717,19 @@ while(1) {
 	if (vec($rmask, fileno($fh), 1)) {
 		# Got something from the websockets backend
 		$ok = sysread($fh, $buf, 1024);
+		print DEBUG "got $buf from backend\n";
 		last if ($ok <= 0);	# Backend has closed
 		&write_data($buf);
 		}
 	if (vec($rmask, fileno(SOCK), 1)) {
 		# Got something from the browser
 		$buf = &read_data(1024);
+		print DEBUG "got $buf from browser\n";
 		last if (!defined($buf) || length($buf) == 0);
 		syswrite($fh, $buf, length($buf)) || last;
 		}
 	}
+print DEBUG "done websockets loop\n";
 
 return 0;
 }
