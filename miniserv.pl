@@ -1409,6 +1409,7 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 		local $jsredir = $config{'musthost'} ?
 				                   "location.href='$url'" :
 				                   "location.protocol='https:'";
+		$reqline = "GET / HTTP/1.1";	# Fake it for the log
 		&http_error(200, "Document follows",
 			"This web server is running in SSL mode. ".
 			"Trying to redirect to <a href='$url'>$url</a> instead ...".
@@ -1456,6 +1457,7 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 			local $url = $config{'musthost'} ?
 					"https://$config{'musthost'}:$port/" :
 					"https://$host:$port/";
+			$reqline = "GET / HTTP/1.1";	# Fake it for the log
 			&http_error(200, "Bad Request", "This web server is not running in SSL mode. Try the URL <a href='$url'>$url</a> instead.", 0, 1);
 EOF
 		if ($@) {
@@ -5705,6 +5707,9 @@ if (@protos) {
 	&write_data("Sec-Websocket-Protocol: $protos[0]\r\n");
 	}
 &write_data("\r\n");
+
+# Log now
+&log_request($loghost, $authuser, $reqline, "101", 0);
 
 # Start forwarding data
 print DEBUG "in websockets loop\n";
