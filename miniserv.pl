@@ -807,7 +807,7 @@ while(1) {
 			# got new connection
 			$acptaddr = accept(SOCK, $s);
 			print DEBUG "accept returned ",length($acptaddr),"\n";
-			if (!$acptaddr) { next; }
+			next if (!$acptaddr);
 			binmode(SOCK);
 
 			# Work out IP and port of client
@@ -1249,6 +1249,7 @@ while(1) {
 sub handle_request
 {
 local ($acptip, $localip, $ipv6) = @_;
+seek(DEBUG, 0, 2);
 print DEBUG "handle_request: from $acptip to $localip ipv6=$ipv6\n";
 if ($config{'loghost'}) {
 	$acpthost = &to_hostname($acptip);
@@ -4729,6 +4730,7 @@ return $url;
 # Re-read %config, and call post-config actions
 sub reload_config_file
 {
+print DEBUG "in reload_config_file\n";
 &log_error("Reloading configuration");
 %config = &read_config_file($config_file);
 &update_vital_config();
@@ -4743,6 +4745,7 @@ if ($config{'session'}) {
 	dbmclose(%sessiondb);
 	dbmopen(%sessiondb, $config{'sessiondb'}, 0700);
 	}
+print DEBUG "done reload_config_file\n";
 }
 
 # read_config_file(file)
@@ -5361,10 +5364,11 @@ foreach my $pe (split(/\t+/, $config{'expires_paths'})) {
 		}
 	}
 
-# Open debug log
+# Re-open debug log
 close(DEBUG);
-if ($config{'debug'}) {
-	open(DEBUG, ">>$config{'debug'}");
+if ($config{'debuglog'}) {
+	open(DEBUG, ">>$config{'debuglog'}");
+	select(DEBUG); $| = 1; select(STDOUT);
 	}
 else {
 	open(DEBUG, ">/dev/null");
@@ -5642,6 +5646,7 @@ if (@protos) {
 &log_request($loghost, $authuser, $reqline, "101", 0);
 
 # Start forwarding data
+seek(DEBUG, 0, 2);
 print DEBUG "in websockets loop\n";
 while(1) {
 	my $rmask = undef;
