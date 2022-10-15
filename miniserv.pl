@@ -2147,7 +2147,7 @@ if (lc($header{'connection'}) eq 'upgrade' &&
 		&http_error(400, "Unknown websocket path");
 		return 0;
 		}
-	return &handle_websocket_request($ws);
+	return &handle_websocket_request($ws, $simple);
 	}
 
 # Work out the active theme(s)
@@ -5598,11 +5598,11 @@ if ($config{'dav_debug'}) {
 return 0;
 }
 
-# handle_websocket_request(&wsconfig)
+# handle_websocket_request(&wsconfig, original-path)
 # Handle a websockets connection, which may be a proxy to another host and port
 sub handle_websocket_request
 {
-my ($ws) = @_;
+my ($ws, $simple) = @_;
 my $key = $header{'sec-websocket-key'};
 if (!$key) {
 	&http_error(500, "Missing Sec-Websocket-Key header");
@@ -5642,6 +5642,49 @@ if (@protos) {
 	}
 &write_data("\r\n");
 
+# Send a websockets request to the backend
+my $path = $ws->{'wspath'} || $simple;
+print $fh "GET $path HTTP/1.1\r\n";
+print $fh "Host: $ws->{'host'}\r\n";
+print $fh "Upgrade: websocket\r\n";
+print $fh "Connection: Upgrade\r\n";
+print $fh "Sec-WebSocket-Key: $key\r\n";
+if (@protos) {
+	print $fh "Sec-WebSocket-Protocol: ",join(" ", @protos),"\r\n";
+	}
+print $fh "Sec-WebSocket-Version: $header{'sec-websocket-version'}\r\n";
+print $fh "\r\n";
+
+# Read back the reply
+my $rh = <$fh>;
+$rh =~ /^HTTP\/1\.1\s+(\d+)/ && $1 == 101 ||
+	&http_error(500, "Bad response from websockets backend : ".
+		    &html_strip($rh));
+my %rheader;
+my $lastheader;
+while(1) {
+	$rh = <$fh>;
+	$rh =~ s/\r|\n//g;
+	last if ($rh eq "");
+	if ($rh =~ /^(\S+):\s*(.*)$/) {
+		print DEBUG "got websockets header $1 = $2\n";
+                $rheader{$lastheader = lc($1)} = $2;
+                }
+        elsif ($rh =~ /^\s+(.*)$/) {
+                $rheader{$lastheader} .= $headline;
+                }
+        else {
+                &http_error(500, "Bad header from websockets backend ".
+			    &html_strip($rh));
+                }
+	}
+lc($rheader{'upgrade'}) eq 'websocket' ||
+	 &http_error(500, "Missing Upgrade header from websockets backend");
+lc($rheader{'connection'}) eq 'upgrade' ||
+	 &http_error(500, "Missing Connection header from websockets backend");
+lc($rheader{'sec-websocket-accept'}) eq lc($digest) ||
+	 &http_error(500, "Incorrect digest header from websockets backend");
+
 # Log now
 &log_request($loghost, $authuser, $reqline, "101", 0);
 
@@ -5657,14 +5700,12 @@ while(1) {
 	if (vec($rmask, fileno($fh), 1)) {
 		# Got something from the websockets backend
 		$ok = sysread($fh, $buf, 1024);
-		print DEBUG "got $buf from backend\n";
 		last if ($ok <= 0);	# Backend has closed
 		&write_data($buf);
 		}
 	if (vec($rmask, fileno(SOCK), 1)) {
 		# Got something from the browser
 		$buf = &read_data(1024);
-		print DEBUG "got $buf from browser\n";
 		last if (!defined($buf) || length($buf) == 0);
 		syswrite($fh, $buf, length($buf)) || last;
 		}
