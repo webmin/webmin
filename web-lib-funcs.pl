@@ -12273,6 +12273,22 @@ if (!%current_theme_info || $nocache) {
 return \%current_theme_info;
 }
 
+# miniserv_using_default_cert()
+# Returns 1 if miniserv is using one of the hard-coded certs
+sub miniserv_using_default_cert
+{
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+return 0 if (!$miniserv{'certfile'});
+return 1 if ($miniserv{'certfile'} eq "$root_directory/miniserv.pem");
+my $out;
+&execute_command("md5sum ".quotemeta($miniserv{'certfile'}), \$out);
+return 0 if ($?);
+my ($md5) = split(/\s+/, $out);
+return $md5 eq "fcc4fc2ba3c00ede7008725668ff3af9" ||
+       $md5 eq "2bb1926297df3d0429be3a4cd00b43ce";
+}
+
 $done_web_lib_funcs = 1;
 
 1;
