@@ -12278,20 +12278,24 @@ return \%current_theme_info;
 sub miniserv_using_default_cert
 {
 return 0 if ($ENV{'HTTPS'} ne 'ON');
-my $certfile = $ENV{'MINISERV_CERTFILE'};
-if (!$certfile) {
+my $defaultcertname = 'miniserv.pem';
+my $bundledcertfile = "$root_directory/$defaultcertname";
+my $currentcertfile = $ENV{'MINISERV_KEYFILE'};
+if (!$currentcertfile) {
 	my %miniserv;
 	&get_miniserv_config(\%miniserv);
-	$certfile = $miniserv{'certfile'};
+	$currentcertfile = $miniserv{'keyfile'};
 	}
-return 0 if (!$certfile);
-return 1 if ($certfile eq "$root_directory/miniserv.pem");
-my $out;
-&execute_command("md5sum ".quotemeta($certfile), \$out);
-return 0 if ($?);
-my ($md5) = split(/\s+/, $out);
-return $md5 eq "fcc4fc2ba3c00ede7008725668ff3af9" ||
-       $md5 eq "2bb1926297df3d0429be3a4cd00b43ce";
+if (   $currentcertfile =~ /$defaultcertname$/ &&
+	-r $currentcertfile && -r $bundledcertfile) {
+	my $out;
+	&execute_command("md5sum ".quotemeta($currentcertfile), undef, \$out);
+	return 0 if ($?);
+	my ($md5) = split(/\s+/, $out);
+	return $md5 eq "fcc4fc2ba3c00ede7008725668ff3af9" ||
+	       $md5 eq "2bb1926297df3d0429be3a4cd00b43ce";
+	}
+return 0;
 }
 
 $done_web_lib_funcs = 1;

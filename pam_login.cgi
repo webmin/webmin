@@ -35,7 +35,7 @@ print "Set-Cookie: testing=1; path=/$sec\r\n";
 			    undef, "onLoad='document.forms[0].answer.focus()'");
 
 print "<center>\n";
-if ($miniserv::defcert) {
+if (&miniserv_using_default_cert()) {
     print "<h3>",&text('defcert_error',
     	ucfirst(&get_product_name()), $miniserv{'keyfile'}),"</h3><p></p>\n";
 	}

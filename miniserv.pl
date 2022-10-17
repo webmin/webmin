@@ -915,7 +915,7 @@ while(1) {
 				# Initialize SSL for this connection
 				if ($use_ssl) {
 					($ssl_con, $ssl_certfile,
-					 $ssk_keyfile) = &ssl_connection_for_ip(
+					 $ssl_keyfile) = &ssl_connection_for_ip(
 							   SOCK, $ipv6fhs{$s});
 					print DEBUG "ssl_con returned $ssl_con\n";
 					$ssl_con || exit;
