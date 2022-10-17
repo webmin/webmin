@@ -12287,8 +12287,7 @@ if (!$currentcertfile) {
 	$currentcertfile = $miniserv{'keyfile'};
 	}
 if (   $currentcertfile =~ /$defaultcertname$/ &&
-	-r $currentcertfile && -r $bundledcertfile &&
-    -s $currentcertfile == -s $bundledcertfile) {
+	-r $currentcertfile && -r $bundledcertfile) {
 	my $out;
 	&execute_command("md5sum ".quotemeta($currentcertfile), undef, \$out);
 	return 0 if ($?);
