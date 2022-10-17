@@ -354,7 +354,7 @@ my $pidstruct = &find_config("pid_filename", $conf);
 push(@pidfiles, $pidstruct->{'values'}->[0]) if ($pidstruct);
 my $def_pidstruct = &find_config("pid_filename", $conf);
 push(@pidfiles, $def_pidstruct->{'values'}->[0]) if ($def_pidstruct);
-push(@pidfiles, $config{'pid_file'}) if ($config{'pid_file'});
+push(@pidfiles, split(/\s+/, $config{'pid_file'})) if ($config{'pid_file'});
 @pidfiles = grep { $_ ne "none" } @pidfiles;
 
 # Try check one
