@@ -914,8 +914,9 @@ while(1) {
 
 				# Initialize SSL for this connection
 				if ($use_ssl) {
-					$ssl_con = &ssl_connection_for_ip(
-							SOCK, $ipv6fhs{$s});
+					($ssl_con, $ssl_certfile,
+					 $ssk_keyfile) = &ssl_connection_for_ip(
+							   SOCK, $ipv6fhs{$s});
 					print DEBUG "ssl_con returned $ssl_con\n";
 					$ssl_con || exit;
 					}
@@ -2140,7 +2141,8 @@ if ($davpath) {
 
 # Check for a websockets request
 if (lc($header{'connection'}) eq 'upgrade' &&
-    lc($header{'upgrade'}) eq 'websocket') {
+    lc($header{'upgrade'}) eq 'websocket' &&
+    $baseauthuser) {
 	print DEBUG "websockets request to $simple\n";
 	my ($ws) = grep { $_->{'path'} eq $simple } @websocket_paths;
 	if (!$ws) {
@@ -2431,6 +2433,10 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	$ENV{"HTTPS"} = $use_ssl ? "ON" : "";
 	$ENV{"SSL_HSTS"} = $config{"ssl_hsts"};
 	$ENV{"MINISERV_PID"} = $miniserv_main_pid;
+	if ($use_ssl) {
+		$ENV{"MINISERV_CERTFILE"} = $ssl_certfile;
+		$ENV{"MINISERV_KEYFILE"} = $ssl_keyfile;
+		}
 	$ENV{"SESSION_ID"} = $session_id if ($session_id);
 	$ENV{"LOCAL_USER"} = $localauth_user if ($localauth_user);
 	$ENV{"MINISERV_INTERNAL"} = $miniserv_internal if ($miniserv_internal);
@@ -4692,7 +4698,7 @@ Net::SSLeay::set_fd($ssl_con, fileno($sock));
 if (!Net::SSLeay::accept($ssl_con)) {
 	return undef;
 	}
-return $ssl_con;
+return ($ssl_con, $ssl_ctx->{'certfile'}, $ssl_ctx->{'keyfile'});
 }
 
 # parse_websockets_config()
@@ -5619,6 +5625,28 @@ if ($ws->{'host'}) {
 	&http_error(500, "Websockets connection failed : $err") if ($err);
 	print DEBUG "websockets host $ws->{'host'}:$ws->{'port'}\n";
 	}
+elsif ($ws->{'pipe'}) {
+	# Backend is a Unix pipe
+	open($fh, $ws->{'pipe'}) ||
+		&http_error(500, "Websockets pipe failed : $?");
+	print DEBUG "websockets pipe $ws->{'pipe'}\n";
+	}
+elsif ($ws->{'cmd'}) {
+	# Backend is a shell command
+	eval "use IO::Pty";
+	$@ && &http_error(500,"Websockets command requires the IO::Pty module");
+	my $ptyfh = new IO::Pty;
+	my $ttyfh = $ptyfh->slave();
+	my $tty = $ptyfh->ttyname();
+	# XXX chown tty?
+	my $pid = fork();
+	if (!$pid) {
+		# Run command in a forked process
+		exit(1);
+		}
+	$ptyfh->close_slave();
+	print DEBUG "websockets command $ws->{'cmd'}\n";
+	}
 else {
 	&http_error(500, "Invalid Webmin websockets config");
 	}
@@ -5645,7 +5673,9 @@ if (@protos) {
 # Send a websockets request to the backend
 my $path = $ws->{'wspath'} || $simple;
 print $fh "GET $path HTTP/1.1\r\n";
-print $fh "Host: $ws->{'host'}\r\n";
+if ($ws->{'host'}) {
+	print $fh "Host: $ws->{'host'}\r\n";
+	}
 print $fh "Upgrade: websocket\r\n";
 print $fh "Connection: Upgrade\r\n";
 print $fh "Sec-WebSocket-Key: $key\r\n";
