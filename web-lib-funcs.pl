@@ -8403,7 +8403,7 @@ foreach my $e ('WEBMIN_CONFIG', 'SERVER_NAME', 'CONTENT_TYPE', 'REQUEST_URI',
 	    'HTTPS', 'FOREIGN_MODULE_NAME', 'FOREIGN_ROOT_DIRECTORY',
 	    'SCRIPT_FILENAME', 'PATH_TRANSLATED', 'BASE_REMOTE_USER',
 	    'DOCUMENT_REALROOT', 'MINISERV_CONFIG', 'MYSQL_PWD',
-	    'MINISERV_PID') {
+	    'MINISERV_PID', 'MINISERV_CERTFILE', 'MINISERV_KEYFILE') {
 	delete($ENV{$e});
 	}
 }
@@ -12277,12 +12277,17 @@ return \%current_theme_info;
 # Returns 1 if miniserv is using one of the hard-coded certs
 sub miniserv_using_default_cert
 {
-my %miniserv;
-&get_miniserv_config(\%miniserv);
-return 0 if (!$miniserv{'certfile'});
-return 1 if ($miniserv{'certfile'} eq "$root_directory/miniserv.pem");
+return 0 if ($ENV{'HTTPS'} ne 'ON');
+my $certfile = $ENV{'MINISERV_CERTFILE'};
+if (!$certfile) {
+	my %miniserv;
+	&get_miniserv_config(\%miniserv);
+	$certfile = $miniserv{'certfile'};
+	}
+return 0 if (!$certfile);
+return 1 if ($certfile eq "$root_directory/miniserv.pem");
 my $out;
-&execute_command("md5sum ".quotemeta($miniserv{'certfile'}), \$out);
+&execute_command("md5sum ".quotemeta($certfile), \$out);
 return 0 if ($?);
 my ($md5) = split(/\s+/, $out);
 return $md5 eq "fcc4fc2ba3c00ede7008725668ff3af9" ||
