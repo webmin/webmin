@@ -37,7 +37,7 @@ print "Set-Cookie: testing=1; path=/$sec\r\n";
 print "<center>\n";
 if (&miniserv_using_default_cert()) {
     print "<h3>",&text('defcert_error',
-    	ucfirst(&get_product_name()), $miniserv{'keyfile'}),"</h3><p></p>\n";
+    	ucfirst(&get_product_name()), ($ENV{'MINISERV_KEYFILE'} || $miniserv{'keyfile'})),"</h3><p></p>\n";
 	}
 if (defined($in{'failed'})) {
 	print "<h3>$text{'session_failed'}</h3><p>\n";
