@@ -697,8 +697,7 @@ if ($init_mode eq "systemd" && (!-r "$config{'init_dir'}/$action" ||
 					$opts->{'fork'}, $opts->{'pidfile'},
 					$opts->{'exit'}, $opts->{'opts'});
 		}
-	&system_logged("systemctl unmask ".
-		       quotemeta($unit)." >/dev/null 2>&1");
+	&unmask_action($unit);
 	&system_logged("systemctl enable ".
 		       quotemeta($unit)." >/dev/null 2>&1");
 	return;
@@ -1423,6 +1422,40 @@ elsif ($action_mode eq "launchd") {
 	}
 else {
 	return -1;
+	}
+}
+
+=head2 mask_action(name)
+
+Mask systemd target
+
+=cut
+sub mask_action
+{
+my ($name) = @_;
+$name .= ".service"
+	if ($name !~ /\.service$/ &&
+	    $name !~ /\.timer$/);
+if ($init_mode eq "systemd") {
+	&system_logged("systemctl mask ".
+		       quotemeta($name)." >/dev/null 2>&1");
+	}
+}
+
+=head2 unmask_action(name)
+
+Unmask systemd target
+
+=cut
+sub unmask_action
+{
+my ($name) = @_;
+$name .= ".service"
+	if ($name !~ /\.service$/ &&
+	    $name !~ /\.timer$/);
+if ($init_mode eq "systemd") {
+	&system_logged("systemctl unmask ".
+		       quotemeta($name)." >/dev/null 2>&1");
 	}
 }
 
