@@ -2401,7 +2401,8 @@ sub is_systemd_service
 my ($name) = @_;
 foreach my $s (&list_systemd_services(1)) {
 	if (($s->{'name'} eq $name ||
-	     $s->{'name'} eq "$name.service") && !$s->{'legacy'}) {
+	     $s->{'name'} =~
+	       /^$name\.(target|service|socket|device|mount|automount|swap|path|timer|snapshot|slice|scope|busname)$/) && !$s->{'legacy'}) {
 		return 1;
 		}
 	}
@@ -2425,7 +2426,20 @@ if ($name) {
 		$systemd_local_conf,
 		$systemd_unit_dir1,
 		$systemd_unit_dir2) {
-		if (-r "$p/$name.service" || -r "$p/$name") {
+		if (-r "$p/$name.service"   ||
+		    -r "$p/$name"           ||
+		    -r "$p/$name.target"    ||
+		    -r "$p/$name.socket"    ||
+		    -r "$p/$name.device"    ||
+		    -r "$p/$name.mount"     ||
+		    -r "$p/$name.automount" ||
+		    -r "$p/$name.swap"      ||
+		    -r "$p/$name.path"      ||
+		    -r "$p/$name.timer"     ||
+		    -r "$p/$name.snapshot"  ||
+		    -r "$p/$name.slice"     ||
+		    -r "$p/$name.scope"     ||
+		    -r "$p/$name.busname") {
 			return $p;
 			}
 		}
