@@ -2170,13 +2170,20 @@ my @templates = grep { /\@$/ || /\@\.service$/ } @units;
 # Dump state of all of them, 100 at a time
 my %info;
 my $ecount = 0;
-while(@units) {
-	my @args;
-	while(@args < 100 && @units) {
-		push(@args, shift(@units));
+my $out;
+my @units_parts;
+push @units_parts, [ splice @units, 0, 100 ]  while @units;
+foreach my $units_part (@units_parts) {
+	my $cmd;
+	foreach my $unit (@{$units_part}) {
+		$cmd .=
+		  "systemctl show --property=Id,Description,UnitFileState,ActiveState,SubState,ExecStart,ExecStop,ExecReload,ExecMainPID,FragmentPath $unit 2>/dev/null ; ";
 		}
-	$out = &backquote_command("systemctl show -- ".join(" ", @args).
-				  " 2>/dev/null");
+	# Run combine command for speed
+	$out .= &backquote_command($cmd);
+	$ecount++ if ($?);
+	}
+if ($out) {
 	my @lines = split(/\r?\n/, $out);
 	my $curr;
 	foreach my $l (@lines) {
@@ -2190,7 +2197,6 @@ while(@units) {
 			$info{$curr}->{$n} = $v;
 			}
 		}
-	$ecount++ if ($?);
 	}
 if ($ecount && keys(%info) < 2) {
 	&error("Failed to read systemd units : $out");
