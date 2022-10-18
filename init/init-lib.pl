@@ -1437,10 +1437,12 @@ sub mask_action
 {
 my ($name) = @_;
 $name = &action_unit($name);
+return -1 if (!&is_systemd_service($name));
 if ($init_mode eq "systemd") {
-	&system_logged("systemctl mask ".
+	return &system_logged("systemctl mask ".
 		       quotemeta($name)." >/dev/null 2>&1");
 	}
+return -1;
 }
 
 =head2 unmask_action(name)
@@ -1453,9 +1455,10 @@ sub unmask_action
 my ($name) = @_;
 $name = &action_unit($name);
 if ($init_mode eq "systemd") {
-	&system_logged("systemctl unmask ".
+	return &system_logged("systemctl unmask ".
 		       quotemeta($name)." >/dev/null 2>&1");
 	}
+return -1;
 }
 
 =head2 list_action_names()
