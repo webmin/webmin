@@ -198,6 +198,20 @@ sub action_filename
 return $_[0] =~ /^\// ? $_[0] : "$config{init_dir}/$_[0]";
 }
 
+=head2 action_unit(name)
+
+Returns systemd service unit name (to avoid a clash with init)
+unless full unit name is passed
+
+=cut
+sub action_unit
+{
+my ($unit) = @_;
+$unit .= ".service"
+	if ($unit !~ /\.(target|service|socket|device|mount|automount|swap|path|timer|snapshot|slice|scope|busname)$/);
+return $unit;
+}
+
 =head2 runlevel_filename(level, S|K, order, name)
 
 Returns the path to the actual script run at boot for some action, such as
@@ -534,10 +548,7 @@ if ($init_mode eq "upstart") {
 	}
 elsif ($init_mode eq "systemd") {
 	# Check systemd service status
-	my $unit = $name;
-	$unit .= ".service"
-		if ($unit !~ /\.service$/ &&
-		    $unit !~ /\.timer$/);
+	my $unit = &action_unit($name);
 	my $out = &backquote_command("systemctl show ".
 					quotemeta($unit)." 2>&1");
 	if ($out =~ /UnitFileState=(\S+)/ &&
@@ -638,11 +649,7 @@ my ($action, $desc, $start, $stop, $status, $opts) = @_;
 my $st = &action_status($action);
 return if ($st == 2);	# already exists and is enabled
 my ($daemon, %daemon);
-my $unit = $action;
-$unit .= ".service"
-	if ($unit !~ /\.service$/ &&
-	    $unit !~ /\.timer$/);
-
+my $unit = &action_unit($action);
 if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$action" ||
 				-r "/etc/init/$action.conf")) {
 	# Create upstart action if missing, as long as this isn't an old-style
@@ -1045,11 +1052,7 @@ sub disable_at_boot
 my ($name) = @_;
 my $st = &action_status($_[0]);
 return if ($st == 0);	# does not exist
-my $unit = $_[0];
-$unit .= ".service"
-	if ($unit !~ /\.service$/ &&
-	    $unit !~ /\.timer$/);
-
+my $unit = &action_unit($_[0]);
 if ($init_mode eq "upstart") {
 	# Just use insserv to disable, and comment out start line in .conf file
 	if (&has_command("insserv")) {
@@ -1433,9 +1436,7 @@ Mask systemd target
 sub mask_action
 {
 my ($name) = @_;
-$name .= ".service"
-	if ($name !~ /\.service$/ &&
-	    $name !~ /\.timer$/);
+$name = &action_unit($name);
 if ($init_mode eq "systemd") {
 	&system_logged("systemctl mask ".
 		       quotemeta($name)." >/dev/null 2>&1");
@@ -1450,9 +1451,7 @@ Unmask systemd target
 sub unmask_action
 {
 my ($name) = @_;
-$name .= ".service"
-	if ($name !~ /\.service$/ &&
-	    $name !~ /\.timer$/);
+$name = &action_unit($name);
 if ($init_mode eq "systemd") {
 	&system_logged("systemctl unmask ".
 		       quotemeta($name)." >/dev/null 2>&1");
