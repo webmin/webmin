@@ -21,16 +21,30 @@ if ($stop || $restart) {
 	$access{'bootup'} || &error($text{'ss_ecannot'});
 	$SIG{'TERM'} = 'ignore';	# Restarting webmin may kill this script
 	foreach $s (@sel) {
+		my ($ok, $out);
+		my $is_webmin = $s eq 'webmin.service';
 		if ($stop) {
 			print &text('mass_ustopping', "<tt>$s</tt>"),"<br>\n";
-			($ok, $out) = &stop_action($s);
+			($ok, $out) = &stop_action($s)
+				if (!$is_webmin);
 			}
 		elsif ($restart) {
 			print &text('mass_urestarting', "<tt>$s</tt>"),"<br>\n";
-			($ok, $out) = &restart_action($s);
+			if (!$is_webmin) {
+				($ok, $out) = &restart_action($s);
+				}
+			else {
+				&restart_miniserv();
+				}
 			}
 		print "<pre>$out</pre>" if ($out);
-		if (!$ok) {
+		if ($is_webmin) {
+			print "$text{'mass_skipped'} : ". &text('mass_enoallow', $s),"<p></p>\n"
+				if ($stop);
+			print $text{'mass_ok'},"<p></p>\n"
+				if ($restart);
+			}
+		elsif (!$ok) {
 			print $text{'mass_failed'},"<p></p>\n";
 			}
 		else {

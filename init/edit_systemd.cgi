@@ -80,7 +80,8 @@ else {
 			     [ 'start', $text{'edit_startnow'} ],
 			     [ 'restart', $text{'edit_restartnow'} ],
 			     [ 'stop', $text{'edit_stopnow'} ],
-			     [ 'delete', $text{'delete'} ] ]);
+			     $in{'name'} eq 'webmin.service' ?
+			       undef : [ 'delete', $text{'delete'} ] ]);
 	}
 
 &ui_print_footer("", $text{'index_return'});
