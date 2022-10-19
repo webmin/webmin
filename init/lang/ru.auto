@@ -1,4 +1,6 @@
 index_mode=Загрузочная система : $1 
+index_sboot5=Нет (в маске)
+index_sboot6=Да всегда)
 index_uname=Наименование услуги
 index_udesc=Описание услуг
 index_ucstatus=Статус услуги
@@ -6,7 +8,6 @@ index_uboot=Начать при загрузке?
 index_ustatus=Бегом сейчас?
 index_uadd=Создать новый сервис выскочки.
 index_sadd=Создайте новый сервис systemd.
-index_always=Всегда
 index_ladd=Создайте новый агент запуска.
 index_lname=Имя агента
 
@@ -14,6 +15,8 @@ edit_reloadnow2=Перечитайте файл конфигурации
 
 log_condrestart=Условно перезапущенное действие $1 
 
+mass_failed=.. не удалось
+mass_ok=.. Выполнено
 mass_ustart=Запуск Сервисов
 mass_urestart=Перезапуск Сервисов
 mass_ustop=Остановка услуг

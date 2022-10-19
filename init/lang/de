@@ -49,7 +49,6 @@ index_uboot=Starte beim Booten?
 index_ustatus=Läuft jetzt?
 index_uadd=Erstellt einen neuen upstart Dienst.
 index_sadd=Erstelle einen neuen systemd Dienst.
-index_always=Immer
 index_ladd=Erstelle einen neuen launchd Agenten.
 index_lname=Agentname
 
@@ -168,8 +167,6 @@ mass_enable=Aktiviere Aktion $1 zur Bootzeit.
 mass_disable=Deaktiviere Aktion $1 zur Bootzeit.
 mass_starting=Starte Aktion $1 ..
 mass_stopping=Stoppe Aktion $1 ..
-mass_failed=.. gescheitert!
-mass_ok=.. erledigt.
 mass_ustart=Starte Dienste
 mass_urestart=Starte Dienste neu
 mass_ustop=Stoppe Dienste

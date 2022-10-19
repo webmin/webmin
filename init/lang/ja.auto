@@ -1,4 +1,6 @@
 index_mode=ブートシステム： $1
+index_sboot5=いいえ (マスク)
+index_sboot6=はい、いつも）
 index_ucstatus=サービスステータス
 index_uadd=新しいupstartサービスを作成します。
 index_sadd=新しいsystemdサービスを作成します。
@@ -12,6 +14,8 @@ log_condrestart=条件付きで再開されたアクション $1
 log_reload=アクション $1をリロードしました
 log_status=アクション $1のステータスを取得しました
 
+mass_failed=.. 失敗した
+mass_ok=.. 終わり
 mass_ustart=サービスを開始する
 mass_urestart=サービスの再起動
 mass_ustop=サービスの停止

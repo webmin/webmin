@@ -1,4 +1,6 @@
 index_mode=부팅 시스템  : $1 
+index_sboot5=아니요(마스크됨)
+index_sboot6=예(항상)
 index_uname=서비스 이름
 index_udesc=서비스 설명
 index_ucstatus=서비스 상태
@@ -6,7 +8,6 @@ index_uboot=부팅 할 때 시작 하시겠습니까?
 index_ustatus=지금 달려?
 index_uadd=새로운 시작 서비스를 작성하십시오.
 index_sadd=새로운 시스템 서비스를 작성하십시오.
-index_always=항상
 index_ladd=새로 시작한 에이전트를 작성하십시오.
 index_lname=에이전트 이름
 
@@ -17,6 +18,8 @@ log_condrestart=조건부로 재시작 된 작업 $1
 log_reload=재로드 된 작업 $1 
 log_status=작업 $1 의 페치 상태
 
+mass_failed=.. 실패
+mass_ok=.. 완료
 mass_ustart=서비스 시작
 mass_urestart=서비스 재시작
 mass_ustop=서비스 중지

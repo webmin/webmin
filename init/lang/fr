@@ -113,4 +113,3 @@ edit_hostconfig_scriptname=Nom du script
 mass_start=Démarrage des actions
 mass_stop=Arrêt des actions
 mass_disable=Désactiver l'action $1 au moment du Boot.
-mass_ok=.. effectué.

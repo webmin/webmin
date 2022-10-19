@@ -46,7 +46,6 @@ index_uboot=Uruchamianie przy starcie?
 index_ustatus=Działa?
 index_uadd=Utwórz nową usługę upstart
 index_sadd=Utwórz nową usługę systemd
-index_always=Zawsze
 index_ladd=Tworzenie nowego agenta launchd.
 index_lname=Nazwa agenta
 
@@ -164,8 +163,6 @@ mass_enable=Włączanie akcji $1 przy uruchamianiu.
 mass_disable=Wyłączanie akcji $1 przy uruchamianiu.
 mass_starting=Uruchamianie akcji $1 ..
 mass_stopping=Zatrzymywanie akcji $1 ..
-mass_failed=.. niepowodzenie!
-mass_ok=.. gotowe.
 mass_ustart=Uruchamianie usług
 mass_urestart=Restartowanie usług
 mass_ustop=Zatrzymywanie usług

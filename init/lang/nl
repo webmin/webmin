@@ -49,7 +49,6 @@ index_uboot=Starten tijdens booten?
 index_ustatus=Nu uitvoeren?
 index_uadd=Een nieuwe opstart  service aanmaken.
 index_sadd=Een nieuw systemd service aanmaken.
-index_always=Altijd
 
 edit_title=Bewerk Actie
 create_title=Creeer een Actie
@@ -165,8 +164,6 @@ mass_enable=Aanzetten actie $1 tijdens boot.
 mass_disable=Uitzetten actie $1 tijdens boot
 mass_starting=Starten van actie $1
 mass_stopping=Stoppen van actie $1 ..
-mass_failed=.. mislukt!
-mass_ok=.. klaar.
 mass_ustart=Starten van Services
 mass_urestart=Services Herstarten
 mass_ustop=Services Stoppen
