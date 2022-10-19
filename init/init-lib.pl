@@ -198,6 +198,20 @@ sub action_filename
 return $_[0] =~ /^\// ? $_[0] : "$config{init_dir}/$_[0]";
 }
 
+=head2 action_unit(name)
+
+Returns systemd service unit name (to avoid a clash with init)
+unless full unit name is passed
+
+=cut
+sub action_unit
+{
+my ($unit) = @_;
+$unit .= ".service"
+	if ($unit !~ /\.(target|service|socket|device|mount|automount|swap|path|timer|snapshot|slice|scope|busname)$/);
+return $unit;
+}
+
 =head2 runlevel_filename(level, S|K, order, name)
 
 Returns the path to the actual script run at boot for some action, such as
@@ -534,10 +548,7 @@ if ($init_mode eq "upstart") {
 	}
 elsif ($init_mode eq "systemd") {
 	# Check systemd service status
-	my $unit = $name;
-	$unit .= ".service"
-		if ($unit !~ /\.service$/ &&
-		    $unit !~ /\.timer$/);
+	my $unit = &action_unit($name);
 	my $out = &backquote_command("systemctl show ".
 					quotemeta($unit)." 2>&1");
 	if ($out =~ /UnitFileState=(\S+)/ &&
@@ -638,11 +649,7 @@ my ($action, $desc, $start, $stop, $status, $opts) = @_;
 my $st = &action_status($action);
 return if ($st == 2);	# already exists and is enabled
 my ($daemon, %daemon);
-my $unit = $action;
-$unit .= ".service"
-	if ($unit !~ /\.service$/ &&
-	    $unit !~ /\.timer$/);
-
+my $unit = &action_unit($action);
 if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$action" ||
 				-r "/etc/init/$action.conf")) {
 	# Create upstart action if missing, as long as this isn't an old-style
@@ -697,8 +704,7 @@ if ($init_mode eq "systemd" && (!-r "$config{'init_dir'}/$action" ||
 					$opts->{'fork'}, $opts->{'pidfile'},
 					$opts->{'exit'}, $opts->{'opts'});
 		}
-	&system_logged("systemctl unmask ".
-		       quotemeta($unit)." >/dev/null 2>&1");
+	&unmask_action($unit);
 	&system_logged("systemctl enable ".
 		       quotemeta($unit)." >/dev/null 2>&1");
 	return;
@@ -1046,11 +1052,7 @@ sub disable_at_boot
 my ($name) = @_;
 my $st = &action_status($_[0]);
 return if ($st == 0);	# does not exist
-my $unit = $_[0];
-$unit .= ".service"
-	if ($unit !~ /\.service$/ &&
-	    $unit !~ /\.timer$/);
-
+my $unit = &action_unit($_[0]);
 if ($init_mode eq "upstart") {
 	# Just use insserv to disable, and comment out start line in .conf file
 	if (&has_command("insserv")) {
@@ -1424,6 +1426,39 @@ elsif ($action_mode eq "launchd") {
 else {
 	return -1;
 	}
+}
+
+=head2 mask_action(name)
+
+Mask systemd target
+
+=cut
+sub mask_action
+{
+my ($name) = @_;
+$name = &action_unit($name);
+return -1 if (!&is_systemd_service($name));
+if ($init_mode eq "systemd") {
+	return &system_logged("systemctl mask ".
+		       quotemeta($name)." >/dev/null 2>&1");
+	}
+return -1;
+}
+
+=head2 unmask_action(name)
+
+Unmask systemd target
+
+=cut
+sub unmask_action
+{
+my ($name) = @_;
+$name = &action_unit($name);
+if ($init_mode eq "systemd") {
+	return &system_logged("systemctl unmask ".
+		       quotemeta($name)." >/dev/null 2>&1");
+	}
+return -1;
 }
 
 =head2 list_action_names()
@@ -2138,13 +2173,20 @@ my @templates = grep { /\@$/ || /\@\.service$/ } @units;
 # Dump state of all of them, 100 at a time
 my %info;
 my $ecount = 0;
-while(@units) {
-	my @args;
-	while(@args < 100 && @units) {
-		push(@args, shift(@units));
+my $out;
+my @units_parts;
+push @units_parts, [ splice @units, 0, 100 ]  while @units;
+foreach my $units_part (@units_parts) {
+	my $cmd;
+	foreach my $unit (@{$units_part}) {
+		$cmd .=
+		  "systemctl show --property=Id,Description,UnitFileState,ActiveState,SubState,ExecStart,ExecStop,ExecReload,ExecMainPID,FragmentPath $unit 2>/dev/null ; ";
 		}
-	$out = &backquote_command("systemctl show -- ".join(" ", @args).
-				  " 2>/dev/null");
+	# Run combine command for speed
+	$out .= &backquote_command($cmd);
+	$ecount++ if ($?);
+	}
+if ($out) {
 	my @lines = split(/\r?\n/, $out);
 	my $curr;
 	foreach my $l (@lines) {
@@ -2158,7 +2200,6 @@ while(@units) {
 			$info{$curr}->{$n} = $v;
 			}
 		}
-	$ecount++ if ($?);
 	}
 if ($ecount && keys(%info) < 2) {
 	&error("Failed to read systemd units : $out");
@@ -2363,7 +2404,8 @@ sub is_systemd_service
 my ($name) = @_;
 foreach my $s (&list_systemd_services(1)) {
 	if (($s->{'name'} eq $name ||
-	     $s->{'name'} eq "$name.service") && !$s->{'legacy'}) {
+	     $s->{'name'} =~
+	       /^$name\.(target|service|socket|device|mount|automount|swap|path|timer|snapshot|slice|scope|busname)$/) && !$s->{'legacy'}) {
 		return 1;
 		}
 	}
@@ -2387,7 +2429,20 @@ if ($name) {
 		$systemd_local_conf,
 		$systemd_unit_dir1,
 		$systemd_unit_dir2) {
-		if (-r "$p/$name.service" || -r "$p/$name") {
+		if (-r "$p/$name.service"   ||
+		    -r "$p/$name"           ||
+		    -r "$p/$name.target"    ||
+		    -r "$p/$name.socket"    ||
+		    -r "$p/$name.device"    ||
+		    -r "$p/$name.mount"     ||
+		    -r "$p/$name.automount" ||
+		    -r "$p/$name.swap"      ||
+		    -r "$p/$name.path"      ||
+		    -r "$p/$name.timer"     ||
+		    -r "$p/$name.snapshot"  ||
+		    -r "$p/$name.slice"     ||
+		    -r "$p/$name.scope"     ||
+		    -r "$p/$name.busname") {
 			return $p;
 			}
 		}
