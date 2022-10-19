@@ -2175,12 +2175,12 @@ my %info;
 my $ecount = 0;
 my $out;
 my @units_parts;
-push @units_parts, [ splice @units, 0, 100 ]  while @units;
+push @units_parts, [ splice @units, 0, 150 ]  while @units;
 foreach my $units_part (@units_parts) {
 	my $cmd;
 	foreach my $unit (@{$units_part}) {
 		$cmd .=
-		  "systemctl show --property=Id,Description,UnitFileState,ActiveState,SubState,ExecStart,ExecStop,ExecReload,ExecMainPID,FragmentPath $unit 2>/dev/null ; ";
+		  "echo \"Id=$unit\" 2>/dev/null && systemctl show --property=Description,UnitFileState,ActiveState,SubState,ExecMainPID,FragmentPath $unit 2>/dev/null ; ";
 		}
 	# Run combine command for speed
 	$out .= &backquote_command($cmd);
@@ -2222,9 +2222,6 @@ foreach my $name (keys %info) {
 		    'fullstatus' => $i->{'SubState'} ?
 		        "@{[ucfirst($i->{'ActiveState'})]} ($i->{'SubState'})" :
 		         ucfirst($i->{'ActiveState'}),
-		    'start' => $i->{'ExecStart'},
-		    'stop' => $i->{'ExecStop'},
-		    'reload' => $i->{'ExecReload'},
 		    'pid' => $i->{'ExecMainPID'},
 		    'file' => $i->{'FragmentPath'} || $root."/".$name,
 		  });
