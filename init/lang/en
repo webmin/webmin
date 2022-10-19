@@ -38,6 +38,8 @@ index_sstate1=Stopped
 index_sboot2=Yes
 index_sboot3=No
 index_sboot4=Disabled
+index_sboot5=No (masked)
+index_sboot6=Yes (always)
 index_rname=Action name
 index_rdesc=Description
 index_rboot=Start at boot?
@@ -50,7 +52,6 @@ index_uboot=Start at boot?
 index_ustatus=Running now?
 index_uadd=Create a new upstart service.
 index_sadd=Create a new systemd service.
-index_always=Always
 index_ladd=Create a new launchd agent.
 index_lname=Agent name
 

@@ -351,12 +351,16 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 			&ui_link($l, $u->{'name'}),
 			$u->{'desc'},
 			$u->{'fullstatus'} || "<i>$text{'index_unknown'}</i>",
-			$u->{'boot'} == 1 ? &ui_text_color("$text{'yes'}", 'success') :
-			  $u->{'boot'} == 2 ? $text{'index_always'} :
-			  &ui_text_color("$text{'no'}", 'danger'),
+			$u->{'boot'} == 1 ?
+			    &ui_text_color("$text{'yes'}", 'success') :
+			  $u->{'boot'} == 2 ?
+			    &ui_text_color("$text{'index_sboot6'}", 'success') :
+			  $u->{'boot'} == -1 ?
+			    &ui_text_color("$text{'index_sboot5'}", 'warn') :
+			  &ui_text_color("$text{'no'}", 'warn'),
 			$u->{'status'} == 1 ? &ui_text_color("$text{'yes'}", 'success') :
 			  $u->{'status'} == 0 ?
-			  &ui_text_color("$text{'no'}", 'danger') :
+			  &ui_text_color("$text{'no'}", 'warn') :
 			  "<i>$text{'index_unknown'}</i>",
 			]);
 		}
