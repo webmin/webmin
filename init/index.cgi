@@ -348,7 +348,8 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 			}
 		print &ui_columns_row([
 			&ui_checkbox("d", $u->{'name'}, undef),
-			&ui_link($l, $u->{'name'}),
+			$u->{'boot'} == -1 ?
+			    &html_escape($u->{'name'}) : &ui_link($l, $u->{'name'}),
 			$u->{'desc'},
 			$u->{'fullstatus'} || "<i>$text{'index_unknown'}</i>",
 			$u->{'boot'} == 1 ?
