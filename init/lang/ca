@@ -49,7 +49,6 @@ index_uboot=Inicia'l en engegar
 index_ustatus=En execució
 index_uadd=Crea un nou servei d'inici.
 index_sadd=Crea un nou servei <i>systemd</i>.
-index_always=Sempre
 index_ladd=Crea un nou agent launchd.
 index_lname=Nom de l'agent
 
@@ -168,8 +167,6 @@ mass_enable=Activació de l'acció $1 en engegar.
 mass_disable=Desactivació de l'acció $1 en engegar.
 mass_starting=S'està iniciant l'acció $1...
 mass_stopping=S'està aturant l'acció $1...
-mass_failed=...ha fallat!
-mass_ok=...fet.
 mass_ustart=Inici de Serveis
 mass_urestart=Reinici de Serveis
 mass_ustop=Aturada de Serveis

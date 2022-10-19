@@ -122,7 +122,7 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 			foreach $s (@{$actsb[$i]}) {
 				if ($s->[2]) {
 					$boot = 1;
-					push(@levels, &ui_text_color($s->[0], 'danger'));
+					push(@levels, &ui_text_color($s->[0], 'warn'));
 					}
 				else {
 					push(@levels, $s->[0]);
@@ -139,7 +139,7 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 				}
 			else {
 				push(@cols,$boot ? &ui_text_color("$text{'yes'}", 'success') :
-				      &ui_text_color("$text{'no'}", 'danger'));
+				      &ui_text_color("$text{'no'}", 'warn'));
 				}
 			if ($config{'order'}) {
 				push(@cols, $order);
@@ -148,7 +148,7 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 				if ($actsl[$i] =~ /^0/ && $has{'status'}) {
 					local $r = &action_running($actsf[$i]);
 					if ($r == 0) {
-						push(@cols, &ui_text_color("$text{'no'}", 'danger'));
+						push(@cols, &ui_text_color("$text{'no'}", 'warn'));
 						}
 					elsif ($r == 1) {
 						push(@cols, &ui_text_color("$text{'yes'}", 'success'));
@@ -266,7 +266,7 @@ elsif ($init_mode eq "rc" && $access{'bootup'}) {
 			$rc->{'desc'},
 			$rc->{'enabled'} == 1 ? &ui_text_color("$text{'yes'}", 'success') :
 			$rc->{'enabled'} == 2 ? "<i>$text{'index_unknown'}</i>":
-				&ui_text_color("$text{'no'}", 'danger'),
+				&ui_text_color("$text{'no'}", 'warn'),
 			]);
 		}
 	print &ui_columns_end();
@@ -305,11 +305,11 @@ elsif ($init_mode eq "upstart" && $access{'bootup'}) {
 			$u->{'desc'},
 			$u->{'boot'} eq 'start' ? &ui_text_color("$text{'yes'}", 'success') :
 			  $u->{'boot'} eq 'stop' ?
-			  &ui_text_color("$text{'no'}", 'danger') :
+			  &ui_text_color("$text{'no'}", 'warn') :
 			  "<i>$text{'index_unknown'}</i>",
 			$u->{'status'} eq 'running' ? &ui_text_color("$text{'yes'}", 'success') :
 			  $u->{'status'} eq 'waiting' ?
-			  &ui_text_color("$text{'no'}", 'danger') :
+			  &ui_text_color("$text{'no'}", 'warn') :
 			  "<i>$text{'index_unknown'}</i>",
 			]);
 		}
@@ -348,15 +348,20 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 			}
 		print &ui_columns_row([
 			&ui_checkbox("d", $u->{'name'}, undef),
-			&ui_link($l, $u->{'name'}),
+			$u->{'boot'} == -1 ?
+			    &html_escape($u->{'name'}) : &ui_link($l, $u->{'name'}),
 			$u->{'desc'},
 			$u->{'fullstatus'} || "<i>$text{'index_unknown'}</i>",
-			$u->{'boot'} == 1 ? &ui_text_color("$text{'yes'}", 'success') :
-			  $u->{'boot'} == 2 ? $text{'index_always'} :
-			  &ui_text_color("$text{'no'}", 'danger'),
+			$u->{'boot'} == 1 ?
+			    &ui_text_color("$text{'yes'}", 'success') :
+			  $u->{'boot'} == 2 ?
+			    &ui_text_color("$text{'index_sboot6'}", 'success') :
+			  $u->{'boot'} == -1 ?
+			    &ui_text_color("$text{'index_sboot5'}", 'warn') :
+			  &ui_text_color("$text{'no'}", 'warn'),
 			$u->{'status'} == 1 ? &ui_text_color("$text{'yes'}", 'success') :
 			  $u->{'status'} == 0 ?
-			  &ui_text_color("$text{'no'}", 'danger') :
+			  &ui_text_color("$text{'no'}", 'warn') :
 			  "<i>$text{'index_unknown'}</i>",
 			]);
 		}
@@ -390,9 +395,9 @@ elsif ($init_mode eq "launchd" && $access{'bootup'}) {
 			&ui_checkbox("d", $u->{'name'}, undef),
 			&ui_link($l, $u->{'name'}),
 			$u->{'boot'} ? &ui_text_color("$text{'yes'}", 'success') :
-			  &ui_text_color("$text{'no'}", 'danger'),
+			  &ui_text_color("$text{'no'}", 'warn'),
 			$u->{'status'} ? &ui_text_color("$text{'yes'}", 'success') :
-			  &ui_text_color("$text{'no'}", 'danger'),
+			  &ui_text_color("$text{'no'}", 'warn'),
 			]);
 		}
 	print &ui_columns_end();

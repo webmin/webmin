@@ -1,10 +1,14 @@
+index_sboot5=Nem (maszkos)
+index_sboot6=Igen mindig)
 index_ucstatus=Szolgáltatás állapota
 index_sadd=Hozzon létre egy új rendszeres szolgáltatást.
-index_always=Mindig
 index_ladd=Hozzon létre egy új indított ügynököt.
 index_lname=Ügynök neve
 
 edit_reloadnow2=Olvassa újra a konfigurációs fájlt
+
+mass_failed=.. nem sikerült
+mass_ok=.. Kész
 
 mode_systemd=systemd
 mode_launchd=LaunchD

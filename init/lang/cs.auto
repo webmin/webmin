@@ -1,4 +1,6 @@
 index_mode=Zaváděcí systém : $1 
+index_sboot5=Ne (maskováno)
+index_sboot6=Ano vždy)
 index_uname=Název služby
 index_udesc=Popis služby
 index_ucstatus=Stav služby
@@ -6,12 +8,13 @@ index_uboot=Začít při spuštění?
 index_ustatus=Běží nyní?
 index_uadd=Vytvořte novou službu upstart.
 index_sadd=Vytvořte novou službu systemd.
-index_always=Vždy
 index_ladd=Vytvořte nového agenta launchd.
 index_lname=Jméno agenta
 
 edit_reloadnow2=Znovu načtěte konfigurační soubor
 
+mass_failed=.. selhal
+mass_ok=.. Hotovo
 mass_ustart=Spouštění služeb
 mass_urestart=Restartování služeb
 mass_ustop=Zastavení služeb

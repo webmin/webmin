@@ -2215,7 +2215,8 @@ foreach my $name (keys %info) {
 		    'desc' => $i->{'Description'},
 		    'legacy' => 0,
 		    'boot' => $i->{'UnitFileState'} eq 'enabled' ? 1 :
-			      $i->{'UnitFileState'} eq 'static' ? 2 : 0,
+		              $i->{'UnitFileState'} eq 'static' ? 2 : 
+		              $i->{'UnitFileState'} eq 'masked' ? -1 : 0,
 		    'status' => $i->{'ActiveState'} eq 'active' ? 1 : 0,
 		    'substatus' => $i->{'SubState'},
 		    'fullstatus' => $i->{'SubState'} ?

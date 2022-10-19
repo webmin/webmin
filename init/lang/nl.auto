@@ -1,8 +1,13 @@
+index_sboot5=Nee (gemaskeerd)
+index_sboot6=Ja altijd)
 index_ucstatus=Service status
 index_ladd=Maak een nieuwe launchd-agent.
 index_lname=Naam agent
 
 edit_reloadnow2=Lees het configuratiebestand opnieuw
+
+mass_failed=.. mislukt
+mass_ok=.. gedaan
 
 mode_launchd=LaunchD
 

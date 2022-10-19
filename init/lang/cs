@@ -157,8 +157,6 @@ mass_enable=Zapnutí akce $1 při startu.
 mass_disable=Vypnutí akce $1 při startu.
 mass_starting=Spouštění akce $1 ..
 mass_stopping=Ukončování akce $1 ..
-mass_failed=.. selhalo!
-mass_ok=.. hotovo.
 
 change_err=Nemáte oprávnění přepínat úrovně běhu
 change_title=Přepnutí úrovně běhu

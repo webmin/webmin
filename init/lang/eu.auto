@@ -1,5 +1,7 @@
 index_title=Abiarazi eta itzali
 index_mode=Abiapuntu sistema : $1 
+index_sboot5=Ez (mozorrotuta)
+index_sboot6=Bai (beti)
 index_uname=Zerbitzuaren izena
 index_udesc=Zerbitzuaren deskribapena
 index_ucstatus=Zerbitzuaren egoera
@@ -7,12 +9,13 @@ index_uboot=Hasi abiarazi?
 index_ustatus=Orain exekutatzen ari zara?
 index_uadd=Sortu martxan dagoen zerbitzu berria.
 index_sadd=Sortu sistema berriko zerbitzua.
-index_always=beti
 index_ladd=Sortu abiarazteko agente berria.
 index_lname=Agente izena
 
 edit_reloadnow2=Berriro irakurri Konfigurazio fitxategia
 
+mass_failed=.. huts egin zuen
+mass_ok=.. eginda
 mass_ustart=Zerbitzuak abiaraztea
 mass_urestart=Zerbitzuak berrabiarazten dira
 mass_ustop=Zerbitzuak gelditzea

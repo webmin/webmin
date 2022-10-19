@@ -46,7 +46,6 @@ index_uname=サービス名
 index_udesc=サービス詳細
 index_uboot=起動時に実行?
 index_ustatus=実行中?
-index_always=常に
 
 edit_title=アクションの編集
 create_title=アクションの作成
@@ -158,8 +157,6 @@ mass_enable=Enabling action $1 at boot time.
 mass_disable=Disabling action $1 at boot time.
 mass_starting=Starting action $1 ..
 mass_stopping=Stopping action $1 ..
-mass_failed=.. failed!
-mass_ok=.. done.
 
 change_err=ランレベルの変更は許可されていません
 change_title=ランレベルの変更

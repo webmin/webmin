@@ -156,8 +156,6 @@ mass_enable=$1 ekintza karga denboran gaitzen.
 mass_disable=$1 ekintza karga denboran desgaitzen.
 mass_starting=$1 ekintza martxan jartzen ..
 mass_stopping=$1 ekintza gelditzen ..
-mass_failed=.. Akatsa!
-mass_ok=.. Egina.
 
 change_err=Ez zaude exekuzio-mailak aldatzera baimendua
 change_title=Aldatu exekuzio-maila

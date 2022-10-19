@@ -153,8 +153,6 @@ mass_enable=부팅 시 $1 동작 활성화
 mass_disable=부팅 시 $1 동작 비 활성화
 mass_starting=$1 동작 실행 ..
 mass_stopping=$1 동작 정지 ..
-mass_failed=.. 실패!
-mass_ok=.. 완료
 
 change_err=실행 레벨 변경 권한이 없습니다.
 change_title=실행 레벨 변경

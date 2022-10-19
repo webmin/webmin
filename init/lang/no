@@ -49,7 +49,6 @@ index_uboot=Start ved oppstart?
 index_ustatus=Kjører nå?
 index_uadd=Opprett ny oppstartstjeneste.
 index_sadd=Opprett ny systsemd tjeneste.
-index_always=Alltid
 index_ladd=Opprett ny launchd agent.
 index_lname=Agent-navn
 
@@ -168,8 +167,6 @@ mass_enable=Slår på handling $1 ved oppstart.
 mass_disable=Slår av handling $1 ved oppstart.
 mass_starting=Starter handling $1 ..
 mass_stopping=Stopper handling $1 ..
-mass_failed=.. feilet!
-mass_ok=.. ferdig.
 mass_ustart=Starter tjenester
 mass_urestart=Omstarter tjenester
 mass_ustop=Stopper tjenester
