@@ -2196,7 +2196,7 @@ return undef;
 sub before_editing
 {
 my ($zone) = @_;
-if (!$freeze_zone_count{$zone->{'name'}}) {
+if ($zone->{'dynamic'} && !$freeze_zone_count{$zone->{'name'}}) {
 	my ($out, $ok) = &try_cmd(
 		"freeze ".quotemeta($zone->{'name'})." IN ".
 		quotemeta($zone->{'view'} || ""));
