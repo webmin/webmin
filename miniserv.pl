@@ -5640,23 +5640,6 @@ elsif ($ws->{'pipe'}) {
 		&http_error(500, "Websockets pipe failed : $?");
 	print DEBUG "websockets pipe $ws->{'pipe'}\n";
 	}
-elsif ($ws->{'cmd'}) {
-	# Backend is a shell command
-	eval "use IO::Pty";
-	$@ && &http_error(500,"Websockets command requires the IO::Pty module");
-	my $ptyfh = new IO::Pty;
-	my $ttyfh = $ptyfh->slave();
-	my $tty = $ptyfh->ttyname();
-	# XXX chown tty?
-	my $pid = fork();
-	if (!$pid) {
-		# Run command in a forked process
-		# XXX todo here
-		exit(1);
-		}
-	$ptyfh->close_slave();
-	print DEBUG "websockets command $ws->{'cmd'}\n";
-	}
 else {
 	&http_error(500, "Invalid Webmin websockets config");
 	}
