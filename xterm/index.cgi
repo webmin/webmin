@@ -33,12 +33,11 @@ while(1) {
 my %miniserv;
 &get_miniserv_config(\%miniserv);
 my $wspath = "/$module_name/ws-".$port;
-$miniserv{'websockets_'.$wspath} = "host=127.0.0.1 port=$port wspath=/";
+$miniserv{'websockets_'.$wspath} = "host=127.0.0.1 port=$port wspath=/ user=$remote_user";
 &put_miniserv_config(\%miniserv);
 &reload_miniserv();
 
 # Launch the shell server on that port
-# XXX validate that session or user matches!
 &foreign_require("cron");
 my $shellserver_cmd = "$module_config_directory/shellserver.pl";
 if (!-r $shellserver_cmd) {
@@ -52,7 +51,6 @@ sleep(2);
 # Open the terminal
 my $url = "wss://".$ENV{'HTTP_HOST'}.$wspath;
 print <<EOF;
-<center>
 <div id="terminal"></div>
 <script>
 var term = new Terminal();
@@ -61,7 +59,6 @@ var socket = new WebSocket('$url', 'binary');
 var attachAddon = new AttachAddon.AttachAddon(socket);
 term.loadAddon(attachAddon);
 </script>
-</center>
 EOF
 
 &ui_print_footer("/", $text{'index'});

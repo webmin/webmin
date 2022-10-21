@@ -5623,6 +5623,15 @@ if (!$key) {
 	&http_error(500, "Missing Sec-Websocket-Key header");
 	return 0;
 	}
+my @users = split(/\s+/, $ws->{'user'});
+my @busers = split(/\s+/, $ws->{'buser'});
+if (@users || @busers) {
+	if (&indexof($authuser, @users) < 0 &&
+	    &indexof($baseauthuser, @busers) < 0) {
+		&http_error(500, "Invalid user for Websockets connection");
+		return 0;
+		}
+	}
 my @protos = split(/\s*,\s*/, $header{'sec-websocket-protocol'});
 print DEBUG "websockets protos ",join(" ", @protos),"\n";
 
