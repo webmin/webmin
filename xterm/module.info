@@ -1,0 +1,3 @@
+desc=Websockets Shell
+name=xterm
+longdesc=Access the shell on your system without the need for a separate SSH client, using XTerm over Websockets
