@@ -5623,6 +5623,15 @@ if (!$key) {
 	&http_error(500, "Missing Sec-Websocket-Key header");
 	return 0;
 	}
+my @users = split(/\s+/, $ws->{'user'});
+my @busers = split(/\s+/, $ws->{'buser'});
+if (@users || @busers) {
+	if (&indexof($authuser, @users) < 0 &&
+	    &indexof($baseauthuser, @busers) < 0) {
+		&http_error(500, "Invalid user for Websockets connection");
+		return 0;
+		}
+	}
 my @protos = split(/\s*,\s*/, $header{'sec-websocket-protocol'});
 print DEBUG "websockets protos ",join(" ", @protos),"\n";
 
@@ -5639,23 +5648,6 @@ elsif ($ws->{'pipe'}) {
 	open($fh, $ws->{'pipe'}) ||
 		&http_error(500, "Websockets pipe failed : $?");
 	print DEBUG "websockets pipe $ws->{'pipe'}\n";
-	}
-elsif ($ws->{'cmd'}) {
-	# Backend is a shell command
-	eval "use IO::Pty";
-	$@ && &http_error(500,"Websockets command requires the IO::Pty module");
-	my $ptyfh = new IO::Pty;
-	my $ttyfh = $ptyfh->slave();
-	my $tty = $ptyfh->ttyname();
-	# XXX chown tty?
-	my $pid = fork();
-	if (!$pid) {
-		# Run command in a forked process
-		# XXX todo here
-		exit(1);
-		}
-	$ptyfh->close_slave();
-	print DEBUG "websockets command $ws->{'cmd'}\n";
 	}
 else {
 	&http_error(500, "Invalid Webmin websockets config");

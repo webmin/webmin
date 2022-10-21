@@ -2173,33 +2173,35 @@ my @templates = grep { /\@$/ || /\@\.service$/ } @units;
 # Dump state of all of them, 100 at a time
 my %info;
 my $ecount = 0;
-my $out;
-my @units_parts;
-push @units_parts, [ splice @units, 0, 100 ]  while @units;
-foreach my $units_part (@units_parts) {
-	my $cmd;
-	foreach my $unit (@{$units_part}) {
-		$cmd .=
-		  "systemctl show --property=Id,Description,UnitFileState,ActiveState,SubState,ExecStart,ExecStop,ExecReload,ExecMainPID,FragmentPath $unit 2>/dev/null ; ";
+while(@units) {
+	my @args;
+	while(@args < 100 && @units) {
+		push(@args, shift(@units));
 		}
-	# Run combine command for speed
-	$out .= &backquote_command($cmd);
-	$ecount++ if ($?);
-	}
-if ($out) {
+	$out = &backquote_command("systemctl show --property=Id,Description,UnitFileState,ActiveState,SubState,ExecStart,ExecStop,ExecReload,ExecMainPID,FragmentPath ".join(" ", @args)." 2>/dev/null");
 	my @lines = split(/\r?\n/, $out);
 	my $curr;
+	my @units;
+	if (@lines) {
+		$curr = { };
+		push(@units, $curr);
+		}
 	foreach my $l (@lines) {
-		my ($n, $v) = split(/=/, $l, 2);
-		next if (!$n);
-		if (lc($n) eq 'id') {
-			$curr = $v;
-			$info{$curr} ||= { };
+		if ($l eq "") {
+			# Start of a new unit section
+			$curr = { };
+			push(@units, $curr);
 			}
-		if ($curr) {
-			$info{$curr}->{$n} = $v;
+		else {
+			# A property in the current one
+			my ($n, $v) = split(/=/, $l, 2);
+			$curr->{$n} = $v;
 			}
 		}
+	foreach my $u (@units) {
+		$info{$u->{'Id'}} = $u if ($u->{'Id'});
+		}
+	$ecount++ if ($?);
 	}
 if ($ecount && keys(%info) < 2) {
 	&error("Failed to read systemd units : $out");
