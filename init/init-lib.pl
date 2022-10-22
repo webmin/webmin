@@ -2181,7 +2181,7 @@ while(@units) {
 	while(@args < 100 && @units) {
 		push(@args, shift(@units));
 		}
-	my $out = &backquote_command("systemctl show ".join(" ", @args)." 2>/dev/null");
+	my $out = &backquote_command("systemctl show --property=Id,Description,UnitFileState,ActiveState,SubState,ExecStart,ExecStop,ExecReload,ExecMainPID,FragmentPath ".join(" ", @args)." 2>/dev/null");
 	my @lines = split(/\r?\n/, $out);
 	my $curr;
 	my @units;
