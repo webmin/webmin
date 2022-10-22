@@ -5674,6 +5674,7 @@ if (@protos) {
 
 # Send a websockets request to the backend
 my $path = $ws->{'wspath'} || $simple;
+print DEBUG "send request to $path to websockets backend\n";
 print $fh "GET $path HTTP/1.1\r\n";
 if ($ws->{'host'}) {
 	print $fh "Host: $ws->{'host'}\r\n";
@@ -5689,6 +5690,8 @@ print $fh "\r\n";
 
 # Read back the reply
 my $rh = <$fh>;
+$rh =~ s/\r|\n//g;
+print DEBUG "got $rh from websockets backend\n";
 $rh =~ /^HTTP\/1\.1\s+(\d+)/ && $1 == 101 ||
 	&http_error(500, "Bad response from websockets backend : ".
 		    &html_strip($rh));
