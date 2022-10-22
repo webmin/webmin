@@ -52,6 +52,12 @@ if ($type eq 'char' || $type eq 'varchar' || $type eq 'numeric' ||
 		}
 	}
 
+if (!$in{'type'}) {
+	# Display if primary key
+	print &ui_table_row($text{'field_key'},
+		$f->{'key'} eq 'PRI' ? $text{'yes'} : $text{'no'});
+	}
+
 if ($in{'type'}) {
 	# Ask if this is an array
 	print &ui_table_row($text{'field_arr'},
