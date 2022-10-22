@@ -2178,15 +2178,14 @@ while(@units) {
 	while(@args < 100 && @units) {
 		push(@args, shift(@units));
 		}
-	my $cmd;
-	foreach my $unit (@args) {
-		$cmd .=
-		  "echo '' && systemctl show --property=Id,Description,UnitFileState,ActiveState,SubState,ExecStart,ExecStop,ExecReload,ExecMainPID,FragmentPath $unit 2>/dev/null ; ";
-		}
-	$out = &backquote_command($cmd);
+	my $out = &backquote_command("systemctl show ".join(" ", @args)." 2>/dev/null");
 	my @lines = split(/\r?\n/, $out);
 	my $curr;
 	my @units;
+	if (@lines) {
+		$curr = { };
+		push(@units, $curr);
+		}
 	foreach my $l (@lines) {
 		if ($l eq "") {
 			# Start of a new unit section
