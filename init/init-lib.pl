@@ -2134,7 +2134,7 @@ foreach my $l (split(/\r?\n/, $out)) {
 	$l =~ s/^[^a-z0-9\-\_\.]+//i;
 	my ($unit, $loaded, $active, $sub, $desc) = split(/\s+/, $l, 5);
 	my $a = $unit;
-	$a =~ s/\.service$//;
+	$a =~ s/\.(target|service|socket|device|mount|automount|swap|path|timer|snapshot|slice|scope|busname)$//;
 	my $f = &action_filename($a);
 	if ($unit ne "UNIT" && $loaded eq "loaded" && !-r $f) {
 		push(@units, $unit);
@@ -2152,7 +2152,7 @@ closedir(UNITS);
 # Also add units from list-unit-files that also don't show up
 $out = &backquote_command("systemctl list-unit-files -t service --no-legend");
 foreach my $l (split(/\r?\n/, $out)) {
-	if ($l =~ /^(\S+\.service)\s+disabled/ ||
+	if ($l =~ /^(\S+\.(target|service|socket|device|mount|automount|swap|path|timer|snapshot|slice|scope|busname))\s+disabled/ ||
 	    $l =~ /^(\S+)\s+disabled/) {
 		push(@units, $1);
 		}
@@ -2167,8 +2167,8 @@ foreach my $l (split(/\r?\n/, $out)) {
 @units = &unique(@units);
 
 # Filter out templates
-my @templates = grep { /\@$/ || /\@\.service$/ } @units;
-@units = grep { !/\@$/ && !/\@\.service$/ } @units;
+my @templates = grep { /\@$/ || /\@\.(target|service|socket|device|mount|automount|swap|path|timer|snapshot|slice|scope|busname)$/ } @units;
+@units = grep { !/\@$/ && !/\@\.(target|service|socket|device|mount|automount|swap|path|timer|snapshot|slice|scope|busname)$/ } @units;
 
 # Dump state of all of them, 100 at a time
 my %info;
@@ -2178,15 +2178,14 @@ while(@units) {
 	while(@args < 100 && @units) {
 		push(@args, shift(@units));
 		}
-	my $cmd;
-	foreach my $unit (@args) {
-		$cmd .=
-		  "echo '' && systemctl show --property=Id,Description,UnitFileState,ActiveState,SubState,ExecStart,ExecStop,ExecReload,ExecMainPID,FragmentPath $unit 2>/dev/null ; ";
-		}
-	$out = &backquote_command($cmd);
+	my $out = &backquote_command("systemctl show ".join(" ", @args)." 2>/dev/null");
 	my @lines = split(/\r?\n/, $out);
 	my $curr;
 	my @units;
+	if (@lines) {
+		$curr = { };
+		push(@units, $curr);
+		}
 	foreach my $l (@lines) {
 		if ($l eq "") {
 			# Start of a new unit section
