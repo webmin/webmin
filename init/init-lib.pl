@@ -2204,7 +2204,7 @@ while(@units) {
 	$ecount++ if ($?);
 	}
 if ($ecount && keys(%info) < 2) {
-	&error("Failed to read systemd units : $out");
+	&error("Failed to read systemd units : <pre>$out</pre>");
 	}
 
 # Extract info we want
