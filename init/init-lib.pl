@@ -2410,9 +2410,9 @@ sub get_systemd_unit_types
 {
 my ($str_separator) = @_;
 my @systemd_types = ('target', 'service', 'socket', 'device',
-        'mount', 'automount', 'swap', 'path',
-        'timer', 'snapshot', 'slice', 'scope',
-        'busname');
+                     'mount', 'automount', 'swap', 'path',
+                     'timer', 'snapshot', 'slice', 'scope',
+                     'busname');
 return $str_separator ?
 	join($str_separator, @systemd_types) :
 	@systemd_types;
