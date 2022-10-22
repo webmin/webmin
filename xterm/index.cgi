@@ -1,5 +1,7 @@
 #!/usr/local/bin/perl
 # Show a terminal that is connected to a Websockets server via Webmin proxying
+# XXX need to set terminal type
+# XXX clean up old proxy ports
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
