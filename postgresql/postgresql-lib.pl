@@ -1013,6 +1013,9 @@ if ($info->{'create'} =~ /using\s+(\S+)\s/) {
 	}
 if ($info->{'create'} =~ /\((.*)\)/) {
 	$info->{'cols'} = [ split(/\s*,\s*/, $1) ];
+	foreach my $c (@{$info->{'cols'}}) {
+		$c =~ s/^"(.*)"$/$1/;
+		}
 	}
 
 return $info;

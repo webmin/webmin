@@ -346,7 +346,7 @@ else {
 				$gid++;
 				}
 			$rv = $ldap->add($newdn, attr =>
-				 [ "cn" => $group,
+				 [ "cn" => $grp,
 				   "gidNumber" => $gid,
 				   @props,
 				   "objectClass" => \@classes ] );

@@ -35,7 +35,7 @@ my @extra_reverse = split(/\s+/, $config{'extra_reverse'} || '');
 our %is_extra = map { $_, 1 } (@extra_forward, @extra_reverse);
 our %access = &get_module_acl();
 my $zone_names_cache = "$module_config_directory/zone-names";
-my $zone_names_version = 3;
+my $zone_names_version = 4;
 my @list_zone_names_cache;
 my $slave_error;
 my %lines_count;
@@ -2196,7 +2196,7 @@ return undef;
 sub before_editing
 {
 my ($zone) = @_;
-if (!$freeze_zone_count{$zone->{'name'}}) {
+if ($zone->{'dynamic'} && !$freeze_zone_count{$zone->{'name'}}) {
 	my ($out, $ok) = &try_cmd(
 		"freeze ".quotemeta($zone->{'name'})." IN ".
 		quotemeta($zone->{'view'} || ""));
@@ -2226,19 +2226,21 @@ sub restart_zone
 {
 my ($dom, $view) = @_;
 my ($out, $ex);
+my $zone = &get_zone_name($dom, $view);
+my $dyn = $zone && $zone->{'dynamic'};
 if ($view) {
 	# Reload a zone in a view
-	&try_cmd("freeze ".quotemeta($dom)." IN ".quotemeta($view));
+	&try_cmd("freeze ".quotemeta($dom)." IN ".quotemeta($view)) if ($dyn);
 	$out = &try_cmd("reload ".quotemeta($dom)." IN ".quotemeta($view));
 	$ex = $?;
-	&try_cmd("thaw ".quotemeta($dom)." IN ".quotemeta($view));
+	&try_cmd("thaw ".quotemeta($dom)." IN ".quotemeta($view)) if ($dyn);
 	}
 else {
 	# Just reload one top-level zone
-	&try_cmd("freeze ".quotemeta($dom));
+	&try_cmd("freeze ".quotemeta($dom)) if ($dyn);
 	$out = &try_cmd("reload ".quotemeta($dom));
 	$ex = $?;
-	&try_cmd("thaw ".quotemeta($dom));
+	&try_cmd("thaw ".quotemeta($dom)) if ($dyn);
 	}
 if ($out =~ /not found/i) {
 	# Zone is not known to BIND yet - do a total reload
@@ -2457,8 +2459,11 @@ if ($changed || !$znc{'version'} ||
 			my $type = &find_value("type", $z->{'members'});
 			next if (!$type);
 			my $file = &find_value("file", $z->{'members'});
+			my $up = &find("update-policy", $z->{'members'});
+			my $au = &find("allow-update", $z->{'members'});
+			my $dynamic = $up || $au ? 1 : 0;
 			$znc{"zone_".($n++)} = join("\t", $z->{'value'},
-				$z->{'index'}, $type, $v->{'value'}, $file);
+			  $z->{'index'}, $type, $v->{'value'}, $dynamic, $file);
 			$files{$z->{'file'}}++;
 			}
 		$znc{"view_".($n++)} = join("\t", $v->{'value'}, $v->{'index'});
@@ -2469,8 +2474,11 @@ if ($changed || !$znc{'version'} ||
 		next if (!$type);
 		my $file = &find_value("file", $z->{'members'});
 		$file ||= "";	# slaves and other types with no file
+		my $up = &find("update-policy", $z->{'members'});
+		my $au = &find("allow-update", $z->{'members'});
+		my $dynamic = $up || $au ? 1 : 0;
 		$znc{"zone_".($n++)} = join("\t", $z->{'value'},
-			$z->{'index'}, $type, "*", $file);
+			$z->{'index'}, $type, "*", $dynamic, $file);
 		$files{$z->{'file'}}++;
 		}
 
@@ -2501,12 +2509,13 @@ if (scalar(@list_zone_names_cache)) {
 my (@rv, %viewidx);
 foreach my $k (keys %znc) {
 	if ($k =~ /^zone_(\d+)$/) {
-		my ($name, $index, $type, $view, $file) =
-			split(/\t+/, $znc{$k}, 5);
+		my ($name, $index, $type, $view, $dynamic, $file) =
+			split(/\t+/, $znc{$k}, 6);
 		push(@rv, { 'name' => $name,
 			    'type' => $type,
 			    'index' => $index,
 			    'view' => !$view || $view eq '*' ? undef : $view,
+			    'dynamic' => $dynamic,
 			    'file' => $file });
 		}
 	elsif ($k =~ /^view_(\d+)$/) {
@@ -2534,7 +2543,7 @@ undef(@list_zone_names_cache);
 unlink($zone_names_cache);
 }
 
-# get_zone_name(index|name, [viewindex|"any"])
+# get_zone_name(index|name, [viewindex|view-name|"any"])
 # Returns a zone cache object, looked up by name or index
 sub get_zone_name
 {
@@ -2546,7 +2555,8 @@ foreach my $z (@zones) {
 	if ($z->{$field} eq $key &&
 	    ($viewidx eq 'any' ||
 	     $viewidx eq '' && !defined($z->{'viewindex'}) ||
-	     $viewidx ne '' && $z->{'viewindex'} == $_[1])) {
+	     $viewidx =~ /^\d+$/ && $z->{'viewindex'} == $viewidx ||
+	     $viewidx ne '' && $z->{'view'} eq $viewidx)) {
 		return $z;
 		}
 	}
