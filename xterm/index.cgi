@@ -47,6 +47,7 @@ if (!-r $shellserver_cmd) {
 	}
 my $user = $access{'user'};
 my $tmpdir = &tempname_dir();
+$ENV{'SESSION_ID'} = $main::session_id;
 &system_logged("$shellserver_cmd $port $user >$tmpdir/ws-$port.out 2>&1 </dev/null &");
 sleep(2);
 

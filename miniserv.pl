@@ -5674,6 +5674,7 @@ if (@protos) {
 
 # Send a websockets request to the backend
 my $path = $ws->{'wspath'} || $simple;
+my $bsession_id = &b64encode($session_id);
 print DEBUG "send request to $path to websockets backend\n";
 print $fh "GET $path HTTP/1.1\r\n";
 if ($ws->{'host'}) {
@@ -5681,7 +5682,7 @@ if ($ws->{'host'}) {
 	}
 print $fh "Upgrade: websocket\r\n";
 print $fh "Connection: Upgrade\r\n";
-print $fh "Sec-WebSocket-Key: $key\r\n";
+print $fh "Sec-WebSocket-Key: $bsession_id\r\n";
 if (@protos) {
 	print $fh "Sec-WebSocket-Protocol: ",join(" ", @protos),"\r\n";
 	}
@@ -5717,7 +5718,14 @@ lc($rheader{'upgrade'}) eq 'websocket' ||
 	 &http_error(500, "Missing Upgrade header from websockets backend");
 lc($rheader{'connection'}) eq 'upgrade' ||
 	 &http_error(500, "Missing Connection header from websockets backend");
-lc($rheader{'sec-websocket-accept'}) eq lc($digest) ||
+
+# Check the reply key
+my $brkey = $bsession_id."258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
+my $bsha1 = Digest::SHA1->new;
+$bsha1->add($brkey);
+my $bdigest = $bsha1->digest;
+$bdigest = &b64encode($bdigest);
+$rheader{'sec-websocket-accept'} eq $bdigest ||
 	 &http_error(500, "Incorrect digest header from websockets backend");
 
 # Log now

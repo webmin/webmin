@@ -30,9 +30,26 @@ Net::WebSocket::Server->new(
     on_connect => sub {
         my ($serv, $conn) = @_;
 	print STDERR "got websockets connection\n";
+	if ($wsconn) {
+	  print STDERR "Too many connections to the same port!\n";
+	  kill('KILL', $pid) if ($pid);
+	  exit(1);
+	}
 	$wsconn = $conn;
 	alarm(0);
         $conn->on(
+	    handshake => sub {
+		# Is the key valid for this Webmin session?
+                my ($conn, $handshake) = @_;
+		my $key = $handshake->req->fields->{'sec-websocket-key'};
+		my $dsess = &encode_base64($main::session_id);
+		$key =~ s/\s//g;
+		$dsess =~ s/\s//g;
+		if ($key ne $dsess) {
+		    print STDERR "Key $key does not match session ID $dsess\n";
+		    $conn->disconnect();
+		}
+	    },
 	    ready => sub {
                 my ($conn) = @_;
 		$conn->send_utf8($shellbuf) if ($shellbuf);
