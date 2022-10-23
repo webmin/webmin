@@ -207,8 +207,9 @@ unless full unit name is passed
 sub action_unit
 {
 my ($unit) = @_;
+my $units_piped = &get_systemd_unit_types('|');
 $unit .= ".service"
-	if ($unit !~ /\.(target|service|socket|device|mount|automount|swap|path|timer|snapshot|slice|scope|busname)$/);
+	if ($unit !~ /\.($units_piped)$/);
 return $unit;
 }
 
@@ -2127,6 +2128,8 @@ if (@list_systemd_services_cache && !$noinit) {
 	return @list_systemd_services_cache;
 	}
 
+my $units_piped = &get_systemd_unit_types('|');
+
 # Get all systemd unit names
 my $out = &backquote_command("systemctl list-units --full --all -t service --no-legend");
 my $ex = $?;
@@ -2134,7 +2137,7 @@ foreach my $l (split(/\r?\n/, $out)) {
 	$l =~ s/^[^a-z0-9\-\_\.]+//i;
 	my ($unit, $loaded, $active, $sub, $desc) = split(/\s+/, $l, 5);
 	my $a = $unit;
-	$a =~ s/\.service$//;
+	$a =~ s/\.($units_piped)$//;
 	my $f = &action_filename($a);
 	if ($unit ne "UNIT" && $loaded eq "loaded" && !-r $f) {
 		push(@units, $unit);
@@ -2152,7 +2155,7 @@ closedir(UNITS);
 # Also add units from list-unit-files that also don't show up
 $out = &backquote_command("systemctl list-unit-files -t service --no-legend");
 foreach my $l (split(/\r?\n/, $out)) {
-	if ($l =~ /^(\S+\.service)\s+disabled/ ||
+	if ($l =~ /^(\S+\.($units_piped))\s+disabled/ ||
 	    $l =~ /^(\S+)\s+disabled/) {
 		push(@units, $1);
 		}
@@ -2167,8 +2170,8 @@ foreach my $l (split(/\r?\n/, $out)) {
 @units = &unique(@units);
 
 # Filter out templates
-my @templates = grep { /\@$/ || /\@\.service$/ } @units;
-@units = grep { !/\@$/ && !/\@\.service$/ } @units;
+my @templates = grep { /\@$/ || /\@\.($units_piped)$/ } @units;
+@units = grep { !/\@$/ && !/\@\.($units_piped)$/ } @units;
 
 # Dump state of all of them, 100 at a time
 my %info;
@@ -2178,7 +2181,7 @@ while(@units) {
 	while(@args < 100 && @units) {
 		push(@args, shift(@units));
 		}
-	my $out = &backquote_command("systemctl show ".join(" ", @args)." 2>/dev/null");
+	my $out = &backquote_command("systemctl show --property=Id,Description,UnitFileState,ActiveState,SubState,ExecStart,ExecStop,ExecReload,ExecMainPID,FragmentPath ".join(" ", @args)." 2>/dev/null");
 	my @lines = split(/\r?\n/, $out);
 	my $curr;
 	my @units;
@@ -2397,6 +2400,24 @@ my ($name) = @_;
 &restart_systemd();
 }
 
+=head2 get_systemd_unit_types([return-as-string-separated])
+
+Returns a list of all systemd unit types. Returns a string
+instead if separator param is set.
+
+=cut
+sub get_systemd_unit_types
+{
+my ($str_separator) = @_;
+my @systemd_types = ('target', 'service', 'socket', 'device',
+                     'mount', 'automount', 'swap', 'path',
+                     'timer', 'snapshot', 'slice', 'scope',
+                     'busname');
+return $str_separator ?
+	join($str_separator, @systemd_types) :
+	@systemd_types;
+}
+
 =head2 is_systemd_service(name)
 
 Returns 1 if some service is managed by systemd
@@ -2405,10 +2426,11 @@ Returns 1 if some service is managed by systemd
 sub is_systemd_service
 {
 my ($name) = @_;
+my $units_piped = &get_systemd_unit_types('|');
 foreach my $s (&list_systemd_services(1)) {
 	if (($s->{'name'} eq $name ||
 	     $s->{'name'} =~
-	       /^$name\.(target|service|socket|device|mount|automount|swap|path|timer|snapshot|slice|scope|busname)$/) && !$s->{'legacy'}) {
+	       /^$name\.($units_piped)$/) && !$s->{'legacy'}) {
 		return 1;
 		}
 	}
