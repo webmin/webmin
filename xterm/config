@@ -1,1 +1,3 @@
 base_port=555
+cols=80
+rows=24

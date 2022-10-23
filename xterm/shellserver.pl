@@ -1,10 +1,9 @@
 #!/usr/local/bin/perl
 # Start a websocket server connected to a shell
 
-BEGIN { push(@INC, ".."); };
-use WebminCore;
+require './xterm-lib.pl';
+
 use Net::WebSocket::Server;
-&init_config();
 my ($port, $user) = @ARGV;
 
 # Switch to the user we're running as
@@ -16,6 +15,7 @@ if ($user ne "root" && $<) {
 
 # Run the user's shell in a sub-process
 &foreign_require("proc");
+$ENV{'TERM'} = 'vt100';
 our ($shellfh, $pid) = &proc::pty_process_exec($uinfo[8]);
 $pid || die "Failed to run shell $uinfo[8]";
 print STDERR "shell process is $pid\n";
