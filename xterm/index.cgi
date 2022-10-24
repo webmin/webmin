@@ -70,6 +70,7 @@ term.loadAddon(attachAddon);
 term.loadAddon(fitAddon);
 term.open(document.getElementById('terminal'));
 fitAddon.fit();
+term.focus();
 </script>
 EOF
 
