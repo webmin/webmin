@@ -73,9 +73,9 @@ if ($@) {
 # Pick a port and configure Webmin to proxy it
 my $port = $config{'base_port'} || 555;
 while(1) {
-	&open_socket("127.0.0.1", $port, TEST, \$err);
+	&open_socket("127.0.0.1", $port, my $fh, \$err);
 	last if ($err);
-	close(TEST);
+	close($fh);
 	$port++;
 	}
 my %miniserv;
