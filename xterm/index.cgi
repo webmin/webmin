@@ -61,15 +61,9 @@ print &ui_table_row(undef, "<div id=terminal></div>", 2);
 print &ui_table_end();
 print "</center>\n";
 my $url = "wss://".$ENV{'HTTP_HOST'}.$wspath;
-my $rows = $config{'rows'} || 24;
-my $cols = $config{'cols'} || 80;
 print <<EOF;
 <script>
-var term = new Terminal({
-	rows: $rows,
-	cols: $cols,
-	});
-term.open(document.getElementById('terminal'));
+var term = new Terminal();
 var socket = new WebSocket('$url', 'binary');
 var attachAddon = new AttachAddon.AttachAddon(socket);
 term.loadAddon(attachAddon);
