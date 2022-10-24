@@ -17,6 +17,9 @@ $wver =~ s/\.//;
 		 "<script src=xterm-addon-fit.js?$wver></script>\n"
 		);
 
+# Make sure container isn't scrolled in older themes
+print "<style>body[style='height:100%'] { height: 99% !important; } #terminal + script ~ * { display: none }</style>\n";
+
 # Check for needed modules
 my $modname = "Net::WebSocket::Server";
 eval "use ${modname};";
@@ -55,20 +58,20 @@ $ENV{'SESSION_ID'} = $main::session_id;
 sleep(1);
 
 # Open the terminal
-print "<center>\n";
-print &ui_table_start(undef, undef, 2);
-print &ui_table_row(undef, "<div id=terminal></div>", 2);
-print &ui_table_end();
-print "</center>\n";
+print "<div id=\"terminal\" style=\"height: 95%;\"></div>";
 my $url = "wss://".$ENV{'HTTP_HOST'}.$wspath;
 print <<EOF;
 <script>
 var term = new Terminal();
 var socket = new WebSocket('$url', 'binary');
 var attachAddon = new AttachAddon.AttachAddon(socket);
+var fitAddon = new FitAddon.FitAddon();
 term.loadAddon(attachAddon);
+term.loadAddon(fitAddon);
+term.open(document.getElementById('terminal'));
+fitAddon.fit();
 </script>
 EOF
 
-&ui_print_footer("/", $text{'index'});
+&ui_print_footer();
 
