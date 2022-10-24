@@ -58,19 +58,30 @@ $ENV{'SESSION_ID'} = $main::session_id;
 sleep(1);
 
 # Open the terminal
-print "<div id=\"terminal\" style=\"height: 95%;\"></div>";
 my $url = "wss://".$ENV{'HTTP_HOST'}.$wspath;
+my ($size, $termopts) = ($config{'size'});
+if ($size && $size =~ /([\d]+)X([\d]+)/i) {
+	$termopts =
+	  {'ContainerStyle' => "style='width: fit-content; margin: 0 auto;'",
+	   'Options' => "{ cols: $1, rows: $2 }"}
+	}
+else {
+	$termopts =
+	  {'FitAddonLoad' => 'var fitAddon = new FitAddon.FitAddon(); term.loadAddon(fitAddon);',
+	   'FitAddonAdjust' => 'fitAddon.fit();',
+	   'ContainerStyle' => "style='height: 95%;'"};
+	}
+print "<div id=\"terminal\" $termopts->{'ContainerStyle'}></div>";
 print <<EOF;
 <script>
-var term = new Terminal();
-var socket = new WebSocket('$url', 'binary');
-var attachAddon = new AttachAddon.AttachAddon(socket);
-var fitAddon = new FitAddon.FitAddon();
-term.loadAddon(attachAddon);
-term.loadAddon(fitAddon);
-term.open(document.getElementById('terminal'));
-fitAddon.fit();
-term.focus();
+	var term = new Terminal($termopts->{'Options'}),
+		socket = new WebSocket('$url', 'binary'),
+		attachAddon = new AttachAddon.AttachAddon(socket);
+	term.loadAddon(attachAddon);
+	$termopts->{'FitAddonLoad'}
+	term.open(document.getElementById('terminal'));
+	$termopts->{'FitAddonAdjust'}
+	term.focus();
 </script>
 EOF
 
