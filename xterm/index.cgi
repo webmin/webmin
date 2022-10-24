@@ -20,33 +20,42 @@ $wver =~ s/\.//;
 
 # Set column size depending on the browser window size
 my $screen_width = int($in{'w'});
-if (!$screen_width) {
-	print "<script>location.href = location.pathname + '?w=' + window.innerWidth;</script>";
+my $screen_height = int($in{'h'});
+if (!$screen_width ||
+    !$screen_height) {
+	print "<script>location.href = location.pathname + '?w=' + window.innerWidth + '&h=' + window.innerHeight;</script>";
 	return;
 }
 
 # Set pixel to columns conversion
-my $rowwidth_def = int($screen_width / (int($in{'f'}) || 9));
+my $cols_num_user = int($screen_width / (int($in{'f'}) || 9));
+
+# Set pixel to rows (lines) conversion
+my $rows_num_user = int($screen_height / (int($in{'l'}) || 18));
 
 # Process options
-my ($size, $colsdef, $termopts) = ($config{'size'}, 80);
+my ($size, $colsdef, $rowsdef, $termopts) = ($config{'size'}, 80, 24);
 if ($size && $size =~ /([\d]+)X([\d]+)/i) {
 	$termopts =
 	  {'ContainerStyle' => "style='width: fit-content; margin: 0 auto;'",
 	   'Options' => "{ cols: $1, rows: $2 }"};
 	$ENV{'COLUMNS'} = int($1) || $colsdef;
+	$ENV{'LINES'} = int($2) || $rowsdef;
 	}
 else {
 	$termopts =
 	  {'FitAddonLoad' => 'var fitAddon = new FitAddon.FitAddon(); term.loadAddon(fitAddon);',
 	   'FitAddonAdjust' => 'fitAddon.fit();',
 	   'ContainerStyle' => "style='height: 95%;'"};
-	$ENV{'COLUMNS'} = int($rowwidth_def) || $colsdef;
+	$ENV{'COLUMNS'} = int($cols_num_user) || $colsdef;
+	$ENV{'LINES'} = int($rows_num_user) || $rowsdef;
 	}
 
-# Column size sanity check and adjustment
+# Columns and rows size sanity check and adjustments
 $ENV{'COLUMNS'} = 86 if ($ENV{'COLUMNS'} < 86);
 $ENV{'COLUMNS'} -= 6;
+$ENV{'LINES'} = 28 if ($ENV{'COLUMNS'} < 28);
+$ENV{'LINES'} -= 4;
 
 # Make sure container isn't scrolled in older themes
 print "<style>body[style='height:100%'] { height: 99% !important; } #terminal + script ~ * { display: none }</style>\n";
