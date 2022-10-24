@@ -19,8 +19,8 @@ $wver =~ s/\.//;
 		);
 
 # Set column size depending on the browser window size
-my $screen_width = int($in{'w'});
-my $screen_height = int($in{'h'});
+my $screen_width = int($ENV{'HTTP_X_AGENT_WIDTH'}) || int($in{'w'});
+my $screen_height = int($ENV{'HTTP_X_AGENT_HEIGHT'}) || int($in{'h'});
 if (!$screen_width ||
     !$screen_height) {
 	print "<script>location.href = location.pathname + '?w=' + window.innerWidth + '&h=' + window.innerHeight;</script>";
