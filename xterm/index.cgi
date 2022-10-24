@@ -7,6 +7,7 @@
 # XXX Virtualmin integration?
 
 require './xterm-lib.pl';
+&ReadParse();
 
 my $wver = &get_webmin_version();
 $wver =~ s/\.//;
@@ -16,6 +17,36 @@ $wver =~ s/\.//;
 		 "<script src=xterm-addon-attach.js?$wver></script>\n".
 		 "<script src=xterm-addon-fit.js?$wver></script>\n"
 		);
+
+# Set column size depending on the browser window size
+my $screen_width = int($in{'w'});
+if (!$screen_width) {
+	print "<script>location.href = location.pathname + '?w=' + window.innerWidth;</script>";
+	return;
+}
+
+# Set pixel to columns conversion
+my $rowwidth_def = int($screen_width / (int($in{'f'}) || 9));
+
+# Process options
+my ($size, $colsdef, $termopts) = ($config{'size'}, 80);
+if ($size && $size =~ /([\d]+)X([\d]+)/i) {
+	$termopts =
+	  {'ContainerStyle' => "style='width: fit-content; margin: 0 auto;'",
+	   'Options' => "{ cols: $1, rows: $2 }"};
+	$ENV{'COLUMNS'} = int($1) || $colsdef;
+	}
+else {
+	$termopts =
+	  {'FitAddonLoad' => 'var fitAddon = new FitAddon.FitAddon(); term.loadAddon(fitAddon);',
+	   'FitAddonAdjust' => 'fitAddon.fit();',
+	   'ContainerStyle' => "style='height: 95%;'"};
+	$ENV{'COLUMNS'} = int($rowwidth_def) || $colsdef;
+	}
+
+# Column size sanity check and adjustment
+$ENV{'COLUMNS'} = 86 if ($ENV{'COLUMNS'} < 86);
+$ENV{'COLUMNS'} -= 6;
 
 # Make sure container isn't scrolled in older themes
 print "<style>body[style='height:100%'] { height: 99% !important; } #terminal + script ~ * { display: none }</style>\n";
@@ -59,18 +90,6 @@ sleep(1);
 
 # Open the terminal
 my $url = "wss://".$ENV{'HTTP_HOST'}.$wspath;
-my ($size, $termopts) = ($config{'size'});
-if ($size && $size =~ /([\d]+)X([\d]+)/i) {
-	$termopts =
-	  {'ContainerStyle' => "style='width: fit-content; margin: 0 auto;'",
-	   'Options' => "{ cols: $1, rows: $2 }"}
-	}
-else {
-	$termopts =
-	  {'FitAddonLoad' => 'var fitAddon = new FitAddon.FitAddon(); term.loadAddon(fitAddon);',
-	   'FitAddonAdjust' => 'fitAddon.fit();',
-	   'ContainerStyle' => "style='height: 95%;'"};
-	}
 print "<div id=\"terminal\" $termopts->{'ContainerStyle'}></div>";
 print <<EOF;
 <script>
