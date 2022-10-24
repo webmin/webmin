@@ -52,7 +52,7 @@ Net::WebSocket::Server->new(
                 },
             ready => sub {
                 my ($conn) = @_;
-                $conn->send_utf8($shellbuf) if ($shellbuf);
+                $conn->send_binary($shellbuf) if ($shellbuf);
                 },
             utf8 => sub {
                 my ($conn, $msg) = @_;
@@ -74,7 +74,7 @@ Net::WebSocket::Server->new(
             my $ok = sysread($shellfh, $buf, 1);
             exit(0) if ($ok <= 0);
             if ($wsconn) {
-                $wsconn->send_utf8($buf);
+                $wsconn->send_binary($buf);
                 }
             else {
                 $shellbuf .= $buf;
