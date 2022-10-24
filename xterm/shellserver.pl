@@ -15,7 +15,7 @@ if ($user ne "root" && $<) {
 
 # Run the user's shell in a sub-process
 &foreign_require("proc");
-$ENV{'TERM'} = 'vt100';
+$ENV{'TERM'} = 'xterm-256color';
 our ($shellfh, $pid) = &proc::pty_process_exec($uinfo[8]);
 $pid || die "Failed to run shell $uinfo[8]";
 print STDERR "shell process is $pid\n";
