@@ -8,10 +8,13 @@
 
 require './xterm-lib.pl';
 
+my $wver = &get_webmin_version();
+$wver =~ s/\.//;
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0, undef,
-		 "<link rel=stylesheet href=xterm.css>\n".
-		 "<script src=xterm.js></script>\n".
-		 "<script src=xterm-addon-attach.js></script>\n"
+		 "<link rel=stylesheet href=xterm.css?$wver>\n".
+		 "<script src=xterm.js?$wver></script>\n".
+		 "<script src=xterm-addon-attach.js?$wver></script>\n".
+		 "<script src=xterm-addon-fit.js?$wver></script>\n"
 		);
 
 # Check for needed modules
