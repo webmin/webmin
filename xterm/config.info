@@ -1,3 +1,2 @@
-base_port=Base port number for Websockets connections,0,5
-cols=Terminal width in characters,0,5
-rows=Terminal height in characters,0,5
+base_port=Base port number for WebSockets connections,0,5
+size=Terminal width and height in characters,3,Automatic,5,,,Static (80x24)
