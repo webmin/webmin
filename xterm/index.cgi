@@ -17,7 +17,7 @@ $wver =~ s/\.//;
 my $termlinks = 
 	{ 'css' => ['xterm.css?$wver'],
 	  'js'  => ['xterm.js?$wver',
-	  'xterm-addon-attach.js?$wver'] };
+	            'xterm-addon-attach.js?$wver'] };
 
 # Pre-process options
 my ($conf_size_str, $def_cols_n, $def_rows_n,
@@ -114,7 +114,6 @@ EOF
 		 "<link rel=stylesheet href=\"$termlinks->{'css'}[0]\">\n".
 		 "<script src=\"$termlinks->{'js'}[0]\"></script>\n".
 		 "<script src=\"$termlinks->{'js'}[1]\"></script>\n".
-		 "<script src=\"$termlinks->{'js'}[2]\"></script>\n".
 		 "<style>$styles_inline</style>\n"
 		);
 
