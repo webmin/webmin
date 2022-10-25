@@ -45,8 +45,8 @@ my $rows_num_user = int($screen_height / (int($in{'l'}) || 18));
 
 # Adjust columns and rows offset
 my $adjust_offset = sub {
-	$ENV{'COLUMNS'} -= 4;
-	$ENV{'LINES'} -= 4;
+	$ENV{'COLUMNS'} -= 5;
+	$ENV{'LINES'} -= 5;
 	};
 
 # Process options
