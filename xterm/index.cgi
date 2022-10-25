@@ -5,6 +5,7 @@
 # XXX don't grant to new users
 # XXX ACL to run as remote user
 # XXX Virtualmin integration?
+# XXX how to launch a login shell?
 
 require './xterm-lib.pl';
 
@@ -46,6 +47,10 @@ if (!-r $shellserver_cmd) {
 	&cron::create_wrapper($shellserver_cmd, $module_name, "shellserver.pl");
 	}
 my $user = $access{'user'};
+if ($user eq "*") {
+	$user = $remote_user;
+	}
+getpwnam($user) || &error(&text('index_euser', $user));
 my $tmpdir = &tempname_dir();
 $ENV{'SESSION_ID'} = $main::session_id;
 &system_logged("$shellserver_cmd $port $user >$tmpdir/ws-$port.out 2>&1 </dev/null &");
