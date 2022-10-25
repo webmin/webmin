@@ -190,8 +190,10 @@ my $term_script_data =
 	$xmlhr ?
 	"var xterm_argv = ".
 		&convert_to_json(
-			{ 'load' => $termlinks,
-			  'run' => $term_script }) :
+			{ 'files' => $termlinks,
+			  'cols' => $env_cols,
+			  'rows' => $env_rows,
+			  'socket_url' => $url }) :
 	$term_script;
 print <<EOF;
 <script>
