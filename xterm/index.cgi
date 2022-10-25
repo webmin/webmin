@@ -43,27 +43,32 @@ my $cols_num_user = int($screen_width / (int($in{'f'}) || 9));
 # Set pixel to rows (lines) conversion
 my $rows_num_user = int($screen_height / (int($in{'l'}) || 18));
 
+# Adjust columns and rows offset
+my $adjust_offset = sub {
+	$ENV{'COLUMNS'} -= 4;
+	$ENV{'LINES'} -= 4;
+	};
+
 # Process options
 my ($size, $colsdef, $rowsdef, $termopts) = ($config{'size'}, 80, 24);
 if ($size && $size =~ /([\d]+)X([\d]+)/i) {
-	$termopts =
-	  {'ContainerStyle' => "style='width: fit-content; margin: 0 auto;'",
-	   'Options' => "{ cols: $1, rows: $2 }"};
 	$ENV{'COLUMNS'} = int($1) || $colsdef;
 	$ENV{'LINES'} = int($2) || $rowsdef;
+	&$adjust_offset();
+	$termopts =
+	  {'ContainerStyle' => "style='width: fit-content; margin: 0 auto;'",
+	   'Options' => "{ cols: $ENV{'COLUMNS'}, rows: $ENV{'LINES'} }"};
 	}
 else {
+	$ENV{'COLUMNS'} = int($cols_num_user) || $colsdef;
+	$ENV{'LINES'} = int($rows_num_user) || $rowsdef;
+	&$adjust_offset();
 	$termopts =
 	  {'FitAddonLoad' => 'var fitAddon = new FitAddon.FitAddon(); term.loadAddon(fitAddon);',
 	   'FitAddonAdjust' => 'fitAddon.fit();',
-	   'ContainerStyle' => "style='height: 95%;'"};
-	$ENV{'COLUMNS'} = int($cols_num_user) || $colsdef;
-	$ENV{'LINES'} = int($rows_num_user) || $rowsdef;
+	   'ContainerStyle' => "style='height: 95%;'",
+	   'Options' => "{ cols: $ENV{'COLUMNS'}, rows: $ENV{'LINES'} }"};
 	}
-
-# Columns and rows simple adjustments
-$ENV{'COLUMNS'} -= 6;
-$ENV{'LINES'} -= 4;
 
 # Make sure container isn't scrolled in older themes
 print "<style>body[style='height:100%'] { height: 99% !important; } #terminal + script ~ * { display: none }</style>\n";
