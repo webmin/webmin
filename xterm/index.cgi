@@ -114,14 +114,14 @@ sleep(1);
 my $url = "wss://".$ENV{'HTTP_HOST'}.$wspath;
 print "<div id=\"terminal\" $termopts->{'ContainerStyle'}></div>\n";
 my $term_script = <<EOF;
-	var term = new Terminal($termopts->{'Options'}),
-		socket = new WebSocket('$url', 'binary'),
-		attachAddon = new AttachAddon.AttachAddon(socket);
-	term.loadAddon(attachAddon);
-	$termopts->{'FitAddonLoad'}
-	term.open(document.getElementById('terminal'));
-	$termopts->{'FitAddonAdjust'}
-	term.focus();
+var term = new Terminal($termopts->{'Options'}),
+    socket = new WebSocket('$url', 'binary'),
+    attachAddon = new AttachAddon.AttachAddon(socket);
+term.loadAddon(attachAddon);
+$termopts->{'FitAddonLoad'}
+term.open(document.getElementById('terminal'));
+$termopts->{'FitAddonAdjust'}
+term.focus();
 EOF
 
 # Return inline script data depending on type
