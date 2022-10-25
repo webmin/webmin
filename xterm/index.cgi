@@ -9,13 +9,23 @@
 require './xterm-lib.pl';
 &ReadParse();
 
+# Get Webmin current version for links serial
 my $wver = &get_webmin_version();
 $wver =~ s/\.//;
+
+# Build Xterm dependency links
+my $termlinks = 
+	{ 'css' => ['xterm.css?$wver'],
+	  'js'  => ['xterm.js?$wver',
+	  'xterm-addon-attach.js?$wver',
+	  'xterm-addon-fit.js?$wver'] };
+
+# Print header
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0, undef,
-		 "<link rel=stylesheet href=xterm.css?$wver>\n".
-		 "<script src=xterm.js?$wver></script>\n".
-		 "<script src=xterm-addon-attach.js?$wver></script>\n".
-		 "<script src=xterm-addon-fit.js?$wver></script>\n"
+		 "<link rel=stylesheet href=\"$termlinks->{'css'}[0]\">\n".
+		 "<script src=\"$termlinks->{'js'}[0]\"></script>\n".
+		 "<script src=\"$termlinks->{'js'}[1]\"></script>\n".
+		 "<script src=\"$termlinks->{'js'}[2]\"></script>\n"
 		);
 
 # Set column size depending on the browser window size
@@ -51,10 +61,8 @@ else {
 	$ENV{'LINES'} = int($rows_num_user) || $rowsdef;
 	}
 
-# Columns and rows size sanity check and adjustments
-$ENV{'COLUMNS'} = 86 if ($ENV{'COLUMNS'} < 86);
+# Columns and rows simple adjustments
 $ENV{'COLUMNS'} -= 6;
-$ENV{'LINES'} = 28 if ($ENV{'COLUMNS'} < 28);
 $ENV{'LINES'} -= 4;
 
 # Make sure container isn't scrolled in older themes
@@ -99,9 +107,8 @@ sleep(1);
 
 # Open the terminal
 my $url = "wss://".$ENV{'HTTP_HOST'}.$wspath;
-print "<div id=\"terminal\" $termopts->{'ContainerStyle'}></div>";
-print <<EOF;
-<script>
+print "<div id=\"terminal\" $termopts->{'ContainerStyle'}></div>\n";
+my $term_script = <<EOF;
 	var term = new Terminal($termopts->{'Options'}),
 		socket = new WebSocket('$url', 'binary'),
 		attachAddon = new AttachAddon.AttachAddon(socket);
@@ -110,6 +117,19 @@ print <<EOF;
 	term.open(document.getElementById('terminal'));
 	$termopts->{'FitAddonAdjust'}
 	term.focus();
+EOF
+
+# Return inline script data depending on type
+my $term_script_data =
+	$ENV{'HTTP_X_REQUESTED_WITH'} eq "XMLHttpRequest" ?
+	"var xterm_argv = ".
+		&convert_to_json(
+			{ 'load' => $termlinks,
+			  'run' => $term_script }) :
+	$term_script;
+print <<EOF;
+<script>
+	$term_script_data
 </script>
 EOF
 
