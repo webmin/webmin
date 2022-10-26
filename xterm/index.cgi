@@ -1,11 +1,7 @@
 #!/usr/local/bin/perl
 # Show a terminal that is connected to a Websockets server via Webmin proxying
-# XXX clean up old proxy ports
-# XXX permissions page
 # XXX don't grant to new users
-# XXX ACL to run as remote user
 # XXX Virtualmin integration?
-# XXX how to launch a login shell?
 
 require './xterm-lib.pl';
 &ReadParse();
@@ -191,20 +187,18 @@ term.focus();
 EOF
 
 # Return inline script data depending on type
-my $term_script_data =
-	$xmlhr ?
-	"var xterm_argv = ".
-		&convert_to_json(
+print "<script>\n";
+if ($xmlhr) {
+	print "var xterm_argv = ".
+	      &convert_to_json(
 			{ 'files' => $termlinks,
 			  'cols' => $env_cols,
 			  'rows' => $env_rows,
-			  'socket_url' => $url }) :
-	$term_script;
-print <<EOF;
-<script>
-	$term_script_data
-</script>
-EOF
-
+			  'socket_url' => $url });
+	}
+else {
+	print $term_script;
+	}
+print "</script>\n";
 &ui_print_footer();
 
