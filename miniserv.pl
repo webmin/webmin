@@ -2140,7 +2140,7 @@ if ($davpath) {
 	}
 
 # Check for a websockets request
-if (lc($header{'connection'}) eq 'upgrade' &&
+if (lc($header{'connection'}) =~ /upgrade/ &&
     lc($header{'upgrade'}) eq 'websocket' &&
     $baseauthuser) {
 	print DEBUG "websockets request to $simple\n";
@@ -5716,7 +5716,7 @@ while(1) {
 	}
 lc($rheader{'upgrade'}) eq 'websocket' ||
 	 &http_error(500, "Missing Upgrade header from websockets backend");
-lc($rheader{'connection'}) eq 'upgrade' ||
+lc($rheader{'connection'}) =~ /upgrade/ ||
 	 &http_error(500, "Missing Connection header from websockets backend");
 
 # Check the reply key
