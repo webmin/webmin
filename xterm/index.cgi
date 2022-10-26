@@ -117,19 +117,22 @@ EOF
 # Print main container
 print "<div id=\"terminal\" $termjs_opts{'ContainerStyle'}></div>\n";
 
-# Set column size depending on the browser window
-# size unless defined in config (non-auto mode)
-if (!$conf_cols_n && !$conf_rows_n) {
-	if ((!$rcvd_cnt_w ||
-	     !$rcvd_cnt_h) || $resize_call) {
-		print "<script>location.href = location.pathname + '?w=' + document.querySelector('#terminal').clientWidth + '&h=' + document.querySelector('#terminal').clientHeight;</script>";
-		return;
+# Detect terminal width and height for regular themes 
+if (!$xmlhr) {
+	# Set column size depending on the browser window
+	# size unless defined in config (non-auto mode)
+	if (!$conf_cols_n && !$conf_rows_n) {
+		if ((!$rcvd_cnt_w ||
+		     !$rcvd_cnt_h) || $resize_call) {
+			print "<script>location.href = location.pathname + '?w=' + document.querySelector('#terminal').clientWidth + '&h=' + document.querySelector('#terminal').clientHeight;</script>";
+			return;
+			}
 		}
-	}
 
-# Clear URL to make sure resized and
-# reloaded page will work properly
-print "<script>history.replaceState(null, String(), location.pathname);</script>";
+	# Clear URL to make sure resized and
+	# reloaded page will work properly
+	print "<script>history.replaceState(null, String(), location.pathname);</script>";
+	}
 
 # Check for needed modules
 my $modname = "Net::WebSocket::Server";
