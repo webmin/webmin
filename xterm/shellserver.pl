@@ -8,15 +8,20 @@ my ($port, $user) = @ARGV;
 
 # Switch to the user we're running as
 my @uinfo = getpwnam($user);
-if ($user ne "root" && $<) {
-    @uinfo || die "User $user does not exist!";
-    &switch_to_unix_user(@uinfo);
-    }
+my ($uid, $gid);
+if ($user ne "root" && !$<) {
+	@uinfo || die "User $user does not exist!";
+	$uid = $uinfo[2];
+	$gid = $uinfo[3];
+	}
+else {
+	$uid = $gid = 0;
+	}
 
 # Run the user's shell in a sub-process
 &foreign_require("proc");
 $ENV{'TERM'} = 'xterm-256color';
-our ($shellfh, $pid) = &proc::pty_process_exec($uinfo[8]);
+our ($shellfh, $pid) = &proc::pty_process_exec($uinfo[8], $uid, $gid);
 $pid || die "Failed to run shell $uinfo[8]";
 print STDERR "shell process is $pid\n";
 
@@ -32,6 +37,7 @@ Net::WebSocket::Server->new(
         print STDERR "got websockets connection\n";
         if ($wsconn) {
             print STDERR "Too many connections to the same port!\n";
+	    &cleanup_miniserv();
             kill('KILL', $pid) if ($pid);
             exit(1);
             }
@@ -62,6 +68,7 @@ Net::WebSocket::Server->new(
                 },
             disconnect => sub {
                 print STDERR "websocket connection closed\n";
+		&cleanup_miniserv();
                 kill('KILL', $pid) if ($pid);
                 exit(0);
                 }
@@ -72,7 +79,10 @@ Net::WebSocket::Server->new(
             # Got something from the shell
             my $buf;
             my $ok = sysread($shellfh, $buf, 1);
-            exit(0) if ($ok <= 0);
+	    if ($ok <= 0) {
+		&cleanup_miniserv();
+	        exit(0);
+		}
             if ($wsconn) {
                 $wsconn->send_binary($buf);
                 }
@@ -82,3 +92,13 @@ Net::WebSocket::Server->new(
         },
     ],
 )->start;
+
+sub cleanup_miniserv
+{
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+my $wspath = "/$module_name/ws-".$port;
+delete($miniserv{'websockets_'.$wspath});
+&put_miniserv_config(\%miniserv);
+&reload_miniserv();
+}
