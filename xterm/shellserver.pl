@@ -38,7 +38,7 @@ Net::WebSocket::Server->new(
         print STDERR "got websockets connection\n";
         if ($wsconn) {
             print STDERR "Too many connections to the same port!\n";
-	    &cleanup_miniserv();
+            &cleanup_miniserv();
             kill('KILL', $pid) if ($pid);
             exit(1);
             }
@@ -69,7 +69,7 @@ Net::WebSocket::Server->new(
                 },
             disconnect => sub {
                 print STDERR "websocket connection closed\n";
-		&cleanup_miniserv();
+                &cleanup_miniserv();
                 kill('KILL', $pid) if ($pid);
                 exit(0);
                 }
@@ -80,10 +80,10 @@ Net::WebSocket::Server->new(
             # Got something from the shell
             my $buf;
             my $ok = sysread($shellfh, $buf, 1);
-	    if ($ok <= 0) {
-		&cleanup_miniserv();
-	        exit(0);
-		}
+            if ($ok <= 0) {
+                &cleanup_miniserv();
+                exit(0);
+                }
             if ($wsconn) {
                 $wsconn->send_binary($buf);
                 }

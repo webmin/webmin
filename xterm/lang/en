@@ -1,5 +1,5 @@
 index_title=Interactive Shell
-index_cpan=The Perl module <tt>$1</tt> needed to accept Websockets connections is not available, but you can install it automatically using Webmin's <a href='$2'>Perl Modules</a> module.
+index_cpan=The Perl module <tt>$1</tt> needed to accept WebSockets connections is not available, but you can install it automatically using Webmin's <a href='$2'>Perl Modules</a> module.
 index_euser=User $1 to run the shell as does not exist!
 
 acl_user=Run shell as Unix user
