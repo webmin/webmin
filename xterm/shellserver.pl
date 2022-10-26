@@ -39,10 +39,9 @@ Net::WebSocket::Server->new(
         my ($serv, $conn) = @_;
         print STDERR "got websockets connection\n";
         if ($wsconn) {
-            print STDERR "Too many connections to the same port!\n";
-            &cleanup_miniserv();
-            kill('KILL', $pid) if ($pid);
-            exit(1);
+            print STDERR "Unexpected second connection to the same port\n";
+	    $conn->disconnect();
+	    return;
             }
         $wsconn = $conn;
         alarm(0);
