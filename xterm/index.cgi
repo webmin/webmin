@@ -197,6 +197,7 @@ if ($xmlhr) {
 			{ 'files' => $termlinks,
 			  'cols' => $env_cols,
 			  'rows' => $env_rows,
+			  'port' => $port,
 			  'socket_url' => $url });
 	}
 else {
