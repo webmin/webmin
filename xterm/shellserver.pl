@@ -21,6 +21,7 @@ else {
 # Run the user's shell in a sub-process
 &foreign_require("proc");
 $ENV{'TERM'} = 'xterm-256color';
+chdir($uinfo[7] || "/");
 our ($shellfh, $pid) = &proc::pty_process_exec($uinfo[8], $uid, $gid);
 $pid || die "Failed to run shell $uinfo[8]";
 print STDERR "shell process is $pid\n";
