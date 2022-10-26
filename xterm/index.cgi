@@ -170,7 +170,7 @@ my $user = $access{'user'};
 if ($user eq "*") {
 	$user = $remote_user;
 	}
-getpwnam($user) || &error(&text('index_euser', $user));
+defined(getpwnam($user)) || &error(&text('index_euser', $user));
 my $tmpdir = &tempname_dir();
 $ENV{'SESSION_ID'} = $main::session_id;
 &system_logged("$shellserver_cmd $port $user >$tmpdir/ws-$port.out 2>&1 </dev/null &");
