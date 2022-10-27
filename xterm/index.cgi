@@ -1,7 +1,5 @@
 #!/usr/local/bin/perl
 # Show a terminal that is connected to a Websockets server via Webmin proxying
-# XXX don't grant to new users
-# XXX Virtualmin integration?
 
 require './xterm-lib.pl';
 &ReadParse();
