@@ -178,15 +178,18 @@ my $url = "wss://".$ENV{'HTTP_HOST'}.$wspath;
 my $term_script = <<EOF;
 
 (function() {
-	var socket = new WebSocket('$url', 'binary');
+	var socket = new WebSocket('$url', 'binary'),
+	    termcont = document.getElementById('terminal');
 	socket.onopen = function() {
 		var term = new Terminal($termjs_opts{'Options'}),
-		    termcont = document.getElementById('terminal'),
 		    attachAddon = new AttachAddon.AttachAddon(this);
 		term.loadAddon(attachAddon);
 		term.open(termcont);
 		term.focus();
 		socket.send('clear\\r');
+	};
+	socket.onerror = function() {
+		termcont.innerHTML = '<tt style="color: \#ff0000">Error: Cannot connect to the socket $url</tt>';
 	};
 })();
 
