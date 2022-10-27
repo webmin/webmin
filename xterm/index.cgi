@@ -186,6 +186,7 @@ my $term_script = <<EOF;
 		term.loadAddon(attachAddon);
 		term.open(termcont);
 		term.focus();
+		socket.send('clear\\r');
 	};
 })();
 
