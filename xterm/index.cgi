@@ -177,14 +177,18 @@ sleep(1);
 my $url = "wss://".$ENV{'HTTP_HOST'}.$wspath;
 my $term_script = <<EOF;
 
-var term = new Terminal($termjs_opts{'Options'}),
-    termcont = document.getElementById('terminal'),
-    socket = new WebSocket('$url', 'binary'),
-    attachAddon = new AttachAddon.AttachAddon(socket);
-termcont.focus();
-term.loadAddon(attachAddon);
-term.open(termcont);
-term.focus();
+(function() {
+	var socket = new WebSocket('$url', 'binary');
+	socket.onopen = function() {
+		var term = new Terminal($termjs_opts{'Options'}),
+		    termcont = document.getElementById('terminal'),
+		    attachAddon = new AttachAddon.AttachAddon(this);
+		term.loadAddon(attachAddon);
+		term.open(termcont);
+		term.focus();
+	};
+})();
+
 EOF
 
 # Return inline script data depending on type
