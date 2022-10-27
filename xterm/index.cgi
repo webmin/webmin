@@ -179,7 +179,9 @@ my $term_script = <<EOF;
 
 (function() {
 	var socket = new WebSocket('$url', 'binary'),
-	    termcont = document.getElementById('terminal');
+	    termcont = document.getElementById('terminal'),
+	    err_conn_cannot = 'Cannot connect to the socket $url',
+	    err_conn_lost = 'Connection to the socket $url lost';
 	socket.onopen = function() {
 		var term = new Terminal($termjs_opts{'Options'}),
 		    attachAddon = new AttachAddon.AttachAddon(this);
@@ -189,7 +191,12 @@ my $term_script = <<EOF;
 		socket.send('clear\\r');
 	};
 	socket.onerror = function() {
-		termcont.innerHTML = '<tt style="color: \#ff0000">Error: Cannot connect to the socket $url</tt>';
+		termcont.innerHTML = '<tt style="color: \#ff0000">Error: ' +
+			err_conn_cannot + '</tt>';
+	};
+	socket.onclose = function() {
+		termcont.innerHTML = '<tt style="color: \#ff0000">Error: ' +
+			err_conn_lost + '</tt>';
 	};
 })();
 
