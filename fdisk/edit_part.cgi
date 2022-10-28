@@ -139,7 +139,8 @@ else {
 
 # Extent and cylinders
 if ($in{'new'}) {
-	$ext = &ui_textbox("start", $start, 4)." - ".&ui_textbox("end", $end, 4);
+	$ext = &ui_textbox("start", $start, 10)." - ".
+	       &ui_textbox("end", $end, 10);
 	}
 else {
 	$ext = "$pinfo->{'start'} - $pinfo->{'end'}";
