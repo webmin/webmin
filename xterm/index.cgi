@@ -24,7 +24,7 @@ my ($conf_size_str, $def_cols_n, $def_rows_n,
     %termjs_opts
 ) = ($config{'size'}, 80, 24,
      int($ENV{'HTTP_X_AGENT_WIDTH'}) || int($in{'w'}), int($ENV{'HTTP_X_AGENT_HEIGHT'}) || int($in{'h'}),
-     int($in{'f'}) || 9, int($in{'l'}) || 18,
+     &float($in{'f'}) || 9, &float($in{'l'}) || 18,
      int($in{'g'}) || 1, int($in{'o'}) || 0,
      int($in{'r'}),
      $ENV{'HTTP_X_REQUESTED_WITH'} eq "XMLHttpRequest");
