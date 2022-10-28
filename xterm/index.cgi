@@ -177,14 +177,29 @@ sleep(1);
 my $url = "wss://".$ENV{'HTTP_HOST'}.$wspath;
 my $term_script = <<EOF;
 
-var term = new Terminal($termjs_opts{'Options'}),
-    termcont = document.getElementById('terminal'),
-    socket = new WebSocket('$url', 'binary'),
-    attachAddon = new AttachAddon.AttachAddon(socket);
-termcont.focus();
-term.loadAddon(attachAddon);
-term.open(termcont);
-term.focus();
+(function() {
+	var socket = new WebSocket('$url', 'binary'),
+	    termcont = document.getElementById('terminal'),
+	    err_conn_cannot = 'Cannot connect to the socket $url',
+	    err_conn_lost = 'Connection to the socket $url lost';
+	socket.onopen = function() {
+		var term = new Terminal($termjs_opts{'Options'}),
+		    attachAddon = new AttachAddon.AttachAddon(this);
+		term.loadAddon(attachAddon);
+		term.open(termcont);
+		term.focus();
+		socket.send('clear\\r');
+	};
+	socket.onerror = function() {
+		termcont.innerHTML = '<tt style="color: \#ff0000">Error: ' +
+			err_conn_cannot + '</tt>';
+	};
+	socket.onclose = function() {
+		termcont.innerHTML = '<tt style="color: \#ff0000">Error: ' +
+			err_conn_lost + '</tt>';
+	};
+})();
+
 EOF
 
 # Return inline script data depending on type
