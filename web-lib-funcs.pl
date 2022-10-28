@@ -12299,6 +12299,19 @@ if (   $currentcertfile =~ /$defaultcertname$/ &&
 return 0;
 }
 
+
+# float(number)
+# Parses float number and returns it or returns 0 if cannot
+sub float
+{
+my ($number) = @_;
+my $float = sprintf('%.2f', $number);
+if ($float == 0.00) {
+    return 0;
+    }
+return $float;
+}
+
 $done_web_lib_funcs = 1;
 
 1;
