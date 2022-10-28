@@ -142,19 +142,31 @@ if ($@) {
 	return;
 	}
 
+# Find ports already in use
+&lock_file(&get_miniserv_config_file());
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+my %inuse;
+foreach my $k (keys %miniserv) {
+	if ($k =~ /^websockets_/ && $miniserv{$k} =~ /port=(\d+)/) {
+		$inuse{$1} = 1;
+		}
+	}
+
 # Pick a port and configure Webmin to proxy it
 my $port = $config{'base_port'} || 555;
 while(1) {
-	&open_socket("127.0.0.1", $port, my $fh, \$err);
-	last if ($err);
-	close($fh);
+	if (!$inuse{$port}) {
+		&open_socket("127.0.0.1", $port, my $fh, \$err);
+		last if ($err);
+		close($fh);
+		}
 	$port++;
 	}
-my %miniserv;
-&get_miniserv_config(\%miniserv);
 my $wspath = "/$module_name/ws-".$port;
 $miniserv{'websockets_'.$wspath} = "host=127.0.0.1 port=$port wspath=/ user=$remote_user";
 &put_miniserv_config(\%miniserv);
+&unlock_file(&get_miniserv_config_file());
 &reload_miniserv();
 
 # Launch the shell server on that port
