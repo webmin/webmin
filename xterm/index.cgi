@@ -170,8 +170,7 @@ if ($user eq "*") {
 defined(getpwnam($user)) || &error(&text('index_euser', $user));
 my $tmpdir = &tempname_dir();
 $ENV{'SESSION_ID'} = $main::session_id;
-&system_logged("$shellserver_cmd $port $user >$tmpdir/ws-$port.out 2>&1 </dev/null &");
-sleep(1);
+&system_logged("$shellserver_cmd $port $user >$tmpdir/ws-$port.out 2>&1 </dev/null");
 
 # Open the terminal
 my $url = "wss://".$ENV{'HTTP_HOST'}.$wspath;

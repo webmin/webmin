@@ -28,6 +28,13 @@ our ($shellfh, $pid) = &proc::pty_process_exec($uinfo[8], $uid, $gid);
 $pid || die "Failed to run shell $uinfo[8]";
 print STDERR "shell process is $pid\n";
 
+# Detach from controlling terminal
+if (fork()) {
+	exit(0);
+	}
+untie(*STDIN);
+close(STDIN);
+
 $SIG{'ALRM'} = sub { die "timeout waiting for connection"; };
 alarm(60);
 print STDERR "listening on port $port\n";
