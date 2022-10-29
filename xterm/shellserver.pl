@@ -4,13 +4,16 @@
 require './xterm-lib.pl';
 
 use Net::WebSocket::Server;
-my ($port, $user) = @ARGV;
+our ($port, $user) = @ARGV;
 
 # Switch to the user we're running as
 my @uinfo = getpwnam($user);
 my ($uid, $gid);
 if ($user ne "root" && !$<) {
-	@uinfo || die "User $user does not exist!";
+	if (!@uinfo) {
+		&cleanup_miniserv();
+		die "User $user does not exist!";
+		}
 	$uid = $uinfo[2];
 	$gid = $uinfo[3];
 	}
@@ -25,7 +28,10 @@ $ENV{'TERM'} = 'xterm-256color';
 chdir($uinfo[7] || "/");
 our ($shellfh, $pid) = &proc::pty_process_exec($uinfo[8], $uid, $gid);
 &reset_environment();
-$pid || die "Failed to run shell $uinfo[8]";
+if (!$pid) {
+	&cleanup_miniserv();
+	die "Failed to run shell $uinfo[8]";
+	}
 print STDERR "shell process is $pid\n";
 
 # Detach from controlling terminal
@@ -35,7 +41,10 @@ if (fork()) {
 untie(*STDIN);
 close(STDIN);
 
-$SIG{'ALRM'} = sub { die "timeout waiting for connection"; };
+$SIG{'ALRM'} = sub {
+	&cleanup_miniserv();
+	die "timeout waiting for connection";
+	};
 alarm(60);
 print STDERR "listening on port $port\n";
 our $wsconn;
@@ -73,6 +82,8 @@ Net::WebSocket::Server->new(
                 my ($conn, $msg) = @_;
                 if (!syswrite($shellfh, $msg, length($msg))) {
                     print STDERR "write to shell failed : $!\n";
+                    &cleanup_miniserv();
+                    exit(1);
                     }
                 },
             disconnect => sub {
@@ -101,13 +112,20 @@ Net::WebSocket::Server->new(
         },
     ],
 )->start;
+&cleanup_miniserv();
 
 sub cleanup_miniserv
 {
 my %miniserv;
-&get_miniserv_config(\%miniserv);
-my $wspath = "/$module_name/ws-".$port;
-delete($miniserv{'websockets_'.$wspath});
-&put_miniserv_config(\%miniserv);
-&reload_miniserv();
+if ($port) {
+	&lock_file(&get_miniserv_config_file());
+	&get_miniserv_config(\%miniserv);
+	my $wspath = "/$module_name/ws-".$port;
+	if ($miniserv{'websockets_'.$wspath}) {
+		delete($miniserv{'websockets_'.$wspath});
+		&put_miniserv_config(\%miniserv);
+		&reload_miniserv();
+		}
+	&unlock_file(&get_miniserv_config_file());
+	}
 }
