@@ -15,19 +15,18 @@ my $termlinks =
 	            'xterm-addon-attach.js?$wver'] };
 
 # Pre-process options
-my ($conf_size_str, $def_cols_n, $def_rows_n,
-    $rcvd_cnt_w, $rcvd_cnt_h,
-    $rcvd_or_def_col_w, $rcvd_or_def_row_h,
-    $rcvd_or_def_col_o, $rcvd_or_def_row_o,
-    $resize_call,
-    $xmlhr,
-    %termjs_opts
-) = ($config{'size'}, 80, 24,
-     int($ENV{'HTTP_X_AGENT_WIDTH'}) || int($in{'w'}), int($ENV{'HTTP_X_AGENT_HEIGHT'}) || int($in{'h'}),
-     &float($in{'f'}) || 9, &float($in{'l'}) || 18,
-     int($in{'g'}) || 1, int($in{'o'}) || 0,
-     int($in{'r'}),
-     $ENV{'HTTP_X_REQUESTED_WITH'} eq "XMLHttpRequest");
+my $conf_size_str = $config{'size'};
+my $def_cols_n = 80;
+my $def_rows_n = 24;
+my $rcvd_cnt_w = int($ENV{'HTTP_X_AGENT_WIDTH'}) || int($in{'w'});
+my $rcvd_cnt_h = int($ENV{'HTTP_X_AGENT_HEIGHT'}) || int($in{'h'});
+my $rcvd_or_def_col_w = &is_float($in{'f'}) ? $in{'f'} : 9;
+my $rcvd_or_def_row_h = &is_float($in{'l'}) ? $in{'l'} : 18;
+my $rcvd_or_def_col_o = int($in{'g'}) || 1;
+my $rcvd_or_def_row_o = int($in{'o'}) || 0;
+my $resize_call = $in{'r'};
+my $xmlhr = $ENV{'HTTP_X_REQUESTED_WITH'} eq "XMLHttpRequest";
+my %term_opts;
 
 # Parse module config
 my ($conf_cols_n, $conf_rows_n) = ($conf_size_str =~ /([\d]+)X([\d]+)/i);
