@@ -12299,6 +12299,16 @@ if (   $currentcertfile =~ /$defaultcertname$/ &&
 return 0;
 }
 
+# is_int(float)
+# Tests if passed parameter is an integer number
+sub is_int
+{
+my ($int) = @_;
+if ($int =~ /^([-]?\d+)$/) {
+    return 1;
+    }
+return 0;
+}
 
 # float(number)
 # Parses float number and returns it or returns 0 if cannot
@@ -12310,6 +12320,18 @@ if ($float == 0.00) {
     return 0;
     }
 return $float;
+}
+
+
+# is_float(float)
+# Tests if passed parameter is a float number
+sub is_float
+{
+my ($float) = @_;
+if ($float =~ /^[-]?(\.\d+|\d+\.\d+)$/) {
+    return 1;
+    }
+return 0;
 }
 
 $done_web_lib_funcs = 1;
