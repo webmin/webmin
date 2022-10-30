@@ -5654,12 +5654,12 @@ else {
 	}
 
 # Send successful connection headers
-eval "use Digest::SHA";
+eval "use Digest::SHA1";
 if ($@) {
-	&http_error(500, "Missing Digest::SHA perl module");
+	&http_error(500, "Missing Digest::SHA1 perl module");
 	}
 my $rkey = $key."258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
-my $sha1 = Digest::SHA->new;
+my $sha1 = Digest::SHA1->new;
 $sha1->add($rkey);
 my $digest = $sha1->digest;
 $digest = &b64encode($digest);
@@ -5721,7 +5721,7 @@ lc($rheader{'connection'}) =~ /upgrade/ ||
 
 # Check the reply key
 my $brkey = $bsession_id."258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
-my $bsha1 = Digest::SHA->new;
+my $bsha1 = Digest::SHA1->new;
 $bsha1->add($brkey);
 my $bdigest = $bsha1->digest;
 $bdigest = &b64encode($bdigest);
