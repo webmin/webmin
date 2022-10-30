@@ -1,9 +1,11 @@
 #!/usr/local/bin/perl
 # Start a websocket server connected to a shell
 
+use lib ("$ENV{'PERLLIB'}/xterm/lib");
+use Net::WebSocket::Server;
+
 require './xterm-lib.pl';
 
-use Net::WebSocket::Server;
 our ($port, $user) = @ARGV;
 
 # Switch to the user we're running as

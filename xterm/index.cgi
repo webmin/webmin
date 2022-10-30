@@ -1,6 +1,8 @@
 #!/usr/local/bin/perl
 # Show a terminal that is connected to a Websockets server via Webmin proxying
 
+use lib ("$ENV{'DOCUMENT_ROOT'}/xterm/lib");
+
 require './xterm-lib.pl';
 &ReadParse();
 
