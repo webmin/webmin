@@ -5682,7 +5682,13 @@ if ($ws->{'host'}) {
 	}
 print $fh "Upgrade: websocket\r\n";
 print $fh "Connection: Upgrade\r\n";
-print $fh "Sec-WebSocket-Key: $bsession_id\r\n";
+if ($ws->{'nokey'}) {
+	print $fh "Sec-WebSocket-Key: $key\r\n";
+	}
+else {
+	print DEBUG "Sending key $bsession_id\n";
+	print $fh "Sec-WebSocket-Key: $bsession_id\r\n";
+	}
 if (@protos) {
 	print $fh "Sec-WebSocket-Protocol: ",join(" ", @protos),"\r\n";
 	}
@@ -5693,9 +5699,10 @@ print $fh "\r\n";
 my $rh = <$fh>;
 $rh =~ s/\r|\n//g;
 print DEBUG "got $rh from websockets backend\n";
-$rh =~ /^HTTP\/1\.1\s+(\d+)/ && $1 == 101 ||
+$rh =~ /^HTTP\/1\.1\s+(\d+)/ ||
 	&http_error(500, "Bad response from websockets backend : ".
 		    &html_strip($rh));
+my $code = $1;
 my %rheader;
 my $lastheader;
 while(1) {
@@ -5714,18 +5721,29 @@ while(1) {
 			    &html_strip($rh));
                 }
 	}
+if ($code != 101) {
+	&http_error(500, "Bad response code $code from websockets backend : ".
+			 &html_strip($rh));
+	}
 lc($rheader{'upgrade'}) eq 'websocket' ||
 	 &http_error(500, "Missing Upgrade header from websockets backend");
 lc($rheader{'connection'}) =~ /upgrade/ ||
 	 &http_error(500, "Missing Connection header from websockets backend");
 
 # Check the reply key
-my $brkey = $bsession_id."258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
-my $bsha1 = Digest::SHA1->new;
-$bsha1->add($brkey);
-my $bdigest = $bsha1->digest;
-$bdigest = &b64encode($bdigest);
-$rheader{'sec-websocket-accept'} eq $bdigest ||
+my $bdigest;
+if ($ws->{'nokey'}) {
+	$bdigest = $digest;
+	}
+else {
+	my $brkey = $bsession_id."258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
+	my $bsha1 = Digest::SHA1->new;
+	$bsha1->add($brkey);
+	$bdigest = $bsha1->digest;
+	$bdigest = &b64encode($bdigest);
+	}
+print DEBUG "expecting digest $bdigest\n";
+lc($rheader{'sec-websocket-accept'}) eq lc($bdigest) ||
 	 &http_error(500, "Incorrect digest header from websockets backend");
 
 # Log now
