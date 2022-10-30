@@ -190,6 +190,9 @@ if (&webmin_user_is_admin()) {
 		if (@uinfo) {
 			$user = $username;
 			}
+		else {
+			&error(&text('index_euser2', $username));
+			}
 		}
 	}
 
