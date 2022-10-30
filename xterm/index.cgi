@@ -191,7 +191,7 @@ if ($user eq "root") {
 			$user = $username;
 			}
 		else {
-			&error(&text('index_euser2', $username));
+			&error(&text('index_euser', $username));
 			}
 		}
 	}
