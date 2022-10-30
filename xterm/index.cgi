@@ -181,18 +181,6 @@ my $user = $access{'user'};
 if ($user eq "*") {
 	$user = $remote_user;
 	}
-
-# Switch to given user
-if (&webmin_user_is_admin()) {
-	my $username = $in{'user'};
-	if ($username) {
-	my @uinfo = getpwnam($username);
-		if (@uinfo) {
-			$user = $username;
-			}
-		}
-	}
-
 defined(getpwnam($user)) || &error(&text('index_euser', $user));
 my $tmpdir = &tempname_dir();
 $ENV{'SESSION_ID'} = $main::session_id;
