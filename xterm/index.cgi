@@ -183,7 +183,7 @@ if ($user eq "*") {
 	}
 
 # Switch to given user
-if (&webmin_user_is_admin()) {
+if ($user eq "root") {
 	my $username = $in{'user'};
 	if ($username) {
 	my @uinfo = getpwnam($username);
