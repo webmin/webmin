@@ -134,7 +134,9 @@ if (!$xmlhr) {
 	if (!$conf_cols_n && !$conf_rows_n) {
 		if ((!$rcvd_cnt_w ||
 		     !$rcvd_cnt_h) || $resize_call) {
-			print "<script>location.href = location.pathname + '?w=' + document.querySelector('#terminal').clientWidth + '&h=' + document.querySelector('#terminal').clientHeight;</script>";
+			my $quser = &html_escape($in{'user'});
+			my $qdir = &html_escape($in{'dir'});
+			print "<script>location.href = location.pathname + '?w=' + document.querySelector('#terminal').clientWidth + '&h=' + document.querySelector('#terminal').clientHeight + '&user=$quser' + '&dir=$qdir';</script>";
 			return;
 			}
 		}
@@ -184,6 +186,9 @@ if ($user eq "root" && $in{'user'}) {
 	$user = $in{'user'};
 	}
 
+# Check for directory to start the shell in
+my $dir = $in{'dir'};
+
 # Launch the shell server on the allocated port
 &foreign_require("cron");
 my $shellserver_cmd = "$module_config_directory/shellserver.pl";
@@ -193,7 +198,9 @@ if (!-r $shellserver_cmd) {
 defined(getpwnam($user)) || &error(&text('index_euser', &html_escape($user)));
 my $tmpdir = &tempname_dir();
 $ENV{'SESSION_ID'} = $main::session_id;
-&system_logged("$shellserver_cmd $port $user >$tmpdir/ws-$port.out 2>&1 </dev/null");
+&system_logged($shellserver_cmd." ".quotemeta($port)." ".quotemeta($user).
+	       ($dir ? " ".quotemeta($dir) : "").
+	       " >$tmpdir/ws-$port.out 2>&1 </dev/null");
 
 # Open the terminal
 my $url = "wss://".$ENV{'HTTP_HOST'}.$wspath;
