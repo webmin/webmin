@@ -181,6 +181,21 @@ my $user = $access{'user'};
 if ($user eq "*") {
 	$user = $remote_user;
 	}
+
+# Switch to given user
+if ($user eq "root") {
+	my $username = $in{'user'};
+	if ($username) {
+	my @uinfo = getpwnam($username);
+		if (@uinfo) {
+			$user = $username;
+			}
+		else {
+			&error(&text('index_euser', $username));
+			}
+		}
+	}
+
 defined(getpwnam($user)) || &error(&text('index_euser', $user));
 my $tmpdir = &tempname_dir();
 $ENV{'SESSION_ID'} = $main::session_id;
