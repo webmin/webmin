@@ -8,6 +8,17 @@ require './xterm-lib.pl';
 my $wver = &get_webmin_version();
 $wver =~ s/\.//;
 
+# Check for needed modules
+my $modname = "Net::WebSocket::Server";
+eval "use ${modname};";
+if ($@) {
+	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0);
+	print &text('index_cpan', "<tt>$modname</tt>",
+		    "../cpan/download.cgi?source=3&cpan=$modname&mode=2&return=/$module_name/&returndesc=".&urlize($module_info{'desc'})),"<p>\n";
+	&ui_print_footer("/", $text{'index'});
+	return;
+	}
+
 # Build Xterm dependency links
 my $termlinks = 
 	{ 'css' => ['xterm.css?$wver'],
@@ -129,16 +140,6 @@ if (!$xmlhr) {
 	# Clear URL to make sure resized and
 	# reloaded page will work properly
 	print "<script>history.replaceState(null, String(), location.pathname);</script>";
-	}
-
-# Check for needed modules
-my $modname = "Net::WebSocket::Server";
-eval "use ${modname};";
-if ($@) {
-	print &text('index_cpan', "<tt>$modname</tt>",
-		    "../cpan/download.cgi?source=3&cpan=$modname&mode=2&return=/$module_name/&returndesc=".&urlize($module_info{'desc'})),"<p>\n";
-	&ui_print_footer("/", $text{'index'});
-	return;
 	}
 
 # Find ports already in use
