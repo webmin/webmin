@@ -171,32 +171,26 @@ $miniserv{'websockets_'.$wspath} = "host=127.0.0.1 port=$port wspath=/ user=$rem
 &unlock_file(&get_miniserv_config_file());
 &reload_miniserv();
 
-# Launch the shell server on that port
-&foreign_require("cron");
-my $shellserver_cmd = "$module_config_directory/shellserver.pl";
-if (!-r $shellserver_cmd) {
-	&cron::create_wrapper($shellserver_cmd, $module_name, "shellserver.pl");
-	}
+# Check permissions for user to run as
 my $user = $access{'user'};
 if ($user eq "*") {
 	$user = $remote_user;
 	}
 
 # Switch to given user
-if ($user eq "root") {
-	my $username = $in{'user'};
-	if ($username) {
-	my @uinfo = getpwnam($username);
-		if (@uinfo) {
-			$user = $username;
-			}
-		else {
-			&error(&text('index_euser', $username));
-			}
-		}
+if ($user eq "root" && $in{'user'}) {
+	defined(getpwnam($in{'user'})) ||
+		&error(&text('index_euser', &html_escape($in{'user'})));
+	$user = $in{'user'};
 	}
 
-defined(getpwnam($user)) || &error(&text('index_euser', $user));
+# Launch the shell server on the allocated port
+&foreign_require("cron");
+my $shellserver_cmd = "$module_config_directory/shellserver.pl";
+if (!-r $shellserver_cmd) {
+	&cron::create_wrapper($shellserver_cmd, $module_name, "shellserver.pl");
+	}
+defined(getpwnam($user)) || &error(&text('index_euser', &html_escape($user)));
 my $tmpdir = &tempname_dir();
 $ENV{'SESSION_ID'} = $main::session_id;
 &system_logged("$shellserver_cmd $port $user >$tmpdir/ws-$port.out 2>&1 </dev/null");
