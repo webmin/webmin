@@ -202,9 +202,6 @@ if ($user eq "root" && $in{'user'}) {
 # Terminal flavors
 my (@cmds, $term_flavors);
 if ($config{'flavors'}) {
-
-	$ENV{'HISTCONTROL'} = 'ignoredups:ignorespace';
-
 	my ($cmd_lsalias, $cmd_ps1) = ("alias ls='ls --color=auto'");
 
 	# Optionally add colors to the prompt depending on the user type
@@ -236,6 +233,7 @@ if (!-r $shellserver_cmd) {
 	}
 defined(getpwnam($user)) || &error(&text('index_euser', &html_escape($user)));
 my $tmpdir = &tempname_dir();
+$ENV{'HISTCONTROL'} = 'ignoredups:ignorespace';
 $ENV{'SESSION_ID'} = $main::session_id;
 &system_logged($shellserver_cmd." ".quotemeta($port)." ".quotemeta($user).
 	       ($dir ? " ".quotemeta($dir) : "").
