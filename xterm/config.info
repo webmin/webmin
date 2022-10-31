@@ -1,3 +1,3 @@
 base_port=Base port number for WebSockets connections,0,5
 size=Terminal width and height in characters,3,Automatic,5,,,Static (80x24)
-flavors=Enable inbuilt command prompt color customization,1,1-Yes,0-No
+noflavors=Disable inbuilt command prompt color customization,1,1-Yes,0-No
