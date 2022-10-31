@@ -113,6 +113,19 @@ body[style='height:100%'] {
 #terminal + script ~ * {
 	display: none
 }
+#terminal > .terminal {
+	visibility: hidden;
+	animation: .15s fadeIn;
+	animation-fill-mode: forwards;
+}
+\@keyframes fadeIn {
+  99% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
 
 EOF
 
