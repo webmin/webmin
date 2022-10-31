@@ -186,6 +186,26 @@ if ($user eq "root" && $in{'user'}) {
 	$user = $in{'user'};
 	}
 
+# Terminal flavors
+my ($ps1, $term_flavors);
+if ($config{'flavors'}) {
+	# Optionally add colors to the prompt depending on the user type
+	if ($user eq "root") {
+		# magenta@blue ~# (for root)
+		$ps1 = "PS1='\\\\[\\\\033[1;35m\\\\]\\\\u\\\\[\\\\033[1;37m\\\\]".
+               "@\\\\[\\\\033[1;34m\\\\]\\\\h:\\\\[\\\\033[1;37m\\\\]".
+               "\\\\w\\\\[\\\\033[1;37m\\\\]\\\\\$\\\\[\\\\033[0m\\\\] '";
+		}
+	else {
+		# green@blue ~$ (for regular users)
+		$ps1 = "PS1='\\\\[\\\\033[1;32m\\\\]\\\\u\\\\[\\\\033[1;37m\\\\]".
+               "@\\\\[\\\\033[1;34m\\\\]\\\\h:\\\\[\\\\033[1;37m\\\\]".
+               "\\\\w\\\\[\\\\033[1;37m\\\\]\\\\\$\\\\[\\\\033[0m\\\\] '";
+		}
+	$term_flavors = "socket.send(\"alias ls='ls --color=auto'\\r\"); ".
+                    "socket.send(\"$ps1\\r\");";
+	}
+
 # Check for directory to start the shell in
 my $dir = $in{'dir'};
 
@@ -217,6 +237,7 @@ my $term_script = <<EOF;
 		term.loadAddon(attachAddon);
 		term.open(termcont);
 		term.focus();
+		$term_flavors
 		socket.send('clear\\r');
 	};
 	socket.onerror = function() {
