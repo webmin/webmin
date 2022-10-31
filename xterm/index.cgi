@@ -200,25 +200,29 @@ if ($user eq "root" && $in{'user'}) {
 	}
 
 # Terminal flavors
-my ($ps1, $term_flavors);
+my (@cmds, $term_flavors);
 if ($config{'flavors'}) {
 
 	$ENV{'HISTCONTROL'} = 'ignoredups:ignorespace';
+
+	my ($cmd_lsalias, $cmd_ps1) = ("alias ls='ls --color=auto'");
+
 	# Optionally add colors to the prompt depending on the user type
 	if ($user eq "root") {
 		# magenta@blue ~# (for root)
-		$ps1 = "PS1='\\\\[\\\\033[1;35m\\\\]\\\\u\\\\[\\\\033[1;37m\\\\]".
-               "@\\\\[\\\\033[1;34m\\\\]\\\\h:\\\\[\\\\033[1;37m\\\\]".
-               "\\\\w\\\\[\\\\033[1;37m\\\\]\\\\\$\\\\[\\\\033[0m\\\\] '";
+		$cmd_ps1 = "PS1='\\\\[\\\\033[1;35m\\\\]\\\\u\\\\[\\\\033[1;37m\\\\]".
+                   "@\\\\[\\\\033[1;34m\\\\]\\\\h:\\\\[\\\\033[1;37m\\\\]".
+                   "\\\\w\\\\[\\\\033[1;37m\\\\]\\\\\$\\\\[\\\\033[0m\\\\] '";
 		}
 	else {
 		# green@blue ~$ (for regular users)
-		$ps1 = "PS1='\\\\[\\\\033[1;32m\\\\]\\\\u\\\\[\\\\033[1;37m\\\\]".
-               "@\\\\[\\\\033[1;34m\\\\]\\\\h:\\\\[\\\\033[1;37m\\\\]".
-               "\\\\w\\\\[\\\\033[1;37m\\\\]\\\\\$\\\\[\\\\033[0m\\\\] '";
+		$cmd_ps1 = "PS1='\\\\[\\\\033[1;32m\\\\]\\\\u\\\\[\\\\033[1;37m\\\\]".
+                   "@\\\\[\\\\033[1;34m\\\\]\\\\h:\\\\[\\\\033[1;37m\\\\]".
+                   "\\\\w\\\\[\\\\033[1;37m\\\\]\\\\\$\\\\[\\\\033[0m\\\\] '";
 		}
-	$term_flavors = "socket.send(\" alias ls='ls --color=auto'\\r\"); ".
-                    "socket.send(\" $ps1\\r\");";
+	$term_flavors = "socket.send(\" $cmd_lsalias\\r\"); ".
+                    "socket.send(\" $cmd_ps1\\r\");";
+    push(@cmds, $cmd_ps1, $cmd_lsalias);
 	}
 
 # Check for directory to start the shell in
@@ -271,14 +275,14 @@ EOF
 print "<script>\n";
 if ($xmlhr) {
 	print "var xterm_argv = ".
-	      &convert_to_json(
-			{ 'conf'  => \%config,
+          &convert_to_json(
+            { 'conf'  => \%config,
               'files' => $termlinks,
               'socket_url' => $url,
               'port'  => $port,
               'cols'  => $env_cols,
               'rows'  => $env_rows,
-              'ps1'   => $ps1 });
+              'cmds'  => \@cmds });
 	}
 else {
 	print $term_script;
