@@ -1,2 +1,2 @@
 base_port=555
-noflavors=0
+flavors=1

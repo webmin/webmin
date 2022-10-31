@@ -201,7 +201,7 @@ if ($user eq "root" && $in{'user'}) {
 
 # Terminal flavors
 my (@cmds, $term_flavors);
-if (!$config{'noflavors'}) {
+if ($config{'flavors'}) {
 	my ($cmd_lsalias, $cmd_ps1) = ("alias ls='ls --color=auto'");
 
 	# Optionally add colors to the prompt depending on the user type
