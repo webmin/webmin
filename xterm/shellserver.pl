@@ -6,7 +6,7 @@ use Net::WebSocket::Server;
 
 require './xterm-lib.pl';
 
-our ($port, $user) = @ARGV;
+our ($port, $user, $dir) = @ARGV;
 
 # Switch to the user we're running as
 my @uinfo = getpwnam($user);
@@ -27,7 +27,7 @@ else {
 &foreign_require("proc");
 &clean_environment();
 $ENV{'TERM'} = 'xterm-256color';
-chdir($uinfo[7] || "/");
+chdir($dir || $uinfo[7] || "/");
 our ($shellfh, $pid) = &proc::pty_process_exec($uinfo[8], $uid, $gid);
 &reset_environment();
 if (!$pid) {
@@ -100,7 +100,7 @@ Net::WebSocket::Server->new(
         $shellfh => sub {
             # Got something from the shell
             my $buf;
-            my $ok = sysread($shellfh, $buf, 1);
+            my $ok = sysread($shellfh, $buf, 1024);
             if ($ok <= 0) {
                 &cleanup_miniserv();
                 exit(0);
