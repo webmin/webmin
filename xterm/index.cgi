@@ -215,8 +215,8 @@ if ($config{'flavors'}) {
                "@\\\\[\\\\033[1;34m\\\\]\\\\h:\\\\[\\\\033[1;37m\\\\]".
                "\\\\w\\\\[\\\\033[1;37m\\\\]\\\\\$\\\\[\\\\033[0m\\\\] '";
 		}
-	$term_flavors = "socket.send(\"alias ls='ls --color=auto'\\r\"); ".
-                    "socket.send(\"$ps1\\r\");";
+	$term_flavors = "socket.send(\" alias ls='ls --color=auto'\\r\"); ".
+                    "socket.send(\" $ps1\\r\");";
 	}
 
 # Check for directory to start the shell in
@@ -251,7 +251,7 @@ my $term_script = <<EOF;
 		term.open(termcont);
 		term.focus();
 		$term_flavors
-		socket.send('clear\\r');
+		socket.send(' clear\\r');
 	};
 	socket.onerror = function() {
 		termcont.innerHTML = '<tt style="color: \#ff0000">Error: ' +
