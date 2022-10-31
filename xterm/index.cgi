@@ -202,6 +202,8 @@ if ($user eq "root" && $in{'user'}) {
 # Terminal flavors
 my ($ps1, $term_flavors);
 if ($config{'flavors'}) {
+
+	$ENV{'HISTCONTROL'} = 'ignoredups:ignorespace';
 	# Optionally add colors to the prompt depending on the user type
 	if ($user eq "root") {
 		# magenta@blue ~# (for root)
