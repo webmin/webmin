@@ -270,11 +270,13 @@ print "<script>\n";
 if ($xmlhr) {
 	print "var xterm_argv = ".
 	      &convert_to_json(
-			{ 'files' => $termlinks,
-			  'cols' => $env_cols,
-			  'rows' => $env_rows,
-			  'port' => $port,
-			  'socket_url' => $url });
+			{ 'conf'  => \%config,
+              'files' => $termlinks,
+              'socket_url' => $url,
+              'port'  => $port,
+              'cols'  => $env_cols,
+              'rows'  => $env_rows,
+              'ps1'   => $ps1 });
 	}
 else {
 	print $term_script;
