@@ -429,7 +429,7 @@ if (&has_command("ifconfig")) {
 	 
 	if ($a->{'virtual'} ne "") {
 		# Shutdown virtual interface by setting address to 0
-		my $out = &backquote_logged("ifconfig $name 0 2>&1");
+		&system_logged("ifconfig $name 0 >/dev/null 2>&1");
 		}
 	# Delete all v6 addresses
 	for(my $i=0; $i<@{$a->{'address6'}}; $i++) {
