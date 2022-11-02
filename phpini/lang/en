@@ -90,12 +90,14 @@ limits_post=Maximum HTTP POST size
 limits_upload=Maximum file upload size
 limits_exec=Maximum execution time
 limits_input=Maximum input parsing time
+limits_vars=Maximum input variables limit
 limits_err=Failed to save resource limits
 limits_emem=Missing or invalid maximum memory allocation
 limits_epost=Missing or invalid maximum HTTP POST size
 limits_eupload=Missing or invalid maximum file upload size
 limits_eexec=Missing or invalid maximum execution time
 limits_einput=Missing or invalid maximum input parsing time
+limits_evars=Missing or invalid maximum input variables limit
 
 errors_title=Error Logging
 errors_header=Error message display and logging options

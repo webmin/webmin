@@ -41,6 +41,12 @@ $in{"max_input_time_def"} || $in{"max_input_time"} =~ /^\-?\d+$/ ||
 &save_directive($conf, "max_input_time",
 	$in{"max_input_time_def"} ? undef : $in{"max_input_time"});
 
+# Save max input vars limit
+$in{"max_input_vars_def"} || $in{"max_input_vars"} =~ /^\d+$/ ||
+	&error($text{'limits_evars'});
+&save_directive($conf, "max_input_vars",
+	$in{"max_input_vars_def"} ? undef : $in{"max_input_vars"});
+
 &flush_file_lines_as_user($in{'file'}, undef, 1);
 &unlock_file($in{'file'});
 &graceful_apache_restart($in{'file'});
