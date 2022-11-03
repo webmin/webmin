@@ -1290,6 +1290,9 @@ print DEBUG "handle_request: passed IP checks\n";
 # child processes. As this increases, we use a shorter timeout to avoid
 # an attacker overloading the system.
 local $header_timeout = 60 + ($config{'maxconns'} - @childpids) * 10;
+if ($header_timeout > 10*60) {
+	$header_timeout = 10*60;
+	}
 
 # Wait at most 60 secs for start of headers for initial requests, or
 # 10 minutes for kept-alive connections
@@ -1310,11 +1313,14 @@ if (!$sel) {
 $checked_timeout++;
 print DEBUG "handle_request: passed timeout check\n";
 
-# Read the HTTP request and headers
+# Read the HTTP request line
+alarm(10);
+$SIG{'ALRM'} = sub { die "timeout" };
 local $origreqline = &read_line();
 ($reqline = $origreqline) =~ s/\r|\n//g;
 $method = $page = $request_uri = undef;
 print DEBUG "handle_request reqline=$reqline\n";
+alarm(0);
 if (!$reqline && (!$use_ssl || $checked_timeout > 1)) {
 	# An empty request .. just close the connection
 	print DEBUG "handle_request: rejecting empty request\n";
@@ -1404,6 +1410,10 @@ EOF
 $method = $1;
 $request_uri = $page = $2;
 %header = ();
+
+# Read HTTP headers
+alarm(60);
+$SIG{'ALRM'} = sub { die "timeout" };
 local $lastheader;
 while(1) {
 	($headline = &read_line()) =~ s/\r|\n//g;
@@ -1416,14 +1426,17 @@ while(1) {
 		$header{$lastheader} .= $headline;
 		}
 	else {
+		alarm(0);
 		&http_error(400, "Bad Header ".&html_strip($headline));
 		}
 	if (&is_bad_header($header{$lastheader}, $lastheader)) {
+		alarm(0);
 		delete($header{$lastheader});
 		&http_error(400, "Bad Header Contents ".
 				 &html_strip($lastheader));
 		}
 	}
+alarm(0);
 
 # If a remote IP is given in a header (such as via a proxy), only use it
 # for logging unless trust_real_ip is set
