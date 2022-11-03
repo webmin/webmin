@@ -113,6 +113,19 @@ body[style='height:100%'] {
 #terminal + script ~ * {
 	display: none
 }
+#terminal > .terminal {
+	visibility: hidden;
+	animation: .15s fadeIn;
+	animation-fill-mode: forwards;
+}
+\@keyframes fadeIn {
+  99% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
 
 EOF
 
@@ -186,6 +199,29 @@ if ($user eq "root" && $in{'user'}) {
 	$user = $in{'user'};
 	}
 
+# Terminal flavors
+my (@cmds, $term_flavors);
+if ($config{'flavors'}) {
+	my ($cmd_lsalias, $cmd_ps1) = ("alias ls='ls --color=auto'");
+
+	# Optionally add colors to the prompt depending on the user type
+	if ($user eq "root") {
+		# magenta@blue ~# (for root)
+		$cmd_ps1 = "PS1='\\\\[\\\\033[1;35m\\\\]\\\\u\\\\[\\\\033[1;37m\\\\]".
+                   "@\\\\[\\\\033[1;34m\\\\]\\\\h:\\\\[\\\\033[1;37m\\\\]".
+                   "\\\\w\\\\[\\\\033[1;37m\\\\]\\\\\$\\\\[\\\\033[0m\\\\] '";
+		}
+	else {
+		# green@blue ~$ (for regular users)
+		$cmd_ps1 = "PS1='\\\\[\\\\033[1;32m\\\\]\\\\u\\\\[\\\\033[1;37m\\\\]".
+                   "@\\\\[\\\\033[1;34m\\\\]\\\\h:\\\\[\\\\033[1;37m\\\\]".
+                   "\\\\w\\\\[\\\\033[1;37m\\\\]\\\\\$\\\\[\\\\033[0m\\\\] '";
+		}
+	$term_flavors = "socket.send(\" $cmd_lsalias\\r\"); ".
+                    "socket.send(\" $cmd_ps1\\r\");";
+    push(@cmds, $cmd_ps1, $cmd_lsalias);
+	}
+
 # Check for directory to start the shell in
 my $dir = $in{'dir'};
 
@@ -197,6 +233,7 @@ if (!-r $shellserver_cmd) {
 	}
 defined(getpwnam($user)) || &error(&text('index_euser', &html_escape($user)));
 my $tmpdir = &tempname_dir();
+$ENV{'HISTCONTROL'} = 'ignoredups:ignorespace';
 $ENV{'SESSION_ID'} = $main::session_id;
 &system_logged($shellserver_cmd." ".quotemeta($port)." ".quotemeta($user).
 	       ($dir ? " ".quotemeta($dir) : "").
@@ -217,7 +254,8 @@ my $term_script = <<EOF;
 		term.loadAddon(attachAddon);
 		term.open(termcont);
 		term.focus();
-		socket.send('clear\\r');
+		$term_flavors
+		socket.send(' clear\\r');
 	};
 	socket.onerror = function() {
 		termcont.innerHTML = '<tt style="color: \#ff0000">Error: ' +
@@ -235,12 +273,14 @@ EOF
 print "<script>\n";
 if ($xmlhr) {
 	print "var xterm_argv = ".
-	      &convert_to_json(
-			{ 'files' => $termlinks,
-			  'cols' => $env_cols,
-			  'rows' => $env_rows,
-			  'port' => $port,
-			  'socket_url' => $url });
+          &convert_to_json(
+            { 'conf'  => \%config,
+              'files' => $termlinks,
+              'socket_url' => $url,
+              'port'  => $port,
+              'cols'  => $env_cols,
+              'rows'  => $env_rows,
+              'cmds'  => \@cmds });
 	}
 else {
 	print $term_script;

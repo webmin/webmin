@@ -42,6 +42,12 @@ print &ui_table_row($text{'limits_input'},
 			&find_value("max_input_time", $conf),
 			8, $text{'default'})." ".$text{'db_s'});
 
+# Max parsing time
+print &ui_table_row($text{'limits_vars'},
+	&ui_opt_textbox("max_input_vars",
+			&find_value("max_input_vars", $conf),
+			8, $text{'default'}));
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
