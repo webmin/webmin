@@ -198,8 +198,8 @@ if ($user eq "root" && $in{'user'}) {
 		&error(&text('index_euser', &html_escape($in{'user'})));
 	$user = $in{'user'};
 	}
-defined(getpwnam($user)) || &error(&text('index_euser', &html_escape($user)));
 my @uinfo = getpwnam($user);
+@uinfo || &error(&text('index_euser', &html_escape($user)));
 my $ushell_bash = $uinfo[8] =~ /\/bash$/;
 
 # Terminal flavors
