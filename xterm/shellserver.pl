@@ -3,6 +3,7 @@
 
 use lib ("$ENV{'PERLLIB'}/xterm/lib");
 use Net::WebSocket::Server;
+use utf8;
 
 require './xterm-lib.pl';
 
@@ -82,6 +83,7 @@ Net::WebSocket::Server->new(
                 },
             utf8 => sub {
                 my ($conn, $msg) = @_;
+		utf8::encode($msg) if (utf8::is_utf8($msg));
                 if (!syswrite($shellfh, $msg, length($msg))) {
                     print STDERR "write to shell failed : $!\n";
                     &cleanup_miniserv();
