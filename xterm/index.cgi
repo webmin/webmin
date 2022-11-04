@@ -198,10 +198,14 @@ if ($user eq "root" && $in{'user'}) {
 		&error(&text('index_euser', &html_escape($in{'user'})));
 	$user = $in{'user'};
 	}
+defined(getpwnam($user)) || &error(&text('index_euser', &html_escape($user)));
+my @uinfo = getpwnam($user);
+my $ushell_bash = $uinfo[8] =~ /\/bash$/;
 
 # Terminal flavors
 my (@cmds, $term_flavors);
-if ($config{'flavors'}) {
+if ($config{'flavors'} == 1 ||
+    $config{'flavors'} == 2 && $ushell_bash) {
 	my ($cmd_lsalias, $cmd_ps1) = ("alias ls='ls --color=auto'");
 
 	# Optionally add colors to the prompt depending on the user type
@@ -231,7 +235,6 @@ my $shellserver_cmd = "$module_config_directory/shellserver.pl";
 if (!-r $shellserver_cmd) {
 	&cron::create_wrapper($shellserver_cmd, $module_name, "shellserver.pl");
 	}
-defined(getpwnam($user)) || &error(&text('index_euser', &html_escape($user)));
 my $tmpdir = &tempname_dir();
 $ENV{'HISTCONTROL'} = 'ignoredups:ignorespace';
 $ENV{'SESSION_ID'} = $main::session_id;
