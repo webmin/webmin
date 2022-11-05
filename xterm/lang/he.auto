@@ -1,0 +1,7 @@
+index_title=מָסוֹף
+index_cpan=מודול Perl <tt>$1</tt> הדרוש כדי לקבל חיבורי WebSockets אינו זמין, אך אתה יכול להתקין אותו באופן אוטומטי באמצעות מודול <a href='$2'>Perl Modules</a> של Webmin.
+index_euser=שגיאה: המשתמש $1 לא יכול להפעיל את המעטפת מכיוון שהיא לא קיימת!
+index_connecting=מתחבר ..
+
+acl_user=הפעל מעטפת כמשתמש יוניקס
+acl_sameuser=זהה לכניסה ל-Webmin

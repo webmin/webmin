@@ -1,0 +1,7 @@
+index_title=Terminal
+index_cpan=Perl modul <tt>$1</tt> potreban za prihvaćanje WebSockets veza nije dostupan, ali ga možete automatski instalirati pomoću Webminovog <a href='$2'>Perl modula</a> modula.
+index_euser=Pogreška: Korisnik $1 ne može pokrenuti ljusku jer ona ne postoji!
+index_connecting=Povezivanje ..
+
+acl_user=Pokrenite shell kao Unix korisnik
+acl_sameuser=Isto kao prijava na Webmin

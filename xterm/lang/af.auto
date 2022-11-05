@@ -1,0 +1,7 @@
+index_title=Terminale
+index_cpan=Die Perl-module <tt>$1</tt> wat nodig is om WebSockets-verbindings te aanvaar, is nie beskikbaar nie, maar jy kan dit outomaties installeer deur Webmin se <a href='$2'>Perl Modules</a>-module te gebruik.
+index_euser=Fout: Gebruiker $1 kan nie die dop laat loop nie, aangesien dit nie bestaan nie!
+index_connecting=Koppel aan ..
+
+acl_user=Begin dop as Unix-gebruiker
+acl_sameuser=Dieselfde as Webmin-aanmelding

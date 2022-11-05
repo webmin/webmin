@@ -1,0 +1,7 @@
+index_title=Terminal
+index_cpan=Modulul Perl <tt>$1</tt> necesar pentru a accepta conexiunile WebSockets nu este disponibil, dar îl puteți instala automat folosind modulul <a href='$2'>Module Perl</a> al Webmin.
+index_euser=Eroare: utilizatorul $1 nu poate rula shell-ul deoarece nu există!
+index_connecting=Conectare ..
+
+acl_user=Rulați shell ca utilizator Unix
+acl_sameuser=La fel ca autentificarea Webmin

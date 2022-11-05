@@ -1,0 +1,7 @@
+index_title=終端
+index_cpan=接受 WebSockets 連接所需的 Perl 模塊 <tt>$1</tt> 不可用，但您可以使用 Webmin 的 <a href='$2'>Perl Modules</a> 模塊自動安裝它。
+index_euser=錯誤：用戶 $1 無法運行 shell，因為它不存在！
+index_connecting=連接 ..
+
+acl_user=以 Unix 用戶身份運行 shell
+acl_sameuser=與 Webmin 登錄相同

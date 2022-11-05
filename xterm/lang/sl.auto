@@ -1,0 +1,7 @@
+index_title=Terminal
+index_cpan=Modul Perl <tt>$1</tt>, potreben za sprejemanje povezav WebSockets, ni na voljo, vendar ga lahko samodejno namestite z uporabo modula <a href='$2'>Moduli Perl</a> podjetja Webmin.
+index_euser=Napaka: Uporabnik $1 ne more zagnati lupine, ker ne obstaja!
+index_connecting=Povezovanje ..
+
+acl_user=Zaženi lupino kot uporabnik Unixa
+acl_sameuser=Enako kot prijava v Webmin

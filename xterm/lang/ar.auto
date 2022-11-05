@@ -1,0 +1,7 @@
+index_title=صالة
+index_cpan=وحدة Perl <tt>$1</tt> المطلوبة لقبول اتصالات WebSockets غير متوفرة ، ولكن يمكنك تثبيتها تلقائيًا باستخدام وحدة Webmin <a href='$2'>Perl Modules</a>.
+index_euser=خطأ: لا يمكن للمستخدم$1 تشغيل shell لأنه غير موجود!
+index_connecting=توصيل ..
+
+acl_user=قم بتشغيل shell كمستخدم Unix
+acl_sameuser=مثل تسجيل الدخول إلى Webmin

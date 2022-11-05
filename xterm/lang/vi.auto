@@ -1,0 +1,7 @@
+index_title=Phần cuối
+index_cpan=Mô-đun Perl <tt>$1</tt> cần thiết để chấp nhận kết nối WebSockets không khả dụng, nhưng bạn có thể cài đặt nó tự động bằng mô-đun <a href='$2'>Mô-đun Perl</a> của Webmin.
+index_euser=Lỗi: Người dùng $1 không thể chạy shell vì nó không tồn tại!
+index_connecting=Đang kết nối ..
+
+acl_user=Chạy shell với tư cách người dùng Unix
+acl_sameuser=Giống như đăng nhập Webmin

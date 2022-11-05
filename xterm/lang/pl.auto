@@ -1,0 +1,7 @@
+index_title=Terminal
+index_cpan=Moduł Perla <tt>$1</tt> potrzebny do akceptowania połączeń WebSockets nie jest dostępny, ale możesz zainstalować go automatycznie za pomocą modułu <a href='$2'>Moduły Perla</a> firmy Webmin.
+index_euser=Błąd: Użytkownik $1 nie może uruchomić powłoki, ponieważ ona nie istnieje!
+index_connecting=Podłączanie ..
+
+acl_user=Uruchom powłokę jako użytkownik Unix
+acl_sameuser=Tak samo jak logowanie do Webmina

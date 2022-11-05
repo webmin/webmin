@@ -1,0 +1,7 @@
+index_title=ٹرمینل
+index_cpan=The Perl module <tt>$1</tt> needed to accept WebSockets connections is not available, but you can install it automatically using Webmin's <a href='$2'>Perl Modules</a> module.
+index_euser=خرابی: صارف $1 شیل کو نہیں چلا سکتا کیونکہ یہ موجود نہیں ہے!
+index_connecting=جڑ رہا ہے ..
+
+acl_user=شیل کو یونکس صارف کے طور پر چلائیں۔
+acl_sameuser=Webmin لاگ ان کی طرح

@@ -1,0 +1,7 @@
+index_title=단말기
+index_cpan=WebSockets 연결을 수락하는 데 필요한 Perl 모듈 <tt>$1</tt>을(를) 사용할 수 없지만 Webmin의 <a href='$2'>Perl 모듈</a> 모듈을 사용하여 자동으로 설치할 수 있습니다.
+index_euser=오류: 사용자 $1은(는) 쉘이 존재하지 않으므로 실행할 수 없습니다!
+index_connecting=연결 중 ..
+
+acl_user=Unix 사용자로 쉘 실행
+acl_sameuser=Webmin 로그인과 동일
