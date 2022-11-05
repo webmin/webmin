@@ -90,20 +90,38 @@ body[style='height:100%'] {
 	height: $calc_rows_abs;
 	padding: 2px;
 }
+#terminal:empty:before {
+    display: block;
+    content: " ";
+    overflow: hidden;
+    
+    width: 12px;
+    height: 12px;
+    
+    margin-top: 4px;
+    margin-left: 4px;
+    
+    border-radius: 50%;
+    
+    box-sizing: border-box;
+
+    border: 1px solid transparent;
+    border-top-color: rgba(255, 255, 255, 0.8);
+    border-bottom-color: rgba(255, 255, 255, 0.8);
+    animation: jumping-spinner 1s ease infinite;
+}
+
 #terminal:empty:after {
-	display: block;
-	content: " ";
-	overflow: hidden;
-	
-	width: 24px;
-	height: 24px;
-	margin: 2% auto;
-	border-radius: 50%;
-	box-sizing: border-box;
-	border: 1px solid transparent;
-	border-top-color: rgba(255, 255, 255, 0.8);
-	border-bottom-color: rgba(255, 255, 255, 0.8);
-	animation: jumping-spinner 1s ease infinite;
+
+    display: block;
+    content: attr(data-label);
+    margin-left: 24px;
+    margin-top: -16px;
+    font-weight: 100;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: "Lucida Console", Courier, monospace;
+    font-size: 14px;
+    text-transform: uppercase;
 }
 \@keyframes jumping-spinner {
     to {
@@ -138,7 +156,7 @@ EOF
 		);
 
 # Print main container
-print "<div id=\"terminal\" $termjs_opts{'ContainerStyle'}></div>\n";
+print "<div data-label=\"$text{'index_connecting'}\" id=\"terminal\" $termjs_opts{'ContainerStyle'}></div>\n";
 
 # Detect terminal width and height for regular themes 
 if (!$xmlhr) {
