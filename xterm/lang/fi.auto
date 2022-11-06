@@ -1,0 +1,7 @@
+index_title=Terminaali
+index_cpan=WebSockets-yhteyksien hyväksymiseen tarvittava Perl-moduuli <tt>$1</tt> ei ole saatavilla, mutta voit asentaa sen automaattisesti käyttämällä Webminin <a href='$2'>Perl-moduulit</a>-moduulia.
+index_euser=Virhe : Käyttäjä $1 ei voi suorittaa komentotulkkia, koska sitä ei ole olemassa!
+index_connecting=Yhdistetään ..
+
+acl_user=Suorita shell Unix-käyttäjänä
+acl_sameuser=Sama kuin Webminin kirjautuminen

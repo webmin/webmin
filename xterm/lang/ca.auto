@@ -1,0 +1,7 @@
+index_title=Terminal
+index_cpan=El mòdul Perl <tt>$1</tt> necessari per acceptar connexions WebSockets no està disponible, però podeu instal·lar-lo automàticament mitjançant el mòdul <a href='$2'>Mòduls Perl</a> de Webmin.
+index_euser=Error: l'usuari $1 no pot executar l'intèrpret d'ordres perquè no existeix!
+index_connecting=Connectant ..
+
+acl_user=Executeu shell com a usuari Unix
+acl_sameuser=Igual que l'inici de sessió de Webmin

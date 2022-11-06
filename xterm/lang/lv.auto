@@ -1,0 +1,7 @@
+index_title=Terminālis
+index_cpan=Perl modulis <tt>$1</tt>, kas nepieciešams, lai pieņemtu WebSockets savienojumus, nav pieejams, taču to var instalēt automātiski, izmantojot Webmin <a href='$2'>Perl moduļus</a> moduli.
+index_euser=Kļūda: lietotājs $1 nevar palaist čaulu, jo tā neeksistē!
+index_connecting=Notiek savienojuma izveide. ..
+
+acl_user=Palaidiet apvalku kā Unix lietotāju
+acl_sameuser=Tāpat kā Webmin pieteikšanās

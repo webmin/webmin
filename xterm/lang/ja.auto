@@ -1,0 +1,7 @@
+index_title=「ターミナル」
+index_cpan=WebSockets 接続を受け入れるために必要な Perl モジュール <tt>$1</tt> は利用できませんが、Webmin の <a href='$2'>Perl モジュール</a> モジュールを使用して自動的にインストールできます。
+index_euser=エラー : ユーザー $1 はシェルが存在しないため実行できません!
+index_connecting=接続中 ..
+
+acl_user=Unix ユーザーとしてシェルを実行する
+acl_sameuser=Webmin ログインと同じ

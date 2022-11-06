@@ -1,0 +1,7 @@
+index_title=Terminál
+index_cpan=Perl modul <tt>$1</tt> potřebný k akceptování připojení WebSockets není k dispozici, ale můžete jej nainstalovat automaticky pomocí modulu <a href='$2'>Perl Modules</a> Webminu.
+index_euser=Chyba: Uživatel $1 nemůže spustit shell, protože neexistuje!
+index_connecting=Připojování ..
+
+acl_user=Spusťte shell jako uživatel Unixu
+acl_sameuser=Stejné jako přihlášení do Webminu

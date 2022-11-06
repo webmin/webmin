@@ -1,0 +1,7 @@
+index_title=Terminala
+index_cpan=WebSockets konexioak onartzeko behar den Perl modulua <tt>$1</tt> ez dago erabilgarri, baina automatikoki instala dezakezu Webmin-en <a href='$2'>Perl Modules</a> modulua erabiliz.
+index_euser=Errorea: $1 erabiltzaileak ezin du shell-a exekutatu, ez baitago!
+index_connecting=Konektatzen ..
+
+acl_user=Exekutatu shell Unix erabiltzaile gisa
+acl_sameuser=Webmin-en saioaren berdina

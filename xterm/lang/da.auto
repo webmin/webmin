@@ -1,0 +1,7 @@
+index_title=Terminal
+index_cpan=Perl-modulet <tt>$1</tt>, der er nødvendigt for at acceptere WebSockets-forbindelser, er ikke tilgængeligt, men du kan installere det automatisk ved hjælp af Webmins <a href='$2'>Perl-moduler</a>-modul.
+index_euser=Fejl: Bruger $1 kan ikke køre skallen, da den ikke eksisterer!
+index_connecting=Tilslutning ..
+
+acl_user=Kør shell som Unix-bruger
+acl_sameuser=Samme som Webmin login

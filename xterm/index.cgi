@@ -33,10 +33,10 @@ my $def_cols_n = 80;
 my $def_rows_n = 24;
 my $rcvd_cnt_w = int($ENV{'HTTP_X_AGENT_WIDTH'}) || int($in{'w'});
 my $rcvd_cnt_h = int($ENV{'HTTP_X_AGENT_HEIGHT'}) || int($in{'h'});
-my $rcvd_or_def_col_w = &is_float($in{'f'}) ? $in{'f'} : 9;
-my $rcvd_or_def_row_h = &is_float($in{'l'}) ? $in{'l'} : 18;
-my $rcvd_or_def_col_o = int($in{'g'}) || 1;
-my $rcvd_or_def_row_o = int($in{'o'}) || 0;
+my $rcvd_or_def_col_w = defined($in{'f'}) ? &float($in{'f'}) : 9;
+my $rcvd_or_def_row_h = defined($in{'l'}) ? &float($in{'l'}) : 18;
+my $rcvd_or_def_col_o = defined($in{'g'}) ? int($in{'g'}) : 1;
+my $rcvd_or_def_row_o = defined($in{'o'}) ? int($in{'o'}) : 0;
 my $resize_call = $in{'r'};
 my $xmlhr = $ENV{'HTTP_X_REQUESTED_WITH'} eq "XMLHttpRequest";
 my %term_opts;
@@ -90,20 +90,38 @@ body[style='height:100%'] {
 	height: $calc_rows_abs;
 	padding: 2px;
 }
+#terminal:empty:before {
+    display: block;
+    content: " ";
+    overflow: hidden;
+    
+    width: 12px;
+    height: 12px;
+    
+    margin-top: 4px;
+    margin-left: 4px;
+    
+    border-radius: 50%;
+    
+    box-sizing: border-box;
+
+    border: 1px solid transparent;
+    border-top-color: rgba(255, 255, 255, 0.8);
+    border-bottom-color: rgba(255, 255, 255, 0.8);
+    animation: jumping-spinner 1s ease infinite;
+}
+
 #terminal:empty:after {
-	display: block;
-	content: " ";
-	overflow: hidden;
-	
-	width: 24px;
-	height: 24px;
-	margin: 2% auto;
-	border-radius: 50%;
-	box-sizing: border-box;
-	border: 1px solid transparent;
-	border-top-color: rgba(255, 255, 255, 0.8);
-	border-bottom-color: rgba(255, 255, 255, 0.8);
-	animation: jumping-spinner 1s ease infinite;
+
+    display: block;
+    content: attr(data-label);
+    margin-left: 24px;
+    margin-top: -16px;
+    font-weight: 100;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: "Lucida Console", Courier, monospace;
+    font-size: 14px;
+    text-transform: uppercase;
 }
 \@keyframes jumping-spinner {
     to {
@@ -138,7 +156,7 @@ EOF
 		);
 
 # Print main container
-print "<div id=\"terminal\" $termjs_opts{'ContainerStyle'}></div>\n";
+print "<div data-label=\"$text{'index_connecting'}\" id=\"terminal\" $termjs_opts{'ContainerStyle'}></div>\n";
 
 # Detect terminal width and height for regular themes 
 if (!$xmlhr) {
@@ -198,10 +216,14 @@ if ($user eq "root" && $in{'user'}) {
 		&error(&text('index_euser', &html_escape($in{'user'})));
 	$user = $in{'user'};
 	}
+my @uinfo = getpwnam($user);
+@uinfo || &error(&text('index_euser', &html_escape($user)));
+my $ushell_bash = $uinfo[8] =~ /\/bash$/;
 
 # Terminal flavors
 my (@cmds, $term_flavors);
-if ($config{'flavors'}) {
+if ($config{'flavors'} == 1 ||
+    $config{'flavors'} == 2 && $ushell_bash) {
 	my ($cmd_lsalias, $cmd_ps1) = ("alias ls='ls --color=auto'");
 
 	# Optionally add colors to the prompt depending on the user type
@@ -231,7 +253,6 @@ my $shellserver_cmd = "$module_config_directory/shellserver.pl";
 if (!-r $shellserver_cmd) {
 	&cron::create_wrapper($shellserver_cmd, $module_name, "shellserver.pl");
 	}
-defined(getpwnam($user)) || &error(&text('index_euser', &html_escape($user)));
 my $tmpdir = &tempname_dir();
 $ENV{'HISTCONTROL'} = 'ignoredups:ignorespace';
 $ENV{'SESSION_ID'} = $main::session_id;

@@ -1,0 +1,7 @@
+index_title=terminal
+index_cpan=WebSockets bağlantılarını kabul etmek için gereken <tt>$1</tt> Perl modülü mevcut değil, ancak Webmin'in <a href='$2'>Perl Modülleri</a> modülünü kullanarak bunu otomatik olarak yükleyebilirsiniz.
+index_euser=Hata : $1 kullanıcısı, mevcut olmadığı için kabuğu çalıştıramıyor!
+index_connecting=Bağlanıyor ..
+
+acl_user=Shell'i Unix kullanıcısı olarak çalıştırın
+acl_sameuser=Webmin oturum açma ile aynı

@@ -1,0 +1,7 @@
+index_title=Terminalas
+index_cpan=„Perl“ modulis <tt>$1</tt>, reikalingas „WebSockets“ ryšiams priimti, nepasiekiamas, tačiau jį galite įdiegti automatiškai naudodami „Webmin“ <a href='$2'>Perl modulių</a> modulį.
+index_euser=Klaida: vartotojas $1 negali paleisti apvalkalo, nes jo nėra!
+index_connecting=Jungiamasi ..
+
+acl_user=Paleiskite apvalkalą kaip Unix vartotoją
+acl_sameuser=Tas pats kaip Webmin prisijungimas

@@ -1,0 +1,7 @@
+index_title=Terminal
+index_cpan=Il-modulu Perl <tt>$1</tt> meħtieġ biex jaċċetta konnessjonijiet WebSockets mhuwiex disponibbli, iżda tista' tinstallah awtomatikament billi tuża l-modulu <a href='$2'>Moduli Perl</a> ta' Webmin.
+index_euser=Żball: L-utent $1 ma jistax iħaddem il-qoxra peress li ma teżistix!
+index_connecting=Konnessjoni ..
+
+acl_user=Mexxi shell bħala utent Unix
+acl_sameuser=L-istess bħall-login ta' Webmin
