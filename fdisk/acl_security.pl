@@ -5,40 +5,33 @@ require 'fdisk-lib.pl';
 # Output HTML for editing security options for the fdisk module
 sub acl_security_form
 {
-local @dlist = &list_disks_partitions();
-local ($d, %dcan);
-map { $dcan{$_}++ } split(/\s+/, $_[0]->{'disks'});
-print "<tr> <td valign=top><b>$text{'acl_disks'}</b></td> <td>\n";
-printf "<input type=radio name=disks_def value=1 %s> %s\n",
-	$_[0]->{'disks'} eq '*' ? 'checked' : '', $text{'acl_dall'};
-printf "<input type=radio name=disks_def value=0 %s> %s<br>\n",
-	$_[0]->{'disks'} eq '*' ? '' : 'checked', $text{'acl_dsel'};
-print "<select name=disks size=4 multiple>\n";
-foreach $d (@dlist) {
-	printf "<option value='%s' %s>%s</option>\n",
-		$d->{'device'},
-		$dcan{$d->{'device'}} ? "selected" : "",
-		&text('select_device', uc($d->{'type'}), uc(substr($d->{'device'}, -1))).($d->{'model'} ? " ($d->{'model'})" : "");
-	}
-print "</select></td> </tr>\n";
+my ($o) = @_;
+my @dlist = &list_disks_partitions();
 
-print "<tr> <td><b>$text{'acl_view'}</b></td>\n";
-printf "<td><input type=radio name=view value=1 %s> %s\n",
-	$_[0]->{'view'} ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=view value=0 %s> %s</td> </tr>\n",
-	$_[0]->{'view'} ? '' : 'checked', $text{'no'};
+print &ui_table_row($text{'acl_disks'},
+	&ui_radio("disks_def", $o->{'disks'} eq '*' ? 1 : 0,
+		  [ [ 1, $text{'acl_dall'} ],
+		    [ 0, $text{'acl_dsel'} ] ])."<br>\n".
+	&ui_select("disks",
+		   [ split(/\s+/, $o->{'disks'}) ],
+		   [ map { [ $_->{'device'}, &text('select_device', uc($_->{'type'}), uc(substr($_->{'device'}, -1))).($_->{'model'} ? " ($_->{'model'})" : "") ] } @dlist ],
+		   4, 1), 3);
+
+print &ui_table_row($text{'acl_view'},
+	&ui_yesno_radio("view", $o->{'view'}));
 }
 
 # acl_security_save(&options)
 # Parse the form for security options for the fdisk module
 sub acl_security_save
 {
+my ($o) = @_;
 if ($in{'disks_def'}) {
-	$_[0]->{'disks'} = "*";
+	$o->{'disks'} = "*";
 	}
 else {
-	$_[0]->{'disks'} = join(" ", split(/\0/, $in{'disks'}));
+	$o->{'disks'} = join(" ", split(/\0/, $in{'disks'}));
 	}
-$_[0]->{'view'} = $in{'view'};
+$o->{'view'} = $in{'view'};
 }
 
