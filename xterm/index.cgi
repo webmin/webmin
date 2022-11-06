@@ -33,10 +33,14 @@ my $def_cols_n = 80;
 my $def_rows_n = 24;
 my $rcvd_cnt_w = int($ENV{'HTTP_X_AGENT_WIDTH'}) || int($in{'w'});
 my $rcvd_cnt_h = int($ENV{'HTTP_X_AGENT_HEIGHT'}) || int($in{'h'});
-my $rcvd_or_def_col_w = defined($in{'f'}) ? &float($in{'f'}) : 9;
-my $rcvd_or_def_row_h = defined($in{'l'}) ? &float($in{'l'}) : 18;
-my $rcvd_or_def_col_o = defined($in{'g'}) ? int($in{'g'}) : 1;
-my $rcvd_or_def_row_o = defined($in{'o'}) ? int($in{'o'}) : 0;
+my $rcvd_or_def_col_w = &float($ENV{'HTTP_X_AGENT_FONTWIDTH'}) || &float($in{'f'}) || 9;
+my $rcvd_or_def_row_h = &float($ENV{'HTTP_X_AGENT_FONTHEIGHT'}) || &float($in{'l'}) || 18;
+my $rcvd_or_def_col_o = defined($ENV{'HTTP_X_AGENT_COLUMNOFFSET'}) ?
+                            int($ENV{'HTTP_X_AGENT_COLUMNOFFSET'}) : 
+                              defined($in{'g'}) ? int($in{'g'}) : 1;
+my $rcvd_or_def_row_o = defined($ENV{'HTTP_X_AGENT_ROWOFFSET'}) ?
+                            int($ENV{'HTTP_X_AGENT_ROWOFFSET'}) : 
+                              defined($in{'o'}) ? int($in{'o'}) : 0;
 my $resize_call = $in{'r'};
 my $xmlhr = $ENV{'HTTP_X_REQUESTED_WITH'} eq "XMLHttpRequest";
 my %term_opts;
