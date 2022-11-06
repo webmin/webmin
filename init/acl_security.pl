@@ -5,40 +5,31 @@ require 'init-lib.pl';
 # Output HTML for editing security options for the init module
 sub acl_security_form
 {
-if ($config{'local_script'}) {
-	print "<tr> <td><b>$text{'acl_script'}</b></td> <td colspan=3>\n";
-	}
-else {
-	print "<tr> <td><b>$text{'acl_actions'}</b></td> <td colspan=3>\n";
-	}
-printf "<input type=radio name=bootup value=1 %s> $text{'yes'}\n",
-	$_[0]->{'bootup'} == 1 ? "checked" : "";
+my ($o) = @_;
+
+my $msg = $config{'local_script'} ? $text{'acl_script'} : $text{'acl_actions'};
+my @opts = ( [ 1, $text{'yes'} ] );
 if (!$config{'local_script'}) {
-	printf "<input type=radio name=bootup value=2 %s> $text{'acl_runonly'}\n",
-		$_[0]->{'bootup'} == 2 ? "checked" : "";
+	push(@opts, [ 2, $text{'acl_runonly'} ]);
 	}
-printf "<input type=radio name=bootup value=0 %s> $text{'no'}</td> </tr>\n",
-	$_[0]->{'bootup'} == 0 ? "checked" : "";
+push(@opts, [ 0, $text{'no'} ]);
+print &ui_table_row($msg,
+	&ui_radio("bootup", $o->{'bootup'}, \@opts));
 
-print "<tr> <td><b>$text{'acl_reboot'}</b></td> <td>\n";
-printf "<input type=radio name=reboot value=1 %s> $text{'yes'}\n",
-	$_[0]->{'reboot'} ? "checked" : "";
-printf "<input type=radio name=reboot value=0 %s> $text{'no'}</td>\n",
-	$_[0]->{'reboot'} ? "" : "checked";
+print &ui_table_row($text{'acl_reboot'},
+	&ui_yesno_radio("reboot", $o->{'reboot'}));
 
-print "<td><b>$text{'acl_shutdown'}</b></td> <td>\n";
-printf "<input type=radio name=shutdown value=1 %s> $text{'yes'}\n",
-	$_[0]->{'shutdown'} ? "checked" : "";
-printf "<input type=radio name=shutdown value=0 %s> $text{'no'}</td> </tr>\n",
-	$_[0]->{'shutdown'} ? "" : "checked";
+print &ui_table_row($text{'acl_shutdown'},
+	&ui_yesno_radio("shutdown", $o->{'shutdown'}));
 }
 
 # acl_security_save(&options)
 # Parse the form for security options for the init module
 sub acl_security_save
 {
-$_[0]->{'bootup'} = $in{'bootup'};
-$_[0]->{'reboot'} = $in{'reboot'};
-$_[0]->{'shutdown'} = $in{'shutdown'};
+my ($o) = @_;
+$o->{'bootup'} = $in{'bootup'};
+$o->{'reboot'} = $in{'reboot'};
+$o->{'shutdown'} = $in{'shutdown'};
 }
 
