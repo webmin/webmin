@@ -31,13 +31,13 @@ my $termlinks =
 my $conf_size_str = $config{'size'};
 my $def_cols_n = 80;
 my $def_rows_n = 24;
-my $rcvd_cnt_w = int($ENV{'HTTP_X_AGENT_WIDTH'}) || int($in{'w'});
-my $rcvd_cnt_h = int($ENV{'HTTP_X_AGENT_HEIGHT'}) || int($in{'h'});
+my $rcvd_cnt_w = &float($ENV{'HTTP_X_AGENT_WIDTH'}) || &float($in{'w'});
+my $rcvd_cnt_h = &float($ENV{'HTTP_X_AGENT_HEIGHT'}) || &float($in{'h'});
 my $rcvd_or_def_col_w = &float($ENV{'HTTP_X_AGENT_FONTWIDTH'}) || &float($in{'f'}) || 9;
 my $rcvd_or_def_row_h = &float($ENV{'HTTP_X_AGENT_FONTHEIGHT'}) || &float($in{'l'}) || 18;
 my $rcvd_or_def_col_o = defined($ENV{'HTTP_X_AGENT_COLUMNOFFSET'}) ?
                             int($ENV{'HTTP_X_AGENT_COLUMNOFFSET'}) : 
-                              defined($in{'g'}) ? int($in{'g'}) : 1;
+                              defined($in{'g'}) ? int($in{'g'}) : 2;
 my $rcvd_or_def_row_o = defined($ENV{'HTTP_X_AGENT_ROWOFFSET'}) ?
                             int($ENV{'HTTP_X_AGENT_ROWOFFSET'}) : 
                               defined($in{'o'}) ? int($in{'o'}) : 0;
@@ -53,7 +53,7 @@ if ($conf_cols_n && $conf_rows_n) {
 	$termjs_opts{'ContainerStyle'} = "style='width: fit-content; margin: 0 auto;'";
 	}
 else {
-	$termjs_opts{'ContainerStyle'} = "style='height: 97%;'";
+	$termjs_opts{'ContainerStyle'} = "style='height: max-content;'";
 	}
 
 # Set default container size in fixel depending on the mode
@@ -69,16 +69,11 @@ my $cols_num_user = int($rcvd_cnt_w / $rcvd_or_def_col_w);
 my $rows_num_user = int($rcvd_cnt_h / $rcvd_or_def_row_h);
 
 # Set columns and rows environment vars
-my $env_cols = $ENV{'COLUMNS'} = $conf_cols_n || $cols_num_user || $def_cols_n;
-my $env_rows = $ENV{'LINES'} = $conf_rows_n || $rows_num_user || $def_rows_n;
+my $env_cols = $ENV{'COLUMNS'} = (($conf_cols_n || $cols_num_user || $def_cols_n) - $rcvd_or_def_col_o);
+my $env_rows = $ENV{'LINES'} = (($conf_rows_n || $rows_num_user || $def_rows_n) - $rcvd_or_def_row_o);
 
 # Define columns and rows
 $termjs_opts{'Options'} = "{ cols: $env_cols, rows: $env_rows }";
-
-# Adjust columns and rows offset for env vars, which
-# should be always a tiny bit smaller than Xterm.js
-$ENV{'COLUMNS'} -= $rcvd_or_def_col_o;
-$ENV{'LINES'} -= $rcvd_or_def_row_o;
 
 # Tweak old themes inline
 my $styles_inline = <<EOF;
