@@ -25,7 +25,8 @@ if ($@) {
 my $termlinks = 
 	{ 'css' => ['xterm.css?$wver'],
 	  'js'  => ['xterm.js?$wver',
-	            'xterm-addon-attach.js?$wver'] };
+	            'xterm-addon-attach.js?$wver',
+	            'xterm-addon-fit.js?$wver'] };
 
 # Pre-process options
 my $conf_size_str = $config{'size'};
@@ -151,6 +152,7 @@ EOF
 		 "<link rel=stylesheet href=\"$termlinks->{'css'}[0]\">\n".
 		 "<script src=\"$termlinks->{'js'}[0]\"></script>\n".
 		 "<script src=\"$termlinks->{'js'}[1]\"></script>\n".
+		 "<script src=\"$termlinks->{'js'}[2]\"></script>\n".
 		 "<style>$styles_inline</style>\n"
 		);
 
@@ -271,11 +273,34 @@ my $term_script = <<EOF;
 	socket.onopen = function() {
 		var term = new Terminal($termjs_opts{'Options'}),
 		    attachAddon = new AttachAddon.AttachAddon(this);
+		    fitAddon = new FitAddon.FitAddon();
 		term.loadAddon(attachAddon);
+		term.loadAddon(fitAddon);
 		term.open(termcont);
+		fitAddon.fit();
 		term.focus();
+		
+		// On resize event triggered by fit()
+		term.onResize(function(e) {
+			// \033[8;(40);(100)t
+			// socket.send('\\\\033\\\\[8;('+e.rows+');('+e.cols+')t');
+			term.write('\\033[8;'+e.rows+';'+e.cols+'t')
+			socket.send(JSON.stringify(e));
+			console.log(e.cols, e.rows, '\\033[8;'+e.rows+';'+e.cols+'t');
+		});
+
+		// Observ on terminal container change
+		new ResizeObserver(function() {
+			fitAddon.fit();
+		}).observe(termcont)
+
 		$term_flavors
 		socket.send(' clear\\r');
+
+		// Expose objs and socket for debug
+		window.term_ = term;
+		window.termfit = fitAddon;
+		window.termsock = socket;
 	};
 	socket.onerror = function() {
 		termcont.innerHTML = '<tt style="color: \#ff0000">Error: ' +
