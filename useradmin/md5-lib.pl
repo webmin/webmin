@@ -138,7 +138,10 @@ return $r;
 sub check_sha1
 {
 eval "use Digest::SHA1";
-return $@ ? "Digest::SHA1" : undef;
+return undef if (!$@);
+eval "use Digest::SHA";
+return undef if (!$@);
+return "Digest::SHA";
 }
 
 # encrypt_sha1(password)
@@ -147,6 +150,9 @@ sub encrypt_sha1
 {
 my ($pass) = @_;
 my $sh = eval "use Digest::SHA1 qw(sha1_base64);return sha1_base64(\$pass);";
+if ($@) {
+	$sh = eval "use Digest::SHA qw(sha1_base64);return sha1_base64(\$pass);";
+	}
 return "{SHA}$sh=";
 }
 
