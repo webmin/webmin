@@ -224,11 +224,13 @@ return undef;
 }
 
 # list_php_configs()
-# Returns a list of allowed config files and descriptions
+# Returns a list of allowed config files, descriptions and PHP commands
 sub list_php_configs
 {
 local @rv;
 &get_default_php_ini();		# Force copy of sample ini file
+
+# Add system-wide INI files
 if ($access{'global'}) {
 	foreach my $ai (split(/\t+/, $config{'php_ini'})) {
 		local ($f, $d) = split(/=/, $ai);
@@ -239,6 +241,8 @@ if ($access{'global'}) {
 			}
 		}
 	}
+
+# Add INI files from ACL
 foreach my $ai (split(/\t+/, $access{'php_inis'})) {
 	local ($f, $d) = split(/=/, $ai);
 	foreach my $fp (split(/,/, $f)) {
@@ -247,12 +251,16 @@ foreach my $ai (split(/\t+/, $access{'php_inis'})) {
 			}
 		}
 	}
+
+# Convert dirs to files
 foreach my $i (@rv) {
 	if (-d $i->[0] && -r "$i->[0]/php.ini") {
 		$i->[0] = "$i->[0]/php.ini";
 		}
 	}
-if ($access{'global'} && &foreign_installed("virtual-server")) {
+
+# Add PHP INI files from Virtualmin
+if ($access{'global'} && &foreign_check("virtual-server")) {
 	&foreign_require("virtual-server");
 	foreach my $v (&virtual_server::list_available_php_versions()) {
 		if ($v->[0]) {
@@ -261,6 +269,26 @@ if ($access{'global'} && &foreign_installed("virtual-server")) {
 			}
 		}
 	}
+
+# Merge in paths to PHP if we can get them
+if (&foreign_check("virtual-server")) {
+	&foreign_require("virtual-server");
+	my %vmap = map { $_->[0], $_ }
+		       &virtual_server::list_available_php_versions();
+	foreach my $rv (@rv) {
+		if ($rv->[0] =~ /etc\/php(\S+)\/php.ini/ && $vmap{$1}) {
+			$rv->[2] = $vmap{$1}->[1];
+			$rv->[2] =~ s/-cgi//;
+			}
+		}
+	}
+foreach my $rv (@rv) {
+	if ($rv->[0] =~ /php(\d+)/) {
+		$rv->[2] ||= &has_command("php$1");
+		}
+	$rv->[2] ||= &has_command("php");
+	}
+
 my %done;
 return grep { !$done{$_->[0]}++ } @rv;
 }
@@ -396,6 +424,32 @@ if ($access{'user'} && $access{'user'} ne 'root' && $< == 0) {
 else {
 	&flush_file_lines($file, $eof, $ignore);
 	}
+}
+
+# list_available_extensions(&conf, file)
+# Returns a list of all available PHP extension modules
+sub list_available_extensions
+{
+my ($conf, $file) = @_;
+my $dir = &find_value("extension_dir", $conf);
+if (!$dir) {
+	# Figure it out from the PHP command
+	my ($conf) = grep { $_->[0] eq $file } &list_php_configs();
+	if ($conf && $conf->[2]) {
+		my $out = &backquote_command("$conf->[2] -i 2>/dev/null </dev/null");
+		if ($out =~ /extension_dir\s+=>\s+(\S+)/) {
+			$dir = $1;
+			}
+		}
+	}
+if ($dir) {
+	# Get all the extensions
+	opendir(DIR, $dir);
+	my @exts = grep { /\.so$/ } readdir(DIR);
+	closedir(DIR);
+	return @exts;
+	}
+return ();
 }
 
 1;

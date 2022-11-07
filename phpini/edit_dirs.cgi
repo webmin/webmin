@@ -27,6 +27,12 @@ print &ui_table_row($text{'dirs_ext'},
 			60, $text{'default'})." ".
 	&file_chooser_button("ext", 1));
 
+# Enabled extensions
+my @exts = map { $_->{'value'} } &find("extension", $conf);
+my @avail = &list_available_extensions($conf, $in{'file'});
+print &ui_table_row($text{'dirs_exts'},
+	&ui_select("exts", \@exts, \@avail, 10, 1, 1));
+
 # Can accept uploads?
 print &ui_table_row($text{'dirs_upload'},
 	&onoff_radio("file_uploads"));
