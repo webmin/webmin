@@ -4086,6 +4086,23 @@ if (!$main::get_system_hostname[$m]) {
 			$fromfile .= ".".$dname if ($dname);
 			}
 
+		# Append domain name from /etc/hosts if needed
+		if ($fromfile && $fromfile !~ /\./) {
+			my $lref = &read_file_lines("/etc/hosts", 1);
+			HOST: foreach my $l (@$lref) {
+				next if ($l =~ /^\s*#/);
+				my ($ip, @names) = split(/\s+/, $l);
+				next if (&indexof($fromfile, @names) < 0);
+				foreach my $n (@names) {
+					if ($n =~ /^\Q$fromfile\E\.(.*)/) {
+						$dname = $2;
+						last HOST;
+						}
+					}
+				}
+			$fromfile .= ".".$dname if ($dname);
+			}
+
 		# If we found a hostname in a file, use it
 		if ($fromfile && ($m || $fromfile =~ /\./)) {
 			if ($m) {
