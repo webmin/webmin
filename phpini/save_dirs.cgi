@@ -22,7 +22,9 @@ else {
 $in{'ext_def'} || $in{'ext'} =~ /\S/ || &error($text{'dirs_eext'});
 &save_directive($conf, "extension_dir", $in{'ext_def'} ? undef : $in{'ext'});
 
-&save_directive($conf, "extension", [ split(/\0/, $in{'exts'}) ]);
+if (defined($in{'exts'})) {
+	&save_directive($conf, "extension", [ split(/\0/, $in{'exts'}) ]);
+	}
 
 &save_directive($conf, "file_uploads", $in{'file_uploads'} || undef);
 

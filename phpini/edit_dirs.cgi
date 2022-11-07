@@ -30,8 +30,10 @@ print &ui_table_row($text{'dirs_ext'},
 # Enabled extensions
 my @exts = map { $_->{'value'} } &find("extension", $conf);
 my @avail = &list_available_extensions($conf, $in{'file'});
-print &ui_table_row($text{'dirs_exts'},
-	&ui_select("exts", \@exts, \@avail, 10, 1, 1));
+if (@avail) {
+	print &ui_table_row($text{'dirs_exts'},
+		&ui_select("exts", \@exts, \@avail, 10, 1, 1));
+	}
 
 # Can accept uploads?
 print &ui_table_row($text{'dirs_upload'},

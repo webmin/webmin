@@ -104,86 +104,93 @@ local @rv = map { $_->{'value'} } &find(@_);
 return $rv[0];
 }
 
-# save_directive(&config, name, [value], [newsection], [neverquote])
+# save_directive(&config, name, [value|&values], [newsection], [neverquote])
 # Updates a single entry in the PHP config file
 sub save_directive
 {
-local ($conf, $name, $value, $newsection, $noquote) = @_;
+local ($conf, $name, $values, $newsection, $noquote) = @_;
+my @values = ref($values) ? @$values : ( $values );
 $newsection ||= "PHP";
-local $old = &find($name, $conf, 0);
-local $cmt = &find($name, $conf, 1);
-local $fmt = $old ? $old->{'fmt'} : @$conf ? $conf->[0]->{'fmt'} : "fpm";
-local $lref;
-if ($fmt eq "ini") {
-	$newline = $name." = ".
-		   ($value !~ /\s/ || $noquote ? $value :
-		    $value =~ /"/ ? "'$value'" : "\"$value\"");
-	}
-else {
-	my $n = !$old || $old->{'admin'} ? "php_admin_value" : "php_value";
-	$newline = $n."[".$name."] = ".$value;
-	}
-if (defined($value) && $old) {
-	# Update existing value
-	$lref = &read_file_lines_as_user($old->{'file'});
-	$lref->[$old->{'line'}] = $newline;
-	$old->{'value'} = $value;
-	}
-elsif (defined($value) && !$old && $cmt) {
-	# Update existing commented value
-	$lref = &read_file_lines_as_user($cmt->{'file'});
-	$lref->[$cmt->{'line'}] = $newline;
-	$cmt->{'value'} = $value;
-	$cmt->{'enabled'} = 1;
-	}
-elsif (defined($value) && !$old && !$cmt) {
-	# Add a new value, at the end of the section
-	my ($lastline, $lastfile);
+my @old = &find($name, $conf, 0);
+my @cmt = &find($name, $conf, 1);
+my $fmt = @old ? $old[0]->{'fmt'} : @$conf ? $conf->[0]->{'fmt'} : "fpm";
+my $lref;
+for(my $i=0; $i<@old || $i<@values; $i++) {
+	my $old = $i<@old ? $old[$i] : undef;
+	my $value = $i<@values ? $values[$i] : undef;
+	my $cmt = $i<@cmt ? $cmt[$i] : undef;
 	if ($fmt eq "ini") {
-		# Find last directive in requested php.ini section
-		my $last;
-		foreach my $c (@$conf) {
-			if ($c->{'section'} eq $newsection) {
-				$last = $c;
-				}
-			}
-		$last || &error("Could not find any values in ".
-				"section $newsection");
-		$lastfile = $last->{'file'};
-		$lastline = $last->{'line'};
-		$lref = &read_file_lines_as_user($lastfile);
+		$newline = $name." = ".
+			   ($value !~ /\s/ || $noquote ? $value :
+			    $value =~ /"/ ? "'$value'" : "\"$value\"");
 		}
 	else {
-		# Just add at the end
-		$lastfile = @$conf ? $conf->[0]->{'file'} : undef;
-		$lastfile || &error("Don't know which file to add to");
-		$lref = &read_file_lines_as_user($lastfile);
-		$lastline = scalar(@$lref);
+		my $n = !$old || $old->{'admin'} ? "php_admin_value"
+						 : "php_value";
+		$newline = $n."[".$name."] = ".$value;
 		}
+	if (defined($value) && $old) {
+		# Update existing value
+		$lref = &read_file_lines_as_user($old->{'file'});
+		$lref->[$old->{'line'}] = $newline;
+		$old->{'value'} = $value;
+		}
+	elsif (defined($value) && !$old && $cmt) {
+		# Update existing commented value
+		$lref = &read_file_lines_as_user($cmt->{'file'});
+		$lref->[$cmt->{'line'}] = $newline;
+		$cmt->{'value'} = $value;
+		$cmt->{'enabled'} = 1;
+		}
+	elsif (defined($value) && !$old && !$cmt) {
+		# Add a new value, at the end of the section
+		my ($lastline, $lastfile);
+		if ($fmt eq "ini") {
+			# Find last directive in requested php.ini section
+			my $last;
+			foreach my $c (@$conf) {
+				if ($c->{'section'} eq $newsection) {
+					$last = $c;
+					}
+				}
+			$last || &error("Could not find any values in ".
+					"section $newsection");
+			$lastfile = $last->{'file'};
+			$lastline = $last->{'line'};
+			$lref = &read_file_lines_as_user($lastfile);
+			}
+		else {
+			# Just add at the end
+			$lastfile = @$conf ? $conf->[0]->{'file'} : undef;
+			$lastfile || &error("Don't know which file to add to");
+			$lref = &read_file_lines_as_user($lastfile);
+			$lastline = scalar(@$lref);
+			}
 
-	# Found last value in the section - add after it
-	splice(@$lref, $lastline+1, 0, $newline);
-	&renumber($conf, $lastline, 1);
-	push(@$conf, { 'name' => $name,
-		       'value' => $value,
-		       'enabled' => 1,
-		       'file' => $lastfile,
-		       'line' => $lastline+1,
-		       'section' => $newsection,
-		     });
-	}
-elsif (!defined($value) && $old && $cmt) {
-	# Totally remove a value
-	$lref = &read_file_lines_as_user($old->{'file'});
-	splice(@$lref, $old->{'line'}, 1);
-	@$conf = grep { $_ ne $old } @$conf;
-	&renumber($conf, $old->{'line'}, -1);
-	}
-elsif (!defined($value) && $old && !$cmt) {
-	# Turn a value into a comment
-	$lref = &read_file_lines_as_user($old->{'file'});
-	$old->{'enabled'} = 0;
-	$lref->[$old->{'line'}] = "; ".$lref->[$old->{'line'}];
+		# Found last value in the section - add after it
+		splice(@$lref, $lastline+1, 0, $newline);
+		&renumber($conf, $lastline, 1);
+		push(@$conf, { 'name' => $name,
+			       'value' => $value,
+			       'enabled' => 1,
+			       'file' => $lastfile,
+			       'line' => $lastline+1,
+			       'section' => $newsection,
+			     });
+		}
+	elsif (!defined($value) && $old && $cmt) {
+		# Totally remove a value
+		$lref = &read_file_lines_as_user($old->{'file'});
+		splice(@$lref, $old->{'line'}, 1);
+		@$conf = grep { $_ ne $old } @$conf;
+		&renumber($conf, $old->{'line'}, -1);
+		}
+	elsif (!defined($value) && $old && !$cmt) {
+		# Turn a value into a comment
+		$lref = &read_file_lines_as_user($old->{'file'});
+		$old->{'enabled'} = 0;
+		$lref->[$old->{'line'}] = "; ".$lref->[$old->{'line'}];
+		}
 	}
 }
 
@@ -224,7 +231,7 @@ return undef;
 }
 
 # list_php_configs()
-# Returns a list of allowed config files, descriptions and PHP commands
+# Returns a list of allowed config files and descriptions
 sub list_php_configs
 {
 local @rv;
@@ -270,27 +277,44 @@ if ($access{'global'} && &foreign_check("virtual-server")) {
 		}
 	}
 
-# Merge in paths to PHP if we can get them
+my %done;
+return grep { !$done{$_->[0]}++ } @rv;
+}
+
+# get_php_ini_binary(file)
+# Given a php.ini path, try to guess the php command for it
+sub get_php_ini_binary
+{
+my ($file) = @_;
+
+# Possible php.ini under domain's home dir
 if (&foreign_check("virtual-server")) {
 	&foreign_require("virtual-server");
 	my %vmap = map { $_->[0], $_ }
 		       &virtual_server::list_available_php_versions();
-	foreach my $rv (@rv) {
-		if ($rv->[0] =~ /etc\/php(\S+)\/php.ini/ && $vmap{$1}) {
-			$rv->[2] = $vmap{$1}->[1];
-			$rv->[2] =~ s/-cgi//;
+	if ($file =~ /etc\/php(\S+)\/php.ini/) {
+		my $ver = $1;
+		my $nodot = $ver;
+		$nodot =~ s/\.//g;
+		my $php = $vmap{$ver} || $vmap{$nodot};
+		if ($php && $php->[1]) {
+			my $binary = $php->[1];
+			$binary =~ s/-cgi//;
+			return $binary;
 			}
 		}
 	}
-foreach my $rv (@rv) {
-	if ($rv->[0] =~ /php(\d+)/) {
-		$rv->[2] ||= &has_command("php$1");
-		}
-	$rv->[2] ||= &has_command("php");
-	}
 
-my %done;
-return grep { !$done{$_->[0]}++ } @rv;
+# Try to get version from the path
+if ($fle =~ /php(\d+)/) {
+	my $ver = $1;
+	my $nodot = $ver;
+	$nodot =~ s/\.//g;
+	my $binary = &has_command("php$ver") ||
+		     &has_command("php$nodot");
+	return $binary if ($binary);
+	}
+return &has_command("php");
 }
 
 # onoff_radio(name)
@@ -434,9 +458,9 @@ my ($conf, $file) = @_;
 my $dir = &find_value("extension_dir", $conf);
 if (!$dir) {
 	# Figure it out from the PHP command
-	my ($conf) = grep { $_->[0] eq $file } &list_php_configs();
-	if ($conf && $conf->[2]) {
-		my $out = &backquote_command("$conf->[2] -i 2>/dev/null </dev/null");
+	my $binary = &get_php_ini_binary($file);
+	if ($binary) {
+		my $out = &backquote_command("$binary -i 2>/dev/null </dev/null");
 		if ($out =~ /extension_dir\s+=>\s+(\S+)/) {
 			$dir = $1;
 			}
