@@ -7,7 +7,7 @@ use utf8;
 
 require './xterm-lib.pl';
 
-our ($port, $user, $dir) = @ARGV;
+my ($port, $user, $dir) = @ARGV;
 
 # Switch to the user we're running as
 my @uinfo = getpwnam($user);
@@ -29,7 +29,7 @@ else {
 &clean_environment();
 $ENV{'TERM'} = 'xterm-256color';
 chdir($dir || $uinfo[7] || "/");
-our ($shellfh, $pid) = &proc::pty_process_exec($uinfo[8], $uid, $gid);
+my ($shellfh, $pid) = &proc::pty_process_exec($uinfo[8], $uid, $gid);
 &reset_environment();
 if (!$pid) {
 	&cleanup_miniserv();
@@ -50,8 +50,7 @@ $SIG{'ALRM'} = sub {
 	};
 alarm(60);
 print STDERR "listening on port $port\n";
-our $wsconn;
-our $shellbuf = "";
+my ($wsconn, $shellbuf);
 Net::WebSocket::Server->new(
     listen     => $port,
     on_connect => sub {
@@ -79,10 +78,36 @@ Net::WebSocket::Server->new(
                 },
             ready => sub {
                 my ($conn) = @_;
-                $conn->send_binary($shellbuf) if ($shellbuf);
+                $conn->send_utf8($shellbuf) if ($shellbuf);
                 },
             utf8 => sub {
                 my ($conn, $msg) = @_;
+
+                # Check for special object message
+                my $internal_command;
+                eval {
+                	$internal_command = convert_from_json($msg);
+                	};
+                if (!$@) {
+                	# Debug test variant
+                	var_dump("$internal_command->{'cols'} X $internal_command->{'rows'}", 'resized-cols-rows');
+
+                	# This will destroy nano/vim
+                	print $shellfh " COLUMNS=$internal_command->{'cols'}\r";
+                	print $shellfh " tput cuu 2 ; tput ed\r";
+                	print $shellfh " LINES=$internal_command->{'rows'}\r";
+                	print $shellfh " tput cuu 2 ; tput ed\r";
+
+                	# Won't work as process been forked ..
+            		$ENV{'COLUMNS'} = $internal_command->{'cols'};
+            		$ENV{'LINES'} = $internal_command->{'rows'};
+
+            		# Command nano or vim to resize
+            		kill('SIGWINCH', $pid);
+
+            		# Don't output anything to terminal as this is a special call
+            		return;
+                	}
                 utf8::encode($msg) if (utf8::is_utf8($msg));
                 if (!syswrite($shellfh, $msg, length($msg))) {
                     print STDERR "write to shell failed : $!\n";
@@ -108,7 +133,7 @@ Net::WebSocket::Server->new(
                 exit(0);
                 }
             if ($wsconn) {
-                $wsconn->send_binary($buf);
+                $wsconn->send_utf8($buf);
                 }
             else {
                 $shellbuf .= $buf;
