@@ -78,7 +78,7 @@ Net::WebSocket::Server->new(
 				},
 			ready => sub {
 				my ($conn) = @_;
-				$conn->send_utf8($shellbuf) if ($shellbuf);
+				$conn->send_binary($shellbuf) if ($shellbuf);
 				},
 			utf8 => sub {
 				my ($conn, $msg) = @_;
@@ -123,7 +123,7 @@ Net::WebSocket::Server->new(
 				# socket.send('  command\r') call, i.e. it won't work
 				# if command is pasted or typed in a normal way
 				$buf =~ s/^[\s]{2}\S+.*[\r\n]+[\e]\[\?2004l[\n]*//;
-				$wsconn->send_utf8($buf);
+				$wsconn->send_binary($buf);
 				}
 			else {
 				$shellbuf .= $buf;
