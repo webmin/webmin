@@ -117,6 +117,12 @@ Net::WebSocket::Server->new(
 				exit(0);
 				}
 			if ($wsconn) {
+				# Do not print commands to display, if start from two
+				# consecutive spaces and ends with return char. This
+				# regex only catches commands sent in one shot using
+				# socket.send('  command\r') call, i.e. it won't work
+				# if command is pasted or typed in a normal way
+				$buf =~ s/^[\s]{2}\S+.*[\r\n]+[\e]\[\?2004l[\n]*//;
 				$wsconn->send_utf8($buf);
 				}
 			else {
