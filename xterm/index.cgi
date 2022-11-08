@@ -283,19 +283,16 @@ my $term_script = <<EOF;
 		// On resize event triggered by fit()
 		term.onResize(function(e) {
 			// \033[8;(40);(100)t
-			// socket.send('\\\\033\\\\[8;('+e.rows+');('+e.cols+')t');
-			term.write('\\033[8;'+e.rows+';'+e.cols+'t')
-			socket.send(JSON.stringify(e));
-			console.log(e.cols, e.rows, '\\033[8;'+e.rows+';'+e.cols+'t');
+			//socket.send('\\\\033\\\\[8;('+e.rows+');('+e.cols+')t');
+			socket.send('___RESIZE___ '+e.rows+' '+e.cols);
 		});
 
-		// Observ on terminal container change
+		// Observe on terminal container change
 		new ResizeObserver(function() {
 			fitAddon.fit();
 		}).observe(termcont)
 
 		$term_flavors
-		socket.send(' clear\\r');
 
 		// Expose objs and socket for debug
 		window.term_ = term;

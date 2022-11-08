@@ -82,33 +82,16 @@ Net::WebSocket::Server->new(
                 },
             utf8 => sub {
                 my ($conn, $msg) = @_;
-
-                # Check for special object message
-                my $internal_command;
-                eval {
-                	$internal_command = convert_from_json($msg);
-                	};
-                if (!$@) {
-                	# Debug test variant
-                	var_dump("$internal_command->{'cols'} X $internal_command->{'rows'}", 'resized-cols-rows');
-
-                	# This will destroy nano/vim
-                	print $shellfh " COLUMNS=$internal_command->{'cols'}\r";
-                	print $shellfh " tput cuu 2 ; tput ed\r";
-                	print $shellfh " LINES=$internal_command->{'rows'}\r";
-                	print $shellfh " tput cuu 2 ; tput ed\r";
-
-                	# Won't work as process been forked ..
-            		$ENV{'COLUMNS'} = $internal_command->{'cols'};
-            		$ENV{'LINES'} = $internal_command->{'rows'};
-
-            		# Command nano or vim to resize
-            		kill('SIGWINCH', $pid);
-
-            		# Don't output anything to terminal as this is a special call
-            		return;
-                	}
                 utf8::encode($msg) if (utf8::is_utf8($msg));
+		if ($msg =~ /^___RESIZE___\s+(\d+)\s+(\d+)/) {
+			my ($rows, $cols) = ($1, $2);
+			print STDERR "got resize to $rows $cols\n";
+			eval {
+				$shellfh->set_winsize($rows, $cols);
+				};
+			kill('WINCH', $pid);
+			return;
+			}
                 if (!syswrite($shellfh, $msg, length($msg))) {
                     print STDERR "write to shell failed : $!\n";
                     &cleanup_miniserv();
