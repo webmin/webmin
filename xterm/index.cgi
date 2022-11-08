@@ -282,9 +282,7 @@ my $term_script = <<EOF;
 		
 		// On resize event triggered by fit()
 		term.onResize(function(e) {
-			// \033[8;(40);(100)t
-			//socket.send('\\\\033\\\\[8;('+e.rows+');('+e.cols+')t');
-			socket.send('___RESIZE___ '+e.rows+' '+e.cols);
+			socket.send('\\\\033[8;('+e.rows+');('+e.cols+')t');
 		});
 
 		// Observe on terminal container change
