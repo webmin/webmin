@@ -292,11 +292,6 @@ my $term_script = <<EOF;
 
 		$term_flavors
 		socket.send(' clear\\r');
-
-		// Expose objs and socket for debug
-		window.term_ = term;
-		window.termfit = fitAddon;
-		window.termsock = socket;
 	};
 	socket.onerror = function() {
 		termcont.innerHTML = '<tt style="color: \#ff0000">Error: ' +
