@@ -52,77 +52,77 @@ alarm(60);
 print STDERR "listening on port $port\n";
 my ($wsconn, $shellbuf);
 Net::WebSocket::Server->new(
-    listen     => $port,
-    on_connect => sub {
-        my ($serv, $conn) = @_;
-        print STDERR "got websockets connection\n";
-        if ($wsconn) {
-            print STDERR "Unexpected second connection to the same port\n";
-	    $conn->disconnect();
-	    return;
-            }
-        $wsconn = $conn;
-        alarm(0);
-        $conn->on(
-            handshake => sub {
-                # Is the key valid for this Webmin session?
-                my ($conn, $handshake) = @_;
-                my $key   = $handshake->req->fields->{'sec-websocket-key'};
-                my $dsess = &encode_base64($main::session_id);
-                $key   =~ s/\s//g;
-                $dsess =~ s/\s//g;
-                if ($key ne $dsess) {
-                    print STDERR "Key $key does not match session ID $dsess\n";
-                    $conn->disconnect();
-                    }
-                },
-            ready => sub {
-                my ($conn) = @_;
-                $conn->send_utf8($shellbuf) if ($shellbuf);
-                },
-            utf8 => sub {
-                my ($conn, $msg) = @_;
-                utf8::encode($msg) if (utf8::is_utf8($msg));
-		if ($msg =~ /^___RESIZE___\s+(\d+)\s+(\d+)/) {
-			my ($rows, $cols) = ($1, $2);
-			print STDERR "got resize to $rows $cols\n";
-			eval {
-				$shellfh->set_winsize($rows, $cols);
-				};
-			kill('WINCH', $pid);
+	listen     => $port,
+	on_connect => sub {
+		my ($serv, $conn) = @_;
+		print STDERR "got websockets connection\n";
+		if ($wsconn) {
+			print STDERR "Unexpected second connection to the same port\n";
+			$conn->disconnect();
 			return;
 			}
-                if (!syswrite($shellfh, $msg, length($msg))) {
-                    print STDERR "write to shell failed : $!\n";
-                    &cleanup_miniserv();
-                    exit(1);
-                    }
-                },
-            disconnect => sub {
-                print STDERR "websocket connection closed\n";
-                &cleanup_miniserv();
-                kill('KILL', $pid) if ($pid);
-                exit(0);
-                }
-            );
-    },
-    watch_readable => [
-        $shellfh => sub {
-            # Got something from the shell
-            my $buf;
-            my $ok = sysread($shellfh, $buf, 1024);
-            if ($ok <= 0) {
-                &cleanup_miniserv();
-                exit(0);
-                }
-            if ($wsconn) {
-                $wsconn->send_utf8($buf);
-                }
-            else {
-                $shellbuf .= $buf;
-                }
-        },
-    ],
+		$wsconn = $conn;
+		alarm(0);
+		$conn->on(
+			handshake => sub {
+				# Is the key valid for this Webmin session?
+				my ($conn, $handshake) = @_;
+				my $key   = $handshake->req->fields->{'sec-websocket-key'};
+				my $dsess = &encode_base64($main::session_id);
+				$key   =~ s/\s//g;
+				$dsess =~ s/\s//g;
+				if ($key ne $dsess) {
+					print STDERR "Key $key does not match session ID $dsess\n";
+					$conn->disconnect();
+					}
+				},
+			ready => sub {
+				my ($conn) = @_;
+				$conn->send_utf8($shellbuf) if ($shellbuf);
+				},
+			utf8 => sub {
+				my ($conn, $msg) = @_;
+				utf8::encode($msg) if (utf8::is_utf8($msg));
+				if ($msg =~ /^___RESIZE___\s+(\d+)\s+(\d+)/) {
+					my ($rows, $cols) = ($1, $2);
+					print STDERR "got resize to $rows $cols\n";
+					eval {
+						$shellfh->set_winsize($rows, $cols);
+						};
+					kill('WINCH', $pid);
+					return;
+					}
+				if (!syswrite($shellfh, $msg, length($msg))) {
+					print STDERR "write to shell failed : $!\n";
+					&cleanup_miniserv();
+					exit(1);
+					}
+				},
+			disconnect => sub {
+				print STDERR "websocket connection closed\n";
+				&cleanup_miniserv();
+				kill('KILL', $pid) if ($pid);
+				exit(0);
+				}
+			);
+	},
+	watch_readable => [
+		$shellfh => sub {
+			# Got something from the shell
+			my $buf;
+			my $ok = sysread($shellfh, $buf, 1024);
+			if ($ok <= 0) {
+				&cleanup_miniserv();
+				exit(0);
+				}
+			if ($wsconn) {
+				$wsconn->send_utf8($buf);
+				}
+			else {
+				$shellbuf .= $buf;
+				}
+		},
+	],
 )->start;
 &cleanup_miniserv();
 
