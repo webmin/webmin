@@ -293,6 +293,7 @@ my $term_script = <<EOF;
 		}).observe(termcont)
 
 		$term_flavors
+		socket.send(' clear\\r');
 
 		// Expose objs and socket for debug
 		window.term_ = term;
