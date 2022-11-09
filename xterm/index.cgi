@@ -320,6 +320,7 @@ if ($xmlhr) {
               'port'  => $port,
               'cols'  => $env_cols,
               'rows'  => $env_rows,
+              'uinfo'  => \@uinfo,
               'cmds'  => \@cmds });
 	}
 else {
