@@ -225,7 +225,7 @@ my $ushell_bash = $uinfo[8] =~ /\/bash$/;
 my (@cmds, $term_flavors);
 if ($config{'flavors'} == 1 ||
     $config{'flavors'} == 2 && $ushell_bash) {
-	my ($cmd_lsalias, $cmd_ps1) = ("alias ls='ls --color=auto'");
+	my ($cmd_cls, $cmd_lsalias, $cmd_ps1) = ("clear", "alias ls='ls --color=auto'");
 
 	# Optionally add colors to the prompt depending on the user type
 	if ($user eq "root") {
@@ -240,9 +240,15 @@ if ($config{'flavors'} == 1 ||
                    "@\\\\[\\\\033[1;34m\\\\]\\\\h:\\\\[\\\\033[1;37m\\\\]".
                    "\\\\w\\\\[\\\\033[1;37m\\\\]\\\\\$\\\\[\\\\033[0m\\\\] '";
 		}
+	# Store more efficient shell history
+	$ENV{'HISTCONTROL'} = 'ignoredups:ignorespace';
+
+	# Pass to run commands directly
 	$term_flavors = "socket.send(\" $cmd_lsalias\\r\"); ".
-                    "socket.send(\" $cmd_ps1\\r\");";
-    push(@cmds, $cmd_ps1, $cmd_lsalias);
+                    "socket.send(\" $cmd_ps1\\r\");".
+                    "socket.send(\" $cmd_cls\\r\"); ";
+    # Pass to run commands by the theme later
+    push(@cmds, $cmd_ps1, $cmd_lsalias, $cmd_cls);
 	}
 
 # Check for directory to start the shell in
@@ -255,7 +261,6 @@ if (!-r $shellserver_cmd) {
 	&cron::create_wrapper($shellserver_cmd, $module_name, "shellserver.pl");
 	}
 my $tmpdir = &tempname_dir();
-$ENV{'HISTCONTROL'} = 'ignoredups:ignorespace';
 $ENV{'SESSION_ID'} = $main::session_id;
 &system_logged($shellserver_cmd." ".quotemeta($port)." ".quotemeta($user).
 	       ($dir ? " ".quotemeta($dir) : "").
@@ -291,7 +296,6 @@ my $term_script = <<EOF;
 		}).observe(termcont)
 
 		$term_flavors
-		socket.send(' clear\\r');
 	};
 	socket.onerror = function() {
 		termcont.innerHTML = '<tt style="color: \#ff0000">Error: ' +
