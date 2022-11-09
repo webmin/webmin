@@ -38,11 +38,10 @@ my $rcvd_or_def_col_w = &float($ENV{'HTTP_X_AGENT_FONTWIDTH'}) || &float($in{'f'
 my $rcvd_or_def_row_h = &float($ENV{'HTTP_X_AGENT_FONTHEIGHT'}) || &float($in{'l'}) || 18;
 my $rcvd_or_def_col_o = defined($ENV{'HTTP_X_AGENT_COLUMNOFFSET'}) ?
                             int($ENV{'HTTP_X_AGENT_COLUMNOFFSET'}) : 
-                              defined($in{'g'}) ? int($in{'g'}) : 2;
+                              defined($in{'g'}) ? int($in{'g'}) : 0;
 my $rcvd_or_def_row_o = defined($ENV{'HTTP_X_AGENT_ROWOFFSET'}) ?
                             int($ENV{'HTTP_X_AGENT_ROWOFFSET'}) : 
                               defined($in{'o'}) ? int($in{'o'}) : 0;
-my $resize_call = $in{'r'};
 my $xmlhr = $ENV{'HTTP_X_REQUESTED_WITH'} eq "XMLHttpRequest";
 my %term_opts;
 
@@ -50,18 +49,6 @@ my %term_opts;
 my ($conf_cols_n, $conf_rows_n) = ($conf_size_str =~ /([\d]+)X([\d]+)/i);
 $conf_cols_n = int($conf_cols_n);
 $conf_rows_n = int($conf_rows_n);
-if ($conf_cols_n && $conf_rows_n) {
-	$termjs_opts{'ContainerStyle'} = "style='width: fit-content; margin: 0 auto;'";
-	}
-else {
-	$termjs_opts{'ContainerStyle'} = "style='height: max-content;'";
-	}
-
-# Set default container size in fixel depending on the mode
-my $calc_cols_abs = ($rcvd_cnt_w || int($conf_cols_n * $rcvd_or_def_col_w) || 720) . "px";
-my $calc_rows_abs = ($rcvd_cnt_h || int($conf_rows_n * $rcvd_or_def_row_h) || 432) . "px";
-$calc_cols_abs = "auto" if (!$conf_cols_n);
-$calc_rows_abs = "88vh" if (!$conf_rows_n);
 
 # Set pixel to columns conversion
 my $cols_num_user = int($rcvd_cnt_w / $rcvd_or_def_col_w);
@@ -76,19 +63,27 @@ my $env_rows = $ENV{'LINES'} = (($conf_rows_n || $rows_num_user || $def_rows_n) 
 # Define columns and rows
 $termjs_opts{'Options'} = "{ cols: $env_cols, rows: $env_rows }";
 
+my $term_size = "
+	min-width: ".($conf_cols_n ? "".($conf_cols_n * 9)."px" : "calc(100vw - 22px)").";
+	max-width: ".($conf_cols_n ? "".($conf_cols_n * 9)."px" : "calc(100vw - 22px)").";
+	min-height: ".($conf_rows_n ? "".($conf_rows_n * 18)."px" : "calc(100vh - 55px)").";
+	max-height: ".($conf_rows_n ? "".($conf_rows_n * 18)."px" : "calc(100vh - 55px)").";";
+
 # Tweak old themes inline
 my $styles_inline = <<EOF;
 
 body[style='height:100%'] {
 	height: 97% !important; 
 }
+#headln2l a {
+	white-space: nowrap;
+}
 #terminal {
 	border: 1px solid #000;
 	background-color: #000;
-	min-width: $calc_cols_abs;
-	min-height: $calc_rows_abs;
-	height: $calc_rows_abs;
 	padding: 2px;
+	margin: 0 auto;
+	$term_size
 }
 #terminal:empty:before {
     display: block;
@@ -157,26 +152,7 @@ EOF
 		);
 
 # Print main container
-print "<div data-label=\"$text{'index_connecting'}\" id=\"terminal\" $termjs_opts{'ContainerStyle'}></div>\n";
-
-# Detect terminal width and height for regular themes 
-if (!$xmlhr) {
-	# Set column size depending on the browser window
-	# size unless defined in config (non-auto mode)
-	if (!$conf_cols_n && !$conf_rows_n) {
-		if ((!$rcvd_cnt_w ||
-		     !$rcvd_cnt_h) || $resize_call) {
-			my $quser = &html_escape($in{'user'});
-			my $qdir = &html_escape($in{'dir'});
-			print "<script>location.href = location.pathname + '?w=' + document.querySelector('#terminal').clientWidth + '&h=' + document.querySelector('#terminal').clientHeight + '&user=$quser' + '&dir=$qdir';</script>";
-			return;
-			}
-		}
-
-	# Clear URL to make sure resized and
-	# reloaded page will work properly
-	print "<script>history.replaceState(null, String(), location.pathname);</script>";
-	}
+print "<div data-label=\"$text{'index_connecting'}\" id=\"terminal\"></div>\n";
 
 # Find ports already in use
 &lock_file(&get_miniserv_config_file());
@@ -225,7 +201,7 @@ my $ushell_bash = $uinfo[8] =~ /\/bash$/;
 my (@cmds, $term_flavors);
 if ($config{'flavors'} == 1 ||
     $config{'flavors'} == 2 && $ushell_bash) {
-	my ($cmd_lsalias, $cmd_ps1) = ("alias ls='ls --color=auto'");
+	my ($cmd_cls, $cmd_lsalias, $cmd_ps1) = ("clear", "alias ls='ls --color=auto'");
 
 	# Optionally add colors to the prompt depending on the user type
 	if ($user eq "root") {
@@ -240,9 +216,15 @@ if ($config{'flavors'} == 1 ||
                    "@\\\\[\\\\033[1;34m\\\\]\\\\h:\\\\[\\\\033[1;37m\\\\]".
                    "\\\\w\\\\[\\\\033[1;37m\\\\]\\\\\$\\\\[\\\\033[0m\\\\] '";
 		}
+	# Store more efficient shell history
+	$ENV{'HISTCONTROL'} = 'ignoredups:ignorespace';
+
+	# Pass to run commands directly
 	$term_flavors = "socket.send(\" $cmd_lsalias\\r\"); ".
-                    "socket.send(\" $cmd_ps1\\r\");";
-    push(@cmds, $cmd_ps1, $cmd_lsalias);
+                    "socket.send(\" $cmd_ps1\\r\");".
+                    "socket.send(\" $cmd_cls\\r\"); ";
+    # Pass to run commands by the theme later
+    push(@cmds, $cmd_ps1, $cmd_lsalias, $cmd_cls);
 	}
 
 # Check for directory to start the shell in
@@ -255,7 +237,6 @@ if (!-r $shellserver_cmd) {
 	&cron::create_wrapper($shellserver_cmd, $module_name, "shellserver.pl");
 	}
 my $tmpdir = &tempname_dir();
-$ENV{'HISTCONTROL'} = 'ignoredups:ignorespace';
 $ENV{'SESSION_ID'} = $main::session_id;
 &system_logged($shellserver_cmd." ".quotemeta($port)." ".quotemeta($user).
 	       ($dir ? " ".quotemeta($dir) : "").
@@ -277,7 +258,6 @@ my $term_script = <<EOF;
 		term.loadAddon(attachAddon);
 		term.loadAddon(fitAddon);
 		term.open(termcont);
-		fitAddon.fit();
 		term.focus();
 		
 		// On resize event triggered by fit()
@@ -288,10 +268,9 @@ my $term_script = <<EOF;
 		// Observe on terminal container change
 		new ResizeObserver(function() {
 			fitAddon.fit();
-		}).observe(termcont)
+		}).observe(termcont);
 
 		$term_flavors
-		socket.send(' clear\\r');
 	};
 	socket.onerror = function() {
 		termcont.innerHTML = '<tt style="color: \#ff0000">Error: ' +
@@ -316,6 +295,7 @@ if ($xmlhr) {
               'port'  => $port,
               'cols'  => $env_cols,
               'rows'  => $env_rows,
+              'uinfo'  => \@uinfo,
               'cmds'  => \@cmds });
 	}
 else {
