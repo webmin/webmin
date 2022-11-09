@@ -282,9 +282,7 @@ my $term_script = <<EOF;
 		
 		// On resize event triggered by fit()
 		term.onResize(function(e) {
-			// \033[8;(40);(100)t
-			//socket.send('\\\\033\\\\[8;('+e.rows+');('+e.cols+')t');
-			socket.send('___RESIZE___ '+e.rows+' '+e.cols);
+			socket.send('\\\\033[8;('+e.rows+');('+e.cols+')t');
 		});
 
 		// Observe on terminal container change
@@ -294,11 +292,6 @@ my $term_script = <<EOF;
 
 		$term_flavors
 		socket.send(' clear\\r');
-
-		// Expose objs and socket for debug
-		window.term_ = term;
-		window.termfit = fitAddon;
-		window.termsock = socket;
 	};
 	socket.onerror = function() {
 		termcont.innerHTML = '<tt style="color: \#ff0000">Error: ' +

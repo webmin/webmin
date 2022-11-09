@@ -78,12 +78,13 @@ Net::WebSocket::Server->new(
 				},
 			ready => sub {
 				my ($conn) = @_;
-				$conn->send_utf8($shellbuf) if ($shellbuf);
+				$conn->send_binary($shellbuf) if ($shellbuf);
 				},
 			utf8 => sub {
 				my ($conn, $msg) = @_;
 				utf8::encode($msg) if (utf8::is_utf8($msg));
-				if ($msg =~ /^___RESIZE___\s+(\d+)\s+(\d+)/) {
+				# Check for resize escape sequence explicitly
+				if ($msg =~ /^\\033\[8;\((\d+)\);\((\d+)\)t$/) {
 					my ($rows, $cols) = ($1, $2);
 					print STDERR "got resize to $rows $cols\n";
 					eval {
@@ -116,7 +117,7 @@ Net::WebSocket::Server->new(
 				exit(0);
 				}
 			if ($wsconn) {
-				$wsconn->send_utf8($buf);
+				$wsconn->send_binary($buf);
 				}
 			else {
 				$shellbuf .= $buf;
