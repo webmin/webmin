@@ -32,16 +32,6 @@ my $termlinks =
 my $conf_size_str = $config{'size'};
 my $def_cols_n = 80;
 my $def_rows_n = 24;
-my $rcvd_cnt_w = &float($ENV{'HTTP_X_AGENT_WIDTH'}) || &float($in{'w'});
-my $rcvd_cnt_h = &float($ENV{'HTTP_X_AGENT_HEIGHT'}) || &float($in{'h'});
-my $rcvd_or_def_col_w = &float($ENV{'HTTP_X_AGENT_FONTWIDTH'}) || &float($in{'f'}) || 9;
-my $rcvd_or_def_row_h = &float($ENV{'HTTP_X_AGENT_FONTHEIGHT'}) || &float($in{'l'}) || 18;
-my $rcvd_or_def_col_o = defined($ENV{'HTTP_X_AGENT_COLUMNOFFSET'}) ?
-                            int($ENV{'HTTP_X_AGENT_COLUMNOFFSET'}) : 
-                              defined($in{'g'}) ? int($in{'g'}) : 0;
-my $rcvd_or_def_row_o = defined($ENV{'HTTP_X_AGENT_ROWOFFSET'}) ?
-                            int($ENV{'HTTP_X_AGENT_ROWOFFSET'}) : 
-                              defined($in{'o'}) ? int($in{'o'}) : 0;
 my $xmlhr = $ENV{'HTTP_X_REQUESTED_WITH'} eq "XMLHttpRequest";
 my %term_opts;
 
@@ -50,15 +40,9 @@ my ($conf_cols_n, $conf_rows_n) = ($conf_size_str =~ /([\d]+)X([\d]+)/i);
 $conf_cols_n = int($conf_cols_n);
 $conf_rows_n = int($conf_rows_n);
 
-# Set pixel to columns conversion
-my $cols_num_user = int($rcvd_cnt_w / $rcvd_or_def_col_w);
-
-# Set pixel to rows (lines) conversion
-my $rows_num_user = int($rcvd_cnt_h / $rcvd_or_def_row_h);
-
 # Set columns and rows environment vars
-my $env_cols = $ENV{'COLUMNS'} = (($conf_cols_n || $cols_num_user || $def_cols_n) - $rcvd_or_def_col_o);
-my $env_rows = $ENV{'LINES'} = (($conf_rows_n || $rows_num_user || $def_rows_n) - $rcvd_or_def_row_o);
+my $env_cols = $ENV{'COLUMNS'} = $conf_cols_n || $def_cols_n;
+my $env_rows = $ENV{'LINES'} = $conf_rows_n || $def_rows_n;
 
 # Define columns and rows
 $termjs_opts{'Options'} = "{ cols: $env_cols, rows: $env_rows }";
