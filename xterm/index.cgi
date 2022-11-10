@@ -200,13 +200,25 @@ my @uinfo = getpwnam($user);
 my (@cmds, $term_flavors);
 if ($config{'flavors'} == 1 ||
     $config{'flavors'} == 2 && $uinfo[8] =~ /\/bash$/) {
-	my ($cmd_cls, $cmd_lsalias) = ("clear", "alias ls='ls --color=auto'");
+	my ($cmd_cls, $cmd_lsalias, $cmd_profile) = ("clear", "alias ls='ls --color=auto'");
 
 	# Pass to run commands directly
-	$term_flavors = "socket.send(\" $cmd_lsalias\\r\"); ".
-                    "socket.send(\" $cmd_cls\\r\"); ";
+	$term_flavors = "socket.send(\" $cmd_lsalias\\r\"); ";
+
+	# Load user profile too if any
+	my @uprofile = ("$uinfo[7]/.bash_profile",
+	                "$uinfo[7]/.bashrc");
+	foreach my $profile (@uprofile) {
+		if (-r $profile) {
+			$cmd_profile = "source '$profile'";
+			$term_flavors .= "socket.send(\" source '$profile'\\r\"); ";
+			last;
+			}
+		}
+	$term_flavors .= "socket.send(\" $cmd_cls\\r\"); ";
+
     # Pass to run commands within theme later
-    push(@cmds, $cmd_lsalias, $cmd_cls);
+    push(@cmds, $cmd_lsalias, $cmd_profile, $cmd_cls);
 	}
 
 # Check for directory to start the shell in
