@@ -217,8 +217,8 @@ if ($config{'flavors'} == 1 ||
 		}
 	$term_flavors .= "socket.send(\" $cmd_cls\\r\"); ";
 
-    # Pass to run commands within theme later
-    push(@cmds, $cmd_lsalias, $cmd_profile, $cmd_cls);
+	# Pass to run commands within theme later
+	push(@cmds, $cmd_lsalias, $cmd_profile, $cmd_cls);
 	}
 
 # Check for directory to start the shell in
