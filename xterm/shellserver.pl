@@ -50,7 +50,7 @@ $SIG{'ALRM'} = sub {
 	};
 alarm(60);
 print STDERR "listening on port $port\n";
-my ($wsconn, $shellbuf);
+my ($wsconn, $shellbuf, $wscmdspec);
 Net::WebSocket::Server->new(
 	listen     => $port,
 	on_connect => sub {
@@ -93,6 +93,12 @@ Net::WebSocket::Server->new(
 					kill('WINCH', $pid);
 					return;
 					}
+				# Check for hidden command escape sequence explicitly
+				$wscmdspec = 0;
+				if ($msg =~ /^[\e]\[X;.*/) {
+					$msg =~ s/^([\e]\[X;)(.*)/    $2/;
+					$wscmdspec = 1;
+					}
 				if (!syswrite($shellfh, $msg, length($msg))) {
 					print STDERR "write to shell failed : $!\n";
 					&cleanup_miniserv();
@@ -117,6 +123,10 @@ Net::WebSocket::Server->new(
 				exit(0);
 				}
 			if ($wsconn) {
+				# Do not print command to display if sent in one
+				# shot using socket.send('\033[X;ls -sa\r') call
+				$buf =~ s/^[\s]{4}\S+.*[\r\n]+[\e]\[\?2004l[\n]*//
+					if ($wscmdspec);
 				$wsconn->send_binary($buf);
 				}
 			else {
