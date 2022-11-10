@@ -147,6 +147,11 @@ elsif ($in{'md5pass'} == 2) {
 	$need = &acl::check_sha512();
 	$need && &error(&text('session_esha512mod', "<tt>$need</tt>"));
 	}
+elsif ($in{'md5pass'} == 3) {
+	# yescrypt enabled .. check support
+	$need = &acl::check_yescrypt();
+	$need && &error(&text('session_eyescrypt', "<tt>$need</tt>"));
+	}
 $gconfig{'md5pass'} = $in{'md5pass'};
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");

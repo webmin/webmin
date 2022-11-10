@@ -138,7 +138,8 @@ print &ui_table_row($text{'session_md5'},
 	&ui_radio("md5pass", $gconfig{'md5pass'} || 0,
 		  [ [ 0, $text{'session_md5off'}."<br>" ],
 		    [ 1, $text{'session_md5on'}."<br>" ],
-		    [ 2, $text{'session_sha512'} ] ]));
+		    [ 2, $text{'session_sha512'}."<br>" ],
+		    [ 3, $text{'session_yescrypt'} ] ]));
 
 # Enable password change API?
 $url = &get_webmin_browser_url("passwd", "change_passwd.cgi");
