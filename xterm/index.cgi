@@ -195,36 +195,18 @@ if ($user eq "root" && $in{'user'}) {
 	}
 my @uinfo = getpwnam($user);
 @uinfo || &error(&text('index_euser', &html_escape($user)));
-my $ushell_bash = $uinfo[8] =~ /\/bash$/;
 
-# Terminal flavors
+# Terminal flavors (commands)
 my (@cmds, $term_flavors);
 if ($config{'flavors'} == 1 ||
-    $config{'flavors'} == 2 && $ushell_bash) {
-	my ($cmd_cls, $cmd_lsalias, $cmd_ps1) = ("clear", "alias ls='ls --color=auto'");
-
-	# Optionally add colors to the prompt depending on the user type
-	if ($user eq "root") {
-		# magenta@blue ~# (for root)
-		$cmd_ps1 = "PS1='\\\\[\\\\033[1;35m\\\\]\\\\u\\\\[\\\\033[1;37m\\\\]".
-                   "@\\\\[\\\\033[1;34m\\\\]\\\\h:\\\\[\\\\033[1;37m\\\\]".
-                   "\\\\w\\\\[\\\\033[1;37m\\\\]\\\\\$\\\\[\\\\033[0m\\\\] '";
-		}
-	else {
-		# green@blue ~$ (for regular users)
-		$cmd_ps1 = "PS1='\\\\[\\\\033[1;32m\\\\]\\\\u\\\\[\\\\033[1;37m\\\\]".
-                   "@\\\\[\\\\033[1;34m\\\\]\\\\h:\\\\[\\\\033[1;37m\\\\]".
-                   "\\\\w\\\\[\\\\033[1;37m\\\\]\\\\\$\\\\[\\\\033[0m\\\\] '";
-		}
-	# Store more efficient shell history
-	$ENV{'HISTCONTROL'} = 'ignoredups:ignorespace';
+    $config{'flavors'} == 2 && $uinfo[8] =~ /\/bash$/) {
+	my ($cmd_cls, $cmd_lsalias) = ("clear", "alias ls='ls --color=auto'");
 
 	# Pass to run commands directly
 	$term_flavors = "socket.send(\" $cmd_lsalias\\r\"); ".
-                    "socket.send(\" $cmd_ps1\\r\");".
                     "socket.send(\" $cmd_cls\\r\"); ";
-    # Pass to run commands by the theme later
-    push(@cmds, $cmd_ps1, $cmd_lsalias, $cmd_cls);
+    # Pass to run commands within theme later
+    push(@cmds, $cmd_lsalias, $cmd_cls);
 	}
 
 # Check for directory to start the shell in
