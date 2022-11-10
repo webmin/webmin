@@ -235,7 +235,7 @@ import_ok1=$2 email addresses were found in the file, of which $1 were new and h
 import_ok2=$1 email addresses were found in the file, but they were all already in the allowed addresses list.
 
 mail_title=Spam Mail
-mail_desc=This page lists messages that have been classified as spam, and are awaiting some action. Messages that have been incorrectly indentified can be moved to your Inbox, while those that are really spam can be deleted.
+mail_desc=This page lists messages that have been classified as spam, and are awaiting some action. Messages that have been incorrectly identified can be moved to your Inbox, while those that are really spam can be deleted.
 mail_level=Score
 mail_level2=Spam score
 mail_inbox=Move to Inbox
