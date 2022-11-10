@@ -35,18 +35,26 @@ if ($config{'flavors'} == 1 ||
 	# Set shell history controls
 	$ENV{'HISTCONTROL'} = 'ignoredups:ignorespace';
 	
-	# Optionally add colors to the prompt depending on the user type
-	if ($user eq "root") {
-		# magenta@blue ~# (for root)
-		$ENV{'PS1'} = '\[\033[1;35m\]\u\[\033[1;37m\]@'.
-		              '\[\033[1;34m\]\h:\[\033[1;37m\]'.
-		              '\w\[\033[1;37m\]$\[\033[0m\] ';
-		}
-	else {
-		# green@blue ~$ (for regular users)
-		$ENV{'PS1'} = '\[\033[1;32m\]\u\[\033[1;37m\]@'.
-		              '\[\033[1;34m\]\h:\[\033[1;37m\]'.
-		              '\w\[\033[1;37m\]$\[\033[0m\] ';
+	# Set PS1, if flavors are forced or
+	# skip in auto mode, if already set
+	if ($config{'flavors'} == 1 ||
+	    $config{'flavors'} == 2 && !$ENV{'PS1'}) {
+		my $ps1;
+
+		# Optionally add colors to the prompt depending on the user type
+		if ($user eq "root") {
+			# magenta@blue ~# (for root)
+			$ps1 = '\[\033[1;35m\]\u\[\033[1;37m\]@'.
+			       '\[\033[1;34m\]\h:\[\033[1;37m\]'.
+			       '\w\[\033[1;37m\]$\[\033[0m\] ';
+			}
+		else {
+			# green@blue ~$ (for regular users)
+			$ps1 = '\[\033[1;32m\]\u\[\033[1;37m\]@'.
+			       '\[\033[1;34m\]\h:\[\033[1;37m\]'.
+			       '\w\[\033[1;37m\]$\[\033[0m\] ';
+			}
+		$ENV{'PS1'} = $ps1;
 		}
 	}
 
