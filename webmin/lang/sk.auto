@@ -2,9 +2,6 @@ index_refresh=Obnovte moduly
 index_refreshmsg=Skontrolujte, či sú nainštalované všetky servery Webmin, a aktualizujte tie, ktoré sa nachádzajú v kategórii „Nepoužité moduly“.
 
 access_local=Zahrnúť miestnu sieť do zoznamu
-access_elibwrap=Riadenie prístupu k IP pomocou TCP-wrapperov nie je k dispozícii, pretože nie je nainštalovaný modul $1 Perl.
-access_libwrapcpan=<a href='$1'>Kliknite sem</a>, aby Webmin automaticky nainštaloval chýbajúci modul Perl.
-
 access_eip6=$1 nie je úplná adresa IPv6 alebo sieťová adresa
 access_ecidr6=$1 nie je platná veľkosť siete IPv6
 access_ecidr8=Veľkosť siete IPv6 „$1“ musí byť deliteľná 8
@@ -112,6 +109,7 @@ ssl_already2=Doteraz vygenerovaná žiadosť o podpísanie certifikátu :
 ssl_letsdesc=Poďme šifrovať je bezplatná, automatizovaná a otvorená certifikačná autorita, ktorú je možné použiť na vygenerovanie certifikátu SSL pre použitie serverom Webmin.
 ssl_letserr=Bohužiaľ, poďme šifrovať nie je možné použiť vo vašom systéme: $1.
 ssl_letserr2=Prípadne si pozrite stránku <a href='$1'>Konfigurácia modulu</a> a uistite sa, že používate správnu cestu k príkazu <tt>letsencrypt</tt>.
+
 ssl_letsdesc2=Táto stránka sa dá použiť na vyžiadanie nového certifikátu, ktorý prepíše všetky ostatné, ktoré sú momentálne nakonfigurované v aplikácii Webmin. Služba Let's Encrypt však vyžaduje, aby bolo vaše vlastníctvo domény certifikátov overené kontrolou, či tento systém je hostiteľom webovej stránky pre túto doménu. To sa dosiahne umiestnením malého dočasného súboru do adresára dokumentov webovej stránky.
 ssl_letsheader=Možnosti pre nový certifikát SSL
 ssl_letsdoms=Názvy hostiteľov pre certifikát
@@ -181,9 +179,13 @@ session_ecmd=Chýbajúci alebo neplatný príkaz na zmenu hesla
 session_banner=Banner pred prihlásením
 session_pmodedesc3=Zásady vypršania platnosti hesla
 session_md5=Formát hashovania hesla webmin
-session_sha512=Použite šifrovanie SHA512
-session_emd5mod=Nie je možné použiť šifrovanie MD5, pretože nie je nainštalovaný modul Perl $1.
-session_esha512mod=Šifrovanie SHA512 nemožno použiť, pretože nie je nainštalovaný modul Perl $1.
+session_md5off=Automaticky určiť
+session_md5on=Použite formát hash <tt>MD5</tt>
+session_sha512=Použite formát hash <tt>SHA512</tt>
+session_yescrypt=Použite formát hash <tt>yescrypt</tt>
+session_emd5mod=Formát hash MD5 nemožno použiť, pretože nie je nainštalovaný modul Perl $1
+session_esha512mod=Formát hash SHA512 nemožno použiť, pretože nie je nainštalovaný modul Perl $1
+session_eyescrypt=Formát hash yescrypt nemožno použiť, pretože nie je nainštalovaný modul Perl $1
 session_blocklock=Zamknite tiež používateľov, ktorým sa nepodarilo prihlásiť
 session_passapi=Povoliť API na vzdialenú zmenu hesla?
 session_passapi0=API zakázané

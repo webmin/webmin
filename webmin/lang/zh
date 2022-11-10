@@ -15,8 +15,6 @@ access_all=允许所有地址访问
 access_allow=只允许列出的地址访问
 access_deny=禁止列出的地址访问
 access_libwrap=也检查 TCP-wrappers <tt>hosts.allow</tt> 和 <tt>hosts.deny</tt> 文件？
-access_elibwrap=由于没有安装 $1 Perl 模块，因此无法使用 TCP-wrappers 进行 IP 访问控制。
-access_libwrapcpan=<a href='$1'>单击此处</a>，让 Webmin 自动安装未设定的 Perl 模块。
 access_err=更新访问列表失败
 access_enone=未输入地址
 access_enet=‘$1’不是有效的网址
@@ -472,11 +470,6 @@ session_extauth=外部 Squid 式身份验证程序
 session_eextauth=未设定或无效的外部认证程序
 session_pmodedesc3=密码过期策略
 session_md5=Webmin 密码哈希格式
-session_md5off=使用标准的 Unix <tt>crypt</tt> 加密
-session_md5on=使用 MD5 加密
-session_sha512=使用 SHA512 加密
-session_emd5mod=无法使用 MD5 加密，因为未安装 Perl $1 模块。
-session_esha512mod=由于未安装 Perl $1 模块，因此无法使用 SHA512 加密。
 
 assignment_title=重新分配模块
 assignment_header=模块类别的重新分配

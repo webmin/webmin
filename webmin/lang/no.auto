@@ -15,6 +15,13 @@ os_release_notes=Utgivelsesnotater
 ssl_hsts=Håndhev SSL med HSTS-header
 
 session_utmp=Registrere pålogginger og utlogginger i <tt>utmp</tt>?
+session_md5off=Bestem automatisk
+session_md5on=Bruk <tt>MD5</tt> hashing-format
+session_sha512=Bruk <tt>SHA512</tt> hashing-format
+session_yescrypt=Bruk <tt>yescrypt</tt> hashing-format
+session_emd5mod=MD5-hash-format kan ikke brukes, siden Perl $1-modulen ikke er installert
+session_esha512mod=SHA512 hashing-format kan ikke brukes, siden Perl $1-modulen ikke er installert
+session_eyescrypt=yescrypt hashing-format kan ikke brukes, siden Perl $1-modulen ikke er installert
 session_passapi=Vil du aktivere eksternt passordendrings -API?
 session_passapi0=API deaktivert
 session_passapi1=API aktivert for Unix -brukere

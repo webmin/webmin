@@ -8,6 +8,13 @@ os_release_notes=リリースノート
 ssl_hsts=HSTS ヘッダーで SSL を強制する
 
 session_utmp=ログインとログアウトを<tt>utmp</tt>に記録しますか？
+session_md5off=自動判定
+session_md5on=<tt>MD5</tt> ハッシュ形式を使用
+session_sha512=<tt>SHA512</tt> ハッシュ形式を使用
+session_yescrypt=<tt>yescrypt</tt> ハッシュ形式を使用する
+session_emd5mod=Perl $1 モジュールがインストールされていないため、MD5 ハッシュ形式は使用できません
+session_esha512mod=Perl $1 モジュールがインストールされていないため、SHA512 ハッシュ形式は使用できません
+session_eyescrypt=Perl $1 モジュールがインストールされていないため、yescrypt ハッシュ形式は使用できません
 
 advanced_etempallowed=一時ファイルディレクトリ $1はシステムディレクトリです
 

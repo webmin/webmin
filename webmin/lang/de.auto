@@ -15,6 +15,13 @@ os_release_notes=Versionshinweise
 ssl_hsts=Erzwinge SSL mit HSTS-Header
 
 session_utmp=Anmeldungen und Abmeldungen in <tt>utmp</tt> aufzeichnen?
+session_md5off=Automatisch ermitteln
+session_md5on=Verwenden Sie das Hash-Format <tt>MD5</tt>
+session_sha512=Verwenden Sie das Hash-Format <tt>SHA512</tt>
+session_yescrypt=Verwenden Sie das Hash-Format <tt>yescrypt</tt>
+session_emd5mod=Das MD5-Hashing-Format kann nicht verwendet werden, da das Perl $1-Modul nicht installiert ist
+session_esha512mod=Das SHA512-Hashing-Format kann nicht verwendet werden, da das Perl $1-Modul nicht installiert ist
+session_eyescrypt=yescrypt-Hashing-Format kann nicht verwendet werden, da das Perl $1-Modul nicht installiert ist
 session_passapi=API für die Remote-Passwortänderung aktivieren?
 session_passapi0=API deaktiviert
 session_passapi1=API für Unix-Benutzer aktiviert

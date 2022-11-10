@@ -3,9 +3,6 @@ index_refreshmsg=همه ماژول های Webmin را برای سرورهای ن
 
 access_ip=آدرس های IP مجاز
 access_local=شبکه محلی را در لیست قرار دهید
-access_elibwrap=IP access control using TCP-wrappers is not available, as the $1 Perl module is not installed.
-access_libwrapcpan=<a href='$1'>Click here</a> to have Webmin automatically install the missing Perl module.
-
 access_ecidr='$1' is not a valid CIDR number
 access_eip6='$1' is not a complete IPv6 or network address
 access_ecidr6='$1' is not a valid IPv6 network size
@@ -181,6 +178,7 @@ ssl_already2=درخواست امضای مجوز قبلاً تولید شده :
 ssl_letsdesc=Let's Encrypt یک مجوز مجوز رایگان ، خودکار و باز است که می تواند برای تولید گواهینامه SSL برای استفاده توسط Webmin استفاده شود.
 ssl_letserr=Unfortunately, Let's Encrypt cannot be used on your system : $1.
 ssl_letserr2=Alternately, check the <a href='$1'>module configuration</a> page to ensure you are using the correct path to the <tt>letsencrypt</tt> command.
+
 ssl_letsdesc2=از این صفحه می توان برای درخواست گواهی جدید استفاده کرد ، که سایر موارد دیگری را که در حال حاضر در Webmin پیکربندی شده اند بازنویسی می کند. با این حال ، سرویس Let Encrypt نیاز دارد با بررسی اینکه این سیستم میزبان وب سایت دامنه است ، مالکیت شما در حوزه گواهی را تأیید کنید. این کار با قرار دادن یک پرونده موقت کوچک در فهرست اسناد وب سایت انجام می شود.
 ssl_letsheader=گزینه هایی برای گواهی SSL جدید
 ssl_letsdoms=نام میزبان برای گواهی
@@ -263,9 +261,13 @@ session_ecmd=فرمان تغییر گذرواژه یا نامعتبر است
 session_banner=قبل از ورود بنر
 session_pmodedesc3=خط مشی انقضاء رمز ورود
 session_md5=قالب هشدار رمز عبور وبمین
-session_sha512=از رمزگذاری SHA512 استفاده کنید
-session_emd5mod=MD5 encryption cannot be used, as Perl $1 module is not installed.
-session_esha512mod=SHA512 encryption cannot be used, as Perl $1 module is not installed.
+session_md5off=به صورت خودکار تعیین کنید
+session_md5on=از قالب هش <tt>MD5</tt> استفاده کنید
+session_sha512=از قالب هش <tt>SHA512</tt> استفاده کنید
+session_yescrypt=از قالب هش <tt>yescrypt</tt> استفاده کنید
+session_emd5mod=قالب هش MD5 قابل استفاده نیست، زیرا ماژول Perl $1 نصب نشده است
+session_esha512mod=قالب هش SHA512 قابل استفاده نیست، زیرا ماژول Perl $1 نصب نشده است
+session_eyescrypt=فرمت هش yescrypt قابل استفاده نیست، زیرا ماژول Perl $1 نصب نشده است
 session_blocklock=همچنین کاربران با ورود به سیستم شکست خورده را قفل کنید
 session_passapi=API تغییر رمز عبور از راه دور فعال شود؟
 session_passapi0=API غیرفعال شده است

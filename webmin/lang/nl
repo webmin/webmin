@@ -19,8 +19,6 @@ access_all=Toestaan vanaf alle adressen
 access_allow=Alleen toestaan vanaf adressen in de lijst
 access_deny=Weigeren van adressen in de lijst
 access_libwrap=Ook de TCP-wrappers bestanden <tt>hosts.allow</tt> en <tt>hosts.deny</tt> controleren?
-access_elibwrap=IP toegang controle welke TCP-wrappers gebruiken is niet beschikbaar omdat de $1 Perl module niet is geïnstalleerd.
-access_libwrapcpan=<a href='$1'>Klik hier</a> om Webmin automatisch de ontbrekende Perl module te laten installeren.
 access_err=Fout bij het opslaan van toegangs lijst
 access_enone=Geen adres ingevoerd
 access_enet='$1' is geen geldig netwerk adres
@@ -582,9 +580,6 @@ session_pmodedesc3=Wachtwoord expiratie policy ..
 session_pmode0=Altijd gebruikers met verlopen wachtwoorden de toegang weigeren
 session_pmode1=Altijd gebruikers met verlopen wachtwoorden de toegang verlenen
 session_pmode2=Gebruikers met verlopen wachtwoorden vragen om een nieuw wachtwoord op te geven
-session_md5off=Gebruik de standaard Unix <tt>crypt</tt> encryptie voor Webmin wachtwoorden
-session_md5on=Gebruik MD5 encryptie voor Webmin wachtwoorden (lange wachtwoorden mogelijk)
-session_emd5mod=MD5 encryptie kan niet worden gebruikt, als Perl $1 module niet is geinstalleerd.
 session_blocklock=Ook gebruikers blokkeren met mislukte logins
 
 assignment_title=Toewijzen Modules

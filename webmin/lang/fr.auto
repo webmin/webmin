@@ -15,6 +15,13 @@ os_release_notes=Notes de version
 ssl_hsts=Appliquer SSL avec l'en-tête HSTS
 
 session_utmp=Enregistrer les connexions et les déconnexions dans <tt>utmp</tt> ?
+session_md5off=Déterminer automatiquement
+session_md5on=Utiliser le format de hachage <tt>MD5</tt>
+session_sha512=Utiliser le format de hachage <tt>SHA512</tt>
+session_yescrypt=Utiliser le format de hachage <tt>yescrypt</tt>
+session_emd5mod=Le format de hachage MD5 ne peut pas être utilisé car le module Perl $1 n'est pas installé
+session_esha512mod=Le format de hachage SHA512 ne peut pas être utilisé car le module Perl $1 n'est pas installé
+session_eyescrypt=Le format de hachage yescrypt ne peut pas être utilisé car le module Perl $1 n'est pas installé
 session_passapi=Activer l'API de changement de mot de passe à distance ?
 session_passapi0=API désactivée
 session_passapi1=API activée pour les utilisateurs Unix

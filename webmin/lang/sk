@@ -488,8 +488,6 @@ session_eextauth=Chýbajúci alebo nesprávny externý overovací program
 session_pmode0=Vždy zamietnuť užívateľov s expirovanými heslami
 session_pmode1=Vždy povoliť užívateľov s expirovanými heslami
 session_pmode2=Požiadať užívateľov s expirovanými heslami o zadanie nového hesla
-session_md5off=Použiť štandardnú Unixovú funkciu <tt>crypt</tt> pre šifrovanie Webminovský hesiel
-session_md5on=Použiť MD5 pre šifrovanie Webminovských hesiel (povoľuje dlhé heslá)
 
 assignment_title=Zmeniť organizáciu modulov
 assignment_header=Priradenie kategórii modulom

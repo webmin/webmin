@@ -56,8 +56,13 @@ newkey_ecns=Nie wprowadzono nazw serwerów
 ca_alt=Dodatkowe domeny
 
 session_utmp=Zapisywać loginy i wylogowania w <tt>utmp</tt>?
-session_sha512=Użyj szyfrowania SHA512
-session_esha512mod=Nie można użyć szyfrowania SHA512, ponieważ moduł Perl $1 nie jest zainstalowany.
+session_md5off=Określ automatycznie
+session_md5on=Użyj formatu mieszającego <tt>MD5</tt>
+session_sha512=Użyj formatu mieszającego <tt>SHA512</tt>
+session_yescrypt=Użyj formatu mieszającego <tt>yescrypt</tt>
+session_emd5mod=Nie można użyć formatu mieszającego MD5, ponieważ moduł Perl $1 nie jest zainstalowany
+session_esha512mod=Nie można użyć formatu skrótu SHA512, ponieważ moduł Perl $1 nie jest zainstalowany
+session_eyescrypt=Nie można użyć formatu haszującego yescrypt, ponieważ moduł Perl $1 nie jest zainstalowany
 session_passapi=Włączyć interfejs API zdalnej zmiany hasła?
 session_passapi0=API wyłączone
 session_passapi1=API włączone dla użytkowników Uniksa

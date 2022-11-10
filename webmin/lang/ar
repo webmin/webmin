@@ -19,9 +19,6 @@ access_all=سماح من جميع العناوين
 access_allow=لا تسمح سوى بالعناوين المدرجة
 access_deny=رفض من العناوين المدرجة
 access_libwrap=تحقق أيضًا من ملفات <tt> hosts.allow </tt> وملفات <tt> hosts.deny </tt> التي تحتوي على ملفات TCP-wrappers؟
-access_elibwrap=لا يتوفر التحكم في الوصول إلى IP باستخدام TCP-wrappers، نظرًا لعدم تثبيت وحدة Perl $1.
-access_libwrapcpan=<a href='$1'> انقر هنا </a> لتثبيت Webmin تلقائيًا على وحدة Perl المفقودة.
-
 access_err=فشل في تحديث قائمة الوصول
 access_enone=لم يتم إدخال عناوين
 access_enet="$1" ليس عنوان شبكة صالحًا

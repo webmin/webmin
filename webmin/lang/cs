@@ -532,8 +532,6 @@ session_pmodedesc3=Uplynutí zajištění hesla ..
 session_pmode0=Uživatele s prošlým heslem vždy zablokovat
 session_pmode1=Uživatele s prošlým heslem vždy pustit
 session_pmode2=Upozornit uživatele s prošlým heslem na vložení nového
-session_md5off=Pro heslo Webminu použít standardní unixové <tt>crypt</tt> kryptování
-session_md5on=Pro heslo Webminu použít MD5 kryptování (vyžaduje dlouhá hesla)
 
 assignment_title=Přerozdělování modulů
 assignment_header=Ůkoly pro kategorie v modulu

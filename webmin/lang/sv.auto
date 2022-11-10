@@ -9,8 +9,6 @@ index_refresh=Uppdatera moduler
 index_refreshmsg=Kontrollera alla Webmin-moduler för installerade servrar igen och uppdatera dem som visas i kategorin "Oanvända moduler".
 
 access_libwrap=Kolla också TCP-wrappers <tt>hosts.allow</tt> och <tt>hosts.deny</tt> -filer?
-access_elibwrap=IP-åtkomstkontroll med TCP-omslag är inte tillgänglig eftersom $1 Perl-modulen inte är installerad.
-access_libwrapcpan=<a href='$1'>Klicka här</a> för att Webmin automatiskt ska installera den saknade Perl-modulen.
 access_ecidr6='$1' är inte en giltig IPv6-nätverksstorlek
 access_ecidr8=IPv6-nätverksstorlek '$1' måste delas med 8
 access_ehost=Det gick inte att hitta IP-adressen för '$1'
@@ -465,11 +463,13 @@ session_pmode0=Neka alltid användare med lösenord som löpt ut
 session_pmode1=Tillåt alltid användare med lösenord som löpt ut
 session_pmode2=Be användare med lösenord som löpt ut att ange ett nytt
 session_md5=Webmin-lösenord hashingformat
-session_md5off=Använd standard Unix <tt>crypt</tt> -kryptering
-session_md5on=Använd MD5-kryptering
-session_sha512=Använd SHA512-kryptering
-session_emd5mod=MD5-kryptering kan inte användas, eftersom Perl $1 -modulen inte är installerad.
-session_esha512mod=SHA512-kryptering kan inte användas, eftersom Perl $1 -modulen inte är installerad.
+session_md5off=Bestäm automatiskt
+session_md5on=Använd <tt>MD5</tt> hash-format
+session_sha512=Använd <tt>SHA512</tt> hashformat
+session_yescrypt=Använd <tt>yescrypt</tt> hash-format
+session_emd5mod=MD5-hash-format kan inte användas, eftersom Perl $1-modulen inte är installerad
+session_esha512mod=SHA512 hashformat kan inte användas, eftersom Perl $1-modulen inte är installerad
+session_eyescrypt=yescrypt hashing-format kan inte användas, eftersom Perl $1-modulen inte är installerad
 session_blocklock=Lås också användare med misslyckade inloggningar
 session_passapi=Aktivera fjärranslutet lösenordsbyte -API?
 session_passapi0=API inaktiverat

@@ -352,8 +352,6 @@ session_eextauth=錯誤或無效的外部認證程式
 session_pmode0=永遠拒絕使用者用過期的密碼
 session_pmode1=永遠允許使用者用過期的密碼
 session_pmode2=提醒密碼過期的使用者輸入新密碼
-session_md5off=Webmin密碼使用標準Unix <tt>crypt</tt>加密
-session_md5on=Webmin密碼使用MD5加密 (允許長密碼)
 
 assignment_title=模組配置
 assignment_header=配置模組分類

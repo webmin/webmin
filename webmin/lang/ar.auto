@@ -113,7 +113,6 @@ mods_local=من الملف المحلي
 mods_uploaded=من ملف تم الرفع
 mods_ftp=من عنوان URL HTTP أو FTP
 mods_standard=Standard module from <a href='$1' target=_new>www.webmin.com</a>
-
 mods_standard2=وحدة قياسية
 mods_third=وحدة الطرف الثالث من
 mods_thsel=تحديد ..
@@ -559,11 +558,13 @@ session_pmode0=حرمان المستخدمين دائمًا من استخدام 
 session_pmode1=السماح دائمًا للمستخدمين بكلمات مرور منتهية الصلاحية
 session_pmode2=مطالبة المستخدمين باستخدام كلمات مرور منتهية الصلاحية لإدخال كلمة مرور جديدة
 session_md5=Webmin كلمة المرور التجزئة شكل
-session_md5off=Use standard Unix <tt>crypt</tt> encryption
-session_md5on=استخدام تشفير MD5
-session_sha512=استخدم تشفير SHA512
-session_emd5mod=MD5 encryption cannot be used, as Perl $1 module is not installed.
-session_esha512mod=SHA512 encryption cannot be used, as Perl $1 module is not installed.
+session_md5off=تحديد تلقائيا
+session_md5on=استخدم تنسيق التجزئة <tt>MD5</tt>
+session_sha512=استخدم تنسيق التجزئة <tt>SHA512</tt>
+session_yescrypt=استخدم تنسيق التجزئة <tt>yescrypt</tt>
+session_emd5mod=لا يمكن استخدام تنسيق تجزئة MD5 ، حيث لم يتم تثبيت الوحدة النمطية Perl$1
+session_esha512mod=لا يمكن استخدام تنسيق التجزئة SHA512 ، حيث لم يتم تثبيت الوحدة النمطية Perl$1
+session_eyescrypt=لا يمكن استخدام تنسيق تجزئة yescrypt ، حيث لم يتم تثبيت الوحدة النمطية Perl$1
 session_blocklock=قفل المستخدمين أيضًا بتسجيل الدخول الفاشل
 session_passapi=تمكين API تغيير كلمة المرور عن بعد؟
 session_passapi0=API تعطيل

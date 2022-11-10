@@ -19,8 +19,6 @@ access_all=Zugriff von allen Adressen erlauben
 access_allow=Zugriff nur von aufgelisteten Adressen erlauben
 access_deny=Zugriff von aufgelisteten Adressen verweigern
 access_libwrap=Prüfe auch TCP-Wrapper <tt>hosts.allow</tt> und <tt>hosts.deny</tt> Dateien?
-access_elibwrap=IP Access Control unter Verwendung von TCP-Wrapper ist nicht verfügbar, da das $1 Perl-Modul nicht installiert ist.
-access_libwrapcpan=<a href='$1'>Klicke hier</a> um Webmin automatisch die fehlenden Perl Module installieren zu lassen.
 access_err=Fehler beim Aktualisieren der Zugangsliste
 access_enone=Keine Adresse angegeben
 access_enet='$1' ist keine gültige Netzwerkadresse
@@ -642,11 +640,6 @@ session_pmode0=Benutzer mit abgelaufenden Passwörtern immer abweisen
 session_pmode1=Benutzer mit abgelaufenden Passwörtern immer erlauben
 session_pmode2=Benutzer mit abgelaufenden Passwörtern immer zur Eingabe eines neuen Passwortes auffordern
 session_md5=Webmin Passwort-Hash-Format
-session_md5off=Benutze die Standard-<tt>crypt</tt> Verschlüsselung
-session_md5on=Benutze die MD5-Verschlüsselung
-session_sha512=Verwende SHA512-Verschlüsselung
-session_emd5mod=MD5-Verschlüsselung kann nicht verwendet werden, da das Perl $1 Modul nicht installiert ist.
-session_esha512mod=Die SHA512-Verschlüsselung kann nicht verwendet werden, da das Perl $1 Modul nicht installiert ist.
 session_blocklock=Sperre auch Benutzer mit fehlgeschlagenen Logins
 
 assignment_title=Module kategorisieren

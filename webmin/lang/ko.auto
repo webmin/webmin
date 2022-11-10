@@ -2,9 +2,6 @@ index_refresh=모듈 새로 고침
 index_refreshmsg=설치된 서버의 모든 Webmin 모듈을 다시 확인하고 '사용하지 않은 모듈'범주에 나타나는 모듈을 업데이트하십시오.
 
 access_local=로컬 네트워크를 목록에 포함
-access_elibwrap=$1 Perl 모듈이 설치되어 있지 않으므로 TCP 래퍼를 사용한 IP 액세스 제어를 사용할 수 없습니다.
-access_libwrapcpan=Webmin이 누락 된 Perl 모듈을 자동으로 설치하게하려면 <a href='$1'>여기를 클릭</a>하십시오.
-
 access_eip6='$1'은 완전한 IPv6 또는 네트워크 주소가 아닙니다
 access_ecidr6='$1'은 (는) 유효한 IPv6 네트워크 크기가 아닙니다
 access_ecidr8=IPv6 네트워크 크기 '$1'은 (는) 8로 나눌 수 있어야합니다
@@ -76,6 +73,7 @@ ssl_already2=이전에 생성 된 인증서 서명 요청  :
 ssl_letsdesc=Let 's Encrypt는 Webmin에서 사용할 SSL 인증서를 생성하는 데 사용할 수있는 무료의 자동화 된 공개 인증 기관입니다.
 ssl_letserr=불행히도, Let 's Encrypt는 시스템에서 사용할 수 없습니다 : $1.
 ssl_letserr2=또는 <a href='$1'>모듈 구성</a> 페이지에서 <tt>letsencrypt</tt> 명령의 올바른 경로를 사용하고 있는지 확인하십시오.
+
 ssl_letsdesc2=이 페이지는 새 인증서를 요청하는 데 사용될 수 있으며 현재 Webmin에 구성된 다른 인증서를 덮어 씁니다. 그러나 Let 's Encrypt 서비스에서는이 시스템이 도메인의 웹 사이트를 호스트하는지 확인하여 인증서 도메인의 소유권을 확인해야합니다. 웹 사이트의 문서 디렉토리에 작은 임시 파일을 배치하면됩니다.
 ssl_letsheader=새 SSL 인증서 옵션
 ssl_letsdoms=인증서의 호스트 이름
@@ -136,8 +134,13 @@ session_cmddef0=다음 명령으로 비밀번호를 변경하십시오.
 session_ecmd=비밀번호 변경 명령이 없거나 잘못되었습니다
 session_banner=사전 로그인 배너
 session_md5=Webmin 비밀번호 해싱 형식
-session_sha512=SHA512 암호화 사용
-session_esha512mod=Perl $1 모듈이 설치되지 않았으므로 SHA512 암호화를 사용할 수 없습니다.
+session_md5off=자동으로 결정
+session_md5on=<tt>MD5</tt> 해싱 형식 사용
+session_sha512=<tt>SHA512</tt> 해싱 형식 사용
+session_yescrypt=<tt>yescrypt</tt> 해싱 형식 사용
+session_emd5mod=Perl $1 모듈이 설치되어 있지 않으므로 MD5 해싱 형식을 사용할 수 없습니다
+session_esha512mod=Perl $1 모듈이 설치되어 있지 않으므로 SHA512 해싱 형식을 사용할 수 없습니다
+session_eyescrypt=Perl $1 모듈이 설치되어 있지 않으므로 yescrypt 해싱 형식을 사용할 수 없습니다
 session_passapi=원격 비밀번호 변경 API를 사용하시겠습니까?
 session_passapi0=API 사용 중지됨
 session_passapi1=Unix 사용자를 위해 활성화된 API

@@ -23,6 +23,13 @@ update_webmin=Actualització de www.webmin.com
 
 session_utmp=Enregistrar els inicis de sessió i tancaments de sessió a <tt>utmp</tt>?
 session_pmodedesc3=Política de caducitat de contrasenya
+session_md5off=Determinar automàticament
+session_md5on=Utilitzeu el format hashing <tt>MD5</tt>
+session_sha512=Utilitzeu el format hashing <tt>SHA512</tt>
+session_yescrypt=Utilitzeu el format hashing <tt>yescrypt</tt>
+session_emd5mod=El format hashing MD5 no es pot utilitzar, ja que el mòdul Perl $1 no està instal·lat
+session_esha512mod=El format hashing SHA512 no es pot utilitzar, ja que el mòdul Perl $1 no està instal·lat
+session_eyescrypt=El format hashing yescrypt no es pot utilitzar, ja que el mòdul Perl $1 no està instal·lat
 session_passapi=Voleu activar l'API de canvi de contrasenya remota?
 session_passapi0=API desactivada
 session_passapi1=API habilitada per als usuaris d'Unix

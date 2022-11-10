@@ -547,9 +547,6 @@ session_pmodedesc3=Política de expiração de senha ..
 session_pmode0=Sempre negar usuários com senhas expiradas
 session_pmode1=Sempre permitir usuários com senhas expiradas
 session_pmode2=Perguntar a usuários com senhas expiradas se desejam criar uma nova
-session_md5off=Usar criptografia de padrão Unix <tt>crypt</tt> para senhas do Webmin
-session_md5on=Usar criptografia MD5 para senhas do Webmin (permitir senhas longas)
-session_emd5mod=Criptografia MD5 não pode ser usada, assim, o módulo $1 do Pearl não pôde ser instalado.
 session_blocklock=Também travar usuários com os logins com falha
 
 assignment_title=Reatribuir Módulos

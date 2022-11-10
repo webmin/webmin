@@ -5,8 +5,6 @@ index_refreshmsg=重新檢查所有已安裝服務器的Webmin模塊，並更新
 
 access_ip=允許的IP地址
 access_local=在列表中包括本地網絡
-access_elibwrap=由於沒有安裝$1 Perl模塊，因此無法使用TCP-wrappers進行IP訪問控制。
-access_libwrapcpan=<a href='$1'>單擊此處</a>，讓Webmin自動安裝缺少的Perl模塊。
 access_ecidr='$1'不是有效的CIDR號
 access_eip6='$1'不是完整的IPv6或網絡地址
 access_ecidr6='$1'不是有效的IPv6網絡大小
@@ -318,9 +316,13 @@ session_banner=登錄前橫幅
 session_extauth=外部魷魚式身份驗證程序
 session_pmodedesc3=密碼過期政策
 session_md5=Webmin密碼哈希格式
-session_sha512=使用SHA512加密
-session_emd5mod=無法使用MD5加密，因為未安裝Perl $1模塊。
-session_esha512mod=由於未安裝Perl $1模塊，因此無法使用SHA512加密。
+session_md5off=自動確定
+session_md5on=使用 <tt>MD5</tt> 散列格式
+session_sha512=使用 <tt>SHA512</tt> 散列格式
+session_yescrypt=使用 <tt>yescrypt</tt> 散列格式
+session_emd5mod=不能使用 MD5 散列格式，因為沒有安裝 Perl $1 模塊
+session_esha512mod=無法使用 SHA512 散列格式，因為未安裝 Perl $1 模塊
+session_eyescrypt=無法使用 yescrypt 散列格式，因為未安裝 Perl $1 模塊
 session_blocklock=同時鎖定登錄失敗的用戶
 session_passapi=啟用遠程密碼更改 API？
 session_passapi0=API 已禁用

@@ -19,8 +19,6 @@ access_all=Permet l'accés des de totes les adreces
 access_allow=Permet l'accés només des de les adreces llistades
 access_deny=Denega l'accés des de les adreces llistades
 access_libwrap=Comprova també els embolcalls TCP i els fitxers <tt>hosts.allow</tt> i <tt>hosts.deny</tt>
-access_elibwrap=El control d'accés IP utilitzant embolcalls TCP no està disponible, ja que que el mòdul Perl $1 no està instal·lat.
-access_libwrapcpan=Fes clic <a href='$1'>aquí</a> per fer que Webmin instal·li automàticament el mòdul Perl que falta.
 access_err=No s'ha pogut actualitzar la llista d'adreces
 access_enone=No s'ha introduït cap adreça
 access_enet='$1' no és una adreça de xarxa vàlida
@@ -637,11 +635,6 @@ session_pmode0=Denega sempre els usuaris amb contrasenyes caducades
 session_pmode1=Permet sempre els usuaris amb contrasenyes caducades
 session_pmode2=Força els usuaris amb contrasenyes caducades a introduir-ne una de nova
 session_md5=Format hash de contrasenyes de Webmin
-session_md5off=Utilitza el xifratge <tt>crypt</tt> estàndard de Unix per a les contrasenyes de Webmin
-session_md5on=Utilitza el xifratge MD5
-session_sha512=Utilitza el xifratge SHA512
-session_emd5mod=No es pot utilitzar el xifratge MD5 perquè el mòdul Perl $1 no està instal·lat.
-session_esha512mod=No es pot utilitzar el xifratge SHA512 perquè el mòdul $1 de Perl no està instal·lat.
 session_blocklock=Bloqueja també els usuaris amb entrades fallides
 
 assignment_title=Reassignació de Mòduls

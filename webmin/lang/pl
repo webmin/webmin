@@ -19,8 +19,6 @@ access_all=Pozwól ze wszystkich adresów
 access_allow=Pozwól tylko adresom z listy
 access_deny=Zabroń adresom z listy
 access_libwrap=Sprawdzać również pliki TCP-wrappers <tt>hosts.allow</tt> i <tt>hosts.deny</tt>?
-access_elibwrap=Kontrola dostępu IP przy użyciu wrapperów TCP jest niedostępna ponieważ moduł Perla $1 nie jest zainstalowany.
-access_libwrapcpan=<a href='$1'>Kliknij tutaj</a> aby Webmin automatycznie instalował brakujące moduły Perla.
 access_err=Nie udało się zmienić listy dostępu
 access_enone=Nie wprowadzono adresy
 access_enet='$1' nie jest prawidłowym adresem
@@ -608,9 +606,6 @@ session_pmode0=Zawsze odrzucaj użytkowników, których hasła wygasły
 session_pmode1=Zawsze dopuszczaj użytkowników, których hasła wygasły
 session_pmode2=Proś użytkowników, których hasła wygasły, o ustawienie nowych
 session_md5=Format haszowania hasła
-session_md5off=Używaj standardowego szyfrowania Unix <tt>crypt</tt> dla haseł Webmina
-session_md5on=Używaj szyfrowania MD5 dla haseł Webmina (pozwala na długie hasła)
-session_emd5mod=Szyfrowanie MD5 nie może zostać użyte ponieważ moduł Perla $1 jest niezainstalowany.
 session_blocklock=Zablokuj użytkowników z nieudanymi próbami logowania
 
 assignment_title=Przeklasyfikowanie modułów

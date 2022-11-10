@@ -3,6 +3,7 @@ index_refresh=刷新模块
 
 access_ip=允许的 IP 地址
 access_local=在列表中包括本地网络
+
 bind_firewall=在防火墙上打开新端口？
 bind_sip1=任何地址
 bind_sip2=仅地址 ..
@@ -145,7 +146,6 @@ ssl_download=下载证书
 ssl_already1=先前生成的私钥：
 ssl_already2=先前生成的证书签名请求：
 ssl_letserr2=或者，检查<a href='$1'>模块配置</a>页面，以确保使用正确的<tt>letsencrypt</tt>命令路径。
-
 ssl_letsdoms=证书的主机名
 ssl_webroot=验证文件的网站根目录
 ssl_webroot2=其他目录
@@ -200,6 +200,13 @@ session_cmddef0=使用以下命令更改密码：
 session_pmode0=始终拒绝使用过期密码的用户
 session_pmode1=始终允许用户使用过期的密码
 session_pmode2=使用过期的密码提示用户输入新密码
+session_md5off=自动确定
+session_md5on=使用 <tt>MD5</tt> 散列格式
+session_sha512=使用 <tt>SHA512</tt> 散列格式
+session_yescrypt=使用 <tt>yescrypt</tt> 散列格式
+session_emd5mod=不能使用 MD5 散列格式，因为没有安装 Perl $1 模块
+session_esha512mod=无法使用 SHA512 散列格式，因为未安装 Perl $1 模块
+session_eyescrypt=无法使用 yescrypt 散列格式，因为未安装 Perl $1 模块
 session_blocklock=同时锁定登录失败的用户
 session_passapi=启用远程密码更改 API？
 session_passapi0=API 已禁用

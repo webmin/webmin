@@ -532,8 +532,6 @@ session_pmodedesc3=Politica di scadenza della password:
 session_pmode0=Nega sempre l'accesso agli utenti con password scadute
 session_pmode1=Permetti sempre l'accesso agli utenti con password scadute
 session_pmode2=Chiedi agli utenti una nuova password dopo la scadenza
-session_md5off=Usa <tt>crypt</tt>, il sistema di crittocrafia standard di Unix, per le password di Webmin
-session_md5on=Una la crittografia MD5 per le password di Webmin (permette password lunghe)
 
 assignment_title=Riassegna modulo
 assignment_header=Assegnamento della categoria del modulo

@@ -428,8 +428,6 @@ session_eextauth=Programa de autenticación externa no válido o sin introducir
 session_pmode0=Denegar siempre acceso a usuarios con el password expirado
 session_pmode1=Permitir siempre acceso a usuarios con el password expirado
 session_pmode2=Pedir a los usuarios con el password expirado que introduzcan uno nuevo
-session_md5off=Utilizar encriptación <tt>crypt</tt> estándar Unix para los password de Webmin
-session_md5on=Utilizar encriptación MD5 para los passwords de Webmin (permite passwords largos)
 
 assignment_title=Reubicar Módulos
 assignment_header=Asignación de categoría de módulo

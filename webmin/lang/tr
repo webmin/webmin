@@ -385,8 +385,6 @@ session_eextauth=Eksik ya da geçersiz dış onaylama programı
 session_pmode0=Süresi geçmiş parolaya sahip kullanıcıları her zaman reddet
 session_pmode1=Süresi geçmiş parolaya sahip kullanıcıları her zaman onayla
 session_pmode2=Süresi geçmiş parolaya sahip kullanıcılardan yeni bir tane girmesini iste
-session_md5off=Webmin parolaları için standart Unix <tt>crypt</tt> şifrelemesini kullan
-session_md5on=Webmin parolaları için MD% şifrelemesi kullan (uzun parolalara izin verir)
 
 assignment_title=Modülleri Sınıflandır
 assignment_header=Modül Kategorilendirme

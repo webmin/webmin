@@ -532,9 +532,6 @@ session_pmodedesc3=암호 만료 정책 ..
 session_pmode0=만기된 암호의 유저는 항상 거부합니다.
 session_pmode1=만기된 암호의 유저를 항상 허락합니다.
 session_pmode2=암호가 만기되었을 때, 새로운 암호를 지정하도록 사용자에게 공지
-session_md5off=Webmin 암호에 표준 유닉스 <tt>crypt</tt> 암호화를 사용합니다.
-session_md5on=Webmin 암호에 MD5 암호화를 사용합니다. (긴 암호 사용)
-session_emd5mod=$1 펄 모듈이 설치되어 있지 않아서 MD5 암호화를 사용할 수 없습니다.
 session_blocklock=또한 로그인 실패한 사용자를 잠금
 
 assignment_title=모듈 재할당

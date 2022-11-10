@@ -3,9 +3,6 @@ index_refreshmsg=Verifique novamente todos os módulos Webmin em busca de servid
 
 access_ip=Endereços IP permitidos
 access_local=Incluir rede local na lista
-access_elibwrap=O controle de acesso IP usando TCP-wrappers não está disponível, pois o módulo Perl $1 não está instalado.
-access_libwrapcpan=<a href='$1'>Clique aqui</a> para que o Webmin instale automaticamente o módulo Perl ausente.
-
 access_ecidr='$1' não é um número CIDR válido
 access_eip6='$1' não é um endereço IPv6 ou de rede completo
 access_ecidr6='$1' não é um tamanho de rede IPv6 válido
@@ -190,6 +187,7 @@ ssl_already2=Solicitação de assinatura de certificado gerada anteriormente :
 ssl_letsdesc=Let's Encrypt é uma autoridade de certificação gratuita, automatizada e aberta que pode ser usada para gerar um certificado SSL para uso pelo Webmin.
 ssl_letserr=Infelizmente, o Let's Encrypt não pode ser usado no seu sistema: $1.
 ssl_letserr2=Como alternativa, verifique a página de configuração do módulo <a href='$1'></a> para garantir que você esteja usando o caminho correto para o comando <tt>letsencrypt</tt>.
+
 ssl_letsdesc2=Esta página pode ser usada para solicitar um novo certificado, que substituirá qualquer outro atualmente configurado no Webmin. No entanto, o serviço Let's Encrypt exige que sua propriedade do domínio de certificado seja validada, verificando se este sistema hospeda o site do domínio. Isso é feito colocando um pequeno arquivo temporário no diretório de documentos do site.
 ssl_letsheader=Opções para novo certificado SSL
 ssl_letsdoms=Nomes de host para certificado
@@ -276,9 +274,13 @@ session_ecmd=Comando de alteração de senha ausente ou inválido
 session_banner=Banner de pré-login
 session_pmodedesc3=Política de expiração de senha
 session_md5=Formato de hash de senha do Webmin
-session_sha512=Use criptografia SHA512
-session_emd5mod=A criptografia MD5 não pode ser usada, pois o módulo Perl $1 não está instalado.
-session_esha512mod=A criptografia SHA512 não pode ser usada, pois o módulo Perl $1 não está instalado.
+session_md5off=Determinar automaticamente
+session_md5on=Use o formato de hash <tt>MD5</tt>
+session_sha512=Use o formato de hash <tt>SHA512</tt>
+session_yescrypt=Use o formato de hash <tt>yescrypt</tt>
+session_emd5mod=O formato de hash MD5 não pode ser usado, pois o módulo Perl $1 não está instalado
+session_esha512mod=O formato de hash SHA512 não pode ser usado, pois o módulo Perl $1 não está instalado
+session_eyescrypt=o formato hash yescrypt não pode ser usado, pois o módulo Perl $1 não está instalado
 session_blocklock=Também bloqueia usuários com logins com falha
 session_passapi=Ativar API de alteração de senha remota?
 session_passapi0=API desativada

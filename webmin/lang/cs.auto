@@ -2,9 +2,6 @@ index_refresh=Aktualizujte moduly
 index_refreshmsg=Znovu zkontrolujte všechny nainstalované servery všech modulů Webmin a aktualizujte ty, které se zobrazují v kategorii „Nepoužité moduly“.
 
 access_local=Zahrnout místní síť do seznamu
-access_elibwrap=Řízení přístupu IP pomocí modulů TCP není k dispozici, protože není nainstalován modul Perl $1.
-access_libwrapcpan=<a href='$1'>Klikněte sem</a>, chcete-li, aby Webmin automaticky nainstaloval chybějící modul Perl.
-
 access_eip6='$1' není kompletní IPv6 nebo síťová adresa
 access_ecidr6='$1' není platná velikost sítě IPv6
 access_ecidr8=Velikost sítě IPv6 '$1' musí být dělitelná 8
@@ -76,6 +73,7 @@ ssl_already2=Dříve vygenerovaná žádost o podpis certifikátu :
 ssl_letsdesc=Pojďme šifrovat je bezplatná, automatizovaná a otevřená certifikační autorita, kterou lze použít k vygenerování certifikátu SSL pro použití serverem Webmin.
 ssl_letserr=Bohužel, Pojďme se zašifrovat ve vašem systému nelze použít: $1.
 ssl_letserr2=Alternativně zkontrolujte stránku <a href='$1'>konfigurace modulu</a> a ujistěte se, že používáte správnou cestu k příkazu <tt>letsencrypt</tt>.
+
 ssl_letsdesc2=Tuto stránku lze použít k vyžádání nového certifikátu, který přepíše všechny ostatní aktuálně nakonfigurované v systému Webmin. Služba Let's Encrypt však vyžaduje, aby bylo vaše vlastnictví domény certifikátů ověřeno kontrolou, zda tento systém hostuje web pro danou doménu. To se provádí umístěním malého dočasného souboru do adresáře dokumentů na webu.
 ssl_letsheader=Možnosti nového certifikátu SSL
 ssl_letsdoms=Názvy hostitelů pro certifikát
@@ -136,9 +134,13 @@ session_cmddef0=Změna hesel pomocí příkazu:
 session_ecmd=Chybějící nebo neplatný příkaz ke změně hesla
 session_banner=Pre-login banner
 session_md5=Formát hashování hesla webmin
-session_sha512=Použijte šifrování SHA512
-session_emd5mod=Nelze použít šifrování MD5, protože není nainstalován modul Perl $1.
-session_esha512mod=Šifrování SHA512 nelze použít, protože není nainstalován modul Perl $1.
+session_md5off=Určit automaticky
+session_md5on=Použijte formát hash <tt>MD5</tt>
+session_sha512=Použijte formát hash <tt>SHA512</tt>
+session_yescrypt=Použijte formát hash <tt>yescrypt</tt>
+session_emd5mod=Formát hash MD5 nelze použít, protože není nainstalován modul Perl $1
+session_esha512mod=Formát hash SHA512 nelze použít, protože není nainstalován modul Perl $1
+session_eyescrypt=hashovací formát yescrypt nelze použít, protože není nainstalován modul Perl $1
 session_blocklock=Zamkněte také uživatele pomocí neúspěšných přihlášení
 session_passapi=Povolit vzdálenou změnu hesla API?
 session_passapi0=API deaktivováno

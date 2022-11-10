@@ -19,8 +19,6 @@ access_all=Tillat fra alle adresser
 access_allow=Tillat kun fra disse adresser
 access_deny=Ikke tillat disse adresser
 access_libwrap=Sjekk også TCP-wrappers <tt>hosts.allow</tt> og <tt>hosts.deny</tt> filene?
-access_elibwrap=IP tilgangskontroll med bruk av TCP-wrappere er ikke tilgjengelig, siden Perl modulen $1 ikke er installert.
-access_libwrapcpan=<a href='$1'>Klikk her</a> for å la Webmin installere den manglende Perl modulen automatisk.
 access_err=Feilet under oppdatering av tilgangslisten
 access_enone=Ingen adresser angitt
 access_enet='$1' er ikke en gyldig nettverks adresse
@@ -642,11 +640,6 @@ session_pmode0=Nekt alltid brukere med utløpte passord
 session_pmode1=Tillat alltid brukere med utløpte passord
 session_pmode2=Be brukere med utløpte passord om å skrive inn et nytt
 session_md5=Passord hashing format
-session_md5off=Bruk standard Unix <tt>crypt</tt> kryptering for Webmin passord
-session_md5on=Bruk MD5 kryptering for Webmin passords (tillater lange passord)
-session_sha512=Bruk SHA512 kryptering
-session_emd5mod=MD5-kryptering kan ikke brukes siden Perl modulen $1 ikke er installert.
-session_esha512mod=SHA512-kryptering kan ikke brukes, siden Perl-modulen $1 ikke er installert.
 session_blocklock=Lås også brukere med feilede innlogginger
 
 assignment_title=Sorter/flytt moduler

@@ -19,8 +19,6 @@ access_all=Benarkan dari semua alamat
 access_allow=Hanya benarkan dari alamat yang disenaraikan
 access_deny=Halang daripada alamat yang disenaraikan
 access_libwrap=Semak juga fail pelindung-TCP <tt>hosts.allow</tt> dan <tt>hosts.deny</tt>?
-access_elibwrap=Kawalan capaian IP menggunakan pelindung-TCP adalah mustahil, seperti modul Perl $1 tidak dipasang.
-access_libwrapcpan=<a href='$1'>Klik di sini</a> untuk membolehkan Webmin memasang secara automatik modul Perl yang hilang.
 access_err=Gagal untuk mengemaskini senarai capaian
 access_enone=Tiada alamat yang dimasukkan
 access_enet='$1' bukanlah alamat rangkaian yang lengkap
@@ -593,9 +591,6 @@ session_pmodedesc3=Dasar tamat tempoh kata laluan
 session_pmode0=Sentiasa sekat pengguna dengan kata laluan yang telah tamat tempoh
 session_pmode1=Sentiasa benarkan pengguna dengan kata laluan yang telah tamat tempoh
 session_pmode2=Prom pengguna dengan kata laluan luput untuk memasukkan yang baharu
-session_md5off=Guna penyulitan standard Unix <tt>crypt</tt> untuk kata laluan Webmin
-session_md5on=Guna penyulitan MD5 untuk kata laluan Webmin (membenarkan kata laluan yang panjang)
-session_emd5mod=Penyulitan MD5 tidak boleh digunakan, seperti modul Perl $1 tidak dipasang.
 session_blocklock=Juga sekat pengguna gagal untuk log masuk
 
 assignment_title=Penyusunan Modul
