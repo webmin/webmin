@@ -60,6 +60,7 @@ if ($config{'flavors'} == 1 ||
 
 # Set terminal
 $ENV{'TERM'} = 'xterm-256color';
+$ENV{'HOME'} = $uinfo[7];
 chdir($dir || $uinfo[7] || "/");
 my $shell = $uinfo[8];
 $shell =~ s/^.*\///;
