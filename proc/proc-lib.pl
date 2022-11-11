@@ -248,11 +248,11 @@ do {    local $oldexit = $?;
 	} while($xp > 0);
 }
 
-# pty_process_exec(command, [uid, gid])
+# pty_process_exec(command, [uid, gid], [force-binary-name])
 # Starts the given command in a new pty and returns the pty filehandle and PID
 sub pty_process_exec
 {
-local ($cmd, $uid, $gid) = @_;
+local ($cmd, $uid, $gid, $binary) = @_;
 if (&is_readonly_mode()) {
 	# When in readonly mode, don't run the command
 	$cmd = "/bin/true";
@@ -294,7 +294,12 @@ if (!$@) {
 		open(STDOUT, ">&".fileno($ttyfh));
 		open(STDERR, ">&".fileno($ttyfh));
 		close($ttyfh);		# Already dup'd
-		exec($cmd);
+		if ($binary) {
+			exec $cmd $binary;
+			}
+		else {
+			exec($cmd);
+			}
 		print "Exec failed : $!\n";
 		exit 1;
 		}
@@ -344,7 +349,12 @@ else {
 		open(STDOUT, ">&$ttyfh");
 		open(STDERR, ">&STDOUT");
 		close($ptyfh);
-		exec($cmd);
+		if ($binary) {
+			exec $cmd $binary;
+			}
+		else {
+			exec($cmd);
+			}
 		print "Exec failed : $!\n";
 		exit 1;
 		}
