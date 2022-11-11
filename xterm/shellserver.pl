@@ -29,32 +29,28 @@ else {
 &clean_environment();
 
 # Terminal inbuilt flavors (envs)
-if ($config{'flavors'} == 1 ||
+my $ps1inblt;
+if (
+    # Always enable disregard of user shell
+    $config{'flavors'} == 1 ||
+    # Automatically enable only for users with bash
     $config{'flavors'} == 2 && $uinfo[8] =~ /\/bash$/) {
 
 	# Set shell history controls
 	$ENV{'HISTCONTROL'} = 'ignoredups:ignorespace';
-	
-	# Set PS1, if flavors are forced or
-	# skip in auto mode, if already set
-	if ($config{'flavors'} == 1 ||
-	    $config{'flavors'} == 2 && !$ENV{'PS1'}) {
-		my $ps1;
 
-		# Optionally add colors to the prompt depending on the user type
-		if ($user eq "root") {
-			# magenta@blue ~# (for root)
-			$ps1 = '\[\033[1;35m\]\u\[\033[1;37m\]@'.
-			       '\[\033[1;34m\]\h:\[\033[1;37m\]'.
-			       '\w\[\033[1;37m\]$\[\033[0m\] ';
-			}
-		else {
-			# green@blue ~$ (for regular users)
-			$ps1 = '\[\033[1;32m\]\u\[\033[1;37m\]@'.
-			       '\[\033[1;34m\]\h:\[\033[1;37m\]'.
-			       '\w\[\033[1;37m\]$\[\033[0m\] ';
-			}
-		$ENV{'PS1'} = $ps1;
+	# Optionally add colors to the prompt depending on the user type
+	if ($user eq "root") {
+		# magenta@blue ~# (for root)
+		$ps1inblt = '\[\033[1;35m\]\u\[\033[1;37m\]@'.
+		            '\[\033[1;34m\]\h:\[\033[1;37m\]'.
+		            '\w\[\033[1;37m\]$\[\033[0m\] ';
+		}
+	else {
+		# green@blue ~$ (for regular users)
+		$ps1inblt = '\[\033[1;32m\]\u\[\033[1;37m\]@'.
+		            '\[\033[1;34m\]\h:\[\033[1;37m\]'.
+		            '\w\[\033[1;37m\]$\[\033[0m\] ';
 		}
 	}
 
@@ -66,6 +62,27 @@ $shell =~ s/^.*\///;
 $shell = "-".$shell;
 my ($shellfh, $pid) = &proc::pty_process_exec($uinfo[8], $uid, $gid, $shell);
 &reset_environment();
+
+# Check user current PS1 and set our default, if allowed
+if ($ps1inblt) {
+	# Check user current PS1
+	syswrite($shellfh, " echo \$PS1\r", length(" echo \$PS1\r"));
+	&wait_for($shellfh, ".*\n.*\n.*\r"), &wait_for($shellfh, ".*\r");
+	my $ps1user = &trim($wait_for_input);
+	# Can we discard currently used PS1 and set our default?
+	if (!$ps1user || $ps1user && (
+		# Default Ubuntu and Debian (user)
+		$ps1user eq '\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$' ||
+		# Default Ubuntu
+		$ps1user eq '\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$' ||
+		# Default Debian
+		$ps1user eq '${debian_chroot:+($debian_chroot)}\u@\h:\w\$' ||
+		# Default RHEL
+		$ps1user eq '[\u@\h \W]\$')) {
+		syswrite($shellfh, " PS1='$ps1inblt'\r", length(" PS1='$ps1inblt'\r"));
+		}
+	}
+
 if (!$pid) {
 	&cleanup_miniserv();
 	die "Failed to run shell $uinfo[8]";
