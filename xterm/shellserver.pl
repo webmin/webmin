@@ -53,7 +53,10 @@ if ($config{'flavors'} == 1 ||
 # Set terminal
 $ENV{'TERM'} = 'xterm-256color';
 chdir($dir || $uinfo[7] || "/");
-my ($shellfh, $pid) = &proc::pty_process_exec($uinfo[8], $uid, $gid);
+my $shell = $uinfo[8];
+$shell =~ s/^.*\///;
+$shell = "-".$shell;
+my ($shellfh, $pid) = &proc::pty_process_exec($uinfo[8], $uid, $gid, $shell);
 &reset_environment();
 if (!$pid) {
 	&cleanup_miniserv();
