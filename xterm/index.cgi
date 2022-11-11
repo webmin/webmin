@@ -190,8 +190,8 @@ if ($config{'flavors'}) {
 		# Pass to run commands directly
 		$term_flavors = "socket.send(\" $cmd_lsalias\\r\"); ".
 	                    "socket.send(\" $cmd_cls\\r\"); ";
-	    # Pass to run commands within theme later
-	    push(@cmds, $cmd_lsalias, $cmd_cls);
+		# Pass to run commands within theme later
+		push(@cmds, $cmd_lsalias, $cmd_cls);
 		}
 	}
 
