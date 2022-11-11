@@ -1,5 +1,5 @@
 base_port=Base port number for WebSockets connections,0,5
 size=Terminal width and height in characters,3,Automatic,5,,,Static (80x24)
 flavors=Try to enable inbuilt command prompt color customization,1,1-Yes,0-No
-flavors_envs=Addition enviromental variables to set<br>(in <i>key</i>=<i>value</i> format),9,70,4,\t
-flavors_cmds=Addition commands to run on shell login,9,70,4,\t
+flavors_envs=Additional enviromental variables to set<br>(in <i>key</i>=<i>value</i> format),9,70,4,\t
+flavors_cmds=Additional commands to run on shell login,9,70,4,\t
