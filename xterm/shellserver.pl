@@ -65,10 +65,13 @@ my ($shellfh, $pid) = &proc::pty_process_exec($uinfo[8], $uid, $gid, $shell);
 
 # Check user current PS1 and set our default, if allowed
 if ($ps1inblt) {
+	my $ps1user;
 	# Check user current PS1
-	syswrite($shellfh, " echo \$PS1\r", length(" echo \$PS1\r"));
-	&wait_for($shellfh, ".*\n.*\n.*\r"), &wait_for($shellfh, ".*\r");
-	my $ps1user = &trim($wait_for_input);
+	if ($config{'flavors'} == 2) {
+		syswrite($shellfh, " echo \$PS1\r", length(" echo \$PS1\r"));
+		&wait_for($shellfh, ".*\n.*\n.*\r"), &wait_for($shellfh, ".*\r");
+		$ps1user = &trim($wait_for_input);
+		}
 	# Can we discard currently used PS1 and set our default?
 	if (!$ps1user || $ps1user && (
 		# Default Ubuntu and Debian (user)
