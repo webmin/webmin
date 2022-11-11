@@ -29,32 +29,88 @@ else {
 &clean_environment();
 
 # Terminal inbuilt flavors (envs)
-if ($config{'flavors'} == 1 ||
-    $config{'flavors'} == 2 && $uinfo[8] =~ /\/bash$/) {
+my ($shinit);
 
-	# Set shell history controls
-	$ENV{'HISTCONTROL'} = 'ignoredups:ignorespace';
-	
-	# Set PS1, if flavors are forced or
-	# skip in auto mode, if already set
-	if ($config{'flavors'} == 1 ||
-	    $config{'flavors'} == 2 && !$ENV{'PS1'}) {
-		my $ps1;
+# Try to enable shell flavors
+if ($config{'flavors'}) {
 
+	# Bash
+	if ($uinfo[8] =~ /\/bash$/) {
 		# Optionally add colors to the prompt depending on the user type
+		my $ps1inblt;
 		if ($user eq "root") {
 			# magenta@blue ~# (for root)
-			$ps1 = '\[\033[1;35m\]\u\[\033[1;37m\]@'.
-			       '\[\033[1;34m\]\h:\[\033[1;37m\]'.
-			       '\w\[\033[1;37m\]$\[\033[0m\] ';
+			$ps1inblt = '\[\033[1;35m\]\u\[\033[1;37m\]@'.
+			            '\[\033[1;34m\]\h:\[\033[1;37m\]'.
+			            '\w\[\033[1;37m\]$\[\033[0m\] ';
 			}
 		else {
 			# green@blue ~$ (for regular users)
-			$ps1 = '\[\033[1;32m\]\u\[\033[1;37m\]@'.
-			       '\[\033[1;34m\]\h:\[\033[1;37m\]'.
-			       '\w\[\033[1;37m\]$\[\033[0m\] ';
+			$ps1inblt = '\[\033[1;32m\]\u\[\033[1;37m\]@'.
+			            '\[\033[1;34m\]\h:\[\033[1;37m\]'.
+			            '\w\[\033[1;37m\]$\[\033[0m\] ';
 			}
-		$ENV{'PS1'} = $ps1;
+		# Set shell flavors stuff
+		$shinit = { 'envs'  => [ { 'histcontrol' => 'ignoredups:ignorespace' } ],
+		            'cmds'  => [ { 'ps1'         => $ps1inblt } ],
+		            'files' => [ '.bashrc', '.profile', '.bash_profile' ] }
+		}
+	# Other shell opts here?
+	}
+
+# Check user current PS1 and set our default, if allowed
+if ($shinit) {
+	my ($shfiles, $shcmds) = ($shinit->{'files'},
+	                          $shinit->{'cmds'});
+	# Check user current PS1
+	my $shparse_opt = sub {
+		my ($line) = @_;
+		my $cmt = index($line, "#");
+		my $eq = index($line, "=");
+		if ($cmt != 0 && $eq >= 0) {
+			my $n = substr($line, 0, $eq);
+			my $v = substr($line, $eq+1);
+			chomp($v);
+			return {$n => $v}
+			}
+		};
+	SHFILES:
+	foreach my $shfile (@{$shfiles}) {
+		my $shfile_path = 
+			$shfile !~ /^\// ? "$uinfo[7]/$shfile" : $shfile;
+		if (-r $shfile_path) {
+			my $shfile_ref = &read_file_lines($shfile_path, 1);
+			foreach my $shfile_line (@$shfile_ref) {
+				my $shfile_line_opt = &$shparse_opt($shfile_line);
+				# Check for an active PS1 option
+				if ($shfile_line_opt && $shfile_line_opt->{'PS1'}) {
+					map { $_->{'ps1'} && delete($_->{'ps1'}) } @{$shcmds};
+					last SHFILES;
+					}
+				# Check for other sourced files
+				else {
+					if ($shfile_line =~ /\s*^(?!#)\s*(\.|source)(?<sourced_file>.*)/) {
+						my $sourced_file = "$+{sourced_file}";
+						$sourced_file =~ s/^\s+//;
+						$sourced_file =~ s/\s+$//;
+						$sourced_file =~ s/^\~\///;
+						push(@{$shfiles}, $sourced_file)
+							if (!grep(/^$sourced_file$/, @{$shfiles}));
+						}
+					}
+				}
+			}
+		}
+	}
+
+# Add additional shell envs
+if ($shinit && $shinit->{'envs'}) {
+	foreach my $env (@{$shinit->{'envs'}}) {
+		foreach my $shopt (keys %{$env}) {
+			if ($shopt) {
+				$ENV{uc($shopt)} = $env->{$shopt};
+				}
+			}
 		}
 	}
 
@@ -72,6 +128,18 @@ if (!$pid) {
 	die "Failed to run shell $uinfo[8]";
 	}
 print STDERR "shell process is $pid\n";
+
+# Add additional shell init commands
+if ($shinit && $shinit->{'cmds'}) {
+	foreach my $cmd (@{$shinit->{'cmds'}}) {
+		foreach my $shopt (keys %{$cmd}) {
+			if ($shopt) {
+				my $cmdopt = " @{[uc($shopt)]}='$cmd->{$shopt}'\r";
+				syswrite($shellfh, $cmdopt, length($cmdopt));
+				}
+			}
+		}
+	}
 
 # Detach from controlling terminal
 if (fork()) {
