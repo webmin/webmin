@@ -103,6 +103,15 @@ if ($shinit) {
 		}
 	}
 
+# User config enviromental variables
+if ($config{'flavors_envs'}) {
+	my @flavors_envs = split(/\t+/, $config{'flavors_envs'});
+	foreach my $flavors_env (@flavors_envs) {
+		my ($k, $v) = split(/=/, $flavors_env, 2);
+		$ENV{$k} = $v;
+		}
+	}
+
 # Add additional shell envs
 if ($shinit && $shinit->{'envs'}) {
 	foreach my $env (@{$shinit->{'envs'}}) {
@@ -128,6 +137,15 @@ if (!$pid) {
 	die "Failed to run shell $uinfo[8]";
 	}
 print STDERR "shell process is $pid\n";
+
+# User config commands to run on shell login
+if ($config{'flavors_cmds'}) {
+	my @flavors_cmds = split(/\t+/, $config{'flavors_cmds'});
+	foreach my $flavors_cmd (@flavors_cmds) {
+		my $cmd = " $flavors_cmd\r";
+		syswrite($shellfh, $cmd, length($cmd));
+		}
+	}
 
 # Add additional shell init commands
 if ($shinit && $shinit->{'cmds'}) {
