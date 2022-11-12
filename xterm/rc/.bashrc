@@ -1,17 +1,3 @@
-# source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-elif [ -f /etc/bash.bashrc ]; then
-	. /etc/bash.bashrc
-fi
-
-# user specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
-then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
-export PATH
-
 # don't put duplicate lines in the history
 HISTCONTROL=ignoredups:ignorespace
 
