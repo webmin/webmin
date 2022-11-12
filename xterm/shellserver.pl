@@ -33,10 +33,10 @@ $ENV{'TERM'} = 'xterm-256color';
 $ENV{'HOME'} = $uinfo[7];
 chdir($dir || $uinfo[7] || "/");
 my $shellcmd = $uinfo[8];
-my $shell = $uinfo[8];
-$shell =~ s/^.*\///;
-my $shellname = $shell;
-$shell = "-".$shell;
+my $shellname = $shellcmd;
+$shellname =~ s/^.*\///;
+my $shellexec = $shellcmd;
+my $shelllogin = "-".$shellname;
 
 # Check for initialization file
 if ($config{'rcfile'}) {
@@ -51,17 +51,21 @@ if ($config{'rcfile'}) {
 		}
 	if (-r $rcfile) {
 		# Bash
-		if ($shellcmd =~ /\/bash$/) {
-			$shellcmd .= " --rcfile $rcfile"; 
+		if ($shellname eq 'bash') {
+			$shellexec = "$shellcmd --rcfile $rcfile";
 			}
 		# Sh
-		elsif ($shellcmd =~ /\/sh$/) {
-			$shellcmd = "ENV=$rcfile; export ENV ; $shellcmd"; 
+		elsif ($shellname eq 'sh') {
+			$shellexec = "ENV=$rcfile; export ENV ; $shellexec"; 
 			}
-		print STDERR "using alternative shell init file $rcfile\n";
+
+		# Cannot use login shell while passing other parameters,
+		# and it is not necessary as we already add init files
+		$shelllogin = undef;
 		}
 	}
-my ($shellfh, $pid) = &proc::pty_process_exec($shellcmd, $uid, $gid, $shell);
+my ($shellfh, $pid) = &proc::pty_process_exec($shellexec, $uid, $gid, $shelllogin);
+print STDERR "using shell command '$shellexec".($shelllogin ? " $shelllogin" : undef)."'\n";
 &reset_environment();
 if (!$pid) {
 	&cleanup_miniserv();

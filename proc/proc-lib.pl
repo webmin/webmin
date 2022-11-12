@@ -295,7 +295,7 @@ if (!$@) {
 		open(STDERR, ">&".fileno($ttyfh));
 		close($ttyfh);		# Already dup'd
 		if ($binary) {
-			exec "$cmd $binary";
+			exec $cmd $binary;
 			}
 		else {
 			exec($cmd);
@@ -350,7 +350,7 @@ else {
 		open(STDERR, ">&STDOUT");
 		close($ptyfh);
 		if ($binary) {
-			exec "$cmd $binary";
+			exec $cmd $binary;
 			}
 		else {
 			exec($cmd);
