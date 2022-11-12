@@ -28,167 +28,42 @@ else {
 &foreign_require("proc");
 &clean_environment();
 
-# Terminal inbuilt flavors (envs)
-my ($shinit);
-
-# Try to enable shell flavors
-if ($config{'flavors'}) {
-
-	# Bash
-	if ($uinfo[8] =~ /\/bash$/) {
-		# Optionally add colors to the prompt depending on the user type
-		my $ps1inblt;
-		if ($user eq "root") {
-			# magenta@blue ~# (for root)
-			$ps1inblt = '\[\033[1;35m\]\u\[\033[1;37m\]@'.
-			            '\[\033[1;34m\]\h:\[\033[1;37m\]'.
-			            '\w\[\033[1;37m\]$\[\033[0m\] ';
-			}
-		else {
-			# green@blue ~$ (for regular users)
-			$ps1inblt = '\[\033[1;32m\]\u\[\033[1;37m\]@'.
-			            '\[\033[1;34m\]\h:\[\033[1;37m\]'.
-			            '\w\[\033[1;37m\]$\[\033[0m\] ';
-			}
-		# Set shell flavors stuff
-		$shinit = { 'envs'  => [ { 'histcontrol' => 'ignoredups:ignorespace' } ],
-		            'cmds'  => [ { 'ps1'         => $ps1inblt } ],
-		            'files' => [ '.bashrc', '.profile', '.bash_profile' ] }
-		}
-	# Other shell opts here?
-	}
-
-# Check user current PS1 and set our default, if allowed
-if ($shinit) {
-	my ($shfiles, $shcmds) = ($shinit->{'files'},
-	                          $shinit->{'cmds'});
-	# Check user current PS1
-	my $shparse_opt = sub {
-		my ($line) = @_;
-		my $cmt = index($line, "#");
-		my $eq = index($line, "=");
-		if ($cmt != 0 && $eq >= 0) {
-			my $n = substr($line, 0, $eq);
-			my $v = substr($line, $eq+1);
-			chomp($v);
-			return {$n => $v}
-			}
-		};
-
-	# Does the current user shell have init
-	# files in our internal shell flavors
-	if ($shfiles) {
-		SHFILES:
-		foreach my $shfile (@{$shfiles}) {
-			# Files that are sourced inside of standard
-			# shell init files can contain full path
-			my $shfile_path = 
-				$shfile !~ /^\// ? "$uinfo[7]/$shfile" : $shfile;
-			if (-r $shfile_path) {
-				# Read one of the standard shell init files
-				my $shfile_ref = &read_file_lines($shfile_path, 1);
-				foreach my $shfile_line (@$shfile_ref) {
-					my $shfile_line_opt = &$shparse_opt($shfile_line);
-					# Check for an active (not commented) 
-					# user-defined PS1 option
-					if ($shfile_line_opt && $shfile_line_opt->{'PS1'}) {
-						# User already have PS1 set, skipping further checks
-						# and disabling internal (our own) PS1 customisations
-						map { $_->{'ps1'} && delete($_->{'ps1'}) } @{$shcmds};
-						last SHFILES;
-						}
-					# Check for other sourced files
-					else {
-						# Perhaps the standard shell init files source other,
-						# files if so we need to add them for a check up too
-						if ($shfile_line =~ /\s*^(?!#)\s*(\.|source)(?<sourced_file>.*)/) {
-							my $sourced_file = "$+{sourced_file}";
-							$sourced_file =~ s/^\s+//;
-							$sourced_file =~ s/\s+$//;
-							$sourced_file =~ s/^\~\///;
-
-							# A file that is being sourced is found, add it
-							# for a check up unless a file already exists in
-							# array and add only if found file us under user
-							# home directory
-							push(@{$shfiles}, $sourced_file)
-								if (!grep(/^$sourced_file$/, @{$shfiles}) &&
-								   ($sourced_file !~ /^\// ||
-								   	$sourced_file =~ /^\// &&
-								   	    &is_under_directory($uinfo[7], $sourced_file)));
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-# Add additional shell envs from internal
-# shell flavors if defined for the
-# current user shell
-if ($shinit && $shinit->{'envs'}) {
-	foreach my $env (@{$shinit->{'envs'}}) {
-		foreach my $shopt (keys %{$env}) {
-			if ($shopt) {
-				$ENV{uc($shopt)} = $env->{$shopt};
-				}
-			}
-		}
-	}
-
-# User defined environmental variables
-# (in module config) to set
-if ($config{'flavors_envs'}) {
-	# Admin added to the module config custom
-	# environmental variables, load them now
-	my @flavors_envs = split(/\t+/, $config{'flavors_envs'});
-	foreach my $flavors_env (@flavors_envs) {
-		my ($k, $v) = split(/=/, $flavors_env, 2);
-		$ENV{$k} = $v;
-		}
-	}
-
 # Set terminal
 $ENV{'TERM'} = 'xterm-256color';
 $ENV{'HOME'} = $uinfo[7];
 chdir($dir || $uinfo[7] || "/");
+my $shellcmd = $uinfo[8];
 my $shell = $uinfo[8];
 $shell =~ s/^.*\///;
+my $shellname = $shell;
 $shell = "-".$shell;
-my ($shellfh, $pid) = &proc::pty_process_exec($uinfo[8], $uid, $gid, $shell);
+
+# Check for initialization file
+if ($config{'rcfile'}) {
+	my $rcfile = $config{'rcfile'} == 1 ?
+	               # Load shell init default file from module root directory
+	               $module_root_directory."/.".$shellname."rc" :
+	               # Load shell init custom file
+	               $config{'rcfile'};
+	 if ($rcfile =~ /^\~\//) {
+		$rcfile =~ s/^\~\///;
+		$rcfile = "$uinfo[7]/$rcfile";
+		}
+	if (-r $rcfile) {
+		# Bash (should add more!)
+		if ($uinfo[8] =~ /\/bash$/) {
+			$shellcmd .= " --rcfile $rcfile"; 
+			}
+		print STDERR "using alternative shell init file $rcfile\n";
+		}
+	}
+my ($shellfh, $pid) = &proc::pty_process_exec($shellcmd, $uid, $gid, $shell);
 &reset_environment();
 if (!$pid) {
 	&cleanup_miniserv();
 	die "Failed to run shell $uinfo[8]";
 	}
 print STDERR "shell process is $pid\n";
-
-# Run additional shell commands from internal
-# shell flavors, if defined for the current
-# user shell to run after initial login
-if ($shinit && $shinit->{'cmds'}) {
-	foreach my $cmd (@{$shinit->{'cmds'}}) {
-		foreach my $shopt (keys %{$cmd}) {
-			if ($shopt) {
-				my $cmdopt = " @{[uc($shopt)]}='$cmd->{$shopt}'\r";
-				syswrite($shellfh, $cmdopt, length($cmdopt));
-				}
-			}
-		}
-	}
-
-# User defined commands (in module 
-# config) to run on shell login
-if ($config{'flavors_cmds'}) {
-	# Admin added to the module config custom
-	# commands to run on shell login, run now
-	my @flavors_cmds = split(/\t+/, $config{'flavors_cmds'});
-	foreach my $flavors_cmd (@flavors_cmds) {
-		my $cmd = " $flavors_cmd\r";
-		syswrite($shellfh, $cmd, length($cmd));
-		}
-	}
 
 # Detach from controlling terminal
 if (fork()) {
