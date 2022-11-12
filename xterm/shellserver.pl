@@ -124,17 +124,6 @@ if ($shinit) {
 		}
 	}
 
-# User config environmental variables
-if ($config{'flavors_envs'}) {
-	# Admin added to the module config custom
-	# environmental variables, load them now
-	my @flavors_envs = split(/\t+/, $config{'flavors_envs'});
-	foreach my $flavors_env (@flavors_envs) {
-		my ($k, $v) = split(/=/, $flavors_env, 2);
-		$ENV{$k} = $v;
-		}
-	}
-
 # Add additional shell envs from internal
 # shell flavors if defined for the
 # current user shell
@@ -145,6 +134,18 @@ if ($shinit && $shinit->{'envs'}) {
 				$ENV{uc($shopt)} = $env->{$shopt};
 				}
 			}
+		}
+	}
+
+# User defined environmental variables
+# (in module config) to set
+if ($config{'flavors_envs'}) {
+	# Admin added to the module config custom
+	# environmental variables, load them now
+	my @flavors_envs = split(/\t+/, $config{'flavors_envs'});
+	foreach my $flavors_env (@flavors_envs) {
+		my ($k, $v) = split(/=/, $flavors_env, 2);
+		$ENV{$k} = $v;
 		}
 	}
 
@@ -163,17 +164,6 @@ if (!$pid) {
 	}
 print STDERR "shell process is $pid\n";
 
-# User config commands to run on shell login
-if ($config{'flavors_cmds'}) {
-	# Admin added to the module config custom
-	# commands to run on shell login, run now
-	my @flavors_cmds = split(/\t+/, $config{'flavors_cmds'});
-	foreach my $flavors_cmd (@flavors_cmds) {
-		my $cmd = " $flavors_cmd\r";
-		syswrite($shellfh, $cmd, length($cmd));
-		}
-	}
-
 # Run additional shell commands from internal
 # shell flavors, if defined for the current
 # user shell to run after initial login
@@ -185,6 +175,18 @@ if ($shinit && $shinit->{'cmds'}) {
 				syswrite($shellfh, $cmdopt, length($cmdopt));
 				}
 			}
+		}
+	}
+
+# User defined commands (in module 
+# config) to run on shell login
+if ($config{'flavors_cmds'}) {
+	# Admin added to the module config custom
+	# commands to run on shell login, run now
+	my @flavors_cmds = split(/\t+/, $config{'flavors_cmds'});
+	foreach my $flavors_cmd (@flavors_cmds) {
+		my $cmd = " $flavors_cmd\r";
+		syswrite($shellfh, $cmd, length($cmd));
 		}
 	}
 
