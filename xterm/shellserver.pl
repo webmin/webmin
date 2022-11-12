@@ -74,28 +74,31 @@ if ($shinit) {
 			return {$n => $v}
 			}
 		};
-	SHFILES:
-	foreach my $shfile (@{$shfiles}) {
-		my $shfile_path = 
-			$shfile !~ /^\// ? "$uinfo[7]/$shfile" : $shfile;
-		if (-r $shfile_path) {
-			my $shfile_ref = &read_file_lines($shfile_path, 1);
-			foreach my $shfile_line (@$shfile_ref) {
-				my $shfile_line_opt = &$shparse_opt($shfile_line);
-				# Check for an active PS1 option
-				if ($shfile_line_opt && $shfile_line_opt->{'PS1'}) {
-					map { $_->{'ps1'} && delete($_->{'ps1'}) } @{$shcmds};
-					last SHFILES;
-					}
-				# Check for other sourced files
-				else {
-					if ($shfile_line =~ /\s*^(?!#)\s*(\.|source)(?<sourced_file>.*)/) {
-						my $sourced_file = "$+{sourced_file}";
-						$sourced_file =~ s/^\s+//;
-						$sourced_file =~ s/\s+$//;
-						$sourced_file =~ s/^\~\///;
-						push(@{$shfiles}, $sourced_file)
-							if (!grep(/^$sourced_file$/, @{$shfiles}));
+
+	if ($shfiles) {
+		SHFILES:
+		foreach my $shfile (@{$shfiles}) {
+			my $shfile_path = 
+				$shfile !~ /^\// ? "$uinfo[7]/$shfile" : $shfile;
+			if (-r $shfile_path) {
+				my $shfile_ref = &read_file_lines($shfile_path, 1);
+				foreach my $shfile_line (@$shfile_ref) {
+					my $shfile_line_opt = &$shparse_opt($shfile_line);
+					# Check for an active PS1 option
+					if ($shfile_line_opt && $shfile_line_opt->{'PS1'}) {
+						map { $_->{'ps1'} && delete($_->{'ps1'}) } @{$shcmds};
+						last SHFILES;
+						}
+					# Check for other sourced files
+					else {
+						if ($shfile_line =~ /\s*^(?!#)\s*(\.|source)(?<sourced_file>.*)/) {
+							my $sourced_file = "$+{sourced_file}";
+							$sourced_file =~ s/^\s+//;
+							$sourced_file =~ s/\s+$//;
+							$sourced_file =~ s/^\~\///;
+							push(@{$shfiles}, $sourced_file)
+								if (!grep(/^$sourced_file$/, @{$shfiles}));
+							}
 						}
 					}
 				}
