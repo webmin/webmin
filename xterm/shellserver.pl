@@ -97,7 +97,10 @@ if ($shinit) {
 							$sourced_file =~ s/\s+$//;
 							$sourced_file =~ s/^\~\///;
 							push(@{$shfiles}, $sourced_file)
-								if (!grep(/^$sourced_file$/, @{$shfiles}));
+								if (!grep(/^$sourced_file$/, @{$shfiles}) &&
+								   ($sourced_file !~ /^\// ||
+								   	$sourced_file =~ /^\// &&
+								   	    &is_under_directory($uinfo[7], $sourced_file)));
 							}
 						}
 					}
