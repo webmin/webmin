@@ -55,10 +55,6 @@ if ($config{'rcfile'}) {
 		if ($shellname eq 'bash') {
 			$shellexec = "$shellcmd --rcfile $rcfile";
 			}
-		# Sh
-		elsif ($shellname eq 'sh') {
-			$shellexec = "export ENV=$rcfile ; $shellexec"; 
-			}
 		# Zsh
 		elsif ($shellname eq 'zsh') {
 			$shellexec = "export ZDOTDIR=$rcdir ; $shellexec"; 
