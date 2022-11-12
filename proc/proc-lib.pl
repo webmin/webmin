@@ -295,12 +295,15 @@ if (!$@) {
 		open(STDERR, ">&".fileno($ttyfh));
 		close($ttyfh);		# Already dup'd
 		if ($binary) {
-			exec $cmd $binary;
+			my @args = &split_quoted_string($cmd);
+			my $args0 = $args[0];
+			$args[0] = $binary;
+			exec { $args0 } @args;
 			}
 		else {
 			exec($cmd);
 			}
-		print "Exec failed : $!\n";
+		print STDERR "Exec failed : $!\n";
 		exit 1;
 		}
 	$ptyfh->close_slave();
@@ -350,12 +353,15 @@ else {
 		open(STDERR, ">&STDOUT");
 		close($ptyfh);
 		if ($binary) {
-			exec $cmd $binary;
+			my @args = &split_quoted_string($cmd);
+			my $args0 = $args[0];
+			$args[0] = $binary;
+			exec { $args0 } @args;
 			}
 		else {
 			exec($cmd);
 			}
-		print "Exec failed : $!\n";
+		print STDERR "Exec failed : $!\n";
 		exit 1;
 		}
 	close($ttyfh);
