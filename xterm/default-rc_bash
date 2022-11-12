@@ -47,12 +47,17 @@ alias l='ls -CF'
 # custom PS1
 PS1='\[\033[1;35m\]\u\[\033[1;37m\]@\[\033[1;32m\]\h:\[\033[1;37m\]\w\[\033[1;37m\]\$\[\033[0m\] '
 
+# user default run time config
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
+
 # user specific aliases and functions
 if [ -d ~/.bashrc.d ]; then
-	for rc in ~/.bashrc.d/*; do
-		if [ -f "$rc" ]; then
-			. "$rc"
-		fi
-	done
+    for rc in ~/.bashrc.d/*; do
+        if [ -f "$rc" ]; then
+            . "$rc"
+        fi
+    done
 fi
 unset rc
