@@ -156,6 +156,7 @@ Net::WebSocket::Server->new(
 			my $buf;
 			my $ok = sysread($shellfh, $buf, 1024);
 			if ($ok <= 0) {
+				print STDERR "end of output from shell\n";
 				&cleanup_miniserv();
 				exit(0);
 				}
@@ -168,6 +169,7 @@ Net::WebSocket::Server->new(
 		},
 	],
 )->start;
+print STDERR "exited websockets server\n";
 &cleanup_miniserv();
 
 sub cleanup_miniserv
