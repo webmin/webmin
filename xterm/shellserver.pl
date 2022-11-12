@@ -50,9 +50,13 @@ if ($config{'rcfile'}) {
 		$rcfile = "$uinfo[7]/$rcfile";
 		}
 	if (-r $rcfile) {
-		# Bash (should add more!)
-		if ($uinfo[8] =~ /\/bash$/) {
+		# Bash
+		if ($shellcmd =~ /\/bash$/) {
 			$shellcmd .= " --rcfile $rcfile"; 
+			}
+		# Sh
+		elsif ($shellcmd =~ /\/sh$/) {
+			$shellcmd = "ENV=$rcfile; export ENV ; $shellcmd"; 
 			}
 		print STDERR "using alternative shell init file $rcfile\n";
 		}
