@@ -28,44 +28,64 @@ else {
 &foreign_require("proc");
 &clean_environment();
 
-# Terminal inbuilt flavors (envs)
+# Create a shell init file that sets PS1
+my $initflag;
 if ($config{'flavors'} == 1 ||
     $config{'flavors'} == 2 && $uinfo[8] =~ /\/bash$/) {
-
-	# Set shell history controls
-	$ENV{'HISTCONTROL'} = 'ignoredups:ignorespace';
+	my $initfile = $uinfo[7]."/.bashrc_webmin";
+	$initflag = " --init-file ".quotemeta($initfile);
+	print STDERR "initfile=$initfile\n";
+	print STDERR "initflag=$initflag\n";
+	if ($uid) {
+		# Drop file access permissions
+		$) = $uid;
+		$> = $gid;
+		}
+	&open_tempfile(INIT, ">$initfile");
+	if (-r "$uinfo[7]/.bashrc") {
+		&print_tempfile(INIT, ". \$HOME/.bashrc\n");
+		}
+	&print_tempfile(INIT, "HISTCONTROL=ignoredups:ignorespace\n");
 	
 	# Set PS1, if flavors are forced or
 	# skip in auto mode, if already set
-	if ($config{'flavors'} == 1 ||
-	    $config{'flavors'} == 2 && !$ENV{'PS1'}) {
-		my $ps1;
+	my $ps1;
 
-		# Optionally add colors to the prompt depending on the user type
-		if ($user eq "root") {
-			# magenta@blue ~# (for root)
-			$ps1 = '\[\033[1;35m\]\u\[\033[1;37m\]@'.
-			       '\[\033[1;34m\]\h:\[\033[1;37m\]'.
-			       '\w\[\033[1;37m\]$\[\033[0m\] ';
-			}
-		else {
-			# green@blue ~$ (for regular users)
-			$ps1 = '\[\033[1;32m\]\u\[\033[1;37m\]@'.
-			       '\[\033[1;34m\]\h:\[\033[1;37m\]'.
-			       '\w\[\033[1;37m\]$\[\033[0m\] ';
-			}
-		$ENV{'PS1'} = $ps1;
+	# Optionally add colors to the prompt depending on the user type
+	if ($user eq "root") {
+		# magenta@blue ~# (for root)
+		$ps1 = '\[\033[1;35m\]\u\[\033[1;37m\]@'.
+		       '\[\033[1;34m\]\h:\[\033[1;37m\]'.
+		       '\w\[\033[1;37m\]$\[\033[0m\] ';
+		}
+	else {
+		# green@blue ~$ (for regular users)
+		$ps1 = '\[\033[1;32m\]\u\[\033[1;37m\]@'.
+		       '\[\033[1;34m\]\h:\[\033[1;37m\]'.
+		       '\w\[\033[1;37m\]$\[\033[0m\] ';
+		}
+	&print_tempfile(INIT, "PS1=".quotemeta($ps1)."\n");
+	&print_tempfile(INIT, "alias ls='ls --color=auto'\n");
+	&close_tempfile(INIT);
+	if ($uid) {
+		$) = 0;
+		$> = 0;
 		}
 	}
 
-# Set terminal
+# Launch the terminal
 $ENV{'TERM'} = 'xterm-256color';
 $ENV{'HOME'} = $uinfo[7];
 chdir($dir || $uinfo[7] || "/");
-my $shell = $uinfo[8];
-$shell =~ s/^.*\///;
-$shell = "-".$shell;
-my ($shellfh, $pid) = &proc::pty_process_exec($uinfo[8], $uid, $gid, $shell);
+my $shellcmd = $uinfo[8];
+$shellcmd .= $initflag if ($initflag);
+my $shellbin;
+if (!$initflag) {
+	$shellbin = $uinfo[8];
+	$shellbin =~ s/^.*\///;
+	$shellbin = "-".$shellbin;
+	}
+my ($shellfh, $pid) = &proc::pty_process_exec($shellcmd, $uid, $gid, $shellbin);
 &reset_environment();
 if (!$pid) {
 	&cleanup_miniserv();
@@ -149,6 +169,7 @@ Net::WebSocket::Server->new(
 			my $buf;
 			my $ok = sysread($shellfh, $buf, 1024);
 			if ($ok <= 0) {
+				print STDERR "end of output from shell\n";
 				&cleanup_miniserv();
 				exit(0);
 				}
@@ -161,6 +182,7 @@ Net::WebSocket::Server->new(
 		},
 	],
 )->start;
+print STDERR "exited websockets server\n";
 &cleanup_miniserv();
 
 sub cleanup_miniserv

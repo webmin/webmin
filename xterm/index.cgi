@@ -180,19 +180,6 @@ if ($user eq "root" && $in{'user'}) {
 my @uinfo = getpwnam($user);
 @uinfo || &error(&text('index_euser', &html_escape($user)));
 
-# Terminal flavors (commands)
-my (@cmds, $term_flavors);
-if ($config{'flavors'} == 1 ||
-    $config{'flavors'} == 2 && $uinfo[8] =~ /\/bash$/) {
-	my ($cmd_cls, $cmd_lsalias) = ("clear", "alias ls='ls --color=auto'");
-
-	# Pass to run commands directly
-	$term_flavors = "socket.send(\" $cmd_lsalias\\r\"); ".
-                    "socket.send(\" $cmd_cls\\r\"); ";
-    # Pass to run commands within theme later
-    push(@cmds, $cmd_lsalias, $cmd_cls);
-	}
-
 # Check for directory to start the shell in
 my $dir = $in{'dir'};
 
