@@ -65,13 +65,15 @@ if ($config{'rcfile'}) {
 		}
 	}
 my ($shellfh, $pid) = &proc::pty_process_exec($shellexec, $uid, $gid, $shelllogin);
-print STDERR "using shell command '$shellexec".($shelllogin ? " $shelllogin" : undef)."'\n";
 &reset_environment();
+my $shcmd = "'$shellexec".($shelllogin ? " $shelllogin" : undef)."'";
 if (!$pid) {
 	&cleanup_miniserv();
-	die "Failed to run shell $uinfo[8]";
+	die "Failed to run shell with $shcmd\n";
 	}
-print STDERR "shell process is $pid\n";
+else {
+	print STDERR "Running shell $shcmd with pid $pid\n";
+	}
 
 # Detach from controlling terminal
 if (fork()) {
