@@ -57,7 +57,8 @@ if ($config{'rcfile'}) {
 			}
 		# Zsh
 		elsif ($shellname eq 'zsh') {
-			$shellexec = "export ZDOTDIR=$rcdir ; $shellexec"; 
+			$ENV{'ZDOTDIR'} = $rcdir;
+			$shellexec = $shellexec; 
 			}
 
 		# Cannot use login shell while passing other parameters,
