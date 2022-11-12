@@ -42,7 +42,7 @@ $shell = "-".$shell;
 if ($config{'rcfile'}) {
 	my $rcfile = $config{'rcfile'} == 1 ?
 	               # Load shell init default file from module root directory
-	               $module_root_directory."/.".$shellname."rc" :
+	               $module_root_directory."/default-rc_".$shellname :
 	               # Load shell init custom file
 	               $config{'rcfile'};
 	 if ($rcfile =~ /^\~\//) {
