@@ -52,6 +52,13 @@ if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
 
+# user default profile config
+if [ -f ~/.bash_profile ]; then
+    . ~/.bash_profile
+elif [ -f ~/.profile ]; then
+    . ~/.profile
+fi
+
 # user specific aliases and functions
 if [ -d ~/.bashrc.d ]; then
     for rc in ~/.bashrc.d/*; do
