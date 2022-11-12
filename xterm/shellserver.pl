@@ -40,9 +40,10 @@ my $shelllogin = "-".$shellname;
 
 # Check for initialization file
 if ($config{'rcfile'}) {
+	my $rcdir  = "$module_root_directory/rc";
 	my $rcfile = $config{'rcfile'} == 1 ?
 	               # Load shell init default file from module root directory
-	               $module_root_directory."/default-rc_".$shellname :
+	               "$rcdir/.".$shellname."rc" :
 	               # Load shell init custom file
 	               $config{'rcfile'};
 	 if ($rcfile =~ /^\~\//) {
@@ -56,7 +57,11 @@ if ($config{'rcfile'}) {
 			}
 		# Sh
 		elsif ($shellname eq 'sh') {
-			$shellexec = "ENV=$rcfile; export ENV ; $shellexec"; 
+			$shellexec = "export ENV=$rcfile ; $shellexec"; 
+			}
+		# Zsh
+		elsif ($shellname eq 'zsh') {
+			$shellexec = "export ZDOTDIR=$rcdir ; $shellexec"; 
 			}
 
 		# Cannot use login shell while passing other parameters,
