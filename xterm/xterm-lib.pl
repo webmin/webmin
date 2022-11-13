@@ -22,10 +22,10 @@ if ($port) {
     }
 }
 
-# cleanup_miniserv(port)
+# remove_miniserv_websocket(port)
 # Remove old websocket info
 # from miniserv.conf
-sub cleanup_miniserv
+sub remove_miniserv_websocket
 {
 my ($port) = @_;
 my %miniserv;
@@ -42,10 +42,10 @@ if ($port) {
     }
 }
 
-# cleanup_old_websockets([&skip-ports])
+# cleanup_miniserv_websockets([&skip-ports])
 # Called by scheduled status collection to remove any
 # websockets in miniserv.conf that are no longer used
-sub cleanup_old_websockets
+sub cleanup_miniserv_websockets
 {
 my ($skip) = @_;
 $skip ||= [ ];
