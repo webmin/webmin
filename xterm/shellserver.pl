@@ -39,24 +39,23 @@ my $shellexec = $shellcmd;
 my $shelllogin = "-".$shellname;
 
 # Check for initialization file
-if ($config{'rcfile'}) {
+if ($config{'rcfile'} ne '0') {
+	# Load shell init default file from module root directory or custom file
 	my $rcdir  = "$module_root_directory/rc";
-	my $rcfile = $config{'rcfile'} == 1 ?
-	               # Load shell init default file from module root directory
+	my $rcfile = $config{'rcfile'} eq '1' ?
 	               "$rcdir/.".$shellname."rc" :
-	               # Load shell init custom file
 	               $config{'rcfile'};
-	 if ($rcfile =~ /^\~\//) {
+	if ($rcfile =~ /^\~\//) {
 		$rcfile =~ s/^\~\///;
 		$rcfile = "$uinfo[7]/$rcfile";
 		}
 	if (-r $rcfile) {
-		# Bash
 		if ($shellname eq 'bash') {
+			# Bash
 			$shellexec = "$shellcmd --rcfile $rcfile";
 			}
-		# Zsh
 		elsif ($shellname eq 'zsh') {
+			# Zsh
 			$ENV{'ZDOTDIR'} = $rcdir;
 			}
 
@@ -67,7 +66,7 @@ if ($config{'rcfile'}) {
 	}
 my ($shellfh, $pid) = &proc::pty_process_exec($shellexec, $uid, $gid, $shelllogin);
 &reset_environment();
-my $shcmd = "'$shellexec".($shelllogin ? " $shelllogin" : undef)."'";
+my $shcmd = "'$shellexec".($shelllogin ? " $shelllogin" : "")."'";
 if (!$pid) {
 	&cleanup_miniserv();
 	die "Failed to run shell with $shcmd\n";
