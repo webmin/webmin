@@ -222,8 +222,6 @@ my $term_script = <<EOF;
 		new ResizeObserver(function() {
 			fitAddon.fit();
 		}).observe(termcont);
-
-		$term_flavors
 	};
 	socket.onerror = function() {
 		termcont.innerHTML = '<tt style="color: \#ff0000">Error: ' +
@@ -248,8 +246,7 @@ if ($xmlhr) {
               'port'  => $port,
               'cols'  => $env_cols,
               'rows'  => $env_rows,
-              'uinfo'  => \@uinfo,
-              'cmds'  => \@cmds });
+              'uinfo'  => \@uinfo });
 	}
 else {
 	print $term_script;

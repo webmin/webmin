@@ -28,70 +28,53 @@ else {
 &foreign_require("proc");
 &clean_environment();
 
-# Create a shell init file that sets PS1
-my $initflag;
-if ($config{'flavors'} == 1 ||
-    $config{'flavors'} == 2 && $uinfo[8] =~ /\/bash$/) {
-	my $initfile = $uinfo[7]."/.bashrc_webmin";
-	$initflag = " --init-file ".quotemeta($initfile);
-	print STDERR "initfile=$initfile\n";
-	print STDERR "initflag=$initflag\n";
-	if ($uid) {
-		# Drop file access permissions
-		$) = $uid;
-		$> = $gid;
-		}
-	&open_tempfile(INIT, ">$initfile");
-	if (-r "$uinfo[7]/.bashrc") {
-		&print_tempfile(INIT, ". \$HOME/.bashrc\n");
-		}
-	&print_tempfile(INIT, "HISTCONTROL=ignoredups:ignorespace\n");
-	
-	# Set PS1, if flavors are forced or
-	# skip in auto mode, if already set
-	my $ps1;
-
-	# Optionally add colors to the prompt depending on the user type
-	if ($user eq "root") {
-		# magenta@blue ~# (for root)
-		$ps1 = '\[\033[1;35m\]\u\[\033[1;37m\]@'.
-		       '\[\033[1;34m\]\h:\[\033[1;37m\]'.
-		       '\w\[\033[1;37m\]$\[\033[0m\] ';
-		}
-	else {
-		# green@blue ~$ (for regular users)
-		$ps1 = '\[\033[1;32m\]\u\[\033[1;37m\]@'.
-		       '\[\033[1;34m\]\h:\[\033[1;37m\]'.
-		       '\w\[\033[1;37m\]$\[\033[0m\] ';
-		}
-	&print_tempfile(INIT, "PS1=".quotemeta($ps1)."\n");
-	&print_tempfile(INIT, "alias ls='ls --color=auto'\n");
-	&close_tempfile(INIT);
-	if ($uid) {
-		$) = 0;
-		$> = 0;
-		}
-	}
-
-# Launch the terminal
+# Set terminal
 $ENV{'TERM'} = 'xterm-256color';
 $ENV{'HOME'} = $uinfo[7];
 chdir($dir || $uinfo[7] || "/");
 my $shellcmd = $uinfo[8];
-$shellcmd .= $initflag if ($initflag);
-my $shellbin;
-if (!$initflag) {
-	$shellbin = $uinfo[8];
-	$shellbin =~ s/^.*\///;
-	$shellbin = "-".$shellbin;
+my $shellname = $shellcmd;
+$shellname =~ s/^.*\///;
+my $shellexec = $shellcmd;
+my $shelllogin = "-".$shellname;
+
+# Check for initialization file
+if ($config{'rcfile'}) {
+	my $rcdir  = "$module_root_directory/rc";
+	my $rcfile = $config{'rcfile'} == 1 ?
+	               # Load shell init default file from module root directory
+	               "$rcdir/.".$shellname."rc" :
+	               # Load shell init custom file
+	               $config{'rcfile'};
+	 if ($rcfile =~ /^\~\//) {
+		$rcfile =~ s/^\~\///;
+		$rcfile = "$uinfo[7]/$rcfile";
+		}
+	if (-r $rcfile) {
+		# Bash
+		if ($shellname eq 'bash') {
+			$shellexec = "$shellcmd --rcfile $rcfile";
+			}
+		# Zsh
+		elsif ($shellname eq 'zsh') {
+			$ENV{'ZDOTDIR'} = $rcdir;
+			}
+
+		# Cannot use login shell while passing other parameters,
+		# and it is not necessary as we already add init files
+		$shelllogin = undef;
+		}
 	}
-my ($shellfh, $pid) = &proc::pty_process_exec($shellcmd, $uid, $gid, $shellbin);
+my ($shellfh, $pid) = &proc::pty_process_exec($shellexec, $uid, $gid, $shelllogin);
 &reset_environment();
+my $shcmd = "'$shellexec".($shelllogin ? " $shelllogin" : undef)."'";
 if (!$pid) {
 	&cleanup_miniserv();
-	die "Failed to run shell $uinfo[8]";
+	die "Failed to run shell with $shcmd\n";
 	}
-print STDERR "shell process is $pid\n";
+else {
+	print STDERR "Running shell $shcmd with pid $pid\n";
+	}
 
 # Detach from controlling terminal
 if (fork()) {
