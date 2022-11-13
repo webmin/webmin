@@ -14,7 +14,7 @@ my @uinfo = getpwnam($user);
 my ($uid, $gid);
 if ($user ne "root" && !$<) {
 	if (!@uinfo) {
-		&cleanup_miniserv();
+		&cleanup_miniserv_websocket($port, $module_name);
 		die "User $user does not exist!";
 		}
 	$uid = $uinfo[2];
@@ -68,12 +68,15 @@ my ($shellfh, $pid) = &proc::pty_process_exec($shellexec, $uid, $gid, $shelllogi
 &reset_environment();
 my $shcmd = "'$shellexec".($shelllogin ? " $shelllogin" : "")."'";
 if (!$pid) {
-	&cleanup_miniserv();
+	&cleanup_miniserv_websocket($port, $module_name);
 	die "Failed to run shell with $shcmd\n";
 	}
 else {
 	print STDERR "Running shell $shcmd with pid $pid\n";
 	}
+
+# We have pid, save it to miniserv config now
+&save_miniserv_websocket($port, $pid, $module_name);
 
 # Detach from controlling terminal
 if (fork()) {
@@ -83,7 +86,7 @@ untie(*STDIN);
 close(STDIN);
 
 $SIG{'ALRM'} = sub {
-	&cleanup_miniserv();
+	&cleanup_miniserv_websocket($port, $module_name);
 	die "timeout waiting for connection";
 	};
 alarm(60);
@@ -133,13 +136,13 @@ Net::WebSocket::Server->new(
 					}
 				if (!syswrite($shellfh, $msg, length($msg))) {
 					print STDERR "write to shell failed : $!\n";
-					&cleanup_miniserv();
+					&cleanup_miniserv_websocket($port, $module_name);
 					exit(1);
 					}
 				},
 			disconnect => sub {
 				print STDERR "websocket connection closed\n";
-				&cleanup_miniserv();
+				&cleanup_miniserv_websocket($port, $module_name);
 				kill('KILL', $pid) if ($pid);
 				exit(0);
 				}
@@ -152,7 +155,7 @@ Net::WebSocket::Server->new(
 			my $ok = sysread($shellfh, $buf, 1024);
 			if ($ok <= 0) {
 				print STDERR "end of output from shell\n";
-				&cleanup_miniserv();
+				&cleanup_miniserv_websocket($port, $module_name);
 				exit(0);
 				}
 			if ($wsconn) {
@@ -165,20 +168,6 @@ Net::WebSocket::Server->new(
 	],
 )->start;
 print STDERR "exited websockets server\n";
-&cleanup_miniserv();
+&cleanup_miniserv_websocket($port, $module_name);
+&cleanup_miniserv_websockets($module_name);
 
-sub cleanup_miniserv
-{
-my %miniserv;
-if ($port) {
-	&lock_file(&get_miniserv_config_file());
-	&get_miniserv_config(\%miniserv);
-	my $wspath = "/$module_name/ws-".$port;
-	if ($miniserv{'websockets_'.$wspath}) {
-		delete($miniserv{'websockets_'.$wspath});
-		&put_miniserv_config(\%miniserv);
-		&reload_miniserv();
-		}
-	&unlock_file(&get_miniserv_config_file());
-	}
-}

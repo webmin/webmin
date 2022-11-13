@@ -12351,6 +12351,88 @@ if ($float =~ /^[-]?(\.\d+|\d+\.\d+)$/) {
 return 0;
 }
 
+# cleanup_miniserv_websockets(module)
+# Called by scheduled status collection to remove any
+# websockets in miniserv.conf that are no longer used
+sub cleanup_miniserv_websockets
+{
+my ($module) = @_;
+&lock_file(&get_miniserv_config_file());
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+my $now = time();
+my @clean;
+foreach my $k (keys %miniserv) {
+	$k =~ /^websockets_\/$module\/ws-(\d+)$/ || next;
+	my $port = $1;
+	my $when = 0;
+    my $pid = 0;
+	if ($miniserv{$k} =~ /time=(\d+)/) {
+		$when = $1;
+		}
+    if ($miniserv{$k} =~ /pid=(\d+)/) {
+        $pid = $1;
+        }
+	if ($now - $when > 60) {
+		# Has been open for a while, check if the pid is still there
+		if (!kill(0, $pid)) {
+			# Closed now, can clean up
+			push(@clean, $k);
+			}
+		else {
+			# Still active
+			close($fh);
+			}
+		}
+	}
+if (@clean) {
+	foreach my $k (@clean) {
+		delete($miniserv{$k});
+		}
+	&put_miniserv_config(\%miniserv);
+	&reload_miniserv();
+	}
+&unlock_file(&get_miniserv_config_file());
+}
+
+# save_miniserv_websocket(port, pid, module)
+# Saves active websocket reference
+# into miniserv.conf config file
+sub save_miniserv_websocket {
+my ($port, $pid, $module) = @_;
+my %miniserv;
+if ($port && $pid && kill(0, $pid)) {
+    my $wspath = "/$module/ws-".$port;
+    &lock_file(&get_miniserv_config_file());
+    &get_miniserv_config(\%miniserv);
+    $miniserv{'websockets_'.$wspath} = "host=127.0.0.1 port=$port wspath=/ user=$remote_user time=@{[time()]} pid=$pid";
+    &put_miniserv_config(\%miniserv);
+    &unlock_file(&get_miniserv_config_file());
+    &reload_miniserv();
+    }
+}
+
+# cleanup_miniserv_websocket(port)
+# Removes websocket reference from
+# miniserv.conf config by port
+sub cleanup_miniserv_websocket
+{
+my ($port, $module) = @_;
+my %miniserv;
+if ($port) {
+    &lock_file(&get_miniserv_config_file());
+    &get_miniserv_config(\%miniserv);
+    my $wspath = "/$module/ws-".$port;
+	var_dump("$port $module - $wspath", "cleanup_miniserv_websocket-$port");
+    if ($miniserv{'websockets_'.$wspath}) {
+        delete($miniserv{'websockets_'.$wspath});
+        &put_miniserv_config(\%miniserv);
+        &reload_miniserv();
+        }
+    &unlock_file(&get_miniserv_config_file());
+    }
+}
+
 $done_web_lib_funcs = 1;
 
 1;
