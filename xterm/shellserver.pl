@@ -75,6 +75,9 @@ else {
 	print STDERR "Running shell $shcmd with pid $pid\n";
 	}
 
+# We have forked the process, save the it now
+&save_miniserv_websocket($module_name, $port);
+
 # Detach from controlling terminal
 if (fork()) {
 	exit(0);

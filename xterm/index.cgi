@@ -159,7 +159,6 @@ while(1) {
 	$port++;
 	}
 my $wspath = "/$module_name/ws-".$port;
-&save_miniserv_websocket($module_name, $port);
 
 # Check permissions for user to run as
 my $user = $access{'user'};
