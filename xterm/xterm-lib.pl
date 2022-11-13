@@ -5,9 +5,26 @@ use WebminCore;
 &init_config();
 our %access = &get_module_acl();
 
+# save_miniserv_websocket(port)
+# Save new websocket info
+# to miniserv.conf file
+sub save_miniserv_websocket {
+my ($port) = @_;
+my %miniserv;
+if ($port) {
+    my $wspath = "/$module_name/ws-".$port;
+    &lock_file(&get_miniserv_config_file());
+    &get_miniserv_config(\%miniserv);
+    $miniserv{'websockets_'.$wspath} = "host=127.0.0.1 port=$port wspath=/ user=$remote_user time=@{[time()]}";
+    &put_miniserv_config(\%miniserv);
+    &unlock_file(&get_miniserv_config_file());
+    &reload_miniserv();
+    }
+}
+
 # cleanup_miniserv(port)
-# Remove websocket in miniserv.conf
-# that is no longer being used
+# Remove old websocket info
+# from miniserv.conf
 sub cleanup_miniserv
 {
 my ($port) = @_;
