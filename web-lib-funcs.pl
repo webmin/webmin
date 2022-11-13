@@ -12423,7 +12423,6 @@ if ($port) {
 	&lock_file(&get_miniserv_config_file());
 	&get_miniserv_config(\%miniserv);
 	my $wspath = "/$module/ws-".$port;
-	var_dump("$port $module - $wspath", "cleanup_miniserv_websocket-$port");
 	if ($miniserv{'websockets_'.$wspath}) {
 		delete($miniserv{'websockets_'.$wspath});
 		&put_miniserv_config(\%miniserv);
