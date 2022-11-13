@@ -166,3 +166,4 @@ Net::WebSocket::Server->new(
 )->start;
 print STDERR "exited websockets server\n";
 &cleanup_miniserv($port);
+&cleanup_old_websockets([$port]);

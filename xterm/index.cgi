@@ -254,5 +254,3 @@ else {
 	}
 print "</script>\n";
 &ui_print_footer();
-
-&cleanup_old_websockets([$port]);
