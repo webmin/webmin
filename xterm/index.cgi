@@ -139,7 +139,6 @@ EOF
 print "<div data-label=\"$text{'index_connecting'}\" id=\"terminal\"></div>\n";
 
 # Find ports already in use
-&lock_file(&get_miniserv_config_file());
 my %miniserv;
 &get_miniserv_config(\%miniserv);
 my %inuse;
@@ -160,11 +159,7 @@ while(1) {
 	$port++;
 	}
 my $wspath = "/$module_name/ws-".$port;
-my $now = time();
-$miniserv{'websockets_'.$wspath} = "host=127.0.0.1 port=$port wspath=/ user=$remote_user time=$now";
-&put_miniserv_config(\%miniserv);
-&unlock_file(&get_miniserv_config_file());
-&reload_miniserv();
+&save_miniserv_websocket($module_name, $port);
 
 # Check permissions for user to run as
 my $user = $access{'user'};
@@ -254,5 +249,4 @@ else {
 	}
 print "</script>\n";
 &ui_print_footer();
-
-&cleanup_old_websockets([$port]);
+&cleanup_miniserv_websockets($module_name, [$port]);
