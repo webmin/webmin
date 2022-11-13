@@ -5,9 +5,29 @@ use WebminCore;
 &init_config();
 our %access = &get_module_acl();
 
+# cleanup_miniserv(port)
+# Remove websocket in miniserv.conf
+# that is no longer being used
+sub cleanup_miniserv
+{
+my ($port) = @_;
+my %miniserv;
+if ($port) {
+    &lock_file(&get_miniserv_config_file());
+    &get_miniserv_config(\%miniserv);
+    my $wspath = "/$module_name/ws-".$port;
+    if ($miniserv{'websockets_'.$wspath}) {
+        delete($miniserv{'websockets_'.$wspath});
+        &put_miniserv_config(\%miniserv);
+        &reload_miniserv();
+        }
+    &unlock_file(&get_miniserv_config_file());
+    }
+}
+
 # cleanup_old_websockets([&skip-ports])
-# Called by scheduled status collection to remove any websockets in
-# miniserv.conf that are no longer used
+# Called by scheduled status collection to remove any
+# websockets in miniserv.conf that are no longer used
 sub cleanup_old_websockets
 {
 my ($skip) = @_;
