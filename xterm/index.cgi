@@ -160,7 +160,8 @@ while(1) {
 	$port++;
 	}
 my $wspath = "/$module_name/ws-".$port;
-$miniserv{'websockets_'.$wspath} = "host=127.0.0.1 port=$port wspath=/ user=$remote_user";
+my $now = time();
+$miniserv{'websockets_'.$wspath} = "host=127.0.0.1 port=$port wspath=/ user=$remote_user time=$now";
 &put_miniserv_config(\%miniserv);
 &unlock_file(&get_miniserv_config_file());
 &reload_miniserv();
@@ -254,3 +255,4 @@ else {
 print "</script>\n";
 &ui_print_footer();
 
+&cleanup_old_websockets();
