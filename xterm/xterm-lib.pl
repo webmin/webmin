@@ -8,7 +8,8 @@ our %access = &get_module_acl();
 # save_miniserv_websocket(port)
 # Save new websocket info
 # to miniserv.conf file
-sub save_miniserv_websocket {
+sub save_miniserv_websocket
+{
 my ($port) = @_;
 my %miniserv;
 if ($port) {
