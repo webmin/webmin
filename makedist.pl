@@ -64,7 +64,7 @@ else {
 	close($fh);
 	@mlist = split(/\s+/, $mod_def_list);
 	}
-@dirlist = ( "WebminUI", "JSON" );
+@dirlist = ( "WebminUI", "JSON", "Authen" );
 
 $dir = "webmin-$vers";
 if (!$release || !-d "$tardir/$dir") {
