@@ -5,26 +5,43 @@ use WebminCore;
 &init_config();
 our %access = &get_module_acl();
 
-# save_miniserv_websocket(port)
-# Save new websocket info
-# to miniserv.conf file
-sub save_miniserv_websocket
+# allocate_miniserv_websocket()
+# Allocate a new websocket and
+# stores it miniserv.conf file
+sub allocate_miniserv_websocket
 {
-my ($port) = @_;
+# Find ports already in use
+&lock_file(&get_miniserv_config_file());
 my %miniserv;
-if ($port) {
-    my $wspath = "/$module_name/ws-".$port;
-    &lock_file(&get_miniserv_config_file());
-    &get_miniserv_config(\%miniserv);
-    $miniserv{'websockets_'.$wspath} = "host=127.0.0.1 port=$port wspath=/ user=$remote_user time=@{[time()]}";
-    &put_miniserv_config(\%miniserv);
-    &unlock_file(&get_miniserv_config_file());
-    &reload_miniserv();
-    }
+&get_miniserv_config(\%miniserv);
+my %inuse;
+foreach my $k (keys %miniserv) {
+	if ($k =~ /^websockets_/ && $miniserv{$k} =~ /port=(\d+)/) {
+		$inuse{$1} = 1;
+		}
+	}
+
+# Pick a port and configure Webmin to proxy it
+my $port = $config{'base_port'} || 555;
+while(1) {
+	if (!$inuse{$port}) {
+		&open_socket("127.0.0.1", $port, my $fh, \$err);
+		last if ($err);
+		close($fh);
+		}
+	$port++;
+	}
+my $wspath = "/$module_name/ws-".$port;
+my $now = time();
+$miniserv{'websockets_'.$wspath} = "host=127.0.0.1 port=$port wspath=/ user=$remote_user time=$now";
+&put_miniserv_config(\%miniserv);
+&unlock_file(&get_miniserv_config_file());
+&reload_miniserv();
+return $port;
 }
 
 # remove_miniserv_websocket(port)
-# Remove old websocket info
+# Remove old websocket
 # from miniserv.conf
 sub remove_miniserv_websocket
 {

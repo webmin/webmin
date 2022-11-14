@@ -75,10 +75,6 @@ else {
 	print STDERR "Running shell $shcmd with pid $pid\n";
 	}
 
-# Save new websocket info to miniserv.conf
-# only after we get the pty pid
-&save_miniserv_websocket($port);
-
 # Detach from controlling terminal
 if (fork()) {
 	exit(0);
@@ -86,6 +82,7 @@ if (fork()) {
 untie(*STDIN);
 close(STDIN);
 
+# Clean up when socket is terminated
 $SIG{'ALRM'} = sub {
 	&remove_miniserv_websocket($port);
 	die "timeout waiting for connection";
