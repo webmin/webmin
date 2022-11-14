@@ -14,7 +14,7 @@ my @uinfo = getpwnam($user);
 my ($uid, $gid);
 if ($user ne "root" && !$<) {
 	if (!@uinfo) {
-		&cleanup_miniserv();
+		&remove_miniserv_websocket($port);
 		die "User $user does not exist!";
 		}
 	$uid = $uinfo[2];
@@ -68,7 +68,7 @@ my ($shellfh, $pid) = &proc::pty_process_exec($shellexec, $uid, $gid, $shelllogi
 &reset_environment();
 my $shcmd = "'$shellexec".($shelllogin ? " $shelllogin" : "")."'";
 if (!$pid) {
-	&cleanup_miniserv();
+	&remove_miniserv_websocket($port);
 	die "Failed to run shell with $shcmd\n";
 	}
 else {
@@ -82,8 +82,9 @@ if (fork()) {
 untie(*STDIN);
 close(STDIN);
 
+# Clean up when socket is terminated
 $SIG{'ALRM'} = sub {
-	&cleanup_miniserv();
+	&remove_miniserv_websocket($port);
 	die "timeout waiting for connection";
 	};
 alarm(60);
@@ -133,13 +134,13 @@ Net::WebSocket::Server->new(
 					}
 				if (!syswrite($shellfh, $msg, length($msg))) {
 					print STDERR "write to shell failed : $!\n";
-					&cleanup_miniserv();
+					&remove_miniserv_websocket($port);
 					exit(1);
 					}
 				},
 			disconnect => sub {
 				print STDERR "websocket connection closed\n";
-				&cleanup_miniserv();
+				&remove_miniserv_websocket($port);
 				kill('KILL', $pid) if ($pid);
 				exit(0);
 				}
@@ -152,7 +153,7 @@ Net::WebSocket::Server->new(
 			my $ok = sysread($shellfh, $buf, 1024);
 			if ($ok <= 0) {
 				print STDERR "end of output from shell\n";
-				&cleanup_miniserv();
+				&remove_miniserv_websocket($port);
 				exit(0);
 				}
 			if ($wsconn) {
@@ -165,20 +166,5 @@ Net::WebSocket::Server->new(
 	],
 )->start;
 print STDERR "exited websockets server\n";
-&cleanup_miniserv();
-
-sub cleanup_miniserv
-{
-my %miniserv;
-if ($port) {
-	&lock_file(&get_miniserv_config_file());
-	&get_miniserv_config(\%miniserv);
-	my $wspath = "/$module_name/ws-".$port;
-	if ($miniserv{'websockets_'.$wspath}) {
-		delete($miniserv{'websockets_'.$wspath});
-		&put_miniserv_config(\%miniserv);
-		&reload_miniserv();
-		}
-	&unlock_file(&get_miniserv_config_file());
-	}
-}
+&remove_miniserv_websocket($port);
+&cleanup_miniserv_websockets([$port]);

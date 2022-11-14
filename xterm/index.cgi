@@ -138,33 +138,8 @@ EOF
 # Print main container
 print "<div data-label=\"$text{'index_connecting'}\" id=\"terminal\"></div>\n";
 
-# Find ports already in use
-&lock_file(&get_miniserv_config_file());
-my %miniserv;
-&get_miniserv_config(\%miniserv);
-my %inuse;
-foreach my $k (keys %miniserv) {
-	if ($k =~ /^websockets_/ && $miniserv{$k} =~ /port=(\d+)/) {
-		$inuse{$1} = 1;
-		}
-	}
-
-# Pick a port and configure Webmin to proxy it
-my $port = $config{'base_port'} || 555;
-while(1) {
-	if (!$inuse{$port}) {
-		&open_socket("127.0.0.1", $port, my $fh, \$err);
-		last if ($err);
-		close($fh);
-		}
-	$port++;
-	}
-my $wspath = "/$module_name/ws-".$port;
-my $now = time();
-$miniserv{'websockets_'.$wspath} = "host=127.0.0.1 port=$port wspath=/ user=$remote_user time=$now";
-&put_miniserv_config(\%miniserv);
-&unlock_file(&get_miniserv_config_file());
-&reload_miniserv();
+# Get a free port that can be used for the socket
+my $port = &allocate_miniserv_websocket();
 
 # Check permissions for user to run as
 my $user = $access{'user'};
@@ -197,7 +172,7 @@ $ENV{'SESSION_ID'} = $main::session_id;
 	       " >$tmpdir/ws-$port.out 2>&1 </dev/null");
 
 # Open the terminal
-my $url = "wss://".$ENV{'HTTP_HOST'}.$wspath;
+my $url = "wss://$ENV{'HTTP_HOST'}/$module_name/ws-$port";
 my $term_script = <<EOF;
 
 (function() {
@@ -254,5 +229,3 @@ else {
 	}
 print "</script>\n";
 &ui_print_footer();
-
-&cleanup_old_websockets([$port]);
