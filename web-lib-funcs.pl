@@ -5310,10 +5310,12 @@ if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
         $var{$key} = $url;
         
         # Store unique file name
-        my $url_to_filename = &encode_base64(($url . time()), 'noeol');
-        $url_to_filename =~ s/[^A-Za-z0-9\-_]//g;
-        $url_to_filename = substr($url_to_filename, -128)
-            if (length($url_to_filename) > 128);
+        my $url_to_filename = $url;
+        $url_to_filename =~ s/cgi//g;
+        $url_to_filename =~ s/[^A-Za-z0-9]//g;
+        $url_to_filename = time() . &encode_base64($url_to_filename, 'noeol');
+        $url_to_filename =~ s/[^A-Za-z0-9]//g;
+        $url_to_filename = substr($url_to_filename, 0, 128);
 
         # Write URL for the theme to read and open
         $main::ignore_errors = 1;
