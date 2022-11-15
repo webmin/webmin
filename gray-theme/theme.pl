@@ -248,7 +248,7 @@ sub theme_prebody
 if ($script_name =~ /session_login.cgi/) {
 	# Generate CSS link
 	print "<link rel='stylesheet' type='text/css' href='@{[&theme_get_webprefix_safe()]}/unauthenticated/reset-fonts-grids-base.css'>\n";
-	print "<link rel='stylesheet' type='text/css' href='@{[&theme_get_webprefix_safe()]}/unauthenticated/virtual-server-style.css'>\n";
+	print "<link rel='stylesheet' type='text/css' href='@{[&theme_get_webprefix_safe()]}/unauthenticated/gray-theme.css'>\n";
 	print "<!--[if IE]>\n";
 	print "<style type=\"text/css\">\n";
 	print "table.formsection, table.ui_table, table.loginform { border-collapse: collapse; }\n";
@@ -264,7 +264,7 @@ if (get_module_name() eq "virtual-server") {
 sub theme_prehead
 {
 print "<link rel='stylesheet' type='text/css' href='@{[&theme_get_webprefix_safe()]}/unauthenticated/reset-fonts-grids-base.css'>\n";
-print "<link rel='stylesheet' type='text/css' href='@{[&theme_get_webprefix_safe()]}/unauthenticated/virtual-server-style.css' />\n";
+print "<link rel='stylesheet' type='text/css' href='@{[&theme_get_webprefix_safe()]}/unauthenticated/gray-theme.css' />\n";
 print "<!--[if IE]>\n";
 print "<style type=\"text/css\">\n";
 print "table.formsection, table.ui_table, table.loginform { border-collapse: collapse; }\n";
