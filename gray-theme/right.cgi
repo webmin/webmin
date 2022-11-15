@@ -33,8 +33,8 @@ unshift(@links, { 'link' => 'edit_right.cgi',
 	          'desc' => $text{'right_edit'} });
 my @linkshtml = map {
 	my $lnk = $_->{'link'};
-	$lnk = &theme_get_webprefix_safe().$lnk
-		if (&theme_get_webprefix_safe() && $lnk =~ /^\//);
+	$lnk = &get_webprefix().$lnk
+		if (&get_webprefix() && $lnk =~ /^\//);
 	&ui_link($lnk, $_->{'desc'}, undef,
 		 !$_->{'target'} ? '' :
 	         $_->{'target'} eq 'new' ? 'target=_blank' :

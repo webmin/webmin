@@ -17,7 +17,7 @@ require "gray-theme/theme.pl";
 ReadParse();
 
 popup_header("Virtualmin");
-print "<script type='text/javascript' src='@{[&theme_get_webprefix_safe()]}/unauthenticated/toggleview.js'></script>\n";
+print "<script type='text/javascript' src='@{[&get_webprefix()]}/unauthenticated/toggleview.js'></script>\n";
 
 my $is_master;
 # Is this user root?
@@ -287,5 +287,5 @@ return { 'type' => 'item',
 sub add_webprefix
 {
 my ($link) = @_;
-return $link =~ /^\// ? &theme_get_webprefix_safe().$link : $link;
+return $link =~ /^\// ? &get_webprefix().$link : $link;
 }
