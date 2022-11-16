@@ -12,6 +12,8 @@ Full function documentation is in web-lib-funcs.pl.
 
 =cut
 
+use lib ("$ENV{'PERLLIB'}/vendor_perl");
+
 $main::export_to_caller = 1;
 package WebminCore;
 require Exporter;

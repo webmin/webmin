@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 # Start a websocket server connected to a shell
 
-use lib ("$ENV{'PERLLIB'}/xterm/lib");
+use lib ("$ENV{'PERLLIB'}/vendor_perl");
 use Net::WebSocket::Server;
 use utf8;
 
