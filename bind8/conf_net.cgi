@@ -52,7 +52,7 @@ print &ui_table_row($text{'net_listen'}, $ltable, 3);
 
 # Source address for queries
 my $src = &find("query-source", $mems);
-my $srcstr = join(" ", $src->{'values'});
+my $srcstr = $src ? join(" ", @{$src->{'values'}}) : "";
 my ($sport, $saddr);
 $sport = $1 if ($srcstr =~ /port\s+(\d+)/i);
 $saddr = $1 if ($srcstr =~ /address\s+([0-9\.]+)/i);
