@@ -3,6 +3,7 @@ package JSON::PP::Boolean;
 use strict;
 require overload;
 local $^W;
+overload::unimport('overload', qw(0+ ++ -- fallback));
 overload::import('overload',
     "0+"     => sub { ${$_[0]} },
     "++"     => sub { $_[0] = ${$_[0]} + 1 },
@@ -10,7 +11,7 @@ overload::import('overload',
     fallback => 1,
 );
 
-$JSON::PP::Boolean::VERSION = '4.04';
+$JSON::PP::Boolean::VERSION = '4.12';
 
 1;
 

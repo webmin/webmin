@@ -3,11 +3,10 @@ use 5.006;
 use strict;
 use warnings;
 use warnings::register;
-our $VERSION = '1.37';
-require Exporter;
+our $VERSION = '1.40';
+use Exporter 'import';
 require Cwd;
 
-our @ISA = qw(Exporter);
 our @EXPORT = qw(find finddepth);
 
 
@@ -161,9 +160,8 @@ sub _find_opt {
     $pre_process       = $wanted->{preprocess};
     $post_process      = $wanted->{postprocess};
     $no_chdir          = $wanted->{no_chdir};
-    $full_check        = $Is_Win32 ? 0 : $wanted->{follow};
-    $follow            = $Is_Win32 ? 0 :
-                             $full_check || $wanted->{follow_fast};
+    $full_check        = $wanted->{follow};
+    $follow            = $full_check || $wanted->{follow_fast};
     $follow_skip       = $wanted->{follow_skip};
     $untaint           = $wanted->{untaint};
     $untaint_pat       = $wanted->{untaint_pattern};
@@ -324,7 +322,7 @@ sub _find_dir($$$) {
 	$dir_pref= ( $p_dir eq '/' ? '/' : "$p_dir/" );
     }
 
-    local ($dir, $name, $prune, *DIR);
+    local ($dir, $name, $prune);
 
     unless ( $no_chdir || ($p_dir eq $File::Find::current_dir)) {
 	my $udir = $p_dir;
@@ -383,12 +381,13 @@ sub _find_dir($$$) {
 	$dir= $dir_name; # $File::Find::dir
 
 	# Get the list of files in the current directory.
-	unless (opendir DIR, ($no_chdir ? $dir_name : $File::Find::current_dir)) {
+    my $dh;
+	unless (opendir $dh, ($no_chdir ? $dir_name : $File::Find::current_dir)) {
 	    warnings::warnif "Can't opendir($dir_name): $!\n";
 	    next;
 	}
-	@filenames = readdir DIR;
-	closedir(DIR);
+	@filenames = readdir $dh;
+	closedir($dh);
 	@filenames = $pre_process->(@filenames) if $pre_process;
 	push @Stack,[$CdLvl,$dir_name,"",-2]   if $post_process;
 
@@ -544,7 +543,7 @@ sub _find_dir_symlnk($$$) {
     $dir_pref = ( $p_dir   eq '/' ? '/' : "$p_dir/" );
     $loc_pref = ( $dir_loc eq '/' ? '/' : "$dir_loc/" );
 
-    local ($dir, $name, $fullname, $prune, *DIR);
+    local ($dir, $name, $fullname, $prune);
 
     unless ($no_chdir) {
 	# untaint the topdir
@@ -616,12 +615,13 @@ sub _find_dir_symlnk($$$) {
 	$dir = $dir_name; # $File::Find::dir
 
 	# Get the list of files in the current directory.
-	unless (opendir DIR, ($no_chdir ? $dir_loc : $File::Find::current_dir)) {
+    my $dh;
+	unless (opendir $dh, ($no_chdir ? $dir_loc : $File::Find::current_dir)) {
 	    warnings::warnif "Can't opendir($dir_loc): $!\n";
 	    next;
 	}
-	@filenames = readdir DIR;
-	closedir(DIR);
+	@filenames = readdir $dh;
+	closedir($dh);
 
 	for my $FN (@filenames) {
 	    if ($Is_VMS) {
@@ -840,6 +840,9 @@ where C<find()> works from the top of the tree down.
 
 =back
 
+Despite the name of the C<finddepth()> function, both C<find()> and
+C<finddepth()> perform a depth-first search of the directory hierarchy.
+
 =head2 %options
 
 The first argument to C<find()> is either a code reference to your
@@ -849,7 +852,7 @@ code reference is described in L</The wanted function> below.
 
 Here are the possible keys for the hash:
 
-=over 3
+=over 4
 
 =item C<wanted>
 
@@ -893,7 +896,7 @@ This might be expensive both in space and time for a large
 directory tree. See L</follow_fast> and L</follow_skip> below.
 If either I<follow> or I<follow_fast> is in effect:
 
-=over 6
+=over 4
 
 =item *
 
@@ -1080,9 +1083,9 @@ situations. You can disable these warnings by putting the statement
 in the appropriate scope. See L<warnings> for more info about lexical
 warnings.
 
-=head1 CAVEAT
+=head1 BUGS AND CAVEATS
 
-=over 2
+=over 4
 
 =item $dont_use_nlink
 
@@ -1107,12 +1110,6 @@ might cause very unpleasant surprises, since you delete or change files
 in an unknown directory.
 
 =back
-
-=head1 BUGS AND CAVEATS
-
-Despite the name of the C<finddepth()> function, both C<find()> and
-C<finddepth()> perform a depth-first search of the directory
-hierarchy.
 
 =head1 HISTORY
 
