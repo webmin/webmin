@@ -3,6 +3,7 @@
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
+use JSON::PP;
 &init_config();
 use Time::Local;
 if (&foreign_check("node-groups")) {
