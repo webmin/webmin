@@ -1,0 +1,195 @@
+=pod
+
+=encoding utf-8
+
+=for stopwords frobnicate greps regexps
+
+=head1 NAME
+
+Exporter::Tiny::Manual::QuickStart - the quickest way to get up and running with Exporter::Tiny
+
+=head1 SYNOPSIS
+
+   package MyUtils;
+   
+   use Exporter::Shiny qw( frobnicate );
+   
+   sub frobnicate {
+      ...;   # your code here
+   }
+   
+   1;
+
+Now people can use your module like this:
+
+   use MyUtils "frobnicate";
+   
+   frobnicate(42);
+
+Or like this:
+
+   use MyUtils "frobnicate" => { -as => "frob" };
+   
+   frob(42);
+
+=head1 DESCRIPTION
+
+See the synopsis. Yes, it's that simple.
+
+=head2 Next steps
+
+=head3 Default exports
+
+Note that the module in the synopsis doesn't export anything by default.
+If people load C<MyUtils> like this:
+
+   use MyUtils;
+
+Then they haven't imported any functions. You can specify a default set
+of functions to be exported like this:
+
+   package MyUtils;
+   
+   use Exporter::Shiny qw( frobnicate );
+   
+   our @EXPORT = qw( frobnicate );
+   
+   sub frobnicate { ... }
+   
+   1;
+
+Or, if you want to be a superstar rock god:
+
+   package MyUtils;
+   
+   use Exporter::Shiny our @EXPORT = qw( frobnicate );
+   
+   sub frobnicate { ... }
+   
+   1;
+
+=head3 Tags
+
+You can provide tags for people to use:
+
+   package MyUtils;
+   
+   use Exporter::Shiny qw( frobnicate red green blue );
+   
+   our %EXPORT_TAGS = (
+      utils   => [qw/ frobnicate /],
+      colours => [qw/ red green blue /],
+   );
+   
+   sub frobnicate { ... }
+   sub red        { ... }
+   sub green      { ... }
+   sub blue       { ... }
+   
+   1;
+
+And people can now import your functions like this:
+
+   use MyUtils ":colours";
+
+Or this:
+
+   use MyUtils "-colours";
+
+Or take advantage of the fact that Perl magically quotes barewords
+preceded by a hyphen:
+
+   use MyUtils -colours;
+
+Two tags are automatically defined for you: C<< -default >> (which is
+just the same as C<< @EXPORT >>) and C<< -all >> (which is the union of
+C<< @EXPORT >> and C<< @EXPORT_OK >>). If you don't like them, then you
+can override them:
+
+   our %EXPORT_TAGS = (
+      default => \@some_other_stuff,
+      all     => \@more_stuff,
+   );
+
+=head3 Generators
+
+Exporting normally just works by copying a sub from your package into
+your caller's package. But sometimes it's useful instead to generate
+a I<custom> sub to insert into your caller's package. This is pretty
+easy to do.
+
+   package MyUtils;
+   
+   use Exporter::Shiny qw( frobnicate );
+   
+   sub _generate_frobnicate {
+      my ( $me, $name, $args, $globals ) = @_;
+      my $caller = $globals->{into};
+      
+      return sub {
+          ...;  # your code here
+      };
+   }
+   
+   1;
+
+The parameter C<< $me >> here is a string containing the package name
+which is being imported from; C<< $caller >> is the destination package;
+C<< $name >> is the name of the sub (in this case "frobnicate"); and
+C<< $args >> is a custom argument for this function. (By convention,
+C<< $args >> is normally a hashref.)
+
+   # The hashref { foo => 42 } is $args above.
+   #
+   use MyUtils "frobnicate" => { foo => 42 };
+
+=head2 Avoiding Exporter::Shiny
+
+Exporter::Shiny is a tiny shim around Exporter::Tiny. It should mostly
+do what you want, but you may sometimes prefer to use Exporter::Tiny
+directly.
+
+The example in the synopsis could have been written as:
+
+   package MyUtils;
+   
+   use parent "Exporter::Tiny";
+   our @EXPORT_OK = qw( frobnicate );
+   
+   sub frobnicate {
+      ...;   # your code here
+   }
+   
+   1;
+
+What Exporter::Shiny does is mostly just to set C<< @EXPORT_OK >> for
+you and set up inheritance from the base class (Exporter::Tiny).
+
+Exporter::Shiny also sets C<< $INC{'MyUtils.pm'} >> for you, which in
+usually makes little difference, but is useful in some edge cases.
+
+=head1 SEE ALSO
+
+L<Exporter::Shiny>,
+L<Exporter::Tiny>.
+
+For more advanced information, see
+L<Exporter::Tiny::Manual::Exporting>.
+
+=head1 AUTHOR
+
+Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
+
+=head1 COPYRIGHT AND LICENCE
+
+This software is copyright (c) 2013-2014, 2017 by Toby Inkster.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=head1 DISCLAIMER OF WARRANTIES
+
+THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
+MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
