@@ -1,3 +1,4 @@
+use lib ("lib");
 use WebminUI::All;
 use Socket;
 
