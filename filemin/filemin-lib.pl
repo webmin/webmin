@@ -4,7 +4,6 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 
-use lib './lib';
 use POSIX;
 use Encode qw(decode encode);
 use File::Basename;

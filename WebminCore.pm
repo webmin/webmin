@@ -12,10 +12,13 @@ Full function documentation is in web-lib-funcs.pl.
 
 =cut
 
-$main::export_to_caller = 1;
 package WebminCore;
+use lib ("$ENV{'PERLLIB'}/vendor_perl");
 require Exporter;
 @ISA = qw(Exporter);
+
+# Export global variables to caller
+$main::export_to_caller = 1;
 
 # Add functions in web-lib-funcs.pl
 # Generated with :
