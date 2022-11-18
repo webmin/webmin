@@ -3,6 +3,7 @@
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
+use lib ("lib");
 &init_config();
 &foreign_require("net", "net-lib.pl");
 &foreign_require("mount", "mount-lib.pl");
