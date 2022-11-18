@@ -182,7 +182,7 @@ if ($can_upload) {
 	# Destination directory
 	print &ui_table_row($text{'index_dir'},
 		&ui_textbox("dir", $upload_dir, 50)." ".
-		&file_chooser_button("dir", 1, $form)." ".
+		&file_chooser_button("dir", 1, $form)." &nbsp;&nbsp;".
 		&ui_checkbox("mkdir", 1, $text{'index_mkdir'}, 0));
 
 	if ($can_mode != 3) {
