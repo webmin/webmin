@@ -231,12 +231,12 @@ elsif ($pinfo->{'edittype'} != 2) {
 	}
 
 if (!$in{'new'} && !$pinfo->{'extended'} && $pinfo->{'edittype'} != 2) {
-	my $ui_buttons_content;
+	my $ui_buttons_content = "";
 
 	if (!@stat || $stat[2] == 0) {
 		# Show form for creating filesystem
 		local $rt = @stat ? $stat[1] : &conv_type($pinfo->{'type'});
-		$ui_buttons_content = &ui_buttons_row("mkfs_form.cgi",
+		$ui_buttons_content .= &ui_buttons_row("mkfs_form.cgi",
 			$text{'edit_mkfs2'}, $text{'edit_mkfsmsg2'},
 			&ui_hidden("dev", $dev),
 			&ui_select("type", $rt,
@@ -246,7 +246,7 @@ if (!$in{'new'} && !$pinfo->{'extended'} && $pinfo->{'edittype'} != 2) {
 
 	if (!$in{'new'} && @stat && $stat[2] == 0 && &can_fsck($stat[1])) {
 		# Show form to fsck filesystem
-		$ui_buttons_content = &ui_buttons_row("fsck_form.cgi",
+		$ui_buttons_content .= &ui_buttons_row("fsck_form.cgi",
 			$text{'edit_fsck'},&text('edit_fsckmsg', "<tt>fsck</tt>"),
 			&ui_hidden("dev", $dev)." ".
 			&ui_hidden("type", $stat[1]));
@@ -254,7 +254,7 @@ if (!$in{'new'} && !$pinfo->{'extended'} && $pinfo->{'edittype'} != 2) {
 
 	if (!$in{'new'} && @stat && $stat[2] == 0 && &can_tune($stat[1])) {
 		# Show form to tune filesystem
-		$ui_buttons_content = &ui_buttons_row("tunefs_form.cgi",
+		$ui_buttons_content .= &ui_buttons_row("tunefs_form.cgi",
 			$text{'edit_tune'}, $text{'edit_tunemsg'},
 			&ui_hidden("dev", $dev)." ".
 			&ui_hidden("type", $stat[1]));
@@ -265,7 +265,7 @@ if (!$in{'new'} && !$pinfo->{'extended'} && $pinfo->{'edittype'} != 2) {
 		# Show form to mount filesystem
 		if ($types[0] eq "swap") {
 			# Swap partition
-			$ui_buttons_content = &ui_buttons_row("../mount/edit_mount.cgi",
+			$ui_buttons_content .= &ui_buttons_row("../mount/edit_mount.cgi",
 				$text{'edit_newmount2'},$text{'edit_mountmsg2'},
 				&ui_hidden("type", $types[0]).
 				&ui_hidden("newdev", $dev));
@@ -280,7 +280,7 @@ if (!$in{'new'} && !$pinfo->{'extended'} && $pinfo->{'edittype'} != 2) {
 			else {
 				$dirsel .= &ui_hidden("type", $types[0]);
 				}
-			$ui_buttons_content = &ui_buttons_row("../mount/edit_mount.cgi",
+			$ui_buttons_content .= &ui_buttons_row("../mount/edit_mount.cgi",
 				$text{'edit_newmount'}, $text{'edit_mountmsg'},
 				&ui_hidden("newdev", $dev),
 				$dirsel);
@@ -293,11 +293,10 @@ if (!$in{'new'} && !$pinfo->{'extended'} && $pinfo->{'edittype'} != 2) {
 		print $ui_buttons_content;
 		print &ui_buttons_end();
 		}
-	} elsif (!$mounted &&
-	         $pinfo->{'edittype'} == 2) {
-		my $label = $config{'mode'} eq 'fdisk' ?
-		              'edit_eparted2' : 'edit_eparted';
-		print "$text{$label}\n";
+	}
+elsif (!$mounted && $pinfo->{'edittype'} == 2) {
+	my $label = $config{'mode'} eq 'fdisk' ? 'edit_eparted2' : 'edit_eparted';
+	print $text{$label},"\n";
 	}
 
 &ui_print_footer("edit_disk.cgi?device=$dinfo->{'device'}",
