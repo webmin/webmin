@@ -1,11 +1,79 @@
-left_login=Login: $1
 left_home=System Information
-left_oc=Sponsored by OpenCountry
-left_feedback=Send Feedback
-left_search_webmin=Search Webmin:
-left_search_usermin=Search Usermin:
 left_search=Search:
-left_logs=View Module's Logs
-left_others=Others
 
+right_virtver=Virtualmin version $1 or higher is now required by this theme!
+right_vm2ver=Cloudmin version $1 or higher is now required by this theme!
+right_edit=Configure this page
+right_return=system information
+
+vmain_title=Virtualmin $1 on $2 ($3)
+vmain_title2=Virtualmin
+vmain_title3=Virtualmin $1 ($2)
+mmain_title=Cloudmin $1 on $2 ($3)
+mmain_title2=Cloudmin
+mmain_title3=Cloudmin $1 ($2)
+
+index_virtualmintitle=Virtualmin $1
+index_cloudmintitle=Cloudmin $1
+index_webmintitle=Webmin $1
+index_usermintitle=Usermin $1
+
+config_section=Configuration category:
+config_change=Change
+config_return=system information
+config_next=Save and Next
+config_nnext=Next
+config_nprev=Prev
+
+edright_title=System Information Configuration
+edright_header=Virtualmin system information page settings
+edright_sects=Visible information
+edright_list=Default right-frame content
+edright_list0=System information
+edright_list1=List of virtual servers
+edright_list2=List of managed systems
+edright_alt=Initial system information page content
+edright_altdef=Regular system information
+edright_global=Apply to all users?
+edright_nowebmin=Show Webmin tab on left menu?
+edright_others=Only for master administrator
+edright_alturl=Show URL
+edright_err=Failed to save system information page configuration
+edright_ealt=Missing or invalid URL
+edright_dom=Default virtual server
+edright_server=Default Cloudmin system
+edright_first=&lt;First in list&gt;
+edright_qsort=Sort quota and bandwidth use by
+edright_qsort1=Percentage of limit
+edright_qsort0=Bytes used
+edright_qshow=Show quotas and bandwidth use as
+edright_max=Maximum servers to show
+edright_emax=Maximum servers must be a number greater than zero
+edright_deftab=Default mode on left menu
+edright_tab1=Whichever is first
+edright_virtualmin=Virtualmin
+edright_vm2=Cloudmin
+edright_webmin=Webmin
+edright_fsize=Left frame width
+edright_search=Show search box below left menu?
+edright_fsizedef=Decide automatically
+edright_pixels=pixels
+edright_efsize=Missing or invalid left frame width in pixels
+edright_ecannot=You are not allowed to customize this page
+
+has_virtualmin=Virtualmin
+has_mail=Mail
+has_vm2=Cloudmin
+has_webmin=Webmin
+has_usermin=Usermin
+
+overlay_title=Change Theme
+overlay_desc=This page allows you to select a different theme overlay, which can change the colors, icons and layout of the Virtualmin user interface.
+overlay_msg=Change theme overlay to:
+overlay_ok=Change Now
+overlay_none=None - use default colors and icons
+overlay_refresh=Refreshing Virtualmin user interface ..
+overlay_done=.. done
+overlay_euser=Failed to get details of current user!
+overlay_webmin=Reloading Webmin configuration ..
 __norefs=1

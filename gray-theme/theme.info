@@ -1,4 +1,7 @@
+desc=Gray Framed Theme
+longdesc=A legacy framed theme that supports Virtualmin and Cloudmin
+version=10.0
 webmin=1
 usermin=1
-desc=Gray Framed Theme
-longdesc=A theme that matches the Virtualmin look and feel
+depends=1.994
+usermin_depends=1.840

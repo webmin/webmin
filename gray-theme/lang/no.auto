@@ -1,0 +1,8 @@
+right_virtver=Virtualmin versjon $1 eller høyere kreves nå av dette temaet!
+right_vm2ver=Cloudmin-versjon $1 eller høyere kreves nå av dette temaet!
+index_virtualmintitle=Virtualmin $1 
+index_cloudmintitle=Cloudmin $1 
+index_webmintitle=Webmin $1 
+index_usermintitle=Usermin $1 
+edright_search=Vis søkefeltet under venstre meny?
+edright_ecannot=Du har ikke lov til å tilpasse denne siden
