@@ -129,6 +129,11 @@ Net::WebSocket::Server->new(
 					eval {
 						$shellfh->set_winsize($rows, $cols);
 						};
+					# If failed make ioctl directly (TIOCSWINSZ)
+					# https://manpages.ubuntu.com/manpages/man2/ioctl_list.2.html
+					if ($@) {
+						ioctl($shellfh, 0x00005414, pack("s2", $rows, $cols));
+						}
 					kill('WINCH', $pid);
 					return;
 					}
