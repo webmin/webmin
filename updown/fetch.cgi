@@ -53,8 +53,7 @@ if ($ENV{'PATH_INFO'}) {
 		print "Content-type: application/zip\n\n";
 		open(FILE, "<$temp");
 		unlink($temp);
-		my $bs = &get_buffer_size();
-		while(read(FILE, $buffer, $bs)) {
+		while(read(FILE, $buffer, &get_buffer_size_binary())) {
 			print("$buffer");
 			}
 		close(FILE);
@@ -85,7 +84,7 @@ if ($ENV{'PATH_INFO'}) {
 		print "Content-length: $st[7]\n";
 		print "X-Content-Type-Options: nosniff\n";
 		print "Content-type: $type\n\n";
-		while(read(FILE, $buffer, 1000000)) {
+		while(read(FILE, $buffer, &get_buffer_size_binary())) {
 			print("$buffer");
 			}
 		close(FILE);
