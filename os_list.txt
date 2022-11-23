@@ -132,6 +132,7 @@ Devuan Linux			$1	debian-linux	10.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_v
 Raspbian Linux			$1	debian-linux	$1	`cat /etc/os-release 2>/dev/null` =~ /Raspbian\s+GNU\/Linux\s+(\S+)/
 Kali GNU/Linux Rolling	$1	debian-linux	$1+5.0	$etc_issue =~ /Kali/ && `cat /etc/os-release 2>/dev/null` =~ /VERSION=\"([0-9\.]+)\"/
 Parrot OS				$1	debian-linux	$1+5.0	$etc_issue =~ /Parrot/ && `cat /etc/os-release 2>/dev/null` =~ /VERSION=\"([0-9\.]+).*\"/
+Linux Lite				$1	debian-linux	$1+16.0	$etc_issue =~ /Linux\s+Lite\s+([0-9\.]+)/
 
 # Linux Mint (Mint should be before Debian to avoid false-positive)
 Linux Mint			6	debian-linux	5.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 6 Felicia"/
@@ -181,6 +182,9 @@ SuSE SLES Linux			$1	suse-linux	sprintf("%.1f", $1)	$etc_issue =~ /SuSE\s+SLES-(
 
 # openSUSE Linux Tumbleweed
 openSUSE Linux Tumbleweed	$1	suse-linux	$1	$etc_issue =~ /openSUSE\s+Tumbleweed\s+(\S+)\s/i
+
+# openSUSE Linux (in 2006 with version 10.2, the SUSE Linux distribution was officially renamed to openSUSE)
+openSUSE Linux					$1	suse-linux	$1	`cat /etc/os-release 2>/dev/null` =~ /openSUSE\s+Leap\s+(1[\d\.]+)/ 
 
 # SuSE Linux
 SuSE Linux					$1	suse-linux	$1	`cat /etc/SuSE-release 2>/dev/null` =~ /([0-9\.]+)/ || `cat /etc/os-release 2>/dev/null` =~ /openSUSE\s+Leap\s+([\d\.]+)/ || $etc_issue =~ /SuSE\s+Linux\s+(\S+)\s/i || `cat /etc/SUSE-brand 2>/dev/null` =~ /VERSION\s*=\s(\S+)/

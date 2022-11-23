@@ -1,0 +1,9 @@
+cfrun_hosts=
+cfd_conf=
+cfengine_conf=
+cfd=/usr/sbin/cfd
+cfengine_dir=/etc/cfengine
+cfrun=/usr/sbin/cfrun
+cfengine=/usr/sbin/cfengine
+start_cmd=systemctl start cfengine
+stop_cmd=systemctl stop cfengine

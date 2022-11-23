@@ -8,14 +8,16 @@ my $wver = &get_webmin_version();
 $wver =~ s/\.//;
 
 # Check for needed modules
-my $modname = "Net::WebSocket::Server";
-eval "use ${modname};";
-if ($@) {
-	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0);
-	print &text('index_cpan', "<tt>$modname</tt>",
-		    "../cpan/download.cgi?source=3&cpan=$modname&mode=2&return=/$module_name/&returndesc=".&urlize($module_info{'desc'})),"<p>\n";
-	&ui_print_footer("/", $text{'index'});
-	return;
+my @modnames = ("Net::WebSocket::Server", "IO::Pty");
+foreach my $modname (@modnames) {
+	eval "use ${modname};";
+	if ($@) {
+		&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0);
+		print &text('index_cpan', "<tt>$modname</tt>",
+			    "../cpan/download.cgi?source=3&cpan=$modname&mode=2&return=/$module_name/&returndesc=".&urlize($module_info{'desc'})),"<p>\n";
+		&ui_print_footer("/", $text{'index'});
+		exit;
+		}
 	}
 
 # Build Xterm dependency links

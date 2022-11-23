@@ -1,0 +1,17 @@
+pri_all=1
+syslogd=/sbin/rsyslogd
+m4_conf=0
+syslog_conf=/etc/rsyslog.conf
+pri_dir=1
+pid_file=/var/run/rsyslogd.pid
+facilities=auth authpriv cron daemon kern lpr mail mark news syslog user uucp local0 local1 local2 local3 local4 local5 local6 local7
+m4_path=
+sync=1
+pipe=1
+tags=0
+lines=100
+socket=0
+start_cmd=systemctl start syslog
+compressed=1
+others=1
+reverse=0
