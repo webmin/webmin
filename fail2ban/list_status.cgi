@@ -51,7 +51,8 @@ if (@jails) {
 				my $val = $2;
 				$col = lc($col);
 				$col =~ s/\s/_/g;
-				if ($col !~ /journal_matches/) {
+				if ($col !~ /journal_matches/ &&
+				    $col !~ /file_list/) {
 					push(@head, "<div $tdc>".$text{"status_head_$col"}."</div>");
 					if ($col =~ /banned_ip_list/) {
 						$jips = $val;
