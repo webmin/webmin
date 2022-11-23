@@ -183,6 +183,9 @@ SuSE SLES Linux			$1	suse-linux	sprintf("%.1f", $1)	$etc_issue =~ /SuSE\s+SLES-(
 # openSUSE Linux Tumbleweed
 openSUSE Linux Tumbleweed	$1	suse-linux	$1	$etc_issue =~ /openSUSE\s+Tumbleweed\s+(\S+)\s/i
 
+# openSUSE Linux (in 2006 with version 10.2, the SUSE Linux distribution was officially renamed to openSUSE)
+openSUSE Linux					$1	suse-linux	$1	`cat /etc/os-release 2>/dev/null` =~ /openSUSE\s+Leap\s+(1[\d\.]+)/ 
+
 # SuSE Linux
 SuSE Linux					$1	suse-linux	$1	`cat /etc/SuSE-release 2>/dev/null` =~ /([0-9\.]+)/ || `cat /etc/os-release 2>/dev/null` =~ /openSUSE\s+Leap\s+([\d\.]+)/ || $etc_issue =~ /SuSE\s+Linux\s+(\S+)\s/i || `cat /etc/SUSE-brand 2>/dev/null` =~ /VERSION\s*=\s(\S+)/
 

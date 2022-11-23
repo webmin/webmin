@@ -1,0 +1,7 @@
+pid_file= /var/run/ietd.pid
+ietadm=ietadm
+config_file=/etc/ietd.conf
+init_name=iscsitarget
+opts_file=/etc/sysconfig/SuSEfirewall2.d/services/iscsitarget
+targets_file=/etc/targets.allow
+initiators_file=/etc/initiators.allow
