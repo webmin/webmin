@@ -2567,16 +2567,16 @@ my %miniserv;
 &get_miniserv_config(\%miniserv);
 
 &lock_file($miniserv{'keyfile'});
-&copy_source_dest($key, $miniserv{'keyfile'});
+&copy_source_dest($key, $miniserv{'keyfile'}, 1);
 &unlock_file($miniserv{'keyfile'});
 
 &lock_file($miniserv{'certfile'});
-&copy_source_dest($cert, $miniserv{'certfile'});
+&copy_source_dest($cert, $miniserv{'certfile'}, 1);
 &unlock_file($miniserv{'certfile'});
 
 if ($chain) {
 	&lock_file($miniserv{'extracas'});
-	&copy_source_dest($chain, $miniserv{'extracas'});
+	&copy_source_dest($chain, $miniserv{'extracas'}, 1);
 	&unlock_file($miniserv{'extracas'});
 	}
 else {
