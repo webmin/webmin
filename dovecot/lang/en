@@ -15,7 +15,6 @@ index_version=Version $1
 stop_err=Failed to stop Dovecot
 stop_erunning=No longer running
 start_err=Failed to start Dovecot
-start_eprotos=No protocols selected on the <b>Networking and Protocols</b> page
 apply_err=Failed to apply configuration
 
 net_title=Networking and Protocols
