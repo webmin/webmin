@@ -4133,17 +4133,7 @@ if (!$main::get_system_hostname[$m]) {
 			my $ex = &execute_command("hostname -f", undef, \$flag,
 						  undef, 0, 1);
 			chop($flag);
-			if ($ex || $flag eq "") {
-				# -f not supported! We have probably set the
-				# hostname to just '-f'. Fix the problem
-				# (if we are root)
-				if ($< == 0) {
-					&execute_command("hostname ".
-						quotemeta($main::get_system_hostname[$m]),
-						undef, undef, undef, 0, 1);
-					}
-				}
-			else {
+			if (!$ex && $flag ne "") {
 				$main::get_system_hostname[$m] = $flag;
 				}
 			}
