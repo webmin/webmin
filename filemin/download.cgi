@@ -25,7 +25,7 @@ print "Content-Disposition: attachment; filename=\"$name$ext\"\n";
 print "Content-Length: $size\n\n";
 open (FILE, "< $file") or die "can't open $file: $!";
 binmode FILE;
-local $/ = \2048000;
+local $/ = \&get_buffer_size_binary();
 while (<FILE>) {
     print $_;
 }
