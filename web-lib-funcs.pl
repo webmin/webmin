@@ -12014,7 +12014,8 @@ return &has_command("python3") || &has_command("python30") ||
 
 =head2 get_buffer_size
 
-Returns the buffer size for read/write operations
+Returns the buffer size for read/write
+operations (def. 32 KiB)
 
 =cut
 sub get_buffer_size
@@ -12022,6 +12023,19 @@ sub get_buffer_size
 my %miniserv;
 &get_miniserv_config(\%miniserv);
 return $miniserv{'bufsize'} || 32768;
+}
+
+=head2 get_buffer_size_binary
+
+Returns the buffer size for read/write operations
+in uploads/downloads (def. ~ 6 MB)
+
+=cut
+sub get_buffer_size_binary
+{
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+return $miniserv{'bufsize_binary'} || (65536 * 100);
 }
 
 =head2 get_webprefix
