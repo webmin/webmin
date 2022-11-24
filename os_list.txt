@@ -180,11 +180,11 @@ Debian Linux			11.0	debian-linux	11.0	`cat /etc/debian_version 2>/dev/null` =~ /
 SuSE OpenExchange Linux		$1	suse-linux	8.2	`cat /etc/SLOX-release 2>/dev/null` =~ /VERSION\s+=\s+(\S+)/i
 SuSE SLES Linux			$1	suse-linux	sprintf("%.1f", $1)	$etc_issue =~ /SuSE\s+SLES-(\S+)/i
 
-# openSUSE Linux Tumbleweed
-openSUSE Linux Tumbleweed	$1	suse-linux	$1	$etc_issue =~ /openSUSE\s+Tumbleweed\s+(\S+)\s/i
-
 # openSUSE Linux (in 2006 with version 10.2, the SUSE Linux distribution was officially renamed to openSUSE)
 openSUSE Linux					$1	suse-linux	$1	`cat /etc/os-release 2>/dev/null` =~ /openSUSE\s+Leap\s+(1[\d\.]+)/ 
+
+# openSUSE Linux Tumbleweed
+openSUSE Linux					$1	suse-linux	15	`cat /etc/os-release 2>/dev/null` =~ /openSUSE\s+Tumbleweed/ && `cat /etc/os-release 2>/dev/null` =~ /VERSION_ID\s*=.*?(\d+)/
 
 # SuSE Linux
 SuSE Linux					$1	suse-linux	$1	`cat /etc/SuSE-release 2>/dev/null` =~ /([0-9\.]+)/ || `cat /etc/os-release 2>/dev/null` =~ /openSUSE\s+Leap\s+([\d\.]+)/ || $etc_issue =~ /SuSE\s+Linux\s+(\S+)\s/i || `cat /etc/SUSE-brand 2>/dev/null` =~ /VERSION\s*=\s(\S+)/
