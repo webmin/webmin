@@ -1,6 +1,6 @@
 ## Changelog
 
-#### 2.010 (November 26, 2022)
+#### 2.003 (November 26, 2022)
 * Add a new Terminal module (interactive shell)
 * Add to replace old Gray Theme with Virtualmin Framed Theme
 * Add _systemd_ improvements
