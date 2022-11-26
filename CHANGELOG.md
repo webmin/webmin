@@ -1,6 +1,19 @@
 ## Changelog
 
-#### 2.001 (September, 2022)
+#### 2.010 (November 26, 2022)
+* Add a new Terminal module (interactive shell)
+* Add to replace old Gray Theme with Virtualmin Framed Theme
+* Add _systemd_ improvements
+* Add proper support for openSUSE Leap and Tumbleweed
+* Add Linux Lite support
+* Fix connecting to external IPv6 LDAP server
+* Fix self-signed certificate generation
+* Fix setting hostname using `hostnamectl` command on _systemd_ systems
+* Fix to exclude sensors with unknown temperatures
+* Fix for FreeBSD to support Let's Encrypt certificates requests
+* Fix to support attachment filenames with slash in them
+
+#### 2.001 (September 18, 2022)
 * Fix missing origins and action for direct rules in FirewallD module
 * Removed the need for a full restart when updating SSH keys
 * Improved the Javascript for redirects to HTTPS
