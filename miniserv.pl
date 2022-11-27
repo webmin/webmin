@@ -4712,12 +4712,14 @@ if (!Net::SSLeay::accept($ssl_con)) {
 	return undef;
 	}
 # Check for a per-hostname SSL context and use that instead
-my $h = Net::SSLeay::get_servername($ssl_con);
-if ($h) {
-	my $c = $ssl_contexts{$h} ||
-		$h =~ /^[^\.]+\.(.*)$/ && $ssl_contexts{"*.$1"};
-	if ($c) {
-		$ssl_ctx = $c;
+if (defined(&Net::SSLeay::get_servername)) {
+	my $h = Net::SSLeay::get_servername($ssl_con);
+	if ($h) {
+		my $c = $ssl_contexts{$h} ||
+			$h =~ /^[^\.]+\.(.*)$/ && $ssl_contexts{"*.$1"};
+		if ($c) {
+			$ssl_ctx = $c;
+			}
 		}
 	}
 return ($ssl_con, $ssl_ctx->{'certfile'}, $ssl_ctx->{'keyfile'});
