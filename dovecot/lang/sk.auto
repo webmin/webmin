@@ -15,7 +15,6 @@ index_version=Verzia $1
 stop_err=Nepodarilo sa zastaviť Dovecot
 stop_erunning=Už nebeží
 start_err=Nepodarilo sa spustiť program Dovecot
-start_eprotos=Na stránke <b>Sieť a protokoly</b> neboli vybrané žiadne protokoly
 apply_err=Nepodarilo sa použiť konfiguráciu
 
 net_title=Vytváranie sietí a protokoly

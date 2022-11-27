@@ -15,7 +15,6 @@ index_version=Wersja $1
 stop_err=Błąd zatrzymywania Dovecot
 stop_erunning=Nie jest dłużej uruchomiony
 start_err=Błąd uruchamiania Dovecot
-start_eprotos=Nie wybrano protokołów na stronie <b>Sieć i protokoły</b>
 apply_err=Zastosowanie konfiguracji nie powiodło się
 
 net_title=Sieć i protokoły

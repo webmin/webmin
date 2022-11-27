@@ -15,7 +15,6 @@ index_version=Versão $1
 stop_err=Falha ao parar o Dovecot
 stop_erunning=Não está mais em execução
 start_err=Falha ao iniciar o Dovecot
-start_eprotos=Nenhum protocolo selecionado na página <b>Rede e protocolos</b>
 apply_err=Falha ao aplicar a configuração
 
 net_title=Redes e protocolos

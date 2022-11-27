@@ -1,5 +1,7 @@
 index_title=「ターミナル」
-index_cpan=WebSockets 接続を受け入れるために必要な Perl モジュール <tt>$1</tt> は利用できませんが、Webmin の <a href='$2'>Perl モジュール</a> モジュールを使用して自動的にインストールできます。
+index_cpan=Perl モジュール <tt>$1</tt> がありませんが、Webmin の Perl モジュール モジュールを使用して<a href='$2'>自動的にインストール</a>できます。
+index_epel=最初に <a href='$1' target='_blank'>EPEL</a> リポジトリを有効にすることをお勧めします。
+index_suse=Perl パッケージ <tt>perl-IO-Tty</tt> がありません。最初に <a href='$2' target='_blank'>devel:languages:perl</a> リポジトリから手動でインストールする必要があります。
 index_euser=エラー : ユーザー $1 はシェルが存在しないため実行できません!
 index_connecting=接続中 ..
 

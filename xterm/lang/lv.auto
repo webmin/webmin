@@ -1,5 +1,7 @@
 index_title=Terminālis
-index_cpan=Perl modulis <tt>$1</tt>, kas nepieciešams, lai pieņemtu WebSockets savienojumus, nav pieejams, taču to var instalēt automātiski, izmantojot Webmin <a href='$2'>Perl moduļus</a> moduli.
+index_cpan=Trūkst Perl moduļa <tt>$1</tt>, taču to var <a href='$2'>instalēt automātiski</a>, izmantojot Webmin Perl moduļu moduli.
+index_epel=Vispirms ir ieteicams iespējot <a href='$1' target='_blank'>EPEL</a> repozitoriju.
+index_suse=Trūkst Perl pakotnes <tt>perl-IO-Tty</tt>, un tā vispirms ir manuāli jāinstalē no <a href='$2' target='_blank'>devel:languages:perl</a> krātuves.
 index_euser=Kļūda: lietotājs $1 nevar palaist čaulu, jo tā neeksistē!
 index_connecting=Notiek savienojuma izveide. ..
 

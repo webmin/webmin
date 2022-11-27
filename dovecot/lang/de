@@ -15,7 +15,6 @@ index_version=Version $1
 stop_err=Stoppen von Dovecot fehlgeschlagen
 stop_erunning=Läuft nicht länger
 start_err=Starten von Dovecot fehlgeschlagen
-start_eprotos=Keine Protokolle auf der <b>Netzwerke und Protokolle</b> Seite ausgewählt
 apply_err=Fehlgeschlagen die Konfiguration anzuwenden
 
 net_title=Netzwerke und Protokolle

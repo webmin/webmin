@@ -1,5 +1,7 @@
 index_title=Терминал
-index_cpan=Модуль Perl <tt>$1</tt>, необходимый для приема соединений WebSockets, недоступен, но вы можете установить его автоматически с помощью модуля Webmin <a href='$2'>Perl Modules</a>.
+index_cpan=Модуль Perl <tt>$1</tt> отсутствует, но может быть <a href='$2'>установлен автоматически</a> с помощью модуля Webmin Perl Modules.
+index_epel=Рекомендуется сначала включить репозиторий <a href='$1' target='_blank'>EPEL</a>.
+index_suse=Пакет Perl <tt>perl-IO-Tty</tt> отсутствует и должен быть сначала установлен вручную из репозитория <a href='$2' target='_blank'>devel:languages:perl</a>.
 index_euser=Ошибка: пользователь $1 не может запустить оболочку, так как ее не существует!
 index_connecting=Подключение ..
 

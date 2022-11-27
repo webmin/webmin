@@ -15,7 +15,6 @@ index_version=Versi $1
 stop_err=Gagal menghentikan Dovecot
 stop_erunning=Tidak lagi berjalan
 start_err=Gagal memulakan Dovecot
-start_eprotos=Tiada protokol yang dipilih pada halaman <b>Rangkaian dan Protokol</b>
 apply_err=Gagal menggunakan konfigurasi
 
 net_title=Rangkaian dan Protokol

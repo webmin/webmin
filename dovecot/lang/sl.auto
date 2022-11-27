@@ -15,7 +15,6 @@ index_version=Različica $1
 stop_err=Ni bilo mogoče ustaviti Dovecota
 stop_erunning=Ne teče več
 start_err=Ni bilo mogoče zagnati Dovecota
-start_eprotos=Na strani <b>Omrežje in protokoli</b> niso izbrani nobeni protokoli
 apply_err=Konfiguracije ni bilo mogoče uporabiti
 
 net_title=Mreženje in protokoli

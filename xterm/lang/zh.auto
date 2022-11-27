@@ -1,5 +1,7 @@
 index_title=终端
-index_cpan=接受 WebSockets 连接所需的 Perl 模块 <tt>$1</tt> 不可用，但您可以使用 Webmin 的 <a href='$2'>Perl Modules</a> 模块自动安装它。
+index_cpan=缺少 Perl 模块 <tt>$1</tt>，但可以使用 Webmin 的 Perl 模块模块<a href='$2'>自动安装</a>。
+index_epel=建议首先启用 <a href='$1' target='_blank'>EPEL</a> 存储库。
+index_suse=缺少 Perl 包 <tt>perl-IO-Tty</tt>，应首先从 <a href='$2' target='_blank'>devel:languages:perl</a> 存储库手动安装。
 index_euser=错误：用户 $1 无法运行 shell，因为它不存在！
 index_connecting=连接 ..
 

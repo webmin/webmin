@@ -15,7 +15,6 @@ index_version=バージョン$1
 stop_err=Dovecotを停止できませんでした
 stop_erunning=もう走っていない
 start_err=Dovecotを起動できませんでした
-start_eprotos=[<b>ネットワークとプロトコル</b>]ページでプロトコルが選択されていません
 apply_err=構成を適用できませんでした
 
 net_title=ネットワーキングとプロトコル

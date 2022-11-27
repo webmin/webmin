@@ -1,5 +1,7 @@
 index_title=Terminal
-index_cpan=Modul Perl <tt>$1</tt> yang diperlukan untuk menerima sambungan WebSockets tidak tersedia, tetapi anda boleh memasangnya secara automatik menggunakan modul <a href='$2'>Modul Perl</a> Webmin.
+index_cpan=Modul Perl <tt>$1</tt> tiada, tetapi boleh <a href='$2'>dipasang secara automatik</a> menggunakan modul Modul Perl Webmin.
+index_epel=Adalah disyorkan untuk mendayakan repositori <a href='$1' target='_blank'>EPEL</a> dahulu.
+index_suse=Pakej Perl <tt>perl-IO-Tty</tt> tiada dan harus dipasang secara manual terlebih dahulu daripada repositori <a href='$2' target='_blank'>devel:languages:perl</a>.
 index_euser=Ralat : Pengguna $1 tidak boleh menjalankan shell kerana ia tidak wujud!
 index_connecting=Menyambung ..
 

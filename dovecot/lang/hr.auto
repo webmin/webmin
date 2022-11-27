@@ -8,7 +8,6 @@ index_bootdesc=Promijenite ovu postavku kako biste omogućili ili onemogućili p
 stop_err=Zaustavljanje nije uspjelo u Dovecotu
 stop_erunning=Nema više trčanja
 start_err=Nije uspio pokrenuti Dovecot
-start_eprotos=Nijedan protokol nije odabran na stranici <b>Umrežavanje i protokoli</b>
 
 net_title=Umrežavanje i protokoli
 net_header=Opcije protokola za umrežavanje i protokola pošte

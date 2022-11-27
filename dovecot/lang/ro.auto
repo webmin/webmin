@@ -15,7 +15,6 @@ index_version=Versiunea $1
 stop_err=Nu a reușit să oprească Dovecot
 stop_erunning=Nu mai alerga
 start_err=Nu a reușit să pornească Dovecot
-start_eprotos=Nu au fost selectate protocoale pe pagina <b>Rețea și protocoale</b>
 apply_err=Eroare la aplicarea configurației
 
 net_title=Networking și protocoale

@@ -15,7 +15,6 @@ index_version=Versjon $1
 stop_err=Kunne ikke stoppe Dovecot
 stop_erunning=Kjører ikke lenger
 start_err=Kunne ikke starte Dovecot
-start_eprotos=Ingen protokoller valgt på siden <b>Nettverk og protokoller</b>
 apply_err=Kunne ikke ta i bruk konfigurasjon
 
 net_title=Nettverk og protokoller

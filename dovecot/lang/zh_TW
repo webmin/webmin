@@ -15,7 +15,6 @@ index_version=版本 $1
 stop_err=停止 Dovecot 伺服器失敗
 stop_erunning=非執行中...
 start_err=啟動 Dovecot 伺服器失敗
-start_eprotos=沒有選擇通訊協定在 <b>網路及通訊協定</b> 頁面
 apply_err=套用設定失敗
 
 net_title=網路及通訊協定

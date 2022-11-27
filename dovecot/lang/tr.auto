@@ -15,7 +15,6 @@ index_version=Sürüm $1
 stop_err=Dovecot durdurulamadı
 stop_erunning=Artık koşmuyor
 start_err=Dovecot başlatılamadı
-start_eprotos=<b>Ağ ve Protokoller</b> sayfasında hiçbir protokol seçilmedi
 apply_err=Yapılandırma uygulanamadı
 
 net_title=Ağ ve Protokoller

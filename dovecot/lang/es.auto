@@ -1,5 +1,3 @@
-start_eprotos=No hay protocolos seleccionados en la página <b>Redes y protocolos</b>
-
 net_lmtp=LMTP
 net_ssl_required=Solo acepta SSL
 net_listen=Interfaces para conexiones no SSL

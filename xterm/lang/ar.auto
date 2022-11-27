@@ -1,5 +1,7 @@
 index_title=صالة
-index_cpan=وحدة Perl <tt>$1</tt> المطلوبة لقبول اتصالات WebSockets غير متوفرة ، ولكن يمكنك تثبيتها تلقائيًا باستخدام وحدة Webmin <a href='$2'>Perl Modules</a>.
+index_cpan=وحدة Perl <tt>$1</tt> مفقودة ، ولكن يمكن <a href='$2'>تثبيتها تلقائيًا</a> باستخدام وحدة Webmin's Perl Modules.
+index_epel=يوصى بتمكين مستودع <a href='$1' target='_blank'>EPEL</a> أولاً.
+index_suse=حزمة Perl <tt>perl-IO-Tty</tt> مفقودة ، ويجب تثبيتها يدويًا أولاً من مستودع <a href='$2' target='_blank'>devel: languages: perl</a>.
 index_euser=خطأ: لا يمكن للمستخدم$1 تشغيل shell لأنه غير موجود!
 index_connecting=توصيل ..
 

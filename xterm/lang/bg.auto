@@ -1,5 +1,7 @@
 index_title=Терминал
-index_cpan=Модулът Perl <tt>$1</tt>, необходим за приемане на WebSockets връзки, не е наличен, но можете да го инсталирате автоматично с помощта на модула <a href='$2'>Modules Perl</a> на Webmin.
+index_cpan=Модулът Perl <tt>$1</tt> липсва, но може да бъде <a href='$2'>инсталиран автоматично</a> с помощта на модула Perl Modules на Webmin.
+index_epel=Препоръчително е първо да активирате хранилището на <a href='$1' target='_blank'>EPEL</a>.
+index_suse=Пакетът Perl <tt>perl-IO-Tty</tt> липсва и трябва първо да се инсталира ръчно от хранилището <a href='$2' target='_blank'>devel:languages:perl</a>.
 index_euser=Грешка: Потребител $1 не може да стартира обвивката, тъй като тя не съществува!
 index_connecting=Свързване ..
 

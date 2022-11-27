@@ -15,7 +15,6 @@ index_version=Phiên bản $1
 stop_err=Không thể ngăn chặn Dovecot
 stop_erunning=Không còn chạy
 start_err=Không thể khởi động Dovecot
-start_eprotos=Không có giao thức nào được chọn trên trang <b>Mạng và Giao thức</b>
 apply_err=Không thể áp dụng cấu hình
 
 net_title=Mạng và giao thức

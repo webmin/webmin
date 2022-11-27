@@ -15,7 +15,6 @@ index_version=Version $1
 stop_err=Det gick inte att stoppa Dovecot
 stop_erunning=Kör inte längre
 start_err=Det gick inte att starta Dovecot
-start_eprotos=Inga protokoll valda på sidan <b>Nätverk och protokoll</b>
 apply_err=Det gick inte att tillämpa konfigurationen
 
 net_title=Nätverk och protokoll

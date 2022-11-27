@@ -15,7 +15,6 @@ index_version=버전 $1
 stop_err=도브 코트를 멈추지 못했습니다.
 stop_erunning=더 이상 달리지 않는다
 start_err=도브 코트를 시작하지 못했습니다
-start_eprotos=<b>네트워킹 및 프로토콜</b> 페이지에서 선택된 프로토콜이 없습니다
 apply_err=구성을 적용하지 못했습니다
 
 net_title=네트워킹 및 프로토콜

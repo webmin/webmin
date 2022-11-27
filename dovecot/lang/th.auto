@@ -15,7 +15,6 @@ index_version=รุ่น $1
 stop_err=ไม่สามารถหยุด Dovecot
 stop_erunning=ไม่ทำงานอีกต่อไป
 start_err=ไม่สามารถเริ่ม Dovecot
-start_eprotos=ไม่มีการเลือกโปรโตคอลในหน้า <b>เครือข่ายและโปรโตคอล</b>
 apply_err=ไม่สามารถใช้การกำหนดค่า
 
 net_title=เครือข่ายและโปรโตคอล

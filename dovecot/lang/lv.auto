@@ -15,7 +15,6 @@ index_version=Versija $1
 stop_err=Neizdevās apturēt Dovecot
 stop_erunning=Vairs neskrienu
 start_err=Neizdevās palaist Dovecot
-start_eprotos=Lapā <b>Tīklošana un protokoli</b> nav atlasīts neviens protokols
 apply_err=Neizdevās piemērot konfigurāciju
 
 net_title=Tīklošana un protokoli

@@ -15,7 +15,6 @@ index_version=Verżjoni $1
 stop_err=Naqset milli twaqqaf Dovecot
 stop_erunning=Ma għadux għaddej
 start_err=Naqset milli tibda Dovecot
-start_eprotos=L-ebda protokoll magħżul fuq il-paġna <b>Netwerking u Protokolli</b>
 apply_err=Ma rnexxielux japplika l-konfigurazzjoni
 
 net_title=Netwerking u Protokolli

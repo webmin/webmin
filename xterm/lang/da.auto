@@ -1,5 +1,7 @@
 index_title=Terminal
-index_cpan=Perl-modulet <tt>$1</tt>, der er nødvendigt for at acceptere WebSockets-forbindelser, er ikke tilgængeligt, men du kan installere det automatisk ved hjælp af Webmins <a href='$2'>Perl-moduler</a>-modul.
+index_cpan=Perl-modulet <tt>$1</tt> mangler, men kan <a href='$2'>installeres automatisk</a> ved hjælp af Webmins Perl Modules-modul.
+index_epel=Det anbefales at have <a href='$1' target='_blank'>EPEL</a>-lageret aktiveret først.
+index_suse=Perl-pakken <tt>perl-IO-Tty</tt> mangler og bør først installeres manuelt fra <a href='$2' target='_blank'>devel:languages:perl</a>-lageret.
 index_euser=Fejl: Bruger $1 kan ikke køre skallen, da den ikke eksisterer!
 index_connecting=Tilslutning ..
 

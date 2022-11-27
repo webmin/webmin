@@ -15,7 +15,6 @@ index_version=Version $1
 stop_err=ڈوکوٹ کو روکنے میں ناکام
 stop_erunning=اب نہیں چل رہا ہے
 start_err=ڈوکوٹ شروع کرنے میں ناکام
-start_eprotos=No protocols selected on the <b>Networking and Protocols</b> page
 apply_err=تشکیل دینے میں ناکام
 
 net_title=نیٹ ورکنگ اور پروٹوکول

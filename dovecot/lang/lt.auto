@@ -15,7 +15,6 @@ index_version=$1 versija
 stop_err=Nepavyko sustabdyti Dovecot
 stop_erunning=Daugiau nebėga
 start_err=Nepavyko paleisti „Dovecot“
-start_eprotos=Puslapyje <b>Tinklų kūrimas ir protokolai</b> nepasirinkta nė vieno protokolo
 apply_err=Nepavyko pritaikyti konfigūracijos
 
 net_title=Tinklų kūrimas ir protokolai
