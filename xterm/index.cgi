@@ -8,7 +8,7 @@ my $wver = &get_webmin_version();
 $wver =~ s/\.//;
 
 # Check for needed modules
-my @modnames = ("Net::WebSocket::Server", "IO::Pty");
+my @modnames = ("IO::Pty", "Net::WebSocket::Server");
 foreach my $modname (@modnames) {
 	eval "use ${modname};";
 	if ($@) {
