@@ -777,59 +777,72 @@ $sysctl{'net.ipv4.ip_forward'} = $in{'forward'};
 # gets a list of interface definitions (including their options) from the
 # central config file
 # the returned list is an array whose contents are tupels of
-# (name, addrfam, method, options) with
+# (name, addrfam, method, options, file, line) with
 #    name          the interface name (e.g. eth0)
 #    addrfam       the address family (e.g. inet, inet6)
 #    method        the address activation method (e.g. static, dhcp, loopback)
 #    options       is a list of (param, value) pairs
+#    file          the file this interface was read from
+#    line          the line number in the file
 sub get_interface_defs
 {
+my ($file) = @_;
+$file ||= $network_interfaces_config;
 local *CFGFILE;
 my @ret;
-&open_readfile(CFGFILE, $network_interfaces_config) || return ();
+&open_readfile(CFGFILE, $file) || return ();
 # read the file line by line
 $line = <CFGFILE>;
+my $lnum = 0;
 while (defined $line) {
 	chomp($line);
 	# skip comments
 	if ($line =~ /^\s*#/ || $line =~ /^\s*$/) {
 		$line = <CFGFILE>;
+		$lnum++;
 		next;
 		}
-
 	if ($line =~ /^\s*auto/) {
 		# skip auto stanzas
 		$line = <CFGFILE>;
+		$lnum++;
 		while(defined($line) && $line !~ /^\s*(iface|mapping|auto|source|allow-hotplug)/) {
 			$line = <CFGFILE>;
+			$lnum++;
 			next;
 			}
 		}
 	elsif ($line =~ /^\s*mapping/) {
 		# skip mapping stanzas
 		$line = <CFGFILE>;
+		$lnum++;
 		while(defined($line) && $line !~ /^\s*(iface|mapping|auto|source|allow-hotplug)/) {
 			$line = <CFGFILE>;
+			$lnum++;
 			next;
 			}
 		}
 	elsif ($line =~ /^\s*source/) {
 		# Skip includes
 		$line = <CFGFILE>;
+		$lnum++;
 		}
 	elsif ($line =~ /^\s*allow-hotplug/) {
 		# Skip hotplug lines
 		$line = <CFGFILE>;
+		$lnum++;
 		}
 	elsif (my ($name, $addrfam, $method) = ($line =~ /^\s*iface\s+(\S+)\s+(\S+)\s+(\S+)\s*$/) ) {
 		# only lines starting with "iface" are expected here
 		my @iface_options;
 		# now read everything until the next iface definition
 		$line = <CFGFILE>;
+		$lnum++;
 		while (defined $line && ! ($line =~ /^\s*(iface|mapping|auto|source|allow-hotplug)/)) {
 			# skip comments and empty lines
 			if ($line =~ /^\s*#/ || $line =~ /^\s*$/) {
 				$line = <CFGFILE>;
+				$lnum++;
 				next;
 				}
 			my ($param, $value);
@@ -843,8 +856,10 @@ while (defined $line) {
 				error("Error in option line: '$line' invalid");
 				}
 			$line = <CFGFILE>;
+			$lnum++;
 			}
-		push(@ret, [$name, $addrfam, $method, \@iface_options]);
+		push(@ret, [$name, $addrfam, $method, \@iface_options,
+			    $file, $lnum]);
 		}
 	else {
 		error("Error reading file $network_interfaces_config: unexpected line '$line'");
@@ -858,7 +873,7 @@ return @ret;
 # Returns a list of interfaces in auto lines
 sub get_auto_defs
 {
-local @rv;
+my @rv;
 &open_readfile(CFGFILE, $network_interfaces_config);
 while(<CFGFILE>) {
 	s/\r|\n//g;
