@@ -15,7 +15,6 @@ index_version=Versió $1
 stop_err=No s'ha pogut aturar Dovecot
 stop_erunning=Ja no està en execució
 start_err=No s'ha pogut iniciar Dovecot
-start_eprotos=No has seleccionat cap protocol a la pàgina de <b>Xarxa i Protocols</b>
 apply_err=No s'ha pogut aplicar la configuració
 
 net_title=Xarxa i Protocols

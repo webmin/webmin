@@ -15,7 +15,6 @@ index_version=Verze $1
 stop_err=Chyba při zastavení Dovecotu
 stop_erunning=Nadále není spuštěn
 start_err=Chyba při spuštění Dovecotu
-start_eprotos=Na stránce <b>Sítě a protokoly</b> nebyly vybrány žádné protokoly
 apply_err=Chyba při aplikaci konfigurace
 
 net_title=Sítě a protokoly

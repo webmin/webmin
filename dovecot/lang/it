@@ -15,7 +15,6 @@ index_version=Versione $1
 stop_err=Tentativo di arrestare Dovecot fallito
 stop_erunning=Non più in esecuzione
 start_err=Tentativo di avvio di Dovecot fallito
-start_eprotos=Nessun protocollo selezionato nella pagina <b>Reti e protocolli</b>
 apply_err=Tentativo di applicare la configurazione fallito
 
 net_title=Reti e protocolli

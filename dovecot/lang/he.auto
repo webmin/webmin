@@ -15,7 +15,6 @@ index_version=Version $1
 stop_err=עצירת Dovecot נכשלה
 stop_erunning=כבר לא רץ
 start_err=הפעלת Dovecot נכשלה
-start_eprotos=No protocols selected on the <b>Networking and Protocols</b> page
 apply_err=החלת התצורה נכשלה
 
 net_title=רשת ופרוטוקולים

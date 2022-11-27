@@ -15,7 +15,6 @@ index_version=Versio $1
 stop_err=Dovecotin pysäyttäminen epäonnistui
 stop_erunning=Ei enää juokse
 start_err=Dovecotin käynnistäminen epäonnistui
-start_eprotos=<b>Verkottuminen ja protokollat</b> -sivulla ei ole valittu yhtään protokollaa
 apply_err=Asetusten määrittäminen epäonnistui
 
 net_title=Verkottuminen ja protokollat

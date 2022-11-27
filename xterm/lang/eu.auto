@@ -1,5 +1,7 @@
 index_title=Terminala
-index_cpan=WebSockets konexioak onartzeko behar den Perl modulua <tt>$1</tt> ez dago erabilgarri, baina automatikoki instala dezakezu Webmin-en <a href='$2'>Perl Modules</a> modulua erabiliz.
+index_cpan=<tt>$1</tt> Perl modulua falta da, baina <a href='$2'>automatikoki instalatu</a> daiteke Webmin-en Perl Modules modulua erabiliz.
+index_epel=Lehenengo <a href='$1' target='_blank'>EPEL</a> biltegia gaituta izatea gomendatzen da.
+index_suse=Perl paketea <tt>perl-IO-Tty</tt> falta da, eta eskuz instalatu behar da lehenik <a href='$2' target='_blank'>devel:languages:perl</a> biltegitik.
 index_euser=Errorea: $1 erabiltzaileak ezin du shell-a exekutatu, ez baitago!
 index_connecting=Konektatzen ..
 

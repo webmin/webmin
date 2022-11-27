@@ -15,7 +15,6 @@ index_version=Версия $1
 stop_err=Грешка при спиране на Dovecot
 stop_erunning=Вече не работи
 start_err=Грешка при стартиране на Dovecot
-start_eprotos=Няма избрани протоколи на страницата за Мрежа и протоколи
 apply_err=Грешка при прилагането на конфигурация
 
 net_title=Мрежа и протоколи

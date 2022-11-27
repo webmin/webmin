@@ -15,7 +15,6 @@ index_version=Version $1
 stop_err=Dovecot متوقف نشد
 stop_erunning=دیگر در حال اجرا نیست
 start_err=Dovecot شروع نشد
-start_eprotos=No protocols selected on the <b>Networking and Protocols</b> page
 apply_err=پیکربندی انجام نشد
 
 net_title=شبکه و پروتکل

@@ -1,5 +1,7 @@
 index_title=Terminal
-index_cpan=Il-modulu Perl <tt>$1</tt> meħtieġ biex jaċċetta konnessjonijiet WebSockets mhuwiex disponibbli, iżda tista' tinstallah awtomatikament billi tuża l-modulu <a href='$2'>Moduli Perl</a> ta' Webmin.
+index_cpan=Il-modulu Perl <tt>$1</tt> huwa nieqes, iżda jista' jiġi <a href='$2'>installat awtomatikament</a> bl-użu tal-modulu tal-Moduli Perl ta' Webmin.
+index_epel=Huwa rakkomandat li l-ewwel ikun attivat ir-repożitorju ta' <a href='$1' target='_blank'>EPEL</a>.
+index_suse=Il-pakkett Perl <tt>perl-IO-Tty</tt> huwa nieqes, u għandu jiġi installat manwalment l-ewwel mir-repożitorju <a href='$2' target='_blank'>devel:languages:perl</a>.
 index_euser=Żball: L-utent $1 ma jistax iħaddem il-qoxra peress li ma teżistix!
 index_connecting=Konnessjoni ..
 

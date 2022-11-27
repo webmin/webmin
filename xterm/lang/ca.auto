@@ -1,5 +1,7 @@
 index_title=Terminal
-index_cpan=El mòdul Perl <tt>$1</tt> necessari per acceptar connexions WebSockets no està disponible, però podeu instal·lar-lo automàticament mitjançant el mòdul <a href='$2'>Mòduls Perl</a> de Webmin.
+index_cpan=Falta el mòdul de Perl <tt>$1</tt>, però es pot <a href='$2'>instal·lar automàticament</a> mitjançant el mòdul de mòduls de Perl de Webmin.
+index_epel=Es recomana tenir activat primer el repositori <a href='$1' target='_blank'>EPEL</a>.
+index_suse=Falta el paquet Perl <tt>perl-IO-Tty</tt> i primer s'ha d'instal·lar manualment des del repositori <a href='$2' target='_blank'>devel:languages:perl</a>.
 index_euser=Error: l'usuari $1 no pot executar l'intèrpret d'ordres perquè no existeix!
 index_connecting=Connectant ..
 

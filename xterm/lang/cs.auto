@@ -1,5 +1,7 @@
 index_title=Terminál
-index_cpan=Perl modul <tt>$1</tt> potřebný k akceptování připojení WebSockets není k dispozici, ale můžete jej nainstalovat automaticky pomocí modulu <a href='$2'>Perl Modules</a> Webminu.
+index_cpan=Modul Perl <tt>$1</tt> chybí, ale lze jej <a href='$2'>nainstalovat automaticky</a> pomocí modulu Perl Modules od Webminu.
+index_epel=Nejprve se doporučuje mít povoleno úložiště <a href='$1' target='_blank'>EPEL</a>.
+index_suse=Balíček Perl <tt>perl-IO-Tty</tt> chybí a měl by být nejprve ručně nainstalován z úložiště <a href='$2' target='_blank'>devel:languages:perl</a>.
 index_euser=Chyba: Uživatel $1 nemůže spustit shell, protože neexistuje!
 index_connecting=Připojování ..
 

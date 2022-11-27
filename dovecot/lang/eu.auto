@@ -15,7 +15,6 @@ index_version=$1 bertsioa
 stop_err=Ezin izan da Dovecot gelditu
 stop_erunning=Jada ez da martxan
 start_err=Huts egin du Dovecot abiaraztean
-start_eprotos=<b>Sare eta protokoloak</b> orrialdean ez da protokolo hautatu
 apply_err=Ezin izan da konfigurazioa aplikatu
 
 net_title=Sare eta Protokoloak

@@ -15,7 +15,6 @@ index_version=Version $1
 stop_err=فشل في إيقاف Dovecot
 stop_erunning=لم يعد يعمل
 start_err=فشل في بدء تشغيل Dovecot
-start_eprotos=No protocols selected on the <b>Networking and Protocols</b> page
 apply_err=فشل في تطبيق التكوين
 
 net_title=الشبكات والبروتوكولات

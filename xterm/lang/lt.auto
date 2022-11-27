@@ -1,5 +1,7 @@
 index_title=Terminalas
-index_cpan=„Perl“ modulis <tt>$1</tt>, reikalingas „WebSockets“ ryšiams priimti, nepasiekiamas, tačiau jį galite įdiegti automatiškai naudodami „Webmin“ <a href='$2'>Perl modulių</a> modulį.
+index_cpan=Trūksta Perl modulio <tt>$1</tt>, bet jį galima <a href='$2'>įdiegti automatiškai</a> naudojant Webmin Perl modulių modulį.
+index_epel=Pirmiausia rekomenduojama įjungti <a href='$1' target='_blank'>EPEL</a> saugyklą.
+index_suse=Trūksta Perl paketo <tt>perl-IO-Tty</tt>, todėl pirmiausia jį reikia įdiegti rankiniu būdu iš <a href='$2' target='_blank'>devel:languages:perl</a> saugyklos.
 index_euser=Klaida: vartotojas $1 negali paleisti apvalkalo, nes jo nėra!
 index_connecting=Jungiamasi ..
 

@@ -1,5 +1,7 @@
 index_title=پایانه
-index_cpan=ماژول Perl <tt>$1</tt> مورد نیاز برای پذیرش اتصالات WebSockets در دسترس نیست، اما می توانید آن را به طور خودکار با استفاده از ماژول <a href='$2'>Perl Modules</a> Webmin نصب کنید.
+index_cpan=ماژول Perl <tt>$1</tt> وجود ندارد، اما می توان آن را <a href='$2'>به طور خودکار نصب کرد</a> با استفاده از ماژول Perl's Perl.
+index_epel=توصیه می شود ابتدا مخزن <a href='$1' target='_blank'>EPEL</a> را فعال کنید.
+index_suse=بسته Perl <tt>perl-IO-Tty</tt> وجود ندارد و باید ابتدا به صورت دستی از مخزن <a href='$2' target='_blank'>devel:languages:perl</a> نصب شود.
 index_euser=خطا : کاربر $1 نمی تواند پوسته را اجرا کند زیرا وجود ندارد!
 index_connecting=برقراری ارتباط ..
 

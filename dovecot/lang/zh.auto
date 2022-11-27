@@ -15,7 +15,6 @@ index_version=版本$1
 stop_err=无法停止鸽舍
 stop_erunning=不再运行
 start_err=无法启动鸽舍
-start_eprotos=<b>网络和协议</b>页面上未选择协议
 apply_err=应用配置失败
 
 net_title=网络和协议

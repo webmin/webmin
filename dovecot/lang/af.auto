@@ -15,7 +15,6 @@ index_version=Weergawe $1
 stop_err=Kon nie Dovecot stop nie
 stop_erunning=Nie meer hardloop nie
 start_err=Kon nie Dovecot begin nie
-start_eprotos=Geen protokolle is gekies op die <b>Netwerk- en protokolle</b> -bladsy nie
 apply_err=Kon nie konfigurasie toepas nie
 
 net_title=Netwerk en protokolle
