@@ -1,6 +1,6 @@
 ## Changelog
 
-#### 2.003 (November 26, 2022)
+#### 2.010 (November 27, 2022)
 * Add a new Terminal module (interactive shell)
 * Add a new `setup-repos.sh` script to setup Webmin repos
 * Add to replace old Gray Theme with Virtualmin Framed Theme
