@@ -13,8 +13,19 @@ foreach my $modname (@modnames) {
 	eval "use ${modname};";
 	if ($@) {
 		&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0);
-		print &text('index_cpan', "<tt>$modname</tt>",
-			    "../cpan/download.cgi?source=3&cpan=$modname&mode=2&return=/$module_name/&returndesc=".&urlize($module_info{'desc'})),"<p>\n";
+		my $missinglink = &text('index_cpan', "<tt>$modname</tt>",
+			    "../cpan/download.cgi?source=3&cpan=$modname&mode=2&return=/$module_name/&returndesc=".&urlize($module_info{'desc'}));
+		if ($gconfig{'os_type'} eq 'redhat-linux') {
+			$missinglink .= " ".
+				&text('index_epel',
+					'https://docs.fedoraproject.org/en-US/epel');
+			}
+		elsif ($gconfig{'os_type'} eq 'suse-linux') {
+			$missinglink =
+				&text('index_suse', "<tt>$modname</tt>",
+					'https://software.opensuse.org/download/package?package=perl-IO-Tty&project=devel%3Alanguages%3Aperl');
+			}
+		print $missinglink ."<p>\n";
 		&ui_print_footer("/", $text{'index'});
 		exit;
 		}
