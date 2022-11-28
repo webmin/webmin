@@ -55,32 +55,37 @@ elsif ($in{'source'} == 2) {
 		# Is the new version and release actually newer
 		&check_inst_version($full);
 		}
+	my $sfx;
 	if ($in{'mode'} eq 'rpm') {
 		# Downloading RPM
 		$release ||= 1;
 		$progress_callback_url = &convert_osdn_url(
 		    "http://$osdn_host/webadmin/webmin-${version}-${release}.noarch.rpm");
+		$sfx = ".rpm";
 		}
 	elsif ($in{'mode'} eq 'deb') {
 		# Downloading Debian package
 		$release = $release ? "-".$release : "";
 		$progress_callback_url = &convert_osdn_url(
 		    "http://$osdn_host/webadmin/webmin_${version}${release}_all.deb");
+		$sfx = ".deb";
 		}
 	elsif ($in{'mode'} eq 'solaris-pkg') {
 		# Downloading my Solaris package
 		$release = $release ? "-".$release : "";
 		$progress_callback_url = &convert_osdn_url(
 		    "http://$osdn_host/webadmin/webmin-${version}${release}.pkg.gz");
+		$sfx = ".pkg";
 		}
 	else {
 		# Downloading tar.gz file
 		$release = $release ? "-".$release : "";
 		$progress_callback_url = &convert_osdn_url(
 			"http://$osdn_host/webadmin/webmin-${version}${release}.tar.gz");
+		$sfx = ".tar.gz";
 		}
 	($host, $port, $page, $ssl) = &parse_http_url($progress_callback_url);
-	$file = &transname();
+	$file = &transname().$sfx;
 	&http_download($host, $port, $page, $file, \$error,
 		       \&progress_callback, $ssl);
 	$error && &inst_error($error);
@@ -92,6 +97,9 @@ elsif ($in{'source'} == 5) {
 	$file = &transname();
 	$in{'url'} = &convert_osdn_url($in{'url'});
 	$progress_callback_url = $in{'url'};
+	if ($in{'url'} =~ /(\.(deb|rpm|pkg|tar.gz))$/i) {
+		$file .= $1;
+		}
 	if ($in{'url'} =~ /^(http|https):\/\/([^\/]+)(\/.*)$/) {
 		$ssl = $1 eq 'https';
 		$host = $2; $page = $3; $port = $ssl ? 443 : 80;
