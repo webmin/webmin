@@ -31,7 +31,7 @@ if (keys %$playtime || @players) {
 	print &ui_form_start("list_playtime.cgi");
 	print "<b>$text{'playtime_date'}</b>\n";
 	my @opts = ( [ "", $text{'playtime_today'} ],
-		     [ "all", $text{'playtime_all'} ] );
+		     [ "all", $text{'playtime_alldays'} ] );
 	push(@opts, @days);
 	print &ui_select("date", $in{'date'}, \@opts, 1, 0, 0, 0,
 			 "onChange='form.submit()'"),"\n";
