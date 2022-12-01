@@ -29,7 +29,9 @@ else {
 %config = &read_config_file($config_file);
 if ($config{'perllib'}) {
 	push(@INC, split(/:/, $config{'perllib'}));
+	push(@INC, "$config{'root'}/vendor_perl");
 	$ENV{'PERLLIB'} .= ':'.$config{'perllib'};
+	$ENV{'PERLLIB'} .= ':'."$config{'root'}/vendor_perl";
 	}
 @startup_msg = ( );
 
