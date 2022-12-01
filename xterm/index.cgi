@@ -182,7 +182,8 @@ $ENV{'SESSION_ID'} = $main::session_id;
 	       " >$tmpdir/ws-$port.out 2>&1 </dev/null");
 
 # Open the terminal
-my $url = "wss://$ENV{'HTTP_HOST'}/$module_name/ws-$port";
+my $ws_proto = lc($ENV{'HTTPS'}) eq 'on' ? 'wss' : 'ws';
+my $url = "$ws_proto://$ENV{'HTTP_HOST'}/$module_name/ws-$port";
 my $term_script = <<EOF;
 
 (function() {
