@@ -4,7 +4,9 @@ require './xterm-lib.pl';
 &ReadParse();
 
 # Check for needed modules
-my @modnames = ("IO::Pty", "Net::WebSocket::Server");
+my @modnames = ("Digest::SHA", "Digest::MD5", "IO::Pty",
+                "IO::Select", "Time::HiRes",
+                "Net::WebSocket::Server");
 foreach my $modname (@modnames) {
 	eval "use ${modname};";
 	if ($@) {
