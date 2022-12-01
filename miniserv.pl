@@ -4769,7 +4769,8 @@ print DEBUG "in reload_config_file\n";
 &build_config_mappings();
 &read_webmin_crons();
 &precache_files();
-&setup_ssl_contexts();
+&setup_ssl_contexts()
+	if ($use_ssl);
 &parse_websockets_config();
 if ($config{'session'}) {
 	dbmclose(%sessiondb);
