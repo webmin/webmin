@@ -228,7 +228,7 @@ if ($type eq 'rpm' && $file =~ /\.rpm$/i &&
 		return $text{'install_erpm'};
 		}
 	$redirect_to = $name = $3;
-	$out = &backquote_logged("rpm -U \"$file\" 2>&1");
+	$out = &backquote_logged("rpm -Uv \"$file\" 2>&1");
 	if ($?) {
 		unlink($file) if ($need_unlink);
 		return &text('install_eirpm', "<tt>$out</tt>");
