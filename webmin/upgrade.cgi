@@ -190,7 +190,7 @@ if ($in{'sig'}) {
 		print "$emsg<p>\n";
 		}
 	else {
-		print "$text{'upgrade_sigok'}<p>\n";
+		print "<p></p>$text{'upgrade_sigok'}<p>\n";
 		}
 	}
 else {
