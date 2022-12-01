@@ -3,10 +3,6 @@
 require './xterm-lib.pl';
 &ReadParse();
 
-# Get Webmin current version for links serial
-my $wver = &get_webmin_version();
-$wver =~ s/\.//;
-
 # Check for needed modules
 my @modnames = ("IO::Pty", "Net::WebSocket::Server");
 foreach my $modname (@modnames) {
@@ -31,12 +27,16 @@ foreach my $modname (@modnames) {
 		}
 	}
 
+# Get Webmin current version for links serial
+my $wver = &get_webmin_version();
+$wver =~ s/\.//;
+
 # Build Xterm dependency links
 my $termlinks = 
-	{ 'css' => ['xterm.css?$wver'],
-	  'js'  => ['xterm.js?$wver',
-	            'xterm-addon-attach.js?$wver',
-	            'xterm-addon-fit.js?$wver'] };
+	{ 'css' => ["xterm.css?$wver"],
+	  'js'  => ["xterm.js?$wver",
+	            "xterm-addon-attach.js?$wver",
+	            "xterm-addon-fit.js?$wver"] };
 
 # Pre-process options
 my $conf_size_str = $config{'size'};
