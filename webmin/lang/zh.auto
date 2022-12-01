@@ -161,6 +161,10 @@ newkey_ecountry=国家/地区代码必须为两个字母
 startpage_gotonone=&lt;无&gt;
 startpage_gotomodule=登录后，始终进入模块
 
+upgrade_setup=运行<tt>setup.sh</tt>脚本升级 Webmin ..
+upgrade_setuprpm=运行 <tt>RPM</tt> 升级 Webmin ..
+upgrade_setupdeb=运行 <tt>DPKG</tt> 升级 Webmin ..
+upgrade_setuppackage=运行 <tt>pkgadd</tt> 升级 Webmin ..
 upgrade_eupdates=无法下载更新列表：$1
 upgrade_force=即使新版本相同或更旧，也要升级吗？
 upgrade_disc=断开所有其他用户的连接？

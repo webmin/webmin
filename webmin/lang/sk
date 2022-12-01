@@ -370,10 +370,6 @@ upgrade_egzip=Nebolo možné rozbaliť súbor : $1
 upgrade_etar=Neplatný tar súbor Webminu
 upgrade_euntar=Nebolo možné rozbaliť súbor : $1
 upgrade_emod=Súbor je modulom, nie aktualizáciou Webminu. Môžete použiť <a href='$1'>Webmin Moduly</a> na inštaláciu
-upgrade_setup=Spúšťam skript setup.sh pre aktualizáciu Webminu... Vyčkajte chvíľu na jeho dokončenie.
-upgrade_setuprpm=Spúšťam RPM pre aktualizáciu Webminu .. Vyčkajte chvíľu na jeho dokončenie.
-upgrade_setupdeb=Spúšťam DPKG na aktualizáciu Webminu ... Prosím čakajte minútu kým sa dokončí predtým než budete pokračovať.
-upgrade_setuppackage=Spúšťam skript pkgadd pre aktualizáciu Webminu... Vyčkajte chvíľu na jeho dokončenie.
 upgrade_esolaris=Webmin aktualizácia na Solarise nefunguje, budete musieť aktualizovať ručne.
 upgrade_eusermin=Súbor je Usermin verzia $1, a nie aktualizácia Webminu.
 upgrade_updates=Pre túto novú verziu Webminu je k dispozícii $1 aktulizácií. <a href='$2'>Kliknite tu</a> pre ich automatické stiahnutie a inštaláciu.

@@ -500,10 +500,10 @@ upgrade_egzip=Failed to gunzip file : $1
 upgrade_etar=ایک درست ویبمین ٹار فائل نہیں ہے
 upgrade_euntar=Failed to untar file : $1
 upgrade_emod=File is a Webmin module, not a complete Webmin upgrade. You may want to use the <a href='$1'>Webmin Modules</a> page to install it.
-upgrade_setup=Webmin کو اپ گریڈ کرنے کے لئے setup.sh اسکرپٹ چل رہا ہے.. براہ کرم ایک منٹ انتظار کریں جب تک کہ یہ جاری رکھنے سے پہلے مکمل نہ ہوجائے۔
-upgrade_setuprpm=ویب مین کو اپ گریڈ کرنے کے لئے RPM چل رہا ہے.. براہ کرم جاری رکھنے سے پہلے ایک منٹ انتظار کریں۔
-upgrade_setupdeb=ویب مین کو اپ گریڈ کرنے کے لئے ڈی پی کے جی چلا رہے ہیں.. براہ کرم جاری رکھنے سے پہلے ایک منٹ انتظار کریں۔
-upgrade_setuppackage=ویب مین کو اپ گریڈ کرنے کے لئے پی جی جی ڈی ڈی چل رہا ہے.. براہ کرم ایک منٹ انتظار کریں جب تک کہ یہ جاری رکھنے سے پہلے مکمل نہ ہوجائے۔
+upgrade_setup=Running <tt>setup.sh</tt> script to upgrade Webmin ..
+upgrade_setuprpm=Running <tt>RPM</tt> to upgrade Webmin ..
+upgrade_setupdeb=Running <tt>DPKG</tt> to upgrade Webmin ..
+upgrade_setuppackage=Running <tt>pkgadd</tt> to upgrade Webmin ..
 upgrade_esolaris=جب آپ نے سولاریس پیکیج سے انسٹال کیا ہے تو فی الحال ویبمین کی اپ گریڈ کی خصوصیت کام نہیں کرتی ہے۔ براہ کرم اس کے بجائے دستی طور پر اپ گریڈ کریں۔
 upgrade_ezip=جب آپ نے ونڈوز پر انسٹال کیا ہے تو ویبمین کی اپ گریڈ کی خصوصیت فی الحال کام نہیں کرتی ہے۔ براہ کرم اس کے بجائے دستی طور پر اپ گریڈ کریں۔
 upgrade_eportage=جب آپ پورٹیج پیکیج سے انسٹال کرتے ہیں تو ویبمین کی اپ گریڈ کی خصوصیت فی الحال کام نہیں کرتی ہے۔ براہ کرم اس کے بجائے پورٹیج ٹولز کا استعمال کرکے اپ گریڈ کریں۔

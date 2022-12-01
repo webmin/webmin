@@ -7,6 +7,11 @@ os_release_notes=リリースノート
 
 ssl_hsts=HSTS ヘッダーで SSL を強制する
 
+upgrade_setup=<tt>setup.sh</tt>スクリプトを実行して Webmin をアップグレードしています ..
+upgrade_setuprpm=<tt>RPM</tt> を実行して Webmin をアップグレードしています ..
+upgrade_setupdeb=<tt>DPKG</tt> を実行して Webmin をアップグレードしています ..
+upgrade_setuppackage=<tt>pkgadd</tt> を実行して Webmin をアップグレードしています ..
+
 session_utmp=ログインとログアウトを<tt>utmp</tt>に記録しますか？
 session_md5off=自動判定
 session_md5on=<tt>MD5</tt> ハッシュ形式を使用

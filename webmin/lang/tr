@@ -286,9 +286,6 @@ upgrade_egzip=Gzip dosyasının açılmasında hata oluştu : $1
 upgrade_etar=Geçerli bir webmin tar dosyası değildir
 upgrade_euntar=Tar dosyasının açılmasında hata oluştu : $1
 upgrade_emod=Dosya bir Webmin modülüdür, bir Webmin güncellemesi değildir. Kurmak için <a href='$1'>Webmin Modülleri</a> sayfasını kullanabilirsiniz.
-upgrade_setup=Webmin'in güncellenmesi için install.sh programcığı çalıştırılıyor .. Webmin'in güncellenmesi için bir süre beklemelisiniz.
-upgrade_setuprpm=RPM, Webmin'i güncelliyor... Devam etmeden önce birkaç dakika işlemin bitmesini bekleyiniz
-upgrade_setuppackage=pkgadd, Webmin'i güncelliyor...Devam etmeden önce birkaç dak işlemin bitmesini bekleyiniz
 upgrade_esolaris=Webmin'in güncelleme özelliği bir Solaris paketinden yapılamaz. Lütfen Webmin'i elle güncelleyiniz
 upgrade_eusermin=Dosya Usermin sürüm $1 içindir, Webmin güncellemesi değildir.
 upgrade_updates=Webmin'in bu yeni sürümü için $1 güncelleme var. Otomatik olarak indirip kurmak için <a href='$2'>burayı tıklayınız</a>.

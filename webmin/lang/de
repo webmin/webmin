@@ -487,10 +487,6 @@ upgrade_egzip=gUnzip gescheitert für Datei : $1
 upgrade_etar=Keine gültige Webmin TAR-Datei
 upgrade_euntar=untar gescheitert für Datei : $1
 upgrade_emod=Datei ist ein Webmin-Modul, kein komplettes Webmin-Upgrade. Möchten Sie die Seite <a href='$1'>Webmin-Module</a> benutzen um es zu installieren?
-upgrade_setup=Das Skript <tt>setup.sh</tt> wird ausgeführt, um Webmin zu aktualisieren. Dieser Vorgang dauert ungefähr ein bis zwei Minuten, je nach Leistung Ihres Systems. Bitte haben Sie ein wenig Geduld und warten Sie bis dies geschehen ist und bevor Sie weitermachen.
-upgrade_setuprpm=Führe <tt>RPM</tt> aus für Webmin-Upgrade. Dieser Vorgang dauert ungefähr ein bis zwei Minuten, je nach Leistung Ihres Systems. Bitte haben Sie ein wenig Geduld und warten Sie bis dies geschehen ist und bevor Sie weitermachen.
-upgrade_setupdeb=Führe DPKG, um Webmin zu aktualisieren, aus. Dieser Vorgang dauert ungefähr ein bis zwei Minuten, je nach Leistung Ihres Systems. Bitte haben Sie ein wenig Geduld und warten Sie bis dies geschehen ist und bevor Sie weitermachen.
-upgrade_setuppackage=Führe <tt>pkgadd</tt> aus für Webmin-Upgrade. Dieser Vorgang dauert ungefähr ein bis zwei Minuten, je nach Leistung Ihres Systems. Bitte haben Sie ein wenig Geduld und warten Sie bis dies geschehen ist und bevor Sie weitermachen.
 upgrade_esolaris=Wenn Sie Webmin von einem Solaris-Paket installiert haben, dann können Sie diese Funktion leider nicht benutzen, da Solaris selbst eine Upgrade-Möglichkeit nicht implementiert. Sie müssen das Upgrade leider manuell durchführen.
 upgrade_ezip=Webmin's Upgrade-Funktion funktioniert nicht korrekt, wenn dies unter Windows installiert ist. Bitte aktualisieren Sie stattdessen manuell.
 upgrade_eportage=Webmins Upgrade-Funktion funktioniert derzeit nicht, wenn Sie von einem Portage-Paket installiert haben. Bitte aktualisieren Sie stattdessen mit den Portage-Tools.

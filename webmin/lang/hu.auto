@@ -403,10 +403,10 @@ upgrade_egzip=Nem sikerült feladni a fájlt : $1
 upgrade_etar=Nem egy érvényes Webmin tar fájl
 upgrade_euntar=A fájl törlése nem sikerült : $1
 upgrade_emod=A fájl egy Webmin modul, nem pedig a Webmin teljes frissítése. A telepítéshez érdemes használni a <a href='$1'>Webmin modulok</a> oldalt.
-upgrade_setup=Futtassa a setup.sh szkriptet a Webmin frissítéséhez. Várjon egy percet, amíg a teljes befejeződik, mielőtt folytatná.
-upgrade_setuprpm=RPM futtatása a Webmin frissítéséhez. Kérjük, várjon egy percet, amíg az befejeződik, mielőtt folytatná.
-upgrade_setupdeb=A DPKG futtatása a Webmin frissítéséhez. Várjon egy percet, amíg a teljes befejeződik, mielőtt folytatná.
-upgrade_setuppackage=A pkgadd futtatása a Webmin frissítéséhez. Várjon egy percet, amíg az befejeződik, mielőtt folytatná.
+upgrade_setup=A <tt>setup.sh</tt> szkript futtatása a Webmin frissítéséhez ..
+upgrade_setuprpm=<tt>RPM</tt> futtatása a Webmin frissítéséhez ..
+upgrade_setupdeb=A <tt>DPKG</tt> futtatása a Webmin frissítéséhez ..
+upgrade_setuppackage=A <tt>pkgadd</tt> futtatása a Webmin frissítéséhez ..
 upgrade_esolaris=A Webmin frissítési szolgáltatása jelenleg nem működik, ha a Solaris csomagból telepítette. Ehelyett manuálisan frissítsen.
 upgrade_ezip=A Webmin frissítési funkciója jelenleg nem működik, ha a Windows rendszerre telepítette. Ehelyett manuálisan frissítsen.
 upgrade_eportage=A Webmin frissítési funkciója jelenleg nem működik, ha a Portage csomagból telepítette. Kérjük, frissítse inkább a Portage eszközök használatával.

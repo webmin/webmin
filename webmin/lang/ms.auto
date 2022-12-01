@@ -55,6 +55,10 @@ ssl_staging1=Pementasan (ujian sahaja)
 
 newkey_ecns=Tiada nama pelayan yang dimasukkan
 
+upgrade_setup=Menjalankan skrip <tt>setup.sh</tt> untuk menaik taraf Webmin ..
+upgrade_setuprpm=Menjalankan <tt>RPM</tt> untuk menaik taraf Webmin ..
+upgrade_setupdeb=Menjalankan <tt>DPKG</tt> untuk menaik taraf Webmin ..
+upgrade_setuppackage=Menjalankan <tt>pkgadd</tt> untuk menaik taraf Webmin ..
 upgrade_eportage=Ciri naik taraf Webmin tidak berfungsi saat ini apabila anda memasang dari pakej Portage. Sila naik taraf menggunakan alat Portage sebaliknya.
 
 ca_alt=Domain tambahan

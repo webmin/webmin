@@ -500,10 +500,10 @@ upgrade_egzip=Neizdevās gunzip failu : $1
 upgrade_etar=Nederīgs Webmin tar fails
 upgrade_euntar=Neizdevās atcelt failu : $1
 upgrade_emod=Fails ir Webmin modulis, nevis pilnīgs Webmin jauninājums. Lai to instalētu, ieteicams izmantot lapu <a href='$1'>Webmin moduļi</a>.
-upgrade_setup=Palaist setup.sh skriptu, lai jauninātu Webmin. Pirms turpināšanas, pagaidiet minūti, līdz tas ir pabeigts.
-upgrade_setuprpm=Darbojas RPM, lai jauninātu Webmin. Pirms turpināšanas, pagaidiet minūti, līdz tas ir pabeigts.
-upgrade_setupdeb=Palaist DPKG, lai jauninātu Webmin. Pirms turpināšanas, pagaidiet minūti, līdz tas ir pabeigts.
-upgrade_setuppackage=Palaist pkgadd, lai jauninātu Webmin. Pirms turpināšanas, pagaidiet minūti, līdz tas ir pabeigts.
+upgrade_setup=<tt>setup.sh</tt> skriptu, lai jauninātu Webmin ..
+upgrade_setuprpm=Palaižot <tt>RPM</tt>, lai jauninātu Webmin ..
+upgrade_setupdeb=Palaižot <tt>DPKG</tt>, lai jauninātu Webmin ..
+upgrade_setuppackage=Palaižot <tt>pkgadd</tt>, lai jauninātu Webmin. ..
 upgrade_esolaris=Webmin jaunināšanas funkcija šobrīd nedarbojas, kad esat instalējis no Solaris pakotnes. Tā vietā, lūdzu, jauniniet manuāli.
 upgrade_ezip=Webmin jaunināšanas funkcija šobrīd nedarbojas, kad esat instalējis Windows. Tā vietā, lūdzu, jauniniet manuāli.
 upgrade_eportage=Webmin jaunināšanas funkcija pašlaik nedarbojas, kad esat instalējis no Portage pakotnes. Lūdzu, jauniniet, izmantojot Portage rīkus.

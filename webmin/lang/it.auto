@@ -102,6 +102,10 @@ newcsr_ok2=Questo CSR deve essere inviato a un'autorità di firma, che restituir
 startpage_webminup=Mostra gli aggiornamenti di Webmin nella pagina Informazioni di sistema?
 startpage_moduleup=Mostra gli aggiornamenti del modulo nella pagina Informazioni di sistema?
 
+upgrade_setup=Esecuzione dello script <tt>setup.sh</tt> per aggiornare Webmin ..
+upgrade_setuprpm=Eseguire <tt>RPM</tt> per aggiornare Webmin ..
+upgrade_setupdeb=Eseguire <tt>DPKG</tt> per aggiornare Webmin ..
+upgrade_setuppackage=Eseguire <tt>pkgadd</tt> per aggiornare Webmin ..
 upgrade_eportage=La funzione di aggiornamento di Webmin attualmente non funziona se è stato installato da un pacchetto Portage. Aggiorna invece utilizzando gli strumenti di Portage.
 upgrade_src=Aggiorna Webmin da
 upgrade_opts=Opzioni di aggiornamento

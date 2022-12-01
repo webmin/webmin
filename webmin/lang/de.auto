@@ -14,6 +14,11 @@ os_release_notes=Versionshinweise
 
 ssl_hsts=Erzwinge SSL mit HSTS-Header
 
+upgrade_setup=Ausführen des Skripts <tt>setup.sh</tt> zum Aktualisieren von Webmin ..
+upgrade_setuprpm=<tt>RPM</tt> ausführen, um Webmin zu aktualisieren ..
+upgrade_setupdeb=<tt>DPKG</tt> ausführen, um Webmin zu aktualisieren ..
+upgrade_setuppackage=<tt>pkgadd</tt> ausführen, um Webmin zu aktualisieren ..
+
 session_utmp=Anmeldungen und Abmeldungen in <tt>utmp</tt> aufzeichnen?
 session_md5off=Automatisch ermitteln
 session_md5on=Verwenden Sie das Hash-Format <tt>MD5</tt>

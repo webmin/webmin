@@ -407,10 +407,6 @@ upgrade_egzip=파일 gunzip 압축 실패 : $1
 upgrade_etar=유효한 Webmin tar 파일이 아닙니다
 upgrade_euntar=파일 untar 실패 : $1
 upgrade_emod=파일은 Webmin 모듈이지만, 완전한 Webmin 업그레이드가 아닙니다. <a href='$1'>Webmin 모듈</a> 페이지를 사용하여 설치할 수 있습니다.
-upgrade_setup=Webmin 업그레이드를 위해 setup.sh 실행 중.. 완료될 때까지 잠시 기다리십시오.
-upgrade_setuprpm=Webmin 업그레이드를 위해 RPM 실행 중.. 완료될 때까지 잠시 기다리십시오.
-upgrade_setupdeb=Webmin 업그레이드에 DPKG 를 사용중입니다.. 계속하기전에 완료될 때까지 몇분을 기대려 주십시오.
-upgrade_setuppackage=Webmin 업그레이드를 위해 pkgadd 실행 중.. 완료될 때까지 잠시 기다리십시오.
 upgrade_esolaris=솔라리스 패키지로부터 설치할 때 Webmin의 업그레이드 기능이 작동하지 않습니다. 수동으로 업그레이드하십시오.
 upgrade_ezip=윈도우즈에 설치된 경우에는, 현시점에서 Webmin의 업그레이드 요소들은 작동하지 않습니다. 수동으로 업그레이드를 해 주십시오.
 upgrade_eusermin=이 파일은 Usermin 버전 $1 입니다. Webmin 업데이트가 아닙니다.

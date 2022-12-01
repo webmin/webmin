@@ -157,9 +157,6 @@ upgrade_erpm=Det är inte en giltig Webmin-RPM-fil
 upgrade_egunzip=Systemet saknar kommandot <tt>gunzip</tt>
 upgrade_etar=Det är inte en giltig Webmin-tar-fil
 upgrade_emod=Filen är en Webmin-modul, inte en hel Webmin-uppgradering. Du vill förmodligen använda sidan <a href='$1'>Webmin-moduler</a> istället för att installera den.
-upgrade_setup=Kör setup.sh-script för att uppgradera Webmin ... Vänta en minut på att det ska bli färdigt innan du fortsätter.
-upgrade_setuprpm=Kör RPM för att uppgradera Webmin ... Vänta en minut på att det ska bli färdigt innan du fortsätter.
-upgrade_setuppackage=Kör pkgadd för att uppgradera Webmin ... Vänta en minut på att det ska bli färdigt innan du fortsätter.
 upgrade_esolaris=Webmins uppgradering fungerar inte nu när du har installerat systemet från ett Solaris-paket. Uppgradera manuellt istället.
 
 ca_title=Signerande part

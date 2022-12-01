@@ -500,10 +500,10 @@ upgrade_egzip=Nije uspjelo punjenje datoteke : $1
 upgrade_etar=Nije valjana datoteka Webmin tar
 upgrade_euntar=Otključavanje datoteke nije uspjelo : $1
 upgrade_emod=File je Webmin modul, a nije potpuna Webmin nadogradnja. Možda biste htjeli koristiti stranicu <a href='$1'>Webmin Moduli</a> da biste je instalirali.
-upgrade_setup=Pokretanje setup.sh skripte za nadogradnju Webmin.. Molimo pričekajte minutu dok se ne dovrši prije nego što nastavite.
-upgrade_setuprpm=Trčanje RPM za nadogradnju Webmin.. Pričekajte malo dok se ne završi prije nego što nastavite.
-upgrade_setupdeb=Pokretanje DPKG-a za nadogradnju Webmin.. Molimo pričekajte minutu dok se ne završi prije nego što nastavite.
-upgrade_setuppackage=Trčanje pkgadd za nadogradnju Webmin.. Pričekajte malo dok se ne završi prije nego što nastavite.
+upgrade_setup=Pokretanje skripte <tt>setup.sh</tt> za nadogradnju Webmina ..
+upgrade_setuprpm=Pokretanje <tt>RPM</tt> za nadogradnju Webmina ..
+upgrade_setupdeb=Pokretanje <tt>DPKG</tt> za nadogradnju Webmina ..
+upgrade_setuppackage=Pokretanje <tt>pkgadd</tt> za nadogradnju Webmina ..
 upgrade_esolaris=Webmin funkcija za nadogradnju trenutno ne funkcionira ako ste instalirali iz paketa Solaris. Molimo nadogradite ručno.
 upgrade_ezip=Webmin-ova značajka nadogradnje trenutno ne funkcionira kada ste instalirani na Windows. Molimo nadogradite ručno.
 upgrade_eportage=Webminova značajka nadogradnje trenutno ne funkcionira ako ste instalirali iz Portage paketa. Nadogradite umjesto Portage alata.

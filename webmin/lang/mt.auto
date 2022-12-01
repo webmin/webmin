@@ -500,10 +500,10 @@ upgrade_egzip=Naqas mill-fajl gunzip : $1
 upgrade_etar=Mhux fajl tal-qatran Webmin validu
 upgrade_euntar=Ma rnexxielux jisfa 'l-fajl : $1
 upgrade_emod=Fajl huwa modulu Webmin, mhux upgrade Webmin komplet. Jista 'jkun li trid tuża l-paġna <a href='$1'>Moduli Webmin</a> biex tinstallaha.
-upgrade_setup=Iħaddem l-iskrittura setup.sh biex taġġorna Webmin.. Jekk jogħġbok stenna minuta sakemm tkun kompluta qabel tkompli.
-upgrade_setuprpm=Ħaddem RPM biex taġġorna Webmin.. Jekk jogħġbok stenna minuta sakemm tlesti qabel tkompli.
-upgrade_setupdeb=Tmexxi DPKG biex taġġorna Webmin.. Jekk jogħġbok stenna minuta sakemm tkun kompluta qabel tkompli.
-upgrade_setuppackage=Ħaddem pkgadd biex taġġorna Webmin.. Jekk jogħġbok stenna minuta sakemm tkun kompluta qabel tkompli.
+upgrade_setup=Tmexxi <tt>setup.sh</tt> script biex taġġorna Webmin ..
+upgrade_setuprpm=Tmexxi <tt>RPM</tt> biex taġġorna Webmin ..
+upgrade_setupdeb=Tmexxi <tt>DPKG</tt> biex taġġorna Webmin ..
+upgrade_setuppackage=Tmexxi <tt>pkgadd</tt> biex taġġorna Webmin ..
 upgrade_esolaris=Il-fattur ta 'aġġornament ta' Webmin bħalissa ma jaħdimx meta jkollok installat minn pakkett Solaris. Jekk jogħġbok ibdel manwalment minflok.
 upgrade_ezip=Il-funzjoni ta 'aġġornament ta' Webmin bħalissa ma taħdimx meta tkun installat fuq il-Windows. Jekk jogħġbok ibdel manwalment minflok.
 upgrade_eportage=Il-fattur ta 'aġġornament ta' Webmin bħalissa ma jaħdimx meta tkun installat minn pakkett Portage. Jekk jogħġbok imtejjeb billi tuża l-għodda Portage minflok.

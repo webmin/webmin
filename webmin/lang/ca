@@ -484,10 +484,6 @@ upgrade_egzip=No s'ha pogut descomprimir amb <tt>gunzip</tt> el fitxer: $1
 upgrade_etar=No és un fitxer tar de Webmin vàlid
 upgrade_euntar=No s'ha pogut descomprimir amb <tt>tar</tt> el fitxer: $1
 upgrade_emod=EL fitxer és un mòdul de Webmin, no una actualització completa de Webmin. Hauries d'utilitzar la pàgina de <a href='$1'>Mòduls Webmin</a> per instal·lar-lo.
-upgrade_setup=S'està executant el script setup.sh per actualitzar Webmin... Espera un minutet que acabi abans de continuar, si et plau
-upgrade_setuprpm=S'està executant RPM per actualitzar Webmin... Espera un minutet que acabi abans de continuar, si et plau
-upgrade_setupdeb=S'està executant DPKG per actualitzar Webmin... Espera un moment fins que s'acabi abans de continuar.
-upgrade_setuppackage=S'està executant pkgadd per actualitzar Webmin... Espera un minutet que acabi abans de continuar, si et plau
 upgrade_esolaris=L'actualització de Webmin no funciona quan s'ha instal·lat a partir d'un paquet Solaris. Fes l'actualització a mà, si et plau.
 upgrade_ezip=La característica d'actualització de Webmin actualment no funciona si el tens instal·lat a Windows. Fes l'actualització manualment, si et plau.
 upgrade_eportage=La característica d'actualització de Webmin actualment no funciona quan ho has instal·lat a partir d'un paquet Portage. Actualitza-ho utilitzant les eines de Portage en lloc seu, si et plau.

@@ -321,9 +321,6 @@ upgrade_egzip=No pude hacer gunzip de archivo: $1
 upgrade_etar=No es un archivo tar válido de Webmin
 upgrade_euntar=No pude hacer untar de archivo: $1
 upgrade_emod=El archivo es un módulo de Webmin y no una completa mejora de Webmin. Quizá quiera usar la página de los <a href='$1'>Módulos de Webmin</a> para instalarlo.
-upgrade_setup=Ejecutando el guión setup.sh para mejorar Webmin... Por favor, espera un minuto hasta que se complete antes de continuar.
-upgrade_setuprpm=Ejecutando RPM para mejorar Webmin... Por favor, espera un minuto hasta que termine antes de continuar.
-upgrade_setuppackage=Ejecutando pkgadd para mejorar Webmin... Por favor, espera un minuto hasta que termine antes de continuar.
 upgrade_esolaris=La característica de mejora de Webmin no funciona en este momento si has instalado de un paquete Solaris. Por favor mejora de forma manual.
 upgrade_eusermin=El archivo es Usermin versión $1, no es una actualización de Webmin.
 upgrade_updates=Hay $1 actualizaciones para esta nueva versión de Webmin. <a href='$2'>Haz click aquí</a> para automáticamente descargarlas e instalarlas ahora.

@@ -500,10 +500,10 @@ upgrade_egzip=Tiedoston ampuminen epäonnistui : $1
 upgrade_etar=Ei kelvollinen Webmin-tar-tiedosto
 upgrade_euntar=Tiedoston poisto epäonnistui : $1
 upgrade_emod=Tiedosto on Webmin-moduuli, ei täydellinen Webmin-päivitys. Asennat ehkä <a href='$1'>Webmin-moduulit</a> -sivun.
-upgrade_setup=Suoritetaan setup.sh-skripti päivittääksesi Webmin.. Odota minuutti, kunnes se on valmis, ennen kuin jatkat.
-upgrade_setuprpm=Suoritetaan RPM päivittääksesi Webmin.. Odota minuutti, kunnes se on valmis, ennen kuin jatkat.
-upgrade_setupdeb=Suoritetaan DPKG: n päivittää Webmin. Odota minuutti, kunnes se on valmis, ennen kuin jatkat.
-upgrade_setuppackage=Suoritetaan pkgadd päivittääksesi Webmin.. Odota minuutti, kunnes se on valmis, ennen kuin jatkat.
+upgrade_setup=Suoritetaan <tt>setup.sh</tt> -skripti Webminin päivittämiseksi ..
+upgrade_setuprpm=<tt>RPM</tt> suorittaminen Webminin päivittämiseksi ..
+upgrade_setupdeb=<tt>DPKG</tt> suorittaminen Webminin päivittämiseksi ..
+upgrade_setuppackage=Suoritetaan <tt>pkgadd</tt> Webminin päivittämiseksi ..
 upgrade_esolaris=Webminin päivitysominaisuus ei tällä hetkellä toimi, kun olet asentanut Solaris-paketista. Päivitä sen sijaan manuaalisesti.
 upgrade_ezip=Webminin päivitysominaisuus ei toimi tällä hetkellä, kun olet asentanut Windowsin. Päivitä sen sijaan manuaalisesti.
 upgrade_eportage=Webmin-päivitysominaisuus ei toimi tällä hetkellä, kun olet asentanut Portage-paketista. Päivitä sen sijaan Portage-työkaluilla.

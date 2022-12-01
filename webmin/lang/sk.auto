@@ -140,6 +140,10 @@ startpage_moduleup=Zobraziť aktualizácie modulov na stránke Systémové infor
 
 upgrade_descdeb=Tento formulár vám umožňuje inovovať celú inštaláciu Webminu na novú verziu inovovaním jeho balíka Debian. Môžete nainštalovať z miestneho súboru.deb, nahraného súboru alebo z najnovšej verzie na stránke <a href=http://www.webmin.com/>www.webmin.com</a>. Rovnako ako pri manuálnej inovácii sa zachovajú všetky vaše konfiguračné nastavenia a moduly tretích strán.
 upgrade_descsun-pkg=Tento formulár vám umožňuje inovovať celú inštaláciu Webminu na novú verziu z balíka Solaris dodávaného spoločnosťou Sun. Môžete nainštalovať z lokálneho súboru balíka Solaris alebo z nahraného súboru. Najnovšie balíky nájdete na adrese <a href=http://www.sun.com/bigadmin/content/webmin/>http://www.sun.com/bigadmin/content/webmin/</a>. Rovnako ako pri manuálnej inovácii sa zachovajú všetky vaše konfiguračné nastavenia a moduly tretích strán.
+upgrade_setup=Spustenie skriptu <tt>setup.sh</tt> na aktualizáciu Webminu ..
+upgrade_setuprpm=Spustenie <tt>RPM</tt> na inováciu Webmin ..
+upgrade_setupdeb=Spustenie <tt>DPKG</tt> na inováciu Webmin ..
+upgrade_setuppackage=Spustenie <tt>pkgadd</tt> na inováciu Webmin ..
 upgrade_ezip=Po nainštalovaní v systéme Windows nefunguje aktualizácia produktu Webmin. Namiesto toho inovujte manuálne.
 upgrade_eportage=Funkcia aktualizácie Webminu momentálne nefunguje, ak ste nainštalovali z balíka Portage. Namiesto toho inovujte pomocou nástrojov Portage.
 upgrade_eroot=Webmin nie je možné upgradovať, keď je jeho kód zdieľaný s iným systémom, napríklad keď je spustený vo vnútri zóny alebo pripojený cez NFS.

@@ -407,10 +407,6 @@ upgrade_egzip=Decompressione del file con gunzip non riuscita: $1
 upgrade_etar=Archivio tar di webmin non valido
 upgrade_euntar=Decompressione del file con untar non riuscita: $1
 upgrade_emod=Il file è un modulo di Webmin, non un aggiornamento completo per Webmin. Devi utilizzare la pagina relativa ai <a href='$1'>Moduli di Webmin</a> per installarlo.
-upgrade_setup=Eseguo lo script setup.sh per aggiornare Webmin .. Attendere un minuto sino a quando non termina prima di procedere.
-upgrade_setuprpm=RPM è in esecuzione per l'aggiornamento di Webmin... Attendi qualche secondo prima di continuare...
-upgrade_setupdeb=DPKG è in esecuzione per l'aggiornamento di Webmin... Attendi qualche secondo prima di continuare...
-upgrade_setuppackage=pkgadd è in esecuzione per l'aggiornamento di Webmin... Attendi qualche secondo prima di continuare...
 upgrade_esolaris=La funzione di aggiornamento di Webmin non è attualmente in esecuzione in quanto Webmin è stato installato da un pacchetto Solaris. E' possibile eseguire l'aggiornamento in maniera manuale.
 upgrade_ezip=La funzione di aggiornamento di Webmin non è attualmente in esecuzione in quanto Webmin è installato su Windows. E' possibile eseguire l'aggiornamento in maniera manuale.
 upgrade_eusermin=Il file è la versione $1 di Usermin, non un aggiornamento di Webmin.

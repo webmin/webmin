@@ -500,10 +500,10 @@ upgrade_egzip=Không thể gửi tệp gunzip : $1
 upgrade_etar=Không phải là tệp tar Webmin hợp lệ
 upgrade_euntar=Không thể xóa tệp : $1
 upgrade_emod=Tệp là mô-đun Webmin, không phải là bản nâng cấp Webmin hoàn chỉnh. Bạn có thể muốn sử dụng trang <a href='$1'>Mô-đun Webmin</a> để cài đặt nó.
-upgrade_setup=Chạy script setup.sh để nâng cấp Webmin.. Vui lòng đợi một phút cho đến khi hoàn tất trước khi tiếp tục.
-upgrade_setuprpm=Chạy RPM để nâng cấp Webmin.. Vui lòng đợi một phút cho đến khi hoàn thành trước khi tiếp tục.
-upgrade_setupdeb=Chạy DPKG để nâng cấp Webmin.. Vui lòng đợi một phút cho đến khi hoàn thành trước khi tiếp tục.
-upgrade_setuppackage=Chạy pkgadd để nâng cấp Webmin.. Vui lòng đợi một phút cho đến khi hoàn thành trước khi tiếp tục.
+upgrade_setup=Chạy tập lệnh <tt>setup.sh</tt> để nâng cấp Webmin ..
+upgrade_setuprpm=Đang chạy <tt>RPM</tt> để nâng cấp Webmin ..
+upgrade_setupdeb=Đang chạy <tt>DPKG</tt> để nâng cấp Webmin ..
+upgrade_setuppackage=Đang chạy <tt>pkgadd</tt> để nâng cấp Webmin ..
 upgrade_esolaris=Tính năng nâng cấp của Webmin hiện không hoạt động khi bạn đã cài đặt từ gói Solaris. Hãy nâng cấp bằng tay thay thế.
 upgrade_ezip=Tính năng nâng cấp của Webmin hiện không hoạt động khi bạn đã cài đặt trên Windows. Hãy nâng cấp bằng tay thay thế.
 upgrade_eportage=Tính năng nâng cấp của Webmin hiện không hoạt động khi bạn đã cài đặt từ gói Portage. Vui lòng nâng cấp bằng các công cụ Portage thay thế.

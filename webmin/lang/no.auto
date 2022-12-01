@@ -14,6 +14,11 @@ os_release_notes=Utgivelsesnotater
 
 ssl_hsts=Håndhev SSL med HSTS-header
 
+upgrade_setup=Kjører <tt>setup.sh</tt> skript for å oppgradere Webmin ..
+upgrade_setuprpm=Kjører <tt>RPM</tt> for å oppgradere Webmin ..
+upgrade_setupdeb=Kjører <tt>DPKG</tt> for å oppgradere Webmin ..
+upgrade_setuppackage=Kjører <tt>pkgadd</tt> for å oppgradere Webmin ..
+
 session_utmp=Registrere pålogginger og utlogginger i <tt>utmp</tt>?
 session_md5off=Bestem automatisk
 session_md5on=Bruk <tt>MD5</tt> hashing-format
