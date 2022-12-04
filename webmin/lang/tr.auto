@@ -225,7 +225,10 @@ startpage_moduleup=Modül güncellemeleri Sistem Bilgisi sayfasında gösterilsi
 upgrade_descdeb=Bu form, Debian paketini yükselterek tüm Webmin kurulumunuzu yeni bir sürüme yükseltmenizi sağlar. Yerel bir.deb dosyasından, yüklenen bir dosyadan veya <a href=http://www.webmin.com/>www.webmin.com</a> adresindeki en son sürümden yükleme yapabilirsiniz. Manuel yükseltmede olduğu gibi, tüm yapılandırma ayarlarınız ve üçüncü taraf modüller korunacaktır.
 upgrade_descsun-pkg=Bu form, Webmin kurulumunuzun tamamını Sun tarafından sağlanan Solaris paketinden yeni bir sürüme yükseltmenizi sağlar. Yerel bir Solaris paket dosyasından veya yüklenen bir dosyadan yükleyebilirsiniz. En son paketleri <a href=http://www.sun.com/bigadmin/content/webmin/>http://www.sun.com/bigadmin/content/webmin/</a> adresinde bulabilirsiniz. Manuel yükseltmede olduğu gibi, tüm yapılandırma ayarlarınız ve üçüncü taraf modüller korunacaktır.
 upgrade_edeb=Geçerli bir Webmin Debian paket dosyası değil
-upgrade_setupdeb=Webmin'i yükseltmek için DPKG çalıştırılıyor. Lütfen devam etmeden önce tamamlanması için bir dakika bekleyin.
+upgrade_setup=Webmin'i yükseltmek için <tt>setup.sh</tt> komut dosyası çalıştırılıyor ..
+upgrade_setuprpm=Webmin'i yükseltmek için <tt>RPM</tt> çalıştırılıyor ..
+upgrade_setupdeb=Webmin'i yükseltmek için <tt>DPKG</tt> çalıştırılıyor ..
+upgrade_setuppackage=Webmin'i yükseltmek için <tt>pkgadd</tt> çalıştırılıyor ..
 upgrade_ezip=Windows'a yüklediğinizde Webmin'in yükseltme özelliği şu anda çalışmıyor. Lütfen bunun yerine manuel olarak yükseltin.
 upgrade_eportage=Bir Portage paketinden yüklediğinizde Webmin'in yükseltme özelliği şu anda çalışmaz. Lütfen bunun yerine Portage araçlarını kullanarak yeni sürüme geçin.
 upgrade_ewpackage=Webmin için geçerli bir Solaris paketi değil

@@ -189,7 +189,10 @@ startpage_moduleup=¿Mostrar actualizaciones de módulos en la página de inform
 
 upgrade_descdeb=Este formulario le permite actualizar toda su instalación de Webmin a una nueva versión actualizando su paquete Debian. Puede instalar desde un archivo.deb local, un archivo cargado o desde la última versión en <a href=http://www.webmin.com/>www.webmin.com</a>. Al igual que con una actualización manual, se mantendrán todos sus ajustes de configuración y módulos de terceros.
 upgrade_edeb=No es un archivo de paquete Webmin Debian válido
-upgrade_setupdeb=Ejecutar DPKG para actualizar Webmin. Espere un minuto hasta que se complete antes de continuar.
+upgrade_setup=Ejecutando el script <tt>setup.sh</tt> para actualizar Webmin ..
+upgrade_setuprpm=Ejecutando <tt>RPM</tt> para actualizar Webmin ..
+upgrade_setupdeb=Ejecutando <tt>DPKG</tt> para actualizar Webmin ..
+upgrade_setuppackage=Ejecutando <tt>pkgadd</tt> para actualizar Webmin ..
 upgrade_ezip=La función de actualización de Webmin no funciona actualmente cuando la ha instalado en Windows. Actualice manualmente en su lugar.
 upgrade_eportage=La función de actualización de Webmin no funciona actualmente cuando se ha instalado desde un paquete de Portage. Actualice utilizando las herramientas de Portage en su lugar.
 upgrade_tabupgrade=Actualizar Webmin

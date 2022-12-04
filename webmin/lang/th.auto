@@ -500,10 +500,10 @@ upgrade_egzip=ไม่สามารถไฟล์ gunzip : $1
 upgrade_etar=ไม่ใช่ไฟล์ Webmin tar ที่ถูกต้อง
 upgrade_euntar=ไม่สามารถยกเลิกไฟล์ได้ : $1
 upgrade_emod=ไฟล์เป็นโมดูล Webmin ไม่ใช่การอัปเกรด Webmin ที่สมบูรณ์ คุณอาจต้องการใช้หน้า <a href='$1'>โมดูล Webmin</a> เพื่อติดตั้ง
-upgrade_setup=กำลังเรียกใช้สคริปต์ setup.sh เพื่ออัปเกรด Webmin.. โปรดรอสักครู่จนกว่าจะเสร็จสมบูรณ์ก่อนดำเนินการต่อ
-upgrade_setuprpm=รัน RPM เพื่ออัปเกรด Webmin.. โปรดรอสักครู่จนกว่ามันจะเสร็จสมบูรณ์ก่อนดำเนินการต่อ
-upgrade_setupdeb=ใช้ DPKG เพื่ออัปเกรด Webmin.. โปรดรอสักครู่จนกว่ามันจะเสร็จสมบูรณ์ก่อนดำเนินการต่อ
-upgrade_setuppackage=ใช้ pkgadd เพื่ออัปเกรด Webmin.. โปรดรอสักครู่จนกว่าจะเสร็จสมบูรณ์ก่อนดำเนินการต่อ
+upgrade_setup=เรียกใช้สคริปต์ <tt>setup.sh</tt> เพื่ออัปเกรด Webmin ..
+upgrade_setuprpm=เรียกใช้ <tt>RPM</tt> เพื่ออัปเกรด Webmin ..
+upgrade_setupdeb=กำลังเรียกใช้ <tt>DPKG</tt> เพื่ออัปเกรด Webmin ..
+upgrade_setuppackage=เรียกใช้ <tt>pkgadd</tt> เพื่ออัปเกรด Webmin ..
 upgrade_esolaris=คุณลักษณะการอัปเกรดของ Webmin ไม่สามารถใช้งานได้เมื่อคุณติดตั้งจากแพ็คเกจ Solaris โปรดอัปเกรดด้วยตนเองแทน
 upgrade_ezip=คุณสมบัติการอัปเกรดของ Webmin ไม่สามารถใช้งานได้เมื่อคุณติดตั้งบน Windows โปรดอัปเกรดด้วยตนเองแทน
 upgrade_eportage=คุณลักษณะการอัปเกรดของ Webmin ไม่สามารถใช้งานได้เมื่อคุณติดตั้งจากแพ็คเกจ Portage โปรดอัปเกรดโดยใช้เครื่องมือการถ่ายภาพแทน

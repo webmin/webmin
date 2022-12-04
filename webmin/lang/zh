@@ -351,10 +351,6 @@ upgrade_egzip=无法解压(gunzip)文件
 upgrade_etar=不是有效的 webmin tar 格式的压缩文件
 upgrade_euntar=无法解压 tar 格式的压缩文件: $1
 upgrade_emod=文件是一个 Webmin 模块，不是完整 Webmin 升级版本。您可能要使用 <a href='$1'>Webmin 模块</a> 页来安装。
-upgrade_setup=正在通过 setup.sh 脚本升级 Webmin ... 一失足成千古恨，再回头是百年人。升级完成前请不要进行任何操作。
-upgrade_setuprpm=正在通过 rpm 升级 Webmin ... 一失足成千古恨，再回头是百年人。升级完成前请不要进行任何操作。
-upgrade_setupdeb=正在通过 dpkg 升级 Webmin.. 一失足成千古恨，再回头是百年人。升级完成前请不要进行任何操作。
-upgrade_setuppackage=正在运行 pkgadd 升级 Webmin ... 一失足成千古恨，再回头是百年人。升级完成前请不要进行任何操作。
 upgrade_esolaris=在您从 Solaris 软件包安装之后，Webmin 的升级功能未能正常工作。请采用手工升级的方式。
 upgrade_ezip=在 Windows 上安装后，Webmin 的升级功能当前不起作用。请改为手动升级。
 upgrade_eportage=从 Portage 软件包安装后，Webmin 的升级功能当前不起作用。请改为使用 Portage 工具进行升级。

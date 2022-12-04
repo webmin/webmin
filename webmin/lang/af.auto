@@ -500,10 +500,10 @@ upgrade_egzip=Kon nie die lêer met wapenstoot : $1 nie
 upgrade_etar=Nie 'n geldige Webmin-teerlêer nie
 upgrade_euntar=Kon nie lêer untar nie : $1
 upgrade_emod=Lêer is 'n Webmin-module, nie 'n volledige Webmin-opdatering nie. U wil dalk die <a href='$1'>Webmin Modules</a> -bladsy gebruik om dit te installeer.
-upgrade_setup=Laat loop script.sh om Webmin op te gradeer. Wag asseblief 'n oomblik totdat dit voltooi is voordat u verder gaan.
-upgrade_setuprpm=Draai RPM om Webmin op te gradeer. Wag asseblief 'n oomblik totdat dit voltooi is voordat u verder gaan.
-upgrade_setupdeb=DPKG gebruik om Webmin op te gradeer. Wag asseblief 'n oomblik totdat dit voltooi is voordat u verder gaan.
-upgrade_setuppackage=Laat loop pkgadd om Webmin op te gradeer. Wag asseblief 'n oomblik totdat dit voltooi is voordat u verder gaan.
+upgrade_setup=Begin <tt>setup.sh</tt> script om Webmin op te gradeer ..
+upgrade_setuprpm=Hardloop <tt>RPM</tt> om Webmin op te gradeer ..
+upgrade_setupdeb=Begin tans <tt>DPKG</tt> om Webmin op te gradeer ..
+upgrade_setuppackage=Begin <tt>pkgadd</tt> om Webmin op te gradeer ..
 upgrade_esolaris=Webmin se opgraderingsfunksie werk nie tans as u vanaf 'n Solaris-pakket geïnstalleer het nie. Gradeer asseblief handmatig op.
 upgrade_ezip=Webmin se opgraderingsfunksie werk nie tans as u op Windows geïnstalleer het nie. Gradeer asseblief handmatig op.
 upgrade_eportage=Webmin se opgraderingsfunksie werk nie tans as u vanaf 'n Portage-pakket geïnstalleer het nie. Opgradeer asseblief met behulp van die Portage-instrumente.

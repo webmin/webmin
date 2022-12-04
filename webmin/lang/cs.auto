@@ -102,6 +102,10 @@ newcsr_ok2=Tento CSR musí být zaslán podpisující autoritě, která vrátí 
 startpage_webminup=Zobrazit aktualizace Webmin na stránce Systémové informace?
 startpage_moduleup=Zobrazit aktualizace modulu na stránce Systémové informace?
 
+upgrade_setup=Spuštění skriptu <tt>setup.sh</tt> pro upgrade Webminu ..
+upgrade_setuprpm=Spuštěním <tt>RPM</tt> upgradujete Webmin ..
+upgrade_setupdeb=Spuštěním <tt>DPKG</tt> upgradujete Webmin ..
+upgrade_setuppackage=Spuštěním <tt>pkgadd</tt> upgradujete Webmin ..
 upgrade_eportage=Funkce aktualizace Webminu v současné době nefunguje, pokud jste nainstalovali z balíčku Portage. Místo toho upgradujte pomocí nástrojů Portage.
 upgrade_src=Upgradujte webmin z
 upgrade_opts=Možnosti upgradu

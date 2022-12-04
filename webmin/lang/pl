@@ -454,10 +454,6 @@ upgrade_egzip=Nie udało się rozpakować pliku poleceniem gunzip : $1
 upgrade_etar=Nie jest to poprawny plik tar Webmina
 upgrade_euntar=Nie udało się rozpakować pliku poleceniem tar : $1
 upgrade_emod=Plik jest modułem Webmina, a nie jego pełną aktualizacją. Być może chcesz skorzystać ze strony <a href='$1'>Moduły Webmina</a> aby go zainstalować.
-upgrade_setup=Uruchamiany jest skrypt setup.sh w celu aktualizacji Webmina .. Poczekaj chwilę na jego zakończenie przed kontynuacją.
-upgrade_setuprpm=Uruchamianie RPM w celu aktualizacji Webmina .. Proszę chwilę poczekać na jego zakończenie przed kontynuacją.
-upgrade_setupdeb=Uruchomiono DPKG w celu aktualizacji Webmina .. Poczekaj chwilę zanim program zakończy działanie.
-upgrade_setuppackage=Uruchamianie pkgadd w celu aktualizacji Webmina .. Proszę chwilę poczekać na jego zakończenie przed kontynuacją.
 upgrade_esolaris=Funkcja aktualizacji Webmina aktualnie nie działa, jeśli Webmin został zainstalowany z pakietu Solarisa. Proszę wykonać aktualizację ręcznie.
 upgrade_ezip=Funkcja aktualizacji Webmina nie działa jeśli jest on zainstalowany w Windows. Spróbuj aktualizować Webmina ręcznie.
 upgrade_eportage=Funkcja aktualizacji Webmina nie działa, gdy jest on zainstalowany z pakietu Portage. Zamiast tego zaktualizuj go poprzez narzędzie Portage.

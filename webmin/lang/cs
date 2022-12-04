@@ -407,10 +407,6 @@ upgrade_egzip=Chyba v gunzip souboru : $1
 upgrade_etar=Neplatný webmin tar soubor
 upgrade_euntar=Chyba v untar souboru : $1
 upgrade_emod=Soubor je modulem Webminu, nikoliv však jeho kompletní povýšení. Možná máte v úmyslu použít stránku <a href='$1'>Moduly Webminu</a>, která slouží k instalaci modulů.
-upgrade_setup=Spouštím script setup.sh pro povýšení Webminu .. Prosím čekejte ..
-upgrade_setuprpm=Spouštím RPM pro povýšení Webmin .. Prosím čekejte ..
-upgrade_setupdeb=Běží DPKG, který povyšuje Webmin .. Posečkejte prosím minutku, dokud se nebude proces ukončen.
-upgrade_setuppackage=Spouštím pkgadd pro povýšení Webmin .. Prosím čekejte ..
 upgrade_esolaris=Příslušenství pro povýšení Webminu nepracuje správně, protože instalujete z balíčku solaris. Raději povýšujte ručně.
 upgrade_ezip=Jste-li přihlášeni do Windows, pak povyšování Webminu nemusí správně proběhnout. Pokuste se o to prosím ručně.
 upgrade_eusermin=Soubor obsahuje Usermin verzi $1, nikoliv povýšení Webminu.

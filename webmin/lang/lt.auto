@@ -500,10 +500,10 @@ upgrade_egzip=Nepavyko surinkti failo : $1
 upgrade_etar=Netinkamas „Webmin“ tar failas
 upgrade_euntar=Nepavyko panaikinti failo : $1
 upgrade_emod=Failas yra „Webmin“ modulis, o ne visas „Webmin“ atnaujinimas. Norėdami ją įdiegti, galite naudoti puslapį <a href='$1'>„Webmin“ moduliai</a>.
-upgrade_setup=Vykdomas „setup.sh“ scenarijus, norint atnaujinti „Webmin“. Prieš tęsdami, palaukite minutę, kol jis bus baigtas.
-upgrade_setuprpm=Vykdomas RPM, norint atnaujinti „Webmin“. Prieš tęsdami, palaukite minutę, kol jis bus baigtas.
-upgrade_setupdeb=Vykdykite DPKG, kad atnaujintumėte „Webmin“. Prieš tęsdami, palaukite minutę, kol jis bus baigtas.
-upgrade_setuppackage=Vykdykite „pkgadd“, kad atnaujintumėte „Webmin“. Prieš tęsdami, palaukite minutę, kol jis bus baigtas.
+upgrade_setup=Vykdomas <tt>setup.sh</tt> scenarijus, kad būtų atnaujintas Webmin ..
+upgrade_setuprpm=Vykdomas <tt>RPM</tt>, kad būtų atnaujintas Webmin ..
+upgrade_setupdeb=Vykdoma <tt>DPKG</tt>, kad būtų atnaujinta Webmin ..
+upgrade_setuppackage=Vykdomas <tt>pkgadd</tt>, kad būtų atnaujinta Webmin ..
 upgrade_esolaris=„Webmin“ atnaujinimo funkcija šiuo metu neveikia, kai įdiegėte iš „Solaris“ paketo. Vietoj to atnaujinkite rankiniu būdu.
 upgrade_ezip=„Webmin“ atnaujinimo funkcija šiuo metu neveikia, kai esate įdiegę „Windows“. Vietoj to atnaujinkite rankiniu būdu.
 upgrade_eportage=„Webmin“ atnaujinimo funkcija šiuo metu neveikia, kai įdiegėte iš „Portage“ paketo. Atnaujinkite naudodami „Portage“ įrankius.

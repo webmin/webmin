@@ -500,10 +500,10 @@ upgrade_egzip=Nu a reușit fișierul gunzip : $1
 upgrade_etar=Nu este un fișier de tarmin Webmin valid
 upgrade_euntar=Nu a reușit să descarce fișierul : $1
 upgrade_emod=Fișierul este un modul Webmin, nu o actualizare completă a Webmin. Poate doriți să utilizați pagina <a href='$1'>Module Webmin</a> pentru a o instala.
-upgrade_setup=Se rulează scriptul setup.sh pentru actualizarea Webmin.. Vă rugăm să așteptați un minut până când este complet înainte de a continua.
-upgrade_setuprpm=Se rulează RPM pentru actualizarea Webmin.. Vă rugăm să așteptați un minut până când este complet înainte de a continua.
-upgrade_setupdeb=Se execută DPKG pentru actualizarea Webmin.. Vă rugăm să așteptați un minut până când este complet înainte de a continua.
-upgrade_setuppackage=Se execută pkgadd pentru actualizarea Webmin.. Vă rugăm să așteptați un minut până când este complet înainte de a continua.
+upgrade_setup=Se rulează scriptul <tt>setup.sh</tt> pentru a actualiza Webmin ..
+upgrade_setuprpm=Se rulează <tt>RPM</tt> pentru a actualiza Webmin ..
+upgrade_setupdeb=Se rulează <tt>DPKG</tt> pentru a actualiza Webmin ..
+upgrade_setuppackage=Se rulează <tt>pkgadd</tt> pentru a actualiza Webmin ..
 upgrade_esolaris=Funcția de actualizare a Webmin nu funcționează în prezent atunci când ați instalat dintr-un pachet Solaris. În schimb, faceți upgrade manual.
 upgrade_ezip=Funcția de actualizare a Webmin nu funcționează în prezent atunci când ați instalat pe Windows. În schimb, faceți upgrade manual.
 upgrade_eportage=Funcția de actualizare a Webmin nu funcționează în prezent atunci când ați instalat dintr-un pachet Portage. Vă rugăm să faceți upgrade folosind instrumentele Portage.

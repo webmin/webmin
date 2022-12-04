@@ -407,10 +407,10 @@ upgrade_egzip=Failed to gunzip file : $1
 upgrade_etar=ليس ملف Webmin tar صالحًا
 upgrade_euntar=Failed to untar file : $1
 upgrade_emod=File is a Webmin module, not a complete Webmin upgrade. You may want to use the <a href='$1'>Webmin Modules</a> page to install it.
-upgrade_setup=تشغيل البرنامج النصي setup.sh لترقية Webmin.. يرجى الانتظار لمدة دقيقة حتى يكتمل قبل المتابعة.
-upgrade_setuprpm=تشغيل RPM لترقية Webmin.. يرجى الانتظار لمدة دقيقة حتى يكتمل قبل المتابعة.
-upgrade_setupdeb=تشغيل DPKG لترقية Webmin.. يرجى الانتظار لمدة دقيقة حتى يكتمل قبل المتابعة.
-upgrade_setuppackage=تشغيل pkgadd لترقية Webmin.. يرجى الانتظار لمدة دقيقة حتى يكتمل قبل المتابعة.
+upgrade_setup=تشغيل البرنامج النصي <tt>setup.sh</tt> لترقية Webmin ..
+upgrade_setuprpm=جارٍ تشغيل <tt>RPM</tt> لترقية Webmin ..
+upgrade_setupdeb=يتم تشغيل <tt>DPKG</tt> لترقية Webmin ..
+upgrade_setuppackage=تشغيل <tt>pkgadd</tt> لترقية Webmin ..
 upgrade_esolaris=لا تعمل ميزة ترقية Webmin حاليًا عند التثبيت من حزمة Solaris. يرجى الترقية يدويا بدلا من ذلك.
 upgrade_ezip=لا تعمل ميزة ترقية Webmin حاليًا عند تثبيت نظام Windows. يرجى الترقية يدويا بدلا من ذلك.
 upgrade_eportage=لا تعمل ميزة ترقية Webmin حاليًا عند التثبيت من حزمة Portage. يرجى الترقية باستخدام أدوات Portage بدلاً من ذلك.

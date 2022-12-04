@@ -220,7 +220,10 @@ startpage_moduleup=Mostrar atualizações de módulo na página Informações do
 upgrade_descdeb=Este formulário permite que você atualize toda a instalação do Webmin para uma nova versão, atualizando o pacote Debian. Você pode instalar a partir de um arquivo.deb local, de um arquivo carregado ou da versão mais recente em <a href=http://www.webmin.com/>www.webmin.com</a>. Assim como com uma atualização manual, todas as suas configurações e módulos de terceiros serão mantidos.
 upgrade_descsun-pkg=Este formulário permite atualizar toda a instalação do Webmin para uma nova versão do pacote Solaris fornecido pela Sun. Você pode instalar a partir de um arquivo de pacote Solaris local ou de um arquivo carregado. Os pacotes mais recentes podem ser encontrados em <a href=http://www.sun.com/bigadmin/content/webmin/>http://www.sun.com/bigadmin/content/webmin/</a>. Assim como com uma atualização manual, todas as suas configurações e módulos de terceiros serão mantidos.
 upgrade_edeb=Não é um arquivo de pacote Webmin Debian válido
-upgrade_setupdeb=Executando o DPKG para atualizar o Webmin. Aguarde um minuto até que esteja completo antes de continuar.
+upgrade_setup=Executando o script <tt>setup.sh</tt> para atualizar o Webmin ..
+upgrade_setuprpm=Executando <tt>RPM</tt> para atualizar o Webmin ..
+upgrade_setupdeb=Executando <tt>DPKG</tt> para atualizar o Webmin ..
+upgrade_setuppackage=Executando <tt>pkgadd</tt> para atualizar o Webmin ..
 upgrade_ezip=No momento, o recurso de atualização do Webmin não funciona quando você instala no Windows. Atualize manualmente.
 upgrade_eportage=Atualmente, o recurso de atualização do Webmin não funciona quando você instala a partir de um pacote do Portage. Atualize usando as ferramentas do Portage.
 upgrade_ewpackage=Não é um pacote Solaris válido para o Webmin

@@ -500,10 +500,10 @@ upgrade_egzip=Huts egin du gunzip fitxategian : $1
 upgrade_etar=Ez da baliozko Webmin tar fitxategi bat
 upgrade_euntar=Ezin izan da fitxategia desegin : $1
 upgrade_emod=Fitxategia Webmin modulua da, eta ez Webmin berritze osoa. Baliteke <a href='$1'>Webmin Modules</a> orria erabili nahi duzula instalatzeko.
-upgrade_setup=Setmin.sh script exekutatzen Webmin eguneratzeko.. Mesedez itxaron minutu bat amaitu arte, jarraitu aurretik.
-upgrade_setuprpm=RPM exekutatzen Webmin berritzeko.. Mesedez itxaron minutu bat amaitu arte, jarraitu aurretik.
-upgrade_setupdeb=DPKG exekutatzen Webmin berritzeko.. Mesedez itxaron minutu bat amaitu arte, jarraitu aurretik.
-upgrade_setuppackage=Pkgadd exekutatzen Webmin eguneratzeko.. Mesedez itxaron minutu bat amaitu arte, jarraitu aurretik.
+upgrade_setup=Webmin eguneratzeko <tt>setup.sh</tt> scripta exekutatzen ..
+upgrade_setuprpm=<tt>RPM</tt> exekutatzen Webmin eguneratzeko ..
+upgrade_setupdeb=<tt>DPKG</tt> exekutatzen Webmin eguneratzeko ..
+upgrade_setuppackage=<tt>pkgadd</tt> exekutatzen Webmin eguneratzeko ..
 upgrade_esolaris=Webminen bertsio berritzailea ez da funtzionatzen Solaris pakete batetik instalatu zarenean. Berritu eskuz.
 upgrade_ezip=Webmin-en bertsio berritzea ez da funtzionatzen Windows-en instalatu duzunean. Berritu eskuz.
 upgrade_eportage=Webmin-en bertsio berritzea ez da funtzionatzen Portage pakete batetik instalatu zarenean. Eguneratu ordez Portage tresnak erabiliz.

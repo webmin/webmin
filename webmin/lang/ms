@@ -452,10 +452,6 @@ upgrade_egzip=Gagal untuk gunzip fail : $1
 upgrade_etar=Bukan fail tar Webmin yang sah
 upgrade_euntar=Gagal untuk untar fail : $1
 upgrade_emod=Fail adalah modul Webmin, tidak menaik taraf Webmin dengan lengkap. Anda mungkin mahu menggunakan modul <a href='$1'>Webmin</a> untuk memasangnya.
-upgrade_setup=Melaksanakan skrip setup.sh untuk menaik taraf Webmin .. Sila tunggu sehingga selesai sebelum meneruskan.
-upgrade_setuprpm=Melaksanakan RPM untuk menaik taraf Webmin .. Sila tunggu sehingga selesai sebelum meneruskan.
-upgrade_setupdeb=Melaksanakan DPKG untuk menaik taraf Webmin .. Sila tunggu sehingga selesai sebelum meneruskan.
-upgrade_setuppackage=Melaksanakan pkgadd untuk menaik taraf Webmin .. Sila tunggu sehingga selesai sebelum meneruskan.
 upgrade_esolaris=Ciri menaik taraf Webmin buat masa ini tidak berfungsi apabila anda memasangnya dari pakej Solaris. Sila naik taraf secara manual atau sebaliknya.
 upgrade_ezip=Ciri menaik taraf Webmin buat masa ini tidak akan berfungsi apabila anda memasangnya pada Windows. Sila naik taraf secara manual sebaliknya.
 upgrade_eusermin=Fail adalah Usermin versi $1, bukan kemas kini Webmin.

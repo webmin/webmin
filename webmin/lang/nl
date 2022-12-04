@@ -445,10 +445,6 @@ upgrade_egzip=Fout bij het gunzip-pen van de file :$1
 upgrade_etar=Geen geldige Webmin Tar file
 upgrade_euntar=Fout bij het un-Tarren van file : $1
 upgrade_emod=Bestand is een Webmin module, geen complete Webmin upgrade. U kunt de <a href='$1'>Webmin Modules</a> pagina gebruiken om het te installeren.
-upgrade_setup=Voert setup.sh script uit om Webmin op te waarderen.. Een ogenblik geduld a.u.b. totdat het script is voltooid voordat u verder gaat.
-upgrade_setuprpm=Voert RPM uit om Webmin op te waarderen.. Een ogenblik geduld a.u.b. totdat het script is voltooid voordat u verder gaat.
-upgrade_setupdeb=Uitvoeren van DPKG om Webmin te upgraden .. Wacht alstublieft een paar minuten totdat dit is afgerond voordat U verder gaat.
-upgrade_setuppackage=Voert pkgadd uit om Webmin op te waarderen.. Een ogenblik geduld a.u.b. totdat het script is voltooid voordat u verder gaat.
 upgrade_esolaris=Webmin's upgrade functie werkt op het moment nog niet wanneer u het heeft geinstalleerd vanuit een Solaris pakket. Voer de opwaardering a.u.b. handmatig uit.
 upgrade_ezip=Webmin's upgrade optie werkt op dit moment niet als u Webmin in Windows geinstalleerd heeft. Upgrade in dat geval handmatig.
 upgrade_eusermin=File is Usermin versie $1, en geen Webmin update

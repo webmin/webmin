@@ -62,6 +62,10 @@ ssl_staging1=Staging (alleen test)
 
 newkey_ecns=Geen servernamen ingevoerd
 
+upgrade_setup=<tt>setup.sh</tt> script uitvoeren om Webmin te upgraden ..
+upgrade_setuprpm=<tt>RPM</tt> uitvoeren om Webmin te upgraden ..
+upgrade_setupdeb=<tt>DPKG</tt> uitvoeren om Webmin te upgraden ..
+upgrade_setuppackage=<tt>pkgadd</tt> uitvoeren om Webmin te upgraden ..
 upgrade_eportage=De upgrade-functie van Webmin werkt momenteel niet wanneer u hebt geïnstalleerd vanuit een Portage-pakket. Voer in plaats daarvan een upgrade uit met de Portage-tools.
 upgrade_src=Webmin upgraden van
 upgrade_opts=Upgrade opties

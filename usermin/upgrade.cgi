@@ -152,10 +152,10 @@ if ($in{'mode'} eq 'rpm') {
 
 	# Install the RPM
 	if ($in{'force'}) {
-		$cmd = "rpm -U --force --nodeps $qfile";
+		$cmd = "rpm -Uv --force --nodeps $qfile";
 		}
 	else {
-		$cmd = "rpm -U --ignoreos --ignorearch --nodeps $qfile";
+		$cmd = "rpm -Uv --ignoreos --ignorearch --nodeps $qfile";
 		}
 	print "<p>",&text($in{'install'} ? 'upgrade_setup2' : 'upgrade_setup',
 			  "<tt>$cmd</tt>"),"<br>\n";

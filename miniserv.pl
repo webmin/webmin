@@ -29,7 +29,9 @@ else {
 %config = &read_config_file($config_file);
 if ($config{'perllib'}) {
 	push(@INC, split(/:/, $config{'perllib'}));
+	push(@INC, "$config{'root'}/vendor_perl");
 	$ENV{'PERLLIB'} .= ':'.$config{'perllib'};
+	$ENV{'PERLLIB'} .= ':'."$config{'root'}/vendor_perl";
 	}
 @startup_msg = ( );
 
@@ -4769,7 +4771,8 @@ print DEBUG "in reload_config_file\n";
 &build_config_mappings();
 &read_webmin_crons();
 &precache_files();
-&setup_ssl_contexts();
+&setup_ssl_contexts()
+	if ($use_ssl);
 &parse_websockets_config();
 if ($config{'session'}) {
 	dbmclose(%sessiondb);

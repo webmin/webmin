@@ -259,9 +259,6 @@ upgrade_egzip=gunzip檔案失敗 : $1
 upgrade_etar=不是有效的 Webmin tar 檔案
 upgrade_euntar=解開tar檔失敗 : $1
 upgrade_emod=檔案是個Webmin模組，不是一個Webmin升級檔案，您必須要使用 <a href='$1'>Webmin模組</a> 頁來安裝。
-upgrade_setup=執行 setup.sh 指令檔以升級 Webmin 中... 請稍候等它完成再繼續進行。
-upgrade_setuprpm=執行 RPM 升級 Webmin中 .. 請稍候等它完成再繼續進行。
-upgrade_setuppackage=執行 pkgadd 升級 Webmin中 .. 請稍候等它完成再繼續進行。
 upgrade_esolaris=當您從Solaris安裝套件時，Webmin的升級功能無法使用， 請用手動升級的方式。
 upgrade_updates=這個有一個Webmin的新版本 $1 可以升級 <a href='$2'>按這裡</a> 現在自動下載和安裝。
 upgrade_epackage=不是有效的 solaris 包裝

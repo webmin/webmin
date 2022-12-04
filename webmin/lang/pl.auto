@@ -53,6 +53,11 @@ ssl_staging1=Inscenizacja (tylko test)
 
 newkey_ecns=Nie wprowadzono nazw serwerów
 
+upgrade_setup=Uruchamianie skryptu <tt>setup.sh</tt> w celu aktualizacji Webmin ..
+upgrade_setuprpm=Uruchamiam <tt>RPM</tt>, aby uaktualnić Webmina ..
+upgrade_setupdeb=Uruchamianie <tt>DPKG</tt> w celu aktualizacji Webmina ..
+upgrade_setuppackage=Uruchamianie <tt>pkgadd</tt> w celu aktualizacji Webmina ..
+
 ca_alt=Dodatkowe domeny
 
 session_utmp=Zapisywać loginy i wylogowania w <tt>utmp</tt>?

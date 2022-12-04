@@ -500,10 +500,10 @@ upgrade_egzip=Datoteke gunzip ni uspelo : $1
 upgrade_etar=Ni veljavna datoteka tarmin Webmin
 upgrade_euntar=Odstranjevanja datoteke ni bilo mogoče : $1
 upgrade_emod=Datoteka je modul Webmin in ni popolna Webmin nadgradnja. Za namestitev boste morda želeli uporabiti stran <a href='$1'>Webmin Modules</a>.
-upgrade_setup=Zaženite setup.sh skript za nadgradnjo Webmin.. Pred nadaljevanjem počakajte minuto, dokler ne konča.
-upgrade_setuprpm=Zaženite RPM za nadgradnjo Webmin.. Pred nadaljevanjem počakajte minuto, dokler ni dokončan.
-upgrade_setupdeb=Zaženite DPKG za nadgradnjo Webmin.. Pred nadaljevanjem počakajte minuto, dokler ni končana.
-upgrade_setuppackage=Zaženite pkgadd za nadgradnjo Webmin.. Pred nadaljevanjem počakajte minuto, dokler ne konča.
+upgrade_setup=Izvajanje skripta <tt>setup.sh</tt> za nadgradnjo Webmin ..
+upgrade_setuprpm=Izvajanje <tt>RPM</tt> za nadgradnjo Webmin ..
+upgrade_setupdeb=Izvajanje <tt>DPKG</tt> za nadgradnjo Webmin ..
+upgrade_setuppackage=Izvajanje <tt>pkgadd</tt> za nadgradnjo Webmin ..
 upgrade_esolaris=Funkcija nadgradnje Webmin trenutno ne deluje, če ste ga namestili iz paketa Solaris. Namesto tega nadgradite ročno.
 upgrade_ezip=Funkcija nadgradnje Webmin trenutno ne deluje, če ste ga namestili v sistemu Windows. Namesto tega nadgradite ročno.
 upgrade_eportage=Funkcija nadgradnje Webmin trenutno ne deluje, če ste ga namestili iz Portage paketa. Nadgradite z orodji Portage.
