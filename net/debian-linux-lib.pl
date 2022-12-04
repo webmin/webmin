@@ -24,7 +24,7 @@ my @autos = &get_auto_defs();
 my @rv;
 my %v6map;
 foreach $iface (@ifaces) {
-	my ($name, $addrfam, $method, $options) = @$iface;
+	my ($name, $addrfam, $method, $options, $file, $lnum) = @$iface;
 	if ($addrfam eq 'inet') {
 		# IPv4 interface .. parse and add to list
 		my $cfg = { };
@@ -91,11 +91,16 @@ foreach $iface (@ifaces) {
 				$cfg->{$param} = $value;
 				}
 			}
+		if ($cfg->{'address'} =~ /^(\S+)\/(\d+)$/) {
+			$cfg->{'address'} = $1;
+			$cfg->{'netmask'} = &prefix_to_mask($2);
+			}
 		$cfg->{'dhcp'} = ($method eq 'dhcp');
 		$cfg->{'bootp'} = ($method eq 'bootp');
 		$cfg->{'edit'} = ($cfg->{'name'} !~ /^ppp|lo/);
 		$cfg->{'index'} = scalar(@rv);	
-		$cfg->{'file'} = $network_interfaces_config;
+		$cfg->{'file'} = $file;
+		$cfg->{'line'} = $lnum;
 		push(@rv, $cfg);
 		}
 	elsif ($addrfam eq "inet6") {
@@ -255,8 +260,8 @@ if(($cfg->{'vlan'} == 1) && ($cfg->{'mtu'})) {
 
 # Find the existing interface section
 my @ifaces = get_interface_defs();
-my $found = 0;
-my $found6 = 0;
+my $found;
+my $found6;
 foreach $iface (@ifaces) {
 	local $address;
 	foreach my $opt (@{$iface->[3]}) {
@@ -267,7 +272,7 @@ foreach $iface (@ifaces) {
 		}
 	if ($iface->[0] eq $cfg->{'fullname'} && $iface->[1] eq 'inet') {
 		# Found interface to change
-		$found = 1;
+		$found = $iface->[4];
 		foreach my $o (@{$iface->[3]}) {
 			if ($o->[0] eq 'gateway' ||
 			    $o->[0] eq 'pre-up' && $o->[1] =~ /brctl/ ||
@@ -279,7 +284,7 @@ foreach $iface (@ifaces) {
 		}
 	if ($iface->[0] eq $cfg->{'fullname'} && $iface->[1] eq 'inet6') {
 		# Found IPv6 block
-		$found6 = 1;
+		$found6 = $iface->[4];
 		}
 	}
 
@@ -307,11 +312,11 @@ else {
 	# Update existing section
 	if($in{'vlan'} == 1) {
 		&modify_interface_def($cfg->{'physical'}.'.'.$cfg->{'vlanid'},
-				      'inet', $method, \@options, 0);
+				      'inet', $method, \@options, 0, $found);
 		}
 	else {
 		&modify_interface_def($cfg->{'fullname'},
-				      'inet', $method, \@options, 0);
+				      'inet', $method, \@options, 0, $found);
 		}
 	if ($cfg->{'bond'} == 1 && $gconfig{'os_version'} < 5) {
 		&modify_module_def($cfg->{'fullname'}, 0, $cfg->{'mode'},
@@ -350,11 +355,11 @@ if (!$found6 && @options6) {
 elsif ($found6 && @options6) {
 	# Need to update IPv6 block
 	&modify_interface_def($cfg->{'fullname'},
-			      'inet6', $method, \@options6, 0);
+			      'inet6', $method, \@options6, 0, $found6);
 	}
 elsif ($found6 && !@options6) {
 	# Need to delete IPv6 block
-	&delete_interface_def($cfg->{'fullname'}, 'inet6');
+	&delete_interface_def($cfg->{'fullname'}, 'inet6', $found6);
 	}
 
 # Set auto option to include this interface, or not
@@ -516,9 +521,9 @@ sub new_module_def
 sub delete_interface
 {
 my $cfg = $_[0];
-&delete_interface_def($cfg->{'fullname'}, 'inet');
+&delete_interface_def($cfg->{'fullname'}, 'inet', $cfg->{'file'});
 if (@{$cfg->{'address6'}}) {
-	&delete_interface_def($cfg->{'fullname'}, 'inet6');
+	&delete_interface_def($cfg->{'fullname'}, 'inet6', $cfg->{'file'});
 	}
 my @autos = get_auto_defs();
 if ($gconfig{'os_version'} >= 3 || scalar(@autos)) {
@@ -788,60 +793,68 @@ sub get_interface_defs
 {
 my ($file) = @_;
 $file ||= $network_interfaces_config;
-local *CFGFILE;
+my $fh;
 my @ret;
-&open_readfile(CFGFILE, $file) || return ();
+open($fh, $file) || return ();
 # read the file line by line
-$line = <CFGFILE>;
+my $line = <$fh>;
 my $lnum = 0;
 while (defined $line) {
+	print STDERR "file=$file line=$line\n";
 	chomp($line);
 	# skip comments
 	if ($line =~ /^\s*#/ || $line =~ /^\s*$/) {
-		$line = <CFGFILE>;
+		$line = <$fh>;
 		$lnum++;
 		next;
 		}
 	if ($line =~ /^\s*auto/) {
 		# skip auto stanzas
-		$line = <CFGFILE>;
+		$line = <$fh>;
 		$lnum++;
 		while(defined($line) && $line !~ /^\s*(iface|mapping|auto|source|allow-hotplug)/) {
-			$line = <CFGFILE>;
+			$line = <$fh>;
 			$lnum++;
 			next;
 			}
 		}
 	elsif ($line =~ /^\s*mapping/) {
 		# skip mapping stanzas
-		$line = <CFGFILE>;
+		$line = <$fh>;
 		$lnum++;
 		while(defined($line) && $line !~ /^\s*(iface|mapping|auto|source|allow-hotplug)/) {
-			$line = <CFGFILE>;
+			$line = <$fh>;
 			$lnum++;
 			next;
 			}
 		}
-	elsif ($line =~ /^\s*source/) {
-		# Skip includes
-		$line = <CFGFILE>;
+	elsif ($line =~ /^\s*source\s+(\S+)/) {
+		# Expand includes
+		$line = <$fh>;
 		$lnum++;
+		my $src = $1;
+		my @srcs = glob($src);
+		foreach $src (@srcs) {
+			print STDERR "including $src\n";
+			my @inc = &get_interface_defs($src);
+			push(@ret, @inc);
+			}
 		}
 	elsif ($line =~ /^\s*allow-hotplug/) {
 		# Skip hotplug lines
-		$line = <CFGFILE>;
+		$line = <$fh>;
 		$lnum++;
 		}
 	elsif (my ($name, $addrfam, $method) = ($line =~ /^\s*iface\s+(\S+)\s+(\S+)\s+(\S+)\s*$/) ) {
 		# only lines starting with "iface" are expected here
 		my @iface_options;
 		# now read everything until the next iface definition
-		$line = <CFGFILE>;
+		$line = <$fh>;
 		$lnum++;
 		while (defined $line && ! ($line =~ /^\s*(iface|mapping|auto|source|allow-hotplug)/)) {
 			# skip comments and empty lines
 			if ($line =~ /^\s*#/ || $line =~ /^\s*$/) {
-				$line = <CFGFILE>;
+				$line = <$fh>;
 				$lnum++;
 				next;
 				}
@@ -855,7 +868,7 @@ while (defined $line) {
 			else {
 				error("Error in option line: '$line' invalid");
 				}
-			$line = <CFGFILE>;
+			$line = <$fh>;
 			$lnum++;
 			}
 		push(@ret, [$name, $addrfam, $method, \@iface_options,
@@ -865,7 +878,7 @@ while (defined $line) {
 		error("Error reading file $network_interfaces_config: unexpected line '$line'");
 		}
 	}
-close(CFGFILE);
+close($fh);
 return @ret;
 }
 
@@ -916,20 +929,21 @@ if (!$found) {
 }
 
 # modifies the options of an already stored interface definition
-# the parameters should be (name, addrfam, method, options, mode)
+# the parameters should be (name, addrfam, method, options, mode, file)
 # with options being an array of (param, value) pairs
 # and mode being 0 for modify and 1 for delete
 sub modify_interface_def
 {
-my ($name, $addrfam, $method, $options, $mode) = @_;
+my ($name, $addrfam, $method, $options, $mode, $file) = @_;
+$file ||= $network_interfaces_config;
 # make a backup copy
-&copy_source_dest($network_interfaces_config, "$network_interfaces_config~");
+&copy_source_dest($file, $file."~");
 local *OLDCFGFILE, *NEWCFGFILE;
-&open_readfile(OLDCFGFILE, "$network_interfaces_config~") ||
-	error("Unable to open $network_interfaces_config");
-&lock_file($network_interfaces_config);
-&open_tempfile(NEWCFGFILE, "> $network_interfaces_config", 1) ||
-	error("Unable to open $network_interfaces_config");
+&open_readfile(OLDCFGFILE, $file."~") ||
+	error("Unable to open $file");
+&lock_file($file);
+&open_tempfile(NEWCFGFILE, ">$file", 1) ||
+	error("Unable to open $file");
 
 my $inside_modify_region = 0;
 my $iface_line = 0;
@@ -977,10 +991,10 @@ while (defined ($line=<OLDCFGFILE>)) {
 		}
 	$iface_line = 0;
 	}
-
 close(OLDCFGFILE);
 &close_tempfile(NEWCFGFILE);
-&unlock_file($network_interfaces_config);
+&unlock_file($file);
+&unlink_file($file."~");
 }
 
 # creates a new interface definition in the config file
@@ -1004,11 +1018,11 @@ foreach $option (@$options) {
 }
 
 # delete an already defined interface
-# the parameters should be (name, addrfam)
+# the parameters should be (name, addrfam, file)
 sub delete_interface_def
 {
-local ($name, $addrfam, $method) = @_;
-&modify_interface_def($name, $addrfam, '', [], 1);
+local ($name, $addrfam, $file) = @_;
+&modify_interface_def($name, $addrfam, '', [], 1, $file);
 &modify_module_def($name, 1);
 }
 
