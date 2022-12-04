@@ -350,7 +350,7 @@ my $method = $cfg->{'auto6'} ? "manual" : "static";
 if (!$found6 && @options6) {
 	# Need to add IPv6 block
 	&new_interface_def($cfg->{'fullname'},
-			   'inet6', $method, \@options6);
+			   'inet6', $method, \@options6, $found);
 	}
 elsif ($found6 && @options6) {
 	# Need to update IPv6 block
@@ -998,23 +998,23 @@ close(OLDCFGFILE);
 }
 
 # creates a new interface definition in the config file
-# the parameters should be (name, addrfam, method, options)
+# the parameters should be (name, addrfam, method, options, file)
 # with options being an array of (param, value) pairs
 # the selection key is (name, addrfam)
 sub new_interface_def
 {
-# make a backup copy
-&copy_source_dest($network_interfaces_config, "$network_interfaces_config~");
+local ($name, $addrfam, $method, $options, $file) = @_;
+$file ||= $network_interfaces_config;
 local *CFGFILE;
-&open_lock_tempfile(CFGFILE, ">> $network_interfaces_config") ||
-	error("Unable to open $network_interfaces_config");
-local ($name, $addrfam, $method, $options) = @_;
+&open_lock_tempfile(CFGFILE, ">>$file") ||
+	error("Unable to open $file");
 &print_tempfile(CFGFILE, "\niface $name $addrfam $method\n");
 foreach $option (@$options) {
 	my ($param, $value) = @$option;
 	&print_tempfile(CFGFILE, "\t$param $value\n");
 	}
 &close_tempfile(CFGFILE);
+&unlock_file($file);
 }
 
 # delete an already defined interface
