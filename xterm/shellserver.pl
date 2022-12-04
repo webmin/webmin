@@ -29,7 +29,8 @@ else {
 &clean_environment();
 
 # Set terminal
-$ENV{'TERM'} = 'xterm-256color';
+my @terms = ('xterm-256color', 'xterm-16color', 'xterm', 'vt102', 'vt100', 'vt52', 'rxvt', 'nsterm', 'dtterm', 'ansi');
+$ENV{'TERM'} = defined($config{'xterm'}) ? $terms[$config{'xterm'}] : 'xterm-256color';
 $ENV{'HOME'} = $uinfo[7];
 chdir($dir || $uinfo[7] || "/");
 my $shellcmd = $uinfo[8];
