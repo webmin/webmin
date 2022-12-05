@@ -13,7 +13,7 @@ Full function documentation is in web-lib-funcs.pl.
 =cut
 
 package WebminCore;
-use lib ("$ENV{'PERLLIB'}/vendor_perl");
+use lib ("$ENV{'LIBROOT'}/vendor_perl");
 require Exporter;
 @ISA = qw(Exporter);
 
