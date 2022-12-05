@@ -1,4 +1,5 @@
 xterm=Set <tt>TERM</tt> environmental variable to,4,0-xterm&#45;256color,1-xterm&#45;16color,2-xterm,3-vt102,3-vt100,4-vt52,5-rxvt,6-nsterm,7-dtterm,8-ansi
 base_port=Base port number for WebSockets connections,0,5
 size=Terminal width and height in characters,3,Automatic,5,,,Static (80x24)
+locale=Set shell character encoding,10,0-Shell default,1-<tt>en_US.UTF&#45;8</tt>,Custom
 rcfile=Execute initialization commands from file,10,0-Shell default,1-Module default,Custom

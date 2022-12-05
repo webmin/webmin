@@ -28,6 +28,16 @@ else {
 &foreign_require("proc");
 &clean_environment();
 
+# Set locale
+my $lang = $config{'locale'};
+if ($lang) {
+	my @opts = ('LC_ALL', 'LANG', 'LANGUAGE');
+	$lang = 'en_US.UTF-8' if ($lang == 1);
+	foreach my $opt (@opts) {
+		$ENV{$opt} = &trim($lang);
+		}
+	}
+
 # Set terminal
 my @terms = ('xterm-256color', 'xterm-16color', 'xterm', 'vt102', 'vt100', 'vt52', 'rxvt', 'nsterm', 'dtterm', 'ansi');
 $ENV{'TERM'} = defined($config{'xterm'}) ? $terms[$config{'xterm'}] : 'xterm-256color';
