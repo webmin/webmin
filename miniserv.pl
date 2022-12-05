@@ -27,6 +27,7 @@ else {
 	$config_file = "$pwd/$ARGV[0]";
 	}
 %config = &read_config_file($config_file);
+$ENV{'LIBROOT'} = $config{'root'};
 if ($config{'perllib'}) {
 	push(@INC, split(/:/, $config{'perllib'}));
 	push(@INC, "$config{'root'}/vendor_perl");
@@ -2395,6 +2396,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	$envlang = $ENV{"LANG"};
 	$envroot = $ENV{"SystemRoot"};
 	$envperllib = $ENV{'PERLLIB'};
+	$envdoclroot = $ENV{'LIBROOT'};
 	foreach my $k (keys %ENV) {
 		delete($ENV{$k});
 		}
@@ -2403,6 +2405,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	$ENV{"USER"} = $envuser if ($envuser);
 	$ENV{"OLD_LANG"} = $envlang if ($envlang);
 	$ENV{"SystemRoot"} = $envroot if ($envroot);
+	$ENV{'LIBROOT'} = $envdoclroot if ($envdoclroot);
 	$ENV{'PERLLIB'} = $envperllib if ($envperllib);
 	$ENV{"HOME"} = $user_homedir;
 	$ENV{"SERVER_SOFTWARE"} = $config{"server"};
