@@ -39,8 +39,11 @@ if ($lang) {
 	}
 
 # Set terminal
-my @terms = ('xterm-256color', 'xterm-16color', 'xterm', 'vt102', 'vt100', 'vt52', 'rxvt', 'nsterm', 'dtterm', 'ansi');
-$ENV{'TERM'} = defined($config{'xterm'}) ? $terms[$config{'xterm'}] : 'xterm-256color';
+my $config_xterm = $config{'xterm'};
+$config_xterm = 'xterm-256color'
+	if (!$config_xterm);
+$config_xterm =~ s/\+/-/;
+$ENV{'TERM'} = $config_xterm;
 $ENV{'HOME'} = $uinfo[7];
 chdir($dir || $uinfo[7] || "/");
 my $shellcmd = $uinfo[8];
