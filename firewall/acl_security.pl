@@ -6,30 +6,24 @@ do 'firewall-lib.pl';
 # Output HTML for editing security options for the acl module
 sub acl_security_form
 {
+my ($o) = @_;
+
 # Show editable tables
-print "<tr> <td valign=top><b>$text{'acl_tables'}</b></td> <td colspan=3>\n";
-local $t;
+my $tables = "";
 foreach $t (@known_tables) {
-	printf "<input type=checkbox name=%s value=1 %s> %s<br>\n",
-		$t, $_[0]->{$t} ? "checked" : "", $text{'index_table_'.$t};
+	$tables .= &ui_checkbox($t, 1, $text{'index_table_'.$t},
+				$o->{$t})."<br>\n";
 	}
-print "</td> </tr>\n";
+print &ui_table_row($text{'acl_tables'}, $tables, 3);
 
 # Show allowed target types
-print "<tr> <td><b>$text{'acl_jumps'}</b></td>\n";
-print "<td colspan=3>",&ui_opt_textbox("jumps", $_[0]->{'jumps'}, 40,
-				       $text{'acl_jall'}),"</td> </tr>\n";
+print &ui_table_row($text{'acl_jumps'},
+	&ui_opt_textbox("jumps", $o->{'jumps'}, 40, $text{'acl_jall'}), 3);
 
 # Show bootup/apply options
-local ($f, $i);
-foreach $f (@acl_features) {
-	print "<tr>\n" if ($i%2 == 0);
-	print "<td><b>",$text{'acl_'.$f},"</b></td> <td>\n";
-	printf "<input type=radio name=%s value=1 %s> %s\n",
-		$f, $_[0]->{$f} ? "checked" : "", $text{'yes'};
-	printf "<input type=radio name=%s value=0 %s> %s</td>\n",
-		$f, $_[0]->{$f} ? "" : "checked", $text{'no'};
-	print "</tr>\n" if ($i++%2 == 1);
+foreach my $f (@acl_features) {
+	print &ui_table_row($text{'acl_'.$f},
+		&ui_yesno_radio($f, $o->{$f}));
 	}
 }
 
@@ -37,14 +31,14 @@ foreach $f (@acl_features) {
 # Parse the form for security options for the acl module
 sub acl_security_save
 {
-local $t;
-foreach $t (@known_tables) {
-	$_[0]->{$t} = $in{$t};
+my ($o) = @_;
+
+foreach my $t (@known_tables) {
+	$o->{$t} = $in{$t};
 	}
-local $f;
-foreach $f (@acl_features) {
-	$_[0]->{$f} = $in{$f};
+foreach my $f (@acl_features) {
+	$o->{$f} = $in{$f};
 	}
-$_[0]->{'jumps'} = $in{'jumps_def'} ? undef : $in{'jumps'};
+$o->{'jumps'} = $in{'jumps_def'} ? undef : $in{'jumps'};
 }
 
