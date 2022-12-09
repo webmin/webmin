@@ -29,6 +29,7 @@ else {
 &clean_environment();
 
 # Set terminal
+$ENV{'USER'} = $user;
 $ENV{'TERM'} = 'xterm-256color';
 $ENV{'HOME'} = $uinfo[7];
 chdir($dir || $uinfo[7] || "/");
