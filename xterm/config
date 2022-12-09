@@ -1,2 +1,4 @@
+xterm=xterm-256color
 base_port=555
 rcfile=0
+locale=0

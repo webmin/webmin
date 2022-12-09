@@ -28,9 +28,23 @@ else {
 &foreign_require("proc");
 &clean_environment();
 
+# Set locale
+my $lang = $config{'locale'};
+if ($lang) {
+	my @opts = ('LC_ALL', 'LANG', 'LANGUAGE');
+	$lang = 'en_US.UTF-8' if ($lang == 1);
+	foreach my $opt (@opts) {
+		$ENV{$opt} = &trim($lang);
+		}
+	}
+
 # Set terminal
 $ENV{'USER'} = $user;
-$ENV{'TERM'} = 'xterm-256color';
+my $config_xterm = $config{'xterm'};
+$config_xterm = 'xterm-256color'
+	if (!$config_xterm);
+$config_xterm =~ s/\+/-/;
+$ENV{'TERM'} = $config_xterm;
 $ENV{'HOME'} = $uinfo[7];
 chdir($dir || $uinfo[7] || "/");
 my $shellcmd = $uinfo[8];
