@@ -334,3 +334,16 @@ form[action="config_save.cgi"] #sortableTable2 > thead > tr > td {
 .leftmenu details .linkindented {
   margin-left: 16px;
 }
+
+.ui_alert_box > tbody > tr[bgcolor="#DFF0D8"] > td {
+  border: 1px solid #7cda1099;
+}
+.ui_alert_box > tbody > tr[bgcolor="#D9EDF7"] > td {
+    border: 1px solid #108eda5c;
+}
+.ui_alert_box > tbody > tr[bgcolor="#FCF8E3"] > td {
+  border: 1px solid #dac51099;
+}
+.ui_alert_box > tbody > tr[bgcolor="#F2DEDE"] > td {
+  border: 1px solid #da10bb57;
+}
