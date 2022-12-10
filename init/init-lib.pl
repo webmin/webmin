@@ -2346,6 +2346,15 @@ my $cfile = &get_systemd_root($name)."/".$name;
 &open_lock_tempfile(CFILE, ">$cfile");
 &print_tempfile(CFILE, "[Unit]\n");
 &print_tempfile(CFILE, "Description=$desc\n") if ($desc);
+if (ref($opts)) {
+	&print_tempfile(CFILE, "Before=$opts->{'before'}\n") if ($opts->{'before'});
+	&print_tempfile(CFILE, "After=$opts->{'after'}\n") if ($opts->{'after'});
+	&print_tempfile(CFILE, "Wants=$opts->{'wants'}\n") if ($opts->{'wants'});
+	&print_tempfile(CFILE, "Requires=$opts->{'requires'}\n") if ($opts->{'requires'});
+	&print_tempfile(CFILE, "Conflicts=$opts->{'conflicts'}\n") if ($opts->{'conflicts'});
+	&print_tempfile(CFILE, "OnFailure=$opts->{'onfailure'}\n") if ($opts->{'onfailure'});
+	&print_tempfile(CFILE, "OnSuccess=$opts->{'onsuccess'}\n") if ($opts->{'onsuccess'});
+	}
 &print_tempfile(CFILE, "\n");
 &print_tempfile(CFILE, "[Service]\n");
 &print_tempfile(CFILE, "ExecStart=$start\n");
