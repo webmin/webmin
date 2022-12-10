@@ -598,6 +598,26 @@ $rv .= "</td></tr></table>\n"; # wrapper
 return $rv;
 }
 
+sub theme_ui_hidden_start
+{
+my ($title, $name, $status) = @_;
+my $rv;
+my $opened = $status ? " open" : "";
+$rv .= "<details class='ui_hidden_start'$opened>";
+$rv .= "<summary>$title</summary>\n";
+return $rv;
+}
+
+=head2 ui_hidden_end(name)
+
+Returns HTML for the end of a hidden section, started by ui_hidden_start.
+
+=cut
+sub theme_ui_hidden_end
+{
+return "</details>\n";
+}
+
 # theme_ui_hidden_table_start(heading, [tabletags], [cols], name, status,
 #                             [&default-tds], [rightheading])
 # A table with a heading and table inside, and which is collapsible
@@ -608,31 +628,17 @@ my $rv;
 if (!$main::ui_hidden_start_donejs++) {
   $rv .= &ui_hidden_javascript();
   }
-my $divid = "hiddendiv_$name";
-my $openerid = "hiddenopener_$name";
-my $defimg = $status ? "open.gif" : "closed.gif";
-my $defclass = $status ? 'opener_shown' : 'opener_hidden';
-my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} :
-        defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
+my $opened = $status ? " open" : "";
+my $header = defined($heading) ? "<span>$heading</span>" : "";
+my $rheader = defined($rightheading) ? "<span class='rightheading'>$rightheading</span>" : "";
 if (!$main::WRAPPER_OPEN) { # If we're not already inside of a wrapper, wrap it
-	$rv .= "<table class='shrinkwrapper' $tabletags>\n";
-	$rv .= "<tr><td>\n";
+	$rv .= "<div>\n";
 	}
 $main::WRAPPER_OPEN++;
 my $colspan = 1;
-$rv .= "<table class='ui_table' $tabletags>\n";
-if (defined($heading) || defined($rightheading)) {
-	$rv .= "<thead><tr>";
-	if (defined($heading)) {
-		$rv .= "<td><a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='@{[&get_webprefix()]}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\" class='ui-hidden-table-title'><b>$heading</b></a></td>";
-		}
-        if (defined($rightheading)) {
-                $rv .= "<td align=right>$rightheading</td>";
-                $colspan++;
-                }
-	$rv .= "</tr> </thead>\n";
-	}
-$rv .= "<tbody><tr> <td colspan=$colspan><div class='$defclass' id='$divid'><table width=100%>\n";
+$rv .= "<details class='ui_hidden_table_start'$opened>";
+$rv .= "<summary>$header $rheader</summary>\n";
+$rv .= "<table width=100%>\n";
 $main::ui_table_cols = $cols || 4;
 $main::ui_table_pos = 0;
 $main::ui_table_default_tds = $tds;
@@ -644,12 +650,10 @@ return $rv;
 # ui_hidden_table_start
 sub theme_ui_hidden_table_end
 {
-my ($name) = @_;
-local $rv = "</table></div></td></tr></tbody></table>\n";
+local $rv = "</table></details>\n";
 if ( $main::WRAPPER_OPEN == 1 ) {
 	$main::WRAPPER_OPEN--;
-	#$rv .= "</div>\n";
-	$rv .= "</td></tr></table>\n";
+	$rv .= "</div>\n";
 	}
 elsif ($main::WRAPPER_OPEN) { $main::WRAPPER_OPEN--; }
 return $rv;

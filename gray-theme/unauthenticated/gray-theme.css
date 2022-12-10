@@ -317,7 +317,7 @@ form[action="config_save.cgi"] #sortableTable2 > thead > tr > td {
   cursor: pointer;
 }
 .leftmenu details > summary::marker {
-  color: #bbb;
+  color: #bfbfbf;
   font-size: 120%;
 }
 .leftmenu details > summary  span {
@@ -346,4 +346,38 @@ form[action="config_save.cgi"] #sortableTable2 > thead > tr > td {
 }
 .ui_alert_box > tbody > tr[bgcolor="#F2DEDE"] > td {
   border: 1px solid #da10bb57;
+}
+
+.right-top-links {
+  margin-bottom: 4px;
+}
+
+details table.wrapper, details table.shrinkwrapper,
+details.ui_hidden_table_start {
+  background-color: #f5f5f5;
+}
+details.ui_hidden_table_start {
+  border: 1px solid #d9d9d9;
+  margin: 2px 0;
+}
+details.ui_hidden_table_start > summary {
+  cursor: pointer;
+  background-color: #d0dffc;
+  padding: 1px 6px;
+}
+details.ui_hidden_table_start > summary span {
+  font-weight: bold;
+}
+details.ui_hidden_table_start > summary span.rightheading {
+  float: right
+}
+details.ui_hidden_table_start > summary::marker {
+  color: #aaa;
+  font-size: 120%;
+}
+details.ui_hidden_table_start > summary  span {
+  padding-left: 4px;
+  white-space: nowrap;
+  color: #393939;
+  vertical-align: top;
 }

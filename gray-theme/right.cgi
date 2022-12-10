@@ -39,7 +39,7 @@ my @linkshtml = map {
 		 !$_->{'target'} ? '' :
 	         $_->{'target'} eq 'new' ? 'target=_blank' :
 		 $_->{'target'} eq 'window' ? 'target=_top' : '') } @links;
-print "<div align=right>\n";
+print "<div class=\"right-top-links\" align=right>\n";
 print &ui_links_row(\@linkshtml);
 print "</div>\n";
 
