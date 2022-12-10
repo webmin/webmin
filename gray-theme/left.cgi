@@ -102,6 +102,16 @@ else {
 			    !$titlemods{$_->{'module'}} } @leftitems;
 	}
 
+# Show Webmin search form
+my $cansearch = ($gaccess{'webminsearch'} || '') ne '0' &&
+		!$sects->{'nosearch'};
+if ($mode eq "modules" && $cansearch) {
+	push(@leftitems, { 'type' => 'input',
+			   'desc' => $text{'left_search'},
+			   'name' => 'search',
+			   'cgi' => '/webmin_search.cgi', });
+	push(@leftitems, { 'type' => 'hr' });
+	}
 # Show system information link
 push(@leftitems, { 'type' => 'item',
 		   'id' => 'home',
@@ -146,19 +156,55 @@ if ($ENV{'HTTP_WEBMIN_SERVERS'}) {
 			  'target' => 'window' });
 	}
 
-# Show Webmin search form
-my $cansearch = ($gaccess{'webminsearch'} || '') ne '0' &&
-		!$sects->{'nosearch'};
-if ($mode eq "modules" && $cansearch) {
-	push(@leftitems, { 'type' => 'input',
-			   'desc' => $text{'left_search'},
-			   'name' => 'search',
-			   'cgi' => '/webmin_search.cgi', });
-	}
-
 show_menu_items_list(\@leftitems, 0);
 
 print "</td></tr></tbody></table>\n";
+print <<EOF;
+<script type='text/javascript'>
+(function() {
+	var imgs = document.querySelectorAll('img[src]');
+	imgs.forEach(function(img) {
+		var i = document.createElement("i");
+		if (img.src) {
+			if (img.src.includes('webmin-small.png')) {
+				i.classList.add('ff', 'ff-fw', 'ff-webmin');
+			} else if (img.src.includes('virtualmin.png')) {
+				i.classList.add('ff', 'ff-fw', 'ff-virtualmin');
+			} else if (img.src.includes('cloudmin.png')) {
+				i.classList.add('ff', 'ff-fw', 'ff-cloudmin');
+			} else if (img.src.includes('index.png')) {
+				i.classList.add('ff', 'ff-fw', 'ff-virtualmin-tick');
+			} else if (img.src.includes('graph.png')) {
+				i.classList.add('ff', 'ff-fw', 'ff-chart');
+			} else if (img.src.includes('gohome.png')) {
+				i.classList.add('ff', 'ff-fw', 'ff-home');
+			} else if (img.src.includes('stock_quit.png')) {
+				i.classList.add('ff', 'ff-fw', 'ff-sign-out');
+			} else if (img.src.includes('reload.png')) {
+				i.classList.add('ff', 'ff-fw', 'ff-refresh');
+			}
+			if (i.classList.length) {
+				img.replaceWith(i);
+			}
+		}
+	});
+	var inputs = document.querySelectorAll('input[src]');
+	inputs.forEach(function(input) {
+		var b = document.createElement("button"),
+			i = document.createElement("i");
+		if (input.src) {
+			if (input.src.includes('ok.png')) {
+				i.classList.add('ff', 'ff-play-circle');
+				b.type = 'submit';
+				b.classList.add('servers-submit');
+				b.appendChild(i);
+				input.replaceWith(b);
+			}
+		}
+	});
+})();
+</script>
+EOF
 print "</div>\n";
 popup_footer();
 
