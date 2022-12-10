@@ -312,3 +312,25 @@ br[data-x-br] {
 form[action="config_save.cgi"] #sortableTable2 > thead > tr > td {
     text-align: center;
 }
+
+.leftmenu details > summary {
+  cursor: pointer;
+}
+.leftmenu details > summary::marker {
+  color: #bbb;
+  font-size: 120%;
+}
+.leftmenu details > summary  span {
+  padding-left: 2px;
+  white-space: nowrap;
+  color: #000;
+}
+
+.leftmenu details {
+  padding-left: 6px;
+  padding-bottom: 4px;
+}
+
+.leftmenu details .linkindented {
+  margin-left: 16px;
+}

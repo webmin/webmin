@@ -17,7 +17,6 @@ require "gray-theme/theme.pl";
 ReadParse();
 
 popup_header("Virtualmin");
-print "<script type='text/javascript' src='@{[&get_webprefix()]}/unauthenticated/toggleview.js'></script>\n";
 
 my $is_master;
 # Is this user root?
@@ -83,7 +82,7 @@ if (@has > 1) {
 	print "</div>";
 	}
 
-print "<div class='wrapper'>\n";
+print "<div class='wrapper leftmenu'>\n";
 print "<table id='main' width='100%'><tbody><tr><td>\n";
 
 my $selwidth = (get_left_frame_width() - 70)."px";
@@ -201,18 +200,10 @@ foreach my $item (@$items) {
 	elsif ($item->{'type'} eq 'cat') {
 		# Start of a new category
 		my $c = $item->{'id'};
-		print "<div class='linkwithicon'>";
-		print "<a href=\"javascript:toggleview('cat$c','toggle$c')\" ".
-		      "id='toggle$c'><img border='0' src='images/closed.gif' ".
-		      "alt='[+]'></a>\n";
-		print "<div class='aftericon'>".
-		      "<a href=\"javascript:toggleview('cat$c','toggle$c')\" ".
-		      "id='toggletext$c'>".
-		      "<font color='#000000'>$item->{'desc'}</font></a></div>";
-		print "</div>\n";
-		print "<div class='itemhidden' id='cat$c'>\n";
+		print "<details>";
+		print "<summary><span>$item->{'desc'}</span></summary>";
 		show_menu_items_list($item->{'members'}, $indent+1);
-		print "</div>\n";
+		print "</details>\n";
 		}
 	elsif ($item->{'type'} eq 'html') {
 		# Some HTML block
