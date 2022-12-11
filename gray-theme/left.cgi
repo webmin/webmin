@@ -162,12 +162,15 @@ print "</td></tr></tbody></table>\n";
 print <<EOF;
 <script type='text/javascript'>
 (function() {
-	var imgs = document.querySelectorAll('img[src]');
+	var imgs = document.querySelectorAll('img[src]'),
+		mailfolders = 0;
 	imgs.forEach(function(img) {
 		var i = document.createElement("i");
 		if (img.src) {
 			if (img.src.includes('webmin-small.png')) {
 				i.classList.add('ff', 'ff-webmin');
+			} else if (img.src.includes('usermin-small.png')) {
+				i.classList.add('ff', 'ff-webmin', 'ff-usermin');
 			} else if (img.src.includes('virtualmin.png')) {
 				i.classList.add('ff', 'ff-virtualmin');
 			} else if (img.src.includes('vm2.png')) {
@@ -182,6 +185,19 @@ print <<EOF;
 				i.classList.add('ff', 'ff-fw', 'ff-sign-out');
 			} else if (img.src.includes('reload.png')) {
 				i.classList.add('ff', 'ff-fw', 'ff-refresh');
+			} else if (img.src.includes('mail.') && !mailfolders) {
+				i.classList.add('ff', 'ff-mail');
+				mailfolders = 1;
+			} else if (img.src.includes('mail.') && mailfolders) {
+				i.classList.add('ff', 'ff-folder-open');
+			} else if (img.src.includes('address.')) {
+				i.classList.add('ff', 'ff-address-book');
+			} else if (img.src.includes('address.')) {
+				i.classList.add('ff', 'ff-address-book');
+			} else if (img.src.includes('sig.')) {
+				i.classList.add('ff', 'ff-signature');
+			} else if (img.src.includes('changepass.')) {
+				i.classList.add('ff', 'ff-lock');
 			}
 			if (i.classList.length) {
 				img.replaceWith(i);
