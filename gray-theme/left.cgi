@@ -167,11 +167,11 @@ print <<EOF;
 		var i = document.createElement("i");
 		if (img.src) {
 			if (img.src.includes('webmin-small.png')) {
-				i.classList.add('ff', 'ff-fw', 'ff-webmin');
+				i.classList.add('ff', 'ff-webmin');
 			} else if (img.src.includes('virtualmin.png')) {
-				i.classList.add('ff', 'ff-fw', 'ff-virtualmin');
-			} else if (img.src.includes('cloudmin.png')) {
-				i.classList.add('ff', 'ff-fw', 'ff-cloudmin');
+				i.classList.add('ff', 'ff-virtualmin');
+			} else if (img.src.includes('vm2.png')) {
+				i.classList.add('ff', 'ff-cloudmin');
 			} else if (img.src.includes('index.png')) {
 				i.classList.add('ff', 'ff-fw', 'ff-virtualmin-tick');
 			} else if (img.src.includes('graph.png')) {

@@ -384,19 +384,6 @@ details.ui_hidden_table_start > summary  span {
   vertical-align: top;
 }
 
-.mode  {
-  font-size: 110%;
-  margin-bottom: 4px;
-  filter: saturate(1.5);
-}
-.mode  .ff {
-  font-size: 120%;
-}
-.mode  a[href="left.cgi?mode=server-manager"],
-.mode  a[href="left.cgi?mode=server-manager"] > .ff-cloudmin {
-  color: #98600c;
-}
-
 .leftmenu .ff {
       font-size: 110%;
     margin-left: -3px;
@@ -406,15 +393,24 @@ details.ui_hidden_table_start > summary  span {
 .leftmenu .ff-virtualmin-tick {
   color: #10a929;
 }
+.leftmenu .ff-cloudmin {
+  color: #cb6d2f;
+}
 .leftmenu .ff-virtualmin-tick {
     font-size: 115%;
+    margin-right: 0;
+}
+.leftmenu .ff-cloudmin {
+    font-size: 140%;
+    vertical-align: middle;
+    margin-left: -2px;
     margin-right: 0;
 }
 .leftmenu .ff-chart {
   color: #2174ac;
 }
 .leftmenu .ff-home {
-  color: #98600c;
+  color: #b5710b;
 }
 .leftmenu .ff-sign-out {
   color: #b91b39;
@@ -433,4 +429,34 @@ details.ui_hidden_table_start > summary  span {
   text-align: center;
   margin-top: 10px;
   margin-bottom: 15px;
+}
+
+body > .mode  {
+  font-size: 110%;
+  margin-bottom: 4px;
+  filter: saturate(1.5);
+}
+body > .mode .ff {
+  font-size: 120%;
+}
+body > .mode .ff-cloudmin {
+  font-size: 130%;
+  vertical-align: top;
+}
+
+body > .mode > b {
+    cursor: default;  
+}
+body > .mode > b > a > i,
+body > .mode > b > a:hover,
+body > .mode > b > a,
+body > .mode > b {
+    color: #333;
+}
+body > .mode > b {
+  color: #0b46ab;
+}
+body > .mode > b:has(i.ff-cloudmin),
+body > .mode > b:has(i.ff-cloudmin) > .ff-cloudmin {
+  color: #cb6d2f;
 }
