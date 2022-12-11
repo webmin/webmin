@@ -374,7 +374,7 @@ details.ui_hidden_table_start > summary span.rightheading {
   float: right
 }
 details.ui_hidden_table_start > summary::marker {
-  color: #aaa;
+  color: #a1acc0;
   font-size: 120%;
 }
 details.ui_hidden_table_start > summary  span {
