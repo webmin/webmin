@@ -468,6 +468,12 @@ body > .mode > b {
 body > .mode > b {
   color: #0b46ab;
 }
+/* Light blue for Webmin */
+body > .mode > b:has(i.ff-webmin),
+body > .mode > b:has(i.ff-webmin) > .ff-webmin {
+  color: #0a6bca;
+}
+/* Orange for Cloudmin  */
 body > .mode > b:has(i.ff-cloudmin),
 body > .mode > b:has(i.ff-cloudmin) > .ff-cloudmin {
   color: #cb6d2f;
