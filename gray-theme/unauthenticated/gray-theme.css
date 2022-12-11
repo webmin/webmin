@@ -447,6 +447,15 @@ body > .mode .ff-cloudmin {
 body > .mode > b {
     cursor: default;  
 }
+
+/* Tears of joy! How long I wanted it to work without Javascript!
+   We can target parent that has only two children (i.e. WM+VM), so
+   now we can fit all three modes and have more space in two
+*/
+body > .mode:has(b:nth-child(1) + b:last-child) b {
+  padding-right: 3px
+}
+
 body > .mode > b > a > i,
 body > .mode > b > a:hover,
 body > .mode > b > a,
