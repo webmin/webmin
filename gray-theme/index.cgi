@@ -95,7 +95,23 @@ if ($current_lang_info->{'rtl'} || $current_lang eq "ar") {
 
 # Page header
 print "<html>\n";
-print "<head> <title>$title</title> </head>\n";
+print "<head>\n";
+print "<title>$title</title>\n";
+my $imgdir = "@{[&get_webprefix()]}/images";
+my $prod = 'webmin';
+if (foreign_available("server-manager")) {
+	$prod = 'cloudmin';
+	}
+elsif (foreign_available("virtual-server")) {
+	$prod = 'virtualmin';
+	}
+elsif (get_product_name() eq 'usermin') {
+	$prod = 'usermin';
+	}
+print "<link rel='icon' type='image/png' sizes='16x16'   href='$imgdir/favicons/$prod/favicon-16x16.png'>\n";
+print "<link rel='icon' type='image/png' sizes='32x32'   href='$imgdir/favicons/$prod/favicon-32x32.png'>\n";
+print "<link rel='icon' type='image/png' sizes='192x192' href='$imgdir/favicons/$prod/favicon-192x192.png'>\n";
+print "</head>\n";
 
 # Upper custom frame
 if ($upperframe) {

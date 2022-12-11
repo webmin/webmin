@@ -394,7 +394,7 @@ details.ui_hidden_table_start > summary  span {
   color: #10a929;
 }
 .leftmenu .ff-cloudmin {
-  color: #cb6d2f;
+  color: #df620a;
 }
 .leftmenu .ff-virtualmin-tick {
     font-size: 115%;
@@ -413,7 +413,7 @@ details.ui_hidden_table_start > summary  span {
   color: #b5710b;
 }
 .leftmenu .ff-sign-out {
-  color: #b91b39;
+  color: #b51b0b;
   margin-left: -2px;
   margin-right: 0;
 }
@@ -428,7 +428,10 @@ details.ui_hidden_table_start > summary  span {
 .main-logo {
   text-align: center;
   margin-top: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+}
+.main-logo.webmin {
+  filter: brightness(1.35) contrast(0.75) saturate(1.35);
 }
 
 body > .mode  {
