@@ -1,7 +1,6 @@
-desc=Gray Framed Theme
-longdesc=A legacy framed theme that supports Virtualmin and Cloudmin
-version=10.0
+desc=Framed Theme
+longdesc=A legacy framed theme that also supports Virtualmin and Cloudmin
+version=10.1
 webmin=1
 usermin=1
-depends=1.994
-usermin_depends=1.840
+depends=2.000 1.860
