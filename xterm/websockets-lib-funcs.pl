@@ -97,4 +97,17 @@ if (@clean) {
 &unlock_file(&get_miniserv_config_file());
 }
 
+sub check_miniserv_parent_session_websocket
+{
+my ($sid) = @_;
+&foreign_require('acl');
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+&acl::open_session_db(\%miniserv);
+return 1
+    if ($acl::sessiondb{$sid} &&
+        $acl::sessiondb{$sid} !~ /^!/);
+return 0;
+}
+
 1;

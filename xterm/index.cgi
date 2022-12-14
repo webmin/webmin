@@ -179,7 +179,10 @@ if (!-r $shellserver_cmd) {
 	}
 my $tmpdir = &tempname_dir();
 $ENV{'SESSION_ID'} = $main::session_id;
-&system_logged($shellserver_cmd." ".quotemeta($port)." ".quotemeta($user).
+&foreign_require('acl');
+my $parentsessionid = &acl::hash_session_id($main::session_id);
+&system_logged($shellserver_cmd." ".quotemeta($parentsessionid)." "
+	       .quotemeta($port)." ".quotemeta($user).
 	       ($dir ? " ".quotemeta($dir) : "").
 	       " >$tmpdir/ws-$port.out 2>&1 </dev/null");
 
