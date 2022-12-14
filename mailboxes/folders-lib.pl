@@ -1478,8 +1478,19 @@ return undef if (&is_readonly_mode());
 if ($src->{'type'} == $dst->{'type'} && !$src->{'remote'}) {
 	# Can just move the file or dir
 	local @st = stat($src->{'file'});
-	&unlink_file($dst->{'file'});
-	&rename_as_mail_user($src->{'file'}, $dst->{'file'});
+	if ($src->{'type'} == 1) {
+		# Move each Maildir sub-dir
+		foreach my $sd ("cur", "new", "tmp") {
+			&unlink_file($dst->{'file'}."/".$sd);
+			&rename_as_mail_user($src->{'file'}."/".$sd,
+					     $dst->{'file'}."/".$sd);
+			}
+		}
+	else {
+		# Move the mail file
+		&unlink_file($dst->{'file'});
+		&rename_as_mail_user($src->{'file'}, $dst->{'file'});
+		}
 	if (@st) {
 		&mailbox_fix_permissions($dst, \@st);
 		}
