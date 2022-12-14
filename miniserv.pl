@@ -5773,6 +5773,7 @@ lc($rheader{'sec-websocket-accept'}) eq lc($bdigest) ||
 # Start forwarding data
 seek(DEBUG, 0, 2);
 print DEBUG "in websockets loop\n";
+my $last_session_check_time = time();
 while(1) {
 	my $rmask = undef;
 	vec($rmask, fileno($fh), 1) = 1;
@@ -5791,7 +5792,21 @@ while(1) {
 		last if (!defined($buf) || length($buf) == 0);
 		syswrite($fh, $buf, length($buf)) || last;
 		}
+	my $now = time();
+	if ($now - $last_session_check_time > 10) {
+		# Re-validate the browser session every 10 seconds
+		print DEBUG "verifying websockets session $session_id\n";
+		print $PASSINw "verify $session_id 0 $acptip\n";
+		<$PASSOUTr> =~ /(\d+)\s+(\S+)/;
+		if ($1 != 2) {
+			print DEBUG "session $session_id has expired!\n";
+			last;
+			}
+		$last_session_check_time = $now;
+		}
 	}
+close($fh);
+close(SOCK);
 print DEBUG "done websockets loop\n";
 
 return 0;
