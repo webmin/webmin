@@ -319,7 +319,7 @@ form[action="config_save.cgi"] #sortableTable2 > thead > tr > td {
 }
 .leftmenu details > summary::marker {
   color: #bfbfbf;
-  font-size: 120%;
+  font-size: 110%;
 }
 .leftmenu details > summary  span {
   padding-left: 2px;
@@ -377,7 +377,7 @@ details.ui_hidden_table_start > summary span.rightheading {
 }
 details.ui_hidden_table_start > summary::marker {
   color: #a1acc0;
-  font-size: 120%;
+  font-size: 110%;
 }
 details.ui_hidden_table_start > summary  span {
   padding-left: 4px;
