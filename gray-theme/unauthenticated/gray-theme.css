@@ -321,6 +321,10 @@ form[action="config_save.cgi"] #sortableTable2 > thead > tr > td {
   color: #bfbfbf;
   font-size: 110%;
 }
+.leftmenu details > summary::-webkit-details-marker {
+    color: #bfbfbf;
+}
+
 .leftmenu details > summary  span {
   padding-left: 2px;
   white-space: nowrap;
@@ -380,10 +384,18 @@ details.ui_hidden_table_start > summary::marker {
   font-size: 110%;
 }
 details.ui_hidden_table_start > summary  span {
-  padding-left: 4px;
+  padding-left: 3px;
   white-space: nowrap;
   color: #393939;
   vertical-align: top;
+}
+details.ui_hidden_table_start > summary::-webkit-details-marker {
+    display: inline-block;
+    width: 0.66em;
+    height: 0.66em;
+    margin-top: 0.4em;
+    margin-right: 0.4em;
+    color: #a1acc0;
 }
 
 .leftmenu .ff {
