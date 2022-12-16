@@ -313,7 +313,9 @@ br[data-x-br] {
 form[action="config_save.cgi"] #sortableTable2 > thead > tr > td {
     text-align: center;
 }
-
+form [name="mode"] + .leftlink {
+    white-space: nowrap;
+}
 .leftmenu details > summary {
   cursor: pointer;
 }
