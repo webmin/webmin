@@ -76,9 +76,9 @@ elsif ($config{'display_mode'} == 0) {
 			else {
 				$link = &ui_link("edit_cmd.cgi?id=$c->{'id'}",$text{'index_edit'});
 				}
-			$html .= &ui_table_row(undef,
-					&ui_links_row([ $link ]), 2);
+			$link = &ui_links_row([ $link ]);
 			}
+		$html .= &ui_table_row(undef, $link, 2);
 		$html .= &ui_table_end();
 		$html .= &ui_form_end();
 		push(@grid, $html);
