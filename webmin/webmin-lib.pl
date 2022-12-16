@@ -2647,6 +2647,7 @@ if ($os =~ /alma/i && $basever >= 8) {
 	}
 # Rocky linux release notes
 if ($os =~ /rocky/i && $basever >= 8) {
+	$ver =~ s/\./_/;
 	$link = &ui_link("https://docs.rockylinux.org/release_notes/$ver",
 	                 $text{'os_release_notes'}, undef, $link_tag);
 	}
