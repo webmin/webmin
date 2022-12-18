@@ -2458,6 +2458,7 @@ if ($changed || !$znc{'version'} ||
 		foreach my $z (@vz) {
 			my $type = &find_value("type", $z->{'members'});
 			next if (!$type);
+			$type = lc($type);
 			my $file = &find_value("file", $z->{'members'});
 			my $up = &find("update-policy", $z->{'members'});
 			my $au = &find("allow-update", $z->{'members'});
@@ -2472,6 +2473,7 @@ if ($changed || !$znc{'version'} ||
 	foreach my $z (&find("zone", $conf)) {
 		my $type = &find_value("type", $z->{'members'});
 		next if (!$type);
+		$type = lc($type);
 		my $file = &find_value("file", $z->{'members'});
 		$file ||= "";	# slaves and other types with no file
 		my $up = &find("update-policy", $z->{'members'});
