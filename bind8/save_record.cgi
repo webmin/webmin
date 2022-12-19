@@ -76,12 +76,14 @@ if ($in{'delete'}) {
 		    ($in{'type'} eq "A" ||
 		     $in{'type'} eq "AAAA" &&
 		     &expandall_ip6($in{'oldvalue0'}) eq &expandall_ip6(&ip6int_to_net($orevrec->{'name'})))) {
+			&before_editing($orevconf);
 			&lock_file(&make_chroot($orevrec->{'file'}));
 			&delete_record($orevrec->{'file'} , $orevrec);
 			&lock_file(&make_chroot($orevfile));
 			my @orrecs = &read_zone_file($orevfile, $orevconf->{'name'});
 			&bump_soa_record($orevfile, \@orrecs);
 			&sign_dnssec_zone_if_key($orevconf, \@orrecs);
+			&after_editing($orevconf);
 			}
 
 		# Update forward
@@ -92,12 +94,14 @@ if ($in{'delete'}) {
 		    (!$ipv6 && &arpa_to_ip($in{'oldname'}) eq $ofwdrec->{'values'}->[0] ||
 		     $ipv6 && &expandall_ip6(&ip6int_to_net($in{'oldname'})) eq &expandall_ip6($ofwdrec->{'values'}->[0])) &&
 		    $fulloldvalue0 eq $ofwdrec->{'name'}) {
+			&before_editing($ofwdconf);
 			&lock_file(&make_chroot($ofwdrec->{'file'}));
 			&delete_record($ofwdrec->{'file'}, $ofwdrec);
 			&lock_file(&make_chroot($ofwdfile));
 			my @ofrecs = &read_zone_file($ofwdfile, $ofwdconf->{'name'});
 			&bump_soa_record($ofwdfile, \@ofrecs);
 			&sign_dnssec_zone_if_key($ofwdconf, \@ofrecs);
+			&after_editing($ofwdconf);
 			}
 
 		&redirect("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'redirtype'}&sort=$in{'sort'}");
@@ -603,6 +607,8 @@ else {
 		# Updating the reverse record. Either the name, address
 		# or both may have changed. Furthermore, the reverse record
 		# may now be in a different file!
+		&before_editing($orevconf);
+		&before_editing($revconf);
 		&lock_file(&make_chroot($orevfile));
 		&lock_file(&make_chroot($revfile));
 		my @orrecs = &read_zone_file($orevfile, $orevconf->{'name'});
@@ -634,17 +640,21 @@ else {
 			&bump_soa_record($orevfile, \@orrecs);
 			&sign_dnssec_zone_if_key($orevconf, \@orrecs);
 			}
+		&after_editing($revconf);
+		&after_editing($orevconf);
 		}
 	elsif ($in{'rev'} && !$orevrec && $revconf && !$revrec && 
 	       &can_edit_reverse($revconf)) {
 		# we don't handle the old reverse domain but handle the new 
 		# one.. create a new reverse record
+		&before_editing($revconf);
 	 	&lock_file(&make_chroot($revfile));
 		my @rrecs = &read_zone_file($revfile, $revconf->{'name'});
 		&create_record($revfile, $rname,
 			       $ttl, "IN", "PTR", $fullname, $in{'comment'});
 		&bump_soa_record($revfile, \@rrecs);
 		&sign_dnssec_zone_if_key($revconf, \@rrecs);
+		&after_editing($revconf);
 		}
 
 	my $ipv6;
@@ -656,6 +666,8 @@ else {
 	    &expandall_ip6($ofwdrec->{'values'}->[0]) &&
 	    $fulloldvalue0 eq $ofwdrec->{'name'}) {
 		# Updating the forward record
+		&before_editing($ofwdfile);
+		&before_editing($fwdfile);
 		&lock_file(&make_chroot($ofwdfile));
 		&lock_file(&make_chroot($fwdfile));
 		my @ofrecs = &read_zone_file($ofwdfile, $ofwdconf->{'name'});
@@ -690,6 +702,8 @@ else {
 			&bump_soa_record($ofwdfile, \@ofrecs);
 			&sign_dnssec_zone_if_key($ofwdconf, \@ofrecs);
 			}
+		&after_editing($fwdfile);
+		&after_editing($ofwdfile);
 		}
 	}
 &bump_soa_record($in{'file'}, \@recs);
