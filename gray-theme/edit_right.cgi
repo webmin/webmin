@@ -17,18 +17,23 @@ print &ui_form_start("save_right.cgi", "post");
 print &ui_table_start($text{'edright_header'}, undef ,2);
 
 # Visible sections
-print &ui_table_row($text{'edright_sects'},
-    join("<br>\n", map { &ui_checkbox($_->{'name'}, 1, $_->{'title'},
-			!$sects->{'no'.$_->{'name'}}) }
-		       &list_right_frame_sections()));
+my @right_frame_sects = &list_right_frame_sections();
+if (@right_frame_sects) {
+	print &ui_table_row($text{'edright_sects'},
+	    join("<br>\n", map { &ui_checkbox($_->{'name'}, 1, $_->{'title'},
+				!$sects->{'no'.$_->{'name'}}) }
+			       @right_frame_sects));
+	}
 
-# Show list by default
-print &ui_table_row($text{'edright_list'},
-	&ui_radio("list", $sects->{'list'} || 0,
-		  [ [ 0, $text{'edright_list0'} ],
-		    $hasvirt ? ( [ 1, $text{'edright_list1'} ] ) : ( ),
-		    $hasvm2 ? ( [ 2, $text{'edright_list2'} ] ) : ( ),
-		  ]));
+if ($hasvirt || $hasvm2) {
+	# Show list by default
+	print &ui_table_row($text{'edright_list'},
+		&ui_radio("list", $sects->{'list'} || 0,
+			  [ [ 0, $text{'edright_list0'} ],
+			    $hasvirt ? ( [ 1, $text{'edright_list1'} ] ) : ( ),
+			    $hasvm2 ? ( [ 2, $text{'edright_list2'} ] ) : ( ),
+			  ]));
+	}
 
 # Alternate page
 print &ui_table_row($text{'edright_alt'},
@@ -36,12 +41,14 @@ print &ui_table_row($text{'edright_alt'},
 		    $text{'edright_alturl'}));
 
 # Default tab
-print &ui_table_row($text{'edright_deftab'},
-    &ui_select("tab", $sects->{'tab'},
-       [ [ "", $text{'edright_tab1'} ],
-	 $hasvirt ? ( [ "virtualmin", $text{'edright_virtualmin'} ] ) : ( ),
-	 $hasvm2 ? ( [ "vm2", $text{'edright_vm2'} ] ) : ( ),
-	 [ "webmin", $text{'edright_webmin'} ] ]));
+if ($hasvirt || $hasvm2) {
+	print &ui_table_row($text{'edright_deftab'},
+	    &ui_select("tab", $sects->{'tab'},
+	       [ [ "", $text{'edright_tab1'} ],
+		 $hasvirt ? ( [ "virtualmin", $text{'edright_virtualmin'} ] ) : ( ),
+		 $hasvm2 ? ( [ "vm2", $text{'edright_vm2'} ] ) : ( ),
+		 [ "webmin", $text{'edright_webmin'} ] ]));
+	}
 
 # Left frame size
 print &ui_table_row($text{'edright_fsize'},

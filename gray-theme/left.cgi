@@ -53,9 +53,9 @@ if ($nw == 0 || $nw == 2 && $is_master) {
 
 # Default left-side mode
 my $mode = $in{'mode'} ? $in{'mode'} :
-	   $sects->{'tab'} =~ /vm2/ ? "server-manager" :
-	   $sects->{'tab'} =~ /virtualmin/ ? "virtual-server" :
-	   $sects->{'tab'} =~ /mail/ ? "mailboxes" :
+	   ($sects->{'tab'} && $sects->{'tab'} =~ /vm2/) ? "server-manager" :
+	   ($sects->{'tab'} && $sects->{'tab'} =~ /virtualmin/) ? "virtual-server" :
+	   ($sects->{'tab'} && $sects->{'tab'} =~ /mail/) ? "mailboxes" :
 	   @leftitems ? $has[0]->{'id'} : "modules";
 
 # Show mode selector

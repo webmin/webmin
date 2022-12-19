@@ -26,7 +26,7 @@ config_nnext=Next
 config_nprev=Prev
 
 edright_title=System Information Configuration
-edright_header=Virtualmin system information page settings
+edright_header=System information page settings
 edright_sects=Visible information
 edright_list=Default right-frame content
 edright_list0=System information
