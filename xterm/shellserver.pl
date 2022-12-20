@@ -125,7 +125,7 @@ Net::WebSocket::Server->new(
 				my $dsess = &encode_base64($main::session_id);
 				$key   =~ s/\s//g;
 				$dsess =~ s/\s//g;
-				if ($key ne $dsess) {
+				if (!$key || !$dsess || $key ne $dsess) {
 					print STDERR "Key $key does not match session ID $dsess\n";
 					$conn->disconnect();
 					}
