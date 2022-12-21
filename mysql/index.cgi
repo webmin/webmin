@@ -288,6 +288,7 @@ else {
 			@titles = @titles[0..4];
 			@images = @images[0..4];
 			}
+		@images = map { $_ = &get_webprefix()."/mysql/$_" } @images;
 		&icons_table(\@links, \@titles, \@images, 5);
 		}
 
