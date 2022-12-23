@@ -1960,14 +1960,6 @@ my @anon = split(/\s+/, $miniserv->{'anonymous'} || "");
 my ($user, $found) = &get_anonymous_access($path, $miniserv);
 return 1 if ($found >= 0);		# Already setup
 
-# Grant access to the user and path
-&lock_file(&get_miniserv_config_file());
-$user ||= '';
-push(@anon, "$path=$user");
-$miniserv->{'anonymous'} = join(" ", @anon);
-&put_miniserv_config($miniserv);
-&unlock_file(&get_miniserv_config_file());
-
 if (!$user) {
 	# Create a user if need be
 	$user = "anonymous";
@@ -1980,8 +1972,8 @@ if (!$user) {
 else {
 	# Make sure the user has the module
 	my ($uinfo) = grep { $_->{'name'} eq $user } &list_users();
-	$uinfo->{'modules'} ||= [];
 	if ($uinfo && &indexof($mod, @{$uinfo->{'modules'}}) < 0) {
+		$uinfo->{'modules'} ||= [];
 		push(@{$uinfo->{'modules'}}, $mod);
 		&modify_user($uinfo->{'name'}, $uinfo);
 		}
@@ -1989,6 +1981,13 @@ else {
 		print STDERR "Anonymous access is granted to user $user, but he doesn't exist!\n";
 		}
 	}
+
+# Grant access to the user and path
+&lock_file(&get_miniserv_config_file());
+push(@anon, "$path=$user");
+$miniserv->{'anonymous'} = join(" ", @anon);
+&put_miniserv_config($miniserv);
+&unlock_file(&get_miniserv_config_file());
 
 &reload_miniserv();
 }
