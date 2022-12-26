@@ -1978,7 +1978,7 @@ else {
 		&modify_user($uinfo->{'name'}, $uinfo);
 		}
 	else {
-		print STDERR "Anonymous access is granted to user $user, but he doesn't exist!\n";
+		print STDERR "Anonymous access attempted to be granted to user $user, but it doesn't exist!\n";
 		}
 	}
 
