@@ -1959,8 +1959,8 @@ my $miniserv = { };
 my @anon = split(/\s+/, $miniserv->{'anonymous'} || "");
 my ($user, $found) = &get_anonymous_access($path, $miniserv);
 return 1 if ($found >= 0);		# Already setup
-
-if (!$user) {
+my $auser = grep { $_->{'name'} eq $user } &list_users();
+if (!$auser) {
 	# Create a user if need be
 	$user = "anonymous";
 	my $uinfo = { 'name' => $user,
