@@ -1959,8 +1959,8 @@ my $miniserv = { };
 my @anon = split(/\s+/, $miniserv->{'anonymous'} || "");
 my ($user, $found) = &get_anonymous_access($path, $miniserv);
 return 1 if ($found >= 0);		# Already setup
-
-if (!$user) {
+my $auser = grep { $_->{'name'} eq $user } &list_users();
+if (!$auser) {
 	# Create a user if need be
 	$user = "anonymous";
 	my $uinfo = { 'name' => $user,
@@ -1978,7 +1978,7 @@ else {
 		&modify_user($uinfo->{'name'}, $uinfo);
 		}
 	else {
-		print STDERR "Anonymous access is granted to user $user, but he doesn't exist!\n";
+		print STDERR "Anonymous access attempted to be granted to user $user, but it doesn't exist!\n";
 		}
 	}
 
