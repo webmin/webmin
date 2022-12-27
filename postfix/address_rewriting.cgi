@@ -32,6 +32,8 @@ print &ui_table_start($text{'address_rewriting_title'}, "width=100%", 4);
 
 &option_radios_freefield("masquerade_exceptions", 35, $none);
 
+&option_yesno("resolve_dequoted_address");
+
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
 
