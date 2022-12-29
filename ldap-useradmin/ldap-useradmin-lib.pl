@@ -267,7 +267,10 @@ sub delete_user
 local $ldap = &ldap_connect();
 local $rv = $ldap->delete($_[0]->{'dn'});
 if ($rv->code) {
-	&error(&text('usave_edelete', $rv->error));
+	my $err = $rv->error;
+	if ($err !~ /No such object/i) {
+		&error(&text('usave_edelete', $err));
+		}
 	}
 $ldap->unbind();
 @list_users_cache = grep { $_ ne $_[0] } @list_users_cache
@@ -379,7 +382,10 @@ sub delete_group
 local $ldap = &ldap_connect();
 local $rv = $ldap->delete($_[0]->{'dn'});
 if ($rv->code) {
-	&error(&text('gsave_edelete', $rv->error));
+	my $err = $rv->error;
+	if ($err !~ /No such object/i) {
+		&error(&text('gsave_edelete', $err));
+		}
 	}
 $ldap->unbind();
 @list_groups_cache = grep { $_ ne $_[0] } @list_groups_cache
