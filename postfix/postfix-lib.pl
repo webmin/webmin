@@ -1181,8 +1181,11 @@ elsif ($_[1]->{'map_type'} eq 'ldap') {
 	ref($ldap) || &error($ldap);
 	local $rv = $ldap->delete($_[1]->{'dn'});
 	if ($rv->code) {
-		&error(&text('ldap_edelete', "<tt>$_[1]->{'dn'}</tt>",
-			     "<tt>".&html_escape($rv->error)."</tt>"));
+		my $err = $rv->error;
+		if ($err !~ /No such object/i) {
+			&error(&text('ldap_edelete', "<tt>$_[1]->{'dn'}</tt>",
+				     "<tt>".&html_escape($err)."</tt>"));
+			}
 		}
 	}
 
