@@ -1479,8 +1479,13 @@ if ($src->{'type'} == $dst->{'type'} && !$src->{'remote'}) {
 	# Can just move the file or dir
 	local @st = stat($src->{'file'});
 	if ($src->{'type'} == 1) {
-		# Move each Maildir sub-dir
-		foreach my $sd ("cur", "new", "tmp") {
+		# Move each Maildir sub-dir, and any Maildir++ sub-folders
+		opendir(MAILDIR, $src->{'file'});
+		my @mdfiles = readdir(MAILDIR);
+		closedir(MAILDIR);
+		@mdfiles = grep { /^(cur|new|tmp|\..*)$/ &&
+				  $_ ne "." && $_ ne ".." } @mdfiles;
+		foreach my $sd (@mdfiles) {
 			&unlink_file($dst->{'file'}."/".$sd);
 			&rename_as_mail_user($src->{'file'}."/".$sd,
 					     $dst->{'file'}."/".$sd);
