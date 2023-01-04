@@ -1036,7 +1036,19 @@ if ($_[4] && $_[4] ne 'root' && $< == 0) {
 	$cmd = &command_as_user($_[4], 0, $cmd);
 	}
 local $out = &backquote_logged("$cmd 2>&1");
-local @rv = ($?, $? ? $out || "$cmd failed" : $out);
+local @rv;
+if ($?) {
+	# Total failure
+	@rv = ($?, $out || "$cmd failed");
+	}
+elsif ($out =~ /(^|\n)(ERROR\s+\d+.*)/) {
+	# Some command in the file failed
+	@rv = (1, $2);
+	}
+else {
+	# All OK
+	@rv = (0, $out);
+	}
 &make_authstr();	# Put back old password environment variable
 return @rv;
 }
