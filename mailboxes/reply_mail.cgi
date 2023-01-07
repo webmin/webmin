@@ -514,7 +514,7 @@ if (@fwdmail) {
 	}
 
 # Display new attachment fields
-&show_attachments_fields(3, $access{'canattach'});
+&show_attachments_fields(1, $access{'canattach'});
 
 print &ui_form_end([ [ undef, $text{'reply_send'} ] ]);
 
