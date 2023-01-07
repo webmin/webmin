@@ -535,7 +535,7 @@ body > .mode > b:has(i.ff-cloudmin) > .ff-cloudmin {
 .ui_div_row + .ui_div_row {
   margin: 0 0 4px 0;
 }
-.ui_div_row span:first-child {
+.ui_div_row > span:first-child {
   width: 100px;
   min-width: 10%;
   max-width: 15%;
@@ -546,7 +546,7 @@ body > .mode > b:has(i.ff-cloudmin) > .ff-cloudmin {
   padding-right: 8px;
   font-weight: bold;
 }
-.ui_div_row span:last-child {
+.ui_div_row > span:last-child {
   padding-top: 4px;
   display: inline-block;
   max-width: 80%;
