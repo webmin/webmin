@@ -353,13 +353,13 @@ print &ui_hidden("charset", $main::force_charset);
 # Start tabs for from / to / cc / bcc
 # Subject is separate
 print &ui_table_start($text{'reply_headers'}, "width=100%", 2);
-@tds = ( "width=10%", "width=90% nowrap" );
+print "<tbody><tr><td>";
 @tabs = ( [ "from", $text{'reply_tabfrom'} ],
           [ "to", $text{'reply_tabto'} ],
           [ "cc", $text{'reply_tabcc'} ],
           [ "bcc", $text{'reply_tabbcc'} ],
           [ "options", $text{'reply_taboptions'} ] );
-print &ui_table_row(undef, &ui_tabs_start(\@tabs, "tab", "to", 0), 2);
+print &ui_tabs_start(\@tabs, "tab", "to", 0);
 
 # From address tab
 $from ||= &get_user_from_address(\@uinfo);
@@ -391,45 +391,43 @@ elsif ($access{'fmode'} == 3) {
 	$frominput = "<tt>$ouser\@$access{'from'}</tt>".
 		     &ui_hidden("from", "$ouser\@$access{'from'}");
 	}
-print &ui_tabs_start_tabletab("tab", "from");
-print &ui_table_row($text{'mail_from'}, $frominput, 1, \@tds);
-print &ui_tabs_end_tabletab();
+print &ui_tabs_start_tab("tab", "from");
+print &ui_div_row($text{'mail_from'}, $frominput);
+print &ui_tabs_end_tab();
 
 # Show To: field
-print &ui_tabs_start_tabletab("tab", "to");
-print &ui_table_row($text{'mail_to'}, &ui_address_field("to", $to, 0, 1),
-                    1, \@tds);
-print &ui_tabs_end_tabletab();
+print &ui_tabs_start_tab("tab", "to");
+print &ui_div_row($text{'mail_to'}, &ui_address_field("to", $to, 0, 1));
+print &ui_tabs_end_tab();
 
 # Show Cc: field
-print &ui_tabs_start_tabletab("tab", "cc");
-print &ui_table_row($text{'mail_cc'}, &ui_address_field("cc", $cc, 0, 1),
-                    1, \@tds);
-print &ui_tabs_end_tabletab();
+print &ui_tabs_start_tab("tab", "cc");
+print &ui_div_row($text{'mail_cc'}, &ui_address_field("cc", $cc, 0, 1));
+print &ui_tabs_end_tab();
 
 # Show Bcc: field
 $bcc ||= $config{'bcc_to'};
-print &ui_tabs_start_tabletab("tab", "bcc");
-print &ui_table_row($text{'mail_bcc'}, &ui_address_field("bcc", $bcc, 0, 1),
-                    1, \@tds);
-print &ui_tabs_end_tabletab();
+print &ui_tabs_start_tab("tab", "bcc");
+print &ui_div_row($text{'mail_bcc'}, &ui_address_field("bcc", $bcc, 0, 1));
+print &ui_tabs_end_tab();
 
 # Show tab for options
-print &ui_tabs_start_tabletab("tab", "options");
-print &ui_table_row($text{'mail_pri'},
+print &ui_tabs_start_tab("tab", "options");
+print &ui_div_row($text{'mail_pri'}, 
                 &ui_select("pri", "",
                         [ [ 1, $text{'mail_highest'} ],
                           [ 2, $text{'mail_high'} ],
                           [ "", $text{'mail_normal'} ],
                           [ 4, $text{'mail_low'} ],
-                          [ 5, $text{'mail_lowest'} ] ]), 1, \@tds);
-print &ui_tabs_end_tabletab();
+                          [ 5, $text{'mail_lowest'} ] ]));
+print &ui_tabs_end_tab();
 print &ui_tabs_end();
 
 # Subject field, outside tabs
-print &ui_table_row($text{'mail_subject'},
+print &ui_div_row($text{'mail_subject'},
 	&ui_textbox("subject", $subject, 40, 0, undef,
-		    "style='width:95%'"), 1, \@tds);
+		    "style='width:95%'"));
+print "</td></tr></tbody>";
 print &ui_table_end();
 
 # Create link for switching to HTML/text mode for new mail
