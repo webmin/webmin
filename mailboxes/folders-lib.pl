@@ -3729,9 +3729,9 @@ if (defined(&list_addresses)) {
 	@faddrs = grep { $_->[3] } &list_addresses();
 	}
 local $f = $multi ? &ui_textarea($name, $value, 3, 40, undef, 0,
-				 "style='width:95%'")
+				 "style='width:90%'")
 		  : &ui_textbox($name, $value, 40, 0, undef,
-				"style='width:95%'");
+				"style='width:90%'");
 if ((!$from || @faddrs) && defined(&address_button)) {
 	$f .= " ".&address_button($name, 0, $from);
 	}

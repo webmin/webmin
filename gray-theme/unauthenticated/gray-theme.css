@@ -550,4 +550,5 @@ body > .mode > b:has(i.ff-cloudmin) > .ff-cloudmin {
   padding-top: 4px;
   display: inline-block;
   max-width: 80%;
+  width: 80%;
 }
