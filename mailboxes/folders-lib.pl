@@ -3637,7 +3637,7 @@ return false;
 }
 function add_ss_attachment()
 {
-var block = document.getElementById("ssattachblock");
+var block = document.getElementById("sattachblock");
 if (block) {
 	var count = 0;
 	var first_input = document.forms[0]["file0"];
