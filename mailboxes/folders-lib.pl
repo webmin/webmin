@@ -3623,6 +3623,7 @@ if (block) {
 	var new_input = document.createElement('input');
 	new_input.setAttribute('name', "attach"+count);
 	new_input.setAttribute('type', 'file');
+	new_input.setAttribute('multiple', '');
 	if (first_input) {
 		new_input.setAttribute('size',
 			first_input.getAttribute('size'));
