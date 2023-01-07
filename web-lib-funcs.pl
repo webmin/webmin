@@ -4072,6 +4072,10 @@ if (!$main::get_system_hostname[$m]) {
 				$fromfile = $hn;
 				}
 			}
+		if ($hn =~ /localhost/) {
+			# Not likely to be valid
+			$hn = $fromfile = undef;
+			}
 
 		# Append domain name from DNS config if needed
 		if ($fromfile && $fromfile !~ /\./) {
