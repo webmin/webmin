@@ -2755,6 +2755,22 @@ $rv .= "</details>";
 return $rv;
 }
 
+=head2 ui_div_row(label, content)
+
+Prints a row without using a table and
+places label and content in a way
+ui_table_row does
+
+=cut
+sub ui_div_row
+{
+if (defined(&theme_ui_div_row)) {
+	return &theme_ui_div_row(@_);
+	}
+my ($label, $content) = @_;
+return "<div class='ui_div_row'><span>$label</span><span>$content</span></div>";
+}
+
 =head2 ui_hide_outside_of_viewport(elem)
 
 Prints element if not in viewport. Useful

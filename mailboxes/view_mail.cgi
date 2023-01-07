@@ -178,7 +178,7 @@ if ($bodycontents) {
 	}
 else {
 	print &ui_table_start($text{'view_body'}, "width=100%", 1);
-	print &ui_table_row(undef, "<b>$text{'view_nobody'}</b>");
+	print &ui_table_row(undef, "<strong>$text{'view_nobody'}</strong>");
 	print &ui_table_end();
 	}
 
