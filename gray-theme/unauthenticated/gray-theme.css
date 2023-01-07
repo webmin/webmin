@@ -532,9 +532,6 @@ body > .mode > b:has(i.ff-cloudmin) > .ff-cloudmin {
 .ui_div_row {
   margin: 4px 0;
 }
-.ui_div_row + .ui_div_row {
-  margin: 0 0 4px 0;
-}
 .ui_div_row > span:first-child {
   width: 100px;
   min-width: 10%;
