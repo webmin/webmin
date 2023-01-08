@@ -431,7 +431,7 @@ Returns Webmin and other modules and themes versions installed (only those for w
 
 =head1 LICENSE AND COPYRIGHT
 
- Copyright 2023 Jamie Cameron <jcameron@webmin.com>
+ Copyright 2018 Jamie Cameron <jcameron@webmin.com>
                 Joe Cooper <joe@virtualmin.com>
                 Ilia Rostovtsev <ilia@virtualmin.com>
 

@@ -199,5 +199,5 @@ Display the description of the option from the module C<config.info> file, inste
 
 =head1 LICENSE AND COPYRIGHT
 
- Copyright 2023 Jamie Cameron <jcameron@webmin.com>
+ Copyright 2018 Jamie Cameron <jcameron@webmin.com>
                 Joe Cooper <joe@virtualmin.com>
