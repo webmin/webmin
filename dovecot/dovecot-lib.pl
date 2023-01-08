@@ -334,11 +334,11 @@ foreach my $m (@{$section->{'members'}}) {
 	}
 }
 
-# create_section(&conf, &section, [&parent])
+# create_section(&conf, &section, [&parent], [&before])
 # Adds a section to the config file
 sub create_section
 {
-local ($conf, $section, $parent) = @_;
+local ($conf, $section, $parent, $before) = @_;
 local $indent = "  " x $section->{'indent'};
 local @newlines;
 push(@newlines, $indent.$section->{'name'}." ".$section->{'value'}." {");
@@ -355,10 +355,17 @@ if ($parent) {
 	$section->{'line'} = $parent->{'eline'};
 	}
 else {
-	# Add to the end of the global config file
+	# Add to the global config file
 	$file = &get_config_file();
 	$lref = &read_file_lines($file);
-	$section->{'line'} = scalar(@$lref);
+	if ($before) {
+		# Add before another block
+		$section->{'line'} = $before->{'line'};
+		}
+	else {
+		# Add at the end
+		$section->{'line'} = scalar(@$lref);
+		}
 	}
 splice(@$lref, $section->{'line'}, 0, @newlines);
 &renumber($conf, $section->{'eline'}, $section->{'file'},
