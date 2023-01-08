@@ -1811,8 +1811,7 @@ if ($gconfig{'os_type'} eq 'macos' && &passfiles_type() == 7) {
 	}
 else {
 	my $config_md5 = $config{'md5'};
-	$config_md5 = 1
-		if ($force_system_default);
+	$config_md5 = 1 if ($force_system_default);
 
 	# Always use MD5
 	if ($config_md5 == 2) {
