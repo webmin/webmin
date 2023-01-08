@@ -738,6 +738,7 @@ sub regenerate_dependent_table
 sub regenerate_any_table
 {
     my ($name, $force, $after, $base64) = @_;
+    $base64 = 0 if ($postfix_version < 3.4);
     my @files;
     if ($force) {
 	@files = map { [ "hash", $_ ] } @$force;
@@ -1042,13 +1043,14 @@ sub generate_map_edit
 }
 
 
-# create_mapping(map, &mapping, [&force-files], [force-map])
+# create_mapping(map, &mapping, [&force-files], [force-map], [&before])
 sub create_mapping
 {
-&get_maps($_[0], $_[2], $_[3]);	# force cache init
-my @maps_files = $_[2] ? (map { [ "hash", $_ ] } @{$_[2]}) :
-		 $_[3] ? &get_maps_types_files($_[3]) :
-		         &get_maps_types_files(&get_real_value($_[0]));
+my ($mapname, $map, $forcefile, $forcemap, $before) = @_;
+&get_maps($mapname, $forcefile, $forcemap);	# force cache init
+my @maps_files = $forcefile ? (map { [ "hash", $_ ] } @$forcefile) :
+		 $forcemap ? &get_maps_types_files($forcemap) :
+		         &get_maps_types_files(&get_real_value($mapname));
 
 # If multiple maps, find a good one to add to .. avoid regexp if we can
 my $last_map;
@@ -1069,11 +1071,22 @@ my ($maps_type, $maps_file) = @$last_map;
 
 if (&file_map_type($maps_type)) {
 	# Adding to a regular file
-	local $lref = &read_file_lines($maps_file);
-	$_[1]->{'line'} = scalar(@$lref);
-	push(@$lref, &make_table_comment($_[1]->{'cmt'}));
-	push(@$lref, "$_[1]->{'name'}\t$_[1]->{'value'}");
-	$_[1]->{'eline'} = scalar(@$lref)-1;
+	my $lref = &read_file_lines($maps_file);
+	my @nl = &make_table_comment($map->{'cmt'});
+	push(@nl, "$map->{'name'}\t$map->{'value'}");
+	if ($before) {
+		# Add before an existing map entry
+		$map->{'line'} = $before->{'line'};
+		$map->{'eline'} = $map->{'line'} + scalar(@nl) - 1;
+		splice(@$lref, $map->{'line'}, 0, @nl);
+		&renumber_list($maps_cache{$mapname}, $map, scalar(@nl));
+		}
+	else {
+		# Add at the end of the file
+		$map->{'line'} = scalar(@$lref);
+		$map->{'eline'} = $map->{'line'} + scalar(@nl) - 1;
+		push(@$lref, @nl);
+		}
 	&flush_file_lines($maps_file);
 	}
 elsif ($maps_type eq "mysql") {
@@ -1085,13 +1098,13 @@ elsif ($maps_type eq "mysql") {
 				   "(".$conf->{'where_field'}.",".
 					$conf->{'select_field'}.") values (".
 				   "?, ?)");
-	if (!$cmd || !$cmd->execute($_[1]->{'name'}, $_[1]->{'value'})) {
+	if (!$cmd || !$cmd->execute($map->{'name'}, $map->{'value'})) {
 		&error(&text('mysql_eadd',
 			     "<tt>".&html_escape($dbh->errstr)."</tt>"));
 		}
 	$cmd->finish();
 	$dbh->disconnect();
-	$_[1]->{'key'} = $_[1]->{'name'};
+	$map->{'key'} = $map->{'name'};
 	}
 elsif ($maps_type eq "ldap") {
 	# Adding to an LDAP database
@@ -1102,11 +1115,11 @@ elsif ($maps_type eq "ldap") {
 				      "inetLocalMailRecipient");
 	local @attrs = ( "objectClass", \@classes );
 	local $name_attr = &get_ldap_key($conf);
-	push(@attrs, $name_attr, $_[1]->{'name'});
+	push(@attrs, $name_attr, $map->{'name'});
 	push(@attrs, $conf->{'result_attribute'} || "maildrop",
-		     $_[1]->{'value'});
+		     $map->{'value'});
 	push(@attrs, &split_props($config{'ldap_attrs'}));
-	local $dn = &make_map_ldap_dn($_[1], $conf);
+	local $dn = &make_map_ldap_dn($map, $conf);
 	if ($dn =~ /^([^=]+)=([^, ]+)/ && !&in_props(\@attrs, $1)) {
 		push(@attrs, $1, $2);
 		}
@@ -1120,15 +1133,15 @@ elsif ($maps_type eq "ldap") {
 		&error(&text('ldap_eadd', "<tt>$dn</tt>",
 			     "<tt>".&html_escape($rv->error)."</tt>"));
 		}
-	$_[1]->{'dn'} = $dn;
+	$map->{'dn'} = $dn;
 	}
 
 # Update the in-memory cache
-$_[1]->{'map_type'} = $maps_type;
-$_[1]->{'map_file'} = $maps_file;
-$_[1]->{'file'} = $maps_file;
-$_[1]->{'number'} = scalar(@{$maps_cache{$_[0]}});
-push(@{$maps_cache{$_[0]}}, $_[1]);
+$map->{'map_type'} = $maps_type;
+$map->{'map_file'} = $maps_file;
+$map->{'file'} = $maps_file;
+$map->{'number'} = scalar(@{$maps_cache{$mapname}});
+push(@{$maps_cache{$mapname}}, $map);
 }
 
 
