@@ -1,11 +1,21 @@
 ## Changelog
 
-#### 2.011 (January 9, 2023)
-* Merged the default theme with the Virtualmin framed theme
-* Numerous fixes to the Read User Mail module
-* Updated the Authentic theme to the latest version
-* Fixed bugs in freezing and thawing dynamic reverse zones
-* Behave better when deleting an LDAP user or mail alias that no longer exists
+#### 2.011 (January 10, 2023)
+* Add ability to set shell character encoding and set `TERM` environmental variable in the new Terminal module
+* Add support for editing network interfaces in include files for Debian systems
+* Add various improvements to the old good Framed Theme
+* Fix to change Gray Framed Theme name to Framed Theme
+* Fix to verify and close WebSocket session, if parent session was closed
+* Fix to remove `RC4` from the list of strong ciphers
+* Fix don't fail LDAP user or group deletion, if they have already been deleted
+* Fix error handling in MySQL/MariaDB Database server module when executing SQL commands
+* Fix adding an extra server attachment field and other bugs in Read User Mail module
+* Fix the link to release notes for Rocky Linux
+* Fix issues with freezing and thawing dynamic reverse zones in BIND DNS Server module
+* Fix bugs for modules granting anonymous access
+* Fix `mailbox_idle_check_interval` option related bugs in Dovecot module [sourceforge.net#5602](https://sourceforge.net/p/webadmin/bugs/5602/)
+* Fix to use correct extension for package file when upgrading Webmin [webmin/authentic-theme#1633](https://github.com/webmin/authentic-theme/issues/1633)
+* Update the Authentic theme to the latest version
 
 #### 2.010 (November 27, 2022)
 * Add a new Terminal module (interactive shell)
