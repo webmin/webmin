@@ -1,5 +1,12 @@
 ## Changelog
 
+#### 2.011 (January 9, 2023)
+* Merged the default theme with the Virtualmin framed theme
+* Numerous fixes to the Read User Mail module
+* Updated the Authentic theme to the latest version
+* Fixed bugs in freezing and thawing dynamic reverse zones
+* Behave better when deleting an LDAP user or mail alias that no longer exists
+
 #### 2.010 (November 27, 2022)
 * Add a new Terminal module (interactive shell)
 * Add a new `setup-repos.sh` script to setup Webmin repos
