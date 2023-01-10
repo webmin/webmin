@@ -151,7 +151,6 @@ else {
 		"",
 		[ [ "ok", $in{'mode'} eq 'new' ? $text{'index_install'}
 					       : $text{'index_update'} ],
-		  undef,
 		  [ "refresh", $text{'index_refresh'} ] ],
 		1,
 		undef,
