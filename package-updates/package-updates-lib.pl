@@ -180,7 +180,7 @@ if (-r $file) {
 return ( );
 }
 
-# compare_versions(&pkg1, &pk2)
+# compare_versions(&pkg1, &pkg2)
 # Returns -1 if the version of pkg1 is older than pkg2, 1 if newer, 0 if same.
 sub compare_versions
 {
@@ -438,7 +438,8 @@ if (&supports_updates_available()) {
 	foreach my $a (&updates_available($nocache == 1)) {
 		my $c = $currentmap{$a->{'name'},$a->{'system'}};
 		next if (!$c);
-		next if ($a->{'version'} eq $c->{'version'});
+		next if ($a->{'version'} eq $c->{'version'} &&
+			 $a->{'epoch'} eq $c->{'epoch'});
 		push(@rv, { 'name' => $a->{'name'},
 			    'update' => $a->{'update'},
 			    'system' => $a->{'system'},
