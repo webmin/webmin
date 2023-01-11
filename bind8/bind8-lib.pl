@@ -982,7 +982,7 @@ sub can_edit_reverse
 return $access{'reverse'} || &can_edit_zone($_[0]);
 }
 
-# record_input(zone-name, view, type, file, origin, [num], [record],
+# record_input(zone-name, view, type, file, origin, [num], [&record],
 #	       [new-name, new-value])
 # Display a form for editing or creating a DNS record
 sub record_input
@@ -1059,8 +1059,12 @@ else {
 	$ttl = $rec{'ttl'} || '';
 	$ttlunit = "";
 	}
+my $defmsg = $text{'default'};
+if ($rec{'realttl'}) {
+	$defmsg .= " ($rec{'realttl'})";
+	}
 print &ui_table_row($text{'edit_ttl'},
-	&ui_opt_textbox("ttl", $ttl, 8, $text{'default'})." ".
+	&ui_opt_textbox("ttl", $ttl, 8, $defmsg)." ".
 	&time_unit_choice("ttlunit", $ttlunit));
 
 # Value(s) fields

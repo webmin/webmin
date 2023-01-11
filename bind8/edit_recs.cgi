@@ -183,14 +183,15 @@ for(my $i=0; $i<@_; $i++) {
 	if ($in{'type'} eq 'ALL') {
 		push(@cols, $r->{'type'});
 		}
-	if ($r->{'ttl'} && $r->{'ttl'} =~ /(\d+)([SMHDW]?)/i) {
-		$r->{'ttl'} =~ s/S//i;
-		if ($r->{'ttl'} =~ s/M//i) { $r->{'ttl'} *= 60; }
-		if ($r->{'ttl'} =~ s/H//i) { $r->{'ttl'} *= 3600; }
-		if ($r->{'ttl'} =~ s/D//i) { $r->{'ttl'} *= 86400; }
-		if ($r->{'ttl'} =~ s/W//i) { $r->{'ttl'} *= 604800; }
+	my $ttl = $r->{'realttl'};
+	if ($ttl && $ttl =~ /(\d+)([SMHDW]?)/i) {
+		$ttl =~ s/S//i;
+		if ($ttl =~ s/M//i) { $ttl *= 60; }
+		if ($ttl =~ s/H//i) { $ttl *= 3600; }
+		if ($ttl =~ s/D//i) { $ttl *= 86400; }
+		if ($ttl =~ s/W//i) { $ttl *= 604800; }
 		}
-	push(@cols, $r->{'ttl'} ? &html_escape($r->{'ttl'}) : $text{'default'});
+	push(@cols, $ttl ? &html_escape($ttl) : $text{'default'});
 	for(my $j=0; $j<@hmap; $j++) {
 		my $v;
 		if ($in{'type'} eq "RP" && $j == 0) {

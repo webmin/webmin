@@ -120,7 +120,9 @@ while($line = <$FILE>) {
 close($FILE);
 
 # parse into data structures
-my $i = 0; my $num = 0;
+my $i = 0;
+my $num = 0;
+my $currttl = undef;
 while($i < @tok) {
 	if ($tok[$i] =~ /^\$origin$/i) {
 		# $ORIGIN directive (may be relative or absolute)
@@ -179,6 +181,7 @@ while($i < @tok) {
 		       	       'defttl' => $tok[$i++],
 			       'type' => '' };
 		push(@rv, $defttl);
+		$currttl = $defttl->{'defttl'};
 		}
 	elsif ($tok[$i] =~ /^\$(\S+)/i) {
 		# some other special directive
@@ -279,6 +282,7 @@ while($i < @tok) {
 			}
 		$dir{'values'} = \@values;
 		$dir{'eline'} = $lnum[$i-1];
+		$dir{'realttl'} = $dir{'ttl'} || $currttl;
 
 		# Work out canonical form, and maybe use it
 		my $canon = $dir{'name'};
