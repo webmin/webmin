@@ -35,7 +35,8 @@ if ($options) {
 	$port = &find_value("default-port", $options->{'members'});
 	}
 $port ||= 953;
-my $algorithm = &find("algorithm", $rconf);
+my $algorithm = &find_value("algorithm", $rkey->{'members'}) ||
+		&find_value("algorithm", $rconf);
 $algorithm ||= "hmac-md5";
 
 # Add the key to named.conf
