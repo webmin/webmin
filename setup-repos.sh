@@ -1,7 +1,6 @@
 #!/bin/sh
 # shellcheck disable=SC1090 disable=SC2059 disable=SC2164 disable=SC2181
 # setup-repos.sh
-# Copyright Ilia Rostovtsev <ilia@virtualmin.com>
 # Configures Webmin repository for RHEL and Debian systems (derivatives)
 
 webmin_download="https://download.webmin.com"
