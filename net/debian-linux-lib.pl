@@ -800,7 +800,6 @@ open($fh, $file) || return ();
 my $line = <$fh>;
 my $lnum = 0;
 while (defined $line) {
-	print STDERR "file=$file line=$line\n";
 	chomp($line);
 	# skip comments
 	if ($line =~ /^\s*#/ || $line =~ /^\s*$/) {
@@ -828,14 +827,13 @@ while (defined $line) {
 			next;
 			}
 		}
-	elsif ($line =~ /^\s*source\s+(\S+)/) {
+	elsif ($line =~ /^\s*(source|source-directory)\s+(\S+)/) {
 		# Expand includes
 		$line = <$fh>;
 		$lnum++;
-		my $src = $1;
+		my $src = $2;
 		my @srcs = glob($src);
 		foreach $src (@srcs) {
-			print STDERR "including $src\n";
 			my @inc = &get_interface_defs($src);
 			push(@ret, @inc);
 			}
