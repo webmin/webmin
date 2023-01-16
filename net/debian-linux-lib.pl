@@ -801,7 +801,9 @@ open($fh, $file) || return ();
 # read the file line by line
 my $line = <$fh>;
 my $lnum = 0;
+my $err;
 while (defined $line) {
+	last if ($err);
 	chomp($line);
 	# skip comments
 	if ($line =~ /^\s*#/ || $line =~ /^\s*$/) {
@@ -883,6 +885,7 @@ while (defined $line) {
 			    $file, $lnum]);
 		}
 	else {
+		$err++;
 		error("Error reading file $network_interfaces_config: unexpected line '$line'");
 		}
 	}
