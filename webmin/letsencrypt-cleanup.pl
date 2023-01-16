@@ -35,7 +35,7 @@ if ($zone) {
 elsif ($d) {
 	# Use Virtualmin API calls
 	&virtual_server::obtain_lock_dns($d);
-	&pre_records_change($d);
+	&virtual_server::pre_records_change($d);
 	($recs, $file) = &virtual_server::get_domain_dns_records_and_file($d);
 	$wapi = 1;
 	}
