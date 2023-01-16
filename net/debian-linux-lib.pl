@@ -831,7 +831,10 @@ while (defined $line) {
 		# Expand includes
 		$line = <$fh>;
 		$lnum++;
-		my $src = $2;
+		my ($dir, $src) = ($1, $2);
+		if ($dir eq "source-directory" && $src !~ /\*$/) {
+			$src .= "/*";
+			}
 		my @srcs = glob($src);
 		foreach $src (@srcs) {
 			my @inc = &get_interface_defs($src);
