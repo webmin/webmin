@@ -253,18 +253,18 @@ ui_tabs=Categorize modules?
 
 upgrade_title=Upgrade Usermin
 upgrade_title2=Install Usermin
-upgrade_desc=This form allows you to upgrade your entire Usermin installation to a new version. You can install from a local file, an uploaded file or from the latest version at <a href=http://www.usermin.com/>www.usermin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
-upgrade_descrpm=This form allows you to upgrade your entire Usermin installation to a new version using RPM's upgrade option. You can install from a local RPM file, an uploaded file or from the latest version at <a href=http://www.usermin.com/>www.usermin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
-upgrade_descdeb=This form allows you to upgrade your entire Usermin installation to a new version by upgrading its Debian package. You can install from a local .deb file, an uploaded file or from the latest version at <a href=http://www.usermin.com/>www.usermin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
+upgrade_desc=This form allows you to upgrade your entire Usermin installation to a new version. You can install from a local file, an uploaded file or from the latest version at <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
+upgrade_descrpm=This form allows you to upgrade your entire Usermin installation to a new version using RPM's upgrade option. You can install from a local RPM file, an uploaded file or from the latest version at <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
+upgrade_descdeb=This form allows you to upgrade your entire Usermin installation to a new version by upgrading its Debian package. You can install from a local .deb file, an uploaded file or from the latest version at <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
 upgrade_local=From local file
 upgrade_uploaded=From uploaded file
 upgrade_url=From ftp or http URL
-upgrade_ftp=Latest version from www.usermin.com
+upgrade_ftp=Latest version from www.webmin.com
 upgrade_delete=Delete old version's directory after upgrade?
 upgrade_ok=Upgrade Usermin
 upgrade_err1=Failed to upgrade from $1
 upgrade_err2=Failed to upgrade from uploaded file
-upgrade_err3=Failed to upgrade from www.usermin.com
+upgrade_err3=Failed to upgrade from www.webmin.com
 upgrade_err5=Failed to upgrade from URL $1
 upgrade_eurl=Missing or invalid URL
 upgrade_efile=File does not exist
@@ -285,10 +285,10 @@ upgrade_failed=.. upgrade failed!
 upgrade_updates=There are $1 updates for this new version of Usermin. <a href='$2'>Click here</a> to automatically download and install them now.
 upgrade_eupdates=Failed to download list of updates : $1
 
-update_desc1=This form allows you to upgrade Usermin modules that have been found to contain bugs or security holes from the <a href=http://www.usermin.com/uupdates.html>Usermin Updates</a> page or from another source. This will compare the currently installed modules with those available for update, and optionally automatically download and install any modules that are out of date.
+update_desc1=This form allows you to upgrade Usermin modules that have been found to contain bugs or security holes from the <a href=http://www.webmin.com/uupdates.html>Usermin Updates</a> page or from another source. This will compare the currently installed modules with those available for update, and optionally automatically download and install any modules that are out of date.
 update_header1=Update modules now
 update_header2=Update modules on schedule
-update_webmin=Update from www.usermin.com
+update_webmin=Update from www.webmin.com
 update_other=Update from another source
 update_show=Only show which modules would be updated
 update_missing=Install modules that are not currently installed
@@ -300,7 +300,7 @@ update_apply=Save and Apply
 update_sched=Update modules at $1:00 every $2 days
 update_none=No Usermin updates for this version.
 update_failed=Failed to install module : $1
-update_desc2=This form is for scheduling the automatic update of Usermin modules containing bugs or security holes from the <a href=http://www.usermin.com/uupdates.html>Usermin Updates</a> page or from another source. While this service is useful, you should be careful using it as it may allow attackers to take over your system if the update server was ever compromised.
+update_desc2=This form is for scheduling the automatic update of Usermin modules containing bugs or security holes from the <a href=http://www.webmin.com/uupdates.html>Usermin Updates</a> page or from another source. While this service is useful, you should be careful using it as it may allow attackers to take over your system if the update server was ever compromised.
 
 assignment_title=Reassign Modules
 assignment_header=Module category assignments
