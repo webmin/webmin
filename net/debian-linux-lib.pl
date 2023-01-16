@@ -791,8 +791,10 @@ $sysctl{'net.ipv4.ip_forward'} = $in{'forward'};
 #    line          the line number in the file
 sub get_interface_defs
 {
-my ($file) = @_;
+my ($file, $done) = @_;
 $file ||= $network_interfaces_config;
+$done ||= { };
+return ( ) if ($done->{$file}++);
 my $fh;
 my @ret;
 open($fh, $file) || return ();
@@ -837,7 +839,7 @@ while (defined $line) {
 			}
 		my @srcs = glob($src);
 		foreach $src (@srcs) {
-			my @inc = &get_interface_defs($src);
+			my @inc = &get_interface_defs($src, $done);
 			push(@ret, @inc);
 			}
 		}
