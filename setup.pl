@@ -908,6 +908,7 @@ else {
 if (!$ENV{'nopostinstall'}) {
 	print "Running postinstall scripts ..\n";
 	chdir($wadir);
+	$ENV{'WEBMIN_UPGRADING'} = $upgrading;
 	system("$perl ".&quote_path("$wadir/run-postinstalls.pl"));
 	print ".. done\n";
 	print "\n";

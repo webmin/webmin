@@ -983,7 +983,7 @@ fi
 
 if [ "$nopostinstall" = "" ]; then
 	echo "Running postinstall scripts .."
-	(cd "$wadir" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/run-postinstalls.pl")
+	(cd "$wadir" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir WEBMIN_UPGRADING="$upgrading" "$wadir/run-postinstalls.pl")
 	echo ".. done"
 	echo ""
 fi
