@@ -4,6 +4,7 @@
 #
 # Rene Mayrhofer, July 2000
 # Some code has been taken from redhat-linux-lib.pl
+use feature 'state';
 
 $network_interfaces_config = '/etc/network/interfaces';
 $modules_config = '/etc/modprobe.d/arch/i386';
@@ -791,9 +792,9 @@ $sysctl{'net.ipv4.ip_forward'} = $in{'forward'};
 #    line          the line number in the file
 sub get_interface_defs
 {
-my ($file, $done) = @_;
+my ($file) = @_;
+state $done = { };
 $file ||= $network_interfaces_config;
-$done ||= { };
 return ( ) if ($done->{$file}++);
 my $fh;
 my @ret;
@@ -846,7 +847,7 @@ while (defined $line) {
 			@srcs = glob($src);
 			}
 		foreach $src (@srcs) {
-			my @inc = &get_interface_defs($src, $done);
+			my @inc = &get_interface_defs($src);
 			push(@ret, @inc);
 			}
 		}
