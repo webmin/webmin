@@ -834,10 +834,15 @@ while (defined $line) {
 		$line = <$fh>;
 		$lnum++;
 		my ($dir, $src) = ($1, $2);
-		if ($dir eq "source-directory" && $src !~ /\*$/) {
-			$src .= "/*";
+		my @srcs;
+		if ($dir eq "source-directory") {
+			opendir(SRCDIR, $src);
+			@srcs = grep { /^[a-zA-Z0-9_-]+$/ } readdir(SRCDIR);
+			closedir(SRCDIR);
 			}
-		my @srcs = glob($src);
+		else {
+			@srcs = glob($src);
+			}
 		foreach $src (@srcs) {
 			my @inc = &get_interface_defs($src, $done);
 			push(@ret, @inc);
