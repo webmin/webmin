@@ -109,9 +109,11 @@ elsif ($has_new_debian_iptables) {
 	local ($debpri) = grep { $_->[0] eq $pri->{'fullname'} }
 			       &net::get_interface_defs();
 	if ($debpri && !&started_at_boot()) {
-		push(@{$debpri->[3]},
+		my ($name, $addrfam, $method, $options, $file,$line) = @$debpri;
+		push(@$options,
 		     [ "post-up", "ip${ipvx}tables-restore < $ipvx_save" ]);
-		&net::modify_interface_def(@$debpri);
+		&net::modify_interface_def($name, $addrfam, $method, $options,
+					   0, $file);
 		}
 	}
 else {
