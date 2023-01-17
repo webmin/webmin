@@ -2,6 +2,8 @@
 # Show the left-side menu of Virtualmin domains, plus modules
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 
 # Globals
 our %in;

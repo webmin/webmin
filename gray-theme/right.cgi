@@ -3,6 +3,8 @@
 
 use strict;
 use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
 require "gray-theme/gray-theme-lib.pl";
 require "gray-theme/theme.pl";
 &ReadParse();
