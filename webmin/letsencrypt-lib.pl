@@ -67,6 +67,7 @@ my ($dom, $webroot, $email, $size, $mode, $staging, $account_email) = @_;
 my @doms = ref($dom) ? @$dom : ($dom);
 $email ||= "root\@$doms[0]";
 $mode ||= "web";
+@doms = &unique(@doms);
 my ($challenge, $wellknown, $challenge_new, $wellknown_new, $wildcard);
 
 # Wildcard mode?
