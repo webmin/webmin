@@ -1,5 +1,13 @@
 ## Changelog
 
+#### 2.012 (January 18, 2023)
+* Fix to set the correct algorithm when setting up RNDC #1817
+* Fix the loop bug when sourcing other network configs in Debian
+* Fix to include all Debian network config files in backups
+* Fix to stop doing expensive package re-fetch on upgrades
+* Add support for defining hostname for WebSocket connection
+* Add Debian 12 support
+
 #### 2.011 (January 10, 2023)
 * Add ability to set shell character encoding and set `TERM` environmental variable in the new Terminal module
 * Add support for editing network interfaces in include files for Debian systems
