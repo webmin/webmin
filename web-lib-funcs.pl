@@ -1652,8 +1652,6 @@ by the message setup using that function.
 sub error
 {
 $main::no_miniserv_userdb = 1;
-&setvar('error-fatal-ignored', 1);
-return if $main::ignore_errors;
 &setvar('error-fatal', 1);
 my $msg = join("", @_);
 $msg =~ s/<[^>]*>//g;
@@ -5312,9 +5310,10 @@ if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
         $url_to_filename = substr($url_to_filename, 0, 128);
 
         # Write URL for the theme to read and open
-        $main::ignore_errors = 1;
-        &write_file(&tempname('.theme_' . $salt . '_' . $url_to_filename . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
-        $main::ignore_errors = 0;
+        eval {
+            $main::error_must_die = 1;
+	        &write_file(&tempname('.theme_' . $salt . '_' . $url_to_filename . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
+        	};
         }
     &redirect("/");
 	}
