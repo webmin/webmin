@@ -605,7 +605,9 @@ my ($domain) = @_;
 
 sub routing_config_files
 {
-return ( $network_interfaces_config, $sysctl_config );
+my @defs = &get_interface_defs();
+my @files = &unique(map { $_->[4] } @files);
+return ( @files, $sysctl_config );
 }
 
 sub network_config_files
