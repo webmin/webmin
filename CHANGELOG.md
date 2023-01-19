@@ -1,5 +1,8 @@
 ## Changelog
 
+#### 2.013 (January 19, 2023)
+* Fix Authentic theme issue with error handling
+
 #### 2.012 (January 18, 2023)
 * Fix to set the correct algorithm when setting up RNDC #1817
 * Fix the loop bug when sourcing other network configs in Debian
