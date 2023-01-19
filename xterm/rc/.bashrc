@@ -26,8 +26,13 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # custom PS1
-PS1='\[\033[1;35m\]\u\[\033[1;37m\]@\[\033[1;32m\]\h:\[\033[1;37m\]\w\[\033[1;37m\]\$\[\033[0m\] '
-
+if [[ ${EUID} == 0 ]] ; then
+    # for root
+    PS1="\[\033[38;5;9m\][\[$(tput sgr0)\]\[\033[38;5;220m\]\u\[$(tput sgr0)\]\[\033[38;5;248m\]@\[$(tput sgr0)\]\[\033[38;5;68m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;210m\]\w\[$(tput sgr0)\]\[\033[38;5;9m\]]\[$(tput sgr0)\]\\$ \[$(tput sgr0)\]"
+else
+    # for user
+    PS1='\[\033[1;35m\]\u\[\033[1;37m\]@\[\033[1;32m\]\h:\[\033[1;37m\]\w\[\033[1;37m\]\$\[\033[0m\] '
+fi
 # user default run time config
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
