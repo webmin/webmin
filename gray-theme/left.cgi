@@ -54,7 +54,6 @@ if ($nw == 0 || $nw == 2 && $is_master) {
 	}
 
 # Default left-side mode
-print STDERR "mode=$in{'mode'} tab=$sects->{'tab'}\n";
 my $mode = $in{'mode'} ? $in{'mode'} :
 	   $sects->{'tab'} && $sects->{'tab'} =~ /vm2/ ? "server-manager" :
 	   $sects->{'tab'} && $sects->{'tab'} =~ /virtualmin/ ? "virtual-server" :
