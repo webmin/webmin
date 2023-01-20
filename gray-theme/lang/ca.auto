@@ -1,25 +1,30 @@
 left_home=Informació del sistema
-left_search=Cerca:
+left_search=Cerca
+
 right_virtver=La versió de Virtualmin $1 o superior ara és necessària per aquest tema.
 right_vm2ver=La versió de Cloudmin $1 o superior ara és necessària per aquest tema.
 right_edit=Configura aquesta pàgina
 right_return=informació del sistema
+
 vmain_title=Virtualmin $1 sobre $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 sobre $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=Categoria de configuració:
 config_change=Canviar
 config_return=informació del sistema
 config_next=Desa i Següent
 config_nnext=Pròxim
 config_nprev=Anterior
+
 edright_title=Configuració de la informació del sistema
 edright_header=Configuració de la pàgina d'informació del sistema Virtualmin
 edright_sects=Informació visible
@@ -55,11 +60,13 @@ edright_fsizedef=Decidiu automàticament
 edright_pixels=píxels
 edright_efsize=Falta l'amplada del fotograma esquerre o no vàlida en píxels
 edright_ecannot=No teniu permís de personalitzar aquesta pàgina
+
 has_virtualmin=Virtualmin
 has_mail=Correu electrònic
 has_vm2=Cloudmin
 has_webmin=Webmin
 has_usermin=Usermin
+
 overlay_title=Canvia de tema
 overlay_desc=Aquesta pàgina permet seleccionar una superposició de tema diferent, que pot canviar els colors, les icones i la disposició de la interfície d'usuari de Virtualmin.
 overlay_msg=Canvia la superposició de tema a:

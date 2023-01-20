@@ -1,19 +1,22 @@
 left_home=System informasjon
-left_search=Søk:
+
 right_edit=Konfigurer denne siden
 right_return=systeminformasjon
+
 vmain_title=Virtualmin $1 på $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 på $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 config_section=Konfigurasjonskategori:
 config_change=Endre
 config_return=system informasjon
 config_next=Lagre og Neste
 config_nnext=Neste
 config_nprev=Forr.
+
 edright_title=Systeminformasjon konfigurasjon
 edright_header=Innstillinger for Virtualmin systeminformasjonsside
 edright_sects=Synlig informasjon
@@ -47,11 +50,13 @@ edright_fsize=Bredde på venstre ramme
 edright_fsizedef=Bestem automatisk
 edright_pixels=piksler
 edright_efsize=Manglende eller ugyldig bredde i piksler for venstre ramme
+
 has_virtualmin=Virtualmin
 has_mail=E-post
 has_vm2=Cloudmiin
 has_webmin=Webmin
 has_usermin=Usermin
+
 overlay_title=Endre tema
 overlay_desc=This page allows you to select a different theme overlay, which can change the colors, icons and layout of the Virtualmin user interface.
 overlay_msg=Endre tema overlay til:

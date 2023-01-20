@@ -1,25 +1,30 @@
 left_home=Sistemaren informazioa
-left_search=Search:
+left_search=Bilatu
+
 right_virtver=Virtualmin $1 edo bertsio berria da gai honek!
 right_vm2ver=Cloudmin $1 bertsioa edo handiagoa beharrezkoa da gai honek!
 right_edit=Konfiguratu orri hau
 right_return=sistemaren informazioa
+
 vmain_title=Virtualmin $1 $2 an ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=% Cloudmin $1 $2 an ($3)
 mmain_title2=Cloudmin
 mmain_title3=Hodei $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=Konfigurazio kategoria:
 config_change=Aldaketa
 config_return=sistemaren informazioa
 config_next=Gorde eta Hurrengoa
 config_nnext=hurrengo
 config_nprev=Aurrekoa
+
 edright_title=Sistemaren informazioa konfiguratzea
 edright_header=Virtualmin sistemaren informazio orriaren ezarpenak
 edright_sects=Informazio ikusgarria
@@ -55,11 +60,13 @@ edright_fsizedef=Erabaki automatikoki
 edright_pixels=pixel
 edright_efsize=Falta da edo baliogabea ezkerreko markoaren zabalera pixeletan
 edright_ecannot=Ezin duzu orri hau pertsonalizatu
+
 has_virtualmin=Virtualmin
 has_mail=Mail
 has_vm2=Cloudmin
 has_webmin=Webmin
 has_usermin=Usermin
+
 overlay_title=Aldatu gaia
 overlay_desc=Orrialde honen bidez, gaiaren gaineko gainjartzea aukeratu dezakezu, Virtualmin erabiltzailearen interfazearen koloreak, ikonoak eta diseinua alda ditzakezunak.
 overlay_msg=Aldatu gaiaren gaineko gainjarra:

@@ -1,25 +1,30 @@
 left_home=מידע מערכת
-left_search=לחפש:
+left_search=לחפש
+
 right_virtver=גרסת Virtualmin $1 ומעלה נדרשת כעת לפי נושא זה!
 right_vm2ver=גרסת Cloudmin $1 ומעלה נדרשת כעת לפי נושא זה!
 right_edit=קבע את התצורה של דף זה
 right_return=מידע מערכת
+
 vmain_title=Virtualmin $1 על $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 על $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=קטגוריית תצורה:
 config_change=שינוי
 config_return=מידע מערכת
 config_next=שמור והבא
 config_nnext=הַבָּא
 config_nprev=קודם
+
 edright_title=תצורת מידע מערכת
 edright_header=הגדרות עמוד מידע על מערכת Virtualmin
 edright_sects=מידע גלוי
@@ -55,11 +60,13 @@ edright_fsizedef=החליט באופן אוטומטי
 edright_pixels=פיקסלים
 edright_efsize=רוחב מסגרת שמאל חסר או לא חוקי בפיקסלים
 edright_ecannot=אינך מורשה להתאים אישית דף זה
+
 has_virtualmin=Virtualmin
 has_mail=דוֹאַר
 has_vm2=Cloudmin
 has_webmin=וובמין
 has_usermin=סדרן
+
 overlay_title=לשנות נושא
 overlay_desc=דף זה מאפשר לך לבחור שכבת-על אחרת, שיכולה לשנות את הצבעים, הסמלים והפריסה של ממשק המשתמש Virtualmin.
 overlay_msg=שנה שכבת-על לנושא ל:

@@ -1,13 +1,18 @@
+left_search=搜索
+
 right_virtver=此主题现在需要Virtualmin版本 $1或更高版本！
 right_vm2ver=此主题现在需要Cloudmin版本 $1或更高版本！
+
 vmain_title3=虚拟分钟 $1（$2）
 mmain_title=$2上的Cloudmin $1（$3）
 mmain_title2=云民
 mmain_title3=Cloudmin $1（$2）
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 edright_list=默认右框内容
 edright_list0=系统信息
 edright_list1=虚拟服务器列表
@@ -32,11 +37,13 @@ edright_fsizedef=自动决定
 edright_pixels=像素
 edright_efsize=缺少或无效的左帧宽度（以像素为单位）
 edright_ecannot=您无权自定义此页面
+
 has_virtualmin=虚拟分钟
 has_mail=邮件
 has_vm2=云民
 has_webmin=Webmin
 has_usermin=用户分钟
+
 overlay_title=改变主题
 overlay_desc=该页面允许您选择不同的主题叠加层，它可以更改Virtualmin用户界面的颜色，图标和布局。
 overlay_msg=将主题叠加层更改为：

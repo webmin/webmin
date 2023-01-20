@@ -1,25 +1,30 @@
 left_home=ข้อมูลระบบ
-left_search=ค้นหา:
+left_search=ค้นหา
+
 right_virtver=ชุดรูปแบบนี้ต้องการ Virtualmin รุ่น $1 หรือสูงกว่า!
 right_vm2ver=ธีมนี้ต้องการธีม Cloudmin $1 หรือสูงกว่า!
 right_edit=กำหนดค่าหน้านี้
 right_return=ข้อมูลระบบ
+
 vmain_title=Virtualmin $1 บน $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 บน $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=หมวดหมู่การกำหนดค่า:
 config_change=เปลี่ยนแปลง
 config_return=ข้อมูลระบบ
 config_next=บันทึกและถัดไป
 config_nnext=ต่อไป
 config_nprev=ก่อนหน้า
+
 edright_title=การกำหนดค่าข้อมูลระบบ
 edright_header=การตั้งค่าหน้าข้อมูลระบบ Virtualmin
 edright_sects=ข้อมูลที่มองเห็นได้
@@ -55,11 +60,13 @@ edright_fsizedef=ตัดสินใจโดยอัตโนมัติ
 edright_pixels=พิกเซล
 edright_efsize=ความกว้างเฟรมด้านซ้ายที่ขาดหายไปหรือไม่ถูกต้องเป็นพิกเซล
 edright_ecannot=คุณไม่ได้รับอนุญาตให้ปรับแต่งหน้านี้
+
 has_virtualmin=Virtualmin
 has_mail=จดหมาย
 has_vm2=Cloudmin
 has_webmin=Webmin
 has_usermin=Usermin
+
 overlay_title=เปลี่ยนธีม
 overlay_desc=หน้านี้ให้คุณเลือกการซ้อนทับชุดรูปแบบที่แตกต่างกันซึ่งสามารถเปลี่ยนสีไอคอนและโครงร่างของส่วนติดต่อผู้ใช้ของ Virtualmin
 overlay_msg=เปลี่ยนการซ้อนทับชุดรูปแบบเป็น:

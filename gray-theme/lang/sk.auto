@@ -1,25 +1,30 @@
 left_home=Systémové informácie
-left_search=Vyhľadávanie:
+left_search=Vyhľadávanie
+
 right_virtver=Táto téma si teraz vyžaduje verziu Virtualmin verzie $1 alebo vyššiu!
 right_vm2ver=V tejto téme sa teraz vyžaduje cloudová verzia $1 alebo vyššia.
 right_edit=Nakonfigurujte túto stránku
 right_return=systémové informácie
+
 vmain_title=Virtualmin $1 na $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 na $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=Konfiguračná kategória:
 config_change=zmena
 config_return=systémové informácie
 config_next=Uložiť a Ďalej
 config_nnext=Ďalšie
 config_nprev=Predchádzajúce
+
 edright_title=Konfigurácia systémových informácií
 edright_header=Nastavenia stránky s informáciami o systéme Virtualmin
 edright_sects=Viditeľné informácie
@@ -55,11 +60,13 @@ edright_fsizedef=Rozhodnite sa automaticky
 edright_pixels=pixely
 edright_efsize=Chýbajúca alebo neplatná šírka ľavého rámu v pixloch
 edright_ecannot=Nemáte povolenie upravovať túto stránku
+
 has_virtualmin=Virtualmin
 has_mail=pošta
 has_vm2=Cloudmin
 has_webmin=Webmin
 has_usermin=Usermin
+
 overlay_title=Zmeniť tému
 overlay_desc=Táto stránka vám umožňuje vybrať inú šablónu témy, ktorá môže meniť farby, ikony a rozloženie používateľského rozhrania Virtualmin.
 overlay_msg=Zmeniť prekrytie témy na:

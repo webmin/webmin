@@ -1,25 +1,30 @@
 left_home=Інформація про систему
-left_search=Пошук:
+left_search=Пошук
+
 right_virtver=Тепер для цієї теми потрібна віртуальна версія $1 або новіша!
 right_vm2ver=Ця тема вимагає Cloudmin версії $1 або вище!
 right_edit=Налаштуйте цю сторінку
 right_return=системна інформація
+
 vmain_title=Virtualmin $1 на $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 на $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=Категорія конфігурації:
 config_change=Зміна
 config_return=системна інформація
 config_next=Зберегти та Далі
 config_nnext=Далі
 config_nprev=Попередня
+
 edright_title=Конфігурація системної інформації
 edright_header=Налаштування сторінки інформації щодо віртуальної системи
 edright_sects=Видима інформація
@@ -55,11 +60,13 @@ edright_fsizedef=Вирішіть автоматично
 edright_pixels=пікселів
 edright_efsize=Відсутня або недійсна ширина лівого кадру в пікселях
 edright_ecannot=Вам не дозволяється налаштувати цю сторінку
+
 has_virtualmin=Virtualmin
 has_mail=Пошта
 has_vm2=Cloudmin
 has_webmin=Вебмін
 has_usermin=Usermin
+
 overlay_title=Змінити тему
 overlay_desc=Ця сторінка дозволяє вибрати інше накладання тем, яке може змінювати кольори, піктограми та макет інтерфейсу користувача Virtualmin.
 overlay_msg=Змініть накладку теми на:

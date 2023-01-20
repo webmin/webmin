@@ -1,25 +1,30 @@
 left_home=Maklumat sistem
-left_search=Cari:
+left_search=Cari
+
 right_virtver=Versi Virtualmin $1 atau lebih tinggi kini diperlukan oleh tema ini!
 right_vm2ver=Cloudmin versi $1 atau lebih tinggi kini diperlukan oleh tema ini!
 right_edit=Konfigurasikan halaman ini
 right_return=maklumat sistem
+
 vmain_title=Virtualmin $1 pada $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 pada $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=Kategori konfigurasi:
 config_change=Ubah
 config_return=maklumat sistem
 config_next=Simpan dan Seterusnya
 config_nnext=Seterusnya
 config_nprev=Sebelumnya
+
 edright_title=Konfigurasi Maklumat Sistem
 edright_header=Tetapan halaman maklumat sistem Virtualmin
 edright_sects=Maklumat yang dapat dilihat
@@ -55,11 +60,13 @@ edright_fsizedef=Tentukan secara automatik
 edright_pixels=piksel
 edright_efsize=Lebar bingkai kiri yang hilang atau tidak sah dalam piksel
 edright_ecannot=Anda tidak dibenarkan menyesuaikan halaman ini
+
 has_virtualmin=Virtualmin
 has_mail=Mel
 has_vm2=Cloudmin
 has_webmin=Webmin
 has_usermin=Pengguna Pengguna
+
 overlay_title=Tukar tema
 overlay_desc=Halaman ini membolehkan anda memilih hamparan tema yang berbeza, yang dapat mengubah warna, ikon dan susun atur antara muka pengguna Virtualmin.
 overlay_msg=Tukar hamparan tema kepada:

@@ -1,13 +1,18 @@
+left_search=Hae
+
 right_virtver=Tämä teema vaatii nyt Virtualmin-version $1 tai uudemman!
 right_vm2ver=Tämä teema vaatii nyt Cloudmin-version $1 tai uudemman!
+
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 $2 : ssa ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 edright_list=Oikean kehyksen oletusarvo
 edright_list0=Järjestelmätiedot
 edright_list1=Luettelo virtuaalipalvelimista
@@ -32,11 +37,13 @@ edright_fsizedef=Päätä automaattisesti
 edright_pixels=pikseliä
 edright_efsize=Puuttuva tai virheellinen vasemman kehyksen leveys pikseleinä
 edright_ecannot=Et voi muokata tätä sivua
+
 has_virtualmin=Virtualmin
 has_mail=posti
 has_vm2=Cloudmin
 has_webmin=Webmin
 has_usermin=Usermin
+
 overlay_title=Vaihda teema
 overlay_desc=Tällä sivulla voit valita toisen teemapeiton, joka voi muuttaa Virtualmin-käyttöliittymän värejä, kuvakkeita ja asettelua.
 overlay_msg=Muuta teemapeitto muotoon:

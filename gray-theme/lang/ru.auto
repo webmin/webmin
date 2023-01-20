@@ -1,25 +1,30 @@
 left_home=Системная информация
-left_search=Поиск:
+left_search=Поиск
+
 right_virtver=Virtualmin версия $1 или выше теперь требуется для этой темы!
 right_vm2ver=Cloudmin версия $1 или выше теперь требуется для этой темы!
 right_edit=Настройте эту страницу
 right_return=системная информация
+
 vmain_title=Virtualmin $1 на $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 на $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=Категория конфигурации:
 config_change=Изменить
 config_return=Системная информация
 config_next=Сохранить и далее
 config_nnext=Следующий
 config_nprev=Предыдущая
+
 edright_title=Конфигурация информации о системе
 edright_header=Настройки страницы информации о системе Virtualmin
 edright_sects=Видимая информация
@@ -55,11 +60,13 @@ edright_fsizedef=Решить автоматически
 edright_pixels=пикселей
 edright_efsize=Отсутствует или неверна ширина левой рамки в пикселях
 edright_ecannot=Вам не разрешено настраивать эту страницу
+
 has_virtualmin=Virtualmin
 has_mail=почта
 has_vm2=Cloudmin
 has_webmin=Webmin
 has_usermin=Usermin
+
 overlay_title=Смени тему
 overlay_desc=На этой странице вы можете выбрать другую тему наложения, которая может изменить цвета, значки и макет пользовательского интерфейса Virtualmin.
 overlay_msg=Изменить наложение темы на:

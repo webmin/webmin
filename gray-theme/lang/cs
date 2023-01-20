@@ -1,8 +1,10 @@
 left_home=Informace o systému
-left_search=Hledat:
+
 right_edit=Konfigurovat tuto stránku
 right_return=informace o systému
+
 config_return=informace o systému
+
 edright_title=Nastavení informací o systému
 edright_header=Stránka Virtualminu nastavení informací o systému
 edright_sects=Zobrazené informace

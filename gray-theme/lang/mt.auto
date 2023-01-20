@@ -1,25 +1,30 @@
 left_home=Informazzjoni tas-Sistema
-left_search=Fittex:
+left_search=Fittex
+
 right_virtver=Il-verżjoni Virtualmin $1 jew ogħla issa hija meħtieġa minn din it-tema!
 right_vm2ver=Il-verżjoni Cloudmin $1 jew ogħla issa hija meħtieġa minn din it-tema!
 right_edit=Ikkonfigura din il-paġna
 right_return=informazzjoni tas-sistema
+
 vmain_title=Virtualmin $1 fuq $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 fuq $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=Kategorija ta 'konfigurazzjoni:
 config_change=Ibdel
 config_return=informazzjoni tas-sistema
 config_next=Issejvja u jmiss
 config_nnext=Sussegwentement
 config_nprev=Prev
+
 edright_title=Konfigurazzjoni tal-Informazzjoni tas-Sistema
 edright_header=Issettjar tal-paġna ta 'informazzjoni dwar sistema ta' Virtualmin
 edright_sects=Informazzjoni viżibbli
@@ -55,11 +60,13 @@ edright_fsizedef=Iddeċiedi awtomatikament
 edright_pixels=pixel
 edright_efsize=Nieqes il-wisa 'tal-qafas tax-xellug nieqes jew invalidu fil-pixel
 edright_ecannot=M'għandekx permess tippersonalizza din il-paġna
+
 has_virtualmin=Virtualmin
 has_mail=Mail
 has_vm2=Cloudmin
 has_webmin=Webmin
 has_usermin=Usermin
+
 overlay_title=Ibdel Tema
 overlay_desc=Din il-paġna jippermettilek tagħżel overlay b’tema differenti, li tista ’tbiddel il-kuluri, l-ikoni u t-tqassim tal-interface tal-utent ta’ Virtualmin.
 overlay_msg=Ibdel l-overlay tat-tema għal:

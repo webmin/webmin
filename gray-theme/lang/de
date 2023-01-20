@@ -1,16 +1,19 @@
 left_home=Systeminformation
-left_search=Suche:
+
 right_edit=Diese Seite konfigurieren
 right_return=Systeminformationen
+
 vmain_title=Virtualmin $1 von $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
+
 config_section=Konfigurationskategorie:
 config_change=Ändern
 config_return=Systeminformation
 config_next=Speichern und weiter
 config_nnext=Weiter
 config_nprev=Zurück
+
 edright_title=Systeminformation Konfiguration
 edright_header=Virtualmin Systeminformationsseite Einstellungen
 edright_sects=Sichtbare Informationen
@@ -33,6 +36,7 @@ edright_webmin=Webmin
 edright_fsize=Breite des linken Frames
 edright_fsizedef=Automatisch
 edright_pixels=Pixel
+
 has_virtualmin=Virtualmin
 has_mail=Email
 has_vm2=Cloudmin

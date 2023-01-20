@@ -1,25 +1,30 @@
 left_home=اطلاعات سیستم
-left_search=جستجو کردن:
+left_search=جستجو کردن
+
 right_virtver=نسخه Virtualmin $1 یا بالاتر اکنون توسط این موضوع مورد نیاز است!
 right_vm2ver=نسخه Cloudmin $1 یا بالاتر اکنون توسط این موضوع مورد نیاز است!
 right_edit=پیکربندی این صفحه
 right_return=اطلاعات سیستم
+
 vmain_title=Virtualmin $1 on $2 ($3)
 vmain_title2=مجازی
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 در$2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=دسته پیکربندی:
 config_change=تغییر دادن
 config_return=اطلاعات سیستم
 config_next=ذخیره و بعدی
 config_nnext=بعد
 config_nprev=مقدمه
+
 edright_title=پیکربندی اطلاعات سیستم
 edright_header=تنظیمات صفحه اطلاعات سیستم Virtualmin
 edright_sects=اطلاعات قابل مشاهده
@@ -55,11 +60,13 @@ edright_fsizedef=به طور خودکار تصمیم بگیرید
 edright_pixels=پیکسل
 edright_efsize=عرض قاب نامحدود یا نامعتبر در پیکسل ها
 edright_ecannot=شما مجاز به سفارشی کردن این صفحه نیستید
+
 has_virtualmin=مجازی
 has_mail=نامه
 has_vm2=Cloudmin
 has_webmin=وبمین
 has_usermin=اوسرمین
+
 overlay_title=تغییر زمینه
 overlay_desc=این صفحه به شما امکان می دهد یک روکش موضوعی متفاوت را انتخاب کنید ، که می تواند رنگ ها ، نمادها و چیدمان رابط کاربری Virtualmin را تغییر دهد.
 overlay_msg=تغییر روکش موضوع به:

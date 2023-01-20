@@ -1,25 +1,30 @@
 left_home=시스템 정보
-left_search=검색:
+left_search=찾다
+
 right_virtver=이 테마에는 Virtualmin 버전 $1 이상이 필요합니다!
 right_vm2ver=이 테마에는 Cloudmin 버전 $1 이상이 필요합니다!
 right_edit=이 페이지를 구성하십시오
 right_return=시스템 정보
+
 vmain_title=$2 의 가상 최소 $1 ($3)
 vmain_title2=가상 민
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=$2 의 Cloudmin $1 ($3)
 mmain_title2=클라우드 민
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=구성 카테고리 :
 config_change=변화
 config_return=시스템 정보
 config_next=저장하고 다음
 config_nnext=다음
 config_nprev=이전
+
 edright_title=시스템 정보 구성
 edright_header=Virtualmin 시스템 정보 페이지 설정
 edright_sects=보이는 정보
@@ -55,11 +60,13 @@ edright_fsizedef=자동 결정
 edright_pixels=픽셀
 edright_efsize=왼쪽 프레임 너비가 없거나 잘못되었습니다 (픽셀)
 edright_ecannot=이 페이지를 사용자 정의 할 수 없습니다
+
 has_virtualmin=가상 민
 has_mail=우편
 has_vm2=클라우드 민
 has_webmin=Webmin
 has_usermin=Usermin
+
 overlay_title=테마 변경
 overlay_desc=이 페이지에서는 다른 테마 오버레이를 선택하여 Virtualmin 사용자 인터페이스의 색상, 아이콘 및 레이아웃을 변경할 수 있습니다.
 overlay_msg=테마 오버레이를 다음으로 변경하십시오.

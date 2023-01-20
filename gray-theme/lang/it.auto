@@ -1,25 +1,30 @@
 left_home=Informazioni di sistema
-left_search=Ricerca:
+left_search=Ricerca
+
 right_virtver=Virtualmin versione $1 o successiva è ora richiesta da questo tema!
 right_vm2ver=La versione di Cloudmin $1 o successiva è ora richiesta da questo tema!
 right_edit=Configura questa pagina
 right_return=informazioni di sistema
+
 vmain_title=Virtualmin $1 su $2 ($3)
 vmain_title2=virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 su $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=Categoria di configurazione:
 config_change=Modificare
 config_return=informazioni di sistema
 config_next=Salva e Avanti
 config_nnext=Il prossimo
 config_nprev=prev
+
 edright_title=Configurazione delle informazioni di sistema
 edright_header=Impostazioni della pagina delle informazioni di sistema di Virtualmin
 edright_sects=Informazioni visibili
@@ -55,11 +60,13 @@ edright_fsizedef=Decidi automaticamente
 edright_pixels=pixel
 edright_efsize=Larghezza della cornice sinistra mancante o non valida in pixel
 edright_ecannot=Non sei autorizzato a personalizzare questa pagina
+
 has_virtualmin=virtualmin
 has_mail=posta
 has_vm2=Cloudmin
 has_webmin=Webmin
 has_usermin=Usermin
+
 overlay_title=Cambia tema
 overlay_desc=Questa pagina consente di selezionare un diverso overlay di temi, che può cambiare i colori, le icone e il layout dell'interfaccia utente di Virtualmin.
 overlay_msg=Cambia l'overlay del tema in:

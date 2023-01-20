@@ -1,25 +1,30 @@
 left_home=معلومات النظام
-left_search=بحث:
+left_search=يبحث
+
 right_virtver=إصدار Virtualmin $1 أو أعلى مطلوب الآن بواسطة هذا السمة!
 right_vm2ver=إصدار Cloudmin $1 أو أعلى مطلوب الآن بواسطة هذا النسق!
 right_edit=تكوين هذه الصفحة
 right_return=معلومات النظام
+
 vmain_title=Virtualmin $1 على$2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 على$2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=فئة التكوين:
 config_change=يتغيرون
 config_return=معلومات النظام
 config_next=حفظ ثم التالي
 config_nnext=التالى
 config_nprev=السابق
+
 edright_title=تكوين معلومات النظام
 edright_header=إعدادات صفحة معلومات نظام Virtualmin
 edright_sects=معلومات مرئية
@@ -55,11 +60,13 @@ edright_fsizedef=تقرر تلقائيا
 edright_pixels=بكسل
 edright_efsize=عرض الإطار الأيسر مفقود أو غير صالح بالبكسل
 edright_ecannot=غير مسموح لك بتخصيص هذه الصفحة
+
 has_virtualmin=Virtualmin
 has_mail=بريد
 has_vm2=Cloudmin
 has_webmin=Webmin
 has_usermin=Usermin
+
 overlay_title=غير الخلفية
 overlay_desc=تتيح لك هذه الصفحة تحديد تراكب نسق مختلف ، والذي يمكن أن يغير الألوان والرموز وتخطيط واجهة مستخدم Virtualmin.
 overlay_msg=تغيير تراكب السمة إلى:
