@@ -110,7 +110,9 @@ my $cansearch = ($gaccess{'webminsearch'} || '') ne '0' &&
 		!$sects->{'nosearch'};
 if ($mode eq "modules" && $cansearch) {
 	push(@leftitems, { 'type' => 'input',
-			   'desc' => $text{'left_search'},
+			   'desc' => ' ',
+			   'tags' => " placeholder='$text{'left_search'}' style='width: 92%;'",
+			   'size' => 23,
 			   'name' => 'search',
 			   'cgi' => '/webmin_search.cgi', });
 	push(@leftitems, { 'type' => 'hr' });
@@ -311,7 +313,7 @@ foreach my $item (@$items) {
 			}
 		elsif ($item->{'type'} eq 'input') {
 			print ui_textbox($item->{'name'}, $item->{'value'},
-					  $item->{'size'});
+					  $item->{'size'}, undef, undef, $item->{'tags'});
 			}
 		if ($item->{'icon'}) {
 			my $icon = add_webprefix($item->{'icon'});

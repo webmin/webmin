@@ -1,19 +1,22 @@
 left_home=Systeem Informatie
-left_search=Zoek:
+
 right_edit=Configureer deze pagina
 right_return=systeem informatie
+
 vmain_title=Virtualmin $1 op $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 op $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 config_section=Configuratie categorie:
 config_change=Verander
 config_return=systeem informatie
 config_next=Opslaan en Volgende
 config_nnext=Volgende
 config_nprev=Vorige
+
 edright_title=Systeem Informatie Configuratie
 edright_header=Virtualmin systeem informatie pagina instellingen
 edright_sects=Zichtbare informatie
@@ -47,11 +50,13 @@ edright_fsize=Linker frame breedte
 edright_fsizedef=Beslis automatisch
 edright_pixels=pixels
 edright_efsize=Ontbrekende of ongeldige linker frame breedte in pixels
+
 has_virtualmin=Virtualmin
 has_mail=Email
 has_vm2=Cloudmin
 has_webmin=Webmin
 has_usermin=Usermin
+
 overlay_title=Verander Thema
 overlay_desc=Op deze pagina kunt u een andere thema kiezen, waarvan de kleuren kunnen worden verandert plus de iconen en layout van de Virtualmin gebruiker interface.
 overlay_msg=Verander thema overlay naar:

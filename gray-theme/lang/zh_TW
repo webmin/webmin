@@ -1,15 +1,18 @@
 left_home=系統信息
-left_search=查找：
+
 right_edit=配置本頁
 right_return=系統信息
+
 vmain_title=$2 ($3)上的Virtualmin $1 
 vmain_title2=Virtualmin
+
 config_section=配置類別：
 config_change=修改
 config_return=系統信息
 config_next=保存及下一步
 config_nnext=下一步
 config_nprev=上一步
+
 edright_title=系統信息配置
 edright_header=Virtualmin系統信息頁面設置
 edright_sects=可見信息

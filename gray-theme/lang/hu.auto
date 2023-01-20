@@ -1,25 +1,30 @@
 left_home=Rendszer információ
-left_search=Keresés:
+left_search=Keresés
+
 right_virtver=Ez a téma most megköveteli a (z) $1 vagy magasabb Virtualmin verziót!
 right_vm2ver=Ez a téma most megköveteli a (z) $1 vagy magasabb Cloudmin verziót!
 right_edit=Konfigurálja ezt az oldalt
 right_return=rendszer információ
+
 vmain_title=$1 virtuális min $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=$1 ($2)
 mmain_title=Cloudmin $1 a $2 -en ($3)
 mmain_title2=Cloudmin
 mmain_title3=$1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=Konfigurációs kategória:
 config_change=változás
 config_return=rendszer információ
 config_next=Mentés és Következő
 config_nnext=Következő
 config_nprev=Előző
+
 edright_title=Rendszerinformációk konfigurálása
 edright_header=A Virtualmin rendszer információs oldalának beállításai
 edright_sects=Látható információ
@@ -55,11 +60,13 @@ edright_fsizedef=Döntse el automatikusan
 edright_pixels=képpont
 edright_efsize=Hiányzó vagy érvénytelen bal oldali keret szélessége pixelben
 edright_ecannot=Ezt az oldalt nem testreszabhatja
+
 has_virtualmin=Virtualmin
 has_mail=Levél
 has_vm2=Cloudmin
 has_webmin=Webmint
 has_usermin=Usermin
+
 overlay_title=Téma váltása
 overlay_desc=Ezen az oldalon választhat egy másik témafedvényt, amely megváltoztathatja a Virtualmin felhasználói felületének színeit, ikonjait és elrendezését.
 overlay_msg=A téma átfedése módosítsa:

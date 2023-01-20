@@ -1,25 +1,30 @@
 left_home=Systeminformation
-left_search=Sök:
+left_search=Sök
+
 right_virtver=Virtualmin-version $1 eller högre krävs nu av detta tema!
 right_vm2ver=Cloudmin-version $1 eller högre krävs nu av detta tema!
 right_edit=Konfigurera den här sidan
 right_return=systeminformation
+
 vmain_title=Virtualmin $1 på $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 på $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=Konfigureringskategori:
 config_change=Förändra
 config_return=systeminformation
 config_next=Spara och Nästa
 config_nnext=Nästa
 config_nprev=Föregående
+
 edright_title=Systeminformationskonfiguration
 edright_header=Inställningar för Virtualmin-systeminformation
 edright_sects=Synlig information
@@ -55,11 +60,13 @@ edright_fsizedef=Bestäm automatiskt
 edright_pixels=pixlar
 edright_efsize=Saknas eller ogiltig vänster rambredd i pixlar
 edright_ecannot=Du får inte anpassa denna sida
+
 has_virtualmin=Virtualmin
 has_mail=Post
 has_vm2=Cloudmin
 has_webmin=webmin
 has_usermin=Usermin
+
 overlay_title=Ändra tema
 overlay_desc=På den här sidan kan du välja ett annat temaöverlägg som kan ändra färger, ikoner och layout för användargränssnittet Virtualmin.
 overlay_msg=Ändra temaöverlägg till:

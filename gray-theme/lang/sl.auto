@@ -1,25 +1,30 @@
 left_home=Sistemska informacija
-left_search=Iskanje:
+left_search=Iskanje
+
 right_virtver=To temo zdaj zahteva virtualna različica $1 ali višja!
 right_vm2ver=Ta tema zdaj zahteva Cloudmin različico $1 ali višjo!
 right_edit=Konfigurirajte to stran
 right_return=sistemska informacija
+
 vmain_title=Virtualmin $1 na $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 na $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=Kategorija konfiguracije:
 config_change=Spremeni se
 config_return=sistemska informacija
 config_next=Shrani in Naprej
 config_nnext=Naslednji
 config_nprev=Prev
+
 edright_title=Konfiguracija informacij o sistemu
 edright_header=Nastavitve strani z informacijami o virtualnem sistemu
 edright_sects=Vidne informacije
@@ -55,11 +60,13 @@ edright_fsizedef=Odločite se samodejno
 edright_pixels=slikovnih pik
 edright_efsize=Manjkajoča ali neveljavna širina levega okvira v slikovnih pikah
 edright_ecannot=Te strani ni dovoljeno prilagajati
+
 has_virtualmin=Virtualmin
 has_mail=Pošta
 has_vm2=Cloudmin
 has_webmin=Webmin
 has_usermin=Usermin
+
 overlay_title=Spremeni temo
 overlay_desc=Ta stran vam omogoča izbiro drugačnega prekrivanja teme, ki lahko spremeni barve, ikone in postavitev uporabniškega vmesnika Virtualmin.
 overlay_msg=Spremeni prekrivanje teme v:

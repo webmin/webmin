@@ -1,19 +1,22 @@
 left_home=Informacje o systemie
-left_search=Szukaj:
+
 right_edit=Konfiguruj tę stronę
 right_return=informacji o systemie
+
 vmain_title=Virtualmin $1 na $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 na $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 config_section=Konfiguracja kategorii
 config_change=Zmień
 config_return=informacji o systemie
 config_next=Zapisz i dalej
 config_nnext=Dalej
 config_nprev=Wstecz
+
 edright_title=Konfiguracja strony informacyjnej o serwerze
 edright_header=Ustawienia strony Virtualmin - Informacje o serwerze
 edright_sects=Widoczne informacje
@@ -49,11 +52,13 @@ edright_fsizedef=Przydzielane automatyczne
 edright_pixels=pikseli
 edright_efsize=Brakująca lub błędna szerokość lewej ramki w pikselach
 edright_ecannot=Nie masz uprawnień do konfigurowania tej strony
+
 has_virtualmin=Virtualmin
 has_mail=Mail
 has_vm2=Cloudmin
 has_webmin=Webmin
 has_usermin=Usermin
+
 overlay_title=Zmiana szablonu
 overlay_desc=Ta strona pozwala zmienić nakładkę na szablon, w którym można zmieniać kolory, ikony i układ interfejsu
 overlay_msg=Zmiana motywu nakładki na:

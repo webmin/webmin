@@ -1,15 +1,18 @@
 left_home=Järjestelmän tiedot
-left_search=Etsi:
+
 right_edit=Muokka tätä sivua
 right_return=järjestelmän tiedot
+
 vmain_title=Virtualmin $1 on $2 ($3)
 vmain_title2=Virtualmin
+
 config_section=Asetus kategoria:
 config_change=Vaihda
 config_return=järjestelmä tiedot
 config_next=Tallenna ja Seuraava
 config_nnext=Seuraava
 config_nprev=Edellinen
+
 edright_title=Järjestelmän tiedot asetukset
 edright_header=Virtualmin järjestelmä tiedot sivu asetukset
 edright_sects=Näkyvät tiedot

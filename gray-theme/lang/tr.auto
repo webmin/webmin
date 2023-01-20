@@ -1,25 +1,30 @@
 left_home=Sistem bilgisi
-left_search=Arama:
+left_search=Arama
+
 right_virtver=Bu tema için $1 veya üstü Virtualmin sürümü gerekiyor!
 right_vm2ver=Bu tema için $1 veya daha yüksek Cloudmin sürümü gerekiyor!
 right_edit=Bu sayfayı yapılandır
 right_return=sistem bilgisi
+
 vmain_title=$2 üzerinde Virtualmin $1 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=$2 üzerinde $1 Cloudmin ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=Yapılandırma kategorisi:
 config_change=Değişiklik
 config_return=sistem bilgisi
 config_next=Kaydet ve İleri
 config_nnext=Sonraki
 config_nprev=Önceki
+
 edright_title=Sistem Bilgisi Yapılandırması
 edright_header=Virtualmin sistem bilgileri sayfası ayarları
 edright_sects=Görünür bilgi
@@ -55,11 +60,13 @@ edright_fsizedef=Otomatik olarak karar ver
 edright_pixels=piksel
 edright_efsize=Piksel cinsinden eksik veya geçersiz sol çerçeve genişliği
 edright_ecannot=Bu sayfayı özelleştirmenize izin verilmiyor
+
 has_virtualmin=Virtualmin
 has_mail=Posta
 has_vm2=Cloudmin
 has_webmin=Webmin'de
 has_usermin=Usermin
+
 overlay_title=Temayı değiştir
 overlay_desc=Bu sayfa, Virtualmin kullanıcı arayüzünün renklerini, simgelerini ve düzenini değiştirebilecek farklı bir tema kaplaması seçmenize izin verir.
 overlay_msg=Tema kaplamasını şu şekilde değiştir:

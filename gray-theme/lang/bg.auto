@@ -1,25 +1,30 @@
 left_home=Системна информация
-left_search=Търсене:
+left_search=Търсене
+
 right_virtver=Virtualmin версия $1 или по-нова вече се изисква от тази тема!
 right_vm2ver=Cloudmin версия $1 или по-нова вече се изисква от тази тема!
 right_edit=Конфигурирайте тази страница
 right_return=системна информация
+
 vmain_title=Virtualmin $1 на $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 на $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=Категория на конфигурация:
 config_change=Промяна
 config_return=Системна информация
 config_next=Запазване и Напред
 config_nnext=Следващия
 config_nprev=Предишна
+
 edright_title=Конфигурация на системната информация
 edright_header=Настройки на страницата за информация за виртуалната система
 edright_sects=Видима информация
@@ -55,11 +60,13 @@ edright_fsizedef=Решете автоматично
 edright_pixels=пиксела
 edright_efsize=Липсваща или невалидна ширина на лявата рамка в пиксели
 edright_ecannot=Нямате право да персонализирате тази страница
+
 has_virtualmin=Virtualmin
 has_mail=поща
 has_vm2=Cloudmin
 has_webmin=Webmin
 has_usermin=Usermin
+
 overlay_title=Промяна на темата
 overlay_desc=Тази страница ви позволява да изберете различно наслагване на тема, което може да промени цветовете, иконите и оформлението на потребителския интерфейс на Virtualmin.
 overlay_msg=Промяна на наслагването на темата на:

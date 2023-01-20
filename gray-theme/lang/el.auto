@@ -1,25 +1,30 @@
 left_home=Πληροφορίες συστήματος
-left_search=Αναζήτηση:
+left_search=Αναζήτηση
+
 right_virtver=Το Virtualmin έκδοση $1 ή υψηλότερη απαιτείται τώρα από αυτό το θέμα!
 right_vm2ver=Το Cloudmin έκδοση $1 ή υψηλότερη απαιτείται τώρα από αυτό το θέμα!
 right_edit=Διαμορφώστε αυτήν τη σελίδα
 right_return=πληροφορίες συστήματος
+
 vmain_title=Virtualmin $1 στο $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 στο $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=Κατηγορία διαμόρφωσης:
 config_change=Αλλαγή
 config_return=πληροφορίες συστήματος
 config_next=Αποθήκευση και Επόμενο
 config_nnext=Επόμενο
 config_nprev=Προηγ
+
 edright_title=Διαμόρφωση πληροφοριών συστήματος
 edright_header=Ρυθμίσεις σελίδας πληροφοριών συστήματος Virtualmin
 edright_sects=Ορατές πληροφορίες
@@ -55,11 +60,13 @@ edright_fsizedef=Αποφασίστε αυτόματα
 edright_pixels=εικονοστοιχεία
 edright_efsize=Λείπει ή μη έγκυρο πλάτος αριστερού καρέ σε pixel
 edright_ecannot=Δεν επιτρέπεται η προσαρμογή αυτής της σελίδας
+
 has_virtualmin=Virtualmin
 has_mail=Ταχυδρομείο
 has_vm2=Cloudmin
 has_webmin=Webmin
 has_usermin=Χρήστης
+
 overlay_title=Αλλαξε θέμα
 overlay_desc=Αυτή η σελίδα σάς επιτρέπει να επιλέξετε μια διαφορετική επικάλυψη θέματος, η οποία μπορεί να αλλάξει τα χρώματα, τα εικονίδια και τη διάταξη του περιβάλλοντος εργασίας χρήστη του Virtualmin.
 overlay_msg=Αλλαγή επικάλυψης θέματος σε:

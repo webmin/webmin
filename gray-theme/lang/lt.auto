@@ -1,25 +1,30 @@
 left_home=Sistemos informacija
-left_search=Paieška:
+left_search=Paieška
+
 right_virtver=Ši tema reikalauja „Virtualmin“ $1 ar naujesnės versijos!
 right_vm2ver=Ši tema reikalinga „ $1 “ ar naujesnės versijos „Cloudmin“ versijai!
 right_edit=Konfigūruokite šį puslapį
 right_return=sistemos informacija
+
 vmain_title=„Virtualmin $1 “ $2 ($3)
 vmain_title2=„Virtualmin“
 vmain_title3=„Virtualmin $1 “ ($2)
 mmain_title=$1 „Cloudmin“ $2 ($3)
 mmain_title2=„Cloudmin“
 mmain_title3=„Cloudmin“ $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=Konfigūracijos kategorija:
 config_change=Keisti
 config_return=sistemos informacija
 config_next=Išsaugoti ir Kitas
 config_nnext=Kitas
 config_nprev=Ankstesnis
+
 edright_title=Sistemos informacijos konfigūracija
 edright_header=„Virtualmin“ sistemos informacijos puslapio nustatymai
 edright_sects=Matoma informacija
@@ -55,11 +60,13 @@ edright_fsizedef=Nuspręskite automatiškai
 edright_pixels=pikselių
 edright_efsize=Trūksta arba netinkamas kairiojo kadro plotis pikseliais
 edright_ecannot=Jums neleidžiama tinkinti šio puslapio
+
 has_virtualmin=„Virtualmin“
 has_mail=Paštas
 has_vm2=„Cloudmin“
 has_webmin=Webminas
 has_usermin=„Usermin“
+
 overlay_title=Pakeisti temą
 overlay_desc=Šis puslapis leidžia jums pasirinkti kitą temos perdangą, kuri gali pakeisti „Virtualmin“ vartotojo sąsajos spalvas, piktogramas ir išdėstymą.
 overlay_msg=Pakeisti temos perdangą į:

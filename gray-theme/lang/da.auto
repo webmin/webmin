@@ -1,25 +1,30 @@
 left_home=Systemoplysninger
-left_search=Søg:
+left_search=Søg
+
 right_virtver=Virtualmin version $1 eller højere kræves nu af dette tema!
 right_vm2ver=Cloudmin version $1 eller nyere kræves nu af dette tema!
 right_edit=Konfigurer denne side
 right_return=systeminformation
+
 vmain_title=Virtualmin $1 på $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 på $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=Konfigurationskategori:
 config_change=Lave om
 config_return=systeminformation
 config_next=Gem og Næste
 config_nnext=Næste
 config_nprev=forrige
+
 edright_title=Konfiguration af systeminformation
 edright_header=Indstillinger for side med Virtualmin systeminformationsside
 edright_sects=Synlige oplysninger
@@ -55,11 +60,13 @@ edright_fsizedef=Beslut automatisk
 edright_pixels=pixel
 edright_efsize=Manglende eller ugyldig venstre rammebredde i pixels
 edright_ecannot=Du har ikke tilladelse til at tilpasse denne side
+
 has_virtualmin=Virtualmin
 has_mail=Post
 has_vm2=Cloudmin
 has_webmin=Webmin
 has_usermin=Usermin
+
 overlay_title=Skift tema
 overlay_desc=På denne side kan du vælge et andet temaoverlay, som kan ændre farver, ikoner og layout på Virtualmin-brugergrænsefladen.
 overlay_msg=Skift temaoverlay til:

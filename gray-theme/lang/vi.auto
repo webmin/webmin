@@ -1,25 +1,30 @@
 left_home=Thông tin hệ thống
-left_search=Tìm kiếm:
+left_search=Tìm kiếm
+
 right_virtver=Phiên bản Virtualmin $1 hoặc cao hơn hiện được yêu cầu bởi chủ đề này!
 right_vm2ver=Phiên bản Cloudmin $1 hoặc cao hơn hiện được yêu cầu bởi chủ đề này!
 right_edit=Cấu hình trang này
 right_return=thông tin hệ thống
+
 vmain_title=Virtualmin $1 trên $2 ($3)
 vmain_title2=Virtualmin
 vmain_title3=Virtualmin $1 ($2)
 mmain_title=Cloudmin $1 trên $2 ($3)
 mmain_title2=Đám mây
 mmain_title3=Cloudmin $1 ($2)
+
 index_virtualmintitle=Virtualmin $1 
 index_cloudmintitle=Cloudmin $1 
 index_webmintitle=Webmin $1 
 index_usermintitle=Usermin $1 
+
 config_section=Danh mục cấu hình:
 config_change=Thay đổi
 config_return=thông tin hệ thống
 config_next=Lưu và tiếp theo
 config_nnext=Kế tiếp
 config_nprev=Trước đó
+
 edright_title=Cấu hình thông tin hệ thống
 edright_header=Cài đặt trang thông tin hệ thống Virtualmin
 edright_sects=Thông tin hữu hình
@@ -55,11 +60,13 @@ edright_fsizedef=Tự động quyết định
 edright_pixels=điểm ảnh
 edright_efsize=Thiếu hoặc không hợp lệ chiều rộng khung bên trái tính bằng pixel
 edright_ecannot=Bạn không được phép tùy chỉnh trang này
+
 has_virtualmin=Virtualmin
 has_mail=Thư
 has_vm2=Đám mây
 has_webmin=Webmin
 has_usermin=Bí mật
+
 overlay_title=Thay đổi chủ đề
 overlay_desc=Trang này cho phép bạn chọn lớp phủ chủ đề khác, có thể thay đổi màu sắc, biểu tượng và bố cục của giao diện người dùng Virtualmin.
 overlay_msg=Thay đổi lớp phủ chủ đề thành:
