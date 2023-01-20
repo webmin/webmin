@@ -112,7 +112,7 @@ if ($mode eq "modules" && $cansearch) {
 	push(@leftitems, { 'type' => 'input',
 			   'desc' => ' ',
 			   'tags' => " placeholder='$text{'left_search'}' style='width: 92%;'",
-			   'size' => 23,
+			   'size' => 10,
 			   'name' => 'search',
 			   'cgi' => '/webmin_search.cgi', });
 	push(@leftitems, { 'type' => 'hr' });
