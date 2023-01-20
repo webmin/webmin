@@ -2,7 +2,8 @@
 
 #### 2.013 (January 19, 2023)
 * Fix Authentic theme issue with error handling
-* Fix Framed theme to respect mode on left menu
+* Fix Framed theme to respect selected mode in left menu
+* Fix search bar in left menu in Framed theme
 
 #### 2.012 (January 18, 2023)
 * Fix to set the correct algorithm when setting up RNDC #1817
