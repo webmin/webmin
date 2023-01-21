@@ -56,8 +56,9 @@ $conf_rows_n = int($conf_rows_n);
 my $env_cols = $conf_cols_n || $def_cols_n;
 my $env_rows = $conf_rows_n || $def_rows_n;
 
-# Set columns and rows environment vars only in fixed mode
-if ($conf_cols_n && $conf_rows_n) {
+# Set columns and rows environment vars only
+# in fixed mode, and only for old themes
+if ($conf_cols_n && $conf_rows_n && !$xmlhr) {
 	$ENV{'COLUMNS'} = $conf_cols_n;
 	$ENV{'LINES'} = $conf_rows_n;	
 	}
