@@ -52,9 +52,15 @@ my ($conf_cols_n, $conf_rows_n) = ($conf_size_str =~ /([\d]+)X([\d]+)/i);
 $conf_cols_n = int($conf_cols_n);
 $conf_rows_n = int($conf_rows_n);
 
-# Set columns and rows environment vars
-my $env_cols = $ENV{'COLUMNS'} = $conf_cols_n || $def_cols_n;
-my $env_rows = $ENV{'LINES'} = $conf_rows_n || $def_rows_n;
+# Set columns and rows vars
+my $env_cols = $conf_cols_n || $def_cols_n;
+my $env_rows = $conf_rows_n || $def_rows_n;
+
+# Set columns and rows environment vars only in fixed mode
+if ($conf_cols_n && $conf_rows_n) {
+	$ENV{'COLUMNS'} = $conf_cols_n;
+	$ENV{'LINES'} = $conf_rows_n;	
+	}
 
 # Define columns and rows
 $termjs_opts{'Options'} = "{ cols: $env_cols, rows: $env_rows }";
