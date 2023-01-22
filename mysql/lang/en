@@ -871,4 +871,13 @@ mysqlpass_estartup=Startup failed : $1
 mysqlpass_echange=Password change failed : $1
 mysqlpass_echange_forcepass=Force override the given password, if lost or forgotten
 
+ssl_title=SSL Certificate
+ssl_header=MySQL SSL options
+ssl_cert=SSL certificate file
+ssl_key=SSL key file
+ssl_ca=SSL CA certificate file
+ssl_req=Require clients use SSL?
+ssl_none=None set
+ssl_gen=Generate Certificate and Key
+
 __norefs=1
