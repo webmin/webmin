@@ -20,6 +20,9 @@ elsif ($action eq 'cnf') {
 elsif ($action eq 'ssl') {
 	return $text{'log_ssl'};
 	}
+elsif ($action eq 'genssl') {
+	return $text{'log_genssl'};
+	}
 elsif ($action eq 'kill') {
 	return &text('log_kill', $object);
 	}

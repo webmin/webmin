@@ -538,6 +538,7 @@ log_start=Started MySQL server
 log_stop=Stopped MySQL server
 log_cnf=Changed MySQL server configuration
 log_ssl=Changed SSL certificate
+log_genssl=Generated SSL certificate
 log_kill=Killed $1 database connections
 log_vars=Modified $1 system variables
 log_db_create=Created database $1

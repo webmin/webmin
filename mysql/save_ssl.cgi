@@ -72,6 +72,6 @@ if (($in{'restart'} || $in{'gen'}) && &is_mysql_running() > 0) {
 	$err = &start_mysql();
 	&error($err) if ($err);
 	}
-&webmin_log("ssl");
+&webmin_log($in{'gen'} ? "genssl" : "ssl");
 &redirect("");
 
