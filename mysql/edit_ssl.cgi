@@ -23,17 +23,20 @@ print &ui_table_start($text{'ssl_header'}, "width=100%", 2);
 # SSL cert file
 $cert = &find_value("ssl_cert", $mems);
 print &ui_table_row($text{'ssl_cert'},
-		    &ui_opt_textbox("cert", $cert, 60, $text{'ssl_none'}));
+		    &ui_opt_textbox("cert", $cert, 80, $text{'ssl_none'}).
+		    &file_chooser_button("cert"));
 
 # SSL key file
 $key = &find_value("ssl_key", $mems);
 print &ui_table_row($text{'ssl_key'},
-		    &ui_opt_textbox("key", $key, 60, $text{'ssl_none'}));
+		    &ui_opt_textbox("key", $key, 80, $text{'ssl_none'}).
+		    &file_chooser_button("key"));
 
 # SSL CA file
 $ca = &find_value("ssl_ca", $mems);
 print &ui_table_row($text{'ssl_ca'},
-		    &ui_opt_textbox("ca", $ca, 60, $text{'ssl_none'}));
+		    &ui_opt_textbox("ca", $ca, 80, $text{'ssl_none'}).
+		    &file_chooser_button("ca"));
 
 # SSL mandatory?
 $req = &find_value("require_secure_transport", $mems);
@@ -41,7 +44,8 @@ print &ui_table_row($text{'ssl_req'},
 		    &ui_yesno_radio("req", $req && lc($req) eq 'on'));
 
 print &ui_table_end();
-my @buts = ( [ "save", $text{'save'} ] );
+my @buts = ( [ "save", $text{'save'} ],
+	     [ "restart", $text{'cnf_restart'} ] );
 if (!$cert && !$key) {
 	push(@buts, [ "gen", $text{'ssl_gen'} ]);
 	}
