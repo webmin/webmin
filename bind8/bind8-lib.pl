@@ -348,6 +348,7 @@ return \%str;
 }
 
 # find(name, &array)
+# Returns a list of config objects matching some name
 sub find
 {
 my ($name, $conf) = @_;
@@ -362,6 +363,7 @@ return @rv ? wantarray ? @rv : $rv[0]
 }
 
 # find_value(name, &array)
+# Returns a list of config values matching some name
 sub find_value
 {
 my @v = &find($_[0], $_[1]);
