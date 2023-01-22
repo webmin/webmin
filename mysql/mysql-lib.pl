@@ -115,7 +115,7 @@ else {
 	push(@mysql_set_variables, "myisam_sort_buffer_size");
 	}
 
-# make_authstr([login], [pass], [host], [port], [sock], [unix-user])
+# make_authstr([login], [pass], [host], [port], [sock], [unix-user], [ssl])
 # Returns a string to pass to MySQL commands to login to the database
 sub make_authstr
 {
@@ -125,6 +125,7 @@ local $host = defined($_[2]) ? $_[2] : $config{'host'};
 local $port = defined($_[3]) ? $_[3] : $config{'port'};
 local $sock = defined($_[4]) ? $_[4] : $config{'sock'};
 local $unix = $_[5];
+local $ssl = defined($_[6]) ? $_[6] : $config{'ssl'};
 if (&supports_env_pass($unix)) {
 	$make_authstr_pass = $pass;
 	}
@@ -136,6 +137,7 @@ return ($sock ? " -S $sock" : "").
        ($host ? " -h $host" : "").
        ($port ? " -P $port" : "").
        ($login ? " -u ".quotemeta($login) : "").
+       ($ssl ? " --ssl" : "").
        (&supports_env_pass($unix) ? "" :    # Password comes from environment
         $pass && &compare_version_numbers($mysql_version, "4.1") >= 0 ?
 	" --password=".quotemeta($pass) :
@@ -324,6 +326,7 @@ if ($driver_handle && !$config{'nodbi'}) {
 	$cstr .= ";mysql_socket=$config{'sock'}" if ($config{'sock'});
 	$cstr .= ";mysql_read_default_file=$config{'my_cnf'}"
 		if (-r $config{'my_cnf'});
+	$cstr .= ";mysql_ssl=1" if ($config{'ssl'});
 	local $dbh = $driver_handle->connect($cstr, $mysql_login, $mysql_pass,
 					     { });
 	$dbh || &error("DBI connect failed : ",$driver_handle->errstr);
