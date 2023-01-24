@@ -1680,20 +1680,20 @@ if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 		elsif ($?) {
 			&error(&text('linux_elist', $out));
 			}
-		}
 
-	# Validate directory name for NFSv3 (in v4 '/' exists)
-	foreach (split(/\n/, $out)) {
-		if (/^(\/\S+)/) {
-			$dirlist .= "$1\n";
-			push(@dirlist, $1);
+		# Validate directory name for NFSv3 (in v4 '/' exists)
+		foreach (split(/\n/, $out)) {
+			if (/^(\/\S+)/) {
+				$dirlist .= "$1\n";
+				push(@dirlist, $1);
+				}
 			}
-		}
 	
-	if ($_[0] ne "nfs4" && $in{'nfs_dir'} !~ /^\/.*$/ &&
-	    &indexof($in{'nfs_dir'}, @dirlist) < 0) {
-		&error(&text('linux_enfsdir', $in{'nfs_dir'},
-			     $in{'nfs_host'}, "<pre>$dirlist</pre>"));
+		if ($_[0] ne "nfs4" && $in{'nfs_dir'} !~ /^\/.*$/ &&
+		    &indexof($in{'nfs_dir'}, @dirlist) < 0) {
+			&error(&text('linux_enfsdir', $in{'nfs_dir'},
+				     $in{'nfs_host'}, "<pre>$dirlist</pre>"));
+			}
 		}
 
 	return "$in{nfs_host}:$in{nfs_dir}";
