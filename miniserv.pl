@@ -3852,11 +3852,14 @@ if (!$uinfo) {
 			s/\r|\n//g;
 			s/#.*$//;
 			if (/^(\S+)\s+(\S+)/) {
+				my ($from, $to) = ($1, $2);
+				$from =~ s/\\(.)/$1/g;
+				$to =~ s/\\(.)/$1/g;
 				if ($config{'user_mapping_reverse'}) {
-					$user_mapping{$1} = $2;
+					$user_mapping{$from} = $to;
 					}
 				else {
-					$user_mapping{$2} = $1;
+					$user_mapping{$to} = $from;
 					}
 				}
 			}
