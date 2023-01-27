@@ -126,7 +126,8 @@ local $port = defined($_[3]) ? $_[3] : $config{'port'};
 local $sock = defined($_[4]) ? $_[4] : $config{'sock'};
 local $unix = $_[5];
 local $ssl = defined($_[6]) ? $_[6] : $config{'ssl'};
-if (&supports_env_pass($unix)) {
+local $supp = &supports_env_pass($unix, $pass);
+if ($supp) {
 	$make_authstr_pass = $pass;
 	}
 else {
@@ -138,7 +139,7 @@ return ($sock ? " -S $sock" : "").
        ($port ? " -P $port" : "").
        ($login ? " -u ".quotemeta($login) : "").
        ($ssl ? " --ssl" : "").
-       (&supports_env_pass($unix) ? "" :    # Password comes from environment
+       ($supp ? "" :    # Password comes from environment
         $pass && &compare_version_numbers($mysql_version, "4.1") >= 0 ?
 	" --password=".quotemeta($pass) :
         $pass ? " -p".quotemeta($pass) : "");
@@ -725,11 +726,12 @@ sub supports_hosts
 return &compare_version_numbers($mysql_version, "5.7.16") < 0;
 }
 
-# supports_env_pass([run-as-user])
+# supports_env_pass([run-as-user], [password])
 # Returns 1 if passing the password via an environment variable is supported
 sub supports_env_pass
 {
-local ($user) = @_;
+local ($user, $realpass) = @_;
+$realpass ||= '';
 if (&compare_version_numbers($mysql_version, "4.1") >= 0 && !$config{'nopwd'}) {
 	# Theortically possible .. but don't do this if ~/.my.cnf contains
 	# a [client] block with password= in it
@@ -741,7 +743,7 @@ if (&compare_version_numbers($mysql_version, "4.1") >= 0 && !$config{'nopwd'}) {
 		local $client = &find("client", \@cf);
 		next if (!$client);
 		local $password = &find("password", $client->{'members'});
-		return 0 if ($password ne '');
+		return 0 if ($password ne '' && $password ne $realpass);
 		}
 	return 1;
 	}
