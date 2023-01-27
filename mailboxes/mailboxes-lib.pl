@@ -1223,7 +1223,7 @@ foreach my $mail (@mail) {
 	# Date and size columns
 	push(@cols, &eucconv_and_escape(&simplify_date($mail->{'header'}->{'date'}, "ymd")));
 	push(@cols, &nice_size($mail->{'size'}, 1024));
-	$rowtds[$#cols] .= " data-sort=".$mail->{'size'};
+	$rowtds[$#cols] .= " data-sort=".&parse_mail_date($mail->{'header'}->{'date'});
 
 	# Subject with icons
 	local @icons = &message_icons($mail, $mfolder->{'sent'}, $mfolder);
