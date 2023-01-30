@@ -7505,7 +7505,7 @@ if ($serv->{'fast'} || !$sn) {
 			}
 		my $con = &make_http_connection(
 			$ip, $serv->{'port'}, $serv->{'ssl'},
-			"POST", "/fastrpc.cgi", undef, undef, $reqs);
+			"GET", "/fastrpc.cgi", undef, undef, $reqs);
 		return &$main::remote_error_handler(
 		    "Failed to connect to $serv->{'host'} : $con")
 			if (!ref($con));
@@ -7514,10 +7514,7 @@ if ($serv->{'fast'} || !$sn) {
 		my $auth = &encode_base64("$user:$pass");
 		$auth =~ tr/\n//d;
 		&write_http_connection($con, "Authorization: basic $auth\r\n");
-		&write_http_connection($con, "Content-length: ",
-					     length($tostr),"\r\n");
 		&write_http_connection($con, "\r\n");
-		&write_http_connection($con, $tostr);
 
 		# read back the response
 		my $line = &read_http_connection($con);
