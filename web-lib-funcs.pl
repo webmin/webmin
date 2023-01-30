@@ -7242,10 +7242,11 @@ internal use only.
 =cut
 sub remote_session_name
 {
-return ref($_[0]) && $_[0]->{'host'} && $_[0]->{'port'} ?
-		"$_[0]->{'host'}:$_[0]->{'port'}.$$" :
-       $_[0] eq "" || ref($_[0]) && $_[0]->{'id'} == 0 ? "" :
-       ref($_[0]) ? "" : "$_[0].$$";
+my ($s) = @_;
+return ref($s) && $s->{'host'} && $s->{'port'} ?
+		"$s->{'host'}:$s->{'port'}.$$" :
+       $s eq "" || ref($s) && $s->{'id'} == 0 ? "" :
+       ref($s) ? "" : "$s.$$";
 }
 
 =head2 remote_foreign_require(server, module, file)
@@ -7259,20 +7260,21 @@ Servers Index module, or a hash reference for a system from that module.
 =cut
 sub remote_foreign_require
 {
+my ($s, $mod, $file) = @_;
 my $call = { 'action' => 'require',
-	     'module' => $_[1],
-	     'file' => $_[2] };
-my $sn = &remote_session_name($_[0]);
+	     'module' => $mod,
+	     'file' => $file };
+my $sn = &remote_session_name($s);
 if ($remote_session{$sn}) {
 	$call->{'session'} = $remote_session{$sn};
 	}
 else {
 	$call->{'newsession'} = 1;
 	}
-my $rv = &remote_rpc_call($_[0], $call);
+my $rv = &remote_rpc_call($s, $call);
 if ($rv->{'session'}) {
 	$remote_session{$sn} = $rv->{'session'};
-	$remote_session_server{$sn} = $_[0];
+	$remote_session_server{$sn} = $s;
 	}
 }
 
@@ -7286,13 +7288,14 @@ system's hostname.
 =cut
 sub remote_foreign_call
 {
+my ($s, $mod, $func, @args) = @_;
 return undef if (&is_readonly_mode());
-my $sn = &remote_session_name($_[0]);
-return &remote_rpc_call($_[0], { 'action' => 'call',
-				 'module' => $_[1],
-				 'func' => $_[2],
-				 'session' => $remote_session{$sn},
-				 'args' => [ @_[3 .. $#_] ] } );
+my $sn = &remote_session_name($s);
+return &remote_rpc_call($s, { 'action' => 'call',
+			      'module' => $mod,
+			      'func' => $func,
+			      'session' => $remote_session{$sn},
+			      'args' => [ @args ] } );
 }
 
 =head2 remote_foreign_check(server, module, [api-only])
@@ -7304,9 +7307,10 @@ parameter.
 =cut
 sub remote_foreign_check
 {
-return &remote_rpc_call($_[0], { 'action' => 'check',
-				 'module' => $_[1],
-				 'api' => $_[2] });
+my ($s, $mod, $api) = @_;
+return &remote_rpc_call($s, { 'action' => 'check',
+			      'module' => $mod,
+			      'api' => $api });
 }
 
 =head2 remote_foreign_config(server, module)
@@ -7317,8 +7321,9 @@ Equivalent to foreign_config, but for a remote system.
 =cut
 sub remote_foreign_config
 {
-return &remote_rpc_call($_[0], { 'action' => 'config',
-				 'module' => $_[1] });
+my ($s, $mod) = @_;
+return &remote_rpc_call($s, { 'action' => 'config',
+			      'module' => $mod });
 }
 
 =head2 remote_eval(server, module, code)
@@ -7331,12 +7336,13 @@ only be called after remote_foreign_require for the same server and module.
 =cut
 sub remote_eval
 {
+my ($s, $mod, $code) = @_;
 return undef if (&is_readonly_mode());
-my $sn = &remote_session_name($_[0]);
-return &remote_rpc_call($_[0], { 'action' => 'eval',
-				 'module' => $_[1],
-				 'code' => $_[2],
-				 'session' => $remote_session{$sn} });
+my $sn = &remote_session_name($s);
+return &remote_rpc_call($s, { 'action' => 'eval',
+			      'module' => $mod,
+			      'code' => $code,
+			      'session' => $remote_session{$sn} });
 }
 
 =head2 remote_write(server, localfile, [remotefile], [remotebasename])
@@ -7438,7 +7444,8 @@ fails. Useful if you want to have more control over your remote operations.
 =cut
 sub remote_error_setup
 {
-$main::remote_error_handler = $_[0] || \&error;
+my ($func) = @_;
+$main::remote_error_handler = $func || \&error;
 }
 
 =head2 remote_rpc_call(server, &structure)
@@ -7798,7 +7805,8 @@ foreach my $g (@$servs) {
 
 sub remote_multi_callback_error
 {
-$remote_multi_callback_err = $_[0];
+my ($err) = @_;
+$remote_multi_callback_err = $err;
 }
 
 =head2 serialise_variable(variable, [data-dumper-format])
