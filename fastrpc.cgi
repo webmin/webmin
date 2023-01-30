@@ -106,29 +106,28 @@ while(1) {
 		$rawarg .= $got;
 		}
 	print STDERR "fastrpc: raw $rawarg\n" if ($gconfig{'rpcdebug'});
+	local $dumper = substr($rawarg, 0, 5) eq '$VAR1' ? 1 : 0;
 	local $arg = &unserialise_variable($rawarg);
 
 	# Process it
-	local $rawrv;
+	local $rv;
 	if ($arg->{'action'} eq 'ping') {
 		# Just respond with an OK
 		print STDERR "fastrpc: ping\n" if ($gconfig{'rpcdebug'});
-		$rawrv = &serialise_variable( { 'status' => 1 } );
+		$rv = { 'status' => 1 };
 		}
 	elsif ($arg->{'action'} eq 'check') {
 		# Check if some module is supported
 		print STDERR "fastrpc: check $arg->{'module'}\n" if ($gconfig{'rpcdebug'});
-		$rawrv = &serialise_variable(
-			{ 'status' => 1,
-			  'rv' => &foreign_check($arg->{'module'}, undef, undef,
-						 $arg->{'api'}) } );
+		$rv = { 'status' => 1,
+			'rv' => &foreign_check($arg->{'module'}, undef, undef,
+					       $arg->{'api'}) };
 		}
 	elsif ($arg->{'action'} eq 'config') {
 		# Get the config for some module
 		print STDERR "fastrpc: config $arg->{'module'}\n" if ($gconfig{'rpcdebug'});
 		local %config = &foreign_config($arg->{'module'});
-		$rawrv = &serialise_variable(
-			{ 'status' => 1, 'rv' => \%config } );
+		$rv = { 'status' => 1, 'rv' => \%config };
 		}
 	elsif ($arg->{'action'} eq 'write') {
 		# Transfer data to a local temp file
@@ -140,8 +139,7 @@ while(1) {
 		binmode(FILE);
 		print FILE $arg->{'data'};
 		close(FILE);
-		$rawrv = &serialise_variable(
-			{ 'status' => 1, 'rv' => $file } );
+		$rv = { 'status' => 1, 'rv' => $file };
 		}
 	elsif ($arg->{'action'} eq 'tcpwrite') {
 		# Transfer data to a local temp file over TCP connection
@@ -197,8 +195,7 @@ while(1) {
 		close($tsock);
 		close($tsock6);
 		print STDERR "fastrpc: tcpwrite $file done\n" if ($gconfig{'rpcdebug'});
-		$rawrv = &serialise_variable(
-			{ 'status' => 1, 'rv' => [ $file, $tport ] } );
+		$rv = { 'status' => 1, 'rv' => [ $file, $tport ] };
 		}
 	elsif ($arg->{'action'} eq 'read') {
 		# Transfer data from a file
@@ -211,19 +208,16 @@ while(1) {
 			$data .= $got;
 			}
 		close(FILE);
-		$rawrv = &serialise_variable(
-			{ 'status' => 1, 'rv' => $data } );
+		$rv = { 'status' => 1, 'rv' => $data };
 		}
 	elsif ($arg->{'action'} eq 'tcpread') {
 		# Transfer data from a file over TCP connection
 		print STDERR "fastrpc: tcpread $arg->{'file'}\n" if ($gconfig{'rpcdebug'});
 		if (-d $arg->{'file'}) {
-			$rawrv = &serialise_variable(
-				{ 'status' => 1, 'rv' => [ undef, "$arg->{'file'} is a directory" ] } );
+			$rv = { 'status' => 1, 'rv' => [ undef, "$arg->{'file'} is a directory" ] };
 			}
 		elsif (!open(FILE, "<$arg->{'file'}")) {
-			$rawrv = &serialise_variable(
-				{ 'status' => 1, 'rv' => [ undef, "Failed to open $arg->{'file'} : $!" ] } );
+			$rv = { 'status' => 1, 'rv' => [ undef, "Failed to open $arg->{'file'} : $!" ] };
 			}
 		else {
 			binmode(FILE);
@@ -258,8 +252,7 @@ while(1) {
 			close($tsock);
 			close($tsock6);
 			print STDERR "fastrpc: tcpread $arg->{'file'} done\n" if ($gconfig{'rpcdebug'});
-			$rawrv = &serialise_variable(
-				{ 'status' => 1, 'rv' => [ $arg->{'file'}, $tport ] } );
+			$rv = { 'status' => 1, 'rv' => [ $arg->{'file'}, $tport ] };
 			}
 		}
 	elsif ($arg->{'action'} eq 'require') {
@@ -271,12 +264,11 @@ while(1) {
 			};
 		if ($@) {
 			print STDERR "fastrpc: require error $@\n" if ($gconfig{'rpcdebug'});
-			$rawrv = &serialise_variable( { 'status' => 0,
-							'rv' => $@ });
+			$rv = { 'status' => 0, 'rv' => $@ };
 			}
 		else {
 			print STDERR "fastrpc: require done\n" if ($gconfig{'rpcdebug'});
-			$rawrv = &serialise_variable( { 'status' => 1 });
+			$rv = { 'status' => 1 };
 			}
 		}
 	elsif ($arg->{'action'} eq 'call') {
@@ -291,50 +283,46 @@ while(1) {
 			};
 		if ($@) {
 			print STDERR "fastrpc: call error $@\n" if ($gconfig{'rpcdebug'});
-			$rawrv = &serialise_variable(
-				{ 'status' => 0, 'rv' => $@ } );
+			$rv = { 'status' => 0, 'rv' => $@ };
 			}
 		elsif (@rv == 1) {
-			$rawrv = &serialise_variable(
-				{ 'status' => 1, 'rv' => $rv[0] } );
+			$rv = { 'status' => 1, 'rv' => $rv[0] };
 			}
 		else {
-			$rawrv = &serialise_variable(
-				{ 'status' => 1, 'arv' => \@rv } );
+			$rv = { 'status' => 1, 'arv' => \@rv };
 			}
 		print STDERR "fastrpc: call $arg->{'module'}::$arg->{'func'} done = ",join(",", @rv),"\n" if ($gconfig{'rpcdebug'});
 		}
 	elsif ($arg->{'action'} eq 'eval') {
 		# eval some perl code
 		print STDERR "fastrpc: eval $arg->{'module'} $arg->{'code'}\n" if ($gconfig{'rpcdebug'});
-		local $rv;
+		local $erv;
 		if ($arg->{'module'}) {
 			local $pkg = $arg->{'module'};
 			$pkg =~ s/[^A-Za-z0-9]/_/g;
-			$rv = eval "package $pkg;\n".
+			$erv = eval "package $pkg;\n".
 				   $arg->{'code'}."\n";
 			}
 		else {
-			$rv = eval $arg->{'code'};
+			$erv = eval $arg->{'code'};
 			}
 		print STDERR "fastrpc: eval $arg->{'module'} $arg->{'code'} done = $rv error = $@\n" if ($gconfig{'rpcdebug'});
 		if ($@) {
-			$rawrv = &serialise_variable(
-				{ 'status' => 0, 'rv' => $@ } );
+			$rv = { 'status' => 0, 'rv' => $@ };
 			}
 		else {
-			$rawrv = &serialise_variable(
-				{ 'status' => 1, 'rv' => $rv } );
+			$rv = { 'status' => 1, 'rv' => $erv };
 			}
 		}
 	elsif ($arg->{'action'} eq 'quit') {
 		print STDERR "fastrpc: quit\n" if ($gconfig{'rpcdebug'});
-		$rawrv = &serialise_variable( { 'status' => 1 } );
+		$rv = { 'status' => 1 };
 		}
 	else {
 		print STDERR "fastrpc: unknown $arg->{'action'}\n" if ($gconfig{'rpcdebug'});
-		$rawrv = &serialise_variable( { 'status' => 0 } );
+		$rv = { 'status' => 0 };
 		}
+	$rawrv = &serialise_variable($rv, $dumper);
 
 	# Send back to the client
 	print SOCK length($rawrv),"\n";

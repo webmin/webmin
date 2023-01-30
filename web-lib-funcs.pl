@@ -7450,30 +7450,30 @@ and is called by the other remote_* functions.
 =cut
 sub remote_rpc_call
 {
+my ($serv_host, $str) = @_;
 my $serv;
-my $sn = &remote_session_name($_[0]);	# Will be undef for local connection
-my $tostr = &serialise_variable($_[1]);
-if (ref($_[0])) {
+my $sn = &remote_session_name($serv_host);  # Will be undef for local connection
+if (ref($serv_host)) {
 	# Server structure was given
-	$serv = $_[0];
+	$serv = $serv_host;
 	$serv->{'user'} || $serv->{'id'} == 0 ||
 		return &$main::remote_error_handler(
 			"No Webmin login set for server");
 	}
-elsif ($_[0]) {
+elsif ($serv_host) {
 	# lookup the server in the webmin servers module if needed
 	if (!%main::remote_servers_cache) {
 		&foreign_require("servers");
-		foreach $s (&foreign_call("servers", "list_servers")) {
+		foreach $s (&servers::list_servers()) {
 			$main::remote_servers_cache{$s->{'host'}} = $s;
 			$main::remote_servers_cache{$s->{'host'}.":".$s->{'port'}} = $s;
 			}
 		}
-	$serv = $main::remote_servers_cache{$_[0]};
+	$serv = $main::remote_servers_cache{$serv_host};
 	$serv || return &$main::remote_error_handler(
-				"No Webmin Servers entry for $_[0]");
+				"No Webmin Servers entry for $serv_host");
 	$serv->{'user'} || return &$main::remote_error_handler(
-				"No login set for server $_[0]");
+				"No login set for server $serv_host");
 	}
 my $ip = $serv->{'ip'} || $serv->{'host'};
 
@@ -7537,11 +7537,12 @@ if ($serv->{'fast'} || !$sn) {
 		       $line =~ /^1\s+(\S+)\s+(\S+)/) {
 			# Started ok .. connect and save SID
 			&close_http_connection($con);
-			my ($port, $sid, $version, $error) = ($1, $2, $3);
+			my ($port, $sid, $version) = ($1, $2, $3);
+			my $error;
 			&open_socket($ip, $port, $sid, \$error);
 			return &$main::remote_error_handler("Failed to connect to fastrpc.cgi : $error")
 				if ($error);
-			$fast_fh_cache{$sn} = $sid;
+			$fast_fh_cache{$sn} = [ $sid, $version ];
 			$remote_server_version{$sn} = $version;
 			}
 		else {
@@ -7594,14 +7595,15 @@ if ($serv->{'fast'} || !$sn) {
 			close(RPCOUTr);
 			return &$main::remote_error_handler("RPC error : $2");
 			}
-		elsif ($line =~ /^1\s+(\S+)\s+(\S+)/) {
+		elsif ($line =~ /^1\s+(\S+)\s+(\S+)\s+(\S+)/) {
 			# Started ok .. connect and save SID
 			close(SOCK);
 			close(RPCOUTr);
-			my ($port, $sid, $error) = ($1, $2, undef);
+			my ($port, $sid, $version) = ($1, $2, $3);
+			my $error;
 			&open_socket("localhost", $port, $sid, \$error);
 			return &$main::remote_error_handler("Failed to connect to fastrpc.cgi : $error") if ($error);
-			$fast_fh_cache{$sn} = $sid;
+			$fast_fh_cache{$sn} = [ $sid, $version ];
 			}
 		else {
 			# Unexpected response
@@ -7615,7 +7617,9 @@ if ($serv->{'fast'} || !$sn) {
 			}
 		}
 	# Got a connection .. send off the request
-	my $fh = $fast_fh_cache{$sn};
+	my ($fh, $version) = @{$fast_fh_cache{$sn}};
+	my $dumper = &compare_version_numbers($version, 2.014) >= 0;
+	my $tostr = &serialise_variable($str, $dumper);
 	print $fh length($tostr)," $fh\n";
 	print $fh $tostr;
 	my $rstr = <$fh>;
@@ -7667,6 +7671,7 @@ if ($serv->{'fast'} || !$sn) {
 else {
 	# Call rpc.cgi on remote server
 	my $error = 0;
+	my $tostr = &serialise_variable($str);
 	my $con = &make_http_connection($ip, $serv->{'port'},
 					$serv->{'ssl'}, "POST", "/rpc.cgi");
 	return &$main::remote_error_handler("Failed to connect to $serv->{'host'} : $con") if (!ref($con));
@@ -7796,7 +7801,7 @@ sub remote_multi_callback_error
 $remote_multi_callback_err = $_[0];
 }
 
-=head2 serialise_variable(variable)
+=head2 serialise_variable(variable, [data-dumper-format])
 
 Converts some variable (maybe a scalar, hash ref, array ref or scalar ref)
 into a url-encoded string. In the cases of arrays and hashes, it is recursively
@@ -7805,27 +7810,35 @@ called on each member to serialize the entire object.
 =cut
 sub serialise_variable
 {
-if (!defined($_[0])) {
+my ($var, $dumper) = @_;
+if ($dumper) {
+	# Convert to Data::Dumper format
+	eval "use Data::Dumper";
+	if (!$@) {
+		return Dumper($var);
+		}
+	}
+if (!defined($var)) {
 	return 'UNDEF';
 	}
-my $r = ref($_[0]);
+my $r = ref($var);
 my $rv;
 if (!$r) {
-	$rv = &urlize($_[0]);
+	$rv = &urlize($var);
 	}
 elsif ($r eq 'SCALAR') {
-	$rv = &urlize(${$_[0]});
+	$rv = &urlize(${$var});
 	}
 elsif ($r eq 'ARRAY') {
-	$rv = join(",", map { &urlize(&serialise_variable($_)) } @{$_[0]});
+	$rv = join(",", map { &urlize(&serialise_variable($_)) } @{$var});
 	}
 elsif ($r eq 'HASH') {
 	$rv = join(",", map { &urlize(&serialise_variable($_)).",".
-			      &urlize(&serialise_variable($_[0]->{$_})) }
-		            keys %{$_[0]});
+			      &urlize(&serialise_variable($var->{$_})) }
+		            keys %{$var});
 	}
 elsif ($r eq 'REF') {
-	$rv = &serialise_variable(${$_[0]});
+	$rv = &serialise_variable(${$var});
 	}
 elsif ($r eq 'CODE') {
 	# Code not handled
@@ -7835,8 +7848,8 @@ elsif ($r) {
 	# An object - treat as a hash
 	$r = "OBJECT ".&urlize($r);
 	$rv = join(",", map { &urlize(&serialise_variable($_)).",".
-			      &urlize(&serialise_variable($_[0]->{$_})) }
-		            keys %{$_[0]});
+			      &urlize(&serialise_variable($var->{$_})) }
+		            keys %{$var});
 	}
 return ($r ? $r : 'VAL').",".$rv;
 }
@@ -7850,7 +7863,13 @@ object, the same class is used on this system, if available.
 =cut
 sub unserialise_variable
 {
-my @v = split(/,/, $_[0]);
+my ($str) = @_;
+if (substr($str, 0, 5) eq '$VAR1') {
+	# In Data::Dumper format
+	$rv = eval "$str return \$VAR1;";
+	return $rv;
+	}
+my @v = split(/,/, $str);
 my $rv;
 if ($v[0] eq 'VAL') {
 	@v = split(/,/, $_[0], -1);
