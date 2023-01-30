@@ -103,7 +103,7 @@ foreach $w (@mysql_number_variables, @mysql_byte_variables) {
 
 # Write out file
 foreach my $l (&get_all_mysqld_files()) {
-	&flush_file_lines($l);
+	&flush_file_lines($l, undef, 1);
 	&unlock_file($l);
 	}
 if ($in{'restart'} && &is_mysql_running() > 0) {
