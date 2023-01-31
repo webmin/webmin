@@ -616,12 +616,12 @@ else {
 	print STOP "  touch $var_dir/stop-flag\n";
 	print STOP "  if [ \"\$1\" = \"--kill\" ]; then\n";
 	print STOP "    sleep 1\n";
-	print STOP "    ((ps axf | grep \"$wadir\\\/miniserv\\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) || kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null\n";
+	print STOP "    (ps axf | grep \"$wadir\\\/miniserv\\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash ; kill -9 -- -\$pid ; kill -9 \$pid) 2>/dev/null\n";
 	print STOP "  fi\n";
 	print STOP "  exit 0\n";
 	print STOP "else\n";
 	print STOP "  if [ \"\$1\" = \"--kill\" ]; then\n";
-	print STOP "    (ps axf | grep \"$wadir\\\/miniserv\\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash) 2>/dev/null\n";
+	print STOP "    (ps axf | grep \"$wadir\\\/miniserv\\.pl\" | awk '{print \"kill -9 -- -\" \$1}' | bash ; kill -9 -- -\$pid ; kill -9 \$pid) 2>/dev/null\n";
 	print STOP "  fi\n";
 	print STOP "fi\n";
 	close(STOP);
