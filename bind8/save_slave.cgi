@@ -29,6 +29,7 @@ $access{'opts'} || &error($text{'master_eoptscannot'});
 &save_opt("file", \&file_check, $z, $indent);
 &save_choice("check-names", $z, $indent);
 &save_choice("notify", $z, $indent);
+&save_choice("masterfile-format", $z, $indent);
 &save_addr_match("allow-update", $z, $indent);
 &save_addr_match("allow-transfer", $z, $indent);
 &save_addr_match("allow-query", $z, $indent);

@@ -44,7 +44,7 @@ print &opt_input($text{'slave_max'}, "max-transfer-time-in",
 		 $zconf, $text{'default'}, 4, $text{'slave_mins'});
 
 # Slave records file
-print &opt_input($text{'slave_file'}, "file", $zconf, $text{'slave_none'}, 40);
+print &opt_input($text{'slave_file'}, "file", $zconf, $text{'slave_none'}, 80);
 
 print &choice_input($text{'slave_check'}, "check-names", $zconf,
 		    $text{'warn'}, "warn", $text{'fail'}, "fail",
@@ -52,6 +52,9 @@ print &choice_input($text{'slave_check'}, "check-names", $zconf,
 print &choice_input($text{'slave_notify'}, "notify", $zconf,
 		    $text{'yes'}, "yes", $text{'no'}, "no",
 		    $text{'explicit'}, "explicit",
+		    $text{'default'}, undef);
+print &choice_input($text{'slave_format'}, "masterfile-format", $zconf,
+		    $text{'slave_raw'}, "raw", $text{'slave_text'}, "text",
 		    $text{'default'}, undef);
 
 print &addr_match_input($text{'slave_update'}, "allow-update", $zconf);
