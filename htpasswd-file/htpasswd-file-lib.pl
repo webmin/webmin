@@ -158,10 +158,10 @@ else {
 			}
 		}
 	else {
-		# Use built-in encryption code
-		my $salt = $old ||
-			   chr(int(rand(26))+65).chr(int(rand(26))+65);
-		return &unix_crypt($str, $salt);
+		# Use built-in encryption code and use system default
+		my $salt = $old;
+		&foreign_require('useradmin');
+		return &useradmin::encrypt_password($str, $salt, 1);
 		}
 	}
 }
