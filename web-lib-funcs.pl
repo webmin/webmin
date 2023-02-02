@@ -7261,20 +7261,25 @@ Servers Index module, or a hash reference for a system from that module.
 sub remote_foreign_require
 {
 my ($s, $mod, $file) = @_;
-my $call = { 'action' => 'require',
-	     'module' => $mod,
-	     'file' => $file };
 my $sn = &remote_session_name($s);
-if ($remote_session{$sn}) {
-	$call->{'session'} = $remote_session{$sn};
+if ($sn eq "" && ref($s) && $s->{'local'}) {
+	&foreign_require($mod, $file);
 	}
 else {
-	$call->{'newsession'} = 1;
-	}
-my $rv = &remote_rpc_call($s, $call);
-if ($rv->{'session'}) {
-	$remote_session{$sn} = $rv->{'session'};
-	$remote_session_server{$sn} = $s;
+	my $call = { 'action' => 'require',
+		     'module' => $mod,
+		     'file' => $file };
+	if ($remote_session{$sn}) {
+		$call->{'session'} = $remote_session{$sn};
+		}
+	else {
+		$call->{'newsession'} = 1;
+		}
+	my $rv = &remote_rpc_call($s, $call);
+	if ($rv->{'session'}) {
+		$remote_session{$sn} = $rv->{'session'};
+		$remote_session_server{$sn} = $s;
+		}
 	}
 }
 
@@ -7289,13 +7294,18 @@ system's hostname.
 sub remote_foreign_call
 {
 my ($s, $mod, $func, @args) = @_;
-return undef if (&is_readonly_mode());
 my $sn = &remote_session_name($s);
-return &remote_rpc_call($s, { 'action' => 'call',
-			      'module' => $mod,
-			      'func' => $func,
-			      'session' => $remote_session{$sn},
-			      'args' => [ @args ] } );
+if ($sn eq "" && ref($s) && $s->{'local'}) {
+	return &foreign_call($mod, $func, @args);
+	}
+else {
+	return undef if (&is_readonly_mode());
+	return &remote_rpc_call($s, { 'action' => 'call',
+				      'module' => $mod,
+				      'func' => $func,
+				      'session' => $remote_session{$sn},
+				      'args' => [ @args ] } );
+	}
 }
 
 =head2 remote_foreign_check(server, module, [api-only])
@@ -7308,9 +7318,15 @@ parameter.
 sub remote_foreign_check
 {
 my ($s, $mod, $api) = @_;
-return &remote_rpc_call($s, { 'action' => 'check',
-			      'module' => $mod,
-			      'api' => $api });
+my $sn = &remote_session_name($s);
+if ($sn eq "" && ref($s) && $s->{'local'}) {
+	return &foreign_check($mod, $api);
+	}
+else {
+	return &remote_rpc_call($s, { 'action' => 'check',
+				      'module' => $mod,
+				      'api' => $api });
+	}
 }
 
 =head2 remote_foreign_config(server, module)
@@ -7322,8 +7338,15 @@ Equivalent to foreign_config, but for a remote system.
 sub remote_foreign_config
 {
 my ($s, $mod) = @_;
-return &remote_rpc_call($s, { 'action' => 'config',
-			      'module' => $mod });
+my $sn = &remote_session_name($s);
+if ($sn eq "" && ref($s) && $s->{'local'}) {
+	my %c = &foreign_config($mod);
+	return \%c;
+	}
+else {
+	return &remote_rpc_call($s, { 'action' => 'config',
+				      'module' => $mod });
+	}
 }
 
 =head2 remote_eval(server, module, code)
@@ -7337,12 +7360,19 @@ only be called after remote_foreign_require for the same server and module.
 sub remote_eval
 {
 my ($s, $mod, $code) = @_;
-return undef if (&is_readonly_mode());
 my $sn = &remote_session_name($s);
-return &remote_rpc_call($s, { 'action' => 'eval',
-			      'module' => $mod,
-			      'code' => $code,
-			      'session' => $remote_session{$sn} });
+if ($sn eq "" && ref($s) && $s->{'local'}) {
+	my $pkg = $mod;
+	$pkg =~ s/[^A-Za-z0-9]/_/g;
+	return eval "package $pkg; $code";
+	}
+else {
+	return undef if (&is_readonly_mode());
+	return &remote_rpc_call($s, { 'action' => 'eval',
+				      'module' => $mod,
+				      'code' => $code,
+				      'session' => $remote_session{$sn} });
+	}
 }
 
 =head2 remote_write(server, localfile, [remotefile], [remotebasename])
@@ -7356,31 +7386,41 @@ selected temporary filename will be used, and returned by the function.
 sub remote_write
 {
 my ($host, $localfile, $remotefile, $remotebase) = @_;
-return undef if (&is_readonly_mode());
-my ($data, $got);
-my $rv = &remote_rpc_call($host, { 'action' => 'tcpwrite',
-				   'file' => $remotefile,
-				   'name' => $remotebase } );
-my $error;
-my $serv = !ref($host) ? $host : ($host->{'ip'} || $host->{'host'});
-&open_socket($serv || "localhost", $rv->[1], TWRITE, \$error);
-return &$main::remote_error_handler("Failed to transfer file : $error")
-	if ($error);
-open(FILE, "<".$localfile) ||
-	return &$main::remote_error_handler("Failed to open $localfile : $!");
-my $bs = &get_buffer_size();
-while(read(FILE, $got, $bs) > 0) {
-	print TWRITE $got;
+if ($sn eq "" && ref($s) && $s->{'local'}) {
+	my $file = $remotefile ? $remotefile :
+		   $remotebase ? &tempname($remotebase) :
+				 &tempname();
+	&copy_source_dest($localfile, $file) ||
+		return &$main::remote_error_handler("Failed to copy $localfile to $file : $!");
+	return $file;
 	}
-close(FILE);
-shutdown(TWRITE, 1);
-$error = <TWRITE>;
-if ($error && $error !~ /^OK/) {
-	# Got back an error!
-	return &$main::remote_error_handler("Failed to transfer file : $error");
+else {
+	return undef if (&is_readonly_mode());
+	my ($data, $got);
+	my $rv = &remote_rpc_call($host, { 'action' => 'tcpwrite',
+					   'file' => $remotefile,
+					   'name' => $remotebase } );
+	my $error;
+	my $serv = !ref($host) ? $host : ($host->{'ip'} || $host->{'host'});
+	&open_socket($serv || "localhost", $rv->[1], TWRITE, \$error);
+	return &$main::remote_error_handler("Failed to transfer file : $error")
+		if ($error);
+	open(FILE, "<".$localfile) ||
+		return &$main::remote_error_handler("Failed to open $localfile : $!");
+	my $bs = &get_buffer_size();
+	while(read(FILE, $got, $bs) > 0) {
+		print TWRITE $got;
+		}
+	close(FILE);
+	shutdown(TWRITE, 1);
+	$error = <TWRITE>;
+	if ($error && $error !~ /^OK/) {
+		# Got back an error!
+		return &$main::remote_error_handler("Failed to transfer file : $error");
+		}
+	close(TWRITE);
+	return $rv->[0];
 	}
-close(TWRITE);
-return $rv->[0];
 }
 
 =head2 remote_read(server, localfile, remotefile)
@@ -7394,25 +7434,31 @@ system, and remotefile is the file to fetch from the remote server.
 sub remote_read
 {
 my ($host, $localfile, $remotefile) = @_;
-my $rv = &remote_rpc_call($host, { 'action' => 'tcpread',
-				   'file' => $remotefile } );
-if (!$rv->[0]) {
-	return &$main::remote_error_handler("Failed to transfer file : $rv->[1]");
+if ($sn eq "" && ref($s) && $s->{'local'}) {
+	&copy_source_dest($remotefile, $localfile) ||
+		return &$main::remote_error_handler("Failed to copy $remotefile to $localfile : $!");
 	}
-my $error;
-my $serv = !ref($host) ? $host : ($host->{'ip'} || $host->{'host'});
-&open_socket($serv || "localhost", $rv->[1], TREAD, \$error);
-return &$main::remote_error_handler("Failed to transfer file : $error")
-	if ($error);
-my $got;
-open(FILE, ">$localfile") ||
-	return &$main::remote_error_handler("Failed to open $localfile : $!");
-my $bs = &get_buffer_size();
-while(read(TREAD, $got, $bs) > 0) {
-	print FILE $got;
+else {
+	my $rv = &remote_rpc_call($host, { 'action' => 'tcpread',
+					   'file' => $remotefile } );
+	if (!$rv->[0]) {
+		return &$main::remote_error_handler("Failed to transfer file : $rv->[1]");
+		}
+	my $error;
+	my $serv = !ref($host) ? $host : ($host->{'ip'} || $host->{'host'});
+	&open_socket($serv || "localhost", $rv->[1], TREAD, \$error);
+	return &$main::remote_error_handler("Failed to transfer file : $error")
+		if ($error);
+	my $got;
+	open(FILE, ">$localfile") ||
+		return &$main::remote_error_handler("Failed to open $localfile : $!");
+	my $bs = &get_buffer_size();
+	while(read(TREAD, $got, $bs) > 0) {
+		print FILE $got;
+		}
+	close(FILE);
+	close(TREAD);
 	}
-close(FILE);
-close(TREAD);
 }
 
 =head2 remote_finished
