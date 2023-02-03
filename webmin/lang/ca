@@ -179,11 +179,6 @@ ui_edbwidth=Hi falta l'amplada de finestra del triador o bé és invàlida
 ui_edbheight=Hi falta l'alçada de finestra del triador o bé és invàlida
 ui_showlogin=Prefixa els títols de les pàgines amb el nom d'usuari
 ui_showhost=Prefixa els títols de les pàgines amb el nom del host
-ui_dateformat=Format de les dates mostrades
-ui_dateformat_dd/mon/yyyy=dd/mes/aaaa (p. ex. 16/Set/2001)
-ui_dateformat_dd/mm/yyyy=dd/mm/aaaa (p. ex. 16/09/2001)
-ui_dateformat_mm/dd/yyyy=mm/dd/aaaa (p. ex. 09/16/2001)
-ui_dateformat_yyyy/mm/dd=aaaa/mm/dd (p. ex. 2001/09/16)
 ui_ehostnamedisplay=Hi falta el nom de host a mostrar o bé és invàlid
 
 mods_title=Mòduls Webmin
@@ -302,8 +297,6 @@ os_eiversion=Hi falta la versió interna del sistema operatiu
 os_fix=Actualitza el Sistema Operatiu Detectat
 os_usermin=Actualitza també el SO d'Usermin
 
-lang_title=Idioma
-lang_title2=Idioma de Webmin
 lang_lang=Mostra-ho en l'idioma
 lang_intro=Aquesta pàgina permet triar l'idioma que utilitzarà Webmin per mostrar els títols, textos i missatges
 lang_ok=Canvia l'Idioma

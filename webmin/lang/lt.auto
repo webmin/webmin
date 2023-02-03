@@ -190,11 +190,6 @@ ui_edbwidth=Trūksta arba netinkamas parinkiklio lango plotis
 ui_edbheight=Trūksta arba netinkamas parinkiklio lango aukštis
 ui_showlogin=Pridėkite vartotojo vardą puslapio pavadinimuose?
 ui_showhost=Ar pridėti pagrindinio kompiuterio pavadinimą puslapių pavadinimuose?
-ui_dateformat=Rodomų datų formatas
-ui_dateformat_dd/mon/yyyy=diena/mėnuo/diena (ty 2001 m. rugsėjo 16 d.)
-ui_dateformat_dd/mm/yyyy=diena/mėnuo/metai (ty 2001 09 16)
-ui_dateformat_mm/dd/yyyy=mėnuo/diena/diena (ty 2001 09 16)
-ui_dateformat_yyyy/mm/dd=yyyy/mm/dd (ty 2001/09/16)
 ui_ehostnamedisplay=Trūksta arba netinkamas rodomas pagrindinio kompiuterio vardas
 
 mods_title=„Webmin“ moduliai
@@ -316,8 +311,8 @@ os_release_notes=Išleidimo pastabos
 os_fix=Atnaujinkite aptiktą operacinę sistemą
 os_usermin=Taip pat atnaujinkite „Usermin“ OS
 
-lang_title=Kalba
-lang_title2=Webmin kalba
+lang_title=Kalba ir vietovė
+lang_title2=Webmin kalba ir lokalė
 lang_lang=Ekranas kalba
 lang_intro=Šiame puslapyje galite pasirinkti, kokią kalbą „Webmin“ naudos antraštėms, raginimams ir pranešimams rodyti
 lang_ok=Pakeisti KALBĄ
@@ -327,6 +322,8 @@ lang_chardef=Nustatoma pagal kalbą
 lang_charover=Priverstinis simbolių rinkinys
 lang_err=Nepavyko išsaugoti kalbos
 lang_echarset=Trūksta arba netinkamai atrodo simbolių rinkinys
+lang_dateformat=Rodomos datos formatas
+lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (t. y. 2001 m. rugsėjo 16 d.)
 
 ssl_title=SSL šifravimas
 ssl_essl=Panašu, kad „Net::SSLeay perl“ modulis nėra įdiegtas jūsų sistemoje. Norėdami įdiegti „OpenSSL“ biblioteką ir „Net::SSLeay“, vykdykite <a href='$1'>šias instrukcijas</a> iš „Webmin“ svetainės.

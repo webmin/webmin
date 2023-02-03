@@ -190,11 +190,6 @@ ui_edbwidth=Nedostaje ili nije važeća širina prozora za odabir
 ui_edbheight=Nedostaje ili nije važeća visina prozora za odabir
 ui_showlogin=Želite li dodati korisničko ime za naslove stranica?
 ui_showhost=Dodati ime domaćina naslovima stranica?
-ui_dateformat=Format za prikazane datume
-ui_dateformat_dd/mon/yyyy=dd/pon/gggg (tj. 16. rujna/2001.)
-ui_dateformat_dd/mm/yyyy=dd/mm/gggg (tj. 16.9.2001.)
-ui_dateformat_mm/dd/yyyy=mm/dd/gggg (tj. 16.09.2001.)
-ui_dateformat_yyyy/mm/dd=gggg/mm/dd (tj. 2001/09/16)
 ui_ehostnamedisplay=Nedostaje ili neispravno ime hosta zaslona
 
 mods_title=Webmin moduli
@@ -316,8 +311,8 @@ os_release_notes=Bilješke o izdanju
 os_fix=Ažurirajte otkriveni operativni sustav
 os_usermin=Ažurirajte i Usermin OS
 
-lang_title=Jezik
-lang_title2=Webmin jezik
+lang_title=Jezik i mjesto
+lang_title2=Webmin jezik i lokalizacija
 lang_lang=Prikaz na jeziku
 lang_intro=Ova vam stranica omogućuje odabir jezika koji će Webmin koristiti za prikazivanje naslova, upita i poruka
 lang_ok=Promijeni jezik
@@ -327,6 +322,8 @@ lang_chardef=Određena jezikom
 lang_charover=Skup znakova sile
 lang_err=Spremanje jezika nije uspjelo
 lang_echarset=Skup nedostajućih ili nevažećih izgleda
+lang_dateformat=Format za prikazane datume
+lang_dateformat_dd/mon/yyyy=dd/pon/gggg (tj. 16. rujna 2001.)
 
 ssl_title=SSL šifriranje
 ssl_essl=Čini se da perl modul Net::SSLeay nije instaliran na vašem sustavu. Da biste instalirali OpenSSL knjižnicu i Net::SSLeay, slijedite <a href='$1'>ove upute</a> s webminsove webmin.

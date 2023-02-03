@@ -180,11 +180,6 @@ ui_edbwidth=Largeur de la fenêtre de sélection manquante ou non valide
 ui_edbheight=Hauteur de la fenêtre du sélecteur manquante ou non valide
 ui_showlogin=Ajouter le nom d'utilisateur aux titres des pages?
 ui_showhost=Ajouter le nom d'hôte aux titres de page?
-ui_dateformat=Format des dates affichées
-ui_dateformat_dd/mon/yyyy=dd/mon/yyyy (ie. 16/Sep/2001)
-ui_dateformat_dd/mm/yyyy=dd/mm/yyyy (ie. 16/09/2001)
-ui_dateformat_mm/dd/yyyy=mm/dd/yyyy (ie. 09/16/2001)
-ui_dateformat_yyyy/mm/dd=yyyy/mm/dd (ie. 2001/09/16)
 ui_ehostnamedisplay=Nom d'hôte d'affichage manquant ou non valide
 
 mods_title=Modules Webmin
@@ -304,8 +299,6 @@ os_eiversion=Version du système d'exploitation interne manquante
 os_fix=Mettre à jour le système d'exploitation détecté
 os_usermin=Mettez également à jour le système d'exploitation Usermin
 
-lang_title=Langue
-lang_title2=Langue Webmin
 lang_lang=Afficher dans la langue
 lang_intro=Cette page vous permet de choisir la langue que Webmin utilisera pour afficher les titres, les invites et les messages
 lang_ok=Changer de langue

@@ -24,6 +24,11 @@ mods_checksig=Sprawdź plik podpisu dla pobranych modułów?
 os_incorrect=System operacyjny $1 został zaktualizowany do wersji $2 
 os_release_notes=Informacje o wydaniu
 
+lang_title=Język i lokalizacja
+lang_title2=Język i ustawienia regionalne Webmina
+lang_dateformat=Format wyświetlanych dat
+lang_dateformat_dd/mon/yyyy=dd/pon.rrrr (tj. 16/09/2001)
+
 ssl_hsts=Wymuszaj SSL za pomocą nagłówka HSTS
 ssl_ekey2=Plik klucza prywatnego SSL $1 nie zawiera klucza formatu PEM
 ssl_ecert2=Plik certyfikatu SSL $1 nie zawiera certyfikatu formatu PEM

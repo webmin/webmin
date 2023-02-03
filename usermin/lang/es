@@ -47,8 +47,6 @@ os_desc3=Esta página muestra el sistema operativo detectado por Usermin en el m
 os_desc2=También puedes cambiar la trayectoria de búsqueda usada por Webmin al ejectuar programas y la trayectoria de biblioteca compartida pasada a cualquier programa.
 os_usermin=Sistema Operativo de acuerdo a Usermin
 
-lang_title=Lenguage
-lang_title2=Lenguage de Usermin
 lang_intro=Esta página te permite seleccionar qué lenguage usará Usermin para mostrar títulos, peticiones y mensajes
 
 session_title=Autenticación

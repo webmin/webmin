@@ -1,3 +1,6 @@
+lang_title=Taal en land
+lang_title2=Usermin-taal en locale
+
 session_authmode=Authenticatie methode
 
 twofactor_desc=Met tweefactorauthenticatie kunnen Usermin-gebruikers het gebruik van een extra authenticatieapparaat mogelijk maken bij het inloggen, zoals een eenmalige wachtwoordgenerator. Gebruikers moeten zich individueel inschrijven bij de geselecteerde authenticatieleverancier nadat deze op deze pagina is ingeschakeld.

@@ -159,11 +159,6 @@ ui_sizemodules=다중 모듈 선택 사이즈
 ui_edbwidth=선택 창 길이가 없거나 유효하지 않음
 ui_edbheight=선택 창 높이가 없거나 유효하지 않음
 ui_showlogin=페이지 이름에 유저이름을 출력하겠습니까?
-ui_dateformat=날자 출력 형식
-ui_dateformat_dd/mon/yyyy=dd/mon/yyyy (예 16/Sep/2001)
-ui_dateformat_dd/mm/yyyy=dd/mm/yyyy (예 16/09/2001)
-ui_dateformat_mm/dd/yyyy=mm/dd/yyyy (예 09/16/2001)
-ui_dateformat_yyyy/mm/dd=yyyy/mm/dd (예 2001/09/16)
 
 mods_title=Webmin 모듈
 mods_desc1=설치한 후에는 오른쪽 양식을 사용하여 Webmin 모듈을 추가할 수 있습니다. 모듈은 일반적으로 <tt>.wbm</tt> 파일로 배포됩니다. 각 파일에는 하나 이상의 모듈이 포함될 수 있습니다. 운영 체제에서 지원하는 경우에는 RPM 파일로부터 모듈을 설치할 수도 있습니다.
@@ -279,8 +274,6 @@ os_eversion=운영체제 버전을 알 수 없음
 os_eiversion=내부 운영체제 버전을 알 수 없음
 os_fix=감지된 운영체제 업데이트
 
-lang_title=언어
-lang_title2=Webmin 언어
 lang_lang=표시 언어
 lang_intro=이 페이지에서는 Webmin이 제목, 프롬프트 및 메시지를 표시하는 데 사용할 언어를 선택할 수 있습니다
 lang_ok=언어 변경

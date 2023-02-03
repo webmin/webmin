@@ -52,8 +52,6 @@ os_usermin=Betriebssystem, wie Usermin es sieht
 os_iusermin=Interner Betriebssystem Code, welcher von Usermin benutzt wird
 os_update=Update Usermin um das erkannte Betriebssystem zu nutzen
 
-lang_title=Sprache
-lang_title2=Usermin-Sprache
 lang_intro=Auf dieser Seite können Sie die Sprache wählen, in der Usermintitel, Eingabeaufforderungen und Nachrichten anzeigt werden.
 
 session_title=Authentifizierung

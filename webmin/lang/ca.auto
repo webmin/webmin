@@ -16,6 +16,11 @@ delete_rusure=Esteu segur que voleu suprimir el mòdul (s) $2? $1 kB de fitxers 
 os_incorrect=El sistema operatiu $1 s'ha actualitzat a la versió $2 
 os_release_notes=Notes de publicació
 
+lang_title=Idioma i entorn local
+lang_title2=Idioma i configuració regional de Webmin
+lang_dateformat=Format per a les dates mostrades
+lang_dateformat_dd/mon/yyyy=dd/llun/aaaa (és a dir, 16/set/2001)
+
 ssl_hsts=Apliqueu SSL amb la capçalera HSTS
 ssl_letsdoms=Noms d'amfitrió del certificat
 

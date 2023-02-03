@@ -12,6 +12,11 @@ bind_emaxlifetime=Maksimal prosesslevetid må være et tall større enn 60 sekun
 os_incorrect=Operativsystemet $1 er oppgradert til versjon $2
 os_release_notes=Utgivelsesnotater
 
+lang_title=Språk og lokalitet
+lang_title2=Webmin språk og lokalitet
+lang_dateformat=Format for viste datoer
+lang_dateformat_dd/mon/yyyy=dd/man/åååå (dvs. 16/sep/2001)
+
 ssl_hsts=Håndhev SSL med HSTS-header
 
 upgrade_setup=Kjører <tt>setup.sh</tt> skript for å oppgradere Webmin ..

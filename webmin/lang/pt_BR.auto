@@ -37,6 +37,11 @@ os_incorrect=O sistema operacional $1 foi atualizado para a versão $2
 os_release_notes=Notas de lançamento
 os_usermin=Atualize também o SO Usermin
 
+lang_title=Idioma e localidade
+lang_title2=Idioma e localidade do Webmin
+lang_dateformat=Formato para datas exibidas
+lang_dateformat_dd/mon/yyyy=dd/seg/aaaa (ou seja, 16/set/2001)
+
 ssl_deny=Versões do protocolo SSL a serem rejeitadas
 ssl_compression=Permitir conexões SSL compactadas?
 ssl_honorcipherorder=Forçar o uso da ordem de cifra definida pelo servidor?

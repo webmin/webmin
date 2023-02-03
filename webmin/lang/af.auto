@@ -190,11 +190,6 @@ ui_edbwidth=Ontbrekende of ongeldige kiestervensterwydte
 ui_edbheight=Hoogte van die venster van die kieser of ongeldig
 ui_showlogin=Gebruikersnaam voor vir bladsytitels?
 ui_showhost=Stel gasheernaam voor op bladsytitels?
-ui_dateformat=Formaat vir vertoonde datums
-ui_dateformat_dd/mon/yyyy=dd/ma/jjjj (dws. 16 /Sep/2001)
-ui_dateformat_dd/mm/yyyy=dd/mm/jjjj (dws. 16/09/2001)
-ui_dateformat_mm/dd/yyyy=mm/dd/jjjj (dws 09/16/2001)
-ui_dateformat_yyyy/mm/dd=jjjj/mm/dd (dws 2001/09/16)
 ui_ehostnamedisplay=Ontbrekende of ongeldige vertoonnaam van die vertoon
 
 mods_title=Webmin-modules
@@ -316,8 +311,8 @@ os_release_notes=Vrystellings notas
 os_fix=Bestuurstelsel word opgespoor
 os_usermin=Werk ook Usermin OS op
 
-lang_title=Taal
-lang_title2=Webmin-taal
+lang_title=Taal en Lokaal
+lang_title2=Webmin-taal en -plek
 lang_lang=Vertoon in taal
 lang_intro=Op hierdie bladsy kan u kies watter taal Webmin sal gebruik om titels, opdragte en boodskappe te vertoon
 lang_ok=Verander taal
@@ -327,6 +322,8 @@ lang_chardef=Word bepaal deur taal
 lang_charover=Dwing karakterset af
 lang_err=Kon nie taal stoor nie
 lang_echarset=Karakterset ontbreek of ongeldig
+lang_dateformat=Formaat vir vertoon datums
+lang_dateformat_dd/mon/yyyy=dd/maand/jjjj (d.w.s. 16/Sep/2001)
 
 ssl_title=SSL-kodering
 ssl_essl=Dit lyk nie of die Net::SSLeay perl-module op u stelsel geïnstalleer is nie. Volg <a href='$1'>hierdie instruksies</a> van die Webmin-webwerf om die OpenSSL-biblioteek en Net::SSLeay te installeer.

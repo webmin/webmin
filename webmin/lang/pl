@@ -173,11 +173,6 @@ ui_edbwidth=Nie podano lub nieprawidłowa szerokość okna wyboru
 ui_edbheight=Nie podano lub nieprawidłowa wysokość okna wyboru
 ui_showlogin=Dopisywać nazwę użytkownika do tytułów stron?
 ui_showhost=Dopisywać nazwę komputera do tytułów stron?
-ui_dateformat=Format wyświetlanej daty
-ui_dateformat_dd/mon/yyyy=dd/mie/rrrr (np. 16/wrz/2010)
-ui_dateformat_dd/mm/yyyy=dd/mm/rrrr (np 16/09/2010)
-ui_dateformat_mm/dd/yyyy=mm/dd/yyyy (np. 09/16/2010)
-ui_dateformat_yyyy/mm/dd=yyyy/mm/dd (np. 2010/09/16)
 ui_ehostnamedisplay=Brakująca lub nieprawidłowo wyświetlana nazwy hosta
 
 mods_title=Moduły Webmina
@@ -296,8 +291,6 @@ os_eiversion=Brakująca wersja wewnętrznego systemu operacyjnego
 os_fix=Aktualizuj wykryty system operacyjny
 os_usermin=Aktualizuj także OS Usermina
 
-lang_title=Język
-lang_title2=Język Webmina
 lang_lang=Wyświetlaj w języku
 lang_intro=Ta strona umożliwia Ci wybór języka w którym Webmin będzie wypisywał komunikaty
 lang_ok=Zmień język

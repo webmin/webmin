@@ -52,8 +52,8 @@ os_usermin=Hệ điều hành theo Usermin
 os_iusermin=Mã hệ điều hành nội bộ được sử dụng bởi Usermin
 os_update=Cập nhật Usermin để sử dụng HĐH được phát hiện
 
-lang_title=Ngôn ngữ
-lang_title2=Ngôn ngữ Usermin
+lang_title=Ngôn ngữ và địa phương
+lang_title2=Ngôn ngữ và ngôn ngữ của người dùng
 lang_intro=Trang này cho phép bạn chọn ngôn ngữ Usermin sẽ sử dụng để hiển thị tiêu đề, lời nhắc và tin nhắn
 
 session_title=Xác thực

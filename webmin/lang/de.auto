@@ -12,6 +12,11 @@ bind_emaxlifetime=Die maximale Prozesslebensdauer muss eine Zahl größer als 60
 os_incorrect=Betriebssystem $1 wurde auf Version $2 aktualisiert
 os_release_notes=Versionshinweise
 
+lang_title=Sprache und Gebietsschema
+lang_title2=Webmin-Sprache und Gebietsschema
+lang_dateformat=Format für angezeigte Daten
+lang_dateformat_dd/mon/yyyy=tt/mon/jjjj (d. h. 16/Sep/2001)
+
 ssl_hsts=Erzwinge SSL mit HSTS-Header
 
 upgrade_setup=Ausführen des Skripts <tt>setup.sh</tt> zum Aktualisieren von Webmin ..

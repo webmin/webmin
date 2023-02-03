@@ -195,8 +195,6 @@ os_envs=Variáveis de ambiente adicionais
 os_name=Nome da variável
 os_value=Valor
 
-lang_title=Linguagem
-lang_title2=Linguagem do Webmin
 lang_lang=Mostrar na linguagem
 lang_intro=Esta página permite-lhe escolher a linguagem que o Webmin vai usar para mostrar os títulos, questões e mensagens
 lang_ok=Alterar Linguagem

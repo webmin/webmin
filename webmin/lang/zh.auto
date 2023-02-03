@@ -61,11 +61,6 @@ ui_sizemodule=模块选择器尺寸
 ui_sizemodules=多个模块选择器尺寸
 ui_showlogin=在页面标题前添加用户名？
 ui_showhost=在页面标题前添加主机名？
-ui_dateformat=显示日期的格式
-ui_dateformat_dd/mon/yyyy=dd/mon/yyyy（即2001年9月16日）
-ui_dateformat_dd/mm/yyyy=dd/mm/yyyy（即16/09/2001）
-ui_dateformat_mm/dd/yyyy=毫米/日/年（即2001年9月16日）
-ui_dateformat_yyyy/mm/dd=yyyy/mm/dd（即2001/09/16）
 
 mods_installsource=从安装
 mods_grantto=授予访问权限
@@ -104,10 +99,14 @@ os_incorrect=操作系统 $1 已升级到版本 $2
 os_release_notes=发行说明
 os_fix=更新检测到的操作系统
 
+lang_title=语言和地区
+lang_title2=Webmin 语言和区域设置
 lang_accept=使用浏览器指定的语言？
 lang_chardef=由语言决定
 lang_charover=强制字符集
 lang_err=保存语言失败
+lang_dateformat=显示日期的格式
+lang_dateformat_dd/mon/yyyy=dd/mon/yyyy（即 16/Sep/2001）
 
 ssl_key=私钥文件
 ssl_cert=证书文件

@@ -52,8 +52,8 @@ os_usermin=Λειτουργικό σύστημα σύμφωνα με το Usermi
 os_iusermin=Εσωτερικός κωδικός OS που χρησιμοποιείται από το Usermin
 os_update=Ενημερώστε το Usermin να χρησιμοποιήσει εντοπισμένο λειτουργικό σύστημα
 
-lang_title=Γλώσσα
-lang_title2=Γλώσσα usermin
+lang_title=Γλώσσα και Τοποθεσία
+lang_title2=Usermin Language and Locale
 lang_intro=Αυτή η σελίδα σάς επιτρέπει να επιλέξετε ποια γλώσσα θα χρησιμοποιήσει το Usermin για την εμφάνιση τίτλων, προτροπών και μηνυμάτων
 
 session_title=Αυθεντικοποίηση

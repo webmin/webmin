@@ -119,8 +119,6 @@ os_new=Nytt operativsystem
 os_path=Programsökväg
 os_ld_path=Katalogsökväg
 
-lang_title=Språkval
-lang_title2=Språk i Webmin
 lang_lang=Använd språk
 lang_intro=På denna sida kan du välja vilket språk Webmin ska använda i sina textmeddelanden
 lang_ok=Byt språk

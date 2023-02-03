@@ -190,11 +190,6 @@ ui_edbwidth=Galdutako hautatzailearen leiho zabalera falta edo baliogabea
 ui_edbheight=Hutsaren leiho altuera falta edo baliogabea
 ui_showlogin=Erabiltzaile izena orrialde izenburuetara egokitzea?
 ui_showhost=Egokitu izena ostalari orrialde izenburuetara?
-ui_dateformat=Bistaratutako daten formatua
-ui_dateformat_dd/mon/yyyy=dd/mon/aaaa (hau da, 2001/ira. 16)
-ui_dateformat_dd/mm/yyyy=dd/mm/aaaa (hau da, 2001/09/16)
-ui_dateformat_mm/dd/yyyy=mm/dd/aaaa (hau da, 2001/09/16)
-ui_dateformat_yyyy/mm/dd=aaaa/mm/dd (hau da, 2001/09/16)
 ui_ehostnamedisplay=Bistaratutako ostalariaren izen falta edo baliogabea
 
 mods_title=Webmin moduluak
@@ -316,8 +311,8 @@ os_release_notes=Argitalpen oharrak
 os_fix=Eguneratu detektatutako sistema eragilea
 os_usermin=Era berean, eguneratu Usermin OS
 
-lang_title=Hizkuntza
-lang_title2=Webmin hizkuntza
+lang_title=Hizkuntza eta Tokia
+lang_title2=Webmin hizkuntza eta lokalizazioa
 lang_lang=Bistaratzea hizkuntzan
 lang_intro=Orrialde honek izenburuak, galderak eta mezuak bistaratzeko zein hizkuntza erabiliko duen aukeratu dezakezu
 lang_ok=Hizkuntza aldatu
@@ -327,6 +322,8 @@ lang_chardef=Hizkuntzaren arabera zehaztua
 lang_charover=Indar karaktere multzoa
 lang_err=Huts egin du hizkuntza gordetzean
 lang_echarset=Falta edo itxura baliogabea duen karaktere-multzoa
+lang_dateformat=Bistaratzen diren datetarako formatua
+lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (hau da, 2001/iraila/16a)
 
 ssl_title=SSL enkriptatzea
 ssl_essl=Ez dirudi Net::SSLeay perl modulua zure sisteman instalatuta dagoela. OpenSSL liburutegia eta Net::SSLeay instalatzeko, jarraitu <a href='$1'>argibide hauek</a> Webmin webgunetik.

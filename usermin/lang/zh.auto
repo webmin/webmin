@@ -52,8 +52,8 @@ os_usermin=根据Usermin的操作系统
 os_iusermin=Usermin使用的内部操作系统代码
 os_update=更新Usermin以使用检测到的操作系统
 
-lang_title=语言
-lang_title2=用户语言
+lang_title=语言和地区
+lang_title2=Usermin 语言和语言环境
 lang_intro=该页面允许您选择Usermin用来显示标题，提示和消息的语言
 
 session_title=认证方式

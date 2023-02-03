@@ -1,5 +1,8 @@
 index_eroot=Konfigurační adresář Usermin $1 existuje, ale kořenový adresář programu $2, na který odkazuje, ne! Měli byste ručně stáhnout a znovu nainstalovat Usermin.
 
+lang_title=Jazyk a národní prostředí
+lang_title2=Jazyk a národní prostředí Usermin
+
 session_authmode=Metoda ověřování
 
 ssl_savekey=Tento formulář umožňuje nahrát existující soukromý klíč SSL certifikátu ve formátu PEM a certifikát, který váš server Usermin použije.
