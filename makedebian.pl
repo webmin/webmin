@@ -115,6 +115,7 @@ Section: admin
 Priority: optional
 Architecture: all
 Depends: $deps
+Recommends: libdatetime-locale-perl
 Pre-Depends: perl
 Installed-Size: $size
 Maintainer: Jamie Cameron <jcameron\@webmin.com>
