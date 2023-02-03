@@ -23,6 +23,12 @@ print &ui_table_row($text{'lang_lang'},
 print &ui_table_row($text{'lang_accept'},
         &ui_yesno_radio("acceptlang", int($uconfig{'acceptlang'})));
 
+# Old datetime format or a new locale
+print &ui_table_row($text{'lang_dateformat'},
+        &ui_select("dateformat", $uconfig{'dateformat'} || "dd/mon/yyyy",
+          [ map { [ $_, $text{'lang_dateformat_'.$_} ] }
+            @webmin::webmin_date_formats ]));
+
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'lang_ok'} ] ]);
 

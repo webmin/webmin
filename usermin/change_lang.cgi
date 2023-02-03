@@ -9,6 +9,7 @@ $access{'lang'} || &error($text{'acl_ecannot'});
 &get_usermin_config(\%uconfig);
 $uconfig{'lang'} = $in{'lang'};
 $uconfig{'acceptlang'} = $in{'acceptlang'};
+$uconfig{'dateformat'} = $in{'dateformat'};
 &put_usermin_config(\%uconfig);
 &unlock_file($usermin_config);
 &webmin_log("lang", undef, undef, \%in);
