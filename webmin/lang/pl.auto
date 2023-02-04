@@ -26,7 +26,9 @@ os_release_notes=Informacje o wydaniu
 
 lang_title=Język i lokalizacja
 lang_title2=Język i ustawienia regionalne Webmina
-lang_dateformat=Format wyświetlanych dat
+lang_lang=Język
+lang_locale=Widownia
+lang_dateformat=Format wyświetlania dat
 lang_dateformat_dd/mon/yyyy=dd/pon.rrrr (tj. 16/09/2001)
 
 ssl_hsts=Wymuszaj SSL za pomocą nagłówka HSTS

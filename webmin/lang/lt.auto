@@ -313,7 +313,8 @@ os_usermin=Taip pat atnaujinkite „Usermin“ OS
 
 lang_title=Kalba ir vietovė
 lang_title2=Webmin kalba ir lokalė
-lang_lang=Ekranas kalba
+lang_lang=Kalba
+lang_locale=Lokalė
 lang_intro=Šiame puslapyje galite pasirinkti, kokią kalbą „Webmin“ naudos antraštėms, raginimams ir pranešimams rodyti
 lang_ok=Pakeisti KALBĄ
 lang_accept=Naudoti naršyklės nurodytą kalbą?
@@ -322,7 +323,7 @@ lang_chardef=Nustatoma pagal kalbą
 lang_charover=Priverstinis simbolių rinkinys
 lang_err=Nepavyko išsaugoti kalbos
 lang_echarset=Trūksta arba netinkamai atrodo simbolių rinkinys
-lang_dateformat=Rodomos datos formatas
+lang_dateformat=Datų rodymo formatas
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (t. y. 2001 m. rugsėjo 16 d.)
 
 ssl_title=SSL šifravimas

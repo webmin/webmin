@@ -313,7 +313,8 @@ os_usermin=עדכן גם מערכת ההפעלה Usermin
 
 lang_title=שפה ומקום
 lang_title2=Webmin שפה ומקום
-lang_lang=תצוגה בשפה
+lang_lang=שפה
+lang_locale=מקום
 lang_intro=דף זה מאפשר לך לבחור באיזו שפה Webmin תשתמש להצגת כותרות, הנחיות והודעות
 lang_ok=שנה שפה
 lang_accept=האם להשתמש בשפה שצוינה על ידי הדפדפן?
@@ -322,7 +323,7 @@ lang_chardef=נקבע לפי שפה
 lang_charover=כוח ערכת תווים
 lang_err=שמירת השפה נכשלה
 lang_echarset=מערך תווים חסר או לא חוקי למראה
-lang_dateformat=פורמט לתאריכים המוצגים
+lang_dateformat=פורמט תצוגת תאריכים
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (כלומר 16/Sep/2001)
 
 ssl_title=הצפנת SSL

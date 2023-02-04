@@ -313,7 +313,8 @@ os_usermin=Opdater også Usermin OS
 
 lang_title=Sprog og lokalitet
 lang_title2=Webmin sprog og lokalitet
-lang_lang=Vis på sprog
+lang_lang=Sprog
+lang_locale=Lokalitet
 lang_intro=Denne side giver dig mulighed for at vælge hvilket sprog Webmin vil bruge til at vise titler, promp og meddelelser
 lang_ok=Skift sprog
 lang_accept=Brug sprog specificeret af browseren?
@@ -322,7 +323,7 @@ lang_chardef=Bestemmes af sprog
 lang_charover=Tving tegnsæt
 lang_err=Kunne ikke gemme sproget
 lang_echarset=Manglende eller ugyldigt udseende tegnsæt
-lang_dateformat=Format for viste datoer
+lang_dateformat=Visningsformat for datoer
 lang_dateformat_dd/mon/yyyy=dd/man/åååå (dvs. 16/sep/2001)
 
 ssl_title=SSL-kryptering

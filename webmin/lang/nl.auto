@@ -31,7 +31,9 @@ os_usermin=Update ook Usermin OS
 
 lang_title=Taal en land
 lang_title2=Webmin-taal en locale
-lang_dateformat=Formaat voor weergegeven datums
+lang_lang=Taal
+lang_locale=Lokaal
+lang_dateformat=Datumweergaveformaat
 lang_dateformat_dd/mon/yyyy=dd/ma/jjjj (d.w.z. 16/sep/2001)
 
 ssl_deny=Te weigeren SSL-protocolversies

@@ -299,7 +299,6 @@ os_eiversion=Version du système d'exploitation interne manquante
 os_fix=Mettre à jour le système d'exploitation détecté
 os_usermin=Mettez également à jour le système d'exploitation Usermin
 
-lang_lang=Afficher dans la langue
 lang_intro=Cette page vous permet de choisir la langue que Webmin utilisera pour afficher les titres, les invites et les messages
 lang_ok=Changer de langue
 lang_accept=Utiliser la langue spécifiée par le navigateur?

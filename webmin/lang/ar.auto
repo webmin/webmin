@@ -220,7 +220,8 @@ os_usermin=أيضا تحديث Usermin OS
 
 lang_title=اللغة واللغة
 lang_title2=لغة ولغة Webmin
-lang_lang=عرض في اللغة
+lang_lang=لغة
+lang_locale=لغة
 lang_intro=تتيح لك هذه الصفحة اختيار اللغة التي سيستخدمها Webmin لعرض العناوين والمطالب والرسائل
 lang_ok=تغيير اللغة
 lang_accept=استخدام اللغة المحددة من قبل المتصفح؟
@@ -229,7 +230,7 @@ lang_chardef=تحددها اللغة
 lang_charover=قوة مجموعة الأحرف
 lang_err=فشل في حفظ اللغة
 lang_echarset=مجموعة أحرف مفقودة أو غير صالحة المظهر
-lang_dateformat=تنسيق التواريخ المعروضة
+lang_dateformat=تنسيق عرض التواريخ
 lang_dateformat_dd/mon/yyyy=يوم/شهر/سنة (أي 16/أيلول/سبتمبر 2001)
 
 ssl_title=تشفير SSL

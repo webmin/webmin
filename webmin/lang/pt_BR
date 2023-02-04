@@ -278,7 +278,6 @@ os_eversion=Versão do sistema operacional faltando
 os_eiversion=Versão interna do sistema operacional faltando
 os_fix=Detectada Atualização do Sistema Operacional
 
-lang_lang=Exibir no idioma
 lang_intro=Esta página permite escolher qual idioma o Webmin irá utilizar para exibição de títulos, avisos e mensagens
 lang_ok=Mudar Idioma
 lang_accept=Utilizar idioma especificado pelo navegador ?

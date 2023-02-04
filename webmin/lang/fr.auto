@@ -14,7 +14,9 @@ os_release_notes=Notes de version
 
 lang_title=Langue et paramètres régionaux
 lang_title2=Langue et paramètres régionaux de Webmin
-lang_dateformat=Format des dates affichées
+lang_lang=Langue
+lang_locale=Lieu
+lang_dateformat=Format d'affichage des dates
 lang_dateformat_dd/mon/yyyy=jj/lu/aaaa (c'est-à-dire 16/sept./2001)
 
 ssl_hsts=Appliquer SSL avec l'en-tête HSTS

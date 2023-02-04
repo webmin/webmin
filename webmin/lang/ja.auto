@@ -7,7 +7,9 @@ os_release_notes=リリースノート
 
 lang_title=言語とロケール
 lang_title2=Webmin の言語とロケール
-lang_dateformat=表示される日付の形式
+lang_lang=言語
+lang_locale=ロケール
+lang_dateformat=日付表示形式
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (つまり、2001 年 9 月 16 日)
 
 ssl_hsts=HSTS ヘッダーで SSL を強制する

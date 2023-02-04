@@ -313,7 +313,8 @@ os_usermin=Aġġorna wkoll OS Usermin
 
 lang_title=Lingwa u Lokali
 lang_title2=Lingwa u Lokalità Webmin
-lang_lang=Wiri bil-lingwa
+lang_lang=Lingwa
+lang_locale=Lokali
 lang_intro=Din il-paġna jippermettilek tagħżel liema lingwa Webmin tuża għall-wiri ta 'titoli, tqanqil u messaġġi
 lang_ok=Ibdel il-Lingwa
 lang_accept=Uża lingwa speċifikata mill-browser?
@@ -322,7 +323,7 @@ lang_chardef=Determinat mil-lingwa
 lang_charover=Forza ta 'karattru stabbilita
 lang_err=Naqset milli ssalva lingwa
 lang_echarset=Sett ta 'karattri nieqes jew li jħares invalidu
-lang_dateformat=Format għad-dati murija
+lang_dateformat=Format tal-wiri tad-dati
 lang_dateformat_dd/mon/yyyy=jj/mon/ssss (jiġifieri 16/Settembru/2001)
 
 ssl_title=SSL Encryption

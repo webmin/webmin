@@ -14,7 +14,9 @@ os_release_notes=Utgivelsesnotater
 
 lang_title=Språk og lokalitet
 lang_title2=Webmin språk og lokalitet
-lang_dateformat=Format for viste datoer
+lang_lang=Språk
+lang_locale=Språk
+lang_dateformat=Visningsformat for datoer
 lang_dateformat_dd/mon/yyyy=dd/man/åååå (dvs. 16/sep/2001)
 
 ssl_hsts=Håndhev SSL med HSTS-header

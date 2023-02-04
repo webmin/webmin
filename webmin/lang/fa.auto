@@ -118,8 +118,10 @@ os_usermin=همچنین سیستم عامل Usermin را به روز کنید
 
 lang_title=زبان و محل
 lang_title2=زبان وبمین و محلی
+lang_lang=زبان
+lang_locale=محلی
 lang_charover=مجموعه کاراکتر نیرو
-lang_dateformat=قالب برای تاریخ های نمایش داده شده
+lang_dateformat=فرمت نمایش تاریخ ها
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (یعنی 16/09/2001)
 
 ssl_deny=نسخه های پروتکل SSL را رد کنید

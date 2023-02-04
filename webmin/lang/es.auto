@@ -102,7 +102,9 @@ os_usermin=También actualice Usermin OS
 
 lang_title=Idioma y configuración regional
 lang_title2=Idioma y configuración regional de Webmin
-lang_dateformat=Formato para las fechas mostradas
+lang_lang=Idioma
+lang_locale=Lugar
+lang_dateformat=Formato de visualización de fechas
 lang_dateformat_dd/mon/yyyy=dd/mon/aaaa (es decir, 16/sep/2001)
 
 ssl_deny=Versiones de protocolo SSL para rechazar

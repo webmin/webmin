@@ -313,7 +313,8 @@ os_usermin=Atjauniniet arī Usermin OS
 
 lang_title=Valoda un lokalizācija
 lang_title2=Webmin valoda un lokalizācija
-lang_lang=Displejs valodā
+lang_lang=Valoda
+lang_locale=Lokalizācija
 lang_intro=Šī lapa ļauj jums izvēlēties valodu, kuru Webmin izmantos virsrakstu, uzvedņu un ziņojumu parādīšanai
 lang_ok=Mainīt VALODU
 lang_accept=Vai izmantot pārlūka norādīto valodu?
@@ -322,7 +323,7 @@ lang_chardef=Nosaka pēc valodas
 lang_charover=Piespiest rakstzīmju kopu
 lang_err=Neizdevās saglabāt valodu
 lang_echarset=Trūkst vai nederīga izskata rakstzīmju kopa
-lang_dateformat=Parādīto datumu formāts
+lang_dateformat=Datumu rādīšanas formāts
 lang_dateformat_dd/mon/yyyy=dd/mon/gggg (t.i., 16/Sep/2001)
 
 ssl_title=SSL šifrēšana

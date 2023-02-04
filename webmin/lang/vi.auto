@@ -313,7 +313,8 @@ os_usermin=Đồng thời cập nhật hệ điều hành Usermin
 
 lang_title=Ngôn ngữ và địa phương
 lang_title2=Ngôn ngữ và ngôn ngữ webmin
-lang_lang=Hiển thị bằng ngôn ngữ
+lang_lang=Ngôn ngữ
+lang_locale=địa phương
 lang_intro=Trang này cho phép bạn chọn ngôn ngữ nào Webmin sẽ sử dụng để hiển thị tiêu đề, lời nhắc và tin nhắn
 lang_ok=Thay đổi ngôn ngữ
 lang_accept=Sử dụng ngôn ngữ được chỉ định bởi trình duyệt?
@@ -322,7 +323,7 @@ lang_chardef=Xác định theo ngôn ngữ
 lang_charover=Bộ ký tự lực
 lang_err=Không thể lưu ngôn ngữ
 lang_echarset=Bộ ký tự bị thiếu hoặc không hợp lệ
-lang_dateformat=Định dạng cho ngày hiển thị
+lang_dateformat=Định dạng hiển thị ngày
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (tức là ngày 16/9/2001)
 
 ssl_title=Mã hóa SSL

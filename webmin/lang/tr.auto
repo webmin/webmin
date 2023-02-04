@@ -130,7 +130,9 @@ os_usermin=Ayrıca Usermin İşletim Sistemini de güncelleyin
 
 lang_title=Dil ve Yerel Ayar
 lang_title2=Webmin Dili ve Yerel Ayarı
-lang_dateformat=Görüntülenen tarihler için biçim
+lang_lang=Dil
+lang_locale=yerel ayar
+lang_dateformat=Tarih görüntüleme formatı
 lang_dateformat_dd/mon/yyyy=gg/mon/yyyy (yani 16/Eylül/2001)
 
 ssl_deny=Reddedilecek SSL protokolü sürümleri

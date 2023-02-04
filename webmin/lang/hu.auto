@@ -230,13 +230,15 @@ os_usermin=Frissítse a Usermin operációs rendszert is
 
 lang_title=Nyelv és terület
 lang_title2=Webmin nyelv és nyelv
+lang_lang=Nyelv
+lang_locale=Nyelv
 lang_accept=Használja a böngésző által megadott nyelvet?
 lang_charset=Karakterkészlet a HTML oldalakhoz
 lang_chardef=Nyelv határozza meg
 lang_charover=Karakterkészlet kényszerítése
 lang_err=Nem sikerült a nyelv mentése
 lang_echarset=Hiányzó vagy érvénytelen karakterkészlet
-lang_dateformat=A megjelenített dátumok formátuma
+lang_dateformat=Dátumok megjelenítési formátuma
 lang_dateformat_dd/mon/yyyy=éééé.hh/nn (azaz 2001. szeptember 16.)
 
 ssl_essl=Úgy tűnik, hogy a Net::SSLeay perl modul nincs telepítve a rendszerére. Az OpenSSL könyvtár és a Net::SSLeay telepítéséhez kövesse <a href='$1'>ezeket az utasításokat</a> a Webmin webhelyről.

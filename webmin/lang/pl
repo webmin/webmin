@@ -291,7 +291,6 @@ os_eiversion=Brakująca wersja wewnętrznego systemu operacyjnego
 os_fix=Aktualizuj wykryty system operacyjny
 os_usermin=Aktualizuj także OS Usermina
 
-lang_lang=Wyświetlaj w języku
 lang_intro=Ta strona umożliwia Ci wybór języka w którym Webmin będzie wypisywał komunikaty
 lang_ok=Zmień język
 lang_accept=Używać języka określonego przez przeglądarkę?

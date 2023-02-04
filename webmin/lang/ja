@@ -306,7 +306,6 @@ os_incorrect=OS $1 は バージョン $2 にアップグレードされまし�
 os_fix=検出された OS の情報を更新
 os_usermin=Usermin の OS 情報も更新
 
-lang_lang=このホストで使用する言語
 lang_intro=Webmin のタイトルやプロンプト、メッセージの表示に使用する言語を選択できます。
 lang_ok=言語の変更 (Change Language)
 lang_accept=ブラウザが送信する言語指定を利用する

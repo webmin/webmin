@@ -101,11 +101,13 @@ os_fix=更新检测到的操作系统
 
 lang_title=语言和地区
 lang_title2=Webmin 语言和区域设置
+lang_lang=语言
+lang_locale=语言环境
 lang_accept=使用浏览器指定的语言？
 lang_chardef=由语言决定
 lang_charover=强制字符集
 lang_err=保存语言失败
-lang_dateformat=显示日期的格式
+lang_dateformat=日期显示格式
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy（即 16/Sep/2001）
 
 ssl_key=私钥文件

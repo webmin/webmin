@@ -18,7 +18,9 @@ os_release_notes=Notes de publicació
 
 lang_title=Idioma i entorn local
 lang_title2=Idioma i configuració regional de Webmin
-lang_dateformat=Format per a les dates mostrades
+lang_lang=Llenguatge
+lang_locale=Localització
+lang_dateformat=Format de visualització de dates
 lang_dateformat_dd/mon/yyyy=dd/llun/aaaa (és a dir, 16/set/2001)
 
 ssl_hsts=Apliqueu SSL amb la capçalera HSTS

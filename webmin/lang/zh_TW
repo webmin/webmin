@@ -177,7 +177,6 @@ os_envs=新增的環境變數
 os_name=變數名稱
 os_value=數值
 
-lang_lang=顯示的語言
 lang_intro=這個網頁可以讓您選擇 Webmin 顯示標題、提示字元和訊息使用的語言。
 lang_ok=變更語言
 lang_accept=由瀏覽器指定語言

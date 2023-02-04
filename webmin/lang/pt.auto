@@ -124,7 +124,9 @@ os_usermin=Atualize também o SO Usermin
 
 lang_title=Idioma e localidade
 lang_title2=Idioma e localidade do Webmin
-lang_dateformat=Formato para datas exibidas
+lang_lang=Linguagem
+lang_locale=Localidade
+lang_dateformat=Formato de exibição de datas
 lang_dateformat_dd/mon/yyyy=dd/seg/aaaa (ou seja, 16/set/2001)
 
 ssl_deny=Versões do protocolo SSL a serem rejeitadas

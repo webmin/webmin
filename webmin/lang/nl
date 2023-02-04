@@ -286,7 +286,6 @@ os_eversion=Ontbrekende besturingssysteem versie
 os_eiversion=Ontbrekende interne besturingssysteem versie
 os_fix=Update Gedetecteerde Besturings Systeem
 
-lang_lang=Laat zien in de taal
 lang_intro=Op deze pagina kunt u de taal wijzigen die Webmin zal gebruiken voor het weergeven van titels, vragen en berichten.
 lang_ok=Wijzig de Taal
 lang_accept=Gebruik de door de browser opgegeven taal?

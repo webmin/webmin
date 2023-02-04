@@ -313,7 +313,8 @@ os_usermin=Таксама абнавіць Usermin OS
 
 lang_title=Мова і рэгіён
 lang_title2=Мова і лакаль Webmin
-lang_lang=Паказаць на мове
+lang_lang=мова
+lang_locale=Лакаль
 lang_intro=На гэтай старонцы вы можаце выбраць, якую мову Webmin будзе выкарыстоўваць для адлюстравання загалоўкаў, падказак і паведамленняў
 lang_ok=Змена мовы
 lang_accept=Выкарыстоўваць мову, паказаны браўзэрам?
@@ -322,7 +323,7 @@ lang_chardef=Вызначаецца мовай
 lang_charover=Сілавы набор знакаў
 lang_err=Не ўдалося захаваць мову
 lang_echarset=Набор адсутных альбо несапраўдных выглядаў
-lang_dateformat=Фармат паказаных дат
+lang_dateformat=Фармат адлюстравання дат
 lang_dateformat_dd/mon/yyyy=дд/пн/гггг (напрыклад, 16 верасня 2001 г.)
 
 ssl_title=Шыфраванне SSL

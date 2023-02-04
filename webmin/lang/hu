@@ -91,7 +91,6 @@ os_title=Operációs rendszer
 os_header=A Hoszt Operációs Rendszere
 os_new=Új operációs rendszer
 
-lang_lang=Használandó nyelv
 lang_intro=Ezzel az oldallal beállíthtaja, hogy a Webmin milyen nyelvet használjon a szövegcímek, parancssorok és üzenetek megjelenítéséhez.
 lang_ok=Nyelvezet változtatása
 

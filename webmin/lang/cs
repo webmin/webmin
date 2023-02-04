@@ -274,7 +274,6 @@ os_eversion=Chybející verze operačního systému
 os_eiversion=Chybějící interní verze operačního systému
 os_fix=Aktualizovat zjištěný oparační systém
 
-lang_lang=Zobrazovat v jazyce
 lang_intro=Zde můžete zvolit, v jakém jazyce k vám má Webmin promlouvat
 lang_ok=Změnit jazyk
 lang_accept=Použít jazyk, který je speciikován v prohlížeči?

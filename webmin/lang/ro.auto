@@ -313,7 +313,8 @@ os_usermin=Actualizați, de asemenea, sistemul de operare Usermin
 
 lang_title=Limbă și localitate
 lang_title2=Limba și localitatea Webmin
-lang_lang=Afișare în limbă
+lang_lang=Limba
+lang_locale=Locale
 lang_intro=Această pagină vă permite să alegeți ce limbă va folosi Webmin pentru afișarea titlurilor, solicitări și mesaje
 lang_ok=Schimbă limba
 lang_accept=Folosiți limba specificată de browser?
@@ -322,7 +323,7 @@ lang_chardef=Determinat de limbaj
 lang_charover=Set de caractere forță
 lang_err=Nu a reușit să salvezi limba
 lang_echarset=Set de caractere lipsit sau cu aspect nevalid
-lang_dateformat=Format pentru datele afișate
+lang_dateformat=Format de afișare a datelor
 lang_dateformat_dd/mon/yyyy=zz/luna/aaaa (adică 16/sept./2001)
 
 ssl_title=Criptare SSL

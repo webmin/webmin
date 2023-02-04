@@ -217,7 +217,6 @@ os_envs=Variables de entorno adicionales
 os_name=Nombre de variable
 os_value=Valor
 
-lang_lang=Mostrar en idioma
 lang_intro=Esta página le permite seleccionar qué idioma utilizará Webmin para mostrar los títulos, las peticiones de datos y los mensajes.
 lang_ok=Cambiar Idioma
 lang_accept=¿Utilizar idioma especificado por el navegador?

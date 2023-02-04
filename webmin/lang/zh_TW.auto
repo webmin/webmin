@@ -144,7 +144,9 @@ os_usermin=同時更新Usermin OS
 
 lang_title=語言和地區
 lang_title2=Webmin 語言和區域設置
-lang_dateformat=顯示日期的格式
+lang_lang=語言
+lang_locale=語言環境
+lang_dateformat=日期顯示格式
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy（即 16/Sep/2001）
 
 ssl_cpan=或者，您可以讓Webmin為您<a href='$1'>下載並安裝</a>所需的Net::SSLeay Perl模塊。

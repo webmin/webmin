@@ -202,13 +202,15 @@ os_usermin=Uppdatera också Usermin OS
 
 lang_title=Språk och lokal
 lang_title2=Webmin språk och språk
+lang_lang=Språk
+lang_locale=Plats
 lang_accept=Använd språk som anges av webbläsaren?
 lang_charset=Teckenuppsättning för HTML-sidor
 lang_chardef=Bestäms av språk
 lang_charover=Tvinga teckenuppsättning
 lang_err=Det gick inte att spara språk
 lang_echarset=Teckenuppsättning saknas eller ogiltigt
-lang_dateformat=Format för visade datum
+lang_dateformat=Datumvisningsformat
 lang_dateformat_dd/mon/yyyy=dd/mån/åååå (dvs. 16/sep/2001)
 
 ssl_essl=Net::SSLeay perl-modulen verkar inte vara installerad på ditt system. För att installera OpenSSL-biblioteket och Net::SSLeay, följ <a href='$1'>dessa instruktioner</a> från Webmin-webbplatsen.

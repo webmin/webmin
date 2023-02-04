@@ -177,12 +177,14 @@ os_usermin=Також оновіть Usermin OS
 
 lang_title=Мова та локаль
 lang_title2=Мова та локаль Webmin
+lang_lang=Мова
+lang_locale=Локаль
 lang_charset=Набір символів для сторінок HTML
 lang_chardef=Визначається мовою
 lang_charover=Набір символів сили
 lang_err=Не вдалося зберегти мову
 lang_echarset=Набір символів відсутнього або недійсного вигляду
-lang_dateformat=Формат відображуваних дат
+lang_dateformat=Формат відображення дат
 lang_dateformat_dd/mon/yyyy=дд/пн/рррр (тобто 16 вересня 2001 р.)
 
 ssl_cpan=Крім того, ви можете мати Webmin <a href='$1'>завантажити та встановити</a> необхідний для вас модуль Net::SSLeay Perl.

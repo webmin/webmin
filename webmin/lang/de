@@ -299,7 +299,6 @@ os_eiversion=Fehlende interne Betriebssystemangabe
 os_fix=Aktualisiere erkanntes Betriebssystem
 os_usermin=Aktualisiere auch Usermin OS
 
-lang_lang=Zeige in Sprache an
 lang_intro=Auf dieser Seite können Sie die Sprache wählen, in der Webmin Titel, Eingabeaufforderungen und Nachrichten anzeigen wird.
 lang_ok=Sprache ändern
 lang_accept=Benutze die Sprache, welche vom Browser angefordert wird?

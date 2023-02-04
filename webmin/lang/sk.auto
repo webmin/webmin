@@ -73,7 +73,9 @@ os_usermin=Aktualizujte tiež Usermin OS
 
 lang_title=Jazyk a miestne nastavenie
 lang_title2=Jazyk a miestne nastavenie Webmin
-lang_dateformat=Formát pre zobrazené dátumy
+lang_lang=Jazyk
+lang_locale=Miestne nastavenie
+lang_dateformat=Formát zobrazenia dátumov
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (t.j. 16. september 2001)
 
 ssl_deny=Verzie protokolu SSL, ktoré sa majú odmietnuť

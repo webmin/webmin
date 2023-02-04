@@ -313,7 +313,8 @@ os_usermin=อัปเดต Usermin OS ด้วย
 
 lang_title=ภาษาและสถานที่
 lang_title2=ภาษาและโลแคลของเว็บมิน
-lang_lang=แสดงเป็นภาษา
+lang_lang=ภาษา
+lang_locale=สถานที่
 lang_intro=หน้านี้ช่วยให้คุณเลือกภาษาที่ Webmin จะใช้สำหรับการแสดงชื่อเรื่องข้อความแจ้งและข้อความ
 lang_ok=เปลี่ยนภาษา
 lang_accept=ใช้ภาษาที่ระบุโดยเบราว์เซอร์หรือไม่
@@ -322,7 +323,7 @@ lang_chardef=พิจารณาจากภาษา
 lang_charover=ชุดอักขระบังคับ
 lang_err=การบันทึกภาษาล้มเหลว
 lang_echarset=ชุดอักขระที่ขาดหายไปหรือไม่ถูกต้อง
-lang_dateformat=รูปแบบสำหรับวันที่แสดง
+lang_dateformat=รูปแบบการแสดงวันที่
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (เช่น 16/ก.ย./2544)
 
 ssl_title=การเข้ารหัส SSL

@@ -313,7 +313,8 @@ os_usermin=Päivitä myös Usermin OS
 
 lang_title=Kieli ja alue
 lang_title2=Webmin-kieli ja kielialue
-lang_lang=Näyttö kielellä
+lang_lang=Kieli
+lang_locale=Alue
 lang_intro=Tällä sivulla voit valita, mitä kieltä Webmin käyttää otsikoiden, kehotteiden ja viestien näyttämiseen
 lang_ok=Vaihda kieltä
 lang_accept=Käytätkö selaimen määrittämää kieltä?
@@ -322,7 +323,7 @@ lang_chardef=Määritetään kielen perusteella
 lang_charover=Pakota merkistö
 lang_err=Kielen tallentaminen epäonnistui
 lang_echarset=Puuttuva tai virheellisen näköinen merkistö
-lang_dateformat=Näytettävien päivämäärien muoto
+lang_dateformat=Päivämäärän näyttömuoto
 lang_dateformat_dd/mon/yyyy=pp/kk/vvvv (eli 16/9/2001)
 
 ssl_title=SSL-salaus

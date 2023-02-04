@@ -297,7 +297,6 @@ os_eiversion=Hi falta la versió interna del sistema operatiu
 os_fix=Actualitza el Sistema Operatiu Detectat
 os_usermin=Actualitza també el SO d'Usermin
 
-lang_lang=Mostra-ho en l'idioma
 lang_intro=Aquesta pàgina permet triar l'idioma que utilitzarà Webmin per mostrar els títols, textos i missatges
 lang_ok=Canvia l'Idioma
 lang_accept=Utilitza l'idioma especificat pel navegador

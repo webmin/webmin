@@ -313,7 +313,8 @@ os_usermin=Posodobite tudi Usermin OS
 
 lang_title=Jezik in lokalna nastavitev
 lang_title2=Jezik in lokalna nastavitev Webmin
-lang_lang=Prikaz v jeziku
+lang_lang=Jezik
+lang_locale=Locale
 lang_intro=Ta stran omogoča izbiro jezika, ki ga bo Webmin uporabil za prikazovanje naslovov, pozivov in sporočil
 lang_ok=Spremeni jezik
 lang_accept=Uporabite jezik, ki ga določi brskalnik?
@@ -322,7 +323,7 @@ lang_chardef=Določa jezik
 lang_charover=Nabor znakov
 lang_err=Jezika ni bilo mogoče shraniti
 lang_echarset=Manjkajoči ali neveljaven videz nabora znakov
-lang_dateformat=Oblika za prikazane datume
+lang_dateformat=Oblika prikaza datumov
 lang_dateformat_dd/mon/yyyy=dd/pon/llll (tj. 16. september 2001)
 
 ssl_title=Šifriranje SSL

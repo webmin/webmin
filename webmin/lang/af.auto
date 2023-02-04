@@ -313,7 +313,8 @@ os_usermin=Werk ook Usermin OS op
 
 lang_title=Taal en Lokaal
 lang_title2=Webmin-taal en -plek
-lang_lang=Vertoon in taal
+lang_lang=Taal
+lang_locale=Lokaal
 lang_intro=Op hierdie bladsy kan u kies watter taal Webmin sal gebruik om titels, opdragte en boodskappe te vertoon
 lang_ok=Verander taal
 lang_accept=Gebruik die taal wat deur die blaaier gespesifiseer is?
@@ -322,7 +323,7 @@ lang_chardef=Word bepaal deur taal
 lang_charover=Dwing karakterset af
 lang_err=Kon nie taal stoor nie
 lang_echarset=Karakterset ontbreek of ongeldig
-lang_dateformat=Formaat vir vertoon datums
+lang_dateformat=Datums vertoon formaat
 lang_dateformat_dd/mon/yyyy=dd/maand/jjjj (d.w.s. 16/Sep/2001)
 
 ssl_title=SSL-kodering

@@ -44,7 +44,9 @@ os_usermin=Usermin OS도 업데이트
 
 lang_title=언어 및 로케일
 lang_title2=Webmin 언어 및 로케일
-lang_dateformat=표시된 날짜의 형식
+lang_lang=언어
+lang_locale=장소
+lang_dateformat=날짜 표시 형식
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy(예: 2001년 9월 16일)
 
 ssl_deny=거부 할 SSL 프로토콜 버전

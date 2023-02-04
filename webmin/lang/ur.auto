@@ -313,7 +313,8 @@ os_usermin=یوزر مین OS کو بھی اپ ڈیٹ کریں
 
 lang_title=زبان اور مقام
 lang_title2=ویبمن زبان اور مقام
-lang_lang=زبان میں ڈسپلے کریں
+lang_lang=زبان
+lang_locale=لوکیل
 lang_intro=یہ صفحہ آپ کو یہ منتخب کرنے کی اجازت دیتا ہے کہ ویبمین عنوان ، اشارے اور پیغامات کی نمائش کے لئے کس زبان کا استعمال کرے گی
 lang_ok=زبان تبدیل کریں
 lang_accept=براؤزر کے ذریعہ مخصوص کردہ زبان کا استعمال کریں؟
@@ -322,7 +323,7 @@ lang_chardef=زبان سے طے شدہ
 lang_charover=زبردستی کیریکٹر سیٹ
 lang_err=زبان بچانے میں ناکام
 lang_echarset=لاپتہ یا غلط نظر آنے والا کردار کا سیٹ
-lang_dateformat=ظاہر شدہ تاریخوں کے لیے فارمیٹ
+lang_dateformat=تاریخیں ڈسپلے فارمیٹ
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (یعنی 16/Sep/2001)
 
 ssl_title=SSL خفیہ کاری

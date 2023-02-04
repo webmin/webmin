@@ -246,7 +246,6 @@ os_value=Hodnota
 os_eversion=Chýbajúca verzia operačného systému
 os_eiversion=Chýbajúca interná verzia operačného systému
 
-lang_lang=Zobrazuj v jazyku
 lang_intro=Táto stránka Vám dovolí vybrať si jazyk pre titulky, otázky a správy Webminu
 lang_ok=Zmeniť jazyk
 lang_accept=Použiť jazyk špecifikovaný prehliadačom?
