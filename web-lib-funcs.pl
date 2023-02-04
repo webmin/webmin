@@ -2048,13 +2048,13 @@ if ($fmt) {
 	my $date = $fmt;
 	my @date;
 	$date[$-[1]] = '%m'
-	    if ($date =~ /\b(mm|mon)\b/);
+	    if ($date =~ /(m|M)/);
 	$date[$-[1]] = '%d'
-	    if ($date =~ /\b(dd|d)\b/);
-	if ($date =~ /\b(yyyy)\b/) {
+	    if ($date =~ /(d|D)/);
+	if ($date =~ /(yyyy)/) {
 	    $date[$-[1]] = '%Y'
 	    }
-	elsif ($date =~ /\b(yy)\b/) {
+	elsif ($date =~ /(y|Y)/) {
 	    $date[$-[1]] = '%y'
 	    }
 	@date = grep { /\%/ } @date;
