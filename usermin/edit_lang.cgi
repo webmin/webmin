@@ -21,21 +21,15 @@ print &ui_table_row($text{'lang_lang'},
 
 # Old datetime format or a new locale
 my $locale;
-eval "use DateTime::Locale";
+eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
 if (!$@) {
-        eval "use DateTime::TimeZone";
-        if (!$@) {
-                eval "use DateTime";
-                if (!$@) {
-                        $locale++;
-                        my $locales = &webmin::list_locales();
-                        my %localesrev = reverse %{$locales};
-                        print &ui_table_row($text{'lang_locale'},
-                                &ui_select("locale", $uconfig{'locale'} || "en-US",
-                                           [ map { [ $localesrev{$_}, $_ ] } sort values %{$locales} ]).
-                                           &ui_hidden("dateformat", $uconfig{'dateformat'}));
-                        }
-                }
+        $locale++;
+        my $locales = &webmin::list_locales();
+        my %localesrev = reverse %{$locales};
+        print &ui_table_row($text{'lang_locale'},
+                &ui_select("locale", $uconfig{'locale'} || "en-US",
+                           [ map { [ $localesrev{$_}, $_ ] } sort values %{$locales} ]).
+                           &ui_hidden("dateformat", $uconfig{'dateformat'}));
         }
 
 if (!$locale) {
