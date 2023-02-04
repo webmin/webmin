@@ -7002,7 +7002,6 @@ if ($logemail) {
     if ($mdesc) {
         $body .= &text('log_email_moddesc', $mdesc)."\n";
         }
-    $main::theme_prevent_make_date = 1;
     $body .= &text('log_email_time', &make_date(time()))."\n";
     $body .= &text('log_email_system', &get_display_hostname())."\n";
     $body .= &text('log_email_user', $remote_user)."\n";

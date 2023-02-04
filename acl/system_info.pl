@@ -51,7 +51,6 @@ if (@logins) {
 				$state = "<font color=orange>$state</font>";
 				}
 			}
-		$main::theme_allow_make_date = 1;
 		my @links;
 		if (&foreign_available("webminlog")) {
 		      push(@links,
