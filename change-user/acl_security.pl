@@ -14,6 +14,9 @@ my ($o) = @_;
 print &ui_table_row($text{'acl_lang'},
 	&ui_yesno_radio("lang", $o->{'lang'}));
 
+print &ui_table_row($text{'acl_locale'},
+	&ui_yesno_radio("locale", $o->{'locale'}));
+
 print &ui_table_row($text{'acl_theme'},
 	&ui_yesno_radio("theme", $o->{'theme'}));
 

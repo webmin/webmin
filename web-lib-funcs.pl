@@ -1990,7 +1990,7 @@ my ($secs, $only, $fmt) = @_;
 eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
 if (!$@) {
 my $opts = ref($only) ? $only : {};
-my $locale_name = $opts->{'locale'} || $gconfig{'locale'} || 'en-US';
+my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$remote_user} || $gconfig{'locale'} || 'en-US';
 my $tz = $opts->{'tz'} ||
          DateTime::TimeZone->new( name => 'local' )->name(); # Asia/Nicosia
 my $locale = DateTime::Locale->load($locale_name);
@@ -2074,7 +2074,7 @@ else {
 my @tm = localtime($secs);
 my $date;
 if (!$fmt) {
-	$fmt = $gconfig{'dateformat'} || 'dd/mon/yyyy';
+	$fmt = $gconfig{'dateformat_'.$remote_user} || $gconfig{'dateformat'} || 'dd/mon/yyyy';
 	}
 if ($fmt eq 'dd/mon/yyyy') {
 	$date = sprintf "%2.2d/%s/%4.4d",

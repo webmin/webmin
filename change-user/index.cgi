@@ -56,6 +56,37 @@ if ($access{'lang'}) {
 		undef, [ "valign=top","valign=top" ]);
 	}
 
+# Old datetime format or a new locale
+if ($access{'locale'}) {
+	my $locale;
+	eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
+	&foreign_require('webmin');
+	if (!$@) {
+	        $locale++;
+	        my $locales = &webmin::list_locales();
+	        my %localesrev = reverse %{$locales};
+	        print &ui_table_row($text{'index_locale'},
+	        	&ui_radio("locale_def", defined($user->{'locale'}) ? 0 : 1,
+	        		  [ [ 1, &text('index_localeglobal2', $locales->{$gconfig{'locale'}}, $gconfig{'locale'})."<br>" ],
+	        		    [ 0, $text{'index_localeset'} ] ])." ".
+	        	&ui_select("locale", $user->{'locale'},
+	        		[ map { [ $localesrev{$_}, $_ ] } sort values %{$locales} ] ), 
+	        	undef, [ "valign=top","valign=top" ]);
+	        }
+
+	if (!$locale) {
+			my %wtext = &load_language('webmin');
+			print &ui_table_row($text{'index_locale2'},
+				&ui_radio("dateformat_def", defined($user->{'dateformat'}) ? 0 : 1,
+					  [ [ 1, &text('index_dateformatglobal2', $gconfig{'dateformat'} || "dd/mon/yyyy")."<br>" ],
+					    [ 0, $text{'index_dateformatset'} ] ])." ".
+				&ui_select("dateformat", $user->{'dateformat'} || "dd/mon/yyyy",
+					[ map { [ $_, $wtext{'lang_dateformat_'.$_} ] }
+	                           @webmin::webmin_date_formats ] ), 
+				undef, [ "valign=top","valign=top" ]);
+	        }
+	}
+
 if ($access{'theme'}) {
 	# Show personal theme
 	my $tname;
