@@ -1968,29 +1968,114 @@ $main::has_command_cache{$_[0]} = $rv;
 return $rv;
 }
 
-=head2 make_date(seconds, [date-only], [fmt])
+=head2 make_date(seconds, [date-only-or-opts], [fmt])
 
 Converts a Unix date/time in seconds to a human-readable form, by default
 formatted like dd/mmm/yyyy hh:mm:ss. Parameters are :
 
 =item seconds - Unix time is seconds to convert.
 
-=item date-only - If set to 1, exclude the time from the returned string.
+=item date-only-or-opts - If set to 1, exclude the time from the returned string.
+
+In case this param is a hash reference use it for options in a new DateTime::Locale
+code or preserve the original, old logic
 
 =item fmt - Optional, one of dd/mon/yyyy, dd/mm/yyyy, mm/dd/yyyy or yyyy/mm/dd
 
 =cut
 sub make_date
 {
-&load_theme_library();
-if (defined(&theme_make_date) &&
-    !$main::theme_prevent_make_date && 
-    (($main::header_content_type eq "text/html" &&
-    $main::webmin_script_type eq "web") || 
-    $main::theme_allow_make_date)) {
-	return &theme_make_date(@_);
-	}
 my ($secs, $only, $fmt) = @_;
+eval "use DateTime::Locale";
+if (!$@) {
+	eval "use DateTime::TimeZone";
+	if (!$@) {
+		eval "use DateTime";
+			if (!$@) {
+			my $opts = ref($only) ? $only : {};
+			my $locale_name = $opts->{'locale'} || $gconfig{'locale'} || 'en-US';
+			my $tz = $opts->{'tz'} ||
+			         DateTime::TimeZone->new( name => 'local' )->name(); # Asia/Nicosia
+			my $locale = DateTime::Locale->load($locale_name);
+			my $locale_format_full_tz = $locale->glibc_date_1_format;    # Sat 20 Nov 2286 17:46:39 UTC
+			my $locale_format_full = $locale->glibc_datetime_format;     # Sat 20 Nov 2286 17:46:39
+			my $locale_format_short = $locale->glibc_date_format;        # 20/11/86
+			my $locale_format_time = $locale->glibc_time_format;         # 17:46:39
+			my $locale_format_delimiter = "/";
+			if ($opts->{'delimiter'}) {
+				$locale_format_delimiter = $opts->{'delimiter'};
+				}
+			elsif ($locale_format_short =~ /\%.*?\[a-zA-Z]\s*(?<delimiter>.)/) {
+				$locale_format_delimiter = "$+{delimiter}";
+				}
+
+			# Return fully detailed object
+			if (%{$opts}) {
+				# Can we get ago time
+				my $ago;
+				my $ago_secs = time() - $secs;
+				eval "use Time::Seconds";
+				if (!$@ && $ago_secs >= 1) {
+					my $ago_obj = Time::Seconds->new($ago_secs);
+					$ago = {
+						"seconds" => int($ago_obj->seconds),
+						"minutes" =>  int($ago_obj->minutes),
+						"hours" => int($ago_obj->hours),
+						"days" => int($ago_obj->days),
+						"weeks" => int($ago_obj->weeks),
+						"months"  => int($ago_obj->months),
+						"years" => int($ago_obj->years),
+						"pretty" => $ago_obj->pretty
+					};
+				}
+				my $data = {
+					'full-tz-utc' => DateTime->from_epoch(locale => $locale_name, epoch => $secs)->strftime($locale_format_full_tz),
+					'full-tz' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_full_tz),
+					'full' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_full),
+					'short' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_short),
+					'time' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_time),
+					'ago' => $ago,
+					'tz' => $tz,
+					'delimiter' => $locale_format_delimiter,
+					'timestamp' => $secs,
+					'_locale' => $opts->{'getFull'} ? $locale : undef,
+					};
+				if ($opts->{'get'}) {
+					return $data->{$opts->{'get'}};
+					}
+				return $data;
+				}
+			
+			# Support old style to force date format
+			if ($fmt) {
+				my $date = $fmt;
+				my @date;
+				$date[$-[1]] = '%m'
+				    if ($date =~ /\b(mm|mon)\b/);
+				$date[$-[1]] = '%d'
+				    if ($date =~ /\b(dd|d)\b/);
+				if ($date =~ /\b(yyyy)\b/) {
+				    $date[$-[1]] = '%Y'
+				    }
+				elsif ($date =~ /\b(yy)\b/) {
+				    $date[$-[1]] = '%y'
+				    }
+				@date = grep { /\%/ } @date;
+				$locale_format_short = join($locale_format_delimiter, @date);
+				}
+			my $date_format_short = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_short);
+			if (!ref($only) && $only) {
+				return $date_format_short;
+				}
+			else {
+				my $date_format_time = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_time);
+				$date_format_time =~ s/\s/&#x20;/g;
+				return $date_format_short." ".
+				       $date_format_time;
+				}
+			}
+		}
+	}
 my @tm = localtime($secs);
 my $date;
 if (!$fmt) {
@@ -2019,7 +2104,7 @@ elsif ($fmt eq 'dd.mm.yyyy') {
 elsif ($fmt eq 'yyyy-mm-dd') {
 	$date = sprintf "%4.4d-%2.2d-%2.2d", $tm[5]+1900, $tm[4]+1, $tm[3];
 	}
-if (!$only) {
+if (ref($only) || !$only) {
 	$date .= sprintf " %2.2d:%2.2d", $tm[2], $tm[1];
 	}
 return $date;
