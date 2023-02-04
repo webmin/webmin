@@ -324,7 +324,7 @@ my $tmp_base = $gconfig{'tempdir_'.&get_module_name()} ?
 		  $ENV{'TMP'} && $ENV{'TMP'} ne "/tmp" ? $ENV{'TMP'} :
 		  -d "c:/temp" ? "c:/temp" : "/tmp/.webmin";
 my $tmp_dir;
-if (-d $remote_user_info[7] && !$gconfig{'nohometemp'}) {
+if (@remote_user_info && -d $remote_user_info[7] && !$gconfig{'nohometemp'}) {
 	$tmp_dir = "$remote_user_info[7]/.tmp";
 	}
 elsif (@remote_user_info) {
