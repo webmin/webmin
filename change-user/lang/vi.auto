@@ -1,8 +1,14 @@
 index_title=Thay đổi ngôn ngữ và chủ đề
-index_lang=Ngôn ngữ giao diện người dùng Webmin
+index_lang=Ngôn ngữ
+index_locale=địa phương
+index_locale2=định dạng ngày
+index_theme=chủ đề
 index_langglobal2=Ngôn ngữ toàn cầu.. $1 ($2)
 index_langset=Lựa chọn cá nhân ..
-index_theme=Chủ đề giao diện người dùng Webmin
+index_localeglobal2=Ngôn ngữ toàn cầu.. $1 ($2)
+index_localeset=Lựa chọn cá nhân ..
+index_dateformatglobal2=Định dạng ngày toàn cầu.. $1
+index_dateformatset=Lựa chọn cá nhân ..
 index_overlay=Lớp phủ chủ đề
 index_overlaydef=Không có - sử dụng mặc định chủ đề
 index_themeglobal=Chủ đề toàn cầu ($1)
@@ -33,5 +39,6 @@ change_eoverlay=Bạn không thể chọn lớp phủ chủ đề trừ khi ch�
 change_eoverlay2=Lớp phủ chủ đề đã chọn không tương thích với chủ đề UI được chọn
 
 acl_lang=Có thể thay đổi ngôn ngữ?
+acl_locale=Có thể thay đổi ngôn ngữ?
 acl_theme=Có thể thay đổi chủ đề?
 acl_pass=Có thể thay đổi mật khẩu (khi được đặt trong Webmin) không?

@@ -1,4 +1,12 @@
+index_lang=زبان
+index_locale=محلی
+index_locale2=فرمت تاریخ ها
+index_theme=موضوع
 index_langglobal2=زبان جهانی..$1 ($2)
+index_localeglobal2=منطقه جهانی.. $1 ($2)
+index_localeset=انتخاب شخصی ..
+index_dateformatglobal2=قالب تاریخ های جهانی.. $1 
+index_dateformatset=انتخاب شخصی ..
 index_overlay=روکش موضوع
 index_overlaydef=هیچ یک - از پیش فرض های موضوعی استفاده نکنید
 index_passagain=رمز عبور را دوباره وارد کنید
@@ -7,3 +15,5 @@ change_epass2=کلمات عبور جدید مطابقت ندارند
 change_epass=گذرواژه جدید معتبر نیست :$1
 change_eoverlay=شما نمی توانید پوشش یک موضوع را انتخاب کنید مگر اینکه یک موضوع UI نیز انتخاب شود
 change_eoverlay2=روکش موضوع انتخابی با موضوع UI انتخابی سازگار نیست
+
+acl_locale=آیا می توان منطقه را تغییر داد؟

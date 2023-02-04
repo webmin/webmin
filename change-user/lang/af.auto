@@ -1,8 +1,14 @@
 index_title=Verander taal en tema
-index_lang=Webmin UI-taal
+index_lang=Taal
+index_locale=Lokaal
+index_locale2=Datum formaat
+index_theme=Tema
 index_langglobal2=Globale taal.. $1 ($2)
 index_langset=Persoonlike keuse ..
-index_theme=Webmin UI-tema
+index_localeglobal2=Globale plek.. $1 ($2)
+index_localeset=Persoonlike keuse ..
+index_dateformatglobal2=Globale datumformaat.. $1
+index_dateformatset=Persoonlike keuse ..
 index_overlay=Tema-oorleg
 index_overlaydef=Geen - gebruik standaard verstellings
 index_themeglobal=Globale tema ($1)
@@ -33,5 +39,6 @@ change_eoverlay=U kan nie 'n tema-oorleg kies nie, tensy 'n UI-tema ook gekies w
 change_eoverlay2=Die gekose tema-oorleg is nie versoenbaar met die gekose UI-tema nie
 
 acl_lang=Kan taal verander?
+acl_locale=Kan jy van plek verander?
 acl_theme=Kan tema verander?
 acl_pass=Kan u wagwoord verander (as dit in Webmin gestel is)?

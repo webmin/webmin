@@ -1,8 +1,14 @@
 index_title=Vaihda kieli ja teema
-index_lang=Webmin-käyttöliittymän kieli
+index_lang=Kieli
+index_locale=Alue
+index_locale2=Päivämäärät muoto
+index_theme=Teema
 index_langglobal2=Globaali kieli.. $1 ($2)
 index_langset=Henkilökohtainen valinta ..
-index_theme=Webmin UI-teema
+index_localeglobal2=Maailmanlaajuinen alue.. $1 ($2)
+index_localeset=Henkilökohtainen valinta ..
+index_dateformatglobal2=Globaali päivämäärämuoto.. $1
+index_dateformatset=Henkilökohtainen valinta ..
 index_overlay=Teeman peittokuva
 index_overlaydef=Ei mitään - käytä teeman oletusasetuksia
 index_themeglobal=Globaali teema ($1)
@@ -33,5 +39,6 @@ change_eoverlay=Teeman päällekkäisyyttä ei voi valita, ellei myös valittu k
 change_eoverlay2=Valittu teeman peittokuva ei ole yhteensopiva valitun käyttöliittymän teeman kanssa
 
 acl_lang=Voiko kieltä vaihtaa?
+acl_locale=Voiko aluetta vaihtaa?
 acl_theme=Voiko teema vaihtaa?
 acl_pass=Voiko salasana vaihtaa (kun se on asetettu Webminiin)?

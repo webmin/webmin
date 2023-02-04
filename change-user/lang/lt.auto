@@ -1,8 +1,14 @@
 index_title=Keisti kalbą ir temą
-index_lang=„Webmin“ UI kalba
+index_lang=Kalba
+index_locale=Lokalė
+index_locale2=Datos formatas
+index_theme=tema
 index_langglobal2=Visuotinė kalba.. $1 ($2)
 index_langset=Asmeninis pasirinkimas ..
-index_theme=„Webmin“ vartotojo sąsajos tema
+index_localeglobal2=Pasaulinė lokalė.. $1 ($2)
+index_localeset=asmeninis pasirinkimas ..
+index_dateformatglobal2=Visuotinis datų formatas.. $1
+index_dateformatset=asmeninis pasirinkimas ..
 index_overlay=Temos perdanga
 index_overlaydef=Nėra - naudokite numatytuosius temos parametrus
 index_themeglobal=Visuotinė tema ($1)
@@ -33,5 +39,6 @@ change_eoverlay=Temos perdengimo negalima pasirinkti, jei taip pat nėra pasirin
 change_eoverlay2=Pasirinkta temos perdanga nesuderinama su pasirinkta vartotojo sąsajos tema
 
 acl_lang=Ar gali pakeisti kalbą?
+acl_locale=Ar galima pakeisti lokalę?
 acl_theme=Ar galima pakeisti temą?
 acl_pass=Ar galima pakeisti slaptažodį (kai jis nustatytas „Webmin“)?

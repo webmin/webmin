@@ -1,5 +1,15 @@
+index_lang=Langue
+index_locale=Lieu
+index_locale2=Format des dates
+index_theme=Thème
 index_langglobal2=Langue globale.. $1 ($2)
+index_localeglobal2=Paramètres régionaux globaux.. $1 ($2)
+index_localeset=Choix personnel ..
+index_dateformatglobal2=Format des dates globales.. $1
+index_dateformatset=Choix personnel ..
 index_overlay=Superposition de thème
 
 change_eoverlay=Vous ne pouvez pas sélectionner une superposition de thème à moins qu'un thème d'interface utilisateur ne soit également choisi
 change_eoverlay2=La superposition de thème sélectionnée n'est pas compatible avec le thème d'interface utilisateur choisi
+
+acl_locale=Peut changer de paramètres régionaux ?

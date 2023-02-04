@@ -1,0 +1,10 @@
+index_lang=Språk
+index_locale=Språk
+index_locale2=Datoformat
+index_theme=Tema
+index_localeglobal2=Global lokalitet.. $1 ($2)
+index_localeset=Personlig valg ..
+index_dateformatglobal2=Globalt datoformat.. $1
+index_dateformatset=Personlig valg ..
+
+acl_locale=Kan du endre lokalitet?

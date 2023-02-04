@@ -1,8 +1,6 @@
 index_title=言語とテーマの変更
-index_lang=Webmin で使用する言語
 index_langglobal2=$1 ($2)
 index_langset=変更 …
-index_theme=Webmin UI テーマ
 index_overlay=テーマオーバーレイ
 index_overlaydef=(利用しない)
 index_themeglobal=既定のテーマ ($1)

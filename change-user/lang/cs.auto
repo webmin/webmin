@@ -1,4 +1,12 @@
+index_lang=Jazyk
+index_locale=Národní prostředí
+index_locale2=Formát data
+index_theme=Téma
 index_langglobal2=Globální jazyk.. $1 ($2)
+index_localeglobal2=Globální národní prostředí.. $1 ($2)
+index_localeset=Osobní výběr ..
+index_dateformatglobal2=Formát globálního data.. $1
+index_dateformatset=Osobní výběr ..
 index_overlay=Překrytí motivu
 index_overlaydef=Žádné - použijte výchozí nastavení motivu
 index_passagain=Znovu zadejte heslo
@@ -6,3 +14,5 @@ index_passagain=Znovu zadejte heslo
 change_epass2=Nová hesla se neshodují
 change_eoverlay=Nelze vybrat překrytí motivu, pokud není vybráno také téma uživatelského rozhraní
 change_eoverlay2=Vybrané překrytí motivu není kompatibilní s vybraným motivem uživatelského rozhraní
+
+acl_locale=Lze změnit národní prostředí?

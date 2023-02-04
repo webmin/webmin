@@ -1,8 +1,6 @@
 index_title=Zmiana języka i motywu graficznego
-index_lang=Język interfejsu Webmina
 index_langglobal2=Język globalny .. $1 ($2)
 index_langset=Osobisty wybór ..
-index_theme=Motyw interfejsu Webmina
 index_overlay=Nakładka motywu
 index_overlaydef=Brak - użyj domyślnej dla motywu
 index_themeglobal=Motyw globalny ($1)

@@ -1,8 +1,14 @@
 index_title=زبان اور تھیم کو تبدیل کریں
-index_lang=ویبمین UI زبان
+index_lang=زبان
+index_locale=لوکیل
+index_locale2=تاریخوں کی شکل
+index_theme=خیالیہ
 index_langglobal2=عالمی زبان..$1 ($2)
 index_langset=ذاتی پسند ..
-index_theme=ویبمین UI تھیم
+index_localeglobal2=گلوبل لوکیل.. $1 ($2)
+index_localeset=ذاتی انتخاب ..
+index_dateformatglobal2=عالمی تاریخوں کی شکل $1
+index_dateformatset=ذاتی انتخاب ..
 index_overlay=تھیم اتبشایی
 index_overlaydef=کوئی نہیں - تھیم ڈیفالٹس کا استعمال کریں
 index_themeglobal=عالمی تھیم ($1)
@@ -33,5 +39,6 @@ change_eoverlay=آپ تھیم اوورلی کو منتخب نہیں کرسکتے
 change_eoverlay2=منتخب کردہ تھیم اوورلے منتخب UI تھیم کے ساتھ مطابقت نہیں رکھتا ہے
 
 acl_lang=کیا زبان بدل سکتی ہے؟
+acl_locale=لوکل تبدیل کر سکتے ہیں؟
 acl_theme=تھیم تبدیل کر سکتے ہیں؟
 acl_pass=کیا پاس ورڈ تبدیل کیا جاسکتا ہے (جب ویب مین میں سیٹ کیا جاتا ہے)؟

@@ -1,7 +1,5 @@
 index_title=Nyelv és téma megváltoztatása
-index_lang=Webmin felhasználói felület nyelvezete
 index_langset=Személyes választás..
-index_theme=Webmin felhasználói felület témája
 index_overlay=Téma átfedés
 index_overlaydef=Nincs felhasznált alapértelmezett téma
 index_themeglobal=Globális téma ($1)

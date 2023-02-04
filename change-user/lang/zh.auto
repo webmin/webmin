@@ -1,4 +1,12 @@
+index_lang=语言
+index_locale=语言环境
+index_locale2=日期格式
+index_theme=主题
 index_langglobal2=全局语言.. $1（$2）
+index_localeglobal2=全局区域设置.. $1 ($2)
+index_localeset=个人选择 ..
+index_dateformatglobal2=全球日期格式.. $1
+index_dateformatset=个人选择 ..
 index_overlay=主题叠加
 index_overlaydef=无-使用主题默认值
 index_passagain=重新输入密码
@@ -7,3 +15,5 @@ change_epass2=新密码不匹配
 change_epass=新密码无效： $1
 change_eoverlay=除非还选择了UI主题，否则您无法选择主题叠加层
 change_eoverlay2=所选主题叠加层与所选UI主题不兼容
+
+acl_locale=可以改locale吗？
