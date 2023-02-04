@@ -20,15 +20,37 @@ print &ui_table_row($text{'lang_lang'},
 		 &list_languages() ])." ". 
 	&ui_checkbox("langauto", 1, $text{'langauto_include'}, $clangauto));
 
+# Old datetime format or a new locale
+my $locale;
+eval "use DateTime::Locale";
+if (!$@) {
+	eval "use DateTime::TimeZone";
+	if (!$@) {
+		eval "use DateTime";
+		if (!$@) {
+			$locale++;
+			my $locales = list_locales();
+			print &ui_table_row($text{'lang_locale'},
+				&ui_select("locale", $gconfig{'locale'} || "en-US",
+					   [ map { [ $_, $locales->{$_} ] } sort keys %{$locales} ]).
+					   &ui_hidden("dateformat", $gconfig{'dateformat'}), 
+					   undef, [ "valign=middle","valign=middle" ]);
+			}
+		}
+	}
+if (!$locale) {
+	print &ui_table_row($text{'lang_dateformat'},
+		&ui_select("dateformat", $gconfig{'dateformat'} || "dd/mon/yyyy",
+			   [ map { [ $_, $text{'lang_dateformat_'.$_} ] }
+			   @webmin_date_formats ]).
+			   &ui_hidden("locale", $gconfig{'locale'}),
+			   undef, [ "valign=middle","valign=middle" ]);
+	}
+
 # Use language from browser?
 print &ui_table_row($text{'lang_accept'},
 	&ui_yesno_radio("acceptlang", int($gconfig{'acceptlang'})));
 
-# Old datetime format or a new locale
-print &ui_table_row($text{'lang_dateformat'},
-	&ui_select("dateformat", $gconfig{'dateformat'} || "dd/mon/yyyy",
-		   [ map { [ $_, $text{'lang_dateformat_'.$_} ] }
-			 @webmin_date_formats ]), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'lang_ok'} ] ]);

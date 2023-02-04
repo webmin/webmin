@@ -2070,8 +2070,7 @@ if (!$@) {
 			else {
 				my $date_format_time = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_time);
 				$date_format_time =~ s/\s/&#x20;/g;
-				return $date_format_short." ".
-				       $date_format_time;
+				return "$date_format_short $date_format_time";
 				}
 			}
 		}

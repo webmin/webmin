@@ -313,7 +313,8 @@ os_usermin=Also update Usermin OS
 
 lang_title=Language and Locale
 lang_title2=Webmin Language and Locale
-lang_lang=Display in language
+lang_lang=Language
+lang_locale=Locale
 lang_intro=This page allows you to choose which language Webmin will use for displaying titles, prompts and messages
 lang_ok=Change Language
 lang_accept=Use language specified by browser?

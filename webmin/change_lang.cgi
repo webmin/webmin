@@ -10,6 +10,7 @@ $gconfig{'lang'} = $in{'lang'};
 $gconfig{'langauto'} = int($in{'langauto'});
 $gconfig{'acceptlang'} = $in{'acceptlang'};
 $gconfig{'dateformat'} = $in{'dateformat'};
+$gconfig{'locale'} = $in{'locale'};
 $gconfig{'charset'} = 'UTF-8';
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");

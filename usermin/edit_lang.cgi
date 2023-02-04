@@ -19,15 +19,35 @@ print &ui_table_row($text{'lang_lang'},
            [ map { [ $_->{'lang'}, "$_->{'desc'}" ] }
                  &list_languages() ]));
 
+# Old datetime format or a new locale
+my $locale;
+eval "use DateTime::Locale";
+if (!$@) {
+        eval "use DateTime::TimeZone";
+        if (!$@) {
+                eval "use DateTime";
+                if (!$@) {
+                        $locale++;
+                        my $locales = &webmin::list_locales();
+                        print &ui_table_row($text{'lang_locale'},
+                                &ui_select("locale", $uconfig{'locale'} || "en-US",
+                                           [ map { [ $_, $locales->{$_} ] } sort keys %{$locales} ]).
+                                           &ui_hidden("dateformat", $uconfig{'dateformat'}));
+                        }
+                }
+        }
+
+if (!$locale) {
+        print &ui_table_row($text{'lang_dateformat'},
+                &ui_select("dateformat", $uconfig{'dateformat'} || "dd/mon/yyyy",
+                           [ map { [ $_, $text{'lang_dateformat_'.$_} ] }
+                           @webmin::webmin_date_formats ]).
+                           &ui_hidden("locale", $uconfig{'locale'}));
+        }
+
 # Use language from browser?
 print &ui_table_row($text{'lang_accept'},
         &ui_yesno_radio("acceptlang", int($uconfig{'acceptlang'})));
-
-# Old datetime format or a new locale
-print &ui_table_row($text{'lang_dateformat'},
-        &ui_select("dateformat", $uconfig{'dateformat'} || "dd/mon/yyyy",
-          [ map { [ $_, $text{'lang_dateformat_'.$_} ] }
-            @webmin::webmin_date_formats ]));
 
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'lang_ok'} ] ]);
