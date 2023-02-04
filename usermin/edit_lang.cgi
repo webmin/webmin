@@ -24,7 +24,7 @@ my $locale;
 eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
 if (!$@) {
         $locale++;
-        my $locales = &webmin::list_locales();
+        my $locales = &list_locales();
         my %localesrev = reverse %{$locales};
         print &ui_table_row($text{'lang_locale'},
                 &ui_select("locale", $uconfig{'locale'} || "en-US",

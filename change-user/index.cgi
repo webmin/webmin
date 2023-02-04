@@ -63,7 +63,7 @@ if ($access{'locale'}) {
 	&foreign_require('webmin');
 	if (!$@) {
 	        $locale++;
-	        my $locales = &webmin::list_locales();
+	        my $locales = &list_locales();
 	        my %localesrev = reverse %{$locales};
 	        print &ui_table_row($text{'index_locale'},
 	        	&ui_radio("locale_def", defined($user->{'locale'}) ? 0 : 1,
