@@ -2051,7 +2051,7 @@ if ($fmt) {
 	    if ($date =~ /(m|M)/);
 	$date[$-[1]] = '%d'
 	    if ($date =~ /(d|D)/);
-	if ($date =~ /(yyyy)/) {
+	if ($date =~ /(yyyy)/i) {
 	    $date[$-[1]] = '%Y'
 	    }
 	elsif ($date =~ /(y|Y)/) {
