@@ -30,9 +30,10 @@ if (!$@) {
 		if (!$@) {
 			$locale++;
 			my $locales = list_locales();
+			my %localesrev = reverse %{$locales};
 			print &ui_table_row($text{'lang_locale'},
 				&ui_select("locale", $gconfig{'locale'} || "en-US",
-					   [ map { [ $_, $locales->{$_} ] } sort keys %{$locales} ]).
+					   [ map { [ $localesrev{$_}, $_ ] } sort values %{$locales} ]).
 					   &ui_hidden("dateformat", $gconfig{'dateformat'}), 
 					   undef, [ "valign=middle","valign=middle" ]);
 			}

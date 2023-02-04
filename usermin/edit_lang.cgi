@@ -29,9 +29,10 @@ if (!$@) {
                 if (!$@) {
                         $locale++;
                         my $locales = &webmin::list_locales();
+                        my %localesrev = reverse %{$locales};
                         print &ui_table_row($text{'lang_locale'},
                                 &ui_select("locale", $uconfig{'locale'} || "en-US",
-                                           [ map { [ $_, $locales->{$_} ] } sort keys %{$locales} ]).
+                                           [ map { [ $localesrev{$_}, $_ ] } sort values %{$locales} ]).
                                            &ui_hidden("dateformat", $uconfig{'dateformat'}));
                         }
                 }
