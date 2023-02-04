@@ -51,6 +51,7 @@ sub get_paths {
     elsif ($access{'work_as_root'}) {
         # Root user, so no switching
         @remote_user_info = getpwnam('root');
+	@WebminCore::remote_user_info = @remote_user_info;
     }
     elsif ($access{'work_as_user'}) {
         # A specific user
@@ -58,6 +59,7 @@ sub get_paths {
         @remote_user_info ||
             &error("Unix user $access{'work_as_user'} does not exist!");
         &switch_to_unix_user(\@remote_user_info);
+	@WebminCore::remote_user_info = @remote_user_info;
     }
     else {
         # Run as the Webmin user we are connected as
