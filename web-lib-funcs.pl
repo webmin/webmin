@@ -2012,7 +2012,7 @@ if (%{$opts}) {
 	my $ago;
 	my $ago_secs = time() - $secs;
 	eval "use Time::Seconds";
-	if (!$@ && $ago_secs >= 1) {
+	if (!$@ && $ago_secs) {
 		my $ago_obj = Time::Seconds->new($ago_secs);
 		$ago = {
 			"seconds" => int($ago_obj->seconds),
