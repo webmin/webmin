@@ -1993,7 +1993,8 @@ my ($secs, $only, $fmt) = @_;
 eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
 if (!$@) {
 my $opts = ref($only) ? $only : {};
-my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$remote_user} || $gconfig{'locale'} || 'en-US';
+my $locale_auto = &parse_accepted_language();
+my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$remote_user} || $gconfig{'locale'} || $locale_auto || 'en-US';
 my $tz = $opts->{'tz'} ||
          DateTime::TimeZone->new( name => 'local' )->name(); # Asia/Nicosia
 my $locale = DateTime::Locale->load($locale_name);
@@ -5222,17 +5223,8 @@ $webmin_logfile = $gconfig{'webmin_log'} ? $gconfig{'webmin_log'}
 
 # Load language strings into %text
 my @langs = &list_languages();
-my $accepted_lang;
-if ($gconfig{'acceptlang'}) {
-	foreach my $a (split(/,/, $ENV{'HTTP_ACCEPT_LANGUAGE'})) {
-		$a =~ s/;.*//;	# Remove ;q=0.5 or similar
-		my ($al) = grep { $_->{'lang'} eq $a } @langs;
-		if ($al) {
-			$accepted_lang = $al->{'lang'};
-			last;
-			}
-		}
-	}
+my $accepted_lang = &parse_accepted_language();
+
 $current_lang = safe_language($force_lang ? $force_lang :
     $accepted_lang ? $accepted_lang :
     $remote_user_attrs{'lang'} ? $remote_user_attrs{'lang'} :
@@ -12865,6 +12857,23 @@ if ($float =~ /^[-]?(\.\d+|\d+\.\d+)$/) {
     return 1;
     }
 return 0;
+}
+
+sub parse_accepted_language
+{
+my @langs = &list_languages();
+my $accepted_lang;
+if ($gconfig{'acceptlang'}) {
+	foreach my $a (split(/,/, $ENV{'HTTP_ACCEPT_LANGUAGE'})) {
+		$a =~ s/;.*//;	# Remove ;q=0.5 or similar
+		my ($al) = grep { $_->{'lang'} eq $a } @langs;
+		if ($al) {
+			$accepted_lang = $al->{'lang'};
+			last;
+			}
+		}
+	}
+return $accepted_lang;
 }
 
 $done_web_lib_funcs = 1;
