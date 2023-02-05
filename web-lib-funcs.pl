@@ -2074,10 +2074,8 @@ if (!ref($only) && $only) {
 	}
 else {
 	my $date_format_time = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_time);
-	if ($timeshort) {
-		$date_format_time = $date_format_time;
-		$date_format_time =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
-		}
+	$date_format_time = $date_format_time;
+	$date_format_time =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
 	$date_format_time =~ s/\s/&#x20;/g;
 	return "$date_format_short $date_format_time";
 	}
