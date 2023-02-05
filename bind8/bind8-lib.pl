@@ -3321,7 +3321,7 @@ sub create_dnssec_key
 {
 my ($z, $alg, $size, $single, $force) = @_;
 my $fn = &get_keys_dir($z);
-$fn || return "Could not work keys directory!";
+$fn || return "Could not work out keys directory!";
 my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 
 # Remove all keys for the same zone
