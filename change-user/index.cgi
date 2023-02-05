@@ -12,6 +12,7 @@ our (%text, %access, $base_remote_user, $default_lang, %gconfig);
 
 my @users = &acl::list_users();
 my ($user) = grep { $_->{'name'} eq $base_remote_user } @users;
+my $locale_auto = &parse_accepted_language();
 
 my @can;
 push(@can, 'lang') if ($access{'lang'});
@@ -25,7 +26,7 @@ print &ui_table_start(undef, undef, 2);
 
 if ($access{'lang'}) {
 	# Show personal language
-	my $glang = safe_language($gconfig{"lang"}) || $default_lang;
+	my $glang = $locale_auto || safe_language($gconfig{"lang"}) || $default_lang;
 	my $ulang = safe_language($user->{'lang'});
 	my @langs = &list_languages();
 	my ($linfo) = grep { $_->{'lang'} eq $glang } @langs;
@@ -65,9 +66,10 @@ if ($access{'locale'}) {
 	        $locale++;
 	        my $locales = &list_locales();
 	        my %localesrev = reverse %{$locales};
+	        my $locale = $locale_auto || $gconfig{'locale'} || "en-US";
 	        print &ui_table_row($text{'index_locale'},
 	        	&ui_radio("locale_def", defined($user->{'locale'}) ? 0 : 1,
-	        		  [ [ 1, &text('index_localeglobal2', $locales->{$gconfig{'locale'}}, $gconfig{'locale'})."<br>" ],
+	        		  [ [ 1, &text('index_localeglobal2', $locales->{$locale}, $locale)."<br>" ],
 	        		    [ 0, $text{'index_localeset'} ] ])." ".
 	        	&ui_select("locale", $user->{'locale'},
 	        		[ map { [ $localesrev{$_}, $_ ] } sort values %{$locales} ] ), 

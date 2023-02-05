@@ -12861,9 +12861,11 @@ return 0;
 
 sub parse_accepted_language
 {
+my ($conf) = @_;
+$conf ||= \%gconfig;
 my @langs = &list_languages();
 my $accepted_lang;
-if ($gconfig{'acceptlang'}) {
+if ($conf->{'acceptlang'}) {
 	foreach my $a (split(/,/, $ENV{'HTTP_ACCEPT_LANGUAGE'})) {
 		$a =~ s/;.*//;	# Remove ;q=0.5 or similar
 		my ($al) = grep { $_->{'lang'} eq $a } @langs;

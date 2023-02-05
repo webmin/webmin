@@ -29,7 +29,7 @@ if (!$@) {
 	my %localesrev = reverse %{$locales};
 	my $locale_auto = &parse_accepted_language();
 	print &ui_table_row($text{'lang_locale'},
-		&ui_select("locale", $gconfig{'locale'} || $locale_auto || "en-US",
+		&ui_select("locale", $locale_auto || $gconfig{'locale'} || "en-US",
 			   [ map { [ $localesrev{$_}, $_ ] } sort values %{$locales} ]).
 			   &ui_hidden("dateformat", $gconfig{'dateformat'}), 
 			   undef, [ "valign=middle","valign=middle" ]);
