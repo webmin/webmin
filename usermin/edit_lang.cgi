@@ -28,7 +28,7 @@ if (!$@) {
         my %localesrev = reverse %{$locales};
         my $locale_auto = &parse_accepted_language(\%uconfig);
         print &ui_table_row($text{'lang_locale'},
-                &ui_select("locale", $locale_auto || $uconfig{'locale'} || "en-US",
+                &ui_select("locale", $locale_auto || $uconfig{'locale'} || &get_default_system_locale(),
                            [ map { [ $localesrev{$_}, $_ ] } sort values %{$locales} ]).
                            &ui_hidden("dateformat", $uconfig{'dateformat'}));
         }

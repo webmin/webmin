@@ -1993,8 +1993,9 @@ my ($secs, $only, $fmt) = @_;
 eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
 if (!$@) {
 my $opts = ref($only) ? $only : {};
+my $locale_default = &get_default_system_locale();
 my $locale_auto = &parse_accepted_language();
-my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$remote_user} || $locale_auto || $gconfig{'locale'} || 'en-US';
+my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$remote_user} || $locale_auto || $gconfig{'locale'} || &get_default_system_locale();
 my $tz = $opts->{'tz'} ||
          DateTime::TimeZone->new( name => 'local' )->name(); # Asia/Nicosia
 my $locale = DateTime::Locale->load($locale_name);
@@ -12859,6 +12860,8 @@ if ($float =~ /^[-]?(\.\d+|\d+\.\d+)$/) {
 return 0;
 }
 
+# parse_accepted_language([&conf])
+# Returns the language requested by the browser
 sub parse_accepted_language
 {
 my ($conf) = @_;
@@ -12876,6 +12879,23 @@ if ($conf->{'acceptlang'}) {
 		}
 	}
 return $accepted_lang;
+}
+
+# get_default_system_locale()
+# Returns system default locale
+sub get_default_system_locale
+{
+my $locale_def = "en-US";
+my $locale_system;
+eval {
+	$locale_system = setlocale(LC_ALL);
+	};
+if (!$@ && $locale_system) {
+	$locale_system =~ s/\..*//;
+	$locale_system =~ s/_/-/;
+	return $locale_system;
+	}
+return $locale_def;
 }
 
 $done_web_lib_funcs = 1;

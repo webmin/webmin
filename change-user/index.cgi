@@ -66,7 +66,7 @@ if ($access{'locale'}) {
 	        $locale++;
 	        my $locales = &list_locales();
 	        my %localesrev = reverse %{$locales};
-	        my $locale = $locale_auto || $gconfig{'locale'} || "en-US";
+	        my $locale = $locale_auto || $gconfig{'locale'} || &get_default_system_locale();
 	        print &ui_table_row($text{'index_locale'},
 	        	&ui_radio("locale_def", defined($user->{'locale'}) ? 0 : 1,
 	        		  [ [ 1, &text('index_localeglobal2', $locales->{$locale}, $locale)."<br>" ],
