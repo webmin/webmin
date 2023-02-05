@@ -1994,7 +1994,7 @@ eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
 if (!$@) {
 my $opts = ref($only) ? $only : {};
 my $locale_auto = &parse_accepted_language();
-my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$remote_user} || $gconfig{'locale'} || $locale_auto || 'en-US';
+my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$remote_user} || $locale_auto || $gconfig{'locale'} || 'en-US';
 my $tz = $opts->{'tz'} ||
          DateTime::TimeZone->new( name => 'local' )->name(); # Asia/Nicosia
 my $locale = DateTime::Locale->load($locale_name);
@@ -5226,10 +5226,10 @@ my @langs = &list_languages();
 my $accepted_lang = &parse_accepted_language();
 
 $current_lang = safe_language($force_lang ? $force_lang :
-    $accepted_lang ? $accepted_lang :
     $remote_user_attrs{'lang'} ? $remote_user_attrs{'lang'} :
     $gconfig{"lang_$remote_user"} ? $gconfig{"lang_$remote_user"} :
     $gconfig{"lang_$base_remote_user"} ? $gconfig{"lang_$base_remote_user"} :
+    $accepted_lang ? $accepted_lang :
     $gconfig{"lang"} ? $gconfig{"lang"} : $default_lang);
 foreach my $l (@langs) {
 	$current_lang_info = $l if ($l->{'lang'} eq $current_lang);
