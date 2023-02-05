@@ -20,10 +20,8 @@ print &ui_table_row($text{'lang_lang'},
                  &list_languages() ]));
 
 # Old datetime format or a new locale
-my $locale;
 eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
 if (!$@) {
-        $locale++;
         my $locales = &list_locales();
         my %localesrev = reverse %{$locales};
         my $locale_auto = &parse_accepted_language(\%uconfig);
@@ -33,7 +31,7 @@ if (!$@) {
                            &ui_hidden("dateformat", $uconfig{'dateformat'}));
         }
 
-if (!$locale) {
+else {
         print &ui_table_row($text{'lang_dateformat'},
                 &ui_select("dateformat", $uconfig{'dateformat'} || "dd/mon/yyyy",
                            [ map { [ $_, $text{'lang_dateformat_'.$_} ] }
