@@ -2037,6 +2037,9 @@ if (%{$opts}) {
 		'timestamp' => $secs,
 		'_locale' => $opts->{'getFull'} ? $locale : undef,
 		};
+	# Add time short, e.g. 17:46 or 5:46 PM
+	$data->{'timeshort'} = $data->{'time'};
+	$data->{'timeshort'} =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
 	if ($opts->{'get'}) {
 		return $data->{$opts->{'get'}};
 		}
@@ -2044,6 +2047,7 @@ if (%{$opts}) {
 	}
 
 # Support old style to force date format
+my $timeshort = length($fmt) == 3 ? 1 : 0;
 if ($fmt) {
 	my $date = $fmt;
 	my @date;
@@ -2051,7 +2055,8 @@ if ($fmt) {
 	    if ($date =~ /(m|M)/);
 	$date[$-[1]] = '%d'
 	    if ($date =~ /(d|D)/);
-	if ($date =~ /(yyyy)/i) {
+	if ($date =~ /(yyyy)/i ||
+	   ($date =~ /(y|Y)/ && $timeshort)) {
 	    $date[$-[1]] = '%Y'
 	    }
 	elsif ($date =~ /(y|Y)/) {
@@ -2066,6 +2071,10 @@ if (!ref($only) && $only) {
 	}
 else {
 	my $date_format_time = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_time);
+	if ($timeshort) {
+		$date_format_time = $date_format_time;
+		$date_format_time =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
+		}
 	$date_format_time =~ s/\s/&#x20;/g;
 	return "$date_format_short $date_format_time";
 	}
