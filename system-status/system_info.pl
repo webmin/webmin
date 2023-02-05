@@ -74,6 +74,10 @@ if (&show_section('host')) {
 
 	# System time
 	my $tm = localtime(time());
+	eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
+	if (!$@) {
+		$tm = make_date(time(), {get => 'full-tz'});
+		}
 	if (&foreign_available("time")) {
 		$tm = &ui_link(&get_webprefix().'/time/', $tm);
 		}
