@@ -2,7 +2,7 @@
 # Returns a list of files and directories under some directory
 
 $trust_unknown_referers = 1;
-require './bacula-backup-lib.pl';
+BEGIN { require './bacula-backup-lib.pl'; }
 &ReadParse();
 
 # Input sanitization
