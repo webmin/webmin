@@ -52,8 +52,6 @@ os_usermin=Besturing systeem volgens Usermin
 os_iusermin=Interne OS code gebruikt door Usermin
 os_update=Update Usermin om het gedetecteerde OS te gebruiken
 
-lang_title=Taal
-lang_title2=Usermin Taal
 lang_intro=Met deze pagina kunt u kiezen in welke taal Usermin Titels, prompts en berichten laat zien
 
 session_title=Authenticatie

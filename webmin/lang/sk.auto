@@ -54,7 +54,6 @@ ui_sizedate=Veľkosť selektora dátumu
 ui_sizemodules=Veľkosť výberu viacerých modulov
 ui_showlogin=Chcete priraďovať používateľské meno titulom stránky?
 ui_showhost=Chcete na názov stránky pridať názov hostiteľa?
-ui_dateformat=Formát zobrazených dátumov
 ui_ehostnamedisplay=Chýba alebo je neplatný zobrazovaný názov hostiteľa
 
 mods_checksig=Skontrolovať podpisový súbor pre stiahnuté moduly?
@@ -71,6 +70,13 @@ os_incorrect=Operačný systém $1 bol aktualizovaný na verziu $2
 os_release_notes=Poznámky k vydaniu
 os_fix=Aktualizácia zisteného operačného systému
 os_usermin=Aktualizujte tiež Usermin OS
+
+lang_title=Jazyk a miestne nastavenie
+lang_title2=Jazyk a miestne nastavenie Webmin
+lang_lang=Jazyk
+lang_locale=Miestne nastavenie
+lang_dateformat=Formát zobrazenia dátumov
+lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (t.j. 16. september 2001)
 
 ssl_deny=Verzie protokolu SSL, ktoré sa majú odmietnuť
 ssl_compression=Povoliť komprimované pripojenia SSL?

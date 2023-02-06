@@ -1,8 +1,6 @@
 index_title=Endre språk og tema
-index_lang=Webmin UI språk
 index_langglobal2=Globalt språk .. $1 ($2)
 index_langset=Personlig valg
-index_theme=Webmin UI tema
 index_overlay=Tema overstyring
 index_overlaydef=Ingen - bruk standardverdier for tema
 index_themeglobal=Globalt tema ($1)

@@ -25,6 +25,13 @@ mods_checksig=Periksa fail tandatangan untuk modul yang dimuat turun?
 os_incorrect=Sistem operasi $1 telah ditingkatkan ke versi $2 
 os_release_notes=Nota keluaran
 
+lang_title=Bahasa dan Tempatan
+lang_title2=Bahasa dan Tempatan Webmin
+lang_lang=Bahasa
+lang_locale=Tempatan
+lang_dateformat=Format paparan tarikh
+lang_dateformat_dd/mon/yyyy=hb/mon/tttt (iaitu 16/Sep/2001)
+
 ssl_deny=Versi protokol SSL untuk menolak
 ssl_hsts=Kuatkuasakan SSL dengan pengepala HSTS
 ssl_ekey2=Fail kunci peribadi SSL $1 tidak mengandungi kekunci format PEM

@@ -107,6 +107,8 @@ if ($product eq "webmin") {
 $size = int(`du -sk $tmp_dir`);
 @deps = ( "perl", "libnet-ssleay-perl", "openssl", "libauthen-pam-perl", "libpam-runtime", "libio-pty-perl", "unzip", "shared-mime-info", "tar", "libdigest-sha-perl", "libdigest-md5-perl" );
 $deps = join(", ", @deps);
+@recommends = ( "libdatetime-perl", "libdatetime-timezone-perl", "libdatetime-locale-perl", "libtime-piece-perl" );
+$recommends = join(", ", @recommends);
 open(CONTROL, ">$control_file");
 print CONTROL <<EOF;
 Package: $product
@@ -115,6 +117,7 @@ Section: admin
 Priority: optional
 Architecture: all
 Depends: $deps
+Recommends: $recommends
 Pre-Depends: perl
 Installed-Size: $size
 Maintainer: Jamie Cameron <jcameron\@webmin.com>

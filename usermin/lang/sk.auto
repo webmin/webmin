@@ -52,8 +52,8 @@ os_usermin=Operačný systém podľa Usermin
 os_iusermin=Kód interného OS, ktorý používa Usermin
 os_update=Aktualizujte Usermin, aby používal detekovaný OS
 
-lang_title=Jazyk
-lang_title2=Usermin jazyk
+lang_title=Jazyk a miestne nastavenie
+lang_title2=Jazyk a miestne nastavenie používateľa
 lang_intro=Táto stránka vám umožňuje zvoliť si jazyk, ktorý bude Usermin používať na zobrazovanie titulov, výziev a správ
 
 session_title=Overenie

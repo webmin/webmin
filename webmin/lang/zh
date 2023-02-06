@@ -220,9 +220,6 @@ os_eversion=未设定操作系统版本
 os_eiversion=未设定内部操作系统版本
 os_usermin=同时更新 Usermin OS
 
-lang_title=语言
-lang_title2=Webmin 语言
-lang_lang=显示的语言
 lang_intro=您可在该页中选择 Webmin 显示标题、提示和消息所使用的语言。
 lang_ok=变更语言
 lang_charset=HTML 页面的字符集

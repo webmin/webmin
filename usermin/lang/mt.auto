@@ -52,8 +52,8 @@ os_usermin=Sistema operattiva skont Usermin
 os_iusermin=Kodiċi intern tal-OS użat minn Usermin
 os_update=Aġġorna Usermin biex tuża OS misjub
 
-lang_title=Lingwa
-lang_title2=Lingwa Usermin
+lang_title=Lingwa u Lokali
+lang_title2=Usermin Lingwa u Lokali
 lang_intro=Din il-paġna jippermettilek tagħżel liema lingwa tuża l-Usermin għall-wiri ta 'titoli, tqassim u messaġġi
 
 session_title=Awtentikazzjoni

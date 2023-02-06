@@ -1,7 +1,5 @@
 index_title=Cambiar Idioma y Tema
-index_lang=Idioma de UI de Webmin
 index_langset=Selección personal ..
-index_theme=Tema de UI de Webmin
 index_themeglobal=Tema global ($1)
 index_themeset=Selección personal ..
 index_pass=Contraseña de ingreso de Webmin

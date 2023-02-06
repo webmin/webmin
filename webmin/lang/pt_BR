@@ -162,11 +162,6 @@ ui_sizemodules=Tamanho do seletor de múltiplos módulos
 ui_edbwidth=Escolha de largura da janela inválida ou faltando
 ui_edbheight=Escolha de altura da janela inválida ou faltando
 ui_showlogin=Prefixar nome de usuários para títulos das páginas?
-ui_dateformat=Formato para datas exibidas
-ui_dateformat_dd/mon/yyyy=dd/mes/aaaa (ex. 16/Set/2001)
-ui_dateformat_dd/mm/yyyy=dd/mm/aaaa (ex. 16/09/2001)
-ui_dateformat_mm/dd/yyyy=mm/dd/aaaa (ex. 09/16/2001)
-ui_dateformat_yyyy/mm/dd=aaaa/mm/dd (ex. 2001/09/16)
 
 mods_title=Módulos do Webmin
 mods_desc1=Módulos do Webmin podem ser adicionados depois da instalação usando o formulário presente na direita. Módulos são tipicamente distribuídos em arquivos <tt>.wbm</tt>, cada arquivo pode conter um ou mais módulos. Módulos podem somente ser instalados a partir de arquivos RPM caso seu sistema operacional tenha suporte.
@@ -283,9 +278,6 @@ os_eversion=Versão do sistema operacional faltando
 os_eiversion=Versão interna do sistema operacional faltando
 os_fix=Detectada Atualização do Sistema Operacional
 
-lang_title=Idioma
-lang_title2=Idioma do Webmin
-lang_lang=Exibir no idioma
 lang_intro=Esta página permite escolher qual idioma o Webmin irá utilizar para exibição de títulos, avisos e mensagens
 lang_ok=Mudar Idioma
 lang_accept=Utilizar idioma especificado pelo navegador ?

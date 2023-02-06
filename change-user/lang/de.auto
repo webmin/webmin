@@ -1,0 +1,10 @@
+index_lang=Sprache
+index_locale=Gebietsschema
+index_locale2=Datumsformat
+index_theme=Thema
+index_localeglobal2=Globales Gebietsschema.. $1 ($2)
+index_localeset=Persönliche Wahl ..
+index_dateformatglobal2=Globales Datumsformat.. $1
+index_dateformatset=Persönliche Wahl ..
+
+acl_locale=Kann das Gebietsschema ändern?

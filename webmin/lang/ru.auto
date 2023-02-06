@@ -42,6 +42,13 @@ os_incorrect=Операционная система $1 обновлена до 
 os_release_notes=Примечания к выпуску
 os_usermin=Также обновите ОС Usermin
 
+lang_title=Язык и регион
+lang_title2=Язык и локаль Webmin
+lang_lang=Язык
+lang_locale=Регион
+lang_dateformat=Формат отображения дат
+lang_dateformat_dd/mon/yyyy=дд/мес/гггг (например, 16 сентября 2001 г.)
+
 ssl_cpan=Кроме того, Webmin <a href='$1'>может загрузить и установить</a> требуемый для вас модуль Perl Net::SSLeay.
 
 ssl_deny=Версии протокола SSL для отклонения

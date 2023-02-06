@@ -41,8 +41,6 @@ os_desc2=プログラムを実行中は Usermin が使用する検索パスと�
 os_iusermin=Usermin で使用されている内部 OS コード
 os_update=認識されたOS 用の Usermin を更新します
 
-lang_title=言語
-lang_title2=Usermin 言語
 lang_intro=このページでは、タイトル、プロンプト、およびメッセージを表示するのに Usermin が使用する言語を選択できます。
 
 session_title=認証

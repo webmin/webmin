@@ -260,6 +260,9 @@ $tmp =~ s/>/&gt;/g;
 $tmp =~ s/\"/&quot;/g;
 $tmp =~ s/\'/&#39;/g;
 $tmp =~ s/=/&#61;/g;
+# Never escape spaces
+$tmp =~ s/&amp;#x20;/&#x20;/g;
+$tmp =~ s/&amp;nbsp;/&nbsp;/g;
 return $tmp;
 }
 
@@ -1968,33 +1971,122 @@ $main::has_command_cache{$_[0]} = $rv;
 return $rv;
 }
 
-=head2 make_date(seconds, [date-only], [fmt])
+=head2 make_date(seconds, [date-only-or-opts], [fmt])
 
 Converts a Unix date/time in seconds to a human-readable form, by default
 formatted like dd/mmm/yyyy hh:mm:ss. Parameters are :
 
 =item seconds - Unix time is seconds to convert.
 
-=item date-only - If set to 1, exclude the time from the returned string.
+=item date-only-or-opts - If set to 1, exclude the time from the returned string.
+
+In case this param is a hash reference use it for options in a new DateTime::Locale
+code or preserve the original, old logic
 
 =item fmt - Optional, one of dd/mon/yyyy, dd/mm/yyyy, mm/dd/yyyy or yyyy/mm/dd
 
 =cut
 sub make_date
 {
-&load_theme_library();
-if (defined(&theme_make_date) &&
-    !$main::theme_prevent_make_date && 
-    (($main::header_content_type eq "text/html" &&
-    $main::webmin_script_type eq "web") || 
-    $main::theme_allow_make_date)) {
-	return &theme_make_date(@_);
-	}
 my ($secs, $only, $fmt) = @_;
+
+eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
+if (!$@) {
+my $opts = ref($only) ? $only : {};
+my $locale_default = &get_default_system_locale();
+my $locale_auto = &parse_accepted_language();
+my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$remote_user} || $locale_auto || $gconfig{'locale'} || &get_default_system_locale();
+my $tz = $opts->{'tz'} ||
+         DateTime::TimeZone->new( name => 'local' )->name(); # Asia/Nicosia
+my $locale = DateTime::Locale->load($locale_name);
+my $locale_format_full_tz = $locale->glibc_date_1_format;    # Sat 20 Nov 2286 17:46:39 UTC
+my $locale_format_full = $locale->glibc_datetime_format;     # Sat 20 Nov 2286 17:46:39
+my $locale_format_short = $locale->glibc_date_format;        # 20/11/86
+my $locale_format_time = $locale->glibc_time_format;         # 17:46:39
+my $locale_format_delimiter = "/";
+if ($opts->{'delimiter'}) {
+	$locale_format_delimiter = $opts->{'delimiter'};
+	}
+elsif ($locale_format_short =~ /\%.*?\[a-zA-Z]\s*(?<delimiter>.)/) {
+	$locale_format_delimiter = "$+{delimiter}";
+	}
+
+# Return fully detailed object
+if (%{$opts}) {
+	# Can we get ago time
+	my $ago;
+	my $ago_secs = time() - $secs;
+	eval "use Time::Seconds";
+	if (!$@ && $ago_secs) {
+		my $ago_obj = Time::Seconds->new($ago_secs);
+		$ago = {
+			"seconds" => int($ago_obj->seconds),
+			"minutes" =>  int($ago_obj->minutes),
+			"hours" => int($ago_obj->hours),
+			"days" => int($ago_obj->days),
+			"weeks" => int($ago_obj->weeks),
+			"months"  => int($ago_obj->months),
+			"years" => int($ago_obj->years),
+			"pretty" => $ago_obj->pretty
+		};
+	}
+	my $data = {
+		'full-tz-utc' => DateTime->from_epoch(locale => $locale_name, epoch => $secs)->strftime($locale_format_full_tz),
+		'full-tz' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_full_tz),
+		'full' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_full),
+		'short' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_short),
+		'time' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_time),
+		'ago' => $ago,
+		'tz' => $tz,
+		'delimiter' => $locale_format_delimiter,
+		'timestamp' => $secs,
+		'_locale' => $opts->{'getFull'} ? $locale : undef,
+		};
+	# Add time short, e.g. 17:46 or 5:46 PM
+	$data->{'timeshort'} = $data->{'time'};
+	$data->{'timeshort'} =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
+	if ($opts->{'get'}) {
+		return $data->{$opts->{'get'}};
+		}
+	return $data;
+	}
+
+# Support old style to force date format
+my $timeshort = length($fmt) == 3 ? 1 : 0;
+if ($fmt) {
+	my $date = $fmt;
+	my @date;
+	$date[$-[1]] = '%m'
+	    if ($date =~ /(m|M)/);
+	$date[$-[1]] = '%d'
+	    if ($date =~ /(d|D)/);
+	if ($date =~ /(yyyy)/i ||
+	   ($date =~ /(y|Y)/ && $timeshort)) {
+	    $date[$-[1]] = '%Y'
+	    }
+	elsif ($date =~ /(y|Y)/) {
+	    $date[$-[1]] = '%y'
+	    }
+	@date = grep { /\%/ } @date;
+	$locale_format_short = join($locale_format_delimiter, @date);
+	}
+my $date_format_short = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_short);
+if (!ref($only) && $only) {
+	return $date_format_short;
+	}
+else {
+	my $date_format_time = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_time);
+	$date_format_time = $date_format_time;
+	$date_format_time =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
+	$date_format_time =~ s/\s/&#x20;/g;
+	return "$date_format_short $date_format_time";
+	}
+}
+
 my @tm = localtime($secs);
 my $date;
 if (!$fmt) {
-	$fmt = $gconfig{'dateformat'} || 'dd/mon/yyyy';
+	$fmt = $gconfig{'dateformat_'.$remote_user} || $gconfig{'dateformat'} || 'dd/mon/yyyy';
 	}
 if ($fmt eq 'dd/mon/yyyy') {
 	$date = sprintf "%2.2d/%s/%4.4d",
@@ -2019,7 +2111,7 @@ elsif ($fmt eq 'dd.mm.yyyy') {
 elsif ($fmt eq 'yyyy-mm-dd') {
 	$date = sprintf "%4.4d-%2.2d-%2.2d", $tm[5]+1900, $tm[4]+1, $tm[3];
 	}
-if (!$only) {
+if (ref($only) || !$only) {
 	$date .= sprintf " %2.2d:%2.2d", $tm[2], $tm[1];
 	}
 return $date;
@@ -5132,22 +5224,13 @@ $webmin_logfile = $gconfig{'webmin_log'} ? $gconfig{'webmin_log'}
 
 # Load language strings into %text
 my @langs = &list_languages();
-my $accepted_lang;
-if ($gconfig{'acceptlang'}) {
-	foreach my $a (split(/,/, $ENV{'HTTP_ACCEPT_LANGUAGE'})) {
-		$a =~ s/;.*//;	# Remove ;q=0.5 or similar
-		my ($al) = grep { $_->{'lang'} eq $a } @langs;
-		if ($al) {
-			$accepted_lang = $al->{'lang'};
-			last;
-			}
-		}
-	}
+my $accepted_lang = &parse_accepted_language();
+
 $current_lang = safe_language($force_lang ? $force_lang :
-    $accepted_lang ? $accepted_lang :
     $remote_user_attrs{'lang'} ? $remote_user_attrs{'lang'} :
     $gconfig{"lang_$remote_user"} ? $gconfig{"lang_$remote_user"} :
     $gconfig{"lang_$base_remote_user"} ? $gconfig{"lang_$base_remote_user"} :
+    $accepted_lang ? $accepted_lang :
     $gconfig{"lang"} ? $gconfig{"lang"} : $default_lang);
 foreach my $l (@langs) {
 	$current_lang_info = $l if ($l->{'lang'} eq $current_lang);
@@ -5878,6 +5961,352 @@ $rv{"dir"} = $_[0];
 return %rv;
 }
 
+=head2 list_locales()
+
+# Returns the list of supported locales
+
+=cut
+sub list_locales
+{
+return { 'af'             => 'Afrikaans',
+         'af-NA'          => 'Afrikaans (Namibië)',
+         'af-ZA'          => 'Afrikaans (Suid-Afrika)',
+         'ar'             => 'العربية',
+         'ar-AE'          => 'العربية (الإمارات العربية المتحدة)',
+         'ar-BH'          => 'العربية (البحرين)',
+         'ar-DJ'          => 'العربية (جيبوتي)',
+         'ar-DZ'          => 'العربية (الجزائر)',
+         'ar-EG'          => 'العربية (مصر)',
+         'ar-EH'          => 'العربية (الصحراء الغربية)',
+         'ar-ER'          => 'العربية (إريتريا)',
+         'ar-IL'          => 'العربية (إسرائيل)',
+         'ar-IQ'          => 'العربية (العراق)',
+         'ar-JO'          => 'العربية (الأردن)',
+         'ar-KM'          => 'العربية (جزر القمر)',
+         'ar-KW'          => 'العربية (الكويت)',
+         'ar-LB'          => 'العربية (لبنان)',
+         'ar-LY'          => 'العربية (ليبيا)',
+         'ar-MA'          => 'العربية (المغرب)',
+         'ar-MR'          => 'العربية (موريتانيا)',
+         'ar-OM'          => 'العربية (عُمان)',
+         'ar-PS'          => 'العربية (الأراضي الفلسطينية)',
+         'ar-QA'          => 'العربية (قطر)',
+         'ar-SA'          => 'العربية (المملكة العربية السعودية)',
+         'ar-SD'          => 'العربية (السودان)',
+         'ar-SO'          => 'العربية (الصومال)',
+         'ar-SS'          => 'العربية (جنوب السودان)',
+         'ar-SY'          => 'العربية (سوريا)',
+         'ar-TD'          => 'العربية (تشاد)',
+         'ar-TN'          => 'العربية (تونس)',
+         'ar-YE'          => 'العربية (اليمن)',
+         'be'             => 'беларуская',
+         'be-BY'          => 'беларуская (Беларусь)',
+         'be-tarask'      => 'беларуская (TARASK)',
+         'bg'             => 'български',
+         'bg-BG'          => 'български (България)',
+         'ca'             => 'català',
+         'ca-AD'          => 'català (Andorra)',
+         'ca-ES'          => 'català (Espanya)',
+         'ca-ES-valencia' => 'català (Espanya valencià)',
+         'ca-FR'          => 'català (França)',
+         'ca-IT'          => 'català (Itàlia)',
+         'cs'             => 'čeština',
+         'cs-CZ'          => 'čeština (Česko)',
+         'da'             => 'dansk',
+         'da-DK'          => 'dansk (Danmark)',
+         'da-GL'          => 'dansk (Grønland)',
+         'de'             => 'Deutsch',
+         'de-AT'          => 'Deutsch (Österreich)',
+         'de-BE'          => 'Deutsch (Belgien)',
+         'de-CH'          => 'Deutsch (Schweiz)',
+         'de-DE'          => 'Deutsch (Deutschland)',
+         'de-IT'          => 'Deutsch (Italien)',
+         'de-LI'          => 'Deutsch (Liechtenstein)',
+         'de-LU'          => 'Deutsch (Luxemburg)',
+         'el'             => 'Ελληνικά',
+         'el-CY'          => 'Ελληνικά (Κύπρος)',
+         'el-GR'          => 'Ελληνικά (Ελλάδα)',
+         'en'             => 'English',
+         'en-AE'          => 'English (United Arab Emirates)',
+         'en-AG'          => 'English (Antigua & Barbuda)',
+         'en-AI'          => 'English (Anguilla)',
+         'en-AS'          => 'English (American Samoa)',
+         'en-AT'          => 'English (Austria)',
+         'en-AU'          => 'English (Australia)',
+         'en-BB'          => 'English (Barbados)',
+         'en-BE'          => 'English (Belgium)',
+         'en-BI'          => 'English (Burundi)',
+         'en-BM'          => 'English (Bermuda)',
+         'en-BS'          => 'English (Bahamas)',
+         'en-BW'          => 'English (Botswana)',
+         'en-BZ'          => 'English (Belize)',
+         'en-CA'          => 'English (Canada)',
+         'en-CC'          => 'English (Cocos (Keeling) Islands)',
+         'en-CH'          => 'English (Switzerland)',
+         'en-CK'          => 'English (Cook Islands)',
+         'en-CM'          => 'English (Cameroon)',
+         'en-CX'          => 'English (Christmas Island)',
+         'en-CY'          => 'English (Cyprus)',
+         'en-DE'          => 'English (Germany)',
+         'en-DG'          => 'English (Diego Garcia)',
+         'en-DK'          => 'English (Denmark)',
+         'en-DM'          => 'English (Dominica)',
+         'en-ER'          => 'English (Eritrea)',
+         'en-FI'          => 'English (Finland)',
+         'en-FJ'          => 'English (Fiji)',
+         'en-FK'          => 'English (Falkland Islands)',
+         'en-FM'          => 'English (Micronesia)',
+         'en-GB'          => 'English (United Kingdom)',
+         'en-GD'          => 'English (Grenada)',
+         'en-GG'          => 'English (Guernsey)',
+         'en-GH'          => 'English (Ghana)',
+         'en-GI'          => 'English (Gibraltar)',
+         'en-GM'          => 'English (Gambia)',
+         'en-GU'          => 'English (Guam)',
+         'en-GY'          => 'English (Guyana)',
+         'en-HK'          => 'English (Hong Kong SAR China)',
+         'en-IE'          => 'English (Ireland)',
+         'en-IL'          => 'English (Israel)',
+         'en-IM'          => 'English (Isle of Man)',
+         'en-IN'          => 'English (India)',
+         'en-IO'          => 'English (British Indian Ocean Territory)',
+         'en-JE'          => 'English (Jersey)',
+         'en-JM'          => 'English (Jamaica)',
+         'en-KE'          => 'English (Kenya)',
+         'en-KI'          => 'English (Kiribati)',
+         'en-KN'          => 'English (St Kitts & Nevis)',
+         'en-KY'          => 'English (Cayman Islands)',
+         'en-LC'          => 'English (St Lucia)',
+         'en-LR'          => 'English (Liberia)',
+         'en-LS'          => 'English (Lesotho)',
+         'en-MG'          => 'English (Madagascar)',
+         'en-MH'          => 'English (Marshall Islands)',
+         'en-MO'          => 'English (Macao SAR China)',
+         'en-MP'          => 'English (Northern Mariana Islands)',
+         'en-MS'          => 'English (Montserrat)',
+         'en-MT'          => 'English (Malta)',
+         'en-MU'          => 'English (Mauritius)',
+         'en-MV'          => 'English (Maldives)',
+         'en-MW'          => 'English (Malawi)',
+         'en-MY'          => 'English (Malaysia)',
+         'en-NA'          => 'English (Namibia)',
+         'en-NF'          => 'English (Norfolk Island)',
+         'en-NG'          => 'English (Nigeria)',
+         'en-NL'          => 'English (Netherlands)',
+         'en-NR'          => 'English (Nauru)',
+         'en-NU'          => 'English (Niue)',
+         'en-NZ'          => 'English (New Zealand)',
+         'en-PG'          => 'English (Papua New Guinea)',
+         'en-PH'          => 'English (Philippines)',
+         'en-PK'          => 'English (Pakistan)',
+         'en-PN'          => 'English (Pitcairn Islands)',
+         'en-PR'          => 'English (Puerto Rico)',
+         'en-PW'          => 'English (Palau)',
+         'en-RW'          => 'English (Rwanda)',
+         'en-SB'          => 'English (Solomon Islands)',
+         'en-SC'          => 'English (Seychelles)',
+         'en-SD'          => 'English (Sudan)',
+         'en-SE'          => 'English (Sweden)',
+         'en-SG'          => 'English (Singapore)',
+         'en-SH'          => 'English (St Helena)',
+         'en-SI'          => 'English (Slovenia)',
+         'en-SL'          => 'English (Sierra Leone)',
+         'en-SS'          => 'English (South Sudan)',
+         'en-SX'          => 'English (Sint Maarten)',
+         'en-SZ'          => 'English (Eswatini)',
+         'en-TC'          => 'English (Turks & Caicos Islands)',
+         'en-TK'          => 'English (Tokelau)',
+         'en-TO'          => 'English (Tonga)',
+         'en-TT'          => 'English (Trinidad & Tobago)',
+         'en-TV'          => 'English (Tuvalu)',
+         'en-TZ'          => 'English (Tanzania)',
+         'en-UG'          => 'English (Uganda)',
+         'en-UM'          => 'English (U.S. Outlying Islands)',
+         'en-US'          => 'English (United States)',
+         'en-VC'          => 'English (St Vincent & the Grenadines)',
+         'en-VG'          => 'English (British Virgin Islands)',
+         'en-VI'          => 'English (U.S. Virgin Islands)',
+         'en-VU'          => 'English (Vanuatu)',
+         'en-WS'          => 'English (Samoa)',
+         'en-ZA'          => 'English (South Africa)',
+         'en-ZM'          => 'English (Zambia)',
+         'en-ZW'          => 'English (Zimbabwe)',
+         'es'             => 'español',
+         'es-AR'          => 'español (Argentina)',
+         'es-BO'          => 'español (Bolivia)',
+         'es-BR'          => 'español (Brasil)',
+         'es-BZ'          => 'español (Belice)',
+         'es-CL'          => 'español (Chile)',
+         'es-CO'          => 'español (Colombia)',
+         'es-CR'          => 'español (Costa Rica)',
+         'es-CU'          => 'español (Cuba)',
+         'es-DO'          => 'español (República Dominicana)',
+         'es-EA'          => 'español (Ceuta y Melilla)',
+         'es-EC'          => 'español (Ecuador)',
+         'es-ES'          => 'español (España)',
+         'es-GQ'          => 'español (Guinea Ecuatorial)',
+         'es-GT'          => 'español (Guatemala)',
+         'es-HN'          => 'español (Honduras)',
+         'es-IC'          => 'español (Canarias)',
+         'es-MX'          => 'español (México)',
+         'es-NI'          => 'español (Nicaragua)',
+         'es-PA'          => 'español (Panamá)',
+         'es-PE'          => 'español (Perú)',
+         'es-PH'          => 'español (Filipinas)',
+         'es-PR'          => 'español (Puerto Rico)',
+         'es-PY'          => 'español (Paraguay)',
+         'es-SV'          => 'español (El Salvador)',
+         'es-US'          => 'español (Estados Unidos)',
+         'es-UY'          => 'español (Uruguay)',
+         'es-VE'          => 'español (Venezuela)',
+         'eu'             => 'euskara',
+         'eu-ES'          => 'euskara (Espainia)',
+         'fa'             => 'فارسی',
+         'fa-AF'          => 'فارسی (افغانستان)',
+         'fa-IR'          => 'فارسی (ایران)',
+         'fi'             => 'suomi',
+         'fi-FI'          => 'suomi (Suomi)',
+         'fr'             => 'français',
+         'fr-BE'          => 'français (Belgique)',
+         'fr-BF'          => 'français (Burkina Faso)',
+         'fr-BI'          => 'français (Burundi)',
+         'fr-BJ'          => 'français (Bénin)',
+         'fr-BL'          => 'français (Saint-Barthélemy)',
+         'fr-CA'          => 'français (Canada)',
+         'fr-CD'          => 'français (Congo-Kinshasa)',
+         'fr-CF'          => 'français (République centrafricaine)',
+         'fr-CG'          => 'français (Congo-Brazzaville)',
+         'fr-CH'          => 'français (Suisse)',
+         'fr-CI'          => 'français (Côte d’Ivoire)',
+         'fr-CM'          => 'français (Cameroun)',
+         'fr-DJ'          => 'français (Djibouti)',
+         'fr-DZ'          => 'français (Algérie)',
+         'fr-FR'          => 'français (France)',
+         'fr-GA'          => 'français (Gabon)',
+         'fr-GF'          => 'français (Guyane française)',
+         'fr-GN'          => 'français (Guinée)',
+         'fr-GP'          => 'français (Guadeloupe)',
+         'fr-GQ'          => 'français (Guinée équatoriale)',
+         'fr-HT'          => 'français (Haïti)',
+         'fr-KM'          => 'français (Comores)',
+         'fr-LU'          => 'français (Luxembourg)',
+         'fr-MA'          => 'français (Maroc)',
+         'fr-MC'          => 'français (Monaco)',
+         'fr-MF'          => 'français (Saint-Martin)',
+         'fr-MG'          => 'français (Madagascar)',
+         'fr-ML'          => 'français (Mali)',
+         'fr-MQ'          => 'français (Martinique)',
+         'fr-MR'          => 'français (Mauritanie)',
+         'fr-MU'          => 'français (Maurice)',
+         'fr-NC'          => 'français (Nouvelle-Calédonie)',
+         'fr-NE'          => 'français (Niger)',
+         'fr-PF'          => 'français (Polynésie française)',
+         'fr-PM'          => 'français (Saint-Pierre-et-Miquelon)',
+         'fr-RE'          => 'français (La Réunion)',
+         'fr-RW'          => 'français (Rwanda)',
+         'fr-SC'          => 'français (Seychelles)',
+         'fr-SN'          => 'français (Sénégal)',
+         'fr-SY'          => 'français (Syrie)',
+         'fr-TD'          => 'français (Tchad)',
+         'fr-TG'          => 'français (Togo)',
+         'fr-TN'          => 'français (Tunisie)',
+         'fr-VU'          => 'français (Vanuatu)',
+         'fr-WF'          => 'français (Wallis-et-Futuna)',
+         'fr-YT'          => 'français (Mayotte)',
+         'he'             => 'עברית',
+         'he-IL'          => 'עברית (ישראל)',
+         'hr'             => 'hrvatski',
+         'hr-BA'          => 'hrvatski (Bosna i Hercegovina)',
+         'hr-HR'          => 'hrvatski (Hrvatska)',
+         'hu'             => 'magyar',
+         'hu-HU'          => 'magyar (Magyarország)',
+         'it'             => 'italiano',
+         'it-CH'          => 'italiano (Svizzera)',
+         'it-IT'          => 'italiano (Italia)',
+         'it-SM'          => 'italiano (San Marino)',
+         'it-VA'          => 'italiano (Città del Vaticano)',
+         'ja'             => '日本語',
+         'ja-JP'          => '日本語 (日本)',
+         'ko'             => '한국어',
+         'ko-KP'          => '한국어 (조선민주주의인민공화국)',
+         'ko-KR'          => '한국어 (대한민국)',
+         'lt'             => 'lietuvių',
+         'lt-LT'          => 'lietuvių (Lietuva)',
+         'ms'             => 'Melayu',
+         'ms-BN'          => 'Melayu (Brunei)',
+         'ms-ID'          => 'Melayu (Indonesia)',
+         'ms-MY'          => 'Melayu (Malaysia)',
+         'ms-SG'          => 'Melayu (Singapura)',
+         'mt'             => 'Malti',
+         'mt-MT'          => 'Malti (Malta)',
+         'nl'             => 'Nederlands',
+         'nl-AW'          => 'Nederlands (Aruba)',
+         'nl-BE'          => 'Nederlands (België)',
+         'nl-BQ'          => 'Nederlands (Caribisch Nederland)',
+         'nl-CW'          => 'Nederlands (Curaçao)',
+         'nl-NL'          => 'Nederlands (Nederland)',
+         'nl-SR'          => 'Nederlands (Suriname)',
+         'nl-SX'          => 'Nederlands (Sint-Maarten)',
+         'no'             => 'norsk',
+         'pl'             => 'polski',
+         'pl-PL'          => 'polski (Polska)',
+         'pt'             => 'português',
+         'pt-AO'          => 'português (Angola)',
+         'pt-BR'          => 'português (Brasil)',
+         'pt-CH'          => 'português (Suíça)',
+         'pt-CV'          => 'português (Cabo Verde)',
+         'pt-GQ'          => 'português (Guiné Equatorial)',
+         'pt-GW'          => 'português (Guiné-Bissau)',
+         'pt-LU'          => 'português (Luxemburgo)',
+         'pt-MO'          => 'português (Macau, RAE da China)',
+         'pt-MZ'          => 'português (Moçambique)',
+         'pt-PT'          => 'português (Portugal)',
+         'pt-ST'          => 'português (São Tomé e Príncipe)',
+         'pt-TL'          => 'português (Timor-Leste)',
+         'ro'             => 'română',
+         'ro-MD'          => 'română (Republica Moldova)',
+         'ro-RO'          => 'română (România)',
+         'ru'             => 'русский',
+         'ru-BY'          => 'русский (Беларусь)',
+         'ru-KG'          => 'русский (Киргизия)',
+         'ru-KZ'          => 'русский (Казахстан)',
+         'ru-MD'          => 'русский (Молдова)',
+         'ru-RU'          => 'русский (Россия)',
+         'ru-UA'          => 'русский (Украина)',
+         'rw-RW'          => 'Kinyarwanda (U Rwanda)',
+         'sk'             => 'slovenčina',
+         'sk-SK'          => 'slovenčina (Slovensko)',
+         'sl'             => 'slovenščina',
+         'sl-SI'          => 'slovenščina (Slovenija)',
+         'sv'             => 'svenska',
+         'sv-AX'          => 'svenska (Åland)',
+         'sv-FI'          => 'svenska (Finland)',
+         'sv-SE'          => 'svenska (Sverige)',
+         'th'             => 'ไทย',
+         'th-TH'          => 'ไทย (ไทย)',
+         'tr'             => 'Türkçe',
+         'tr-CY'          => 'Türkçe (Kıbrıs)',
+         'tr-TR'          => 'Türkçe (Türkiye)',
+         'uk'             => 'українська',
+         'uk-UA'          => 'українська (Україна)',
+         'ur'             => 'اردو',
+         'ur-IN'          => 'اردو (بھارت)',
+         'ur-PK'          => 'اردو (پاکستان)',
+         'vi'             => 'Tiếng (Việt)',
+         'vi-VN'          => 'Tiếng (Việt Việt Nam)',
+         'zh'             => '中文',
+         'zh-Hans'        => '中文 (简体)',
+         'zh-Hans-CN'     => '中文 (中国 简体)',
+         'zh-Hans-HK'     => '中文 (中国香港特别行政区 简体)',
+         'zh-Hans-MO'     => '中文 (中国澳门特别行政区 简体)',
+         'zh-Hans-SG'     => '中文 (新加坡 简体)',
+         'zh-Hant'        => '中文 (繁體)',
+         'zh-Hant-HK'     => '中文 (中國香港特別行政區 繁體字)',
+         'zh-Hant-MO'     => '中文 (中國澳門特別行政區 繁體字)',
+         'zh-Hant-TW'     => '中文 (台灣 繁體)',
+     }
+}
+
 =head2 list_languages(current-lang)
 
 Returns an array of supported languages, taken from Webmin's lang_list.txt file.
@@ -6576,7 +7005,6 @@ if ($logemail) {
     if ($mdesc) {
         $body .= &text('log_email_moddesc', $mdesc)."\n";
         }
-    $main::theme_prevent_make_date = 1;
     $body .= &text('log_email_time', &make_date(time()))."\n";
     $body .= &text('log_email_system', &get_display_hostname())."\n";
     $body .= &text('log_email_user', $remote_user)."\n";
@@ -12430,6 +12858,44 @@ if ($float =~ /^[-]?(\.\d+|\d+\.\d+)$/) {
     return 1;
     }
 return 0;
+}
+
+# parse_accepted_language([&conf])
+# Returns the language requested by the browser
+sub parse_accepted_language
+{
+my ($conf) = @_;
+$conf ||= \%gconfig;
+my @langs = &list_languages();
+my $accepted_lang;
+if ($conf->{'acceptlang'}) {
+	foreach my $a (split(/,/, $ENV{'HTTP_ACCEPT_LANGUAGE'})) {
+		$a =~ s/;.*//;	# Remove ;q=0.5 or similar
+		my ($al) = grep { $_->{'lang'} eq $a } @langs;
+		if ($al) {
+			$accepted_lang = $al->{'lang'};
+			last;
+			}
+		}
+	}
+return $accepted_lang;
+}
+
+# get_default_system_locale()
+# Returns system default locale
+sub get_default_system_locale
+{
+my $locale_def = "en-US";
+my $locale_system;
+eval {
+	$locale_system = setlocale(LC_ALL);
+	};
+if (!$@ && $locale_system) {
+	$locale_system =~ s/\..*//;
+	$locale_system =~ s/_/-/;
+	return $locale_system;
+	}
+return $locale_def;
 }
 
 $done_web_lib_funcs = 1;

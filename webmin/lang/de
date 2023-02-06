@@ -180,11 +180,6 @@ ui_edbwidth=Fehlende oder ungültige Auswahl Fenster Breite
 ui_edbheight=Fehlende oder ungültige Auswahl Fenster Höhe
 ui_showlogin=Stelle Benutzername bei Seitentitel voran?
 ui_showhost=Stelle Hostnamen im Seitentitel voran?
-ui_dateformat=Format für anzuzeigendes Datum
-ui_dateformat_dd/mon/yyyy=dd/mon/yyyy (z.B. 16/Sep/2001)
-ui_dateformat_dd/mm/yyyy=dd/mm/yyyy (z.B. 16/09/2001)
-ui_dateformat_mm/dd/yyyy=mm/dd/yyyy (z.B. 09/16/2001)
-ui_dateformat_yyyy/mm/dd=yyyy/mm/dd (z.B. 2001/09/16)
 ui_ehostnamedisplay=Fehlende oder ungültige Anzeige des Hostnames
 
 mods_title=Webmin-Module
@@ -304,9 +299,6 @@ os_eiversion=Fehlende interne Betriebssystemangabe
 os_fix=Aktualisiere erkanntes Betriebssystem
 os_usermin=Aktualisiere auch Usermin OS
 
-lang_title=Sprache
-lang_title2=Webmin-Sprache
-lang_lang=Zeige in Sprache an
 lang_intro=Auf dieser Seite können Sie die Sprache wählen, in der Webmin Titel, Eingabeaufforderungen und Nachrichten anzeigen wird.
 lang_ok=Sprache ändern
 lang_accept=Benutze die Sprache, welche vom Browser angefordert wird?

@@ -1,8 +1,14 @@
 index_title=Change Language and Theme
-index_lang=Webmin UI language
+index_lang=Language
+index_locale=Locale
+index_locale2=Dates format
+index_theme=Theme
 index_langglobal2=Global language .. $1 ($2)
 index_langset=Personal choice ..
-index_theme=Webmin UI theme
+index_localeglobal2=Global locale .. $1 ($2)
+index_localeset=Personal choice ..
+index_dateformatglobal2=Global dates format .. $1
+index_dateformatset=Personal choice ..
 index_overlay=Theme overlay
 index_overlaydef=None - use theme defaults
 index_themeglobal=Global theme ($1)
@@ -33,6 +39,7 @@ change_eoverlay=You cannot select a theme overlay unless a UI theme is also chos
 change_eoverlay2=The selected theme overlay is not compatible with the chosen UI theme
 
 acl_lang=Can change language?
+acl_locale=Can change locale?
 acl_theme=Can change theme?
 acl_pass=Can change password (when set in Webmin) ?
 

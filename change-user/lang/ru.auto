@@ -1,4 +1,14 @@
+index_lang=Язык
+index_locale=Регион
+index_locale2=Формат дат
+index_theme=Тема
 index_langglobal2=Глобальный язык.. $1 ($2)
+index_localeglobal2=Глобальная локаль.. $1 ($2)
+index_localeset=Личный выбор ..
+index_dateformatglobal2=Глобальный формат дат.. $1
+index_dateformatset=Личный выбор ..
 index_passagain=Повторно введите пароль
 
 change_epass2=Новые пароли не совпадают
+
+acl_locale=Может сменить локаль?

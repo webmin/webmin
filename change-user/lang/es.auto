@@ -1,4 +1,12 @@
+index_lang=Idioma
+index_locale=Lugar
+index_locale2=Formato de fechas
+index_theme=Tema
 index_langglobal2=Idioma global.. $1 ($2)
+index_localeglobal2=Configuración regional global.. $1 ($2)
+index_localeset=Decisión personal ..
+index_dateformatglobal2=Formato de fechas globales.. $1
+index_dateformatset=Decisión personal ..
 index_overlay=Superposición de temas
 index_overlaydef=Ninguno: use los valores predeterminados del tema
 index_passagain=Escriba la contraseña otra vez
@@ -7,3 +15,5 @@ change_epass2=Las nuevas contraseñas no coinciden
 change_epass=La nueva contraseña no es válida : $1 
 change_eoverlay=No puede seleccionar una superposición de tema a menos que también se elija un tema de IU
 change_eoverlay2=La superposición de tema seleccionada no es compatible con el tema de IU elegido
+
+acl_locale=¿Se puede cambiar de ubicación?

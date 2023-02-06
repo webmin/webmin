@@ -1,0 +1,10 @@
+index_lang=لغة
+index_locale=لغة
+index_locale2=تنسيق التواريخ
+index_theme=سمة
+index_localeglobal2=لغة عمومية..$1 ($2)
+index_localeset=اختيار شخصي ..
+index_dateformatglobal2=تنسيق التواريخ العمومية..$1
+index_dateformatset=اختيار شخصي ..
+
+acl_locale=يمكن تغيير اللغة؟

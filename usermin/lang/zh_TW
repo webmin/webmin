@@ -30,8 +30,6 @@ mods_deleteok=刪除選取的模組
 os_title=作業系統
 os_desc2=執行程式、以及將共用程式庫傳給任何程式時，您也可以變更 Webmin 使用的搜尋路徑。
 
-lang_title=語言
-lang_title2=Usermin 語言
 lang_intro=這個網頁可以讓您選擇 Usermin 顯示標題、提示字元和訊息使用的語言。
 
 session_title=認證

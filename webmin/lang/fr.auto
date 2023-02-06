@@ -12,6 +12,13 @@ bind_emaxlifetime=La durée de vie maximale du processus doit être supérieure 
 os_incorrect=Le système d'exploitation $1 a été mis à niveau vers la version $2
 os_release_notes=Notes de version
 
+lang_title=Langue et paramètres régionaux
+lang_title2=Langue et paramètres régionaux de Webmin
+lang_lang=Langue
+lang_locale=Lieu
+lang_dateformat=Format d'affichage des dates
+lang_dateformat_dd/mon/yyyy=jj/lu/aaaa (c'est-à-dire 16/sept./2001)
+
 ssl_hsts=Appliquer SSL avec l'en-tête HSTS
 
 upgrade_setup=Exécution du script <tt>setup.sh</tt> pour mettre à niveau Webmin ..

@@ -52,8 +52,6 @@ os_usermin=System operacyjny zgodny z Usermin
 os_iusermin=Kod wewnętrznego systemu operacyjnego używany przez Usermina
 os_update=Aktualizuj Usermina aby mógł używać wykrytego systemu operacyjnego
 
-lang_title=Język
-lang_title2=Język Usermina
 lang_intro=Ta strona umożliwia Ci wybór języka w którym Usermin będzie wypisywał komunikaty
 
 session_title=Autoryzacja

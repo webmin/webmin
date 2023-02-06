@@ -52,8 +52,8 @@ os_usermin=Sistem de operare conform Usermin
 os_iusermin=Cod de sistem intern folosit de Usermin
 os_update=Actualizați Usermin pentru a utiliza sistemul de operare detectat
 
-lang_title=Limba
-lang_title2=Limba Usermin
+lang_title=Limbă și localitate
+lang_title2=Usermin Limba și Locale
 lang_intro=Această pagină vă permite să alegeți ce limbă va folosi Usermin pentru afișarea titlurilor, solicitări și mesaje
 
 session_title=Autentificare

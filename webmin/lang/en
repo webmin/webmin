@@ -190,11 +190,6 @@ ui_edbwidth=Missing or invalid chooser window width
 ui_edbheight=Missing or invalid chooser window height
 ui_showlogin=Prepend username to page titles?
 ui_showhost=Prepend hostname to page titles?
-ui_dateformat=Format for displayed dates
-ui_dateformat_dd/mon/yyyy=dd/mon/yyyy (ie. 16/Sep/2001)
-ui_dateformat_dd/mm/yyyy=dd/mm/yyyy (ie. 16/09/2001)
-ui_dateformat_mm/dd/yyyy=mm/dd/yyyy (ie. 09/16/2001)
-ui_dateformat_yyyy/mm/dd=yyyy/mm/dd (ie. 2001/09/16)
 ui_ehostnamedisplay=Missing or invalid display hostname
 
 mods_title=Webmin Modules
@@ -316,9 +311,10 @@ os_release_notes=Release notes
 os_fix=Update Detected Operating System
 os_usermin=Also update Usermin OS
 
-lang_title=Language
-lang_title2=Webmin Language
-lang_lang=Display in language
+lang_title=Language and Locale
+lang_title2=Webmin Language and Locale
+lang_lang=Language
+lang_locale=Locale
 lang_intro=This page allows you to choose which language Webmin will use for displaying titles, prompts and messages
 lang_ok=Change Language
 lang_accept=Use language specified by browser?
@@ -327,6 +323,11 @@ lang_chardef=Determined by language
 lang_charover=Force character set
 lang_err=Failed to save language
 lang_echarset=Missing or invalid-looking character set
+lang_dateformat=Dates format
+lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (i.e. 16/Sep/2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/yyyy (i.e. 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/yyyy (i.e. 09/16/2001)
+lang_dateformat_yyyy/mm/dd=yyyy/mm/dd (i.e. 2001/09/16)
 
 ssl_title=SSL Encryption
 ssl_essl=The Net::SSLeay perl module does not appear to be installed on your system. To install the OpenSSL library and Net::SSLeay, follow <a href='$1'>these instructions</a> from the Webmin website.

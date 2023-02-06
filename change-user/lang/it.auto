@@ -1,4 +1,12 @@
+index_lang=Lingua
+index_locale=Locale
+index_locale2=Formato date
+index_theme=Tema
 index_langglobal2=Linguaggio globale.. $1 ($2)
+index_localeglobal2=Impostazioni locali globali.. $1 ($2)
+index_localeset=Scelta personale ..
+index_dateformatglobal2=Formato date globali.. $1
+index_dateformatset=Scelta personale ..
 index_overlay=Overlay a tema
 index_overlaydef=Nessuno: utilizza le impostazioni predefinite del tema
 index_passagain=Reinserire la password
@@ -6,3 +14,5 @@ index_passagain=Reinserire la password
 change_epass2=Le nuove password non corrispondono
 change_eoverlay=Non è possibile selezionare un overlay del tema a meno che non sia stato scelto anche un tema dell'interfaccia utente
 change_eoverlay2=L'overlay del tema selezionato non è compatibile con il tema dell'interfaccia utente scelto
+
+acl_locale=È possibile modificare le impostazioni locali?

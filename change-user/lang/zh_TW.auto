@@ -1,4 +1,12 @@
+index_lang=語言
+index_locale=語言環境
+index_locale2=日期格式
+index_theme=主題
 index_langglobal2=全局語言.. $1（$2）
+index_localeglobal2=全局區域設置.. $1 ($2)
+index_localeset=個人選擇 ..
+index_dateformatglobal2=全局日期格式.. $1
+index_dateformatset=個人選擇 ..
 index_overlay=主題疊加
 index_overlaydef=無-使用主題默認值
 index_passagain=重新輸入密碼
@@ -17,5 +25,6 @@ change_eoverlay=除非還選擇了UI主題，否則無法選擇主題疊加層
 change_eoverlay2=所選主題疊加層與所選UI主題不兼容
 
 acl_lang=可以更改語言嗎？
+acl_locale=可以改locale嗎？
 acl_theme=可以更改主題嗎？
 acl_pass=可以更改密碼（在Webmin中設置時）嗎？

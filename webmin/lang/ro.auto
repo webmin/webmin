@@ -190,11 +190,6 @@ ui_edbwidth=Lățimea ferestrei alegătorului lipsă sau nevalidă
 ui_edbheight=Lipsă sau nevalidă înălțimea geamului de alegere
 ui_showlogin=Pregătiți numele de utilizator la titlurile paginilor?
 ui_showhost=Prepuneți numele de gazdă la titlurile paginii?
-ui_dateformat=Format pentru datele afișate
-ui_dateformat_dd/mon/yyyy=dd/lun/aaaa (adică 16/sept/2001)
-ui_dateformat_dd/mm/yyyy=dd/mm/aaaa (adică 16/09/2001)
-ui_dateformat_mm/dd/yyyy=mm/dd/aaaa (adică 16/09/2001)
-ui_dateformat_yyyy/mm/dd=aaaa/mm/dd (adica 2001/09/16)
 ui_ehostnamedisplay=Numele gazdă afișat lipsește sau este nevalid
 
 mods_title=Module Webmin
@@ -316,9 +311,10 @@ os_release_notes=Note de lansare
 os_fix=Actualizați sistemul de operare detectat
 os_usermin=Actualizați, de asemenea, sistemul de operare Usermin
 
-lang_title=Limba
-lang_title2=Limba Webmin
-lang_lang=Afișare în limbă
+lang_title=Limbă și localitate
+lang_title2=Limba și localitatea Webmin
+lang_lang=Limba
+lang_locale=Locale
 lang_intro=Această pagină vă permite să alegeți ce limbă va folosi Webmin pentru afișarea titlurilor, solicitări și mesaje
 lang_ok=Schimbă limba
 lang_accept=Folosiți limba specificată de browser?
@@ -327,6 +323,8 @@ lang_chardef=Determinat de limbaj
 lang_charover=Set de caractere forță
 lang_err=Nu a reușit să salvezi limba
 lang_echarset=Set de caractere lipsit sau cu aspect nevalid
+lang_dateformat=Format de afișare a datelor
+lang_dateformat_dd/mon/yyyy=zz/luna/aaaa (adică 16/sept./2001)
 
 ssl_title=Criptare SSL
 ssl_essl=Modulul Net::SSLeay perl nu pare să fie instalat pe sistemul dvs. Pentru a instala biblioteca OpenSSL și Net::SSLeay, urmați <a href='$1'>aceste instrucțiuni</a> de pe site-ul Webmin.

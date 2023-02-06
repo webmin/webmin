@@ -1,8 +1,14 @@
 index_title=Schimbați limba și tema
-index_lang=Limba UI Webmin
+index_lang=Limba
+index_locale=Locale
+index_locale2=Format de date
+index_theme=Temă
 index_langglobal2=Limba globală.. $1 ($2)
 index_langset=Alegere personală ..
-index_theme=Tema utilizatorului Webmin
+index_localeglobal2=Localizare globală.. $1 ($2)
+index_localeset=alegere personala ..
+index_dateformatglobal2=Format de date globale.. $1
+index_dateformatset=alegere personala ..
 index_overlay=Suprapunerea temei
 index_overlaydef=Niciunul - folosiți setările implicite
 index_themeglobal=Tema globală ($1)
@@ -33,5 +39,6 @@ change_eoverlay=Nu puteți selecta o suprapunere de temă decât dacă este alea
 change_eoverlay2=Suprapunerea de temă selectată nu este compatibilă cu tema UI aleasă
 
 acl_lang=Poate schimba limba?
+acl_locale=Se poate schimba locația?
 acl_theme=Poate schimba tema?
 acl_pass=Poți schimba parola (când este setată în Webmin)?

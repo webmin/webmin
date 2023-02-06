@@ -52,8 +52,8 @@ os_usermin=מערכת הפעלה על פי Usermin
 os_iusermin=קוד מערכת הפעלה פנימית המשמש את Usermin
 os_update=עדכן את Usermin לשימוש במערכת ההפעלה המזוהה
 
-lang_title=שפה
-lang_title2=שפת Usermin
+lang_title=שפה ומקום
+lang_title2=Usermin שפה ומקום
 lang_intro=דף זה מאפשר לך לבחור באיזו שפה Usermin ישתמש להצגת כותרות, הנחיות והודעות
 
 session_title=אימות

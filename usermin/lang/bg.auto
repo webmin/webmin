@@ -52,8 +52,8 @@ os_usermin=Операционна система според Usermin
 os_iusermin=Вътрешен код на ОС, използван от Usermin
 os_update=Актуализирайте Usermin, за да използвате откритата ОС
 
-lang_title=език
-lang_title2=Usermin Език
+lang_title=Език и локал
+lang_title2=Usermin език и локал
 lang_intro=Тази страница ви позволява да изберете кой език ще използва Usermin за показване на заглавия, подкани и съобщения
 
 session_title=заверка
