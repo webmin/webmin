@@ -52,8 +52,8 @@ os_usermin=Operativni sustav prema Userminu
 os_iusermin=Interni OS kod koji koristi Usermin
 os_update=Ažurirajte Usermin za upotrebu otkrivenog OS-a
 
-lang_title=Jezik
-lang_title2=Korisnički jezik
+lang_title=Jezik i mjesto
+lang_title2=Usermin jezik i lokalizacija
 lang_intro=Ova vam stranica omogućuje odabir jezika koji će Usermin koristiti za prikazivanje naslova, upita i poruka
 
 session_title=Ovjera

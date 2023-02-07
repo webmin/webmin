@@ -52,8 +52,8 @@ os_usermin=Operációs rendszer a Usermin szerint
 os_iusermin=A Usermin által használt belső operációs rendszer kódja
 os_update=Frissítse a Usermin szoftvert az észlelt operációs rendszer használatához
 
-lang_title=Nyelv
-lang_title2=Felhasználói nyelv
+lang_title=Nyelv és terület
+lang_title2=Usermin nyelv és nyelv
 lang_intro=Ezen az oldalon kiválaszthatja, hogy a Usermin milyen nyelvet használja a címek, utasítások és üzenetek megjelenítéséhez
 
 session_title=Hitelesítés

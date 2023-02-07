@@ -1,7 +1,5 @@
 index_title=修改语言和风格
-index_lang=Webmin UI 语言
 index_langset=个人的选择 ..
-index_theme=Webmin UI 风格
 index_themeglobal=全局风格($1)
 index_themeset=个人的选择 ..
 index_pass=Webmin 登陆密码

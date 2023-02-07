@@ -1,0 +1,10 @@
+index_lang=言語
+index_locale=ロケール
+index_locale2=日付形式
+index_theme=テーマ
+index_localeglobal2=グローバル ロケール.. $1 ($2)
+index_localeset=個人的な選択 ..
+index_dateformatglobal2=グローバル日付形式.. $1
+index_dateformatset=個人的な選択 ..
+
+acl_locale=ロケールを変更できますか?

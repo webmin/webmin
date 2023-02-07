@@ -19,7 +19,7 @@ show_body=Afficher les aperçus du corps du message dans la liste?,1,1-Oui,0-Non
 open_mode=Ouvrir les messages dans,1,1-Nouvelle fenêtre,0-Fenêtre de liste
 link_mode=Ouvrir les liens dans,1,1-Nouvelle fenêtre,0-Même fenêtre
 download=Types de pièces jointes MIME à toujours télécharger,9,20,4,\t
-date_fmt=Format de date dans la liste de diffusion,1,dmy-DD/MM/YYYY,mdy-MM/DD/YYYY,ymd-YYYY/MM/DD
+date_fmt=Format de date dans la liste de diffusion,1,auto-Locale based,dmy-DD/MM/YYYY,mdy-MM/DD/YYYY,ymd-YYYY/MM/DD
 date_tz=Fuseau horaire pour l'affichage de la date,3,Défaut du système
 
 line0.4=Options de la liste des utilisateurs,11

@@ -1,8 +1,14 @@
 index_title=Ibdel il-Lingwa u t-Tema
-index_lang=Lingwa UI Webmin
+index_lang=Lingwa
+index_locale=Lokali
+index_locale2=Format tad-dati
+index_theme=Tema
 index_langglobal2=Lingwa globali.. $1 ($2)
 index_langset=Għażla personali ..
-index_theme=Webmin UI tema
+index_localeglobal2=Lokalità globali.. $1 ($2)
+index_localeset=Għażla personali ..
+index_dateformatglobal2=Format tad-dati globali.. $1
+index_dateformatset=Għażla personali ..
 index_overlay=L-overlay tat-tema
 index_overlaydef=Xejn - uża n-nuqqasijiet tat-tema
 index_themeglobal=Tema globali ($1)
@@ -33,5 +39,6 @@ change_eoverlay=Ma tistax tagħżel overlay tat-tema sakemm ma tintgħażelx uko
 change_eoverlay2=L-overlay tat-tema magħżul mhux kompatibbli mat-tema tal-UI magħżula
 
 acl_lang=Tista 'tbiddel il-lingwa?
+acl_locale=Tista' tbiddel il-lokal?
 acl_theme=Tista 'tbiddel it-tema?
 acl_pass=Tista 'tibdel il-password (meta ssettjat fil-Webmin)?

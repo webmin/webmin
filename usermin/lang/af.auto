@@ -52,8 +52,8 @@ os_usermin=Bedryfstelsel volgens Usermin
 os_iusermin=Interne OS-kode wat deur Usermin gebruik word
 os_update=Werk Usermin op om die bespeurde OS te gebruik
 
-lang_title=Taal
-lang_title2=Usermin taal
+lang_title=Taal en Lokaal
+lang_title2=Gebruikermin Taal en Lokaal
 lang_intro=Op hierdie bladsy kan u kies watter taal Usermin sal gebruik om titels, aanwysings en boodskappe te vertoon
 
 session_title=verifikasie

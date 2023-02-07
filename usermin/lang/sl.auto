@@ -52,8 +52,8 @@ os_usermin=Operacijski sistem glede na Usermin
 os_iusermin=Notranja koda OS, ki jo uporablja Usermin
 os_update=Posodobite Usermin za uporabo odkritega OS
 
-lang_title=Jezik
-lang_title2=Uporabniški jezik
+lang_title=Jezik in lokalna nastavitev
+lang_title2=Uporabniški jezik in lokalna nastavitev
 lang_intro=Ta stran omogoča izbiro jezika, ki ga bo Usermin uporabil za prikazovanje naslovov, pozivov in sporočil
 
 session_title=Preverjanje pristnosti

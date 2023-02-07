@@ -51,8 +51,8 @@ os_usermin=Sistem pengendalian mengikut Usermin
 os_iusermin=Kod OS dalaman yang digunakan oleh Usermin
 os_update=Kemas kini Usermin untuk menggunakan OS yang dikesan
 
-lang_title=Bahasa
-lang_title2=Usermin Language
+lang_title=Bahasa dan Tempatan
+lang_title2=Bahasa dan Tempatan Pengguna
 lang_intro=Halaman ini membolehkan anda memilih bahasa mana yang Usermin akan digunakan untuk memaparkan tajuk, arahan dan mesej
 
 session_title=Pengesahan

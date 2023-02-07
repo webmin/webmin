@@ -1,8 +1,14 @@
 index_title=Ändra språk och tema
-index_lang=Webmin UI-språk
+index_lang=Språk
+index_locale=Plats
+index_locale2=Datumformat
+index_theme=Tema
 index_langglobal2=Globalt språk.. $1 ($2)
 index_langset=Personligt val ..
-index_theme=Webmin UI-tema
+index_localeglobal2=Globalt språk.. $1 ($2)
+index_localeset=Personligt val ..
+index_dateformatglobal2=Globalt datumformat.. $1
+index_dateformatset=Personligt val ..
 index_overlay=Teman överlägg
 index_overlaydef=Inget - använd standardvärden
 index_themeglobal=Globalt tema ($1)
@@ -33,5 +39,6 @@ change_eoverlay=Du kan inte välja ett temaöverlagring såvida inte ett UI-tema
 change_eoverlay2=Det valda temaöverlägget är inte kompatibelt med det valda UI-temat
 
 acl_lang=Kan ändra språk?
+acl_locale=Kan du byta språk?
 acl_theme=Kan ändra tema?
 acl_pass=Kan du ändra lösenord (när det ställs in i Webmin)?

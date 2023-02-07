@@ -97,11 +97,6 @@ ui_edbwidth=نافذة العرض منتقاة أو غير صالحة
 ui_edbheight=ارتفاع نافذة المحدد أو غير صالح
 ui_showlogin=هل تسبق اسم المستخدم لعناوين الصفحات؟
 ui_showhost=ضع اسم المضيف على عناوين الصفحات؟
-ui_dateformat=تنسيق التواريخ المعروضة
-ui_dateformat_dd/mon/yyyy=يوم / شهر / سنة (أي 16 / سبتمبر / 2001)
-ui_dateformat_dd/mm/yyyy=يوم / شهر / سنة (أي 16/09/2001)
-ui_dateformat_mm/dd/yyyy=يوم / شهر / سنة (أي. 09/16/2001)
-ui_dateformat_yyyy/mm/dd=سنة / شهر / يوم (أي 2001/09/16)
 ui_ehostnamedisplay=اسم مضيف العرض مفقود أو غير صالح
 
 mods_title=وحدات ويب مين
@@ -223,9 +218,10 @@ os_release_notes=ملاحظات الإصدار
 os_fix=تحديث نظام التشغيل المكتشف
 os_usermin=أيضا تحديث Usermin OS
 
-lang_title=لغة
-lang_title2=Webmin اللغة
-lang_lang=عرض في اللغة
+lang_title=اللغة واللغة
+lang_title2=لغة ولغة Webmin
+lang_lang=لغة
+lang_locale=لغة
 lang_intro=تتيح لك هذه الصفحة اختيار اللغة التي سيستخدمها Webmin لعرض العناوين والمطالب والرسائل
 lang_ok=تغيير اللغة
 lang_accept=استخدام اللغة المحددة من قبل المتصفح؟
@@ -234,6 +230,8 @@ lang_chardef=تحددها اللغة
 lang_charover=قوة مجموعة الأحرف
 lang_err=فشل في حفظ اللغة
 lang_echarset=مجموعة أحرف مفقودة أو غير صالحة المظهر
+lang_dateformat=تنسيق عرض التواريخ
+lang_dateformat_dd/mon/yyyy=يوم/شهر/سنة (أي 16/أيلول/سبتمبر 2001)
 
 ssl_title=تشفير SSL
 ssl_essl=The Net::SSLeay perl module does not appear to be installed on your system. To install the OpenSSL library and Net::SSLeay, follow <a href='$1'>these instructions</a> from the Webmin website.

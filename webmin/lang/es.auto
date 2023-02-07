@@ -72,11 +72,6 @@ ui_edbwidth=Ancho de ventana del selector que falta o no es válido
 ui_edbheight=Altura de ventana del selector faltante o no válida
 ui_showlogin=¿Anteponer nombre de usuario a títulos de página?
 ui_showhost=¿Anteponer el nombre de host a los títulos de las páginas?
-ui_dateformat=Formato para fechas mostradas
-ui_dateformat_dd/mon/yyyy=dd/lun/aaaa (es decir, 16/sep/2001)
-ui_dateformat_dd/mm/yyyy=dd/mm/aaaa (es decir, 16/09/2001)
-ui_dateformat_mm/dd/yyyy=mm/dd/aaaa (es decir, 16/09/2001)
-ui_dateformat_yyyy/mm/dd=aaaa/mm/dd (es decir, 2001/09/16)
 ui_ehostnamedisplay=Nombre de host de visualización faltante o no válido
 
 mods_installsource=Instalar desde
@@ -104,6 +99,13 @@ os_incorrect=El sistema operativo $1 se ha actualizado a la versión $2
 os_release_notes=Notas de lanzamiento
 os_fix=Actualizar sistema operativo detectado
 os_usermin=También actualice Usermin OS
+
+lang_title=Idioma y configuración regional
+lang_title2=Idioma y configuración regional de Webmin
+lang_lang=Idioma
+lang_locale=Lugar
+lang_dateformat=Formato de visualización de fechas
+lang_dateformat_dd/mon/yyyy=dd/mon/aaaa (es decir, 16/sep/2001)
 
 ssl_deny=Versiones de protocolo SSL para rechazar
 ssl_compression=¿Permitir conexiones SSL comprimidas?

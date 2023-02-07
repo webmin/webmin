@@ -1,8 +1,6 @@
 index_title=تغيير اللغة و الثيم
-index_lang=لغة واجهة مستخدم Webmin
 index_langglobal2=لغة عالمية .. $1 ($2)
 index_langset=اختيار شخصي ..
-index_theme=ثيم واجهة مستخدم Webmin
 index_overlay=غطاء الثيم
 index_overlaydef=لا شيء - استخدم افتراضيات الثيم
 index_themeglobal=ثيم عالمي ($1)

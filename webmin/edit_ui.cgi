@@ -41,11 +41,6 @@ print &ui_table_row($text{'ui_feedbackmode'},
 		  [ [ 0, $text{'yes'} ], [ 1, $text{'ui_feednocc'} ],
 		    [ 2, $text{'no'} ] ]), undef, [ "valign=middle","valign=middle" ]);
 
-print &ui_table_row($text{'ui_dateformat'},
-	&ui_select("dateformat", $gconfig{'dateformat'} || "dd/mon/yyyy",
-		   [ map { [ $_, $text{'ui_dateformat_'.$_} ] }
-			 @webmin_date_formats ]), undef, [ "valign=middle","valign=middle" ]);
-
 print &ui_table_row($text{'ui_width'},
 	&ui_opt_textbox("width", $gconfig{'help_width'}, 5,
 			"$text{'default'} (400)"), undef, [ "valign=middle","valign=middle" ]);

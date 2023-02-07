@@ -1,3 +1,6 @@
+lang_title=Idioma i entorn local
+lang_title2=Usermin Idioma i configuració regional
+
 twofactor_desc=L'autenticació de dos factors permet als usuaris d'Usermin habilitar l'ús d'un dispositiu d'autenticació addicional en iniciar la sessió, com ara un generador de codis d'accés únic. Els usuaris s’han d’inscriure individualment al proveïdor d’autenticació seleccionat després d’haver-lo activat en aquesta pàgina.
 twofactor_eversion=La versió d'Usermin instal·lada al vostre sistema no admet l'autenticació de dos factors.
 

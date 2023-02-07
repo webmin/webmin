@@ -1,3 +1,6 @@
+lang_title=Langue et paramètres régionaux
+lang_title2=Langue et paramètres régionaux Usermin
+
 twofactor_desc=L'authentification à deux facteurs permet aux utilisateurs d'Usermin d'activer l'utilisation d'un dispositif d'authentification supplémentaire lors de la connexion, tel qu'un générateur de code secret à usage unique. Les utilisateurs doivent s'inscrire individuellement auprès du fournisseur d'authentification sélectionné après son activation sur cette page.
 twofactor_eversion=La version de Usermin installée sur votre système ne prend pas en charge l'authentification à deux facteurs.
 

@@ -159,11 +159,6 @@ ui_sizemodules=Velikost vícenásobného výběrového seznamu modulů
 ui_edbwidth=Chybějící nebo chybná šířka okna pro správce souborů
 ui_edbheight=Chybějící nebo chybná výška okna pro správce souborů
 ui_showlogin=Připsat uživatelské jméno do titulku stránky?
-ui_dateformat=Formát pro zobrazení datumů
-ui_dateformat_dd/mon/yyyy=dd/měs/rrrr (např. 16/Sep/2001)
-ui_dateformat_dd/mm/yyyy=dd/mm/rrrr (např. 16/09/2001)
-ui_dateformat_mm/dd/yyyy=mm/dd/rrrr (např. 09/16/2001)
-ui_dateformat_yyyy/mm/dd=rrrr/mm/dd (např. 2001/09/16)
 
 mods_title=Moduly Webminu
 mods_desc1=Moduly Webminu mohou být po instalaci přidávány použitím formuláře napravo. Moduly jsou většinou distribuovány v <tt>.wbm</tt> souborech, obsahujících jeden nebo více modulů. Je-li modul licencován pouze pro použití na určitém serveru, nemusí vám jít nainstalovat.
@@ -279,9 +274,6 @@ os_eversion=Chybející verze operačního systému
 os_eiversion=Chybějící interní verze operačního systému
 os_fix=Aktualizovat zjištěný oparační systém
 
-lang_title=Jazyk
-lang_title2=Jazyk Webminu
-lang_lang=Zobrazovat v jazyce
 lang_intro=Zde můžete zvolit, v jakém jazyce k vám má Webmin promlouvat
 lang_ok=Změnit jazyk
 lang_accept=Použít jazyk, který je speciikován v prohlížeči?

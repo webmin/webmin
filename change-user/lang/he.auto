@@ -1,8 +1,14 @@
 index_title=שנה שפה ונושא
-index_lang=שפת ממשק המשתמש של Webmin
+index_lang=שפה
+index_locale=מקום
+index_locale2=פורמט תאריכים
+index_theme=נושא
 index_langglobal2=שפה גלובלית.. $1 ($2)
 index_langset=בחירה אישית ..
-index_theme=נושא ממשק המשתמש של Webmin
+index_localeglobal2=מקום גלובלי.. $1 ($2)
+index_localeset=בחירה אישית ..
+index_dateformatglobal2=פורמט תאריכים גלובלי.. $1
+index_dateformatset=בחירה אישית ..
 index_overlay=כיסוי נושא
 index_overlaydef=אין - השתמש בברירות מחדל של נושא
 index_themeglobal=נושא גלובלי ($1)
@@ -33,5 +39,6 @@ change_eoverlay=אינך יכול לבחור שכבת-על של נושא אלא 
 change_eoverlay2=שכבת הנושא שנבחרה אינה תואמת את נושא ממשק המשתמש שנבחר
 
 acl_lang=האם ניתן לשנות שפה?
+acl_locale=האם ניתן לשנות מיקום?
 acl_theme=האם ניתן לשנות נושא?
 acl_pass=האם ניתן לשנות סיסמה (כאשר מוגדרת ב- Webmin)?

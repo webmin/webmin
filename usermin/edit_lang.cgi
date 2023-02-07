@@ -19,6 +19,26 @@ print &ui_table_row($text{'lang_lang'},
            [ map { [ $_->{'lang'}, "$_->{'desc'}" ] }
                  &list_languages() ]));
 
+# Old datetime format or a new locale
+eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
+if (!$@) {
+        my $locales = &list_locales();
+        my %localesrev = reverse %{$locales};
+        my $locale_auto = &parse_accepted_language(\%uconfig);
+        print &ui_table_row($text{'lang_locale'},
+                &ui_select("locale", $locale_auto || $uconfig{'locale'} || &get_default_system_locale(),
+                           [ map { [ $localesrev{$_}, $_ ] } sort values %{$locales} ]).
+                           &ui_hidden("dateformat", $uconfig{'dateformat'}));
+        }
+
+else {
+        print &ui_table_row($text{'lang_dateformat'},
+                &ui_select("dateformat", $uconfig{'dateformat'} || "dd/mon/yyyy",
+                           [ map { [ $_, $text{'lang_dateformat_'.$_} ] }
+                           @webmin::webmin_date_formats ]).
+                           &ui_hidden("locale", $uconfig{'locale'}));
+        }
+
 # Use language from browser?
 print &ui_table_row($text{'lang_accept'},
         &ui_yesno_radio("acceptlang", int($uconfig{'acceptlang'})));

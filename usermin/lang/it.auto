@@ -1,5 +1,8 @@
 index_eroot=La directory di configurazione Usermin $1 esiste, ma la directory root del programma $2 a cui fa riferimento non esiste! È necessario scaricare e reinstallare manualmente Usermin.
 
+lang_title=Lingua e località
+lang_title2=Usermin Lingua e Locale
+
 session_authmode=Metodo di autenticazione
 
 ssl_savekey=Questo modulo consente di caricare una chiave privata SSL esistente in formato PEM e un certificato che il server Usermin può utilizzare.

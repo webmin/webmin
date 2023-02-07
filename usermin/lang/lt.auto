@@ -52,8 +52,8 @@ os_usermin=Operacinė sistema pagal „Usermin“
 os_iusermin=Vidinis OS kodas, kurį naudoja „Usermin“
 os_update=Atnaujinkite „Usermin“, kad naudotumėte aptiktą OS
 
-lang_title=Kalba
-lang_title2=„Usermin“ kalba
+lang_title=Kalba ir vietovė
+lang_title2=Usermin kalba ir lokalė
 lang_intro=Šiame puslapyje galite pasirinkti, kurią kalbą „Usermin“ naudos antraštėms, raginimams ir pranešimams rodyti
 
 session_title=Autentifikavimas

@@ -71,11 +71,6 @@ print &ui_table_row($text{'ui_tabs'},
 	&ui_radio("notabs", $uconfig{'notabs'} ? 1 : 0,
 	  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
 
-print &ui_table_row($text{'ui_dateformat'},
-	&ui_select("dateformat", $uconfig{'dateformat'} || "dd/mon/yyyy",
-	  [ map { [ $_, $text{'ui_dateformat_'.$_} ] }
-	    @webmin::webmin_date_formats ]));
-
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 

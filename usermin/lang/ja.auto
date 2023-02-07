@@ -13,6 +13,9 @@ mods_desc4=インストールされたモジュールは、以下のフォーム
 os_desc3=このページには、インストール時にUserminによって検出されたオペレーティングシステムと、現在検出されているシステムが表示されます。異なる場合は、UserminのOS情報を更新することを選択できます。これは、最近アップグレードした場合に必要になる可能性があります。
 os_usermin=Userminに準拠したオペレーティングシステム
 
+lang_title=言語とロケール
+lang_title2=ユーザーミンの言語とロケール
+
 session_realname=URLの名前ではなく実際のホスト名を表示しますか？
 session_authmode=認証方法
 session_authmode0=認証にPAMを使用する（使用可能な場合）

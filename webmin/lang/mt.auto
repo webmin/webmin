@@ -190,11 +190,6 @@ ui_edbwidth=Wisa 'tat-tieqa magħżula jew nieqsa
 ui_edbheight=Neqsin jew l-għoli tat-tieqa tal-magħżul invalidu
 ui_showlogin=Jipprevjeni username għal titoli ta 'paġna?
 ui_showhost=Qed tipprevjeni l-isem tal-host għat-titli tal-paġna?
-ui_dateformat=Format għad-dati murija
-ui_dateformat_dd/mon/yyyy=dd/mon/aaaa (jiġifieri. 16 / Sett / 2001)
-ui_dateformat_dd/mm/yyyy=dd/mm/yyy (jiġifieri. 16/09/2001)
-ui_dateformat_mm/dd/yyyy=mm/dd/yyy (jiġifieri. 16/09/2001)
-ui_dateformat_yyyy/mm/dd=yyyy/mm/dd (jiġifieri. 2001/09/16)
 ui_ehostnamedisplay=Kunjom host nieqes jew invalidu
 
 mods_title=Moduli Webmin
@@ -316,9 +311,10 @@ os_release_notes=Noti tar-rilaxx
 os_fix=Aġġornat Sistema Operattiva Maqbuda
 os_usermin=Aġġorna wkoll OS Usermin
 
-lang_title=Lingwa
-lang_title2=Lingwa Webmin
-lang_lang=Wiri bil-lingwa
+lang_title=Lingwa u Lokali
+lang_title2=Lingwa u Lokalità Webmin
+lang_lang=Lingwa
+lang_locale=Lokali
 lang_intro=Din il-paġna jippermettilek tagħżel liema lingwa Webmin tuża għall-wiri ta 'titoli, tqanqil u messaġġi
 lang_ok=Ibdel il-Lingwa
 lang_accept=Uża lingwa speċifikata mill-browser?
@@ -327,6 +323,8 @@ lang_chardef=Determinat mil-lingwa
 lang_charover=Forza ta 'karattru stabbilita
 lang_err=Naqset milli ssalva lingwa
 lang_echarset=Sett ta 'karattri nieqes jew li jħares invalidu
+lang_dateformat=Format tal-wiri tad-dati
+lang_dateformat_dd/mon/yyyy=jj/mon/ssss (jiġifieri 16/Settembru/2001)
 
 ssl_title=SSL Encryption
 ssl_essl=Il-modulu Net::SSLeay perl ma jidhirx li huwa installat fis-sistema tiegħek. Biex tinstalla l-librerija OpenSSL u Net::SSLeay, segwi <a href='$1'>dawn l-istruzzjonijiet</a> mill-websajt Webmin.

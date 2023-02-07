@@ -25,6 +25,9 @@ os_usermin=根據Usermin的操作系統
 os_iusermin=Usermin使用的內部操作系統代碼
 os_update=更新Usermin以使用檢測到的操作系統
 
+lang_title=語言和地區
+lang_title2=Usermin 語言和語言環境
+
 session_realname=顯示真實的主機名而不是URL的名稱？
 session_authmode=身份驗證方法
 session_authmode0=使用PAM進行身份驗證（如果可用）

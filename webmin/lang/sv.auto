@@ -131,11 +131,6 @@ ui_edbwidth=Manglande eller ogiltig val av fönsterbredd
 ui_edbheight=Saknad eller ogiltig val av fönsterhöjd
 ui_showlogin=Förbereda användarnamn till sidtitlar?
 ui_showhost=Förbereda värdnamn till sidtitlar?
-ui_dateformat=Format för visade datum
-ui_dateformat_dd/mon/yyyy=dd/mån/åååå (dvs. 16/sep/2001)
-ui_dateformat_dd/mm/yyyy=dd/mm/åååå (dvs. 16/09/2001)
-ui_dateformat_mm/dd/yyyy=mm/dd/åååå (dvs. 09/16/2001)
-ui_dateformat_yyyy/mm/dd=åååå/mm/dd (dvs. 2001/09/16)
 ui_ehostnamedisplay=Saknar eller ogiltigt visningsvärdnamn
 
 mods_installsource=Installera från
@@ -205,12 +200,18 @@ os_release_notes=Release notes
 os_fix=Uppdatera upptäckt operativsystem
 os_usermin=Uppdatera också Usermin OS
 
+lang_title=Språk och lokal
+lang_title2=Webmin språk och språk
+lang_lang=Språk
+lang_locale=Plats
 lang_accept=Använd språk som anges av webbläsaren?
 lang_charset=Teckenuppsättning för HTML-sidor
 lang_chardef=Bestäms av språk
 lang_charover=Tvinga teckenuppsättning
 lang_err=Det gick inte att spara språk
 lang_echarset=Teckenuppsättning saknas eller ogiltigt
+lang_dateformat=Datumvisningsformat
+lang_dateformat_dd/mon/yyyy=dd/mån/åååå (dvs. 16/sep/2001)
 
 ssl_essl=Net::SSLeay perl-modulen verkar inte vara installerad på ditt system. För att installera OpenSSL-biblioteket och Net::SSLeay, följ <a href='$1'>dessa instruktioner</a> från Webmin-webbplatsen.
 ssl_cpan=Alternativt kan du låta Webmin <a href='$1'>ladda ner och installera</a> den nödvändiga Net::SSLeay Perl-modulen för dig.

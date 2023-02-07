@@ -1,0 +1,10 @@
+index_lang=Język
+index_locale=Widownia
+index_locale2=Format daty
+index_theme=Temat
+index_localeglobal2=Globalne ustawienia regionalne.. $1 ($2)
+index_localeset=Osobisty wybór ..
+index_dateformatglobal2=Globalny format dat.. $1
+index_dateformatset=Osobisty wybór ..
+
+acl_locale=Czy można zmienić język?
