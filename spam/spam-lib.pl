@@ -197,7 +197,7 @@ if ($newname =~ s/whitelist/welcomelist/ ||
 		# New name exists in config, so use it
 		$name = $newname;
 		}
-	elsif (!@oldname && &version_atleast("4.0")) {
+	elsif (!@olduse && &version_atleast("4.0")) {
 		# Neither exists, but use the new name is later versions
 		$name = $newname;
 		}
