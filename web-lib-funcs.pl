@@ -2030,11 +2030,17 @@ if (%{$opts}) {
 			"pretty" => $ago_obj->pretty
 		};
 	}
+	# my $xxxx = $locale->full_date_format;
 	my $data = {
+		# Wed Feb 8 05:09:39 PM UTC 2023
 		'full-tz-utc' => DateTime->from_epoch(locale => $locale_name, epoch => $secs)->strftime($locale_format_full_tz),
+		# Wed Feb 8 07:10:01 PM EET 2023 
 		'full-tz' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_full_tz),
+		# Wed 08 Feb 2023 07:11:26 PM EET
 		'full' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_full),
+		# 02/08/2023
 		'short' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_short),
+		# 07:12:07 PM
 		'time' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_time),
 		'ago' => $ago,
 		'tz' => $tz,
@@ -2045,6 +2051,20 @@ if (%{$opts}) {
 	# Add time short, e.g. 17:46 or 5:46 PM
 	$data->{'timeshort'} = $data->{'time'};
 	$data->{'timeshort'} =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
+
+	# %c alternative with full week and month and no seconds in time (complete)
+	# Wednesday, February 8, 2023, 8:18 PM or 星期三, 2023年2月8日 20:18 or miércoles, 8 febrero 2023, 20:28
+	$data->{'monthfull'} = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime("%B");
+	foreach (split(/\s+/, DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime("%A, %c"))) {
+		if ($data->{'monthfull'} =~ /^$_/) {
+			$data->{'complete'} .= "$data->{'monthfull'} "
+			}
+		else {
+			$data->{'complete'} .= "$_ "
+			}
+		};
+	$data->{'complete'} =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
+
 	if ($opts->{'get'}) {
 		return $data->{$opts->{'get'}};
 		}
