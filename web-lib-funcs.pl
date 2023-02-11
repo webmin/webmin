@@ -8317,6 +8317,7 @@ if ($dumper) {
 	# Convert to Data::Dumper format
 	eval "use Data::Dumper";
 	if (!$@) {
+		$Data::Dumper::Purity = 1;
 		return Dumper($var);
 		}
 	}
@@ -8368,7 +8369,7 @@ sub unserialise_variable
 my ($str) = @_;
 if (substr($str, 0, 5) eq '$VAR1') {
 	# In Data::Dumper format
-	$rv = eval "$str return \$VAR1;";
+	$rv = eval $str.' $VAR1;';
 	return $rv;
 	}
 my @v = split(/,/, $str);
