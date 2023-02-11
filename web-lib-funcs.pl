@@ -12913,7 +12913,9 @@ eval {
 if (!$@ && $locale_system) {
 	$locale_system =~ s/\..*//;
 	$locale_system =~ s/_/-/;
-	return $locale_system;
+	my $locales = &list_locales();
+	return $locale_system
+		if ($locales->{$locale_system});
 	}
 return $locale_def;
 }
