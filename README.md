@@ -23,7 +23,7 @@
     <img width="1440" alt="Dashboard screenshot" src="https://user-images.githubusercontent.com/4426533/218264253-c08fb45a-8d75-44bf-93b3-37a2ecae3d20.png">
   </a>
   <a href="https://webmin.com/screenshots/#gh-dark-mode-only" target="_blank">
-    <img width="1440" alt="Dashboard screenshot" src="https://user-images.githubusercontent.com/4426533/218264271-970f568c-b506-4fc1-90ad-f0f3b05028bd.png">
+    <img width="1440" alt="Dashboard screenshot" src="https://user-images.githubusercontent.com/4426533/218265232-31140aa6-ada1-4019-bd75-04240aeabc83.png">
   </a>
 </p>
 
