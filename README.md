@@ -1,32 +1,11 @@
 &nbsp;
-<p align="center">
-  <a href="https://webmin.com/#gh-light-mode-only" target="_blank">
-    <img src="https://user-images.githubusercontent.com/4426533/218193583-71494a10-12f7-4049-9b6e-a97173200344.png" alt="Webmin" width="320px">
-  </a>
-  <a href="https://webmin.com/#gh-dark-mode-only" target="_blank">
-    <img src="https://user-images.githubusercontent.com/4426533/218194326-e5b619bf-827d-4a69-b3dd-c8b4ef9c1534.png" alt="Webmin" width="320px">
-  </a>
-</p>
+<p align="center"><img src="https://user-images.githubusercontent.com/4426533/218263860-f7baf9d6-cb19-4ddc-86dc-ac1b7a3c3a8a.png" alt="Webmin" width="310px"></p>
 &nbsp;
-
-<p align="center">
-    <a href="https://webmin.com/docs/" target="_blank">Documentation</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-    <a href="https://webmin.com/faq/" target="_blank">FAQ</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-    <a href="https://webmin.com/security/" target="_blank">Security</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-    <a href="https://webmin.com/screenshots/" target="_blank">Screenshots</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
-    <a href="https://forum.virtualmin.com/c/webmin/12" target="_blank">Forum</a>
-    <br><br>
-    <a href="https://webmin.com/"><img src="https://img.shields.io/badge/downloads-25M+-brightgreen.svg" alt="Downloads"></a>
-    <a href="https://github.com/webmin/webmin/releases/"><img src="https://img.shields.io/github/release/webmin/webmin" alt="Latest release"></a>
-    <a href="https://github.com/webmin/webmin/stargazers"><img src="https://img.shields.io/github/stars/webmin/webmin" alt="Stars"></a>
-    <a href="https://github.com/webmin/webmin/network/members"><img src="https://img.shields.io/github/forks/webmin/webmin" alt="Members"></a>
-    <a href="https://github.com/webmin/webmin/contributors/"><img src="https://img.shields.io/github/contributors/webmin/webmin" alt="Contributors"></a>
-    <a href="https://github.com/webmin/webmin/issues/"><img src="https://img.shields.io/github/issues-raw/webmin/webmin" alt="Issues"></a>
-    <a href="https://github.com/webmin/webmin/blob/master/LICENCE"><img src="https://img.shields.io/github/license/webmin/webmin" alt="License"></a>
-</p>
+<p align="center"> <a href="https://webmin.com/docs/" target="_blank">Documentation</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="https://webmin.com/faq/" target="_blank">FAQ</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="https://webmin.com/security/" target="_blank">Security</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="https://webmin.com/screenshots/" target="_blank">Screenshots</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; <a href="https://forum.virtualmin.com/c/webmin/12" target="_blank">Forum</a> <br><br> <a href="https://webmin.com/"><img src="https://img.shields.io/badge/downloads-25M+-brightgreen.svg" alt="Downloads"></a> <a href="https://github.com/webmin/webmin/releases/"><img src="https://img.shields.io/github/release/webmin/webmin" alt="Latest release"></a> <a href="https://github.com/webmin/webmin/stargazers"><img src="https://img.shields.io/github/stars/webmin/webmin" alt="Stars"></a> <a href="https://github.com/webmin/webmin/network/members"><img src="https://img.shields.io/github/forks/webmin/webmin" alt="Members"></a> <a href="https://github.com/webmin/webmin/contributors/"><img src="https://img.shields.io/github/contributors/webmin/webmin" alt="Contributors"></a> <a href="https://github.com/webmin/webmin/issues/"><img src="https://img.shields.io/github/issues-raw/webmin/webmin" alt="Issues"></a> <a href="https://github.com/webmin/webmin/blob/master/LICENCE"><img src="https://img.shields.io/github/license/webmin/webmin" alt="License"></a> </p>
 &nbsp;
 
 ---
+
 &nbsp;
 
 * [Changelog](https://github.com/webmin/webmin/blob/master/CHANGELOG.md)
