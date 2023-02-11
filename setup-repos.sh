@@ -169,12 +169,8 @@ deb)
 esac
 
 # Could not setup
-if [ "$?" != "0" ]; then
-    echo "${RED}Error:${NORMAL} Could not setup repositories!"
-else
-  if [ ! -x "/usr/bin/webmin" ]; then
-    echo "Webmin package can now be installed using ${GREEN}${BOLD}${ITALIC}$install_cmd webmin${NORMAL} command."
-  fi
+if [ ! -x "/usr/bin/webmin" ]; then
+  echo "Webmin package can now be installed using ${GREEN}${BOLD}${ITALIC}$install_cmd webmin${NORMAL} command."
 fi
 
 exit 0
