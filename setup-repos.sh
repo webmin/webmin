@@ -52,8 +52,8 @@ if [ -z "$osid" ]; then
 fi
 
 # Derivatives precise test
-osid_debian_like=$(echo "$osid" | grep debian)
-osid_rhel_like=$(echo "$osid" | grep "rhel\|fedora")
+osid_debian_like=$(echo "$osid" | grep "debian\|ubuntu")
+osid_rhel_like=$(echo "$osid" | grep "rhel\|fedora\|centos")
 
 # Setup OS dependent
 if [ -n "$osid_debian_like" ]; then
