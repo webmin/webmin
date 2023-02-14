@@ -53,7 +53,7 @@ fi
 
 # Derivatives precise test
 osid_debian_like=$(echo "$osid" | grep debian)
-osid_rhel_like=$(echo "$osid" | grep rhel)
+osid_rhel_like=$(echo "$osid" | grep "rhel\|fedora")
 
 # Setup OS dependent
 if [ -n "$osid_debian_like" ]; then
