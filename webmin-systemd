@@ -11,6 +11,7 @@ Type=forking
 Restart=always
 RestartSec=2s
 TimeoutSec=15s
+TimeoutStopSec=300
 
 [Install]
 WantedBy=multi-user.target
