@@ -4952,7 +4952,7 @@ $config_file = "$config_directory/config";
 %gconfig = ( );
 &read_file_cached($config_file, \%gconfig);
 $gconfig{'webprefix'} = '' if (!exists($gconfig{'webprefix'}));
-if ($gconfig{'webprefix_auto'}) {
+if (!$gconfig{'webprefix'} && $gconfig{'webprefix_remote'}) {
 	$gconfig{'webprefix'} = $ENV{'HTTP_X_WEBMIN_WEBPREFIX'};
 	}
 $null_file = $gconfig{'os_type'} eq 'windows' ? "NUL" : "/dev/null";
