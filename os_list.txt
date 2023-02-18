@@ -73,6 +73,7 @@ Redhat Linux Desktop			$1	redhat-linux	10.0	`cat /etc/redhat-release 2>/dev/null
 
 # Redhat clones
 AlmaLinux				$1	redhat-linux	$1+8.0	`cat /etc/almalinux-release 2>/dev/null` =~ /AlmaLinux.*?([\d\.]+)/i || `cat /etc/redhat-release 2>/dev/null` =~ /AlmaLinux.*?([\d\.]+)/i
+CloudLinux				$1	redhat-linux	$1+8.0	`cat /etc/cloudlinux-release 2>/dev/null` =~ /CloudLinux.*?([\d\.]+)/i || `cat /etc/redhat-release 2>/dev/null` =~ /CloudLinux.*?([\d\.]+)/i
 Rocky Linux				$1	redhat-linux	$1+8.0	`cat /etc/rocky-release 2>/dev/null` =~ /Rocky.*?([\d\.]+)/i || `cat /etc/redhat-release 2>/dev/null` =~ /Rocky.*?([\d\.]+)/i
 AlphaCore Linux			$1	redhat-linux	11.0	`cat /etc/alphacore-release 2>/dev/null` =~ /Alpha\s*Core\s+release\s+(\S+)\s/i
 X/OS Linux				$1	redhat-linux	sprintf("%.1f", 9.0+$1)		`cat /etc/redhat-release /etc/fedora-release 2>/dev/null` =~ /X\/OS.*release\s(\S+)\s/i
