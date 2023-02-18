@@ -53,7 +53,6 @@ Oracle Linux			$1	redhat-linux	$1+8.0	`cat /etc/oracle-release 2>/dev/null` =~ /
 Oracle VM			$1	redhat-linux	$1+8.0	`cat /etc/ovs-release 2>/dev/null` =~ /Oracle.*VM\s+server\s+release\s+(\d+)/i
 XenServer Linux			$1	redhat-linux	13.0	`cat /etc/redhat-release 2>/dev/null` =~ /XenServer\s+release\s+5\./
 XCP-ng Linux				$1	redhat-linux	$2+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /XCP-ng\s+release\s+([\d\.]+)/
-CloudLinux			$1	redhat-linux	$2+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /CloudLinux.*release\s+(\S+)/
 MostlyLinux			$1	redhat-linux	$2+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /MostlyLinux\s+Linux\s+release\s+(\d+)/
 Cloudrouter Linux		$1	redhat-linux	15	`cat /etc/cloudrouter-release 2>/dev/null` =~ /CloudRouter\s+release\s+(\d+)\s+/
 Sangoma Linux			$1	redhat-linux	$2+8.0	`cat /etc/sangoma-release 2>/dev/null` =~ /Sangoma\s+Linux\s+(\S+)/
