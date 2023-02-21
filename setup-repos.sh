@@ -27,10 +27,8 @@ fi
 
 # Check user permission
 if [ "$(id -u)" -ne 0 ]; then
-    echo "You need to run this script as root for installing!" >&2
+    echo "${RED}Error:${NORMAL} \`setup-repos.sh\` script must be run as root!" >&2
     exit 1
-else
-echo -n ""
 fi
 
 # Go to temp
