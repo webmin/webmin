@@ -25,6 +25,14 @@ if tty -s; then
   ITALIC=$(tput sitm)
 fi
 
+# Check user permission
+if [ "$(id -u)" -ne 0 ]; then
+    echo "You need to run this script as root for installing!" >&2
+    exit 1
+else
+echo -n ""
+fi
+
 # Go to temp
 cd "/tmp" 1>/dev/null 2>&1
 if [ "$?" != "0" ]; then
@@ -43,7 +51,7 @@ fi
 . "$osrelease"
 if [ -n "${ID_LIKE}" ]; then
     osid="$ID_LIKE"
-else 
+else
     osid="$ID"
 fi
 if [ -z "$osid" ]; then
@@ -63,7 +71,7 @@ if [ -n "$osid_debian_like" ]; then
   clean="apt-get clean"
   update="apt-get update"
 elif [ -n "$osid_rhel_like" ]; then
-  package_type=rpm  
+  package_type=rpm
   if command -pv dnf 1>/dev/null 2>&1; then
     install_cmd="dnf install"
     install="$install_cmd -y"
