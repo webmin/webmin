@@ -165,8 +165,12 @@ if ($letsencrypt_cmd) {
 	my $dir = $letsencrypt_cmd;
 	my $cmd_ver = &get_certbot_major_version($letsencrypt_cmd);
 	my $old_flags;
+	my $new_flags;
 	if ($cmd_ver < 1.11) {
 		$old_flags = " --manual-public-ip-logging-ok";
+		}
+	if ($cmd_ver >= 2) {
+		$new_flags = " --key-type rsa";
 		}
 	$dir =~ s/\/[^\/]+$//;
 	$size ||= 2048;
@@ -185,6 +189,7 @@ if ($letsencrypt_cmd) {
 			" --non-interactive".
 			" --agree-tos".
 			" --config ".quotemeta($temp)."".
+			"$new_flags".
 			" --rsa-key-size $size".
 			" --cert-name ".quotemeta($doms[0]).
 			($staging ? " --test-cert" : "").
@@ -207,6 +212,7 @@ if ($letsencrypt_cmd) {
 			" --non-interactive".
 			" --agree-tos".
 			" --config ".quotemeta($temp)."".
+			"$new_flags".
 			" --rsa-key-size $size".
 			" --cert-name ".quotemeta($doms[0]).
 			($staging ? " --test-cert" : "").
