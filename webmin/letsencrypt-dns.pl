@@ -45,10 +45,14 @@ else {
 	die "No DNS zone named $dname found";
 	}
 
-# Remove any existing record
+# Remove any existing record, if different
 my ($r) = grep { $_->{'name'} eq "_acme-challenge.".$dname."." } @$recs;
 if ($r) {
-	if ($wapi) {
+	if ($r->{'values'}->[0] eq $val) {
+		# Record is already fine!
+		exit(0);
+		}
+	elsif ($wapi) {
 		&virtual_server::delete_dns_record($recs, $file, $r);
 		}
 	else {
