@@ -21,6 +21,7 @@ else {
 	&open_tempfile(DATA, ">$path");
 	&print_tempfile(DATA, $in{'data'});
 	&close_tempfile(DATA);
+	$need_unlink = 1;
 	}
 
 # Validate tables list
@@ -36,7 +37,28 @@ else {
 &indexof($in{'db'}, &list_databases()) >= 0 ||
 	&error(&text('restore_edb'));
 
+# Un-compress file if needed
+$cf = &compression_format($path);
+$cmd = $cf == 1 ? "gunzip -c" :
+       $cf == 2 ? "uncompress -C" :
+       $cf == 3 ? "bunzip2 -c" : undef;
+if ($cmd) {
+	($prog, @args) = split(/\s+/, $cmd);
+	&has_command($prog) ||
+		&error(&text('exec_ecompress', "<tt>$prog</tt>"));
+	$tempfile = &transname();
+	$out = &backquote_command(
+                "$cmd <".quotemeta($path)." 2>&1 >".quotemeta($tempfile));
+	if ($?) {
+		&error(&text('exec_ecompress2', "<pre>$out</pre>"));
+		}
+	unlink($path) if ($need_unlink);
+	$path = $tempfile;
+	$need_unlink = 1;
+	}
+
 $err = &restore_database($in{'db'}, $path, $in{'only'}, $in{'clean'}, $tables);
+unlink($file) if ($need_unlink);
 if ($err) {
 	&error(&text('restore_failed', "<pre>$err</pre>"));
 	}

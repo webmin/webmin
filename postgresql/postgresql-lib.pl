@@ -1304,5 +1304,20 @@ else {
 	}
 }
 
+# compression_format(file)
+# Returns 0 if uncompressed, 1 for gzip, 2 for compress, 3 for bzip2 or
+# 4 for zip
+sub compression_format
+{
+open(BACKUP, "<".$_[0]);
+local $two;
+read(BACKUP, $two, 2);
+close(BACKUP);
+return $two eq "\037\213" ? 1 :
+       $two eq "\037\235" ? 2 :
+       $two eq "PK" ? 4 :
+       $two eq "BZ" ? 3 : 0;
+}
+
 1;
 
