@@ -163,6 +163,22 @@ function chconSelected() {
     }
 }
 
+function aclsDialog() {
+    if(checkSelected())
+        $("#aclsDialog").modal({
+          "backdrop"  : "static",
+          "keyboard"  : true,
+          "show"      : true
+        });
+}
+
+function aclsSelected() {
+    var mainForm = $('#list_form').serialize(),
+        aclsForm = $('#aclsForm').serialize();
+        $('#list_form').attr('action', "setfacl.cgi?" + mainForm + "&" + aclsForm);
+        $('#list_form').submit();
+}
+
 function renameDialog(file) {
     $("#renameForm input[name=name]").val(file);
     $("#renameForm input[name=file]").val(file);

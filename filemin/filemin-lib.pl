@@ -173,6 +173,26 @@ sub print_interface {
     %allowed_for_edit = map { $_ => 1} @allowed_for_edit;
     my %tinfo = &get_theme_info($current_theme);
 
+    # User and group lists for acls
+    if (&has_command('setfacl')) {
+        &foreign_require('useradmin');
+        my @allulist = &useradmin::list_users();
+        my @ulist = &useradmin::list_allowed_users(\%access, \@allulist);
+        @ulist = sort map { $_->{'user'} } @ulist;
+        my @allglist = &useradmin::list_groups();
+        my @glist = &useradmin::list_allowed_groups(\%access, \@allglist);
+        @glist = sort map { $_->{'group'} } @glist;
+        unshift(@ulist, "");
+        unshift(@glist, "");
+        our $acl_user_select = &ui_select("user", "user", \@ulist);
+        our $acl_group_select = &ui_select("group", "group", \@glist);
+        our $acl_manual = &ui_details(
+            { title => $text{'acls_manual'},
+              content => &ui_textbox("manual", undef, 40,
+                    undef, undef, "placeholder='-s user::rwx,group::---,other::---,user:joe:r-x'"),
+              html => 1 } );
+        }
+
     # Interface for Bootstrap powered themes
     if ($tinfo{'bootstrap'}) {
 
