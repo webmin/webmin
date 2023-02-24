@@ -302,13 +302,19 @@ if (&foreign_available("cpan")) {
 
 sub main_header
 {
-local ($noschemas) = @_;
+my ($noschemas) = @_;
+my $smsg = "";
+if (!$noschemas) {
+	eval {
+		local $main::error_must_die = 1;
+		$smsg = supports_schemas($config{'basedb'}) ?
+				" ".$text{'index_sch'} : "";
+		};
+	}
 &ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 	&help_search_link("postgresql", "man", "doc", "google"),
 	undef, undef, $postgresql_version ?
-	   &text('index_version', $postgresql_version).
-	   ($noschemas ? "" :
-	    &supports_schemas($config{'basedb'}) ? " $text{'index_sch'}" : "") :
+	   &text('index_version', $postgresql_version).$smsg :
 	   undef);
 }
 

@@ -75,11 +75,11 @@ EOF
 sub is_postgresql_running
 {
 local $temp = &transname();
-local $host = $config{'host'} ? "-h $config{'host'}" : "";
-$host .= " -p $config{'port'}" if ($config{'port'});
 local $cmd = &quote_path($config{'psql'}).
+	     &host_port_flags().
 	     (!&supports_pgpass() ? " -u" : " -U $postgres_login").
-	     " -c '' $host $config{'basedb'}";
+	     " -c ''".
+	     " ".$config{'basedb'};
 if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
 	$cmd = "su $postgres_login -c ".quotemeta($cmd);
 	}
@@ -291,6 +291,9 @@ if ($driver_handle &&
 	local $cstr = "dbname=$_[0]";
 	$cstr .= ";host=$config{'host'}" if ($config{'host'});
 	$cstr .= ";port=$config{'port'}" if ($config{'port'});
+	local $sslmode = $config{'sslmode'};
+	$sslmode =~ s/_/-/g;
+	$cstr .= ";sslmode=$sslmode" if ($sslmode);
 	local @uinfo;
 	if ($postgres_sameunix &&
 	    (@uinfo = getpwnam($postgres_login))) {
@@ -400,11 +403,11 @@ else {
 		}
 
 	# Call the psql program
-	local $host = $config{'host'} ? "-h $config{'host'}" : "";
-	$host .= " -p $config{'port'}" if ($config{'port'});
 	local $cmd = &quote_path($config{'psql'})." --html".
+		     &host_port_flags().
 		     (!&supports_pgpass() ? " -u" : " -U $postgres_login").
-		     " -c ".&quote_path($sql)." $host $_[0]";
+		     " -c ".&quote_path($sql).
+		     " ".$_[0];
 	if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
 		$cmd = &command_as_user($postgres_login, 0, $cmd);
 		}
@@ -800,10 +803,9 @@ if (!defined($user)) {
 	$pass = $postgres_pass;
 	}
 local $cmd = &quote_path($config{'psql'})." -f ".&quote_path($file).
+	     &host_port_flags().
 	     (&supports_pgpass() ? " -U $user" : " -u").
-	     ($config{'host'} ? " -h $config{'host'}" : "").
-	     ($config{'port'} ? " -h $config{'port'}" : "").
-	     " $db";
+	     " ".$db;
 if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
 	$cmd = &command_as_user($postgres_login, 0, $cmd);
 	}
@@ -1145,10 +1147,9 @@ elsif ($compress == 2) {
         $writer = "bzip2 -c >".quotemeta($path);
         }
 my $cmd = &quote_path($config{'dump_cmd'}).
+	     &host_port_flags().
 	     (!$postgres_login ? "" :
 	      &supports_pgpass() ? " -U $postgres_login" : " -u").
-	     ($config{'host'} ? " -h $config{'host'}" : "").
-	     ($config{'port'} ? " -p $config{'port'}" : "").
 	     ($format eq 'p' ? "" : " -b").
 	     $tablesarg.
 	     " -F$format $db | $writer";
@@ -1176,10 +1177,9 @@ sub restore_database
 my ($db, $path, $only, $clean, $tables) = @_;
 my $tablesarg = join(" ", map { " -t ".quotemeta('"'.$_.'"') } @$tables);
 my $cmd = &quote_path($config{'rstr_cmd'}).
+	     &host_port_flags().
 	     (!$postgres_login ? "" :
 	      &supports_pgpass() ? " -U $postgres_login" : " -u").
-	     ($config{'host'} ? " -h $config{'host'}" : "").
-	     ($config{'port'} ? " -p $config{'port'}" : "").
 	     ($only ? " -a" : "").
 	     ($clean ? " -c" : "").
 	     $tablesarg.
@@ -1251,6 +1251,27 @@ else {
 	$cmd .= " <$loginfile";
 	}
 return $cmd;
+}
+
+# host_port_flags()
+# Returns flags to set the correct host and post for postgreSQL CLI commands
+sub host_port_flags
+{
+local $sslmode = $config{'sslmode'};
+$sslmode =~ s/_/-/g;
+if ($sslmode) {
+	my @rv;
+	push(@rv, "host=".$config{'host'}) if ($config{'host'});
+	push(@rv, "port=".$config{'port'}) if ($config{'port'});
+	push(@rv, "sslmode=".$sslmode) if ($sslmode);
+	return @rv ? " '".join(" ", @rv)."'" : "";
+	}
+else {
+	my $rv = "";
+	$rv .= " -h $config{'host'}" if ($config{'host'});
+	$rv .= " -p $config{'port'}" if ($config{'port'});
+	return $rv;
+	}
 }
 
 # extract_grants(field)
