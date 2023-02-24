@@ -1489,8 +1489,9 @@ return $two eq "\037\213" ? 1 :
 # undef on success, or an error message on failure.
 sub backup_database
 {
-local ($db, $file, $compress, $drop, $where, $charset, $compatible,
+my ($db, $file, $compress, $drop, $where, $charset, $compatible,
        $tables, $user, $single, $quick, $force, $parameters) = @_;
+my $writer;
 if ($compress == 0) {
 	$writer = "cat >".quotemeta($file);
 	}
@@ -1500,24 +1501,24 @@ elsif ($compress == 1) {
 elsif ($compress == 2) {
 	$writer = "bzip2 -c >".quotemeta($file);
 	}
-local $dropsql = $drop ? "--add-drop-table" : "";
-local $singlesql = $single ? "--single-transaction" : "";
-local $forcesql = $force ? "--force" : "";
-local $quicksql = $quick ? "--quick" : "";
-local $parameterssql = $parameters ? quotemeta($parameters) : "";
-local $wheresql = $where ? "--where=".quotemeta($in{'where'}) : "";
-local $charsetsql = $charset ?
+my $dropsql = $drop ? "--add-drop-table" : "";
+my $singlesql = $single ? "--single-transaction" : "";
+my $forcesql = $force ? "--force" : "";
+my $quicksql = $quick ? "--quick" : "";
+my $parameterssql = $parameters ? quotemeta($parameters) : "";
+my $wheresql = $where ? "--where=".quotemeta($in{'where'}) : "";
+my $charsetsql = $charset ?
 	"--default-character-set=".quotemeta($charset) : "";
-local $compatiblesql = @$compatible ?
+my $compatiblesql = @$compatible ?
 	"--compatible=".join(",", @$compatible) : "";
-local $quotingsql = &supports_quoting() ? "--quote-names" : "";
-local $routinessql = &supports_routines() ? "--routines" : "";
-local $tablessql = join(" ", map { quotemeta($_) } @$tables);
-local $eventssql = &supports_mysqldump_events() ? "--events" : "";
-local $gtidsql = "";
+my $quotingsql = &supports_quoting() ? "--quote-names" : "";
+my $routinessql = &supports_routines() ? "--routines" : "";
+my $tablessql = join(" ", map { quotemeta($_) } @$tables);
+my $eventssql = &supports_mysqldump_events() ? "--events" : "";
+my $gtidsql = "";
 eval {
-	$main::error_must_die = 1;
-	local $d = &execute_sql($master_db, "show variables like 'gtid_mode'");
+	local $main::error_must_die = 1;
+	my $d = &execute_sql($master_db, "show variables like 'gtid_mode'");
 	if (@{$d->{'data'}} && uc($d->{'data'}->[0]->[1]) eq 'ON' &&
 	    &compare_version_numbers($mysql_version, "5.6") >= 0) {
 		# Add flag to support GTIDs
@@ -1529,11 +1530,11 @@ if ($user && $user ne "root") {
 	$writer = &command_as_user($user, 0, $writer);
 	}
 &set_authstr_env();
-local $cmd = "$config{'mysqldump'} $authstr $dropsql $singlesql $forcesql $quicksql $parameterssql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql $eventssql $gtidsql | $writer";
+my $cmd = "$config{'mysqldump'} $authstr $dropsql $singlesql $forcesql $quicksql $parameterssql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql $eventssql $gtidsql | $writer";
 if (&shell_is_bash()) {
 	$cmd = "set -o pipefail ; $cmd";
 	}
-local $out = &backquote_logged("($cmd) 2>&1");
+my $out = &backquote_logged("($cmd) 2>&1");
 if ($? || !-s $file || $out =~ /Aborted\s+connection|max_allowed_packet/i) {
 	return $out;
 	}
