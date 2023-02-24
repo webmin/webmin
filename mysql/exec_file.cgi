@@ -39,7 +39,8 @@ if ($cmd) {
 	&has_command($prog) ||
 		&error(&text('exec_ecompress', "<tt>$prog</tt>"));
 	$tempfile = &transname();
-	$out = &backquote_command("$cmd <$file 2>&1 >$tempfile");
+	$out = &backquote_command(
+		"$cmd <".quotemeta($file)." 2>&1 >".quotemeta($tempfile));
 	if ($?) {
 		&error(&text('exec_ecompress2', "<pre>$out</pre>"));
 		}
