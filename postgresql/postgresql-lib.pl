@@ -1125,22 +1125,33 @@ return $config{'host'} eq '' || $config{'host'} eq 'localhost' ||
        &to_ipaddress($config{'host'}) eq &to_ipaddress(&get_system_hostname());
 }
 
-# backup_database(database, dest-path, format, [&only-tables], [run-as-user])
+# backup_database(database, dest-path, format, [&only-tables], [run-as-user],
+# 		  [compress-mode])
 # Executes the pg_dump command to backup the specified database to the
 # given destination path. Returns undef on success, or an error message
 # on failure.
 sub backup_database
 {
-local ($db, $path, $format, $tables, $user) = @_;
-local $tablesarg = join(" ", map { " -t ".quotemeta('"'.$_.'"') } @$tables);
-local $cmd = &quote_path($config{'dump_cmd'}).
+my ($db, $path, $format, $tables, $user, $compress) = @_;
+my $tablesarg = join(" ", map { " -t ".quotemeta('"'.$_.'"') } @$tables);
+my $writer;
+if ($compress == 0) {
+        $writer = "cat >".quotemeta($path);
+        }
+elsif ($compress == 1) {
+        $writer = "gzip -c >".quotemeta($path);
+        }
+elsif ($compress == 2) {
+        $writer = "bzip2 -c >".quotemeta($path);
+        }
+my $cmd = &quote_path($config{'dump_cmd'}).
 	     (!$postgres_login ? "" :
 	      &supports_pgpass() ? " -U $postgres_login" : " -u").
 	     ($config{'host'} ? " -h $config{'host'}" : "").
 	     ($config{'port'} ? " -p $config{'port'}" : "").
 	     ($format eq 'p' ? "" : " -b").
 	     $tablesarg.
-	     " -F$format -f ".&quote_path($path)." $db";
+	     " -F$format $db | $writer";
 if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
 	# Postgres connections have to be made as the 'postgres' Unix user
 	$cmd = &command_as_user($postgres_login, 0, $cmd);
@@ -1150,7 +1161,7 @@ elsif ($user) {
 	$cmd = &command_as_user($user, 0, $cmd);
 	}
 $cmd = &command_with_login($cmd);
-local $out = &backquote_logged("$cmd 2>&1");
+my $out = &backquote_logged("$cmd 2>&1");
 if ($? || $out =~ /could not|error|failed/i) {
 	return $out;
 	}
@@ -1162,9 +1173,9 @@ return undef;
 # Returns undef on success, or an error message on failure.
 sub restore_database
 {
-local ($db, $path, $only, $clean, $tables) = @_;
-local $tablesarg = join(" ", map { " -t ".quotemeta('"'.$_.'"') } @$tables);
-local $cmd = &quote_path($config{'rstr_cmd'}).
+my ($db, $path, $only, $clean, $tables) = @_;
+my $tablesarg = join(" ", map { " -t ".quotemeta('"'.$_.'"') } @$tables);
+my $cmd = &quote_path($config{'rstr_cmd'}).
 	     (!$postgres_login ? "" :
 	      &supports_pgpass() ? " -U $postgres_login" : " -u").
 	     ($config{'host'} ? " -h $config{'host'}" : "").
@@ -1177,7 +1188,7 @@ if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
 	$cmd = &command_as_user($postgres_login, 0, $cmd);
 	}
 $cmd = &command_with_login($cmd);
-local $out = &backquote_logged("$cmd 2>&1");
+my $out = &backquote_logged("$cmd 2>&1");
 if ($? || $out =~ /could not|error|failed/i) {
 	return $out;
 	}

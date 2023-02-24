@@ -81,6 +81,7 @@ else {
 	$config{'backup_'.$in{'db'}} = $in{'path'};
 	$config{'backup_mkdir_'.$in{'db'}} = $in{'mkdir'};
 	$config{'backup_format_'.$in{'db'}} = $in{'format'};
+	$config{'backup_compress_'.$in{'db'}} = $in{'compress'};
 	$config{'backup_tables_'.$in{'db'}} = join(" ", @tables);
 	if ($in{'save'}) {
 		&save_module_config();
@@ -94,6 +95,8 @@ if (!$in{'save'}) {
 	@dbs = $in{'all'} ? @alldbs : ( $in{'db'} );
 	$suf = $in{'format'} eq "p" ? "sql" :
 	       $in{'format'} eq "t" ? "tar" : "post";
+	$suf .= ($in{'compress'} == 1 ? ".gz" :
+		 $in{'compress'} == 2 ? ".bz2" : "");
         if ($cmode == 1) {
                 # Run and check before-backup command (for all DBs)
                 $bok = &execute_before(undef, STDOUT, 1, $in{'file'}, undef);
@@ -123,7 +126,8 @@ if (!$in{'save'}) {
                                 next;
                                 }
 			}
-		$err = &backup_database($db, $path, $in{'format'}, \@tables);
+		$err = &backup_database($db, $path, $in{'format'}, \@tables,
+					undef, $in{'compress'});
 		if ($err) {
 			print "$main::whatfailed : ",
 			      &text('backup_ebackup',"<pre>$err</pre>"),"<p>\n";
