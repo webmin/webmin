@@ -245,9 +245,8 @@ function aclsDialog() {
 }
 
 function aclsSelected() {
-    var mainForm = $('#list_form').serialize(),
-        aclsForm = $('#aclsForm').serialize();
-        $('#list_form').attr('action', "setfacl.cgi?" + mainForm + "&" + aclsForm);
+    var aclsForm = $('#aclsForm').serialize();
+        $('#list_form').attr('action', "setfacl.cgi?" + aclsForm);
         $('#list_form').submit();
 }
 

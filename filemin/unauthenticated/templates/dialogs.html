@@ -226,9 +226,9 @@
                         <div class="row">
                             <div class="col-sm-12">
                             <label>$text{'acls_action'}</label><br>
-                                <select name="opts">
+                                <select name="action">
                                   <option value=""></option>
-                                  <option value="-m">Modify (-m)</option>
+                                  <option selected value="-m">Modify (-m)</option>
                                   <option value="-x">Remove (-x)</option>
                                   <option value="-b">Remove all extended (-b)</option>
                                   <option value="-k">Remove default (-k)</option>
@@ -252,11 +252,13 @@
                                 <label>$text{'acls_perms'}</label><br>
                                 <select name="perms">
                                   <option value=""></option>              
-                                  <option value="r">r</option>
-                                  <option value="w">w</option>
-                                  <option value="rw">rw</option>
-                                  <option value="rwx">rwx</option>
+                                  <option value="---">---</option>
+                                  <option value="r--">r--</option>
+                                  <option value="-w-">-w-</option>
+                                  <option value="--x">--x</option>
+                                  <option value="rw-">rw-</option>
                                   <option value="r-x">r-x</option>
+                                  <option value="rwx">rwx</option>
                                 </select>
                             </div>
                             <div class="col-sm-3">
