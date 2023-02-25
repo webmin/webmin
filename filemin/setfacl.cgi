@@ -41,7 +41,7 @@ my $args = "$action $types $recursive";
 $args =~ s/\s+/ /g;
 $args = &trim($args);
 $args =~ s/[\`\$\;\/\'\"\?\%\&\#\*\(\)\+]//g;
-foreach $file (@files) {
+foreach my $file (@files) {
     my $qfile = quotemeta("$path/$file");
     next if (!-r "$path/$file");
     my $fullcmd = "$cmd $args $qfile";
