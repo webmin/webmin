@@ -20,6 +20,11 @@ my $recursive = $in{'recursive'} ? " -R" : "";
 my $extra = $in{'manual'};
 # Apply to (arr)
 my @apply_to = split(/\0/, $in{'apply_to'});
+
+# Delete doesn't allow perms
+$perms = "" if ($action eq '-x');
+
+# Build params
 my @types;
 foreach my $type (@apply_to) {
     if ($user && $type eq 'u') {
@@ -34,9 +39,13 @@ foreach my $type (@apply_to) {
     }
 my $cmd = &has_command('setfacl');
 error($text{'acls_error'}) if (!$cmd);
+
+# Params are not accepted in clear mode
 my $types;
-$types = join(',',@types) if (@types);
-$types .= " $extra" if ($extra);
+if ($action ne '-b' && $action ne '-k') {
+    $types = join(',',@types) if (@types);
+    $types .= " $extra" if ($extra);
+    }
 my $args = "$action $types $recursive";
 $args =~ s/\s+/ /g;
 $args = &trim($args);
