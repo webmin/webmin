@@ -189,7 +189,7 @@ sub print_interface {
         our $acl_manual = &ui_details(
             { title => $text{'acls_manual'},
               content => &ui_textbox("manual", undef, 40,
-                    undef, undef, "placeholder='-s user::rwx,group::---,other::---,user:joe:r-x'"),
+                    undef, undef, "placeholder='-m u:joe:rw-,g:stream:r-x -R'"),
               html => 1 } );
         }
 
