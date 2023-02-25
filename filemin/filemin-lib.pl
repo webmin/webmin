@@ -176,12 +176,10 @@ sub print_interface {
     # User and group lists for acls
     if (&has_command('setfacl')) {
         &foreign_require('useradmin');
-        my @allulist = &useradmin::list_users();
-        my @ulist = &useradmin::list_allowed_users(\%access, \@allulist);
-        @ulist = sort map { $_->{'user'} } @ulist;
-        my @allglist = &useradmin::list_groups();
-        my @glist = &useradmin::list_allowed_groups(\%access, \@allglist);
-        @glist = sort map { $_->{'group'} } @glist;
+        my @ulist = &get_users_list();
+        @ulist = sort map { $_->[0] } @ulist;
+        my @glist = &get_groups_list();
+        @glist = sort map { $_->[0] } @glist;
         unshift(@ulist, "");
         unshift(@glist, "");
         our $acl_user_select = &ui_select("user", "user", \@ulist);
