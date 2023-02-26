@@ -118,12 +118,12 @@ return wantarray ? ($rv, $out) : $rv;
 # get_postgresql_version([from-command])
 sub get_postgresql_version
 {
-local ($fromcmd) = @_;
-local $main::error_must_die = 1;
+my ($fromcmd) = @_;
 return $postgresql_version_cache if (defined($postgresql_version_cache));
-local $rv;
+my $rv;
 if (!$fromcmd) {
 	eval {
+		local $main::error_must_die = 1;
 		local $v = &execute_sql_safe($config{'basedb'},
 					     'select version()');
 		$v = $v->{'data'}->[0]->[0];
@@ -133,7 +133,8 @@ if (!$fromcmd) {
 		};
 	}
 if (!$rv || $@) {
-	local $out = &backquote_command(&quote_path($config{'psql'})." -V 2>&1 <$null_file");
+	my $out = &backquote_command(
+		&quote_path($config{'psql'})." -V 2>&1 <$null_file");
 	$rv = $out =~ /\s([0-9\.]+)/ ? $1 : undef;
 	}
 $postgresql_version_cache = $rv;
