@@ -1170,25 +1170,28 @@ if ($? || $out =~ /could not|error|failed/i) {
 return undef;
 }
 
-# restore_database(database, source-path, only-data, clear-db, [&only-tables])
+# restore_database(database, source-path, only-data, clear-db, [&only-tables],
+# 		   [login, password])
 # Restores the contents of a PostgreSQL backup into the specified database.
 # Returns undef on success, or an error message on failure.
 sub restore_database
 {
-my ($db, $path, $only, $clean, $tables) = @_;
+my ($db, $path, $only, $clean, $tables, $login, $pass) = @_;
 my $tablesarg = join(" ", map { " -t ".quotemeta('"'.$_.'"') } @$tables);
+$login ||= $postgres_login;
+$pass ||= $postgres_pass;
 my $cmd = &quote_path($config{'rstr_cmd'}).
 	     &host_port_flags().
-	     (!$postgres_login ? "" :
-	      &supports_pgpass() ? " -U $postgres_login" : " -u").
+	     (!$login ? "" :
+	      &supports_pgpass() ? " -U $login" : " -u").
 	     ($only ? " -a" : "").
 	     ($clean ? " -c" : "").
 	     $tablesarg.
 	     " -d $db ".&quote_path($path);
-if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
-	$cmd = &command_as_user($postgres_login, 0, $cmd);
+if ($postgres_sameunix && defined(getpwnam($login))) {
+	$cmd = &command_as_user($login, 0, $cmd);
 	}
-$cmd = &command_with_login($cmd);
+$cmd = &command_with_login($cmd, $login, $pass);
 my $out = &backquote_logged("$cmd 2>&1");
 if ($? || $out =~ /could not|error|failed/i) {
 	return $out;
