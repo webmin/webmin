@@ -21,9 +21,7 @@ if ($module_info{'usermin'}) {
 	# runs as the Usermin user
 	&switch_to_remote_user();
 	&create_user_config_dirs();
-	$postgres_login = $userconfig{'login'};
-	$postgres_pass = $userconfig{'pass'};
-	$postgres_sameunix = 0;
+	&set_login_pass(0, $userconfig{'login'}, $userconfig{'pass'});
 	%access = ( 'backup' => 1,
 		    'restore' => 1,
 		    'tables' => 1,
@@ -36,14 +34,12 @@ else {
 	# Login and password is determined by ACL in Webmin
 	%access = &get_module_acl();
 	if ($access{'user'} && !$use_global_login) {
-		$postgres_login = $access{'user'};
-		$postgres_pass = $access{'pass'};
-		$postgres_sameunix = $access{'sameunix'};
+		&set_login_pass(
+			$access{'sameunix'}, $access{'user'}, $access{'pass'});
 		}
 	else {
-		$postgres_login = $config{'login'};
-		$postgres_pass = $config{'pass'};
-		$postgres_sameunix = $config{'sameunix'};
+		&set_login_pass(
+			$config{'sameunix'}, $config{'login'}, $config{'pass'});
 		}
 	$max_dbs = $config{'max_dbs'};
 	$commands_file = "$module_config_directory/commands";
@@ -1342,6 +1338,16 @@ return $two eq "\037\213" ? 1 :
        $two eq "\037\235" ? 2 :
        $two eq "PK" ? 4 :
        $two eq "BZ" ? 3 : 0;
+}
+
+# set_login_pass(same-unix, login, password)
+# Sets the credentials to be used for all SQL commands
+sub set_login_pass
+{
+my ($sameunix, $login, $pass) = @_;
+$postgres_sameunix = $sameunix;
+$postgres_login = $login;
+$postgres_pass = $pass;
 }
 
 1;
