@@ -182,12 +182,16 @@ sub print_interface {
         @glist = sort map { $_->[0] } @glist;
         unshift(@ulist, "");
         unshift(@glist, "");
-        our $acl_user_select = &ui_select("user", "user", \@ulist);
-        our $acl_group_select = &ui_select("group", "group", \@glist);
+        our $acl_user_select = (!@ulist || @ulist > 1000) ? 
+                &ui_textbox("user", undef, 20, undef, undef, "placeholder='root'") :
+                &ui_select("user", "user", \@ulist);
+        our $acl_group_select = (!@glist || @glist > 1000) ? 
+                &ui_textbox("group", undef, 20, undef, undef, "placeholder='games'") :
+                &ui_select("group", "group", \@glist);
         our $acl_manual = &ui_details(
             { title => $text{'acls_manual'},
               content => &ui_textbox("manual", undef, 40,
-                    undef, undef, "placeholder='-m u:joe:rw-,g:stream:r-x -R'"),
+                    undef, undef, "placeholder='-m u:root:rw-,g:stream:r-x -R'"),
               html => 1 } );
         }
 
