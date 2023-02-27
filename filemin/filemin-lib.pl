@@ -176,18 +176,8 @@ sub print_interface {
     # User and group lists for acls
     if (&has_command('setfacl')) {
         &foreign_require('useradmin');
-        my @ulist = &get_users_list();
-        @ulist = sort map { $_->[0] } @ulist;
-        my @glist = &get_groups_list();
-        @glist = sort map { $_->[0] } @glist;
-        unshift(@ulist, "");
-        unshift(@glist, "");
-        our $acl_user_select = (!@ulist || @ulist > 1000) ? 
-                &ui_textbox("user", undef, 20, undef, undef, "placeholder='root'") :
-                &ui_select("user", "user", \@ulist);
-        our $acl_group_select = (!@glist || @glist > 1000) ? 
-                &ui_textbox("group", undef, 20, undef, undef, "placeholder='games'") :
-                &ui_select("group", "group", \@glist);
+        our $acl_user_select = &ui_textbox("user", undef, 20, undef, undef, "placeholder='root'");
+        our $acl_group_select = &ui_textbox("group", undef, 20, undef, undef, "placeholder='games'");
         our $acl_manual = &ui_details(
             { title => $text{'acls_manual'},
               content => &ui_textbox("manual", undef, 40,
