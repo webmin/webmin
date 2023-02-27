@@ -176,8 +176,8 @@ sub print_interface {
     # User and group lists for acls
     if (&has_command('setfacl')) {
         &foreign_require('useradmin');
-        our $acl_user_select = &ui_textbox("user", undef, 20, undef, undef, "placeholder='root'");
-        our $acl_group_select = &ui_textbox("group", undef, 20, undef, undef, "placeholder='games'");
+        our $acl_user_select = &ui_user_textbox("user", $realuser);
+        our $acl_group_select = &ui_user_textbox("group", $realuser);
         our $acl_manual = &ui_details(
             { title => $text{'acls_manual'},
               content => &ui_textbox("manual", undef, 40,
