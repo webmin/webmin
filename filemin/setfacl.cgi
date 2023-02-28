@@ -45,7 +45,7 @@ my $types;
 if ($action ne '-b' && $action ne '-k') {
     $types = quotemeta(join(',',@types)) if (@types);
     if ($extra) {
-        my @extra = split(/\s+/, $extra);
+        my @extra = split(/\s/, $extra);
         @extra = map { quotemeta($_) } @extra;
         $types .= " ".join(' ', @extra) ;
         }
