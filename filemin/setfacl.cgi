@@ -54,13 +54,13 @@ my $args = quotemeta($action)." ".$types." ".quotemeta($recursive);
 $args =~ s/\s+/ /g;
 $args = &trim($args);
 foreach my $file (@files) {
-    my $qfile = quotemeta("$path/$file");
-    next if (!-r "$path/$file");
+    my $qfile = quotemeta("$cwd/$file");
+    next if (!-r "$cwd/$file");
     my $fullcmd = "$cmd $args $qfile";
     my $out = &backquote_logged("$fullcmd 2>&1 >/dev/null </dev/null");
     if ($?) {
         $out =~ s/^setfacl: //;
-        &error(&html_escape("$cmd $args $path/$file : $out"));
+        &error(&html_escape("$cmd $args $cwd/$file : $out"));
         }    
     }
 
