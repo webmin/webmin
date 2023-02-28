@@ -43,13 +43,16 @@ error($text{'acls_error'}) if (!$cmd);
 # Params are not accepted in clear mode
 my $types;
 if ($action ne '-b' && $action ne '-k') {
-    $types = join(',',@types) if (@types);
-    $types .= " $extra" if ($extra);
+    $types = quotemeta(join(',',@types)) if (@types);
+    if ($extra) {
+        my @extra = split(/\s+/, $extra);
+        @extra = map { quotemeta($_) } @extra;
+        $types .= " ".join(' ', @extra) ;
+        }
     }
-my $args = "$action $types $recursive";
+my $args = quotemeta($action)." ".$types." ".quotemeta($recursive);
 $args =~ s/\s+/ /g;
 $args = &trim($args);
-$args =~ s/[\`\$\;\/\'\"\?\%\&\#\*\(\)\+]//g;
 foreach my $file (@files) {
     my $qfile = quotemeta("$path/$file");
     next if (!-r "$path/$file");
