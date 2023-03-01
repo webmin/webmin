@@ -88,6 +88,54 @@
   </form>
 </div>
 
+<div id="aclsDialog" class="modal">
+  <form id="aclsForm">
+      <div class="form-group">
+          <label>$text{'acls_action'}</label><br>
+          <select name="action">
+              <option value=""></option>
+              <option selected value="-m">Modify (-m)</option>
+              <option value="-x">Remove (-x)</option>
+              <option value="-b">Remove all extended (-b)</option>
+              <option value="-k">Remove default (-k)</option>
+          </select><br><br>
+          
+          <label>$text{'acls_applyto'}</label><br>
+          <select multiple size=4 name="apply_to">
+              <option value="u">$text{'acls_user'}</option>
+              <option value="g">$text{'acls_group'}</option>
+              <option value="m">$text{'acls_mask'}</option>
+              <option value="o">$text{'acls_other'}</option>
+          </select><br><br>
+          
+          <label>$text{'acls_perms'}</label><br>
+          <select name="perms">
+              <option value=""></option>
+              <option value="---">---</option>
+              <option value="r--">r--</option>
+              <option value="-w-">-w-</option>
+              <option value="--x">--x</option>
+              <option value="r-x">r-x</option>
+              <option value="rw-">rw-</option>
+              <option value="-wx">-wx</option>
+              <option value="rwx">rwx</option>
+          </select><br><br>
+          
+          <label>$text{'acls_user'}</label><br>
+          $acl_user_select<br><br>
+          
+          <label>$text{'acls_group'}</label><br>
+          $acl_group_select<br><br>
+          
+          <label>$text{'dialog_recursive'}</label>
+          <input id="acls-recursive" type="checkbox" name="recursive">
+          
+          <br><br>
+          $acl_manual
+      </div>
+  </form>
+</div>
+
 <div id="downFromUrlDialog" class="modal">
   <form id="downFromUrlForm" action="http_download.cgi" method="post">
     <div class="form-group">

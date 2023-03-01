@@ -213,6 +213,85 @@
     </div>
 </div>
 
+<div id="aclsDialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="warning">$text{'acls_selected'}</h4>
+            </div>
+            <div class="modal-body">
+                <form id="aclsForm">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                            <label>$text{'acls_action'}</label><br>
+                                <select name="action">
+                                  <option value=""></option>
+                                  <option selected value="-m">Modify (-m)</option>
+                                  <option value="-x">Remove (-x)</option>
+                                  <option value="-b">Remove all extended (-b)</option>
+                                  <option value="-k">Remove default (-k)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>$text{'acls_applyto'}</label><br>
+                                <select multiple size=4 name="apply_to">
+                                  <option value="u">$text{'acls_user'}</option>
+                                  <option value="g">$text{'acls_group'}</option>
+                                  <option value="m">$text{'acls_mask'}</option>
+                                  <option value="o">$text{'acls_other'}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <label>$text{'acls_perms'}</label><br>
+                                <select name="perms">
+                                  <option value=""></option>              
+                                  <option value="---">---</option>
+                                  <option value="r--">r--</option>
+                                  <option value="-w-">-w-</option>
+                                  <option value="--x">--x</option>
+                                  <option value="r-x">r-x</option>
+                                  <option value="rw-">rw-</option>
+                                  <option value="-wx">-wx</option>
+                                  <option value="rwx">rwx</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <label>$text{'acls_user'}</label><br>
+                                $acl_user_select
+                            </div>
+                            <div class="col-sm-3">
+                                <label>$text{'acls_group'}</label><br>
+                                $acl_group_select
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>$text{'dialog_recursive'}</label>
+                                <input id="acls-recursive" type="checkbox" name="recursive">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                $acl_manual
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="aclsSelected()">$text{'dialog_change'}</button>
+                <button type="button" class="btn bnt-default" data-dismiss="modal">$text{'dialog_cancel'}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="chmodDialog" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">

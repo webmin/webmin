@@ -173,6 +173,17 @@ sub print_interface {
     %allowed_for_edit = map { $_ => 1} @allowed_for_edit;
     my %tinfo = &get_theme_info($current_theme);
 
+    # User and group lists for acls
+    if (&has_command('setfacl')) {
+        our $acl_user_select = &ui_user_textbox("user", $realuser);
+        our $acl_group_select = &ui_user_textbox("group", $realuser);
+        our $acl_manual = &ui_details(
+            { title => $text{'acls_manual'},
+              content => &ui_textbox("manual", undef, 40,
+                    undef, undef, "placeholder='-m u:root:rw-,g:stream:r-x -R'"),
+              html => 1 } );
+        }
+
     # Interface for Bootstrap powered themes
     if ($tinfo{'bootstrap'}) {
 
