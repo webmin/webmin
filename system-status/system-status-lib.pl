@@ -179,9 +179,11 @@ if ($info->{'mem'}) {
 		}
 	}
 if ($info->{'disk_total'}) {
+	my $disk_used = $info->{'disk_fs'} ?
+	     $info->{'disk_fs'}->[0]->{'used'} : undef;
 	push(@stats, [ "diskused",
-		       $info->{'disk_total'}-$info->{'disk_free'},
-		       $info->{'disk_total'} ]);
+	               $disk_used // $info->{'disk_total'}-$info->{'disk_free'},
+	               $info->{'disk_total'} ]);
 	}
 
 # Get network traffic counts since last run
