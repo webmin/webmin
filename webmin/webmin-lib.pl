@@ -2194,24 +2194,35 @@ my $lref = &read_file_lines($temp);
 my $i = 0;
 my $found_req = 0;
 my $found_ca = 0;
+my $found_alt = 0;
 my $altline = "subjectAltName=".join(",", map { "DNS:$_" } @cns);
 foreach my $l (@$lref) {
-	if ($l =~ /^\s*\[\s*v3_req\s*\]/ && !$found_req) {
-		splice(@$lref, $i+1, 0, $altline);
-		$found_req = 1;
-		}
-	if ($l =~ /^\s*\[\s*v3_ca\s*\]/ && !$found_ca) {
-		splice(@$lref, $i+1, 0, $altline);
-		$found_ca = 1;
+	if ($l =~ /^\s*subjectAltName\s*=/) {
+		$lref->[$i] = $altline;
+		$found_alt++;
 		}
 	$i++;
 	}
-# If v3_req or v3_ca sections are missing, add at end
-if (!$found_req) {
-	push(@$lref, "[ v3_req ]", $altline);
-	}
-if (!$found_ca) {
-	push(@$lref, "[ v3_ca ]", $altline);
+if (!$found_alt) {
+	$i = 0;
+	foreach my $l (@$lref) {
+		if ($l =~ /^\s*\[\s*v3_req\s*\]/ && !$found_req) {
+			splice(@$lref, $i+1, 0, $altline);
+			$found_req = 1;
+			}
+		if ($l =~ /^\s*\[\s*v3_ca\s*\]/ && !$found_ca) {
+			splice(@$lref, $i+1, 0, $altline);
+			$found_ca = 1;
+			}
+		$i++;
+		}
+	# If v3_req or v3_ca sections are missing, add at end
+	if (!$found_req) {
+		push(@$lref, "[ v3_req ]", $altline);
+		}
+	if (!$found_ca) {
+		push(@$lref, "[ v3_ca ]", $altline);
+		}
 	}
 
 # Add copyall line if needed
