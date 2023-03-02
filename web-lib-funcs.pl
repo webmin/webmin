@@ -12103,7 +12103,7 @@ return { 'type' => 'item',
          'link' => '/'.$minfo->{'dir'}.'/' };
 }
 
-=head2 list_combined_system_info(&data, &in)
+=head2 list_combined_system_info(&data, &in, [&modskip])
 
 Returns an array of objects, each representing a block of system information
 to display. Each is a hash ref with the following keys :
@@ -12179,15 +12179,17 @@ use where a system info block has a form that submits to itself.
 =cut
 sub list_combined_system_info
 {
-my ($data, $in) = @_;
+my ($data, $in, $modskip) = @_;
 &load_theme_library();
+$modskip ||= [];
 foreach my $m (&get_all_module_infos()) {
+	next if (grep(/^\Q$m->{'dir'}\E$/, @{$modskip}));
 	my $dir = &module_root_directory($m->{'dir'});
 	my $mfile = "$dir/system_info.pl";
 	next if (!-r $mfile);
 	&foreign_require($m->{'dir'}, "system_info.pl");
 	foreach my $i (&foreign_call($m->{'dir'}, "list_system_info",
-				     $data, $in)) {
+				     $data, $in, $modskip)) {
 		$i->{'module'} = $m->{'dir'};
 		push(@rv, $i);
 		}

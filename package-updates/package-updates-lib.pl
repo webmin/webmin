@@ -46,7 +46,7 @@ if (!$get_software_packages_cache) {
 return $get_software_packages_cache;
 }
 
-# list_current(nocache)
+# list_current([nocache])
 # Returns a list of packages and versions for installed software. Keys are :
 #  name - The my package name (ie. CSWapache2)
 #  update - Name used to refer to it by the updates system (ie. apache2)
@@ -418,15 +418,16 @@ if (defined(&software::update_system_operations)) {
 return ( );
 }
 
-# list_possible_updates([nocache])
+# list_possible_updates([nocache], [nocache-no-data])
 # Returns a list of updates that are available. Each element in the array
 # is a hash ref containing a name, version, description and severity flag.
 # Intended for calling from themes. Nocache 0=cache everything, 1=flush all
-# caches, 2=flush only current
+# caches, 2=flush only current. Nocache-no-data prohibits collecting data
 sub list_possible_updates
 {
-my ($nocache) = @_;
+my ($nocache, $nocache_no_data) = @_;
 my @rv;
+return @rv if ($nocache_no_data);
 my @current = &list_current($nocache);
 if (&supports_updates_available()) {
 	# Software module supplies a function that can list just packages

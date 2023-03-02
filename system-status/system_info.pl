@@ -10,7 +10,8 @@ our (%text, %gconfig, $module_name, %config);
 # Returns general information about the system, such as available disk space
 sub list_system_info
 {
-my $info = &get_collected_info();
+my ($data, $in, $modskip) = @_;
+my $info = &get_collected_info(undef, $modskip);
 my @rv;
 my @table;
 my @raw = $info;
