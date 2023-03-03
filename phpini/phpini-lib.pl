@@ -378,12 +378,21 @@ if ($file && &get_config_fmt($file) eq "ini" &&
 	}
 }
 
+# should_switch_user(file)
+# Returns 1 if file ops should be done as the access user
+sub should_switch_user
+{
+my ($file) = @_;
+return $access{'user'} && $access{'user'} ne 'root' && $< == 0 &&
+       !&is_under_directory("/etc", $file);
+}
+
 # get_config_as_user([file])
 # Like get_config, but reads with permissions of the ACL user
 sub get_config_as_user
 {
 local ($file) = @_;
-if ($access{'user'} && $access{'user'} ne 'root' && $< == 0) {
+if (&should_switch_user($file)) {
 	local $rv = &eval_as_unix_user(
 		$access{'user'}, sub { &get_config($file) });
 	if ((!$rv || !@$rv) && $!) {
@@ -400,7 +409,7 @@ else {
 sub read_file_contents_as_user
 {
 local ($file) = @_;
-if ($access{'user'} && $access{'user'} ne 'root' && $< == 0) {
+if (&should_switch_user($file)) {
 	return &eval_as_unix_user(
 		$access{'user'}, sub { &read_file_contents($file) });
 	}
@@ -414,7 +423,7 @@ else {
 sub write_file_contents_as_user
 {
 local ($file, $data) = @_;
-if ($access{'user'} && $access{'user'} ne 'root' && $< == 0) {
+if (&should_switch_user($file)) {
 	return &eval_as_unix_user(
                 $access{'user'}, sub { &write_file_contents($file, $data) });
 	}
@@ -427,7 +436,7 @@ else {
 sub read_file_lines_as_user
 {
 local @args = @_;
-if ($access{'user'} && $access{'user'} ne 'root' && $< == 0) {
+if (&should_switch_user($file)) {
 	return &eval_as_unix_user(
 		$access{'user'}, sub { &read_file_lines(@args) });
 	}
@@ -441,7 +450,7 @@ else {
 sub flush_file_lines_as_user
 {
 local ($file, $eof, $ignore) = @_;
-if ($access{'user'} && $access{'user'} ne 'root' && $< == 0) {
+if (&should_switch_user($file)) {
 	&eval_as_unix_user($access{'user'}, 
 		sub { &flush_file_lines($file, $eof, $ignore) });
 	}
