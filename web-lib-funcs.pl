@@ -12183,7 +12183,7 @@ my ($data, $in, $modskip) = @_;
 &load_theme_library();
 $modskip ||= [];
 foreach my $m (&get_all_module_infos()) {
-	next if (grep(/^\Q$m->{'dir'}\E$/, @{$modskip}));
+	next if (&indexof($m->{'dir'}, @{$modskip}) > -1);
 	my $dir = &module_root_directory($m->{'dir'});
 	my $mfile = "$dir/system_info.pl";
 	next if (!-r $mfile);
@@ -12194,7 +12194,7 @@ foreach my $m (&get_all_module_infos()) {
 		push(@rv, $i);
 		}
 	}
-if (!grep(/^webmin$/, @{$modskip}) && &foreign_available("webmin")) {
+if ((&indexof('webmin', @{$modskip}) == -1) && &foreign_available("webmin")) {
 	# Merge in old-style notification API
 	&foreign_require("webmin");
 	foreach my $n (&webmin::get_webmin_notifications()) {

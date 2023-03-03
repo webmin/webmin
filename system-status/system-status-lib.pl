@@ -65,7 +65,7 @@ if (&foreign_check("mount")) {
 # Available package updates
 if (&foreign_installed("package-updates") && $config{'collect_pkgs'}) {
 	&foreign_require("package-updates");
-	my $poss_collect_blocked = grep(/^\Qpackage-updates\E$/, @{$modskip});
+	my $poss_collect_blocked = (&indexof('package-updates', @{$modskip}) > -1);
 	my $poss_current = !$poss_collect_blocked ? 2 : undef;
 	my @poss = &package_updates::list_possible_updates(undef, $poss_collect_blocked);
 	$info->{'poss'} = \@poss;
