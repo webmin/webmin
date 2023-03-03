@@ -1147,8 +1147,11 @@ my %miniserv;
 &get_miniserv_config(\%miniserv);
 &load_theme_library();	# So that UI functions work
 
-# Need OS upgrade
-if (&foreign_available("webmin")) {
+# Need OS upgrade, but only once per day
+my $now = time();
+if (&foreign_available("webmin") &&
+    (!$config{'last_os_check'} ||
+     $now - $config{'last_os_check'} > 24*60*60)) {
 	my %realos = &detect_operating_system(undef, 1);
 	if (($realos{'os_version'} ne $gconfig{'os_version'} ||
 	     $realos{'real_os_version'} ne $gconfig{'real_os_version'} ||
@@ -1167,6 +1170,8 @@ if (&foreign_available("webmin")) {
 		    &ui_form_end([ [ undef, $text{'os_fix'} ] ])
 		    );
 		}
+	$config{'last_os_check'} = $now;
+	&save_module_config();
 	}
 
 # Password close to expiry
@@ -1231,7 +1236,6 @@ if (&foreign_check("acl")) {
 	}
 
 # New Webmin version is available, but only once per day
-my $now = time();
 my %raccess = &get_module_acl('root');
 my %rdisallow = map { $_, 1 } split(/\s+/, $raccess{'disallow'} || "");
 my %access = &get_module_acl();
