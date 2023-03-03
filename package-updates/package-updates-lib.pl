@@ -677,10 +677,13 @@ return $mode eq 'updates' || $mode eq 'security' ?
 	&list_possible_updates($nocache) : &list_available($nocache);
 }
 
-# check_reboot_required(after-flag)
+# check_reboot_required([no-collect])
 # Returns 1 if the package system thinks a reboot is needed
+# If the no-collect flag is set, then check won't happen
 sub check_reboot_required
 {
+my ($no_collect) = @_;
+return 0 if ($no_collect);
 if ($gconfig{'os_type'} eq 'debian-linux') {
         return -e "/var/run/reboot-required" ? 1 : 0;
         }

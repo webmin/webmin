@@ -69,7 +69,7 @@ if (&foreign_installed("package-updates") && $config{'collect_pkgs'}) {
 	my $poss_current = !$poss_collect_blocked ? 2 : undef;
 	my @poss = &package_updates::list_possible_updates(undef, $poss_collect_blocked);
 	$info->{'poss'} = \@poss;
-	$info->{'reboot'} = &package_updates::check_reboot_required();
+	$info->{'reboot'} = &package_updates::check_reboot_required($poss_collect_blocked);
 	}
 
 # CPU and drive temps
