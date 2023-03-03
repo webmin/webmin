@@ -905,8 +905,8 @@ if ($_[0] eq "proc" || $_[0] eq "swap" ||
 &clean_language();
 local $out = &backquote_command("df -k ".quotemeta($_[1]), 1);
 &reset_environment();
-if ($out =~ /Mounted on\n\S+\s+(\S+)\s+\S+\s+(\S+)/) {
-	return ($1, $2);
+if ($out =~ /Mounted on\n\S+\s+(?<total>\S+)\s+(?<used>\S+)\s+(?<free>\S+)\s+(?<percent>\d+)/) {
+	return ("$+{total}", "$+{free}", "$+{used}", "$+{percent}");
 	}
 return ( );
 }
@@ -919,8 +919,8 @@ if (&get_mounted($_[1], "*") < 0) { return (); }
 &clean_language();
 local $out = &backquote_command("df -i $_[1]", 1);
 &reset_environment();
-if ($out =~ /Mounted on\n\S+\s+(\S+)\s+\S+\s+(\S+)/) {
-	return ($1, $2);
+if ($out =~ /Mounted on\n\S+\s+(?<total>\S+)\s+(?<used>\S+)\s+(?<free>\S+)\s+(?<percent>\d+)/) {
+	return ("$+{total}", "$+{free}", "$+{used}", "$+{percent}");
 	}
 return ( );
 }

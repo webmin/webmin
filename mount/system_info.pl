@@ -32,9 +32,9 @@ sub list_system_info
                     my $total_nice   = &nice_size($total);
                     my $free         = $disk->{'free'};
                     my $ifree        = $disk->{'ifree'};
-                    my $used         = &nice_size($disk->{'total'} - $disk->{'free'});
-                    my $free_nice    = &nice_size($disk->{'free'});
-                    my $free_percent = 100 - int(($total - $free) / $total * 100);
+                    my $used_nice    = &nice_size($disk->{'used'} // $total - $free);
+                    my $free_nice    = &nice_size($free);
+                    my $free_percent = 100 - ($disk->{'used_percent'} // int(($total - $free) / $total * 100));
                     my $free_percent_html;
                     
                     # Inodes percent
@@ -67,11 +67,11 @@ sub list_system_info
                     if ($itotal) {
                         $ifree_percent_html = "<span><br>".$ifree_percent_html." ($ifree inodes)</span>";
                         $itotal_full = "<span><br>$itotal inodes</span>";
-                        $iused = "<span><br>@{[$disk->{'itotal'} - $disk->{'ifree'}]} inodes</span>";
+                        $iused = "<span><br>@{[$disk->{'iused'} // $disk->{'itotal'} - $disk->{'ifree'}]} inodes</span>";
                         }
                     $html .= &ui_columns_row([$dir, $type,
                                                $free_percent_html . " ($free_nice)$ifree_percent_html",
-                                              "$used$iused",
+                                              "$used_nice$iused",
                                               "$total_nice$itotal_full", $dev_id,]);
                 }
             }
