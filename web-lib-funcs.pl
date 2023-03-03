@@ -12194,7 +12194,7 @@ foreach my $m (&get_all_module_infos()) {
 		push(@rv, $i);
 		}
 	}
-if (&foreign_available("webmin")) {
+if (!grep(/^webmin$/, @{$modskip}) && &foreign_available("webmin")) {
 	# Merge in old-style notification API
 	&foreign_require("webmin");
 	foreach my $n (&webmin::get_webmin_notifications()) {
