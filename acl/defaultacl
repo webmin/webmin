@@ -25,3 +25,4 @@ minsize=1
 nochange=1
 pass=1
 sql=1
+twofactor=1
