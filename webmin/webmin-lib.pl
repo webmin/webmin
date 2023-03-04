@@ -1305,7 +1305,7 @@ if (&foreign_check("package-updates") && &foreign_available("init")) {
 				}
 			}
 		}
-	if (&package_updates::check_reboot_required() && $allow_reboot_required) {
+	if ($allow_reboot_required && &package_updates::check_reboot_required()) {
 		push(@notifs,
 			&ui_form_start("@{[&get_webprefix()]}/init/reboot.cgi").
 			$text{'notif_reboot'}."<p>\n".

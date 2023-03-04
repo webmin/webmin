@@ -24,7 +24,8 @@ our $get_collected_info_cache;
 # Returns a hash reference containing system information
 sub collect_system_info
 {
-my ($manual) = @_;
+my ($manual, $modskip) = @_;
+$modskip ||= [];
 my $info = { };
 
 if (&foreign_check("proc")) {
@@ -64,9 +65,11 @@ if (&foreign_check("mount")) {
 # Available package updates
 if (&foreign_installed("package-updates") && $config{'collect_pkgs'}) {
 	&foreign_require("package-updates");
-	my @poss = &package_updates::list_possible_updates(2, 1);
+	my $poss_collect_blocked = (&indexof('package-updates', @{$modskip}) > -1);
+	my $poss_current = !$poss_collect_blocked ? 2 : undef;
+	my @poss = &package_updates::list_possible_updates(undef, $poss_collect_blocked);
 	$info->{'poss'} = \@poss;
-	$info->{'reboot'} = &package_updates::check_reboot_required();
+	$info->{'reboot'} = &package_updates::check_reboot_required($poss_collect_blocked);
 	}
 
 # CPU and drive temps
@@ -105,7 +108,7 @@ return $info;
 # Returns the most recently collected system information, or the current info
 sub get_collected_info
 {
-my ($manual) = @_;
+my ($manual, $modskip) = @_;
 if (!defined($manual) ||
      defined($manual) && $manual ne 'manual') {
 	if ($get_collected_info_cache) {
@@ -124,7 +127,7 @@ if (!defined($manual) ||
 			}
 		}
 	}
-$get_collected_info_cache ||= &collect_system_info($manual);
+$get_collected_info_cache ||= &collect_system_info($manual, $modskip);
 return $get_collected_info_cache;
 }
 
