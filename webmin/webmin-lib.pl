@@ -89,6 +89,8 @@ our $hidden_announce_file = "$module_config_directory/announce-hidden";
 
 our $postpone_reboot_required = "$module_var_directory/postpone-reboot-required";
 
+our $realos_cache_file = "$module_var_directory/realos-cache";
+
 our $password_change_mod = "passwd";
 our $password_change_path = "/".$password_change_mod."/change_passwd.cgi";
 
@@ -1148,11 +1150,18 @@ my %miniserv;
 &load_theme_library();	# So that UI functions work
 
 # Need OS upgrade, but only once per day
+# XXX use a cache
 my $now = time();
-if (&foreign_available("webmin") &&
-    (!$config{'last_os_check'} ||
-     $now - $config{'last_os_check'} > 24*60*60)) {
-	my %realos = &detect_operating_system(undef, 1);
+if (&foreign_available("webmin")) {
+	my %realos;
+	my @st = stat($realos_cache_file);
+	if (!@st || $now - $st[9] > 24*60*60) {
+		%realos = &detect_operating_system(undef, 1);
+		&write_file($realos_cache_file, \%realos);
+		}
+	else {
+		&read_file($realos_cache_file, \%realos);
+		}
 	if (($realos{'os_version'} ne $gconfig{'os_version'} ||
 	     $realos{'real_os_version'} ne $gconfig{'real_os_version'} ||
 	     $realos{'os_type'} ne $gconfig{'os_type'}) &&
@@ -1170,8 +1179,6 @@ if (&foreign_available("webmin") &&
 		    &ui_form_end([ [ undef, $text{'os_fix'} ] ])
 		    );
 		}
-	$config{'last_os_check'} = $now;
-	&save_module_config();
 	}
 
 # Password close to expiry
@@ -1309,7 +1316,7 @@ if (&foreign_check("package-updates") && &foreign_available("init")) {
 			&ui_form_start("@{[&get_webprefix()]}/init/reboot.cgi").
 			$text{'notif_reboot'}."<p>\n".
 			&ui_form_end([ [ undef, $text{'notif_rebootok'} ],
-					[ 'removenotify', $text{'alert_hide'} ] ]));
+				       [ 'removenotify', $text{'alert_hide'} ] ]));
 		}
 	}
 
