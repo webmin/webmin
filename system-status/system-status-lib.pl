@@ -84,7 +84,7 @@ $info->{'drivetemps'} = \@drive if (@drive);
 # IO input and output
 if (defined(&proc::get_cpu_io_usage)) {
 	my ($user, $kernel, $idle, $io, $vm, $bin, $bout) =
-		&proc::get_cpu_io_usage();
+		&proc::get_cpu_io_usage((&indexof('cpuio', @{$modskip}) > -1));
 	if (defined($bin)) {
 		$info->{'io'} = [ $bin, $bout ];
 		}

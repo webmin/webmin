@@ -687,13 +687,14 @@ return 0 if ($no_collect);
 if ($gconfig{'os_type'} eq 'debian-linux') {
         return -e "/var/run/reboot-required" ? 1 : 0;
         }
-elsif ($gconfig{'os_type'} eq 'redhat-linux' &&
-       &has_command("needs-restarting")) {
-	my $out = &backquote_command("needs-restarting -h 2>&1");
-	if ($out =~ /reboothint/) {
-		my $ex = &execute_command(
-		    "needs-restarting -r", undef, undef, undef, 0, 1);
-		return $ex ? 1 : 0;
+elsif ($gconfig{'os_type'} eq 'redhat-linux') {
+	my $needs_restarting_cmd = "needs-restarting";
+	my $needs_restarting = has_command($needs_restarting_cmd);
+	if ($needs_restarting) {
+		my $needs_restarting_rs =
+			&backquote_command("$needs_restarting -r 2>&1 </dev/null");
+		return 1
+		    if ("$?" != 0 && index($needs_restarting_rs, $needs_restarting_cmd) == -1);
 		}
 	}
 return 0;

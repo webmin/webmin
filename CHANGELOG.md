@@ -1,5 +1,20 @@
 ## Changelog
 
+#### 2.020 (March 05, 2023)
+* Add full locale support
+* Add slave zone file format option in BIND DNS module
+* Add support for editing ACLs in File Manager
+* Add support to configure SSL connection for MySQL/MariaDB module
+* Add support for compressed backups in PostgreSQL module
+* Add support for displaying inodes too in Disk Usage in the Dashboard
+* Add better support for CloudLinux
+* Fix to always default to RSA key type in Let's Encrypt requests
+* Fix setup repository script for Oracle
+* Fix shutdown timeout to avoid termination of running processes
+* Fix support for SpamAssassin 4
+* Fix to use system default hashing format for `htpasswd` file
+* Fix FastRPC issues
+
 #### 2.013 (January 19, 2023)
 * Fix Authentic theme issue with error handling
 * Fix Framed theme to respect selected mode in left menu
