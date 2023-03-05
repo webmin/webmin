@@ -421,14 +421,7 @@ for(my $i=0; $i<@oldv || $i<@newv; $i++) {
 	my $oldeline = $i<@oldv ? $oldv[$i]->{'eline'} : undef;
 	if ($i < @newv) {
 		# Make sure new directive has 'value' set
-		my @v;
-		if ($newv[$i]->{'values'}) {
-			@v = @{$newv[$i]->{'values'}};
-			}
-		else {
-			@v = undef;
-			}
-		$newv[$i]->{'value'} = @v ? $v[0] : undef;
+		&recursive_set_value($newv[$i]);
 		}
 	if ($i >= @oldv && !$_[5]) {
 		# a new directive is being added.. put it at the end of
@@ -498,6 +491,22 @@ for(my $i=0; $i<@oldv || $i<@newv; $i++) {
 				  $oldv[$i]->{'file'}, scalar(@nl) - $ol);
 			}
 		$pm->[&indexof($oldv[$i], @$pm)] = $newv[$i];
+		}
+	}
+}
+
+# recursive_set_value(&directive)
+# Update the 'value' field based on the first 'values'
+sub recursive_set_value
+{
+my ($dir) = @_;
+if ($dir->{'values'}) {
+	my @v = @{$dir->{'values'}};
+	$dir->{'value'} = @v ? $v[0] : undef;
+	}
+if ($dir->{'type'} && $dir->{'type'} == 1 && $dir->{'members'}) {
+	foreach my $m (@{$dir->{'members'}}) {
+		&recursive_set_value($m);
 		}
 	}
 }
@@ -2446,7 +2455,7 @@ sub list_zone_names
 {
 my @st = stat($zone_names_cache);
 my %znc;
-&read_file_cached($zone_names_cache, \%znc);
+&read_file_cached_with_stat($zone_names_cache, \%znc);
 
 # Check if any files have changed, or if the master config has changed, or
 # the PID file.
