@@ -12417,9 +12417,21 @@ sub get_referer_relative
 {
 my $referer = $ENV{'HTTP_REFERER'};
 my $prefix = $gconfig{'webprefix'};
+my $query_str = 'pass-query-string';
+my $query = $in{$query_str};
 $prefix = '/' if(!$prefix);
 $referer =~ s/http.*:\/\/.*?$prefix/\//;
 $referer =~ s/\/\//\//g;
+if ($query) {
+	my @pr;
+	my $pq = "?";
+	my $pq = "&"
+		if ($referer =~ /\?/);
+	map { push(@pr, "$_=$in{$_}")
+		if ($_ ne $query_str) } keys %in;
+	$referer .= "$pq".join('&', @pr)
+		if (@pr);
+}
 return $referer;
 }
 
