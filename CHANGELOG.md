@@ -1,6 +1,6 @@
 ## Changelog
 
-#### 2.020 (March 05, 2023)
+#### 2.020 (March 08, 2023)
 * Add full locale support
 * Add slave zone file format option in BIND DNS module
 * Add support for editing ACLs in File Manager
@@ -14,6 +14,7 @@
 * Fix support for SpamAssassin 4
 * Fix to use system default hashing format for `htpasswd` file
 * Fix FastRPC issues
+* Update the Authentic theme to the latest version, with sped-up Dashboard performance
 
 #### 2.013 (January 19, 2023)
 * Fix Authentic theme issue with error handling
