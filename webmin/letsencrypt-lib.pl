@@ -166,11 +166,12 @@ if ($letsencrypt_cmd) {
 	my $cmd_ver = &get_certbot_major_version($letsencrypt_cmd);
 	my $old_flags;
 	my $new_flags;
+	my $key_type = $config{'letsencrypt_algo'} || 'rsa';
 	if ($cmd_ver < 1.11) {
 		$old_flags = " --manual-public-ip-logging-ok";
 		}
 	if ($cmd_ver >= 2) {
-		$new_flags = " --key-type rsa";
+		$new_flags = " --key-type $key_type";
 		}
 	$dir =~ s/\/[^\/]+$//;
 	$size ||= 2048;
