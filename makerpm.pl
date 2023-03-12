@@ -77,8 +77,6 @@ system("cp tarballs/$tarfile $source_dir");
 open(SPEC, ">$spec_dir/webmin-$ver.spec");
 print SPEC <<EOF;
 %global __perl_provides %{nil}
-
-#%define BuildRoot /tmp/%{name}-%{version}
 %define __spec_install_post %{nil}
 
 Summary: A web-based administration interface for Unix systems.
@@ -88,7 +86,7 @@ Release: $rel
 Provides: %{name}-%{version} perl(WebminCore)
 Requires(pre): /usr/bin/perl
 Requires: /bin/sh /usr/bin/perl /bin/rm perl(lib) perl(open) perl(Net::SSLeay) perl(Time::Local) perl(Encode::Detect) perl(Data::Dumper) perl(File::Path) perl(File::Basename) perl(Digest::SHA) perl(Digest::MD5) openssl unzip tar
-#Recommends: perl(DateTime) perl(DateTime::TimeZone) perl(DateTime::Locale) perl(Time::Piece)
+Recommends: perl(DateTime) perl(DateTime::TimeZone) perl(DateTime::Locale) perl(Time::Piece)
 AutoReq: 0
 License: BSD-3-clause
 Group: System/Tools
