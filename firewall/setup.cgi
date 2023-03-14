@@ -79,7 +79,7 @@ if ($in{'auto'}) {
 				 $in{'iface'.$in{'auto'}};
 		$iface || &error($text{'setup_eiface'});
 		($table) = grep { $_->{'name'} eq 'filter' } @tables;
-		$table ||= { 'name' => 'nat',
+		$table ||= { 'name' => 'filter',
 			     'rules' => [ ],
 			     'defaults' => { } };
 		$table->{'defaults'}->{'INPUT'} = 'DROP';
