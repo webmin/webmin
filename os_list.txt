@@ -53,7 +53,6 @@ Oracle Linux			$1	redhat-linux	$1+8.0	`cat /etc/oracle-release 2>/dev/null` =~ /
 Oracle VM			$1	redhat-linux	$1+8.0	`cat /etc/ovs-release 2>/dev/null` =~ /Oracle.*VM\s+server\s+release\s+(\d+)/i
 XenServer Linux			$1	redhat-linux	13.0	`cat /etc/redhat-release 2>/dev/null` =~ /XenServer\s+release\s+5\./
 XCP-ng Linux				$1	redhat-linux	$2+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /XCP-ng\s+release\s+([\d\.]+)/
-CloudLinux			$1	redhat-linux	$2+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /CloudLinux.*release\s+(\S+)/
 MostlyLinux			$1	redhat-linux	$2+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /MostlyLinux\s+Linux\s+release\s+(\d+)/
 Cloudrouter Linux		$1	redhat-linux	15	`cat /etc/cloudrouter-release 2>/dev/null` =~ /CloudRouter\s+release\s+(\d+)\s+/
 Sangoma Linux			$1	redhat-linux	$2+8.0	`cat /etc/sangoma-release 2>/dev/null` =~ /Sangoma\s+Linux\s+(\S+)/
@@ -73,6 +72,7 @@ Redhat Linux Desktop			$1	redhat-linux	10.0	`cat /etc/redhat-release 2>/dev/null
 
 # Redhat clones
 AlmaLinux				$1	redhat-linux	$1+8.0	`cat /etc/almalinux-release 2>/dev/null` =~ /AlmaLinux.*?([\d\.]+)/i || `cat /etc/redhat-release 2>/dev/null` =~ /AlmaLinux.*?([\d\.]+)/i
+CloudLinux				$1	redhat-linux	$1+8.0	`cat /etc/cloudlinux-release 2>/dev/null` =~ /CloudLinux.*?([\d\.]+)/i || `cat /etc/redhat-release 2>/dev/null` =~ /CloudLinux.*?([\d\.]+)/i
 Rocky Linux				$1	redhat-linux	$1+8.0	`cat /etc/rocky-release 2>/dev/null` =~ /Rocky.*?([\d\.]+)/i || `cat /etc/redhat-release 2>/dev/null` =~ /Rocky.*?([\d\.]+)/i
 AlphaCore Linux			$1	redhat-linux	11.0	`cat /etc/alphacore-release 2>/dev/null` =~ /Alpha\s*Core\s+release\s+(\S+)\s/i
 X/OS Linux				$1	redhat-linux	sprintf("%.1f", 9.0+$1)		`cat /etc/redhat-release /etc/fedora-release 2>/dev/null` =~ /X\/OS.*release\s(\S+)\s/i

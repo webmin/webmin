@@ -25,6 +25,12 @@ if tty -s; then
   ITALIC=$(tput sitm)
 fi
 
+# Check user permission
+if [ "$(id -u)" -ne 0 ]; then
+    echo "${RED}Error:${NORMAL} \`setup-repos.sh\` script must be run as root!" >&2
+    exit 1
+fi
+
 # Go to temp
 cd "/tmp" 1>/dev/null 2>&1
 if [ "$?" != "0" ]; then
@@ -43,24 +49,27 @@ fi
 . "$osrelease"
 if [ -n "${ID_LIKE}" ]; then
     osid="$ID_LIKE"
-else 
+else
     osid="$ID"
 fi
 if [ -z "$osid" ]; then
   echo "${RED}Error:${NORMAL} Failed to detect OS!"
   exit 1
 fi
-osid=$(echo "$osid" | sed 's/\s.*$//')
+
+# Derivatives precise test
+osid_debian_like=$(echo "$osid" | grep "debian\|ubuntu")
+osid_rhel_like=$(echo "$osid" | grep "rhel\|fedora\|centos")
 
 # Setup OS dependent
-if [ "$osid" = "debian" ]; then
+if [ -n "$osid_debian_like" ]; then
   package_type=deb
   install_cmd="apt-get install"
   install="$install_cmd --quiet --assume-yes"
   clean="apt-get clean"
   update="apt-get update"
-elif [ "$osid" = "rhel" ]; then
-  package_type=rpm  
+elif [ -n "$osid_rhel_like" ]; then
+  package_type=rpm
   if command -pv dnf 1>/dev/null 2>&1; then
     install_cmd="dnf install"
     install="$install_cmd -y"
@@ -70,6 +79,9 @@ elif [ "$osid" = "rhel" ]; then
     install="$install_cmd -y"
     clean="yum clean all"
   fi
+else
+  echo "${RED}Error:${NORMAL} Unknown OS : $osid"
+  exit
 fi
 
 # Ask first
@@ -100,7 +112,7 @@ fi
 
 
 # Check if GPG command is installed
-if [ "$osid" = "debian" ]; then
+if [ -n "$osid_debian_like" ]; then
   if [ ! -x /usr/bin/gpg ]; then
     $update 1>/dev/null 2>&1
     $install gnupg 1>/dev/null 2>&1
@@ -169,12 +181,8 @@ deb)
 esac
 
 # Could not setup
-if [ "$?" != "0" ]; then
-    echo "${RED}Error:${NORMAL} Could not setup repositories!"
-else
-  if [ ! -x "/usr/bin/webmin" ]; then
-    echo "Webmin package can now be installed using ${GREEN}${BOLD}${ITALIC}$install_cmd webmin${NORMAL} command."
-  fi
+if [ ! -x "/usr/bin/webmin" ]; then
+  echo "Webmin package can now be installed using ${GREEN}${BOLD}${ITALIC}$install_cmd webmin${NORMAL} command."
 fi
 
 exit 0

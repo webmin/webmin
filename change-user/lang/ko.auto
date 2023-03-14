@@ -1,4 +1,12 @@
+index_lang=언어
+index_locale=장소
+index_locale2=날짜 형식
+index_theme=주제
 index_langglobal2=글로벌 언어.. $1 ($2)
+index_localeglobal2=글로벌 로케일.. $1($2)
+index_localeset=개인의 선택 ..
+index_dateformatglobal2=전역 날짜 형식.. $1
+index_dateformatset=개인의 선택 ..
 index_overlay=테마 오버레이
 index_overlaydef=없음-테마 기본값 사용
 index_passagain=비밀번호를 다시 입력하세요
@@ -6,3 +14,5 @@ index_passagain=비밀번호를 다시 입력하세요
 change_epass2=새 비밀번호가 일치하지 않습니다
 change_eoverlay=UI 테마도 선택하지 않으면 테마 오버레이를 선택할 수 없습니다
 change_eoverlay2=선택한 테마 오버레이가 선택한 UI 테마와 호환되지 않습니다
+
+acl_locale=로케일을 변경할 수 있습니까?

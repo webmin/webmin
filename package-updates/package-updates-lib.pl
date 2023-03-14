@@ -46,7 +46,7 @@ if (!$get_software_packages_cache) {
 return $get_software_packages_cache;
 }
 
-# list_current(nocache)
+# list_current([nocache])
 # Returns a list of packages and versions for installed software. Keys are :
 #  name - The my package name (ie. CSWapache2)
 #  update - Name used to refer to it by the updates system (ie. apache2)
@@ -418,15 +418,16 @@ if (defined(&software::update_system_operations)) {
 return ( );
 }
 
-# list_possible_updates([nocache])
+# list_possible_updates([nocache], [nocache-no-data])
 # Returns a list of updates that are available. Each element in the array
 # is a hash ref containing a name, version, description and severity flag.
 # Intended for calling from themes. Nocache 0=cache everything, 1=flush all
-# caches, 2=flush only current
+# caches, 2=flush only current. Nocache-no-data prohibits collecting data
 sub list_possible_updates
 {
-my ($nocache) = @_;
+my ($nocache, $nocache_no_data) = @_;
 my @rv;
+return @rv if ($nocache_no_data);
 my @current = &list_current($nocache);
 if (&supports_updates_available()) {
 	# Software module supplies a function that can list just packages
@@ -676,53 +677,24 @@ return $mode eq 'updates' || $mode eq 'security' ?
 	&list_possible_updates($nocache) : &list_available($nocache);
 }
 
-# check_reboot_required(after-flag)
+# check_reboot_required([no-collect])
 # Returns 1 if the package system thinks a reboot is needed
+# If the no-collect flag is set, then check won't happen
 sub check_reboot_required
 {
+my ($no_collect) = @_;
+return 0 if ($no_collect);
 if ($gconfig{'os_type'} eq 'debian-linux') {
         return -e "/var/run/reboot-required" ? 1 : 0;
         }
 elsif ($gconfig{'os_type'} eq 'redhat-linux') {
-	my $needs_restarting = has_command("needs-restarting");
-	my $needs_restarting_correct = 0;
+	my $needs_restarting_cmd = "needs-restarting";
+	my $needs_restarting = has_command($needs_restarting_cmd);
 	if ($needs_restarting) {
-		($needs_restarting_correct) = `needs-restarting -h` =~ /reboothint/;
-		}
-	if ($needs_restarting && $needs_restarting_correct) {
-		my $ex = &execute_command(
-			"needs-restarting -r", undef, undef, undef, 0, 1);
-		return $ex ? 1 : 0;
-		}
-	else {
-		my ($new_kernel_install_time, $last_reboot_time, $new_kernel, $cur_kernel);
-		
-		&execute_command('rpm -q kernel --qf "%{INSTALLTIME}\n"', undef, \$new_kernel_install_time);
-		$new_kernel_install_time =~ /(.*$)/;
-		$new_kernel_install_time = $1;
-
-		&execute_command("sed -n '/^btime /s///p' /proc/stat", undef, \$last_reboot_time);
-
-		&execute_command("rpm -q --last kernel", undef, \$new_kernel);
-		$new_kernel =~ /(kernel-\S+)/;
-		$new_kernel = $1;
-		$new_kernel =~ s/^\s+|\s+$//g;
-
-		&execute_command("uname -r", undef, \$cur_kernel);
-		$cur_kernel =~ /^(\S+)$/;
-		# make sure to prevent false positive alerts on custom kernels 
-		&execute_command("rpm -q kernel-$cur_kernel", undef, \$cur_kernel);
-		$cur_kernel =~ s/^\s+|\s+$//g;
-		$cur_kernel = undef if ($cur_kernel =~ /not installed/);
-
-		if ($new_kernel_install_time && $last_reboot_time && 
-			$new_kernel_install_time > $last_reboot_time &&
-			$cur_kernel && $new_kernel && $cur_kernel ne $new_kernel) {
-			return 1;
-			}
-		else {
-			return 0;
-			}
+		my $needs_restarting_rs =
+			&backquote_command("$needs_restarting -r 2>&1 </dev/null");
+		return 1
+		    if ("$?" != 0 && index($needs_restarting_rs, $needs_restarting_cmd) == -1);
 		}
 	}
 return 0;

@@ -93,7 +93,7 @@ else {
 
 		if ($in{'use'}) {
 			# Copy cert, key and chain to Webmin
-			print $text{'letsencrypt_webmin'},"<p>\n";
+			print $text{'letsencrypt_webmin'},"<br>\n";
 			&lock_file($ENV{'MINISERV_CONFIG'});
 			&get_miniserv_config(\%miniserv);
 

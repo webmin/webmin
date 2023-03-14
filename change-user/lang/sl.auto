@@ -1,8 +1,14 @@
 index_title=Spremeni jezik in temo
-index_lang=Jezik uporabniškega vmesnika Webmin
+index_lang=Jezik
+index_locale=Locale
+index_locale2=Oblika datumov
+index_theme=Tema
 index_langglobal2=Globalni jezik.. $1 ($2)
 index_langset=Osebna izbira ..
-index_theme=Tema spletnega uporabniškega vmesnika
+index_localeglobal2=Globalni jezik.. $1 ($2)
+index_localeset=Osebna izbira ..
+index_dateformatglobal2=Globalni format datumov.. $1
+index_dateformatset=Osebna izbira ..
 index_overlay=Prekrivanje teme
 index_overlaydef=Brez - uporabite privzete teme
 index_themeglobal=Globalna tema ($1)
@@ -33,5 +39,6 @@ change_eoverlay=Prekrivanja teme ne morete izbrati, razen če izberete tudi temo
 change_eoverlay2=Prebrano prekrivanje teme ni združljivo z izbrano temo uporabniškega vmesnika
 
 acl_lang=Ali lahko spremenite jezik?
+acl_locale=Ali lahko spremenite jezik?
 acl_theme=Ali lahko spremenite temo?
 acl_pass=Ali lahko spremenite geslo (če je nastavljeno v Webminu)?

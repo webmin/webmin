@@ -260,6 +260,9 @@ $tmp =~ s/>/&gt;/g;
 $tmp =~ s/\"/&quot;/g;
 $tmp =~ s/\'/&#39;/g;
 $tmp =~ s/=/&#61;/g;
+# Never escape spaces
+$tmp =~ s/&amp;#x20;/&#x20;/g;
+$tmp =~ s/&amp;nbsp;/&nbsp;/g;
 return $tmp;
 }
 
@@ -324,7 +327,7 @@ my $tmp_base = $gconfig{'tempdir_'.&get_module_name()} ?
 		  $ENV{'TMP'} && $ENV{'TMP'} ne "/tmp" ? $ENV{'TMP'} :
 		  -d "c:/temp" ? "c:/temp" : "/tmp/.webmin";
 my $tmp_dir;
-if (-d $remote_user_info[7] && !$gconfig{'nohometemp'}) {
+if (@remote_user_info && -d $remote_user_info[7] && !$gconfig{'nohometemp'}) {
 	$tmp_dir = "$remote_user_info[7]/.tmp";
 	}
 elsif (@remote_user_info) {
@@ -1968,33 +1971,144 @@ $main::has_command_cache{$_[0]} = $rv;
 return $rv;
 }
 
-=head2 make_date(seconds, [date-only], [fmt])
+=head2 make_date(seconds, [date-only-or-opts], [fmt])
 
 Converts a Unix date/time in seconds to a human-readable form, by default
 formatted like dd/mmm/yyyy hh:mm:ss. Parameters are :
 
 =item seconds - Unix time is seconds to convert.
 
-=item date-only - If set to 1, exclude the time from the returned string.
+=item date-only-or-opts - If set to 1, exclude the time from the returned string.
+
+In case this param is a hash reference use it for options in a new DateTime::Locale
+code or preserve the original, old logic
 
 =item fmt - Optional, one of dd/mon/yyyy, dd/mm/yyyy, mm/dd/yyyy or yyyy/mm/dd
 
 =cut
 sub make_date
 {
-&load_theme_library();
-if (defined(&theme_make_date) &&
-    !$main::theme_prevent_make_date && 
-    (($main::header_content_type eq "text/html" &&
-    $main::webmin_script_type eq "web") || 
-    $main::theme_allow_make_date)) {
-	return &theme_make_date(@_);
-	}
 my ($secs, $only, $fmt) = @_;
+
+eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
+if (!$@) {
+my $opts = ref($only) ? $only : {};
+my $locale_default = &get_default_system_locale();
+my $locale_auto = &parse_accepted_language();
+my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$remote_user} || $locale_auto || $gconfig{'locale'} || &get_default_system_locale();
+my $tz = $opts->{'tz'} ||
+         DateTime::TimeZone->new( name => 'local' )->name(); # Asia/Nicosia
+my $locale = DateTime::Locale->load($locale_name);
+my $locale_format_full_tz = $locale->glibc_date_1_format;    # Sat 20 Nov 2286 17:46:39 UTC
+my $locale_format_full = $locale->glibc_datetime_format;     # Sat 20 Nov 2286 17:46:39
+my $locale_format_short = $locale->glibc_date_format;        # 20/11/86
+my $locale_format_time = $locale->glibc_time_format;         # 17:46:39
+my $locale_format_delimiter = "/";
+if ($opts->{'delimiter'}) {
+	$locale_format_delimiter = $opts->{'delimiter'};
+	}
+elsif ($locale_format_short =~ /\%.*?\[a-zA-Z]\s*(?<delimiter>.)/) {
+	$locale_format_delimiter = "$+{delimiter}";
+	}
+
+# Return fully detailed object
+if (%{$opts}) {
+	# Can we get ago time
+	my $ago;
+	my $ago_secs = time() - $secs;
+	eval "use Time::Seconds";
+	if (!$@ && $ago_secs) {
+		my $ago_obj = Time::Seconds->new($ago_secs);
+		$ago = {
+			"seconds" => int($ago_obj->seconds),
+			"minutes" =>  int($ago_obj->minutes),
+			"hours" => int($ago_obj->hours),
+			"days" => int($ago_obj->days),
+			"weeks" => int($ago_obj->weeks),
+			"months"  => int($ago_obj->months),
+			"years" => int($ago_obj->years),
+			"pretty" => $ago_obj->pretty
+		};
+	}
+	# my $xxxx = $locale->full_date_format;
+	my $data = {
+		# Wed Feb 8 05:09:39 PM UTC 2023
+		'full-tz-utc' => DateTime->from_epoch(locale => $locale_name, epoch => $secs)->strftime($locale_format_full_tz),
+		# Wed Feb 8 07:10:01 PM EET 2023 
+		'full-tz' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_full_tz),
+		# Wed 08 Feb 2023 07:11:26 PM EET
+		'full' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_full),
+		# 02/08/2023
+		'short' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_short),
+		# 07:12:07 PM
+		'time' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_time),
+		'ago' => $ago,
+		'tz' => $tz,
+		'delimiter' => $locale_format_delimiter,
+		'timestamp' => $secs,
+		'_locale' => $opts->{'getFull'} ? $locale : undef,
+		};
+	# Add time short, e.g. 17:46 or 5:46 PM
+	$data->{'timeshort'} = $data->{'time'};
+	$data->{'timeshort'} =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
+
+	# %c alternative with full week and month and no seconds in time (complete)
+	# Wednesday, February 8, 2023, 8:18 PM or 星期三, 2023年2月8日 20:18 or miércoles, 8 febrero 2023, 20:28
+	$data->{'monthfull'} = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime("%B");
+	foreach (split(/\s+/, DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime("%A, %c"))) {
+		if ($data->{'monthfull'} =~ /^$_/) {
+			$data->{'complete'} .= "$data->{'monthfull'} "
+			}
+		else {
+			$data->{'complete'} .= "$_ "
+			}
+		};
+	$data->{'complete'} =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
+
+	if ($opts->{'get'}) {
+		return $data->{$opts->{'get'}};
+		}
+	return $data;
+	}
+
+# Support old style to force date format
+my $timeshort = length($fmt) == 3 ? 1 : 0;
+if ($fmt) {
+	my $date = $fmt;
+	my @date;
+	$date[$-[1]] = '%m'
+	    if ($date =~ /(m|M)/);
+	$date[$-[1]] = '%d'
+	    if ($date =~ /(d|D)/);
+	if ($date =~ /(yyyy)/i ||
+	   ($date =~ /(y|Y)/ && $timeshort)) {
+	    $date[$-[1]] = '%Y'
+	    }
+	elsif ($date =~ /(y|Y)/) {
+	    $date[$-[1]] = '%y'
+	    }
+	@date = grep { /\%/ } @date;
+	$locale_format_short = join($locale_format_delimiter, @date);
+	}
+my $date_format_short = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_short);
+if (!ref($only) && $only) {
+	return $date_format_short;
+	}
+else {
+	my $date_format_time = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_time);
+	$date_format_time = $date_format_time;
+	$date_format_time =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
+	if ($main::webmin_script_type eq 'web') {
+		$date_format_time =~ s/\s/&#x20;/g;
+		}
+	return "$date_format_short $date_format_time";
+	}
+}
+
 my @tm = localtime($secs);
 my $date;
 if (!$fmt) {
-	$fmt = $gconfig{'dateformat'} || 'dd/mon/yyyy';
+	$fmt = $gconfig{'dateformat_'.$remote_user} || $gconfig{'dateformat'} || 'dd/mon/yyyy';
 	}
 if ($fmt eq 'dd/mon/yyyy') {
 	$date = sprintf "%2.2d/%s/%4.4d",
@@ -2019,7 +2133,7 @@ elsif ($fmt eq 'dd.mm.yyyy') {
 elsif ($fmt eq 'yyyy-mm-dd') {
 	$date = sprintf "%4.4d-%2.2d-%2.2d", $tm[5]+1900, $tm[4]+1, $tm[3];
 	}
-if (!$only) {
+if (ref($only) || !$only) {
 	$date .= sprintf " %2.2d:%2.2d", $tm[2], $tm[1];
 	}
 return $date;
@@ -3718,7 +3832,7 @@ if ($_[1] && $gconfig{'db_sizeusers'}) {
 elsif (!$_[1] && $gconfig{'db_sizeuser'}) {
 	($w, $h) = split(/x/, $gconfig{'db_sizeuser'});
 	}
-return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"@{[&get_webprefix()]}/user_chooser.cgi?multi=$_[1]&user=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+return "<button type=\"button\" onClick='ifield = form.$_[0]; chooser = window.open(\"@{[&get_webprefix()]}/user_chooser.cgi?multi=$_[1]&user=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield'>...</button>\n";
 }
 
 =head2 group_chooser_button(field, multiple, [form])
@@ -3747,7 +3861,7 @@ if ($_[1] && $gconfig{'db_sizeusers'}) {
 elsif (!$_[1] && $gconfig{'db_sizeuser'}) {
 	($w, $h) = split(/x/, $gconfig{'db_sizeuser'});
 	}
-return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"@{[&get_webprefix()]}/group_chooser.cgi?multi=$_[1]&group=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+return "<button type=\"button\" onClick='ifield = form.$_[0]; chooser = window.open(\"@{[&get_webprefix()]}/group_chooser.cgi?multi=$_[1]&group=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield'>...</button>\n";
 }
 
 =head2 foreign_check(module, [api-only])
@@ -4838,6 +4952,9 @@ $config_file = "$config_directory/config";
 %gconfig = ( );
 &read_file_cached($config_file, \%gconfig);
 $gconfig{'webprefix'} = '' if (!exists($gconfig{'webprefix'}));
+if (!$gconfig{'webprefix'} && $gconfig{'webprefix_remote'}) {
+	$gconfig{'webprefix'} = $ENV{'HTTP_X_WEBMIN_WEBPREFIX'};
+	}
 $null_file = $gconfig{'os_type'} eq 'windows' ? "NUL" : "/dev/null";
 $path_separator = $gconfig{'os_type'} eq 'windows' ? ';' : ':';
 
@@ -5132,22 +5249,13 @@ $webmin_logfile = $gconfig{'webmin_log'} ? $gconfig{'webmin_log'}
 
 # Load language strings into %text
 my @langs = &list_languages();
-my $accepted_lang;
-if ($gconfig{'acceptlang'}) {
-	foreach my $a (split(/,/, $ENV{'HTTP_ACCEPT_LANGUAGE'})) {
-		$a =~ s/;.*//;	# Remove ;q=0.5 or similar
-		my ($al) = grep { $_->{'lang'} eq $a } @langs;
-		if ($al) {
-			$accepted_lang = $al->{'lang'};
-			last;
-			}
-		}
-	}
+my $accepted_lang = &parse_accepted_language();
+
 $current_lang = safe_language($force_lang ? $force_lang :
-    $accepted_lang ? $accepted_lang :
     $remote_user_attrs{'lang'} ? $remote_user_attrs{'lang'} :
     $gconfig{"lang_$remote_user"} ? $gconfig{"lang_$remote_user"} :
     $gconfig{"lang_$base_remote_user"} ? $gconfig{"lang_$base_remote_user"} :
+    $accepted_lang ? $accepted_lang :
     $gconfig{"lang"} ? $gconfig{"lang"} : $default_lang);
 foreach my $l (@langs) {
 	$current_lang_info = $l if ($l->{'lang'} eq $current_lang);
@@ -5878,6 +5986,352 @@ $rv{"dir"} = $_[0];
 return %rv;
 }
 
+=head2 list_locales()
+
+# Returns the list of supported locales
+
+=cut
+sub list_locales
+{
+return { 'af'             => 'Afrikaans',
+         'af-NA'          => 'Afrikaans (Namibië)',
+         'af-ZA'          => 'Afrikaans (Suid-Afrika)',
+         'ar'             => 'العربية',
+         'ar-AE'          => 'العربية (الإمارات العربية المتحدة)',
+         'ar-BH'          => 'العربية (البحرين)',
+         'ar-DJ'          => 'العربية (جيبوتي)',
+         'ar-DZ'          => 'العربية (الجزائر)',
+         'ar-EG'          => 'العربية (مصر)',
+         'ar-EH'          => 'العربية (الصحراء الغربية)',
+         'ar-ER'          => 'العربية (إريتريا)',
+         'ar-IL'          => 'العربية (إسرائيل)',
+         'ar-IQ'          => 'العربية (العراق)',
+         'ar-JO'          => 'العربية (الأردن)',
+         'ar-KM'          => 'العربية (جزر القمر)',
+         'ar-KW'          => 'العربية (الكويت)',
+         'ar-LB'          => 'العربية (لبنان)',
+         'ar-LY'          => 'العربية (ليبيا)',
+         'ar-MA'          => 'العربية (المغرب)',
+         'ar-MR'          => 'العربية (موريتانيا)',
+         'ar-OM'          => 'العربية (عُمان)',
+         'ar-PS'          => 'العربية (الأراضي الفلسطينية)',
+         'ar-QA'          => 'العربية (قطر)',
+         'ar-SA'          => 'العربية (المملكة العربية السعودية)',
+         'ar-SD'          => 'العربية (السودان)',
+         'ar-SO'          => 'العربية (الصومال)',
+         'ar-SS'          => 'العربية (جنوب السودان)',
+         'ar-SY'          => 'العربية (سوريا)',
+         'ar-TD'          => 'العربية (تشاد)',
+         'ar-TN'          => 'العربية (تونس)',
+         'ar-YE'          => 'العربية (اليمن)',
+         'be'             => 'беларуская',
+         'be-BY'          => 'беларуская (Беларусь)',
+         'be-tarask'      => 'беларуская (TARASK)',
+         'bg'             => 'български',
+         'bg-BG'          => 'български (България)',
+         'ca'             => 'català',
+         'ca-AD'          => 'català (Andorra)',
+         'ca-ES'          => 'català (Espanya)',
+         'ca-ES-valencia' => 'català (Espanya valencià)',
+         'ca-FR'          => 'català (França)',
+         'ca-IT'          => 'català (Itàlia)',
+         'cs'             => 'čeština',
+         'cs-CZ'          => 'čeština (Česko)',
+         'da'             => 'dansk',
+         'da-DK'          => 'dansk (Danmark)',
+         'da-GL'          => 'dansk (Grønland)',
+         'de'             => 'Deutsch',
+         'de-AT'          => 'Deutsch (Österreich)',
+         'de-BE'          => 'Deutsch (Belgien)',
+         'de-CH'          => 'Deutsch (Schweiz)',
+         'de-DE'          => 'Deutsch (Deutschland)',
+         'de-IT'          => 'Deutsch (Italien)',
+         'de-LI'          => 'Deutsch (Liechtenstein)',
+         'de-LU'          => 'Deutsch (Luxemburg)',
+         'el'             => 'Ελληνικά',
+         'el-CY'          => 'Ελληνικά (Κύπρος)',
+         'el-GR'          => 'Ελληνικά (Ελλάδα)',
+         'en'             => 'English',
+         'en-AE'          => 'English (United Arab Emirates)',
+         'en-AG'          => 'English (Antigua & Barbuda)',
+         'en-AI'          => 'English (Anguilla)',
+         'en-AS'          => 'English (American Samoa)',
+         'en-AT'          => 'English (Austria)',
+         'en-AU'          => 'English (Australia)',
+         'en-BB'          => 'English (Barbados)',
+         'en-BE'          => 'English (Belgium)',
+         'en-BI'          => 'English (Burundi)',
+         'en-BM'          => 'English (Bermuda)',
+         'en-BS'          => 'English (Bahamas)',
+         'en-BW'          => 'English (Botswana)',
+         'en-BZ'          => 'English (Belize)',
+         'en-CA'          => 'English (Canada)',
+         'en-CC'          => 'English (Cocos (Keeling) Islands)',
+         'en-CH'          => 'English (Switzerland)',
+         'en-CK'          => 'English (Cook Islands)',
+         'en-CM'          => 'English (Cameroon)',
+         'en-CX'          => 'English (Christmas Island)',
+         'en-CY'          => 'English (Cyprus)',
+         'en-DE'          => 'English (Germany)',
+         'en-DG'          => 'English (Diego Garcia)',
+         'en-DK'          => 'English (Denmark)',
+         'en-DM'          => 'English (Dominica)',
+         'en-ER'          => 'English (Eritrea)',
+         'en-FI'          => 'English (Finland)',
+         'en-FJ'          => 'English (Fiji)',
+         'en-FK'          => 'English (Falkland Islands)',
+         'en-FM'          => 'English (Micronesia)',
+         'en-GB'          => 'English (United Kingdom)',
+         'en-GD'          => 'English (Grenada)',
+         'en-GG'          => 'English (Guernsey)',
+         'en-GH'          => 'English (Ghana)',
+         'en-GI'          => 'English (Gibraltar)',
+         'en-GM'          => 'English (Gambia)',
+         'en-GU'          => 'English (Guam)',
+         'en-GY'          => 'English (Guyana)',
+         'en-HK'          => 'English (Hong Kong SAR China)',
+         'en-IE'          => 'English (Ireland)',
+         'en-IL'          => 'English (Israel)',
+         'en-IM'          => 'English (Isle of Man)',
+         'en-IN'          => 'English (India)',
+         'en-IO'          => 'English (British Indian Ocean Territory)',
+         'en-JE'          => 'English (Jersey)',
+         'en-JM'          => 'English (Jamaica)',
+         'en-KE'          => 'English (Kenya)',
+         'en-KI'          => 'English (Kiribati)',
+         'en-KN'          => 'English (St Kitts & Nevis)',
+         'en-KY'          => 'English (Cayman Islands)',
+         'en-LC'          => 'English (St Lucia)',
+         'en-LR'          => 'English (Liberia)',
+         'en-LS'          => 'English (Lesotho)',
+         'en-MG'          => 'English (Madagascar)',
+         'en-MH'          => 'English (Marshall Islands)',
+         'en-MO'          => 'English (Macao SAR China)',
+         'en-MP'          => 'English (Northern Mariana Islands)',
+         'en-MS'          => 'English (Montserrat)',
+         'en-MT'          => 'English (Malta)',
+         'en-MU'          => 'English (Mauritius)',
+         'en-MV'          => 'English (Maldives)',
+         'en-MW'          => 'English (Malawi)',
+         'en-MY'          => 'English (Malaysia)',
+         'en-NA'          => 'English (Namibia)',
+         'en-NF'          => 'English (Norfolk Island)',
+         'en-NG'          => 'English (Nigeria)',
+         'en-NL'          => 'English (Netherlands)',
+         'en-NR'          => 'English (Nauru)',
+         'en-NU'          => 'English (Niue)',
+         'en-NZ'          => 'English (New Zealand)',
+         'en-PG'          => 'English (Papua New Guinea)',
+         'en-PH'          => 'English (Philippines)',
+         'en-PK'          => 'English (Pakistan)',
+         'en-PN'          => 'English (Pitcairn Islands)',
+         'en-PR'          => 'English (Puerto Rico)',
+         'en-PW'          => 'English (Palau)',
+         'en-RW'          => 'English (Rwanda)',
+         'en-SB'          => 'English (Solomon Islands)',
+         'en-SC'          => 'English (Seychelles)',
+         'en-SD'          => 'English (Sudan)',
+         'en-SE'          => 'English (Sweden)',
+         'en-SG'          => 'English (Singapore)',
+         'en-SH'          => 'English (St Helena)',
+         'en-SI'          => 'English (Slovenia)',
+         'en-SL'          => 'English (Sierra Leone)',
+         'en-SS'          => 'English (South Sudan)',
+         'en-SX'          => 'English (Sint Maarten)',
+         'en-SZ'          => 'English (Eswatini)',
+         'en-TC'          => 'English (Turks & Caicos Islands)',
+         'en-TK'          => 'English (Tokelau)',
+         'en-TO'          => 'English (Tonga)',
+         'en-TT'          => 'English (Trinidad & Tobago)',
+         'en-TV'          => 'English (Tuvalu)',
+         'en-TZ'          => 'English (Tanzania)',
+         'en-UG'          => 'English (Uganda)',
+         'en-UM'          => 'English (U.S. Outlying Islands)',
+         'en-US'          => 'English (United States)',
+         'en-VC'          => 'English (St Vincent & the Grenadines)',
+         'en-VG'          => 'English (British Virgin Islands)',
+         'en-VI'          => 'English (U.S. Virgin Islands)',
+         'en-VU'          => 'English (Vanuatu)',
+         'en-WS'          => 'English (Samoa)',
+         'en-ZA'          => 'English (South Africa)',
+         'en-ZM'          => 'English (Zambia)',
+         'en-ZW'          => 'English (Zimbabwe)',
+         'es'             => 'español',
+         'es-AR'          => 'español (Argentina)',
+         'es-BO'          => 'español (Bolivia)',
+         'es-BR'          => 'español (Brasil)',
+         'es-BZ'          => 'español (Belice)',
+         'es-CL'          => 'español (Chile)',
+         'es-CO'          => 'español (Colombia)',
+         'es-CR'          => 'español (Costa Rica)',
+         'es-CU'          => 'español (Cuba)',
+         'es-DO'          => 'español (República Dominicana)',
+         'es-EA'          => 'español (Ceuta y Melilla)',
+         'es-EC'          => 'español (Ecuador)',
+         'es-ES'          => 'español (España)',
+         'es-GQ'          => 'español (Guinea Ecuatorial)',
+         'es-GT'          => 'español (Guatemala)',
+         'es-HN'          => 'español (Honduras)',
+         'es-IC'          => 'español (Canarias)',
+         'es-MX'          => 'español (México)',
+         'es-NI'          => 'español (Nicaragua)',
+         'es-PA'          => 'español (Panamá)',
+         'es-PE'          => 'español (Perú)',
+         'es-PH'          => 'español (Filipinas)',
+         'es-PR'          => 'español (Puerto Rico)',
+         'es-PY'          => 'español (Paraguay)',
+         'es-SV'          => 'español (El Salvador)',
+         'es-US'          => 'español (Estados Unidos)',
+         'es-UY'          => 'español (Uruguay)',
+         'es-VE'          => 'español (Venezuela)',
+         'eu'             => 'euskara',
+         'eu-ES'          => 'euskara (Espainia)',
+         'fa'             => 'فارسی',
+         'fa-AF'          => 'فارسی (افغانستان)',
+         'fa-IR'          => 'فارسی (ایران)',
+         'fi'             => 'suomi',
+         'fi-FI'          => 'suomi (Suomi)',
+         'fr'             => 'français',
+         'fr-BE'          => 'français (Belgique)',
+         'fr-BF'          => 'français (Burkina Faso)',
+         'fr-BI'          => 'français (Burundi)',
+         'fr-BJ'          => 'français (Bénin)',
+         'fr-BL'          => 'français (Saint-Barthélemy)',
+         'fr-CA'          => 'français (Canada)',
+         'fr-CD'          => 'français (Congo-Kinshasa)',
+         'fr-CF'          => 'français (République centrafricaine)',
+         'fr-CG'          => 'français (Congo-Brazzaville)',
+         'fr-CH'          => 'français (Suisse)',
+         'fr-CI'          => 'français (Côte d’Ivoire)',
+         'fr-CM'          => 'français (Cameroun)',
+         'fr-DJ'          => 'français (Djibouti)',
+         'fr-DZ'          => 'français (Algérie)',
+         'fr-FR'          => 'français (France)',
+         'fr-GA'          => 'français (Gabon)',
+         'fr-GF'          => 'français (Guyane française)',
+         'fr-GN'          => 'français (Guinée)',
+         'fr-GP'          => 'français (Guadeloupe)',
+         'fr-GQ'          => 'français (Guinée équatoriale)',
+         'fr-HT'          => 'français (Haïti)',
+         'fr-KM'          => 'français (Comores)',
+         'fr-LU'          => 'français (Luxembourg)',
+         'fr-MA'          => 'français (Maroc)',
+         'fr-MC'          => 'français (Monaco)',
+         'fr-MF'          => 'français (Saint-Martin)',
+         'fr-MG'          => 'français (Madagascar)',
+         'fr-ML'          => 'français (Mali)',
+         'fr-MQ'          => 'français (Martinique)',
+         'fr-MR'          => 'français (Mauritanie)',
+         'fr-MU'          => 'français (Maurice)',
+         'fr-NC'          => 'français (Nouvelle-Calédonie)',
+         'fr-NE'          => 'français (Niger)',
+         'fr-PF'          => 'français (Polynésie française)',
+         'fr-PM'          => 'français (Saint-Pierre-et-Miquelon)',
+         'fr-RE'          => 'français (La Réunion)',
+         'fr-RW'          => 'français (Rwanda)',
+         'fr-SC'          => 'français (Seychelles)',
+         'fr-SN'          => 'français (Sénégal)',
+         'fr-SY'          => 'français (Syrie)',
+         'fr-TD'          => 'français (Tchad)',
+         'fr-TG'          => 'français (Togo)',
+         'fr-TN'          => 'français (Tunisie)',
+         'fr-VU'          => 'français (Vanuatu)',
+         'fr-WF'          => 'français (Wallis-et-Futuna)',
+         'fr-YT'          => 'français (Mayotte)',
+         'he'             => 'עברית',
+         'he-IL'          => 'עברית (ישראל)',
+         'hr'             => 'hrvatski',
+         'hr-BA'          => 'hrvatski (Bosna i Hercegovina)',
+         'hr-HR'          => 'hrvatski (Hrvatska)',
+         'hu'             => 'magyar',
+         'hu-HU'          => 'magyar (Magyarország)',
+         'it'             => 'italiano',
+         'it-CH'          => 'italiano (Svizzera)',
+         'it-IT'          => 'italiano (Italia)',
+         'it-SM'          => 'italiano (San Marino)',
+         'it-VA'          => 'italiano (Città del Vaticano)',
+         'ja'             => '日本語',
+         'ja-JP'          => '日本語 (日本)',
+         'ko'             => '한국어',
+         'ko-KP'          => '한국어 (조선민주주의인민공화국)',
+         'ko-KR'          => '한국어 (대한민국)',
+         'lt'             => 'lietuvių',
+         'lt-LT'          => 'lietuvių (Lietuva)',
+         'ms'             => 'Melayu',
+         'ms-BN'          => 'Melayu (Brunei)',
+         'ms-ID'          => 'Melayu (Indonesia)',
+         'ms-MY'          => 'Melayu (Malaysia)',
+         'ms-SG'          => 'Melayu (Singapura)',
+         'mt'             => 'Malti',
+         'mt-MT'          => 'Malti (Malta)',
+         'nl'             => 'Nederlands',
+         'nl-AW'          => 'Nederlands (Aruba)',
+         'nl-BE'          => 'Nederlands (België)',
+         'nl-BQ'          => 'Nederlands (Caribisch Nederland)',
+         'nl-CW'          => 'Nederlands (Curaçao)',
+         'nl-NL'          => 'Nederlands (Nederland)',
+         'nl-SR'          => 'Nederlands (Suriname)',
+         'nl-SX'          => 'Nederlands (Sint-Maarten)',
+         'no'             => 'norsk',
+         'pl'             => 'polski',
+         'pl-PL'          => 'polski (Polska)',
+         'pt'             => 'português',
+         'pt-AO'          => 'português (Angola)',
+         'pt-BR'          => 'português (Brasil)',
+         'pt-CH'          => 'português (Suíça)',
+         'pt-CV'          => 'português (Cabo Verde)',
+         'pt-GQ'          => 'português (Guiné Equatorial)',
+         'pt-GW'          => 'português (Guiné-Bissau)',
+         'pt-LU'          => 'português (Luxemburgo)',
+         'pt-MO'          => 'português (Macau, RAE da China)',
+         'pt-MZ'          => 'português (Moçambique)',
+         'pt-PT'          => 'português (Portugal)',
+         'pt-ST'          => 'português (São Tomé e Príncipe)',
+         'pt-TL'          => 'português (Timor-Leste)',
+         'ro'             => 'română',
+         'ro-MD'          => 'română (Republica Moldova)',
+         'ro-RO'          => 'română (România)',
+         'ru'             => 'русский',
+         'ru-BY'          => 'русский (Беларусь)',
+         'ru-KG'          => 'русский (Киргизия)',
+         'ru-KZ'          => 'русский (Казахстан)',
+         'ru-MD'          => 'русский (Молдова)',
+         'ru-RU'          => 'русский (Россия)',
+         'ru-UA'          => 'русский (Украина)',
+         'rw-RW'          => 'Kinyarwanda (U Rwanda)',
+         'sk'             => 'slovenčina',
+         'sk-SK'          => 'slovenčina (Slovensko)',
+         'sl'             => 'slovenščina',
+         'sl-SI'          => 'slovenščina (Slovenija)',
+         'sv'             => 'svenska',
+         'sv-AX'          => 'svenska (Åland)',
+         'sv-FI'          => 'svenska (Finland)',
+         'sv-SE'          => 'svenska (Sverige)',
+         'th'             => 'ไทย',
+         'th-TH'          => 'ไทย (ไทย)',
+         'tr'             => 'Türkçe',
+         'tr-CY'          => 'Türkçe (Kıbrıs)',
+         'tr-TR'          => 'Türkçe (Türkiye)',
+         'uk'             => 'українська',
+         'uk-UA'          => 'українська (Україна)',
+         'ur'             => 'اردو',
+         'ur-IN'          => 'اردو (بھارت)',
+         'ur-PK'          => 'اردو (پاکستان)',
+         'vi'             => 'Tiếng (Việt)',
+         'vi-VN'          => 'Tiếng (Việt Việt Nam)',
+         'zh'             => '中文',
+         'zh-Hans'        => '中文 (简体)',
+         'zh-Hans-CN'     => '中文 (中国 简体)',
+         'zh-Hans-HK'     => '中文 (中国香港特别行政区 简体)',
+         'zh-Hans-MO'     => '中文 (中国澳门特别行政区 简体)',
+         'zh-Hans-SG'     => '中文 (新加坡 简体)',
+         'zh-Hant'        => '中文 (繁體)',
+         'zh-Hant-HK'     => '中文 (中國香港特別行政區 繁體字)',
+         'zh-Hant-MO'     => '中文 (中國澳門特別行政區 繁體字)',
+         'zh-Hant-TW'     => '中文 (台灣 繁體)',
+     }
+}
+
 =head2 list_languages(current-lang)
 
 Returns an array of supported languages, taken from Webmin's lang_list.txt file.
@@ -6576,7 +7030,6 @@ if ($logemail) {
     if ($mdesc) {
         $body .= &text('log_email_moddesc', $mdesc)."\n";
         }
-    $main::theme_prevent_make_date = 1;
     $body .= &text('log_email_time', &make_date(time()))."\n";
     $body .= &text('log_email_system', &get_display_hostname())."\n";
     $body .= &text('log_email_user', $remote_user)."\n";
@@ -7242,10 +7695,11 @@ internal use only.
 =cut
 sub remote_session_name
 {
-return ref($_[0]) && $_[0]->{'host'} && $_[0]->{'port'} ?
-		"$_[0]->{'host'}:$_[0]->{'port'}.$$" :
-       $_[0] eq "" || ref($_[0]) && $_[0]->{'id'} == 0 ? "" :
-       ref($_[0]) ? "" : "$_[0].$$";
+my ($s) = @_;
+return ref($s) && $s->{'host'} && $s->{'port'} ?
+		"$s->{'host'}:$s->{'port'}.$$" :
+       $s eq "" || ref($s) && $s->{'id'} == 0 ? "" :
+       ref($s) ? "" : "$s.$$";
 }
 
 =head2 remote_foreign_require(server, module, file)
@@ -7259,20 +7713,26 @@ Servers Index module, or a hash reference for a system from that module.
 =cut
 sub remote_foreign_require
 {
-my $call = { 'action' => 'require',
-	     'module' => $_[1],
-	     'file' => $_[2] };
-my $sn = &remote_session_name($_[0]);
-if ($remote_session{$sn}) {
-	$call->{'session'} = $remote_session{$sn};
+my ($s, $mod, $file) = @_;
+my $sn = &remote_session_name($s);
+if ($sn eq "" && ref($s) && $s->{'local'}) {
+	&foreign_require($mod, $file);
 	}
 else {
-	$call->{'newsession'} = 1;
-	}
-my $rv = &remote_rpc_call($_[0], $call);
-if ($rv->{'session'}) {
-	$remote_session{$sn} = $rv->{'session'};
-	$remote_session_server{$sn} = $_[0];
+	my $call = { 'action' => 'require',
+		     'module' => $mod,
+		     'file' => $file };
+	if ($remote_session{$sn}) {
+		$call->{'session'} = $remote_session{$sn};
+		}
+	else {
+		$call->{'newsession'} = 1;
+		}
+	my $rv = &remote_rpc_call($s, $call);
+	if ($rv->{'session'}) {
+		$remote_session{$sn} = $rv->{'session'};
+		$remote_session_server{$sn} = $s;
+		}
 	}
 }
 
@@ -7286,13 +7746,19 @@ system's hostname.
 =cut
 sub remote_foreign_call
 {
-return undef if (&is_readonly_mode());
-my $sn = &remote_session_name($_[0]);
-return &remote_rpc_call($_[0], { 'action' => 'call',
-				 'module' => $_[1],
-				 'func' => $_[2],
-				 'session' => $remote_session{$sn},
-				 'args' => [ @_[3 .. $#_] ] } );
+my ($s, $mod, $func, @args) = @_;
+my $sn = &remote_session_name($s);
+if ($sn eq "" && ref($s) && $s->{'local'}) {
+	return &foreign_call($mod, $func, @args);
+	}
+else {
+	return undef if (&is_readonly_mode());
+	return &remote_rpc_call($s, { 'action' => 'call',
+				      'module' => $mod,
+				      'func' => $func,
+				      'session' => $remote_session{$sn},
+				      'args' => [ @args ] } );
+	}
 }
 
 =head2 remote_foreign_check(server, module, [api-only])
@@ -7304,9 +7770,16 @@ parameter.
 =cut
 sub remote_foreign_check
 {
-return &remote_rpc_call($_[0], { 'action' => 'check',
-				 'module' => $_[1],
-				 'api' => $_[2] });
+my ($s, $mod, $api) = @_;
+my $sn = &remote_session_name($s);
+if ($sn eq "" && ref($s) && $s->{'local'}) {
+	return &foreign_check($mod, $api);
+	}
+else {
+	return &remote_rpc_call($s, { 'action' => 'check',
+				      'module' => $mod,
+				      'api' => $api });
+	}
 }
 
 =head2 remote_foreign_config(server, module)
@@ -7317,8 +7790,16 @@ Equivalent to foreign_config, but for a remote system.
 =cut
 sub remote_foreign_config
 {
-return &remote_rpc_call($_[0], { 'action' => 'config',
-				 'module' => $_[1] });
+my ($s, $mod) = @_;
+my $sn = &remote_session_name($s);
+if ($sn eq "" && ref($s) && $s->{'local'}) {
+	my %c = &foreign_config($mod);
+	return \%c;
+	}
+else {
+	return &remote_rpc_call($s, { 'action' => 'config',
+				      'module' => $mod });
+	}
 }
 
 =head2 remote_eval(server, module, code)
@@ -7331,12 +7812,20 @@ only be called after remote_foreign_require for the same server and module.
 =cut
 sub remote_eval
 {
-return undef if (&is_readonly_mode());
-my $sn = &remote_session_name($_[0]);
-return &remote_rpc_call($_[0], { 'action' => 'eval',
-				 'module' => $_[1],
-				 'code' => $_[2],
-				 'session' => $remote_session{$sn} });
+my ($s, $mod, $code) = @_;
+my $sn = &remote_session_name($s);
+if ($sn eq "" && ref($s) && $s->{'local'}) {
+	my $pkg = $mod;
+	$pkg =~ s/[^A-Za-z0-9]/_/g;
+	return eval "package $pkg; $code";
+	}
+else {
+	return undef if (&is_readonly_mode());
+	return &remote_rpc_call($s, { 'action' => 'eval',
+				      'module' => $mod,
+				      'code' => $code,
+				      'session' => $remote_session{$sn} });
+	}
 }
 
 =head2 remote_write(server, localfile, [remotefile], [remotebasename])
@@ -7350,31 +7839,41 @@ selected temporary filename will be used, and returned by the function.
 sub remote_write
 {
 my ($host, $localfile, $remotefile, $remotebase) = @_;
-return undef if (&is_readonly_mode());
-my ($data, $got);
-my $rv = &remote_rpc_call($host, { 'action' => 'tcpwrite',
-				   'file' => $remotefile,
-				   'name' => $remotebase } );
-my $error;
-my $serv = !ref($host) ? $host : ($host->{'ip'} || $host->{'host'});
-&open_socket($serv || "localhost", $rv->[1], TWRITE, \$error);
-return &$main::remote_error_handler("Failed to transfer file : $error")
-	if ($error);
-open(FILE, "<".$localfile) ||
-	return &$main::remote_error_handler("Failed to open $localfile : $!");
-my $bs = &get_buffer_size();
-while(read(FILE, $got, $bs) > 0) {
-	print TWRITE $got;
+if ($sn eq "" && ref($s) && $s->{'local'}) {
+	my $file = $remotefile ? $remotefile :
+		   $remotebase ? &tempname($remotebase) :
+				 &tempname();
+	&copy_source_dest($localfile, $file) ||
+		return &$main::remote_error_handler("Failed to copy $localfile to $file : $!");
+	return $file;
 	}
-close(FILE);
-shutdown(TWRITE, 1);
-$error = <TWRITE>;
-if ($error && $error !~ /^OK/) {
-	# Got back an error!
-	return &$main::remote_error_handler("Failed to transfer file : $error");
+else {
+	return undef if (&is_readonly_mode());
+	my ($data, $got);
+	my $rv = &remote_rpc_call($host, { 'action' => 'tcpwrite',
+					   'file' => $remotefile,
+					   'name' => $remotebase } );
+	my $error;
+	my $serv = !ref($host) ? $host : ($host->{'ip'} || $host->{'host'});
+	&open_socket($serv || "localhost", $rv->[1], TWRITE, \$error);
+	return &$main::remote_error_handler("Failed to transfer file : $error")
+		if ($error);
+	open(FILE, "<".$localfile) ||
+		return &$main::remote_error_handler("Failed to open $localfile : $!");
+	my $bs = &get_buffer_size();
+	while(read(FILE, $got, $bs) > 0) {
+		print TWRITE $got;
+		}
+	close(FILE);
+	shutdown(TWRITE, 1);
+	$error = <TWRITE>;
+	if ($error && $error !~ /^OK/) {
+		# Got back an error!
+		return &$main::remote_error_handler("Failed to transfer file : $error");
+		}
+	close(TWRITE);
+	return $rv->[0];
 	}
-close(TWRITE);
-return $rv->[0];
 }
 
 =head2 remote_read(server, localfile, remotefile)
@@ -7388,25 +7887,31 @@ system, and remotefile is the file to fetch from the remote server.
 sub remote_read
 {
 my ($host, $localfile, $remotefile) = @_;
-my $rv = &remote_rpc_call($host, { 'action' => 'tcpread',
-				   'file' => $remotefile } );
-if (!$rv->[0]) {
-	return &$main::remote_error_handler("Failed to transfer file : $rv->[1]");
+if ($sn eq "" && ref($s) && $s->{'local'}) {
+	&copy_source_dest($remotefile, $localfile) ||
+		return &$main::remote_error_handler("Failed to copy $remotefile to $localfile : $!");
 	}
-my $error;
-my $serv = !ref($host) ? $host : ($host->{'ip'} || $host->{'host'});
-&open_socket($serv || "localhost", $rv->[1], TREAD, \$error);
-return &$main::remote_error_handler("Failed to transfer file : $error")
-	if ($error);
-my $got;
-open(FILE, ">$localfile") ||
-	return &$main::remote_error_handler("Failed to open $localfile : $!");
-my $bs = &get_buffer_size();
-while(read(TREAD, $got, $bs) > 0) {
-	print FILE $got;
+else {
+	my $rv = &remote_rpc_call($host, { 'action' => 'tcpread',
+					   'file' => $remotefile } );
+	if (!$rv->[0]) {
+		return &$main::remote_error_handler("Failed to transfer file : $rv->[1]");
+		}
+	my $error;
+	my $serv = !ref($host) ? $host : ($host->{'ip'} || $host->{'host'});
+	&open_socket($serv || "localhost", $rv->[1], TREAD, \$error);
+	return &$main::remote_error_handler("Failed to transfer file : $error")
+		if ($error);
+	my $got;
+	open(FILE, ">$localfile") ||
+		return &$main::remote_error_handler("Failed to open $localfile : $!");
+	my $bs = &get_buffer_size();
+	while(read(TREAD, $got, $bs) > 0) {
+		print FILE $got;
+		}
+	close(FILE);
+	close(TREAD);
 	}
-close(FILE);
-close(TREAD);
 }
 
 =head2 remote_finished
@@ -7438,7 +7943,8 @@ fails. Useful if you want to have more control over your remote operations.
 =cut
 sub remote_error_setup
 {
-$main::remote_error_handler = $_[0] || \&error;
+my ($func) = @_;
+$main::remote_error_handler = $func || \&error;
 }
 
 =head2 remote_rpc_call(server, &structure)
@@ -7450,30 +7956,30 @@ and is called by the other remote_* functions.
 =cut
 sub remote_rpc_call
 {
+my ($serv_host, $str) = @_;
 my $serv;
-my $sn = &remote_session_name($_[0]);	# Will be undef for local connection
-my $tostr = &serialise_variable($_[1]);
-if (ref($_[0])) {
+my $sn = &remote_session_name($serv_host);  # Will be undef for local connection
+if (ref($serv_host)) {
 	# Server structure was given
-	$serv = $_[0];
+	$serv = $serv_host;
 	$serv->{'user'} || $serv->{'id'} == 0 ||
 		return &$main::remote_error_handler(
 			"No Webmin login set for server");
 	}
-elsif ($_[0]) {
+elsif ($serv_host) {
 	# lookup the server in the webmin servers module if needed
 	if (!%main::remote_servers_cache) {
 		&foreign_require("servers");
-		foreach $s (&foreign_call("servers", "list_servers")) {
+		foreach $s (&servers::list_servers()) {
 			$main::remote_servers_cache{$s->{'host'}} = $s;
 			$main::remote_servers_cache{$s->{'host'}.":".$s->{'port'}} = $s;
 			}
 		}
-	$serv = $main::remote_servers_cache{$_[0]};
+	$serv = $main::remote_servers_cache{$serv_host};
 	$serv || return &$main::remote_error_handler(
-				"No Webmin Servers entry for $_[0]");
+				"No Webmin Servers entry for $serv_host");
 	$serv->{'user'} || return &$main::remote_error_handler(
-				"No login set for server $_[0]");
+				"No login set for server $serv_host");
 	}
 my $ip = $serv->{'ip'} || $serv->{'host'};
 
@@ -7505,7 +8011,7 @@ if ($serv->{'fast'} || !$sn) {
 			}
 		my $con = &make_http_connection(
 			$ip, $serv->{'port'}, $serv->{'ssl'},
-			"POST", "/fastrpc.cgi", undef, undef, $reqs);
+			"GET", "/fastrpc.cgi", undef, undef, $reqs);
 		return &$main::remote_error_handler(
 		    "Failed to connect to $serv->{'host'} : $con")
 			if (!ref($con));
@@ -7514,10 +8020,7 @@ if ($serv->{'fast'} || !$sn) {
 		my $auth = &encode_base64("$user:$pass");
 		$auth =~ tr/\n//d;
 		&write_http_connection($con, "Authorization: basic $auth\r\n");
-		&write_http_connection($con, "Content-length: ",
-					     length($tostr),"\r\n");
 		&write_http_connection($con, "\r\n");
-		&write_http_connection($con, $tostr);
 
 		# read back the response
 		my $line = &read_http_connection($con);
@@ -7525,6 +8028,7 @@ if ($serv->{'fast'} || !$sn) {
 		if ($line =~ /^HTTP\/1\..\s+40[13]\s+/) {
 			return &$main::remote_error_handler("Login to RPC server as $user rejected");
 			}
+		$line || return &$main::remote_error_handler("HTTP error : No status line");
 		$line =~ /^HTTP\/1\..\s+200\s+/ ||
 			return &$main::remote_error_handler("HTTP error : $line");
 		do {
@@ -7539,11 +8043,12 @@ if ($serv->{'fast'} || !$sn) {
 		       $line =~ /^1\s+(\S+)\s+(\S+)/) {
 			# Started ok .. connect and save SID
 			&close_http_connection($con);
-			my ($port, $sid, $version, $error) = ($1, $2, $3);
+			my ($port, $sid, $version) = ($1, $2, $3);
+			my $error;
 			&open_socket($ip, $port, $sid, \$error);
 			return &$main::remote_error_handler("Failed to connect to fastrpc.cgi : $error")
 				if ($error);
-			$fast_fh_cache{$sn} = $sid;
+			$fast_fh_cache{$sn} = [ $sid, $version ];
 			$remote_server_version{$sn} = $version;
 			}
 		else {
@@ -7596,14 +8101,15 @@ if ($serv->{'fast'} || !$sn) {
 			close(RPCOUTr);
 			return &$main::remote_error_handler("RPC error : $2");
 			}
-		elsif ($line =~ /^1\s+(\S+)\s+(\S+)/) {
+		elsif ($line =~ /^1\s+(\S+)\s+(\S+)\s+(\S+)/) {
 			# Started ok .. connect and save SID
 			close(SOCK);
 			close(RPCOUTr);
-			my ($port, $sid, $error) = ($1, $2, undef);
+			my ($port, $sid, $version) = ($1, $2, $3);
+			my $error;
 			&open_socket("localhost", $port, $sid, \$error);
 			return &$main::remote_error_handler("Failed to connect to fastrpc.cgi : $error") if ($error);
-			$fast_fh_cache{$sn} = $sid;
+			$fast_fh_cache{$sn} = [ $sid, $version ];
 			}
 		else {
 			# Unexpected response
@@ -7617,7 +8123,9 @@ if ($serv->{'fast'} || !$sn) {
 			}
 		}
 	# Got a connection .. send off the request
-	my $fh = $fast_fh_cache{$sn};
+	my ($fh, $version) = @{$fast_fh_cache{$sn}};
+	my $dumper = &compare_version_numbers($version, 2.014) >= 0;
+	my $tostr = &serialise_variable($str, $dumper);
 	print $fh length($tostr)," $fh\n";
 	print $fh $tostr;
 	my $rstr = <$fh>;
@@ -7669,6 +8177,7 @@ if ($serv->{'fast'} || !$sn) {
 else {
 	# Call rpc.cgi on remote server
 	my $error = 0;
+	my $tostr = &serialise_variable($str);
 	my $con = &make_http_connection($ip, $serv->{'port'},
 					$serv->{'ssl'}, "POST", "/rpc.cgi");
 	return &$main::remote_error_handler("Failed to connect to $serv->{'host'} : $con") if (!ref($con));
@@ -7688,6 +8197,7 @@ else {
 	if ($line =~ /^HTTP\/1\..\s+401\s+/) {
 		return &$main::remote_error_handler("Login to RPC server as $user rejected");
 		}
+	$line || return &$main::remote_error_handler("HTTP error : No status line");
 	$line =~ /^HTTP\/1\..\s+200\s+/ || return &$main::remote_error_handler("RPC HTTP error : $line");
 	do {
 		$line = &read_http_connection($con);
@@ -7794,10 +8304,11 @@ foreach my $g (@$servs) {
 
 sub remote_multi_callback_error
 {
-$remote_multi_callback_err = $_[0];
+my ($err) = @_;
+$remote_multi_callback_err = $err;
 }
 
-=head2 serialise_variable(variable)
+=head2 serialise_variable(variable, [data-dumper-format])
 
 Converts some variable (maybe a scalar, hash ref, array ref or scalar ref)
 into a url-encoded string. In the cases of arrays and hashes, it is recursively
@@ -7806,27 +8317,36 @@ called on each member to serialize the entire object.
 =cut
 sub serialise_variable
 {
-if (!defined($_[0])) {
+my ($var, $dumper) = @_;
+if ($dumper) {
+	# Convert to Data::Dumper format
+	eval "use Data::Dumper";
+	if (!$@) {
+		$Data::Dumper::Purity = 1;
+		return Dumper($var);
+		}
+	}
+if (!defined($var)) {
 	return 'UNDEF';
 	}
-my $r = ref($_[0]);
+my $r = ref($var);
 my $rv;
 if (!$r) {
-	$rv = &urlize($_[0]);
+	$rv = &urlize($var);
 	}
 elsif ($r eq 'SCALAR') {
-	$rv = &urlize(${$_[0]});
+	$rv = &urlize(${$var});
 	}
 elsif ($r eq 'ARRAY') {
-	$rv = join(",", map { &urlize(&serialise_variable($_)) } @{$_[0]});
+	$rv = join(",", map { &urlize(&serialise_variable($_)) } @{$var});
 	}
 elsif ($r eq 'HASH') {
 	$rv = join(",", map { &urlize(&serialise_variable($_)).",".
-			      &urlize(&serialise_variable($_[0]->{$_})) }
-		            keys %{$_[0]});
+			      &urlize(&serialise_variable($var->{$_})) }
+		            keys %{$var});
 	}
 elsif ($r eq 'REF') {
-	$rv = &serialise_variable(${$_[0]});
+	$rv = &serialise_variable(${$var});
 	}
 elsif ($r eq 'CODE') {
 	# Code not handled
@@ -7836,8 +8356,8 @@ elsif ($r) {
 	# An object - treat as a hash
 	$r = "OBJECT ".&urlize($r);
 	$rv = join(",", map { &urlize(&serialise_variable($_)).",".
-			      &urlize(&serialise_variable($_[0]->{$_})) }
-		            keys %{$_[0]});
+			      &urlize(&serialise_variable($var->{$_})) }
+		            keys %{$var});
 	}
 return ($r ? $r : 'VAL').",".$rv;
 }
@@ -7851,7 +8371,13 @@ object, the same class is used on this system, if available.
 =cut
 sub unserialise_variable
 {
-my @v = split(/,/, $_[0]);
+my ($str) = @_;
+if (substr($str, 0, 5) eq '$VAR1') {
+	# In Data::Dumper format
+	$rv = eval $str.' $VAR1;';
+	return $rv;
+	}
+my @v = split(/,/, $str);
 my $rv;
 if ($v[0] eq 'VAL') {
 	@v = split(/,/, $_[0], -1);
@@ -11577,7 +12103,7 @@ return { 'type' => 'item',
          'link' => '/'.$minfo->{'dir'}.'/' };
 }
 
-=head2 list_combined_system_info(&data, &in)
+=head2 list_combined_system_info(&data, &in, [&modskip])
 
 Returns an array of objects, each representing a block of system information
 to display. Each is a hash ref with the following keys :
@@ -11653,20 +12179,22 @@ use where a system info block has a form that submits to itself.
 =cut
 sub list_combined_system_info
 {
-my ($data, $in) = @_;
+my ($data, $in, $modskip) = @_;
 &load_theme_library();
+$modskip ||= [];
 foreach my $m (&get_all_module_infos()) {
+	next if (&indexof($m->{'dir'}, @{$modskip}) > -1);
 	my $dir = &module_root_directory($m->{'dir'});
 	my $mfile = "$dir/system_info.pl";
 	next if (!-r $mfile);
 	&foreign_require($m->{'dir'}, "system_info.pl");
 	foreach my $i (&foreign_call($m->{'dir'}, "list_system_info",
-				     $data, $in)) {
+				     $data, $in, $modskip)) {
 		$i->{'module'} = $m->{'dir'};
 		push(@rv, $i);
 		}
 	}
-if (&foreign_available("webmin")) {
+if ((&indexof('webmin', @{$modskip}) == -1) && &foreign_available("webmin")) {
 	# Merge in old-style notification API
 	&foreign_require("webmin");
 	foreach my $n (&webmin::get_webmin_notifications()) {
@@ -11889,9 +12417,21 @@ sub get_referer_relative
 {
 my $referer = $ENV{'HTTP_REFERER'};
 my $prefix = $gconfig{'webprefix'};
+my $query_str = 'pass-query-string';
+my $query = $in{$query_str};
 $prefix = '/' if(!$prefix);
 $referer =~ s/http.*:\/\/.*?$prefix/\//;
 $referer =~ s/\/\//\//g;
+if ($query) {
+	my @pr;
+	my $pq = "?";
+	my $pq = "&"
+		if ($referer =~ /\?/);
+	map { push(@pr, "$_=$in{$_}")
+		if ($_ ne $query_str) } keys %in;
+	$referer .= "$pq".join('&', @pr)
+		if (@pr);
+}
 return $referer;
 }
 
@@ -12358,6 +12898,46 @@ if ($float =~ /^[-]?(\.\d+|\d+\.\d+)$/) {
     return 1;
     }
 return 0;
+}
+
+# parse_accepted_language([&conf])
+# Returns the language requested by the browser
+sub parse_accepted_language
+{
+my ($conf) = @_;
+$conf ||= \%gconfig;
+my @langs = &list_languages();
+my $accepted_lang;
+if ($conf->{'acceptlang'}) {
+	foreach my $a (split(/,/, $ENV{'HTTP_ACCEPT_LANGUAGE'})) {
+		$a =~ s/;.*//;	# Remove ;q=0.5 or similar
+		my ($al) = grep { $_->{'lang'} eq $a } @langs;
+		if ($al) {
+			$accepted_lang = $al->{'lang'};
+			last;
+			}
+		}
+	}
+return $accepted_lang;
+}
+
+# get_default_system_locale()
+# Returns system default locale
+sub get_default_system_locale
+{
+my $locale_def = "en-US";
+my $locale_system;
+eval {
+	$locale_system = setlocale(LC_ALL);
+	};
+if (!$@ && $locale_system) {
+	$locale_system =~ s/\..*//;
+	$locale_system =~ s/_/-/;
+	my $locales = &list_locales();
+	return $locale_system
+		if ($locales->{$locale_system});
+	}
+return $locale_def;
 }
 
 $done_web_lib_funcs = 1;

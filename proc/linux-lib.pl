@@ -655,9 +655,13 @@ return (\@cpu, \@fans);
 # blocks in and out
 sub get_cpu_io_usage
 {
-my $out,@lines,@w;
+my ($nodelay) = @_;
+my $interval;
+$interval = " 1 2"
+	if (!$nodelay);
+my ($out, @lines, @w);
 if (&has_command("vmstat")) {
-        $out = &backquote_command("vmstat 1 2 2>/dev/null");
+        $out = &backquote_command("vmstat$interval 2>/dev/null");
         @lines = split(/\r?\n/, $out);
         @w = split(/\s+/, $lines[$#lines]);
         shift(@w) if ($w[0] eq '');

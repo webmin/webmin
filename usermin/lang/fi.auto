@@ -52,8 +52,8 @@ os_usermin=Usermin: n mukainen käyttöjärjestelmä
 os_iusermin=Sisäinen käyttöjärjestelmäkoodi, jota Usermin käyttää
 os_update=Päivitä Usermin käyttämään havaittua käyttöjärjestelmää
 
-lang_title=Kieli
-lang_title2=Usermin Language
+lang_title=Kieli ja alue
+lang_title2=Userminin kieli ja kielialue
 lang_intro=Tällä sivulla voit valita, mitä kieltä Usermin käyttää nimikkeiden, kehotteiden ja viestien näyttämiseen
 
 session_title=Authentication

@@ -84,11 +84,6 @@ ui_edbwidth=عرض پنجره انتخاب نشده یا نامعتبر است
 ui_edbheight=ارتفاع پنجره انتخاب نشده یا نامعتبر است
 ui_showlogin=نام کاربری را به عناوین صفحه اضافه کنید؟
 ui_showhost=نام میزبان را به عناوین صفحه اضافه کنید؟
-ui_dateformat=قالب برای تاریخهای نمایش داده شده
-ui_dateformat_dd/mon/yyyy=dd/mon/yyyy (یعنی 16 / سپتامبر / 2001)
-ui_dateformat_dd/mm/yyyy=dd/mm/yyy (یعنی 16/09/2001)
-ui_dateformat_mm/dd/yyyy=mm/dd/yyy (یعنی 09/16/2001)
-ui_dateformat_yyyy/mm/dd=yyy/mm/dd (یعنی 2001/09/16)
 ui_ehostnamedisplay=نام میزبان نمایش نامعتبر یا نامعتبر است
 
 mods_installsource=نصب از
@@ -121,7 +116,13 @@ os_release_notes=یادداشت های انتشار
 os_fix=سیستم عامل شناسایی شده را به روز کنید
 os_usermin=همچنین سیستم عامل Usermin را به روز کنید
 
+lang_title=زبان و محل
+lang_title2=زبان وبمین و محلی
+lang_lang=زبان
+lang_locale=محلی
 lang_charover=مجموعه کاراکتر نیرو
+lang_dateformat=فرمت نمایش تاریخ ها
+lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (یعنی 16/09/2001)
 
 ssl_deny=نسخه های پروتکل SSL را رد کنید
 ssl_compression=اتصال SSL فشرده شده مجاز است؟

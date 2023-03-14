@@ -1,8 +1,6 @@
 index_title=Sprache und Design von Webmin ändern
-index_lang=Webmin-Spracheinstellung
 index_langglobal2=Globale Sprache .. $1 ($2)
 index_langset=Persönliche Auswahl ..
-index_theme=Webmin-Design
 index_overlay=Theme overlay
 index_overlaydef=Keine - benutze Design Standards
 index_themeglobal=Globales Design ($1)

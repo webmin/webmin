@@ -115,7 +115,7 @@ else {
 	push(@mysql_set_variables, "myisam_sort_buffer_size");
 	}
 
-# make_authstr([login], [pass], [host], [port], [sock], [unix-user])
+# make_authstr([login], [pass], [host], [port], [sock], [unix-user], [ssl])
 # Returns a string to pass to MySQL commands to login to the database
 sub make_authstr
 {
@@ -125,7 +125,9 @@ local $host = defined($_[2]) ? $_[2] : $config{'host'};
 local $port = defined($_[3]) ? $_[3] : $config{'port'};
 local $sock = defined($_[4]) ? $_[4] : $config{'sock'};
 local $unix = $_[5];
-if (&supports_env_pass($unix)) {
+local $ssl = defined($_[6]) ? $_[6] : $config{'ssl'};
+local $supp = &supports_env_pass($unix, $pass);
+if ($supp) {
 	$make_authstr_pass = $pass;
 	}
 else {
@@ -136,7 +138,8 @@ return ($sock ? " -S $sock" : "").
        ($host ? " -h $host" : "").
        ($port ? " -P $port" : "").
        ($login ? " -u ".quotemeta($login) : "").
-       (&supports_env_pass($unix) ? "" :    # Password comes from environment
+       ($ssl ? " --ssl" : "").
+       ($supp ? "" :    # Password comes from environment
         $pass && &compare_version_numbers($mysql_version, "4.1") >= 0 ?
 	" --password=".quotemeta($pass) :
         $pass ? " -p".quotemeta($pass) : "");
@@ -324,6 +327,7 @@ if ($driver_handle && !$config{'nodbi'}) {
 	$cstr .= ";mysql_socket=$config{'sock'}" if ($config{'sock'});
 	$cstr .= ";mysql_read_default_file=$config{'my_cnf'}"
 		if (-r $config{'my_cnf'});
+	$cstr .= ";mysql_ssl=1" if ($config{'ssl'});
 	local $dbh = $driver_handle->connect($cstr, $mysql_login, $mysql_pass,
 					     { });
 	$dbh || &error("DBI connect failed : ",$driver_handle->errstr);
@@ -722,11 +726,12 @@ sub supports_hosts
 return &compare_version_numbers($mysql_version, "5.7.16") < 0;
 }
 
-# supports_env_pass([run-as-user])
+# supports_env_pass([run-as-user], [password])
 # Returns 1 if passing the password via an environment variable is supported
 sub supports_env_pass
 {
-local ($user) = @_;
+local ($user, $realpass) = @_;
+$realpass ||= '';
 if (&compare_version_numbers($mysql_version, "4.1") >= 0 && !$config{'nopwd'}) {
 	# Theortically possible .. but don't do this if ~/.my.cnf contains
 	# a [client] block with password= in it
@@ -738,7 +743,7 @@ if (&compare_version_numbers($mysql_version, "4.1") >= 0 && !$config{'nopwd'}) {
 		local $client = &find("client", \@cf);
 		next if (!$client);
 		local $password = &find("password", $client->{'members'});
-		return 0 if ($password ne '');
+		return 0 if ($password ne '' && $password ne $realpass);
 		}
 	return 1;
 	}
@@ -1484,8 +1489,9 @@ return $two eq "\037\213" ? 1 :
 # undef on success, or an error message on failure.
 sub backup_database
 {
-local ($db, $file, $compress, $drop, $where, $charset, $compatible,
+my ($db, $file, $compress, $drop, $where, $charset, $compatible,
        $tables, $user, $single, $quick, $force, $parameters) = @_;
+my $writer;
 if ($compress == 0) {
 	$writer = "cat >".quotemeta($file);
 	}
@@ -1495,24 +1501,24 @@ elsif ($compress == 1) {
 elsif ($compress == 2) {
 	$writer = "bzip2 -c >".quotemeta($file);
 	}
-local $dropsql = $drop ? "--add-drop-table" : "";
-local $singlesql = $single ? "--single-transaction" : "";
-local $forcesql = $force ? "--force" : "";
-local $quicksql = $quick ? "--quick" : "";
-local $parameterssql = $parameters ? quotemeta($parameters) : "";
-local $wheresql = $where ? "--where=".quotemeta($in{'where'}) : "";
-local $charsetsql = $charset ?
+my $dropsql = $drop ? "--add-drop-table" : "";
+my $singlesql = $single ? "--single-transaction" : "";
+my $forcesql = $force ? "--force" : "";
+my $quicksql = $quick ? "--quick" : "";
+my $parameterssql = $parameters ? quotemeta($parameters) : "";
+my $wheresql = $where ? "--where=".quotemeta($in{'where'}) : "";
+my $charsetsql = $charset ?
 	"--default-character-set=".quotemeta($charset) : "";
-local $compatiblesql = @$compatible ?
+my $compatiblesql = @$compatible ?
 	"--compatible=".join(",", @$compatible) : "";
-local $quotingsql = &supports_quoting() ? "--quote-names" : "";
-local $routinessql = &supports_routines() ? "--routines" : "";
-local $tablessql = join(" ", map { quotemeta($_) } @$tables);
-local $eventssql = &supports_mysqldump_events() ? "--events" : "";
-local $gtidsql = "";
+my $quotingsql = &supports_quoting() ? "--quote-names" : "";
+my $routinessql = &supports_routines() ? "--routines" : "";
+my $tablessql = join(" ", map { quotemeta($_) } @$tables);
+my $eventssql = &supports_mysqldump_events() ? "--events" : "";
+my $gtidsql = "";
 eval {
-	$main::error_must_die = 1;
-	local $d = &execute_sql($master_db, "show variables like 'gtid_mode'");
+	local $main::error_must_die = 1;
+	my $d = &execute_sql($master_db, "show variables like 'gtid_mode'");
 	if (@{$d->{'data'}} && uc($d->{'data'}->[0]->[1]) eq 'ON' &&
 	    &compare_version_numbers($mysql_version, "5.6") >= 0) {
 		# Add flag to support GTIDs
@@ -1524,11 +1530,11 @@ if ($user && $user ne "root") {
 	$writer = &command_as_user($user, 0, $writer);
 	}
 &set_authstr_env();
-local $cmd = "$config{'mysqldump'} $authstr $dropsql $singlesql $forcesql $quicksql $parameterssql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql $eventssql $gtidsql | $writer";
+my $cmd = "$config{'mysqldump'} $authstr $dropsql $singlesql $forcesql $quicksql $parameterssql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql $eventssql $gtidsql | $writer";
 if (&shell_is_bash()) {
 	$cmd = "set -o pipefail ; $cmd";
 	}
-local $out = &backquote_logged("($cmd) 2>&1");
+my $out = &backquote_logged("($cmd) 2>&1");
 if ($? || !-s $file || $out =~ /Aborted\s+connection|max_allowed_packet/i) {
 	return $out;
 	}

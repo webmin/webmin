@@ -42,6 +42,13 @@ os_incorrect=운영 체제 $1이(가) 버전 $2(으)로 업그레이드되었습
 os_release_notes=릴리즈 노트
 os_usermin=Usermin OS도 업데이트
 
+lang_title=언어 및 로케일
+lang_title2=Webmin 언어 및 로케일
+lang_lang=언어
+lang_locale=장소
+lang_dateformat=날짜 표시 형식
+lang_dateformat_dd/mon/yyyy=dd/mon/yyyy(예: 2001년 9월 16일)
+
 ssl_deny=거부 할 SSL 프로토콜 버전
 ssl_compression=압축 SSL 연결을 허용 하시겠습니까?
 ssl_honorcipherorder=서버 정의 암호 순서를 강제로 사용 하시겠습니까?

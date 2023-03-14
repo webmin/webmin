@@ -52,8 +52,8 @@ os_usermin=Usermin'e göre işletim sistemi
 os_iusermin=Usermin tarafından kullanılan dahili işletim sistemi kodu
 os_update=Usermin'i algılanan işletim sistemini kullanacak şekilde güncelleyin
 
-lang_title=Dil
-lang_title2=Usermin Dili
+lang_title=Dil ve Yerel Ayar
+lang_title2=Usermin Dili ve Yerel Ayarı
 lang_intro=Bu sayfa, Usermin'in başlıkları, bilgi istemlerini ve mesajları görüntülemek için hangi dili kullanacağını seçmenize izin verir
 
 session_title=Kimlik Doğrulama

@@ -21,9 +21,7 @@ if ($module_info{'usermin'}) {
 	# runs as the Usermin user
 	&switch_to_remote_user();
 	&create_user_config_dirs();
-	$postgres_login = $userconfig{'login'};
-	$postgres_pass = $userconfig{'pass'};
-	$postgres_sameunix = 0;
+	&set_login_pass(0, $userconfig{'login'}, $userconfig{'pass'});
 	%access = ( 'backup' => 1,
 		    'restore' => 1,
 		    'tables' => 1,
@@ -36,14 +34,12 @@ else {
 	# Login and password is determined by ACL in Webmin
 	%access = &get_module_acl();
 	if ($access{'user'} && !$use_global_login) {
-		$postgres_login = $access{'user'};
-		$postgres_pass = $access{'pass'};
-		$postgres_sameunix = $access{'sameunix'};
+		&set_login_pass(
+			$access{'sameunix'}, $access{'user'}, $access{'pass'});
 		}
 	else {
-		$postgres_login = $config{'login'};
-		$postgres_pass = $config{'pass'};
-		$postgres_sameunix = $config{'sameunix'};
+		&set_login_pass(
+			$config{'sameunix'}, $config{'login'}, $config{'pass'});
 		}
 	$max_dbs = $config{'max_dbs'};
 	$commands_file = "$module_config_directory/commands";
@@ -75,11 +71,11 @@ EOF
 sub is_postgresql_running
 {
 local $temp = &transname();
-local $host = $config{'host'} ? "-h $config{'host'}" : "";
-$host .= " -p $config{'port'}" if ($config{'port'});
 local $cmd = &quote_path($config{'psql'}).
+	     &host_port_flags().
 	     (!&supports_pgpass() ? " -u" : " -U $postgres_login").
-	     " -c '' $host $config{'basedb'}";
+	     " -c ''".
+	     " ".$config{'basedb'};
 if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
 	$cmd = "su $postgres_login -c ".quotemeta($cmd);
 	}
@@ -118,12 +114,12 @@ return wantarray ? ($rv, $out) : $rv;
 # get_postgresql_version([from-command])
 sub get_postgresql_version
 {
-local ($fromcmd) = @_;
-local $main::error_must_die = 1;
+my ($fromcmd) = @_;
 return $postgresql_version_cache if (defined($postgresql_version_cache));
-local $rv;
+my $rv;
 if (!$fromcmd) {
 	eval {
+		local $main::error_must_die = 1;
 		local $v = &execute_sql_safe($config{'basedb'},
 					     'select version()');
 		$v = $v->{'data'}->[0]->[0];
@@ -133,7 +129,8 @@ if (!$fromcmd) {
 		};
 	}
 if (!$rv || $@) {
-	local $out = &backquote_command(&quote_path($config{'psql'})." -V 2>&1 <$null_file");
+	my $out = &backquote_command(
+		&quote_path($config{'psql'})." -V 2>&1 <$null_file");
 	$rv = $out =~ /\s([0-9\.]+)/ ? $1 : undef;
 	}
 $postgresql_version_cache = $rv;
@@ -291,6 +288,9 @@ if ($driver_handle &&
 	local $cstr = "dbname=$_[0]";
 	$cstr .= ";host=$config{'host'}" if ($config{'host'});
 	$cstr .= ";port=$config{'port'}" if ($config{'port'});
+	local $sslmode = $config{'sslmode'};
+	$sslmode =~ s/_/-/g;
+	$cstr .= ";sslmode=$sslmode" if ($sslmode);
 	local @uinfo;
 	if ($postgres_sameunix &&
 	    (@uinfo = getpwnam($postgres_login))) {
@@ -400,11 +400,11 @@ else {
 		}
 
 	# Call the psql program
-	local $host = $config{'host'} ? "-h $config{'host'}" : "";
-	$host .= " -p $config{'port'}" if ($config{'port'});
 	local $cmd = &quote_path($config{'psql'})." --html".
+		     &host_port_flags().
 		     (!&supports_pgpass() ? " -u" : " -U $postgres_login").
-		     " -c ".&quote_path($sql)." $host $_[0]";
+		     " -c ".&quote_path($sql).
+		     " ".$_[0];
 	if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
 		$cmd = &command_as_user($postgres_login, 0, $cmd);
 		}
@@ -800,10 +800,9 @@ if (!defined($user)) {
 	$pass = $postgres_pass;
 	}
 local $cmd = &quote_path($config{'psql'})." -f ".&quote_path($file).
+	     &host_port_flags().
 	     (&supports_pgpass() ? " -U $user" : " -u").
-	     ($config{'host'} ? " -h $config{'host'}" : "").
-	     ($config{'port'} ? " -h $config{'port'}" : "").
-	     " $db";
+	     " ".$db;
 if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
 	$cmd = &command_as_user($postgres_login, 0, $cmd);
 	}
@@ -1125,22 +1124,32 @@ return $config{'host'} eq '' || $config{'host'} eq 'localhost' ||
        &to_ipaddress($config{'host'}) eq &to_ipaddress(&get_system_hostname());
 }
 
-# backup_database(database, dest-path, format, [&only-tables], [run-as-user])
+# backup_database(database, dest-path, format, [&only-tables], [run-as-user],
+# 		  [compress-mode])
 # Executes the pg_dump command to backup the specified database to the
 # given destination path. Returns undef on success, or an error message
 # on failure.
 sub backup_database
 {
-local ($db, $path, $format, $tables, $user) = @_;
-local $tablesarg = join(" ", map { " -t ".quotemeta('"'.$_.'"') } @$tables);
-local $cmd = &quote_path($config{'dump_cmd'}).
+my ($db, $path, $format, $tables, $user, $compress) = @_;
+my $tablesarg = join(" ", map { " -t ".quotemeta('"'.$_.'"') } @$tables);
+my $writer;
+if ($compress == 0) {
+        $writer = "cat >".quotemeta($path);
+        }
+elsif ($compress == 1) {
+        $writer = "gzip -c >".quotemeta($path);
+        }
+elsif ($compress == 2) {
+        $writer = "bzip2 -c >".quotemeta($path);
+        }
+my $cmd = &quote_path($config{'dump_cmd'}).
+	     &host_port_flags().
 	     (!$postgres_login ? "" :
 	      &supports_pgpass() ? " -U $postgres_login" : " -u").
-	     ($config{'host'} ? " -h $config{'host'}" : "").
-	     ($config{'port'} ? " -p $config{'port'}" : "").
 	     ($format eq 'p' ? "" : " -b").
 	     $tablesarg.
-	     " -F$format -f ".&quote_path($path)." $db";
+	     " -F$format $db | $writer";
 if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
 	# Postgres connections have to be made as the 'postgres' Unix user
 	$cmd = &command_as_user($postgres_login, 0, $cmd);
@@ -1150,34 +1159,36 @@ elsif ($user) {
 	$cmd = &command_as_user($user, 0, $cmd);
 	}
 $cmd = &command_with_login($cmd);
-local $out = &backquote_logged("$cmd 2>&1");
+my $out = &backquote_logged("$cmd 2>&1");
 if ($? || $out =~ /could not|error|failed/i) {
 	return $out;
 	}
 return undef;
 }
 
-# restore_database(database, source-path, only-data, clear-db, [&only-tables])
+# restore_database(database, source-path, only-data, clear-db, [&only-tables],
+# 		   [login, password])
 # Restores the contents of a PostgreSQL backup into the specified database.
 # Returns undef on success, or an error message on failure.
 sub restore_database
 {
-local ($db, $path, $only, $clean, $tables) = @_;
-local $tablesarg = join(" ", map { " -t ".quotemeta('"'.$_.'"') } @$tables);
-local $cmd = &quote_path($config{'rstr_cmd'}).
-	     (!$postgres_login ? "" :
-	      &supports_pgpass() ? " -U $postgres_login" : " -u").
-	     ($config{'host'} ? " -h $config{'host'}" : "").
-	     ($config{'port'} ? " -p $config{'port'}" : "").
+my ($db, $path, $only, $clean, $tables, $login, $pass) = @_;
+my $tablesarg = join(" ", map { " -t ".quotemeta('"'.$_.'"') } @$tables);
+$login ||= $postgres_login;
+$pass ||= $postgres_pass;
+my $cmd = &quote_path($config{'rstr_cmd'}).
+	     &host_port_flags().
+	     (!$login ? "" :
+	      &supports_pgpass() ? " -U $login" : " -u").
 	     ($only ? " -a" : "").
 	     ($clean ? " -c" : "").
 	     $tablesarg.
 	     " -d $db ".&quote_path($path);
-if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
-	$cmd = &command_as_user($postgres_login, 0, $cmd);
+if ($postgres_sameunix && defined(getpwnam($login))) {
+	$cmd = &command_as_user($login, 0, $cmd);
 	}
-$cmd = &command_with_login($cmd);
-local $out = &backquote_logged("$cmd 2>&1");
+$cmd = &command_with_login($cmd, $login, $pass);
+my $out = &backquote_logged("$cmd 2>&1");
 if ($? || $out =~ /could not|error|failed/i) {
 	return $out;
 	}
@@ -1242,6 +1253,27 @@ else {
 return $cmd;
 }
 
+# host_port_flags()
+# Returns flags to set the correct host and post for postgreSQL CLI commands
+sub host_port_flags
+{
+local $sslmode = $config{'sslmode'};
+$sslmode =~ s/_/-/g;
+if ($sslmode) {
+	my @rv;
+	push(@rv, "host=".$config{'host'}) if ($config{'host'});
+	push(@rv, "port=".$config{'port'}) if ($config{'port'});
+	push(@rv, "sslmode=".$sslmode) if ($sslmode);
+	return @rv ? " '".join(" ", @rv)."'" : "";
+	}
+else {
+	my $rv = "";
+	$rv .= " -h $config{'host'}" if ($config{'host'});
+	$rv .= " -p $config{'port'}" if ($config{'port'});
+	return $rv;
+	}
+}
+
 # extract_grants(field)
 # Given a field from pg_class that contains grants either as a comma-separated
 # list or an array, return a list of tuples in user,grant format
@@ -1291,6 +1323,31 @@ elsif (&get_postgresql_version() >= 9.4) {
 else {
 	return ("pg_shadow", $pg_shadow_cols);
 	}
+}
+
+# compression_format(file)
+# Returns 0 if uncompressed, 1 for gzip, 2 for compress, 3 for bzip2 or
+# 4 for zip
+sub compression_format
+{
+open(BACKUP, "<".$_[0]);
+local $two;
+read(BACKUP, $two, 2);
+close(BACKUP);
+return $two eq "\037\213" ? 1 :
+       $two eq "\037\235" ? 2 :
+       $two eq "PK" ? 4 :
+       $two eq "BZ" ? 3 : 0;
+}
+
+# set_login_pass(same-unix, login, password)
+# Sets the credentials to be used for all SQL commands
+sub set_login_pass
+{
+my ($sameunix, $login, $pass) = @_;
+$postgres_sameunix = $sameunix;
+$postgres_login = $login;
+$postgres_pass = $pass;
 }
 
 1;

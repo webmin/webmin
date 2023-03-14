@@ -1,1 +1,11 @@
+index_lang=Llenguatge
+index_locale=Localització
+index_locale2=Format de dates
+index_theme=Tema
 index_langglobal2=Idioma global.. $1 ($2)
+index_localeglobal2=Localització global.. $1 ($2)
+index_localeset=Elecció personal ..
+index_dateformatglobal2=Format de dates globals.. $1
+index_dateformatset=Elecció personal ..
+
+acl_locale=Es pot canviar la configuració regional?

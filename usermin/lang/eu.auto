@@ -52,8 +52,8 @@ os_usermin=Sistema eragilea Usermin-en arabera
 os_iusermin=Usermin-ek erabiltzen duen barne sistema OS kodea
 os_update=Eguneratu Usermin detektatutako sistema operatiboa erabiltzeko
 
-lang_title=Hizkuntza
-lang_title2=Usermin Language
+lang_title=Hizkuntza eta Tokia
+lang_title2=Usermin hizkuntza eta lokalizazioa
 lang_intro=Orrialde honek izenburuak, galderak eta mezuak bistaratzeko zein hizkuntza erabiliko duen aukeratu dezakezu
 
 session_title=Autentifikazioa

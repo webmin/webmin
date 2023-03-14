@@ -63,6 +63,13 @@ print &ui_table_row($text{'backup_format'},
 		  [ 't', $text{'backup_format_t'} ],
 		  [ 'c', $text{'backup_format_c'} ] ]));
 
+# Show compression option
+$c = $c{'backup_compress_'.$in{'db'}} || 0;
+print &ui_table_row($text{'backup_compress'},
+	&ui_radio("compress", $c, [ [ 0, $text{'backup_compress_0'} ],
+				    [ 1, $text{'backup_compress_1'} ],
+				    [ 2, $text{'backup_compress_2'} ] ]));
+
 if (!$in{'all'}) {
 	# Show input to select tables
 	$t = $c{'backup_tables_'.$in{'db'}};

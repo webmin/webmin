@@ -42,6 +42,30 @@ if ($access{'lang'}) {
 		}
 	}
 
+# Parse custom locale
+if ($access{'locale'}) {
+	# Parse new locale
+	if ($in{'locale_def'} ||
+	    $in{'locale'}) {
+		if ($in{'locale_def'}) {
+			$user->{'locale'} = undef;
+			}
+		else {
+			$user->{'locale'} = $in{'locale'};
+			}
+		}
+	# Parse old dateformat
+	if ($in{'dateformat_def'} ||
+	    $in{'dateformat'}) {
+		if ($in{'dateformat_def'}) {
+			$user->{'dateformat'} = undef;
+			}
+		else {
+			$user->{'dateformat'} = $in{'dateformat'};
+			}
+		}
+	}
+
 # Parse custom theme and possibly overlay
 my ($newoverlay, $newtheme);
 if ($access{'theme'}) {

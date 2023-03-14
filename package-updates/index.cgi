@@ -53,11 +53,16 @@ print &ui_form_end();
 @current = &list_current(1);
 
 # Make lookup hashes
-%current = map { $_->{'name'}."/".$_->{'system'}, $_ } @current;
-%avail = map { $_->{'name'}."/".$_->{'system'}, $_ } @avail;
+foreach my $c (@current) {
+	$current{$c->{'name'}."/".$c->{'system'}} ||= $c;
+	}
+foreach my $a (@avail) {
+	$avail{$a->{'name'}."/".$a->{'system'}} ||= $a;
+	}
 
 # Build table
 $anysource = 0;
+$upmode = $in{'mode'} eq 'updates' || $in{'mode'} eq 'security';
 foreach $p (sort { $a->{'name'} cmp $b->{'name'} } (@current, @avail)) {
 	next if ($done{$p->{'name'},$p->{'system'}}++);	# May be in both lists
 
@@ -65,7 +70,7 @@ foreach $p (sort { $a->{'name'} cmp $b->{'name'} } (@current, @avail)) {
 	$c = $current{$p->{'name'}."/".$p->{'system'}};
 	$a = $avail{$p->{'name'}."/".$p->{'system'}};
 
-	if ($a && $c && &compare_versions($a, $c) > 0) {
+	if ($a && $c && (&compare_versions($a, $c) > 0 || $upmode)) {
 		# An update is available
 		$msg = "<b><font color=#00aa00>".
 		       &text('index_new', $a->{'version'})."</font></b>";

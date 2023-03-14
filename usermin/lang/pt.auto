@@ -52,8 +52,8 @@ os_usermin=Sistema operacional de acordo com Usermin
 os_iusermin=Código do SO interno usado pelo Usermin
 os_update=Atualize o Usermin para usar o SO detectado
 
-lang_title=Língua
-lang_title2=Usermin Language
+lang_title=Idioma e localidade
+lang_title2=Idioma e localidade do Usermin
 lang_intro=Esta página permite que você escolha qual idioma o Usermin usará para exibir títulos, avisos e mensagens
 
 session_title=Autenticação

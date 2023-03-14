@@ -147,10 +147,11 @@ format as list_serves.
 =cut
 sub get_server
 {
-my $serv = { };
-$serv->{'id'} = $_[0];
-&read_file("$module_config_directory/$_[0].serv", $serv) || return undef;
-$serv->{'file'} = "$module_config_directory/$_[0].serv";
+my ($id) = @_;
+my $serv = { 'id' => $id };
+my $file = "$module_config_directory/$serv->{'id'}.serv";
+&read_file($file, $serv) || return undef;
+$serv->{'file'} = $file;
 return $serv;
 }
 
@@ -164,10 +165,11 @@ sub save_server
 {
 my ($serv) = @_;
 $serv->{'id'} ||= time().$$;
-&lock_file("$module_config_directory/$serv->{'id'}.serv");
-&write_file("$module_config_directory/$serv->{'id'}.serv", $_[0]);
-chmod(0600, "$module_config_directory/$serv->{'id'}.serv");
-&unlock_file("$module_config_directory/$serv->{'id'}.serv");
+my $file = "$module_config_directory/$serv->{'id'}.serv";
+&lock_file($file);
+&write_file($file, $serv);
+&set_ownership_permissions(undef, undef, 0600, $file);
+&unlock_file($file);
 $main::remote_servers_cache{$serv->{'host'}} =
    $main::remote_servers_cache{$serv->{'host'}.":".$serv->{'port'}} = $serv;
 }

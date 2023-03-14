@@ -191,9 +191,6 @@ os_envs=Ek çevresel değişkenler
 os_name=Değişken adı
 os_value=Değeri
 
-lang_title=Dil
-lang_title2=Webmin Dili
-lang_lang=Görüntüleme dili
 lang_intro=Bu sayfada Webmin'in başlıklar, komutlar ve mesajlar için kullandığı dili seçebilirsiniz.
 lang_ok=Dil Değiştir
 lang_accept=Tarayıcıda ayarlı dil kullanılsın mı?

@@ -1,7 +1,5 @@
 index_title=Сменить язык и тему
-index_lang=Язык интерфейса Webmin
 index_langset=персональный выбор ..
-index_theme=Тема интерфейса Webmin
 index_overlay=Оверлей темы
 index_overlaydef=Нет - настройки по-умолчанию для темы
 index_themeglobal=Глобальная тема ($1)

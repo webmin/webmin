@@ -6,6 +6,9 @@ mods_desc4=Los módulos instalados se pueden exportar como un archivo wbm.gz uti
 os_iusermin=Código interno del sistema operativo utilizado por Usermin
 os_update=Actualice Usermin para usar el sistema operativo detectado
 
+lang_title=Idioma y configuración regional
+lang_title2=Idioma y configuración regional de Usermin
+
 session_authmode=Método de autentificación
 
 themes_desc4=Los temas instalados se pueden exportar como un archivo wbt.gz utilizando el siguiente formulario. Se puede instalar un archivo de tema en otro sistema que ejecute Usermin.

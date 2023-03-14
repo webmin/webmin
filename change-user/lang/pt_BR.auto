@@ -1,8 +1,14 @@
 index_title=Alterar idioma e tema
-index_lang=Idioma da interface do usuário Webmin
+index_lang=Linguagem
+index_locale=Localidade
+index_locale2=Formato de datas
+index_theme=Tema
 index_langglobal2=Idioma global. $1 ($2)
 index_langset=Escolha pessoal ..
-index_theme=Tema da interface do usuário Webmin
+index_localeglobal2=Local global.. $1 ($2)
+index_localeset=Escolha pessoal ..
+index_dateformatglobal2=Formato de datas globais.. $1 
+index_dateformatset=Escolha pessoal ..
 index_overlay=Sobreposição de tema
 index_overlaydef=Nenhum - use os padrões do tema
 index_themeglobal=Tema global ($1)
@@ -33,5 +39,6 @@ change_eoverlay=Você não pode selecionar uma sobreposição de tema, a menos q
 change_eoverlay2=A sobreposição de tema selecionada não é compatível com o tema da interface do usuário escolhido
 
 acl_lang=Pode mudar o idioma?
+acl_locale=Pode mudar de localidade?
 acl_theme=Pode mudar de tema?
 acl_pass=Pode alterar a senha (quando definida no Webmin)?

@@ -905,8 +905,8 @@ if ($_[0] eq "proc" || $_[0] eq "swap" ||
 &clean_language();
 local $out = &backquote_command("df -k ".quotemeta($_[1]), 1);
 &reset_environment();
-if ($out =~ /Mounted on\n\S+\s+(\S+)\s+\S+\s+(\S+)/) {
-	return ($1, $2);
+if ($out =~ /Mounted on\n\S+\s+(?<total>\S+)\s+(?<used>\S+)\s+(?<free>\S+)\s+(?<percent>\d+)/) {
+	return ("$+{total}", "$+{free}", "$+{used}", "$+{percent}");
 	}
 return ( );
 }
@@ -919,8 +919,8 @@ if (&get_mounted($_[1], "*") < 0) { return (); }
 &clean_language();
 local $out = &backquote_command("df -i $_[1]", 1);
 &reset_environment();
-if ($out =~ /Mounted on\n\S+\s+(\S+)\s+\S+\s+(\S+)/) {
-	return ($1, $2);
+if ($out =~ /Mounted on\n\S+\s+(?<total>\S+)\s+(?<used>\S+)\s+(?<free>\S+)\s+(?<percent>\d+)/) {
+	return ("$+{total}", "$+{free}", "$+{used}", "$+{percent}");
 	}
 return ( );
 }
@@ -1680,20 +1680,20 @@ if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 		elsif ($?) {
 			&error(&text('linux_elist', $out));
 			}
-		}
 
-	# Validate directory name for NFSv3 (in v4 '/' exists)
-	foreach (split(/\n/, $out)) {
-		if (/^(\/\S+)/) {
-			$dirlist .= "$1\n";
-			push(@dirlist, $1);
+		# Validate directory name for NFSv3 (in v4 '/' exists)
+		foreach (split(/\n/, $out)) {
+			if (/^(\/\S+)/) {
+				$dirlist .= "$1\n";
+				push(@dirlist, $1);
+				}
 			}
-		}
 	
-	if ($_[0] ne "nfs4" && $in{'nfs_dir'} !~ /^\/.*$/ &&
-	    &indexof($in{'nfs_dir'}, @dirlist) < 0) {
-		&error(&text('linux_enfsdir', $in{'nfs_dir'},
-			     $in{'nfs_host'}, "<pre>$dirlist</pre>"));
+		if ($_[0] ne "nfs4" && $in{'nfs_dir'} !~ /^\/.*$/ &&
+		    &indexof($in{'nfs_dir'}, @dirlist) < 0) {
+			&error(&text('linux_enfsdir', $in{'nfs_dir'},
+				     $in{'nfs_host'}, "<pre>$dirlist</pre>"));
+			}
 		}
 
 	return "$in{nfs_host}:$in{nfs_dir}";

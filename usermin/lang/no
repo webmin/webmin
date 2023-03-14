@@ -52,8 +52,6 @@ os_usermin=Operativsystem i henhold til Usermin
 os_iusermin=Intern OS kode brukt av Usermin
 os_update=Oppdater Usermin til å bruker oppdaget OS
 
-lang_title=Språk
-lang_title2=Usermin språk
 lang_intro=Her kan du bestemme hvilke språk Usermin skal bruke vis visning av titler, spørsmål og meldinger
 
 session_title=Autentisering

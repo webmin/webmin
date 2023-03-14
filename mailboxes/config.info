@@ -19,7 +19,7 @@ show_body=Show message body previews in list?,1,1-Yes,0-No
 open_mode=Open messages in,1,1-New window,0-List window
 link_mode=Open links in,1,1-New window,0-Same window
 download=Attachment MIME types to always download,9,20,4,\t
-date_fmt=Date format in mail list,1,dmy-DD/MM/YYYY,mdy-MM/DD/YYYY,ymd-YYYY/MM/DD
+date_fmt=Date format in mail list,1,auto-Locale based,dmy-DD/MM/YYYY,mdy-MM/DD/YYYY,ymd-YYYY/MM/DD
 date_tz=Timezone for date displays,3,System default
 
 line0.4=User list options,11

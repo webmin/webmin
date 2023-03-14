@@ -1,3 +1,6 @@
+lang_title=Sprache und Gebietsschema
+lang_title2=Usermin-Sprache und Gebietsschema
+
 twofactor_desc=Mit der Zwei-Faktor-Authentifizierung können Benutzer von Usermin die Verwendung eines zusätzlichen Authentifizierungsgeräts beim Anmelden aktivieren, z. B. eines einmaligen Passcode-Generators. Benutzer müssen sich einzeln beim ausgewählten Authentifizierungsanbieter registrieren, nachdem dieser auf dieser Seite aktiviert wurde.
 twofactor_eversion=Die auf Ihrem System installierte Version von Usermin unterstützt keine Zwei-Faktor-Authentifizierung.
 

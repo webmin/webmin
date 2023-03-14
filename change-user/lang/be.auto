@@ -1,8 +1,14 @@
 index_title=Змена мовы і тэмы
-index_lang=Мова карыстацкага інтэрфейсу Webmin
+index_lang=мова
+index_locale=Лакаль
+index_locale2=Фармат даты
+index_theme=Тэма
 index_langglobal2=Глабальная мова.. $1 ($2)
 index_langset=Асабісты выбар ..
-index_theme=Тэма карыстацкага інтэрфейсу Webmin
+index_localeglobal2=Глабальны лакаль.. $1 ($2)
+index_localeset=Асабісты выбар ..
+index_dateformatglobal2=Сусветны фармат дат.. $1
+index_dateformatset=Асабісты выбар ..
 index_overlay=Накладка тэмы
 index_overlaydef=Няма - выкарыстоўваць стандартныя тэмы
 index_themeglobal=Глабальная тэма ($1)
@@ -33,5 +39,6 @@ change_eoverlay=Вы не можаце выбраць накладку тэмы,
 change_eoverlay2=Абраная тэма накладання не сумяшчальная з абранай тэмай карыстацкага інтэрфейсу
 
 acl_lang=Ці можна змяніць мову?
+acl_locale=Ці можна змяніць лакаль?
 acl_theme=Ці можна змяніць тэму?
 acl_pass=Ці можна змяніць пароль (калі ўсталяваны ў Webmin)?

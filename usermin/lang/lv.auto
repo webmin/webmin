@@ -52,8 +52,8 @@ os_usermin=Operētājsistēma saskaņā ar Usermin
 os_iusermin=Iekšējais OS kods, ko izmanto Usermin
 os_update=Atjauniniet Usermin, lai izmantotu atklāto OS
 
-lang_title=Valoda
-lang_title2=Usermin valoda
+lang_title=Valoda un lokalizācija
+lang_title2=Usermin valoda un lokalizācija
 lang_intro=Šī lapa ļauj jums izvēlēties, kuru valodu Usermin izmantos virsrakstu, uzvedņu un ziņojumu parādīšanai
 
 session_title=Autentifikācija

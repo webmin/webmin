@@ -1,7 +1,5 @@
 index_title=Canvi d'Idioma i Tema
-index_lang=Idioma de la interfície d'usuari de Webmin
 index_langset=Tria personal...
-index_theme=Tema de la interfície d'usuari de Webmin
 index_overlay=Capa del tema
 index_overlaydef=Cap - utilitza els valors per defecte del tema
 index_themeglobal=Tema global ($1)

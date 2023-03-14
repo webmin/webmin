@@ -1,8 +1,14 @@
 index_title=Mainīt valodu un tēmu
-index_lang=Webmin UI valoda
+index_lang=Valoda
+index_locale=Lokalizācija
+index_locale2=Datumu formāts
+index_theme=Tēma
 index_langglobal2=Globālā valoda.. $1 ($2)
 index_langset=Personīga izvēle ..
-index_theme=Webmin UI tēma
+index_localeglobal2=Globālā lokalizācija.. $1 ($2)
+index_localeset=Personīgā izvēle ..
+index_dateformatglobal2=Globālais datumu formāts.. $1
+index_dateformatset=Personīgā izvēle ..
 index_overlay=Tēmas pārklājums
 index_overlaydef=Nav - izmantojiet motīvu noklusējumus
 index_themeglobal=Globālā tēma ($1)
@@ -33,5 +39,6 @@ change_eoverlay=Motīva pārklājumu nevar atlasīt, ja nav izvēlēta arī liet
 change_eoverlay2=Atlasītā motīva pārklājums nav savietojams ar izvēlēto lietotāja interfeisa motīvu
 
 acl_lang=Vai var mainīt valodu?
+acl_locale=Vai var mainīt lokalizāciju?
 acl_theme=Vai var mainīt tēmu?
 acl_pass=Vai var mainīt paroli (ja tā ir iestatīta Webmin)?

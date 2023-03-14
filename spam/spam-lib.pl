@@ -182,20 +182,45 @@ elsif ($config{'mode'} == 3 && !$forglobal) {
 return \@rv;
 }
 
-# find(name, &config)
+# alt_name(name, &config)
+# Returns an alternate directive name if the current one is obsoleted
+sub alt_name
+{
+my ($name, $conf) = @_;
+my $newname = $name;
+if ($newname =~ s/whitelist/welcomelist/ ||
+    $newname =~ s/blacklist/blocklist/) {
+	# Is the new directive being used?
+	my @olduse = &find($name, $conf, 1);
+	my @newuse = &find($newname, $conf, 1);
+	if (@newuse) {
+		# New name exists in config, so use it
+		$name = $newname;
+		}
+	elsif (!@olduse && &version_atleast("4.0")) {
+		# Neither exists, but use the new name is later versions
+		$name = $newname;
+		}
+	}
+return $name;
+}
+
+# find(name, &config, [no-alt])
 sub find
 {
-local @rv;
-foreach $c (@{$_[1]}) {
-	push(@rv, $c) if (lc($c->{'name'}) eq lc($_[0]));
+my ($name, $conf, $noalt) = @_;
+my @rv;
+$name = &alt_name($name, $conf) if (!$noalt);
+foreach my $c (@$conf) {
+	push(@rv, $c) if (lc($c->{'name'}) eq lc($name));
 	}
 return wantarray ? @rv : $rv[0];
 }
 
-# find_value(name, &config)
+# find_value(name, &config, [no-alt])
 sub find_value
 {
-local @rv = map { $_->{'value'} } &find(@_);
+my @rv = map { $_->{'value'} } &find(@_);
 return wantarray ? @rv : $rv[0];
 }
 
@@ -203,6 +228,7 @@ return wantarray ? @rv : $rv[0];
 # Update the config file with some directives
 sub save_directives
 {
+my ($conf, $nameold, $newv, $vonly) = @_;
 if ($module_info{'usermin'} && $local_cf =~ /^(.*)\/([^\/]+)$/) {
 	# Under Usermin, make sure .spamassassin exists
 	local $spamdir = $1;
@@ -210,11 +236,13 @@ if ($module_info{'usermin'} && $local_cf =~ /^(.*)\/([^\/]+)$/) {
 		&make_dir($spamdir, 0755);
 		}
 	}
-local @old = ref($_[1]) ? @{$_[1]} : &find($_[1], $_[0]);
-local @new = $_[3] ? &make_directives($_[1], $_[2]) : @{$_[2]};
-local $i;
-for($i=0; $i<@old || $i<@new; $i++) {
-	local $line;
+if (!ref($nameold)) {
+	$nameold = &alt_name($nameold, $conf);
+	}
+my @old = ref($nameold) ? @$nameold : &find($nameold, $conf);
+my @new = $vonly ? &make_directives($nameold, $newv) : @$newv;
+for(my $i=0; $i<@old || $i<@new; $i++) {
+	my $line;
 	if ($new[$i]) {
 		$line = $new[$i]->{'name'};
 		$line .= " ".$new[$i]->{'value'} if ($new[$i]->{'value'} ne '');
@@ -262,7 +290,7 @@ for($i=0; $i<@old || $i<@new; $i++) {
 				    $rv ? $rv->error : "Unknown modify error"));
 				}
 			}
-		$_[0]->[$old[$i]->{'index'}] = $new[$i];
+		$conf->[$old[$i]->{'index'}] = $new[$i];
 		}
 	elsif ($old[$i]) {
 		# Deleting a directive
@@ -270,7 +298,7 @@ for($i=0; $i<@old || $i<@new; $i++) {
 			# From a file
 			local $lref = &read_file_lines($old[$i]->{'file'});
 			splice(@$lref, $old[$i]->{'line'}, 1);
-			foreach $c (@{$_[0]}) {
+			foreach $c (@$conf) {
 				if ($c->{'line'} > $old[$i]->{'line'} &&
 				    $c->{'file'} eq $old[$i]->{'file'}) {
 					$c->{'line'}--;
@@ -308,8 +336,8 @@ for($i=0; $i<@old || $i<@new; $i++) {
 			}
 
 		# Fix up indexes
-		splice(@{$_[0]}, $old[$i]->{'index'}, 1);
-		foreach $c (@{$_[0]}) {
+		splice(@$conf, $old[$i]->{'index'}, 1);
+		foreach $c (@$conf) {
 			if ($c->{'index'} > $old[$i]->{'index'}) {
 				$c->{'index'}--;
 				}
@@ -353,17 +381,19 @@ for($i=0; $i<@old || $i<@new; $i++) {
 				}
 			}
 		$new[$i]->{'mode'} = $addmode;
-		$new[$i]->{'index'} = @{$_[0]};
-		push(@{$_[0]}, $new[$i]);
+		$new[$i]->{'index'} = @$conf;
+		push(@$conf, $new[$i]);
 		}
 	}
 }
 
 # make_directives(name, &values)
+# Converts a list of values into a list of directive objects
 sub make_directives
 {
-return map { { 'name' => $_[0],
-	       'value' => $_ } } @{$_[1]};
+my ($name, $vals) = @_;
+return map { { 'name' => $name,
+	       'value' => $_ } } @$vals;
 }
 
 ### UI functions ###

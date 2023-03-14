@@ -1477,12 +1477,22 @@ sub simplify_date
 local ($date, $fmt) = @_;
 local $u = &parse_mail_date($date);
 if ($u) {
-	$fmt ||= $userconfig{'date_fmt'} || $config{'date_fmt'} || "dmy";
-	local $strf = $fmt eq "dmy" ? "%d/%m/%Y" :
-		      $fmt eq "mdy" ? "%m/%d/%Y" :
-				      "%Y/%m/%d";
-	return strftime("$strf %H:%M", localtime($u));
-        }
+	my $locale;
+	if ($userconfig{'date_fmt'} eq 'auto' || $config{'date_fmt'} eq 'auto') {
+		eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
+		if (!$@) {
+			$locale++;
+			return &make_date($u, undef, $fmt);
+			}
+		}
+	if (!$locale) {
+		$fmt ||= $userconfig{'date_fmt'} || $config{'date_fmt'} || "dmy";
+		local $strf = $fmt eq "dmy" ? "%d/%m/%Y" :
+			      $fmt eq "mdy" ? "%m/%d/%Y" :
+					      "%Y/%m/%d";
+		return strftime("$strf %H:%M", localtime($u));
+		}
+	}
 elsif ($date =~ /^(\S+),\s+0*(\d+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+)/) {
 	return "$2/$3/$4 $5:$6";
 	}

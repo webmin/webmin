@@ -326,7 +326,12 @@ sub update_system_updates
 {
 local @rv;
 local %done;
-&open_execute_command(PKG, "$yum_command check-update 2>/dev/null | tr '\n' '#' | sed -e 's/# / /g' | tr '#' '\n'", 1, 1);
+if ($yum_command =~ /dnf/) {
+	&open_execute_command(PKG, "$yum_command check-update 2>/dev/null", 1, 1);
+	}
+else {
+	&open_execute_command(PKG, "$yum_command check-update 2>/dev/null | tr '\n' '#' | sed -e 's/# / /g' | tr '#' '\n'", 1, 1);
+	}
 
 while(<PKG>) {
         s/\r|\n//g;

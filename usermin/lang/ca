@@ -52,8 +52,6 @@ os_usermin=Sistema operatiu d'acord amb Usermin
 os_iusermin=Codi intern de SO utilitzat per Usermin
 os_update=Actualitza l'Usermin per utilitzar el SO detectat
 
-lang_title=Idioma
-lang_title2=Idioma d'Usermin
 lang_intro=Aquesta pàgina permet canviar amb quin idioma Usermin mostrarà els títols, prompts i missatges
 
 session_title=Autenticació

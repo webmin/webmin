@@ -365,7 +365,7 @@ foreach my $m (@mounted) {
 			($t, $f) = @$zp;
 			}
 		else {
-			($t, $f) = &disk_space($m->[2], $m->[0]);
+			($t, $f, $u, $p) = &disk_space($m->[2], $m->[0]);
 			}
 		if (($m->[2] eq "simfs" || $m->[2] eq "vzfs" ||
 		     $m->[0] eq "/dev/vzfs" ||
@@ -378,12 +378,16 @@ foreach my $m (@mounted) {
 		$free += $f*1024;
 		my ($it, $if);
 		if (defined(&inode_space)) {
-			($it, $if) = &inode_space($m->[2], $m->[0]);
+			($it, $if, $iu, $ip) = &inode_space($m->[2], $m->[0]);
 			}
 		push(@fs, { 'total' => $t*1024,
 			    'free' => $f*1024,
+			    'used' => $u*1024,
+			    'used_percent' => $p,
 			    'itotal' => $it,
 			    'ifree' => $if,
+			    'iused' => $iu,
+			    'iused_percent' => $ip,
 			    'dir' => $m->[0],
 			    'device' => $m->[1],
 			    'type' => $m->[2] });

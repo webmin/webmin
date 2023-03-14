@@ -1,0 +1,17 @@
+list_printers_command=lpc status | grep "[A-z0-9]:" | sed -e 's/://g'
+smb_passwd=/etc/samba/smbpasswd
+dont_convert=-499
+samba_password_program=/usr/bin/smbpasswd
+samba_status_program=/usr/bin/smbstatus
+samba_server=/usr/sbin/smbd
+name_server=/usr/sbin/nmbd
+smb_conf=/etc/samba/smb.conf
+text_lists=0
+run_from_inetd=0
+swat_path=/usr/sbin/swat
+sort_mode=0
+start_cmd=systemctl start smb && systemctl start nmb
+stop_cmd=systemctl stop smb && systemctl stop nmb
+smbgroupedit=/usr/bin/smbgroupedit
+pdbedit=/usr/bin/pdbedit
+net=/usr/bin/net

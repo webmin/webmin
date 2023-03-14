@@ -24,7 +24,8 @@ our $get_collected_info_cache;
 # Returns a hash reference containing system information
 sub collect_system_info
 {
-my ($manual) = @_;
+my ($manual, $modskip) = @_;
+$modskip ||= [];
 my $info = { };
 
 if (&foreign_check("proc")) {
@@ -64,9 +65,11 @@ if (&foreign_check("mount")) {
 # Available package updates
 if (&foreign_installed("package-updates") && $config{'collect_pkgs'}) {
 	&foreign_require("package-updates");
-	my @poss = &package_updates::list_possible_updates(2, 1);
+	my $poss_collect_blocked = (&indexof('package-updates', @{$modskip}) > -1);
+	my $poss_current = !$poss_collect_blocked ? 2 : undef;
+	my @poss = &package_updates::list_possible_updates(undef, $poss_collect_blocked);
 	$info->{'poss'} = \@poss;
-	$info->{'reboot'} = &package_updates::check_reboot_required();
+	$info->{'reboot'} = &package_updates::check_reboot_required($poss_collect_blocked);
 	}
 
 # CPU and drive temps
@@ -81,7 +84,7 @@ $info->{'drivetemps'} = \@drive if (@drive);
 # IO input and output
 if (defined(&proc::get_cpu_io_usage)) {
 	my ($user, $kernel, $idle, $io, $vm, $bin, $bout) =
-		&proc::get_cpu_io_usage();
+		&proc::get_cpu_io_usage((&indexof('cpuio', @{$modskip}) > -1));
 	if (defined($bin)) {
 		$info->{'io'} = [ $bin, $bout ];
 		}
@@ -105,7 +108,7 @@ return $info;
 # Returns the most recently collected system information, or the current info
 sub get_collected_info
 {
-my ($manual) = @_;
+my ($manual, $modskip) = @_;
 if (!defined($manual) ||
      defined($manual) && $manual ne 'manual') {
 	if ($get_collected_info_cache) {
@@ -124,7 +127,7 @@ if (!defined($manual) ||
 			}
 		}
 	}
-$get_collected_info_cache ||= &collect_system_info($manual);
+$get_collected_info_cache ||= &collect_system_info($manual, $modskip);
 return $get_collected_info_cache;
 }
 
@@ -179,9 +182,11 @@ if ($info->{'mem'}) {
 		}
 	}
 if ($info->{'disk_total'}) {
+	my $disk_used = $info->{'disk_fs'} ?
+	     $info->{'disk_fs'}->[0]->{'used'} : undef;
 	push(@stats, [ "diskused",
-		       $info->{'disk_total'}-$info->{'disk_free'},
-		       $info->{'disk_total'} ]);
+	               $disk_used // $info->{'disk_total'}-$info->{'disk_free'},
+	               $info->{'disk_total'} ]);
 	}
 
 # Get network traffic counts since last run

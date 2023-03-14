@@ -503,28 +503,26 @@ body > .mode:has(b:nth-child(1) + b:last-child) b {
   padding-right: 3px
 }
 
-body > .mode > b > a > i,
-body > .mode > b > a:hover,
-body > .mode > b > a,
 body > .mode > b {
     color: #333;
 }
-body > .mode > b {
+body > .mode > b > a {
   color: #0b46ab;
 }
+
 /* Light blue for Webmin */
-body > .mode > b:has(i.ff-webmin),
-body > .mode > b:has(i.ff-webmin) > .ff-webmin {
+body > .mode > b > a:has(i.ff-webmin),
+body > .mode > b > a:has(i.ff-webmin) > .ff-webmin {
   color: #0a6bca;
 }
 /* Green for Usermin */
-body > .mode > b:has(i.ff-usermin),
-body > .mode > b:has(i.ff-usermin) > .ff-usermin {
+body > .mode > b > a:has(i.ff-usermin),
+body > .mode > b > a:has(i.ff-usermin) > .ff-usermin {
   color: #19950d;
 }
 /* Orange for Cloudmin  */
-body > .mode > b:has(i.ff-cloudmin),
-body > .mode > b:has(i.ff-cloudmin) > .ff-cloudmin {
+body > .mode > b > a:has(i.ff-cloudmin),
+body > .mode > b > a:has(i.ff-cloudmin) > .ff-cloudmin {
   color: #cb6d2f;
 }
 

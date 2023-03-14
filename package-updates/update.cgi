@@ -108,7 +108,7 @@ else {
 		}
 	else {
 		# Check if a reboot was required before
-		$reboot_before = &check_reboot_required(0);
+		$reboot_before = &check_reboot_required();
 
 		# Do it
 		$msg = $in{'mode'} eq 'new' ? 'update_pkg2' : 'update_pkg';
@@ -165,7 +165,7 @@ else {
 			}
 
 		# Check if a reboot is required now
-		if (!$reboot_before && &check_reboot_required(1) &&
+		if (!$reboot_before && &check_reboot_required() &&
 		    &foreign_check("init")) {
 			print &ui_form_start(
 				"@{[&get_webprefix()]}/init/reboot.cgi");

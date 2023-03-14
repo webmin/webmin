@@ -52,8 +52,6 @@ os_usermin=Système d'exploitation d'après Usermin
 os_iusermin=Code OS interne utilisé par Usermin
 os_update=Mettre à jour Usermin pour détecter l'OS
 
-lang_title=Langue
-lang_title2=Langue de Usermin
 lang_intro=Cette page vous permet de choisir la langue que Usermin utilisera pour afficher les titres, invites et messages.
 
 session_title=Authentification

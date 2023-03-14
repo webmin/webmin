@@ -1,7 +1,5 @@
 index_title=Tukar Bahasa dan Tema
-index_lang=Bahasa UI Webmin
 index_langset=Pilihan persendirian ..
-index_theme=Tema UI Webmin
 index_overlay=Lapisan tema
 index_overlaydef=Tiada - guna tema lalai
 index_themeglobal=Tema global ($1)

@@ -17,6 +17,12 @@ elsif ($action eq 'start') {
 elsif ($action eq 'cnf') {
 	return $text{'log_cnf'};
 	}
+elsif ($action eq 'ssl') {
+	return $text{'log_ssl'};
+	}
+elsif ($action eq 'genssl') {
+	return $text{'log_genssl'};
+	}
 elsif ($action eq 'kill') {
 	return &text('log_kill', $object);
 	}

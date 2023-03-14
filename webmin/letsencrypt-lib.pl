@@ -63,7 +63,7 @@ return &software::missing_install_link(
 # an error message or the paths to cert, key and chain files.
 sub request_letsencrypt_cert
 {
-my ($dom, $webroot, $email, $size, $mode, $staging, $account_email) = @_;
+my ($dom, $webroot, $email, $size, $mode, $staging, $account_email, $key_type) = @_;
 my @doms = ref($dom) ? @$dom : ($dom);
 $email ||= "root\@$doms[0]";
 $mode ||= "web";
@@ -165,8 +165,13 @@ if ($letsencrypt_cmd) {
 	my $dir = $letsencrypt_cmd;
 	my $cmd_ver = &get_certbot_major_version($letsencrypt_cmd);
 	my $old_flags;
+	my $new_flags;
+	$key_type ||= $config{'letsencrypt_algo'} || 'rsa';
 	if ($cmd_ver < 1.11) {
 		$old_flags = " --manual-public-ip-logging-ok";
+		}
+	if ($cmd_ver >= 2) {
+		$new_flags = " --key-type $key_type";
 		}
 	$dir =~ s/\/[^\/]+$//;
 	$size ||= 2048;
@@ -185,6 +190,7 @@ if ($letsencrypt_cmd) {
 			" --non-interactive".
 			" --agree-tos".
 			" --config ".quotemeta($temp)."".
+			"$new_flags".
 			" --rsa-key-size $size".
 			" --cert-name ".quotemeta($doms[0]).
 			($staging ? " --test-cert" : "").
@@ -207,6 +213,7 @@ if ($letsencrypt_cmd) {
 			" --non-interactive".
 			" --agree-tos".
 			" --config ".quotemeta($temp)."".
+			"$new_flags".
 			" --rsa-key-size $size".
 			" --cert-name ".quotemeta($doms[0]).
 			($staging ? " --test-cert" : "").

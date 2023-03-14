@@ -52,8 +52,8 @@ os_usermin=ระบบปฏิบัติการตาม Usermin
 os_iusermin=รหัสระบบปฏิบัติการภายในที่ใช้โดย Usermin
 os_update=อัปเดต Usermin เพื่อใช้ระบบปฏิบัติการที่ตรวจพบ
 
-lang_title=ภาษา
-lang_title2=ภาษา Usermin
+lang_title=ภาษาและสถานที่
+lang_title2=Usermin ภาษาและโลแคล
 lang_intro=หน้านี้ให้คุณเลือกภาษาที่ Usermin จะใช้ในการแสดงชื่อเรื่องข้อความแจ้งและข้อความ
 
 session_title=การรับรอง

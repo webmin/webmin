@@ -1,1 +1,11 @@
+index_lang=Taal
+index_locale=Lokaal
+index_locale2=Datums formaat
+index_theme=Thema
 index_langglobal2=Globale taal.. $1 ($2)
+index_localeglobal2=Wereldwijde locatie.. $1 ($2)
+index_localeset=Persoonlijke keuze ..
+index_dateformatglobal2=Globale datumnotatie.. $1
+index_dateformatset=Persoonlijke keuze ..
+
+acl_locale=Kan de locatie worden gewijzigd?

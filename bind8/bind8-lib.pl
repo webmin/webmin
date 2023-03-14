@@ -144,6 +144,15 @@ if (!defined($get_config_parent_cache{$file})) {
 return $get_config_parent_cache{$file};
 }
 
+# clear_config_cache()
+# Clear all in-memory caches of the BIND config
+sub clear_config_cache
+{
+undef(@get_config_cache);
+undef(%get_config_parent_cache);
+undef(%lines_count);
+}
+
 # read_config_file(file, [expand includes])
 # Reads a config file and returns an array of values
 sub read_config_file
@@ -348,6 +357,7 @@ return \%str;
 }
 
 # find(name, &array)
+# Returns a list of config objects matching some name
 sub find
 {
 my ($name, $conf) = @_;
@@ -362,6 +372,7 @@ return @rv ? wantarray ? @rv : $rv[0]
 }
 
 # find_value(name, &array)
+# Returns a list of config values matching some name
 sub find_value
 {
 my @v = &find($_[0], $_[1]);
@@ -410,14 +421,7 @@ for(my $i=0; $i<@oldv || $i<@newv; $i++) {
 	my $oldeline = $i<@oldv ? $oldv[$i]->{'eline'} : undef;
 	if ($i < @newv) {
 		# Make sure new directive has 'value' set
-		my @v;
-		if ($newv[$i]->{'values'}) {
-			@v = @{$newv[$i]->{'values'}};
-			}
-		else {
-			@v = undef;
-			}
-		$newv[$i]->{'value'} = @v ? $v[0] : undef;
+		&recursive_set_value($newv[$i]);
 		}
 	if ($i >= @oldv && !$_[5]) {
 		# a new directive is being added.. put it at the end of
@@ -487,6 +491,22 @@ for(my $i=0; $i<@oldv || $i<@newv; $i++) {
 				  $oldv[$i]->{'file'}, scalar(@nl) - $ol);
 			}
 		$pm->[&indexof($oldv[$i], @$pm)] = $newv[$i];
+		}
+	}
+}
+
+# recursive_set_value(&directive)
+# Update the 'value' field based on the first 'values'
+sub recursive_set_value
+{
+my ($dir) = @_;
+if ($dir->{'values'}) {
+	my @v = @{$dir->{'values'}};
+	$dir->{'value'} = @v ? $v[0] : undef;
+	}
+if ($dir->{'type'} && $dir->{'type'} == 1 && $dir->{'members'}) {
+	foreach my $m (@{$dir->{'members'}}) {
+		&recursive_set_value($m);
 		}
 	}
 }
@@ -1556,6 +1576,9 @@ if ($slave && $config{'slave_file_perms'}) {
 elsif ($config{'file_perms'}) {
 	$perms = oct($config{'file_perms'});
 	}
+elsif ($user eq "0" || $user eq "root") {
+	$perms = 0775;
+	}
 &set_ownership_permissions($user, $group, $perms, $file);
 }
 
@@ -2432,7 +2455,7 @@ sub list_zone_names
 {
 my @st = stat($zone_names_cache);
 my %znc;
-&read_file_cached($zone_names_cache, \%znc);
+&read_file_cached_with_stat($zone_names_cache, \%znc);
 
 # Check if any files have changed, or if the master config has changed, or
 # the PID file.
@@ -2998,19 +3021,10 @@ foreach my $slave (&list_slave_servers()) {
 		}
 	my $sver = &remote_foreign_call($slave, "bind8",
 				     "get_webmin_version");
-	my $pidfile;
-	if ($sver >= 1.140) {
-		# Call new function to get PID file from slave
-		$pidfile = &remote_foreign_call(
-			$slave, "bind8", "get_pid_file");
-		$pidfile = &remote_foreign_call(
-			$slave, "bind8", "make_chroot", $pidfile, 1);
-		}
-	else {
-		push(@slaveerrs, [ $slave, &text('restart_eversion',
-						 $slave->{'host'}, 1.140) ]);
-		next;
-		}
+	my $pidfile = &remote_foreign_call(
+		$slave, "bind8", "get_pid_file");
+	$pidfile = &remote_foreign_call(
+		$slave, "bind8", "make_chroot", $pidfile, 1);
 
 	# Read the PID and restart
 	my $pid = &remote_foreign_call($slave, "bind8",
@@ -3021,6 +3035,32 @@ foreach my $slave (&list_slave_servers()) {
 		next;
 		}
 	my $err = &remote_foreign_call($slave, "bind8", "restart_bind");
+	if ($err) {
+		push(@slaveerrs, [ $slave, &text('restart_esig2',
+						 $slave->{'host'}, $err) ]);
+		}
+	}
+&remote_error_setup();
+return @slaveerrs;
+}
+
+# restart_zone_on_slaves(domain, [&slave-hostnames])
+# Re-load a zone on all slave servers
+sub restart_zone_on_slaves
+{
+my ($dom, $onslaves) = @_;
+my %on = map { $_, 1 } @$onslaves;
+&remote_error_setup(\&slave_error_handler);
+my @slaveerrs;
+foreach my $slave (&list_slave_servers()) {
+	next if (%on && !$on{$slave->{'host'}});
+
+	&remote_foreign_require($slave, "bind8", "bind8-lib.pl");
+	if ($slave_error) {
+		push(@slaveerrs, [ $slave, $slave_error ]);
+		next;
+		}
+	my $err = &remote_foreign_call($slave, "bind8", "restart_zone", $dom);
 	if ($err) {
 		push(@slaveerrs, [ $slave, &text('restart_esig2',
 						 $slave->{'host'}, $err) ]);
@@ -3319,7 +3359,7 @@ sub create_dnssec_key
 {
 my ($z, $alg, $size, $single, $force) = @_;
 my $fn = &get_keys_dir($z);
-$fn || return "Could not work keys directory!";
+$fn || return "Could not work out keys directory!";
 my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 
 # Remove all keys for the same zone

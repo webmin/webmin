@@ -308,9 +308,9 @@ else {
 		    (!$in{'forward'} || !$config{'fwd_mode'});
 	$subject = &html_escape(&decode_mimewords(
 				$mail->{'header'}->{'subject'}));
-	$subject = "Re: ".$subject if ($subject !~ /^Re/i && !$in{'forward'} &&
+	$subject = "Re: ".$subject if ($subject !~ /^Re:/i && !$in{'forward'} &&
 				       !@mailforward && !$in{'enew'});
-	$subject = "Fwd: ".$subject if ($subject !~ /^Fwd/i &&
+	$subject = "Fwd: ".$subject if ($subject !~ /^Fwd:/i &&
 					($in{'forward'} || @mailforward));
 
 	# Construct the initial mail text

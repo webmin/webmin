@@ -32,9 +32,12 @@ foreach $db (@dbs) {
 		next;
 		}
 	$format = $config{'backup_format_'.$sf};
+	$compress = $config{'backup_compress_'.$sf};
 	$mkdir = $config{'backup_mkdir_'.$sf};
 	$suf = $format eq "p" ? "sql" :
 	       $format eq "t" ? "tar" : "post";
+	$suf .= ($compress == 1 ? ".gz" :
+		 $compress == 2 ? ".bz2" : "");
 	if ($all) {
 		$dir = &date_subs($config{'backup_'});
 		$file = "$dir/$db.$suf";
@@ -60,7 +63,7 @@ foreach $db (@dbs) {
 		}
 
 	unlink($file);
-	$err = &backup_database($db, $file, $format, \@tables);
+	$err = &backup_database($db, $file, $format, \@tables, undef,$compress);
 	if ($err) {
 		print STDERR "Backup of database $db to file $file failed:\n";
 		print STDERR $err;

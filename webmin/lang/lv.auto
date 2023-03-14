@@ -190,11 +190,6 @@ ui_edbwidth=Trūkst vai nav derīgs izvēles loga platums
 ui_edbheight=Trūkst vai nav derīgs izvēles loga augstums
 ui_showlogin=Vai pievienot lietotājvārdu lapu nosaukumiem?
 ui_showhost=Vai pievienot nosaukumus lapas nosaukumiem?
-ui_dateformat=Parādīto datumu formāts
-ui_dateformat_dd/mon/yyyy=dd/mēn/gggg (ti, 2001. gada 16. septembrī)
-ui_dateformat_dd/mm/yyyy=dd/mm/gggg (ti, 16/09/2001)
-ui_dateformat_mm/dd/yyyy=mm/dd/gggg (ti, 2001.09.16.)
-ui_dateformat_yyyy/mm/dd=gggg/mm/dd (ti, 2001/09/16)
 ui_ehostnamedisplay=Trūkst vai nav derīgs displeja resursdatora nosaukums
 
 mods_title=Webmin moduļi
@@ -316,9 +311,10 @@ os_release_notes=Izlaiduma piezīmes
 os_fix=Atjauniniet noteikto operētājsistēmu
 os_usermin=Atjauniniet arī Usermin OS
 
-lang_title=Valoda
-lang_title2=Webmin valoda
-lang_lang=Displejs valodā
+lang_title=Valoda un lokalizācija
+lang_title2=Webmin valoda un lokalizācija
+lang_lang=Valoda
+lang_locale=Lokalizācija
 lang_intro=Šī lapa ļauj jums izvēlēties valodu, kuru Webmin izmantos virsrakstu, uzvedņu un ziņojumu parādīšanai
 lang_ok=Mainīt VALODU
 lang_accept=Vai izmantot pārlūka norādīto valodu?
@@ -327,6 +323,8 @@ lang_chardef=Nosaka pēc valodas
 lang_charover=Piespiest rakstzīmju kopu
 lang_err=Neizdevās saglabāt valodu
 lang_echarset=Trūkst vai nederīga izskata rakstzīmju kopa
+lang_dateformat=Datumu rādīšanas formāts
+lang_dateformat_dd/mon/yyyy=dd/mon/gggg (t.i., 16/Sep/2001)
 
 ssl_title=SSL šifrēšana
 ssl_essl=Šķiet, ka Net::SSLeay perl modulis nav instalēts jūsu sistēmā. Lai instalētu OpenSSL bibliotēku un Net::SSLeay, izpildiet <a href='$1'>šos norādījumus</a> no Webmin vietnes.

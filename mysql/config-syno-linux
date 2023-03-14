@@ -22,3 +22,4 @@ pass=hulli01
 style=1
 max_text=1000
 access=*: *
+ssl=0

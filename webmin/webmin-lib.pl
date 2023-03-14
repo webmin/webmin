@@ -89,6 +89,8 @@ our $hidden_announce_file = "$module_config_directory/announce-hidden";
 
 our $postpone_reboot_required = "$module_var_directory/postpone-reboot-required";
 
+our $realos_cache_file = "$module_var_directory/realos-cache";
+
 our $password_change_mod = "passwd";
 our $password_change_path = "/".$password_change_mod."/change_passwd.cgi";
 
@@ -1147,23 +1149,36 @@ my %miniserv;
 &get_miniserv_config(\%miniserv);
 &load_theme_library();	# So that UI functions work
 
-# Need OS upgrade
-my %realos = &detect_operating_system(undef, 1);
-if (($realos{'os_version'} ne $gconfig{'os_version'} ||
-     $realos{'real_os_version'} ne $gconfig{'real_os_version'} ||
-     $realos{'os_type'} ne $gconfig{'os_type'}) &&
-    $realos{'os_version'} && $realos{'os_type'} &&
-    &foreign_available("webmin")) {
+# Need OS upgrade, but only once per day
+# XXX use a cache
+my $now = time();
+if (&foreign_available("webmin")) {
+	my %realos;
+	my @st = stat($realos_cache_file);
+	if (!@st || $now - $st[9] > 24*60*60) {
+		%realos = &detect_operating_system(undef, 1);
+		&write_file($realos_cache_file, \%realos);
+		}
+	else {
+		&read_file($realos_cache_file, \%realos);
+		}
+	if (($realos{'os_version'} ne $gconfig{'os_version'} ||
+	     $realos{'real_os_version'} ne $gconfig{'real_os_version'} ||
+	     $realos{'os_type'} ne $gconfig{'os_type'}) &&
+	    $realos{'os_version'} && $realos{'os_type'} &&
+	    &foreign_available("webmin")) {
 
-	# Tell the user that OS version was updated
-	push(@notifs,
-	    &ui_form_start("@{[&get_webprefix()]}/webmin/fix_os.cgi").
-	    &text('os_incorrect', $realos{'real_os_type'},
-	                          $realos{'real_os_version'}).
-	                            &show_os_release_notes($realos{'real_os_version'}).
-	                            ".<p>\n".
-	    &ui_form_end([ [ undef, $text{'os_fix'} ] ])
-	    );
+		# Tell the user that OS version was updated
+		push(@notifs,
+		    &ui_form_start("@{[&get_webprefix()]}/webmin/fix_os.cgi").
+		    &text('os_incorrect',
+			  $realos{'real_os_type'},
+			  $realos{'real_os_version'}).
+		    &show_os_release_notes($realos{'real_os_version'}).
+		    "<p>\n".
+		    &ui_form_end([ [ undef, $text{'os_fix'} ] ])
+		    );
+		}
 	}
 
 # Password close to expiry
@@ -1228,15 +1243,13 @@ if (&foreign_check("acl")) {
 	}
 
 # New Webmin version is available, but only once per day
-my $now = time();
 my %raccess = &get_module_acl('root');
 my %rdisallow = map { $_, 1 } split(/\s+/, $raccess{'disallow'} || "");
 my %access = &get_module_acl();
 my %disallow = map { $_, 1 } split(/\s+/, $access{'disallow'} || "");
 my %allow = map { $_, 1 } split(/\s+/, $access{'allow'} || "");
-my %role = map { $_, 1 } split(/\s+/, $access{'role'} || "");
 if (&foreign_available($module_name) && !$gconfig{'nowebminup'} &&
-    !$noupdates && ($allow{'upgrade'} || $role{'upgrader'} ||
+    !$noupdates && ($allow{'upgrade'} ||
 		    (!$disallow{'upgrade'} && !$rdisallow{'upgrade'}))) {
 	if (!$config{'last_version_check'} ||
 	    $now - $config{'last_version_check'} > 24*60*60) {
@@ -1298,12 +1311,12 @@ if (&foreign_check("package-updates") && &foreign_available("init")) {
 				}
 			}
 		}
-	if (&package_updates::check_reboot_required() && $allow_reboot_required) {
+	if ($allow_reboot_required && &package_updates::check_reboot_required()) {
 		push(@notifs,
 			&ui_form_start("@{[&get_webprefix()]}/init/reboot.cgi").
 			$text{'notif_reboot'}."<p>\n".
 			&ui_form_end([ [ undef, $text{'notif_rebootok'} ],
-					[ 'removenotify', $text{'alert_hide'} ] ]));
+				       [ 'removenotify', $text{'alert_hide'} ] ]));
 		}
 	}
 
@@ -2194,24 +2207,35 @@ my $lref = &read_file_lines($temp);
 my $i = 0;
 my $found_req = 0;
 my $found_ca = 0;
+my $found_alt = 0;
 my $altline = "subjectAltName=".join(",", map { "DNS:$_" } @cns);
 foreach my $l (@$lref) {
-	if ($l =~ /^\s*\[\s*v3_req\s*\]/ && !$found_req) {
-		splice(@$lref, $i+1, 0, $altline);
-		$found_req = 1;
-		}
-	if ($l =~ /^\s*\[\s*v3_ca\s*\]/ && !$found_ca) {
-		splice(@$lref, $i+1, 0, $altline);
-		$found_ca = 1;
+	if ($l =~ /^\s*subjectAltName\s*=/) {
+		$lref->[$i] = $altline;
+		$found_alt++;
 		}
 	$i++;
 	}
-# If v3_req or v3_ca sections are missing, add at end
-if (!$found_req) {
-	push(@$lref, "[ v3_req ]", $altline);
-	}
-if (!$found_ca) {
-	push(@$lref, "[ v3_ca ]", $altline);
+if (!$found_alt) {
+	$i = 0;
+	foreach my $l (@$lref) {
+		if ($l =~ /^\s*\[\s*v3_req\s*\]/ && !$found_req) {
+			splice(@$lref, $i+1, 0, $altline);
+			$found_req = 1;
+			}
+		if ($l =~ /^\s*\[\s*v3_ca\s*\]/ && !$found_ca) {
+			splice(@$lref, $i+1, 0, $altline);
+			$found_ca = 1;
+			}
+		$i++;
+		}
+	# If v3_req or v3_ca sections are missing, add at end
+	if (!$found_req) {
+		push(@$lref, "[ v3_req ]", $altline);
+		}
+	if (!$found_ca) {
+		push(@$lref, "[ v3_ca ]", $altline);
+		}
 	}
 
 # Add copyall line if needed
@@ -2621,24 +2645,11 @@ my $link_tag = 'target="_blank" data-link-external="after"';
 if ($os =~ /ubuntu/i &&
     $ver =~ /\d+\.04/ &&
     $basever >= 18) {
-	my %codename_map = (
-		22 => 'JammyJellyfish',
-		20 => 'FocalFossa',
-		18 => 'BionicBeaver');
-	my @codename_map = sort keys %codename_map;
-	my $latestknown = $codename_map[-1] == $basever ? 1 : 0;
-	my $code_name = $codename_map{$basever};
-	my $minorver = $ver =~ /\d+\.\d+\.\d+/ ? 1 : 0;
-	my $minorverstr = $minorver ? "/ChangeSummary" : "";
-	my $minorvercombined = "$minorverstr/$ver";
-	if ($latestknown) {
-		$minorvercombined = $minorver ? "/ChangeSummary/$ver" : "";
-		}
-	$link = &ui_link("https://wiki.ubuntu.com/".
-	                    "$code_name/ReleaseNotes".
-	                    "$minorvercombined",
-	                 $text{'os_release_notes'}, undef, $link_tag)
-		if($code_name);
+	my $ubuntuver = $ver;
+	$ubuntuver =~ s/\./-/g;
+	$link = &ui_link("https://fridge.ubuntu.com/".
+	                    "ubuntu-$ubuntuver-lts-released",
+	                 $text{'os_release_notes'}, undef, $link_tag);
 	}
 # AlmaLinux release notes
 if ($os =~ /alma/i && $basever >= 8) {

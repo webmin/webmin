@@ -10,7 +10,8 @@ our (%text, %gconfig, $module_name, %config);
 # Returns general information about the system, such as available disk space
 sub list_system_info
 {
-my $info = &get_collected_info();
+my ($data, $in, $modskip) = @_;
+my $info = &get_collected_info(undef, $modskip);
 my @rv;
 my @table;
 my @raw = $info;
@@ -35,9 +36,16 @@ push(@rv, $table);
 
 if (&show_section('host')) {
 	# Hostname
-	my $ip = $info && $info->{'ips'} ? $info->{'ips'}->[0]->[0]
-					 : &to_ipaddress(get_system_hostname());
-	$ip = $ip ? " ($ip)" : "";
+	my @ips_all = &to_ipaddress(get_system_hostname());
+	my (@ips_noloop, @ips_noloc, $ip_detect);
+	if (@ips_all) {
+	    @ips_noloop = grep { $_ !~ /^127\./} @ips_all;
+	    @ips_noloc = grep { $_ !~ /^(10\.|192\.168\.)/} @ips_noloop;
+	    $ip_detect = @ips_noloc ? $ips_noloc[0] :
+	          @ips_noloop ? $ips_noloop[0] : $ips_all[0];
+		}
+	my $ip = $info && $info->{'ips'} ? $info->{'ips'}->[0]->[0] : $ip_detect;
+	$ip = " ($ip)" if ($ip);
 	push(@table, { 'desc' => $text{'right_host'},
 		       'value' => &get_system_hostname().$ip });
 
@@ -74,6 +82,10 @@ if (&show_section('host')) {
 
 	# System time
 	my $tm = localtime(time());
+	eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
+	if (!$@) {
+		$tm = make_date(time(), {get => 'complete'});
+		}
 	if (&foreign_available("time")) {
 		$tm = &ui_link(&get_webprefix().'/time/', $tm);
 		}
@@ -226,12 +238,16 @@ if ($info->{'mem'} && &show_section('mem')) {
 
 # Disk space on local drives
 if ($info->{'disk_total'} && &show_section('disk')) {
-	my ($total, $free) = ($info->{'disk_total'}, $info->{'disk_free'});
+	my ($total, $free, $used) =
+	     ($info->{'disk_total'},
+	      $info->{'disk_free'},
+	      $info->{'disk_fs'} ?
+	        $info->{'disk_fs'}->[0]->{'used'} : undef);
 	push(@table, { 'desc' => $text{'right_disk'},
 		       'value' => &text('right_used',
 				   &nice_size($total),
-				   &nice_size($total-$free)),
-		       'chart' => [ $total, $total-$free ] });
+				   &nice_size($used // $total-$free)),
+		       'chart' => [ $total, $used // $total-$free ] });
 	}
 
 # Warnings about filesystems running low on space

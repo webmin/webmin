@@ -1,4 +1,12 @@
+index_lang=Jezik
+index_locale=Lokalitet
+index_locale2=Format datuma
+index_theme=Tema
 index_langglobal2=Globalni jezik.. $1 ($2)
+index_localeglobal2=Globalni lokalitet.. $1 ($2)
+index_localeset=Osobni izbor ..
+index_dateformatglobal2=Globalni format datuma.. $1
+index_dateformatset=Osobni izbor ..
 index_overlay=Prekrivanje teme
 index_overlaydef=Nema - koristite zadane postavke teme
 index_passagain=Ponovno unesite zaporku
@@ -6,3 +14,5 @@ index_passagain=Ponovno unesite zaporku
 change_epass2=Nove lozinke ne odgovaraju
 change_eoverlay=Ne možete odabrati sloj teme osim ako nije odabran i UI tema
 change_eoverlay2=Odabrani sloj teme nije kompatibilan s odabranom temom UI
+
+acl_locale=Može li se promijeniti lokalizacija?
