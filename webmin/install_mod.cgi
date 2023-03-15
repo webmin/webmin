@@ -57,39 +57,6 @@ elsif ($in{'source'} == 2 || $in{'source'} == 4) {
 		}
 	&inst_error($error) if ($error);
 	}
-elsif ($in{'source'} == 3) {
-	# from www.webmin.com
-	&error_setup($text{'install_err4'});
-	$in{'standard'} =~ /^\S+$/ || &error($text{'install_estandard'});
-	$need_unlink = 1;
-	my $error;
-
-	# Find the URL of the package
-	$mods = &list_standard_modules();
-	ref($mods) || &error(&text('standard_failed', $error));
-	local ($info) = grep { $_->[0] eq $in{'standard'} } @$mods;
-	$info || &error($text{'install_emissing'});
-	if ($config{'standard_url'}) {
-		($host, $port, $page, $ssl) = &parse_http_url(
-						$config{'standard_url'});
-		$host || &error($text{'standard_eurl'});
-		}
-	else {
-		($host, $port, $page, $ssl) = ($standard_host, $standard_port,
-					       $standard_page, $standard_ssl);
-		}
-	($host, $port, $page, $ssl) = &parse_http_url(
-		$info->[2], $host, $port, $page, $ssl);
-	$progress_callback_url = $info->[2];
-	$file = &transname($info->[2]);
-	&http_download($host, $port, $page, $file, \$error,
-		       \&progress_callback, $ssl);
-	if ($in{'checksig'} && !$error) {
-		$error = &check_update_signature($host, $port, $page,
-			$ssl, undef, undef, $file, 2);
-		}
-	&inst_error($error) if ($error);
-	}
 
 # Install the module(s)
 $rv = &install_webmin_module($file, $need_unlink, $in{'nodeps'},

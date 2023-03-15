@@ -200,13 +200,11 @@ mods_install=Install Module
 mods_local=From local file
 mods_uploaded=From uploaded file
 mods_ftp=From HTTP or FTP URL
-mods_standard=Standard module from <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=Standard module
 mods_third=Third party module from
 mods_thsel=Select..
 mods_nodeps=Ignore dependencies?
 mods_nodeps2=Ignore module dependencies when deleting
-mods_grant2=Grant access only to users and groups :
+mods_grant2=Grant access only to users and groups
 mods_grant1=Grant access to all Webmin users
 mods_checksig=Check signature file for downloaded modules?
 mods_installok=Install Module

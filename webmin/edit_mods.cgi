@@ -37,11 +37,6 @@ print &ui_table_row($text{'mods_installsource'},
 		    &ui_upload("upload", 40) ],
 		  [ 2, $text{'mods_ftp'},
 		    &ui_textbox("url", undef, 40) ],
-		  [ 3, $config{'standard_url'} ? $text{'mods_standard2'} :
-			 &text('mods_standard',
-			       "http://www.webmin.com/standard.html"),
-		    &ui_textbox("standard", undef, 20)." ".
-		    &standard_chooser_button("standard") ],
 		  [ 4, $text{'mods_third'},
 		    &ui_textbox("third", undef, 40)." ".
 		    &third_chooser_button("third") ] ]));
@@ -51,7 +46,7 @@ print &ui_table_row($text{'mods_nodeps'},
 
 print &ui_table_row($text{'mods_grantto'},
 	&ui_radio("grant", 0,
-		  [ [ 0, $text{'mods_grant2'}." ".
+		  [ [ 0, $text{'mods_grant2'}."&nbsp;".
 			 &ui_textbox("grantto", $base_remote_user, 30)."<br>" ],
 		    [ 1, $text{'mods_grant1'} ] ]));
 
