@@ -19,10 +19,15 @@ else {
 	}
 $change{$_[0]->{'file'}} = $st[9];
 &write_file("$module_config_directory/change", \%change);
-return { 'up' => $up,
-	 'value' => $st[9],
-	 'nice_value' => &make_date($st[9]),
-       };
+if ($st[9]) {
+	return { 'up' => $up,
+		 'value' => $st[9],
+		 'nice_value' => &make_date($st[9]),
+	       };
+	}
+else {
+	return { 'up' => $up };
+	}
 }
 
 sub show_change_dialog
