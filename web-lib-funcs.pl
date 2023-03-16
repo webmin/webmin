@@ -1989,7 +1989,7 @@ code or preserve the original, old logic
 sub make_date
 {
 my ($secs, $only, $fmt) = @_;
-
+$secs ||= 0;
 eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
 if (!$@) {
 	my $opts = ref($only) ? $only : {};
