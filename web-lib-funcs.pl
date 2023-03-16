@@ -1992,119 +1992,120 @@ my ($secs, $only, $fmt) = @_;
 
 eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
 if (!$@) {
-my $opts = ref($only) ? $only : {};
-my $locale_default = &get_default_system_locale();
-my $locale_auto = &parse_accepted_language();
-my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$remote_user} || $locale_auto || $gconfig{'locale'} || &get_default_system_locale();
-my $tz = $opts->{'tz'} ||
-         DateTime::TimeZone->new( name => 'local' )->name(); # Asia/Nicosia
-my $locale = DateTime::Locale->load($locale_name);
-my $locale_format_full_tz = $locale->glibc_date_1_format;    # Sat 20 Nov 2286 17:46:39 UTC
-my $locale_format_full = $locale->glibc_datetime_format;     # Sat 20 Nov 2286 17:46:39
-my $locale_format_short = $locale->glibc_date_format;        # 20/11/86
-my $locale_format_time = $locale->glibc_time_format;         # 17:46:39
-my $locale_format_delimiter = "/";
-if ($opts->{'delimiter'}) {
-	$locale_format_delimiter = $opts->{'delimiter'};
-	}
-elsif ($locale_format_short =~ /\%.*?\[a-zA-Z]\s*(?<delimiter>.)/) {
-	$locale_format_delimiter = "$+{delimiter}";
-	}
-
-# Return fully detailed object
-if (%{$opts}) {
-	# Can we get ago time
-	my $ago;
-	my $ago_secs = time() - $secs;
-	eval "use Time::Seconds";
-	if (!$@ && $ago_secs) {
-		my $ago_obj = Time::Seconds->new($ago_secs);
-		$ago = {
-			"seconds" => int($ago_obj->seconds),
-			"minutes" =>  int($ago_obj->minutes),
-			"hours" => int($ago_obj->hours),
-			"days" => int($ago_obj->days),
-			"weeks" => int($ago_obj->weeks),
-			"months"  => int($ago_obj->months),
-			"years" => int($ago_obj->years),
-			"pretty" => $ago_obj->pretty
-		};
-	}
-	# my $xxxx = $locale->full_date_format;
-	my $data = {
-		# Wed Feb 8 05:09:39 PM UTC 2023
-		'full-tz-utc' => DateTime->from_epoch(locale => $locale_name, epoch => $secs)->strftime($locale_format_full_tz),
-		# Wed Feb 8 07:10:01 PM EET 2023 
-		'full-tz' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_full_tz),
-		# Wed 08 Feb 2023 07:11:26 PM EET
-		'full' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_full),
-		# 02/08/2023
-		'short' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_short),
-		# 07:12:07 PM
-		'time' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_time),
-		'ago' => $ago,
-		'tz' => $tz,
-		'delimiter' => $locale_format_delimiter,
-		'timestamp' => $secs,
-		'_locale' => $opts->{'getFull'} ? $locale : undef,
-		};
-	# Add time short, e.g. 17:46 or 5:46 PM
-	$data->{'timeshort'} = $data->{'time'};
-	$data->{'timeshort'} =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
-
-	# %c alternative with full week and month and no seconds in time (complete)
-	# Wednesday, February 8, 2023, 8:18 PM or 星期三, 2023年2月8日 20:18 or miércoles, 8 febrero 2023, 20:28
-	$data->{'monthfull'} = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime("%B");
-	foreach (split(/\s+/, DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime("%A, %c"))) {
-		if ($data->{'monthfull'} =~ /^$_/) {
-			$data->{'complete'} .= "$data->{'monthfull'} "
-			}
-		else {
-			$data->{'complete'} .= "$_ "
-			}
-		};
-	$data->{'complete'} =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
-
-	if ($opts->{'get'}) {
-		return $data->{$opts->{'get'}};
+	my $opts = ref($only) ? $only : {};
+	my $locale_default = &get_default_system_locale();
+	my $locale_auto = &parse_accepted_language();
+	my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$remote_user} || $locale_auto || $gconfig{'locale'} || &get_default_system_locale();
+	my $tz = $opts->{'tz'} ||
+		 DateTime::TimeZone->new( name => 'local' )->name(); # Asia/Nicosia
+	my $locale = DateTime::Locale->load($locale_name);
+	my $locale_format_full_tz = $locale->glibc_date_1_format;    # Sat 20 Nov 2286 17:46:39 UTC
+	my $locale_format_full = $locale->glibc_datetime_format;     # Sat 20 Nov 2286 17:46:39
+	my $locale_format_short = $locale->glibc_date_format;        # 20/11/86
+	my $locale_format_time = $locale->glibc_time_format;         # 17:46:39
+	my $locale_format_delimiter = "/";
+	if ($opts->{'delimiter'}) {
+		$locale_format_delimiter = $opts->{'delimiter'};
 		}
-	return $data;
-	}
-
-# Support old style to force date format
-my $timeshort = length($fmt) == 3 ? 1 : 0;
-if ($fmt) {
-	my $date = $fmt;
-	my @date;
-	$date[$-[1]] = '%m'
-	    if ($date =~ /(m|M)/);
-	$date[$-[1]] = '%d'
-	    if ($date =~ /(d|D)/);
-	if ($date =~ /(yyyy)/i ||
-	   ($date =~ /(y|Y)/ && $timeshort)) {
-	    $date[$-[1]] = '%Y'
-	    }
-	elsif ($date =~ /(y|Y)/) {
-	    $date[$-[1]] = '%y'
-	    }
-	@date = grep { /\%/ } @date;
-	$locale_format_short = join($locale_format_delimiter, @date);
-	}
-my $date_format_short = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_short);
-if (!ref($only) && $only) {
-	return $date_format_short;
-	}
-else {
-	my $date_format_time = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_time);
-	$date_format_time = $date_format_time;
-	$date_format_time =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
-	if ($main::webmin_script_type eq 'web') {
-		$date_format_time =~ s/\s/&#x20;/g;
+	elsif ($locale_format_short =~ /\%.*?\[a-zA-Z]\s*(?<delimiter>.)/) {
+		$locale_format_delimiter = "$+{delimiter}";
 		}
-	return "$date_format_short $date_format_time";
-	}
-}
 
+	# Return fully detailed object
+	if (%{$opts}) {
+		# Can we get ago time
+		my $ago;
+		my $ago_secs = time() - $secs;
+		eval "use Time::Seconds";
+		if (!$@ && $ago_secs) {
+			my $ago_obj = Time::Seconds->new($ago_secs);
+			$ago = {
+				"seconds" => int($ago_obj->seconds),
+				"minutes" =>  int($ago_obj->minutes),
+				"hours" => int($ago_obj->hours),
+				"days" => int($ago_obj->days),
+				"weeks" => int($ago_obj->weeks),
+				"months"  => int($ago_obj->months),
+				"years" => int($ago_obj->years),
+				"pretty" => $ago_obj->pretty
+			};
+		}
+		# my $xxxx = $locale->full_date_format;
+		my $data = {
+			# Wed Feb 8 05:09:39 PM UTC 2023
+			'full-tz-utc' => DateTime->from_epoch(locale => $locale_name, epoch => $secs)->strftime($locale_format_full_tz),
+			# Wed Feb 8 07:10:01 PM EET 2023 
+			'full-tz' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_full_tz),
+			# Wed 08 Feb 2023 07:11:26 PM EET
+			'full' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_full),
+			# 02/08/2023
+			'short' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_short),
+			# 07:12:07 PM
+			'time' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_time),
+			'ago' => $ago,
+			'tz' => $tz,
+			'delimiter' => $locale_format_delimiter,
+			'timestamp' => $secs,
+			'_locale' => $opts->{'getFull'} ? $locale : undef,
+			};
+		# Add time short, e.g. 17:46 or 5:46 PM
+		$data->{'timeshort'} = $data->{'time'};
+		$data->{'timeshort'} =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
+
+		# %c alternative with full week and month and no seconds in time (complete)
+		# Wednesday, February 8, 2023, 8:18 PM or 星期三, 2023年2月8日 20:18 or miércoles, 8 febrero 2023, 20:28
+		$data->{'monthfull'} = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime("%B");
+		foreach (split(/\s+/, DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime("%A, %c"))) {
+			if ($data->{'monthfull'} =~ /^$_/) {
+				$data->{'complete'} .= "$data->{'monthfull'} "
+				}
+			else {
+				$data->{'complete'} .= "$_ "
+				}
+			};
+		$data->{'complete'} =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
+
+		if ($opts->{'get'}) {
+			return $data->{$opts->{'get'}};
+			}
+		return $data;
+		}
+
+	# Support old style to force date format
+	my $timeshort = length($fmt) == 3 ? 1 : 0;
+	if ($fmt) {
+		my $date = $fmt;
+		my @date;
+		$date[$-[1]] = '%m'
+		    if ($date =~ /(m|M)/);
+		$date[$-[1]] = '%d'
+		    if ($date =~ /(d|D)/);
+		if ($date =~ /(yyyy)/i ||
+		   ($date =~ /(y|Y)/ && $timeshort)) {
+		    $date[$-[1]] = '%Y'
+		    }
+		elsif ($date =~ /(y|Y)/) {
+		    $date[$-[1]] = '%y'
+		    }
+		@date = grep { /\%/ } @date;
+		$locale_format_short = join($locale_format_delimiter, @date);
+		}
+	my $date_format_short = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_short);
+	if (!ref($only) && $only) {
+		return $date_format_short;
+		}
+	else {
+		my $date_format_time = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_time);
+		$date_format_time = $date_format_time;
+		$date_format_time =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
+		if ($main::webmin_script_type eq 'web') {
+			$date_format_time =~ s/\s/&#x20;/g;
+			}
+		return "$date_format_short $date_format_time";
+		}
+	}
+
+# Fall back to built-in formatting
 my @tm = localtime($secs);
 my $date;
 if (!$fmt) {
