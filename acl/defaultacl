@@ -8,6 +8,7 @@ cert=1
 acl=1
 chcert=1
 lang=1
+locale=1
 groups=1
 gassign=*
 perms=0

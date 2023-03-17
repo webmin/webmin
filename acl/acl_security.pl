@@ -82,6 +82,6 @@ $o->{'gassign'} = $in{'gassign_def'} ? '*' :
 sub list_acl_yesno_fields
 {
 return ('create', 'delete', 'rename', 'acl', 'cert', 'others', 'chcert',
-	'lang', 'cats', 'theme', 'ips', 'perms', 'sync', 'unix', 'sessions',
+	'lang', 'locale', 'cats', 'theme', 'ips', 'perms', 'sync', 'unix', 'sessions',
 	'switch', 'times', 'pass', 'sql');
 }
