@@ -8,6 +8,7 @@ edit_twofactorprov=Utilizzo del provider $1 con ID $2
 edit_twofactorcancel=Rimuovere i requisiti di autenticazione a due fattori
 edit_twofactornone=Nessuna configurazione ancora
 edit_twofactoradd=Abilita due fattori per l'utente
+edit_locale=Locale
 edit_safe=Livello di privilegio
 edit_safe0=illimitato
 edit_safe1=Solo moduli sicuri
@@ -18,6 +19,8 @@ save_eunixname=Il nome utente '$1' non è un utente Unix, quindi non può essere
 delete_eanonuser=Questo utente viene utilizzato per l'accesso al modulo anonimo
 
 cert_etempdir=File di certificato non valido
+
+acl_locale=È possibile modificare le impostazioni locali?
 
 log_joingroup=Aggiunti $1 utenti Webmin al gruppo $2
 log_twofactor=Utente registrato $1 con provider a due fattori $2

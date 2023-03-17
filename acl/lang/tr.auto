@@ -19,6 +19,7 @@ edit_twofactorprov=$2 kimliğiyle $1 sağlayıcısını kullanma
 edit_twofactorcancel=İki faktörlü kimlik doğrulama gereksinimini kaldırın
 edit_twofactornone=Henüz kurulum yok
 edit_twofactoradd=Kullanıcı için İki Faktörü Etkinleştir
+edit_locale=yerel ayar
 edit_logout=Etkinlik dışı kalma süresi
 edit_mins=dakika
 edit_chars=harfler
@@ -70,6 +71,7 @@ cert_etempdir=Geçersiz sertifika dosyası
 acl_rbac=RBAC'den erişim kontrolü ayarları alınıyor mu?
 acl_rbacyes=Evet (aşağıdaki ayarları geçersiz kılar)
 
+acl_locale=Yerel ayarı değiştirebilir miyim?
 acl_times=İzin verilen giriş zamanlarını değiştirebilir mi?
 acl_pass=Şifre kısıtlamalarını değiştirebilir mi?
 acl_sql=Kullanıcı ve grup veritabanını yapılandırabilir mi?

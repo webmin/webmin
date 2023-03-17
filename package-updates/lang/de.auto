@@ -1,3 +1,5 @@
+index_none_security=Es wurden keine verfügbaren Pakete für Sicherheitsupdates gefunden.
+
 log_enable_repos=$1 -Paketrepositorys aktiviert
 log_disable_repos=$1 -Paketrepositorys deaktiviert
 log_delete_repos=$1 -Paket-Repositorys gelöscht

@@ -15,6 +15,8 @@ exec_tabexec=SQLを実行する
 exec_tabfile=ファイルからSQLを実行する
 exec_tabimport=テキストファイルをインポートする
 exec_return=SQLフォームを実行する
+exec_ecompress=SQL ファイルは圧縮されていますが、解凍に必要なプログラム $1 がインストールされていません。
+exec_ecompress2=解凍に失敗しました : $1
 
 view_refresh=リフレッシュ
 view_match4=より大きい
@@ -50,3 +52,8 @@ fdrop_eall=テーブルからすべてのフィールドを削除することは
 restore_tables=復元するテーブル
 restore_tables1=バックアップファイル内のすべて
 restore_tables0=一覧表
+
+backup_compress=圧縮タイプ
+backup_compress_0=なし
+backup_compress_1=<tt>gzip</tt>
+backup_compress_2=<tt>bzip2</tt>

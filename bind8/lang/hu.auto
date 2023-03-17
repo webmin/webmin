@@ -17,6 +17,10 @@ delete_vwarn2=Ez a zóna a $1 és a (z) $2 Virtualmin domainhez van társítva, 
 
 mcreate_dnssec_tools_enable=Engedélyezze a DNSSEC-et a DNSSEC-Tools használatával
 
+slave_format=Zóna fájlformátum
+slave_raw=Nyers bináris
+slave_text=Egyszerű szöveg
+
 recs_nosearch=Nincs keresési feltétel.
 recs_needsearch=Írja be a keresést a megfelelő rekordok kereséséhez.
 
@@ -229,6 +233,7 @@ zonekey_privatefile=Privát kulcsfájl : $1
 zonekey_algorithm=DNSSEC algoritmus : $1
 zonekey_ds=A szülői zóna DS rekordja :
 zonekey_eprivate=A zónához társított privát kulcs nem olvasható : $1
+zonekey_keep=Megtartja a meglévő kulcsot, ha a DNSSEC újra engedélyezve van?
 
 trusted_auto=Igen (automatikus mód)
 trusted_dlvs1=Meghatározza automatikusan

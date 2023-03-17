@@ -1,0 +1,7 @@
+exec_ecompress=Le fichier SQL est compressé, mais le programme $1 nécessaire pour le décompresser n'est pas installé.
+exec_ecompress2=Échec de la décompression  : $1
+
+backup_compress=Type de compression
+backup_compress_0=Aucun
+backup_compress_1=<tt>gzip</tt>
+backup_compress_2=<tt>bzip2</tt>

@@ -33,6 +33,9 @@ mcreate_dnssec_tools_enable=Povolte DNSSEC pomocí nástrojů DNSSEC
 mcreate_ednssecsize=Nepodařilo se vypočítat velikost klíče : $1
 mcreate_ednssec=Vytvoření záznamu bylo úspěšné, ale DNSSEC selhal : $1
 
+slave_format=Formát souboru zóny
+slave_raw=Syrové binární
+slave_text=Prostý text
 slave_convertdesc=Klepnutím na toto tlačítko převedete tuto podřízenou zónu na master se všemi záznamy, které byly naposledy přeneseny z původního master systému.
 slave_applymsg2=Klepnutím na toto tlačítko vynutíte opětovný přenos zóny z hlavního serveru, aby získala všechny nejnovější záznamy.
 slave_xfer=Přenos testovací zóny
@@ -399,6 +402,7 @@ zonekey_expandzone=Zobrazit podrobnosti o veřejných a soukromých zónách ..
 zonekey_noprivate=Webmin však nemohl najít soukromý klíč přidružený k zóně, a proto jej nebude moci znovu podepsat.
 zonekey_eprivate=Soukromý klíč spojený s touto zónou nelze přečíst : $1
 zonekey_disable=Odebrat klíč
+zonekey_keep=Ponechat stávající klíč, pokud bude DNSSEC znovu povoleno?
 zonekey_disabledesc=Odebere klíč DNSSEC z této zóny a všechny záznamy podpisu. Jakmile to provedete, budete moci vygenerovat nový klíč.
 zonekey_sign=Zóna sign
 zonekey_signdesc=Okamžitě znovu podepište tuto zónu tak, aby všechny změny ručně provedených záznamů byly zahrnuty do podpisových záznamů.

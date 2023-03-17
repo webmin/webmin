@@ -10,6 +10,7 @@ edit_twofactorprov=Usando o provedor $1 com o ID $2
 edit_twofactorcancel=Remover requisito de autenticação de dois fatores
 edit_twofactornone=Nenhuma configuração ainda
 edit_twofactoradd=Ativar dois fatores para o usuário
+edit_locale=Localidade
 edit_egone=O usuário selecionado não existe mais!
 edit_proto=Tipo de armazenamento
 edit_proto_mysql=Banco de dados MySQL
@@ -28,6 +29,7 @@ delete_eanonuser=Este usuário está sendo usado para acesso anônimo ao módulo
 
 cert_etempdir=Arquivo de certificado inválido
 
+acl_locale=Pode mudar de localidade?
 acl_pass=Pode alterar as restrições de senha?
 acl_sql=Pode configurar o banco de dados de usuários e grupos?
 

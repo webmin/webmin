@@ -11,6 +11,7 @@ edit_twofactorprov=Hornitzailea $1 erabiliz $2
 edit_twofactorcancel=Kendu bi faktoreen autentikazio baldintza
 edit_twofactornone=Ez dago oraindik konfigurazioa
 edit_twofactoradd=Gaitu erabiltzailearentzako bi faktore
+edit_locale=Tokikoa
 edit_egone=Aukeratutako erabiltzailea ez da existitzen!
 edit_overlay=Gai pertsonalen gainjartzea
 edit_proto=Biltegiratze mota
@@ -30,6 +31,7 @@ delete_eanonuser=Erabiltzaile hau modulu anonimoetarako sarbidea erabiltzen ari 
 
 cert_etempdir=Ziurtagiri fitxategi baliogabea
 
+acl_locale=Tokia alda daiteke?
 acl_pass=Pasahitz murrizketak alda ditzakezu?
 acl_sql=Erabiltzaileen eta taldeen datu-basea konfiguratu al dezakezu?
 

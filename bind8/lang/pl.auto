@@ -8,6 +8,10 @@ delete_vwarn=Ta strefa jest powiązana z domeną Virtualmin $1, dlatego nie nale
 
 delete_vwarn2=Ta strefa jest powiązana z domeną Virtualmin $1 i $2 innymi, dlatego nie należy jej tutaj usuwać!
 
+slave_format=Format pliku strefy
+slave_raw=Surowy plik binarny
+slave_text=Zwykły tekst
+
 edit_eusage=„$1” nie jest prawidłowym numerem użytkowania TLSA
 edit_eselector=„$1” nie jest prawidłowym numerem selektora TLSA
 edit_ematch=„$1” nie jest prawidłowym numerem meczu TLSA
@@ -104,6 +108,7 @@ dt_zone_kskrolldesc=Wymuś najazd klucza podpisującego klucz strefy
 
 zonekey_algorithm=Algorytm DNSSEC : $1 
 zonekey_eprivate=Nie można odczytać klucza prywatnego powiązanego z tą strefą : $1
+zonekey_keep=Zachować istniejący klucz, jeśli DNSSEC zostanie ponownie włączony?
 
 trusted_auto=Tak (tryb automatyczny)
 trusted_dlvs1=Określ automatycznie

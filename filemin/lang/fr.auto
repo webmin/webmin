@@ -1,7 +1,18 @@
+acls_selected=Setfacl sélectionné
 acl_allowed_paths_explain=Pour un utilisateur compatible root, si le répertoire autorisé est uniquement défini sur $HOME, il sera équivalent à / (accès complet au disque)
 config_per_page=Éléments à afficher par page
 
 acls=Liste de contrôle d'accès
+acls_label=Liste de contrôle à appliquer
+acls_applyto=Postuler à
+acls_user=Utilisateur
+acls_group=Groupe
+acls_other=Autre
+acls_mask=Masque
+acls_perms=Autorisations
+acls_action=Action
+acls_manual=Paramètres manuels
+acls_error=La commande <tt>setfacl</tt> est introuvable sur votre système
 file_detect_encoding=Détecter automatiquement le codage des fichiers
 index_return=liste de fichiers
 upload_dirs=Téléchargement d'annuaire

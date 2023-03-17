@@ -40,6 +40,7 @@ index_none_all=L-ebda pakketti ġestiti minn sistema ta ’aġġornament ma nsta
 index_none_updates=Ma nstabu l-ebda pakketti disponibbli biex jiġu aġġornati.
 index_none_both=Ma nstabu l-ebda pakketti jew pakketti ġodda disponibbli biex jiġu aġġornati.
 index_none_new=Ma nstabu l-ebda pakketti ġodda għall-installazzjoni.
+index_none_security=Ma nstab l-ebda pakkett disponibbli għall-aġġornamenti tas-sigurtà.
 index_count=Instab $1 pakketti ta 'tqabbil ..
 index_manynew=Hemm $1 pakketti disponibbli għall-installazzjoni. Uża l-kaxxa tat-tiftix biex issib dawk li tixtieq tinstalla.
 index_search=Sib pakketti li jaqblu:

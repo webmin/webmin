@@ -10,6 +10,7 @@ edit_twofactorprov=Použití poskytovatele $1 s ID $2
 edit_twofactorcancel=Odstraňte požadavek na dvoufaktorovou autentizaci
 edit_twofactornone=Zatím žádné nastavení
 edit_twofactoradd=Povolit pro uživatele dvoufaktor
+edit_locale=Národní prostředí
 edit_nochange=Vynutit dny změny hesla?
 edit_egone=Vybraný uživatel již neexistuje!
 edit_overlay=Překrytí osobního motivu
@@ -34,6 +35,7 @@ delete_eanonuser=Tento uživatel je používán pro anonymní přístup k modulu
 
 cert_etempdir=Neplatný soubor certifikátu
 
+acl_locale=Lze změnit národní prostředí?
 acl_pass=Lze změnit omezení hesla?
 acl_sql=Lze konfigurovat databázi uživatelů a skupin?
 

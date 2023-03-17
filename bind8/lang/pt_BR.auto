@@ -18,6 +18,9 @@ delete_vwarn2=Esta zona está associada aos domínios $1 e $2 do Virtualmin e, p
 
 mcreate_dnssec_tools_enable=Ativar DNSSEC usando ferramentas DNSSEC
 
+slave_format=Formato de arquivo de zona
+slave_raw=Binário bruto
+slave_text=Texto simples
 slave_xfer=Transferência da zona de teste
 
 recs_nosearch=Nenhum registro corresponde à sua pesquisa.
@@ -261,6 +264,7 @@ zonekey_privatefile=Arquivo de chave privada : $1
 zonekey_algorithm=Algoritmo DNSSEC : $1
 zonekey_ds=Registro do DS para a zona pai :
 zonekey_eprivate=A chave privada associada a esta zona não pôde ser lida : $1
+zonekey_keep=Manter a chave existente se o DNSSEC for reativado?
 
 trusted_auto=Sim (modo automático)
 trusted_dlvs1=Determinar automaticamente

@@ -6,6 +6,10 @@ delete_vwarn=Aquesta zona està associada amb el domini Virtualmin $1, per tant,
 
 delete_vwarn2=Aquesta zona està associada amb el domini Virtualmin $1 i $2 més, per la qual cosa no s'ha d'esborrar aquí.
 
+slave_format=Format de fitxer de zona
+slave_raw=Binari en brut
+slave_text=Text simple
+
 edit_ecaavalue2=Nom de domini que falta o no té aspecte vàlid
 edit_enaptrvalue0=L'ordre de registre ha de ser un número
 edit_enaptrvalue1=La preferència de registre ha de ser un número
@@ -54,5 +58,6 @@ massdelete_vwarn=Algunes zones estan associades al domini Virtualmin $1, per tan
 massdelete_vwarn2=Algunes zones estan associades al domini Virtualmin $1 i $2, per tant, no hauríem de suprimir-les.
 
 zonekey_algorithm=Algorisme DNSSEC : $1
+zonekey_keep=Mantenir la clau existent si es torna a activar DNSSEC?
 
 trusted_warning=Avís! La configuració del client de BIND DNSSEC conté claus obsoletes que deixaran de funcionar a l'octubre de 2017. O bé, utilitzeu la <a href='$1'>pàgina de verificació BIND DNSSEC</a> per ajustar la configuració o feu clic al botó següent.

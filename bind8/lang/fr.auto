@@ -1,3 +1,7 @@
+slave_format=Format de fichier de zone
+slave_raw=Binaire brut
+slave_text=Texte brut
+
 edit_enaptrvalue0=L'ordre d'enregistrement doit être un nombre
 edit_enaptrvalue1=La préférence d'enregistrement doit être un nombre
 edit_enaptrvalue3=Champ de services manquant
@@ -34,3 +38,4 @@ value_NAPTR3_U=Utiliser la sortie regexp ensuite
 value_NAPTR3_P=Action spécifique au protocole
 
 zonekey_algorithm=Algorithme DNSSEC  : $1
+zonekey_keep=Conserver la clé existante si DNSSEC est réactivé ?

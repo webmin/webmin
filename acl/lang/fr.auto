@@ -12,6 +12,7 @@ edit_twofactorprov=Utilisation du fournisseur $1 avec l'ID $2
 edit_twofactorcancel=Supprimer l'exigence d'authentification à deux facteurs
 edit_twofactornone=Aucune configuration pour le moment
 edit_twofactoradd=Activer deux facteurs pour l'utilisateur
+edit_locale=Lieu
 edit_nochange=Appliquer les jours de changement de mot de passe?
 edit_overlay=Superposition de thème personnel
 edit_temppass=Forcer le changement à la prochaine connexion
@@ -31,6 +32,8 @@ save_etemp=L'option pour forcer un changement de mot de passe à la prochaine co
 delete_eanonuser=Cet utilisateur est utilisé pour l'accès au module anonyme
 
 cert_etempdir=Fichier de certificat non valide
+
+acl_locale=Peut changer de paramètres régionaux ?
 
 log_joingroup=Ajout de $1 utilisateurs Webmin au groupe $2 
 log_pass=Restrictions de mot de passe modifiées

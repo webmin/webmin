@@ -11,6 +11,7 @@ edit_twofactorprov=Korištenje davatelja $1 s ID-om $2
 edit_twofactorcancel=Uklonite dvofaktorni zahtjev za provjeru autentičnosti
 edit_twofactornone=Još nema postavljanja
 edit_twofactoradd=Omogući korisniku dva faktora
+edit_locale=Lokalitet
 edit_nochange=Da li provodite dane za promjenu zaporke?
 edit_egone=Odabrani korisnik više ne postoji!
 edit_overlay=Prekrivanje osobne teme
@@ -35,6 +36,7 @@ delete_eanonuser=Ovaj korisnik se koristi za anonimni pristup modulu
 
 cert_etempdir=Nevažeća datoteka certifikata
 
+acl_locale=Može li se promijeniti lokalizacija?
 acl_pass=Mogu li promijeniti ograničenja zaporke?
 acl_sql=Mogu li konfigurirati korisničku i grupnu bazu podataka?
 

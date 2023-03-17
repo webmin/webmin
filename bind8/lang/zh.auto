@@ -59,6 +59,9 @@ mcreate_dnssec_tools_enable=使用DNSSEC工具启用DNSSEC
 mcreate_ednssecsize=无法计算密钥大小：$1
 mcreate_ednssec=记录创建成功，但是DNSSEC失败：$1
 
+slave_format=区域文件格式
+slave_raw=原始二进制文件
+slave_text=纯文本
 slave_convertdesc=单击此按钮可将该从属区域转换为主区域，其中包含最近从原始主系统传输的所有记录。
 slave_manual=查看记录文件
 slave_delmsg=单击此按钮可从DNS服务器删除此区域。源主控区域将保持不变。
@@ -673,6 +676,7 @@ zonekey_expandzone=显示公共和私人区域密钥的详细信息 ..
 zonekey_noprivate=但是，Webmin找不到与该区域关联的私钥，因此将无法对其重新签名。
 zonekey_eprivate=无法读取与此区域关联的私钥：$1
 zonekey_disable=取出钥匙
+zonekey_keep=如果重新启用 DNSSEC，是否保留现有密钥？
 zonekey_disabledesc=从该区域和所有签名记录中删除DNSSEC密钥。完成此操作后，您将能够生成一个新密钥。
 zonekey_sign=标志区
 zonekey_signdesc=立即对该区域进行重新签名，以便对手动进行的记录所做的任何更改都将包括在签名记录中。

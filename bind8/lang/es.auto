@@ -46,6 +46,9 @@ mcreate_dnssec_tools_enable=Habilite DNSSEC usando DNSSEC-Tools
 mcreate_ednssecsize=Error al calcular el tamaño de la clave : $1
 mcreate_ednssec=La creación de registros se realizó correctamente, pero DNSSEC falló : $1
 
+slave_format=formato de archivo de zona
+slave_raw=binario en bruto
+slave_text=Texto sin formato
 slave_convertdesc=Haga clic en este botón para convertir esta zona esclava en maestra, con todos los registros que se transfirieron por última vez desde el sistema maestro original.
 slave_manual=Ver archivo de registros
 slave_delmsg=Haga clic en este botón para eliminar esta zona de su servidor DNS. La zona maestra fuente no se tocará.
@@ -598,6 +601,7 @@ zonekey_expandzone=Mostrar detalles de clave de zona pública y privada.
 zonekey_noprivate=Sin embargo, Webmin no pudo encontrar la clave privada asociada con la zona, por lo que no podrá volver a firmarla.
 zonekey_eprivate=La clave privada asociada con esta zona no se pudo leer : $1
 zonekey_disable=Eliminar clave
+zonekey_keep=¿Mantener la clave existente si se vuelve a habilitar DNSSEC?
 zonekey_disabledesc=Elimina la clave DNSSEC de esta zona y todos los registros de firma. Una vez hecho esto, podrá generar una nueva clave.
 zonekey_sign=Zona de signos
 zonekey_signdesc=Vuelva a firmar inmediatamente esta zona, para que cualquier cambio en los registros realizados manualmente se incluya en los registros de firma.

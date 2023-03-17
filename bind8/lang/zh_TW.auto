@@ -92,6 +92,9 @@ mcreate_ednssecsize=無法計算密鑰大小：$1
 mcreate_ednssec=記錄創建成功，但是DNSSEC失敗：$1
 
 slave_masterport=服務器端口
+slave_format=區域文件格式
+slave_raw=原始二進製文件
+slave_text=純文本
 slave_mins=分鐘
 slave_master_port=港口
 slave_convert=轉換為主區
@@ -954,6 +957,7 @@ zonekey_expandzone=顯示公共和私有區域密鑰的詳細信息 ..
 zonekey_noprivate=但是，Webmin找不到與該區域關聯的私鑰，因此將無法對其重新簽名。
 zonekey_eprivate=無法讀取與此區域關聯的私鑰：$1
 zonekey_disable=取出鑰匙
+zonekey_keep=如果重新啟用 DNSSEC，是否保留現有密鑰？
 zonekey_disabledesc=從該區域和所有簽名記錄中刪除DNSSEC密鑰。完成此操作後，您將能夠生成一個新密鑰。
 zonekey_sign=標誌區
 zonekey_signdesc=立即對該區域進行重新簽名，以便對手動進行的記錄所做的任何更改都將包括在簽名記錄中。

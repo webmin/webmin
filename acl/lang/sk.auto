@@ -17,6 +17,7 @@ edit_twofactorprov=Použitie poskytovateľa $1 s ID $2
 edit_twofactorcancel=Odstráňte požiadavku dvojfaktorovej autentifikácie
 edit_twofactornone=Zatiaľ žiadne nastavenie
 edit_twofactoradd=Povoliť používateľom dvojfaktorový režim
+edit_locale=Miestne nastavenie
 edit_logout=Čas odhlásenia nečinnosti
 edit_chars=literatúra
 edit_minsize=Minimálna dĺžka hesla
@@ -60,6 +61,7 @@ cert_etempdir=Neplatný súbor certifikátu
 acl_rbac=Získať nastavenia riadenia prístupu z RBAC?
 acl_rbacyes=Áno (prepíše nastavenia nižšie)
 
+acl_locale=Dá sa zmeniť miestne nastavenie?
 acl_times=Môžu zmeniť povolené časy prihlásenia?
 acl_pass=Môžete zmeniť obmedzenia hesiel?
 acl_sql=Môžete nakonfigurovať databázu používateľov a skupín?

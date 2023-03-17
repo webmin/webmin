@@ -1,2 +1,10 @@
+exec_ecompress=Die SQL-Datei ist komprimiert, aber das zum Dekomprimieren benötigte Programm $1 ist nicht installiert.
+exec_ecompress2=Dekomprimierung fehlgeschlagen : $1
+
 view_refresh=Aktualisierung
 view_go=Gehen
+
+backup_compress=Kompressionstyp
+backup_compress_0=Keiner
+backup_compress_1=<tt>gzip</tt>
+backup_compress_2=<tt>bzip2</tt>

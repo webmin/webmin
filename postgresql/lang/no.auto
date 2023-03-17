@@ -1,0 +1,7 @@
+exec_ecompress=SQL-filen er komprimert, men programmet $1 som trengs for å dekomprimere den er ikke installert.
+exec_ecompress2=Un-komprimering mislyktes : $1
+
+backup_compress=Kompresjonstype
+backup_compress_0=Ingen
+backup_compress_1=<tt>gzip</tt>
+backup_compress_2=<tt>bzip2</tt>

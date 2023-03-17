@@ -21,6 +21,7 @@ edit_twofactorprov=使用提供方 $1 和ID $2
 edit_twofactorcancel=删除两因素身份验证要求
 edit_twofactornone=尚未设定
 edit_twofactoradd=为用户启用两因素
+edit_locale=语言环境
 edit_logout=不活动注销时间
 edit_mins=分钟
 edit_chars=字母
@@ -85,6 +86,7 @@ acl_rbac=从RBAC获得访问控制设置？
 acl_rbacyes=是（覆盖下面的设置）
 
 acl_uthis=该用户
+acl_locale=可以改locale吗？
 acl_sessions=可以查看和取消登录会话吗？
 acl_cats=可以更改分类吗？
 acl_theme=可以改变个人主题吗？

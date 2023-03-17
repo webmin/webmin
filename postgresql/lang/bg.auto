@@ -1,2 +1,10 @@
+exec_ecompress=SQL файлът е компресиран, но програмата $1, необходима за декомпресирането му, не е инсталирана.
+exec_ecompress2=Неуспешно декомпресиране : $1
+
 view_refresh=Обновяване
 view_go=Отивам
+
+backup_compress=Тип компресия
+backup_compress_0=Нито един
+backup_compress_1=<tt>gzip</tt>
+backup_compress_2=<tt>bzip2</tt>

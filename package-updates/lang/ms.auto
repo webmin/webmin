@@ -40,6 +40,7 @@ index_none_all=Tiada pakej yang dikendalikan oleh sistem kemas kini ditemui pada
 index_none_updates=Tiada pakej yang tersedia untuk dikemas kini ditemui.
 index_none_both=Tiada pakej atau pakej baru yang boleh dikemas kini ditemui.
 index_none_new=Tiada pakej baru untuk pemasangan dijumpai.
+index_none_security=Tiada pakej tersedia untuk kemas kini keselamatan ditemui.
 index_count=Pensatu padanan $1 dijumpai
 index_manynew=Terdapat $1 pakej yang tersedia untuk pemasangan. Gunakan kotak carian untuk mencari yang anda mahu pasang.
 index_search=Cari pakej sepadan:

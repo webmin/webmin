@@ -10,6 +10,7 @@ edit_twofactorprov=ID가 $2 인 제공자 $1 사용
 edit_twofactorcancel=이중 인증 요구 사항 제거
 edit_twofactornone=아직 설정이 없습니다
 edit_twofactoradd=사용자에 대해 2 단계 요인 사용
+edit_locale=장소
 edit_egone=선택된 사용자가 더 이상 존재하지 않습니다!
 edit_overlay=개인 테마 오버레이
 edit_overlayglobal=없음-테마 기본값 사용
@@ -32,6 +33,7 @@ delete_eanonuser=이 사용자는 익명 모듈 액세스에 사용되고 있습
 
 cert_etempdir=유효하지 않은 인증서 파일
 
+acl_locale=로케일을 변경할 수 있습니까?
 acl_pass=비밀번호 제한을 변경할 수 있습니까?
 acl_sql=사용자 및 그룹 데이터베이스를 구성 할 수 있습니까?
 

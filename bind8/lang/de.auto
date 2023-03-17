@@ -4,6 +4,10 @@ delete_vwarn=Diese Zone ist der Virtualmin-Domäne $1 zugeordnet und sollte dahe
 
 delete_vwarn2=Diese Zone ist mit den Virtualmin-Domänen $1 und $2 anderer verknüpft und sollte daher hier nicht gelöscht werden!
 
+slave_format=Zonendateiformat
+slave_raw=Rohe Binärdatei
+slave_text=Klartext
+
 edit_enaptrvalue0=Die Datensatzreihenfolge muss eine Zahl sein
 edit_enaptrvalue1=Datensatzpräferenz muss eine Zahl sein
 edit_enaptrvalue3=Fehlendes Dienstleistungsfeld
@@ -53,3 +57,4 @@ massdelete_vwarn2=Einige Zonen sind der Virtualmin-Domäne $1 und $2 zugeordnet,
 dt_zone_enable=DNSSEC-Automatisierung
 
 zonekey_algorithm=DNSSEC-Algorithmus : $1
+zonekey_keep=Vorhandenen Schlüssel beibehalten, wenn DNSSEC wieder aktiviert wird?

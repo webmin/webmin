@@ -40,6 +40,7 @@ index_none_all=Na vašem sustavu nisu pronađeni paketi kojima upravlja sustav a
 index_none_updates=Nisu pronađeni paketi za ažuriranje.
 index_none_both=Nisu pronađeni novi paketi ili paketi za ažuriranje.
 index_none_new=Nisu pronađeni novi paketi za instalaciju.
+index_none_security=Nisu pronađeni paketi dostupni za sigurnosna ažuriranja.
 index_count=Pronađen $1 odgovarajući paket ..
 index_manynew=Dostupan je $1 paket za instalaciju. Koristite okvir za pretraživanje da biste pronašli one koje želite instalirati.
 index_search=Pronađite pakete koji se podudaraju:

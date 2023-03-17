@@ -1,3 +1,6 @@
+exec_ecompress=Het SQL-bestand is gecomprimeerd, maar het programma $1 dat nodig is om het te decomprimeren, is niet geïnstalleerd.
+exec_ecompress2=Decomprimeren mislukt : $1
+
 view_refresh=Vernieuwen
 view_go=Gaan
 
@@ -10,3 +13,8 @@ manual_title=Configuratiebestand bewerken
 manual_err=Kan configuratiebestand niet opslaan
 
 log_manual=Handmatig bewerkte configuratiebestand voor toegestane hosts
+
+backup_compress=Compressie type
+backup_compress_0=Geen
+backup_compress_1=<tt>gzip</tt>
+backup_compress_2=<tt>bzip2</tt>
