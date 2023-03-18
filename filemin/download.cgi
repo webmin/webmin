@@ -9,7 +9,7 @@ use Cwd 'abs_path';
 
 get_paths();
 
-my $file = &simplify_path($cwd.'/'.$in{'file'});
+my $file = &resolve_links(&simplify_path($cwd.'/'.$in{'file'}));
 my $error = 1;
 for $allowed_path (@allowed_paths) {
 	if (&is_under_directory($allowed_path, $file)) {

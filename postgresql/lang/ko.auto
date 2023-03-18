@@ -17,6 +17,8 @@ exec_tabexec=SQL 실행
 exec_tabfile=파일에서 SQL 실행
 exec_tabimport=텍스트 파일 가져 오기
 exec_return=SQL 양식을 실행
+exec_ecompress=SQL 파일이 압축되었지만 압축 해제에 필요한 프로그램 $1이(가) 설치되어 있지 않습니다.
+exec_ecompress2=압축 해제 실패 : $1
 
 view_refresh=새롭게 하다
 view_match4=~보다 큰
@@ -65,6 +67,10 @@ backup_header1=백업 대상
 backup_header2=다른 백업 옵션
 backup_header3=백업 일정
 backup_mkdir=대상 디렉토리를 만드시겠습니까?
+backup_compress=압축 유형
+backup_compress_0=없음
+backup_compress_1=<tt>gzip</tt>
+backup_compress_2=<tt>bzip2</tt>
 
 index_spatial=공간
 

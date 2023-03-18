@@ -1,3 +1,7 @@
+edit_locale=Gebietsschema
+
+acl_locale=Kann das Gebietsschema ändern?
+
 sync_modify=Benennen Sie den passenden Webmin-Benutzer um, wenn ein Unix-Benutzer umbenannt wird.
 
 sessions_all=Alle Sitzungen..

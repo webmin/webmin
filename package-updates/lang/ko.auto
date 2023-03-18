@@ -40,6 +40,7 @@ index_none_all=시스템에서 업데이트 시스템으로 관리되는 패키�
 index_none_updates=업데이트 할 수있는 패키지가 없습니다.
 index_none_both=업데이트 할 수있는 새 패키지 나 패키지가 없습니다.
 index_none_new=설치할 새 패키지가 없습니다.
+index_none_security=보안 업데이트에 사용할 수 있는 패키지가 없습니다.
 index_count=일치하는 $1 개의 패키지를 찾았습니다.
 index_manynew=설치할 수있는 $1 개의 패키지가 있습니다. 검색 상자를 사용하여 설치할 항목을 찾으십시오.
 index_search=일치하는 패키지 찾기 :

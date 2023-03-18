@@ -1,7 +1,18 @@
+acls_selected=Setfacl Ausgewählt
 acl_allowed_paths_explain=Wenn für einen Root-fähigen Benutzer das zulässige Verzeichnis nur auf $HOME festgelegt ist, entspricht es / (vollständiger Festplattenzugriff).
 config_per_page=Elemente, die pro Seite angezeigt werden
 
 acls=Zugriffskontrollliste
+acls_label=Kontrollliste anzuwenden
+acls_applyto=Gelten
+acls_user=Benutzer
+acls_group=Gruppe
+acls_other=Andere
+acls_mask=Maske
+acls_perms=Berechtigungen
+acls_action=Aktion
+acls_manual=Manuelle Parameter
+acls_error=Der Befehl <tt>setfacl</tt> wurde auf Ihrem System nicht gefunden
 file_detect_encoding=Dateicodierung automatisch erkennen
 index_return=Dateiliste
 upload_dirs=Verzeichnis-Upload

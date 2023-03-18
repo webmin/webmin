@@ -1,7 +1,18 @@
+acls_selected=Setfacl مُحدد
 acl_allowed_paths_explain=بالنسبة إلى المستخدم القادر على الوصول إلى الجذر ، إذا تم تعيين الدليل المسموح به على $HOME فقط ، فسيكون مكافئًا لـ / (الوصول الكامل إلى القرص)
 config_per_page=العناصر المراد عرضها في كل صفحة
 
 acls=قائمة نظام الدخول
+acls_label=قائمة التحكم المراد تطبيقها
+acls_applyto=تنطبق على
+acls_user=مستخدم
+acls_group=مجموعة
+acls_other=آخر
+acls_mask=قناع
+acls_perms=أذونات
+acls_action=فعل
+acls_manual=المعلمات اليدوية
+acls_error=لم يتم العثور على الأمر <tt>setfacl</tt> في نظامك
 file_detect_encoding=كشف ملف ترميز تلقائيا
 index_return=قائمة الملفات
 upload_dirs=تحميل الدليل

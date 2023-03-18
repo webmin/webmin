@@ -10,6 +10,7 @@ edit_twofactorprov=ID $2 のプロバイダー $1 を使用する
 edit_twofactorcancel=二要素認証要件を削除する
 edit_twofactornone=まだセットアップなし
 edit_twofactoradd=ユーザーの2要素を有効にする
+edit_locale=ロケール
 edit_egone=選択したユーザーは存在しません！
 edit_overlay=個人テーマのオーバーレイ
 edit_overlayglobal=なし-テーマのデフォルトを使用
@@ -32,6 +33,7 @@ delete_eanonuser=このユーザーは匿名モジュールアクセスに使用
 
 cert_etempdir=無効な証明書ファイル
 
+acl_locale=ロケールを変更できますか?
 acl_pass=パスワード制限を変更できますか？
 acl_sql=ユーザーおよびグループデータベースを構成できますか？
 

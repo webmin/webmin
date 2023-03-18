@@ -40,6 +40,7 @@ index_none_all=Geen pakkette wat deur 'n opdateringstelsel bestuur word, is op u
 index_none_updates=Geen pakkette beskikbaar om op te dateer is gevind nie.
 index_none_both=Geen nuwe pakkette of pakkette beskikbaar om op te dateer is gevind nie.
 index_none_new=Geen nuwe pakkette vir installasie is gevind nie.
+index_none_security=Geen pakkette beskikbaar vir sekuriteitopdaterings is gevind nie.
 index_count=$1 passende pakkette gevind ..
 index_manynew=Daar is $1 pakkette beskikbaar vir installasie. Gebruik die soekkassie om die wat u wil installeer, te vind.
 index_search=Vind pakkette wat ooreenstem:

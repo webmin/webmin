@@ -10,6 +10,7 @@ edit_twofactorprov=Använda leverantör $1 med ID $2
 edit_twofactorcancel=Ta bort tvåfaktors autentiseringskrav
 edit_twofactornone=Ingen installation ännu
 edit_twofactoradd=Aktivera tvåfaktorer för användare
+edit_locale=Plats
 edit_egone=Den valda användaren finns inte längre!
 edit_proto=Lagringstyp
 edit_proto_mysql=MySQL-databas
@@ -30,6 +31,7 @@ delete_eanonuser=Den här användaren används för anonym modulåtkomst
 
 cert_etempdir=Ogiltig certifikatfil
 
+acl_locale=Kan du byta språk?
 acl_pass=Kan ändra lösenordsbegränsningar?
 acl_sql=Kan konfigurera användar- och gruppdatabas?
 

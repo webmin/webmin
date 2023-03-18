@@ -14,6 +14,10 @@ delete_vwarn=Deze zone is gekoppeld aan het Virtualmin-domein $1 en mag hier dus
 
 delete_vwarn2=Deze zone is gekoppeld aan het Virtualmin-domein $1 en $2 andere, en mag hier dus niet worden verwijderd!
 
+slave_format=Zone-bestandsindeling
+slave_raw=Ruw binair
+slave_text=Platte tekst
+
 recs_nosearch=Er zijn geen records gevonden die overeenkomen met uw zoekopdracht.
 recs_needsearch=Voer een zoekopdracht in om overeenkomende records te vinden.
 
@@ -154,6 +158,7 @@ zonekey_privatefile=Privésleutelbestand : $1
 zonekey_algorithm=DNSSEC-algoritme : $1
 zonekey_ds=DS record voor bovenliggende zone :
 zonekey_eprivate=De privésleutel die aan deze zone is gekoppeld, kon niet worden gelezen : $1
+zonekey_keep=Bestaande sleutel behouden als DNSSEC opnieuw wordt ingeschakeld?
 
 trusted_auto=Ja (automatische modus)
 trusted_dlvs1=Bepaal automatisch

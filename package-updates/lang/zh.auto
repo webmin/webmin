@@ -40,6 +40,7 @@ index_none_all=在您的系统上找不到更新系统管理的软件包！
 index_none_updates=找不到可更新的软件包。
 index_none_both=找不到新的软件包或可用于更新的软件包。
 index_none_new=找不到新的安装软件包。
+index_none_security=找不到可用于安全更新的软件包。
 index_count=找到 $1个匹配的软件包 ..
 index_manynew=有 $1个软件包可用于安装。使用搜索框找到要安装的内容。
 index_search=查找匹配的软件包：

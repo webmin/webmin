@@ -27,6 +27,7 @@ edit_twofactorcancel=إزالة متطلبات المصادقة ثنائية
 edit_twofactornone=لا شيء الإعداد بعد
 edit_twofactoradd=تمكين عامل اثنين للمستخدم
 edit_lang=لغة
+edit_locale=لغة
 edit_notabs=تصنيف الوحدات؟
 edit_logout=وقت تسجيل الخمول
 edit_mins=الدقائق
@@ -122,6 +123,8 @@ cert_title=طلب شهادة
 cert_msg=يسمح لك هذا النموذج بطلب شهادة عميل SSL والتي سيتم استخدامها في المستقبل لمنحك حق الوصول إلى Webmin بدلاً من اسم المستخدم وكلمة المرور الخاصة بك. هذا أكثر أمانًا ، ولكن نظرًا لأن المصادقة تلقائية ، فلن تتمكن من التبديل إلى مستخدم مختلف عند استخدام الشهادة.
 cert_ou=قسم
 cert_ekey=لم يقدم متصفحك مفتاح SSL جديدًا - ربما لا يدعم شهادات عميل SSL.
+
+acl_locale=يمكن تغيير اللغة؟
 
 log_modify=Modified Webmin user $1
 log_rename=Renamed Webmin user $1 to $2

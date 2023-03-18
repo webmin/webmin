@@ -107,6 +107,9 @@ mcreate_ednssecsize=Falha ao calcular o tamanho da chave : $1
 mcreate_ednssec=A criação do registro foi bem-sucedida, mas o DNSSEC falhou : $1
 
 slave_masterport=Porta do servidor
+slave_format=Formato de arquivo de zona
+slave_raw=Binário bruto
+slave_text=Texto simples
 slave_master_port=porta
 slave_convert=Converter na zona principal
 slave_convertdesc=Clique neste botão para converter esta zona escrava em um mestre, com todos os registros que foram transferidos pela última vez do sistema mestre original.
@@ -948,6 +951,7 @@ zonekey_expandzone=Mostrar detalhes das chaves de zona públicas e privadas.
 zonekey_noprivate=No entanto, o Webmin não conseguiu encontrar a chave privada associada à zona e, portanto, não poderá assinar novamente.
 zonekey_eprivate=A chave privada associada a esta zona não pôde ser lida : $1
 zonekey_disable=Remover chave
+zonekey_keep=Manter a chave existente se o DNSSEC for reativado?
 zonekey_disabledesc=Remove a chave DNSSEC desta zona e todos os registros de assinatura. Feito isso, você poderá gerar uma nova chave.
 zonekey_sign=Zona de sinal
 zonekey_signdesc=Reinscreva imediatamente esta zona, para que quaisquer alterações nos registros feitos manualmente sejam incluídas nos registros de assinatura.

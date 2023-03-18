@@ -1,3 +1,7 @@
+slave_format=Sone filformat
+slave_raw=Rå binær
+slave_text=Ren tekst
+
 edit_enaptrvalue0=Rekordrekkefølge må være et tall
 edit_enaptrvalue1=Postpreferanse må være et tall
 edit_enaptrvalue3=Manglende tjenestefelt
@@ -34,3 +38,4 @@ value_NAPTR3_U=Bruk regexp-utdata neste
 value_NAPTR3_P=Protokollspesifikk handling
 
 zonekey_algorithm=DNSSEC-algoritme : $1
+zonekey_keep=Behold eksisterende nøkkel hvis DNSSEC er aktivert på nytt?

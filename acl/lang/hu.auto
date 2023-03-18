@@ -15,6 +15,7 @@ edit_twofactorprov=A $2 azonosítóval
 edit_twofactorcancel=Távolítsa el a kéttényezős hitelesítési követelményt
 edit_twofactornone=Még nincs beállítva
 edit_twofactoradd=Két tényező engedélyezése a felhasználó számára
+edit_locale=Nyelv
 edit_chars=betűk
 edit_minsize=Minimális jelszóhossz
 edit_nochange=Végrehajtja a jelszócsere napjait?
@@ -52,6 +53,7 @@ delete_eanonuser=Ezt a felhasználót anonim modul-hozzáféréshez használják
 
 cert_etempdir=Érvénytelen tanúsítványfájl
 
+acl_locale=Meg lehet változtatni a nyelvet?
 acl_times=Megváltoztathatja az engedélyezett bejelentkezési időket?
 acl_pass=Meg lehet változtatni a jelszó korlátozásait?
 acl_sql=Konfigurálhatunk felhasználói és csoportos adatbázist?

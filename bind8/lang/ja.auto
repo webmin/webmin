@@ -21,6 +21,9 @@ mcreate_dnssec_tools_enable=DNSSEC-Toolsを使用してDNSSECを有効にする
 mcreate_ednssecsize=キーサイズの計算に失敗しました：$1
 mcreate_ednssec=レコードの作成は成功しましたが、DNSSECが失敗しました：$1
 
+slave_format=ゾーンファイル形式
+slave_raw=生のバイナリ
+slave_text=平文
 slave_xfer=テストゾーン転送
 
 recs_nosearch=検索に一致するレコードはありませんでした。
@@ -329,6 +332,7 @@ zonekey_expandzone=公開および非公開ゾーンキーの詳細を表示し�
 zonekey_noprivate=ただし、Webminはゾーンに関連付けられた秘密キーを見つけることができなかったため、再署名することはできません。
 zonekey_eprivate=このゾーンに関連付けられた秘密キーを読み取ることができませんでした：$1
 zonekey_disable=キーを削除
+zonekey_keep=DNSSEC が再度有効になった場合、既存のキーを保持しますか?
 zonekey_disabledesc=このゾーンからDNSSECキーとすべての署名レコードを削除します。これが完了すると、新しいキーを生成できるようになります。
 zonekey_sign=サインゾーン
 zonekey_signdesc=手動で行ったレコードへの変更が署名レコードに含まれるように、このゾーンにすぐに再署名してください。

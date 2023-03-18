@@ -1,3 +1,7 @@
+edit_locale=Språk
+
+acl_locale=Kan du endre lokalitet?
+
 sync_modify=Gi nytt navn til den samsvarende Webmin-brukeren når en Unix-bruker får nytt navn.
 
 sessions_all=Alle økter..

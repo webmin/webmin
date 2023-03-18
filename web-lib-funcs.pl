@@ -1989,7 +1989,7 @@ code or preserve the original, old logic
 sub make_date
 {
 my ($secs, $only, $fmt) = @_;
-
+$secs ||= 0;
 eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
 if (!$@) {
 	my $opts = ref($only) ? $only : {};
@@ -9268,22 +9268,22 @@ my @bits = split(/\/+/, $dir);
 my @fixedbits = ();
 $_[1] = 0;
 foreach my $b (@bits) {
-        if ($b eq ".") {
-                # Do nothing..
-                }
-        elsif ($b eq "..") {
-                # Remove last dir
-                if (scalar(@fixedbits) == 0) {
+	if ($b eq ".") {
+		# Do nothing..
+		}
+	elsif ($b eq "..") {
+		# Remove last dir
+		if (scalar(@fixedbits) == 0) {
 			# Cannot! Already at root!
 			return undef;
-                        }
-                pop(@fixedbits);
-                }
-        else {
-                # Add dir to list
-                push(@fixedbits, $b);
-                }
-        }
+			}
+		pop(@fixedbits);
+		}
+	else {
+		# Add dir to list
+		push(@fixedbits, $b);
+		}
+	}
 return "/".join('/', @fixedbits);
 }
 

@@ -19,6 +19,7 @@ edit_twofactorprov=使用提供方 $1 和ID $2
 edit_twofactorcancel=刪除兩因素身份驗證要求
 edit_twofactornone=尚未設定
 edit_twofactoradd=為用戶啟用兩因素
+edit_locale=語言環境
 edit_logout=不活動註銷時間
 edit_mins=分鐘
 edit_chars=字母
@@ -75,6 +76,7 @@ acl_reset=重置為完全訪問權限
 acl_rbac=從RBAC獲得訪問控制設置？
 acl_rbacyes=是（覆蓋下面的設置）
 
+acl_locale=可以改locale嗎？
 acl_switch=可以切換到其他用戶嗎？
 acl_times=可以更改允許的登錄時間嗎？
 acl_pass=可以更改密碼限制嗎？

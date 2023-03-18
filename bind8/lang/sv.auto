@@ -36,6 +36,9 @@ mcreate_dnssec_tools_enable=Aktivera DNSSEC med DNSSEC-verktyg
 mcreate_ednssecsize=Det gick inte att beräkna nyckelstorlek : $1
 mcreate_ednssec=Skapandet skapades, men DNSSEC misslyckades : $1
 
+slave_format=Zon filformat
+slave_raw=Rå binär
+slave_text=Oformatterad text
 slave_convertdesc=Klicka på den här knappen för att konvertera denna slavzon till en master, med alla poster som senast överfördes från det ursprungliga mastersystemet.
 slave_applymsg2=Klicka på den här knappen för att tvinga en överföring av zonen från masterservern så att den får alla de senaste posterna.
 slave_xfer=Testzonöverföring
@@ -424,6 +427,7 @@ zonekey_expandzone=Visa offentliga och privata zonnyckeldetaljer ..
 zonekey_noprivate=Webmin kunde dock inte hitta den privata nyckeln som är associerad med zonen och kommer därför inte att kunna underteckna den igen.
 zonekey_eprivate=Den privata nyckeln som är associerad med denna zon kunde inte läsas : $1
 zonekey_disable=Ta bort nyckeln
+zonekey_keep=Behålla befintlig nyckel om DNSSEC återaktiveras?
 zonekey_disabledesc=Tar bort DNSSEC-nyckeln från den här zonen och alla signeringsposter. När detta är gjort kan du generera en ny nyckel.
 zonekey_sign=Sign Zone
 zonekey_signdesc=Registrera omedelbart denna zon omedelbart så att alla ändringar av poster som manuellt kommer att inkluderas i signeringsposterna.

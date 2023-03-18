@@ -38,6 +38,9 @@ mcreate_dnssec_tools_enable=DNSSEC Araçları'nı kullanarak DNSSEC'yi etkinleş
 mcreate_ednssecsize=Anahtar boyutu hesaplanamadı : $1
 mcreate_ednssec=Kayıt oluşturma başarılı oldu, ancak DNSSEC başarısız oldu : $1
 
+slave_format=Bölge dosya formatı
+slave_raw=Ham ikili
+slave_text=düz metin
 slave_convertdesc=Bu ikincil bölgeyi, son ana sistemden en son aktarılan tüm kayıtlarla bir ana kopyaya dönüştürmek için bu düğmeyi tıklatın.
 slave_applymsg2=Bölgenin ana sunucudan yeniden aktarılmasını zorlamak için bu düğmeyi tıklatın, böylece en son kayıtların tümünü alır.
 slave_xfer=Test Bölgesi Transferi
@@ -444,6 +447,7 @@ zonekey_expandzone=Genel ve özel bölge anahtarı ayrıntılarını göster ..
 zonekey_noprivate=Ancak, Webmin bölgeyle ilişkili özel anahtarı bulamadı ve bu nedenle yeniden imzalayamayacak.
 zonekey_eprivate=Bu bölgeyle ilişkili özel anahtar okunamadı : $1
 zonekey_disable=Anahtarı Kaldır
+zonekey_keep=DNSSEC yeniden etkinleştirilirse mevcut anahtar korunsun mu?
 zonekey_disabledesc=DNSSEC anahtarını bu bölgeden ve tüm imza kayıtlarından kaldırır. Bu yapıldıktan sonra yeni bir anahtar üretebileceksiniz.
 zonekey_sign=İşaret Bölgesi
 zonekey_signdesc=Manuel olarak yapılan kayıtlarda yapılan değişikliklerin imza kayıtlarına dahil edilmesi için bu bölgeyi hemen yeniden imzalayın.

@@ -1,6 +1,7 @@
 index_screate=Buat pengguna selamat yang baru.
 
 edit_title3=Buat Pengguna Webmin Selamat
+edit_locale=Tempatan
 edit_safe=Tahap keistimewaan
 edit_safe0=Tidak terkawal
 edit_safe1=Modul selamat sahaja
@@ -9,6 +10,8 @@ edit_unsafe=Tetapkan semula kepada tanpa had
 save_eunixname=Nama pengguna '$1' bukan pengguna Unix, dan oleh itu tidak boleh digunakan dalam mod selamat
 
 delete_eanonuser=Pengguna ini sedang digunakan untuk akses modul tanpa nama
+
+acl_locale=Boleh tukar tempat?
 
 sync_modify=Ganti nama pengguna Webmin yang sepadan apabila pengguna Unix dinamakan semula.
 
