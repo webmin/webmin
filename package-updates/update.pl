@@ -9,6 +9,8 @@ if ($ARGV[0] eq "--debug" || $ARGV[0] eq "-debug") {
 	}
 
 # See what needs doing
+&flush_package_caches();
+&clear_repository_cache();
 @todo = &list_possible_updates();
 foreach $a (@todo) {
 	$a->{'level'} = $a->{'security'} ? 1 : 2;
