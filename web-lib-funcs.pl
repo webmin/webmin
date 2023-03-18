@@ -12819,7 +12819,7 @@ return &webmin_user_login_mode() eq 'root';
 # webmin_user_is()
 # Returns 1 if currently logged in user belongs to one
 # of the requested types: root, safe-user, mail-user,
-# cloud-owner, virtual-reseller, virtual-reseller
+# cloud-owner, virtual-owner, virtual-reseller
 # Simply a convenience wrapper function
 sub webmin_user_is
 {
