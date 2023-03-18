@@ -101,8 +101,6 @@ sub get_paths {
     $quote_escaped_path = quote_escape($path);
     $urlized_path = urlize($path);
     
-    $cwd = &simplify_path($base.$path);
-
     # Work out max upload size
     if (&get_product_name() eq 'usermin') {
 	$upload_max = $config{'max'};
@@ -111,6 +109,7 @@ sub get_paths {
     }
 
     # Check that current directory is one of those that is allowed
+    $cwd = &simplify_path($base.$path);
     my $error = 1;
     for $allowed_path (@allowed_paths) {
         if (&is_under_directory($allowed_path, $cwd) ||
