@@ -167,10 +167,10 @@ if ($letsencrypt_cmd) {
 	my $old_flags;
 	my $new_flags;
 	$key_type ||= $config{'letsencrypt_algo'} || 'rsa';
-	if ($cmd_ver < 1.11) {
+	if (&compare_version_numbers($cmd_ver, 1.11) < 0) {
 		$old_flags = " --manual-public-ip-logging-ok";
 		}
-	if ($cmd_ver >= 2) {
+	if (&compare_version_numbers($cmd_ver, 2.0) >= 0) {
 		$new_flags = " --key-type $key_type";
 		}
 	$dir =~ s/\/[^\/]+$//;
