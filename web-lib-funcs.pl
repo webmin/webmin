@@ -9774,6 +9774,7 @@ bytes or kB.
 sub nice_size
 {
 my ($bytes, $minimal, $decimal) = @_;
+return undef if (!defined($bytes));
 &load_theme_library();
 if (defined(&theme_nice_size) &&
     $main::header_content_type eq "text/html" &&
