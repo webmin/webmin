@@ -1,5 +1,11 @@
 ## Changelog
 
+#### 2.021 (March 19, 2023)
+* Add ability to set locale in Webmin Users module for consistency
+* Fix an error when `make_date` is called on undefined value #1860
+* Fix clearing packages caches before checking for updates in status collection #1863
+* Update the Authentic theme to the latest version
+
 #### 2.020 (March 08, 2023)
 * Add full locale support
 * Add slave zone file format option in BIND DNS module
