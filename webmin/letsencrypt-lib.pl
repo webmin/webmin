@@ -171,7 +171,7 @@ if ($letsencrypt_cmd) {
 		$old_flags = " --manual-public-ip-logging-ok";
 		}
 	if (&compare_version_numbers($cmd_ver, 2.0) >= 0) {
-		$new_flags = " --key-type $key_type";
+		$new_flags = " --key-type ".quotemeta($key_type);
 		}
 	$dir =~ s/\/[^\/]+$//;
 	$size ||= 2048;
@@ -191,7 +191,7 @@ if ($letsencrypt_cmd) {
 			" --agree-tos".
 			" --config ".quotemeta($temp)."".
 			"$new_flags".
-			" --rsa-key-size $size".
+			" --rsa-key-size ".quotemeta($size).
 			" --cert-name ".quotemeta($doms[0]).
 			($staging ? " --test-cert" : "").
 			" 2>&1)");
