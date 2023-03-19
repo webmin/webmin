@@ -1996,8 +1996,15 @@ if (!$@) {
 	my $locale_default = &get_default_system_locale();
 	my $locale_auto = &parse_accepted_language();
 	my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$remote_user} || $locale_auto || $gconfig{'locale'} || &get_default_system_locale();
-	my $tz = $opts->{'tz'} ||
-		 DateTime::TimeZone->new( name => 'local' )->name(); # Asia/Nicosia
+	my $tz = $opts->{'tz'};
+	if (!$tz) {
+		eval {
+	        $tz = DateTime::TimeZone->new( name => 'local' )->name();  # Asia/Nicosia
+			};
+		if ($@) {
+			$tz = DateTime::TimeZone->new( name => 'UTC' )->name();    # UTC
+			}
+		}
 	my $locale = DateTime::Locale->load($locale_name);
 	my $locale_format_full_tz = $locale->glibc_date_1_format;    # Sat 20 Nov 2286 17:46:39 UTC
 	my $locale_format_full = $locale->glibc_datetime_format;     # Sat 20 Nov 2286 17:46:39
