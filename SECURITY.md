@@ -8,7 +8,7 @@ currently being supported with security updates.
 | Version | Supported          |
 | ------- | ------------------ |
 | <a href="https://github.com/webmin/webmin/releases/"><img src="https://img.shields.io/github/release/webmin/webmin" alt="Latest release"></a>   | :white_check_mark: |
-| < <a href="https://github.com/webmin/webmin/releases/"><img src="https://img.shields.io/github/release/webmin/webmin" alt="Latest release"></a> | :x:                |
+| Previous versions | :x:                |
 
 ## Reporting a Vulnerability
 
