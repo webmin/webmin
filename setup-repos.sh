@@ -87,7 +87,7 @@ fi
 # Ask first
 printf "Setup Webmin official repository? (y/N) "
 read -r sslyn
-if [ "$sslyn" != "y" ] || [ "$sslyn" = "Y" ]; then
+if [ "$sslyn" != "y" ] && [ "$sslyn" != "Y" ]; then
   exit
 fi
 
