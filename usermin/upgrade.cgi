@@ -15,6 +15,17 @@ else {
 
 &ui_print_unbuffered_header(undef, $in{'install'} ? $text{'upgrade_title2'} : $text{'upgrade_title'}, "");
 
+# Do we have an install dir?
+my $indir = $in{'dir'};
+if (!$indir) {
+	my $install_dir = "$config_directory/install-dir";
+	if (-e $install_dir) {
+		$indir = &read_file_contents($install_dir);
+		$indir = &trim($indir);
+		$indir = undef if (!-d $indir);
+		}
+	}
+
 if ($in{'source'} == 0) {
 	# from local file
 	&error_setup(&text('upgrade_err1', $in{'file'}));
@@ -245,7 +256,7 @@ else {
 		}
 	else {
 		# Upgrading .. work out where to extract
-		if ($in{'dir'}) {
+		if ($indir) {
 			# Since we are currently installed in a fixed directory,
 			# just extract to a temporary location
 			$extract = &transname();
@@ -265,7 +276,7 @@ else {
 		$ENV{'config_dir'} = $config{'usermin_dir'};
 		$ENV{'webmin_upgrade'} = 1;
 		$ENV{'autothird'} = 1;
-		$setup = $in{'dir'} ? "./setup.sh '$in{'dir'}'" : "./setup.sh";
+		$setup = $indir ? "./setup.sh '$indir'" : "./setup.sh";
 		if ($in{'delete'}) {
 			$ENV{'deletedold'} = 1;
 			$cmd = "(cd $extract/usermin-$version && $setup && rm -rf \"$miniserv{'root'}\")";
@@ -278,7 +289,7 @@ else {
 	print "<pre>";
 	&proc::safe_process_exec($cmd, 0, 0, STDOUT, undef, 1);
 	print "</pre>";
-	if ($in{'dir'}) {
+	if ($indir) {
 		# Can delete the temporary source directory
 		system("rm -rf \"$extract\"");
 		}

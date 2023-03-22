@@ -11,6 +11,22 @@ $| = 1;
 $theme_no_table = 1;
 &ui_print_header(undef, $text{'upgrade_title'}, "");
 
+# Do we have an install dir?
+my $indir = $in{'dir'};
+
+# Is this a minimal install?
+my $mini_type;
+
+if (!$indir) {
+	my $install_dir = "$config_directory/install-dir";
+	if (-e $install_dir) {
+		$indir = &read_file_contents($install_dir);
+		$indir = &trim($indir);
+		$mini_type = -r "$indir/minimal-install" ? "-minimal" : "";
+		$indir = undef if (!-d $indir);
+		}
+	}
+
 # Save this CGI from being killed by the upgrade
 $SIG{'TERM'} = 'IGNORE';
 
@@ -81,7 +97,7 @@ elsif ($in{'source'} == 2) {
 		# Downloading tar.gz file
 		$release = $release ? "-".$release : "";
 		$progress_callback_url = &convert_osdn_url(
-			"http://$osdn_host/webadmin/webmin-${version}${release}.tar.gz");
+			"http://$osdn_host/webadmin/webmin-${version}${release}${mini_type}.tar.gz");
 		$sfx = ".tar.gz";
 		}
 	($host, $port, $page, $ssl) = &parse_http_url($progress_callback_url);
@@ -158,7 +174,7 @@ if ($in{'sig'}) {
 			if ($in{'source'} == 2) {
 				# Download the key for this tar.gz
 				my ($sigtemp, $sigerror);
-				&http_download($update_host, $update_port, "/download/sigs/webmin-$full.tar.gz-sig.asc", \$sigtemp, \$sigerror);
+				&http_download($update_host, $update_port, "/download/sigs/webmin-${full}${mini_type}.tar.gz-sig.asc", \$sigtemp, \$sigerror);
 				if ($sigerror) {
 					$ec = 4;
 					$emsg = &text('upgrade_edownsig',
@@ -361,7 +377,7 @@ elsif ($in{'mode'} eq 'solaris-pkg' || $in{'mode'} eq 'sun-pkg') {
 		$dir = $1;
 		}
 
-	$setup = $in{'dir'} ? "./setup.sh '$in{'dir'}'" : "./setup.sh";
+	$setup = $indir ? "./setup.sh '$indir'" : "./setup.sh";
 	print "Package Directory: $dir<br>";
 	print  "cd $dir && ./setup.sh<br>";
 	&proc::safe_process_exec(
@@ -439,7 +455,7 @@ else {
 		}
 
 	# Work out where to extract
-	if ($in{'dir'}) {
+	if ($indir) {
 		# Since we are currently installed in a fixed directory,
 		# just extract to a temporary location
 		$extract = &transname();
@@ -498,7 +514,7 @@ else {
 	$ENV{'deletedold'} = 1 if ($in{'delete'});
 	print "<p>",$text{'upgrade_setup'},"<p>\n";
 	print "<pre>";
-	$setup = $in{'dir'} ? "./setup.sh '$in{'dir'}'" : "./setup.sh";
+	$setup = $indir ? "./setup.sh '$indir'" : "./setup.sh";
 	&proc::safe_process_exec(
 		"cd $extract/webmin-$version && $setup", 0, 0,
 		STDOUT, undef, 1, 1);
@@ -508,7 +524,7 @@ else {
 			# Can delete the old root directory
 			system("rm -rf ".quotemeta($root_directory));
 			}
-		elsif ($in{'dir'}) {
+		elsif ($indir) {
 			# Can delete the temporary source directory
 			system("rm -rf ".quotemeta($extract));
 			}
