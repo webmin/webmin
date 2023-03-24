@@ -48,10 +48,10 @@ if (@backups) {
 	print &ui_columns_end();
 	}
 else {
-	print "<b>$text{'index_none'}</b><p>\n";
+	print "<strong>$text{'index_none'}</strong><br>\n";
 	}
 print &ui_link("edit.cgi?new=1", $text{'index_add'});
-print "<p>\n";
+print "\n";
 if ($using_strftime && !$config{'date_subs'}) {
 	print &ui_alert_box($text{'index_nostrftime'}, 'warn'),"\n";
 	}
