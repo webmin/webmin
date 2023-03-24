@@ -53,8 +53,7 @@ else {
 print &ui_link("edit.cgi?new=1", $text{'index_add'});
 print "<p>\n";
 if ($using_strftime && !$config{'date_subs'}) {
-	print "<font color=#ff0000><b>$text{'index_nostrftime'}",
-	      "</b></font><p>\n";
+	print &ui_alert_box($text{'index_nostrftime'}, 'warn'),"\n";
 	}
 print &ui_tabs_end_tab();
 
