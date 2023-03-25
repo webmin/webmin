@@ -70,8 +70,7 @@ else {
 	print "<b>$text{'index_none2'}</b><p>\n";
 	}
 if ($using_strftime && !$config{'date_subs'}) {
-	print "<font color=#ff0000><b>$text{'index_nostrftime'}",
-	      "</b></font><p>\n";
+	print &ui_alert_box($text{'index_nostrftime'}, 'warn');
 	}
 
 # Form to add

@@ -22,7 +22,7 @@ index_now=Backup..
 index_follow=After $1
 index_forcetar=In TAR format
 index_delete=Delete Selected Backups
-index_nostrftime=Warning - some backup jobs use % in their filenames, but strftime substitution is not enabled on the Module Config page.
+index_nostrftime=Some backup jobs use % in their filenames, but strftime substitution is not enabled on the Module Config page.
 
 dump_dir=Directory to backup
 dump_dirs=Directories to backup
