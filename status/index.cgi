@@ -42,7 +42,7 @@ if (@serv) {
 		local @st = stat($oldstatus_file);
 		if (@st) {
 			local $t = &make_date($st[9]);
-			print &text('index_oldtime', $t),"<br>\n";
+			print &ui_alert_box(&text('index_oldtime', $t), 'info');
 			}
 		}
 
