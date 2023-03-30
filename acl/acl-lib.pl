@@ -774,14 +774,16 @@ if ($oldpass ne $user->{'pass'} &&
 	my $nolock = $oldpass;
 	$nolock =~ s/^\!//;
 	$user->{'olds'} ||= [];
-	unshift(@{$user->{'olds'}}, $nolock);
-	if ($miniserv->{'pass_oldblock'}) {
-		while(scalar(@{$user->{'olds'}}) >
-		      $miniserv->{'pass_oldblock'}) {
-			pop(@{$user->{'olds'}});
+	if (&indexof($nolock, @{$user->{'olds'}}) < 0) {
+		unshift(@{$user->{'olds'}}, $nolock);
+		if ($miniserv->{'pass_oldblock'}) {
+			while(scalar(@{$user->{'olds'}}) >
+			      $miniserv->{'pass_oldblock'}) {
+				pop(@{$user->{'olds'}});
+				}
 			}
+		$user->{'lastchange'} = time();
 		}
-	$user->{'lastchange'} = time();
 	}
 }
 
