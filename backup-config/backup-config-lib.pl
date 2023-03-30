@@ -159,7 +159,9 @@ $rv .= "<table id='show_backup_destination' cellpadding=1 cellspacing=0>";
 # Local file field
 $rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 0, undef, $mode == 0)."</td>\n";
 $rv .= "<td>$text{'backup_mode0'}&nbsp;</td><td colspan='3'>".
-	&ui_textbox("$_[0]_file", $mode == 0 ? $path : "", 60).
+	&ui_textbox("$_[0]_file", $mode == 0 ? $path : "", 60, undef, undef,
+	    ($_[2] != 1 && $config{'date_subs'}) ?
+	        'placeholder="/backups/configs-%y-%m-%d-%H-%M-%S.tar.gz"' : undef).
 	" ".&file_chooser_button("$_[0]_file")."</td> </tr>\n";
 
 # FTP file fields
