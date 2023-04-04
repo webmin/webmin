@@ -161,7 +161,7 @@ else {
 		# Use built-in encryption code and use system default
 		my $salt = $old;
 		&foreign_require('useradmin');
-		return &useradmin::encrypt_password($str, $salt, 1);
+		return &useradmin::encrypt_password($str, $salt, 0, 1);
 		}
 	}
 }
