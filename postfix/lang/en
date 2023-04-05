@@ -295,6 +295,7 @@ opts_relay_domains_reject_code=SMTP server response on forbidden relaying
 opts_unknown_address_reject_code=SMTP server response on unknown domain reject
 opts_unknown_client_reject_code=SMTP server response on unknown client reject
 opts_unknown_hostname_reject_code=SMTP server response on unknown hostname reject
+opts_smtpd_discard_ehlo_keywords=SMTP EHLO keywords to not send
 smtpd_nomap=No map for allowed addresses for relaying has been entered yet.
 smtpd_nomap2=No map for restrictions on sender addresses has been entered yet.
 smtpd_map=Allowed addresses for relaying

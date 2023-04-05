@@ -61,6 +61,8 @@ print &ui_table_start($text{'smtpd_title'}, "width=100%", 4);
 &option_freefield("unknown_client_reject_code", 15, $default);
 &option_freefield("unknown_hostname_reject_code", 15, $default);
 
+&option_radios_freefield("smtpd_discard_ehlo_keywords", 65, $default);
+
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
 
