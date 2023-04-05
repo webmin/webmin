@@ -1767,7 +1767,7 @@ foreach $e (keys %ENV) {
 	}
 }
 
-=head2 encrypt_password(password, [salt], [ignore-config-force-system-default])
+=head2 encrypt_password(password, [salt], [ignore-config-force-system-default], [no-sha1])
 
 Encrypts a password using the encryption format configured for this system.
 If the salt parameter is given, it will be used for hashing the password -
@@ -1778,7 +1778,7 @@ will be randomly generated.
 =cut
 sub encrypt_password
 {
-local ($pass, $salt, $force_system_default) = @_;
+local ($pass, $salt, $force_system_default, $nosha1) = @_;
 local $format = 0;
 my $format_error = sub {
 	my ($type, $format, $err) = @_;
@@ -1786,7 +1786,7 @@ my $format_error = sub {
 	    "@{[&get_webprefix()]}/config.cgi?module=$module_name&section=line2",
 	    "@{[&get_webprefix()]}/cpan/download.cgi?source=3&cpan=$err", $err, $format));
 	};
-if ($gconfig{'os_type'} eq 'macos' && &passfiles_type() == 7) {
+if (!$nosha1 && $gconfig{'os_type'} eq 'macos' && &passfiles_type() == 7) {
 	# New OSX directory service uses SHA1 for passwords!
 	$salt ||= chr(int(rand(26))+65).chr(int(rand(26))+65). 
 		  chr(int(rand(26))+65).chr(int(rand(26))+65);

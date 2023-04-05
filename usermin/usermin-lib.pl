@@ -864,22 +864,12 @@ sub flush_modules_cache
 
 =head2 stop_usermin
 
-Kills the running Usermin server process, returning undef on success or an
-error message on failure.
+Kills the running Usermin server process. Return value is always undef.
 
 =cut
 sub stop_usermin
 {
-local %miniserv;
-&get_usermin_miniserv_config(\%miniserv);
-local $pid;
-if (open(PID, "<".$miniserv{'pidfile'}) && ($pid = int(<PID>))) {
-	&kill_logged('TERM', $pid) || return &text('stop_ekill', $!);
-	close(PID);
-	}
-else {
-	return $text{'stop_efile'};
-	}
+&system_logged("$config{'usermin_dir'}/stop >/dev/null 2>&1 </dev/null");
 return undef;
 }
 
