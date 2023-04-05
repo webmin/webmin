@@ -694,6 +694,12 @@ sub regenerate_header_table
     &regenerate_any_table("header_checks");
 }
 
+# regenerate_mime_header_table()
+sub regenerate_mime_header_table
+{
+    &regenerate_any_table("mime_header_checks");
+}
+
 # regenerate_body_table()
 sub regenerate_body_table
 {
@@ -1615,6 +1621,24 @@ if ($_[1]->{'value'}) {
 	$rv .= " ".$_[1]->{'value'};
 	}
 return $rv;
+}
+
+# Functions for editing the mime_header_checks map nicely
+sub edit_name_mime_header_checks
+{
+return &edit_name_header_checks(@_);
+}
+sub parse_name_mime_header_checks
+{
+return &parse_name_header_checks(@_);
+}
+sub edit_value_mime_header_checks
+{
+return &edit_value_header_checks(@_);
+}
+sub parse_value_mime_header_checks
+{
+return &parse_value_header_checks(@_);
 }
 
 # Functions for editing the body_checks map (same as header_checks)

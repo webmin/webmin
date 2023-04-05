@@ -20,18 +20,27 @@ print &ui_table_start($text{'header_title'}, "width=100%", 2);
 
 &option_mapfield("header_checks", 60);
 
+&option_mapfield("mime_header_checks", 60);
+
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
 
 # Header map contents
 print &ui_hr();
-if (&get_current_value("header_checks") eq "")
-{
-    print $text{'no_map'},"<p>\n";
-}
-else
-{
+if (&get_real_value("header_checks") eq "") {
+    print $text{'opts_header_checks_no_map'},"<p>\n";
+} else {
     &generate_map_edit("header_checks", $text{'map_click'}." ".
+		       &hlink($text{'help_map_format'}, "header"), 1,
+		       $text{'header_name'}, $text{'header_value'});
+}
+
+# MIME header map contents
+print &ui_hr();
+if (&get_real_value("mime_header_checks") eq "") {
+    print $text{'opts_mime_header_checks_no_map'},"<p>\n";
+} else {
+    &generate_map_edit("mime_header_checks", $text{'map_click'}." ".
 		       &hlink($text{'help_map_format'}, "header"), 1,
 		       $text{'header_name'}, $text{'header_value'});
 }
