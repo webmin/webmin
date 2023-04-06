@@ -332,7 +332,7 @@ return $rv;
 # label and 1+ column value.
 sub theme_ui_table_row
 {
-my ($label, $value, $cols, $tds) = @_;
+my ($label, $value, $cols, $tds, $trs) = @_;
 $cols ||= 1;
 $tds ||= $main::ui_table_default_tds;
 my $rv;
@@ -352,7 +352,9 @@ if (defined($label) &&
 	my $id = $1;
 	$label = "<label for=\"".&quote_escape($id)."\">$label</label>";
 	}
-$rv .= "<tr class='ui_form_pair'>\n" if ($main::ui_table_pos%$main::ui_table_cols == 0);
+my $trtags_attrs = ref($trs) eq 'ARRAY' && $trs->[0] ? " $trs->[0]" : "";
+my $trtags_class = ref($trs) eq 'ARRAY' && $trs->[1] ? " $trs->[1]" : "";
+$rv .= "<tr class='ui_form_pair$trtags_class'$trtags_attrs>\n" if ($main::ui_table_pos%$main::ui_table_cols == 0);
 $rv .= "<td class='ui_form_label' $tds->[0]><b>$label</b></td>\n" if (defined($label));
 $rv .= "<td class='ui_form_value' colspan=$cols $tds->[1]>$value</td>\n";
 $main::ui_table_pos += $cols+(defined($label) ? 1 : 0);

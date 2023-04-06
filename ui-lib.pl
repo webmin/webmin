@@ -189,7 +189,7 @@ $rv .= "</table></td></tr></table>\n";
 return $rv;
 }
 
-=head2 ui_table_row(label, value, [cols], [&td-tags])
+=head2 ui_table_row(label, value, [cols], [&td-tags], [&tr-tags])
 
 Returns HTML for a row in a table started by ui_table_start, with a 1-column
 label and 1+ column value. The parameters are :
@@ -202,11 +202,13 @@ label and 1+ column value. The parameters are :
 
 =item td-tags - Array reference of HTML attributes for the <td> tags in this row.
 
+=item tr-tags - Array reference of HTML attributes and class names for the <tr> tag.
+
 =cut
 sub ui_table_row
 {
 return &theme_ui_table_row(@_) if (defined(&theme_ui_table_row));
-my ($label, $value, $cols, $tds) = @_;
+my ($label, $value, $cols, $tds, $trs) = @_;
 $cols ||= 1;
 $tds ||= $main::ui_table_default_tds;
 my $rv;
@@ -219,7 +221,9 @@ if ($main::ui_table_pos+$cols+1 > $main::ui_table_cols &&
 	$rv .= "</tr>\n";
 	$main::ui_table_pos = 0;
 	}
-$rv .= "<tr class='ui_table_row'>\n"
+my $trtags_attrs = ref($trs) eq 'ARRAY' && $trs->[0] ? " $trs->[0]" : "";
+my $trtags_class = ref($trs) eq 'ARRAY' && $trs->[1] ? " $trs->[1]" : "";
+$rv .= "<tr class='ui_table_row$trtags_class'$trtags_attrs>\n"
 	if ($main::ui_table_pos%$main::ui_table_cols == 0);
 if (defined($label) &&
     ($value =~ /id="([^"]+)"/ || $value =~ /id='([^']+)'/ ||
