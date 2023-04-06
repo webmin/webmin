@@ -742,7 +742,7 @@ if (&compare_version_numbers($mysql_version, "4.1") >= 0 && !$config{'nopwd'}) {
 		local @cf = &parse_mysql_config($cf);
 		local $client = &find("client", \@cf);
 		next if (!$client);
-		local $password = &find("password", $client->{'members'});
+		local $password = &find_value("password", $client->{'members'});
 		return 0 if ($password ne '' && $password ne $realpass);
 		}
 	return 1;
