@@ -134,7 +134,7 @@ if (!defined($out) && !$_[1]) {
 	&execute_command("$config{'postfix_config_command'} -c $config_dir -h ".
 			 quotemeta($name), undef, \$out, \$err, 0, 1);
 	if ($?) {
-		&error(&text('query_get_efailed', $name, $out));
+		&error(&text('query_get_efailed', $name, $out || $err));
 		}
 	elsif ($out =~ /warning:.*unknown\s+parameter/ ||
 	       $err =~ /warning:.*unknown\s+parameter/) {
