@@ -15,10 +15,11 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 	next if (!$yaml || !@$yaml);
 	my ($network) = grep { $_->{'name'} eq 'network' } @$yaml;
 	next if (!$network);
-	my ($ens) = grep { $_->{'name'} eq 'ethernets' }
+	my @ens = grep { $_->{'name'} eq 'ethernets' ||
+			 $_->{'name'} eq 'bridges' }
 			 @{$network->{'members'}};
-	next if (!$ens);
-	foreach my $e (@{$ens->{'members'}}) {
+	next if (!@ens);
+	foreach my $e (map { @{$_->{'members'}} } @ens) {
 		my $cfg = { 'name' => $e->{'name'},
 			    'fullname' => $e->{'name'},
 			    'file' => $f,
@@ -251,7 +252,7 @@ else {
 		my $eline = -1;
 		for(my $i=0; $i<@$lref; $i++) {
 			$nline = $i if ($lref->[$i] =~ /^\s*network:/);
-			$eline = $i if ($lref->[$i] =~ /^\s*ethernets:/);
+			$eline = $i if ($lref->[$i] =~ /^\s*(ethernets|bridges):/);
 			}
 		if ($nline < 0) {
 			$nline = scalar(@$lref);
@@ -306,7 +307,8 @@ return 1 if (!$yaml);
 my @rest = grep { $_->{'name'} ne 'network' } @$yaml;
 return 0 if (@rest);
 foreach my $n (@$yaml) {
-	my @rest = grep { $_->{'name'} ne 'ethernets' }
+	my @rest = grep { $_->{'name'} ne 'ethernets' ||
+			  $_->{'name'} ne 'bridges' }
 			@{$network->{'members'}};
 	return 0 if (@rest);
 	foreach my $ens (@{$network->{'members'}}) {
