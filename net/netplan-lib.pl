@@ -307,7 +307,7 @@ return 1 if (!$yaml);
 my @rest = grep { $_->{'name'} ne 'network' } @$yaml;
 return 0 if (@rest);
 foreach my $n (@$yaml) {
-	my @rest = grep { $_->{'name'} ne 'ethernets' ||
+	my @rest = grep { $_->{'name'} ne 'ethernets' &&
 			  $_->{'name'} ne 'bridges' }
 			@{$network->{'members'}};
 	return 0 if (@rest);
