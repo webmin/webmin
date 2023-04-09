@@ -411,6 +411,9 @@ if ($config{'snmp_server'}) {
 if ($config{'sched_carrier'} && $config{'sched_sms'}) {
 	push(@rv, "sms");
 	}
+if ($config{'sched_webhook'}) {
+	push(@rv, "webhook");
+	}
 return @rv;
 }
 

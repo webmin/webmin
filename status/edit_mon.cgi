@@ -18,7 +18,7 @@ if ($in{'type'}) {
 		}
 	else {
 		# Totally new
-		$serv = { 'notify' => 'email pager snmp sms',
+		$serv = { 'notify' => 'email pager snmp sms webhook',
 			  'fails' => 1,
 			  'nosched' => 0,
 			  'remote' => '*' };

@@ -61,6 +61,14 @@ else {
 		}
 	$config{'sched_smtp'} = $in{'smtp'};
 	}
+if ($in{'webhook_def'}) {
+	delete($config{'sched_webhook'});
+	}
+else {
+	$in{'webhook'} =~ /^(http|https):\/\/\S+$/ ||
+		&error($text{'sched_ewebhook'});
+	$config{'sched_webhook'} = $in{'webhook'};
+	}
 $config{'sched_mode'} = $in{'mode'};
 $in{'int'} =~ /^\d+$/ || &error($text{'sched_eint'});
 $config{'sched_int'} = $in{'int'};

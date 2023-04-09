@@ -200,6 +200,9 @@ foreach $serv (@services) {
 				$thisemail .= "\n";
 				$ecount++;
 				}
+			if ($notify{'webhook'}) {
+				push(@webhooks, [ $serv, $stat, $suffix, $host ]);
+				}
 			$lastsent{$serv->{'id'}} = $nowunix;
 			}
 		$newstats->{$r} = $up;
@@ -283,17 +286,21 @@ if ($pager_msg && !$config{'sched_single'}) {
 if ($sms_msg && !$config{'sched_single'}) {
 	&send_status_sms($sms_msg);
 	}
+foreach $w (@webhooks) {
+	&send_status_webhook(@$w);
+	}
 
 # send_status_email(text, subject, email-to)
 sub send_status_email
 {
-return if (!$_[2]);
+local ($text, $subject, $to) = @_;
+return if (!$to);
 &foreign_require("mailboxes", "mailboxes-lib.pl");
 
 # Construct and send the email (using correct encoding for body)
 local $from = $config{'sched_from'} ? $config{'sched_from'}
 				    : &mailboxes::get_from_address();
-&mailboxes::send_text_mail($from, $_[2], undef, $_[1], $_[0],
+&mailboxes::send_text_mail($from, $to, undef, $subject, $text,
 			   $config{'sched_smtp'});
 }
 
@@ -421,6 +428,34 @@ if (!$@) {
 	return;
 	}
 print STDERR "No SNMP perl module found\n";
+}
+
+# send_status_webhook(&monitor, &status, what, host)
+# Make an HTTP call with monitor details and status as params
+sub send_status_webhook
+{
+my ($serv, $stat, $suffix, $host) = @_;
+return undef if (!$config{'sched_webhook'});
+my %params = ( 'status_value' => $stat->{'value'},
+	       'status_nice_value' => $stat->{'nice_value'},
+	       'status_desc' => $stat->{'desc'},
+	       'status' => $text{'mon_'.$suffix},
+	       'host' => $host,
+	       $suffix => 1,
+	     );
+foreach my $k (keys %$serv) {
+	next if ($k =~ /^_/);
+	next if ($serv->{$k} eq "");
+	$params{'service_'.$k} = $serv->{$k};
+	}
+my ($host, $port, $page, $ssl) = &parse_http_url($config{'sched_webhook'});
+my $params = join("&", map { $_."=".&urlize($params{$_}) } keys %params);
+$page .= ($page =~ /\?/ ? "?" : "&");
+$page .= $params;
+my ($out, $err);
+&http_download($host, $port, $page, \$out, \$err, undef, $ssl, undef, undef,
+	       5, 0, 1);
+return $err;
 }
 
 # run_on_command(&serv, command, remote-host)

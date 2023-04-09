@@ -95,6 +95,11 @@ print &ui_table_row($text{'sched_subject'},
 		  [ 2, $text{'sched_subject2'},
 			&ui_textbox("subject", $smode == 2 ? $config{'sched_subject'} : "", 40) ] ]), 3);
 
+# HTTP webhook URL
+print &ui_table_row($text{'sched_webhook'},
+	&ui_opt_textbox("webhook", $config{'sched_webhook'}, 60,
+		$text{'sched_webhookno'}, $text{'sched_webhookyes'}), 3);
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
