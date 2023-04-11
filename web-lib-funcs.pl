@@ -2106,7 +2106,7 @@ if (!$@) {
 		$date_format_time = $date_format_time;
 		$date_format_time =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
 		if ($main::webmin_script_type eq 'web') {
-			$date_format_time =~ s/\s/&#x20;/g;
+			$date_format_time =~ s/\s/&nbsp;/g;
 			}
 		return "$date_format_short $date_format_time";
 		}
