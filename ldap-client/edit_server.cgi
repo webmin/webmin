@@ -78,13 +78,15 @@ print &ui_table_row($text{'server_rootbindpw'},
 # SSL options
 print &ui_table_hr();
 
-$ssl = &find_svalue("ssl", $conf);
-$ssl = "" if ($ssl eq "no");
-print &ui_table_row($text{'server_ssl'},
-	&ui_radio("ssl", &find_svalue("ssl", $conf),
-		  [ [ "yes", $text{'yes'} ],
-		    [ "start_tls", $text{'server_tls'} ],
-		    [ "", $text{'no'} ] ]));
+if (!$uri) {
+	$ssl = &find_svalue("ssl", $conf);
+	$ssl = "" if ($ssl eq "no");
+	print &ui_table_row($text{'server_ssl'},
+		&ui_radio("ssl", &find_svalue("ssl", $conf),
+			  [ [ "yes", $text{'yes'} ],
+			    [ "start_tls", $text{'server_tls'} ],
+			    [ "", $text{'no'} ] ]));
+	}
 
 print &ui_table_row($text{'server_peer'},
 	&ui_radio("peer", &find_svalue("tls_checkpeer", $conf),
