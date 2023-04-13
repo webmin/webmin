@@ -36,6 +36,7 @@ users_nopwd=صرف RSA تصنیف کے ساتھ
 users_fcmd=صرف احکامات کے لئے
 users_rsa=RSA (SSH 1) تصدیق کی اجازت دیں؟
 users_dsa=DSA (SSH 2) تصدیق کی اجازت دیں؟
+users_pkeyauth=عوامی کلید کی توثیق کی اجازت دیں؟
 users_strict=کلیدی فائلوں پر اجازت چیک کریں؟
 users_rhosts=Ignore <tt>.rhosts</tt> files?
 users_rrhosts=Ignore <tt>.rhosts</tt> files for root user?

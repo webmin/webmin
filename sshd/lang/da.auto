@@ -36,6 +36,7 @@ users_nopwd=Kun med RSA-autorisation
 users_fcmd=Kun til kommandoer
 users_rsa=Tillad RSA (SSH 1) -godkendelse?
 users_dsa=Vil du tillade DSA (SSH 2) -godkendelse?
+users_pkeyauth=Tillad offentlig nøglegodkendelse?
 users_strict=Kontroller tilladelser på nøglefiler?
 users_rhosts=Ignorer <tt>.rhosts</tt> filer?
 users_rrhosts=Ignorer <tt>.rhosts</tt> filer til root-bruger?

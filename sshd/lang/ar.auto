@@ -36,6 +36,7 @@ users_nopwd=فقط مع مصادقة RSA
 users_fcmd=فقط للأوامر
 users_rsa=هل تسمح مصادقة RSA (SSH 1)؟
 users_dsa=هل تسمح مصادقة DSA (SSH 2)؟
+users_pkeyauth=السماح بمصادقة المفتاح العام؟
 users_strict=تحقق الأذونات على الملفات الرئيسية؟
 users_rhosts=Ignore <tt>.rhosts</tt> files?
 users_rrhosts=Ignore <tt>.rhosts</tt> files for root user?

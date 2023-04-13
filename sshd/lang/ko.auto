@@ -1,4 +1,5 @@
 users_dsa=DSA (SSH 2) 인증을 허용 하시겠습니까?
+users_pkeyauth=공개 키 인증을 허용하시겠습니까?
 users_authkeys_set=집에서 신청
 users_eauthkeys=권한이없는 키 파일이 없거나 잘못 표시됨
 users_maxauthtries=연결 당 최대 로그인 시도

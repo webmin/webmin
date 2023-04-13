@@ -35,6 +35,7 @@ users_nopwd=Hanya dengan auth RSA
 users_fcmd=Hanya untuk arahan
 users_rsa=Benarkan pengesahan RSA (SSH 1)?
 users_dsa=Benarkan pengesahan DSA (SSH 2)?
+users_pkeyauth=Benarkan pengesahan kunci awam?
 users_strict=Periksa kebenaran pada fail utama?
 users_rhosts=Abaikan <tt>.rhosts</tt> fail?
 users_rrhosts=Abaikan <tt>.rhosts</tt> fail untuk pengguna root?

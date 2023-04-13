@@ -1,4 +1,5 @@
 users_expire_def=Inoiz ez
+users_pkeyauth=Gako publikoaren autentifikazioa baimendu?
 users_eauthkeys=Falta diren gakoen fitxategia falta edo baliogabea da
 users_maxauthtries=Konexio bakoitzeko gehieneko saiakera saiakera
 users_emaxauthtries=Konexio bakoitzeko saiakera saiakera kopurua edo ez zenbakizko bat falta da

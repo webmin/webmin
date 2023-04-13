@@ -36,6 +36,7 @@ users_nopwd=Tikai ar RSA atļauju
 users_fcmd=Tikai komandām
 users_rsa=Vai atļaut RSA (SSH 1) autentifikāciju?
 users_dsa=Vai atļaut DSA (SSH 2) autentifikāciju?
+users_pkeyauth=Vai atļaut publiskās atslēgas autentifikāciju?
 users_strict=Vai pārbaudīt atļaujas galvenajiem failiem?
 users_rhosts=Vai ignorēt <tt>.rhosts</tt> failus?
 users_rrhosts=Vai ignorēt saknes lietotāja <tt>.rhosts</tt> failus?

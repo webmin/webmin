@@ -36,6 +36,7 @@ users_nopwd=Chỉ với RSA auth
 users_fcmd=Chỉ cho các lệnh
 users_rsa=Cho phép xác thực RSA (SSH 1)?
 users_dsa=Cho phép xác thực DSA (SSH 2)?
+users_pkeyauth=Cho phép xác thực khóa công khai?
 users_strict=Kiểm tra quyền trên các tập tin quan trọng?
 users_rhosts=Bỏ qua các tệp <tt>.rhosts</tt>?
 users_rrhosts=Bỏ qua các tệp <tt>.rhosts</tt> cho người dùng root?

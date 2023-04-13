@@ -36,6 +36,7 @@ users_nopwd=Somente com autenticação RSA
 users_fcmd=Apenas para comandos
 users_rsa=Permitir autenticação RSA (SSH 1)?
 users_dsa=Permitir autenticação DSA (SSH 2)?
+users_pkeyauth=Permitir autenticação de chave pública?
 users_strict=Verificar permissões nos arquivos principais?
 users_rhosts=Ignorar arquivos <tt>.rhosts</tt>?
 users_rrhosts=Ignorar arquivos <tt>.rhosts</tt> para o usuário root?

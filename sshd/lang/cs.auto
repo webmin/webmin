@@ -1,4 +1,5 @@
 users_dsa=Povolit ověřování DSA (SSH 2)?
+users_pkeyauth=Povolit ověřování veřejným klíčem?
 users_authkeys_set=Soubor doma
 users_eauthkeys=Chybějící nebo neplatně vypadající soubor autorizovaných klíčů
 users_maxauthtries=Maximální počet pokusů o přihlášení na připojení

@@ -1,4 +1,5 @@
 users_dsa=DSA（SSH 2）認証を許可しますか？
+users_pkeyauth=公開鍵認証を許可しますか?
 users_authkeys_set=ホームの下のファイル
 users_eauthkeys=認可されたキーファイルが見つからないか無効です
 users_maxauthtries=接続ごとの最大ログイン試行

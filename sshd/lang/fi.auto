@@ -36,6 +36,7 @@ users_nopwd=Vain RSA: n luvalla
 users_fcmd=Vain komennot
 users_rsa=Sallitaanko RSA (SSH 1) -todennus?
 users_dsa=Sallitaanko DSA (SSH 2) -todennus?
+users_pkeyauth=Sallitaanko julkisen avaimen todennus?
 users_strict=Tarkistetaan avaintiedostojen oikeudet?
 users_rhosts=Ohitetaanko <tt>.rhosts</tt> -tiedot?
 users_rrhosts=Ohitetaanko pääkäyttäjän <tt>.rhosts</tt> -tiedostot?

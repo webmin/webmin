@@ -36,6 +36,7 @@ users_nopwd=Samo z RSA avt
 users_fcmd=Samo za ukaze
 users_rsa=Dovoli preverjanje pristnosti RSA (SSH 1)?
 users_dsa=Dovoli preverjanje pristnosti DSA (SSH 2)?
+users_pkeyauth=Dovoliti preverjanje pristnosti javnega ključa?
 users_strict=Preverite dovoljenja za ključne datoteke?
 users_rhosts=Ali želite prezreti <tt>.rhosts</tt> datoteke?
 users_rrhosts=Zanemarite datoteke <tt>.rhosts</tt> za uporabnika root?

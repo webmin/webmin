@@ -36,6 +36,7 @@ users_nopwd=Μόνο με auth RSA
 users_fcmd=Μόνο για εντολές
 users_rsa=Να επιτρέπεται ο έλεγχος ταυτότητας RSA (SSH 1);
 users_dsa=Να επιτρέπεται ο έλεγχος ταυτότητας DSA (SSH 2);
+users_pkeyauth=Να επιτρέπεται ο έλεγχος ταυτότητας με δημόσιο κλειδί;
 users_strict=Ελέγξτε τα δικαιώματα στα αρχεία κλειδιά;
 users_rhosts=Αγνόηση αρχείων <tt>.rhosts</tt>;
 users_rrhosts=Παράβλεψη αρχείων <tt>.rhosts</tt> για χρήστη root;

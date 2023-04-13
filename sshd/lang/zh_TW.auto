@@ -36,6 +36,7 @@ users_nopwd=僅使用RSA身份驗證
 users_fcmd=僅用於命令
 users_rsa=允許RSA（SSH 1）身份驗證？
 users_dsa=允許DSA（SSH 2）身份驗證？
+users_pkeyauth=允許公鑰認證？
 users_strict=檢查密鑰文件的權限？
 users_rhosts=忽略<tt>.rhosts</tt>文件？
 users_rrhosts=忽略root用戶的<tt>.rhosts</tt>文件？
