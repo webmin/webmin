@@ -83,7 +83,7 @@ if (($version{'type'} eq 'ssh' && $version{'number'} < 3) ||
 # SSH 2 DSA authentication
 if ($version{'type'} eq 'openssh' && $version{'number'} >= 3) {
 	$dsa = &find_value("PubkeyAuthentication", $conf);
-	print &ui_table_row($text{'users_dsa'},
+	print &ui_table_row($text{'users_pkeyauth'},
 		&ui_yesno_radio('dsa', lc($dsa) ne 'no'));
 	}
 

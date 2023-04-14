@@ -36,6 +36,7 @@ users_nopwd=Endast med RSA-godkännande
 users_fcmd=Endast för kommandon
 users_rsa=Tillåter RSA (SSH 1) autentisering?
 users_dsa=Tillåter DSA (SSH 2) autentisering?
+users_pkeyauth=Vill du tillåta autentisering med offentlig nyckel?
 users_strict=Kontrollera behörigheter för nyckelfiler?
 users_rhosts=Ignorera <tt>.rhosts</tt> filer?
 users_rrhosts=Ignorera <tt>.rhosts</tt> -filer för root-användare?

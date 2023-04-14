@@ -36,6 +36,7 @@ users_nopwd=Numai cu RSA auth
 users_fcmd=Numai pentru comenzi
 users_rsa=Permiteți autentificarea RSA (SSH 1)?
 users_dsa=Permiteți autentificarea DSA (SSH 2)?
+users_pkeyauth=Permiteți autentificarea cu cheie publică?
 users_strict=Verificați permisiunile pentru fișierele cheie?
 users_rhosts=Ignorați fișierele <tt>.rhosts</tt>?
 users_rrhosts=Ignorați fișierele <tt>.rhosts</tt> pentru utilizatorul root?

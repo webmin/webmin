@@ -36,6 +36,7 @@ users_nopwd=เฉพาะ RSA auth เท่านั้น
 users_fcmd=สำหรับคำสั่งเท่านั้น
 users_rsa=อนุญาตการตรวจสอบสิทธิ์ RSA (SSH 1) หรือไม่
 users_dsa=อนุญาตการตรวจสอบ DSA (SSH 2) หรือไม่
+users_pkeyauth=อนุญาตการตรวจสอบสิทธิ์คีย์สาธารณะไหม
 users_strict=ตรวจสอบการอนุญาตสำหรับไฟล์คีย์?
 users_rhosts=ข้ามไฟล์ <tt>.rhosts</tt> หรือไม่
 users_rrhosts=ละเว้นไฟล์ <tt>.rhosts</tt> สำหรับผู้ใช้รูทหรือไม่

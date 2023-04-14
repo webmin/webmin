@@ -36,6 +36,7 @@ users_nopwd=רק עם אישור RSA
 users_fcmd=רק לפקודות
 users_rsa=האם לאפשר אימות RSA (SSH 1)?
 users_dsa=האם לאפשר DSA (SSH 2) אימות?
+users_pkeyauth=האם לאפשר אימות מפתח ציבורי?
 users_strict=לבדוק הרשאות בקבצי מפתח?
 users_rhosts=Ignore <tt>.rhosts</tt> files?
 users_rrhosts=Ignore <tt>.rhosts</tt> files for root user?

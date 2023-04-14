@@ -7,6 +7,7 @@ index_rsa=RSA (برای SSH v2)
 index_dsa=DSA (برای SSH v2)
 
 users_dsa=اجازه تأیید هویت DSA (SSH 2) را دارید؟
+users_pkeyauth=احراز هویت کلید عمومی مجاز است؟
 users_authkeys_set=پرونده در خانه
 users_eauthkeys=پرونده کلیدهای مجاز به ظاهر نامعتبر یا نامعتبر است
 users_maxauthtries=حداکثر تلاش برای ورود به هر اتصال

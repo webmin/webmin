@@ -36,6 +36,7 @@ users_nopwd=Biss b'aut RSA
 users_fcmd=Biss għall-kmandi
 users_rsa=Ħalli l-awtentikazzjoni RSA (SSH 1)?
 users_dsa=Ħalli l-awtentikazzjoni DSA (SSH 2)?
+users_pkeyauth=Jippermetti l-awtentikazzjoni taċ-ċavetta pubblika?
 users_strict=Tivverifika l-permessi fuq fajls ewlenin?
 users_rhosts=Injora l-fajls <tt>.rhosts</tt>?
 users_rrhosts=Injora l-fajls <tt>.rhosts</tt> għall-utent tal-għeruq?

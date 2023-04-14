@@ -36,6 +36,7 @@ users_nopwd=Толькі з RSA аўт
 users_fcmd=Толькі для каманд
 users_rsa=Дазволіць RSA (SSH 1) аўтэнтыфікацыю?
 users_dsa=Дазволіць праверку сапраўднасці DSA (SSH 2)?
+users_pkeyauth=Дазволіць аўтэнтыфікацыю з адкрытым ключом?
 users_strict=Праверце дазволы на ключавыя файлы?
 users_rhosts=Ігнараваць <tt>.rhosts</tt> файлы?
 users_rrhosts=Ігнараваць <tt>.rhosts</tt> файлы для каранёвага карыстальніка?

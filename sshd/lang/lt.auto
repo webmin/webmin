@@ -36,6 +36,7 @@ users_nopwd=Tik su RSA aut
 users_fcmd=Tik komandoms
 users_rsa=Leisti RSA (SSH 1) autentifikavimą?
 users_dsa=Leisti DSA (SSH 2) autentifikavimą?
+users_pkeyauth=Leisti autentifikuoti viešąjį raktą?
 users_strict=Patikrinti pagrindinių failų leidimus?
 users_rhosts=Nepaisyti <tt>.rhosts</tt> failų?
 users_rrhosts=Ignoruoti šakninio vartotojo <tt>.rhosts</tt> failus?

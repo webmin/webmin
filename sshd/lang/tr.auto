@@ -36,6 +36,7 @@ users_nopwd=Yalnızca RSA yetkilendirmesi ile
 users_fcmd=Sadece komutlar için
 users_rsa=RSA (SSH 1) kimlik doğrulamasına izin verilsin mi?
 users_dsa=DSA (SSH 2) kimlik doğrulamasına izin verilsin mi?
+users_pkeyauth=Ortak anahtar kimlik doğrulamasına izin verilsin mi?
 users_strict=Anahtar dosyalardaki izinler kontrol edilsin mi?
 users_rhosts=<tt>.rhosts</tt> dosyaları yoksayılsın mı?
 users_rrhosts=Kök kullanıcı için <tt>.rhosts</tt> dosyaları yoksayılsın mı?

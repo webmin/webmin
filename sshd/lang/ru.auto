@@ -7,6 +7,7 @@ index_rsa=RSA (для SSH v2)
 index_dsa=DSA (для SSH v2)
 
 users_dsa=Разрешить аутентификацию DSA (SSH 2)?
+users_pkeyauth=Разрешить аутентификацию с открытым ключом?
 users_authkeys=Файл авторизованных ключей пользователя
 users_authkeys_def=Стандартный (~/.ssh/authorized_keys)
 users_authkeys_set=Файл под домом

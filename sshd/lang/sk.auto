@@ -25,6 +25,7 @@ users_pempty=Povoliť prihlasovanie pomocou prázdnych hesiel?
 users_nopwd=Iba s autorizáciou RSA
 users_fcmd=Iba pre príkazy
 users_dsa=Povoliť overenie DSA (SSH 2)?
+users_pkeyauth=Povoliť overenie verejným kľúčom?
 users_rhosts=Ignorovať súbory <tt>.rhosts</tt>?
 users_rrhosts=Ignorovať súbory <tt>.rhosts</tt> pre užívateľa root?
 users_rrdef=Rovnaké ako ostatní používatelia

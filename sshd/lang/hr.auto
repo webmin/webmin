@@ -36,6 +36,7 @@ users_nopwd=Samo s RSA auth
 users_fcmd=Samo za naredbe
 users_rsa=Želite li omogućiti RSA (SSH 1) provjeru autentičnosti?
 users_dsa=Želite li dozvoliti provjeru autentičnosti DSA (SSH 2)?
+users_pkeyauth=Dopustiti autentifikaciju s javnim ključem?
 users_strict=Provjerite dopuštenja za ključne datoteke?
 users_rhosts=Zanemariti datoteke <tt>.rhosts</tt>?
 users_rrhosts=Zanemariti datoteke <tt>.rhosts</tt> za korijenskog korisnika?

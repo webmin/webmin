@@ -36,6 +36,7 @@ users_nopwd=Slegs met RSA-toestemming
 users_fcmd=Slegs vir opdragte
 users_rsa=Laat RSA (SSH 1) -verifikasie toe?
 users_dsa=Laat DSA (SSH 2) -verifikasie toe?
+users_pkeyauth=Laat publieke sleutelstawing toe?
 users_strict=Kontroleer die regte op sleutellêers?
 users_rhosts=Ignoreer <tt>.hosts</tt> lêers?
 users_rrhosts=Ignoreer <tt>.hosts</tt> lêers vir die wortelgebruiker?

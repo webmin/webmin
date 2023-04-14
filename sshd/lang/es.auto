@@ -4,6 +4,7 @@ index_rsa=RSA (para SSH v2)
 index_dsa=DSA (para SSH v2)
 
 users_dsa=¿Permitir autenticación DSA (SSH 2)?
+users_pkeyauth=¿Permitir autenticación de clave pública?
 users_authkeys_set=Archivo debajo de casa
 users_eauthkeys=Archivo de claves autorizadas faltantes o de aspecto no válido
 users_maxauthtries=Intentos máximos de inicio de sesión por conexión
