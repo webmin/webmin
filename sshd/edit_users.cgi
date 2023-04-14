@@ -56,7 +56,8 @@ else {
 
 # Allow logins by root
 $root = &find_value("PermitRootLogin", $conf);
-@opts = ( [ '', $text{'default'}.' ('.$text{'users_nopwd'}.')' ],
+$rldef = $version{'number'} >= 7 ? $text{'users_nopwd'} : $text{'yes'};
+@opts = ( [ '', $text{'default'}.' ('.$rldef.')' ],
           [ 'yes', $text{'yes'} ],
 	  [ 'no', $text{'no'} ] );
 if ($version{'type'} eq 'ssh') {
