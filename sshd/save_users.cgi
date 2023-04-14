@@ -45,7 +45,7 @@ if ($version{'type'} ne 'ssh' || $version{'number'} < 3) {
 
 &save_directive("PermitEmptyPasswords", $conf, $in{'pempty'} ? 'yes' : 'no');
 
-&save_directive("PermitRootLogin", $conf, $in{'root'});
+&save_directive("PermitRootLogin", $conf, $in{'root'} || undef);
 
 if (($version{'type'} eq 'ssh' && $version{'number'} < 3) ||
     ($version{'type'} eq 'openssh' && $version{'number'} < 7.3)) {

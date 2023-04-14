@@ -56,22 +56,19 @@ else {
 
 # Allow logins by root
 $root = &find_value("PermitRootLogin", $conf);
-if (!$root) {
-	# Default ways seems to be 'yes'
-	$root = "yes";
-	}
-@opts = ( [ 'yes', $text{'yes'} ],
+@opts = ( [ '', $text{'default'}.' ('.$text{'users_nopwd'}.')' ],
+          [ 'yes', $text{'yes'} ],
 	  [ 'no', $text{'no'} ] );
 if ($version{'type'} eq 'ssh') {
 	push(@opts, [ 'nopwd', $text{'users_nopwd'} ]);
 	}
 else {
-	push(@opts, [ 'without-password', $text{'users_nopwd'} ]);
+	push(@opts, [ 'prohibit-password', $text{'users_nopwd'} ]);
 	if ($version{'number'} >= 2) {
 		push(@opts, [ 'forced-commands-only', $text{'users_fcmd'} ]);
 		}
 	}
-print "</select></td>\n";
+$root = "prohibit-password" if ($root eq "without-password");
 print &ui_table_row($text{'users_root'},
 	&ui_select("root", lc($root), \@opts));
 
