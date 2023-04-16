@@ -100,8 +100,10 @@ sub is_existing_parameter
 ## modified to allow main_parameter:subparameter 
 sub get_current_value
 {
+my ($n, $nodef) = @_;
+
 # First try to get the value from main.cf directly
-my ($name,$key)=split /:/,$_[0];
+my ($name, $key) = split(/:/, $n);
 my $lref = &read_file_lines($config{'postfix_config_file'});
 my $out;
 my ($begin_flag, $end_flag);
@@ -127,7 +129,7 @@ foreach my $l (@$lref) {
 		last;
 		}
 	}
-if (!defined($out) && !$_[1]) {
+if (!defined($out) && !$nodef) {
 	# Fall back to asking Postfix
 	# -h tells postconf not to output the name of the parameter
 	my $err;
