@@ -19,7 +19,8 @@ use WebminCore;
 $env_support = $config{'vixie_cron'};
 if ($module_info{'usermin'}) {
 	$single_user = $remote_user;
-	&switch_to_remote_user();
+	&switch_to_remote_user()
+		if (!getvar('cron_no_switch_to_remote_user'));
 	&create_user_config_dirs();
 	$range_cmd = "$user_module_config_directory/range.pl";
 	$hourly_only = 0;
