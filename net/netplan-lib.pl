@@ -137,6 +137,9 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 			my ($stp) = grep { $_->{'name'} eq 'stp' }
 					 @{$p->{'members'}};
 			$cfg->{'bridgestp'} = $stp && $stp->{'value'} eq 'false' ? 'off' : 'on';
+			my ($fwd) = grep { $_->{'name'} eq 'forward-delay' }
+					 @{$p->{'members'}};
+			$cfg->{'bridgefd'} = $fwd->{'value'} if ($fwd);
 			}
 		else {
 			$cfg->{'bridgestp'} = 'on';
@@ -244,6 +247,10 @@ else {
 		push(@lines, $id."    "."parameters:");
 		push(@lines, $id."        "."stp: ".
 			($iface->{'bridgestp'} eq 'on' ? 'true' : 'false'));
+		if ($iface->{'bridgefd'}) {
+			push(@lines, $id."        "."forward-delay: ".
+				     $iface->{'bridgefd'});
+			}
 		}
 
 	# Add all extra YAML directives from the original config
