@@ -124,6 +124,24 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 			$cfg->{'routes'} = $routes;
 			}
 
+		# Bridges
+		my ($interfaces) = grep { $_->{'name'} eq 'interfaces' }
+                                        @{$e->{'members'}};
+		if ($interfaces) {
+			$cfg->{'bridgeto'} = $interfaces->{'value'};
+			$cfg->{'bridge'} = 1;
+			}
+		my ($p) = grep { $_->{'name'} eq 'parameters' }
+                               @{$e->{'members'}};
+		if ($p) {
+			my ($stp) = grep { $_->{'name'} eq 'stp' }
+					 @{$p->{'members'}};
+			$cfg->{'bridgestp'} = $stp && $stp->{'value'} eq 'false' ? 'off' : 'on';
+			}
+		else {
+			$cfg->{'bridgestp'} = 'on';
+			}
+
 		# Add IPv4 alias interfaces
 		my $i = 0;
 		foreach my $aa (@addrs) {
@@ -221,6 +239,12 @@ else {
 	if ($iface->{'routes'}) {
 		push(@lines, &yaml_lines($iface->{'routes'}, $id."    "));
 		}
+	if ($iface->{'bridgeto'}) {
+		push(@lines, $id."    "."interfaces: [".$iface->{'bridgeto'}."]");
+		push(@lines, $id."    "."parameters:");
+		push(@lines, $id."        "."stp: ".
+			($iface->{'bridgestp'} eq 'on' ? 'true' : 'false'));
+		}
 
 	# Add all extra YAML directives from the original config
 	my @poss = ("optional", "dhcp4", "dhcp6", "addresses", "gateway4",
@@ -250,9 +274,10 @@ else {
 		my $lref = &read_file_lines($iface->{'file'});
 		my $nline = -1;
 		my $eline = -1;
+		my $sect = $iface->{'bridge'} ? 'bridges' : 'ethernets';
 		for(my $i=0; $i<@$lref; $i++) {
 			$nline = $i if ($lref->[$i] =~ /^\s*network:/);
-			$eline = $i if ($lref->[$i] =~ /^\s*(ethernets|bridges):/);
+			$eline = $i if ($lref->[$i] =~ /^\s*\Q$sect\E:/);
 			}
 		if ($nline < 0) {
 			$nline = scalar(@$lref);
@@ -260,7 +285,7 @@ else {
 			}
 		if ($eline < 0) {
 			$eline = $nline + 1;
-			splice(@$lref, $nline+1, 0, "    ethernets:");
+			splice(@$lref, $nline+1, 0, "    ".$sect.":");
 			}
 		splice(@$lref, $eline+1, 0, @lines);
 		&flush_file_lines($iface->{'file'});
@@ -351,7 +376,7 @@ return 1;
 # Bridge interfaces can be created on debian
 sub supports_bridges
 {
-return 0;	# XXX fix later
+return 1;
 }
 
 # can_edit(what)
