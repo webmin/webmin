@@ -33,6 +33,10 @@ elsif ($rootpw =~ /^{sha1}(.*)/i) {
 	$rootmode = 2;
 	$rootsha1 = $1;
 	}
+elsif ($rootpw =~ /^{ssha}(.*)/i) {
+	$rootmode = 4;
+	$rootssha = $1;
+	}
 elsif ($rootpw =~ /^{[a-z0-9]+}(.*)/i) {
 	$rootmode = 3;
 	$rootenc = $rootpw;
@@ -47,6 +51,7 @@ print &ui_table_row($text{'slapd_rootpw'},
 		    $rootmode == 1 ? &text('slapd_root1', $rootcrypt) :
 		    $rootmode == 2 ? &text('slapd_root2', $rootsha1) :
 		    $rootmode == 3 ? &text('slapd_root3', $rootenc) :
+		    $rootmode == 4 ? &text('slapd_root4', $rootssha) :
 		    $rootplain eq '' ? $text{'slapd_noroot'} :
 				     $rootplain);
 

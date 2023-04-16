@@ -942,5 +942,24 @@ foreach my $f (@ldap_lock_files) {
 @ldap_lock_files = ( );
 }
 
+# hash_ldap_password(pass)
+# Returns a password hashed in a format the LDAP server can accept in the config
+# file, with the appropriate prefix
+sub hash_ldap_password
+{
+my ($pass) = @_;
+my $rv;
+if (&has_command("slappasswd")) {
+	$rv = &backquote_command("slappasswd -s ".quotemeta($pass)." 2>/dev/null </dev/null");
+	$rv =~ s/\s+//g;
+	}
+if (!$rv) {
+	&seed_random();
+	my $salt = chr(int(rand(26))+65).chr(int(rand(26))+65);
+	$rv = "{crypt}".&unix_crypt($pass, $salt);
+	}
+return $rv;
+}
+
 1;
 

@@ -24,8 +24,8 @@ $in{'rootdn'} =~ /=/ || &error($text{'slapd_erootdn'});
 # Admin password
 if (!$in{'rootchange_def'}) {
 	$in{'rootchange'} =~ /\S/ || &error($text{'slapd_erootpw'});
-	$crypt = &unix_crypt($in{'rootchange'}, substr(time(), -2));
-	&save_ldif_directive($conf, 'olcRootPW', $defdb, "{crypt}".$crypt);
+	&save_ldif_directive($conf, 'olcRootPW', $defdb,
+			     &hash_ldap_password($in{'rootchange'}));
 	$config{'pass'} = $in{'rootchange'};
 	$save_config = 1;
 	}

@@ -39,6 +39,7 @@ slapd_rootpw=Administration password
 slapd_root1=Unix encrypted <tt>$1</tt>
 slapd_root2=SHA1 encrypted <tt>$1</tt>
 slapd_root3=Encrypted <tt>$1</tt>
+slapd_root4=SSHA encrypted <tt>$1</tt>
 slapd_noroot=<i>No password set</i>
 slapd_rootchange=New administration password
 slapd_leave=Don't change
