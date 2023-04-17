@@ -391,7 +391,8 @@ return 1;
 sub can_edit
 {
 my ($f) = @_;
-return $f ne "mtu";
+return $f eq "mtu" ? 0 :
+       $f eq "bridgewait" ? 0 : 1;
 }
 
 sub can_broadcast_def
