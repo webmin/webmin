@@ -68,7 +68,7 @@ if (indexof($mode, (map { $_->{'id'} } @has)) < 0) {
 if (@has > 1) {
 	print "<div class='mode'>";
 	foreach my $m (@has) {
-		print "<b>";
+		print "<b data-mode='$m->{'id'}'>";
 		if ($m->{'id'} ne $mode) {
 			print "<a href='left.cgi?mode=$m->{'id'}'>";
 			}

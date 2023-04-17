@@ -478,10 +478,33 @@ details.ui_hidden_table_start > summary::-webkit-details-marker {
   filter: brightness(1.35) contrast(0.75) saturate(1.35);
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 body > .mode  {
+  opacity: 0;
   font-size: 110%;
   margin-bottom: 4px;
   filter: saturate(1.5);
+  animation: fadeIn 0.22s;
+  animation-delay: 0.11s;
+  animation-fill-mode: forwards;
+}
+body > .mode img {
+  visibility: hidden;
+}
+body > .mode img[src*="vm2.png"] {
+  width: 18.59px;
+  height: 0;
+}
+body > .mode img[src*="virtualmin.png"] {
+  width: 17.16px;
+  height: 0;
+}
+body > .mode img[src*="webmin-small.png"] {
+  width: 16.52px;
+  height: 0;
 }
 body > .mode .ff {
   font-size: 120%;
@@ -511,18 +534,18 @@ body > .mode > b > a {
 }
 
 /* Light blue for Webmin */
-body > .mode > b > a:has(i.ff-webmin),
-body > .mode > b > a:has(i.ff-webmin) > .ff-webmin {
+body > .mode > b[data-mode="mailbox"] > a,
+body > .mode > b[data-mode="mailbox"] > a > .ff-webmin {
   color: #0a6bca;
 }
 /* Green for Usermin */
-body > .mode > b > a:has(i.ff-usermin),
-body > .mode > b > a:has(i.ff-usermin) > .ff-usermin {
+body > .mode > b[data-mode="mailbox"] > a,
+body > .mode > b[data-mode="mailbox"] > a > .ff-usermin {
   color: #19950d;
 }
 /* Orange for Cloudmin  */
-body > .mode > b > a:has(i.ff-cloudmin),
-body > .mode > b > a:has(i.ff-cloudmin) > .ff-cloudmin {
+body > .mode > b[data-mode="server-manager"] > a,
+body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
   color: #cb6d2f;
 }
 
