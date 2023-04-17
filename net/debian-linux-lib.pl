@@ -535,7 +535,8 @@ if ($gconfig{'os_version'} >= 3 || scalar(@autos)) {
 # Can some boot-time interface parameter be edited?
 sub can_edit
 {
-return $_[0];
+my ($what) = @_;
+return 1;
 }
 
 sub can_broadcast_def

@@ -438,12 +438,9 @@ else {
 # Can some boot-time interface parameter be edited?
 sub can_edit
 {
-if ($supports_mtu) {
-	return 1;
-	}
-else {
-	return $_[0] ne "mtu";
-	}
+my ($f) = @_;
+return $f eq "mtu" ? $supports_mtu :
+       $f eq "bridgestp" || $f eq "bridgefd" || $f eq "bridgewait" ? 0 : 1;
 }
 
 sub can_broadcast_def

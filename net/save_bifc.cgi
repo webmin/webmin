@@ -316,9 +316,15 @@ else {
 		($bt->{'address'} || $bt->{'dhcp'} || $bt->{'bootp'}) &&
 			&error($text{'bifc_ebridgeto2'});
 		$b->{'bridgeto'} = $in{'bridgeto'};
-		$b->{'bridgestp'} = $in{'bridgestp'};
-		$b->{'bridgefd'} = $in{'bridgefd'};
-		$b->{'bridgewait'} = $in{'bridgewait'};
+		if (&can_edit("bridgestp")) {
+			$b->{'bridgestp'} = $in{'bridgestp'};
+			}
+		if (&can_edit("bridgefd")) {
+			$b->{'bridgefd'} = $in{'bridgefd'};
+			}
+		if (&can_edit("bridgewait")) {
+			$b->{'bridgewait'} = $in{'bridgewait'};
+			}
 		}
 	else {
 		delete($b->{'bridgeto'});
