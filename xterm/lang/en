@@ -4,6 +4,7 @@ index_epel=It is recommended to have <a href='$1' target='_blank'>EPEL</a> repos
 index_suse=The Perl package <tt>perl-IO-Tty</tt> is missing, and should be manually installed first from <a href='$2' target='_blank'>devel:languages:perl</a> repository.
 index_euser=Error : User $1 cannot run the shell as it does not exist!
 index_connecting=Connecting ..
+index_missing=The Perl module <tt>$1</tt> is missing. You need to contact your administrator to resolve this issue.
 
 acl_user=Run shell as Unix user
 acl_sameuser=Same as Webmin login

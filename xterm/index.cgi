@@ -23,7 +23,12 @@ foreach my $modname (@modnames) {
 				&text('index_suse', "<tt>$modname</tt>",
 					'https://software.opensuse.org/download/package?package=perl-IO-Tty&project=devel%3Alanguages%3Aperl');
 			}
-		print $missinglink ."<p>\n";
+		if (&get_product_name() eq 'usermin') {
+			print &text('index_missing', $modname) ."<p>\n";
+			}
+		else {
+			print $missinglink ."<p>\n";
+			}
 		&ui_print_footer("/", $text{'index'});
 		exit;
 		}
@@ -179,10 +184,9 @@ my @uinfo = getpwnam($user);
 my $dir = $in{'dir'};
 
 # Launch the shell server on the allocated port
-&foreign_require("cron");
 my $shellserver_cmd = "$module_config_directory/shellserver.pl";
 if (!-r $shellserver_cmd) {
-	&cron::create_wrapper($shellserver_cmd, $module_name, "shellserver.pl");
+	&create_program_wrapper($shellserver_cmd, $module_name, "shellserver.pl");
 	}
 my $tmpdir = &tempname_dir();
 $ENV{'SESSION_ID'} = $main::session_id;
