@@ -1209,63 +1209,6 @@ foreach $w (@wds) {
 $_[0]->{'weekdays'} = join(",", @wds);
 }
 
-=head2 create_wrapper(wrapper-path, module, script)
-
-Creates a wrapper script which calls a script in some module's directory
-with the proper webmin environment variables set. This should always be used
-when setting up a cron job, instead of attempting to run a command in the
-module directory directly.
-
-The parameters are :
-
-=item wrapper-path - Full path to the wrapper to create, like /etc/webmin/yourmodule/foo.pl
-
-=item module - Module containing the real script to call.
-
-=item script - Program within that module for the wrapper to run.
-
-=cut
-sub create_wrapper
-{
-local $perl_path = &get_perl_path();
-&open_tempfile(CMD, ">$_[0]");
-&print_tempfile(CMD, <<EOF
-#!$perl_path
-open(CONF, "<$config_directory/miniserv.conf") || die "Failed to open $config_directory/miniserv.conf : \$!";
-while(<CONF>) {
-        \$root = \$1 if (/^root=(.*)/);
-        }
-close(CONF);
-\$root || die "No root= line found in $config_directory/miniserv.conf";
-\$ENV{'PERLLIB'} = "\$root";
-\$ENV{'WEBMIN_CONFIG'} = "$ENV{'WEBMIN_CONFIG'}";
-\$ENV{'WEBMIN_VAR'} = "$ENV{'WEBMIN_VAR'}";
-delete(\$ENV{'MINISERV_CONFIG'});
-EOF
-	);
-if ($gconfig{'os_type'} eq 'windows') {
-	# On windows, we need to chdir to the drive first, and use system
-	&print_tempfile(CMD, "if (\$root =~ /^([a-z]:)/i) {\n");
-	&print_tempfile(CMD, "       chdir(\"\$1\");\n");
-	&print_tempfile(CMD, "       }\n");
-	&print_tempfile(CMD, "chdir(\"\$root/$_[1]\");\n");
-	&print_tempfile(CMD, "exit(system(\"\$root/$_[1]/$_[2]\", \@ARGV));\n");
-	}
-else {
-	# Can use exec on Unix systems
-	if ($_[1]) {
-		&print_tempfile(CMD, "chdir(\"\$root/$_[1]\");\n");
-		&print_tempfile(CMD, "exec(\"\$root/$_[1]/$_[2]\", \@ARGV) || die \"Failed to run \$root/$_[1]/$_[2] : \$!\";\n");
-		}
-	else {
-		&print_tempfile(CMD, "chdir(\"\$root\");\n");
-		&print_tempfile(CMD, "exec(\"\$root/$_[2]\", \@ARGV) || die \"Failed to run \$root/$_[2] : \$!\";\n");
-		}
-	}
-&close_tempfile(CMD);
-chmod(0755, $_[0]);
-}
-
 =head2 cron_file(&job)
 
 Returns the file that a cron job is in, or will be in when it is created
@@ -1781,6 +1724,13 @@ foreach $r (split(/,/, $_[0])) {
 	push(@rv, &cron_range($r, $_[1], $_[2]));
 	}
 return sort { $a <=> $b } @rv;
+}
+
+# create_wrapper(@_)
+# Deprecated and left for backward compatibility
+sub create_wrapper
+{
+&create_program_wrapper(@_);
 }
 
 1;

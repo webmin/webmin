@@ -186,7 +186,7 @@ my $dir = $in{'dir'};
 # Launch the shell server on the allocated port
 my $shellserver_cmd = "$module_config_directory/shellserver.pl";
 if (!-r $shellserver_cmd) {
-	&create_wrapper_local($shellserver_cmd, $module_name, "shellserver.pl");
+	&create_program_wrapper($shellserver_cmd, $module_name, "shellserver.pl");
 	}
 my $tmpdir = &tempname_dir();
 $ENV{'SESSION_ID'} = $main::session_id;
