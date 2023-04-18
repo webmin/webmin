@@ -1728,12 +1728,5 @@ foreach $r (split(/,/, $_[0])) {
 return sort { $a <=> $b } @rv;
 }
 
-# create_wrapper(@_)
-# Deprecated and left for backward compatibility
-sub create_wrapper
-{
-&create_program_wrapper(@_);
-}
-
 1;
 

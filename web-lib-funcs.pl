@@ -12951,7 +12951,7 @@ return $locale_def;
 
 $done_web_lib_funcs = 1;
 
-=head2 create_program_wrapper(wrapper-path, module, script)
+=head2 create_wrapper(wrapper-path, module, script)
 
 Creates a wrapper script which calls a script in some module's directory
 with the proper webmin environment variables set. This should always be used
@@ -12968,10 +12968,11 @@ The parameters are :
 
 =cut
 
-sub create_program_wrapper
+sub create_wrapper
 {
-local $perl_path = &get_perl_path();
-&open_tempfile(CMD, ">$_[0]");
+my ($path, $mod, $script) = @_;
+my $perl_path = &get_perl_path();
+&open_tempfile(CMD, ">$path");
 &print_tempfile(CMD, <<EOF
 #!$perl_path
 open(CONF, "<$config_directory/miniserv.conf") || die "Failed to open $config_directory/miniserv.conf : \$!";
@@ -12991,22 +12992,22 @@ if ($gconfig{'os_type'} eq 'windows') {
     &print_tempfile(CMD, "if (\$root =~ /^([a-z]:)/i) {\n");
     &print_tempfile(CMD, "       chdir(\"\$1\");\n");
     &print_tempfile(CMD, "       }\n");
-    &print_tempfile(CMD, "chdir(\"\$root/$_[1]\");\n");
-    &print_tempfile(CMD, "exit(system(\"\$root/$_[1]/$_[2]\", \@ARGV));\n");
+    &print_tempfile(CMD, "chdir(\"\$root/$mod\");\n");
+    &print_tempfile(CMD, "exit(system(\"\$root/$mod/$script\", \@ARGV));\n");
     }
 else {
     # Can use exec on Unix systems
-    if ($_[1]) {
-        &print_tempfile(CMD, "chdir(\"\$root/$_[1]\");\n");
-        &print_tempfile(CMD, "exec(\"\$root/$_[1]/$_[2]\", \@ARGV) || die \"Failed to run \$root/$_[1]/$_[2] : \$!\";\n");
+    if ($mod) {
+        &print_tempfile(CMD, "chdir(\"\$root/$mod\");\n");
+        &print_tempfile(CMD, "exec(\"\$root/$mod/$script\", \@ARGV) || die \"Failed to run \$root/$mod/$script : \$!\";\n");
         }
     else {
         &print_tempfile(CMD, "chdir(\"\$root\");\n");
-        &print_tempfile(CMD, "exec(\"\$root/$_[2]\", \@ARGV) || die \"Failed to run \$root/$_[2] : \$!\";\n");
+        &print_tempfile(CMD, "exec(\"\$root/$script\", \@ARGV) || die \"Failed to run \$root/$script : \$!\";\n");
         }
     }
 &close_tempfile(CMD);
-chmod(0755, $_[0]);
+chmod(0755, $path);
 }
 
 1;
