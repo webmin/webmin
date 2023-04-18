@@ -184,12 +184,9 @@ my @uinfo = getpwnam($user);
 my $dir = $in{'dir'};
 
 # Launch the shell server on the allocated port
-setvar('cron_no_switch_to_remote_user', 1)
-	if (&get_product_name() eq 'usermin');
-&foreign_require("cron");
 my $shellserver_cmd = "$module_config_directory/shellserver.pl";
 if (!-r $shellserver_cmd) {
-	&cron::create_wrapper($shellserver_cmd, $module_name, "shellserver.pl");
+	&create_wrapper_local($shellserver_cmd, $module_name, "shellserver.pl");
 	}
 my $tmpdir = &tempname_dir();
 $ENV{'SESSION_ID'} = $main::session_id;
