@@ -3680,13 +3680,16 @@ if ($use_pam) {
 	local $pamh = new Authen::PAM($config{'pam'}, $pam_username,
 				      \&pam_conv_func);
 	if (ref($pamh)) {
+		print DEBUG "validate_unix_user: using PAM\n";
 		$pamh->pam_set_item(PAM_RHOST(), $_[2]) if ($_[2]);
 		$pamh->pam_set_item(PAM_TTY(), $_[3]) if ($_[3]);
 		local $rcode = 0;
 		local $pam_ret = $pamh->pam_authenticate();
+		print DEBUG "validate_unix_user: pam_ret=$pam_ret\n";
 		if ($pam_ret == PAM_SUCCESS()) {
 			# Logged in OK .. make sure password hasn't expired
 			local $acct_ret = $pamh->pam_acct_mgmt();
+			print DEBUG "validate_unix_user: acct_ret=$acct_ret\n";
 			$pam_ret = $acct_ret;
 			if ($acct_ret == PAM_SUCCESS()) {
 				$pamh->pam_open_session();
@@ -3714,6 +3717,7 @@ elsif ($config{'pam_only'}) {
 elsif ($config{'passwd_file'}) {
 	# Check in a password file
 	local $rv = 0;
+	print DEBUG "validate_unix_user: reading $config{'passwd_file'}\n";
 	open(FILE, $config{'passwd_file'});
 	if ($config{'passwd_file'} eq '/etc/security/passwd') {
 		# Assume in AIX format
@@ -3742,8 +3746,9 @@ elsif ($config{'passwd_file'}) {
 					local $c = $l[$config{'passwd_cindex'}];
 					local $m = $l[$config{'passwd_mindex'}];
 					local $day = time()/(24*60*60);
-					if ($c =~ /^\d+/ && $m =~ /^\d+/ &&
-					    $day - $c > $m) {
+					print DEBUG "validate_unix_user: c=$c m=$m day=$day\n";
+					$m ||= 0;
+					if ($c =~ /^\d+/ && $day - $c > $m) {
 						# Yep, it has ..
 						$rv = 2;
 						}
