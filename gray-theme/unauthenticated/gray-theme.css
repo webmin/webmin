@@ -491,6 +491,12 @@ body > .mode  {
   animation-delay: 0.11s;
   animation-fill-mode: forwards;
 }
+body > .mode + .wrapper.leftmenu {
+  opacity: 0;
+  animation: fadeIn 0.22s;
+  animation-delay: 0.11s;
+  animation-fill-mode: forwards; 
+}
 body > .mode img {
   visibility: hidden;
 }
