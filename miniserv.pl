@@ -323,8 +323,8 @@ if ($use_syslog) {
 # get the time zone
 if ($config{'log'}) {
 	local(@gmt, @lct, $days, $hours, $mins);
-	@gmt = gmtime(time());
-	@lct = localtime(time());
+	@gmt = gmtime(time_local());
+	@lct = localtime(time_local());
 	$days = $lct[3] - $gmt[3];
 	$hours = ($days < -1 ? 24 : 1 < $days ? -24 : $days * 24) +
 		 $lct[2] - $gmt[2];
@@ -590,7 +590,7 @@ if ($config{'logclear'}) {
 			local $write_logtime = 0;
 			local @st = stat("$config{'logfile'}.time");
 			if (@st) {
-				if ($st[9]+$config{'logtime'}*60*60 < time()){
+				if ($st[9]+$config{'logtime'}*60*60 < time_local()){
 					# need to clear log
 					$write_logtime = 1;
 					unlink($config{'logfile'});
@@ -599,7 +599,7 @@ if ($config{'logclear'}) {
 			else { $write_logtime = 1; }
 			if ($write_logtime) {
 				open(LOGTIME, ">$config{'logfile'}.time");
-				print LOGTIME time(),"\n";
+				print LOGTIME time_local(),"\n";
 				close(LOGTIME);
 				}
 			sleep(5*60);
@@ -686,12 +686,12 @@ while(1) {
 		# Stop flag file created
 		&term_handler();
 		}
-	local $time_now = time();
+	local $time_now = time_local();
 
 	# Clean up processes that have been idle for too long, if configured
 	if ($config{'maxlifetime'}) {
 		foreach my $c (@childpids) {
-			my $age = time() - $childstarts{$c};
+			my $age = time_local() - $childstarts{$c};
 			if ($childstarts{$c} &&
 			    $age > $config{'maxlifetime'}) {
 				kill(9, $c);
@@ -938,7 +938,7 @@ while(1) {
 				exit;
 				}
 			push(@childpids, $handpid);
-			$childstarts{$handpid} = time();
+			$childstarts{$handpid} = time_local();
 			push(@$ipconns, $handpid);
 			push(@$netconns, $handpid);
 			if ($need_pipes) {
@@ -1149,7 +1149,7 @@ while(1) {
 						  'host' => $host,
 						  'step' => 0,
 						  'cid' => $cid,
-						  'time' => time() };
+						  'time' => time_local() };
 					print $outfd "3 Password\n";
 					}
 				else {
@@ -1158,7 +1158,7 @@ while(1) {
 					$conv = { 'user' => $realuser,
 						  'host' => $host,
 						  'cid' => $cid,
-						  'time' => time() };
+						  'time' => time_local() };
 					local ($PAMINr, $PAMINw, $PAMOUTr,
 						$PAMOUTw) = &allocate_pipes();
 					local $pampid = fork();
@@ -1216,14 +1216,14 @@ while(1) {
 			elsif ($inline =~ /^writesudo\s+(\S+)\s+(\d+)/) {
 				# Store the fact that some user can sudo to root
 				local ($user, $ok) = ($1, $2);
-				$sudocache{$user} = $ok." ".time();
+				$sudocache{$user} = $ok." ".time_local();
 				}
 			elsif ($inline =~ /^readsudo\s+(\S+)/) {
 				# Query the user sudo cache (valid for 1 minute)
 				local $user = $1;
 				local ($ok, $last) =
 					split(/\s+/, $sudocache{$user});
-				if ($last < time()-60) {
+				if ($last < time_local()-60) {
 					# Cache too old
 					print $outfd "2\n";
 					}
@@ -1263,7 +1263,7 @@ else {
 	$acpthost = $acptip;
 	}
 $loghost = $acpthost;
-$datestr = &http_date(time());
+$datestr = &http_date(time_local());
 $ok_code = 200;
 $ok_message = "Document follows";
 $logged_code = undef;
@@ -2712,7 +2712,7 @@ else {
 		      "Server: $config{server}\r\n".
 		      "Content-type: ".&get_type($full)."\r\n".
 		      "Last-Modified: ".&http_date($stopen[9])."\r\n".
-		      "Expires: ".&http_date(time()+$etime)."\r\n".
+		      "Expires: ".&http_date(time_local()+$etime)."\r\n".
 		      "Cache-Control: public; max-age=".$etime."\r\n";
 
 	if (!$gzipped && $use_gzip && $acceptenc{'gzip'} &&
@@ -3310,7 +3310,7 @@ if ($config{'log'}) {
 # make_datestr()
 sub make_datestr
 {
-local @tm = localtime(time());
+local @tm = localtime(time_local());
 return sprintf "%2.2d/%s/%4.4d:%2.2d:%2.2d:%2.2d %s",
 		$tm[3], $month[$tm[4]], $tm[5]+1900,
 	        $tm[2], $tm[1], $tm[0], $timezone;
@@ -3608,7 +3608,7 @@ elsif ($canmode == 1) {
 		local $lc = $uinfo->{'lastchanges'};
 		print DEBUG "validate_user: Password is valid lc=$lc pass_maxdays=$config{'pass_maxdays'}\n";
 		if ($config{'pass_maxdays'} && $lc && !$uinfo->{'nochange'}) {
-			local $daysold = (time() - $lc)/(24*60*60);
+			local $daysold = (time_local() - $lc)/(24*60*60);
 			print DEBUG "maxdays=$config{'pass_maxdays'} daysold=$daysold temppass=$uinfo->{'temppass'}\n";
 			if ($config{'pass_lockdays'} &&
 			    $daysold > $config{'pass_lockdays'}) {
@@ -3745,7 +3745,7 @@ elsif ($config{'passwd_file'}) {
 					# Password may have expired!
 					local $c = $l[$config{'passwd_cindex'}];
 					local $m = $l[$config{'passwd_mindex'}];
-					local $day = time()/(24*60*60);
+					local $day = time_local()/(24*60*60);
 					print DEBUG "validate_unix_user: c=$c m=$m day=$day\n";
 					$m ||= 0;
 					if ($c =~ /^\d+/ && $day - $c > $m) {
@@ -4134,7 +4134,7 @@ sub check_user_time
 local ($username) = @_;
 local $uinfo = &get_user_details($username);
 return 1 if (!$uinfo || !$uinfo->{'allowdays'} && !$uinfo->{'allowhours'});
-local @tm = localtime(time());
+local @tm = localtime(time_local());
 if ($uinfo->{'allowdays'}) {
 	# Make sure day is allowed
 	return 0 if (&indexof($tm[6], @{$uinfo->{'allowdays'}}) < 0);
@@ -4319,7 +4319,7 @@ sub write_login_utmp
 if ($write_utmp) {
 	# Write utmp record for login
 	%utmp = ( 'ut_host' => $_[1],
-		  'ut_time' => time(),
+		  'ut_time' => time_local(),
 		  'ut_user' => $_[0],
 		  'ut_type' => 7,	# user process
 		  'ut_pid' => $miniserv_main_pid,
@@ -4341,7 +4341,7 @@ sub write_logout_utmp
 if ($write_utmp) {
 	# Write utmp record for logout
 	%utmp = ( 'ut_host' => $_[1],
-		  'ut_time' => time(),
+		  'ut_time' => time_local(),
 		  'ut_user' => $_[0],
 		  'ut_type' => 8,	# dead process
 		  'ut_pid' => $miniserv_main_pid,
@@ -4444,7 +4444,7 @@ if (!$line) {
 	$line = <$pr>;
 	$line =~ s/\r|\n//g;
 	}
-$conf->{'last'} = time();
+$conf->{'last'} = time_local();
 if (!$line) {
 	# Failed!
 	print $fh "0 PAM conversation error\n";
@@ -4486,7 +4486,7 @@ sub send_pam_answer
 {
 local ($conf, $answer) = @_;
 local $pw = $conf->{'PAMINw'};
-$conf->{'last'} = time();
+$conf->{'last'} = time_local();
 print $pw "$answer\n";
 }
 
@@ -5781,7 +5781,7 @@ lc($rheader{'sec-websocket-accept'}) eq lc($bdigest) ||
 # Start forwarding data
 seek(DEBUG, 0, 2);
 print DEBUG "in websockets loop\n";
-my $last_session_check_time = time();
+my $last_session_check_time = time_local();
 while(1) {
 	my $rmask = undef;
 	vec($rmask, fileno($fh), 1) = 1;
@@ -5800,7 +5800,7 @@ while(1) {
 		last if (!defined($buf) || length($buf) == 0);
 		syswrite($fh, $buf, length($buf)) || last;
 		}
-	my $now = time();
+	my $now = time_local();
 	if ($now - $last_session_check_time > 10) {
 		# Re-validate the browser session every 10 seconds
 		print DEBUG "verifying websockets session $session_id\n";
@@ -6284,7 +6284,7 @@ if ($salt =~ /^\$6\$([^\$]+)/) {
 	# Extract actual salt from already encrypted password
 	$salt = $1;
 	}
-$salt ||= '$6$'.substr(time(), -8).'$';
+$salt ||= '$6$'.substr(time_local(), -8).'$';
 return crypt($passwd, $salt);
 }
 
@@ -6337,7 +6337,7 @@ close(ARFILE);
 sub execute_ready_webmin_crons
 {
 my ($runs) = @_;
-my $now = time();
+my $now = time_local();
 my $changed = 0;
 foreach my $cron (@webmincrons) {
 	my $run = 0;
@@ -6807,6 +6807,12 @@ sub getenv
 {
 my ($key) = @_;
 return $ENV{ uc($key) } || $ENV{ lc($key) };
+}
+
+# time_local()
+sub time_local
+{
+return time() + ($config{'timezone_offset'} || 0);
 }
 
 # open_socket(host, port, filehandle)
