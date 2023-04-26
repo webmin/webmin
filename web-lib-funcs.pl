@@ -1996,14 +1996,21 @@ if (!$@) {
 	my $opts = ref($only) ? $only : {};
 	my $locale_default = &get_default_system_locale();
 	my $locale_auto = &parse_accepted_language();
-	my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$remote_user} || $locale_auto || $gconfig{'locale'} || &get_default_system_locale();
+	my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$remote_user} ||
+	   $locale_auto || $gconfig{'locale'} || &get_default_system_locale();
 	my $tz = $opts->{'tz'};
 	if (!$tz) {
 		eval {
-	        $tz = DateTime::TimeZone->new( name => 'local' )->name();  # Asia/Nicosia
+			$tz =
+			  DateTime::TimeZone->new(name => strftime("%z", localtime()))->name(); # +0200
 			};
 		if ($@) {
-			$tz = DateTime::TimeZone->new( name => 'UTC' )->name();    # UTC
+			eval {
+				$tz = DateTime::TimeZone->new(name => 'local')->name();  # Asia/Nicosia
+				};
+			if ($@) {
+				$tz = DateTime::TimeZone->new(name => 'UTC')->name();    # UTC
+				}
 			}
 		}
 	my $locale = DateTime::Locale->load($locale_name);
