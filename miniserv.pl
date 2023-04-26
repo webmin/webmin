@@ -1205,9 +1205,10 @@ while(1) {
 					# This must be the password .. try it
 					# and send back the results
 					local ($vu, $expired, $nonexist) =
-						&validate_user($conv->{'user'},
-							       $answer,
-							       $conf->{'host'});
+						&validate_user_caseless(
+							$conv->{'user'},
+							$answer,
+							$conf->{'host'});
 					local $ok = $vu ? 1 : 0;
 					print $outfd "2 $conv->{'user'} $ok $expired $notexist\n";
 					&end_pam_conversation($conv);
@@ -1717,8 +1718,8 @@ if (!$validated && !$deny_authentication && !$config{'session'} &&
 	($authuser, $authpass) = split(/:/, &b64decode($1), 2);
 	print DEBUG "handle_request: doing basic auth check authuser=$authuser authpass=$authpass\n";
 	local ($vu, $expired, $nonexist, $wvu) =
-		&validate_user($authuser, $authpass, $host,
-			       $acptip, $port);
+		&validate_user_caseless($authuser, $authpass, $host,
+				        $acptip, $port);
 	print DEBUG "handle_request: vu=$vu expired=$expired nonexist=$nonexist\n";
 	if ($vu && (!$expired || $config{'passwd_mode'} == 1)) {
 		$authuser = $vu;
@@ -1813,8 +1814,8 @@ if ($config{'session'} && !$deny_authentication &&
 			}
 
 		local ($vu, $expired, $nonexist, $wvu) =
-			&validate_user($in{'user'}, $in{'pass'}, $host,
-				       $acptip, $port);
+			&validate_user_caseless($in{'user'}, $in{'pass'}, $host,
+					        $acptip, $port);
 		if ($vu && $wvu) {
 			my $uinfo = &get_user_details($wvu, $vu);
 			if ($uinfo && $uinfo->{'twofactor_provider'}) {
@@ -3577,6 +3578,20 @@ sub urlize {
 	$tmp2 = $c . $tmp2;
 	}
   return $tmp2;
+}
+
+# validate_user_caseless(username, password, host, remote-ip, webmin-port)
+# Calls validate_user, but also checks the lower case name if the given login
+# is mixed case
+sub validate_user_caseless
+{
+my @args = @_;
+my @rv = &validate_user(@args);
+if (!$rv[0] && $args[0] =~ /[A-Z]/) {
+	$args[0] =~ tr/A-Z/a-z/;
+	@rv = &validate_user(@args);
+	}
+return @rv;
 }
 
 # validate_user(username, password, host, remote-ip, webmin-port)
