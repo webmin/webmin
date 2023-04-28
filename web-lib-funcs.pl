@@ -327,7 +327,8 @@ my $tmp_base = $gconfig{'tempdir_'.&get_module_name()} ?
 		  $ENV{'TMP'} && $ENV{'TMP'} ne "/tmp" ? $ENV{'TMP'} :
 		  -d "c:/temp" ? "c:/temp" : "/tmp/.webmin";
 my $tmp_dir;
-if (@remote_user_info && -d $remote_user_info[7] && !$gconfig{'nohometemp'}) {
+if (@remote_user_info && -d $remote_user_info[7] &&
+    -w $remote_user_info[7] && !$gconfig{'nohometemp'}) {
 	$tmp_dir = "$remote_user_info[7]/.tmp";
 	}
 elsif (@remote_user_info) {
@@ -1995,14 +1996,21 @@ if (!$@) {
 	my $opts = ref($only) ? $only : {};
 	my $locale_default = &get_default_system_locale();
 	my $locale_auto = &parse_accepted_language();
-	my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$remote_user} || $locale_auto || $gconfig{'locale'} || &get_default_system_locale();
+	my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$remote_user} ||
+	   $locale_auto || $gconfig{'locale'} || &get_default_system_locale();
 	my $tz = $opts->{'tz'};
 	if (!$tz) {
 		eval {
-	        $tz = DateTime::TimeZone->new( name => 'local' )->name();  # Asia/Nicosia
+			$tz =
+			  DateTime::TimeZone->new(name => strftime("%z", localtime()))->name(); # +0200
 			};
 		if ($@) {
-			$tz = DateTime::TimeZone->new( name => 'UTC' )->name();    # UTC
+			eval {
+				$tz = DateTime::TimeZone->new(name => 'local')->name();  # Asia/Nicosia
+				};
+			if ($@) {
+				$tz = DateTime::TimeZone->new(name => 'UTC')->name();    # UTC
+				}
 			}
 		}
 	my $locale = DateTime::Locale->load($locale_name);
