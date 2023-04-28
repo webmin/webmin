@@ -1217,8 +1217,8 @@ local $file = @old ? $old[0]->{'file'} :
 local $lref = &read_file_lines($file);
 
 for(my $i=0; $i<@old || $i<@$values; $i++) {
-	local $old = $old[$i];
-	local $line = $values->[$i] eq "" ? $name :
+	local $old = $i < @old ? $old[$i] : undef;
+	local $line = $i < @$values || $values->[$i] eq "" ? $name :
 			"$name = $values->[$i]";
 	if ($old && defined($values->[$i])) {
 		# Updating
