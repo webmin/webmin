@@ -3587,8 +3587,8 @@ sub validate_user_caseless
 {
 my @args = @_;
 my @rv = &validate_user(@args);
-if (!$rv[0] && $args[0] =~ /[A-Z]/) {
-	$args[0] =~ tr/A-Z/a-z/;
+if (!$rv[0] && $args[0] ne lc($args[0])) {
+	$args[0] = lc($args[0]);
 	@rv = &validate_user(@args);
 	}
 return @rv;
