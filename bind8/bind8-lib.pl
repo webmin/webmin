@@ -376,9 +376,22 @@ return @rv ? wantarray ? @rv : $rv[0]
 sub find_value
 {
 my @v = &find($_[0], $_[1]);
-if (!@v) { return undef; }
-elsif (wantarray) { return map { $_->{'value'} } @v; }
-else { return $v[0]->{'value'}; }
+if (!@v) {
+	return undef;
+	}
+elsif (wantarray) {
+	return map { &extract_value($_) } @v;
+	}
+else {
+	return &extract_value($v[0]);
+	}
+}
+
+sub extract_value
+{
+my ($dir) = @_;
+return defined($dir->{'value'}) ? $dir->{'value'} :
+       @{$dir->{'values'}} ? $dir->{'values'}->[0] : undef;
 }
 
 # base_directory([&config], [no-cache])
@@ -500,9 +513,8 @@ for(my $i=0; $i<@oldv || $i<@newv; $i++) {
 sub recursive_set_value
 {
 my ($dir) = @_;
-if ($dir->{'values'}) {
-	my @v = @{$dir->{'values'}};
-	$dir->{'value'} = @v ? $v[0] : undef;
+if (!defined($dir->{'value'})) {
+	$dir->{'value'} = &extract_value($dir);
 	}
 if ($dir->{'type'} && $dir->{'type'} == 1 && $dir->{'members'}) {
 	foreach my $m (@{$dir->{'members'}}) {
