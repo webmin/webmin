@@ -76,6 +76,7 @@ if ($ok) {
 	                       $text{'index_sadd'}),
 		      &ui_link("edit_forward.cgi?new=1&zone=".&urlize($zone->{'name'}),
 	                       $text{'index_fadd'}),
+		      &ui_link("edit_manual.cgi", $text{'index_manual'}),
 		    );
 	if (@{$zone->{'services'}} || @{$zone->{'ports'}}) {
 		my @tds = ( "width=5" );
