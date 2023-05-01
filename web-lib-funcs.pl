@@ -10414,7 +10414,7 @@ if ($$ == $main::initial_process_id) {
 		&disconnect_userdb($str, $conn->[0], 1);
 		}
 
-	if (!$ENV{'SCRIPT_NAME'}) {
+	if ($main::webmin_script_type ne 'web') {
 		# In a command-line script - call the real exit, so that the
 		# exit status gets properly propogated. In some cases this
 		# was not happening.
