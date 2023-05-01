@@ -38,6 +38,14 @@ index_restart_firewalld=Reload FirewallD
 index_restart_firewallddesc=Reload the FirewallD server and apply the rules that were permanently created.
 index_listrules_restartdesc=List details about existing rich and direct FirewallD rules in $1 zone.
 index_dependent=Failed to restart $1 dependent service
+index_manual=Edit Config Files.
+
+manual_title=Edit Config Files
+manual_editsel=Edit FirewallD configuration file
+manual_err=Failed to save config file
+manual_efile=Selected configuration file is not valid
+manual_ok=Edit
+
 
 port_edit=Edit Port
 port_create=Add Port
