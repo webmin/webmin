@@ -391,7 +391,7 @@ sub extract_value
 {
 my ($dir) = @_;
 return defined($dir->{'value'}) ? $dir->{'value'} :
-       $dir->{'values'} && @{$dir->{'values'}} ? $dir->{'values'}->[0] : undef;
+       defined($dir->{'values'}) && @{$dir->{'values'}} ? $dir->{'values'}->[0] : undef;
 }
 
 # base_directory([&config], [no-cache])
