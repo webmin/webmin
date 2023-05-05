@@ -91,8 +91,8 @@ foreach my $m (@mods) {
 foreach my $m (@mods) {
 	my %access = &get_module_acl(undef, $m);
 	next if ($access{'noconfig'});
-	my $file = $prod eq 'webmin' ? "$m->{'dir'}/config.info"
-				     : "$m->{'dir'}/uconfig.info";
+	my $file = $prod eq 'webmin' ? "$root_directory/$m->{'dir'}/config.info"
+				     : "$root_directory/$m->{'dir'}/uconfig.info";
 	my %info = ( );
 	my @info_order = ( );
 	&read_file($file, \%info, \@info_order);
