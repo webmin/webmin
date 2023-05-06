@@ -66,7 +66,8 @@ local @links;
 foreach $l ("tree", "user", "size", "cpu", ($has_zone ? ("zone") : ()),
 	    "search", "run") {
 	next if ($l eq "run" && !$access{'run'});
-	my $link = ( $l ne $_[0] ? &ui_link("index_".$l.".cgi", $text{"index_$l"}) : "<b>".$text{"index_$l"}."</b>" );
+	my $link = ( $l ne $_[0] ? &ui_link("index_".$l.".cgi", $text{"index_$l"}) :
+		"<b onclick='".&ui_page_refresh()."' style='cursor: pointer'>".$text{"index_$l"}."</b>" );
 	push(@links, $link);
 	}
 print &ui_links_row(\@links);

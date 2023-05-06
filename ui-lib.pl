@@ -2732,6 +2732,19 @@ if (defined(&theme_ui_line_break_double)) {
 return "<br><br data-x-br>\n";
 }
 
+=head2 ui_page_refresh()
+
+Returns theme based JavaScript function to refresh current page
+
+=cut
+sub ui_page_refresh
+{
+if (defined(&theme_ui_page_refresh)) {
+	return &theme_ui_page_refresh(@_);
+	}
+return "window.location.reload()";
+}
+
 =head2 ui_details(Config, Opened)
 
 Creates a disclosure widget in which information is visible only when
