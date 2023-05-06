@@ -8501,6 +8501,45 @@ foreach my $o (@lang_order_list) {
 return "$dir/$file.html";
 }
 
+=head2 read_help_file(module, file)
+
+Reads the contents of a help file, either unpacked or from a ZIP
+
+=cut
+sub read_help_file
+{
+my ($module, $file) = @_;
+my $path = &help_file($module, $file);
+if (-r $path) {
+	return &read_file_contents($path);
+	}
+my $gzpath = $path.".gz";
+if (-r $gzpath) {
+	my $out = &backquote_command(
+		"gunzip -c ".quotemeta($gzpath)." 2>/dev/null");
+	return $? ? undef : $out;
+	}
+my $zip = $path;
+$zip =~ s/\/[^\/]+$/\/help.zip/;
+if (-r $zip) {
+	my @files;
+	foreach my $o (@lang_order_list) {
+		next if ($o eq "en");
+		push(@files, $file.".".$o.".auto.html");
+		push(@files, $file.".".$o.".html");
+		}
+	push(@files, $file.".html");
+	foreach my $f (@files) {
+		my $out = &backquote_command(
+			"unzip -p ".quotemeta($zip)." ".
+			quotemeta($f)." 2>/dev/null");
+		return $out if ($out && !$?);
+		}
+	return undef;
+	}
+return undef;
+}
+
 =head2 seed_random
 
 Seeds the random number generator, if not already done in this script. On Linux
