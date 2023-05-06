@@ -3762,7 +3762,6 @@ elsif ($config{'passwd_file'}) {
 					local $m = $l[$config{'passwd_mindex'}];
 					local $day = time()/(24*60*60);
 					print DEBUG "validate_unix_user: c=$c m=$m day=$day\n";
-					$m ||= 0;
 					if ($c =~ /^\d+/ && $m =~ /^\d+/ && $day - $c > $m) {
 						# Yep, it has ..
 						$rv = 2;
