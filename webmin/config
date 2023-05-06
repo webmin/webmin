@@ -7,3 +7,4 @@ osdn=1
 warn_days=7
 letsencrypt_dns_wait=10
 letsencrypt_algo=rsa
+letsencrypt_reuse=1

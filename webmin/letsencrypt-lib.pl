@@ -57,17 +57,20 @@ return &software::missing_install_link(
 }
 
 # request_letsencrypt_cert(domain|&domains, webroot, [email], [keysize],
-# 			   [request-mode], [use-staging], [account-email])
+# 			   [request-mode], [use-staging], [account-email],
+# 			   [reuse-key])
 # Attempt to request a cert using a generated key with the Let's Encrypt client
 # command, and write it to the given path. Returns a status flag, and either
 # an error message or the paths to cert, key and chain files.
 sub request_letsencrypt_cert
 {
-my ($dom, $webroot, $email, $size, $mode, $staging, $account_email, $key_type) = @_;
+my ($dom, $webroot, $email, $size, $mode, $staging, $account_email,
+    $key_type, $reuse_key) = @_;
 my @doms = ref($dom) ? @$dom : ($dom);
 $email ||= "root\@$doms[0]";
 $mode ||= "web";
 @doms = &unique(@doms);
+$reuse_key = $config{'letsencrypt_reuse'} if (!defined($reuse_key));
 my ($challenge, $wellknown, $challenge_new, $wellknown_new, $wildcard);
 
 # Wildcard mode?
@@ -164,8 +167,9 @@ if ($letsencrypt_cmd) {
 	&close_tempfile(TEMP);
 	my $dir = $letsencrypt_cmd;
 	my $cmd_ver = &get_certbot_major_version($letsencrypt_cmd);
-	my $old_flags;
-	my $new_flags;
+	my $old_flags = "";
+	my $new_flags = "";
+	my $reuse_flags = "";
 	$key_type ||= $config{'letsencrypt_algo'} || 'rsa';
 	if (&compare_version_numbers($cmd_ver, 1.11) < 0) {
 		$old_flags = " --manual-public-ip-logging-ok";
@@ -173,24 +177,28 @@ if ($letsencrypt_cmd) {
 	if (&compare_version_numbers($cmd_ver, 2.0) >= 0) {
 		$new_flags = " --key-type ".quotemeta($key_type);
 		}
+	if ($reuse_key) {
+		$reuse_flags = " --reuse-key";
+		}
 	$dir =~ s/\/[^\/]+$//;
 	$size ||= 2048;
 	my $out;
 	if ($mode eq "web") {
 		# Webserver based validation
 		&clean_environment();
-		$out = &backquote_command(
+		$out = &backquote_logged(
 			"cd $dir && (echo A | $letsencrypt_cmd certonly".
 			" -a webroot ".
 			join("", map { " -d ".quotemeta($_) } @doms).
 			" --webroot-path ".quotemeta($webroot).
 			" --duplicate".
 			" --force-renewal".
-			"$old_flags".
+			$reuse_flags.
+			$old_flags.
 			" --non-interactive".
 			" --agree-tos".
 			" --config ".quotemeta($temp)."".
-			"$new_flags".
+			$new_flags.
 			" --rsa-key-size ".quotemeta($size).
 			" --cert-name ".quotemeta($doms[0]).
 			($staging ? " --test-cert" : "").
@@ -200,7 +208,7 @@ if ($letsencrypt_cmd) {
 	elsif ($mode eq "dns") {
 		# DNS based validation, via hook script
 		&clean_environment();
-		$out = &backquote_command(
+		$out = &backquote_logged(
 			"cd $dir && (echo A | $letsencrypt_cmd certonly".
 			" --manual".
 			join("", map { " -d ".quotemeta($_) } @doms).
@@ -209,11 +217,12 @@ if ($letsencrypt_cmd) {
 			" --manual-cleanup-hook $cleanup_hook".
 			" --duplicate".
 			" --force-renewal".
-			"$old_flags".
+			$reuse_flags.
+			$old_flags.
 			" --non-interactive".
 			" --agree-tos".
 			" --config ".quotemeta($temp)."".
-			"$new_flags".
+			$new_flags.
 			" --rsa-key-size $size".
 			" --cert-name ".quotemeta($doms[0]).
 			($staging ? " --test-cert" : "").
