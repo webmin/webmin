@@ -8,7 +8,7 @@ if ($in{'redir'}) {
 	$redirdesc = $in{'redirdesc'};
 	}
 elsif ($in{'redirdesc'}) {
-	$redir = "javascript:history.back()";
+	$redir = $ENV{'HTTP_REFERER'};
 	$redirdesc = $in{'redirdesc'};
 	}
 else {
@@ -17,7 +17,7 @@ else {
 	$redirdesc = $text{'index_return'};
 	}
 
-if ($in{'refresh'} || $in{refresh_top}) {
+if ($in{'refresh'} || $in{'refresh_top'}) {
 	&ui_print_unbuffered_header(undef, $text{'refresh_title'}, "");
 
 	# Clear all caches
