@@ -170,23 +170,31 @@ manual_efile=Selected file is not part of the Fail2Ban configuration!
 manual_err=Failed to edit config file
 manual_edata=No config file contents entered
 
-status_title=Jails Status And Actions
-status_title2=Jails Status
-status_head_jail_name=Jail name
+status_title=Jails Status
+status_title3=Jail Blocks
+status_return=jails status
+status_head_jail_blocks=Jail blocks
 status_head_currently_failed=Currently failed
 status_head_total_failed=Total failed
 status_head_file_list=File list
 status_head_currently_banned=Currently banned
 status_head_total_banned=Total banned
 status_head_banned_ip_list=Banned IP list
+status_head_blocks_ip=IP
+status_head_blocks_stime=Start time
+status_head_blocks_etime=End time
 status_rules_plus_more=+ $1 more
 status_jail_unblock_ip=Remove $1 from banned list
-status_jail_unblock=Unblock All IPs for Selected Jails
+status_jail_unblock=Unblock Selected Jails
+status_jail_unblock_ips=Unblock Selected IP
 status_jail_noactive=There are no active jails enabled yet.
+status_jail_noactiveips=There are no blocked entries in jail <tt>$1</tt> found.
 status_err_set=Failed set action
 status_err_unblock=Failed to unblock action
 status_err_nojail=No jails have been selected
+status_err_noips=No IP has been selected
 status_err_unban=Cannot un-ban $1 IP address
+status_err_unbanjail=Cannot un-ban $1 jail
 
 syslog_logtarget=Fail2Ban action log
 

@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# Create, update or delete a action
+# Unblock specific jail
 
 use strict;
 use warnings;
@@ -18,13 +18,8 @@ my @jails = split(/\0/, $in{'jail'});
 # Processes jails actions
 my @jailsmod;
 foreach my $jail (@jails) {
-	my @jailips = split(/\s+/, $in{"jips-$jail"});
-	if (@jailips) {
-		foreach my $ip (@jailips) {
-			&unblock_jailed_ip($jail, $ip);
-			push(@jailsmod, $jail);
-			}
-		}
+	&unblock_jail($jail);
+	push(@jailsmod, $jail);
 	}
 
 # Log and redirect
