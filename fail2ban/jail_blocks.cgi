@@ -26,30 +26,42 @@ while(<$fh>) {
 		my $start = $+{start};
 		my $end = $+{end};
 		if ($ip && $start && $end) {
-			push(@jail_blocks, &ui_checked_columns_row([$ip, $start, $end], [ 'width=5' ], "ip", $ip));
+			push(@jail_blocks, [$ip, $start, $end]);
 			}
 		}
 	}
 close($fh);
 
+my $pagination_opts = \%in;
+$pagination_opts->{'_form-exports'} = { 'jail' => $jail };
 if (@jail_blocks) {
+	my $pagination = &ui_paginations(\@jail_blocks, $pagination_opts);
 	my @links = ( &select_all_link("ip"),
 	              &select_invert_link("ip"));
-	print &ui_links_row(\@links);
+	print $pagination->{'search-form-data'};
 	print &ui_form_start("unblock_jailed_ip.cgi", "post");
+	print &ui_links_row(\@links);
 	print &ui_columns_start([ "",
 				  $text{'status_head_blocks_ip'},
 				  $text{'status_head_blocks_stime'},
 				  $text{'status_head_blocks_etime'} ]);
-	foreach my $r (@jail_blocks) {
-		print $r;
+	if (@jail_blocks) {
+		foreach my $r (@jail_blocks) {
+			print &ui_checked_columns_row($r, [ 'width=5' ], "ip", $r->[0]);
+			}
+		}
+	else {
+		print &ui_columns_row([&text('status_jail_nosearchrs', $in{'search'})], ['colspan="4" align="center"']);
 		}
 	print &ui_columns_end();
-	print &ui_links_row(\@links);
+	print $pagination->{'paginator-form-data'};
 	print &ui_hidden("jail", $jail);
 	print &ui_hidden("return", 1);
-
+	print &ui_links_row(\@links);
 	print &ui_form_end([ [ undef, $text{'status_jail_unblock_ips'} ] ]);
+	print $pagination->{'search-form'};
+	print $pagination->{'paginator-form'};
+	print $pagination->{"client-height-script"};
 	}
 else {
 	print &text('status_jail_noactiveips', $jail);

@@ -21,12 +21,13 @@ if (@jails) {
 	              &select_invert_link("jail") );
 	my $head;
 	my @jipsall;
+	my $screenHeightGetter = "onclick='this.href=this.href+\"&client_height=\"+document.documentElement.clientHeight'";
 	foreach my $jail (@jails) {
 		my $fh = 'cmdjail';
 		my $cmd = "$config{'client_cmd'} status ".quotemeta($jail);
 		my $jcmd = "$cmd 2>&1 </dev/null";
 		my @head = (undef, $text{"status_head_jail_blocks"});
-		my @body = (&ui_link("jail_blocks.cgi?jail=".urlize($jail), "&nbsp;".&html_escape($jail)));
+		my @body = &ui_link("jail_blocks.cgi?jail=".urlize($jail), "&nbsp;".&html_escape($jail), undef, $screenHeightGetter);
 		my $br = '<br>';
 		my $nbsp = '&nbsp;';
 		my $ipslimit = sub {
@@ -41,7 +42,7 @@ if (@jails) {
 				$ips = join($br, @ips);
 				$ips .= "<small style='cursor: default;'>$br".
 					(&ui_link("jail_blocks.cgi?jail=".urlize($jail),
-						"&nbsp;".&text('status_rules_plus_more', $ipscount-$limit)))."</small>";
+						"&nbsp;".&text('status_rules_plus_more', $ipscount-$limit), undef, $screenHeightGetter))."</small>";
 				}
 			return $ips;
 		};
