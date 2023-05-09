@@ -576,3 +576,22 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
   max-width: 80%;
   width: 80%;
 }
+.ui_link_pagination.disabled {
+  filter: grayscale(1) opacity(0.6);
+  pointer-events: none;
+}
+
+.ui_form_elements_wrapper_search {
+  float:right;
+  margin-bottom: 3px;
+}
+
+.ui_form_elements_wrapper_paginator {
+  float:right;
+  margin-top: 3px;
+}
+.ui_form_elements_wrapper_paginator .ui_textbox {
+  border: 1px dashed #0b46ab;
+  padding-right: 2px;
+  text-align: center;
+}

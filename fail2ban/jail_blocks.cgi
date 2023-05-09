@@ -33,7 +33,7 @@ while(<$fh>) {
 close($fh);
 
 my $pagination_opts = \%in;
-$pagination_opts->{'_form-exports'} = { 'jail' => $jail };
+$pagination_opts->{'_form-exports'} = { 'jail' => $jail, 'colspan' => 4 };
 if (@jail_blocks) {
 	my $pagination = &ui_paginations(\@jail_blocks, $pagination_opts);
 	my @links = ( &select_all_link("ip"),
@@ -51,7 +51,7 @@ if (@jail_blocks) {
 			}
 		}
 	else {
-		print &ui_columns_row([&text('status_jail_nosearchrs', $in{'search'})], ['colspan="4" align="center"']);
+		print $pagination->{'search-no-results'};
 		}
 	print &ui_columns_end();
 	print $pagination->{'paginator-form-data'};
