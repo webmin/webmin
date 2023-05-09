@@ -295,7 +295,7 @@ return ( );
 sub local_disk_space
 {
 my ($always) = @_;
-my ($total, $free) = (0, 0);
+my ($total, $free, $used) = (0, 0, 0);
 my @fs;
 my @mounted = &mount::list_mounted();
 my %donezone;
@@ -376,6 +376,7 @@ foreach my $m (@mounted) {
 			}
 		$total += $t*1024;
 		$free += $f*1024;
+		$used += $u*1024;
 		my ($it, $if);
 		if (defined(&inode_space)) {
 			($it, $if, $iu, $ip) = &inode_space($m->[2], $m->[0]);
@@ -393,7 +394,7 @@ foreach my $m (@mounted) {
 			    'type' => $m->[2] });
 		}
 	}
-return ($total, $free, \@fs);
+return ($total, $free, \@fs, $used);
 }
 
 1;
