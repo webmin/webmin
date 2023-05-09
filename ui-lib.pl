@@ -2937,8 +2937,8 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
 
         # Arrow link left
         $rv{$paginator_data} .=
-          &ui_link("$pagination_target?page=$curent_page_prev_urlize"."
-            &search=$search_term_urlize&paginate=$items_per_page_urlize$exported_form_query",
+          &ui_link("$pagination_target?page=$curent_page_prev_urlize".
+          	"&search=$search_term_urlize&paginate=$items_per_page_urlize$exported_form_query",
               '<span>&nbsp;&#x23F4;&nbsp;</span>',
                 "@{[&html_escape($link_page_cls)]} @{[&html_escape($link_page_cls)]}_left$page_prev_disabled",
                   $screenHeightGetter);
