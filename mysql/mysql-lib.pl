@@ -327,7 +327,12 @@ if ($driver_handle && !$config{'nodbi'}) {
 	$cstr .= ";mysql_socket=$config{'sock'}" if ($config{'sock'});
 	$cstr .= ";mysql_read_default_file=$config{'my_cnf'}"
 		if (-r $config{'my_cnf'});
-	$cstr .= ";mysql_ssl=1" if ($config{'ssl'});
+	if ($config{'ssl'}) {
+		$cstr .= ";mysql_ssl=1";
+		if ($DBD::mysql::VERSION >= 4.043) {
+			$cstr .= ";mysql_ssl_optional=1";
+			}
+		}
 	local $dbh = $driver_handle->connect($cstr, $mysql_login, $mysql_pass,
 					     { });
 	$dbh || &error("DBI connect failed : ",$driver_handle->errstr);
