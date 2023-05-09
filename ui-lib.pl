@@ -2860,7 +2860,7 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
           $items_per_page :
             (int($ENV{'HTTP_X_CLIENT_HEIGHT'}) ||
               (int($opts->{'client_height'}) ?
-                int($opts->{'client_height'} / 37) : $items_per_page));
+                ((int($opts->{'client_height'} - 77 - 70) / 26)) : $items_per_page));
     # Pagination
     my $totals_items_original = scalar(@arr);
     my $total_pages           = ceil(($totals_items_original) / $items_per_page);
