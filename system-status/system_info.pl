@@ -239,10 +239,9 @@ if ($info->{'mem'} && &show_section('mem')) {
 # Disk space on local drives
 if ($info->{'disk_total'} && &show_section('disk')) {
 	my ($total, $free, $used) =
-	     ($info->{'disk_total'},
-	      $info->{'disk_free'},
-	      $info->{'disk_fs'} ?
-	        $info->{'disk_fs'}->[0]->{'used'} : undef);
+	     ($info->{'disk_total'}, $info->{'disk_free'},
+	      $info->{'disk_used'} ? $info->{'disk_used'} :
+	      $info->{'disk_fs'} ? $info->{'disk_fs'}->[0]->{'used'} : undef);
 	push(@table, { 'desc' => $text{'right_disk'},
 		       'value' => &text('right_used',
 				   &nice_size($total),
