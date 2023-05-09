@@ -2893,8 +2893,10 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
 
         # As clicking on pagination arrows send
         # current screen height to the server
-        my $screenHeightGetter =
+        my $screenClickHeightGetter =
           "onclick='this.href=this.href+\"&client_height=\"+document.documentElement.clientHeight'";
+        my $screenChangeHeightGetter =
+          "onchange='form.client_height.value=document.documentElement.clientHeight'";
 
         # Paginator form
         $rv{$paginator_id} =
@@ -2941,12 +2943,12 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
           	"&search=$search_term_urlize&paginate=$items_per_page_urlize$exported_form_query",
               '<span>&nbsp;&#x23F4;&nbsp;</span>',
                 "@{[&html_escape($link_page_cls)]} @{[&html_escape($link_page_cls)]}_left$page_prev_disabled",
-                  $screenHeightGetter);
+                  $screenClickHeightGetter);
 
         # Page number input selector
         $rv{$paginator_data} .=
           &ui_textbox("page", $curent_page, $total_pages_length, undef, $total_pages_length,
-                      "data-class='@{[&quote_escape($link_search_cls)]}' form='$paginator_id-$id'");
+                      "data-class='@{[&quote_escape($link_search_cls)]}' form='$paginator_id-$id' $screenChangeHeightGetter");
 
         # Out of pages text
         $rv{$paginator_data} .=
@@ -2959,7 +2961,7 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
             "&search=$search_term_urlize&paginate=$items_per_page_urlize$exported_form_query",
               '<span>&nbsp;&#x25B8;&nbsp;</span>',
                 "@{[&html_escape($link_page_cls)]} @{[&html_escape($link_page_cls)]}_right$page_next_disabled",
-                  $screenHeightGetter);
+                  $screenClickHeightGetter);
 
         # Dynamically adding external form elements
         if ($exported_form) {
@@ -2993,7 +2995,7 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
         $rv{$search_data} .=
           &ui_textbox("search", $search_term, $search_placeholder_length, undef, undef,
             "data-class='@{[&quote_escape($link_search_cls)]}_search' ".
-            "placeholder='@{[&quote_escape($search_placeholder)]}' form='$search_id-$id'");
+            "placeholder='@{[&quote_escape($search_placeholder)]}' form='$search_id-$id' $screenChangeHeightGetter");
         
         # Search reset using JS
         $rv{$search_data} .=
