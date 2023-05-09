@@ -566,4 +566,15 @@ if ($?) {
 	}
 }
 
+# Unblock all IPs in given jail
+sub unblock_jail
+{
+my ($jail) = @_;
+my $cmd = "$config{'client_cmd'} reload --unban ".quotemeta($jail)." 2>&1 </dev/null";
+my $out = &backquote_logged($cmd);
+if ($?) {
+	&error(&text('status_err_unbanjail', &html_escape($jail)) . " : $out");
+	}
+}
+
 1;
