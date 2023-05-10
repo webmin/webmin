@@ -2861,6 +2861,12 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
             (int($ENV{'HTTP_X_CLIENT_HEIGHT'}) ||
               (int($opts->{'client_height'}) ?
                 ((int($opts->{'client_height'} - 77 - 70) / 26)) : $items_per_page));
+    # If caller wants specific pagination number,
+    # e.g. a module config, use that instead
+    if ($exported_form && $exported_form->{'paginate'}) {
+        $items_per_page = $exported_form->{'paginate'};
+        }
+
     # Pagination
     my $totals_items_original = scalar(@arr);
     my $total_pages           = ceil(($totals_items_original) / $items_per_page);
