@@ -586,6 +586,10 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
   margin-bottom: 3px;
 }
 
+.ui_form_elements_wrapper_search * {
+  line-height: initial !important;
+}
+
 .ui_form_elements_wrapper_paginator {
   float:right;
   margin-top: 3px;
