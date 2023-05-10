@@ -2843,12 +2843,19 @@ my $ui_column_colspan    = int($exported_form->{'colspan'} || 2);
 if (ref($arr) eq 'ARRAY' && $arr->[0]) {
     if ($search_term) {
         my @sarr;
-        @arr =
-          grep {
-              arr: for (my $i = 0; $i <= $#$_; $i++) {
-                push(@sarr, $_), last arr
-                      if(index($_->[$i], $search_term) != -1);
-            }
+          map {
+            if (ref($_) eq 'ARRAY') {
+                arr: for (my $i = 0; $i <= $#$_; $i++) {
+                  push(@sarr, $_), last arr
+                        if(index(lc($_->[$i]), $search_term) != -1);
+                  }
+                }
+            if (ref($_) eq 'HASH') {
+                hash: foreach my $__ (values %{$_}) {
+                  push(@sarr, $_), last hash
+                        if(index(lc($__), $search_term) != -1);
+                  }
+                }
           } @arr;
           @arr = @sarr;
         }
