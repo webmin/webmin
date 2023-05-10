@@ -10,6 +10,13 @@ $pftmsg = &text('index_pft', $text{'index_pft'.$pft} || $pft);
 
 $formno = 0;
 &ReadParse();
+
+if ($config{'display_max_auto'} &&
+    !$in{'client_height'} && !$ENV{'HTTP_X_CLIENT_HEIGHT'}) {
+	print "<script>location.href = location.pathname + '?client_height=' + document.documentElement.clientHeight;</script>";
+	exit;
+	}
+
 @quarters = ( "width=25%", "width=25%", "width=25%", "width=25%" );
 
 # Get the user and group lists
