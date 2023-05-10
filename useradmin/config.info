@@ -35,6 +35,7 @@ default_other=Create and update in other modules,1,1-Yes,0-No
 
 line4=Display options,11
 display_max=Maximum number of users or groups to display,0
+display_max_auto=Use paginated table to display users and groups?,1,1-Yes,0-No
 sort_mode=Sort users and groups by,4,0-Order in file,1-Username,2-Real name,3-Surname,4-Shell,5-UID or GID,6-Home directory
 last_count=Number of previous logins to display,3,Unlimited
 last_show=Show last login in user list?,1,1-Yes,0-No
