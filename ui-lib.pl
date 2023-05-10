@@ -2916,10 +2916,10 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
 
         # Calculate showing start and range numbers
         my $current_showing_start =
-          $curent_page == 1 ? 1 : ($items_per_page * $curent_page + 1) - $items_per_page;
+          $curent_page == 1 ? 1 : int(($items_per_page * $curent_page + 1) - $items_per_page);
         my $current_showing_range =
-          $current_showing_start + $items_per_page > $totals_items_original ?
-            $totals_items_original : $current_showing_start + $items_per_page;
+          int($current_showing_start + $items_per_page > $totals_items_original ?
+            $totals_items_original : $current_showing_start + $items_per_page - 1);
 
         # Showing items range selector text
         $rv{$paginator_data} .=
