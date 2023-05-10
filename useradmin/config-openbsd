@@ -1,5 +1,6 @@
 homedir_perms=0755
 display_max=400
+display_max_auto=1
 files_remove=dot
 user_files=/usr/share/skel
 passwd_file=

@@ -1,5 +1,6 @@
 homedir_perms=0755
 display_max=400
+display_max_auto=1
 user_files=/etc/skel/user/en_US /etc/skel/user/common
 passwd_file=/etc/passwd
 post_command=

@@ -15,6 +15,7 @@ empty_mode=0
 new_user_group=0
 display_mode=1
 display_max=400
+display_max_auto=1
 skip_md5=0
 base_uid=1000
 last_count=
