@@ -585,10 +585,28 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
   float:right;
   margin-bottom: 3px;
 }
-
 .ui_form_elements_wrapper_search * {
   line-height: initial !important;
 }
+
+.ui_form_elements_wrapper_search [data-class="ui_textbox_pagination_search"] {
+  padding-right: 17px;
+}
+.ui_form_elements_wrapper_search [data-class="ui_textbox_pagination_search"] + .ui_reset:active,
+.ui_form_elements_wrapper_search [data-class="ui_textbox_pagination_search"] + .ui_reset:focus,
+.ui_form_elements_wrapper_search [data-class="ui_textbox_pagination_search"] + .ui_reset {
+    position: absolute;
+    right: 17px;
+    min-height: 17px;
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+    outline: none;
+}
+.ui_form_elements_wrapper_search [data-class="ui_textbox_pagination_search"]:not([value=""]) + .ui_reset {
+    color: #dd4242;
+}
+
 
 .ui_form_elements_wrapper_paginator {
   float:right;
