@@ -2869,7 +2869,7 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
     my $items_per_page =
         $tconfig{'paginate-noauto'} ?
           $items_per_page :
-            (int($ENV{'HTTP_X_CLIENT_HEIGHT'}) ||
+            (int($ENV{'HTTP_X_CLIENT_PAGINATE'}) ||
               ($items_per_page_client ?
                 ((int(($items_per_page_client -
                     $top_offset_px - $bottom_offset_px) / $row_size_px))) : $items_per_page));
