@@ -487,14 +487,14 @@ body > .mode  {
   font-size: 110%;
   margin-bottom: 4px;
   filter: saturate(1.5);
-  animation: fadeIn 0.22s;
-  animation-delay: 0.11s;
+  animation: fadeIn 0.025s;
+  animation-delay: 0.25s;
   animation-fill-mode: forwards;
 }
 body > .mode + .wrapper.leftmenu {
   opacity: 0;
-  animation: fadeIn 0.22s;
-  animation-delay: 0.11s;
+  animation: fadeIn 0.025s;
+  animation-delay: 0.25s;
   animation-fill-mode: forwards; 
 }
 body > .mode img {
