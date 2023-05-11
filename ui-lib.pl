@@ -2869,7 +2869,7 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
     my $items_per_page =
         $tconfig{'paginate-noauto'} ?
           $items_per_page :
-            (int($ENV{'HTTP_X_CLIENT_HEIGHT'}) ||
+            (int($ENV{'HTTP_X_CLIENT_PAGINATE'}) ||
               ($items_per_page_client ?
                 ((int(($items_per_page_client -
                     $top_offset_px - $bottom_offset_px) / $row_size_px))) : $items_per_page));
@@ -2997,8 +2997,9 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
         # Paginator search form data
         $rv{$search_data} .= &ui_hidden("paginate${id}", $items_per_page, "$search_id${id}");
         $rv{$search_data} .= &ui_hidden("page${id}", 1, "$search_id${id}");
-        my $search_placeholder_length = length($search_placeholder);
-        $search_placeholder_length < 12 ? 12 : $search_placeholder_length;
+        my $search_placeholder_length = length($search_term) || length($search_placeholder);
+        $search_placeholder_length = $search_placeholder_length < 8 ? 8 : $search_placeholder_length;
+        $search_placeholder_length = 24 if ($search_placeholder_length >= 24);
         
         # Search box
         $rv{$search_data} .=
@@ -3008,7 +3009,7 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
         
         # Search reset using JS
         $rv{$search_data} .=
-          &ui_reset($text{'reset'}, undef,
+          &ui_reset('&#x26CC;', undef,
             "onclick='document.getElementById(\"$search_id${id}\").search${id}.value = \"\";".
             "document.getElementById(\"$search_id${id}\").submit()'");
         
