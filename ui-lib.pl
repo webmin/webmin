@@ -2865,12 +2865,14 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
 
     # Can pagination be done automatically
     # depending on the client screen height?
+    my $items_per_page_client = int($opts->{'client_height'} || get_http_cookie('client_height'));
     my $items_per_page =
         $tconfig{'paginate-noauto'} ?
           $items_per_page :
             (int($ENV{'HTTP_X_CLIENT_HEIGHT'}) ||
-              (int($opts->{'client_height'}) ?
-                ((int(($opts->{'client_height'} - $top_offset_px - $bottom_offset_px) / $row_size_px))) : $items_per_page));
+              ($items_per_page_client ?
+                ((int(($items_per_page_client -
+                    $top_offset_px - $bottom_offset_px) / $row_size_px))) : $items_per_page));
     # If caller wants specific pagination number,
     # e.g. a module config, use that instead
     if ($exported_form && $exported_form->{'paginate'}) {
@@ -2906,13 +2908,6 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
         #
         my $paginator_id = 'paginator-form';
         my $paginator_data = "$paginator_id-data";
-
-        # As clicking on pagination arrows send
-        # current screen height to the server
-        my $screenClickHeightGetter =
-          "onclick='this.href=this.href+\"&client_height=\"+document.documentElement.clientHeight'";
-        my $screenChangeHeightGetter =
-          "onchange='form.client_height.value=document.documentElement.clientHeight'";
 
         # Paginator form
         $rv{$paginator_id} =
@@ -2958,13 +2953,12 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
           &ui_link("$pagination_target?page${id}=$curent_page_prev_urlize".
           	"&search${id}=$search_term_urlize&paginate${id}=$items_per_page_urlize$exported_form_query",
               '<span>&nbsp;&#x23F4;&nbsp;</span>',
-                "@{[&html_escape($link_page_cls)]} @{[&html_escape($link_page_cls)]}_left$page_prev_disabled",
-                  $screenClickHeightGetter);
+                "@{[&html_escape($link_page_cls)]} @{[&html_escape($link_page_cls)]}_left$page_prev_disabled");
 
         # Page number input selector
         $rv{$paginator_data} .=
           &ui_textbox("page${id}", $curent_page, $total_pages_length, undef, $total_pages_length,
-                      "data-class='@{[&quote_escape($link_search_cls)]}' form='$paginator_id${id}' $screenChangeHeightGetter");
+                      "data-class='@{[&quote_escape($link_search_cls)]}' form='$paginator_id${id}'");
 
         # Out of pages text
         $rv{$paginator_data} .=
@@ -2976,8 +2970,7 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
           &ui_link("$pagination_target?page${id}=$curent_page_next_urlize".
             "&search${id}=$search_term_urlize&paginate${id}=$items_per_page_urlize$exported_form_query",
               '<span>&nbsp;&#x25B8;&nbsp;</span>',
-                "@{[&html_escape($link_page_cls)]} @{[&html_escape($link_page_cls)]}_right$page_next_disabled",
-                  $screenClickHeightGetter);
+                "@{[&html_escape($link_page_cls)]} @{[&html_escape($link_page_cls)]}_right$page_next_disabled");
 
         # Dynamically adding external form elements
         if ($exported_form) {
@@ -3011,7 +3004,7 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
         $rv{$search_data} .=
           &ui_textbox("search${id}", $search_term, $search_placeholder_length, undef, undef,
             "data-class='@{[&quote_escape($link_search_cls)]}_search' ".
-            "placeholder='@{[&quote_escape($search_placeholder)]}' form='$search_id${id}' $screenChangeHeightGetter");
+            "placeholder='@{[&quote_escape($search_placeholder)]}' form='$search_id${id}'");
         
         # Search reset using JS
         $rv{$search_data} .=
