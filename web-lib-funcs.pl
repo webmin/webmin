@@ -1090,6 +1090,7 @@ my $dir = $current_lang_info->{'dir'} ? "dir=\"$current_lang_info->{'dir'}\"" : 
 my $html_body = "<body bgcolor=\"#$bgcolor\" link=\"#$link\" vlink=\"#$link\" text=\"#$text\" style=\"height:100%\" $bgimage $tconfig{'inbody'} $dir $_[8]>\n";
 $html_body =~ s/\s+\>/>/g;
 print $html_body;
+print "<script>function _document_cookie_set_client_height(){document.cookie='client_height='+document.documentElement.clientHeight+'';}_document_cookie_set_client_height();window.onresize=_document_cookie_set_client_height</script>\n";
 
 if (defined(&theme_prebody)) {
 	&theme_prebody(@_);
@@ -12996,7 +12997,17 @@ if (!$@ && $locale_system) {
 return $locale_def;
 }
 
-$done_web_lib_funcs = 1;
+=head2 get_http_cookie(cookie-name)
+
+Returns a cookie value based on its name
+
+=cut
+sub get_http_cookie
+{
+my ($name) = @_;
+my ($value) = $ENV{'HTTP_COOKIE'} =~ /$name=(\d+)(;|\z)/;
+return $value;
+}
 
 =head2 create_wrapper(wrapper-path, module, script)
 
@@ -13056,5 +13067,7 @@ else {
 &close_tempfile(CMD);
 chmod(0755, $path);
 }
+
+$done_web_lib_funcs = 1;
 
 1;
