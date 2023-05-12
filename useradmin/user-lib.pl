@@ -2323,8 +2323,7 @@ while(@ginfo = &my_getgrent()) {
 	$gidgrp{$ginfo[2]} = $ginfo[0];
 	}
 &my_endgrent();
-
-my $upagination = $config{'display_max_auto'};
+my $upagination = scalar(@{$users}) > $config{'display_max'};
 if ($upagination) {
 	my $upagination_opts = \%in;
 	$upagination_opts->{'top_offset_px'} = 125;
@@ -2454,7 +2453,7 @@ foreach my $g (@$groups) {
 	}
 $anyedit = 0 if ($noboxes);
 
-my $gpagination = $config{'display_max_auto'};
+my $gpagination = scalar(@{$groups}) > $config{'display_max'};
 if ($gpagination) {
 	my $gpagination_opts = \%in;
 	$gpagination_opts->{'top_offset_px'} = 125;

@@ -41,7 +41,7 @@ if ($can_users) {
 	print &ui_tabs_start_tab("mode", "users");
 	}
 
-if (!$config{'display_max_auto'} &&
+if ($config{'display_mode'} != 1 &&
     @ulist > $config{'display_max'}) {
 	# Display advanced search form
 	print "<b>$text{'index_toomany'}</b><p>\n";
@@ -125,7 +125,7 @@ if ($can_groups) {
 	print &ui_tabs_start_tab("mode", "groups");
 	}
 
-if (!$config{'display_max_auto'} &&
+if ($config{'display_mode'} != 1 &&
     @glist > $config{'display_max'}) {
 	# Display group search form
 	print "<b>$text{'index_gtoomany'}</b><p>\n";
