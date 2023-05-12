@@ -2970,7 +2970,7 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
         $rv{$paginator_data} .=
           &ui_link("$pagination_target?page${id}=$curent_page_next_urlize".
             "&search${id}=$search_term_urlize&paginate${id}=$items_per_page_urlize$exported_form_query",
-              '<span>&nbsp;&#x25B8;&nbsp;</span>',
+              '<span>&nbsp;&#x23F5;&nbsp;</span>',
                 "@{[&html_escape($link_page_cls)]} @{[&html_escape($link_page_cls)]}_right$page_next_disabled",
                 "data-formid='$id'");
 
