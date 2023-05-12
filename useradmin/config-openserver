@@ -1,6 +1,5 @@
 homedir_perms=0755
 display_max=400
-display_max_auto=1
 files_remove=local
 user_files=/usr/lib/mkuser/$shell
 passwd_file=/etc/passwd
