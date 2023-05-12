@@ -61,7 +61,6 @@ if (@jail_blocks) {
 	print &ui_form_end([ [ undef, $text{'status_jail_unblock_ips'} ] ]);
 	print $pagination->{'search-form'};
 	print $pagination->{'paginator-form'};
-	print $pagination->{"client-height-script"};
 	}
 else {
 	print &text('status_jail_noactiveips', $jail);
