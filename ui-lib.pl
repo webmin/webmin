@@ -2953,7 +2953,8 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
           &ui_link("$pagination_target?page${id}=$curent_page_prev_urlize".
           	"&search${id}=$search_term_urlize&paginate${id}=$items_per_page_urlize$exported_form_query",
               '<span>&nbsp;&#x23F4;&nbsp;</span>',
-                "@{[&html_escape($link_page_cls)]} @{[&html_escape($link_page_cls)]}_left$page_prev_disabled");
+                "@{[&html_escape($link_page_cls)]} @{[&html_escape($link_page_cls)]}_left$page_prev_disabled",
+                "data-formid='$id'");
 
         # Page number input selector
         $rv{$paginator_data} .=
@@ -2970,7 +2971,31 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
           &ui_link("$pagination_target?page${id}=$curent_page_next_urlize".
             "&search${id}=$search_term_urlize&paginate${id}=$items_per_page_urlize$exported_form_query",
               '<span>&nbsp;&#x25B8;&nbsp;</span>',
-                "@{[&html_escape($link_page_cls)]} @{[&html_escape($link_page_cls)]}_right$page_next_disabled");
+                "@{[&html_escape($link_page_cls)]} @{[&html_escape($link_page_cls)]}_right$page_next_disabled",
+                "data-formid='$id'");
+
+        # Allow listing pages using "Alt + left/right" hotkeys
+        if (!$ENV{'HTTP_X_CLIENT_PAGINATE_NO_SCRIPT'}) {
+            $rv{$paginator_data} .=
+              "<script>\n".
+              "  document.addEventListener('keydown', function(a) {\n".
+              "      if (a.altKey) {\n".
+              "          if (a.which === 37 || a.which === 39) {\n".
+              "              let b = 'ui_link_pagination',\n".
+              "                  f = 'data-formid=\"$id\"',\n".
+              "                  d = 'disabled',\n".
+              "                  l = document.querySelector('.' + b + '_left[' + f + ']:not(.' + d + ')'),\n".
+              "                  r = document.querySelector('.' + b + '_right[' + f + ']:not(.' + d + ')');\n".
+              "              if (a.which === 37 && l && l.checkVisibility()) {\n".
+              "                  l.click();\n".
+              "              } else if (a.which === 39 && r && r.checkVisibility()) {\n".
+              "                  r.click();\n".
+              "              }\n".
+              "          }\n".
+              "      }\n".
+              "  });\n".
+              "</script>";
+            }
 
         # Dynamically adding external form elements
         if ($exported_form) {
