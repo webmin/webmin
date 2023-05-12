@@ -3026,22 +3026,6 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
           &ui_columns_row([&text('paginator_nosearchrs', &html_escape($search_term))],
                           ['colspan="'.$ui_column_colspan.'" align="center"']);
         }
-
-    # After all forms were added run JavaScript script to inject
-    # client height information into each form, which will enable
-    # automatic calculation of items per page to fit properly
-    $rv{"client-height-script"} =
-        "<script type='text/javascript'>".
-        " try {".
-        "    document.querySelectorAll('form').forEach(function(form) {".
-        "        const ffield = document.createElement('input');".
-        "        ffield.setAttribute('type', 'hidden');".
-        "        ffield.setAttribute('name', 'client_height');".
-        "        ffield.setAttribute('value', document.documentElement.clientHeight);".
-        "        !form.client_height && form.appendChild(ffield)".
-        "    })".
-        "  } catch (e) {};".
-		"</script>";
     }
 @$arr = @arr;
 return \%rv;

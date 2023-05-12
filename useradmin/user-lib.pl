@@ -2429,7 +2429,6 @@ if ($anyedit) {
 if ($upagination) {
 	print $upagination->{'paginator-form'};
 	print $upagination->{'search-form'};
-	print $upagination->{"client-height-script"};
 	}
 }
 
@@ -2524,7 +2523,6 @@ if ($anyedit && $access{'gdelete'}) {
 if ($gpagination) {
 	print $gpagination->{'paginator-form'};
 	print $gpagination->{'search-form'};
-	print $gpagination->{"client-height-script"};
 	}
 }
 
