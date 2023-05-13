@@ -3070,6 +3070,12 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
           &ui_columns_row([&text('paginator_nosearchrs', &html_escape($search_term))],
                           ['colspan="'.$ui_column_colspan.'" align="center"']);
         }
+
+        # Elements for the parent form, so after submission to
+        # make sure that we return to the right paginated page
+        $rv{'form'} = &ui_hidden("page${id}", $curent_page).
+                      &ui_hidden("paginate${id}", $items_per_page).
+                      &ui_hidden("search${id}", $search_term);
     }
 @$arr = @arr;
 return \%rv;
