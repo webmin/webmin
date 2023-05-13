@@ -10,6 +10,7 @@ $pftmsg = &text('index_pft', $text{'index_pft'.$pft} || $pft);
 
 $formno = 0;
 &ReadParse();
+
 @quarters = ( "width=25%", "width=25%", "width=25%", "width=25%" );
 
 # Get the user and group lists
@@ -40,7 +41,8 @@ if ($can_users) {
 	print &ui_tabs_start_tab("mode", "users");
 	}
 
-if (@ulist > $config{'display_max'}) {
+if ($config{'display_mode'} != 1 &&
+    @ulist > $config{'display_max'}) {
 	# Display advanced search form
 	print "<b>$text{'index_toomany'}</b><p>\n";
 	print &ui_form_start("search_user.cgi");
@@ -123,7 +125,8 @@ if ($can_groups) {
 	print &ui_tabs_start_tab("mode", "groups");
 	}
 
-if (@glist > $config{'display_max'}) {
+if ($config{'display_mode'} != 1 &&
+    @glist > $config{'display_max'}) {
 	# Display group search form
 	print "<b>$text{'index_gtoomany'}</b><p>\n";
 	print &ui_form_start("search_group.cgi");
