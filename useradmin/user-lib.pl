@@ -2325,12 +2325,12 @@ while(@ginfo = &my_getgrent()) {
 &my_endgrent();
 my $upagination = scalar(@{$users}) > $config{'display_max'};
 if ($upagination) {
-	my $upagination_opts = \%in;
-	$upagination_opts->{'top_offset_px'} = 125;
-	$upagination_opts->{'bottom_offset_px'} = 125;
-	$upagination_opts->{'_form-exports'} =
+	my $upopts = \%in;
+	$upopts->{'paginations'}->{'offset'}->{'top'} = 155;
+	$upopts->{'paginations'}->{'offset'}->{'bottom'} = 170;
+	$upopts->{'paginations'}->{'form'} =
 	    { 'mode' => 'users', 'colspan' => 6 };
-	$upagination = &ui_paginations($users, $upagination_opts);
+	$upagination = &ui_paginations($users, $upopts);
 	}
 
 # Work out if any users can be edited
@@ -2358,7 +2358,7 @@ if ($anyedit) {
 push(@linksrow, @$links);
 if ($upagination) {
 	push(@{$rightlinks},
-	  "&nbsp;$upagination->{'search-form-data'}");
+	  "&nbsp;$upagination->{'search'}->{'form-data'}");
 	}
 local @grid = ( &ui_links_row(\@linksrow), &ui_links_row($rightlinks) );
 print &ui_grid_table(\@grid, 2, 100, [ "align=left", "align=right" ]);
@@ -2415,10 +2415,10 @@ if (@$users) {
 		}
 	}
 else {
-	print $upagination->{'search-no-results'};
+	print $upagination->{'search'}->{'no-results'};
 	}
 print &ui_columns_end();
-print $upagination->{'paginator-form-data'}
+print $upagination->{'paginator'}->{'form-data'}
   if ($upagination);
 print &ui_links_row(\@linksrow);
 if ($anyedit) {
@@ -2426,8 +2426,8 @@ if ($anyedit) {
 	print &ui_form_end();
 	}
 if ($upagination) {
-	print $upagination->{'paginator-form'};
-	print $upagination->{'search-form'};
+	print $upagination->{'paginator'}->{'form'};
+	print $upagination->{'search'}->{'form'};
 	}
 }
 
@@ -2455,11 +2455,11 @@ $anyedit = 0 if ($noboxes);
 
 my $gpagination = scalar(@{$groups}) > $config{'display_max'};
 if ($gpagination) {
-	my $gpagination_opts = \%in;
-	$gpagination_opts->{'top_offset_px'} = 125;
-	$gpagination_opts->{'bottom_offset_px'} = 125;
-	$gpagination_opts->{'_form-exports'} = { 'mode' => 'groups', 'colspan' => 4 };
-	$gpagination = &ui_paginations($groups, $gpagination_opts);
+	my $gpopts = \%in;
+	$gpopts->{'paginations'}->{'offset'}->{'top'} = 155;
+	$gpopts->{'paginations'}->{'offset'}->{'bottom'} = 170;
+	$gpopts->{'paginations'}->{'form'} = { 'mode' => 'groups', 'colspan' => 4 };
+	$gpagination = &ui_paginations($groups, $gpopts);
 	}
 
 local @linksrow;
@@ -2471,7 +2471,7 @@ if ($anyedit && $access{'gdelete'}) {
 push(@linksrow, @$links);
 if ($gpagination) {
 	push(@{$rightlinks},
-	  "&nbsp;$gpagination->{'search-form-data'}");
+	  "&nbsp;$gpagination->{'search'}->{'form-data'}");
 	}
 local @grid = ( &ui_links_row(\@linksrow), &ui_links_row($rightlinks) );
 print &ui_grid_table(\@grid, 2, 100, [ "align=left", "align=right" ]);
@@ -2509,10 +2509,10 @@ if (@$groups) {
 		}
 	}
 else {
-	print $gpagination->{'search-no-results'};
+	print $gpagination->{'search'}->{'no-results'};
 	}
 print &ui_columns_end();
-print $gpagination->{'paginator-form-data'}
+print $gpagination->{'paginator'}->{'form-data'}
   if ($gpagination);
 print &ui_links_row(\@linksrow);
 if ($anyedit && $access{'gdelete'}) {
@@ -2520,8 +2520,8 @@ if ($anyedit && $access{'gdelete'}) {
 	print &ui_form_end();
 	}
 if ($gpagination) {
-	print $gpagination->{'paginator-form'};
-	print $gpagination->{'search-form'};
+	print $gpagination->{'paginator'}->{'form'};
+	print $gpagination->{'search'}->{'form'};
 	}
 }
 
