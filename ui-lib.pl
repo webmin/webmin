@@ -2831,17 +2831,14 @@ my $items_per_page       = int($tconfig{'paginate'}) || int($opts->{"paginate${i
 my $curent_page          = int($opts->{"page${id}"}) || 1;
 my $search_term          = &un_urlize($opts->{"search${id}"});
 my $pagination_target    = $opts->{'paginations'}->{'paginator'}->{'target'} || $script_name;
-my $pagination_action    = $opts->{'paginations'}->{'paginator'}->{'action'} || "get";
 my $paginator_wrap_class = $opts->{'paginations'}->{'paginator'}->{'class'}->{'wrap'} || "ui_form_elements_wrapper_paginator";
 my $link_page_cls        = $opts->{'paginations'}->{'paginator'}->{'class'}->{'links'} || 'ui_link_pagination';
 my $link_search_cls      = $opts->{'paginations'}->{'paginator'}->{'class'}->{'textbox'} || 'ui_textbox_pagination';
 my $text_showing_cls     = $opts->{'paginations'}->{'paginator'}->{'class'}->{'text'} || 'ui_showing_items';
 my $search_target        = $opts->{'paginations'}->{'search'}->{'target'} || $script_name;
-my $search_action        = $opts->{'paginations'}->{'search'}->{'action'} || "get";
 my $search_wrap_class    = $opts->{'paginations'}->{'search'}->{'class'}->{'wrap'} || "ui_form_elements_wrapper_search";
 my $search_placeholder   = $opts->{'paginations'}->{'search'}->{'placeholder'} || $text{'ui_searchok'};
 my $exported_form        = $opts->{'paginations'}->{'form'};
-my $exported_form_action = $opts->{'paginations'}->{'form-action'} || 'get';
 my $ui_column_colspan    = int($exported_form->{'colspan'} || 4);
 
 # If we have a search string filter existing content
@@ -2926,10 +2923,8 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
         my $paginator_data = "$paginator_id-data";
 
         # Paginator form
-        my $pagination_target_form = $exported_form_action eq 'get' ? 
-            "${pagination_target}?${exported_form_query}" : $pagination_target;
         $rv{'paginator'}->{'form'} =
-          &ui_form_start($pagination_target_form, &quote_escape($pagination_action), undef, "id='$paginator_id${id}'");
+          &ui_form_start($pagination_target, 'get', undef, "id='$paginator_id${id}'");
         $rv{'paginator'}->{'form'} .= &ui_form_end();
 
         # Paginator form data
@@ -3008,8 +3003,7 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
             }
 
         # Dynamically adding external form elements
-        if ($exported_form &&
-            $exported_form_action ne 'get') {
+        if ($exported_form) {
             foreach (keys %{$exported_form}) {
                 $rv{'paginator'}->{'form-data'} .=
                     &ui_hidden($_, $exported_form->{$_}, "$paginator_id${id}");
@@ -3027,11 +3021,8 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
         my $search_data = "$search_id-data";
 
         # Paginator search form
-        my $search_target_form = $exported_form_action eq 'get' ? 
-            "${search_target}?${exported_form_query}" : $search_target;
         $rv{'search'}->{'form'} = 
-            &ui_form_start($search_target_form,
-                &quote_escape($search_action), undef, "id='$search_id${id}'");
+            &ui_form_start($search_target, 'get', undef, "id='$search_id${id}'");
         $rv{'search'}->{'form'} .= &ui_form_end();
 
         # Paginator search form data
@@ -3054,8 +3045,7 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
             "document.getElementById(\"$search_id${id}\").submit()'");
         
         # Dynamically adding external form elements
-        if ($exported_form &&
-            $exported_form_action ne 'get') {
+        if ($exported_form) {
             foreach (keys %{$exported_form}) {
                 $rv{'search'}->{'form-data'} .=
                     &ui_hidden($_, $exported_form->{$_}, "$search_id${id}");
