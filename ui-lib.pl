@@ -2879,6 +2879,10 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
     if ($exported_form && $exported_form->{'paginate'}) {
         $items_per_page = $exported_form->{'paginate'};
         }
+    # Sanity check for minimum items per page
+   	if ($items_per_page <= 0) {
+   		$items_per_page = 2;
+   		}
 
     # Pagination
     my $totals_items_original = scalar(@arr);
