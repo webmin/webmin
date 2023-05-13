@@ -58,6 +58,7 @@ if (@jail_blocks) {
 	print $pagination->{'paginator'}->{'form-scripts'};
 	print &ui_hidden("jail", $jail);
 	print &ui_hidden("return", 1);
+	print $pagination->{'form'};
 	print &ui_links_row(\@links);
 	print &ui_form_end([ [ undef, $text{'status_jail_unblock_ips'} ] ]);
 	print $pagination->{'search'}->{'form'};
