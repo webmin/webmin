@@ -2809,8 +2809,9 @@ return "<div class='ui_div_row'><span>$label</span><span>$content</span></div>";
 
 =head2 ui_paginations(&array, &opts)
 
-Given array reference returns pagination buttons
-and search form to be used on the page
+Given an array reference, slice it and return hash
+reference with pagination buttons, search form
+and other elements to be inserted on the page 
 
 =cut
 sub ui_paginations
