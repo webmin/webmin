@@ -26,4 +26,4 @@ foreach my $ip (@ips) {
 
 # Log and redirect
 &webmin_log('update', 'jail', $jail) if (@jailips);
-&redirect($in{'return'} ? $ENV{'HTTP_REFERER'} : "list_status.cgi");
+&redirect($in{'return'} ? &get_referer_relative() : "list_status.cgi");
