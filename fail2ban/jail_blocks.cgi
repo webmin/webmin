@@ -32,13 +32,13 @@ while(<$fh>) {
 	}
 close($fh);
 
-my $pagination_opts = \%in;
-$pagination_opts->{'_form-exports'} = { 'jail' => $jail, 'colspan' => 4 };
 if (@jail_blocks) {
-	my $pagination = &ui_paginations(\@jail_blocks, $pagination_opts);
+	my $popts = \%in;
+	$popts->{'paginations'}->{'form'} = { 'jail' => $jail };
+	my $pagination = &ui_paginations(\@jail_blocks, $popts);
 	my @links = ( &select_all_link("ip"),
 	              &select_invert_link("ip"));
-	print $pagination->{'search-form-data'};
+	print $pagination->{'search'}->{'form-data'};
 	print &ui_form_start("unblock_jailed_ip.cgi", "post");
 	print &ui_links_row(\@links);
 	print &ui_columns_start([ "",
@@ -51,16 +51,18 @@ if (@jail_blocks) {
 			}
 		}
 	else {
-		print $pagination->{'search-no-results'};
+		print $pagination->{'search'}->{'no-results'};
 		}
 	print &ui_columns_end();
-	print $pagination->{'paginator-form-data'};
+	print $pagination->{'paginator'}->{'form-data'};
+	print $pagination->{'paginator'}->{'form-scripts'};
 	print &ui_hidden("jail", $jail);
 	print &ui_hidden("return", 1);
+	print $pagination->{'form'};
 	print &ui_links_row(\@links);
 	print &ui_form_end([ [ undef, $text{'status_jail_unblock_ips'} ] ]);
-	print $pagination->{'search-form'};
-	print $pagination->{'paginator-form'};
+	print $pagination->{'search'}->{'form'};
+	print $pagination->{'paginator'}->{'form'};
 	}
 else {
 	print &text('status_jail_noactiveips', $jail);

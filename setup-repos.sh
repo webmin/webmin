@@ -150,10 +150,6 @@ rpm)
   echo "gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-webmin" >>$rhel_repo_file
   echo "gpgcheck=1" >>$rhel_repo_file
   echo "  .. done"
-  # Clean meta
-  echo "  Cleaning repository metadata .."
-  $clean 1>/dev/null 2>&1
-  echo "  .. done"
   ;;
 deb)
   # Install our keys
@@ -164,10 +160,6 @@ deb)
   # Create repo file
   echo "  Setting up Webmin repository .."
   echo "deb [signed-by=/usr/share/keyrings/debian-webmin.gpg] $webmin_download/download/repository sarge contrib" >$debian_repo_file
-  echo "  .. done"
-  # Clean meta
-  echo "  Cleaning repository metadata .."
-  $clean 1>/dev/null 2>&1
   echo "  .. done"
   # Update meta
   echo "  Downloading repository metadata .."
