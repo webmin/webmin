@@ -2418,7 +2418,8 @@ else {
 	print $upagination->{'search'}->{'no-results'};
 	}
 print &ui_columns_end();
-print $upagination->{'paginator'}->{'form-data'}
+print $upagination->{'paginator'}->{'form-data'},
+      $upagination->{'paginator'}->{'form-scripts'}
   if ($upagination);
 print &ui_links_row(\@linksrow);
 if ($anyedit) {
@@ -2512,7 +2513,8 @@ else {
 	print $gpagination->{'search'}->{'no-results'};
 	}
 print &ui_columns_end();
-print $gpagination->{'paginator'}->{'form-data'}
+print $gpagination->{'paginator'}->{'form-data'},
+      $gpagination->{'paginator'}->{'form-scripts'}
   if ($gpagination);
 print &ui_links_row(\@linksrow);
 if ($anyedit && $access{'gdelete'}) {
