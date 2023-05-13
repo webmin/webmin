@@ -2824,24 +2824,24 @@ my %rv;
 my $id                   = $main::ui_paginations++;
 my @arr                  = @{$arr};
 my ($script_name)        = $0 =~ /([^\/]*\.cgi)$/;
-my $top_offset_px        = int($opts->{"top_offset_px"}) || 105;
-my $bottom_offset_px     = int($opts->{"bottom_offset_px"}) || 90;
-my $row_size_px          = int($opts->{"row_size_px"}) || 24;
+my $top_offset_px        = int($opts->{'paginations'}->{'offset'}->{'top'}) || 105;
+my $bottom_offset_px     = int($opts->{'paginations'}->{'offset'}->{'bottom'}) || 90;
+my $row_size_px          = int($opts->{'paginations'}->{'offset'}->{'row'}) || 24;
 my $items_per_page       = int($tconfig{'paginate'}) || int($opts->{"paginate${id}"}) || 20;
 my $curent_page          = int($opts->{"page${id}"}) || 1;
 my $search_term          = &un_urlize($opts->{"search${id}"});
-my $search_placeholder   = $opts->{'search_placeholder'} || $text{'ui_searchok'};
-my $pagination_target    = $opts->{'pagination_target'} || $script_name;
-my $pagination_action    = $opts->{'pagination_action'} || "post";
-my $search_target        = $opts->{'search_target'} || $script_name;
-my $search_action        = $opts->{'search_action'} || "post";
-my $paginator_wrap_class = $opts->{'paginator_wrap_class'} || "ui_form_elements_wrapper_paginator";
-my $search_wrap_class    = $opts->{'search_wrap_class'} || "ui_form_elements_wrapper_search";
-my $link_page_cls        = $opts->{'paginator_link_class'} || 'ui_link_pagination';
-my $link_search_cls      = $opts->{'paginator_textbox_class'} || 'ui_textbox_pagination';
-my $text_showing_cls     = $opts->{'paginator_text_showing'} || 'ui_showing_items';
-my $exported_form        = $opts->{'_form-exports'};
-my $ui_column_colspan    = int($exported_form->{'colspan'} || 2);
+my $pagination_target    = $opts->{'paginations'}->{'paginator'}->{'target'} || $script_name;
+my $pagination_action    = $opts->{'paginations'}->{'paginator'}->{'action'} || "post";
+my $paginator_wrap_class = $opts->{'paginations'}->{'paginator'}->{'class'}->{'wrap'} || "ui_form_elements_wrapper_paginator";
+my $link_page_cls        = $opts->{'paginations'}->{'paginator'}->{'class'}->{'links'} || 'ui_link_pagination';
+my $link_search_cls      = $opts->{'paginations'}->{'paginator'}->{'class'}->{'textbox'} || 'ui_textbox_pagination';
+my $text_showing_cls     = $opts->{'paginations'}->{'paginator'}->{'class'}->{'text'} || 'ui_showing_items';
+my $search_target        = $opts->{'paginations'}->{'search'}->{'target'} || $script_name;
+my $search_action        = $opts->{'paginations'}->{'search'}->{'action'} || "post";
+my $search_wrap_class    = $opts->{'paginations'}->{'search'}->{'class'}->{'wrap'} || "ui_form_elements_wrapper_search";
+my $search_placeholder   = $opts->{'paginations'}->{'search'}->{'placeholder'} || $text{'ui_searchok'};
+my $exported_form        = $opts->{'paginations'}->{'form'};
+my $ui_column_colspan    = int($exported_form->{'colspan'} || 4);
 
 # If we have a search string filter existing content
 if (ref($arr) eq 'ARRAY' && $arr->[0]) {
@@ -2868,7 +2868,7 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
     # depending on the client screen height?
     my $items_per_page_client = int($opts->{'client_height'} || get_http_cookie('client_height'));
     my $items_per_page =
-        $tconfig{'paginate-noauto'} ?
+        $tconfig{'paginate'} ?
           $items_per_page :
             (int($ENV{'HTTP_X_CLIENT_PAGINATE'}) ||
               ($items_per_page_client ?
@@ -2911,14 +2911,14 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
         my $paginator_data = "$paginator_id-data";
 
         # Paginator form
-        $rv{$paginator_id} =
+        $rv{'paginator'}->{'form'} =
           &ui_form_start($pagination_target, &quote_escape($pagination_action), undef, "id='$paginator_id${id}'");
-        $rv{$paginator_id} .= &ui_form_end();
+        $rv{'paginator'}->{'form'} .= &ui_form_end();
 
         # Paginator form data
-        $rv{$paginator_data} = &ui_hidden("search${id}", $search_term, "$paginator_id${id}")
+        $rv{'paginator'}->{'form-data'} = &ui_hidden("search${id}", $search_term, "$paginator_id${id}")
             if ($search_term);
-        $rv{$paginator_data} .= &ui_hidden("paginate${id}", $items_per_page, "$paginator_id${id}");
+        $rv{'paginator'}->{'form-data'} .= &ui_hidden("paginate${id}", $items_per_page, "$paginator_id${id}");
 
         # Calculate showing start and range numbers
         my $current_showing_start =
@@ -2928,7 +2928,7 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
             $totals_items_original : $current_showing_start + $items_per_page - 1);
 
         # Showing items range selector text
-        $rv{$paginator_data} .=
+        $rv{'paginator'}->{'form-data'} .=
           "<span class='@{[&quote_escape($text_showing_cls)]}-1'>@{[
               &text('paginator_showing_start', $current_showing_start,
                   $current_showing_range, $totals_items_original) ]} </span>";
@@ -2950,7 +2950,7 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
         my $total_pages_html_escape = &html_escape($total_pages);
 
         # Arrow link left
-        $rv{$paginator_data} .=
+        $rv{'paginator'}->{'form-data'} .=
           &ui_link("$pagination_target?page${id}=$curent_page_prev_urlize".
           	"&search${id}=$search_term_urlize&paginate${id}=$items_per_page_urlize$exported_form_query",
               '<span>&nbsp;&#x23F4;&nbsp;</span>',
@@ -2958,17 +2958,17 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
                 "data-formid='$id'");
 
         # Page number input selector
-        $rv{$paginator_data} .=
+        $rv{'paginator'}->{'form-data'} .=
           &ui_textbox("page${id}", $curent_page, $total_pages_length, undef, $total_pages_length,
                       "data-class='@{[&quote_escape($link_search_cls)]}' form='$paginator_id${id}'");
 
         # Out of pages text
-        $rv{$paginator_data} .=
+        $rv{'paginator'}->{'form-data'} .=
           " <span class='@{[&quote_escape($text_showing_cls)]}-2'>@{[&text('paginator_showing_end',
               $total_pages_html_escape)]}</span>";
 
         # Arrow link right
-        $rv{$paginator_data} .=
+        $rv{'paginator'}->{'form-data'} .=
           &ui_link("$pagination_target?page${id}=$curent_page_next_urlize".
             "&search${id}=$search_term_urlize&paginate${id}=$items_per_page_urlize$exported_form_query",
               '<span>&nbsp;&#x23F5;&nbsp;</span>',
@@ -2977,7 +2977,7 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
 
         # Allow listing pages using "Alt + left/right" hotkeys
         if (!$ENV{'HTTP_X_CLIENT_PAGINATE_NO_SCRIPT'}) {
-            $rv{$paginator_data} .=
+            $rv{'paginator'}->{'form-scripts'} .=
               "<script>\n".
               "  document.addEventListener('keydown', function(a) {\n".
               "      if (a.altKey) {\n".
@@ -3001,11 +3001,12 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
         # Dynamically adding external form elements
         if ($exported_form) {
             foreach (keys %{$exported_form}) {
-                $rv{$paginator_data} .= &ui_hidden($_, $exported_form->{$_}, "$paginator_id${id}");
+                $rv{'paginator'}->{'form-data'} .=
+                    &ui_hidden($_, $exported_form->{$_}, "$paginator_id${id}");
                 }
             }
-        $rv{$paginator_data} =
-          &ui_form_elements_wrapper($rv{$paginator_data}, "$paginator_id${id}",
+        $rv{'paginator'}->{'form-data'} =
+          &ui_form_elements_wrapper($rv{'paginator'}->{'form-data'}, "$paginator_id${id}",
                                     &quote_escape($paginator_wrap_class))
         }
     #
@@ -3016,25 +3017,26 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
         my $search_data = "$search_id-data";
 
         # Paginator search form
-        $rv{$search_id} = &ui_form_start($search_target,
-                              &quote_escape($search_action), undef, "id='$search_id${id}'");
-        $rv{$search_id} .= &ui_form_end();
+        $rv{'search'}->{'form'} = 
+            &ui_form_start($search_target,
+                &quote_escape($search_action), undef, "id='$search_id${id}'");
+        $rv{'search'}->{'form'} .= &ui_form_end();
 
         # Paginator search form data
-        $rv{$search_data} .= &ui_hidden("paginate${id}", $items_per_page, "$search_id${id}");
-        $rv{$search_data} .= &ui_hidden("page${id}", 1, "$search_id${id}");
+        $rv{'search'}->{'form-data'} .= &ui_hidden("paginate${id}", $items_per_page, "$search_id${id}");
+        $rv{'search'}->{'form-data'} .= &ui_hidden("page${id}", 1, "$search_id${id}");
         my $search_placeholder_length = length($search_term) || length($search_placeholder);
         $search_placeholder_length = $search_placeholder_length < 8 ? 8 : $search_placeholder_length;
         $search_placeholder_length = 24 if ($search_placeholder_length >= 24);
         
         # Search box
-        $rv{$search_data} .=
+        $rv{'search'}->{'form-data'} .=
           &ui_textbox("search${id}", $search_term, $search_placeholder_length, undef, undef,
             "data-class='@{[&quote_escape($link_search_cls)]}_search' ".
             "placeholder='@{[&quote_escape($search_placeholder)]}' form='$search_id${id}'");
         
         # Search reset using JS
-        $rv{$search_data} .=
+        $rv{'search'}->{'form-data'} .=
           &ui_reset('&#x26CC;', undef,
             "onclick='document.getElementById(\"$search_id${id}\").search${id}.value = \"\";".
             "document.getElementById(\"$search_id${id}\").submit()'");
@@ -3042,13 +3044,16 @@ if (ref($arr) eq 'ARRAY' && $arr->[0]) {
         # Dynamically adding external form elements
         if ($exported_form) {
             foreach (keys %{$exported_form}) {
-                $rv{$search_data} .= &ui_hidden($_, $exported_form->{$_}, "$search_id${id}");
+                $rv{'search'}->{'form-data'} .=
+                    &ui_hidden($_, $exported_form->{$_}, "$search_id${id}");
                 }
             }
-        $rv{$search_data} = &ui_form_elements_wrapper($rv{$search_data}, "$search_id${id}", &quote_escape($search_wrap_class));
+        $rv{'search'}->{'form-data'} =
+            &ui_form_elements_wrapper($rv{'search'}->{'form-data'},
+                "$search_id${id}", &quote_escape($search_wrap_class));
         
         # Search no results
-        $rv{"search-no-results"} =
+        $rv{'search'}->{'no-results'} =
           &ui_columns_row([&text('paginator_nosearchrs', &html_escape($search_term))],
                           ['colspan="'.$ui_column_colspan.'" align="center"']);
         }
