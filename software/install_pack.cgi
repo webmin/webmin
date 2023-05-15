@@ -76,7 +76,7 @@ elsif ($in{source} == 2) {
 			      \&progress_callback);
 		}
 	else {
-		&install_error(&text('install_eurl', $in{'url'}));
+		&install_error(&text('install_eurl', &html_escape($in{'url'})));
 		}
 	&install_error(&html_escape($error)) if ($error);
 	$source = $in{'url'};

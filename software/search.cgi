@@ -71,7 +71,7 @@ if (@match) {
 	print &ui_form_end([ [ undef, $text{'search_delete'} ] ]);
 	}
 else {
-	print "<b>",&text('search_nomatch', "<tt>$s</tt>"),"</b><p>\n";
+	print "<b>",&text('search_nomatch', "<tt>@{[&html_escape($s)]}</tt>"),"</b><p>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});
