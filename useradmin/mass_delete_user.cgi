@@ -25,7 +25,7 @@ if ($in{'disable'}) {
 	if ($in{'confirmed'}) {
 		foreach $user (@dlist) {
 			# Show username
-			print "<b>",&text('dmass_doing', $user->{'user'}),"</b><br>\n";
+			print "<b>",&text('dmass_doing', &html_escape($user->{'user'})),"</b><br>\n";
 			print "<ul>\n";
 
 			# Run the before command
@@ -83,7 +83,7 @@ elsif ($in{'enable'}) {
 
 	foreach $user (@dlist) {
 		# Show username
-		print "<b>",&text('emass_doing', $user->{'user'}),"</b><br>\n";
+		print "<b>",&text('emass_doing', &html_escape($user->{'user'})),"</b><br>\n";
 		print "<ul>\n";
 
 		# Run the before command
@@ -136,7 +136,7 @@ else {
 	if ($in{'confirmed'}) {
 		foreach $user (@dlist) {
 			# Show username
-			print "<b>",&text('umass_doing', $user->{'user'}),"</b><br>\n";
+			print "<b>",&text('umass_doing', &html_escape($user->{'user'})),"</b><br>\n";
 			print "<ul>\n";
 
 			# Run the before command
