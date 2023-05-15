@@ -125,7 +125,7 @@ if (@others) {
 			}
 		push(@cols, $o->{'active'} ? $text{'yes'} :
 				    "<font color=#ff0000>$text{'no'}</font>");
-		push(@cols, $o->{'desc'});
+		push(@cols, &html_escape($o->{'desc'}));
 		push(@cols, &ui_link("save_log.cgi?oidx=$o->{'mindex'}".
 			   "&omod=$o->{'mod'}&view=1", $text{'index_view'}) );
 		print &ui_columns_row(\@cols);
@@ -141,7 +141,7 @@ foreach $e (&extra_log_files()) {
 		push(@cols, "");
 		}
 	push(@cols, $text{'yes'});
-	push(@cols, $e->{'desc'});
+	push(@cols, &html_escape($e->{'desc'}));
 	push(@cols, &ui_link("save_log.cgi?extra=$e->{'file'}&view=1", $text{'index_view'}) );
 	print &ui_columns_row(\@cols);
 	}
