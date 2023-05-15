@@ -31,7 +31,7 @@ if (!$config{'delete_root'} && $delete_sys) {
 if ($in{'confirmed'}) {
 	foreach $group (@dlist) {
 		# Show group name
-		print "<b>",&text('gmass_doing', $group->{'group'}),"</b><br>\n";
+		print "<b>",&text('gmass_doing', &html_escape($group->{'group'})),"</b><br>\n";
 		print "<ul>\n";
 
 		# Delete from other modules
@@ -72,7 +72,7 @@ else {
 		foreach $u (&list_users()) {
 			if ($u->{'gid'} == $group->{'gid'}) {
 				print "<b>",&text('gmass_eprimary',
-					$group->{'group'}, $u->{'user'}),
+					&html_escape($group->{'group'}), $u->{'user'}),
 					"</b> <p>\n";
 				&ui_print_footer("", $text{'index_return'});
 				exit;
