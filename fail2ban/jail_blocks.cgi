@@ -14,7 +14,7 @@ my $jail = $in{'jail'};
 my $out = &backquote_logged("$config{'client_cmd'} status 2>&1 </dev/null");
 my ($jail_list) = $out =~ /jail\s+list:\s*(.*)/im;
 my @jails = split(/,\s*/, $jail_list);
-&indexof($jail, @jails) > -1 || error('Unknown jail');
+&indexof($jail, @jails) > -1 || error($text{'status_err_unknownjail'});
 
 &ui_print_header("$jail", $text{'status_title3'}, "");
 my $fh = 'jailinfo';
