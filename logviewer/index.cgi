@@ -102,7 +102,7 @@ if ($config{'others'} && $access{'others'}) {
 # Display extra log files
 foreach $e (&extra_log_files()) {
 	local @cols;
-	push(@cols, &text('index_file', $e->{'file'}));
+	push(@cols, &text('index_file', &html_escape($e->{'file'})));
 	push(@cols, $e->{'desc'});
 	push(@cols, &ui_link("view_log.cgi?extra=$e->{'file'}&view=1", $text{'index_view'}) );
 	push(@col3, \@cols);
