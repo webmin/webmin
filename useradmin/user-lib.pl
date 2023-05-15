@@ -1618,6 +1618,7 @@ if ($config{'max_length'} && length($username) > $config{'max_length'}) {
 local $re = $config{'username_re'};
 return &text('usave_ere', $re)
 	if ($re && !eval { $username =~ /^$re$/ });
+return $text{'usave_eltgt'} if ($username =~ /<|>/);
 return undef;
 }
 

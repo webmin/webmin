@@ -42,8 +42,8 @@ else {
 	$access{'gcreate'}==1 || &error($text{'gsave_ecreate'});
 	$in{'group'} =~ /^[^:\t]+$/ ||
 		&error(&text('gsave_ebadname', $in{'group'}));
-	$config{'max_length'} && length($in{'group'}) > $config{'max_length'} &&
-		&error(&text('gsave_elength', $config{'max_length'}));
+	$err = &check_username_restrictions($in{'group'});
+	&error($err) if ($err);
 	&my_getgrnam($in{'group'}) &&
 		&error(&text('gsave_einuse', $in{'group'}));
 	$group{'group'} = $in{'group'};
