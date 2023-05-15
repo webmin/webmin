@@ -161,6 +161,10 @@ deb)
   echo "  Setting up Webmin repository .."
   echo "deb [signed-by=/usr/share/keyrings/debian-webmin.gpg] $webmin_download/download/repository sarge contrib" >$debian_repo_file
   echo "  .. done"
+  # Clean meta
+  echo "  Cleaning repository metadata .."
+  $clean 1>/dev/null 2>&1
+  echo "  .. done"
   # Update meta
   echo "  Downloading repository metadata .."
   $update 1>/dev/null 2>&1

@@ -91,7 +91,7 @@ if ($config{'others'} && $access{'others'}) {
 			else {
 				push(@cols, &text('index_cmd', "<tt>".$o->{'cmd'}."</tt>"));
 				}
-			push(@cols, $o->{'desc'});
+			push(@cols, &html_escape($o->{'desc'}));
 			push(@cols, &ui_link("view_log.cgi?oidx=$o->{'mindex'}".
 				"&omod=$o->{'mod'}&view=1", $text{'index_view'}) );
 			push(@col2, \@cols);
@@ -102,8 +102,8 @@ if ($config{'others'} && $access{'others'}) {
 # Display extra log files
 foreach $e (&extra_log_files()) {
 	local @cols;
-	push(@cols, &text('index_file', $e->{'file'}));
-	push(@cols, $e->{'desc'});
+	push(@cols, &text('index_file', &html_escape($e->{'file'})));
+	push(@cols, &html_escape($e->{'desc'}));
 	push(@cols, &ui_link("view_log.cgi?extra=$e->{'file'}&view=1", $text{'index_view'}) );
 	push(@col3, \@cols);
 	}

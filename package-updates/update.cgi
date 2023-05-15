@@ -121,7 +121,7 @@ else {
 				push(@pkgnames, $p);
 				$pkgsystem ||= $s;
 				}
-			print &text($msg, "<tt>".join(" ", @pkgnames)."</tt>"),
+			print &text($msg, "<tt>".&html_escape(join(" ", @pkgnames))."</tt>"),
 			      "<br>\n";
 			print "<ul>\n";
 			@got = &package_install_multiple(
@@ -133,7 +133,7 @@ else {
 			foreach my $ps (@pkgs) {
 				($p, $s) = split(/\//, $ps);
 				next if ($donedep{$p});
-				print &text($msg, "<tt>$p</tt>"),"<br>\n";
+				print &text($msg, "<tt>@{[&html_escape($p)]}</tt>"),"<br>\n";
 				print "<ul>\n";
 				@pgot = &package_install(
 					$p, $s, $in{'mode'} eq 'new');

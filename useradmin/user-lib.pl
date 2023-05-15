@@ -2324,6 +2324,15 @@ while(@ginfo = &my_getgrent()) {
 	$gidgrp{$ginfo[2]} = $ginfo[0];
 	}
 &my_endgrent();
+my $upagination = scalar(@{$users}) > $config{'display_max'};
+if ($upagination) {
+	my $upopts = \%in;
+	$upopts->{'paginations'}->{'offset'}->{'top'} = 155;
+	$upopts->{'paginations'}->{'offset'}->{'bottom'} = 170;
+	$upopts->{'paginations'}->{'form'} =
+	    { 'mode' => 'users', 'colspan' => 6 };
+	$upagination = &ui_paginations($users, $upopts);
+	}
 
 # Work out if any users can be edited
 local $anyedit;
@@ -2348,6 +2357,10 @@ if ($anyedit) {
 			&select_invert_link("d", $_[1]));
 	}
 push(@linksrow, @$links);
+if ($upagination) {
+	push(@{$rightlinks},
+	  "&nbsp;$upagination->{'search'}->{'form-data'}");
+	}
 local @grid = ( &ui_links_row(\@linksrow), &ui_links_row($rightlinks) );
 print &ui_grid_table(\@grid, 2, 100, [ "align=left", "align=right" ]);
 
@@ -2371,40 +2384,52 @@ if ($lshow) {
 		}
 	}
 local $u;
-foreach $u (@$users) {
-	$u->{'real'} =~ s/,.*$// if ($config{'extra_real'} ||
-				     $u->{'real'} =~ /,$/);
-	local @cols;
-	push(@cols, "") if ($anyedit && $u->{'noedit'});
-	push(@cols, &user_link($u));
-	push(@cols, $u->{'uid'});
-	push(@cols, &html_escape($gidgrp{$u->{'gid'}} || $u->{'gid'}));
-	push(@cols, &html_escape($u->{'real'}));
-	push(@cols, &html_escape($u->{'home'}));
-	push(@cols, &html_escape($u->{'shell'}));
-	if ($lshow) {
-		# Show last login, in local format after Unix time conversion
-		my $ll = $llogin->{$u->{'user'}};
-		if (defined(&mailboxes::parse_mail_date)) {
-			my $tm = &mailboxes::parse_mail_date($ll);
-			if ($tm) {
-				$ll = &make_date($tm);
+if (@$users) {
+	foreach $u (@$users) {
+		$u->{'real'} =~ s/,.*$// if ($config{'extra_real'} ||
+					     $u->{'real'} =~ /,$/);
+		local @cols;
+		push(@cols, "") if ($anyedit && $u->{'noedit'});
+		push(@cols, &user_link($u));
+		push(@cols, $u->{'uid'});
+		push(@cols, &html_escape($gidgrp{$u->{'gid'}} || $u->{'gid'}));
+		push(@cols, &html_escape($u->{'real'}));
+		push(@cols, &html_escape($u->{'home'}));
+		push(@cols, &html_escape($u->{'shell'}));
+		if ($lshow) {
+			# Show last login, in local format after Unix time conversion
+			my $ll = $llogin->{$u->{'user'}};
+			if (defined(&mailboxes::parse_mail_date)) {
+				my $tm = &mailboxes::parse_mail_date($ll);
+				if ($tm) {
+					$ll = &make_date($tm);
+					}
 				}
+			push(@cols, &html_escape($ll));
 			}
-		push(@cols, &html_escape($ll));
-		}
-	if ($u->{'noedit'}) {
-		print &ui_columns_row(\@cols, \@tds);
-		}
-	else {
-		print &ui_checked_columns_row(\@cols, \@tds, "d", $u->{'user'});
+		if ($u->{'noedit'}) {
+			print &ui_columns_row(\@cols, \@tds);
+			}
+		else {
+			print &ui_checked_columns_row(\@cols, \@tds, "d", $u->{'user'});
+			}
 		}
 	}
+else {
+	print $upagination->{'search'}->{'no-results'};
+	}
 print &ui_columns_end();
+print $upagination->{'paginator'}->{'form-data'},
+      $upagination->{'paginator'}->{'form-scripts'}
+  if ($upagination);
 print &ui_links_row(\@linksrow);
 if ($anyedit) {
 	print $buttons;
 	print &ui_form_end();
+	}
+if ($upagination) {
+	print $upagination->{'paginator'}->{'form'};
+	print $upagination->{'search'}->{'form'};
 	}
 }
 
@@ -2430,6 +2455,15 @@ foreach my $g (@$groups) {
 	}
 $anyedit = 0 if ($noboxes);
 
+my $gpagination = scalar(@{$groups}) > $config{'display_max'};
+if ($gpagination) {
+	my $gpopts = \%in;
+	$gpopts->{'paginations'}->{'offset'}->{'top'} = 155;
+	$gpopts->{'paginations'}->{'offset'}->{'bottom'} = 170;
+	$gpopts->{'paginations'}->{'form'} = { 'mode' => 'groups', 'colspan' => 4 };
+	$gpagination = &ui_paginations($groups, $gpopts);
+	}
+
 local @linksrow;
 if ($anyedit && $access{'gdelete'}) {
 	print &ui_form_start("mass_delete_group.cgi", "post");
@@ -2437,6 +2471,10 @@ if ($anyedit && $access{'gdelete'}) {
 			&select_invert_link("gd", $formno) );
 	}
 push(@linksrow, @$links);
+if ($gpagination) {
+	push(@{$rightlinks},
+	  "&nbsp;$gpagination->{'search'}->{'form-data'}");
+	}
 local @grid = ( &ui_links_row(\@linksrow), &ui_links_row($rightlinks) );
 print &ui_grid_table(\@grid, 2, 100, [ "align=left", "align=right" ]);
 
@@ -2449,32 +2487,44 @@ print &ui_columns_start([
 	$anydesc ? ( $text{'gedit_desc'} ) : ( ),
 	$text{'gedit_members'} ], 100, 0, \@tds);
 local $g;
-foreach $g (@$groups) {
-	local $members = join(" ", split(/,/, $g->{'members'}));
-	local @cols;
-	if ($anyedit && ($g->{'noedit'} || !$access{'gdelete'})) {
-		# Need an explicitly blank first column
-		push(@cols, "");
-		}
-	push(@cols, &group_link($g));
-	push(@cols, $g->{'gid'});
-	if ($anydesc) {
-		push(@cols, &html_escape($g->{'desc'}));
-		}
-	push(@cols, &html_escape($members));
-	if ($g->{'noedit'} || !$access{'gdelete'}) {
-		print &ui_columns_row(\@cols, \@tds);
-		}
-	else {
-		print &ui_checked_columns_row(\@cols, \@tds, "gd",
-					      $g->{'group'});
+if (@$groups) {
+	foreach $g (@$groups) {
+		local $members = join(" ", split(/,/, $g->{'members'}));
+		local @cols;
+		if ($anyedit && ($g->{'noedit'} || !$access{'gdelete'})) {
+			# Need an explicitly blank first column
+			push(@cols, "");
+			}
+		push(@cols, &group_link($g));
+		push(@cols, $g->{'gid'});
+		if ($anydesc) {
+			push(@cols, &html_escape($g->{'desc'}));
+			}
+		push(@cols, &html_escape($members));
+		if ($g->{'noedit'} || !$access{'gdelete'}) {
+			print &ui_columns_row(\@cols, \@tds);
+			}
+		else {
+			print &ui_checked_columns_row(\@cols, \@tds, "gd",
+						      $g->{'group'});
+			}
 		}
 	}
+else {
+	print $gpagination->{'search'}->{'no-results'};
+	}
 print &ui_columns_end();
+print $gpagination->{'paginator'}->{'form-data'},
+      $gpagination->{'paginator'}->{'form-scripts'}
+  if ($gpagination);
 print &ui_links_row(\@linksrow);
 if ($anyedit && $access{'gdelete'}) {
 	print &ui_submit($text{'index_gmass'}, "delete"),"<br>\n";
 	print &ui_form_end();
+	}
+if ($gpagination) {
+	print $gpagination->{'paginator'}->{'form'};
+	print $gpagination->{'search'}->{'form'};
 	}
 }
 

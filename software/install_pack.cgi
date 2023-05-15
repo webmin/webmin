@@ -76,7 +76,7 @@ elsif ($in{source} == 2) {
 			      \&progress_callback);
 		}
 	else {
-		&install_error(&text('install_eurl', $in{'url'}));
+		&install_error(&text('install_eurl', &html_escape($in{'url'})));
 		}
 	&install_error(&html_escape($error)) if ($error);
 	$source = $in{'url'};
@@ -171,7 +171,7 @@ print &ui_form_end([ [ undef, $text{'install_ok'} ] ]);
 
 sub install_error
 {
-print "<br><b>$main::whatfailed : $_[0]</b> <p>\n";
+print "$main::whatfailed : $_[0] <p>\n";
 &ui_print_footer("", $text{'index_return'});
 exit;
 }

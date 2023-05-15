@@ -195,6 +195,7 @@ status_err_nojail=No jails have been selected
 status_err_noips=No IP has been selected
 status_err_unban=Cannot un-ban $1 IP address
 status_err_unbanjail=Cannot un-ban $1 jail
+status_err_unknownjail=Unknown jail
 
 syslog_logtarget=Fail2Ban action log
 
