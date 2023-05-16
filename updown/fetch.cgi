@@ -68,10 +68,8 @@ if ($ENV{'PATH_INFO'}) {
 				# See if it is really text
 				$out = &backquote_command("file ".
 					quotemeta(&resolve_links($file)));
+				$type = "text/plain" if ($out =~ /text|script/);
 				}
-			$type = "text/plain"
-				if ($type =~ /text|java|script/ ||
-				    $out =~ /text|java|script/);
 			}
 		else {
 			print "Content-Disposition: Attachment\n";
