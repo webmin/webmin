@@ -84,10 +84,17 @@ if ($ENV{'PATH_INFO'}) {
 		print "Content-length: $st[7]\n";
 		print "X-Content-Type-Options: nosniff\n";
 		print "Content-type: $type\n\n";
-		while(read(FILE, $buffer, &get_buffer_size_binary())) {
-			print("$buffer");
+		if ($type =~ /text\/html/i) {
+			local $/;
+			$buffer = <FILE>;
+			print &filter_javascript($buffer);
 			}
-		close(FILE);
+		else {
+			while(read(FILE, $buffer, &get_buffer_size_binary())) {
+				print $buffer;
+				}
+			close(FILE);
+			}
 		}
 
 	# Switch back to root
