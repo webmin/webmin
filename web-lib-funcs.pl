@@ -13072,7 +13072,7 @@ if (!$@) {
 			$rs{'redir'}->{'path'} = $path;
 			}
 		}
-}
+	}
 else {
 	# Build headers
 	my @headers;
