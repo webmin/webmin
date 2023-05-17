@@ -13039,6 +13039,8 @@ eval "use LWP::UserAgent";
 if (!$@) {
 	my $browser = new LWP::UserAgent();
 	$browser->timeout($timeout);
+	$browser->ssl_opts(verify_hostname => 0,
+                       SSL_verify_mode => 0x00);
 	$browser->max_redirect(30);
 	$browser->agent("Webmin");
 	if ($page ne '/') {
