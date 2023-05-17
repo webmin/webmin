@@ -13114,6 +13114,20 @@ else {
 			}
 		}
 	}
+
+# Finally test if redirected URL can be resolved
+my $redir_host = $rs{'redir'}->{'host'};
+if ($redir_host) {
+	my $resolved4 = &to_ipaddress($redir_host);
+	my $resolved6 = &to_ip6address($redir_host);
+	if (!$resolved4 && !$resolved6) {
+		delete $rs{'redir'};
+		}
+	else {
+		$rs{'redir'}->{'resolved'}->{'ipv4'} = $resolved4;
+		$rs{'redir'}->{'resolved'}->{'ipv6'} = $resolved6;
+		}
+	}
 return \%rs;
 }
 
