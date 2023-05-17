@@ -13035,85 +13035,46 @@ $rs{'proto'} = $proto;
 $rs{'host'} = $host;
 $rs{'port'} = $port;
 $rs{'page'} = $page;
-eval "use LWP::UserAgent";
-if (!$@) {
-	my $browser = new LWP::UserAgent();
-	$browser->timeout($timeout);
-	$browser->ssl_opts(verify_hostname => 0,
-                       SSL_verify_mode => 0x00);
-	$browser->max_redirect(30);
-	$browser->agent("Webmin");
-	if ($page ne '/') {
-		$url =~ s/\/$//;
-		$url .= "$page";
-		}
-	my $response = $browser->get($url);
-	if (!$response->is_success()) {
-		$rs{'error'} = $response->status_line;
-		}
-	else {
-		my $request = $response->request();
-		if ($request->as_string() =~ /\s((https?):\/\/([^:\/?#]*)(?:\:([0-9]+))?(.*?))\s/mi) {
-			my $rurl = $1;
-			my $proto = $2;
-			my $host = $3;
-			my $uport = $4;
-			my $path = $5;
-			$rurl =~ s/\/$//;
-			$rs{'redir'}->{'url'} = $rurl;
-			my $port = '80' if (!$uport);
-			if ($proto eq 'https') {
-				$port = '443' if (!$uport);
-				}
-			$port ||= $uport;
-			$rs{'redir'}->{'proto'} = $proto;
-			$rs{'redir'}->{'host'} = $host;
-			$rs{'redir'}->{'port'} = $port;
-			$rs{'redir'}->{'path'} = $path;
-			}
-		}
+
+# Build headers
+my @headers;
+push(@headers, [ "Host", $host ]);
+push(@headers, [ "User-agent", "Webmin" ]);
+push(@headers, [ "Accept-language", "en" ]);
+
+# Actually download it
+$main::download_timed_out = undef;
+local $SIG{ALRM} = \&download_timeout;
+alarm($timeout);
+my $h = &make_http_connection($host, $port, $ssl, "GET", $page, \@headers);
+alarm(0);
+$h = $main::download_timed_out if ($main::download_timed_out);
+if (ref($h)) {
+	&write_http_connection($h, "\r\n");
+	}
+&complete_http_download($h, undef, \$error, undef, undef, $host, $port,
+			undef, $ssl, 1, $timeout);
+if (ref($h)) {
+	$rs{'handle'} = $h
 	}
 else {
-	# Build headers
-	my @headers;
-	push(@headers, [ "Host", $host ]);
-	push(@headers, [ "User-agent", "Webmin" ]);
-	push(@headers, [ "Accept-language", "en" ]);
-
-	# Actually download it
-	$main::download_timed_out = undef;
-	local $SIG{ALRM} = \&download_timeout;
-	alarm($timeout);
-	my $h = &make_http_connection($host, $port, $ssl, "GET", $page, \@headers);
-	alarm(0);
-	$h = $main::download_timed_out if ($main::download_timed_out);
-	if (ref($h)) {
-		&write_http_connection($h, "\r\n");
-		}
-	&complete_http_download($h, undef, \$error, undef, undef, $host, $port,
-				undef, $ssl, 1, $timeout);
-	if (ref($h)) {
-		$rs{'handle'} = $h
-		}
-	else {
-		$rs{'error'} = $h
-		}
-	if (ref($h)) {
-		if ($h->{'buffer'} =~ /has\s+moved\s+<a\s+href=['"](.*?)['"]/mi) {
-			my $rurl = $1;
-			$rurl =~ s/\/$//;
-			$rs{'redir'}->{'url'} = $rurl;
-			my ($proto, $host, $uport, $path) = $rurl =~ /^(https?):\/\/([^:\/?#]*)(?:\:([0-9]+))?(.*)/;
-			my $port = '80' if (!$uport);
-			if ($proto eq 'https') {
-				$port = '443' if (!$uport);
-				}
-			$port ||= $uport;
-			$rs{'redir'}->{'proto'} = $proto;
-			$rs{'redir'}->{'host'} = $host;
-			$rs{'redir'}->{'port'} = $port;
-			$rs{'redir'}->{'path'} = $path;
+	$rs{'error'} = $h
+	}
+if (ref($h)) {
+	if ($h->{'buffer'} =~ /has\s+moved\s+<a\s+href=['"](.*?)['"]/mi) {
+		my $rurl = $1;
+		$rurl =~ s/\/$//;
+		$rs{'redir'}->{'url'} = $rurl;
+		my ($proto, $host, $uport, $path) = $rurl =~ /^(https?):\/\/([^:\/?#]*)(?:\:([0-9]+))?(.*)/;
+		my $port = '80' if (!$uport);
+		if ($proto eq 'https') {
+			$port = '443' if (!$uport);
 			}
+		$port ||= $uport;
+		$rs{'redir'}->{'proto'} = $proto;
+		$rs{'redir'}->{'host'} = $host;
+		$rs{'redir'}->{'port'} = $port;
+		$rs{'redir'}->{'path'} = $path;
 		}
 	}
 
