@@ -12997,6 +12997,86 @@ if (!$@ && $locale_system) {
 return $locale_def;
 }
 
+=head2 get_http_redirect(url, [page])
+
+Check if given URL redirects somewhere
+
+The parameters are :
+
+=item url - Given URL to check if it redirects anywhere, e.g. https://google.com
+
+=item page - Path in URL, e.g. /about as in https://www.google.com/about
+
+=cut
+
+sub get_http_redirect
+{
+my ($url, $page) = @_;
+my ($out, $error, $con_err);
+my ($proto, $host, $uport) = $url =~ /^(https?):\/\/([^:\/?#]*)(?:\:([0-9]+))?/;
+my ($ssl, $port) = (0, undef);
+$port = '80' if (!$uport);
+if ($proto eq 'https') {
+	$ssl = 1;
+	$port = '443' if (!$uport);
+	}
+
+# Set default port and page
+$port ||= $uport;
+$page ||= '/';
+
+# Build headers
+my @headers;
+push(@headers, [ "Host", $host ]);
+push(@headers, [ "User-agent", "Webmin" ]);
+push(@headers, [ "Accept-language", "en" ]);
+
+# Actually download it
+$main::download_timed_out = undef;
+local $SIG{ALRM} = \&download_timeout;
+$timeout = 30 if (!defined($timeout));
+alarm($timeout) if ($timeout);
+my $h = &make_http_connection($host, $port, $ssl, "GET", $page, \@headers);
+alarm(0) if ($timeout);
+$h = $main::download_timed_out if ($main::download_timed_out);
+if (ref($h)) {
+	&write_http_connection($h, "\r\n");
+	}
+&complete_http_download($h, undef, \$error, undef, undef, $host, $port,
+			undef, $ssl, 1, $timeout);
+my %rs;
+$rs{'url'} = $url;
+$rs{'proto'} = $proto;
+$rs{'host'} = $host;
+$rs{'port'} = $port;
+$rs{'page'} = $page;
+if (ref($h)) {
+	$rs{'handle'} = $h
+	}
+else {
+	$rs{'error'} = $h
+	}
+if (ref($h)) {
+
+	if ($h->{'buffer'} =~ /has\s+moved\s+<a\s+href=['"](.*?)['"]/mi) {
+		my $rurl = $1;
+		$rurl =~ s/\/$//;
+		$rs{'redir'}->{'url'} = $rurl;
+		my ($proto, $host, $uport, $path) = $rurl =~ /^(https?):\/\/([^:\/?#]*)(?:\:([0-9]+))?(.*)/;
+		my $port = '80' if (!$uport);
+		if ($proto eq 'https') {
+			$port = '443' if (!$uport);
+			}
+		$port ||= $uport;
+		$rs{'redir'}->{'proto'} = $proto;
+		$rs{'redir'}->{'host'} = $host;
+		$rs{'redir'}->{'port'} = $port;
+		$rs{'redir'}->{'path'} = $path;
+		}
+	}
+return \%rs;
+}
+
 =head2 get_http_cookie(cookie-name)
 
 Returns a cookie value based on its name
