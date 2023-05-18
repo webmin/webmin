@@ -13033,7 +13033,7 @@ Example of usage and return data:
 sub get_http_redirect
 {
 my ($url, $page, $timeout) = @_;
-state @prs, %lrs, $ccount++;
+state (@prs, %lrs);
 my ($out, $error, $con_err);
 my ($proto, $host, $uport) = $url =~ /^(https?):\/\/([^:\/?#]*)(?:\:([0-9]+))?/;
 my ($ssl, $port) = (0, undef);
