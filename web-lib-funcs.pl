@@ -13009,6 +13009,25 @@ The parameters are :
 
 =item timeout - Timeout for connections, defaults to 15s
 
+Example of usage and return data:
+
+  Call:
+    &get_http_redirect('https://google.com', '/about')
+  Return:
+  {
+    'hops' => [
+      { [...] }
+    ],
+    'host' => 'about.google',
+    'path' => '',
+    'port' => '443',
+    'proto' => 'https',
+    'resolved' => {
+      'ipv4' => '216.239.32.29'
+    },
+    'url' => 'https://about.google'
+  }
+
 =cut
 
 sub get_http_redirect
