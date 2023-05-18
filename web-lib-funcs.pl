@@ -13007,7 +13007,7 @@ The parameters are :
 
 =item page - Path in URL, e.g. /about as in https://www.google.com/about
 
-=item timeout - Timeout for connections, defaults to 30s
+=item timeout - Timeout for connections, defaults to 15s
 
 =cut
 
@@ -13026,7 +13026,7 @@ if ($proto eq 'https') {
 # Set default port, page and timeout
 $port ||= $uport;
 $page ||= '/';
-$timeout ||= 30;
+$timeout ||= 15;
 
 # Original request
 my %rs;
