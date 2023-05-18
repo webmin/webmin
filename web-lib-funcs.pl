@@ -13079,7 +13079,7 @@ if (ref($h)) {
 	$rs{'response'} = $h->{'buffer'};
 	}
 else {
-	$rs{'error'} = $h
+	return { 'error' => $h };
 	}
 if (ref($h)) {
 	if ($h->{'buffer'} =~ /has\s+moved\s+<a\s+href=['"](.*?)['"]/mi) {
