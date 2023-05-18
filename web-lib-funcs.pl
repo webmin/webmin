@@ -13124,16 +13124,10 @@ if ($redir_host) {
 		}
 	}
 %redirect = %redirects if (keys %redirects);
-my %original_redirect = %redirect;
 %redirect = %{$redirect{'redir'}};
-if ($original_redirect{'error'}) {
-	$redirect{'error'} = $original_redirect{'error'};
-	}
-else {
-	@hops = grep { $_->{'redir'} } @hops;
-	$redirect{'hops'} = \@hops
-		if (@hops);
-	}
+@hops = grep { $_->{'redir'} } @hops;
+$redirect{'hops'} = \@hops
+	if (@hops);
 return \%redirect;
 }
 
