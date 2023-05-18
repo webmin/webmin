@@ -13034,7 +13034,7 @@ $rs{'url'} = $url;
 $rs{'proto'} = $proto;
 $rs{'host'} = $host;
 $rs{'port'} = $port;
-$rs{'page'} = $page;
+$rs{'path'} = $page;
 
 # Build headers
 my @headers;
