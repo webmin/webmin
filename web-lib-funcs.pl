@@ -13033,8 +13033,8 @@ Example of usage and return data:
 sub get_http_redirect
 {
 my ($url, $page, $timeout) = @_;
-state (@prs, %lrs);
 my ($out, $error, $con_err);
+state (@hops, %redirects);
 my ($proto, $host, $uport) = $url =~ /^(https?):\/\/([^:\/?#]*)(?:\:([0-9]+))?/;
 my ($ssl, $port) = (0, undef);
 $port = '80' if (!$uport);
@@ -13049,13 +13049,13 @@ $page ||= '/';
 $timeout ||= 15;
 
 # Original request
-my %rs;
-$rs{'url'} = $url;
-$rs{'proto'} = $proto;
-$rs{'host'} = $host;
-$rs{'port'} = $port;
-$rs{'path'} = $page;
-push(@prs, \%rs);
+my (%redirect);
+$redirect{'url'} = $url;
+$redirect{'proto'} = $proto;
+$redirect{'host'} = $host;
+$redirect{'port'} = $port;
+$redirect{'path'} = $page;
+push(@hops, \%redirect);
 
 # Build headers
 my @headers;
@@ -13076,7 +13076,7 @@ if (ref($h)) {
 &complete_http_download($h, undef, \$error, undef, undef, $host, $port,
 			undef, $ssl, 1, $timeout);
 if (ref($h)) {
-	$rs{'response'} = $h->{'buffer'};
+	$redirect{'response'} = $h->{'buffer'};
 	}
 else {
 	return { 'error' => $h };
@@ -13085,56 +13085,56 @@ if (ref($h)) {
 	if ($h->{'buffer'} =~ /has\s+moved\s+<a\s+href=['"](.*?)['"]/mi) {
 		my $rurl = $1;
 		$rurl =~ s/\/$//;
-		$rs{'redir'}->{'url'} = $rurl;
+		$redirect{'redir'}->{'url'} = $rurl;
 		my ($proto, $host, $uport, $path) = $rurl =~ /^(https?):\/\/([^:\/?#]*)(?:\:([0-9]+))?(.*)/;
 		my $port = '80' if (!$uport);
 		if ($proto eq 'https') {
 			$port = '443' if (!$uport);
 			}
 		$port ||= $uport;
-		$rs{'redir'}->{'proto'} = $proto;
-		$rs{'redir'}->{'host'} = $host;
-		$rs{'redir'}->{'port'} = $port;
-		$rs{'redir'}->{'path'} = $path;
+		$redirect{'redir'}->{'proto'} = $proto;
+		$redirect{'redir'}->{'host'} = $host;
+		$redirect{'redir'}->{'port'} = $port;
+		$redirect{'redir'}->{'path'} = $path;
 		}
 	}
 
 # Finally test if redirected URL can be resolved
-my $redir_host = $rs{'redir'}->{'host'};
+my $redir_host = $redirect{'redir'}->{'host'};
 if ($redir_host) {
 	my $resolved4 = &to_ipaddress($redir_host);
 	my $resolved6 = &to_ip6address($redir_host);
 	if (!$resolved4 && !$resolved6) {
-		delete $rs{'redir'};
+		delete $redirect{'redir'};
 		}
 	else {
-		$rs{'redir'}->{'resolved'}->{'ipv4'} = $resolved4
+		$redirect{'redir'}->{'resolved'}->{'ipv4'} = $resolved4
 			if ($resolved4);
-		$rs{'redir'}->{'resolved'}->{'ipv6'} = $resolved6
+		$redirect{'redir'}->{'resolved'}->{'ipv6'} = $resolved6
 			if ($resolved6);
-		if ($lrs{'redir'}->{'host'} ne $redir_host) {
-			%lrs = %rs;
-			my $rport = $rs{'redir'}->{'port'};
+		if ($redirects{'redir'}->{'host'} ne $redir_host) {
+			%redirects = %redirect;
+			my $rport = $redirect{'redir'}->{'port'};
 			$rport = undef if ($rport =~ /80|443/);
 			$rport = ":$rport" if ($rport);
-			my $rpath = $rs{'redir'}->{'path'};
+			my $rpath = $redirect{'redir'}->{'path'};
 			$rpath = undef if ($rpath eq "/");
 			return &get_http_redirect("$proto://$redir_host$rport", $rpath, $timeout);
 			}
 		}
 	}
-%rs = %lrs if (keys %lrs);
-my %ors = %rs;
-%rs = %{$rs{'redir'}};
-if ($ors{'error'}) {
-	$rs{'error'} = $ors{'error'};
+%redirect = %redirects if (keys %redirects);
+my %original_redirect = %redirect;
+%redirect = %{$redirect{'redir'}};
+if ($original_redirect{'error'}) {
+	$redirect{'error'} = $original_redirect{'error'};
 	}
 else {
-	@prs = grep { $_->{'redir'} } @prs;
-	$rs{'hops'} = \@prs
-		if (@prs);
+	@hops = grep { $_->{'redir'} } @hops;
+	$redirect{'hops'} = \@hops
+		if (@hops);
 	}
-return \%rs;
+return \%redirect;
 }
 
 =head2 get_http_cookie(cookie-name)
