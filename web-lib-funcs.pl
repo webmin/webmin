@@ -9274,6 +9274,8 @@ $rv =~ s/(on(Abort|BeforeUnload|Blur|Change|Click|ContextMenu|Copy|Cut|DblClick|
 $rv =~ s/(javascript(:|&colon;|&#58;|&#x3A;))/x$1/gi;
 $rv =~ s/(vbscript(:|&colon;|&#58;|&#x3A;))/x$1/gi;
 $rv =~ s/<([^>]*\s|)(on\S+=)(.*)>/<$1x$2$3>/gi;
+$rv =~ s/([\n]*)<<[\n((?:.*?|\n)*?)][\w\s\/]+[\n((?:.*?|\n)*?)][\w\s\/]+JavaScript[\w\s\/]*[\n((?:.*?|\n)*?)][\w\s\/]+\s.*?>>[\n]*/$1/gmsi;
+$rv =~ s/<<.*?JavaScript.*?>>([\n]+|[\s]*)//gi;
 return $rv;
 }
 

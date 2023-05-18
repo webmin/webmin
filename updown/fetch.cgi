@@ -84,7 +84,7 @@ if ($ENV{'PATH_INFO'}) {
 		print "Content-length: $st[7]\n";
 		print "X-Content-Type-Options: nosniff\n";
 		print "Content-type: $type\n\n";
-		my $dtype = $type =~ /html|xml/i;
+		my $dtype = $type =~ /html|xml|pdf/i;
 		my $bsize =
 		    $dtype ? $st[7] : &get_buffer_size_binary();
 		while(read(FILE, $buffer, $bsize)) {
