@@ -13014,7 +13014,7 @@ The parameters are :
 sub get_http_redirect
 {
 my ($url, $page, $timeout) = @_;
-state %lrs, $ccount++;
+state @prs, %lrs, $ccount++;
 my ($out, $error, $con_err);
 my ($proto, $host, $uport) = $url =~ /^(https?):\/\/([^:\/?#]*)(?:\:([0-9]+))?/;
 my ($ssl, $port) = (0, undef);
@@ -13036,6 +13036,7 @@ $rs{'proto'} = $proto;
 $rs{'host'} = $host;
 $rs{'port'} = $port;
 $rs{'path'} = $page;
+push(@prs, \%rs);
 
 # Build headers
 my @headers;
@@ -13056,7 +13057,7 @@ if (ref($h)) {
 &complete_http_download($h, undef, \$error, undef, undef, $host, $port,
 			undef, $ssl, 1, $timeout);
 if (ref($h)) {
-	$rs{'handle'} = $h
+	$rs{'response'} = $h->{'buffer'};
 	}
 else {
 	$rs{'error'} = $h
@@ -13088,10 +13089,11 @@ if ($redir_host) {
 		delete $rs{'redir'};
 		}
 	else {
-		$rs{'redir'}->{'resolved'}->{'ipv4'} = $resolved4;
-		$rs{'redir'}->{'resolved'}->{'ipv6'} = $resolved6;
+		$rs{'redir'}->{'resolved'}->{'ipv4'} = $resolved4
+			if ($resolved4);
+		$rs{'redir'}->{'resolved'}->{'ipv6'} = $resolved6
+			if ($resolved6);
 		if ($lrs{'redir'}->{'host'} ne $redir_host) {
-			$rs{'redir'}->{'hops'} = $ccount;
 			%lrs = %rs;
 			my $rport = $rs{'redir'}->{'port'};
 			$rport = undef if ($rport =~ /80|443/);
@@ -13102,8 +13104,16 @@ if ($redir_host) {
 			}
 		}
 	}
-if (%lrs) {
-	%rs = %lrs;
+%rs = %lrs if (keys %lrs);
+my %ors = %rs;
+%rs = %{$rs{'redir'}};
+if ($ors{'error'}) {
+	$rs{'error'} = $ors{'error'};
+	}
+else {
+	@prs = grep { $_->{'redir'} } @prs;
+	$rs{'hops'} = \@prs
+		if (@prs);
 	}
 return \%rs;
 }
