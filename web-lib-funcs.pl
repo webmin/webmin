@@ -13014,6 +13014,7 @@ The parameters are :
 sub get_http_redirect
 {
 my ($url, $page, $timeout) = @_;
+state %lrs, $ccount++;
 my ($out, $error, $con_err);
 my ($proto, $host, $uport) = $url =~ /^(https?):\/\/([^:\/?#]*)(?:\:([0-9]+))?/;
 my ($ssl, $port) = (0, undef);
@@ -13089,7 +13090,20 @@ if ($redir_host) {
 	else {
 		$rs{'redir'}->{'resolved'}->{'ipv4'} = $resolved4;
 		$rs{'redir'}->{'resolved'}->{'ipv6'} = $resolved6;
+		if ($lrs{'redir'}->{'host'} ne $redir_host) {
+			$rs{'redir'}->{'hops'} = $ccount;
+			%lrs = %rs;
+			my $rport = $rs{'redir'}->{'port'};
+			$rport = undef if ($rport =~ /80|443/);
+			$rport = ":$rport" if ($rport);
+			my $rpath = $rs{'redir'}->{'path'};
+			$rpath = undef if ($rpath eq "/");
+			return &get_http_redirect("$proto://$redir_host$rport", $rpath, $timeout);
+			}
 		}
+	}
+if (%lrs) {
+	%rs = %lrs;
 	}
 return \%rs;
 }
