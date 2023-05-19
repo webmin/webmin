@@ -80,22 +80,65 @@ if ($ENV{'PATH_INFO'}) {
 		if (!$fetch_show) {
 			print "Content-Disposition: Attachment\n";
 			}
-		@st = stat($file);
-		print "Content-length: $st[7]\n";
-		print "X-Content-Type-Options: nosniff\n";
-		print "Content-type: $type\n\n";
-		my $dtype = $type =~ /html|xml|pdf/i;
+		# Stat file
+		my @st = stat($file);
+		my $fsize = $st[7];
+
+		# Get and analyze the file contents first
+		my $fdata = "";
+		my $dangertypes = $type =~ /html|xml|pdf/i;
+		my $htmltype    = $type =~ /html/i ? 1 : 0;
+		my $pdftype     = $type =~ /pdf/i ? 'pdf' : 0;
 		my $bsize =
-		    $dtype ? $st[7] : &get_buffer_size_binary();
+		    $dangertypes ? $fsize : &get_buffer_size_binary();
 		while(read(FILE, $buffer, $bsize)) {
-			if ($dtype) {
-				print &filter_javascript($buffer);
+			if ($dangertypes) {
+				my $buffer_filtered = &filter_javascript($buffer, $pdftype);
+				# If content was changed upon filtering
+				if ($buffer_filtered ne $buffer) {
+					# For text simply return filtered but
+					# tell user that it was filtered out
+					if ($htmltype) {
+						# Add a banner showing content was changed
+						my $prefdata =
+							&ui_alert_box($text{'ui_jsblocked'}, 'danger');
+						# Pass filtered content with the banner
+						# Insert the banner in HTML body
+						if ($buffer_filtered =~ s/(<body.*?>)/$1$prefdata/) {
+							$fdata = $buffer_filtered;
+							}
+						else {
+							# Insert the banner to the top of HTML doc
+							$fdata = "$prefdata$buffer_filtered";
+							}
+						# Update content length
+						$fsize = length($fdata);
+						}
+					# For no text files simply force
+					# download if file was altered
+					else {
+						# Force send it
+						$type = "application/octet-stream";
+						print "Content-Disposition: Attachment\n";
+						# Pass original content
+						$fdata = $buffer;
+						}
+					}
+				# Buffere was not changed, just pass it as is
+				else {
+					$fdata = $buffer;
+					}
 				}
 			else {
-				print("$buffer");
+				$fdata .= $buffer;
 				}
 			}
 		close(FILE);
+
+		print "Content-length: $fsize\n";
+		print "X-Content-Type-Options: nosniff\n";
+		print "Content-type: $type\n\n";
+		print "$fdata";
 		}
 
 	# Switch back to root

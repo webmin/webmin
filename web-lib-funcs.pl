@@ -9260,22 +9260,27 @@ if (!-e $uinfo->[7] && $gconfig{'create_homedir'}) {
 	}
 }
 
-=head2 filter_javascript(text)
+=head2 filter_javascript(text, [type])
 
 Disables all javascript <script>, onClick= and so on tags in the given HTML,
 and returns the new HTML. Useful for displaying HTML from an un-trusted source.
+If type is given filters on specific document type
 
 =cut
 sub filter_javascript
 {
-my ($rv) = @_;
-$rv =~ s/<\s*script[^>]*>([\000-\377]*?)<\s*\/script\s*>//gi;
-$rv =~ s/(on(Abort|BeforeUnload|Blur|Change|Click|ContextMenu|Copy|Cut|DblClick|Drag|DragEnd|DragEnter|DragLeave|DragOver|DragStart|DragDrop|Drop|Error|Focus|FocusIn|FocusOut|HashChange|Input|Invalid|KeyDown|KeyPress|KeyUp|Load|MouseDown|MouseEnter|MouseLeave|MouseMove|MouseOut|MouseOver|MouseUp|Move|Paste|PageShow|PageHide|Reset|Resize|Scroll|Search|Select|Submit|Toggle|Unload)=)/x$1/gi;
-$rv =~ s/(javascript(:|&colon;|&#58;|&#x3A;))/x$1/gi;
-$rv =~ s/(vbscript(:|&colon;|&#58;|&#x3A;))/x$1/gi;
-$rv =~ s/<([^>]*\s|)(on\S+=)(.*)>/<$1x$2$3>/gi;
-$rv =~ s/([\n]*)<<[\n((?:.*?|\n)*?)][\w\s\/]+[\n((?:.*?|\n)*?)][\w\s\/]+JavaScript[\w\s\/]*[\n((?:.*?|\n)*?)][\w\s\/]+\s.*?>>[\n]*/$1/gmsi;
-$rv =~ s/<<.*?JavaScript.*?>>([\n]+|[\s]*)//gi;
+my ($rv, $type) = @_;
+if (!$type || $type eq 'html') {
+	$rv =~ s/<\s*script[^>]*>([\000-\377]*?)<\s*\/script\s*>//gi;
+	$rv =~ s/(on(Abort|BeforeUnload|Blur|Change|Click|ContextMenu|Copy|Cut|DblClick|Drag|DragEnd|DragEnter|DragLeave|DragOver|DragStart|DragDrop|Drop|Error|Focus|FocusIn|FocusOut|HashChange|Input|Invalid|KeyDown|KeyPress|KeyUp|Load|MouseDown|MouseEnter|MouseLeave|MouseMove|MouseOut|MouseOver|MouseUp|Move|Paste|PageShow|PageHide|Reset|Resize|Scroll|Search|Select|Submit|Toggle|Unload)=)/x$1/gi;
+	$rv =~ s/(javascript(:|&colon;|&#58;|&#x3A;))/x$1/gi;
+	$rv =~ s/(vbscript(:|&colon;|&#58;|&#x3A;))/x$1/gi;
+	$rv =~ s/<([^>]*\s|)(on\S+=)(.*)>/<$1x$2$3>/gi;
+	}
+if ($type eq 'pdf') {
+	$rv =~ s/([\n]*)<<[\n((?:.*?|\n)*?)][\w\s\/]+[\n((?:.*?|\n)*?)][\w\s\/]+JavaScript[\w\s\/]*[\n((?:.*?|\n)*?)][\w\s\/]+\s.*?>>[\n]*/$1/gmsi;
+	$rv =~ s/<<.*?JavaScript.*?>>([\n]+|[\s]*)//gi;
+	}
 return $rv;
 }
 
