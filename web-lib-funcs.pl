@@ -260,9 +260,11 @@ $tmp =~ s/>/&gt;/g;
 $tmp =~ s/\"/&quot;/g;
 $tmp =~ s/\'/&#39;/g;
 $tmp =~ s/=/&#61;/g;
-# Never escape spaces
+# Never double escape following common entities
 $tmp =~ s/&amp;#x20;/&#x20;/g;
 $tmp =~ s/&amp;nbsp;/&nbsp;/g;
+$tmp =~ s/&amp;lt;/&lt;/g;
+$tmp =~ s/&amp;gt;/&gt;/g;
 return $tmp;
 }
 
