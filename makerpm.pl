@@ -81,6 +81,13 @@ if ($rel > 1 && -r "tarballs/webmin$product_suff-$ver-$rel.tar.gz") {
 else {
 	$tarfile = "webmin$product_suff-$ver.tar.gz";
 	}
+$rpmspec_obsoletes = "\nObsoletes: webmin-essential webmin-minimal\n";
+if ($product_suff) {
+	$rpmspec_obsoletes = "\nObsoletes: webmin webmin-minimal\n"
+		if ($product_suff eq 'essential');
+	$rpmspec_obsoletes = "\nObsoletes: webmin webmin-essential\n"
+		if ($product_suff eq 'minimal');
+	}
 system("cp tarballs/$tarfile $source_dir");
 open(SPEC, ">$spec_dir/webmin-$ver.spec");
 print SPEC <<EOF;
