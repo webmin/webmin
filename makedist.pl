@@ -9,6 +9,10 @@ if ($ARGV[0] eq "-minimal" || $ARGV[0] eq "--minimal") {
 	$min++;
 	shift(@ARGV);
 	}
+if ($ARGV[0] =~ /^-exclude-modules/ || $ARGV[0] =~ /^--exclude-modules/) {
+	$exclude_modules = $ARGV[0];
+	shift(@ARGV);
+	}
 $fullvers = $ARGV[0];
 $fullvers =~ /^([0-9\.]+)(\-(\d+))?$/ || usage();
 $vers = $1;
@@ -63,6 +67,12 @@ else {
 	$mod_def_list = do { local $/; <$fh> };
 	close($fh);
 	@mlist = split(/\s+/, $mod_def_list);
+	if ($exclude_modules) {
+		$exclude_modules =~ s/--exclude-modules=//;
+		my @mlist_excluded =
+		    grep { my $f = $_; ! grep $_ eq $f, split(',', $exclude_modules) } @mlist;
+		@mlist = @mlist_excluded;
+		}
 	}
 @dirlist = ( "vendor_perl" );
 
