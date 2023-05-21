@@ -84,9 +84,9 @@ else {
 $rpmspec_obsoletes = "\nObsoletes: webmin-essential webmin-minimal\n";
 if ($product_suff) {
 	$rpmspec_obsoletes = "\nObsoletes: webmin webmin-minimal\n"
-		if ($product_suff eq 'essential');
+		if ($product_type eq 'essential');
 	$rpmspec_obsoletes = "\nObsoletes: webmin webmin-essential\n"
-		if ($product_suff eq 'minimal');
+		if ($product_type eq 'minimal');
 	}
 system("cp tarballs/$tarfile $source_dir");
 open(SPEC, ">$spec_dir/webmin-$ver.spec");
