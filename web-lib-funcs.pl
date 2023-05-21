@@ -260,9 +260,11 @@ $tmp =~ s/>/&gt;/g;
 $tmp =~ s/\"/&quot;/g;
 $tmp =~ s/\'/&#39;/g;
 $tmp =~ s/=/&#61;/g;
-# Never escape spaces
+# Never double escape following common entities
 $tmp =~ s/&amp;#x20;/&#x20;/g;
 $tmp =~ s/&amp;nbsp;/&nbsp;/g;
+$tmp =~ s/&amp;lt;/&lt;/g;
+$tmp =~ s/&amp;gt;/&gt;/g;
 return $tmp;
 }
 
@@ -9260,20 +9262,27 @@ if (!-e $uinfo->[7] && $gconfig{'create_homedir'}) {
 	}
 }
 
-=head2 filter_javascript(text)
+=head2 filter_javascript(text, [type])
 
 Disables all javascript <script>, onClick= and so on tags in the given HTML,
 and returns the new HTML. Useful for displaying HTML from an un-trusted source.
+If type is given filters on specific document type
 
 =cut
 sub filter_javascript
 {
-my ($rv) = @_;
-$rv =~ s/<\s*script[^>]*>([\000-\377]*?)<\s*\/script\s*>//gi;
-$rv =~ s/(on(Abort|BeforeUnload|Blur|Change|Click|ContextMenu|Copy|Cut|DblClick|Drag|DragEnd|DragEnter|DragLeave|DragOver|DragStart|DragDrop|Drop|Error|Focus|FocusIn|FocusOut|HashChange|Input|Invalid|KeyDown|KeyPress|KeyUp|Load|MouseDown|MouseEnter|MouseLeave|MouseMove|MouseOut|MouseOver|MouseUp|Move|Paste|PageShow|PageHide|Reset|Resize|Scroll|Search|Select|Submit|Toggle|Unload)=)/x$1/gi;
-$rv =~ s/(javascript(:|&colon;|&#58;|&#x3A;))/x$1/gi;
-$rv =~ s/(vbscript(:|&colon;|&#58;|&#x3A;))/x$1/gi;
-$rv =~ s/<([^>]*\s|)(on\S+=)(.*)>/<$1x$2$3>/gi;
+my ($rv, $type) = @_;
+if (!$type || $type eq 'html') {
+	$rv =~ s/<\s*script[^>]*>([\000-\377]*?)<\s*\/script\s*>//gi;
+	$rv =~ s/(on(Abort|BeforeUnload|Blur|Change|Click|ContextMenu|Copy|Cut|DblClick|Drag|DragEnd|DragEnter|DragLeave|DragOver|DragStart|DragDrop|Drop|Error|Focus|FocusIn|FocusOut|HashChange|Input|Invalid|KeyDown|KeyPress|KeyUp|Load|MouseDown|MouseEnter|MouseLeave|MouseMove|MouseOut|MouseOver|MouseUp|Move|Paste|PageShow|PageHide|Reset|Resize|Scroll|Search|Select|Submit|Toggle|Unload)=)/x$1/gi;
+	$rv =~ s/(javascript(:|&colon;|&#58;|&#x3A;))/x$1/gi;
+	$rv =~ s/(vbscript(:|&colon;|&#58;|&#x3A;))/x$1/gi;
+	$rv =~ s/<([^>]*\s|)(on\S+=)(.*)>/<$1x$2$3>/gi;
+	}
+if ($type eq 'pdf') {
+	$rv =~ s/([\n]*)<<[\n((?:.*?|\n)*?)][\w\s\/]+[\n((?:.*?|\n)*?)][\w\s\/]+JavaScript[\w\s\/]*[\n((?:.*?|\n)*?)][\w\s\/]+\s.*?>>[\n]*/$1/gmsi;
+	$rv =~ s/<<.*?JavaScript.*?>>([\n]+|[\s]*)//gi;
+	}
 return $rv;
 }
 
@@ -12995,6 +13004,140 @@ if (!$@ && $locale_system) {
 		if ($locales->{$locale_system});
 	}
 return $locale_def;
+}
+
+=head2 get_http_redirect(url, [page], [timeout])
+
+Check if given URL redirects somewhere
+
+The parameters are :
+
+=item url - Given URL to check if it redirects anywhere, e.g. https://google.com
+
+=item page - Path in URL, e.g. /about as in https://www.google.com/about
+
+=item timeout - Timeout for connections, defaults to 15s
+
+Example of usage and return data:
+
+  Call:
+    &get_http_redirect('https://google.com', '/about')
+  Return:
+  {
+    'hops' => [
+      { [...] }
+    ],
+    'host' => 'about.google',
+    'path' => '',
+    'port' => '443',
+    'proto' => 'https',
+    'resolved' => {
+      'ipv4' => '216.239.32.29'
+    },
+    'url' => 'https://about.google'
+  }
+
+=cut
+
+sub get_http_redirect
+{
+my ($url, $page, $timeout) = @_;
+my ($out, $error, $con_err);
+state (@hops, %redirects);
+my ($proto, $host, $uport) = $url =~ /^(https?):\/\/([^:\/?#]*)(?:\:([0-9]+))?/;
+my ($ssl, $port) = (0, undef);
+$port = '80' if (!$uport);
+if ($proto eq 'https') {
+	$ssl = 1;
+	$port = '443' if (!$uport);
+	}
+
+# Set default port, page and timeout
+$port ||= $uport;
+$page ||= '/';
+$timeout ||= 15;
+
+# Original request
+my (%redirect);
+$redirect{'url'} = $url;
+$redirect{'proto'} = $proto;
+$redirect{'host'} = $host;
+$redirect{'port'} = $port;
+$redirect{'path'} = $page;
+push(@hops, \%redirect);
+
+# Build headers
+my @headers;
+push(@headers, [ "Host", $host ]);
+push(@headers, [ "User-agent", "Webmin" ]);
+push(@headers, [ "Accept-language", "en" ]);
+
+# Actually download it
+$main::download_timed_out = undef;
+local $SIG{ALRM} = \&download_timeout;
+alarm($timeout);
+my $h = &make_http_connection($host, $port, $ssl, "GET", $page, \@headers);
+alarm(0);
+$h = $main::download_timed_out if ($main::download_timed_out);
+if (ref($h)) {
+	&write_http_connection($h, "\r\n");
+	}
+&complete_http_download($h, undef, \$error, undef, undef, $host, $port,
+			undef, $ssl, 1, $timeout);
+if (ref($h)) {
+	$redirect{'response'} = $h->{'buffer'};
+	}
+else {
+	return { 'error' => $h };
+	}
+if (ref($h)) {
+	if ($h->{'buffer'} =~ /has\s+moved\s+<a\s+href=['"](.*?)['"]/mi) {
+		my $rurl = $1;
+		$rurl =~ s/\/$//;
+		$redirect{'redir'}->{'url'} = $rurl;
+		my ($proto, $host, $uport, $path) = $rurl =~ /^(https?):\/\/([^:\/?#]*)(?:\:([0-9]+))?(.*)/;
+		my $port = '80' if (!$uport);
+		if ($proto eq 'https') {
+			$port = '443' if (!$uport);
+			}
+		$port ||= $uport;
+		$redirect{'redir'}->{'proto'} = $proto;
+		$redirect{'redir'}->{'host'} = $host;
+		$redirect{'redir'}->{'port'} = $port;
+		$redirect{'redir'}->{'path'} = $path;
+		}
+	}
+
+# Finally test if redirected URL can be resolved
+my $redir_host = $redirect{'redir'}->{'host'};
+if ($redir_host) {
+	my $resolved4 = &to_ipaddress($redir_host);
+	my $resolved6 = &to_ip6address($redir_host);
+	if (!$resolved4 && !$resolved6) {
+		delete $redirect{'redir'};
+		}
+	else {
+		$redirect{'redir'}->{'resolved'}->{'ipv4'} = $resolved4
+			if ($resolved4);
+		$redirect{'redir'}->{'resolved'}->{'ipv6'} = $resolved6
+			if ($resolved6);
+		if ($redirects{'redir'}->{'host'} ne $redir_host) {
+			%redirects = %redirect;
+			my $rport = $redirect{'redir'}->{'port'};
+			$rport = undef if ($rport =~ /80|443/);
+			$rport = ":$rport" if ($rport);
+			my $rpath = $redirect{'redir'}->{'path'};
+			$rpath = undef if ($rpath eq "/");
+			return &get_http_redirect("$proto://$redir_host$rport", $rpath, $timeout);
+			}
+		}
+	}
+%redirect = %redirects if (keys %redirects);
+%redirect = %{$redirect{'redir'}};
+@hops = grep { $_->{'redir'} } @hops;
+$redirect{'hops'} = \@hops
+	if (@hops);
+return \%redirect;
 }
 
 =head2 get_http_cookie(cookie-name)

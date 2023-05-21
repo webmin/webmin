@@ -84,17 +84,10 @@ if ($ENV{'PATH_INFO'}) {
 		print "Content-length: $st[7]\n";
 		print "X-Content-Type-Options: nosniff\n";
 		print "Content-type: $type\n\n";
-		if ($type =~ /text\/html/i) {
-			local $/;
-			$buffer = <FILE>;
-			print &filter_javascript($buffer);
+		while(read(FILE, $buffer, &get_buffer_size_binary())) {
+			print("$buffer");
 			}
-		else {
-			while(read(FILE, $buffer, &get_buffer_size_binary())) {
-				print $buffer;
-				}
-			close(FILE);
-			}
+		close(FILE);
 		}
 
 	# Switch back to root
@@ -126,4 +119,3 @@ else {
 		&redirect("fetch.cgi".$file);
 		}
 	}
-
