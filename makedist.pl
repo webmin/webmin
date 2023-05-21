@@ -9,7 +9,7 @@ if ($ARGV[0] eq "-minimal" || $ARGV[0] eq "--minimal") {
 	$min++;
 	shift(@ARGV);
 	}
-if ($ARGV[0] =~ /^-exclude-modules/ || $ARGV[0] =~ /^--exclude-modules/) {
+if ($ARGV[0] =~ /^--exclude-modules/) {
 	$exclude_modules = $ARGV[0];
 	shift(@ARGV);
 	}
