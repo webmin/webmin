@@ -81,21 +81,14 @@ if ($rel > 1 && -r "tarballs/webmin$product_suff-$ver-$rel.tar.gz") {
 else {
 	$tarfile = "webmin$product_suff-$ver.tar.gz";
 	}
-$rpmspec_obsoletes =  "\nObsoletes: webmin-essential <= \%\{version\}-\%\{release\}\n";
-$rpmspec_obsoletes .= "Conflicts: webmin-essential <= \%\{version\}-\%\{release\}\n";
-$rpmspec_obsoletes .= "\nObsoletes: webmin-minimal <= \%\{version\}-\%\{release\}\n";
-$rpmspec_obsoletes .= "Conflicts: webmin-minimal <= \%\{version\}-\%\{release\}\n";
+$rpmspec_obsoletes =  "\n\nObsoletes: webmin-essential < \%\{version\}-\%\{release\}\n";
+$rpmspec_obsoletes .= "Obsoletes: webmin-minimal < \%\{version\}-\%\{release\}\n";
 if ($product_suff) {
-	$provides_type = " \%\{name\}$product_suff-\%\{version\}";
-	$rpmspec_obsoletes =  "\nObsoletes: webmin <= \%\{version\}-\%\{release\}\n",
-	$rpmspec_obsoletes .= "Conflicts: webmin <= \%\{version\}-\%\{release\}\n",
-	$rpmspec_obsoletes .= "\nObsoletes: webmin-minimal <= \%\{version\}-\%\{release\}\n",
-	$rpmspec_obsoletes .= "Conflicts: webmin-minimal <= \%\{version\}-\%\{release\}\n"
+	$rpmspec_obsoletes =  "\n\nObsoletes: webmin < \%\{version\}-\%\{release\}\n",
+	$rpmspec_obsoletes .= "Obsoletes: webmin-minimal < \%\{version\}-\%\{release\}\n"
 		if ($product_type eq 'essential');
-	$rpmspec_obsoletes =  "\nObsoletes: webmin <= \%\{version\}-\%\{release\}\n",
-	$rpmspec_obsoletes .= "Conflicts: webmin <= \%\{version\}-\%\{release\}\n",
-	$rpmspec_obsoletes .= "\nObsoletes: webmin-essential <= \%\{version\}-\%\{release\}\n",
-	$rpmspec_obsoletes .= "Conflicts: webmin-essential <= \%\{version\}-\%\{release\}\n"
+	$rpmspec_obsoletes =  "\n\nObsoletes: webmin < \%\{version\}-\%\{release\}\n",
+	$rpmspec_obsoletes .= "Obsoletes: webmin-essential < \%\{version\}-\%\{release\}\n"
 		if ($product_type eq 'minimal');
 	}
 system("cp tarballs/$tarfile $source_dir");
@@ -108,7 +101,7 @@ Summary: A web-based administration interface for Unix systems.
 Name: webmin$product_suff
 Version: $ver
 Release: $rel
-Provides: %{name}-%{version}$provides_type perl(WebminCore)$rpmspec_obsoletes
+Provides: %{name}-%{version} perl(WebminCore)$rpmspec_obsoletes
 Requires(pre): /usr/bin/perl
 Requires: /bin/sh /usr/bin/perl /bin/rm perl(lib) perl(open) perl(Net::SSLeay) perl(Time::Local) perl(Encode::Detect) perl(Data::Dumper) perl(File::Path) perl(File::Basename) perl(Digest::SHA) perl(Digest::MD5) openssl unzip tar
 Recommends: perl(DateTime) perl(DateTime::TimeZone) perl(DateTime::Locale) perl(Time::Piece)
