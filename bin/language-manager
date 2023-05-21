@@ -245,7 +245,16 @@ sub main
         talk('affected', \%opt, \%data);
 
         # Run in overwrite mode
-        if ($opt{'mode'} eq 'full') {
+        if ($opt{'mode'} eq 'clean') {
+            # # Execute clean
+            talk('clean-pre', \%opt, \%data);
+            if (prompt('next')) {
+                go(\%opt, \%data);
+            }
+        }
+
+        # Run in overwrite mode
+        elsif ($opt{'mode'} eq 'full') {
 
             # Execute force transcode/translate
             talk('overwrite-pre', \%opt, \%data);
@@ -949,6 +958,7 @@ sub go
     my $verbose                     = $opt->{'verbose'} || @{$keys_test};
     my $mode_sync                   = $opt->{'mode'} ne 'full';
     my $mode_transcode              = $opt->{'mode'} eq 'transcode';
+    my $mode_clean                  = $opt->{'mode'} eq 'clean';
     my $allow_symlinks              = $opt->{'allow-symlinks'};
     my $verbose_silent_mode         = $mode_sync && $verbose != 2;
 
@@ -965,6 +975,12 @@ sub go
 
             # Check if there has been something to process, if not print a message
             my $output;
+            
+            # If cleaning called in this mode, throw an error
+            if ($mode_clean) {
+                say RED, "Error: Cleaning can only be performed when the target type is unset!", RESET;
+                exit;
+            }
 
             # Build targets first
             talk_log(("Transcoding/translating " . CYAN BOLD, $module, RESET . " module's help .."), $data, 1);
@@ -1200,6 +1216,7 @@ sub go
             # Set message type
             my $message_type_s1 = 'Transcoding/translating';
             $message_type_s1 = 'Searching/replacing in' if (@{$values_fix});
+            $message_type_s1 = 'Cleaning in' if ($mode_clean);
 
             talk_log(("$message_type_s1 " . BLUE BOLD, $module, RESET . " module .."), $data, 1);
             foreach $language (@{ $data->{'languages_source_list'} }) {
@@ -1222,6 +1239,51 @@ sub go
 
                 my %language;
                 my %language_auto;
+
+                # If in clean mode delete the file and go next
+                if ($mode_clean) {
+
+                    # Language files
+                    my $cfile = "$mpath/$code";
+                    my $cfileauto = "$cfile.auto";
+                    unlink($cfile);
+                    unlink($cfileauto);
+                    
+                    # Module files
+                    foreach ('module', 'config', 'uconfig') {
+                        my %mdata = %{$data};
+                        $mdata{'type'} = $_;
+                        my (undef, undef, $ffile) = source_data($module, \%mdata, $opt);
+                        $ffile =~ s/\/$_\//\//;
+                        my $cxfile = "$ffile.$code";
+                        my $cxfileauto = "$cxfile.auto";
+                        unlink($cxfile);
+                        unlink($cxfileauto);
+                    }
+
+                    # Help files
+                    my %hdata = %{$data};
+                    $hdata{'type'} = 'help';
+                    my (undef, $hpath) = source_data($module, \%hdata, $opt);
+                    my @hdelete_targets;
+                    if (-d $hpath) {
+                        find(
+                            {
+                               wanted => sub {
+                                   my $found = $File::Find::name;
+                                   if ($found =~ /\.$code\./) {
+                                       push(@hdelete_targets, $found);
+                                   }
+                               },
+                            },
+                            $hpath);
+                        unlink(@hdelete_targets);
+                    }
+
+                    # Go next, don't translate
+                    $output++;
+                    next;
+                }
 
                 my $message_type_s2 = "Processing";
                 $message_type_s2 = "Testing translations for selected keys with" if (@{$keys_test});
@@ -1732,6 +1794,10 @@ sub talk
         say GREEN, "Affected languages" . RESET, DARK . " [$languages_count]" . RESET . ": ", YELLOW BOLD,
           "" . $languages . "", RESET;
     }
+    if ($what eq 'clean-pre') {
+        say RED, "Danger! ", RESET, WHITE,
+"The following operation will delete all files related to the affected lang-\nuage, including machine-translated files in all the mentioned modules listed above.",
+    }
     if ($what eq 'overwrite-pre') {
         say RED, "Warning! ", RESET, WHITE,
 "The following operation will force-translate and overwrite mentioned\nlanguages in all mentioned modules listed above, using ",
@@ -1829,9 +1895,13 @@ Test translations for "index_stopmsg,trusted_warning" keys, in Russian and Germa
 
  - webmin language-manager -m=bind8 -t=ru,de -kt=index_stopmsg,trusted_warning
 
+Clean build directory by removing all kind of language files except English.
+
+ - webmin language-manager --mode=clean
+
 =item --mode, -x <sync|full|transcode>
 
-Mode can be either <sync> or <full> or <transcode>. Default is set to "sync" and will only keep the keys found on template language file, while missing keys in target languages (translations), will be deleted, and newly added keys to template language file, will be translated. Mode "full" is meant to perform full translation, keeping human translated strings and overwriting all machine translations done in the past (not recommended to run). Mode "transcode" is useful to fix human translated language files, which stored in "utf-8" encoding already, while still having "&#195;&#173;" or "&#195;&#169;" HTML entities.
+Mode can be either <sync> or <full> or <transcode> or <clean>. Default is set to "sync" and will only keep the keys found on template language file, while missing keys in target languages (translations), will be deleted, and newly added keys to template language file, will be translated. Mode "full" is meant to perform full translation, keeping human translated strings and overwriting all machine translations done in the past (not recommended to run). Mode "transcode" is useful to fix human translated language files, which stored in "utf-8" encoding already, while still having "&#195;&#173;" or "&#195;&#169;" HTML entities. Mode "clean" is useful to clean build package by removing all kind of language files except source language.
 
 =item --type, -w <lang|ulang|help|config|uconfig|module>
 
@@ -1917,4 +1987,4 @@ Verbosely print processed files and provide detailed output. By detault, verbose
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2022 Ilia Rostovtsev <ilia@virtualmin.com>
+Copyright 2020 Ilia Rostovtsev <ilia@virtualmin.com>
