@@ -20,6 +20,14 @@ if ($ARGV[0] eq "--nosign" || $ARGV[0] eq "-nosign") {
 	$nosign = 1;
 	shift(@ARGV);
 	}
+if ($ARGV[0] =~ /^--product-type/) {
+	$product_type = $ARGV[0];
+	$product_type =~ s/--product-type=//;
+	if ($product_type =~ /^(minimal|essential)$/) {
+		$product_suff = "-$product_type";
+		}
+	shift(@ARGV);
+	}
 $ver = $ARGV[0] || die "usage: makerpm.pl <version> [release]";
 $rel = $ARGV[1] || "1";
 
@@ -67,11 +75,11 @@ else {
 	$makerel = "rm -f %{buildroot}/usr/libexec/webmin/release";
 	}
 
-if ($rel > 1 && -r "tarballs/webmin-$ver-$rel.tar.gz") {
-	$tarfile = "webmin-$ver-$rel.tar.gz";
+if ($rel > 1 && -r "tarballs/webmin$product_suff-$ver-$rel.tar.gz") {
+	$tarfile = "webmin$product_suff-$ver-$rel.tar.gz";
 	}
 else {
-	$tarfile = "webmin-$ver.tar.gz";
+	$tarfile = "webmin$product_suff-$ver.tar.gz";
 	}
 system("cp tarballs/$tarfile $source_dir");
 open(SPEC, ">$spec_dir/webmin-$ver.spec");
@@ -80,10 +88,10 @@ print SPEC <<EOF;
 %define __spec_install_post %{nil}
 
 Summary: A web-based administration interface for Unix systems.
-Name: webmin
+Name: webmin$product_suff
 Version: $ver
 Release: $rel
-Provides: %{name}-%{version} perl(WebminCore)
+Provides: %{name}$product_suff-%{version} perl(WebminCore)
 Requires(pre): /usr/bin/perl
 Requires: /bin/sh /usr/bin/perl /bin/rm perl(lib) perl(open) perl(Net::SSLeay) perl(Time::Local) perl(Encode::Detect) perl(Data::Dumper) perl(File::Path) perl(File::Basename) perl(Digest::SHA) perl(Digest::MD5) openssl unzip tar
 Recommends: perl(DateTime) perl(DateTime::TimeZone) perl(DateTime::Locale) perl(Time::Piece)
@@ -333,19 +341,19 @@ close(SPEC);
 $cmd = -x "/usr/bin/rpmbuild" ? "rpmbuild" : "rpm";
 system("$cmd -ba --target=noarch $spec_dir/webmin-$ver.spec") && exit;
 if (-d "rpm") {
-	system("mv $rpms_dir/webmin-$ver-$rel.noarch.rpm rpm/webmin-$ver-$rel.noarch.rpm");
-	print "Moved to rpm/webmin-$ver-$rel.noarch.rpm\n";
-	system("mv $srpms_dir/webmin-$ver-$rel.src.rpm rpm/webmin-$ver-$rel.src.rpm");
-	print "Moved to rpm/webmin-$ver-$rel.src.rpm\n";
-	system("chown jcameron: rpm/webmin-$ver-$rel.noarch.rpm rpm/webmin-$ver-$rel.src.rpm");
+	system("mv $rpms_dir/webmin$product_suff-$ver-$rel.noarch.rpm rpm/webmin$product_suff-$ver-$rel.noarch.rpm");
+	print "Moved to rpm/webmin$product_suff-$ver-$rel.noarch.rpm\n";
+	system("mv $srpms_dir/webmin$product_suff-$ver-$rel.src.rpm rpm/webmin$product_suff-$ver-$rel.src.rpm");
+	print "Moved to rpm/webmin$product_suff-$ver-$rel.src.rpm\n";
+	system("chown jcameron: rpm/webmin$product_suff-$ver-$rel.noarch.rpm rpm/webmin$product_suff-$ver-$rel.src.rpm");
 	if (!$nosign) {
-		system("rpm --resign rpm/webmin-$ver-$rel.noarch.rpm rpm/webmin-$ver-$rel.src.rpm");
+		system("rpm --resign rpm/webmin$product_suff-$ver-$rel.noarch.rpm rpm/webmin$product_suff-$ver-$rel.src.rpm");
 		}
 	}
 
 if (!$webmail && -d "/usr/local/webadmin/rpm/yum") {
 	# Add to our repository
-	system("cp rpm/webmin-$ver-$rel.noarch.rpm /usr/local/webadmin/rpm/yum");
+	system("cp rpm/webmin$product_suff-$ver-$rel.noarch.rpm /usr/local/webadmin/rpm/yum");
 	}
 
 
