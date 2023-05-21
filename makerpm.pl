@@ -81,18 +81,9 @@ if ($rel > 1 && -r "tarballs/webmin$product_suff-$ver-$rel.tar.gz") {
 else {
 	$tarfile = "webmin$product_suff-$ver.tar.gz";
 	}
-$rpmspec_obsoletes =  "\nConflicts: webmin-essential <= \%\{version\}-\%\{release\}\n";
-$rpmspec_obsoletes .= "Conflicts: webmin-minimal <= \%\{version\}-\%\{release\}\n";
-if ($product_suff) {
-	$rpmspec_obsoletes =  "\nConflicts: webmin <= \%\{version\}-\%\{release\}\n",
-	$rpmspec_obsoletes .= "Conflicts: webmin-minimal <= \%\{version\}-\%\{release\}\n"
-		if ($product_type eq 'essential');
-	$rpmspec_obsoletes =  "\nConflicts: webmin <= \%\{version\}-\%\{release\}\n",
-	$rpmspec_obsoletes .= "Conflicts: webmin-essential <= \%\{version\}-\%\{release\}\n"
-		if ($product_type eq 'minimal');
-	}
+
 system("cp tarballs/$tarfile $source_dir");
-open(SPEC, ">$spec_dir/webmin-$ver.spec");
+open(SPEC, ">$spec_dir/webmin$product_suff-$ver.spec");
 print SPEC <<EOF;
 %global __perl_provides %{nil}
 %define __spec_install_post %{nil}
@@ -101,7 +92,8 @@ Summary: A web-based administration interface for Unix systems.
 Name: webmin$product_suff
 Version: $ver
 Release: $rel
-Provides: webmin-%{version} perl(WebminCore)$rpmspec_obsoletes
+Provides: webmin = %{version}-%{release}
+Provides: perl(WebminCore)
 Requires(pre): /usr/bin/perl
 Requires: /bin/sh /usr/bin/perl /bin/rm perl(lib) perl(open) perl(Net::SSLeay) perl(Time::Local) perl(Encode::Detect) perl(Data::Dumper) perl(File::Path) perl(File::Basename) perl(Digest::SHA) perl(Digest::MD5) openssl unzip tar
 Recommends: perl(DateTime) perl(DateTime::TimeZone) perl(DateTime::Locale) perl(Time::Piece)
@@ -349,7 +341,7 @@ EOF
 close(SPEC);
 
 $cmd = -x "/usr/bin/rpmbuild" ? "rpmbuild" : "rpm";
-system("$cmd -ba --target=noarch $spec_dir/webmin-$ver.spec") && exit;
+system("$cmd -ba --target=noarch $spec_dir/webmin$product_suff-$ver.spec") && exit;
 if (-d "rpm") {
 	system("mv $rpms_dir/webmin$product_suff-$ver-$rel.noarch.rpm rpm/webmin$product_suff-$ver-$rel.noarch.rpm");
 	print "Moved to rpm/webmin$product_suff-$ver-$rel.noarch.rpm\n";
