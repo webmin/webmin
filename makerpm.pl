@@ -81,11 +81,14 @@ if ($rel > 1 && -r "tarballs/webmin$product_suff-$ver-$rel.tar.gz") {
 else {
 	$tarfile = "webmin$product_suff-$ver.tar.gz";
 	}
-$rpmspec_obsoletes = "\nObsoletes: webmin-essential webmin-minimal\n";
+$rpmspec_obsoletes =  "\nObsoletes: webmin-essential <= \%\{version\}-\%\{release\}\n";
+$rpmspec_obsoletes .= "\nObsoletes: webmin-minimal <= \%\{version\}-\%\{release\}\n";
 if ($product_suff) {
-	$rpmspec_obsoletes = "\nObsoletes: webmin webmin-minimal\n"
+	$rpmspec_obsoletes =  "\nObsoletes: webmin <= \%\{version\}-\%\{release\}\n",
+	$rpmspec_obsoletes .= "\nObsoletes: webmin-minimal <= \%\{version\}-\%\{release\}\n"
 		if ($product_type eq 'essential');
-	$rpmspec_obsoletes = "\nObsoletes: webmin webmin-essential\n"
+	$rpmspec_obsoletes =  "\nObsoletes: webmin <= \%\{version\}-\%\{release\}\n",
+	$rpmspec_obsoletes .= "\nObsoletes: webmin-essential <= \%\{version\}-\%\{release\}\n"
 		if ($product_type eq 'minimal');
 	}
 system("cp tarballs/$tarfile $source_dir");
