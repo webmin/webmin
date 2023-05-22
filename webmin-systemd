@@ -1,5 +1,7 @@
 [Unit]
 Description=Webmin server daemon
+Wants=network-online.target
+After=network.target network-online.target
 
 [Service]
 Environment="PERLLIB=WEBMIN_LIBDIR"
