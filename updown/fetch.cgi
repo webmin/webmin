@@ -94,40 +94,13 @@ if ($ENV{'PATH_INFO'}) {
 		while(read(FILE, $buffer, $bsize)) {
 			if ($dangertypes) {
 				my $buffer_filtered = &filter_javascript($buffer, $pdftype);
-				# If content was changed upon filtering
+				# If content was changed upon
+				# filtering force download it
 				if ($buffer_filtered ne $buffer) {
-					# For text simply return filtered but
-					# tell user that it was filtered out
-					if ($htmltype) {
-						# Add a banner showing content was changed
-						my $prefdata =
-							&ui_alert_box($text{'ui_jsblocked'}, 'danger');
-						# Pass filtered content with the banner
-						# Insert the banner in HTML body
-						if ($buffer_filtered =~ s/(<body.*?>)/$1$prefdata/) {
-							$fdata = $buffer_filtered;
-							}
-						else {
-							# Insert the banner to the top of HTML doc
-							$fdata = "$prefdata$buffer_filtered";
-							}
-						# Update content length
-						$fsize = length($fdata);
-						}
-					# For no text files simply force
-					# download if file was altered
-					else {
-						# Force send it
-						$type = "application/octet-stream";
-						print "Content-Disposition: Attachment\n";
-						# Pass original content
-						$fdata = $buffer;
-						}
+					$type = "application/octet-stream";
+					print "Content-Disposition: Attachment\n";
 					}
-				# Buffere was not changed, just pass it as is
-				else {
-					$fdata = $buffer;
-					}
+				$fdata = $buffer;
 				}
 			else {
 				$fdata .= $buffer;
