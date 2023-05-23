@@ -43,6 +43,9 @@ our $primary_port = 80;
 our $webmin_key_email = "jcameron\@webmin.com";
 our $webmin_key_fingerprint = "1719 003A CE3E 5A41 E2DE  70DF D97A 3AE9 11F6 3C51";
 
+our $developers_key_email = "developers\@webmin.com";
+our $developers_key_fingerprint = "B966 3227 39F9 8E2E 092E 69CF 28E1 1943 FF6A DD8B966 3227 39F9 8E2E 092E 69CF 28E1 1943 FF6A DD855";
+
 our $authentic_key_email = "gpg\@ilia.engineer";
 our $authentic_key_fingerprint = "EC60 F3DA 9CB7 9ADC CF56  0D1F 121E 166D D9C8 21AB";
 
@@ -638,6 +641,11 @@ return ( 1, &text('enogpg', "<tt>gpg</tt>") ) if (!&has_command($gpgpath));
 my ($ok, $err) = &import_gnupg_key(
 	$webmin_key_email, $webmin_key_fingerprint,
 	"$module_root_directory/jcameron-key.asc");
+return ($ok, $err) if ($ok);
+
+my ($ok, $err) = &import_gnupg_key(
+	$developers_key_email, $developers_key_fingerprint,
+	"$module_root_directory/developers-key.asc");
 return ($ok, $err) if ($ok);
 
 ($ok, $err) = &import_gnupg_key(
