@@ -154,9 +154,8 @@ elsif (!$config{'no_pam'}) {
 			$pam_conv_func_called = 0;
 			$pam_username = "test";
 			$pam_password = "test";
-			my $pam_ret = $pamh->pam_authenticate();
-			if ($pam_conv_func_called ||
-			    $pam_ret == PAM_SUCCESS()) {
+			$pamh->pam_authenticate();
+			if ($pam_conv_func_called) {
 				push(@startup_msg,
 				     "PAM authentication enabled");
 				$use_pam = 1;

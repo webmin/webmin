@@ -80,14 +80,38 @@ if ($ENV{'PATH_INFO'}) {
 		if (!$fetch_show) {
 			print "Content-Disposition: Attachment\n";
 			}
-		@st = stat($file);
-		print "Content-length: $st[7]\n";
-		print "X-Content-Type-Options: nosniff\n";
-		print "Content-type: $type\n\n";
-		while(read(FILE, $buffer, &get_buffer_size_binary())) {
-			print("$buffer");
+		# Stat file
+		my @st = stat($file);
+		my $fsize = $st[7];
+
+		# Get and analyze the file contents first
+		my $fdata = "";
+		my $dangertypes = $type =~ /html|xml|pdf/i;
+		my $htmltype    = $type =~ /html/i ? 1 : 0;
+		my $pdftype     = $type =~ /pdf/i ? 'pdf' : 0;
+		my $bsize =
+		    $dangertypes ? $fsize : &get_buffer_size_binary();
+		while(read(FILE, $buffer, $bsize)) {
+			if ($dangertypes) {
+				my $buffer_filtered = &filter_javascript($buffer, $pdftype);
+				# If content was changed upon
+				# filtering force download it
+				if ($buffer_filtered ne $buffer) {
+					$type = "application/octet-stream";
+					print "Content-Disposition: Attachment\n";
+					}
+				$fdata = $buffer;
+				}
+			else {
+				$fdata .= $buffer;
+				}
 			}
 		close(FILE);
+
+		print "Content-length: $fsize\n";
+		print "X-Content-Type-Options: nosniff\n";
+		print "Content-type: $type\n\n";
+		print "$fdata";
 		}
 
 	# Switch back to root
@@ -119,3 +143,4 @@ else {
 		&redirect("fetch.cgi".$file);
 		}
 	}
+
