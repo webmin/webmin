@@ -38,7 +38,9 @@ if ($module_name ne 'htaccess') {
 		# Need to build list of supported modules
 		local ($ver, $mods, $fullver) = &httpd_info($httpd);
 		if ($ver) {
-			local @mods = map { "$_/$ver" } &configurable_modules();
+			my @allmods = &available_modules();
+			local @mods = map { "$_/$ver" }
+				          &configurable_modules(\@allmods);
 			foreach my $m (@mods) {
 				if ($m =~ /(\S+)\/(\S+)/) {
 					$httpd_modules{$1} = $2;
@@ -47,10 +49,14 @@ if ($module_name ne 'htaccess') {
 			# Call again now that known modules have been set, as
 			# sometimes there are dependencies due to LoadModule
 			# statements in an IfModule block
-			@mods = map { "$_/$ver" } &configurable_modules();
+			undef(@get_config_cache);
+			@allmods = &available_modules();
+			@mods = map { "$_/$ver" }
+				    &configurable_modules(\@allmods);
 			local %site = ( 'size' => $st[7],
 					'path' => $httpd,
 					'modules' => join(' ', @mods),
+					'allmodules' => join(' ', @allmods),
 					'version' => $ver,
 					'fullversion' => $fullver,
 					'webmin' => &get_webmin_version() );
@@ -71,6 +77,9 @@ if (&read_file($site_file, \%site)) {
 		if ($m =~ /(\S+)\/(\S+)/) {
 			$httpd_modules{$1} = $2;
 			}
+		}
+	foreach $m (split(/\s+/, $site{'allmodules'})) {
+		$all_httpd_modules{$m} = $site{'version'};
 		}
 	foreach $m (keys %httpd_modules) {
 		if (!-r "$module_root_directory/$m.pl") {
@@ -1825,46 +1834,46 @@ for(my $i=0; $i<$secs; $i++) {
 return 0;
 }
 
-# configurable_modules()
+# configurable_modules([&all-mods])
 # Returns a list of Apaches that are compiled in or dynamically loaded, and
 # supported by Webmin.
 sub configurable_modules
 {
-local ($ver, $mods) = &httpd_info(&find_httpd());
-local @rv;
-local $m;
+my ($allmods) = @_;
+$allmods ||= [ &available_modules() ];
+return grep { -r "$module_root_directory/$_.pl" } @$allmods;
+}
+
+# available_modules()
+# Returns a list of Apaches that are compiled in or dynamically loaded
+sub available_modules
+{
+my ($ver, $mods) = &httpd_info(&find_httpd());
+my @rv;
 
 # Add compiled-in modules
-foreach $m (@$mods) {
-	if (-r "$module_root_directory/$m.pl") {
-		push(@rv, $m);
-		}
-	}
+push(@rv, @$mods);
 
 # Add dynamically loaded modules
-local $conf = &get_config();
-foreach $l (&find_directive_struct("LoadModule", $conf)) {
-	if ($l->{'words'}->[1] =~ /(mod_\S+)\.(so|dll)/ &&
-	    -r "$module_root_directory/$1.pl") {
+my $conf = &get_config();
+foreach my $l (&find_directive_struct("LoadModule", $conf)) {
+	if ($l->{'words'}->[1] =~ /(mod_\S+)\.(so|dll)/) {
 		push(@rv, $1);
 		}
-	elsif ($l->{'words'}->[1] =~ /libssl\.so/ &&
-	       -r "$module_root_directory/mod_apachessl.pl") {
+	elsif ($l->{'words'}->[1] =~ /libssl\.so/) {
 		push(@rv, "mod_apachessl");
 		}
-	elsif ($l->{'words'}->[1] =~ /lib([^\/\s]+)\.(so|dll)/ &&
-	       -r "$module_root_directory/mod_$1.pl") {
+	elsif ($l->{'words'}->[1] =~ /lib([^\/\s]+)\.(so|dll)/) {
 		push(@rv, "mod_$1");
 		}
 	}
-undef(@get_config_cache);	# Cache is no longer valid
 
 # Add dynamically loaded modules
 if ($config{'apachectl_path'}) {
 	&open_execute_command(APACHE,
 		"$config{'apachectl_path'} -M 2>/dev/null", 1);
 	while(<APACHE>) {
-		if (/(\S+)_module/ && -r "$module_root_directory/mod_${1}.pl") {
+		if (/(\S+)_module/) {
 			push(@rv, "mod_${1}");
 			}
 		}
