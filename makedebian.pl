@@ -7,6 +7,14 @@ if ($ARGV[0] eq "--webmail" || $ARGV[0] eq "-webmail") {
 	$webmail = 1;
 	shift(@ARGV);
 	}
+if ($ARGV[0] =~ /^--product-type/) {
+	$product_type = $ARGV[0];
+	$product_type =~ s/--product-type=//;
+	if ($product_type =~ /^(minimal|essential)$/) {
+		$product_suff = "-$product_type";
+		}
+	shift(@ARGV);
+	}
 if ($0 =~ /useradmin|usermin/ || `pwd` =~ /useradmin|usermin/) {
 	if ($webmail) {
 		$product = "usermin-webmail";
@@ -46,14 +54,14 @@ $conffiles_file = "$debian_dir/conffiles";
 chop($webmin_dir = `pwd`);
 
 @ARGV == 1 || @ARGV == 2 ||
-	die "usage: makedebian.pl [--webmail] <version> [release]";
+	die "usage: makedebian.pl [--product-type] [--webmail] <version> [release]";
 $ver = $ARGV[0];
 if ($ARGV[1]) {
 	$rel = "-".$ARGV[1];
 	}
-$tarfile = "tarballs/$product-$ver$rel.tar.gz";
+$tarfile = "tarballs/$product$product_suff-$ver$rel.tar.gz";
 if (!-r $tarfile) {
-	$tarfile = "tarballs/$product-$ver.tar.gz";
+	$tarfile = "tarballs/$product$product_suff-$ver.tar.gz";
 	}
 -r $tarfile || die "$tarfile not found";
 
@@ -71,8 +79,8 @@ system("mkdir -p $bin_dir");
 # Un-tar the package to the correct locations
 system("gunzip -c $tarfile | (cd $tmp_dir ; tar xf -)") &&
 	die "un-tar failed!";
-system("mv $tmp_dir/$product-$ver/* $usr_dir");
-rmdir("$tmp_dir/$product-$ver");
+system("mv $tmp_dir/$product$product_suff-$ver/* $usr_dir");
+rmdir("$tmp_dir/$product$product_suff-$ver");
 system("mv $usr_dir/$baseproduct-debian-pam $pam_file");
 system("cd $usr_dir && (find . -name '*.cgi' ; find . -name '*.pl') | perl perlpath.pl /usr/bin/perl -");
 system("cd $usr_dir && rm -f mount/freebsd-mounts*");
@@ -464,12 +472,12 @@ $md5 =~ s/\s+.*\n//g;
 @st = stat($tarfile);
 
 # Create the .diff file, which just contains the debian directory
-$diff_orig_dir = "$tmp_dir/$product-$ver-orig";
-$diff_new_dir = "$tmp_dir/$product-$ver";
+$diff_orig_dir = "$tmp_dir/$product$product_suff-$ver-orig";
+$diff_new_dir = "$tmp_dir/$product$product_suff-$ver";
 mkdir($diff_orig_dir, 0755);
 mkdir($diff_new_dir, 0755);
 system("cp -r $debian_dir $diff_new_dir");
-system("cd $tmp_dir && diff -r -N -u $product-$ver-orig $product-$ver >$webmin_dir/deb/${product}_${ver}${rel}.diff");
+system("cd $tmp_dir && diff -r -N -u $product$product_suff-$ver-orig $product$product_suff-$ver >$webmin_dir/deb/${product}_${ver}${rel}.diff");
 $diffmd5 = `md5sum deb/${product}_${ver}${rel}.diff`;
 $diffmd5 =~ s/\s+.*\n//g;
 @diffst = stat("deb/${product}_${ver}${rel}.diff");

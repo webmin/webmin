@@ -28,7 +28,7 @@ if ($ARGV[0] =~ /^--product-type/) {
 		}
 	shift(@ARGV);
 	}
-$ver = $ARGV[0] || die "usage: makerpm.pl <version> [release]";
+$ver = $ARGV[0] || die "usage: makerpm.pl [--nosign] [--product-type] <version> [release]";
 $rel = $ARGV[1] || "1";
 
 $oscheck = <<EOF;
