@@ -152,6 +152,7 @@ $qfile = quotemeta($file);
 # Import the signature for RPM
 if ($in{'mode'} eq 'rpm') {
 	system("rpm --import $module_root_directory/jcameron-key.asc >/dev/null 2>&1");
+	system("rpm --import $module_root_directory/developers-key.asc >/dev/null 2>&1");
 	}
 
 # Check the signature if possible
