@@ -11,7 +11,7 @@ use File::Basename;
 use File::Find;
 use JSON::PP;
 use HTTP::Tiny;
-use HTML::Entities;
+eval "use HTML::Entities";
 use List::MoreUtils qw(any uniq);
 use Cwd qw(cwd);
 use Encode qw/encode decode/;
