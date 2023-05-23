@@ -20,15 +20,7 @@ if ($ARGV[0] eq "--nosign" || $ARGV[0] eq "-nosign") {
 	$nosign = 1;
 	shift(@ARGV);
 	}
-if ($ARGV[0] =~ /^--product-type/) {
-	$product_type = $ARGV[0];
-	$product_type =~ s/--product-type=//;
-	if ($product_type =~ /^(minimal|essential)$/) {
-		$product_suff = "-$product_type";
-		}
-	shift(@ARGV);
-	}
-$ver = $ARGV[0] || die "usage: makerpm.pl [--nosign] [--product-type] <version> [release]";
+$ver = $ARGV[0] || die "usage: makerpm.pl [--nosign] <version> [release]";
 $rel = $ARGV[1] || "1";
 
 $oscheck = <<EOF;
@@ -75,15 +67,15 @@ else {
 	$makerel = "rm -f %{buildroot}/usr/libexec/webmin/release";
 	}
 
-if ($rel > 1 && -r "tarballs/webmin$product_suff-$ver-$rel.tar.gz") {
-	$tarfile = "webmin$product_suff-$ver-$rel.tar.gz";
+if ($rel > 1 && -r "tarballs/webmin-$ver-$rel.tar.gz") {
+	$tarfile = "webmin-$ver-$rel.tar.gz";
 	}
 else {
-	$tarfile = "webmin$product_suff-$ver.tar.gz";
+	$tarfile = "webmin-$ver.tar.gz";
 	}
 
 system("cp tarballs/$tarfile $source_dir");
-open(SPEC, ">$spec_dir/webmin$product_suff-$ver.spec");
+open(SPEC, ">$spec_dir/webmin-$ver.spec");
 print SPEC <<EOF;
 %global __perl_provides %{nil}
 %define __spec_install_post %{nil}
@@ -340,21 +332,21 @@ EOF
 close(SPEC);
 
 $cmd = -x "/usr/bin/rpmbuild" ? "rpmbuild" : "rpm";
-system("$cmd -ba --target=noarch $spec_dir/webmin$product_suff-$ver.spec") && exit;
+system("$cmd -ba --target=noarch $spec_dir/webmin-$ver.spec") && exit;
 if (-d "rpm") {
-	system("mv $rpms_dir/webmin$product_suff-$ver-$rel.noarch.rpm rpm/webmin$product_suff-$ver-$rel.noarch.rpm");
-	print "Moved to rpm/webmin$product_suff-$ver-$rel.noarch.rpm\n";
-	system("mv $srpms_dir/webmin$product_suff-$ver-$rel.src.rpm rpm/webmin$product_suff-$ver-$rel.src.rpm");
-	print "Moved to rpm/webmin$product_suff-$ver-$rel.src.rpm\n";
-	system("chown jcameron: rpm/webmin$product_suff-$ver-$rel.noarch.rpm rpm/webmin$product_suff-$ver-$rel.src.rpm");
+	system("mv $rpms_dir/webmin-$ver-$rel.noarch.rpm rpm/webmin-$ver-$rel.noarch.rpm");
+	print "Moved to rpm/webmin-$ver-$rel.noarch.rpm\n";
+	system("mv $srpms_dir/webmin-$ver-$rel.src.rpm rpm/webmin-$ver-$rel.src.rpm");
+	print "Moved to rpm/webmin-$ver-$rel.src.rpm\n";
+	system("chown jcameron: rpm/webmin-$ver-$rel.noarch.rpm rpm/webmin-$ver-$rel.src.rpm");
 	if (!$nosign) {
-		system("rpm --resign rpm/webmin$product_suff-$ver-$rel.noarch.rpm rpm/webmin$product_suff-$ver-$rel.src.rpm");
+		system("rpm --resign rpm/webmin-$ver-$rel.noarch.rpm rpm/webmin-$ver-$rel.src.rpm");
 		}
 	}
 
 if (!$webmail && -d "/usr/local/webadmin/rpm/yum") {
 	# Add to our repository
-	system("cp rpm/webmin$product_suff-$ver-$rel.noarch.rpm /usr/local/webadmin/rpm/yum");
+	system("cp rpm/webmin-$ver-$rel.noarch.rpm /usr/local/webadmin/rpm/yum");
 	}
 
 

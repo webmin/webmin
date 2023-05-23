@@ -277,6 +277,6 @@ close(ARFILE);
 
 sub usage
 {
-die "usage: makedist.pl [-minimal] [--exclude-modules] [--product-type] <version>";
+die "usage: makedist.pl [-minimal] [--exclude-modules] <version>";
 }
 
