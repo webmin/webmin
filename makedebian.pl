@@ -45,8 +45,8 @@ $conffiles_file = "$debian_dir/conffiles";
 -r "/etc/debian_version" || die "makedebian.pl must be run on Debian";
 chop($webmin_dir = `pwd`);
 
-@ARGV == 1 || die "usage: makedebian.pl [--webmail] <version> [release]";
-
+@ARGV == 1 || @ARGV == 2 ||
+	die "usage: makedebian.pl [--webmail] <version> [release]";
 $ver = $ARGV[0];
 if ($ARGV[1]) {
 	$rel = "-".$ARGV[1];
