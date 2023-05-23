@@ -4,9 +4,22 @@
 if ($0 =~ /^(.*)\//) {
 	chdir($1);
 	}
-@ARGV == 1 || @ARGV == 2 || usage();
+@ARGV == 1 || @ARGV == 2 || @ARGV == 3 || usage();
 if ($ARGV[0] eq "-minimal" || $ARGV[0] eq "--minimal") {
 	$min++;
+	shift(@ARGV);
+	}
+if ($ARGV[0] =~ /^--exclude-modules/) {
+	$exclude_modules = $ARGV[0];
+	shift(@ARGV);
+	}
+if ($ARGV[0] =~ /^--product-type/) {
+	$product_type = $ARGV[0];
+	$product_type =~ s/--product-type=//;
+	if ($product_type =~ /^(minimal|essential)$/) {
+		$product_suff = "-$product_type";
+		$product_pref = "$product_type-";
+		}
 	shift(@ARGV);
 	}
 $fullvers = $ARGV[0];
@@ -14,7 +27,7 @@ $fullvers =~ /^([0-9\.]+)(\-(\d+))?$/ || usage();
 $vers = $1;
 $release = $3;
 $tardir = $min ? "minimal" : "tarballs";
-$vfile = $min ? "$fullvers-minimal" : $fullvers;
+$vfile = $product_pref ? "$product_pref$fullvers" : $min ? "$fullvers-minimal" : $fullvers;
 $zipdir = "zips";
 $vers || usage();
 
@@ -63,10 +76,16 @@ else {
 	$mod_def_list = do { local $/; <$fh> };
 	close($fh);
 	@mlist = split(/\s+/, $mod_def_list);
+	if ($exclude_modules) {
+		$exclude_modules =~ s/--exclude-modules=//;
+		my @mlist_excluded =
+		    grep { my $f = $_; ! grep $_ eq $f, split(',', $exclude_modules) } @mlist;
+		@mlist = @mlist_excluded;
+		}
 	}
 @dirlist = ( "vendor_perl" );
 
-$dir = "webmin-$vers";
+$dir = "webmin$product_suff-$vers";
 if (!$release || !-d "$tardir/$dir") {
 	# Copy files into the directory for tarring up, unless this is a minor
 	# release or a new version
@@ -258,6 +277,6 @@ close(ARFILE);
 
 sub usage
 {
-die "usage: makedist.pl [-minimal] <version>";
+die "usage: makedist.pl [-minimal] [--exclude-modules] <version>";
 }
 

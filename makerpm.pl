@@ -20,7 +20,7 @@ if ($ARGV[0] eq "--nosign" || $ARGV[0] eq "-nosign") {
 	$nosign = 1;
 	shift(@ARGV);
 	}
-$ver = $ARGV[0] || die "usage: makerpm.pl <version> [release]";
+$ver = $ARGV[0] || die "usage: makerpm.pl [--nosign] <version> [release]";
 $rel = $ARGV[1] || "1";
 
 $oscheck = <<EOF;
@@ -73,6 +73,7 @@ if ($rel > 1 && -r "tarballs/webmin-$ver-$rel.tar.gz") {
 else {
 	$tarfile = "webmin-$ver.tar.gz";
 	}
+
 system("cp tarballs/$tarfile $source_dir");
 open(SPEC, ">$spec_dir/webmin-$ver.spec");
 print SPEC <<EOF;
