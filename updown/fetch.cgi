@@ -89,23 +89,21 @@ if ($ENV{'PATH_INFO'}) {
 		my $dangertypes = $type =~ /html|xml|pdf/i;
 		my $htmltype    = $type =~ /html/i ? 1 : 0;
 		my $pdftype     = $type =~ /pdf/i ? 'pdf' : 0;
-		my $bsize =
-		    $dangertypes ? $fsize : &get_buffer_size_binary();
-		while(read(FILE, $buffer, $bsize)) {
-			if ($dangertypes) {
-				my $buffer_filtered = &filter_javascript($buffer, $pdftype);
-				# If content was changed upon
-				# filtering force download it
-				if ($buffer_filtered ne $buffer) {
-					$type = "application/octet-stream";
-					print "Content-Disposition: Attachment\n";
-					}
-				$fdata = $buffer;
-				}
-			else {
-				$fdata .= $buffer;
+		if ($dangertypes) {
+			$fdata = do { local $/; <FILE> };
+			my $fdata_filtered = &filter_javascript($fdata, $pdftype);
+			# If content was changed upon
+			# filtering force download it
+			if ($fdata_filtered ne $fdata) {
+				$type = "application/octet-stream";
+				print "Content-Disposition: Attachment\n";
 				}
 			}
+		else {
+			while(read(FILE, $buffer, &get_buffer_size_binary())) {
+					$fdata .= $buffer;
+					}
+				}
 		close(FILE);
 
 		print "Content-length: $fsize\n";
