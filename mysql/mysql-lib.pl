@@ -1761,6 +1761,13 @@ else {
 		(map { $perms->{$_} ? 'Y' : 'N' } @{ $pfields }),
 		@{ $ssl_field_values }, @{ $other_field_values });
 	&execute_sql_logged($master_db, 'flush privileges');
+
+	if ($variant eq "mysql" && &compare_version_numbers($ver, "5.7.6") >= 0) {
+		&execute_sql_logged($master_db,
+		    "alter user '$user'\@'$host' identified $plugin by ".
+		        "'".&escapestr($pass)."'");
+		&execute_sql_logged($master_db, 'flush privileges');
+		}
 	}
 }
 
