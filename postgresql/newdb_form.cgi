@@ -16,7 +16,7 @@ print &ui_table_row($text{'newdb_db'},
 
 if (&get_postgresql_version() >= 7) {
 	# Owner option
-	$st = &get_pg_shadow_table();
+	($st) = &get_pg_shadow_table();
 	$u = &execute_sql($config{'basedb'}, "select usename from $st");
 	@users = map { $_->[0] } @{$u->{'data'}};
 	print &ui_table_row($text{'newdb_user'},

@@ -39,7 +39,7 @@ print &ui_table_row($text{'grant_ns'}, "<tt>$in{'ns'}</tt>");
 print &ui_table_row($text{"grant_$in{'type'}"}, "<tt>$in{'table'}</tt>");
 
 # Get users and groups for permissions table
-$st = &get_pg_shadow_table();
+($st) = &get_pg_shadow_table();
 $u = &execute_sql_safe($config{'basedb'}, "select usename from $st");
 @users = map { $_->[0] } @{$u->{'data'}};
 
