@@ -323,9 +323,9 @@ else {
 		push(@needs, "DBD::mysql") if ($@);
 		if (@needs) {
 			$needs = &urlize(join(" ", @needs));
-			print "<b>".&ui_text_color(&text(@needs == 2 ? 'index_nomods' : 'index_nomod', @needs,
+			print &ui_alert_box(&text(@needs == 2 ? 'index_nomods' : 'index_nomod', @needs,
 				"../cpan/download.cgi?source=3&cpan=$needs&mode=2&return=/$module_name/&returndesc=".
-				  &urlize($text{'index_return'})), 'warn')."</b>";
+				  &urlize($text{'index_return'})), 'warn');
 			}
 		}
 	}
