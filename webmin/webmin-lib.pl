@@ -643,7 +643,7 @@ my ($ok, $err) = &import_gnupg_key(
 	"$module_root_directory/jcameron-key.asc");
 return ($ok, $err) if ($ok);
 
-my ($ok, $err) = &import_gnupg_key(
+($ok, $err) = &import_gnupg_key(
 	$developers_key_email, $developers_key_fingerprint,
 	"$module_root_directory/developers-key.asc");
 return ($ok, $err) if ($ok);
