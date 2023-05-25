@@ -3022,7 +3022,7 @@ my %on = map { $_, 1 } @{$_[0]};
 &remote_error_setup(\&slave_error_handler);
 my @slaveerrs;
 foreach my $slave (&list_slave_servers()) {
-	next if (%on && !$on{$slave->{'host'}});
+	next if (%on && !$on{$slave->{'nsname'}});
 
 	# Find the PID file
 	$slave_error = undef;
