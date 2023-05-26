@@ -1105,9 +1105,10 @@ while(1) {
 						print $outfd "0 0\n";
 						}
 					else {
-						# Session is OK
+						# Session is OK, update last time
+						# and remote IP
 						print $outfd "2 $user\n";
-						$sessiondb{$skey} = "$user $time_now $ip";
+						$sessiondb{$skey} = "$user $time_now $vip";
 						}
 					}
 				}

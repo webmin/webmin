@@ -6,6 +6,8 @@
 webmin_download="https://download.webmin.com"
 webmin_key="jcameron-key.asc"
 webmin_key_download="$webmin_download/$webmin_key"
+developers_key="developers-key.asc"
+developers_key_download="$webmin_download/$developers_key"
 debian_repo_file="/etc/apt/sources.list.d/webmin.list"
 rhel_repo_file="/etc/yum.repos.d/webmin.repo"
 download_wget="/usr/bin/wget"
@@ -121,6 +123,7 @@ fi
 
 # Clean files
 rm -f "/tmp/$webmin_key"
+rm -f "/tmp/$developers_key"
 
 # Download key
 echo "  Downloading Webmin key .."
@@ -129,9 +132,14 @@ if [ "$?" != "0" ]; then
   download_out=$(echo "$download_out" | tr '\n' ' ')
   echo "  ..failed : $download_out"
   exit
-else
-  echo "  .. done"
 fi
+download_out=$($download $developers_key_download 2>/dev/null 2>&1)
+if [ "$?" != "0" ]; then
+  download_out=$(echo "$download_out" | tr '\n' ' ')
+  echo "  ..failed : $download_out"
+  exit
+fi
+echo "  .. done"
 
 # Setup repos
 case "$package_type" in
@@ -140,6 +148,8 @@ rpm)
   echo "  Installing Webmin key .."
   rpm --import $webmin_key
   cp -f $webmin_key /etc/pki/rpm-gpg/RPM-GPG-KEY-webmin
+  rpm --import $developers_key
+  cp -f $developers_key /etc/pki/rpm-gpg/RPM-GPG-KEY-developers
   echo "  .. done"
   # Create repo file
   echo "  Setting up Webmin repository .."
@@ -156,6 +166,8 @@ deb)
   echo "  Installing Webmin key .."
   gpg --import $webmin_key 1>/dev/null 2>&1
   cat $webmin_key | gpg --dearmor > /usr/share/keyrings/debian-webmin.gpg
+  gpg --import $developers_key 1>/dev/null 2>&1
+  cat $developers_key | gpg --dearmor > /usr/share/keyrings/debian-webmin-developers.gpg
   echo "  .. done"
   # Create repo file
   echo "  Setting up Webmin repository .."
