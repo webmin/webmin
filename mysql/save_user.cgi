@@ -27,7 +27,9 @@ else {
 	@desc = &table_structure($master_db, 'user');
 	%fieldmap = map { lc($_->{'field'}), $_->{'index'} } @desc;
 	$host = $in{'host_def'} ? '%' : $in{'host'};
-	$oldhost = $in{'oldhost'};
+	$oldhost = $host;
+	$oldhost = $in{'oldhost'}
+		if ($in{'oldhost'});
 	$user = $in{'mysqluser_def'} ? '' : $in{'mysqluser'};
 	$olduser = defined($in{'olduser'}) ? $in{'olduser'} : $user;
 	@pfields = map { $_->[0] } &priv_fields('user');
