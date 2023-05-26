@@ -16,7 +16,7 @@ print $text{'refreshmods_installed'},"<br>\n";
 $installed = &webmin::build_installed_modules(1);
 @not = grep { $installed->{$_} eq '0' } (keys %$installed);
 @got = grep { $installed->{$_} ne '0' } (keys %$installed);
-print &text('refeshmods_counts', scalar(@not), scalar(@got)),"<p>\n";
+print &text('refeshmods_counts', scalar(@not), scalar(@got)),"\n";
 
 # Refresh left frame, if possible
 if (defined(&theme_post_change_modules)) {
