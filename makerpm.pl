@@ -333,14 +333,18 @@ close(SPEC);
 
 $cmd = -x "/usr/bin/rpmbuild" ? "rpmbuild" : "rpm";
 system("$cmd -ba --target=noarch $spec_dir/webmin-$ver.spec") && exit;
-if (-d "rpm") {
-	system("mv $rpms_dir/webmin-$ver-$rel.noarch.rpm rpm/webmin-$ver-$rel.noarch.rpm");
-	print "Moved to rpm/webmin-$ver-$rel.noarch.rpm\n";
-	system("mv $srpms_dir/webmin-$ver-$rel.src.rpm rpm/webmin-$ver-$rel.src.rpm");
-	print "Moved to rpm/webmin-$ver-$rel.src.rpm\n";
-	system("chown jcameron: rpm/webmin-$ver-$rel.noarch.rpm rpm/webmin-$ver-$rel.src.rpm");
-	if (!$nosign) {
-		system("rpm --resign rpm/webmin-$ver-$rel.noarch.rpm rpm/webmin-$ver-$rel.src.rpm");
+
+foreach $rpm ("rpm", "newkey/rpm") {
+	if (-d $rpm) {
+		system("cp $rpms_dir/webmin-$ver-$rel.noarch.rpm $rpm/webmin-$ver-$rel.noarch.rpm");
+		print "Moved to $rpm/webmin-$ver-$rel.noarch.rpm\n";
+		system("cp $srpms_dir/webmin-$ver-$rel.src.rpm $rpm/webmin-$ver-$rel.src.rpm");
+		print "Moved to $rpm/webmin-$ver-$rel.src.rpm\n";
+		system("chown jcameron: $rpm/webmin-$ver-$rel.noarch.rpm $rpm/webmin-$ver-$rel.src.rpm");
+		if (!$nosign) {
+			$key = $rpm eq "rpm" ? "jcameron\@webmin.com" : "developers\@webmin.com";
+			system("rpm --resign -D '_gpg_name $key' $rpm/webmin-$ver-$rel.noarch.rpm $rpm/webmin-$ver-$rel.src.rpm");
+			}
 		}
 	}
 
