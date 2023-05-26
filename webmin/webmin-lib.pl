@@ -638,7 +638,9 @@ sub gnupg_setup
 {
 return ( 1, &text('enogpg', "<tt>gpg</tt>") ) if (!&has_command($gpgpath));
 
-my ($ok, $err) = &import_gnupg_key(
+my ($ok, $err);
+
+($ok, $err) = &import_gnupg_key(
 	$webmin_key_email, $webmin_key_fingerprint,
 	"$module_root_directory/jcameron-key.asc");
 return ($ok, $err) if ($ok);
