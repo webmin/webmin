@@ -42,7 +42,7 @@ else {
 # Check if config is from Virtualmin
 @conf = &get_procmailrc();
 if (&check_virtualmin_config(\@conf)) {
-	print "<b>",$text{'index_virtualmin'},"</b><p>\n";
+	print &ui_alert_box($text{'index_virtualmin'}, 'warn');
 	}
 
 # Build links for adding things
