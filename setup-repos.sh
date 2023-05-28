@@ -149,15 +149,15 @@ rpm)
   rpm --import $webmin_key
   cp -f $webmin_key /etc/pki/rpm-gpg/RPM-GPG-KEY-webmin
   rpm --import $developers_key
-  cp -f $developers_key /etc/pki/rpm-gpg/RPM-GPG-KEY-developers
+  cp -f $developers_key /etc/pki/rpm-gpg/RPM-GPG-KEY-webmin-developers
   echo "  .. done"
   # Create repo file
   echo "  Setting up Webmin repository .."
   echo "[webmin-noarch]" >$rhel_repo_file
   echo "name=Webmin - noarch" >>$rhel_repo_file
-  echo "baseurl=$webmin_download/download/yum" >>$rhel_repo_file
+  echo "baseurl=$webmin_download/download/newkey/yum" >>$rhel_repo_file
   echo "enabled=1" >>$rhel_repo_file
-  echo "gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-webmin" >>$rhel_repo_file
+  echo "gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-webmin-developers" >>$rhel_repo_file
   echo "gpgcheck=1" >>$rhel_repo_file
   echo "  .. done"
   ;;
