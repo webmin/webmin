@@ -161,7 +161,7 @@ if ($body && $body->{'data'} =~ /\S/) {
 		}
 	elsif ($body eq $htmlbody) {
 		# Attempt to show HTML
-		$bodycontents = &safe_html($body->{'data'});
+		$bodycontents = $body->{'data'};
 		$bodycontents = &fix_cids($bodycontents, \@attach,
 			"detach.cgi?user=$uuser&idx=$in{'idx'}&folder=$in{'folder'}$subs");
 		if ($textbody) {
@@ -169,6 +169,8 @@ if ($body && $body->{'data'} =~ /\S/) {
 			    "<a href='$hbase&body=1'>$text{'view_astext'}</a>");
 			}
 		}
+		$bodycontents = &iframe_body($bodycontents)
+			if ($bodycontents);
 	}
 if ($bodycontents) {
 	print &ui_table_start($text{'view_body'}, "width=100%", 1,
