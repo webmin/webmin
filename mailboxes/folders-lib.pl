@@ -2768,10 +2768,11 @@ else {
 # 2=All images. Returns the URL of images found in &urls
 sub disable_html_images
 {
-local ($html, $dis, $urls) = @_;
-local $newhtml;
+my ($html, $dis, $urls) = @_;
+my $newhtml;
+my $masked_img;
 while($html =~ /^([\000-\377]*?)(<\s*img[^>]*src=('[^']*'|"[^"]*"|\S+)[^>]*>)([\000-\377]*)/i) {
-	local ($before, $allimg, $img, $after) = ($1, $2, $3, $4);
+	my ($before, $allimg, $img, $after) = ($1, $2, $3, $4);
 	$img =~ s/^'(.*)'$/$1/ || $img =~ s/^"(.*)"$/$1/;
 	push(@$urls, $img) if ($urls);
 	if ($dis == 0) {
@@ -2781,7 +2782,10 @@ while($html =~ /^([\000-\377]*?)(<\s*img[^>]*src=('[^']*'|"[^"]*"|\S+)[^>]*>)([\
 	elsif ($dis == 1) {
 		# Don't touch unless offsite
 		if ($img =~ /^(http|https|ftp):/) {
-			$newhtml .= $before;
+			$masked_img++;
+			my $imgcont = $allimg;
+			$imgcont =~ s/src=/data-nosrc=/g;
+			$newhtml .= $before.$imgcont;
 			}
 		else {
 			$newhtml .= $before.$allimg;
@@ -2794,6 +2798,25 @@ while($html =~ /^([\000-\377]*?)(<\s*img[^>]*src=('[^']*'|"[^"]*"|\S+)[^>]*>)([\
 	$html = $after;
 	}
 $newhtml .= $html;
+if ($masked_img) {
+	my $masked_img_style =
+	  "<style>".
+	    "img[data-nosrc]
+	      { 
+	      	box-shadow: 0 0 0 1px #e153614f !important;
+	      	border-radius: 0 !important;
+	      	background: #e153614f !important;
+	      }".
+	  "</style>";
+	$masked_img_style =~ s/[\n\r\s]+/ /g;
+	$masked_img_style = &trim($masked_img_style);
+	if ($newhtml =~ /<\/body>/) {
+		$newhtml =~ s/<\/body>/$masked_img_style<\/body>/;
+		}
+	else {
+		$newhtml .= $masked_img_style;
+		}
+	}
 return $newhtml;
 }
 
