@@ -2820,6 +2820,57 @@ if ($masked_img) {
 return $newhtml;
 }
 
+# iframe_body(body)
+# Returns email message in an iframe HTML element
+sub iframe_body
+{
+my ($body) = @_;
+my $iframe_styles =
+  "<style>".
+   "html,body { overflow-y: hidden; }".
+  "</style>";
+my $iframe_spinner =
+  "<div id='iframe-spinner'></div>".
+  "<style>".
+   "
+     \@keyframes iframe-spinner {
+       to {transform: rotate(360deg);}
+     }
+ 
+     #iframe-spinner:before {
+       animation: iframe-spinner .4s linear infinite;
+       border-radius: 50%;
+       border: 2px solid #bbbbbb;
+       border-top-color: #000000;
+       box-sizing: border-box;
+       content: '';
+       height: 18px;
+       margin-top: 3px;
+       position: absolute;
+       right: 15px;
+       width: 18px;
+     }
+  ".
+  "</style>";
+$iframe_styles =~ s/[\n\r\s]+/ /g;
+$iframe_styles = &trim($iframe_styles);
+if ($body =~ /<\/body>/) {
+		$body =~ s/<\/body>/$iframe_styles<\/body>/;
+		}
+	else {
+		$body .= $iframe_styles;
+		}
+$body = &trim(&quote_escape($body, '"'));
+my $iframe_body = $iframe_spinner.
+      "<iframe id='mail-iframe' style='border:0; width:100%; min-height:50vh;'  
+         onload='this.style.height=this.contentWindow.document.body.getBoundingClientRect().bottom +
+                 this.contentWindow.document.body.getBoundingClientRect().top + \"px\";
+                   this.previousElementSibling.remove();this.classList.add(\"loaded\")' 
+         src=\"about:blank\" srcdoc=\"$body\"".
+      "></iframe>";
+return &trim($iframe_body);
+}
+
 # remove_body_attachments(&mail, &attach)
 # Returns attachments except for those that make up the message body, and those
 # that have sub-attachments.
