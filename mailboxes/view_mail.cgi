@@ -162,11 +162,18 @@ if ($body && $body->{'data'} =~ /\S/) {
 	elsif ($body eq $htmlbody) {
 		# Attempt to show HTML
 		$bodycontents = $body->{'data'};
+		my @imageurls;
+		my $image_mode = defined($in{'images'}) ? $in{'images'} : 1;
+		$bodycontents = &disable_html_images($bodycontents, $image_mode, \@imageurls);
 		$bodycontents = &fix_cids($bodycontents, \@attach,
 			"detach.cgi?user=$uuser&idx=$in{'idx'}&folder=$in{'folder'}$subs");
 		if ($textbody) {
 			push(@bodyright,
 			    "<a href='$hbase&body=1'>$text{'view_astext'}</a>");
+			}
+		if (@imageurls && $image_mode) {
+			# Link to show images
+			push(@bodyright, "<a href='$hbase&body=$in{'body'}&headers=$in{'headers'}&images=0'>$text{'view_images'}</a>");
 			}
 		}
 		$bodycontents = &iframe_body($bodycontents)
