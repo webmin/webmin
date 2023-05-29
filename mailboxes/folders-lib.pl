@@ -2803,9 +2803,12 @@ if ($masked_img) {
 	  "<style>".
 	    "img[data-nosrc]
 	      { 
-	      	box-shadow: 0 0 0 1px #e153614f !important;
 	      	border-radius: 0 !important;
-	      	background: #e153614f !important;
+	      	background: #e1567833 !important;
+	      	border-color: transparent !important;
+	      	min-width: 16px;
+	      	min-height: 16px;
+	      	}
 	      }".
 	  "</style>";
 	$masked_img_style =~ s/[\n\r\s]+/ /g;
