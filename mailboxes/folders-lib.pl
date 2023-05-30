@@ -2521,6 +2521,21 @@ if (($h2 = &has_command("html2text")) || ($lynx = &has_command("lynx"))) {
 	return $text;
 	}
 else {
+	# Can we use Perl HTML formatter
+	# for the better conversion
+	eval "use HTML::TreeBuilder";
+	if (!$@) {
+		eval "use HTML::FormatText";
+		if (!$@) {
+			my $html_parser = HTML::TreeBuilder->new();
+			eval "use utf8";
+			utf8::decode($html)
+				if (!$@);
+			$html_parser->parse($html);
+			my $formatter = HTML::FormatText->new(leftmargin => 1, rightmargin => 79);
+			return $formatter->format($html_parser);
+			}
+		}
 	# Do conversion manually :(
 	$html =~ s/\s+/ /g;
 	$html =~ s/<p>/\n\n/gi;
