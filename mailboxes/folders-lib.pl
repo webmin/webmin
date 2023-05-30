@@ -2842,19 +2842,19 @@ if ($body =~ /<\/body>/) {
 $body = &trim(&quote_escape($body, '"'));
 # Email iframe stuff
 my $iframe_body = <<EOF;
-<div id="iframe-spinner"></div>
+<div id="mail-iframe-spinner"></div>
 <style>
 	#mail-iframe {
 		border:0;
 		width:100%;
 	}
-	@keyframes iframe-spinner {
+	@keyframes mail-iframe-spinner {
 		to {
 			transform: rotate(360deg);
 			}
 	}
-	#iframe-spinner:before {
-		animation: iframe-spinner .4s linear infinite;
+	#mail-iframe-spinner:before {
+		animation: mail-iframe-spinner .4s linear infinite;
 		border-radius: 50%;
 		border: 2px solid #bbbbbb;
 		border-top-color: #000000;
@@ -2873,7 +2873,7 @@ my $iframe_body = <<EOF;
 		    theme_mail_iframe_onload(iframe);
 		      return;
 		}
-		const iframe_spinner = document.querySelector('#iframe-spinner');
+		const iframe_spinner = document.querySelector('#mail-iframe-spinner');
 		iframe.style.height = Math.ceil(iframe.contentWindow.document.body.scrollHeight * 1.002) + "px";
 		iframe_spinner && iframe_spinner.remove();
 		iframe.classList.add("loaded");
