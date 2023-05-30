@@ -2494,12 +2494,13 @@ return $rv;
 # Attempts to convert some HTML to text form
 sub html_to_text
 {
-local ($h2, $lynx);
+my ($html) = @_;
+my ($h2, $lynx);
 if (($h2 = &has_command("html2text")) || ($lynx = &has_command("lynx"))) {
 	# Can use a commonly available external program
 	local $temp = &transname().".html";
 	open(TEMP, ">", $temp);
-	print TEMP $_[0];
+	print TEMP $html;
 	close(TEMP);
 	open(OUT, ($lynx ? "$lynx -dump $temp" : "$h2 $temp")." 2>/dev/null |");
 	while(<OUT>) {
@@ -2521,7 +2522,6 @@ if (($h2 = &has_command("html2text")) || ($lynx = &has_command("lynx"))) {
 	}
 else {
 	# Do conversion manually :(
-	local $html = $_[0];
 	$html =~ s/\s+/ /g;
 	$html =~ s/<p>/\n\n/gi;
 	$html =~ s/<br>/\n/gi;
