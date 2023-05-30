@@ -2537,6 +2537,7 @@ else {
 			}
 		}
 	# Do conversion manually :(
+	$html =~ s/(<|&lt;)(style|script).*?(>|&gt;).*?(<|&lt;)\/(style|script)(>|&gt;)//gs;
 	$html =~ s/\s+/ /g;
 	$html =~ s/<p>/\n\n/gi;
 	$html =~ s/<br>/\n/gi;
