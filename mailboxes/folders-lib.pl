@@ -2865,7 +2865,7 @@ if ($body =~ /<\/body>/) {
 		}
 $body = &trim(&quote_escape($body, '"'));
 my $iframe_body = $iframe_spinner.
-      "<iframe id='mail-iframe' style='border:0; width:100%; min-height:50vh;'  
+      "<iframe sandbox id='mail-iframe' style='border:0; width:100%; min-height:50vh;'  
          onload='this.style.height=this.contentWindow.document.body.getBoundingClientRect().bottom +
                  this.contentWindow.document.body.getBoundingClientRect().top + \"px\";
                    this.previousElementSibling.remove();this.classList.add(\"loaded\")' 
