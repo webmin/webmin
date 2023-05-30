@@ -2841,7 +2841,7 @@ if ($body =~ /<\/body>/) {
 		}
 $body = &trim(&quote_escape($body, '"'));
 # Email iframe stuff
-my $iframe_body = <<EOF
+my $iframe_body = <<EOF;
 <div id="iframe-spinner"></div>
 <style>
 	@keyframes iframe-spinner {
@@ -2877,6 +2877,7 @@ my $iframe_body = <<EOF
 </script>
 <iframe sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox" id="mail-iframe" style="border:0; width:100%;" onload="mail_iframe_onload(this)" src="about:blank" srcdoc="$body"></iframe>
 EOF
+
 return &trim($iframe_body);
 }
 
