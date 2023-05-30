@@ -2542,7 +2542,14 @@ else {
 	$html =~ s/<p>/\n\n/gi;
 	$html =~ s/<br>/\n/gi;
 	$html =~ s/<[^>]+>//g;
+	my $useutf8 = 0;
+	eval "use utf8";
+	$useutf8 = 1 if (!$@);
+	utf8::decode($html)
+		if ($useutf8);
 	$html = &entities_to_ascii($html);
+	utf8::encode($html)
+		if ($useutf8);
 	return $html;
 	}
 }
