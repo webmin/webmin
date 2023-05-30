@@ -2844,6 +2844,10 @@ $body = &trim(&quote_escape($body, '"'));
 my $iframe_body = <<EOF;
 <div id="iframe-spinner"></div>
 <style>
+	#mail-iframe {
+		border:0;
+		width:100%;
+	}
 	@keyframes iframe-spinner {
 		to {
 			transform: rotate(360deg);
@@ -2875,9 +2879,8 @@ my $iframe_body = <<EOF;
 		iframe.classList.add("loaded");
 	}
 </script>
-<iframe sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox" id="mail-iframe" style="border:0; width:100%;" onload="mail_iframe_onload(this)" src="about:blank" srcdoc="$body"></iframe>
+<iframe sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox" id="mail-iframe" onload="mail_iframe_onload(this)" src="about:blank" srcdoc="$body"></iframe>
 EOF
-
 return &trim($iframe_body);
 }
 
