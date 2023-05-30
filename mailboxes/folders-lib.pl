@@ -2502,7 +2502,7 @@ if (($h2 = &has_command("html2text")) || ($lynx = &has_command("lynx"))) {
 	open(TEMP, ">", $temp);
 	print TEMP $html;
 	close(TEMP);
-	open(OUT, ($lynx ? "$lynx -dump $temp" : "$h2 $temp")." 2>/dev/null |");
+	open(OUT, ($lynx ? "$lynx --display_charset=utf-8 -dump $temp" : "$h2 $temp")." 2>/dev/null |");
 	while(<OUT>) {
 		if ($lynx && $_ =~ /^\s*References\s*$/) {
 			# Start of Lynx references output
