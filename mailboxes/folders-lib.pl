@@ -2828,35 +2828,11 @@ return $newhtml;
 sub iframe_body
 {
 my ($body) = @_;
+
+# Mail iframe inner styles
 my $iframe_styles =
-  "<style>
-    html,body { overflow-y: hidden; }
-   </style>";
-my $iframe_spinner =
-  "<div id='iframe-spinner'></div>
-   <style>
-     \@keyframes iframe-spinner {
-       to {
-         transform: rotate(360deg);
-       }
-     }
-     #iframe-spinner:before {
-       animation: iframe-spinner .4s linear infinite;
-       border-radius: 50%;
-       border: 2px solid #bbbbbb;
-       border-top-color: #000000;
-       box-sizing: border-box;
-       content: '';
-       height: 18px;
-       margin-top: 3px;
-       position: absolute;
-       right: 15px;
-       width: 18px;
-     }
-   </style>
-  ";
-$iframe_styles =~ s/[\n\r\s]+/ /g;
-$iframe_styles = &trim($iframe_styles);
+	'<style>html,body { overflow-y: hidden; }</style>';
+# Add inner styles to the email body
 if ($body =~ /<\/body>/) {
 		$body =~ s/<\/body>/$iframe_styles<\/body>/;
 		}
@@ -2864,26 +2840,43 @@ if ($body =~ /<\/body>/) {
 		$body .= $iframe_styles;
 		}
 $body = &trim(&quote_escape($body, '"'));
-my $iframe_body =
-  $iframe_spinner."
-  <script>
-  function mail_iframe_onload(iframe) {
-    if (typeof theme_mail_iframe_onload === 'function') {
-        theme_mail_iframe_onload(iframe);
-          return;
-    }
-    const iframe_spinner = document.querySelector('#iframe-spinner');
-    iframe.style.height=Math.ceil(iframe.contentWindow.document.body.scrollHeight * 1.002) + \"px\";
-    iframe_spinner && iframe_spinner.remove();
-    iframe.classList.add(\"loaded\");
-  }
-  </script>
-  <iframe
-     sandbox='allow-same-origin allow-popups allow-popups-to-escape-sandbox' 
-     id='mail-iframe' style='border:0; width:100%;'  
-     onload='mail_iframe_onload(this)' 
-     src=\"about:blank\" srcdoc=\"$body\"".
-  "></iframe>";
+# Email iframe stuff
+my $iframe_body = <<EOF
+<div id="iframe-spinner"></div>
+<style>
+	@keyframes iframe-spinner {
+		to {
+			transform: rotate(360deg);
+			}
+	}
+	#iframe-spinner:before {
+		animation: iframe-spinner .4s linear infinite;
+		border-radius: 50%;
+		border: 2px solid #bbbbbb;
+		border-top-color: #000000;
+		box-sizing: border-box;
+		content: '';
+		height: 18px;
+		margin-top: 3px;
+		position: absolute;
+		right: 15px;
+		width: 18px;
+	}
+</style>
+<script>
+	function mail_iframe_onload(iframe) {
+		if (typeof theme_mail_iframe_onload === 'function') {
+		    theme_mail_iframe_onload(iframe);
+		      return;
+		}
+		const iframe_spinner = document.querySelector('#iframe-spinner');
+		iframe.style.height = Math.ceil(iframe.contentWindow.document.body.scrollHeight * 1.002) + "px";
+		iframe_spinner && iframe_spinner.remove();
+		iframe.classList.add("loaded");
+	}
+</script>
+<iframe sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox" id="mail-iframe" style="border:0; width:100%;" onload="mail_iframe_onload(this)" src="about:blank" srcdoc="$body"></iframe>
+EOF
 return &trim($iframe_body);
 }
 
