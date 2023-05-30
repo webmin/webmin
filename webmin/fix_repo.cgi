@@ -25,6 +25,7 @@ if (-r $webmin_yum_repo_file) {
 		}
 	&flush_file_lines($webmin_yum_repo_file);
 	&unlock_file($webmin_yum_repo_file);
+	&system_logged("rpm --import $webmin_yum_repo_key >/dev/null 2>&1 </dev/null");
 	}
 
 &webmin_log("fixrepo");
