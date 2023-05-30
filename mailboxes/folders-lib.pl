@@ -2874,12 +2874,18 @@ my $iframe_body = <<EOF;
 		      return;
 		}
 		const iframe_spinner = document.querySelector('#mail-iframe-spinner');
-		iframe.style.height = Math.ceil(iframe.contentWindow.document.body.scrollHeight * 1.002) + "px";
+		iframe.style.height =
+		  Math.ceil(iframe.contentWindow.document.body.scrollHeight * 1.002) + "px";
 		iframe_spinner && iframe_spinner.remove();
 		iframe.classList.add("loaded");
 	}
 </script>
-<iframe sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox" id="mail-iframe" onload="mail_iframe_onload(this)" src="about:blank" srcdoc="$body"></iframe>
+<iframe
+  id="mail-iframe" 
+  onload="mail_iframe_onload(this)" 
+  sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+  src="about:blank" srcdoc="$body">
+</iframe>
 EOF
 return &trim($iframe_body);
 }
