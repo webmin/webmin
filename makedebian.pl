@@ -454,29 +454,30 @@ EOF
 close(SCRIPT);
 system("chmod 755 $postuninstall_file");
 
-# Run the actual build command
-system("fakeroot dpkg --build $tmp_dir deb/${product}_${ver}${rel}_all.deb") &&
-	die "dpkg failed";
-#system("rm -rf $tmp_dir");
-print "Wrote deb/${product}_${ver}${rel}_all.deb\n";
-$md5 = `md5sum $tarfile`;
-$md5 =~ s/\s+.*\n//g;
-@st = stat($tarfile);
+foreach my $deb ("deb", "newkey/deb") {
+	# Run the actual build command
+	system("fakeroot dpkg --build $tmp_dir $deb/${product}_${ver}${rel}_all.deb") &&
+		die "dpkg failed";
+	#system("rm -rf $tmp_dir");
+	print "Wrote $deb/${product}_${ver}${rel}_all.deb\n";
+	$md5 = `md5sum $tarfile`;
+	$md5 =~ s/\s+.*\n//g;
+	@st = stat($tarfile);
 
-# Create the .diff file, which just contains the debian directory
-$diff_orig_dir = "$tmp_dir/$product-$ver-orig";
-$diff_new_dir = "$tmp_dir/$product-$ver";
-mkdir($diff_orig_dir, 0755);
-mkdir($diff_new_dir, 0755);
-system("cp -r $debian_dir $diff_new_dir");
-system("cd $tmp_dir && diff -r -N -u $product-$ver-orig $product-$ver >$webmin_dir/deb/${product}_${ver}${rel}.diff");
-$diffmd5 = `md5sum deb/${product}_${ver}${rel}.diff`;
-$diffmd5 =~ s/\s+.*\n//g;
-@diffst = stat("deb/${product}_${ver}${rel}.diff");
+	# Create the .diff file, which just contains the debian directory
+	$diff_orig_dir = "$tmp_dir/$product-$ver-orig";
+	$diff_new_dir = "$tmp_dir/$product-$ver";
+	mkdir($diff_orig_dir, 0755);
+	mkdir($diff_new_dir, 0755);
+	system("cp -r $debian_dir $diff_new_dir");
+	system("cd $tmp_dir && diff -r -N -u $product-$ver-orig $product-$ver >$webmin_dir/$deb/${product}_${ver}${rel}.diff");
+	$diffmd5 = `md5sum $deb/${product}_${ver}${rel}.diff`;
+	$diffmd5 =~ s/\s+.*\n//g;
+	@diffst = stat("$deb/${product}_${ver}${rel}.diff");
 
-# Create the .dsc file
-open(DSC, ">deb/${product}_$ver$rel.plain");
-print DSC <<EOF;
+	# Create the .dsc file
+	open(DSC, ">$deb/${product}_$ver$rel.plain");
+	print DSC <<EOF;
 Format: 1.0
 Source: $product
 Version: $ver$rel
@@ -491,32 +492,34 @@ Files:
  $diffmd5 $diffst[7] ${product}_${ver}.diff
 
 EOF
-close(DSC);
-print "Creating signature deb/${product}_$ver$rel.dsc\n";
-unlink("deb/${product}_$ver$rel.dsc");
-$ex = system("gpg --output deb/${product}_$ver$rel.dsc --clearsign deb/${product}_$ver$rel.plain");
-if ($ex) {
-	print "Failed to create deb/${product}_$ver$rel.dsc\n";
-	}
-else {
-	unlink("deb/${product}_$ver$rel.plain");
-	print "Wrote source deb/${product}_$ver$rel.dsc\n";
-	}
+	close(DSC);
 
-$dir = "sarge";
-if (-d "/usr/local/webadmin/deb/repository") {
-	# Add to our repository
-	chdir("/usr/local/webadmin/deb/repository");
-	system("reprepro -Vb . remove $dir $product");
-	system("reprepro -Vb . includedeb $dir ../${product}_${ver}${rel}_all.deb");
-	chdir("/usr/local/webadmin");
-	}
+	print "Creating signature $deb/${product}_$ver$rel.dsc\n";
+	unlink("$deb/${product}_$ver$rel.dsc");
+	$ex = system("gpg --output $deb/${product}_$ver$rel.dsc --clearsign $deb/${product}_$ver$rel.plain");
+	if ($ex) {
+		print "Failed to create $deb/${product}_$ver$rel.dsc\n";
+		}
+	else {
+		unlink("$deb/${product}_$ver$rel.plain");
+		print "Wrote source $deb/${product}_$ver$rel.dsc\n";
+		}
 
-# Create PGP signature
-print "Signing sigs/${product}_${ver}${rel}_all.deb-sig.asc\n";
-unlink("sigs/${product}_${ver}${rel}_all.deb-sig.asc");
-system("gpg --armor --output sigs/${product}_${ver}${rel}_all.deb-sig.asc --default-key jcameron\@webmin.com --detach-sig deb/${product}_${ver}${rel}_all.deb");
-print "Wrote sigs/${product}_${ver}${rel}_all.deb-sig.asc\n";
+	$dir = "sarge";
+	if (-d "/usr/local/webadmin/$deb/repository") {
+		# Add to our repository
+		chdir("/usr/local/webadmin/$deb/repository");
+		system("reprepro -Vb . remove $dir $product");
+		system("reprepro -Vb . includedeb $dir ../${product}_${ver}${rel}_all.deb");
+		chdir("/usr/local/webadmin");
+		}
+
+	# Create PGP signature
+	print "Signing sigs/${product}_${ver}${rel}_all.deb-sig.asc\n";
+	unlink("sigs/${product}_${ver}${rel}_all.deb-sig.asc");
+	system("gpg --armor --output sigs/${product}_${ver}${rel}_all.deb-sig.asc --default-key jcameron\@webmin.com --detach-sig $deb/${product}_${ver}${rel}_all.deb");
+	print "Wrote sigs/${product}_${ver}${rel}_all.deb-sig.asc\n";
+	}
 
 # read_file(file, &assoc, [&order], [lowercase])
 # Fill an associative array with name=value pairs from a file
