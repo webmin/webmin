@@ -723,15 +723,14 @@ sub theme_ui_checked_columns_row
 $theme_ui_columns_row_toggle = $theme_ui_columns_row_toggle ? '0' : '1';
 local ($cols, $tdtags, $checkname, $checkvalue, $checked, $disabled, $tags) = @_;
 my $rv;
-my $cbid = &quote_escape(quotemeta("${checkname}_${checkvalue}"));
-my $rid = &quote_escape(quotemeta("row_${checkname}_${checkvalue}"));
-my $ridtr = &quote_escape("row_${checkname}_${checkvalue}");
+my $cbid = &quote_escape("${checkname}_${checkvalue}");
+my $rid = &quote_escape("row_${checkname}_${checkvalue}");
 my $mycb = $cb;
 if ($checked) {
 	$mycb =~ s/mainbody/mainsel/g;
 	}
 $mycb =~ s/class='/class='row$theme_ui_columns_row_toggle ui_checked_columns /;
-$rv .= "<tr id=\"$ridtr\" $mycb onMouseOver=\"this.className = document.getElementById('$cbid').checked ? 'mainhighsel' : 'mainhigh'\" onMouseOut=\"this.className = document.getElementById('$cbid').checked ? 'mainsel' : 'mainbody row$theme_ui_columns_row_toggle'\">\n";
+$rv .= "<tr id=\"$rid\" $mycb onMouseOver=\"this.className = document.getElementById('$cbid').checked ? 'mainhighsel' : 'mainhigh'\" onMouseOut=\"this.className = document.getElementById('$cbid').checked ? 'mainsel' : 'mainbody row$theme_ui_columns_row_toggle'\">\n";
 $rv .= "<td class='ui_checked_checkbox' ".$tdtags->[0].">".
        &ui_checkbox($checkname, $checkvalue, undef, $checked, $tags." "."onClick=\"document.getElementById('$rid').className = this.checked ? 'mainhighsel' : 'mainhigh';\"", $disabled).
        "</td>\n";
@@ -756,16 +755,15 @@ sub theme_ui_radio_columns_row
 {
 local ($cols, $tdtags, $checkname, $checkvalue, $checked) = @_;
 my $rv;
-my $cbid = &quote_escape(quotemeta("${checkname}_${checkvalue}"));
-my $rid = &quote_escape(quotemeta("row_${checkname}_${checkvalue}"));
-my $ridtr = &quote_escape("row_${checkname}_${checkvalue}");
+my $cbid = &quote_escape("${checkname}_${checkvalue}");
+my $rid = &quote_escape("row_${checkname}_${checkvalue}");
 my $mycb = $cb;
 if ($checked) {
 	$mycb =~ s/mainbody/mainsel/g;
 	}
 
 $mycb =~ s/class='/class='ui_radio_columns /;
-$rv .= "<tr $mycb id=\"$ridtr\" onMouseOver=\"this.className = document.getElementById('$cbid').checked ? 'mainhighsel' : 'mainhigh'\" onMouseOut=\"this.className = document.getElementById('$cbid').checked ? 'mainsel' : 'mainbody'\">\n";
+$rv .= "<tr $mycb id=\"$rid\" onMouseOver=\"this.className = document.getElementById('$cbid').checked ? 'mainhighsel' : 'mainhigh'\" onMouseOut=\"this.className = document.getElementById('$cbid').checked ? 'mainsel' : 'mainbody'\">\n";
 $rv .= "<td ".$tdtags->[0]." class='ui_radio_radio'>".
        &ui_oneradio($checkname, $checkvalue, undef, $checked, "onClick=\"for(i=0; i<form.$checkname.length; i++) { ff = form.${checkname}[i]; r = document.getElementById('row_'+ff.id); if (r) { r.className = 'mainbody' } } document.getElementById('$rid').className = this.checked ? 'mainhighsel' : 'mainhigh';\"").
        "</td>\n";
