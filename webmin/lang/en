@@ -695,6 +695,7 @@ log_tinstall=Installed theme $1
 log_clone=Cloned module $1 to $2
 log_delete=Deleted module $1
 log_os=Changed operating system
+log_fixrepo=Fixed Webmin repository
 log_lang=Changed global language
 log_startpage=Changed index page options
 log_upgrade=Upgraded Webmin to version $1
@@ -1011,6 +1012,8 @@ notify_updatedesc=Fixes problem
 notif_updateok=Install Updates Now
 notif_reboot=Recent package updates (such as a new kernel version) require a reboot to be fully applied.
 notif_rebootok=Reboot Now
+notify_yumrepo=Your system is using the old Webmin YUM repository. Click the button below to switch to the new repository URL <tt>$1</tt> in order to use our latest signing key and ensure access to updated Webmin versions.
+notif_fixreponow=Update Webmin Repository
 
 status_title=Background Status Collection
 status_header=Status collection job settings

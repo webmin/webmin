@@ -61,6 +61,11 @@ our $third_ssl = 0;
 
 our $default_key_size = "2048";
 
+our $webmin_yum_repo_file = "/etc/yum.repos.d/webmin.repo";
+our $webmin_yum_repo_url = "https://download.webmin.com/download/newkey/yum";
+our $webmin_yum_repo_mirrorlist = $webmin_yum_repo_url."/mirrorlist";
+our $webmin_yum_repo_key = "/etc/pki/rpm-gpg/RPM-GPG-KEY-webmin-developers";
+
 # Obsolete, but still defined so it can be deleted
 our $cron_cmd = "$module_config_directory/update.pl";
 
@@ -1305,6 +1310,26 @@ if (&foreign_available($module_name) && !$gconfig{'nowebminup'} &&
 		     "$release_notes_link<p>\n".
 		     &ui_form_end([ [ undef, $text{'notif_upgradeok'} ] ]));
 		}
+	}
+
+# Check for use of the old YUM or APT repos
+my $repoerr;
+if (-r $webmin_yum_repo_file) {
+	my $lref = &read_file_lines($webmin_yum_repo_file, 1);
+	foreach my $l (@$lref) {
+		if ($l =~ /^\s*baseurl\s*=\s*(\S+)/ &&
+		    $1 ne $webmin_yum_repo_url) {
+			$repoerr = &text('notify_yumrepo',
+					 $webmin_yum_repo_url);
+			last;
+			}
+		}
+	}
+if ($repoerr && &foreign_available("webmin")) {
+	push(@notifs,
+		&ui_form_start("@{[&get_webprefix()]}/webmin/fix_repo.cgi").
+		$repoerr."<p>\n".
+		&ui_form_end([ [ undef, $text{'notif_fixreponow'} ] ]));
 	}
 
 # Reboot needed
