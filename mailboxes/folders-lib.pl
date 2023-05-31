@@ -2896,9 +2896,13 @@ my $iframe_body = <<EOF;
 		    theme_mail_iframe_onload(iframe);
 		      return;
 		}
-		const iframe_spinner = document.querySelector('#mail-iframe-spinner');
-		iframe.style.height =
-		  Math.ceil(iframe.contentWindow.document.body.scrollHeight * 1.002) + "px";
+		const iframe_spinner = document.querySelector('#mail-iframe-spinner'),
+		      iframe_height_bound = iframe.contentWindow.document.body.getBoundingClientRect().bottom,
+		      iframe_scroll_height = iframe.contentWindow.document.body.scrollHeight,
+		      iframe_height =
+		      	iframe_height_bound > iframe_scroll_height ?
+		      		iframe_height_bound : iframe_scroll_height;
+		iframe.style.height = Math.ceil(iframe_height) + "px";
 		iframe_spinner && iframe_spinner.remove();
 		iframe.classList.add("loaded");
 	}
