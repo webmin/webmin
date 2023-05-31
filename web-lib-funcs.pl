@@ -253,19 +253,16 @@ sub html_escape
 my ($tmp) = @_;
 if (!defined $tmp) {
     return ''; # empty string
-};
-$tmp =~ s/&/&amp;/g;
+	};
+# Before escaping ampersand use negative lookahead to see if occurrence
+# is not an HTML entity already to prevent double escaping
+$tmp =~ s/&(?!(([a-zA-Z]+)|(#|#x)\d+);)/&amp;/g;
+# Just always escape the following
 $tmp =~ s/</&lt;/g;
 $tmp =~ s/>/&gt;/g;
 $tmp =~ s/\"/&quot;/g;
 $tmp =~ s/\'/&#39;/g;
 $tmp =~ s/=/&#61;/g;
-# Never double escape following common entities
-$tmp =~ s/&amp;#(\d+);/&#$1;/g;
-$tmp =~ s/&amp;#x(\d+);/&#x$1;/g;
-$tmp =~ s/&amp;nbsp;/&nbsp;/g;
-$tmp =~ s/&amp;lt;/&lt;/g;
-$tmp =~ s/&amp;gt;/&gt;/g;
 return $tmp;
 }
 
