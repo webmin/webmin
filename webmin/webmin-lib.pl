@@ -66,6 +66,11 @@ our $webmin_yum_repo_url = "https://download.webmin.com/download/newkey/yum";
 our $webmin_yum_repo_mirrorlist = $webmin_yum_repo_url."/mirrorlist";
 our $webmin_yum_repo_key = "/etc/pki/rpm-gpg/RPM-GPG-KEY-webmin-developers";
 
+our $webmin_apt_repo_file = "/etc/apt/sources.list.d/webmin.list";
+our $webmin_apt_repo_url = "https://download.webmin.com/download/newkey/repository";
+our $webmin_apt_repo_key = "/usr/share/keyrings/debian-webmin-developers.gpg";
+our $global_apt_repo_file = "/etc/apt/sources.list";
+
 # Obsolete, but still defined so it can be deleted
 our $cron_cmd = "$module_config_directory/update.pl";
 
@@ -1321,6 +1326,17 @@ if (-r $webmin_yum_repo_file) {
 		    $1 ne $webmin_yum_repo_url) {
 			$repoerr = &text('notify_yumrepo',
 					 $webmin_yum_repo_url);
+			last;
+			}
+		}
+	}
+foreach my $repo ($webmin_apt_repo_file, $global_apt_repo_file) {
+	next if (!-r $repo);
+	my $lref = &read_file_lines($repo, 1);
+	foreach my $l (@$lref) {
+		if ($l =~ /^\s*deb\s+.*((http|https):\/\/download.webmin.com\/download\/repository)\s+sarge\s+contrib/) {
+			$repoerr = &text('notify_aptrepo',
+					 $webmin_apt_repo_url);
 			last;
 			}
 		}

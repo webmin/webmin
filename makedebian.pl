@@ -505,7 +505,7 @@ EOF
 		print "Wrote source $deb/${product}_$ver$rel.dsc\n";
 		}
 
-	$dir = "sarge";
+	$dir = $deb eq "deb" ? "sarge" : "stable";
 	if (-d "/usr/local/webadmin/$deb/repository") {
 		# Add to our repository
 		chdir("/usr/local/webadmin/$deb/repository");
