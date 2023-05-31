@@ -2494,14 +2494,15 @@ return $rv;
 # Attempts to convert some HTML to text form
 sub html_to_text
 {
-local ($h2, $lynx);
+my ($html) = @_;
+my ($h2, $lynx);
 if (($h2 = &has_command("html2text")) || ($lynx = &has_command("lynx"))) {
 	# Can use a commonly available external program
 	local $temp = &transname().".html";
 	open(TEMP, ">", $temp);
-	print TEMP $_[0];
+	print TEMP $html;
 	close(TEMP);
-	open(OUT, ($lynx ? "$lynx -dump $temp" : "$h2 $temp")." 2>/dev/null |");
+	open(OUT, ($lynx ? "$lynx --display_charset=utf-8 -dump $temp" : "$h2 $temp")." 2>/dev/null |");
 	while(<OUT>) {
 		if ($lynx && $_ =~ /^\s*References\s*$/) {
 			# Start of Lynx references output
@@ -2520,13 +2521,35 @@ if (($h2 = &has_command("html2text")) || ($lynx = &has_command("lynx"))) {
 	return $text;
 	}
 else {
+	# Can we use Perl HTML formatter
+	# for the better conversion
+	eval "use HTML::TreeBuilder";
+	if (!$@) {
+		eval "use HTML::FormatText";
+		if (!$@) {
+			my $html_parser = HTML::TreeBuilder->new();
+			eval "use utf8";
+			utf8::decode($html)
+				if (!$@);
+			$html_parser->parse($html);
+			my $formatter = HTML::FormatText->new(leftmargin => 1, rightmargin => 79);
+			return $formatter->format($html_parser);
+			}
+		}
 	# Do conversion manually :(
-	local $html = $_[0];
+	$html =~ s/(<|&lt;)(style|script).*?(>|&gt;).*?(<|&lt;)\/(style|script)(>|&gt;)//gs;
 	$html =~ s/\s+/ /g;
 	$html =~ s/<p>/\n\n/gi;
 	$html =~ s/<br>/\n/gi;
 	$html =~ s/<[^>]+>//g;
+	my $useutf8 = 0;
+	eval "use utf8";
+	$useutf8 = 1 if (!$@);
+	utf8::decode($html)
+		if ($useutf8);
 	$html = &entities_to_ascii($html);
+	utf8::encode($html)
+		if ($useutf8);
 	return $html;
 	}
 }
@@ -2768,10 +2791,11 @@ else {
 # 2=All images. Returns the URL of images found in &urls
 sub disable_html_images
 {
-local ($html, $dis, $urls) = @_;
-local $newhtml;
+my ($html, $dis, $urls) = @_;
+my $newhtml;
+my $masked_img;
 while($html =~ /^([\000-\377]*?)(<\s*img[^>]*src=('[^']*'|"[^"]*"|\S+)[^>]*>)([\000-\377]*)/i) {
-	local ($before, $allimg, $img, $after) = ($1, $2, $3, $4);
+	my ($before, $allimg, $img, $after) = ($1, $2, $3, $4);
 	$img =~ s/^'(.*)'$/$1/ || $img =~ s/^"(.*)"$/$1/;
 	push(@$urls, $img) if ($urls);
 	if ($dis == 0) {
@@ -2781,7 +2805,10 @@ while($html =~ /^([\000-\377]*?)(<\s*img[^>]*src=('[^']*'|"[^"]*"|\S+)[^>]*>)([\
 	elsif ($dis == 1) {
 		# Don't touch unless offsite
 		if ($img =~ /^(http|https|ftp):/) {
-			$newhtml .= $before;
+			$masked_img++;
+			my $imgcont = $allimg;
+			$imgcont =~ s/src=/data-nosrc=/g;
+			$newhtml .= $before.$imgcont;
 			}
 		else {
 			$newhtml .= $before.$allimg;
@@ -2794,7 +2821,100 @@ while($html =~ /^([\000-\377]*?)(<\s*img[^>]*src=('[^']*'|"[^"]*"|\S+)[^>]*>)([\
 	$html = $after;
 	}
 $newhtml .= $html;
+if ($masked_img) {
+	my $masked_img_style =
+	  "<style>".
+	    "img[data-nosrc]
+	      { 
+	      	border-radius: 0 !important;
+	      	background: #e1567833 !important;
+	      	border-color: transparent !important;
+	      	min-width: 16px;
+	      	min-height: 16px;
+	      	}
+	      }".
+	  "</style>";
+	$masked_img_style =~ s/[\n\r\s]+/ /g;
+	$masked_img_style = &trim($masked_img_style);
+	if ($newhtml =~ /<\/body>/) {
+		$newhtml =~ s/<\/body>/$masked_img_style<\/body>/;
+		}
+	else {
+		$newhtml .= $masked_img_style;
+		}
+	}
 return $newhtml;
+}
+
+# iframe_body(body)
+# Returns email message in an iframe HTML element
+sub iframe_body
+{
+my ($body) = @_;
+
+# Mail iframe inner styles
+my $iframe_styles =
+	'<style>html,body { overflow-y: hidden; }</style>';
+# Add inner styles to the email body
+if ($body =~ /<\/body>/) {
+		$body =~ s/<\/body>/$iframe_styles<\/body>/;
+		}
+	else {
+		$body .= $iframe_styles;
+		}
+$body = &trim(&quote_escape($body, '"'));
+# Email iframe stuff
+my $iframe_body = <<EOF;
+<div id="mail-iframe-spinner"></div>
+<style>
+	#mail-iframe {
+		border:0;
+		width:100%;
+	}
+	\@keyframes mail-iframe-spinner {
+		to {
+			transform: rotate(360deg);
+			}
+	}
+	#mail-iframe-spinner:before {
+		animation: mail-iframe-spinner .4s linear infinite;
+		border-radius: 50%;
+		border: 2px solid #bbbbbb;
+		border-top-color: #000000;
+		box-sizing: border-box;
+		content: '';
+		height: 18px;
+		margin-top: 3px;
+		position: absolute;
+		right: 15px;
+		width: 18px;
+	}
+</style>
+<script>
+	function mail_iframe_onload(iframe) {
+		if (typeof theme_mail_iframe_onload === 'function') {
+		    theme_mail_iframe_onload(iframe);
+		      return;
+		}
+		const iframe_spinner = document.querySelector('#mail-iframe-spinner'),
+		      iframe_height_bound = iframe.contentWindow.document.body.getBoundingClientRect().bottom,
+		      iframe_scroll_height = iframe.contentWindow.document.body.scrollHeight,
+		      iframe_height =
+		      	iframe_height_bound > iframe_scroll_height ?
+		      		iframe_height_bound : iframe_scroll_height;
+		iframe.style.height = Math.ceil(iframe_height) + "px";
+		iframe_spinner && iframe_spinner.remove();
+		iframe.classList.add("loaded");
+	}
+</script>
+<iframe
+  id="mail-iframe" 
+  onload="mail_iframe_onload(this)" 
+  sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+  src="about:blank" srcdoc="$body">
+</iframe>
+EOF
+return &trim($iframe_body);
 }
 
 # remove_body_attachments(&mail, &attach)
