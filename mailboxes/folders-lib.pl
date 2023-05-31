@@ -2831,7 +2831,6 @@ if ($masked_img) {
 	      	border-color: transparent !important;
 	      	min-width: 16px;
 	      	min-height: 16px;
-	      	}
 	      }".
 	  "</style>";
 	$masked_img_style =~ s/[\n\r\s]+/ /g;
