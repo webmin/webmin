@@ -2871,7 +2871,7 @@ my $iframe_body = <<EOF;
 		border:0;
 		width:100%;
 	}
-	@keyframes mail-iframe-spinner {
+	\@keyframes mail-iframe-spinner {
 		to {
 			transform: rotate(360deg);
 			}
