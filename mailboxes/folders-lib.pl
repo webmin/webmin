@@ -2798,17 +2798,32 @@ while($html =~ /^([\000-\377]*?)(<\s*img[^>]*src=('[^']*'|"[^"]*"|\S+)[^>]*>)([\
 	my ($before, $allimg, $img, $after) = ($1, $2, $3, $4);
 	$img =~ s/^'(.*)'$/$1/ || $img =~ s/^"(.*)"$/$1/;
 	push(@$urls, $img) if ($urls);
-	if ($dis == 0) {
+	if ($dis == 3) {
+		# Let server load it in async mode
+		my $imgid = substitute_pattern('[a-f0-9]{40}');
+		my $imgcont = $allimg;
+		$imgcont =~ s/src=/data-presrc=/g;
+		$imgcont =~ s/\Q$img\E/$imgid/g;
+		$newhtml .=
+			"$before<span class='img-presrc'></span>$imgcont";
+		$masked_img++;
+		# Try switching to remote user to correctly
+		# set temporary directory for super-users
+		&switch_to_remote_user();
+		# Save image URL reference
+		&write_file_contents(&tempname($imgid), $img);
+		}
+	elsif ($dis == 0) {
 		# Don't harm image
 		$newhtml .= $before.$allimg;
 		}
 	elsif ($dis == 1) {
 		# Don't touch unless offsite
 		if ($img =~ /^(http|https|ftp):/) {
-			$masked_img++;
 			my $imgcont = $allimg;
 			$imgcont =~ s/src=/data-nosrc=/g;
 			$newhtml .= $before.$imgcont;
+			$masked_img++;
 			}
 		else {
 			$newhtml .= $before.$allimg;
@@ -2823,17 +2838,36 @@ while($html =~ /^([\000-\377]*?)(<\s*img[^>]*src=('[^']*'|"[^"]*"|\S+)[^>]*>)([\
 $newhtml .= $html;
 if ($masked_img) {
 	my $masked_img_style =
-	  "<style>".
-	    "img[data-nosrc]
+	  "<style>
+	      img[data-nosrc]
 	      { 
 	      	border-radius: 0 !important;
 	      	background: #e1567833 !important;
 	      	border-color: transparent !important;
 	      	min-width: 16px;
 	      	min-height: 16px;
-	      	}
-	      }".
-	  "</style>";
+	      }
+	      \@keyframes mail-iframe-spinner {
+	      	to {
+	      		transform: rotate(360deg);
+	      		}
+	      }
+	      .img-presrc {
+	      	animation: mail-iframe-spinner .4s linear infinite;
+	      	border-radius: 50%;
+	      	border: 1.5px solid #bbbbbb;
+	      	border-top-color: #000000;
+	      	box-sizing: border-box;
+	      	content: '';
+	      	height: 12px;
+	      	width: 12px;
+	      	position: absolute;
+	      }
+	      img[data-presrc]
+	      { 
+	      	opacity: 0;
+	      }
+	   </style>";
 	$masked_img_style =~ s/[\n\r\s]+/ /g;
 	$masked_img_style = &trim($masked_img_style);
 	if ($newhtml =~ /<\/body>/) {
@@ -2864,6 +2898,8 @@ if ($body =~ /<\/body>/) {
 		}
 $body = &trim(&quote_escape($body, '"'));
 # Email iframe stuff
+my $webprefix = &get_webprefix();
+my $image_mode = int(defined($in{'images'}) ? $in{'images'} : $userconfig{'view_images'});
 my $iframe_body = <<EOF;
 <div id="mail-iframe-spinner"></div>
 <style>
@@ -2896,19 +2932,45 @@ my $iframe_body = <<EOF;
 		    theme_mail_iframe_onload(iframe);
 		      return;
 		}
-		const iframe_spinner = document.querySelector('#mail-iframe-spinner'),
-		      iframe_height_bound = iframe.contentWindow.document.body.getBoundingClientRect().bottom,
-		      iframe_scroll_height = iframe.contentWindow.document.body.scrollHeight,
-		      iframe_height =
-		      	iframe_height_bound > iframe_scroll_height ?
-		      		iframe_height_bound : iframe_scroll_height;
-		iframe.style.height = Math.ceil(iframe_height) + "px";
-		iframe_spinner && iframe_spinner.remove();
+		const iframe_resize = function() {
+			const iframeobj = document.querySelector('#mail-iframe'),
+			      iframe_spinner = document.querySelector('#mail-iframe-spinner'),
+			      iframe_height_bound = iframeobj.contentWindow.document.body.getBoundingClientRect().bottom,
+			      iframe_scroll_height = iframeobj.contentWindow.document.body.scrollHeight,
+			      iframe_height =
+			        iframe_height_bound > iframe_scroll_height ?
+			          iframe_height_bound : iframe_scroll_height;
+			iframeobj.style.height = Math.ceil(iframe_height) + "px";
+			iframe_spinner && iframe_spinner.remove();
+		}
+		iframe_resize();
 		iframe.classList.add("loaded");
+		setTimeout(function() {
+			const imgPresrc = iframe.contentWindow.document.querySelectorAll('img[data-presrc]');
+			imgPresrc.forEach(function(img) {
+				(async function() {
+				  try {
+				    const response = await fetch("$webprefix/XHR.cgi?action=fetch&type=download&subtype=blob&kind=templink&file=" + img.dataset.presrc + "");
+				      response.blob().then(function(blob) {
+				        try {
+				          const urlBlob = URL.createObjectURL(blob);
+				          img.src = urlBlob;
+				          img.removeAttribute('data-presrc');
+				          img.previousElementSibling.remove();
+				          img.addEventListener('load', iframe_resize, { once: true });
+				        } catch(error) {
+				          console.warn(\`Cannot load image: \$\{error.message\}\`);
+				        }
+				      });
+				  } catch (e) {}
+				})();
+			});
+		}, 99);
 	}
 </script>
 <iframe
   id="mail-iframe" 
+  class="mail-iframe mode-$image_mode"
   onload="mail_iframe_onload(this)" 
   sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"
   src="about:blank" srcdoc="$body">

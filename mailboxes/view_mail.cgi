@@ -163,7 +163,7 @@ if ($body && $body->{'data'} =~ /\S/) {
 		# Attempt to show HTML
 		$bodycontents = $body->{'data'};
 		my @imageurls;
-		my $image_mode = defined($in{'images'}) ? $in{'images'} : 1;
+		my $image_mode = int(defined($in{'images'}) ? $in{'images'} : $config{'view_images'});
 		$bodycontents = &disable_html_images($bodycontents, $image_mode, \@imageurls);
 		$bodycontents = &fix_cids($bodycontents, \@attach,
 			"detach.cgi?user=$uuser&idx=$in{'idx'}&folder=$in{'folder'}$subs");
@@ -171,7 +171,7 @@ if ($body && $body->{'data'} =~ /\S/) {
 			push(@bodyright,
 			    "<a href='$hbase&body=1'>$text{'view_astext'}</a>");
 			}
-		if (@imageurls && $image_mode) {
+		if (@imageurls && $image_mode && $image_mode != 3) {
 			# Link to show images
 			push(@bodyright, "<a href='$hbase&body=$in{'body'}&headers=$in{'headers'}&images=0'>$text{'view_images'}</a>");
 			}
