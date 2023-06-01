@@ -2804,8 +2804,17 @@ while($html =~ /^([\000-\377]*?)(<\s*img[^>]*src=('[^']*'|"[^"]*"|\S+)[^>]*>)([\
 		my $imgcont = $allimg;
 		$imgcont =~ s/src=/data-presrc=/g;
 		$imgcont =~ s/\Q$img\E/$imgid/g;
+		my ($img_width) = $imgcont =~ /width[:|=]\s*["|']?(?<img_width>\d+)/;
+		my ($img_height) = $imgcont =~ /height[:|=]\s*["|']?(?<img_height>\d+)/;
+		$img_width = "width: ${img_width}px;"
+			if ($img_width);
+		$img_offset = "margin-top: @{[int($img_height/2) - int(($img_height/2)/6)]}px;"
+			if ($img_width);
 		$newhtml .=
-			"$before<span class='img-presrc'></span>$imgcont";
+			$before.
+			"<span style='$img_width$img_offset' class=\"img-presrc\">".
+			  "<img style='$img_width' alt=\"...\" src=\"data:image/svg+xml;base64,CjwhLS0gQnkgU2FtIEhlcmJlcnQgKEBzaGVyYiksIGZvciBldmVyeW9uZS4gTW9yZSBAIGh0dHA6Ly9nb28uZ2wvN0FKemJMIC0tPgo8c3ZnIHdpZHRoPSIxMjAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAxMjAgMzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8Y2lyY2xlIGN4PSIxNSIgY3k9IjE1IiByPSIxNSI+CiAgICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgZnJvbT0iMTUiIHRvPSIxNSIKICAgICAgICAgICAgICAgICBiZWdpbj0iMHMiIGR1cj0iMC44cyIKICAgICAgICAgICAgICAgICB2YWx1ZXM9IjE1Ozk7MTUiIGNhbGNNb2RlPSJsaW5lYXIiCiAgICAgICAgICAgICAgICAgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIC8+CiAgICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iZmlsbC1vcGFjaXR5IiBmcm9tPSIxIiB0bz0iMSIKICAgICAgICAgICAgICAgICBiZWdpbj0iMHMiIGR1cj0iMC44cyIKICAgICAgICAgICAgICAgICB2YWx1ZXM9IjE7LjU7MSIgY2FsY01vZGU9ImxpbmVhciIKICAgICAgICAgICAgICAgICByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgLz4KICAgIDwvY2lyY2xlPgogICAgPGNpcmNsZSBjeD0iNjAiIGN5PSIxNSIgcj0iOSIgZmlsbC1vcGFjaXR5PSIwLjMiPgogICAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InIiIGZyb209IjkiIHRvPSI5IgogICAgICAgICAgICAgICAgIGJlZ2luPSIwcyIgZHVyPSIwLjhzIgogICAgICAgICAgICAgICAgIHZhbHVlcz0iOTsxNTs5IiBjYWxjTW9kZT0ibGluZWFyIgogICAgICAgICAgICAgICAgIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAvPgogICAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9ImZpbGwtb3BhY2l0eSIgZnJvbT0iMC41IiB0bz0iMC41IgogICAgICAgICAgICAgICAgIGJlZ2luPSIwcyIgZHVyPSIwLjhzIgogICAgICAgICAgICAgICAgIHZhbHVlcz0iLjU7MTsuNSIgY2FsY01vZGU9ImxpbmVhciIKICAgICAgICAgICAgICAgICByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgLz4KICAgIDwvY2lyY2xlPgogICAgPGNpcmNsZSBjeD0iMTA1IiBjeT0iMTUiIHI9IjE1Ij4KICAgICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJyIiBmcm9tPSIxNSIgdG89IjE1IgogICAgICAgICAgICAgICAgIGJlZ2luPSIwcyIgZHVyPSIwLjhzIgogICAgICAgICAgICAgICAgIHZhbHVlcz0iMTU7OTsxNSIgY2FsY01vZGU9ImxpbmVhciIKICAgICAgICAgICAgICAgICByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgLz4KICAgICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJmaWxsLW9wYWNpdHkiIGZyb209IjEiIHRvPSIxIgogICAgICAgICAgICAgICAgIGJlZ2luPSIwcyIgZHVyPSIwLjhzIgogICAgICAgICAgICAgICAgIHZhbHVlcz0iMTsuNTsxIiBjYWxjTW9kZT0ibGluZWFyIgogICAgICAgICAgICAgICAgIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAvPgogICAgPC9jaXJjbGU+Cjwvc3ZnPgo=\">".
+			"</span>$imgcont";
 		$masked_img++;
 		# Try switching to remote user to correctly
 		# set temporary directory for super-users
@@ -2853,15 +2862,20 @@ if ($masked_img) {
 	      		}
 	      }
 	      .img-presrc {
-	      	animation: mail-iframe-spinner .4s linear infinite;
-	      	border-radius: 50%;
-	      	border: 1.5px solid #bbbbbb;
-	      	border-top-color: #000000;
-	      	box-sizing: border-box;
-	      	content: '';
-	      	height: 12px;
-	      	width: 12px;
 	      	position: absolute;
+	      	display: inline-flex;
+	      	place-items: center;
+	      	z-index: 9999;
+	      	max-inline-size: min-content;
+	      	max-inline-size: -webkit-fill-available;
+	      }
+	      .img-presrc > img {
+	      	max-width: 30px;
+	      	min-width: 14px;
+	      	margin: auto;
+	      	background-color: #ffffffaa;
+	      	padding: 1px 4px;
+	      	border-radius: 50px;
 	      }
 	      img[data-presrc]
 	      { 
