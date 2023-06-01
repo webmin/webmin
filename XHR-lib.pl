@@ -30,6 +30,7 @@ if ($in{'action'} eq "fetch") {
                     my ($host, $port, $page, $ssl) = &parse_http_url($url);
                     my $img;
                     &http_download($host, $port, $page, \$img, undef, undef, $ssl, undef, undef, 10);
+                    print "x-no-links: 1\n";
                     print "Content-type: @{[&guess_mime_type($url)]};\n\n";
                     print $img;
                     exit;
