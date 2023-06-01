@@ -36,8 +36,6 @@ if ($in{'action'} eq "fetch") {
                     exit;
                     }
                 }
-            # Print Blob
-
             }
         }
     }
