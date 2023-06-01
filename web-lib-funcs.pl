@@ -9635,8 +9635,8 @@ SSL mode 0 = HTTP, 1 = HTTPS, 2 = FTP.
 =cut
 sub parse_http_url
 {
-if ($_[0] =~ /^(http|https|ftp):\/\/([^\@\/]+\@)?\[([^\]]+)\](:(\d+))?(\/\S*)?$/ ||
-    $_[0] =~ /^(http|https|ftp):\/\/([^\@\/]+\@)?([^:\/]+)(:(\d+))?(\/\S*)?$/) {
+if ($_[0] =~ /^(http|https|ftp):\/\/([^\@]+\@)?\[([^\]]+)\](:(\d+))?(\/\S*)?$/ ||
+    $_[0] =~ /^(http|https|ftp):\/\/([^\@]+\@)?([^:\/]+)(:(\d+))?(\/\S*)?$/) {
 	# An absolute URL
 	my $ssl = $1 eq 'https' ? 1 : $1 eq 'ftp' ? 2 : 0;
 	my @rv = ($3,
