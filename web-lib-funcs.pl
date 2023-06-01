@@ -266,6 +266,27 @@ $tmp =~ s/=/&#61;/g;
 return $tmp;
 }
 
+=head2 html_unescape(string)
+
+Converts HTML entities to the corresponding character
+
+=cut
+sub html_unescape
+{
+my ($str) = @_;
+if (!defined $str) {
+    return ''; # empty string
+	};
+$str =~ s/&amp;/&/g;
+$str =~ s/&lt;/</g;
+$str =~ s/&gt;/>/g;
+$str =~ s/&quot;/"/g;
+$str =~ s/&#39;/'/g;
+$str =~ s/&#61;/=/g;
+$str =~ s/&nbsp;/ /g;
+return $str;
+}
+
 =head2 html_strip(string, replacement)
 
 Removes any HTML from a string, replacing with nothing or given chars
