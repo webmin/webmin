@@ -3,6 +3,7 @@
 
 require './webmin-lib.pl';
 &ReadParse();
+my $devkey = "$module_root_directory/developers-key.asc";
 
 if (-r $webmin_yum_repo_file) {
 	# Fix up YUM repo
@@ -16,9 +17,7 @@ if (-r $webmin_yum_repo_file) {
 			$l = "mirrorlist=".$webmin_yum_repo_mirrorlist;
 			}
 		elsif ($l =~ /^\s*gpgkey\s*=\s*file:\/\/(\S+)/) {
-			&copy_source_dest(
-			    "$module_root_directory/developers-key.asc",
-			    $webmin_yum_repo_key)
+			&copy_source_dest($devkey, $webmin_yum_repo_key)
 				if (!-r $webmin_yum_repo_key);
 			$l = "gpgkey=file://".$webmin_yum_repo_key;
 			}
@@ -33,17 +32,24 @@ foreach my $repo ($webmin_apt_repo_file, $global_apt_repo_file) {
 	next if (!-r $repo);
 	&lock_file($repo);
 	my $lref = &read_file_lines($repo);
+	my $fixed = 0;
 	foreach my $l (@$lref) {
 		if ($l =~ /^\s*deb\s+((http|https):\/\/download.webmin.com\/download\/repository)\s+sarge\s+contrib/) {
 			$l = "deb $webmin_apt_repo_url stable contrib";
+			$fixed++;
 			}
 		elsif ($l =~ /^\s*deb\s+\[signed-by=(\S+)\]\s+((http|https):\/\/download.webmin.com\/download\/repository)\s+sarge\s+contrib/) {
 			$l = "deb [signed-by=$webmin_apt_repo_key] $webmin_apt_repo_url stable contrib";
+			$fixed++;
 			}
 		}
 	&flush_file_lines($repo);
 	&unlock_file($repo);
-	# XXX import key
+	if ($fixed) {
+		# Put the new key into place
+		&system_logged("gpg --import $devkey >/dev/null 2>&1 </dev/null");
+		&system_logged("cat $devkey | gpg --dearmor >$webmin_apt_repo_key 2>/dev/null </dev/null");
+		}
 	}
 
 &webmin_log("fixrepo");
