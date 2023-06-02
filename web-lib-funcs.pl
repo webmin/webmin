@@ -284,6 +284,10 @@ $str =~ s/&quot;/"/g;
 $str =~ s/&#39;/'/g;
 $str =~ s/&#61;/=/g;
 $str =~ s/&nbsp;/ /g;
+eval "use HTML::Entities";
+if (!$@) {
+	$str = decode_entities($str);
+	}
 return $str;
 }
 
