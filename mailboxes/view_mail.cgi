@@ -56,11 +56,6 @@ $body = $htmlbody if ($in{'body'} == 2);
 $body = $textbody if ($in{'body'} == 1);
 @attach = @{$mail->{'attach'}};
 
-# Show pre-body HTML
-if ($body && $body eq $htmlbody) {
-	$headstuff = &head_html($body->{'data'});
-	}
-
 $mail_charset = &get_mail_charset($mail, $body);
 if ($body && &get_charset() eq 'UTF-8' &&
     &can_convert_to_utf8(undef, $mail_charset)) {
@@ -72,7 +67,7 @@ else {
 	$main::force_charset = &get_mail_charset($mail, $body);
 	}
 
-&mail_page_header($text{'view_title'}, $headstuff, undef,
+&mail_page_header($text{'view_title'}, undef, undef,
 		  &folder_link($in{'user'}, $folder));
 &show_arrows();
 
