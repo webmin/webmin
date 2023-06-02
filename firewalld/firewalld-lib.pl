@@ -89,18 +89,21 @@ $service =~ s/[^A-Za-z0-9\-]//g;
 # my $out = &backquote_command("$config{'firewall_cmd'} --service=".quotemeta($service)." --get-ports --permanent </dev/null 2>&1");
 
 # Check for file in directory containing all services as xml files
-my $services_dir = "/usr/lib/firewalld/services/";
-my $service_file = "$services_dir/$service.xml";
 my @ports;
 my @protos;
-if (-r $service_file) {
-	my $lref = &read_file_lines($service_file, 1);
-	foreach my $l (@{$lref}) {
-		$l =~ /<port\s+protocol=["'](?<proto>\S+)["']\s+port=["'](?<port>[\d-]+)["']\/>/;
-		my $port = "$+{port}";
-		my $proto = "$+{proto}";
-		push(@ports, $port) if ($port);
-		push(@protos, $proto) if ($port && $proto);
+foreach my $services_dir ("/usr/lib/firewalld/services",
+			  "/etc/firewalld/services") {
+	my $service_file = "$services_dir/$service.xml";
+	if (-r $service_file) {
+		my $lref = &read_file_lines($service_file, 1);
+		foreach my $l (@{$lref}) {
+			if ($l =~ /<port\s+protocol=["'](?<proto>\S+)["']\s+port=["'](?<port>[\d-]+)["']\/>/) {
+				my $port = "$+{port}";
+				my $proto = "$+{proto}";
+				push(@ports, $port) if ($port);
+				push(@protos, $proto) if ($port && $proto);
+				}
+			}
 		}
 	}
 @ports = &unique(@ports);
