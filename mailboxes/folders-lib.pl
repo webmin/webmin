@@ -2414,18 +2414,6 @@ $bodystuff = &safe_html($bodystuff) if ($bodystuff);
 return wantarray ? ($html, $bodystuff) : $html;
 }
 
-# head_html(html)
-# Returns HTML in the <head> section of a document
-sub head_html
-{
-local $html = $_[0];
-return undef if ($html !~ /<HEAD[^>]*>/i || $html !~ /<\/HEAD[^>]*>/i);
-$html =~ s/^[\000-\377]*<HEAD[^>]*>//gi || &error("Failed to filter <pre>".&html_escape($html)."</pre>");
-$html =~ s/<\/HEAD[^>]*>[\000-\377]*//gi || &error("Failed to filter <pre>".&html_escape($html)."</pre>");
-$html =~ s/<base[^>]*>//i;
-return &filter_javascript($html);
-}
-
 # safe_urls(html)
 # Replaces dangerous-looking URLs in HTML
 sub safe_urls
