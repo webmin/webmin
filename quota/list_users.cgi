@@ -42,7 +42,7 @@ $n = &filesystem_users($f);
 $bsize = &block_size($f);
 $fsbsize = &block_size($f, 1);
 if ($n > $config{'display_max'} && !$access{'ro'}) {
-	print "<b>", &text('lusers_toomany', $f), "</b><br>\n";
+	print "<b>", &text('lusers_toomany', $f), "</b><p>\n";
 	print &ui_links_row(\@ulinks);
 	}
 elsif ($n) {
