@@ -2800,17 +2800,10 @@ while($html =~ /^([\000-\377]*?)(<\s*img[^>]*src=('[^']*'|"[^"]*"|\S+)[^>]*>)([\
 	push(@$urls, $img) if ($urls);
 	if ($dis == 3) {
 		# Let server load it in async mode
-		my $imgid = substitute_pattern('[a-f0-9]{40}');
 		my $imgcont = $allimg;
 		$imgcont =~ s/src=/data-presrc=/g;
-		$imgcont =~ s/\Q$img\E/$imgid/g;
 		$newhtml .= $before.$imgcont;
 		$masked_img++;
-		# Try switching to remote user to correctly
-		# set temporary directory for super-users
-		&switch_to_remote_user();
-		# Save image URL reference
-		&write_file_contents(&tempname($imgid), $img);
 		}
 	elsif ($dis == 0) {
 		# Don't harm image
@@ -2929,12 +2922,12 @@ my $iframe_body = <<EOF;
 			imgPresrc.forEach(function(img) {
 				(async function() {
 				  try {
-				    const response = await fetch("$webprefix/XHR.cgi?action=fetch&type=download&subtype=blob&kind=templink&file=" + img.dataset.presrc + "");
+				    const response = await fetch("$webprefix/XHR.cgi?action=fetch&type=download&subtype=blob&url=" + img.dataset.presrc + "");
 				      response.blob().then(function(blob) {
 				        try {
 				          const urlBlob = URL.createObjectURL(blob);
-				          img.src = urlBlob;
 				          img.removeAttribute('data-presrc');
+				          img.src = urlBlob;
 				          img.addEventListener('load', iframe_resize, { once: true });
 				        } catch(error) {
 				          console.warn(\`Cannot load image: \$\{error.message\}\`);
