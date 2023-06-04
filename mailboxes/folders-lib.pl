@@ -2922,7 +2922,7 @@ my $iframe_body = <<EOF;
 			imgPresrc.forEach(function(img) {
 				(async function() {
 				  try {
-				    const response = await fetch("$webprefix/XHR.cgi?action=fetch&type=download&subtype=blob&url=" + encodeURIComponent(img.dataset.presrc) + "");
+				      const response = await fetch("$webprefix/XHR.cgi?action=fetch&type=download&subtype=blob&url=" + encodeURIComponent(img.dataset.presrc) + "");
 				      response.blob().then(function(blob) {
 				        try {
 				          const urlBlob = URL.createObjectURL(blob);
