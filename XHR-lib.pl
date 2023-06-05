@@ -29,7 +29,9 @@ if ($in{'action'} eq "fetch") {
                 $url = &html_unescape($url);
                 my ($host, $port, $page, $ssl) = &parse_http_url($url);
                 my ($img, $response_headers);
-                &http_download($host, $port, $page, \$img, undef, undef, $ssl, undef, undef, 10, undef, undef, undef, \$response_headers);
+                &http_download($host, $port, $page, \$img, undef, undef,
+                               $ssl, undef, undef, 10, undef, undef,
+                               undef, \$response_headers);
                 # Get MIME content type
                 my $mime_type = $response_headers->{'content-type'};
                 print "x-no-links: 1\n";
