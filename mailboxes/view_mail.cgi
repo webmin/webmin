@@ -182,7 +182,7 @@ if ($body && $body->{'data'} =~ /\S/) {
 if ($bodycontents) {
 	print &ui_table_start($text{'view_body'}, "width=100%", 1,
                               undef, &ui_links_row(\@bodyright));
-	print &ui_table_row(undef, $bodycontents);
+	print &ui_table_row(undef, $bodycontents, undef, undef, ["data-contents='email'"]);
 	print &ui_table_end();
 	}
 else {
