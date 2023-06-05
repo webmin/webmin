@@ -2904,19 +2904,20 @@ my $iframe_body = <<EOF;
 		    theme_mail_iframe_onload(iframe);
 		      return;
 		}
-		const iframe_resize = function() {
-			const iframeobj = document.querySelector('#mail-iframe'),
-			      iframe_spinner = document.querySelector('#mail-iframe-spinner'),
-			      iframe_height_bound = iframeobj.contentWindow.document.body.getBoundingClientRect().bottom,
-			      iframe_scroll_height = iframeobj.contentWindow.document.body.scrollHeight,
-			      iframe_height =
-			        iframe_height_bound > iframe_scroll_height ?
-			          iframe_height_bound : iframe_scroll_height;
-			iframeobj.style.height = Math.ceil(iframe_height) + "px";
-			iframe_spinner && iframe_spinner.remove();
-		}
-		iframe_resize();
+		const iframe_spinner = document.querySelector('#mail-iframe-spinner'),
+			  iframe_resize = function() {
+			  	console.log('resizing')
+				const iframeobj = document.querySelector('#mail-iframe'),
+				      iframe_height_bound = iframeobj.contentWindow.document.body.getBoundingClientRect().bottom,
+				      iframe_scroll_height = iframeobj.contentWindow.document.body.scrollHeight,
+				      iframe_height =
+				        iframe_height_bound > iframe_scroll_height ?
+				          iframe_height_bound : iframe_scroll_height;
+				iframeobj.style.height = Math.ceil(iframe_height) + "px";
+			  };
+		iframe_spinner && iframe_spinner.remove();
 		iframe.classList.add("loaded");
+		setTimeout(iframe_resize);
 		setTimeout(function() {
 			const imgPresrc = iframe.contentWindow.document.querySelectorAll('img[data-presrc]');
 			imgPresrc.forEach(function(img) {
