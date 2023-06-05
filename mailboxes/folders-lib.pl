@@ -2906,7 +2906,6 @@ my $iframe_body = <<EOF;
 		}
 		const iframe_spinner = document.querySelector('#mail-iframe-spinner'),
 			  iframe_resize = function() {
-			  	console.log('resizing')
 				const iframeobj = document.querySelector('#mail-iframe'),
 				      iframe_height_bound = iframeobj.contentWindow.document.body.getBoundingClientRect().bottom,
 				      iframe_scroll_height = iframeobj.contentWindow.document.body.scrollHeight,
