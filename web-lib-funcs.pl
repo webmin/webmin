@@ -252,7 +252,7 @@ sub html_escape
 {
 my ($tmp) = @_;
 if (!defined $tmp) {
-    return ''; # empty string
+	return ''; # empty string
 	};
 # Before escaping ampersand use negative lookahead to see if occurrence
 # is not an HTML entity already to prevent double escaping
@@ -275,7 +275,7 @@ sub html_unescape
 {
 my ($str) = @_;
 if (!defined $str) {
-    return ''; # empty string
+	return ''; # empty string
 	};
 $str =~ s/&amp;/&/g;
 $str =~ s/&lt;/</g;
