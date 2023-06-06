@@ -343,18 +343,14 @@ foreach $rpm ("rpm", "newkey/rpm") {
 		system("chown jcameron: $rpm/webmin-$ver-$rel.noarch.rpm $rpm/webmin-$ver-$rel.src.rpm");
 		if (!$nosign) {
 			$key = $rpm eq "rpm" ? "jcameron\@webmin.com" : "developers\@webmin.com";
-			system("rpm --resign -D '_gpg_name $key' $rpm/webmin-$ver-$rel.noarch.rpm $rpm/webmin-$ver-$rel.src.rpm");
+			$sigflag = $rpm eq "newkey/rpm" ? "-D '_binary_filedigest_algorithm SHA256'" : "";
+			system("rpm --resign -D '_gpg_name $key' $sigflag $rpm/webmin-$ver-$rel.noarch.rpm $rpm/webmin-$ver-$rel.src.rpm");
 			}
 		}
-	}
 
-if (!$webmail && -d "/usr/local/webadmin/rpm/yum") {
-	# Add to our repository
-	system("cp rpm/webmin-$ver-$rel.noarch.rpm /usr/local/webadmin/rpm/yum");
-	}
-
-if (!$webmail && -d "/usr/local/webadmin/newkey/rpm/yum") {
-	# Add to our repository
-	system("cp newkey/rpm/webmin-$ver-$rel.noarch.rpm /usr/local/webadmin/newkey/rpm/yum");
+	if (-d "/usr/local/webadmin/$rpm/yum") {
+		# Add to our repository
+		system("cp $rpm/webmin-$ver-$rel.noarch.rpm /usr/local/webadmin/$rpm/yum");
+		}
 	}
 
