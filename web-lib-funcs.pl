@@ -2797,7 +2797,7 @@ if (!ref($h)) {
 	}
 &complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port,
 			$headers, $ssl, $nocache, $timeout,
-			ref($response_headers) eq 'SCALAR' ? \$$response_headers : undef);
+			defined($response_headers) ? \$$response_headers : undef);
 if ((!$error || !$$error) && !$nocache) {
 	&write_to_http_cache($url, $dest);
 	}
@@ -2839,7 +2839,7 @@ while(1) {
 	push(@headers, [ lc($1), $2 ]);
 	}
 $$response_headers = \%header
-	if (ref($response_headers) eq 'SCALAR');
+	if (defined($response_headers));
 alarm(0) if ($timeout);
 if ($main::download_timed_out) {
 	&close_http_connection($h);
