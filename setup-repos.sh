@@ -6,6 +6,7 @@
 webmin_download="https://download.webmin.com"
 webmin_key="developers-key.asc"
 webmin_key_download="$webmin_download/$webmin_key"
+webmin_key_suffix="webmin-developers"
 debian_repo_file="/etc/apt/sources.list.d/webmin.list"
 rhel_repo_file="/etc/yum.repos.d/webmin.repo"
 download_wget="/usr/bin/wget"
@@ -60,6 +61,11 @@ fi
 # Derivatives precise test
 osid_debian_like=$(echo "$osid" | grep "debian\|ubuntu")
 osid_rhel_like=$(echo "$osid" | grep "rhel\|fedora\|centos")
+
+repoid_debian_like=debian
+if [ -n "${ID}" ]; then
+  repoid_debian_like="${ID}"
+fi
 
 # Setup OS dependent
 if [ -n "$osid_debian_like" ]; then
@@ -138,7 +144,7 @@ rpm)
   # Install our keys
   echo "  Installing Webmin key .."
   rpm --import $webmin_key
-  cp -f $webmin_key /etc/pki/rpm-gpg/RPM-GPG-KEY-webmin
+  cp -f $webmin_key /etc/pki/rpm-gpg/RPM-GPG-KEY-$webmin_key_suffix
   echo "  .. done"
   # Create repo file
   echo "  Setting up Webmin repository .."
@@ -146,7 +152,7 @@ rpm)
   echo "name=Webmin - noarch" >>$rhel_repo_file
   echo "baseurl=$webmin_download/download/newkey/yum" >>$rhel_repo_file
   echo "enabled=1" >>$rhel_repo_file
-  echo "gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-webmin" >>$rhel_repo_file
+  echo "gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-$webmin_key_suffix" >>$rhel_repo_file
   echo "gpgcheck=1" >>$rhel_repo_file
   echo "  .. done"
   ;;
@@ -154,11 +160,11 @@ deb)
   # Install our keys
   echo "  Installing Webmin key .."
   gpg --import $webmin_key 1>/dev/null 2>&1
-  cat $webmin_key | gpg --dearmor > /usr/share/keyrings/debian-webmin.gpg
+  cat $webmin_key | gpg --dearmor > "/usr/share/keyrings/$repoid_debian_like$webmin_key_suffix.gpg"
   echo "  .. done"
   # Create repo file
   echo "  Setting up Webmin repository .."
-  echo "deb [signed-by=/usr/share/keyrings/debian-webmin.gpg] $webmin_download/download/newkey/repository stable contrib" >$debian_repo_file
+  echo "deb [signed-by=/usr/share/keyrings/$repoid_debian_like$webmin_key_suffix.gpg] $webmin_download/download/newkey/repository stable contrib" >$debian_repo_file
   echo "  .. done"
   # Clean meta
   echo "  Cleaning repository metadata .."
