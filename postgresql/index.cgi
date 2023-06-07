@@ -59,7 +59,7 @@ if (!$hba_conf_file && &is_postgresql_local()) {
 if ($r == 0) {
 	# Not running .. need to start it
 	&main_header(1);
-	print "<b>$text{'index_notrun'}</b> <p>\n";
+	print &ui_alert_box($text{'index_notrun'}, 'danger');
 
 	if (&is_postgresql_local()) {
 		print &ui_hr();
@@ -76,18 +76,20 @@ if ($r == 0) {
 			}
 		print &ui_buttons_end();
 		}
+	$lerr++;
 	}
 elsif ($r == -1 && $access{'user'} && 0) {
 	# Running, but the user's password is wrong
 	&main_header(1);
-	print "<b>",&text('index_nouser', "<tt>$access{'user'}</tt>"),
-	      "</b><p>\n";
-	print &text('index_emsg', "<tt>$rout</tt>"),"<p>\n";
+	print &ui_alert_box(&text('index_nouser', "<tt>$access{'user'}</tt>"), 'danger');
+	print &ui_alert_box(&text('index_emsg', "<tt>$rout</tt>"), 'info');
+	$lerr++;
 	}
 elsif ($r == -1) {
 	# Running, but webmin doesn't know the login/password
 	&main_header(1);
-	print "<b>$text{'index_nopass'}</b> <p>\n";
+	print &ui_alert_box($text{'index_nopass'}, 'danger');
+	print &ui_alert_box(&text('index_emsg', "<tt>$rout</tt>"), 'info');
 
 	print &ui_form_start("login.cgi", "post");
 	print &ui_table_start($text{'index_ltitle'}, undef, 2);
@@ -105,13 +107,12 @@ elsif ($r == -1) {
 	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
-	print &text('index_emsg', "<tt>$rout</tt>"),"<p>\n";
-
 	# Button to edit user permissions
 	if ($access{'users'}) {
 		print &ui_form_start("list_hosts.cgi");
 		print &ui_form_end([ [ undef, $text{'index_edithosts'} ] ]);
 		}
+	$lerr++;
 	}
 elsif ($r == -2) {
 	# Looks like a shared library problem
@@ -120,8 +121,9 @@ elsif ($r == -2) {
 		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	print &text('index_ldpath', "<tt>$ENV{$gconfig{'ld_env'}}</tt>",
 		  "<tt>$config{'psql'}</tt>"),"<br>\n";
-	print "<pre>",&html_escape($out),"</pre>\n";
-	print &text('index_emsg', "<tt>$rout</tt>"),"<p>\n";
+	print "<pre>",&html_escape($out),"</pre><p>\n";
+	print &ui_alert_box(&text('index_emsg', "<tt>$rout</tt>"), 'info');
+	$lerr++;
 	}
 else {
 	# Running .. check version
@@ -263,8 +265,10 @@ else {
 		}
 	}
 
-print &ui_hr();
-print &ui_buttons_start();
+if (!$lerr) {
+	print &ui_hr();
+	print &ui_buttons_start();
+	}
 
 # Show stop server button
 if ($access{'stop'} && &is_postgresql_local() && $r != 0) {
