@@ -160,11 +160,11 @@ deb)
   # Install our keys
   echo "  Installing Webmin key .."
   gpg --import $webmin_key 1>/dev/null 2>&1
-  cat $webmin_key | gpg --dearmor > "/usr/share/keyrings/$repoid_debian_like$webmin_key_suffix.gpg"
+  cat $webmin_key | gpg --dearmor > "/usr/share/keyrings/$repoid_debian_like-$webmin_key_suffix.gpg"
   echo "  .. done"
   # Create repo file
   echo "  Setting up Webmin repository .."
-  echo "deb [signed-by=/usr/share/keyrings/$repoid_debian_like$webmin_key_suffix.gpg] $webmin_download/download/newkey/repository stable contrib" >$debian_repo_file
+  echo "deb [signed-by=/usr/share/keyrings/$repoid_debian_like-$webmin_key_suffix.gpg] $webmin_download/download/newkey/repository stable contrib" >$debian_repo_file
   echo "  .. done"
   # Clean meta
   echo "  Cleaning repository metadata .."
