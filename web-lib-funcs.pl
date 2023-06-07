@@ -10122,7 +10122,7 @@ which defaults to application/octet-stream.
 sub guess_mime_type
 {
 my ($file, $def) = @_;
-if ($file =~ /\.([A-Za-z0-9\-]+)(?:[?].*|)$/) {
+if ($file =~ /\.([A-Za-z0-9\-]+)$/) {
 	my $ext = $1;
 	foreach my $t (&list_mime_types()) {
 		foreach my $e (@{$t->{'exts'}}) {
