@@ -2797,7 +2797,7 @@ if (!ref($h)) {
 	}
 &complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port,
 			$headers, $ssl, $nocache, $timeout,
-			defined($response_headers) ? \$$response_headers : undef);
+			defined($response_headers) ? $response_headers : undef);
 if ((!$error || !$$error) && !$nocache) {
 	&write_to_http_cache($url, $dest);
 	}
