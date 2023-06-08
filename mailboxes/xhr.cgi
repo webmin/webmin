@@ -10,6 +10,6 @@ use WebminCore;
 &init_config();
 &ReadParse();
 &switch_to_remote_user();
-do "$root_directory/XHR-lib.pl";
 
+do "./xhr-lib.pl";
 xhr();

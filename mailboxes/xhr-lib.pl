@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# A pile of XHR related routines
+# XHR related routines
 
 use strict;
 
