@@ -7156,7 +7156,16 @@ if (!$@) {
 
 	# Write file
 	if ($filename) {
-		write_file_contents(tempname("${filename}${filename_}"), Dumper($objref));
+		my ($seconds, $microseconds);
+			eval 'use Time::Piece';
+			if (!$@) {
+				eval 'use Time::HiRes';
+				if (!$@) {
+				($seconds, $microseconds) = Time::HiRes::gettimeofday;
+				$microseconds = "$seconds$microseconds-";
+				}
+			}
+		write_file_contents(tempname("${microseconds}${filename}${filename_}"), Dumper($objref));
 		}
 	# Print on screen
 	else {
