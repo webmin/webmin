@@ -1993,7 +1993,7 @@ sub make_date
 my ($secs, $only, $fmt) = @_;
 $secs ||= 0;
 eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
-if (!$@) {
+if (!$@ && $] > 5.011) {
 	my $opts = ref($only) ? $only : {};
 	my $locale_default = &get_default_system_locale();
 	my $locale_auto = &parse_accepted_language();

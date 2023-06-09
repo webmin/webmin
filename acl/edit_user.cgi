@@ -207,7 +207,7 @@ if ($access{'lang'}) {
 if ($access{'locale'}) {
 	# Current locale
 	eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
-	if (!$@) {
+	if (!$@ && $] > 5.011) {
 		my $locales = &list_locales();
 		my %localesrev = reverse %{$locales};
 		my $locale_auto = &parse_accepted_language();

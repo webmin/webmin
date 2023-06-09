@@ -83,7 +83,7 @@ if (&show_section('host')) {
 	# System time
 	my $tm = localtime(time());
 	eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
-	if (!$@) {
+	if (!$@ && $] > 5.011) {
 		$tm = make_date(time(), {get => 'complete'});
 		}
 	if (&foreign_available("time")) {

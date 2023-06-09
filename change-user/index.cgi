@@ -59,9 +59,9 @@ if ($access{'lang'}) {
 
 # Old datetime format or a new locale
 if ($access{'locale'}) {
-	eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
 	&foreign_require('webmin');
-	if (!$@) {
+	eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
+	if (!$@ && $] > 5.011) {
         my $locales = &list_locales();
         my %localesrev = reverse %{$locales};
         my $locale = $locale_auto || $gconfig{'locale'} || &get_default_system_locale();
