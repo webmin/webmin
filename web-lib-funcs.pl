@@ -252,7 +252,7 @@ sub html_escape
 {
 my ($tmp) = @_;
 if (!defined $tmp) {
-    return ''; # empty string
+	return ''; # empty string
 	};
 # Before escaping ampersand use negative lookahead to see if occurrence
 # is not an HTML entity already to prevent double escaping
@@ -264,6 +264,31 @@ $tmp =~ s/\"/&quot;/g;
 $tmp =~ s/\'/&#39;/g;
 $tmp =~ s/=/&#61;/g;
 return $tmp;
+}
+
+=head2 html_unescape(string)
+
+Converts HTML entities to the corresponding character
+
+=cut
+sub html_unescape
+{
+my ($str) = @_;
+if (!defined $str) {
+	return ''; # empty string
+	};
+$str =~ s/&amp;/&/g;
+$str =~ s/&lt;/</g;
+$str =~ s/&gt;/>/g;
+$str =~ s/&quot;/"/g;
+$str =~ s/&#39;/'/g;
+$str =~ s/&#61;/=/g;
+$str =~ s/&nbsp;/ /g;
+eval "use HTML::Entities";
+if (!$@) {
+	$str = decode_entities($str);
+	}
+return $str;
 }
 
 =head2 html_strip(string, replacement)
@@ -2704,11 +2729,13 @@ Downloads data from a HTTP url to a local file or string. The parameters are :
 
 =item headers - If set to a hash ref of additional HTTP headers, they will be added to the request.
 
+=item response_headers - If set returns a hash ref of response HTTP headers.
+
 =cut
 sub http_download
 {
 my ($host, $port, $page, $dest, $error, $cbfunc, $ssl, $user, $pass,
-    $timeout, $osdn, $nocache, $headers) = @_;
+    $timeout, $osdn, $nocache, $headers, $response_headers) = @_;
 if ($gconfig{'debug_what_net'}) {
 	&webmin_debug_log('HTTP', "host=$host port=$port page=$page ssl=$ssl".
 				  ($user ? " user=$user pass=$pass" : "").
@@ -2769,13 +2796,14 @@ if (!ref($h)) {
 	else { &error(&html_escape($h)); }
 	}
 &complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port,
-			$headers, $ssl, $nocache, $timeout);
+			$headers, $ssl, $nocache, $timeout,
+			defined($response_headers) ? $response_headers : undef);
 if ((!$error || !$$error) && !$nocache) {
 	&write_to_http_cache($url, $dest);
 	}
 }
 
-=head2 complete_http_download(handle, destfile, [&error], [&callback], [osdn], [oldhost], [oldport], [&send-headers], [old-ssl], [no-cache], [timeout])
+=head2 complete_http_download(handle, destfile, [&error], [&callback], [osdn], [oldhost], [oldport], [&send-headers], [old-ssl], [no-cache], [timeout], [response-header])
 
 Do a HTTP download, after the headers have been sent. For internal use only,
 typically called by http_download.
@@ -2784,9 +2812,10 @@ typically called by http_download.
 sub complete_http_download
 {
 my ($h, $destfile, $error, $cbfunc, $osdn, $oldhost, $oldport, $headers,
-    $oldssl, $nocache, $timeout) = @_;
-local ($line, %header, @headers, $s);  # Kept local so that callback funcs
-				       # can access them.
+    $oldssl, $nocache, $timeout, $response_headers) = @_;
+
+# Kept local so that callback funcs # can access them.
+local ($line, %header, @headers, $s);
 
 # read headers
 $timeout = 60 if (!defined($timeout));
@@ -2809,6 +2838,8 @@ while(1) {
 	$header{lc($1)} = $2;
 	push(@headers, [ lc($1), $2 ]);
 	}
+$$response_headers = \%header
+	if (defined($response_headers));
 alarm(0) if ($timeout);
 if ($main::download_timed_out) {
 	&close_http_connection($h);
