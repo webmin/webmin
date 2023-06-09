@@ -261,7 +261,8 @@ else {
 			# Generate the header
 			local (@hcols, @tds);
 			push(@hcols, "", $text{'index_action'});
-			push(@tds, "width=5", "width=30% nowrap");
+			push(@tds, "width=5", "width=10% nowrap",
+			           "width=70%", "nowrap", "nowrap");
 			if ($config{'view_condition'}) {
 				push(@hcols, $text{'index_desc'});
 				push(@tds, "nowrap");

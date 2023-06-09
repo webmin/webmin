@@ -1,5 +1,5 @@
 index_title=PostgreSQL Database Server
-index_notrun=PostgreSQL is not running on your system - database list could not be retrieved.
+index_notrun=PostgreSQL is not running on your system!
 index_start=Start PostgreSQL Server
 index_startmsg2=Click this button to start the PostgreSQL database server on your system. This Webmin module cannot administer the database until it is started.
 index_nopass=Webmin needs to know your PostgreSQL administration login and password in order to manage your database. Please enter your administration username  and password below.

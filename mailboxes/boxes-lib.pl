@@ -1480,7 +1480,7 @@ if ($u) {
 	my $locale;
 	if ($userconfig{'date_fmt'} eq 'auto' || $config{'date_fmt'} eq 'auto') {
 		eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
-		if (!$@) {
+		if (!$@ && $] > 5.011) {
 			$locale++;
 			return &make_date($u, undef, $fmt);
 			}

@@ -123,7 +123,7 @@ else {
 				}
 			print &text($msg, "<tt>".&html_escape(join(" ", @pkgnames))."</tt>"),
 			      "<br>\n";
-			print "<ul>\n";
+			print "<ul data-package-updates='1'>\n";
 			@got = &package_install_multiple(
 				\@pkgnames, $pkgsystem, $in{'mode'} eq 'new');
 			print "</ul><br>\n";
@@ -134,7 +134,7 @@ else {
 				($p, $s) = split(/\//, $ps);
 				next if ($donedep{$p});
 				print &text($msg, "<tt>@{[&html_escape($p)]}</tt>"),"<br>\n";
-				print "<ul>\n";
+				print "<ul data-package-updates='2'>\n";
 				@pgot = &package_install(
 					$p, $s, $in{'mode'} eq 'new');
 				foreach $g (@pgot) {
