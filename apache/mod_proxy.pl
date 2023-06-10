@@ -25,6 +25,7 @@ $rv = [ [ 'ProxyRequests', 0, 13, 'virtual', undef, 11 ],
 	[ 'ProxyMaxForwards', 0, 13, 'virtual', 2.0 ],
 	[ 'ProxyPreserveHost', 0, 13, 'virtual', 2.031 ],
 	[ 'ProxyTimeout', 0, 13, 'virtual', 2.031 ],
+	[ 'ProxyPreserveHost', 0, 13, 'virtual', 2.3 ],
 	[ 'ProxyVia', 0, 13, 'virtual', 2.0 ] ];
 return &make_directives($rv, $_[0], "mod_proxy");
 }
@@ -291,7 +292,16 @@ sub save_ProxyVia
 return &parse_choice("ProxyVia", "");
 }
 
-
+sub edit_ProxyPreserveHost
+{
+return (1, $text{'mod_proxy_preserve'},
+	&choice_input($_[0]->{'value'}, "ProxyPreserveHost", "",
+	      "$text{'yes'},on", "$text{'no'},off", "$text{'default'},"));
+}
+sub save_ProxyPreserveHost
+{
+return &parse_choice("ProxyPreserveHost", "");
+}
 
 1;
 
