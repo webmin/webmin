@@ -7300,8 +7300,9 @@ while(1) {
 	vec($rmask, fileno(OUT), 1) = 1;
 	my $sel = select($rmask, undef, undef, $_[1] - $elapsed);
 	last if (!$sel || $sel < 0);
-	my $line = <OUT>;
-	last if (!defined($line));
+	my $line;
+	my $got = read(OUT, $line, 1);
+	last if (!$got);
 	$out .= $line;
 	$linecount++;
 	if ($_[3] && $linecount >= $_[3]) {
