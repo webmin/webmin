@@ -21,7 +21,7 @@ if ($in{'new'}) {
 	$sig = &get_signature($in{'user'});
 	if ($html_edit) {
 		$sig =~ s/\n/<br>\n/g;
-		$quote = "<html><body></body></html>";
+		$quote = "<html><body>$sig</body></html>";
 		}
 	else {
 		$quote = "\n\n$sig" if ($sig);
