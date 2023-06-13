@@ -471,7 +471,7 @@ EOF
 	print '<script type="text/javascript">xinha_init = function(){}</script>';
 		}
 	print &ui_table_row(undef,
-		&ui_textarea("body", $quote, 40, 80, undef, 0,
+		&ui_textarea("body", $quote, 16, 80, undef, 0,
 		  	     "style='width:99%' id=body"), 2);
 	}
 else {
