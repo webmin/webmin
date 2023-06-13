@@ -933,6 +933,9 @@ while(1) {
 					}
 				print DEBUG
 				  "main: Done handle_request loop pid=$$\n";
+				if ($use_ssl) {
+					Net::SSLeay::shutdown($ssl_con);
+					}
 				shutdown(SOCK, 1);
 				close(SOCK);
 				close($PASSINw); close($PASSOUTw);
