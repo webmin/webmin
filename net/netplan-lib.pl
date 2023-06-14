@@ -38,7 +38,7 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 		my ($dhcp6) = grep { $_->{'name'} eq 'dhcp6' }
 				  @{$e->{'members'}};
 		if (&is_true_value($dhcp6)) {
-			$cfg->{'dhcp6'} = 1;
+			$cfg->{'auto6'} = 1;
 			}
 
 		# Is optional at boot?
@@ -204,7 +204,7 @@ else {
 		push(@addrs, $iface->{'address'}."/".
 			     &mask_to_prefix($iface->{'netmask'}));
 		}
-	if ($iface->{'dhcp6'}) {
+	if ($iface->{'auto6'}) {
 		push(@lines, $id."    "."dhcp6: true");
 		}
 	for(my $i=0; $i<@{$iface->{'address6'}}; $i++) {
