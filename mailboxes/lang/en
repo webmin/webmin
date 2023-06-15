@@ -451,4 +451,11 @@ left_filter=Email Filters
 left_pass=Change Password
 left_sig=Edit Signature
 
+editor_default=Default
+editor_small=Small
+editor_normal=Normal
+editor_medium=Medium
+editor_large=Large
+editor_huge=Huge
+
 __norefs=1
