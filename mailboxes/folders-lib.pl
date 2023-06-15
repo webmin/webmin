@@ -2848,7 +2848,14 @@ my ($body) = @_;
 
 # Mail iframe inner styles
 my $iframe_styles =
-	'<style>html,body { overflow-y: hidden; }</style>';
+	'<style>
+	  html,body { overflow-y: hidden; }
+	  blockquote:not([style]) {
+	    margin: 0px 0px 0px 0.8ex;
+	    border-left: 1px solid #ccc;
+	    padding-left: 1ex;
+	  }
+	</style>';
 # Add inner styles to the email body
 if ($body =~ /<\/body>/) {
 		$body =~ s/<\/body>/$iframe_styles<\/body>/;
