@@ -23,6 +23,13 @@ elsif ($gconfig{'os_type'} eq 'slackware-linux' &&
 	do "$gconfig{'os_type'}-9.1-ALL-lib.pl";
 	$net_mode = $gconfig{'os_type'}."/9.1";
 	}
+elsif ($gconfig{'os_type'} eq 'redhat-linux' &&
+       -d "/etc/NetworkManager/system-connections" &&
+       glob("/etc/NetworkManager/system-connections/*.nmconnection")) {
+	# Special case for systems with network manager
+	do 'nm-lib.pl';
+	$net_mode = "nm";
+	}
 elsif ($gconfig{'os_type'} eq 'debian-linux' && 
        &has_command("netplan") &&
        -d "/etc/netplan") {
