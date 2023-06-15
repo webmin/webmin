@@ -495,8 +495,10 @@ EOF
 	close(DSC);
 
 	print "Creating signature $deb/${product}_$ver$rel.dsc\n";
+	$key = $deb eq "deb" ? "jcameron\@webmin.com"
+			     : "developers\@webmin.com";
 	unlink("$deb/${product}_$ver$rel.dsc");
-	$ex = system("gpg --output $deb/${product}_$ver$rel.dsc --clearsign $deb/${product}_$ver$rel.plain");
+	$ex = system("gpg --default-key $key --output $deb/${product}_$ver$rel.dsc --clearsign $deb/${product}_$ver$rel.plain");
 	if ($ex) {
 		print "Failed to create $deb/${product}_$ver$rel.dsc\n";
 		}
@@ -517,7 +519,7 @@ EOF
 	# Create PGP signature
 	print "Signing sigs/${product}_${ver}${rel}_all.deb-sig.asc\n";
 	unlink("sigs/${product}_${ver}${rel}_all.deb-sig.asc");
-	system("gpg --armor --output sigs/${product}_${ver}${rel}_all.deb-sig.asc --default-key jcameron\@webmin.com --detach-sig $deb/${product}_${ver}${rel}_all.deb");
+	system("gpg --armor --output sigs/${product}_${ver}${rel}_all.deb-sig.asc --default-key $key --detach-sig $deb/${product}_${ver}${rel}_all.deb");
 	print "Wrote sigs/${product}_${ver}${rel}_all.deb-sig.asc\n";
 	}
 
