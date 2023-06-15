@@ -74,12 +74,12 @@ open(FILE, "<".$_[0]);
 while($line = <FILE>) {
 	# strip comments
 	$line =~ s/\r|\n//g;
+	$line =~ s/([^\\])\\"/$1\\042/g;	# convert escaped quotes to \042
 	$line =~ s/^([^"#]*)#.*$/$1/g;
 	$line =~ s/^([^"]*)\/\/.*$/$1/g;
 	$line =~ s/^([^"]*)\s+#.*$/$1/g;	# remove stuff after #, unless
 	$line =~ s/^(.*".*".*)\s+#.*$/$1/g;	#  it is inside quotes
 	$line =~ s/\\\\/\\134/g;		# convert \\ into \134
-	$line =~ s/([^\\])\\"/$1\\042/g;	# convert escaped quotes to \042
 	while(1) {
 		if (!$cmode && $line =~ /\/\*/ && $line !~ /\".*\/\*.*\"/) {
 			# start of a C-style comment
