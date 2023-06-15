@@ -620,3 +620,23 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
   padding-right: 2px;
   text-align: center;
 }
+
+/* Quill mods */
+.ql-compose-container {
+  border: 1px solid #ccc;
+}
+.ql-compose-container .ql-container.ql-snow {
+  border-color: transparent;
+}
+.ql-compose-container .ql-toolbar.ql-snow {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
+.ql-compose-container .ql-editor {
+  min-height: 220px;
+  padding: 4px 6px;
+}
+.ql-snow .ql-editor pre {
+  font-size: 92%;
+}
