@@ -19,7 +19,7 @@ if ($in{'new'}) {
 		$html_edit = $config{'html_edit'} == 2 ? 1 : 0;
 		}
 	$sig = &get_signature($in{'user'});
-	if ($html_edit) {
+	if ($html_edit && $sig) {
 		$sig =~ s/\n/<br>\n/g;
 		$quote = "<html><body>$sig</body></html>";
 		}
@@ -28,8 +28,7 @@ if ($in{'new'}) {
 		}
 	$to = $in{'to'};
 	$main::force_charset = &get_charset();
-	&mail_page_header($text{'compose_title'}, undef,
-			  $html_edit ? "onload='xinha_init()'" : "",
+	&mail_page_header($text{'compose_title'}, undef, undef,
 			  &folder_link($in{'user'}, $folder));
 	}
 else {
@@ -327,8 +326,7 @@ else {
 	&mail_page_header(
 		$in{'forward'} || @mailforward ? $text{'forward_title'} :
 		$in{'enew'} ? $text{'enew_title'} :
-			      $text{'reply_title'}, undef,
-		$html_edit ? "onload='xinha_init()'" : "",
+			      $text{'reply_title'}, undef, undef,
 		&folder_link($in{'user'}, $folder));
 	}
 
