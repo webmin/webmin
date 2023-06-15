@@ -601,7 +601,7 @@ else {
 	$wm =~ s/^wrap=//g;
 	$wcols = $config{'wrap_compose'};
 	print &ui_table_row(undef,
-		&ui_textarea("body", $quote, 16,
+		&ui_textarea("body", "\n\n$sig\n\n$quote", 16,
 			     $wcols || 80,
 			     $wcols ? "hard" : "",
 			     0,
