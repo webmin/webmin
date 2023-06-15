@@ -446,8 +446,6 @@ my $html_editor_quote = &iframe_quote($quote);
 my $html_editor_template;
 my $html_editor_scripts;
 if ($html_edit) {
-	my %tinfo = &get_theme_info($current_theme);
-	if (!$tinfo{'spa'}) {
 	$html_editor_template = <<EOF;
 		<div class="ql-compose-container">
 		    <div class="ql-toolbar">
@@ -470,7 +468,7 @@ if ($html_edit) {
 		            <button class="ql-bold"></button>
 		            <button class="ql-italic"></button>
 		            <button class="ql-underline"></button>
-	                    <button class="ql-strike"></button>
+		            <button class="ql-strike"></button>
 		            <select class="ql-color"></select>
 		            <select class="ql-background"></select>
 		        </span>
@@ -488,104 +486,107 @@ if ($html_edit) {
 		            <button class="ql-code-block"></button>
 		        </span>
 		        <span class="ql-formats">
-	                    <button class="ql-link"></button>
-	                    <button class="ql-image"></button>
+		            <button class="ql-link"></button>
+		            <button class="ql-image"></button>
 		        </span>
 		        <span class="ql-formats">
-	                    <button class="ql-clean"></button>
+		            <button class="ql-clean"></button>
 		        </span>
 		    </div>
 		    <div data-composer="html" class="ql-compose ql-container ql-container-toolbar-bottom"></div>
 		    $html_editor_quote
 		</div>
 EOF
-	# Output HTML editor textarea
-	my $ts = &get_webmin_version();
-	$ts =~ s/[.-]+//g;
-	$html_editor_scripts = <<EOF;
-		<link href="quill/quill.min.css?$ts" rel="stylesheet">
-		<link href="quill/quill-custom.css?$ts" rel="stylesheet">
-		<script type="text/javascript" src="quill/quill.min.js?$ts"></script>
-		<script type="text/javascript">
-		(function() {
-			var targ = document.querySelector('[name="body"]');
-			    var qs = Quill.import('attributors/style/size'),
-			        qf = Quill.import('attributors/style/font');
-			    qs.whitelist = ["0.75em", "1.2em", "1.5em", "2.5em"];
-			    qf.whitelist = ["initial", "sans-serif", "serif", "monospace"],
-			    escapeHTML_ = function(htmlStr) {
-			       return htmlStr.replace(/&/g, "&amp;")
-			             .replace(/</g, "&lt;")
-			             .replace(/>/g, "&gt;")
-			             .replace(/"/g, "&quot;")
-			             .replace(/'/g, "&#39;");        
-			    };
 
-			    var Parchment = Quill.import('parchment');
-			    // Whitelist attrs (useful on preserving)
-			    const attrs_whitelist = [
-			        'margin', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left',
-			        'padding', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left',
-			        'border', 'border-right', 'border-left',
-			        'font-size', 'font-family', 'href', 'target',
-			        ]
+	my %tinfo = &get_theme_info($current_theme);
+	if (!$tinfo{'spa'}) {
+		# Output HTML editor textarea
+		my $ts = &get_webmin_version();
+		$ts =~ s/[.-]+//g;
+		$html_editor_scripts = <<EOF;
+			<link href="quill/quill.min.css?$ts" rel="stylesheet">
+			<link href="quill/quill-custom.css?$ts" rel="stylesheet">
+			<script type="text/javascript" src="quill/quill.min.js?$ts"></script>
+			<script type="text/javascript">
+			(function() {
+				var targ = document.querySelector('[name="body"]');
+				    var qs = Quill.import('attributors/style/size'),
+				        qf = Quill.import('attributors/style/font');
+				    qs.whitelist = ["0.75em", "1.2em", "1.5em", "2.5em"];
+				    qf.whitelist = ["initial", "sans-serif", "serif", "monospace"],
+				    escapeHTML_ = function(htmlStr) {
+				       return htmlStr.replace(/&/g, "&amp;")
+				             .replace(/</g, "&lt;")
+				             .replace(/>/g, "&gt;")
+				             .replace(/"/g, "&quot;")
+				             .replace(/'/g, "&#39;");        
+				    };
 
-			    attrs_whitelist.forEach(function(attr) {
-			        Quill.register(new Parchment.Attributor.Style(attr, attr, {}));
-			    });
+				    var Parchment = Quill.import('parchment');
+				    // Whitelist attrs (useful on preserving)
+				    const attrs_whitelist = [
+				        'margin', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left',
+				        'padding', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left',
+				        'border', 'border-right', 'border-left',
+				        'font-size', 'font-family', 'href', 'target',
+				        ]
 
-			    Quill.register(qs, true);
-			    Quill.register(qf, true);
-			    var editor = new Quill('.ql-container', {
-			        modules: {
-			            formula: false,
-			            syntax: false,
-			            imageDrop: true,
-			            imageResize: {
-			                modules: [
-			                    'DisplaySize',
-			                    'Resize',
-			                ],
-			            },
-			            toolbar: '.ql-toolbar',
-			        },
-			        bounds: '.ql-compose-container',
-			        theme: 'snow'
-			    });
-			    // Google Mail editor like keybind for quoting
-			    var isMacOS = navigator.userAgent.toLowerCase().includes('mac');
-			    editor.keyboard.addBinding({
-			      key: '9',
-			      shiftKey: true,
-			      ctrlKey: !isMacOS,
-			      metaKey: isMacOS,
-			      format: ['blockquote'],
-			    }, function(range, context) {
-			      this.quill.format('blockquote', false);
-			    });
-			    editor.keyboard.addBinding({
-			      key: '9',
-			      shiftKey: true,
-			      ctrlKey: !isMacOS,
-			      metaKey: isMacOS,
-			    }, function(range, context) {
-			      this.quill.format('blockquote', true);
-			    });
-			    editor.on('text-change', function() {
-			        targ.value = escapeHTML_(editor.root.innerHTML + "<br><br>");
-			        var quoteHTML = String(), err = false;
-			        try {
-			          quoteHTML = document.querySelector('#quote-mail-iframe').contentWindow.document.querySelector('.iframe_quote[contenteditable]#webmin-iframe-quote').innerHTML;
-			        } catch(e) {
-			          err = true;
-			        }
-			        if (!err) {
-			          targ.value = targ.value + escapeHTML_(quoteHTML);
-			        }
-			    });
-			    editor.pasteHTML(targ.value);
-			})();
-		</script>
+				    attrs_whitelist.forEach(function(attr) {
+				        Quill.register(new Parchment.Attributor.Style(attr, attr, {}));
+				    });
+
+				    Quill.register(qs, true);
+				    Quill.register(qf, true);
+				    var editor = new Quill('.ql-container', {
+				        modules: {
+				            formula: false,
+				            syntax: false,
+				            imageDrop: true,
+				            imageResize: {
+				                modules: [
+				                    'DisplaySize',
+				                    'Resize',
+				                ],
+				            },
+				            toolbar: '.ql-toolbar',
+				        },
+				        bounds: '.ql-compose-container',
+				        theme: 'snow'
+				    });
+				    // Google Mail editor like keybind for quoting
+				    var isMacOS = navigator.userAgent.toLowerCase().includes('mac');
+				    editor.keyboard.addBinding({
+				      key: '9',
+				      shiftKey: true,
+				      ctrlKey: !isMacOS,
+				      metaKey: isMacOS,
+				      format: ['blockquote'],
+				    }, function(range, context) {
+				      this.quill.format('blockquote', false);
+				    });
+				    editor.keyboard.addBinding({
+				      key: '9',
+				      shiftKey: true,
+				      ctrlKey: !isMacOS,
+				      metaKey: isMacOS,
+				    }, function(range, context) {
+				      this.quill.format('blockquote', true);
+				    });
+				    editor.on('text-change', function() {
+				        targ.value = escapeHTML_(editor.root.innerHTML + "<br><br>");
+				        var quoteHTML = String(), err = false;
+				        try {
+				          quoteHTML = document.querySelector('#quote-mail-iframe').contentWindow.document.querySelector('.iframe_quote[contenteditable]#webmin-iframe-quote').innerHTML;
+				        } catch(e) {
+				          err = true;
+				        }
+				        if (!err) {
+				          targ.value = targ.value + escapeHTML_(quoteHTML);
+				        }
+				    });
+				    editor.pasteHTML(targ.value);
+				})();
+			</script>
 EOF
 		}
 	$sig =~ s/\n/<br>\n/g,
@@ -593,7 +594,8 @@ EOF
 		if ($sig);
 	print &ui_table_row(undef,
 		&ui_textarea("body", "$sig", 16, 80, undef, 0,
-		  	     "style='display: none' id=body").$html_editor_template.$html_editor_scripts, 2);
+		             "style='display: none' id=body").
+		$html_editor_template.$html_editor_scripts, 2);
 	}
 else {
 	# Show text editing area
