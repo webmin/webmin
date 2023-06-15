@@ -34,14 +34,16 @@ print &ui_form_start("edit_keys.cgi");
 print "<b>Key filename</b>\n";
 print &ui_select("file", $in{'file'},
 		 [ map { [ $_ ] } @files ]),"\n";
-print &ui_submit('View');
+print &ui_submit($text{'keys_change'});
 print &ui_form_end();
 
 # Show the file contents
 print &ui_form_start("save_manual.cgi", "form-data");
 print &ui_hidden("file", $in{'file'}),"\n";
 $data = &read_file_contents($in{'file'});
-print &ui_textarea("data", $data, 20, 80),"\n";
+print &ui_textarea("data", $data, 20, 80),"<br>\n";
+print &ui_submit($text{'save'});
+print &ui_form_end();
 
 &ui_print_footer("", $text{'index_return'});
 
