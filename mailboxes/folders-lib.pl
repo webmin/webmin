@@ -2977,31 +2977,59 @@ my $iframe_body = <<EOF;
 		border: none;
 		width: calc(100% - 12px);
 	}
+	details.iframe_quote_details summary::-webkit-details-marker {
+	  display:none;
+	}
 	details.iframe_quote_details summary {
 	  display: block;
 	  width: fit-content;
 	  outline: none;
 	  margin-left: 6px;
 	  margin-bottom: 6px;
+	  cursor: pointer;
 	}
 	details.iframe_quote_details iframe {
 	  padding-left: 6px;
 	  padding-bottom: 6px;
 	}
 	details.iframe_quote_details summary::after {
-	  border: 1px solid #666;
+	  background-color: #e4e4e4;
+	  border: 1px solid #cfcfcf;
 	  border-radius: 18px;
-	  content: "...";
-	  cursor: pointer;
+	  content: "";
 	  display: inline-block;
 	  line-height: 0;
-	  padding: 2px 2px 1px 9px;
-	  width: 18px;
-	  height: 9px;
+	  padding: 0;
+	  width: 25px;
+	  height: 11px;
+	}
+	details.iframe_quote_details summary:hover::after {
+	  background-color: #d4d4d4;
+	  border: 1px solid #bfbfbf;
+	}
+	details.iframe_quote_details summary > ul {
+	  display: inline-flex;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      margin-left: 7px;
+      margin-top: 5px;
+      pointer-events: none;
+	}
+	details.iframe_quote_details summary > ul > li {
+	  background-color: #000;
+	  height: 3px;
+	  width: 3px;
+	  line-height: 0;
+	  list-style: none;
+	  margin-right: 2px;
+	  margin-top: 0;
+	  border-radius: 50%;
+	  pointer-events: none;
 	}
 	details.iframe_quote_details[open] summary::after {
-	  background-color: #d1dffc;
-	  border: 1px solid #97abd4;
+	  background-color: #ccc;
+	  border: 1px solid #aaa;
 	}
 </style>
 <script>
@@ -3036,6 +3064,7 @@ my $iframe_body = <<EOF;
 EOF
 $iframe_body = &ui_details({
 	html => 1,
+	title => "<ul><li></li><li></li><li></li></ul>",
 	content => $iframe_body,
 	class => 'iframe_quote_details'
 	});
