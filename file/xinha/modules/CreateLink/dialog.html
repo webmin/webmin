@@ -1,0 +1,28 @@
+<h1 id="[h1]"><l10n>Insert/Modify Link</l10n></h1>
+<table border="0" style="margin-top:10px;width: 100%;">
+  <tr>
+    <td class="label"><l10n>URL:</l10n></td>
+    <td style="width: 70%"><input type="text" id="[f_href]" name="[f_href]" style="width: 90%" /></td>
+  </tr>
+  <tr>
+    <td class="label"><l10n>Title (tooltip):</l10n></td>
+    <td><input type="text" id="[f_title]" name="[f_title]" style="width: 90%" /></td>
+  </tr>
+  <tr>
+    <td class="label"><span id="[f_target_label]"><l10n>Target:</l10n></span></td>
+    <td><select id="[f_target]" name="[f_target]">
+      <option value=""><l10n>None (use implicit)</l10n></option>
+      <option value="_blank"><l10n>New window (_blank)</l10n></option>
+      <option value="_self"><l10n>Same frame (_self)</l10n></option>
+      <option value="_top"><l10n>Top frame (_top)</l10n></option>
+      <option value="_other"><l10n>Other</l10n></option>
+    </select>
+    <input type="text" name="[f_other_target]" id="[f_other_target]" size="10" style="visibility: hidden" />
+    </td>
+  </tr>
+</table>
+
+<div class="buttons" id="[buttons]">
+  <input type="button" id="[ok]"     value="_(OK)"     />
+  <input type="button" id="[cancel]" value="_(Cancel)" />
+</div>
