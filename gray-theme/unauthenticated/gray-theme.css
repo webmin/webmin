@@ -36,6 +36,9 @@ table.ui_table td textarea {line-height:normal; font-family:monospace;}
 table.ui_table td div.barchart * {
   margin: 0;
 }
+textarea {
+  padding: 4px;
+}
 table.ui_table thead td * {
   vertical-align:middle;
   margin: 0;
