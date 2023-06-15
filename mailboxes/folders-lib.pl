@@ -3006,9 +3006,8 @@ if ($writers[0]->[1]) {
 else {
 	$writer = &decode_mimewords($writers[0]->[0])." wrote ..";
 	}
-local $tm;
-if ($cfg->{'reply_date'} &&
-    ($tm = &parse_mail_date($_[0]->{'header'}->{'date'}))) {
+my $tm = &parse_mail_date($_[0]->{'header'}->{'date'});
+if ($tm) {
 	local $tmstr = &make_date($tm);
 	$writer = "On $tmstr $writer";
 	}
