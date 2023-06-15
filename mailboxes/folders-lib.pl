@@ -2945,6 +2945,104 @@ EOF
 return &trim($iframe_body);
 }
 
+# iframe_quote(quote)
+# Returns quoted message in an iframe HTML element
+sub iframe_quote
+{
+my ($quote) = @_;
+return $quote if (!$quote);
+
+# Quote mail iframe inner styles
+my $iframe_styles =
+	'<style>
+		html,body { overflow-y: hidden; }
+		blockquote:not([style]) {
+			margin: 0px 0px 0px 0.8ex;
+			border-left: 1px solid #ccc;
+			padding-left: 1ex;
+		}
+	</style>';
+# Add inner styles to the email body
+if ($quote =~ /<\/body>/) {
+		$quote =~ s/<\/body>/$iframe_styles<\/body>/;
+		}
+	else {
+		$quote .= $iframe_styles;
+		}
+$quote = &trim(&quote_escape($quote, '"'));
+# Email iframe stuff
+my $iframe_body = <<EOF;
+<style>
+	#quote-mail-iframe {
+		border: none;
+		width: calc(100% - 12px);
+	}
+	details.iframe_quote_details summary {
+	  display: block;
+	  width: fit-content;
+	  outline: none;
+	  margin-left: 6px;
+	  margin-bottom: 6px;
+	}
+	details.iframe_quote_details iframe {
+	  padding-left: 6px;
+	  padding-bottom: 6px;
+	}
+	details.iframe_quote_details summary::after {
+	  border: 1px solid #666;
+	  border-radius: 18px;
+	  content: "...";
+	  cursor: pointer;
+	  display: inline-block;
+	  line-height: 0;
+	  padding: 2px 2px 1px 9px;
+	  width: 18px;
+	  height: 9px;
+	}
+	details.iframe_quote_details[open] summary::after {
+	  background-color: #d1dffc;
+	  border: 1px solid #97abd4;
+	}
+</style>
+<script>
+	function quote_mail_iframe_onload(iframe) {
+		if (typeof theme_quote_mail_iframe_onload === 'function') {
+		    theme_quote_mail_iframe_onload(iframe);
+		      return;
+		}
+		const iframe_resize = function() {
+				const iframeobj = document.querySelector('#quote-mail-iframe'),
+				      iframe_height_bound = iframeobj.contentWindow.document.body.getBoundingClientRect().bottom,
+				      iframe_scroll_height = iframeobj.contentWindow.document.body.scrollHeight,
+				      iframe_height =
+				        iframe_height_bound > iframe_scroll_height ?
+				          iframe_height_bound : iframe_scroll_height;
+				iframeobj.style.height = Math.ceil(iframe_height) + "px";
+			  };
+		iframe.classList.add("loaded");
+		setTimeout(iframe_resize);
+		document.querySelector('.iframe_quote_details').addEventListener("click", function() {
+			quote_mail_iframe_onload(this)
+		}, { once: true });
+	}
+</script>
+<iframe
+  id="quote-mail-iframe" 
+  class="quote-mail-iframe"
+  onload="quote_mail_iframe_onload(this)" 
+  sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+  src="about:blank" srcdoc="<div contenteditable='true' id='webmin-iframe-quote' class='iframe_quote'>$quote</div>">
+</iframe>
+EOF
+$iframe_body = &ui_details({
+	html => 1,
+	content => $iframe_body,
+	class => 'iframe_quote_details'
+	});
+
+return &trim($iframe_body);
+}
+
 # remove_body_attachments(&mail, &attach)
 # Returns attachments except for those that make up the message body, and those
 # that have sub-attachments.
