@@ -250,13 +250,6 @@ my $html_editor_init_script =
     const targ = document.querySelector('[name="@{[$opts->{'textarea'}]}"]'),
       qs = Quill.import('attributors/style/size'),
       qf = Quill.import('attributors/style/font'),
-      escapeHTML_ = function(htmlStr) {
-         return htmlStr.replace(/&/g, "&amp;")
-             .replace(/</g, "&lt;")
-             .replace(/>/g, "&gt;")
-             .replace(/"/g, "&quot;")
-             .replace(/'/g, "&#39;");        
-      },
       isMac = navigator.userAgent.toLowerCase().includes('mac');
 
     qs.whitelist = ["0.75em", "1.15em", "1.3em"];
@@ -313,7 +306,7 @@ my $html_editor_init_script =
       this.quill.format('blockquote', true);
     });
     editor.on('text-change', function() {
-        targ.value = escapeHTML_(editor.root.innerHTML + "<br><br>");
+        targ.value = editor.root.innerHTML + "<br><br>";
         let quoteHTML = String(),
               err = false;
         try {
@@ -325,7 +318,7 @@ my $html_editor_init_script =
           err = true;
         }
         if (!err) {
-          targ.value = targ.value + escapeHTML_(quoteHTML);
+          targ.value = targ.value + quoteHTML;
         }
     });
     editor.pasteHTML(targ.value);
