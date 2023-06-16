@@ -462,12 +462,13 @@ if ($html_edit) {
 		}
 		# HTML editor init
 		$html_editor_scripts =
-			&html_editor_init_script('full', {load => !$tinfo{'spa'}});
-	$sig =~ s/\n/<br>\n/g,
-	$sig =~ s/^\s+//g
+			&html_editor_init_script('mail', {load => !$tinfo{'spa'}});
+	$sig =~ s/\n/<br>/g,
+	$sig =~ s/^\s+//g,
+	$sig = "<br><br>$sig<br><br>"
 		if ($sig);
 	print &ui_table_row(undef,
-		&ui_textarea("body", undef, 16, 80, undef, 0,
+		&ui_textarea("body", $sig, 16, 80, undef, 0,
 		             "style='display: none' id=body").
 		$html_editor_template.
 		$html_editor_styles.
