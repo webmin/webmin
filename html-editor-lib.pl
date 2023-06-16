@@ -3,14 +3,32 @@
 
 sub html_editor_load_bundle
 {
+my ($opts) = @_;
+$opts ||= {};
 my $wp = &get_webprefix();
 my $ts = &get_webmin_version();
 $ts =~ s/[.-]+//g;
+# Load Quill HTML editor files
 my $html_editor_load_scripts =
 <<EOF;
-    <link href="$wp/unauthenticated/css/quill.min.css?$ts" rel="stylesheet">
-    <script type="text/javascript" src="$wp/unauthenticated/js/quill.min.js?$ts"></script>
+<link href="$wp/unauthenticated/css/quill.min.css?$ts" rel="stylesheet">
+<script type="text/javascript" src="$wp/unauthenticated/js/quill.min.js?$ts"></script>
 EOF
+# Load extra CSS modules
+if ($opts->{'extra'}->{'css'}) {
+    foreach my $lib (@{$opts->{'extra'}->{'css'}}) {
+        $html_editor_load_scripts .=
+        "<link href='$wp/unauthenticated/css/$lib.min.css?$ts' rel='stylesheet'>\n";
+        }
+    }
+# Load extra JS modules
+if ($opts->{'extra'}->{'js'}) {
+    foreach my $lib (@{$opts->{'extra'}->{'js'}}) {
+        $html_editor_load_scripts .=
+        "<script type='text/javascript' src='$wp/unauthenticated/js/$lib.min.js?$ts'></script>\n";
+        }
+    }
+
 return $html_editor_load_scripts;
 }
 
