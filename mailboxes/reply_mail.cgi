@@ -443,26 +443,23 @@ if ($in{'new'}) {
 # Output message body input
 print &ui_table_start($text{'reply_body'}, "width=100%", 2, undef,
 		      &ui_links_row(\@bodylinks));
-my $html_editor_quote = &iframe_quote($quote);
-my $html_editor_template;
-my $html_editor_styles;
-my $html_editor_scripts;
-my $html_editor_load_scripts;
+
+# Process email quote
+$quote = &iframe_quote($quote);
+
+# Get HTML editor and replies
+my $html_editor = &html_editor(
+      { textarea => 'body',
+      	type => 'simple',
+        extra =>
+          { js => ['highlight/highlight'],
+           css => ['highlight/highlight'] },
+        quote => length($quote),
+        after =>
+           { editor => $quote }
+      });
+
 if ($html_edit) {
-	$html_editor_template = &html_editor_template({after => {editor => $html_editor_quote}});
-	$html_editor_styles = &html_editor_styles('toolbar');
-	my %tinfo = &get_theme_info($current_theme);
-	if (!$tinfo{'spa'}) {
-		# Load HTML editor files
-		$html_editor_load_scripts =
-			&html_editor_load_bundle(
-			  {extra =>
-			    {js => ['highlight/highlight'],
-			     css => ['highlight/highlight']}});
-		}
-		# HTML editor init
-		$html_editor_scripts =
-			&html_editor_init_script('mail', {load => !$tinfo{'spa'}});
 	$sig =~ s/\n/<br>/g,
 	$sig =~ s/^\s+//g,
 	$sig = "<br><br>$sig<br><br>"
@@ -470,10 +467,7 @@ if ($html_edit) {
 	print &ui_table_row(undef,
 		&ui_textarea("body", $sig, 16, 80, undef, 0,
 		             "style='display: none' id=body").
-		$html_editor_template.
-		$html_editor_styles.
-		$html_editor_load_scripts.
-		$html_editor_scripts, 2);
+		$html_editor, 2);
 	}
 else {
 	# Show text editing area

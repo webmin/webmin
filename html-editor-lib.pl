@@ -133,15 +133,13 @@ EOF
     }
 }
 
-sub html_editor_parts
+sub html_editor_toolbar
 {
-my ($part, $type) = @_;
+my ($opts) = @_;
 
-# Editor toolbars
-if ($part eq 'toolbar') {
-    # Toolbar for mail editor
-    if ($type eq 'mail') {
-        return 
+# Toolbar for mail editor
+if ($opts->{'type'} eq 'simple') {
+    return 
 <<EOF;
   [
     [{'font': [false, 'monospace']},
@@ -160,8 +158,8 @@ if ($part eq 'toolbar') {
   ]
 EOF
     }
-    if ($type eq 'full') {
-        return 
+if ($opts->{'type'} eq 'advanced') {
+    return 
 <<EOF;
   [
     [{'font': [false, 'monospace']},
@@ -183,17 +181,16 @@ EOF
   ]
 EOF
         }
-    }
 }
+
 sub html_editor_init_script
 {
-my ($type, $opts) = @_;
-$opts ||= {};
+my ($opts) = @_;
 my $html_editor_init_script =
 <<EOF;
 <script type="text/javascript">
   const mail_init_editor = function() {
-    const targ = document.querySelector('[name="body"]'),
+    const targ = document.querySelector('[name="@{[$opts->{'textarea'}]}"]'),
       qs = Quill.import('attributors/style/size'),
       qf = Quill.import('attributors/style/font'),
       escapeHTML_ = function(htmlStr) {
@@ -234,7 +231,7 @@ my $html_editor_init_script =
                     'Resize',
                 ],
             },
-            toolbar: @{[&html_editor_parts('toolbar', $type)]},
+            toolbar: @{[&html_editor_toolbar($opts)]},
         },
         bounds: '.ql-compose-container',
         theme: 'snow'
@@ -285,6 +282,36 @@ my $html_editor_init_script =
 </script>
 EOF
 return $html_editor_init_script;
+}
+
+sub html_editor
+{
+my ($opts) = @_;
+# Get template
+my $html_editor_template =
+     &html_editor_template($opts);
+# Get toolbar styling
+my $html_editor_styles_toolbar =
+     &html_editor_styles('toolbar');
+# Load bundles
+my ($html_editor_load_scripts);
+my %tinfo = &get_theme_info($current_theme);
+if (!$tinfo{'spa'}) {
+    # Load HTML editor files and dependencies
+    $html_editor_load_scripts =
+        &html_editor_load_bundle($opts);
+    }
+
+# HTML editor init
+$opts->{'load'} = !$tinfo{'spa'};
+my $html_editor_init_scripts =
+    &html_editor_init_script($opts);
+
+# Return complete HTML editor
+return $html_editor_template .
+       $html_editor_styles_toolbar .
+       $html_editor_load_scripts .
+       $html_editor_init_scripts;
 }
 
 1;
