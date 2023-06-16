@@ -137,8 +137,31 @@ sub html_editor_toolbar
 {
 my ($opts) = @_;
 
-# Toolbar for mail editor
+# Toolbar modes
+if ($opts->{'type'} eq 'essential') {
+    return 
+<<EOF;
+  [
+    ['bold', 'italic', 'underline', 'strike'],
+    ['blockquote']
+  ]
+EOF
+    }
 if ($opts->{'type'} eq 'simple') {
+    return 
+<<EOF;
+  [
+    [{'font': [false, 'monospace']},
+     {'size': ['0.75em', false, "1.15em", '1.3em']}],
+    ['bold', 'italic', 'underline', 'strike'],
+    [{'color': []}, {'background': []}],
+    [{'align': []}],
+    ['blockquote'],
+    ['clean']
+  ]
+EOF
+    }
+if ($opts->{'type'} eq 'basic') {
     return 
 <<EOF;
   [
