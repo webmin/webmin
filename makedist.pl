@@ -59,7 +59,7 @@ $vers || usage();
 	  "uptracker.cgi", "create-module.pl", "webmin_search.cgi",
 	  "webmin-search-lib.pl", "WebminCore.pm",
 	  "record-login.pl", "record-logout.pl", "record-failed.pl",
-	  "robots.txt", "unauthenticated", "bin",
+	  "robots.txt", "unauthenticated", "bin", "html-editor-lib.pl",
 	 );
 if ($min) {
 	# Only those required by others
