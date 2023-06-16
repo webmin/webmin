@@ -255,7 +255,7 @@ my $target_name = $target_text->{'name'};
 my $html_editor_init_script =
 <<EOF;
 <script type="text/javascript">
-  let ${module_name}_html_editor_init = function() {
+  function fn_${module_name}_html_editor_init() {
     const targ = document.querySelector('[$target_attr$target_type"$target_name"]'),
       qs = Quill.import('attributors/style/size'),
       qf = Quill.import('attributors/style/font'),
@@ -372,7 +372,7 @@ my $html_editor_init_script =
     // Update editor on initial load
     editor.pasteHTML(targ.value);
   }
-  @{[$opts->{'load'} ? "${module_name}_html_editor_init()" : '']}
+  @{[$opts->{'load'} ? "fn_${module_name}_html_editor_init()" : '']}
 </script>
 EOF
 return $html_editor_init_script;
