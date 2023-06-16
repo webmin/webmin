@@ -255,11 +255,11 @@ my $target_name = $target_text->{'name'};
 my $html_editor_init_script =
 <<EOF;
 <script type="text/javascript">
-  const mail_init_editor = function() {
+  let ${module_name}_html_editor_init = function() {
     const targ = document.querySelector('[$target_attr$target_type"$target_name"]'),
       qs = Quill.import('attributors/style/size'),
       qf = Quill.import('attributors/style/font'),
-      isMac = navigator.userAgent.toLowerCase().includes('mac'),
+      isMac = navigator.userAgent.toLowerCase().includes('mac');
 
     qs.whitelist = ["0.75em", "1.15em", "1.3em"];
     Quill.register(qs, true);
@@ -371,10 +371,8 @@ my $html_editor_init_script =
 
     // Update editor on initial load
     editor.pasteHTML(targ.value);
-
-
   }
-  @{[$opts->{'load'} ? 'mail_init_editor()' : '']}
+  @{[$opts->{'load'} ? "${module_name}_html_editor_init()" : '']}
 </script>
 EOF
 return $html_editor_init_script;
