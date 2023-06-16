@@ -131,7 +131,8 @@ if ($part eq 'toolbar') {
     [{'indent': '-1'}, {'indent': '+1'}],
     ['blockquote'],
     ['code-block'],
-    ['link', 'image'],
+    ['link'],
+    ['image'],
     [{'direction': 'rtl'}],
     ['clean']
   ]
@@ -152,7 +153,8 @@ EOF
     [{'indent': '-1'}, {'indent': '+1'}],
     ['blockquote'],
     ['code-block', 'formula'],
-    ['link', 'image', 'video'],
+    ['link'],
+    ['image', 'video'],
     [{'direction': 'rtl'}],
     ['clean']
   ]
