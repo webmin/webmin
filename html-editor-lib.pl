@@ -243,11 +243,17 @@ EOF
 sub html_editor_init_script
 {
 my ($opts) = @_;
+# Get target name and selector type
+my $target_text = $opts->{'textarea'}->{'target'};
+my $target_attr = $target_text->{'attr'} || 'name';
+my $target_type = $target_text->{'type'} || '=';
+my $target_name = $target_text->{'name'};
+
 my $html_editor_init_script =
 <<EOF;
 <script type="text/javascript">
   const mail_init_editor = function() {
-    const targ = document.querySelector('[name="@{[$opts->{'textarea'}]}"]'),
+    const targ = document.querySelector('[$target_attr$target_type"$target_name"]'),
       qs = Quill.import('attributors/style/size'),
       qf = Quill.import('attributors/style/font'),
       isMac = navigator.userAgent.toLowerCase().includes('mac');
@@ -307,20 +313,38 @@ my $html_editor_init_script =
     });
     editor.on('text-change', function() {
         targ.value = editor.root.innerHTML + "<br><br>";
-        let quoteHTML = String(),
-              err = false;
+        let extraValue = String(),
+            sync = JSON.parse('@{[&convert_to_json($opts->{'textarea'}->{'sync'}->{'data'})]}'),
+            position = '@{[$opts->{'textarea'}->{'sync'}->{'position'}]}',
+            err = false;
         try {
-          quoteHTML =
-            document.querySelector('#quote-mail-iframe')
-              .contentWindow.document
-              .querySelector('.iframe_quote[contenteditable]#webmin-iframe-quote').innerHTML;
+            // Gather data from additional elements if given
+            if (sync.constructor === Array) {
+                sync.forEach(function(_) {
+                    let content_document = document;
+                    if (_.iframe) {
+                        content_document =
+                          document.querySelector(_.iframe).contentWindow.document;
+                    }
+                    _.elements.forEach(function(element) {
+                        const element_ = content_document.querySelector(element);
+                        (element_ && (extraValue += element_.innerHTML));
+                    })
+                });
+            }
         } catch(e) {
           err = true;
         }
         if (!err) {
-          targ.value = targ.value + quoteHTML;
+          if (position === 'before') {
+            targ.value = extraValue + targ.value;
+          } else {
+            targ.value = targ.value + extraValue;
+          }
         }
     });
+
+    // Update editor on initial load
     editor.pasteHTML(targ.value);
 
     // Prevent loosing focus for toolbar selects (color picker, font select and etc)

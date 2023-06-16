@@ -451,7 +451,13 @@ $iframe_quote = &iframe_quote($quote)
 
 # Get HTML editor and replies
 my $html_editor = &html_editor(
-      { textarea => 'body',
+      { textarea =>
+          { target => { name => 'body', attr => 'name' },
+            sync =>
+              { position => 'after',
+                data => [ { iframe => '#quote-mail-iframe',
+                            elements => ['#webmin-iframe-quote'] } ] }
+          },
       	type => $config{'html_edit_mode'} || 'advanced',
         quote => length($iframe_quote),
         after =>
