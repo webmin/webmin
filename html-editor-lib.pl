@@ -259,7 +259,8 @@ my $html_editor_init_script =
     const targ = document.querySelector('[$target_attr$target_type"$target_name"]'),
       qs = Quill.import('attributors/style/size'),
       qf = Quill.import('attributors/style/font'),
-      isMac = navigator.userAgent.toLowerCase().includes('mac');
+      isMac = navigator.userAgent.toLowerCase().includes('mac'),
+      isXML = @{[$ENV{'HTTP_X_REQUESTED_WITH'} eq "XMLHttpRequest" ? 'true' : 'false']};
 
     qs.whitelist = ["0.75em", "1.15em", "1.3em"];
     Quill.register(qs, true);
@@ -316,6 +317,7 @@ my $html_editor_init_script =
     });
     editor.on('text-change', function() {
         targ.value = editor.root.innerHTML + "<br><br>";
+        sessionStorage.setItem('$module_name/quill=last-message', targ.value);
         let extraValue = String(),
             sync = JSON.parse('@{[&convert_to_json($opts->{'textarea'}->{'sync'}->{'data'})]}'),
             position = '@{[$opts->{'textarea'}->{'sync'}->{'position'}]}',
@@ -346,14 +348,34 @@ my $html_editor_init_script =
           }
         }
     });
-
-    // Update editor on initial load
-    editor.pasteHTML(targ.value);
-
+    
     // Prevent loosing focus for toolbar selects (color picker, font select and etc)
     editor.getModule("toolbar").container.addEventListener("mousedown", (e) => {
       e.preventDefault();
     });
+
+    // Don't loose message content
+    if (!isXML) {
+        // If the page is reloaded or history back is clicked
+        let restore_message = false;
+        try {
+            restore_message = window.performance?.navigation?.type > 0
+        } catch(e) {
+          restore_message = false;
+        }
+        if (restore_message) {
+            const quill_last_message = sessionStorage.getItem('$module_name/quill=last-message');
+            if (quill_last_message) {
+                editor.pasteHTML(quill_last_message);
+                return;
+            }
+        }
+    }
+
+    // Update editor on initial load
+    editor.pasteHTML(targ.value);
+
+
   }
   @{[$opts->{'load'} ? 'mail_init_editor()' : '']}
 </script>
