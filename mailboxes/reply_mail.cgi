@@ -450,7 +450,7 @@ $quote = &iframe_quote($quote);
 # Get HTML editor and replies
 my $html_editor = &html_editor(
       { textarea => 'body',
-      	type => 'advanced',
+      	type => $config{'html_edit_mode'} || 'advanced',
         quote => length($quote),
         after =>
            { editor => $quote }
