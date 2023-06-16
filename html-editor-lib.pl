@@ -53,7 +53,13 @@ if ($opts->{'extra'}->{'js'}) {
 # based on editor mode
 if ($opts->{'type'} =~ /^(advanced|expert)$/) {
     my $highlight_bundle = ['highlight/highlight'];
-    &$load_css_modules($highlight_bundle);
+    my @highlight_bundle = @{$highlight_bundle};
+    if ($opts->{'_'}->{'client'}->{'palette'} eq 'dark') {
+        foreach (@highlight_bundle) {
+            $_ .= "-dark";
+            }
+        }
+    &$load_css_modules(\@highlight_bundle);
     &$load_js_modules($highlight_bundle);
     }
 if ($opts->{'type'} =~ /^(expert)$/) {
@@ -398,6 +404,8 @@ $opts->{'_'}->{'web'}->{'prefix'} = &get_webprefix();
 my $webmin_version = &get_webmin_version();
 $webmin_version =~ s/[.-]+//g;
 $opts->{'_'}->{'web'}->{'timestamp'} = $webmin_version;
+# Client color palette
+$opts->{'_'}->{'client'}->{'palette'} = $ENV{'HTTP_X_COLOR_PALETTE'};
 }
 
 1;
