@@ -9,20 +9,11 @@ my $wp = &get_webprefix();
 my $ts = &get_webmin_version();
 $ts =~ s/[.-]+//g;
 my $html_editor_load_scripts;
-# Load extra CSS modules
-if ($opts->{'extra'}->{'css'}) {
-    foreach my $lib (@{$opts->{'extra'}->{'css'}}) {
-        $html_editor_load_scripts .=
-        "<link href='$wp/unauthenticated/css/$lib.min.css?$ts' rel='stylesheet'>\n";
-        }
-    }
-# Load extra JS modules
-if ($opts->{'extra'}->{'js'}) {
-    foreach my $lib (@{$opts->{'extra'}->{'js'}}) {
-        $html_editor_load_scripts .=
-        "<script type='text/javascript' src='$wp/unauthenticated/js/$lib.min.js?$ts'></script>\n";
-        }
-    }
+
+# Load extra modules first
+$html_editor_load_scripts .=
+    html_editor_load_modules($opts);
+
 # Load Quill HTML editor files
 $html_editor_load_scripts .=
 <<EOF;
@@ -31,6 +22,49 @@ $html_editor_load_scripts .=
 EOF
 
 return $html_editor_load_scripts;
+}
+sub html_editor_load_modules
+{
+my ($opts) = @_;
+my $html_editor_load_modules;
+my $load_css_modules = sub {
+    my ($css_modules) = @_;
+    foreach my $module (@{$css_modules}) {
+        $html_editor_load_modules .=
+            "<link href='$wp/unauthenticated/css/$module.min.css?$ts' rel='stylesheet'>\n";
+        }
+    };
+my $load_js_modules = sub {
+    my ($js_modules) = @_;
+    foreach my $module (@{$js_modules}) {
+        $html_editor_load_modules .=
+            "<script type='text/javascript' src='$wp/unauthenticated/js/$module.min.js?$ts'></script>\n";
+        }
+    };
+
+# Load extra CSS modules
+if ($opts->{'extra'}->{'css'}) {
+    &$load_css_modules($opts->{'extra'}->{'css'})
+    }
+    
+# Load extra JS modules
+if ($opts->{'extra'}->{'js'}) {
+    &$load_js_modules($opts->{'extra'}->{'js'})
+    }
+
+# Automatically load dependencies
+# based on editor mode
+if ($opts->{'type'} =~ /^(basic|advanced)$/) {
+    my $highlight_bundle = ['highlight/highlight'];
+    &$load_css_modules($highlight_bundle);
+    &$load_js_modules($highlight_bundle);
+    }
+if ($opts->{'type'} =~ /^(advanced)$/) {
+    my $katex_bundle = ['katex/katex'];
+    &$load_css_modules($katex_bundle);
+    &$load_js_modules($katex_bundle);
+    }
+return $html_editor_load_modules;
 }
 
 sub html_editor_template
