@@ -496,8 +496,8 @@ EOF
 		my $ts = &get_webmin_version();
 		$ts =~ s/[.-]+//g;
 		$html_editor_load_scripts = <<EOF;
-			<link href="quill/quill.min.css?$ts" rel="stylesheet">
-			<script type="text/javascript" src="quill/quill.min.js?$ts"></script>
+			<link href="/unauthenticated/css/quill.min.css?$ts" rel="stylesheet">
+			<script type="text/javascript" src="/unauthenticated/js/quill.min.js?$ts"></script>
 EOF
 		}
 		# HTML editor init
