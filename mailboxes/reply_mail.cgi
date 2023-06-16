@@ -470,7 +470,7 @@ if ($html_edit) {
 		if ($sig);
 	print &ui_table_row(undef,
 		&ui_textarea("body", $sig, 16, 80, undef, 0,
-		             "style='display: none' id=body").
+		             "style='display: none' id=body data-html-mode='$config{'html_edit_mode'}'").
 		$html_editor, 2);
 	}
 else {
