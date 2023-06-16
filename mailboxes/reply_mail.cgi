@@ -459,7 +459,6 @@ my $html_editor = &html_editor(
                             elements => ['#webmin-iframe-quote'] } ] }
           },
       	type => $config{'html_edit_mode'} || 'advanced',
-        quote => length($iframe_quote),
         after =>
            { editor => $iframe_quote }
       });
