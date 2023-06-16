@@ -640,6 +640,9 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
 .ql-snow .ql-editor pre {
   font-size: 92%;
 }
+.ql-compose-container .ql-container.ql-snow .ql-editor {
+  background-color: #fff;
+}
 
 .ql-compose-container .ql-container.ql-snow .ql-editor blockquote {
   border-left-width: 1px;
