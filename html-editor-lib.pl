@@ -5,20 +5,17 @@ sub html_editor_load_bundle
 {
 my ($opts) = @_;
 $opts ||= {};
-my $wp = &get_webprefix();
-my $ts = &get_webmin_version();
-$ts =~ s/[.-]+//g;
 my $html_editor_load_scripts;
 
 # Load extra modules first
 $html_editor_load_scripts .=
-    html_editor_load_modules($opts);
+    &html_editor_load_modules($opts);
 
 # Load Quill HTML editor files
 $html_editor_load_scripts .=
 <<EOF;
-<link href="$wp/unauthenticated/css/quill.min.css?$ts" rel="stylesheet">
-<script type="text/javascript" src="$wp/unauthenticated/js/quill.min.js?$ts"></script>
+<link href="$opts->{'_'}->{'web'}->{'prefix'}/unauthenticated/css/quill.min.css?$opts->{'_'}->{'web'}->{'timestamp'}" rel="stylesheet">
+<script type="text/javascript" src="$opts->{'_'}->{'web'}->{'prefix'}/unauthenticated/js/quill.min.js?$opts->{'_'}->{'web'}->{'timestamp'}"></script>
 EOF
 
 return $html_editor_load_scripts;
@@ -31,14 +28,14 @@ my $load_css_modules = sub {
     my ($css_modules) = @_;
     foreach my $module (@{$css_modules}) {
         $html_editor_load_modules .=
-            "<link href='$wp/unauthenticated/css/$module.min.css?$ts' rel='stylesheet'>\n";
+            "<link href='$opts->{'_'}->{'web'}->{'prefix'}/unauthenticated/css/$module.min.css?$opts->{'_'}->{'web'}->{'timestamp'}' rel='stylesheet'>\n";
         }
     };
 my $load_js_modules = sub {
     my ($js_modules) = @_;
     foreach my $module (@{$js_modules}) {
         $html_editor_load_modules .=
-            "<script type='text/javascript' src='$wp/unauthenticated/js/$module.min.js?$ts'></script>\n";
+            "<script type='text/javascript' src='$opts->{'_'}->{'web'}->{'prefix'}/unauthenticated/js/$module.min.js?$opts->{'_'}->{'web'}->{'timestamp'}'></script>\n";
         }
     };
 
@@ -361,6 +358,10 @@ return $html_editor_init_script;
 sub html_editor
 {
 my ($opts) = @_;
+
+# Populate defaults
+&html_editor_opts_populate_defaults($opts);
+
 # Get template
 my $html_editor_template =
      &html_editor_template($opts);
@@ -386,6 +387,17 @@ return $html_editor_template .
        $html_editor_styles_toolbar .
        $html_editor_load_scripts .
        $html_editor_init_scripts;
+}
+
+sub html_editor_opts_populate_defaults
+{
+my ($opts) = @_;
+# Miniserv webprefix
+$opts->{'_'}->{'web'}->{'prefix'} = &get_webprefix();
+# Webmin version to timestamp
+my $webmin_version = &get_webmin_version();
+$webmin_version =~ s/[.-]+//g;
+$opts->{'_'}->{'web'}->{'timestamp'} = $webmin_version;
 }
 
 1;
