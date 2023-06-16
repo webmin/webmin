@@ -656,3 +656,12 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
     background-color: #f5f5f5;
     color: initial;
 }
+.ql-compose-container .ql-snow .ql-picker.ql-expanded .ql-picker-label {
+    color: #00000066;
+}
+.ql-compose-container .ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-fill {
+    fill: #00000055;
+}
+.ql-compose-container .ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-stroke {
+    stroke: #00000044;
+}
