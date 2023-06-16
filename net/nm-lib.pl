@@ -70,7 +70,9 @@ foreach my $f (glob("$nm_conn_dir/*.nmconnection")) {
 		$iface->{'search'} = \@sr;
 		}
 
-	# XXX mac address
+	# Mac address
+	$iface->{'ether'} = &find_nw_config($cfg, "ethernet",
+					    "cloned-mac-address");
 
 	push(@rv, $iface);
 	push(@rv, @virts);
@@ -193,6 +195,24 @@ return \@rv;
 # Writes out an ini-format network manager config file
 sub write_nw_config
 {
+my ($file, $cfg) = @_;
+my $lnum = 0;
+&open_lock_tempfile(NW, ">$file");
+foreach my $sect (@$cfg) {
+	$sect->{'line'} = $lnum;
+	$sect->{'file'} = $file;
+	&print_tempfile(NW, "[$sect->{'sect'}]\n");
+	$lnum++;
+	foreach my $dir (@{$sect->{'members'}}) {
+		&print_tempfile(NW, $dir->{'name'}."=".$dir->{'value'}."\n");
+		$dir->{'eline'} = $dir->{'eline'} = $sect->{'eline'} = $lnum;
+		$dir->{'file'} = $file;
+		$lnum++;
+		}
+	&print_tempfile(NW, "\n");
+	$lnum++;
+	}
+&close_tempfile(NW);
 }
 
 # find_nw_config(&config, section, name)
@@ -207,12 +227,71 @@ return undef if (!$dir);
 return $dir->{'value'};
 }
 
-# save_nw_config(&config, section, name, value)
+# save_nw_config(&config, section, name, value, [file])
 # Updates, creates or deletes a directive in some section
 sub save_nw_config
 {
-my ($cfg, $sname, $name, $value) = @_;
+my ($cfg, $sname, $name, $value, $file) = @_;
+$file ||= $cfg->[0]->{'file'};
+my $lref = &read_file_lines($file);
+
+# Find or create a new section
 my ($sect) = grep { $_->{'sect'} eq $sname } @$cfg;
-# XXX
+if (!$sect && !defined($value)) {
+	# No value, but the section doesn't exist!
+	return;
+	}
+if (!$sect) {
+	$sect = { 'sect' => $sname,
+		  'members' => [ ],
+		  'file' => $file,
+		  'line' => scalar(@$lref),
+		  'eline' => scalar(@$lref) };
+	push(@$cfg, $sect);
+	push(@$lref, "[$sect->{'name'}]");
+	}
+
+# Find the directive
+my ($dir) = grep { $_->{'name'} eq $name } @{$sect->{'members'}};
+if ($dir && defined($value)) {
+	# Update existing line
+	$dir->{'value'} = $value;
+	$lref->[$dir->{'line'}] = $name."=".$value;
+	}
+elsif ($dir && !defined($value)) {
+	# Remove existing line
+	$sect->{'members'} = [ grep { $_ ne $dir } @{$sect->{'members'}} ];
+	splice(@$lref, $dir->{'line'}, 1);
+	&renumber_nw_config($cfg, $dir->{'line'}, -1);
+	}
+elsif (!$dir && defined($value)) {
+	# Add a new line
+	$dir = { 'name' => $name,
+		 'value' => $value,
+		 'file' => $file,
+		 'line' => $sect->{'eline'}+1,
+		 'eline' => $sect->{'eline'}+1 };
+	splice(@$lref, $sect->{'eline'}+1, $name."=".$value);
+	&renumber_nw_config($cfg, $sect->{'eline'}, 1);
+	push(@{$sect->{'members'}}, $dir);
+	}
+elsif (!$dir && !defined($value)) {
+	# No value, and it's not current set either .. so nothing to do!
+	}
+}
+
+# renumber_nw_config(&config, line, offset)
+# Adjust line numbers in the config file
+sub renumber_nw_config
+{
+my ($cfg, $line, $offset) = @_;
+foreach my $sect (@$cfg) {
+	$sect->{'line'} += $offset if ($sect->{'line'} >= $line);
+	$sect->{'eline'} += $offset if ($sect->{'eline'} >= $line);
+	foreach my $dir (@{$sect->{'members'}}) {
+		$dir->{'line'} += $offset if ($dir->{'line'} >= $line);
+		$dir->{'eline'} += $offset if ($dir->{'eline'} >= $line);
+		}
+	}
 }
 
