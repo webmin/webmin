@@ -450,3 +450,9 @@ left_autoreply=Risposta awtomatika
 left_filter=Email Filtri
 left_pass=Biddel il-password
 left_sig=Editja Firma
+
+editor_fontfamily_default=Default
+editor_font_small=Żgħir
+editor_font_normal=Normali
+editor_font_medium=Medju
+editor_font_large=Kbir

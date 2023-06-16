@@ -450,3 +450,9 @@ left_autoreply=Erantzun automatikoa
 left_filter=Posta elektronikoko iragazkiak
 left_pass=Aldatu pasahitza
 left_sig=Editatu Sinadura
+
+editor_fontfamily_default=Lehenetsia
+editor_font_small=Txikia
+editor_font_normal=Normala
+editor_font_medium=Ertaina
+editor_font_large=Handia

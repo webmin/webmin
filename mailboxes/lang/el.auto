@@ -81,3 +81,9 @@ left_autoreply=Αυτόματη απάντηση
 left_filter=Φίλτρα ηλεκτρονικού ταχυδρομείου
 left_pass=Άλλαξε κωδικό
 left_sig=Επεξεργασία υπογραφής
+
+editor_fontfamily_default=Προκαθορισμένο
+editor_font_small=Μικρό
+editor_font_normal=Κανονικός
+editor_font_medium=Μεσαίο
+editor_font_large=Μεγάλο

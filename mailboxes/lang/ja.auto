@@ -39,3 +39,9 @@ left_autoreply=自動返信
 left_filter=メールフィルター
 left_pass=パスワードを変更する
 left_sig=署名を編集
+
+editor_fontfamily_default=デフォルト
+editor_font_small=小さい
+editor_font_normal=普通
+editor_font_medium=中くらい
+editor_font_large=大きい

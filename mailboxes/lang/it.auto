@@ -16,3 +16,9 @@ left_autoreply=Risposta automatica
 left_filter=Filtri email
 left_pass=Cambia la password
 left_sig=Modifica firma
+
+editor_fontfamily_default=Predefinito
+editor_font_small=Piccolo
+editor_font_normal=Normale
+editor_font_medium=medio
+editor_font_large=Grande

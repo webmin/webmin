@@ -374,3 +374,9 @@ left_autoreply=Automatisk svar
 left_filter=E-postfilter
 left_pass=Ändra lösenord
 left_sig=Redigera signatur
+
+editor_fontfamily_default=Standard
+editor_font_small=Små
+editor_font_normal=Vanligt
+editor_font_medium=Medium
+editor_font_large=Stor

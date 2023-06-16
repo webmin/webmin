@@ -450,3 +450,9 @@ left_autoreply=Trả lời tự động
 left_filter=Bộ lọc email
 left_pass=Đổi mật khẩu
 left_sig=Chỉnh sửa chữ ký
+
+editor_fontfamily_default=Mặc định
+editor_font_small=Bé nhỏ
+editor_font_normal=Bình thường
+editor_font_medium=Trung bình
+editor_font_large=Lớn

@@ -1,1 +1,7 @@
 index_return=Benutzerliste
+
+editor_fontfamily_default=Standard
+editor_font_small=Klein
+editor_font_normal=Normal
+editor_font_medium=Mittel
+editor_font_large=Groß
