@@ -149,7 +149,7 @@ if ($part eq 'toolbar') {
     [{'list': 'ordered'}, {'list': 'bullet'}],
     [{'indent': '-1'}, {'indent': '+1'}],
     ['blockquote'],
-    ['code-block'],
+    (typeof hljs === 'object' ? ['code-block'] : []),
     ['link'],
     ['image'],
     [{'direction': 'rtl'}],
@@ -171,7 +171,8 @@ EOF
     [{'list': 'ordered'}, {'list': 'bullet'}],
     [{'indent': '-1'}, {'indent': '+1'}],
     ['blockquote'],
-    ['code-block', 'formula'],
+    (typeof hljs === 'object' && typeof katex === 'object' ? ['code-block', 'formula'] :
+     typeof hljs === 'object' ? ['code-block'] : typeof katex === 'object' ? ['formula'] : []),
     ['link'],
     ['image', 'video'],
     [{'direction': 'rtl'}],
@@ -221,8 +222,8 @@ my $html_editor_init_script =
 
     const editor = new Quill('.ql-container', {
         modules: {
-            formula: false,
-            syntax: @{[$opts->{'syntax'} ? 'true' :'false']},
+            formula: typeof katex === 'object',
+            syntax: typeof hljs === 'object',
             imageDrop: true,
             imageResize: {
                 modules: [
