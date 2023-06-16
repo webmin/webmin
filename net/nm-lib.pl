@@ -1,4 +1,5 @@
 # Networking functions for Network Manager
+# XXX DNS config change
 
 $nm_conn_dir = "/etc/NetworkManager/system-connections";
 
@@ -10,8 +11,8 @@ sub boot_interfaces
 {
 my @rv;
 foreach my $f (glob("$nm_conn_dir/*.nmconnection")) {
-	my $cfg = &read_nw_config($f);
-	my $iface = { 'name' => &find_nw_config($cfg, "connection", "id"),
+	my $cfg = &read_nm_config($f);
+	my $iface = { 'name' => &find_nm_config($cfg, "connection", "id"),
 		      'file' => $f,
 		      'cfg' => $cfg,
 		      'edit' => 1,
@@ -19,21 +20,21 @@ foreach my $f (glob("$nm_conn_dir/*.nmconnection")) {
 	$iface->{'fullname'} = $iface->{'name'};
 
 	# Is DHCP enabled?
-	my $method = &find_nw_config($cfg, "ipv4", "method");
+	my $method = &find_nm_config($cfg, "ipv4", "method");
 	if ($method eq "auto") {
 		$iface->{'dhcp'} = 1;
 		}
 	elsif ($method eq "disabled") {
 		$iface->{'up'} = 0;
 		}
-	my $method6 = &find_nw_config($cfg, "ipv6", "method");
+	my $method6 = &find_nm_config($cfg, "ipv6", "method");
 	if ($method6 eq "auto") {
 		$iface->{'auto6'} = 1;
 		}
 
 	# IPv4 addresses
 	my @virts;
-	for(my $i=1; defined(my $addr = &find_nw_config($cfg, "ipv4", "address$i")); $i++) {
+	for(my $i=1; defined(my $addr = &find_nm_config($cfg, "ipv4", "address$i")); $i++) {
 		my ($ad, $gw) = split(/,/, $addr);
 		my ($ad, $cidr) = split(/\//, $ad);
 		my $nm = &prefix_to_mask($cidr);
@@ -54,24 +55,24 @@ foreach my $f (glob("$nm_conn_dir/*.nmconnection")) {
 		}
 
 	# IPv6 addresses
-	for(my $i=1; defined(my $addr = &find_nw_config($cfg, "ipv6", "address$i")); $i++) {
+	for(my $i=1; defined(my $addr = &find_nm_config($cfg, "ipv6", "address$i")); $i++) {
 		my ($ad, $cidr) = split(/\//, $addr);
 		push(@{$cfg->{'address6'}}, $ad);
 		push(@{$cfg->{'netmask6'}}, $cidr || 64);
 		}
 
 	# Nameservers
-	my @ns = split(/\s*;\s*/, &find_nw_config($cfg, "ipv4", "dns"));
+	my @ns = split(/\s*;\s*/, &find_nm_config($cfg, "ipv4", "dns"));
 	if (@ns) {
 		$iface->{'nameserver'} = \@ns;
 		}
-	my @sr = split(/\s*;\s*/, &find_nw_config($cfg, "ipv4", "dns-search"));
+	my @sr = split(/\s*;\s*/, &find_nm_config($cfg, "ipv4", "dns-search"));
 	if (@sr) {
 		$iface->{'search'} = \@sr;
 		}
 
 	# Mac address
-	$iface->{'ether'} = &find_nw_config($cfg, "ethernet",
+	$iface->{'ether'} = &find_nm_config($cfg, "ethernet",
 					    "cloned-mac-address");
 
 	push(@rv, $iface);
@@ -80,17 +81,85 @@ foreach my $f (glob("$nm_conn_dir/*.nmconnection")) {
 return @rv;
 }
 
-# save_interface(&iface, &old-iface)
+# save_interface(&iface, &old-ifaces)
 # Update the network manager config for an interface
 sub save_interface
 {
-my ($iface, $oldiface) = @_;
-if (!$oldiface) {
-	# Need to create a new empty config
+my ($iface, $boot) = @_;
+$boot ||= [ &boot_interfaces() ];
+my $f;
+if ($iface->{'virtual'} ne '') {
+	# Virtual IP on a real interface
+	my ($baseiface) = grep { $_->{'fullname'} eq $iface->{'name'} } @$boot;
+	$baseiface || &error("Base interface $iface->{'name'} does not exist");
+	my $i = $iface->{'virtual'}+2;
+	my $v = $iface->{'address'}."/".&mask_to_prefix($iface->{'netmask'});
+	$f = $baseiface->{'file'};
+	&lock_file($f);
+	&save_nm_config($baseiface->{'cfg'}, "ipv4", "address".$i, $v);
 	}
 else {
-	# Can update existing one
+	my $cfg;
+	if ($iface->{'file'}) {
+		# Config file already exists
+		$f = $iface->{'file'};
+		$cfg = $iface->{'cfg'};
+		&lock_file($f);
+		}
+	else {
+		# Need to create a new empty config
+		my $uuid = &read_file_contents("/proc/sys/kernel/random/uuid");
+		$uuid =~ s/\r|\n//g;
+		$cfg = [ { 'sect' => 'connection',
+			   'members' => [
+				{ 'name' => 'id',
+				  'value' => $iface->{'name'} },
+				{ 'name' => 'uuid',
+				  'value' => $uuid },
+				{ 'name' => 'type',
+				  'value' => 'ethernet' },
+				{ 'name' => 'interface-name',
+				  'value' => $iface->{'name'} },
+				],
+			 },
+		       ];
+		$f = $nm_conn_dir."/".$iface->{'name'}.".nmconnection";
+		&lock_file($f);
+		&write_nm_config($f, $cfg);
+		}
+
+	# Update address
+	my $v = $iface->{'address'}."/".&mask_to_prefix($iface->{'netmask'});
+	if ($iface->{'gateway'}) {
+		$v .= ",".$iface->{'gateway'};
+		}
+	&save_nm_config($cfg, "ipv4", "address1", $v);
 	}
+&flush_file_lines($f);
+&unlock_file($f);
+}
+
+# delete_interface(&iface)
+# Remove a boot-time interface
+sub delete_interface
+{
+my ($iface) = @_;
+if ($iface->{'virtual'} ne '') {
+	# Just remove the virtual address
+	# XXX
+	}
+else {
+	# Remove the whole interface file
+	&unlink_logged($iface->{'file'});
+	}
+}
+
+# valid_boot_address(address)
+# Is some address valid for a bootup interface
+sub valid_boot_address
+{
+my ($a) = @_;
+return &check_ipaddress_any($a);
 }
 
 # get_hostname()
@@ -158,9 +227,21 @@ sub can_edit
 return 1;
 }
 
-# read_nw_config(file)
+# apply_network()
+# Apply the interface and routing settings
+sub apply_network
+{
+&system_logged("(cd / ; nmcli networking off; nmcli networking on) >/dev/null 2>&1");
+}
+
+sub network_config_files
+{
+return ( "/etc/hostname", "/etc/HOSTNAME", "/etc/mailname" );
+}
+
+# read_nm_config(file)
 # Reads an ini-format network manager config file
-sub read_nw_config
+sub read_nm_config
 {
 my ($f) = @_;
 my $lref = &read_file_lines($f, 1);
@@ -191,9 +272,9 @@ foreach my $l (@$lref) {
 return \@rv;
 }
 
-# write_nw_config(file, &config)
+# write_nm_config(file, &config)
 # Writes out an ini-format network manager config file
-sub write_nw_config
+sub write_nm_config
 {
 my ($file, $cfg) = @_;
 my $lnum = 0;
@@ -215,9 +296,9 @@ foreach my $sect (@$cfg) {
 &close_tempfile(NW);
 }
 
-# find_nw_config(&config, section, name)
+# find_nm_config(&config, section, name)
 # Returns the value of a directive in some section, or undef
-sub find_nw_config
+sub find_nm_config
 {
 my ($cfg, $sname, $name) = @_;
 my ($sect) = grep { $_->{'sect'} eq $sname } @$cfg;
@@ -227,9 +308,9 @@ return undef if (!$dir);
 return $dir->{'value'};
 }
 
-# save_nw_config(&config, section, name, value, [file])
+# save_nm_config(&config, section, name, value, [file])
 # Updates, creates or deletes a directive in some section
-sub save_nw_config
+sub save_nm_config
 {
 my ($cfg, $sname, $name, $value, $file) = @_;
 $file ||= $cfg->[0]->{'file'};
@@ -262,7 +343,7 @@ elsif ($dir && !defined($value)) {
 	# Remove existing line
 	$sect->{'members'} = [ grep { $_ ne $dir } @{$sect->{'members'}} ];
 	splice(@$lref, $dir->{'line'}, 1);
-	&renumber_nw_config($cfg, $dir->{'line'}, -1);
+	&renumber_nm_config($cfg, $dir->{'line'}, -1);
 	}
 elsif (!$dir && defined($value)) {
 	# Add a new line
@@ -272,7 +353,7 @@ elsif (!$dir && defined($value)) {
 		 'line' => $sect->{'eline'}+1,
 		 'eline' => $sect->{'eline'}+1 };
 	splice(@$lref, $sect->{'eline'}+1, $name."=".$value);
-	&renumber_nw_config($cfg, $sect->{'eline'}, 1);
+	&renumber_nm_config($cfg, $sect->{'eline'}, 1);
 	push(@{$sect->{'members'}}, $dir);
 	}
 elsif (!$dir && !defined($value)) {
@@ -280,9 +361,9 @@ elsif (!$dir && !defined($value)) {
 	}
 }
 
-# renumber_nw_config(&config, line, offset)
+# renumber_nm_config(&config, line, offset)
 # Adjust line numbers in the config file
-sub renumber_nw_config
+sub renumber_nm_config
 {
 my ($cfg, $line, $offset) = @_;
 foreach my $sect (@$cfg) {
