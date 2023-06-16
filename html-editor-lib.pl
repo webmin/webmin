@@ -8,12 +8,7 @@ $opts ||= {};
 my $wp = &get_webprefix();
 my $ts = &get_webmin_version();
 $ts =~ s/[.-]+//g;
-# Load Quill HTML editor files
-my $html_editor_load_scripts =
-<<EOF;
-<link href="$wp/unauthenticated/css/quill.min.css?$ts" rel="stylesheet">
-<script type="text/javascript" src="$wp/unauthenticated/js/quill.min.js?$ts"></script>
-EOF
+my $html_editor_load_scripts;
 # Load extra CSS modules
 if ($opts->{'extra'}->{'css'}) {
     foreach my $lib (@{$opts->{'extra'}->{'css'}}) {
@@ -28,6 +23,12 @@ if ($opts->{'extra'}->{'js'}) {
         "<script type='text/javascript' src='$wp/unauthenticated/js/$lib.min.js?$ts'></script>\n";
         }
     }
+# Load Quill HTML editor files
+$html_editor_load_scripts .=
+<<EOF;
+<link href="$wp/unauthenticated/css/quill.min.css?$ts" rel="stylesheet">
+<script type="text/javascript" src="$wp/unauthenticated/js/quill.min.js?$ts"></script>
+EOF
 
 return $html_editor_load_scripts;
 }
@@ -221,7 +222,7 @@ my $html_editor_init_script =
     const editor = new Quill('.ql-container', {
         modules: {
             formula: false,
-            syntax: false,
+            syntax: @{[$opts->{'syntax'} ? 'true' :'false']},
             imageDrop: true,
             imageResize: {
                 modules: [

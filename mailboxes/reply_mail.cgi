@@ -454,10 +454,12 @@ if ($html_edit) {
 	my %tinfo = &get_theme_info($current_theme);
 	if (!$tinfo{'spa'}) {
 		# Load HTML editor files
-		$html_editor_load_scripts = &html_editor_load_bundle();
+		$html_editor_load_scripts =
+			&html_editor_load_bundle({extra => {js => ['highlight/highlight'], css => ['highlight/highlight']}});
 		}
 		# HTML editor init
-		$html_editor_scripts = &html_editor_init_script('mail', {load => !$tinfo{'spa'}});
+		$html_editor_scripts =
+			&html_editor_init_script('mail', {load => !$tinfo{'spa'}, syntax => 1});
 	$sig =~ s/\n/<br>\n/g,
 	$sig =~ s/^\s+//g
 		if ($sig);
