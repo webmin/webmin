@@ -260,7 +260,6 @@ my $html_editor_init_script =
       qs = Quill.import('attributors/style/size'),
       qf = Quill.import('attributors/style/font'),
       isMac = navigator.userAgent.toLowerCase().includes('mac'),
-      isXML = @{[$ENV{'HTTP_X_REQUESTED_WITH'} eq "XMLHttpRequest" ? 'true' : 'false']};
 
     qs.whitelist = ["0.75em", "1.15em", "1.3em"];
     Quill.register(qs, true);
@@ -354,21 +353,19 @@ my $html_editor_init_script =
       e.preventDefault();
     });
 
-    // Don't loose message content
-    if (!isXML) {
-        // If the page is reloaded or history back is clicked
-        let restore_message = false;
-        try {
-            restore_message = window.performance?.navigation?.type > 0
-        } catch(e) {
-          restore_message = false;
-        }
-        if (restore_message) {
-            const quill_last_message = sessionStorage.getItem('$module_name/quill=last-message');
-            if (quill_last_message) {
-                editor.pasteHTML(quill_last_message);
-                return;
-            }
+    // Don't loose message content if the page 
+    // is reloaded or history back is clicked
+    let restore_message = false;
+    try {
+        restore_message = window.performance?.navigation?.type > 0
+    } catch(e) {
+      restore_message = false;
+    }
+    if (restore_message) {
+        const quill_last_message = sessionStorage.getItem('$module_name/quill=last-message');
+        if (quill_last_message) {
+            editor.pasteHTML(quill_last_message);
+            return;
         }
     }
 
