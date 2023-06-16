@@ -315,7 +315,7 @@ my $html_editor_init_script =
       this.quill.format('blockquote', true);
     });
     editor.on('text-change', function() {
-        targ.value = editor.root.innerHTML + "<br><br>";
+        targ.value = editor.root.innerHTML + "<br>";
         sessionStorage.setItem('$module_name/quill=last-message', targ.value);
         let extraValue = String(),
             sync = JSON.parse('@{[&convert_to_json($opts->{'textarea'}->{'sync'}->{'data'})]}'),
