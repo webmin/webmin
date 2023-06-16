@@ -54,12 +54,12 @@ if ($opts->{'extra'}->{'js'}) {
 
 # Automatically load dependencies
 # based on editor mode
-if ($opts->{'type'} =~ /^(basic|advanced)$/) {
+if ($opts->{'type'} =~ /^(advanced|expert)$/) {
     my $highlight_bundle = ['highlight/highlight'];
     &$load_css_modules($highlight_bundle);
     &$load_js_modules($highlight_bundle);
     }
-if ($opts->{'type'} =~ /^(advanced)$/) {
+if ($opts->{'type'} =~ /^(expert)$/) {
     my $katex_bundle = ['katex/katex'];
     &$load_css_modules($katex_bundle);
     &$load_js_modules($katex_bundle);
@@ -172,7 +172,7 @@ sub html_editor_toolbar
 my ($opts) = @_;
 
 # Toolbar modes
-if ($opts->{'type'} eq 'essential') {
+if ($opts->{'type'} eq 'basic') {
     return 
 <<EOF;
   [
@@ -195,7 +195,7 @@ if ($opts->{'type'} eq 'simple') {
   ]
 EOF
     }
-if ($opts->{'type'} eq 'basic') {
+if ($opts->{'type'} eq 'advanced') {
     return 
 <<EOF;
   [
@@ -215,7 +215,7 @@ if ($opts->{'type'} eq 'basic') {
   ]
 EOF
     }
-if ($opts->{'type'} eq 'advanced') {
+if ($opts->{'type'} eq 'expert') {
     return 
 <<EOF;
   [
