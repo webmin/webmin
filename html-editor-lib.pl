@@ -71,6 +71,41 @@ if ($type eq 'toolbar') {
     .ql-compose-container .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="1.3em"]::before {
         font-size: 1.3em;
     }
+
+    .ql-compose-container .ql-snow .ql-picker.ql-header .ql-picker-label::before,
+    .ql-compose-container .ql-snow .ql-picker.ql-header .ql-picker-item::before {
+        content: '$text{'editor_paragraph'}';
+    }
+
+    .ql-compose-container .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="1"]::before,
+    .ql-compose-container .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="1"]::before {
+        content: '$text{'editor_heading'} 1'
+    }
+
+    .ql-compose-container .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="2"]::before,
+    .ql-compose-container .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="2"]::before {
+        content: '$text{'editor_heading'} 2'
+    }
+
+    .ql-compose-container .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="3"]::before,
+    .ql-compose-container .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="3"]::before {
+        content: '$text{'editor_heading'} 3'
+    }
+
+    .ql-compose-container .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="4"]::before,
+    .ql-compose-container .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="4"]::before {
+        content: '$text{'editor_heading'} 4'
+    }
+
+    .ql-compose-container .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="5"]::before,
+    .ql-compose-container .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="5"]::before {
+        content: '$text{'editor_heading'} 5'
+    }
+
+    .ql-compose-container .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="6"]::before,
+    .ql-compose-container .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="6"]::before {
+        content: '$text{'editor_heading'} 6'
+    }
 </style>
 EOF
     }
@@ -94,15 +129,36 @@ if ($part eq 'toolbar') {
     [{'align': []}],
     [{'list': 'ordered'}, {'list': 'bullet'}],
     [{'indent': '-1'}, {'indent': '+1'}],
-    ['blockquote', 'code-block'],
+    ['blockquote'],
+    ['code-block'],
     ['link', 'image'],
     [{'direction': 'rtl'}],
     ['clean']
   ]
 EOF
     }
-}
-
+    if ($type eq 'full') {
+        return 
+<<EOF;
+  [
+    [{'font': [false, 'monospace']},
+     {'size': ['0.75em', false, "1.15em", '1.3em']},
+     {'header': [1, 2, 3, 4, 5, 6, false]}],
+    ['bold', 'italic', 'underline', 'strike'],
+    [{'script': 'sub'}, {'script': 'super'}],
+    [{'color': []}, {'background': []}],
+    [{'align': []}],
+    [{'list': 'ordered'}, {'list': 'bullet'}],
+    [{'indent': '-1'}, {'indent': '+1'}],
+    ['blockquote'],
+    ['code-block', 'formula'],
+    ['link', 'image', 'video'],
+    [{'direction': 'rtl'}],
+    ['clean']
+  ]
+EOF
+        }
+    }
 }
 sub html_editor_init_script
 {
