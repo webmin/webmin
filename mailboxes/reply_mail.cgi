@@ -445,15 +445,17 @@ print &ui_table_start($text{'reply_body'}, "width=100%", 2, undef,
 		      &ui_links_row(\@bodylinks));
 
 # Process email quote
-$quote = &iframe_quote($quote);
+my $iframe_quote;
+$iframe_quote = &iframe_quote($quote)
+	if (!$in{'new'});
 
 # Get HTML editor and replies
 my $html_editor = &html_editor(
       { textarea => 'body',
       	type => $config{'html_edit_mode'} || 'advanced',
-        quote => length($quote),
+        quote => length($iframe_quote),
         after =>
-           { editor => $quote }
+           { editor => $iframe_quote }
       });
 
 if ($html_edit) {
