@@ -652,3 +652,7 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
   margin-bottom: 0;
   padding-left: 12px;
 }
+.ql-compose-container .ql-container.ql-snow .ql-editor pre.ql-syntax {
+    background-color: #f5f5f5;
+    color: initial;
+}
