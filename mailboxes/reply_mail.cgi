@@ -455,11 +455,14 @@ if ($html_edit) {
 	if (!$tinfo{'spa'}) {
 		# Load HTML editor files
 		$html_editor_load_scripts =
-			&html_editor_load_bundle({extra => {js => ['highlight/highlight'], css => ['highlight/highlight']}});
+			&html_editor_load_bundle(
+			  {extra =>
+			    {js => ['highlight/highlight'],
+			     css => ['highlight/highlight']}});
 		}
 		# HTML editor init
 		$html_editor_scripts =
-			&html_editor_init_script('mail', {load => !$tinfo{'spa'}, syntax => 1});
+			&html_editor_init_script('full', {load => !$tinfo{'spa'}});
 	$sig =~ s/\n/<br>\n/g,
 	$sig =~ s/^\s+//g
 		if ($sig);
