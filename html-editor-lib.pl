@@ -58,6 +58,9 @@ if ($type eq 'toolbar') {
     return
 <<EOF;
 <style>
+    .ql-compose-container .ql-snow .ql-formats:empty {
+        display: none;
+    }
     .ql-compose-container .ql-snow .ql-picker.ql-font .ql-picker-label::before,
     .ql-compose-container .ql-snow .ql-picker.ql-font .ql-picker-item::before {
         content: '$text{'editor_fontfamily_default'}';
