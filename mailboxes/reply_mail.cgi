@@ -444,100 +444,97 @@ print &ui_table_start($text{'reply_body'}, "width=100%", 2, undef,
 		      &ui_links_row(\@bodylinks));
 my $html_editor_quote = &iframe_quote($quote);
 my $html_editor_template;
+my $html_editor_styles;
 my $html_editor_scripts;
+my $html_editor_load_scripts;
 if ($html_edit) {
 	$html_editor_template = <<EOF;
 		<div class="ql-compose-container">
-		    <div class="ql-toolbar">
-		        <span class="ql-formats">
-		            <select class="ql-font">
-		            <option value="initial" selected>$text{'editor_default'}</option>
-		            <option value="sans-serif">Sans Serif</option>
-		            <option value="serif">Serif</option>
-		            <option value="monospace">Monospace</option>
-		            </select>
-		            <select class="ql-size">
-		                <option value="0.75em">$text{'editor_small'}</option>
-		                <option selected>$text{'editor_normal'}</option>
-		                <option value="1.2em">$text{'editor_medium'}</option>
-		                <option value="1.5em">$text{'editor_large'}</option>
-		                <option value="2.5em">$text{'editor_huge'}</option>
-		            </select>
-		        </span>
-		        <span class="ql-formats">
-		            <button class="ql-bold"></button>
-		            <button class="ql-italic"></button>
-		            <button class="ql-underline"></button>
-		            <button class="ql-strike"></button>
-		            <select class="ql-color"></select>
-		            <select class="ql-background"></select>
-		        </span>
-		        <span class="ql-formats">
-		            <select class="ql-align"></select>
-		        </span>
-		        <span class="ql-formats">
-		            <button class="ql-list" value="ordered"></button>
-		            <button class="ql-list" value="bullet"></button>
-		            <button class="ql-indent" value="-1"></button>
-		            <button class="ql-indent" value="+1"></button>
-		        </span>
-		        <span class="ql-formats">
-		            <button class="ql-blockquote"></button>
-		            <button class="ql-code-block"></button>
-		        </span>
-		        <span class="ql-formats">
-		            <button class="ql-link"></button>
-		            <button class="ql-image"></button>
-		        </span>
-		        <span class="ql-formats">
-		            <button class="ql-clean"></button>
-		        </span>
-		    </div>
 		    <div data-composer="html" class="ql-compose ql-container ql-container-toolbar-bottom"></div>
 		    $html_editor_quote
 		</div>
 EOF
-
+	$html_editor_styles = <<EOF;
+		<style>
+		    .ql-compose-container .ql-snow .ql-picker.ql-font .ql-picker-label::before,
+		    .ql-compose-container .ql-snow .ql-picker.ql-font .ql-picker-item::before {
+		        content: '$text{'editor_fontfamily_default'}';
+		    }
+		    .ql-compose-container .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="0.75em"]::before,
+		    .ql-compose-container .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="0.75em"]::before {
+		        content: '$text{'editor_font_small'}';
+		    }
+		    .ql-compose-container .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="0.75em"]::before {
+		        font-size: 0.75em;
+		    }
+		    .ql-compose-container .ql-snow .ql-picker.ql-size .ql-picker-label::before,
+		    .ql-compose-container .ql-snow .ql-picker.ql-size .ql-picker-item::before {
+		        content: '$text{'editor_font_normal'}';
+		    }
+		    .ql-compose-container .ql-snow .ql-picker.ql-size .ql-picker-item::before {
+		        font-size: 1em;
+		    }
+		    .ql-compose-container .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="1.15em"]::before,
+		    .ql-compose-container .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="1.15em"]::before {
+		        content: '$text{'editor_font_medium'}';
+		    }
+		    .ql-compose-container .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="1.15em"]::before {
+		        font-size: 1.15em;
+		    }
+		    .ql-compose-container .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="1.3em"]::before,
+		    .ql-compose-container .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="1.3em"]::before {
+		        content: '$text{'editor_font_large'}';
+		    }
+		    .ql-compose-container .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="1.3em"]::before {
+		        font-size: 1.3em;
+		    }
+		</style>
+EOF
 	my %tinfo = &get_theme_info($current_theme);
 	if (!$tinfo{'spa'}) {
-		# Output HTML editor textarea
+		# Load HTML editor files
 		my $ts = &get_webmin_version();
 		$ts =~ s/[.-]+//g;
-		$html_editor_scripts = <<EOF;
+		$html_editor_load_scripts = <<EOF;
 			<link href="quill/quill.min.css?$ts" rel="stylesheet">
-			<link href="quill/quill-custom.css?$ts" rel="stylesheet">
 			<script type="text/javascript" src="quill/quill.min.js?$ts"></script>
+EOF
+		}
+		# HTML editor init
+		$html_editor_scripts = <<EOF;
 			<script type="text/javascript">
-			(function() {
-				var targ = document.querySelector('[name="body"]');
-				    var qs = Quill.import('attributors/style/size'),
-				        qf = Quill.import('attributors/style/font');
-				    qs.whitelist = ["0.75em", "1.2em", "1.5em", "2.5em"];
-				    qf.whitelist = ["initial", "sans-serif", "serif", "monospace"],
-				    escapeHTML_ = function(htmlStr) {
-				       return htmlStr.replace(/&/g, "&amp;")
+			    const mail_init_editor = function() {
+				const targ = document.querySelector('[name="body"]'),
+				      qs = Quill.import('attributors/style/size'),
+				      qf = Quill.import('attributors/style/font'),
+				      escapeHTML_ = function(htmlStr) {
+				         return htmlStr.replace(/&/g, "&amp;")
 				             .replace(/</g, "&lt;")
 				             .replace(/>/g, "&gt;")
 				             .replace(/"/g, "&quot;")
 				             .replace(/'/g, "&#39;");        
-				    };
+				      },
+				      isMac = navigator.userAgent.toLowerCase().includes('mac');
 
-				    var Parchment = Quill.import('parchment');
-				    // Whitelist attrs (useful on preserving)
-				    const attrs_whitelist = [
-				        'margin', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left',
-				        'padding', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left',
-				        'border', 'border-right', 'border-left',
-				        'font-size', 'font-family', 'href', 'target',
-				        ]
+				    qs.whitelist = ["0.75em", "1.15em", "1.3em"];
+				    Quill.register(qs, true);
+				    qf.whitelist = ["monospace"],
+				    Quill.register(qf, true);
 
-				    attrs_whitelist.forEach(function(attr) {
-				        Quill.register(new Parchment.Attributor.Style(attr, attr, {}));
+				    // Whitelist attrs
+				    const pc = Quill.import('parchment'),
+				          pc_attrs_whitelist =
+				          [
+				            'margin', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left',
+				            'padding', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left',
+				            'border', 'border-right', 'border-left',
+				            'font-size', 'font-family', 'href', 'target',
+				          ]
+				    pc_attrs_whitelist.forEach(function(attr) {
+				        Quill.register(new pc.Attributor.Style(attr, attr, {}));
 				    });
 
-				    Quill.register(qs, true);
-				    Quill.register(qf, true);
-				    var editor = new Quill('.ql-container', {
+				    const editor = new Quill('.ql-container', {
 				        modules: {
 				            formula: false,
 				            syntax: false,
@@ -548,18 +545,33 @@ EOF
 				                    'Resize',
 				                ],
 				            },
-				            toolbar: '.ql-toolbar',
+				            toolbar: 
+				            [
+				                [{ 'font': [false, 'monospace'] },
+				                 { 'size': ['0.75em', false, "1.15em", '1.3em'] }],
+				                ['bold', 'italic', 'underline', 'strike'],
+				                [{ 'color': [] }, { 'background': [] }],
+				                [{ 'align': [] }],
+				                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+				                [{ 'indent': '-1' }, { 'indent': '+1' }],
+				                
+				                ['blockquote', 'code-block'],
+				                ['link', 'image'],
+				                [{ 'direction': 'rtl' }],
+
+				                ['clean']
+				            ],
 				        },
 				        bounds: '.ql-compose-container',
 				        theme: 'snow'
 				    });
+
 				    // Google Mail editor like keybind for quoting
-				    var isMacOS = navigator.userAgent.toLowerCase().includes('mac');
 				    editor.keyboard.addBinding({
 				      key: '9',
 				      shiftKey: true,
-				      ctrlKey: !isMacOS,
-				      metaKey: isMacOS,
+				      ctrlKey: !isMac,
+				      metaKey: isMac,
 				      format: ['blockquote'],
 				    }, function(range, context) {
 				      this.quill.format('blockquote', false);
@@ -567,16 +579,20 @@ EOF
 				    editor.keyboard.addBinding({
 				      key: '9',
 				      shiftKey: true,
-				      ctrlKey: !isMacOS,
-				      metaKey: isMacOS,
+				      ctrlKey: !isMac,
+				      metaKey: isMac,
 				    }, function(range, context) {
 				      this.quill.format('blockquote', true);
 				    });
 				    editor.on('text-change', function() {
 				        targ.value = escapeHTML_(editor.root.innerHTML + "<br><br>");
-				        var quoteHTML = String(), err = false;
+				        let quoteHTML = String(),
+				              err = false;
 				        try {
-				          quoteHTML = document.querySelector('#quote-mail-iframe').contentWindow.document.querySelector('.iframe_quote[contenteditable]#webmin-iframe-quote').innerHTML;
+				          quoteHTML =
+				            document.querySelector('#quote-mail-iframe')
+				              .contentWindow.document
+				              .querySelector('.iframe_quote[contenteditable]#webmin-iframe-quote').innerHTML;
 				        } catch(e) {
 				          err = true;
 				        }
@@ -585,7 +601,18 @@ EOF
 				        }
 				    });
 				    editor.pasteHTML(targ.value);
-				})();
+
+				    // Prevent loosing focus for toolbar selects (color picker, font select and etc)
+				    editor.getModule("toolbar").container.addEventListener("mousedown", (e) => {
+				      e.preventDefault();
+				    });
+			    }
+			</script>
+EOF
+	if (!$tinfo{'spa'}) {
+		$html_editor_scripts .= <<EOF;
+			<script type="text/javascript">
+				mail_init_editor();
 			</script>
 EOF
 		}
@@ -593,9 +620,12 @@ EOF
 	$sig =~ s/^\s+//g
 		if ($sig);
 	print &ui_table_row(undef,
-		&ui_textarea("body", "$sig", 16, 80, undef, 0,
+		&ui_textarea("body", undef, 16, 80, undef, 0,
 		             "style='display: none' id=body").
-		$html_editor_template.$html_editor_scripts, 2);
+		$html_editor_template.
+		$html_editor_styles.
+		$html_editor_load_scripts.
+		$html_editor_scripts, 2);
 	}
 else {
 	# Show text editing area

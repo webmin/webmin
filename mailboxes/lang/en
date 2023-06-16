@@ -451,11 +451,10 @@ left_filter=Email Filters
 left_pass=Change Password
 left_sig=Edit Signature
 
-editor_default=Default
-editor_small=Small
-editor_normal=Normal
-editor_medium=Medium
-editor_large=Large
-editor_huge=Huge
+editor_fontfamily_default=Default
+editor_font_small=Small
+editor_font_normal=Normal
+editor_font_medium=Medium
+editor_font_large=Large
 
 __norefs=1
