@@ -645,6 +645,9 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
 .ql-compose-container .ql-container.ql-snow .ql-editor {
   background-color: #fff;
 }
+.ui_form_pair[data-contents="email"] > .ui_form_value {
+  padding: 0;
+}
 
 .ql-compose-container .ql-container.ql-snow .ql-editor blockquote {
   border-left-width: 1px;
