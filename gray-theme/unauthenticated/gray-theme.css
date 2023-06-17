@@ -677,3 +677,6 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
 .ql-compose-container .ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-stroke {
     stroke: #00000044;
 }
+.ql-compose-container .ql-snow .ql-tooltip {
+  z-index: 99;
+}
