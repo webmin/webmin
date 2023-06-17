@@ -2782,7 +2782,9 @@ sub disable_html_images
 my ($html, $dis, $urls) = @_;
 my $newhtml;
 my $masked_img;
-while($html =~ /^([\000-\377]*?)(<\s*img[^>]*src=('[^']*'|"[^"]*"|\S+)[^>]*>)([\000-\377]*)/i) {
+while($html =~ /^([\000-\377]*?)(<\s*img[^>]*src=('[^']*'|"[^"]*"|\S+)[^>]*>)([\000-\377]*)/i &&
+	  # Inline images must be safe to skip
+	  $3 !~ /^['"]*data:.*?\/.*?base64,/) {
 	my ($before, $allimg, $img, $after) = ($1, $2, $3, $4);
 	$img =~ s/^'(.*)'$/$1/ || $img =~ s/^"(.*)"$/$1/;
 	push(@$urls, $img) if ($urls);
