@@ -2847,18 +2847,12 @@ sub iframe_body
 my ($body) = @_;
 
 # Mail iframe inner styles
-my $iframe_styles =
-	'<style>
-	  html,body { overflow-y: hidden; }
-	  p {
-  		margin: 0;
-	  }
-	  blockquote:not([style]) {
-	    margin: 0px 0px 0px 0.8ex;
-	    border-left: 1px solid #ccc;
-	    padding-left: 1ex;
-	  }
-	</style>';
+my $iframe_styles = <<EOF;
+	<style>
+	  html, body { overflow-y: hidden; }
+	  @{[&read_file_contents("$root_directory/$current_theme/unauthenticated/iframe-styles.css")]}
+	</style>
+EOF
 # Add inner styles to the email body
 if ($body =~ /<\/body>/) {
 		$body =~ s/<\/body>/$iframe_styles<\/body>/;

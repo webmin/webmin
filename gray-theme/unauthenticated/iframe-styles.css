@@ -1,0 +1,13 @@
+body:not([style]) {
+    font: 14px/1.231 arial, helvetica, clean, sans-serif;
+}
+
+p:not([style]) {
+    margin: 0;
+}
+
+blockquote:not([style]) {
+    margin: 0px 0px 0px 0.8ex;
+    border-left: 1px solid #ccc;
+    padding-left: 1ex;
+}
