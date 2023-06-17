@@ -2850,6 +2850,9 @@ my ($body) = @_;
 my $iframe_styles =
 	'<style>
 	  html,body { overflow-y: hidden; }
+	  p {
+  		margin: 0;
+	  }
 	  blockquote:not([style]) {
 	    margin: 0px 0px 0px 0.8ex;
 	    border-left: 1px solid #ccc;
