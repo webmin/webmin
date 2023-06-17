@@ -3046,11 +3046,36 @@ my $iframe_body = <<EOF;
 				          iframe_height_bound : iframe_scroll_height;
 				iframeobj.style.height = Math.ceil(iframe_height) + "px";
 			  };
-		iframe.classList.add("loaded");
 		setTimeout(iframe_resize);
 		document.querySelector('.iframe_quote_details').addEventListener("click", function() {
-			quote_mail_iframe_onload(this)
+			quote_mail_iframe_onload(this.querySelector('iframe'));
 		}, { once: true });
+		if (!iframe.dataset.imagesLoaded) {
+			iframe.dataset.imagesLoaded = 1;
+			setTimeout(function() {
+				const imgPresrc = iframe.contentWindow.document.querySelectorAll('img[data-presrc]');
+				imgPresrc.forEach(function(img) {
+					(async function() {
+					  try {
+					      const response = await fetch("$webprefix/$module_name/xhr.cgi?action=fetch&type=download&subtype=blob&url=" + encodeURIComponent(img.dataset.presrc) + "");
+					      response.blob().then(function(blob) {
+					        try {
+					          const reader = new FileReader();
+					            reader.readAsDataURL(blob); 
+					            reader.onloadend = function() {
+					              img.removeAttribute('data-presrc');
+					              img.src = reader.result;
+					              img.addEventListener('load', iframe_resize, { once: true });
+					            }
+					        } catch(error) {
+					          console.warn(\`Cannot load image: \$\{error.message\}\`);
+					        }
+					      });
+					  } catch (e) {}
+					})();
+				});
+			}, 99);
+		}
 	}
 </script>
 <iframe

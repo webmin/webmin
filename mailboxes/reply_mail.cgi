@@ -316,6 +316,8 @@ else {
 	# Construct the initial mail text
 	$sig = &get_signature($in{'user'});
 	($quote, $html_edit, $body) = &quoted_message($mail, $qu, $sig);
+	# Load images using server in replies
+	$quote = &disable_html_images($quote, 3);
 	if ($in{'forward'} || $in{'enew'}) {
 		@attach = grep { $_ ne $body } @attach;
 		}
