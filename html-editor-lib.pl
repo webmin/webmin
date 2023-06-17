@@ -266,19 +266,6 @@ my $html_editor_init_script =
     qf.whitelist = ["monospace"],
     Quill.register(qf, true);
 
-    // Whitelist attrs
-    const pc = Quill.import('parchment'),
-          pc_attrs_whitelist =
-          [
-            'margin', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left',
-            'padding', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left',
-            'border', 'border-right', 'border-left',
-            'font-size', 'font-family', 'href', 'target',
-          ]
-    pc_attrs_whitelist.forEach(function(attr) {
-        Quill.register(new pc.Attributor.Style(attr, attr, {}));
-    });
-
     const editor = new Quill('.ql-container', {
         modules: {
             formula: typeof katex === 'object',
