@@ -24,7 +24,7 @@ border:0px;
 text-align:left;
 }
 table.ui_table thead td {
-  padding: 0 2px;
+  padding: 0.5px 5px 1px 2px;
 }
 table.sortable tbody td {
   padding: 2px;
