@@ -371,6 +371,7 @@ my $html_editor_init_script =
 
     // Update editor on initial load
     editor.pasteHTML(targ.value);
+    sessionStorage.setItem('$module_name/quill=last-message', targ.value);
   }
   @{[$opts->{'load'} ? "fn_${module_name}_html_editor_init()" : '']}
 </script>
