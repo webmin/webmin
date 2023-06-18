@@ -426,10 +426,11 @@ if ($document_styles_string) {
         $stl =~ s/(:|;)\s*/$1 /g;
         $stl =~ s/(?<!;)$/;/g;
         $stl =~ s/[;\s]+$/;/g;
+        $stl =~ s/(\S)(\!important)/$1 $2/g;
         $stl =~ s/\s+$//;
         return $stl;
     };
-
+    # Replace tags classes with inline styles
     foreach my $classes (reverse sort { length($a) <=> length($b) } keys %document_styles_class_names) {
         my @classes = split(/\s*,\s*/, $classes);
         foreach my $class (reverse sort { length($a) <=> length($b) } @classes) {
@@ -460,7 +461,20 @@ if ($document_styles_string) {
                 }
             }
         }
-    # my (%document_styles_tag_names) = $document_styles_string =~ 
+    # Fill tags with our inline styles
+    my (@document_styles_tag_names) = $styled_html_email =~ /<(?!style)(?!script)(?!s)(\w+)\s*.*?>/migx;
+    foreach my $tag_name (&unique(@document_styles_tag_names)) {
+        my (%document_styles_tag_names) = $document_styles_string =~ /(\Q$tag_name\E)\s*\{\s*([^}]*?)\s*\}/migx;
+        foreach my $tag (keys %document_styles_tag_names) {
+            my $tag_style = &$style_format($document_styles_tag_names{$tag});
+            if ($styled_html_email =~ /(<$tag\s+).*?style="/) {
+                $styled_html_email =~ s/(<$tag\s+)(.*?)(style=")/$1$2$3$tag_style /mig;
+                }
+            else {
+                $styled_html_email =~ s/(<$tag)\s*>/$1 style="$tag_style">/mig;
+                }
+            }
+        }
     }
 return $styled_html_email;
 }
