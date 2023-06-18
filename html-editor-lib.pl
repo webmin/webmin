@@ -62,11 +62,6 @@ if ($opts->{'type'} =~ /^(advanced|expert)$/) {
     &$load_css_modules(\@highlight_bundle);
     &$load_js_modules($highlight_bundle);
     }
-if ($opts->{'type'} =~ /^(expert)$/) {
-    my $katex_bundle = ['katex/katex'];
-    &$load_css_modules($katex_bundle);
-    &$load_js_modules($katex_bundle);
-    }
 return $html_editor_load_modules;
 }
 
@@ -232,8 +227,7 @@ if ($opts->{'type'} eq 'expert') {
     [{'list': 'ordered'}, {'list': 'bullet'}],
     [{'indent': '-1'}, {'indent': '+1'}],
     ['blockquote'],
-    (typeof hljs === 'object' && typeof katex === 'object' ? ['code-block', 'formula'] :
-     typeof hljs === 'object' ? ['code-block'] : typeof katex === 'object' ? ['formula'] : []),
+    (typeof hljs === 'object' ? ['code-block'] : []),
     ['link'],
     ['image', 'video'],
     [{'direction': 'rtl'}],
@@ -278,7 +272,6 @@ my $html_editor_init_script =
 
     const editor = new Quill('.ql-container', {
         modules: {
-            formula: typeof katex === 'object',
             syntax: typeof hljs === 'object',
             imageDrop: true,
             imageResize: {
