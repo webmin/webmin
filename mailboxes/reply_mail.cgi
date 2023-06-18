@@ -460,7 +460,7 @@ my $html_editor = &html_editor(
                 data => [ { iframe => '#quote-mail-iframe',
                             elements => ['#webmin-iframe-quote'] } ] }
           },
-      	type => $config{'html_edit_mode'} || 'advanced',
+      	type => $config{'html_edit_mode'} || 'simple',
         after =>
            { editor => $iframe_quote }
       });

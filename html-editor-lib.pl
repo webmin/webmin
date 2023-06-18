@@ -51,7 +51,7 @@ if ($opts->{'extra'}->{'js'}) {
 
 # Automatically load dependencies
 # based on editor mode
-if ($opts->{'type'} =~ /^(advanced|expert)$/) {
+if ($opts->{'type'} eq "advanced") {
     my $highlight_bundle = ['highlight/highlight'];
     my @highlight_bundle = @{$highlight_bundle};
     if ($opts->{'_'}->{'client'}->{'palette'} eq 'dark') {
@@ -174,7 +174,8 @@ if ($opts->{'type'} eq 'basic') {
     return 
 <<EOF;
   [
-    ['bold', 'italic', 'underline', 'strike'],
+    ['bold', 'italic'],
+    [{'color': []}],
     ['blockquote']
   ]
 EOF
@@ -185,35 +186,17 @@ if ($opts->{'type'} eq 'simple') {
   [
     [{'font': [false, 'monospace']},
      {'size': ['0.75em', false, "1.15em", '1.3em']}],
-    ['bold', 'italic', 'underline', 'strike'],
+    ['bold', 'italic', 'underline'],
     [{'color': []}, {'background': []}],
     [{'align': []}],
     ['blockquote'],
+    ['link'],
+    ['image'],
     ['clean']
   ]
 EOF
     }
 if ($opts->{'type'} eq 'advanced') {
-    return 
-<<EOF;
-  [
-    [{'font': [false, 'monospace']},
-     {'size': ['0.75em', false, "1.15em", '1.3em']}],
-    ['bold', 'italic', 'underline', 'strike'],
-    [{'color': []}, {'background': []}],
-    [{'align': []}],
-    [{'list': 'ordered'}, {'list': 'bullet'}],
-    [{'indent': '-1'}, {'indent': '+1'}],
-    ['blockquote'],
-    (typeof hljs === 'object' ? ['code-block'] : []),
-    ['link'],
-    ['image'],
-    [{'direction': 'rtl'}],
-    ['clean']
-  ]
-EOF
-    }
-if ($opts->{'type'} eq 'expert') {
     return 
 <<EOF;
   [
@@ -229,12 +212,12 @@ if ($opts->{'type'} eq 'expert') {
     ['blockquote'],
     (typeof hljs === 'object' ? ['code-block'] : []),
     ['link'],
-    ['image', 'video'],
+    ['image'],
     [{'direction': 'rtl'}],
     ['clean']
   ]
 EOF
-        }
+    }
 }
 
 sub html_editor_init_script
@@ -247,9 +230,7 @@ my $target_type = $target_text->{'type'} || '=';
 my $target_name = $target_text->{'name'};
 
 # HTML editor toolbar mode
-my $iframe_styles_mode =
-    $opts->{'type'} =~ /(^advanced|expert$)/ ? 'advanced' :
-    $opts->{'type'} eq 'basic' ? 'basic' : 'simple';
+my $iframe_styles_mode = $opts->{'type'};
 my $iframe_styles = 
   &quote_escape(
     &read_file_contents("$root_directory/unauthenticated/css/_iframe/$iframe_styles_mode.min.css"), '"');
