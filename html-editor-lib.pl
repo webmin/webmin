@@ -16,6 +16,7 @@ $html_editor_load_scripts .=
 <<EOF;
 <link href="$opts->{'_'}->{'web'}->{'prefix'}/unauthenticated/css/quill.min.css?$opts->{'_'}->{'web'}->{'timestamp'}" rel="stylesheet">
 <script type="text/javascript" src="$opts->{'_'}->{'web'}->{'prefix'}/unauthenticated/js/quill.min.js?$opts->{'_'}->{'web'}->{'timestamp'}"></script>
+<script type="text/javascript" src="$opts->{'_'}->{'web'}->{'prefix'}/unauthenticated/js/computed-style-to-inline-style.min.js?$opts->{'_'}->{'web'}->{'timestamp'}"></script>
 EOF
 
 return $html_editor_load_scripts;
@@ -302,8 +303,26 @@ my $html_editor_init_script =
       this.quill.format('blockquote', true);
     });
     editor.on('text-change', function() {
-        targ.value = editor.root.innerHTML + "<br>";
-        sessionStorage.setItem('$module_name/quill=last-message', targ.value);
+        // This should most probably go to onSubmit event
+        const cloneId = '${target_name}clonedHTMLEditor',
+              clonedHTMLEditor = document.createElement('div');
+        clonedHTMLEditor.id = cloneId;
+        clonedHTMLEditor.innerHTML = editor.root.innerHTML;
+        document.body.appendChild(clonedHTMLEditor);
+        computedStyleToInlineStyle(clonedHTMLEditor, {
+          recursive: true,
+          properties: [
+            'color', 'background-color', 'position', 'box-sizing', 'width', 'height',
+            'margin', 'padding', 'border', 'font-size', 'font-family', 'line-height',
+            'text-align', 'content', 'text-decoration', 'overflow',
+            'list-style-type', 'counter-reset', 'counter-increment', 'ratio',
+            'opacity', 'cursor', 'left', 'top', 'right', 'bottom', 'vertical-align',
+            'direction', 'white-space', 'border-radius'
+          ]
+        });
+        targ.value = clonedHTMLEditor.innerHTML + "<br>";
+        clonedHTMLEditor.remove();
+        sessionStorage.setItem('$module_name/quill=last-message', editor.root.innerHTML);
         let extraValue = String(),
             sync = JSON.parse('@{[&convert_to_json($opts->{'textarea'}->{'sync'}->{'data'})]}'),
             position = '@{[$opts->{'textarea'}->{'sync'}->{'position'}]}',
@@ -358,7 +377,7 @@ my $html_editor_init_script =
 
     // Update editor on initial load
     editor.pasteHTML(targ.value);
-    sessionStorage.setItem('$module_name/quill=last-message', targ.value);
+    sessionStorage.setItem('$module_name/quill=last-message', editor.root.innerHTML);
   }
   @{[$opts->{'load'} ? "fn_${module_name}_html_editor_init()" : '']}
 </script>
