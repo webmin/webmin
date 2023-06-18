@@ -3,6 +3,7 @@
 # Send off an email message
 
 require './mailboxes-lib.pl';
+require '../html-editor-lib.pl';
 &ReadParse(\%getin, "GET");
 &ReadParseMime(undef, \&read_parse_mime_callback, [ $getin{'id'} ], 1);
 foreach my $k (keys %in) {
@@ -67,6 +68,9 @@ if ($in{'bcc'}) {
 push(@{$mail->{'headers'}}, [ 'X-Priority', $in{'pri'} ]) if ($in{'pri'});
 $in{'body'} =~ s/\r//g;
 if ($in{'body'} =~ /\S/) {
+	if ($in{'html_edit'}) {
+		$in{'body'} = &html_editor_substitute_classes_with_styles($in{'body'});
+		}
 	# Perform spell check on body if requested
 	local $plainbody = $in{'html_edit'} ? &html_to_text($in{'body'})
                                             : $in{'body'};

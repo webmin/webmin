@@ -405,4 +405,64 @@ $opts->{'_'}->{'web'}->{'timestamp'} = $webmin_version;
 $opts->{'_'}->{'client'}->{'palette'} = $ENV{'HTTP_X_COLOR_PALETTE'};
 }
 
+sub html_editor_substitute_classes_with_styles
+{
+my ($styled_html_email) = @_;
+my ($document_styles_string) = $styled_html_email =~ /<style\s+data-iframe-mode.*?>(.*)<\/style>/;
+if ($document_styles_string) {
+    my (%document_styles_class_names) =
+          $document_styles_string =~ /(\.[\w\-\_\d\,\.]+)\s*\{\s*([^}]*?)\s*\}/migx;
+    my $class_string = sub {
+        return "class=\"$_[0]\"";
+    };
+    my $style_string = sub {
+        return "style=\"$_[0]\"";
+    };
+
+    my $style_format = sub {
+        my ($stl) = @_;
+        # Format style nicely, as Google Mail insists
+        # on having these formatted neatly
+        $stl =~ s/(:|;)\s*/$1 /g;
+        $stl =~ s/(?<!;)$/;/g;
+        $stl =~ s/[;\s]+$/;/g;
+        $stl =~ s/\s+$//;
+        return $stl;
+    };
+
+    foreach my $classes (reverse sort { length($a) <=> length($b) } keys %document_styles_class_names) {
+        my @classes = split(/\s*,\s*/, $classes);
+        foreach my $class (reverse sort { length($a) <=> length($b) } @classes) {
+            my (@class_parts) = $class =~ /\.([\S][^\.]+)/migx;
+            my (@style_exact_full) = 
+                               map { &$style_format($document_styles_class_names{$_}) }
+                                 grep { $_ =~ /(?<!\.)(\Q$class\E)(?!\.)(?!\-)(?!\_)/}
+                                   keys %document_styles_class_names;
+            # Class full
+            if (@style_exact_full) {
+                my $r = &$class_string("@class_parts");
+                my $s = &$style_string("@style_exact_full");
+                $styled_html_email =~ s/\Q$r\E/$s/migx;
+                }
+
+            # Class parts
+            $class =~ s/^\.//g;
+            if ("@class_parts" ne $class) {
+                foreach my $class_part (@class_parts) {
+                    my $style_exact_part = $document_styles_class_names{".$class_part"};
+                    if ($style_exact_part) {
+                        $style_exact_part = &$style_format($style_exact_part);
+                        my $r = &$class_string($class_part);
+                        my $s = &$style_string($style_exact_part);
+                        $styled_html_email =~ s/\Q$r\E/$s/migx;
+                        }
+                    }
+                }
+            }
+        }
+    # my (%document_styles_tag_names) = $document_styles_string =~ 
+    }
+return $styled_html_email;
+}
+
 1;
