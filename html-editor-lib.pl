@@ -16,7 +16,6 @@ $html_editor_load_scripts .=
 <<EOF;
 <link href="$opts->{'_'}->{'web'}->{'prefix'}/unauthenticated/css/quill.min.css?$opts->{'_'}->{'web'}->{'timestamp'}" rel="stylesheet">
 <script type="text/javascript" src="$opts->{'_'}->{'web'}->{'prefix'}/unauthenticated/js/quill.min.js?$opts->{'_'}->{'web'}->{'timestamp'}"></script>
-<script type="text/javascript" src="$opts->{'_'}->{'web'}->{'prefix'}/unauthenticated/js/computed-style-to-inline-style.min.js?$opts->{'_'}->{'web'}->{'timestamp'}"></script>
 EOF
 
 return $html_editor_load_scripts;
@@ -253,6 +252,15 @@ my $target_attr = $target_text->{'attr'} || 'name';
 my $target_type = $target_text->{'type'} || '=';
 my $target_name = $target_text->{'name'};
 
+# HTML editor toolbar mode
+my $iframe_styles_mode =
+    $opts->{'type'} =~ /(^advanced|expert$)/ ? 'advanced' :
+    $opts->{'type'} eq 'basic' ? 'basic' : 'simple';
+my $iframe_styles = 
+  &quote_escape(
+    &read_file_contents("$root_directory/unauthenticated/css/_iframe/$iframe_styles_mode.min.css"), '"');
+$iframe_styles =~ s/\n/ /g;
+
 my $html_editor_init_script =
 <<EOF;
 <script type="text/javascript">
@@ -260,7 +268,8 @@ my $html_editor_init_script =
     const targ = document.querySelector('[$target_attr$target_type"$target_name"]'),
       qs = Quill.import('attributors/style/size'),
       qf = Quill.import('attributors/style/font'),
-      isMac = navigator.userAgent.toLowerCase().includes('mac');
+      isMac = navigator.userAgent.toLowerCase().includes('mac'),
+      iframe_styles = "$iframe_styles";
 
     qs.whitelist = ["0.75em", "1.15em", "1.3em"];
     Quill.register(qs, true);
@@ -304,24 +313,7 @@ my $html_editor_init_script =
     });
     editor.on('text-change', function() {
         // This should most probably go to onSubmit event
-        const cloneId = '${target_name}clonedHTMLEditor',
-              clonedHTMLEditor = document.createElement('div');
-        clonedHTMLEditor.id = cloneId;
-        clonedHTMLEditor.innerHTML = editor.root.innerHTML;
-        document.body.appendChild(clonedHTMLEditor);
-        computedStyleToInlineStyle(clonedHTMLEditor, {
-          recursive: true,
-          properties: [
-            'color', 'background-color', 'position', 'box-sizing', 'width', 'height',
-            'margin', 'padding', 'border', 'font-size', 'font-family', 'line-height',
-            'text-align', 'content', 'text-decoration', 'overflow',
-            'list-style-type', 'counter-reset', 'counter-increment', 'ratio',
-            'opacity', 'cursor', 'left', 'top', 'right', 'bottom', 'vertical-align',
-            'direction', 'white-space', 'border-radius'
-          ]
-        });
-        targ.value = clonedHTMLEditor.innerHTML + "<br>";
-        clonedHTMLEditor.remove();
+        targ.value = editor.root.innerHTML + "<br>";
         sessionStorage.setItem('$module_name/quill=last-message', editor.root.innerHTML);
         let extraValue = String(),
             sync = JSON.parse('@{[&convert_to_json($opts->{'textarea'}->{'sync'}->{'data'})]}'),
@@ -351,6 +343,13 @@ my $html_editor_init_script =
           } else {
             targ.value = targ.value + extraValue;
           }
+        }
+        // Inject our styles (unless already injected) to be sent alongside
+        // with the message. These styles later can be optionally turned in
+        // inline styling to satisfy GMail strict rules about HTML emails
+        if (!targ.value.match(/data-iframe-mode=(.*?)$iframe_styles_mode(.*?)/)) {
+            targ.value = targ.value +
+              '<style data-iframe-mode="$iframe_styles_mode">' + iframe_styles + '</style>';
         }
     });
     

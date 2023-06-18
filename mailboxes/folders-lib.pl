@@ -2852,7 +2852,6 @@ my ($body) = @_;
 my $iframe_styles = <<EOF;
 	<style>
 	  html, body { overflow-y: hidden; }
-	  @{[&read_file_contents("$root_directory/$current_theme/unauthenticated/css/iframe.css")]}
 	</style>
 EOF
 # Add inner styles to the email body
@@ -2955,7 +2954,6 @@ return $quote if (!$quote);
 my $iframe_styles = <<EOF;
 	<style>
 	  html, body { overflow-y: hidden; }
-	  @{[&read_file_contents("$root_directory/$current_theme/unauthenticated/css/iframe.css")]}
 	</style>
 EOF
 # Add inner styles to the email body
