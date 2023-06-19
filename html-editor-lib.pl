@@ -261,6 +261,9 @@ my $html_editor_init_script =
                     'Resize',
                 ],
             },
+            clipboard: {
+              matchVisual: false
+            },
             toolbar: @{[&html_editor_toolbar($opts)]},
         },
         bounds: '.ql-compose-container',
