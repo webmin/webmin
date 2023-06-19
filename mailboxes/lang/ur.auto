@@ -450,3 +450,9 @@ left_autoreply=خودکار جواب
 left_filter=ای میل کے فلٹرز
 left_pass=پاس ورڈ تبدیل کریں
 left_sig=دستخط میں ترمیم کریں
+
+editor_fontfamily_default=طے شدہ
+editor_font_small=چھوٹا
+editor_font_normal=نارمل
+editor_font_medium=درمیانہ
+editor_font_large=بڑا

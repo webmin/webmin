@@ -39,3 +39,9 @@ left_autoreply=Automatická odpověď
 left_filter=E-mailové filtry
 left_pass=Změnit heslo
 left_sig=Upravit podpis
+
+editor_fontfamily_default=Výchozí
+editor_font_small=Malý
+editor_font_normal=Normální
+editor_font_medium=Střední
+editor_font_large=Velký

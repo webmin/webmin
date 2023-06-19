@@ -450,3 +450,9 @@ left_autoreply=Автоматичен отговор
 left_filter=Имейл филтри
 left_pass=Промяна на паролата
 left_sig=Редактиране на подписа
+
+editor_fontfamily_default=По подразбиране
+editor_font_small=малък
+editor_font_normal=нормално
+editor_font_medium=Среден
+editor_font_large=Голям

@@ -450,3 +450,9 @@ left_autoreply=Автоматический ответ
 left_filter=Фильтры электронной почты
 left_pass=Изменить пароль
 left_sig=Изменить подпись
+
+editor_fontfamily_default=По умолчанию
+editor_font_small=Маленький
+editor_font_normal=Нормальный
+editor_font_medium=Середина
+editor_font_large=Большой

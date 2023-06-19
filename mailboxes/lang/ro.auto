@@ -450,3 +450,9 @@ left_autoreply=Raspuns automat
 left_filter=Filtre de e-mail
 left_pass=Schimbați parola
 left_sig=Editează semnătură
+
+editor_fontfamily_default=Mod implicit
+editor_font_small=Mic
+editor_font_normal=Normal
+editor_font_medium=Mediu
+editor_font_large=Mare

@@ -1,1 +1,7 @@
 index_return=llista d'usuaris
+
+editor_fontfamily_default=Per defecte
+editor_font_small=Petit
+editor_font_normal=Normal
+editor_font_medium=Mitjana
+editor_font_large=Gran

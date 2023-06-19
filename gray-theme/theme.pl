@@ -274,12 +274,6 @@ print "<script>\n";
 print "var rowsel = new Array();\n";
 print "</script>\n";
 print "<script type='text/javascript' src='@{[&get_webprefix()]}/unauthenticated/sorttable.js'></script>\n";
-if ($ENV{'HTTP_USER_AGENT'} =~ /Chrome/) {
-	print "<style type=\"text/css\">\n";
-	print "textarea,pre { font-size:120%; }\n";
-	print "textarea { font-family:monospace; }\n";
-	print "</style>\n";
-	}
 }
 
 sub theme_popup_prehead

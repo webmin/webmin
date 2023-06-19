@@ -450,3 +450,9 @@ left_autoreply=رد آلي
 left_filter=مرشحات البريد الإلكتروني
 left_pass=تغيير كلمة السر
 left_sig=تعديل التوقيع
+
+editor_fontfamily_default=تقصير
+editor_font_small=صغير
+editor_font_normal=طبيعي
+editor_font_medium=واسطة
+editor_font_large=كبير

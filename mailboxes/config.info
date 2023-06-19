@@ -12,6 +12,7 @@ delete_warn=Ask for confirmation before deleting?,10,y-Yes,n-No,For mbox files l
 view_html=Show message body as,4,0-Always plain text,1-Text if possible&#44; HTML otherwise,2-HTML if possible&#44; text otherwise,3-Convert HTML to plain text
 view_images=Show inline images by default?,1,0-Yes&#44; client fetched,3-Yes&#44; server fetched,1-No external images,2-No
 html_edit=Use HTML editor for composing?,4,2-Always,1-When replying to HTML email,0-Never
+html_edit_mode=HTML editor toolbar mode?,4,basic-Basic,simple-Simple,advanced-Advanced
 html_quote=HTML quoting mode,1,1-Message below &lt;hr&gt;,0-Message inside &lt;blockquote&gt;
 log_read=Record the reading of mail in the Webmin Actions Log?,1,1-Yes,0-No
 bcc_to=Bcc: sent messages to,0

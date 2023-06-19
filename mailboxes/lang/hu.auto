@@ -290,3 +290,9 @@ left_autoreply=Automatikus válasz
 left_filter=E-mail szűrők
 left_pass=Jelszó módosítása
 left_sig=Aláírás szerkesztése
+
+editor_fontfamily_default=Alapértelmezett
+editor_font_small=Kicsi
+editor_font_normal=Normál
+editor_font_medium=Közepes
+editor_font_large=Nagy

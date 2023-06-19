@@ -2,6 +2,7 @@
 # Display a form for replying to or composing an email
 
 require './mailboxes-lib.pl';
+require '../html-editor-lib.pl';
 &ReadParse();
 &can_user($in{'user'}) || &error($text{'mail_ecannot'});
 @uinfo = &get_mail_user($in{'user'});
@@ -19,7 +20,7 @@ if ($in{'new'}) {
 		$html_edit = $config{'html_edit'} == 2 ? 1 : 0;
 		}
 	$sig = &get_signature($in{'user'});
-	if ($html_edit) {
+	if ($html_edit && $sig) {
 		$sig =~ s/\n/<br>\n/g;
 		$quote = "<html><body>$sig</body></html>";
 		}
@@ -28,8 +29,7 @@ if ($in{'new'}) {
 		}
 	$to = $in{'to'};
 	$main::force_charset = &get_charset();
-	&mail_page_header($text{'compose_title'}, undef,
-			  $html_edit ? "onload='xinha_init()'" : "",
+	&mail_page_header($text{'compose_title'}, undef, undef,
 			  &folder_link($in{'user'}, $folder));
 	}
 else {
@@ -316,6 +316,8 @@ else {
 	# Construct the initial mail text
 	$sig = &get_signature($in{'user'});
 	($quote, $html_edit, $body) = &quoted_message($mail, $qu, $sig);
+	# Load images using server in replies
+	$quote = &disable_html_images($quote, 3);
 	if ($in{'forward'} || $in{'enew'}) {
 		@attach = grep { $_ ne $body } @attach;
 		}
@@ -327,8 +329,7 @@ else {
 	&mail_page_header(
 		$in{'forward'} || @mailforward ? $text{'forward_title'} :
 		$in{'enew'} ? $text{'enew_title'} :
-			      $text{'reply_title'}, undef,
-		$html_edit ? "onload='xinha_init()'" : "",
+			      $text{'reply_title'}, undef, undef,
 		&folder_link($in{'user'}, $folder));
 	}
 
@@ -444,35 +445,35 @@ if ($in{'new'}) {
 # Output message body input
 print &ui_table_start($text{'reply_body'}, "width=100%", 2, undef,
 		      &ui_links_row(\@bodylinks));
-if ($html_edit) {
-	if ($current_theme !~ /authentic-theme/) {
-		# Output HTML editor textarea
-		print <<EOF;
-	<script type="text/javascript">
-	  _editor_url = "@{[&get_webprefix()]}/$module_name/xinha/";
-	  _editor_lang = "en";
-	</script>
-	<script type="text/javascript" src="xinha/XinhaCore.js"></script>
 
-	<script type="text/javascript">
-	xinha_init = function()
-	{
-	xinha_editors = [ "body" ];
-	xinha_plugins = [ ];
-	xinha_config = new Xinha.Config();
-	xinha_config.hideSomeButtons(" print showhelp about killword toggleborders ");
-	xinha_editors = Xinha.makeEditors(xinha_editors, xinha_config, xinha_plugins);
-	Xinha.startEditors(xinha_editors);
-	}
-	</script>
-EOF
-		}
-	else {
-	print '<script type="text/javascript">xinha_init = function(){}</script>';
-		}
+# Process email quote
+my $iframe_quote;
+$iframe_quote = &iframe_quote($quote)
+	if (!$in{'new'});
+
+# Get HTML editor and replies
+my $html_editor = &html_editor(
+      { textarea =>
+          { target => { name => 'body', attr => 'name' },
+            sync =>
+              { position => 'after',
+                data => [ { iframe => '#quote-mail-iframe',
+                            elements => ['#webmin-iframe-quote'] } ] }
+          },
+      	type => $config{'html_edit_mode'} || 'simple',
+        after =>
+           { editor => $iframe_quote }
+      });
+
+if ($html_edit) {
+	$sig =~ s/\n/<br>/g,
+	$sig =~ s/^\s+//g,
+	$sig = "<br><br>$sig<br><br>"
+		if ($sig);
 	print &ui_table_row(undef,
-		&ui_textarea("body", $quote, 16, 80, undef, 0,
-		  	     "style='width:99%' id=body"), 2);
+		&ui_textarea("body", $sig, 16, 80, undef, 0,
+		             "style='display: none' id=body data-html-mode='$config{'html_edit_mode'}'").
+		$html_editor, 2);
 	}
 else {
 	# Show text editing area
@@ -480,7 +481,7 @@ else {
 	$wm =~ s/^wrap=//g;
 	$wcols = $config{'wrap_compose'};
 	print &ui_table_row(undef,
-		&ui_textarea("body", $quote, 16,
+		&ui_textarea("body", "\n\n$sig\n\n$quote", 16,
 			     $wcols || 80,
 			     $wcols ? "hard" : "",
 			     0,
