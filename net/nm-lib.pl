@@ -55,11 +55,12 @@ foreach my $f (glob("$nm_conn_dir/*.nmconnection")) {
 		}
 
 	# IPv6 addresses
-	# XXX IPv6 gateway??
 	for(my $i=1; defined(my $addr = &find_nm_config($cfg, "ipv6", "address$i")); $i++) {
+		my ($ad, $gw) = split(/,/, $addr);
 		my ($ad, $cidr) = split(/\//, $addr);
-		push(@{$cfg->{'address6'}}, $ad);
-		push(@{$cfg->{'netmask6'}}, $cidr || 64);
+		push(@{$iface->{'address6'}}, $ad);
+		push(@{$iface->{'netmask6'}}, $cidr || 64);
+		$iface->{'gateway6'} ||= $gw;
 		}
 
 	# Nameservers
@@ -276,6 +277,72 @@ sub apply_network
 sub network_config_files
 {
 return ( "/etc/hostname", "/etc/HOSTNAME", "/etc/mailname" );
+}
+
+# get_default_gateway()
+# Returns the default gateway IP (if one is set) and device (if set) boot time
+# settings.
+sub get_default_gateway
+{
+foreach my $iface (&boot_interfaces()) {
+	if ($iface->{'gateway'}) {
+		return ( $iface->{'gateway'}, $iface->{'fullname'} );
+		}
+	}
+return ( );
+}
+
+# set_default_gateway([gateway, device])
+# Sets the default gateway to the given IP accessible via the given device,
+# in the boot time settings.
+sub set_default_gateway
+{
+my ($gw, $dev) = @_;
+foreach my $iface (&boot_interfaces()) {
+	if ($iface->{'fullname'} eq $dev && $iface->{'gateway'} ne $gw) {
+		# Need to add to this interface
+		$iface->{'gateway'} = $gw;
+		&save_interface($iface);
+		}
+	elsif ($iface->{'fullname'} ne $dev && $iface->{'gateway'}) {
+		# Need to remove from this interface
+		delete($iface->{'gateway'});
+		&save_interface($iface);
+		}
+	}
+}
+
+# get_default_ipv6_gateway()
+# Returns the default gateway IPv6 address (if one is set) and device (if set)
+# boot time settings.
+sub get_default_ipv6_gateway
+{
+foreach my $iface (&boot_interfaces()) {
+	if ($iface->{'gateway6'}) {
+		return ( $iface->{'gateway6'}, $iface->{'fullname'} );
+		}
+	}
+return ( );
+}
+
+# set_default_ipv6_gateway([gateway, device])
+# Sets the default IPv6 gateway to the given IP accessible via the given device,
+# in the boot time settings.
+sub set_default_ipv6_gateway
+{
+my ($gw, $dev) = @_;
+foreach my $iface (&boot_interfaces()) {
+	if ($iface->{'fullname'} eq $dev && $iface->{'gateway6'} ne $gw) {
+		# Need to add to this interface
+		$iface->{'gateway6'} = $gw;
+		&save_interface($iface);
+		}
+	elsif ($iface->{'fullname'} ne $dev && $iface->{'gateway6'}) {
+		# Need to remove from this interface
+		delete($iface->{'gateway6'});
+		&save_interface($iface);
+		}
+	}
 }
 
 # read_nm_config(file)
