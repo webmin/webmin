@@ -345,6 +345,21 @@ foreach my $iface (&boot_interfaces()) {
 	}
 }
 
+# os_save_dns_config(&config)
+# DNS servers are stored in the Network Manager config files
+sub os_save_dns_config
+{
+my ($conf) = @_;
+my @boot = &boot_interfaces();
+my @fix = grep { $_->{'nameserver'} } @boot;
+@fix = @boot if (!@fix);
+foreach my $iface (@fix) {
+	$iface->{'nameserver'} = $conf->{'nameserver'};
+	$iface->{'search'} = $conf->{'domain'};
+	&save_interface($iface);
+	}
+}
+
 # read_nm_config(file)
 # Reads an ini-format network manager config file
 sub read_nm_config
