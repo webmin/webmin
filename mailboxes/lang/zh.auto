@@ -343,3 +343,9 @@ left_autoreply=自动回复
 left_filter=电子邮件过滤器
 left_pass=更改密码
 left_sig=编辑签名
+
+editor_fontfamily_default=默认
+editor_font_small=小的
+editor_font_normal=普通的
+editor_font_medium=中等的
+editor_font_large=大的

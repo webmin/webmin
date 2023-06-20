@@ -65,3 +65,9 @@ slide_prev=Önceki
 slide_next=Sonraki
 
 left_mail=Posta
+
+editor_fontfamily_default=Varsayılan
+editor_font_small=Küçük
+editor_font_normal=Normal
+editor_font_medium=Orta
+editor_font_large=Büyük

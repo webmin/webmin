@@ -450,3 +450,9 @@ left_autoreply=Automatski odgovor
 left_filter=Filteri e-pošte
 left_pass=Promijenite lozinku
 left_sig=Uredi potpis
+
+editor_fontfamily_default=Zadano
+editor_font_small=Mali
+editor_font_normal=Normalan
+editor_font_medium=Srednji
+editor_font_large=velika

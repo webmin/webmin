@@ -26,6 +26,7 @@ no_crlf=0
 sync_perms=0700
 show_mail=0
 html_edit=2
+html_edit_mode=simple
 check_mod=1
 spam_buttons=mail
 show_delall=0

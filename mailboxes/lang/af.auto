@@ -450,3 +450,9 @@ left_autoreply=Outomatiese antwoord
 left_filter=E-posfilters
 left_pass=Verander wagwoord
 left_sig=Wysig handtekening
+
+editor_fontfamily_default=Verstek
+editor_font_small=Klein
+editor_font_normal=Normaal
+editor_font_medium=Medium
+editor_font_large=Groot

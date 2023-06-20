@@ -347,3 +347,9 @@ left_autoreply=Respuesta automática
 left_filter=Filtros de correo electrónico
 left_pass=Cambia la contraseña
 left_sig=Editar firma
+
+editor_fontfamily_default=Por defecto
+editor_font_small=Pequeño
+editor_font_normal=Normal
+editor_font_medium=Medio
+editor_font_large=Grande

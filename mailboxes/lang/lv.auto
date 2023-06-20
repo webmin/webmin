@@ -450,3 +450,9 @@ left_autoreply=Automātiska atbilde
 left_filter=E-pasta filtri
 left_pass=Mainīt paroli
 left_sig=Rediģēt parakstu
+
+editor_fontfamily_default=Noklusējums
+editor_font_small=Mazs
+editor_font_normal=Normāls
+editor_font_medium=Vidēja
+editor_font_large=Liels

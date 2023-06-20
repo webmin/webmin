@@ -450,3 +450,9 @@ left_autoreply=מענה אוטומטי
 left_filter=מסנני דוא"ל
 left_pass=שנה סיסמא
 left_sig=ערוך חתימה
+
+editor_fontfamily_default=בְּרִירַת מֶחדָל
+editor_font_small=קָטָן
+editor_font_normal=נוֹרמָלִי
+editor_font_medium=בינוני
+editor_font_large=גָדוֹל

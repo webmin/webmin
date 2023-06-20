@@ -52,3 +52,9 @@ left_autoreply=자동 회신
 left_filter=이메일 필터
 left_pass=비밀번호 변경
 left_sig=서명 편집
+
+editor_fontfamily_default=기본
+editor_font_small=작은
+editor_font_normal=정상
+editor_font_medium=중간
+editor_font_large=크기가 큰

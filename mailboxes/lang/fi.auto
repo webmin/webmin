@@ -176,3 +176,9 @@ left_autoreply=Automaattinen vastaus
 left_filter=Sähköpostisuodattimet
 left_pass=Vaihda salasana
 left_sig=Muokkaa allekirjoitusta
+
+editor_fontfamily_default=Oletus
+editor_font_small=Pieni
+editor_font_normal=Normaali
+editor_font_medium=Keskikokoinen
+editor_font_large=Suuri

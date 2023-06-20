@@ -2782,7 +2782,9 @@ sub disable_html_images
 my ($html, $dis, $urls) = @_;
 my $newhtml;
 my $masked_img;
-while($html =~ /^([\000-\377]*?)(<\s*img[^>]*src=('[^']*'|"[^"]*"|\S+)[^>]*>)([\000-\377]*)/i) {
+while($html =~ /^([\000-\377]*?)(<\s*img[^>]*src=('[^']*'|"[^"]*"|\S+)[^>]*>)([\000-\377]*)/i &&
+	  # Inline images must be safe to skip
+	  $3 !~ /^['"]*data:.*?\/.*?base64,/) {
 	my ($before, $allimg, $img, $after) = ($1, $2, $3, $4);
 	$img =~ s/^'(.*)'$/$1/ || $img =~ s/^"(.*)"$/$1/;
 	push(@$urls, $img) if ($urls);
@@ -2847,8 +2849,11 @@ sub iframe_body
 my ($body) = @_;
 
 # Mail iframe inner styles
-my $iframe_styles =
-	'<style>html,body { overflow-y: hidden; }</style>';
+my $iframe_styles = <<EOF;
+	<style>
+	  html, body { overflow-y: hidden; }
+	</style>
+EOF
 # Add inner styles to the email body
 if ($body =~ /<\/body>/) {
 		$body =~ s/<\/body>/$iframe_styles<\/body>/;
@@ -2938,6 +2943,154 @@ EOF
 return &trim($iframe_body);
 }
 
+# iframe_quote(quote)
+# Returns quoted message in an iframe HTML element
+sub iframe_quote
+{
+my ($quote) = @_;
+return $quote if (!$quote);
+
+# Quote mail iframe inner styles
+my $iframe_styles = <<EOF;
+	<style>
+	  html, body { overflow-y: hidden; }
+	</style>
+EOF
+# Add inner styles to the email body
+if ($quote =~ /<\/body>/) {
+		$quote =~ s/<\/body>/$iframe_styles<\/body>/;
+		}
+	else {
+		$quote .= $iframe_styles;
+		}
+$quote = &trim(&quote_escape($quote, '"'));
+# Email iframe stuff
+my $iframe_body = <<EOF;
+<style>
+	#quote-mail-iframe {
+		border: none;
+		width: calc(100% - 12px);
+	}
+	details.iframe_quote_details summary::-webkit-details-marker {
+	  display:none;
+	}
+	details.iframe_quote_details summary {
+	  display: block;
+	  width: fit-content;
+	  outline: none;
+	  margin-left: 6px;
+	  margin-bottom: 6px;
+	  cursor: pointer;
+	}
+	details.iframe_quote_details iframe {
+	  padding-left: 6px;
+	  padding-bottom: 6px;
+	}
+	details.iframe_quote_details summary::after {
+	  background-color: #e4e4e4;
+	  border: 1px solid #cfcfcf;
+	  border-radius: 18px;
+	  content: "";
+	  display: inline-block;
+	  line-height: 0;
+	  padding: 0;
+	  width: 25px;
+	  height: 11px;
+	}
+	details.iframe_quote_details summary:hover::after {
+	  background-color: #d4d4d4;
+	  border: 1px solid #bfbfbf;
+	}
+	details.iframe_quote_details summary > ul {
+	  display: inline-flex;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      margin-left: 7px;
+      margin-top: 5px;
+      pointer-events: none;
+	}
+	details.iframe_quote_details summary > ul > li {
+	  background-color: #000;
+	  height: 3px;
+	  width: 3px;
+	  line-height: 0;
+	  list-style: none;
+	  margin-right: 2px;
+	  margin-top: 0;
+	  border-radius: 50%;
+	  pointer-events: none;
+	}
+	details.iframe_quote_details[open] summary::after {
+	  background-color: #ccc;
+	  border: 1px solid #aaa;
+	}
+</style>
+<script>
+	function quote_mail_iframe_onload(iframe) {
+		if (typeof theme_quote_mail_iframe_onload === 'function') {
+		    theme_quote_mail_iframe_onload(iframe);
+		      return;
+		}
+		const iframe_resize = function() {
+				const iframeobj = document.querySelector('#quote-mail-iframe'),
+				      iframe_height_bound = iframeobj.contentWindow.document.body.getBoundingClientRect().bottom,
+				      iframe_scroll_height = iframeobj.contentWindow.document.body.scrollHeight,
+				      iframe_height =
+				        iframe_height_bound > iframe_scroll_height ?
+				          iframe_height_bound : iframe_scroll_height;
+				iframeobj.style.height = Math.ceil(iframe_height) + "px";
+			  };
+		setTimeout(iframe_resize);
+		document.querySelector('.iframe_quote_details').addEventListener("click", function() {
+			quote_mail_iframe_onload(this.querySelector('iframe'));
+		}, { once: true });
+		if (!iframe.dataset.imagesLoaded) {
+			iframe.dataset.imagesLoaded = 1;
+			setTimeout(function() {
+				const imgPresrc = iframe.contentWindow.document.querySelectorAll('img[data-presrc]');
+				imgPresrc.forEach(function(img) {
+					(async function() {
+					  try {
+					      const response = await fetch("$webprefix/$module_name/xhr.cgi?action=fetch&type=download&subtype=blob&url=" + encodeURIComponent(img.dataset.presrc) + "");
+					      response.blob().then(function(blob) {
+					        try {
+					          const reader = new FileReader();
+					            reader.readAsDataURL(blob); 
+					            reader.onloadend = function() {
+					              img.removeAttribute('data-presrc');
+					              img.src = reader.result;
+					              img.addEventListener('load', iframe_resize, { once: true });
+					            }
+					        } catch(error) {
+					          console.warn(\`Cannot load image: \$\{error.message\}\`);
+					        }
+					      });
+					  } catch (e) {}
+					})();
+				});
+			}, 99);
+		}
+	}
+</script>
+<iframe
+  id="quote-mail-iframe" 
+  class="quote-mail-iframe"
+  onload="quote_mail_iframe_onload(this)" 
+  sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+  src="about:blank" srcdoc="<div contenteditable='true' id='webmin-iframe-quote' class='iframe_quote'>$quote</div>">
+</iframe>
+EOF
+$iframe_body = &ui_details({
+	html => 1,
+	title => "<ul><li></li><li></li><li></li></ul>",
+	content => $iframe_body,
+	class => 'iframe_quote_details'
+	});
+
+return &trim($iframe_body);
+}
+
 # remove_body_attachments(&mail, &attach)
 # Returns attachments except for those that make up the message body, and those
 # that have sub-attachments.
@@ -2999,9 +3152,8 @@ if ($writers[0]->[1]) {
 else {
 	$writer = &decode_mimewords($writers[0]->[0])." wrote ..";
 	}
-local $tm;
-if ($cfg->{'reply_date'} &&
-    ($tm = &parse_mail_date($_[0]->{'header'}->{'date'}))) {
+my $tm = &parse_mail_date($_[0]->{'header'}->{'date'});
+if ($tm) {
 	local $tmstr = &make_date($tm);
 	$writer = "On $tmstr $writer";
 	}

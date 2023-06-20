@@ -450,3 +450,9 @@ left_autoreply=ตอบกลับอัตโนมัติ
 left_filter=ตัวกรองอีเมล
 left_pass=เปลี่ยนรหัสผ่าน
 left_sig=แก้ไขลายเซ็น
+
+editor_fontfamily_default=ค่าเริ่มต้น
+editor_font_small=เล็ก
+editor_font_normal=ปกติ
+editor_font_medium=ปานกลาง
+editor_font_large=ใหญ่

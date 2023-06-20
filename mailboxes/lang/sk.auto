@@ -450,3 +450,9 @@ left_autoreply=Automatická odpoveď
 left_filter=E-mailové filtre
 left_pass=Zmeniť heslo
 left_sig=Upraviť podpis
+
+editor_fontfamily_default=Predvolené
+editor_font_small=Malý
+editor_font_normal=Normálne
+editor_font_medium=Stredná
+editor_font_large=Veľký
