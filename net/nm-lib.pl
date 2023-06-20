@@ -55,6 +55,7 @@ foreach my $f (glob("$nm_conn_dir/*.nmconnection")) {
 		}
 
 	# IPv6 addresses
+	# XXX IPv6 gateway??
 	for(my $i=1; defined(my $addr = &find_nm_config($cfg, "ipv6", "address$i")); $i++) {
 		my ($ad, $cidr) = split(/\//, $addr);
 		push(@{$cfg->{'address6'}}, $ad);
@@ -134,6 +135,35 @@ else {
 		$v .= ",".$iface->{'gateway'};
 		}
 	&save_nm_config($cfg, "ipv4", "address1", $v);
+
+	# Update DHCP mode
+	&save_nm_config($cfg, "ipv4", "method",
+		!$iface->{'up'} ? "disabled" :
+		$iface->{'dhcp'} ? "auto" : "manual");
+
+	# Update IPv6 addresses
+	my $maxv6 = 0;
+	for(my $i=0; $i<@{$iface->{'address6'}}; $i++) {
+		my $v = $iface->{'address6'}->[$i]."/".
+			$iface->{'netmask6'}->[$i];
+		$maxv6 = $i+1;
+		&save_nm_config($cfg, "ipv6", "address".($i+1), $v);
+		}
+	for(my $i=$maxv6+1; &find_nm_config($cfg, "ipv6", $i); $i++) {
+		&save_nm_config($cfg, "ipv6", "address".$i, undef);
+		}
+
+	# Update nameservers
+	my @ns = $iface->{'nameserver'} ? @{$iface->{'nameserver'}} : ();
+	&save_nm_config($cfg, "ipv4", "dns",
+			@ns ? join(";", @ns) : undef);
+	my @sr = $iface->{'search'} ? @{$iface->{'search'}} : ();
+	&save_nm_config($cfg, "ipv4", "dns-search",
+			@sr ? join(";", @sr) : undef);
+
+	# Update MAC address
+	&save_nm_config($cfg, "ethernet", "cloned-mac-address",
+			$iface->{'ether'});
 	}
 &flush_file_lines($f);
 &unlock_file($f);
@@ -145,8 +175,17 @@ sub delete_interface
 {
 my ($iface) = @_;
 if ($iface->{'virtual'} ne '') {
-	# Just remove the virtual address
-	# XXX
+	# Just remove the virtual address and shift down
+	&lock_file($iface->{'file'});
+	my $i = $iface->{'virtual'}+2;
+	while(1) {
+		my $nv = &find_nm_config(
+			$baseiface->{'cfg'}, "ipv4", "address".($i+1));
+		&save_nm_config($baseiface->{'cfg'}, "ipv4", "address".$i, $nv);
+		last if (!$nv);
+		}
+	&flush_file_lines($iface->{'file'});
+	&unlock_file($iface->{'file'});
 	}
 else {
 	# Remove the whole interface file
