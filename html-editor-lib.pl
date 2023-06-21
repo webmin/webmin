@@ -56,7 +56,8 @@ if ($opts->{'type'} eq "advanced") {
     my @highlight_bundle = @{$highlight_bundle};
     if ($opts->{'_'}->{'client'}->{'palette'} eq 'dark') {
         foreach (@highlight_bundle) {
-            $_ .= "-dark";
+            $_ .= "-dark"
+                if (-e "$root_directory/unauthenticated/css/$_-dark.min.css");
             }
         }
     &$load_css_modules(\@highlight_bundle);

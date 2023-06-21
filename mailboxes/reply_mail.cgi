@@ -487,7 +487,7 @@ else {
 			     0,
 			     $wcols ? "" : "style='width:100%'"), 2);
 	}
-if (&has_command("ispell")) {
+if (&has_command("ispell") && $config{'ispell_enabled'}) {
 	print &ui_table_row(undef,
 	      &ui_checkbox("spell", 1, $text{'reply_spell'}, 0), 2);
 	}
