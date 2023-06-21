@@ -2952,13 +2952,13 @@ return $quote if (!$quote);
 
 # Do we have theme styles to embed
 # for local display purposes only
-my $iframe_styles_theme = '';
-if ($ENV{'HTTP_X_COLOR_PALETTE_FILE'}) {
-	my $iframe_theme_file =
-	  "$root_directory/$current_theme/unauthenticated/css/_iframe/$ENV{'HTTP_X_COLOR_PALETTE_FILE'}.min.css";
-	$iframe_styles_theme = &read_file_contents($iframe_theme_file)
-	  if (-r $iframe_theme_file);
-}
+my $iframe_theme_file = sub {
+	my $f =
+	     "$root_directory/$current_theme/unauthenticated/css/_iframe/$_[0].min.css";
+	return -r $f ? &read_file_contents($f) : '';
+};
+my $iframe_styles_theme =
+     &$iframe_theme_file('quote');
 
 # Quote mail iframe inner styles
 my $iframe_styles = <<EOF;
