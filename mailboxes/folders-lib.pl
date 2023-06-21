@@ -2950,10 +2950,22 @@ sub iframe_quote
 my ($quote) = @_;
 return $quote if (!$quote);
 
+# Do we have theme styles to embed
+# for local display purposes only
+my $iframe_theme_file = sub {
+	my $f =
+	     "$root_directory/$current_theme/unauthenticated/css/_iframe/$_[0].min.css";
+	return -r $f ? &read_file_contents($f) : '';
+};
+my $iframe_styles_theme =
+     &$iframe_theme_file('quote');
+
 # Quote mail iframe inner styles
 my $iframe_styles = <<EOF;
 	<style>
 	  html, body { overflow-y: hidden; }
+	  div[contenteditable] { outline: none; }
+	  $iframe_styles_theme
 	</style>
 EOF
 # Add inner styles to the email body
