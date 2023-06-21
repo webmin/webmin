@@ -2964,6 +2964,7 @@ if ($ENV{'HTTP_X_COLOR_PALETTE_FILE'}) {
 my $iframe_styles = <<EOF;
 	<style>
 	  html, body { overflow-y: hidden; }
+	  div[contenteditable] { outline: none; }
 	  $iframe_styles_theme
 	</style>
 EOF
