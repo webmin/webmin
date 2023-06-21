@@ -236,7 +236,8 @@ my $iframe_styles =
   &quote_escape(
     &read_file_contents("$root_directory/unauthenticated/css/_iframe/$iframe_styles_mode.min.css"), '"');
 $iframe_styles =~ s/\n/ /g;
-
+my $navigation_type = $ENV{'HTTP_X_NAVIGATION_TYPE'};
+$navigation_type ||= 'navigate';
 my $html_editor_init_script =
 <<EOF;
 <script type="text/javascript">
@@ -245,6 +246,7 @@ my $html_editor_init_script =
       qs = Quill.import('attributors/style/size'),
       qf = Quill.import('attributors/style/font'),
       isMac = navigator.userAgent.toLowerCase().includes('mac'),
+      navigation_type = '$navigation_type',
       iframe_styles = "$iframe_styles";
 
     qs.whitelist = ["0.75em", "1.15em", "1.3em"];
@@ -340,7 +342,8 @@ my $html_editor_init_script =
     // is reloaded or history back is clicked
     let restore_message = false;
     try {
-        restore_message = window.performance?.navigation?.type > 0
+        restore_message = window.performance.getEntriesByType("navigation")[0].type !== 'navigate' &&
+                          navigation_type === 'navigate'
     } catch(e) {
       restore_message = false;
     }
