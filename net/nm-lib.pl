@@ -1,5 +1,6 @@
 # Networking functions for Network Manager
 # XXX DNS config change
+# XXX apply one interface?
 
 $nm_conn_dir = "/etc/NetworkManager/system-connections";
 
@@ -76,6 +77,9 @@ foreach my $f (glob("$nm_conn_dir/*.nmconnection")) {
 	# Mac address
 	$iface->{'ether'} = &find_nm_config($cfg, "ethernet",
 					    "cloned-mac-address");
+
+	# MTU
+	$iface->{'mtu'} = &find_nm_config($cfg, "ethernet", "mtu");
 
 	push(@rv, $iface);
 	push(@rv, @virts);
@@ -165,6 +169,9 @@ else {
 	# Update MAC address
 	&save_nm_config($cfg, "ethernet", "cloned-mac-address",
 			$iface->{'ether'});
+
+	# Update MTU
+	&save_nm_config($cfg, "ethernet", "mtu", $iface->{'mtu'});
 	}
 &flush_file_lines($f);
 &unlock_file($f);
@@ -455,6 +462,7 @@ if (!$sect) {
 
 # Find the directive
 my ($dir) = grep { $_->{'name'} eq $name } @{$sect->{'members'}};
+print STDERR "name=$name sect=$sect dir=$dir value=$value\n";
 if ($dir && defined($value)) {
 	# Update existing line
 	$dir->{'value'} = $value;
@@ -473,7 +481,7 @@ elsif (!$dir && defined($value)) {
 		 'file' => $file,
 		 'line' => $sect->{'eline'}+1,
 		 'eline' => $sect->{'eline'}+1 };
-	splice(@$lref, $sect->{'eline'}+1, $name."=".$value);
+	splice(@$lref, $sect->{'eline'}+1, 0, $name."=".$value);
 	&renumber_nm_config($cfg, $sect->{'eline'}, 1);
 	push(@{$sect->{'members'}}, $dir);
 	}
