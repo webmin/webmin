@@ -17,6 +17,14 @@ my $dom = $zone->{'name'};
 &ui_print_header(&zone_subhead($zone), $text{'master_title'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
+my $d = &get_virtualmin_domains($dom);
+if ($d && $d->{'alias'}) {
+	print &ui_alert_box($text{'master_vminalias'}, 'danger');
+	}
+elsif ($d) {
+	print &ui_alert_box($text{'master_vmin'}, 'warn');
+	}
+
 # Find the record types
 my (@rcodes, @recs);
 if (!$config{'largezones'}) {
