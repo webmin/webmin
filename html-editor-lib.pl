@@ -237,7 +237,7 @@ my $iframe_styles =
     &read_file_contents("$root_directory/unauthenticated/css/_iframe/$iframe_styles_mode.min.css"), '"');
 $iframe_styles =~ s/\n/ /g;
 my $navigation_type = $ENV{'HTTP_X_NAVIGATION_TYPE'};
-$navigation_type ||= 'navigate';
+$navigation_type ||= 'reload';
 my $html_editor_init_script =
 <<EOF;
 <script type="text/javascript">
@@ -343,7 +343,7 @@ my $html_editor_init_script =
     let restore_message = false;
     try {
         restore_message = window.performance.getEntriesByType("navigation")[0].type !== 'navigate' &&
-                          navigation_type === 'navigate'
+                          navigation_type !== 'navigate'
     } catch(e) {
       restore_message = false;
     }
