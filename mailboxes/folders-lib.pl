@@ -2958,6 +2958,7 @@ my $iframe_theme_file = sub {
 	return -r $f ? &read_file_contents($f) : '';
 };
 my $iframe_styles_theme =
+     &$iframe_theme_file($ENV{'HTTP_X_COLOR_PALETTE_FILE'}) ||
      &$iframe_theme_file('quote');
 
 # Quote mail iframe inner styles
