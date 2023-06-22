@@ -451,21 +451,21 @@ my $iframe_quote;
 $iframe_quote = &iframe_quote($quote)
 	if (!$in{'new'});
 
-# Get HTML editor and replies
-my $html_editor = &html_editor(
-      { textarea =>
-          { target => { name => 'body', attr => 'name' },
-            sync =>
-              { position => 'after',
-                data => [ { iframe => '#quote-mail-iframe',
-                            elements => ['#webmin-iframe-quote'] } ] }
-          },
-      	type => $config{'html_edit_mode'} || 'simple',
-        after =>
-           { editor => $iframe_quote }
-      });
 
 if ($html_edit) {
+	# Get HTML editor and replies
+	my $html_editor = &html_editor(
+	      { textarea =>
+	          { target => { name => 'body', attr => 'name' },
+	            sync =>
+	              { position => 'after',
+	                data => [ { iframe => '#quote-mail-iframe',
+	                            elements => ['#webmin-iframe-quote'] } ] }
+	          },
+	      	type => $config{'html_edit_mode'} || 'simple',
+	        after =>
+	           { editor => $iframe_quote }
+	      });
 	$sig =~ s/\n/<br>/g,
 	$sig =~ s/^\s+//g,
 	$sig = "<br><br>$sig<br><br>"
