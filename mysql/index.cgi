@@ -341,8 +341,9 @@ if (!$ver) {
 	$variant = "mysql";
 	}
 my $vn = $variant eq "mysql" ? "MySQL" : "MariaDB";
+my $cmd = $variant ne "mysql" && $ver >= 11 ? 'mariadb' : 'mysql';
 &ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
-	&help_search_link("mysql", "man", "doc", "google"),
+	&help_search_link($cmd, "man", "doc", "google"),
 	undef, undef,
 	$config{'host'} ?
 		&text('index_version2', $ver, $config{'host'}, $vn) :
