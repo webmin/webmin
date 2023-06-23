@@ -2848,10 +2848,23 @@ sub iframe_body
 {
 my ($body) = @_;
 
+# Do we have theme styles to embed when
+# viewing an email? It can be useful for
+# themes with dark palettes
+my $iframe_theme_file = sub {
+	my $f =
+	     "$root_directory/$current_theme/unauthenticated/css/_iframe/$_[0].min.css";
+	return -r $f ? &read_file_contents($f) : '';
+};
+my $iframe_styles_theme =
+     &$iframe_theme_file($ENV{'HTTP_X_COLOR_PALETTE_FILE'}) ||
+     &$iframe_theme_file('quote');
+
 # Mail iframe inner styles
 my $iframe_styles = <<EOF;
 	<style>
 	  html, body { overflow-y: hidden; }
+	  $iframe_styles_theme
 	</style>
 EOF
 # Add inner styles to the email body
