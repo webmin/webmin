@@ -406,14 +406,17 @@ else {
 					system("/bin/rm -rf ".
 					       quotemeta($tmp_dir));
 				}
-			mkdir($tmp_dir, 0755) || (($mkdirerr = $!), next);
-			chown($<, $(, $tmp_dir);
-			chmod(0755, $tmp_dir);
+			# Directory may exist but has wrong permissions
+			if (!-d $tmp_dir) {
+				mkdir($tmp_dir, 0755) || (($mkdirerr = $!), next);
+				}
+			chown($<, $(, $tmp_dir) || (($mkdirerr = $!), next);
+			chmod(0755, $tmp_dir) || (($mkdirerr = $!), next);
 			}
 		if ($tries >= 10) {
 			my @st = lstat($tmp_dir);
 			$mkdirerr = $mkdirerr ? " : $mkdirerr" : "";
-			&error("Failed to create temp directory ".
+			&error("Failed to setup temp directory ".
 			       $tmp_dir.$mkdirerr);
 			}
 		}

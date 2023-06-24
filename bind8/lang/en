@@ -147,8 +147,8 @@ master_defttl=Default time-to-live for records
 master_edefttl='$1' is not a valid default time-to-live for records
 master_esoagone=No SOA record found!
 master_einclude=Additional template file does not exist
-master_vmin=WARNING! This zone is managed by Virtualmin. Records should be edited using the Virtualmin UI, to ensure they are consistent with other virtual server settings.
-master_vminalias=DANGER! This zone is an alias of a Virtualmin domain, which is kept in sync with it's target. Records should never be edited here, as any changes will be overwritten!
+master_vmin=This zone is managed by Virtualmin. Records should be edited using the Virtualmin UI, to ensure they are consistent with other virtual server settings.
+master_vminalias=This zone is an alias of a Virtualmin domain, which is kept in sync with it's target. Records should never be edited here, as any changes will be overwritten!
 
 delete_title=Delete Zone
 delete_mesg=Are you sure you want to delete the zone $1 ? All records and the zone file will be deleted.
