@@ -1,6 +1,6 @@
 # Networking functions for Network Manager
-# XXX DNS config change
 # XXX apply one interface?
+# XXX static routes
 
 $nm_conn_dir = "/etc/NetworkManager/system-connections";
 $sysctl_config = "/etc/sysctl.conf";
@@ -48,7 +48,9 @@ foreach my $f (glob("$nm_conn_dir/*.nmconnection")) {
 		else {
 			push(@virts,{ 'name' => $iface->{'name'},
 				      'fullname' => $iface->{'name'}.":".($i-2),
+				      'virtual' => $i-2,
 				      'file' => $f,
+				      'cfg' => $cfg,
 				      'edit' => 1,
 				      'up' => 1,
 				      'address' => $ad,
@@ -82,8 +84,14 @@ foreach my $f (glob("$nm_conn_dir/*.nmconnection")) {
 	# MTU
 	$iface->{'mtu'} = &find_nm_config($cfg, "ethernet", "mtu");
 
+	# Static routes
+	$iface->{'routes'} = [ &find_nm_config($cfg, "ipv4", "routes") ];
+
 	push(@rv, $iface);
 	push(@rv, @virts);
+	}
+for(my $i=0; $i<@rv; $i++) {
+	$rv[$i]->{'index'} = $i;
 	}
 return @rv;
 }
@@ -158,6 +166,9 @@ else {
 	for(my $i=$maxv6+1; &find_nm_config($cfg, "ipv6", $i); $i++) {
 		&save_nm_config($cfg, "ipv6", "address".$i, undef);
 		}
+	&save_nm_config($cfg, "ipv6", "method",
+		$iface->{'auto6'} ? "auto" :
+		@{$iface->{'address6'}} ? "manual" : undef);
 
 	# Update nameservers
 	my @ns = $iface->{'nameserver'} ? @{$iface->{'nameserver'}} : ();
@@ -190,7 +201,7 @@ if ($iface->{'virtual'} ne '') {
 	while(1) {
 		my $nv = &find_nm_config(
 			$baseiface->{'cfg'}, "ipv4", "address".($i+1));
-		&save_nm_config($baseiface->{'cfg'}, "ipv4", "address".$i, $nv);
+		&save_nm_config($iface->{'cfg'}, "ipv4", "address".$i, $nv);
 		last if (!$nv);
 		}
 	&flush_file_lines($iface->{'file'});
@@ -297,7 +308,6 @@ print &ui_table_row($text{'routes_forward'},
 			$sysctl{'net.ipv4.ip_forward'} ? 1 : 0));
 
 # Static routes
-# XXX
 my $rtable = &ui_columns_start([ $text{'routes_ifc'},
 			       $text{'routes_net'},
 			       $text{'routes_mask'},
@@ -305,15 +315,16 @@ my $rtable = &ui_columns_start([ $text{'routes_ifc'},
 my $i = 0;
 @inames = ( "", @inames );
 foreach my $b (@ifaces) {
-	next if (!$b->{'routes'});
-	foreach my $v (@{$b->{'routes'}->{'value'}}) {
-		my ($net, $mask) = split(/\//, $v->{'to'});
-		$mask = &prefix_to_mask($mask);
+	foreach my $v (@{$b->{'routes'}}) {
+		my ($net, $gw) = split(/\s+/, $v);
+		my $cidr;
+		($net, $cidr) = split(/\//, $net);
+		my $mask = &prefix_to_mask($cidr);
 		$rtable .= &ui_columns_row([
 		    &ui_select("dev_$i", $b->{'fullname'}, \@inames, 1, 0, 1),
 		    &ui_textbox("net_$i", $net, 15),
 		    &ui_textbox("mask_$i", $mask, 15),
-		    &ui_textbox("gw_$i", $v->{'via'}, 15),
+		    &ui_textbox("gw_$i", $gw, 15),
 		    ]);
 		$i++;
 		}
@@ -578,9 +589,9 @@ sub find_nm_config
 my ($cfg, $sname, $name) = @_;
 my ($sect) = grep { $_->{'sect'} eq $sname } @$cfg;
 return undef if (!$sect);
-my ($dir) = grep { $_->{'name'} eq $name } @{$sect->{'members'}};
-return undef if (!$dir);
-return $dir->{'value'};
+my @dirs = grep { $_->{'name'} eq $name } @{$sect->{'members'}};
+return wantarray ? map { $_->{'value'} } @dirs :
+       @dirs ? $dirs[0]->{'value'} : undef;
 }
 
 # save_nm_config(&config, section, name, value, [file])
@@ -604,12 +615,11 @@ if (!$sect) {
 		  'line' => scalar(@$lref),
 		  'eline' => scalar(@$lref) };
 	push(@$cfg, $sect);
-	push(@$lref, "[$sect->{'name'}]");
+	push(@$lref, "[$sect->{'sect'}]");
 	}
 
 # Find the directive
 my ($dir) = grep { $_->{'name'} eq $name } @{$sect->{'members'}};
-print STDERR "name=$name sect=$sect dir=$dir value=$value\n";
 if ($dir && defined($value)) {
 	# Update existing line
 	$dir->{'value'} = $value;
