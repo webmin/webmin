@@ -634,8 +634,8 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
   border-left: none;
 }
 .ql-compose-container .ql-editor {
-  min-height: 220px;
-  padding: 4px 6px;
+  min-height: 180px;
+  padding: 4px 6px 12px 6px;
 }
 .ql-snow .ql-editor pre {
   font-size: 92%;
@@ -656,7 +656,6 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
 .ui_form_pair[data-contents="email"] > .ui_form_value {
   padding: 0;
 }
-
 .ql-compose-container .ql-container.ql-snow .ql-editor blockquote {
   border-left-width: 1px;
   margin-left: 6px;
