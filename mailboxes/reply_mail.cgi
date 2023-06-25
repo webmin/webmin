@@ -335,13 +335,6 @@ else {
 			"detach.cgi?user=$uuser&idx=$in{'idx'}&folder=$in{'folder'}$subs");
 		}
 
-	if ($in{'forward'} || $in{'enew'}) {
-		@attach = grep { $_ ne $body } @attach;
-		}
-	else {
-		undef(@attach);
-		}
-
 	# Show header
 	&mail_page_header(
 		$in{'forward'} || @mailforward ? $text{'forward_title'} :
