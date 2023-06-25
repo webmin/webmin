@@ -47,6 +47,8 @@ if ($in{'from'} =~ /^(\S+)\@(\S+)$/ && $access{'fromname'}) {
 	}
 @sub = split(/\0/, $in{'sub'});
 $subs = join("", map { "&sub=$_" } @sub);
+my @inline_images;
+my %cidmap;
 
 # Construct the email
 $in{'from'} || &error($text{'send_efrom'});
@@ -71,9 +73,39 @@ if ($in{'body'} =~ /\S/) {
 	if ($in{'html_edit'}) {
 		$in{'body'} = &html_editor_substitute_classes_with_styles($in{'body'});
 		}
+		my $preplainbody = $in{'body'};
+		my $prehtmlbody = $in{'body'};
+		
+		# Extract inline images if any
+		@inline_images = ($in{'body'} =~ /(data:image\/.*?;base64,)(.*?)"/g);
+		if (@inline_images) {
+		    my $iid = 1;
+		    for (my $i = 0; $i < scalar(@inline_images) - 1; $i += 2) {
+		        if ($inline_images[$i] =~ /data:image/) {
+		            my ($type) = $inline_images[$i] =~ /data:image\/(.*?);base64,/;
+		            my $cid = "ii_".(time() + $i).'@'."$type";
+		            my $replace_html = "$inline_images[$i]$inline_images[$i+1]";
+		            my @data = split('@', $cid);
+	            	$inline_images[$i] = \@data;
+		            $inline_images[$i+1] = decode_base64($inline_images[$i+1]);
+
+		            # $cid = "cid:$cid\" style=\"width: 60%";
+		            $cid = "cid:$cid";
+
+		            # Replace for HTML
+		            $in{'body'} =~ s/\Q$replace_html/$cid/;
+
+		            # Replace for plain text
+		            $preplainbody =~ s/<img[^>]*>/[image: inline-image$iid.$type]/;
+		            $iid++;
+		            }
+		        }
+		        $prehtmlbody = $in{'body'};
+		    }
 	# Perform spell check on body if requested
-	local $plainbody = $in{'html_edit'} ? &html_to_text($in{'body'})
-                                            : $in{'body'};
+	local $plainbody = $in{'html_edit'} ? &html_to_text($preplainbody)
+						    : $prehtmlbody;
+
 	if ($in{'spell'}) {
 		@errs = &spell_check_text($plainbody);
 		if (@errs) {
@@ -90,6 +122,14 @@ if ($in{'body'} =~ /\S/) {
 			exit;
 			}
 		}
+
+	# For a HTML body, replace images from detach.cgi on the original
+	# email with cid: references.
+	if ($in{'html_edit'}) {
+		$in{'body'} = &create_cids($in{'body'}, \%cidmap);
+		}
+
+	# Create the body attachment
 	local $mt = $in{'html_edit'} ? "text/html" : "text/plain";
 	if ($in{'charset'}) {
 		$mt .= "; charset=$in{'charset'}";
@@ -145,29 +185,49 @@ if ($in{'body'} =~ /\S/) {
 		}
 	}
 
+# Add inline images
+if (@inline_images) {
+    my $iid = 1;
+    for (my $i = 0; $i < scalar(@inline_images) - 1; $i += 2) {
+        my $cid = $inline_images[$i][0]."@".$inline_images[$i][1];
+        my $type = $inline_images[$i][1];
+        my $image_name = "inline-image$iid.$type";
+        my $data = $inline_images[$i + 1];
+        push(@attach,
+             {  'data'    => $data,
+                'headers' => [['Content-type',              "image/$type; name=\"$image_name\""],
+                              ['Content-Disposition',       "inline; filename=\"$image_name\""],
+                              ['Content-ID',                "<$cid>"],
+                              ['Content-Transfer-Encoding', 'base64']
+                ]
+             });
+        $iid++;
+    	}
+	}
+
+# Add uploaded attachment
 $attachsize = 0;
 for($i=0; defined($in{"attach$i"}); $i++) {
-	# Add uploaded attachment
-        next if (!$in{"attach$i"});
-        for($j=0; $j<@{$in{"attach$i"}}; $j++) {
-                next if (!$in{"attach${i}"}->[$j]);
-                &test_max_attach(length($in{"attach${i}"}->[$j]));
-                local $filename = $in{"attach${i}_filename"}->[$j];
-                $filename =~ s/^.*(\\|\/)//;
-                local $type = $in{"attach${i}_content_type"}->[$j].
-                              "; name=\"".$filename."\"";
-                local $disp = "attachment; filename=\"".$filename."\"";
-                push(@attach, { 'data' => $in{"attach${i}"}->[$j],
-                                'headers' => [ [ 'Content-type', $type ],
-                                               [ 'Content-Disposition', $disp ],
-                                               [ 'Content-Transfer-Encoding',
-                                                 'base64' ] ] });
-		$atotal += length($in{"attach${i}"}->[$j]);
-                }
-        }
+   next if (!$in{"attach$i"});
+   for($j=0; $j<@{$in{"attach$i"}}; $j++) {
+      next if (!$in{"attach${i}"}->[$j]);
+      &test_max_attach(length($in{"attach${i}"}->[$j]));
+      local $filename = $in{"attach${i}_filename"}->[$j];
+      $filename =~ s/^.*(\\|\/)//;
+      local $type = $in{"attach${i}_content_type"}->[$j].
+                    "; name=\"".$filename."\"";
+      local $disp = "attachment; filename=\"".$filename."\"";
+      push(@attach, { 'data' => $in{"attach${i}"}->[$j],
+                      'headers' => [ [ 'Content-type', $type ],
+                                     [ 'Content-Disposition', $disp ],
+                                     [ 'Content-Transfer-Encoding',
+                                       'base64' ] ] });
+$atotal += length($in{"attach${i}"}->[$j]);
+          }
+  }
 
+# Add server-side attachment
 for($i=0; defined($in{"file$i"}); $i++) {
-	# Add server-side attachment
 	next if (!$in{"file$i"} || !$access{'canattach'});
 	@uinfo = &get_mail_user($in{'user'});
 	@uinfo || &error($text{'view_eugone'});
@@ -193,9 +253,10 @@ for($i=0; defined($in{"file$i"}); $i++) {
 					 'base64' ] ] });
 	$atotal += length($data);
 	}
+
+# Add forwarded attachments
 @fwd = split(/\0/, $in{'forward'});
 if (@fwd) {
-	# Add forwarded attachments
 	@mail = &mailbox_list_mails($in{'idx'}, $in{'idx'}, $folder);
 	$fwdmail = $mail[$in{'idx'}];
 	&parse_mail($fwdmail);
@@ -207,15 +268,26 @@ if (@fwd) {
 		$fwdmail = $amail;
 		}
 
-	foreach $f (@fwd) {
+	foreach my $f (@fwd) {
 		&test_max_attach(length($fwdmail->{'attach'}->[$f]->{'data'}));
-		push(@attach, $fwdmail->{'attach'}->[$f]);
+		$a = $fwdmail->{'attach'}->[$f];
+		if ($cidmap{$f}) {
+			# This attachment has been inlined .. set a content-id
+			$a->{'headers'} = [
+				grep { lc($_->[0]) ne 'content-id' &&
+				       lc($_->[0]) ne 'content-location' }
+				     @{$a->{'headers'}} ];
+			push(@{$a->{'headers'}},
+			     [ 'Content-Id', "<$cidmap{$f}>" ]);
+			}
+		push(@attach, $a);
 		$atotal += length($fwdmail->{'attach'}->[$f]->{'data'});
 		}
 	}
 @mailfwd = split(/\0/, $in{'mailforward'});
+
+# Add forwarded emails
 if (@mailfwd) {
-	# Add forwarded emails
 	@mail = &mailbox_list_mails($mailfwd[0], $mailfwd[@mailfwd-1], $folder);
 	foreach $f (@mailfwd) {
 		$fwdmail = $mail[$f];

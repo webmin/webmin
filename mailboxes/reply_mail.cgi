@@ -318,6 +318,23 @@ else {
 	($quote, $html_edit, $body) = &quoted_message($mail, $qu, $sig);
 	# Load images using server in replies
 	$quote = &disable_html_images($quote, 3);
+
+	# Don't include the original body as an attachment
+	@attach = &remove_body_attachments($mail, \@attach);
+	if (!$in{'forward'} && !$in{'enew'}) {
+		# When replying, lose non-cid attachments
+		@attach = grep { $_->{'header'}->{'content-id'} ||
+				 $_->{'header'}->{'content-location'} } @attach;
+		}
+
+	# For a HTML reply or forward, fix up the cid: to refer to attachments
+	# in the original message.
+	if ($html_edit) {
+		my $uuser = &urlize($in{'user'});
+		$quote = &fix_cids($quote, \@attach,
+			"detach.cgi?user=$uuser&idx=$in{'idx'}&folder=$in{'folder'}$subs");
+		}
+
 	if ($in{'forward'} || $in{'enew'}) {
 		@attach = grep { $_ ne $body } @attach;
 		}
@@ -500,10 +517,20 @@ $viewurl = "view_mail.cgi?idx=$in{'idx'}&user=$euser&".
 $detachurl = "detach.cgi?idx=$in{'idx'}&user=$euser&".
              "&folder=$folder->{'index'}$subs";
 $mailurl = "view_mail.cgi?user=$euser&folder=$folder->{'index'}$subs";
+my @non_body_attach;
 if (@attach) {
-        &attachments_table(\@attach, $folder, $viewurl, $detachurl,
+	@non_body_attach = &remove_cid_attachments($mail, \@attach);
+	}
+if (@non_body_attach) {
+	&attachments_table(\@non_body_attach, $folder, $viewurl, $detachurl,
 			   $mailurl, 'idx', "forward");
-        }
+	}
+foreach my $a (@attach) {
+	if (&indexof($a, @non_body_attach) < 0) {
+		# Body attachment .. always include
+		print &ui_hidden("forward", $a->{'idx'});
+		}
+	}
 
 # Display forwarded mails
 if (@fwdmail) {
