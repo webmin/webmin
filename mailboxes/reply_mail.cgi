@@ -471,7 +471,7 @@ if ($html_edit) {
 	$sig = "<br><br>$sig<br><br>"
 		if ($sig);
 	print &ui_table_row(undef,
-		&ui_textarea("body", $sig, 16, 80, undef, 0,
+		&ui_textarea("body", $sig, 12, 80, undef, 0,
 		             "style='display: none' id=body data-html-mode='$config{'html_edit_mode'}'").
 		$html_editor, 2);
 	}
@@ -481,7 +481,7 @@ else {
 	$wm =~ s/^wrap=//g;
 	$wcols = $config{'wrap_compose'};
 	print &ui_table_row(undef,
-		&ui_textarea("body", "\n\n$sig\n\n$quote", 16,
+		&ui_textarea("body", "\n\n$sig\n\n$quote", 12,
 			     $wcols || 80,
 			     $wcols ? "hard" : "",
 			     0,
