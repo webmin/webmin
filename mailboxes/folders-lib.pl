@@ -2790,10 +2790,15 @@ while($html =~ /^([\000-\377]*?)(<\s*img[^>]*src=('[^']*'|"[^"]*"|\S+)[^>]*>)([\
 	push(@$urls, $img) if ($urls);
 	if ($dis == 3) {
 		# Let server load it in async mode
-		my $imgcont = $allimg;
-		$imgcont =~ s/src=/data-presrc=/g;
-		$newhtml .= $before.$imgcont;
-		$masked_img++;
+		if ($img !~ /^cid:/) {
+			my $imgcont = $allimg;
+			$imgcont =~ s/src=/data-presrc=/g;
+			$newhtml .= $before.$imgcont;
+			$masked_img++;
+			}
+		else {
+			$newhtml .= $before.$allimg;
+			}
 		}
 	elsif ($dis == 0) {
 		# Don't harm image
