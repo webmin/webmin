@@ -474,12 +474,7 @@ if ($document_styles_string) {
         my (%document_styles_tag_names) = $document_styles_string =~ /(\Q$tag_name\E)\s*\{\s*([^}]*?)\s*\}/migx;
         foreach my $tag (keys %document_styles_tag_names) {
             my $tag_style = &$style_format($document_styles_tag_names{$tag});
-            if ($styled_html_email =~ /(<$tag\s+).*?style="/) {
-                $styled_html_email =~ s/(<$tag\s+)(.*?)(style=")/$1$2$3$tag_style /mig;
-                }
-            else {
-                $styled_html_email =~ s/(<$tag)\s*>/$1 style="$tag_style">/mig;
-                }
+            $styled_html_email =~ s/(<$tag)(?![^>]+style).*?>/$1 style="$tag_style">/mig;
             }
         }
     }
