@@ -1,6 +1,5 @@
 # Networking functions for Network Manager
-# XXX apply new interface
-# XXX UUID has to match
+# XXX virtual IPs with nmcli
 
 $nm_conn_dir = "/etc/NetworkManager/system-connections";
 $sysctl_config = "/etc/sysctl.conf";
@@ -14,7 +13,8 @@ sub boot_interfaces
 my @rv;
 foreach my $f (glob("$nm_conn_dir/*.nmconnection")) {
 	my $cfg = &read_nm_config($f);
-	my $iface = { 'name' => &find_nm_config($cfg, "connection", "id"),
+	my $iface = { 'name' => &find_nm_config(
+					$cfg, "connection", "interface-name"),
 		      'file' => $f,
 		      'cfg' => $cfg,
 		      'edit' => 1,
@@ -126,7 +126,7 @@ else {
 		&lock_file($f);
 		}
 	else {
-		# Need to create a new empty config
+		# Need to create a new empty config for the interface
 		my $uuid;
 		my $out = &backquote_command("nmcli conn show");
 		foreach my $l (split(/\r?\n/, $out)) {
@@ -136,55 +136,35 @@ else {
 				last;
 				}
 			}
-		if (!$uuid) {
-			# Make one up!
-			$uuid = &read_file_contents(
-				"/proc/sys/kernel/random/uuid");
-			$uuid =~ s/\r|\n//g;
-			}
-		$cfg = [ { 'sect' => 'connection',
-			   'members' => [
-				{ 'name' => 'id',
-				  'value' => $iface->{'name'} },
-				{ 'name' => 'uuid',
-				  'value' => $uuid },
-				{ 'name' => 'type',
-				  'value' => 'ethernet' },
-				{ 'name' => 'interface-name',
-				  'value' => $iface->{'name'} },
-				{ 'name' => 'autoconnect-priority',
-				  'value' => '-999' },
-				{ 'name' => 'timestamp',
-				  'value' => time() },
-				],
-			 },
-			 { 'sect' => 'ethernet',
-			   'members' => [ ],
-			 },
-			 { 'sect' => 'ipv4',
-			   'members' => [ ],
-			 },
-			 { 'sect' => 'ipv6',
-			   'members' => [
-				{ 'name' => 'addr-gen-mode',
-				  'value' => 'default' },
-				],
-			 },
-			 { 'sect' => 'ethernet',
-			   'members' => [ ],
-			 },
-		       ];
-		$f = $nm_conn_dir."/".$iface->{'name'}.".nmconnection";
+		$uuid || &error("Interface $iface->{'name'} does not exist");
+		my $out = &backquote_command("nmcli conn modify ".
+			quotemeta($uuid)." connect.interface-name ".
+			quotemeta($iface->{'name'})." 2>&1");
+		$? && &error("Failed to create NetworkManager config : $out");
+
+		# Find the newly created NetworkManager config file
+		$boot = [ &boot_interfaces() ];
+		my ($newiface) = grep { $_->{'name'} eq $iface->{'name'} } @$boot;
+		$newiface || &error("NetworkManager did not create a new ".
+				    "interface for $iface->{'name'}");
+
+		$cfg = $iface->{'cfg'} = $newiface->{'cfg'};
+		$f = $iface->{'file'} = $newiface->{'file'};
 		&lock_file($f);
-		&write_nm_config($f, $cfg);
 		}
 
 	# Update address
-	my $v = $iface->{'address'}."/".&mask_to_prefix($iface->{'netmask'});
-	if ($iface->{'gateway'}) {
-		$v .= ",".$iface->{'gateway'};
+	if ($iface->{'address'}) {
+		my $v = $iface->{'address'}."/".
+			&mask_to_prefix($iface->{'netmask'});
+		if ($iface->{'gateway'}) {
+			$v .= ",".$iface->{'gateway'};
+			}
+		&save_nm_config($cfg, "ipv4", "address", $v);
 		}
-	&save_nm_config($cfg, "ipv4", "address1", $v);
+	else {
+		&save_nm_config($cfg, "ipv4", "address", undef);
+		}
 
 	# Update DHCP mode
 	&save_nm_config($cfg, "ipv4", "method",
@@ -192,19 +172,16 @@ else {
 		$iface->{'dhcp'} ? "auto" : "manual");
 
 	# Update IPv6 addresses
-	my $maxv6 = 0;
+	my @address6;
 	for(my $i=0; $i<@{$iface->{'address6'}}; $i++) {
 		my $v = $iface->{'address6'}->[$i]."/".
 			$iface->{'netmask6'}->[$i];
-		$maxv6 = $i+1;
-		&save_nm_config($cfg, "ipv6", "address".($i+1), $v);
+		push(@address6, $v);
 		}
-	for(my $i=$maxv6+1; &find_nm_config($cfg, "ipv6", "address".$i); $i++) {
-		&save_nm_config($cfg, "ipv6", "address".$i, undef);
-		}
+	&save_nm_config($cfg, "ipv6", "address", @address6 ? join(",", @address6) : undef);
 	&save_nm_config($cfg, "ipv6", "method",
 		$iface->{'auto6'} ? "auto" :
-		@{$iface->{'address6'}} ? "manual" : undef);
+		@{$iface->{'address6'}} ? "manual" : "disabled");
 
 	# Update nameservers
 	my @ns = $iface->{'nameserver'} ? @{$iface->{'nameserver'}} : ();
@@ -222,15 +199,13 @@ else {
 	&save_nm_config($cfg, "ethernet", "mtu", $iface->{'mtu'});
 
 	# Update static routes
-	my $maxrt = 0;
-	for(my $i=0; $i<@{$iface->{'routes'}}; $i++) {
-		$maxrt = $i+1;
-		&save_nm_config($cfg, "ipv4", "route".($i+1),
-				$iface->{'routes'}->[$i]);
+	my @routes;
+	if ($iface->{'routes'}) {
+		foreach my $r (@{$iface->{'routes'}}) {
+			push(@routes, join(" ", split(/,/, $r)));
+			}
 		}
-	for(my $i=$maxrt+1; &find_nm_config($cfg, "ipv4", "route".$i); $i++) {
-		&save_nm_config($cfg, "ipv6", "route".$i, undef);
-		}
+	&save_nm_config($cfg, "ipv4", "routes", \@routes);
 	}
 &flush_file_lines($f);
 &unlock_file($f);
@@ -603,31 +578,6 @@ foreach my $l (@$lref) {
 return \@rv;
 }
 
-# write_nm_config(file, &config)
-# Writes out an ini-format network manager config file
-sub write_nm_config
-{
-my ($file, $cfg) = @_;
-my $lnum = 0;
-&open_lock_tempfile(NW, ">$file");
-foreach my $sect (@$cfg) {
-	$sect->{'line'} = $lnum;
-	$sect->{'eline'} = $lnum;
-	$sect->{'file'} = $file;
-	&print_tempfile(NW, "[$sect->{'sect'}]\n");
-	$lnum++;
-	foreach my $dir (@{$sect->{'members'}}) {
-		&print_tempfile(NW, $dir->{'name'}."=".$dir->{'value'}."\n");
-		$dir->{'eline'} = $dir->{'eline'} = $sect->{'eline'} = $lnum;
-		$dir->{'file'} = $file;
-		$lnum++;
-		}
-	&print_tempfile(NW, "\n");
-	$lnum++;
-	}
-&close_tempfile(NW);
-}
-
 # find_nm_config(&config, section, name)
 # Returns the value of a directive in some section, or undef
 sub find_nm_config
@@ -645,69 +595,21 @@ return wantarray ? map { $_->{'value'} } @dirs :
 sub save_nm_config
 {
 my ($cfg, $sname, $name, $value, $file) = @_;
-$file ||= $cfg->[0]->{'file'};
-my $lref = &read_file_lines($file);
-
-# Find or create a new section
-my ($sect) = grep { $_->{'sect'} eq $sname } @$cfg;
-if (!$sect && !defined($value)) {
-	# No value, but the section doesn't exist!
-	return;
-	}
-if (!$sect) {
-	$sect = { 'sect' => $sname,
-		  'members' => [ ],
-		  'file' => $file,
-		  'line' => scalar(@$lref),
-		  'eline' => scalar(@$lref) };
-	push(@$cfg, $sect);
-	push(@$lref, "[$sect->{'sect'}]");
+my $uuid = &find_nm_config($cfg, "connection", "uuid");
+$uuid || &error("No uuid found when setting $sname.$name");
+if (ref($value)) {
+	$value = @$value ? join(",", @$value) : undef;
 	}
 
-# Find the directive
-my @dirs = grep { $_->{'name'} eq $name } @{$sect->{'members'}};
-my @values = ref($value) ? @$value :
-	     defined($value) ? ( $value ) : ( );
-for(my $i=0; $i<@dirs || $i<@values; $i++) {
-	my $dir = $i<@dirs ? $dirs[$i] : undef;
-	my $val = $i<@values ? $values[$i] : undef;
-	if ($dir && defined($val)) {
-		# Update existing line
-		$dir->{'value'} = $val;
-		$lref->[$dir->{'line'}] = $name."=".$val;
-		}
-	elsif ($dir && !defined($val)) {
-		# Remove existing line
-		$sect->{'members'} = [ grep { $_ ne $dir } @{$sect->{'members'}} ];
-		splice(@$lref, $dir->{'line'}, 1);
-		&renumber_nm_config($cfg, $dir->{'line'}, -1);
-		}
-	elsif (!$dir && defined($val)) {
-		# Add a new line
-		$dir = { 'name' => $name,
-			 'value' => $val,
-			 'file' => $file,
-			 'line' => $sect->{'eline'}+1,
-			 'eline' => $sect->{'eline'}+1 };
-		splice(@$lref, $sect->{'eline'}+1, 0, $name."=".$val);
-		&renumber_nm_config($cfg, $sect->{'eline'}, 1);
-		push(@{$sect->{'members'}}, $dir);
-		}
+my $cmd = "nmcli conn modify ".quotemeta($uuid)." ".
+	  quotemeta($sname).".".quotemeta($name);
+if (defined($value)) {
+	$cmd .= " ".quotemeta($value);
 	}
-}
-
-# renumber_nm_config(&config, line, offset)
-# Adjust line numbers in the config file
-sub renumber_nm_config
-{
-my ($cfg, $line, $offset) = @_;
-foreach my $sect (@$cfg) {
-	$sect->{'line'} += $offset if ($sect->{'line'} >= $line);
-	$sect->{'eline'} += $offset if ($sect->{'eline'} >= $line);
-	foreach my $dir (@{$sect->{'members'}}) {
-		$dir->{'line'} += $offset if ($dir->{'line'} >= $line);
-		$dir->{'eline'} += $offset if ($dir->{'eline'} >= $line);
-		}
+else {
+	$cmd .= " \"\"";
 	}
+my $out = &backquote_logged("$cmd 2>&1 </dev/null");
+&error("$cmd failed : $out") if ($?);
 }
 
