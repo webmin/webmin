@@ -1,5 +1,4 @@
 # Networking functions for Network Manager
-# XXX virtual IPs with nmcli
 
 $nm_conn_dir = "/etc/NetworkManager/system-connections";
 $sysctl_config = "/etc/sysctl.conf";
@@ -165,9 +164,6 @@ my @addresses;
 if ($iface->{'address'}) {
 	my $v = $iface->{'address'}."/".
 		&mask_to_prefix($iface->{'netmask'});
-	if ($iface->{'gateway'}) {
-		$v .= ",".$iface->{'gateway'};
-		}
 	push(@addresses, $v);
 	}
 foreach my $viface (grep { $_->{'name'} eq $iface->{'name'} &&
@@ -176,7 +172,8 @@ foreach my $viface (grep { $_->{'name'} eq $iface->{'name'} &&
 		&mask_to_prefix($viface->{'netmask'});
 	push(@addresses, $v);
 	}
-&save_nm_config($cfg, "ipv4", "address", \@addresses);
+&save_nm_config($cfg, "ipv4", "addresses", \@addresses);
+&save_nm_config($cfg, "ipv4", "gateway", $iface->{'gateway'});
 
 # Update DHCP mode
 &save_nm_config($cfg, "ipv4", "method",
