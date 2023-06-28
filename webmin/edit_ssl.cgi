@@ -107,7 +107,7 @@ else { $extracas = ""; }
 print ui_table_row($text{'ssl_extracas'},
 	ui_textarea("extracas", join("\n",split(/\s+/, $extracas)),
 		     3, 60)." ".
-	"<br>".file_chooser_button("extracas", 0, undef, undef, 1));
+	"<br>".file_chooser_button("extracas", 0, undef, undef, 1)."<p><br><p>");
 
 print ui_table_end();
 print ui_form_end([ [ "", $text{'save'} ] ]);
