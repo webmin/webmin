@@ -106,132 +106,142 @@ sub save_interface
 {
 my ($iface, $boot) = @_;
 $boot ||= [ &boot_interfaces() ];
-my $f;
 if ($iface->{'virtual'} ne '') {
 	# Virtual IP on a real interface
 	my ($baseiface) = grep { $_->{'fullname'} eq $iface->{'name'} } @$boot;
 	$baseiface || &error("Base interface $iface->{'name'} does not exist");
-	my $i = $iface->{'virtual'}+2;
-	my $v = $iface->{'address'}."/".&mask_to_prefix($iface->{'netmask'});
-	$f = $baseiface->{'file'};
+	if (!$iface->{'file'}) {
+		# Add to complete interface list
+		push(@$boot, $iface);
+                }
+	else {
+		# Update in complete list
+		my ($oldiface) = grep { $_->{'fullname'} eq $iface->{'fullname'} } @$boot;
+		$oldiface || &error("No existing interface named $iface->{'fullname'} found");
+                $boot->[$oldiface->{'index'}] = $iface;
+		}
+	&save_interface($baseiface, $boot);
+	return;
+	}
+
+my $f;
+my $cfg;
+if ($iface->{'file'}) {
+	# Config file already exists
+	$f = $iface->{'file'};
+	$cfg = $iface->{'cfg'};
 	&lock_file($f);
-	&save_nm_config($baseiface->{'cfg'}, "ipv4", "address".$i, $v);
 	}
 else {
-	my $cfg;
-	if ($iface->{'file'}) {
-		# Config file already exists
-		$f = $iface->{'file'};
-		$cfg = $iface->{'cfg'};
-		&lock_file($f);
-		}
-	else {
-		# Need to create a new empty config for the interface
-		my $uuid;
-		my $out = &backquote_command("nmcli conn show");
-		foreach my $l (split(/\r?\n/, $out)) {
-			my @w = split(/\s+/, $l);
-			if ($w[@w-1] eq $iface->{'name'}) {
-				$uuid = $w[@w-3];
-				last;
-				}
-			}
-		$uuid || &error("Interface $iface->{'name'} does not exist");
-		my $out = &backquote_command("nmcli conn modify ".
-			quotemeta($uuid)." connect.interface-name ".
-			quotemeta($iface->{'name'})." 2>&1");
-		$? && &error("Failed to create NetworkManager config : $out");
-
-		# Find the newly created NetworkManager config file
-		$boot = [ &boot_interfaces() ];
-		my ($newiface) = grep { $_->{'name'} eq $iface->{'name'} } @$boot;
-		$newiface || &error("NetworkManager did not create a new ".
-				    "interface for $iface->{'name'}");
-
-		$cfg = $iface->{'cfg'} = $newiface->{'cfg'};
-		$f = $iface->{'file'} = $newiface->{'file'};
-		&lock_file($f);
-		}
-
-	# Update address
-	if ($iface->{'address'}) {
-		my $v = $iface->{'address'}."/".
-			&mask_to_prefix($iface->{'netmask'});
-		if ($iface->{'gateway'}) {
-			$v .= ",".$iface->{'gateway'};
-			}
-		&save_nm_config($cfg, "ipv4", "address", $v);
-		}
-	else {
-		&save_nm_config($cfg, "ipv4", "address", undef);
-		}
-
-	# Update DHCP mode
-	&save_nm_config($cfg, "ipv4", "method",
-		!$iface->{'up'} ? "disabled" :
-		$iface->{'dhcp'} ? "auto" : "manual");
-
-	# Update IPv6 addresses
-	my @address6;
-	for(my $i=0; $i<@{$iface->{'address6'}}; $i++) {
-		my $v = $iface->{'address6'}->[$i]."/".
-			$iface->{'netmask6'}->[$i];
-		push(@address6, $v);
-		}
-	&save_nm_config($cfg, "ipv6", "address", @address6 ? join(",", @address6) : undef);
-	&save_nm_config($cfg, "ipv6", "method",
-		$iface->{'auto6'} ? "auto" :
-		@{$iface->{'address6'}} ? "manual" : "disabled");
-
-	# Update nameservers
-	my @ns = $iface->{'nameserver'} ? @{$iface->{'nameserver'}} : ();
-	&save_nm_config($cfg, "ipv4", "dns",
-			@ns ? join(";", @ns) : undef);
-	my @sr = $iface->{'search'} ? @{$iface->{'search'}} : ();
-	&save_nm_config($cfg, "ipv4", "dns-search",
-			@sr ? join(";", @sr) : undef);
-
-	# Update MAC address
-	&save_nm_config($cfg, "ethernet", "cloned-mac-address",
-			$iface->{'ether'});
-
-	# Update MTU
-	&save_nm_config($cfg, "ethernet", "mtu", $iface->{'mtu'});
-
-	# Update static routes
-	my @routes;
-	if ($iface->{'routes'}) {
-		foreach my $r (@{$iface->{'routes'}}) {
-			push(@routes, join(" ", split(/,/, $r)));
+	# Need to create a new empty config for the interface
+	my $uuid;
+	my $out = &backquote_command("nmcli conn show");
+	foreach my $l (split(/\r?\n/, $out)) {
+		my @w = split(/\s+/, $l);
+		if ($w[@w-1] eq $iface->{'name'}) {
+			$uuid = $w[@w-3];
+			last;
 			}
 		}
-	&save_nm_config($cfg, "ipv4", "routes", \@routes);
+	$uuid || &error("Interface $iface->{'name'} does not exist");
+	my $out = &backquote_command("nmcli conn modify ".
+		quotemeta($uuid)." connect.interface-name ".
+		quotemeta($iface->{'name'})." 2>&1");
+	$? && &error("Failed to create NetworkManager config : $out");
+
+	# Find the newly created NetworkManager config file
+	$boot = [ &boot_interfaces() ];
+	my ($newiface) = grep { $_->{'name'} eq $iface->{'name'} } @$boot;
+	$newiface || &error("NetworkManager did not create a new ".
+			    "interface for $iface->{'name'}");
+
+	$cfg = $iface->{'cfg'} = $newiface->{'cfg'};
+	$f = $iface->{'file'} = $newiface->{'file'};
+	&lock_file($f);
 	}
+
+# Update address
+my @addresses;
+if ($iface->{'address'}) {
+	my $v = $iface->{'address'}."/".
+		&mask_to_prefix($iface->{'netmask'});
+	if ($iface->{'gateway'}) {
+		$v .= ",".$iface->{'gateway'};
+		}
+	push(@addresses, $v);
+	}
+foreach my $viface (grep { $_->{'name'} eq $iface->{'name'} &&
+			   $_->{'virtual'} ne '' } @$boot) {
+	my $v = $viface->{'address'}."/".
+		&mask_to_prefix($viface->{'netmask'});
+	push(@addresses, $v);
+	}
+&save_nm_config($cfg, "ipv4", "address", \@addresses);
+
+# Update DHCP mode
+&save_nm_config($cfg, "ipv4", "method",
+	!$iface->{'up'} ? "disabled" :
+	$iface->{'dhcp'} ? "auto" : "manual");
+
+# Update IPv6 addresses
+my @address6;
+for(my $i=0; $i<@{$iface->{'address6'}}; $i++) {
+	my $v = $iface->{'address6'}->[$i]."/".
+		$iface->{'netmask6'}->[$i];
+	push(@address6, $v);
+	}
+&save_nm_config($cfg, "ipv6", "address", @address6 ? join(",", @address6) : undef);
+&save_nm_config($cfg, "ipv6", "method",
+	$iface->{'auto6'} ? "auto" :
+	@{$iface->{'address6'}} ? "manual" : "disabled");
+
+# Update nameservers
+my @ns = $iface->{'nameserver'} ? @{$iface->{'nameserver'}} : ();
+&save_nm_config($cfg, "ipv4", "dns",
+		@ns ? join(";", @ns) : undef);
+my @sr = $iface->{'search'} ? @{$iface->{'search'}} : ();
+&save_nm_config($cfg, "ipv4", "dns-search",
+		@sr ? join(";", @sr) : undef);
+
+# Update MAC address
+&save_nm_config($cfg, "ethernet", "cloned-mac-address",
+		$iface->{'ether'});
+
+# Update MTU
+&save_nm_config($cfg, "ethernet", "mtu", $iface->{'mtu'});
+
+# Update static routes
+my @routes;
+if ($iface->{'routes'}) {
+	foreach my $r (@{$iface->{'routes'}}) {
+		push(@routes, join(" ", split(/,/, $r)));
+		}
+	}
+&save_nm_config($cfg, "ipv4", "routes", \@routes);
+
 &flush_file_lines($f);
 &unlock_file($f);
 }
 
-# delete_interface(&iface)
+# delete_interface(&iface, &boot)
 # Remove a boot-time interface
 sub delete_interface
 {
-my ($iface) = @_;
+my ($iface, $boot) = @_;
+$boot ||= [ &boot_interfaces() ];
 if ($iface->{'virtual'} ne '') {
-	# Just remove the virtual address and shift down
-	&lock_file($iface->{'file'});
-	my $i = $iface->{'virtual'}+2;
-	while(1) {
-		my $nv = &find_nm_config(
-			$baseiface->{'cfg'}, "ipv4", "address".($i+1));
-		&save_nm_config($iface->{'cfg'}, "ipv4", "address".$i, $nv);
-		last if (!$nv);
-		}
-	&flush_file_lines($iface->{'file'});
-	&unlock_file($iface->{'file'});
+	# Just remove the virtual address from the boot list
+	my ($baseiface) = grep { $_->{'fullname'} eq $iface->{'name'} } @$boot;
+	$baseiface || &error("Base interface $iface->{'name'} does not exist");
+	splice(@$boot, $iface->{'index'}, 1);
+	&save_interface($baseiface, $boot);
 	}
 else {
 	# Remove the whole interface file
-	&unlink_logged($iface->{'file'});
+	my $uuid = &find_nm_config($iface->{'cfg'}, "connection", "uuid");
+	$uuid || &error("No uuid found when deleting $iface->{'name'}");
+	my $out = &backquote_logged("nmcli conn delete ".quotemeta($uuid));
+	$? && &error("nmcli conn delete $uuid failed : $out");
 	}
 }
 
