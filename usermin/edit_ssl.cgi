@@ -74,7 +74,7 @@ print &ui_table_row($text{'ssl_cipher_list'},
 print &ui_table_row($text{'ssl_extracas'},
 	&ui_textarea("extracas", join("\n",split(/\s+/, $miniserv{'extracas'})),
 		     3, 60)." ".
-	&file_chooser_button("extracas", 0, undef, undef, 1));
+	&file_chooser_button("extracas", 0, undef, undef, 1)."<p><br><p>");
 
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'save'} ] ]);
