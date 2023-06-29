@@ -43,7 +43,9 @@ my $termlinks =
 	{ 'css' => ["xterm.css?$wver"],
 	  'js'  => ["xterm.js?$wver",
 	            "xterm-addon-attach.js?$wver",
-	            "xterm-addon-fit.js?$wver"] };
+	            "xterm-addon-fit.js?$wver",
+	            "xterm-addon-canvas.js?$wver",
+	            "xterm-addon-webgl.js?$wver"] };
 
 # Pre-process options
 my $conf_size_str = $config{'size'};
@@ -205,31 +207,60 @@ if ($http_host_conf) {
 		}
 my $http_host = $http_host_conf || "$ws_proto://$ENV{'HTTP_HOST'}";
 my $url = "$http_host/$module_name/ws-$port";
+my $canvasAddon = $termlinks->{'js'}[3];
+my $webGLAddon = $termlinks->{'js'}[4];
 my $term_script = <<EOF;
 
 (function() {
-	var socket = new WebSocket('$url', 'binary'),
-	    termcont = document.getElementById('terminal'),
-	    err_conn_cannot = 'Cannot connect to the socket $url',
-	    err_conn_lost = 'Connection to the socket $url lost';
+	const socket = new WebSocket('$url', 'binary'),
+	      termcont = document.getElementById('terminal'),
+	      err_conn_cannot = 'Cannot connect to the socket $url',
+	      err_conn_lost = 'Connection to the socket $url lost',
+	      webGLAddonLink = '$webGLAddon',
+	      canvasAddonLink = '$canvasAddon',
+	      detectWebGLContext = (function() {
+	          const canvas = document.createElement("canvas"),
+	          gl = canvas.getContext("webgl") ||
+	               canvas.getContext("experimental-webgl");
+	          return gl instanceof WebGLRenderingContext ? true : false;
+	      })();
 	socket.onopen = function() {
-		var term = new Terminal($termjs_opts{'Options'}),
-		    attachAddon = new AttachAddon.AttachAddon(this),
-		    fitAddon = new FitAddon.FitAddon();
-		term.loadAddon(attachAddon);
-		term.loadAddon(fitAddon);
-		term.open(termcont);
-		term.focus();
-		
-		// On resize event triggered by fit()
-		term.onResize(function(e) {
-			socket.send('\\\\033[8;('+e.rows+');('+e.cols+')t');
-		});
+		const term = new Terminal($termjs_opts{'Options'}),
+		      attachAddon = new AttachAddon.AttachAddon(this),
+		      fitAddon = new FitAddon.FitAddon(),
+		      renderScript = document.createElement('script');
+	  renderScript.src = detectWebGLContext ? webGLAddonLink : canvasAddonLink;
+	  renderScript.async = false;
+	  document.body.appendChild(renderScript);
 
-		// Observe on terminal container change
-		new ResizeObserver(function() {
-			fitAddon.fit();
-		}).observe(termcont);
+	  // Wait to load requested render addon
+	  renderScript.addEventListener('load', function() {
+	      const rendererAddon = detectWebGLContext ?
+	              new WebglAddon.WebglAddon() :
+	              new CanvasAddon.CanvasAddon();
+	      term.loadAddon(attachAddon);
+	      term.loadAddon(fitAddon);
+	      term.loadAddon(rendererAddon);
+	      term.open(termcont);
+	      term.focus();
+
+	      // Handle case of dropping WebGL context
+	      if (typeof WebglAddon === 'object') {
+	        rendererAddon.onContextLoss(function() {
+	          rendererAddon.dispose();
+	        });
+	      }
+
+	      // On resize event triggered by fit()
+	      term.onResize(function(e) {
+	          socket.send('\\\\033[8;(' + e.rows + ');(' + e.cols + ')t');
+	      });
+
+	      // Observe on terminal container change
+	      new ResizeObserver(function() {
+	          fitAddon.fit();
+	      }).observe(termcont);
+	  });
 	};
 	socket.onerror = function() {
 		termcont.innerHTML = '<tt style="color: \#ff0000">Error: ' +
