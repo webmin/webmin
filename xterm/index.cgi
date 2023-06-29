@@ -214,7 +214,7 @@ my $term_script = <<EOF;
 	    err_conn_lost = 'Connection to the socket $url lost';
 	socket.onopen = function() {
 		var term = new Terminal($termjs_opts{'Options'}),
-		    attachAddon = new AttachAddon.AttachAddon(this);
+		    attachAddon = new AttachAddon.AttachAddon(this),
 		    fitAddon = new FitAddon.FitAddon();
 		term.loadAddon(attachAddon);
 		term.loadAddon(fitAddon);
