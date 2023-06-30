@@ -1424,7 +1424,7 @@ if ($variant eq 'mariadb') {
 	open(IN, '<' . $file) or die $!;
 	open(OUT, '>' . $tfile) or die $!;
 	while(<IN>) {
-		s/utf8mb4_0900_ai_ci/utf8mb4_unicode_520_ci/g;
+		s/COLLATE(\s|=)utf8mb4_0900_ai_ci/COLLATE$1utf8mb4_unicode_520_ci/g;
 		print OUT;
 		}
 	close(OUT);
