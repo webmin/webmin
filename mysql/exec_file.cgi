@@ -58,11 +58,11 @@ my $collation_downgrade = 0;
 open(SQL, "<$file");
 while(<SQL>) {
 	if (/^\s*insert\s+into\s+`(\S+)`/i ||
-           /^\s*insert\s+into\s+(\S+)/i) {
+	    /^\s*insert\s+into\s+(\S+)/i) {
 		$insert_count++;
 		}
 	if (/^\s*create\s+table\s+`(\S+)`/i ||
-           /^\s*create\s+table\s+(\S+)/i) {
+	    /^\s*create\s+table\s+(\S+)/i) {
 		$create_count++;
 		}
 	if ($variant eq 'mariadb' && /COLLATE\s+utf8mb4_0900_ai_ci/i) {
