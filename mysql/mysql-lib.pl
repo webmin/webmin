@@ -1429,6 +1429,7 @@ if ($variant eq 'mariadb') {
 		}
 	close(OUT);
 	close(IN);
+	&copy_permissions_source_dest($file, $tfile);
 	return $tfile;
 	}
 return $file;

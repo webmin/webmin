@@ -7662,6 +7662,54 @@ foreach my $f (@_) {
 return wantarray ? ($rv, $err) : $rv;
 }
 
+=head2 copy_permissions_source_dest(source, dest)
+
+Copy file permissions from one file to another. Returns 1
+on success, or 0 on failure - also sets $! on failure.
+
+=cut
+sub copy_permissions_source_dest
+{
+return (1, undef) if (&is_readonly_mode());
+my ($src, $dst) = @_;
+my ($err, $ok);
+my @ssrc = stat($src);
+
+# Stat source file
+$err = "$src : $!"
+    if ($!);
+$ok = $err ? 0 : 1;
+if ($err) {
+    return wantarray ? ($ok, $err) : $ok;
+    }
+
+# Set permissions
+chmod($ssrc[2] & 07777, $dst);
+$err = "$dst : $!"
+    if ($!);
+$ok = $err ? 0 : 1;
+if ($err) {
+    return wantarray ? ($ok, $err) : $ok;
+    }
+
+# Set owner and group
+chown($ssrc[4], $ssrc[5], $dst);
+$err = "$dst : $!"
+    if ($!);
+$ok = $err ? 0 : 1;
+if ($err) {
+    return wantarray ? ($ok, $err) : $ok;
+    }
+
+# Set security context
+if (&is_selinux_enabled() && &has_command("chcon")) {
+    &execute_command("chcon --reference=".quotemeta($src). " ".quotemeta($dst), undef, undef, \$err);
+    $ok = $err ? 0 : 1;
+    }
+
+return wantarray ? ($ok, $err) : $ok;
+}
+
 =head2 copy_source_dest(source, dest, [copy-link-target])
 
 Copy some file or directory to a new location. Returns 1 on success, or 0
