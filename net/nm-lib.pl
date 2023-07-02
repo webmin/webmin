@@ -1,4 +1,6 @@
 # Networking functions for Network Manager
+# XXX bridges
+# XXX test IPv6 support
 
 $nm_conn_dir = "/etc/NetworkManager/system-connections";
 $sysctl_config = "/etc/sysctl.conf";
@@ -90,12 +92,33 @@ foreach my $f (glob("$nm_conn_dir/*.nmconnection")) {
 		}
 	$iface->{'routes'} = \@routes if (@routes);
 
+	# Bridge options
+	my $type = &find_nm_config($cfg, "connection", "type");
+	if ($type eq "bridge") {
+		$iface->{'bridge'} = 1;
+		}
+	my $master = &find_nm_config($cfg, "connection", "master");
+	$iface->{'bridge_master'} = $master;
+
 	push(@rv, $iface);
 	push(@rv, @virts);
 	}
+
+# Set indexes
 for(my $i=0; $i<@rv; $i++) {
 	$rv[$i]->{'index'} = $i;
 	}
+
+# Make bridge connections
+foreach my $iface (@rv) {
+	if ($iface->{'bridge'}) {
+		my ($slave) = grep { $_->{'bridge_master'} eq $iface->{'name'} } @rv;
+		if ($slave) {
+			$iface->{'bridgeto'} = $slave->{'name'};
+			}
+		}
+	}
+
 return @rv;
 }
 
@@ -159,6 +182,11 @@ else {
 	&lock_file($f);
 	}
 
+# Update DHCP mode
+&save_nm_config($cfg, "ipv4", "method",
+	!$iface->{'up'} ? "disabled" :
+	$iface->{'dhcp'} || !$iface->{'address'} ? "auto" : "manual");
+
 # Update address
 my @addresses;
 if ($iface->{'address'}) {
@@ -174,11 +202,6 @@ foreach my $viface (grep { $_->{'name'} eq $iface->{'name'} &&
 	}
 &save_nm_config($cfg, "ipv4", "addresses", \@addresses);
 &save_nm_config($cfg, "ipv4", "gateway", $iface->{'gateway'});
-
-# Update DHCP mode
-&save_nm_config($cfg, "ipv4", "method",
-	!$iface->{'up'} ? "disabled" :
-	$iface->{'dhcp'} ? "auto" : "manual");
 
 # Update IPv6 addresses
 my @address6;
@@ -439,7 +462,7 @@ return 1;
 
 sub supports_bridges
 {
-return 0;	# XXX add later
+return 1;
 }
 
 sub supports_bonding
@@ -456,7 +479,8 @@ return 0;	# XXX fix later
 # Can some boot-time interface parameter be edited?
 sub can_edit
 {
-return 1;
+my ($what) = @_;
+return $what =~ /^(bridgestp|bridgefd|bridgewait)$/ ? 0 : 1;
 }
 
 # apply_network()
