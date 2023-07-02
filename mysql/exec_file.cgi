@@ -9,6 +9,8 @@ $access{'edonly'} && &error($text{'dbase_ecannot'});
 &error_setup($text{'exec_err'});
 $sql_charset = $in{'charset'};
 
+my ($ver, $variant) = &get_remote_mysql_variant();
+
 if ($in{'mode'}) {
 	# From uploaded file
 	$in{'upload'} || &error($text{'exec_eupload'});
@@ -50,17 +52,21 @@ if ($cmd) {
 	}
 
 # Check the file for tables created and rows inserted
-$create_count = 0;
-$insert_count = 0;
+my $create_count = 0;
+my $insert_count = 0;
+my $collation_downgrade = 0;
 open(SQL, "<$file");
 while(<SQL>) {
 	if (/^\s*insert\s+into\s+`(\S+)`/i ||
-            /^\s*insert\s+into\s+(\S+)/i) {
+	    /^\s*insert\s+into\s+(\S+)/i) {
 		$insert_count++;
 		}
 	if (/^\s*create\s+table\s+`(\S+)`/i ||
-            /^\s*create\s+table\s+(\S+)/i) {
+	    /^\s*create\s+table\s+(\S+)/i) {
 		$create_count++;
+		}
+	if ($variant eq 'mariadb' && /COLLATE\s+utf8mb4_0900_ai_ci/i) {
+		$collation_downgrade++;
 		}
 	}
 close(SQL);
@@ -73,6 +79,9 @@ $got++ if ($out =~ /\S/);
 print "<i>$text{'exec_noout'}</i>\n" if (!$got);
 print "</pre>\n";
 if (!$ex) {
+	if ($collation_downgrade) {
+		print &text('exec_collationdown', 'utf8mb4_0900_ai_ci', 'utf8mb4_unicode_520_ci'),"<br>\n";
+		}
 	if ($create_count) {
 		print &text('exec_created', $create_count),"\n";
 		}
