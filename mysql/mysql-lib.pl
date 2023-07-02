@@ -1034,7 +1034,7 @@ local $cs = $sql_charset ? "--default-character-set=".quotemeta($sql_charset)
 			 : "";
 local $temp = &transname();
 &open_tempfile(TEMP, ">$temp");
-&print_tempfile(TEMP, "source ".$file.";\n");
+&print_tempfile(TEMP, "source ".&fix_collation($file).";\n");
 &close_tempfile(TEMP);
 &set_ownership_permissions(undef, undef, 0644, $temp);
 &set_authstr_env();
@@ -1410,6 +1410,29 @@ if (&compare_version_numbers(&get_remote_mysql_version(), "5") >= 0) {
 	@rv = map { [ $_->[0], $_->[1] ] } @{$d->{'data'}};
 	}
 return sort { lc($a->[0]) cmp lc($b->[0]) } @rv;
+}
+
+# fix_collation(file)
+# Fixes unsupported collations on restore, by replacing
+# unsuported with the closest supported variant
+sub fix_collation
+{
+my ($file) = @_;
+my ($version, $variant) = &get_remote_mysql_variant();
+if ($variant eq 'mariadb') {
+	my $tfile = &transname();
+	open(IN, '<' . $file) or die $!;
+	open(OUT, '>' . $tfile) or die $!;
+	while(<IN>) {
+		s/COLLATE(\s|=)utf8mb4_0900_ai_ci/COLLATE$1utf8mb4_unicode_520_ci/g;
+		print OUT;
+		}
+	close(OUT);
+	close(IN);
+	&copy_permissions_source_dest($file, $tfile);
+	return $tfile;
+	}
+return $file;
 }
 
 # list_system_variables()
