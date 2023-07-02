@@ -7673,41 +7673,34 @@ sub copy_permissions_source_dest
 return (1, undef) if (&is_readonly_mode());
 my ($src, $dst) = @_;
 my ($err, $ok);
-my @ssrc = stat($src);
 
 # Stat source file
-$err = "$src : $!"
-    if ($!);
-$ok = $err ? 0 : 1;
-if ($err) {
-    return wantarray ? ($ok, $err) : $ok;
+my @ssrc = stat($src);
+if ($!) {
+    return wantarray ? (0, "$src : $!") : 0;
     }
 
 # Set permissions
 chmod($ssrc[2] & 07777, $dst);
-$err = "$dst : $!"
-    if ($!);
-$ok = $err ? 0 : 1;
-if ($err) {
-    return wantarray ? ($ok, $err) : $ok;
+if ($!) {
+    return wantarray ? (0, "$dst : $!") : 0;
     }
 
 # Set owner and group
 chown($ssrc[4], $ssrc[5], $dst);
-$err = "$dst : $!"
-    if ($!);
-$ok = $err ? 0 : 1;
-if ($err) {
-    return wantarray ? ($ok, $err) : $ok;
+if ($!) {
+    return wantarray ? (0, "$dst : $!") : 0;
     }
 
 # Set security context
 if (&is_selinux_enabled() && &has_command("chcon")) {
     &execute_command("chcon --reference=".quotemeta($src). " ".quotemeta($dst), undef, undef, \$err);
-    $ok = $err ? 0 : 1;
+    if ($err) {
+        return wantarray ? (0, $err) : 0;
+        }
     }
 
-return wantarray ? ($ok, $err) : $ok;
+return wantarray ? (1, undef) : 1;
 }
 
 =head2 copy_source_dest(source, dest, [copy-link-target])
