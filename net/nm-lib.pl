@@ -1,6 +1,4 @@
 # Networking functions for Network Manager
-# XXX bridges
-# XXX test IPv6 support
 
 $nm_conn_dir = "/etc/NetworkManager/system-connections";
 $sysctl_config = "/etc/sysctl.conf";
@@ -223,6 +221,7 @@ for(my $i=0; $i<@{$iface->{'address6'}}; $i++) {
 		$iface->{'netmask6'}->[$i];
 	push(@address6, $v);
 	}
+&save_nm_config($cfg, "ipv6", "method", "auto");
 &save_nm_config($cfg, "ipv6", "address",
 		@address6 ? join(",", @address6) : undef);
 
@@ -257,14 +256,12 @@ if ($iface->{'routes'}) {
 
 # Connect bridge interface
 if ($iface->{'bridge'}) {
-	my ($oldbridgeto) = grep { $_->{'master'} eq $iface->{'fullname'} }
-				 @$boot;
-	my ($bridgeto) = grep { $_->{'fullname'} eq $iface->{'bridgeto'} }
-			      @$boot;
-	$bridgeto || &error("Bridge target interface $iface->{'bridgeto'} does not exist");
+	my ($oldbridgeto) = grep { $_->{'bridge_master'} eq $iface->{'fullname'} } @$boot;
+	my ($bridgeto) = grep { $_->{'fullname'} eq $iface->{'bridgeto'} } @$boot;
 	if ($oldbridgeto ne $bridgeto) {
 		if ($oldbridgeto) {
 			&save_nm_config($oldbridgeto->{'cfg'}, "connection",
+					"slave-type", undef,
 					"master", undef);
 			}
 		if ($bridgeto) {
