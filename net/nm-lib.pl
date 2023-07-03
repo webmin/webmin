@@ -168,6 +168,13 @@ else {
 	else {
 		# Need to create a new empty config for the real interface
 		$uuid = &nm_interface_uuid($iface->{'name'});
+		if (!$uuid) {
+			my $out = &backquote_command(
+				"nmcli conn add type ethernet ifname ".
+				quotemeta($iface->{'name'})." 2>&1");
+			$? && &error("Failed to create NetworkManager interface : $out");
+			$uuid = &nm_interface_uuid($iface->{'name'});
+			}
 		$uuid || &error("Could not find UUID for $iface->{'name'}");
 		my $out = &backquote_command("nmcli conn modify ".
 			quotemeta($uuid)." connect.interface-name ".
@@ -206,7 +213,8 @@ foreach my $viface (grep { $_->{'name'} eq $iface->{'name'} &&
 # Update DHCP mode
 &save_nm_config($cfg, "ipv4", "method",
 	!$iface->{'up'} ? "disabled" :
-	$iface->{'dhcp'} || !$iface->{'address'} ? "auto" : "manual");
+	$iface->{'dhcp'} ? "auto" :
+        $iface->{'address'} ? "manual" : "disabled");
 
 # Update IPv6 addresses
 my @address6;
@@ -247,7 +255,26 @@ if ($iface->{'routes'}) {
 	}
 &save_nm_config($cfg, "ipv4", "routes", \@routes);
 
-&flush_file_lines($f);
+# Connect bridge interface
+if ($iface->{'bridge'}) {
+	my ($oldbridgeto) = grep { $_->{'master'} eq $iface->{'fullname'} }
+				 @$boot;
+	my ($bridgeto) = grep { $_->{'fullname'} eq $iface->{'bridgeto'} }
+			      @$boot;
+	$bridgeto || &error("Bridge target interface $iface->{'bridgeto'} does not exist");
+	if ($oldbridgeto ne $bridgeto) {
+		if ($oldbridgeto) {
+			&save_nm_config($oldbridgeto->{'cfg'}, "connection",
+					"master", undef);
+			}
+		if ($bridgeto) {
+			&save_nm_config($bridgeto->{'cfg'}, "connection",
+					"slave-type", "bridge",
+					"master", $iface->{'fullname'});
+			}
+		}
+	}
+
 &unlock_file($f);
 }
 
@@ -629,24 +656,29 @@ return wantarray ? map { $_->{'value'} } @dirs :
        @dirs ? $dirs[0]->{'value'} : undef;
 }
 
-# save_nm_config(&config, section, name, value, [file])
+# save_nm_config(&config, section, name, value)
 # Updates, creates or deletes a directive in some section
 sub save_nm_config
 {
-my ($cfg, $sname, $name, $value, $file) = @_;
+my ($cfg, $sname, @nvlist) = @_;
 my $uuid = &find_nm_config($cfg, "connection", "uuid");
-$uuid || &error("No uuid found when setting $sname.$name");
-if (ref($value)) {
-	$value = @$value ? join(",", @$value) : undef;
-	}
+$uuid || &error("No uuid found when setting $sname.$nvlist[0]");
 
-my $cmd = "nmcli conn modify ".quotemeta($uuid)." ".
-	  quotemeta($sname).".".quotemeta($name);
-if (defined($value)) {
-	$cmd .= " ".quotemeta($value);
-	}
-else {
-	$cmd .= " \"\"";
+my $cmd = "nmcli conn modify ".quotemeta($uuid);
+while(@nvlist) {
+	my $name = shift(@nvlist);
+	my $value = shift(@nvlist);
+	if (ref($value)) {
+		$value = @$value ? join(",", @$value) : undef;
+		}
+
+	$cmd .= " ".quotemeta($sname).".".quotemeta($name);
+	if (defined($value)) {
+		$cmd .= " ".quotemeta($value);
+		}
+	else {
+		$cmd .= " \"\"";
+		}
 	}
 my $out = &backquote_logged("$cmd 2>&1 </dev/null");
 &error("$cmd failed : $out") if ($?);
