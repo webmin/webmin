@@ -94,6 +94,8 @@ foreach my $f (glob("$nm_conn_dir/*.nmconnection")) {
 	my $type = &find_nm_config($cfg, "connection", "type");
 	if ($type eq "bridge") {
 		$iface->{'bridge'} = 1;
+		my $stp = &find_nm_config($cfg, "bridge", "stp");
+		$iface->{'bridgestp'} = $stp eq "false" ? "off" : "on";
 		}
 	my $master = &find_nm_config($cfg, "connection", "master");
 	$iface->{'bridge_master'} = $master;
@@ -256,8 +258,10 @@ if ($iface->{'routes'}) {
 
 # Connect bridge interface
 if ($iface->{'bridge'}) {
-	my ($oldbridgeto) = grep { $_->{'bridge_master'} eq $iface->{'fullname'} } @$boot;
-	my ($bridgeto) = grep { $_->{'fullname'} eq $iface->{'bridgeto'} } @$boot;
+	my ($oldbridgeto) = grep { $_->{'bridge_master'} eq
+				   $iface->{'fullname'} } @$boot;
+	my ($bridgeto) = grep { $_->{'fullname'} eq
+				$iface->{'bridgeto'} } @$boot;
 	if ($oldbridgeto ne $bridgeto) {
 		if ($oldbridgeto) {
 			&save_nm_config($oldbridgeto->{'cfg'}, "connection",
@@ -270,6 +274,7 @@ if ($iface->{'bridge'}) {
 					"master", $iface->{'fullname'});
 			}
 		}
+	&save_nm_config($cfg, "bridge", "stp", $iface->{'bridgestp'});
 	}
 
 &unlock_file($f);
@@ -512,7 +517,7 @@ return 0;	# XXX fix later
 sub can_edit
 {
 my ($what) = @_;
-return $what !~ /^(bridgestp|bridgefd|bridgewait|bootp)$/;
+return $what !~ /^(bridgefd|bridgewait|bootp)$/;
 }
 
 # apply_network()
