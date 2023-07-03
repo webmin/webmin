@@ -155,21 +155,25 @@ if ($iface->{'file'}) {
 	&lock_file($f);
 	}
 else {
-	# Need to create a new empty config for the interface
 	my $uuid;
-	my $out = &backquote_command("nmcli conn show");
-	foreach my $l (split(/\r?\n/, $out)) {
-		my @w = split(/\s+/, $l);
-		if ($w[@w-1] eq $iface->{'name'}) {
-			$uuid = $w[@w-3];
-			last;
-			}
+	if ($iface->{'bridge'}) {
+		# Need to create a new bridge interface
+		my $out = &backquote_command(
+			"nmcli conn add type bridge ifname ".
+			quotemeta($iface->{'name'})." 2>&1");
+		$? && &error("Failed to create NetworkManager bridge : $out");
+		$uuid = &nm_interface_uuid($iface->{'name'});
+		$uuid || &error("Could not find UUID for $iface->{'name'}");
 		}
-	$uuid || &error("Interface $iface->{'name'} does not exist");
-	my $out = &backquote_command("nmcli conn modify ".
-		quotemeta($uuid)." connect.interface-name ".
-		quotemeta($iface->{'name'})." 2>&1");
-	$? && &error("Failed to create NetworkManager config : $out");
+	else {
+		# Need to create a new empty config for the real interface
+		$uuid = &nm_interface_uuid($iface->{'name'});
+		$uuid || &error("Could not find UUID for $iface->{'name'}");
+		my $out = &backquote_command("nmcli conn modify ".
+			quotemeta($uuid)." connect.interface-name ".
+			quotemeta($iface->{'name'})." 2>&1");
+		$? && &error("Failed to create NetworkManager config : $out");
+		}
 
 	# Find the newly created NetworkManager config file
 	$boot = [ &boot_interfaces() ];
@@ -181,11 +185,6 @@ else {
 	$f = $iface->{'file'} = $newiface->{'file'};
 	&lock_file($f);
 	}
-
-# Update DHCP mode
-&save_nm_config($cfg, "ipv4", "method",
-	!$iface->{'up'} ? "disabled" :
-	$iface->{'dhcp'} || !$iface->{'address'} ? "auto" : "manual");
 
 # Update address
 my @addresses;
@@ -200,8 +199,14 @@ foreach my $viface (grep { $_->{'name'} eq $iface->{'name'} &&
 		&mask_to_prefix($viface->{'netmask'});
 	push(@addresses, $v);
 	}
+&save_nm_config($cfg, "ipv4", "method", "auto");
 &save_nm_config($cfg, "ipv4", "addresses", \@addresses);
 &save_nm_config($cfg, "ipv4", "gateway", $iface->{'gateway'});
+
+# Update DHCP mode
+&save_nm_config($cfg, "ipv4", "method",
+	!$iface->{'up'} ? "disabled" :
+	$iface->{'dhcp'} || !$iface->{'address'} ? "auto" : "manual");
 
 # Update IPv6 addresses
 my @address6;
@@ -210,7 +215,10 @@ for(my $i=0; $i<@{$iface->{'address6'}}; $i++) {
 		$iface->{'netmask6'}->[$i];
 	push(@address6, $v);
 	}
-&save_nm_config($cfg, "ipv6", "address", @address6 ? join(",", @address6) : undef);
+&save_nm_config($cfg, "ipv6", "address",
+		@address6 ? join(",", @address6) : undef);
+
+# Update IPv6 address allocation mode
 &save_nm_config($cfg, "ipv6", "method",
 	$iface->{'auto6'} ? "auto" :
 	@{$iface->{'address6'}} ? "manual" : "disabled");
@@ -480,7 +488,7 @@ return 0;	# XXX fix later
 sub can_edit
 {
 my ($what) = @_;
-return $what =~ /^(bridgestp|bridgefd|bridgewait)$/ ? 0 : 1;
+return $what !~ /^(bridgestp|bridgefd|bridgewait|bootp)$/;
 }
 
 # apply_network()
@@ -642,5 +650,20 @@ else {
 	}
 my $out = &backquote_logged("$cmd 2>&1 </dev/null");
 &error("$cmd failed : $out") if ($?);
+}
+
+# nm_interface_uuid(name)
+# Returns the UUID for an interface, if there is one
+sub nm_interface_uuid
+{
+my ($name) = @_;
+my $out = &backquote_command("nmcli conn show 2>/dev/null");
+foreach my $l (split(/\r?\n/, $out)) {
+	my @w = split(/\s+/, $l);
+	if ($w[@w-1] eq $name) {
+		return $w[@w-3];
+		}
+	}
+return undef;
 }
 
