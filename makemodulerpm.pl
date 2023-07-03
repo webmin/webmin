@@ -19,8 +19,11 @@ if (-d "$ENV{'HOME'}/redhat") {
 elsif (-d "$ENV{'HOME'}/rpmbuild") {
 	$basedir = "$ENV{'HOME'}/rpmbuild";
 	}
-else {
+elsif ( -d "/usr/src/redhat") {
 	$basedir = "/usr/src/redhat";
+	}
+else {
+	$basedir = "/usr/src/rpmbuild";
 	}
 my $target_dir = "$basedir" . "/RPMS/noarch";	# where to copy the RPM to
 
