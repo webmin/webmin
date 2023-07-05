@@ -65,10 +65,10 @@ our @dnssec_dlv_key = ( 257, 3, 5, '"BEAAAAPHMu/5onzrEE7z1egmhg/WPO0+juoZrW3euWE
 
 my $rand_flag;
 if ($gconfig{'os_type'} =~ /-linux$/ && 
+    $config{'force_random'} eq '0' &&
     -r "/dev/urandom" &&
-    !$config{'force_random'} &&
-    $bind_version &&
-    &compare_version_numbers($bind_version, '9.14') < 0) {
+    $bind_version =~ /^9\./ &&
+    &compare_version_numbers($bind_version, '<', '9.14.2')) {
 	# Version: 9.14.2 deprecated the use of -r option 
 	# in favor of using /dev/random [bugs:#5370]
 	$rand_flag = "-r /dev/urandom";
