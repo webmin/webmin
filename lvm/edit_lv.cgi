@@ -43,9 +43,9 @@ if (!&can_resize_lv_stat(@stat)) {
 else {
 	# Details for new LV
 	if ($stat[2]) {
-		print &ui_table_row($text{'lv_name'}, $lv->{'name'},
-				    undef, [ "", "valign=top" ]);
-		print &ui_hidden("name", $lv->{'name'});
+		print &ui_table_row($text{'lv_name'},
+				    $lv->{'name'}.
+				        &ui_hidden("name", $lv->{'name'}));
 		}
 	else {
 		print &ui_table_row($text{'lv_name'},
