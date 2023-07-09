@@ -74,14 +74,14 @@ sub list_system_info
 			$used_nice.$iused,
 			$total_nice.$itotal_full,
 			$dev_id]);
-		$html .= &ui_columns_end();
 		}
-    return ({ 'type' => 'html',
-               'desc' => $desc,
-               'open' => $open,
-               'id'   => $module_name . '_disks_info',
-               'html' => $html
-            });
+	$html .= &ui_columns_end();
+	return ({ 'type' => 'html',
+	       'desc' => $desc,
+	       'open' => $open,
+	       'id'   => $module_name . '_disks_info',
+	       'html' => $html
+	    });
 }
 
 sub ucwords
