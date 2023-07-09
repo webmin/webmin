@@ -925,7 +925,7 @@ $table .= &ui_columns_row(\@cols, [ "valign=top", "valign=top", "valign=top",
 				    "valign=top", "valign=top" ]);
 $table .= &ui_columns_end();
 $table .= $text{'edit_ctrl'};
-$rv .= &ui_table_row(undef, $table, $width);
+$rv .= &ui_table_row(undef, $table, $width, undef, ['data-schedule-tr']);
 return $rv;
 }
 
