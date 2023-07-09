@@ -1041,7 +1041,7 @@ sub edit_LimitRequestBody
 {
 return (1, $text{'core_maxbody'},
 	&opt_input($_[0]->{'value'}, "LimitRequestBody", $text{'core_default'}, 8)
-		.$text{'bytes'});
+		.&ui_space(2).$text{'bytes'});
 }
 sub save_LimitRequestBody
 {
@@ -1052,7 +1052,7 @@ sub edit_LimitXMLRequestBody
 {
 return (1, $text{'core_maxxml'},
 	&opt_input($_[0]->{'value'}, "LimitXMLRequestBody",
-		   $text{'core_default'}, 8).$text{'bytes'});
+		   $text{'core_default'}, 8).&ui_space(2).$text{'bytes'});
 }
 sub save_LimitXMLRequestBody
 {

@@ -13,6 +13,7 @@ sub edit_SuexecUserGroup
 local $rv;
 $rv .= sprintf "<input type=radio name=SuexecUserGroup_def value=1 %s> %s\n",
 		$_[0] ? "" : "checked", $text{'suexec_none'};
+$rv .= &ui_newline();
 $rv .= sprintf "<input type=radio name=SuexecUserGroup_def value=0 %s>\n",
 		$_[0] ? "checked" : "";
 $rv .= sprintf "%s <input name=SuexecUserGroup_u size=8 value='%s'> %s\n",

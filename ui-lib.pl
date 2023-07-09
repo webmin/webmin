@@ -2807,6 +2807,50 @@ my ($label, $content) = @_;
 return "<div class='ui_div_row'><span>$label</span><span>$content</span></div>";
 }
 
+=head2 ui_space(number)
+
+Prints no breakable space number of given times
+
+=cut
+sub ui_space
+{
+if (defined(&theme_ui_space)) {
+	return &theme_ui_space(@_);
+	}
+my ($number) = @_;
+$number ||= 1;
+return "<span class='ui_space'>".("&nbsp;" x $number)."</span>";
+}
+
+=head2 ui_newline(number)
+
+Prints new lines given number of times
+
+=cut
+sub ui_newline
+{
+if (defined(&theme_ui_newline)) {
+	return &theme_ui_newline(@_);
+	}
+my ($number) = @_;
+$number ||= 1;
+return "<span class='ui_newline'>".("<br>" x $number)."</span>";
+}
+
+=head2 ui_text(text)
+
+Wraps any text into span tags
+
+=cut
+sub ui_text
+{
+if (defined(&theme_ui_text)) {
+	return &theme_ui_text(@_);
+	}
+my ($text) = @_;
+return "<span>$text</span>";
+}
+
 =head2 ui_paginations(&array, &opts)
 
 Given an array reference, slice it and return hash
