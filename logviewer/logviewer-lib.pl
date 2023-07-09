@@ -129,6 +129,12 @@ foreach my $fd (split(/\t+/, $config{'extras'}), split(/\t+/, $access{'extras'})
 		push(@rv, { 'file' => $fd });
 		}
 	}
+foreach my $f (@rv) {
+	if ($f->{'file'} =~ /^(.*)\s*\|$/) {
+		delete($f->{'file'});
+		$f->{'cmd'} = $1;
+		}
+	}
 return @rv;
 }
 

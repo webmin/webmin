@@ -86,10 +86,12 @@ if ($config{'others'} && $access{'others'}) {
 		foreach $o (@others) {
 			local @cols;
 			if ($o->{'file'}) {
-				push(@cols, &text('index_file',"<tt>$o->{'file'}</tt>"));
+				push(@cols, &text('index_file',
+				    "<tt>".&html_escape($o->{'file'})."</tt>"));
 				}
 			else {
-				push(@cols, &text('index_cmd', "<tt>".$o->{'cmd'}."</tt>"));
+				push(@cols, &text('index_cmd',
+				    "<tt>".&html_escape($o->{'cmd'})."</tt>"));
 				}
 			push(@cols, &html_escape($o->{'desc'}));
 			push(@cols, &ui_link("view_log.cgi?oidx=$o->{'mindex'}".
@@ -102,9 +104,16 @@ if ($config{'others'} && $access{'others'}) {
 # Display extra log files
 foreach $e (&extra_log_files()) {
 	local @cols;
-	push(@cols, &text('index_file', &html_escape($e->{'file'})));
+	if ($e->{'file'}) {
+		push(@cols, &text('index_file',
+			"<tt>".&html_escape($e->{'file'})."</tt>"));
+		}
+	else {
+		push(@cols, &text('index_cmd',
+			"<tt>".&html_escape($e->{'cmd'})."</tt>"));
+		}
 	push(@cols, &html_escape($e->{'desc'}));
-	push(@cols, &ui_link("view_log.cgi?extra=$e->{'file'}&view=1", $text{'index_view'}) );
+	push(@cols, &ui_link("view_log.cgi?extra=".&urlize($e->{'file'} || $e->{'cmd'})."&view=1", $text{'index_view'}) );
 	push(@col3, \@cols);
 	}
 

@@ -77,10 +77,12 @@ if ($in{'view'}) {
 		}
 	elsif ($in{'extra'}) {
 		# Extra log file
-		($extra) = grep { $_->{'file'} eq $in{'extra'} } @extras;
+		($extra) = grep { $_->{'file'} eq $in{'extra'} ||
+				  $_->{'cmd'} eq $in{'extra'} } @extras;
 		$extra || &error($text{'save_ecannot7'});
 		&can_edit_log($extra) || &error($text{'save_ecannot2'});
 		$file = $extra->{'file'};
+		$cmd = $extra->{'cmd'};
 		}
 	elsif ($in{'file'}) {
 		# Explicitly named file
