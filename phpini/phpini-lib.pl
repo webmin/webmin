@@ -325,7 +325,7 @@ local ($name) = @_;
 local $v = &find_value($name, $conf);
 return &ui_radio($name, lc($v) eq "on" || lc($v) eq "true" ||
 			lc($v) eq "yes" || $v eq "1" ? "On" : $v ? "Off" : "",
-		 [ !$v ? ( [ "", $text{'default'} ] ) : ( ),
+		 [ [ "", $text{'default'} ],
 		   [ "On", $text{'yes'} ],
 		   [ "Off", $text{'no'} ] ]);
 }
