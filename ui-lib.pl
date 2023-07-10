@@ -2837,18 +2837,18 @@ $number ||= 1;
 return "<span class='ui_newline'>".("<br>" x $number)."</span>";
 }
 
-=head2 ui_text(text)
+=head2 ui_text_wrap(text)
 
 Wraps any text into span tags
 
 =cut
-sub ui_text
+sub ui_text_wrap
 {
-if (defined(&theme_ui_text)) {
-	return &theme_ui_text(@_);
+if (defined(&theme_ui_text_wrap)) {
+	return &theme_ui_text_wrap(@_);
 	}
 my ($text) = @_;
-return "<span>$text</span>";
+return "<span class='ui_text_wrap'>$text</span>";
 }
 
 =head2 ui_paginations(&array, &opts)
