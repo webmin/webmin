@@ -1649,7 +1649,7 @@ if (defined($redir)) {
 	print DEBUG "handle_request: redir=$redir\n";
 	&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
 	&write_data("Date: $datestr\r\n");
-	&write_data("Server: $config{'server'}\r\n");
+	&write_data("Server: @{[&server_info()]}\r\n");
 	&write_data("Location: $prot://$hostport$redir\r\n");
 	&write_keep_alive(0);
 	&write_data("\r\n");
@@ -2081,7 +2081,7 @@ if (!$validated) {
 			# Ask for login with HTTP authentication
 			&write_data("HTTP/1.0 401 Unauthorized\r\n");
 			&write_data("Date: $datestr\r\n");
-			&write_data("Server: $config{'server'}\r\n");
+			&write_data("Server: @{[&server_info()]}\r\n");
 			&write_data("WWW-authenticate: Basic ".
 				   "realm=\"$config{'realm'}\"\r\n");
 			&write_keep_alive(0);
@@ -2328,7 +2328,7 @@ if (-d _) {
 		# It doesn't.. redirect
 		&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
 		&write_data("Date: $datestr\r\n");
-		&write_data("Server: $config{server}\r\n");
+		&write_data("Server: @{[&server_info()]}\r\n");
 		&write_data("Location: $prot://$hostport$page/\r\n");
 		&write_keep_alive(0);
 		&write_data("\r\n");
@@ -2359,7 +2359,7 @@ if (-d _) {
 	print DEBUG "handle_request: listing directory\n";
 	local $resp = "HTTP/1.0 $ok_code $ok_message\r\n".
 		      "Date: $datestr\r\n".
-		      "Server: $config{server}\r\n".
+		      "Server: @{[&server_info()]}\r\n".
 		      "Content-type: text/html; Charset=utf-8\r\n";
 	&write_data($resp);
 	&write_keep_alive(0);
@@ -2657,7 +2657,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 			if ($cgiheader{"location"}) {
 				&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
 				&write_data("Date: $datestr\r\n");
-				&write_data("Server: $config{'server'}\r\n");
+				&write_data("Server: @{[&server_info()]}\r\n");
 				&write_keep_alive(0);
 				# ignore the rest of the output. This is a hack,
 				# but is necessary for IE in some cases :(
@@ -2673,7 +2673,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 			else {
 				&write_data("HTTP/1.0 $ok_code $ok_message\r\n");
 				&write_data("Date: $datestr\r\n");
-				&write_data("Server: $config{'server'}\r\n");
+				&write_data("Server: @{[&server_info()]}\r\n");
 				&write_keep_alive(0);
 				}
 			foreach $h (@cgiheader) {
@@ -2715,7 +2715,7 @@ else {
 	local $etime = &get_expires_time($simple);
 	local $resp = "HTTP/1.0 $ok_code $ok_message\r\n".
 		      "Date: $datestr\r\n".
-		      "Server: $config{server}\r\n".
+		      "Server: @{[&server_info()]}\r\n".
 		      "Content-type: ".&get_type($full)."\r\n".
 		      "Last-Modified: ".&http_date($stopen[9])."\r\n".
 		      "Expires: ".&http_date(time()+$etime)."\r\n".
@@ -2786,7 +2786,7 @@ if ($eh) {
 else {
 	# Use the standard error message display
 	&write_data("HTTP/1.0 $code $msg\r\n");
-	&write_data("Server: $config{server}\r\n");
+	&write_data("Server: @{[&server_info()]}\r\n");
 	&write_data("Date: $datestr\r\n");
 	&write_data("Content-type: text/html; Charset=utf-8\r\n");
 	&write_keep_alive(0);
@@ -3524,7 +3524,7 @@ foreach $d (@_) {
 				&write_data(
 					"HTTP/1.0 302 Moved Temporarily\r\n");
 				&write_data("Date: $datestr\r\n");
-				&write_data("Server: $config{server}\r\n");
+				&write_data("Server: @{[&server_info()]}\r\n");
 				&write_keep_alive(0);
 				}
 			elsif ($cgiheader{"content-type"} eq "") {
@@ -3533,7 +3533,7 @@ foreach $d (@_) {
 			else {
 				&write_data("HTTP/1.0 $ok_code $ok_message\r\n");
 				&write_data("Date: $datestr\r\n");
-				&write_data("Server: $config{server}\r\n");
+				&write_data("Server: @{[&server_info()]}\r\n");
 				&write_keep_alive(0);
 				}
 			foreach $h (@cgiheader) {
@@ -4243,7 +4243,7 @@ if ($ok && (!$expired ||
 		# Got one .. go to it
 		&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
 		&write_data("Date: $datestr\r\n");
-		&write_data("Server: $config{'server'}\r\n");
+		&write_data("Server: @{[&server_info()]}\r\n");
 		&write_data("Location: $rurl\r\n");
 		&write_keep_alive(0);
 		&write_data("\r\n");
@@ -4253,7 +4253,7 @@ if ($ok && (!$expired ||
 		# Set cookie and redirect to originally requested page
 		&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
 		&write_data("Date: $datestr\r\n");
-		&write_data("Server: $config{'server'}\r\n");
+		&write_data("Server: @{[&server_info()]}\r\n");
 		local $sec = $ssl ? "; secure" : "";
 		if (!$config{'no_httponly'}) {
 			$sec .= "; httpOnly";
@@ -6896,4 +6896,14 @@ select($old);
 return undef;
 }
 
-
+# Returns server information in headers
+sub server_info
+{
+my $sig = $config{'server_sig'};
+if (!$sig) {
+	$sig =
+		$session_id ?
+			$config{'server'} : "MiniServ";
+	}
+return $sig;
+}

@@ -1688,6 +1688,17 @@ $main::no_miniserv_userdb = 1;
 &setvar('error-fatal', 1);
 my $msg = join("", @_);
 $msg =~ s/<[^>]*>//g;
+my @stack;
+for(my $i=0; my @stack_ = caller($i); $i++) {
+	push(@stack, \@stack_);
+	}
+my $err_caller;
+$err_caller = "$stack[1]->[1] (line $stack[1]->[2])"
+	if ($stack[1]->[1] && $stack[1]->[2]);
+if ($err_caller) {
+	$err_caller =~ s/$root_directory\///;
+	$main::whatfailed = $main::whatfailed ? "$main::whatfailed : $err_caller" : $err_caller;
+	}
 my $error_details = (($ENV{'WEBMIN_DEBUG'} || $gconfig{'debug_enabled'}) ? "" : "\n");
 my $error_output_right = sub {
 	my ($err_msg) = @_;
@@ -1711,7 +1722,7 @@ if (!$ENV{'REQUEST_METHOD'}) {
 	&print_call_stack() if ($gconfig{'error_stack'});
 	}
 elsif (defined(&theme_error)) {
-	&theme_error(@_);
+	&theme_error({err => \@_, stack => \@stack, err_caller => $err_caller});
 	}
 elsif ($ENV{'REQUEST_URI'} =~ /json-error=1/) {
 	my %jerror;
@@ -1759,11 +1770,11 @@ else {
 		print "<tr> <td$cls_err_td><b>$text{'error_file'}</b></td> ",
 		      "<td$cls_err_td><b>$text{'error_line'}</b></td> ",
 		      "<td$cls_err_td><b>$text{'error_sub'}</b></td> </tr>\n";
-		for($i=0; my @stack = caller($i); $i++) {
+		foreach my $stack (@stack) {
 			print "<tr>\n";
-			print "<td$cls_err_td>$stack[1]</td>\n";
-			print "<td$cls_err_td>$stack[2]</td>\n";
-			print "<td$cls_err_td>$stack[3]</td>\n";
+			print "<td$cls_err_td>$stack->[1]</td>\n";
+			print "<td$cls_err_td>$stack->[2]</td>\n";
+			print "<td$cls_err_td>$stack->[3]</td>\n";
 			print "</tr>\n";
 			}
 		print "</table>\n";
