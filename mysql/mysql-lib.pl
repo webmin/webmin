@@ -1620,13 +1620,18 @@ return $sql;
 sub get_mysql_plugin
 {
 my ($query) = @_;
-my @plugin = &execute_sql($master_db, 
-    "show variables LIKE '%default_authentication_plugin%'");
-my $plugin = $plugin[0]->{'data'}->[0]->[1];
-if ($plugin && $query) {
-	$plugin = " with $plugin ";
+if ($config{'auth_plugin'}) {
+	return " with $config{'auth_plugin'}";
 	}
-return $plugin;
+else {
+	my @plugin = &execute_sql($master_db, 
+	    "show variables LIKE '%default_authentication_plugin%'");
+	my $plugin = $plugin[0]->{'data'}->[0]->[1];
+	if ($plugin && $query) {
+		$plugin = " with $plugin ";
+		}
+	return $plugin;
+	}
 }
 
 # perms_column_to_privilege_map(col)

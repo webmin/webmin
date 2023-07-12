@@ -12,6 +12,7 @@ encoding=Encoding for database content,3,Default (from current language)
 max_dbs=Maximum number of databases and tables&#44; indexes and views to display,0,5
 max_text=Maximum display length for text fields,3,Unlimited
 charset=Character set for MySQL data,15,charset
+auth_plugin=Force use of authentication plugin,3,System default
 line2=System configuration,11
 mysqlshow=Path to mysqlshow command,0
 mysqladmin=Path to mysqladmin command,0
