@@ -261,7 +261,7 @@ if ($rpmdepends && defined($minfo{'depends'})) {
 			close($fh);
 			@mod_def_list = split(/\s+/, $mod_def_list);
 			if ( grep( /^$dmod$/, @mod_def_list ) ) {
-			  next;
+				  next;
 				}
 			}
 		push(@rdeps, $dwebmin ? ("webmin", ">=", $dwebmin) :
