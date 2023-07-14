@@ -495,11 +495,10 @@ return $name.
 # Increase the serial number in some SOA record by 1
 sub bump_soa_record
 {
-my($r, $v, $vals);
-for(my $i=0; $i<@{$_[1]}; $i++) {
-	$r = $_[1]->[$i];
+my ($file, $recs) = @_;
+foreach my $r (@$recs) {
 	if ($r->{'type'} eq "SOA") {
-		$v = $r->{'values'};
+		my $v = $r->{'values'};
 		# already set serial if no acl allow it to update or update
 		# is disabled
 		my $serial = $v->[2];
@@ -507,8 +506,8 @@ for(my $i=0; $i<@{$_[1]}; $i++) {
 			# automatically handle serial numbers ?
 			$serial = &compute_serial($v->[2]);
 			}
-		$vals = "$v->[0] $v->[1] (\n\t\t\t$serial\n\t\t\t$v->[3]\n".
-			"\t\t\t$v->[4]\n\t\t\t$v->[5]\n\t\t\t$v->[6] )";
+		my $vals = "$v->[0] $v->[1] (\n\t\t\t$serial\n\t\t\t$v->[3]\n".
+			   "\t\t\t$v->[4]\n\t\t\t$v->[5]\n\t\t\t$v->[6] )";
 		&modify_record($r->{'file'}, $r, $r->{'realname'}, $r->{'ttl'},
 				$r->{'class'}, $r->{'type'}, $vals);
 		}
