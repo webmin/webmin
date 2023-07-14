@@ -56,7 +56,7 @@ if (!@index) {
 	push(@index, $bak) if (-r "$dir/$bak");
 	}
 push(@index, "$in{'wav_filename'}.rmd");
-system("mv $rmdfile $dir/$in{'wav_filename'}.rmd");
+&rename_file($rmdfile, "$dir/$in{'wav_filename'}.rmd");
 &open_lock_tempfile(INDEX, ">$index");
 &print_tempfile(INDEX, map { "$_\n" } @index);
 &close_tempfile(INDEX);
