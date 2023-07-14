@@ -1688,6 +1688,7 @@ $main::no_miniserv_userdb = 1;
 &setvar('error-fatal', 1);
 my $msg = join("", @_);
 $msg =~ s/<[^>]*>//g;
+my (@msg) = @_;
 my @stack;
 for(my $i=0; my @stack_ = caller($i); $i++) {
 	push(@stack, \@stack_);
@@ -1697,7 +1698,9 @@ $err_caller = "$stack[1]->[1] (line $stack[1]->[2])"
 	if ($stack[1]->[1] && $stack[1]->[2]);
 if ($err_caller) {
 	$err_caller =~ s/$root_directory\///;
-	$main::whatfailed = $main::whatfailed ? "$main::whatfailed : $err_caller" : $err_caller;
+	my $err_caller_ = &ui_help($err_caller);
+	$msg = $msg ? "$msg $err_caller_" : $err_caller_;
+	push(@msg, $err_caller_);
 	}
 my $error_details = (($ENV{'WEBMIN_DEBUG'} || $gconfig{'debug_enabled'}) ? "" : "\n");
 my $error_output_right = sub {
@@ -1709,7 +1712,7 @@ if (!$main::error_must_die) {
 	}
 &load_theme_library();
 if ($main::error_must_die) {
-	die "@_$error_details";
+	die "@msg$error_details";
 	}
 &call_error_handlers();
 if (!$ENV{'REQUEST_METHOD'}) {
@@ -1732,7 +1735,8 @@ elsif ($ENV{'REQUEST_URI'} =~ /json-error=1/) {
 	%jerror = (error => $error,
 		   error_fatal => 1, 
 		   error_what => $error_what, 
-		   error_message => $error_message
+		   error_message => $error_message,
+		   error_caller => $err_caller,
 		  );
 	print_json(\%jerror);
 	}
@@ -1749,11 +1753,11 @@ else {
 	print "<hr>\n" if ($hh);
 	if ($hh) {
 		print "<h3 data-fatal-error-text>",($main::whatfailed ? "$main::whatfailed : " : ""),
-			     @_,"</h3>\n";
+			     @msg,"</h3>\n";
 		}
 	else {
 		my $error_what = ($main::whatfailed ? "$main::whatfailed: " : "");
-		my $error_html = join(",", @_);
+		my $error_html = join(",", @msg);
 		my $error_text;
 		if ($error_html !~ /<pre.*?>/) {
 			$error_text = " &mdash; $error_html";
