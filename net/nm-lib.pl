@@ -35,19 +35,20 @@ foreach my $f (glob("$nm_conn_dir/*.nmconnection")) {
 
 	# IPv4 addresses
 	my @virts;
+	my $offset = $iface->{'dhcp'} ? 1 : 2;
 	for(my $i=1; defined(my $addr = &find_nm_config($cfg, "ipv4", "address$i")); $i++) {
 		my ($ad, $gw) = split(/,/, $addr);
 		my ($ad, $cidr) = split(/\//, $ad);
 		my $nm = &prefix_to_mask($cidr);
-		if ($i == 1) {
+		if ($i == $offset-1) {
 			$iface->{'address'} = $ad;
 			$iface->{'netmask'} = $nm;
 			$iface->{'gateway'} = $gw;
 			}
 		else {
 			push(@virts,{ 'name' => $iface->{'name'},
-				      'fullname' => $iface->{'name'}.":".($i-2),
-				      'virtual' => $i-2,
+				      'fullname' => $iface->{'name'}.":".($i-$offset),
+				      'virtual' => $i-$offset,
 				      'file' => $f,
 				      'cfg' => $cfg,
 				      'edit' => 1,
