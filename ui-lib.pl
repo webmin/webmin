@@ -2804,7 +2804,7 @@ if (defined(&theme_ui_div_row)) {
 	return &theme_ui_div_row(@_);
 	}
 my ($label, $content) = @_;
-return "<div class='ui_div_row'><span>$label</span><span>$content</span></div>";
+return "<div class='ui_div_row'><span>$label</span><span>$content</span></div>\n";
 }
 
 =head2 ui_space(number)
@@ -2819,7 +2819,7 @@ if (defined(&theme_ui_space)) {
 	}
 my ($number) = @_;
 $number ||= 1;
-return "<span class='ui_space'>".("&nbsp;" x $number)."</span>";
+return "<span class='ui_space'>".("&nbsp;" x $number)."</span>\n";
 }
 
 =head2 ui_newline(number)
@@ -2834,7 +2834,7 @@ if (defined(&theme_ui_newline)) {
 	}
 my ($number) = @_;
 $number ||= 1;
-return "<span class='ui_newline'>".("<br>" x $number)."</span>";
+return "<span class='ui_newline'>".("<br>" x $number)."</span>\n";
 }
 
 =head2 ui_text_wrap(text)
@@ -2848,7 +2848,21 @@ if (defined(&theme_ui_text_wrap)) {
 	return &theme_ui_text_wrap(@_);
 	}
 my ($text) = @_;
-return "<span class='ui_text_wrap'>$text</span>";
+return "<span class='ui_text_wrap'>$text</span>\n";
+}
+
+=head2 ui_element_inline(text)
+
+Wraps any text into span tags
+
+=cut
+sub ui_element_inline
+{
+if (defined(&theme_ui_element_inline)) {
+	return &theme_ui_element_inline(@_);
+	}
+my ($element, $type) = @_;
+return "<span data-element='$type' class='ui_element_inline'>$element</span>\n";
 }
 
 =head2 ui_paginations(&array, &opts)
