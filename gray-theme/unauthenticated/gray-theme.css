@@ -8,7 +8,7 @@ table { border-width: 0px;
 }
 table.formsection, table.ui_table, table.loginform {
   border-collapse: separate;
-  *border-collapse: collapse;
+  border-collapse: collapse;
   border: 1px solid #FFFFFF;
   width: 100%;
 }
