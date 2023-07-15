@@ -216,6 +216,20 @@ br[data-x-br] {
     opacity: .8;
 }
 
+.ui_text_wrap {
+  float: right;
+}
+
+.ui_link_help {
+  display: initial;
+  float: right;
+  margin-right: 4px;
+}
+
+td:not(:hover) .ui_link_help {
+  visibility: hidden;
+}
+
 [data-tooltip][aria-label] {
     position: relative;
 }
