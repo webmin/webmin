@@ -24,8 +24,10 @@ print &ui_table_start($text{'misc_header'}, "width=100%", 4);
 # Tag styles
 print &ui_table_row(&opt_help($text{'misc_short'}, 'short_open_tag'),
 		    &onoff_radio("short_open_tag"));
-print &ui_table_row(&opt_help($text{'misc_asp'}, 'asp_tags'),
-		    &onoff_radio("asp_tags"));
+if (php_version_test_maximum('5.6')) {
+	print &ui_table_row(&opt_help($text{'misc_asp'}, 'asp_tags'),
+				&onoff_radio("asp_tags"));
+	}
 
 # Output options
 print &ui_table_row(&opt_help($text{'misc_zlib'}, 'zlib.output_compression'),
