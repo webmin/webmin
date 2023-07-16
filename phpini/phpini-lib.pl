@@ -282,7 +282,16 @@ return grep { !$done{$_->[0]}++ } @rv;
 }
 
 # get_php_ini_binary(file)
-# Given a php.ini path, try to guess the php command for it
+# Given a php.ini path, try to guess the PHP command for it
+# Examples: 
+#   caller: get_php_binary_version("/etc/php/8.3/fpm/pool.d/www.conf");
+#   return: /bin/php8.3
+#
+#   caller: get_php_binary_version("/etc/opt/remi/php81/php.ini");
+#   return: /bin/php81
+#
+#   caller: get_php_binary_version("php7.4");
+#   return: /bin/php7.4 or /bin/php74
 sub get_php_ini_binary
 {
 my ($file) = @_;
@@ -314,7 +323,103 @@ if ($file =~ /php(\d+)/ || $file =~ /php\/([\d\.]+)/) {
 	my $binary = &has_command("php$ver");
 	return $binary if ($binary);
 	}
+
+# Given PHP version, e.g. `php7.4` as a string try to get binary
+if ($file =~ /^php.*?([\d\.]+)$/) {
+	my $ver = $1;
+	my $nodot = $ver;
+	$nodot =~ s/\.//g;
+	my $binary = &has_command("php$ver") ||
+	             &has_command("php$nodot");
+	return $binary if ($binary);
+	}
 return &has_command("php");
+}
+
+# get_php_binary_version(file|version-string)
+# Given a php.ini path or binary, try to guess the
+# PHP command and extract version for it
+# Examples: 
+#   caller: get_php_binary_version("/etc/php/8.3/fpm/pool.d/www.conf");
+#   return: 8.3.0
+#   caller: get_php_binary_version("/etc/opt/remi/php81/php.ini");
+#   return: 8.1.2
+#   caller: get_php_binary_version("php7.4");
+#   return: 7.4.33
+sub get_php_binary_version
+{
+my ($file) = @_;
+my $phpbinary = &get_php_ini_binary($file || $in{'file'});
+return undef if (!$phpbinary);
+my $phpver = &backquote_command("$phpbinary -v 2>&1");
+($phpver) = $phpver =~ /^PHP\s+([\d\.]+)/;
+return $phpver;
+}
+
+# php_version_test_against(version|(version, comparison-operator), [file|version-string])
+# Given PHP version test if matches with currently installed or given
+# Returns 1 if given version matches to the given and/or installed, 0 if not matches
+#
+# Examples:
+#   caller: php_version_test_against("7.4");
+#   return: 1 if version 7.4 is lower or equal to the current (current is 7.4.33)
+#   -----------------------------------------------------------------------------
+#   caller: php_version_test_against("7.3", "/etc/opt/remi/php81/php.ini");
+#   return: 0 because version 7.3 is lower and not equal to found/instaled 8.1
+#   -----------------------------------------------------------------------------
+#   caller: php_version_test_against("7.4.33", "php7.4.33");
+#   return: 1 because version 7.4.33 is lower or equal to found/instaled 7.4.33
+#   -----------------------------------------------------------------------------
+#   caller: php_version_test_against("7.4.33", "php7.3.3");
+#   return: 0 because version 7.4.33 is greater found/instaled 7.3.3
+#   -----------------------------------------------------------------------------
+#   caller: php_version_test_against("7.3", "php7.2");
+#   return: 0 because version 7.3 is greater found/instaled 7.2
+#   -----------------------------------------------------------------------------
+#   caller: php_version_test_against(['7.4.33', '<='], 'php7.4');
+#   return: 1 for version 7.4.33 because PHP 7.4 is installed and version 7.4.33
+# -----------------------------------------------------------------------------
+#   caller: php_version_test_against(['7.4.34', '<='], 'php7.4');
+#   return: 0 because version 7.4.34 is not lower or equal than intalled (7.4.33)
+sub php_version_test_against
+{
+my ($version, $file) = @_;
+my $curr_php = &get_php_binary_version($file);
+return undef if (!$curr_php);
+my $cmp = '>=';
+if (ref($version) eq 'ARRAY') {
+	$cmp = $version->[1];
+	$version = $version->[0];
+	}
+# Normalize the base version
+if ($version =~ /^\d+\.\d+$/) {
+	# 7.4
+	$curr_php =~ s/(\d+\.\d+)(.*)/$1/;
+	}
+if ($version =~ /^\d+$/) {
+	# 7
+	$curr_php =~ s/(\d+)(.*)/$1/;
+	}
+if (&compare_version_numbers($version, $cmp, $curr_php)) {
+	return 1;
+	}
+return 0;
+}
+
+# php_version_test_minimum(version, [file|version-string])
+# Returns minimum version of PHP agaisnt installed or given
+sub php_version_test_minimum
+{
+my ($version, $file) = @_;
+return &php_version_test_against([$version, '<='], $file);
+}
+
+# php_version_test_maximum(version, [file|version-string])
+# Returns maximum version of PHP agaisnt installed or given
+sub php_version_test_maximum
+{
+my ($version, $file) = @_;
+return &php_version_test_against([$version, '>='], $file);
 }
 
 # onoff_radio(name)
