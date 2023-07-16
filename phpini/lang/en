@@ -167,4 +167,7 @@ acl_anyfile=Can edit any file as a PHP configuration?
 acl_manual=Can manually edit configuration files?
 acl_inis=Additional configuration files<br>(In <i>filename</i>=<i>description</i> format)
 acl_user=Read and write files as user
+
+opt_default=Default Value: <tt>$1</tt>
+
 __norefs=1

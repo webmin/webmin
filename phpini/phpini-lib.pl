@@ -485,5 +485,44 @@ if ($dir) {
 return ();
 }
 
+# list_default_value(file, value, no-cache)
+# Returns a list of all available PHP extension modules
+sub list_default_value
+{
+my ($file, $value, $nocache) = @_;
+my $binary = &get_php_ini_binary($file);
+if ($binary) {
+	my $out = $main::list_default_value_cache{$binary};
+	if ($nocache || !$out) {
+		# Return defaults (without using any config file)
+		$out = &backquote_command("$binary --no-php-ini -i 2>/dev/null </dev/null");
+		$main::list_default_value_cache{$binary} = $out;
+		}
+	# Get default master value
+	if ($out =~ /\Q$value\E\s+\=>\s+\S+\s+\=>\s+(\S+)/) {
+		return $1;
+		}
+	}
+return undef;
+}
+
+# opt_help(text, php-opt-name, doc-type)
+# Returns the link to the PHP manual for some option
+sub opt_help
+{
+my ($text, $opt, $type) = @_;
+my $opt_name = $opt;
+$opt_name =~ s/_/-/g;
+my $php_opt_default = &list_default_value($in{'file'}, $opt);
+$php_opt_default = &text('opt_default', "<br>$opt = $php_opt_default")
+	if (defined($php_opt_default));
+$type ||= "ini.core.php#ini.";
+if ($type eq 'info') {
+	$type = "$type.configuration.php#ini.";
+	}
+my $link = "https://www.php.net/manual/en/$type$opt_name";
+return "@{[&ui_text_wrap($text)]}".&ui_link($link, &ui_help($php_opt_default), 'ui_link_help', 'target="_blank"');
+}
+
 1;
 
