@@ -12,19 +12,19 @@ print &ui_form_start("save_vars.cgi", "post");
 print &ui_hidden("file", $in{'file'}),"\n";
 print &ui_table_start($text{'vars_header'}, "width=100%", 4);
 
-print &ui_table_row($text{'vars_magic'},
+print &ui_table_row(&opt_help($text{'vars_magic'}, 'magic_quotes_gpc'),
 		    &onoff_radio("magic_quotes_gpc"));
 
-print &ui_table_row($text{'vars_runtime'},
+print &ui_table_row(&opt_help($text{'vars_runtime'}, 'magic_quotes_runtime'),
 		    &onoff_radio("magic_quotes_runtime"));
 
-print &ui_table_row($text{'vars_register'},
+print &ui_table_row(&opt_help($text{'vars_register'}, 'register_globals'),
 		    &onoff_radio("register_globals"));
 
-print &ui_table_row($text{'vars_long'},
+print &ui_table_row(&opt_help($text{'vars_long'}, 'register_long_arrays'),
 		    &onoff_radio("register_long_arrays"));
 
-print &ui_table_row($text{'vars_args'},
+print &ui_table_row(&opt_help($text{'vars_args'}, 'register_argc_argv'),
 		    &onoff_radio("register_argc_argv"));
 
 print &ui_table_end();
