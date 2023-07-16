@@ -169,5 +169,6 @@ acl_inis=Additional configuration files<br>(In <i>filename</i>=<i>description</i
 acl_user=Read and write files as user
 
 opt_default=Default Value: <tt>$1</tt>
+opt_default_unknown=Unknown
 
 __norefs=1
