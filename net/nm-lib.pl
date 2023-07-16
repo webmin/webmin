@@ -194,7 +194,7 @@ else {
 	&lock_file($f);
 	}
 
-# Update address
+# Update address and DHCP mode
 my @addresses;
 if ($iface->{'address'}) {
 	my $v = $iface->{'address'}."/".
@@ -207,15 +207,11 @@ foreach my $viface (grep { $_->{'name'} eq $iface->{'name'} &&
 		&mask_to_prefix($viface->{'netmask'});
 	push(@addresses, $v);
 	}
-&save_nm_config($cfg, "ipv4", "method", "auto");
-&save_nm_config($cfg, "ipv4", "addresses", \@addresses);
+my $method = !$iface->{'up'} ? "disabled" :
+	     $iface->{'dhcp'} ? "auto" :
+	     $iface->{'address'} ? "manual" : "disabled";
+&save_nm_config($cfg, "ipv4", "addresses", \@addresses, "method", $method);
 &save_nm_config($cfg, "ipv4", "gateway", $iface->{'gateway'});
-
-# Update DHCP mode
-&save_nm_config($cfg, "ipv4", "method",
-	!$iface->{'up'} ? "disabled" :
-	$iface->{'dhcp'} ? "auto" :
-        $iface->{'address'} ? "manual" : "disabled");
 
 # Update IPv6 addresses
 my @address6;
@@ -224,14 +220,11 @@ for(my $i=0; $i<@{$iface->{'address6'}}; $i++) {
 		$iface->{'netmask6'}->[$i];
 	push(@address6, $v);
 	}
-&save_nm_config($cfg, "ipv6", "method", "auto");
+my $method6 = $iface->{'auto6'} ? "auto" :
+	      @{$iface->{'address6'}} ? "manual" : "disabled";
 &save_nm_config($cfg, "ipv6", "address",
-		@address6 ? join(",", @address6) : undef);
-
-# Update IPv6 address allocation mode
-&save_nm_config($cfg, "ipv6", "method",
-	$iface->{'auto6'} ? "auto" :
-	@{$iface->{'address6'}} ? "manual" : "disabled");
+		@address6 ? join(",", @address6) : undef,
+		"method", $method6);
 
 # Update nameservers
 my @ns = $iface->{'nameserver'} ? @{$iface->{'nameserver'}} : ();
