@@ -514,8 +514,8 @@ my ($text, $opt) = @_;
 my $opt_name = $opt;
 $opt_name =~ s/_/-/g;
 my $php_opt_default = &list_default_value($in{'file'}, $opt);
-$php_opt_default = &text('opt_default', "<br>$opt = $php_opt_default")
-	if (defined($php_opt_default));
+my $optdef = defined($php_opt_default) ? $php_opt_default : "<em>$text{'opt_default_unknown'}</em>";
+$php_opt_default = "<strong>".&text('opt_default', "<br>$opt = $optdef")."</strong>";
 my $link = "https://www.php.net/$opt_name";
 return "@{[&ui_text_wrap($text)]}".&ui_link($link, &ui_help($php_opt_default), 'ui_link_help', 'target="_blank"');
 }
