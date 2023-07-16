@@ -22,33 +22,33 @@ print &ui_hidden("file", $in{'file'}),"\n";
 print &ui_table_start($text{'misc_header'}, "width=100%", 4);
 
 # Tag styles
-print &ui_table_row($text{'misc_short'},
+print &ui_table_row(&opt_help($text{'misc_short'}, 'short_open_tag'),
 		    &onoff_radio("short_open_tag"));
-print &ui_table_row($text{'misc_asp'},
+print &ui_table_row(&opt_help($text{'misc_asp'}, 'asp_tags'),
 		    &onoff_radio("asp_tags"));
 
 # Output options
-print &ui_table_row($text{'misc_zlib'},
+print &ui_table_row(&opt_help($text{'misc_zlib'}, 'zlib.output_compression'),
 		    &onoff_radio("zlib.output_compression"));
-print &ui_table_row($text{'misc_flush'},
+print &ui_table_row(&opt_help($text{'misc_flush'}, 'implicit_flush'),
 		    &onoff_radio("implicit_flush"));
 
 # URL open options
-print &ui_table_row($text{'misc_fopen'},
+print &ui_table_row(&opt_help($text{'misc_fopen'}, 'allow_url_fopen'),
 		    &onoff_radio("allow_url_fopen"));
 
 print &ui_table_hr();
 
 # Email sending options
 $smtp = &find_value("SMTP", $conf);
-print &ui_table_row($text{'misc_smtp'},
+print &ui_table_row(&opt_help($text{'misc_smtp'}, 'smtp'),
 		    &ui_opt_textbox("smtp", $smtp, 20, $text{'misc_none'}));
 $port = &find_value("smtp_port", $conf);
-print &ui_table_row($text{'misc_port'},
+print &ui_table_row(&opt_help($text{'misc_port'}, 'smtp_port'),
 		    &ui_opt_textbox("smtp_port", $port, 5, $text{'default'}));
 
 $sendmail = &find_value("sendmail_path", $conf);
-print &ui_table_row($text{'misc_sendmail'},
+print &ui_table_row(&opt_help($text{'misc_sendmail'}, 'sendmail_path'),
 		    &ui_opt_textbox("sendmail_path", $sendmail, 60,
 				    $text{'misc_none'}), 3);
 
@@ -56,11 +56,11 @@ print &ui_table_row($text{'misc_sendmail'},
 print &ui_table_hr();
 
 # Include open options
-print &ui_table_row($text{'misc_include'},
+print &ui_table_row(&opt_help($text{'misc_include'}, 'allow_url_include'),
 	&onoff_radio("allow_url_include"));
 
 # CGI Fix Path options
-print &ui_table_row($text{'misc_path'},
+print &ui_table_row(&opt_help($text{'misc_path'}, 'cgi.fix_pathinfo'),
 	&onoff_radio("cgi.fix_pathinfo"));
 
 # PHP Timezone Dropdown
@@ -76,7 +76,7 @@ print &ui_table_row(&hlink($text{'misc_timezone'}, "misc_timezone"),
 
 # Default charset
 $charset = &find_value("default_charset", $conf);
-print &ui_table_row($text{'misc_charset'},
+print &ui_table_row(&opt_help($text{'misc_charset'}, 'default_charset'),
 		    &ui_opt_textbox("default_charset", $charset, 20,
 				    $text{'default'}));
 
