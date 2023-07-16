@@ -227,10 +227,10 @@ if ($b && $b->{'virtual'} eq "" && !$in{'new'}) {
 		}
 	$vlink = "";
 	if ($access{'virt'} && !$noos_support_add_virtifcs) {
-		$vlink = "(<a href='edit_bifc.cgi?new=1&virtual=$b->{'name'}'>".
-		         "$text{'ifcs_addvirt'}</a>)\n";
+		$vlink = &ui_element_inline("(<a href='edit_bifc.cgi?new=1&virtual=$b->{'name'}'>".
+		         "$text{'ifcs_addvirt'}</a>)\n", 'button');
 		}
-	print &ui_table_row($text{'ifcs_virts'}, $vcount." ".$vlink);
+	print &ui_table_row($text{'ifcs_virts'}, &ui_text_wrap($vcount)." ".$vlink);
 	}
 
 # Special parameters for teaming

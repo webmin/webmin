@@ -306,7 +306,7 @@ if (&foreign_check("virtual-server")) {
 	}
 
 # Try to get version from the path
-if ($fle =~ /php(\d+)/) {
+if ($file =~ /php(\d+)/) {
 	my $ver = $1;
 	my $nodot = $ver;
 	$nodot =~ s/\.//g;

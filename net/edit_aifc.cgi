@@ -161,9 +161,9 @@ if ($a && $a->{'virtual'} eq "" && !$in{'new'}) {
 			}
 		}
 	print &ui_table_row($text{'ifcs_virts'},
-		$vcount." ".
-	        "(<a href='edit_aifc.cgi?new=1&virtual=$a->{'name'}'>".
-		"$text{'ifcs_addvirt'}</a>)");
+		&ui_text_wrap($vcount)." ".
+	        &ui_element_inline("(<a href='edit_aifc.cgi?new=1&virtual=$a->{'name'}'>".
+		"$text{'ifcs_addvirt'}</a>)", 'button'));
 	}
 
 # Physical parameters
