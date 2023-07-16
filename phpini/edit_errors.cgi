@@ -13,13 +13,13 @@ print &ui_hidden("file", $in{'file'}),"\n";
 print &ui_table_start($text{'errors_header'}, "width=100%", 4);
 
 # Show and log errors
-print &ui_table_row($text{'errors_display'},
+print &ui_table_row(&opt_help($text{'errors_display'}, 'display_errors'),
 		    &onoff_radio("display_errors"));
-print &ui_table_row($text{'errors_log'},
+print &ui_table_row(&opt_help($text{'errors_log'}, 'log_errors'),
 		    &onoff_radio("log_errors"));
 
 # Ignore repeated
-print &ui_table_row($text{'errors_ignore'},
+print &ui_table_row(&opt_help($text{'errors_ignore'}, 'ignore_repeated_errors'),
 		    &onoff_radio("ignore_repeated_errors"));
 print &ui_table_row($text{'errors_source'},
 		    &onoff_radio("ignore_repeated_source"));

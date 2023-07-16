@@ -31,19 +31,19 @@ print &ui_table_row(&opt_help($text{'limits_upload'}, 'upload_max_filesize'),
 			8, $text{'default'}));
 
 # Max run time
-print &ui_table_row(&opt_help($text{'limits_exec'}, 'max_execution_time', 'info'),
+print &ui_table_row(&opt_help($text{'limits_exec'}, 'max_execution_time'),
 	&ui_opt_textbox("max_execution_time",
 			&find_value("max_execution_time", $conf),
 			8, $text{'default'})." ".$text{'db_s'});
 
 # Max parsing time
-print &ui_table_row(&opt_help($text{'limits_input'}, 'max_input_time', 'info'),
+print &ui_table_row(&opt_help($text{'limits_input'}, 'max_input_time'),
 	&ui_opt_textbox("max_input_time",
 			&find_value("max_input_time", $conf),
 			8, $text{'default'})." ".$text{'db_s'});
 
 # Max parsing time
-print &ui_table_row(&opt_help($text{'limits_vars'}, 'max_input_vars', 'info'),
+print &ui_table_row(&opt_help($text{'limits_vars'}, 'max_input_vars'),
 	&ui_opt_textbox("max_input_vars",
 			&find_value("max_input_vars", $conf),
 			8, $text{'default'}));

@@ -506,21 +506,17 @@ if ($binary) {
 return undef;
 }
 
-# opt_help(text, php-opt-name, doc-type)
+# opt_help(text, php-opt-name)
 # Returns the link to the PHP manual for some option
 sub opt_help
 {
-my ($text, $opt, $type) = @_;
+my ($text, $opt) = @_;
 my $opt_name = $opt;
 $opt_name =~ s/_/-/g;
 my $php_opt_default = &list_default_value($in{'file'}, $opt);
 $php_opt_default = &text('opt_default', "<br>$opt = $php_opt_default")
 	if (defined($php_opt_default));
-$type ||= "ini.core.php#ini.";
-if ($type eq 'info') {
-	$type = "$type.configuration.php#ini.";
-	}
-my $link = "https://www.php.net/manual/en/$type$opt_name";
+my $link = "https://www.php.net/$opt_name";
 return "@{[&ui_text_wrap($text)]}".&ui_link($link, &ui_help($php_opt_default), 'ui_link_help', 'target="_blank"');
 }
 
