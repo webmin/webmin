@@ -305,13 +305,13 @@ if (&foreign_check("virtual-server")) {
 		}
 	}
 
-# Try to get version from the path
-if ($file =~ /php(\d+)/) {
+# Try to get version from the path, e.g.
+# RHEL and derivatives /etc/opt/remi/php83
+# Debian/Ubuntu /etc/php/8.3/fpm/pool.d/www.conf
+#   RHEL and derivatives   Debian/Ubuntu
+if ($file =~ /php(\d+)/ || $file =~ /php\/([\d\.]+)/) {
 	my $ver = $1;
-	my $nodot = $ver;
-	$nodot =~ s/\.//g;
-	my $binary = &has_command("php$ver") ||
-		     &has_command("php$nodot");
+	my $binary = &has_command("php$ver");
 	return $binary if ($binary);
 	}
 return &has_command("php");
