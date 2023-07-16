@@ -277,6 +277,8 @@ log_apply_bfics=Activated $1 boot-time interfaces
 log_create_route=Created active route for $1
 log_create_defroute=Created active default route
 log_delete_routes=Deleted $1 active routes
+log_delete_aifcs=Deactivated $1 interfaces
+log_delete_bifcs=Deleted $1 interfaces
 
 acl_ifcs=Can edit network interfaces?
 acl_routes=Can edit routing and gateways?

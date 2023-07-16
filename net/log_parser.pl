@@ -41,6 +41,9 @@ elsif ($type eq 'route' && $action eq 'create') {
 elsif ($type eq 'routes' && $action eq 'delete') {
 	return &text('log_delete_routes', $object);
 	}
+elsif ($type eq 'aifcs' || $type eq 'bifcs') {
+	return &text('log_'.$action.'_'.$type, $object);
+	}
 else {
 	return undef;
 	}
