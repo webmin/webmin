@@ -711,18 +711,33 @@ foreach my $iface (@ifaces_known) {
 					quotemeta($iface)." 2>&1");
 	$? && &error("Failed to show NetworkManager interface $iface : $out");
 	# Get all IPv4 addresses on the interface in the right order
-	my (@iface_ipv4s) = $out =~ /^ip4\.address\[\d+\]\s*:\s*([\d\.]+)/gmi;
-	if (scalar(@iface_ipv4s) <= 1) {
+	my ($iface_ipv4s) = $out =~ /^ipv4\.addresses\s*:\s*(.*)/gmi;
+	# Unwhack
+	$iface_ipv4s =~ s/\/\d+//g;
+	# Unspace
+	$iface_ipv4s =~ s/\s+//g;
+	my @iface_ipv4s = split(/,/, $iface_ipv4s);
+	if (!scalar(@iface_ipv4s)) {
 		next;
 		}
-	# DHCP addr is always first on the list in the output
-	my $dhcp_addr = $iface_ipv4s[0];
-	splice(@iface_ipv4s, 0, 1);
 
-	# Reverse sort so the IPs appear in the
-	# order of how they were added initially
-	@iface_ipv4s = reverse @iface_ipv4s;
-	
+	# DHCP addr is always in dhcp4.option if set
+	my ($dhcp_addr) = $out =~ /^dhcp4.option\[\d+\]:\s*ip_address\s*=\s*([\d\.]+)/gmi;
+	# If interface is in static mode and DHCP is not used
+	# the order for `ip addr` and NetworkManager is the same
+	# nothing to do then
+	if (!$dhcp_addr) {
+		next;
+		}
+
+	# If interface was switched from DHCP mode to static mode
+	# but the system hasn't been rebooted yet or NetworkManager
+	# hasn't been restarted yet
+	my $dhcp_addr_index = &indexof($dhcp_addr, @iface_ipv4s);
+	if ($dhcp_addr_index != -1) {
+		splice(@iface_ipv4s, $dhcp_addr_index, 1);
+		}
+
 	# Save the original interfaces data for each IP
 	my %ifaces_map;
 	foreach my $iface_ref (@$ifaces) {
