@@ -217,7 +217,10 @@ foreach my $ifc (@rv) {
 			}
 		}
 	}
-
+# If network library have the special
+# function to order interfaces, use it
+iface_net_order(\@rv)
+	if (defined(&iface_net_order));
 return @rv;
 }
 

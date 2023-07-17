@@ -695,3 +695,69 @@ foreach my $l (split(/\r?\n/, $out)) {
 return undef;
 }
 
+# iface_net_order(ifaces-referece)
+# Sets the correct order for all IPv4 addresses for each
+# interface the way they are configured in NetworkManager
+sub iface_net_order
+{
+my ($ifaces) = @_;
+my @ifaces = @$ifaces;
+my @ifaces_known = grep { $_ ne 'lo' }
+	map { $_->{'name'} } @ifaces;
+@ifaces_known = &unique(@ifaces_known);
+foreach my $iface (@ifaces_known) {
+	my $out = &backquote_command(
+				"nmcli conn show ".
+					quotemeta($iface)." 2>&1");
+	$? && &error("Failed to show NetworkManager interface $iface : $out");
+	# Get all IPv4 addresses on the interface in the right order
+	my (@iface_ipv4s) = $out =~ /^ip4\.address\[\d+\]\s*:\s*([\d\.]+)/gmi;
+	if (scalar(@iface_ipv4s) <= 1) {
+		next;
+		}
+	# DHCP addr is always first on the list in the output
+	my $dhcp_addr = $iface_ipv4s[0];
+	splice(@iface_ipv4s, 0, 1);
+
+	# Reverse sort so the IPs appear in the
+	# order of how they were added initially
+	@iface_ipv4s = reverse @iface_ipv4s;
+	
+	# Save the original interfaces data for each IP
+	my %ifaces_map;
+	foreach my $iface_ref (@$ifaces) {
+		next if ($iface_ref->{'name'} ne $iface);
+		$ifaces_map{$iface_ref->{'address'}} =
+			{ 
+			  # Broadcast is specific to the IP
+			  broadcast => $iface_ref->{'broadcast'},
+			  # Status is specific to the IP
+			  up => $iface_ref->{'up'},
+			  # ACLs are specific to the IP
+			  edit => $iface_ref->{'edit'},
+			};
+		}
+
+	# Reorder original interfaces IPv4 addresses,
+	# and restore the rest of the associated data
+	my $iface_id = 0;
+	map {
+		# Update reference map with the new
+		# order provided by NetworkManager
+		my $fullname = "$iface:".$iface_id;
+		my $is_primary = $_->{'fullname'} eq $iface;
+		my $is_virtual = $_->{'fullname'} eq $fullname;
+		my $ipaddr = $_->{'fullname'} eq $iface ? $dhcp_addr : $iface_ipv4s[$iface_id];
+		if ($is_primary || $is_virtual) {
+			# Set the IP
+			$_->{'address'} = $ipaddr;
+			# Restore associated data with restored IP
+			$_->{'broadcast'} = $ifaces_map{$ipaddr}->{'broadcast'};
+			$_->{'up'} = $ifaces_map{$ipaddr}->{'up'};
+			$_->{'edit'} = $ifaces_map{$ipaddr}->{'edit'};
+			$iface_id++
+				if (!$is_primary);
+			}
+		} @$ifaces;
+	}
+}
