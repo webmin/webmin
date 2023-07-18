@@ -28,7 +28,6 @@ $mid = int((@serv-1) / 2);
 $oldstatus = &read_file($oldstatus_file, \%oldstatus);
 
 if (@serv) {
-	&show_button();
 	if ($config{'sort_mode'} == 1) {
 		@serv = sort { $a->{'desc'} cmp $b->{'desc'} } @serv;
 		}
@@ -45,6 +44,7 @@ if (@serv) {
 			print &ui_alert_box(&text('index_oldtime', $t), 'info');
 			}
 		}
+	&show_button();
 
 	# Show table of defined monitors
 	@links = ( );
