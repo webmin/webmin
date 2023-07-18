@@ -71,7 +71,7 @@ if ($conf_cols_n && $conf_rows_n && !$xmlhr) {
 	}
 
 # Define columns and rows
-$termjs_opts{'Options'} = "{ cols: $env_cols, rows: $env_rows }";
+$termjs_opts{'Options'} = "{ cols: $env_cols, rows: $env_rows, screenReaderMode: $config{'screen_reader'} || false }";
 
 my $term_size = "
 	min-width: ".($conf_cols_n ? "".($conf_cols_n * 9)."px" : "calc(100vw - 22px)").";

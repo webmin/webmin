@@ -4,3 +4,4 @@ host=Hostname for WebSocket connections,3,Automatic,32,,,Manual
 size=Terminal width and height in characters,3,Automatic,5,,,Static (80x24)
 locale=Set shell character encoding,10,0-Shell default,1-<tt>en_US.UTF&#45;8</tt>,Custom
 rcfile=Execute initialization commands from file,10,0-Shell default,1-Module default,Custom
+screen_reader=Enable screen reader mode,1,true-Yes,false-No
