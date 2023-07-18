@@ -4,6 +4,7 @@
 * Add support for showing defaults for options in PHP Configuration module
 * Add significant improvements to email display, reply and compose
 * Add support for WebGL in the Terminal module
+* Add screen reader support in Terminal module
 * Add full support for NetworkManager in Network Configuration module
 * Fix correctly displaying bridges with Netplan in Network Configuration module
 * Fix displaying active network interfaces in Network Configuration module
