@@ -1,5 +1,18 @@
 ## Changelog
 
+#### 2.100 (July, 2023)
+* Add support for showing defaults for options in PHP Configuration module
+* Add significant improvements to email display, reply and compose
+* Add support for WebGL in the Terminal module
+* Add full support for NetworkManager in Network Configuration module
+* Fix correctly displaying bridges with Netplan in Network Configuration module
+* Fix displaying active network interfaces in Network Configuration module
+* Fix to consider current drive temperature in `smartctl` output #1881
+* Fix to properly stop Usermin https://github.com/webmin/usermin/issues/89
+* Fix no to add hashed password to the old password list if it's already in there https://github.com/virtualmin/virtualmin-pro/issues/35
+* Fix displaying placeholder on input to reflect strftime-style format
+* Update the Authentic theme to the latest version adding new vertical column layout
+
 #### 2.021 (March 19, 2023)
 * Add ability to set locale in Webmin Users module for consistency
 * Fix an error when `make_date` is called on undefined value #1860
