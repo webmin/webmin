@@ -356,7 +356,7 @@ my $phpver = &backquote_command("$phpbinary -v 2>&1");
 return $phpver;
 }
 
-# php_version_test_against(version|(version, comparison-operator), [file|version-string])
+# php_version_test_against(version, comparison-operator, [file|version-string])
 # Given PHP version test if matches with currently installed or given
 # Returns 1 if given version matches to the given and/or installed, 0 if not matches
 #
@@ -364,33 +364,29 @@ return $phpver;
 #   caller: php_version_test_against("7.4");
 #   return: 1 if version 7.4 is lower or equal to the current (current is 7.4.33)
 #   -----------------------------------------------------------------------------
-#   caller: php_version_test_against("7.3", "/etc/opt/remi/php81/php.ini");
+#   caller: php_version_test_against("7.3", undef, "/etc/opt/remi/php81/php.ini");
 #   return: 0 because version 7.3 is lower and not equal to found/instaled 8.1
 #   -----------------------------------------------------------------------------
-#   caller: php_version_test_against("7.4.33", "php7.4.33");
+#   caller: php_version_test_against("7.4.33", undef, "php7.4.33");
 #   return: 1 because version 7.4.33 is lower or equal to found/instaled 7.4.33
 #   -----------------------------------------------------------------------------
-#   caller: php_version_test_against("7.4.33", "php7.3.3");
+#   caller: php_version_test_against("7.4.33", undef, "php7.3.3");
 #   return: 0 because version 7.4.33 is greater found/instaled 7.3.3
 #   -----------------------------------------------------------------------------
-#   caller: php_version_test_against("7.3", "php7.2");
+#   caller: php_version_test_against("7.3", undef, "php7.2");
 #   return: 0 because version 7.3 is greater found/instaled 7.2
 #   -----------------------------------------------------------------------------
-#   caller: php_version_test_against(['7.4.33', '<='], 'php7.4');
+#   caller: php_version_test_against('7.4.33', '<=', 'php7.4');
 #   return: 1 for version 7.4.33 because PHP 7.4 is installed and version 7.4.33
 # -----------------------------------------------------------------------------
-#   caller: php_version_test_against(['7.4.34', '<='], 'php7.4');
+#   caller: php_version_test_against('7.4.34', '<=', 'php7.4');
 #   return: 0 because version 7.4.34 is not lower or equal than intalled (7.4.33)
 sub php_version_test_against
 {
-my ($version, $file) = @_;
+my ($version, $cmp, $file) = @_;
 my $curr_php = &get_php_binary_version($file);
 return undef if (!$curr_php);
-my $cmp = '>=';
-if (ref($version) eq 'ARRAY') {
-	$cmp = $version->[1];
-	$version = $version->[0];
-	}
+$cmp ||= '>=';
 # Normalize the base version
 if ($version =~ /^\d+\.\d+$/) {
 	# 7.4
@@ -411,7 +407,7 @@ return 0;
 sub php_version_test_minimum
 {
 my ($version, $file) = @_;
-return &php_version_test_against([$version, '<='], $file);
+return &php_version_test_against($version, '<=', $file);
 }
 
 # php_version_test_maximum(version, [file|version-string])
@@ -419,7 +415,7 @@ return &php_version_test_against([$version, '<='], $file);
 sub php_version_test_maximum
 {
 my ($version, $file) = @_;
-return &php_version_test_against([$version, '>='], $file);
+return &php_version_test_against($version, '>=', $file);
 }
 
 # onoff_radio(name)
