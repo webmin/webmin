@@ -1228,34 +1228,53 @@ Returns a human-readable text string describing when a cron job is run.
 =cut
 sub when_text
 {
-local $pfx = $_[1] ? "uc" : "";
-if ($_[0]->{'interval'}) {
-	return &text($pfx.'when_interval', $_[0]->{'interval'});
+my ($job, $ucfirst) = @_;
+my $pfx = $ucfirst ? "uc" : "";
+if ($job->{'interval'}) {
+	return &text($pfx.'when_interval', $job->{'interval'});
 	}
-elsif ($_[0]->{'special'}) {
+elsif ($job->{'special'}) {
 	$pfx = $_[1] ? "" : "lc";
-	return $text{$pfx.'edit_special_'.$_[0]->{'special'}};
+	return $text{$pfx.'edit_special_'.$job->{'special'}};
 	}
-elsif ($_[0]->{'boot'}) {
+elsif ($job->{'boot'}) {
 	return &text($pfx.'when_boot');
 	}
-elsif ($_[0]->{'mins'} eq '*' && $_[0]->{'hours'} eq '*' && $_[0]->{'days'} eq '*' && $_[0]->{'months'} eq '*' && $_[0]->{'weekdays'} eq '*') {
+elsif ($job->{'mins'} eq '*' && $job->{'hours'} eq '*' &&
+       $job->{'days'} eq '*' && $job->{'months'} eq '*' &&
+       $job->{'weekdays'} eq '*') {
 	return $text{$pfx.'when_min'};
 	}
-elsif ($_[0]->{'mins'} =~ /^\d+$/ && $_[0]->{'hours'} eq '*' && $_[0]->{'days'} eq '*' && $_[0]->{'months'} eq '*' && $_[0]->{'weekdays'} eq '*') {
-	return &text($pfx.'when_hour', $_[0]->{'mins'});
+elsif ($job->{'mins'} =~ /^\d+$/ && $job->{'hours'} eq '*' &&
+       $job->{'days'} eq '*' && $job->{'months'} eq '*' &&
+       $job->{'weekdays'} eq '*') {
+	return &text($pfx.'when_hour', $job->{'mins'});
 	}
-elsif ($_[0]->{'mins'} =~ /^\d+$/ && $_[0]->{'hours'} =~ /^\d+$/ && $_[0]->{'days'} eq '*' && $_[0]->{'months'} eq '*' && $_[0]->{'weekdays'} eq '*') {
-	return &text($pfx.'when_day', sprintf("%2.2d", $_[0]->{'mins'}), $_[0]->{'hours'});
+elsif ($job->{'mins'} =~ /^\d+$/ && $job->{'hours'} =~ /^\d+$/ &&
+       $job->{'days'} eq '*' && $job->{'months'} eq '*' &&
+       $job->{'weekdays'} eq '*') {
+	return &text($pfx.'when_day',
+		     sprintf("%2.2d", $job->{'mins'}),
+		     sprintf("%2.2d", $job->{'hours'}));
 	}
-elsif ($_[0]->{'mins'} =~ /^\d+$/ && $_[0]->{'hours'} =~ /^\d+$/ && $_[0]->{'days'} =~ /^\d+$/ && $_[0]->{'months'} eq '*' && $_[0]->{'weekdays'} eq '*') {
-	return &text($pfx.'when_month', sprintf("%2.2d", $_[0]->{'mins'}), $_[0]->{'hours'}, $_[0]->{'days'});
+elsif ($job->{'mins'} =~ /^\d+$/ && $job->{'hours'} =~ /^\d+$/ &&
+       $job->{'days'} =~ /^\d+$/ && $job->{'months'} eq '*' &&
+       $job->{'weekdays'} eq '*') {
+	return &text($pfx.'when_month',
+		     sprintf("%2.2d", $job->{'mins'}),
+		     sprintf("%2.2d", $job->{'hours'}),
+		     $job->{'days'});
 	}
-elsif ($_[0]->{'mins'} =~ /^\d+$/ && $_[0]->{'hours'} =~ /^\d+$/ && $_[0]->{'days'} eq '*' && $_[0]->{'months'} eq '*' && $_[0]->{'weekdays'} =~ /^\d+$/) {
-	return &text($pfx.'when_weekday', sprintf("%2.2d", $_[0]->{'mins'}), $_[0]->{'hours'}, $text{"day_".$_[0]->{'weekdays'}});
+elsif ($job->{'mins'} =~ /^\d+$/ && $job->{'hours'} =~ /^\d+$/ &&
+       $job->{'days'} eq '*' && $job->{'months'} eq '*' &&
+       $job->{'weekdays'} =~ /^\d+$/) {
+	return &text($pfx.'when_weekday',
+		     sprintf("%2.2d", $job->{'mins'}),
+		     sprintf("%2.2d", $job->{'hours'}),
+		     $text{"day_".$job->{'weekdays'}});
 	}
 else {
-	return &text($pfx.'when_cron', join(" ", $_[0]->{'mins'}, $_[0]->{'hours'}, $_[0]->{'days'}, $_[0]->{'months'}, $_[0]->{'weekdays'}));
+	return &text($pfx.'when_cron', join(" ", $job->{'mins'}, $job->{'hours'}, $job->{'days'}, $job->{'months'}, $job->{'weekdays'}));
 	}
 }
 
