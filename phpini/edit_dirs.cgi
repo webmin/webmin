@@ -14,7 +14,7 @@ print &ui_table_start($text{'dirs_header'}, "width=100%", 2);
 
 # Include files directories
 $include = &find_value("include_path", $conf);
-print &ui_table_row($text{'dirs_include'},
+print &ui_table_row(&opt_help($text{'dirs_include'}, 'include'),
 	&ui_radio("include_def", $include ? 0 : 1,
 		  [ [ 1, $text{'default'} ], [ 0, $text{'dirs_below'} ] ]).
 	"<br>\n".
@@ -36,7 +36,7 @@ if (@avail) {
 	}
 
 # Can accept uploads?
-print &ui_table_row($text{'dirs_upload'},
+print &ui_table_row(&opt_help($text{'dirs_upload'}, 'file_uploads'),
 	&onoff_radio("file_uploads"));
 
 # Upload temp files directory

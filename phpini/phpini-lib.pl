@@ -282,7 +282,16 @@ return grep { !$done{$_->[0]}++ } @rv;
 }
 
 # get_php_ini_binary(file)
-# Given a php.ini path, try to guess the php command for it
+# Given a php.ini path, try to guess the PHP command for it
+# Examples: 
+#   caller: get_php_binary_version("/etc/php/8.3/fpm/pool.d/www.conf");
+#   return: /bin/php8.3
+#
+#   caller: get_php_binary_version("/etc/opt/remi/php81/php.ini");
+#   return: /bin/php81
+#
+#   caller: get_php_binary_version("php7.4");
+#   return: /bin/php7.4 or /bin/php74
 sub get_php_ini_binary
 {
 my ($file) = @_;
@@ -305,16 +314,108 @@ if (&foreign_check("virtual-server")) {
 		}
 	}
 
-# Try to get version from the path
-if ($file =~ /php(\d+)/) {
+# Try to get version from the path, e.g.
+# RHEL and derivatives /etc/opt/remi/php83
+# Debian/Ubuntu /etc/php/8.3/fpm/pool.d/www.conf
+#   RHEL and derivatives   Debian/Ubuntu
+if ($file =~ /php(\d+)/ || $file =~ /php\/([\d\.]+)/) {
+	my $ver = $1;
+	my $binary = &has_command("php$ver");
+	return $binary if ($binary);
+	}
+
+# Given PHP version, e.g. `php7.4` as a string try to get binary
+if ($file =~ /^php.*?([\d\.]+)$/) {
 	my $ver = $1;
 	my $nodot = $ver;
 	$nodot =~ s/\.//g;
 	my $binary = &has_command("php$ver") ||
-		     &has_command("php$nodot");
+	             &has_command("php$nodot");
 	return $binary if ($binary);
 	}
 return &has_command("php");
+}
+
+# get_php_binary_version(file|version-string)
+# Given a php.ini path or binary, try to guess the
+# PHP command and extract version for it
+# Examples: 
+#   caller: get_php_binary_version("/etc/php/8.3/fpm/pool.d/www.conf");
+#   return: 8.3.0
+#   caller: get_php_binary_version("/etc/opt/remi/php81/php.ini");
+#   return: 8.1.2
+#   caller: get_php_binary_version("php7.4");
+#   return: 7.4.33
+sub get_php_binary_version
+{
+my ($file) = @_;
+my $phpbinary = &get_php_ini_binary($file || $in{'file'});
+return undef if (!$phpbinary);
+my $phpver = &backquote_command("$phpbinary -v 2>&1");
+($phpver) = $phpver =~ /^PHP\s+([\d\.]+)/;
+return $phpver;
+}
+
+# php_version_test_against(version, comparison-operator, [file|version-string])
+# Given PHP version test if matches with currently installed or given
+# Returns 1 if given version matches to the given and/or installed, 0 if not matches
+#
+# Examples:
+#   caller: php_version_test_against("7.4");
+#   return: 1 if version 7.4 is lower or equal to the current (current is 7.4.33)
+#   -----------------------------------------------------------------------------
+#   caller: php_version_test_against("7.3", undef, "/etc/opt/remi/php81/php.ini");
+#   return: 0 because version 7.3 is lower and not equal to found/instaled 8.1
+#   -----------------------------------------------------------------------------
+#   caller: php_version_test_against("7.4.33", undef, "php7.4.33");
+#   return: 1 because version 7.4.33 is lower or equal to found/instaled 7.4.33
+#   -----------------------------------------------------------------------------
+#   caller: php_version_test_against("7.4.33", undef, "php7.3.3");
+#   return: 0 because version 7.4.33 is greater found/instaled 7.3.3
+#   -----------------------------------------------------------------------------
+#   caller: php_version_test_against("7.3", undef, "php7.2");
+#   return: 0 because version 7.3 is greater found/instaled 7.2
+#   -----------------------------------------------------------------------------
+#   caller: php_version_test_against('7.4.33', '<=', 'php7.4');
+#   return: 1 for version 7.4.33 because PHP 7.4 is installed and version 7.4.33
+# -----------------------------------------------------------------------------
+#   caller: php_version_test_against('7.4.34', '<=', 'php7.4');
+#   return: 0 because version 7.4.34 is not lower or equal than intalled (7.4.33)
+sub php_version_test_against
+{
+my ($version, $cmp, $file) = @_;
+my $curr_php = &get_php_binary_version($file);
+return undef if (!$curr_php);
+$cmp ||= '>=';
+# Normalize the base version
+if ($version =~ /^\d+\.\d+$/) {
+	# 7.4
+	$curr_php =~ s/(\d+\.\d+)(.*)/$1/;
+	}
+if ($version =~ /^\d+$/) {
+	# 7
+	$curr_php =~ s/(\d+)(.*)/$1/;
+	}
+if (&compare_version_numbers($version, $cmp, $curr_php)) {
+	return 1;
+	}
+return 0;
+}
+
+# php_version_test_minimum(version, [file|version-string])
+# Returns minimum version of PHP agaisnt installed or given
+sub php_version_test_minimum
+{
+my ($version, $file) = @_;
+return &php_version_test_against($version, '<=', $file);
+}
+
+# php_version_test_maximum(version, [file|version-string])
+# Returns maximum version of PHP agaisnt installed or given
+sub php_version_test_maximum
+{
+my ($version, $file) = @_;
+return &php_version_test_against($version, '>=', $file);
 }
 
 # onoff_radio(name)
@@ -483,6 +584,41 @@ if ($dir) {
 	return @exts;
 	}
 return ();
+}
+
+# list_default_value(file, value, no-cache)
+# Returns a list of all available PHP extension modules
+sub list_default_value
+{
+my ($file, $value, $nocache) = @_;
+my $binary = &get_php_ini_binary($file);
+if ($binary) {
+	my $out = $main::list_default_value_cache{$binary};
+	if ($nocache || !$out) {
+		# Return defaults (without using any config file)
+		$out = &backquote_command("$binary --no-php-ini -i 2>/dev/null </dev/null");
+		$main::list_default_value_cache{$binary} = $out;
+		}
+	# Get default master value
+	if ($out =~ /\Q$value\E\s+\=>\s+\S+\s+\=>\s+(\S+)/) {
+		return $1;
+		}
+	}
+return undef;
+}
+
+# opt_help(text, php-opt-name)
+# Returns the link to the PHP manual for some option
+sub opt_help
+{
+my ($text, $opt) = @_;
+my $opt_name = $opt;
+$opt_name =~ s/_/-/g;
+my $php_opt_default = &list_default_value($in{'file'}, $opt);
+my $optdef = defined($php_opt_default) ? $php_opt_default : "<em>$text{'opt_default_unknown'}</em>";
+$php_opt_default = "<strong>".&text('opt_default', "<br>$opt = $optdef")."</strong>";
+my $link = "https://www.php.net/$opt_name";
+return "@{[&ui_text_wrap($text)]}".&ui_link($link, &ui_help($php_opt_default), 'ui_link_help', 'target="_blank"');
 }
 
 1;

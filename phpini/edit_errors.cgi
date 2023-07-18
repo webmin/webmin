@@ -13,15 +13,15 @@ print &ui_hidden("file", $in{'file'}),"\n";
 print &ui_table_start($text{'errors_header'}, "width=100%", 4);
 
 # Show and log errors
-print &ui_table_row($text{'errors_display'},
+print &ui_table_row(&opt_help($text{'errors_display'}, 'display_errors'),
 		    &onoff_radio("display_errors"));
-print &ui_table_row($text{'errors_log'},
+print &ui_table_row(&opt_help($text{'errors_log'}, 'log_errors'),
 		    &onoff_radio("log_errors"));
 
 # Ignore repeated
-print &ui_table_row($text{'errors_ignore'},
+print &ui_table_row(&opt_help($text{'errors_ignore'}, 'ignore_repeated_errors'),
 		    &onoff_radio("ignore_repeated_errors"));
-print &ui_table_row($text{'errors_source'},
+print &ui_table_row(&opt_help($text{'errors_source'}, 'ignore_repeated_source'),
 		    &onoff_radio("ignore_repeated_source"));
 
 # Error types to show
@@ -43,23 +43,23 @@ if ($errs =~ /^[A-Z_\|]*$/) {
 		$etable .= "</tr>\n" if ($i++%4 == 3);
 		}
 	$etable .= "</table>\n";
-	print &ui_table_row($text{'errors_bits'}, $etable, 3);
+	print &ui_table_row(&opt_help($text{'errors_bits'}, 'error_reporting'), $etable, 3);
 	}
 else {
 	# Custom expression
-	print &ui_table_row($text{'errors_reporting'},
+	print &ui_table_row(&opt_help($text{'errors_reporting'}, 'error_reporting'),
 	    &ui_opt_textbox("error_reporting", $errs, 60, $text{'default'}), 3);
 	}
 
 # Max error length
 $ml = &find_value("log_errors_max_len", $conf);
-print &ui_table_row($text{'errors_maxlen'},
+print &ui_table_row(&opt_help($text{'errors_maxlen'}, 'log_errors_max_len'),
 		    &ui_opt_textbox("log_errors_max_len", $ml || undef, 5,
 				    $text{'errors_unlimited'}));
 
 # Where to log errors
 $el = &find_value("error_log", $conf);
-print &ui_table_row($text{'errors_file'},
+print &ui_table_row(&opt_help($text{'errors_file'}, 'error_log'),
 	&ui_radio("error_log_def", $el eq "syslog" ? 1 : $el ? 2 : 0,
 		  [ [ 0, $text{'errors_none'} ],
 		    [ 1, $text{'errors_syslog'} ],
