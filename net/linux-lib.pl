@@ -20,10 +20,12 @@ if (&has_command("ip")) {
 		else { $lines[$#lines] .= $_; }
 		}
 	close(IFC);
-	
+
 	&reset_environment();
 	foreach my $l (@lines) {
 		my %ifc;
+		my $iface_name = $ifc{'name'};
+		my $iface_auto_ip;
 		if ($l =~ /^\d+:\s+([^ \t\r\n\@]+\d+\.(\d+))@([^ \t\r\n\@]+\d+):/) {
 			# Line like :
 			# 3: eth0.99@eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
@@ -49,20 +51,23 @@ if (&has_command("ip")) {
 			# Unknown line!
 			next;
 			}
-		
-		if ($l =~ /\sinet\s+([0-9\.]+)\s+peer\s+([0-9\.]+)\/(\d+)(\s+brd\s+([0-9\.]+))?\s+scope\s+global(\s+(noprefixroute|dynamic))*\s+(\S+)/ && $8 eq $ifc{'name'}) {
+		if ($l =~ /\sinet\s+([0-9\.]+)\s+peer\s+([0-9\.]+)\/(\d+)(\s+brd\s+([0-9\.]+))?\s+scope\s+global(\s+(noprefixroute|dynamic))*\s+(\Q$iface_name\E)/) {
 			# Line like :
 			# inet 193.9.101.120 peer 193.9.101.104/32 brd 193.9.101.120 scope global eth0
 			$ifc{'address'} = $1;
 			$ifc{'netmask'} = &prefix_to_mask("$3");
 			}
-		elsif ($l =~ /\sinet\s+([0-9\.]+)\/(\d+)(\s+metric\s+\d+)?(\s+brd\s+(\S+))?\s+scope\s+global(\s+(noprefixroute|secondary))*\s+dynamic(\s+(noprefixroute|secondary))*\s+(\S+)/ && $8 eq $ifc{'name'}) {
+		elsif ($l =~ /\sinet\s+([0-9\.]+)\/\d+\s+(?:metric\s+\d+\s+|)brd\s+(\S+)\s+scope\s+global(?:\s+secondary|)\s(dynamic)\s+.*?(\Q$iface_name\E)/) {
 			# Line like :
 			# inet 193.9.101.120/24 brd 193.9.101.255 scope global secondary dynamic br0
+			# inet 10.211.55.81/24 metric 100 brd 10.211.55.255 scope global secondary dynamic enp0s5
+			# inet 10.211.55.65/24 brd 10.211.55.255 scope global secondary dynamic noprefixroute enp0s5
+			# inet 10.211.55.10/24 brd 10.211.55.255 scope global dynamic enp0s5
+			$iface_auto_ip = $1;
 			$ifc{'address'} = $1;
 			$ifc{'netmask'} = &prefix_to_mask("$2");
 			}
-		elsif ($l =~ /\sinet\s+([0-9\.]+)\/(\d+)(\s+metric\s+\d+)?(\s+brd\s+(\S+))?\s+scope\s+global(\s+(noprefixroute|dynamic|secondary))*\s+(\S+)/ && $8 eq $ifc{'name'}) {
+		elsif ($l =~ /\sinet\s+([0-9\.]+)\/(\d+)(\s+metric\s+\d+)?(\s+brd\s+(\S+))?\s+scope\s+global(\s+(noprefixroute|secondary))*\s+(\Q$iface_name\E)/) {
 			# Line like :
 			# inet 193.9.101.120/24 brd 193.9.101.255 scope global br0
 			$ifc{'address'} = $1;
@@ -74,7 +79,7 @@ if (&has_command("ip")) {
 			$ifc{'address'} = $1;
 			$ifc{'netmask'} = &prefix_to_mask("$3");
 			}
-		elsif ($l =~ /\sinet\s+([0-9\.]+)\/(\d+)(\s+brd\s+(\S+))?\s+scope\s+host\s+(\S+)/ && $5 eq $ifc{'name'}) {
+		elsif ($l =~ /\sinet\s+([0-9\.]+)\/(\d+)(\s+brd\s+(\S+))?\s+scope\s+host\s+(\Q$iface_name\E)/) {
 			# Line like :
 			# inet 127.0.0.1/8 scope host lo
                         $ifc{'address'} = $1;
@@ -107,11 +112,20 @@ if (&has_command("ip")) {
 		$ifc{'index'} = scalar(@rv);
 		push(@rv, \%ifc);
 
-		# Strip off the line for the primary IP, but only if there
-		# is one
+		# Strip off the line for the primary IP, but only if there is one
 		if ($ifc{'address'}) {
-			$l =~ s/\sinet\s+([0-9\.]+)\s+peer// ||
-				$l =~ s/\sinet\s+([0-9\.]+)\/(\d+)//;
+			$l =~ s/\sinet\s+([0-9\.]+)\s+peer//;
+			if ($l =~ /\sinet\s+([0-9\.]+)\/(\d+)/) {
+				# If primary IP equals dynamic or no
+				# dynamic IP is found stirp it off
+				if (!$iface_auto_ip || $iface_auto_ip eq $1) {
+					$l =~ s/\sinet\s+([0-9\.]+)\/(\d+)//;
+					}
+				# Just strip off dynamic from the list
+				elsif ($iface_auto_ip) {
+					$l =~ s/\sinet\s+(\Q$iface_auto_ip\E)\/(\d+)//;
+					}
+				}
 			}
 
 		# Add extra IPs as fake virtual interfaces, from lines like
