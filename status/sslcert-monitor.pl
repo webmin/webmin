@@ -15,8 +15,8 @@ if ($_[0]->{'url'}) {
 	local $cmd = "openssl s_client -host ".quotemeta($host).
 		     " -servername ".quotemeta($host).
 		     " -port ".quotemeta($port)." </dev/null 2>&1";
-	local $out = &backquote_with_timeout($cmd, 10);
-	if ($?) {
+	local ($out, $timed) = &backquote_with_timeout($cmd, 10);
+	if ($? && !$timed) {
 		# Try again without -servername, as some openssl versions
 		# don't support it
 		$cmd = "openssl s_client -host ".quotemeta($host).
