@@ -61,7 +61,8 @@ sub main
                'allow-symlinks|as!'               => \$opt{'allow-symlinks'},
                'git-commit|gc!'                   => \$opt{'git-commit'},
                'log|l:s'                          => \$opt{'log'},
-               'verbose|v:i'                      => \$opt{'verbose'});
+               'verbose|v:i'                      => \$opt{'verbose'},
+               'yes|y:i'                          => \$opt{'assumeyes'});
 
     # Print help and exit
     pod2usage(0) if ($opt{'help'});
@@ -69,6 +70,11 @@ sub main
     # Enforce verbose output by default
     if (!defined($opt{'verbose'})) {
         $opt{'verbose'} = 1;
+    }
+    
+    # Enforce yes for all questions
+    if (defined($opt{'assumeyes'})) {
+        $opt{'assumeyes'} = 1;
     }
 
     # Get current path
@@ -232,7 +238,7 @@ sub main
     # Just run tests, and exit, without writing anything
     if (@{ $opt{'keys-test'} }) {
         say CYAN, "Translation testing for selected keys is about to start ..", RESET;
-        if (prompt('next')) {
+        if (prompt('next', \%opt)) {
             go(\%opt, \%data);
         }
     } else {
@@ -248,7 +254,7 @@ sub main
         if ($opt{'mode'} eq 'clean') {
             # # Execute clean
             talk('clean-pre', \%opt, \%data);
-            if (prompt('next')) {
+            if (prompt('next', \%opt)) {
                 go(\%opt, \%data);
             }
         }
@@ -258,7 +264,7 @@ sub main
 
             # Execute force transcode/translate
             talk('overwrite-pre', \%opt, \%data);
-            if (prompt('next')) {
+            if (prompt('next', \%opt)) {
                 go(\%opt, \%data);
             }
         }
@@ -283,7 +289,7 @@ sub main
                 talk('sync-pre', \%opt, \%data);
             }
 
-            if (prompt('next')) {
+            if (prompt('next', \%opt)) {
                 go(\%opt, \%data);
             }
         }
@@ -546,7 +552,7 @@ sub language_transcode
         eval {$string = decode($encoding, $string)};
         if ($@) {
             say "Error found: $@";
-            if (!prompt('next')) {
+            if (!prompt('next', $opt)) {
                 exit;
             }
         }
@@ -1692,8 +1698,10 @@ sub get_google_translate_token
 
 sub prompt
 {
-    my ($q) = @_;
-
+    my ($q, $opt) = @_;
+    if ($opt->{'assumeyes'}) {
+        return 1;
+    }
     if ($q eq 'next') {
         return prompt("Do you want to proceed?");
     }
