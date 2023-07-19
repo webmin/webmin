@@ -454,6 +454,7 @@ left_sig=Edit Signature
 editor_heading=Heading
 editor_paragraph=Paragraph
 editor_fontfamily_default=Default
+editor_fontfamily_monospace=Fixed Width
 editor_font_small=Small
 editor_font_normal=Normal
 editor_font_medium=Medium

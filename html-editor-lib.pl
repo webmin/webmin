@@ -98,6 +98,10 @@ if ($type eq 'toolbar') {
     .ql-compose-container .ql-snow .ql-picker.ql-font .ql-picker-item::before {
         content: '$text{'editor_fontfamily_default'}';
     }
+    .ql-compose-container .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="monospace"]::before,
+    .ql-compose-container .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="monospace"]::before {
+        content: '$text{'editor_fontfamily_monospace'}';
+    }
     .ql-compose-container .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="0.75em"]::before,
     .ql-compose-container .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="0.75em"]::before {
         content: '$text{'editor_font_small'}';
