@@ -65,6 +65,7 @@ uedit_clone=Klonanvändare
 
 usave_elength=Användarnamnet kan inte vara längre än $1 bokstäver
 usave_ere=Användarnamn matchar inte regexp $1
+usave_eltgt=Användarnamnet får inte innehålla &lt; eller &gt; tecken
 usave_euuid=Du får inte ändra användarnas UID
 usave_euidused2=UID används redan
 usave_ealluid=Alla tillåtna UID: er har tilldelats

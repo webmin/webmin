@@ -451,7 +451,10 @@ left_filter=Filteri e-pošte
 left_pass=Promijenite lozinku
 left_sig=Uredi potpis
 
+editor_heading=Naslov
+editor_paragraph=stavak
 editor_fontfamily_default=Zadano
+editor_fontfamily_monospace=Fiksna širina
 editor_font_small=Mali
 editor_font_normal=Normalan
 editor_font_medium=Srednji

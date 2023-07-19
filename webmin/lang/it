@@ -168,8 +168,6 @@ mods_install=Installa Modulo
 mods_local=Dal filesystem locale
 mods_uploaded=Tramite un file-upload
 mods_ftp=Da un indirizzo URL ftp o http
-mods_standard=Modulo standard da <a href='$1'>www.webmin.com</a>
-mods_standard2=Modulo standard
 mods_third=Modulo di terze parti da:
 mods_thsel=Seleziona:
 mods_nodeps=Ignorare le dipendenze?

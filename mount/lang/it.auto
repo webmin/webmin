@@ -2,6 +2,9 @@ index_used=Usato
 index_none=Non hai accesso a nessun filesystem montato.
 index_mount2=Montare con password:
 index_root=File system di root
+index_show1=Mostra tutti i filesystem
+index_show0=Nascondi i filesystem non modificabili
+index_addtype=di tipo
 
 edit_usage=Uso del disco
 edit_comm_opt=Opzioni di montaggio comuni

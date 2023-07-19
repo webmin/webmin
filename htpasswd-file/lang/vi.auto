@@ -1,0 +1,54 @@
+index_title=Quản lý tệp HTPasswd
+index_econfig=Không thể sử dụng mô-đun này cho đến khi tệp mật khẩu được đặt trên trang <a href='$1'>cấu hình mô-đun</a>.
+index_emd5=Mô-đun này đã được <a href='$1'>cấu hình</a> để sử dụng mã hóa MD5 cho mật khẩu, nhưng mô-đun $2 Perl chưa được cài đặt. <a href='$3'>Nhấp vào đây</a> để tải xuống và cài đặt mô-đun $2.
+index_header=Người dùng tệp mật khẩu
+index_none=Không có người dùng nào tồn tại trong tệp mật khẩu đã định cấu hình.
+index_add=Thêm người dùng mới vào tệp mật khẩu.
+index_file=Người dùng trong Tệp Mật khẩu $1
+index_sync=Đồng bộ hóa người dùng Unix
+index_return=Danh sách người dùng
+index_eversion=Mô-đun này đã được <a href='$1'>cấu hình</a> để sử dụng mã hóa MD5 cho mật khẩu, nhưng phiên bản mô-đun Người dùng và Nhóm được cài đặt trên hệ thống của bạn không bao gồm các chức năng MD5 cần thiết. Nâng cấp lên phiên bản 1.114 trở lên.
+index_synccreate=Thêm người dùng khi người dùng Unix được tạo?
+index_syncmodify=Đặt lại tên hoặc thay đổi mật khẩu của người dùng khi người dùng Unix tương ứng được sửa đổi?
+index_syncdelete=Xóa người dùng khi người dùng Unix tương ứng bị xóa?
+index_ssave=Lưu và áp dụng
+
+edit_title1=Tạo người dùng
+edit_title2=Người dùng biên tập
+edit_header=Chi tiết người dùng tệp mật khẩu
+edit_user=tên tài khoản
+edit_enabled=Đã bật?
+edit_pass=Mật khẩu
+edit_pass1=giữ nguyên
+edit_pass0=Đặt thành
+edit_passfrom=Thay đổi từ
+edit_passto=sang mật khẩu mới
+edit_single=Người dùng thay đổi
+edit_return=mẫu thay đổi mật khẩu
+
+save_err=Không thể lưu người dùng
+save_euser1=Thiếu tên người dùng
+save_euser2=Tên người dùng không được chứa ký tự :
+save_epass=Mật khẩu không được chứa ký tự :
+save_eclash=Một người dùng có cùng tên đã tồn tại
+save_eoldpass=Mật khẩu cũ không chính xác
+save_ecreate=Bạn không được phép tạo người dùng
+save_edelete=Bạn không được phép xóa người dùng
+save_euser=người dùng không tồn tại
+save_title=Người dùng đã lưu
+save_done=Người dùng $1 đã được cập nhật.
+
+acl_repeat=Phải nhập mật khẩu cũ khi thay đổi?
+acl_create=Có thể tạo người dùng mới?
+acl_rename=Có thể đổi tên người dùng?
+acl_delete=Có thể xóa người dùng?
+acl_sync=Có thể cấu hình đồng bộ hóa?
+acl_enable=Có thể bật và tắt người dùng không?
+acl_single=Bỏ qua danh sách người dùng và chuyển trực tiếp đến biểu mẫu thay đổi mật khẩu?
+
+sync_ecannot=Bạn không được phép định cấu hình đồng bộ hóa
+
+log_sync=Đã thay đổi tùy chọn đồng bộ hóa
+log_create=Người dùng đã tạo $1
+log_delete=Đã xóa người dùng $1
+log_modify=Người dùng đã sửa đổi $1

@@ -231,6 +231,7 @@ sync_auto=&lt;Automatic&gt;
 keys_title=מפתחות SSH מארחים
 keys_desc=דף זה מאפשר לך להציג את מקשי ה- SSH עבור מארח זה.
 keys_none=לא ניתן למצוא ערכי HostKey בתצורת SSHD שלך.
+keys_change=שינוי
 
 manual_title=ערוך קבצי תצורה
 manual_ecannot=אינך רשאי לערוך את קובץ התצורה של שרת SSH

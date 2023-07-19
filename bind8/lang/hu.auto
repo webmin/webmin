@@ -10,6 +10,8 @@ master_inview=$1 a $2 nézetben
 master_egone=A $1 zóna egyetlen nézetben sem létezik
 master_egone2=A $1 zóna nem létezik!
 master_egone3=A $1 zóna a $2 nézetben nem létezik!
+master_vmin=Ezt a zónát a Virtualmin kezeli. A rekordokat a Virtualmin UI használatával kell szerkeszteni, hogy konzisztensek legyenek a többi virtuális szerver beállításával.
+master_vminalias=Ez a zóna egy Virtualmin tartomány álneve, amely szinkronban van a céljával. A rekordokat soha nem szabad itt szerkeszteni, mert az esetleges változtatások felülíródnak!
 
 delete_vwarn=Ez a zóna a $1 Virtualmin domainhez van társítva, ezért itt nem szabad törölni!
 

@@ -11,6 +11,7 @@ vars_register=Trasforma tutti gli input in variabili globali?
 vars_args=Trasformare i parametri della riga di comando in variabili globali?
 vars_long=Creare matrici vecchio stile come <tt>HTTP_GET_VARS</tt>?
 
+dirs_exts=Estensioni da caricare
 dirs_eincs=Nessuna directory di ricerca inclusa inserita
 
 session_handler=Meccanismo di archiviazione della sessione
@@ -22,9 +23,11 @@ limits_mem=Allocazione massima della memoria
 limits_post=Dimensione HTTP POST massima
 limits_exec=Tempo massimo di esecuzione
 limits_input=Tempo massimo di analisi dell'input
+limits_vars=Limite massimo delle variabili di input
 limits_epost=Dimensione POST HTTP massima mancante o non valida
 limits_eexec=Tempo di esecuzione massimo mancante o non valido
 limits_einput=Tempo massimo di analisi dell'input mancante o non valido
+limits_evars=Limite massimo delle variabili di input mancante o non valido
 
 errors_source=Ignora la fonte quando controlli le ripetizioni?
 
@@ -42,3 +45,6 @@ log_session=Opzioni di sessione modificate in $1
 log_safe=Opzioni della modalità provvisoria modificate in $1 
 
 acl_user=Leggi e scrivi i file come utente
+
+opt_default=Valore predefinito: <tt>$1</tt>
+opt_default_unknown=Sconosciuto

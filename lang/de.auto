@@ -2,8 +2,21 @@ category_=Werkzeuge
 
 longcategory_=Module, die andere verschiedene Aufgaben ausführen
 
+help_efile3=Hilfeseite $1 aus Modul $2 konnte nicht gelesen werden
+help_einclude3=Die Hilfeseite $1 konnte nicht eingebunden werden
+
+ui_of=von
+
+log_email_by=$1 von $2
+
+paginator_showing_start=Es werden $1 bis $2 von $3 Elementen auf der Seite angezeigt
+paginator_showing_end=von $1 Seiten
+paginator_nosearchrs=Es gibt keine Ergebnisse, die mit der <tt>$1</tt>-Abfrage übereinstimmen
+
 langauto_include=Fügen Sie maschinelle Übersetzungen hinzu
 
 file_truncated_message=$1 der Daten abgerufen, $2 von $3 abgeschnitten
 file_truncated_message_head=Anfang $1 der Daten abgerufen, $2 von $3 abgeschnitten
 file_truncated_message_tail=Abgerufenes Ende $1 der Daten, abgeschnittenes $2 von $3 
+
+defcert_error=Das standardmäßige gebündelte SSL-Zertifikat $1 wird verwendet. Es wird dringend empfohlen, das Standardzertifikat <tt>$2</tt> zu aktualisieren, bevor Sie mit der Anmeldung fortfahren.

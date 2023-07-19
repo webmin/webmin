@@ -116,9 +116,9 @@ config_ewebmin=Параметр тыпу 14 працуе толькі ў Webmin
 
 help_err=Не атрымалася паказаць даведку
 help_epath=Адсутнічае альбо недапушчальны шлях дапамогі
-help_efile=Не атрымалася прачытаць файл даведкі $1
+help_efile3=Не ўдалося прачытаць старонку даведкі $1 з модуля $2
 help_eheader=Адсутнічае раздзел &lt;header&gt;
-help_einclude=Не атрымалася ўключыць $1
+help_einclude3=Не атрымалася ўключыць старонку даведкі $1
 help_eif=$1 не атрымалася : $2
 help_eexec=$1 не атрымалася : $2
 
@@ -306,6 +306,7 @@ ui_etime=Няправільны час
 ui_paging=Паказ радкоў $1 для $2 з $3
 ui_rowlabel=$2 у радку $1 :
 ui_filterbox=Увядзіце фільтраванне.
+ui_of=з
 
 header_statusmsg=$1 увайшоў у $2 $3 на $4 ($5)
 
@@ -356,6 +357,7 @@ sql_eldaplogin=Не атрымалася ўвайсці на сервер LDAP, 
 
 log_email_subject=Дзеянне Webmin у $1
 log_email_global=Глабальнае дзеянне Webmin
+log_email_by=$1 на $2
 log_email_desc=Гэты ліст быў адпраўлены Webmin у адказ на дзеянні карыстальніка.
 log_email_mod=Модуль Webmin: $1
 log_email_moddesc=Назва модуля: $1
@@ -378,8 +380,14 @@ nice_size_kB=кБ
 nice_size_kiB=кіБ
 nice_size_b=байт
 
+paginator_showing_start=Паказваецца ад $1 да $2 з $3 элементаў на старонцы
+paginator_showing_end=з $1 старонак
+paginator_nosearchrs=Няма вынікаў, якія адпавядаюць запыту <tt>$1</tt>
+
 langauto_include=Уключыце машынны пераклад
 
 file_truncated_message=атрымана $1 дадзеных, усечана $2 з $3 
 file_truncated_message_head=атрымана пачатак $1 дадзеных, усечана $2 з $3 
 file_truncated_message_tail=атрымана заканчэнне $1 дадзеных, усечана $2 з $3 
+
+defcert_error=Выкарыстоўваецца пакетны сертыфікат SSL па змаўчанні $1. Настойліва рэкамендуецца абнавіць стандартны сертыфікат <tt>$2</tt>, перш чым працягнуць уваход.

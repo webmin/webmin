@@ -200,8 +200,6 @@ mods_install=Installeer Module
 mods_local=Van die plaaslike lêer
 mods_uploaded=Van die opgelaaide lêer
 mods_ftp=Van HTTP of FTP URL
-mods_standard=Standaardmodule van <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=Standaardmodule
 mods_third=Derde party module vanaf
 mods_thsel=Kies ..
 mods_nodeps=Ignoreer afhanklikhede?
@@ -325,6 +323,9 @@ lang_err=Kon nie taal stoor nie
 lang_echarset=Karakterset ontbreek of ongeldig
 lang_dateformat=Datums vertoon formaat
 lang_dateformat_dd/mon/yyyy=dd/maand/jjjj (d.w.s. 16/Sep/2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/jjjj (d.w.s. 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/jjjj (d.w.s. 16/09/2001)
+lang_dateformat_yyyy/mm/dd=jjjj/mm/dd (d.w.s. 2001/09/16)
 
 ssl_title=SSL-kodering
 ssl_essl=Dit lyk nie of die Net::SSLeay perl-module op u stelsel geïnstalleer is nie. Volg <a href='$1'>hierdie instruksies</a> van die Webmin-webwerf om die OpenSSL-biblioteek en Net::SSLeay te installeer.
@@ -694,6 +695,7 @@ log_tinstall=Geïnstalleerde tema $1
 log_clone=Gekloonde module $1 tot $2
 log_delete=Module $1 geskrap
 log_os=Bestuurstelsel verander
+log_fixrepo=Vaste Webmin-bewaarplek
 log_lang=Veranderde wêreldtaal
 log_startpage=Verander indeksbladsy-opsies
 log_upgrade=Webmin opgegradeer na weergawe $1
@@ -1010,6 +1012,9 @@ notify_updatedesc=Los die probleem op
 notif_updateok=Installeer opdaterings nou
 notif_reboot=Onlangse pakketopdaterings (soos 'n nuwe kernweergawe) vereis dat 'n herlaai weer volledig toegepas moet word.
 notif_rebootok=Herbegin nou
+notify_yumrepo=Jou stelsel gebruik die ou Webmin YUM-bewaarplek. Klik die knoppie hieronder om oor te skakel na die nuwe bewaarplek-URL <tt>$1</tt> om ons nuutste ondertekeningsleutel te gebruik en toegang tot opgedateerde Webmin-weergawes te verseker.
+notify_aptrepo=Jou stelsel gebruik die ou Webmin APT-bewaarplek. Klik op die knoppie hieronder om oor te skakel na die nuwe <tt>stable</tt> bewaarplek-URL <tt>$1</tt> om ons nuutste ondertekeningsleutel te gebruik en toegang tot opgedateerde Webmin-weergawes te verseker.
+notif_fixreponow=Dateer Webmin-bewaarplek op
 
 status_title=Versameling van agtergrondstatus
 status_header=Instellings vir statusversameling

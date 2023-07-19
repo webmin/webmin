@@ -13,6 +13,9 @@ egroupdbacl2=Не удалось обновить ACL группы : $1
 config_emodule=Модуль не существует
 config_ewebmin=Тип параметра 14 работает только в Webmin
 
+help_efile3=Не удалось прочитать страницу справки $1 из модуля $2
+help_einclude3=Не удалось включить страницу справки $1
+
 referer_fix3u=Убедитесь, что ваш браузер настроен на отправку информации о реферере, чтобы она могла быть проверена Webmin.
 
 session_twofactor=Двухфакторный токен
@@ -31,6 +34,7 @@ password_temp=Вы должны выбрать новый пароль, чтоб
 password_epam=Ошибка PAM : $1
 
 ui_filterbox=Тип для фильтрации ..
+ui_of=из
 
 header_statusmsg=$1 вошел в $2 $3 в $4 ($5)
 
@@ -50,6 +54,7 @@ sql_eldaplogin=Не удалось войти на сервер LDAP как $1 :
 
 log_email_subject=Действие Webmin в $1
 log_email_global=Webmin глобальное действие
+log_email_by=$1 по $2
 log_email_desc=Это письмо было отправлено Webmin в ответ на действие пользователя.
 log_email_mod=Модуль Webmin: $1
 log_email_moddesc=Название модуля: $1
@@ -72,8 +77,14 @@ nice_size_kB=кБ
 nice_size_kiB=киБ
 nice_size_b=байт
 
+paginator_showing_start=Показано от $1 до $2 из $3 элементов на странице
+paginator_showing_end=из $1 страниц
+paginator_nosearchrs=Нет результатов, соответствующих запросу <tt>$1</tt>
+
 langauto_include=Включить машинные переводы
 
 file_truncated_message=получено $1 данных, усечено $2 из $3 
 file_truncated_message_head=извлечено начало $1 данных, усечено $2 из $3 
 file_truncated_message_tail=получено окончание $1 данных, усечено $2 из $3 
+
+defcert_error=Используется связанный SSL-сертификат $1 по умолчанию. Настоятельно рекомендуется обновить сертификат по умолчанию <tt>$2</tt>, прежде чем продолжить вход в систему.

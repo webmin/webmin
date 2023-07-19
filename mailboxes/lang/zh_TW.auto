@@ -185,7 +185,10 @@ left_filter=電子郵件過濾器
 left_pass=更改密碼
 left_sig=編輯簽名
 
+editor_heading=標題
+editor_paragraph=段落
 editor_fontfamily_default=默認
+editor_fontfamily_monospace=固定寬度
 editor_font_small=小的
 editor_font_normal=普通的
 editor_font_medium=中等的

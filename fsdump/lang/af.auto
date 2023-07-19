@@ -95,6 +95,7 @@ dump_bcomp=Buffer saamgeperste data in blokke?
 dump_xdev=Beperk rugsteun tot een lêersisteem?
 dump_update2=Voeg net nuwe lêers by die argief?
 dump_ignoreread=Ignoreer leesfoute op lêers?
+dump_ignorechanged=Ignoreer foute as lêers verander?
 dump_notape=Vra u vir nuwe band indien nodig?
 dump_rmt=Pad na <tt>rmt</tt> op afstandstelsel
 dump_links=Volg simboliese skakels?

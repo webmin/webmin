@@ -29,6 +29,8 @@ master_movedesc=Tüm kayıtları ve diğer seçenekleri korurken bu bölgeyi ba�
 master_applymsg2=Yalnızca bu bölge için değişiklik uygulamak üzere bu düğmeyi tıklayın. Bu, yalnızca bölge oluşturulduğundan bu yana en az bir kez tüm sunucu için değişiklikler uygulandığında çalışır.
 master_esoagone=SOA kaydı bulunamadı!
 master_einclude=Ek şablon dosyası yok
+master_vmin=Bu bölge Virtualmin tarafından yönetilmektedir. Diğer sanal sunucu ayarlarıyla tutarlı olduklarından emin olmak için kayıtlar Virtualmin UI kullanılarak düzenlenmelidir.
+master_vminalias=Bu bölge, hedefiyle senkronize tutulan bir Virtualmin etki alanının takma adıdır. Herhangi bir değişikliğin üzerine yazılacağı için kayıtlar burada asla düzenlenmemelidir!
 
 delete_mesg3=$1 bölgesini silmek istediğinizden emin misiniz?
 delete_vwarn=Bu bölge $1 Virtualmin etki alanı ile ilişkilidir ve buradan silinmemelidir!

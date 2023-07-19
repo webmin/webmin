@@ -123,6 +123,9 @@ lang_locale=محلی
 lang_charover=مجموعه کاراکتر نیرو
 lang_dateformat=فرمت نمایش تاریخ ها
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (یعنی 16/09/2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/yyyy (یعنی 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/yyyy (یعنی 09/16/2001)
+lang_dateformat_yyyy/mm/dd=yyyy/mm/dd (یعنی 2001/09/16)
 
 ssl_deny=نسخه های پروتکل SSL را رد کنید
 ssl_compression=اتصال SSL فشرده شده مجاز است؟
@@ -283,6 +286,7 @@ categories_langok=تغییر دادن
 categories_custom=سفارشی
 
 log_osdn=گزینه های بارگیری تغییر کرده است
+log_fixrepo=مخزن وبمین ثابت شد
 log_twofactor=گزینه های تأیید اعتبار دو عاملی را تغییر داد
 log_newcsr=SSL جدید CSR ایجاد کرد
 log_mobile=گزینه های دستگاه تلفن همراه تغییر یافته است
@@ -497,6 +501,9 @@ notify_updatedesc=مشکل را برطرف می کند
 notif_updateok=اکنون به روزرسانی ها را نصب کنید
 notif_reboot=به روزرسانی های اخیر بسته (مانند نسخه هسته جدید) برای بکارگیری کامل نیاز به راه اندازی مجدد دارد.
 notif_rebootok=اکنون راه اندازی مجدد شود
+notify_yumrepo=سیستم شما از مخزن قدیمی Webmin YUM استفاده می کند. برای استفاده از آخرین کلید امضای ما و اطمینان از دسترسی به نسخه های وبمین به روز شده، روی دکمه زیر کلیک کنید تا به نشانی اینترنتی مخزن جدید <tt>$1</tt> بروید.
+notify_aptrepo=سیستم شما از مخزن قدیمی Webmin APT استفاده می کند. برای استفاده از آخرین کلید امضای ما و اطمینان از دسترسی به نسخه های وبمین <tt>stable</tt> روز شده، روی دکمه زیر کلیک کنید تا به URL مخزن جدید <tt>$1</tt> تغییر دهید.
+notif_fixreponow=به روز رسانی مخزن وبمین
 
 status_title=مجموعه وضعیت پس زمینه
 status_header=تنظیمات شغلی مجموعه وضعیت

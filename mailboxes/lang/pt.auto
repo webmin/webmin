@@ -414,7 +414,10 @@ left_filter=Filtros de Email
 left_pass=Mudar senha
 left_sig=editar assinatura
 
+editor_heading=Cabeçalho
+editor_paragraph=Parágrafo
 editor_fontfamily_default=Padrão
+editor_fontfamily_monospace=Largura fixa
 editor_font_small=Pequeno
 editor_font_normal=Normal
 editor_font_medium=Médio

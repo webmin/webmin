@@ -2,7 +2,15 @@ list_efile=Het te bewerken bestand moet een absoluut pad zijn
 list_format_ini=INI-formaat
 list_format_fpm=FPM-indeling
 
+dirs_exts=Extensies om te laden
+
 session_redis=Redis
 session_memcache=GeheugencacheD
 
+limits_vars=Maximale limiet invoervariabelen
+limits_evars=Ontbrekende of ongeldige maximumlimiet voor invoervariabelen
+
 misc_charset=Standaard tekenset
+
+opt_default=Standaardwaarde: <tt>$1</tt>
+opt_default_unknown=Onbekend

@@ -70,7 +70,10 @@ user_emax_questions=O número máximo de consultas por hora deve ser um número
 hosts_return=permissões de host
 
 exec_cs=Conjunto de caracteres para dados
+exec_collationdown=O agrupamento do banco de dados foi rebaixado de <tt>$1</tt> para <tt>$2</tt>
 
+log_ssl=Certificado SSL alterado
+log_genssl=Certificado SSL gerado
 log_manual=Arquivo de configuração editado manualmente
 
 backup_prefix=Prefixo do nome do arquivo
@@ -124,3 +127,18 @@ mysqlpass_esafe=A inicialização em modo de segurança falhou : $1
 mysqlpass_estartup=A inicialização falhou : $1 
 mysqlpass_echange=A alteração da senha falhou : $1 
 mysqlpass_echange_forcepass=Forçar a substituição da senha fornecida, se perdida ou esquecida
+
+ssl_title=Certificado SSL
+ssl_header=Opções SSL do MySQL
+ssl_cert=arquivo de certificado SSL
+ssl_key=arquivo de chave SSL
+ssl_ca=Arquivo de certificado SSL CA
+ssl_req=Exigir que os clientes usem SSL?
+ssl_none=Nenhum definido
+ssl_gen=Gerar certificado e chave
+ssl_err=Falha ao salvar opções de SSL
+ssl_ecert=Arquivo de certificação SSL ausente ou inexistente
+ssl_ekey=Arquivo de chave SSL ausente ou inexistente
+ssl_eca=Arquivo SSL CA ausente ou inexistente
+ssl_ecertexists=O arquivo de certificado SSL $1 já existe!
+ssl_ekeyexists=O arquivo de chave SSL $1 já existe!

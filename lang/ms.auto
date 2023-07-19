@@ -6,10 +6,16 @@ fail=Gagal
 
 config_emodule=Modul tidak wujud
 
+help_efile3=Gagal membaca halaman bantuan $1 daripada modul $2 
+help_einclude3=Gagal memasukkan halaman bantuan $1 
+
 referer_fix3u=Pastikan pelayar anda dikonfigurasikan untuk menghantar maklumat rujukan supaya ia dapat disahkan oleh Webmin.
+
+ui_of=daripada
 
 log_email_subject=Tindakan Webmin di $1
 log_email_global=Tindakan global Webmin
+log_email_by=$1 oleh $2 
 log_email_desc=E-mel ini dihantar oleh Webmin sebagai tindak balas kepada tindakan pengguna.
 log_email_mod=Modul Webmin: $1
 log_email_moddesc=Judul modul: $1
@@ -32,8 +38,14 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bait
 
+paginator_showing_start=Menunjukkan $1 hingga $2 daripada $3 item pada halaman
+paginator_showing_end=daripada $1 halaman
+paginator_nosearchrs=Tiada hasil yang sepadan dengan pertanyaan <tt>$1</tt>
+
 langauto_include=Sertakan terjemahan mesin
 
 file_truncated_message=mengambil $1 data, terpotong $2 daripada $3 
 file_truncated_message_head=mengambil $1 data, dipotong $2 daripada $3 
 file_truncated_message_tail=mengambil akhir $1 data, terpotong $2 daripada $3 
+
+defcert_error=Lalai $1 sijil SSL yang digabungkan sedang digunakan. Adalah sangat dinasihatkan untuk mengemas kini sijil lalai <tt>$2</tt> sebelum meneruskan dengan log masuk.

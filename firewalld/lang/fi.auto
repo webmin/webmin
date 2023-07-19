@@ -38,6 +38,13 @@ index_restart_firewalld=Lataa FirewallD uudelleen
 index_restart_firewallddesc=Lataa FirewallD-palvelin uudelleen ja käytä pysyvästi luotuja sääntöjä.
 index_listrules_restartdesc=Luettele tiedot olemassa olevista monipuolisista ja suorista FirewallD-säännöistä $1 vyöhykkeellä.
 index_dependent=$1 riippuvaisen palvelun uudelleenkäynnistys epäonnistui
+index_manual=Muokkaa asetustiedostoja.
+
+manual_title=Muokkaa asetustiedostoja
+manual_editsel=Muokkaa FirewallD-määritystiedostoa
+manual_err=Määritystiedoston tallennus epäonnistui
+manual_efile=Valittu asetustiedosto ei kelpaa
+manual_ok=Muokata
 
 port_edit=Muokkaa porttia
 port_create=Lisää portti

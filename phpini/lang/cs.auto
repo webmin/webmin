@@ -4,8 +4,13 @@ list_efile=Soubor, který chcete upravit, musí být absolutní cesta
 list_format_ini=Formát INI
 list_format_fpm=Formát FPM
 
+dirs_exts=Rozšíření k načtení
+
 session_redis=Redis
 session_memcache=MemcacheD
+
+limits_vars=Maximální limit vstupních proměnných
+limits_evars=Chybějící nebo neplatný limit maximálních vstupních proměnných
 
 misc_include=Povolit otevření dálkového Zahrnuje?
 misc_path=Informace o opravné cestě CGI?
@@ -13,3 +18,6 @@ misc_timezone=Časové pásmo PHP
 misc_charset=Výchozí znaková sada
 
 acl_user=Čtení a zápis souborů jako uživatel
+
+opt_default=Výchozí hodnota: <tt>$1</tt>
+opt_default_unknown=Neznámý

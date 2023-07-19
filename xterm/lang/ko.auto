@@ -4,6 +4,7 @@ index_epel=먼저 <a href='$1' target='_blank'>EPEL</a> 저장소를 활성화�
 index_suse=Perl 패키지 <tt>perl-IO-Tty</tt>가 없습니다. 먼저 <a href='$2' target='_blank'>devel:languages:perl</a> 저장소에서 수동으로 설치해야 합니다.
 index_euser=오류: 사용자 $1은(는) 쉘이 존재하지 않으므로 실행할 수 없습니다!
 index_connecting=연결 중 ..
+index_missing=Perl 모듈 <tt>$1</tt>이(가) 없습니다. 이 문제를 해결하려면 관리자에게 문의해야 합니다.
 
 acl_user=Unix 사용자로 쉘 실행
 acl_sameuser=Webmin 로그인과 동일

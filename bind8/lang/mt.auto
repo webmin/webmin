@@ -147,6 +147,8 @@ master_defttl=Żmien tal-għajxien awtomatiku għar-rekords
 master_edefttl="$1" m'huwiex il-ħin ta 'l-għajxien validu għar-rekords
 master_esoagone=Ma nstab l-ebda rekord SOA!
 master_einclude=Fajl mudell addizzjonali ma jeżistix
+master_vmin=Din iż-żona hija mmexxija minn Virtualmin. Ir-rekords għandhom jiġu editjati bl-użu ta' Virtualmin UI, biex jiġi żgurat li jkunu konsistenti ma' settings oħra ta' server virtwali.
+master_vminalias=Din iż-żona hija alias ta' dominju Virtualmin, li jinżamm sinkronizzat mal-mira tiegħu. Ir-rekords m'għandhom qatt jiġu editjati hawn, peress li kwalunkwe tibdil se jinkiteb fuqhom!
 
 delete_title=Ħassar Żona
 delete_mesg=Int żgur li trid tħassar iż-żona $1? Ir-rekords kollha u l-fajl taż-żona se jitħassru.

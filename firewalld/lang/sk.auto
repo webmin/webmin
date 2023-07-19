@@ -38,6 +38,13 @@ index_restart_firewalld=Znova načítajte FirewallD
 index_restart_firewallddesc=Znova načítajte server FirewallD a použite pravidlá, ktoré boli natrvalo vytvorené.
 index_listrules_restartdesc=Uveďte podrobnosti o existujúcich bohatých a priamych pravidlách brány FirewallD v zóne $1.
 index_dependent=Nepodarilo sa reštartovať službu závislú od $1
+index_manual=Upravte konfiguračné súbory.
+
+manual_title=Upravte konfiguračné súbory
+manual_editsel=Upravte konfiguračný súbor FirewallD
+manual_err=Nepodarilo sa uložiť konfiguračný súbor
+manual_efile=Vybratý konfiguračný súbor nie je platný
+manual_ok=Upraviť
 
 port_edit=Upraviť port
 port_create=Pridať port

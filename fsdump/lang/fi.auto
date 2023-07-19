@@ -95,6 +95,7 @@ dump_bcomp=Puskuri pakatut tiedot lohkoiksi?
 dump_xdev=Rajoitako varmuuskopio vain yhteen tiedostojärjestelmään?
 dump_update2=Lisää vain uusia tiedostoja arkistoon?
 dump_ignoreread=Ohitetaanko tiedostojen lukuvirheet?
+dump_ignorechanged=Ohita virheet, jos tiedostot muuttuvat?
 dump_notape=Pyydä uusi nauha tarvittaessa?
 dump_rmt=Polku etäjärjestelmään <tt>rmt</tt>
 dump_links=Seuraako symbolisia linkkejä?

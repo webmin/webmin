@@ -143,6 +143,7 @@ usave_ecreate=Et voi luoda uusia käyttäjiä
 usave_ebadname='$1' ei ole kelvollinen käyttäjänimi
 usave_elength=Käyttäjätunnus ei voi olla pidempi kuin $1 kirjainta
 usave_ere=Käyttäjätunnus ei vastaa regexp $1
+usave_eltgt=Käyttäjätunnus ei voi sisältää &lt; tai &gt; hahmoja
 usave_erename=Käyttäjiä ei saa nimetä uudelleen
 usave_einuse=käyttäjänimi '$1' on jo käytössä
 usave_einuse_a=käyttäjänimi '$1' on jo käytössä sähköpostialias

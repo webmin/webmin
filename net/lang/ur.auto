@@ -16,6 +16,7 @@ index_mode_netbsd=نیٹ بی ایس ڈی
 index_mode_openbsd=اوپن بی ایس ڈی
 index_mode_solaris=سولیرس
 index_mode_windows=ونڈوز
+index_mode_nm=نیٹ ورک مینیجر
 
 ifcs_title=نیٹ ورک انٹرفیس
 ifcs_now=اب متحرک
@@ -276,6 +277,8 @@ log_apply_bfics=چالو$1 بوٹ ٹائم انٹرفیس
 log_create_route=$1 کے لئے فعال راستہ بنایا
 log_create_defroute=فعال ڈیفالٹ روٹ بنایا گیا
 log_delete_routes=حذف شدہ$1 فعال راستے
+log_delete_aifcs=غیر فعال $1 انٹرفیس
+log_delete_bifcs=حذف شدہ $1 انٹرفیس
 
 acl_ifcs=کیا نیٹ ورک انٹرفیس میں ترمیم کر سکتے ہیں؟
 acl_routes=روٹنگ اور گیٹ وے میں ترمیم کرسکتے ہیں؟

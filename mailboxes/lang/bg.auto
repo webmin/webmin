@@ -451,7 +451,10 @@ left_filter=Имейл филтри
 left_pass=Промяна на паролата
 left_sig=Редактиране на подписа
 
+editor_heading=Заглавие
+editor_paragraph=Параграф
 editor_fontfamily_default=По подразбиране
+editor_fontfamily_monospace=Фиксирана ширина
 editor_font_small=малък
 editor_font_normal=нормално
 editor_font_medium=Среден

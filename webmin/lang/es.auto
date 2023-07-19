@@ -106,6 +106,9 @@ lang_lang=Idioma
 lang_locale=Lugar
 lang_dateformat=Formato de visualización de fechas
 lang_dateformat_dd/mon/yyyy=dd/mon/aaaa (es decir, 16/sep/2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/aaaa (es decir, 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/aaaa (es decir, 16/09/2001)
+lang_dateformat_yyyy/mm/dd=aaaa/mm/dd (es decir, 2001/09/16)
 
 ssl_deny=Versiones de protocolo SSL para rechazar
 ssl_compression=¿Permitir conexiones SSL comprimidas?
@@ -261,6 +264,7 @@ categories_lang=Editar categorías en el idioma:
 categories_langok=Cambio
 categories_custom=Personalizado
 
+log_fixrepo=Repositorio fijo de Webmin
 log_twofactor=Opciones de autenticación de dos factores modificadas
 log_newcsr=Creó una nueva CSR SSL
 log_mobile=Opciones de dispositivo móvil modificadas
@@ -458,6 +462,9 @@ notify_updatedesc=Soluciona el problema
 notif_updateok=Instalar actualizaciones ahora
 notif_reboot=Las actualizaciones de paquetes recientes (como una nueva versión del kernel) requieren que se reinicie completamente para aplicarse.
 notif_rebootok=Reinicie ahora
+notify_yumrepo=Su sistema está utilizando el antiguo repositorio YUM de Webmin. Haga clic en el botón a continuación para cambiar a la nueva URL del repositorio <tt>$1</tt> para usar nuestra clave de firma más reciente y garantizar el acceso a las versiones actualizadas de Webmin.
+notify_aptrepo=Su sistema está utilizando el antiguo repositorio APT de Webmin. Haga clic en el botón a continuación para cambiar a la nueva URL de repositorio <tt>stable</tt> <tt>$1</tt> para usar nuestra clave de firma más reciente y garantizar el acceso a las versiones actualizadas de Webmin.
+notif_fixreponow=Actualizar el repositorio de Webmin
 
 status_title=Colección de estado de fondo
 status_header=Configuración del trabajo de recopilación de estado

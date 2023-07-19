@@ -143,6 +143,7 @@ usave_ecreate=Nemôžete vytvoriť nových používateľov
 usave_ebadname=$1 nie je platné používateľské meno
 usave_elength=Používateľské meno nemôže byť dlhšie ako písmená $1
 usave_ere=Používateľské meno sa nezhoduje s regexp $1
+usave_eltgt=Používateľské meno nemôže obsahovať &lt; alebo &gt; postavy
 usave_erename=Používateľom nemáte povolenie premenovať
 usave_einuse=používateľské meno „$1“ sa už používa
 usave_einuse_a=používateľské meno „$1“ sa už používa v e-mailovom aliase

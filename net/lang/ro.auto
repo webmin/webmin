@@ -16,6 +16,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=Windows
+index_mode_nm=Manager de rețea
 
 ifcs_title=Interfețe de rețea
 ifcs_now=Activ acum
@@ -276,6 +277,8 @@ log_apply_bfics=Interfețe de pornire-timp de pornire $1 activate
 log_create_route=Crearea traseului activ pentru $1 
 log_create_defroute=Crearea rutei implicite active
 log_delete_routes=Rute active $1 șterse
+log_delete_aifcs=S-au dezactivat $1 interfețe
+log_delete_bifcs=S-au șters $1 interfețe
 
 acl_ifcs=Poate edita interfețe de rețea?
 acl_routes=Poate edita rutarea și gateway-urile?

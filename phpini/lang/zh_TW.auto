@@ -39,6 +39,7 @@ dirs_header=PHP腳本和擴展目錄設置
 dirs_include=在目錄中搜索包括
 dirs_below=下面列出 ..
 dirs_ext=擴展目錄
+dirs_exts=加載擴展
 dirs_upload=允許文件上傳？
 dirs_utmp=上載文件的臨時目錄
 dirs_err=保存目錄設置失敗
@@ -90,12 +91,14 @@ limits_post=最大HTTP POST大小
 limits_upload=最大文件上傳大小
 limits_exec=最長執行時間
 limits_input=最大輸入解析時間
+limits_vars=最大輸入變量限制
 limits_err=保存資源限制失敗
 limits_emem=最大內存分配丟失或無效
 limits_epost=最大HTTP POST大小丟失或無效
 limits_eupload=最大文件上傳大小丟失或無效
 limits_eexec=缺少或無效的最大執行時間
 limits_einput=最大輸入解析時間丟失或無效
+limits_evars=最大輸入變量限制缺失或無效
 
 errors_title=錯誤記錄
 errors_header=錯誤消息顯示和日誌記錄選項
@@ -164,3 +167,6 @@ acl_anyfile=可以將任何文件作為PHP配置進行編輯嗎？
 acl_manual=可以手動編輯配置文件嗎？
 acl_inis=其他配置文件<br>（格式為<i>文件名</i>=<i>說明</i>）
 acl_user=以用戶身份讀寫文件
+
+opt_default=默認值：<tt>$1</tt>
+opt_default_unknown=未知

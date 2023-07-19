@@ -16,6 +16,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Салярыс
 index_mode_windows=Windows
+index_mode_nm=Менеджэр сеткі
 
 ifcs_title=Сеткавыя інтэрфейсы
 ifcs_now=Актыўна зараз
@@ -276,6 +277,8 @@ log_apply_bfics=Актываваны інтэрфейс загрузкі $1
 log_create_route=Створаны актыўны маршрут для $1 
 log_create_defroute=Створаны актыўны маршрут па змаўчанні
 log_delete_routes=Выдалены $1 актыўных маршрутаў
+log_delete_aifcs=Дэактываваныя інтэрфейсы $1
+log_delete_bifcs=Выдалены інтэрфейсы $1
 
 acl_ifcs=Ці можаце рэдагаваць сеткавыя інтэрфейсы?
 acl_routes=Ці можаце рэдагаваць маршрутызацыю і шлюзы?

@@ -17,7 +17,10 @@ left_filter=Filtri email
 left_pass=Cambia la password
 left_sig=Modifica firma
 
+editor_heading=Intestazione
+editor_paragraph=Paragrafo
 editor_fontfamily_default=Predefinito
+editor_fontfamily_monospace=Larghezza fissa
 editor_font_small=Piccolo
 editor_font_normal=Normale
 editor_font_medium=medio

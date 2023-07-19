@@ -200,8 +200,6 @@ mods_install=Namestite modul
 mods_local=Iz lokalne datoteke
 mods_uploaded=Iz naložene datoteke
 mods_ftp=Iz HTTP ali FTP URL
-mods_standard=Standardni modul s strani <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=Standardni modul
 mods_third=Modul tretje osebe od
 mods_thsel=Izberite ..
 mods_nodeps=Prezreti odvisnosti?
@@ -325,6 +323,9 @@ lang_err=Jezika ni bilo mogoče shraniti
 lang_echarset=Manjkajoči ali neveljaven videz nabora znakov
 lang_dateformat=Oblika prikaza datumov
 lang_dateformat_dd/mon/yyyy=dd/pon/llll (tj. 16. september 2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/llll (tj. 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/llll (tj. 16. 9. 2001)
+lang_dateformat_yyyy/mm/dd=llll/mm/dd (tj. 2001/09/16)
 
 ssl_title=Šifriranje SSL
 ssl_essl=Perl modul Net::SSLeay ni videti nameščen v vašem sistemu. Če želite namestiti knjižnico OpenSSL in Net::SSLeay, sledite <a href='$1'>tem navodilom</a> s spletnega mesta Webmin.
@@ -694,6 +695,7 @@ log_tinstall=Nameščena tema $1
 log_clone=Kloniran modul $1 do $2
 log_delete=Izbrisan modul $1
 log_os=Spremenjen operacijski sistem
+log_fixrepo=Popravljeno skladišče Webmin
 log_lang=Spremenjen globalni jezik
 log_startpage=Spremenjene možnosti indeksne strani
 log_upgrade=Nadgrajen Webmin na različico $1
@@ -1010,6 +1012,9 @@ notify_updatedesc=Težava odpravlja
 notif_updateok=Namestite posodobitve zdaj
 notif_reboot=Zadnje posodobitve paketov (na primer nova različica jedra) zahtevajo ponovni zagon v celoti.
 notif_rebootok=Ponovno zaženi
+notify_yumrepo=Vaš sistem uporablja staro skladišče Webmin YUM. Kliknite spodnji gumb, da preklopite na URL novega repozitorija <tt>$1</tt>, da uporabite naš najnovejši podpisni ključ in zagotovite dostop do posodobljenih različic Webmin.
+notify_aptrepo=Vaš sistem uporablja staro skladišče Webmin APT. Kliknite spodnji gumb, da preklopite na nov URL <tt>stable</tt> repozitorija <tt>$1</tt>, da uporabite naš najnovejši podpisni ključ in zagotovite dostop do posodobljenih različic Webmin.
+notif_fixreponow=Posodobite skladišče Webmin
 
 status_title=Zbirka stanja ozadja
 status_header=Nastavitve opravila zbiranja stanja

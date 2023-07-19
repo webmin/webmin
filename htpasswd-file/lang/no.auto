@@ -1,0 +1,54 @@
+index_title=Administrer HTPasswd-fil
+index_econfig=Denne modulen kan ikke brukes før en passordfil er satt på <a href='$1'>modulkonfigurasjonssiden</a>.
+index_emd5=Denne modulen er <a href='$1'>konfigurert</a> til å bruke MD5-kryptering for passord, men $2 Perl-modulen er ikke installert. <a href='$3'>Klikk her</a> for å få $2-modulen lastet ned og installert.
+index_header=Brukere av passordfil
+index_none=Det finnes ingen brukere i den konfigurerte passordfilen.
+index_add=Legg til en ny bruker i passordfilen.
+index_file=Brukere i passordfilen $1
+index_sync=Unix-brukersynkronisering
+index_return=brukerliste
+index_eversion=Denne modulen har blitt <a href='$1'>konfigurert</a> til å bruke MD5-kryptering for passord, men versjonen av brukere og grupper-modulen installert på systemet ditt inkluderer ikke de nødvendige MD5-funksjonene. Oppgrader til versjon 1.114 eller nyere.
+index_synccreate=Vil du legge til en bruker når en Unix-bruker opprettes?
+index_syncmodify=Gi nytt navn til eller endre passordet til en bruker når den tilsvarende Unix-brukeren endres?
+index_syncdelete=Vil du slette en bruker når den tilsvarende Unix-brukeren er slettet?
+index_ssave=Lagre og bruk
+
+edit_title1=Opprett bruker
+edit_title2=Rediger bruker
+edit_header=Passordfil brukerdetaljer
+edit_user=Brukernavn
+edit_enabled=Aktivert?
+edit_pass=Passord
+edit_pass1=La stå uendret
+edit_pass0=Satt til
+edit_passfrom=Bytt fra
+edit_passto=til nytt passord
+edit_single=Bruker å endre
+edit_return=skjema for endring av passord
+
+save_err=Kunne ikke lagre bruker
+save_euser1=Mangler brukernavn
+save_euser2=Brukernavnet kan ikke inneholde tegnet :
+save_epass=Passordet kan ikke inneholde tegnet :
+save_eclash=Det finnes allerede en bruker med samme navn
+save_eoldpass=Gammelt passord er ikke riktig
+save_ecreate=Du har ikke lov til å opprette brukere
+save_edelete=Du har ikke lov til å slette brukere
+save_euser=Bruker finnes ikke
+save_title=Bruker lagret
+save_done=Brukeren $1 har blitt oppdatert.
+
+acl_repeat=Må oppgi gammelt passord når du endrer?
+acl_create=Kan du opprette nye brukere?
+acl_rename=Kan du endre navn på brukere?
+acl_delete=Kan du slette brukere?
+acl_sync=Kan konfigurere synkronisering?
+acl_enable=Kan aktivere og deaktivere brukere?
+acl_single=Vil du hoppe over brukerlisten og gå direkte til skjemaet for endring av passord?
+
+sync_ecannot=Du har ikke lov til å konfigurere synkronisering
+
+log_sync=Endret synkroniseringsalternativer
+log_create=Opprettet bruker $1
+log_delete=Slettet bruker $1
+log_modify=Endret bruker $1

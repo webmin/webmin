@@ -134,6 +134,9 @@ lang_lang=Dil
 lang_locale=yerel ayar
 lang_dateformat=Tarih görüntüleme formatı
 lang_dateformat_dd/mon/yyyy=gg/mon/yyyy (yani 16/Eylül/2001)
+lang_dateformat_dd/mm/yyyy=gg/aa/yyyy (yani 16/09/2001)
+lang_dateformat_mm/dd/yyyy=aa/gg/yyyy (yani 09/16/2001)
+lang_dateformat_yyyy/mm/dd=yyyy/aa/gg (yani 2001/09/16)
 
 ssl_deny=Reddedilecek SSL protokolü sürümleri
 ssl_compression=Sıkıştırılmış SSL bağlantılarına izin verilsin mi?
@@ -306,6 +309,7 @@ categories_langok=Değişiklik
 categories_custom=görenek
 
 log_osdn=Değişen indirme seçenekleri
+log_fixrepo=Sabit Webmin deposu
 log_twofactor=İki faktörlü kimlik doğrulama seçenekleri değiştirildi
 log_newcsr=Yeni SSL CSR oluşturuldu
 log_mobile=Değiştirilmiş mobil cihaz seçenekleri
@@ -527,6 +531,9 @@ notify_updatedesc=Sorunu giderir
 notif_updateok=Güncelleştirmeleri Şimdi Yükle
 notif_reboot=Son paket güncellemeleri (yeni çekirdek sürümü gibi), tamamen yeniden başlatılmasını gerektirir.
 notif_rebootok=Şimdi yeniden başlat
+notify_yumrepo=Sisteminiz eski Webmin YUM deposunu kullanıyor. En son imzalama anahtarımızı kullanmak ve güncellenmiş Webmin sürümlerine erişim sağlamak için yeni depo URL'si <tt>$1</tt>'ye geçmek için aşağıdaki düğmeyi tıklayın.
+notify_aptrepo=Sisteminiz eski Webmin APT deposunu kullanıyor. En son imzalama anahtarımızı kullanmak ve güncellenmiş Webmin sürümlerine erişim sağlamak için yeni <tt>stable</tt> havuz URL'si <tt>$1</tt> geçmek üzere aşağıdaki düğmeyi tıklayın.
+notif_fixreponow=Webmin Deposunu Güncelle
 
 status_title=Arka Plan Durum Koleksiyonu
 status_header=Durum toplama işi ayarları

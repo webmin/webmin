@@ -143,6 +143,7 @@ usave_ecreate=Negalite kurti naujų vartotojų
 usave_ebadname=„$1“ nėra teisingas vartotojo vardas
 usave_elength=Vartotojo vardas negali būti ilgesnis nei $1 raidės
 usave_ere=Vartotojo vardas nesutampa su regexp $1
+usave_eltgt=Vartotojo varde negali būti &lt; arba &gt; personažai
 usave_erename=Jums neleidžiama pervardyti vartotojų
 usave_einuse=vartotojo vardas „$1“ jau naudojamas
 usave_einuse_a=vartotojo vardą „$1“ jau naudoja pašto slapyvardis

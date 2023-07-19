@@ -1,3 +1,7 @@
+index_show1=إظهار كافة أنظمة الملفات
+index_show0=إخفاء أنظمة الملفات غير القابلة للتحرير
+index_addtype=من النوع
+
 edit_title=تحرير جبل
 create_title=إنشاء جبل
 edit_err=فشل في تعديل التحميل

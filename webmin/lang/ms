@@ -182,8 +182,6 @@ mods_install=Pasang Modul
 mods_local=Dari fail lokal
 mods_uploaded=Dari fail yang telah dimuat naik
 mods_ftp=Dari ftp atau URL http
-mods_standard=Modul standard dari <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=Modul standard
 mods_third=Modul pihak ketiga dari
 mods_thsel=Pilih..
 mods_nodeps=Abaikan kebergantungan?

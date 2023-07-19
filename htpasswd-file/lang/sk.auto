@@ -1,0 +1,54 @@
+index_title=Spravovať súbor HTTPasswd
+index_econfig=Tento modul nie je možné použiť, kým na stránke <a href='$1'>konfigurácia modulu</a> nenastavíte súbor s heslom.
+index_emd5=Tento modul bol <a href='$1'>nakonfigurovaný</a> na používanie šifrovania MD5 pre heslá, ale modul $2 Perl nie je nainštalovaný. <a href='$3'>Kliknutím sem</a> si stiahnete a nainštalujete modul $2.
+index_header=Používatelia súboru hesiel
+index_none=V nakonfigurovanom súbore hesiel neexistujú žiadni používatelia.
+index_add=Pridajte nového používateľa do súboru hesiel.
+index_file=Používatelia v súbore hesiel $1
+index_sync=Synchronizácia používateľov systému Unix
+index_return=zoznam používateľov
+index_eversion=Tento modul bol <a href='$1'>nakonfigurovaný</a> na používanie šifrovania MD5 pre heslá, ale verzia modulu Používatelia a skupiny nainštalovaná vo vašom systéme neobsahuje potrebné funkcie MD5. Inovujte na verziu 1.114 alebo novšiu.
+index_synccreate=Pridať používateľa pri vytvorení používateľa Unix?
+index_syncmodify=Premenovať alebo zmeniť heslo používateľa pri zmene príslušného používateľa Unixu?
+index_syncdelete=Odstrániť používateľa, keď je vymazaný príslušný používateľ Unixu?
+index_ssave=Uložiť a použiť
+
+edit_title1=Vytvoriť používateľa
+edit_title2=Upraviť používateľa
+edit_header=Podrobnosti o používateľovi súboru hesiel
+edit_user=Používateľské meno
+edit_enabled=Povolené?
+edit_pass=heslo
+edit_pass1=Nechajte nezmenené
+edit_pass0=Nastavený na
+edit_passfrom=Zmeniť z
+edit_passto=na nové heslo
+edit_single=Používateľ na zmenu
+edit_return=formulár na zmenu hesla
+
+save_err=Používateľa sa nepodarilo uložiť
+save_euser1=Chýba používateľské meno
+save_euser2=Používateľské meno nemôže obsahovať znak :
+save_epass=Heslo nemôže obsahovať znak :
+save_eclash=Používateľ s rovnakým menom už existuje
+save_eoldpass=Staré heslo nie je správne
+save_ecreate=Nemáte povolené vytvárať používateľov
+save_edelete=Nemáte povolené mazať používateľov
+save_euser=Používateľ neexistuje
+save_title=Používateľ bol uložený
+save_done=Používateľ $1 bol aktualizovaný.
+
+acl_repeat=Musíte pri zmene zadať staré heslo?
+acl_create=Môžete vytvoriť nových používateľov?
+acl_rename=Je možné premenovať používateľov?
+acl_delete=Môžete odstrániť používateľov?
+acl_sync=Dá sa nakonfigurovať synchronizácia?
+acl_enable=Môžete povoliť a zakázať používateľov?
+acl_single=Preskočiť zoznam používateľov a prejsť priamo na formulár na zmenu hesla?
+
+sync_ecannot=Nemáte povolené konfigurovať synchronizáciu
+
+log_sync=Zmenené možnosti synchronizácie
+log_create=Vytvorený používateľ $1
+log_delete=Odstránený používateľ $1
+log_modify=Upravený používateľ $1

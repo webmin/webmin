@@ -16,6 +16,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Соларис
 index_mode_windows=Windows
+index_mode_nm=Мрежов мениджър
 
 ifcs_title=Мрежови интерфейси
 ifcs_now=На линия
@@ -276,6 +277,8 @@ log_apply_bfics=Активирани интерфейси $1 за стартир
 log_create_route=Създаден активен маршрут за $1 
 log_create_defroute=Създаден активен маршрут по подразбиране
 log_delete_routes=Изтрити $1 активни маршрути
+log_delete_aifcs=Деактивирани $1 интерфейси
+log_delete_bifcs=Изтрити $1 интерфейси
 
 acl_ifcs=Може ли да редактирате мрежови интерфейси?
 acl_routes=Може ли да редактирате маршрутизация и шлюзове?

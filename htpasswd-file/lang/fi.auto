@@ -1,0 +1,54 @@
+index_title=Hallitse HTPasswd-tiedostoa
+index_econfig=Tätä moduulia ei voi käyttää ennen kuin salasanatiedosto on asetettu <a href='$1'>moduulin määrityssivulle</a>.
+index_emd5=Tämä moduuli on <a href='$1'>määritetty</a> käyttämään salasanojen MD5-salausta, mutta $2 Perl-moduulia ei ole asennettu. <a href='$3'>Napsauta tätä</a> ladataksesi ja asentaaksesi moduulin $2.
+index_header=Salasanatiedoston käyttäjät
+index_none=Määritetyssä salasanatiedostossa ei ole käyttäjiä.
+index_add=Lisää uusi käyttäjä salasanatiedostoon.
+index_file=Käyttäjät salasanatiedostossa $1
+index_sync=Unix-käyttäjien synkronointi
+index_return=käyttäjäluettelo
+index_eversion=Tämä moduuli on <a href='$1'>määritetty</a> käyttämään salasanojen MD5-salausta, mutta järjestelmääsi asennettu Käyttäjät ja ryhmät -moduulin versio ei sisällä tarvittavia MD5-toimintoja. Päivitä versioon 1.114 tai uudempaan.
+index_synccreate=Lisätäänkö käyttäjä, kun Unix-käyttäjä luodaan?
+index_syncmodify=Nimeätkö uudelleen tai vaihdatko käyttäjän salasanaa, kun vastaavaa Unix-käyttäjää muutetaan?
+index_syncdelete=Poistetaanko käyttäjä, kun vastaava Unix-käyttäjä poistetaan?
+index_ssave=Tallenna ja käytä
+
+edit_title1=Luo käyttäjä
+edit_title2=Muokkaa käyttäjää
+edit_header=Salasanatiedoston käyttäjätiedot
+edit_user=Käyttäjätunnus
+edit_enabled=Käytössä?
+edit_pass=Salasana
+edit_pass1=Jätä ennalleen
+edit_pass0=Asetettu
+edit_passfrom=Vaihda kohteesta
+edit_passto=uuteen salasanaan
+edit_single=Käyttäjä vaihdettava
+edit_return=salasanan vaihtolomake
+
+save_err=Käyttäjän tallentaminen epäonnistui
+save_euser1=Käyttäjätunnus puuttuu
+save_euser2=Käyttäjätunnus ei voi sisältää merkkiä :
+save_epass=Salasana ei voi sisältää merkkiä :
+save_eclash=Samanniminen käyttäjä on jo olemassa
+save_eoldpass=Vanha salasana ei ole oikea
+save_ecreate=Et saa luoda käyttäjiä
+save_edelete=Et saa poistaa käyttäjiä
+save_euser=Käyttäjää ei ole olemassa
+save_title=Käyttäjä tallennettu
+save_done=Käyttäjä $1 on päivitetty.
+
+acl_repeat=Pitääkö vaihtaa vanha salasana?
+acl_create=Voiko luoda uusia käyttäjiä?
+acl_rename=Voiko käyttäjiä nimetä uudelleen?
+acl_delete=Voiko käyttäjiä poistaa?
+acl_sync=Voiko synkronoinnin määrittää?
+acl_enable=Voiko käyttäjiä ottaa käyttöön ja poistaa käytöstä?
+acl_single=Ohitetaanko käyttäjäluettelo ja siirrytään suoraan salasananvaihtolomakkeeseen?
+
+sync_ecannot=Sinulla ei ole lupaa määrittää synkronointia
+
+log_sync=Synkronointiasetuksia muutettu
+log_create=Luotu käyttäjä $1
+log_delete=Poistettu käyttäjä $1
+log_modify=Muokattu käyttäjä $1

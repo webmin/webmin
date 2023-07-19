@@ -12,6 +12,9 @@ index_return=zoznam súborových systémov
 index_none=Nemáte prístup k pripojeným súborovým systémom.
 index_mount2=Pripojiť pomocou hesla:
 index_root=Koreňový súborový systém
+index_show1=Zobraziť všetky súborové systémy
+index_show0=Skryť neupraviteľné súborové systémy
+index_addtype=typu
 
 edit_title=Upraviť Mount
 create_title=Vytvorte Mount

@@ -5,6 +5,7 @@ type_ldap=LDAP-verbinding
 
 mon_virtualmin=Waarschuwing! Deze monitor is gekoppeld aan het Virtualmin-domein $1 en mag hier dus niet worden bewerkt of verwijderd.
 mon_etype=Ongeldige naam voor monitortype
+mon_notifywebhook=Webhook
 
 sched_warn3=Zolang de service is afgelopen
 sched_subject=Onderwerpregel voor sms-berichten
@@ -12,6 +13,10 @@ sched_subject0=Geen (waarschuwing zit in het lichaam)
 sched_subject1=Waarschuwingstekst (laat het lichaam leeg)
 sched_subject2=Aangepaste tekst
 sched_esubject=Onderwerp van sms-bericht ontbreekt
+sched_webhook=Status naar webhook verzenden
+sched_webhookno=Niet sturen
+sched_webhookyes=HTTP- of HTTPS-URL
+sched_ewebhook=Ontbrekende of ongeldige URL voor webhook
 
 http_codes=Aanvaardbare HTTP-statuscodes
 http_codes_def=Standaard ($1)

@@ -107,6 +107,8 @@ opts_notify_classes_sel=아래에서 선택
 
 opts_edir=$1 아래에만 맵 파일을 지정할 수 있습니다.
 
+opts_resolve_dequoted_address=메일함 이름에 @ 사용을 금지하시겠습니까?
+
 opts_mailbox_size_limit=사서함의 최대 크기
 
 opts_mynetworks_style=자동 로컬 네트워크
@@ -117,6 +119,7 @@ opts_delay_warning_time_default2=접미사 기본값
 opts_content_filter_default=없음
 
 opts_relay_recipient_maps=릴레이 허용 주소 맵
+opts_smtpd_discard_ehlo_keywords=보내지 않을 SMTP EHLO 키워드
 smtpd_nomap=릴레이 허용 주소에 대한 맵이 아직 입력되지 않았습니다.
 smtpd_nomap2=발신자 주소 제한에 대한 맵이 아직 입력되지 않았습니다.
 smtpd_map=릴레이를 위해 허용 된 주소
@@ -370,6 +373,10 @@ header_title=헤더 확인
 header_ecannot=헤더 확인을 편집 할 수 없습니다
 header_eregexp=헤더 검사 맵은 <tt>regexp :</tt> <i>파일 이름</i> 형식이어야합니다.
 opts_header_checks=MIME 헤더 검사 테이블
+opts_mime_header_checks=MIME 헤더 검사 테이블
+opts_header_checks_no_map=(현재 헤더 확인 맵이 정의되어 있지 않습니다. 먼저 맵을 정의한 후 편집할 수 있습니다.)
+
+opts_mime_header_checks_no_map=(현재 MIME 헤더 검사 맵이 정의되어 있지 않습니다. 먼저 맵을 정의한 다음 편집할 수 있습니다.)
 header_name=정규식
 header_value=경기에 대한 조치
 header_discard=삭제 (로그 메시지와 함께)

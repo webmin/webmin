@@ -21,6 +21,9 @@ chooser_eopen=Échec de l'inscription : $1
 
 config_emodule=Le module n'existe pas
 
+help_efile3=Impossible de lire la page d'aide $1 du module $2
+help_einclude3=Impossible d'inclure la page d'aide $1
+
 referer_fix1=If this is a legitimate link, you can allow links from this URL as follows :<ul><li>Login to Webmin normally.</li><li>Go to the <b>Webmin Configuration</b> module.</li><li>Click on the Trusted Referrers icon.</li><li>Enter the hostname $1 into the <b>Trusted websites</b> field, and click <b>Save.</b></li></ul>
 referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.</li><li>Save the file.</li></ul>
 referer_fix3u=Assurez-vous que votre navigateur est configuré pour envoyer des informations de référence afin qu'elles puissent être vérifiées par Webmin.
@@ -49,6 +52,7 @@ password_temp=Vous devez sélectionner un nouveau mot de passe pour remplacer vo
 password_enewpass=Le nouveau mot de passe n'est pas autorisé : $1
 
 ui_filterbox=Tapez pour filtrer ..
+ui_of=de
 
 uptracker_title=Téléchargement du fichier
 uptracker_file=Nom de fichier
@@ -97,6 +101,7 @@ sql_eldaplogin=Impossible de se connecter au serveur LDAP en tant que $1 : $2
 
 log_email_subject=Action Webmin dans $1
 log_email_global=Action globale Webmin
+log_email_by=$1 par $2
 log_email_desc=Cet e-mail a été envoyé par Webmin en réponse à une action de l'utilisateur.
 log_email_mod=Module Webmin: $1
 log_email_moddesc=Titre du module: $1
@@ -109,8 +114,14 @@ log_email_remote=Adresse client: $1
 
 nice_size_b=octets
 
+paginator_showing_start=Affichage de $1 à $2 éléments sur $3 sur la page
+paginator_showing_end=de $1 pages
+paginator_nosearchrs=Il n'y a aucun résultat correspondant à la requête <tt>$1</tt>
+
 langauto_include=Inclure les traductions automatiques
 
 file_truncated_message=extrait $1 des données, tronqué $2 sur $3 
 file_truncated_message_head=récupéré au début $1 des données, tronqué $2 sur $3 
 file_truncated_message_tail=récupéré se terminant $1 des données, tronqué $2 sur $3 
+
+defcert_error=Le certificat SSL groupé $1 par défaut est utilisé. Il est fortement conseillé de mettre à jour le certificat <tt>$2</tt> par défaut avant de procéder à la connexion.

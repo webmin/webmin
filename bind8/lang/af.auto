@@ -147,6 +147,8 @@ master_defttl=Standaard lewendige tyd vir rekords
 master_edefttl='$1' is nie 'n geldige standaardtyd vir lewering van rekords nie
 master_esoagone=Geen SOA-rekord gevind nie!
 master_einclude=Bykomende sjabloonlêer bestaan nie
+master_vmin=Hierdie sone word deur Virtualmin bestuur. Rekords moet geredigeer word met behulp van die Virtualmin UI, om te verseker dat dit ooreenstem met ander virtuele bediener instellings.
+master_vminalias=Hierdie sone is 'n alias van 'n Virtualmin-domein, wat gesinchroniseer word met sy teiken. Rekords moet nooit hier geredigeer word nie, aangesien enige veranderinge oorgeskryf sal word!
 
 delete_title=Vee sone uit
 delete_mesg=Is u seker dat u die sone $1 wil verwyder? Alle rekords en die sone-lêer sal uitgevee word.

@@ -148,6 +148,9 @@ lang_lang=語言
 lang_locale=語言環境
 lang_dateformat=日期顯示格式
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy（即 16/Sep/2001）
+lang_dateformat_dd/mm/yyyy=日/月/年（即 16/09/2001）
+lang_dateformat_mm/dd/yyyy=月/日/年（即 09/16/2001）
+lang_dateformat_yyyy/mm/dd=年/月/日（即 2001/09/16）
 
 ssl_cpan=或者，您可以讓Webmin為您<a href='$1'>下載並安裝</a>所需的Net::SSLeay Perl模塊。
 ssl_emessage=來自Perl的錯誤消息是：$1
@@ -339,6 +342,7 @@ categories_langok=更改
 categories_custom=自訂
 
 log_osdn=更改了下載選項
+log_fixrepo=修復了 Webmin 存儲庫
 log_twofactor=更改了兩因素身份驗證選項
 log_newcsr=創建了新的SSL CSR
 log_mobile=更改了移動設備選項
@@ -561,6 +565,9 @@ notify_updatedesc=解決問題
 notif_updateok=立即安裝更新
 notif_reboot=最近的軟件包更新（例如新的內核版本）要求重新啟動才能完全應用。
 notif_rebootok=馬上重啟
+notify_yumrepo=您的系統正在使用舊的 Webmin YUM 存儲庫。單擊下面的按鈕切換到新的存儲庫 URL <tt>$1</tt>，以便使用我們最新的簽名密鑰並確保訪問更新的 Webmin 版本。
+notify_aptrepo=您的系統正在使用舊的 Webmin APT 存儲庫。單擊下面的按鈕切換到新的<tt>stable</tt>存儲庫 URL <tt>$1</tt> ，以便使用我們最新的簽名密鑰並確保訪問更新的 Webmin 版本。
+notif_fixreponow=更新 Webmin 存儲庫
 
 status_title=後台狀態收集
 status_header=狀態收集作業設置

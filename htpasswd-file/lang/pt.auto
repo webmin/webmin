@@ -1,0 +1,54 @@
+index_title=Gerir Ficheiro HTPasswd
+index_econfig=Este módulo não pode ser usado até que um arquivo de senha seja definido na página <a href='$1'>configuração do módulo</a>.
+index_emd5=Este módulo foi <a href='$1'>configurado</a> para usar criptografia MD5 para senhas, mas o módulo $2 Perl não está instalado. <a href='$3'>Clique aqui</a> para baixar e instalar o módulo $2.
+index_header=Usuários do arquivo de senha
+index_none=Nenhum usuário existe no arquivo de senha configurado.
+index_add=Adicione um novo usuário ao arquivo de senha.
+index_file=Utilizadores no Ficheiro de Senha $1 
+index_sync=Sincronização de usuários Unix
+index_return=Lista de usuários
+index_eversion=Este módulo foi <a href='$1'>configurado</a> para usar criptografia MD5 para senhas, mas a versão do módulo Usuários e Grupos instalada em seu sistema não inclui as funções MD5 necessárias. Atualize para a versão 1.114 ou posterior.
+index_synccreate=Adicionar um usuário quando um usuário Unix é criado?
+index_syncmodify=Renomear ou alterar a senha de um usuário quando o usuário Unix correspondente é modificado?
+index_syncdelete=Excluir um usuário quando o usuário Unix correspondente é excluído?
+index_ssave=Salvar e Aplicar
+
+edit_title1=Criar usuário
+edit_title2=Editar usuário
+edit_header=Detalhes do usuário do arquivo de senha
+edit_user=Nome de usuário
+edit_enabled=Habilitado?
+edit_pass=Senha
+edit_pass1=Deixar inalterado
+edit_pass0=Definido como
+edit_passfrom=Mudar de
+edit_passto=para nova senha
+edit_single=Usuário para alterar
+edit_return=formulário de alteração de senha
+
+save_err=Falha ao salvar usuário
+save_euser1=Nome de usuário ausente
+save_euser2=O nome de usuário não pode conter o caractere :
+save_epass=A senha não pode conter o caractere :
+save_eclash=Já existe um usuário com o mesmo nome
+save_eoldpass=A senha antiga não está correta
+save_ecreate=Você não tem permissão para criar usuários
+save_edelete=Você não tem permissão para excluir usuários
+save_euser=Usuário não existe
+save_title=usuário salvo
+save_done=O usuário $1 foi atualizado.
+
+acl_repeat=Deve inserir a senha antiga ao alterar?
+acl_create=Pode criar novos usuários?
+acl_rename=Pode renomear usuários?
+acl_delete=Pode excluir usuários?
+acl_sync=Pode configurar a sincronização?
+acl_enable=Pode habilitar e desabilitar usuários?
+acl_single=Ignorar a lista de usuários e ir direto para o formulário de alteração de senha?
+
+sync_ecannot=Você não tem permissão para configurar a sincronização
+
+log_sync=Opções de sincronização alteradas
+log_create=Usuário $1 criado
+log_delete=Utilizador eliminado $1 
+log_modify=Utilizador modificado $1 

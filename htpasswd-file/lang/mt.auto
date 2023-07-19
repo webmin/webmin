@@ -1,0 +1,54 @@
+index_title=Immaniġġja HTPasswd File
+index_econfig=Dan il-modulu ma jistax jintuża sakemm fajl tal-password ikun ġie stabbilit fuq il-paġna <a href='$1'>konfigurazzjoni tal-modulu</a>.
+index_emd5=Dan il-modulu ġie <a href='$1'>konfigurat</a> biex juża l-encryption MD5 għall-passwords, iżda l-modulu $2 Perl mhuwiex installat. <a href='$3'>Ikklikkja hawn</a> biex titniżżel u tinstalla l-modulu $2.
+index_header=Utenti tal-fajl tal-password
+index_none=L-ebda utent ma jeżisti fil-fajl tal-password konfigurat.
+index_add=Żid utent ġdid fil-fajl tal-password.
+index_file=Utenti fil-Password File $1 
+index_sync=Sinkronizzazzjoni tal-Utent Unix
+index_return=lista tal-utenti
+index_eversion=Dan il-modulu ġie <a href='$1'>konfigurat</a> biex juża l-encryption MD5 għall-passwords, iżda l-verżjoni tal-modulu Utenti u Gruppi installat fis-sistema tiegħek ma tinkludix il-funzjonijiet MD5 meħtieġa. Aġġorna għall-verżjoni 1.114 jew aktar tard.
+index_synccreate=Żid utent meta jinħoloq utent Unix?
+index_syncmodify=Erġa' semmi jew ibdel il-password ta' utent meta l-utent Unix korrispondenti jiġi modifikat?
+index_syncdelete=Ħassar utent meta l-utent Unix korrispondenti jitħassar?
+index_ssave=Ħlief u Applika
+
+edit_title1=Oħloq Utent
+edit_title2=Editja l-Utent
+edit_header=Id-dettalji tal-utent tal-fajl tal-password
+edit_user=Isem tal-utent
+edit_enabled=Ippermettiet?
+edit_pass=Password
+edit_pass1=Ħalli mhux mibdul
+edit_pass0=Issettja għal
+edit_passfrom=Bidla minn
+edit_passto=għal password ġdida
+edit_single=Utent għall-bidla
+edit_return=formola tal-bidla tal-password
+
+save_err=Naqas milli ssalva l-utent
+save_euser1=Isem tal-utent nieqes
+save_euser2=L-isem tal-utent ma jistax ikun fih il-karattru :
+save_epass=Il-password ma jistax ikun fiha l-karattru :
+save_eclash=Utent bl-istess isem diġà jeżisti
+save_eoldpass=Il-password l-antika mhix korretta
+save_ecreate=M'intix permess li toħloq utenti
+save_edelete=M'intix permess li tħassar utenti
+save_euser=Utent ma jeżistix
+save_title=Utent Salvat
+save_done=L-utent $1 ġie aġġornat.
+
+acl_repeat=Trid tidħol password l-antika meta tibdel?
+acl_create=Jista' joħloq utenti ġodda?
+acl_rename=Tista' tibdel l-isem tal-utenti?
+acl_delete=Jista' jħassar utenti?
+acl_sync=Jista 'jikkonfigura s-sinkronizzazzjoni?
+acl_enable=Jista 'jattiva u jiskonnettja l-utenti?
+acl_single=Aqbeż il-lista tal-utenti u mur direttament fil-formola tal-bidla tal-password?
+
+sync_ecannot=M'intix permess li tikkonfigura s-sinkronizzazzjoni
+
+log_sync=Għażliet ta' sinkronizzazzjoni mibdula
+log_create=Utent maħluq $1 
+log_delete=Utent $1 imħassar
+log_modify=Utent $1 modifikat

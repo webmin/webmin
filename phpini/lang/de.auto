@@ -1,8 +1,16 @@
 list_efile=Die zu bearbeitende Datei muss ein absoluter Pfad sein
 
+dirs_exts=Erweiterungen zum Laden
+
 session_redis=Redis
 session_memcache=Speicher D
+
+limits_vars=Maximale Grenze für Eingabevariablen
+limits_evars=Fehlender oder ungültiger maximaler Grenzwert für Eingabevariablen
 
 log_safe=Die Optionen für den abgesicherten Modus wurden in $1 geändert
 log_limits=Geänderte Ressourcenlimits in $1 
 log_errors=Die Fehlerprotokollierung in $1 wurde geändert
+
+opt_default=Standardwert: <tt>$1</tt>
+opt_default_unknown=Unbekannt

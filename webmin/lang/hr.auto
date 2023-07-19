@@ -200,8 +200,6 @@ mods_install=Instalirajte modul
 mods_local=Iz lokalne datoteke
 mods_uploaded=Iz prenesene datoteke
 mods_ftp=S HTTP ili FTP URL-a
-mods_standard=Standardni modul s <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=Standardni modul
 mods_third=Modul treće strane od
 mods_thsel=Odaberi ..
 mods_nodeps=Zanemariti ovisnosti?
@@ -325,6 +323,9 @@ lang_err=Spremanje jezika nije uspjelo
 lang_echarset=Skup nedostajućih ili nevažećih izgleda
 lang_dateformat=Format prikaza datuma
 lang_dateformat_dd/mon/yyyy=dd/pon/gggg (tj. 16. rujna 2001.)
+lang_dateformat_dd/mm/yyyy=dd/mm/gggg (tj. 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/gggg (tj. 16.09.2001.)
+lang_dateformat_yyyy/mm/dd=gggg/mm/dd (tj. 2001/09/16)
 
 ssl_title=SSL šifriranje
 ssl_essl=Čini se da perl modul Net::SSLeay nije instaliran na vašem sustavu. Da biste instalirali OpenSSL knjižnicu i Net::SSLeay, slijedite <a href='$1'>ove upute</a> s webminsove webmin.
@@ -694,6 +695,7 @@ log_tinstall=Instalirana tema $1
 log_clone=Klonirani modul $1 do $2
 log_delete=Izbrisani modul $1
 log_os=Promijenjen operativni sustav
+log_fixrepo=Popravljeno Webmin spremište
 log_lang=Izmijenjen globalni jezik
 log_startpage=Izmijenjene su opcije indeksnih stranica
 log_upgrade=Nadograđen Webmin na verziju $1
@@ -1010,6 +1012,9 @@ notify_updatedesc=Popravlja problem
 notif_updateok=Instalirajte ažuriranja odmah
 notif_reboot=Nedavna ažuriranja paketa (kao što je nova verzija kernela) zahtijevaju ponovno pokretanje sustava u potpunosti.
 notif_rebootok=Ponovno pokreni sada
+notify_yumrepo=Vaš sustav koristi staro Webmin YUM spremište. Pritisnite donji gumb za prebacivanje na novi URL spremišta <tt>$1</tt> kako biste koristili naš najnoviji ključ za potpisivanje i osigurali pristup ažuriranim verzijama Webmina.
+notify_aptrepo=Vaš sustav koristi staro Webmin APT spremište. Pritisnite donji gumb za prebacivanje na novi <tt>stable</tt> URL repozitorija <tt>$1</tt> kako biste koristili naš najnoviji ključ za potpisivanje i osigurali pristup ažuriranim verzijama Webmina.
+notif_fixreponow=Ažurirajte Webmin spremište
 
 status_title=Zbirka pozadinskog statusa
 status_header=Postavke posla za prikupljanje statusa

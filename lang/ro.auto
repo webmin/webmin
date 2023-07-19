@@ -16,6 +16,9 @@ chooser_eopen=Listarea a eșuat : $1
 
 config_emodule=Modulul nu există
 
+help_efile3=Nu s-a putut citi pagina de ajutor $1 din modulul $2
+help_einclude3=Nu s-a putut include pagina de ajutor $1
+
 referer_fix1=If this is a legitimate link, you can allow links from this URL as follows :<ul><li>Login to Webmin normally.</li><li>Go to the <b>Webmin Configuration</b> module.</li><li>Click on the Trusted Referrers icon.</li><li>Enter the hostname $1 into the <b>Trusted websites</b> field, and click <b>Save.</b></li></ul>
 referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.</li><li>Save the file.</li></ul>
 referer_fix3u=Asigurați-vă că browserul dvs. este configurat pentru a trimite informații referrer, astfel încât acestea să poată fi verificate de Webmin.
@@ -43,6 +46,7 @@ password_temp=Trebuie să selectați o nouă parolă pentru a înlocui autentifi
 password_enewpass=Parola nouă nu este permisă : $1
 
 ui_filterbox=Tastați filtrul ..
+ui_of=de
 
 uptracker_title=Încărcarea fișierului
 uptracker_file=Nume de fișier
@@ -91,6 +95,7 @@ sql_eldaplogin=Eroare la autentificarea pe serverul LDAP ca $1 : $2
 
 log_email_subject=Acțiune Webmin în $1
 log_email_global=Webmin acțiune globală
+log_email_by=$1 cu $2
 log_email_desc=Acest e-mail a fost trimis de Webmin ca răspuns la o acțiune a utilizatorului.
 log_email_mod=Modul Webmin: $1
 log_email_moddesc=Titlul modulului: $1
@@ -113,8 +118,14 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bytes
 
+paginator_showing_start=Se afișează $1 până la $2 din $3 articole pe pagină
+paginator_showing_end=din $1 pagini
+paginator_nosearchrs=Nu există rezultate care să corespundă interogării <tt>$1</tt>
+
 langauto_include=Includeți traduceri automate
 
 file_truncated_message=a preluat $1 din date, a trunchiat $2 din $3 
 file_truncated_message_head=preluat începutul $1 din date, trunchiat $2 din $3 
 file_truncated_message_tail=a fost preluat sfârșitul $1 din date, trunchiat $2 din $3 
+
+defcert_error=Este utilizat certificatul SSL implicit $1. Este foarte recomandat să actualizați certificatul implicit <tt>$2</tt> înainte de a continua cu autentificare.

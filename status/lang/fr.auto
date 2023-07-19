@@ -1,3 +1,10 @@
+mon_notifywebhook=Webhook
+
+sched_webhook=Envoyer le statut au webhook
+sched_webhookno=N'envoyez pas
+sched_webhookyes=URL HTTP ou HTTPS
+sched_ewebhook=URL manquante ou invalide pour le webhook
+
 http_codes=Codes d'état HTTP acceptables
 http_codes_def=Par défaut ($1)
 http_ecodes=Aucun code HTTP à accepter saisi

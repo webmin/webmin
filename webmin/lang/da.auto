@@ -200,8 +200,6 @@ mods_install=Installer modul
 mods_local=Fra lokal fil
 mods_uploaded=Fra uploadet fil
 mods_ftp=Fra HTTP eller FTP URL
-mods_standard=Standardmodul fra <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=Standard modul
 mods_third=Tredjepartsmodul fra
 mods_thsel=Vælg ..
 mods_nodeps=Ignorerer afhængigheder?
@@ -325,6 +323,9 @@ lang_err=Kunne ikke gemme sproget
 lang_echarset=Manglende eller ugyldigt udseende tegnsæt
 lang_dateformat=Visningsformat for datoer
 lang_dateformat_dd/mon/yyyy=dd/man/åååå (dvs. 16/sep/2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/åååå (dvs. 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/åååå (dvs. 16/09/2001)
+lang_dateformat_yyyy/mm/dd=åååå/mm/dd (dvs. 2001/09/16)
 
 ssl_title=SSL-kryptering
 ssl_essl=Net::SSLeay perl-modulet ser ikke ud til at være installeret på dit system. For at installere OpenSSL-biblioteket og Net::SSLeay, skal du følge <a href='$1'>disse instruktioner</a> fra Webmin-webstedet.
@@ -694,6 +695,7 @@ log_tinstall=Installeret tema $1
 log_clone=Klonet modul $1 til $2
 log_delete=Slettet modul $1
 log_os=Ændret operativsystem
+log_fixrepo=Fast webmin-lager
 log_lang=Ændret globalt sprog
 log_startpage=Ændrede indekssideindstillinger
 log_upgrade=Opgraderet Webmin til version $1
@@ -1010,6 +1012,9 @@ notify_updatedesc=Løser problemet
 notif_updateok=Installer opdateringer nu
 notif_reboot=Nylige pakkeopdateringer (såsom en ny kerneversion) kræver, at en genstart anvendes fuldt ud.
 notif_rebootok=Genstart nu
+notify_yumrepo=Dit system bruger det gamle Webmin YUM-lager. Klik på knappen nedenfor for at skifte til den nye lager-URL <tt>$1</tt> for at bruge vores seneste signeringsnøgle og sikre adgang til opdaterede Webmin-versioner.
+notify_aptrepo=Dit system bruger det gamle Webmin APT-lager. Klik på knappen nedenfor for at skifte til den nye <tt>stable</tt> repository URL <tt>$1</tt> for at bruge vores seneste signeringsnøgle og sikre adgang til opdaterede Webmin-versioner.
+notif_fixreponow=Opdater Webmin Repository
 
 status_title=Baggrundsstatusindsamling
 status_header=Jobindstillinger for statusindsamling

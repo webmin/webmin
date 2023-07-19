@@ -1,4 +1,12 @@
 list_efile=Filen som skal redigeres må være en absolutt bane
 
+dirs_exts=Utvidelser for å laste
+
 session_redis=Redis
 session_memcache=MemcacheD
+
+limits_vars=Maksimal grense for inngangsvariabler
+limits_evars=Manglende eller ugyldig grense for maksimale inndatavariabler
+
+opt_default=Standardverdi: <tt>$1</tt>
+opt_default_unknown=Ukjent

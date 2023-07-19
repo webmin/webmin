@@ -12,6 +12,9 @@ index_return=failu sistēmu saraksts
 index_none=Jums nav piekļuves nevienai piestiprinātai failu sistēmai.
 index_mount2=Uzstādīšana ar paroli:
 index_root=Saknes failu sistēma
+index_show1=Rādīt visas failu sistēmas
+index_show0=Slēpt nerediģējamās failu sistēmas
+index_addtype=tipa
 
 edit_title=Rediģēt kalnu
 create_title=Izveidot kalnu

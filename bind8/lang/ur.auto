@@ -147,6 +147,8 @@ master_defttl=پہلے سے طے شدہ ریکارڈوں کے لئے وقت رہ
 master_edefttl='$1' is not a valid default time-to-live for records
 master_esoagone=ایس او اے کا کوئی ریکارڈ نہیں ملا!
 master_einclude=اضافی ٹیمپلیٹ فائل موجود نہیں ہے
+master_vmin=یہ زون Virtualmin کے زیر انتظام ہے۔ Virtualmin UI کا استعمال کرتے ہوئے ریکارڈز میں ترمیم کی جانی چاہیے، تاکہ یہ یقینی بنایا جا سکے کہ وہ دیگر ورچوئل سرور کی ترتیبات کے ساتھ مطابقت رکھتے ہیں۔
+master_vminalias=یہ زون ورچوئل مین ڈومین کا ایک عرف ہے، جسے اس کے ہدف کے ساتھ ہم آہنگ رکھا جاتا ہے۔ یہاں ریکارڈز میں کبھی بھی ترمیم نہیں کی جانی چاہیے، کیونکہ کوئی بھی تبدیلی اوور رائٹ ہو جائے گی!
 
 delete_title=زون کو حذف کریں
 delete_mesg=Are you sure you want to delete the zone $1 ? All records and the zone file will be deleted.

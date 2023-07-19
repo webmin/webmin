@@ -451,7 +451,10 @@ left_filter=فیلترهای ایمیل
 left_pass=تغییر رمز عبور
 left_sig=امضا را ویرایش کنید
 
+editor_heading=سرفصل
+editor_paragraph=پاراگراف
 editor_fontfamily_default=پیش فرض
+editor_fontfamily_monospace=عرض ثابت
 editor_font_small=کم اهمیت
 editor_font_normal=طبیعی
 editor_font_medium=متوسط

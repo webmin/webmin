@@ -143,6 +143,7 @@ usave_ecreate=Ne možete stvoriti nove korisnike
 usave_ebadname='$1' nije valjano korisničko ime
 usave_elength=Korisničko ime ne može biti dulje od $1
 usave_ere=Korisničko ime ne odgovara regexp $1
+usave_eltgt=Korisničko ime ne može sadržavati &lt; ili &gt; likovi
 usave_erename=Ne možete preimenovati korisnike
 usave_einuse=korisničko ime '$1' je već u upotrebi
 usave_einuse_a=korisničko ime '$1' već se koristi nadimkom e-pošte

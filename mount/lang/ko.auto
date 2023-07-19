@@ -1,4 +1,7 @@
 index_used=익숙한
+index_show1=모든 파일 시스템 표시
+index_show0=편집할 수 없는 파일 시스템 숨기기
+index_addtype=유형의
 
 edit_usage=디스크 사용량
 edit_nfs_opt4=NFSv4 특정 옵션

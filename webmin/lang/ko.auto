@@ -48,6 +48,9 @@ lang_lang=언어
 lang_locale=장소
 lang_dateformat=날짜 표시 형식
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy(예: 2001년 9월 16일)
+lang_dateformat_dd/mm/yyyy=dd/mm/yyyy(예: 2001년 9월 16일)
+lang_dateformat_mm/dd/yyyy=mm/dd/yyyy(예: 2001년 9월 16일)
+lang_dateformat_yyyy/mm/dd=yyyy/mm/dd(예: 2001/09/16)
 
 ssl_deny=거부 할 SSL 프로토콜 버전
 ssl_compression=압축 SSL 연결을 허용 하시겠습니까?
@@ -159,6 +162,7 @@ session_passurl=활성화되면 $1에 대한 POST 요청을 통해 사용자 암
 
 categories_custom=커스텀
 
+log_fixrepo=고정 Webmin 저장소
 log_twofactor=변경된 2 단계 인증 옵션
 log_newcsr=새로운 SSL CSR 생성
 log_web=변경된 웹 서버 옵션
@@ -266,6 +270,9 @@ notify_updatedesc=문제 해결
 notif_updateok=지금 업데이트 설치
 notif_reboot=최신 패키지 업데이트 (예 : 새 커널 버전)를 완전히 적용하려면 재부팅이 필요합니다.
 notif_rebootok=지금 재부팅하세요
+notify_yumrepo=시스템이 이전 Webmin YUM 리포지토리를 사용하고 있습니다. 최신 서명 키를 사용하고 업데이트된 Webmin 버전에 액세스하려면 아래 버튼을 클릭하여 새 리포지토리 URL <tt>$1</tt>으로 전환하십시오.
+notify_aptrepo=시스템이 이전 Webmin APT 리포지토리를 사용하고 있습니다. 최신 서명 키를 사용하고 업데이트된 Webmin 버전에 대한 액세스를 보장하려면 아래 버튼을 클릭하여 새로운 <tt>stable</tt> 리포지토리 URL <tt>$1</tt> 로 전환하십시오.
+notif_fixreponow=Webmin 리포지토리 업데이트
 
 status_title=백그라운드 상태 수집
 status_header=상태 수집 작업 설정

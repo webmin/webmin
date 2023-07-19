@@ -38,6 +38,13 @@ index_restart_firewalld=Ladda om FirewallD
 index_restart_firewallddesc=Ladda om FirewallD-servern och tillämpa reglerna som skapades permanent.
 index_listrules_restartdesc=Lista detaljer om befintliga rika och direkta FirewallD-regler i $1-zonen.
 index_dependent=Det gick inte att starta om $1 beroende tjänst
+index_manual=Redigera konfigurationsfiler.
+
+manual_title=Redigera konfigurationsfiler
+manual_editsel=Redigera FirewallD-konfigurationsfil
+manual_err=Det gick inte att spara konfigurationsfilen
+manual_efile=Den valda konfigurationsfilen är inte giltig
+manual_ok=Redigera
 
 port_edit=Redigera port
 port_create=Lägg till port

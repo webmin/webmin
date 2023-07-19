@@ -231,6 +231,7 @@ sync_auto=&lt;自動&gt;
 keys_title=主機SSH密鑰
 keys_desc=該頁面允許您查看此主機的SSH密鑰。
 keys_none=在您的SSHD配置中找不到任何HostKey條目。
+keys_change=改變
 
 manual_title=編輯配置文件
 manual_ecannot=您無權編輯SSH服務器配置文件

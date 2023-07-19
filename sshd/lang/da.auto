@@ -231,6 +231,7 @@ sync_auto=&lt;Automatisk&gt;
 keys_title=Vært SSH-nøgler
 keys_desc=På denne side kan du se SSH-nøglerne til denne vært.
 keys_none=Kunne ikke finde nogen HostKey-poster i din SSHD-konfiguration.
+keys_change=Lave om
 
 manual_title=Rediger konfigurationsfiler
 manual_ecannot=Du har ikke tilladelse til at redigere konfigurationsfilen til SSH-serveren

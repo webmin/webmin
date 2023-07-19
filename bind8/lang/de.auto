@@ -1,4 +1,6 @@
 master_inview=$1 im Blick $2 
+master_vmin=Diese Zone wird von Virtualmin verwaltet. Datensätze sollten über die Virtualmin-Benutzeroberfläche bearbeitet werden, um sicherzustellen, dass sie mit anderen Einstellungen des virtuellen Servers konsistent sind.
+master_vminalias=Diese Zone ist ein Alias einer Virtualmin-Domäne, die mit ihrem Ziel synchron gehalten wird. Datensätze sollten hier niemals bearbeitet werden, da alle Änderungen überschrieben werden!
 
 delete_vwarn=Diese Zone ist der Virtualmin-Domäne $1 zugeordnet und sollte daher hier nicht gelöscht werden!
 

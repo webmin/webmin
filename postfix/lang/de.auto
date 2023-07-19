@@ -1,3 +1,7 @@
+opts_resolve_dequoted_address=Verwendung von @ in Postfachnamen verhindern?
+
+opts_smtpd_discard_ehlo_keywords=SMTP-EHLO-Schlüsselwörter, die nicht gesendet werden sollen
+
 opts_smtp_tls_security_level=Sicherheitsstufe des SMTP-TLS-Clients
 
 sni_title=Zertifikatzuordnung
@@ -10,6 +14,11 @@ sni_certs=Zertifikatdateien
 acl_sni=Kann Zertifikate bearbeiten?
 
 view_aname=Anhang
+
+opts_mime_header_checks=MIME-Header-Prüftabellen
+opts_header_checks_no_map=(Derzeit ist keine Header-Überprüfungskarte definiert. Definieren Sie zuerst eine Karte, dann können Sie sie bearbeiten.)
+
+opts_mime_header_checks_no_map=(Derzeit ist keine MIME-Header-Überprüfungskarte definiert. Definieren Sie zuerst eine Karte, dann können Sie sie bearbeiten.)
 
 log_opts=Adressumschreibung und Maskierung geändert
 log_aliases=Aliase-Optionen geändert

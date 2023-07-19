@@ -39,6 +39,7 @@ dirs_header=הגדרות סקריפט PHP ותיקיות סיומת
 dirs_include=חפש ספריות עבור כולל
 dirs_below=מופיע למטה ..
 dirs_ext=מדריך לתוספים
+dirs_exts=הרחבות לטעינה
 dirs_upload=לאפשר העלאת קבצים?
 dirs_utmp=מדריך זמני לקבצים שהועלו
 dirs_err=שמירת הגדרות הספריה נכשלה
@@ -90,12 +91,14 @@ limits_post=גודל מקסימלי של HTTP POST
 limits_upload=גודל העלאת קובץ מקסימלי
 limits_exec=זמן ביצוע מרבי
 limits_input=זמן ניתוח קלט מקסימלי
+limits_vars=מגבלת משתני קלט מקסימלית
 limits_err=שמירת מגבלות המשאב נכשלה
 limits_emem=הקצאת זיכרון מרבית חסרה או לא חוקית
 limits_epost=גודל HTTP POST מקסימלי חסר או לא חוקי
 limits_eupload=גודל העלאת הקובץ המרבי חסר או לא חוקי
 limits_eexec=זמן ביצוע מקסימאלי חסר או לא חוקי
 limits_einput=זמן ניתוח הקלט המרבי חסר או לא חוקי
+limits_evars=מגבלת משתני קלט מקסימליים חסרים או לא חוקיים
 
 errors_title=שגיאת רישום
 errors_header=אפשרויות תצוגה ורישום של הודעות שגיאה
@@ -164,3 +167,6 @@ acl_anyfile=האם ניתן לערוך כל קובץ כתצורת PHP?
 acl_manual=האם ניתן לערוך ידנית קבצי תצורה?
 acl_inis=קבצי תצורה נוספים <br>(בתבנית<i> שם קובץ </i>=<i> תיאור </i>)
 acl_user=קרא וכתוב קבצים כמשתמש
+
+opt_default=ערך ברירת מחדל: <tt>$1</tt>
+opt_default_unknown=לא ידוע

@@ -4,6 +4,7 @@ index_epel=Vispirms ir ieteicams iespējot <a href='$1' target='_blank'>EPEL</a>
 index_suse=Trūkst Perl pakotnes <tt>perl-IO-Tty</tt>, un tā vispirms ir manuāli jāinstalē no <a href='$2' target='_blank'>devel:languages:perl</a> krātuves.
 index_euser=Kļūda: lietotājs $1 nevar palaist čaulu, jo tā neeksistē!
 index_connecting=Notiek savienojuma izveide. ..
+index_missing=Trūkst Perl moduļa <tt>$1</tt>. Lai atrisinātu šo problēmu, jums jāsazinās ar administratoru.
 
 acl_user=Palaidiet apvalku kā Unix lietotāju
 acl_sameuser=Tāpat kā Webmin pieteikšanās

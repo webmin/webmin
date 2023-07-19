@@ -12,6 +12,9 @@ index_return=فائل سسٹم کی فہرست
 index_none=آپ کو کسی بھی نصب فائل سسٹم تک رسائی حاصل نہیں ہے۔
 index_mount2=پاس ورڈ کے ساتھ ماؤنٹ:
 index_root=روٹ فائل سسٹم
+index_show1=تمام فائل سسٹم دکھائیں۔
+index_show0=غیر قابل تدوین فائل سسٹم کو چھپائیں۔
+index_addtype=قسم کا
 
 edit_title=ترمیم ماؤنٹ
 create_title=ماؤنٹ بنائیں

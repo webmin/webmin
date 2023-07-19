@@ -4,6 +4,7 @@ index_epel=Es recomana tenir activat primer el repositori <a href='$1' target='_
 index_suse=Falta el paquet Perl <tt>perl-IO-Tty</tt> i primer s'ha d'instal·lar manualment des del repositori <a href='$2' target='_blank'>devel:languages:perl</a>.
 index_euser=Error: l'usuari $1 no pot executar l'intèrpret d'ordres perquè no existeix!
 index_connecting=Connectant ..
+index_missing=Falta el mòdul Perl <tt>$1</tt>. Heu de contactar amb el vostre administrador per resoldre aquest problema.
 
 acl_user=Executeu shell com a usuari Unix
 acl_sameuser=Igual que l'inici de sessió de Webmin

@@ -1,6 +1,11 @@
 mon_virtualmin=Warnung! Dieser Monitor ist der Virtualmin-Domäne $1 zugeordnet und sollte daher hier nicht bearbeitet oder gelöscht werden.
+mon_notifywebhook=Webhook
 
 sched_warn3=Solange der Service läuft
+sched_webhook=Status an Webhook senden
+sched_webhookno=Nicht senden
+sched_webhookyes=HTTP- oder HTTPS-URL
+sched_ewebhook=Fehlende oder ungültige URL für Webhook
 
 http_codes=Akzeptable HTTP-Statuscodes
 http_codes_def=Standard ($1)

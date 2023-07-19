@@ -168,8 +168,6 @@ mods_install=Instalování modulů
 mods_local=Z lokálního souboru
 mods_uploaded=Ze stahovaného souboru
 mods_ftp=Z FTP nebo HTTP
-mods_standard=Standardní modul z <a href='$1'>www.webmin.com</a>
-mods_standard2=Standardní modul
 mods_third=Modul třetích stran z
 mods_thsel=Vybrat..
 mods_nodeps=Ignorovat při instalaci závislosti modulu

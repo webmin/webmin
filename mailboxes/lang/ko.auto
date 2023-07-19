@@ -53,7 +53,10 @@ left_filter=이메일 필터
 left_pass=비밀번호 변경
 left_sig=서명 편집
 
+editor_heading=표제
+editor_paragraph=절
 editor_fontfamily_default=기본
+editor_fontfamily_monospace=고정 폭
 editor_font_small=작은
 editor_font_normal=정상
 editor_font_medium=중간

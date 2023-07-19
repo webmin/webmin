@@ -6,6 +6,11 @@ view_go=Отивам
 
 user_locked=Заключен
 
+exec_collationdown=Съпоставянето на база данни беше намалено от <tt>$1</tt> на <tt>$2</tt>
+
+log_ssl=Променен SSL сертификат
+log_genssl=Генериран SSL сертификат
+
 backup_prefix=Префикс за име на файл
 backup_eprefix=Префиксът за име на файл не може да съдържа /
 backup_noprefix=Нито един
@@ -24,3 +29,18 @@ mysqlpass_esafe=Неуспешно стартиране в безопасен р
 mysqlpass_estartup=Неуспешно стартиране : $1 
 mysqlpass_echange=Промяната на паролата не бе успешна : $1 
 mysqlpass_echange_forcepass=Принудително замяна на дадената парола, ако е загубена или забравена
+
+ssl_title=SSL сертификат
+ssl_header=MySQL SSL опции
+ssl_cert=SSL сертификат файл
+ssl_key=SSL файл с ключ
+ssl_ca=Файл със сертификат за SSL CA
+ssl_req=Да се изисква ли от клиентите да използват SSL?
+ssl_none=Няма зададени
+ssl_gen=Генериране на сертификат и ключ
+ssl_err=Неуспешно запазване на опциите за SSL
+ssl_ecert=Липсващ или несъществуващ файл за SSL сертификат
+ssl_ekey=Липсващ или несъществуващ SSL ключов файл
+ssl_eca=Липсващ или несъществуващ SSL CA файл
+ssl_ecertexists=Файлът със SSL сертификат $1 вече съществува!
+ssl_ekeyexists=Ключовият SSL файл $1 вече съществува!

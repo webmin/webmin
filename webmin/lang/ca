@@ -189,8 +189,6 @@ mods_install=Instal·lació de Mòdul
 mods_local=Des d'un fitxer local
 mods_uploaded=Des d'un fitxer pujat
 mods_ftp=Des de HTTP o URL FTP
-mods_standard=Mòdul estàndard de <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=Mòdul estàndard
 mods_third=Mòdul de tercers de
 mods_thsel=Selecciona...
 mods_nodeps=Ignora les dependències

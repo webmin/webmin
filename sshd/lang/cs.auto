@@ -18,3 +18,4 @@ host_prots21=2 a poté 1
 keys_title=Hostujte klíče SSH
 keys_desc=Tato stránka umožňuje zobrazit klíče SSH pro tohoto hostitele.
 keys_none=Ve vaší konfiguraci SSHD se nepodařilo najít žádné položky HostKey.
+keys_change=Změna

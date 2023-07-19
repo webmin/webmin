@@ -16,6 +16,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=Leihoak
+index_mode_nm=Sare-kudeatzailea
 
 ifcs_title=Sareko interfazeak
 ifcs_now=Orain aktiboa
@@ -276,6 +277,8 @@ log_apply_bfics=$1 abiarazteko denbora-interfazeak aktibatu dira
 log_create_route=Bide aktiboa sortu da $1 erako
 log_create_defroute=Bide lehenetsi aktiboa sortu da
 log_delete_routes=$1 ibilbide aktibo ezabatu dira
+log_delete_aifcs=$1 interfazeak desaktibatu dira
+log_delete_bifcs=$1 interfazeak ezabatu dira
 
 acl_ifcs=Sareko interfazeak editatu al ditzake?
 acl_routes=Editatu al ditzakezu bideratzeak eta atebideak?

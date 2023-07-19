@@ -12,6 +12,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=開放式BSD
 index_mode_solaris=索拉里斯
 index_mode_windows=視窗
+index_mode_nm=網絡經理
 
 ifcs_activedesc=下表中列出的接口當前在系統上處於活動狀態。在大多數情況下，您應該在<b>啟動時激活</b>標籤下對其進行編輯。
 ifcs_bootdesc=該表中列出的接口將在系統啟動時被激活，並且通常現在也將處於活動狀態。
@@ -133,6 +134,8 @@ log_apply_bfics=激活的 $1引導時間界面
 log_create_route=為 $1創建了活動路線
 log_create_defroute=創建的活動默認路由
 log_delete_routes=已刪除 $1個活動路線
+log_delete_aifcs=已停用 $1 接口
+log_delete_bifcs=已刪除 $1 個接口
 
 acl_ifcs_ex=接口除外
 acl_bootonly=可以編輯活動界面嗎？

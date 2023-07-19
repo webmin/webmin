@@ -14,6 +14,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=Windows
+index_mode_nm=Nätverks chef
 
 ifcs_activedesc=Gränssnitt som listas i denna tabell är för närvarande aktiva i systemet. I de flesta fall bör du redigera dem under fliken <b>Aktiverad vid start</b>.
 ifcs_bootdesc=Gränssnitt som listas i denna tabell aktiveras när systemet startar och kommer i allmänhet också att vara aktivt nu.
@@ -167,6 +168,8 @@ log_apply_bfics=Aktiverade $1 starttidgränssnitt
 log_create_route=Skapade aktiv rutt för $1 
 log_create_defroute=Skapade aktiv standardväg
 log_delete_routes=$1 aktiva rutter raderade
+log_delete_aifcs=Inaktiverade $1-gränssnitt
+log_delete_bifcs=Borttaget $1-gränssnitt
 
 acl_ifcs=Kan redigera nätverksgränssnitt?
 acl_routes=Kan redigera routing och gateways?

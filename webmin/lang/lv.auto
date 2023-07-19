@@ -200,8 +200,6 @@ mods_install=Instalējiet moduli
 mods_local=No vietējā faila
 mods_uploaded=No augšupielādētā faila
 mods_ftp=No HTTP vai FTP URL
-mods_standard=Standarta modulis no <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=Standarta modulis
 mods_third=Trešās puses modulis no plkst
 mods_thsel=Izvēlieties ..
 mods_nodeps=Vai ignorēt atkarības?
@@ -325,6 +323,9 @@ lang_err=Neizdevās saglabāt valodu
 lang_echarset=Trūkst vai nederīga izskata rakstzīmju kopa
 lang_dateformat=Datumu rādīšanas formāts
 lang_dateformat_dd/mon/yyyy=dd/mon/gggg (t.i., 16/Sep/2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/gggg (t.i., 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/gggg (t.i., 16.09.2001.)
+lang_dateformat_yyyy/mm/dd=gggg/mm/dd (t.i., 2001/09/16)
 
 ssl_title=SSL šifrēšana
 ssl_essl=Šķiet, ka Net::SSLeay perl modulis nav instalēts jūsu sistēmā. Lai instalētu OpenSSL bibliotēku un Net::SSLeay, izpildiet <a href='$1'>šos norādījumus</a> no Webmin vietnes.
@@ -694,6 +695,7 @@ log_tinstall=Instalēta tēma $1
 log_clone=Klonēts modulis $1 uz $2
 log_delete=Izdzēsts modulis $1
 log_os=Mainīta operētājsistēma
+log_fixrepo=Fiksēta Webmin repozitorijs
 log_lang=Mainīta globālā valoda
 log_startpage=Mainītas indeksa lapas iespējas
 log_upgrade=Jaunināts Webmin uz versiju $1
@@ -1010,6 +1012,9 @@ notify_updatedesc=Novērš problēmu
 notif_updateok=Instalējiet atjauninājumus tūlīt
 notif_reboot=Nesenie pakotnes atjauninājumi (piemēram, jauna kodola versija) pilnībā jāpielieto no jauna.
 notif_rebootok=Restartēt tagad
+notify_yumrepo=Jūsu sistēma izmanto veco Webmin YUM repozitoriju. Noklikšķiniet uz tālāk esošās pogas, lai pārslēgtos uz jauno repozitorija URL <tt>$1</tt>, lai izmantotu mūsu jaunāko parakstīšanas atslēgu un nodrošinātu piekļuvi atjauninātajām Webmin versijām.
+notify_aptrepo=Jūsu sistēma izmanto veco Webmin APT repozitoriju. Noklikšķiniet uz tālāk esošās pogas, lai pārslēgtos uz jauno <tt>stable</tt> repozitorija URL <tt>$1</tt>, lai izmantotu mūsu jaunāko parakstīšanas atslēgu un nodrošinātu piekļuvi atjauninātajām Webmin versijām.
+notif_fixreponow=Atjauniniet Webmin repozitoriju
 
 status_title=Fona statusa kolekcija
 status_header=Statusa savākšanas darba iestatījumi

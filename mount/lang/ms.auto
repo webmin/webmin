@@ -12,6 +12,9 @@ index_return=senarai fail sistem
 index_none=Anda tidak mempunyai akses kepada mana-mana sistem fail yang dipasang.
 index_mount2=Gunung dengan kata laluan:
 index_root=Sistem fail akar
+index_show1=Tunjukkan semua sistem fail
+index_show0=Sembunyikan sistem fail yang tidak boleh diedit
+index_addtype=jenis
 
 edit_title=Edit Gunung
 create_title=Buat Gunung

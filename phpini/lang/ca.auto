@@ -1,4 +1,12 @@
 list_efile=El fitxer que cal editar ha de ser un camí d'accés absolut
 
+dirs_exts=Extensions per carregar
+
 session_redis=Redis
 session_memcache=MemcacheD
+
+limits_vars=Límit màxim de variables d'entrada
+limits_evars=Falta el límit màxim de variables d'entrada o no és vàlid
+
+opt_default=Valor per defecte: <tt>$1</tt>
+opt_default_unknown=Desconegut

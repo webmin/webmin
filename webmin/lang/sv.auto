@@ -135,8 +135,6 @@ ui_ehostnamedisplay=Saknar eller ogiltigt visningsvärdnamn
 
 mods_installsource=Installera från
 mods_grantto=Ge åtkomst till
-mods_standard=Standardmodul från <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=Standardmodul
 mods_third=Tredjepartsmodul från
 mods_thsel=Välj ..
 mods_nodeps=Ignorera beroenden?
@@ -212,6 +210,9 @@ lang_err=Det gick inte att spara språk
 lang_echarset=Teckenuppsättning saknas eller ogiltigt
 lang_dateformat=Datumvisningsformat
 lang_dateformat_dd/mon/yyyy=dd/mån/åååå (dvs. 16/sep/2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/åååå (dvs. 2001-09-16)
+lang_dateformat_mm/dd/yyyy=mm/dd/åååå (dvs. 2001-09-16)
+lang_dateformat_yyyy/mm/dd=åååå/mm/dd (dvs. 2001/09/16)
 
 ssl_essl=Net::SSLeay perl-modulen verkar inte vara installerad på ditt system. För att installera OpenSSL-biblioteket och Net::SSLeay, följ <a href='$1'>dessa instruktioner</a> från Webmin-webbplatsen.
 ssl_cpan=Alternativt kan du låta Webmin <a href='$1'>ladda ner och installera</a> den nödvändiga Net::SSLeay Perl-modulen för dig.
@@ -495,6 +496,7 @@ categories_langok=Förändra
 categories_custom=Beställnings
 
 log_osdn=Ändrade nedladdningsalternativ
+log_fixrepo=Fixat Webmin-förråd
 log_twofactor=Ändrade alternativ med tvåfaktorautentisering
 log_newkey=Skapat ny SSL-nyckel
 log_newcsr=Skapat ny SSL CSR
@@ -750,6 +752,9 @@ notify_updatedesc=Löser problemet
 notif_updateok=Installera uppdateringar nu
 notif_reboot=Nya paketuppdateringar (t.ex. en ny kärnversion) kräver att en omstart ska tillämpas fullt ut.
 notif_rebootok=Starta om nu
+notify_yumrepo=Ditt system använder det gamla Webmin YUM-förrådet. Klicka på knappen nedan för att byta till den nya arkivets URL <tt>$1</tt> för att använda vår senaste signeringsnyckel och säkerställa tillgång till uppdaterade Webmin-versioner.
+notify_aptrepo=Ditt system använder det gamla Webmin APT-förrådet. Klicka på knappen nedan för att byta till den nya <tt>stable</tt> arkivets URL <tt>$1</tt> för att använda vår senaste signeringsnyckel och säkerställa tillgång till uppdaterade Webmin-versioner.
+notif_fixreponow=Uppdatera Webmin Repository
 
 status_title=Bakgrundsstatussamling
 status_header=Inställningar för statussamling

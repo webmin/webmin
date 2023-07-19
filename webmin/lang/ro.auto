@@ -200,8 +200,6 @@ mods_install=Instalați modulul
 mods_local=Din fișierul local
 mods_uploaded=Din fișierul încărcat
 mods_ftp=De la URL HTTP sau FTP
-mods_standard=Modulul standard din <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=Modul standard
 mods_third=Modul de la terți din
 mods_thsel=Selectați ..
 mods_nodeps=Ignorați dependențele?
@@ -325,6 +323,9 @@ lang_err=Nu a reușit să salvezi limba
 lang_echarset=Set de caractere lipsit sau cu aspect nevalid
 lang_dateformat=Format de afișare a datelor
 lang_dateformat_dd/mon/yyyy=zz/luna/aaaa (adică 16/sept./2001)
+lang_dateformat_dd/mm/yyyy=zz/ll/aaaa (adică 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/zz/aaaa (adică 16.09.2001)
+lang_dateformat_yyyy/mm/dd=aaaa/ll/zz (adică 16/09/2001)
 
 ssl_title=Criptare SSL
 ssl_essl=Modulul Net::SSLeay perl nu pare să fie instalat pe sistemul dvs. Pentru a instala biblioteca OpenSSL și Net::SSLeay, urmați <a href='$1'>aceste instrucțiuni</a> de pe site-ul Webmin.
@@ -694,6 +695,7 @@ log_tinstall=Tema instalată $1
 log_clone=Modulul clonat $1 la $2
 log_delete=Modulul șters $1
 log_os=Sistem de operare schimbat
+log_fixrepo=S-a remediat depozitul Webmin
 log_lang=Schimbarea limbii globale
 log_startpage=Opțiuni modificate pentru pagina de index
 log_upgrade=Webmin actualizat la versiunea $1
@@ -1010,6 +1012,9 @@ notify_updatedesc=Rezolvă problema
 notif_updateok=Instalați actualizări acum
 notif_reboot=Actualizările recente de pachete (cum ar fi o nouă versiune de kernel) necesită o repornire completă pentru a fi aplicată complet.
 notif_rebootok=Restarteaza acum
+notify_yumrepo=Sistemul dvs. utilizează vechiul depozit Webmin YUM. Faceți clic pe butonul de mai jos pentru a comuta la noua adresă URL a depozitului <tt>$1</tt> pentru a utiliza cea mai recentă cheie de semnare și a asigura accesul la versiunile Webmin actualizate.
+notify_aptrepo=Sistemul dvs. utilizează vechiul depozit Webmin APT. Faceți clic pe butonul de mai jos pentru a comuta la noua adresă URL <tt>stable</tt> a depozitului <tt>$1</tt> pentru a utiliza cea mai recentă cheie de semnare și a asigura accesul la versiunile Webmin actualizate.
+notif_fixreponow=Actualizați depozitul Webmin
 
 status_title=Colecția de stare de fundal
 status_header=Setări de lucru pentru colecția de stare

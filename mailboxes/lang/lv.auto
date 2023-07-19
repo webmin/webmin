@@ -451,7 +451,10 @@ left_filter=E-pasta filtri
 left_pass=Mainīt paroli
 left_sig=Rediģēt parakstu
 
+editor_heading=Virsraksts
+editor_paragraph=Paragrāfs
 editor_fontfamily_default=Noklusējums
+editor_fontfamily_monospace=Fiksēts platums
 editor_font_small=Mazs
 editor_font_normal=Normāls
 editor_font_medium=Vidēja

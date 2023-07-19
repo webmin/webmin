@@ -12,6 +12,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=Ventanas
+index_mode_nm=Gerente de Redes
 
 ifcs_activedesc=Las interfaces enumeradas en esta tabla están actualmente activas en el sistema. En la mayoría de los casos, debe editarlos en la pestaña <b>Activado en el arranque</b>.
 ifcs_bootdesc=Las interfaces enumeradas en esta tabla se activarán cuando se inicie el sistema, y generalmente también estarán activas ahora.
@@ -124,6 +125,8 @@ log_apply_bfics=Interfaces $1 de tiempo de arranque activadas
 log_create_route=Ruta activa creada para $1 
 log_create_defroute=Ruta activa activa predeterminada
 log_delete_routes=Rutas activas $1 eliminadas
+log_delete_aifcs=$1 interfaces desactivadas
+log_delete_bifcs=$1 interfaces eliminadas
 
 acl_sysinfo=Mostrar las interfaces de red disponibles en el Tablero
 

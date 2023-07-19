@@ -141,6 +141,7 @@ usave_ecreate=Nem hozhat létre új felhasználókat
 usave_ebadname=A '$1' nem érvényes felhasználónév
 usave_elength=A felhasználónév nem lehet hosszabb, mint $1 betűk
 usave_ere=A felhasználónév nem egyezik a regexp $1 értékkel
+usave_eltgt=A felhasználónév nem tartalmazhat &lt; vagy &gt; karakterek
 usave_erename=Nem szabad a felhasználókat átnevezni
 usave_einuse=a '$1' felhasználónév már használatban van
 usave_einuse_a=a '$1' felhasználónevet már használja egy e-mail álnév

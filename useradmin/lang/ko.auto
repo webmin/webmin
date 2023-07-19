@@ -65,6 +65,7 @@ uedit_clone=복제 사용자
 
 usave_elength=사용자 이름은 $1자를 초과 할 수 없습니다
 usave_ere=사용자 이름이 정규 표현식 $1와 일치하지 않습니다
+usave_eltgt=사용자 이름에는 &lt; 또는 &gt; 문자
 usave_euuid=사용자의 UID를 변경할 수 없습니다
 usave_euidused2=UID는 이미 사용 중입니다
 usave_ealluid=허용 된 모든 UID가 할당되었습니다

@@ -7,6 +7,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=Okna
+index_mode_nm=Menedżer sieci
 
 ifcs_auto6=Od odkrycia IPv6
 
@@ -23,5 +24,8 @@ bonding_downdelay=Downdelay
 routes_gwmetric=Interfejs metryczny
 
 hosts_active=Włączony?
+
+log_delete_aifcs=Dezaktywowane interfejsy $1
+log_delete_bifcs=Usunięto interfejsy $1
 
 acl_sysinfo=Pokaż dostępne interfejsy sieciowe na pulpicie nawigacyjnym

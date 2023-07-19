@@ -16,6 +16,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=các cửa sổ
+index_mode_nm=quản lý mạng
 
 ifcs_title=Giao diện mạng
 ifcs_now=Hoạt động ngay
@@ -276,6 +277,8 @@ log_apply_bfics=Đã kích hoạt giao diện thời gian khởi động $1
 log_create_route=Đã tạo tuyến hoạt động cho $1 
 log_create_defroute=Tạo tuyến mặc định hoạt động
 log_delete_routes=Đã xóa $1 tuyến đang hoạt động
+log_delete_aifcs=Đã hủy kích hoạt $1 giao diện
+log_delete_bifcs=Đã xóa $1 giao diện
 
 acl_ifcs=Có thể chỉnh sửa giao diện mạng?
 acl_routes=Có thể chỉnh sửa định tuyến và cổng?

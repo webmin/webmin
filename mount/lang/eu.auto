@@ -12,6 +12,9 @@ index_return=fitxategi sistemen zerrenda
 index_none=Ez duzu muntatutako fitxategi sistemetarako sarbiderik.
 index_mount2=Pasahitzarekin muntatu:
 index_root=Fitxategi-sistema erroa
+index_show1=Erakutsi fitxategi-sistema guztiak
+index_show0=Ezkutatu edita daitezkeen fitxategi-sistemak
+index_addtype=motakoak
 
 edit_title=Editatu mendia
 create_title=Sortu mendia

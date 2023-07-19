@@ -1,0 +1,54 @@
+index_title=Zarządzaj plikiem HTTPasswd
+index_econfig=Ten moduł nie może być używany, dopóki plik z hasłami nie zostanie ustawiony na stronie <a href='$1'>konfiguracji modułu</a>.
+index_emd5=Ten moduł został <a href='$1'>skonfigurowany</a> do używania szyfrowania MD5 dla haseł, ale moduł $2 Perl nie jest zainstalowany. <a href='$3'>Kliknij tutaj</a>, aby pobrać i zainstalować moduł $2.
+index_header=Użytkownicy pliku haseł
+index_none=W skonfigurowanym pliku haseł nie ma żadnych użytkowników.
+index_add=Dodaj nowego użytkownika do pliku haseł.
+index_file=Użytkownicy w pliku haseł $1
+index_sync=Synchronizacja użytkowników systemu Unix
+index_return=Lista użytkowników
+index_eversion=Ten moduł został <a href='$1'>skonfigurowany</a> do używania szyfrowania MD5 dla haseł, ale wersja modułu Users and Groups zainstalowana w twoim systemie nie zawiera potrzebnych funkcji MD5. Zaktualizuj do wersji 1.114 lub nowszej.
+index_synccreate=Dodać użytkownika, gdy tworzony jest użytkownik systemu Unix?
+index_syncmodify=Zmienić nazwę lub zmienić hasło użytkownika, gdy odpowiedni użytkownik systemu Unix zostanie zmodyfikowany?
+index_syncdelete=Usunąć użytkownika, gdy odpowiedni użytkownik systemu Unix zostanie usunięty?
+index_ssave=Zapisz i zastosuj
+
+edit_title1=Stwórz użytkownika
+edit_title2=Edytuj użytkownika
+edit_header=Dane użytkownika pliku haseł
+edit_user=Nazwa użytkownika
+edit_enabled=Włączony?
+edit_pass=Hasło
+edit_pass1=Pozostaw bez zmian
+edit_pass0=Ustawić
+edit_passfrom=Zmień od
+edit_passto=do nowego hasła
+edit_single=Użytkownik do zmiany
+edit_return=formularz zmiany hasła
+
+save_err=Nie udało się zapisać użytkownika
+save_euser1=Brak nazwy użytkownika
+save_euser2=Nazwa użytkownika nie może zawierać znaku :
+save_epass=Hasło nie może zawierać znaku :
+save_eclash=Użytkownik o tej samej nazwie już istnieje
+save_eoldpass=Stare hasło jest nieprawidłowe
+save_ecreate=Nie masz uprawnień do tworzenia użytkowników
+save_edelete=Nie masz uprawnień do usuwania użytkowników
+save_euser=użytkownik nie istnieje
+save_title=Użytkownik zapisany
+save_done=Użytkownik $1 został zaktualizowany.
+
+acl_repeat=Czy podczas zmiany należy wprowadzić stare hasło?
+acl_create=Czy można tworzyć nowych użytkowników?
+acl_rename=Czy można zmieniać nazwy użytkowników?
+acl_delete=Czy można usuwać użytkowników?
+acl_sync=Czy można skonfigurować synchronizację?
+acl_enable=Czy można włączać i wyłączać użytkowników?
+acl_single=Pominąć listę użytkowników i przejść bezpośrednio do formularza zmiany hasła?
+
+sync_ecannot=Nie masz uprawnień do konfigurowania synchronizacji
+
+log_sync=Zmieniono opcje synchronizacji
+log_create=Utworzono użytkownika $1
+log_delete=Usunięto użytkownika $1
+log_modify=Zmodyfikowany użytkownik $1

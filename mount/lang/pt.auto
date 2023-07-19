@@ -12,6 +12,9 @@ index_return=lista de sistemas de arquivos
 index_none=Você não tem acesso a nenhum sistema de arquivos montado.
 index_mount2=Monte com senha:
 index_root=Sistema de arquivos raiz
+index_show1=Mostrar todos os sistemas de arquivos
+index_show0=Ocultar sistemas de arquivos não editáveis
+index_addtype=do tipo
 
 edit_title=Editar montagem
 create_title=Criar montagem

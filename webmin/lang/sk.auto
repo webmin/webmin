@@ -77,6 +77,9 @@ lang_lang=Jazyk
 lang_locale=Miestne nastavenie
 lang_dateformat=Formát zobrazenia dátumov
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (t.j. 16. september 2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/rrrr (t.j. 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/rrrr (t. j. 16. 9. 2001)
+lang_dateformat_yyyy/mm/dd=rrrr/mm/dd (t. j. 2001/09/16)
 
 ssl_deny=Verzie protokolu SSL, ktoré sa majú odmietnuť
 ssl_compression=Povoliť komprimované pripojenia SSL?
@@ -204,6 +207,7 @@ session_passurl=Ak je táto možnosť povolená, používateľské heslá je mo�
 
 categories_custom=zvyk
 
+log_fixrepo=Opravené úložisko Webmin
 log_twofactor=Zmenené možnosti dvojfaktorovej autentifikácie
 log_newcsr=Vytvorené nové SSL CSR
 log_mobile=Zmenené možnosti mobilného zariadenia
@@ -348,6 +352,9 @@ notify_updatedesc=Opravuje problém
 notif_updateok=Nainštalujte aktualizácie teraz
 notif_reboot=Posledné aktualizácie balíkov (napríklad nová verzia jadra) si vyžadujú úplné zavedenie reštartu.
 notif_rebootok=Reštartuj teraz
+notify_yumrepo=Váš systém používa staré úložisko Webmin YUM. Kliknutím na tlačidlo nižšie prepnete na novú adresu URL úložiska <tt>$1</tt>, aby ste mohli použiť náš najnovší podpisový kľúč a zabezpečiť prístup k aktualizovaným verziám Webmin.
+notify_aptrepo=Váš systém používa staré úložisko Webmin APT. Kliknutím na tlačidlo nižšie prepnete na novú <tt>stable</tt> adresu URL úložiska <tt>$1</tt>, aby ste mohli použiť náš najnovší podpisový kľúč a zabezpečiť prístup k aktualizovaným verziám Webmin.
+notif_fixreponow=Aktualizujte úložisko Webmin
 
 status_title=Zhromaždenie stavu na pozadí
 status_header=Nastavenia úlohy zberu stavu

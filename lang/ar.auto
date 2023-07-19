@@ -4,6 +4,13 @@ longcategory_=الوحدات التي تؤدي مهام متنوعة أخرى
 
 config_emodule=وحدة غير موجودة
 
+help_efile3=فشلت قراءة صفحة التعليمات $1 من الوحدة النمطية$2
+help_einclude3=فشل تضمين صفحة التعليمات$1
+
+ui_of=ل
+
+log_email_by=$1 في$2
+
 nice_size_PB=PB
 nice_size_PiB=PIB
 nice_size_TB=مرض السل
@@ -16,8 +23,14 @@ nice_size_kB=كيلو بايت
 nice_size_kiB=بنك الكويت الدولي
 nice_size_b=بايت
 
+paginator_showing_start=إظهار$1 إلى$2 من$3 عنصر في الصفحة
+paginator_showing_end=من$1 صفحات
+paginator_nosearchrs=لا توجد نتائج تطابق استعلام <tt>$1</tt>
+
 langauto_include=تضمين الترجمات الآلية
 
 file_truncated_message=تم جلب$1 من البيانات ، تم اقتطاع$2 من$3
 file_truncated_message_head=تم جلب بداية$1 من البيانات ، تم اقتطاع$2 من$3
 file_truncated_message_tail=تم جلب إنهاء$1 من البيانات ، اقتطاع$2 من$3
+
+defcert_error=يتم استخدام شهادة SSL المجمعة الافتراضية$1. يُنصح بشدة بتحديث شهادة <tt>$2</tt> الافتراضية قبل متابعة تسجيل الدخول.

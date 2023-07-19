@@ -116,9 +116,9 @@ config_ewebmin=پیرامیٹر کی قسم 14 صرف ویبمین میں کام
 
 help_err=مدد ظاہر کرنے میں ناکام
 help_epath=لاپتہ یا غیر معاون راہ
-help_efile=Failed to read help file $1
+help_efile3=ماڈیول $2 سے مدد کا صفحہ $1 پڑھنے میں ناکام
 help_eheader=&lt;ہیڈر&gt; سیکشن غائب ہے
-help_einclude=Failed to include $1
+help_einclude3=مدد کا صفحہ $1 شامل کرنے میں ناکام
 help_eif=$1 failed : $2
 help_eexec=$1 failed : $2
 
@@ -306,6 +306,7 @@ ui_etime=غلط وقت
 ui_paging=Showing rows $1 to $2 of $3
 ui_rowlabel=$2 in row $1 :
 ui_filterbox=فلٹر کرنے کے لئے ٹائپ کریں ..
+ui_of=کی
 
 header_statusmsg=$1 logged into $2 $3 on $4 ($5)
 
@@ -356,6 +357,7 @@ sql_eldaplogin=Failed to login to LDAP server as $1 : $2
 
 log_email_subject=Webmin action in $1
 log_email_global=ویبمین عالمی کارروائی
+log_email_by=$1 از $2
 log_email_desc=یہ ای میل صارف کے ایک عمل کے جواب میں ویبمین کے ذریعہ بھیجی گئی ہے۔
 log_email_mod=Webmin module: $1
 log_email_moddesc=Module title: $1
@@ -378,8 +380,14 @@ nice_size_kB=kB
 nice_size_kiB=کیی بی
 nice_size_b=بائٹس
 
+paginator_showing_start=صفحہ پر $3 آئٹمز میں سے $1 سے $2 تک دکھا رہا ہے۔
+paginator_showing_end=$1 صفحات میں سے
+paginator_nosearchrs=There are no results matching <tt>$1</tt> query
+
 langauto_include=مشین ترجمہ شامل کریں
 
 file_truncated_message=ڈیٹا کا$1 حاصل کیا ،$3 میں سے$2 چھوٹا
 file_truncated_message_head=ڈیٹا کا آغاز$1 کیا گیا ،$3 میں سے$2 کو چھوٹا گیا
 file_truncated_message_tail=ڈیٹا کا$1 ختم ہونے والا نتیجہ ،$3 میں سے$2 کو چھوٹا
+
+defcert_error=Default $1 bundled SSL certificate is being used. It is highly advised to update default <tt>$2</tt> certificate before proceeding with login.

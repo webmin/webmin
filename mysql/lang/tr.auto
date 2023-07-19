@@ -172,6 +172,7 @@ exec_iheader=Metin dosyası içe aktarma seçenekleri
 exec_created=$1 tablo oluşturuldu.
 exec_inserted=$1 kayıt eklendi.
 exec_cs=Veri için karakter kümesi
+exec_collationdown=Veritabanı harmanlaması <tt>$1</tt> dan <tt>$2</tt> a düşürüldü
 
 tprivs_derr=Tablo izinleri silinemedi
 tprivs_enone=Seçili tablo yok
@@ -195,6 +196,8 @@ acl_views=Görünümleri görüntüleyebilir ve yönetebilir mi?
 acl_files=SQL'i yerel dosyalardan yürütebilir mi?
 
 log_cnf=MySQL sunucu yapılandırması değiştirildi
+log_ssl=SSL sertifikası değiştirildi
+log_genssl=Oluşturulan SSL sertifikası
 log_kill=$1 veritabanı bağlantısı öldürüldü
 log_vars=Değiştirilmiş $1 sistem değişkeni
 log_dbs_delete=Bırakılan $1 veritabanı
@@ -441,3 +444,18 @@ mysqlpass_esafe=Güvenli modda başlatma başarısız oldu : $1
 mysqlpass_estartup=Başlatma başarısız oldu : $1 
 mysqlpass_echange=Parola değişikliği başarısız oldu : $1 
 mysqlpass_echange_forcepass=Kaybolursa veya unutulursa, verilen parolayı geçersiz kılmaya zorla
+
+ssl_title=SSL Sertifikası
+ssl_header=MySQL SSL seçenekleri
+ssl_cert=SSL sertifika dosyası
+ssl_key=SSL anahtar dosyası
+ssl_ca=SSL CA sertifika dosyası
+ssl_req=İstemcilerin SSL kullanması zorunlu mu?
+ssl_none=ayarlanmadı
+ssl_gen=Sertifika ve Anahtar Oluştur
+ssl_err=SSL seçenekleri kaydedilemedi
+ssl_ecert=Eksik veya mevcut olmayan SSL sertifika dosyası
+ssl_ekey=Eksik veya mevcut olmayan SSL anahtar dosyası
+ssl_eca=Eksik veya mevcut olmayan SSL CA dosyası
+ssl_ecertexists=SSL sertifika dosyası $1 zaten var!
+ssl_ekeyexists=SSL anahtar dosyası $1 zaten var!

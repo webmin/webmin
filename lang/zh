@@ -8,7 +8,9 @@ main_title2=Webmin
 main_none=你无权使用此 Webmin 模块.
 main_skill=熟练度
 main_return=返回到 $1
+
 link_essl=网络::SSLeay Perl 模块需要使用的 HTTPS 没有安装.
+
 category_servers=服务器
 category_hardware=硬件
 category_system=系统
@@ -17,6 +19,7 @@ category_net=网络
 category_syslet=Syslets
 category_cluster=群集
 category_info=信息
+
 longcategory_servers=此模块可配置 web, email, FTP 等服务器
 longcategory_hardware=此模块可以配置 打印机, 磁盘 等硬件的设置
 longcategory_system=此模块可以配置 用户, 文件系统, 守护程序 等系统设置
@@ -24,11 +27,13 @@ longcategory_webmin=此模块可以配置 Webmin 自身
 longcategory_net=此模块可以配置 网络和网络服务
 longcategory_cluster=此模块可以 在一个界面中管理多个服务器
 longcategory_info=此模块可以 显示关于你的系统的信息
+
 header_webmin=Webmin 索引
 header_module=Module 索引
 header_help=帮助..
 header_config=模块配置
 header_servers=Webmin 服务器
+
 index=索引
 yes=是
 no=否
@@ -51,10 +56,12 @@ fail=失败
 helpsearch=搜索文档..
 switch_remote_euser=Unix 用户 $1 不存在.
 programname=Webmin
+
 chooser_title1=选择文件..
 chooser_title2=选择目录..
 chooser_dir=$1 的目录
 chooser_ok=OK
+
 users_title1=选择多个用户..
 users_title2=选择用户..
 users_sel=已选择的用户
@@ -62,6 +69,7 @@ users_all=所有用户
 users_ok=确定
 users_cancel=取消
 users_clear=清除
+
 groups_title1=选择多个用户组..
 groups_title2=选择用户组..
 groups_all=所有用户组
@@ -69,8 +77,10 @@ groups_sel=已选择的用户组
 groups_ok=确定
 groups_cancel=取消
 groups_clear=清除
+
 modules_ok=确定
 modules_clear=清除
+
 config_ecannot=你没有权限配置这个模块
 config_title=配置
 config_dir=为模块 $1
@@ -81,17 +91,18 @@ config_err=保存设置失败
 config_nochange=不能修改
 config_setto=设置为
 config_ewebmin=参数类型 14 为仅仅工作在 Webmin
+
 help_err=显示帮助失败
 help_epath=缺少或无效的帮助路径
-help_efile=读取帮助文件 $1 失败
 help_eheader=缺少 &lt;header&gt; 章节
-help_einclude=导入 $1 失败
 help_eif=$1 失败 : $2
 help_eexec=$1 失败 : $2
+
 referer_title=安全警告
 referer_warn=<b>警告!</b> Webmin 发现来自链接 $1 的程序 $2 , 这个程序看起来是 Webmin 服务器之外的程序. 这可能导致欺骗你的服务器执行一个危险的命令.
 referer_warn_unknown=<b>警告!</b> 发现来自未知链接的程序 $1, 这个程序看起来是 Webmin 服务器之外的程序. 这可能导致欺骗你的服务器执行一个危险的命令.
 referer_fix3u=确保将浏览器配置为发送 Referer 信息，以便 Webmin 可以对其进行验证。
+
 session_header=登陆到 Webmin
 session_mesg=你必需输入一个用户名和密码才能登陆到 $1 的 Webmin 服务器.
 session_mesg2=为了登陆，你必需输入一个用户名和密码.
@@ -105,8 +116,10 @@ session_twofailed=双因素身份验证失败：$1
 session_logout=退出成功. 使用下面的表单可以再次登陆
 session_timed_out=Session 超时, 超过 $1 分钟没有活动.
 session_save=下次不输入登陆信息, 直接登陆?
+
 pam_login=登录
 pam_restart=重试
+
 acl_root=根目录 文件选择器
 acl_home=用户根目录
 acl_uedit=在用户选择器中可见的
@@ -134,6 +147,7 @@ acl_rpc0=否
 acl_fileunix=以 Unix 用户浏览文件
 acl_sameunix=与 Webmin 登录相同
 acl_webminsearch=显示 Webmin 搜索字段？
+
 month_1=一月
 month_2=二月
 month_3=三月
@@ -146,6 +160,7 @@ month_9=九月
 month_10=十月
 month_11=十一月
 month_12=十二月
+
 day_0=星期日
 day_1=星期一
 day_2=星期二
@@ -153,6 +168,7 @@ day_3=星期三
 day_4=星期四
 day_5=星期五
 day_6=星期六
+
 smonth_1=一
 smonth_2=二
 smonth_3=三
@@ -165,6 +181,7 @@ smonth_9=九
 smonth_10=十
 smonth_11=十一
 smonth_12=十二
+
 sday_0=日
 sday_1=一
 sday_2=二
@@ -172,10 +189,13 @@ sday_3=三
 sday_4=四
 sday_5=五
 sday_6=六
+
 emodule=访问被拒绝 : 用户 $1 没有权限使用 $2 这个模块
+
 skill_high=专家
 skill_medium=中级
 skill_low=新手
+
 feedback_title=Webmin 反馈
 feedback_desc=这个表单允许你发送错误报告或者你的建议给 Webmin 的开发者, 任何问题或者缺少功能你都可以发送将这些信息发送给我们. 当点击了发送按钮后, 你输入在表单中的所有内容都将发送到 $1.
 feedback_desc2=这个反馈将发送给 Webmin 的开发者, 不是你的系统管理员, ISP 或者托管主机的公司. 即使你使用的不是英文版的 Webmin, 也请使用 英文 书写你的反馈内容.
@@ -204,11 +224,14 @@ feedback_to=发送反馈的地址
 feedback_enoto=没有输入 发送反馈到 的地址
 feedback_ecannot=你没有权限发送反馈内容
 feedback_ecannot2=你没有权限发送设置文件
+
 progress_nosize=正在下载 $1 ..
 progress_done=.. 下载完成.
+
 readparse_cdheader=缺少 Content-Disposition header
 readparse_enc=得到普通编码，没有获得 form-data 编码
 readparse_max=数据超过最大尺寸 $1 字节
+
 password_expired=你的密码已经过期，你需要设置一个新的密码.
 password_temp=您必须设定一个新密码来替换您的临时密码。
 password_header=设置新密码
@@ -224,11 +247,14 @@ password_euser=在密码文件中, 没有你输入的这个用户名!
 password_eold=当前密码不正确
 password_enew1=没有输入新密码
 password_enew2=两次输入的新密码不相同
+
 ui_searchcol=搜索行
+
 uptracker_title=上传文件
 uptracker_size=大小
 uptracker_eid=未指定上传 ID
 uptracker_eid2=上传 ID 无效！
+
 wsearch_title=搜索 $1
 wsearch_modt=模块
 wsearch_type=类型
@@ -241,17 +267,21 @@ wsearch_type_dir=模块地址
 wsearch_hmod=模块
 wsearch_searching=搜索$1。
 wsearch_found=找到 $1 个结果：
+
 sql_eldaplogin=无法以 $1 登录到 LDAP 服务器：$2
+
 log_email_subject=$1 主机上的 Webmin 系统
 log_email_global=Webmin 全局邮箱
 log_email_desc=此电子邮件是 Webmin 响应用户操作发送的。
 log_email_mod=Webmin 模块：$1
 log_email_script=Webmin 脚本：$1
 log_email_session=会话 ID：$1
+
 nice_size_TB=TB
 nice_size_TiB=TiB
 nice_size_GB=GB
 nice_size_GiB=GiB
 nice_size_MB=MB
 nice_size_b=B
+
 file_truncated_message=提取了 $1 的数据，从 $3 中截断了 $2

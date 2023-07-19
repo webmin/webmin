@@ -57,6 +57,10 @@ user_cipher=SSL-cijfer
 
 hosts_return=hostrechten
 
+exec_collationdown=Database-sortering is gedowngraded van <tt>$1</tt> naar <tt>$2</tt>
+
+log_ssl=Gewijzigd SSL-certificaat
+log_genssl=Gegenereerd SSL-certificaat
 log_manual=Handmatig bewerkt configuratiebestand
 
 backup_prefix=Voorvoegsel bestandsnaam
@@ -92,3 +96,18 @@ mysqlpass_esafe=Opstarten in veilige modus is mislukt : $1
 mysqlpass_estartup=Opstarten mislukt : $1 
 mysqlpass_echange=Wachtwoordwijziging mislukt : $1 
 mysqlpass_echange_forcepass=Forceer overschrijving van het gegeven wachtwoord, indien verloren of vergeten
+
+ssl_title=SSL Certificaat
+ssl_header=MySQL SSL-opties
+ssl_cert=SSL-certificaatbestand
+ssl_key=SSL-sleutelbestand
+ssl_ca=SSL CA-certificaatbestand
+ssl_req=Vereisen dat klanten SSL gebruiken?
+ssl_none=Geen ingesteld
+ssl_gen=Certificaat en sleutel genereren
+ssl_err=Kan SSL-opties niet opslaan
+ssl_ecert=Ontbrekend of niet-bestaand SSL-certificeringsbestand
+ssl_ekey=Ontbrekend of niet-bestaand SSL-sleutelbestand
+ssl_eca=Ontbrekend of niet-bestaand SSL CA-bestand
+ssl_ecertexists=SSL-certificaatbestand $1 bestaat al!
+ssl_ekeyexists=SSL-sleutelbestand $1 bestaat al!

@@ -107,8 +107,6 @@ mods_install=تثبيت الوحدة النمطية
 mods_local=من الملف المحلي
 mods_uploaded=من ملف تم الرفع
 mods_ftp=من عنوان URL HTTP أو FTP
-mods_standard=Standard module from <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=وحدة قياسية
 mods_third=وحدة الطرف الثالث من
 mods_thsel=تحديد ..
 mods_nodeps=هل تتجاهل التبعيات؟
@@ -232,6 +230,9 @@ lang_err=فشل في حفظ اللغة
 lang_echarset=مجموعة أحرف مفقودة أو غير صالحة المظهر
 lang_dateformat=تنسيق عرض التواريخ
 lang_dateformat_dd/mon/yyyy=يوم/شهر/سنة (أي 16/أيلول/سبتمبر 2001)
+lang_dateformat_dd/mm/yyyy=يوم/شهر/سنة (أي 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/yyyy (أي 09/16/2001)
+lang_dateformat_yyyy/mm/dd=yyyy/mm/dd (أي 2001/09/16)
 
 ssl_title=تشفير SSL
 ssl_essl=The Net::SSLeay perl module does not appear to be installed on your system. To install the OpenSSL library and Net::SSLeay, follow <a href='$1'>these instructions</a> from the Webmin website.
@@ -597,6 +598,7 @@ log_tinstall=Installed theme $1
 log_clone=Cloned module $1 to $2
 log_delete=Deleted module $1
 log_os=تغيير نظام التشغيل
+log_fixrepo=مستودع Webmin الثابت
 log_lang=تغيير اللغة العالمية
 log_startpage=خيارات صفحة الفهرس التي تم تغييرها
 log_upgrade=Upgraded Webmin to version $1
@@ -891,6 +893,9 @@ notify_updatedesc=إصلاح المشكلة
 notif_updateok=تثبيت التحديثات الآن
 notif_reboot=تتطلب تحديثات الحزمة الحديثة (مثل إصدار kernel جديد) إعادة تشغيل التطبيق ليتم تطبيقها بالكامل.
 notif_rebootok=اعادة التشغيل الان
+notify_yumrepo=يستخدم نظامك مستودع Webmin YUM القديم. انقر فوق الزر أدناه للتبديل إلى عنوان URL الجديد للمستودع <tt>$1</tt> من أجل استخدام أحدث مفتاح توقيع لدينا وضمان الوصول إلى إصدارات Webmin المحدثة.
+notify_aptrepo=يستخدم نظامك مستودع Webmin APT القديم. انقر فوق الزر أدناه للتبديل إلى عنوان URL الجديد للمستودع <tt>stable</tt> <tt>$1</tt> من أجل استخدام أحدث مفتاح توقيع لدينا وضمان الوصول إلى إصدارات Webmin المحدثة.
+notif_fixreponow=تحديث مستودع Webmin
 
 status_title=جمع حالة الخلفية
 status_header=ضبط وظيفة مجموعة الحالة

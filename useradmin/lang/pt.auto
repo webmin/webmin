@@ -78,6 +78,7 @@ uedit_clone=Clonar usuário
 
 usave_elength=O nome de usuário não pode ter mais que $1 letras
 usave_ere=O nome de usuário não corresponde a regexp $1
+usave_eltgt=O nome de usuário não pode conter &lt; ou &gt; personagens
 usave_erename=Você não tem permissão para renomear usuários
 usave_einuse_a=o nome de usuário '$1' já está sendo usado por um alias de email
 usave_euuid=Você não tem permissão para alterar o UID dos usuários

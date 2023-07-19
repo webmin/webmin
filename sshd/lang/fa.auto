@@ -34,6 +34,7 @@ sync_auto=&lt;خودکار&gt;
 keys_title=کلیدهای SSH میزبان
 keys_desc=در این صفحه امکان مشاهده کلیدهای SSH برای این هاست فراهم می شود.
 keys_none=در پیکربندی SSHD هیچ ورودی HostKey یافت نشد.
+keys_change=تغییر دادن
 
 manual_title=پیکربندی پرونده ها را ویرایش کنید
 manual_ecannot=شما مجاز به ویرایش فایل پیکربندی سرور SSH نیستید

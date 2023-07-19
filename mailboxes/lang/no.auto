@@ -1,4 +1,7 @@
+editor_heading=Overskrift
+editor_paragraph=Avsnitt
 editor_fontfamily_default=Misligholde
+editor_fontfamily_monospace=Fast bredde
 editor_font_small=Liten
 editor_font_normal=Normal
 editor_font_medium=Medium

@@ -147,6 +147,8 @@ master_defttl=Thời gian tồn tại mặc định cho hồ sơ
 master_edefttl='$1' không phải là thời gian tồn tại mặc định hợp lệ cho các bản ghi
 master_esoagone=Không tìm thấy bản ghi SOA!
 master_einclude=Tệp mẫu bổ sung không tồn tại
+master_vmin=Vùng này được quản lý bởi Virtualmin. Các bản ghi phải được chỉnh sửa bằng giao diện người dùng Virtualmin để đảm bảo chúng nhất quán với các cài đặt máy chủ ảo khác.
+master_vminalias=Vùng này là bí danh của miền Virtualmin, được giữ đồng bộ với mục tiêu của nó. Các bản ghi không bao giờ được chỉnh sửa ở đây, vì mọi thay đổi sẽ bị ghi đè!
 
 delete_title=Xóa vùng
 delete_mesg=Bạn có chắc chắn muốn xóa vùng $1? Tất cả các hồ sơ và các tập tin khu vực sẽ bị xóa.

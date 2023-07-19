@@ -1,0 +1,54 @@
+index_title=Správa souboru HTTPasswd
+index_econfig=Tento modul nelze použít, dokud nebude na stránce <a href='$1'>konfigurace modulu</a> nastaven soubor s hesly.
+index_emd5=Tento modul byl <a href='$1'>nakonfigurován</a> pro použití šifrování MD5 pro hesla, ale modul $2 Perl není nainstalován. <a href='$3'>Kliknutím sem</a> si stáhněte a nainstalujte modul $2.
+index_header=Uživatelé souboru s hesly
+index_none=V nakonfigurovaném souboru hesel neexistují žádní uživatelé.
+index_add=Přidejte nového uživatele do souboru s hesly.
+index_file=Uživatelé v souboru hesel $1
+index_sync=Synchronizace uživatelů Unixu
+index_return=seznam uživatelů
+index_eversion=Tento modul byl <a href='$1'>nakonfigurován</a> pro použití šifrování MD5 pro hesla, ale verze modulu Uživatelé a skupiny nainstalovaná ve vašem systému nezahrnuje potřebné funkce MD5. Upgradujte na verzi 1.114 nebo novější.
+index_synccreate=Přidat uživatele, když je vytvořen uživatel Unix?
+index_syncmodify=Přejmenovat nebo změnit heslo uživatele při změně příslušného uživatele Unixu?
+index_syncdelete=Smazat uživatele, když je smazán odpovídající uživatel Unixu?
+index_ssave=Uložit a použít
+
+edit_title1=Vytvořit uživatele
+edit_title2=Upravit uživatele
+edit_header=Podrobnosti o uživateli souboru hesel
+edit_user=Uživatelské jméno
+edit_enabled=Povoleno?
+edit_pass=Heslo
+edit_pass1=Ponechat beze změny
+edit_pass0=Nastaven na
+edit_passfrom=Změnit z
+edit_passto=na nové heslo
+edit_single=Uživatel ke změně
+edit_return=formulář pro změnu hesla
+
+save_err=Uživatele se nepodařilo uložit
+save_euser1=Chybí uživatelské jméno
+save_euser2=Uživatelské jméno nesmí obsahovat znak :
+save_epass=Heslo nesmí obsahovat znak :
+save_eclash=Uživatel se stejným jménem již existuje
+save_eoldpass=Staré heslo není správné
+save_ecreate=Nemáte oprávnění vytvářet uživatele
+save_edelete=Nemáte oprávnění mazat uživatele
+save_euser=Uživatel neexistuje
+save_title=Uživatel uložen
+save_done=Uživatel $1 byl aktualizován.
+
+acl_repeat=Musíte při změně zadat staré heslo?
+acl_create=Lze vytvářet nové uživatele?
+acl_rename=Lze přejmenovat uživatele?
+acl_delete=Lze smazat uživatele?
+acl_sync=Lze nakonfigurovat synchronizaci?
+acl_enable=Lze povolit a zakázat uživatele?
+acl_single=Přeskočit seznam uživatelů a přejít přímo na formulář pro změnu hesla?
+
+sync_ecannot=Nemáte oprávnění konfigurovat synchronizaci
+
+log_sync=Změněny možnosti synchronizace
+log_create=Vytvořen uživatel $1
+log_delete=Smazaný uživatel $1
+log_modify=Upravený uživatel $1

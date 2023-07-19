@@ -1,0 +1,54 @@
+index_title=Tvarkykite HTPasswd failą
+index_econfig=Šio modulio negalima naudoti, kol <a href='$1'>modulio konfigūracijos</a> puslapyje nenustatytas slaptažodžio failas.
+index_emd5=Šis modulis buvo <a href='$1'>sukonfigūruotas</a> naudoti MD5 šifravimą slaptažodžiams, bet $2 Perl modulis neįdiegtas. <a href='$3'>Spustelėkite čia</a>, kad būtų atsisiųstas ir įdiegtas $2 modulis.
+index_header=Slaptažodžio failo vartotojai
+index_none=Sukonfigūruotame slaptažodžio faile nėra vartotojų.
+index_add=Pridėkite naują vartotoją prie slaptažodžio failo.
+index_file=Vartotojai slaptažodžio faile $1
+index_sync=Unix vartotojo sinchronizavimas
+index_return=vartotojų sąrašas
+index_eversion=Šis modulis buvo <a href='$1'>sukonfigūruotas</a> naudoti MD5 šifravimą slaptažodžiams, tačiau jūsų sistemoje įdiegtoje Vartotojų ir grupių modulio versijoje nėra reikalingų MD5 funkcijų. Atnaujinkite į 1.114 ar naujesnę versiją.
+index_synccreate=Pridėti vartotoją, kai sukuriamas Unix vartotojas?
+index_syncmodify=Pervardyti arba pakeisti vartotojo slaptažodį, kai pakeičiamas atitinkamas Unix vartotojas?
+index_syncdelete=Ištrinti vartotoją, kai ištrintas atitinkamas Unix vartotojas?
+index_ssave=Išsaugoti ir taikyti
+
+edit_title1=Sukurti vartotoją
+edit_title2=Redaguoti naudotoją
+edit_header=Slaptažodžio failo vartotojo informacija
+edit_user=Vartotojo vardas
+edit_enabled=Įjungtas?
+edit_pass=Slaptažodis
+edit_pass1=Palikite nepakeistą
+edit_pass0=Nustatytas į
+edit_passfrom=Keisti nuo
+edit_passto=į naują slaptažodį
+edit_single=Keisti vartotoją
+edit_return=slaptažodžio keitimo formą
+
+save_err=Nepavyko išsaugoti naudotojo
+save_euser1=Trūksta vartotojo vardo
+save_euser2=Vartotojo varde negali būti simbolio :
+save_epass=Slaptažodyje negali būti simbolio :
+save_eclash=Vartotojas tokiu pat vardu jau yra
+save_eoldpass=Senas slaptažodis neteisingas
+save_ecreate=Jums neleidžiama kurti vartotojų
+save_edelete=Jums neleidžiama ištrinti vartotojų
+save_euser=Vartotojas neegzistuoja
+save_title=Vartotojas išsaugotas
+save_done=Vartotojas $1 buvo atnaujintas.
+
+acl_repeat=Keičiant reikia įvesti seną slaptažodį?
+acl_create=Ar galima sukurti naujų vartotojų?
+acl_rename=Ar galima pervardyti vartotojus?
+acl_delete=Ar galima ištrinti vartotojus?
+acl_sync=Ar galima sukonfigūruoti sinchronizavimą?
+acl_enable=Ar galima įjungti ir išjungti vartotojus?
+acl_single=Praleisti vartotojų sąrašą ir pereiti tiesiai į slaptažodžio keitimo formą?
+
+sync_ecannot=Jums neleidžiama konfigūruoti sinchronizavimo
+
+log_sync=Pakeistos sinchronizavimo parinktys
+log_create=Sukurtas vartotojas $1
+log_delete=Ištrintas vartotojas $1
+log_modify=Pakeistas vartotojas $1

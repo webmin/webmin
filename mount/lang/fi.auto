@@ -12,6 +12,9 @@ index_return=tiedostojärjestelmäluettelo
 index_none=Sinulla ei ole pääsyä mihinkään liitettyyn tiedostojärjestelmään.
 index_mount2=Asenna salasanalla:
 index_root=Juurtiedostojärjestelmä
+index_show1=Näytä kaikki tiedostojärjestelmät
+index_show0=Piilota tiedostojärjestelmät, joita ei voi muokata
+index_addtype=tyyppistä
 
 edit_title=Muokkaa Mount
 create_title=Luo Mount

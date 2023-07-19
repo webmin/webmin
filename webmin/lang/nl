@@ -179,8 +179,6 @@ mods_install=Installeer Module
 mods_local=Vanuit een lokaal bestand
 mods_uploaded=Vanaf een ge-upload bestand
 mods_ftp=Vanaf een FTP of HTTP URL
-mods_standard=Standaard module van <a href='$1'>www.webmin.com</a>
-mods_standard2=Standaard module
 mods_third=3e partij module van
 mods_thsel=Selecteer..
 mods_nodeps=Negeer module afhankelijkheden bij installatie

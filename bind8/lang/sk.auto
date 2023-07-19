@@ -147,6 +147,8 @@ master_defttl=Predvolený čas dožívania záznamov
 master_edefttl='$1' nie je platný predvolený čas do života záznamov
 master_esoagone=Nenašli sa žiadne záznamy SOA!
 master_einclude=Dodatočný súbor šablóny neexistuje
+master_vmin=Túto zónu spravuje Virtualmin. Záznamy by sa mali upravovať pomocou používateľského rozhrania Virtualmin, aby sa zabezpečilo, že budú konzistentné s ostatnými nastaveniami virtuálneho servera.
+master_vminalias=Táto zóna je alias domény Virtualmin, ktorá je synchronizovaná s jej cieľom. Záznamy by sa tu nikdy nemali upravovať, pretože akékoľvek zmeny budú prepísané!
 
 delete_title=Odstrániť zónu
 delete_mesg=Naozaj chcete odstrániť zónu $1? Všetky záznamy a súbor zóny budú vymazané.

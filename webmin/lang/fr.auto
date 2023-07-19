@@ -18,6 +18,9 @@ lang_lang=Langue
 lang_locale=Lieu
 lang_dateformat=Format d'affichage des dates
 lang_dateformat_dd/mon/yyyy=jj/lu/aaaa (c'est-à-dire 16/sept./2001)
+lang_dateformat_dd/mm/yyyy=jj/mm/aaaa (c'est-à-dire 16/09/2001)
+lang_dateformat_mm/dd/yyyy=jj/mm/aaaa (c'est-à-dire 16/09/2001)
+lang_dateformat_yyyy/mm/dd=aaaa/mm/jj (c.-à-d. 2001/09/16)
 
 ssl_hsts=Appliquer SSL avec l'en-tête HSTS
 
@@ -39,9 +42,15 @@ session_passapi0=API désactivée
 session_passapi1=API activée pour les utilisateurs Unix
 session_passurl=Lorsqu'il est activé, les mots de passe utilisateur peuvent être modifiés via une requête POST à $1
 
+log_fixrepo=Référentiel Webmin fixe
+
 advanced_etempallowed=Le répertoire des fichiers temporaires $1 est un répertoire système
 advanced_bufsize=Taille de la mémoire tampon du réseau en octets
 advanced_ebufsize=La taille de la mémoire tampon du réseau doit être un nombre supérieur à zéro
+
+notify_yumrepo=Votre système utilise l'ancien référentiel Webmin YUM. Cliquez sur le bouton ci-dessous pour basculer vers la nouvelle URL de référentiel <tt>$1</tt> afin d'utiliser notre dernière clé de signature et garantir l'accès aux versions mises à jour de Webmin.
+notify_aptrepo=Votre système utilise l'ancien référentiel Webmin APT. Cliquez sur le bouton ci-dessous pour passer à la nouvelle URL de dépôt <tt>stable</tt> <tt>$1</tt> afin d'utiliser notre dernière clé de signature et garantir l'accès aux versions mises à jour de Webmin.
+notif_fixreponow=Mettre à jour le référentiel Webmin
 
 status_err=Échec de l'enregistrement de la collection d'états en arrière-plan
 status_einterval=L'intervalle de collecte doit être un entier

@@ -95,6 +95,7 @@ dump_bcomp=Sıkıştırılmış verileri bloklar olarak mı tamponluyorsunuz?
 dump_xdev=Yedeklemeyi bir dosya sistemi ile sınırlansın mı?
 dump_update2=Arşive yeni dosyalar mı eklemeniz gerekiyor?
 dump_ignoreread=Dosyalardaki okuma hataları yoksayılsın mı?
+dump_ignorechanged=Dosyalar değişirse hatalar yoksayılsın mı?
 dump_notape=Gerekirse yeni bant ister misiniz?
 dump_rmt=Uzaktaki sistemde <tt>rmt</tt> yolu
 dump_links=Sembolik bağlantıları takip etmek ister misiniz?

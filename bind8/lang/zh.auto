@@ -48,6 +48,8 @@ master_defttl=记录的默认生存时间
 master_edefttl='$1'不是记录的有效默认生存时间
 master_esoagone=找不到SOA记录！
 master_einclude=附加模板文件不存在
+master_vmin=该区域由 Virtualmin 管理。应使用 Virtualmin UI 编辑记录，以确保它们与其他虚拟服务器设置一致。
+master_vminalias=该区域是 Virtualmin 域的别名，与其目标保持同步。切勿在此处编辑记录，因为任何更改都将被覆盖！
 
 delete_mesg3=您确定要删除区域$1吗？
 delete_onslave=还要从从服务器删除吗？

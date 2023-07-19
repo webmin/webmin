@@ -39,6 +39,7 @@ dirs_header=Tập lệnh PHP và cài đặt thư mục mở rộng
 dirs_include=Tìm kiếm thư mục bao gồm
 dirs_below=Được liệt kê dưới đây ..
 dirs_ext=Thư mục cho phần mở rộng
+dirs_exts=Tiện ích mở rộng để tải
 dirs_upload=Cho phép tải lên tập tin?
 dirs_utmp=Thư mục tạm thời cho các tập tin tải lên
 dirs_err=Không thể lưu cài đặt thư mục
@@ -90,12 +91,14 @@ limits_post=Kích thước POST HTTP tối đa
 limits_upload=Kích thước tải lên tệp tối đa
 limits_exec=Thời gian thực hiện tối đa
 limits_input=Thời gian phân tích cú pháp đầu vào tối đa
+limits_vars=Giới hạn biến đầu vào tối đa
 limits_err=Không thể lưu giới hạn tài nguyên
 limits_emem=Thiếu hoặc phân bổ bộ nhớ tối đa không hợp lệ
 limits_epost=Kích thước POST HTTP tối đa bị thiếu hoặc không hợp lệ
 limits_eupload=Kích thước tải lên tệp tối đa bị thiếu hoặc không hợp lệ
 limits_eexec=Thiếu thời gian thực hiện tối đa hoặc không hợp lệ
 limits_einput=Thiếu thời gian phân tích cú pháp đầu vào tối đa hoặc không hợp lệ
+limits_evars=Giới hạn biến đầu vào tối đa bị thiếu hoặc không hợp lệ
 
 errors_title=Lỗi đăng nhập
 errors_header=Tùy chọn hiển thị thông báo lỗi và ghi nhật ký
@@ -164,3 +167,6 @@ acl_anyfile=Có thể chỉnh sửa bất kỳ tập tin như một cấu hình 
 acl_manual=Có thể chỉnh sửa thủ công các tập tin cấu hình?
 acl_inis=Các tệp cấu hình bổ sung <br>(Trong định dạng<i> tên tệp </i>=<i> mô tả </i>)
 acl_user=Đọc và ghi tệp như người dùng
+
+opt_default=Giá trị mặc định: <tt>$1</tt>
+opt_default_unknown=không xác định

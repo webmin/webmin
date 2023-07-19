@@ -38,6 +38,13 @@ index_restart_firewalld=فائر وال ڈی کو دوبارہ لوڈ کریں۔
 index_restart_firewallddesc=FirewallD سرور کو دوبارہ لوڈ کریں اور ان قوانین کو لاگو کریں جو مستقل طور پر بنائے گئے تھے۔
 index_listrules_restartdesc=$1 زون میں موجودہ امیر اور براہ راست فائر وال ڈی قوانین کے بارے میں تفصیلات درج کریں۔
 index_dependent=$1 پر منحصر سروس کو دوبارہ شروع کرنے میں ناکام
+index_manual=کنفگ فائلوں میں ترمیم کریں۔
+
+manual_title=کنفگ فائلوں میں ترمیم کریں۔
+manual_editsel=FirewallD کنفیگریشن فائل میں ترمیم کریں۔
+manual_err=تشکیل فائل کو محفوظ کرنے میں ناکام
+manual_efile=منتخب کنفیگریشن فائل درست نہیں ہے۔
+manual_ok=ترمیم
 
 port_edit=پورٹ میں ترمیم کریں
 port_create=پورٹ شامل کریں

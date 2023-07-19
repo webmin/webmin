@@ -4,6 +4,7 @@ index_epel=توصیه می شود ابتدا مخزن <a href='$1' target='_blan
 index_suse=بسته Perl <tt>perl-IO-Tty</tt> وجود ندارد و باید ابتدا به صورت دستی از مخزن <a href='$2' target='_blank'>devel:languages:perl</a> نصب شود.
 index_euser=خطا : کاربر $1 نمی تواند پوسته را اجرا کند زیرا وجود ندارد!
 index_connecting=برقراری ارتباط ..
+index_missing=ماژول پرل <tt>$1</tt> وجود ندارد. برای حل این مشکل باید با سرپرست خود تماس بگیرید.
 
 acl_user=شل را به عنوان کاربر یونیکس اجرا کنید
 acl_sameuser=مانند ورود به وبمین

@@ -147,6 +147,8 @@ master_defttl=Zadano vrijeme za snimanje uživo
 master_edefttl="$1" nije valjano zadano vrijeme za izradu zapisa
 master_esoagone=Nije pronađen SOA zapis!
 master_einclude=Dodatna datoteka predloška ne postoji
+master_vmin=Ovom zonom upravlja Virtualmin. Zapise treba uređivati pomoću korisničkog sučelja Virtualmin kako bi se osiguralo da su u skladu s drugim postavkama virtualnog poslužitelja.
+master_vminalias=Ova zona je pseudonim Virtualmin domene, koja je sinkronizirana sa svojim ciljem. Zapisi se nikada ne smiju uređivati ovdje, jer će sve promjene biti prebrisane!
 
 delete_title=Izbriši zonu
 delete_mesg=Jeste li sigurni da želite izbrisati zonu $1? Svi zapisi i zonska datoteka bit će izbrisani.

@@ -7,6 +7,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=ablakok
+index_mode_nm=Hálózati menedzser
 
 bifc_nobridge=&lt;Nincs&gt;
 bifc_ebridge=A híd interfésznek számnak kell lennie
@@ -21,5 +22,8 @@ bonding_primarydesc=Csak aktív biztonsági mentés, balance-tlb vagy balance-al
 bonding_miimondesc=(Hagyja üresen a link figyelésének letiltását)
 
 hosts_active=Engedélyezve van?
+
+log_delete_aifcs=$1 interfész deaktiválva
+log_delete_bifcs=$1 interfész törölve
 
 acl_sysinfo=Mutassa a rendelkezésre álló hálózati interfészeket az irányítópulton

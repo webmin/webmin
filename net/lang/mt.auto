@@ -16,6 +16,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=Windows
+index_mode_nm=Maniġer tan-Netwerk
 
 ifcs_title=Interfaces tan-Netwerk
 ifcs_now=Attiv Issa
@@ -276,6 +277,8 @@ log_apply_bfics=Attivat $1 interface għall-ħin tal-bidu
 log_create_route=Ir-rotta attiva maħluqa għal $1 
 log_create_defroute=Inħolqot rotta default attiv
 log_delete_routes=Rotot imħassra $1 attivi
+log_delete_aifcs=Interfaċċji $1 diżattivati
+log_delete_bifcs=Mħassra $1 interfaces
 
 acl_ifcs=Tista 'teditja l-interfejs tan-netwerk?
 acl_routes=Tista 'teditja r-rotta u l-gateways?

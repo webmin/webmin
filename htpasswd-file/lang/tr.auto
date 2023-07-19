@@ -1,0 +1,54 @@
+index_title=HTPasswd Dosyasını Yönet
+index_econfig=Bu modül, <a href='$1'>modül yapılandırma</a> sayfasında bir şifre dosyası ayarlanana kadar kullanılamaz.
+index_emd5=Bu modül, parolalar için MD5 şifreleme kullanmak üzere <a href='$1'>yapılandırıldı</a>, ancak $2 Perl modülü kurulu değil. $2 modülünü indirip kurmak için <a href='$3'>burayı tıklayın</a>.
+index_header=Parola dosyası kullanıcıları
+index_none=Yapılandırılan parola dosyasında kullanıcı yok.
+index_add=Parola dosyasına yeni bir kullanıcı ekleyin.
+index_file=$1 Parola Dosyasındaki Kullanıcılar
+index_sync=Unix Kullanıcı Senkronizasyonu
+index_return=Kullanıcı listesi
+index_eversion=Bu modül, parolalar için MD5 şifreleme kullanacak şekilde <a href='$1'>yapılandırıldı</a>, ancak sisteminizde yüklü olan Kullanıcılar ve Gruplar modülünün sürümü gerekli MD5 işlevlerini içermiyor. 1.114 veya sonraki bir sürüme yükseltin.
+index_synccreate=Bir Unix kullanıcısı oluşturulduğunda bir kullanıcı eklensin mi?
+index_syncmodify=İlgili Unix kullanıcısı değiştirildiğinde, bir kullanıcının parolası yeniden adlandırılsın veya değiştirilsin mi?
+index_syncdelete=İlgili Unix kullanıcısı silindiğinde bir kullanıcı silinsin mi?
+index_ssave=Kaydet ve Uygula
+
+edit_title1=Kullanıcı oluştur
+edit_title2=kullanıcıyı düzenle
+edit_header=Parola dosyası kullanıcı ayrıntıları
+edit_user=Kullanıcı adı
+edit_enabled=Etkinleştirilmiş?
+edit_pass=Şifre
+edit_pass1=değişmeden bırak
+edit_pass0=Ayarlanır
+edit_passfrom=Şundan değiştir:
+edit_passto=yeni şifreye
+edit_single=değiştirilecek kullanıcı
+edit_return=şifre değiştirme formu
+
+save_err=kullanıcı kaydedilemedi
+save_euser1=kullanıcı adı eksik
+save_euser2=Kullanıcı adı : karakterini içeremez
+save_epass=Parola : karakterini içeremez
+save_eclash=Aynı ada sahip bir kullanıcı zaten var
+save_eoldpass=Eski şifre doğru değil
+save_ecreate=Kullanıcı oluşturmanıza izin verilmiyor
+save_edelete=Kullanıcıları silmenize izin verilmiyor
+save_euser=Kullanıcı yok
+save_title=Kullanıcı Kaydedildi
+save_done=$1 kullanıcısı güncellendi.
+
+acl_repeat=Değiştirirken eski şifreyi mi girmelisiniz?
+acl_create=Yeni kullanıcılar oluşturabilir mi?
+acl_rename=Kullanıcıları yeniden adlandırabilir mi?
+acl_delete=Kullanıcıları silebilir mi?
+acl_sync=Senkronizasyonu yapılandırabilir mi?
+acl_enable=Kullanıcıları etkinleştirebilir ve devre dışı bırakabilir mi?
+acl_single=Kullanıcı listesi atlanıp doğrudan şifre değiştirme formuna geçilsin mi?
+
+sync_ecannot=Senkronizasyonu yapılandırmanıza izin verilmiyor
+
+log_sync=Değiştirilen senkronizasyon seçenekleri
+log_create=$1 kullanıcısı oluşturuldu
+log_delete=$1 kullanıcısı silindi
+log_modify=Değiştirilen kullanıcı $1

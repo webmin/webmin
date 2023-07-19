@@ -1,4 +1,6 @@
 master_inview=$1 a la vista $2 
+master_vmin=Aquesta zona està gestionada per Virtualmin. Els registres s'han d'editar mitjançant la interfície d'usuari de Virtualmin, per assegurar-se que són coherents amb altres configuracions del servidor virtual.
+master_vminalias=Aquesta zona és un àlies d'un domini Virtualmin, que es manté sincronitzat amb el seu objectiu. Els registres no s'han d'editar mai aquí, ja que qualsevol canvi es sobreescriurà!
 
 delete_onslave=També voleu suprimir-lo dels servidors esclaus?
 delete_errslave=La zona mestra ha suprimit bé, però s'han produït els errors següents en esclaus : $1

@@ -231,6 +231,7 @@ sync_auto=&lt;Automatisk&gt;
 keys_title=Värd SSH-nycklar
 keys_desc=På denna sida kan du se SSH-nycklarna för denna värd.
 keys_none=Det gick inte att hitta några HostKey-poster i din SSHD-konfiguration.
+keys_change=Förändra
 
 manual_title=Redigera konfigurationsfiler
 manual_ecannot=Du får inte redigera konfigurationsfilen för SSH-servern

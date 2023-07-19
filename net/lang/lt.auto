@@ -16,6 +16,7 @@ index_mode_netbsd=„NetBSD“
 index_mode_openbsd=„OpenBSD“
 index_mode_solaris=„Solaris“
 index_mode_windows=„Windows“
+index_mode_nm=Tinklo valdytojas
 
 ifcs_title=Tinklo sąsajos
 ifcs_now=Aktyvus Dabar
@@ -276,6 +277,8 @@ log_apply_bfics=Aktyvuotos $1 įkrovos laiko sąsajos
 log_create_route=Sukurtas aktyvus maršrutas $1 
 log_create_defroute=Sukurtas aktyvus numatytasis maršrutas
 log_delete_routes=Ištrinta $1 aktyvių maršrutų
+log_delete_aifcs=Išjungta $1 sąsaja
+log_delete_bifcs=Ištrinta $1 sąsaja
 
 acl_ifcs=Ar galima redaguoti tinklo sąsajas?
 acl_routes=Ar galima redaguoti maršrutus ir šliuzus?

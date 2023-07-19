@@ -22,6 +22,9 @@ lang_lang=Llenguatge
 lang_locale=Localització
 lang_dateformat=Format de visualització de dates
 lang_dateformat_dd/mon/yyyy=dd/llun/aaaa (és a dir, 16/set/2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/aaaa (és a dir, 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/aaaa (és a dir, 16/09/2001)
+lang_dateformat_yyyy/mm/dd=aaaa/mm/dd (és a dir, 16/09/2001)
 
 ssl_hsts=Apliqueu SSL amb la capçalera HSTS
 ssl_letsdoms=Noms d'amfitrió del certificat
@@ -47,12 +50,18 @@ session_passapi0=API desactivada
 session_passapi1=API habilitada per als usuaris d'Unix
 session_passurl=Quan està activat, les contrasenyes d'usuari es poden canviar mitjançant una sol·licitud POST a $1 
 
+log_fixrepo=S'ha solucionat el repositori Webmin
+
 ipkey_eip2="$1" no és una adreça IP o un nom d'amfitrió vàlids
 
 advanced_etempallowed=El directori de fitxers temporals $1 és un directori del sistema
 advanced_sortconfigs=Voleu desar els fitxers de configuració ordenats per les seves claus?
 advanced_bufsize=Mida de la memòria intermèdia de xarxa en bytes
 advanced_ebufsize=La mida del buffer de xarxa ha de ser un nombre superior a zero
+
+notify_yumrepo=El vostre sistema utilitza l'antic dipòsit Webmin YUM. Feu clic al botó següent per canviar a la nova URL del repositori <tt>$1</tt> per utilitzar la nostra darrera clau de signatura i garantir l'accés a les versions actualitzades de Webmin.
+notify_aptrepo=El vostre sistema utilitza l'antic dipòsit Webmin APT. Feu clic al botó següent per canviar a l'URL del repositori <tt>stable</tt> <tt>$1</tt> per utilitzar la nostra darrera clau de signatura i garantir l'accés a les versions actualitzades de Webmin.
+notif_fixreponow=Actualitza el repositori Webmin
 
 status_err=No s'ha pogut desar la col·lecció d'estat de fons
 status_einterval=L'interval de col·lecció ha de ser un nombre enter

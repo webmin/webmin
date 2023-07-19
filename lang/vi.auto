@@ -116,9 +116,9 @@ config_ewebmin=Kiểu tham số 14 chỉ hoạt động trong Webmin
 
 help_err=Không thể hiển thị trợ giúp
 help_epath=Đường dẫn trợ giúp bị thiếu hoặc không hợp lệ
-help_efile=Không thể đọc tệp trợ giúp $1
+help_efile3=Không thể đọc trang trợ giúp $1 từ mô-đun $2
 help_eheader=Thiếu phần &lt;tiêu đề&gt;
-help_einclude=Không thể bao gồm $1
+help_einclude3=Không thể bao gồm trang trợ giúp $1
 help_eif=$1 không thành công : $2
 help_eexec=$1 không thành công : $2
 
@@ -306,6 +306,7 @@ ui_etime=Thời gian không hợp lệ
 ui_paging=Hiển thị các hàng $1 cho $2 của $3
 ui_rowlabel=$2 trong hàng $1 :
 ui_filterbox=Nhập để lọc ..
+ui_of=của
 
 header_statusmsg=$1 đã đăng nhập vào $2 $3 trên $4 ($5)
 
@@ -356,6 +357,7 @@ sql_eldaplogin=Không thể đăng nhập vào máy chủ LDAP dưới dạng $1
 
 log_email_subject=Hành động trên webmin trong $1
 log_email_global=Webmin hành động toàn cầu
+log_email_by=$1 nhân $2
 log_email_desc=Email này đã được gửi bởi Webmin để phản hồi lại hành động của người dùng.
 log_email_mod=Mô-đun Webmin: $1
 log_email_moddesc=Tiêu đề mô-đun: $1
@@ -378,8 +380,14 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=byte
 
+paginator_showing_start=Hiển thị $1 đến $2 trong số $3 mục trên trang
+paginator_showing_end=của $1 trang
+paginator_nosearchrs=Không có kết quả phù hợp với truy vấn <tt>$1</tt>
+
 langauto_include=Bao gồm dịch máy
 
 file_truncated_message=đã tìm nạp $1 dữ liệu, bị cắt bớt $2 / $3 
 file_truncated_message_head=đã tìm nạp bắt đầu $1 dữ liệu, bị cắt bớt $2 / $3 
 file_truncated_message_tail=đã tìm nạp kết thúc $1 của dữ liệu, bị cắt bớt $2 / $3 
+
+defcert_error=Chứng chỉ SSL đi kèm $1 mặc định đang được sử dụng. Bạn nên cập nhật chứng chỉ <tt>$2</tt> mặc định trước khi tiếp tục đăng nhập.

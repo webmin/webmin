@@ -31,6 +31,9 @@ lang_lang=Bahasa
 lang_locale=Tempatan
 lang_dateformat=Format paparan tarikh
 lang_dateformat_dd/mon/yyyy=hb/mon/tttt (iaitu 16/Sep/2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/tttt (iaitu 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/hr/tttt (iaitu 16/09/2001)
+lang_dateformat_yyyy/mm/dd=tttt/mm/dd (iaitu 2001/09/16)
 
 ssl_deny=Versi protokol SSL untuk menolak
 ssl_hsts=Kuatkuasakan SSL dengan pengepala HSTS
@@ -95,6 +98,7 @@ session_passapi0=API dilumpuhkan
 session_passapi1=API diaktifkan untuk pengguna Unix
 session_passurl=Apabila diaktifkan, kata laluan pengguna dapat diubah melalui permintaan POST menjadi $1 
 
+log_fixrepo=Repositori Webmin tetap
 log_letsencrypt=Meminta sijil SSL baru dari Let's Encrypt
 log_letsencryptdns=Diciptakan Letakkan rekod DNS untuk $1
 log_letsencryptcleanup=Dikeluarkan Sambungkan rekod DNS untuk $1
@@ -111,6 +115,10 @@ advanced_eheader=Tajuk mesti diformat seperti <tt>Tajuk: Nilai</tt>
 advanced_sortconfigs=Simpan fail config disusun dengan kuncinya?
 advanced_bufsize=Saiz penyangga rangkaian dalam bait
 advanced_ebufsize=Saiz penyangga rangkaian mestilah nombor yang lebih besar daripada sifar
+
+notify_yumrepo=Sistem anda menggunakan repositori Webmin YUM lama. Klik butang di bawah untuk beralih ke URL repositori baharu <tt>$1</tt> untuk menggunakan kunci tandatangan terkini kami dan memastikan akses kepada versi Webmin yang dikemas kini.
+notify_aptrepo=Sistem anda menggunakan repositori APT Webmin lama. Klik butang di bawah untuk beralih ke URL repositori <tt>stable</tt> baharu <tt>$1</tt> untuk menggunakan kunci tandatangan terkini kami dan memastikan akses kepada versi Webmin yang dikemas kini.
+notif_fixreponow=Kemas kini Repositori Webmin
 
 status_units=Unit untuk suhu
 status_celsius=Celsius

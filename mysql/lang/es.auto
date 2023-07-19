@@ -180,6 +180,7 @@ exec_iheader=Opciones de importación de archivos de texto
 exec_created=Se crearon $1 tablas.
 exec_inserted=Se insertaron $1 registros.
 exec_cs=Conjunto de caracteres para datos
+exec_collationdown=La recopilación de bases de datos se redujo de <tt>$1</tt> a <tt>$2</tt>
 
 tprivs_derr=Error al eliminar los permisos de la tabla
 tprivs_enone=No hay tablas seleccionadas
@@ -204,6 +205,8 @@ acl_views=¿Puede ver y administrar vistas?
 acl_files=¿Se puede ejecutar SQL desde archivos locales?
 
 log_cnf=Se modificó la configuración del servidor MySQL
+log_ssl=Certificado SSL modificado
+log_genssl=Certificado SSL generado
 log_kill=Conexiones de base de datos $1 eliminadas
 log_vars=Variables del sistema $1 modificadas
 log_dbs_delete=Se descartaron $1 bases de datos
@@ -467,3 +470,18 @@ mysqlpass_esafe=Error de inicio en modo seguro : $1
 mysqlpass_estartup=Error de inicio : $1 
 mysqlpass_echange=Error al cambiar la contraseña : $1 
 mysqlpass_echange_forcepass=Forzar la anulación de la contraseña dada, si la pierde u olvida
+
+ssl_title=Certificado SSL
+ssl_header=Opciones SSL de MySQL
+ssl_cert=archivo de certificado SSL
+ssl_key=archivo de clave SSL
+ssl_ca=Archivo de certificado de CA SSL
+ssl_req=¿Requerir que los clientes usen SSL?
+ssl_none=Ninguno establecido
+ssl_gen=Generar Certificado y Clave
+ssl_err=Error al guardar las opciones de SSL
+ssl_ecert=Archivo de certificación SSL faltante o inexistente
+ssl_ekey=Archivo de clave SSL faltante o inexistente
+ssl_eca=Archivo CA SSL faltante o inexistente
+ssl_ecertexists=¡El archivo de certificado SSL $1 ya existe!
+ssl_ekeyexists=¡El archivo de clave SSL $1 ya existe!

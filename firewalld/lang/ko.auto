@@ -38,6 +38,13 @@ index_restart_firewalld=방화벽 새로고침D
 index_restart_firewallddesc=FirewallD 서버를 다시 로드하고 영구적으로 생성된 규칙을 적용합니다.
 index_listrules_restartdesc=$1 영역의 기존 풍부하고 직접적인 FirewallD 규칙에 대한 세부 정보를 나열합니다.
 index_dependent=$1 종속 서비스를 다시 시작하지 못했습니다
+index_manual=구성 파일을 편집합니다.
+
+manual_title=구성 파일 편집
+manual_editsel=FirewallD 구성 파일 수정
+manual_err=구성 파일을 저장하지 못했습니다
+manual_efile=선택한 구성 파일이 유효하지 않습니다
+manual_ok=편집하다
 
 port_edit=포트 편집
 port_create=포트 추가

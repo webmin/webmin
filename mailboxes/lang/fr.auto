@@ -1,4 +1,7 @@
+editor_heading=Titre
+editor_paragraph=Paragraphe
 editor_fontfamily_default=Défaut
+editor_fontfamily_monospace=Largeur fixe
 editor_font_small=Petit
 editor_font_normal=Normal
 editor_font_medium=Moyen

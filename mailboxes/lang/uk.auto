@@ -451,7 +451,10 @@ left_filter=Фільтри електронної пошти
 left_pass=Змінити пароль
 left_sig=Редагувати підпис
 
+editor_heading=Заголовок
+editor_paragraph=Абзац
 editor_fontfamily_default=За замовчуванням
+editor_fontfamily_monospace=Фіксована ширина
 editor_font_small=Маленький
 editor_font_normal=нормальний
 editor_font_medium=Середній

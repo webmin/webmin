@@ -169,8 +169,6 @@ mods_install=Установка модуля
 mods_local=Из локального файла
 mods_uploaded=Из загруженного файла
 mods_ftp=С ftp или http URL
-mods_standard=Стандартный модуль с <a href='$1'>www.webmin.com</a>
-mods_standard2=Стандартный модуль
 mods_third=Сторонний модуль с
 mods_thsel=Выделить..
 mods_nodeps=Игнорировать при установке зависимости модуля

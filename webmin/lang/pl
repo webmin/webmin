@@ -183,8 +183,6 @@ mods_install=Zainstaluj moduł
 mods_local=Z pliku lokalnego
 mods_uploaded=Z pliku dołączonego
 mods_ftp=Z serwera ftp lub http, URL
-mods_standard=Moduł standardowy z <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=Moduł standardowy
 mods_third=Niestandardowy moduł z
 mods_thsel=Wybierz..
 mods_nodeps=Pomiń zależności pomiędzy modułami podczas instalacji

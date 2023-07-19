@@ -4,6 +4,7 @@ index_epel=Nejprve se doporučuje mít povoleno úložiště <a href='$1' target
 index_suse=Balíček Perl <tt>perl-IO-Tty</tt> chybí a měl by být nejprve ručně nainstalován z úložiště <a href='$2' target='_blank'>devel:languages:perl</a>.
 index_euser=Chyba: Uživatel $1 nemůže spustit shell, protože neexistuje!
 index_connecting=Připojování ..
+index_missing=Chybí modul Perl <tt>$1</tt>. Chcete-li tento problém vyřešit, musíte se obrátit na správce.
 
 acl_user=Spusťte shell jako uživatel Unixu
 acl_sameuser=Stejné jako přihlášení do Webminu

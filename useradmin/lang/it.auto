@@ -143,6 +143,7 @@ usave_ecreate=Non è possibile creare nuovi utenti
 usave_ebadname='$1' non è un nome utente valido
 usave_elength=Il nome utente non può essere più lungo di $1 lettere
 usave_ere=Il nome utente non corrisponde a regexp $1
+usave_eltgt=Il nome utente non può contenere &lt; o &gt; caratteri
 usave_erename=Non ti è permesso di rinominare gli utenti
 usave_einuse=il nome utente '$1' è già in uso
 usave_einuse_a=il nome utente '$1' è già utilizzato da un alias di posta

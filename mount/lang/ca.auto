@@ -1,2 +1,6 @@
+index_show1=Mostra tots els sistemes de fitxers
+index_show0=Amaga els sistemes de fitxers no editables
+index_addtype=de tipus
+
 linux_nofail=Voleu continuar l'arrencada fins i tot si el muntatge falla?
 linux_noserverino=Genereu números d’inode al costat del client?

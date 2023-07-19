@@ -4,6 +4,7 @@ index_epel=Det rekommenderas att ha <a href='$1' target='_blank'>EPEL</a>-förr�
 index_suse=Perl-paketet <tt>perl-IO-Tty</tt> saknas och bör installeras manuellt först från <a href='$2' target='_blank'>devel:languages:perl</a>-förrådet.
 index_euser=Fel: Användaren $1 kan inte köra skalet eftersom det inte finns!
 index_connecting=Ansluter ..
+index_missing=Perl-modulen <tt>$1</tt> saknas. Du måste kontakta din administratör för att lösa problemet.
 
 acl_user=Kör skal som Unix-användare
 acl_sameuser=Samma som Webmin-inloggning

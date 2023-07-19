@@ -39,6 +39,7 @@ dirs_header=Nastavenia skriptu a adresára rozšírenia PHP
 dirs_include=Vyhľadávať v adresároch obsahuje
 dirs_below=Uvedené nižšie ..
 dirs_ext=Adresár pre prípony
+dirs_exts=Rozšírenia na načítanie
 dirs_upload=Povoliť nahrávanie súborov?
 dirs_utmp=Dočasný adresár pre odovzdané súbory
 dirs_err=Uloženie nastavení adresára zlyhalo
@@ -90,12 +91,14 @@ limits_post=Maximálna veľkosť HTTP POST
 limits_upload=Maximálna veľkosť odovzdaného súboru
 limits_exec=Maximálny čas vykonávania
 limits_input=Maximálny čas analýzy vstupu
+limits_vars=Maximálny limit vstupných premenných
 limits_err=Nepodarilo sa uložiť limity zdrojov
 limits_emem=Chýbajúce alebo neplatné maximálne pridelenie pamäte
 limits_epost=Chýbajúca alebo neplatná maximálna veľkosť HTTP POST
 limits_eupload=Chýbajúca alebo neplatná maximálna veľkosť odovzdaného súboru
 limits_eexec=Chýbajúci alebo neplatný maximálny čas vykonávania
 limits_einput=Chýba alebo je neplatný maximálny čas na analýzu vstupu
+limits_evars=Chýbajúci alebo neplatný maximálny limit vstupných premenných
 
 errors_title=Chyba pri protokolovaní
 errors_header=Možnosti zobrazenia chybových správ a protokolovania
@@ -164,3 +167,6 @@ acl_anyfile=Môžete upravovať ľubovoľný súbor ako konfiguráciu PHP?
 acl_manual=Môžete manuálne upravovať konfiguračné súbory?
 acl_inis=Ďalšie konfiguračné súbory <br>(formát<i> filename </i>=<i> popis </i>)
 acl_user=Čítanie a zápis súborov ako užívateľ
+
+opt_default=Predvolená hodnota: <tt>$1</tt>
+opt_default_unknown=Neznámy

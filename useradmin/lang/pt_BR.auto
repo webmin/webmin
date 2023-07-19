@@ -12,6 +12,7 @@ sshkey=Chave pública SSH
 uedit_egone=O usuário selecionado não existe mais!
 uedit_clone=Clonar usuário
 
+usave_eltgt=O nome de usuário não pode conter &lt; ou &gt; personagens
 usave_ehomeslash=O diretório inicial $1 não pode terminar com um /
 usave_edigestmod=Seu sistema tem senhas $4 habilitadas, porém o módulo Perl <tt>$3</tt> não está instalado. Para forçar o uso de senhas criptografadas normais, ajuste a <a href='$1'>configuração do seu módulo</a> ou faça com que o Webmin tente <a href='$2'>baixar e instalar</a> o módulo <tt>$3</tt> para você.
 usave_edigestcrypt=Seu sistema tem $4 senhas habilitadas, mas a função <tt>crypt</tt> não suporta este formato. Para forçar o uso de senhas criptografadas normais, ajuste a <a href='$1'>configuração do módulo</a>.

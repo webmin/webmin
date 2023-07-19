@@ -39,6 +39,7 @@ dirs_header=PHP scenarijaus ir plėtinio katalogo nustatymai
 dirs_include=Ieškokite katalogų įtraukimų
 dirs_below=Išvardytos žemiau ..
 dirs_ext=Plėtinių katalogas
+dirs_exts=Įkelti plėtiniai
 dirs_upload=Leisti įkelti failus?
 dirs_utmp=Laikinas įkeltų failų katalogas
 dirs_err=Nepavyko išsaugoti katalogo nustatymų
@@ -90,12 +91,14 @@ limits_post=Maksimalus HTTP POST dydis
 limits_upload=Maksimalus failo įkėlimo dydis
 limits_exec=Maksimalus vykdymo laikas
 limits_input=Maksimalus įvesties analizės laikas
+limits_vars=Didžiausia įvesties kintamųjų riba
 limits_err=Nepavyko išsaugoti išteklių apribojimų
 limits_emem=Trūksta arba netinkamas maksimalus atminties paskirstymas
 limits_epost=Trūksta arba netinkamas didžiausias HTTP POST dydis
 limits_eupload=Trūksta arba netinkamas didžiausias failo įkėlimo dydis
 limits_eexec=Trūksta arba netinkamas maksimalus vykdymo laikas
 limits_einput=Trūksta arba netinkamas maksimalus įvesties analizės laikas
+limits_evars=Trūksta arba netinkama maksimali įvesties kintamųjų riba
 
 errors_title=Klaida registruojant
 errors_header=Klaidos pranešimo rodymo ir registravimo parinktys
@@ -164,3 +167,6 @@ acl_anyfile=Ar galite redaguoti bet kurį failą kaip PHP konfigūraciją?
 acl_manual=Ar galima rankiniu būdu redaguoti konfigūracijos failus?
 acl_inis=Papildomi konfigūracijos failai <br>(<i> failo vardas </i>=<i> aprašymo </i> formatas)
 acl_user=Skaitykite ir rašykite failus kaip vartotojas
+
+opt_default=Numatytoji reikšmė: <tt>$1</tt>
+opt_default_unknown=Nežinoma

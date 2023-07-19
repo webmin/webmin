@@ -231,6 +231,7 @@ sync_auto=&lt;Awtomatiku&gt;
 keys_title=Ċwievet SSH Ospitanti
 keys_desc=Din il-paġna jippermettilek li tara ċ-ċwievet SSH għal dan l-ospitanti.
 keys_none=Ma setgħet issib xi daħliet ta 'HostKey fil-konfigurazzjoni SSHD tiegħek.
+keys_change=Bidla
 
 manual_title=Editja l-Iskedi tal-Konfigurazzjoni
 manual_ecannot=M'għandekx permess teditja l-fajl tal-konfigurazzjoni tas-server SSH

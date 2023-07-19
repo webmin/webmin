@@ -451,7 +451,10 @@ left_filter=El. Pašto filtrai
 left_pass=Pakeisti slaptažodį
 left_sig=Redaguoti parašą
 
+editor_heading=Antraštė
+editor_paragraph=Pastraipa
 editor_fontfamily_default=Numatytas
+editor_fontfamily_monospace=Fiksuotas plotis
 editor_font_small=Mažas
 editor_font_normal=Normalus
 editor_font_medium=Vidutinis

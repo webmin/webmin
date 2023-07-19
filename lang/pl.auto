@@ -6,8 +6,14 @@ fail=Nie powiodło się
 
 config_emodule=Moduł nie istnieje
 
+help_efile3=Nie można odczytać strony pomocy $1 z modułu $2
+help_einclude3=Nie udało się dołączyć strony pomocy $1
+
+ui_of=z
+
 log_email_subject=Działanie Webmina w $1
 log_email_global=Globalna akcja Webmin
+log_email_by=$1 na $2
 log_email_desc=Ten e-mail został wysłany przez Webmin w odpowiedzi na akcję użytkownika.
 log_email_mod=Moduł Webmin: $1
 log_email_moddesc=Tytuł modułu: $1
@@ -30,8 +36,14 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bajty
 
+paginator_showing_start=Wyświetlanie od $1 do $2 z $3 elementów na stronie
+paginator_showing_end=z $1 stron
+paginator_nosearchrs=Brak wyników pasujących do zapytania <tt>$1</tt>
+
 langauto_include=Uwzględnij tłumaczenia maszynowe
 
 file_truncated_message=pobrano $1 danych, obcięto $2 z $3 
 file_truncated_message_head=pobrano początek $1 danych, obcięto $2 z $3 
 file_truncated_message_tail=pobrane zakończenie $1 danych, obcięte $2 z $3 
+
+defcert_error=Używany jest domyślny dołączony certyfikat SSL $1. Zdecydowanie zaleca się aktualizację domyślnego certyfikatu <tt>$2</tt> przed przystąpieniem do logowania.

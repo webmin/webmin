@@ -140,7 +140,6 @@ mods_install=安装模块
 mods_local=从本地文件
 mods_uploaded=从上载文件
 mods_ftp=从 ftp 或 http URL
-mods_standard=来自 <a href='$1' target=_new>www.webmin.com</a> 的标准模块
 mods_nodeps=在安装时忽略模组的相依性
 mods_grant1=向所有 Webmin 用户授予访问权限
 mods_installok=从文件安装模块

@@ -147,6 +147,8 @@ master_defttl=الوقت الافتراضي للعيش للسجلات
 master_edefttl='$1' is not a valid default time-to-live for records
 master_esoagone=لم يتم العثور على سجل الخدمية!
 master_einclude=ملف القالب الإضافي غير موجود
+master_vmin=تتم إدارة هذه المنطقة بواسطة Virtualmin. يجب تحرير السجلات باستخدام Virtualmin UI ، للتأكد من أنها متوافقة مع إعدادات الخادم الظاهري الأخرى.
+master_vminalias=هذه المنطقة هي اسم مستعار لنطاق Virtualmin ، والذي يتم الاحتفاظ به متزامنًا مع هدفه. يجب عدم تحرير السجلات هنا مطلقًا ، حيث سيتم الكتابة فوق أي تغييرات!
 
 delete_title=حذف المنطقة
 delete_mesg=Are you sure you want to delete the zone $1 ? All records and the zone file will be deleted.

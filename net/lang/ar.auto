@@ -16,6 +16,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=سولاريس
 index_mode_windows=شبابيك
+index_mode_nm=مدير الشبكة
 
 ifcs_title=واجهات الشبكة
 ifcs_now=نشط الان
@@ -276,6 +277,8 @@ log_apply_bfics=تنشيط$1 واجهات وقت التمهيد
 log_create_route=تم إنشاء مسار نشط لـ$1
 log_create_defroute=تم إنشاء المسار الافتراضي النشط
 log_delete_routes=تم حذف المسارات النشطة$1
+log_delete_aifcs=تم إلغاء تنشيط واجهات$1
+log_delete_bifcs=تم حذف$1 واجهات
 
 acl_ifcs=يمكن تحرير واجهات الشبكة؟
 acl_routes=يمكن تعديل التوجيه والعبارات؟

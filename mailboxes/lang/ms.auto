@@ -451,7 +451,10 @@ left_filter=Penapis E-mel
 left_pass=Tukar kata laluan
 left_sig=Edit Tandatangan
 
+editor_heading=Tajuk
+editor_paragraph=Perenggan
 editor_fontfamily_default=Lalai
+editor_fontfamily_monospace=Lebar Tetap
 editor_font_small=Kecil
 editor_font_normal=Biasalah
 editor_font_medium=Sederhana

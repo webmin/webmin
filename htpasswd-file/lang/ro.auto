@@ -1,0 +1,54 @@
+index_title=Gestionați fișierul HTPasswd
+index_econfig=Acest modul nu poate fi utilizat până când nu a fost setat un fișier cu parolă pe pagina <a href='$1'>Configurare modul</a>.
+index_emd5=Acest modul a fost <a href='$1'>configurat</a> pentru a utiliza criptarea MD5 pentru parole, dar modulul $2 Perl nu este instalat. <a href='$3'>Faceți clic aici</a> pentru a descărca și instala modulul $2.
+index_header=Utilizatorii fișierului de parole
+index_none=Nu există utilizatori în fișierul de parole configurat.
+index_add=Adăugați un utilizator nou la fișierul cu parole.
+index_file=Utilizatori în fișierul cu parole $1
+index_sync=Sincronizarea utilizatorilor Unix
+index_return=lista de utilizatori
+index_eversion=Acest modul a fost <a href='$1'>configurat</a> pentru a utiliza criptarea MD5 pentru parole, dar versiunea modulului Utilizatori și grupuri instalată pe sistemul dumneavoastră nu include funcțiile MD5 necesare. Faceți upgrade la versiunea 1.114 sau o versiune ulterioară.
+index_synccreate=Adăugați un utilizator când este creat un utilizator Unix?
+index_syncmodify=Redenumiți sau schimbați parola unui utilizator atunci când utilizatorul Unix corespunzător este modificat?
+index_syncdelete=Ștergeți un utilizator când utilizatorul Unix corespunzător este șters?
+index_ssave=Salvați și aplicați
+
+edit_title1=Creaza utilizator
+edit_title2=Editați utilizatorul
+edit_header=Detaliile utilizatorului fișierului cu parole
+edit_user=Nume de utilizator
+edit_enabled=Activat?
+edit_pass=Parola
+edit_pass1=Lăsați neschimbat
+edit_pass0=Setat la
+edit_passfrom=Schimbarea de la
+edit_passto=la noua parolă
+edit_single=Utilizatorul de schimbat
+edit_return=formular de schimbare a parolei
+
+save_err=Nu s-a salvat utilizatorul
+save_euser1=Numele de utilizator lipsește
+save_euser2=Numele de utilizator nu poate conține caracterul :
+save_epass=Parola nu poate conține caracterul :
+save_eclash=Un utilizator cu același nume există deja
+save_eoldpass=Vechea parolă nu este corectă
+save_ecreate=Nu aveți voie să creați utilizatori
+save_edelete=Nu aveți voie să ștergeți utilizatori
+save_euser=Utilizatorul nu exista
+save_title=Utilizator salvat
+save_done=Utilizatorul $1 a fost actualizat.
+
+acl_repeat=Trebuie să introduceți parola veche la schimbare?
+acl_create=Se pot crea utilizatori noi?
+acl_rename=Pot redenumi utilizatorii?
+acl_delete=Se pot șterge utilizatori?
+acl_sync=Se poate configura sincronizarea?
+acl_enable=Pot activa și dezactiva utilizatorii?
+acl_single=Omiteți lista de utilizatori și mergeți direct la formularul de schimbare a parolei?
+
+sync_ecannot=Nu aveți voie să configurați sincronizarea
+
+log_sync=S-au schimbat opțiunile de sincronizare
+log_create=A fost creat utilizatorul $1
+log_delete=Utilizatorul $1 a fost șters
+log_modify=Utilizatorul $1 modificat

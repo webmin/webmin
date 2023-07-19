@@ -14,6 +14,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=솔라리스
 index_mode_windows=윈도우
+index_mode_nm=네트워크 관리자
 
 ifcs_activedesc=이 표에 나열된 인터페이스는 현재 시스템에서 활성화되어 있습니다. 대부분의 경우 <b>부팅시 활성화</b> 탭에서 편집해야합니다.
 ifcs_bootdesc=이 표에 나열된 인터페이스는 시스템 부팅시 활성화되며 일반적으로 현재 활성화됩니다.
@@ -167,6 +168,8 @@ log_apply_bfics=활성화 된 $1 부팅 시간 인터페이스
 log_create_route=$1 에 대한 활성 경로 생성
 log_create_defroute=활성 기본 경로 생성
 log_delete_routes=활성 경로 $1 개 삭제
+log_delete_aifcs=비활성화된 $1 인터페이스
+log_delete_bifcs=삭제된 $1 인터페이스
 
 acl_ifcs=네트워크 인터페이스를 편집 할 수 있습니까?
 acl_routes=라우팅 및 게이트웨이를 편집 할 수 있습니까?

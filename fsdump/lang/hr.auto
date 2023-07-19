@@ -95,6 +95,7 @@ dump_bcomp=Podaci sažimanja međuspremnika u blokove?
 dump_xdev=Ograničite sigurnosnu kopiju na jedan datotečni sustav?
 dump_update2=Samo dodajte nove datoteke u arhivu?
 dump_ignoreread=Zanemarite pogreške u čitanju datoteka?
+dump_ignorechanged=Ignorirati pogreške ako se datoteke promijene?
 dump_notape=Zatraži novu traku ako je potrebno?
 dump_rmt=Put do <tt>rmt</tt> na udaljenom sustavu
 dump_links=Slijedite simboličke veze?

@@ -104,6 +104,7 @@ newdb_collation=Pořadí řazení
 exec_created=Byly vytvořeny tabulky $1.
 exec_inserted=Bylo vloženo $1 záznamů.
 exec_cs=Znaková sada pro data
+exec_collationdown=Porovnání databáze bylo sníženo z <tt>$1</tt> na <tt>$2</tt>
 
 tprivs_dtitle=Smazat oprávnění tabulky
 tprivs_drusure=Opravdu chcete smazat $1 vybraná oprávnění tabulky MySQL?
@@ -115,6 +116,8 @@ cprivs_dok=Smazat oprávnění
 
 acl_files=Je možné provádět SQL z lokálních souborů?
 
+log_ssl=Změněn certifikát SSL
+log_genssl=Vygenerovaný certifikát SSL
 log_root=Změněno heslo pro správu
 log_manual=Ručně upravený konfigurační soubor
 
@@ -189,3 +192,18 @@ mysqlpass_esafe=Spuštění v nouzovém režimu se nezdařilo : $1
 mysqlpass_estartup=Spuštění se nezdařilo : $1 
 mysqlpass_echange=Změna hesla se nezdařila : $1 
 mysqlpass_echange_forcepass=Pokud dojde ke ztrátě nebo zapomenutí, vynucené přepsání daného hesla
+
+ssl_title=SSL certifikát
+ssl_header=Možnosti MySQL SSL
+ssl_cert=Soubor certifikátu SSL
+ssl_key=Soubor klíče SSL
+ssl_ca=Soubor certifikátu SSL CA
+ssl_req=Vyžadovat, aby klienti používali SSL?
+ssl_none=Žádná nastavena
+ssl_gen=Vygenerujte certifikát a klíč
+ssl_err=Možnosti SSL se nepodařilo uložit
+ssl_ecert=Chybějící nebo neexistující certifikační soubor SSL
+ssl_ekey=Chybějící nebo neexistující soubor klíče SSL
+ssl_eca=Chybějící nebo neexistující soubor SSL CA
+ssl_ecertexists=Soubor certifikátu SSL $1 již existuje!
+ssl_ekeyexists=Soubor klíče SSL $1 již existuje!

@@ -16,6 +16,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=סולאריס
 index_mode_windows=חלונות
+index_mode_nm=מנהל רשת
 
 ifcs_title=ממשקי רשת
 ifcs_now=פעיל כעת
@@ -276,6 +277,8 @@ log_apply_bfics=הפעל ממשקים של $1 בזמן האתחול
 log_create_route=יצר מסלול פעיל עבור $1 
 log_create_defroute=יצר מסלול ברירת מחדל פעיל
 log_delete_routes=$1 מסלולים פעילים נמחקו
+log_delete_aifcs=ממשקים $1 מושבתים
+log_delete_bifcs=ממשקים $1 נמחקו
 
 acl_ifcs=האם ניתן לערוך ממשקי רשת?
 acl_routes=האם ניתן לערוך ניתוב ושערים?

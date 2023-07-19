@@ -9,3 +9,5 @@ net_all4=IPv4 helbide guztiak
 net_all6=IPv6 helbide guztiak
 net_sel=Helbidea ..
 net_reverse=Bezeroaren IP helbideak berraztertzea?
+
+keys_change=Aldatu

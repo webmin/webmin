@@ -116,9 +116,9 @@ config_ewebmin=14. parametra tips darbojas tikai Webmin
 
 help_err=Neizdevās parādīt palīdzību
 help_epath=Trūkst vai nav derīgs palīdzības ceļš
-help_efile=Neizdevās nolasīt palīdzības failu $1
+help_efile3=Neizdevās nolasīt palīdzības lapu $1 no moduļa $2
 help_eheader=Trūkst sadaļas &lt;header&gt;
-help_einclude=Neizdevās iekļaut $1
+help_einclude3=Neizdevās iekļaut palīdzības lapu $1
 help_eif=$1 neizdevās : $2
 help_eexec=$1 neizdevās : $2
 
@@ -306,6 +306,7 @@ ui_etime=Laiks nav derīgs
 ui_paging=Rāda rindas $1 uz $2 no $3
 ui_rowlabel=$2 rindā $1 :
 ui_filterbox=Ierakstiet, lai filtrētu ..
+ui_of=no
 
 header_statusmsg=$1 pieteicies $2 $3 uz $4 ($5)
 
@@ -356,6 +357,7 @@ sql_eldaplogin=Neizdevās pieteikties LDAP serverī kā $1 : $2
 
 log_email_subject=Webmin darbība $1
 log_email_global=Webmin globālā darbība
+log_email_by=$1 no $2
 log_email_desc=Šo e-pastu Webmin nosūtīja, atbildot uz lietotāja rīcību.
 log_email_mod=Webmin modulis: $1
 log_email_moddesc=Moduļa nosaukums: $1
@@ -378,8 +380,14 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=baiti
 
+paginator_showing_start=Rāda $1 līdz $2 no $3 vienumiem lapā
+paginator_showing_end=no $1 lapām
+paginator_nosearchrs=Nav neviena rezultāta, kas atbilstu vaicājumam <tt>$1</tt>
+
 langauto_include=Iekļaujiet mašīntulkojumus
 
 file_truncated_message=ienesa $1 no datiem, saīsināja $2 no $3 
 file_truncated_message_head=ienesa datu sākumu $1, saīsināja $2 no $3 
 file_truncated_message_tail=ienesa datu beigas $1, saīsināja $2 no $3 
+
+defcert_error=Tiek izmantots noklusējuma $1 komplektētais SSL sertifikāts. Pirms pieteikšanās ir ļoti ieteicams atjaunināt noklusējuma <tt>$2</tt> sertifikātu.

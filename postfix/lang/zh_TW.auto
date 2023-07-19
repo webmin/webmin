@@ -107,6 +107,8 @@ opts_notify_classes_sel=在下面選擇
 
 opts_edir=只允許在$1下指定地圖文件。
 
+opts_resolve_dequoted_address=防止在郵箱名稱中使用@？
+
 opts_mailbox_size_limit=郵箱的最大大小
 
 opts_mynetworks_style=自動局域網
@@ -117,6 +119,7 @@ opts_delay_warning_time_default2=後綴默認
 opts_content_filter_default=沒有
 
 opts_relay_recipient_maps=映射允許中繼的地址
+opts_smtpd_discard_ehlo_keywords=不發送 SMTP EHLO 關鍵字
 smtpd_nomap=尚未輸入允許中繼的地址的映射。
 smtpd_nomap2=尚未輸入限制發件人地址的地圖。
 smtpd_map=允許中繼的地址
@@ -240,6 +243,10 @@ header_title=標頭檢查
 header_ecannot=您無權編輯標題檢查
 header_eregexp=標頭檢查映射必須採用<tt>regexp：</tt> <i>filename</i>格式
 opts_header_checks=MIME標頭檢查表
+opts_mime_header_checks=MIME 標頭檢查表
+opts_header_checks_no_map=（目前沒有定義頭部檢查映射。先定義一個映射，然後才能編輯它）
+
+opts_mime_header_checks_no_map=（當前未定義 MIME 標頭檢查映射。先定義映射，然後才能編輯它）
 header_name=正則表達式
 header_value=比賽動作
 header_discard=丟棄（帶有日誌消息..）

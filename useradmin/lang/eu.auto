@@ -143,6 +143,7 @@ usave_ecreate=Ezin duzu erabiltzaile berririk sortu
 usave_ebadname='$1' ez da baliozko erabiltzaile izena
 usave_elength=Erabiltzaile-izena ezin da $1 gutunak baino luzeagoa izan
 usave_ere=Erabiltzaile izena ez dator bat regexp $1
+usave_eltgt=Erabiltzaile izenak ezin du izan &lt; edo &gt; pertsonaiak
 usave_erename=Ez duzu erabiltzaileei berrizendatzen
 usave_einuse='$1' erabiltzaile izena dagoeneko erabiltzen ari da
 usave_einuse_a='$1' erabiltzaile-izena posta-alias batek erabiltzen du dagoeneko

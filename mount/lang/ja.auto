@@ -1,4 +1,7 @@
 index_used=中古
+index_show1=すべてのファイルシステムを表示
+index_show0=編集不可能なファイルシステムを非表示にする
+index_addtype=タイプの
 
 edit_usage=ディスクの使用状況
 edit_nfs_opt4=NFSv4固有のオプション

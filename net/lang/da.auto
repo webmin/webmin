@@ -16,6 +16,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=Windows
+index_mode_nm=Netværksadministrator
 
 ifcs_title=Netværksgrænseflader
 ifcs_now=Aktiv nu
@@ -276,6 +277,8 @@ log_apply_bfics=Aktiverede $1 boot-time grænseflader
 log_create_route=Oprettet aktiv rute for $1 
 log_create_defroute=Oprettet aktiv standardrute
 log_delete_routes=Slet $1 aktive ruter
+log_delete_aifcs=Deaktiverede $1-grænseflader
+log_delete_bifcs=Slettede $1-grænseflader
 
 acl_ifcs=Kan redigere netværksgrænseflader?
 acl_routes=Kan redigere routing og gateways?

@@ -228,6 +228,7 @@ sync_auto=&lt;Automatik&gt;
 keys_title=Hos SSH Kekunci
 keys_desc=Halaman ini membolehkan anda melihat kekunci SSH untuk hos ini.
 keys_none=Tidak dapat mencari entri HostKey dalam konfigurasi SSHD anda.
+keys_change=Ubah
 
 manual_title=Edit Fail Config
 manual_ecannot=Anda tidak dibenarkan mengedit fail konfigurasi pelayan SSH

@@ -1,8 +1,13 @@
 type_init=Acció d'arrencada
 
 mon_virtualmin=Atenció! Aquest monitor està associat amb el domini Virtualmin $1 i, per tant, no s'hauria d'editar ni suprimir aquí.
+mon_notifywebhook=Webhook
 
 sched_warn3=Sempre que el servei estigui activat
+sched_webhook=Envia l'estat al webhook
+sched_webhookno=No envieu
+sched_webhookyes=URL HTTP o HTTPS
+sched_ewebhook=Falta l'URL o no és vàlid per al webhook
 
 http_codes=Codis d'estat HTTP acceptables
 http_codes_def=Per defecte ($1)

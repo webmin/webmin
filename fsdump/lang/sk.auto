@@ -95,6 +95,7 @@ dump_bcomp=Vyrovnávate komprimované údaje do blokov?
 dump_xdev=Obmedziť zálohu na jeden súborový systém?
 dump_update2=Stačí pridať nové súbory na archiváciu?
 dump_ignoreread=Ignorovať chyby pri čítaní súborov?
+dump_ignorechanged=Ignorovať chyby pri zmene súborov?
 dump_notape=Vyžiadajte si v prípade potreby novú pásku?
 dump_rmt=Cesta k <tt>rmt</tt> vo vzdialenom systéme
 dump_links=Chcete sledovať symbolické odkazy?

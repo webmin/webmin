@@ -30,6 +30,9 @@ lang_lang=Język
 lang_locale=Widownia
 lang_dateformat=Format wyświetlania dat
 lang_dateformat_dd/mon/yyyy=dd/pon.rrrr (tj. 16/09/2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/rrrr (tj. 16.09.2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/rrrr (tj. 16.09.2001)
+lang_dateformat_yyyy/mm/dd=rrrr/mm/dd (tj. 2001/09/16)
 
 ssl_hsts=Wymuszaj SSL za pomocą nagłówka HSTS
 ssl_ekey2=Plik klucza prywatnego SSL $1 nie zawiera klucza formatu PEM
@@ -80,6 +83,7 @@ session_passapi0=API wyłączone
 session_passapi1=API włączone dla użytkowników Uniksa
 session_passurl=Po włączeniu hasła użytkowników można zmienić za pomocą żądania POST do $1 
 
+log_fixrepo=Naprawiono repozytorium Webmina
 log_letsencrypt=Zażądałem nowego certyfikatu SSL od Let's Encrypt
 log_letsencryptdns=Utworzono Let's Encrypt DNS record dla $1
 log_letsencryptcleanup=Usunięto Let's Encrypt DNS record dla $1
@@ -94,6 +98,10 @@ advanced_eheader=Nagłówki muszą być sformatowane jak <tt>Header: Value</tt>
 advanced_sortconfigs=Zapisać pliki konfiguracyjne posortowane według kluczy?
 advanced_bufsize=Rozmiar bufora sieciowego w bajtach
 advanced_ebufsize=Rozmiar bufora sieciowego musi być liczbą większą niż zero
+
+notify_yumrepo=Twój system używa starego repozytorium Webmin YUM. Kliknij poniższy przycisk, aby przełączyć się na adres URL nowego repozytorium <tt>$1</tt>, aby użyć naszego najnowszego klucza podpisu i zapewnić dostęp do zaktualizowanych wersji Webmina.
+notify_aptrepo=Twój system używa starego repozytorium Webmin APT. Kliknij poniższy przycisk, aby przełączyć się na nowy <tt>stable</tt> adres URL repozytorium <tt>$1</tt>, aby użyć naszego najnowszego klucza podpisu i zapewnić dostęp do zaktualizowanych wersji Webmina.
+notif_fixreponow=Zaktualizuj repozytorium Webmina
 
 status_err=Nie udało się zapisać kolekcji stanu w tle
 status_einterval=Interwał zbierania musi być liczbą całkowitą

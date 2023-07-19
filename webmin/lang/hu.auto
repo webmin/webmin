@@ -155,8 +155,6 @@ ui_ehostnamedisplay=Hiányzó vagy érvénytelen megjelenített gazdagépnév
 
 mods_installsource=Telepítés innen:
 mods_grantto=Hozzáférést biztosít a
-mods_standard=Szabványos modul a <a href='$1' target=_new>www.webmin.com</a> webhelyről
-mods_standard2=Szabványos modul
 mods_third=Harmadik fél modulja
 mods_thsel=Válassza ..
 mods_nodeps=Nem veszi figyelembe a függőségeket?
@@ -240,6 +238,9 @@ lang_err=Nem sikerült a nyelv mentése
 lang_echarset=Hiányzó vagy érvénytelen karakterkészlet
 lang_dateformat=Dátumok megjelenítési formátuma
 lang_dateformat_dd/mon/yyyy=éééé.hh/nn (azaz 2001. szeptember 16.)
+lang_dateformat_dd/mm/yyyy=éééé/hh/nn (azaz 2001.09.16.)
+lang_dateformat_mm/dd/yyyy=éééé.hh/nn (azaz 2001.09.16.)
+lang_dateformat_yyyy/mm/dd=éééé/hh/nn (azaz 2001/09/16)
 
 ssl_essl=Úgy tűnik, hogy a Net::SSLeay perl modul nincs telepítve a rendszerére. Az OpenSSL könyvtár és a Net::SSLeay telepítéséhez kövesse <a href='$1'>ezeket az utasításokat</a> a Webmin webhelyről.
 ssl_cpan=Alternatív megoldásként a Webmin <a href='$1'>letöltheti és telepítheti</a> a szükséges Net::SSLeay Perl modult.
@@ -600,6 +601,7 @@ log_tinstall=Telepített téma $1
 log_clone=Klónozott modul $1 $2
 log_delete=Törölt modul $1
 log_os=Megváltozott operációs rendszer
+log_fixrepo=Javítva a Webmin adattár
 log_lang=Megváltozott a globális nyelv
 log_startpage=Megváltoztak az indexoldal beállításai
 log_upgrade=Frissítve a Webmin a $1 verzióra
@@ -916,6 +918,9 @@ notify_updatedesc=Javítja a problémát
 notif_updateok=Telepítse a frissítéseket most
 notif_reboot=A legfrissebb csomagfrissítések (például egy új kernelverzió) újraindítást igényelnek a teljes körű alkalmazáshoz.
 notif_rebootok=Indítsa újra most
+notify_yumrepo=A rendszer a régi Webmin YUM tárat használja. Kattintson az alábbi gombra, hogy az új <tt>$1</tt> tárhely URL-re váltson, hogy használhassa legújabb aláíró kulcsunkat, és biztosítsa a hozzáférést a frissített Webmin verziókhoz.
+notify_aptrepo=A rendszer a régi Webmin APT tárat használja. Kattintson az alábbi gombra, hogy átváltson az új <tt>stable</tt> tárhely URL-re <tt>$1</tt>, hogy használhassa legújabb aláíró kulcsunkat, és biztosítsa a hozzáférést a frissített Webmin verziókhoz.
+notif_fixreponow=Frissítse a Webmin Repository-t
 
 status_title=Háttérállapot-gyűjtemény
 status_header=Állapotgyűjtő munka beállításai

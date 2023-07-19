@@ -1,6 +1,11 @@
 index_indexes=Indekser
 index_views=Visninger
 
+exec_collationdown=Databasesortering ble nedgradert fra <tt>$1</tt> til <tt>$2</tt>
+
+log_ssl=Endret SSL-sertifikat
+log_genssl=Generert SSL-sertifikat
+
 backup_parameters=Vil du legge til egendefinerte parametere i sikkerhetskopieringskommandoen?
 
 syslog_desc2=MySQL feilmelding
@@ -12,3 +17,18 @@ mysqlpass_esafe=Oppstart i sikker modus mislyktes : $1
 mysqlpass_estartup=Oppstart mislyktes : $1 
 mysqlpass_echange=Endring av passord mislyktes : $1 
 mysqlpass_echange_forcepass=Tving overstyr det gitte passordet, hvis det går tapt eller glemt
+
+ssl_title=SSL-sertifikat
+ssl_header=MySQL SSL-alternativer
+ssl_cert=SSL-sertifikatfil
+ssl_key=SSL nøkkelfil
+ssl_ca=SSL CA-sertifikatfil
+ssl_req=Kreve at klienter bruker SSL?
+ssl_none=Ingen satt
+ssl_gen=Generer sertifikat og nøkkel
+ssl_err=Kunne ikke lagre SSL-alternativer
+ssl_ecert=Manglende eller ikke-eksisterende SSL-sertifiseringsfil
+ssl_ekey=Manglende eller ikke-eksisterende SSL-nøkkelfil
+ssl_eca=Manglende eller ikke-eksisterende SSL CA-fil
+ssl_ecertexists=SSL-sertifikatfilen $1 eksisterer allerede!
+ssl_ekeyexists=SSL-nøkkelfilen $1 eksisterer allerede!

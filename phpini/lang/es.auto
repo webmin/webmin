@@ -39,6 +39,7 @@ dirs_header=Script PHP y configuración de directorio de extensión
 dirs_include=Buscar directorios para incluye
 dirs_below=A continuación se enumeran. ..
 dirs_ext=Directorio para extensiones
+dirs_exts=Extensiones para cargar
 dirs_upload=¿Permitir cargas de archivos?
 dirs_utmp=Directorio temporal para archivos cargados
 dirs_err=Error al guardar la configuración del directorio
@@ -90,12 +91,14 @@ limits_post=Tamaño máximo de HTTP POST
 limits_upload=Tamaño máximo de carga de archivos
 limits_exec=Tiempo máximo de ejecución
 limits_input=Tiempo máximo de análisis de entrada
+limits_vars=Límite máximo de variables de entrada
 limits_err=Error al guardar los límites de recursos
 limits_emem=Asignación de memoria máxima faltante o no válida
 limits_epost=Tamaño HTTP POST máximo faltante o no válido
 limits_eupload=Tamaño máximo de carga de archivo faltante o no válido
 limits_eexec=Tiempo de ejecución máximo faltante o inválido
 limits_einput=Tiempo de análisis de entrada máximo faltante o no válido
+limits_evars=Límite máximo de variables de entrada faltante o no válido
 
 errors_title=Registro de errores
 errors_header=Visualización de mensajes de error y opciones de registro
@@ -164,3 +167,6 @@ acl_anyfile=¿Se puede editar cualquier archivo como una configuración PHP?
 acl_manual=¿Se pueden editar manualmente los archivos de configuración?
 acl_inis=Archivos de configuración adicionales <br>(en formato<i> filename </i>=<i> descripción </i>)
 acl_user=Leer y escribir archivos como usuario
+
+opt_default=Valor predeterminado: <tt>$1</tt>
+opt_default_unknown=Desconocido

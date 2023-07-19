@@ -88,6 +88,8 @@ master_defttl=Tempo de vida padrão para registros
 master_edefttl='$1' não é um tempo de vida padrão válido para registros
 master_esoagone=Nenhum registro SOA encontrado!
 master_einclude=Arquivo de modelo adicional não existe
+master_vmin=Esta zona é gerenciada pelo Virtualmin. Os registros devem ser editados usando a IU do Virtualmin, para garantir que sejam consistentes com outras configurações do servidor virtual.
+master_vminalias=Esta zona é um alias de um domínio Virtualmin, que é mantido em sincronia com seu alvo. Os registros nunca devem ser editados aqui, pois quaisquer alterações serão substituídas!
 
 delete_title=Excluir zona
 delete_mesg=Tem certeza de que deseja excluir a zona $1? Todos os registros e o arquivo de zona serão excluídos.

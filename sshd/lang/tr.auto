@@ -231,6 +231,7 @@ sync_auto=&lt;Otomatik&gt;
 keys_title=Ana Bilgisayar SSH Anahtarları
 keys_desc=Bu sayfa, bu ana bilgisayarın SSH anahtarlarını görüntülemenizi sağlar.
 keys_none=SSHD yapılandırmanızda herhangi bir HostKey girişi bulunamadı.
+keys_change=Değiştirmek
 
 manual_title=Yapılandırma Dosyalarını Düzenle
 manual_ecannot=SSH sunucusu yapılandırma dosyasını düzenlemenize izin verilmiyor

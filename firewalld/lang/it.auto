@@ -38,6 +38,13 @@ index_restart_firewalld=Ricarica FirewallD
 index_restart_firewallddesc=Ricaricare il server FirewallD e applicare le regole che sono state create in modo permanente.
 index_listrules_restartdesc=Elenca i dettagli sulle regole FirewallD avanzate e dirette esistenti nella zona $1.
 index_dependent=Impossibile riavviare il servizio dipendente $1
+index_manual=Modifica file di configurazione.
+
+manual_title=Modifica file di configurazione
+manual_editsel=Modifica il file di configurazione di FirewallD
+manual_err=Impossibile salvare il file di configurazione
+manual_efile=Il file di configurazione selezionato non è valido
+manual_ok=Modificare
 
 port_edit=Modifica porta
 port_create=Aggiungi porta

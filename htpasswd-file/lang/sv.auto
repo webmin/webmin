@@ -1,0 +1,54 @@
+index_title=Hantera HTPasswd-fil
+index_econfig=Denna modul kan inte användas förrän en lösenordsfil har ställts in på sidan <a href='$1'>modulkonfiguration</a>.
+index_emd5=Den här modulen har <a href='$1'>konfigurerats</a> för att använda MD5-kryptering för lösenord, men $2 Perl-modulen är inte installerad. <a href='$3'>Klicka här</a> för att ladda ner och installera modulen $2.
+index_header=Användare av lösenordsfil
+index_none=Det finns inga användare i den konfigurerade lösenordsfilen.
+index_add=Lägg till en ny användare i lösenordsfilen.
+index_file=Användare i lösenordsfilen $1
+index_sync=Unix-användarsynkronisering
+index_return=användarlistan
+index_eversion=Den här modulen har <a href='$1'>konfigurerats</a> för att använda MD5-kryptering för lösenord, men versionen av modulen Användare och grupper som är installerad på ditt system innehåller inte de nödvändiga MD5-funktionerna. Uppgradera till version 1.114 eller senare.
+index_synccreate=Lägga till en användare när en Unix-användare skapas?
+index_syncmodify=Byt namn på eller ändra lösenordet för en användare när motsvarande Unix-användare ändras?
+index_syncdelete=Ta bort en användare när motsvarande Unix-användare har tagits bort?
+index_ssave=Spara och tillämpa
+
+edit_title1=Skapa användare
+edit_title2=Redigera användare
+edit_header=Lösenordsfil användarinformation
+edit_user=Användarnamn
+edit_enabled=Aktiverad?
+edit_pass=Lösenord
+edit_pass1=Lämna oförändrat
+edit_pass0=Satt till
+edit_passfrom=Byt från
+edit_passto=till nytt lösenord
+edit_single=Användare att ändra
+edit_return=formulär för lösenordsändring
+
+save_err=Det gick inte att spara användaren
+save_euser1=Användarnamn saknas
+save_euser2=Användarnamnet får inte innehålla tecknet :
+save_epass=Lösenordet får inte innehålla tecknet :
+save_eclash=En användare med samma namn finns redan
+save_eoldpass=Det gamla lösenordet är inte korrekt
+save_ecreate=Du får inte skapa användare
+save_edelete=Du får inte ta bort användare
+save_euser=Användare finns inte
+save_title=Användare sparad
+save_done=Användaren $1 har uppdaterats.
+
+acl_repeat=Måste ange gammalt lösenord när du byter?
+acl_create=Kan skapa nya användare?
+acl_rename=Kan du byta namn på användare?
+acl_delete=Kan du ta bort användare?
+acl_sync=Kan konfigurera synkronisering?
+acl_enable=Kan aktivera och inaktivera användare?
+acl_single=Hoppa över användarlistan och gå direkt till formuläret för lösenordsändring?
+
+sync_ecannot=Du får inte konfigurera synkronisering
+
+log_sync=Ändrade synkroniseringsalternativ
+log_create=Skapat användare $1
+log_delete=Raderade användare $1
+log_modify=Ändrad användare $1

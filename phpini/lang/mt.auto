@@ -39,6 +39,7 @@ dirs_header=Skript PHP u settings tad-direttorju ta 'estensjoni
 dirs_include=Fittex direttorji għal tinkludi
 dirs_below=Elenkat hawn taħt ..
 dirs_ext=Direttorju għal estensjonijiet
+dirs_exts=Estensjonijiet għat-tagħbija
 dirs_upload=Tippermetti l-upload tal-fajls?
 dirs_utmp=Direttorju temporanju għal fajls imtellgħa
 dirs_err=Ma rnexxielux isalva s-settings tad-direttorju
@@ -90,12 +91,14 @@ limits_post=Daqs massimu tal-POST HTTP
 limits_upload=Daqs massimu tal-upload tal-fajl
 limits_exec=Ħin massimu ta 'eżekuzzjoni
 limits_input=Ħin massimu ta 'analiżi ta' analiżi
+limits_vars=Limitu massimu tal-varjabbli tal-input
 limits_err=Ma rnexxielux isalva l-limiti tar-riżorsi
 limits_emem=Allokazzjoni tal-memorja massima nieqsa jew invalida
 limits_epost=Daqs massimu jew invalidu tal-POST HTTP massimu
 limits_eupload=Id-daqs massimu tal-upload tal-fajl nieqes jew invalidu
 limits_eexec=Ħin massimu ta 'eżekuzzjoni nieqes jew invalidu
 limits_einput=Ħin massimu ta 'analiżi ta' input nieqes jew invalidu
+limits_evars=Limitu ta' varjabbli massimu ta' input nieqes jew mhux validu
 
 errors_title=Żball fil-Qtugħ
 errors_header=Wiri ta 'messaġġi ta' żball u għażliet ta 'qtugħ
@@ -164,3 +167,6 @@ acl_anyfile=Tista 'teditja kwalunkwe fajl bħala konfigurazzjoni PHP?
 acl_manual=Tista 'manwalment tibdel fajls ta' konfigurazzjoni?
 acl_inis=Fajls ta 'konfigurazzjoni addizzjonali <br>(Fil-isem<i> fili </i>=<i> deskrizzjoni </i> format)
 acl_user=Aqra u tikteb il-fajls bħala utent
+
+opt_default=Valur Default: <tt>$1</tt>
+opt_default_unknown=Mhux magħruf

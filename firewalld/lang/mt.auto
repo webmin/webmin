@@ -38,6 +38,13 @@ index_restart_firewalld=Reload FirewallD
 index_restart_firewallddesc=Reload the FirewallD server u applika r-regoli li nħolqu b'mod permanenti.
 index_listrules_restartdesc=Elenka d-dettalji dwar ir-regoli FirewallD sinjuri u diretti eżistenti fiż-żona $1.
 index_dependent=Naqas milli jerġa' jibda $1 servizz dipendenti
+index_manual=Editja Fajls tal-Konfigurazzjoni.
+
+manual_title=Editja Fajls tal-Konfigurazzjoni
+manual_editsel=Editja l-fajl tal-konfigurazzjoni FirewallD
+manual_err=Naqset milli tissejvja l-fajl tal-konfigurazzjoni
+manual_efile=Il-fajl tal-konfigurazzjoni magħżul mhuwiex validu
+manual_ok=Editja
 
 port_edit=Editja l-Port
 port_create=Żid Port

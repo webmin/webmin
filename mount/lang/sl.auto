@@ -12,6 +12,9 @@ index_return=seznam datotečnih sistemov
 index_none=Nimate dostopa do nobenih nameščenih datotečnih sistemov.
 index_mount2=Namestitev z geslom:
 index_root=Korenski datotečni sistem
+index_show1=Pokaži vse datotečne sisteme
+index_show0=Skrij datotečne sisteme, ki jih ni mogoče urejati
+index_addtype=vrste
 
 edit_title=Uredi Mount
 create_title=Ustvari Mount

@@ -143,6 +143,7 @@ usave_ecreate=Nu puteți crea utilizatori noi
 usave_ebadname=„$1” nu este un nume de utilizator valid
 usave_elength=Numele de utilizator nu poate fi mai lung decât $1 litere
 usave_ere=Numele de utilizator nu se potrivește cu regexp $1
+usave_eltgt=Numele de utilizator nu poate conține &lt; sau &gt; personaje
 usave_erename=Nu aveți voie să redenumiți utilizatorii
 usave_einuse=numele de utilizator „$1” este deja în uz
 usave_einuse_a=numele de utilizator „$1” este deja folosit de un alias prin poștă

@@ -39,6 +39,7 @@ dirs_header=PHP-skrip- en uitbreidingsgidsinstellings
 dirs_include=Soek kaarte vir insluit
 dirs_below=Hieronder gelys ..
 dirs_ext=Gids vir uitbreidings
+dirs_exts=Uitbreidings om te laai
 dirs_upload=Laat lêers opgelaai word?
 dirs_utmp=Tydelike gids vir opgelaaide lêers
 dirs_err=Die gidsinstellings kon nie gestoor word nie
@@ -90,12 +91,14 @@ limits_post=Maksimum HTTP POST-grootte
 limits_upload=Maksimum lêeroplaai-grootte
 limits_exec=Maksimum uitvoeringstyd
 limits_input=Maksimum inset-parsingstyd
+limits_vars=Maksimum insetveranderlike limiet
 limits_err=Kon nie hulpbronlimiete stoor nie
 limits_emem=Maksimum of geheue toekenning ontbreek of ongeldig
 limits_epost=Maksimum of ongeldige maksimum HTTP POST-grootte ontbreek
 limits_eupload=Maksimum of ongeldige maksimum lêeroplaaigrootte ontbreek
 limits_eexec=Maksimum uitvoeringstyd ontbreek of ongeldig
 limits_einput=Ontbrekende of ongeldige maksimum invoertyd vir insette
+limits_evars=Ontbrekende of ongeldige maksimum invoerveranderlike limiet
 
 errors_title=Kon nie aanmeld nie
 errors_header=Opsies en aanmeldopsies van foutboodskappe
@@ -164,3 +167,6 @@ acl_anyfile=Kan u enige lêer as 'n PHP-opstelling wysig?
 acl_manual=Kan u konfigurasielêers met die hand wysig?
 acl_inis=Bykomende konfigurasielêers <br>(in<i> lêernaam </i>=<i> beskrywing </i> formaat)
 acl_user=Lees en skryf lêers as gebruiker
+
+opt_default=Verstekwaarde: <tt>$1</tt>
+opt_default_unknown=Onbekend

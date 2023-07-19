@@ -82,7 +82,10 @@ left_filter=Φίλτρα ηλεκτρονικού ταχυδρομείου
 left_pass=Άλλαξε κωδικό
 left_sig=Επεξεργασία υπογραφής
 
+editor_heading=Επικεφαλίδα
+editor_paragraph=Παράγραφος
 editor_fontfamily_default=Προκαθορισμένο
+editor_fontfamily_monospace=Σταθερό πλάτος
 editor_font_small=Μικρό
 editor_font_normal=Κανονικός
 editor_font_medium=Μεσαίο

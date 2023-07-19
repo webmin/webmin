@@ -1,3 +1,7 @@
+index_show1=Mostrar todos os sistemas de arquivos
+index_show0=Ocultar sistemas de arquivos não editáveis
+index_addtype=do tipo
+
 edit_usage=Uso de disco
 edit_nfs_opt4=Opções específicas do NFSv4
 

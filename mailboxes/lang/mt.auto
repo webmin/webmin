@@ -451,7 +451,10 @@ left_filter=Email Filtri
 left_pass=Biddel il-password
 left_sig=Editja Firma
 
+editor_heading=Intestatura
+editor_paragraph=Paragrafu
 editor_fontfamily_default=Default
+editor_fontfamily_monospace=Wisa' Fiss
 editor_font_small=Żgħir
 editor_font_normal=Normali
 editor_font_medium=Medju

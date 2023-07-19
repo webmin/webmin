@@ -231,6 +231,7 @@ sync_auto=&lt;Automaattinen&gt;
 keys_title=Isäntä SSH-avaimet
 keys_desc=Tällä sivulla voit tarkastella tämän isännän SSH-avaimia.
 keys_none=SSK-kokoonpanostasi ei löytynyt HostKey-merkintöjä.
+keys_change=Muuttaa
 
 manual_title=Muokkaa asetustiedostoja
 manual_ecannot=SSH-palvelimen määritystiedostoa ei saa muokata

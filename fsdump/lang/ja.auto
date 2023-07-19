@@ -15,6 +15,7 @@ dump_gzip2=はい、bzip2を使用
 dump_gzip3=はい、XZを使用
 dump_update2=新しいファイルをアーカイブに追加するだけですか？
 dump_ignoreread=ファイルの読み取りエラーを無視しますか？
+dump_ignorechanged=ファイルが変更されてもエラーを無視しますか?
 dump_notape=必要に応じて新しいテープを要求しますか？
 dump_rmt=リモートシステム上の<tt>rmt</tt>へのパス
 dump_egzip3=gzip圧縮オプションは、新しいファイルをアーカイブに追加するだけのオプションと互換性がありません

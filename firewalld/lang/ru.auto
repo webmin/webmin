@@ -38,6 +38,13 @@ index_restart_firewalld=Перезагрузить брандмауэрD
 index_restart_firewallddesc=Перезагрузите сервер FirewallD и примените правила, которые были созданы навсегда.
 index_listrules_restartdesc=Список сведений о существующих полнофункциональных и прямых правилах FirewallD в зоне $1.
 index_dependent=Не удалось перезапустить зависимую службу $1
+index_manual=Редактировать файлы конфигурации.
+
+manual_title=Редактировать файлы конфигурации
+manual_editsel=Отредактируйте файл конфигурации FirewallD
+manual_err=Не удалось сохранить файл конфигурации
+manual_efile=Выбранный файл конфигурации недействителен
+manual_ok=Редактировать
 
 port_edit=Изменить порт
 port_create=Добавить порт

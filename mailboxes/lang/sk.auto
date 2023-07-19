@@ -451,7 +451,10 @@ left_filter=E-mailové filtre
 left_pass=Zmeniť heslo
 left_sig=Upraviť podpis
 
+editor_heading=Smerovanie
+editor_paragraph=Odsek
 editor_fontfamily_default=Predvolené
+editor_fontfamily_monospace=Pevná šírka
 editor_font_small=Malý
 editor_font_normal=Normálne
 editor_font_medium=Stredná

@@ -143,6 +143,7 @@ usave_ecreate=U kan nie nuwe gebruikers skep nie
 usave_ebadname='$1' is nie 'n geldige gebruikersnaam nie
 usave_elength=Gebruikernaam kan nie langer as $1 letters wees nie
 usave_ere=Gebruikernaam stem nie ooreen met regexp $1
+usave_eltgt=Gebruikersnaam kan nie &lt; of &gt; karakters
 usave_erename=U mag nie gebruikers hernoem nie
 usave_einuse=die gebruikersnaam '$1' is reeds in gebruik
 usave_einuse_a=die gebruikersnaam '$1' word reeds deur 'n e-posalias gebruik

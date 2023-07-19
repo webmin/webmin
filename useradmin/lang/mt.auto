@@ -143,6 +143,7 @@ usave_ecreate=Ma tistax toħloq utenti ġodda
 usave_ebadname="$1" mhux username validu
 usave_elength=L-isem tal-utent ma jistax ikun itwal minn ittri $1
 usave_ere=Username ma jaqbilx ma 'regexp $1
+usave_eltgt=L-isem tal-utent ma jistax ikun fih &lt; jew &gt; karattri
 usave_erename=M'għandekx permess tibdel l-utenti
 usave_einuse=l-username "$1" diġà qed jintuża
 usave_einuse_a=il-username "$1" diġà qed jintuża minn alias tal-posta

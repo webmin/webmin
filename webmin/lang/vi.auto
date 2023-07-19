@@ -200,8 +200,6 @@ mods_install=Cài đặt mô-đun
 mods_local=Từ tập tin cục bộ
 mods_uploaded=Từ tập tin tải lên
 mods_ftp=Từ URL HTTP hoặc FTP
-mods_standard=Mô-đun chuẩn từ <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=Mô-đun chuẩn
 mods_third=Mô-đun bên thứ ba từ
 mods_thsel=Lựa chọn ..
 mods_nodeps=Bỏ qua sự phụ thuộc?
@@ -325,6 +323,9 @@ lang_err=Không thể lưu ngôn ngữ
 lang_echarset=Bộ ký tự bị thiếu hoặc không hợp lệ
 lang_dateformat=Định dạng hiển thị ngày
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (tức là ngày 16/9/2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/yyyy (tức là ngày 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/yyyy (tức là ngày 16/09/2001)
+lang_dateformat_yyyy/mm/dd=yyyy/mm/dd (tức là 2001/09/16)
 
 ssl_title=Mã hóa SSL
 ssl_essl=Mô-đun Net::SSLeay perl dường như không được cài đặt trên hệ thống của bạn. Để cài đặt thư viện OpenSSL và Net::SSLeay, hãy làm theo <a href='$1'>các hướng dẫn này</a> từ trang web Webmin.
@@ -694,6 +695,7 @@ log_tinstall=Chủ đề đã cài đặt $1
 log_clone=Mô-đun được nhân bản $1 thành $2
 log_delete=Mô-đun đã xóa $1
 log_os=Thay đổi hệ điều hành
+log_fixrepo=Đã sửa lỗi kho lưu trữ Webmin
 log_lang=Thay đổi ngôn ngữ toàn cầu
 log_startpage=Tùy chọn trang chỉ mục đã thay đổi
 log_upgrade=Nâng cấp Webmin lên phiên bản $1
@@ -1010,6 +1012,9 @@ notify_updatedesc=Khắc phục sự cố
 notif_updateok=Cài đặt bản cập nhật ngay
 notif_reboot=Các bản cập nhật gói gần đây (như phiên bản kernel mới) yêu cầu khởi động lại để được áp dụng đầy đủ.
 notif_rebootok=Khởi động lại ngay
+notify_yumrepo=Hệ thống của bạn đang sử dụng kho lưu trữ Webmin YUM cũ. Nhấp vào nút bên dưới để chuyển sang URL kho lưu trữ mới <tt>$1</tt> để sử dụng khóa ký mới nhất của chúng tôi và đảm bảo quyền truy cập vào các phiên bản Webmin cập nhật.
+notify_aptrepo=Hệ thống của bạn đang sử dụng kho lưu trữ Webmin APT cũ. Nhấp vào nút bên dưới để chuyển sang URL kho lưu trữ <tt>stable</tt> mới <tt>$1</tt> nhằm sử dụng khóa ký mới nhất của chúng tôi và đảm bảo quyền truy cập vào các phiên bản Webmin cập nhật.
+notif_fixreponow=Cập nhật Kho lưu trữ Webmin
 
 status_title=Bộ sưu tập trạng thái nền
 status_header=Cài đặt công việc thu thập trạng thái

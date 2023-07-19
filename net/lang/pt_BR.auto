@@ -7,6 +7,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=janelas
+index_mode_nm=Gerente da rede
 
 ifcs_ip6=Endereço IPv6
 ifcs_badd=Adicione uma nova ponte.
@@ -57,5 +58,8 @@ routes_eclash6=Somente uma rota padrão para qualquer interface IPv6 pode ser de
 routes_def6=Rota IPv6 padrão
 
 hosts_active=Ativado?
+
+log_delete_aifcs=$1 interfaces desativadas
+log_delete_bifcs=$1 interfaces deletadas
 
 acl_sysinfo=Mostrar interfaces de rede disponíveis no painel

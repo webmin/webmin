@@ -116,9 +116,7 @@ config_ewebmin=Parametri del tipo 14 funzionano solo in Webmin
 
 help_err=Impossibile visualizzare l'aiuto
 help_epath=Percorso dell'errore mancante o non corretto
-help_efile=Impossibile leggere il file d'aiuto $1
 help_eheader=Sezione &lt;header&gt; mancante
-help_einclude=Impossibile includere $1
 help_eif=$1 non riuscito : $2
 help_eexec=$1 non riuscito : $2
 
@@ -383,5 +381,3 @@ langauto_include=Includi traduzioni automatiche
 file_truncated_message=recuperati $1 di dati, troncati $2 su $3 
 file_truncated_message_head=recuperati $1 dati iniziali, troncati $2 su $3 
 file_truncated_message_tail=recuperati $1 dati finali, $2 troncati su $3 
-
-__norefs=1

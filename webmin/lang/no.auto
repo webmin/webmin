@@ -18,6 +18,9 @@ lang_lang=Språk
 lang_locale=Språk
 lang_dateformat=Visningsformat for datoer
 lang_dateformat_dd/mon/yyyy=dd/man/åååå (dvs. 16/sep/2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/åååå (dvs. 16.09.2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/åååå (dvs. 16.09.2001)
+lang_dateformat_yyyy/mm/dd=åååå/mm/dd (dvs. 2001/09/16)
 
 ssl_hsts=Håndhev SSL med HSTS-header
 
@@ -39,9 +42,15 @@ session_passapi0=API deaktivert
 session_passapi1=API aktivert for Unix -brukere
 session_passurl=Når den er aktivert, kan brukerpassord endres via en POST -forespørsel til $1
 
+log_fixrepo=Fikset Webmin-depot
+
 advanced_etempallowed=Katalog for midlertidige filer $1 er en systemkatalog
 advanced_bufsize=Nettverksbufferstørrelse i byte
 advanced_ebufsize=Nettverksbufferstørrelse må være et tall som er større enn null
+
+notify_yumrepo=Systemet ditt bruker det gamle Webmin YUM-depotet. Klikk på knappen nedenfor for å bytte til den nye depot-URLen <tt>$1</tt> for å bruke vår siste signeringsnøkkel og sikre tilgang til oppdaterte Webmin-versjoner.
+notify_aptrepo=Systemet ditt bruker det gamle Webmin APT-lageret. Klikk på knappen nedenfor for å bytte til den nye <tt>stable</tt> depot-URLen <tt>$1</tt> for å bruke vår siste signeringsnøkkel og sikre tilgang til oppdaterte Webmin-versjoner.
+notif_fixreponow=Oppdater Webmin Repository
 
 status_err=Kunne ikke lagre samling av bakgrunnsstatus
 status_einterval=Samlingsintervallet må være et helt tall

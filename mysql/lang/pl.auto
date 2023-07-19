@@ -106,6 +106,7 @@ newdb_str=z polami poniżej
 
 exec_ecompress=Plik SQL jest skompresowany, ale program $1 potrzebny do rozpakowania go nie jest zainstalowany.
 exec_created=Utworzono $1 tabel.
+exec_collationdown=Sortowanie bazy danych zostało obniżone z <tt>$1</tt> do <tt>$2</tt>
 
 tprivs_drusure=Czy na pewno chcesz usunąć wybrane uprawnienia $1 do tabeli MySQL?
 
@@ -116,6 +117,8 @@ cprivs_drusure=Czy na pewno chcesz usunąć wybrane uprawnienia $1 do kolumny My
 eparse=Webmin nie może przeanalizować danych wyjściowych polecenia $1 ze względu na naturę danych w bazie danych. Aby rozwiązać ten problem, musisz zainstalować moduły Perl $2 i $3.
 edenied=Nie masz dostępu do tej bazy danych MySQL
 
+log_ssl=Zmieniony certyfikat SSL
+log_genssl=Wygenerowany certyfikat SSL
 log_manual=Ręcznie zmodyfikowany plik konfiguracyjny
 
 backup_prefix=Prefiks nazwy pliku
@@ -208,3 +211,18 @@ mysqlpass_esafe=Uruchamianie w trybie awaryjnym nie powiodło się : $1
 mysqlpass_estartup=Uruchomienie nie powiodło się : $1 
 mysqlpass_echange=Zmiana hasła nie powiodła się : $1 
 mysqlpass_echange_forcepass=Wymuś zastąpienie podanego hasła, jeśli zostanie zgubione lub zapomniane
+
+ssl_title=Certyfikat SSL
+ssl_header=Opcje SSL MySQL
+ssl_cert=Plik certyfikatu SSL
+ssl_key=Plik klucza SSL
+ssl_ca=Plik certyfikatu SSL CA
+ssl_req=Wymagać od klientów używania protokołu SSL?
+ssl_none=Brak zestawu
+ssl_gen=Wygeneruj certyfikat i klucz
+ssl_err=Nie udało się zapisać opcji SSL
+ssl_ecert=Brakujący lub nieistniejący plik certyfikatu SSL
+ssl_ekey=Brakujący lub nieistniejący plik klucza SSL
+ssl_eca=Brakujący lub nieistniejący plik SSL CA
+ssl_ecertexists=Plik certyfikatu SSL $1 już istnieje!
+ssl_ekeyexists=Plik klucza SSL $1 już istnieje!

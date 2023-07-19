@@ -38,6 +38,13 @@ index_restart_firewalld=טען מחדש את חומת האשD
 index_restart_firewallddesc=טען מחדש את שרת FirewallD והחל את הכללים שנוצרו לצמיתות.
 index_listrules_restartdesc=רשום פרטים על כללי FirewallD עשירים וישירים באזור $1.
 index_dependent=ההפעלה מחדש של השירות התלוי $1 נכשלה
+index_manual=ערוך קבצי תצורה.
+
+manual_title=ערוך קבצי תצורה
+manual_editsel=ערוך את קובץ התצורה של FirewallD
+manual_err=שמירת קובץ התצורה נכשלה
+manual_efile=קובץ התצורה שנבחר אינו חוקי
+manual_ok=לַעֲרוֹך
 
 port_edit=ערוך נמל
 port_create=הוסף נמל

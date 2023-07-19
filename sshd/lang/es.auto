@@ -28,6 +28,7 @@ sync_auto=&lt;Automático&gt;
 keys_title=Host SSH Keys
 keys_desc=Esta página le permite ver las claves SSH para este host.
 keys_none=No se encontraron entradas de HostKey en su configuración SSHD.
+keys_change=Cambiar
 
 manual_title=Editar archivos de configuración
 manual_ecannot=No tiene permiso para editar el archivo de configuración del servidor SSH

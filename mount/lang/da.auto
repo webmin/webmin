@@ -12,6 +12,9 @@ index_return=liste over filsystemer
 index_none=Du har ikke adgang til nogen monterede filsystemer.
 index_mount2=Monter med adgangskode:
 index_root=Root-filsystem
+index_show1=Vis alle filsystemer
+index_show0=Skjul ikke-redigerbare filsystemer
+index_addtype=af typen
 
 edit_title=Rediger montering
 create_title=Opret montering

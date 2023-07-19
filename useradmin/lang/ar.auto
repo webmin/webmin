@@ -142,6 +142,7 @@ usave_ecreate=لا يمكنك إنشاء مستخدمين جدد
 usave_ebadname='$1' is not a valid username
 usave_elength=Username cannot be longer than $1 letters
 usave_ere=Username does not match regexp $1
+usave_eltgt=اسم المستخدم لا يمكن أن يحتوي على العلامة & lt؛ أو & GT. الشخصيات
 usave_erename=غير مسموح لك بإعادة تسمية المستخدمين
 usave_einuse=the username '$1' is already in use
 usave_einuse_a=the username '$1' is already in use by a mail alias

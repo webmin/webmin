@@ -147,6 +147,8 @@ master_defttl=Timp de viață implicit pentru înregistrări
 master_edefttl=„$1” nu este o durată de viață implicită valabilă pentru înregistrări
 master_esoagone=Nu a fost găsită nicio înregistrare SOA!
 master_einclude=Fișierul șablon suplimentar nu există
+master_vmin=Această zonă este gestionată de Virtualmin. Înregistrările trebuie editate utilizând interfața de utilizare Virtualmin, pentru a se asigura că sunt în concordanță cu alte setări ale serverului virtual.
+master_vminalias=Această zonă este un alias al unui domeniu Virtualmin, care este menținut în sincronizare cu ținta sa. Înregistrările nu trebuie niciodată editate aici, deoarece orice modificări vor fi suprascrise!
 
 delete_title=Ștergeți Zona
 delete_mesg=Sigur doriți să ștergeți zona $1? Toate înregistrările și fișierul de zonă vor fi șterse.

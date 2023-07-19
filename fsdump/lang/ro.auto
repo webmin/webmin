@@ -95,6 +95,7 @@ dump_bcomp=Comprimarea bufferului de date în blocuri?
 dump_xdev=Limitați backup-ul la un sistem de fișiere?
 dump_update2=Doar adăugați fișiere noi în arhivă?
 dump_ignoreread=Ignorați erorile de citire în fișiere?
+dump_ignorechanged=Ignorați erorile dacă fișierele se modifică?
 dump_notape=Solicitați o bandă nouă dacă este nevoie?
 dump_rmt=Calea către <tt>rmt</tt> pe sistemul de la distanță
 dump_links=Urmați legături simbolice?

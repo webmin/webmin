@@ -190,8 +190,6 @@ mods_install=Installer Modul
 mods_local=Fra lokal fil
 mods_uploaded=Fra uploaded fil
 mods_ftp=Fra ftp eller http URL
-mods_standard=Standard modul fra <a href='$1'>www.webmin.com</a>
-mods_standard2=Standard modul
 mods_third=Tredje-parts modul fra
 mods_thsel=Velg..
 mods_nodeps=Ignorer modul avhengighet under installasjon

@@ -116,9 +116,9 @@ config_ewebmin=Il-parametru tat-tip 14 jaħdem biss fil-Webmin
 
 help_err=Ma rnexxielux juri l-għajnuna
 help_epath=Triq ta 'għajnuna nieqsa jew invalida
-help_efile=Ma rnexxiex naqra l-għajnuna tal-fajl $1
+help_efile3=Naqset milli taqra l-paġna ta' għajnuna $1 mill-modulu $2 
 help_eheader=Nieqes it-taqsima &lt;intestatura&gt;
-help_einclude=Naqas milli jinkludi $1
+help_einclude3=Naqset milli tinkludi l-paġna ta' għajnuna $1 
 help_eif=$1 falla : $2
 help_eexec=$1 falla : $2
 
@@ -306,6 +306,7 @@ ui_etime=Żmien mhux validu
 ui_paging=Li juru r-ringieli $1 għal $2 ta '$3
 ui_rowlabel=$2 fir-ringiela $1 :
 ui_filterbox=Tip biex tiffiltra ..
+ui_of=ta
 
 header_statusmsg=$1 dħalt $2 $3 fuq $4 ($5)
 
@@ -356,6 +357,7 @@ sql_eldaplogin=Naqset milli tidħol fis-server LDAP bħala $1 : $2
 
 log_email_subject=Azzjoni tal-Webmin f '$1
 log_email_global=Azzjoni globali tal-Webmin
+log_email_by=$1 minn $2
 log_email_desc=Dan l-email intbagħat minn Webmin bi tweġiba għal azzjoni tal-utent.
 log_email_mod=Modulu Webmin: $1
 log_email_moddesc=Titolu tal-modulu: $1
@@ -378,8 +380,14 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bytes
 
+paginator_showing_start=Juri minn $1 sa $2 minn $3 oġġetti fil-paġna
+paginator_showing_end=ta' $1 paġni
+paginator_nosearchrs=M'hemm l-ebda riżultat li jaqbel mal-mistoqsija <tt>$1</tt>
+
 langauto_include=Inkludi traduzzjonijiet bil-magni
 
 file_truncated_message=ġab $1 ta 'dejta, maqtugħ $2 minn $3 
 file_truncated_message_head=ġab il-bidu ta ' $1 ta' dejta, maqtugħ $2 minn $3 
 file_truncated_message_tail=ġab it-tmiem $1 ta 'dejta, maqtugħ $2 minn $3 
+
+defcert_error=Qed jintuża ċertifikat SSL magħqud ta' default $1. Huwa rakkomandat ħafna li taġġorna ċ-ċertifikat default <tt>$2</tt> qabel ma tipproċedi bil-login.

@@ -14,6 +14,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=finestre
+index_mode_nm=Responsabile del network
 
 ifcs_activedesc=Le interfacce elencate in questa tabella sono attualmente attive sul sistema. Nella maggior parte dei casi, è necessario modificarli nella scheda <b>Attivato all'avvio</b>.
 ifcs_bootdesc=Le interfacce elencate in questa tabella verranno attivate all'avvio del sistema e ora saranno generalmente attive anche.
@@ -152,6 +153,8 @@ log_apply_bfics=Interfacce di avvio $1 attivate
 log_create_route=Percorso attivo creato per $1 
 log_create_defroute=Percorso predefinito attivo creato
 log_delete_routes=$1 percorsi attivi eliminati
+log_delete_aifcs=Interfacce $1 disattivate
+log_delete_bifcs=Interfacce $1 eliminate
 
 acl_ifcs_ex=Interfacce tranne
 acl_apply=È possibile applicare la configurazione?

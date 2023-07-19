@@ -38,6 +38,13 @@ index_restart_firewalld=Презаредете FirewallD
 index_restart_firewallddesc=Презаредете сървъра на FirewallD и приложете правилата, които са били създадени за постоянно.
 index_listrules_restartdesc=Избройте подробности за съществуващите богати и директни правила на FirewallD в зона $1.
 index_dependent=Неуспешно рестартиране на $1 зависима услуга
+index_manual=Редактиране на конфигурационни файлове.
+
+manual_title=Редактиране на конфигурационни файлове
+manual_editsel=Редактирайте конфигурационния файл на FirewallD
+manual_err=Неуспешно запазване на конфигурационния файл
+manual_efile=Избраният конфигурационен файл не е валиден
+manual_ok=редактиране
 
 port_edit=Редактиране на порт
 port_create=Добавяне на порт

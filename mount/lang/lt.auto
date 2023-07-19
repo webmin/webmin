@@ -12,6 +12,9 @@ index_return=failų sistemų sąrašas
 index_none=Jūs neturite prieigos prie jokių sujungtų failų sistemų.
 index_mount2=Mount su slaptažodžiu:
 index_root=Šakninė failų sistema
+index_show1=Rodyti visas failų sistemas
+index_show0=Slėpti neredaguojamas failų sistemas
+index_addtype=tipo
 
 edit_title=Redaguoti kalną
 create_title=Sukurti kalną

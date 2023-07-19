@@ -2,6 +2,9 @@ index_used=Használt
 index_none=Nincs hozzáférése egyetlen csatolt fájlrendszerhez sem.
 index_mount2=Szerelés jelszóval:
 index_root=Gyökér fájlrendszer
+index_show1=Az összes fájlrendszer megjelenítése
+index_show0=A nem szerkeszthető fájlrendszerek elrejtése
+index_addtype=típusú
 
 edit_usage=Lemez használat
 edit_comm_opt=Általános szerelési lehetőségek

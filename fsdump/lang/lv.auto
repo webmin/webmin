@@ -95,6 +95,7 @@ dump_bcomp=Buferis saspiests datus blokos?
 dump_xdev=Ierobežot dublējumu tikai vienai failu sistēmai?
 dump_update2=Vai tikai pievienot jaunus failus arhīvā?
 dump_ignoreread=Vai ignorēt failu lasīšanas kļūdas?
+dump_ignorechanged=Vai ignorēt kļūdas, ja faili mainās?
 dump_notape=Ja nepieciešams, vaicājiet jaunu lenti?
 dump_rmt=Ceļš uz <tt>rmt</tt> attālajā sistēmā
 dump_links=Vai sekojat simboliskajām saitēm?

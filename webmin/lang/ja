@@ -196,8 +196,6 @@ mods_install=モジュールのインストール
 mods_local=ローカル ファイルから
 mods_uploaded=ファイルをアップロード
 mods_ftp=HTTP または FTP URL から
-mods_standard=Webmin の標準モジュール(<a href='$1' rel="noopener noreferrer" target="_blank">参照</a>)
-mods_standard2=標準モジュール
 mods_third=サードパーティ製モジュール
 mods_thsel=選択…
 mods_nodeps=インストール時にモジュールの依存関係を無視

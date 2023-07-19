@@ -451,7 +451,10 @@ left_filter=מסנני דוא"ל
 left_pass=שנה סיסמא
 left_sig=ערוך חתימה
 
+editor_heading=כּוֹתֶרֶת
+editor_paragraph=פסקה
 editor_fontfamily_default=בְּרִירַת מֶחדָל
+editor_fontfamily_monospace=רוחב קבוע
 editor_font_small=קָטָן
 editor_font_normal=נוֹרמָלִי
 editor_font_medium=בינוני

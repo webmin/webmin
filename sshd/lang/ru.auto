@@ -41,6 +41,7 @@ sync_auto=&lt;Автоматический&gt;
 keys_title=Host SSH Keys
 keys_desc=На этой странице вы можете просмотреть ключи SSH для этого хоста.
 keys_none=Не удалось найти записи HostKey в вашей конфигурации SSHD.
+keys_change=Изменять
 
 manual_title=Редактировать файлы конфигурации
 manual_ecannot=Вы не можете редактировать файл конфигурации сервера SSH

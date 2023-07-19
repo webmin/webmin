@@ -143,6 +143,7 @@ usave_ecreate=Jūs nevarat izveidot jaunus lietotājus
 usave_ebadname='$1' nav derīgs lietotājvārds
 usave_elength=Lietotājvārds nedrīkst būt garāks par $1 burtiem
 usave_ere=Lietotājvārds neatbilst regexp $1
+usave_eltgt=Lietotājvārds nedrīkst saturēt &lt; vai &gt; rakstzīmes
 usave_erename=Jums nav atļauts pārdēvēt lietotājus
 usave_einuse=lietotājvārds '$1' jau tiek izmantots
 usave_einuse_a=lietotājvārdu '$1' jau izmanto pasta aizstājvārds

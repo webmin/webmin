@@ -4,6 +4,13 @@ longcategory_=Moduler, der udfører andre diverse opgaver
 
 config_emodule=Modulet findes ikke
 
+help_efile3=Kunne ikke læse hjælpesiden $1 fra modulet $2
+help_einclude3=Kunne ikke inkludere hjælpeside $1
+
+ui_of=af
+
+log_email_by=$1 til $2
+
 nice_size_PB=PB
 nice_size_PiB=PIB
 nice_size_TB=TB
@@ -16,8 +23,14 @@ nice_size_kB=kB
 nice_size_kiB=KIB
 nice_size_b=bytes
 
+paginator_showing_start=Viser $1 til $2 af $3 elementer på siden
+paginator_showing_end=af $1 sider
+paginator_nosearchrs=Der er ingen resultater, der matcher <tt>$1</tt> forespørgslen
+
 langauto_include=Inkluder maskinoversættelser
 
 file_truncated_message=hentede $1 af data, afkortet $2 ud af $3 
 file_truncated_message_head=hentet start $1 af data, afkortet $2 ud af $3 
 file_truncated_message_tail=hentet slutning $1 af data, afkortet $2 ud af $3 
+
+defcert_error=Standard $1 bundtet SSL-certifikat bruges. Det anbefales stærkt at opdatere standard <tt>$2</tt> certifikat, før du fortsætter med login.

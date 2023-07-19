@@ -32,6 +32,9 @@ modules_clear=پاک کردن
 
 config_emodule=ماژول وجود ندارد
 
+help_efile3=خواندن صفحه راهنمای $1 از ماژول $2 انجام نشد
+help_einclude3=شامل صفحه راهنما $1 نشد
+
 referer_fix1=If this is a legitimate link, you can allow links from this URL as follows :<ul><li>Login to Webmin normally.</li><li>Go to the <b>Webmin Configuration</b> module.</li><li>Click on the Trusted Referrers icon.</li><li>Enter the hostname $1 into the <b>Trusted websites</b> field, and click <b>Save.</b></li></ul>
 referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.</li><li>Save the file.</li></ul>
 referer_fix3u=اطمینان حاصل کنید که مرورگر شما برای ارسال اطلاعات ارجاع پیکربندی شده است تا بتواند توسط Webmin تأیید شود.
@@ -62,6 +65,7 @@ password_temp=برای جایگزینی ورود موقت خود باید یک �
 password_enewpass=New password is not allowed : $1
 
 ui_filterbox=برای فیلتر کردن تایپ کنید ..
+ui_of=از
 
 uptracker_title=بارگذاری پرونده
 uptracker_file=نام فایل
@@ -110,6 +114,7 @@ sql_eldaplogin=Failed to login to LDAP server as $1 : $2
 
 log_email_subject=Webmin action in $1
 log_email_global=اقدام جهانی وبمین
+log_email_by=$1 در $2 
 log_email_desc=این ایمیل در پاسخ به عملکرد کاربر توسط Webmin ارسال شد.
 log_email_mod=Webmin module: $1
 log_email_moddesc=Module title: $1
@@ -132,8 +137,14 @@ nice_size_kB=کیلوبایت
 nice_size_kiB=کیوب
 nice_size_b=بایت
 
+paginator_showing_start=نمایش $1 تا $2 از $3 مورد در صفحه
+paginator_showing_end=از $1 صفحه
+paginator_nosearchrs=هیچ نتیجه ای مطابق با پرس و جو <tt>$1</tt> وجود ندارد
+
 langauto_include=ترجمه های ماشینی را درج کنید
 
 file_truncated_message=$1 داده را واکشی کرد ،$2 از$3 کوتاه شد
 file_truncated_message_head=شروع$1 داده ها ،$2 از$3 کوتاه شده است
 file_truncated_message_tail=واکشی شده$1 داده پایان یافته ،$2 از$3 کوتاه شده
+
+defcert_error=Ú¯ÙØ§ÙÛ SSL ÙÙØ±Ø§Ù Ù¾ÛØ´‌ÙØ±Ø¶ $1 Ø¯Ø± Ø­Ø§Ù Ø§Ø³ØªÙØ§Ø¯Ù Ø§Ø³Øª. Ø¨Ù‌Ø´Ø¯Øª ØªÙØµÛÙ ÙÛ‌Ø´ÙØ¯ ÙØ¨Ù Ø§Ø² ÙØ±ÙØ¯ Ø¨Ù Ø³ÛØ³ØªÙØ Ú¯ÙØ§ÙÛ Ù¾ÛØ´‌ÙØ±Ø¶ <tt>$2</tt> Ø±Ø§ Ø¨Ù‌Ø±ÙØ²Ø±Ø³Ø§ÙÛ Ú©ÙÛØ¯.

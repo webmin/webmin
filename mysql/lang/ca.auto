@@ -8,7 +8,12 @@ view_go=Va
 
 user_locked=Bloquejat
 
+exec_collationdown=La classificació de la base de dades es va rebaixar d' <tt>$1</tt> a <tt>$2</tt>
+
 tprivs_drusure=Esteu segur que voleu suprimir els permisos de la taula MySQL seleccionats $1 ?
+
+log_ssl=S'ha canviat el certificat SSL
+log_genssl=Certificat SSL generat
 
 backup_parameters=Vols afegir paràmetres personalitzats a l'ordre de còpia de seguretat?
 
@@ -23,3 +28,18 @@ mysqlpass_esafe=Ha fallat l'inici en mode segur : $1
 mysqlpass_estartup=Ha fallat l'inici : $1 
 mysqlpass_echange=Ha fallat el canvi de contrasenya : $1 
 mysqlpass_echange_forcepass=Força la substitució de la contrasenya donada, si es perd o s’oblida
+
+ssl_title=Certificat SSL
+ssl_header=Opcions SSL de MySQL
+ssl_cert=Fitxer de certificat SSL
+ssl_key=Fitxer de clau SSL
+ssl_ca=Fitxer de certificat SSL CA
+ssl_req=Voleu que els clients utilitzin SSL?
+ssl_none=Cap establert
+ssl_gen=Generar certificat i clau
+ssl_err=No s'han pogut desar les opcions SSL
+ssl_ecert=Falta el fitxer de certificació SSL o no existeix
+ssl_ekey=Falta el fitxer de clau SSL o no existeix
+ssl_eca=Falta un fitxer SSL CA o inexistent
+ssl_ecertexists=El fitxer de certificat SSL $1 ja existeix!
+ssl_ekeyexists=El fitxer de clau SSL $1 ja existeix!

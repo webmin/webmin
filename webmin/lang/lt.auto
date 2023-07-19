@@ -200,8 +200,6 @@ mods_install=Įdiekite modulį
 mods_local=Iš vietinės bylos
 mods_uploaded=Iš įkelto failo
 mods_ftp=Iš HTTP arba FTP URL
-mods_standard=Standartinis modulis iš <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=Standartinis modulis
 mods_third=Trečiosios šalies modulis nuo
 mods_thsel=Pasirinkite ..
 mods_nodeps=Ignoruoti priklausomybes?
@@ -325,6 +323,9 @@ lang_err=Nepavyko išsaugoti kalbos
 lang_echarset=Trūksta arba netinkamai atrodo simbolių rinkinys
 lang_dateformat=Datų rodymo formatas
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (t. y. 2001 m. rugsėjo 16 d.)
+lang_dateformat_dd/mm/yyyy=dd/mm/yyyy (t. y. 2001-09-16)
+lang_dateformat_mm/dd/yyyy=mm/dd/yyyy (t. y. 2001-09-16)
+lang_dateformat_yyyy/mm/dd=yyyy/mm/dd (t. y. 2001-09-16)
 
 ssl_title=SSL šifravimas
 ssl_essl=Panašu, kad „Net::SSLeay perl“ modulis nėra įdiegtas jūsų sistemoje. Norėdami įdiegti „OpenSSL“ biblioteką ir „Net::SSLeay“, vykdykite <a href='$1'>šias instrukcijas</a> iš „Webmin“ svetainės.
@@ -694,6 +695,7 @@ log_tinstall=Įdiegta tema $1
 log_clone=Klonuotas modulis $1 į $2
 log_delete=Ištrintas modulis $1
 log_os=Pakeista operacinė sistema
+log_fixrepo=Pataisyta Webmin saugykla
 log_lang=Pasikeitė pasaulinė kalba
 log_startpage=Pakeistos rodyklės puslapio parinktys
 log_upgrade=Atnaujinta „Webmin“ versija iki $1
@@ -1010,6 +1012,9 @@ notify_updatedesc=Ištaiso problemą
 notif_updateok=Įdiekite naujinius dabar
 notif_reboot=Naujausiems paketo atnaujinimams (pvz., Naujai branduolio versijai) reikalingas perkrovimas, kad jis būtų visiškai pritaikytas.
 notif_rebootok=Perkrauti dabar
+notify_yumrepo=Jūsų sistema naudoja seną Webmin YUM saugyklą. Spustelėkite toliau esantį mygtuką, kad persijungtumėte į naują saugyklos URL <tt>$1</tt>, kad galėtumėte naudoti naujausią pasirašymo raktą ir užtikrinti prieigą prie atnaujintų Webmin versijų.
+notify_aptrepo=Jūsų sistema naudoja seną Webmin APT saugyklą. Spustelėkite toliau esantį mygtuką, kad perjungtumėte į naują <tt>stable</tt> saugyklos URL <tt>$1</tt>, kad galėtumėte naudoti naujausią pasirašymo raktą ir užtikrinti prieigą prie atnaujintų Webmin versijų.
+notif_fixreponow=Atnaujinkite Webmin saugyklą
 
 status_title=Fono būsenos kolekcija
 status_header=Būsenos rinkimo užduoties nustatymai

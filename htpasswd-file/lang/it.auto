@@ -1,0 +1,54 @@
+index_title=Gestisci il file HTPasswd
+index_econfig=Questo modulo non può essere utilizzato finché non è stato impostato un file di password nella pagina di <a href='$1'>configurazione del modulo</a>.
+index_emd5=Questo modulo è stato <a href='$1'>configurato</a> per utilizzare la crittografia MD5 per le password, ma il modulo $2 Perl non è installato. <a href='$3'>Fai clic qui</a> per scaricare e installare il modulo $2.
+index_header=Utenti del file di password
+index_none=Non esistono utenti nel file di password configurato.
+index_add=Aggiungi un nuovo utente al file delle password.
+index_file=Utenti nel file di password $1
+index_sync=Sincronizzazione utenti Unix
+index_return=lista degli utenti
+index_eversion=Questo modulo è stato <a href='$1'>configurato</a> per utilizzare la crittografia MD5 per le password, ma la versione del modulo Utenti e gruppi installata sul tuo sistema non include le funzioni MD5 necessarie. Aggiorna alla versione 1.114 o successiva.
+index_synccreate=Aggiungere un utente quando viene creato un utente Unix?
+index_syncmodify=Rinominare o modificare la password di un utente quando viene modificato l'utente Unix corrispondente?
+index_syncdelete=Eliminare un utente quando viene eliminato l'utente Unix corrispondente?
+index_ssave=Salva e applica
+
+edit_title1=Creare un utente
+edit_title2=Modifica utente
+edit_header=Dettagli dell'utente del file di password
+edit_user=Nome utente
+edit_enabled=Abilitato?
+edit_pass=Parola d'ordine
+edit_pass1=Lascia invariato
+edit_pass0=Impostato
+edit_passfrom=Cambiare da
+edit_passto=alla nuova password
+edit_single=Utente da cambiare
+edit_return=modulo cambio password
+
+save_err=Impossibile salvare l'utente
+save_euser1=Nome utente mancante
+save_euser2=Il nome utente non può contenere il carattere :
+save_epass=La password non può contenere il carattere :
+save_eclash=Esiste già un utente con lo stesso nome
+save_eoldpass=La vecchia password non è corretta
+save_ecreate=Non sei autorizzato a creare utenti
+save_edelete=Non sei autorizzato a eliminare utenti
+save_euser=l'utente non esiste
+save_title=Utente salvato
+save_done=L'utente $1 è stato aggiornato.
+
+acl_repeat=Devi inserire la vecchia password quando la cambi?
+acl_create=Può creare nuovi utenti?
+acl_rename=Può rinominare gli utenti?
+acl_delete=Può eliminare gli utenti?
+acl_sync=Può configurare la sincronizzazione?
+acl_enable=Può abilitare e disabilitare gli utenti?
+acl_single=Salta l'elenco degli utenti e vai direttamente al modulo di modifica della password?
+
+sync_ecannot=Non sei autorizzato a configurare la sincronizzazione
+
+log_sync=Opzioni di sincronizzazione modificate
+log_create=Utente creato $1
+log_delete=Utente eliminato $1
+log_modify=Utente modificato $1

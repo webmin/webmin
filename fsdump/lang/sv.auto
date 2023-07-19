@@ -95,6 +95,7 @@ dump_bcomp=Buffertkomprimerad data till block?
 dump_xdev=Begränsa säkerhetskopiering till ett filsystem?
 dump_update2=Lägg bara till nya filer i arkivet?
 dump_ignoreread=Ignorerar läsfel i filer?
+dump_ignorechanged=Ignorera fel om filer ändras?
 dump_notape=Fråga efter nytt band om det behövs?
 dump_rmt=Sökväg till <tt>rmt</tt> på fjärrsystem
 dump_links=Följ symboliska länkar?

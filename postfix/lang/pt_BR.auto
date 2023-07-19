@@ -106,6 +106,8 @@ opts_notify_classes_sel=Selecionado abaixo
 
 opts_edir=Você só pode especificar arquivos de mapa em $1
 
+opts_resolve_dequoted_address=Impedir o uso de @ em nomes de caixa de correio?
+
 opts_mailbox_size_limit=Tamanho máximo de uma caixa de correio
 
 opts_mynetworks_style=Redes locais automáticas
@@ -116,6 +118,7 @@ opts_delay_warning_time_default2=Padrão do Postfix
 opts_content_filter_default=Nenhum
 
 opts_relay_recipient_maps=Mapa para endereços permitidos para retransmissão
+opts_smtpd_discard_ehlo_keywords=Palavras-chave SMTP EHLO para não enviar
 smtpd_nomap=Nenhum mapa para endereços permitidos para retransmissão foi inserido ainda.
 smtpd_nomap2=Nenhum mapa para restrições nos endereços de remetente foi inserido ainda.
 smtpd_map=Endereços permitidos para retransmissão
@@ -213,6 +216,10 @@ header_title=Verificações de cabeçalho
 header_ecannot=Você não tem permissão para editar verificações de cabeçalho
 header_eregexp=O mapa de verificação de cabeçalho deve estar no formato <tt>regexp:</tt> <i>nome do arquivo</i>
 opts_header_checks=Tabelas de Verificação de Cabeçalho MIME
+opts_mime_header_checks=Tabelas de verificação de cabeçalho MIME
+opts_header_checks_no_map=(Nenhum mapa de verificação de cabeçalho está definido atualmente. Defina um mapa primeiro, então você pode editá-lo)
+
+opts_mime_header_checks_no_map=(Nenhum mapa de verificação de cabeçalho MIME está definido atualmente. Defina um mapa primeiro, então você pode editá-lo)
 header_name=Expressão regular
 header_value=Ação para correspondências
 header_discard=Descartar (com mensagem de log..)

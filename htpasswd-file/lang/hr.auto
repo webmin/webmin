@@ -1,0 +1,54 @@
+index_title=Upravljanje HTPasswd datotekom
+index_econfig=Ovaj se modul ne može koristiti dok se datoteka zaporke ne postavi na stranici <a href='$1'>konfiguracije modula</a>.
+index_emd5=Ovaj modul je <a href='$1'>konfiguriran</a> za korištenje MD5 enkripcije za lozinke, ali $2 Perl modul nije instaliran. <a href='$3'>Kliknite ovdje</a> za preuzimanje i instaliranje modula $2.
+index_header=Korisnici datoteke s lozinkama
+index_none=Nema korisnika u konfiguriranoj datoteci zaporke.
+index_add=Dodajte novog korisnika u datoteku zaporke.
+index_file=Korisnici u datoteci zaporke $1
+index_sync=Unix korisnička sinkronizacija
+index_return=popis korisnika
+index_eversion=Ovaj modul je <a href='$1'>konfiguriran</a> za korištenje MD5 enkripcije za lozinke, ali verzija modula Korisnici i grupe instalirana na vašem sustavu ne uključuje potrebne MD5 funkcije. Nadogradite na verziju 1.114 ili noviju.
+index_synccreate=Dodati korisnika kada se kreira Unix korisnik?
+index_syncmodify=Preimenovati ili promijeniti lozinku korisnika kada se modificira odgovarajući Unix korisnik?
+index_syncdelete=Izbrisati korisnika kada se izbriše odgovarajući Unix korisnik?
+index_ssave=Spremi i primijeni
+
+edit_title1=Stvori korisnika
+edit_title2=Uredi korisnika
+edit_header=Podaci o korisniku datoteke zaporke
+edit_user=Korisničko ime
+edit_enabled=Omogućeno?
+edit_pass=Lozinka
+edit_pass1=Ostavite nepromijenjeno
+edit_pass0=Postavljen
+edit_passfrom=Promjena od
+edit_passto=na novu lozinku
+edit_single=Korisnik za promjenu
+edit_return=obrazac za promjenu lozinke
+
+save_err=Spremanje korisnika nije uspjelo
+save_euser1=Nedostaje korisničko ime
+save_euser2=Korisničko ime ne može sadržavati znak :
+save_epass=Lozinka ne može sadržavati znak :
+save_eclash=Korisnik s istim imenom već postoji
+save_eoldpass=Stara lozinka nije ispravna
+save_ecreate=Nije vam dopušteno kreirati korisnike
+save_edelete=Nemate dopuštenje za brisanje korisnika
+save_euser=korisnik ne postoji
+save_title=Korisnik spremljen
+save_done=Korisnik $1 je ažuriran.
+
+acl_repeat=Morate li unijeti staru lozinku prilikom promjene?
+acl_create=Mogu li kreirati nove korisnike?
+acl_rename=Mogu li preimenovati korisnike?
+acl_delete=Mogu li brisati korisnike?
+acl_sync=Može li se konfigurirati sinkronizacija?
+acl_enable=Mogu li omogućiti i onemogućiti korisnike?
+acl_single=Preskočiti popis korisnika i otići izravno na obrazac za promjenu lozinke?
+
+sync_ecannot=Nije vam dopušteno konfigurirati sinkronizaciju
+
+log_sync=Promijenjene mogućnosti sinkronizacije
+log_create=Stvoren korisnik $1
+log_delete=Izbrisan korisnik $1
+log_modify=Izmijenjeni korisnik $1

@@ -147,6 +147,8 @@ master_defttl=Numatytasis įrašų gyvavimo laikas
 master_edefttl=„$1“ nėra tinkamas numatytasis įrašų gyvavimo laikas
 master_esoagone=Nerastas SOA įrašas.
 master_einclude=Papildomo šablono failo nėra
+master_vmin=Šią zoną valdo „Virtualmin“. Įrašai turi būti redaguojami naudojant „Virtualmin“ vartotojo sąsają, siekiant užtikrinti, kad jie atitiktų kitus virtualaus serverio nustatymus.
+master_vminalias=Ši zona yra „Virtualmin“ domeno slapyvardis, kuris yra sinchronizuojamas su savo taikiniu. Įrašai čia niekada neturėtų būti redaguojami, nes bet kokie pakeitimai bus perrašyti!
 
 delete_title=Ištrinti zoną
 delete_mesg=Ar tikrai norite ištrinti $1 zoną? Visi įrašai ir zonos failai bus ištrinti.

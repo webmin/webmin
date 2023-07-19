@@ -231,6 +231,7 @@ sync_auto=&lt;Avtomatsko&gt;
 keys_title=Ključi SSH gostitelja
 keys_desc=Ta stran vam omogoča ogled ključev SSH za ta gostitelj.
 keys_none=V konfiguraciji SSHD ni bilo mogoče najti nobenih vnosov HostKey.
+keys_change=spremeniti
 
 manual_title=Uredi konfiguriranje datotek
 manual_ecannot=Nimate dovoljenja za urejanje konfiguracijske datoteke strežnika SSH

@@ -95,6 +95,7 @@ dump_bcomp=Bộ đệm nén dữ liệu thành khối?
 dump_xdev=Giới hạn sao lưu vào một hệ thống tập tin?
 dump_update2=Chỉ cần thêm tập tin mới để lưu trữ?
 dump_ignoreread=Bỏ qua lỗi đọc trên tập tin?
+dump_ignorechanged=Bỏ qua lỗi nếu tệp thay đổi?
 dump_notape=Nhắc cho băng mới nếu cần?
 dump_rmt=Đường dẫn đến <tt>rmt</tt> trên hệ thống từ xa
 dump_links=Theo liên kết tượng trưng?

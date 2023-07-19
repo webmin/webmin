@@ -225,6 +225,7 @@ exec_iheader=Alternativ för textfilimport
 exec_created=$1 tabeller skapades.
 exec_inserted=$1 poster infördes.
 exec_cs=Teckenuppsättning för data
+exec_collationdown=Databassamling har nedgraderats från <tt>$1</tt> till <tt>$2</tt>
 
 tprivs_derr=Det gick inte att ta bort tabellbehörigheter
 tprivs_enone=Inga tabeller valda
@@ -256,6 +257,8 @@ acl_views=Kan visa och hantera vyer?
 acl_files=Kan köras SQL från lokala filer?
 
 log_cnf=Ändrad MySQL-serverkonfiguration
+log_ssl=Ändrade SSL-certifikat
+log_genssl=Genererat SSL-certifikat
 log_kill=Dödade $1 -databasanslutningar
 log_vars=Modifierade $1 systemvariabler
 log_dbs_delete=Tappade $1 -databaser
@@ -537,3 +540,18 @@ mysqlpass_esafe=Starten i säkert läge misslyckades : $1
 mysqlpass_estartup=Starten misslyckades : $1 
 mysqlpass_echange=Lösenordsbyte misslyckades : $1 
 mysqlpass_echange_forcepass=Tvinga åsidosätta det angivna lösenordet, om det går förlorat eller glömts bort
+
+ssl_title=SSL-certifikat
+ssl_header=MySQL SSL-alternativ
+ssl_cert=SSL-certifikatfil
+ssl_key=SSL-nyckelfil
+ssl_ca=SSL CA-certifikatfil
+ssl_req=Kräver att klienter använder SSL?
+ssl_none=Ingen inställd
+ssl_gen=Generera certifikat och nyckel
+ssl_err=Det gick inte att spara SSL-alternativ
+ssl_ecert=Saknade eller obefintliga SSL-certifieringsfil
+ssl_ekey=Saknade eller obefintliga SSL-nyckelfil
+ssl_eca=Saknade eller obefintliga SSL CA-fil
+ssl_ecertexists=SSL-certifikatfil $1 finns redan!
+ssl_ekeyexists=SSL-nyckelfilen $1 finns redan!

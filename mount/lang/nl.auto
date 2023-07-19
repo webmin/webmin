@@ -1,3 +1,7 @@
+index_show1=Toon alle bestandssystemen
+index_show0=Verberg niet-bewerkbare bestandssystemen
+index_addtype=van type
+
 smb_eworkgroup=Geen werkgroep ingesteld op de pagina Moduleconfiguratie
 smb_emaster=Er is geen bladermaster gevonden voor werkgroep $1
 

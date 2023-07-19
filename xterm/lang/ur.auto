@@ -4,6 +4,7 @@ index_epel=It is recommended to have <a href='$1' target='_blank'>EPEL</a> repos
 index_suse=The Perl package <tt>perl-IO-Tty</tt> is missing, and should be manually installed first from <a href='$2' target='_blank'>devel:languages:perl</a> repository.
 index_euser=خرابی: صارف $1 شیل کو نہیں چلا سکتا کیونکہ یہ موجود نہیں ہے!
 index_connecting=جڑ رہا ہے ..
+index_missing=The Perl module <tt>$1</tt> is missing. You need to contact your administrator to resolve this issue.
 
 acl_user=شیل کو یونکس صارف کے طور پر چلائیں۔
 acl_sameuser=Webmin لاگ ان کی طرح

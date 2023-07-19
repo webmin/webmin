@@ -71,6 +71,8 @@ opts_notify_classes_sel=Wybrane poniżej
 
 opts_edir=Możesz określić pliki map tylko w $1
 
+opts_resolve_dequoted_address=Zapobiec użyciu @ w nazwach skrzynek pocztowych?
+
 opts_mailbox_size_limit=Maksymalny rozmiar skrzynki pocztowej
 
 opts_mynetworks_subnet=Ta sama podsieć IP
@@ -78,6 +80,7 @@ opts_mynetworks_class=Ta sama klasa sieci
 opts_mynetworks_host=Tylko komputer lokalny
 
 opts_relay_recipient_maps=Mapa dozwolonych adresów do przekazywania
+opts_smtpd_discard_ehlo_keywords=Słowa kluczowe SMTP EHLO, których nie należy wysyłać
 smtpd_nomap=Nie wprowadzono jeszcze mapy dozwolonych adresów do przekazywania.
 smtpd_nomap2=Nie wprowadzono jeszcze mapy ograniczeń adresów nadawców.
 smtpd_map=Dozwolone adresy do przekazywania
@@ -300,6 +303,10 @@ searchq_none=Nie znaleziono wiadomości w kolejce.
 header_ecannot=Nie możesz edytować kontroli nagłówków
 header_eregexp=Mapa kontroli nagłówków musi mieć format <tt>regexp:</tt> <i>nazwa_pliku</i>
 opts_header_checks=Tabele sprawdzania nagłówków MIME
+opts_mime_header_checks=Tabele sprawdzania nagłówków MIME
+opts_header_checks_no_map=(Obecnie nie zdefiniowano mapy sprawdzania nagłówka. Najpierw zdefiniuj mapę, a następnie możesz ją edytować)
+
+opts_mime_header_checks_no_map=(Obecnie nie zdefiniowano mapy sprawdzania nagłówka MIME. Najpierw zdefiniuj mapę, a następnie możesz ją edytować)
 header_value=Akcja dla meczów
 header_discard=Odrzuć (z komunikatem dziennika...)
 header_hold=Umieść w kolejce wstrzymania (z komunikatem dziennika...)

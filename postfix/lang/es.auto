@@ -107,6 +107,8 @@ opts_notify_classes_sel=Seleccionado a continuación
 
 opts_edir=Solo puede especificar archivos de mapa en $1
 
+opts_resolve_dequoted_address=¿Evitar el uso de @ en los nombres de los buzones?
+
 opts_mailbox_size_limit=Tamaño máximo de un buzón
 
 opts_mynetworks_style=Redes locales automáticas
@@ -117,6 +119,7 @@ opts_delay_warning_time_default2=Postfix predeterminado
 opts_content_filter_default=Ninguna
 
 opts_relay_recipient_maps=Mapa de direcciones permitidas para retransmitir
+opts_smtpd_discard_ehlo_keywords=Palabras clave SMTP EHLO para no enviar
 smtpd_nomap=Aún no se ha ingresado un mapa para las direcciones permitidas para la retransmisión.
 smtpd_nomap2=Aún no se ha ingresado un mapa de restricciones en las direcciones de los remitentes.
 smtpd_map=Direcciones permitidas para retransmitir
@@ -355,6 +358,10 @@ header_title=Verificaciones de encabezado
 header_ecannot=No tiene permiso para editar comprobaciones de encabezado
 header_eregexp=El mapa de verificación de encabezado debe estar en el formato <tt>regexp:</tt> <i>nombre de archivo</i>
 opts_header_checks=Tablas de comprobación de encabezados MIME
+opts_mime_header_checks=Tablas de comprobación de encabezados MIME
+opts_header_checks_no_map=(Actualmente no hay ningún mapa de verificación de encabezado definido. Defina un mapa primero, luego puede editarlo)
+
+opts_mime_header_checks_no_map=(Actualmente no hay ningún mapa de verificación de encabezado MIME definido. Defina un mapa primero, luego puede editarlo)
 header_name=Expresión regular
 header_value=Acción para partidos
 header_discard=Descartar (con mensaje de registro..)

@@ -12,6 +12,9 @@ index_return=רשימת מערכות הקבצים
 index_none=אין לך גישה למערכות קבצים מורכבות.
 index_mount2=הר עם סיסמא:
 index_root=מערכת קבצים שורש
+index_show1=הצג את כל מערכות הקבצים
+index_show0=הסתר מערכות קבצים שאינן ניתנות לעריכה
+index_addtype=של סוג
 
 edit_title=ערוך הר
 create_title=צור הר

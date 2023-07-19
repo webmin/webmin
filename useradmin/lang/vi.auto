@@ -143,6 +143,7 @@ usave_ecreate=Bạn không thể tạo người dùng mới
 usave_ebadname='$1' không phải là tên người dùng hợp lệ
 usave_elength=Tên người dùng không thể dài hơn $1 chữ cái
 usave_ere=Tên người dùng không khớp với regrec $1
+usave_eltgt=Tên người dùng không được chứa &lt; hoặc &gt; nhân vật
 usave_erename=Bạn không được phép đổi tên người dùng
 usave_einuse=tên người dùng '$1' đã được sử dụng
 usave_einuse_a=tên người dùng '$1' đã được sử dụng bởi bí danh thư

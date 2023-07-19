@@ -1,4 +1,10 @@
+mon_notifywebhook=Webhook
+
 sched_warn3=Så lenge tjenesten er oppe
+sched_webhook=Send status til webhook
+sched_webhookno=Ikke send
+sched_webhookyes=HTTP eller HTTPS URL
+sched_ewebhook=Manglende eller ugyldig URL for webhook
 
 http_codes=Akseptable HTTP-statuskoder
 http_codes_def=Standard ($1)

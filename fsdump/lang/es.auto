@@ -39,6 +39,7 @@ dump_bcomp=¿Almacenar datos comprimidos en bloques?
 dump_xdev=¿Limitar la copia de seguridad a un sistema de archivos?
 dump_update2=¿Solo agrega nuevos archivos al archivo?
 dump_ignoreread=¿Ignorar errores de lectura en archivos?
+dump_ignorechanged=¿Ignorar errores si los archivos cambian?
 dump_notape=Solicitar nueva cinta si es necesario?
 dump_rmt=Ruta a <tt>rmt</tt> en el sistema remoto
 dump_links=¿Seguir enlaces simbólicos?

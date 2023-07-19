@@ -1,0 +1,54 @@
+index_title=Kudeatu HTPasswd fitxategia
+index_econfig=Modulu hau ezin da erabili <a href='$1'>moduluaren konfigurazioa</a> orrian pasahitz fitxategi bat ezarri arte.
+index_emd5=Modulu hau <a href='$1'>konfiguratu da</a> pasahitzetan MD5 enkriptatzea erabiltzeko, baina $2 Perl modulua ez dago instalatuta. <a href='$3'>Egin klik hemen</a> $2 modulua deskargatu eta instalatu ahal izateko.
+index_header=Pasahitz fitxategien erabiltzaileak
+index_none=Ez dago erabiltzailerik konfiguratutako pasahitz fitxategian.
+index_add=Gehitu erabiltzaile berri bat pasahitz fitxategira.
+index_file=Erabiltzaileak $1 pasahitz fitxategian
+index_sync=Unix erabiltzaileen sinkronizazioa
+index_return=erabiltzaileen zerrenda
+index_eversion=Modulu hau <a href='$1'>konfiguratu</a> da pasahitzetan MD5 enkriptatzea erabiltzeko, baina zure sisteman instalatutako Erabiltzaile eta Taldeen moduluaren bertsioak ez ditu beharrezko MD5 funtzioak barne hartzen. Eguneratu 1.114 bertsiora edo berriagoa.
+index_synccreate=Erabiltzaile bat gehitu Unix erabiltzailea sortzen denean?
+index_syncmodify=Erabiltzaile baten pasahitza izena jarri edo aldatu dagokion Unix erabiltzailea aldatzen denean?
+index_syncdelete=Erabiltzaile bat ezabatu nahi duzu dagokion Unix erabiltzailea ezabatzen denean?
+index_ssave=Gorde eta Aplikatu
+
+edit_title1=Sortu Erabiltzailea
+edit_title2=Editatu erabiltzailea
+edit_header=Pasahitz fitxategiaren erabiltzailearen xehetasunak
+edit_user=Erabiltzaile izena
+edit_enabled=Gaituta?
+edit_pass=Pasahitza
+edit_pass1=Utzi aldatu gabe
+edit_pass0=Ezarri gisa
+edit_passfrom=Aldatu
+edit_passto=pasahitz berrira
+edit_single=Erabiltzailea aldatzeko
+edit_return=pasahitza aldatzeko formularioa
+
+save_err=Ezin izan da erabiltzailea gorde
+save_euser1=Erabiltzaile izena falta da
+save_euser2=Erabiltzaile-izenak ezin du izan : karakterea
+save_epass=Pasahitzak ezin du izan : karakterea
+save_eclash=Izen bereko erabiltzaile bat badago jada
+save_eoldpass=Pasahitz zaharra ez da zuzena
+save_ecreate=Ez duzu erabiltzailerik sortzeko baimenik
+save_edelete=Ezin duzu erabiltzaileak ezabatzeko baimenik
+save_euser=Erabiltzailea ez da existitzen
+save_title=Erabiltzailea gordeta
+save_done=$1 erabiltzailea eguneratu da.
+
+acl_repeat=Pasahitz zaharra idatzi behar al duzu aldatzean?
+acl_create=Sortu al daitezke erabiltzaile berriak?
+acl_rename=Erabiltzaileak izena aldatu al daiteke?
+acl_delete=Erabiltzaileak ezabatu al daitezke?
+acl_sync=Sinkronizazioa konfiguratu al daiteke?
+acl_enable=Erabiltzaileak gaitu eta desgaitu al daitezke?
+acl_single=Erabiltzaileen zerrenda saltatu eta pasahitza aldatzeko formulariora zuzenean joan?
+
+sync_ecannot=Ez duzu sinkronizazioa konfiguratzeko baimenik
+
+log_sync=Sinkronizazio aukerak aldatu dira
+log_create=$1 erabiltzailea sortu da
+log_delete=$1 erabiltzailea ezabatu da
+log_modify=Erabiltzailea $1 aldatu da

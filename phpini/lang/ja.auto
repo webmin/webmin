@@ -39,6 +39,7 @@ dirs_header=PHPスクリプトおよび拡張機能のディレクトリ設定
 dirs_include=インクルードのディレクトリを検索
 dirs_below=以下通り ..
 dirs_ext=拡張機能のディレクトリ
+dirs_exts=ロードする拡張機能
 dirs_upload=ファイルのアップロードを許可しますか？
 dirs_utmp=アップロードされたファイルの一時ディレクトリ
 dirs_err=ディレクトリ設定を保存できませんでした
@@ -90,12 +91,14 @@ limits_post=最大HTTP POSTサイズ
 limits_upload=最大ファイルアップロードサイズ
 limits_exec=最大実行時間
 limits_input=最大入力解析時間
+limits_vars=最大入力変数の制限
 limits_err=リソース制限を保存できませんでした
 limits_emem=最大メモリ割り当てがないか、無効です
 limits_epost=最大HTTP POSTサイズがないか、無効です
 limits_eupload=最大ファイルアップロードサイズがないか、無効です
 limits_eexec=最大実行時間が欠落しているか無効です
 limits_einput=最大入力解析時間がないか、無効です
+limits_evars=入力変数の最大値制限が欠落しているか無効です
 
 errors_title=エラーログ
 errors_header=エラーメッセージの表示とログオプション
@@ -164,3 +167,6 @@ acl_anyfile=PHP構成として任意のファイルを編集できますか？
 acl_manual=構成ファイルを手動で編集できますか？
 acl_inis=追加の構成ファイル<br>（<i>ファイル名</i>=<i>説明</i>形式）
 acl_user=ユーザーとしてファイルを読み書きする
+
+opt_default=デフォルト値: <tt>$1</tt>
+opt_default_unknown=知らない

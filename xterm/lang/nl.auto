@@ -4,6 +4,7 @@ index_epel=Het wordt aanbevolen om eerst de <a href='$1' target='_blank'>EPEL</a
 index_suse=Het Perl-pakket <tt>perl-IO-Tty</tt> ontbreekt en moet eerst handmatig worden geïnstalleerd vanuit de <a href='$2' target='_blank'>devel:languages:perl</a>-repository.
 index_euser=Fout: Gebruiker $1 kan de shell niet uitvoeren omdat deze niet bestaat!
 index_connecting=Verbinden ..
+index_missing=De Perl-module <tt>$1</tt> ontbreekt. U moet contact opnemen met uw beheerder om dit probleem op te lossen.
 
 acl_user=Voer shell uit als Unix-gebruiker
 acl_sameuser=Hetzelfde als inloggen bij Webmin

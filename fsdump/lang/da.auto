@@ -95,6 +95,7 @@ dump_bcomp=Buffer komprimerede data i blokke?
 dump_xdev=Begrænse sikkerhedskopi til et filsystem?
 dump_update2=Vil du bare tilføje nye filer til arkivet?
 dump_ignoreread=Ignorerer læsefejl på filer?
+dump_ignorechanged=Ignorer fejl, hvis filer ændres?
 dump_notape=Spørg om nyt bånd om nødvendigt?
 dump_rmt=Sti til <tt>rmt</tt> på fjernsystem
 dump_links=Følg symbolsk links?

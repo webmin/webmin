@@ -43,6 +43,9 @@ lang_lang=Linguagem
 lang_locale=Localidade
 lang_dateformat=Formato de exibição de datas
 lang_dateformat_dd/mon/yyyy=dd/seg/aaaa (ou seja, 16/set/2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/aaaa (ou seja, 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/aaaa (ou seja, 16/09/2001)
+lang_dateformat_yyyy/mm/dd=aaaa/mm/dd (ou seja, 2001/09/16)
 
 ssl_deny=Versões do protocolo SSL a serem rejeitadas
 ssl_compression=Permitir conexões SSL compactadas?
@@ -143,6 +146,7 @@ session_passurl=Quando habilitado, as senhas do usuário podem ser alteradas por
 
 categories_custom=personalizadas
 
+log_fixrepo=Repositório fixo do Webmin
 log_twofactor=Opções de autenticação de dois fatores alteradas
 log_newcsr=Criado novo CSR SSL
 log_web=Opções alteradas do servidor da web
@@ -193,6 +197,9 @@ savekey_done3=O certificado SSL encadeado fornecido foi salvo no arquivo $1.
 
 notif_reboot=As atualizações recentes de pacotes (como uma nova versão do kernel) exigem que a reinicialização seja totalmente aplicada.
 notif_rebootok=Reinicie agora
+notify_yumrepo=Seu sistema está usando o antigo repositório Webmin YUM. Clique no botão abaixo para mudar para a nova URL do repositório <tt>$1</tt> para usar nossa chave de assinatura mais recente e garantir o acesso às versões atualizadas do Webmin.
+notify_aptrepo=Seu sistema está usando o antigo repositório Webmin APT. Clique no botão abaixo para mudar para o novo repositório <tt>stable</tt> URL <tt>$1</tt> para usar nossa chave de assinatura mais recente e garantir o acesso às versões atualizadas do Webmin.
+notif_fixreponow=Atualizar repositório do Webmin
 
 status_temp=Coletar temperaturas da unidade?
 status_units=Unidades para temperaturas

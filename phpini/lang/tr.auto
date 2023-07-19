@@ -39,6 +39,7 @@ dirs_header=PHP komut dosyası ve uzantı dizini ayarları
 dirs_include=İçindekiler için arama dizinleri
 dirs_below=Aşağıda listelenmiş ..
 dirs_ext=Uzantılar dizini
+dirs_exts=Yüklenecek uzantılar
 dirs_upload=Dosya yüklemeye izin verilsin mi?
 dirs_utmp=Yüklenen dosyalar için geçici dizin
 dirs_err=Dizin ayarları kaydedilemedi
@@ -90,12 +91,14 @@ limits_post=Maksimum HTTP POST boyutu
 limits_upload=Maksimum dosya yükleme boyutu
 limits_exec=Maksimum yürütme süresi
 limits_input=Maksimum giriş ayrıştırma süresi
+limits_vars=Maksimum giriş değişkenleri limiti
 limits_err=Kaynak sınırları kaydedilemedi
 limits_emem=Eksik veya geçersiz maksimum bellek ayırma
 limits_epost=Eksik veya geçersiz maksimum HTTP POST boyutu
 limits_eupload=Eksik veya geçersiz maksimum dosya yükleme boyutu
 limits_eexec=Eksik veya geçersiz maksimum yürütme süresi
 limits_einput=Eksik veya geçersiz maksimum giriş ayrıştırma süresi
+limits_evars=Eksik veya geçersiz maksimum giriş değişkenleri limiti
 
 errors_title=Hata Günlüğü
 errors_header=Hata mesajı görüntüleme ve günlüğe kaydetme seçenekleri
@@ -164,3 +167,6 @@ acl_anyfile=Herhangi bir dosyayı PHP yapılandırması olarak düzenleyebilir m
 acl_manual=Yapılandırma dosyalarını elle düzenleyebilir mi?
 acl_inis=Ek yapılandırma dosyaları <br>(<i> dosya adı </i>=<i> açıklama </i> biçiminde)
 acl_user=Dosyaları kullanıcı olarak okuma ve yazma
+
+opt_default=Varsayılan Değer: <tt>$1</tt>
+opt_default_unknown=Bilinmeyen

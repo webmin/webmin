@@ -1,0 +1,54 @@
+index_title=Urus Fail HTPasswd
+index_econfig=Modul ini tidak boleh digunakan sehingga fail kata laluan telah ditetapkan pada halaman <a href='$1'>konfigurasi modul</a>.
+index_emd5=Modul ini telah <a href='$1'>dikonfigurasikan</a> untuk menggunakan penyulitan MD5 untuk kata laluan, tetapi modul $2 Perl tidak dipasang. <a href='$3'>Klik di sini</a> untuk mendapatkan $2 modul dimuat turun dan dipasang.
+index_header=Pengguna fail kata laluan
+index_none=Tiada pengguna wujud dalam fail kata laluan yang dikonfigurasikan.
+index_add=Tambahkan pengguna baharu pada fail kata laluan.
+index_file=Pengguna dalam Fail Kata Laluan $1 
+index_sync=Penyegerakan Pengguna Unix
+index_return=senarai pengguna
+index_eversion=Modul ini telah <a href='$1'>dikonfigurasikan</a> untuk menggunakan penyulitan MD5 untuk kata laluan, tetapi versi modul Pengguna dan Kumpulan yang dipasang pada sistem anda tidak termasuk fungsi MD5 yang diperlukan. Tingkatkan kepada versi 1.114 atau lebih baru.
+index_synccreate=Tambah pengguna apabila pengguna Unix dibuat?
+index_syncmodify=Namakan semula atau tukar kata laluan pengguna apabila pengguna Unix yang sepadan diubah suai?
+index_syncdelete=Padamkan pengguna apabila pengguna Unix yang sepadan dipadamkan?
+index_ssave=Simpan dan Gunakan
+
+edit_title1=Buat Pengguna
+edit_title2=Edit Pengguna
+edit_header=Butiran pengguna fail kata laluan
+edit_user=Nama pengguna
+edit_enabled=Didayakan?
+edit_pass=Kata laluan
+edit_pass1=Biarkan tidak berubah
+edit_pass0=Ditetapkan untuk
+edit_passfrom=Tukar daripada
+edit_passto=kepada kata laluan baharu
+edit_single=Pengguna untuk menukar
+edit_return=borang tukar kata laluan
+
+save_err=Gagal menyelamatkan pengguna
+save_euser1=Nama pengguna tiada
+save_euser2=Nama pengguna tidak boleh mengandungi : aksara
+save_epass=Kata laluan tidak boleh mengandungi : aksara
+save_eclash=Pengguna dengan nama yang sama sudah wujud
+save_eoldpass=Kata laluan lama tidak betul
+save_ecreate=Anda tidak dibenarkan membuat pengguna
+save_edelete=Anda tidak dibenarkan memadam pengguna
+save_euser=Pengguna tidak wujud
+save_title=Pengguna Disimpan
+save_done=Pengguna $1 telah dikemas kini.
+
+acl_repeat=Mesti masukkan kata laluan lama apabila menukar?
+acl_create=Boleh buat pengguna baharu?
+acl_rename=Bolehkah menamakan semula pengguna?
+acl_delete=Bolehkah memadam pengguna?
+acl_sync=Bolehkah mengkonfigurasi penyegerakan?
+acl_enable=Bolehkah mendayakan dan melumpuhkan pengguna?
+acl_single=Langkau senarai pengguna dan pergi terus ke borang pertukaran kata laluan?
+
+sync_ecannot=Anda tidak dibenarkan untuk mengkonfigurasi penyegerakan
+
+log_sync=Pilihan penyegerakan diubah
+log_create=Pengguna yang dibuat $1 
+log_delete=Pengguna dipadamkan $1 
+log_modify=Pengguna yang diubah suai $1 

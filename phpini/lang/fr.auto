@@ -1,4 +1,12 @@
 list_efile=Le fichier à modifier doit être un chemin absolu
 
+dirs_exts=Extensions à charger
+
 session_redis=Redis
 session_memcache=MemcacheD
+
+limits_vars=Limite maximale des variables d'entrée
+limits_evars=Limite maximale des variables d'entrée manquante ou invalide
+
+opt_default=Valeur par défaut : <tt>$1</tt>
+opt_default_unknown=Inconnu

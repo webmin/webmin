@@ -2,6 +2,9 @@ index_used=Kullanılmış
 index_none=Bağlı dosya sistemlerine erişiminiz yok.
 index_mount2=Şifre ile bağlan:
 index_root=Kök dosya sistemi
+index_show1=Tüm dosya sistemlerini göster
+index_show0=Düzenlenemeyen dosya sistemlerini gizle
+index_addtype=tipi
 
 edit_usage=Disk kullanımı
 edit_nfs_opt4=NFSv4'e özgü seçenekler

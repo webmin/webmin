@@ -4,6 +4,7 @@ index_epel=يوصى بتمكين مستودع <a href='$1' target='_blank'>EPEL<
 index_suse=حزمة Perl <tt>perl-IO-Tty</tt> مفقودة ، ويجب تثبيتها يدويًا أولاً من مستودع <a href='$2' target='_blank'>devel: languages: perl</a>.
 index_euser=خطأ: لا يمكن للمستخدم$1 تشغيل shell لأنه غير موجود!
 index_connecting=توصيل ..
+index_missing=وحدة Perl <tt>$1</tt> مفقودة. تحتاج إلى الاتصال بالمسؤول لحل هذه المشكلة.
 
 acl_user=قم بتشغيل shell كمستخدم Unix
 acl_sameuser=مثل تسجيل الدخول إلى Webmin

@@ -16,6 +16,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=Windows
+index_mode_nm=Verkkovastaava
 
 ifcs_title=Verkkoliitännät
 ifcs_now=Aktiivinen nyt
@@ -276,6 +277,8 @@ log_apply_bfics=Aktivoidut $1 käynnistysaikarajapinnat
 log_create_route=Luotu aktiivinen reitti kohteelle $1 
 log_create_defroute=Luotu aktiivinen oletusreitti
 log_delete_routes=Poistettu $1 aktiivista reittiä
+log_delete_aifcs=$1 liitännät poistettu käytöstä
+log_delete_bifcs=Poistettu $1 liitännät
 
 acl_ifcs=Voiko verkkoliittymiä muokata?
 acl_routes=Voiko muokata reititystä ja yhdyskäytäviä?

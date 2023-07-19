@@ -13,6 +13,8 @@ master_inview=ビュー $2の $1
 master_egone=ゾーン$1はどのビューにも存在しません
 master_egone2=ゾーン$1は存在しません！
 master_egone3=ビュー$2のゾーン$1は存在しません！
+master_vmin=このゾーンは Virtualmin によって管理されます。レコードは、他の仮想サーバー設定との一貫性を確保するために、Virtualmin UI を使用して編集する必要があります。
+master_vminalias=このゾーンは Virtualmin ドメインのエイリアスであり、ターゲットとの同期が保たれます。変更が上書きされるため、ここでレコードを編集しないでください。
 
 delete_vwarn=このゾーンはVirtualminドメイン $1に関連付けられているため、ここで削除しないでください！
 delete_vwarn2=このゾーンはVirtualminドメイン $1および $2に関連付けられているため、ここで削除しないでください！

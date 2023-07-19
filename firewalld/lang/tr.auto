@@ -38,6 +38,13 @@ index_restart_firewalld=Güvenlik Duvarını Yeniden YükleD
 index_restart_firewallddesc=FirewallD sunucusunu yeniden yükleyin ve kalıcı olarak oluşturulmuş kuralları uygulayın.
 index_listrules_restartdesc=$1 bölgesindeki mevcut zengin ve doğrudan FirewallD kurallarıyla ilgili ayrıntıları listeleyin.
 index_dependent=$1 bağımlı hizmet yeniden başlatılamadı
+index_manual=Yapılandırma Dosyalarını Düzenleyin.
+
+manual_title=Yapılandırma Dosyalarını Düzenle
+manual_editsel=FirewallD yapılandırma dosyasını düzenleyin
+manual_err=Yapılandırma dosyası kaydedilemedi
+manual_efile=Seçilen yapılandırma dosyası geçerli değil
+manual_ok=Düzenlemek
 
 port_edit=Bağlantı Noktasını Düzenle
 port_create=Bağlantı Noktası Ekle

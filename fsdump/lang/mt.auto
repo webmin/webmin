@@ -95,6 +95,7 @@ dump_bcomp=Id-dejta kkompressata tal-baffer fi blokki?
 dump_xdev=Tillimita l-backup għal fileystem wieħed?
 dump_update2=Biss żid fajls ġodda għall-arkivju?
 dump_ignoreread=Injora żbalji tal-qari fuq il-fajls?
+dump_ignorechanged=Tinjora l-iżbalji jekk il-fajls jinbidlu?
 dump_notape=Fil-pront għal tejp ġdid jekk meħtieġ?
 dump_rmt=Triq lejn <tt>rmt</tt> fuq sistema remota
 dump_links=Segwi links simboliċi?

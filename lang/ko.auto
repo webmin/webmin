@@ -12,6 +12,9 @@ egroupdbacl2=그룹 ACL을 업데이트하지 못했습니다  : $1
 
 config_emodule=모듈이 존재하지 않습니다
 
+help_efile3=모듈 $2에서 도움말 페이지 $1을(를) 읽지 못했습니다
+help_einclude3=도움말 페이지 $1 을(를) 포함하지 못했습니다
+
 referer_fix3u=Webmin에서 확인할 수 있도록 브라우저가 리퍼러 정보를 보내도록 구성되어 있는지 확인하십시오.
 
 session_twofactor=2 단계 토큰
@@ -29,6 +32,7 @@ progress_datan=$1 수신 ($2 %)
 progress_data2n=$1을 받았습니다.
 
 ui_filterbox=입력하여 필터링하십시오 ..
+ui_of=~의
 
 wsearch_on=($1에서)
 wsearch_helpfor=<i>$1</i>에 대한 도움말
@@ -56,6 +60,7 @@ sql_eldaplogin=$1으로 LDAP 서버에 로그인하지 못했습니다  : $2
 
 log_email_subject=$1의 Webmin 작업
 log_email_global=Webmin 글로벌 액션
+log_email_by=$2의 $1
 log_email_desc=이 이메일은 사용자 조치에 대한 응답으로 Webmin에 의해 발송되었습니다.
 log_email_mod=웹민 모듈 : $1
 log_email_moddesc=모듈 제목 : $1
@@ -78,8 +83,14 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=바이트
 
+paginator_showing_start=페이지에 $3개 항목 중 $1~$2 표시
+paginator_showing_end=$1 페이지 중
+paginator_nosearchrs=<tt>$1</tt> 쿼리와 일치하는 결과가 없습니다
+
 langauto_include=기계 번역 포함
 
 file_truncated_message=$1 의 데이터를 가져 왔습니다. $3 에서 $2 을 (를) 잘랐습니다.
 file_truncated_message_head=데이터의 시작 $1 을 (를) 가져 왔고 $3 에서 $2 을 (를) 잘랐습니다.
 file_truncated_message_tail=데이터의 끝 $1 을 (를) 가져 왔습니다. $3 에서 $2 을 (를) 자릅니다
+
+defcert_error=기본 $1 번들 SSL 인증서를 사용 중입니다. 로그인을 진행하기 전에 기본 <tt>$2</tt> 인증서를 업데이트하는 것이 좋습니다.

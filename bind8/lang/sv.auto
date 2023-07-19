@@ -27,6 +27,8 @@ master_movedesc=Flyttar denna zon till en annan vy, samtidigt som alla poster oc
 master_applymsg2=Klicka på den här knappen för att endast tillämpa ändringar för denna zon. Detta fungerar bara om ändringar har tillämpats för hela servern minst en gång sedan zonen skapades.
 master_esoagone=Ingen SOA-post hittades!
 master_einclude=Ytterligare mallfil finns inte
+master_vmin=Denna zon hanteras av Virtualmin. Poster bör redigeras med Virtualmin-gränssnittet för att säkerställa att de överensstämmer med andra virtuella serverinställningar.
+master_vminalias=Denna zon är ett alias för en Virtualmin-domän, som hålls synkroniserad med dess mål. Poster bör aldrig redigeras här, eftersom alla ändringar kommer att skrivas över!
 
 delete_mesg3=Är du säker på att du vill ta bort zonen $1?
 delete_vwarn=Denna zon är associerad med Virtualmin-domänen $1, och bör därför inte tas bort här!

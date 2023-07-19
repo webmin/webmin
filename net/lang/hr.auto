@@ -16,6 +16,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=Windows
+index_mode_nm=Upravitelj mreže
 
 ifcs_title=Mrežna sučelja
 ifcs_now=Trenutno aktivan
@@ -276,6 +277,8 @@ log_apply_bfics=Aktivirano $1 vrijeme pokretanja
 log_create_route=Izrađena je aktivna ruta za $1 
 log_create_defroute=Stvorena aktivna zadana ruta
 log_delete_routes=Izbrisani su $1 aktivne rute
+log_delete_aifcs=Deaktivirano sučelje $1
+log_delete_bifcs=Izbrisana $1 sučelja
 
 acl_ifcs=Mogu li uređivati mrežna sučelja?
 acl_routes=Mogu li uređivati usmjeravanje i pristupnike?

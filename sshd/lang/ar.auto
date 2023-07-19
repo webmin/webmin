@@ -231,6 +231,7 @@ sync_auto=&lt;التلقائي&gt;
 keys_title=استضافة مفاتيح SSH
 keys_desc=تسمح لك هذه الصفحة بعرض مفاتيح SSH لهذا المضيف.
 keys_none=تعذر العثور على أي إدخالات HostKey في تكوين SSHD.
+keys_change=يتغير
 
 manual_title=تحرير ملفات التكوين
 manual_ecannot=غير مسموح لك بتحرير ملف تهيئة خادم SSH

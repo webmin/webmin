@@ -37,6 +37,8 @@ master_defttl=Tiempo de vida predeterminado para registros
 master_edefttl='$1' no es un tiempo de vida predeterminado válido para los registros
 master_esoagone=¡No se ha encontrado el registro SOA!
 master_einclude=El archivo de plantilla adicional no existe
+master_vmin=Esta zona es administrada por Virtualmin. Los registros deben editarse mediante la interfaz de usuario de Virtualmin para garantizar que sean coherentes con otras configuraciones del servidor virtual.
+master_vminalias=Esta zona es un alias de un dominio de Virtualmin, que se mantiene sincronizado con su objetivo. Los registros nunca deben editarse aquí, ya que cualquier cambio se sobrescribirá
 
 delete_mesg3=¿Está seguro de que desea eliminar la zona $1?
 delete_vwarn=Esta zona está asociada con el dominio Virtualmin $1, por lo que no debe eliminarse aquí.

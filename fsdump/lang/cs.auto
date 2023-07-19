@@ -5,6 +5,7 @@ dump_fok2=Nahlásit selhání, pokud se příkaz nezdaří
 dump_aok=Přeskočte příkaz, i když se záloha nezdaří
 dump_gzip3=Ano, s XZ
 dump_ignoreread=Ignorovat chyby čtení v souborech?
+dump_ignorechanged=Ignorovat chyby, pokud se soubory změní?
 dump_eftpupdate=Přidání souborů do existujícího archivu není možné při použití FTP.
 dump_eleveldir=Pro adresáře, které nejsou přípojnými body souborového systému, jsou povoleny pouze zálohy úrovně 0
 dump_eupdatedir=Soubor <tt>/etc/dumpdates</tt> lze aktualizovat pouze pro adresáře, které jsou připojovacími body souborového systému.

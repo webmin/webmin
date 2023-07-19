@@ -140,6 +140,7 @@ exec_iheader=Szöveges fájl importálási lehetőségei
 exec_created=$1 táblák készültek.
 exec_inserted=$1 rekord került beillesztésre.
 exec_cs=Karakterkészlet az adatokhoz
+exec_collationdown=Az adatbázis-összeállítást <tt>$1</tt> <tt>$2</tt> csökkentették
 
 tprivs_dtitle=Táblázat engedélyek törlése
 tprivs_drusure=Biztosan törli a kiválasztott MySQL tábla $1 engedélyeket?
@@ -159,6 +160,8 @@ acl_views=Megtekintheti és kezelheti a nézeteket?
 acl_files=Futtatható az SQL helyi fájlokból?
 
 log_cnf=Megváltozott a MySQL szerver konfigurációja
+log_ssl=SSL tanúsítvány megváltozott
+log_genssl=Generált SSL tanúsítvány
 log_kill=Megölt $1 adatbázis-kapcsolatok
 log_vars=Módosított $1 rendszerváltozók
 log_index_create=Létrehozta a (z) $1 indexet a (z) $2 adatbázisban
@@ -379,3 +382,18 @@ mysqlpass_esafe=Az indítás csökkentett módban nem sikerült : $1
 mysqlpass_estartup=Az indítás sikertelen : $1 
 mysqlpass_echange=A jelszó megváltoztatása sikertelen : $1 
 mysqlpass_echange_forcepass=Kényszerítve írja felül a megadott jelszót, ha elveszett vagy elfelejtődött
+
+ssl_title=SSL tanúsítvány
+ssl_header=MySQL SSL beállítások
+ssl_cert=SSL tanúsítvány fájl
+ssl_key=SSL kulcsfájl
+ssl_ca=SSL CA tanúsítvány fájl
+ssl_req=Megköveteli az ügyfelektől az SSL használatát?
+ssl_none=Nincs beállítva
+ssl_gen=Tanúsítvány és kulcs létrehozása
+ssl_err=Nem sikerült menteni az SSL-beállításokat
+ssl_ecert=Hiányzó vagy nem létező SSL-tanúsítványfájl
+ssl_ekey=Hiányzó vagy nem létező SSL-kulcsfájl
+ssl_eca=Hiányzó vagy nem létező SSL CA-fájl
+ssl_ecertexists=A $1 SSL-tanúsítványfájl már létezik!
+ssl_ekeyexists=Az SSL-kulcsfájl $1 már létezik!

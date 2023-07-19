@@ -231,6 +231,7 @@ sync_auto=&lt;Automatinis&gt;
 keys_title=Pagrindinio kompiuterio SSH raktai
 keys_desc=Šiame puslapyje galite peržiūrėti šio pagrindinio kompiuterio SSH raktus.
 keys_none=Nepavyko rasti „HostKey“ įrašų jūsų SSHD konfigūracijoje.
+keys_change=Keisti
 
 manual_title=Redaguoti konfigūravimo failus
 manual_ecannot=Jums neleidžiama redaguoti SSH serverio konfigūracijos failo

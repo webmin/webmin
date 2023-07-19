@@ -1,0 +1,54 @@
+index_title=Gérer le fichier HTPasswd
+index_econfig=Ce module ne peut pas être utilisé tant qu'un fichier de mot de passe n'a pas été défini sur la page de <a href='$1'>configuration du module</a>.
+index_emd5=Ce module a été <a href='$1'>configuré</a> pour utiliser le chiffrement MD5 pour les mots de passe, mais le module $2 Perl n'est pas installé. <a href='$3'>Cliquez ici</a> pour télécharger et installer le module $2.
+index_header=Utilisateurs du fichier de mots de passe
+index_none=Aucun utilisateur n'existe dans le fichier de mot de passe configuré.
+index_add=Ajoutez un nouvel utilisateur au fichier de mots de passe.
+index_file=Utilisateurs dans le fichier de mots de passe $1
+index_sync=Synchronisation des utilisateurs Unix
+index_return=liste d'utilisateur
+index_eversion=Ce module a été <a href='$1'>configuré</a> pour utiliser le cryptage MD5 pour les mots de passe, mais la version du module Utilisateurs et groupes installée sur votre système n'inclut pas les fonctions MD5 nécessaires. Mettez à niveau vers la version 1.114 ou ultérieure.
+index_synccreate=Ajouter un utilisateur lorsqu'un utilisateur Unix est créé ?
+index_syncmodify=Renommer ou changer le mot de passe d'un utilisateur lorsque l'utilisateur Unix correspondant est modifié ?
+index_syncdelete=Supprimer un utilisateur lorsque l'utilisateur Unix correspondant est supprimé ?
+index_ssave=Enregistrer et appliquer
+
+edit_title1=Créer un utilisateur
+edit_title2=Modifier l'utilisateur
+edit_header=Détails de l'utilisateur du fichier de mots de passe
+edit_user=Nom d'utilisateur
+edit_enabled=Activé?
+edit_pass=Mot de passe
+edit_pass1=Laisser inchangé
+edit_pass0=Mis à
+edit_passfrom=Changer de
+edit_passto=au nouveau mot de passe
+edit_single=Utilisateur à changer
+edit_return=formulaire de changement de mot de passe
+
+save_err=Échec de l'enregistrement de l'utilisateur
+save_euser1=Nom d'utilisateur manquant
+save_euser2=Le nom d'utilisateur ne peut pas contenir le caractère :
+save_epass=Le mot de passe ne peut pas contenir le caractère :
+save_eclash=Un utilisateur avec le même nom existe déjà
+save_eoldpass=L'ancien mot de passe n'est pas correct
+save_ecreate=Vous n'êtes pas autorisé à créer des utilisateurs
+save_edelete=Vous n'êtes pas autorisé à supprimer des utilisateurs
+save_euser=L'utilisateur n'existe pas
+save_title=Utilisateur enregistré
+save_done=L'utilisateur $1 a été mis à jour.
+
+acl_repeat=Doit entrer l'ancien mot de passe lors du changement ?
+acl_create=Peut créer de nouveaux utilisateurs ?
+acl_rename=Peut renommer les utilisateurs ?
+acl_delete=Peut supprimer des utilisateurs ?
+acl_sync=Peut configurer la synchronisation ?
+acl_enable=Peut activer et désactiver les utilisateurs ?
+acl_single=Ignorer la liste des utilisateurs et accéder directement au formulaire de changement de mot de passe ?
+
+sync_ecannot=Vous n'êtes pas autorisé à configurer la synchronisation
+
+log_sync=Options de synchronisation modifiées
+log_create=Utilisateur créé $1
+log_delete=Utilisateur $1 supprimé
+log_modify=Utilisateur modifié $1

@@ -8,6 +8,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=Okna
+index_mode_nm=Správce sítě
 
 ifcs_ip6=IPv6 adresa
 ifcs_badd=Přidejte nový most.
@@ -71,6 +72,8 @@ ipnodes_none=Zatím nebyly definovány žádné adresy hostitelů IPv6.
 ipnodes_delete=Odstranění vybraných adres hostitele IPv6
 
 log_delete_ipnodes=Byly odstraněny adresy hostitele IPv6 $1 
+log_delete_aifcs=Deaktivováno $1 rozhraní
+log_delete_bifcs=Smazáno $1 rozhraní
 
 acl_sysinfo=Zobrazit dostupná síťová rozhraní na hlavním panelu
 

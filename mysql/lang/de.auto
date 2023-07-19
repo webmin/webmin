@@ -6,6 +6,11 @@ view_go=Gehen
 
 user_locked=Gesperrt
 
+exec_collationdown=Die Datenbanksortierung wurde von <tt>$1</tt> auf <tt>$2</tt> herabgestuft
+
+log_ssl=SSL-Zertifikat geändert
+log_genssl=Generiertes SSL-Zertifikat
+
 backup_parameters=Benutzerdefinierte Parameter zum Sicherungsbefehl hinzufügen?
 
 cnf_table_open_cache=Tabellen zum Zwischenspeichern
@@ -19,3 +24,18 @@ mysqlpass_esafe=Start im abgesicherten Modus fehlgeschlagen : $1
 mysqlpass_estartup=Start fehlgeschlagen : $1 
 mysqlpass_echange=Passwortänderung fehlgeschlagen : $1 
 mysqlpass_echange_forcepass=Erzwingen Sie das Überschreiben des angegebenen Passworts, wenn es verloren geht oder vergessen wird
+
+ssl_title=SSL-Zertifikat
+ssl_header=MySQL SSL-Optionen
+ssl_cert=SSL-Zertifikatdatei
+ssl_key=SSL-Schlüsseldatei
+ssl_ca=SSL-CA-Zertifikatdatei
+ssl_req=Müssen Clients SSL verwenden?
+ssl_none=Keine festgelegt
+ssl_gen=Zertifikat und Schlüssel generieren
+ssl_err=SSL-Optionen konnten nicht gespeichert werden
+ssl_ecert=Fehlende oder nicht vorhandene SSL-Zertifizierungsdatei
+ssl_ekey=Fehlende oder nicht vorhandene SSL-Schlüsseldatei
+ssl_eca=Fehlende oder nicht vorhandene SSL-CA-Datei
+ssl_ecertexists=SSL-Zertifikatdatei $1 existiert bereits!
+ssl_ekeyexists=SSL-Schlüsseldatei $1 existiert bereits!

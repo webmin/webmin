@@ -16,6 +16,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=Tingkap
+index_mode_nm=Pengurus Rangkaian
 
 ifcs_title=Antaramuka Rangkaian
 ifcs_now=Aktif sekarang
@@ -276,6 +277,8 @@ log_apply_bfics=Pengaktifan $1 antara muka boot masa
 log_create_route=Buat laluan aktif untuk $1 
 log_create_defroute=Membuat laluan lalai aktif
 log_delete_routes=Dihapus $1 laluan aktif
+log_delete_aifcs=$1 antara muka dinyahaktifkan
+log_delete_bifcs=$1 antara muka dipadamkan
 
 acl_ifcs=Bolehkah mengedit antara muka rangkaian?
 acl_routes=Bolehkah mengedit routing dan gateway?

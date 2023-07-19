@@ -5,9 +5,12 @@ opts_nomap=マップセットなし
 opts_setmap=地図の仕様
 opts_notify_classes_sel=以下から選択
 
+opts_resolve_dequoted_address=メールボックス名に @ を使用できないようにしますか?
+
 opts_delay_warning_time_default2=Postfixデフォルト
 
 opts_relay_recipient_maps=中継に許可されるアドレスのマップ
+opts_smtpd_discard_ehlo_keywords=送信しない SMTP EHLO キーワード
 smtpd_nomap=リレーの許可アドレスのマップはまだ入力されていません。
 smtpd_nomap2=送信者アドレスの制限のマップはまだ入力されていません。
 smtpd_map=中継に許可されたアドレス
@@ -45,6 +48,11 @@ mailq_refresh=メールキューを更新
 mailq_refreshdesc=このページをリロードして、メールキューの現在の状態を表示します。
 mailq_deleteall=メールキューをクリア
 mailq_deletealldesc=メールキュー内のすべてのメッセージを削除するには、このボタンをクリックします。
+
+opts_mime_header_checks=MIMEヘッダーチェックテーブル
+opts_header_checks_no_map=(現在、ヘッダー チェック マップが定義されていません。最初にマップを定義してから編集できます)
+
+opts_mime_header_checks_no_map=(現在、MIME ヘッダー チェック マップが定義されていません。最初にマップを定義してから編集できます)
 
 dependent_title=送信者依存トランスポートマッピング
 dependent_ecannot=送信者依存のトランスポートマッピングを編集することはできません

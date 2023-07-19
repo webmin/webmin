@@ -1,3 +1,6 @@
+master_vmin=Cette zone est gérée par Virtualmin. Les enregistrements doivent être modifiés à l'aide de l'interface utilisateur Virtualmin, pour s'assurer qu'ils sont cohérents avec les autres paramètres du serveur virtuel.
+master_vminalias=Cette zone est un alias d'un domaine Virtualmin, qui est synchronisé avec sa cible. Les enregistrements ne doivent jamais être modifiés ici, car toute modification sera écrasée !
+
 slave_format=Format de fichier de zone
 slave_raw=Binaire brut
 slave_text=Texte brut

@@ -200,8 +200,6 @@ mods_install=Installa Modulu
 mods_local=Minn fajl lokali
 mods_uploaded=Minn fajl imtella '
 mods_ftp=Minn HTTP jew FTP URL
-mods_standard=Modulu standard minn <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=Modulu standard
 mods_third=Modulu minn parti terza
 mods_thsel=Agħżel ..
 mods_nodeps=Injora dipendenzi?
@@ -325,6 +323,9 @@ lang_err=Naqset milli ssalva lingwa
 lang_echarset=Sett ta 'karattri nieqes jew li jħares invalidu
 lang_dateformat=Format tal-wiri tad-dati
 lang_dateformat_dd/mon/yyyy=jj/mon/ssss (jiġifieri 16/Settembru/2001)
+lang_dateformat_dd/mm/yyyy=jj/xx/ssss (jiġifieri 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/jj/ssss (jiġifieri 16/09/2001)
+lang_dateformat_yyyy/mm/dd=ssss/mm/jj (jiġifieri 2001/09/16)
 
 ssl_title=SSL Encryption
 ssl_essl=Il-modulu Net::SSLeay perl ma jidhirx li huwa installat fis-sistema tiegħek. Biex tinstalla l-librerija OpenSSL u Net::SSLeay, segwi <a href='$1'>dawn l-istruzzjonijiet</a> mill-websajt Webmin.
@@ -694,6 +695,7 @@ log_tinstall=Tema installata $1
 log_clone=Modulu klonat $1 to $2
 log_delete=Modulu imħassar $1
 log_os=Sistema operattiva mibdula
+log_fixrepo=Repożitorju Webmin fiss
 log_lang=Inbidlet lingwa globali
 log_startpage=Inbidlet paġna ta 'indiċi ta' l-għażliet
 log_upgrade=Webmin aġġornat għall-verżjoni $1
@@ -1010,6 +1012,9 @@ notify_updatedesc=Tissolvi l-problema
 notif_updateok=Installa Aġġornamenti Issa
 notif_reboot=Aġġornamenti reċenti tal-pakkett (bħal verżjoni tal-għadma ġdida) jeħtieġu li l-istartjar mill-ġdid jiġi applikat għal kollox.
 notif_rebootok=Irristartja Issa
+notify_yumrepo=Is-sistema tiegħek qed tuża r-repożitorju antik Webmin YUM. Ikklikkja l-buttuna hawn taħt biex taqleb għall-URL tar-repożitorju l-ġdid <tt>$1</tt> sabiex tuża l-aħħar ċavetta tal-iffirmar tagħna u tiżgura aċċess għal verżjonijiet aġġornati tal-Webmin.
+notify_aptrepo=Is-sistema tiegħek qed tuża r-repożitorju l-antik Webmin APT. Ikklikkja l-buttuna hawn taħt biex taqleb għall-URL tar-repożitorju <tt>stable</tt> ġdid <tt>$1</tt> sabiex tuża l-aħħar ċavetta tal-iffirmar tagħna u tiżgura aċċess għal verżjonijiet aġġornati tal-Webmin.
+notif_fixreponow=Aġġorna r-Repożitorju tal-Webmin
 
 status_title=Ġbir ta 'Status ta' Sfond
 status_header=L-issettjar tal-ġabra tal-istatus tax-xogħol

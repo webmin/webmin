@@ -6,8 +6,16 @@ vars_header=Opcje tworzenia i cytowania zmiennych PHP
 vars_magic=Cytujesz wszystkie zmienne wejściowe?
 vars_runtime=Cytuje dane generowane w czasie wykonywania?
 
+dirs_exts=Rozszerzenia do załadowania
+
 session_redis=Redis
 session_memcache=MemcacheD
 
+limits_vars=Maksymalny limit zmiennych wejściowych
+limits_evars=Brakujący lub nieprawidłowy maksymalny limit zmiennych wejściowych
+
 misc_path=Informacje o ścieżce CGI Fix?
 misc_charset=Domyślny zestaw znaków
+
+opt_default=Wartość domyślna: <tt>$1</tt>
+opt_default_unknown=Nieznany

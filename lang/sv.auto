@@ -57,6 +57,9 @@ config_nochange=Ändra inte
 config_setto=Satt till
 config_ewebmin=Parameter typ 14 fungerar bara i Webmin
 
+help_efile3=Det gick inte att läsa hjälpsidan $1 från modulen $2
+help_einclude3=Det gick inte att inkludera hjälpsidan $1
+
 referer_warn_unknown=<b>Varning!</b> Webmin har upptäckt att programmet $1 länkades till från en okänd URL, som verkar vara utanför Webmin-servern. Detta kan vara ett försök att lura din server att utföra ett farligt kommando.
 referer_fix1=If this is a legitimate link, you can allow links from this URL as follows :<ul><li>Login to Webmin normally.</li><li>Go to the <b>Webmin Configuration</b> module.</li><li>Click on the Trusted Referrers icon.</li><li>Enter the hostname $1 into the <b>Trusted websites</b> field, and click <b>Save.</b></li></ul>
 referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.</li><li>Save the file.</li></ul>
@@ -197,6 +200,7 @@ ui_etime=Ogiltig tid
 ui_paging=Visar rader $1 till $2 av $3
 ui_rowlabel=$2 i rad $1 :
 ui_filterbox=Skriv för att filtrera ..
+ui_of=av
 
 header_statusmsg=$1 inloggad $2 $3 på $4 ($5)
 
@@ -247,6 +251,7 @@ sql_eldaplogin=Det gick inte att logga in på LDAP-servern som $1 : $2
 
 log_email_subject=Webminåtgärd i $1
 log_email_global=Webmin globala åtgärder
+log_email_by=$1 till $2
 log_email_desc=Detta e-postmeddelande skickades av Webmin som svar på en användaråtgärd.
 log_email_mod=Webmin-modul: $1
 log_email_moddesc=Modulens titel: $1
@@ -269,8 +274,14 @@ nice_size_kB=kB
 nice_size_kiB=KIB
 nice_size_b=bitgrupper
 
+paginator_showing_start=Visar $1 till $2 av $3 objekt på sidan
+paginator_showing_end=av $1 sidor
+paginator_nosearchrs=Det finns inga resultat som matchar <tt>$1</tt>-frågan
+
 langauto_include=Inkludera maskinöversättningar
 
 file_truncated_message=hämtade $1 av data, trunkerade $2 av $3 
 file_truncated_message_head=hämtade början $1 av data, trunkerade $2 av $3 
 file_truncated_message_tail=hämtade slut $1 av data, trunkerat $2 av $3 
+
+defcert_error=Standard-$1 buntade SSL-certifikat används. Det rekommenderas starkt att uppdatera standardcertifikatet <tt>$2</tt> innan du fortsätter med inloggningen.

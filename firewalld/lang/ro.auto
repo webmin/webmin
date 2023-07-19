@@ -38,6 +38,13 @@ index_restart_firewalld=Reîncărcați FirewallD
 index_restart_firewallddesc=Reîncărcați serverul FirewallD și aplicați regulile care au fost create permanent.
 index_listrules_restartdesc=Listați detalii despre regulile FirewallD bogate și directe existente în zona $1.
 index_dependent=Nu s-a repornit serviciul dependent $1
+index_manual=Editați fișierele de configurare.
+
+manual_title=Editați fișierele de configurare
+manual_editsel=Editați fișierul de configurare FirewallD
+manual_err=Nu s-a salvat fișierul de configurare
+manual_efile=Fișierul de configurare selectat nu este valid
+manual_ok=Editați | ×
 
 port_edit=Editare port
 port_create=Adăugați port

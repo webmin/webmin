@@ -2,7 +2,15 @@ list_efile=Файл для редактирования должен иметь 
 list_format_ini=Формат INI
 list_format_fpm=Формат FPM
 
+dirs_exts=Расширения для загрузки
+
 session_redis=Редис
 session_memcache=MemcacheD
 
+limits_vars=Максимальный предел входных переменных
+limits_evars=Отсутствует или недействителен максимальный предел входных переменных
+
 misc_charset=Набор символов по умолчанию
+
+opt_default=Значение по умолчанию: <tt>$1</tt>
+opt_default_unknown=Неизвестный

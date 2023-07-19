@@ -1,5 +1,6 @@
 dump_aok=Ugrás a parancsra akkor is, ha a biztonsági mentés sikertelen
 dump_gzip3=Igen, az XZ-vel
+dump_ignorechanged=Figyelmen kívül hagyja a hibákat, ha a fájlok megváltoznak?
 
 edit_title3=Klón biztonsági másolat
 edit_when=Mikor kell biztonsági másolatot készíteni

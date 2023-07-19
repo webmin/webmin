@@ -3,6 +3,9 @@ index_reloadmsg=Kattintson erre a gombra, hogy a Postfix újraolvassa az összes
 
 opts_notify_classes_sel=Az alábbiak szerint választható
 
+opts_resolve_dequoted_address=Megakadályozza a @ használatát a postafiókok nevében?
+
+opts_smtpd_discard_ehlo_keywords=Nem küldendő SMTP EHLO kulcsszavak
 smtpd_nomap2=A feladó címeinek korlátozására még nem került sor.
 smtpd_map=Megengedett címek a továbbításhoz
 smtpd_map2=A feladó címeire vonatkozó korlátozások
@@ -29,6 +32,11 @@ view_aname=Melléklet
 
 mailq_deleteall=Törölje a levél sorát
 mailq_deletealldesc=Kattintson erre a gombra az összes üzenet törléséhez a levél sorban.
+
+opts_mime_header_checks=MIME fejléc-ellenőrző táblázatok
+opts_header_checks_no_map=(Jelenleg nincs meghatározva fejléc-ellenőrző térkép. Először határozzon meg egy térképet, majd szerkesztheti)
+
+opts_mime_header_checks_no_map=(Jelenleg nincs meghatározva MIME fejléc-ellenőrző térkép. Először határozzon meg egy térképet, majd szerkesztheti)
 
 dependent_title=Feladó-függő szállítási térképezés
 dependent_ecannot=A feladóktól függő szállítási leképezések nem szerkeszthetők

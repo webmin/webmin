@@ -16,6 +16,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=Παράθυρα
+index_mode_nm=Διαχειριστής δικτύου
 
 ifcs_title=Διασυνδέσεις δικτύου
 ifcs_now=Ενεργός τώρα
@@ -276,6 +277,8 @@ log_apply_bfics=Ενεργοποιημένες διασυνδέσεις χρόν
 log_create_route=Δημιουργήθηκε ενεργή διαδρομή για το $1 
 log_create_defroute=Δημιουργήθηκε ενεργή προεπιλεγμένη διαδρομή
 log_delete_routes=Διαγράφηκαν $1 ενεργές διαδρομές
+log_delete_aifcs=Απενεργοποιημένες διεπαφές $1 
+log_delete_bifcs=Διαγράφηκαν $1 διεπαφές
 
 acl_ifcs=Μπορεί να επεξεργαστεί διεπαφές δικτύου;
 acl_routes=Μπορεί να επεξεργαστεί τη δρομολόγηση και τις πύλες;

@@ -200,8 +200,6 @@ mods_install=ماڈیول انسٹال کریں
 mods_local=مقامی فائل سے
 mods_uploaded=اپ لوڈ کردہ فائل سے
 mods_ftp=HTTP یا FTP URL سے
-mods_standard=Standard module from <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=معیاری ماڈیول
 mods_third=کی طرف سے تیسری پارٹی کے ماڈیول
 mods_thsel=منتخب کریں ..
 mods_nodeps=انحصار کو نظر انداز کریں؟
@@ -325,6 +323,9 @@ lang_err=زبان بچانے میں ناکام
 lang_echarset=لاپتہ یا غلط نظر آنے والا کردار کا سیٹ
 lang_dateformat=تاریخیں ڈسپلے فارمیٹ
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (یعنی 16/Sep/2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/yyyy (یعنی 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/yyyy (یعنی 09/16/2001)
+lang_dateformat_yyyy/mm/dd=yyyy/mm/dd (یعنی 2001/09/16)
 
 ssl_title=SSL خفیہ کاری
 ssl_essl=The Net::SSLeay perl module does not appear to be installed on your system. To install the OpenSSL library and Net::SSLeay, follow <a href='$1'>these instructions</a> from the Webmin website.
@@ -694,6 +695,7 @@ log_tinstall=Installed theme $1
 log_clone=Cloned module $1 to $2
 log_delete=Deleted module $1
 log_os=آپریٹنگ سسٹم بدلا
+log_fixrepo=فکسڈ Webmin ذخیرہ
 log_lang=بدلی ہوئی عالمی زبان
 log_startpage=بدلتے ہوئے انڈیکس صفحے کے اختیارات
 log_upgrade=Upgraded Webmin to version $1
@@ -1010,6 +1012,9 @@ notify_updatedesc=فکس مسئلہ
 notif_updateok=ابھی اپ ڈیٹس انسٹال کریں
 notif_reboot=حالیہ پیکیج اپ ڈیٹس (جیسے ایک نیا دانا ورژن) کو مکمل طور پر لاگو کرنے کے لئے ریبوٹ کی ضرورت ہوتی ہے۔
 notif_rebootok=اب دوبارہ شروع
+notify_yumrepo=Your system is using the old Webmin YUM repository. Click the button below to switch to the new repository URL <tt>$1</tt> in order to use our latest signing key and ensure access to updated Webmin versions.
+notify_aptrepo=Your system is using the old Webmin APT repository. Click the button below to switch to the new <tt>stable</tt> repository URL <tt>$1</tt> in order to use our latest signing key and ensure access to updated Webmin versions.
+notif_fixreponow=ویبمن ریپوزٹری کو اپ ڈیٹ کریں۔
 
 status_title=پس منظر کی حیثیت کا مجموعہ
 status_header=حیثیت جمع کرنے کی ملازمت کی ترتیبات

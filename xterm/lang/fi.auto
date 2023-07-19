@@ -4,6 +4,7 @@ index_epel=On suositeltavaa ottaa <a href='$1' target='_blank'>EPEL</a>-arkisto 
 index_suse=Perl-paketti <tt>perl-IO-Tty</tt> puuttuu, ja se tulee asentaa ensin manuaalisesti <a href='$2' target='_blank'>devel:languages:perl</a>-arkistosta.
 index_euser=Virhe : Käyttäjä $1 ei voi suorittaa komentotulkkia, koska sitä ei ole olemassa!
 index_connecting=Yhdistetään ..
+index_missing=Perl-moduuli <tt>$1</tt> puuttuu. Sinun on otettava yhteyttä järjestelmänvalvojaasi tämän ongelman ratkaisemiseksi.
 
 acl_user=Suorita shell Unix-käyttäjänä
 acl_sameuser=Sama kuin Webminin kirjautuminen

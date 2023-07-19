@@ -1,6 +1,9 @@
 index_used=Utilisé
 index_none=Vous n'avez accès à aucun système de fichiers monté.
 index_root=Système de fichiers racine
+index_show1=Afficher tous les systèmes de fichiers
+index_show0=Masquer les systèmes de fichiers non modifiables
+index_addtype=de type
 
 edit_usage=Utilisation du disque
 edit_nfs_opt4=Options spécifiques à NFSv4

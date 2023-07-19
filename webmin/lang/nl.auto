@@ -35,6 +35,9 @@ lang_lang=Taal
 lang_locale=Lokaal
 lang_dateformat=Datumweergaveformaat
 lang_dateformat_dd/mon/yyyy=dd/ma/jjjj (d.w.z. 16/sep/2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/jjjj (d.w.z. 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/jjjj (d.w.z. 16-09-2001)
+lang_dateformat_yyyy/mm/dd=jjjj/mm/dd (d.w.z. 2001/09/16)
 
 ssl_deny=Te weigeren SSL-protocolversies
 ssl_compression=Gecomprimeerde SSL-verbindingen toestaan?
@@ -109,6 +112,7 @@ session_passurl=Indien ingeschakeld, kunnen gebruikerswachtwoorden worden gewijz
 
 categories_custom=Op maat
 
+log_fixrepo=Vaste Webmin-repository
 log_twofactor=Twee-factor authenticatie-opties gewijzigd
 log_delete_webmincron=Geplande $1 geplande functies verwijderd
 log_run_webmincron=Ran $1 geplande functies
@@ -136,6 +140,9 @@ advanced_ebufsize=De grootte van de netwerkbuffer moet een getal zijn dat groter
 
 notif_reboot=Recente pakketupdates (zoals een nieuwe kernelversie) vereisen een herstart om volledig te worden toegepast.
 notif_rebootok=Herstart nu
+notify_yumrepo=Uw systeem gebruikt de oude Webmin YUM-repository. Klik op de onderstaande knop om over te schakelen naar de nieuwe repository-URL <tt>$1</tt> om onze nieuwste ondertekeningssleutel te gebruiken en toegang tot bijgewerkte Webmin-versies te garanderen.
+notify_aptrepo=Uw systeem gebruikt de oude Webmin APT-repository. Klik op de onderstaande knop om over te schakelen naar de nieuwe <tt>stable</tt> repository-URL <tt>$1</tt> om onze nieuwste ondertekeningssleutel te gebruiken en toegang tot bijgewerkte Webmin-versies te garanderen.
+notif_fixreponow=Webmin-opslagplaats bijwerken
 
 status_units=Eenheden voor temperaturen
 status_celsius=Celsius

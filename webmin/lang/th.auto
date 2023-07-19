@@ -200,8 +200,6 @@ mods_install=ติดตั้งโมดูล
 mods_local=จากไฟล์ในเครื่อง
 mods_uploaded=จากไฟล์ที่อัพโหลด
 mods_ftp=จาก HTTP หรือ FTP URL
-mods_standard=โมดูลมาตรฐานจาก <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=โมดูลมาตรฐาน
 mods_third=โมดูลบุคคลที่สามจาก
 mods_thsel=เลือก ..
 mods_nodeps=ไม่สนใจการพึ่งพาหรือไม่
@@ -325,6 +323,9 @@ lang_err=การบันทึกภาษาล้มเหลว
 lang_echarset=ชุดอักขระที่ขาดหายไปหรือไม่ถูกต้อง
 lang_dateformat=รูปแบบการแสดงวันที่
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (เช่น 16/ก.ย./2544)
+lang_dateformat_dd/mm/yyyy=dd/mm/yyyy (เช่น 16/09/2544)
+lang_dateformat_mm/dd/yyyy=ดด/วว/ปปปป (เช่น 16/09/2544)
+lang_dateformat_yyyy/mm/dd=ปปปป/ดด/วว (เช่น 2001/09/16)
 
 ssl_title=การเข้ารหัส SSL
 ssl_essl=โมดูล Net::SSLeay perl ไม่ได้ติดตั้งในระบบของคุณ หากต้องการติดตั้งไลบรารี OpenSSL และ Net::SSLeay ให้ทำตาม <a href='$1'>คำแนะนำเหล่านี้</a> จากเว็บไซต์ Webmin
@@ -694,6 +695,7 @@ log_tinstall=ธีมที่ติดตั้ง $1
 log_clone=โมดูลที่โคลน $1 ถึง $2
 log_delete=ลบโมดูล $1 แล้ว
 log_os=เปลี่ยนระบบปฏิบัติการ
+log_fixrepo=แก้ไขที่เก็บ Webmin
 log_lang=เปลี่ยนภาษาสากล
 log_startpage=เปลี่ยนตัวเลือกหน้าดัชนี
 log_upgrade=อัปเกรด Webmin เป็นเวอร์ชัน $1
@@ -1010,6 +1012,9 @@ notify_updatedesc=แก้ไขปัญหา
 notif_updateok=ติดตั้งการอัปเดตทันที
 notif_reboot=การอัพเดตแพ็กเกจล่าสุด (เช่นเคอร์เนลเวอร์ชันใหม่) จำเป็นต้องมีการรีบูตเพื่อใช้งานอย่างสมบูรณ์
 notif_rebootok=รีบูทเดี๋ยวนี้
+notify_yumrepo=ระบบของคุณใช้ที่เก็บ Webmin YUM เก่า คลิกปุ่มด้านล่างเพื่อเปลี่ยนไปใช้ URL ที่เก็บใหม่ <tt>$1</tt> เพื่อใช้คีย์การลงนามล่าสุดของเราและรับรองการเข้าถึงเวอร์ชัน Webmin ที่อัปเดต
+notify_aptrepo=ระบบของคุณใช้ที่เก็บ Webmin APT เก่า คลิกปุ่มด้านล่างเพื่อเปลี่ยนไปใช้ URL ที่เก็บ <tt>stable</tt> ใหม่ <tt>$1</tt> เพื่อใช้คีย์การลงนามล่าสุดของเราและรับรองการเข้าถึงเวอร์ชัน Webmin ที่อัปเดต
+notif_fixreponow=อัปเดตที่เก็บ Webmin
 
 status_title=การรวบรวมสถานะความเป็นมา
 status_header=การตั้งค่างานการรวบรวมสถานะ

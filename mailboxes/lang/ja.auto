@@ -40,7 +40,10 @@ left_filter=メールフィルター
 left_pass=パスワードを変更する
 left_sig=署名を編集
 
+editor_heading=見出し
+editor_paragraph=段落
 editor_fontfamily_default=デフォルト
+editor_fontfamily_monospace=固定幅
 editor_font_small=小さい
 editor_font_normal=普通
 editor_font_medium=中くらい

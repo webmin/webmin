@@ -38,6 +38,13 @@ index_restart_firewalld=重新加載防火牆D
 index_restart_firewallddesc=重新加載 FirewallD 服務器並應用永久創建的規則。
 index_listrules_restartdesc=列出有關 $1 區域中現有豐富和直接 FirewallD 規則的詳細信息。
 index_dependent=無法重新啟動 $1 相關服務
+index_manual=編輯配置文件。
+
+manual_title=編輯配置文件
+manual_editsel=編輯 FirewallD 配置文件
+manual_err=保存配置文件失敗
+manual_efile=所選配置文件無效
+manual_ok=編輯
 
 port_edit=編輯端口
 port_create=添加端口

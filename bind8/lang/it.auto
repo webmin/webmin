@@ -47,6 +47,8 @@ master_defttl=Tempo di vita predefinito per i record
 master_edefttl='$1' non è un time-to-live predefinito valido per i record
 master_esoagone=Nessun record SOA trovato!
 master_einclude=Non esiste un file modello aggiuntivo
+master_vmin=Questa zona è gestita da Virtualmin. I record devono essere modificati utilizzando l'interfaccia utente di Virtualmin, per garantire che siano coerenti con le altre impostazioni del server virtuale.
+master_vminalias=Questa zona è un alias di un dominio Virtualmin, che viene mantenuto sincronizzato con la sua destinazione. I record non dovrebbero mai essere modificati qui, poiché qualsiasi modifica verrà sovrascritta!
 
 delete_mesg3=Sei sicuro di voler eliminare la zona $1?
 delete_onslave=Eliminare anche dai server slave?

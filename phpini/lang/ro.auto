@@ -39,6 +39,7 @@ dirs_header=Scripturi PHP și setări pentru directorul extensiei
 dirs_include=Căutare directoare pentru include
 dirs_below=Enumerate mai jos ..
 dirs_ext=Director pentru extensii
+dirs_exts=Extensii de încărcat
 dirs_upload=Permite încărcarea fișierului?
 dirs_utmp=Director temporar pentru fișierele încărcate
 dirs_err=Nu a reușit să salvați setările directorului
@@ -90,12 +91,14 @@ limits_post=Dimensiunea POST HTTP maximă
 limits_upload=Dimensiunea maximă de încărcare a fișierului
 limits_exec=Timpul maxim de execuție
 limits_input=Timpul maxim de analiză de intrare
+limits_vars=Limita maximă a variabilelor de intrare
 limits_err=Nu a reușit să salvați limitele resurselor
 limits_emem=Alocarea maximă a memoriei lipsește sau este nevalidă
 limits_epost=Lipsește sau nu este valabilă dimensiunea maximă HTTP POST
 limits_eupload=Lipsește sau nu este valabilă dimensiunea maximă de încărcare a fișierului
 limits_eexec=Timpul maxim de execuție lipsește sau este nevalid
 limits_einput=Timpul maxim de analiză de intrare lipsă sau nevalid
+limits_evars=Limită maximă de variabile de intrare lipsă sau nevalidă
 
 errors_title=Eroare la jurnal
 errors_header=Afișarea mesajelor de eroare și opțiunile de înregistrare
@@ -164,3 +167,6 @@ acl_anyfile=Poate edita orice fișier ca configurație PHP?
 acl_manual=Poate edita manual fișierele de configurare?
 acl_inis=Fișiere suplimentare de configurare <br>(în<i> nume de fișier </i>=<i> descriere </i> format)
 acl_user=Citiți și scrieți fișiere ca utilizator
+
+opt_default=Valoare implicită: <tt>$1</tt>
+opt_default_unknown=Necunoscut

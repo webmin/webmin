@@ -1,0 +1,54 @@
+index_title=Beheer het HTPasswd-bestand
+index_econfig=Deze module kan pas worden gebruikt als er een wachtwoordbestand is ingesteld op de pagina <a href='$1'>moduleconfiguratie</a>.
+index_emd5=Deze module is <a href='$1'>geconfigureerd</a> om MD5-codering voor wachtwoorden te gebruiken, maar de $2 Perl-module is niet geïnstalleerd. <a href='$3'>Klik hier</a> om de $2 module te downloaden en te installeren.
+index_header=Gebruikers van wachtwoordbestanden
+index_none=Er zijn geen gebruikers in het geconfigureerde wachtwoordbestand.
+index_add=Voeg een nieuwe gebruiker toe aan het wachtwoordbestand.
+index_file=Gebruikers in wachtwoordbestand $1
+index_sync=Unix-gebruikerssynchronisatie
+index_return=gebruikers lijst
+index_eversion=Deze module is <a href='$1'>geconfigureerd</a> om MD5-codering voor wachtwoorden te gebruiken, maar de versie van de module Gebruikers en groepen die op uw systeem is geïnstalleerd, bevat niet de benodigde MD5-functies. Upgrade naar versie 1.114 of hoger.
+index_synccreate=Een gebruiker toevoegen wanneer een Unix-gebruiker wordt aangemaakt?
+index_syncmodify=Hernoem of verander het wachtwoord van een gebruiker wanneer de overeenkomstige Unix-gebruiker wordt gewijzigd?
+index_syncdelete=Een gebruiker verwijderen wanneer de overeenkomstige Unix-gebruiker wordt verwijderd?
+index_ssave=Opslaan en toepassen
+
+edit_title1=Gebruiker maken
+edit_title2=bewerk gebruiker
+edit_header=Gebruikersgegevens wachtwoordbestand
+edit_user=Gebruikersnaam
+edit_enabled=Ingeschakeld?
+edit_pass=Wachtwoord
+edit_pass1=Laat ongewijzigd
+edit_pass0=Instellen op
+edit_passfrom=Verander van
+edit_passto=naar nieuw wachtwoord
+edit_single=Gebruiker om te wijzigen
+edit_return=wachtwoord wijzigen formulier
+
+save_err=Kan gebruiker niet opslaan
+save_euser1=Ontbrekende gebruikersnaam
+save_euser2=Gebruikersnaam mag het teken : niet bevatten
+save_epass=Wachtwoord mag niet het teken : bevatten
+save_eclash=Er bestaat al een gebruiker met dezelfde naam
+save_eoldpass=Oud wachtwoord is niet correct
+save_ecreate=U mag geen gebruikers aanmaken
+save_edelete=U mag geen gebruikers verwijderen
+save_euser=Gebruiker bestaat niet
+save_title=Gebruiker opgeslagen
+save_done=De gebruiker $1 is bijgewerkt.
+
+acl_repeat=Moet u het oude wachtwoord invoeren bij het wijzigen?
+acl_create=Kan nieuwe gebruikers aanmaken?
+acl_rename=Kunnen gebruikers hernoemen?
+acl_delete=Kan gebruikers verwijderen?
+acl_sync=Kan synchronisatie configureren?
+acl_enable=Kan gebruikers in- en uitschakelen?
+acl_single=Gebruikerslijst overslaan en direct naar wachtwoordwijzigingsformulier gaan?
+
+sync_ecannot=U mag de synchronisatie niet configureren
+
+log_sync=Gewijzigde synchronisatie-opties
+log_create=Gebruiker $1 gemaakt
+log_delete=Gebruiker $1 verwijderd
+log_modify=Gewijzigde gebruiker $1

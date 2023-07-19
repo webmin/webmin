@@ -451,7 +451,10 @@ left_filter=E-mail-filtre
 left_pass=Skift kodeord
 left_sig=Rediger underskrift
 
+editor_heading=Overskrift
+editor_paragraph=Afsnit
 editor_fontfamily_default=Standard
+editor_fontfamily_monospace=Fast bredde
 editor_font_small=Lille
 editor_font_normal=Normal
 editor_font_medium=Medium

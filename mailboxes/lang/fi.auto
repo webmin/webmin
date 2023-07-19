@@ -177,7 +177,10 @@ left_filter=Sähköpostisuodattimet
 left_pass=Vaihda salasana
 left_sig=Muokkaa allekirjoitusta
 
+editor_heading=Otsikko
+editor_paragraph=Kohta
 editor_fontfamily_default=Oletus
+editor_fontfamily_monospace=Kiinteä leveys
 editor_font_small=Pieni
 editor_font_normal=Normaali
 editor_font_medium=Keskikokoinen

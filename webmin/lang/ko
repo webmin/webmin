@@ -168,8 +168,6 @@ mods_install=모듈 설치
 mods_local=로컬 파일에서
 mods_uploaded=업로드 파일
 mods_ftp=FTP 또는 HTTP URL에서
-mods_standard=<a href='$1'>www.webmin.com</a> 의 표준 모듈
-mods_standard2=표준 모듈
 mods_third=Third party 모듈
 mods_thsel=선택..
 mods_nodeps=설치시, 모듈 의존성 무시

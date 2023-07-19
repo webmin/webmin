@@ -1,2 +1,4 @@
 users_pkeyauth=Engedélyezi a nyilvános kulcsú hitelesítést?
 users_chal=Használ kihívás-válasz hitelesítést?
+
+keys_change=változás

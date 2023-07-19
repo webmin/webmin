@@ -12,6 +12,9 @@ index_return=popis datoteka
 index_none=Nemate pristup nijednom montiranom datotečnom sustavu.
 index_mount2=Montirajte lozinkom:
 index_root=Korijenski datotečni sustav
+index_show1=Prikaži sve datotečne sustave
+index_show0=Sakrij datotečne sustave koji se ne mogu uređivati
+index_addtype=tipa
 
 edit_title=Uredi Mount
 create_title=Stvorite Mount

@@ -451,7 +451,10 @@ left_filter=مرشحات البريد الإلكتروني
 left_pass=تغيير كلمة السر
 left_sig=تعديل التوقيع
 
+editor_heading=عنوان
+editor_paragraph=فقرة
 editor_fontfamily_default=تقصير
+editor_fontfamily_monospace=عرض ثابت
 editor_font_small=صغير
 editor_font_normal=طبيعي
 editor_font_medium=واسطة

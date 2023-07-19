@@ -143,6 +143,7 @@ usave_ecreate=Anda tidak boleh mencipta pengguna baru
 usave_ebadname='$1' bukan nama pengguna yang sah
 usave_elength=Nama pengguna tidak boleh lebih panjang daripada huruf $1
 usave_ere=Nama pengguna tidak sepadan dengan regexp $1
+usave_eltgt=Nama pengguna tidak boleh mengandungi &lt; atau &gt; watak
 usave_erename=Anda tidak dibenarkan untuk menamakan semula pengguna
 usave_einuse=nama pengguna '$1' sudah digunakan
 usave_einuse_a=nama pengguna '$1' sudah digunakan oleh alias mel

@@ -2,6 +2,9 @@ index_used=Begagnade
 index_none=Du har inte tillgång till några monterade filsystem.
 index_mount2=Montera med lösenord:
 index_root=Rotfilsystem
+index_show1=Visa alla filsystem
+index_show0=Dölj icke-redigerbara filsystem
+index_addtype=av typ
 
 edit_usage=Diskanvändning
 edit_comm_opt=Vanliga monteringsalternativ

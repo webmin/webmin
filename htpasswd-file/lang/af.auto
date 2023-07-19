@@ -1,0 +1,54 @@
+index_title=Bestuur HTPasswd-lêer
+index_econfig=Hierdie module kan nie gebruik word voordat 'n wagwoordlêer op die <a href='$1'>module-opstelling</a>-bladsy gestel is.
+index_emd5=Hierdie module is <a href='$1'>opgestel</a> om MD5-enkripsie vir wagwoorde te gebruik, maar die $2 Perl-module is nie geïnstalleer nie. <a href='$3'>Klik hier</a> om die $2-module af te laai en te installeer.
+index_header=Wagwoord lêer gebruikers
+index_none=Geen gebruikers bestaan in die gekonfigureerde wagwoordlêer nie.
+index_add=Voeg 'n nuwe gebruiker by die wagwoordlêer.
+index_file=Gebruikers in Wagwoordlêer $1
+index_sync=Unix-gebruikersinchronisasie
+index_return=gebruikerslys
+index_eversion=Hierdie module is <a href='$1'>opgestel</a> om MD5-enkripsie vir wagwoorde te gebruik, maar die weergawe van die Gebruikers- en Groepe-module wat op jou stelsel geïnstalleer is, sluit nie die nodige MD5-funksies in nie. Gradeer op na weergawe 1.114 of later.
+index_synccreate=Voeg 'n gebruiker by wanneer 'n Unix-gebruiker geskep word?
+index_syncmodify=Hernoem of verander die wagwoord van 'n gebruiker wanneer die ooreenstemmende Unix-gebruiker gewysig word?
+index_syncdelete=Vee 'n gebruiker uit wanneer die ooreenstemmende Unix-gebruiker uitgevee is?
+index_ssave=Stoor en pas toe
+
+edit_title1=Skep gebruiker
+edit_title2=Wysig gebruiker
+edit_header=Wagwoordlêer gebruikerbesonderhede
+edit_user=Gebruikersnaam
+edit_enabled=Geaktiveer?
+edit_pass=Wagwoord
+edit_pass1=Laat onveranderd
+edit_pass0=Stel na
+edit_passfrom=Verander van
+edit_passto=na nuwe wagwoord
+edit_single=Gebruiker om te verander
+edit_return=wagwoordveranderingsvorm
+
+save_err=Kon nie gebruiker stoor nie
+save_euser1=Gebruikernaam ontbreek
+save_euser2=Gebruikersnaam kan nie die : karakter bevat nie
+save_epass=Wagwoord kan nie die : karakter bevat nie
+save_eclash='n Gebruiker met dieselfde naam bestaan reeds
+save_eoldpass=Ou wagwoord is nie korrek nie
+save_ecreate=Jy word nie toegelaat om gebruikers te skep nie
+save_edelete=Jy mag nie gebruikers uitvee nie
+save_euser=Gebruiker bestaan nie
+save_title=Gebruiker gestoor
+save_done=Die gebruiker $1 is opgedateer.
+
+acl_repeat=Moet ou wagwoord invoer wanneer jy verander?
+acl_create=Kan nuwe gebruikers skep?
+acl_rename=Kan gebruikers hernoem?
+acl_delete=Kan gebruikers uitvee?
+acl_sync=Kan sinchronisasie opstel?
+acl_enable=Kan gebruikers aktiveer en deaktiveer?
+acl_single=Slaan gebruikerslys oor en gaan direk na wagwoordveranderingsvorm?
+
+sync_ecannot=Jy word nie toegelaat om sinchronisasie op te stel nie
+
+log_sync=Veranderde sinchronisasie-opsies
+log_create=Gebruiker $1 geskep
+log_delete=Gebruiker $1 is uitgevee
+log_modify=Gewysigde gebruiker $1

@@ -147,6 +147,8 @@ master_defttl=Tietueiden oletusaika-aika
 master_edefttl='$1' ei ole kelvollinen oletusarvoinen elinaika tietueille
 master_esoagone=SOA-tietuetta ei löytynyt!
 master_einclude=Muuta mallitiedostoa ei ole
+master_vmin=Tätä vyöhykettä hallinnoi Virtualmin. Tietueita tulee muokata Virtualmin-käyttöliittymällä, jotta ne ovat yhdenmukaisia muiden virtuaalipalvelinasetusten kanssa.
+master_vminalias=Tämä vyöhyke on Virtualmin-verkkotunnuksen alias, joka pidetään synkronoituna kohteensa kanssa. Tietueita ei saa koskaan muokata täällä, sillä kaikki muutokset korvataan!
 
 delete_title=Poista vyöhyke
 delete_mesg=Haluatko varmasti poistaa vyöhykkeen $1? Kaikki tietueet ja vyöhyketiedosto poistetaan.

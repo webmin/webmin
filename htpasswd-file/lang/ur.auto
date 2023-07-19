@@ -1,0 +1,54 @@
+index_title=HTPasswd فائل کا نظم کریں۔
+index_econfig=This module cannot be used until a password file has been set on the <a href='$1'>module configuration</a> page.
+index_emd5=This module has been <a href='$1'>configured</a> to use MD5 encryption for passwords, but the $2 Perl module is not installed. <a href='$3'>Click here</a> to have the $2 module downloaded and installed.
+index_header=پاس ورڈ فائل استعمال کرنے والے
+index_none=کنفیگر شدہ پاس ورڈ فائل میں کوئی صارف موجود نہیں ہے۔
+index_add=پاس ورڈ فائل میں ایک نیا صارف شامل کریں۔
+index_file=پاس ورڈ فائل میں صارفین $1
+index_sync=یونکس یوزر سنکرونائزیشن
+index_return=صارف کی فہرست
+index_eversion=This module has been <a href='$1'>configured</a> to use MD5 encryption for passwords, but the version of the Users and Groups module installed on your system does not include the needed MD5 functions. Upgrade to version 1.114 or later.
+index_synccreate=یونکس صارف بننے پر صارف شامل کریں؟
+index_syncmodify=جب متعلقہ یونکس صارف میں ترمیم کی جائے تو صارف کا نام تبدیل کریں یا پاس ورڈ تبدیل کریں؟
+index_syncdelete=متعلقہ یونکس صارف کے حذف ہونے پر صارف کو حذف کریں؟
+index_ssave=محفوظ کریں اور لاگو کریں۔
+
+edit_title1=صارف بنائیں
+edit_title2=صارف میں ترمیم کریں۔
+edit_header=پاس ورڈ فائل صارف کی تفصیلات
+edit_user=صارف نام
+edit_enabled=فعال کیا؟
+edit_pass=پاس ورڈ
+edit_pass1=بغیر تبدیلی کے چھوڑ دیں۔
+edit_pass0=تیار
+edit_passfrom=سے تبدیل کریں۔
+edit_passto=نئے پاس ورڈ پر
+edit_single=تبدیل کرنے کے لیے صارف
+edit_return=پاس ورڈ کی تبدیلی کا فارم
+
+save_err=صارف کو محفوظ کرنے میں ناکام
+save_euser1=غائب صارف نام
+save_euser2=صارف نام: حرف پر مشتمل نہیں ہو سکتا
+save_epass=پاس ورڈ میں : کیریکٹر شامل نہیں ہو سکتا
+save_eclash=اسی نام کا صارف پہلے سے موجود ہے۔
+save_eoldpass=پرانا پاس ورڈ درست نہیں ہے۔
+save_ecreate=آپ کو صارفین بنانے کی اجازت نہیں ہے۔
+save_edelete=آپ کو صارفین کو حذف کرنے کی اجازت نہیں ہے۔
+save_euser=صارف موجود نہیں
+save_title=صارف محفوظ ہو گیا۔
+save_done=صارف $1 کو اپ ڈیٹ کر دیا گیا ہے۔
+
+acl_repeat=تبدیل کرتے وقت پرانا پاس ورڈ درج کرنا ضروری ہے؟
+acl_create=نئے صارفین بنا سکتے ہیں؟
+acl_rename=کیا صارفین کا نام بدل سکتے ہیں؟
+acl_delete=کیا صارفین کو حذف کر سکتے ہیں؟
+acl_sync=مطابقت پذیری کو ترتیب دے سکتے ہیں؟
+acl_enable=کیا صارفین کو فعال اور غیر فعال کر سکتے ہیں؟
+acl_single=صارف کی فہرست کو چھوڑیں اور براہ راست پاس ورڈ کی تبدیلی کے فارم پر جائیں؟
+
+sync_ecannot=آپ کو مطابقت پذیری کو ترتیب دینے کی اجازت نہیں ہے۔
+
+log_sync=مطابقت پذیری کے اختیارات کو تبدیل کر دیا گیا۔
+log_create=صارف $1 بنایا گیا۔
+log_delete=حذف شدہ صارف $1
+log_modify=ترمیم شدہ صارف $1

@@ -28,6 +28,7 @@ uedit_grename=Omdøb gruppe hvis brugernavn ændres?
 uedit_sys=System standard
 uedit_clone=Klon bruger
 
+usave_eltgt=Brugernavn må ikke indeholde &lt; eller &gt; tegn
 usave_esgname='$1' er ikke et gyldigt sekundært gruppenavn
 usave_ehomeslash=Hjemmemappe $1 kan ikke slutte med en /
 usave_edigestmod=Dit system har $4 -adgangskoder aktiveret, men Perl <tt>$3</tt> -modulet er ikke installeret. For at tvinge brugen af normale krypterede adgangskoder skal du justere din <a href='$1'>modulkonfiguration</a> eller få Webmin til at prøve at <a href='$2'>downloade og installere</a> <tt>$3</tt> -modulet for dig.

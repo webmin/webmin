@@ -4,6 +4,7 @@ index_epel=Lehenengo <a href='$1' target='_blank'>EPEL</a> biltegia gaituta izat
 index_suse=Perl paketea <tt>perl-IO-Tty</tt> falta da, eta eskuz instalatu behar da lehenik <a href='$2' target='_blank'>devel:languages:perl</a> biltegitik.
 index_euser=Errorea: $1 erabiltzaileak ezin du shell-a exekutatu, ez baitago!
 index_connecting=Konektatzen ..
+index_missing=Perl modulua <tt>$1</tt> falta da. Zure administratzailearekin harremanetan jarri behar duzu arazo hau konpontzeko.
 
 acl_user=Exekutatu shell Unix erabiltzaile gisa
 acl_sameuser=Webmin-en saioaren berdina

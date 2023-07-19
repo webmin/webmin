@@ -1,3 +1,7 @@
+index_show1=Zobrazit všechny souborové systémy
+index_show0=Skryjte neupravitelné souborové systémy
+index_addtype=typu
+
 edit_usage=Využití disku
 edit_nfs_opt4=Možnosti specifické pro NFSv4
 

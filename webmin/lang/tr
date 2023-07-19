@@ -115,8 +115,6 @@ mods_install=Modül Kur
 mods_local=Yerel dosyadan
 mods_uploaded=Yüklenilen dosyadan
 mods_ftp=Ftp ya da http adresinden
-mods_standard=<a href='$1'>www.webmin.com</a> adresinden standart modül
-mods_standard2=Standart modül
 mods_third=Buradan üçüncü parti modül
 mods_thsel=Seç..
 mods_nodeps=Kurulurken modül bağımlılıklarını yoksay

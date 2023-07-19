@@ -103,8 +103,6 @@ mods_install=安裝模組
 mods_local=從本機檔案
 mods_uploaded=從上傳的檔案
 mods_ftp=從 FTP 或 HTTP URL
-mods_standard=<a href='$1'>www.webmin.com</a>上的標準模組
-mods_standard2=標準模組
 mods_third=協力模組從
 mods_thsel=選擇..
 mods_nodeps=安裝時忽略模組相依性

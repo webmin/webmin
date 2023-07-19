@@ -12,6 +12,9 @@ index_return=Lista tas-sistemi ta 'fajls
 index_none=M'għandekx aċċess għal kwalunkwe sistemi ta 'fajls immuntati.
 index_mount2=Immonta bil-password:
 index_root=Sistema ta 'fajls Root
+index_show1=Uri s-sistemi tal-fajls kollha
+index_show0=Aħbi sistemi ta' fajls li ma jistgħux jiġu editjati
+index_addtype=tat-tip
 
 edit_title=Editja Mount
 create_title=Oħloq Mount

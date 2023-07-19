@@ -38,6 +38,13 @@ index_restart_firewalld=Muat semula FirewallD
 index_restart_firewallddesc=Muat semula pelayan FirewallD dan gunakan peraturan yang telah dibuat secara kekal.
 index_listrules_restartdesc=Senaraikan butiran tentang peraturan FirewallD yang kaya dan langsung dalam $1 zon.
 index_dependent=Gagal memulakan semula perkhidmatan bergantung $1 
+index_manual=Edit Fail Konfigurasi.
+
+manual_title=Edit Fail Konfigurasi
+manual_editsel=Edit fail konfigurasi FirewallD
+manual_err=Gagal menyimpan fail konfigurasi
+manual_efile=Fail konfigurasi yang dipilih tidak sah
+manual_ok=Sunting
 
 port_edit=Edit Port
 port_create=Tambah Pelabuhan

@@ -116,8 +116,6 @@ mods_install=نصب پيمانه
 mods_local=از طريق پرونده محلي
 mods_uploaded=از طريق پرونده بارشده
 mods_ftp=از طريق URL ftp يا http
-mods_standard=پيمانه استاندارد از <a href='$1'>www. webmin. com</a>
-mods_standard2=پيمانه استاندارد
 mods_third=پيمانه شخص ثالث از
 mods_thsel=انتخاب شود. . 
 mods_nodeps=وابستگيهاي پيمانه هنگام نصب ناديده گرفته شود

@@ -4,6 +4,7 @@ index_epel=Det anbefales å ha <a href='$1' target='_blank'>EPEL</a>-depotet akt
 index_suse=Perl-pakken <tt>perl-IO-Tty</tt> mangler, og bør først installeres manuelt fra <a href='$2' target='_blank'>devel:languages:perl</a>-depotet.
 index_euser=Feil: Bruker $1 kan ikke kjøre skallet siden det ikke eksisterer!
 index_connecting=Kobler til ..
+index_missing=Perl-modulen <tt>$1</tt> mangler. Du må kontakte administratoren din for å løse dette problemet.
 
 acl_user=Kjør shell som Unix-bruker
 acl_sameuser=Samme som Webmin-pålogging

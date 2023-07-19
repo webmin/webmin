@@ -7,6 +7,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=ramen
+index_mode_nm=Netwerkmanager
 
 bifc_nobridge=&lt;Geen&gt;
 bifc_ebridge=Bridge-interface moet een nummer zijn
@@ -21,5 +22,8 @@ bonding_primarydesc=Alleen van toepassing met actieve back-up-, balans-tlb- of b
 bonding_miimondesc=(Leeg laten om linkbewaking uit te schakelen)
 
 hosts_active=Ingeschakeld?
+
+log_delete_aifcs=Gedeactiveerde $1-interfaces
+log_delete_bifcs=$1 interfaces verwijderd
 
 acl_sysinfo=Toon beschikbare netwerkinterfaces op Dashboard

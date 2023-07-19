@@ -95,6 +95,7 @@ dump_bcomp=Buferis suglaudino duomenis į blokus?
 dump_xdev=Riboti atsarginę kopiją vienoje failų sistemoje
 dump_update2=Ar tik norite įtraukti naujų failų į archyvą?
 dump_ignoreread=Nepaisyti failų skaitymo klaidų?
+dump_ignorechanged=Ignoruoti klaidas, jei failai pasikeičia?
 dump_notape=Jei reikia, paprašykite naujos juostos?
 dump_rmt=Kelias į <tt>rmt</tt> nuotolinėje sistemoje
 dump_links=Sekti simbolines nuorodas?

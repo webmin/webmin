@@ -1,0 +1,12 @@
+help_efile3=Impossibile leggere la pagina della guida $1 dal modulo $2
+help_einclude3=Impossibile includere la pagina della guida $1
+
+ui_of=Di
+
+log_email_by=$1 per $2
+
+paginator_showing_start=Visualizzazione da $1 a $2 di $3 elementi sulla pagina
+paginator_showing_end=di $1 pagine
+paginator_nosearchrs=Non ci sono risultati corrispondenti alla query <tt>$1</tt>
+
+defcert_error=È in uso il certificato SSL in bundle $1 predefinito. Si consiglia vivamente di aggiornare il certificato predefinito <tt>$2</tt> prima di procedere con il login.

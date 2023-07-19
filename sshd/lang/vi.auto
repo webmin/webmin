@@ -231,6 +231,7 @@ sync_auto=&lt;Tự động&gt;
 keys_title=Lưu trữ khóa SSH
 keys_desc=Trang này cho phép bạn xem các khóa SSH cho máy chủ này.
 keys_none=Không thể tìm thấy bất kỳ mục HostKey nào trong cấu hình SSHD của bạn.
+keys_change=Thay đổi
 
 manual_title=Chỉnh sửa tập tin cấu hình
 manual_ecannot=Bạn không được phép chỉnh sửa tệp cấu hình máy chủ SSH

@@ -281,7 +281,10 @@ left_filter=Filtry e-mail
 left_pass=Zmień hasło
 left_sig=Edytuj podpis
 
+editor_heading=Nagłówek
+editor_paragraph=Ustęp
 editor_fontfamily_default=Domyślny
+editor_fontfamily_monospace=Stała szerokość
 editor_font_small=Mały
 editor_font_normal=Normalna
 editor_font_medium=Średni

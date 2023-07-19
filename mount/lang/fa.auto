@@ -1,6 +1,9 @@
 index_used=استفاده شده
 index_mount2=سوار با رمز عبور:
 index_root=سیستم فایل ریشه
+index_show1=نمایش تمام فایل سیستم ها
+index_show0=مخفی کردن فایل سیستم های غیر قابل ویرایش
+index_addtype=از نوع
 
 edit_usage=استفاده از دیسک
 edit_nfs_opt4=گزینه های خاص NFSv4

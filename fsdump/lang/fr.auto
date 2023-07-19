@@ -95,6 +95,7 @@ dump_bcomp=Mettre les données compressées en mémoire tampon dans des blocs?
 dump_xdev=Limiter la sauvegarde à un seul système de fichiers?
 dump_update2=Ajoutez simplement de nouveaux fichiers à archiver?
 dump_ignoreread=Ignorer les erreurs de lecture sur les fichiers?
+dump_ignorechanged=Ignorer les erreurs si les fichiers changent ?
 dump_notape=Demander une nouvelle bande si nécessaire?
 dump_rmt=Chemin d'accès à <tt>rmt</tt> sur le système distant
 dump_links=Suivez les liens symboliques?

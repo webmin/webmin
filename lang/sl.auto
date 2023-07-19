@@ -116,9 +116,9 @@ config_ewebmin=Tip parametra 14 deluje samo v Webminu
 
 help_err=Pomoč ni bila prikazana
 help_epath=Manjkajoča ali neveljavna pot pomoči
-help_efile=Ni bilo mogoče prebrati datoteke pomoči $1
+help_efile3=Strani pomoči $1 iz modula $2 ni bilo mogoče prebrati
 help_eheader=Manjka oddelek &lt;header&gt;
-help_einclude=Ni bilo mogoče vključiti $1
+help_einclude3=Vključitev strani pomoči $1 ni uspela
 help_eif=$1 neuspešno : $2
 help_eexec=$1 neuspešno : $2
 
@@ -306,6 +306,7 @@ ui_etime=Neveljaven čas
 ui_paging=Prikazovanje vrstic $1 do $2 od $3
 ui_rowlabel=$2 v vrstici $1 :
 ui_filterbox=Vnesite za filtriranje ..
+ui_of=od
 
 header_statusmsg=$1 se prijavi v $2 $3 on $4 ($5)
 
@@ -356,6 +357,7 @@ sql_eldaplogin=Na strežniku LDAP ni bilo mogoče prijaviti kot $1 : $2
 
 log_email_subject=Ukrep za Webmin v $1
 log_email_global=Globalna akcija Webmin
+log_email_by=$1 z $2
 log_email_desc=To elektronsko sporočilo je Webmin poslal kot odgovor na uporabniško dejanje.
 log_email_mod=Webmin modul: $1
 log_email_moddesc=Naslov modula: $1
@@ -378,8 +380,14 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bajti
 
+paginator_showing_start=Prikaz $1 do $2 od $3 elementov na strani
+paginator_showing_end=$1 strani
+paginator_nosearchrs=Ni rezultatov, ki bi ustrezali poizvedbi <tt>$1</tt>
+
 langauto_include=Vključite strojne prevode
 
 file_truncated_message=pridobljeno $1 podatkov, okrnjeno $2 od $3 
 file_truncated_message_head=pridobljen začetek $1 podatkov, okrnjen $2 od $3 
 file_truncated_message_tail=prenesen konec $1 podatkov, okrnjen $2 od $3 
+
+defcert_error=Uporablja se privzeto potrdilo SSL v paketu $1. Zelo priporočljivo je, da posodobite privzeto potrdilo <tt>$2</tt>, preden nadaljujete s prijavo.

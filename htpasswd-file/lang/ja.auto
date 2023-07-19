@@ -1,0 +1,54 @@
+index_title=HTPasswd ファイルの管理
+index_econfig=このモジュールは、<a href='$1'>モジュール構成</a> ページでパスワード ファイルが設定されるまで使用できません。
+index_emd5=このモジュールはパスワードに MD5 暗号化を使用するように<a href='$1'>設定</a>されていますが、$2 Perl モジュールがインストールされていません。 $2 モジュールをダウンロードしてインストールするには、<a href='$3'>ここをクリック</a>してください。
+index_header=パスワードファイルのユーザー
+index_none=設定されたパスワード ファイルにユーザーが存在しません。
+index_add=新しいユーザーをパスワード ファイルに追加します。
+index_file=パスワード ファイル $1 内のユーザー
+index_sync=Unix ユーザーの同期
+index_return=ユーザーリスト
+index_eversion=このモジュールは、パスワードに MD5 暗号化を使用するように<a href='$1'>設定</a>されていますが、システムにインストールされているユーザーとグループ モジュールのバージョンには、必要な MD5 機能が含まれていません。バージョン 1.114 以降にアップグレードしてください。
+index_synccreate=Unix ユーザーの作成時にユーザーを追加しますか?
+index_syncmodify=対応する Unix ユーザーが変更されたときに、ユーザーの名前を変更するか、パスワードを変更しますか?
+index_syncdelete=対応する Unix ユーザーが削除された場合、ユーザーも削除しますか?
+index_ssave=保存して適用
+
+edit_title1=ユーザーを作成
+edit_title2=ユーザーの編集
+edit_header=パスワードファイルのユーザー詳細
+edit_user=ユーザー名
+edit_enabled=有効ですか?
+edit_pass=パスワード
+edit_pass1=変更しないでください
+edit_pass0=に設定
+edit_passfrom=から変更する
+edit_passto=新しいパスワードに
+edit_single=変更するユーザー
+edit_return=パスワード変更フォーム
+
+save_err=ユーザーの保存に失敗しました
+save_euser1=ユーザー名がありません
+save_euser2=ユーザー名に : 文字を含めることはできません
+save_epass=パスワードに : 文字を含めることはできません
+save_eclash=同名のユーザーがすでに存在します
+save_eoldpass=古いパスワードが正しくありません
+save_ecreate=ユーザーを作成することはできません
+save_edelete=ユーザーを削除することはできません
+save_euser=ユーザーは存在しません
+save_title=ユーザーが保存されました
+save_done=ユーザー $1 が更新されました。
+
+acl_repeat=変更するときは古いパスワードを入力する必要がありますか?
+acl_create=新しいユーザーを作成できますか?
+acl_rename=ユーザーの名前を変更できますか?
+acl_delete=ユーザーを削除できますか?
+acl_sync=同期を設定できますか?
+acl_enable=ユーザーを有効または無効にできますか?
+acl_single=ユーザーリストをスキップしてパスワード変更フォームに直接進みますか?
+
+sync_ecannot=同期を構成することはできません
+
+log_sync=変更された同期オプション
+log_create=ユーザー $1 を作成しました
+log_delete=ユーザー $1 を削除しました
+log_modify=変更されたユーザー $1

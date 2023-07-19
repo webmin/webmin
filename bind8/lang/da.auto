@@ -147,6 +147,8 @@ master_defttl=Standard tid til live for poster
 master_edefttl='$1' er ikke en gyldig standard-tid-til-live for poster
 master_esoagone=Ingen SOA-registrering fundet!
 master_einclude=Yderligere skabelonfil findes ikke
+master_vmin=Denne zone administreres af Virtualmin. Records bør redigeres ved hjælp af Virtualmin UI for at sikre, at de stemmer overens med andre virtuelle serverindstillinger.
+master_vminalias=Denne zone er et alias for et Virtualmin-domæne, som holdes synkroniseret med dets mål. Optegnelser bør aldrig redigeres her, da eventuelle ændringer vil blive overskrevet!
 
 delete_title=Slet zone
 delete_mesg=Er du sikker på, at du vil slette zonen $1? Alle poster og zonefilen vil blive slettet.

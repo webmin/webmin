@@ -18,3 +18,4 @@ host_prots21=2、次に1
 keys_title=ホストSSHキー
 keys_desc=このページでは、このホストのSSHキーを表示できます。
 keys_none=SSHD構成にHostKeyエントリが見つかりませんでした。
+keys_change=変化

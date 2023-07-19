@@ -12,6 +12,9 @@ index_return=lêersisteme lys
 index_none=U het nie toegang tot enige gemonteerde lêerstelsels nie.
 index_mount2=Monteer met wagwoord:
 index_root=Wortellêerstelsel
+index_show1=Wys alle lêerstelsels
+index_show0=Versteek nie-redigeerbare lêerstelsels
+index_addtype=van tipe
 
 edit_title=Wysig Mount
 create_title=Skep berg

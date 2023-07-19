@@ -200,8 +200,6 @@ mods_install=Asenna moduuli
 mods_local=Paikallisesta tiedostosta
 mods_uploaded=Lähetetystä tiedostosta
 mods_ftp=HTTP- tai FTP-URL-osoitteesta
-mods_standard=Vakiomoduuli osoitteesta <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=Vakiomoduuli
 mods_third=Kolmannen osapuolen moduuli alkaen
 mods_thsel=Valitse ..
 mods_nodeps=Ohitetaan riippuvuudet?
@@ -325,6 +323,9 @@ lang_err=Kielen tallentaminen epäonnistui
 lang_echarset=Puuttuva tai virheellisen näköinen merkistö
 lang_dateformat=Päivämäärän näyttömuoto
 lang_dateformat_dd/mon/yyyy=pp/kk/vvvv (eli 16/9/2001)
+lang_dateformat_dd/mm/yyyy=pp/kk/vvvv (eli 16/09/2001)
+lang_dateformat_mm/dd/yyyy=kk/pp/vvvv (eli 16.9.2001)
+lang_dateformat_yyyy/mm/dd=vvvv/kk/pp (eli 2001/09/16)
 
 ssl_title=SSL-salaus
 ssl_essl=Net::SSLeay perl -moduulia ei näytä olevan asennettuna järjestelmään. Asenna OpenSSL-kirjasto ja Net::SSLeay noudattamalla <a href='$1'>näitä ohjeita</a> Webmin-sivustolta.
@@ -694,6 +695,7 @@ log_tinstall=Asennettu teema $1
 log_clone=Kloonattu moduuli $1 $2
 log_delete=Poistettu moduuli $1
 log_os=Vaihdettu käyttöjärjestelmä
+log_fixrepo=Korjattu Webmin-arkisto
 log_lang=Vaihdettu globaali kieli
 log_startpage=Muutetut hakemistosivun asetukset
 log_upgrade=Päivitetty Webmin versioon $1
@@ -1010,6 +1012,9 @@ notify_updatedesc=Korjaa ongelman
 notif_updateok=Asenna päivitykset nyt
 notif_reboot=Viimeisimmät pakettipäivitykset (kuten uusi ytimen versio) vaativat uudelleenkäynnistyksen, jotta se olisi täysin asennettuna.
 notif_rebootok=Käynnistä uudelleen nyt
+notify_yumrepo=Järjestelmäsi käyttää vanhaa Webmin YUM -varastoa. Napsauta alla olevaa painiketta vaihtaaksesi uuteen arkiston URL-osoitteeseen <tt>$1</tt>, jotta voit käyttää uusinta allekirjoitusavaimemme ja varmistaa pääsyn päivitettyihin Webmin-versioihin.
+notify_aptrepo=Järjestelmäsi käyttää vanhaa Webmin APT -varastoa. Napsauta alla olevaa painiketta vaihtaaksesi uuteen <tt>stable</tt> arkiston URL-osoitteeseen <tt>$1</tt>, jotta voit käyttää uusinta allekirjoitusavaimemme ja varmistaa pääsyn päivitettyihin Webmin-versioihin.
+notif_fixreponow=Päivitä Webmin-arkisto
 
 status_title=Taustatilakokoelma
 status_header=Tilankeruutyön asetukset

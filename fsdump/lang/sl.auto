@@ -95,6 +95,7 @@ dump_bcomp=Vmesni podatki stisnjeni v bloke?
 dump_xdev=Omejite varnostno kopijo na en datotečni sistem?
 dump_update2=Samo dodate nove datoteke v arhiv?
 dump_ignoreread=Ignorirate napake pri branju datotek?
+dump_ignorechanged=Prezreti napake, če se datoteke spremenijo?
 dump_notape=Poziv za nov trak po potrebi?
 dump_rmt=Pot do <tt>rmt</tt> na oddaljenem sistemu
 dump_links=Ali sledite simbolnim povezavam?

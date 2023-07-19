@@ -451,7 +451,10 @@ left_filter=ای میل کے فلٹرز
 left_pass=پاس ورڈ تبدیل کریں
 left_sig=دستخط میں ترمیم کریں
 
+editor_heading=سرخی
+editor_paragraph=پیراگراف
 editor_fontfamily_default=طے شدہ
+editor_fontfamily_monospace=فکسڈ چوڑائی
 editor_font_small=چھوٹا
 editor_font_normal=نارمل
 editor_font_medium=درمیانہ

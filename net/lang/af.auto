@@ -16,6 +16,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=Windows
+index_mode_nm=Netwerkbestuurder
 
 ifcs_title=Netwerk-koppelvlakke
 ifcs_now=Nou aktief
@@ -276,6 +277,8 @@ log_apply_bfics=Aktiveer $1 -opstart-tyd-koppelvlakke
 log_create_route=Aktiewe roete vir $1 geskep
 log_create_defroute=Skep aktiewe standaardroete
 log_delete_routes=$1 aktiewe roetes is uitgevee
+log_delete_aifcs=Gedeaktiveerde $1-koppelvlakke
+log_delete_bifcs=Het $1 koppelvlakke uitgevee
 
 acl_ifcs=Kan netwerk koppelvlakke redigeer?
 acl_routes=Kan routing en gateways verander?

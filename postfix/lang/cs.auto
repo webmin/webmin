@@ -108,6 +108,8 @@ opts_notify_classes_sel=Vybráno níže
 
 opts_edir=Mapové soubory můžete zadat pouze pod $1
 
+opts_resolve_dequoted_address=Zabránit použití @ v názvech poštovních schránek?
+
 opts_fallback_transport=Volitelný transport pro neznámé příjemce
 opts_prepend_delivered_header_default=Výchozí
 
@@ -121,6 +123,7 @@ opts_delay_warning_time_default2=Výchozí Postfix
 opts_content_filter_default=Žádný
 
 opts_relay_recipient_maps=Mapa povolených adres pro předávání
+opts_smtpd_discard_ehlo_keywords=Klíčová slova SMTP EHLO, která se nemají odesílat
 smtpd_nomap=Dosud nebyla zadána žádná mapa povolených adres pro přenos.
 smtpd_nomap2=Dosud nebyla zadána žádná mapa pro omezení adres odesílatele.
 smtpd_map=Povolené adresy pro předávání
@@ -244,6 +247,10 @@ header_title=Kontroly záhlaví
 header_ecannot=Není dovoleno upravovat kontroly záhlaví
 header_eregexp=Mapa pro kontrolu záhlaví musí být ve formátu <tt>regexp:</tt> <i>název_souboru</i>
 opts_header_checks=Tabulky pro kontrolu záhlaví MIME
+opts_mime_header_checks=Kontrolní tabulky MIME záhlaví
+opts_header_checks_no_map=(Aktuálně není definována žádná mapa pro kontrolu záhlaví. Nejprve definujte mapu a poté ji můžete upravovat)
+
+opts_mime_header_checks_no_map=(Aktuálně není definována žádná mapa pro kontrolu záhlaví MIME. Nejprve definujte mapu a poté ji můžete upravovat)
 header_name=Regulární výraz
 header_value=Akce pro zápasy
 header_discard=Zahodit (se zprávou protokolu..)

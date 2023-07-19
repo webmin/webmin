@@ -451,7 +451,10 @@ left_filter=ตัวกรองอีเมล
 left_pass=เปลี่ยนรหัสผ่าน
 left_sig=แก้ไขลายเซ็น
 
+editor_heading=หัวเรื่อง
+editor_paragraph=ย่อหน้า
 editor_fontfamily_default=ค่าเริ่มต้น
+editor_fontfamily_monospace=ความกว้างคงที่
 editor_font_small=เล็ก
 editor_font_normal=ปกติ
 editor_font_medium=ปานกลาง

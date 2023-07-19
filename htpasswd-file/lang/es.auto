@@ -1,0 +1,54 @@
+index_title=Administrar archivo HTPasswd
+index_econfig=Este módulo no se puede utilizar hasta que se haya establecido un archivo de contraseña en la página de <a href='$1'>configuración del módulo</a>.
+index_emd5=Este módulo se ha <a href='$1'>configurado</a> para usar el cifrado MD5 para las contraseñas, pero el módulo Perl $2 no está instalado. <a href='$3'>Haga clic aquí</a> para descargar e instalar el módulo $2.
+index_header=Usuarios del archivo de contraseñas
+index_none=No existen usuarios en el archivo de contraseña configurado.
+index_add=Agregue un nuevo usuario al archivo de contraseñas.
+index_file=Usuarios en el archivo de contraseñas $1
+index_sync=Sincronización de usuarios de Unix
+index_return=Lista de usuarios
+index_eversion=Este módulo ha sido <a href='$1'>configurado</a> para usar el cifrado MD5 para contraseñas, pero la versión del módulo Usuarios y Grupos instalada en su sistema no incluye las funciones MD5 necesarias. Actualice a la versión 1.114 o posterior.
+index_synccreate=¿Agregar un usuario cuando se crea un usuario de Unix?
+index_syncmodify=¿Renombrar o cambiar la contraseña de un usuario cuando se modifica el usuario Unix correspondiente?
+index_syncdelete=¿Eliminar un usuario cuando se elimina el usuario de Unix correspondiente?
+index_ssave=Guardar y aplicar
+
+edit_title1=Crear usuario
+edit_title2=editar usuario
+edit_header=Detalles del usuario del archivo de contraseñas
+edit_user=Nombre de usuario
+edit_enabled=¿Activado?
+edit_pass=Contraseña
+edit_pass1=Dejar sin cambios
+edit_pass0=Ajustado a
+edit_passfrom=Cambiar de
+edit_passto=a nueva contraseña
+edit_single=usuario a cambiar
+edit_return=formulario de cambio de contraseña
+
+save_err=No se pudo guardar el usuario
+save_euser1=Nombre de usuario faltante
+save_euser2=El nombre de usuario no puede contener el carácter :
+save_epass=La contraseña no puede contener el carácter :
+save_eclash=Ya existe un usuario con el mismo nombre
+save_eoldpass=La contraseña anterior no es correcta
+save_ecreate=No tienes permiso para crear usuarios
+save_edelete=No tienes permiso para eliminar usuarios
+save_euser=el usuario no existe
+save_title=Guardado por el usuario
+save_done=El usuario $1 ha sido actualizado.
+
+acl_repeat=¿Debe ingresar la contraseña anterior al cambiar?
+acl_create=¿Se pueden crear nuevos usuarios?
+acl_rename=¿Puede cambiar el nombre de los usuarios?
+acl_delete=¿Se pueden eliminar usuarios?
+acl_sync=¿Se puede configurar la sincronización?
+acl_enable=¿Se pueden habilitar y deshabilitar usuarios?
+acl_single=¿Omitir la lista de usuarios e ir directamente al formulario de cambio de contraseña?
+
+sync_ecannot=No tienes permiso para configurar la sincronización
+
+log_sync=Opciones de sincronización modificadas
+log_create=Usuario creado $1
+log_delete=Usuario eliminado $1
+log_modify=Usuario modificado $1

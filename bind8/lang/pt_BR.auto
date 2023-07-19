@@ -11,6 +11,8 @@ master_inview=$1 na visualização $2
 master_egone=A zona $1 não existe em nenhuma visualização
 master_egone2=A zona $1 não existe!
 master_egone3=A zona $1 na exibição $2 não existe!
+master_vmin=Esta zona é gerenciada pelo Virtualmin. Os registros devem ser editados usando a IU do Virtualmin, para garantir que sejam consistentes com outras configurações do servidor virtual.
+master_vminalias=Esta zona é um alias de um domínio Virtualmin, que é mantido em sincronia com seu destino. Os registros nunca devem ser editados aqui, pois quaisquer alterações serão substituídas!
 
 delete_vwarn=Esta zona está associada ao domínio Virtualmin $1 e, portanto, não deve ser excluída aqui!
 

@@ -12,6 +12,9 @@ index_return=lista sistemelor de fișiere
 index_none=Nu aveți acces la niciun sistem de fișiere montat.
 index_mount2=Montare cu parolă:
 index_root=Sistem de fișiere rădăcină
+index_show1=Afișați toate sistemele de fișiere
+index_show0=Ascunde sistemele de fișiere needitabile
+index_addtype=de tip
 
 edit_title=Editează Muntele
 create_title=Creați Mount

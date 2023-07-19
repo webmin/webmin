@@ -15,7 +15,10 @@ left_filter=E-mailfilters
 left_pass=Verander wachtwoord
 left_sig=Handtekening bewerken
 
+editor_heading=Rubriek
+editor_paragraph=Paragraaf
 editor_fontfamily_default=Standaard
+editor_fontfamily_monospace=Vaste Breedte
 editor_font_small=Klein
 editor_font_normal=Normaal
 editor_font_medium=Medium

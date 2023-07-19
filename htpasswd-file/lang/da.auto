@@ -1,0 +1,54 @@
+index_title=Administrer HTPasswd-fil
+index_econfig=Dette modul kan ikke bruges, før en adgangskodefil er blevet indstillet på <a href='$1'>modulkonfigurationssiden</a>.
+index_emd5=Dette modul er blevet <a href='$1'>konfigureret</a> til at bruge MD5-kryptering til adgangskoder, men $2 Perl-modulet er ikke installeret. <a href='$3'>Klik her</a> for at få $2-modulet downloadet og installeret.
+index_header=Brugere af adgangskodefil
+index_none=Der findes ingen brugere i den konfigurerede adgangskodefil.
+index_add=Tilføj en ny bruger til adgangskodefilen.
+index_file=Brugere i adgangskodefil $1
+index_sync=Unix-brugersynkronisering
+index_return=brugerliste
+index_eversion=Dette modul er blevet <a href='$1'>konfigureret</a> til at bruge MD5-kryptering til adgangskoder, men versionen af modulet Brugere og grupper, der er installeret på dit system, inkluderer ikke de nødvendige MD5-funktioner. Opgrader til version 1.114 eller nyere.
+index_synccreate=Tilføj en bruger, når der oprettes en Unix-bruger?
+index_syncmodify=Omdøbe eller ændre adgangskoden for en bruger, når den tilsvarende Unix-bruger ændres?
+index_syncdelete=Vil du slette en bruger, når den tilsvarende Unix-bruger er slettet?
+index_ssave=Gem og anvend
+
+edit_title1=Opret bruger
+edit_title2=Rediger bruger
+edit_header=Adgangskodefil brugeroplysninger
+edit_user=Brugernavn
+edit_enabled=Aktiveret?
+edit_pass=Adgangskode
+edit_pass1=Lad være uændret
+edit_pass0=Indstillet til
+edit_passfrom=Skift fra
+edit_passto=til ny adgangskode
+edit_single=Bruger til at ændre
+edit_return=formular til ændring af adgangskode
+
+save_err=Brugeren kunne ikke gemmes
+save_euser1=Mangler brugernavn
+save_euser2=Brugernavnet må ikke indeholde tegnet :
+save_epass=Adgangskoden må ikke indeholde tegnet :
+save_eclash=Der findes allerede en bruger med samme navn
+save_eoldpass=Gammel adgangskode er ikke korrekt
+save_ecreate=Du må ikke oprette brugere
+save_edelete=Du må ikke slette brugere
+save_euser=bruger eksisterer ikke
+save_title=Bruger gemt
+save_done=Brugeren $1 er blevet opdateret.
+
+acl_repeat=Skal du indtaste gammel adgangskode, når du skifter?
+acl_create=Kan du oprette nye brugere?
+acl_rename=Kan du omdøbe brugere?
+acl_delete=Kan du slette brugere?
+acl_sync=Kan synkronisering konfigureres?
+acl_enable=Kan aktivere og deaktivere brugere?
+acl_single=Vil du springe brugerlisten over og gå direkte til formularen til ændring af adgangskode?
+
+sync_ecannot=Du har ikke tilladelse til at konfigurere synkronisering
+
+log_sync=Ændrede synkroniseringsmuligheder
+log_create=Oprettet bruger $1
+log_delete=Slettet bruger $1
+log_modify=Ændret bruger $1

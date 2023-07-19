@@ -147,6 +147,8 @@ master_defttl=Erregistroen bizitzeko denbora lehenetsia
 master_edefttl='$1' ez da erregistroen denbora bizitzeko balio lehenetsia
 master_esoagone=Ez da SOA erregistrorik aurkitu!
 master_einclude=Ez da txantiloi fitxategi gehigarririk existitzen
+master_vmin=Zona hau Virtualmin-ek kudeatzen du. Erregistroak Virtualmin UI erabiliz editatu behar dira, zerbitzari birtualeko beste ezarpen batzuekin bat datozela ziurtatzeko.
+master_vminalias=Zona hau Virtualmin domeinu baten alias bat da, zeina helbururekin sinkronizatuta mantentzen dena. Erregistroak ez dira inoiz hemen editatu behar, edozein aldaketa gainidatzi egingo baita!
 
 delete_title=Ezabatu zona
 delete_mesg=Ziur $1 zona ezabatu nahi duzula? Erregistro guztiak eta zona fitxategia ezabatuko dira.

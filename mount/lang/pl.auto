@@ -2,6 +2,9 @@ index_used=Używany
 index_none=Nie masz dostępu do żadnego zamontowanego systemu plików.
 index_mount2=Zamontuj za pomocą hasła:
 index_root=Zrootowany system plików
+index_show1=Pokaż wszystkie systemy plików
+index_show0=Ukryj nieedytowalne systemy plików
+index_addtype=typu
 
 edit_usage=Użycie dysku
 edit_comm_opt=Typowe opcje montowania

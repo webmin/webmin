@@ -200,8 +200,6 @@ mods_install=Instalatu modulua
 mods_local=Tokiko fitxategitik
 mods_uploaded=Kargatutako fitxategitik
 mods_ftp=HTTP edo FTP URLtik
-mods_standard=Modulu estandarra <a href='$1' target=_new>www.webmin.com</a>
-mods_standard2=Modulu estandarra
 mods_third=Hirugarrenen modulua:
 mods_thsel=Aukeratu ..
 mods_nodeps=Mendekotasunak alde batera utzi?
@@ -325,6 +323,9 @@ lang_err=Huts egin du hizkuntza gordetzean
 lang_echarset=Falta edo itxura baliogabea duen karaktere-multzoa
 lang_dateformat=Datak bistaratzeko formatua
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (hau da, 2001/iraila/16a)
+lang_dateformat_dd/mm/yyyy=dd/mm/aaaa (hau da, 2001/09/16)
+lang_dateformat_mm/dd/yyyy=mm/dd/aaaa (hau da, 2001/09/16)
+lang_dateformat_yyyy/mm/dd=yyyy/mm/dd (hau da, 2001/09/16)
 
 ssl_title=SSL enkriptatzea
 ssl_essl=Ez dirudi Net::SSLeay perl modulua zure sisteman instalatuta dagoela. OpenSSL liburutegia eta Net::SSLeay instalatzeko, jarraitu <a href='$1'>argibide hauek</a> Webmin webgunetik.
@@ -694,6 +695,7 @@ log_tinstall=Instalatutako gaia $1
 log_clone=Klonatutako modulua $1 to $2
 log_delete=$1 modulua ezabatu da
 log_os=Aldatutako sistema eragilea
+log_fixrepo=Webmin biltegi finkoa
 log_lang=Hizkuntza global aldatua
 log_startpage=Aldatutako aurkibide orriaren aukerak
 log_upgrade=Webmin bertsio berritua $1 bertsiora
@@ -1010,6 +1012,9 @@ notify_updatedesc=Arazoak konpontzen ditu
 notif_updateok=Instalatu eguneraketak orain
 notif_reboot=Paketeen eguneratze berriek (hala nola, nukleo bertsio berria) berrabiarazpena guztiz aplikatu behar dute.
 notif_rebootok=Berrabiarazi orain
+notify_yumrepo=Zure sistema Webmin YUM biltegi zaharra erabiltzen ari da. Egin klik beheko botoian <tt>$1</tt> biltegiaren URL berrira aldatzeko, gure azken sinadura-gakoa erabiltzeko eta Webmin bertsio eguneratuen sarbidea ziurtatzeko.
+notify_aptrepo=Zure sistema Webmin APT biltegi zaharra erabiltzen ari da. Egin klik beheko botoian <tt>$1</tt> biltegi <tt>stable</tt> URL berrira aldatzeko, gure azken sinadura-gakoa erabiltzeko eta Webmin bertsio eguneratuetarako sarbidea ziurtatzeko.
+notif_fixreponow=Eguneratu Webmin biltegia
 
 status_title=Atzeko planoaren egoera bilduma
 status_header=Egoera bilketaren lanaren ezarpenak

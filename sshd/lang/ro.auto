@@ -231,6 +231,7 @@ sync_auto=&lt;Automatic&gt;
 keys_title=Cheile SSH gazdă
 keys_desc=Această pagină vă permite să vizualizați tastele SSH pentru această gazdă.
 keys_none=Nu am putut găsi nicio înregistrare HostKey în configurația SSHD.
+keys_change=Schimbare
 
 manual_title=Editați fișierele de configurare
 manual_ecannot=Nu aveți voie să editați fișierul de configurare al serverului SSH

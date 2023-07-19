@@ -147,6 +147,8 @@ master_defttl=Privzeti čas za življenje za zapise
 master_edefttl='$1' ni veljaven privzeti čas za življenje za zapise
 master_esoagone=Ni SOA zapisa!
 master_einclude=Dodatna datoteka predloge ne obstaja
+master_vmin=To območje upravlja Virtualmin. Zapise je treba urejati z uporabniškim vmesnikom Virtualmin, da se zagotovi skladnost z drugimi nastavitvami virtualnega strežnika.
+master_vminalias=To območje je vzdevek domene Virtualmin, ki je sinhronizirana s svojim ciljem. Zapisov nikoli ne urejajte tukaj, saj bodo vse spremembe prepisane!
 
 delete_title=Zbriši cono
 delete_mesg=Ali ste prepričani, da želite izbrisati cono $1? Vsi zapisi in zonska datoteka bodo izbrisani.

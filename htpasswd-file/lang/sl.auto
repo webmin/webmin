@@ -1,0 +1,54 @@
+index_title=Upravljanje datoteke HTPasswd
+index_econfig=Tega modula ni mogoče uporabiti, dokler na strani <a href='$1'>konfiguracije modula</a> ni nastavljena datoteka z geslom.
+index_emd5=Ta modul je bil <a href='$1'>konfiguriran</a> za uporabo šifriranja MD5 za gesla, vendar modul $2 Perl ni nameščen. <a href='$3'>Kliknite tukaj</a> za prenos in namestitev modula $2.
+index_header=Uporabniki datoteke z gesli
+index_none=V datoteki s konfiguriranim geslom ni nobenega uporabnika.
+index_add=Dodajte novega uporabnika v datoteko z geslom.
+index_file=Uporabniki v datoteki z gesli $1
+index_sync=Unix uporabniška sinhronizacija
+index_return=seznam uporabnikov
+index_eversion=Ta modul je bil <a href='$1'>konfiguriran</a> za uporabo šifriranja MD5 za gesla, vendar različica modula Uporabniki in skupine, nameščena v vašem sistemu, ne vključuje potrebnih funkcij MD5. Nadgradite na različico 1.114 ali novejšo.
+index_synccreate=Dodati uporabnika, ko je ustvarjen uporabnik Unix?
+index_syncmodify=Preimenovati ali spremeniti geslo uporabnika, ko je ustrezen uporabnik Unix spremenjen?
+index_syncdelete=Želite izbrisati uporabnika, ko je izbrisan ustrezni uporabnik Unix?
+index_ssave=Shrani in uporabi
+
+edit_title1=Ustvari uporabnika
+edit_title2=Uredi uporabnika
+edit_header=Podrobnosti o uporabniku datoteke z geslom
+edit_user=Uporabniško ime
+edit_enabled=Omogočeno?
+edit_pass=Geslo
+edit_pass1=Pusti nespremenjeno
+edit_pass0=Nastavljena
+edit_passfrom=Spremeni od
+edit_passto=na novo geslo
+edit_single=Uporabnik za spremembo
+edit_return=obrazec za spremembo gesla
+
+save_err=Uporabnika ni bilo mogoče shraniti
+save_euser1=Manjka uporabniško ime
+save_euser2=Uporabniško ime ne sme vsebovati znaka :
+save_epass=Geslo ne sme vsebovati znaka :
+save_eclash=Uporabnik z istim imenom že obstaja
+save_eoldpass=Staro geslo ni pravilno
+save_ecreate=Nimate dovoljenja za ustvarjanje uporabnikov
+save_edelete=Nimate dovoljenja za brisanje uporabnikov
+save_euser=Uporabnik ne obstaja
+save_title=Uporabnik shranjen
+save_done=Uporabnik $1 je bil posodobljen.
+
+acl_repeat=Ali morate ob menjavi vnesti staro geslo?
+acl_create=Lahko ustvari nove uporabnike?
+acl_rename=Ali lahko preimenujem uporabnike?
+acl_delete=Ali lahko izbriše uporabnike?
+acl_sync=Lahko konfigurirate sinhronizacijo?
+acl_enable=Ali lahko omogoči in onemogoči uporabnike?
+acl_single=Preskočiti seznam uporabnikov in iti neposredno na obrazec za spremembo gesla?
+
+sync_ecannot=Nimate dovoljenja za konfiguracijo sinhronizacije
+
+log_sync=Spremenjene možnosti sinhronizacije
+log_create=Ustvarjen uporabnik $1
+log_delete=Izbrisan uporabnik $1
+log_modify=Spremenjen uporabnik $1

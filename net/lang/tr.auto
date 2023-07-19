@@ -12,6 +12,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=pencereler
+index_mode_nm=Ağ yöneticisi
 
 ifcs_activedesc=Bu tabloda listelenen arabirimler şu anda sistemde etkindir. Çoğu durumda, bunları <b>Önyüklemede Etkinleştirildi</b> sekmesi altında düzenlemeniz gerekir.
 ifcs_bootdesc=Bu tabloda listelenen arabirimler, sistem önyükleme yaptığında etkinleştirilir ve genellikle de şimdi etkin olur.
@@ -127,6 +128,8 @@ log_apply_bfics=Etkinleştirilen $1 önyükleme zamanı arabirimleri
 log_create_route=$1 için etkin rota oluşturuldu
 log_create_defroute=Aktif varsayılan rota oluşturuldu
 log_delete_routes=$1 etkin rota silindi
+log_delete_aifcs=$1 arayüzü devre dışı bırakıldı
+log_delete_bifcs=$1 arayüz silindi
 
 acl_hide=Düzenlenemeyen arayüzler gizlensin mi?
 acl_sysinfo=Gösterge Tablosunda kullanılabilir ağ arayüzlerini göster

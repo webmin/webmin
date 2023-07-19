@@ -375,7 +375,10 @@ left_filter=E-postfilter
 left_pass=Ändra lösenord
 left_sig=Redigera signatur
 
+editor_heading=Rubrik
+editor_paragraph=Paragraf
 editor_fontfamily_default=Standard
+editor_fontfamily_monospace=Fast bredd
 editor_font_small=Små
 editor_font_normal=Vanligt
 editor_font_medium=Medium

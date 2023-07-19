@@ -39,6 +39,7 @@ dirs_header=PHP-skript- och tilläggskataloginställningar
 dirs_include=Sök i kataloger för inkluderar
 dirs_below=Anges nedan ..
 dirs_ext=Katalog för tillägg
+dirs_exts=Förlängningar att ladda
 dirs_upload=Tillåt filuppladdningar?
 dirs_utmp=Tillfällig katalog för uppladdade filer
 dirs_err=Det gick inte att spara kataloginställningar
@@ -90,12 +91,14 @@ limits_post=Maximal HTTP POST-storlek
 limits_upload=Maximal filuppladdningsstorlek
 limits_exec=Maximal exekveringstid
 limits_input=Maximal ingångsparningstid
+limits_vars=Maximal gräns för indatavariabler
 limits_err=Det gick inte att spara resursgränser
 limits_emem=Saknas eller ogiltig maximal minnesallokering
 limits_epost=Saknas eller ogiltig maximal HTTP POST-storlek
 limits_eupload=Saknas eller ogiltig maximal filuppladdningsstorlek
 limits_eexec=Saknas eller ogiltig maximal körningstid
 limits_einput=Saknad eller ogiltig maximal ingångsfördelningstid
+limits_evars=Gräns för maximala indatavariabler saknas eller är ogiltig
 
 errors_title=Felloggning
 errors_header=Felmeddelande och loggningsalternativ
@@ -164,3 +167,6 @@ acl_anyfile=Kan redigera vilken fil som helst som en PHP-konfiguration?
 acl_manual=Kan manuellt redigera konfigurationsfiler?
 acl_inis=Ytterligare konfigurationsfiler <br>(i<i> filnamn </i>=<i> beskrivning </i> format)
 acl_user=Läs och skriv filer som användare
+
+opt_default=Standardvärde: <tt>$1</tt>
+opt_default_unknown=Okänd

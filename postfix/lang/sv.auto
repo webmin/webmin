@@ -109,6 +109,8 @@ opts_notify_classes_sel=Valt nedan
 
 opts_edir=Du får bara ange kartfiler under $1
 
+opts_resolve_dequoted_address=Förhindra användning av @ i brevlådenamn?
+
 opts_mailbox_size_limit=Maximal storlek på en brevlåda
 
 opts_mynetworks_style=Automatiska lokala nätverk
@@ -119,6 +121,7 @@ opts_delay_warning_time_default2=Postfix standard
 opts_content_filter_default=Ingen
 
 opts_relay_recipient_maps=Karta för tillåtna adresser för vidarebefordran
+opts_smtpd_discard_ehlo_keywords=SMTP EHLO nyckelord att inte skicka
 smtpd_nomap=Det finns ännu ingen karta för tillåtna adresser för vidarebefordran.
 smtpd_nomap2=Ingen karta för begränsningar för avsändaradresser har ännu lagts in.
 smtpd_map=Tillåtna adresser för vidarebefordran
@@ -389,6 +392,9 @@ header_title=Header Checks
 header_ecannot=Du får inte redigera rubrikcheck
 header_eregexp=Kartan för rubrikkontroller måste vara i formatet <tt>regexp:</tt> <i>filnamn</i>
 opts_header_checks=MIME-kontrolltabeller
+opts_mime_header_checks=MIME-huvudkontrolltabeller
+opts_header_checks_no_map=(Ingen rubrikkontrollkarta är för närvarande definierad. Definiera en karta först, sedan kan du redigera den)
+opts_mime_header_checks_no_map=(Ingen MIME-rubrikkontrollkarta är för närvarande definierad. Definiera en karta först, sedan kan du redigera den)
 header_name=Vanligt uttryck
 header_value=Åtgärd för matcher
 header_discard=Kassera (med loggmeddelande..)

@@ -147,6 +147,8 @@ master_defttl=Noklusētais ierakstu dzīves laiks
 master_edefttl='$1' nav derīgs ierakstu noklusējuma dzīves laiks
 master_esoagone=Nav atrasts neviens SOA ieraksts.
 master_einclude=Papildu veidnes fails neeksistē
+master_vmin=Šo zonu pārvalda Virtualmin. Ieraksti ir jārediģē, izmantojot Virtualmin UI, lai nodrošinātu to atbilstību citiem virtuālā servera iestatījumiem.
+master_vminalias=Šī zona ir Virtualmin domēna aizstājvārds, kas tiek sinhronizēts ar tā mērķi. Ierakstus nekad nevajadzētu rediģēt šeit, jo visas izmaiņas tiks pārrakstītas!
 
 delete_title=Dzēst zonu
 delete_mesg=Vai tiešām vēlaties izdzēst zonu $1? Visi ieraksti un zonas fails tiks izdzēsti.

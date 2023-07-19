@@ -95,6 +95,7 @@ dump_bcomp=Buffer de dados compactados em blocos?
 dump_xdev=Limitar o backup a um sistema de arquivos?
 dump_update2=Basta adicionar novos arquivos para arquivar?
 dump_ignoreread=Ignorar erros de leitura nos arquivos?
+dump_ignorechanged=Ignorar erros se os arquivos forem alterados?
 dump_notape=Solicitar nova fita, se necessário?
 dump_rmt=Caminho para <tt>rmt</tt> no sistema remoto
 dump_links=Seguir links simbólicos?

@@ -40,7 +40,10 @@ left_filter=E-mailové filtry
 left_pass=Změnit heslo
 left_sig=Upravit podpis
 
+editor_heading=Nadpis
+editor_paragraph=Odstavec
 editor_fontfamily_default=Výchozí
+editor_fontfamily_monospace=Pevná šířka
 editor_font_small=Malý
 editor_font_normal=Normální
 editor_font_medium=Střední

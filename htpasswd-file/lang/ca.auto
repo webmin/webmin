@@ -1,0 +1,54 @@
+index_title=Gestioneu el fitxer HTPasswd
+index_econfig=Aquest mòdul no es pot utilitzar fins que s'hagi establert un fitxer de contrasenya a la pàgina de <a href='$1'>configuració del mòdul</a>.
+index_emd5=Aquest mòdul s'ha <a href='$1'>configurat</a> per utilitzar el xifratge MD5 per a contrasenyes, però el mòdul $2 Perl no està instal·lat. <a href='$3'>Feu clic aquí</a> per descarregar i instal·lar el mòdul $2.
+index_header=Usuaris del fitxer de contrasenyes
+index_none=No hi ha usuari al fitxer de contrasenya configurat.
+index_add=Afegiu un usuari nou al fitxer de contrasenyes.
+index_file=Usuaris al fitxer de contrasenyes $1 
+index_sync=Sincronització d'usuaris Unix
+index_return=llista d'usuaris
+index_eversion=Aquest mòdul s'ha <a href='$1'>configurat</a> per utilitzar el xifratge MD5 per a les contrasenyes, però la versió del mòdul Usuaris i grups instal·lat al vostre sistema no inclou les funcions MD5 necessàries. Actualitzeu a la versió 1.114 o posterior.
+index_synccreate=Afegiu un usuari quan es creï un usuari Unix?
+index_syncmodify=Canvieu el nom o canvieu la contrasenya d'un usuari quan es modifiqui l'usuari Unix corresponent?
+index_syncdelete=Vols suprimir un usuari quan s'elimina l'usuari Unix corresponent?
+index_ssave=Desa i aplica
+
+edit_title1=Crea usuari
+edit_title2=Edita usuari
+edit_header=Dades de l'usuari del fitxer de contrasenyes
+edit_user=Nom d'usuari
+edit_enabled=Habilitat?
+edit_pass=Contrasenya
+edit_pass1=Deixar sense canvis
+edit_pass0=Ajustat a
+edit_passfrom=Canviar de
+edit_passto=a la nova contrasenya
+edit_single=Usuari a canviar
+edit_return=formulari de canvi de contrasenya
+
+save_err=No s'ha pogut desar l'usuari
+save_euser1=Falta el nom d'usuari
+save_euser2=El nom d'usuari no pot contenir el caràcter :
+save_epass=La contrasenya no pot contenir el caràcter :
+save_eclash=Ja existeix un usuari amb el mateix nom
+save_eoldpass=La contrasenya antiga no és correcta
+save_ecreate=No teniu permís per crear usuaris
+save_edelete=No teniu permís per suprimir usuaris
+save_euser=L'usuari no existeix
+save_title=Usuari desat
+save_done=L'usuari $1 s'ha actualitzat.
+
+acl_repeat=Heu d'introduir la contrasenya antiga quan la canvieu?
+acl_create=Es poden crear nous usuaris?
+acl_rename=Es poden canviar el nom dels usuaris?
+acl_delete=Es poden suprimir usuaris?
+acl_sync=Es pot configurar la sincronització?
+acl_enable=Es poden activar i desactivar usuaris?
+acl_single=Ometeu la llista d'usuaris i aneu directament al formulari de canvi de contrasenya?
+
+sync_ecannot=No teniu permís per configurar la sincronització
+
+log_sync=S'han canviat les opcions de sincronització
+log_create=S'ha creat l'usuari $1 
+log_delete=S'ha suprimit l'usuari $1 
+log_modify=S'ha modificat l'usuari $1 

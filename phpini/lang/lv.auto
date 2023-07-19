@@ -39,6 +39,7 @@ dirs_header=PHP skripta un paplašinājumu direktoriju iestatījumi
 dirs_include=Meklēšanas direktorijos iekļauj
 dirs_below=Sarakstā zem ..
 dirs_ext=Paplašinājumu direktorijs
+dirs_exts=Ielādējamie paplašinājumi
 dirs_upload=Vai atļaut failu augšupielādi?
 dirs_utmp=Pagaidu direktorija augšupielādētajiem failiem
 dirs_err=Neizdevās saglabāt direktoriju iestatījumus
@@ -90,12 +91,14 @@ limits_post=Maksimālais HTTP POST lielums
 limits_upload=Maksimālais faila augšupielādes lielums
 limits_exec=Maksimālais izpildes laiks
 limits_input=Maksimālais ievades parsēšanas laiks
+limits_vars=Maksimālais ievades mainīgo ierobežojums
 limits_err=Neizdevās saglabāt resursu ierobežojumus
 limits_emem=Trūkst vai nav derīgs maksimālais atmiņas piešķīrums
 limits_epost=Trūkst vai nav derīgs maksimālais HTTP POST lielums
 limits_eupload=Trūkst vai nav derīgs maksimālais faila augšupielādes lielums
 limits_eexec=Trūkst vai nav derīgs maksimālais izpildes laiks
 limits_einput=Trūkst vai nav derīgs maksimālais ievades parsēšanas laiks
+limits_evars=Trūkst vai nederīgs maksimālā ievades mainīgo ierobežojums
 
 errors_title=Kļūda reģistrējoties
 errors_header=Kļūdu ziņojumu parādīšana un reģistrēšanas iespējas
@@ -164,3 +167,6 @@ acl_anyfile=Vai var rediģēt jebkuru failu kā PHP konfigurāciju?
 acl_manual=Vai var manuāli rediģēt konfigurācijas failus?
 acl_inis=Papildu konfigurācijas faili <br>(<i> faila nosaukumā </i>=<i> apraksts </i> formātā)
 acl_user=Lasīt un rakstīt failus kā lietotājam
+
+opt_default=Noklusējuma vērtība: <tt>$1</tt>
+opt_default_unknown=Nezināms

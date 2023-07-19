@@ -56,6 +56,7 @@ dump_bcomp=将压缩数据缓冲到块中？
 dump_xdev=将备份限制为一个文件系统？
 dump_update2=只需添加新文件即可存档？
 dump_ignoreread=忽略文件上的读取错误？
+dump_ignorechanged=如果文件更改则忽略错误？
 dump_notape=如果需要，请提示是否购买新磁带？
 dump_rmt=远程系统上<tt>rmt</tt>的路径
 dump_links=跟随符号链接？

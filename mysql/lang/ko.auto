@@ -225,6 +225,7 @@ exec_iheader=텍스트 파일 가져 오기 옵션
 exec_created=$1 개의 테이블이 생성되었습니다.
 exec_inserted=$1 개의 레코드가 삽입되었습니다.
 exec_cs=데이터의 문자 세트
+exec_collationdown=데이터베이스 데이터 정렬이 <tt>$1</tt> 에서 <tt>$2</tt> 로 다운그레이드됨
 
 tprivs_derr=테이블 권한을 삭제하지 못했습니다.
 tprivs_enone=선택된 테이블이 없습니다
@@ -254,6 +255,8 @@ acl_views=보기를보고 관리 할 수 있습니까?
 acl_files=로컬 파일에서 SQL을 실행할 수 있습니까?
 
 log_cnf=변경된 MySQL 서버 구성
+log_ssl=변경된 SSL 인증서
+log_genssl=생성된 SSL 인증서
 log_kill=$1 데이터베이스 연결이 종료되었습니다
 log_vars=$1 시스템 변수 수정
 log_dbs_delete=$1 데이터베이스가 삭제되었습니다.
@@ -534,3 +537,18 @@ mysqlpass_esafe=안전 모드로 시작하지 못했습니다  : $1
 mysqlpass_estartup=시작 실패  : $1 
 mysqlpass_echange=암호 변경 실패  : $1 
 mysqlpass_echange_forcepass=분실하거나 잊어 버린 경우 주어진 암호를 강제로 덮어 씁니다.
+
+ssl_title=SSL 인증서
+ssl_header=MySQL SSL 옵션
+ssl_cert=SSL 인증서 파일
+ssl_key=SSL 키 파일
+ssl_ca=SSL CA 인증서 파일
+ssl_req=클라이언트가 SSL을 사용해야 합니까?
+ssl_none=설정되지 않음
+ssl_gen=인증서 및 키 생성
+ssl_err=SSL 옵션을 저장하지 못했습니다
+ssl_ecert=누락되었거나 존재하지 않는 SSL 인증 파일
+ssl_ekey=누락되었거나 존재하지 않는 SSL 키 파일
+ssl_eca=SSL CA 파일이 없거나 존재하지 않음
+ssl_ecertexists=SSL 인증서 파일 $1이(가) 이미 있습니다!
+ssl_ekeyexists=SSL 키 파일 $1이(가) 이미 있습니다!

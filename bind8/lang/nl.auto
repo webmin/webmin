@@ -9,6 +9,8 @@ master_inview=$1 in zicht $2
 master_egone=Zone $1 bestaat in geen enkele weergave
 master_egone2=Zone $1 bestaat niet!
 master_egone3=Zone $1 in zicht $2 bestaat niet!
+master_vmin=Deze zone wordt beheerd door Virtualmin. Records moeten worden bewerkt met behulp van de gebruikersinterface van Virtualmin, om ervoor te zorgen dat ze consistent zijn met andere virtuele serverinstellingen.
+master_vminalias=Deze zone is een alias van een Virtualmin-domein, dat synchroon wordt gehouden met zijn doel. Records mogen hier nooit worden bewerkt, omdat eventuele wijzigingen worden overschreven!
 
 delete_vwarn=Deze zone is gekoppeld aan het Virtualmin-domein $1 en mag hier dus niet worden verwijderd!
 

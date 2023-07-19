@@ -16,6 +16,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=Windows
+index_mode_nm=Tīkla pārvaldnieks
 
 ifcs_title=Tīkla saskarnes
 ifcs_now=Aktīvs tagad
@@ -276,6 +277,8 @@ log_apply_bfics=Aktivizētas $1 sāknēšanas saskarnes
 log_create_route=Izveidots aktīvs maršruts $1 
 log_create_defroute=Izveidots aktīvs noklusējuma maršruts
 log_delete_routes=Izdzēsti $1 aktīvi maršruti
+log_delete_aifcs=Deaktivizētas $1 saskarnes
+log_delete_bifcs=Izdzēstas $1 saskarnes
 
 acl_ifcs=Vai var rediģēt tīkla saskarnes?
 acl_routes=Vai var rediģēt maršrutēšanu un vārtejas?

@@ -12,6 +12,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=سولاریس
 index_mode_windows=پنجره ها
+index_mode_nm=مدیر شبکه
 
 ifcs_activedesc=واسط های ذکر شده در این جدول در حال حاضر روی سیستم فعال هستند. در بیشتر موارد ، شما باید آنها را در زیر برگه <b>فعال شده در بوت</b> ویرایش کنید.
 ifcs_bootdesc=رابط های ذکر شده در این جدول با بوت شدن سیستم فعال می شوند و به طور کلی هم اکنون نیز فعال می شوند.
@@ -127,6 +128,8 @@ log_apply_bfics=رابط$1 بوت زمان فعال شده است
 log_create_route=مسیر فعال برای$1 ایجاد شد
 log_create_defroute=مسیر پیش فرض فعال ایجاد شده است
 log_delete_routes=مسیرهای فعال$1 حذف شد
+log_delete_aifcs=رابط های $1 غیرفعال شد
+log_delete_bifcs=رابط های $1 حذف شد
 
 acl_sysinfo=رابط های شبکه موجود را در داشبورد نشان دهید
 

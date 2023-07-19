@@ -143,6 +143,7 @@ usave_ecreate=אינך יכול ליצור משתמשים חדשים
 usave_ebadname='$1' is not a valid username
 usave_elength=Username cannot be longer than $1 letters
 usave_ere=Username does not match regexp $1
+usave_eltgt=שם המשתמש אינו יכול להכיל &lt; או &gt; דמויות
 usave_erename=אינך רשאי לשנות את שם המשתמשים
 usave_einuse=the username '$1' is already in use
 usave_einuse_a=the username '$1' is already in use by a mail alias

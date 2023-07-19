@@ -231,6 +231,7 @@ sync_auto=&lt;Automātiski&gt;
 keys_title=Resursdatora SSH taustiņi
 keys_desc=Šī lapa ļauj jums apskatīt šīs resursdatora SSH atslēgas.
 keys_none=SSHD konfigurācijā nevarēja atrast HostKey ierakstus.
+keys_change=Mainīt
 
 manual_title=Rediģēt konfigurācijas failus
 manual_ecannot=Jums nav atļauts rediģēt SSH servera konfigurācijas failu

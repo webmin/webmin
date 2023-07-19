@@ -16,6 +16,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=Windows
+index_mode_nm=Upravitelj omrežja
 
 ifcs_title=Omrežni vmesniki
 ifcs_now=Aktivno zdaj
@@ -276,6 +277,8 @@ log_apply_bfics=Aktivirani $1 zagonski vmesniki
 log_create_route=Ustvarjena aktivna pot za $1 
 log_create_defroute=Ustvarjena aktivna privzeta pot
 log_delete_routes=Izbrisanih $1 aktivnih poti
+log_delete_aifcs=Deaktivirani vmesniki $1
+log_delete_bifcs=Izbrisani $1 vmesniki
 
 acl_ifcs=Ali lahko urejate omrežne vmesnike?
 acl_routes=Ali lahko urejate usmerjanje in prehode?

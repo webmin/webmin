@@ -39,6 +39,7 @@ dirs_header=PHP-skripti- ja laajennushakemistoasetukset
 dirs_include=Etsi hakemistoja sisältyy
 dirs_below=Listattu alle ..
 dirs_ext=Laajennushakemisto
+dirs_exts=Ladattavat laajennukset
 dirs_upload=Sallitaanko tiedostojen lataukset?
 dirs_utmp=Väliaikainen hakemisto lähetetyille tiedostoille
 dirs_err=Hakemistoasetusten tallentaminen epäonnistui
@@ -90,12 +91,14 @@ limits_post=Suurin HTTP POST-koko
 limits_upload=Tiedoston enimmäiskoko
 limits_exec=Suurin suoritusaika
 limits_input=Suurin syöttöjäsennysaika
+limits_vars=Syötemuuttujien enimmäisraja
 limits_err=Resurssirajojen tallentaminen epäonnistui
 limits_emem=Puuttuva tai virheellinen muistin enimmäismäärä
 limits_epost=Puuttuva tai virheellinen HTTP-POST-koko on virheellinen
 limits_eupload=Puuttuva tai virheellinen tiedostojen lähetyskoko suurin
 limits_eexec=Puuttuva tai virheellinen enimmäissuoritusaika
 limits_einput=Puuttuva tai virheellinen syötteen jäsentämisaika
+limits_evars=Syötemuuttujien enimmäisraja puuttuu tai virheellinen
 
 errors_title=Virhe kirjautumisessa
 errors_header=Virhesanoman näyttö ja kirjausasetukset
@@ -164,3 +167,6 @@ acl_anyfile=Voiko mitä tahansa tiedostoa muokata PHP-kokoonpanona?
 acl_manual=Voiko konfigurointitiedostoja muokata manuaalisesti?
 acl_inis=Lisämääritystiedostot <br>(<i> tiedostonimessä </i>=<i> kuvaus </i> muodossa)
 acl_user=Lue ja kirjoita tiedostoja käyttäjänä
+
+opt_default=Oletusarvo: <tt>$1</tt>
+opt_default_unknown=Tuntematon

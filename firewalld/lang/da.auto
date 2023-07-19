@@ -38,6 +38,13 @@ index_restart_firewalld=Genindlæs FirewallD
 index_restart_firewallddesc=Genindlæs FirewallD-serveren, og anvend de regler, der blev oprettet permanent.
 index_listrules_restartdesc=Vis detaljer om eksisterende righoldige og direkte FirewallD-regler i $1 zone.
 index_dependent=Kunne ikke genstarte $1 afhængig tjeneste
+index_manual=Rediger konfigurationsfiler.
+
+manual_title=Rediger konfigurationsfiler
+manual_editsel=Rediger FirewallD-konfigurationsfil
+manual_err=Konfigurationsfilen kunne ikke gemmes
+manual_efile=Den valgte konfigurationsfil er ikke gyldig
+manual_ok=Redigere
 
 port_edit=Rediger port
 port_create=Tilføj port

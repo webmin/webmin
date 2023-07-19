@@ -95,6 +95,7 @@ dump_bcomp=Buffer data dikompresi menjadi blok?
 dump_xdev=Hadkan sandaran ke satu sistem fail?
 dump_update2=Hanya tambahkan fail baru ke arkib?
 dump_ignoreread=Abaikan ralat baca pada fail?
+dump_ignorechanged=Abaikan ralat jika fail berubah?
 dump_notape=Dapatkan pita baru jika diperlukan?
 dump_rmt=Jalan ke <tt>rmt</tt> pada sistem jauh
 dump_links=Ikut pautan simbolik?

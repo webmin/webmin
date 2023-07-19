@@ -6,8 +6,14 @@ fail=Selhalo
 
 config_emodule=Modul neexistuje
 
+help_efile3=Nepodařilo se přečíst stránku nápovědy $1 z modulu $2
+help_einclude3=Nepodařilo se zahrnout stránku nápovědy $1
+
+ui_of=z
+
 log_email_subject=Akce Webmin v $1
 log_email_global=Webmin globální akce
+log_email_by=$1 od $2
 log_email_desc=Tento e-mail byl zaslán Webminem v reakci na akci uživatele.
 log_email_mod=Webmin modul: $1
 log_email_moddesc=Název modulu: $1
@@ -30,8 +36,14 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bajtů
 
+paginator_showing_start=Zobrazuje se $1 až $2 z $3 položek na stránce
+paginator_showing_end=z $1 stránek
+paginator_nosearchrs=<tt>$1</tt> dotazu neodpovídají žádné výsledky
+
 langauto_include=Zahrňte strojové překlady
 
 file_truncated_message=načteno $1 dat, zkráceno $2 z $3 
 file_truncated_message_head=načteno začátek $1 dat, zkráceno $2 z $3 
 file_truncated_message_tail=načtený konec $1 dat, zkrácen $2 z $3 
+
+defcert_error=Používá se výchozí $1 přiložený certifikát SSL. Před pokračováním v přihlášení se důrazně doporučuje aktualizovat výchozí certifikát <tt>$2</tt>.

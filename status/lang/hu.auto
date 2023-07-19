@@ -5,6 +5,7 @@ type_ldap=LDAP kapcsolat
 
 mon_virtualmin=Figyelem! Ez a monitor a $1 Virtualmin tartományhoz van társítva, ezért nem szabad itt szerkeszteni vagy törölni.
 mon_etype=Érvénytelen monitor típusnév
+mon_notifywebhook=Webhook
 mon_header4=Állapot előzményei
 mon_hwhen=Ellenőrizze a dátumot
 mon_hold=Régi állapot
@@ -21,6 +22,10 @@ sched_subject0=Nincs (riasztás van a testben)
 sched_subject1=Figyelmeztető szöveg (hagyja a testet üresen)
 sched_subject2=Egyéni szöveg
 sched_esubject=Hiányzik az SMS üzenet tárgya
+sched_webhook=Állapot küldése a webhook számára
+sched_webhookno=Ne küldj
+sched_webhookyes=HTTP vagy HTTPS URL
+sched_ewebhook=Hiányzó vagy érvénytelen URL a webhook számára
 
 http_codes=Elfogadható HTTP állapotkódok
 http_codes_def=Alapértelmezett ($1)

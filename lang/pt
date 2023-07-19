@@ -108,9 +108,7 @@ config_ewebmin=Parâmetro tipo 14 apenas funciona em Webmin
 
 help_err=Erro ao apresentar ajuda
 help_epath=Caminho de ajuda inexistente ou inválido
-help_efile=Erro ao ler ficheiro de ajuda $1
 help_eheader=Secção &lt;header&gt; em falta
-help_einclude=Erro ao incluir $1
 help_eif=$1 falhou : $2
 help_eexec=$1 falhou : $2
 

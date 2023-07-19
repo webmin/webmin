@@ -1,0 +1,54 @@
+index_title=Pārvaldīt HTPasswd failu
+index_econfig=Šo moduli nevar izmantot, kamēr <a href='$1'>moduļa konfigurācijas</a> lapā nav iestatīts paroles fails.
+index_emd5=Šis modulis ir <a href='$1'>konfigurēts</a>, lai parolēm izmantotu MD5 šifrēšanu, taču $2 Perl modulis nav instalēts. <a href='$3'>Noklikšķiniet šeit</a>, lai lejupielādētu un instalētu moduli $2.
+index_header=Paroles failu lietotāji
+index_none=Konfigurētajā paroles failā nav neviena lietotāja.
+index_add=Pievienojiet paroles failam jaunu lietotāju.
+index_file=Lietotāji paroles failā $1
+index_sync=Unix lietotāja sinhronizācija
+index_return=lietotāju saraksts
+index_eversion=Šis modulis ir <a href='$1'>konfigurēts</a>, lai parolēm izmantotu MD5 šifrēšanu, taču jūsu sistēmā instalētā moduļa Lietotāji un grupas versija neietver nepieciešamās MD5 funkcijas. Jauniniet uz versiju 1.114 vai jaunāku.
+index_synccreate=Vai pievienot lietotāju, kad tiek izveidots Unix lietotājs?
+index_syncmodify=Pārdēvēt vai mainīt lietotāja paroli, kad tiek mainīts attiecīgais Unix lietotājs?
+index_syncdelete=Vai dzēst lietotāju, kad tiek izdzēsts attiecīgais Unix lietotājs?
+index_ssave=Saglabāt un lietot
+
+edit_title1=Izveidot lietotāju
+edit_title2=Rediģēt lietotāju
+edit_header=Paroles faila lietotāja informācija
+edit_user=Lietotājvārds
+edit_enabled=Vai iespējots?
+edit_pass=Parole
+edit_pass1=Atstāt nemainītu
+edit_pass0=Iestatīts uz
+edit_passfrom=Mainīt no
+edit_passto=uz jauno paroli
+edit_single=Lietotājs, kas jāmaina
+edit_return=paroles maiņas veidlapa
+
+save_err=Neizdevās saglabāt lietotāju
+save_euser1=Trūkst lietotājvārda
+save_euser2=Lietotājvārdā nedrīkst būt rakstzīme :
+save_epass=Parolē nedrīkst būt rakstzīme :
+save_eclash=Lietotājs ar tādu pašu vārdu jau pastāv
+save_eoldpass=Vecā parole nav pareiza
+save_ecreate=Jums nav atļauts izveidot lietotājus
+save_edelete=Jums nav atļauts dzēst lietotājus
+save_euser=lietotājs neeksistē
+save_title=Lietotājs saglabāts
+save_done=Lietotājs $1 ir atjaunināts.
+
+acl_repeat=Mainot, jāievada vecā parole?
+acl_create=Vai var izveidot jaunus lietotājus?
+acl_rename=Vai var pārdēvēt lietotājus?
+acl_delete=Vai var izdzēst lietotājus?
+acl_sync=Vai var konfigurēt sinhronizāciju?
+acl_enable=Vai var iespējot un atspējot lietotājus?
+acl_single=Vai izlaist lietotāju sarakstu un doties tieši uz paroles maiņas veidlapu?
+
+sync_ecannot=Jums nav atļauts konfigurēt sinhronizāciju
+
+log_sync=Mainītas sinhronizācijas opcijas
+log_create=Izveidots lietotājs $1
+log_delete=Izdzēsts lietotājs $1
+log_modify=Modificēts lietotājs $1

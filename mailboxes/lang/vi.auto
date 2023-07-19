@@ -451,7 +451,10 @@ left_filter=Bộ lọc email
 left_pass=Đổi mật khẩu
 left_sig=Chỉnh sửa chữ ký
 
+editor_heading=Phần mở đầu
+editor_paragraph=Đoạn văn
 editor_fontfamily_default=Mặc định
+editor_fontfamily_monospace=Chiều rộng cố định
 editor_font_small=Bé nhỏ
 editor_font_normal=Bình thường
 editor_font_medium=Trung bình

@@ -116,8 +116,6 @@ mods_install=Instalar Módulo
 mods_local=A partir de um ficheiro local
 mods_uploaded=A partir de um ficheiro remoto
 mods_ftp=A partir de um URL por ftp ou http
-mods_standard=Módulo padrão a partir de <a href='$1'>www.webmin.com</a>
-mods_standard2=Módulo padrão
 mods_third=Módulo de uma terceira parte a partir de
 mods_thsel=Seleccionar..
 mods_nodeps=Ignorar dependências do módulo ao instalar

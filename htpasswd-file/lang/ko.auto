@@ -1,0 +1,54 @@
+index_title=HTPasswd 파일 관리
+index_econfig=이 모듈은 <a href='$1'>모듈 구성</a> 페이지에서 비밀번호 파일이 설정될 때까지 사용할 수 없습니다.
+index_emd5=이 모듈은 암호에 MD5 암호화를 사용하도록 <a href='$1'>구성</a>되었지만 $2 Perl 모듈이 설치되지 않았습니다. <a href='$3'>여기를 클릭</a>하여 $2 모듈을 다운로드하고 설치하십시오.
+index_header=비밀번호 파일 사용자
+index_none=구성된 암호 파일에 사용자가 없습니다.
+index_add=암호 파일에 새 사용자를 추가합니다.
+index_file=암호 파일 $1의 사용자
+index_sync=유닉스 사용자 동기화
+index_return=사용자 목록
+index_eversion=이 모듈은 암호에 MD5 암호화를 사용하도록 <a href='$1'>구성</a>되었지만 시스템에 설치된 사용자 및 그룹 모듈 버전에는 필요한 MD5 기능이 포함되어 있지 않습니다. 버전 1.114 이상으로 업그레이드하십시오.
+index_synccreate=Unix 사용자가 생성될 때 사용자를 추가하시겠습니까?
+index_syncmodify=해당 Unix 사용자가 수정되면 사용자의 이름을 바꾸거나 암호를 변경합니까?
+index_syncdelete=해당 Unix 사용자가 삭제되면 사용자를 삭제하시겠습니까?
+index_ssave=저장 및 적용
+
+edit_title1=사용자 만들기
+edit_title2=사용자 편집
+edit_header=암호 파일 사용자 세부 정보
+edit_user=사용자 이름
+edit_enabled=활성화?
+edit_pass=비밀번호
+edit_pass1=변경하지 않고 그대로 두십시오
+edit_pass0=로 설정
+edit_passfrom=에서 변경
+edit_passto=새 비밀번호로
+edit_single=변경할 사용자
+edit_return=비밀번호 변경 양식
+
+save_err=사용자를 저장하지 못했습니다
+save_euser1=사용자 이름 누락
+save_euser2=사용자 이름은 : 문자를 포함할 수 없습니다
+save_epass=비밀번호는 : 문자를 포함할 수 없습니다
+save_eclash=같은 이름의 사용자가 이미 존재합니다
+save_eoldpass=이전 비밀번호가 올바르지 않습니다
+save_ecreate=사용자를 만들 수 없습니다
+save_edelete=사용자를 삭제할 수 없습니다
+save_euser=사용자가 존재하지 않습니다
+save_title=사용자 저장됨
+save_done=사용자 $1이(가) 업데이트되었습니다.
+
+acl_repeat=변경할 때 이전 비밀번호를 입력해야 합니까?
+acl_create=새 사용자를 만들 수 있습니까?
+acl_rename=사용자 이름을 바꿀 수 있습니까?
+acl_delete=사용자를 삭제할 수 있습니까?
+acl_sync=동기화를 구성할 수 있습니까?
+acl_enable=사용자를 활성화 및 비활성화할 수 있습니까?
+acl_single=사용자 목록을 건너뛰고 비밀번호 변경 양식으로 바로 이동하시겠습니까?
+
+sync_ecannot=동기화를 구성할 수 없습니다
+
+log_sync=변경된 동기화 옵션
+log_create=생성된 사용자 $1
+log_delete=삭제된사용자 $1 
+log_modify=수정된 사용자 $1 

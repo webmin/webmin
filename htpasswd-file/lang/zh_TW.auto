@@ -1,0 +1,54 @@
+index_title=管理 HTPasswd 文件
+index_econfig=在<a href='$1'>模塊配置</a>頁面上設置密碼文件後才能使用此模塊。
+index_emd5=此模塊已<a href='$1'>配置</a>以對密碼使用 MD5 加密，但未安裝 $2 Perl 模塊。 <a href='$3'>單擊此處</a>下載並安裝 $2 模塊。
+index_header=密碼文件用戶
+index_none=配置的密碼文件中不存在用戶。
+index_add=將新用戶添加到密碼文件中。
+index_file=密碼文件 $1 中的用戶
+index_sync=Unix 用戶同步
+index_return=用戶列表
+index_eversion=此模塊已<a href='$1'>配置</a>以使用 MD5 加密密碼，但係統上安裝的用戶和組模塊版本不包含所需的 MD5 功能。升級到版本1.114或更高版本。
+index_synccreate=創建 Unix 用戶時添加用戶？
+index_syncmodify=當相應的Unix用戶被修改時，是否需要重命名或更改用戶的密碼？
+index_syncdelete=當相應的Unix用戶被刪除時，刪除一個用戶？
+index_ssave=保存並應用
+
+edit_title1=創建用戶
+edit_title2=編輯用戶
+edit_header=密碼文件用戶詳細信息
+edit_user=用戶名
+edit_enabled=啟用？
+edit_pass=密碼
+edit_pass1=保持不變
+edit_pass0=設置
+edit_passfrom=更改自
+edit_passto=到新密碼
+edit_single=要更改的用戶
+edit_return=密碼更改表格
+
+save_err=保存用戶失敗
+save_euser1=缺少用戶名
+save_euser2=用戶名不能包含:字符
+save_epass=密碼不能包含:字符
+save_eclash=已存在同名用戶
+save_eoldpass=舊密碼不正確
+save_ecreate=您無權創建用戶
+save_edelete=您無權刪除用戶
+save_euser=用戶不存在
+save_title=用戶已保存
+save_done=用戶 $1 已更新。
+
+acl_repeat=更改時必須輸入舊密碼嗎？
+acl_create=可以創建新用戶嗎？
+acl_rename=可以重命名用戶嗎？
+acl_delete=可以刪除用戶嗎？
+acl_sync=可以配置同步嗎？
+acl_enable=可以啟用和禁用用戶嗎？
+acl_single=跳過用戶列表並直接進入密碼更改表單？
+
+sync_ecannot=您無權配置同步
+
+log_sync=更改了同步選項
+log_create=已創建用戶 $1
+log_delete=已刪除用戶 $1
+log_modify=已修改用戶$1

@@ -231,6 +231,7 @@ sync_auto=&lt;อัตโนมัติ&gt;
 keys_title=โฮสต์ SSH Keys
 keys_desc=หน้านี้ให้คุณดูคีย์ SSH สำหรับโฮสต์นี้
 keys_none=ไม่พบรายการ HostKey ใด ๆ ในการกำหนดค่า SSHD ของคุณ
+keys_change=เปลี่ยน
 
 manual_title=แก้ไขไฟล์กำหนดค่า
 manual_ecannot=คุณไม่ได้รับอนุญาตให้แก้ไขไฟล์กำหนดค่าเซิร์ฟเวอร์ SSH

@@ -1,0 +1,54 @@
+index_title=HTPasswd fájl kezelése
+index_econfig=Ez a modul nem használható mindaddig, amíg a <a href='$1'>modul konfigurációs</a> oldalon nincs beállítva egy jelszófájl.
+index_emd5=Ez a modul <a href='$1'>beállításra került</a> MD5 titkosítás használatára a jelszavakhoz, de a $2 Perl modul nincs telepítve. <a href='$3'>Kattintson ide</a> a $2 modul letöltéséhez és telepítéséhez.
+index_header=Jelszófájl felhasználói
+index_none=Nincsenek felhasználók a konfigurált jelszófájlban.
+index_add=Adjon hozzá egy új felhasználót a jelszófájlhoz.
+index_file=Felhasználók a jelszófájlban $1
+index_sync=Unix felhasználói szinkronizálás
+index_return=felhasználói lista
+index_eversion=Ezt a modult úgy <a href='$1'>konfigurálták</a>, hogy a jelszavakhoz MD5-titkosítást használjon, de a Felhasználók és csoportok modulnak a rendszerére telepített verziója nem tartalmazza a szükséges MD5-funkciókat. Frissítsen az 1.114-es vagy újabb verzióra.
+index_synccreate=Hozzáad egy felhasználót a Unix-felhasználó létrehozásakor?
+index_syncmodify=Átnevezi vagy megváltoztatja a felhasználó jelszavát, ha a megfelelő Unix-felhasználót módosítja?
+index_syncdelete=Töröl egy felhasználót a megfelelő Unix-felhasználó törlésekor?
+index_ssave=Mentés és alkalmazása
+
+edit_title1=Felhasználó létrehozása
+edit_title2=Felhasználó szerkesztése
+edit_header=Jelszófájl felhasználói adatai
+edit_user=Felhasználónév
+edit_enabled=Engedélyezve?
+edit_pass=Jelszó
+edit_pass1=Hagyja változatlanul
+edit_pass0=Állítva
+edit_passfrom=Váltás innen
+edit_passto=új jelszóhoz
+edit_single=Felhasználó módosítani
+edit_return=jelszómódosítási űrlap
+
+save_err=Nem sikerült menteni a felhasználót
+save_euser1=Hiányzó felhasználónév
+save_euser2=A felhasználónév nem tartalmazhatja a : karaktert
+save_epass=A jelszó nem tartalmazhatja a : karaktert
+save_eclash=Már létezik azonos nevű felhasználó
+save_eoldpass=A régi jelszó nem megfelelő
+save_ecreate=Nem hozhat létre felhasználókat
+save_edelete=Nem törölhet felhasználókat
+save_euser=A felhasználó nem létezik
+save_title=Felhasználó elmentve
+save_done=A(z) $1 felhasználó frissítve.
+
+acl_repeat=Meg kell adnia a régi jelszót módosításakor?
+acl_create=Lehet új felhasználókat létrehozni?
+acl_rename=Át lehet nevezni a felhasználókat?
+acl_delete=Lehet törölni a felhasználókat?
+acl_sync=Be lehet állítani a szinkronizálást?
+acl_enable=Engedélyezheti és letilthatja a felhasználókat?
+acl_single=Kihagyja a felhasználói listát, és közvetlenül a jelszómódosítási űrlapra lép?
+
+sync_ecannot=Nem konfigurálhatja a szinkronizálást
+
+log_sync=Módosult a szinkronizálási beállítások
+log_create=Felhasználó létrehozva: $1
+log_delete=$1 felhasználó törölve
+log_modify=Módosított felhasználó $1

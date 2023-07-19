@@ -3,6 +3,8 @@ index_eexpired_conf=Automatyczne podpisywanie powinno zostać ponownie włączon
 index_eexpired_mod=Użyj modułu $1, aby wyłączyć DNSSEC dla tych domen lub sprawdzić, dlaczego podpisywanie kończy się niepowodzeniem.
 
 master_inview=$1 w widoku $2 
+master_vmin=Tą strefą zarządza Virtualmin. Rekordy należy edytować za pomocą interfejsu użytkownika Virtualmin, aby zapewnić ich spójność z innymi ustawieniami serwera wirtualnego.
+master_vminalias=Ta strefa jest aliasem domeny Virtualmin, która jest synchronizowana z celem. Rekordów nigdy nie należy tutaj edytować, ponieważ wszelkie zmiany zostaną nadpisane!
 
 delete_vwarn=Ta strefa jest powiązana z domeną Virtualmin $1, dlatego nie należy jej tutaj usuwać!
 

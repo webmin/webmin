@@ -16,6 +16,9 @@ chooser_eopen=Помилка лістингу : $1
 
 config_emodule=Модуль не існує
 
+help_efile3=Не вдалося прочитати сторінку довідки $1 із модуля $2
+help_einclude3=Не вдалося включити сторінку довідки $1
+
 referer_fix1=If this is a legitimate link, you can allow links from this URL as follows :<ul><li>Login to Webmin normally.</li><li>Go to the <b>Webmin Configuration</b> module.</li><li>Click on the Trusted Referrers icon.</li><li>Enter the hostname $1 into the <b>Trusted websites</b> field, and click <b>Save.</b></li></ul>
 referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.</li><li>Save the file.</li></ul>
 referer_fix3u=Переконайтеся, що ваш веб-переглядач налаштований для надсилання інформації про референс, щоб його можна було перевірити Webmin.
@@ -43,6 +46,7 @@ password_temp=Для заміни тимчасового входу потріб
 password_enewpass=Новий пароль заборонено : $1
 
 ui_filterbox=Введіть для фільтра ..
+ui_of=з
 
 wsearch_title=Пошук $1
 wsearch_modt=Модуль
@@ -83,6 +87,7 @@ sql_eldaplogin=Не вдалося увійти на сервер LDAP як $1 :
 
 log_email_subject=Дія Webmin в $1
 log_email_global=Глобальна дія Webmin
+log_email_by=$1 на $2
 log_email_desc=Цей електронний лист надіслано Webmin у відповідь на дії користувача.
 log_email_mod=Модуль Webmin: $1
 log_email_moddesc=Назва модуля: $1
@@ -105,8 +110,14 @@ nice_size_kB=кБ
 nice_size_kiB=кіБ
 nice_size_b=байт
 
+paginator_showing_start=Показано від $1 до $2 з $3 елементів на сторінці
+paginator_showing_end=$1 сторінок
+paginator_nosearchrs=Немає результатів, що відповідають запиту <tt>$1</tt>
+
 langauto_include=Включіть машинні переклади
 
 file_truncated_message=отримано $1 даних, усічено $2 з $3 
 file_truncated_message_head=отримано початок $1 даних, усічений $2 з $3 
 file_truncated_message_tail=отримано закінчення $1 даних, усічено $2 з $3 
+
+defcert_error=Використовується пакетний сертифікат SSL за умовчанням $1. Настійно рекомендується оновити стандартний сертифікат <tt>$2</tt> перед тим, як продовжити вхід.

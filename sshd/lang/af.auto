@@ -231,6 +231,7 @@ sync_auto=&lt;Outomatiese&gt;
 keys_title=Gasheer SSH-sleutels
 keys_desc=Op hierdie bladsy kan u die SSH-sleutels vir hierdie gasheer besigtig.
 keys_none=Kon geen HostKey-inskrywings in u SSHD-konfigurasie vind nie.
+keys_change=Verander
 
 manual_title=Wysig konfiglêers
 manual_ecannot=U mag nie die SSH-bediener se opstellinglêer wysig nie

@@ -80,6 +80,7 @@ sync_auto=&lt;自动&gt;
 keys_title=主机SSH密钥
 keys_desc=该页面允许您查看此主机的SSH密钥。
 keys_none=在您的SSHD配置中找不到任何HostKey条目。
+keys_change=改变
 
 manual_title=编辑配置文件
 manual_ecannot=您无权编辑SSH服务器配置文件

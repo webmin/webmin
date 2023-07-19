@@ -24,6 +24,8 @@ master_movedesc=Přesune tuto zónu do jiného zobrazení a přitom zachová vš
 master_applymsg2=Klepnutím na toto tlačítko použijete změny pouze pro tuto zónu. Toto bude fungovat, pouze pokud byly změny provedeny pro celý server alespoň jednou od vytvoření zóny.
 master_esoagone=Nebyl nalezen žádný záznam SOA!
 master_einclude=Další soubor šablony neexistuje
+master_vmin=Tuto zónu spravuje Virtualmin. Záznamy by měly být upravovány pomocí uživatelského rozhraní Virtualmin, aby bylo zajištěno, že budou konzistentní s ostatními nastaveními virtuálního serveru.
+master_vminalias=Tato zóna je alias domény Virtualmin, která je synchronizována s jejím cílem. Záznamy by zde nikdy neměly být upravovány, protože jakékoli změny budou přepsány!
 
 delete_mesg3=Opravdu chcete odstranit zónu $1?
 delete_vwarn=Tato zóna je přidružena k doméně Virtualmin $1, a proto by zde neměla být odstraněna!

@@ -7,3 +7,7 @@ index_mode_netbsd=NetBSD
 index_mode_openbsd=OpenBSD
 index_mode_solaris=Solaris
 index_mode_windows=les fenêtres
+index_mode_nm=Gestionnaire de réseau
+
+log_delete_aifcs=Interfaces $1 désactivées
+log_delete_bifcs=Interface $1 supprimée

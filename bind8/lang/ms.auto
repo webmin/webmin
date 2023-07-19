@@ -147,6 +147,8 @@ master_defttl=Waktu untuk hidup untuk rekod lalai
 master_edefttl='$1' bukan masa lalai yang sah untuk rekod
 master_esoagone=Tiada rekod SOA ditemui!
 master_einclude=Fail templat tambahan tidak wujud
+master_vmin=Zon ini diuruskan oleh Virtualmin. Rekod hendaklah diedit menggunakan UI Virtualmin, untuk memastikan ia konsisten dengan tetapan pelayan maya yang lain.
+master_vminalias=Zon ini ialah alias domain Virtualmin, yang disimpan selari dengan sasarannya. Rekod tidak boleh diedit di sini, kerana sebarang perubahan akan ditimpa!
 
 delete_title=Padamkan Zon
 delete_mesg=Adakah anda pasti mahu memadamkan zon $1? Semua rekod dan fail zon akan dihapuskan.

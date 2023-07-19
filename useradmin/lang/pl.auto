@@ -1,6 +1,7 @@
 sshkey=Klucz publiczny SSH
 uedit_clone=Klonuj użytkownika
 
+usave_eltgt=Nazwa użytkownika nie może zawierać &lt; lub &gt; postacie
 usave_ealluid=Wszystkie dozwolone identyfikatory UID zostały przydzielone
 usave_ehomeslash=Katalog domowy $1 nie może kończyć się na /
 usave_edigestmod=Twój system ma włączone hasła $4, jednak moduł Perl <tt>$3</tt> nie jest zainstalowany. Aby wymusić użycie normalnych zaszyfrowanych haseł, dostosuj <a href='$1'>konfigurację swojego modułu</a> lub zleć Webminowi, aby spróbował <a href='$2'>pobrać i zainstalować</a> moduł <tt>$3</tt> za Ciebie.

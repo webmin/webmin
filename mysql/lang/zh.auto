@@ -180,6 +180,7 @@ exec_iheader=文本文件导入选项
 exec_created=已创建 $1个表。
 exec_inserted=已插入 $1个记录。
 exec_cs=数据字符集
+exec_collationdown=数据库排序规则从<tt>$1</tt>降级为<tt>$2</tt>
 
 tprivs_derr=删除表权限失败
 tprivs_enone=未选择表
@@ -204,6 +205,8 @@ acl_views=可以查看和管理视图吗？
 acl_files=可以从本地文件执行SQL吗？
 
 log_cnf=更改了MySQL服务器配置
+log_ssl=更改了 SSL 证书
+log_genssl=生成的 SSL 证书
 log_kill=杀死 $1个数据库连接
 log_vars=修改的 $1系统变量
 log_dbs_delete=删除了 $1个数据库
@@ -467,3 +470,18 @@ mysqlpass_esafe=以安全模式启动失败： $1
 mysqlpass_estartup=启动失败： $1
 mysqlpass_echange=密码更改失败： $1
 mysqlpass_echange_forcepass=如果丢失或忘记密码，则强制覆盖给定的密码
+
+ssl_title=SSL证书
+ssl_header=MySQL SSL 选项
+ssl_cert=SSL 证书文件
+ssl_key=SSL 密钥文件
+ssl_ca=SSL CA 证书文件
+ssl_req=要求客户端使用 SSL？
+ssl_none=未设置
+ssl_gen=生成证书和密钥
+ssl_err=无法保存 SSL 选项
+ssl_ecert=SSL 认证文件丢失或不存在
+ssl_ekey=SSL 密钥文件丢失或不存在
+ssl_eca=SSL CA 文件丢失或不存在
+ssl_ecertexists=SSL 证书文件 $1 已存在！
+ssl_ekeyexists=SSL 密钥文件 $1 已存在！

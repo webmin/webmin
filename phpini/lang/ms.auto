@@ -39,6 +39,7 @@ dirs_header=Skrip PHP dan tetapan direktori lanjutan
 dirs_include=Cari direktori untuk termasuk
 dirs_below=Disenaraikan di bawah ..
 dirs_ext=Direktori untuk sambungan
+dirs_exts=Sambungan untuk dimuatkan
 dirs_upload=Benarkan muat naik fail?
 dirs_utmp=Direktori sementara untuk fail yang dimuat naik
 dirs_err=Gagal menyimpan tetapan direktori
@@ -90,12 +91,14 @@ limits_post=Saiz POST HTTP maksimum
 limits_upload=Saiz muat naik fail maksimum
 limits_exec=Masa pelaksanaan maksimum
 limits_input=Masa parsing input maksimum
+limits_vars=Had pembolehubah input maksimum
 limits_err=Gagal untuk menyimpan had sumber
 limits_emem=Peruntukan memori maksimum yang tidak ada atau tidak sah
 limits_epost=Saiz POST HTTP maksimum yang hilang atau tidak sah
 limits_eupload=Saiz muat naik fail maksimum atau tidak sah
 limits_eexec=Masa pelaksanaan maksimum yang hilang atau tidak sah
 limits_einput=Masa parsing input maksimum yang hilang atau tidak sah
+limits_evars=Had pembolehubah input maksimum tiada atau tidak sah
 
 errors_title=Ralat Logging
 errors_header=Paparan mesej ralat dan pilihan log masuk
@@ -164,3 +167,6 @@ acl_anyfile=Bolehkah mengedit sebarang fail sebagai konfigurasi PHP?
 acl_manual=Bolehkah mengedit fail konfigurasi secara manual?
 acl_inis=Fail konfigurasi tambahan <br>(Dalam format<i> nama fail </i>=<i> description </i>)
 acl_user=Baca dan tulis fail sebagai pengguna
+
+opt_default=Nilai Lalai: <tt>$1</tt>
+opt_default_unknown=Tidak diketahui

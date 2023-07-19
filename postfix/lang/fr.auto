@@ -83,6 +83,8 @@ opts_notify_classes_sel=Sélectionné ci-dessous
 
 opts_edir=Vous êtes uniquement autorisé à spécifier des fichiers de carte sous $1
 
+opts_resolve_dequoted_address=Empêcher l'utilisation de @ dans les noms de boîtes aux lettres ?
+
 opts_mailbox_size_limit=Taille maximale d'une boîte aux lettres
 
 opts_mynetworks_style=Réseaux locaux automatiques
@@ -93,6 +95,7 @@ opts_delay_warning_time_default2=Postfix par défaut
 opts_content_filter_default=Aucun
 
 opts_relay_recipient_maps=Carte des adresses autorisées pour le relais
+opts_smtpd_discard_ehlo_keywords=Mots clés SMTP EHLO à ne pas envoyer
 smtpd_nomap=Aucune carte des adresses autorisées pour le relais n'a encore été saisie.
 smtpd_nomap2=Aucune carte pour les restrictions sur les adresses des expéditeurs n'a encore été saisie.
 smtpd_map=Adresses autorisées pour le relais
@@ -301,6 +304,10 @@ header_title=Vérifications d'en-tête
 header_ecannot=Vous n'êtes pas autorisé à modifier les vérifications d'en-tête
 header_eregexp=L'en-tête vérifie la carte doit être au format <tt>regexp:</tt> <i>nom de fichier</i>
 opts_header_checks=En-tête MIME vérifiant les tables
+opts_mime_header_checks=Tables de vérification des en-têtes MIME
+opts_header_checks_no_map=(Aucune carte de vérification d'en-tête n'est actuellement définie. Définissez d'abord une carte, puis vous pourrez la modifier)
+
+opts_mime_header_checks_no_map=(Aucune carte de vérification d'en-tête MIME n'est actuellement définie. Définissez d'abord une carte, puis vous pourrez la modifier)
 header_name=Expression régulière
 header_value=Action pour les matchs
 header_discard=Jeter (avec message de journal..)

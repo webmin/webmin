@@ -38,6 +38,13 @@ index_restart_firewalld=โหลดไฟร์วอลล์ใหม่D
 index_restart_firewallddesc=โหลดเซิร์ฟเวอร์ FirewallD ใหม่และใช้กฎที่สร้างขึ้นอย่างถาวร
 index_listrules_restartdesc=แสดงรายการรายละเอียดเกี่ยวกับกฎ FirewallD แบบสมบูรณ์และโดยตรงที่มีอยู่ในโซน $1
 index_dependent=ไม่สามารถเริ่มบริการที่ขึ้นอยู่กับ $1 ใหม่
+index_manual=แก้ไขไฟล์กำหนดค่า
+
+manual_title=แก้ไขไฟล์กำหนดค่า
+manual_editsel=แก้ไขไฟล์การกำหนดค่า FirewallD
+manual_err=บันทึกไฟล์กำหนดค่าไม่สำเร็จ
+manual_efile=ไฟล์การกำหนดค่าที่เลือกไม่ถูกต้อง
+manual_ok=แก้ไข
 
 port_edit=แก้ไขพอร์ต
 port_create=เพิ่มพอร์ต

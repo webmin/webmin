@@ -12,6 +12,9 @@ index_return=danh sách hệ thống tập tin
 index_none=Bạn không có quyền truy cập vào bất kỳ hệ thống tập tin gắn kết.
 index_mount2=Gắn kết với mật khẩu:
 index_root=Hệ thống tập tin gốc
+index_show1=Hiển thị tất cả các hệ thống tập tin
+index_show0=Ẩn các hệ thống tập tin không thể chỉnh sửa
+index_addtype=loại
 
 edit_title=Chỉnh sửa núi
 create_title=Tạo núi

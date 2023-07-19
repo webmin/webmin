@@ -107,6 +107,8 @@ opts_notify_classes_sel=Вибрано нижче
 
 opts_edir=Ви можете вказати файли карт лише під $1
 
+opts_resolve_dequoted_address=Заборонити використання @ в іменах поштових скриньок?
+
 opts_mailbox_size_limit=Максимальний розмір поштової скриньки
 
 opts_mynetworks_style=Автоматичні локальні мережі
@@ -117,6 +119,7 @@ opts_delay_warning_time_default2=За замовчуванням Postfix
 opts_content_filter_default=Жоден
 
 opts_relay_recipient_maps=Карта дозволених адрес для ретрансляції
+opts_smtpd_discard_ehlo_keywords=Ключові слова SMTP EHLO не надсилати
 smtpd_nomap=Ще не введено карту дозволених адрес для ретрансляції.
 smtpd_nomap2=Карта обмежень щодо адрес відправника ще не введена.
 smtpd_map=Дозволені адреси для ретрансляції
@@ -240,6 +243,10 @@ header_title=Перевірки заголовка
 header_ecannot=Вам заборонено редагувати чеки заголовка
 header_eregexp=Карта перевірки заголовка повинна бути у форматі <tt>regexp:</tt> <i>ім'я файлу</i>
 opts_header_checks=Таблиці перевірки заголовка MIME
+opts_mime_header_checks=Таблиці перевірки заголовків MIME
+opts_header_checks_no_map=(Карта перевірки заголовка наразі не визначена. Спочатку визначте карту, а потім її можна редагувати)
+
+opts_mime_header_checks_no_map=(Наразі не визначено жодної карти перевірки заголовків MIME. Спочатку визначте карту, а потім її можна редагувати)
 header_name=Регулярне вираження
 header_value=Дія на матчі
 header_discard=Відкинути (з повідомленням журналу..)

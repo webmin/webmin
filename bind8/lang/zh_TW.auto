@@ -77,6 +77,8 @@ master_defttl=記錄的默認生存時間
 master_edefttl='$1'不是記錄的有效默認生存時間
 master_esoagone=找不到SOA記錄！
 master_einclude=附加模板文件不存在
+master_vmin=該區域由 Virtualmin 管理。應使用 Virtualmin UI 編輯記錄，以確保它們與其他虛擬服務器設置一致。
+master_vminalias=該區域是 Virtualmin 域的別名，與其目標保持同步。切勿在此處編輯記錄，因為任何更改都將被覆蓋！
 
 delete_mesg2=您確定要刪除根區域嗎？您的DNS服務器可能不再能夠在Internet上查找地址。
 delete_mesg3=您確定要刪除區域$1嗎？

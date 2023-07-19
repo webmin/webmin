@@ -95,6 +95,7 @@ dump_bcomp=Bufferreko datuak konprimitu bloketan?
 dump_xdev=Mugatu babeskopia fitxategi-sistema batera?
 dump_update2=Fitxategi berriak gehitu besterik ez duzu artxiboan?
 dump_ignoreread=Ezikusi irakurri akatsak fitxategietan?
+dump_ignorechanged=Fitxategiak aldatzen badira erroreei ez ikusi nahi?
 dump_notape=Gonbidatu zinta berria behar baduzu?
 dump_rmt=<tt>rmt</tt> bide-bidea urruneko sisteman
 dump_links=Jarraitu lotura sinbolikoak?

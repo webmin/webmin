@@ -48,6 +48,9 @@ lang_lang=Jazyk
 lang_locale=Národní prostředí
 lang_dateformat=Formát zobrazení data
 lang_dateformat_dd/mon/yyyy=dd/mon/yyyy (tj. 16. září 2001)
+lang_dateformat_dd/mm/yyyy=dd/mm/rrrr (tj. 16/09/2001)
+lang_dateformat_mm/dd/yyyy=mm/dd/rrrr (tj. 09/16/2001)
+lang_dateformat_yyyy/mm/dd=rrrr/mm/dd (tj. 2001/09/16)
 
 ssl_deny=Verze protokolu SSL k odmítnutí
 ssl_compression=Povolit komprimované připojení SSL?
@@ -160,6 +163,7 @@ session_passurl=Je -li tato možnost povolena, lze hesla uživatele změnit pomo
 
 categories_custom=Zvyk
 
+log_fixrepo=Opravené úložiště Webmin
 log_twofactor=Změněné možnosti dvoufaktorové autentizace
 log_newcsr=Vytvořeno nové SSL CSR
 log_web=Změněné možnosti webového serveru
@@ -273,6 +277,9 @@ notify_updatedesc=Opravuje problém
 notif_updateok=Nainstalujte aktualizace nyní
 notif_reboot=Poslední aktualizace balíků (jako je nová verze jádra) vyžadují úplné restartování systému.
 notif_rebootok=Restartujte nyní
+notify_yumrepo=Váš systém používá staré úložiště Webmin YUM. Kliknutím na tlačítko níže přepnete na novou adresu URL úložiště <tt>$1</tt>, abyste mohli použít náš nejnovější podpisový klíč a zajistit přístup k aktualizovaným verzím Webmin.
+notify_aptrepo=Váš systém používá staré úložiště Webmin APT. Kliknutím na tlačítko níže přepnete na novou <tt>stable</tt> adresu URL úložiště <tt>$1</tt>, abyste mohli použít náš nejnovější podpisový klíč a zajistit přístup k aktualizovaným verzím Webmin.
+notif_fixreponow=Aktualizujte úložiště Webmin
 
 status_title=Sběr stavu na pozadí
 status_header=Nastavení úlohy kolekce stavu

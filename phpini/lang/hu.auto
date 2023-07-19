@@ -24,6 +24,7 @@ vars_err=A PHP változó beállításainak mentése nem sikerült
 
 dirs_header=PHP szkript és kiterjesztés könyvtár beállításai
 dirs_include=Keresési könyvtárak tartalmazzák
+dirs_exts=A betöltendő bővítmények
 dirs_upload=Engedélyezi a fájlok feltöltését?
 dirs_utmp=Ideiglenes könyvtár a feltöltött fájlokhoz
 dirs_err=A könyvtárbeállítások mentése nem sikerült
@@ -68,12 +69,14 @@ limits_post=A HTTP POST maximális mérete
 limits_upload=A fájl feltöltésének maximális mérete
 limits_exec=A maximális végrehajtási idő
 limits_input=A bemeneti elemzés maximális ideje
+limits_vars=A bemeneti változók maximális korlátja
 limits_err=Nem sikerült menteni az erőforrás-korlátokat
 limits_emem=Hiányzik vagy érvénytelen a maximális memóriafoglalás
 limits_epost=Hiányzó vagy érvénytelen maximális HTTP POST méret
 limits_eupload=Hiányzó vagy érvénytelen maximális fájlfeltöltési méret
 limits_eexec=Hiányzó vagy érvénytelen maximális végrehajtási idő
 limits_einput=Hiányzó vagy érvénytelen maximális bemeneti elemzési idő
+limits_evars=Hiányzó vagy érvénytelen bemeneti változók maximális korlátja
 
 errors_header=Hibaüzenet megjelenítési és naplózási beállításai
 errors_display=Megjeleníti a hibaüzeneteket?
@@ -134,3 +137,6 @@ log_misc=Megváltoztatta a $1 egyéb beállításait
 acl_manual=Kézzel lehet szerkeszteni a konfigurációs fájlokat?
 acl_inis=További konfigurációs fájlok <br>(<i> fájlnév </i>=<i> leírás </i> formátumban)
 acl_user=Fájlok olvasása és írása felhasználóként
+
+opt_default=Alapértelmezett érték: <tt>$1</tt>
+opt_default_unknown=Ismeretlen

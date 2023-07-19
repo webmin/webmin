@@ -28,6 +28,7 @@ uedit_grename=¿Cambiar el nombre del grupo si cambia el nombre de usuario?
 uedit_sys=Sistema por defecto
 uedit_clone=Clonar usuario
 
+usave_eltgt=El nombre de usuario no puede contener &lt; o &gt; caracteres
 usave_esgname='$1' no es un nombre de grupo secundario válido
 usave_ehomeslash=El directorio de inicio $1 no puede terminar con /
 usave_edigestmod=Su sistema tiene contraseñas $4 habilitadas, sin embargo, el módulo Perl <tt>$3</tt> no está instalado. Para forzar el uso de contraseñas encriptadas normales, ajuste la <a href='$1'>configuración de su módulo</a> o haga que Webmin intente <a href='$2'>descargar e instalar</a> el módulo de <tt>$3</tt> por usted.

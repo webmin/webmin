@@ -2,6 +2,9 @@ index_used=用過的
 index_none=您無權訪問任何已掛載的文件系統。
 index_mount2=使用密碼掛載：
 index_root=根文件系統
+index_show1=顯示所有文件系統
+index_show0=隱藏不可編輯的文件系統
+index_addtype=類型的
 
 edit_usage=磁盤使用情況
 edit_comm_opt=通用安裝選項

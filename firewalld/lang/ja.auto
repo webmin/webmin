@@ -38,6 +38,13 @@ index_restart_firewalld=FirewallDをリロード
 index_restart_firewallddesc=FirewallDサーバーをリロードし、永続的に作成されたルールを適用します。
 index_listrules_restartdesc=$1ゾーンにある既存のリッチおよびダイレクトFirewallDルールに関する詳細を一覧表示します。
 index_dependent=$1 依存サービスの再起動に失敗しました
+index_manual=設定ファイルを編集します。
+
+manual_title=設定ファイルの編集
+manual_editsel=FirewallD 構成ファイルを編集する
+manual_err=設定ファイルの保存に失敗しました
+manual_efile=選択した構成ファイルは無効です
+manual_ok=編集
 
 port_edit=ポートを編集
 port_create=ポートを追加

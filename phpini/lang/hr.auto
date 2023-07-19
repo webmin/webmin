@@ -39,6 +39,7 @@ dirs_header=Postavke PHP skripte i direktorija proširenja
 dirs_include=Pretraži imenike za uključuje
 dirs_below=Navedeno ispod ..
 dirs_ext=Imenik za proširenja
+dirs_exts=Proširenja za učitavanje
 dirs_upload=Želite li omogućiti prijenos datoteka?
 dirs_utmp=Privremeni imenik za učitane datoteke
 dirs_err=Spremanje postavki imenika nije uspjelo
@@ -90,12 +91,14 @@ limits_post=Maksimalna veličina HTTP POST-a
 limits_upload=Maksimalna veličina datoteke za prijenos
 limits_exec=Maksimalno vrijeme izvršenja
 limits_input=Maksimalno vrijeme analiziranja ulaza
+limits_vars=Maksimalno ograničenje ulaznih varijabli
 limits_err=Spremanje ograničenja resursa nije uspjelo
 limits_emem=Nedostaje ili neispravna maksimalna dodjela memorije
 limits_epost=Nedostaje ili nije važeća maksimalna veličina HTTP POST
 limits_eupload=Nedostaje ili neispravna maksimalna veličina za prijenos datoteke
 limits_eexec=Nedostaje ili nevažeće maksimalno vrijeme izvršenja
 limits_einput=Nedostaje ili neispravno maksimalno vrijeme unosa
+limits_evars=Nedostaje ili nije valjano maksimalno ograničenje ulaznih varijabli
 
 errors_title=Pogreška zapisivanja
 errors_header=Opcije prikazivanja i evidentiranja poruka o pogrešci
@@ -164,3 +167,6 @@ acl_anyfile=Možete li urediti bilo koju datoteku kao PHP konfiguraciju?
 acl_manual=Možete li ručno uređivati konfiguracijske datoteke?
 acl_inis=Dodatne konfiguracijske datoteke <br>(u<i> nazivu datoteke </i>=<i> opis </i> formatu)
 acl_user=Čitati i pisati datoteke kao korisnik
+
+opt_default=Zadana vrijednost: <tt>$1</tt>
+opt_default_unknown=Nepoznato

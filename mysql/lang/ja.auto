@@ -171,6 +171,7 @@ exec_iheader=テキストファイルのインポートオプション
 exec_created=$1個のテーブルが作成されました。
 exec_inserted=$1レコードが挿入されました。
 exec_cs=データの文字セット
+exec_collationdown=データベースの照合順序が<tt>$1</tt>から<tt>$2</tt>にダウングレードされました
 
 tprivs_derr=テーブル権限の削除に失敗しました
 tprivs_enone=テーブルが選択されていません
@@ -193,6 +194,8 @@ acl_views=ビューを表示および管理できますか？
 acl_files=ローカルファイルからSQLを実行できますか？
 
 log_cnf=MySQLサーバー構成を変更しました
+log_ssl=SSL証明書を変更しました
+log_genssl=生成されたSSL証明書
 log_kill=$1データベース接続を強制終了しました
 log_vars=変更された $1システム変数
 log_dbs_delete=ドロップされた $1データベース
@@ -412,3 +415,18 @@ mysqlpass_esafe=セーフモードでの起動に失敗しました： $1
 mysqlpass_estartup=起動に失敗しました： $1
 mysqlpass_echange=パスワードの変更に失敗しました： $1
 mysqlpass_echange_forcepass=紛失または忘れた場合は、指定されたパスワードを強制的に上書きします
+
+ssl_title=SSL証明書
+ssl_header=MySQL SSL オプション
+ssl_cert=SSL証明書ファイル
+ssl_key=SSLキーファイル
+ssl_ca=SSL CA 証明書ファイル
+ssl_req=クライアントにSSLの使用を要求しますか?
+ssl_none=なし
+ssl_gen=証明書とキーを生成する
+ssl_err=SSLオプションの保存に失敗しました
+ssl_ecert=SSL証明書ファイルが見つからないか存在しません
+ssl_ekey=SSL キー ファイルが見つからない、または存在しない
+ssl_eca=SSL CA ファイルが見つからないか存在しません
+ssl_ecertexists=SSL 証明書ファイル $1 はすでに存在します!
+ssl_ekeyexists=SSL キー ファイル $1 はすでに存在します!

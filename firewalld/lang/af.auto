@@ -38,6 +38,13 @@ index_restart_firewalld=Herlaai FirewallD
 index_restart_firewallddesc=Herlaai die FirewallD-bediener en pas die reëls toe wat permanent geskep is.
 index_listrules_restartdesc=Lys besonderhede oor bestaande ryk en direkte FirewallD-reëls in $1-sone.
 index_dependent=Kon nie $1 afhanklike diens herbegin nie
+index_manual=Wysig konfigurasielêers.
+
+manual_title=Wysig konfigurasielêers
+manual_editsel=Wysig FirewallD-konfigurasielêer
+manual_err=Kon nie konfigurasielêer stoor nie
+manual_efile=Geselekteerde konfigurasielêer is nie geldig nie
+manual_ok=Wysig
 
 port_edit=Wysig hawe
 port_create=Voeg hawe by

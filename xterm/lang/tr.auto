@@ -4,6 +4,7 @@ index_epel=Önce <a href='$1' target='_blank'>EPEL</a> deposunun etkinleştirilm
 index_suse=<tt>Perl-IO-Tty</tt> Perl paketi eksik ve önce <a href='$2' target='_blank'>devel:languages:Perl</a> deposundan manuel olarak yüklenmelidir.
 index_euser=Hata : $1 kullanıcısı, mevcut olmadığı için kabuğu çalıştıramıyor!
 index_connecting=Bağlanıyor ..
+index_missing=<tt>$1</tt> Perl modülü eksik. Bu sorunu çözmek için yöneticinizle iletişime geçmeniz gerekir.
 
 acl_user=Shell'i Unix kullanıcısı olarak çalıştırın
 acl_sameuser=Webmin oturum açma ile aynı

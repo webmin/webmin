@@ -38,6 +38,13 @@ index_restart_firewalld=Herlaad FirewallD
 index_restart_firewallddesc=Laad de FirewallD-server opnieuw en pas de regels toe die permanent zijn gemaakt.
 index_listrules_restartdesc=Vermeld details over bestaande uitgebreide en directe FirewallD-regels in zone $1.
 index_dependent=Kan $1 afhankelijke service niet herstarten
+index_manual=Configuratiebestanden bewerken.
+
+manual_title=Configuratiebestanden bewerken
+manual_editsel=Bewerk FirewallD-configuratiebestand
+manual_err=Kan het configuratiebestand niet opslaan
+manual_efile=Het geselecteerde configuratiebestand is niet geldig
+manual_ok=Bewerking
 
 port_edit=Poort bewerken
 port_create=Poort toevoegen

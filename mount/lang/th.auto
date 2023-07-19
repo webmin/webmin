@@ -12,6 +12,9 @@ index_return=รายการระบบไฟล์
 index_none=คุณไม่สามารถเข้าถึงระบบไฟล์ที่เมาท์ได้
 index_mount2=ติดตั้งด้วยรหัสผ่าน:
 index_root=ระบบไฟล์รูท
+index_show1=แสดงระบบไฟล์ทั้งหมด
+index_show0=ซ่อนระบบไฟล์ที่ไม่สามารถแก้ไขได้
+index_addtype=ประเภท
 
 edit_title=แก้ไข Mount
 create_title=สร้าง Mount

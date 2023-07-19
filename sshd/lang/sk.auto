@@ -185,6 +185,7 @@ sync_auto=&lt;Automatické&gt;
 keys_title=Hostujte kľúče SSH
 keys_desc=Táto stránka umožňuje zobraziť kľúče SSH pre tohto hostiteľa.
 keys_none=Vo vašej konfigurácii SSHD sa nepodarilo nájsť žiadne položky HostKey.
+keys_change=Zmeniť
 
 manual_title=Upraviť konfiguračné súbory
 manual_ecannot=Nemáte oprávnenie upravovať konfiguračný súbor servera SSH
