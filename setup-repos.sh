@@ -91,10 +91,12 @@ else
 fi
 
 # Ask first
-printf "Setup Webmin official repository? (y/N) "
-read -r sslyn
-if [ "$sslyn" != "y" ] && [ "$sslyn" != "Y" ]; then
-  exit
+if [ "$1" != "-f" ] && [ "$1" != "--force" ]; then
+  printf "Setup Webmin official repository? (y/N) "
+  read -r sslyn
+  if [ "$sslyn" != "y" ] && [ "$sslyn" != "Y" ]; then
+    exit
+  fi
 fi
 
 # Check for wget or curl or fetch
