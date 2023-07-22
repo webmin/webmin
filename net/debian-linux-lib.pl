@@ -1077,7 +1077,8 @@ foreach my $iface (grep { $_->[1] eq 'inet' } @ifaces) {
 	if ($iface->[0] eq $_[1]) {
 		push(@{$iface->[3]}, [ 'gateway', $_[0] ]);
 		}
-	&modify_interface_def(@$iface);
+	&modify_interface_def($iface->[0], $iface->[1], $iface->[2],
+			      $iface->[3], 0, $iface->[4]);
 	}
 }
 
@@ -1112,7 +1113,8 @@ foreach my $iface (grep { $_->[1] eq 'inet6' } @ifaces) {
 	if ($iface->[0] eq $_[1] && $_[0]) {
 		push(@{$iface->[3]}, [ 'gateway', $_[0] ]);
 		}
-	&modify_interface_def(@$iface);
+	&modify_interface_def($iface->[0], $iface->[1], $iface->[2],
+			      $iface->[3], 0, $iface->[4]);
 	}
 }
 
