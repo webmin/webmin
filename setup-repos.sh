@@ -92,7 +92,7 @@ fi
 
 # Ask first
 if [ "$1" != "-f" ] && [ "$1" != "--force" ]; then
-  printf "Setup Webmin repository? (y/N) "
+  printf "Setup repository? (y/N) "
   read -r sslyn
   if [ "$sslyn" != "y" ] && [ "$sslyn" != "Y" ]; then
     exit
