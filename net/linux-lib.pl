@@ -520,7 +520,8 @@ else {
 sub use_ifup_command
 {
 local ($iface) = @_;
-return ($gconfig{'os_type'} eq 'debian-linux' &&
+return &has_command("ifup") &&
+       ($gconfig{'os_type'} eq 'debian-linux' &&
 	$gconfig{'os_version'} >= 5 ||
 	$gconfig{'os_type'} eq 'redhat-linux' &&
 	$gconfig{'os_version'} >= 13) &&
