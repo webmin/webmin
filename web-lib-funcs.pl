@@ -9590,6 +9590,16 @@ foreach my $minfo (&get_all_module_infos($_[0])) {
 	next if (!$acl{$base_remote_user,$minfo->{'dir'}} &&
 		 !$acl{$base_remote_user,"*"});
 	next if (&is_readonly_mode() && !$minfo->{'readonly'});
+	my $dir = &module_root_directory($minfo->{'dir'});
+	my $tfile = "webmin_menu_link.pl";
+	my $mfile = "$dir/$tfile";
+	if (-r $mfile) {
+		eval {
+			local $main::error_must_die = 1;
+			&foreign_require($minfo->{'dir'}, $tfile);
+			next if (!&foreign_call($minfo->{'dir'}, "allow_menu_link"));
+			};
+		}
 	push(@rv, $minfo);
 	}
 
