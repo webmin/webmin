@@ -148,7 +148,7 @@ return $name eq "dhcpd" && $gconfig{'os_version'} >= 7 ?
        $name eq "mysql" && $gconfig{'os_version'} < 7 ?
 		"mysql-client mysql-server mysql-admin" :
        $name eq "apache" ? "apache2" :
-       $name eq "squid" && $gconfig{'os_version'} >= 8 ?
+       $name eq "squid" && $gconfig{'os_version'} <= 9 ?
 		"squid3" :
        $name eq "postgresql" ? "postgresql postgresql-client" :
        $name eq "openssh" ? "ssh" :
