@@ -48,7 +48,10 @@ foreach my $repo ($webmin_apt_repo_file, $global_apt_repo_file) {
 	if ($fixed) {
 		# Put the new key into place
 		&system_logged("gpg --import $devkey >/dev/null 2>&1 </dev/null");
-		&system_logged("cat $devkey | gpg --dearmor >$webmin_apt_repo_key 2>/dev/null </dev/null");
+		my ($asckey, $err);
+		my $ex = &execute_command("gpg --dearmor", $devkey, \$asckey, \$err);
+		&error(&html_escape($err)) if ($ex);
+		&write_file_contents($webmin_apt_repo_key, $asckey);
 		}
 	}
 
