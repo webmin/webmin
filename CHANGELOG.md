@@ -1,6 +1,10 @@
 ## Changelog
 
-#### 2.100 (July, 2023)
+#### 2.101 (July ??, 2023)
+* Add `error_stderr` API
+* Fix new signing key import on Debian and derivatives
+
+#### 2.100 (July 22, 2023)
 * Add support for showing defaults for options in PHP Configuration module
 * Add significant improvements to email display, reply and compose
 * Add support for WebGL in the Terminal module
