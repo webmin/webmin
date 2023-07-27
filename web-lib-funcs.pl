@@ -1796,6 +1796,43 @@ else {
 exit(1);
 }
 
+=head2 error_stderr(err, [return])
+
+Output to STDERR or return error line
+
+=cut
+sub error_stderr
+{
+my ($err, $ret) = @_;
+my (@tm, @month, @gmt, $days, $hours, $mins, $timezone,
+    $make_datestr, $remove_host, $page);
+@tm = localtime(time());
+@month = ( "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" );
+@gmt = gmtime(time());
+$days = $tm[3] - $gmt[3];
+$hours =
+  ($days < -1 ? 24 : 1 < $days ? -24 : $days * 24) +
+    $tm[2] - $gmt[2];
+$mins = $hours * 60 + $tm[1] - $gmt[1];
+$timezone = ($mins < 0 ? "-" : "+"); $mins = abs($mins);
+$timezone .= sprintf("%2.2d%2.2d", $mins/60, $mins%60);
+$make_datestr =
+  sprintf("%2.2d/%s/%4.4d:%2.2d:%2.2d:%2.2d %s",
+    $tm[3], $month[$tm[4]], $tm[5]+1900,
+      $tm[2], $tm[1], $tm[0], $timezone);
+$remove_host = $ENV{"REMOTE_HOST"};
+$page = $ENV{"REQUEST_URI"};
+$err = &html_strip($err);
+$err =~ s/[\n\r]+/ /g;
+$err =
+  "[$make_datestr] " .
+	($remove_host ? ( "[$remove_host] " ) : ( )) .
+	  ($page ? ( "$page : " ) : ( )) . "$err\n";
+return $err if ($ret);
+print STDERR $err;
+}
+
 =head2 print_call_stack()
 
 Output the call stack of the current function to STDERR
