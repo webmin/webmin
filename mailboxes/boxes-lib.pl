@@ -2987,6 +2987,17 @@ if ($file =~ s/^(<|>>|>|\|)//) {
 	$mode = $1;
 	}
 my $rv = open($fh, $mode, $file);
+if ((!$mode || $mode eq "<") && $rv) {
+	# Is it compressed? If so, switch to reading via gzip
+	my $two;
+	read($fh, $two, 2);
+	seek($fh, 0, 0);
+	if ($two eq "\037\213") {
+		# Gzipped .. need to read-open
+		close($fh);
+		open($fh, "gunzip -c ".quotemeta($file)." |");
+		}
+	}
 if ($switched) {
 	# Now that it is open, switch back to root
 	$) = 0;
