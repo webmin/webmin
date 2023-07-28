@@ -1,4 +1,3 @@
-line2=System configuration,11
 sshd_path=Full path to sshd program,0
 sshd_config=Full path to sshd config file,0
 client_config=Full path to ssh client config file,0
