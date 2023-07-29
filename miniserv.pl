@@ -1693,6 +1693,10 @@ if ($use_ssl && $verified_client) {
 				Net::SSLeay::get_peer_certificate(
 					$ssl_con)));
 	$u = &find_user_by_cert($peername);
+	if ($config{'trust_real_ip'} && !$u && $header{'x-ssl-client-dn'}) {
+		# Use proxied client cert
+		$u = &find_user_by_cert($header{'x-ssl-client-dn'});
+		}
 	if ($u) {
 		$authuser = $u;
 		$validated = 2;
