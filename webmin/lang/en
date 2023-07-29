@@ -1012,8 +1012,8 @@ notify_updatedesc=Fixes problem
 notif_updateok=Install Updates Now
 notif_reboot=Recent package updates (such as a new kernel version) require a reboot to be fully applied.
 notif_rebootok=Reboot Now
-notify_yumrepo=Your system is using the old Webmin YUM repository. Click the button below to switch to the new repository URL <tt>$1</tt> in order to use our latest signing key and ensure access to updated Webmin versions.
-notify_aptrepo=Your system is using the old Webmin APT repository. Click the button below to switch to the new <tt>stable</tt> repository URL <tt>$1</tt> in order to use our latest signing key and ensure access to updated Webmin versions.
+notify_yumrepo=Your system is using the old Webmin repository. Click the button below to switch to the new repository URL <tt>$1</tt> in order to use our latest signing key and ensure access to updated Webmin versions.
+notify_aptrepo=Your system is using the old Webmin repository. Click the button below to switch to the new <tt>stable</tt> repository URL <tt>$1</tt> in order to use our latest signing key and ensure access to updated Webmin versions.
 notif_fixreponow=Update Webmin Repository
 
 status_title=Background Status Collection
