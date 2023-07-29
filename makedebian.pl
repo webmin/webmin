@@ -105,7 +105,7 @@ if ($product eq "webmin") {
 
 # Create the control file
 $size = int(`du -sk $tmp_dir`);
-@deps = ( "perl", "libnet-ssleay-perl", "openssl", "libauthen-pam-perl", "libpam-runtime", "libio-pty-perl", "unzip", "shared-mime-info", "tar", "libdigest-sha-perl", "libdigest-md5-perl" );
+@deps = ( "perl", "libnet-ssleay-perl", "openssl", "libauthen-pam-perl", "libpam-runtime", "libio-pty-perl", "unzip", "shared-mime-info", "tar", "libdigest-sha-perl", "libdigest-md5-perl", "gzip" );
 $deps = join(", ", @deps);
 @recommends = ( "libdatetime-perl", "libdatetime-timezone-perl", "libdatetime-locale-perl", "libtime-piece-perl", "lynx" );
 $recommends = join(", ", @recommends);
