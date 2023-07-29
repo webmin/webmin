@@ -46,7 +46,7 @@ our $webmin_key_fingerprint = "1719 003A CE3E 5A41 E2DE  70DF D97A 3AE9 11F6 3C5
 our $developers_key_email = "developers\@webmin.com";
 our $developers_key_fingerprint = "7D1A E915 F3DC FADA 344A 4FCB 2D22 3B91 8916 F2A2";
 
-our $authentic_key_email = "gpg\@ilia.engineer";
+our $authentic_key_email = "ilia\@webmin.dev";
 our $authentic_key_fingerprint = "EC60 F3DA 9CB7 9ADC CF56  0D1F 121E 166D D9C8 21AB";
 
 our $standard_host = $primary_host;
