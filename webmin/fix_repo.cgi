@@ -62,7 +62,14 @@ foreach my $repo ($webmin_apt_repo_file, $global_apt_repo_file) {
 if ($ffixed) {
 	# Put the new key into place
 	&system_logged("gpg --import $devkey");
-	&system_logged("cat $devkey | gpg --dearmor >$webmin_apt_repo_key");
+	my ($asckey, $err);
+	my $ex = &execute_command("gpg --dearmor", $devkey, \$asckey, \$err);
+	&error(&html_escape($err)) if ($ex);
+	&lock_file($webmin_apt_repo_key);
+	&write_file_contents($webmin_apt_repo_key, $asckey);
+	&additional_log('exec', undef,
+	  "gpg --dearmor < $devkey > $webmin_apt_repo_key");
+	&unlock_file($webmin_apt_repo_key);
 	}
 
 &webmin_log("fixrepo");
