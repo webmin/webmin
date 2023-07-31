@@ -779,11 +779,23 @@ local(@po, $po, @rv);
 if ($in{'Options_def'}) { return ( [ ] ); }
 @po = ("ExecCGI", "FollowSymLinks", "Includes", "IncludesNOEXEC",
        "Indexes", "MultiViews", "SymLinksIfOwnerMatch");
+my $abscount = 0;
+my $pluscount = 0;
 foreach $po (@po) {
-	if ($in{$po} == 1) { push(@rv, $po); }
-	elsif ($in{$po} == 2) { push(@rv, "+$po"); }
-	elsif ($in{$po} == 3) { push(@rv, "-$po"); }
+	if ($in{$po} == 1) {
+		push(@rv, $po);
+		$abscount++;
+		}
+	elsif ($in{$po} == 2) {
+		push(@rv, "+$po");
+		$pluscount++;
+		}
+	elsif ($in{$po} == 3) {
+		push(@rv, "-$po");
+		$pluscount++;
+		}
 	}
+$abscount && $pluscount && &error($text{'core_eoptionsboth'});
 return @rv ? ( [ join(' ', @rv) ] ) : ( [ "None" ] );
 }
 
