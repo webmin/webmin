@@ -1,6 +1,6 @@
 ## Changelog
 
-#### 2.101 (July 30, 2023)
+#### 2.101 (July 31, 2023)
 * Add `error_stderr` API
 * Fix new signing key import on Debian and derivatives
 * Fix to support reading gzipped email messages
