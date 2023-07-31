@@ -61,6 +61,10 @@ else {
 		}
 
 	$download_dir = $config{'ddir_'.$remote_user} || $config{'ddir'};
+	if ($download_dir eq '/') {
+		my @uinfo = getpwnam($remote_user);
+		$download_dir = $uinfo[7] || '/';
+		}
 	$upload_dir = $config{'dir_'.$remote_user} || $config{'dir'};
 	$upload_user = $config{'user_'.$remote_user} || $config{'user'};
 	$upload_group = $config{'group_'.$remote_group} || $config{'group'};
