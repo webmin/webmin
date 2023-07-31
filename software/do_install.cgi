@@ -90,7 +90,7 @@ else {
 
 sub install_error
 {
-print "<b>",&text('do_efailed', $error),"</b><p>\n";
+print "<b>",&text('do_efailed', @{[&html_escape($error)]}),"</b><p>\n";
 print $text{'do_efailedmsg1'},"<p>\n";
 if ($in{'need_unlink'}) {
 	print &text('do_efailedmsg2',

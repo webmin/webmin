@@ -1,8 +1,9 @@
 ## Changelog
 
-#### 2.101 (July ??, 2023)
+#### 2.101 (July 31, 2023)
 * Add `error_stderr` API
 * Fix new signing key import on Debian and derivatives
+* Fix to support reading gzipped email messages
 
 #### 2.100 (July 22, 2023)
 * Add support for showing defaults for options in PHP Configuration module

@@ -389,7 +389,7 @@ print &ui_form_end([ [ undef, $text{'download_cont'} ],
 
 sub install_error
 {
-print "<br><b>$main::whatfailed : $_[0]</b> <p>\n";
+print "<br><b>$main::whatfailed : @{[&html_escape($_[0])]}</b> <p>\n";
 &ui_print_footer($in{'return'},
 		 $in{'returndesc'} || $text{'index_return'});
 exit;

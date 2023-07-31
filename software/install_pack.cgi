@@ -171,7 +171,7 @@ print &ui_form_end([ [ undef, $text{'install_ok'} ] ]);
 
 sub install_error
 {
-print "$main::whatfailed : $_[0] <p>\n";
+print "$main::whatfailed : @{[&html_escape($_[0])]} <p>\n";
 &ui_print_footer("", $text{'index_return'});
 exit;
 }
