@@ -61,11 +61,14 @@ else {
 		}
 
 	$download_dir = $config{'ddir_'.$remote_user} || $config{'ddir'};
+	my @uinfo = getpwnam($remote_user);
 	if ($download_dir eq '/') {
-		my @uinfo = getpwnam($remote_user);
 		$download_dir = $uinfo[7] || '/';
 		}
 	$upload_dir = $config{'dir_'.$remote_user} || $config{'dir'};
+	if ($upload_dir eq '/') {
+		$upload_dir = $uinfo[7] || '/';
+		}
 	$upload_user = $config{'user_'.$remote_user} || $config{'user'};
 	$upload_group = $config{'group_'.$remote_group} || $config{'group'};
 	$upload_max = $access{'max'};
