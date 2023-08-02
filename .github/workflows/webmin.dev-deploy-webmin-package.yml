@@ -1,4 +1,4 @@
-name: "webmin.dev: Deploy Webmin packages"
+name: "webmin.dev: Deploy Webmin package"
 
 on:
   push:
