@@ -6,6 +6,9 @@ require './webmin-lib.pl';
 &ReadParse();
 &error_setup($text{'clone_err'});
 
+# Filter out potentially dangerous strings
+$in{'desc'} = &filter_javascript($in{'desc'});
+
 # Symlink the code directory
 $src = $in{'mod'};
 %minfo = &get_module_info($src);

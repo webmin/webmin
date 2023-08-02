@@ -7,6 +7,9 @@ require './usermin-lib.pl';
 &error_setup($text{'clone_err'});
 $access{'umods'} || &error($text{'acl_ecannot'});
 
+# Filter out potentially dangerous strings
+$in{'desc'} = &filter_javascript($in{'desc'});
+
 # Symlink the code directory
 &get_usermin_miniserv_config(\%miniserv);
 $src = $in{'mod'};
