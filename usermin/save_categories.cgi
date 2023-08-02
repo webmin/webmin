@@ -16,7 +16,7 @@ foreach $t (keys %utext) {
 	if (!$in{$field."_def"}) {
 		$in{$field} ||
 			&error(&text('categories_edesc', $t ? $t : 'other'));
-		$catnames{$t} = $in{$field};
+		$catnames{$t} = &filter_javascript($in{$field});
 		}
 	}
 
