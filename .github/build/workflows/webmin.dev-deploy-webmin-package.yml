@@ -1,0 +1,31 @@
+name: "webmin.dev: Deploy Webmin packages"
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: "0 8 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: awalsh128/cache-apt-pkgs-action@latest
+        with: 
+          packages: git tar gzip openssl curl openssh-client rpm perl libdigest-sha-perl liblist-moreutils-perl libencode-detect-perl
+          version: 1.0
+      - uses: szenius/set-timezone@v1.2
+        with:
+          timezoneLinux: "Europe/Nicosia"
+      - name: Build and upload packages
+        env:
+          WEBMIN_DEV__SSH_PRV_KEY: ${{ secrets.WEBMIN_DEV__SSH_PRV_KEY }}
+          WEBMIN_DEV__SSH_PUB_KEY: ${{ secrets.WEBMIN_DEV__SSH_PUB_KEY }}
+          WEBMIN_DEV__GPG_PH: ${{ secrets.WEBMIN_DEV__GPG_PH }}
+          ENV_BUILD__CLOUD_UPLOAD_SSH_HOST: ${{ secrets.WEBMIN_DEV__IP_ADDR }}
+        working-directory: ./.github/build
+        run: |-
+          ./deb.sh webmin --devel
+          ./rpm.sh webmin --devel
