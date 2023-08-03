@@ -91,7 +91,7 @@ foreach $s (@sub) {
 
 if ($config{'top_buttons'} == 2 && &editable_mail($mail)) {
 	&show_mail_buttons(1, scalar(@sub));
-	print "<p>\n";
+	print "<p class='mail_buttons_divide'></p>\n";
 	}
 
 # Start of headers section
