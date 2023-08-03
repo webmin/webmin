@@ -217,7 +217,7 @@ return &unix_crypt_supports_sha512() ? undef : 'Crypt::SHA';
 sub encrypt_sha512
 {
 my ($passwd, $salt) = @_;
-$salt ||= '$6$'.substr(time(), -8).'$';
+$salt = '$6$'.substr(time(), -8).'$' if (!$salt || $salt !~ /^\$6\$/);
 return crypt($passwd, $salt);
 }
 
