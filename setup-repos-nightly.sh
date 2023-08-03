@@ -93,6 +93,8 @@ fi
 
 # Ask first
 if [ "$1" != "-f" ] && [ "$1" != "--force" ]; then
+printf "\e[47;1;31;82mNightly builds are experimental and unstable versions used for testing\nand development purposes, may have critical bugs and breaking changes!\e[0m\n"
+
   printf "Setup development repository? (y/N) "
   read -r sslyn
   if [ "$sslyn" != "y" ] && [ "$sslyn" != "Y" ]; then
