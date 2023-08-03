@@ -96,12 +96,12 @@ if (@filters || &get_global_spamassassin()) {
 			$folder = &file_to_folder($spamfile, \@folders, 0, 1);
 			$id = &mailbox::folder_name($folder);
 			if ($folder->{'fake'}) {
-				$sflink = "<u>$folder->{'name'}</u>";
+				$sflink = "<u>".&html_escape($folder->{'name'})."</u>";
 				}
 			else {
 				$sflink =
-				    "<a href='../mailbox/index.cgi?id=$id'>".
-				    "$folder->{'name'}</a>";
+				    &ui_link("../mailbox/index.cgi?id=$id",
+					     &html_escape($folder->{'name'}));
 				}
 			print &ui_columns_row(
 				[ "", $text{'index_cspam'},

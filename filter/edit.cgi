@@ -180,7 +180,8 @@ else {
 print &ui_table_row(
 	&ui_oneradio("amode", 0, $text{'edit_amode0'}, $amode == 0),
 	&ui_select("folder", $folder ? &mailbox::folder_name($folder) : "",
-		   [ (map { [ &mailbox::folder_name($_), $_->{'name'} ] }
+		   [ (map { [ &mailbox::folder_name($_),
+			      &html_escape($_->{'name'}) ] }
 			  @folders),
 		     [ "", $text{'edit_file'} ] ],
 		   1, 0, 0, 0,
@@ -276,7 +277,8 @@ else {
 			      &ui_select("applyfrom",
 				 $inbox ? &mailbox::folder_name($inbox) : "",
 				 [ map { [ &mailbox::folder_name($_),
-					   $_->{'name'} ] } @folders ]) ]);
+					   &html_escape($_->{'name'}) ] }
+				       @folders ]) ]);
 		}
 	if (($cmode == 4 || $cmode == 5 || $cmode == 6) && $amode == 0) {
 		# Add button to apply the action to matching emails
@@ -285,7 +287,8 @@ else {
 			      &ui_select("movefrom",
 				 $inbox ? &mailbox::folder_name($inbox) : "",
 				 [ map { [ &mailbox::folder_name($_),
-					   $_->{'name'} ] } @folders ]) ]);
+					   &html_escape($_->{'name'}) ] }
+				       @folders ]) ]);
 		}
 	}
 print &ui_form_end(\@buts);
