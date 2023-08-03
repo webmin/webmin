@@ -86,8 +86,8 @@ Version: $ver
 Release: $rel
 Provides: %{name}-%{version} perl(WebminCore)
 Requires(pre): /usr/bin/perl
-Requires: /bin/sh /usr/bin/perl /bin/rm perl(lib) perl(open) perl(Net::SSLeay) perl(Time::Local) perl(Encode::Detect) perl(Data::Dumper) perl(File::Path) perl(File::Basename) perl(Digest::SHA) perl(Digest::MD5) openssl unzip tar gzip
-Recommends: perl(DateTime) perl(DateTime::TimeZone) perl(DateTime::Locale) perl(Time::Piece) lynx
+Requires: /bin/sh /usr/bin/perl /bin/rm perl(lib) perl(open) perl(Net::SSLeay) perl(Time::Local) perl(Data::Dumper) perl(File::Path) perl(File::Basename) perl(Digest::SHA) perl(Digest::MD5) openssl unzip tar gzip
+Recommends: perl(DateTime) perl(DateTime::TimeZone) perl(DateTime::Locale) perl(Time::Piece) perl(Encode::Detect) lynx
 AutoReq: 0
 License: BSD-3-clause
 Group: System/Tools
