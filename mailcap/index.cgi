@@ -23,8 +23,8 @@ if (@mailcap) {
 	foreach $m (@mailcap) {
 		print &ui_checked_columns_row([
 			&ui_link("edit.cgi?index=".$m->{'index'}, $m->{'type'}),
-			$m->{'program'},
-			$m->{'cmt'} || $m->{'args'}->{'description'},
+			&html_escape($m->{'program'}),
+			&html_escape($m->{'cmt'} || $m->{'args'}->{'description'}),
 			$m->{'enabled'} ? $text{'yes'} :
 			    "<font color=#ff0000>$text{'no'}</font>",
 			], \@tds, "d", $m->{'index'});

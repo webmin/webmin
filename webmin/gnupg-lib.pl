@@ -34,8 +34,8 @@ while(<GPG>) {
 		my $k = { 'size' => $1,
 			  'key' => $2,
 			  'date' => $3,
-			  'name' => $4 ? [ $4 ] : [ ],
-			  'email' => $5 ? [ $5 ] : $4 ? [ "" ] : [ ],
+			  'name' => &filter_javascript($4) ? [ &filter_javascript($4) ] : [ ],
+			  'email' => &filter_javascript($5) ? [ &filter_javascript($5) ] : &filter_javascript($4) ? [ "" ] : [ ],
 			  'index' => scalar(@rv) };
 		if ($k->{'name'}->[0] &&
 		    $k->{'name'}->[0] =~ /\[(expires|expired):\s+(\S+)\]/) {
@@ -54,8 +54,8 @@ while(<GPG>) {
 			elsif (/^uid\s+\[[^\]]+\]\s+(.*)\s+<(\S+)>/ ||
 			       /^uid\s+(.*)\s+<(\S+)>/ ||
 			       /^uid\s+(.*)/) {
-				push(@{$k->{'name'}}, $1);
-				push(@{$k->{'email'}}, $2);
+				push(@{$k->{'name'}}, &filter_javascript($1));
+				push(@{$k->{'email'}}, &filter_javascript($2));
 				}
 			elsif (/^\s+([A-F0-9]{0,40})/) {
 				$k->{'key'} = $1;

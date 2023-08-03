@@ -108,7 +108,7 @@ foreach $u (@ulist) {
 			$cmdidx = scalar(@cols);
 			push(@cols, &ui_link("edit_env.cgi?idx=".$idx,
 				   "<i>$text{'index_env'}</i> ".
-				   "<tt>$job->{'name'} = $job->{'value'}</tt>") );
+				   "<tt>@{[&html_escape($job->{'name'})]} = @{[&html_escape($job->{'value'})]}</tt>") );
 			$donelink = 1;
 			}
 		elsif (@exp && $access{'command'}) {
@@ -156,7 +156,7 @@ foreach $u (@ulist) {
 
 		# Show comment
 		if ($config{'show_comment'} || $userconfig{'show_comment'}) {
-			push(@cols, $job->{'comment'});
+			push(@cols, &html_escape($job->{'comment'}));
 			}
 
 		# Show next run time
