@@ -242,7 +242,7 @@ return &unix_crypt_supports_yescrypt() ? undef : 'Crypt::NaCl::Sodium';
 sub encrypt_yescrypt
 {
 my ($passwd, $salt) = @_;
-$salt ||= &substitute_pattern('$y$j9T$[A-Z]{4}.[a-zA-Z0-9]{16}.$[a-zA-Z0-9]{14}.[a-zA-Z0-9]{7}/[a-zA-Z0-9]{15}/[a-zA-Z0-9]{4}');
+$salt = &substitute_pattern('$y$j9T$[A-Z]{4}.[a-zA-Z0-9]{16}.$[a-zA-Z0-9]{14}.[a-zA-Z0-9]{7}/[a-zA-Z0-9]{15}/[a-zA-Z0-9]{4}') if (!$salt || $salt !~ /^\$y\$/);
 return crypt($passwd, $salt);
 }
 
