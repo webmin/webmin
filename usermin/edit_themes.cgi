@@ -31,7 +31,8 @@ if (@themes) {
         print "<b>$text{'themes_sel'}</b>\n";
         print &ui_select("theme", $uconfig{'theme'},
                 [ !$uconfig{'theme'} ? [ '', $text{'themes_default'} ] : (),
-                map { [ $_->{'dir'}, $_->{'desc'} ] } @themes ]),"<p>\n";
+                map { [ $_->{'dir'}, &html_escape($_->{'desc'}) ] }
+		    @themes ]),"<p>\n";
         print &ui_form_end([ [ undef, $text{'themes_change'} ] ]);
         print &ui_tabs_end_tab("mode", "change");
 	}
@@ -63,7 +64,8 @@ if (@delthemes) {
         print &ui_form_start("delete_mod.cgi");
         print "<b>$text{'themes_delok'}</b>\n";
         print &ui_select("mod", undef,
-                [ map { [ $_->{'dir'}, $_->{'desc'} ] } @delthemes ]),"<br>\n";
+                [ map { [ $_->{'dir'}, &html_escape($_->{'desc'}) ] }
+		      @delthemes ]),"<br>\n";
         print &ui_form_end([ [ undef, $text{'delete'} ] ]);
         print &ui_tabs_end_tab("mode", "delete");
 	}
@@ -78,7 +80,8 @@ if (@themes) {
 
 	print &ui_table_row($text{'themes_exportmods'},
 		&ui_select("mod", undef,
-		[ map { [ $_->{'dir'}, $_->{'desc'} ] } @themes ], 5, 1));
+		[ map { [ $_->{'dir'}, &html_escape($_->{'desc'}) ] }
+		      @themes ], 5, 1));
 
 	print &ui_table_row($text{'mods_exportto'},
 		&ui_radio("to", 0,

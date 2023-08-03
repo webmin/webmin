@@ -46,7 +46,7 @@ print &ui_table_row($text{'startpage_gotoone'},
 print &ui_table_row($text{'startpage_gotomodule'},
       &ui_select("gotomodule", $uconfig{'gotomodule'},
       [ [ "", $text{'startpage_gotonone'} ],
-      map { [ $_->{'dir'}, $_->{'desc'} ] }
+      map { [ $_->{'dir'}, &html_escape($_->{'desc'}) ] }
           sort { $a->{'desc'} cmp $b->{'desc'} } @modules ]));
 
 print &ui_table_row($text{'ui_feedbackmode'},

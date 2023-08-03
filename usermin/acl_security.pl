@@ -16,7 +16,8 @@ print &ui_table_row($text{'acl_mods'},
 		  [ [ 1, $text{'acl_all'} ],
 		    [ 0, $text{'acl_sel'} ] ])."<br>\n".
 	&ui_select("mods", [ split(/\s+/, $o->{'mods'}) ],
-		   [ map { [ $_->{'dir'}, $_->{'desc'} ] } &list_modules() ],
+		   [ map { [ $_->{'dir'}, &html_escape($_->{'desc'}) ] }
+			 &list_modules() ],
 		   10, 1));
 
 print &ui_table_row($text{'acl_stop'},

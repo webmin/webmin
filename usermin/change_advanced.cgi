@@ -21,7 +21,8 @@ for($i=0; defined($tmod = $in{'tmod_'.$i}); $i++) {
 	next if (!$tmod);
 	$tdir = $in{'tdir_'.$i};
 	%minfo = &get_usermin_module_info($tmod);
-	-d $tdir || &error(&text('advanced_etdir', $minfo{'desc'}));
+	-d $tdir || &error(&text('advanced_etdir',
+				 &html_escape($minfo{'desc'})));
 	push(@tdirs, [ $tmod, $tdir ]);
 	}
 &webmin::save_tempdirs(\%uconfig, \@tdirs);

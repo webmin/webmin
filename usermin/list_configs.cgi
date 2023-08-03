@@ -16,7 +16,7 @@ foreach $m (@mods) {
 	if ((-r "$miniserv{'root'}/$m->{'dir'}/config.info" ||
 	    -r "$miniserv{'root'}/$m->{'dir'}/uconfig.info") &&
 	    &can_use_module($m->{'dir'})) {
-		push(@grid, &ui_link("edit_configs.cgi?mod=$m->{'dir'}","$m->{'desc'}"));
+		push(@grid, &ui_link("edit_configs.cgi?mod=".&urlize($m->{'dir'}), &html_escape($m->{'desc'})));
 		}
 	}
 print &ui_grid_table(\@grid, 4, 100,

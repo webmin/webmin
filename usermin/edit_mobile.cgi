@@ -15,7 +15,8 @@ $m = $miniserv{'mobile_preroot'};
 print &ui_table_row($text{'mobile_theme'},
 	    &ui_select("theme", defined($m) ? $m : "*",
 		       [ [ "*", $text{'mobile_themeglob'} ],
-			 map { [ $_->{'dir'}, $_->{'desc'} ] } @themes ]));
+			 map { [ $_->{'dir'}, &html_escape($_->{'desc'}) ] }
+			     @themes ]));
 
 # Skip session login for mobile devices
 print &ui_table_row($text{'mobile_nosession'},

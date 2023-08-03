@@ -12,7 +12,7 @@ print &ui_form_start("save_acl.cgi");
 @mods = &list_modules();
 @grid = ( );
 foreach $m (@mods) {
-	push(@grid, &ui_checkbox("mod", $m->{'dir'}, $m->{'desc'},
+	push(@grid, &ui_checkbox("mod", $m->{'dir'}, &html_escape($m->{'desc'}),
 				 $acl{'user',$m->{'dir'}}));
 	}
 print &ui_grid_table(\@grid, 3, 100, [ "width=33%", "width=33%", "width=33%" ]);

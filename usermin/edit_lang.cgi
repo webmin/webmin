@@ -16,7 +16,7 @@ print &ui_table_start($text{'lang_title2'}, undef, 2);
 $clang = $uconfig{'lang'} ? safe_language($uconfig{'lang'}) : $default_lang;
 print &ui_table_row($text{'lang_lang'},
         &ui_select("lang", $clang,
-           [ map { [ $_->{'lang'}, "$_->{'desc'}" ] }
+           [ map { [ $_->{'lang'}, &html_escape($_->{'desc'}) ] }
                  &list_languages() ]));
 
 # Old datetime format or a new locale

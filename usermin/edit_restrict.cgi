@@ -39,10 +39,11 @@ print &ui_table_row($text{'restrict_who2'},
 my @mods = &list_modules();
 my @grid;
 foreach my $m (@mods) {
+	my $hdesc = &html_escape($m->{'desc'});
 	push(@grid,
 	    &ui_checkbox("mod", $m->{'dir'},
-			 $acl{"user",$m->{'dir'}} ? $m->{'desc'} :
-				"<font color=#ff0000>$m->{'desc'}</font>",
+			 $acl{"user",$m->{'dir'}} ? $hdesc :
+				"<font color=red>$hdesc</font>",
 			 &indexof($m->{'dir'}, @{$um->[2]}) >= 0));
 	}
 print &ui_table_row($text{'restrict_mods'},

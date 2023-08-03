@@ -27,8 +27,9 @@ foreach $m (@mods) {
 	%minfo = &get_usermin_module_info($m);
 	%minfo = &get_usermin_theme_info($m) if (!%minfo);
 	if (!-l "$miniserv{'root'}/$m" && $depends{$m}) {
-		&error(&text('delete_edep', "<tt>$minfo{'desc'}</tt>",
-			     "<tt>$depends{$m}</tt>"));
+		&error(&text('delete_edep',
+			     "<tt>".&html_escape($minfo{'desc'})."</tt>",
+			     "<tt>".&html_escape($depends{$m})."</tt>"));
 		}
 	}
 
@@ -46,7 +47,7 @@ if (!$in{'confirm'}) {
 		$total += &disk_usage_kb("$miniserv{'root'}/$m")
 			if (!-l "$miniserv{'root'}/$m");
 		$descs .= " , " if ($descs);
-		$descs .= "<b>$minfo{'desc'}</b>";
+		$descs .= "<b>".&html_escape($minfo{'desc'})."</b>";
 		}
 	print "<center>",&text($theme ? 'delete_rusure2' : 'delete_rusure',
 			       int($total), $descs),"<p>",

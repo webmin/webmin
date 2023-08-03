@@ -14,7 +14,7 @@ $access{'assignment'} || &error($text{'acl_ecannot'});
 print &ui_form_start("save_assignment.cgi", "post");
 @grid = ( );
 foreach (@modules){
-    push(@grid, $_->{'desc'} || $_->{'dir'});
+    push(@grid, &html_escape($_->{'desc'} || $_->{'dir'}));
     push(@grid, &cats($_->{'dir'}, $_->{'category'}));
     }
 print &ui_grid_table(\@grid, 4, 100, [ "valign=middle","valign=middle","valign=middle","valign=middle" ], undef, $text{'assignment_header'});

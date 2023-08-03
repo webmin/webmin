@@ -28,8 +28,9 @@ if (-r "$miniserv{'root'}/$in{'mod'}/config.info") {
 	%minfo = &get_usermin_module_info($in{'mod'});
 	print &ui_form_start("save_configs.cgi", "post");
 	print &ui_hidden("mod", $in{'mod'}),"\n";
-	print &ui_table_start(&text('config_header', $minfo{'desc'}),
-			      "width=100%", 2);
+	print &ui_table_start(
+		&text('config_header', &html_escape($minfo{'desc'})),
+		"width=100%", 2);
 
 	# Use config.info to create config inputs
 	&generate_config(\%mconfig, "$miniserv{'root'}/$in{'mod'}/config.info");
@@ -45,8 +46,9 @@ if (-r "$miniserv{'root'}/$in{'mod'}/uconfig.info") {
 	%minfo = &get_usermin_module_info($in{'mod'});
 	print &ui_form_start("save_uconfigs.cgi", "post");
 	print &ui_hidden("mod", $in{'mod'}),"\n";
-	print &ui_table_start(&text('configs_uheader', $minfo{'desc'}),
-			      "width=100%", 2);
+	print &ui_table_start(
+		&text('configs_uheader', &html_escape($minfo{'desc'})),
+		"width=100%", 2);
 
 	&read_file("$miniserv{'root'}/$in{'mod'}/defaultuconfig", \%uconfig);
 	&read_file("$config{'usermin_dir'}/$in{'mod'}/uconfig", \%uconfig);

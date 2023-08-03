@@ -49,7 +49,7 @@ print &ui_table_start($text{'mods_clone'}, undef, 2);
 # Source module
 print &ui_table_row($text{'mods_cname'},
         &ui_select("mod", undef,
-                [ map { [ $_->{'dir'}, $_->{'desc'} ] }
+                [ map { [ $_->{'dir'}, &html_escape($_->{'desc'}) ] }
                       grep { !$_->{'clone'} } @mlist ]));
 
 # New description
@@ -100,7 +100,8 @@ foreach $m (@mlist) {
                               $home ? "" :
                               sprintf "(%d/%d/%d)",
                                       $tm[3], $tm[4]+1, $tm[5]+1900;
-                push(@opts, [ $m->{'dir'}, $m->{'desc'}." ".$vstr ]);
+                push(@opts, [ $m->{'dir'},
+			      &html_escape($m->{'desc'})." ".$vstr ]);
                 }
         }
 print &ui_table_row(undef,
@@ -119,7 +120,8 @@ print &ui_table_start($text{'mods_header4'}, undef, 2);
 
 print &ui_table_row($text{'mods_exportmods'},
    	  &ui_select("mod", undef,
-		[ map { [ $_->{'dir'}, $_->{'desc'} ] } @mlist ], 10, 1));
+		[ map { [ $_->{'dir'}, &html_escape($_->{'desc'}) ] } @mlist ],
+		10, 1));
 
 print &ui_table_row($text{'mods_exportto'},
 	  &ui_radio("to", 0,
