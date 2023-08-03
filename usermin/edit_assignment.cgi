@@ -22,19 +22,21 @@ print &ui_form_end([ [ undef, $text{'assignment_ok'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
-sub cats {
-    my $cats;
-    my %cats;
-    foreach (keys %utext) {
+sub cats
+{
+my ($name, $value) = @_;
+my $cats;
+my %cats;
+foreach (keys %utext) {
 	next unless /^category_/;
 	my $desc = $utext{$_};
 	s/^category_//;
 	$cats{$_} = $desc;
 	}
-    foreach (keys %catnames) {
+foreach (keys %catnames) {
 	$cats{$_} = $catnames{$_};
 	}
-    return &ui_select($_[0], $_[1],
-                [ map { [ $_, $cats{$_} ] }
-                      sort { $cats{$a} cmp $cats{$b} } keys %cats ]);
+return &ui_select($name, $value,
+	[ map { [ $_, &html_escape($cats{$_}) ] }
+	      sort { $cats{$a} cmp $cats{$b} } keys %cats ]);
 }
