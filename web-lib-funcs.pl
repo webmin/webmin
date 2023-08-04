@@ -2077,8 +2077,9 @@ if (!$@ && $] > 5.011) {
 	my $opts = ref($only) ? $only : {};
 	my $locale_default = &get_default_system_locale();
 	my $locale_auto = &parse_accepted_language();
-	my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$remote_user} ||
-	   $locale_auto || $gconfig{'locale'} || &get_default_system_locale();
+	my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$base_remote_user} ||
+	   $gconfig{'locale_'.$remote_user} || $locale_auto ||
+	   $gconfig{'locale'} || &get_default_system_locale();
 	my $tz = $opts->{'tz'};
 	if (!$tz) {
 		eval {

@@ -4,6 +4,7 @@
 * Add support for reading gzipped email messages
 * Add support for Amazon Linux 2023
 * Add `error_stderr` API
+* Fix to show correct locale for sudo-capable users https://github.com/webmin/webmin/issues/1663
 * Fix new signing key import on Debian and derivatives
 * Fix to check if password hash format is valid for `yescrypt` and `SHA512`
 * Fix various XSS related issues
