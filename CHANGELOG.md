@@ -1,6 +1,6 @@
 ## Changelog
 
-#### 2.101 (August 4, 2023)
+#### 2.101 (August 5, 2023)
 * Add support for reading gzipped email messages
 * Add support for Amazon Linux 2023
 * Add `error_stderr` API
@@ -8,6 +8,7 @@
 * Fix new signing key import on Debian and derivatives
 * Fix to check if password hash format is valid for `yescrypt` and `SHA512`
 * Fix various XSS related issues
+* Fix updating Webmin from repository if a package is available
 
 #### 2.100 (July 22, 2023)
 * Add support for showing defaults for options in PHP Configuration module
