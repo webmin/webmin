@@ -71,7 +71,7 @@ fi
 # Setup OS dependent
 if [ -n "$osid_debian_like" ]; then
   package_type=deb
-  install_cmd="apt-get install"
+  install_cmd="apt-get install --install-recommends"
   install="$install_cmd --quiet --assume-yes"
   clean="apt-get clean"
   update="apt-get update"
