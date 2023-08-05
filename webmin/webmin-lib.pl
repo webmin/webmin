@@ -1288,8 +1288,15 @@ if (&foreign_available($module_name) && !$gconfig{'nowebminup'} &&
 		$config{'last_version_release'} &&
 		$config{'last_version_release'} >= 2;
 	my $full = &get_webmin_full_version();
-	if ($config{'last_version_full'} &&
-	    &compare_version_numbers($config{'last_version_full'}, $full) > 0) {
+	my $compver =  $config{'last_version_full'};
+	my ($repotype, $repover) = &get_webmin_repo_version();
+	my $source = 2;
+	if ($repotype) {
+		$compver = $repover;
+		$source = 6;
+		}
+	if ($compver &&
+	    &compare_version_numbers($compver, $full) > 0) {
 		# New version is out there .. offer to upgrade
 		my $mode = &get_install_type();
 		my $checksig = 0;
@@ -1306,9 +1313,8 @@ if (&foreign_available($module_name) && !$gconfig{'nowebminup'} &&
 	                    'target="_blank" data-link-external="after"').".";
 		# $release_notes_link = "" if ($minor_release);
 		push(@notifs,
-		     &ui_form_start("@{[&get_webprefix()]}/webmin/upgrade.cgi",
-				    "form-data").
-		     &ui_hidden("source", 2).
+		     &ui_form_start("@{[&get_webprefix()]}/webmin/upgrade.cgi").
+		     &ui_hidden("source", $source).
 		     &ui_hidden("sig", $checksig).
 		     &ui_hidden("mode", $mode).
 		     &text('notif_upgrade', $config{'last_version_full'}, $full).
@@ -2714,6 +2720,20 @@ if ($os =~ /rocky/i && $basever >= 8) {
 	                 $text{'os_release_notes'}, undef, $link_tag);
 	}
 return ". $link" if ($link);
+}
+
+# get_webmin_repo_version()
+# If Webmin was installed from a repository like APT or YUM, return the repo
+# type and the new version number
+sub get_webmin_repo_version
+{
+return () if (!&foreign_check("package-updates"));
+&foreign_require("package-updates");
+return () if (!&package_updates::supports_updates_available());
+my @updates = &package_updates::updates_available();
+my ($wpkg) = grep { $_->{'name'} eq 'webmin' } @updates;
+return () if (!$wpkg);
+return ($wpkg->{'system'}, $wpkg->{'version'});
 }
 
 1;

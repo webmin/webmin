@@ -5,7 +5,23 @@
 require './webmin-lib.pl';
 &foreign_require("proc", "proc-lib.pl");
 &foreign_require("acl", "acl-lib.pl");
-&ReadParseMime();
+if ($ENV{'REQUEST_METHOD'} eq 'GET') {
+	&ReadParse();
+	}
+else {
+	&ReadParseMime();
+	}
+
+if ($in{'source'} == 3) {
+	# Get the latest version from Caldera with cupdate
+	&redirect("/cupdate/");
+	return;
+	}
+elsif ($in{'source'} == 6) {
+	# Upgrade from package repository
+	&redirect("/package-updates/update.cgi?u=webmin");
+	return;
+	}
 
 $| = 1;
 $theme_no_table = 1;
@@ -136,10 +152,6 @@ elsif ($in{'source'} == 5) {
 		$release = $3;
 		$full = $version.($release ? "-$release" : "");
 		}
-	}
-elsif ($in{'source'} == 3) {
-	# Get the latest version from Caldera with cupdate
-	&redirect("/cupdate/");
 	}
 elsif ($in{'source'} == 4) {
 	# Just run the command  emerge webmin

@@ -56,6 +56,10 @@ if (!$skip_upgrade) {
 	elsif ($mode ne "sun-pkg") {
 		push(@opts, [ 2, $text{'upgrade_ftp'} ]);
 		}
+	($repotype, $repover) = &get_webmin_repo_version();
+	if ($repotype) {
+		push(@opts, [ 6, &text('upgrade_repo', uc($repotype)) ]);
+		}
 	print &ui_table_row($text{'upgrade_src'},
 		&ui_radio_table("source", $opts[$#opts]->[0], \@opts));
 

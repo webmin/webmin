@@ -481,6 +481,7 @@ upgrade_ftp=Latest version from www.webmin.com
 upgrade_cup=Latest version from Caldera's <tt>cupdate</tt> tool
 upgrade_emerge=Latest version from Emerge repository
 upgrade_delete=Delete old version's directory after upgrade?
+upgrade_repo=Latest version from $1 repository
 upgrade_ok=Upgrade Webmin
 upgrade_err1=Failed to upgrade from $1
 upgrade_err2=Failed to upgrade from uploaded file
