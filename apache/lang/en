@@ -638,7 +638,6 @@ mod_proxy_preserve=Preserve original Host: header
 mod_proxy_timeout=Proxy request timeout in seconds
 mod_proxy_etimeout=Proxy request timeout must be a number of seconds
 mod_proxy_via=Set Via: headers
-mod_proxy_preserve=Preserve original HTTP host
 mod_proxy_not=None
 
 mod_log_agent_default=Default
