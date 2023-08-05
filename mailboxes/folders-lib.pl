@@ -944,7 +944,7 @@ local ($fields, $andmode, $folder, $limit, $headersonly) = @_;
 # an index, build a sort index and use that for
 # the search, if it is simple enough (Subject, From and To only)
 local @idxfields = grep { $_->[0] eq 'from' || $_->[0] eq 'to' ||
-                          $_->[0] eq 'subject' } @{$_[0]};
+                          $_->[0] eq 'subject' } @$fields;
 if ($folder->{'type'} != 4 &&
     $folder->{'type'} != 5 &&
     $folder->{'type'} != 6 &&
@@ -1048,6 +1048,11 @@ elsif ($folder->{'type'} == 4) {
 			       $f->[0] eq "all" ? "body" : $f->[0];
 		local $neg = ($field =~ s/^\!//);
 		local $what = $f->[1];
+		if ($f->[2]) {
+			$what =~ s/^\^//;
+			$what =~ s/\$$//;
+			$what =~ s/\.\*//g;
+			}
 		if ($field ne "size") {
 			$what = "\"".$what."\""
 			}
