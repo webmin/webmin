@@ -88,7 +88,7 @@ Amazon Linux			$1	redhat-linux	20.0	`cat /etc/system-release 2>/dev/null` =~ /Am
 Amazon Linux			$1	redhat-linux	15.0	`cat /etc/system-release 2>/dev/null` =~ /Amazon\s+Linux\s+(2)\n/ || `cat /etc/system-release 2>/dev/null` =~ /Amazon\s+Linux\s+release\s+(2)\s/
 
 # Amazon Linux (3, approximately based on Fedora)
-Amazon Linux			$1	redhat-linux	34.0	`cat /etc/system-release 2>/dev/null` =~ /Amazon\s+Linux\s+([\d+]{4})/
+Amazon Linux			$1	redhat-linux	34.0	`cat /etc/system-release 2>/dev/null` =~ /Amazon\s+Linux\s+release\s+([\d+]{4})/i
 
 # Free Redhat Linux and Fedora
 Redhat Linux			$1	redhat-linux	$1	`cat /etc/redhat-release 2>/dev/null` =~ /red.*hat.*release\s+(\S+)/i && `cat /etc/redhat-release 2>/dev/null` !~ /[eE]nterprise|AS|ES|WS|[aA]dvanced/
