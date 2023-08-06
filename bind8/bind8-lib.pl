@@ -3591,7 +3591,7 @@ for(my $i=$#recs; $i>=0; $i--) {
 	if ($recs[$i]->{'type'} eq 'NSEC' ||
 	    $recs[$i]->{'type'} eq 'NSEC3' ||
 	    $recs[$i]->{'type'} eq 'RRSIG' ||
-	    $recs[$i]->{'type'} eq 'NSEC3PARAM' && $tools ||
+	    $recs[$i]->{'type'} eq 'NSEC3PARAM' ||
 	    $recs[$i]->{'type'} eq 'DNSKEY') {
 		&delete_record($fn, $recs[$i]);
 		}
