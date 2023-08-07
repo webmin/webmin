@@ -8842,23 +8842,20 @@ if ($ssl) {
 			{
 			my $cert = Net::SSLeay::X509_STORE_CTX_get_current_cert($_[1]);
 			if ($cert) {
-				my $subject = Net::SSLeay::X509_NAME_oneline(
-				    Net::SSLeay::X509_get_subject_name($cert));
-				my $issuer = Net::SSLeay::X509_NAME_oneline(
-				    Net::SSLeay::X509_get_issuer_name($cert));
 				my $errnum = Net::SSLeay::X509_STORE_CTX_get_error($_[1]);
 				if ($errnum) {
 					my $error_string = "";
 					eval {
 						$error_string = Net::SSLeay::X509_verify_cert_error_string($errnum);
-						if ($error_string) {
-							$error_string = " : $error_string";
-							}
+						$error_string = " $error_string"
+							if ($error_string);
 						};
 					if ($error_string) {
 						$main::last_set_verify_err = $error_string;
 						}
 					else {
+						my $issuer = Net::SSLeay::X509_NAME_oneline(
+							Net::SSLeay::X509_get_issuer_name($cert));
 						$main::last_set_verify_err =
 						"Certificate is signed by an ".
 						"unknown CA : $issuer (code $errnum)";
