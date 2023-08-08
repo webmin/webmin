@@ -1,8 +1,10 @@
 ## Changelog
 
+#### 2.102 (August, 2023)
+* Add support for Amazon Linux 2023
+
 #### 2.101 (August 5, 2023)
 * Add support for reading gzipped email messages
-* Add support for Amazon Linux 2023
 * Add `error_stderr` API
 * Fix to show correct locale for sudo-capable users [webmin/authentic-theme#1663](https://github.com/webmin/authentic-theme/issues/1663)
 * Fix new signing key import on Debian and derivatives
