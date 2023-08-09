@@ -49,6 +49,10 @@ if (&no_user_procmailrc()) {
 	}
 
 @filters = &list_filters();
+foreach my $filter (@filters) {
+	$filter->{'action'} = &html_escape($filter->{'action'})
+		if ($filter->{'action'});
+	}
 @links = ( );
 if (@filters) {
 	push(@links, &select_all_link("d"), &select_invert_link("d"));
@@ -116,7 +120,7 @@ if (@filters || &get_global_spamassassin()) {
 		# Work out nice condition and action descriptions
 		local $cond;
 		($cond, $lastalways) = &describe_condition($f);
-		$cond = &ui_link("edit.cgi?idx=$f->{'index'}",$cond);
+		$cond = &ui_link("edit.cgi?idx=$f->{'index'}", &html_escape($cond));
 		local $action = &describe_action($f, \@folders);
 
 		# Create mover links
