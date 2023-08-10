@@ -243,7 +243,7 @@ my $term_script = <<EOF;
 	      term.loadAddon(fitAddon);
 	      term.loadAddon(rendererAddon);
 	      term.open(termcont);
-	      term.focus();
+		  setTimeout(function() {term.focus()}, 333)
 
 	      // Handle case of dropping WebGL context
 	      if (typeof WebglAddon === 'object') {
