@@ -200,7 +200,7 @@ else {
 	if ($iface->{'dhcp'}) {
 		push(@lines, $id."    "."dhcp4: true");
 		}
-	else {
+	elsif ($iface->{'address'}) {
 		push(@addrs, $iface->{'address'}."/".
 			     &mask_to_prefix($iface->{'netmask'}));
 		}
