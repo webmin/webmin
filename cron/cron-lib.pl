@@ -1603,6 +1603,7 @@ if ($config{'system_crontab'}) {
 	}
 if ($config{'cronfiles_dir'}) {
 	push(@files, glob(&translate_filename($config{'cronfiles_dir'})."/*"));
+	@files = grep { -f $_ } @files;
 	}
 return &unique(@files);
 }

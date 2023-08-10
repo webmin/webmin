@@ -13,7 +13,8 @@ $in{'file'} ||= $files[0];
 print &ui_form_start("manual.cgi");
 print "<b>$text{'cmanual_file'}</b>\n";
 print &ui_select("file", $in{'file'},
-		 [ map { [ $_ ] } @files ]),"\n";
+		 [ grep { [ $_ ] if (!-d $_) } 
+		 	@files ]),"\n";
 print &ui_submit($text{'cmanual_ok'});
 print &ui_form_end();
 

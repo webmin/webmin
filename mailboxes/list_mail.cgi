@@ -151,7 +151,7 @@ if ($config{'log_read'}) {
 
 sub show_arrows
 {
-my $link = "list_mail.cgi?user=".&urlize($in{'user'})."&folder=".$in{'folder'};
+my $link = "list_mail.cgi?user=".&urlize($in{'user'})."&folder=".&urlize($in{'folder'});
 my $left = $in{'start'} ?
 	   $link."&start=".($in{'start'}-$perpage) : undef;
 my $right = $in{'start'}+$perpage < @mail ?
