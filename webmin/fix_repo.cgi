@@ -44,11 +44,8 @@ foreach my $repo ($webmin_apt_repo_file, $global_apt_repo_file) {
 			}
 	};
 	foreach my $l (@$lref) {
-		if ($l =~ /^\s*deb\s+((http|https):\/\/download.webmin.com\/download\/repository)\s+sarge\s+contrib/) {
-			$l = &$lreffix("deb $webmin_apt_repo_url stable contrib");
-			$fixed++;
-			}
-		elsif ($l =~ /^\s*deb\s+\[signed-by=(\S+)\]\s+((http|https):\/\/download.webmin.com\/download\/repository)\s+sarge\s+contrib/) {
+		if ($l =~ /^\s*deb\s+((http|https):\/\/download.webmin.com\/download\/repository)\s+sarge\s+contrib/ ||
+		    $l =~ /^\s*deb\s+\[signed-by=(\S+)\]\s+((http|https):\/\/download.webmin.com\/download\/repository)\s+sarge\s+contrib/) {
 			$l = &$lreffix("deb [signed-by=$webmin_apt_repo_key] $webmin_apt_repo_url stable contrib");
 			$fixed++;
 			}
