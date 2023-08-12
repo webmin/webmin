@@ -1687,12 +1687,15 @@ if ($header{'user-agent'} =~ /webmin/i ||
 	}
 
 # Check for SSL authentication
-if ($use_ssl && $verified_client) {
-	$peername = Net::SSLeay::X509_NAME_oneline(
-			Net::SSLeay::X509_get_subject_name(
-				Net::SSLeay::get_peer_certificate(
-					$ssl_con)));
-	$u = &find_user_by_cert($peername);
+if ($use_ssl && $verified_client ||
+    $config{'trust_real_ip'} && $header{'x-ssl-client-dn'}) {
+	if ($use_ssl && $verified_client) {
+		$peername = Net::SSLeay::X509_NAME_oneline(
+				Net::SSLeay::X509_get_subject_name(
+					Net::SSLeay::get_peer_certificate(
+						$ssl_con)));
+		$u = &find_user_by_cert($peername);
+		}
 	if ($config{'trust_real_ip'} && !$u && $header{'x-ssl-client-dn'}) {
 		# Use proxied client cert
 		$u = &find_user_by_cert($header{'x-ssl-client-dn'});
@@ -1701,7 +1704,7 @@ if ($use_ssl && $verified_client) {
 		$authuser = $u;
 		$validated = 2;
 		}
-	if ($use_syslog && !$validated) {
+	if ($use_syslog && !$validated && $use_ssl && $verified_client) {
 		syslog("crit", "%s",
 		       "Unknown SSL certificate $peername");
 		}
