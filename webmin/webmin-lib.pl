@@ -1340,7 +1340,7 @@ foreach my $repo ($webmin_apt_repo_file, $global_apt_repo_file) {
 	next if (!-r $repo);
 	my $lref = &read_file_lines($repo, 1);
 	foreach my $l (@$lref) {
-		if ($l =~ /^\s*deb\s+.*((http|https):\/\/download.webmin.com\/download\/repository)\s+sarge\s+contrib/) {
+		if ($l =~ /^\s*deb\s+.*?((http|https):\/\/download.webmin.com\/download\/repository)\s+sarge\s+contrib/) {
 			$repoerr = &text('notify_aptrepo',
 					 $webmin_apt_repo_url);
 			last;
