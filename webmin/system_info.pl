@@ -116,8 +116,8 @@ foreach my $a (@ann) {
 	next if ($a->{'skip_cloudmin_pro'} && $cmpro);
 	next if ($a->{'skip_cloudmin_gpl'} && %cminfo && !$cmpro);
 	next if ($a->{'skip_pro'} && ($vmpro || $cmpro));
-	next if ($a->{'atleast_version'} && $ver < $a->{'atleast_version'});
-	next if ($a->{'atmost_version'} && $ver > $a->{'atmost_version'});
+	next if ($a->{'atleast_version'} && &compare_version_numbers($ver, '<', $a->{'atleast_version'}));
+	next if ($a->{'atmost_version'} && &compare_version_numbers($ver, '>', $a->{'atmost_version'}));
 	next if ($a->{'user_types'} && $a->{'user_types'} !~ /\Q$utype\E/);
 	next if ($a->{'beta'} && !$gconfig{'beta_announce'});
 	next if ($a->{'depends'} && !&foreign_check($a->{'depends'}));
