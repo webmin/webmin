@@ -29,7 +29,7 @@ if (@match == 1) {
 &ui_print_header(undef, $text{'search_title'}, "", "search");
 if (@match) {
 	@match = sort { lc($a->{'name'}) cmp lc($b->{'name'}) } @match;
-	print "<b>",&text('search_match', "<tt>$s</tt>"),"</b><br>\n";
+	print "<b>",&text('search_match', "<tt>".&html_escape($s)."</tt>"),"</b><br>\n";
 
 	print &ui_form_start("delete_packs.cgi", "post");
 	print &ui_hidden("search", $in{'search'}),"\n";
@@ -43,8 +43,8 @@ if (@match) {
 				  $text{'search_desc'} ], 100, 0, \@tds);
 	foreach $i (@match) {
 		local @cols;
-		push(@cols, "<a href=\"edit_pack.cgi?search=$s&package=".
-		      &urlize($i->{'name'})."\">$i->{'name'}</a>");
+		push(@cols, "<a href=\"edit_pack.cgi?search=".&urlize($s).
+		    "&package=".&urlize($i->{'name'})."\">$i->{'name'}</a>");
 		$c = $i->{'class'};
 		push(@cols, $i->{'class'} || $text{'search_none'});
 		push(@cols, $i->{'desc'});
@@ -62,7 +62,7 @@ if (@match) {
 	print &ui_form_end();
 	}
 else {
-	print "<b>",&text('search_nomatch', "<tt>$s</tt>"),"</b>\n";
+	print "<b>",&text('search_nomatch', "<tt>".&html_escape($s)."</tt>"),"</b>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});
