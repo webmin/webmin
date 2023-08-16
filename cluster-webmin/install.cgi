@@ -16,10 +16,12 @@ else {
 
 if ($in{source} == 0) {
 	# installing from local file (or maybe directory)
-	if (!$in{'local'})
-		{ &download_error($text{'install_elocal'}); }
-	if (!-r $in{'local'})
-		{ &download_error(&text('install_elocal2', $in{'local'})); }
+	if (!$in{'local'}) {
+		&download_error($text{'install_elocal'});
+		}
+	if (!-r $in{'local'}) {
+		&download_error(&text('install_elocal2', &html_escape($in{'local'})));
+		}
 	$source = $in{'local'};
 	$pfile = $in{'local'};
 	$need_unlink = 0;
@@ -55,7 +57,9 @@ elsif ($in{source} == 2) {
 		&ftp_download($host, $file, $pfile, \$error,
 			      \&progress_callback);
 		}
-	else { &download_error(&text('install_eurl', $in{'url'})); }
+	else {
+		&download_error(&text('install_eurl', &html_escape($in{'url'})));
+		}
 	&download_error($error) if ($error);
 	$source = $in{'url'};
 	$need_unlink = 1;
