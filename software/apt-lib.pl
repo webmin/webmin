@@ -20,6 +20,7 @@ local $force = !$_[2];
 local (@rv, @newpacks);
 
 # Build the command to run
+$ENV{'UCF_FORCE_CONFFOLD'} = 'YES';
 $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
 local $uicmd = "$apt_get_command -y ".($force ? " -f" : "")." install $update";
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
@@ -75,6 +76,7 @@ return @rv;
 sub update_system_operations
 {
 my ($packages) = @_;
+$ENV{'UCF_FORCE_CONFFOLD'} = 'YES';
 $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
 my $cmd = "apt-get -s install ".
 	  join(" ", map { quotemeta($_) } split(/\s+/, $packages)).
