@@ -269,42 +269,7 @@ if (!&has_command("ifconfig") && &has_command("ip")) {
 	}
 
 my $cmd;
-if (&has_command("ip")) {
-	# If the IP is changing, first remove it then re-add
-	my $readd = 0;
-	if ($old && $old->{'address'}) {
-		if ($old->{'address'} ne $a->{'address'} ||
-		    $old->{'netmask'} ne $a->{'netmask'}) {
-			my $rcmd = "ip addr del ".quotemeta($old->{'address'}).
-				   "/".&mask_to_prefix($old->{'netmask'}).
-				   " dev ".quotemeta($a->{'name'});
-			&system_logged("$rcmd >/dev/null 2>&1");
-			$readd = 1;
-			}
-		}
-	else {
-		$readd = 1;
-		}
-
-	# Build ip command to add the new IP
-	if ($readd) {
-		$cmd .= "ip addr add ".quotemeta($a->{'address'});
-		if ($a->{'netmask'}) {
-			$cmd .= "/".&mask_to_prefix($a->{'netmask'});
-			}
-		if ($a->{'broadcast'}) {
-			$cmd .= " broadcast ".quotemeta($a->{'broadcast'});
-			}
-		if($a->{'vlan'} == 1) {
-			$cmd .= " dev ".quotemeta($a->{'physical'}).".".
-				quotemeta($a->{'vlanid'});
-			}
-		else {
-			$cmd .= " dev ".quotemeta($a->{'name'});
-			}
-		}
-	}
-elsif (&use_ifup_command($a)) {
+if (&use_ifup_command($a)) {
 	# Use Debian / Redhat ifup command
 	if($a->{'vlan'} == 1) {
 		# Name and fullname for VLAN tagged interfaces are "auto" so
@@ -358,6 +323,41 @@ elsif (&has_command("ifconfig")) {
 		}
 	else {
 		$cmd .= " down";
+		}
+	}
+elsif (&has_command("ip")) {
+	# If the IP is changing, first remove it then re-add
+	my $readd = 0;
+	if ($old && $old->{'address'}) {
+		if ($old->{'address'} ne $a->{'address'} ||
+		    $old->{'netmask'} ne $a->{'netmask'}) {
+			my $rcmd = "ip addr del ".quotemeta($old->{'address'}).
+				   "/".&mask_to_prefix($old->{'netmask'}).
+				   " dev ".quotemeta($a->{'name'});
+			&system_logged("$rcmd >/dev/null 2>&1");
+			$readd = 1;
+			}
+		}
+	else {
+		$readd = 1;
+		}
+
+	# Build ip command to add the new IP
+	if ($readd) {
+		$cmd .= "ip addr add ".quotemeta($a->{'address'});
+		if ($a->{'netmask'}) {
+			$cmd .= "/".&mask_to_prefix($a->{'netmask'});
+			}
+		if ($a->{'broadcast'}) {
+			$cmd .= " broadcast ".quotemeta($a->{'broadcast'});
+			}
+		if($a->{'vlan'} == 1) {
+			$cmd .= " dev ".quotemeta($a->{'physical'}).".".
+				quotemeta($a->{'vlanid'});
+			}
+		else {
+			$cmd .= " dev ".quotemeta($a->{'name'});
+			}
 		}
 	}
 else {
@@ -439,31 +439,7 @@ elsif ($a->{'virtual'} eq '' && &has_command("ip")) {
 sub deactivate_interface
 {
 my ($a) = @_;
-if (&has_command("ip")) {
-	# Use new ip command to remove all IPs
-	my @del;
-	if ($a->{'address'}) {
-		push(@del, $a->{'address'}."/".
-			   &mask_to_prefix($a->{'netmask'}));
-		}
-	for(my $i=0; $i<@{$a->{'address6'}}; $i++) {
-		push(@del, $a->{'address6'}->[$i]."/".
-			   $a->{'netmask6'}->[$i]);
-		}
-	foreach my $d (@del) {
-		my $cmd = "ip addr del ".quotemeta($d)." dev ".
-			  quotemeta($a->{'name'});
-		my $out = &backquote_logged("$cmd 2>&1");
-		&error("Failed to remove old address : $out") if ($?);
-		}
-
-	if ($a->{'virtual'} eq '') {
-		my $cmd = "ip link set dev ".quotemeta($a->{'name'})." down";
-		my $out = &backquote_logged("$cmd 2>&1");
-		&error("<pre>".&html_escape($out)."</pre>") if ($?);
-		}
-	}
-elsif (&has_command("ifconfig")) {
+if (&has_command("ifconfig")) {
 	# Use old ifconfig command
 	my $name = $a->{'name'}.
 		      ($a->{'virtual'} ne "" ? ":$a->{'virtual'}" : "");
@@ -507,6 +483,30 @@ elsif (&has_command("ifconfig")) {
 			$out = &backquote_logged(
 				"vconfig rem ".quotemeta($name)." 2>&1");
 			}
+		}
+	}
+elsif (&has_command("ip")) {
+	# Use new ip command to remove all IPs
+	my @del;
+	if ($a->{'address'}) {
+		push(@del, $a->{'address'}."/".
+			   &mask_to_prefix($a->{'netmask'}));
+		}
+	for(my $i=0; $i<@{$a->{'address6'}}; $i++) {
+		push(@del, $a->{'address6'}->[$i]."/".
+			   $a->{'netmask6'}->[$i]);
+		}
+	foreach my $d (@del) {
+		my $cmd = "ip addr del ".quotemeta($d)." dev ".
+			  quotemeta($a->{'name'});
+		my $out = &backquote_logged("$cmd 2>&1");
+		&error("Failed to remove old address : $out") if ($?);
+		}
+
+	if ($a->{'virtual'} eq '') {
+		my $cmd = "ip link set dev ".quotemeta($a->{'name'})." down";
+		my $out = &backquote_logged("$cmd 2>&1");
+		&error("<pre>".&html_escape($out)."</pre>") if ($?);
 		}
 	}
 else {
