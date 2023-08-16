@@ -233,25 +233,32 @@ print "<p><b>$text{'do_done'}</b><p>\n";
 # Show details of installed packages, where we have them
 for($i=0; $i<@names; $i++) {
 	next if (!$pinfo[$i]);
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'do_details'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
+	print &ui_table_start($text{'do_details'}, "width=100%", 4);
 
 	if ($pinfo[$i]->[2]) {
-		print "<tr> <td valign=top width=20%><b>$text{'do_desc'}</b></td>\n";
-		print "<td colspan=3><pre>$pinfo[$i]->[2]</pre></td> </tr>\n";
+		print &ui_table_row($text{'do_desc'},
+			"<pre>".&html_escape($pinfo[$i]->[2])."</pre>", 3);
 		}
 
-	print "<tr> <td width=20%><b>$text{'do_pack'}</b></td> <td>$pinfo[$i]->[0]</td>\n";
-	print "<td width=20%><b>$text{'do_class'}</b></td> <td>",
-		$pinfo[$i]->[1] ? $pinfo[$i]->[1] : $text{'do_none'},"</td> </tr>\n";
+	print &ui_table_row($text{'do_pack'},
+		$pinfo[$i]->[0]);
 
-	print "<tr> <td width=20%><b>$text{'do_ver'}</b></td> <td>$pinfo[$i]->[4]</td>\n";
-	print "<td width=20%><b>$text{'do_vend'}</b></td> <td>$pinfo[$i]->[5]</td> </tr>\n";
+	print &ui_table_row($text{'do_class'},
+		$pinfo[$i]->[1] || $text{'do_none'});
 
-	print "<tr> <td width=20%><b>$text{'do_arch'}</b></td> <td>$pinfo[$i]->[3]</td>\n";
-	print "<td width=20%><b>$text{'do_inst'}</b></td> <td>$pinfo[$i]->[6]</td> </tr>\n";
-	print "</table></td></tr></table><p>\n";
+	print &ui_table_row($text{'do_ver'},
+		$pinfo[$i]->[4]);
+
+	print &ui_table_row($text{'do_vend'},
+		$pinfo[$i]->[5]);
+
+	print &ui_table_row($text{'do_arch'},
+		$pinfo[$i]->[3]);
+
+	print &ui_table_row($text{'do_inst'},
+		$pinfo[$i]->[6]);
+
+	print &ui_table_end();
 	}
 
 &remote_finished();
