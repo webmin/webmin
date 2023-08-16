@@ -22,10 +22,12 @@ else {
 
 if ($in{source} == 0) {
 	# installing from local file (or maybe directory)
-	if (!$in{'local'})
-		{ &install_error($text{'install_elocal'}); }
-	if (!-r $in{'local'})
-		{ &install_error(&text('install_elocal2', $in{'local'})); }
+	if (!$in{'local'}) {
+		&install_error($text{'install_elocal'});
+		}
+	if (!-r $in{'local'}) {
+		&install_error(&text('install_elocal2', &html_escape($in{'local'})));
+		}
 	$source = $in{'local'};
 	$pfile = $in{'local'};
 	$filename = $in{'local'};
