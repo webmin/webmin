@@ -57,7 +57,7 @@ if (&has_command("ip")) {
 			$ifc{'address'} = $1;
 			$ifc{'netmask'} = &prefix_to_mask("$3");
 			}
-		elsif ($l =~ /\sinet\s+([0-9\.]+)\/\d+\s+(?:metric\s+\d+\s+|)brd\s+(\S+)\s+scope\s+global(?:\s+secondary|)\s(dynamic)\s+.*?(\Q$iface_name\E)/) {
+		elsif ($l =~ /\sinet\s+([0-9\.]+)\/(\d+)\s+(?:metric\s+\d+\s+|)brd\s+(\S+)\s+scope\s+global(?:\s+secondary|)\s(dynamic)\s+.*?(\Q$iface_name\E)/) {
 			# Line like :
 			# inet 193.9.101.120/24 brd 193.9.101.255 scope global secondary dynamic br0
 			# inet 10.211.55.81/24 metric 100 brd 10.211.55.255 scope global secondary dynamic enp0s5

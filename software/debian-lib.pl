@@ -202,6 +202,7 @@ local $args = ($in->{'depends'} ? " --force-depends" : "").
 	      ($in->{'overwrite'} ? " --force-overwrite" : "").
 	      ($in->{'downgrade'} ? " --force-downgrade" : "");
 local $qm = quotemeta($_[0]);
+$ENV{'UCF_FORCE_CONFFOLD'} = 'YES';
 $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
 local $out = &backquote_logged("dpkg --install $args $qm 2>&1 </dev/null");
 if ($?) {
