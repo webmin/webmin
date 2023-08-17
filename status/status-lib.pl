@@ -9,6 +9,7 @@ use Socket;
 
 # Wrapper command for cron job
 $cron_cmd = "$module_config_directory/monitor.pl";
+$full_cron_cmd = $cron_cmd." >/dev/null 2>&1";
 
 # Config directory for monitors
 $services_dir = "$module_config_directory/services";
@@ -297,7 +298,9 @@ sub setup_cron_job
 &foreign_require("cron");
 my $job;
 foreach my $j (&cron::list_cron_jobs()) {
-	$job = $j if ($j->{'user'} eq 'root' && $j->{'command'} eq $cron_cmd);
+	$job = $j if ($j->{'user'} eq 'root' &&
+		      ($j->{'command'} eq $cron_cmd ||
+		       $j->{'command'} eq $full_cron_cmd));
 	}
 if ($job) {
 	&lock_file(&cron::cron_file($job));
@@ -314,7 +317,7 @@ if ($config{'sched_mode'}) {
 	$njob = { 'user' => 'root', 'active' => 1,
 		  'hours' => '*', 'days' => '*',
 		  'months' => '*', 'weekdays' => '*',
-		  'command' => $cron_cmd };
+		  'command' => $full_cron_cmd };
 	if ($config{'sched_period'} == 0) {
 		$njob->{'mins'} = &make_interval(60);
 		}
