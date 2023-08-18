@@ -7226,7 +7226,9 @@ if (!$@) {
 	# Print on screen
 	else {
 		my $dumped_data = Dumper($objref);
-		if ($filename ne '0') {
+		# If print to UI, escape HTML and
+		# replace new lines and spaces
+		if ($main::webmin_script_type eq 'web') {
 			$dumped_data = &html_escape($dumped_data);
 			$dumped_data =~ s/\n/<br>/g;
 			$dumped_data =~ s/\s/&nbsp;/g;
