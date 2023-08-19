@@ -166,7 +166,7 @@ deb)
   echo "  .. done"
   # Create repo file
   echo "  Setting up Webmin repository .."
-  echo "deb [signed-by=/usr/share/keyrings/$repoid_debian_like-$webmin_key_suffix.gpg] $webmin_download/download/newkey/repository stable contrib" >$debian_repo_file
+  echo "deb [signed-by=/usr/share/keyrings/$repoid_debian_like-$webmin_key_suffix.gpg] $webmin_download/download/repo webmin main" >$debian_repo_file
   echo "  .. done"
   # Clean meta
   echo "  Cleaning repository metadata .."
