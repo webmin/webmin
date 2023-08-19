@@ -1,7 +1,12 @@
 ## Changelog
 
-#### 2.102 (August, 2023)
+#### 2.102 (August 21, 2023)
 * Add support for Amazon Linux 2023
+* Fix a bug in Network Configuration module when parsing network size [sourceforge.net/discussion#55377]( https://sourceforge.net/p/webadmin/discussion/55377/thread/78e5aa05f3)
+* Fix Netplan related bugs in Network Configuration module
+* Fix Terminal focus bug
+* Fix to correctly compare Webmin semantic versions
+* Fix to suppress output from `monitor.pl` command [#1984](https://github.com/webmin/webmin/issues/1984)
 
 #### 2.101 (August 5, 2023)
 * Add support for reading gzipped email messages
