@@ -1698,7 +1698,9 @@ $err_caller = "$stack[1]->[1] (line $stack[1]->[2])"
 	if ($stack[1]->[1] && $stack[1]->[2]);
 if ($err_caller) {
 	$err_caller =~ s/$root_directory\///;
-	my $err_caller_ = &ui_help($err_caller);
+	my $err_caller_ =
+		$main::webmin_script_type =~ /^(cmd|cron)$/ ?
+			$err_caller : &ui_help($err_caller);
 	$msg = $msg ? "$msg $err_caller_" : $err_caller_;
 	push(@msg, $err_caller_);
 	}
