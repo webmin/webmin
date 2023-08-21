@@ -1450,7 +1450,8 @@ alarm(0);
 # If a remote IP is given in a header (such as via a proxy), only use it
 # for logging unless trust_real_ip is set
 local $headerhost = $header{'x-forwarded-for'} ||
-		    $header{'x-real-ip'};
+		    $header{'x-real-ip'} ||
+		    $header{'true-client-ip'};
 if ($headerhost) {
 	# Only real IPs are allowed
 	$headerhost = undef if (!&check_ipaddress($headerhost) &&
