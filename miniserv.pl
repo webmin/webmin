@@ -1451,7 +1451,8 @@ alarm(0);
 # for logging unless trust_real_ip is set
 local $headerhost = $header{'x-forwarded-for'} ||
 		    $header{'x-real-ip'} ||
-		    $header{'true-client-ip'};
+		    $header{'true-client-ip'} ||
+		    $header{'cf-connecting-ip'};
 if ($headerhost) {
 	# Only real IPs are allowed
 	$headerhost = undef if (!&check_ipaddress($headerhost) &&
