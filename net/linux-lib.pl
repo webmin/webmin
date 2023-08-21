@@ -525,7 +525,7 @@ return &has_command("ifup") &&
 	$gconfig{'os_version'} >= 5 ||
 	$gconfig{'os_type'} eq 'redhat-linux' &&
 	$gconfig{'os_version'} >= 13) &&
-       ($iface->{'name'} !~ /^(eth|em|eno|ens|enp|enx|lo|br)/ ||
+       ($iface->{'name'} !~ /^(eth|em|eno|ens|enp|enx|enX|lo|br)/ ||
  	$iface->{'name'} =~ /^(\S+)\.(\d+)/) &&
        $iface->{'virtual'} eq '';
 }
@@ -541,7 +541,7 @@ if ($name =~ /^(.*)\.(\d+)$/) {
 return "PPP" if ($name =~ /^ppp/);
 return "SLIP" if ($name =~ /^sl/);
 return "PLIP" if ($name =~ /^plip/);
-return "Ethernet" if ($name =~ /^eth|em|eno|ens|enp|enx|p\d+p\d+|vtnet/);
+return "Ethernet" if ($name =~ /^eth|em|eno|ens|enp|enx|enX|p\d+p\d+|vtnet/);
 return "Wireless Ethernet" if ($name =~ /^(wlan|ath)/);
 return "Arcnet" if ($name =~ /^arc/);
 return "Token Ring" if ($name =~ /^tr/);
@@ -803,7 +803,7 @@ return $? ? $out : undef;
 # Does some interface have an editable hardware address
 sub iface_hardware
 {
-return $_[0] =~ /^(eth|em|eno|ens|enp|enx)/;
+return $_[0] =~ /^(eth|em|eno|ens|enp|enx|enX)/;
 }
 
 # allow_interface_clash()
