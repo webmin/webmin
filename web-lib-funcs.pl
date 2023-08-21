@@ -1698,7 +1698,9 @@ $err_caller = "$stack[1]->[1] (line $stack[1]->[2])"
 	if ($stack[1]->[1] && $stack[1]->[2]);
 if ($err_caller) {
 	$err_caller =~ s/$root_directory\///;
-	my $err_caller_ = &ui_help($err_caller);
+	my $err_caller_ =
+		$main::webmin_script_type =~ /^(cmd|cron)$/ ?
+			$err_caller : &ui_help($err_caller);
 	$msg = $msg ? "$msg $err_caller_" : $err_caller_;
 	push(@msg, $err_caller_);
 	}
@@ -7226,7 +7228,9 @@ if (!$@) {
 	# Print on screen
 	else {
 		my $dumped_data = Dumper($objref);
-		if ($filename ne '0') {
+		# If print to UI, escape HTML and
+		# replace new lines and spaces
+		if ($main::webmin_script_type eq 'web') {
 			$dumped_data = &html_escape($dumped_data);
 			$dumped_data =~ s/\n/<br>/g;
 			$dumped_data =~ s/\s/&nbsp;/g;
