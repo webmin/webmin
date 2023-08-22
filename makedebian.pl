@@ -458,7 +458,6 @@ foreach my $deb ("deb", "newkey/deb") {
 	# Run the actual build command
 	system("fakeroot dpkg --build $tmp_dir $deb/${product}_${ver}${rel}_all.deb") &&
 		die "dpkg failed";
-	#system("rm -rf $tmp_dir");
 	print "Wrote $deb/${product}_${ver}${rel}_all.deb\n";
 	$md5 = `md5sum $tarfile`;
 	$md5 =~ s/\s+.*\n//g;
@@ -521,6 +520,8 @@ EOF
 	unlink("sigs/${product}_${ver}${rel}_all.deb-sig.asc");
 	system("gpg --armor --output sigs/${product}_${ver}${rel}_all.deb-sig.asc --default-key $key --detach-sig $deb/${product}_${ver}${rel}_all.deb");
 	print "Wrote sigs/${product}_${ver}${rel}_all.deb-sig.asc\n";
+
+	system("rm -rf $diff_orig_dir $diff_new_dir");
 	}
 
 # read_file(file, &assoc, [&order], [lowercase])
