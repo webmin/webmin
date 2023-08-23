@@ -501,18 +501,7 @@ return $? ? $out : undef;
 sub get_config_files
 {
 my $conf_dir = $config{'config_dir'} || '/etc/firewalld';
-my @conf_files;
-my @dirpath = ($conf_dir);
-eval "use File::Find;";
-if (!$@) {
-	find(sub {
-		my $file = $File::Find::name;
-		push(@conf_files, $file)
-			if (-f $file && $file =~ /\.(conf|xml)$/);
-		}, @dirpath);
-	}
-push(@conf_files, "$conf_dir/direct.xml");
-return @conf_files;
+return (glob("$conf_dir/*.xml"), glob("$conf_dir/*/*.xml"));
 }
 
 1;
