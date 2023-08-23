@@ -1,6 +1,6 @@
 ## Changelog
 
-#### 2.102 (August 21, 2023)
+#### 2.102 (August 23, 2023)
 * Add support for Amazon Linux 2023
 * Fix a bug in Network Configuration module when parsing network size [sourceforge.net/discussion#55377]( https://sourceforge.net/p/webadmin/discussion/55377/thread/78e5aa05f3)
 * Fix Netplan related bugs in Network Configuration module
