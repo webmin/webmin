@@ -120,7 +120,7 @@ if (@filters || &get_global_spamassassin()) {
 		# Work out nice condition and action descriptions
 		local $cond;
 		($cond, $lastalways) = &describe_condition($f);
-		$cond = &ui_link("edit.cgi?idx=$f->{'index'}", &html_escape($cond));
+		$cond = &ui_link("edit.cgi?idx=$f->{'index'}", $cond);
 		local $action = &describe_action($f, \@folders);
 
 		# Create mover links
