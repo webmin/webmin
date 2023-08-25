@@ -4250,6 +4250,17 @@ my $m = int($_[0]);
 my $skipfile = $_[1];
 if (!$main::get_system_hostname[$m]) {
 	if ($gconfig{'os_type'} ne 'windows') {
+		# Try hostnamectl command on Linux
+		if (&has_command("hostnamectl")) {
+			my $hostname =
+				&backquote_command("hostnamectl --static");
+			chop($hostname);
+			if ($? == 0 && $hostname =~ /\./) {
+				$hostname =~ s/\..*$// if ($m);
+				$main::get_system_hostname[$m] = $hostname;
+				return $hostname;
+				}
+			}
 		# Try some common Linux hostname files first
 		my $fromfile;
 		if ($skipfile) {
