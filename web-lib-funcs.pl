@@ -4329,8 +4329,8 @@ if (!$main::get_system_hostname[$m]) {
 		if ($fromfile && ($m || $fromfile =~ /\./)) {
 			if ($m) {
 				$fromfile =~ s/\..*$//;
+				$main::get_system_hostname[$m] = $fromfile;
 				}
-			$main::get_system_hostname[$m] = $fromfile;
 			return $fromfile;
 			}
 
