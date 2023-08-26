@@ -136,7 +136,7 @@ local %conf;
 $conf{'HOSTNAME'} = $_[0];
 &write_env_file($network_config, \%conf);
 &unlock_file($network_config);
-undef(@main::get_system_hostname);      # clear cache
+&get_system_hostname(undef, undef, 2);      # clear cache
 }
 
 # get_domainname()

@@ -396,7 +396,7 @@ my ($hostname) = @_;
 &lock_file($hostconfig);
 &set_hostconfig("HOSTNAME", $hostname);
 &unlock_file($hostconfig);
-undef(@main::get_system_hostname);      # clear cache
+&get_system_hostname(undef, undef, 2);      # clear cache
 }
 
 sub routing_config_files
