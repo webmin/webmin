@@ -4239,16 +4239,23 @@ return defined(&$func);
 
 =head2 get_system_hostname([short], [skip-file])
 
-Returns the hostname of this system. If the short parameter is set to 1,
+Returns the hostname of this system. If the short parameter is set to 1 or -1,
 then the domain name is not prepended - otherwise, Webmin will attempt to get
 the fully qualified hostname, like foo.example.com.
+If the short parameter is set to -1 it will flush the cache and re-read the
+hostname from the system. If the short parameter is set to -2 it will flush the
+cache and exit.
 
 =cut
 sub get_system_hostname
 {
-my $m = int($_[0]);
-my $skipfile = $_[1];
-if (!$main::get_system_hostname[$m]) {
+my ($m , $skipfile) = @_;
+my $nocache = $m <= -1 ? $m : 0;
+$m = $m =~ /-?1/ ? 1 : 0;
+state @system_hostname;
+undef(@system_hostname) if ($nocache);
+return if ($nocache == -2);
+if (!$system_hostname[$m]) {
 	if ($gconfig{'os_type'} ne 'windows') {
 		# Try hostnamectl command on Linux
 		if (&has_command("hostnamectl")) {
@@ -4257,7 +4264,7 @@ if (!$main::get_system_hostname[$m]) {
 			chop($hostname);
 			if ($? == 0 && $hostname =~ /\./) {
 				$hostname =~ s/\..*$// if ($m);
-				$main::get_system_hostname[$m] = $hostname;
+				$system_hostname[$m] = $hostname;
 				return $hostname;
 				}
 			}
@@ -4341,24 +4348,24 @@ if (!$main::get_system_hostname[$m]) {
 			if ($m) {
 				$fromfile =~ s/\..*$//;
 				}
-			$main::get_system_hostname[$m] = $fromfile;
+			$system_hostname[$m] = $fromfile;
 			return $fromfile;
 			}
 
 		# Can use hostname command on Unix
 		&execute_command("hostname", undef,
-				 \$main::get_system_hostname[$m], undef, 0, 1);
-		chop($main::get_system_hostname[$m]);
+				 \$system_hostname[$m], undef, 0, 1);
+		chop($system_hostname[$m]);
 		if ($?) {
 			eval "use Sys::Hostname";
 			if (!$@) {
-				$main::get_system_hostname[$m] = eval "hostname()";
+				$system_hostname[$m] = eval "hostname()";
 				}
-			if ($@ || !$main::get_system_hostname[$m]) {
-				$main::get_system_hostname[$m] = "UNKNOWN";
+			if ($@ || !$system_hostname[$m]) {
+				$system_hostname[$m] = "UNKNOWN";
 				}
 			}
-		elsif ($main::get_system_hostname[$m] !~ /\./ &&
+		elsif ($system_hostname[$m] !~ /\./ &&
 		       $gconfig{'os_type'} =~ /linux$/ &&
 		       !$gconfig{'no_hostname_f'} && !$_[0]) {
 			# Try with -f flag to get fully qualified name
@@ -4367,7 +4374,7 @@ if (!$main::get_system_hostname[$m]) {
 						  undef, 0, 1);
 			chop($flag);
 			if (!$ex && $flag ne "") {
-				$main::get_system_hostname[$m] = $flag;
+				$system_hostname[$m] = $flag;
 				}
 			}
 		}
@@ -4379,14 +4386,14 @@ if (!$main::get_system_hostname[$m]) {
 		# Fall back to net name command
 		my $out = `net name 2>&1`;
 		if ($out =~ /\-+\r?\n(\S+)/) {
-			$main::get_system_hostname[$m] = $1;
+			$system_hostname[$m] = $1;
 			}
 		else {
-			$main::get_system_hostname[$m] = "windows";
+			$system_hostname[$m] = "windows";
 			}
 		}
 	}
-return $main::get_system_hostname[$m];
+return $system_hostname[$m];
 }
 
 =head2 get_webmin_version
