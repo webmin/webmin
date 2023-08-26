@@ -506,7 +506,7 @@ if (&has_command("hostnamectl")) {
 		       " >/dev/null 2>&1");
 	}
 
-undef(@main::get_system_hostname);	# clear cache
+&get_system_hostname(-2);	# clear cache
 }
 
 # get_domainname()
