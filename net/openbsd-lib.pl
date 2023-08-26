@@ -417,7 +417,7 @@ my ($hostname) = @_;
 &open_lock_tempfile(MYNAME, ">/etc/myname");
 &print_tempfile(MYNAME, $hostname,"\n");
 &close_tempfile(MYNAME);
-&get_system_hostname(-2);      # clear cache
+&get_system_hostname(undef, undef, 2);      # clear cache
 }
 
 sub set_line {

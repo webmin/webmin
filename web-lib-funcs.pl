@@ -4237,24 +4237,23 @@ my $func = "${pkg}::${sub}";
 return defined(&$func);
 }
 
-=head2 get_system_hostname([short], [skip-file])
+=head2 get_system_hostname([short], [skip-file], [nocache])
 
-Returns the hostname of this system. If the short parameter is set to 1 or -1,
-then the domain name is not prepended - otherwise, Webmin will attempt to get
-the fully qualified hostname, like foo.example.com.
-If the short parameter is set to -1 it will flush the cache and re-read the
-hostname from the system. If the short parameter is set to -2 it will flush the
-cache and exit.
+Returns the hostname of this system. If the short parameter is set to 1 then
+the domain name is not prepended - otherwise, Webmin will attempt to get the
+fully qualified hostname, like foo.example.com.
+If the nocache parameter is set to 1 it will flush the cache and re-read the
+hostname from the system. If the nocache parameter is set to 2 it will flush
+the cache and exit.
 
 =cut
 sub get_system_hostname
 {
-my ($m , $skipfile) = @_;
-my $nocache = $m <= -1 ? $m : 0;
-$m = $m =~ /-?1/ ? 1 : 0;
+my ($m , $skipfile, $nocache) = @_;
+$m = int($m);
 state @system_hostname;
 undef(@system_hostname) if ($nocache);
-return if ($nocache == -2);
+return if ($nocache == 2);
 if (!$system_hostname[$m]) {
 	if ($gconfig{'os_type'} ne 'windows') {
 		# Try hostnamectl command on Linux

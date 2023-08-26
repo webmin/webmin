@@ -583,7 +583,7 @@ if (&has_command("hostnamectl")) {
 		       " >/dev/null 2>&1");
 	}
 
-&get_system_hostname(-2);      # clear cache
+&get_system_hostname(undef, undef, 2);      # clear cache
 }
 
 # get_domainname()
