@@ -7215,6 +7215,12 @@ if ($filename && $filename_) {
 	$filename  =~ tr/A-Za-z0-9\_\-//cd;
 	$filename = "$filename--";
 	}
+state $check_header;
+my $check_headers = sub {
+	if (!$check_header++ && !$main::done_webmin_header) {
+		print "Content-type: text/html\n\n";
+		}
+	};
 
 eval 'use Data::Dumper';
 if (!$@) {
@@ -7246,7 +7252,8 @@ if (!$@) {
 			$dumped_data =~ s/\n/<br>/g;
 			$dumped_data =~ s/\s/&nbsp;/g;
 			}
-		print $dumped_data;
+		&$check_headers();
+		$objref && print $dumped_data;
 		}
 	}
 else {
@@ -7257,7 +7264,8 @@ else {
 		}
 	# Print on screen
 	else {
-		print Dumper($dumpererr);
+		&$check_headers();
+		$objref && print Dumper($dumpererr);
 		}
 	}
 }
