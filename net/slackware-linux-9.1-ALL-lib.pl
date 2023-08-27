@@ -274,7 +274,7 @@ sub save_hostname
 &open_lock_tempfile(HOST, ">/etc/HOSTNAME");
 &print_tempfile(HOST, $_[0],"\n");
 &close_tempfile(HOST);
-undef(@main::get_system_hostname);      # clear cache
+&get_system_hostname(undef, undef, 2);      # clear cache
 }
 
 sub routing_config_files

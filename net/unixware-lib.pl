@@ -314,7 +314,7 @@ return &get_system_hostname();
 sub save_hostname
 {
 &system_logged("hostname $_[0] >/dev/null 2>&1");
-undef(@main::get_system_hostname);      # clear cache
+&get_system_hostname(undef, undef, 2);      # clear cache
 }
 
 # get_domainname()

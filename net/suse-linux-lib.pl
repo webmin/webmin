@@ -200,7 +200,7 @@ local $rc = &parse_rc_config();
 # run SuSEconfig, as this function is called last
 &system_logged("SuSEconfig -quick >/dev/null 2>&1");
 
-undef(@main::get_system_hostname);      # clear cache
+&get_system_hostname(undef, undef, 2);      # clear cache
 }
 
 sub routing_config_files

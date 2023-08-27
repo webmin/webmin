@@ -442,7 +442,7 @@ if (-r "/etc/nodename") {
 	&print_tempfile(NODENAME, $_[0],"\n");
 	&close_tempfile(NODENAME);
 	}
-undef(@main::get_system_hostname);      # clear cache
+&get_system_hostname(undef, undef, 2);      # clear cache
 }
 
 # get_domainname()

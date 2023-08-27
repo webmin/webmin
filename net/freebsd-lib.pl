@@ -583,7 +583,7 @@ my ($hostname) = @_;
 &system_logged("hostname ".quotemeta($hostname)." >/dev/null 2>&1");
 &save_rc_conf('hostname', $_[0]);
 &unlock_file("/etc/rc.conf");
-undef(@main::get_system_hostname);      # clear cache
+&get_system_hostname(undef, undef, 2);      # clear cache
 }
 
 sub routing_config_files
