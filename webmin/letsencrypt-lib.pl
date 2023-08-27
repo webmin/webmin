@@ -58,14 +58,14 @@ return &software::missing_install_link(
 
 # request_letsencrypt_cert(domain|&domains, webroot, [email], [keysize],
 # 			   [request-mode], [use-staging], [account-email],
-# 			   [reuse-key])
+# 			   [reuse-key], [server-url])
 # Attempt to request a cert using a generated key with the Let's Encrypt client
 # command, and write it to the given path. Returns a status flag, and either
 # an error message or the paths to cert, key and chain files.
 sub request_letsencrypt_cert
 {
 my ($dom, $webroot, $email, $size, $mode, $staging, $account_email,
-    $key_type, $reuse_key) = @_;
+    $key_type, $reuse_key, $server) = @_;
 my @doms = ref($dom) ? @$dom : ($dom);
 $email ||= "root\@$doms[0]";
 $mode ||= "web";
@@ -170,6 +170,7 @@ if ($letsencrypt_cmd) {
 	my $old_flags = "";
 	my $new_flags = "";
 	my $reuse_flags = "";
+	my $server_flags = "";
 	$key_type ||= $config{'letsencrypt_algo'} || 'rsa';
 	if (&compare_version_numbers($cmd_ver, 1.11) < 0) {
 		$old_flags = " --manual-public-ip-logging-ok";
@@ -179,6 +180,9 @@ if ($letsencrypt_cmd) {
 		}
 	if ($reuse_key) {
 		$reuse_flags = " --reuse-key";
+		}
+	if ($server) {
+		$server_flags = " --server ".quotemeta($server);
 		}
 	$dir =~ s/\/[^\/]+$//;
 	$size ||= 2048;
@@ -195,6 +199,7 @@ if ($letsencrypt_cmd) {
 			" --force-renewal".
 			$reuse_flags.
 			$old_flags.
+			$server_flags.
 			" --non-interactive".
 			" --agree-tos".
 			" --config ".quotemeta($temp)."".
@@ -219,6 +224,7 @@ if ($letsencrypt_cmd) {
 			" --force-renewal".
 			$reuse_flags.
 			$old_flags.
+			$server_flags.
 			" --non-interactive".
 			" --agree-tos".
 			" --config ".quotemeta($temp)."".
