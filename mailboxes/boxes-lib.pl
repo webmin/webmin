@@ -3006,6 +3006,40 @@ if ($switched) {
 return $rv;
 }
 
+# is_gzipped_file(file)
+# Returns 1 if a file is gzip compressed
+sub is_gzipped_file
+{
+my ($file) = @_;
+my $fh;
+my $rv = open($fh, "<", $file);
+return 0 if (!$rv);
+my $two;
+read($fh, $two, 2);
+close($fh);
+return $two eq "\037\213" ? 1 : 0;
+}
+
+# gunzip_mail_file(file)
+# Uncompress a mail file in place
+sub gunzip_mail_file
+{
+my ($file) = @_;
+my $switched = &switch_to_mail_user();
+my $outfile = $file.".$$.uncompressed";
+my $ex = system("gunzip -c ".quotemeta($file)."> ".quotemeta($outfile)." 2>/dev/null");
+if ($ex) {
+	unlink($outfile);
+	}
+else {
+	rename($outfile, $file);
+	}
+if ($switched) {
+	$) = 0;
+	$> = 0; 
+	}
+}
+
 # create_as_mail_user(fh, file)
 # Creates a new file, but ensures that it does not yet exist first, and then
 # sets the ownership to the mail user
