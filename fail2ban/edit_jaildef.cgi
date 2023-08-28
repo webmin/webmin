@@ -52,8 +52,10 @@ my $backend = &find_value("backend", $jail);
 print &ui_table_row($text{'jail_backend'},
 	&ui_select("backend", $backend || "auto",
 		   [ [ "auto", $text{'jail_auto'} ],
+		     [ "systemd", $text{'jail_systemd'} ],
+			 [ "polling", $text{'jail_polling'} ],
 		     [ "gamin", $text{'jail_gamin'} ],
-		     [ "polling", $text{'jail_polling'} ] ]));
+			 [ "pyinotify", $text{'jail_pyinotify'} ] ]));
 
 # Email destination
 my $destemail = &find_value("destemail", $jail);
