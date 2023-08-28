@@ -1543,6 +1543,27 @@ if ($src->{'sortable'}) {
 	}
 }
 
+# mailbox_uncompress_folder(&folder)
+# If a folder or it's files are gzipped, uncompress them in place
+sub mailbox_uncompress_folder
+{
+my ($folder) = @_;
+if ($folder->{'type'} == 1 || $folder->{'type'} == 3) {
+	my @files = $src->{'type'} == 1 ? &get_maildir_files($folder->{'file'})
+					: &get_mhdir_files($folder->{'file'});
+	foreach my $f (@files) {
+		if (&is_gzipped_file($f)) {
+			&gunzip_mail_file($f);
+			}
+		}
+	}
+elsif ($folder->{'type'} == 0) {
+	if (&is_gzipped_file($folder->{'file'})) {
+		&gunzip_mail_file($folder->{'file'});
+		}
+	}
+}
+
 # mailbox_copy_mail(&source, &dest, mail, ...)
 # Copy mail from one folder to another
 sub mailbox_copy_mail
