@@ -19,6 +19,10 @@ while(@ARGV) {
 		shift(@ARGV);
 		$createsig = 1;
 		}
+	elsif ($ARGV[0] eq "--key") {
+		shift(@ARGV);
+		$keyname = shift(@ARGV);
+		}
 	elsif ($ARGV[0] eq "--exclude") {
 		shift(@ARGV);
 		push(@exclude, shift(@ARGV));
@@ -98,7 +102,8 @@ if ($file =~ /^(.*)\.gz$/i) {
 	}
 if ($createsig) {
 	system("rm -f $file-sig.asc");
-	system("gpg --armor --output $file-sig.asc --detach-sig $file");
+	system("gpg ".($keyname ? " --default-key $keyname" : "").
+	       " --armor --output $file-sig.asc --detach-sig $file");
 	}
 
 # read_file(file, &assoc, [&order], [lowercase])
