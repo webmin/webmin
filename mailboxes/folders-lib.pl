@@ -1551,6 +1551,11 @@ my ($folder) = @_;
 if ($folder->{'type'} == 1 || $folder->{'type'} == 3) {
 	my @files = $src->{'type'} == 1 ? &get_maildir_files($folder->{'file'})
 					: &get_mhdir_files($folder->{'file'});
+	if ($folder->{'type'} == 1) {
+		foreach my $sf (glob("$folder->{'file'}/.??*")) {
+			push(@files, &get_maildir_files($sf));
+			}
+		}
 	foreach my $f (@files) {
 		if (&is_gzipped_file($f)) {
 			&gunzip_mail_file($f);
