@@ -33,7 +33,7 @@ $ENV{'PATH'} = "/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin";
 my $allow_overwrite = 0;
 
 my ($force_theme, $rpmdepends, $no_prefix, $vendor, $provides, $url,
-    $force_usermin, $final_mod, $sign, $epoch, $dir, $ver, @extrareqs,
+    $force_usermin, $final_mod, $sign, $keyname, $epoch, $dir, $ver, @extrareqs,
     @exclude);
 
 # Parse command-line args
@@ -84,6 +84,9 @@ while(@ARGV) {
 		}
 	elsif ($a eq "--sign") {
 		$sign = 1;
+		}
+	elsif ($a eq "--key") {
+		$keyname = shift(@ARGV);
 		}
 	elsif ($a eq "--epoch") {
 		$epoch = shift(@ARGV);
@@ -426,7 +429,8 @@ unlink("$rpm_source_dir/$mod.tar.gz");
 
 # Sign if requested
 if ($sign) {
-	system("echo | rpm --resign $rpm_dir/$prefix$mod-$ver-$release.noarch.rpm $source_rpm_dir/$prefix$mod-$ver-$release.src.rpm");
+	my $keyflag = $keyname ? "-D '_gpg_name $keyname'" : "";
+	system("echo | rpm --resign $keyflag $rpm_dir/$prefix$mod-$ver-$release.noarch.rpm $source_rpm_dir/$prefix$mod-$ver-$release.src.rpm");
 	}
 
 if ($target_dir =~ /:/) {
