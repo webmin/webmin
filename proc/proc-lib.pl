@@ -584,6 +584,7 @@ sub can_view_process
 {
 local ($p) = @_;
 return 0 if ($p->{'pid'} == $$ && $config{'hide_self'});
+return 0 if ($p->{'_pscmd'} && $config{'hide_self'});
 local $user = $p->{'user'};
 if ($hide{$user}) {
 	return 0;

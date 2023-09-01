@@ -66,7 +66,8 @@ else {
 		# Use width format character if allowed
 		$width = ":80";
 		}
-	open(PS, "ps --cols 2048 -eo user$width,ruser$width,group$width,rgroup$width,pid,ppid,pgid,pcpu,rss,nice,etime,time,stime,tty,args 2>/dev/null |");
+	my $pscmd = "ps --cols 2048 -eo user$width,ruser$width,group$width,rgroup$width,pid,ppid,pgid,pcpu,rss,nice,etime,time,stime,tty,args";
+	open(PS, "$pscmd 2>/dev/null |");
 	$dummy = <PS>;
 	my @now = localtime(time());
 	for($i=0; $line=<PS>; $i++) {
@@ -116,6 +117,7 @@ else {
 		$plist[$i]->{"_rgroup"} = $w[3];
 		$plist[$i]->{"_pgid"} = $w[6];
 		$plist[$i]->{"_tty"} = $w[13] =~ /\?/ ? $text{'edit_none'} : "/dev/$w[13]";
+		$plist[$i]->{"_pscmd"} = 1 if ($plist[$i]->{"args"} =~ /\Q$pscmd\E/);
 		}
 	close(PS);
 	}
