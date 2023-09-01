@@ -181,6 +181,9 @@ if ($letsencrypt_cmd) {
 	if ($reuse_key) {
 		$reuse_flags = " --reuse-key";
 		}
+	else {
+		$reuse_flags = " --no-reuse-key";
+		}
 	if ($server) {
 		$server_flags = " --server ".quotemeta($server);
 		}
