@@ -10,23 +10,22 @@ if (defined(&get_cpu_info)) {
 	print "<table>\n";
 	@c = &get_cpu_info();
 	if (@c) {
-		print "<tr> <td><b>$text{'index_loadname'}</b></td>\n";
-		print "<td>",&text('index_loadnums',
-			"<tt>$c[0]</tt>", "<tt>$c[1]</tt>", "<tt>$c[2]</tt>"),
-			"</td> </tr>\n";
+		print &ui_table_start(undef, undef, 2);
+		print &ui_table_row($text{'index_loadname'},
+		    &text('index_loadnums',
+			"<tt>$c[0]</tt>", "<tt>$c[1]</tt>", "<tt>$c[2]</tt>"));
 		if (@c >= 5) {
-			print "<tr> <td><b>$text{'index_cpuname'}</b></td>\n";
-			print "<td>$c[4]\n";
+			my $cpu = $c[4]."\n";
 			if ($c[4] !~ /Hz/) {
-				print "($c[3] MHz)\n";
+				$cpu .= "($c[3] MHz)\n";
 				}
 			if ($c[7]) {
-				print ", $c[7] cores\n";
+				$cpu .= ", $c[7] cores\n";
 				}
-			print "</td> </tr>\n";
+			print &ui_table_row($text{'index_cpuname'}, $cpu);
 			}
+		print &ui_table_end(),"<p>\n";
 		}
-	print "</table><br>\n";
 	}
 
 print &ui_columns_start([ $text{'pid'}, $text{'owner'},

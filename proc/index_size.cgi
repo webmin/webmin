@@ -9,17 +9,20 @@ if (defined(&get_memory_info)) {
 	@m = &get_memory_info();
 	if (@m) {
 		$msg = $m[4] ? 'index_mem3' : 'index_mem2';
-		print "<p>";
-		print &text($msg, &nice_size($m[0]*1024),
-			    &nice_size($m[1]*1024),
-			    &nice_size($m[4]*1024)),"\n";
+		print &ui_table_start(undef, undef, 2);
+		print &ui_table_row($text{'index_memreal'},
+			&text($m[4] ? 'index_memtfc' : 'index_memtf',
+			      &nice_size($m[0]*1024),
+			      &nice_size($m[1]*1024),
+			      &nice_size($m[4]*1024)));
 		if ($m[5]) {
-			print "&nbsp;&nbsp;",
-				&text('index_burst', &nice_size($m[5]*1024));
+			print &ui_table_row($text{'index_memburst'},
+			      &nice_size($m[5]*1024));
 			}
-		print "&nbsp;&nbsp;",
-			&text('index_swap2', &nice_size($m[2]*1024),
-					     &nice_size($m[3]*1024)),"<p>\n";
+		print &ui_table_row($text{'index_memswap'},
+			&text('index_memtf', &nice_size($m[2]*1024),
+					     &nice_size($m[3]*1024)));
+		print &ui_table_end(),"<p>\n";
 		}
 	}
 print &ui_columns_start([
