@@ -58,8 +58,9 @@ print &ui_table_row($text{'advanced_showstderr'},
 
 if (!$miniserv{'session'}) {
 	# Pass passwords to CGI programs
-	print &ui_table_row($text{'advanced_pass'},
-		    &ui_yesno_radio("pass", int($miniserv{'pass_password'})), undef);
+	print &ui_table_row($text{'advanced_pass_desc'},
+		    &ui_yesno_radio("pass", int($miniserv{'pass_password'})).
+				&ui_help($text{'advanced_pass_help'}), undef);
 	}
 
 # Gzip static files?

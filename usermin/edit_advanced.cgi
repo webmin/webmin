@@ -32,8 +32,9 @@ $ttable .= &ui_columns_end();
 print &ui_table_row($text{'advanced_tempmods'}, $ttable);
 
 # Pass passwords to CGI programs
-print &ui_table_row($text{'advanced_pass'},
-		    &ui_yesno_radio("pass", int($miniserv{'pass_password'})));
+print &ui_table_row($text{'advanced_pass_desc'},
+		    &ui_yesno_radio("pass", int($miniserv{'pass_password'})).
+				&ui_help($text{'advanced_pass_help'}));
 
 @preloads = &webmin::get_preloads(\%miniserv);
 if (!@preloads && (!$miniserv{'premodules'} ||
