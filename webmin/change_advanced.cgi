@@ -118,6 +118,16 @@ else {
 	$miniserv{'bufsize'} = $in{'bufsize'};
 	}
 
+# Save buffer size
+if ($in{'bufsize_binary_def'}) {
+	delete($miniserv{'bufsize_binary'});
+	}
+else {
+	$in{'bufsize_binary'} =~ /^\d+$/ && $in{'bufsize_binary'} > 0 ||
+		&error($text{'advanced_ebufsize_binary'});
+	$miniserv{'bufsize_binary'} = $in{'bufsize_binary'};
+	}
+
 &lock_file($ENV{'MINISERV_CONFIG'});
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});

@@ -78,6 +78,11 @@ print &ui_table_row($text{'advanced_bufsize'},
 	&ui_opt_textbox("bufsize", $miniserv{'bufsize'}, 6,
 			$text{'default'}." (32768)"));
 
+# Network download buffer size
+print &ui_table_row($text{'advanced_bufsize_binary'},
+	&ui_opt_textbox("bufsize_binary", $miniserv{'bufsize_binary'}, 6,
+			$text{'default'}." (262144)"));
+
 # Nice level for cron jobs
 if (&foreign_check("proc")) {
 	&foreign_require("proc", "proc-lib.pl");
