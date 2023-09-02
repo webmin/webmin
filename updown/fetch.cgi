@@ -99,17 +99,21 @@ if ($ENV{'PATH_INFO'}) {
 				print "Content-Disposition: Attachment\n";
 				}
 			}
-		else {
-			while(read(FILE, $buffer, &get_buffer_size_binary())) {
-					$fdata .= $buffer;
-					}
-				}
-		close(FILE);
 
 		print "Content-length: $fsize\n";
 		print "X-Content-Type-Options: nosniff\n";
 		print "Content-type: $type\n\n";
-		print "$fdata";
+		# File is already read, so print it
+		if ($dangertypes) {
+			print "$fdata";
+			}
+		else {
+			# Send the file
+			while(read(FILE, $buffer, &get_buffer_size_binary())) {
+					print("$buffer");
+					}
+			}
+		close(FILE);
 		}
 
 	# Switch back to root
