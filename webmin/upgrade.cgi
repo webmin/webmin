@@ -92,14 +92,14 @@ elsif ($in{'source'} == 2) {
 		# Downloading RPM
 		$release ||= 1;
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$osdn_host/webadmin/webmin-${version}-${release}.noarch.rpm");
+		    "http://$osdn_host/webadmin/newkey-webmin-${version}-${release}.noarch.rpm");
 		$sfx = ".rpm";
 		}
 	elsif ($in{'mode'} eq 'deb') {
 		# Downloading Debian package
 		$release = $release ? "-".$release : "";
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$osdn_host/webadmin/webmin_${version}${release}_all.deb");
+		    "http://$osdn_host/webadmin/newkey-webmin_${version}${release}_all.deb");
 		$sfx = ".deb";
 		}
 	elsif ($in{'mode'} eq 'solaris-pkg') {
