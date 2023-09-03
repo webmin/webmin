@@ -84,12 +84,12 @@ elsif ($in{'source'} == 2) {
 	if ($in{'mode'} eq 'rpm') {
 		$release ||= 1;
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$webmin::osdn_host/webadmin/${product}-${version}-${release}.noarch.rpm");
+		    "http://$webmin::osdn_host/webadmin/newkey-${product}-${version}-${release}.noarch.rpm");
 		}
 	elsif ($in{'mode'} eq 'deb') {
 		$release = $release ? "-".$release : "";
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$webmin::osdn_host/webadmin/${product}_${version}${release}_all.deb");
+		    "http://$webmin::osdn_host/webadmin/newkey-${product}_${version}${release}_all.deb");
 		}
 	else {
 		$release = $release ? "-".$release : "";
