@@ -12840,7 +12840,7 @@ sub get_buffer_size_binary
 {
 my %miniserv;
 &get_miniserv_config(\%miniserv);
-return $miniserv{'bufsize_binary'} || 262144;
+return $miniserv{'bufsize_binary'} || 1048576;
 }
 
 =head2 get_webprefix

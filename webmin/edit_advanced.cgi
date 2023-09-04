@@ -81,7 +81,7 @@ print &ui_table_row($text{'advanced_bufsize'},
 # Network download buffer size
 print &ui_table_row($text{'advanced_bufsize_binary'},
 	&ui_opt_textbox("bufsize_binary", $miniserv{'bufsize_binary'}, 6,
-			$text{'default'}." (262144)"));
+			$text{'default'}." (1048576)"));
 
 # Nice level for cron jobs
 if (&foreign_check("proc")) {
