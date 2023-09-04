@@ -2459,10 +2459,8 @@ my $systemd_local_conf = "/etc/systemd/system";
 my $systemd_unit_dir1 = "/usr/lib/systemd/system";
 my $systemd_unit_dir2 = "/lib/systemd/system";
 if ($name) {
-	foreach my $p (
-		$systemd_local_conf,
-		$systemd_unit_dir1,
-		$systemd_unit_dir2) {
+	foreach my $p ($systemd_local_conf, $systemd_unit_dir1,
+		       $systemd_unit_dir2) {
 		if (-r "$p/$name.service"   ||
 		    -r "$p/$name"           ||
 		    -r "$p/$name.target"    ||
