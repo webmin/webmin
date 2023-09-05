@@ -24,80 +24,80 @@ if ( !$in{'go'} ) {
 	print "<input type=hidden name=go value=go>\n";
 	print "<table border>\n";
 	print "<tr $cb> <td><table>\n";
-	print "<tr $cb> <td><font color=0000FF size=4><b>Display Options:</b></font></td></tr>\n";
+	print "<tr $cb> <td><font color=0000FF size=4><b>Display Options</b></font></td></tr>\n";
 	print "<tr $cb> <td><b>System</b></td> <td colspan=3>\n";
 	printf "<input type=radio name=system value=1 %s> %s\n",
 	$System eq 1 ? 'checked' : '', $text{'yes'};
 	printf "<input type=radio name=system value=no %s> %s\n",
 	$System eq 1 ? '' : 'checked', $text{'no'},
-	join(" ", $System),"</td> </tr>\n";
+	join(" ", $System),"</td></tr>\n";
 
 	print "<tr $cb> <td><b>Package</b></td> <td colspan=3>\n";
 	printf "<input type=radio name=package value=1 %s> %s\n",
 	$Package eq 1 ? 'checked' : '', $text{'yes'};
 	printf "<input type=radio name=package value=no %s> %s\n",
 	$Package eq 1 ? '' : 'checked', $text{'no'},
-	join(" ", $Package),"</td> </tr>\n";
+	join(" ", $Package),"</td></tr>\n";
 
 	print "<tr $cb> <td><b>Main</b></td> <td colspan=3>\n";
 	printf "<input type=radio name=main value=1 %s> %s\n",
 	$Main eq 1 ? 'checked' : '', $text{'yes'};
 	printf "<input type=radio name=main value=no %s> %s\n",
 	$Main eq 1 ? '' : 'checked', $text{'no'},
-	join(" ", $Main),"</td> </tr>\n";
+	join(" ", $Main),"</td></tr>\n";
 
 	print "<tr $cb> <td><b>Defaults in Main</b></td> <td colspan=3>\n";
 	printf "<input type=radio name=defaultsinmain value=1 %s> %s\n",
 	$Defaultsinmain eq 1 ? 'checked' : '', $text{'yes'};
 	printf "<input type=radio name=defaultsinmain value=no %s> %s\n",
 	$Defaultsinmain eq 1 ? '' : 'checked', $text{'no'},
-	join(" ", $Defaultsinmain),"</td> </tr>\n";
+	join(" ", $Defaultsinmain),"</td></tr>\n";
 
 	print "<tr $cb> <td><b>Master</b></td> <td colspan=3>\n";
 	printf "<input type=radio name=master value=1 %s> %s\n",
 	$Master eq 1 ? 'checked' : '', $text{'yes'};
 	printf "<input type=radio name=master value=no %s> %s\n",
 	$Master eq 1 ? '' : 'checked', $text{'no'},
-	join(" ", $Master),"</td> </tr>\n";
+	join(" ", $Master),"</td></tr>\n";
 
 	print "<tr $cb> <td><b>Locking</b></td> <td colspan=3>\n";
 	printf "<input type=radio name=locking value=1 %s> %s\n",
 	$Locking eq 1 ? 'checked' : '', $text{'yes'};
 	printf "<input type=radio name=locking value=no %s> %s\n",
 	$Locking eq 1 ? '' : 'checked', $text{'no'},
-	join(" ", $Locking),"</td> </tr>\n";
+	join(" ", $Locking),"</td></tr>\n";
 
 	print "<tr $cb> <td><b>Tables</b></td> <td colspan=3>\n";
 	printf "<input type=radio name=tables value=1 %s> %s\n",
 	$Tables eq 1 ? 'checked' : '', $text{'yes'};
 	printf "<input type=radio name=tables value=no %s> %s\n",
 	$Tables eq 1 ? '' : 'checked', $text{'no'},
-	join(" ", $Tables),"</td> </tr>\n";
+	join(" ", $Tables),"</td></tr>\n";
 
 	print "<tr $cb> <td><b>Permissions</b></td> <td colspan=3>\n";
 	printf "<input type=radio name=permissions value=1 %s> %s\n",
 	$Permissions eq 1 ? 'checked' : '', $text{'yes'};
 	printf "<input type=radio name=permissions value=no %s> %s\n",
 	$Permissions eq 1 ? '' : 'checked', $text{'no'},
-	join(" ", $Permissions),"</td> </tr>\n";
+	join(" ", $Permissions),"</td></tr>\n";
 
 	print "<tr $cb> <td><b>Libraries</b></td> <td colspan=3>\n";
 	printf "<input type=radio name=libraries value=1 %s> %s\n",
 	$Libraries eq 1 ? 'checked' : '', $text{'yes'};
 	printf "<input type=radio name=libraries value=no %s> %s\n",
 	$Libraries eq 1 ? '' : 'checked', $text{'no'},
-	join(" ", $Libraries),"</td> </tr>\n";
+	join(" ", $Libraries),"</td></tr>\n";
 
 	print "<tr $cb> <td><b>Warn</b></td> <td colspan=3>\n";
 	printf "<input type=radio name=warn value=1 %s> %s\n",
 	$Warn eq 1 ? 'checked' : '', $text{'yes'};
 	printf "<input type=radio name=warn value=no %s> %s\n",
 	$Warn eq 1 ? '' : 'checked', $text{'no'},
-	join(" ", $Warn),"</td> </tr>\n";
-	print "<tr><td> </td></tr><tr><td><input type=submit value=\"$text{'postfinger_show'}\"></td></tr></form>\n";
+	join(" ", $Warn),"</td></tr>\n";
+	print "<tr><td></td></tr><tr><td><input type=submit value=\"$text{'postfinger_show'}\"></td></tr></form>\n";
 
-	print "</table></td> </tr></table>";
-	&footer("index.cgi", $text{'index_title'});
+	print "</table></td></tr></table>";
+	&ui_print_footer("index.cgi", $text{'index_title'});
 } else {
 	&head;
 	if (! -x $config{'postfix_config_command'} && ! -r $config{'postfix_config_file'} ) {
@@ -108,7 +108,7 @@ if ( !$in{'go'} ) {
 	if ($config{'index_check'} && ($err = &check_postfix())) {
 		print "<p>",&text('check_error'),"<p>\n";
 		print "<pre>$err</pre>\n";
-		&footer("/", $text{'index'});
+		&ui_print_footer("/", $text{'index'});
 		exit;
 	}
 	if ($System eq 1 ) {
@@ -197,16 +197,16 @@ if ( !$in{'go'} ) {
 		while (my $postfinger = <MAILQ>) { 
 			($postf1,$postf2,$postf3,$postf4,$postf5,$postf6,$postf7,$postf8)=split(/\s+/,$postfinger,8);
 			if ($postfinger =~ /\-o/) {
-				print "<tr><td class='e'> </td><td class='v'> </td>",
-					"<td class='v'> </td><td class='v'> </td>",
-					"<td class='v'> </td><td class='v'> </td>",
-					"<td class='v'> </td><td class='v'>$postf2</td></tr>"
+				print "<tr><td class='e'></td><td class='v'></td>",
+					"<td class='v'></td><td class='v'></td>",
+					"<td class='v'></td><td class='v'></td>",
+					"<td class='v'></td><td class='v'>$postf2</td></tr>"
 				if ( !grep(/^#|^\[ 	\]*$/,$postfinger));
 			} elsif ($postfinger =~ /user=/) {
-				print "<tr><td class='e'> </td><td class='v'> </td>",
-					"<td class='v'> </td><td class='v'> </td>",
-					"<td class='v'> </td><td class='v'> </td>",
-					"<td class='v'> </td><td class='v'>$postf1</td></tr>"
+				print "<tr><td class='e'></td><td class='v'></td>",
+					"<td class='v'></td><td class='v'></td>",
+					"<td class='v'></td><td class='v'></td>",
+					"<td class='v'></td><td class='v'>$postf1</td></tr>"
 				if ( !grep(/^#|^\[ 	\]*$/,$postfinger));
 			} else {
 				print "<tr><td class='e'><b>$postf1</b></td><td class='v'><center>$postf2</center></td>",
@@ -223,21 +223,21 @@ if ( !$in{'go'} ) {
 	if ($Permissions eq 1 ) {
 		print '<h1 align="center">Specific file and directory permissions</h1><br>';
 		print '<table border="0" cellpadding="0" width="600" align="center">';
-		print "<tr><td class='e'><b>Permission</b> Deep <b>Owner</b> <b>Group</b> Size   Date  <b>Directory/File</b> </td></tr>";
+		print "<tr><td class='e'><b>Permission</b> Deep <b>Owner</b> <b>Group</b> Size   Date  <b>Directory/File</b></td></tr>";
 		open(MAILQ, "/bin/ls -ld `$config{'postfix_config_command'} -h queue_directory`/maildrop 2>/dev/null |");
 		while (my $postfinger = <MAILQ>) {
 			print "<tr><td class='v'>$postfinger</td></tr>"
 			if ( !grep(/total|^#|^\[ 	\]*$/,$postfinger));
 		} 
 		close(MAILQ);
-		print "<tr><td> </td></tr>";
+		print "<tr><td></td></tr>";
 		open(MAILQ, "/bin/ls -ld `$config{'postfix_config_command'} -h queue_directory`/public 2>/dev/null |");
 		while (my $postfinger = <MAILQ>) {
 			print "<tr><td class='v'>$postfinger</td></tr>"
 			if ( !grep(/total|^#|^\[ 	\]*$/,$postfinger));
 		} 
 		close(MAILQ);
-		print "<tr><td> </td></tr>";
+		print "<tr><td></td></tr>";
 		if (! open(MAILQ, "/bin/ls -l `$config{'postfix_config_command'} -h queue_directory`/public 2>/dev/null |")) {
 		        print '<center><b>WARNING: No access to $queue_directory/public<br>Try running postfinger as user root or postfix</b></center><br>';
 		} else {
@@ -246,7 +246,7 @@ if ( !$in{'go'} ) {
 				if ( !grep(/total|^#|^\[ 	\]*$/,$postfinger));
 			} 
 			close(MAILQ);
-			print "<tr><td> </td></tr>";
+			print "<tr><td></td></tr>";
 		}
 		open(MAILQ, "/bin/ls -ld `$config{'postfix_config_command'} -h queue_directory`/private 2>/dev/null |");
 		while (my $postfinger = <MAILQ>) {
@@ -254,7 +254,7 @@ if ( !$in{'go'} ) {
 			if ( !grep(/total|^#|^\[ 	\]*$/,$postfinger));
 		} 
 		close(MAILQ);
-		print "<tr><td> </td></tr>";
+		print "<tr><td></td></tr>";
 		if (! open(MAILQ, "/bin/ls -l `$config{'postfix_config_command'} -h queue_directory`/private 2>/dev/null |")) {
 		        print '<center><b>WARNING: No access to $queue_directory/private<br>Try running postfinger as user root or postfix</b></center><br>';
 		} else {
@@ -263,7 +263,7 @@ if ( !$in{'go'} ) {
 				if ( !grep(/total|^#|^\[ 	\]*$/,$postfinger));
 			} 
 			close(MAILQ);
-			print "<tr><td> </td></tr>";
+			print "<tr><td></td></tr>";
 		}
 		open(MAILQ, "/bin/ls -l `$config{'postfix_config_command'} -h command_directory`/postdrop 2>/dev/null |");
 		while (my $postfinger = <MAILQ>) {
@@ -271,7 +271,7 @@ if ( !$in{'go'} ) {
 			if ( !grep(/total|^#|^\[ 	\]*$/,$postfinger));
 		} 
 		close(MAILQ);
-		print "<tr><td> </td></tr>";
+		print "<tr><td></td></tr>";
 		open(MAILQ, "/bin/ls -l `$config{'postfix_config_command'} -h command_directory`/postqueue 2>/dev/null |");
 		while (my $postfinger = <MAILQ>) {
 				print "<tr><td class='v'>$postfinger</td></tr>"
@@ -295,8 +295,8 @@ if ( !$in{'go'} ) {
 			print "</table><br>";
 		}
 	}
-print "</td> </tr></table></td> </tr></table>";
-&footer("index.cgi", $text{'index_title'});
+print "</td></tr></table></td></tr></table>";
+&ui_print_footer("index.cgi", $text{'index_title'});
 }
 
 sub head {
