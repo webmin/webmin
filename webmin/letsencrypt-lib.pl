@@ -58,14 +58,14 @@ return &software::missing_install_link(
 
 # request_letsencrypt_cert(domain|&domains, webroot, [email], [keysize],
 # 			   [request-mode], [use-staging], [account-email],
-# 			   [reuse-key], [server-url])
+# 			   [reuse-key], [server-url, server-key, server-hmac])
 # Attempt to request a cert using a generated key with the Let's Encrypt client
 # command, and write it to the given path. Returns a status flag, and either
 # an error message or the paths to cert, key and chain files.
 sub request_letsencrypt_cert
 {
 my ($dom, $webroot, $email, $size, $mode, $staging, $account_email,
-    $key_type, $reuse_key, $server) = @_;
+    $key_type, $reuse_key, $server, $server_key, $server_hmac) = @_;
 my @doms = ref($dom) ? @$dom : ($dom);
 $email ||= "root\@$doms[0]";
 $mode ||= "web";
@@ -78,6 +78,11 @@ foreach my $d (@doms) {
 	if ($d =~ /^\*/) {
 		$wildcard = $d;
 		}
+	}
+
+if ($server && !$letsencrypt_cmd) {
+	return (0, "A non-standard server can only be used when the native ".
+		   "Let's Encrypt client is installed");
 	}
 
 if ($mode eq "web") {
@@ -186,6 +191,13 @@ if ($letsencrypt_cmd) {
 		}
 	if ($server) {
 		$server_flags = " --server ".quotemeta($server);
+		if ($server_key) {
+			$server_flags .= " --eab-kid ".quotemeta($server_key);
+			}
+		if ($server_hmac) {
+			$server_flags .= " --eab-hmac-key ".
+					 quotemeta($server_hmac);
+			}
 		}
 	$dir =~ s/\/[^\/]+$//;
 	$size ||= 2048;
