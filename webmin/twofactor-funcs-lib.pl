@@ -165,7 +165,7 @@ eval "use Authen::OATH";
 if ($@) {
 	return &text('twofactor_etotpmodule', 'Authen::OATH',
 	    "../cpan/download.cgi?source=3&cpan=Authen::OATH&mode=2&".
-	    "return=/$module_name/&returndesc=".&urlize($text{'index_return'})) . " : $@";
+	    "return=/$module_name/&returndesc=".&urlize($text{'index_return'}));
 	}
 return undef;
 }
@@ -248,7 +248,7 @@ $id =~ /^[A-Z0-9=]+$/i || return $text{'twofactor_etotpid'};
 $token =~ /^\d+$/ || return $text{'twofactor_etotptoken'};
 eval "use Authen::OATH";
 if ($@) {
-	return &text('twofactor_etotpmodule2', 'Authen::OATH') . " : $@";
+	return &text('twofactor_etotpmodule2', 'Authen::OATH');
 	}
 my $secret = &decode_base32($id);
 my $oauth = Authen::OATH->new();
