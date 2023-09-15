@@ -1694,13 +1694,27 @@ for(my $i=0; my @stack_ = caller($i); $i++) {
 	push(@stack, \@stack_);
 	}
 my $err_caller;
+my $err_last_eval  = $main::error_last_eval;
+$err_last_eval =~ s/\n$// if ($err_last_eval);
 $err_caller = "$stack[0]->[1] (line $stack[0]->[2])"
 	if ($stack[0]->[1] && $stack[0]->[2]);
 if ($err_caller) {
 	$err_caller =~ s/$root_directory\///;
+	my $err_caller_msg_esc  =
+        &quote_escape(($err_last_eval ? "$err_last_eval : $err_caller" : $err_caller), '"');
+	my $err_caller_msg;
+	if ($err_last_eval) {
+		$err_caller_msg = &ui_details({
+			'title' => $text{'main_error_details'},
+			'content' => $err_caller_msg_esc,
+			'class' =>'error'}, 1);
+		}
+	else {
+		$err_caller_msg = &ui_help($err_caller_msg_esc);
+		}
 	my $err_caller_ =
 		$main::webmin_script_type =~ /^(cmd|cron)$/ ?
-			$err_caller : &ui_help($err_caller);
+			$err_caller : $err_caller_msg;
 	$msg = $msg ? "$msg $err_caller_" : $err_caller_;
 	push(@msg, $err_caller_);
 	}
