@@ -1694,8 +1694,8 @@ for(my $i=0; my @stack_ = caller($i); $i++) {
 	push(@stack, \@stack_);
 	}
 my $err_caller;
-$err_caller = "$stack[1]->[1] (line $stack[1]->[2])"
-	if ($stack[1]->[1] && $stack[1]->[2]);
+$err_caller = "$stack[0]->[1] (line $stack[0]->[2])"
+	if ($stack[0]->[1] && $stack[0]->[2]);
 if ($err_caller) {
 	$err_caller =~ s/$root_directory\///;
 	my $err_caller_ =
