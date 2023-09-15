@@ -4,7 +4,7 @@
 require './dovecot-lib.pl';
 &ReadParse();
 &error_setup($text{'net_err'});
-$conf = &get_config(1);
+$conf = &get_config();
 &lock_dovecot_files($conf);
 
 &save_directive($conf, "protocols", join(" ", split(/\0/, $in{'protocols'})));

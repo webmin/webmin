@@ -33,18 +33,17 @@ return &get_config_file();
 # Returns a list of dovecot config entries
 sub get_config
 {
-my ($excl_tpl) = @_;
 if (!@get_config_cache) {
-	@get_config_cache = &read_config_file(&get_config_file(), undef, $excl_tpl);
+	@get_config_cache = &read_config_file(&get_config_file());
 	}
 return \@get_config_cache;
 }
 
-# read_config_file(filename, [&include-parent-rv], [exclude-templates])
+# read_config_file(filename, [&include-parent-rv])
 # Convert a file into a list od directives
 sub read_config_file
 {
-local ($file, $incrv, $excl_tpl) = @_;
+local ($file, $incrv) = @_;
 local $filedir = $file;
 $filedir =~ s/\/[^\/]+$//;
 local $lnum = 0;
@@ -139,7 +138,6 @@ foreach (@lines) {
 	elsif (/^\s*!(include|include_try)\s+(\S+)/) {
 		# Include file(s)
 		local $glob = $2;
-		$lnum++, next if ($glob =~ /^\/usr\/share/ && $excl_tpl);
 		if ($glob !~ /^\//) {
 			$glob = $filedir."/".$glob;
 			}
@@ -218,6 +216,8 @@ return wantarray ? @rv : $rv[0];
 sub save_directive
 {
 local ($conf, $name, $value, $sname, $svalue) = @_;
+$conf = [ grep { $_->{'file'} !~ /^\/usr\/share\/dovecot/ &&
+                 $_->{'file'} !~ /^\/opt/ } @$conf ];
 local $dir;
 if (ref($name)) {
 	# Old directive given
