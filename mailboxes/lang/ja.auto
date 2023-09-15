@@ -29,6 +29,8 @@ reply_html1=HTMLを作成
 search_msg6=$2フィールドの$1の検索結果
 search_attach=添付ファイルが必要ですか？
 
+folder_sent=送信済み
+
 left_mail=郵便物
 left_search=探す：
 left_folders=フォルダーを管理する

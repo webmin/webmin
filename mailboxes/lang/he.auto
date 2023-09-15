@@ -320,7 +320,7 @@ search_elatest=מספר הודעות חסר או לא חוקי לחיפוש
 search_withstatus=, with status $1
 
 folder_inbox=תיבת הדואר הנכנס
-folder_sent=שלח מייל
+folder_sent=נשלח
 folder_drafts=טיוטות
 folder_trash=זבל
 

@@ -179,7 +179,7 @@ search_elatest=Brakująca lub niepoprawna liczba wiadomości do przeszukania
 search_withstatus=, ze statusem $1
 
 folder_inbox=W pudełku
-folder_sent=Wysłany mail
+folder_sent=Wysłano
 folder_drafts=Warcaby
 folder_trash=Śmieci
 

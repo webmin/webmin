@@ -125,6 +125,7 @@ search_onestatus=Vain tila
 search_withstatus=, tila $1
 
 folder_inbox=Saapuneet
+folder_sent=Lähetetty
 
 detach_err=Tiedoston irrottaminen epäonnistui
 detach_edir=Ei tiedostoa tai hakemistoa tallennettavaksi syötettyyn

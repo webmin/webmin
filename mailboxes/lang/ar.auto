@@ -320,7 +320,7 @@ search_elatest=عدد الرسائل المفقودة أو غير الصحيحة
 search_withstatus=, with status $1
 
 folder_inbox=صندوق الوارد
-folder_sent=البريد المرسل
+folder_sent=مرسل
 folder_drafts=المسودات
 folder_trash=قمامة، يدمر، يهدم
 

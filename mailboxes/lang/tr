@@ -275,7 +275,6 @@ search_elatest=Arama için hatalı veya gecersiz sayıda mesaj
 search_withstatus=, durum kodu $1 olan
 
 folder_inbox=Gelen Kutusu
-folder_sent=Gönderilen postalar
 folder_drafts=Taslaklar
 folder_trash=Çop Kutusu
 

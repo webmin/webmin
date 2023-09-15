@@ -319,7 +319,6 @@ search_elatest=Fehlende oder ungültige Anzahl an Mails für die Suche
 search_withstatus=, mit Status $1
 
 folder_inbox=Posteingang
-folder_sent=Versendete Mail
 folder_drafts=Entwürfe
 folder_trash=Papierkorb
 

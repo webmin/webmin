@@ -320,7 +320,7 @@ search_elatest=Nedostaje ili nevažeći broj poruka za pretraživanje
 search_withstatus=, sa statusom $1
 
 folder_inbox=Ulazni spremnik
-folder_sent=Poslana pošta
+folder_sent=Poslano
 folder_drafts=nacrti
 folder_trash=Otpad
 

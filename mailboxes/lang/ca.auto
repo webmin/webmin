@@ -1,5 +1,7 @@
 index_return=llista d'usuaris
 
+folder_sent=Enviat
+
 editor_heading=Encapçalament
 editor_paragraph=Paràgraf
 editor_fontfamily_default=Per defecte

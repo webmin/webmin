@@ -320,7 +320,6 @@ search_elatest=nombre de messages à rechercher manquant ou invalide
 search_withstatus=, avec statut $1
 
 folder_inbox=Boite de Réception
-folder_sent=Courriers Envoyés
 folder_drafts=Brouillons
 folder_trash=Corbeille
 

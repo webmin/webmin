@@ -320,7 +320,7 @@ search_elatest=Manglende eller ugyldigt antal meddelelser til søgning
 search_withstatus=, med status $1
 
 folder_inbox=Indbakke
-folder_sent=Sendt post
+folder_sent=Sendt
 folder_drafts=Kladder
 folder_trash=Affald
 

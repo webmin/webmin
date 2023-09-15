@@ -285,7 +285,6 @@ search_elatest=검색 메시지수가 지정되지 않았거나 유효하지 않
 search_withstatus=, 상태 $1로
 
 folder_inbox=인박스
-folder_sent=메일 보내기
 folder_drafts=초안
 folder_trash=휴지통
 

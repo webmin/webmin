@@ -320,7 +320,7 @@ search_elatest=Bilangan mesej yang hilang atau tidak sah untuk dicari
 search_withstatus=, dengan status $1
 
 folder_inbox=Peti masuk
-folder_sent=Menghantar surat
+folder_sent=Dihantar
 folder_drafts=Draf
 folder_trash=Sampah
 

@@ -320,7 +320,6 @@ search_elatest=Manglende eller ugyldig antall meldinger å søke gjennom
 search_withstatus=, med status $1
 
 folder_inbox=Innboks
-folder_sent=Sendt e-post
 folder_drafts=Kladd
 folder_trash=Papirkurv
 

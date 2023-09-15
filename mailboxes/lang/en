@@ -320,7 +320,7 @@ search_elatest=Missing or invalid number of messages to search
 search_withstatus=, with status $1
 
 folder_inbox=Inbox
-folder_sent=Sent mail
+folder_sent=Sent
 folder_drafts=Drafts
 folder_trash=Trash
 

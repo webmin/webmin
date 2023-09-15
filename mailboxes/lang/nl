@@ -317,7 +317,6 @@ search_elatest=Ontbrekende of ongeldige aantal berichten om te zoeken
 search_withstatus=, met status $1
 
 folder_inbox=Inbox
-folder_sent=Verstuur email
 folder_drafts=Ontwerpen
 folder_trash=Vuilnis
 

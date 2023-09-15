@@ -320,7 +320,7 @@ search_elatest=Thiếu hoặc không hợp lệ số lượng tin nhắn để t
 search_withstatus=, với trạng thái $1
 
 folder_inbox=Hộp thư đến
-folder_sent=Gửi mail
+folder_sent=Đã gửi
 folder_drafts=Dự thảo
 folder_trash=Rác
 

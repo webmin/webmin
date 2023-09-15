@@ -234,7 +234,7 @@ search_elatest=要搜索的消息丢失或数量无效
 search_withstatus=，状态为$1
 
 folder_inbox=收件箱
-folder_sent=发送邮件
+folder_sent=发送
 folder_drafts=草稿
 folder_trash=垃圾
 

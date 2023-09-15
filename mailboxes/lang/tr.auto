@@ -52,6 +52,8 @@ send_title2=Posta Kaydedildi
 search_msg6=$2 alanında $1 için arama sonuçları
 search_attach=Ekleri olmalı mı?
 
+folder_sent=Gönderilmiş
+
 sform_header=Gelişmiş e-posta arama seçenekleri
 sform_andmode=Ölçüt modu
 sform_folder2=Klasörlerde ara

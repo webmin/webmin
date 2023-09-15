@@ -205,7 +205,6 @@ search_nolatest=Kaikki kansiossa
 search_latestnum=Vain viimeisimmät
 search_elatest=Puuttuva tai virheellinen määrä etsittäviä viestejä
 
-folder_sent=Lähetetyt
 folder_drafts=Luonnokset
 folder_trash=Roskakori
 

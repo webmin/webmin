@@ -316,7 +316,6 @@ search_elatest=Numero di messaggi da cercare mancante o non valido
 search_withstatus=, con stato $1
 
 folder_inbox=Posta in arrivo
-folder_sent=Posta inviata
 folder_drafts=Bozze
 folder_trash=Cestino
 

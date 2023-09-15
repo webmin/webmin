@@ -320,7 +320,7 @@ search_elatest=Липсващ или невалиден брой съобщен�
 search_withstatus=, със статус $1
 
 folder_inbox=Входящи
-folder_sent=Изпратена поща
+folder_sent=Изпратено
 folder_drafts=дама
 folder_trash=боклук
 

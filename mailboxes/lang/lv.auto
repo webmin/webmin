@@ -320,7 +320,7 @@ search_elatest=Trūkst vai nav derīgs meklējamo ziņojumu skaits
 search_withstatus=, ar statusu $1
 
 folder_inbox=Iesūtne
-folder_sent=Nosūtītais pasts
+folder_sent=Nosūtīts
 folder_drafts=Melnraksti
 folder_trash=Atkritumi
 
