@@ -139,7 +139,7 @@ foreach (@lines) {
 	elsif (/^\s*!(include|include_try)\s+(\S+)/) {
 		# Include file(s)
 		local $glob = $2;
-		next if ($glob =~ /^\/usr\/share/ && $excl_tpl);
+		$lnum++, next if ($glob =~ /^\/usr\/share/ && $excl_tpl);
 		if ($glob !~ /^\//) {
 			$glob = $filedir."/".$glob;
 			}
