@@ -1,5 +1,13 @@
 ## Changelog
 
+#### 2.103 (September 12, 2023)
+* Add support for hostname detection using `hostnamectl` command
+* Add support for other ACME services
+* Fix to correctly switch key hash type with ACME services
+* Fix bug when `backend` wasn't saved correctly in Fail2Ban module [#1992](https://github.com/webmin/webmin/issues/1992)
+* Fix large files download in Upload and Download module
+* Update the Authentic theme to the latest version with various fixes and improvements
+
 #### 2.102 (August 23, 2023)
 * Add support for Amazon Linux 2023
 * Fix a bug in Network Configuration module when parsing network size [sourceforge.net/discussion#55377]( https://sourceforge.net/p/webadmin/discussion/55377/thread/78e5aa05f3)

@@ -1710,7 +1710,7 @@ my $error_output_right = sub {
 	return $main::webmin_script_type eq 'cmd' ? entities_to_ascii($err_msg) : $err_msg;
 	};
 if (!$main::error_must_die) {
-	print STDERR "Error: ", &$error_output_right($msg), "\n";
+	&error_stderr(&$error_output_right($msg));
 	}
 &load_theme_library();
 if ($main::error_must_die) {
@@ -1827,6 +1827,7 @@ $remove_host = $ENV{"REMOTE_HOST"};
 $page = $ENV{"REQUEST_URI"};
 $err = &html_strip($err);
 $err =~ s/[\n\r]+/ /g;
+$err =~ s/\s\?$//g;
 $err =
   "[$make_datestr] " .
 	($remove_host ? ( "[$remove_host] " ) : ( )) .

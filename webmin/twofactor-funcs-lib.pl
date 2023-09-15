@@ -165,7 +165,7 @@ eval "use Authen::OATH";
 if ($@) {
 	return &text('twofactor_etotpmodule', 'Authen::OATH',
 	    "../cpan/download.cgi?source=3&cpan=Authen::OATH&mode=2&".
-	    "return=/$module_name/&returndesc=".&urlize($text{'index_return'}))
+	    "return=/$module_name/&returndesc=".&urlize($text{'index_return'}));
 	}
 return undef;
 }
