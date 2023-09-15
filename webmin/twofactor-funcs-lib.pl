@@ -248,7 +248,8 @@ $id =~ /^[A-Z0-9=]+$/i || return $text{'twofactor_etotpid'};
 $token =~ /^\d+$/ || return $text{'twofactor_etotptoken'};
 eval "use Authen::OATH";
 if ($@) {
-	return &text('twofactor_etotpmodule2', 'Authen::OATH');
+	return &text('twofactor_etotpmodule2', 'Authen::OATH').
+	       "<pre>".&html_escape("$@")."</pre>";
 	}
 my $secret = &decode_base32($id);
 my $oauth = Authen::OATH->new();
