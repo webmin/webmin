@@ -247,6 +247,7 @@ sub validate_twofactor_totp
 my ($id, $token, $apikey) = @_;
 $id =~ /^[A-Z0-9=]+$/i || return $text{'twofactor_etotpid'};
 $token =~ /^\d+$/ || return $text{'twofactor_etotptoken'};
+eval "use lib (\"$root_directory/vendor_perl\")";
 eval "use Authen::OATH";
 $main::error_last_eval = $@;
 if ($main::error_last_eval) {
