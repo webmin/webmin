@@ -3392,7 +3392,10 @@ local $dmail = {
 			    [ 'Content-Transfer-Encoding' => '7bit' ] ],
 	     'data' => $dsn }
 		] };
-eval { local $main::errors_must_die = 1; &send_mail($dmail); };
+eval {
+	local $main::error_must_die = 1;
+	&send_mail($dmail);
+	};
 return $to;
 }
 
