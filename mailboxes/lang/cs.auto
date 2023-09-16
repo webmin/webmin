@@ -29,6 +29,8 @@ reply_html1=Vytvořte HTML
 search_msg6=Výsledky hledání $1 v poli $2
 search_attach=Musí mít přílohy?
 
+folder_sent=Odesláno
+
 left_mail=Pošta
 left_search=Vyhledávání:
 left_folders=Správa složek

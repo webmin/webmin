@@ -295,7 +295,6 @@ search_elatest=Chybějící nebo nevhodný počet zpráv k prohledání
 search_withstatus=, se stavem $1
 
 folder_inbox=Doručená pošta
-folder_sent=Odesláné pošta
 folder_drafts=Koncepty
 folder_trash=Koš
 

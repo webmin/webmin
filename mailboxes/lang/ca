@@ -319,7 +319,6 @@ search_elatest=Hi falta el nombre de missatges a buscar  o bé és invàlid
 search_withstatus=, amb estat $1
 
 folder_inbox=Entrada
-folder_sent=Enviat
 folder_drafts=Drafts
 folder_trash=Trash
 

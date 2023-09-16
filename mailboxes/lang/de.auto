@@ -1,5 +1,7 @@
 index_return=Benutzerliste
 
+folder_sent=Gesendet
+
 editor_heading=Überschrift
 editor_paragraph=Absatz
 editor_fontfamily_default=Standard

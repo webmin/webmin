@@ -1,11 +1,12 @@
 ## Changelog
 
-#### 2.103 (September 12, 2023)
+#### 2.103 (September 18, 2023)
 * Add support for hostname detection using `hostnamectl` command
 * Add support for other ACME services
 * Fix to correctly switch key hash type with ACME services
 * Fix bug when `backend` wasn't saved correctly in Fail2Ban module [#1992](https://github.com/webmin/webmin/issues/1992)
 * Fix large files download in Upload and Download module
+* Fix Google Authentication on RHEL systems derivatives
 * Update the Authentic theme to the latest version with various fixes and improvements
 
 #### 2.102 (August 23, 2023)

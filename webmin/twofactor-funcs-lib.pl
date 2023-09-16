@@ -162,7 +162,8 @@ sub validate_twofactor_apikey_totp
 {
 my ($miniserv, $in) = @_;
 eval "use Authen::OATH";
-if ($@) {
+$main::error_last_eval = $@;
+if ($main::error_last_eval) {
 	return &text('twofactor_etotpmodule', 'Authen::OATH',
 	    "../cpan/download.cgi?source=3&cpan=Authen::OATH&mode=2&".
 	    "return=/$module_name/&returndesc=".&urlize($text{'index_return'}));
@@ -246,10 +247,11 @@ sub validate_twofactor_totp
 my ($id, $token, $apikey) = @_;
 $id =~ /^[A-Z0-9=]+$/i || return $text{'twofactor_etotpid'};
 $token =~ /^\d+$/ || return $text{'twofactor_etotptoken'};
+eval "use lib (\"$root_directory/vendor_perl\")";
 eval "use Authen::OATH";
-if ($@) {
-	return &text('twofactor_etotpmodule2', 'Authen::OATH').
-	       "<pre>".&html_escape("$@")."</pre>";
+$main::error_last_eval = $@;
+if ($main::error_last_eval) {
+	return &text('twofactor_etotpmodule2', 'Authen::OATH');
 	}
 my $secret = &decode_base32($id);
 my $oauth = Authen::OATH->new();

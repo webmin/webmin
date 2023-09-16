@@ -6,6 +6,8 @@ view_nobody=Questo messaggio non ha contenuti del corpo.
 
 search_msg6=Risultati della ricerca per $1 nel campo $2
 
+folder_sent=Inviato
+
 left_mail=posta
 left_search=Ricerca:
 left_folders=Gestisci cartelle

@@ -320,7 +320,7 @@ search_elatest=Număr de mesaje lipsă sau nevalide de căutat
 search_withstatus=, cu statut $1
 
 folder_inbox=Inbox
-folder_sent=E-mail trimis
+folder_sent=Trimis
 folder_drafts=Schițe
 folder_trash=Gunoi
 

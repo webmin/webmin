@@ -287,7 +287,7 @@ search_elatest=Número de mensagens ausente ou inválido para pesquisa
 search_withstatus=, com status $1
 
 folder_inbox=Caixa de entrada
-folder_sent=Correspondência enviada
+folder_sent=Enviado
 folder_drafts=Rascunhos
 folder_trash=Lixo
 

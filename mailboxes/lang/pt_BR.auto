@@ -319,6 +319,7 @@ search_latestnum=Apenas os mais recentes
 search_elatest=Número de mensagens ausente ou inválido para pesquisa
 search_withstatus=, com status $1
 
+folder_sent=Enviado
 folder_drafts=Rascunhos
 
 detach_err=Falha ao desanexar arquivo

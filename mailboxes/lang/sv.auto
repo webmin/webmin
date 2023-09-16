@@ -260,7 +260,7 @@ search_elatest=Det saknas eller ogiltigt antal meddelanden att söka efter
 search_withstatus=, med status $1
 
 folder_inbox=Inkorg
-folder_sent=Skickade post
+folder_sent=Skickat
 folder_drafts=utkast
 folder_trash=Skräp
 

@@ -40,6 +40,8 @@ search_ewhat=입력 된 행과 일치하는 텍스트가 없습니다 $1
 search_msg6=$2 필드에서 $1에 대한 검색 결과
 search_attach=첨부 파일이 있어야합니까?
 
+folder_sent=전송된
+
 sform_andmode=기준 모드
 
 left_mail=우편

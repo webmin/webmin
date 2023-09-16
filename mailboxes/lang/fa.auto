@@ -320,7 +320,7 @@ search_elatest=تعداد پیام های نامعتبر یا نامعتبر ا�
 search_withstatus=, with status $1
 
 folder_inbox=صندوق ورودی
-folder_sent=نامه ارسال شده
+folder_sent=ارسال شد
 folder_drafts=پیش نویس
 folder_trash=زباله ها
 

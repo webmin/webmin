@@ -320,7 +320,7 @@ search_elatest=تلاش کرنے کیلئے پیغامات کی گمشدہ یا 
 search_withstatus=, with status $1
 
 folder_inbox=ان باکس
-folder_sent=میل بھیجا
+folder_sent=بھیجا
 folder_drafts=ڈرافٹس
 folder_trash=کوڑے دان
 

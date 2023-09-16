@@ -320,7 +320,7 @@ search_elatest=Chýba alebo je neplatný počet správ na vyhľadávanie
 search_withstatus=, so stavom $1
 
 folder_inbox=Doručená pošta
-folder_sent=Odoslaná pošta
+folder_sent=Odoslané
 folder_drafts=dáma
 folder_trash=Smeti
 

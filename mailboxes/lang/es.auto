@@ -238,7 +238,7 @@ search_elatest=Número de mensajes faltantes o no válidos para buscar
 search_withstatus=, con estado $1
 
 folder_inbox=Bandeja de entrada
-folder_sent=Correo enviado
+folder_sent=Enviado
 folder_drafts=Borradores
 folder_trash=Basura
 

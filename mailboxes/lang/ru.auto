@@ -320,7 +320,7 @@ search_elatest=Отсутствует или неверное количеств
 search_withstatus=со статусом $1
 
 folder_inbox=входящие
-folder_sent=Отправленные письма
+folder_sent=Отправил
 folder_drafts=Черновики
 folder_trash=дрянь
 

@@ -320,7 +320,7 @@ search_elatest=Ontbrekende of ongeldige aantal boodskappe om te soek
 search_withstatus=, met status $1
 
 folder_inbox=posbus
-folder_sent=Gestuurde pos
+folder_sent=Gestuur
 folder_drafts=Drafts
 folder_trash=asblik
 

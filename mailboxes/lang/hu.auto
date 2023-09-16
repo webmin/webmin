@@ -181,6 +181,8 @@ search_latestnum=Csak a legújabb
 search_elatest=Hiányzik vagy érvénytelen a keresett üzenetek száma
 search_withstatus=, állapotával $1
 
+folder_sent=Küldött
+
 detach_err=A fájl leválasztása nem sikerült
 detach_edir=Nincs fájl vagy könyvtár, amelyet menteni kellene a megadott fájlba
 detach_eopen=A $1 megnyitása nem sikerült : $2
