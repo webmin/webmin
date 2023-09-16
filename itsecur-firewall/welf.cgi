@@ -111,7 +111,7 @@ elsif ($mode == 3) {
 			    'data' => $body },
 			  { 'headers' => [ [ 'Content-type', 'text/plain' ] ],
 			    'data' => $data } ] };
-	$main::errors_must_die = 1;
+	$main::error_must_die = 1;
 	if (&foreign_check("mailboxes")) {
 		&foreign_require("mailboxes", "mailboxes-lib.pl");
 		eval { &mailboxes::send_mail($mail); };
