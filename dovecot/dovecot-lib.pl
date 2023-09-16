@@ -216,6 +216,8 @@ return wantarray ? @rv : $rv[0];
 sub save_directive
 {
 local ($conf, $name, $value, $sname, $svalue) = @_;
+$conf = [ grep { $_->{'file'} !~ /^\/usr\/share\/dovecot/ &&
+                 $_->{'file'} !~ /^\/opt/ } @$conf ];
 local $dir;
 if (ref($name)) {
 	# Old directive given
