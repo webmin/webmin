@@ -1305,7 +1305,7 @@ return "<textarea class='ui_textarea' ".
        "rows='$rows' cols='$cols'".($wrap ? " wrap='$wrap'" : "").
        ($dis ? " disabled='true'" : "").
        ($tags ? " $tags" : "").">".
-       &html_escape($value).
+       &html_escape($value, 1).
        "</textarea>";
 }
 
