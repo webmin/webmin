@@ -38,7 +38,7 @@ $main::remote_error_handler ||= \&error;
 # eval message in a global variable
 $SIG{__DIE__} = sub {
 	# Don't meddle with the natural functioning of eval.
-    $main::error_last_eval = $_[0] if (!$^S);
+	$main::error_last_eval = $_[0] if (!$^S);
 };
 
 1;
