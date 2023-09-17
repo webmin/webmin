@@ -3038,6 +3038,7 @@ if ($switched) {
 	$) = 0;
 	$> = 0; 
 	}
+return !$ex;
 }
 
 # create_as_mail_user(fh, file)
