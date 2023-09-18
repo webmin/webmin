@@ -1,5 +1,5 @@
 proftpd_path=/usr/sbin/proftpd
-proftpd_conf=/etc/proftpd.conf
+proftpd_conf=/etc/proftpd/proftpd.conf
 pid_file=/var/run/proftpd.pid
 start_cmd=systemctl start proftpd
 stop_cmd=systemctl stop proftpd
