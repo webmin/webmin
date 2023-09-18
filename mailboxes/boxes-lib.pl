@@ -3027,12 +3027,15 @@ sub gunzip_mail_file
 my ($file) = @_;
 my $switched = &switch_to_mail_user();
 my $outfile = $file.".$$.uncompressed";
+my @st = stat($file);
 my $ex = system("gunzip -c ".quotemeta($file)."> ".quotemeta($outfile)." 2>/dev/null");
 if ($ex) {
 	unlink($outfile);
 	}
 else {
 	rename($outfile, $file);
+	&set_ownership_permissions($st[4], $st[5], $st[2], $file);
+	utime($st[8], $st[9], $file);
 	}
 if ($switched) {
 	$) = 0;
