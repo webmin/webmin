@@ -35,7 +35,7 @@ foreach $url (@urls) {
 		my $nver = $u->[1];
 		$nver =~ s/^(\d+\.\d+)\..*$/$1/;
 		next if (%info && $info{'version'} &&
-			 $info{'version'} >= $nver);
+			&compare_version_numbers($info{'version'}, $nver) >= 0);
 
 		if ($in{'show'}) {
 			# Just tell the user what would be done

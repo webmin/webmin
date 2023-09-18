@@ -2458,7 +2458,8 @@ foreach my $u (@$allupdates) {
 	next if (!%info && !$missing);
 
 	# Skip if module has a version, and we already have it
-	next if (%info && $info{'version'} && $info{'version'} >= $nver);
+	next if (%info && $info{'version'} &&
+		 &compare_version_numbers($info{'version'}, $nver) >= 0);
 
 	# Skip if not supported on this OS
 	my $osinfo = { 'os_support' => $u->[3] };
