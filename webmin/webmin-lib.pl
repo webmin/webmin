@@ -1169,13 +1169,14 @@ my %miniserv;
 &get_miniserv_config(\%miniserv);
 &load_theme_library();	# So that UI functions work
 
-# Need OS upgrade, but only once per day
-# XXX use a cache
+# Need OS upgrade, but only once per day or if the system was rebooted
 my $now = time();
+my $uptime = &get_system_uptime();
 if (&foreign_available("webmin")) {
 	my %realos;
 	my @st = stat($realos_cache_file);
-	if (!@st || $now - $st[9] > 24*60*60) {
+	if (!@st || $now - $st[9] > 24*60*60 ||
+	    $uptime && $now - $st[9] > $uptime) {
 		%realos = &detect_operating_system(undef, 1);
 		&write_file($realos_cache_file, \%realos);
 		}
@@ -1187,7 +1188,6 @@ if (&foreign_available("webmin")) {
 	     $realos{'os_type'} ne $gconfig{'os_type'}) &&
 	    $realos{'os_version'} && $realos{'os_type'} &&
 	    &foreign_available("webmin")) {
-
 		# Tell the user that OS version was updated
 		push(@notifs,
 		    &ui_form_start("@{[&get_webprefix()]}/webmin/fix_os.cgi").
