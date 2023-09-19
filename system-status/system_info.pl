@@ -107,8 +107,10 @@ if (&show_section('cpu')) {
 	if ($info->{'load'}) {
 		my @c = @{$info->{'load'}};
 		if (@c > 3) {
+			my $msg = $c[7] == 1 ? 'right_cputype1'
+					     : 'right_cputype';
 			push(@table, { 'desc' => $text{'right_cpuinfo'},
-				       'value' => &text('right_cputype', @c) });
+				       'value' => &text($msg, @c) });
 			}
 		}
 	}
