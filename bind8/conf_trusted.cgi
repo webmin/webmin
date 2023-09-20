@@ -24,10 +24,12 @@ $tkeys ||= { 'members' => [ ] };
 print &ui_form_start("save_trusted.cgi", "post");
 print &ui_table_start($text{'trusted_header'}, undef, 2);
 
-# DNSSEC enabled?
-print &choice_input($text{'trusted_dnssec'}, 'dnssec-enable', $mems,
-		    $text{'yes'}, 'yes', $text{'no'}, 'no',
-		    $text{'default'}, undef);
+if (&compare_version_numbers($bind_version, '<', '9.16.0')) {
+	# DNSSEC enabled?
+	print &choice_input($text{'trusted_dnssec'}, 'dnssec-enable', $mems,
+			    $text{'yes'}, 'yes', $text{'no'}, 'no',
+			    $text{'default'}, undef);
+	}
 if (&supports_dnssec_client() == 2) {
 	print &choice_input($text{'trusted_validation'},
 			    'dnssec-validation', $mems,

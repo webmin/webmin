@@ -17,7 +17,9 @@ my $conf = $parent->{'members'};
 my $options = &find("options", $conf);
 
 # DNSSEC enabled
-&save_choice("dnssec-enable", $options, 1);
+if (&compare_version_numbers($bind_version, '<', '9.16.0')) {
+	&save_choice("dnssec-enable", $options, 1);
+	}
 if (&supports_dnssec_client() == 2) {
 	&save_choice("dnssec-validation", $options, 1);
 	}
