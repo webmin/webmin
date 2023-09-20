@@ -5,7 +5,7 @@ use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
 # Globals
-our (%access, %text);
+our (%access, %text, $bind_version);
 our $dnssec_dlv_zone;
 
 require './bind8-lib.pl';
