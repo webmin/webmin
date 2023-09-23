@@ -22,6 +22,23 @@ our $ui_formcount;
 $main::WRAPPER_OPEN = 0;
 $main::COLUMNS_WRAPPER_OPEN = 0;
 
+sub theme_ui_print_header
+{
+my ($text, @args) = @_;
+&header(@args);
+print <<EOL;
+<script>
+(function () {
+	const body = document.querySelector('body');
+	try {
+    	body && body.classList.add('$module_name');
+	} catch (e) {}
+})();
+</script>
+EOL
+print &ui_post_header($text);
+}
+
 # theme_ui_post_header([subtext])
 # Returns HTML to appear directly after a standard header() call
 sub theme_ui_post_header

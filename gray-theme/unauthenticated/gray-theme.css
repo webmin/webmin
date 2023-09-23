@@ -698,3 +698,15 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
 .ql-compose-container .ql-snow .ql-tooltip {
   z-index: 99;
 }
+
+/* Shell module tweaks */
+.shell pre {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.shell input[name="cmd"] {
+  max-width: 64.5vw;
+}
+.shell select[name="pcmd"] {
+  max-width: 65vw;
+}
