@@ -39,7 +39,10 @@
           <label>$text{'archive_name'}</label>
           <input name="filename" type="text">
           <select name="method">
-              <option value="tar">.tar.gz</option>
+              <option value="plain-tar">.tar</option>
+              <option value="xz-tar">.tar.xz</option>
+              <option selected value="tar">.tar.gz</option>
+              <option value="zstd-tar">.zstd</option>
               <option value="zip">.zip</option>
           </select>
       </div>

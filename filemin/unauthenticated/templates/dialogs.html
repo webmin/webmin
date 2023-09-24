@@ -102,7 +102,10 @@
                         <input name="filename" type="text" class="form-control" data-placement="right" data-content="$text{'provide_file_name'}" data-trigger="manual">
                     </div>
                     <select name="method">
-                        <option value="tar">.tar.gz</option>
+                        <option value="plain-tar">.tar</option>
+                        <option value="xz-tar">.tar.xz</option>
+                        <option selected value="tar">.tar.gz</option>
+                        <option value="zstd-tar">.zstd</option>
                         <option value="zip">.zip</option>
                     </select>
                 </form>

@@ -11,7 +11,19 @@ if(!$in{'arch'}) {
 
 my $command;
 
-if ($in{'method'} eq 'tar') {
+if ($in{'method'} eq 'plain-tar') {
+	$full = "$cwd/$in{'arch'}.tar";
+	$command = "tar cf ".quotemeta($full)." -C ".quotemeta($cwd);
+	}
+elsif ($in{'method'} eq 'xz-tar') {
+	$full = "$cwd/$in{'arch'}.tar.xz";
+	$command = "tar cJf ".quotemeta($full)." -C ".quotemeta($cwd);
+	}
+elsif ($in{'method'} eq 'zstd-tar') {
+	$full = "$cwd/$in{'arch'}.zst";
+	$command = "ZSTD_CLEVEL=19 tar --zstd -cf ".quotemeta($full)." -C ".quotemeta($cwd);
+	}
+elsif ($in{'method'} eq 'tar') {
 	$full = "$cwd/$in{'arch'}.tar.gz";
 	$command = "tar czf ".quotemeta($full)." -C ".quotemeta($cwd);
 	}
