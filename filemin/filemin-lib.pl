@@ -397,6 +397,7 @@ sub print_interface {
                    index($type, "-x-tar") != -1           ||
                    (index($type, "-x-bzip") != -1 && has_command('bzip2')) ||
                    (index($type, "-gzip") != -1   && has_command('gzip'))  ||
+                   (index($type, "zstd") != -1   && has_command('zstd'))  ||
                    (index($type, "-x-xz") != -1   && has_command('xz'))
                   ) &&
                   has_command('tar')))

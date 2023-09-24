@@ -12,7 +12,7 @@ if ($archive_type =~ /x-bzip/) {
 	$cmd = "tar xvjfp ".quotemeta("$cwd/$in{'file'}").
 	       " -C ".quotemeta($cwd);
 	}
-elsif ($archive_type =~ /x-tar|\/gzip|x-xz|x-compressed-tar/) {
+elsif ($archive_type =~ /x-tar|\/gzip|x-xz|zstd|x-compressed-tar/) {
 	$cmd = "tar xfp ".quotemeta("$cwd/$in{'file'}").
 	       " -C ".quotemeta($cwd);
 	}
