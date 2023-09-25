@@ -242,7 +242,7 @@ if ($sorted_by && $sorted_by_sectioning_preserved) {
 	}
 }
 
-=head2 html_escape(string, [editor-mode])
+=head2 html_escape(string, [no-double-amp-escape])
 
 Converts &, < and > codes in text to HTML entities, and returns the new string.
 This should be used when including data read from other sources in HTML pages.
@@ -250,16 +250,16 @@ This should be used when including data read from other sources in HTML pages.
 =cut
 sub html_escape
 {
-my ($tmp, $editor_mode) = @_;
+my ($tmp, $nodblamp) = @_;
 if (!defined $tmp) {
 	return ''; # empty string
 	};
 # Before escaping ampersand use negative lookahead to see if occurrence
-# is not an HTML entity already to prevent double escaping
-$tmp =~ s/&(?!(([a-zA-Z]+)|(#|#x)\d+);)/&amp;/g if (!$editor_mode);
-# In editor mode always escape all ampersands
+# is not an HTML entity already to prevent double escaping (optionally)
+$tmp =~ s/&(?!(([a-zA-Z]+)|(#|#x)\d+);)/&amp;/g if ($nodblamp);
+# Always escape all ampersands by default
 # to make sure they are displayed per se
-$tmp =~ s/&/&amp;/g if ($editor_mode);
+$tmp =~ s/&/&amp;/g if (!$nodblamp);
 # Just always escape the following
 $tmp =~ s/</&lt;/g;
 $tmp =~ s/>/&gt;/g;
