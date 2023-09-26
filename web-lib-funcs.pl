@@ -2115,7 +2115,28 @@ if (!$@ && $] > 5.011) {
 				}
 			}
 		}
+	
+	# Allow forcing military time
+	my $force_military_time;
+	my $locale_name_initial = $locale_name;
+	if ($locale_name =~ /[a-z]{2}24$/i) {
+		$locale_name =~ s/^(.*?)24$/$1/;
+		$force_military_time++;
+	}
+	# Load standard locale
 	my $locale = DateTime::Locale->load($locale_name);
+	# Create a new locale out of base locale
+	if ($force_military_time) {
+		my %locale_data                       = $locale->locale_data;
+		$locale_data{'code'}                  = $locale_name_initial;
+		# Force 24h time
+		$locale_data{'glibc_date_1_format'}   = '%a %b %e %H:%M:%S %Z %Y';
+		$locale_data{'glibc_datetime_format'} = '%a %d %b %Y %T %Z';
+		$locale_data{'glibc_time_format'}     = '%T';
+		DateTime::Locale->register_from_data(%locale_data);
+		# Load new locale
+		$locale = DateTime::Locale->load($locale_name_initial);
+	}
 	my $locale_format_full_tz = $locale->glibc_date_1_format;    # Sat 20 Nov 2286 17:46:39 UTC
 	my $locale_format_full = $locale->glibc_datetime_format;     # Sat 20 Nov 2286 17:46:39
 	my $locale_format_short = $locale->glibc_date_format;        # 20/11/86
@@ -6290,6 +6311,7 @@ return { 'af'             => 'Afrikaans',
          'en-UG'          => 'English (Uganda)',
          'en-UM'          => 'English (U.S. Outlying Islands)',
          'en-US'          => 'English (United States)',
+         'en-US24'        => 'English (United States) (military time)',
          'en-VC'          => 'English (St Vincent & the Grenadines)',
          'en-VG'          => 'English (British Virgin Islands)',
          'en-VI'          => 'English (U.S. Virgin Islands)',
