@@ -2145,7 +2145,6 @@ if (!$@ && $] > 5.011) {
 		$locale_military_name = $locale_name_loaded = $locale_name_initial;
 		$locale = DateTime::Locale->load($locale_name_loaded);
 		}
-
 	my $locale_format_full_tz = $locale->glibc_date_1_format;    # Sat 20 Nov 2286 17:46:39 UTC
 	my $locale_format_full = $locale->glibc_datetime_format;     # Sat 20 Nov 2286 17:46:39
 	my $locale_format_short = $locale->glibc_date_format;        # 20/11/86
