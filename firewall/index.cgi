@@ -236,8 +236,7 @@ else {
 		                                ($s - $config{'perpage'}),
 		                    "<img src=/images/left.gif border=0 align=middle>");
 		                }
-		        print "<font size=+1>",&text('index_position', $s+1, $e+1,
-		                                     scalar(@rules)),"</font>\n";
+		        print &text('index_position', $s+1, $e+1, scalar(@rules));
 		        if ($e < @rules-1) {
 		                print &ui_link("?start=".
 		                               ($s + $config{'perpage'}),
