@@ -225,24 +225,17 @@ else {
                 print &ui_hidden("table", $in{'table'});
                 print &ui_hidden("chain", $c);
 
-		if (@rules > $config{'perpage'}) {
+		my $pp = $config{'perpage'};
+		if (@rules > $pp) {
 		        # Need to show arrows
-		        print "<center>\n";
 		        $s = int($in{'start'});
-		        $e = $in{'start'} + $config{'perpage'} - 1;
+		        $e = $in{'start'} + $pp - 1;
 		        $e = @rules-1 if ($e >= @rules);
-		        if ($s) {
-		                print &ui_link("?start=".
-		                                ($s - $config{'perpage'}),
-		                    "<img src=/images/left.gif border=0 align=middle>");
-		                }
-		        print &text('index_position', $s+1, $e+1, scalar(@rules));
-		        if ($e < @rules-1) {
-		                print &ui_link("?start=".
-		                               ($s + $config{'perpage'}),
-		                   "<img src=/images/right.gif border=0 align=middle>");
-		                }
-		        print "</center>\n";
+			print &ui_page_flipper(
+		        	&text('index_position', $s+1, $e+1, scalar(@rules)),
+				undef, undef,
+				$s ? "?start=".($s - $pp) : "",
+				$e < @rules-1 ? "?start=".($s + $pp) : "");
 		        }
 		else {
 		        # Can show them all
