@@ -2091,6 +2091,7 @@ code or preserve the original, old logic
 sub make_date
 {
 my ($secs, $only, $fmt) = @_;
+state $locale_military_name;
 $secs ||= 0;
 eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
 if (!$@ && $] > 5.011) {
@@ -2115,7 +2116,35 @@ if (!$@ && $] > 5.011) {
 				}
 			}
 		}
-	my $locale = DateTime::Locale->load($locale_name);
+	# Pre-process time locale
+	my $locale_military_status = sub {
+		return ($locale_military_name && $locale_military_name =~ /[a-z]/i) ? 2 :
+		       ($locale_military_name == 1) ? 1 : 0;
+		};
+	# Allow locales with military time (in 24h format)
+	my $locale_name_loaded = &$locale_military_status() == 2 ?
+			$locale_military_name : $locale_name;
+	my $locale_name_initial = $locale_name;
+	if ($locale_name =~ /[a-z]{2}24$/i && &$locale_military_status() == 0) {
+		$locale_name =~ s/^(.*?)24$/$1/;
+		$locale_name_loaded = $locale_name;
+		$locale_military_name = 1;
+		}
+	# Load given locale
+	my $locale = DateTime::Locale->load($locale_name_loaded);
+	# Create a new locale out of base locale
+	if (&$locale_military_status() == 1) {
+		my %locale_data                       = $locale->locale_data;
+		$locale_data{'code'}                  = $locale_name_initial;
+		# Force 24h time
+		$locale_data{'glibc_date_1_format'}   = '%a %b %e %H:%M:%S %Z %Y';
+		$locale_data{'glibc_datetime_format'} = '%a %d %b %Y %T %Z';
+		$locale_data{'glibc_time_format'}     = '%T';
+		DateTime::Locale->register_from_data(%locale_data);
+		# Load newly cloned locale in 24h time format
+		$locale_military_name = $locale_name_loaded = $locale_name_initial;
+		$locale = DateTime::Locale->load($locale_name_loaded);
+		}
 	my $locale_format_full_tz = $locale->glibc_date_1_format;    # Sat 20 Nov 2286 17:46:39 UTC
 	my $locale_format_full = $locale->glibc_datetime_format;     # Sat 20 Nov 2286 17:46:39
 	my $locale_format_short = $locale->glibc_date_format;        # 20/11/86
@@ -2150,15 +2179,15 @@ if (!$@ && $] > 5.011) {
 		# my $xxxx = $locale->full_date_format;
 		my $data = {
 			# Wed Feb 8 05:09:39 PM UTC 2023
-			'full-tz-utc' => DateTime->from_epoch(locale => $locale_name, epoch => $secs)->strftime($locale_format_full_tz),
+			'full-tz-utc' => DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs)->strftime($locale_format_full_tz),
 			# Wed Feb 8 07:10:01 PM EET 2023 
-			'full-tz' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_full_tz),
+			'full-tz' => DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime($locale_format_full_tz),
 			# Wed 08 Feb 2023 07:11:26 PM EET
-			'full' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_full),
+			'full' => DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime($locale_format_full),
 			# 02/08/2023
-			'short' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_short),
+			'short' => DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime($locale_format_short),
 			# 07:12:07 PM
-			'time' => DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_time),
+			'time' => DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime($locale_format_time),
 			'ago' => $ago,
 			'tz' => $tz,
 			'delimiter' => $locale_format_delimiter,
@@ -2171,8 +2200,8 @@ if (!$@ && $] > 5.011) {
 
 		# %c alternative with full week and month and no seconds in time (complete)
 		# Wednesday, February 8, 2023, 8:18 PM or 星期三, 2023年2月8日 20:18 or miércoles, 8 febrero 2023, 20:28
-		$data->{'monthfull'} = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime("%B");
-		foreach (split(/\s+/, DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime("%A, %c"))) {
+		$data->{'monthfull'} = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime("%B");
+		foreach (split(/\s+/, DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime("%A, %c"))) {
 			if ($data->{'monthfull'} =~ /^$_/) {
 				$data->{'complete'} .= "$data->{'monthfull'} "
 				}
@@ -2207,12 +2236,12 @@ if (!$@ && $] > 5.011) {
 		@date = grep { /\%/ } @date;
 		$locale_format_short = join($locale_format_delimiter, @date);
 		}
-	my $date_format_short = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_short);
+	my $date_format_short = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime($locale_format_short);
 	if (!ref($only) && $only) {
 		return $date_format_short;
 		}
 	else {
-		my $date_format_time = DateTime->from_epoch(locale => $locale_name, epoch => $secs, time_zone => $tz)->strftime($locale_format_time);
+		my $date_format_time = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime($locale_format_time);
 		$date_format_time = $date_format_time;
 		$date_format_time =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
 		if ($main::webmin_script_type eq 'web') {
@@ -6272,7 +6301,8 @@ return { 'af'             => 'Afrikaans',
          'en-SB'          => 'English (Solomon Islands)',
          'en-SC'          => 'English (Seychelles)',
          'en-SD'          => 'English (Sudan)',
-         'en-SE'          => 'English (Sweden)',
+         'en-SV'          => 'English (Sweden)',
+         'en-SE'          => 'English (Northern Sami)',
          'en-SG'          => 'English (Singapore)',
          'en-SH'          => 'English (St Helena)',
          'en-SI'          => 'English (Slovenia)',
@@ -6289,6 +6319,7 @@ return { 'af'             => 'Afrikaans',
          'en-UG'          => 'English (Uganda)',
          'en-UM'          => 'English (U.S. Outlying Islands)',
          'en-US'          => 'English (United States)',
+         'en-US24'        => 'English (United States) (military time)',
          'en-VC'          => 'English (St Vincent & the Grenadines)',
          'en-VG'          => 'English (British Virgin Islands)',
          'en-VI'          => 'English (U.S. Virgin Islands)',
