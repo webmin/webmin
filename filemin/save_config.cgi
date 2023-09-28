@@ -13,6 +13,7 @@ $columns =~ s/\0/,/g;
     'columns' => $columns,
     'per_page' => $in{'per_page'},
     'config_portable_module_filemanager_editor_detect_encoding' => $in{'config_portable_module_filemanager_editor_detect_encoding'},
+    'config_portable_module_filemanager_show_dot_files' => $in{'config_portable_module_filemanager_show_dot_files'},
 );
 my $max_allowed = $in{'max_allowed'};
 if($max_allowed) {

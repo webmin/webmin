@@ -18,7 +18,8 @@ unless (opendir ( DIR, $cwd )) {
     my %secontext;
 
     # Push file names with full paths to array, filtering out "." and ".."
-    @list = map { &simplify_path("$cwd/$_") } grep { $_ ne '.' && $_ ne '..' } readdir(DIR);
+    my $show_dot_files = $userconfig{'config_portable_module_filemanager_show_dot_files'} ne 'false';
+    @list = map { &simplify_path("$cwd/$_") } grep { $_ ne '.' && $_ ne '..' && ($show_dot_files || ($_ !~ /^\./ && $_ !~ /\/\./)) } readdir(DIR);
     closedir(DIR);
 
     # Filter out not allowed paths
