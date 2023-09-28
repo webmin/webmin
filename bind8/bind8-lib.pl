@@ -1977,20 +1977,24 @@ push(@{$dir->{'members'}}, { 'name' => 'file',
 			     'values' => [ $file ] } );
 
 # Add slave IPs
-if (@$slaves) {
+my (@notify, @transfer);
+foreach my $s (@$slaves) {
+	push(@notify, { 'name' => $s });
+	push(@transfer, { 'name' => $s });
+	}
+if (@notify) {
 	my $also = { 'name' => 'also-notify',
 		     'type' => 1,
-		     'members' => [ ] };
+		     'members' => \@notify};
+	push(@{$dir->{'members'}}, $also);
+	push(@{$dir->{'members'}}, { 'name' => 'notify',
+				     'values' => [ 'yes' ] });
+	}
+if (@transfer) {
 	my $allow = { 'name' => 'allow-transfer',
 		      'type' => 1,
 		      'members' => [ ] };
-	foreach my $s (@$slaves) {
-		push(@{$also->{'members'}}, { 'name' => $s });
-		push(@{$allow->{'members'}}, { 'name' => $s });
-		}
-	push(@{$dir->{'members'}}, $also, $allow);
-	push(@{$dir->{'members'}}, { 'name' => 'notify',
-				     'values' => [ 'yes' ] });
+	push(@{$dir->{'members'}}, $allow);
 	}
 
 # Create the zone file, with records
