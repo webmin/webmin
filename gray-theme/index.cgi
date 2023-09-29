@@ -96,6 +96,7 @@ if ($current_lang_info->{'rtl'} || $current_lang eq "ar") {
 # Page header
 print "<html>\n";
 print "<head>\n";
+print &ui_switch_theme_javascript();
 print "<title>$title</title>\n";
 my $imgdir = "@{[&get_webprefix()]}/images";
 my $prod = 'webmin';
