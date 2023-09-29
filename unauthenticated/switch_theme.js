@@ -1,7 +1,7 @@
 (function () {
     let firstCombinationPressed = false;
     document.addEventListener("keydown", function (event) {
-        // Check for Ctrl+Alt+Shift+0
+        // Check for Ctrl+Alt+T or Control+Option+T
         if (event.ctrlKey && event.altKey && event.keyCode === 84) {
             firstCombinationPressed = true;
 
@@ -13,8 +13,11 @@
         if (firstCombinationPressed && event.shiftKey &&
             (event.keyCode === 65 || event.keyCode === 71 || event.keyCode === 76)) {
             const theme =
+                // Shift + A : Authentic theme
                 event.keyCode === 65 ? 1 :
+                // Shift + G : Gray theme
                 event.keyCode === 71 ? 2 :
+                // Shift + L : Legacy theme.
                 event.keyCode === 76 ? 3 : null;
             firstCombinationPressed = false;
             try {
