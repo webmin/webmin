@@ -14,7 +14,9 @@ my $err = sub {
     };
 # Check if in debug mode
 &$err("Debug mode is not enabled!")
-    if (!$gconfig{'error_stack'} && !$gconfig{'debug_enabled'});
+    if (!$gconfig{'error_stack'} &&
+        !$gconfig{'debug_enabled'} &&
+        !$gconfig{'debug_theme_switcher'});
 # Check if allowed to change theme,
 # otherwise throw an error
 if (!&foreign_available('theme') &&
