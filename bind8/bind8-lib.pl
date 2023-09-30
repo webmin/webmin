@@ -1976,11 +1976,17 @@ if (!$file) {
 push(@{$dir->{'members'}}, { 'name' => 'file',
 			     'values' => [ $file ] } );
 
-# Add slave IPs
+# Allow transfer from slave IPs
 my (@notify, @transfer);
 foreach my $s (@$slaves) {
 	push(@notify, { 'name' => $s });
 	push(@transfer, { 'name' => $s });
+	}
+if (@transfer) {
+	my $gat = &find("allow-transfer", $opts->{'members'});
+	if ($gat) {
+		push(@transfer, @{$gat->{'members'}});
+		}
 	}
 if (@notify) {
 	my $also = { 'name' => 'also-notify',
@@ -1993,7 +1999,7 @@ if (@notify) {
 if (@transfer) {
 	my $allow = { 'name' => 'allow-transfer',
 		      'type' => 1,
-		      'members' => [ ] };
+		      'members' => \@transfer };
 	push(@{$dir->{'members'}}, $allow);
 	}
 
