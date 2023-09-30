@@ -41,7 +41,8 @@ print &ui_table_row($text{'config_columns_to_display'},
     &ui_checkbox('columns', 'last_mod_time', $text{'last_mod_time'}, $config{'columns'} =~ /last_mod_time/)
 );
 print &ui_table_row($text{'config_per_page'}, ui_textbox("per_page", $config{'per_page'}, 80));
-print &ui_table_row($text{'file_detect_encoding'}, &ui_yesno_radio('config_portable_module_filemanager_editor_detect_encoding', $config{'config_portable_module_filemanager_editor_detect_encoding'}, 'true', 'false'));
+print &ui_table_row($text{'file_detect_encoding'}, &ui_yesno_radio('config_portable_module_filemanager_editor_detect_encoding', $config{'config_portable_module_filemanager_editor_detect_encoding'} ne 'false' ? 'true' : 'false', 'true', 'false'));
+print &ui_table_row($text{'file_showhiddenfiles'}, &ui_yesno_radio('config_portable_module_filemanager_show_dot_files', $config{'config_portable_module_filemanager_show_dot_files'} ne 'false' ? 'true' : 'false', 'true', 'false'));
 print &ui_table_row($text{'config_bookmarks'}, &ui_textarea("bookmarks", $bookmarks, 5, 40));
 
 print &ui_table_end();

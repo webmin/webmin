@@ -173,6 +173,7 @@ acls_action=Action
 acls_manual=Manual params
 acls_error=<tt>setfacl</tt> command is not found on your system
 file_detect_encoding=Automatically detect file encoding
+file_showhiddenfiles=Show hidden files
 index_return=file listing
 upload_dirs=Directory Upload
 extract_uploaded=Extract Compressed

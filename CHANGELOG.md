@@ -1,8 +1,11 @@
 ## Changelog
 
-#### 2.103 (September 18, 2023)
+#### 2.103 (September 30, 2023)
 * Add support for hostname detection using `hostnamectl` command
 * Add support for other ACME services
+* Add ability to hide dotfiles in File Manager [#1578](https://github.com/webmin/authentic-theme/issues/1578)
+* Add `xz`, `zstd` and plain `tar` support when creating archives in File Manager [#2009](https://github.com/webmin/webmin/issues/2009)
+* Add support for English (United States) (military time) locale
 * Fix to correctly switch key hash type with ACME services
 * Fix bug when `backend` wasn't saved correctly in Fail2Ban module [#1992](https://github.com/webmin/webmin/issues/1992)
 * Fix large files download in Upload and Download module
