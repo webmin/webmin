@@ -84,7 +84,7 @@ if (@has > 1) {
 		}
 	print "</div>";
 	}
-
+print &ui_switch_theme_javascript();
 print "<div class='wrapper leftmenu'>\n";
 print "<table id='main' width='100%'><tbody><tr><td>\n";
 

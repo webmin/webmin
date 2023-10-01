@@ -1119,6 +1119,7 @@ my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} :
 my $bgimage = defined($tconfig{'bgimage'}) ? "background=$tconfig{'bgimage'}" : "";
 my $dir = $current_lang_info->{'dir'} ? "dir=\"$current_lang_info->{'dir'}\"" : "";
 my $html_body = "<body bgcolor=\"#$bgcolor\" link=\"#$link\" vlink=\"#$link\" text=\"#$text\" style=\"height:100%\" $bgimage $tconfig{'inbody'} $dir $_[8]>\n";
+print &ui_switch_theme_javascript();
 $html_body =~ s/\s+\>/>/g;
 print $html_body;
 print "<script>function _document_cookie_set_client_height(){document.cookie='client_height='+document.documentElement.clientHeight+'';}_document_cookie_set_client_height();window.onresize=_document_cookie_set_client_height</script>\n";
@@ -4449,9 +4450,15 @@ Returns the version of Webmin currently being run, such as 1.450.
 =cut
 sub get_webmin_version
 {
+my ($str) = @_;
 if (!$get_webmin_version) {
 	$get_webmin_version = &read_file_contents("$root_directory/version");
 	$get_webmin_version =~ s/\r|\n//g;
+	}
+if ($str) {
+	my $get_webmin_version_str = $get_webmin_version;
+	$get_webmin_version_str =~ s/\.//g;
+	return $get_webmin_version_str;
 	}
 return $get_webmin_version;
 }

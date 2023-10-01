@@ -2280,6 +2280,31 @@ for(var i=0; i<values.length; i++) {
 EOF
 }
 
+=head2 ui_switch_theme_javascript()
+
+The subroutine is designed to load JavaScript
+for switching themes using hotkeys.
+
+Hotkeys are:
+	To activate theme switch mode:
+	Use: `Ctrl+Alt+T` (or `Control+Option+T` on Mac).
+
+	Immediately after, within 1 second, select your desired theme by pressing:
+	- `Shift + A`: Authentic theme
+	- `Shift + G`: Gray theme
+	- `Shift + L`: Legacy theme.
+
+=cut
+
+sub ui_switch_theme_javascript
+{
+return &theme_ui_switch_theme_javascript(@_) if (defined(&theme_ui_switch_theme_javascript));
+return "" if (!$gconfig{'debug_enabled'} && !$gconfig{'debug_theme_switcher'});
+my $switch_script = "<script>const __webmin_webprefix__ = '@{[&get_webprefix()]}';</script>\n";
+$switch_script .= "<script type=\"text/javascript\" src=\"@{[&get_webprefix()]}/unauthenticated/switch_theme.js?@{[&get_webmin_version(1)]}\"></script>\n";
+return $switch_script;
+}
+
 ####################### grid layout functions
 
 =head2 ui_grid_table(&elements, columns, [width-percent], [&tds], [tabletags], [title])
