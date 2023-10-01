@@ -37,11 +37,10 @@ my $themes = {
     '3' => '' };
 my $theme = $themes->{$in{'theme'}};
 # Change the theme
-$gconfig{"theme_$remote_user"} = $theme;
-&write_file("$config_directory/config", \%gconfig);
-my %miniserv;
-&get_miniserv_config(\%miniserv);
-$miniserv{"preroot_$remote_user"} = $theme;
-&put_miniserv_config(\%miniserv);
+&foreign_require('acl');
+my @users = &acl::list_users();
+my ($user) = grep { $_->{'name'} eq $remote_user } @users;
+$user->{'theme'} = $theme;
+&acl::modify_user($user->{'name'}, $user);
 &restart_miniserv();
 &redirect(&get_webprefix() . "/");
