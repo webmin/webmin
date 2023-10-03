@@ -277,6 +277,21 @@ my $html_editor_init_script =
         theme: 'snow'
     });
 
+    // Google Mail like key bind for creating numbered list (Ctrl+Shift+7)
+    editor.keyboard.addBinding({
+        key: '7',
+        shiftKey: true,
+        ctrlKey: !isMac,
+        metaKey: isMac,
+    }, function(range, context) {
+        const currentFormat = this.quill.getFormat(range.index);
+        if (currentFormat.list === 'ordered') {
+            this.quill.format('list', false);
+        } else {
+            this.quill.format('list', 'ordered');
+        }
+    });
+
     // Google Mail like key bind for creating bullet list (Ctrl+Shift+8)
     editor.keyboard.addBinding({
         key: '8',
