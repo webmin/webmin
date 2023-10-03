@@ -2804,8 +2804,8 @@ if (defined(&theme_ui_details)) {
 
 my $rv;
 if (!$c->{'html'}) {
-	$c->{'title'} = &html_escape($c->{'title'});
-	$c->{'content'} = &html_escape($c->{'content'});
+	$c->{'title'} = &html_escape($c->{'title'}, 1);
+	$c->{'content'} = &html_escape($c->{'content'}, 1);
 	}
 $c->{'class'} = " class=\"@{[&quote_escape($c->{'class'})]}\"" if($c->{'class'});
 $o = ' open' if ($o);
