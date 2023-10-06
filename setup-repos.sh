@@ -3,7 +3,8 @@
 # setup-repos.sh
 # Configures Webmin repository for RHEL and Debian systems (derivatives)
 
-webmin_download="https://download.webmin.com"
+webmin_host="download.webmin.com"
+webmin_download="https://$webmin_host"
 webmin_key="developers-key.asc"
 webmin_key_download="$webmin_download/$webmin_key"
 webmin_key_suffix="webmin-developers"
@@ -159,11 +160,16 @@ rpm)
   echo "  .. done"
   ;;
 deb)
+  # Remove our keys
+  rm -f "/usr/share/keyrings/debian-$webmin_key_suffix.gpg" "/usr/share/keyrings/$repoid_debian_like-$webmin_key_suffix.gpg"
   # Install our keys
   echo "  Installing Webmin key .."
   gpg --import $webmin_key 1>/dev/null 2>&1
   cat $webmin_key | gpg --dearmor > "/usr/share/keyrings/$repoid_debian_like-$webmin_key_suffix.gpg"
   echo "  .. done"
+  # Remove Webmin repo from sources.list
+  sources_list=$(grep -v "$webmin_host" /etc/apt/sources.list)
+  echo "$sources_list" > /etc/apt/sources.list
   # Create repo file
   echo "  Setting up Webmin repository .."
   echo "deb [signed-by=/usr/share/keyrings/$repoid_debian_like-$webmin_key_suffix.gpg] $webmin_download/download/newkey/repository stable contrib" >$debian_repo_file
