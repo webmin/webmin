@@ -4307,10 +4307,9 @@ if (!$system_hostname[$m]) {
 	if ($gconfig{'os_type'} ne 'windows') {
 		# Try hostnamectl command on Linux
 		if (&has_command("hostnamectl")) {
-			my $hostname =
-				&backquote_command("hostnamectl --static");
-			chop($hostname);
-			if ($? == 0 && $hostname =~ /\./) {
+			my $hostname = &read_file_contents("/etc/hostname");
+			if ($hostname) {
+				$hostname =~ s/\r|\n//g;
 				$hostname =~ s/\..*$// if ($m);
 				$system_hostname[$m] = $hostname;
 				return $hostname;
