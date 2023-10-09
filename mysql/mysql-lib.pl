@@ -2005,5 +2005,19 @@ if ($mysql_module_version =~ /mariadb/i) {
 return $htext;
 }
 
+# mysql_login_type(user)
+# Returns one of 'password' or 'socket'
+sub mysql_login_type
+{
+my ($user) = @_;
+my $rv;
+eval {
+	local $main::error_must_die = 1;
+	$rv = &execute_sql_safe($master_db, "select plugin from user where user = ?", $user);
+	};
+return 'password' if ($@);	# Old version without plugins
+return $rv->{'data'}->[0]->[0] =~ /unix_socket/i ? 'socket' : 'password';
+}
+
 1;
 
