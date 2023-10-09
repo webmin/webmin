@@ -1119,7 +1119,8 @@ my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} :
 my $bgimage = defined($tconfig{'bgimage'}) ? "background=$tconfig{'bgimage'}" : "";
 my $dir = $current_lang_info->{'dir'} ? "dir=\"$current_lang_info->{'dir'}\"" : "";
 my $html_body = "<body bgcolor=\"#$bgcolor\" link=\"#$link\" vlink=\"#$link\" text=\"#$text\" style=\"height:100%\" $bgimage $tconfig{'inbody'} $dir $_[8]>\n";
-print &ui_switch_theme_javascript();
+print &ui_switch_theme_javascript()
+	if (defined(&ui_switch_theme_javascript));
 $html_body =~ s/\s+\>/>/g;
 print $html_body;
 print "<script>function _document_cookie_set_client_height(){document.cookie='client_height='+document.documentElement.clientHeight+'';}_document_cookie_set_client_height();window.onresize=_document_cookie_set_client_height</script>\n";
