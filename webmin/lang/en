@@ -832,6 +832,7 @@ third_title=Select Third Party Module
 lock_title=File Locking
 lock_desc=By default, Webmin will obtain a lock on any file that it modifies in order to prevent concurrent modification by multiple processes, which could lead to file corruption. This page allows you to selectively or totally disable locking if it is causing problems.
 lock_header=File locking settings
+lock_mode=Files for Webmin to lock
 lock_all=Lock all files
 lock_none=Never lock files
 lock_only=Only lock files and directories ..
