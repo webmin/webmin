@@ -4305,8 +4305,8 @@ undef(@system_hostname) if ($nocache);
 return if ($nocache == 2);
 if (!$system_hostname[$m]) {
 	if ($gconfig{'os_type'} ne 'windows') {
-		# Try hostnamectl command on Linux
-		if (&has_command("hostnamectl")) {
+		# If systemd system try /etc/hostname straight away
+		if (-d "/etc/systemd") {
 			my $hostname = &read_file_contents("/etc/hostname");
 			if ($hostname) {
 				$hostname =~ s/\r|\n//g;
