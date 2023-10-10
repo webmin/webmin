@@ -4748,10 +4748,15 @@ if ($config{'ssl_cipher_list'}) {
 			     "$@\n";
 		}
 	}
+
+# Accept the SSL connection
 Net::SSLeay::set_fd($ssl_con, fileno($sock));
-if (!Net::SSLeay::accept($ssl_con)) {
-	return undef;
-	}
+alarm(10);
+$SIG{'ALRM'} = sub { die "timeout" };
+my $ok = Net::SSLeay::accept($ssl_con);
+alarm(0);
+return undef if (!$ok);
+
 # Check for a per-hostname SSL context and use that instead
 if (defined(&Net::SSLeay::get_servername)) {
 	my $h = Net::SSLeay::get_servername($ssl_con);
