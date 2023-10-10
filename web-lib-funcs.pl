@@ -4450,15 +4450,9 @@ Returns the version of Webmin currently being run, such as 1.450.
 =cut
 sub get_webmin_version
 {
-my ($str) = @_;
 if (!$get_webmin_version) {
 	$get_webmin_version = &read_file_contents("$root_directory/version");
 	$get_webmin_version =~ s/\r|\n//g;
-	}
-if ($str) {
-	my $get_webmin_version_str = $get_webmin_version;
-	$get_webmin_version_str =~ s/\.//g;
-	return $get_webmin_version_str;
 	}
 return $get_webmin_version;
 }
