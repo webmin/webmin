@@ -1303,11 +1303,10 @@ if ($header_timeout > 10*60) {
 	$header_timeout = 10*60;
 	}
 
-# Wait at most 60 secs for start of headers for initial requests, or
-# 10 minutes for kept-alive connections
 local $rmask;
 vec($rmask, fileno(SOCK), 1) = 1;
 local $to = $checked_timeout ? 10*60 : $header_timeout;
+print DEBUG "handle_request: waiting for $to seconds\n";
 local $sel = select($rmask, undef, undef, $to);
 if (!$sel) {
 	if ($checked_timeout) {
