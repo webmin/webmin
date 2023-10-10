@@ -1119,7 +1119,8 @@ my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} :
 my $bgimage = defined($tconfig{'bgimage'}) ? "background=$tconfig{'bgimage'}" : "";
 my $dir = $current_lang_info->{'dir'} ? "dir=\"$current_lang_info->{'dir'}\"" : "";
 my $html_body = "<body bgcolor=\"#$bgcolor\" link=\"#$link\" vlink=\"#$link\" text=\"#$text\" style=\"height:100%\" $bgimage $tconfig{'inbody'} $dir $_[8]>\n";
-print &ui_switch_theme_javascript();
+print &ui_switch_theme_javascript()
+	if (defined(&ui_switch_theme_javascript));
 $html_body =~ s/\s+\>/>/g;
 print $html_body;
 print "<script>function _document_cookie_set_client_height(){document.cookie='client_height='+document.documentElement.clientHeight+'';}_document_cookie_set_client_height();window.onresize=_document_cookie_set_client_height</script>\n";
@@ -4306,10 +4307,9 @@ if (!$system_hostname[$m]) {
 	if ($gconfig{'os_type'} ne 'windows') {
 		# Try hostnamectl command on Linux
 		if (&has_command("hostnamectl")) {
-			my $hostname =
-				&backquote_command("hostnamectl --static");
-			chop($hostname);
-			if ($? == 0 && $hostname =~ /\./) {
+			my $hostname = &read_file_contents("/etc/hostname");
+			if ($hostname) {
+				$hostname =~ s/\r|\n//g;
 				$hostname =~ s/\..*$// if ($m);
 				$system_hostname[$m] = $hostname;
 				return $hostname;
