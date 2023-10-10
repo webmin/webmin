@@ -1,6 +1,7 @@
 ## Changelog
 
 #### 2.104 (October 12, 2023)
+* Add support for numbered and bulleted lists in mail HTML editor
 * Fix Webmin version display [#2023](https://github.com/webmin/webmin/issues/2023)
 * Fix hostname detection on `systemd` systems to avoid excessive logging  [#2020](https://github.com/webmin/webmin/issues/2020)
 * Fix to check if UI library is loaded before using it [#2021](https://github.com/webmin/webmin/issues/2021)
