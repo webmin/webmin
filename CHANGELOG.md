@@ -1,6 +1,11 @@
 ## Changelog
 
-#### 2.103 (September 30, 2023)
+#### 2.104 (October 12, 2023)
+* Fix Webmin version display [#2023](https://github.com/webmin/webmin/issues/2023)
+* Fix hostname detection on `systemd` systems to avoid excessive logging  [#2020](https://github.com/webmin/webmin/issues/2020)
+* Fix to check if UI library is loaded before using it [#2021](https://github.com/webmin/webmin/issues/2021)
+
+#### 2.103 (October 08, 2023)
 * Add support for hostname detection using `hostnamectl` command
 * Add support for other ACME services
 * Add ability to hide dotfiles in File Manager [#1578](https://github.com/webmin/authentic-theme/issues/1578)
