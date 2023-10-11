@@ -31,5 +31,9 @@ if ($product) {
 		&flush_file_lines($temp);
 		copy_source_dest($temp, "$systemd_root/$product.service");
 		system("systemctl daemon-reload >/dev/null 2>&1");
-		};
+		}
+	elsif (-d "/etc/init.d") {
+		copy_source_dest("$root_directory/webmin-init", "/etc/init.d/$product");
+		system("chkconfig --add $product >/dev/null 2>&1");
+		}
 	}

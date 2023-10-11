@@ -554,6 +554,12 @@ if (!$ENV{'noperlpath"'} && $os_type ne 'windows') {
         print "\n";
 	}
 my $systemctlcmd = &has_command('systemctl');
+if (-x $systemctlcmd) {
+	my $initsys = &trim(&backquote_command("cat /proc/1/comm 2>/dev/null"));
+	if ($initsys ne 'systemd') {
+		$systemctlcmd = undef;
+		}
+	}
 print "Creating start and stop scripts ..\n";
 if ($os_type eq "windows") {
 	open(START, ">>$config_directory/start.bat");

@@ -661,7 +661,13 @@ if [ ! -f "$config_dir/.pre-install" ]; then
 fi
 
 # Test if we have systemd system
-systemctlcmd=`which systemctl 2>/dev/null`
+systemctlcmd=$(which systemctl 2>/dev/null)
+if [ -x "$systemctlcmd" ]; then
+    initsys=$(cat /proc/1/comm 2>/dev/null)
+    if [ "$initsys" != "systemd" ]; then
+        systemctlcmd=""
+    fi
+fi
 
 # Re-generating main scripts
 echo "Creating start and stop init scripts .."
