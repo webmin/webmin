@@ -5,7 +5,7 @@
 require './samba-lib.pl';
 &ReadParse();
 &lock_file($config{'smb_conf'});
-&get_share($in{old_name}) if $in{old_name};
+&get_share($in{'old_name'}) if $in{'old_name'};
 
 if ($in{'view'}) {
 	# Redirect to view connections page
@@ -22,9 +22,9 @@ elsif ($in{'delete'}) {
 # check acls
 
 &error_setup("$text{'eacl_aviol'}ask_epass.cgi");
-if ($in{old_name}) {
+if ($in{'old_name'}) {
     &error("$text{'eacl_np'} $text{'eacl_pus'}") 
-		unless &can('rw', \%access, $in{old_name});
+		unless &can('rw', \%access, $in{'old_name'});
 	}
 else {
     &error("$text{'eacl_np'} $text{'eacl_pcrs'}") unless $access{'c_fs'};
@@ -32,7 +32,7 @@ else {
 
 &error_setup($text{'savefshare_fail'});
 # store share options
-if ($in{old_name} eq "global") {
+if ($in{'old_name'} eq "global") {
 	$name = "global";
 	}
 else {
@@ -51,10 +51,10 @@ if ($name ne "global") {
 	foreach (&list_shares()) {
 		$exists{$_}++;
 		}
-	if (!$in{old_name} && $exists{$name}) {
+	if (!$in{'old_name'} && $exists{$name}) {
 		&error(&text('savefshare_exist', $name));
 		}
-	elsif ($in{old_name} ne $name && $exists{$name}) {
+	elsif ($in{'old_name'} ne $name && $exists{$name}) {
 		&error(&text('savefshare_exist', $name));
 		}
 	elsif ($name !~ /^[A-Za-z0-9_\$\-\. ]+$/) {
@@ -76,12 +76,12 @@ if ($in{'create'} eq "yes") {
 	}
 
 # Update config file
-if ($in{old_name}) {
+if ($in{'old_name'}) {
 	# Changing an existing share
-	&modify_share($in{old_name}, $name);
-	if ($name ne $in{old_name}) {
-		local $oldacl=$access{'ACLfs_' . $in{old_name}};
-		&drop_samba_acl(\%access, $in{old_name});
+	&modify_share($in{'old_name'}, $name);
+	if ($name ne $in{'old_name'}) {
+		local $oldacl=$access{'ACLfs_' . $in{'old_name'}};
+		&drop_samba_acl(\%access, $in{'old_name'});
 		&save_samba_acl($oldacl, \%access, $name);
 		}
 	}
@@ -99,5 +99,5 @@ else {
 	&save_samba_acl('rwvVsSpPnNoO', \%access, $name);
 	}
 &unlock_file($config{'smb_conf'});
-&webmin_log($in{old_name} ? "save" : "create", "fshare", $name, \%in);
+&webmin_log($in{'old_name'} ? "save" : "create", "fshare", $name, \%in);
 &redirect("");
