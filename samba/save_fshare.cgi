@@ -57,7 +57,7 @@ if ($name ne "global") {
 	elsif ($in{'old_name'} ne $name && $exists{$name}) {
 		&error(&text('savefshare_exist', $name));
 		}
-	elsif ($name !~ /^[A-Za-z0-9_\$\-\. ]+$/) {
+	elsif (&decode_unicode_string($name) !~ /^[\p{L}\p{N}_\$\-\.\s]+$/) {
 		&error(&text('savefshare_mode', $name));
 		}
 	elsif ($name eq "global") {   # unreachable code ? EB

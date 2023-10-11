@@ -209,6 +209,17 @@ else {
 	}
 }
 
+# decode_unicode_string(string)
+# Decodes a string from UTF-8 if needed
+sub decode_unicode_string
+{
+my ($str) = @_;
+eval "use Encode";
+if ($@) {
+	return $str;
+	}
+return decode('utf8', $str);
+}
 
 # list_connections([share])
 # Uses the smbstatus program to return a list of connections a share. Each
