@@ -119,8 +119,7 @@ for($i=0; $i<@conf; $i++) {
 		elsif ($1 eq $_[0]) {
 			&print_tempfile(CONF, "[$_[1]]\n");
 			foreach $k (grep {!/share_name/} (keys %share)) {
-				&print_tempfile(CONF, "\t$k = ",
-					&to_utf8($share{$k}),"\n");
+				&print_tempfile(CONF, "\t$k = ", $share{$k},"\n");
 				}
 			#&print_tempfile(CONF, "\n");
 			$replacing = 1;
@@ -131,8 +130,7 @@ for($i=0; $i<@conf; $i++) {
 		$first = 1;
 		&print_tempfile(CONF, "[$_[1]]\n");
 		foreach $k (grep {!/share_name/} (keys %share)) {
-			&print_tempfile(CONF, "\t$k = ",
-					      &to_utf8($share{$k}),"\n");
+			&print_tempfile(CONF, "\t$k = ", $share{$k},"\n");
 			}
 		&print_tempfile(CONF, "\n");
 		$replacing = 1;
