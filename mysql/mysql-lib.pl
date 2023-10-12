@@ -1398,6 +1398,21 @@ else {
 return sort { lc($a->[1]) cmp lc($b->[1]) } @rv;
 }
 
+# get_character_set(db)
+# Returns the character set for a database
+sub get_character_set
+{
+my ($db) = @_;
+my $d;
+eval {
+	local $main::error_must_die = 1;
+	$d = &execute_sql($db, 'select @@character_set_database');
+	};
+return undef if ($@);
+return undef if (!@{$d->{'data'}});
+return $d->{'data'}->[0]->[0];
+}
+
 # list_collation_orders([db])
 # Returns a list of supported collation orders. Each row is an array ref of
 # a code and character set it can work with.
@@ -1410,6 +1425,21 @@ if (&compare_version_numbers(&get_remote_mysql_version(), "5") >= 0) {
 	@rv = map { [ $_->[0], $_->[1] ] } @{$d->{'data'}};
 	}
 return sort { lc($a->[0]) cmp lc($b->[0]) } @rv;
+}
+
+# get_collation_order(db)
+# Returns the collation order for a database
+sub get_collation_order
+{
+my ($db) = @_;
+my $d;
+eval {
+	local $main::error_must_die = 1;
+	$d = &execute_sql($db, 'select @@collation_database');
+	};
+return undef if ($@);
+return undef if (!@{$d->{'data'}});
+return $d->{'data'}->[0]->[0];
 }
 
 # fix_collation(file)

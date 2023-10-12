@@ -103,7 +103,8 @@ print &ui_table_row($text{'backup_drop'},
 	&ui_yesno_radio("drop", $d ? 1 : 0));
 
 # Show input for character set
-$s = $c{'backup_charset_'.$in{'db'}} || $c{'charset'};
+$dbc = $in{'db'} ? &get_character_set($in{'db'}) : "";
+$s = $c{'backup_charset_'.$in{'db'}} || $c{'charset'} || $dbc;
 print &ui_table_row($text{'backup_charset'},
 	&ui_radio("charset_def", $s ? 0 : 1,
 	       [ [ 1, $text{'default'} ],
