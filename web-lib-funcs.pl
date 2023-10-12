@@ -6693,9 +6693,9 @@ while(1) {
 		}
 	if ($no_lock || !$pid || !kill(0, $pid) || $pid == $$) {
 		# Got the lock!
+		my $lockfile = $realfile.".lock";
 		if (!$no_lock) {
 			# Create the .lock file
-			my $lockfile = $realfile.".lock";
 			unlink($lockfile);
 			open(LOCKING, ">$lockfile") || return 0;
 			my $lck = eval "flock(LOCKING, 2+4)";
@@ -6728,6 +6728,7 @@ while(1) {
 			}
 		$main::locked_file_list{$realfile} = int($readonly);
 		push(@main::temporary_files, $lockfile);
+
 		if (($gconfig{'logfiles'} || $gconfig{'logfullfiles'}) &&
 		    !&get_module_variable('$no_log_file_changes') &&
 		    !$readonly && !$nodiff) {
@@ -6752,6 +6753,15 @@ while(1) {
 				close(ORIGFILE);
 				}
 			}
+
+		# Link to the locked file from the per-PID directory
+		my $lockdir = &get_lock_links_dir();
+		if ($lockdir) {
+			my $locklink = $lockdir."/".time()."-".int($main::locked_file_count++);
+			symlink($lockfile, $locklink);
+			push(@main::temporary_files, $lockdir);
+			}
+	
 		last;
 		}
 	elsif ($pid) {
@@ -13455,6 +13465,19 @@ else {
     }
 &close_tempfile(CMD);
 chmod(0755, $path);
+}
+
+# get_lock_links_dir()
+# Returns the path to the current PID's locks link directory, and creates
+# it if missing
+sub get_lock_links_dir
+{
+return undef if (!$var_directory);
+return undef if (&get_product_name() ne 'webmin');
+return undef if ($< != 0);
+my $dir = $var_directory."/locks/".$$;
+&make_dir($dir, 0700, 1) if (!-d $dir);
+return $dir;
 }
 
 $done_web_lib_funcs = 1;

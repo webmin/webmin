@@ -1556,7 +1556,8 @@ if ($err) {
 
 =head2 cleanup_temp_files
 
-Called from cron to delete old files in the Webmin /tmp directory
+Called from cron to delete old files in the Webmin /tmp directory, and also
+old lock links directories.
 
 =cut
 sub cleanup_temp_files
@@ -1584,6 +1585,18 @@ foreach my $f (readdir(DIR)) {
 	local @st = lstat("$tempdir/$f");
 	if ($st[9] < $cutoff) {
 		&unlink_file("$tempdir/$f");
+		}
+	}
+closedir(DIR);
+
+my $lockdir = $var_directory."/locks";
+opendir(DIR, $lockdir);
+foreach my $f (readdir(DIR)) {
+	next if ($f eq "." || $f eq "..");
+	next if ($f !~ /^\d+$/);
+	if (!kill(0, $f)) {
+		# Process is gone, but never cleaned up!
+		&unlink_file("$lockdir/$f");
 		}
 	}
 closedir(DIR);
