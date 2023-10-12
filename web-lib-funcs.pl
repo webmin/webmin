@@ -7768,6 +7768,7 @@ return 1 if (&is_readonly_mode());
 my $rv = 1;
 my $err;
 foreach my $f (@_) {
+	die "Cannot delete root directory!" if ($f eq "/");
 	&unflush_file_lines($f);
 	my $realf = &translate_filename($f);
 	&webmin_debug_log('UNLINK', $realf) if ($gconfig{'debug_what_ops'});
