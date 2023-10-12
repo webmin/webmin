@@ -5,12 +5,9 @@ use strict;
 use warnings;
 BEGIN { $Pod::Usage::Formatter = 'Pod::Text::Color'; }
 use 5.010; # Version in CentOS 6
-
 use Getopt::Long qw(:config permute pass_through);
-use Pod::Usage;
 use Term::ANSIColor qw(:constants);
-use File::Spec;
-use File::Basename;
+use Pod::Usage;
 
 my $a0 = $ARGV[0];
 
@@ -38,8 +35,12 @@ sub main {
         }
     );
 
+    # Set defaults
     $opt{'config'} ||= "/etc/webmin";
     $opt{'commands'} = $a0;
+    
+    # Load libs
+    loadlibs(\%opt);
 
     my @remain = @ARGV;
     # List commands?
@@ -48,7 +49,6 @@ sub main {
         exit 0;
     } elsif ($opt{'version'} || $opt{'versions'}) {
         # Load libs
-        my $root = root($opt{'config'});
         my $ver_checked = sub {
             my ($ver_remote, $ver_curr) = @_;
             if ($ver_remote && $ver_curr &&
@@ -82,6 +82,7 @@ sub main {
             }
         };
 
+        my $root = root($opt{'config'});
         if ($root && -d $root) {
             require("$root/web-lib-funcs.pl");
             
@@ -207,6 +208,9 @@ exit main( \@ARGV ) if !caller(0);
 sub run_command {
     my ( $optref, $subcmd, $remainref ) = @_;
 
+    # Load libs
+    loadlibs($optref);
+
     # Figure out the Webmin root directory
     my $root = root($optref->{'config'});
 
@@ -237,6 +241,10 @@ sub run_command {
 
 sub get_command_path {
     my ($root, $subcmd, $optref) = @_;
+
+    # Load libs
+    loadlibs($optref);
+
     # Check for a root-level command (in "$root/bin")
     my $command_path;
     if ($subcmd) {
@@ -372,6 +380,20 @@ sub root {
     }
 
     return $root;
+}
+
+# loadlibs - Load libraries from the Webmin vendor dir
+# as those may not be installed as dependency, because
+# Webmin already provides them from package manager
+# perspective.
+sub loadlibs {
+    my ($optref) = @_;
+    $optref->{'config'} ||= "/etc/webmin";
+    my $root = root($optref->{'config'});
+    my $libroot = "$root/vendor_perl";
+    eval "use lib '$libroot'";
+    eval "use File::Basename";
+    eval "use File::Spec";
 }
 
 1;
