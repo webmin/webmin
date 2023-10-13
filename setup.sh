@@ -860,6 +860,10 @@ echo md5pass=0 >> $config_dir/config
 # Set a special theme if none was set before
 if [ "$theme" = "" ]; then
 	theme=`cat "$wadir/defaulttheme" 2>/dev/null`
+	# If no default theme found fall back to Framed Theme
+	if [ ! -d "$wadir/$theme" ]; then
+		theme="gray-theme"
+	fi
 fi
 oldthemeline=`grep "^theme=" $config_dir/config`
 oldtheme=`echo $oldthemeline | sed -e 's/theme=//g'`

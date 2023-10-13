@@ -823,6 +823,11 @@ if ($ENV{'theme'}) {
 elsif (open(THEME, "$wadir/defaulttheme")) {
 	chop($theme = <THEME>);
 	close(THEME);
+	# If no default theme found fall back to Framed Theme
+	if ($theme && ! -d "$wadir/$theme") {
+		$gconfig{'theme'} = "gray-theme";
+		$miniserv{'preroot'} = "gray-theme";
+		}
 	}
 if ($theme && -d "$wadir/$theme") {
 	$gconfig{'theme'} = $theme;
