@@ -87,7 +87,7 @@ Release: $rel
 Provides: %{name}-%{version} perl(WebminCore)
 Requires(pre): /usr/bin/perl
 Requires: /bin/sh /usr/bin/perl perl(lib) perl(open) perl(Net::SSLeay) perl(Time::Local) perl(Data::Dumper) perl(File::Path) perl(File::Basename) perl(Digest::SHA) perl(Digest::MD5) openssl unzip tar gzip
-Recommends: perl(DateTime) perl(DateTime::TimeZone) perl(DateTime::Locale) perl(Time::Piece) perl(Encode::Detect) lynx
+Recommends: perl(DateTime) perl(DateTime::TimeZone) perl(DateTime::Locale) perl(Time::Piece) perl(Encode::Detect) perl(Time::HiRes) lynx shared-mime-info perl-File-Basename perl-File-Path
 AutoReq: 0
 License: BSD-3-clause
 Group: System/Tools
@@ -222,10 +222,11 @@ noperlpath=1
 nouninstall=1
 nostart=1
 nostop=1
+nodepsmsg=1
 if [ "\$tempdir" = "" ]; then
 	tempdir=/tmp/.webmin
 fi
-export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot makeboot nostop
+export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot makeboot nostop nodepsmsg
 ./setup.sh >\$tempdir/webmin-setup.out 2>&1
 chmod 600 \$tempdir/webmin-setup.out
 rm -f /var/lock/subsys/webmin

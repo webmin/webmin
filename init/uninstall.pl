@@ -41,7 +41,7 @@ elsif ($init_mode eq "local") {
 	&close_tempfile(LOCAL);
 	print STDERR "Deleted from bootup script $config{'local_script'}\n";
 	}
-elsif ($init_mode eq "init") {
+elsif ($init_mode eq "init" || $init_mode eq "upstart") {
 	# Delete bootup action
 	foreach (&action_levels('S', $product)) {
 		/^(\S+)\s+(\S+)\s+(\S+)$/;

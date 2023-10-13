@@ -20,13 +20,13 @@ open(VERSION, "$wadir/version") ||
 	&errorexit("Cannot find the Webmin install directory");
 chop($ver = <VERSION>);
 close(VERSION);
-my $spaces_count_def = 10;
+my $spaces_count_def = 12;
 my $verleneach = int(length($ver) / 2);
 my $space_count = int($spaces_count_def - $verleneach);
 my $space_count_cond = " " x $space_count;
-print "***********************************************************************\n";
-print "* $space_count_cond Welcome to the Webmin setup script, version $ver $space_count_cond *\n";
-print "***********************************************************************\n";
+print "****************************************************************************\n";
+print "* $space_count_cond Welcome to the Webmin setup script, version $ver $space_count_cond  *\n";
+print "****************************************************************************\n";
 print "Webmin is a web-based interface that allows Unix-like operating\n";
 print "systems and common Unix services to be easily administered.\n";
 print "\n";
@@ -79,7 +79,7 @@ if (-r "$srcdir/setup-pre.pl") {
 	}
 
 # Ask for webmin config directory
-print "***********************************************************************\n";
+print "****************************************************************************\n";
 print "Webmin uses separate directories for configuration files and log files.\n";
 print "Unless you want to run multiple versions of Webmin at the same time\n";
 print "you can just accept the defaults.\n";
@@ -238,7 +238,7 @@ else {
 	print "\n";
 
 	# Ask for operating system type
-	print "***********************************************************************\n";
+	print "****************************************************************************\n";
 	$autoos = $ENV{'autoos'} || 2;
 	$temp = &tempname();
 	$ex = system("$perl ".&quote_path("$srcdir/oschooser.pl")." ".&quote_path("$srcdir/os_list.txt")." ".&quote_path($temp)." $autoos");
@@ -270,7 +270,7 @@ else {
 		}
 
 	# Ask for web server port, name and password
-	print "***********************************************************************\n";
+	print "****************************************************************************\n";
 	print "Webmin uses its own password protected web server to provide access\n";
 	print "to the administration programs. The setup script needs to know :\n";
 	print " - What port to run the web server on. There must not be another\n";
@@ -380,7 +380,7 @@ else {
 	$makeboot = $atboot;
 
 	# Copy files to target directory
-	print "***********************************************************************\n";
+	print "****************************************************************************\n";
 	&copy_to_wadir();
 
 	# Create webserver config file
@@ -597,14 +597,14 @@ else {
 	# Define final start command
 	if ($upgrading) {
 		if ($killmodenonepl == 1) {
-			$start_cmd = "$config_directory/.reload-init";
+			$start_cmd = "$config_directory/.reload-init >/dev/null 2>&1 </dev/null";
 			}
 		else {
-			$start_cmd = "$config_directory/.post-install";
+			$start_cmd = "$config_directory/.post-install >/dev/null 2>&1 </dev/null";
 			}
 		}
 	else {
-		$start_cmd = "$config_directory/start";
+		$start_cmd = "$config_directory/start >/dev/null 2>&1 </dev/null";
 		}
 
 	# Stop main
@@ -708,6 +708,7 @@ else {
 	symlink("$config_directory/.reload-init", "$config_directory/reload");
 
 	# For systemd
+	my $perl = &get_perl_path();
 	if (-x $systemctlcmd) {
 
 		# Clear existing
@@ -766,10 +767,14 @@ else {
 		chmod(0755, "$config_directory/.post-install");
 
 		# Fix existing systemd webmin.service file to update start and stop commands
-		my $perl = &get_perl_path();
 		chdir("$wadir/init");
 		system("$perl ".&quote_path("$wadir/init/updateboot.pl")." $bootscript");
-	}
+		}
+	else {
+		# Try to install init script to init.d
+		chdir("$wadir/init");
+		system("$perl ".&quote_path("$wadir/init/updateboot.pl")." $bootscript");
+		}
 }
 print ".. done\n";
 print "\n";
@@ -818,6 +823,11 @@ if ($ENV{'theme'}) {
 elsif (open(THEME, "$wadir/defaulttheme")) {
 	chop($theme = <THEME>);
 	close(THEME);
+	# If no default theme found fall back to Framed Theme
+	if ($theme && ! -d "$wadir/$theme") {
+		$gconfig{'theme'} = "gray-theme";
+		$miniserv{'preroot'} = "gray-theme";
+		}
 	}
 if ($theme && -d "$wadir/$theme") {
 	$gconfig{'theme'} = $theme;
@@ -933,7 +943,7 @@ if (!$ENV{'nostart'}) {
 		}
 		my $start_cmd_extra;
 		if ($upgrading && $killmodenonepl == 1) {
-			$start_cmd_extra = "$config_directory/.reload-init-systemd";
+			$start_cmd_extra = "$config_directory/.reload-init-systemd >/dev/null 2>&1 </dev/null";
 			if (-r $start_cmd_extra) {
 				$start_cmd .= " ; $start_cmd_extra";
 				}
@@ -948,20 +958,39 @@ if (!$ENV{'nostart'}) {
 		print ".. done\n";
 		print "\n";
 		}
-
-	print "***********************************************************************\n";
-	print "Webmin has been installed and started successfully. Use your web\n";
-	print "browser to go to\n";
+	$postactionmsg = "installed";
+	$postactionmsg2 = "started";
+	if ($upgrading) {
+		$postactionmsg = "upgraded";
+		$postactionmsg2 = "restarted";
+	}
+	print "****************************************************************************\n";
+	print "Webmin has been $postactionmsg and $postactionmsg2 successfully.\n";
+	print "\n";
+	if (!$ENV{'nodepsmsg'} && !$upgrading) {
+		print "Since Webmin was installed outside the package manager, ensure the\n";
+		print "following recommended Perl modules and packages are present:\n";
+		print " Perl modules:\n";
+		print "  - DateTime, DateTime::Locale, DateTime::TimeZone, Data::Dumper\n";
+		print "  - Digest::MD5, Digest::SHA, Encode::Detect, File::Basename\n";
+		print "  - File::Path, Net::SSLeay, Time::HiRes, Time::Local, Time::Piece\n";
+		print "  - lib, open\n";
+		print " Packages:\n";
+		print "  - openssl - Cryptography library with TLS implementation\n";
+		print "  - shared-mime-info - Shared MIME information database\n";
+		print "  - tar gzip unzip - File compression and packaging utilities\n";
+		print "\n";
+		}
+	print "Use your web browser to go to the following URL and login\n";
+	print "with the name and password you entered previously:\n";
 	print "\n";
 	$host = &get_system_hostname();
 	if ($ssl) {
-		print "  https://$host:$miniserv{'port'}/\n";
+		print "  https://$host:$miniserv{'port'}\n";
 		}
 	else {
-		print "  http://$host:$miniserv{'port'}/\n";
+		print "  http://$host:$miniserv{'port'}\n";
 		}
-	print "\n";
-	print "and login with the name and password you entered previously.\n";
 	print "\n";
 	if ($ssl) {
 		print "Because Webmin uses SSL for encryption only, the certificate\n";
@@ -972,7 +1001,7 @@ if (!$ENV{'nostart'}) {
 		print "\n";
 		}
 	} else {
-		print "***********************************************************************\n";
+		print "****************************************************************************\n";
 		print "Webmin has been installed but not started!\n\n";
 	}
 

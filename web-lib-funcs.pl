@@ -4306,10 +4306,11 @@ return if ($nocache == 2);
 if (!$system_hostname[$m]) {
 	if ($gconfig{'os_type'} ne 'windows') {
 		# If systemd system try /etc/hostname straight away
-		if (-d "/etc/systemd") {
+		my $initsys = &trim(&backquote_command("cat /proc/1/comm 2>/dev/null"));
+		if ($initsys eq 'systemd') {
 			my $hostname = &read_file_contents("/etc/hostname");
+			$hostname =~ s/\r|\n//g;
 			if ($hostname) {
-				$hostname =~ s/\r|\n//g;
 				$hostname =~ s/\..*$// if ($m);
 				$system_hostname[$m] = $hostname;
 				return $hostname;

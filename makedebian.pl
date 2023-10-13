@@ -107,7 +107,7 @@ if ($product eq "webmin") {
 $size = int(`du -sk $tmp_dir`);
 @deps = ( "perl", "libnet-ssleay-perl", "openssl", "libauthen-pam-perl", "libpam-runtime", "libio-pty-perl", "unzip", "shared-mime-info", "tar", "libdigest-sha-perl", "libdigest-md5-perl", "gzip" );
 $deps = join(", ", @deps);
-@recommends = ( "libdatetime-perl", "libdatetime-timezone-perl", "libdatetime-locale-perl", "libtime-piece-perl", "libencode-detect-perl", "lynx" );
+@recommends = ( "libdatetime-perl", "libdatetime-timezone-perl", "libdatetime-locale-perl", "libtime-piece-perl", "libencode-detect-perl", "libtime-hires-perl", "lynx" );
 $recommends = join(", ", @recommends);
 open(CONTROL, ">$control_file");
 print CONTROL <<EOF;
@@ -319,7 +319,8 @@ noperlpath=1
 nouninstall=1
 nostart=1
 nostop=1
-export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot makeboot nostop
+nodepsmsg=1
+export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot makeboot nostop nodepsmsg
 tempdir=/tmp/.webmin
 if [ ! -d \$tempdir ]; then
 	tempdir=/tmp
