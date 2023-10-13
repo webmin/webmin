@@ -670,7 +670,7 @@ if [ -x "$systemctlcmd" ]; then
 fi
 
 # Re-generating main scripts
-echo "Creating start and stop init scripts .."
+echo "Creating start and stop scripts .."
 # Start main
 echo "#!/bin/sh" >$config_dir/.start-init
 echo "echo Starting Webmin server in $wadir" >>$config_dir/.start-init
@@ -763,8 +763,6 @@ ln -s $config_dir/.reload-init $config_dir/reload >/dev/null 2>&1
 # For systemd create different start/stop scripts
 if [ -x "$systemctlcmd" ]; then
 	rm -f $config_dir/stop $config_dir/start $config_dir/restart $config_dir/restart-by-force-kill $config_dir/reload
-
-	echo "Creating start and stop scripts (systemd) .."
 	# Start systemd
 	echo "#!/bin/sh" >$config_dir/start
 	echo "$systemctlcmd start $bootscript" >>$config_dir/start
@@ -789,18 +787,12 @@ if [ -x "$systemctlcmd" ]; then
 	echo "#!/bin/sh" >$config_dir/.post-install
 	# echo "$systemctlcmd kill --signal=SIGCONT --kill-who=main $bootscript" >>$config_dir/.post-install
 	echo "$systemctlcmd kill --signal=SIGHUP --kill-who=main $bootscript" >>$config_dir/.post-install
-
-	# Fix existing systemd webmin.service file to update start and stop commands
-	(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/updateboot.pl" "$bootscript")
 	
 	chmod 755 $config_dir/stop $config_dir/start $config_dir/restart $config_dir/restart-by-force-kill $config_dir/reload $config_dir/.pre-install $config_dir/.post-install
-else
-	# Creating symlinks
-	echo "Creating start and stop init symlinks to scripts .."
-	(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/updateboot.pl" "$bootscript")
 fi
-echo ".. done"
-echo ""
+
+# Fix existing systemd webmin.service file to update start and stop commands
+(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/updateboot.pl" "$bootscript")
 
 if [ "$upgrading" = 1 -a "$inetd" != "1" -a "$nostop" = "" ]; then
 	# Stop old version, with updated stop script
