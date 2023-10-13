@@ -32,9 +32,9 @@ if [ $? != "0" ]; then
 	echo "";
 	exit 1;
 fi
-echo "***********************************************************************"
-echo "        Welcome to the Webmin setup script, version $ver"
-echo "***********************************************************************"
+echo "****************************************************************************"
+echo "           Welcome to the Webmin setup script, version $ver"
+echo "****************************************************************************"
 echo "Webmin is a web-based interface that allows Unix-like operating"
 echo "systems and common Unix services to be easily administered."
 echo ""
@@ -105,7 +105,7 @@ if [ "$host" = "" ]; then
 fi
 
 # Ask for webmin config directory
-echo "***********************************************************************"
+echo "****************************************************************************"
 echo "Webmin uses separate directories for configuration files and log files."
 echo "Unless you want to run multiple versions of Webmin at the same time"
 echo "you can just accept the defaults."
@@ -275,7 +275,7 @@ else
 	echo ""
 
 	# Ask where perl is installed
-	echo "***********************************************************************"
+	echo "****************************************************************************"
 	echo "Webmin is written entirely in Perl. Please enter the full path to the"
 	echo "Perl 5 interpreter on your system."
 	echo ""
@@ -355,7 +355,7 @@ else
 	fi
 
 	# Ask for operating system type
-	echo "***********************************************************************"
+	echo "****************************************************************************"
 	if [ "$os_type" = "" ]; then
 		if [ "$autoos" = "" ]; then
 			autoos=2
@@ -372,7 +372,7 @@ else
 	echo ""
 
 	# Ask for web server port, name and password
-	echo "***********************************************************************"
+	echo "****************************************************************************"
 	echo "Webmin uses its own password protected web server to provide access"
 	echo "to the administration programs. The setup script needs to know :"
 	echo " - What port to run the web server on. There must not be another"
@@ -503,7 +503,7 @@ else
 
 	# Copy files to target directory
 	echo ""
-	echo "***********************************************************************"
+	echo "****************************************************************************"
 	if [ "$wadir" != "$srcdir" ]; then
 		echo "Copying files to $wadir .."
 		(cd "$srcdir" ; tar cf - . | (cd "$wadir" ; tar xf -))
@@ -1031,18 +1031,37 @@ if [ "$nostart" = "" ]; then
 		echo ".. done"
 		echo ""
 	fi
-
-	echo "***********************************************************************"
-	echo "Webmin has been installed and started successfully. Use your web"
-	echo "browser to go to"
+	postactionmsg="installed"
+	postactionmsg2="started"
+	if [ "$upgrading" = "1" ]; then
+		postactionmsg="upgraded"
+		postactionmsg2="restarted"
+	fi
+	echo "****************************************************************************"
+	echo "Webmin has been $postactionmsg and $postactionmsg2 successfully."
+	echo ""
+	if [ "$nodepsmsg" = "" -a "$upgrading" != 1 ]; then
+		echo "Since Webmin was installed outside the package manager, ensure the"
+		echo "following recommended Perl modules and packages are present:"
+		echo " Perl modules:"
+		echo "  - DateTime, DateTime::Locale, DateTime::TimeZone, Data::Dumper"
+		echo "  - Digest::MD5, Digest::SHA, Encode::Detect, File::Basename"
+		echo "  - File::Path, Net::SSLeay, Time::HiRes, Time::Local, Time::Piece"
+		echo "  - lib, open"
+		echo " Packages:"
+		echo "  - openssl - Cryptography library with TLS implementation"
+		echo "  - shared-mime-info - Shared MIME information database"
+		echo "  - tar gzip unzip - File compression and packaging utilities"
+		echo ""
+	fi
+	echo "Use your web browser to go to the following URL and login"
+	echo "with the name and password you entered previously:"
 	echo ""
 	if [ "$ssl" = "1" ]; then
-		echo "  https://$host:$port/"
+		echo "  https://$host:$port"
 	else
-		echo "  http://$host:$port/"
+		echo "  http://$host:$port"
 	fi
-	echo ""
-	echo "and login with the name and password you entered previously."
 	echo ""
 	if [ "$ssl" = "1" ]; then
 		echo "Because Webmin uses SSL for encryption only, the certificate"
