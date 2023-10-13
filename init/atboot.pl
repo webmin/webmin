@@ -130,13 +130,14 @@ elsif ($init_mode eq "systemd") {
 	     undef,
 	       { 'pidfile' => "$var_directory/miniserv.pid",
 	         'opts'    => {
-	         'env'        => '"PERLLIB=' . $root_directory . '"',
-	         'stop'       => "$kill \$MAINPID",
-	         'reload'     => "$kill -HUP \$MAINPID",
-	         'type'       => 'forking',
-	         'restart'    => 'always',
-	         'restartsec' => '2s',
-	         'timeout'    => '15s',
+	         'env'            => '"PERLLIB=' . $root_directory . '"',
+	         'stop'           => "$kill \$MAINPID",
+	         'reload'         => "$kill -HUP \$MAINPID",
+	         'type'           => 'forking',
+	         'restart'        => 'always',
+	         'restartsec'     => '2s',
+	         'timeout'        => '15s',
+	         'timeoutstopsec' => '300s',
 	       }},
 	     );
 	}
