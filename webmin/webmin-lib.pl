@@ -2737,4 +2737,39 @@ return () if (!$wpkg);
 return ($wpkg->{'system'}, $wpkg->{'version'});
 }
 
+# list_active_locks()
+# Returns an array of structs containing details of currently open locks
+sub list_active_locks
+{
+my @rv;
+my $lockdir = $var_directory."/locks";
+&foreign_require("proc");
+my %pidmap = map { $_->{'pid'}, $_ } &proc::list_processes();
+opendir(DIR, $lockdir);
+foreach my $pid (readdir(DIR)) {
+	next if ($pid eq "." || $pid eq "..");
+	my $proc = { 'pid' => $pid,
+		     'proc' => $pidmap{$pid},
+		     'locks' => [ ] };
+	opendir(SUBDIR, "$lockdir/$pid");
+	foreach my $l (readdir(SUBDIR)) {
+		next if ($l eq "." || $l eq "..");
+		my ($t, $n) = split(/\-/, $l);
+		my $f = readlink("$lockdir/$pid/$l");
+		$f =~ s/\.lock$//;
+		if (&test_lock($f) == $pid) {
+			push(@{$proc->{'locks'}}, { 'time' => $t,
+						    'num' => $n,
+						    'lock' => $f });
+			}
+		}
+	closedir(SUBDIR);
+	if (@{$proc->{'locks'}}) {
+		push(@rv, $proc);
+		}
+	}
+closedir(DIR);
+return @rv;
+}
+
 1;
