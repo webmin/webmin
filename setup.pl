@@ -597,14 +597,14 @@ else {
 	# Define final start command
 	if ($upgrading) {
 		if ($killmodenonepl == 1) {
-			$start_cmd = "$config_directory/.reload-init";
+			$start_cmd = "$config_directory/.reload-init >/dev/null 2>&1 </dev/null";
 			}
 		else {
-			$start_cmd = "$config_directory/.post-install";
+			$start_cmd = "$config_directory/.post-install >/dev/null 2>&1 </dev/null";
 			}
 		}
 	else {
-		$start_cmd = "$config_directory/start";
+		$start_cmd = "$config_directory/start >/dev/null 2>&1 </dev/null";
 		}
 
 	# Stop main
@@ -943,7 +943,7 @@ if (!$ENV{'nostart'}) {
 		}
 		my $start_cmd_extra;
 		if ($upgrading && $killmodenonepl == 1) {
-			$start_cmd_extra = "$config_directory/.reload-init-systemd";
+			$start_cmd_extra = "$config_directory/.reload-init-systemd >/dev/null 2>&1 </dev/null";
 			if (-r $start_cmd_extra) {
 				$start_cmd .= " ; $start_cmd_extra";
 				}

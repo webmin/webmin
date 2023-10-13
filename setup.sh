@@ -1014,13 +1014,13 @@ if [ "$nostart" = "" ]; then
 		# If upgrading, restart
 		if [ "$upgrading" = "1" ]; then
 			if [ "$killmodenonesh" != "1" ]; then
-				$config_dir/.post-install >/dev/null 2>&1
+				$config_dir/.post-install >/dev/null 2>&1 </dev/null
 			else
-				$config_dir/.reload-init >/dev/null 2>&1
+				$config_dir/.reload-init >/dev/null 2>&1 </dev/null
 			fi
 		# If installing first time, start it
 		else
-			$config_dir/start >/dev/null 2>&1
+			$config_dir/start >/dev/null 2>&1 </dev/null
 		fi
 
 		if [ $? != "0" ]; then
