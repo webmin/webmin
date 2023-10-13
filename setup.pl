@@ -708,6 +708,7 @@ else {
 	symlink("$config_directory/.reload-init", "$config_directory/reload");
 
 	# For systemd
+	my $perl = &get_perl_path();
 	if (-x $systemctlcmd) {
 
 		# Clear existing
@@ -766,10 +767,14 @@ else {
 		chmod(0755, "$config_directory/.post-install");
 
 		# Fix existing systemd webmin.service file to update start and stop commands
-		my $perl = &get_perl_path();
 		chdir("$wadir/init");
 		system("$perl ".&quote_path("$wadir/init/updateboot.pl")." $bootscript");
-	}
+		}
+	else {
+		# Try to install init script to init.d
+		chdir("$wadir/init");
+		system("$perl ".&quote_path("$wadir/init/updateboot.pl")." $bootscript");
+		}
 }
 print ".. done\n";
 print "\n";

@@ -797,6 +797,7 @@ if [ -x "$systemctlcmd" ]; then
 else
 	# Creating symlinks
 	echo "Creating start and stop init symlinks to scripts .."
+	(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/updateboot.pl" "$bootscript")
 fi
 echo ".. done"
 echo ""
