@@ -847,7 +847,7 @@ lock_pid=PID
 lock_cmd=Script
 lock_file=Locked file
 lock_age=Held for
-lock_none=No files are currently locked by Webmin.
+lock_noneopen=No files are currently locked by Webmin.
 lock_msg=The files listed below are currently locked by a Webmin process.
 lock_kill=Kill Selected Locks
 lock_term=Terminate Selected Locks
@@ -861,7 +861,7 @@ kill_gone=.. process no longer exists!
 kill_gone2=.. lock no longer exists!
 kill_dead=.. killed $1 and released lock $2
 kill_alive=.. sent kill signal to $1 but it did not exit!
-kill_err=.. kill failed due to $1, but releaed lock $2 anyway
+kill_failed=.. kill failed due to $1, but releaed lock $2 anyway
 kill_already=.. released lock on $1
 
 ipkey_title1=Create SSL Key

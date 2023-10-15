@@ -58,7 +58,7 @@ foreach my $pn (@d) {
 			}
 		}
 	else {
-		print &text('kill_err', $!,
+		print &text('kill_failed', $!,
 			"<tt>".&html_escape($lockfile)."</tt>"),"<p>\n";
 		&unlink_file($lockfile);
 		}

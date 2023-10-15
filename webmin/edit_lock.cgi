@@ -58,7 +58,7 @@ if (@locks) {
 			     [ 'kill', $text{'lock_kill'} ] ]);
 	}
 else {
-	print "<b>$text{'lock_none'}</b><p>\n";
+	print "<b>$text{'lock_noneopen'}</b><p>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});
