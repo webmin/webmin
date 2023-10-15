@@ -47,14 +47,15 @@ if (@locks) {
 			print &ui_columns_row([
 				&ui_checkbox("d", $p->{'pid'}.'-'.$l->{'num'}),
 				$p->{'pid'},
-				$cmd,
-				$l->{'lock'},
+				"<tt>".&html_escape($cmd)."</tt>",
+				"<tt>".&html_escape($l->{'lock'})."</tt>",
 				$age,
 				]);
 			}
 		}
 	print &ui_columns_end();
-	print &ui_form_end([ [ undef, $text{'lock_kill'} ] ]);
+	print &ui_form_end([ [ 'term', $text{'lock_term'} ],
+			     [ 'kill', $text{'lock_kill'} ] ]);
 	}
 else {
 	print "<b>$text{'lock_none'}</b><p>\n";

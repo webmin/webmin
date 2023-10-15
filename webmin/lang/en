@@ -849,7 +849,20 @@ lock_file=Locked file
 lock_age=Held for
 lock_none=No files are currently locked by Webmin.
 lock_msg=The files listed below are currently locked by a Webmin process.
-lock_kill=Kill Selected Scripts
+lock_kill=Kill Selected Locks
+lock_term=Terminate Selected Locks
+lock_return=list of locks
+
+kill_title=Removing Locks
+kill_err=Failed to remove locks
+kill_enone=None selected!
+kill_pid=Killing process $1 ..
+kill_gone=.. process no longer exists!
+kill_gone2=.. lock no longer exists!
+kill_dead=.. killed $1 and released lock $2
+kill_alive=.. sent kill signal to $1 but it did not exit!
+kill_err=.. kill failed due to $1, but releaed lock $2 anyway
+kill_already=.. released lock on $1
 
 ipkey_title1=Create SSL Key
 ipkey_title2=Edit SSL Key
