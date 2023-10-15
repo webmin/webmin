@@ -7,7 +7,6 @@ require './proc-lib.pl';
 # Show CPU load and type
 &index_links("cpu");
 if (defined(&get_cpu_info)) {
-	print "<table>\n";
 	@c = &get_cpu_info();
 	if (@c) {
 		print &ui_table_start(undef, undef, 2);
