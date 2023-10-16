@@ -46,7 +46,9 @@ if (@locks) {
 			my $cmd = $p->{'proc'}->{'args'};
 			print &ui_columns_row([
 				&ui_checkbox("d", $p->{'pid'}.'-'.$l->{'num'}),
-				$p->{'pid'},
+				&foreign_available('proc') ?
+					&ui_link("@{[&get_webprefix()]}/proc/edit_proc.cgi?$p->{'pid'}", $p->{'pid'}) :
+					$p->{'pid'},
 				"<tt>".&html_escape($cmd)."</tt>",
 				"<tt>".&html_escape($l->{'lock'})."</tt>",
 				$age,
