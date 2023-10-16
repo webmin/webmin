@@ -804,7 +804,6 @@ advanced_eprecache=Brakująca lista wzorców powłoki do cache'owania wstępnego
 advanced_err=Nieudane zapisanie opcji zaawansowanych
 advanced_etemp=Katalog plików tymczasowych nie istnieje
 advanced_etdir=Katalog plików tymczasowych dla $1 nie istnieje
-advanced_pass=Udostępnić hasło dla programów Webmina? <br><font size=-1>(Nie działa, gdy włączone jest uwierzytelnianie sesji)</font>
 advanced_tempmods=Katalogi tymczasowe dla modułów
 advanced_tmod=Moduł
 advanced_tdir=Katalog

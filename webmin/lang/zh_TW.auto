@@ -254,6 +254,7 @@ upgrade_descdeb=通過此表，您可以通過升級Debian軟件包將整個Webm
 upgrade_descsun-pkg=該表格使您可以將整個Webmin安裝從Sun提供的Solaris軟件包升級到新版本。您可以從本地Solaris軟件包文件或上載的文件進行安裝。可以在<a href=http://www.sun.com/bigadmin/content/webmin/>http://www.sun.com/bigadmin/content/webmin/</a>中找到最新的軟件包。與手動升級一樣，所有配置設置和第三方模塊都將保留。
 upgrade_descgentoo=通過刪除當前的Gentoo Emerge軟件包並安裝新的軟件包，此表單使您可以將整個Webmin安裝升級到新版本。您可以從本地Gentoo軟件包文件，上載的文件或從Emerge存儲庫中的最新版本進行安裝。與手動升級一樣，所有配置設置和第三方模塊都將保留。
 upgrade_emerge=Emerge存儲庫中的最新版本
+upgrade_repo=$1 儲存庫中的最新版本
 upgrade_err4=無法從Emerge存儲庫升級
 upgrade_err5=無法從URL $1升級
 upgrade_edeb=不是有效的Webmin Debian軟件包文件
@@ -392,6 +393,31 @@ standard_failed=無法下載模塊列表：$1
 
 third_title=選擇第三方模塊
 
+lock_mode=Webmin 要鎖定的文件
+lock_s=秒
+lock_m=分分鐘
+lock_h=小時
+lock_pid=PID
+lock_cmd=腳本
+lock_file=鎖定文件
+lock_age=舉行時間
+lock_noneopen=目前沒有檔案被 Webmin 鎖定。
+lock_msg=下面列出的檔案目前已被 Webmin 進程鎖定。
+lock_kill=殺死選定的鎖
+lock_term=終止選定的鎖
+lock_return=鎖列表
+
+kill_title=拆鎖
+kill_err=解鎖失敗
+kill_enone=未選擇！
+kill_pid=終止進程 $1 ..
+kill_gone=..進程不再存在！
+kill_gone2=..鎖不再存在！
+kill_dead=..殺死 $1 並釋放鎖 $2
+kill_alive=.. 已向 $1 發送終止訊號，但它沒有退出！
+kill_failed=.. 由於 $1，kill 失敗，但無論如何都釋放了鎖 $2
+kill_already=..釋放了 $1 上的鎖定
+
 ipkey_title1=創建SSL密鑰
 ipkey_title2=編輯SSL密鑰
 ipkey_header=IP專用的SSL密鑰詳細信息
@@ -436,7 +462,8 @@ advanced_err=保存高級選項失敗
 advanced_etemp=臨時文件目錄缺失或不存在
 advanced_etdir=$1的臨時文件目錄丟失或不存在
 advanced_etempallowed=臨時文件目錄 $1 是系統目錄
-advanced_pass=使密碼可用於Webmin程序嗎？<br><font size=-1>（啟用會話身份驗證後不起作用）</font>
+advanced_pass_desc=使密碼可供 Usermin 程式使用嗎？
+advanced_pass_help=啟用會話身份驗證時不起作用
 advanced_tempmods=每個模塊的臨時目錄
 advanced_tmod=模組
 advanced_tdir=目錄
@@ -463,7 +490,9 @@ advanced_headers=額外的HTTP標頭
 advanced_eheader=標頭的格式必須類似於<tt>Header：Value</tt>
 advanced_sortconfigs=保存按其鍵排序的配置文件？
 advanced_bufsize=網絡緩衝區大小（以字節為單位）
+advanced_bufsize_binary=下載的網路緩衝區大小（以位元組為單位）
 advanced_ebufsize=網絡緩衝區大小必須為大於零的數字
+advanced_ebufsize_binary=下載的網路緩衝區大小必須是大於零的數字
 
 syslog_errorlog=Webmin錯誤日誌
 

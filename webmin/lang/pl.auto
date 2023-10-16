@@ -63,6 +63,7 @@ ssl_staging1=Inscenizacja (tylko test)
 
 newkey_ecns=Nie wprowadzono nazw serwerów
 
+upgrade_repo=Najnowsza wersja z repozytorium $1
 upgrade_setup=Uruchamianie skryptu <tt>setup.sh</tt> w celu aktualizacji Webmin ..
 upgrade_setuprpm=Uruchamiam <tt>RPM</tt>, aby uaktualnić Webmina ..
 upgrade_setupdeb=Uruchamianie <tt>DPKG</tt> w celu aktualizacji Webmina ..
@@ -88,16 +89,45 @@ log_letsencrypt=Zażądałem nowego certyfikatu SSL od Let's Encrypt
 log_letsencryptdns=Utworzono Let's Encrypt DNS record dla $1
 log_letsencryptcleanup=Usunięto Let's Encrypt DNS record dla $1
 
+lock_mode=Pliki do zablokowania przez Webmin
+lock_s=sekundy
+lock_m=minuty
+lock_h=godziny
+lock_pid=PID
+lock_cmd=Scenariusz
+lock_file=Zablokowany plik
+lock_age=Trzymany dla
+lock_noneopen=Żadne pliki nie są obecnie zablokowane przez Webmin.
+lock_msg=Pliki wymienione poniżej są obecnie zablokowane przez proces Webmin.
+lock_kill=Zabij wybrane zamki
+lock_term=Zakończ wybrane blokady
+lock_return=lista zamków
+
+kill_title=Usuwanie zamków
+kill_err=Nie udało się usunąć blokad
+kill_enone=Nie wybrano żadnego!
+kill_pid=Proces zabijania $1 ..
+kill_gone=.. proces już nie istnieje!
+kill_gone2=.. zamek już nie istnieje!
+kill_dead=.. zabił $1 i zwolnił blokadę $2
+kill_alive=..wysłano sygnał zabicia do $1, ale nie został on zakończony!
+kill_failed=..zabicie nie powiodło się z powodu $1, ale i tak zwolniono blokadę $2
+kill_already=.. zwolniono blokadę na $1
+
 ipkey_ips2=Adresy IP i nazwy hostów
 ipkey_eip2=„$1” nie jest prawidłowym adresem IP ani nazwą hosta
 
 advanced_etempallowed=Katalog plików tymczasowych $1 jest katalogiem systemowym
+advanced_pass_desc=Udostępnić hasło programom Usermin?
+advanced_pass_help=Nie działa, gdy włączone jest uwierzytelnianie sesji
 advanced_listdir=Wyświetlać katalogi bez pliku indeksu?
 advanced_headers=Dodatkowe nagłówki HTTP
 advanced_eheader=Nagłówki muszą być sformatowane jak <tt>Header: Value</tt>
 advanced_sortconfigs=Zapisać pliki konfiguracyjne posortowane według kluczy?
 advanced_bufsize=Rozmiar bufora sieciowego w bajtach
+advanced_bufsize_binary=Rozmiar bufora sieciowego do pobrania w bajtach
 advanced_ebufsize=Rozmiar bufora sieciowego musi być liczbą większą niż zero
+advanced_ebufsize_binary=Rozmiar bufora sieciowego do pobrania musi być liczbą większą od zera
 
 notify_yumrepo=Twój system używa starego repozytorium Webmin YUM. Kliknij poniższy przycisk, aby przełączyć się na adres URL nowego repozytorium <tt>$1</tt>, aby użyć naszego najnowszego klucza podpisu i zapewnić dostęp do zaktualizowanych wersji Webmina.
 notify_aptrepo=Twój system używa starego repozytorium Webmin APT. Kliknij poniższy przycisk, aby przełączyć się na nowy <tt>stable</tt> adres URL repozytorium <tt>$1</tt>, aby użyć naszego najnowszego klucza podpisu i zapewnić dostęp do zaktualizowanych wersji Webmina.

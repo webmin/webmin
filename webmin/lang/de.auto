@@ -24,6 +24,7 @@ lang_dateformat_yyyy/mm/dd=jjjj/mm/tt (d. h. 16.09.2001)
 
 ssl_hsts=Erzwinge SSL mit HSTS-Header
 
+upgrade_repo=Neueste Version aus dem $1-Repository
 upgrade_setup=Ausführen des Skripts <tt>setup.sh</tt> zum Aktualisieren von Webmin ..
 upgrade_setuprpm=<tt>RPM</tt> ausführen, um Webmin zu aktualisieren ..
 upgrade_setupdeb=<tt>DPKG</tt> ausführen, um Webmin zu aktualisieren ..
@@ -44,9 +45,38 @@ session_passurl=Wenn aktiviert, können Benutzerkennwörter über eine POST-Anfr
 
 log_fixrepo=Das Webmin-Repository wurde korrigiert
 
+lock_mode=Dateien, die Webmin sperren soll
+lock_s=Sekunden
+lock_m=Protokoll
+lock_h=Std
+lock_pid=PID
+lock_cmd=Skript
+lock_file=Gesperrte Datei
+lock_age=Gehalten für
+lock_noneopen=Derzeit sind keine Dateien von Webmin gesperrt.
+lock_msg=Die unten aufgeführten Dateien sind derzeit durch einen Webmin-Prozess gesperrt.
+lock_kill=Töte ausgewählte Schlösser
+lock_term=Ausgewählte Sperren beenden
+lock_return=Liste der Schlösser
+
+kill_title=Schlösser entfernen
+kill_err=Sperren konnten nicht entfernt werden
+kill_enone=Nichts ausgewählt!
+kill_pid=Prozess $1 wird beendet ..
+kill_gone=.. Prozess existiert nicht mehr!
+kill_gone2=.. Sperre existiert nicht mehr!
+kill_dead=.. $1 getötet und Sperre $2 freigegeben
+kill_alive=.. hat ein Kill-Signal an $1 gesendet, aber es wurde nicht beendet!
+kill_failed=.. Kill ist wegen $1 fehlgeschlagen, Sperre $2 wurde aber trotzdem freigegeben
+kill_already=.. Sperre für $1 aufgehoben
+
 advanced_etempallowed=Verzeichnis für temporäre Dateien $1 ist ein Systemverzeichnis
+advanced_pass_desc=Passwort für Usermin-Programme verfügbar machen?
+advanced_pass_help=Funktioniert nicht, wenn die Sitzungsauthentifizierung aktiviert ist
 advanced_bufsize=Netzwerkpuffergröße in Bytes
+advanced_bufsize_binary=Netzwerkpuffergröße für Downloads in Bytes
 advanced_ebufsize=Die Netzwerkpuffergröße muss eine Zahl größer als Null sein
+advanced_ebufsize_binary=Die Netzwerkpuffergröße für Downloads muss eine Zahl größer als Null sein
 
 notify_yumrepo=Ihr System verwendet das alte Webmin YUM-Repository. Klicken Sie auf die Schaltfläche unten, um zur neuen Repository-URL <tt>$1</tt> zu wechseln, um unseren neuesten Signaturschlüssel zu verwenden und den Zugriff auf aktualisierte Webmin-Versionen sicherzustellen.
 notify_aptrepo=Ihr System verwendet das alte Webmin APT-Repository. Klicken Sie auf die Schaltfläche unten, um zur neuen <tt>stable</tt> Repository-URL <tt>$1</tt> zu wechseln, um unseren neuesten Signaturschlüssel zu verwenden und den Zugriff auf aktualisierte Webmin-Versionen sicherzustellen.

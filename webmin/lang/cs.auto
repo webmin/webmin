@@ -112,6 +112,7 @@ newcsr_ok2=Tento CSR musí být zaslán podpisující autoritě, která vrátí 
 startpage_webminup=Zobrazit aktualizace Webmin na stránce Systémové informace?
 startpage_moduleup=Zobrazit aktualizace modulu na stránce Systémové informace?
 
+upgrade_repo=Nejnovější verze z úložiště $1
 upgrade_setup=Spuštění skriptu <tt>setup.sh</tt> pro upgrade Webminu ..
 upgrade_setuprpm=Spuštěním <tt>RPM</tt> upgradujete Webmin ..
 upgrade_setupdeb=Spuštěním <tt>DPKG</tt> upgradujete Webmin ..
@@ -194,6 +195,31 @@ referers_none2=VAROVÁNÍ: Tím se váš systém otevře až do útoků XSS!
 
 third_title=Vyberte modul třetí strany
 
+lock_mode=Soubory pro Webmin k uzamčení
+lock_s=sekundy
+lock_m=minut
+lock_h=hodin
+lock_pid=PID
+lock_cmd=Skript
+lock_file=Uzamčený soubor
+lock_age=Drženo pro
+lock_noneopen=Webmin aktuálně nezamkne žádné soubory.
+lock_msg=Níže uvedené soubory jsou aktuálně uzamčeny procesem Webmin.
+lock_kill=Zabijte vybrané zámky
+lock_term=Ukončit vybrané zámky
+lock_return=seznam zámků
+
+kill_title=Odstranění zámků
+kill_err=Zámky se nepodařilo odstranit
+kill_enone=Nebyl vybrán žádný!
+kill_pid=Proces zabíjení $1 ..
+kill_gone=.. proces již neexistuje!
+kill_gone2=.. zámek již neexistuje!
+kill_dead=.. zabil $1 a uvolnil zámek $2
+kill_alive=.. odeslal signál zabití $1, ale neukončil!
+kill_failed=.. zabití se nezdařilo kvůli $1, ale přesto byl uvolněn zámek $2
+kill_already=.. uvolněn zámek na $1
+
 ipkey_ips2=Pro adresy IP a názvy hostitelů
 ipkey_eip2='$1' není platná IP adresa nebo název hostitele
 ipkey_eextracas=Nebyly zadány žádné další soubory certifikátů
@@ -209,6 +235,8 @@ advanced_precache1=Textové soubory v anglickém jazyce
 advanced_precache2=Soubory odpovídající vzorům prostředí $1
 advanced_eprecache=Chybějící seznam vzorů prostředí pro předběžnou vyrovnávací paměť
 advanced_etempallowed=Adresář dočasných souborů $1 je systémový adresář
+advanced_pass_desc=Zpřístupnit heslo pro programy Usermin?
+advanced_pass_help=Nefunguje, když je povoleno ověřování relace
 advanced_chattr=Povolit úpravu neměnných souborů?
 advanced_sclass=Třída IO pro naplánované úlohy
 advanced_sprio=IO priorita pro naplánované úlohy
@@ -225,7 +253,9 @@ advanced_headers=Extra záhlaví HTTP
 advanced_eheader=Záhlaví musí být formátována jako <tt>Záhlaví: Hodnota</tt>
 advanced_sortconfigs=Uložit konfigurační soubory seřazené podle jeho klíčů?
 advanced_bufsize=Velikost vyrovnávací paměti sítě v bajtech
+advanced_bufsize_binary=Velikost síťové vyrovnávací paměti pro stahování v bajtech
 advanced_ebufsize=Velikost vyrovnávací paměti sítě musí být číslo větší než nula
+advanced_ebufsize_binary=Velikost vyrovnávací paměti sítě pro stahování musí být číslo větší než nula
 
 savekey_echain=Chybějící nebo neplatný zřetězený certifikát formátu PEM
 savekey_done3=Dodaný zřetězený SSL certifikát byl uložen do souboru $1.

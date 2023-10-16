@@ -696,7 +696,6 @@ advanced_preload=Nahrát dopředu knihovnu funkcí Webminu?
 advanced_err=Chyba při ukládání rozšířených voleb
 advanced_etemp=Chybějící nebo neexistující adresář pro dočasné soubory
 advanced_etdir=Chybějící nebo neexistující adresář $1 pro dočasné soubory
-advanced_pass=Má být heslo k dispozici v programech Webminu?<br><font size=-1>(Nebude funkční v případě, že bude zapnuta autentikace relací)</font>
 advanced_tempmods=Adresáře pro dočasné pre-moduly
 advanced_tmod=Modul
 advanced_tdir=Adresář

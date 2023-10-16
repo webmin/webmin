@@ -193,6 +193,7 @@ startpage_webminup=¿Mostrar actualizaciones de Webmin en la página de informac
 startpage_moduleup=¿Mostrar actualizaciones de módulos en la página de información del sistema?
 
 upgrade_descdeb=Este formulario le permite actualizar toda su instalación de Webmin a una nueva versión actualizando su paquete Debian. Puede instalar desde un archivo.deb local, un archivo cargado o desde la última versión en <a href=http://www.webmin.com/>www.webmin.com</a>. Al igual que con una actualización manual, se mantendrán todos sus ajustes de configuración y módulos de terceros.
+upgrade_repo=Última versión del repositorio $1
 upgrade_edeb=No es un archivo de paquete Webmin Debian válido
 upgrade_setup=Ejecutando el script <tt>setup.sh</tt> para actualizar Webmin ..
 upgrade_setuprpm=Ejecutando <tt>RPM</tt> para actualizar Webmin ..
@@ -309,6 +310,31 @@ update_mtype=El módulo $1 no se puede actualizar ya que se instaló desde un pa
 
 third_title=Seleccionar módulo de terceros
 
+lock_mode=Archivos para que Webmin los bloquee
+lock_s=segundos
+lock_m=minutos
+lock_h=horas
+lock_pid=PID
+lock_cmd=Guion
+lock_file=archivo bloqueado
+lock_age=Retenido para
+lock_noneopen=Actualmente Webmin no ha bloqueado ningún archivo.
+lock_msg=Los archivos que se enumeran a continuación están actualmente bloqueados por un proceso de Webmin.
+lock_kill=Matar cerraduras seleccionadas
+lock_term=Terminar bloqueos seleccionados
+lock_return=lista de cerraduras
+
+kill_title=Quitar cerraduras
+kill_err=No se pudieron quitar las cerraduras
+kill_enone=¡Ninguna seleccionada!
+kill_pid=Proceso de eliminación $1 ..
+kill_gone=.. ¡el proceso ya no existe!
+kill_gone2=.. ¡el bloqueo ya no existe!
+kill_dead=.. mató a $1 y liberó el bloqueo $2
+kill_alive=.. ¡envió una señal de muerte a $1 pero no salió!
+kill_failed=.. la eliminación falló debido a $1, pero liberó el bloqueo $2 de todos modos
+kill_already=.. bloqueo liberado en $1
+
 ipkey_ips2=Para direcciones IP y nombres de host
 ipkey_eip2='$1' no es una dirección IP o nombre de host válido
 ipkey_eextracas=No se ingresaron archivos de certificado adicionales
@@ -333,7 +359,8 @@ advanced_precache2=Archivos que coinciden con patrones de shell $1
 advanced_eprecache=Falta la lista de patrones de shell para pre-cachear
 advanced_etdir=Directorio de archivos temporales faltantes o inexistentes para $1
 advanced_etempallowed=El directorio de archivos temporales $1 es un directorio del sistema
-advanced_pass=¿Hacer que la contraseña esté disponible para los programas de Webmin? <br><font size=-1> (No funciona cuando la autenticación de sesión está habilitada) </font>
+advanced_pass_desc=¿Hacer que la contraseña esté disponible para los programas Usermin?
+advanced_pass_help=No funciona cuando la autenticación de sesión está habilitada
 advanced_tempmods=Directorios temporales por módulo
 advanced_tmod=Módulo
 advanced_tdir=Directorio
@@ -360,7 +387,9 @@ advanced_headers=Encabezados HTTP adicionales
 advanced_eheader=Los encabezados deben estar formateados como <tt>Encabezado: Valor</tt>
 advanced_sortconfigs=¿Guardar archivos de configuración ordenados por sus claves?
 advanced_bufsize=Tamaño del búfer de red en bytes
+advanced_bufsize_binary=Tamaño del búfer de red para descargas en bytes
 advanced_ebufsize=El tamaño del búfer de red debe ser un número mayor que cero
+advanced_ebufsize_binary=El tamaño del búfer de red para descargas debe ser un número mayor que cero
 
 syslog_errorlog=Registro de errores de Webmin
 

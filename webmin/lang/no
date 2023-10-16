@@ -843,7 +843,6 @@ advanced_eprecache=Manglende liste med shell-mønstere for forhånds-lagring
 advanced_err=Kunne ikke lagre avanserte innstillinger
 advanced_etemp=Manglende eller ikke-eksisterende katalog for midlertidige filer
 advanced_etdir=Manglende eller ikke-eksisterende katalog for midlertidige filer for $1
-advanced_pass=Gjør passord tilgjengelig for Webmin programmer?<br><font size=-1>(Virker ikke dersom sesjons-autentisering er i bruk)</font>
 advanced_tempmods=Per-modul kataloger for midlertidige filer
 advanced_tmod=Modul
 advanced_tdir=Katalog

@@ -112,6 +112,7 @@ newcsr_ok2=Questo CSR deve essere inviato a un'autorità di firma, che restituir
 startpage_webminup=Mostra gli aggiornamenti di Webmin nella pagina Informazioni di sistema?
 startpage_moduleup=Mostra gli aggiornamenti del modulo nella pagina Informazioni di sistema?
 
+upgrade_repo=Ultima versione dal repository $1
 upgrade_setup=Esecuzione dello script <tt>setup.sh</tt> per aggiornare Webmin ..
 upgrade_setuprpm=Eseguire <tt>RPM</tt> per aggiornare Webmin ..
 upgrade_setupdeb=Eseguire <tt>DPKG</tt> per aggiornare Webmin ..
@@ -194,6 +195,31 @@ referers_none2=ATTENZIONE: questo apre il tuo sistema agli attacchi XSS!
 
 third_title=Seleziona il modulo di terze parti
 
+lock_mode=File da bloccare per Webmin
+lock_s=secondi
+lock_m=minuti
+lock_h=ore
+lock_pid=PID
+lock_cmd=Copione
+lock_file=File bloccato
+lock_age=Tenuto per
+lock_noneopen=Nessun file è attualmente bloccato da Webmin.
+lock_msg=I file elencati di seguito sono attualmente bloccati da un processo Webmin.
+lock_kill=Uccidi i lucchetti selezionati
+lock_term=Termina i blocchi selezionati
+lock_return=elenco delle serrature
+
+kill_title=Rimozione dei blocchi
+kill_err=Impossibile rimuovere i blocchi
+kill_enone=Nessuno selezionato!
+kill_pid=Uccisione del processo $1 ..
+kill_gone=..processo non esiste più!
+kill_gone2=..la serratura non esiste più!
+kill_dead=.. ucciso $1 e rilasciato il blocco $2
+kill_alive=.. ha inviato il segnale di kill a $1 ma non è uscito!
+kill_failed=.. kill fallita a causa di $1, ma ha comunque rilasciato il lock $2
+kill_already=.. blocco rilasciato su $1
+
 ipkey_ips2=Per indirizzi IP e nomi host
 ipkey_eip2='$1' non è un indirizzo IP o un nome host valido
 ipkey_eextracas=Nessun file di certificato aggiuntivo inserito
@@ -209,6 +235,8 @@ advanced_precache1=File di testo in lingua inglese
 advanced_precache2=File corrispondenti ai modelli di shell $1
 advanced_eprecache=Elenco mancante di modelli di shell da pre-cache
 advanced_etempallowed=La directory dei file temporanei $1 è una directory di sistema
+advanced_pass_desc=Rendere la password disponibile ai programmi Usermin?
+advanced_pass_help=Non funziona quando è abilitata l'autenticazione della sessione
 advanced_chattr=Consentire la modifica di file immutabili?
 advanced_sclass=Classe IO per lavori programmati
 advanced_sprio=Priorità di I/O per i lavori programmati
@@ -225,7 +253,9 @@ advanced_headers=Intestazioni HTTP extra
 advanced_eheader=Le intestazioni devono essere formattate come <tt>Intestazione: valore</tt>
 advanced_sortconfigs=Salvare i file di configurazione ordinati per le sue chiavi?
 advanced_bufsize=Dimensione del buffer di rete in byte
+advanced_bufsize_binary=Dimensioni del buffer di rete per i download in byte
 advanced_ebufsize=La dimensione del buffer di rete deve essere un numero maggiore di zero
+advanced_ebufsize_binary=La dimensione del buffer di rete per i download deve essere un numero maggiore di zero
 
 savekey_echain=Certificato concatenato in formato PEM mancante o non valido
 savekey_done3=Il certificato SSL concatenato fornito è stato salvato nel file $1.

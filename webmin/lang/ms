@@ -788,7 +788,6 @@ advanced_eprecache=Senarai padanan shell  untuk pre-cache hilang
 advanced_err=Gagal untuk menyimpan pilihan lanjutan
 advanced_etemp=Hilang atau tidak wujud direktori fail sementara
 advanced_etdir=Hilang atau tidak wujud direktori fail sementara untuk $1
-advanced_pass=Jadikan kata laluan yang ada untuk program Webmin? <br> <font Size=-1> (Tidak berfungsi apabila pengesahan sesi diaktifkan) </font>
 advanced_tempmods=Direktori sementara setiap modul
 advanced_tmod=Modul
 advanced_tdir=Direktori

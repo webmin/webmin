@@ -229,6 +229,7 @@ startpage_moduleup=Modül güncellemeleri Sistem Bilgisi sayfasında gösterilsi
 
 upgrade_descdeb=Bu form, Debian paketini yükselterek tüm Webmin kurulumunuzu yeni bir sürüme yükseltmenizi sağlar. Yerel bir.deb dosyasından, yüklenen bir dosyadan veya <a href=http://www.webmin.com/>www.webmin.com</a> adresindeki en son sürümden yükleme yapabilirsiniz. Manuel yükseltmede olduğu gibi, tüm yapılandırma ayarlarınız ve üçüncü taraf modüller korunacaktır.
 upgrade_descsun-pkg=Bu form, Webmin kurulumunuzun tamamını Sun tarafından sağlanan Solaris paketinden yeni bir sürüme yükseltmenizi sağlar. Yerel bir Solaris paket dosyasından veya yüklenen bir dosyadan yükleyebilirsiniz. En son paketleri <a href=http://www.sun.com/bigadmin/content/webmin/>http://www.sun.com/bigadmin/content/webmin/</a> adresinde bulabilirsiniz. Manuel yükseltmede olduğu gibi, tüm yapılandırma ayarlarınız ve üçüncü taraf modüller korunacaktır.
+upgrade_repo=$1 deposundaki en son sürüm
 upgrade_edeb=Geçerli bir Webmin Debian paket dosyası değil
 upgrade_setup=Webmin'i yükseltmek için <tt>setup.sh</tt> komut dosyası çalıştırılıyor ..
 upgrade_setuprpm=Webmin'i yükseltmek için <tt>RPM</tt> çalıştırılıyor ..
@@ -358,6 +359,31 @@ update_mtype=$1 modülü, bir $2 paketinden yüklendiği için güncellenemiyor
 
 third_title=Üçüncü Taraf Modülünü Seçin
 
+lock_mode=Webmin'in kilitleyeceği dosyalar
+lock_s=saniye
+lock_m=dakika
+lock_h=saat
+lock_pid=PID
+lock_cmd=Senaryo
+lock_file=Kilitli dosya
+lock_age=için tutuldu
+lock_noneopen=Şu anda hiçbir dosya Webmin tarafından kilitlenmemiştir.
+lock_msg=Aşağıda listelenen dosyalar şu anda bir Webmin işlemi tarafından kilitlenmiştir.
+lock_kill=Seçilen Kilitleri Öldür
+lock_term=Seçilen Kilitleri Sonlandır
+lock_return=kilit listesi
+
+kill_title=Kilitlerin Çıkarılması
+kill_err=Kilitler kaldırılamadı
+kill_enone=Hiçbiri seçilmedi!
+kill_pid=Öldürme işlemi $1 ..
+kill_gone=.. süreç artık mevcut değil!
+kill_gone2=.. kilit artık mevcut değil!
+kill_dead=.. $1'i öldürdü ve $2 kilidini serbest bıraktı
+kill_alive=.. $1'e öldürme sinyali gönderdi ama çıkış yapmadı!
+kill_failed=.. öldürme $1 nedeniyle başarısız oldu, ancak yine de $2 kilidi serbest bırakıldı
+kill_already=.. $1'in kilidi açıldı
+
 ipkey_title1=SSL Anahtarı Oluştur
 ipkey_title2=SSL Anahtarını Düzenle
 ipkey_header=IP'ye özgü SSL anahtarı ayrıntıları
@@ -402,7 +428,8 @@ advanced_err=Gelişmiş seçenekler kaydedilemedi
 advanced_etemp=Eksik veya var olmayan geçici dosyalar dizini
 advanced_etdir=$1 için eksik veya var olmayan geçici dosyalar dizini
 advanced_etempallowed=Geçici dosyalar dizini $1 bir sistem dizini
-advanced_pass=Webmin programları için şifre kullanılabilir mi? <br><font size=-1> (Oturum kimlik doğrulaması etkinleştirildiğinde çalışmaz) </font>
+advanced_pass_desc=Şifre Usermin programlarının kullanımına sunulsun mu?
+advanced_pass_help=Oturum kimlik doğrulaması etkinleştirildiğinde çalışmaz
 advanced_tempmods=Modül başına geçici dizinler
 advanced_tmod=modül
 advanced_tdir=rehber
@@ -429,7 +456,9 @@ advanced_headers=Ekstra HTTP başlıkları
 advanced_eheader=Üstbilgiler <tt>Üstbilgi: Değer</tt> gibi biçimlendirilmelidir
 advanced_sortconfigs=Yapılandırma dosyaları anahtarlarına göre sıralanmış olarak kaydedilsin mi?
 advanced_bufsize=Bayt cinsinden ağ arabellek boyutu
+advanced_bufsize_binary=Bayt cinsinden indirmeler için ağ arabellek boyutu
 advanced_ebufsize=Ağ arabellek boyutu sıfırdan büyük bir sayı olmalıdır
+advanced_ebufsize_binary=İndirmeler için ağ arabellek boyutu sıfırdan büyük bir sayı olmalıdır
 
 syslog_errorlog=Webmin hata günlüğü
 

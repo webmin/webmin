@@ -213,6 +213,7 @@ startpage_webminup=نمایش به روزرسانی های وبمین در صف�
 startpage_moduleup=نمایش به روز رسانی های ماژول در صفحه اطلاعات سیستم؟
 
 upgrade_descdeb=This form allows you to upgrade your entire Webmin installation to a new version by upgrading its Debian package. You can install from a local .deb file, an uploaded file or from the latest version at <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
+upgrade_repo=آخرین نسخه از مخزن $1 
 upgrade_edeb=یک فایل بسته معتبر Webmin Debian نیست
 upgrade_egzip=Failed to gunzip file : $1
 upgrade_setup=اجرای اسکریپت <tt>setup.sh</tt> برای ارتقای وبمین ..
@@ -333,6 +334,31 @@ update_mtype=Module $1 cannot be updated as it was installed from a $2 package
 
 third_title=ماژول شخص ثالث را انتخاب کنید
 
+lock_mode=فایل ها برای قفل وبمین
+lock_s=ثانیه
+lock_m=دقایق
+lock_h=ساعت ها
+lock_pid=PID
+lock_cmd=اسکریپت
+lock_file=فایل قفل شده
+lock_age=برگزار شد برای
+lock_noneopen=هیچ فایلی در حال حاضر توسط وبمین قفل نشده است.
+lock_msg=فایل های لیست شده در زیر در حال حاضر توسط یک فرآیند وبمین قفل شده اند.
+lock_kill=قفل های انتخاب شده را بکشید
+lock_term=قفل های انتخابی را خاتمه دهید
+lock_return=لیست قفل ها
+
+kill_title=برداشتن قفل ها
+kill_err=قفل ها برداشته نشد
+kill_enone=هیچ کدام انتخاب نشد!
+kill_pid=روند کشتن $1 ..
+kill_gone=.. فرآیند دیگر وجود ندارد!
+kill_gone2=.. قفل دیگر وجود ندارد!
+kill_dead=.. $1 را کشت و قفل $2 را آزاد کرد
+kill_alive=.. سیگنال کشتن را به $1 فرستاد اما خارج نشد!
+kill_failed=.. کشتن به دلیل $1 ناموفق بود، اما به هر حال قفل $2 را آزاد کرد
+kill_already=.. قفل را در $1 آزاد کرد
+
 ipkey_ips2=برای آدرس های IP و نام های میزبان
 ipkey_eip2='$1' is not a valid IP address or hostname
 ipkey_eextracas=هیچ پرونده گواهی اضافی وارد نشده است
@@ -372,7 +398,8 @@ advanced_err=گزینه های پیشرفته ذخیره نشد
 advanced_etemp=فهرست پرونده های موقت موجود یا غیر وجود دارد
 advanced_etdir=Missing or non-existant temporary files directory for $1
 advanced_etempallowed=دایرکتوری فایل های موقت $1 یک دایرکتوری سیستم است
-advanced_pass=Make password available to Webmin programs?<br><font size=-1>(Does not work when session authentication is enabled)</font>
+advanced_pass_desc=رمز عبور را در دسترس برنامه های یوزرمین قرار دهید؟
+advanced_pass_help=وقتی احراز هویت جلسه فعال باشد کار نمی کند
 advanced_tempmods=دایرکتوری های موقت هر ماژول
 advanced_tmod=مدول
 advanced_tdir=فهرست راهنما
@@ -399,7 +426,9 @@ advanced_headers=هدرهای اضافی HTTP
 advanced_eheader=Headers must be formatted like <tt>Header: Value</tt>
 advanced_sortconfigs=ذخیره فایل های پیکربندی مرتب شده بر اساس کلیدهای آن؟
 advanced_bufsize=اندازه بافر شبکه در بایت
+advanced_bufsize_binary=اندازه بافر شبکه برای دانلود بر حسب بایت
 advanced_ebufsize=اندازه بافر شبکه باید عددی بزرگتر از صفر باشد
+advanced_ebufsize_binary=اندازه بافر شبکه برای دانلودها باید عددی بزرگتر از صفر باشد
 
 syslog_errorlog=ورود به سیستم خطای وبمین
 

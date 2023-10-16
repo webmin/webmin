@@ -837,7 +837,6 @@ advanced_eprecache=HI falta la llista de patrons shell per pre-encauar
 advanced_err=No s'han pogut desar les opcions avançades
 advanced_etemp=Hi falta el directori de fitxers temporals o bé no existeix
 advanced_etdir=Hi falta el directori de fitxers temporals de $1 o bé no existeix
-advanced_pass=Posa la contrasenya a disposició dels programes de Webmin<br><font size=-1>(No funciona quan s'ha activat l'autenticació de sessió)</font>
 advanced_tempmods=Directoris temporals per mòdul
 advanced_tmod=Mòdul
 advanced_tdir=Directori

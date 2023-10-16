@@ -854,7 +854,6 @@ advanced_eprecache=事前キャッシュするシェルパターンのリスト�
 advanced_err=高度なオプション 設定の保存ができませんでした
 advanced_etemp=一時ファイル用のディレクトリが無いか間違っています
 advanced_etdir= $1 が利用する 一時ファイル用のディレクトリが無いか間違っています
-advanced_pass=Make password available to Webmin programs?<br><font size=-1>(Does not work when session authentication is enabled)</font>
 advanced_tempmods=モジュール毎に利用する一時ディレクトリ
 advanced_tmod=モジュール
 advanced_tdir=ディレクトリ

@@ -164,6 +164,7 @@ newkey_ecountry=国家/地区代码必须为两个字母
 startpage_gotonone=&lt;无&gt;
 startpage_gotomodule=登录后，始终进入模块
 
+upgrade_repo=$1 存储库中的最新版本
 upgrade_setup=运行<tt>setup.sh</tt>脚本升级 Webmin ..
 upgrade_setuprpm=运行 <tt>RPM</tt> 升级 Webmin ..
 upgrade_setupdeb=运行 <tt>DPKG</tt> 升级 Webmin ..
@@ -263,12 +264,36 @@ third_title=选择第三方模块
 
 lock_title=文件锁定
 lock_header=文件锁定设置
+lock_mode=Webmin 要锁定的文件
 lock_all=锁定所有文件
 lock_none=永不锁定文件
 lock_only=只锁定文件和目录 ..
 lock_except=锁定除..外的所有文件和目录。
 lock_err=保存文件锁定失败
 lock_edirs=没有输入文件或目录
+lock_s=秒
+lock_m=分钟
+lock_h=小时
+lock_pid=PID
+lock_cmd=脚本
+lock_file=锁定文件
+lock_age=举行时间
+lock_noneopen=当前没有文件被 Webmin 锁定。
+lock_msg=下面列出的文件当前已被 Webmin 进程锁定。
+lock_kill=杀死选定的锁
+lock_term=终止选定的锁
+lock_return=锁列表
+
+kill_title=拆锁
+kill_err=解锁失败
+kill_enone=未选择！
+kill_pid=终止进程 $1 ..
+kill_gone=..进程不再存在！
+kill_gone2=..锁不再存在！
+kill_dead=..杀死 $1 并释放锁 $2
+kill_alive=.. 已向 $1 发送终止信号，但它没有退出！
+kill_failed=.. 由于 $1，kill 失败，但无论如何都释放了锁 $2
+kill_already=..释放了 $1 上的锁定
 
 ipkey_eextracas=没有输入其他证书文件
 
@@ -292,6 +317,8 @@ advanced_days=天
 advanced_precache1=英文文本文件
 advanced_err=保存高级选项失败
 advanced_etempallowed=临时文件目录 $1 是系统目录
+advanced_pass_desc=使密码可供 Usermin 程序使用吗？
+advanced_pass_help=启用会话身份验证时不起作用
 advanced_tempmods=每个模块的临时目录
 advanced_tdir=目录
 advanced_stack=显示堆栈跟踪以获取错误消息？
@@ -303,7 +330,9 @@ advanced_redir0=协议，主机，端口和路径
 advanced_listdir=列出没有索引文件的目录？
 advanced_sortconfigs=保存按其键排序的配置文件？
 advanced_bufsize=网络缓冲区大小（以字节为单位）
+advanced_bufsize_binary=下载的网络缓冲区大小（以字节为单位）
 advanced_ebufsize=网络缓冲区大小必须为大于零的数字
+advanced_ebufsize_binary=下载的网络缓冲区大小必须是大于零的数字
 
 clear_title=清除下载缓存
 

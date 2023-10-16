@@ -72,6 +72,7 @@ ssl_staging1=Staging (alleen test)
 
 newkey_ecns=Geen servernamen ingevoerd
 
+upgrade_repo=Nieuwste versie uit $1 repository
 upgrade_setup=<tt>setup.sh</tt> script uitvoeren om Webmin te upgraden ..
 upgrade_setuprpm=<tt>RPM</tt> uitvoeren om Webmin te upgraden ..
 upgrade_setupdeb=<tt>DPKG</tt> uitvoeren om Webmin te upgraden ..
@@ -124,10 +125,37 @@ log_letsencryptcleanup=Verwijderd Laten we DNS-record coderen voor $1
 
 referers_none2=WAARSCHUWING: Dit stelt uw systeem open voor XSS-aanvallen!
 
+lock_mode=Bestanden die Webmin kan vergrendelen
+lock_s=seconden
+lock_m=minuten
+lock_h=uur
+lock_pid=PID
+lock_cmd=Script
+lock_file=Vergrendeld bestand
+lock_age=Werd aangezien voor
+lock_noneopen=Er zijn momenteel geen bestanden vergrendeld door Webmin.
+lock_msg=De onderstaande bestanden zijn momenteel vergrendeld door een Webmin-proces.
+lock_kill=Dood geselecteerde sloten
+lock_term=Beëindig geselecteerde sloten
+lock_return=lijst met sloten
+
+kill_title=Sloten verwijderen
+kill_err=Kan de sloten niet verwijderen
+kill_enone=Geen geselecteerd!
+kill_pid=Moordproces $1 ..
+kill_gone=.. proces bestaat niet meer!
+kill_gone2=.. slot bestaat niet meer!
+kill_dead=.. $1 gedood en vergrendeling $2 vrijgegeven
+kill_alive=.. heeft een kill-signaal naar $1 gestuurd, maar is niet afgesloten!
+kill_failed=.. Kill is mislukt vanwege $1, maar heeft vergrendeling $2 toch vrijgegeven
+kill_already=.. vergrendeling op $1 opgeheven
+
 ipkey_ips2=Voor IP-adressen en hostnamen
 ipkey_eip2='$1' is geen geldig IP-adres of hostnaam
 
 advanced_etempallowed=Tijdelijke bestanden directory $1 is een systeemdirectory
+advanced_pass_desc=Wachtwoord beschikbaar maken voor Usermin-programma's?
+advanced_pass_help=Werkt niet als sessieverificatie is ingeschakeld
 advanced_redir=URL-indeling voor omleidingen
 advanced_redir1=Alleen pad
 advanced_redir0=Protocol, host, poort en pad
@@ -136,7 +164,9 @@ advanced_headers=Extra HTTP-headers
 advanced_eheader=Kopteksten moeten worden opgemaakt zoals <tt>Koptekst: waarde</tt>
 advanced_sortconfigs=Configuratiebestanden opslaan gesorteerd op sleutels?
 advanced_bufsize=Netwerkbuffergrootte in bytes
+advanced_bufsize_binary=Netwerkbuffergrootte voor downloads in bytes
 advanced_ebufsize=De grootte van de netwerkbuffer moet een getal zijn dat groter is dan nul
+advanced_ebufsize_binary=De netwerkbuffergrootte voor downloads moet een getal groter dan nul zijn
 
 notif_reboot=Recente pakketupdates (zoals een nieuwe kernelversie) vereisen een herstart om volledig te worden toegepast.
 notif_rebootok=Herstart nu

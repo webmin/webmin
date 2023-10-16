@@ -29,6 +29,7 @@ lang_dateformat_yyyy/mm/dd=aaaa/mm/dd (és a dir, 16/09/2001)
 ssl_hsts=Apliqueu SSL amb la capçalera HSTS
 ssl_letsdoms=Noms d'amfitrió del certificat
 
+upgrade_repo=La darrera versió del repositori $1
 upgrade_setup=S'està executant l'script <tt>setup.sh</tt> per actualitzar Webmin ..
 upgrade_setuprpm=S'està executant <tt>RPM</tt> per actualitzar Webmin ..
 upgrade_setupdeb=S'està executant <tt>DPKG</tt> per actualitzar Webmin ..
@@ -52,12 +53,41 @@ session_passurl=Quan està activat, les contrasenyes d'usuari es poden canviar m
 
 log_fixrepo=S'ha solucionat el repositori Webmin
 
+lock_mode=Fitxers per bloquejar Webmin
+lock_s=segons
+lock_m=minuts
+lock_h=hores
+lock_pid=PID
+lock_cmd=Guió
+lock_file=Fitxer bloquejat
+lock_age=Retingut per
+lock_noneopen=Webmin no bloqueja actualment cap fitxer.
+lock_msg=Els fitxers que es mostren a continuació estan bloquejats actualment per un procés de Webmin.
+lock_kill=Mata els panys seleccionats
+lock_term=Tanca els bloquejos seleccionats
+lock_return=llista de panys
+
+kill_title=Eliminació de panys
+kill_err=No s'han pogut eliminar els bloquejos
+kill_enone=Cap seleccionat!
+kill_pid=Procés de matança $1 ..
+kill_gone=.. procés ja no existeix!
+kill_gone2=.. el pany ja no existeix!
+kill_dead=.. va matar $1 i va alliberar el bloqueig $2
+kill_alive=.. va enviar un senyal de matança a $1 però no ha sortit!
+kill_failed=.. kill ha fallat a causa de $1, però s'ha alliberat el bloqueig $2 de totes maneres
+kill_already=.. va alliberar el bloqueig a $1
+
 ipkey_eip2="$1" no és una adreça IP o un nom d'amfitrió vàlids
 
 advanced_etempallowed=El directori de fitxers temporals $1 és un directori del sistema
+advanced_pass_desc=Fer que la contrasenya estigui disponible per als programes Usermin?
+advanced_pass_help=No funciona quan l'autenticació de sessió està activada
 advanced_sortconfigs=Voleu desar els fitxers de configuració ordenats per les seves claus?
 advanced_bufsize=Mida de la memòria intermèdia de xarxa en bytes
+advanced_bufsize_binary=Mida de la memòria intermèdia de xarxa per a les baixades en bytes
 advanced_ebufsize=La mida del buffer de xarxa ha de ser un nombre superior a zero
+advanced_ebufsize_binary=La mida de la memòria intermèdia de xarxa per a les baixades ha de ser un nombre superior a zero
 
 notify_yumrepo=El vostre sistema utilitza l'antic dipòsit Webmin YUM. Feu clic al botó següent per canviar a la nova URL del repositori <tt>$1</tt> per utilitzar la nostra darrera clau de signatura i garantir l'accés a les versions actualitzades de Webmin.
 notify_aptrepo=El vostre sistema utilitza l'antic dipòsit Webmin APT. Feu clic al botó següent per canviar a l'URL del repositori <tt>stable</tt> <tt>$1</tt> per utilitzar la nostra darrera clau de signatura i garantir l'accés a les versions actualitzades de Webmin.

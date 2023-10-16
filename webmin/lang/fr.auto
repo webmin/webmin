@@ -24,6 +24,7 @@ lang_dateformat_yyyy/mm/dd=aaaa/mm/jj (c.-à-d. 2001/09/16)
 
 ssl_hsts=Appliquer SSL avec l'en-tête HSTS
 
+upgrade_repo=Dernière version du référentiel $1
 upgrade_setup=Exécution du script <tt>setup.sh</tt> pour mettre à niveau Webmin ..
 upgrade_setuprpm=Exécution de <tt>RPM</tt> pour mettre à jour Webmin ..
 upgrade_setupdeb=Exécution de <tt>DPKG</tt> pour mettre à jour Webmin ..
@@ -44,9 +45,38 @@ session_passurl=Lorsqu'il est activé, les mots de passe utilisateur peuvent êt
 
 log_fixrepo=Référentiel Webmin fixe
 
+lock_mode=Fichiers à verrouiller par Webmin
+lock_s=secondes
+lock_m=minutes
+lock_h=heures
+lock_pid=PID
+lock_cmd=Scénario
+lock_file=Fichier verrouillé
+lock_age=Détenu pendant
+lock_noneopen=Aucun fichier n'est actuellement verrouillé par Webmin.
+lock_msg=Les fichiers répertoriés ci-dessous sont actuellement verrouillés par un processus Webmin.
+lock_kill=Tuer les verrous sélectionnés
+lock_term=Mettre fin aux verrous sélectionnés
+lock_return=liste des serrures
+
+kill_title=Supprimer les verrous
+kill_err=Échec de la suppression des verrous
+kill_enone=Aucune sélection!
+kill_pid=Processus de mise à mort $1 ..
+kill_gone=..le processus n'existe plus !
+kill_gone2=.. le verrou n'existe plus !
+kill_dead=.. tué $1 et libéré le verrou $2
+kill_alive=.. a envoyé un signal kill à $1 mais il ne s'est pas terminé !
+kill_failed=.. kill a échoué à cause de $1, mais a quand même libéré le verrou $2
+kill_already=.. libéré le verrou sur $1
+
 advanced_etempallowed=Le répertoire des fichiers temporaires $1 est un répertoire système
+advanced_pass_desc=Rendre le mot de passe disponible pour les programmes Usermin ?
+advanced_pass_help=Ne fonctionne pas lorsque l'authentification de session est activée
 advanced_bufsize=Taille de la mémoire tampon du réseau en octets
+advanced_bufsize_binary=Taille du tampon réseau pour les téléchargements en octets
 advanced_ebufsize=La taille de la mémoire tampon du réseau doit être un nombre supérieur à zéro
+advanced_ebufsize_binary=La taille du tampon réseau pour les téléchargements doit être un nombre supérieur à zéro
 
 notify_yumrepo=Votre système utilise l'ancien référentiel Webmin YUM. Cliquez sur le bouton ci-dessous pour basculer vers la nouvelle URL de référentiel <tt>$1</tt> afin d'utiliser notre dernière clé de signature et garantir l'accès aux versions mises à jour de Webmin.
 notify_aptrepo=Votre système utilise l'ancien référentiel Webmin APT. Cliquez sur le bouton ci-dessous pour passer à la nouvelle URL de dépôt <tt>stable</tt> <tt>$1</tt> afin d'utiliser notre dernière clé de signature et garantir l'accès aux versions mises à jour de Webmin.

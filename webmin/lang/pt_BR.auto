@@ -105,6 +105,7 @@ newcsr_ok2=Esse CSR deve ser enviado a uma autoridade de assinatura, que retorna
 startpage_webminup=Mostrar atualizações do Webmin na página Informações do sistema?
 startpage_moduleup=Mostrar atualizações de módulo na página Informações do sistema?
 
+upgrade_repo=Versão mais recente do repositório $1
 upgrade_setup=Executando o script <tt>setup.sh</tt> para atualizar o Webmin ..
 upgrade_setuprpm=Executando <tt>RPM</tt> para atualizar o Webmin ..
 upgrade_setupdeb=Executando <tt>DPKG</tt> para atualizar o Webmin ..
@@ -162,6 +163,31 @@ log_letsencryptcleanup=Removido Vamos criptografar o registro DNS para $1
 
 referers_none2=AVISO: Isso abre seu sistema para ataques XSS!
 
+lock_mode=Arquivos para Webmin bloquear
+lock_s=segundos
+lock_m=minutos
+lock_h=horas
+lock_pid=PID
+lock_cmd=Roteiro
+lock_file=Arquivo bloqueado
+lock_age=Retido por
+lock_noneopen=Nenhum arquivo está atualmente bloqueado pelo Webmin.
+lock_msg=Os arquivos listados abaixo estão atualmente bloqueados por um processo Webmin.
+lock_kill=Mate os bloqueios selecionados
+lock_term=Encerrar bloqueios selecionados
+lock_return=lista de bloqueios
+
+kill_title=Removendo bloqueios
+kill_err=Falha ao remover bloqueios
+kill_enone=Nenhum selecionado!
+kill_pid=Eliminando processo $1 ..
+kill_gone=.. o processo não existe mais!
+kill_gone2=.. o bloqueio não existe mais!
+kill_dead=.. matou $1 e liberou o bloqueio $2 
+kill_alive=.. enviou sinal de eliminação para $1 mas não saiu!
+kill_failed=.. kill falhou devido a $1, mas liberou o bloqueio $2 mesmo assim
+kill_already=.. liberou o bloqueio em $1 
+
 ipkey_ips2=Para endereços IP e nomes de host
 ipkey_eip2='$1' não é um endereço IP ou nome de host válido
 ipkey_eextracas=Nenhum arquivo de certificado adicional foi inserido
@@ -177,6 +203,8 @@ advanced_precache1=Arquivos de texto em inglês
 advanced_precache2=Arquivos que correspondem aos padrões de shell $1
 advanced_eprecache=Lista ausente de padrões de shell para pré-cache
 advanced_etempallowed=A pasta de ficheiros temporários $1 éuma pasta do sistema
+advanced_pass_desc=Disponibilizar senha para programas Usermin?
+advanced_pass_help=Não funciona quando a autenticação de sessão está habilitada
 advanced_gzip=Gzip comprimir arquivos estáticos?
 advanced_gzipauto=Somente se o arquivo.gz pré-compactado existir
 advanced_gzip0=Nunca
@@ -190,7 +218,9 @@ advanced_headers=Cabeçalhos HTTP extras
 advanced_eheader=Cabeçalhos devem ser formatados como <tt>Cabeçalho: Valor</tt>
 advanced_sortconfigs=Salvar arquivos de configuração classificados por suas chaves?
 advanced_bufsize=Tamanho do buffer de rede em bytes
+advanced_bufsize_binary=Tamanho do buffer de rede para downloads em bytes
 advanced_ebufsize=O tamanho do buffer de rede deve ser um número maior que zero
+advanced_ebufsize_binary=O tamanho do buffer de rede para downloads deve ser um número maior que zero
 
 savekey_echain=Certificado encadeado em formato PEM inválido ou ausente
 savekey_done3=O certificado SSL encadeado fornecido foi salvo no arquivo $1.

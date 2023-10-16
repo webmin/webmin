@@ -771,7 +771,6 @@ advanced_eprecache=Ontbrekende lijst met shell patronen voor het pre-cache
 advanced_err=Fout bij het opslaan van geavanceerde opties
 advanced_etemp=Ontbrekende of niet bestaande directory voor tijdelijke bestanden
 advanced_etdir=Ontbrekende of niet bestaande tijdelijke files directory voor $1
-advanced_pass=Maak het wachtwoord beschikbaar voor Webmin programma's?<br><font size=-1>(Werkt niet wanneer sessie authenticatie is ingeschakeld)</font>
 advanced_tempmods=Per-module tijdelijke directory's
 advanced_tmod=Module
 advanced_tdir=Directory

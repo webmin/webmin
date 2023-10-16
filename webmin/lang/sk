@@ -644,7 +644,6 @@ advanced_preload=Obnoviť Webmin funkcie knižnice?
 advanced_err=Nebolo možné uložiť rozšírené nastavenia
 advanced_etemp=Chýba alebo neexistuje dočasný súborový adresár
 advanced_etdir=Chýba alebo neexistuje dočasný súborový adresár pre $1
-advanced_pass=Vytvoriť heslo k Webmin programom? <br><font size=-1> (Nefunguje ak je autentifikácia zapnutá) </font>
 advanced_tmod=Modul
 advanced_tdir=Adresár
 advanced_stack=Zobraziť zásobník s chybovými správami? 

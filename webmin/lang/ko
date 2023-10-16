@@ -698,7 +698,6 @@ advanced_preload=Webmin 함수 라이브러리를 미리 로드 하겠습니까?
 advanced_err=고급 옵션 저장 실패
 advanced_etemp=임시 파일 디렉토리가 없거나 존재하지 않습니다.
 advanced_etdir=$1에 대한 임시 파일 디렉토리가 없거나 존재하지 않습니다.
-advanced_pass=Webmin 프로그램에 암호를 만들겠습니까?<br><font size=-1>(세션 인증이 활성화 되어 있을 경우에는 작동 하지 않음)</font>
 advanced_tempmods=모듈별 임시 디렉토리
 advanced_tmod=모듈
 advanced_tdir=디렉토리

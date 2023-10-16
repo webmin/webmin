@@ -149,6 +149,7 @@ startpage_moduleup=Zobraziť aktualizácie modulov na stránke Systémové infor
 
 upgrade_descdeb=Tento formulár vám umožňuje inovovať celú inštaláciu Webminu na novú verziu inovovaním jeho balíka Debian. Môžete nainštalovať z miestneho súboru.deb, nahraného súboru alebo z najnovšej verzie na stránke <a href=http://www.webmin.com/>www.webmin.com</a>. Rovnako ako pri manuálnej inovácii sa zachovajú všetky vaše konfiguračné nastavenia a moduly tretích strán.
 upgrade_descsun-pkg=Tento formulár vám umožňuje inovovať celú inštaláciu Webminu na novú verziu z balíka Solaris dodávaného spoločnosťou Sun. Môžete nainštalovať z lokálneho súboru balíka Solaris alebo z nahraného súboru. Najnovšie balíky nájdete na adrese <a href=http://www.sun.com/bigadmin/content/webmin/>http://www.sun.com/bigadmin/content/webmin/</a>. Rovnako ako pri manuálnej inovácii sa zachovajú všetky vaše konfiguračné nastavenia a moduly tretích strán.
+upgrade_repo=Najnovšia verzia z úložiska $1
 upgrade_setup=Spustenie skriptu <tt>setup.sh</tt> na aktualizáciu Webminu ..
 upgrade_setuprpm=Spustenie <tt>RPM</tt> na inováciu Webmin ..
 upgrade_setupdeb=Spustenie <tt>DPKG</tt> na inováciu Webmin ..
@@ -246,6 +247,31 @@ update_mtype=Modul $1 nie je možné aktualizovať, pretože bol nainštalovaný
 
 third_title=Vyberte modul tretej strany
 
+lock_mode=Súbory, ktoré má Webmin uzamknúť
+lock_s=sekúnd
+lock_m=minút
+lock_h=hodiny
+lock_pid=PID
+lock_cmd=Skript
+lock_file=Uzamknutý súbor
+lock_age=Zadržané pre
+lock_noneopen=Webmin momentálne nezamkne žiadne súbory.
+lock_msg=Súbory uvedené nižšie sú momentálne uzamknuté procesom Webmin.
+lock_kill=Kill Selected Locks
+lock_term=Ukončiť vybrané zámky
+lock_return=zoznam zámkov
+
+kill_title=Odstránenie zámkov
+kill_err=Zámky sa nepodarilo odstrániť
+kill_enone=Žiadne vybraté!
+kill_pid=Proces zabíjania $1 ..
+kill_gone=.. proces už neexistuje!
+kill_gone2=.. zámok už neexistuje!
+kill_dead=.. zabil $1 a uvoľnil zámok $2
+kill_alive=.. odoslal zabíjací signál $1, ale neukončil!
+kill_failed=.. zabíjanie zlyhalo kvôli $1, ale aj tak sa uvoľnil zámok $2
+kill_already=.. uvoľnený zámok na $1
+
 ipkey_ips2=Pre adresy IP a názvy hostiteľov
 ipkey_eip2=$1 nie je platná adresa IP alebo názov hostiteľa
 ipkey_eextracas=Neboli zadané žiadne ďalšie súbory certifikátov
@@ -265,6 +291,8 @@ advanced_precache1=Textové súbory v anglickom jazyku
 advanced_precache2=Súbory zodpovedajúce vzorom shellu $1
 advanced_eprecache=Chýba zoznam vzorov shellu na predbežné vyrovnávanie
 advanced_etempallowed=Adresár dočasných súborov $1 je systémový adresár
+advanced_pass_desc=Sprístupniť heslo pre programy Usermin?
+advanced_pass_help=Nefunguje, keď je povolená autentifikácia relácie
 advanced_tempmods=Dočasné adresáre pre jednotlivé moduly
 advanced_umask=Umask (zrušené bity povolení) pre vytvorené súbory
 advanced_gzip=Komprimovať statické súbory gzip?
@@ -280,7 +308,9 @@ advanced_headers=Extra hlavičky HTTP
 advanced_eheader=Hlavičky musia byť formátované ako <tt>Hlavička: Hodnota</tt>
 advanced_sortconfigs=Uložiť konfiguračné súbory zoradené podľa kľúčov?
 advanced_bufsize=Veľkosť vyrovnávacej pamäte siete v bajtoch
+advanced_bufsize_binary=Veľkosť vyrovnávacej pamäte siete pre sťahovanie v bajtoch
 advanced_ebufsize=Veľkosť vyrovnávacej pamäte siete musí byť číslo väčšie ako nula
+advanced_ebufsize_binary=Veľkosť vyrovnávacej pamäte siete pre sťahovanie musí byť číslo väčšie ako nula
 
 syslog_errorlog=Denník chýb Webmin
 

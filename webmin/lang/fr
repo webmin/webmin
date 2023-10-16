@@ -843,7 +843,6 @@ advanced_eprecache=Liste manquante des modèles de shell à pré-mettre en cache
 advanced_err=Échec de l'enregistrement des options avancées
 advanced_etemp=Répertoire des fichiers temporaires manquant ou inexistant
 advanced_etdir=Répertoire des fichiers temporaires manquant ou inexistant pour $1
-advanced_pass=Rendre le mot de passe disponible pour les programmes Webmin?<br><font size=-1>(ne fonctionne pas lorsque l'authentification de session est activée)</font>
 advanced_tempmods=Per-module répertoires temporaires
 advanced_tmod=Module
 advanced_tdir=Répertoire

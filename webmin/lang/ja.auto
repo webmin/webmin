@@ -17,6 +17,7 @@ lang_dateformat_yyyy/mm/dd=yyyy/mm/dd (例: 2001/09/16)
 
 ssl_hsts=HSTS ヘッダーで SSL を強制する
 
+upgrade_repo=$1 リポジトリからの最新バージョン
 upgrade_setup=<tt>setup.sh</tt>スクリプトを実行して Webmin をアップグレードしています ..
 upgrade_setuprpm=<tt>RPM</tt> を実行して Webmin をアップグレードしています ..
 upgrade_setupdeb=<tt>DPKG</tt> を実行して Webmin をアップグレードしています ..
@@ -33,7 +34,36 @@ session_eyescrypt=Perl $1 モジュールがインストールされていない
 
 log_fixrepo=Webmin リポジトリを修正
 
+lock_mode=Webmin がロックするファイル
+lock_s=秒
+lock_m=分
+lock_h=時間
+lock_pid=PID
+lock_cmd=脚本
+lock_file=ロックされたファイル
+lock_age=開催期間
+lock_noneopen=現在、Webmin によってロックされているファイルはありません。
+lock_msg=以下にリストされているファイルは現在、Webmin プロセスによってロックされています。
+lock_kill=選択したロックを強制終了する
+lock_term=選択したロックを終了する
+lock_return=ロックのリスト
+
+kill_title=ロックの削除
+kill_err=ロックの解除に失敗しました
+kill_enone=何も選択されていません！
+kill_pid=プロセス $1 を強制終了します。
+kill_gone=..プロセスはもう存在しません。
+kill_gone2=.. ロックはもう存在しません。
+kill_dead=.. $1 を強制終了し、ロック $2 を解放しました
+kill_alive=.. kill シグナルを $1 に送信しましたが、終了しませんでした。
+kill_failed=.. $1 が原因で kill に失敗しましたが、とにかくロック $2 を解放しました
+kill_already=.. $1 のロックを解放しました
+
 advanced_etempallowed=一時ファイルディレクトリ $1はシステムディレクトリです
+advanced_pass_desc=Usermin プログラムでパスワードを使用できるようにしますか?
+advanced_pass_help=セッション認証が有効になっている場合は機能しません
+advanced_bufsize_binary=ダウンロードのネットワーク バッファ サイズ (バイト単位)
+advanced_ebufsize_binary=ダウンロード用のネットワーク バッファ サイズは 0 より大きい数値である必要があります
 
 notify_yumrepo=お使いのシステムは古い Webmin YUM リポジトリを使用しています。最新の署名キーを使用し、更新された Webmin バージョンに確実にアクセスできるように、下のボタンをクリックして新しいリポジトリ URL <tt>$1</tt> に切り替えます。
 notify_aptrepo=お使いのシステムは古い Webmin APT リポジトリを使用しています。最新の署名キーを使用し、更新された Webmin バージョンに確実にアクセスできるように、下のボタンをクリックして新しい<tt>stable</tt>リポジトリ URL <tt>$1</tt>に切り替えます。

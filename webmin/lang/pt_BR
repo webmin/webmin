@@ -724,7 +724,6 @@ advanced_preload=Pré-carregar a biblioteca de funcionalidades do Webmin?
 advanced_err=Falhou ao salvar opções avançadas
 advanced_etemp=Diretório de arquivos temporários faltando ou não existente
 advanced_etdir=Diretório de arquivos temporários para $1 faltando ou não existente
-advanced_pass=Deixar a senha disponível para os programas do Webmin?<br><font size=-1>(Não funciona quando a autenticação da sessão estiver habilitada)</font>
 advanced_tempmods=Diretórios temporários por módulos
 advanced_tmod=Modulo
 advanced_tdir=Diretório

@@ -621,7 +621,6 @@ advanced_precache2=与 Shell 匹配的文件 $1
 advanced_eprecache=未设定要预缓存的 Shell 列表
 advanced_etemp=临时文件目录未设定或不存在
 advanced_etdir=$1 的临时文件目录未设定或不存在
-advanced_pass=密码可用于 Webmin 程序？<br><font size=-1>（启用会话身份验证后无效）</font>
 advanced_tmod=模块
 advanced_showstderr=在浏览器中显示 Perl 错误？
 advanced_umask=创建文件的 Umask（未设置权限位）
