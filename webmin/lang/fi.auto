@@ -857,6 +857,7 @@ kill_title=Lukkojen poistaminen
 kill_err=Lukkojen poistaminen epäonnistui
 kill_enone=Mitään ei ole valittu!
 kill_pid=Tappoprosessi $1 ..
+term_pid=Lopetetaan prosessi $1 ..
 kill_gone=.. prosessia ei ole enää olemassa!
 kill_gone2=.. lukkoa ei ole enää olemassa!
 kill_dead=.. tappoi $1 ja vapautti lukon $2

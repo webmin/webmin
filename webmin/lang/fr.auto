@@ -63,6 +63,7 @@ kill_title=Supprimer les verrous
 kill_err=Échec de la suppression des verrous
 kill_enone=Aucune sélection!
 kill_pid=Processus de mise à mort $1 ..
+term_pid=Terminaison du processus $1 ..
 kill_gone=..le processus n'existe plus !
 kill_gone2=.. le verrou n'existe plus !
 kill_dead=.. tué $1 et libéré le verrou $2

@@ -181,6 +181,7 @@ kill_title=Removendo bloqueios
 kill_err=Falha ao remover bloqueios
 kill_enone=Nenhum selecionado!
 kill_pid=Eliminando processo $1 ..
+term_pid=Encerrando processo $1 ..
 kill_gone=.. o processo não existe mais!
 kill_gone2=.. o bloqueio não existe mais!
 kill_dead=.. matou $1 e liberou o bloqueio $2 

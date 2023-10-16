@@ -763,6 +763,7 @@ kill_title=Zárak eltávolítása
 kill_err=Nem sikerült eltávolítani a zárakat
 kill_enone=Egy sincs kiválasztva!
 kill_pid=Leölési folyamat $1 ..
+term_pid=Folyamat befejezése: $1 ..
 kill_gone=.. folyamat már nem létezik!
 kill_gone2=.. zár már nem létezik!
 kill_dead=.. megölte $1 és feloldotta a zárolást $2

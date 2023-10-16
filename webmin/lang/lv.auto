@@ -857,6 +857,7 @@ kill_title=Slēdzeņu noņemšana
 kill_err=Neizdevās noņemt slēdzenes
 kill_enone=Nav atlasīts neviens!
 kill_pid=Nogalināšanas process $1 ..
+term_pid=Tiek pārtraukts process $1 ..
 kill_gone=.. process vairs nepastāv!
 kill_gone2=.. slēdzene vairs nepastāv!
 kill_dead=.. nogalināja $1 un atbrīvoja slēdzeni $2

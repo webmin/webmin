@@ -107,6 +107,7 @@ kill_title=Usuwanie zamków
 kill_err=Nie udało się usunąć blokad
 kill_enone=Nie wybrano żadnego!
 kill_pid=Proces zabijania $1 ..
+term_pid=Zakończenie procesu $1 ..
 kill_gone=.. proces już nie istnieje!
 kill_gone2=.. zamek już nie istnieje!
 kill_dead=.. zabił $1 i zwolnił blokadę $2

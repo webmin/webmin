@@ -124,6 +124,7 @@ kill_title=Menanggalkan Kunci
 kill_err=Gagal mengalih keluar kunci
 kill_enone=Tiada yang dipilih!
 kill_pid=Proses membunuh $1 ..
+term_pid=Menamatkan proses $1 ..
 kill_gone=.. proses tidak lagi wujud!
 kill_gone2=.. kunci tidak wujud lagi!
 kill_dead=.. membunuh $1 dan melepaskan kunci $2 

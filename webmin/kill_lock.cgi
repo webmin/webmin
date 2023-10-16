@@ -15,7 +15,7 @@ my $sig = $in{'kill'} ? 'KILL' : 'TERM';
 my %killed;
 foreach my $pn (@d) {
 	my ($pid, $n) = split(/\-/, $pn);
-	print &text('kill_pid', $pid),"<br>\n";
+	print &text($in{'kill'} ? 'kill_pid' : 'term_pid', $pid),"<br>\n";
 	my ($p) = grep { $_->{'pid'} == $pid } @locks;
 	if (!$p) {
 		print $text{'kill_gone'},"<p>\n";

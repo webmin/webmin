@@ -857,6 +857,7 @@ kill_title=Sarrailak kentzea
 kill_err=Ezin izan dira kendu blokeoak
 kill_enone=Ez dago bat ere hautatua!
 kill_pid=Hiltzeko prozesua $1 ..
+term_pid=$1 prozesua amaitzen ..
 kill_gone=.. prozesua jada ez da existitzen!
 kill_gone2=.. blokeoa jada ez da existitzen!
 kill_dead=.. $1 hil eta $2 blokeoa askatu zuen

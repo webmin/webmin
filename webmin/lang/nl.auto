@@ -143,6 +143,7 @@ kill_title=Sloten verwijderen
 kill_err=Kan de sloten niet verwijderen
 kill_enone=Geen geselecteerd!
 kill_pid=Moordproces $1 ..
+term_pid=Proces $1 beëindigen ..
 kill_gone=.. proces bestaat niet meer!
 kill_gone2=.. slot bestaat niet meer!
 kill_dead=.. $1 gedood en vergrendeling $2 vrijgegeven

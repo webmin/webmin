@@ -71,6 +71,7 @@ kill_title=Eliminació de panys
 kill_err=No s'han pogut eliminar els bloquejos
 kill_enone=Cap seleccionat!
 kill_pid=Procés de matança $1 ..
+term_pid=S'està acabant el procés $1 ..
 kill_gone=.. procés ja no existeix!
 kill_gone2=.. el pany ja no existeix!
 kill_dead=.. va matar $1 i va alliberar el bloqueig $2

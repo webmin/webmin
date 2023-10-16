@@ -857,6 +857,7 @@ kill_title=Tneħħija Serraturi
 kill_err=Naqas milli jitneħħew serraturi
 kill_enone=Xejn magħżul!
 kill_pid=Proċess tal-qtil $1 ..
+term_pid=Jittemm il-proċess $1 ..
 kill_gone=.. proċess m'għadux jeżisti!
 kill_gone2=.. lock m'għadux jeżisti!
 kill_dead=.. qatel $1 u ħeles il-lock $2

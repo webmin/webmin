@@ -63,6 +63,7 @@ kill_title=Fjerning av låser
 kill_err=Kunne ikke fjerne låser
 kill_enone=Ingen valgt!
 kill_pid=Avlivingsprosess $1 ..
+term_pid=Avslutter prosess $1 ..
 kill_gone=.. prosessen eksisterer ikke lenger!
 kill_gone2=.. lås eksisterer ikke lenger!
 kill_dead=.. drepte $1 og frigjorde låsen $2

@@ -857,6 +857,7 @@ kill_title=Xóa ổ khóa
 kill_err=Không thể xóa ổ khóa
 kill_enone=Không có lựa chọn nào!
 kill_pid=Quá trình hủy $1 ..
+term_pid=Chấm dứt quá trình $1 ..
 kill_gone=.. quá trình không còn tồn tại!
 kill_gone2=.. khóa không còn tồn tại!
 kill_dead=.. đã giết $1 và giải phóng khóa $2

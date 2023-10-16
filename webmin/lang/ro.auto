@@ -857,6 +857,7 @@ kill_title=Înlăturarea încuietorilor
 kill_err=Încuietorile nu au putut fi eliminate
 kill_enone=Nimic selectat!
 kill_pid=Procesul de ucidere $1 ..
+term_pid=Încheierea procesului $1 ..
 kill_gone=.. proces nu mai exista!
 kill_gone2=.. lacătul nu mai există!
 kill_dead=.. a ucis $1 și a eliberat blocarea $2

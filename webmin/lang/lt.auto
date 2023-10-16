@@ -857,6 +857,7 @@ kill_title=Užraktų pašalinimas
 kill_err=Nepavyko pašalinti spynų
 kill_enone=Niekas nepasirinktas!
 kill_pid=Žudymo procesas $1 ..
+term_pid=Baigiamas procesas $1 ..
 kill_gone=.. procesas nebeegzistuoja!
 kill_gone2=.. užrakto nebėra!
 kill_dead=.. nužudė $1 ir atleido užraktą $2

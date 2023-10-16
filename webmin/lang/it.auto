@@ -213,6 +213,7 @@ kill_title=Rimozione dei blocchi
 kill_err=Impossibile rimuovere i blocchi
 kill_enone=Nessuno selezionato!
 kill_pid=Uccisione del processo $1 ..
+term_pid=Terminazione del processo $1 ..
 kill_gone=..processo non esiste più!
 kill_gone2=..la serratura non esiste più!
 kill_dead=.. ucciso $1 e rilasciato il blocco $2

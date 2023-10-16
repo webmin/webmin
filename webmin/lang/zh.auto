@@ -288,6 +288,7 @@ kill_title=拆锁
 kill_err=解锁失败
 kill_enone=未选择！
 kill_pid=终止进程 $1 ..
+term_pid=正在终止进程 $1 ..
 kill_gone=..进程不再存在！
 kill_gone2=..锁不再存在！
 kill_dead=..杀死 $1 并释放锁 $2

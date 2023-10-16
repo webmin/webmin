@@ -213,6 +213,7 @@ kill_title=Odstranění zámků
 kill_err=Zámky se nepodařilo odstranit
 kill_enone=Nebyl vybrán žádný!
 kill_pid=Proces zabíjení $1 ..
+term_pid=Ukončování procesu $1 ..
 kill_gone=.. proces již neexistuje!
 kill_gone2=.. zámek již neexistuje!
 kill_dead=.. zabil $1 a uvolnil zámek $2

@@ -857,6 +857,7 @@ kill_title=Die verwydering van slotte
 kill_err=Kon nie slotte verwyder nie
 kill_enone=Geen gekies nie!
 kill_pid=Doodmaakproses $1 ..
+term_pid=Beëindig tans proses $1 ..
 kill_gone=.. proses bestaan nie meer nie!
 kill_gone2=.. slot bestaan nie meer nie!
 kill_dead=.. het $1 doodgemaak en slot $2 vrygestel

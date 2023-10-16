@@ -377,6 +377,7 @@ kill_title=Kilitlerin Çıkarılması
 kill_err=Kilitler kaldırılamadı
 kill_enone=Hiçbiri seçilmedi!
 kill_pid=Öldürme işlemi $1 ..
+term_pid=$1 işlemi sonlandırılıyor ..
 kill_gone=.. süreç artık mevcut değil!
 kill_gone2=.. kilit artık mevcut değil!
 kill_dead=.. $1'i öldürdü ve $2 kilidini serbest bıraktı

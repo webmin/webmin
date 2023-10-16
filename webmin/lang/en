@@ -857,6 +857,7 @@ kill_title=Removing Locks
 kill_err=Failed to remove locks
 kill_enone=None selected!
 kill_pid=Killing process $1 ..
+term_pid=Terminating process $1 ..
 kill_gone=.. process no longer exists!
 kill_gone2=.. lock no longer exists!
 kill_dead=.. killed $1 and released lock $2

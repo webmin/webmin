@@ -63,6 +63,7 @@ kill_title=Schlösser entfernen
 kill_err=Sperren konnten nicht entfernt werden
 kill_enone=Nichts ausgewählt!
 kill_pid=Prozess $1 wird beendet ..
+term_pid=Prozess $1 wird beendet ..
 kill_gone=.. Prozess existiert nicht mehr!
 kill_gone2=.. Sperre existiert nicht mehr!
 kill_dead=.. $1 getötet und Sperre $2 freigegeben

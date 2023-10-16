@@ -857,6 +857,7 @@ kill_title=Odstranjevanje ključavnic
 kill_err=Odstranjevanje ključavnic ni uspelo
 kill_enone=Noben izbran!
 kill_pid=Postopek ubijanja $1 ..
+term_pid=Prekinitev procesa $1 ..
 kill_gone=.. proces ne obstaja več!
 kill_gone2=.. ključavnica ne obstaja več!
 kill_dead=.. ubil $1 in sprostil zaklep $2

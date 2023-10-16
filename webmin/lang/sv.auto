@@ -615,6 +615,7 @@ kill_title=Ta bort lås
 kill_err=Det gick inte att ta bort lås
 kill_enone=Ingen vald!
 kill_pid=Avlivningsprocessen $1 ..
+term_pid=Avslutar processen $1 ..
 kill_gone=.. processen finns inte längre!
 kill_gone2=.. lås finns inte längre!
 kill_dead=.. dödade $1 och släppte låset $2

@@ -411,6 +411,7 @@ kill_title=拆鎖
 kill_err=解鎖失敗
 kill_enone=未選擇！
 kill_pid=終止進程 $1 ..
+term_pid=正在終止進程 $1 ..
 kill_gone=..進程不再存在！
 kill_gone2=..鎖不再存在！
 kill_dead=..殺死 $1 並釋放鎖 $2

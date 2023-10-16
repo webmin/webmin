@@ -857,6 +857,7 @@ kill_title=Uklanjanje brava
 kill_err=Uklanjanje brava nije uspjelo
 kill_enone=Ništa odabrano!
 kill_pid=Proces ubijanja $1 ..
+term_pid=Završetak procesa $1 ..
 kill_gone=.. proces više ne postoji!
 kill_gone2=.. brava više ne postoji!
 kill_dead=.. ubio $1 i oslobodio zaključavanje $2

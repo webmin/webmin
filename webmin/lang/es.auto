@@ -328,6 +328,7 @@ kill_title=Quitar cerraduras
 kill_err=No se pudieron quitar las cerraduras
 kill_enone=¡Ninguna seleccionada!
 kill_pid=Proceso de eliminación $1 ..
+term_pid=Terminando el proceso $1 ..
 kill_gone=.. ¡el proceso ya no existe!
 kill_gone2=.. ¡el bloqueo ya no existe!
 kill_dead=.. mató a $1 y liberó el bloqueo $2
