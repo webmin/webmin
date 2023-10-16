@@ -24,6 +24,8 @@ print &ui_form_end([ [ "save", $text{'save'} ] ]);
 print &ui_table_hr();
 
 my @locks = &list_active_locks();
+my @tds;
+push(@tds, "width=5");
 if (@locks) {
 	my $now = time();
 	print "<b>$text{'lock_msg'}</b><br>\n";
@@ -44,15 +46,15 @@ if (@locks) {
 				$age = int($age/60/60)." ".$text{'lock_h'};
 				}
 			my $cmd = $p->{'proc'}->{'args'};
-			print &ui_columns_row([
-				&ui_checkbox("d", $p->{'pid'}.'-'.$l->{'num'}),
-				&foreign_available('proc') ?
-					&ui_link("@{[&get_webprefix()]}/proc/edit_proc.cgi?$p->{'pid'}", $p->{'pid'}) :
-					$p->{'pid'},
-				"<tt>".&html_escape($cmd)."</tt>",
-				"<tt>".&html_escape($l->{'lock'})."</tt>",
-				$age,
-				]);
+			print &ui_checked_columns_row(
+				[
+					&foreign_available('proc') ?
+						&ui_link("@{[&get_webprefix()]}/proc/edit_proc.cgi?$p->{'pid'}", $p->{'pid'}) :
+						$p->{'pid'},
+					"<tt>".&html_escape($cmd)."</tt>",
+					"<tt>".&html_escape($l->{'lock'})."</tt>",
+					$age
+				], \@tds, "d", $p->{'pid'}.'-'.$l->{'num'});
 			}
 		}
 	print &ui_columns_end();
