@@ -1,10 +1,13 @@
 ## Changelog
 
-#### 2.104 (October 12, 2023)
-* Add support for numbered and bulleted lists in mail HTML editor
-* Fix Webmin version display [#2023](https://github.com/webmin/webmin/issues/2023)
+#### 2.104 (October 16, 2023)
+* Add support for numbered and bulleted lists in email HTML editor
+* Add ability to display active file locks in `Webmin Configuration ⇾ File Locking` page
 * Fix hostname detection on `systemd` systems to avoid excessive logging  [#2020](https://github.com/webmin/webmin/issues/2020)
+* Fix Webmin version display [#2023](https://github.com/webmin/webmin/issues/2023)
 * Fix to check if UI library is loaded before using it [#2021](https://github.com/webmin/webmin/issues/2021)
+* Fix the absent init script for legacy systems after the initial installation
+* Update the Authentic theme to the latest version with various fixes and improvements
 
 #### 2.103 (October 08, 2023)
 * Add support for hostname detection using `hostnamectl` command
