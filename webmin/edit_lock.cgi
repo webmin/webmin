@@ -26,11 +26,11 @@ print &ui_table_hr();
 my @locks = &list_active_locks();
 my @tds;
 push(@tds, "width=5");
+my $locked_content;
 if (@locks) {
 	my $now = time();
-	print "<b>$text{'lock_msg'}</b><br>\n";
-	print &ui_form_start("kill_lock.cgi", "post");
-	print &ui_columns_start(
+	$locked_content = &ui_form_start("kill_lock.cgi", "post");
+	$locked_content .= &ui_columns_start(
 		[ "", $text{'lock_pid'}, $text{'lock_cmd'},
 		      $text{'lock_file'}, $text{'lock_age'} ]);
 	foreach my $p (@locks) {
@@ -46,7 +46,7 @@ if (@locks) {
 				$age = int($age/60/60)." ".$text{'lock_h'};
 				}
 			my $cmd = $p->{'proc'}->{'args'};
-			print &ui_checked_columns_row(
+			$locked_content .= &ui_checked_columns_row(
 				[
 					&foreign_available('proc') ?
 						&ui_link("@{[&get_webprefix()]}/proc/edit_proc.cgi?$p->{'pid'}", $p->{'pid'}) :
@@ -57,12 +57,20 @@ if (@locks) {
 				], \@tds, "d", $p->{'pid'}.'-'.$l->{'num'});
 			}
 		}
-	print &ui_columns_end();
-	print &ui_form_end([ [ 'term', $text{'lock_term'} ],
+	$locked_content .= &ui_columns_end();
+	$locked_content .= &ui_form_end([ [ 'term', $text{'lock_term'} ],
 			     [ 'kill', $text{'lock_kill'} ] ]);
+	print &ui_details({
+			'title' => $text{'lock_files'},
+			'class' => 'warning',
+			'content' => "$text{'lock_msg'}<br>" . $locked_content,
+			'html' => 1}, 1);
 	}
 else {
-	print "<b>$text{'lock_noneopen'}</b><p>\n";
+	print &ui_details({
+			'title' => $text{'lock_nfiles'},
+			'content' => $text{'lock_noneopen'},
+			'html' => 1});
 	}
 
 &ui_print_footer("", $text{'index_return'});
