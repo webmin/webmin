@@ -270,21 +270,21 @@ if ($show_subnet_delete) {
 if ($show_subnet_shared) {
 	if (@ulinks >= $display_max) {
 		# Could not show all subnets, so show lookup form
-        print &ui_form_start("lookup_subnet.cgi", "get");
-        print &ui_table_start(undef, undef, 2);
-        print &ui_table_row($text{'index_subtoomany'}, &ui_submit($text{'index_sublook2'}));
-        print &ui_table_row($matches, &ui_textbox("subnet", "", 30));
-	    print &ui_table_end();
-        print &ui_form_end(undef,undef,1);
+		print &ui_form_start("lookup_subnet.cgi", "get");
+		print &ui_table_start(undef, undef, 2);
+		print &ui_table_row($text{'index_subtoomany'}, &ui_submit($text{'index_sublook2'}));
+		print &ui_table_row($matches, &ui_textbox("subnet", "", 30));
+		    print &ui_table_end();
+		print &ui_form_end(undef,undef,1);
 		}
 	if (@slinks >= $display_max) {
 		# Could not show all shared nets, so show lookup form
-        print &ui_form_start("lookup_shared.cgi", "get");
-        print &ui_table_start(undef, undef, 2);
-        print &ui_table_row($text{'index_shatoomany'}, &ui_submit($text{'index_shalook2'}));
-        print &ui_table_row($matches, &ui_textbox("shared", "", 30));
-	    print &ui_table_end();
-        print &ui_form_end(undef,undef,1);
+		print &ui_form_start("lookup_shared.cgi", "get");
+		print &ui_table_start(undef, undef, 2);
+		print &ui_table_row($text{'index_shatoomany'}, &ui_submit($text{'index_shalook2'}));
+		print &ui_table_row($matches, &ui_textbox("shared", "", 30));
+		    print &ui_table_end();
+		print &ui_form_end(undef,undef,1);
 		}
 	}
 
