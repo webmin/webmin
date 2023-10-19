@@ -2583,14 +2583,14 @@ return @rv;
 # Read a single message from a file
 sub read_mail_file
 {
-local (@headers, $mail);
+my ($file, $headersonly) = @_;
 
 # Open and read the mail file
-&open_as_mail_user(MAIL, $_[0]) || return undef;
-$mail = &read_mail_fh(MAIL, 0, $_[1]);
-$mail->{'file'} = $_[0];
+&open_as_mail_user(MAIL, $file) || return undef;
+my $mail = &read_mail_fh(MAIL, 0, $headersonly);
+$mail->{'file'} = $file;
 close(MAIL);
-local @st = stat($_[0]);
+local @st = stat($file);
 $mail->{'size'} = $st[7];
 $mail->{'time'} = $st[9];
 
@@ -2613,14 +2613,15 @@ return $mail;
 #				     higher = number of bytes
 sub read_mail_fh
 {
-local ($fh, $endmode, $headeronly) = @_;
-local (@headers, $mail);
+my ($fh, $endmode, $headersonly) = @_;
+my @headers;
+my $mail = { };
 
 # Read the headers
-local $lnum = 0;
+my $lnum = 0;
 while(1) {
 	$lnum++;
-	local $line = <$fh>;
+	my $line = <$fh>;
 	$mail->{'size'} += length($line);
 	$line =~ s/\r|\n//g;
 	last if ($line eq '');
