@@ -21,3 +21,4 @@ core
 tarballs/
 minimal/
 .DS_Store
+.vscode/settings.json
