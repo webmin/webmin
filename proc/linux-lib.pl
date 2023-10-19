@@ -500,7 +500,7 @@ my @cpu;
 my @fans;
 my @cputhermisters;
 if (&has_command("sensors")) {
-    my ($cpu, $cpu_aux, $cpu_package, $cpu_broadcom, $cpu_amd);
+    my ($cpu, $cpu_aux, $cpu_unnamed, $cpu_package, $cpu_broadcom, $cpu_amd);
     my $fh = "SENSORS";
 
     # Examples https://gist.github.com/547451c9ca376b2d18f9bb8d3748276c
@@ -563,7 +563,7 @@ if (&has_command("sensors")) {
         else {
 
             # Auxiliary CPU temperature and fans were already captured
-            next if ($cpu_aux);
+            next if ($cpu_aux && !$cpu_unnamed);
 
             # CPU types
             ($cpu_broadcom) = $_ =~ /cpu_thermal-virtual-[\d]+/i if (!$cpu_broadcom);
@@ -595,6 +595,13 @@ if (&has_command("sensors")) {
                 if (/temp(\d+):\s+([\+\-][0-9\.]+)/) {
                     push(@cpu,
                          {  'core' => $1,
+                            'temp' => int($2)
+                         });
+                    }
+                elsif (/cpu\s+temp(.*?):\s+([\+\-][0-9\.]+)/i) {
+                    $cpu_unnamed++;
+                    push(@cpu,
+                         {  'core' => $cpu_unnamed,
                             'temp' => int($2)
                          });
                     }
