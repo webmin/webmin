@@ -62,13 +62,14 @@ if (@locks) {
 			     [ 'kill', $text{'lock_kill'} ] ]);
 	print &ui_details({
 			'title' => $text{'lock_files'},
-			'class' => 'warning',
+			'class' => 'default',
 			'content' => "$text{'lock_msg'}<br>" . $locked_content,
 			'html' => 1}, 1);
 	}
 else {
 	print &ui_details({
 			'title' => $text{'lock_nfiles'},
+			'class' => 'default',
 			'content' => $text{'lock_noneopen'},
 			'html' => 1});
 	}
