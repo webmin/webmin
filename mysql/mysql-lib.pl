@@ -1028,19 +1028,20 @@ sub execute_sql_file
 if (&is_readonly_mode()) {
 	return (0, undef);
 	}
+-r $file || return (1, "$file does not exist");
 local ($db, $file, $user, $pass) = @_;
 local $authstr = &make_authstr($user, $pass);
 local $cs = $sql_charset ? "--default-character-set=".quotemeta($sql_charset)
 			 : "";
 local $temp = &transname();
+$file = &fix_collation($file);
 &open_tempfile(TEMP, ">$temp");
-&print_tempfile(TEMP, "source ".&fix_collation($file).";\n");
+&print_tempfile(TEMP, "source ".$file.";\n");
 &close_tempfile(TEMP);
 &set_ownership_permissions(undef, undef, 0644, $temp);
 &set_authstr_env();
 local $cmd = "$config{'mysql'} $authstr -t ".quotemeta($db)." ".$cs.
 	     " <".quotemeta($temp);
--r $file || return (1, "$file does not exist");
 if ($_[4] && $_[4] ne 'root' && $< == 0) {
 	# Restoring as a Unix user
 	$cmd = &command_as_user($_[4], 0, $cmd);
