@@ -710,3 +710,30 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
 .shell select[name="pcmd"] {
   max-width: 65vw;
 }
+
+[data-pro-disabled$="-link"] {
+  filter: grayscale(1) contrast(0.1);
+  opacity: 1;
+}
+[data-pro-disabled="cell"],
+[data-pro-disabled$="-elem"] {
+  filter:grayscale(1);
+  opacity: .73;
+}
+[data-pro-disabled$="-elem"] input:not([type="radio"]):not([type="checkbox"]) {
+  filter: grayscale(1) contrast(0.9);
+}
+[data-pro-disabled$="-elem"] input {
+  cursor: not-allowed !important;
+}
+.linkwithicon.inactive a,
+.linkindented.inactive a,
+[data-pro-disabled$="-link"] a {
+  cursor: alias;
+}
+[data-pro-disabled$="-elem"] a {
+  filter: grayscale(1) contrast(0.5);
+}
+[data-pro-disabled$="-elem"] a:hover {
+  filter: grayscale(1) contrast(1);
+}
