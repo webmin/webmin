@@ -449,6 +449,9 @@ for(my $i=0; $i<@oldv || $i<@newv; $i++) {
 			$newv[$i]->{'line'} = $_[0]->{'eline'};
 			$newv[$i]->{'eline'} =
 				$_[0]->{'eline'} + scalar(@nl) - 1;
+			if (!defined($newv[$i]->{'index'})) {
+				$newv[$i]->{'index'} = @$pm ? $pm->[@$pm - 1]->{'index'} + 1 : 0;
+				}
 			&renumber($parent, $_[0]->{'eline'}-1,
 				  $_[0]->{'file'}, scalar(@nl));
 			}
@@ -469,6 +472,9 @@ for(my $i=0; $i<@oldv || $i<@newv; $i++) {
 			$newv[$i]->{'line'} = $_[0]->{'line'}+1;
 			$newv[$i]->{'eline'} =
 				$_[0]->{'line'} + scalar(@nl);
+			if (!defined($newv[$i]->{'index'})) {
+				$newv[$i]->{'index'} = 0;
+				}
 			&renumber($parent, $_[0]->{'line'},
 				  $_[0]->{'file'}, scalar(@nl));
 			}
