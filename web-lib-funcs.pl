@@ -1826,7 +1826,7 @@ sub error_stderr
 {
 my ($err, $ret) = @_;
 my (@tm, @month, @gmt, $days, $hours, $mins, $timezone,
-    $make_datestr, $remove_host, $page);
+    $make_datestr, $remote_host, $page);
 @tm = localtime(time());
 @month = ( "Jan", "Feb", "Mar", "Apr", "May", "Jun",
            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" );
@@ -1842,14 +1842,14 @@ $make_datestr =
   sprintf("%2.2d/%s/%4.4d:%2.2d:%2.2d:%2.2d %s",
     $tm[3], $month[$tm[4]], $tm[5]+1900,
       $tm[2], $tm[1], $tm[0], $timezone);
-$remove_host = $ENV{"REMOTE_HOST"};
+$remote_host = $ENV{"REMOTE_HOST"};
 $page = $ENV{"REQUEST_URI"};
 $err = &html_strip($err);
 $err =~ s/[\n\r]+/ /g;
 $err =~ s/\s\?$//g;
 $err =
   "[$make_datestr] " .
-	($remove_host ? ( "[$remove_host] " ) : ( )) .
+	($remote_host ? ( "[$remote_host] " ) : ( )) .
 	  ($page ? ( "$page : " ) : ( )) . "$err\n";
 return $err if ($ret);
 print STDERR $err;
