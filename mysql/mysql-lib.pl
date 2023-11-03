@@ -1028,8 +1028,8 @@ sub execute_sql_file
 if (&is_readonly_mode()) {
 	return (0, undef);
 	}
--r $file || return (1, "$file does not exist");
 local ($db, $file, $user, $pass) = @_;
+-r $file || return (1, "$file does not exist");
 local $authstr = &make_authstr($user, $pass);
 local $cs = $sql_charset ? "--default-character-set=".quotemeta($sql_charset)
 			 : "";
