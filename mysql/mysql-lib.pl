@@ -1028,26 +1028,26 @@ sub execute_sql_file
 if (&is_readonly_mode()) {
 	return (0, undef);
 	}
-local ($db, $file, $user, $pass) = @_;
+my ($db, $file, $user, $pass) = @_;
 -r $file || return (1, "$file does not exist");
-local $authstr = &make_authstr($user, $pass);
-local $cs = $sql_charset ? "--default-character-set=".quotemeta($sql_charset)
+my $authstr = &make_authstr($user, $pass);
+my $cs = $sql_charset ? "--default-character-set=".quotemeta($sql_charset)
 			 : "";
-local $temp = &transname();
+my $temp = &transname();
 $file = &fix_collation($file);
 &open_tempfile(TEMP, ">$temp");
 &print_tempfile(TEMP, "source ".$file.";\n");
 &close_tempfile(TEMP);
 &set_ownership_permissions(undef, undef, 0644, $temp);
 &set_authstr_env();
-local $cmd = "$config{'mysql'} $authstr -t ".quotemeta($db)." ".$cs.
+my $cmd = "$config{'mysql'} $authstr -t ".quotemeta($db)." ".$cs.
 	     " <".quotemeta($temp);
 if ($_[4] && $_[4] ne 'root' && $< == 0) {
 	# Restoring as a Unix user
 	$cmd = &command_as_user($_[4], 0, $cmd);
 	}
-local $out = &backquote_logged("$cmd 2>&1");
-local @rv;
+my $out = &backquote_logged("$cmd 2>&1");
+my @rv;
 if ($?) {
 	# Total failure
 	@rv = ($?, $out || "$cmd failed");
