@@ -457,18 +457,17 @@ if ($params) {
 sub get_config_posted_params
 {
 my ($target, $post) = @_;
-my $params_referer = &read_config_params($ENV{'HTTP_REFERER'}, 1);
+my $params_referer = &read_config_params($ENV{'HTTP_REFERER'}, $post);
 my %keys = (%in, %$params_referer);
 my $param_prefix = "_cparam-";
 foreach my $key (keys %keys) {
 	if ($key =~ /^$param_prefix(.*)/) {
-		my $x = !$post ? "" : $param_prefix;
 		my $k = $1;
 		my $v = $keys{$key};
 		if ($v && $target !~ /$k=/) {
 			my $delimiter = ($target =~ /\?/) ? "&" : '?';
 			$v = &urlize($v) if ($v =~ /^\//);
-			$target .= "$delimiter$x$k=$v"
+			$target .= "$delimiter$k=$v"
 			}
 		}
 	}
