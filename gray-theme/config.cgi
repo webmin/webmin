@@ -62,6 +62,7 @@ if (@sections > 1) {
 	print &ui_form_start("config.cgi");
 	print &ui_hidden("module", $m),"\n";
 	print $text{'config_section'},"\n";
+	&print_config_posted_params();
 	print &ui_select("section", $in{'section'}, \@sections,
 			 1, 0, 0, 0, "onChange='form.submit()'");
 	print &ui_submit($text{'config_change'});
@@ -76,6 +77,7 @@ if (@sections > 1) {
 print &ui_form_start("config_save.cgi", "post");
 print &ui_hidden("module", $m),"\n";
 print &ui_hidden("section", $in{'section'}),"\n";
+&print_config_posted_params();
 if ($s) {
 	# Find next section
 	$idx = &indexof($s, @sections);
@@ -122,6 +124,6 @@ if ($m eq "virtual-server") {
 	&ui_print_footer("/right.cgi", $text{'config_return'});
 	}
 else {
-	&ui_print_footer("/$m", $text{'index'});
+	&ui_print_footer(&get_config_posted_params("/$m/"), $text{'index'});
 	}
 

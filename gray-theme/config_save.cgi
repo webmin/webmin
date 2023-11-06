@@ -41,13 +41,14 @@ if (&foreign_require($m) &&
 	}
 
 &webmin_log("_config_", undef, undef, \%in, $m);
+my $redirect_url;
 if ($in{'save_next'}) {
-	&redirect("config.cgi?module=$in{'module'}&section=$in{'section_next'}");
+	$redirect_url = &get_config_posted_params("config.cgi?module=$in{'module'}&section=$in{'section_next'}", 1);
 	}
 elsif ($m eq "virtual-server") {
-	&redirect("/right.cgi");
+	$redirect_url = "/right.cgi";
 	}
 else {
-	&redirect("/$m/");
+	$redirect_url = &get_config_posted_params("/$m/");
 	}
-
+&redirect($redirect_url)
