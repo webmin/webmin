@@ -56,5 +56,5 @@ if (&foreign_check("webmin")) {
 	}
 
 &webmin_log("_config_", undef, undef, \%in, $m);
-&redirect("/$m/");
+&redirect(&get_config_posted_params("/$m/"));
 
