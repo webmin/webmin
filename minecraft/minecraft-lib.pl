@@ -606,12 +606,12 @@ foreach my $dat (glob("$config{'minecraft_dir'}/*/level.dat")) {
 	if (-d "$path/players") {
 		# Old format
 		@players = map { s/^.*\///; s/\.dat$//; $_ }
-			       glob("$path/players/*");
+			       glob("\Q$path\E/players/*");
 		}
 	if (-d "$path/playerdata" && !@players) {
 		# New format (UUID based)
 		@players = map { s/^.*\///; s/\.dat$//; $_ }
-			       glob("$path/playerdata/*");
+			       glob("\Q$path\E/playerdata/*");
 		@players = map { my $u = $_;
 				 &uuid_to_username($u) || $u } @players;
 		}

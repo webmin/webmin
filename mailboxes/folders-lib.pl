@@ -1553,7 +1553,7 @@ if ($folder->{'type'} == 1 || $folder->{'type'} == 3) {
 			&get_maildir_files($folder->{'file'}) :
 			&get_mhdir_files($folder->{'file'});
 	if ($folder->{'type'} == 1) {
-		foreach my $sf (glob("\"$folder->{'file'}\"/.??*")) {
+		foreach my $sf (glob("\Q$folder->{'file'}\E/.??*")) {
 			push(@files, &get_maildir_files($sf));
 			}
 		}
@@ -3643,7 +3643,7 @@ if (!%hasattach) {
 		}
 	else {
 		$hasattach_file = "$module_config_directory/attach";
-		if (!glob("\"$hasattach_file\".*")) {
+		if (!glob("\Q$hasattach_file\E.*")) {
 			$hasattach_file = "$module_var_directory/attach";
 			}
 		}
