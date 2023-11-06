@@ -407,5 +407,73 @@ if (-r $module_prefs_conf) {
 	}
 }
 
+# read_config_params(url, insert-prefix)
+# Parses the URL parameters from a URL, and returns a hash ref
+sub read_config_params
+{
+my ($url, $pref) = @_;
+# Extract the part of the URL after the question mark
+my ($query_string) = $url =~ /\?(.*)$/;
+my %params;
+
+# Split the query string on '&' to get the individual key-value pairs
+for my $pair (split(/&/, $query_string)) {
+	my ($key, $value) = split /=/, $pair;
+	# Replace '+' with space and decode percent encoding
+	$value =~ tr/+/ /;
+	$value =~ s/%([a-fA-F0-9]{2})/pack("C", hex($1))/eg;
+	my $param_prefix = $pref ? "_cparam-" : "";
+	$params{"$param_prefix$key"} = $value;
+	}
+return \%params;
+}
+
+# print_config_posted_params()
+# Prints hidden fields for all the parameters in the referrer URL
+sub print_config_posted_params
+{
+my $env_referer = $ENV{'HTTP_REFERER'};
+my $params_referer = &read_config_params($env_referer);
+my $params_url = &read_config_params($ENV{'REQUEST_URI'});
+my $params = { %$params_referer, %$params_url };
+my @params;
+if ($params) {
+	foreach my $param (keys %{$params}) {
+		my $param_prefix = "_cparam-";
+		if ($param =~ /section|module|mode|section_next|nnext|nprev|xnavigation/ ||
+		    !$params->{$param} || $env_referer =~ /$param_prefix$param=/ ||
+		    $params_url =~ /$param_prefix$param=/ || &indexof($param, @params) > -1) {
+			next;
+			}
+		$param_prefix = "" if ($param =~ /^$param_prefix/);
+		push(@params, $param);
+		print &ui_hidden("$param_prefix$param", $params->{$param}), "\n";
+		}
+	}
+}
+
+# get_config_posted_params(target, post-form)
+# Returns the referrer URL with all the parameters from the POST request
+sub get_config_posted_params
+{
+my ($target, $post) = @_;
+my $params_referer = &read_config_params($ENV{'HTTP_REFERER'}, 1);
+my %keys = (%in, %$params_referer);
+my $param_prefix = "_cparam-";
+foreach my $key (keys %keys) {
+	if ($key =~ /^$param_prefix(.*)/) {
+		my $x = !$post ? "" : $param_prefix;
+		my $k = $1;
+		my $v = $keys{$key};
+		if ($v && $target !~ /$k=/) {
+			my $delimiter = ($target =~ /\?/) ? "&" : '?';
+			$v = &urlize($v) if ($v =~ /^\//);
+			$target .= "$delimiter$x$k=$v"
+			}
+		}
+	}
+return $target;
+}
+
 1;
 
