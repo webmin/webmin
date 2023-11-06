@@ -1122,7 +1122,7 @@ foreach my $folder (&list_user_folders($user)) {
 			&unlink_file($ifile);
 			}
 		else {
-			&unlink_file(glob("$ifile.{dir,pag,db}"));
+			&unlink_file(glob("\"$ifile\".{dir,pag,db}"));
 			}
 		&unlink_file("$ifile.ids");
 		}
@@ -1136,7 +1136,7 @@ foreach my $folder (&list_user_folders($user)) {
 		&unlink_file($ifile);
 		}
 	else {
-		&unlink_file(glob("$ifile.{dir,pag,db}"));
+		&unlink_file(glob("\"$ifile\".{dir,pag,db}"));
 		}
 	}
 # Remove read file
@@ -1145,7 +1145,7 @@ if (-r $read) {
 	&unlink_file($read);
 	}
 else {
-	&unlink_file(glob("$read.{dir,pag,db}"));
+	&unlink_file(glob("\"$read\".{dir,pag,db}"));
 	}
 }
 
@@ -1280,7 +1280,7 @@ sub user_read_dbm_file
 {
 my ($user) = @_;
 my $rv = "$module_config_directory/$user.read";
-if (!glob($rv."*")) {
+if (!glob("\"$rv\".*")) {
 	$rv = "$module_var_directory/$user.read";
 	}
 return $rv;
