@@ -1,5 +1,11 @@
 ## Changelog
 
+#### 2.105 (November 09, 2023)
+* Fix param to read only headers [sourceforge.net/usermin-bugs#501](https://sourceforge.net/p/webadmin/usermin-bugs/501/)
+* Fix not to set `reuse` flag on initial Let's Encrypt request
+* Fix to correctly escape mail file names upon deletion
+* Fix index field in cache file in BIND DNS module
+
 #### 2.104 (October 16, 2023)
 * Add support for numbered and bulleted lists in email HTML editor
 * Add ability to display active file locks in `Webmin Configuration ⇾ File Locking` page
