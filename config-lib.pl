@@ -435,7 +435,7 @@ my $params_referer = &read_config_params($env_referer);
 my $params_url = &read_config_params($ENV{'REQUEST_URI'});
 my $params = { %$params_referer, %$params_url };
 my @params;
-if ($params) {
+if (%$params) {
 	foreach my $param (keys %{$params}) {
 		my $param_prefix = "_cparam-";
 		if ($param =~ /section|module|mode|section_next|nnext|nprev|xnavigation/ ||
