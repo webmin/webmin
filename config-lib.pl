@@ -419,9 +419,7 @@ my %params;
 # Split the query string on '&' to get the individual key-value pairs
 for my $pair (split(/&/, $query_string)) {
 	my ($key, $value) = split /=/, $pair;
-	# Replace '+' with space and decode percent encoding
-	$value =~ tr/+/ /;
-	$value =~ s/%([a-fA-F0-9]{2})/pack("C", hex($1))/eg;
+	$value = &un_urlize($value);
 	my $param_prefix = $pref ? "_cparam-" : "";
 	$params{"$param_prefix$key"} = $value;
 	}
