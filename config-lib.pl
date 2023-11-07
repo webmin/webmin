@@ -457,9 +457,11 @@ if ($params) {
 sub get_config_posted_params
 {
 my ($target, $post) = @_;
-my $params_referer = &read_config_params($ENV{'HTTP_REFERER'}, $post);
-my %keys = (%in, %$params_referer);
 my $param_prefix = "_cparam-";
+my $env_referer = $ENV{'HTTP_REFERER'};
+my $env_referer_prefixed = ($env_referer =~ /$param_prefix/ ? 1 : 0);
+my $params_referer = &read_config_params($env_referer, $post || !$env_referer_prefixed);
+my %keys = (%in, %$params_referer);
 foreach my $key (keys %keys) {
 	if ($key =~ /^$param_prefix(.*)/) {
 		my $k = $1;
