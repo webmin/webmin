@@ -51,4 +51,4 @@ elsif ($m eq "virtual-server") {
 else {
 	$redirect_url = &get_config_posted_params("/$m/");
 	}
-&redirect($redirect_url)
+&redirect($redirect_url);
