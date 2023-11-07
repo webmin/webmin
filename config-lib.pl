@@ -452,15 +452,32 @@ if ($params) {
 	}
 }
 
-# get_config_posted_params(target, post-form)
+# get_query_config_posted_params(url)
+# Returns the currently posted parameters from the URL
+sub get_query_config_posted_params
+{
+my ($url) = @_;
+foreach my $key (keys %in) {
+	if ($key =~ /^_cparam-/) {
+		my $value = $in{$key};
+		if ($value) {
+			my $delimiter = ($url =~ /\?/) ? "&" : '?';
+			$url .= "$delimiter$key=$value"
+			}
+		}
+	}
+return $url;
+}
+
+# get_config_posted_params(target)
 # Returns the referrer URL with all the parameters from the POST request
 sub get_config_posted_params
 {
-my ($target, $post) = @_;
+my ($target) = @_;
 my $param_prefix = "_cparam-";
 my $env_referer = $ENV{'HTTP_REFERER'};
 my $env_referer_prefixed = ($env_referer =~ /$param_prefix/ ? 1 : 0);
-my $params_referer = &read_config_params($env_referer, $post || !$env_referer_prefixed);
+my $params_referer = &read_config_params($env_referer, !$env_referer_prefixed);
 my %keys = (%in, %$params_referer);
 foreach my $key (keys %keys) {
 	if ($key =~ /^$param_prefix(.*)/) {
