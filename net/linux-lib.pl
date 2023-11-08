@@ -147,7 +147,7 @@ if (&has_command("ip")) {
 			$vifc{'edit'} = ($vifc{'name'} !~ /^ppp/);
 			$vifc{'index'} = scalar(@rv);
 			push(@rv, \%vifc);
-			$i++;
+			$i = $vn + 1;
 			}
 		}
 	}
