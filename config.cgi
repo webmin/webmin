@@ -25,6 +25,7 @@ else {
 
 print &ui_form_start("config_save.cgi", "post");
 print &ui_hidden("module", $m),"\n";
+&print_config_posted_params();
 print &ui_table_start(&text('config_header', $module_info{'desc'}),
 		      "width=100%", 2);
 &read_file("$config_directory/$m/config", \%newconfig);
@@ -51,5 +52,5 @@ if (!$func) {
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
-&ui_print_footer("/$m", $text{'index'});
+&ui_print_footer(&get_config_posted_params("/$m/"), $text{'index'});
 
