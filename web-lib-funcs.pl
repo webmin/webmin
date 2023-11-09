@@ -1195,7 +1195,7 @@ if (@_ > 1) {
 			my $cprog = $user_module_config_directory ?
 					"uconfig.cgi" : "config.cgi";
 			print "<a href=\"@{[&get_webprefix()]}/$cprog?",
-			      &get_module_name()."\">",
+			      "module=".&get_module_name()."\">",
 			      $text{'header_config'},"</a><br>\n";
 			}
 		}
