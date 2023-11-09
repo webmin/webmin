@@ -68,11 +68,11 @@ foreach my $f (glob("$nm_conn_dir/*.nmconnection")) {
 		}
 
 	# Nameservers
-	my @ns = split(/\s*;\s*/, &find_nm_config($cfg, "ipv4", "dns"));
+	my @ns = split(/[ ;]+/, &find_nm_config($cfg, "ipv4", "dns"));
 	if (@ns) {
 		$iface->{'nameserver'} = \@ns;
 		}
-	my @sr = split(/\s*;\s*/, &find_nm_config($cfg, "ipv4", "dns-search"));
+	my @sr = split(/[ ;]+/, &find_nm_config($cfg, "ipv4", "dns-search"));
 	if (@sr) {
 		$iface->{'search'} = \@sr;
 		}
@@ -229,7 +229,7 @@ my $method6 = $iface->{'auto6'} ? "auto" :
 # Update nameservers
 my @ns = $iface->{'nameserver'} ? @{$iface->{'nameserver'}} : ();
 &save_nm_config($cfg, "ipv4", "dns",
-		@ns ? join(";", @ns) : undef);
+		@ns ? join(" ", @ns) : undef);
 my @sr = $iface->{'search'} ? @{$iface->{'search'}} : ();
 &save_nm_config($cfg, "ipv4", "dns-search",
 		@sr ? join(";", @sr) : undef);
