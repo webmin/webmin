@@ -1194,8 +1194,20 @@ if (@_ > 1) {
 		if (!$access{'noconfig'} && !$config{'noprefs'}) {
 			my $cprog = $user_module_config_directory ?
 					"uconfig.cgi" : "config.cgi";
+			my $params = "";
+			if ($ENV{'REQUEST_METHOD'} eq 'GET') {
+				my %in;
+				&ReadParse(\%in);
+				foreach my $k (keys %in) {
+					foreach my $v (split(/\0/, $in{$k})) {
+						$params .= "&_cparam_".
+						  &urlize($k)."=".&urlize($v);
+						}
+					}
+				$params .= "&_cscript=".&urlize($scriptname);
+				}
 			print "<a href=\"@{[&get_webprefix()]}/$cprog?",
-			      "module=".&get_module_name()."\">",
+			      "module=".&get_module_name().$params."\">",
 			      $text{'header_config'},"</a><br>\n";
 			}
 		}

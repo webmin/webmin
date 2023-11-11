@@ -407,5 +407,45 @@ if (-r $module_prefs_conf) {
 	}
 }
 
+# hidden_config_cparams(&in)
+# Return HTML for hidden inputs for params to pass back to whatever linked
+# to config.cgi
+sub hidden_config_cparams
+{
+my ($in) = @_;
+my $rv = "";
+foreach my $k (keys %$in) {
+	next if ($k !~ /^(_cparam_|_cscript)/);
+	foreach my $v (split(/\0/, $in{$k})) {
+		$rv .= &ui_hidden($k, $v)."\n";
+		}
+	}
+return $rv;
+}
+
+# link_config_cparams(module, &in)
+# Returns a URL to link to after the config is saved
+sub link_config_cparams
+{
+my ($m, $in) = @_;
+my $url = "/$m";
+if ($in->{'_cscript'}) {
+	$url .= "/".$in->{'_cscript'};
+	}
+my @w;
+foreach my $k (keys %$in) {
+	if ($k =~ /^_cparam_(.*)$/) {
+		$n = $1;
+		foreach my $v (split(/\0/, $in{$k})) {
+			push(@w, &urlize($n)."=".&urlize($v));
+			}
+		}
+	}
+if (@w) {
+	$url .= "?".join("&", @w);
+	}
+return $url;
+}
+
 1;
 

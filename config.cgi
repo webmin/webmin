@@ -24,6 +24,7 @@ else {
 		 $text{'config_title'}, "", $help, 0, 1);
 
 print &ui_form_start("config_save.cgi", "post");
+print &hidden_config_cparams(\%in);
 print &ui_hidden("module", $m),"\n";
 print &ui_table_start(&text('config_header', $module_info{'desc'}),
 		      "width=100%", 2);
@@ -51,5 +52,5 @@ if (!$func) {
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
-&ui_print_footer("/$m", $text{'index'});
+&ui_print_footer(&link_config_cparams($m, \%in), $text{'index'});
 

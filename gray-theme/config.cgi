@@ -60,6 +60,7 @@ if (@sections > 1) {
 
 	# We have some sections .. show a menu to select
 	print &ui_form_start("config.cgi");
+	print &hidden_config_cparams(\%in);
 	print &ui_hidden("module", $m),"\n";
 	print $text{'config_section'},"\n";
 	print &ui_select("section", $in{'section'}, \@sections,
@@ -74,6 +75,7 @@ if (@sections > 1) {
 	}
 
 print &ui_form_start("config_save.cgi", "post");
+print &hidden_config_cparams(\%in);
 print &ui_hidden("module", $m),"\n";
 print &ui_hidden("section", $in{'section'}),"\n";
 if ($s) {
@@ -122,6 +124,6 @@ if ($m eq "virtual-server") {
 	&ui_print_footer("/right.cgi", $text{'config_return'});
 	}
 else {
-	&ui_print_footer("/$m", $text{'index'});
+	&ui_print_footer(&link_config_cparams($m, \%in), $text{'index'});
 	}
 
