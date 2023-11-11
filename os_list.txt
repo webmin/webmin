@@ -179,6 +179,7 @@ Debian Linux			10.0	debian-linux	10.0	`cat /etc/debian_version 2>/dev/null` =~ /
 Debian Linux			10.0	debian-linux	10.0	`cat /etc/debian_version 2>/dev/null` =~ /^(buster)/i
 Debian Linux			11.0	debian-linux	11.0	`cat /etc/debian_version 2>/dev/null` =~ /^(bullseye)/i
 Debian Linux			12.0	debian-linux	12.0	`cat /etc/debian_version 2>/dev/null` =~ /^(bookworm)/i
+Debian Linux			13.0	debian-linux	13.0	`cat /etc/debian_version 2>/dev/null` =~ /^(trixie)/i
 
 # SuSE enterprise versions
 SuSE OpenExchange Linux		$1	suse-linux	8.2	`cat /etc/SLOX-release 2>/dev/null` =~ /VERSION\s+=\s+(\S+)/i
