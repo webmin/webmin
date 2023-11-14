@@ -436,6 +436,7 @@ root_epass1=Yeni şifre girilmedi
 root_epass2=Parolalar uyuşmuyor
 root_none=Şifre yok!
 root_auto=Otomatik (genellikle <tt>kök</tt>)
+root_socket=MySQL <tt>$1</tt> kullanıcısı Unix soket kimlik doğrulamasını kullandığından parolaya gerek yoktur ve parola değiştirilemez.
 
 mysqlpass_err=MySQL güvenli mod
 mysqlpass_esafecmd=Kimlik doğrulama devre dışı bırakılarak MySQL'i başlatmak için gereken $1 komutu bulunamadı

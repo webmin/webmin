@@ -1,3 +1,4 @@
+index_position=Es werden die Regeln $1 bis $2 von $3 angezeigt
 index_no_comment=
 
 desc_match-set=$2 stimmt mit IPset $1 überein

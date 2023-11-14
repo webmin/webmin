@@ -1,8 +1,9 @@
 index_zone=존
-index_mem2=<b>실제 메모리 :</b> 총 $1 / $2 사용 가능
-index_mem3=<b>실제 메모리 :</b> 총 $1 / $2 사용 가능 / $3 캐시
-index_swap2=<b>스왑 공간 :</b> 총 $1 / $2 무료
-index_burst=<b>가변 메모리 :</b> 총 $1 
+index_memreal=실제 메모리:
+index_memswap=스왑 공간:
+index_memburst=버스트 가능 메모리:
+index_memtf=전체 $1 / 무료 $2
+index_memtfc=전체 $1 / 여유 $2 / 캐시된 $3
 index_loadname=CPU로드 평균 :
 index_loadnums=$1 (1 분), $2 (5 분), $3 (15 분)
 index_cpuname=CPU 유형 :

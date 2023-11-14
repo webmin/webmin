@@ -484,7 +484,6 @@ descs_title=Modul-Titel
 descs_info=Auf dieser Seite können Sie alternative Titel für Usermin Module angeben um ihre Standard-Beschreibungen zu überschreiben.
 
 advanced_title=Erweiterte Optionen
-advanced_pass=Stellt das Passwort für Usermin-Programme zur Verfügung?<br><font size=-1> (Funktioniert nicht, wenn Session-Authentifizierung aktiviert ist)</font>
 
 blocked_title=Geblockte Hosts und Benutzer
 blocked_none=Keine Hosts oder Benutzer sind zur Zeit von Usermin blockiert.

@@ -865,6 +865,7 @@ root_epass1=לא הוזנה סיסמה חדשה
 root_epass2=סיסמאות לא תואמות
 root_none=אין סיסמא!
 root_auto=אוטומטית (בדרך כלל <tt>שורש</strong>)
+root_socket=משתמש MySQL <tt>$1</tt> משתמש באימות שקע Unix, כך שאין צורך בסיסמה ולא ניתן לשנות את הסיסמה.
 
 mysqlpass_err=מצב בטוח של MySQL
 mysqlpass_esafecmd=הפקודה $1 הדרושה להפעלת MySQL עם אימות מושבת לא נמצאה

@@ -10,6 +10,8 @@ backup_parameters=Ajouter des paramètres personnalisés à la commande de sauve
 
 syslog_desc2=Message d'erreur MySQL
 
+root_socket=L'utilisateur MySQL <tt>$1</tt> utilise l'authentification par socket Unix, aucun mot de passe n'est donc nécessaire et le mot de passe ne peut pas être modifié.
+
 mysqlpass_err=Mode sans échec MySQL
 mysqlpass_esafecmd=La commande $1 nécessaire pour démarrer MySQL avec l'authentification désactivée est introuvable
 mysqlpass_eshutdown=Échec de l'arrêt : $1 

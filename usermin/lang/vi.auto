@@ -486,7 +486,8 @@ descs_title=Tiêu đề mô-đun
 descs_info=Trang này cho phép bạn chỉ định các tiêu đề thay thế cho các mô-đun Usermin, để ghi đè các mô tả tiêu chuẩn của chúng.
 
 advanced_title=Tùy chọn nâng cao
-advanced_pass=Cung cấp mật khẩu cho các chương trình Usermin? <br><font size=-1> (Không hoạt động khi bật xác thực phiên) </font>
+advanced_pass_desc=Cung cấp mật khẩu cho các chương trình Usermin?
+advanced_pass_help=Không hoạt động khi xác thực phiên được bật
 
 blocked_title=Máy chủ và người dùng bị chặn
 blocked_none=Không có máy chủ hoặc người dùng hiện đang bị chặn bởi Usermin.

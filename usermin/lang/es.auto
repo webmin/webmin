@@ -67,7 +67,8 @@ descs_title=Títulos de módulos
 descs_info=Esta página le permite especificar títulos alternativos para los módulos Usermin, para anular sus descripciones estándar.
 
 advanced_title=Opciones avanzadas
-advanced_pass=¿Hacer que la contraseña esté disponible para los programas Usermin? <br><font size=-1> (No funciona cuando la autenticación de sesión está habilitada) </font>
+advanced_pass_desc=¿Hacer que la contraseña esté disponible para los programas Usermin?
+advanced_pass_help=No funciona cuando la autenticación de sesión está habilitada
 
 blocked_title=Hosts y usuarios bloqueados
 blocked_none=Usermin no bloquea actualmente ningún host o usuario.

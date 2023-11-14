@@ -501,6 +501,7 @@ core_actmod=Aktiiviset moduulit
 core_option=Vaihtoehto
 core_setdir=Asetettu hakemistoon
 core_merge=Yhdistä vanhemman kanssa
+core_eoptionsboth=Hakemistovalinnat : Kaikkien aktiivisten asetusten on oltava joko asetettu hakemistoon tai yhdistetty ylätason kanssa, mutta ei molempia
 core_users=Vain nämä käyttäjät
 core_groups=Vain nämä ryhmät
 core_allusers=Kaikki kelvolliset käyttäjät

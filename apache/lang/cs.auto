@@ -27,6 +27,7 @@ core_protocols_h2=HTTP/2 šifrováno
 core_protocols_h2c=HTTP/2 nešifrované
 core_eprotcols=Nejsou vybrány žádné protokoly!
 core_minor=Pouze menší verze
+core_eoptionsboth=Možnosti adresáře : Všechny aktivní možnosti musí být buď Set For Directory, nebo Merged With Parent, ale ne obojí
 
 mod_alias_alias2=alias dokumentu
 mod_alias_regexp2=alias dokumentu regexp

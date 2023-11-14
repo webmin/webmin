@@ -486,7 +486,8 @@ descs_title=Moduluen tituluak
 descs_info=Orrialde honek Usermin moduluen ordezko izenburuak zehazteko aukera ematen du, haien deskribapen estandarrak gainidazteko.
 
 advanced_title=Aukera aurreratuak
-advanced_pass=Pasahitza Erabiltzaileentzako programak eskuragarri jarri? <br><font size=-1> (Ez du funtzionatzen saioa autentifikazioa gaituta dagoenean) </font>
+advanced_pass_desc=Pasahitza erabilgarri jarri nahi duzu Usermin programetarako?
+advanced_pass_help=Ez du funtzionatzen saioaren autentifikazioa gaituta dagoenean
 
 blocked_title=Erabiltzaile eta erabiltzaile blokeatuak
 blocked_none=Momentu honetan ez dago ostalaririk edo erabiltzailerik erabiltzailerik

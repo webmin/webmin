@@ -501,6 +501,7 @@ core_actmod=Aktívne moduly
 core_option=voľba
 core_setdir=Nastaviť pre adresár
 core_merge=Zlúčiť s rodičom
+core_eoptionsboth=Možnosti adresára: Všetky aktívne možnosti musia byť buď Nastaviť pre adresár alebo Zlúčiť s rodičom, ale nie oboje
 core_users=Iba títo používatelia
 core_groups=Iba tieto skupiny
 core_allusers=Všetci platní používatelia

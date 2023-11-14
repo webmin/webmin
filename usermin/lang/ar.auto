@@ -484,7 +484,8 @@ descs_title=عناوين الوحدة
 descs_info=تتيح لك هذه الصفحة تحديد عناوين بديلة لوحدات Usermin لتجاوز أوصافها القياسية.
 
 advanced_title=خيارات متقدمة
-advanced_pass=اجعل كلمة المرور متاحة لبرامج Usermin؟ <br><font size=-1> (لا يعمل عند تمكين مصادقة الجلسة) </font>
+advanced_pass_desc=جعل كلمة المرور متاحة لبرامج Usermin؟
+advanced_pass_help=لا يعمل عند تمكين مصادقة الجلسة
 
 blocked_title=المضيفين المحظورة والمستخدمين
 blocked_none=لا يتم حظر أي مضيف أو مستخدمين حاليًا بواسطة Usermin.

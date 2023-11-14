@@ -170,6 +170,9 @@ syslog_errorlog=Userminエラーログ
 
 descs_info=このページでは、Userminモジュールの代替タイトルを指定して、標準の説明を上書きできます。
 
+advanced_pass_desc=Usermin プログラムでパスワードを使用できるようにしますか?
+advanced_pass_help=セッション認証が有効になっている場合は機能しません
+
 blocked_none=現在、Userminによってブロックされているホストまたはユーザーはありません。
 blocked_cleardesc=Userminサーバープロセスを再起動することにより、このボタンをクリックして、現在のホストとユーザーのブロックをすべてクリアします。
 

@@ -23,6 +23,7 @@ core_protocols_h2=HTTP/2 criptografado
 core_protocols_h2c=HTTP/2 não criptografado
 core_eprotcols=Nenhum protocolo selecionado!
 core_minor=Apenas versão secundária
+core_eoptionsboth=Opções de diretório: as opções ativas devem ser todas definidas para o diretório ou mescladas com o pai, mas não ambas
 
 mod_proxy_seconds=segundos
 

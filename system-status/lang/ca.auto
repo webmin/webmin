@@ -1,3 +1,4 @@
 right_cpufans=Ventiladors de CPU
 right_cpufans_fan=Més fred
 right_cpufans_rpm=RPM
+right_cputype1=$5, $8 nucli

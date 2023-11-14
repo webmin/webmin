@@ -2,6 +2,7 @@ right_cpufans=ventilateurs de processeur
 right_cpufans_fan=Glacière
 right_cpufans_rpm=RPM
 right_drivefailed=La vérification SMART a échoué!
+right_cputype1=$5, $8 cœur
 right_used3=$2 utilisé, $3 mis en cache, $1 au total
 right_fsfull=Avertissement! Le système de fichiers $2 monté sur $1 n'a pas d'espace disque libre!
 right_fsnearly=Avertissement! Le système de fichiers $2 monté à $1 ne dispose que de $3 d'espace disque libre

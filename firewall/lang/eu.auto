@@ -1,6 +1,7 @@
 index_title=Linux IPTables suebakia
 index_title_v=IPv4 suebakia
 index_title_v6=IPv6 suebakia
+index_position=$1 tik $2 tik $3 ko arauak erakusten
 index_editing=Arauak $1 fitxategia
 index_ecommand=$1 komandoa ez da zure sisteman aurkitu. Webmin-ek komando hau behar du IPtableak konfiguratzeko.
 index_ekernel=Errorea gertatu da zure uneko IPtableen konfigurazioa egiaztatzean: $1 Horrek adieraz dezake zure nukleoak ez duela IPtables onartzen.

@@ -374,6 +374,7 @@ root_epass1=Nincs megadva új jelszó
 root_epass2=A jelszavak nem egyeznek
 root_none=Nincs jelszó!
 root_auto=Automatikus (általában <tt>gyökér</tt>)
+root_socket=A MySQL <tt>$1</tt> felhasználó Unix socket hitelesítést használ, így nincs szükség jelszóra, és a jelszó nem módosítható.
 
 mysqlpass_err=MySQL biztonságos mód
 mysqlpass_esafecmd=A (z) $1 parancs, amely a MySQL elindításához szükséges a hitelesítés letiltásához, nem található

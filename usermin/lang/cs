@@ -474,7 +474,6 @@ descs_title=Názvy modulů
 descs_info=Tato stránka umožňuje specifikovat alternativní názvy modulů Userminu, přičemž se přepíší jejich standardní popisy.
 
 advanced_title=Rozšířené možnosti
-advanced_pass=Zajistit přístupnost hesla pro programy Userminu?<br><font size=-1>(Nebude funkční v případě, že bude zapnuta autentikace přes session)</font>
 
 blocked_title=Blokování hosté a uživatelé
 blocked_none=Momentálně nejsou blokování žádní hosté a uživatelé.

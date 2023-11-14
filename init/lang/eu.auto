@@ -14,7 +14,9 @@ index_lname=Agente izena
 
 edit_reloadnow2=Berriro irakurri Konfigurazio fitxategia
 
+mass_enoallow=ezin da <tt>$1</tt> gelditu
 mass_failed=.. huts egin zuen
+mass_skipped=.. saltatu
 mass_ok=.. eginda
 mass_ustart=Zerbitzuak abiaraztea
 mass_urestart=Zerbitzuak berrabiarazten dira

@@ -1,3 +1,4 @@
+index_position=Viser reglene $1 til $2 av $3
 index_no_comment=
 
 desc_match-set=$2 samsvarer med IPset $1

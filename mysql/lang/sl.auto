@@ -865,6 +865,7 @@ root_epass1=Novo geslo ni vneseno
 root_epass2=geslo se ne ujema
 root_none=Brez gesla!
 root_auto=Samodejno (običajno <tt>root</tt>)
+root_socket=Uporabnik MySQL <tt>$1</tt> uporablja preverjanje pristnosti vtičnice Unix, zato geslo ni potrebno in ga ni mogoče spremeniti.
 
 mysqlpass_err=Varni način MySQL
 mysqlpass_esafecmd=Ukaza $1, potrebnega za zagon MySQL z onemogočeno overitvijo, ni bilo mogoče najti

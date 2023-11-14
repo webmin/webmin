@@ -15,6 +15,7 @@ right_drivetemps=Температура на задвижване
 right_driveerr=$1 грешки!
 right_drivefailed=SMART проверката не бе успешна!
 right_cputype=$5, $8 ядра
+right_cputype1=$5, $8 ядро
 right_load=$1 (1 минута) $2 (5 минути) $3 (15 минути)
 right_cpuuse=Използване на процесора
 right_cpustats=$1% потребител, $2% ядро, $4% IO, $3% празен ход

@@ -290,6 +290,7 @@ core_actmod=Módulos ativos
 core_option=Opção
 core_setdir=Definido para o diretório
 core_merge=Mesclar com o pai
+core_eoptionsboth=Opções de diretório: as opções ativas devem ser todas definidas para o diretório ou mescladas com o pai, mas não ambas
 core_users=Somente esses usuários
 core_groups=Somente esses grupos
 core_allusers=Todos os usuários válidos

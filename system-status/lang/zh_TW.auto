@@ -15,6 +15,7 @@ right_drivetemps=驅動溫度
 right_driveerr=$1個錯誤！
 right_drivefailed=SMART檢查失敗！
 right_cputype=$5， $8核心
+right_cputype1=$5、$8 核心
 right_load=$1（1分鐘） $2（5分鐘） $3（15分鐘）
 right_cpuuse=CPU使用率
 right_cpustats=$1％用戶， $2％內核， $4％IO， $3％空閒

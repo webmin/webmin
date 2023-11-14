@@ -865,6 +865,7 @@ root_epass1=Ma ddaħħlet l-ebda password ġdida
 root_epass2=Il-passwords ma jaqblux
 root_none=Ebda password!
 root_auto=Awtomatiku (tipikament <tt>root</tt>)
+root_socket=L-utent MySQL <tt>$1</tt> qed juża l-awtentikazzjoni tas-socket Unix, għalhekk l-ebda password mhi meħtieġa u l-password ma tistax tinbidel.
 
 mysqlpass_err=MySQL safe mode
 mysqlpass_esafecmd=Il-kmand $1 meħtieġ biex tibda MySQL b'awtentikazzjoni diżattivata ma nstabx

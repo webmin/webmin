@@ -162,6 +162,7 @@ edit_hostconfig_title=Wysig Hostconfig
 
 mass_enone=Geen aksies gekies nie
 mass_enone2=Geen dienste gekies nie
+mass_enoallow=kan nie <tt>$1</tt> stop nie
 mass_start=Begin aksies
 mass_restart=Herbegin aksies
 mass_stop=Stop aksies
@@ -171,6 +172,7 @@ mass_disable=Deaktiveer aksie $1 tydens opstart.
 mass_starting=Begin aksie $1 ..
 mass_stopping=Stop aksie $1 ..
 mass_failed=.. misluk
+mass_skipped=.. oorgeslaan
 mass_ok=.. klaar
 mass_ustart=Begin dienste
 mass_urestart=Herbegin-dienste

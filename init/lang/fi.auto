@@ -162,6 +162,7 @@ edit_hostconfig_title=Muokkaa hostconfigia
 
 mass_enone=Toimintoja ei ole valittu
 mass_enone2=Palveluita ei ole valittu
+mass_enoallow=ei voi pysäyttää <tt>$1</tt>
 mass_start=Käynnistystoimet
 mass_restart=Toimintojen käynnistäminen uudelleen
 mass_stop=Toimintojen lopettaminen
@@ -171,6 +172,7 @@ mass_disable=Toiminnan $1 poistaminen käytöstä käynnistyksen aikana.
 mass_starting=Aloitetaan toiminto $1 ..
 mass_stopping=Toiminnan $1 lopettaminen ..
 mass_failed=.. epäonnistui
+mass_skipped=.. ohitettu
 mass_ok=.. tehty
 mass_ustart=Palvelujen aloittaminen
 mass_urestart=Palveluiden uudelleenkäynnistäminen

@@ -480,7 +480,8 @@ descs_title=Judul Modul
 descs_info=Halaman ini membolehkan anda menentukan tajuk alternatif untuk modul Usermin, untuk mengatasi penerangan standard mereka.
 
 advanced_title=Pilihan Lanjutan
-advanced_pass=Buat kata laluan yang tersedia untuk program Usermin? <br><font size=-1> (Tidak berfungsi apabila pengesahan sesi diaktifkan) </font>
+advanced_pass_desc=Jadikan kata laluan tersedia untuk program Usermin?
+advanced_pass_help=Tidak berfungsi apabila pengesahan sesi didayakan
 
 blocked_title=Hos dan Pengguna yang disekat
 blocked_none=Tiada tuan rumah atau pengguna yang kini disekat oleh Usermin.

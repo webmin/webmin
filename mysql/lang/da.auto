@@ -865,6 +865,7 @@ root_epass1=Ingen ny adgangskode er indtastet
 root_epass2=Kodeordene er ikke ens
 root_none=Intet kodeord!
 root_auto=Automatisk (typisk <tt>rod</tt>)
+root_socket=MySQL <tt>$1</tt>-brugeren bruger Unix-socket-godkendelse, så ingen adgangskode er nødvendig, og adgangskoden kan ikke ændres.
 
 mysqlpass_err=MySQL sikker tilstand
 mysqlpass_esafecmd=Kommandoen $1, der var nødvendig for at starte MySQL med godkendelse deaktiveret, blev ikke fundet

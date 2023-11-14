@@ -483,7 +483,6 @@ descs_title=Tytuły modułów
 descs_info=Ta strona pozwala na określenie własnych tytułów dla modułów Usermina , które zastąpią ich standardowe tytuły.
 
 advanced_title=Opcje zaawansowane
-advanced_pass=Udostępnić hasło dla programów Usermina? <br><font size=-1>(Nie działa, gdy włączone jest uwierzytelnianie sesji)</font>
 
 blocked_title=Zablokowane komputery i użytkownicy
 blocked_none=Żaden komputer i użytkownik nie jest obecnie blokowany przez Usermina

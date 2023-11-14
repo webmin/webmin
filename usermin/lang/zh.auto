@@ -486,7 +486,8 @@ descs_title=模块标题
 descs_info=该页面允许您为Usermin模块指定备用标题，以覆盖其标准说明。
 
 advanced_title=高级选项
-advanced_pass=使密码可用于Usermin程序吗？<br><font size=-1>（启用会话身份验证后不起作用）</font>
+advanced_pass_desc=使密码可供 Usermin 程序使用吗？
+advanced_pass_help=启用会话身份验证时不起作用
 
 blocked_title=被阻止的主机和用户
 blocked_none=当前没有主机或用户被Usermin阻止。

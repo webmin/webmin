@@ -162,6 +162,7 @@ edit_hostconfig_title=แก้ไข Hostconfig
 
 mass_enone=ไม่ได้เลือกการกระทำ
 mass_enone2=ไม่ได้เลือกบริการใด ๆ
+mass_enoallow=ไม่สามารถหยุด <tt>$1</tt> ได้
 mass_start=เริ่มการทำงาน
 mass_restart=การเริ่มการทำงานใหม่
 mass_stop=การหยุดการกระทำ
@@ -171,6 +172,7 @@ mass_disable=ปิดใช้งานการกระทำ $1 ในเว
 mass_starting=เริ่มการกระทำ $1 ..
 mass_stopping=หยุดการกระทำ $1 ..
 mass_failed=.. ล้มเหลว
+mass_skipped=.. ข้ามไป
 mass_ok=.. เสร็จแล้ว
 mass_ustart=เริ่มบริการ
 mass_urestart=เริ่มบริการใหม่

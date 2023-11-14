@@ -1,6 +1,7 @@
 index_title=Linux IPTables -palomuuri
 index_title_v=IPv4-palomuuri
 index_title_v6=IPv6-palomuuri
+index_position=Näytetään säännöt $1–$2/$3
 index_editing=Säännötiedosto $1 
 index_ecommand=Komentoa $1 ei löydy järjestelmästäsi. Webmin tarvitsee tämän komennon IPtable-asetusten määrittämiseen.
 index_ekernel=Virhe tarkistettaessa nykyistä IPtable-kokoonpanoa: $1 Tämä voi tarkoittaa, että ytimesi ei tue IPtable-sovelluksia.

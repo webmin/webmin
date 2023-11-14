@@ -577,10 +577,10 @@ mod_proxy_netbit=Sottorete (Network/bits)
 mod_proxy_maxfw=Numero massimo di proxy nella catena di richiesta
 mod_proxy_emaxfs=Il Numero massimo di proxy nella catena di richiesta deve essere un intero
 mod_proxy_preserve=Preserva originale l'header Host:
-
 mod_proxy_timeout=Timeout delle richieste proxy in secondi
 mod_proxy_etimeout=Il timeout delle richieste proxy deve essere un numero di secondi
 mod_proxy_via=Setta header Via:
+
 mod_log_agent_default=Default
 mod_log_agent_file=File..
 mod_log_agent_program=Programma..

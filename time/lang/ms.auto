@@ -1,0 +1,4 @@
+index_serviceonboot=Ya, dan mulakan pada but
+index_tabsync2=Jalankan perkhidmatan <tt>$1</tt> sistem untuk penyegerakan
+
+error_serviceunknown=Perkhidmatan tidak diketahui  : $1 

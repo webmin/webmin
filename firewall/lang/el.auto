@@ -1,6 +1,7 @@
 index_title=Linux IPTables Firewall
 index_title_v=IPv4 Firewall
 index_title_v6=IPv6 Firewall
+index_position=Εμφάνιση κανόνων $1 έως $2 από $3
 index_editing=Αρχείο κανόνων $1 
 index_ecommand=Η εντολή $1 δεν βρέθηκε στο σύστημά σας. Το Webmin χρειάζεται αυτή την εντολή για να ρυθμίσει τις παραμέτρους του IPtables.
 index_ekernel=Παρουσιάστηκε σφάλμα κατά τον έλεγχο της τρέχουσας ρύθμισης IPtables: $1 Αυτό μπορεί να σημαίνει ότι ο πυρήνας σας δεν υποστηρίζει IPtables.

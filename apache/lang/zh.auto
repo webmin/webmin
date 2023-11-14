@@ -68,6 +68,7 @@ core_eprotcols=未选择任何协议！
 core_ecandoc=不允许使用文档根目录'$1'
 core_minor=仅次要版本
 core_eerrordir=错误日志文件目录不存在
+core_eoptionsboth=目录选项：活动选项必须全部为“为目录设置”或“与父级合并”，但不能同时为两者
 core_fileowner=文件所有者匹配
 core_filegroup=群组拥有者比赛
 

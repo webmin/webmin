@@ -462,6 +462,7 @@ root_epass1=没有输入新密码
 root_epass2=密码不匹配
 root_none=没有密码！
 root_auto=自动（通常为<tt>root</tt>）
+root_socket=MySQL <tt>$1</tt> 用户使用 Unix 套接字身份验证，因此不需要密码且无法更改密码。
 
 mysqlpass_err=MySQL安全模式
 mysqlpass_esafecmd=找不到启动禁用身份验证的MySQL所需的命令 $1

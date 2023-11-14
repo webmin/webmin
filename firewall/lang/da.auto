@@ -1,6 +1,7 @@
 index_title=Linux IPTables Firewall
 index_title_v=IPv4 Firewall
 index_title_v6=IPv6 Firewall
+index_position=Viser regler $1 til $2 af $3
 index_editing=Regler fil $1 
 index_ecommand=Kommandoen $1 blev ikke fundet på dit system. Webmin har brug for denne kommando for at konfigurere IPtables.
 index_ekernel=Der opstod en fejl, når du kontrollerer din aktuelle IPtables-konfiguration: $1 Dette kan indikere, at din kerne ikke understøtter IP-tabeller.

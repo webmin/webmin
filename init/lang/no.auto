@@ -2,7 +2,9 @@ index_sboot5=Nei (maskert)
 index_sboot6=Ja alltid)
 index_ucstatus=Tjenestestatus
 
+mass_enoallow=kan ikke stoppe <tt>$1</tt>
 mass_failed=.. mislyktes
+mass_skipped=.. hoppet over
 mass_ok=.. ferdig
 
 systemd_file=Konfigurasjonsfil

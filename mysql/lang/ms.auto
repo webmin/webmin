@@ -865,6 +865,7 @@ root_epass1=Tiada kata laluan baru yang dimasukkan
 root_epass2=Kata laluan tidak sepadan
 root_none=Tiada kata laluan!
 root_auto=Automatik (biasanya <tt>root</tt>)
+root_socket=Pengguna MySQL <tt>$1</tt> menggunakan pengesahan soket Unix, jadi kata laluan tidak diperlukan dan kata laluan tidak boleh ditukar.
 
 mysqlpass_err=Mod selamat MySQL
 mysqlpass_esafecmd=Perintah $1 yang diperlukan untuk memulakan MySQL dengan pengesahan yang dilumpuhkan tidak dijumpai

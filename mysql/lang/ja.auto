@@ -407,6 +407,7 @@ config_echarset=欠落しているか無効に見える文字セット
 
 root_none=パスワードなし！
 root_auto=自動（通常は<tt>root</tt>）
+root_socket=MySQL <tt>$1</tt> ユーザーは Unix ソケット認証を使用しているため、パスワードは必要なく、パスワードを変更できません。
 
 mysqlpass_err=MySQLセーフモード
 mysqlpass_esafecmd=認証を無効にしてMySQLを起動するために必要なコマンド $1が見つかりませんでした

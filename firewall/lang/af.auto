@@ -1,6 +1,7 @@
 index_title=Linux IPTables Firewall
 index_title_v=IPv4 Firewall
 index_title_v6=IPv6 Firewall
+index_position=Wys tans reëls $1 tot $2 van $3
 index_editing=Reëllêer $1 
 index_ecommand=Die opdrag $1 is nie op u stelsel gevind nie. Webmin het hierdie opdrag nodig om IP-tabelle te konfigureer.
 index_ekernel='N Fout het voorgekom by die kontrolering van u huidige IPtables-opstelling: $1 Dit kan aandui dat u kern nie IP-tabelle ondersteun nie.

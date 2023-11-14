@@ -1,5 +1,6 @@
 index_title_v=IPv4-firewall
 index_title_v6=IPv6-firewall
+index_position=Regels $1 tot $2 van $3 worden weergegeven
 index_evalid=WAARSCHUWING! Uw huidige IPtables-configuratie is ongeldig : $1 
 index_no_comment=
 index_unapply2=Configuratie opslaan

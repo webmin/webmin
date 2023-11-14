@@ -271,6 +271,7 @@ core_optfile=Optagelsesfil pr. Katalog
 core_ecandoc=Du har ikke tilladelse til at bruge dokumentroten '$1'
 core_realm=Autentificeringsrealmets navn
 core_minor=Kun mindre version
+core_eoptionsboth=Indstillinger for bibliotek : Alle aktive indstillinger skal være enten indstillet til bibliotek eller flettet med overordnet, men ikke begge
 
 mod_negotiation_cache=Cache-indholdsforhandlede dokumenter?
 mod_negotiation_pri=Sprogprioritet for flere visninger

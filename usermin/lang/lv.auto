@@ -486,7 +486,8 @@ descs_title=Moduļu nosaukumi
 descs_info=Šī lapa ļauj jums norādīt alternatīvus Usermin moduļu nosaukumus, lai ignorētu to standarta aprakstus.
 
 advanced_title=Pielāgota opcija
-advanced_pass=Vai padarīt paroli pieejamu Usermin programmām? <br><font size=-1> (nedarbojas, ja sesijas autentifikācija ir iespējota) </font>
+advanced_pass_desc=Vai padarīt paroli pieejamu Usermin programmām?
+advanced_pass_help=Nedarbojas, ja ir iespējota sesijas autentifikācija
 
 blocked_title=Bloķētie resursdatori un lietotāji
 blocked_none=Pašlaik Usermin nav bloķējis nevienu resursdatoru vai lietotāju.

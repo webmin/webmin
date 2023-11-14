@@ -486,7 +486,8 @@ descs_title=Názvy modulov
 descs_info=Táto stránka vám umožňuje zadať alternatívne názvy pre moduly Usermin a prepísať ich štandardný popis.
 
 advanced_title=Pokročilé nastavenia
-advanced_pass=Sprístupniť heslo pre programy Usermin? <br><font size=-1> (nefunguje, ak je povolené overenie relácie) </font>
+advanced_pass_desc=Sprístupniť heslo pre programy Usermin?
+advanced_pass_help=Nefunguje, keď je povolená autentifikácia relácie
 
 blocked_title=Blokovaní hostitelia a používatelia
 blocked_none=Usermin v súčasnosti blokuje žiadnych hostiteľov alebo používateľov.

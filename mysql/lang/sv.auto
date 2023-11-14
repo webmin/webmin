@@ -532,6 +532,7 @@ root_epass1=Inget nytt lösenord har angetts
 root_epass2=Lösenorden matchar inte
 root_none=Inget lösenord!
 root_auto=Automatisk (vanligtvis <tt>root</tt>)
+root_socket=MySQL <tt>$1</tt>-användaren använder Unix-socket-autentisering, så inget lösenord behövs och lösenordet kan inte ändras.
 
 mysqlpass_err=MySQL säkert läge
 mysqlpass_esafecmd=Kommandot $1 som behövs för att starta MySQL med inaktiverad autentisering hittades inte

@@ -162,6 +162,7 @@ edit_hostconfig_title=ערוך את Hostconfig
 
 mass_enone=לא נבחרו פעולות
 mass_enone2=לא נבחרו שירותים
+mass_enoallow=לא יכול לעצור את <tt>$1</tt>
 mass_start=פעולות מתחילות
 mass_restart=הפעולות מחדש
 mass_stop=הפסקת פעולות
@@ -171,6 +172,7 @@ mass_disable=השבתת פעולה $1 בזמן האתחול.
 mass_starting=מתחיל בפעולה $1 ..
 mass_stopping=הפסקת פעולה $1 ..
 mass_failed=.. נכשל
+mass_skipped=.. דילג
 mass_ok=.. בוצע
 mass_ustart=שירותי התחלה
 mass_urestart=שירותי הפעלה מחדש

@@ -865,6 +865,7 @@ root_epass1=Nav ievadīta jauna parole
 root_epass2=Paroles nesakrīt
 root_none=Nav paroles!
 root_auto=Automātiska (parasti <tt>sakne</tt>)
+root_socket=MySQL <tt>$1</tt> lietotājs izmanto Unix ligzdas autentifikāciju, tāpēc parole nav nepieciešama un paroli nevar mainīt.
 
 mysqlpass_err=MySQL drošais režīms
 mysqlpass_esafecmd=Komanda $1, kas nepieciešama, lai sāktu MySQL ar atspējotu autentifikāciju, netika atrasta

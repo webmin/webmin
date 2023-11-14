@@ -1,6 +1,7 @@
 index_title=חומת האש של IPTables לינוקס
 index_title_v=חומת אש IPv4
 index_title_v6=חומת אש IPv6
+index_position=מציג כללים $1 עד $2 מתוך $3 
 index_editing=קובץ הכללים $1 
 index_ecommand=הפקודה $1 לא נמצאה במערכת שלך. Webmin זקוק לפקודה זו כדי לקבוע תצורה של טבלאות IP.
 index_ekernel=אירעה שגיאה בבדיקת תצורת ה- IPtables הנוכחית שלך: $1 זה עשוי להצביע על כך שהגרעין שלך אינו תומך בטבלאות IP.

@@ -15,7 +15,9 @@ edit_reloadnow2=Перечитайте файл конфигурации
 
 log_condrestart=Условно перезапущенное действие $1 
 
+mass_enoallow=не могу остановить <tt>$1</tt>
 mass_failed=.. не удалось
+mass_skipped=.. пропущен
 mass_ok=.. Выполнено
 mass_ustart=Запуск Сервисов
 mass_urestart=Перезапуск Сервисов

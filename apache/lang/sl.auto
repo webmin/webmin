@@ -501,6 +501,7 @@ core_actmod=Aktivni moduli
 core_option=Možnost
 core_setdir=Nastavite za imenik
 core_merge=Spojite se s staršem
+core_eoptionsboth=Možnosti imenika : vse aktivne možnosti morajo biti Nastavljene za imenik ali Združene z nadrejenim, ne pa oboje
 core_users=Samo ti uporabniki
 core_groups=Samo te skupine
 core_allusers=Vsi veljavni uporabniki

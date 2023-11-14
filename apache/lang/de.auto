@@ -7,3 +7,4 @@ core_protocols_http/2=HTTP/2
 core_protocols_h2=HTTP/2 verschlüsselt
 core_protocols_h2c=HTTP/2 unverschlüsselt
 core_eprotcols=Keine Protokolle ausgewählt!
+core_eoptionsboth=Verzeichnisoptionen: Alle aktiven Optionen müssen entweder „Für Verzeichnis festlegen“ oder „Mit übergeordnetem Verzeichnis zusammengeführt“ sein, jedoch nicht beides

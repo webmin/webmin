@@ -162,6 +162,7 @@ edit_hostconfig_title=میزبان کنفیگ میں ترمیم کریں
 
 mass_enone=کوئی عمل منتخب نہیں کیا گیا
 mass_enone2=کوئی خدمات منتخب نہیں کی گئیں
+mass_enoallow=cannot stop <tt>$1</tt>
 mass_start=کارروائیوں کا آغاز
 mass_restart=کارروائیوں کو دوبارہ شروع کرنا
 mass_stop=کارروائیوں کو روکنا
@@ -171,6 +172,7 @@ mass_disable=بوٹ وقت ایکشن$1 کو غیر فعال کرنا۔
 mass_starting=کارروائی شروع کر رہا ہے$1 ..
 mass_stopping=کارروائی روکنا$1 ..
 mass_failed=.. ناکام
+mass_skipped=.. چھوڑ دیا
 mass_ok=.. ہو گیا
 mass_ustart=سروسز شروع کرنا
 mass_urestart=خدمات کو دوبارہ شروع کرنا

@@ -15,6 +15,7 @@ right_drivetemps=Дыск тэмпературы
 right_driveerr=$1 памылкі!
 right_drivefailed=Праверка SMART атрымалася!
 right_cputype=$5, $8 ядраў
+right_cputype1=$5, $8 ядро
 right_load=$1 (1 мін) $2 (5 хвілін) $3 (15 хвілін)
 right_cpuuse=Выкарыстанне працэсара
 right_cpustats=$1% карыстальнік, $2% ядро, $4% IO, $3% бяздзейнічае

@@ -162,6 +162,7 @@ edit_hostconfig_title=Chỉnh sửa Hostconfig
 
 mass_enone=Không có hành động nào được chọn
 mass_enone2=Không có dịch vụ được chọn
+mass_enoallow=không thể dừng <tt>$1</tt>
 mass_start=Hành động bắt đầu
 mass_restart=Hành động khởi động lại
 mass_stop=Hành động dừng
@@ -171,6 +172,7 @@ mass_disable=Vô hiệu hóa hành động $1 khi khởi động.
 mass_starting=Bắt đầu hành động $1 ..
 mass_stopping=Dừng hành động $1 ..
 mass_failed=.. thất bại
+mass_skipped=.. bỏ qua
 mass_ok=.. xong
 mass_ustart=Dịch vụ bắt đầu
 mass_urestart=Dịch vụ khởi động lại

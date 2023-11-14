@@ -501,6 +501,7 @@ core_actmod=Module active
 core_option=Opțiune
 core_setdir=Set pentru director
 core_merge=Unire cu părintele
+core_eoptionsboth=Opțiuni de director : opțiunile active trebuie să fie toate fie Set for Directory sau Merged With Parent, dar nu ambele
 core_users=Numai acești utilizatori
 core_groups=Numai aceste grupuri
 core_allusers=Toți utilizatorii valabili

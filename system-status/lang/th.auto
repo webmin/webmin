@@ -15,6 +15,7 @@ right_drivetemps=ขับอุณหภูมิ
 right_driveerr=ข้อผิดพลาด $1 !
 right_drivefailed=การตรวจสอบสมาร์ทล้มเหลว!
 right_cputype=แกน $5, $8 
+right_cputype1=$5, $8 แกนหลัก
 right_load=$1 (1 นาที) $2 (5 นาที) $3 (15 นาที)
 right_cpuuse=การใช้งาน CPU
 right_cpustats=ผู้ใช้ $1%, เคอร์เนล $2%, $4% IO, ไม่ได้ใช้งาน $3%

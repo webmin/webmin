@@ -15,6 +15,7 @@ right_drivetemps=Taajuusmuuttajan lämpötilat
 right_driveerr=$1 virheitä!
 right_drivefailed=SMART-tarkistus epäonnistui!
 right_cputype=$5, $8 ydintä
+right_cputype1=$5, $8 ydin
 right_load=$1 (1 min) $2 (5 min) $3 (15 min)
 right_cpuuse=prosessorin käyttö
 right_cpustats=$1% käyttäjä, $2% ydin, $4% IO, $3% idle

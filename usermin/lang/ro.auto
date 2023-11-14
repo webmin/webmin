@@ -486,7 +486,8 @@ descs_title=Titluri modul
 descs_info=Această pagină vă permite să specificați titluri alternative pentru modulele Usermin, pentru a trece peste descrierile lor standard.
 
 advanced_title=Opțiuni avansate
-advanced_pass=Pune la dispoziție parola pentru programele Usermin? <br><font size=-1> (Nu funcționează când autentificarea sesiunii este activată) </font>
+advanced_pass_desc=Faceți parola disponibilă pentru programele Usermin?
+advanced_pass_help=Nu funcționează când autentificarea sesiunii este activată
 
 blocked_title=Gazde și Utilizatori Blocați
 blocked_none=În prezent, nicio gazdă sau utilizator nu este blocată de Usermin.

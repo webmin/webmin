@@ -49,6 +49,7 @@ core_protocols_h2c=HTTP/2 titkosítatlan
 core_eprotcols=Nincsenek kiválasztva protokollok!
 core_ecandoc=Nem használhatja a '$1' gyökér dokumentumot
 core_minor=Kisebb verzió
+core_eoptionsboth=Címtárbeállítások : Az aktív opciók mindegyike címtárhoz beállítva vagy Összevonva a szülővel lehet, de nem mindkettő
 core_fileowner=A fájltulajdonos megegyezik
 core_filegroup=Csoportos tulajdonos mérkőzések
 

@@ -1,6 +1,7 @@
 index_title=Firewall do Linux IPTables
 index_title_v=Firewall IPv4
 index_title_v6=Firewall IPv6
+index_position=A mostrar as regras $1 a $2 de $3 
 index_editing=Arquivo de regras $1 
 index_ecommand=O comando $1 não foi encontrado no seu sistema. O Webmin precisa deste comando para configurar as tabelas de IP.
 index_ekernel=Ocorreu um erro ao verificar sua configuração atual de tabelas de IP: $1 Isso pode indicar que seu kernel não suporta tabelas de IP.

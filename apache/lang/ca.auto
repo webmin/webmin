@@ -10,3 +10,4 @@ core_protocols_http/2=HTTP/2
 core_protocols_h2=HTTP/2 xifrat
 core_protocols_h2c=HTTP/2 sense xifrar
 core_eprotcols=No s'ha seleccionat cap protocol!
+core_eoptionsboth=Opcions de directori: les opcions actives han d'estar totes configurades per al directori o combinades amb el pare, però no totes dues

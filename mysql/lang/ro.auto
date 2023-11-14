@@ -865,6 +865,7 @@ root_epass1=Nu a fost introdusă o parolă nouă
 root_epass2=parolele nu se potrivesc
 root_none=Fără parolă!
 root_auto=Automat (de obicei <tt>root</tt>)
+root_socket=Utilizatorul MySQL <tt>$1</tt> folosește autentificarea socket Unix, deci nu este necesară nicio parolă și parola nu poate fi schimbată.
 
 mysqlpass_err=Mod sigur MySQL
 mysqlpass_esafecmd=Comanda $1 necesară pentru a porni MySQL cu autentificare dezactivată nu a fost găsită

@@ -1,6 +1,7 @@
 index_title=Linux IPTables Firewall
 index_title_v=IPv4 Firewall
 index_title_v6=IPv6 Firewall
+index_position=Menunjukkan peraturan $1 hingga $2 daripada $3
 index_editing=Fail peraturan $1 
 index_ecommand=Perintah $1 tidak dijumpai pada sistem anda. Webmin memerlukan arahan ini untuk mengkonfigurasi IPTables.
 index_ekernel=Ralat berlaku semasa menyemak konfigurasi IPTables semasa anda: $1 Ini mungkin menunjukkan bahawa kernel anda tidak menyokong IPTables.

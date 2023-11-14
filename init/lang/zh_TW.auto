@@ -64,6 +64,7 @@ log_telinit=切換到運行級別 $1
 edit_hostconfig_further=創建新的啟動操作後，您將被轉到一個頁面，您可以根據需要調整啟動腳本和參數列表。
 
 mass_enone2=未選擇服務
+mass_enoallow=無法停止<tt>$1</tt>
 mass_restart=重新啟動動作
 mass_ebroken=引導時無法啟用或禁用損壞的操作 $1
 mass_enable=在啟動時啟用操作 $1。
@@ -71,6 +72,7 @@ mass_disable=在引導時禁用操作 $1。
 mass_starting=開始動作 $1 ..
 mass_stopping=停止動作 $1 ..
 mass_failed=.. 失敗的
+mass_skipped=..跳過
 mass_ok=.. 完畢
 mass_ustart=啟動服務
 mass_urestart=重新啟動服務

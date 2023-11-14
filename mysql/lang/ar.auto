@@ -865,6 +865,7 @@ root_epass1=لم يتم إدخال كلمة مرور جديدة
 root_epass2=كلمة المرور غير مطابقة
 root_none=لا توجد كلمة مرور!
 root_auto=تلقائي (عادةً <tt>root</tt>)
+root_socket=يستخدم مستخدم MySQL <tt>$1</tt> مصادقة مقبس Unix، لذا لا حاجة إلى كلمة مرور ولا يمكن تغيير كلمة المرور.
 
 mysqlpass_err=الوضع الآمن MySQL
 mysqlpass_esafecmd=لم يتم العثور على الأمر$1 المطلوب لبدء MySQL مع تعطيل المصادقة

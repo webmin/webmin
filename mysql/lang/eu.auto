@@ -865,6 +865,7 @@ root_epass1=Ez da pasahitz berririk sartu
 root_epass2=Pasahitzak ez datoz bat
 root_none=Pasahitzik ez!
 root_auto=Automatikoa (normalean <tt>root</tt>)
+root_socket=MySQL <tt>$1</tt> erabiltzailea Unix socket autentifikazioa erabiltzen ari da, beraz, ez da pasahitzik behar eta ezin da pasahitza aldatu.
 
 mysqlpass_err=MySQL modu segurua
 mysqlpass_esafecmd=Ez da aurkitu $1 komandoa MySQL autentifikazioa desgaituta hasteko

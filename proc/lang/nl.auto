@@ -1,2 +1,5 @@
-index_mem3=<b>Echt geheugen:</b> $1 totaal / $2 vrij / $3 in cache
-index_burst=<b>Burstable memory:</b> $1 totaal
+index_memreal=Echt geheugen:
+index_memswap=Ruimte ruilen:
+index_memburst=Burstable geheugen:
+index_memtf=$1 totaal / $2 gratis
+index_memtfc=$1 totaal / $2 vrij / $3 in cache

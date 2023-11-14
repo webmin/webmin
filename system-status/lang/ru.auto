@@ -15,6 +15,7 @@ right_drivetemps=Температура привода
 right_driveerr=$1 ошибок!
 right_drivefailed=Проверка SMART не удалась!
 right_cputype=$5, $8 ядер
+right_cputype1=$5, $8 ядро
 right_load=$1 (1 мин) $2 (5 мин) $3 (15 мин)
 right_cpuuse=использование процессора
 right_cpustats=$1% пользователь, $2% ядро, $4% ввода-вывода, $3% бездействия

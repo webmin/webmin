@@ -865,6 +865,7 @@ root_epass1=Geen nuwe wagwoord ingevoer nie
 root_epass2=Wagwoorde stem nie ooreen nie
 root_none=Geen wagwoord nie!
 root_auto=Outomaties (tipies <tt>wortel</tt>)
+root_socket=Die MySQL <tt>$1</tt> gebruiker gebruik Unix-sok-verifikasie, so geen wagwoord is nodig nie en die wagwoord kan nie verander word nie.
 
 mysqlpass_err=MySQL veilige modus
 mysqlpass_esafecmd=Die opdrag $1 wat nodig is om MySQL te begin met verifikasie uitgeskakel, is nie gevind nie

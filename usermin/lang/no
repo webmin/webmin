@@ -484,7 +484,6 @@ descs_title=Modultitler
 descs_info=Her kan du angi alternative titler for Usermin moduler. Dette vil overtyre standardtitlene for disse modulene.
 
 advanced_title=Avanserte innstillinger
-advanced_pass=Gjør passord tilgjengelig for Usermin programmer?<br><font size=-1>(Virker ikke når sesjonsautentisering er slått på)</font>
 
 blocked_title=Blokkerte verter og brukere
 blocked_none=Ingen verter eller brukere er for øyeblikket blokkert av Usermin.

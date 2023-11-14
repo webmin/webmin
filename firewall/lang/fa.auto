@@ -1,6 +1,7 @@
 index_title=دیوار آتش IPT جداول لینوکس
 index_title_v=فایروال IPv4
 index_title_v6=فایروال IPv6
+index_position=نمایش قوانین $1 تا $2 از $3 
 index_editing=پرونده قوانین$1
 index_ecommand=دستور$1 در سیستم شما یافت نشد. وبمین به این دستور برای پیکربندی IPtables نیاز دارد.
 index_ekernel=هنگام بررسی پیکربندی IPtables فعلی شما ، خطایی روی داد:$1 این ممکن است نشان دهنده این باشد که هسته شما از IPtables پشتیبانی نمی کند.

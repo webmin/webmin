@@ -462,6 +462,7 @@ root_epass1=No se ingresó una nueva contraseña
 root_epass2=Las contraseñas no coinciden
 root_none=¡Sin contraseña!
 root_auto=Automático (generalmente <tt>root</tt>)
+root_socket=El usuario de MySQL <tt>$1</tt> utiliza autenticación de socket Unix, por lo que no se necesita contraseña y la contraseña no se puede cambiar.
 
 mysqlpass_err=Modo seguro de MySQL
 mysqlpass_esafecmd=No se encontró el comando $1 necesario para iniciar MySQL con la autenticación deshabilitada

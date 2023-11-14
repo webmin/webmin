@@ -1,6 +1,7 @@
 index_title=Linux IPTables Firewall
 index_title_v=ไฟร์วอลล์ IPv4
 index_title_v6=ไฟร์วอลล์ IPv6
+index_position=กำลังแสดงกฎ $1 ถึง $2 จาก $3
 index_editing=ไฟล์กฎ $1 
 index_ecommand=ไม่พบคำสั่ง $1 ในระบบของคุณ Webmin ต้องการคำสั่งนี้เพื่อกำหนดค่า IPtables
 index_ekernel=เกิดข้อผิดพลาดเมื่อตรวจสอบการกำหนดค่า IPtables ปัจจุบันของคุณ: $1 ซึ่งอาจบ่งบอกว่าเคอร์เนลของคุณไม่รองรับ IPtables

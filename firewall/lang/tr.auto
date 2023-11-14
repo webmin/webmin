@@ -1,5 +1,6 @@
 index_title_v=IPv4 Güvenlik Duvarı
 index_title_v6=IPv6 Güvenlik Duvarı
+index_position=$3'ün $1 ila $2 arasındaki kurallar gösteriliyor
 index_editing=Kural dosyası $1 
 index_evalid=UYARI! Mevcut IPtables yapılandırmanız geçersiz : $1 
 index_no_comment=

@@ -1,3 +1,6 @@
+jail_systemd=systemd
+jail_pyinotify=pyinotifizieren
+
 status_title=Jails-Status und Aktionen
 status_title3=Gefängnisblöcke
 status_return=Gefängnisstatus

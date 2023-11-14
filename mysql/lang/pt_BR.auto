@@ -120,6 +120,8 @@ manual_err=Falha ao salvar o arquivo de configuração
 
 syslog_desc2=Mensagem de erro do MySQL
 
+root_socket=O usuário MySQL <tt>$1</tt> está usando autenticação de soquete Unix, portanto nenhuma senha é necessária e a senha não pode ser alterada.
+
 mysqlpass_err=Modo de segurança MySQL
 mysqlpass_esafecmd=O comando $1 necessário para iniciar o MySQL com autenticação desactivada não foi encontrado
 mysqlpass_eshutdown=O encerramento falhou : $1 

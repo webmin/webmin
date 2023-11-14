@@ -15,6 +15,7 @@ right_drivetemps=Drive temperaturi
 right_driveerr=$1 żbalji!
 right_drivefailed=Il-verifika SMART falliet!
 right_cputype=$5, $8 qlub
+right_cputype1=$5, $8 qalba
 right_load=$1 (1 min) $2 (5 mins) $3 (15 min)
 right_cpuuse=Użu tas-CPU
 right_cpustats=$1% utent, $2% qalba, $4% IO, $3% inattiv

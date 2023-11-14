@@ -1,6 +1,7 @@
 index_title=„Linux IPTables“ užkarda
 index_title_v=IPv4 ugniasienė
 index_title_v6=„IPv6“ ugniasienė
+index_position=Rodomos taisyklės nuo $1 iki $2 iš $3
 index_editing=Taisyklių failas $1 
 index_ecommand=Komanda $1 nerasta jūsų sistemoje. „Webmin“ reikia šios komandos, norint sukonfigūruoti IPtable.
 index_ekernel=Tikrinant dabartinę „IPtable“ konfigūraciją įvyko klaida: $1 Tai gali reikšti, kad jūsų branduolys nepalaiko „IPtable“.

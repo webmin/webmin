@@ -1,5 +1,6 @@
 index_title_v=IPv4 брандмауер
 index_title_v6=IPv6 брандмауер
+index_position=Показано правила від $1 до $2 з $3
 index_editing=Файл правил $1 
 index_evalid=УВАГА! Ваша поточна конфігурація IPtables недійсна : $1 
 index_comm=Прокоментуйте

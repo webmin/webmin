@@ -9,3 +9,4 @@ core_protocols_http/2=HTTP/2
 core_protocols_h2=HTTP/2 криптиран
 core_protocols_h2c=HTTP/2 нешифрован
 core_eprotcols=Няма избрани протоколи!
+core_eoptionsboth=Опции за директория: Всички активни опции трябва да са или Задани за директория, или Обединени с родител, но не и двете

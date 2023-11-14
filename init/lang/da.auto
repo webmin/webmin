@@ -162,6 +162,7 @@ edit_hostconfig_title=Rediger Hostconfig
 
 mass_enone=Ingen handlinger valgt
 mass_enone2=Ingen tjenester valgt
+mass_enoallow=kan ikke stoppe <tt>$1</tt>
 mass_start=Start handlinger
 mass_restart=Genstart af handlinger
 mass_stop=Stop af handlinger
@@ -171,6 +172,7 @@ mass_disable=Deaktiverer handling $1 ved starttidspunktet.
 mass_starting=Starter handling $1 ..
 mass_stopping=Stop handling $1 ..
 mass_failed=.. mislykkedes
+mass_skipped=.. sprunget over
 mass_ok=.. Færdig
 mass_ustart=Starttjenester
 mass_urestart=Genstartstjenester

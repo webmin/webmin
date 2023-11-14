@@ -3,6 +3,9 @@ lang_title2=Język i ustawienia regionalne Usermin
 
 session_authmode=Metoda Uwierzytelnienia
 
+advanced_pass_desc=Udostępnić hasło programom Usermin?
+advanced_pass_help=Nie działa, gdy włączone jest uwierzytelnianie sesji
+
 twofactor_desc=Uwierzytelnianie dwuskładnikowe umożliwia użytkownikom Usermina korzystanie z dodatkowego urządzenia uwierzytelniającego podczas logowania, takiego jak generator kodów jednorazowych. Użytkownicy muszą indywidualnie zarejestrować się u wybranego dostawcy uwierzytelniania po jego włączeniu na tej stronie.
 twofactor_eversion=Wersja Usermin zainstalowana w Twoim systemie nie obsługuje uwierzytelniania dwuskładnikowego.
 

@@ -1,6 +1,7 @@
 index_title=Tường lửa IPTables Linux
 index_title_v=Tường lửa IPv4
 index_title_v6=Tường lửa IPv6
+index_position=Hiển thị quy tắc $1 đến $2 của $3
 index_editing=Tệp quy tắc $1 
 index_ecommand=Lệnh $1 không được tìm thấy trên hệ thống của bạn. Webmin cần lệnh này để cấu hình IPtables.
 index_ekernel=Đã xảy ra lỗi khi kiểm tra cấu hình IPtables hiện tại của bạn: $1 Điều này có thể cho thấy kernel của bạn không hỗ trợ IPtables.

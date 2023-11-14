@@ -2,7 +2,9 @@ index_sboot5=No (emmascarat)
 index_sboot6=Sí, sempre)
 index_ucstatus=Estat del servei
 
+mass_enoallow=no pot aturar <tt>$1</tt>
 mass_failed=.. fracassat
+mass_skipped=.. saltat
 mass_ok=.. fet
 
 systemd_file=Fitxer de configuració

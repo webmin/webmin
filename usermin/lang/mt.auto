@@ -486,7 +486,8 @@ descs_title=Titolu tal-Modulu
 descs_info=Din il-paġna jippermettilek tispeċifika t-titoli alternattivi għall-moduli Usermin, biex twarrab id-deskrizzjonijiet standard tagħhom.
 
 advanced_title=Għażliet Avvanzati
-advanced_pass=Qiegħed għad-dispożizzjoni tal-password għall-programmi Usermin? <br><font size=-1> (Ma jaħdimx meta l-awtentikazzjoni tas-sessjoni hija attivata) </font>
+advanced_pass_desc=Tagħmel il-password disponibbli għall-programmi Usermin?
+advanced_pass_help=Ma taħdimx meta l-awtentikazzjoni tas-sessjoni tkun attivata
 
 blocked_title=Ospitanti u Utenti Imblukkati
 blocked_none=L-ebda host jew utenti bħalissa mhumiex imblukkati minn Usermin.

@@ -3,6 +3,9 @@ lang_title2=Usermin-taal en locale
 
 session_authmode=Authenticatie methode
 
+advanced_pass_desc=Wachtwoord beschikbaar maken voor Usermin-programma's?
+advanced_pass_help=Werkt niet als sessieverificatie is ingeschakeld
+
 twofactor_desc=Met tweefactorauthenticatie kunnen Usermin-gebruikers het gebruik van een extra authenticatieapparaat mogelijk maken bij het inloggen, zoals een eenmalige wachtwoordgenerator. Gebruikers moeten zich individueel inschrijven bij de geselecteerde authenticatieleverancier nadat deze op deze pagina is ingeschakeld.
 twofactor_eversion=De versie van Usermin die op uw systeem is geïnstalleerd, ondersteunt geen tweefactorauthenticatie.
 

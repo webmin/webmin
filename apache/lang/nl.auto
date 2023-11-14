@@ -14,3 +14,4 @@ core_protocols_http/2=HTTP/2
 core_protocols_h2=HTTP/2 versleuteld
 core_protocols_h2c=HTTP/2 niet-versleuteld
 core_eprotcols=Geen protocollen geselecteerd!
+core_eoptionsboth=Directory-opties: Actieve opties moeten allemaal Set For Directory of Merged With Parent zijn, maar niet beide

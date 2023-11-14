@@ -1,0 +1,4 @@
+index_serviceonboot=Ja, und beim Booten beginnen
+index_tabsync2=Führen Sie den Systemdienst <tt>$1</tt> zur Synchronisierung aus
+
+error_serviceunknown=Unbekannter Dienst : $1

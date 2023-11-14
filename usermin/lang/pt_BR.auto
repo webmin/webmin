@@ -11,6 +11,9 @@ ssl_copycertdesc=Copie o certificado SSL, chave privada, certificado CA e outras
 
 log_copycert=Configurações de SSL copiadas do Webmin
 
+advanced_pass_desc=Disponibilizar senha para programas Usermin?
+advanced_pass_help=Não funciona quando a autenticação de sessão está habilitada
+
 copycert_err=Falha ao copiar configurações SSL do Webmin
 copycert_essl=SSL não está ativado
 copycert_ekeyfile=Nenhum arquivo de chave privada está definido no Webmin

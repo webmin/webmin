@@ -486,7 +486,8 @@ descs_title=모듈 제목
 descs_info=이 페이지에서는 Usermin 모듈의 대체 제목을 지정하여 표준 설명을 무시할 수 있습니다.
 
 advanced_title=고급 옵션
-advanced_pass=Usermin 프로그램에서 비밀번호를 사용할 수 있도록 설정 하시겠습니까? <br><font size=-1> (세션 인증이 활성화 된 경우 작동하지 않음) </font>
+advanced_pass_desc=Usermin 프로그램에서 비밀번호를 사용할 수 있도록 하시겠습니까?
+advanced_pass_help=세션 인증이 활성화된 경우 작동하지 않습니다
 
 blocked_title=차단 된 호스트 및 사용자
 blocked_none=현재 Usermin에 의해 호스트 나 사용자가 차단되지 않았습니다.
