@@ -49,6 +49,7 @@ elsif (&has_command("sntp")) {
 	$out = &backquote_logged("sntp -s $servs 2>&1");
 	}
 elsif (&has_command("chronyc")) {
+	&foreign_require('init');
 	my $chronyd_running = &init::status_action('chronyd');
 	$out = &backquote_logged("systemctl restart chronyd 2>&1");
 	$out .= &backquote_logged("chronyc makestep 2>&1");
