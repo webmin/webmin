@@ -49,13 +49,21 @@ elsif (&has_command("sntp")) {
 	$out = &backquote_logged("sntp -s $servs 2>&1");
 	}
 elsif (&has_command("chronyc")) {
+	my $chronyd_running = &init::status_action('chronyd');
 	$out = &backquote_logged("systemctl restart chronyd 2>&1");
 	$out .= &backquote_logged("chronyc makestep 2>&1");
-	sleep 5;
+	sleep ($chronyd_running ? 5 : 15);
+	if (!$chronyd_running) {
+		&backquote_logged("systemctl stop chronyd 2>&1");
+		}
 	}
-elsif (&foreign_require('init') && init::action_status('systemd-timesyncd') == 2) {
+elsif (&foreign_require('init') && &init::action_status('systemd-timesyncd') > 0) {
+	my $systemd_timesyncd_running = &init::status_action('systemd-timesyncd');
 	$out = &backquote_logged("systemctl restart systemd-timesyncd 2>&1");
-	sleep 5;
+	sleep ($systemd_timesyncd_running ? 5 : 15);
+	if (!$systemd_timesyncd_running) {
+		&backquote_logged("systemctl stop systemd-timesyncd 2>&1");
+		}
 	}
 else {
 	$out = "Missing ntpdate and sntp commands";
