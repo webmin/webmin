@@ -14,7 +14,8 @@ $txt = "";
 &error($text{'acl_error'}) if ($access{'sysdate'} && $access{'hwdate'});
 
 my $arr;
-if (!$access{'sysdate'} && !$access{'hwdate'} && &support_hwtime()) {
+my $support_hwtime = &support_hwtime();
+if (!$access{'sysdate'} && !$access{'hwdate'} && $support_hwtime) {
 	$arr = "0,1";
 	}
 else {
@@ -62,7 +63,7 @@ if( !$access{'sysdate'} )
   print &ui_hidden("mode", "sysdate");
   print &tabletime(&hlink($text{'sys_title'}, "system_time"), 0, %system_date);
   print &ui_submit($text{'action_apply'}, "action");
-  if (&support_hwtime()) {
+  if ($support_hwtime) {
 	print &ui_submit($text{'action_sync'}, "action");
   }
   print &ui_form_end();
@@ -74,7 +75,7 @@ else
 }
 
 # Get the hardware time
-if (&support_hwtime()) {
+if ($support_hwtime) {
 	my @tm = &get_hardware_time();
 	if (@tm) {
 		$hw_date{'second'} = $tm[0];
@@ -166,7 +167,7 @@ if ( ( !$access{ 'sysdate' } && &has_command( "date" ) || !$access{ 'hwdate' } &
 		&ui_textbox("timeserver", $config{'timeserver'}, 60));
 
 	# Show hardware time checkbox
-	if (&support_hwtime()) {
+	if ($support_hwtime) {
 		print &ui_table_row(" ",
 			&ui_checkbox("hardware", 1, $text{'index_hardware2'},
 				     $config{'timeserver_hardware'}));
